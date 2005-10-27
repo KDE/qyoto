@@ -34,23 +34,30 @@ namespace Qt {
 		private void NewQByteArrayMatcher() {
 			ProxyQByteArrayMatcher().NewQByteArrayMatcher();
 		}
-		public QByteArrayMatcher(byte[] pattern) : this((Type) null) {
+		public QByteArrayMatcher(QByteArray pattern) : this((Type) null) {
 			CreateQByteArrayMatcherProxy();
 			NewQByteArrayMatcher(pattern);
 		}
-		private void NewQByteArrayMatcher(byte[] pattern) {
+		private void NewQByteArrayMatcher(QByteArray pattern) {
 			ProxyQByteArrayMatcher().NewQByteArrayMatcher(pattern);
 		}
-		public void SetPattern(byte[] pattern) {
+		public QByteArrayMatcher(QByteArrayMatcher other) : this((Type) null) {
+			CreateQByteArrayMatcherProxy();
+			NewQByteArrayMatcher(other);
+		}
+		private void NewQByteArrayMatcher(QByteArrayMatcher other) {
+			ProxyQByteArrayMatcher().NewQByteArrayMatcher(other);
+		}
+		public void SetPattern(QByteArray pattern) {
 			ProxyQByteArrayMatcher().SetPattern(pattern);
 		}
-		public int IndexIn(byte[] ba, int from) {
+		public int IndexIn(QByteArray ba, int from) {
 			return ProxyQByteArrayMatcher().IndexIn(ba,from);
 		}
-		public int IndexIn(byte[] ba) {
+		public int IndexIn(QByteArray ba) {
 			return ProxyQByteArrayMatcher().IndexIn(ba);
 		}
-		public byte[] Pattern() {
+		public QByteArray Pattern() {
 			return ProxyQByteArrayMatcher().Pattern();
 		}
 		~QByteArrayMatcher() {

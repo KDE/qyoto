@@ -10,9 +10,8 @@ namespace Qt {
 		private IntPtr _smokeObject;
  		protected QImageReader(Type dummy) {}
 		interface IQImageReaderProxy {
-			byte[] ImageFormat(string fileName);
-			byte[] ImageFormat(IQIODevice device);
-			byte[] SupportedImageFormats();
+			QByteArray ImageFormat(string fileName);
+			QByteArray ImageFormat(IQIODevice device);
 		}
 
 		protected void CreateQImageReaderProxy() {
@@ -45,11 +44,11 @@ namespace Qt {
 		private void NewQImageReader() {
 			ProxyQImageReader().NewQImageReader();
 		}
-		public QImageReader(IQIODevice device, byte[] format) : this((Type) null) {
+		public QImageReader(IQIODevice device, QByteArray format) : this((Type) null) {
 			CreateQImageReaderProxy();
 			NewQImageReader(device,format);
 		}
-		private void NewQImageReader(IQIODevice device, byte[] format) {
+		private void NewQImageReader(IQIODevice device, QByteArray format) {
 			ProxyQImageReader().NewQImageReader(device,format);
 		}
 		public QImageReader(IQIODevice device) : this((Type) null) {
@@ -59,11 +58,11 @@ namespace Qt {
 		private void NewQImageReader(IQIODevice device) {
 			ProxyQImageReader().NewQImageReader(device);
 		}
-		public QImageReader(string fileName, byte[] format) : this((Type) null) {
+		public QImageReader(string fileName, QByteArray format) : this((Type) null) {
 			CreateQImageReaderProxy();
 			NewQImageReader(fileName,format);
 		}
-		private void NewQImageReader(string fileName, byte[] format) {
+		private void NewQImageReader(string fileName, QByteArray format) {
 			ProxyQImageReader().NewQImageReader(fileName,format);
 		}
 		public QImageReader(string fileName) : this((Type) null) {
@@ -73,10 +72,10 @@ namespace Qt {
 		private void NewQImageReader(string fileName) {
 			ProxyQImageReader().NewQImageReader(fileName);
 		}
-		public void SetFormat(byte[] format) {
+		public void SetFormat(QByteArray format) {
 			ProxyQImageReader().SetFormat(format);
 		}
-		public byte[] Format() {
+		public QByteArray Format() {
 			return ProxyQImageReader().Format();
 		}
 		public void SetDevice(IQIODevice device) {
@@ -145,15 +144,13 @@ namespace Qt {
 		public string ErrorString() {
 			return ProxyQImageReader().ErrorString();
 		}
-		public static byte[] ImageFormat(string fileName) {
+		public static QByteArray ImageFormat(string fileName) {
 			return StaticQImageReader().ImageFormat(fileName);
 		}
-		public static byte[] ImageFormat(IQIODevice device) {
+		public static QByteArray ImageFormat(IQIODevice device) {
 			return StaticQImageReader().ImageFormat(device);
 		}
-		public static byte[] SupportedImageFormats() {
-			return StaticQImageReader().SupportedImageFormats();
-		}
+		// QList<QByteArray> supportedImageFormats(); >>>> NOT CONVERTED
 		~QImageReader() {
 			ProxyQImageReader().Dispose();
 		}

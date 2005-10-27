@@ -40,9 +40,19 @@ namespace Qt {
 		private void NewQTextLength() {
 			ProxyQTextLength().NewQTextLength();
 		}
-		// QTextLength* QTextLength(QTextLength::Type arg1,qreal arg2); >>>> NOT CONVERTED
-		// qreal value(qreal arg1); >>>> NOT CONVERTED
-		// qreal rawValue(); >>>> NOT CONVERTED
+		public QTextLength(int type, double value) : this((Type) null) {
+			CreateQTextLengthProxy();
+			NewQTextLength(type,value);
+		}
+		private void NewQTextLength(int type, double value) {
+			ProxyQTextLength().NewQTextLength(type,value);
+		}
+		public double Value(double maximumLength) {
+			return ProxyQTextLength().Value(maximumLength);
+		}
+		public double RawValue() {
+			return ProxyQTextLength().RawValue();
+		}
 		public static bool operator==(QTextLength lhs, QTextLength other) {
 			return StaticQTextLength().op_equals(lhs,other);
 		}

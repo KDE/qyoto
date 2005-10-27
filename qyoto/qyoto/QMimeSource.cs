@@ -7,7 +7,7 @@ namespace Qt {
 			string Format(int n);
 			string Format();
 			bool Provides(string arg1);
-			byte[] EncodedData(string arg1);
+			QByteArray EncodedData(string arg1);
 	}
 
 	public class QMimeSource : MarshalByRefObject, IQMimeSource {
@@ -43,7 +43,7 @@ namespace Qt {
 		public virtual bool Provides(string arg1) {
 			return ProxyQMimeSource().Provides(arg1);
 		}
-		public virtual byte[] EncodedData(string arg1) {
+		public virtual QByteArray EncodedData(string arg1) {
 			return ProxyQMimeSource().EncodedData(arg1);
 		}
 	}

@@ -51,7 +51,9 @@ namespace Qt {
 		public int PointSize() {
 			return ProxyQFontInfo().PointSize();
 		}
-		// qreal pointSizeF(); >>>> NOT CONVERTED
+		public double PointSizeF() {
+			return ProxyQFontInfo().PointSizeF();
+		}
 		public bool Italic() {
 			return ProxyQFontInfo().Italic();
 		}

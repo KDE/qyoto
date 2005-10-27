@@ -10,10 +10,8 @@ namespace Qt {
 		private IntPtr _smokeObject;
  		protected QPictureIO(Type dummy) {}
 		interface IQPictureIOProxy {
-			byte[] PictureFormat(string fileName);
-			byte[] PictureFormat(IQIODevice arg1);
-			byte[] InputFormats();
-			byte[] OutputFormats();
+			QByteArray PictureFormat(string fileName);
+			QByteArray PictureFormat(IQIODevice arg1);
 		}
 
 		protected void CreateQPictureIOProxy() {
@@ -113,18 +111,14 @@ namespace Qt {
 		public bool Write() {
 			return ProxyQPictureIO().Write();
 		}
-		public static byte[] PictureFormat(string fileName) {
+		public static QByteArray PictureFormat(string fileName) {
 			return StaticQPictureIO().PictureFormat(fileName);
 		}
-		public static byte[] PictureFormat(IQIODevice arg1) {
+		public static QByteArray PictureFormat(IQIODevice arg1) {
 			return StaticQPictureIO().PictureFormat(arg1);
 		}
-		public static byte[] InputFormats() {
-			return StaticQPictureIO().InputFormats();
-		}
-		public static byte[] OutputFormats() {
-			return StaticQPictureIO().OutputFormats();
-		}
+		// QList<QByteArray> inputFormats(); >>>> NOT CONVERTED
+		// QList<QByteArray> outputFormats(); >>>> NOT CONVERTED
 		// void defineIOHandler(const char* arg1,const char* arg2,const char* arg3,picture_io_handler arg4,picture_io_handler arg5); >>>> NOT CONVERTED
 		~QPictureIO() {
 			ProxyQPictureIO().Dispose();

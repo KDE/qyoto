@@ -209,13 +209,13 @@ namespace Qt {
 		public bool LoadFromData(char[] buf, uint len) {
 			return ProxyQPixmap().LoadFromData(buf,len);
 		}
-		public bool LoadFromData(byte[] data, string format, int flags) {
+		public bool LoadFromData(QByteArray data, string format, int flags) {
 			return ProxyQPixmap().LoadFromData(data,format,flags);
 		}
-		public bool LoadFromData(byte[] data, string format) {
+		public bool LoadFromData(QByteArray data, string format) {
 			return ProxyQPixmap().LoadFromData(data,format);
 		}
-		public bool LoadFromData(byte[] data) {
+		public bool LoadFromData(QByteArray data) {
 			return ProxyQPixmap().LoadFromData(data);
 		}
 		public bool Save(string fileName, string format, int quality) {

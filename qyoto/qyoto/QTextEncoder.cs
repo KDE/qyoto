@@ -35,10 +35,10 @@ namespace Qt {
 		private void NewQTextEncoder(QTextCodec codec) {
 			ProxyQTextEncoder().NewQTextEncoder(codec);
 		}
-		public byte[] FromUnicode(string str) {
+		public QByteArray FromUnicode(string str) {
 			return ProxyQTextEncoder().FromUnicode(str);
 		}
-		public byte[] FromUnicode(char uc, int len) {
+		public QByteArray FromUnicode(char uc, int len) {
 			return ProxyQTextEncoder().FromUnicode(uc,len);
 		}
 		~QTextEncoder() {

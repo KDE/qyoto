@@ -24,18 +24,50 @@ namespace Qt {
 			return (IQRadialGradientProxy) _staticInterceptor;
 		}
 
-		// QRadialGradient* QRadialGradient(const QPointF& arg1,qreal arg2,const QPointF& arg3); >>>> NOT CONVERTED
-		// QRadialGradient* QRadialGradient(const QPointF& arg1,qreal arg2); >>>> NOT CONVERTED
-		// QRadialGradient* QRadialGradient(qreal arg1,qreal arg2,qreal arg3,qreal arg4,qreal arg5); >>>> NOT CONVERTED
-		// QRadialGradient* QRadialGradient(qreal arg1,qreal arg2,qreal arg3,qreal arg4); >>>> NOT CONVERTED
-		// QRadialGradient* QRadialGradient(qreal arg1,qreal arg2,qreal arg3); >>>> NOT CONVERTED
+		public QRadialGradient(QPointF center, double radius, QPointF focalPoint) : this((Type) null) {
+			CreateQRadialGradientProxy();
+			NewQRadialGradient(center,radius,focalPoint);
+		}
+		private void NewQRadialGradient(QPointF center, double radius, QPointF focalPoint) {
+			ProxyQRadialGradient().NewQRadialGradient(center,radius,focalPoint);
+		}
+		public QRadialGradient(QPointF center, double radius) : this((Type) null) {
+			CreateQRadialGradientProxy();
+			NewQRadialGradient(center,radius);
+		}
+		private void NewQRadialGradient(QPointF center, double radius) {
+			ProxyQRadialGradient().NewQRadialGradient(center,radius);
+		}
+		public QRadialGradient(double cx, double cy, double radius, double fx, double fy) : this((Type) null) {
+			CreateQRadialGradientProxy();
+			NewQRadialGradient(cx,cy,radius,fx,fy);
+		}
+		private void NewQRadialGradient(double cx, double cy, double radius, double fx, double fy) {
+			ProxyQRadialGradient().NewQRadialGradient(cx,cy,radius,fx,fy);
+		}
+		public QRadialGradient(double cx, double cy, double radius, double fx) : this((Type) null) {
+			CreateQRadialGradientProxy();
+			NewQRadialGradient(cx,cy,radius,fx);
+		}
+		private void NewQRadialGradient(double cx, double cy, double radius, double fx) {
+			ProxyQRadialGradient().NewQRadialGradient(cx,cy,radius,fx);
+		}
+		public QRadialGradient(double cx, double cy, double radius) : this((Type) null) {
+			CreateQRadialGradientProxy();
+			NewQRadialGradient(cx,cy,radius);
+		}
+		private void NewQRadialGradient(double cx, double cy, double radius) {
+			ProxyQRadialGradient().NewQRadialGradient(cx,cy,radius);
+		}
 		public QPointF Center() {
 			return ProxyQRadialGradient().Center();
 		}
 		public QPointF FocalPoint() {
 			return ProxyQRadialGradient().FocalPoint();
 		}
-		// qreal radius(); >>>> NOT CONVERTED
+		public double Radius() {
+			return ProxyQRadialGradient().Radius();
+		}
 		~QRadialGradient() {
 			ProxyQRadialGradient().Dispose();
 		}

@@ -30,7 +30,7 @@ namespace Qt {
 		public virtual QWidget CreateWidget(QWidget parent) {
 			return ProxyQItemEditorCreatorBase().CreateWidget(parent);
 		}
-		public virtual byte[] ValuePropertyName() {
+		public virtual QByteArray ValuePropertyName() {
 			return ProxyQItemEditorCreatorBase().ValuePropertyName();
 		}
 	}

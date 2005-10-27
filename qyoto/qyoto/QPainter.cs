@@ -213,16 +213,24 @@ namespace Qt {
 		public bool MatrixEnabled() {
 			return ProxyQPainter().MatrixEnabled();
 		}
-		// void scale(qreal arg1,qreal arg2); >>>> NOT CONVERTED
-		// void shear(qreal arg1,qreal arg2); >>>> NOT CONVERTED
-		// void rotate(qreal arg1); >>>> NOT CONVERTED
+		public void Scale(double sx, double sy) {
+			ProxyQPainter().Scale(sx,sy);
+		}
+		public void Shear(double sh, double sv) {
+			ProxyQPainter().Shear(sh,sv);
+		}
+		public void Rotate(double a) {
+			ProxyQPainter().Rotate(a);
+		}
 		public void Translate(QPointF offset) {
 			ProxyQPainter().Translate(offset);
 		}
 		public void Translate(QPoint offset) {
 			ProxyQPainter().Translate(offset);
 		}
-		// void translate(qreal arg1,qreal arg2); >>>> NOT CONVERTED
+		public void Translate(double dx, double dy) {
+			ProxyQPainter().Translate(dx,dy);
+		}
 		public QRect Window() {
 			return ProxyQPainter().Window();
 		}

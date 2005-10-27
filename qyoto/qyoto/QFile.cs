@@ -9,8 +9,8 @@ namespace Qt {
 		interface IQFileProxy {
 			string Tr(string s, string c);
 			string Tr(string s);
-			byte[] EncodeName(string fileName);
-			string DecodeName(byte[] localFileName);
+			QByteArray EncodeName(string fileName);
+			string DecodeName(QByteArray localFileName);
 			string DecodeName(string localFileName);
 			bool Exists(string fileName);
 			string ReadLink(string fileName);
@@ -170,10 +170,10 @@ namespace Qt {
 		public static new string Tr(string s) {
 			return StaticQFile().Tr(s);
 		}
-		public static byte[] EncodeName(string fileName) {
+		public static QByteArray EncodeName(string fileName) {
 			return StaticQFile().EncodeName(fileName);
 		}
-		public static string DecodeName(byte[] localFileName) {
+		public static string DecodeName(QByteArray localFileName) {
 			return StaticQFile().DecodeName(localFileName);
 		}
 		public static string DecodeName(string localFileName) {

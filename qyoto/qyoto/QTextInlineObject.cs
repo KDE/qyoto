@@ -41,16 +41,30 @@ namespace Qt {
 		public QRectF Rect() {
 			return ProxyQTextInlineObject().Rect();
 		}
-		// qreal width(); >>>> NOT CONVERTED
-		// qreal ascent(); >>>> NOT CONVERTED
-		// qreal descent(); >>>> NOT CONVERTED
-		// qreal height(); >>>> NOT CONVERTED
+		public double Width() {
+			return ProxyQTextInlineObject().Width();
+		}
+		public double Ascent() {
+			return ProxyQTextInlineObject().Ascent();
+		}
+		public double Descent() {
+			return ProxyQTextInlineObject().Descent();
+		}
+		public double Height() {
+			return ProxyQTextInlineObject().Height();
+		}
 		public int TextDirection() {
 			return ProxyQTextInlineObject().TextDirection();
 		}
-		// void setWidth(qreal arg1); >>>> NOT CONVERTED
-		// void setAscent(qreal arg1); >>>> NOT CONVERTED
-		// void setDescent(qreal arg1); >>>> NOT CONVERTED
+		public void SetWidth(double w) {
+			ProxyQTextInlineObject().SetWidth(w);
+		}
+		public void SetAscent(double a) {
+			ProxyQTextInlineObject().SetAscent(a);
+		}
+		public void SetDescent(double d) {
+			ProxyQTextInlineObject().SetDescent(d);
+		}
 		public int TextPosition() {
 			return ProxyQTextInlineObject().TextPosition();
 		}

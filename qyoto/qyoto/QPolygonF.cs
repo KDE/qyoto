@@ -63,7 +63,9 @@ namespace Qt {
 		private void NewQPolygonF(QPolygon a) {
 			ProxyQPolygonF().NewQPolygonF(a);
 		}
-		// void translate(qreal arg1,qreal arg2); >>>> NOT CONVERTED
+		public void Translate(double dx, double dy) {
+			ProxyQPolygonF().Translate(dx,dy);
+		}
 		public void Translate(QPointF offset) {
 			ProxyQPolygonF().Translate(offset);
 		}

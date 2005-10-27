@@ -41,10 +41,18 @@ namespace Qt {
 		public string Name() {
 			return ProxyQTextImageFormat().Name();
 		}
-		// void setWidth(qreal arg1); >>>> NOT CONVERTED
-		// qreal width(); >>>> NOT CONVERTED
-		// void setHeight(qreal arg1); >>>> NOT CONVERTED
-		// qreal height(); >>>> NOT CONVERTED
+		public void SetWidth(double width) {
+			ProxyQTextImageFormat().SetWidth(width);
+		}
+		public double Width() {
+			return ProxyQTextImageFormat().Width();
+		}
+		public void SetHeight(double height) {
+			ProxyQTextImageFormat().SetHeight(height);
+		}
+		public double Height() {
+			return ProxyQTextImageFormat().Height();
+		}
 		~QTextImageFormat() {
 			ProxyQTextImageFormat().Dispose();
 		}

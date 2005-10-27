@@ -46,33 +46,33 @@ namespace Qt {
 		private void NewQBuffer() {
 			ProxyQBuffer().NewQBuffer();
 		}
-		public QBuffer(byte[] buf, QObject parent) : this((Type) null) {
+		public QBuffer(QByteArray buf, QObject parent) : this((Type) null) {
 			CreateQBufferProxy();
 			NewQBuffer(buf,parent);
 		}
-		private void NewQBuffer(byte[] buf, QObject parent) {
+		private void NewQBuffer(QByteArray buf, QObject parent) {
 			ProxyQBuffer().NewQBuffer(buf,parent);
 		}
-		public QBuffer(byte[] buf) : this((Type) null) {
+		public QBuffer(QByteArray buf) : this((Type) null) {
 			CreateQBufferProxy();
 			NewQBuffer(buf);
 		}
-		private void NewQBuffer(byte[] buf) {
+		private void NewQBuffer(QByteArray buf) {
 			ProxyQBuffer().NewQBuffer(buf);
 		}
-		public byte[] Buffer() {
+		public QByteArray Buffer() {
 			return ProxyQBuffer().Buffer();
 		}
-		public void SetBuffer(byte[] a) {
+		public void SetBuffer(QByteArray a) {
 			ProxyQBuffer().SetBuffer(a);
 		}
-		public void SetData(byte[] data) {
+		public void SetData(QByteArray data) {
 			ProxyQBuffer().SetData(data);
 		}
 		public void SetData(string data, int len) {
 			ProxyQBuffer().SetData(data,len);
 		}
-		public byte[] Data() {
+		public QByteArray Data() {
 			return ProxyQBuffer().Data();
 		}
 		public new bool Open(int openMode) {

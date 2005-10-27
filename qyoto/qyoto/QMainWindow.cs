@@ -132,16 +132,16 @@ namespace Qt {
 		public int DockWidgetArea(QDockWidget dockwidget) {
 			return ProxyQMainWindow().DockWidgetArea(dockwidget);
 		}
-		public byte[] SaveState(int version) {
+		public QByteArray SaveState(int version) {
 			return ProxyQMainWindow().SaveState(version);
 		}
-		public byte[] SaveState() {
+		public QByteArray SaveState() {
 			return ProxyQMainWindow().SaveState();
 		}
-		public bool RestoreState(byte[] state, int version) {
+		public bool RestoreState(QByteArray state, int version) {
 			return ProxyQMainWindow().RestoreState(state,version);
 		}
-		public bool RestoreState(byte[] state) {
+		public bool RestoreState(QByteArray state) {
 			return ProxyQMainWindow().RestoreState(state);
 		}
 		public virtual QMenu CreatePopupMenu() {

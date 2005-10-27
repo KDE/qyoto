@@ -17,10 +17,16 @@ namespace Qt {
 			QColor FromRgba(uint rgba);
 			QColor FromRgb(int r, int g, int b, int a);
 			QColor FromRgb(int r, int g, int b);
+			QColor FromRgbF(double r, double g, double b, double a);
+			QColor FromRgbF(double r, double g, double b);
 			QColor FromHsv(int h, int s, int v, int a);
 			QColor FromHsv(int h, int s, int v);
+			QColor FromHsvF(double h, double s, double v, double a);
+			QColor FromHsvF(double h, double s, double v);
 			QColor FromCmyk(int c, int m, int y, int k, int a);
 			QColor FromCmyk(int c, int m, int y, int k);
+			QColor FromCmykF(double c, double m, double y, double k, double a);
+			QColor FromCmykF(double c, double m, double y, double k);
 		}
 
 		protected void CreateQColorProxy() {
@@ -112,8 +118,12 @@ namespace Qt {
 		public void SetAlpha(int alpha) {
 			ProxyQColor().SetAlpha(alpha);
 		}
-		// qreal alphaF(); >>>> NOT CONVERTED
-		// void setAlphaF(qreal arg1); >>>> NOT CONVERTED
+		public double AlphaF() {
+			return ProxyQColor().AlphaF();
+		}
+		public void SetAlphaF(double alpha) {
+			ProxyQColor().SetAlphaF(alpha);
+		}
 		public int Red() {
 			return ProxyQColor().Red();
 		}
@@ -132,12 +142,24 @@ namespace Qt {
 		public void SetBlue(int blue) {
 			ProxyQColor().SetBlue(blue);
 		}
-		// qreal redF(); >>>> NOT CONVERTED
-		// qreal greenF(); >>>> NOT CONVERTED
-		// qreal blueF(); >>>> NOT CONVERTED
-		// void setRedF(qreal arg1); >>>> NOT CONVERTED
-		// void setGreenF(qreal arg1); >>>> NOT CONVERTED
-		// void setBlueF(qreal arg1); >>>> NOT CONVERTED
+		public double RedF() {
+			return ProxyQColor().RedF();
+		}
+		public double GreenF() {
+			return ProxyQColor().GreenF();
+		}
+		public double BlueF() {
+			return ProxyQColor().BlueF();
+		}
+		public void SetRedF(double red) {
+			ProxyQColor().SetRedF(red);
+		}
+		public void SetGreenF(double green) {
+			ProxyQColor().SetGreenF(green);
+		}
+		public void SetBlueF(double blue) {
+			ProxyQColor().SetBlueF(blue);
+		}
 		public void GetRgb(out int r, out int g, out int b, out int a) {
 			ProxyQColor().GetRgb(out r,out g,out b,out a);
 		}
@@ -152,8 +174,12 @@ namespace Qt {
 		}
 		// void getRgbF(qreal* arg1,qreal* arg2,qreal* arg3,qreal* arg4); >>>> NOT CONVERTED
 		// void getRgbF(qreal* arg1,qreal* arg2,qreal* arg3); >>>> NOT CONVERTED
-		// void setRgbF(qreal arg1,qreal arg2,qreal arg3,qreal arg4); >>>> NOT CONVERTED
-		// void setRgbF(qreal arg1,qreal arg2,qreal arg3); >>>> NOT CONVERTED
+		public void SetRgbF(double r, double g, double b, double a) {
+			ProxyQColor().SetRgbF(r,g,b,a);
+		}
+		public void SetRgbF(double r, double g, double b) {
+			ProxyQColor().SetRgbF(r,g,b);
+		}
 		public uint Rgba() {
 			return ProxyQColor().Rgba();
 		}
@@ -175,9 +201,15 @@ namespace Qt {
 		public int Value() {
 			return ProxyQColor().Value();
 		}
-		// qreal hueF(); >>>> NOT CONVERTED
-		// qreal saturationF(); >>>> NOT CONVERTED
-		// qreal valueF(); >>>> NOT CONVERTED
+		public double HueF() {
+			return ProxyQColor().HueF();
+		}
+		public double SaturationF() {
+			return ProxyQColor().SaturationF();
+		}
+		public double ValueF() {
+			return ProxyQColor().ValueF();
+		}
 		public void GetHsv(out int h, out int s, out int v, out int a) {
 			ProxyQColor().GetHsv(out h,out s,out v,out a);
 		}
@@ -192,8 +224,12 @@ namespace Qt {
 		}
 		// void getHsvF(qreal* arg1,qreal* arg2,qreal* arg3,qreal* arg4); >>>> NOT CONVERTED
 		// void getHsvF(qreal* arg1,qreal* arg2,qreal* arg3); >>>> NOT CONVERTED
-		// void setHsvF(qreal arg1,qreal arg2,qreal arg3,qreal arg4); >>>> NOT CONVERTED
-		// void setHsvF(qreal arg1,qreal arg2,qreal arg3); >>>> NOT CONVERTED
+		public void SetHsvF(double h, double s, double v, double a) {
+			ProxyQColor().SetHsvF(h,s,v,a);
+		}
+		public void SetHsvF(double h, double s, double v) {
+			ProxyQColor().SetHsvF(h,s,v);
+		}
 		public int Cyan() {
 			return ProxyQColor().Cyan();
 		}
@@ -206,10 +242,18 @@ namespace Qt {
 		public int Black() {
 			return ProxyQColor().Black();
 		}
-		// qreal cyanF(); >>>> NOT CONVERTED
-		// qreal magentaF(); >>>> NOT CONVERTED
-		// qreal yellowF(); >>>> NOT CONVERTED
-		// qreal blackF(); >>>> NOT CONVERTED
+		public double CyanF() {
+			return ProxyQColor().CyanF();
+		}
+		public double MagentaF() {
+			return ProxyQColor().MagentaF();
+		}
+		public double YellowF() {
+			return ProxyQColor().YellowF();
+		}
+		public double BlackF() {
+			return ProxyQColor().BlackF();
+		}
 		public void GetCmyk(out int c, out int m, out int y, out int k, out int a) {
 			ProxyQColor().GetCmyk(out c,out m,out y,out k,out a);
 		}
@@ -224,8 +268,12 @@ namespace Qt {
 		}
 		// void getCmykF(qreal* arg1,qreal* arg2,qreal* arg3,qreal* arg4,qreal* arg5); >>>> NOT CONVERTED
 		// void getCmykF(qreal* arg1,qreal* arg2,qreal* arg3,qreal* arg4); >>>> NOT CONVERTED
-		// void setCmykF(qreal arg1,qreal arg2,qreal arg3,qreal arg4,qreal arg5); >>>> NOT CONVERTED
-		// void setCmykF(qreal arg1,qreal arg2,qreal arg3,qreal arg4); >>>> NOT CONVERTED
+		public void SetCmykF(double c, double m, double y, double k, double a) {
+			ProxyQColor().SetCmykF(c,m,y,k,a);
+		}
+		public void SetCmykF(double c, double m, double y, double k) {
+			ProxyQColor().SetCmykF(c,m,y,k);
+		}
 		public QColor ToRgb() {
 			return ProxyQColor().ToRgb();
 		}
@@ -279,24 +327,36 @@ namespace Qt {
 		public static QColor FromRgb(int r, int g, int b) {
 			return StaticQColor().FromRgb(r,g,b);
 		}
-		// QColor fromRgbF(qreal arg1,qreal arg2,qreal arg3,qreal arg4); >>>> NOT CONVERTED
-		// QColor fromRgbF(qreal arg1,qreal arg2,qreal arg3); >>>> NOT CONVERTED
+		public static QColor FromRgbF(double r, double g, double b, double a) {
+			return StaticQColor().FromRgbF(r,g,b,a);
+		}
+		public static QColor FromRgbF(double r, double g, double b) {
+			return StaticQColor().FromRgbF(r,g,b);
+		}
 		public static QColor FromHsv(int h, int s, int v, int a) {
 			return StaticQColor().FromHsv(h,s,v,a);
 		}
 		public static QColor FromHsv(int h, int s, int v) {
 			return StaticQColor().FromHsv(h,s,v);
 		}
-		// QColor fromHsvF(qreal arg1,qreal arg2,qreal arg3,qreal arg4); >>>> NOT CONVERTED
-		// QColor fromHsvF(qreal arg1,qreal arg2,qreal arg3); >>>> NOT CONVERTED
+		public static QColor FromHsvF(double h, double s, double v, double a) {
+			return StaticQColor().FromHsvF(h,s,v,a);
+		}
+		public static QColor FromHsvF(double h, double s, double v) {
+			return StaticQColor().FromHsvF(h,s,v);
+		}
 		public static QColor FromCmyk(int c, int m, int y, int k, int a) {
 			return StaticQColor().FromCmyk(c,m,y,k,a);
 		}
 		public static QColor FromCmyk(int c, int m, int y, int k) {
 			return StaticQColor().FromCmyk(c,m,y,k);
 		}
-		// QColor fromCmykF(qreal arg1,qreal arg2,qreal arg3,qreal arg4,qreal arg5); >>>> NOT CONVERTED
-		// QColor fromCmykF(qreal arg1,qreal arg2,qreal arg3,qreal arg4); >>>> NOT CONVERTED
+		public static QColor FromCmykF(double c, double m, double y, double k, double a) {
+			return StaticQColor().FromCmykF(c,m,y,k,a);
+		}
+		public static QColor FromCmykF(double c, double m, double y, double k) {
+			return StaticQColor().FromCmykF(c,m,y,k);
+		}
 		~QColor() {
 			ProxyQColor().Dispose();
 		}

@@ -35,9 +35,15 @@ namespace Qt {
 			StrikeOut = 0x40,
 			Dummy = 0xffffffff,
 		}
-		// qreal descent(); >>>> NOT CONVERTED
-		// qreal ascent(); >>>> NOT CONVERTED
-		// qreal width(); >>>> NOT CONVERTED
+		public double Descent() {
+			return ProxyQTextItem().Descent();
+		}
+		public double Ascent() {
+			return ProxyQTextItem().Ascent();
+		}
+		public double Width() {
+			return ProxyQTextItem().Width();
+		}
 		public int RenderFlags() {
 			return ProxyQTextItem().RenderFlags();
 		}

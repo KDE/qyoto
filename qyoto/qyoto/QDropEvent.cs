@@ -74,7 +74,7 @@ namespace Qt {
 		public string Format() {
 			return ProxyQDropEvent().Format();
 		}
-		public byte[] EncodedData(string arg1) {
+		public QByteArray EncodedData(string arg1) {
 			return ProxyQDropEvent().EncodedData(arg1);
 		}
 		public bool Provides(string arg1) {

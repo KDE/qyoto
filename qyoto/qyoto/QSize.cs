@@ -9,6 +9,8 @@ namespace Qt {
 		private IntPtr _smokeObject;
  		protected QSize(Type dummy) {}
 		interface IQSizeProxy {
+			QSize op_mult(QSize lhs, double c);
+			QSize op_div(QSize lhs, double c);
 		}
 
 		protected void CreateQSizeProxy() {
@@ -83,8 +85,12 @@ namespace Qt {
 		public int Rheight() {
 			return ProxyQSize().Rheight();
 		}
-		// QSize& operator*=(qreal arg1); >>>> NOT CONVERTED
-		// QSize& operator/=(qreal arg1); >>>> NOT CONVERTED
+		public static QSize operator*(QSize lhs, double c) {
+			return StaticQSize().op_mult(lhs,c);
+		}
+		public static QSize operator/(QSize lhs, double c) {
+			return StaticQSize().op_div(lhs,c);
+		}
 		~QSize() {
 			ProxyQSize().Dispose();
 		}

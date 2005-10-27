@@ -24,12 +24,26 @@ namespace Qt {
 			return (IQConicalGradientProxy) _staticInterceptor;
 		}
 
-		// QConicalGradient* QConicalGradient(const QPointF& arg1,qreal arg2); >>>> NOT CONVERTED
-		// QConicalGradient* QConicalGradient(qreal arg1,qreal arg2,qreal arg3); >>>> NOT CONVERTED
+		public QConicalGradient(QPointF center, double startAngle) : this((Type) null) {
+			CreateQConicalGradientProxy();
+			NewQConicalGradient(center,startAngle);
+		}
+		private void NewQConicalGradient(QPointF center, double startAngle) {
+			ProxyQConicalGradient().NewQConicalGradient(center,startAngle);
+		}
+		public QConicalGradient(double cx, double cy, double startAngle) : this((Type) null) {
+			CreateQConicalGradientProxy();
+			NewQConicalGradient(cx,cy,startAngle);
+		}
+		private void NewQConicalGradient(double cx, double cy, double startAngle) {
+			ProxyQConicalGradient().NewQConicalGradient(cx,cy,startAngle);
+		}
 		public QPointF Center() {
 			return ProxyQConicalGradient().Center();
 		}
-		// qreal angle(); >>>> NOT CONVERTED
+		public double Angle() {
+			return ProxyQConicalGradient().Angle();
+		}
 		~QConicalGradient() {
 			ProxyQConicalGradient().Dispose();
 		}

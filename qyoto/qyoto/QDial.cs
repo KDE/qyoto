@@ -55,7 +55,9 @@ namespace Qt {
 		public void SetNotchTarget(double target) {
 			ProxyQDial().SetNotchTarget(target);
 		}
-		// qreal notchTarget(); >>>> NOT CONVERTED
+		public double NotchTarget() {
+			return ProxyQDial().NotchTarget();
+		}
 		public bool NotchesVisible() {
 			return ProxyQDial().NotchesVisible();
 		}

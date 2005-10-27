@@ -55,12 +55,8 @@ namespace Qt {
 		public string TypeName() {
 			return ProxyQMetaMethod().TypeName();
 		}
-		public byte[] ParameterTypes() {
-			return ProxyQMetaMethod().ParameterTypes();
-		}
-		public byte[] ParameterNames() {
-			return ProxyQMetaMethod().ParameterNames();
-		}
+		// QList<QByteArray> parameterTypes(); >>>> NOT CONVERTED
+		// QList<QByteArray> parameterNames(); >>>> NOT CONVERTED
 		public string Tag() {
 			return ProxyQMetaMethod().Tag();
 		}

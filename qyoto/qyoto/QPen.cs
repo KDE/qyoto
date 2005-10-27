@@ -49,10 +49,34 @@ namespace Qt {
 		private void NewQPen(QColor color) {
 			ProxyQPen().NewQPen(color);
 		}
-		// QPen* QPen(const QBrush& arg1,qreal arg2,Qt::PenStyle arg3,Qt::PenCapStyle arg4,Qt::PenJoinStyle arg5); >>>> NOT CONVERTED
-		// QPen* QPen(const QBrush& arg1,qreal arg2,Qt::PenStyle arg3,Qt::PenCapStyle arg4); >>>> NOT CONVERTED
-		// QPen* QPen(const QBrush& arg1,qreal arg2,Qt::PenStyle arg3); >>>> NOT CONVERTED
-		// QPen* QPen(const QBrush& arg1,qreal arg2); >>>> NOT CONVERTED
+		public QPen(QBrush brush, double width, int s, int c, int j) : this((Type) null) {
+			CreateQPenProxy();
+			NewQPen(brush,width,s,c,j);
+		}
+		private void NewQPen(QBrush brush, double width, int s, int c, int j) {
+			ProxyQPen().NewQPen(brush,width,s,c,j);
+		}
+		public QPen(QBrush brush, double width, int s, int c) : this((Type) null) {
+			CreateQPenProxy();
+			NewQPen(brush,width,s,c);
+		}
+		private void NewQPen(QBrush brush, double width, int s, int c) {
+			ProxyQPen().NewQPen(brush,width,s,c);
+		}
+		public QPen(QBrush brush, double width, int s) : this((Type) null) {
+			CreateQPenProxy();
+			NewQPen(brush,width,s);
+		}
+		private void NewQPen(QBrush brush, double width, int s) {
+			ProxyQPen().NewQPen(brush,width,s);
+		}
+		public QPen(QBrush brush, double width) : this((Type) null) {
+			CreateQPenProxy();
+			NewQPen(brush,width);
+		}
+		private void NewQPen(QBrush brush, double width) {
+			ProxyQPen().NewQPen(brush,width);
+		}
 		public QPen(QPen pen) : this((Type) null) {
 			CreateQPenProxy();
 			NewQPen(pen);
@@ -66,8 +90,12 @@ namespace Qt {
 		public void SetStyle(int arg1) {
 			ProxyQPen().SetStyle(arg1);
 		}
-		// qreal widthF(); >>>> NOT CONVERTED
-		// void setWidthF(qreal arg1); >>>> NOT CONVERTED
+		public double WidthF() {
+			return ProxyQPen().WidthF();
+		}
+		public void SetWidthF(double width) {
+			ProxyQPen().SetWidthF(width);
+		}
 		public int Width() {
 			return ProxyQPen().Width();
 		}

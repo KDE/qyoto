@@ -9,6 +9,8 @@ namespace Qt {
 		private IntPtr _smokeObject;
  		protected QPointF(Type dummy) {}
 		interface IQPointFProxy {
+			QPointF op_mult(QPointF lhs, double c);
+			QPointF op_div(QPointF lhs, double c);
 		}
 
 		protected void CreateQPointFProxy() {
@@ -41,18 +43,36 @@ namespace Qt {
 		private void NewQPointF(QPoint p) {
 			ProxyQPointF().NewQPointF(p);
 		}
-		// QPointF* QPointF(qreal arg1,qreal arg2); >>>> NOT CONVERTED
+		public QPointF(double xpos, double ypos) : this((Type) null) {
+			CreateQPointFProxy();
+			NewQPointF(xpos,ypos);
+		}
+		private void NewQPointF(double xpos, double ypos) {
+			ProxyQPointF().NewQPointF(xpos,ypos);
+		}
 		public bool IsNull() {
 			return ProxyQPointF().IsNull();
 		}
-		// qreal x(); >>>> NOT CONVERTED
-		// qreal y(); >>>> NOT CONVERTED
-		// void setX(qreal arg1); >>>> NOT CONVERTED
-		// void setY(qreal arg1); >>>> NOT CONVERTED
+		public double X() {
+			return ProxyQPointF().X();
+		}
+		public double Y() {
+			return ProxyQPointF().Y();
+		}
+		public void SetX(double x) {
+			ProxyQPointF().SetX(x);
+		}
+		public void SetY(double y) {
+			ProxyQPointF().SetY(y);
+		}
 		// qreal& rx(); >>>> NOT CONVERTED
 		// qreal& ry(); >>>> NOT CONVERTED
-		// QPointF& operator*=(qreal arg1); >>>> NOT CONVERTED
-		// QPointF& operator/=(qreal arg1); >>>> NOT CONVERTED
+		public static QPointF operator*(QPointF lhs, double c) {
+			return StaticQPointF().op_mult(lhs,c);
+		}
+		public static QPointF operator/(QPointF lhs, double c) {
+			return StaticQPointF().op_div(lhs,c);
+		}
 		public QPoint ToPoint() {
 			return ProxyQPointF().ToPoint();
 		}

@@ -96,7 +96,9 @@ namespace Qt {
 		public void SetReadOnly(bool ro) {
 			ProxyQTextEdit().SetReadOnly(ro);
 		}
-		// qreal fontPointSize(); >>>> NOT CONVERTED
+		public double FontPointSize() {
+			return ProxyQTextEdit().FontPointSize();
+		}
 		public string FontFamily() {
 			return ProxyQTextEdit().FontFamily();
 		}
@@ -199,7 +201,9 @@ namespace Qt {
 		public string AnchorAt(QPoint pos) {
 			return ProxyQTextEdit().AnchorAt(pos);
 		}
-		// void setFontPointSize(qreal arg1); >>>> NOT CONVERTED
+		public void SetFontPointSize(double s) {
+			ProxyQTextEdit().SetFontPointSize(s);
+		}
 		public void SetFontFamily(string fontFamily) {
 			ProxyQTextEdit().SetFontFamily(fontFamily);
 		}

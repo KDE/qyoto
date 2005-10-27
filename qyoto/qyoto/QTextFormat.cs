@@ -124,7 +124,9 @@ namespace Qt {
 		public int IntProperty(int propertyId) {
 			return ProxyQTextFormat().IntProperty(propertyId);
 		}
-		// qreal doubleProperty(int arg1); >>>> NOT CONVERTED
+		public double DoubleProperty(int propertyId) {
+			return ProxyQTextFormat().DoubleProperty(propertyId);
+		}
 		public string StringProperty(int propertyId) {
 			return ProxyQTextFormat().StringProperty(propertyId);
 		}

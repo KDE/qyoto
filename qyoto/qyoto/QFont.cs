@@ -148,8 +148,12 @@ namespace Qt {
 		public void SetPointSize(int arg1) {
 			ProxyQFont().SetPointSize(arg1);
 		}
-		// qreal pointSizeF(); >>>> NOT CONVERTED
-		// void setPointSizeF(qreal arg1); >>>> NOT CONVERTED
+		public double PointSizeF() {
+			return ProxyQFont().PointSizeF();
+		}
+		public void SetPointSizeF(double arg1) {
+			ProxyQFont().SetPointSizeF(arg1);
+		}
 		public int PixelSize() {
 			return ProxyQFont().PixelSize();
 		}

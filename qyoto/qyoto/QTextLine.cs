@@ -48,23 +48,51 @@ namespace Qt {
 		public QRectF Rect() {
 			return ProxyQTextLine().Rect();
 		}
-		// qreal x(); >>>> NOT CONVERTED
-		// qreal y(); >>>> NOT CONVERTED
-		// qreal width(); >>>> NOT CONVERTED
-		// qreal ascent(); >>>> NOT CONVERTED
-		// qreal descent(); >>>> NOT CONVERTED
-		// qreal height(); >>>> NOT CONVERTED
-		// qreal naturalTextWidth(); >>>> NOT CONVERTED
+		public double X() {
+			return ProxyQTextLine().X();
+		}
+		public double Y() {
+			return ProxyQTextLine().Y();
+		}
+		public double Width() {
+			return ProxyQTextLine().Width();
+		}
+		public double Ascent() {
+			return ProxyQTextLine().Ascent();
+		}
+		public double Descent() {
+			return ProxyQTextLine().Descent();
+		}
+		public double Height() {
+			return ProxyQTextLine().Height();
+		}
+		public double NaturalTextWidth() {
+			return ProxyQTextLine().NaturalTextWidth();
+		}
 		public QRectF NaturalTextRect() {
 			return ProxyQTextLine().NaturalTextRect();
 		}
-		// qreal cursorToX(int* arg1,QTextLine::Edge arg2); >>>> NOT CONVERTED
-		// qreal cursorToX(int* arg1); >>>> NOT CONVERTED
-		// qreal cursorToX(int arg1,QTextLine::Edge arg2); >>>> NOT CONVERTED
-		// qreal cursorToX(int arg1); >>>> NOT CONVERTED
-		// int xToCursor(qreal arg1,QTextLine::CursorPosition arg2); >>>> NOT CONVERTED
-		// int xToCursor(qreal arg1); >>>> NOT CONVERTED
-		// void setLineWidth(qreal arg1); >>>> NOT CONVERTED
+		public double CursorToX(out int cursorPos, int edge) {
+			return ProxyQTextLine().CursorToX(out cursorPos,edge);
+		}
+		public double CursorToX(out int cursorPos) {
+			return ProxyQTextLine().CursorToX(out cursorPos);
+		}
+		public double CursorToX(int cursorPos, int edge) {
+			return ProxyQTextLine().CursorToX(cursorPos,edge);
+		}
+		public double CursorToX(int cursorPos) {
+			return ProxyQTextLine().CursorToX(cursorPos);
+		}
+		public int XToCursor(double x, int arg2) {
+			return ProxyQTextLine().XToCursor(x,arg2);
+		}
+		public int XToCursor(double x) {
+			return ProxyQTextLine().XToCursor(x);
+		}
+		public void SetLineWidth(double width) {
+			ProxyQTextLine().SetLineWidth(width);
+		}
 		public void SetNumColumns(int columns) {
 			ProxyQTextLine().SetNumColumns(columns);
 		}

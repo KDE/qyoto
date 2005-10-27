@@ -40,16 +40,36 @@ namespace Qt {
 		public int Alignment() {
 			return ProxyQTextBlockFormat().Alignment();
 		}
-		// void setTopMargin(qreal arg1); >>>> NOT CONVERTED
-		// qreal topMargin(); >>>> NOT CONVERTED
-		// void setBottomMargin(qreal arg1); >>>> NOT CONVERTED
-		// qreal bottomMargin(); >>>> NOT CONVERTED
-		// void setLeftMargin(qreal arg1); >>>> NOT CONVERTED
-		// qreal leftMargin(); >>>> NOT CONVERTED
-		// void setRightMargin(qreal arg1); >>>> NOT CONVERTED
-		// qreal rightMargin(); >>>> NOT CONVERTED
-		// void setTextIndent(qreal arg1); >>>> NOT CONVERTED
-		// qreal textIndent(); >>>> NOT CONVERTED
+		public void SetTopMargin(double margin) {
+			ProxyQTextBlockFormat().SetTopMargin(margin);
+		}
+		public double TopMargin() {
+			return ProxyQTextBlockFormat().TopMargin();
+		}
+		public void SetBottomMargin(double margin) {
+			ProxyQTextBlockFormat().SetBottomMargin(margin);
+		}
+		public double BottomMargin() {
+			return ProxyQTextBlockFormat().BottomMargin();
+		}
+		public void SetLeftMargin(double margin) {
+			ProxyQTextBlockFormat().SetLeftMargin(margin);
+		}
+		public double LeftMargin() {
+			return ProxyQTextBlockFormat().LeftMargin();
+		}
+		public void SetRightMargin(double margin) {
+			ProxyQTextBlockFormat().SetRightMargin(margin);
+		}
+		public double RightMargin() {
+			return ProxyQTextBlockFormat().RightMargin();
+		}
+		public void SetTextIndent(double margin) {
+			ProxyQTextBlockFormat().SetTextIndent(margin);
+		}
+		public double TextIndent() {
+			return ProxyQTextBlockFormat().TextIndent();
+		}
 		public void SetIndent(int indent) {
 			ProxyQTextBlockFormat().SetIndent(indent);
 		}

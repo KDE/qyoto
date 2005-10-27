@@ -129,10 +129,10 @@ namespace Qt {
 		public int Get(string file) {
 			return ProxyQFtp().Get(file);
 		}
-		public int Put(byte[] data, string file, int type) {
+		public int Put(QByteArray data, string file, int type) {
 			return ProxyQFtp().Put(data,file,type);
 		}
-		public int Put(byte[] data, string file) {
+		public int Put(QByteArray data, string file) {
 			return ProxyQFtp().Put(data,file);
 		}
 		public int Put(IQIODevice dev, string file, int type) {
@@ -158,7 +158,7 @@ namespace Qt {
 		}
 		// qint64 bytesAvailable(); >>>> NOT CONVERTED
 		// qint64 read(char* arg1,qint64 arg2); >>>> NOT CONVERTED
-		public byte[] ReadAll() {
+		public QByteArray ReadAll() {
 			return ProxyQFtp().ReadAll();
 		}
 		public int CurrentId() {

@@ -12,8 +12,8 @@ namespace Qt {
 			QMatrix TrueMatrix(QMatrix arg1, int w, int h);
 			QImage FromData(char[] data, int size, string format);
 			QImage FromData(char[] data, int size);
-			QImage FromData(byte[] data, string format);
-			QImage FromData(byte[] data);
+			QImage FromData(QByteArray data, string format);
+			QImage FromData(QByteArray data);
 		}
 
 		protected void CreateQImageProxy() {
@@ -290,10 +290,10 @@ namespace Qt {
 		public bool LoadFromData(char[] buf, int len) {
 			return ProxyQImage().LoadFromData(buf,len);
 		}
-		public bool LoadFromData(byte[] data, string aformat) {
+		public bool LoadFromData(QByteArray data, string aformat) {
 			return ProxyQImage().LoadFromData(data,aformat);
 		}
-		public bool LoadFromData(byte[] data) {
+		public bool LoadFromData(QByteArray data) {
 			return ProxyQImage().LoadFromData(data);
 		}
 		public bool Save(string fileName, string format, int quality) {
@@ -358,10 +358,10 @@ namespace Qt {
 		public static QImage FromData(char[] data, int size) {
 			return StaticQImage().FromData(data,size);
 		}
-		public static QImage FromData(byte[] data, string format) {
+		public static QImage FromData(QByteArray data, string format) {
 			return StaticQImage().FromData(data,format);
 		}
-		public static QImage FromData(byte[] data) {
+		public static QImage FromData(QByteArray data) {
 			return StaticQImage().FromData(data);
 		}
 		protected new virtual int Metric(IQPaintDevice metric) {

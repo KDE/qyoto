@@ -155,8 +155,12 @@ namespace Qt {
 		public QRectF BoundingRect() {
 			return ProxyQTextLayout().BoundingRect();
 		}
-		// qreal minimumWidth(); >>>> NOT CONVERTED
-		// qreal maximumWidth(); >>>> NOT CONVERTED
+		public double MinimumWidth() {
+			return ProxyQTextLayout().MinimumWidth();
+		}
+		public double MaximumWidth() {
+			return ProxyQTextLayout().MaximumWidth();
+		}
 		// QTextEngine* engine(); >>>> NOT CONVERTED
 		~QTextLayout() {
 			ProxyQTextLayout().Dispose();

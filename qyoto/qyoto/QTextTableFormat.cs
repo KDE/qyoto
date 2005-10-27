@@ -45,10 +45,18 @@ namespace Qt {
 		public void ClearColumnWidthConstraints() {
 			ProxyQTextTableFormat().ClearColumnWidthConstraints();
 		}
-		// qreal cellSpacing(); >>>> NOT CONVERTED
-		// void setCellSpacing(qreal arg1); >>>> NOT CONVERTED
-		// qreal cellPadding(); >>>> NOT CONVERTED
-		// void setCellPadding(qreal arg1); >>>> NOT CONVERTED
+		public double CellSpacing() {
+			return ProxyQTextTableFormat().CellSpacing();
+		}
+		public void SetCellSpacing(double spacing) {
+			ProxyQTextTableFormat().SetCellSpacing(spacing);
+		}
+		public double CellPadding() {
+			return ProxyQTextTableFormat().CellPadding();
+		}
+		public void SetCellPadding(double padding) {
+			ProxyQTextTableFormat().SetCellPadding(padding);
+		}
 		public void SetAlignment(int alignment) {
 			ProxyQTextTableFormat().SetAlignment(alignment);
 		}

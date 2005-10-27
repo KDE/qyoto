@@ -50,21 +50,45 @@ namespace Qt {
 		private void NewQFontMetricsF(QFontMetricsF arg1) {
 			ProxyQFontMetricsF().NewQFontMetricsF(arg1);
 		}
-		// qreal ascent(); >>>> NOT CONVERTED
-		// qreal descent(); >>>> NOT CONVERTED
-		// qreal height(); >>>> NOT CONVERTED
-		// qreal leading(); >>>> NOT CONVERTED
-		// qreal lineSpacing(); >>>> NOT CONVERTED
-		// qreal minLeftBearing(); >>>> NOT CONVERTED
-		// qreal minRightBearing(); >>>> NOT CONVERTED
-		// qreal maxWidth(); >>>> NOT CONVERTED
+		public double Ascent() {
+			return ProxyQFontMetricsF().Ascent();
+		}
+		public double Descent() {
+			return ProxyQFontMetricsF().Descent();
+		}
+		public double Height() {
+			return ProxyQFontMetricsF().Height();
+		}
+		public double Leading() {
+			return ProxyQFontMetricsF().Leading();
+		}
+		public double LineSpacing() {
+			return ProxyQFontMetricsF().LineSpacing();
+		}
+		public double MinLeftBearing() {
+			return ProxyQFontMetricsF().MinLeftBearing();
+		}
+		public double MinRightBearing() {
+			return ProxyQFontMetricsF().MinRightBearing();
+		}
+		public double MaxWidth() {
+			return ProxyQFontMetricsF().MaxWidth();
+		}
 		public bool InFont(char arg1) {
 			return ProxyQFontMetricsF().InFont(arg1);
 		}
-		// qreal leftBearing(QChar arg1); >>>> NOT CONVERTED
-		// qreal rightBearing(QChar arg1); >>>> NOT CONVERTED
-		// qreal width(const QString& arg1); >>>> NOT CONVERTED
-		// qreal width(QChar arg1); >>>> NOT CONVERTED
+		public double LeftBearing(char arg1) {
+			return ProxyQFontMetricsF().LeftBearing(arg1);
+		}
+		public double RightBearing(char arg1) {
+			return ProxyQFontMetricsF().RightBearing(arg1);
+		}
+		public double Width(string arg1) {
+			return ProxyQFontMetricsF().Width(arg1);
+		}
+		public double Width(char arg1) {
+			return ProxyQFontMetricsF().Width(arg1);
+		}
 		public QRectF BoundingRect(string arg1) {
 			return ProxyQFontMetricsF().BoundingRect(arg1);
 		}
@@ -89,10 +113,18 @@ namespace Qt {
 		public QSizeF Size(int flags, string str) {
 			return ProxyQFontMetricsF().Size(flags,str);
 		}
-		// qreal underlinePos(); >>>> NOT CONVERTED
-		// qreal overlinePos(); >>>> NOT CONVERTED
-		// qreal strikeOutPos(); >>>> NOT CONVERTED
-		// qreal lineWidth(); >>>> NOT CONVERTED
+		public double UnderlinePos() {
+			return ProxyQFontMetricsF().UnderlinePos();
+		}
+		public double OverlinePos() {
+			return ProxyQFontMetricsF().OverlinePos();
+		}
+		public double StrikeOutPos() {
+			return ProxyQFontMetricsF().StrikeOutPos();
+		}
+		public double LineWidth() {
+			return ProxyQFontMetricsF().LineWidth();
+		}
 		public static bool operator==(QFontMetricsF lhs, QFontMetricsF other) {
 			return StaticQFontMetricsF().op_equals(lhs,other);
 		}

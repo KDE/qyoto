@@ -62,39 +62,57 @@ namespace Qt {
 		public void MoveTo(QPointF p) {
 			ProxyQPainterPath().MoveTo(p);
 		}
-		// void moveTo(qreal arg1,qreal arg2); >>>> NOT CONVERTED
+		public void MoveTo(double x, double y) {
+			ProxyQPainterPath().MoveTo(x,y);
+		}
 		public void LineTo(QPointF p) {
 			ProxyQPainterPath().LineTo(p);
 		}
-		// void lineTo(qreal arg1,qreal arg2); >>>> NOT CONVERTED
-		// void arcTo(const QRectF& arg1,qreal arg2,qreal arg3); >>>> NOT CONVERTED
-		// void arcTo(qreal arg1,qreal arg2,qreal arg3,qreal arg4,qreal arg5,qreal arg6); >>>> NOT CONVERTED
+		public void LineTo(double x, double y) {
+			ProxyQPainterPath().LineTo(x,y);
+		}
+		public void ArcTo(QRectF rect, double startAngle, double arcLength) {
+			ProxyQPainterPath().ArcTo(rect,startAngle,arcLength);
+		}
+		public void ArcTo(double x, double y, double w, double h, double startAngle, double arcLength) {
+			ProxyQPainterPath().ArcTo(x,y,w,h,startAngle,arcLength);
+		}
 		public void CubicTo(QPointF ctrlPt1, QPointF ctrlPt2, QPointF endPt) {
 			ProxyQPainterPath().CubicTo(ctrlPt1,ctrlPt2,endPt);
 		}
-		// void cubicTo(qreal arg1,qreal arg2,qreal arg3,qreal arg4,qreal arg5,qreal arg6); >>>> NOT CONVERTED
+		public void CubicTo(double ctrlPt1x, double ctrlPt1y, double ctrlPt2x, double ctrlPt2y, double endPtx, double endPty) {
+			ProxyQPainterPath().CubicTo(ctrlPt1x,ctrlPt1y,ctrlPt2x,ctrlPt2y,endPtx,endPty);
+		}
 		public void QuadTo(QPointF ctrlPt, QPointF endPt) {
 			ProxyQPainterPath().QuadTo(ctrlPt,endPt);
 		}
-		// void quadTo(qreal arg1,qreal arg2,qreal arg3,qreal arg4); >>>> NOT CONVERTED
+		public void QuadTo(double ctrlPtx, double ctrlPty, double endPtx, double endPty) {
+			ProxyQPainterPath().QuadTo(ctrlPtx,ctrlPty,endPtx,endPty);
+		}
 		public QPointF CurrentPosition() {
 			return ProxyQPainterPath().CurrentPosition();
 		}
 		public void AddRect(QRectF rect) {
 			ProxyQPainterPath().AddRect(rect);
 		}
-		// void addRect(qreal arg1,qreal arg2,qreal arg3,qreal arg4); >>>> NOT CONVERTED
+		public void AddRect(double x, double y, double w, double h) {
+			ProxyQPainterPath().AddRect(x,y,w,h);
+		}
 		public void AddEllipse(QRectF rect) {
 			ProxyQPainterPath().AddEllipse(rect);
 		}
-		// void addEllipse(qreal arg1,qreal arg2,qreal arg3,qreal arg4); >>>> NOT CONVERTED
+		public void AddEllipse(double x, double y, double w, double h) {
+			ProxyQPainterPath().AddEllipse(x,y,w,h);
+		}
 		public void AddPolygon(QPolygonF polygon) {
 			ProxyQPainterPath().AddPolygon(polygon);
 		}
 		public void AddText(QPointF point, QFont f, string text) {
 			ProxyQPainterPath().AddText(point,f,text);
 		}
-		// void addText(qreal arg1,qreal arg2,const QFont& arg3,const QString& arg4); >>>> NOT CONVERTED
+		public void AddText(double x, double y, QFont f, string text) {
+			ProxyQPainterPath().AddText(x,y,f,text);
+		}
 		public void AddPath(QPainterPath path) {
 			ProxyQPainterPath().AddPath(path);
 		}

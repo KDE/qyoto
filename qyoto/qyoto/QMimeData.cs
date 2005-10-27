@@ -81,10 +81,10 @@ namespace Qt {
 		public bool HasColor() {
 			return ProxyQMimeData().HasColor();
 		}
-		public byte[] Data(string mimetype) {
+		public QByteArray Data(string mimetype) {
 			return ProxyQMimeData().Data(mimetype);
 		}
-		public void SetData(string mimetype, byte[] data) {
+		public void SetData(string mimetype, QByteArray data) {
 			ProxyQMimeData().SetData(mimetype,data);
 		}
 		public virtual bool HasFormat(string mimetype) {

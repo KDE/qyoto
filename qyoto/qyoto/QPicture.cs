@@ -9,8 +9,6 @@ namespace Qt {
  		protected QPicture(Type dummy) : base((Type) null) {}
 		interface IQPictureProxy {
 			string PictureFormat(string fileName);
-			byte[] InputFormats();
-			byte[] OutputFormats();
 			ArrayList InputFormatList();
 			ArrayList OutputFormatList();
 		}
@@ -112,12 +110,8 @@ namespace Qt {
 		public static string PictureFormat(string fileName) {
 			return StaticQPicture().PictureFormat(fileName);
 		}
-		public static byte[] InputFormats() {
-			return StaticQPicture().InputFormats();
-		}
-		public static byte[] OutputFormats() {
-			return StaticQPicture().OutputFormats();
-		}
+		// QList<QByteArray> inputFormats(); >>>> NOT CONVERTED
+		// QList<QByteArray> outputFormats(); >>>> NOT CONVERTED
 		public static ArrayList InputFormatList() {
 			return StaticQPicture().InputFormatList();
 		}

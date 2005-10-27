@@ -11,7 +11,7 @@ namespace Qt {
 			string Escape(string plain);
 			string ConvertFromPlainText(string plain, int mode);
 			string ConvertFromPlainText(string plain);
-			QTextCodec CodecForHtml(byte[] ba);
+			QTextCodec CodecForHtml(QByteArray ba);
 			int QRed(uint rgb);
 			int QGreen(uint rgb);
 			int QBlue(uint rgb);
@@ -119,13 +119,19 @@ namespace Qt {
 			bool op_equals(QPoint p1, QPoint p2);
 			QPoint op_plus(QPoint p1, QPoint p2);
 			QPoint op_minus(QPoint p1, QPoint p2);
+			QPoint op_mult(QPoint p, double c);
+			QPoint op_mult(double c, QPoint p);
 			QPoint op_minus(QPoint p);
+			QPoint op_div(QPoint p, double c);
 			QDataStream op_write(QDataStream arg1, QPointF arg2);
 			QDataStream op_read(QDataStream arg1, QPointF arg2);
 			bool op_equals(QPointF p1, QPointF p2);
 			QPointF op_plus(QPointF p1, QPointF p2);
 			QPointF op_minus(QPointF p1, QPointF p2);
+			QPointF op_mult(QPointF p, double c);
+			QPointF op_mult(double c, QPointF p);
 			QPointF op_minus(QPointF p);
+			QPointF op_div(QPointF p, double c);
 			bool op_equals(char c1, char c2);
 			bool op_lte(char c1, char c2);
 			bool op_gte(char c1, char c2);
@@ -172,34 +178,34 @@ namespace Qt {
 			int Qstricmp(string arg1, string arg2);
 			int Qstrnicmp(string arg1, string arg2, uint len);
 			ushort QChecksum(string s, uint len);
-			bool op_equals(byte[] a1, byte[] a2);
-			bool op_equals(byte[] a1, string a2);
-			bool op_equals(string a1, byte[] a2);
-			bool op_lt(byte[] a1, byte[] a2);
-			bool op_lt(byte[] a1, string a2);
-			bool op_lt(string a1, byte[] a2);
-			bool op_lte(byte[] a1, byte[] a2);
-			bool op_lte(byte[] a1, string a2);
-			bool op_lte(string a1, byte[] a2);
-			bool op_gt(byte[] a1, byte[] a2);
-			bool op_gt(byte[] a1, string a2);
-			bool op_gt(string a1, byte[] a2);
-			bool op_gte(byte[] a1, byte[] a2);
-			bool op_gte(byte[] a1, string a2);
-			bool op_gte(string a1, byte[] a2);
-			byte[] op_plus(byte[] a1, byte[] a2);
-			byte[] op_plus(byte[] a1, string a2);
-			byte[] op_plus(byte[] a1, char a2);
-			byte[] op_plus(string a1, byte[] a2);
-			byte[] op_plus(char a1, byte[] a2);
-			QDataStream op_write(QDataStream arg1, byte[] arg2);
-			QDataStream op_read(QDataStream arg1, byte[] arg2);
-			byte[] QCompress(char[] data, int nbytes, int compressionLevel);
-			byte[] QCompress(char[] data, int nbytes);
-			byte[] QUncompress(char[] data, int nbytes);
-			byte[] QCompress(byte[] data, int compressionLevel);
-			byte[] QCompress(byte[] data);
-			byte[] QUncompress(byte[] data);
+			bool op_equals(QByteArray a1, QByteArray a2);
+			bool op_equals(QByteArray a1, string a2);
+			bool op_equals(string a1, QByteArray a2);
+			bool op_lt(QByteArray a1, QByteArray a2);
+			bool op_lt(QByteArray a1, string a2);
+			bool op_lt(string a1, QByteArray a2);
+			bool op_lte(QByteArray a1, QByteArray a2);
+			bool op_lte(QByteArray a1, string a2);
+			bool op_lte(string a1, QByteArray a2);
+			bool op_gt(QByteArray a1, QByteArray a2);
+			bool op_gt(QByteArray a1, string a2);
+			bool op_gt(string a1, QByteArray a2);
+			bool op_gte(QByteArray a1, QByteArray a2);
+			bool op_gte(QByteArray a1, string a2);
+			bool op_gte(string a1, QByteArray a2);
+			QByteArray op_plus(QByteArray a1, QByteArray a2);
+			QByteArray op_plus(QByteArray a1, string a2);
+			QByteArray op_plus(QByteArray a1, char a2);
+			QByteArray op_plus(string a1, QByteArray a2);
+			QByteArray op_plus(char a1, QByteArray a2);
+			QDataStream op_write(QDataStream arg1, QByteArray arg2);
+			QDataStream op_read(QDataStream arg1, QByteArray arg2);
+			QByteArray QCompress(char[] data, int nbytes, int compressionLevel);
+			QByteArray QCompress(char[] data, int nbytes);
+			QByteArray QUncompress(char[] data, int nbytes);
+			QByteArray QCompress(QByteArray data, int compressionLevel);
+			QByteArray QCompress(QByteArray data);
+			QByteArray QUncompress(QByteArray data);
 			QDataStream op_read(QDataStream s, QVariant p);
 			QDataStream op_write(QDataStream s, QVariant p);
 			bool op_equals(QVariant v1, QVariant v2);
@@ -208,11 +214,17 @@ namespace Qt {
 			bool op_equals(QSize s1, QSize s2);
 			QSize op_plus(QSize s1, QSize s2);
 			QSize op_minus(QSize s1, QSize s2);
+			QSize op_mult(QSize s, double c);
+			QSize op_mult(double c, QSize s);
+			QSize op_div(QSize s, double c);
 			QDataStream op_write(QDataStream arg1, QSizeF arg2);
 			QDataStream op_read(QDataStream arg1, QSizeF arg2);
 			bool op_equals(QSizeF s1, QSizeF s2);
 			QSizeF op_plus(QSizeF s1, QSizeF s2);
 			QSizeF op_minus(QSizeF s1, QSizeF s2);
+			QSizeF op_mult(QSizeF s, double c);
+			QSizeF op_mult(double c, QSizeF s);
+			QSizeF op_div(QSizeF s, double c);
 			QDataStream op_read(QDataStream arg1, string[] list);
 			QDataStream op_write(QDataStream arg1, string[] list);
 			QDataStream op_write(QDataStream arg1, QUuid arg2);
@@ -226,7 +238,7 @@ namespace Qt {
 			bool op_equals(QBool b1, bool b2);
 			bool op_equals(bool b1, QBool b2);
 			bool op_equals(QBool b1, QBool b2);
-			byte[] Qgetenv(string varName);
+			QByteArray Qgetenv(string varName);
 			int QIntCast(double f);
 			int QIntCast(float f);
 			bool op_equals(QRect arg1, QRect arg2);
@@ -1048,7 +1060,7 @@ namespace Qt {
 		public static string ConvertFromPlainText(string plain) {
 			return StaticQt().ConvertFromPlainText(plain);
 		}
-		public static QTextCodec CodecForHtml(byte[] ba) {
+		public static QTextCodec CodecForHtml(QByteArray ba) {
 			return StaticQt().CodecForHtml(ba);
 		}
 		public static int QRed(uint rgb) {
@@ -1410,12 +1422,18 @@ namespace Qt {
 		public static QPoint op_minus(QPoint p1, QPoint p2) {
 			return StaticQt().op_minus(p1,p2);
 		}
-		// const QPoint operator*(const QPoint& arg1,qreal arg2); >>>> NOT CONVERTED
-		// const QPoint operator*(qreal arg1,const QPoint& arg2); >>>> NOT CONVERTED
+		public static QPoint op_mult(QPoint p, double c) {
+			return StaticQt().op_mult(p,c);
+		}
+		public static QPoint op_mult(double c, QPoint p) {
+			return StaticQt().op_mult(c,p);
+		}
 		public static QPoint op_minus(QPoint p) {
 			return StaticQt().op_minus(p);
 		}
-		// const QPoint operator/(const QPoint& arg1,qreal arg2); >>>> NOT CONVERTED
+		public static QPoint op_div(QPoint p, double c) {
+			return StaticQt().op_div(p,c);
+		}
 		///<remarks>**************************************************
 		///  QPointF stream functions
 		///**************************************************</remarks>		<short>                                                                                QPointF stream functions                                                                            </short>
@@ -1437,12 +1455,18 @@ namespace Qt {
 		public static QPointF op_minus(QPointF p1, QPointF p2) {
 			return StaticQt().op_minus(p1,p2);
 		}
-		// const QPointF operator*(const QPointF& arg1,qreal arg2); >>>> NOT CONVERTED
-		// const QPointF operator*(qreal arg1,const QPointF& arg2); >>>> NOT CONVERTED
+		public static QPointF op_mult(QPointF p, double c) {
+			return StaticQt().op_mult(p,c);
+		}
+		public static QPointF op_mult(double c, QPointF p) {
+			return StaticQt().op_mult(c,p);
+		}
 		public static QPointF op_minus(QPointF p) {
 			return StaticQt().op_minus(p);
 		}
-		// const QPointF operator/(const QPointF& arg1,qreal arg2); >>>> NOT CONVERTED
+		public static QPointF op_div(QPointF p, double c) {
+			return StaticQt().op_div(p,c);
+		}
 		// QBitArray operator&(const QBitArray& arg1,const QBitArray& arg2); >>>> NOT CONVERTED
 		// QBitArray operator|(const QBitArray& arg1,const QBitArray& arg2); >>>> NOT CONVERTED
 		// QBitArray operator^(const QBitArray& arg1,const QBitArray& arg2); >>>> NOT CONVERTED
@@ -1599,88 +1623,88 @@ namespace Qt {
 		public static ushort QChecksum(string s, uint len) {
 			return StaticQt().QChecksum(s,len);
 		}
-		public static bool op_equals(byte[] a1, byte[] a2) {
+		public static bool op_equals(QByteArray a1, QByteArray a2) {
 			return StaticQt().op_equals(a1,a2);
 		}
-		public static bool op_equals(byte[] a1, string a2) {
+		public static bool op_equals(QByteArray a1, string a2) {
 			return StaticQt().op_equals(a1,a2);
 		}
-		public static bool op_equals(string a1, byte[] a2) {
+		public static bool op_equals(string a1, QByteArray a2) {
 			return StaticQt().op_equals(a1,a2);
 		}
-		public static bool op_lt(byte[] a1, byte[] a2) {
+		public static bool op_lt(QByteArray a1, QByteArray a2) {
 			return StaticQt().op_lt(a1,a2);
 		}
-		public static bool op_lt(byte[] a1, string a2) {
+		public static bool op_lt(QByteArray a1, string a2) {
 			return StaticQt().op_lt(a1,a2);
 		}
-		public static bool op_lt(string a1, byte[] a2) {
+		public static bool op_lt(string a1, QByteArray a2) {
 			return StaticQt().op_lt(a1,a2);
 		}
-		public static bool op_lte(byte[] a1, byte[] a2) {
+		public static bool op_lte(QByteArray a1, QByteArray a2) {
 			return StaticQt().op_lte(a1,a2);
 		}
-		public static bool op_lte(byte[] a1, string a2) {
+		public static bool op_lte(QByteArray a1, string a2) {
 			return StaticQt().op_lte(a1,a2);
 		}
-		public static bool op_lte(string a1, byte[] a2) {
+		public static bool op_lte(string a1, QByteArray a2) {
 			return StaticQt().op_lte(a1,a2);
 		}
-		public static bool op_gt(byte[] a1, byte[] a2) {
+		public static bool op_gt(QByteArray a1, QByteArray a2) {
 			return StaticQt().op_gt(a1,a2);
 		}
-		public static bool op_gt(byte[] a1, string a2) {
+		public static bool op_gt(QByteArray a1, string a2) {
 			return StaticQt().op_gt(a1,a2);
 		}
-		public static bool op_gt(string a1, byte[] a2) {
+		public static bool op_gt(string a1, QByteArray a2) {
 			return StaticQt().op_gt(a1,a2);
 		}
-		public static bool op_gte(byte[] a1, byte[] a2) {
+		public static bool op_gte(QByteArray a1, QByteArray a2) {
 			return StaticQt().op_gte(a1,a2);
 		}
-		public static bool op_gte(byte[] a1, string a2) {
+		public static bool op_gte(QByteArray a1, string a2) {
 			return StaticQt().op_gte(a1,a2);
 		}
-		public static bool op_gte(string a1, byte[] a2) {
+		public static bool op_gte(string a1, QByteArray a2) {
 			return StaticQt().op_gte(a1,a2);
 		}
-		public static byte[] op_plus(byte[] a1, byte[] a2) {
+		public static QByteArray op_plus(QByteArray a1, QByteArray a2) {
 			return StaticQt().op_plus(a1,a2);
 		}
-		public static byte[] op_plus(byte[] a1, string a2) {
+		public static QByteArray op_plus(QByteArray a1, string a2) {
 			return StaticQt().op_plus(a1,a2);
 		}
-		public static byte[] op_plus(byte[] a1, char a2) {
+		public static QByteArray op_plus(QByteArray a1, char a2) {
 			return StaticQt().op_plus(a1,a2);
 		}
-		public static byte[] op_plus(string a1, byte[] a2) {
+		public static QByteArray op_plus(string a1, QByteArray a2) {
 			return StaticQt().op_plus(a1,a2);
 		}
-		public static byte[] op_plus(char a1, byte[] a2) {
+		public static QByteArray op_plus(char a1, QByteArray a2) {
 			return StaticQt().op_plus(a1,a2);
 		}
-		public static QDataStream op_write(QDataStream arg1, byte[] arg2) {
+		public static QDataStream op_write(QDataStream arg1, QByteArray arg2) {
 			return StaticQt().op_write(arg1,arg2);
 		}
-		public static QDataStream op_read(QDataStream arg1, byte[] arg2) {
+		public static QDataStream op_read(QDataStream arg1, QByteArray arg2) {
 			return StaticQt().op_read(arg1,arg2);
 		}
-		public static byte[] QCompress(char[] data, int nbytes, int compressionLevel) {
+		public static QByteArray QCompress(char[] data, int nbytes, int compressionLevel) {
 			return StaticQt().QCompress(data,nbytes,compressionLevel);
 		}
-		public static byte[] QCompress(char[] data, int nbytes) {
+		public static QByteArray QCompress(char[] data, int nbytes) {
 			return StaticQt().QCompress(data,nbytes);
 		}
-		public static byte[] QUncompress(char[] data, int nbytes) {
+		public static QByteArray QUncompress(char[] data, int nbytes) {
 			return StaticQt().QUncompress(data,nbytes);
 		}
-		public static byte[] QCompress(byte[] data, int compressionLevel) {
+		public static QByteArray QCompress(QByteArray data, int compressionLevel) {
 			return StaticQt().QCompress(data,compressionLevel);
 		}
-		public static byte[] QCompress(byte[] data) {
+		public static QByteArray QCompress(QByteArray data) {
 			return StaticQt().QCompress(data);
 		}
-		public static byte[] QUncompress(byte[] data) {
+		public static QByteArray QUncompress(QByteArray data) {
 			return StaticQt().QUncompress(data);
 		}
 		// bool qvariant_cast_helper(const QVariant& arg1,QVariant::Type arg2,void* arg3); >>>> NOT CONVERTED
@@ -1714,9 +1738,15 @@ namespace Qt {
 		public static QSize op_minus(QSize s1, QSize s2) {
 			return StaticQt().op_minus(s1,s2);
 		}
-		// const QSize operator*(const QSize& arg1,qreal arg2); >>>> NOT CONVERTED
-		// const QSize operator*(qreal arg1,const QSize& arg2); >>>> NOT CONVERTED
-		// const QSize operator/(const QSize& arg1,qreal arg2); >>>> NOT CONVERTED
+		public static QSize op_mult(QSize s, double c) {
+			return StaticQt().op_mult(s,c);
+		}
+		public static QSize op_mult(double c, QSize s) {
+			return StaticQt().op_mult(c,s);
+		}
+		public static QSize op_div(QSize s, double c) {
+			return StaticQt().op_div(s,c);
+		}
 		///<remarks>**************************************************
 		///  QSizeF stream functions
 		///**************************************************</remarks>		<short>                                                                                QSizeF stream functions                                                                            </short>
@@ -1738,9 +1768,15 @@ namespace Qt {
 		public static QSizeF op_minus(QSizeF s1, QSizeF s2) {
 			return StaticQt().op_minus(s1,s2);
 		}
-		// const QSizeF operator*(const QSizeF& arg1,qreal arg2); >>>> NOT CONVERTED
-		// const QSizeF operator*(qreal arg1,const QSizeF& arg2); >>>> NOT CONVERTED
-		// const QSizeF operator/(const QSizeF& arg1,qreal arg2); >>>> NOT CONVERTED
+		public static QSizeF op_mult(QSizeF s, double c) {
+			return StaticQt().op_mult(s,c);
+		}
+		public static QSizeF op_mult(double c, QSizeF s) {
+			return StaticQt().op_mult(c,s);
+		}
+		public static QSizeF op_div(QSizeF s, double c) {
+			return StaticQt().op_div(s,c);
+		}
 		public static QDataStream op_read(QDataStream arg1, string[] list) {
 			return StaticQt().op_read(arg1,list);
 		}
@@ -1789,7 +1825,7 @@ namespace Qt {
 		// void* qRealloc(void* arg1,size_t arg2); >>>> NOT CONVERTED
 		// void* qMemCopy(void* arg1,const void* arg2,size_t arg3); >>>> NOT CONVERTED
 		// void* qMemSet(void* arg1,int arg2,size_t arg3); >>>> NOT CONVERTED
-		public static byte[] Qgetenv(string varName) {
+		public static QByteArray Qgetenv(string varName) {
 			return StaticQt().Qgetenv(varName);
 		}
 		public static int QIntCast(double f) {

@@ -45,20 +45,36 @@ namespace Qt {
 		public int Position() {
 			return ProxyQTextFrameFormat().Position();
 		}
-		// void setBorder(qreal arg1); >>>> NOT CONVERTED
-		// qreal border(); >>>> NOT CONVERTED
-		// void setMargin(qreal arg1); >>>> NOT CONVERTED
-		// qreal margin(); >>>> NOT CONVERTED
-		// void setPadding(qreal arg1); >>>> NOT CONVERTED
-		// qreal padding(); >>>> NOT CONVERTED
-		// void setWidth(qreal arg1); >>>> NOT CONVERTED
+		public void SetBorder(double border) {
+			ProxyQTextFrameFormat().SetBorder(border);
+		}
+		public double Border() {
+			return ProxyQTextFrameFormat().Border();
+		}
+		public void SetMargin(double margin) {
+			ProxyQTextFrameFormat().SetMargin(margin);
+		}
+		public double Margin() {
+			return ProxyQTextFrameFormat().Margin();
+		}
+		public void SetPadding(double padding) {
+			ProxyQTextFrameFormat().SetPadding(padding);
+		}
+		public double Padding() {
+			return ProxyQTextFrameFormat().Padding();
+		}
+		public void SetWidth(double width) {
+			ProxyQTextFrameFormat().SetWidth(width);
+		}
 		public void SetWidth(QTextLength length) {
 			ProxyQTextFrameFormat().SetWidth(length);
 		}
 		public QTextLength Width() {
 			return ProxyQTextFrameFormat().Width();
 		}
-		// void setHeight(qreal arg1); >>>> NOT CONVERTED
+		public void SetHeight(double height) {
+			ProxyQTextFrameFormat().SetHeight(height);
+		}
 		public void SetHeight(QTextLength height) {
 			ProxyQTextFrameFormat().SetHeight(height);
 		}

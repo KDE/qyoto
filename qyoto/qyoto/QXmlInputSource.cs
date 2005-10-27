@@ -45,7 +45,7 @@ namespace Qt {
 		public virtual void SetData(string dat) {
 			ProxyQXmlInputSource().SetData(dat);
 		}
-		public virtual void SetData(byte[] dat) {
+		public virtual void SetData(QByteArray dat) {
 			ProxyQXmlInputSource().SetData(dat);
 		}
 		public virtual void FetchData() {
@@ -60,10 +60,10 @@ namespace Qt {
 		public virtual void Reset() {
 			ProxyQXmlInputSource().Reset();
 		}
-		protected virtual string FromRawData(byte[] data, bool beginning) {
+		protected virtual string FromRawData(QByteArray data, bool beginning) {
 			return ProxyQXmlInputSource().FromRawData(data,beginning);
 		}
-		protected virtual string FromRawData(byte[] data) {
+		protected virtual string FromRawData(QByteArray data) {
 			return ProxyQXmlInputSource().FromRawData(data);
 		}
 		~QXmlInputSource() {

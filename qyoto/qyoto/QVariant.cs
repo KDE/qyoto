@@ -138,11 +138,11 @@ namespace Qt {
 		private void NewQVariant(string str) {
 			ProxyQVariant().NewQVariant(str);
 		}
-		public QVariant(byte[] bytearray) : this((Type) null) {
+		public QVariant(QByteArray bytearray) : this((Type) null) {
 			CreateQVariantProxy();
 			NewQVariant(bytearray);
 		}
-		private void NewQVariant(byte[] bytearray) {
+		private void NewQVariant(QByteArray bytearray) {
 			ProxyQVariant().NewQVariant(bytearray);
 		}
 		// QVariant* QVariant(const QBitArray& arg1); >>>> NOT CONVERTED
@@ -292,7 +292,7 @@ namespace Qt {
 		public double ToDouble() {
 			return ProxyQVariant().ToDouble();
 		}
-		public byte[] ToByteArray() {
+		public QByteArray ToByteArray() {
 			return ProxyQVariant().ToByteArray();
 		}
 		// QBitArray toBitArray(); >>>> NOT CONVERTED

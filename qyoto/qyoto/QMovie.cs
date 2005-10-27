@@ -52,18 +52,18 @@ namespace Qt {
 		private void NewQMovie() {
 			ProxyQMovie().NewQMovie();
 		}
-		public QMovie(IQIODevice device, byte[] format, QObject parent) : this((Type) null) {
+		public QMovie(IQIODevice device, QByteArray format, QObject parent) : this((Type) null) {
 			CreateQMovieProxy();
 			NewQMovie(device,format,parent);
 		}
-		private void NewQMovie(IQIODevice device, byte[] format, QObject parent) {
+		private void NewQMovie(IQIODevice device, QByteArray format, QObject parent) {
 			ProxyQMovie().NewQMovie(device,format,parent);
 		}
-		public QMovie(IQIODevice device, byte[] format) : this((Type) null) {
+		public QMovie(IQIODevice device, QByteArray format) : this((Type) null) {
 			CreateQMovieProxy();
 			NewQMovie(device,format);
 		}
-		private void NewQMovie(IQIODevice device, byte[] format) {
+		private void NewQMovie(IQIODevice device, QByteArray format) {
 			ProxyQMovie().NewQMovie(device,format);
 		}
 		public QMovie(IQIODevice device) : this((Type) null) {
@@ -73,18 +73,18 @@ namespace Qt {
 		private void NewQMovie(IQIODevice device) {
 			ProxyQMovie().NewQMovie(device);
 		}
-		public QMovie(string fileName, byte[] format, QObject parent) : this((Type) null) {
+		public QMovie(string fileName, QByteArray format, QObject parent) : this((Type) null) {
 			CreateQMovieProxy();
 			NewQMovie(fileName,format,parent);
 		}
-		private void NewQMovie(string fileName, byte[] format, QObject parent) {
+		private void NewQMovie(string fileName, QByteArray format, QObject parent) {
 			ProxyQMovie().NewQMovie(fileName,format,parent);
 		}
-		public QMovie(string fileName, byte[] format) : this((Type) null) {
+		public QMovie(string fileName, QByteArray format) : this((Type) null) {
 			CreateQMovieProxy();
 			NewQMovie(fileName,format);
 		}
-		private void NewQMovie(string fileName, byte[] format) {
+		private void NewQMovie(string fileName, QByteArray format) {
 			ProxyQMovie().NewQMovie(fileName,format);
 		}
 		public QMovie(string fileName) : this((Type) null) {
@@ -106,10 +106,10 @@ namespace Qt {
 		public string FileName() {
 			return ProxyQMovie().FileName();
 		}
-		public void SetFormat(byte[] format) {
+		public void SetFormat(QByteArray format) {
 			ProxyQMovie().SetFormat(format);
 		}
-		public byte[] Format() {
+		public QByteArray Format() {
 			return ProxyQMovie().Format();
 		}
 		public void SetBackgroundColor(QColor color) {

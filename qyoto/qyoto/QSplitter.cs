@@ -105,10 +105,10 @@ namespace Qt {
 		}
 		// QList<int> sizes(); >>>> NOT CONVERTED
 		// void setSizes(const QList<int>& arg1); >>>> NOT CONVERTED
-		public byte[] SaveState() {
+		public QByteArray SaveState() {
 			return ProxyQSplitter().SaveState();
 		}
-		public bool RestoreState(byte[] state) {
+		public bool RestoreState(QByteArray state) {
 			return ProxyQSplitter().RestoreState(state);
 		}
 		public int HandleWidth() {

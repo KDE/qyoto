@@ -17,7 +17,7 @@ namespace Qt {
 			QTextStream op_read(QTextStream lhs, float f);
 			QTextStream op_read(QTextStream lhs, double f);
 			QTextStream op_read(QTextStream lhs, StringBuilder s);
-			QTextStream op_read(QTextStream lhs, byte[] array);
+			QTextStream op_read(QTextStream lhs, QByteArray array);
 			QTextStream op_read(QTextStream lhs, string c);
 			QTextStream op_write(QTextStream lhs, char ch);
 			QTextStream op_write(QTextStream lhs, ushort i);
@@ -26,7 +26,7 @@ namespace Qt {
 			QTextStream op_write(QTextStream lhs, float f);
 			QTextStream op_write(QTextStream lhs, double f);
 			QTextStream op_write(QTextStream lhs, string s);
-			QTextStream op_write(QTextStream lhs, byte[] array);
+			QTextStream op_write(QTextStream lhs, QByteArray array);
 		}
 
 		protected void CreateQTextStreamProxy() {
@@ -91,18 +91,18 @@ namespace Qt {
 		private void NewQTextStream(StringBuilder arg1) {
 			ProxyQTextStream().NewQTextStream(arg1);
 		}
-		public QTextStream(byte[] array, int openMode) : this((Type) null) {
+		public QTextStream(QByteArray array, int openMode) : this((Type) null) {
 			CreateQTextStreamProxy();
 			NewQTextStream(array,openMode);
 		}
-		private void NewQTextStream(byte[] array, int openMode) {
+		private void NewQTextStream(QByteArray array, int openMode) {
 			ProxyQTextStream().NewQTextStream(array,openMode);
 		}
-		public QTextStream(byte[] array) : this((Type) null) {
+		public QTextStream(QByteArray array) : this((Type) null) {
 			CreateQTextStreamProxy();
 			NewQTextStream(array);
 		}
-		private void NewQTextStream(byte[] array) {
+		private void NewQTextStream(QByteArray array) {
 			ProxyQTextStream().NewQTextStream(array);
 		}
 		public void SetCodec(QTextCodec codec) {
@@ -229,7 +229,7 @@ namespace Qt {
 		public static QTextStream op_read(QTextStream lhs, StringBuilder s) {
 			return StaticQTextStream().op_read(lhs,s);
 		}
-		public static QTextStream op_read(QTextStream lhs, byte[] array) {
+		public static QTextStream op_read(QTextStream lhs, QByteArray array) {
 			return StaticQTextStream().op_read(lhs,array);
 		}
 		public static QTextStream op_read(QTextStream lhs, string c) {
@@ -261,7 +261,7 @@ namespace Qt {
 		public static QTextStream op_write(QTextStream lhs, string s) {
 			return StaticQTextStream().op_write(lhs,s);
 		}
-		public static QTextStream op_write(QTextStream lhs, byte[] array) {
+		public static QTextStream op_write(QTextStream lhs, QByteArray array) {
 			return StaticQTextStream().op_write(lhs,array);
 		}
 		// QTextStream& operator<<(const void* arg1); >>>> NOT CONVERTED

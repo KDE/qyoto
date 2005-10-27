@@ -7,7 +7,7 @@ namespace Qt {
 
 	public interface IQUrl {
 			void SetUrl(string url);
-			void SetEncodedUrl(byte[] url);
+			void SetEncodedUrl(QByteArray url);
 			bool IsValid();
 			bool IsEmpty();
 			void Clear();
@@ -27,8 +27,8 @@ namespace Qt {
 			int Port();
 			void SetPath(string path);
 			string Path();
-			void SetEncodedQuery(byte[] query);
-			byte[] EncodedQuery();
+			void SetEncodedQuery(QByteArray query);
+			QByteArray EncodedQuery();
 			void SetQueryDelimiters(char valueDelimiter, char pairDelimiter);
 			char QueryValueDelimiter();
 			char QueryPairDelimiter();
@@ -48,8 +48,8 @@ namespace Qt {
 			string ToLocalFile();
 			string ToString(int options);
 			string ToString();
-			byte[] ToEncoded(int options);
-			byte[] ToEncoded();
+			QByteArray ToEncoded(int options);
+			QByteArray ToEncoded();
 			void Detach();
 			bool IsDetached();
 	}
@@ -63,13 +63,13 @@ namespace Qt {
 			bool op_lt(QUrl lhs, IQUrl url);
 			bool op_gt(QUrl lhs, IQUrl url);
 			IQUrl FromLocalFile(string localfile);
-			IQUrl FromEncoded(byte[] url);
-			string FromPercentEncoding(byte[] arg1);
-			byte[] ToPercentEncoding(string arg1, byte[] exclude, byte[] include);
-			byte[] ToPercentEncoding(string arg1, byte[] exclude);
-			byte[] ToPercentEncoding(string arg1);
-			string FromPunycode(byte[] arg1);
-			byte[] ToPunycode(string arg1);
+			IQUrl FromEncoded(QByteArray url);
+			string FromPercentEncoding(QByteArray arg1);
+			QByteArray ToPercentEncoding(string arg1, QByteArray exclude, QByteArray include);
+			QByteArray ToPercentEncoding(string arg1, QByteArray exclude);
+			QByteArray ToPercentEncoding(string arg1);
+			string FromPunycode(QByteArray arg1);
+			QByteArray ToPunycode(string arg1);
 		}
 
 		protected void CreateQUrlProxy() {
@@ -124,7 +124,7 @@ namespace Qt {
 		public void SetUrl(string url) {
 			ProxyQUrl().SetUrl(url);
 		}
-		public void SetEncodedUrl(byte[] url) {
+		public void SetEncodedUrl(QByteArray url) {
 			ProxyQUrl().SetEncodedUrl(url);
 		}
 		public bool IsValid() {
@@ -184,10 +184,10 @@ namespace Qt {
 		public string Path() {
 			return ProxyQUrl().Path();
 		}
-		public void SetEncodedQuery(byte[] query) {
+		public void SetEncodedQuery(QByteArray query) {
 			ProxyQUrl().SetEncodedQuery(query);
 		}
-		public byte[] EncodedQuery() {
+		public QByteArray EncodedQuery() {
 			return ProxyQUrl().EncodedQuery();
 		}
 		public void SetQueryDelimiters(char valueDelimiter, char pairDelimiter) {
@@ -247,10 +247,10 @@ namespace Qt {
 		public new string ToString() {
 			return ProxyQUrl().ToString();
 		}
-		public byte[] ToEncoded(int options) {
+		public QByteArray ToEncoded(int options) {
 			return ProxyQUrl().ToEncoded(options);
 		}
-		public byte[] ToEncoded() {
+		public QByteArray ToEncoded() {
 			return ProxyQUrl().ToEncoded();
 		}
 		public void Detach() {
@@ -268,25 +268,25 @@ namespace Qt {
 		public static IQUrl FromLocalFile(string localfile) {
 			return StaticQUrl().FromLocalFile(localfile);
 		}
-		public static IQUrl FromEncoded(byte[] url) {
+		public static IQUrl FromEncoded(QByteArray url) {
 			return StaticQUrl().FromEncoded(url);
 		}
-		public static string FromPercentEncoding(byte[] arg1) {
+		public static string FromPercentEncoding(QByteArray arg1) {
 			return StaticQUrl().FromPercentEncoding(arg1);
 		}
-		public static byte[] ToPercentEncoding(string arg1, byte[] exclude, byte[] include) {
+		public static QByteArray ToPercentEncoding(string arg1, QByteArray exclude, QByteArray include) {
 			return StaticQUrl().ToPercentEncoding(arg1,exclude,include);
 		}
-		public static byte[] ToPercentEncoding(string arg1, byte[] exclude) {
+		public static QByteArray ToPercentEncoding(string arg1, QByteArray exclude) {
 			return StaticQUrl().ToPercentEncoding(arg1,exclude);
 		}
-		public static byte[] ToPercentEncoding(string arg1) {
+		public static QByteArray ToPercentEncoding(string arg1) {
 			return StaticQUrl().ToPercentEncoding(arg1);
 		}
-		public static string FromPunycode(byte[] arg1) {
+		public static string FromPunycode(QByteArray arg1) {
 			return StaticQUrl().FromPunycode(arg1);
 		}
-		public static byte[] ToPunycode(string arg1) {
+		public static QByteArray ToPunycode(string arg1) {
 			return StaticQUrl().ToPunycode(arg1);
 		}
 		~QUrl() {

@@ -61,7 +61,7 @@ namespace Qt {
 		public int KeysToValue(string keys) {
 			return ProxyQMetaEnum().KeysToValue(keys);
 		}
-		public byte[] ValueToKeys(int value) {
+		public QByteArray ValueToKeys(int value) {
 			return ProxyQMetaEnum().ValueToKeys(value);
 		}
 		public bool IsValid() {

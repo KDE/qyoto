@@ -10,10 +10,9 @@ namespace Qt {
 		private IntPtr _smokeObject;
  		protected QTextCodec(Type dummy) {}
 		interface IQTextCodecProxy {
-			QTextCodec CodecForName(byte[] name);
+			QTextCodec CodecForName(QByteArray name);
 			QTextCodec CodecForName(string name);
 			QTextCodec CodecForMib(int mib);
-			byte[] AvailableCodecs();
 			QTextCodec CodecForLocale();
 			void SetCodecForLocale(QTextCodec c);
 			QTextCodec CodecForTr();
@@ -55,13 +54,13 @@ namespace Qt {
 		public bool CanEncode(string arg1) {
 			return ProxyQTextCodec().CanEncode(arg1);
 		}
-		public string ToUnicode(byte[] arg1) {
+		public string ToUnicode(QByteArray arg1) {
 			return ProxyQTextCodec().ToUnicode(arg1);
 		}
 		public string ToUnicode(string chars) {
 			return ProxyQTextCodec().ToUnicode(chars);
 		}
-		public byte[] FromUnicode(string uc) {
+		public QByteArray FromUnicode(string uc) {
 			return ProxyQTextCodec().FromUnicode(uc);
 		}
 		// QString toUnicode(const char* arg1,int arg2,QTextCodec::ConverterState* arg3); >>>> NOT CONVERTED
@@ -69,19 +68,17 @@ namespace Qt {
 			return ProxyQTextCodec().ToUnicode(arg1,length);
 		}
 		// QByteArray fromUnicode(const QChar* arg1,int arg2,QTextCodec::ConverterState* arg3); >>>> NOT CONVERTED
-		public byte[] FromUnicode(char arg1, int length) {
+		public QByteArray FromUnicode(char arg1, int length) {
 			return ProxyQTextCodec().FromUnicode(arg1,length);
 		}
-		public virtual byte[] Name() {
+		public virtual QByteArray Name() {
 			return ProxyQTextCodec().Name();
 		}
-		public virtual byte[] Aliases() {
-			return ProxyQTextCodec().Aliases();
-		}
+		// QList<QByteArray> aliases(); >>>> NOT CONVERTED
 		public virtual int MibEnum() {
 			return ProxyQTextCodec().MibEnum();
 		}
-		public static QTextCodec CodecForName(byte[] name) {
+		public static QTextCodec CodecForName(QByteArray name) {
 			return StaticQTextCodec().CodecForName(name);
 		}
 		public static QTextCodec CodecForName(string name) {
@@ -90,9 +87,7 @@ namespace Qt {
 		public static QTextCodec CodecForMib(int mib) {
 			return StaticQTextCodec().CodecForMib(mib);
 		}
-		public static byte[] AvailableCodecs() {
-			return StaticQTextCodec().AvailableCodecs();
-		}
+		// QList<QByteArray> availableCodecs(); >>>> NOT CONVERTED
 		// QList<int> availableMibs(); >>>> NOT CONVERTED
 		public static QTextCodec CodecForLocale() {
 			return StaticQTextCodec().CodecForLocale();

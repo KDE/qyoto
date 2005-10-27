@@ -123,10 +123,10 @@ namespace Qt {
 		public int Post(string path, IQIODevice data) {
 			return ProxyQHttp().Post(path,data);
 		}
-		public int Post(string path, byte[] data, IQIODevice to) {
+		public int Post(string path, QByteArray data, IQIODevice to) {
 			return ProxyQHttp().Post(path,data,to);
 		}
-		public int Post(string path, byte[] data) {
+		public int Post(string path, QByteArray data) {
 			return ProxyQHttp().Post(path,data);
 		}
 		public int Head(string path) {
@@ -141,10 +141,10 @@ namespace Qt {
 		public int Request(QHttpRequestHeader header) {
 			return ProxyQHttp().Request(header);
 		}
-		public int Request(QHttpRequestHeader header, byte[] data, IQIODevice to) {
+		public int Request(QHttpRequestHeader header, QByteArray data, IQIODevice to) {
 			return ProxyQHttp().Request(header,data,to);
 		}
-		public int Request(QHttpRequestHeader header, byte[] data) {
+		public int Request(QHttpRequestHeader header, QByteArray data) {
 			return ProxyQHttp().Request(header,data);
 		}
 		public int CloseConnection() {
@@ -155,7 +155,7 @@ namespace Qt {
 		}
 		// qint64 bytesAvailable(); >>>> NOT CONVERTED
 		// qint64 read(char* arg1,qint64 arg2); >>>> NOT CONVERTED
-		public byte[] ReadAll() {
+		public QByteArray ReadAll() {
 			return ProxyQHttp().ReadAll();
 		}
 		public int CurrentId() {

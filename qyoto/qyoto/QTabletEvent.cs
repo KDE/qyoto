@@ -60,8 +60,12 @@ namespace Qt {
 		public int GlobalY() {
 			return ProxyQTabletEvent().GlobalY();
 		}
-		// qreal hiResGlobalX(); >>>> NOT CONVERTED
-		// qreal hiResGlobalY(); >>>> NOT CONVERTED
+		public double HiResGlobalX() {
+			return ProxyQTabletEvent().HiResGlobalX();
+		}
+		public double HiResGlobalY() {
+			return ProxyQTabletEvent().HiResGlobalY();
+		}
 		public int Device() {
 			return ProxyQTabletEvent().Device();
 		}
@@ -69,12 +73,18 @@ namespace Qt {
 			return ProxyQTabletEvent().PointerType();
 		}
 		// qint64 uniqueId(); >>>> NOT CONVERTED
-		// qreal pressure(); >>>> NOT CONVERTED
+		public double Pressure() {
+			return ProxyQTabletEvent().Pressure();
+		}
 		public int Z() {
 			return ProxyQTabletEvent().Z();
 		}
-		// qreal tangentialPressure(); >>>> NOT CONVERTED
-		// qreal rotation(); >>>> NOT CONVERTED
+		public double TangentialPressure() {
+			return ProxyQTabletEvent().TangentialPressure();
+		}
+		public double Rotation() {
+			return ProxyQTabletEvent().Rotation();
+		}
 		public int XTilt() {
 			return ProxyQTabletEvent().XTilt();
 		}

@@ -31,7 +31,13 @@ namespace Qt {
 		private void NewQLinearGradient(QPointF start, QPointF finalStop) {
 			ProxyQLinearGradient().NewQLinearGradient(start,finalStop);
 		}
-		// QLinearGradient* QLinearGradient(qreal arg1,qreal arg2,qreal arg3,qreal arg4); >>>> NOT CONVERTED
+		public QLinearGradient(double xStart, double yStart, double xFinalStop, double yFinalStop) : this((Type) null) {
+			CreateQLinearGradientProxy();
+			NewQLinearGradient(xStart,yStart,xFinalStop,yFinalStop);
+		}
+		private void NewQLinearGradient(double xStart, double yStart, double xFinalStop, double yFinalStop) {
+			ProxyQLinearGradient().NewQLinearGradient(xStart,yStart,xFinalStop,yFinalStop);
+		}
 		public QPointF Start() {
 			return ProxyQLinearGradient().Start();
 		}

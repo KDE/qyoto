@@ -11,7 +11,7 @@ namespace Qt {
  		protected QMetaObject(Type dummy) {}
 		interface IQMetaObjectProxy {
 			bool CheckConnectArgs(string signal, string method);
-			byte[] NormalizedSignature(string method);
+			QByteArray NormalizedSignature(string method);
 			bool Connect(QObject sender, int signal_index, QObject receiver, int method_index, int type, out int types);
 			bool Connect(QObject sender, int signal_index, QObject receiver, int method_index, int type);
 			bool Connect(QObject sender, int signal_index, QObject receiver, int method_index);
@@ -161,7 +161,7 @@ namespace Qt {
 		public static bool CheckConnectArgs(string signal, string method) {
 			return StaticQMetaObject().CheckConnectArgs(signal,method);
 		}
-		public static byte[] NormalizedSignature(string method) {
+		public static QByteArray NormalizedSignature(string method) {
 			return StaticQMetaObject().NormalizedSignature(method);
 		}
 		public static bool Connect(QObject sender, int signal_index, QObject receiver, int method_index, int type, out int types) {

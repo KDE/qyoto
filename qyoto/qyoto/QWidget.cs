@@ -307,8 +307,12 @@ namespace Qt {
 		public string WindowRole() {
 			return ProxyQWidget().WindowRole();
 		}
-		// void setWindowOpacity(qreal arg1); >>>> NOT CONVERTED
-		// qreal windowOpacity(); >>>> NOT CONVERTED
+		public void SetWindowOpacity(double level) {
+			ProxyQWidget().SetWindowOpacity(level);
+		}
+		public double WindowOpacity() {
+			return ProxyQWidget().WindowOpacity();
+		}
 		public bool IsWindowModified() {
 			return ProxyQWidget().IsWindowModified();
 		}

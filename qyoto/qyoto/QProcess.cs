@@ -149,10 +149,10 @@ namespace Qt {
 		public bool WaitForFinished() {
 			return ProxyQProcess().WaitForFinished();
 		}
-		public byte[] ReadAllStandardOutput() {
+		public QByteArray ReadAllStandardOutput() {
 			return ProxyQProcess().ReadAllStandardOutput();
 		}
-		public byte[] ReadAllStandardError() {
+		public QByteArray ReadAllStandardError() {
 			return ProxyQProcess().ReadAllStandardError();
 		}
 		public int ExitCode() {

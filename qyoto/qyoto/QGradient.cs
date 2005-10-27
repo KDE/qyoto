@@ -51,7 +51,9 @@ namespace Qt {
 		public int Spread() {
 			return ProxyQGradient().Spread();
 		}
-		// void setColorAt(qreal arg1,const QColor& arg2); >>>> NOT CONVERTED
+		public void SetColorAt(double pos, QColor color) {
+			ProxyQGradient().SetColorAt(pos,color);
+		}
 		// void setStops(const QGradientStops& arg1); >>>> NOT CONVERTED
 		// QGradientStops stops(); >>>> NOT CONVERTED
 		public static bool operator==(QGradient lhs, QGradient gradient) {

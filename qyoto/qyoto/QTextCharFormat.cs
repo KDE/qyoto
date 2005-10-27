@@ -52,8 +52,12 @@ namespace Qt {
 		public string FontFamily() {
 			return ProxyQTextCharFormat().FontFamily();
 		}
-		// void setFontPointSize(qreal arg1); >>>> NOT CONVERTED
-		// qreal fontPointSize(); >>>> NOT CONVERTED
+		public void SetFontPointSize(double size) {
+			ProxyQTextCharFormat().SetFontPointSize(size);
+		}
+		public double FontPointSize() {
+			return ProxyQTextCharFormat().FontPointSize();
+		}
 		public void SetFontWeight(int weight) {
 			ProxyQTextCharFormat().SetFontWeight(weight);
 		}

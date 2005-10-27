@@ -38,7 +38,7 @@ namespace Qt {
 		public string ToUnicode(string chars, int len) {
 			return ProxyQTextDecoder().ToUnicode(chars,len);
 		}
-		public string ToUnicode(byte[] ba) {
+		public string ToUnicode(QByteArray ba) {
 			return ProxyQTextDecoder().ToUnicode(ba);
 		}
 		~QTextDecoder() {

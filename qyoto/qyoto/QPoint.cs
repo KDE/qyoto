@@ -9,6 +9,8 @@ namespace Qt {
 		private IntPtr _smokeObject;
  		protected QPoint(Type dummy) {}
 		interface IQPointProxy {
+			QPoint op_mult(QPoint lhs, double c);
+			QPoint op_div(QPoint lhs, double c);
 		}
 
 		protected void CreateQPointProxy() {
@@ -65,8 +67,12 @@ namespace Qt {
 		public int Ry() {
 			return ProxyQPoint().Ry();
 		}
-		// QPoint& operator*=(qreal arg1); >>>> NOT CONVERTED
-		// QPoint& operator/=(qreal arg1); >>>> NOT CONVERTED
+		public static QPoint operator*(QPoint lhs, double c) {
+			return StaticQPoint().op_mult(lhs,c);
+		}
+		public static QPoint operator/(QPoint lhs, double c) {
+			return StaticQPoint().op_div(lhs,c);
+		}
 		~QPoint() {
 			ProxyQPoint().Dispose();
 		}

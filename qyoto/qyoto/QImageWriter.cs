@@ -10,7 +10,6 @@ namespace Qt {
 		private IntPtr _smokeObject;
  		protected QImageWriter(Type dummy) {}
 		interface IQImageWriterProxy {
-			byte[] SupportedImageFormats();
 		}
 
 		protected void CreateQImageWriterProxy() {
@@ -41,18 +40,18 @@ namespace Qt {
 		private void NewQImageWriter() {
 			ProxyQImageWriter().NewQImageWriter();
 		}
-		public QImageWriter(IQIODevice device, byte[] format) : this((Type) null) {
+		public QImageWriter(IQIODevice device, QByteArray format) : this((Type) null) {
 			CreateQImageWriterProxy();
 			NewQImageWriter(device,format);
 		}
-		private void NewQImageWriter(IQIODevice device, byte[] format) {
+		private void NewQImageWriter(IQIODevice device, QByteArray format) {
 			ProxyQImageWriter().NewQImageWriter(device,format);
 		}
-		public QImageWriter(string fileName, byte[] format) : this((Type) null) {
+		public QImageWriter(string fileName, QByteArray format) : this((Type) null) {
 			CreateQImageWriterProxy();
 			NewQImageWriter(fileName,format);
 		}
-		private void NewQImageWriter(string fileName, byte[] format) {
+		private void NewQImageWriter(string fileName, QByteArray format) {
 			ProxyQImageWriter().NewQImageWriter(fileName,format);
 		}
 		public QImageWriter(string fileName) : this((Type) null) {
@@ -62,10 +61,10 @@ namespace Qt {
 		private void NewQImageWriter(string fileName) {
 			ProxyQImageWriter().NewQImageWriter(fileName);
 		}
-		public void SetFormat(byte[] format) {
+		public void SetFormat(QByteArray format) {
 			ProxyQImageWriter().SetFormat(format);
 		}
-		public byte[] Format() {
+		public QByteArray Format() {
 			return ProxyQImageWriter().Format();
 		}
 		public void SetDevice(IQIODevice device) {
@@ -110,9 +109,7 @@ namespace Qt {
 		public string ErrorString() {
 			return ProxyQImageWriter().ErrorString();
 		}
-		public static byte[] SupportedImageFormats() {
-			return StaticQImageWriter().SupportedImageFormats();
-		}
+		// QList<QByteArray> supportedImageFormats(); >>>> NOT CONVERTED
 		~QImageWriter() {
 			ProxyQImageWriter().Dispose();
 		}

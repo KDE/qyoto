@@ -78,7 +78,7 @@ namespace Qt {
 		}
 		// void setMetaInformation(QTextDocument::MetaInformation arg1,const QString& arg2); >>>> NOT CONVERTED
 		// QString metaInformation(QTextDocument::MetaInformation arg1); >>>> NOT CONVERTED
-		public string ToHtml(byte[] encoding) {
+		public string ToHtml(QByteArray encoding) {
 			return ProxyQTextDocument().ToHtml(encoding);
 		}
 		public string ToHtml() {

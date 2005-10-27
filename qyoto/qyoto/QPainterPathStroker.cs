@@ -34,8 +34,12 @@ namespace Qt {
 		private void NewQPainterPathStroker() {
 			ProxyQPainterPathStroker().NewQPainterPathStroker();
 		}
-		// void setWidth(qreal arg1); >>>> NOT CONVERTED
-		// qreal width(); >>>> NOT CONVERTED
+		public void SetWidth(double width) {
+			ProxyQPainterPathStroker().SetWidth(width);
+		}
+		public double Width() {
+			return ProxyQPainterPathStroker().Width();
+		}
 		public void SetCapStyle(int style) {
 			ProxyQPainterPathStroker().SetCapStyle(style);
 		}
@@ -48,10 +52,18 @@ namespace Qt {
 		public int JoinStyle() {
 			return ProxyQPainterPathStroker().JoinStyle();
 		}
-		// void setMiterLimit(qreal arg1); >>>> NOT CONVERTED
-		// qreal miterLimit(); >>>> NOT CONVERTED
-		// void setCurveThreshold(qreal arg1); >>>> NOT CONVERTED
-		// qreal curveThreshold(); >>>> NOT CONVERTED
+		public void SetMiterLimit(double length) {
+			ProxyQPainterPathStroker().SetMiterLimit(length);
+		}
+		public double MiterLimit() {
+			return ProxyQPainterPathStroker().MiterLimit();
+		}
+		public void SetCurveThreshold(double threshold) {
+			ProxyQPainterPathStroker().SetCurveThreshold(threshold);
+		}
+		public double CurveThreshold() {
+			return ProxyQPainterPathStroker().CurveThreshold();
+		}
 		public void SetDashPattern(int arg1) {
 			ProxyQPainterPathStroker().SetDashPattern(arg1);
 		}

@@ -82,8 +82,12 @@ namespace Qt {
 		public int Flags() {
 			return ProxyQTextOption().Flags();
 		}
-		// void setTabStop(qreal arg1); >>>> NOT CONVERTED
-		// qreal tabStop(); >>>> NOT CONVERTED
+		public void SetTabStop(double tabStop) {
+			ProxyQTextOption().SetTabStop(tabStop);
+		}
+		public double TabStop() {
+			return ProxyQTextOption().TabStop();
+		}
 		// void setTabArray(QList<qreal> arg1); >>>> NOT CONVERTED
 		// QList<qreal> tabArray(); >>>> NOT CONVERTED
 		public void SetUseDesignMetrics(bool b) {

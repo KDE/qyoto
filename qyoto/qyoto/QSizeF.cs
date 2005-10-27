@@ -9,6 +9,8 @@ namespace Qt {
 		private IntPtr _smokeObject;
  		protected QSizeF(Type dummy) {}
 		interface IQSizeFProxy {
+			QSizeF op_mult(QSizeF lhs, double c);
+			QSizeF op_div(QSizeF lhs, double c);
 		}
 
 		protected void CreateQSizeFProxy() {
@@ -41,7 +43,13 @@ namespace Qt {
 		private void NewQSizeF(QSize sz) {
 			ProxyQSizeF().NewQSizeF(sz);
 		}
-		// QSizeF* QSizeF(qreal arg1,qreal arg2); >>>> NOT CONVERTED
+		public QSizeF(double w, double h) : this((Type) null) {
+			CreateQSizeFProxy();
+			NewQSizeF(w,h);
+		}
+		private void NewQSizeF(double w, double h) {
+			ProxyQSizeF().NewQSizeF(w,h);
+		}
 		public bool IsNull() {
 			return ProxyQSizeF().IsNull();
 		}
@@ -51,14 +59,24 @@ namespace Qt {
 		public bool IsValid() {
 			return ProxyQSizeF().IsValid();
 		}
-		// qreal width(); >>>> NOT CONVERTED
-		// qreal height(); >>>> NOT CONVERTED
-		// void setWidth(qreal arg1); >>>> NOT CONVERTED
-		// void setHeight(qreal arg1); >>>> NOT CONVERTED
+		public double Width() {
+			return ProxyQSizeF().Width();
+		}
+		public double Height() {
+			return ProxyQSizeF().Height();
+		}
+		public void SetWidth(double w) {
+			ProxyQSizeF().SetWidth(w);
+		}
+		public void SetHeight(double h) {
+			ProxyQSizeF().SetHeight(h);
+		}
 		public void Transpose() {
 			ProxyQSizeF().Transpose();
 		}
-		// void scale(qreal arg1,qreal arg2,Qt::AspectRatioMode arg3); >>>> NOT CONVERTED
+		public void Scale(double w, double h, int mode) {
+			ProxyQSizeF().Scale(w,h,mode);
+		}
 		public void Scale(QSizeF s, int mode) {
 			ProxyQSizeF().Scale(s,mode);
 		}
@@ -70,8 +88,12 @@ namespace Qt {
 		}
 		// qreal& rwidth(); >>>> NOT CONVERTED
 		// qreal& rheight(); >>>> NOT CONVERTED
-		// QSizeF& operator*=(qreal arg1); >>>> NOT CONVERTED
-		// QSizeF& operator/=(qreal arg1); >>>> NOT CONVERTED
+		public static QSizeF operator*(QSizeF lhs, double c) {
+			return StaticQSizeF().op_mult(lhs,c);
+		}
+		public static QSizeF operator/(QSizeF lhs, double c) {
+			return StaticQSizeF().op_div(lhs,c);
+		}
 		public QSize ToSize() {
 			return ProxyQSizeF().ToSize();
 		}

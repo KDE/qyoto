@@ -108,16 +108,16 @@ namespace Qt {
 		public new int NodeType() {
 			return ProxyQDomDocument().NodeType();
 		}
-		public bool SetContent(byte[] text, bool namespaceProcessing, StringBuilder errorMsg, out int errorLine, out int errorColumn) {
+		public bool SetContent(QByteArray text, bool namespaceProcessing, StringBuilder errorMsg, out int errorLine, out int errorColumn) {
 			return ProxyQDomDocument().SetContent(text,namespaceProcessing,errorMsg,out errorLine,out errorColumn);
 		}
-		public bool SetContent(byte[] text, bool namespaceProcessing, StringBuilder errorMsg, out int errorLine) {
+		public bool SetContent(QByteArray text, bool namespaceProcessing, StringBuilder errorMsg, out int errorLine) {
 			return ProxyQDomDocument().SetContent(text,namespaceProcessing,errorMsg,out errorLine);
 		}
-		public bool SetContent(byte[] text, bool namespaceProcessing, StringBuilder errorMsg) {
+		public bool SetContent(QByteArray text, bool namespaceProcessing, StringBuilder errorMsg) {
 			return ProxyQDomDocument().SetContent(text,namespaceProcessing,errorMsg);
 		}
-		public bool SetContent(byte[] text, bool namespaceProcessing) {
+		public bool SetContent(QByteArray text, bool namespaceProcessing) {
 			return ProxyQDomDocument().SetContent(text,namespaceProcessing);
 		}
 		public bool SetContent(string text, bool namespaceProcessing, StringBuilder errorMsg, out int errorLine, out int errorColumn) {
@@ -144,16 +144,16 @@ namespace Qt {
 		public bool SetContent(IQIODevice dev, bool namespaceProcessing) {
 			return ProxyQDomDocument().SetContent(dev,namespaceProcessing);
 		}
-		public bool SetContent(byte[] text, StringBuilder errorMsg, out int errorLine, out int errorColumn) {
+		public bool SetContent(QByteArray text, StringBuilder errorMsg, out int errorLine, out int errorColumn) {
 			return ProxyQDomDocument().SetContent(text,errorMsg,out errorLine,out errorColumn);
 		}
-		public bool SetContent(byte[] text, StringBuilder errorMsg, out int errorLine) {
+		public bool SetContent(QByteArray text, StringBuilder errorMsg, out int errorLine) {
 			return ProxyQDomDocument().SetContent(text,errorMsg,out errorLine);
 		}
-		public bool SetContent(byte[] text, StringBuilder errorMsg) {
+		public bool SetContent(QByteArray text, StringBuilder errorMsg) {
 			return ProxyQDomDocument().SetContent(text,errorMsg);
 		}
-		public bool SetContent(byte[] text) {
+		public bool SetContent(QByteArray text) {
 			return ProxyQDomDocument().SetContent(text);
 		}
 		public bool SetContent(string text, StringBuilder errorMsg, out int errorLine, out int errorColumn) {
@@ -198,10 +198,10 @@ namespace Qt {
 		public new string ToString() {
 			return ProxyQDomDocument().ToString();
 		}
-		public byte[] ToByteArray(int arg1) {
+		public QByteArray ToByteArray(int arg1) {
 			return ProxyQDomDocument().ToByteArray(arg1);
 		}
-		public byte[] ToByteArray() {
+		public QByteArray ToByteArray() {
 			return ProxyQDomDocument().ToByteArray();
 		}
 		~QDomDocument() {

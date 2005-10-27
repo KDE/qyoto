@@ -36,7 +36,13 @@ namespace Qt {
 		private void NewQMatrix() {
 			ProxyQMatrix().NewQMatrix();
 		}
-		// QMatrix* QMatrix(qreal arg1,qreal arg2,qreal arg3,qreal arg4,qreal arg5,qreal arg6); >>>> NOT CONVERTED
+		public QMatrix(double m11, double m12, double m21, double m22, double dx, double dy) : this((Type) null) {
+			CreateQMatrixProxy();
+			NewQMatrix(m11,m12,m21,m22,dx,dy);
+		}
+		private void NewQMatrix(double m11, double m12, double m21, double m22, double dx, double dy) {
+			ProxyQMatrix().NewQMatrix(m11,m12,m21,m22,dx,dy);
+		}
 		public QMatrix(QMatrix matrix) : this((Type) null) {
 			CreateQMatrixProxy();
 			NewQMatrix(matrix);
@@ -44,13 +50,27 @@ namespace Qt {
 		private void NewQMatrix(QMatrix matrix) {
 			ProxyQMatrix().NewQMatrix(matrix);
 		}
-		// void setMatrix(qreal arg1,qreal arg2,qreal arg3,qreal arg4,qreal arg5,qreal arg6); >>>> NOT CONVERTED
-		// qreal m11(); >>>> NOT CONVERTED
-		// qreal m12(); >>>> NOT CONVERTED
-		// qreal m21(); >>>> NOT CONVERTED
-		// qreal m22(); >>>> NOT CONVERTED
-		// qreal dx(); >>>> NOT CONVERTED
-		// qreal dy(); >>>> NOT CONVERTED
+		public void SetMatrix(double m11, double m12, double m21, double m22, double dx, double dy) {
+			ProxyQMatrix().SetMatrix(m11,m12,m21,m22,dx,dy);
+		}
+		public double M11() {
+			return ProxyQMatrix().M11();
+		}
+		public double M12() {
+			return ProxyQMatrix().M12();
+		}
+		public double M21() {
+			return ProxyQMatrix().M21();
+		}
+		public double M22() {
+			return ProxyQMatrix().M22();
+		}
+		public double Dx() {
+			return ProxyQMatrix().Dx();
+		}
+		public double Dy() {
+			return ProxyQMatrix().Dy();
+		}
 		public void Map(int x, int y, out int tx, out int ty) {
 			ProxyQMatrix().Map(x,y,out tx,out ty);
 		}
@@ -94,14 +114,24 @@ namespace Qt {
 		public bool IsIdentity() {
 			return ProxyQMatrix().IsIdentity();
 		}
-		// QMatrix& translate(qreal arg1,qreal arg2); >>>> NOT CONVERTED
-		// QMatrix& scale(qreal arg1,qreal arg2); >>>> NOT CONVERTED
-		// QMatrix& shear(qreal arg1,qreal arg2); >>>> NOT CONVERTED
-		// QMatrix& rotate(qreal arg1); >>>> NOT CONVERTED
+		public QMatrix Translate(double dx, double dy) {
+			return ProxyQMatrix().Translate(dx,dy);
+		}
+		public QMatrix Scale(double sx, double sy) {
+			return ProxyQMatrix().Scale(sx,sy);
+		}
+		public QMatrix Shear(double sh, double sv) {
+			return ProxyQMatrix().Shear(sh,sv);
+		}
+		public QMatrix Rotate(double a) {
+			return ProxyQMatrix().Rotate(a);
+		}
 		public bool IsInvertible() {
 			return ProxyQMatrix().IsInvertible();
 		}
-		// qreal det(); >>>> NOT CONVERTED
+		public double Det() {
+			return ProxyQMatrix().Det();
+		}
 		public QMatrix Inverted(out bool invertible) {
 			return ProxyQMatrix().Inverted(out invertible);
 		}

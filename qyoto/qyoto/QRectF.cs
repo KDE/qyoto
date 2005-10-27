@@ -43,7 +43,13 @@ namespace Qt {
 		private void NewQRectF(QPointF topleft, QSizeF size) {
 			ProxyQRectF().NewQRectF(topleft,size);
 		}
-		// QRectF* QRectF(qreal arg1,qreal arg2,qreal arg3,qreal arg4); >>>> NOT CONVERTED
+		public QRectF(double left, double top, double width, double height) : this((Type) null) {
+			CreateQRectFProxy();
+			NewQRectF(left,top,width,height);
+		}
+		private void NewQRectF(double left, double top, double width, double height) {
+			ProxyQRectF().NewQRectF(left,top,width,height);
+		}
 		public QRectF(QRect rect) : this((Type) null) {
 			CreateQRectFProxy();
 			NewQRectF(rect);
@@ -63,16 +69,36 @@ namespace Qt {
 		public QRectF Normalized() {
 			return ProxyQRectF().Normalized();
 		}
-		// qreal left(); >>>> NOT CONVERTED
-		// qreal top(); >>>> NOT CONVERTED
-		// qreal right(); >>>> NOT CONVERTED
-		// qreal bottom(); >>>> NOT CONVERTED
-		// qreal x(); >>>> NOT CONVERTED
-		// qreal y(); >>>> NOT CONVERTED
-		// void setLeft(qreal arg1); >>>> NOT CONVERTED
-		// void setTop(qreal arg1); >>>> NOT CONVERTED
-		// void setRight(qreal arg1); >>>> NOT CONVERTED
-		// void setBottom(qreal arg1); >>>> NOT CONVERTED
+		public double Left() {
+			return ProxyQRectF().Left();
+		}
+		public double Top() {
+			return ProxyQRectF().Top();
+		}
+		public double Right() {
+			return ProxyQRectF().Right();
+		}
+		public double Bottom() {
+			return ProxyQRectF().Bottom();
+		}
+		public double X() {
+			return ProxyQRectF().X();
+		}
+		public double Y() {
+			return ProxyQRectF().Y();
+		}
+		public void SetLeft(double pos) {
+			ProxyQRectF().SetLeft(pos);
+		}
+		public void SetTop(double pos) {
+			ProxyQRectF().SetTop(pos);
+		}
+		public void SetRight(double pos) {
+			ProxyQRectF().SetRight(pos);
+		}
+		public void SetBottom(double pos) {
+			ProxyQRectF().SetBottom(pos);
+		}
 		public QPointF TopLeft() {
 			return ProxyQRectF().TopLeft();
 		}
@@ -100,10 +126,18 @@ namespace Qt {
 		public void SetBottomLeft(QPointF p) {
 			ProxyQRectF().SetBottomLeft(p);
 		}
-		// void moveLeft(qreal arg1); >>>> NOT CONVERTED
-		// void moveTop(qreal arg1); >>>> NOT CONVERTED
-		// void moveRight(qreal arg1); >>>> NOT CONVERTED
-		// void moveBottom(qreal arg1); >>>> NOT CONVERTED
+		public void MoveLeft(double pos) {
+			ProxyQRectF().MoveLeft(pos);
+		}
+		public void MoveTop(double pos) {
+			ProxyQRectF().MoveTop(pos);
+		}
+		public void MoveRight(double pos) {
+			ProxyQRectF().MoveRight(pos);
+		}
+		public void MoveBottom(double pos) {
+			ProxyQRectF().MoveBottom(pos);
+		}
 		public void MoveTopLeft(QPointF p) {
 			ProxyQRectF().MoveTopLeft(p);
 		}
@@ -119,31 +153,53 @@ namespace Qt {
 		public void MoveCenter(QPointF p) {
 			ProxyQRectF().MoveCenter(p);
 		}
-		// void translate(qreal arg1,qreal arg2); >>>> NOT CONVERTED
+		public void Translate(double dx, double dy) {
+			ProxyQRectF().Translate(dx,dy);
+		}
 		public void Translate(QPointF p) {
 			ProxyQRectF().Translate(p);
 		}
-		// QRectF translated(qreal arg1,qreal arg2); >>>> NOT CONVERTED
+		public QRectF Translated(double dx, double dy) {
+			return ProxyQRectF().Translated(dx,dy);
+		}
 		public QRectF Translated(QPointF p) {
 			return ProxyQRectF().Translated(p);
 		}
-		// void moveTo(qreal arg1,qreal arg2); >>>> NOT CONVERTED
+		public void MoveTo(double x, double t) {
+			ProxyQRectF().MoveTo(x,t);
+		}
 		public void MoveTo(QPointF p) {
 			ProxyQRectF().MoveTo(p);
 		}
-		// void setRect(qreal arg1,qreal arg2,qreal arg3,qreal arg4); >>>> NOT CONVERTED
+		public void SetRect(double x, double y, double w, double h) {
+			ProxyQRectF().SetRect(x,y,w,h);
+		}
 		// void getRect(qreal* arg1,qreal* arg2,qreal* arg3,qreal* arg4); >>>> NOT CONVERTED
-		// void setCoords(qreal arg1,qreal arg2,qreal arg3,qreal arg4); >>>> NOT CONVERTED
+		public void SetCoords(double x1, double y1, double x2, double y2) {
+			ProxyQRectF().SetCoords(x1,y1,x2,y2);
+		}
 		// void getCoords(qreal* arg1,qreal* arg2,qreal* arg3,qreal* arg4); >>>> NOT CONVERTED
-		// void adjust(qreal arg1,qreal arg2,qreal arg3,qreal arg4); >>>> NOT CONVERTED
-		// QRectF adjusted(qreal arg1,qreal arg2,qreal arg3,qreal arg4); >>>> NOT CONVERTED
+		public void Adjust(double x1, double y1, double x2, double y2) {
+			ProxyQRectF().Adjust(x1,y1,x2,y2);
+		}
+		public QRectF Adjusted(double x1, double y1, double x2, double y2) {
+			return ProxyQRectF().Adjusted(x1,y1,x2,y2);
+		}
 		public QSizeF Size() {
 			return ProxyQRectF().Size();
 		}
-		// qreal width(); >>>> NOT CONVERTED
-		// qreal height(); >>>> NOT CONVERTED
-		// void setWidth(qreal arg1); >>>> NOT CONVERTED
-		// void setHeight(qreal arg1); >>>> NOT CONVERTED
+		public double Width() {
+			return ProxyQRectF().Width();
+		}
+		public double Height() {
+			return ProxyQRectF().Height();
+		}
+		public void SetWidth(double w) {
+			ProxyQRectF().SetWidth(w);
+		}
+		public void SetHeight(double h) {
+			ProxyQRectF().SetHeight(h);
+		}
 		public void SetSize(QSizeF s) {
 			ProxyQRectF().SetSize(s);
 		}
@@ -156,7 +212,9 @@ namespace Qt {
 		public bool Contains(QPointF p) {
 			return ProxyQRectF().Contains(p);
 		}
-		// bool contains(qreal arg1,qreal arg2); >>>> NOT CONVERTED
+		public bool Contains(double x, double y) {
+			return ProxyQRectF().Contains(x,y);
+		}
 		public bool Contains(QRectF r) {
 			return ProxyQRectF().Contains(r);
 		}

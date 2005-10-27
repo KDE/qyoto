@@ -17,8 +17,8 @@ namespace Qt {
 			void Close();
 			bool AtEnd();
 			bool Reset();
-			byte[] ReadAll();
-			byte[] ReadLine();
+			QByteArray ReadAll();
+			QByteArray ReadLine();
 			bool CanReadLine();
 			bool WaitForReadyRead(int msecs);
 			bool WaitForBytesWritten(int msecs);
@@ -107,12 +107,12 @@ namespace Qt {
 		// qint64 bytesToWrite(); >>>> NOT CONVERTED
 		// qint64 read(char* arg1,qint64 arg2); >>>> NOT CONVERTED
 		// QByteArray read(qint64 arg1); >>>> NOT CONVERTED
-		public byte[] ReadAll() {
+		public QByteArray ReadAll() {
 			return ProxyQIODevice().ReadAll();
 		}
 		// qint64 readLine(char* arg1,qint64 arg2); >>>> NOT CONVERTED
 		// QByteArray readLine(qint64 arg1); >>>> NOT CONVERTED
-		public byte[] ReadLine() {
+		public QByteArray ReadLine() {
 			return ProxyQIODevice().ReadLine();
 		}
 		public virtual bool CanReadLine() {

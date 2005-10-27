@@ -47,7 +47,13 @@ namespace Qt {
 		private void NewQLineF(QPointF pt1, QPointF pt2) {
 			ProxyQLineF().NewQLineF(pt1,pt2);
 		}
-		// QLineF* QLineF(qreal arg1,qreal arg2,qreal arg3,qreal arg4); >>>> NOT CONVERTED
+		public QLineF(double x1, double y1, double x2, double y2) : this((Type) null) {
+			CreateQLineFProxy();
+			NewQLineF(x1,y1,x2,y2);
+		}
+		private void NewQLineF(double x1, double y1, double x2, double y2) {
+			ProxyQLineF().NewQLineF(x1,y1,x2,y2);
+		}
 		public QLineF(QLine line) : this((Type) null) {
 			CreateQLineFProxy();
 			NewQLineF(line);
@@ -64,14 +70,30 @@ namespace Qt {
 		public QPointF P2() {
 			return ProxyQLineF().P2();
 		}
-		// qreal x1(); >>>> NOT CONVERTED
-		// qreal y1(); >>>> NOT CONVERTED
-		// qreal x2(); >>>> NOT CONVERTED
-		// qreal y2(); >>>> NOT CONVERTED
-		// qreal dx(); >>>> NOT CONVERTED
-		// qreal dy(); >>>> NOT CONVERTED
-		// qreal length(); >>>> NOT CONVERTED
-		// void setLength(qreal arg1); >>>> NOT CONVERTED
+		public double X1() {
+			return ProxyQLineF().X1();
+		}
+		public double Y1() {
+			return ProxyQLineF().Y1();
+		}
+		public double X2() {
+			return ProxyQLineF().X2();
+		}
+		public double Y2() {
+			return ProxyQLineF().Y2();
+		}
+		public double Dx() {
+			return ProxyQLineF().Dx();
+		}
+		public double Dy() {
+			return ProxyQLineF().Dy();
+		}
+		public double Length() {
+			return ProxyQLineF().Length();
+		}
+		public void SetLength(double len) {
+			ProxyQLineF().SetLength(len);
+		}
 		public QLineF UnitVector() {
 			return ProxyQLineF().UnitVector();
 		}
@@ -81,12 +103,18 @@ namespace Qt {
 		public int Intersect(QLineF l, QPointF intersectionPoint) {
 			return ProxyQLineF().Intersect(l,intersectionPoint);
 		}
-		// qreal angle(const QLineF& arg1); >>>> NOT CONVERTED
-		// QPointF pointAt(qreal arg1); >>>> NOT CONVERTED
+		public double Angle(QLineF l) {
+			return ProxyQLineF().Angle(l);
+		}
+		public QPointF PointAt(double t) {
+			return ProxyQLineF().PointAt(t);
+		}
 		public void Translate(QPointF p) {
 			ProxyQLineF().Translate(p);
 		}
-		// void translate(qreal arg1,qreal arg2); >>>> NOT CONVERTED
+		public void Translate(double dx, double dy) {
+			ProxyQLineF().Translate(dx,dy);
+		}
 		public static bool operator==(QLineF lhs, QLineF d) {
 			return StaticQLineF().op_equals(lhs,d);
 		}

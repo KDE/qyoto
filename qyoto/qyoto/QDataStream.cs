@@ -72,18 +72,18 @@ namespace Qt {
 		private void NewQDataStream(IQIODevice arg1) {
 			ProxyQDataStream().NewQDataStream(arg1);
 		}
-		public QDataStream(byte[] arg1, int flags) : this((Type) null) {
+		public QDataStream(QByteArray arg1, int flags) : this((Type) null) {
 			CreateQDataStreamProxy();
 			NewQDataStream(arg1,flags);
 		}
-		private void NewQDataStream(byte[] arg1, int flags) {
+		private void NewQDataStream(QByteArray arg1, int flags) {
 			ProxyQDataStream().NewQDataStream(arg1,flags);
 		}
-		public QDataStream(byte[] arg1) : this((Type) null) {
+		public QDataStream(QByteArray arg1) : this((Type) null) {
 			CreateQDataStreamProxy();
 			NewQDataStream(arg1);
 		}
-		private void NewQDataStream(byte[] arg1) {
+		private void NewQDataStream(QByteArray arg1) {
 			ProxyQDataStream().NewQDataStream(arg1);
 		}
 		public IQIODevice Device() {
