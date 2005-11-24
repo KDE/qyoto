@@ -11,6 +11,12 @@ libqyoto.so:	qyoto.cpp handlers.cpp
 	-I/opt/kde4/include/QtGui \
 	-L/opt/kde4/lib -lQtCore -lQtGui -lsmokeqt qyoto.cpp handlers.cpp
 
+libqt3qyoto.so:	qt3qyoto.cpp qt3handlers.cpp
+	gcc -shared -o libqyoto.so \
+	-I/home/duke/src/kde/kde/branches/KDE/3.5/kdebindings/smoke \
+	-I/opt/kde3/include \
+	-L/opt/kde3/lib -lqt-mt -lsmokeqt qt3qyoto.cpp qt3handlers.cpp
+
 tryit:	qyoto.cpp handlers.cpp
 	gcc -shared -o tryit -I/home/duke/src/kde/kde/trunk/kdebindings/smoke -I/opt/kde4/include \
 	-L/opt/kde4/lib -lqt-mt -lsmokeqt qyoto.cpp handlers.cpp main.cpp
