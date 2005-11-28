@@ -349,7 +349,7 @@ extern "C" {
 int 
 FindMethodId(char * classname, char * methodname) 
 {
-    Smoke::Index meth = qt_Smoke->findMethod(classname, methodname);
+	Smoke::Index meth = qt_Smoke->findMethod(classname, methodname);
 	printf("\t\tIn FindMethodId %s::%s => %d\n", classname, methodname, meth);
 	return meth;
 }
@@ -431,9 +431,9 @@ CallMethod(int methodId, GCHandle obj, Smoke::StackItem * sp, int items)
 void
 Init_qyoto()
 {
-    init_qt_Smoke();
+	init_qt_Smoke();
 	qt_Smoke->binding = new QyotoSmokeBinding(qt_Smoke);
-    install_handlers(Qt_handlers);
+	install_handlers(Qt_handlers);
 }
 
 }

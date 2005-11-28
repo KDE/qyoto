@@ -134,7 +134,10 @@ namespace Qt {
 			NewQApplication(argv);
 		}
 		private void NewQApplication(string[] argv) {
-			ProxyQApplication().NewQApplication(argv);
+			ProxyQApplication().NewQApplication(argv.Length, argv);
+		}
+		private void NewQApplication(int argc, string[] argv) {
+			ProxyQApplication().NewQApplication(argc, argv);
 		}
 		public QApplication(string[] argv, bool GUIenabled) : this((Type) null) {
 			CreateQApplicationProxy();

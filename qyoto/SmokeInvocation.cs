@@ -65,6 +65,9 @@ namespace Qt {
 		delegate void RemoveIntPtr(IntPtr ptr);
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		static extern IntPtr StringArrayToCharStarStar(string[] strArray);
+
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern void AddGetSmokeObject(GetIntPtr callback);
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
@@ -155,6 +158,7 @@ namespace Qt {
 		public ArrayList FindMethod(string name) {
 			ArrayList result = new ArrayList();
 			
+			Console.WriteLine("FindMethod() className: {0} MethodName: {1}", _className, name);
 			int meth = FindMethodId(_className, name);
 			if (meth == 0) {
 				meth = FindMethodId("QGlobalSpace", name);
@@ -164,6 +168,7 @@ namespace Qt {
 				return result;
 			} else if (meth > 0) {
 				int i = MethodFromMap(meth);
+				Console.WriteLine("FindMethod() MethodName: {0} result: {1}", name, i);
 				if (i == 0) {		// shouldn't happen
 					;
 				} else if (i > 0) {	// single match
@@ -239,6 +244,10 @@ namespace Qt {
 						stack[i+1].s_float = (float) callMessage.Args[i];
 					} else if (types[i] == typeof(double)) {
 						stack[i+1].s_double = (double) callMessage.Args[i];
+					} else if (types[i] == typeof(string[])) {
+						unsafe {
+							stack[i+1].s_voidp = (void *) StringArrayToCharStarStar((string[]) callMessage.Args[i]);
+						}
 					}
 					Console.WriteLine(	"\tArgName: {0} Arg: {1} Type: {2}", 
 										callMessage.GetArgName(i),

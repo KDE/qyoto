@@ -218,6 +218,16 @@ construct_copy(smokeqyoto_object *o)
     return args[0].s_voidp;
 }
 
+extern "C" {
+
+void *
+StringArrayToCharStarStar(char ** strArray)
+{
+	return (void *) strArray;
+}
+
+}
+
 void
 marshall_basetype(Marshall *m)
 {
