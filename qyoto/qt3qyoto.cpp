@@ -55,10 +55,6 @@ int do_debug = qtdb_gc;
 int do_debug = qtdb_none;
 #endif
 
-typedef void* (*GetIntPtr)(GCHandle);
-typedef void (*SetIntPtr)(GCHandle, void *);
-typedef void (*RemoveIntPtr)(void *);
-
 static GetIntPtr GetSmokeObject;
 static SetIntPtr SetSmokeObject;
 
@@ -70,16 +66,16 @@ static GetIntPtr GetPointerObject;
 QIntDict<char> classname(2179);
 
 extern "C" {
-extern GCHandle set_obj_info(const char * className, smokeqyoto_object * o);
+extern void * set_obj_info(const char * className, smokeqyoto_object * o);
 };
 
 extern bool isDerivedFromByName(Smoke *smoke, const char *className, const char *baseClassName);
-extern void mapPointer(GCHandle obj, smokeqyoto_object *o, Smoke::Index classId, void *lastptr);
+extern void mapPointer(void * obj, smokeqyoto_object *o, Smoke::Index classId, void *lastptr);
 
 extern TypeHandler Qt_handlers[];
 void install_handlers(TypeHandler *);
 
-smokeqyoto_object *value_obj_info(GCHandle qyoto_value) {  // ptr on success, null on fail
+smokeqyoto_object *value_obj_info(void * qyoto_value) {  // ptr on success, null on fail
     smokeqyoto_object * o = (smokeqyoto_object*) (*GetSmokeObject)(qyoto_value);
     return o;
 }
@@ -104,7 +100,7 @@ bool isDerivedFromByName(Smoke *smoke, const char *className, const char *baseCl
     return isDerivedFrom(smoke, idClass, idBase);
 }
 
-GCHandle getPointerObject(void *ptr) {
+void * getPointerObject(void *ptr) {
 	return (*GetPointerObject)(ptr);
 }
 
@@ -113,7 +109,7 @@ void unmapPointer(smokeqyoto_object *o, Smoke::Index classId, void *lastptr) {
     if(ptr != lastptr) {
 	lastptr = ptr;
 	if (getPointerObject(ptr) != 0) {
-		GCHandle obj_ptr = getPointerObject(ptr);
+		void * obj_ptr = getPointerObject(ptr);
 		
 		if (do_debug & qtdb_gc) {
 			const char *className = o->smoke->classes[o->classId].className;
@@ -133,7 +129,7 @@ void unmapPointer(smokeqyoto_object *o, Smoke::Index classId, void *lastptr) {
 // Store pointer in a Hashtable : "pointer_to_Qt_object" => weak ref to associated C# object
 // Recurse to store it also as casted to its parent classes.
 
-void mapPointer(GCHandle obj, smokeqyoto_object *o, Smoke::Index classId, void *lastptr) {
+void mapPointer(void * obj, smokeqyoto_object *o, Smoke::Index classId, void *lastptr) {
     void *ptr = o->smoke->cast(o->ptr, o->classId, classId);
 	
     if (ptr != lastptr) {
@@ -154,7 +150,7 @@ void mapPointer(GCHandle obj, smokeqyoto_object *o, Smoke::Index classId, void *
 	return;
 }
 
-GCHandle
+void *
 set_obj_info(const char * className, smokeqyoto_object * o)
 {
 //    VALUE klass = rb_funcall(qt_internal_module,
@@ -173,10 +169,11 @@ class MethodReturnValue : public Marshall {
     Smoke::StackItem & _retval;
     Smoke::Stack _stack;
 public:
-    MethodReturnValue(Smoke *smoke, Smoke::Index method, Smoke::Stack stack, Smoke::StackItem & retval) :
-    _smoke(smoke), _method(method), _retval(retval), _stack(stack) {
-	Marshall::HandlerFn fn = getMarshallFn(type());
-	(*fn)(this);
+	MethodReturnValue(Smoke *smoke, Smoke::Index method, Smoke::Stack stack, Smoke::StackItem & retval) :
+		_smoke(smoke), _method(method), _retval(retval), _stack(stack) {
+		Marshall::HandlerFn fn = getMarshallFn(type());
+printf("In MethodReturnValue(), about to call return value marshaller\n");
+		(*fn)(this);
     }
 
     const Smoke::Method &method() { return _smoke->methods[_method]; }
@@ -203,15 +200,15 @@ class MethodCall : public Marshall {
     Smoke::Stack _stack;
     Smoke::Index _method;
     Smoke::Index *_args;
-	GCHandle _target;
-	GCHandle _current_object;
+	void * _target;
+	void * _current_object;
 	Smoke::Index _current_object_class;
     Smoke::Stack _sp;
     int _items;
     Smoke::StackItem _retval;
     bool _called;
 public:
-    MethodCall(Smoke *smoke, Smoke::Index method, GCHandle target, Smoke::Stack sp, int items) :
+    MethodCall(Smoke *smoke, Smoke::Index method, void * target, Smoke::Stack sp, int items) :
 	_cur(-1), _smoke(smoke), _method(method), _target(target), _current_object(0), _sp(sp), _items(items), _called(false)
     {
 	if (_target != 0) {
@@ -219,6 +216,7 @@ public:
 		if (o && o->ptr) {
 		    _current_object = o->ptr;
 		    _current_object_class = o->classId;
+			printf("o->ptr: %p o->classId: %d\n", o->ptr, o->classId);
 		}
 	}
 	
@@ -269,14 +267,16 @@ public:
     	return _smoke;
     }
 
-    inline void callMethod() {
-	if(_called) return;
-	_called = true;
-	Smoke::ClassFn fn = _smoke->classes[method().classId].classFn;
-	void *ptr = _smoke->cast(_current_object, _current_object_class, method().classId);
-	_items = -1;
-	(*fn)(method().method, ptr, _stack);
-	MethodReturnValue r(_smoke, _method, _stack, _retval);
+	inline void callMethod() {
+		if (_called) return;
+		_called = true;
+		Smoke::ClassFn fn = _smoke->classes[method().classId].classFn;
+		void *ptr = _smoke->cast(_current_object, _current_object_class, method().classId);
+		_items = -1;
+		printf("In callMethod() fn: %p method().method: %d ptr: %p _stack[1]: %d\n", fn, method().method, ptr, _stack[1]);
+		(*fn)(method().method, ptr, _stack);
+		printf("In callMethod() _stack[0]: %p\n",  _stack[0]);
+		MethodReturnValue r(_smoke, _method, _stack, _retval);
     }
 
     void next() {
@@ -302,7 +302,7 @@ public:
     QyotoSmokeBinding(Smoke *s) : SmokeBinding(s) {}
 
     void deleted(Smoke::Index classId, void *ptr) {
-	GCHandle obj = getPointerObject(ptr);
+	void * obj = getPointerObject(ptr);
 	smokeqyoto_object *o = value_obj_info(obj);
 	if(do_debug & qtdb_gc) {
 	    printf("%p->~%s()", ptr, smoke->className(classId));
@@ -315,7 +315,7 @@ public:
     }
 
     bool callMethod(Smoke::Index method, void *ptr, Smoke::Stack args, bool /*isAbstract*/) {
-	GCHandle obj = getPointerObject(ptr);
+	void * obj = getPointerObject(ptr);
 	smokeqyoto_object *o = value_obj_info(obj);
 	if(do_debug & qtdb_virtual) 
 	    printf("virtual %p->%s::%s() called", ptr,
@@ -407,13 +407,13 @@ void AddGetPointerObject(GetIntPtr callback)
 }
 
 void
-CallMethod(int methodId, GCHandle obj, Smoke::StackItem * sp, int items)
+CallMethod(int methodId, void * obj, Smoke::StackItem * sp, int items)
 {
 	printf("In CallMethod methodId: %d target: 0x%8.8x items: %d\n", methodId, obj, items);
 	printf("In CallMethod %d\n", sp[1].s_int);
-	
+/*
 	smokeqyoto_object  * o = (smokeqyoto_object *) malloc(sizeof(smokeqyoto_object));
-	o->smoke = 0;
+	o->smoke = qt_Smoke;
 	o->classId = 123;
 	o->ptr = 0;
 	o->allocated = false;
@@ -423,8 +423,11 @@ CallMethod(int methodId, GCHandle obj, Smoke::StackItem * sp, int items)
 	if (optr != 0) {
 		printf("In CallMethod classId: %d\n", optr->classId);
 	}
+*/
+	MethodCall c(qt_Smoke, methodId, obj, sp, items);
+	c.next();
 	
-	sp[0].s_int = 999;
+//	sp[0].s_int = 999;
 	return;
 }
 

@@ -24,12 +24,22 @@
 #include "qyoto.h"
 #include "smokeqyoto.h"
 
+
 extern "C" {
-extern GCHandle set_obj_info(const char * className, smokeqyoto_object * o);
+static GetIntPtr IntPtrToCharStarStar;
+
+void AddIntPtrToCharStarStar(GetIntPtr callback)
+{
+	printf("In AddIntPtrToCharStarStar 0x%8.8x\n", callback);
+	IntPtrToCharStarStar = callback;
+}
+
+extern void * set_obj_info(const char * className, smokeqyoto_object * o);
+//extern void * IntPtrToCharStarStar(void * item);
 };
 
 extern bool isDerivedFromByName(Smoke *smoke, const char *className, const char *baseClassName);
-extern void mapPointer(GCHandle obj, smokeqyoto_object *o, Smoke::Index classId, void *lastptr);
+extern void mapPointer(void * obj, smokeqyoto_object *o, Smoke::Index classId, void *lastptr);
 
 /*
  * Given an approximate classname and a qt instance, try to improve the resolution of the name
@@ -95,6 +105,8 @@ resolve_classname(Smoke* smoke, int classId, void * ptr)
 			break;
 		}
 	} else if (isDerivedFromByName(smoke, smoke->classes[classId].className, "QObject")) {
+		return smoke->binding->className(classId);
+
 		QObject * qobject = (QObject *) smoke->cast(ptr, classId, smoke->idClass("QObject"));
 		QMetaObject * meta = qobject->metaObject();
 
@@ -221,9 +233,15 @@ construct_copy(smokeqyoto_object *o)
 extern "C" {
 
 void *
-StringArrayToCharStarStar(char ** strArray)
+StringArrayToCharStarStar(int length, char ** strArray)
 {
-	return (void *) strArray;
+	printf("strArray[0]: %s\n", strArray[0]);
+	char ** result = (char **) calloc(length, sizeof(char *));
+	int i;
+	for (i = 0; i < length; i++) {
+		result[i] = strdup(strArray[i]);
+	}
+	return (void *) result;
 }
 
 }
@@ -418,14 +436,14 @@ marshall_basetype(Marshall *m)
 	  case Marshall::ToObject:
 	    {
 		if(m->item().s_voidp == 0) {
-                    m->var().s_voidp = 0;
+			m->var().s_voidp = 0;
 		    break;
 		}
 
 		void *p = m->item().s_voidp;
-		GCHandle obj = getPointerObject(p);
-		if(obj != 0) {
-                    m->var().s_voidp = obj;
+		void * obj = getPointerObject(p);
+		if (obj != 0) {
+			m->var().s_voidp = obj;
 		    break;
 		}
 		smokeqyoto_object  * o = (smokeqyoto_object *) malloc(sizeof(smokeqyoto_object));
@@ -538,10 +556,61 @@ static void marshall_QString(Marshall *m) {
     }
 }
 
+
+static void marshall_intR(Marshall *m) {
+	switch(m->action()) {
+	case Marshall::FromObject:
+	{
+		int * i = new int;
+printf("marshall_intR m->item().s_int: %d m->var().s_int: %d\n", m->item().s_int, m->var().s_int);
+		*i = m->var().s_int;
+		m->item().s_voidp = i;
+		m->next();
+	    if(m->cleanup() && m->type().isConst()) {
+			delete i;
+	    } else {
+//			m->item().s_voidp = new int((int)NUM2INT(rv));
+	    }
+	}
+	break;
+	case Marshall::ToObject:
+	{
+		int *ip = (int*)m->item().s_voidp;
+		m->var().s_int = *ip;
+	}
+	break;
+      default:
+	m->unsupported();
+	break;
+    }
+}
+
+
+static void marshall_charP_array(Marshall *m) {
+
+    switch(m->action()) {
+      case Marshall::FromObject:
+	{
+		m->item().s_voidp = (*IntPtrToCharStarStar)(m->var().s_voidp);
+		char ** temp = (char **) m->item().s_voidp;
+printf("marshall_charP_array temp[0]: %s\n", temp[0]);
+	}
+	break;
+      default:
+	m->unsupported();
+	break;
+    }
+
+}
+
+
 TypeHandler Qt_handlers[] = {
     { "QString", marshall_QString },
     { "QString&", marshall_QString },
     { "QString*", marshall_QString },
+    { "int&", marshall_intR },
+    { "int*", marshall_intR },
+    { "char**", marshall_charP_array },
 
     { 0, 0 }
 };

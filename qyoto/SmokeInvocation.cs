@@ -45,6 +45,7 @@ namespace Qt {
 		[FieldOffset(0)] public double s_double;
         [FieldOffset(0)] public long s_enum;
 		[FieldOffset(0)] public void * s_class;
+		[FieldOffset(0)] public IntPtr s_intptr;
 	}
 	
 	public class SmokeInvocation : RealProxy {
@@ -65,7 +66,7 @@ namespace Qt {
 		delegate void RemoveIntPtr(IntPtr ptr);
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		static extern IntPtr StringArrayToCharStarStar(string[] strArray);
+		static extern IntPtr StringArrayToCharStarStar(int length, string[] strArray);
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern void AddGetSmokeObject(GetIntPtr callback);
@@ -81,6 +82,9 @@ namespace Qt {
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern void AddGetPointerObject(GetIntPtr callback);
+
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		static extern void AddIntPtrToCharStarStar(GetIntPtr callback);
 		
 		static IntPtr GetSmokeObject(IntPtr instancePtr) {
 			Object instance = ((GCHandle) instancePtr).Target;
@@ -118,15 +122,31 @@ namespace Qt {
 		}
 		
 		static IntPtr GetPointerObject(IntPtr ptr) {
+			if (pointerMap[ptr] == null) {
+				Console.WriteLine("GetPointerObject() pointerMap[ptr] == null");
+				return (IntPtr) 0;
+			}
+
 			WeakReference weakRef = (WeakReference) pointerMap[ptr];
-			if (weakRef.IsAlive) {
+			if (weakRef == null) {
+				Console.WriteLine("GetPointerObject() weakRef zero");
+				return (IntPtr) 0;
+			} else if (weakRef.IsAlive) {
+				Console.WriteLine("GetPointerObject() weakRef.IsAlive");
 				GCHandle instanceHandle = GCHandle.Alloc(weakRef.Target);
 				return (IntPtr) instanceHandle;
 			} else {
+				Console.WriteLine("GetPointerObject() weakRef dead");
 				return (IntPtr) 0;
 			}
 		}
 		
+		static IntPtr IntPtrToCharStarStar(IntPtr ptr) {
+			string[] temp = (string[]) ((GCHandle) ptr).Target;
+			Console.WriteLine("IntPtrToCharStarStar() string[0]: {0}", temp[0]);
+			return StringArrayToCharStarStar(temp.Length, temp);
+		}
+
 		static private Hashtable pointerMap = new Hashtable();
 		static private GetIntPtr getSmokeObject = new GetIntPtr(GetSmokeObject);
 		static private SetIntPtr setSmokeObject = new SetIntPtr(SetSmokeObject);
@@ -135,6 +155,8 @@ namespace Qt {
 		static private RemoveIntPtr unmapPointer = new RemoveIntPtr(UnmapPointer);
 		static private GetIntPtr getPointerObject = new GetIntPtr(GetPointerObject);
 		
+		static private GetIntPtr intPtrToCharStarStar = new GetIntPtr(IntPtrToCharStarStar);
+		
 		static SmokeInvocation() {
 			AddGetSmokeObject(getSmokeObject);
 			AddSetSmokeObject(setSmokeObject);
@@ -142,6 +164,8 @@ namespace Qt {
 			AddMapPointer(mapPointer);
 			AddUnmapPointer(unmapPointer);
 			AddGetPointerObject(getPointerObject);
+
+			AddIntPtrToCharStarStar(intPtrToCharStarStar);
 		}
 		
 		private Type	_classToProxy;
@@ -244,10 +268,12 @@ namespace Qt {
 						stack[i+1].s_float = (float) callMessage.Args[i];
 					} else if (types[i] == typeof(double)) {
 						stack[i+1].s_double = (double) callMessage.Args[i];
-					} else if (types[i] == typeof(string[])) {
-						unsafe {
-							stack[i+1].s_voidp = (void *) StringArrayToCharStarStar((string[]) callMessage.Args[i]);
-						}
+					} else {
+						stack[i+1].s_intptr = (IntPtr) GCHandle.Alloc(callMessage.Args[i]);
+//					} else if (types[i] == typeof(string[])) {
+//						unsafe {
+//							stack[i+1].s_voidp = (void *) StringArrayToCharStarStar((string[]) callMessage.Args[i]);
+//						}
 					}
 					Console.WriteLine(	"\tArgName: {0} Arg: {1} Type: {2}", 
 										callMessage.GetArgName(i),

@@ -16,7 +16,7 @@ class MainForm : QDialog
                 qa.Exec();
         }
         
-        public MainForm()
+        public MainForm() : base()
         {
                 this.Show();
                 QVBoxLayout qgrid = new QVBoxLayout(this);
