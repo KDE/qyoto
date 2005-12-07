@@ -134,10 +134,10 @@ void mapPointer(void * obj, smokeqyoto_object *o, Smoke::Index classId, void *la
 	
     if (ptr != lastptr) {
 		lastptr = ptr;
-		if (do_debug & qtdb_gc) {
+//		if (do_debug & qtdb_gc) {
 			const char *className = o->smoke->classes[o->classId].className;
 			printf("mapPointer (%s*)%p -> %p", className, ptr, (void*)obj);
-		}
+//		}
 		(*MapPointer)(ptr, obj);
     }
 	
@@ -171,6 +171,7 @@ class MethodReturnValue : public Marshall {
 public:
 	MethodReturnValue(Smoke *smoke, Smoke::Index method, Smoke::Stack stack, Smoke::StackItem & retval) :
 		_smoke(smoke), _method(method), _retval(retval), _stack(stack) {
+printf("In MethodReturnValue(), type: %s _stack[0] %p\n", type().name(), _stack[0]);
 		Marshall::HandlerFn fn = getMarshallFn(type());
 printf("In MethodReturnValue(), about to call return value marshaller\n");
 		(*fn)(this);
@@ -275,8 +276,20 @@ public:
 		_items = -1;
 		printf("In callMethod() fn: %p method().method: %d ptr: %p _stack[1]: %d\n", fn, method().method, ptr, _stack[1]);
 		(*fn)(method().method, ptr, _stack);
-		printf("In callMethod() _stack[0]: %p\n",  _stack[0]);
+printf("In callMethod() _stack[0]: %p\n", _stack[0]);
 		MethodReturnValue r(_smoke, _method, _stack, _retval);
+
+		if (strcmp(_smoke->methodNames[method().name], _smoke->className(method().classId)) == 0) {
+			smokeqyoto_object  * o = (smokeqyoto_object *) malloc(sizeof(smokeqyoto_object));
+			o->smoke = _smoke;
+			o->classId = method().classId;
+			o->ptr = _stack[0].s_voidp;
+			o->allocated = true;
+			printf("In callMethod() o: %p\n",  o);
+			(*SetSmokeObject)(_target, o);
+		    mapPointer(_target, o, o->classId, 0);
+		}
+
     }
 
     void next() {
@@ -315,6 +328,9 @@ public:
     }
 
     bool callMethod(Smoke::Index method, void *ptr, Smoke::Stack args, bool /*isAbstract*/) {
+		// Always fail for now..
+		return false;
+
 	void * obj = getPointerObject(ptr);
 	smokeqyoto_object *o = value_obj_info(obj);
 	if(do_debug & qtdb_virtual) 
@@ -427,7 +443,7 @@ CallMethod(int methodId, void * obj, Smoke::StackItem * sp, int items)
 	MethodCall c(qt_Smoke, methodId, obj, sp, items);
 	c.next();
 	
-//	sp[0].s_int = 999;
+//	sp[0].s_int = 0;
 	return;
 }
 

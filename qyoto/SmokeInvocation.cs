@@ -67,6 +67,9 @@ namespace Qt {
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern IntPtr StringArrayToCharStarStar(int length, string[] strArray);
+		
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		static extern IntPtr StringToQString(string str);
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern void AddGetSmokeObject(GetIntPtr callback);
@@ -85,6 +88,9 @@ namespace Qt {
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern void AddIntPtrToCharStarStar(GetIntPtr callback);
+		
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		static extern void AddIntPtrToQString(GetIntPtr callback);
 		
 		static IntPtr GetSmokeObject(IntPtr instancePtr) {
 			Object instance = ((GCHandle) instancePtr).Target;
@@ -122,6 +128,7 @@ namespace Qt {
 		}
 		
 		static IntPtr GetPointerObject(IntPtr ptr) {
+			Console.WriteLine("ENTER GetPointerObject() ptr: {0}", ptr);
 			if (pointerMap[ptr] == null) {
 				Console.WriteLine("GetPointerObject() pointerMap[ptr] == null");
 				return (IntPtr) 0;
@@ -147,6 +154,12 @@ namespace Qt {
 			return StringArrayToCharStarStar(temp.Length, temp);
 		}
 
+		static IntPtr IntPtrToQString(IntPtr ptr) {
+			string temp = (string) ((GCHandle) ptr).Target;
+			Console.WriteLine("IntPtrToQString() string: {0}", temp);
+			return StringToQString(temp);
+		}
+
 		static private Hashtable pointerMap = new Hashtable();
 		static private GetIntPtr getSmokeObject = new GetIntPtr(GetSmokeObject);
 		static private SetIntPtr setSmokeObject = new SetIntPtr(SetSmokeObject);
@@ -156,6 +169,7 @@ namespace Qt {
 		static private GetIntPtr getPointerObject = new GetIntPtr(GetPointerObject);
 		
 		static private GetIntPtr intPtrToCharStarStar = new GetIntPtr(IntPtrToCharStarStar);
+		static private GetIntPtr intPtrToQString = new GetIntPtr(IntPtrToQString);
 		
 		static SmokeInvocation() {
 			AddGetSmokeObject(getSmokeObject);
@@ -166,6 +180,7 @@ namespace Qt {
 			AddGetPointerObject(getPointerObject);
 
 			AddIntPtrToCharStarStar(intPtrToCharStarStar);
+			AddIntPtrToQString(intPtrToQString);
 		}
 		
 		private Type	_classToProxy;
@@ -197,6 +212,7 @@ namespace Qt {
 					;
 				} else if (i > 0) {	// single match
 					result.Add(i);
+					Console.WriteLine("FindMethod() single match {0}", i);
 				} else {		// multiple match
 					i = -i;		// turn into ambiguousMethodList index
 					int	methodId;
@@ -206,6 +222,7 @@ namespace Qt {
 						}
 						i++;
 					}
+					Console.WriteLine("FindMethod() multiple match {0}", result[0]);
 				}
 			}
 			return result;
@@ -246,7 +263,11 @@ namespace Qt {
 				methods = FindMethod(mungedName);
 
 				for (int i = 0; i < callMessage.ArgCount; i++) {
-					if (types[i] == typeof(bool)) {
+					if (callMessage.Args[i] == null) {
+						unsafe {
+							stack[i+1].s_intptr = (IntPtr) 0;
+						}
+					} else if (types[i] == typeof(bool)) {
 						stack[i+1].s_bool = (bool) callMessage.Args[i];
 					} else if (types[i] == typeof(sbyte)) {
 						stack[i+1].s_char = (sbyte) callMessage.Args[i];
@@ -275,10 +296,15 @@ namespace Qt {
 //							stack[i+1].s_voidp = (void *) StringArrayToCharStarStar((string[]) callMessage.Args[i]);
 //						}
 					}
-					Console.WriteLine(	"\tArgName: {0} Arg: {1} Type: {2}", 
-										callMessage.GetArgName(i),
-										callMessage.GetArg(i),
-										callMessage.Args[i].GetType() );
+					if (callMessage.Args[i] == null) {
+						Console.WriteLine(	"\tArgName: {0} Arg: null", 
+											callMessage.GetArgName(i) );
+					} else {
+						Console.WriteLine(	"\tArgName: {0} Arg: {1} Type: {2}", 
+											callMessage.GetArgName(i),
+											callMessage.GetArg(i),
+											callMessage.Args[i].GetType() );
+					}
 				}
 			}
 			
@@ -287,7 +313,8 @@ namespace Qt {
 			unsafe {
 				fixed(StackItem * stackPtr = stack) {
 					CallMethod((int) methods[0], (IntPtr) instanceHandle, (IntPtr) stackPtr, callMessage.ArgCount);
-					Console.WriteLine("result {0}", stack[0].s_int);
+					Console.WriteLine("returned from CallMethod");
+//					Console.WriteLine("result {0}", stack[0].s_int);
 				}
 			}
 			
@@ -302,11 +329,17 @@ namespace Qt {
 			
 			IMethodReturnMessage returnMessage = (IMethodReturnMessage) message;
 			
+			/*
 			if (returnMessage.MethodName.Equals("PointSize")) {
 				MethodReturnMessageWrapper returnValue = new MethodReturnMessageWrapper((IMethodReturnMessage) returnMessage); 
 				returnValue.ReturnValue = 17;
 				returnMessage = returnValue;
 			}
+			*/
+
+			MethodReturnMessageWrapper returnValue = new MethodReturnMessageWrapper((IMethodReturnMessage) returnMessage); 
+			returnValue.ReturnValue = null;
+			returnMessage = returnValue;
 
 			return returnMessage;
 		}

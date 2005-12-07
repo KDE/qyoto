@@ -27,11 +27,18 @@
 
 extern "C" {
 static GetIntPtr IntPtrToCharStarStar;
+static GetIntPtr IntPtrToQString;
 
 void AddIntPtrToCharStarStar(GetIntPtr callback)
 {
 	printf("In AddIntPtrToCharStarStar 0x%8.8x\n", callback);
 	IntPtrToCharStarStar = callback;
+}
+
+void AddIntPtrToQString(GetIntPtr callback)
+{
+	printf("In AddIntPtrToQString 0x%8.8x\n", callback);
+	IntPtrToQString = callback;
 }
 
 extern void * set_obj_info(const char * className, smokeqyoto_object * o);
@@ -235,12 +242,20 @@ extern "C" {
 void *
 StringArrayToCharStarStar(int length, char ** strArray)
 {
-	printf("strArray[0]: %s\n", strArray[0]);
+	printf("StringArrayToCharStarStar() strArray[0]: %s\n", strArray[0]);
 	char ** result = (char **) calloc(length, sizeof(char *));
 	int i;
 	for (i = 0; i < length; i++) {
 		result[i] = strdup(strArray[i]);
 	}
+	return (void *) result;
+}
+
+void *
+StringToQString(char *str)
+{
+	printf("StringToQString() str: %s\n", str);
+	QString * result = new QString((const char *) str);
 	return (void *) result;
 }
 
@@ -410,6 +425,12 @@ marshall_basetype(Marshall *m)
 	switch(m->action()) {
 	  case Marshall::FromObject:
 	    {
+printf("In Marshall::FromObject m->var().s_class: %p\n", m->var().s_class);
+		if (m->var().s_class == 0) {
+			m->item().s_class = 0;
+			return;
+		}
+
 		smokeqyoto_object *o = value_obj_info(m->var().s_class);
 		if(!o || !o->ptr) {
                     if(m->type().isRef()) {
@@ -435,6 +456,8 @@ marshall_basetype(Marshall *m)
 	    break;
 	  case Marshall::ToObject:
 	    {
+printf("In Marshall::ToObject m->item().s_voidp: %p\n", m->item().s_voidp);
+printf("In Marshall::ToObject m->var().s_voidp: %p\n", m->var().s_voidp);
 		if(m->item().s_voidp == 0) {
 			m->var().s_voidp = 0;
 		    break;
@@ -442,6 +465,7 @@ marshall_basetype(Marshall *m)
 
 		void *p = m->item().s_voidp;
 		void * obj = getPointerObject(p);
+printf("In Marshall::ToObject p: %p obj: %p\n", p, obj);
 		if (obj != 0) {
 			m->var().s_voidp = obj;
 		    break;
@@ -463,9 +487,9 @@ marshall_basetype(Marshall *m)
 		}
 		
 		obj = set_obj_info(classname, o);
-		if (do_debug & qtdb_calls) {
+//		if (do_debug & qtdb_calls) {
 			printf("allocating %s %p -> %p\n", classname, o->ptr, (void*)obj);
-		}
+//		}
 
 		if(m->type().isStack()) {
 		    o->allocated = true;
@@ -497,7 +521,10 @@ static void marshall_QString(Marshall *m) {
       case Marshall::FromObject:
 	{
 	    QString* s = 0;
+printf("In marshall_QString m->var().s_voidp: %p\n", m->var().s_voidp);
+
 	    if( m->var().s_voidp != 0) {
+			s = (QString *) (*IntPtrToQString)(m->var().s_voidp);
 #if 0
                if(SvUTF8(*(m->var())))
                     s = QString::fromUtf8(SvPV_nolen(*(m->var())));
