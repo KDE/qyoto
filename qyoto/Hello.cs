@@ -4,11 +4,7 @@ using System.Runtime.InteropServices;
 
 class MainForm : QDialog
 {
-        [DllImport("libqyoto", CharSet=CharSet.Ansi)]
-        static extern void Init_qyoto();
-
-	    static void Main(String[] args) {
-                Init_qyoto();
+	static void Main(String[] args) {
                 Qt.QApplication qa = new Qt.QApplication(args);
                 MainForm mf = new MainForm();
                 mf.Show();
@@ -23,9 +19,8 @@ class MainForm : QDialog
                 qgrid.SetAutoAdd(true);
                 QTextEdit te = new QTextEdit(this);
                 te.Show();
-				SetCaption("My Caption");
-                QPushButton button = new QPushButton(this);
-                button.SetCaption("Hello World!");
+				SetCaption("Qyoto C# bindings test");
+                QPushButton button = new QPushButton("Hello World! Are you getting warmer?", this);
                 button.Show();
         }
 }

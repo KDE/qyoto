@@ -129,9 +129,18 @@ namespace Qt {
 		public new virtual string ClassName() {
 			return ProxyQApplication().ClassName();
 		}
+		
+		
+		/* Constructor #1 */
 		public QApplication(string[] argv) : this((Type) null) {
+			Qyoto.Init_qyoto();
 			CreateQApplicationProxy();
-			NewQApplication(argv);
+			
+			string[] args = new string[argv.Length + 1];
+			args[0] = System.Reflection.Assembly.GetExecutingAssembly().Location;
+			argv.CopyTo(args, 1);
+			
+			NewQApplication(args);
 		}
 		private void NewQApplication(string[] argv) {
 			ProxyQApplication().NewQApplication(argv.Length, argv);
@@ -139,20 +148,46 @@ namespace Qt {
 		private void NewQApplication(int argc, string[] argv) {
 			ProxyQApplication().NewQApplication(argc, argv);
 		}
+		/* end Constructor #1 */
+		
+		/* Constructor #2 */
 		public QApplication(string[] argv, bool GUIenabled) : this((Type) null) {
+			Qyoto.Init_qyoto();
 			CreateQApplicationProxy();
-			NewQApplication(argv,GUIenabled);
+			
+			string[] args = new string[argv.Length + 1];
+			args[0] = System.Reflection.Assembly.GetExecutingAssembly().Location;
+			argv.CopyTo(args, 1);
+
+			NewQApplication(args,GUIenabled);
 		}
 		private void NewQApplication(string[] argv, bool GUIenabled) {
-			ProxyQApplication().NewQApplication(argv,GUIenabled);
+			ProxyQApplication().NewQApplication(argv.Length, argv,GUIenabled);
 		}
+		private void NewQApplication(int argc, string[] argv, bool GUIenabled) {
+			ProxyQApplication().NewQApplication(argc, argv,GUIenabled);
+		}
+		/* end Constructor #2 */
+		
+		/* Constructor #3 */
 		public QApplication(string[] argv, int arg3) : this((Type) null) {
+			Qyoto.Init_qyoto();
 			CreateQApplicationProxy();
-			NewQApplication(argv,arg3);
+			
+			string[] args = new string[argv.Length + 1];
+			args[0] = System.Reflection.Assembly.GetExecutingAssembly().Location;
+			argv.CopyTo(args, 1);
+
+			NewQApplication(args,arg3);
 		}
 		private void NewQApplication(string[] argv, int arg3) {
-			ProxyQApplication().NewQApplication(argv,arg3);
+			ProxyQApplication().NewQApplication(argv.Length,argv,arg3);
 		}
+		private void NewQApplication(int argc, string[] argv, int arg3) {
+			ProxyQApplication().NewQApplication(argc,argv,arg3);
+		}
+		/* end Constructor #3 */
+		
 		public int Type() {
 			return ProxyQApplication().Type();
 		}
