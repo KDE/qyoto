@@ -166,14 +166,12 @@ Marshall::HandlerFn getMarshallFn(const SmokeType &type);
 class MethodReturnValue : public Marshall {
     Smoke *_smoke;
     Smoke::Index _method;
-    Smoke::StackItem & _retval;
+    Smoke::StackItem * _retval;
     Smoke::Stack _stack;
 public:
-	MethodReturnValue(Smoke *smoke, Smoke::Index method, Smoke::Stack stack, Smoke::StackItem & retval) :
+	MethodReturnValue(Smoke *smoke, Smoke::Index method, Smoke::Stack stack, Smoke::StackItem * retval) :
 		_smoke(smoke), _method(method), _retval(retval), _stack(stack) {
-printf("In MethodReturnValue(), type: %s _stack[0] %p\n", type().name(), _stack[0]);
 		Marshall::HandlerFn fn = getMarshallFn(type());
-printf("In MethodReturnValue(), about to call return value marshaller\n");
 		(*fn)(this);
     }
 
@@ -182,7 +180,7 @@ printf("In MethodReturnValue(), about to call return value marshaller\n");
     Marshall::Action action() { return Marshall::ToObject; }
     Smoke::StackItem &item() { return _stack[0]; }
     Smoke::StackItem &var() {
-    	return _retval;
+    	return *_retval;
     }
     void unsupported() {
 //	rb_raise(rb_eArgError, "Cannot handle '%s' as return-type of %s::%s",
@@ -206,7 +204,7 @@ class MethodCall : public Marshall {
 	Smoke::Index _current_object_class;
     Smoke::Stack _sp;
     int _items;
-    Smoke::StackItem _retval;
+    Smoke::StackItem * _retval;
     bool _called;
 public:
     MethodCall(Smoke *smoke, Smoke::Index method, void * target, Smoke::Stack sp, int items) :
@@ -224,7 +222,7 @@ public:
 	_args = _smoke->argumentList + _smoke->methods[_method].args;
 	_items = _smoke->methods[_method].numArgs;
 	_stack = new Smoke::StackItem[items + 1];
-//	_retval = 0;
+	_retval = _sp;
     }
 
     ~MethodCall() {
@@ -243,7 +241,7 @@ public:
     }
 
     Smoke::StackItem &var() {
-	if(_cur < 0) return _retval;
+	if(_cur < 0) return *_retval;
 	return _sp[_cur + 1];
     }
 
@@ -426,24 +424,8 @@ void
 CallMethod(int methodId, void * obj, Smoke::StackItem * sp, int items)
 {
 	printf("In CallMethod methodId: %d target: 0x%8.8x items: %d\n", methodId, obj, items);
-	printf("In CallMethod %d\n", sp[1].s_int);
-/*
-	smokeqyoto_object  * o = (smokeqyoto_object *) malloc(sizeof(smokeqyoto_object));
-	o->smoke = qt_Smoke;
-	o->classId = 123;
-	o->ptr = 0;
-	o->allocated = false;
-	(*SetSmokeObject)(obj, o);
-
-	smokeqyoto_object * optr = (smokeqyoto_object *) (*GetSmokeObject)(obj);
-	if (optr != 0) {
-		printf("In CallMethod classId: %d\n", optr->classId);
-	}
-*/
 	MethodCall c(qt_Smoke, methodId, obj, sp, items);
 	c.next();
-	
-//	sp[0].s_int = 0;
 	return;
 }
 

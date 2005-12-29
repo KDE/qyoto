@@ -236,7 +236,7 @@ namespace Qt {
 								callMessage.MethodName, 
 								callMessage.TypeName, 
 								callMessage.ArgCount.ToString() );
-			
+
 			StackItem[] stack = new StackItem[callMessage.ArgCount+1];
 			
 			string mungedName = callMessage.MethodName;
@@ -261,6 +261,9 @@ namespace Qt {
 				}
 
 				methods = FindMethod(mungedName);
+				if (methods.Count == 0) {
+					return null;
+				}
 
 				for (int i = 0; i < callMessage.ArgCount; i++) {
 					if (callMessage.Args[i] == null) {
@@ -309,12 +312,43 @@ namespace Qt {
 			}
 			
 			GCHandle instanceHandle = GCHandle.Alloc(_instance);
+			IMethodReturnMessage returnMessage = (IMethodReturnMessage) message;
+			MethodReturnMessageWrapper returnValue = new MethodReturnMessageWrapper((IMethodReturnMessage) returnMessage); 
 			
 			unsafe {
 				fixed(StackItem * stackPtr = stack) {
 					CallMethod((int) methods[0], (IntPtr) instanceHandle, (IntPtr) stackPtr, callMessage.ArgCount);
-					Console.WriteLine("returned from CallMethod");
-//					Console.WriteLine("result {0}", stack[0].s_int);
+					Type returnType = ((MethodInfo) returnMessage.MethodBase).ReturnType;
+					Console.WriteLine("returned from CallMethod returnType: {0}", returnType);
+					
+					if (returnType == typeof(void)) {
+						;
+					} else if (returnType == typeof(bool)) {
+						returnValue.ReturnValue = stack[0].s_bool;
+					} else if (returnType == typeof(sbyte)) {
+						returnValue.ReturnValue = stack[0].s_char;
+					} else if (returnType == typeof(byte)) {
+						returnValue.ReturnValue = stack[0].s_uchar;
+					} else if (returnType == typeof(short)) {
+						returnValue.ReturnValue = stack[0].s_short;
+					} else if (returnType == typeof(ushort)) {
+						returnValue.ReturnValue = stack[0].s_ushort;
+					} else if (returnType == typeof(int)) {
+						returnValue.ReturnValue = stack[0].s_int;
+					} else if (returnType == typeof(uint)) {
+						returnValue.ReturnValue = stack[0].s_uint;
+					} else if (returnType == typeof(long)) {
+						returnValue.ReturnValue = stack[0].s_long;
+					} else if (returnType == typeof(ulong)) {
+						returnValue.ReturnValue = stack[0].s_ulong;
+					} else if (returnType == typeof(float)) {
+						returnValue.ReturnValue = stack[0].s_float;
+					} else if (returnType == typeof(double)) {
+						returnValue.ReturnValue = stack[0].s_double;
+					} else {
+//						stack[0].s_intptr = (IntPtr) GCHandle.Alloc(callMessage.Args[i]);
+//					} else if (returnType == typeof(string[])) {
+					}
 				}
 			}
 			
@@ -327,7 +361,6 @@ namespace Qt {
 //									stackItem[1].s_int );
 			}
 			
-			IMethodReturnMessage returnMessage = (IMethodReturnMessage) message;
 			
 			/*
 			if (returnMessage.MethodName.Equals("PointSize")) {
@@ -337,8 +370,7 @@ namespace Qt {
 			}
 			*/
 
-			MethodReturnMessageWrapper returnValue = new MethodReturnMessageWrapper((IMethodReturnMessage) returnMessage); 
-			returnValue.ReturnValue = null;
+//			returnValue.ReturnValue = null;
 			returnMessage = returnValue;
 
 			return returnMessage;
