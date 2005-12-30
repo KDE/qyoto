@@ -28,6 +28,7 @@
 extern "C" {
 static GetIntPtr IntPtrToCharStarStar;
 static GetIntPtr IntPtrToQString;
+static GetIntPtr IntPtrFromQString;
 
 void AddIntPtrToCharStarStar(GetIntPtr callback)
 {
@@ -39,6 +40,12 @@ void AddIntPtrToQString(GetIntPtr callback)
 {
 	printf("In AddIntPtrToQString 0x%8.8x\n", callback);
 	IntPtrToQString = callback;
+}
+
+void AddIntPtrFromQString(GetIntPtr callback)
+{
+	printf("In AddIntPtrFromQString 0x%8.8x\n", callback);
+	IntPtrFromQString = callback;
 }
 
 extern void * set_obj_info(const char * className, smokeqyoto_object * o);
@@ -259,6 +266,12 @@ StringToQString(char *str)
 	return (void *) result;
 }
 
+char *
+StringFromQString(void *ptr)
+{
+	return (char *) ((QString *) ptr)->latin1();
+}
+
 }
 
 void
@@ -425,7 +438,6 @@ marshall_basetype(Marshall *m)
 	switch(m->action()) {
 	  case Marshall::FromObject:
 	    {
-printf("In Marshall::FromObject m->var().s_class: %p\n", m->var().s_class);
 		if (m->var().s_class == 0) {
 			m->item().s_class = 0;
 			return;
@@ -456,8 +468,6 @@ printf("In Marshall::FromObject m->var().s_class: %p\n", m->var().s_class);
 	    break;
 	  case Marshall::ToObject:
 	    {
-printf("In Marshall::ToObject m->item().s_voidp: %p\n", m->item().s_voidp);
-printf("In Marshall::ToObject m->var().s_voidp: %p\n", m->var().s_voidp);
 		if(m->item().s_voidp == 0) {
 			m->var().s_voidp = 0;
 		    break;
@@ -465,7 +475,6 @@ printf("In Marshall::ToObject m->var().s_voidp: %p\n", m->var().s_voidp);
 
 		void *p = m->item().s_voidp;
 		void * obj = getPointerObject(p);
-printf("In Marshall::ToObject p: %p obj: %p\n", p, obj);
 		if (obj != 0) {
 			m->var().s_voidp = obj;
 		    break;
@@ -487,9 +496,9 @@ printf("In Marshall::ToObject p: %p obj: %p\n", p, obj);
 		}
 		
 		obj = set_obj_info(classname, o);
-//		if (do_debug & qtdb_calls) {
+		if (do_debug & qtdb_calls) {
 			printf("allocating %s %p -> %p\n", classname, o->ptr, (void*)obj);
-//		}
+		}
 
 		if(m->type().isStack()) {
 		    o->allocated = true;
@@ -516,12 +525,41 @@ static void marshall_unknown(Marshall *m) {
     m->unsupported();
 }
 
+static void marshall_charP(Marshall *m) {
+	switch(m->action()) {
+	case Marshall::FromObject:
+	{
+		QString * s = (QString *) (*IntPtrToQString)(m->var().s_class);
+		m->item().s_voidp = (void *) s->latin1();
+	}
+	break;
+	case Marshall::ToObject:
+	{
+		char *p = (char*) m->item().s_voidp;
+	    if (p != 0) {
+			QString s(p);
+			m->var().s_class = (*IntPtrFromQString)(&s);
+	    } else {
+			QString s;
+			m->var().s_class = (*IntPtrFromQString)(&s);
+		}
+
+	    if (m->cleanup()) {
+			delete[] p;
+		}
+	}
+	break;
+		default:
+		m->unsupported();
+	break;
+	}
+}
+
 static void marshall_QString(Marshall *m) {
     switch(m->action()) {
       case Marshall::FromObject:
 	{
 	    QString* s = 0;
-printf("In marshall_QString m->var().s_voidp: %p\n", m->var().s_voidp);
 
 	    if( m->var().s_voidp != 0) {
 			s = (QString *) (*IntPtrToQString)(m->var().s_voidp);
@@ -555,12 +593,12 @@ printf("In marshall_QString m->var().s_voidp: %p\n", m->var().s_voidp);
       case Marshall::ToObject:
 	{
 	    QString *s = (QString*)m->item().s_voidp;
-	    if(s) {
-	    	if (s->isNull()) {
-                    m->var().s_voidp = 0;
-	     	} else {
-//                    *(m->var()) = rb_str_new2(s->latin1());
-	     	}
+	    if (s) {
+			if (s->isNull()) {
+				m->var().s_voidp = 0;
+			} else {
+				m->var().s_class = (*IntPtrFromQString)(s);
+			}
 //                if(!(PL_hints & HINT_BYTES))
 //                {
 //		    sv_setpv_mg(m->var(), (const char *)s->utf8());
@@ -570,15 +608,15 @@ printf("In marshall_QString m->var().s_voidp: %p\n", m->var().s_voidp);
 //                    sv_setpv_mg(m->var(), (const char *)s->local8Bit());
 //                else
 //                    sv_setpv_mg(m->var(), (const char *)s->latin1());
-	     	if(m->cleanup())
-	     	delete s;
-            } else {
-                m->var().s_voidp = 0;
-            }
+			if (m->cleanup())
+				delete s;
+			} else {
+				m->var().s_voidp = 0;
+			}
 	}
 	break;
-      default:
-	m->unsupported();
+		default:
+		m->unsupported();
 	break;
     }
 }
@@ -589,7 +627,6 @@ static void marshall_intR(Marshall *m) {
 	case Marshall::FromObject:
 	{
 		int * i = new int;
-printf("marshall_intR m->item().s_int: %d m->var().s_int: %d\n", m->item().s_int, m->var().s_int);
 		*i = m->var().s_int;
 		m->item().s_voidp = i;
 		m->next();
@@ -620,7 +657,6 @@ static void marshall_charP_array(Marshall *m) {
 	{
 		m->item().s_voidp = (*IntPtrToCharStarStar)(m->var().s_voidp);
 		char ** temp = (char **) m->item().s_voidp;
-printf("marshall_charP_array temp[0]: %s\n", temp[0]);
 	}
 	break;
       default:
@@ -637,6 +673,7 @@ TypeHandler Qt_handlers[] = {
     { "QString*", marshall_QString },
     { "int&", marshall_intR },
     { "int*", marshall_intR },
+    { "char*", marshall_charP },
     { "char**", marshall_charP_array },
 
     { 0, 0 }

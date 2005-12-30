@@ -72,6 +72,9 @@ namespace Qt {
 		static extern IntPtr StringToQString(string str);
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		static extern string StringFromQString(IntPtr ptr);
+
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern void AddGetSmokeObject(GetIntPtr callback);
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
@@ -91,6 +94,9 @@ namespace Qt {
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern void AddIntPtrToQString(GetIntPtr callback);
+
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		static extern void AddIntPtrFromQString(GetIntPtr callback);
 		
 		static IntPtr GetSmokeObject(IntPtr instancePtr) {
 			Object instance = ((GCHandle) instancePtr).Target;
@@ -160,6 +166,10 @@ namespace Qt {
 			return StringToQString(temp);
 		}
 
+		static IntPtr IntPtrFromQString(IntPtr ptr) {
+			return (IntPtr) GCHandle.Alloc(StringFromQString(ptr));
+		}
+
 		static private Hashtable pointerMap = new Hashtable();
 		static private GetIntPtr getSmokeObject = new GetIntPtr(GetSmokeObject);
 		static private SetIntPtr setSmokeObject = new SetIntPtr(SetSmokeObject);
@@ -170,6 +180,7 @@ namespace Qt {
 		
 		static private GetIntPtr intPtrToCharStarStar = new GetIntPtr(IntPtrToCharStarStar);
 		static private GetIntPtr intPtrToQString = new GetIntPtr(IntPtrToQString);
+		static private GetIntPtr intPtrFromQString = new GetIntPtr(IntPtrFromQString);
 		
 		static SmokeInvocation() {
 			AddGetSmokeObject(getSmokeObject);
@@ -181,6 +192,7 @@ namespace Qt {
 
 			AddIntPtrToCharStarStar(intPtrToCharStarStar);
 			AddIntPtrToQString(intPtrToQString);
+			AddIntPtrFromQString(intPtrFromQString);
 		}
 		
 		private Type	_classToProxy;
@@ -346,8 +358,7 @@ namespace Qt {
 					} else if (returnType == typeof(double)) {
 						returnValue.ReturnValue = stack[0].s_double;
 					} else {
-//						stack[0].s_intptr = (IntPtr) GCHandle.Alloc(callMessage.Args[i]);
-//					} else if (returnType == typeof(string[])) {
+						returnValue.ReturnValue = ((GCHandle) (IntPtr) stack[0].s_class).Target;
 					}
 				}
 			}
