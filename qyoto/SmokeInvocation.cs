@@ -64,6 +64,8 @@ namespace Qt {
 		delegate IntPtr GetIntPtr(IntPtr instance);
 		delegate void SetIntPtr(IntPtr instance, IntPtr ptr);
 		delegate void RemoveIntPtr(IntPtr ptr);
+		delegate IntPtr GetIntPtrFromString(string str);
+		delegate string GetStringFromIntPtr(IntPtr ptr);
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern IntPtr StringArrayToCharStarStar(int length, string[] strArray);
@@ -91,6 +93,12 @@ namespace Qt {
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern void AddIntPtrToCharStarStar(GetIntPtr callback);
+		
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		static extern void AddIntPtrToCharStar(GetStringFromIntPtr callback);
+
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		static extern void AddIntPtrFromCharStar(GetIntPtrFromString callback);
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern void AddIntPtrToQString(GetIntPtr callback);
@@ -134,35 +142,42 @@ namespace Qt {
 		}
 		
 		static IntPtr GetPointerObject(IntPtr ptr) {
-			Console.WriteLine("ENTER GetPointerObject() ptr: {0}", ptr);
+//			Console.WriteLine("ENTER GetPointerObject() ptr: {0}", ptr);
 			if (pointerMap[ptr] == null) {
-				Console.WriteLine("GetPointerObject() pointerMap[ptr] == null");
+//				Console.WriteLine("GetPointerObject() pointerMap[ptr] == null");
 				return (IntPtr) 0;
 			}
 
 			WeakReference weakRef = (WeakReference) pointerMap[ptr];
 			if (weakRef == null) {
-				Console.WriteLine("GetPointerObject() weakRef zero");
+//				Console.WriteLine("GetPointerObject() weakRef zero");
 				return (IntPtr) 0;
 			} else if (weakRef.IsAlive) {
-				Console.WriteLine("GetPointerObject() weakRef.IsAlive");
+//				Console.WriteLine("GetPointerObject() weakRef.IsAlive");
 				GCHandle instanceHandle = GCHandle.Alloc(weakRef.Target);
 				return (IntPtr) instanceHandle;
 			} else {
-				Console.WriteLine("GetPointerObject() weakRef dead");
+//				Console.WriteLine("GetPointerObject() weakRef dead");
 				return (IntPtr) 0;
 			}
 		}
 		
 		static IntPtr IntPtrToCharStarStar(IntPtr ptr) {
 			string[] temp = (string[]) ((GCHandle) ptr).Target;
-			Console.WriteLine("IntPtrToCharStarStar() string[0]: {0}", temp[0]);
 			return StringArrayToCharStarStar(temp.Length, temp);
+		}
+
+		static string IntPtrToString(IntPtr ptr) {
+			string temp = (string) ((GCHandle) ptr).Target;
+			return temp;
+		}
+
+		static IntPtr IntPtrFromString(string str) {
+			return (IntPtr) GCHandle.Alloc(str);
 		}
 
 		static IntPtr IntPtrToQString(IntPtr ptr) {
 			string temp = (string) ((GCHandle) ptr).Target;
-			Console.WriteLine("IntPtrToQString() string: {0}", temp);
 			return StringToQString(temp);
 		}
 
@@ -179,6 +194,8 @@ namespace Qt {
 		static private GetIntPtr getPointerObject = new GetIntPtr(GetPointerObject);
 		
 		static private GetIntPtr intPtrToCharStarStar = new GetIntPtr(IntPtrToCharStarStar);
+		static private GetStringFromIntPtr intPtrToString = new GetStringFromIntPtr(IntPtrToString);
+		static private GetIntPtrFromString intPtrFromString = new GetIntPtrFromString(IntPtrFromString);
 		static private GetIntPtr intPtrToQString = new GetIntPtr(IntPtrToQString);
 		static private GetIntPtr intPtrFromQString = new GetIntPtr(IntPtrFromQString);
 		
@@ -191,6 +208,8 @@ namespace Qt {
 			AddGetPointerObject(getPointerObject);
 
 			AddIntPtrToCharStarStar(intPtrToCharStarStar);
+			AddIntPtrToCharStar(intPtrToString);
+			AddIntPtrFromCharStar(intPtrFromString);
 			AddIntPtrToQString(intPtrToQString);
 			AddIntPtrFromQString(intPtrFromQString);
 		}
@@ -209,7 +228,7 @@ namespace Qt {
 		public ArrayList FindMethod(string name) {
 			ArrayList result = new ArrayList();
 			
-			Console.WriteLine("FindMethod() className: {0} MethodName: {1}", _className, name);
+//			Console.WriteLine("FindMethod() className: {0} MethodName: {1}", _className, name);
 			int meth = FindMethodId(_className, name);
 			if (meth == 0) {
 				meth = FindMethodId("QGlobalSpace", name);
@@ -219,12 +238,12 @@ namespace Qt {
 				return result;
 			} else if (meth > 0) {
 				int i = MethodFromMap(meth);
-				Console.WriteLine("FindMethod() MethodName: {0} result: {1}", name, i);
+//				Console.WriteLine("FindMethod() MethodName: {0} result: {1}", name, i);
 				if (i == 0) {		// shouldn't happen
 					;
 				} else if (i > 0) {	// single match
 					result.Add(i);
-					Console.WriteLine("FindMethod() single match {0}", i);
+//					Console.WriteLine("FindMethod() single match {0}", i);
 				} else {		// multiple match
 					i = -i;		// turn into ambiguousMethodList index
 					int	methodId;
@@ -234,7 +253,7 @@ namespace Qt {
 						}
 						i++;
 					}
-					Console.WriteLine("FindMethod() multiple match {0}", result[0]);
+//					Console.WriteLine("FindMethod() multiple match {0}", result[0]);
 				}
 			}
 			return result;
@@ -244,10 +263,10 @@ namespace Qt {
 			ArrayList	methods = null;
 			
 			IMethodCallMessage callMessage = (IMethodCallMessage) message;
-			Console.WriteLine(	"Invoke() MethodName: {0} Type: {1} ArgCount: {2}", 
-								callMessage.MethodName, 
-								callMessage.TypeName, 
-								callMessage.ArgCount.ToString() );
+//			Console.WriteLine(	"ENTER Invoke() MethodName: {0} Type: {1} ArgCount: {2}", 
+//								callMessage.MethodName, 
+//								callMessage.TypeName, 
+//								callMessage.ArgCount.ToString() );
 
 			StackItem[] stack = new StackItem[callMessage.ArgCount+1];
 			
@@ -304,21 +323,10 @@ namespace Qt {
 						stack[i+1].s_float = (float) callMessage.Args[i];
 					} else if (types[i] == typeof(double)) {
 						stack[i+1].s_double = (double) callMessage.Args[i];
+					} else if (types[i] == typeof(string)) {
+						stack[i+1].s_intptr = (IntPtr) GCHandle.Alloc(callMessage.Args[i]);
 					} else {
 						stack[i+1].s_intptr = (IntPtr) GCHandle.Alloc(callMessage.Args[i]);
-//					} else if (types[i] == typeof(string[])) {
-//						unsafe {
-//							stack[i+1].s_voidp = (void *) StringArrayToCharStarStar((string[]) callMessage.Args[i]);
-//						}
-					}
-					if (callMessage.Args[i] == null) {
-						Console.WriteLine(	"\tArgName: {0} Arg: null", 
-											callMessage.GetArgName(i) );
-					} else {
-						Console.WriteLine(	"\tArgName: {0} Arg: {1} Type: {2}", 
-											callMessage.GetArgName(i),
-											callMessage.GetArg(i),
-											callMessage.Args[i].GetType() );
 					}
 				}
 			}
@@ -331,7 +339,6 @@ namespace Qt {
 				fixed(StackItem * stackPtr = stack) {
 					CallMethod((int) methods[0], (IntPtr) instanceHandle, (IntPtr) stackPtr, callMessage.ArgCount);
 					Type returnType = ((MethodInfo) returnMessage.MethodBase).ReturnType;
-					Console.WriteLine("returned from CallMethod returnType: {0}", returnType);
 					
 					if (returnType == typeof(void)) {
 						;
@@ -357,33 +364,19 @@ namespace Qt {
 						returnValue.ReturnValue = stack[0].s_float;
 					} else if (returnType == typeof(double)) {
 						returnValue.ReturnValue = stack[0].s_double;
+					} else if (returnType == typeof(string)) {
+						returnValue.ReturnValue = ((GCHandle) stack[0].s_intptr).Target;
+						((GCHandle) stack[0].s_intptr).Free();
 					} else {
-						returnValue.ReturnValue = ((GCHandle) (IntPtr) stack[0].s_class).Target;
+						returnValue.ReturnValue = ((GCHandle) stack[0].s_intptr).Target;
 					}
 				}
 			}
-			
+						
 			instanceHandle.Free();
-			
-			if (_instance != null) {
-//				Console.WriteLine(	"instance: {0} returned: {1}", 
-//									_instance.GetType().ToString(), 
-//									returnedInstance.GetType().ToString(),
-//									stackItem[1].s_int );
-			}
-			
-			
-			/*
-			if (returnMessage.MethodName.Equals("PointSize")) {
-				MethodReturnMessageWrapper returnValue = new MethodReturnMessageWrapper((IMethodReturnMessage) returnMessage); 
-				returnValue.ReturnValue = 17;
-				returnMessage = returnValue;
-			}
-			*/
-
-//			returnValue.ReturnValue = null;
 			returnMessage = returnValue;
 
+//			Console.WriteLine("LEAVE Invoke()");
 			return returnMessage;
 		}
 		

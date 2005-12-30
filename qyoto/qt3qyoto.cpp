@@ -134,10 +134,10 @@ void mapPointer(void * obj, smokeqyoto_object *o, Smoke::Index classId, void *la
 	
     if (ptr != lastptr) {
 		lastptr = ptr;
-//		if (do_debug & qtdb_gc) {
+		if (do_debug & qtdb_gc) {
 			const char *className = o->smoke->classes[o->classId].className;
 			printf("mapPointer (%s*)%p -> %p", className, ptr, (void*)obj);
-//		}
+		}
 		(*MapPointer)(ptr, obj);
     }
 	
@@ -215,7 +215,6 @@ public:
 		if (o && o->ptr) {
 		    _current_object = o->ptr;
 		    _current_object_class = o->classId;
-			printf("o->ptr: %p o->classId: %d\n", o->ptr, o->classId);
 		}
 	}
 	
@@ -272,9 +271,7 @@ public:
 		Smoke::ClassFn fn = _smoke->classes[method().classId].classFn;
 		void *ptr = _smoke->cast(_current_object, _current_object_class, method().classId);
 		_items = -1;
-		printf("In callMethod() fn: %p method().method: %d ptr: %p _stack[1]: %d\n", fn, method().method, ptr, _stack[1]);
 		(*fn)(method().method, ptr, _stack);
-printf("In callMethod() _stack[0]: %p\n", _stack[0]);
 		MethodReturnValue r(_smoke, _method, _stack, _retval);
 
 		if (strcmp(_smoke->methodNames[method().name], _smoke->className(method().classId)) == 0) {
@@ -283,7 +280,6 @@ printf("In callMethod() _stack[0]: %p\n", _stack[0]);
 			o->classId = method().classId;
 			o->ptr = _stack[0].s_voidp;
 			o->allocated = true;
-			printf("In callMethod() o: %p\n",  o);
 			(*SetSmokeObject)(_target, o);
 		    mapPointer(_target, o, o->classId, 0);
 		}
@@ -364,7 +360,9 @@ int
 FindMethodId(char * classname, char * methodname) 
 {
 	Smoke::Index meth = qt_Smoke->findMethod(classname, methodname);
+#ifdef DEBUG
 	printf("\t\tIn FindMethodId %s::%s => %d\n", classname, methodname, meth);
+#endif
 	return meth;
 }
 
@@ -383,7 +381,9 @@ FindAmbiguousMethodId(int ambiguousId)
 	
 	Smoke::Method &methodRef = qt_Smoke->methods[qt_Smoke->ambiguousMethodList[ambiguousId]];
 	if ((methodRef.flags & Smoke::mf_internal) == 0) {
+#ifdef DEBUG
 		printf("\t\tIn FindAmbiguousMethodId(%d) => %d\n", ambiguousId, qt_Smoke->ambiguousMethodList[ambiguousId]);
+#endif
 		return qt_Smoke->ambiguousMethodList[ambiguousId];
 	}
 	
@@ -392,40 +392,43 @@ FindAmbiguousMethodId(int ambiguousId)
 
 void AddGetSmokeObject(GetIntPtr callback)
 {
-	printf("In AddGetSmokeObject 0x%8.8x\n", callback);
 	GetSmokeObject = callback;
 }
 
 void AddSetSmokeObject(SetIntPtr callback)
 {
-	printf("In AddSetSmokeObject 0x%8.8x\n", callback);
 	SetSmokeObject = callback;
 }
 
 void AddMapPointer(SetIntPtr callback)
 {
-	printf("In AddMapPointer 0x%8.8x\n", callback);
 	MapPointer = callback;
 }
 
 void AddUnmapPointer(RemoveIntPtr callback)
 {
-	printf("In AddUnmapPointer 0x%8.8x\n", callback);
 	UnmapPointer = callback;
 }
 
 void AddGetPointerObject(GetIntPtr callback)
 {
-	printf("In AddGetPointerObject 0x%8.8x\n", callback);
 	GetPointerObject = callback;
 }
 
 void
 CallMethod(int methodId, void * obj, Smoke::StackItem * sp, int items)
 {
-	printf("In CallMethod methodId: %d target: 0x%8.8x items: %d\n", methodId, obj, items);
+#ifdef DEBUG
+	printf("ENTER CallMethod(methodId: %d target: 0x%8.8x items: %d)\n", methodId, obj, items);
+#endif
+
 	MethodCall c(qt_Smoke, methodId, obj, sp, items);
 	c.next();
+
+#ifdef DEBUG
+	printf("LEAVE CallMethod()\n");
+#endif
+
 	return;
 }
 

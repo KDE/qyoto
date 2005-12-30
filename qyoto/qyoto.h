@@ -55,5 +55,7 @@ void * getPointerObject(void *ptr);
 typedef void* (*GetIntPtr)(void *);
 typedef void (*SetIntPtr)(void *, void *);
 typedef void (*RemoveIntPtr)(void *);
+typedef void* (*GetIntPtrFromCharStar)(char *);
+typedef char* (*GetCharStarFromIntPtr)(void *);
 
 #endif

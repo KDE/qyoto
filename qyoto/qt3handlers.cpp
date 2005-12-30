@@ -27,24 +27,33 @@
 
 extern "C" {
 static GetIntPtr IntPtrToCharStarStar;
+static GetCharStarFromIntPtr IntPtrToCharStar;
+static GetIntPtrFromCharStar IntPtrFromCharStar;
 static GetIntPtr IntPtrToQString;
 static GetIntPtr IntPtrFromQString;
 
 void AddIntPtrToCharStarStar(GetIntPtr callback)
 {
-	printf("In AddIntPtrToCharStarStar 0x%8.8x\n", callback);
 	IntPtrToCharStarStar = callback;
+}
+
+void AddIntPtrToCharStar(GetCharStarFromIntPtr callback)
+{
+	IntPtrToCharStar = callback;
+}
+
+void AddIntPtrFromCharStar(GetIntPtrFromCharStar callback)
+{
+	IntPtrFromCharStar = callback;
 }
 
 void AddIntPtrToQString(GetIntPtr callback)
 {
-	printf("In AddIntPtrToQString 0x%8.8x\n", callback);
 	IntPtrToQString = callback;
 }
 
 void AddIntPtrFromQString(GetIntPtr callback)
 {
-	printf("In AddIntPtrFromQString 0x%8.8x\n", callback);
 	IntPtrFromQString = callback;
 }
 
@@ -249,7 +258,6 @@ extern "C" {
 void *
 StringArrayToCharStarStar(int length, char ** strArray)
 {
-	printf("StringArrayToCharStarStar() strArray[0]: %s\n", strArray[0]);
 	char ** result = (char **) calloc(length, sizeof(char *));
 	int i;
 	for (i = 0; i < length; i++) {
@@ -261,7 +269,6 @@ StringArrayToCharStarStar(int length, char ** strArray)
 void *
 StringToQString(char *str)
 {
-	printf("StringToQString() str: %s\n", str);
 	QString * result = new QString((const char *) str);
 	return (void *) result;
 }
@@ -529,19 +536,16 @@ static void marshall_charP(Marshall *m) {
 	switch(m->action()) {
 	case Marshall::FromObject:
 	{
-		QString * s = (QString *) (*IntPtrToQString)(m->var().s_class);
-		m->item().s_voidp = (void *) s->latin1();
+		m->item().s_voidp = (*IntPtrToCharStar)(m->var().s_class);
 	}
 	break;
 	case Marshall::ToObject:
 	{
 		char *p = (char*) m->item().s_voidp;
 	    if (p != 0) {
-			QString s(p);
-			m->var().s_class = (*IntPtrFromQString)(&s);
+			m->var().s_class = (*IntPtrFromCharStar)(strdup(p));
 	    } else {
-			QString s;
-			m->var().s_class = (*IntPtrFromQString)(&s);
+			m->var().s_class = 0;
 		}
 
 	    if (m->cleanup()) {
