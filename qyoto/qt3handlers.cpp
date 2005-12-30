@@ -269,7 +269,7 @@ StringToQString(char *str)
 char *
 StringFromQString(void *ptr)
 {
-	return (char *) ((QString *) ptr)->latin1();
+	return strdup(((QString *) ptr)->latin1());
 }
 
 }
