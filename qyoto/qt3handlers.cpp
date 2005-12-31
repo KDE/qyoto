@@ -536,7 +536,11 @@ static void marshall_charP(Marshall *m) {
 	switch(m->action()) {
 	case Marshall::FromObject:
 	{
-		m->item().s_voidp = (*IntPtrToCharStar)(m->var().s_class);
+		if (m->var().s_class == 0) {
+			m->item().s_voidp = 0;
+		} else {
+			m->item().s_voidp = (*IntPtrToCharStar)(m->var().s_class);
+		}
 	}
 	break;
 	case Marshall::ToObject:
