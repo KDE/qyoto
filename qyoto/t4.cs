@@ -1,7 +1,6 @@
 using System;
 using System.Runtime.InteropServices;
 using Qt;
-namespace Qt {
 
 public class MyWidget : QWidget
 {
@@ -27,6 +26,4 @@ public class MyWidget : QWidget
 		w.Show();
 		return a.Exec();
 	}
-}
-
 }
