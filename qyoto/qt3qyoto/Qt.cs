@@ -1800,6 +1800,38 @@ namespace Qt {
 		public static QDataStream op_read(QDataStream arg1, QRect arg2) {
 			return StaticQt().op_read(arg1,arg2);
 		}
-	
+		public const int IO_Direct     = 0x0100;
+		public const int IO_Sequential = 0x0200;
+		public const int IO_Combined   = 0x0300;
+		public const int IO_TypeMask   = 0x0f00;
+		public const int IO_Raw        = 0x0040;
+		public const int IO_Async      = 0x0080;
+		public const int IO_ReadOnly   = 0x0001;
+		public const int IO_WriteOnly  = 0x0002;
+		public const int IO_ReadWrite  = 0x0003;
+		public const int IO_Append     = 0x0004;
+		public const int IO_Truncate   = 0x0008;
+		public const int IO_Translate  = 0x0010;
+		public const int IO_ModeMask   = 0x00ff;
+		public const int IO_Open       = 0x1000;
+		public const int IO_StateMask  = 0xf000;
+		public const int IO_Ok              = 0;
+		public const int IO_ReadError       = 1;
+		public const int IO_WriteError      = 2;
+		public const int IO_FatalError      = 3;
+		public const int IO_ResourceError   = 4;
+		public const int IO_OpenError       = 5;
+		public const int IO_ConnectError    = 5;
+		public const int IO_AbortError      = 6;
+		public const int IO_TimeOutError    = 7;
+		public const int IO_UnspecifiedError= 8;
+
+		public static string SIGNAL(string signal) {
+			return "2"+ signal;
+		}
+
+		public static string SLOT(string slot) {
+			return "1" + slot;
+		}	
 	}
 }
