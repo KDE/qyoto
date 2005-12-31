@@ -232,7 +232,7 @@ namespace Qt {
 		public string ErrorString() {
 			return ProxyQHttp().ErrorString();
 		}
-		[Q_SLOT("abort()")]
+		[Q_SLOT("void abort()")]
 		[SmokeMethod("abort()")]
 		public void Abort() {
 			ProxyQHttp().Abort();
@@ -284,21 +284,21 @@ namespace Qt {
 	}
 
 	public interface IQHttpSignals : IQNetworkProtocolSignals {
-		[Q_SIGNAL("stateChanged(int)")]
+		[Q_SIGNAL("void stateChanged(int)")]
 		void StateChanged(int arg1);
-		[Q_SIGNAL("responseHeaderReceived(const QHttpResponseHeader&)")]
+		[Q_SIGNAL("void responseHeaderReceived(const QHttpResponseHeader&)")]
 		void ResponseHeaderReceived(QHttpResponseHeader resp);
-		[Q_SIGNAL("readyRead(const QHttpResponseHeader&)")]
+		[Q_SIGNAL("void readyRead(const QHttpResponseHeader&)")]
 		void ReadyRead(QHttpResponseHeader resp);
-		[Q_SIGNAL("dataSendProgress(int, int)")]
+		[Q_SIGNAL("void dataSendProgress(int, int)")]
 		void DataSendProgress(int arg1, int arg2);
-		[Q_SIGNAL("dataReadProgress(int, int)")]
+		[Q_SIGNAL("void dataReadProgress(int, int)")]
 		void DataReadProgress(int arg1, int arg2);
-		[Q_SIGNAL("requestStarted(int)")]
+		[Q_SIGNAL("void requestStarted(int)")]
 		void RequestStarted(int arg1);
-		[Q_SIGNAL("requestFinished(int, bool)")]
+		[Q_SIGNAL("void requestFinished(int, bool)")]
 		void RequestFinished(int arg1, bool arg2);
-		[Q_SIGNAL("done(bool)")]
+		[Q_SIGNAL("void done(bool)")]
 		void Done(bool arg1);
 	}
 }

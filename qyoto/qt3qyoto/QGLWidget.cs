@@ -296,12 +296,12 @@ namespace Qt {
 		public void RenderText(double x, double y, double z, string str) {
 			ProxyQGLWidget().RenderText(x,y,z,str);
 		}
-		[Q_SLOT("updateGL()")]
+		[Q_SLOT("void updateGL()")]
 		[SmokeMethod("updateGL()")]
 		public virtual void UpdateGL() {
 			ProxyQGLWidget().UpdateGL();
 		}
-		[Q_SLOT("updateOverlayGL()")]
+		[Q_SLOT("void updateOverlayGL()")]
 		[SmokeMethod("updateOverlayGL()")]
 		public virtual void UpdateOverlayGL() {
 			ProxyQGLWidget().UpdateOverlayGL();

@@ -390,364 +390,364 @@ namespace Qt {
 		public QSyntaxHighlighter SyntaxHighlighter() {
 			return ProxyQTextEdit().SyntaxHighlighter();
 		}
-		[Q_SLOT("setEnabled(bool)")]
+		[Q_SLOT("void setEnabled(bool)")]
 		[SmokeMethod("setEnabled(bool)")]
 		public new void SetEnabled(bool arg1) {
 			ProxyQTextEdit().SetEnabled(arg1);
 		}
-		[Q_SLOT("setMimeSourceFactory(QMimeSourceFactory*)")]
+		[Q_SLOT("void setMimeSourceFactory(QMimeSourceFactory*)")]
 		[SmokeMethod("setMimeSourceFactory(QMimeSourceFactory*)")]
 		public virtual void SetMimeSourceFactory(QMimeSourceFactory factory) {
 			ProxyQTextEdit().SetMimeSourceFactory(factory);
 		}
-		[Q_SLOT("setStyleSheet(QStyleSheet*)")]
+		[Q_SLOT("void setStyleSheet(QStyleSheet*)")]
 		[SmokeMethod("setStyleSheet(QStyleSheet*)")]
 		public virtual void SetStyleSheet(QStyleSheet styleSheet) {
 			ProxyQTextEdit().SetStyleSheet(styleSheet);
 		}
-		[Q_SLOT("scrollToAnchor(const QString&)")]
+		[Q_SLOT("void scrollToAnchor(const QString&)")]
 		[SmokeMethod("scrollToAnchor(const QString&)")]
 		public virtual void ScrollToAnchor(string name) {
 			ProxyQTextEdit().ScrollToAnchor(name);
 		}
-		[Q_SLOT("setPaper(const QBrush&)")]
+		[Q_SLOT("void setPaper(const QBrush&)")]
 		[SmokeMethod("setPaper(const QBrush&)")]
 		public virtual void SetPaper(QBrush pap) {
 			ProxyQTextEdit().SetPaper(pap);
 		}
-		[Q_SLOT("setLinkUnderline(bool)")]
+		[Q_SLOT("void setLinkUnderline(bool)")]
 		[SmokeMethod("setLinkUnderline(bool)")]
 		public virtual void SetLinkUnderline(bool arg1) {
 			ProxyQTextEdit().SetLinkUnderline(arg1);
 		}
-		[Q_SLOT("setWordWrap(QTextEdit::WordWrap)")]
+		[Q_SLOT("void setWordWrap(QTextEdit::WordWrap)")]
 		[SmokeMethod("setWordWrap(QTextEdit::WordWrap)")]
 		public virtual void SetWordWrap(int mode) {
 			ProxyQTextEdit().SetWordWrap(mode);
 		}
-		[Q_SLOT("setWrapColumnOrWidth(int)")]
+		[Q_SLOT("void setWrapColumnOrWidth(int)")]
 		[SmokeMethod("setWrapColumnOrWidth(int)")]
 		public virtual void SetWrapColumnOrWidth(int arg1) {
 			ProxyQTextEdit().SetWrapColumnOrWidth(arg1);
 		}
-		[Q_SLOT("setWrapPolicy(QTextEdit::WrapPolicy)")]
+		[Q_SLOT("void setWrapPolicy(QTextEdit::WrapPolicy)")]
 		[SmokeMethod("setWrapPolicy(QTextEdit::WrapPolicy)")]
 		public virtual void SetWrapPolicy(int policy) {
 			ProxyQTextEdit().SetWrapPolicy(policy);
 		}
-		[Q_SLOT("copy()")]
+		[Q_SLOT("void copy()")]
 		[SmokeMethod("copy()")]
 		public virtual void Copy() {
 			ProxyQTextEdit().Copy();
 		}
-		[Q_SLOT("append(const QString&)")]
+		[Q_SLOT("void append(const QString&)")]
 		[SmokeMethod("append(const QString&)")]
 		public virtual void Append(string text) {
 			ProxyQTextEdit().Append(text);
 		}
-		[Q_SLOT("setText(const QString&)")]
+		[Q_SLOT("void setText(const QString&)")]
 		[SmokeMethod("setText(const QString&)")]
 		public void SetText(string txt) {
 			ProxyQTextEdit().SetText(txt);
 		}
-		[Q_SLOT("setText(const QString&, const QString&)")]
+		[Q_SLOT("void setText(const QString&, const QString&)")]
 		[SmokeMethod("setText(const QString&, const QString&)")]
 		public virtual void SetText(string txt, string context) {
 			ProxyQTextEdit().SetText(txt,context);
 		}
-		[Q_SLOT("setTextFormat(Qt::TextFormat)")]
+		[Q_SLOT("void setTextFormat(Qt::TextFormat)")]
 		[SmokeMethod("setTextFormat(Qt::TextFormat)")]
 		public virtual void SetTextFormat(int f) {
 			ProxyQTextEdit().SetTextFormat(f);
 		}
-		[Q_SLOT("selectAll(bool)")]
+		[Q_SLOT("void selectAll(bool)")]
 		[SmokeMethod("selectAll(bool)")]
 		public virtual void SelectAll(bool select) {
 			ProxyQTextEdit().SelectAll(select);
 		}
-		[Q_SLOT("selectAll()")]
+		[Q_SLOT("void selectAll()")]
 		[SmokeMethod("selectAll()")]
 		public virtual void SelectAll() {
 			ProxyQTextEdit().SelectAll();
 		}
-		[Q_SLOT("setTabStopWidth(int)")]
+		[Q_SLOT("void setTabStopWidth(int)")]
 		[SmokeMethod("setTabStopWidth(int)")]
 		public virtual void SetTabStopWidth(int ts) {
 			ProxyQTextEdit().SetTabStopWidth(ts);
 		}
-		[Q_SLOT("zoomIn(int)")]
+		[Q_SLOT("void zoomIn(int)")]
 		[SmokeMethod("zoomIn(int)")]
 		public virtual void ZoomIn(int range) {
 			ProxyQTextEdit().ZoomIn(range);
 		}
-		[Q_SLOT("zoomIn()")]
+		[Q_SLOT("void zoomIn()")]
 		[SmokeMethod("zoomIn()")]
 		public virtual void ZoomIn() {
 			ProxyQTextEdit().ZoomIn();
 		}
-		[Q_SLOT("zoomOut(int)")]
+		[Q_SLOT("void zoomOut(int)")]
 		[SmokeMethod("zoomOut(int)")]
 		public virtual void ZoomOut(int range) {
 			ProxyQTextEdit().ZoomOut(range);
 		}
-		[Q_SLOT("zoomOut()")]
+		[Q_SLOT("void zoomOut()")]
 		[SmokeMethod("zoomOut()")]
 		public virtual void ZoomOut() {
 			ProxyQTextEdit().ZoomOut();
 		}
-		[Q_SLOT("zoomTo(int)")]
+		[Q_SLOT("void zoomTo(int)")]
 		[SmokeMethod("zoomTo(int)")]
 		public virtual void ZoomTo(int size) {
 			ProxyQTextEdit().ZoomTo(size);
 		}
-		[Q_SLOT("sync()")]
+		[Q_SLOT("void sync()")]
 		[SmokeMethod("sync()")]
 		public virtual void Sync() {
 			ProxyQTextEdit().Sync();
 		}
-		[Q_SLOT("setReadOnly(bool)")]
+		[Q_SLOT("void setReadOnly(bool)")]
 		[SmokeMethod("setReadOnly(bool)")]
 		public virtual void SetReadOnly(bool b) {
 			ProxyQTextEdit().SetReadOnly(b);
 		}
-		[Q_SLOT("undo()")]
+		[Q_SLOT("void undo()")]
 		[SmokeMethod("undo()")]
 		public virtual void Undo() {
 			ProxyQTextEdit().Undo();
 		}
-		[Q_SLOT("redo()")]
+		[Q_SLOT("void redo()")]
 		[SmokeMethod("redo()")]
 		public virtual void Redo() {
 			ProxyQTextEdit().Redo();
 		}
-		[Q_SLOT("cut()")]
+		[Q_SLOT("void cut()")]
 		[SmokeMethod("cut()")]
 		public virtual void Cut() {
 			ProxyQTextEdit().Cut();
 		}
-		[Q_SLOT("paste()")]
+		[Q_SLOT("void paste()")]
 		[SmokeMethod("paste()")]
 		public virtual void Paste() {
 			ProxyQTextEdit().Paste();
 		}
-		[Q_SLOT("pasteSubType(const QCString&)")]
+		[Q_SLOT("void pasteSubType(const QCString&)")]
 		[SmokeMethod("pasteSubType(const QCString&)")]
 		public virtual void PasteSubType(string subtype) {
 			ProxyQTextEdit().PasteSubType(subtype);
 		}
-		[Q_SLOT("clear()")]
+		[Q_SLOT("void clear()")]
 		[SmokeMethod("clear()")]
 		public virtual void Clear() {
 			ProxyQTextEdit().Clear();
 		}
-		[Q_SLOT("del()")]
+		[Q_SLOT("void del()")]
 		[SmokeMethod("del()")]
 		public virtual void Del() {
 			ProxyQTextEdit().Del();
 		}
-		[Q_SLOT("indent()")]
+		[Q_SLOT("void indent()")]
 		[SmokeMethod("indent()")]
 		public virtual void Indent() {
 			ProxyQTextEdit().Indent();
 		}
-		[Q_SLOT("setItalic(bool)")]
+		[Q_SLOT("void setItalic(bool)")]
 		[SmokeMethod("setItalic(bool)")]
 		public virtual void SetItalic(bool b) {
 			ProxyQTextEdit().SetItalic(b);
 		}
-		[Q_SLOT("setBold(bool)")]
+		[Q_SLOT("void setBold(bool)")]
 		[SmokeMethod("setBold(bool)")]
 		public virtual void SetBold(bool b) {
 			ProxyQTextEdit().SetBold(b);
 		}
-		[Q_SLOT("setUnderline(bool)")]
+		[Q_SLOT("void setUnderline(bool)")]
 		[SmokeMethod("setUnderline(bool)")]
 		public virtual void SetUnderline(bool b) {
 			ProxyQTextEdit().SetUnderline(b);
 		}
-		[Q_SLOT("setFamily(const QString&)")]
+		[Q_SLOT("void setFamily(const QString&)")]
 		[SmokeMethod("setFamily(const QString&)")]
 		public virtual void SetFamily(string f) {
 			ProxyQTextEdit().SetFamily(f);
 		}
-		[Q_SLOT("setPointSize(int)")]
+		[Q_SLOT("void setPointSize(int)")]
 		[SmokeMethod("setPointSize(int)")]
 		public virtual void SetPointSize(int s) {
 			ProxyQTextEdit().SetPointSize(s);
 		}
-		[Q_SLOT("setColor(const QColor&)")]
+		[Q_SLOT("void setColor(const QColor&)")]
 		[SmokeMethod("setColor(const QColor&)")]
 		public virtual void SetColor(QColor c) {
 			ProxyQTextEdit().SetColor(c);
 		}
-		[Q_SLOT("setFont(const QFont&)")]
+		[Q_SLOT("void setFont(const QFont&)")]
 		[SmokeMethod("setFont(const QFont&)")]
 		public new virtual void SetFont(QFont f) {
 			ProxyQTextEdit().SetFont(f);
 		}
-		[Q_SLOT("setVerticalAlignment(QTextEdit::VerticalAlignment)")]
+		[Q_SLOT("void setVerticalAlignment(QTextEdit::VerticalAlignment)")]
 		[SmokeMethod("setVerticalAlignment(QTextEdit::VerticalAlignment)")]
 		public virtual void SetVerticalAlignment(int a) {
 			ProxyQTextEdit().SetVerticalAlignment(a);
 		}
-		[Q_SLOT("setAlignment(int)")]
+		[Q_SLOT("void setAlignment(int)")]
 		[SmokeMethod("setAlignment(int)")]
 		public virtual void SetAlignment(int a) {
 			ProxyQTextEdit().SetAlignment(a);
 		}
-		[Q_SLOT("setParagType(QStyleSheetItem::DisplayMode, QStyleSheetItem::ListStyle)")]
+		[Q_SLOT("void setParagType(QStyleSheetItem::DisplayMode, QStyleSheetItem::ListStyle)")]
 		[SmokeMethod("setParagType(QStyleSheetItem::DisplayMode, QStyleSheetItem::ListStyle)")]
 		public virtual void SetParagType(int dm, int listStyle) {
 			ProxyQTextEdit().SetParagType(dm,listStyle);
 		}
-		[Q_SLOT("setCursorPosition(int, int)")]
+		[Q_SLOT("void setCursorPosition(int, int)")]
 		[SmokeMethod("setCursorPosition(int, int)")]
 		public virtual void SetCursorPosition(int parag, int index) {
 			ProxyQTextEdit().SetCursorPosition(parag,index);
 		}
-		[Q_SLOT("setSelection(int, int, int, int, int)")]
+		[Q_SLOT("void setSelection(int, int, int, int, int)")]
 		[SmokeMethod("setSelection(int, int, int, int, int)")]
 		public virtual void SetSelection(int parag_from, int index_from, int parag_to, int index_to, int selNum) {
 			ProxyQTextEdit().SetSelection(parag_from,index_from,parag_to,index_to,selNum);
 		}
-		[Q_SLOT("setSelection(int, int, int, int)")]
+		[Q_SLOT("void setSelection(int, int, int, int)")]
 		[SmokeMethod("setSelection(int, int, int, int)")]
 		public virtual void SetSelection(int parag_from, int index_from, int parag_to, int index_to) {
 			ProxyQTextEdit().SetSelection(parag_from,index_from,parag_to,index_to);
 		}
-		[Q_SLOT("setSelectionAttributes(int, const QColor&, bool)")]
+		[Q_SLOT("void setSelectionAttributes(int, const QColor&, bool)")]
 		[SmokeMethod("setSelectionAttributes(int, const QColor&, bool)")]
 		public virtual void SetSelectionAttributes(int selNum, QColor back, bool invertText) {
 			ProxyQTextEdit().SetSelectionAttributes(selNum,back,invertText);
 		}
-		[Q_SLOT("setModified(bool)")]
+		[Q_SLOT("void setModified(bool)")]
 		[SmokeMethod("setModified(bool)")]
 		public virtual void SetModified(bool m) {
 			ProxyQTextEdit().SetModified(m);
 		}
-		[Q_SLOT("resetFormat()")]
+		[Q_SLOT("void resetFormat()")]
 		[SmokeMethod("resetFormat()")]
 		public virtual void ResetFormat() {
 			ProxyQTextEdit().ResetFormat();
 		}
-		[Q_SLOT("setUndoDepth(int)")]
+		[Q_SLOT("void setUndoDepth(int)")]
 		[SmokeMethod("setUndoDepth(int)")]
 		public virtual void SetUndoDepth(int d) {
 			ProxyQTextEdit().SetUndoDepth(d);
 		}
 		// void setFormat(QTextFormat* arg1,int arg2); >>>> NOT CONVERTED
-		[Q_SLOT("ensureCursorVisible()")]
+		[Q_SLOT("void ensureCursorVisible()")]
 		[SmokeMethod("ensureCursorVisible()")]
 		public virtual void EnsureCursorVisible() {
 			ProxyQTextEdit().EnsureCursorVisible();
 		}
 		// void placeCursor(const QPoint& arg1,QTextCursor* arg2); >>>> NOT CONVERTED
-		[Q_SLOT("placeCursor(const QPoint&)")]
+		[Q_SLOT("void placeCursor(const QPoint&)")]
 		[SmokeMethod("placeCursor(const QPoint&)")]
 		public virtual void PlaceCursor(QPoint pos) {
 			ProxyQTextEdit().PlaceCursor(pos);
 		}
-		[Q_SLOT("moveCursor(QTextEdit::CursorAction, bool)")]
+		[Q_SLOT("void moveCursor(QTextEdit::CursorAction, bool)")]
 		[SmokeMethod("moveCursor(QTextEdit::CursorAction, bool)")]
 		public virtual void MoveCursor(int action, bool select) {
 			ProxyQTextEdit().MoveCursor(action,select);
 		}
-		[Q_SLOT("doKeyboardAction(QTextEdit::KeyboardAction)")]
+		[Q_SLOT("void doKeyboardAction(QTextEdit::KeyboardAction)")]
 		[SmokeMethod("doKeyboardAction(QTextEdit::KeyboardAction)")]
 		public virtual void DoKeyboardAction(int action) {
 			ProxyQTextEdit().DoKeyboardAction(action);
 		}
-		[Q_SLOT("removeSelectedText(int)")]
+		[Q_SLOT("void removeSelectedText(int)")]
 		[SmokeMethod("removeSelectedText(int)")]
 		public virtual void RemoveSelectedText(int selNum) {
 			ProxyQTextEdit().RemoveSelectedText(selNum);
 		}
-		[Q_SLOT("removeSelectedText()")]
+		[Q_SLOT("void removeSelectedText()")]
 		[SmokeMethod("removeSelectedText()")]
 		public virtual void RemoveSelectedText() {
 			ProxyQTextEdit().RemoveSelectedText();
 		}
-		[Q_SLOT("removeSelection(int)")]
+		[Q_SLOT("void removeSelection(int)")]
 		[SmokeMethod("removeSelection(int)")]
 		public virtual void RemoveSelection(int selNum) {
 			ProxyQTextEdit().RemoveSelection(selNum);
 		}
-		[Q_SLOT("removeSelection()")]
+		[Q_SLOT("void removeSelection()")]
 		[SmokeMethod("removeSelection()")]
 		public virtual void RemoveSelection() {
 			ProxyQTextEdit().RemoveSelection();
 		}
-		[Q_SLOT("setCurrentFont(const QFont&)")]
+		[Q_SLOT("void setCurrentFont(const QFont&)")]
 		[SmokeMethod("setCurrentFont(const QFont&)")]
 		public virtual void SetCurrentFont(QFont f) {
 			ProxyQTextEdit().SetCurrentFont(f);
 		}
-		[Q_SLOT("setOverwriteMode(bool)")]
+		[Q_SLOT("void setOverwriteMode(bool)")]
 		[SmokeMethod("setOverwriteMode(bool)")]
 		public virtual void SetOverwriteMode(bool b) {
 			ProxyQTextEdit().SetOverwriteMode(b);
 		}
-		[Q_SLOT("scrollToBottom()")]
+		[Q_SLOT("void scrollToBottom()")]
 		[SmokeMethod("scrollToBottom()")]
 		public virtual void ScrollToBottom() {
 			ProxyQTextEdit().ScrollToBottom();
 		}
-		[Q_SLOT("insert(const QString&, uint)")]
+		[Q_SLOT("void insert(const QString&, uint)")]
 		[SmokeMethod("insert(const QString&, uint)")]
 		public void Insert(string text, uint insertionFlags) {
 			ProxyQTextEdit().Insert(text,insertionFlags);
 		}
-		[Q_SLOT("insert(const QString&)")]
+		[Q_SLOT("void insert(const QString&)")]
 		[SmokeMethod("insert(const QString&)")]
 		public void Insert(string text) {
 			ProxyQTextEdit().Insert(text);
 		}
-		[Q_SLOT("insert(const QString&, bool, bool, bool)")]
+		[Q_SLOT("void insert(const QString&, bool, bool, bool)")]
 		[SmokeMethod("insert(const QString&, bool, bool, bool)")]
 		public virtual void Insert(string text, bool arg2, bool arg3, bool arg4) {
 			ProxyQTextEdit().Insert(text,arg2,arg3,arg4);
 		}
-		[Q_SLOT("insert(const QString&, bool, bool)")]
+		[Q_SLOT("void insert(const QString&, bool, bool)")]
 		[SmokeMethod("insert(const QString&, bool, bool)")]
 		public virtual void Insert(string text, bool arg2, bool arg3) {
 			ProxyQTextEdit().Insert(text,arg2,arg3);
 		}
-		[Q_SLOT("insert(const QString&, bool)")]
+		[Q_SLOT("void insert(const QString&, bool)")]
 		[SmokeMethod("insert(const QString&, bool)")]
 		public virtual void Insert(string text, bool arg2) {
 			ProxyQTextEdit().Insert(text,arg2);
 		}
-		[Q_SLOT("insertAt(const QString&, int, int)")]
+		[Q_SLOT("void insertAt(const QString&, int, int)")]
 		[SmokeMethod("insertAt(const QString&, int, int)")]
 		public virtual void InsertAt(string text, int para, int index) {
 			ProxyQTextEdit().InsertAt(text,para,index);
 		}
-		[Q_SLOT("removeParagraph(int)")]
+		[Q_SLOT("void removeParagraph(int)")]
 		[SmokeMethod("removeParagraph(int)")]
 		public virtual void RemoveParagraph(int para) {
 			ProxyQTextEdit().RemoveParagraph(para);
 		}
-		[Q_SLOT("insertParagraph(const QString&, int)")]
+		[Q_SLOT("void insertParagraph(const QString&, int)")]
 		[SmokeMethod("insertParagraph(const QString&, int)")]
 		public virtual void InsertParagraph(string text, int para) {
 			ProxyQTextEdit().InsertParagraph(text,para);
 		}
-		[Q_SLOT("setParagraphBackgroundColor(int, const QColor&)")]
+		[Q_SLOT("void setParagraphBackgroundColor(int, const QColor&)")]
 		[SmokeMethod("setParagraphBackgroundColor(int, const QColor&)")]
 		public virtual void SetParagraphBackgroundColor(int para, QColor bg) {
 			ProxyQTextEdit().SetParagraphBackgroundColor(para,bg);
 		}
-		[Q_SLOT("clearParagraphBackground(int)")]
+		[Q_SLOT("void clearParagraphBackground(int)")]
 		[SmokeMethod("clearParagraphBackground(int)")]
 		public virtual void ClearParagraphBackground(int para) {
 			ProxyQTextEdit().ClearParagraphBackground(para);
 		}
-		[Q_SLOT("setUndoRedoEnabled(bool)")]
+		[Q_SLOT("void setUndoRedoEnabled(bool)")]
 		[SmokeMethod("setUndoRedoEnabled(bool)")]
 		public virtual void SetUndoRedoEnabled(bool b) {
 			ProxyQTextEdit().SetUndoRedoEnabled(b);
 		}
-		[Q_SLOT("setTabChangesFocus(bool)")]
+		[Q_SLOT("void setTabChangesFocus(bool)")]
 		[SmokeMethod("setTabChangesFocus(bool)")]
 		public void SetTabChangesFocus(bool b) {
 			ProxyQTextEdit().SetTabChangesFocus(b);
@@ -871,12 +871,12 @@ namespace Qt {
 		protected new void WindowActivationChange(bool arg1) {
 			ProxyQTextEdit().WindowActivationChange(arg1);
 		}
-		[Q_SLOT("doChangeInterval()")]
+		[Q_SLOT("void doChangeInterval()")]
 		[SmokeMethod("doChangeInterval()")]
 		protected virtual void DoChangeInterval() {
 			ProxyQTextEdit().DoChangeInterval();
 		}
-		[Q_SLOT("sliderReleased()")]
+		[Q_SLOT("void sliderReleased()")]
 		[SmokeMethod("sliderReleased()")]
 		protected void SliderReleased() {
 			ProxyQTextEdit().SliderReleased();
@@ -900,34 +900,34 @@ namespace Qt {
 	}
 
 	public interface IQTextEditSignals : IQScrollViewSignals {
-		[Q_SIGNAL("textChanged()")]
+		[Q_SIGNAL("void textChanged()")]
 		void TextChanged();
-		[Q_SIGNAL("selectionChanged()")]
+		[Q_SIGNAL("void selectionChanged()")]
 		void SelectionChanged();
-		[Q_SIGNAL("copyAvailable(bool)")]
+		[Q_SIGNAL("void copyAvailable(bool)")]
 		void CopyAvailable(bool arg1);
-		[Q_SIGNAL("undoAvailable(bool)")]
+		[Q_SIGNAL("void undoAvailable(bool)")]
 		void UndoAvailable(bool yes);
-		[Q_SIGNAL("redoAvailable(bool)")]
+		[Q_SIGNAL("void redoAvailable(bool)")]
 		void RedoAvailable(bool yes);
-		[Q_SIGNAL("currentFontChanged(const QFont&)")]
+		[Q_SIGNAL("void currentFontChanged(const QFont&)")]
 		void CurrentFontChanged(QFont f);
-		[Q_SIGNAL("currentColorChanged(const QColor&)")]
+		[Q_SIGNAL("void currentColorChanged(const QColor&)")]
 		void CurrentColorChanged(QColor c);
-		[Q_SIGNAL("currentAlignmentChanged(int)")]
+		[Q_SIGNAL("void currentAlignmentChanged(int)")]
 		void CurrentAlignmentChanged(int a);
-		[Q_SIGNAL("currentVerticalAlignmentChanged(QTextEdit::VerticalAlignment)")]
+		[Q_SIGNAL("void currentVerticalAlignmentChanged(QTextEdit::VerticalAlignment)")]
 		void CurrentVerticalAlignmentChanged(int a);
 		// void cursorPositionChanged(QTextCursor* arg1); >>>> NOT CONVERTED
-		[Q_SIGNAL("cursorPositionChanged(int, int)")]
+		[Q_SIGNAL("void cursorPositionChanged(int, int)")]
 		void CursorPositionChanged(int para, int pos);
-		[Q_SIGNAL("returnPressed()")]
+		[Q_SIGNAL("void returnPressed()")]
 		void ReturnPressed();
-		[Q_SIGNAL("modificationChanged(bool)")]
+		[Q_SIGNAL("void modificationChanged(bool)")]
 		void ModificationChanged(bool m);
-		[Q_SIGNAL("clicked(int, int)")]
+		[Q_SIGNAL("void clicked(int, int)")]
 		void Clicked(int parag, int index);
-		[Q_SIGNAL("doubleClicked(int, int)")]
+		[Q_SIGNAL("void doubleClicked(int, int)")]
 		void DoubleClicked(int parag, int index);
 	}
 }

@@ -348,32 +348,32 @@ namespace Qt {
 		public bool IsRenaming() {
 			return ProxyQIconView().IsRenaming();
 		}
-		[Q_SLOT("arrangeItemsInGrid(const QSize&, bool)")]
+		[Q_SLOT("void arrangeItemsInGrid(const QSize&, bool)")]
 		[SmokeMethod("arrangeItemsInGrid(const QSize&, bool)")]
 		public virtual void ArrangeItemsInGrid(QSize grid, bool update) {
 			ProxyQIconView().ArrangeItemsInGrid(grid,update);
 		}
-		[Q_SLOT("arrangeItemsInGrid(const QSize&)")]
+		[Q_SLOT("void arrangeItemsInGrid(const QSize&)")]
 		[SmokeMethod("arrangeItemsInGrid(const QSize&)")]
 		public virtual void ArrangeItemsInGrid(QSize grid) {
 			ProxyQIconView().ArrangeItemsInGrid(grid);
 		}
-		[Q_SLOT("arrangeItemsInGrid(bool)")]
+		[Q_SLOT("void arrangeItemsInGrid(bool)")]
 		[SmokeMethod("arrangeItemsInGrid(bool)")]
 		public virtual void ArrangeItemsInGrid(bool update) {
 			ProxyQIconView().ArrangeItemsInGrid(update);
 		}
-		[Q_SLOT("arrangeItemsInGrid()")]
+		[Q_SLOT("void arrangeItemsInGrid()")]
 		[SmokeMethod("arrangeItemsInGrid()")]
 		public virtual void ArrangeItemsInGrid() {
 			ProxyQIconView().ArrangeItemsInGrid();
 		}
-		[Q_SLOT("setContentsPos(int, int)")]
+		[Q_SLOT("void setContentsPos(int, int)")]
 		[SmokeMethod("setContentsPos(int, int)")]
 		public new virtual void SetContentsPos(int x, int y) {
 			ProxyQIconView().SetContentsPos(x,y);
 		}
-		[Q_SLOT("updateContents()")]
+		[Q_SLOT("void updateContents()")]
 		[SmokeMethod("updateContents()")]
 		public new virtual void UpdateContents() {
 			ProxyQIconView().UpdateContents();
@@ -498,17 +498,17 @@ namespace Qt {
 		protected new void WindowActivationChange(bool arg1) {
 			ProxyQIconView().WindowActivationChange(arg1);
 		}
-		[Q_SLOT("doAutoScroll()")]
+		[Q_SLOT("void doAutoScroll()")]
 		[SmokeMethod("doAutoScroll()")]
 		protected virtual void DoAutoScroll() {
 			ProxyQIconView().DoAutoScroll();
 		}
-		[Q_SLOT("adjustItems()")]
+		[Q_SLOT("void adjustItems()")]
 		[SmokeMethod("adjustItems()")]
 		protected virtual void AdjustItems() {
 			ProxyQIconView().AdjustItems();
 		}
-		[Q_SLOT("slotUpdate()")]
+		[Q_SLOT("void slotUpdate()")]
 		[SmokeMethod("slotUpdate()")]
 		protected virtual void SlotUpdate() {
 			ProxyQIconView().SlotUpdate();
@@ -532,44 +532,44 @@ namespace Qt {
 	}
 
 	public interface IQIconViewSignals : IQScrollViewSignals {
-		[Q_SIGNAL("selectionChanged()")]
+		[Q_SIGNAL("void selectionChanged()")]
 		void SelectionChanged();
-		[Q_SIGNAL("selectionChanged(QIconViewItem*)")]
+		[Q_SIGNAL("void selectionChanged(QIconViewItem*)")]
 		void SelectionChanged(QIconViewItem item);
-		[Q_SIGNAL("currentChanged(QIconViewItem*)")]
+		[Q_SIGNAL("void currentChanged(QIconViewItem*)")]
 		void CurrentChanged(QIconViewItem item);
-		[Q_SIGNAL("clicked(QIconViewItem*)")]
+		[Q_SIGNAL("void clicked(QIconViewItem*)")]
 		void Clicked(QIconViewItem arg1);
-		[Q_SIGNAL("clicked(QIconViewItem*, const QPoint&)")]
+		[Q_SIGNAL("void clicked(QIconViewItem*, const QPoint&)")]
 		void Clicked(QIconViewItem arg1, QPoint arg2);
-		[Q_SIGNAL("pressed(QIconViewItem*)")]
+		[Q_SIGNAL("void pressed(QIconViewItem*)")]
 		void Pressed(QIconViewItem arg1);
-		[Q_SIGNAL("pressed(QIconViewItem*, const QPoint&)")]
+		[Q_SIGNAL("void pressed(QIconViewItem*, const QPoint&)")]
 		void Pressed(QIconViewItem arg1, QPoint arg2);
-		[Q_SIGNAL("doubleClicked(QIconViewItem*)")]
+		[Q_SIGNAL("void doubleClicked(QIconViewItem*)")]
 		void DoubleClicked(QIconViewItem item);
-		[Q_SIGNAL("returnPressed(QIconViewItem*)")]
+		[Q_SIGNAL("void returnPressed(QIconViewItem*)")]
 		void ReturnPressed(QIconViewItem item);
-		[Q_SIGNAL("rightButtonClicked(QIconViewItem*, const QPoint&)")]
+		[Q_SIGNAL("void rightButtonClicked(QIconViewItem*, const QPoint&)")]
 		void RightButtonClicked(QIconViewItem item, QPoint pos);
-		[Q_SIGNAL("rightButtonPressed(QIconViewItem*, const QPoint&)")]
+		[Q_SIGNAL("void rightButtonPressed(QIconViewItem*, const QPoint&)")]
 		void RightButtonPressed(QIconViewItem item, QPoint pos);
-		[Q_SIGNAL("mouseButtonPressed(int, QIconViewItem*, const QPoint&)")]
+		[Q_SIGNAL("void mouseButtonPressed(int, QIconViewItem*, const QPoint&)")]
 		void MouseButtonPressed(int button, QIconViewItem item, QPoint pos);
-		[Q_SIGNAL("mouseButtonClicked(int, QIconViewItem*, const QPoint&)")]
+		[Q_SIGNAL("void mouseButtonClicked(int, QIconViewItem*, const QPoint&)")]
 		void MouseButtonClicked(int button, QIconViewItem item, QPoint pos);
-		[Q_SIGNAL("contextMenuRequested(QIconViewItem*, const QPoint&)")]
+		[Q_SIGNAL("void contextMenuRequested(QIconViewItem*, const QPoint&)")]
 		void ContextMenuRequested(QIconViewItem item, QPoint pos);
 		// void dropped(QDropEvent* arg1,const QValueList<QIconDragItem>& arg2); >>>> NOT CONVERTED
-		[Q_SIGNAL("moved()")]
+		[Q_SIGNAL("void moved()")]
 		void Moved();
-		[Q_SIGNAL("onItem(QIconViewItem*)")]
+		[Q_SIGNAL("void onItem(QIconViewItem*)")]
 		void OnItem(QIconViewItem item);
-		[Q_SIGNAL("onViewport()")]
+		[Q_SIGNAL("void onViewport()")]
 		void OnViewport();
-		[Q_SIGNAL("itemRenamed(QIconViewItem*, const QString&)")]
+		[Q_SIGNAL("void itemRenamed(QIconViewItem*, const QString&)")]
 		void ItemRenamed(QIconViewItem item, string arg2);
-		[Q_SIGNAL("itemRenamed(QIconViewItem*)")]
+		[Q_SIGNAL("void itemRenamed(QIconViewItem*)")]
 		void ItemRenamed(QIconViewItem item);
 	}
 }

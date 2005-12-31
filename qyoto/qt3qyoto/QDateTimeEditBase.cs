@@ -53,12 +53,12 @@ namespace Qt {
 		public virtual void RemoveLastNumber(int sec) {
 			ProxyQDateTimeEditBase().RemoveLastNumber(sec);
 		}
-		[Q_SLOT("stepUp()")]
+		[Q_SLOT("void stepUp()")]
 		[SmokeMethod("stepUp()")]
 		public virtual void StepUp() {
 			ProxyQDateTimeEditBase().StepUp();
 		}
-		[Q_SLOT("stepDown()")]
+		[Q_SLOT("void stepDown()")]
 		[SmokeMethod("stepDown()")]
 		public virtual void StepDown() {
 			ProxyQDateTimeEditBase().StepDown();

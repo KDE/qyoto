@@ -96,37 +96,37 @@ namespace Qt {
 		public virtual void SetRecord(QSqlRecord buf) {
 			ProxyQSqlForm().SetRecord(buf);
 		}
-		[Q_SLOT("readField(QWidget*)")]
+		[Q_SLOT("void readField(QWidget*)")]
 		[SmokeMethod("readField(QWidget*)")]
 		public virtual void ReadField(QWidget widget) {
 			ProxyQSqlForm().ReadField(widget);
 		}
-		[Q_SLOT("writeField(QWidget*)")]
+		[Q_SLOT("void writeField(QWidget*)")]
 		[SmokeMethod("writeField(QWidget*)")]
 		public virtual void WriteField(QWidget widget) {
 			ProxyQSqlForm().WriteField(widget);
 		}
-		[Q_SLOT("readFields()")]
+		[Q_SLOT("void readFields()")]
 		[SmokeMethod("readFields()")]
 		public virtual void ReadFields() {
 			ProxyQSqlForm().ReadFields();
 		}
-		[Q_SLOT("writeFields()")]
+		[Q_SLOT("void writeFields()")]
 		[SmokeMethod("writeFields()")]
 		public virtual void WriteFields() {
 			ProxyQSqlForm().WriteFields();
 		}
-		[Q_SLOT("clear()")]
+		[Q_SLOT("void clear()")]
 		[SmokeMethod("clear()")]
 		public virtual void Clear() {
 			ProxyQSqlForm().Clear();
 		}
-		[Q_SLOT("clearValues(bool)")]
+		[Q_SLOT("void clearValues(bool)")]
 		[SmokeMethod("clearValues(bool)")]
 		public virtual void ClearValues(bool nullify) {
 			ProxyQSqlForm().ClearValues(nullify);
 		}
-		[Q_SLOT("clearValues()")]
+		[Q_SLOT("void clearValues()")]
 		[SmokeMethod("clearValues()")]
 		public virtual void ClearValues() {
 			ProxyQSqlForm().ClearValues();

@@ -69,37 +69,37 @@ namespace Qt {
 		public string Source() {
 			return ProxyQTextBrowser().Source();
 		}
-		[Q_SLOT("setSource(const QString&)")]
+		[Q_SLOT("void setSource(const QString&)")]
 		[SmokeMethod("setSource(const QString&)")]
 		public virtual void SetSource(string name) {
 			ProxyQTextBrowser().SetSource(name);
 		}
-		[Q_SLOT("backward()")]
+		[Q_SLOT("void backward()")]
 		[SmokeMethod("backward()")]
 		public virtual void Backward() {
 			ProxyQTextBrowser().Backward();
 		}
-		[Q_SLOT("forward()")]
+		[Q_SLOT("void forward()")]
 		[SmokeMethod("forward()")]
 		public virtual void Forward() {
 			ProxyQTextBrowser().Forward();
 		}
-		[Q_SLOT("home()")]
+		[Q_SLOT("void home()")]
 		[SmokeMethod("home()")]
 		public virtual void Home() {
 			ProxyQTextBrowser().Home();
 		}
-		[Q_SLOT("reload()")]
+		[Q_SLOT("void reload()")]
 		[SmokeMethod("reload()")]
 		public virtual void Reload() {
 			ProxyQTextBrowser().Reload();
 		}
-		[Q_SLOT("setText(const QString&)")]
+		[Q_SLOT("void setText(const QString&)")]
 		[SmokeMethod("setText(const QString&)")]
 		public new void SetText(string txt) {
 			ProxyQTextBrowser().SetText(txt);
 		}
-		[Q_SLOT("setText(const QString&, const QString&)")]
+		[Q_SLOT("void setText(const QString&, const QString&)")]
 		[SmokeMethod("setText(const QString&, const QString&)")]
 		public new virtual void SetText(string txt, string context) {
 			ProxyQTextBrowser().SetText(txt,context);
@@ -143,17 +143,17 @@ namespace Qt {
 	}
 
 	public interface IQTextBrowserSignals : IQTextEditSignals {
-		[Q_SIGNAL("backwardAvailable(bool)")]
+		[Q_SIGNAL("void backwardAvailable(bool)")]
 		void BackwardAvailable(bool arg1);
-		[Q_SIGNAL("forwardAvailable(bool)")]
+		[Q_SIGNAL("void forwardAvailable(bool)")]
 		void ForwardAvailable(bool arg1);
-		[Q_SIGNAL("sourceChanged(const QString&)")]
+		[Q_SIGNAL("void sourceChanged(const QString&)")]
 		void SourceChanged(string arg1);
-		[Q_SIGNAL("highlighted(const QString&)")]
+		[Q_SIGNAL("void highlighted(const QString&)")]
 		void Highlighted(string arg1);
-		[Q_SIGNAL("linkClicked(const QString&)")]
+		[Q_SIGNAL("void linkClicked(const QString&)")]
 		void LinkClicked(string arg1);
-		[Q_SIGNAL("anchorClicked(const QString&, const QString&)")]
+		[Q_SIGNAL("void anchorClicked(const QString&, const QString&)")]
 		void AnchorClicked(string arg1, string arg2);
 	}
 }

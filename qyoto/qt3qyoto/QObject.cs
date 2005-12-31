@@ -231,7 +231,7 @@ namespace Qt {
 		public QObject Parent() {
 			return ProxyQObject().Parent();
 		}
-		[Q_SLOT("deleteLater()")]
+		[Q_SLOT("void deleteLater()")]
 		[SmokeMethod("deleteLater()")]
 		public void DeleteLater() {
 			ProxyQObject().DeleteLater();
@@ -355,9 +355,9 @@ namespace Qt {
 	}
 
 	public interface IQObjectSignals {
-		[Q_SIGNAL("destroyed()")]
+		[Q_SIGNAL("void destroyed()")]
 		void Destroyed();
-		[Q_SIGNAL("destroyed(QObject*)")]
+		[Q_SIGNAL("void destroyed(QObject*)")]
 		void Destroyed(QObject arg1);
 	}
 }

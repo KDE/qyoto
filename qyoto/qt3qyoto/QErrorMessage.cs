@@ -56,7 +56,7 @@ namespace Qt {
 		private void NewQErrorMessage(QWidget parent) {
 			ProxyQErrorMessage().NewQErrorMessage(parent);
 		}
-		[Q_SLOT("message(const QString&)")]
+		[Q_SLOT("void message(const QString&)")]
 		[SmokeMethod("message(const QString&)")]
 		public void Message(string arg1) {
 			ProxyQErrorMessage().Message(arg1);

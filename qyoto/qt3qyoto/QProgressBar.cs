@@ -157,22 +157,22 @@ namespace Qt {
 		public new void Show() {
 			ProxyQProgressBar().Show();
 		}
-		[Q_SLOT("reset()")]
+		[Q_SLOT("void reset()")]
 		[SmokeMethod("reset()")]
 		public void Reset() {
 			ProxyQProgressBar().Reset();
 		}
-		[Q_SLOT("setTotalSteps(int)")]
+		[Q_SLOT("void setTotalSteps(int)")]
 		[SmokeMethod("setTotalSteps(int)")]
 		public virtual void SetTotalSteps(int totalSteps) {
 			ProxyQProgressBar().SetTotalSteps(totalSteps);
 		}
-		[Q_SLOT("setProgress(int)")]
+		[Q_SLOT("void setProgress(int)")]
 		[SmokeMethod("setProgress(int)")]
 		public virtual void SetProgress(int progress) {
 			ProxyQProgressBar().SetProgress(progress);
 		}
-		[Q_SLOT("setProgress(int, int)")]
+		[Q_SLOT("void setProgress(int, int)")]
 		[SmokeMethod("setProgress(int, int)")]
 		public void SetProgress(int progress, int totalSteps) {
 			ProxyQProgressBar().SetProgress(progress,totalSteps);

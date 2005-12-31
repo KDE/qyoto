@@ -120,7 +120,7 @@ namespace Qt {
 		public bool AutoAdvance() {
 			return ProxyQDateTimeEdit().AutoAdvance();
 		}
-		[Q_SLOT("setDateTime(const QDateTime&)")]
+		[Q_SLOT("void setDateTime(const QDateTime&)")]
 		[SmokeMethod("setDateTime(const QDateTime&)")]
 		public virtual void SetDateTime(DateTime dt) {
 			ProxyQDateTimeEdit().SetDateTime(dt);
@@ -149,7 +149,7 @@ namespace Qt {
 		protected new void ResizeEvent(QResizeEvent arg1) {
 			ProxyQDateTimeEdit().ResizeEvent(arg1);
 		}
-		[Q_SLOT("newValue(const QDate&)")]
+		[Q_SLOT("void newValue(const QDate&)")]
 		[SmokeMethod("newValue(const QDate&)")]
 		protected void NewValue(DateTime d) {
 			ProxyQDateTimeEdit().NewValue(d);
@@ -173,7 +173,7 @@ namespace Qt {
 	}
 
 	public interface IQDateTimeEditSignals : IQWidgetSignals {
-		[Q_SIGNAL("valueChanged(const QDateTime&)")]
+		[Q_SIGNAL("void valueChanged(const QDateTime&)")]
 		void ValueChanged(DateTime datetime);
 	}
 }

@@ -158,7 +158,7 @@ namespace Qt {
 		public void RemoveFirstNumber(int sec) {
 			ProxyQDateEdit().RemoveFirstNumber(sec);
 		}
-		[Q_SLOT("setDate(const QDate&)")]
+		[Q_SLOT("void setDate(const QDate&)")]
 		[SmokeMethod("setDate(const QDate&)")]
 		public virtual void SetDate(DateTime date) {
 			ProxyQDateEdit().SetDate(date);
@@ -235,7 +235,7 @@ namespace Qt {
 		protected virtual bool OutOfRange(int y, int m, int d) {
 			return ProxyQDateEdit().OutOfRange(y,m,d);
 		}
-		[Q_SLOT("updateButtons()")]
+		[Q_SLOT("void updateButtons()")]
 		[SmokeMethod("updateButtons()")]
 		protected void UpdateButtons() {
 			ProxyQDateEdit().UpdateButtons();
@@ -259,7 +259,7 @@ namespace Qt {
 	}
 
 	public interface IQDateEditSignals : IQDateTimeEditBaseSignals {
-		[Q_SIGNAL("valueChanged(const QDate&)")]
+		[Q_SIGNAL("void valueChanged(const QDate&)")]
 		void ValueChanged(DateTime date);
 	}
 }

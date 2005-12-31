@@ -226,27 +226,27 @@ namespace Qt {
 		public void FlushStdin() {
 			ProxyQProcess().FlushStdin();
 		}
-		[Q_SLOT("tryTerminate() const")]
+		[Q_SLOT("void tryTerminate() const")]
 		[SmokeMethod("tryTerminate() const")]
 		public void TryTerminate() {
 			ProxyQProcess().TryTerminate();
 		}
-		[Q_SLOT("kill() const")]
+		[Q_SLOT("void kill() const")]
 		[SmokeMethod("kill() const")]
 		public void Kill() {
 			ProxyQProcess().Kill();
 		}
-		[Q_SLOT("writeToStdin(const QByteArray&)")]
+		[Q_SLOT("void writeToStdin(const QByteArray&)")]
 		[SmokeMethod("writeToStdin(const QByteArray&)")]
 		public virtual void WriteToStdin(QByteArray buf) {
 			ProxyQProcess().WriteToStdin(buf);
 		}
-		[Q_SLOT("writeToStdin(const QString&)")]
+		[Q_SLOT("void writeToStdin(const QString&)")]
 		[SmokeMethod("writeToStdin(const QString&)")]
 		public virtual void WriteToStdin(string buf) {
 			ProxyQProcess().WriteToStdin(buf);
 		}
-		[Q_SLOT("closeStdin()")]
+		[Q_SLOT("void closeStdin()")]
 		[SmokeMethod("closeStdin()")]
 		public virtual void CloseStdin() {
 			ProxyQProcess().CloseStdin();
@@ -294,15 +294,15 @@ namespace Qt {
 	}
 
 	public interface IQProcessSignals : IQObjectSignals {
-		[Q_SIGNAL("readyReadStdout()")]
+		[Q_SIGNAL("void readyReadStdout()")]
 		void ReadyReadStdout();
-		[Q_SIGNAL("readyReadStderr()")]
+		[Q_SIGNAL("void readyReadStderr()")]
 		void ReadyReadStderr();
-		[Q_SIGNAL("processExited()")]
+		[Q_SIGNAL("void processExited()")]
 		void ProcessExited();
-		[Q_SIGNAL("wroteToStdin()")]
+		[Q_SIGNAL("void wroteToStdin()")]
 		void WroteToStdin();
-		[Q_SIGNAL("launchFinished()")]
+		[Q_SIGNAL("void launchFinished()")]
 		void LaunchFinished();
 	}
 }

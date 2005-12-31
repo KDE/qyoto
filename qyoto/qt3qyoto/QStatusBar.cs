@@ -89,17 +89,17 @@ namespace Qt {
 		public bool IsSizeGripEnabled() {
 			return ProxyQStatusBar().IsSizeGripEnabled();
 		}
-		[Q_SLOT("message(const QString&)")]
+		[Q_SLOT("void message(const QString&)")]
 		[SmokeMethod("message(const QString&)")]
 		public void Message(string arg1) {
 			ProxyQStatusBar().Message(arg1);
 		}
-		[Q_SLOT("message(const QString&, int)")]
+		[Q_SLOT("void message(const QString&, int)")]
 		[SmokeMethod("message(const QString&, int)")]
 		public void Message(string arg1, int arg2) {
 			ProxyQStatusBar().Message(arg1,arg2);
 		}
-		[Q_SLOT("clear()")]
+		[Q_SLOT("void clear()")]
 		[SmokeMethod("clear()")]
 		public void Clear() {
 			ProxyQStatusBar().Clear();
@@ -159,7 +159,7 @@ namespace Qt {
 	}
 
 	public interface IQStatusBarSignals : IQWidgetSignals {
-		[Q_SIGNAL("messageChanged(const QString&)")]
+		[Q_SIGNAL("void messageChanged(const QString&)")]
 		void MessageChanged(string text);
 	}
 }

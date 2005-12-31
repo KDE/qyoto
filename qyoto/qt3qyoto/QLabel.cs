@@ -198,37 +198,37 @@ namespace Qt {
 		public new void SetFont(QFont f) {
 			ProxyQLabel().SetFont(f);
 		}
-		[Q_SLOT("setText(const QString&)")]
+		[Q_SLOT("void setText(const QString&)")]
 		[SmokeMethod("setText(const QString&)")]
 		public virtual void SetText(string arg1) {
 			ProxyQLabel().SetText(arg1);
 		}
-		[Q_SLOT("setPixmap(const QPixmap&)")]
+		[Q_SLOT("void setPixmap(const QPixmap&)")]
 		[SmokeMethod("setPixmap(const QPixmap&)")]
 		public virtual void SetPixmap(QPixmap arg1) {
 			ProxyQLabel().SetPixmap(arg1);
 		}
-		[Q_SLOT("setPicture(const QPicture&)")]
+		[Q_SLOT("void setPicture(const QPicture&)")]
 		[SmokeMethod("setPicture(const QPicture&)")]
 		public virtual void SetPicture(QPicture arg1) {
 			ProxyQLabel().SetPicture(arg1);
 		}
-		[Q_SLOT("setMovie(const QMovie&)")]
+		[Q_SLOT("void setMovie(const QMovie&)")]
 		[SmokeMethod("setMovie(const QMovie&)")]
 		public virtual void SetMovie(QMovie arg1) {
 			ProxyQLabel().SetMovie(arg1);
 		}
-		[Q_SLOT("setNum(int)")]
+		[Q_SLOT("void setNum(int)")]
 		[SmokeMethod("setNum(int)")]
 		public virtual void SetNum(int arg1) {
 			ProxyQLabel().SetNum(arg1);
 		}
-		[Q_SLOT("setNum(double)")]
+		[Q_SLOT("void setNum(double)")]
 		[SmokeMethod("setNum(double)")]
 		public virtual void SetNum(double arg1) {
 			ProxyQLabel().SetNum(arg1);
 		}
-		[Q_SLOT("clear()")]
+		[Q_SLOT("void clear()")]
 		[SmokeMethod("clear()")]
 		public void Clear() {
 			ProxyQLabel().Clear();

@@ -156,12 +156,12 @@ namespace Qt {
 		public QButtonGroup Group() {
 			return ProxyQButton().Group();
 		}
-		[Q_SLOT("animateClick()")]
+		[Q_SLOT("void animateClick()")]
 		[SmokeMethod("animateClick()")]
 		public void AnimateClick() {
 			ProxyQButton().AnimateClick();
 		}
-		[Q_SLOT("toggle()")]
+		[Q_SLOT("void toggle()")]
 		[SmokeMethod("toggle()")]
 		public void Toggle() {
 			ProxyQButton().Toggle();
@@ -265,15 +265,15 @@ namespace Qt {
 	}
 
 	public interface IQButtonSignals : IQWidgetSignals {
-		[Q_SIGNAL("pressed()")]
+		[Q_SIGNAL("void pressed()")]
 		void Pressed();
-		[Q_SIGNAL("released()")]
+		[Q_SIGNAL("void released()")]
 		void Released();
-		[Q_SIGNAL("clicked()")]
+		[Q_SIGNAL("void clicked()")]
 		void Clicked();
-		[Q_SIGNAL("toggled(bool)")]
+		[Q_SIGNAL("void toggled(bool)")]
 		void Toggled(bool arg1);
-		[Q_SIGNAL("stateChanged(int)")]
+		[Q_SIGNAL("void stateChanged(int)")]
 		void StateChanged(int arg1);
 	}
 }

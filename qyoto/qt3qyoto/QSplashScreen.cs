@@ -81,22 +81,22 @@ namespace Qt {
 		public new void Repaint() {
 			ProxyQSplashScreen().Repaint();
 		}
-		[Q_SLOT("message(const QString&, int, const QColor&)")]
+		[Q_SLOT("void message(const QString&, int, const QColor&)")]
 		[SmokeMethod("message(const QString&, int, const QColor&)")]
 		public void Message(string str, int flags, QColor color) {
 			ProxyQSplashScreen().Message(str,flags,color);
 		}
-		[Q_SLOT("message(const QString&, int)")]
+		[Q_SLOT("void message(const QString&, int)")]
 		[SmokeMethod("message(const QString&, int)")]
 		public void Message(string str, int flags) {
 			ProxyQSplashScreen().Message(str,flags);
 		}
-		[Q_SLOT("message(const QString&)")]
+		[Q_SLOT("void message(const QString&)")]
 		[SmokeMethod("message(const QString&)")]
 		public void Message(string str) {
 			ProxyQSplashScreen().Message(str);
 		}
-		[Q_SLOT("clear()")]
+		[Q_SLOT("void clear()")]
 		[SmokeMethod("clear()")]
 		public void Clear() {
 			ProxyQSplashScreen().Clear();
@@ -144,7 +144,7 @@ namespace Qt {
 	}
 
 	public interface IQSplashScreenSignals : IQWidgetSignals {
-		[Q_SIGNAL("messageChanged(const QString&)")]
+		[Q_SIGNAL("void messageChanged(const QString&)")]
 		void MessageChanged(string str);
 	}
 }

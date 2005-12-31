@@ -462,27 +462,27 @@ namespace Qt {
 		public void Sort() {
 			ProxyQListBox().Sort();
 		}
-		[Q_SLOT("clear()")]
+		[Q_SLOT("void clear()")]
 		[SmokeMethod("clear()")]
 		public void Clear() {
 			ProxyQListBox().Clear();
 		}
-		[Q_SLOT("ensureCurrentVisible()")]
+		[Q_SLOT("void ensureCurrentVisible()")]
 		[SmokeMethod("ensureCurrentVisible()")]
 		public virtual void EnsureCurrentVisible() {
 			ProxyQListBox().EnsureCurrentVisible();
 		}
-		[Q_SLOT("clearSelection()")]
+		[Q_SLOT("void clearSelection()")]
 		[SmokeMethod("clearSelection()")]
 		public virtual void ClearSelection() {
 			ProxyQListBox().ClearSelection();
 		}
-		[Q_SLOT("selectAll(bool)")]
+		[Q_SLOT("void selectAll(bool)")]
 		[SmokeMethod("selectAll(bool)")]
 		public virtual void SelectAll(bool select) {
 			ProxyQListBox().SelectAll(select);
 		}
-		[Q_SLOT("invertSelection()")]
+		[Q_SLOT("void invertSelection()")]
 		[SmokeMethod("invertSelection()")]
 		public virtual void InvertSelection() {
 			ProxyQListBox().InvertSelection();
@@ -595,7 +595,7 @@ namespace Qt {
 		protected int FindItem(int yPos) {
 			return ProxyQListBox().FindItem(yPos);
 		}
-		[Q_SLOT("clearInputString()")]
+		[Q_SLOT("void clearInputString()")]
 		[SmokeMethod("clearInputString()")]
 		protected void ClearInputString() {
 			ProxyQListBox().ClearInputString();
@@ -619,49 +619,49 @@ namespace Qt {
 	}
 
 	public interface IQListBoxSignals : IQScrollViewSignals {
-		[Q_SIGNAL("highlighted(int)")]
+		[Q_SIGNAL("void highlighted(int)")]
 		void Highlighted(int index);
-		[Q_SIGNAL("selected(int)")]
+		[Q_SIGNAL("void selected(int)")]
 		void Selected(int index);
-		[Q_SIGNAL("highlighted(const QString&)")]
+		[Q_SIGNAL("void highlighted(const QString&)")]
 		void Highlighted(string arg1);
-		[Q_SIGNAL("selected(const QString&)")]
+		[Q_SIGNAL("void selected(const QString&)")]
 		void Selected(string arg1);
-		[Q_SIGNAL("highlighted(QListBoxItem*)")]
+		[Q_SIGNAL("void highlighted(QListBoxItem*)")]
 		void Highlighted(QListBoxItem arg1);
-		[Q_SIGNAL("selected(QListBoxItem*)")]
+		[Q_SIGNAL("void selected(QListBoxItem*)")]
 		void Selected(QListBoxItem arg1);
-		[Q_SIGNAL("selectionChanged()")]
+		[Q_SIGNAL("void selectionChanged()")]
 		void SelectionChanged();
-		[Q_SIGNAL("selectionChanged(QListBoxItem*)")]
+		[Q_SIGNAL("void selectionChanged(QListBoxItem*)")]
 		void SelectionChanged(QListBoxItem arg1);
-		[Q_SIGNAL("currentChanged(QListBoxItem*)")]
+		[Q_SIGNAL("void currentChanged(QListBoxItem*)")]
 		void CurrentChanged(QListBoxItem arg1);
-		[Q_SIGNAL("clicked(QListBoxItem*)")]
+		[Q_SIGNAL("void clicked(QListBoxItem*)")]
 		void Clicked(QListBoxItem arg1);
-		[Q_SIGNAL("clicked(QListBoxItem*, const QPoint&)")]
+		[Q_SIGNAL("void clicked(QListBoxItem*, const QPoint&)")]
 		void Clicked(QListBoxItem arg1, QPoint arg2);
-		[Q_SIGNAL("pressed(QListBoxItem*)")]
+		[Q_SIGNAL("void pressed(QListBoxItem*)")]
 		void Pressed(QListBoxItem arg1);
-		[Q_SIGNAL("pressed(QListBoxItem*, const QPoint&)")]
+		[Q_SIGNAL("void pressed(QListBoxItem*, const QPoint&)")]
 		void Pressed(QListBoxItem arg1, QPoint arg2);
-		[Q_SIGNAL("doubleClicked(QListBoxItem*)")]
+		[Q_SIGNAL("void doubleClicked(QListBoxItem*)")]
 		void DoubleClicked(QListBoxItem arg1);
-		[Q_SIGNAL("returnPressed(QListBoxItem*)")]
+		[Q_SIGNAL("void returnPressed(QListBoxItem*)")]
 		void ReturnPressed(QListBoxItem arg1);
-		[Q_SIGNAL("rightButtonClicked(QListBoxItem*, const QPoint&)")]
+		[Q_SIGNAL("void rightButtonClicked(QListBoxItem*, const QPoint&)")]
 		void RightButtonClicked(QListBoxItem arg1, QPoint arg2);
-		[Q_SIGNAL("rightButtonPressed(QListBoxItem*, const QPoint&)")]
+		[Q_SIGNAL("void rightButtonPressed(QListBoxItem*, const QPoint&)")]
 		void RightButtonPressed(QListBoxItem arg1, QPoint arg2);
-		[Q_SIGNAL("mouseButtonPressed(int, QListBoxItem*, const QPoint&)")]
+		[Q_SIGNAL("void mouseButtonPressed(int, QListBoxItem*, const QPoint&)")]
 		void MouseButtonPressed(int arg1, QListBoxItem arg2, QPoint arg3);
-		[Q_SIGNAL("mouseButtonClicked(int, QListBoxItem*, const QPoint&)")]
+		[Q_SIGNAL("void mouseButtonClicked(int, QListBoxItem*, const QPoint&)")]
 		void MouseButtonClicked(int arg1, QListBoxItem arg2, QPoint arg3);
-		[Q_SIGNAL("contextMenuRequested(QListBoxItem*, const QPoint&)")]
+		[Q_SIGNAL("void contextMenuRequested(QListBoxItem*, const QPoint&)")]
 		void ContextMenuRequested(QListBoxItem arg1, QPoint arg2);
-		[Q_SIGNAL("onItem(QListBoxItem*)")]
+		[Q_SIGNAL("void onItem(QListBoxItem*)")]
 		void OnItem(QListBoxItem item);
-		[Q_SIGNAL("onViewport()")]
+		[Q_SIGNAL("void onViewport()")]
 		void OnViewport();
 	}
 }

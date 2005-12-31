@@ -199,62 +199,62 @@ namespace Qt {
 		public virtual bool Seek(int i) {
 			return ProxyQDataBrowser().Seek(i);
 		}
-		[Q_SLOT("refresh()")]
+		[Q_SLOT("void refresh()")]
 		[SmokeMethod("refresh()")]
 		public virtual void Refresh() {
 			ProxyQDataBrowser().Refresh();
 		}
-		[Q_SLOT("insert()")]
+		[Q_SLOT("void insert()")]
 		[SmokeMethod("insert()")]
 		public virtual void Insert() {
 			ProxyQDataBrowser().Insert();
 		}
-		[Q_SLOT("update()")]
+		[Q_SLOT("void update()")]
 		[SmokeMethod("update()")]
 		public new virtual void Update() {
 			ProxyQDataBrowser().Update();
 		}
-		[Q_SLOT("del()")]
+		[Q_SLOT("void del()")]
 		[SmokeMethod("del()")]
 		public virtual void Del() {
 			ProxyQDataBrowser().Del();
 		}
-		[Q_SLOT("first()")]
+		[Q_SLOT("void first()")]
 		[SmokeMethod("first()")]
 		public virtual void First() {
 			ProxyQDataBrowser().First();
 		}
-		[Q_SLOT("last()")]
+		[Q_SLOT("void last()")]
 		[SmokeMethod("last()")]
 		public virtual void Last() {
 			ProxyQDataBrowser().Last();
 		}
-		[Q_SLOT("next()")]
+		[Q_SLOT("void next()")]
 		[SmokeMethod("next()")]
 		public virtual void Next() {
 			ProxyQDataBrowser().Next();
 		}
-		[Q_SLOT("prev()")]
+		[Q_SLOT("void prev()")]
 		[SmokeMethod("prev()")]
 		public virtual void Prev() {
 			ProxyQDataBrowser().Prev();
 		}
-		[Q_SLOT("readFields()")]
+		[Q_SLOT("void readFields()")]
 		[SmokeMethod("readFields()")]
 		public virtual void ReadFields() {
 			ProxyQDataBrowser().ReadFields();
 		}
-		[Q_SLOT("writeFields()")]
+		[Q_SLOT("void writeFields()")]
 		[SmokeMethod("writeFields()")]
 		public virtual void WriteFields() {
 			ProxyQDataBrowser().WriteFields();
 		}
-		[Q_SLOT("clearValues()")]
+		[Q_SLOT("void clearValues()")]
 		[SmokeMethod("clearValues()")]
 		public virtual void ClearValues() {
 			ProxyQDataBrowser().ClearValues();
 		}
-		[Q_SLOT("updateBoundary()")]
+		[Q_SLOT("void updateBoundary()")]
 		[SmokeMethod("updateBoundary()")]
 		public void UpdateBoundary() {
 			ProxyQDataBrowser().UpdateBoundary();
@@ -322,29 +322,29 @@ namespace Qt {
 	}
 
 	public interface IQDataBrowserSignals : IQWidgetSignals {
-		[Q_SIGNAL("firstRecordAvailable(bool)")]
+		[Q_SIGNAL("void firstRecordAvailable(bool)")]
 		void FirstRecordAvailable(bool available);
-		[Q_SIGNAL("lastRecordAvailable(bool)")]
+		[Q_SIGNAL("void lastRecordAvailable(bool)")]
 		void LastRecordAvailable(bool available);
-		[Q_SIGNAL("nextRecordAvailable(bool)")]
+		[Q_SIGNAL("void nextRecordAvailable(bool)")]
 		void NextRecordAvailable(bool available);
-		[Q_SIGNAL("prevRecordAvailable(bool)")]
+		[Q_SIGNAL("void prevRecordAvailable(bool)")]
 		void PrevRecordAvailable(bool available);
-		[Q_SIGNAL("currentChanged(const QSqlRecord*)")]
+		[Q_SIGNAL("void currentChanged(const QSqlRecord*)")]
 		void CurrentChanged(QSqlRecord record);
-		[Q_SIGNAL("primeInsert(QSqlRecord*)")]
+		[Q_SIGNAL("void primeInsert(QSqlRecord*)")]
 		void PrimeInsert(QSqlRecord buf);
-		[Q_SIGNAL("primeUpdate(QSqlRecord*)")]
+		[Q_SIGNAL("void primeUpdate(QSqlRecord*)")]
 		void PrimeUpdate(QSqlRecord buf);
-		[Q_SIGNAL("primeDelete(QSqlRecord*)")]
+		[Q_SIGNAL("void primeDelete(QSqlRecord*)")]
 		void PrimeDelete(QSqlRecord buf);
-		[Q_SIGNAL("beforeInsert(QSqlRecord*)")]
+		[Q_SIGNAL("void beforeInsert(QSqlRecord*)")]
 		void BeforeInsert(QSqlRecord buf);
-		[Q_SIGNAL("beforeUpdate(QSqlRecord*)")]
+		[Q_SIGNAL("void beforeUpdate(QSqlRecord*)")]
 		void BeforeUpdate(QSqlRecord buf);
-		[Q_SIGNAL("beforeDelete(QSqlRecord*)")]
+		[Q_SIGNAL("void beforeDelete(QSqlRecord*)")]
 		void BeforeDelete(QSqlRecord buf);
-		[Q_SIGNAL("cursorChanged(QSqlCursor::Mode)")]
+		[Q_SIGNAL("void cursorChanged(QSqlCursor::Mode)")]
 		void CursorChanged(int mode);
 	}
 }

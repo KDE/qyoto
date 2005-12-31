@@ -200,9 +200,9 @@ namespace Qt {
 	}
 
 	public interface IQAccelSignals : IQObjectSignals {
-		[Q_SIGNAL("activated(int)")]
+		[Q_SIGNAL("void activated(int)")]
 		void Activated(int id);
-		[Q_SIGNAL("activatedAmbiguously(int)")]
+		[Q_SIGNAL("void activatedAmbiguously(int)")]
 		void ActivatedAmbiguously(int id);
 	}
 }

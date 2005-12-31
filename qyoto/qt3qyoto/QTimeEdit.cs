@@ -158,7 +158,7 @@ namespace Qt {
 		public void RemoveFirstNumber(int sec) {
 			ProxyQTimeEdit().RemoveFirstNumber(sec);
 		}
-		[Q_SLOT("setTime(const QTime&)")]
+		[Q_SLOT("void setTime(const QTime&)")]
 		[SmokeMethod("setTime(const QTime&)")]
 		public virtual void SetTime(DateTime time) {
 			ProxyQTimeEdit().SetTime(time);
@@ -231,7 +231,7 @@ namespace Qt {
 		protected virtual void SetSecond(int s) {
 			ProxyQTimeEdit().SetSecond(s);
 		}
-		[Q_SLOT("updateButtons()")]
+		[Q_SLOT("void updateButtons()")]
 		[SmokeMethod("updateButtons()")]
 		protected void UpdateButtons() {
 			ProxyQTimeEdit().UpdateButtons();
@@ -255,7 +255,7 @@ namespace Qt {
 	}
 
 	public interface IQTimeEditSignals : IQDateTimeEditBaseSignals {
-		[Q_SIGNAL("valueChanged(const QTime&)")]
+		[Q_SIGNAL("void valueChanged(const QTime&)")]
 		void ValueChanged(DateTime time);
 	}
 }

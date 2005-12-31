@@ -150,7 +150,7 @@ namespace Qt {
 		public int Count() {
 			return ProxyQToolBox().Count();
 		}
-		[Q_SLOT("setCurrentIndex(int)")]
+		[Q_SLOT("void setCurrentIndex(int)")]
 		[SmokeMethod("setCurrentIndex(int)")]
 		public void SetCurrentIndex(int index) {
 			ProxyQToolBox().SetCurrentIndex(index);
@@ -210,7 +210,7 @@ namespace Qt {
 	}
 
 	public interface IQToolBoxSignals : IQFrameSignals {
-		[Q_SIGNAL("currentChanged(int)")]
+		[Q_SIGNAL("void currentChanged(int)")]
 		void CurrentChanged(int index);
 	}
 }

@@ -621,17 +621,17 @@ namespace Qt {
 	}
 
 	public interface IQPopupMenuSignals : IQFrameSignals {
-		[Q_SIGNAL("activated(int)")]
+		[Q_SIGNAL("void activated(int)")]
 		void Activated(int itemId);
-		[Q_SIGNAL("highlighted(int)")]
+		[Q_SIGNAL("void highlighted(int)")]
 		void Highlighted(int itemId);
-		[Q_SIGNAL("activatedRedirect(int)")]
+		[Q_SIGNAL("void activatedRedirect(int)")]
 		void ActivatedRedirect(int itemId);
-		[Q_SIGNAL("highlightedRedirect(int)")]
+		[Q_SIGNAL("void highlightedRedirect(int)")]
 		void HighlightedRedirect(int itemId);
-		[Q_SIGNAL("aboutToShow()")]
+		[Q_SIGNAL("void aboutToShow()")]
 		void AboutToShow();
-		[Q_SIGNAL("aboutToHide()")]
+		[Q_SIGNAL("void aboutToHide()")]
 		void AboutToHide();
 	}
 }

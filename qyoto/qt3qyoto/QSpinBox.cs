@@ -197,37 +197,37 @@ namespace Qt {
 		public QRect DownRect() {
 			return ProxyQSpinBox().DownRect();
 		}
-		[Q_SLOT("setValue(int)")]
+		[Q_SLOT("void setValue(int)")]
 		[SmokeMethod("setValue(int)")]
 		public virtual void SetValue(int value) {
 			ProxyQSpinBox().SetValue(value);
 		}
-		[Q_SLOT("setPrefix(const QString&)")]
+		[Q_SLOT("void setPrefix(const QString&)")]
 		[SmokeMethod("setPrefix(const QString&)")]
 		public virtual void SetPrefix(string text) {
 			ProxyQSpinBox().SetPrefix(text);
 		}
-		[Q_SLOT("setSuffix(const QString&)")]
+		[Q_SLOT("void setSuffix(const QString&)")]
 		[SmokeMethod("setSuffix(const QString&)")]
 		public virtual void SetSuffix(string text) {
 			ProxyQSpinBox().SetSuffix(text);
 		}
-		[Q_SLOT("stepUp()")]
+		[Q_SLOT("void stepUp()")]
 		[SmokeMethod("stepUp()")]
 		public virtual void StepUp() {
 			ProxyQSpinBox().StepUp();
 		}
-		[Q_SLOT("stepDown()")]
+		[Q_SLOT("void stepDown()")]
 		[SmokeMethod("stepDown()")]
 		public virtual void StepDown() {
 			ProxyQSpinBox().StepDown();
 		}
-		[Q_SLOT("setEnabled(bool)")]
+		[Q_SLOT("void setEnabled(bool)")]
 		[SmokeMethod("setEnabled(bool)")]
 		public new virtual void SetEnabled(bool enabled) {
 			ProxyQSpinBox().SetEnabled(enabled);
 		}
-		[Q_SLOT("selectAll()")]
+		[Q_SLOT("void selectAll()")]
 		[SmokeMethod("selectAll()")]
 		public virtual void SelectAll() {
 			ProxyQSpinBox().SelectAll();
@@ -300,7 +300,7 @@ namespace Qt {
 		public new void StyleChange(QStyle arg1) {
 			ProxyQSpinBox().StyleChange(arg1);
 		}
-		[Q_SLOT("textChanged()")]
+		[Q_SLOT("void textChanged()")]
 		[SmokeMethod("textChanged()")]
 		protected void TextChanged() {
 			ProxyQSpinBox().TextChanged();
@@ -376,9 +376,9 @@ namespace Qt {
 	}
 
 	public interface IQSpinBoxSignals : IQWidgetSignals {
-		[Q_SIGNAL("valueChanged(int)")]
+		[Q_SIGNAL("void valueChanged(int)")]
 		void ValueChanged(int value);
-		[Q_SIGNAL("valueChanged(const QString&)")]
+		[Q_SIGNAL("void valueChanged(const QString&)")]
 		void ValueChanged(string valueText);
 	}
 }

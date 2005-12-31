@@ -285,32 +285,32 @@ namespace Qt {
 		public void AddFilter(string filter) {
 			ProxyQFileDialog().AddFilter(filter);
 		}
-		[Q_SLOT("done(int)")]
+		[Q_SLOT("void done(int)")]
 		[SmokeMethod("done(int)")]
 		public new void Done(int arg1) {
 			ProxyQFileDialog().Done(arg1);
 		}
-		[Q_SLOT("setDir(const QString&)")]
+		[Q_SLOT("void setDir(const QString&)")]
 		[SmokeMethod("setDir(const QString&)")]
 		public void SetDir(string arg1) {
 			ProxyQFileDialog().SetDir(arg1);
 		}
-		[Q_SLOT("setUrl(const QUrlOperator&)")]
+		[Q_SLOT("void setUrl(const QUrlOperator&)")]
 		[SmokeMethod("setUrl(const QUrlOperator&)")]
 		public void SetUrl(QUrlOperator url) {
 			ProxyQFileDialog().SetUrl(url);
 		}
-		[Q_SLOT("setFilter(const QString&)")]
+		[Q_SLOT("void setFilter(const QString&)")]
 		[SmokeMethod("setFilter(const QString&)")]
 		public void SetFilter(string arg1) {
 			ProxyQFileDialog().SetFilter(arg1);
 		}
-		[Q_SLOT("setFilters(const QString&)")]
+		[Q_SLOT("void setFilters(const QString&)")]
 		[SmokeMethod("setFilters(const QString&)")]
 		public void SetFilters(string arg1) {
 			ProxyQFileDialog().SetFilters(arg1);
 		}
-		[Q_SLOT("setFilters(const char**)")]
+		[Q_SLOT("void setFilters(const char**)")]
 		[SmokeMethod("setFilters(const char**)")]
 		public void SetFilters(string[] arg1) {
 			ProxyQFileDialog().SetFilters(arg1);
@@ -510,15 +510,15 @@ namespace Qt {
 	}
 
 	public interface IQFileDialogSignals : IQDialogSignals {
-		[Q_SIGNAL("fileHighlighted(const QString&)")]
+		[Q_SIGNAL("void fileHighlighted(const QString&)")]
 		void FileHighlighted(string arg1);
-		[Q_SIGNAL("fileSelected(const QString&)")]
+		[Q_SIGNAL("void fileSelected(const QString&)")]
 		void FileSelected(string arg1);
-		[Q_SIGNAL("filesSelected(const QStringList&)")]
+		[Q_SIGNAL("void filesSelected(const QStringList&)")]
 		void FilesSelected(string[] arg1);
-		[Q_SIGNAL("dirEntered(const QString&)")]
+		[Q_SIGNAL("void dirEntered(const QString&)")]
 		void DirEntered(string arg1);
-		[Q_SIGNAL("filterSelected(const QString&)")]
+		[Q_SIGNAL("void filterSelected(const QString&)")]
 		void FilterSelected(string arg1);
 	}
 }

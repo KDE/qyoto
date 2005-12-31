@@ -296,22 +296,22 @@ namespace Qt {
 		public new void Hide() {
 			ProxyQComboBox().Hide();
 		}
-		[Q_SLOT("clear()")]
+		[Q_SLOT("void clear()")]
 		[SmokeMethod("clear()")]
 		public void Clear() {
 			ProxyQComboBox().Clear();
 		}
-		[Q_SLOT("clearValidator()")]
+		[Q_SLOT("void clearValidator()")]
 		[SmokeMethod("clearValidator()")]
 		public void ClearValidator() {
 			ProxyQComboBox().ClearValidator();
 		}
-		[Q_SLOT("clearEdit()")]
+		[Q_SLOT("void clearEdit()")]
 		[SmokeMethod("clearEdit()")]
 		public void ClearEdit() {
 			ProxyQComboBox().ClearEdit();
 		}
-		[Q_SLOT("setEditText(const QString&)")]
+		[Q_SLOT("void setEditText(const QString&)")]
 		[SmokeMethod("setEditText(const QString&)")]
 		public virtual void SetEditText(string arg1) {
 			ProxyQComboBox().SetEditText(arg1);
@@ -399,15 +399,15 @@ namespace Qt {
 	}
 
 	public interface IQComboBoxSignals : IQWidgetSignals {
-		[Q_SIGNAL("activated(int)")]
+		[Q_SIGNAL("void activated(int)")]
 		void Activated(int index);
-		[Q_SIGNAL("highlighted(int)")]
+		[Q_SIGNAL("void highlighted(int)")]
 		void Highlighted(int index);
-		[Q_SIGNAL("activated(const QString&)")]
+		[Q_SIGNAL("void activated(const QString&)")]
 		void Activated(string arg1);
-		[Q_SIGNAL("highlighted(const QString&)")]
+		[Q_SIGNAL("void highlighted(const QString&)")]
 		void Highlighted(string arg1);
-		[Q_SIGNAL("textChanged(const QString&)")]
+		[Q_SIGNAL("void textChanged(const QString&)")]
 		void TextChanged(string arg1);
 	}
 }

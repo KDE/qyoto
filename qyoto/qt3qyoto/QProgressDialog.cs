@@ -184,42 +184,42 @@ namespace Qt {
 		public int MinimumDuration() {
 			return ProxyQProgressDialog().MinimumDuration();
 		}
-		[Q_SLOT("cancel()")]
+		[Q_SLOT("void cancel()")]
 		[SmokeMethod("cancel()")]
 		public void Cancel() {
 			ProxyQProgressDialog().Cancel();
 		}
-		[Q_SLOT("reset()")]
+		[Q_SLOT("void reset()")]
 		[SmokeMethod("reset()")]
 		public void Reset() {
 			ProxyQProgressDialog().Reset();
 		}
-		[Q_SLOT("setTotalSteps(int)")]
+		[Q_SLOT("void setTotalSteps(int)")]
 		[SmokeMethod("setTotalSteps(int)")]
 		public void SetTotalSteps(int totalSteps) {
 			ProxyQProgressDialog().SetTotalSteps(totalSteps);
 		}
-		[Q_SLOT("setProgress(int)")]
+		[Q_SLOT("void setProgress(int)")]
 		[SmokeMethod("setProgress(int)")]
 		public void SetProgress(int progress) {
 			ProxyQProgressDialog().SetProgress(progress);
 		}
-		[Q_SLOT("setProgress(int, int)")]
+		[Q_SLOT("void setProgress(int, int)")]
 		[SmokeMethod("setProgress(int, int)")]
 		public void SetProgress(int progress, int totalSteps) {
 			ProxyQProgressDialog().SetProgress(progress,totalSteps);
 		}
-		[Q_SLOT("setLabelText(const QString&)")]
+		[Q_SLOT("void setLabelText(const QString&)")]
 		[SmokeMethod("setLabelText(const QString&)")]
 		public void SetLabelText(string arg1) {
 			ProxyQProgressDialog().SetLabelText(arg1);
 		}
-		[Q_SLOT("setCancelButtonText(const QString&)")]
+		[Q_SLOT("void setCancelButtonText(const QString&)")]
 		[SmokeMethod("setCancelButtonText(const QString&)")]
 		public void SetCancelButtonText(string arg1) {
 			ProxyQProgressDialog().SetCancelButtonText(arg1);
 		}
-		[Q_SLOT("setMinimumDuration(int)")]
+		[Q_SLOT("void setMinimumDuration(int)")]
 		[SmokeMethod("setMinimumDuration(int)")]
 		public void SetMinimumDuration(int ms) {
 			ProxyQProgressDialog().SetMinimumDuration(ms);
@@ -256,7 +256,7 @@ namespace Qt {
 		public new void ShowEvent(QShowEvent e) {
 			ProxyQProgressDialog().ShowEvent(e);
 		}
-		[Q_SLOT("forceShow()")]
+		[Q_SLOT("void forceShow()")]
 		[SmokeMethod("forceShow()")]
 		protected void ForceShow() {
 			ProxyQProgressDialog().ForceShow();
@@ -280,9 +280,9 @@ namespace Qt {
 	}
 
 	public interface IQProgressDialogSignals : IQDialogSignals {
-		[Q_SIGNAL("cancelled()")]
+		[Q_SIGNAL("void cancelled()")]
 		void Cancelled();
-		[Q_SIGNAL("canceled()")]
+		[Q_SIGNAL("void canceled()")]
 		void Canceled();
 	}
 }

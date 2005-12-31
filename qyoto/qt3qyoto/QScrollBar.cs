@@ -176,7 +176,7 @@ namespace Qt {
 		public QRect SliderRect() {
 			return ProxyQScrollBar().SliderRect();
 		}
-		[Q_SLOT("setValue(int)")]
+		[Q_SLOT("void setValue(int)")]
 		[SmokeMethod("setValue(int)")]
 		public void SetValue(int arg1) {
 			ProxyQScrollBar().SetValue(arg1);
@@ -312,21 +312,21 @@ namespace Qt {
 	}
 
 	public interface IQScrollBarSignals : IQWidgetSignals {
-		[Q_SIGNAL("valueChanged(int)")]
+		[Q_SIGNAL("void valueChanged(int)")]
 		void ValueChanged(int value);
-		[Q_SIGNAL("sliderPressed()")]
+		[Q_SIGNAL("void sliderPressed()")]
 		void SliderPressed();
-		[Q_SIGNAL("sliderMoved(int)")]
+		[Q_SIGNAL("void sliderMoved(int)")]
 		void SliderMoved(int value);
-		[Q_SIGNAL("sliderReleased()")]
+		[Q_SIGNAL("void sliderReleased()")]
 		void SliderReleased();
-		[Q_SIGNAL("nextLine()")]
+		[Q_SIGNAL("void nextLine()")]
 		void NextLine();
-		[Q_SIGNAL("prevLine()")]
+		[Q_SIGNAL("void prevLine()")]
 		void PrevLine();
-		[Q_SIGNAL("nextPage()")]
+		[Q_SIGNAL("void nextPage()")]
 		void NextPage();
-		[Q_SIGNAL("prevPage()")]
+		[Q_SIGNAL("void prevPage()")]
 		void PrevPage();
 	}
 }

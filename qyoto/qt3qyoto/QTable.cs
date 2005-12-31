@@ -360,229 +360,229 @@ namespace Qt {
 		public void UpdateHeaderStates() {
 			ProxyQTable().UpdateHeaderStates();
 		}
-		[Q_SLOT("setNumRows(int)")]
+		[Q_SLOT("void setNumRows(int)")]
 		[SmokeMethod("setNumRows(int)")]
 		public virtual void SetNumRows(int r) {
 			ProxyQTable().SetNumRows(r);
 		}
-		[Q_SLOT("setNumCols(int)")]
+		[Q_SLOT("void setNumCols(int)")]
 		[SmokeMethod("setNumCols(int)")]
 		public virtual void SetNumCols(int r) {
 			ProxyQTable().SetNumCols(r);
 		}
-		[Q_SLOT("setShowGrid(bool)")]
+		[Q_SLOT("void setShowGrid(bool)")]
 		[SmokeMethod("setShowGrid(bool)")]
 		public virtual void SetShowGrid(bool b) {
 			ProxyQTable().SetShowGrid(b);
 		}
-		[Q_SLOT("hideRow(int)")]
+		[Q_SLOT("void hideRow(int)")]
 		[SmokeMethod("hideRow(int)")]
 		public virtual void HideRow(int row) {
 			ProxyQTable().HideRow(row);
 		}
-		[Q_SLOT("hideColumn(int)")]
+		[Q_SLOT("void hideColumn(int)")]
 		[SmokeMethod("hideColumn(int)")]
 		public virtual void HideColumn(int col) {
 			ProxyQTable().HideColumn(col);
 		}
-		[Q_SLOT("showRow(int)")]
+		[Q_SLOT("void showRow(int)")]
 		[SmokeMethod("showRow(int)")]
 		public virtual void ShowRow(int row) {
 			ProxyQTable().ShowRow(row);
 		}
-		[Q_SLOT("showColumn(int)")]
+		[Q_SLOT("void showColumn(int)")]
 		[SmokeMethod("showColumn(int)")]
 		public virtual void ShowColumn(int col) {
 			ProxyQTable().ShowColumn(col);
 		}
-		[Q_SLOT("isRowHidden(int) const")]
+		[Q_SLOT("bool isRowHidden(int) const")]
 		[SmokeMethod("isRowHidden(int) const")]
 		public bool IsRowHidden(int row) {
 			return ProxyQTable().IsRowHidden(row);
 		}
-		[Q_SLOT("isColumnHidden(int) const")]
+		[Q_SLOT("bool isColumnHidden(int) const")]
 		[SmokeMethod("isColumnHidden(int) const")]
 		public bool IsColumnHidden(int col) {
 			return ProxyQTable().IsColumnHidden(col);
 		}
-		[Q_SLOT("setColumnWidth(int, int)")]
+		[Q_SLOT("void setColumnWidth(int, int)")]
 		[SmokeMethod("setColumnWidth(int, int)")]
 		public virtual void SetColumnWidth(int col, int w) {
 			ProxyQTable().SetColumnWidth(col,w);
 		}
-		[Q_SLOT("setRowHeight(int, int)")]
+		[Q_SLOT("void setRowHeight(int, int)")]
 		[SmokeMethod("setRowHeight(int, int)")]
 		public virtual void SetRowHeight(int row, int h) {
 			ProxyQTable().SetRowHeight(row,h);
 		}
-		[Q_SLOT("adjustColumn(int)")]
+		[Q_SLOT("void adjustColumn(int)")]
 		[SmokeMethod("adjustColumn(int)")]
 		public virtual void AdjustColumn(int col) {
 			ProxyQTable().AdjustColumn(col);
 		}
-		[Q_SLOT("adjustRow(int)")]
+		[Q_SLOT("void adjustRow(int)")]
 		[SmokeMethod("adjustRow(int)")]
 		public virtual void AdjustRow(int row) {
 			ProxyQTable().AdjustRow(row);
 		}
-		[Q_SLOT("setColumnStretchable(int, bool)")]
+		[Q_SLOT("void setColumnStretchable(int, bool)")]
 		[SmokeMethod("setColumnStretchable(int, bool)")]
 		public virtual void SetColumnStretchable(int col, bool stretch) {
 			ProxyQTable().SetColumnStretchable(col,stretch);
 		}
-		[Q_SLOT("setRowStretchable(int, bool)")]
+		[Q_SLOT("void setRowStretchable(int, bool)")]
 		[SmokeMethod("setRowStretchable(int, bool)")]
 		public virtual void SetRowStretchable(int row, bool stretch) {
 			ProxyQTable().SetRowStretchable(row,stretch);
 		}
-		[Q_SLOT("isColumnStretchable(int) const")]
+		[Q_SLOT("bool isColumnStretchable(int) const")]
 		[SmokeMethod("isColumnStretchable(int) const")]
 		public bool IsColumnStretchable(int col) {
 			return ProxyQTable().IsColumnStretchable(col);
 		}
-		[Q_SLOT("isRowStretchable(int) const")]
+		[Q_SLOT("bool isRowStretchable(int) const")]
 		[SmokeMethod("isRowStretchable(int) const")]
 		public bool IsRowStretchable(int row) {
 			return ProxyQTable().IsRowStretchable(row);
 		}
-		[Q_SLOT("setSorting(bool)")]
+		[Q_SLOT("void setSorting(bool)")]
 		[SmokeMethod("setSorting(bool)")]
 		public virtual void SetSorting(bool b) {
 			ProxyQTable().SetSorting(b);
 		}
-		[Q_SLOT("swapRows(int, int, bool)")]
+		[Q_SLOT("void swapRows(int, int, bool)")]
 		[SmokeMethod("swapRows(int, int, bool)")]
 		public virtual void SwapRows(int row1, int row2, bool swapHeader) {
 			ProxyQTable().SwapRows(row1,row2,swapHeader);
 		}
-		[Q_SLOT("swapRows(int, int)")]
+		[Q_SLOT("void swapRows(int, int)")]
 		[SmokeMethod("swapRows(int, int)")]
 		public virtual void SwapRows(int row1, int row2) {
 			ProxyQTable().SwapRows(row1,row2);
 		}
-		[Q_SLOT("swapColumns(int, int, bool)")]
+		[Q_SLOT("void swapColumns(int, int, bool)")]
 		[SmokeMethod("swapColumns(int, int, bool)")]
 		public virtual void SwapColumns(int col1, int col2, bool swapHeader) {
 			ProxyQTable().SwapColumns(col1,col2,swapHeader);
 		}
-		[Q_SLOT("swapColumns(int, int)")]
+		[Q_SLOT("void swapColumns(int, int)")]
 		[SmokeMethod("swapColumns(int, int)")]
 		public virtual void SwapColumns(int col1, int col2) {
 			ProxyQTable().SwapColumns(col1,col2);
 		}
-		[Q_SLOT("swapCells(int, int, int, int)")]
+		[Q_SLOT("void swapCells(int, int, int, int)")]
 		[SmokeMethod("swapCells(int, int, int, int)")]
 		public virtual void SwapCells(int row1, int col1, int row2, int col2) {
 			ProxyQTable().SwapCells(row1,col1,row2,col2);
 		}
-		[Q_SLOT("setLeftMargin(int)")]
+		[Q_SLOT("void setLeftMargin(int)")]
 		[SmokeMethod("setLeftMargin(int)")]
 		public virtual void SetLeftMargin(int m) {
 			ProxyQTable().SetLeftMargin(m);
 		}
-		[Q_SLOT("setTopMargin(int)")]
+		[Q_SLOT("void setTopMargin(int)")]
 		[SmokeMethod("setTopMargin(int)")]
 		public virtual void SetTopMargin(int m) {
 			ProxyQTable().SetTopMargin(m);
 		}
-		[Q_SLOT("setCurrentCell(int, int)")]
+		[Q_SLOT("void setCurrentCell(int, int)")]
 		[SmokeMethod("setCurrentCell(int, int)")]
 		public virtual void SetCurrentCell(int row, int col) {
 			ProxyQTable().SetCurrentCell(row,col);
 		}
-		[Q_SLOT("clearSelection(bool)")]
+		[Q_SLOT("void clearSelection(bool)")]
 		[SmokeMethod("clearSelection(bool)")]
 		public void ClearSelection(bool repaint) {
 			ProxyQTable().ClearSelection(repaint);
 		}
-		[Q_SLOT("clearSelection()")]
+		[Q_SLOT("void clearSelection()")]
 		[SmokeMethod("clearSelection()")]
 		public void ClearSelection() {
 			ProxyQTable().ClearSelection();
 		}
-		[Q_SLOT("setColumnMovingEnabled(bool)")]
+		[Q_SLOT("void setColumnMovingEnabled(bool)")]
 		[SmokeMethod("setColumnMovingEnabled(bool)")]
 		public virtual void SetColumnMovingEnabled(bool b) {
 			ProxyQTable().SetColumnMovingEnabled(b);
 		}
-		[Q_SLOT("setRowMovingEnabled(bool)")]
+		[Q_SLOT("void setRowMovingEnabled(bool)")]
 		[SmokeMethod("setRowMovingEnabled(bool)")]
 		public virtual void SetRowMovingEnabled(bool b) {
 			ProxyQTable().SetRowMovingEnabled(b);
 		}
-		[Q_SLOT("setReadOnly(bool)")]
+		[Q_SLOT("void setReadOnly(bool)")]
 		[SmokeMethod("setReadOnly(bool)")]
 		public virtual void SetReadOnly(bool b) {
 			ProxyQTable().SetReadOnly(b);
 		}
-		[Q_SLOT("setRowReadOnly(int, bool)")]
+		[Q_SLOT("void setRowReadOnly(int, bool)")]
 		[SmokeMethod("setRowReadOnly(int, bool)")]
 		public virtual void SetRowReadOnly(int row, bool ro) {
 			ProxyQTable().SetRowReadOnly(row,ro);
 		}
-		[Q_SLOT("setColumnReadOnly(int, bool)")]
+		[Q_SLOT("void setColumnReadOnly(int, bool)")]
 		[SmokeMethod("setColumnReadOnly(int, bool)")]
 		public virtual void SetColumnReadOnly(int col, bool ro) {
 			ProxyQTable().SetColumnReadOnly(col,ro);
 		}
-		[Q_SLOT("setDragEnabled(bool)")]
+		[Q_SLOT("void setDragEnabled(bool)")]
 		[SmokeMethod("setDragEnabled(bool)")]
 		public virtual void SetDragEnabled(bool b) {
 			ProxyQTable().SetDragEnabled(b);
 		}
-		[Q_SLOT("dragEnabled() const")]
+		[Q_SLOT("bool dragEnabled() const")]
 		[SmokeMethod("dragEnabled() const")]
 		public bool DragEnabled() {
 			return ProxyQTable().DragEnabled();
 		}
-		[Q_SLOT("insertRows(int, int)")]
+		[Q_SLOT("void insertRows(int, int)")]
 		[SmokeMethod("insertRows(int, int)")]
 		public virtual void InsertRows(int row, int count) {
 			ProxyQTable().InsertRows(row,count);
 		}
-		[Q_SLOT("insertRows(int)")]
+		[Q_SLOT("void insertRows(int)")]
 		[SmokeMethod("insertRows(int)")]
 		public virtual void InsertRows(int row) {
 			ProxyQTable().InsertRows(row);
 		}
-		[Q_SLOT("insertColumns(int, int)")]
+		[Q_SLOT("void insertColumns(int, int)")]
 		[SmokeMethod("insertColumns(int, int)")]
 		public virtual void InsertColumns(int col, int count) {
 			ProxyQTable().InsertColumns(col,count);
 		}
-		[Q_SLOT("insertColumns(int)")]
+		[Q_SLOT("void insertColumns(int)")]
 		[SmokeMethod("insertColumns(int)")]
 		public virtual void InsertColumns(int col) {
 			ProxyQTable().InsertColumns(col);
 		}
-		[Q_SLOT("removeRow(int)")]
+		[Q_SLOT("void removeRow(int)")]
 		[SmokeMethod("removeRow(int)")]
 		public virtual void RemoveRow(int row) {
 			ProxyQTable().RemoveRow(row);
 		}
 		// void removeRows(const QMemArray<int>& arg1); >>>> NOT CONVERTED
-		[Q_SLOT("removeColumn(int)")]
+		[Q_SLOT("void removeColumn(int)")]
 		[SmokeMethod("removeColumn(int)")]
 		public virtual void RemoveColumn(int col) {
 			ProxyQTable().RemoveColumn(col);
 		}
 		// void removeColumns(const QMemArray<int>& arg1); >>>> NOT CONVERTED
-		[Q_SLOT("editCell(int, int, bool)")]
+		[Q_SLOT("void editCell(int, int, bool)")]
 		[SmokeMethod("editCell(int, int, bool)")]
 		public virtual void EditCell(int row, int col, bool replace) {
 			ProxyQTable().EditCell(row,col,replace);
 		}
-		[Q_SLOT("editCell(int, int)")]
+		[Q_SLOT("void editCell(int, int)")]
 		[SmokeMethod("editCell(int, int)")]
 		public virtual void EditCell(int row, int col) {
 			ProxyQTable().EditCell(row,col);
 		}
-		[Q_SLOT("setRowLabels(const QStringList&)")]
+		[Q_SLOT("void setRowLabels(const QStringList&)")]
 		[SmokeMethod("setRowLabels(const QStringList&)")]
 		public void SetRowLabels(string[] labels) {
 			ProxyQTable().SetRowLabels(labels);
 		}
-		[Q_SLOT("setColumnLabels(const QStringList&)")]
+		[Q_SLOT("void setColumnLabels(const QStringList&)")]
 		[SmokeMethod("setColumnLabels(const QStringList&)")]
 		public void SetColumnLabels(string[] labels) {
 			ProxyQTable().SetColumnLabels(labels);
@@ -729,27 +729,27 @@ namespace Qt {
 		protected int CurrEditCol() {
 			return ProxyQTable().CurrEditCol();
 		}
-		[Q_SLOT("columnWidthChanged(int)")]
+		[Q_SLOT("void columnWidthChanged(int)")]
 		[SmokeMethod("columnWidthChanged(int)")]
 		protected virtual void ColumnWidthChanged(int col) {
 			ProxyQTable().ColumnWidthChanged(col);
 		}
-		[Q_SLOT("rowHeightChanged(int)")]
+		[Q_SLOT("void rowHeightChanged(int)")]
 		[SmokeMethod("rowHeightChanged(int)")]
 		protected virtual void RowHeightChanged(int row) {
 			ProxyQTable().RowHeightChanged(row);
 		}
-		[Q_SLOT("columnIndexChanged(int, int, int)")]
+		[Q_SLOT("void columnIndexChanged(int, int, int)")]
 		[SmokeMethod("columnIndexChanged(int, int, int)")]
 		protected virtual void ColumnIndexChanged(int section, int fromIndex, int toIndex) {
 			ProxyQTable().ColumnIndexChanged(section,fromIndex,toIndex);
 		}
-		[Q_SLOT("rowIndexChanged(int, int, int)")]
+		[Q_SLOT("void rowIndexChanged(int, int, int)")]
 		[SmokeMethod("rowIndexChanged(int, int, int)")]
 		protected virtual void RowIndexChanged(int section, int fromIndex, int toIndex) {
 			ProxyQTable().RowIndexChanged(section,fromIndex,toIndex);
 		}
-		[Q_SLOT("columnClicked(int)")]
+		[Q_SLOT("void columnClicked(int)")]
 		[SmokeMethod("columnClicked(int)")]
 		protected virtual void ColumnClicked(int col) {
 			ProxyQTable().ColumnClicked(col);
@@ -773,21 +773,21 @@ namespace Qt {
 	}
 
 	public interface IQTableSignals : IQScrollViewSignals {
-		[Q_SIGNAL("currentChanged(int, int)")]
+		[Q_SIGNAL("void currentChanged(int, int)")]
 		void CurrentChanged(int row, int col);
-		[Q_SIGNAL("clicked(int, int, int, const QPoint&)")]
+		[Q_SIGNAL("void clicked(int, int, int, const QPoint&)")]
 		void Clicked(int row, int col, int button, QPoint mousePos);
-		[Q_SIGNAL("doubleClicked(int, int, int, const QPoint&)")]
+		[Q_SIGNAL("void doubleClicked(int, int, int, const QPoint&)")]
 		void DoubleClicked(int row, int col, int button, QPoint mousePos);
-		[Q_SIGNAL("pressed(int, int, int, const QPoint&)")]
+		[Q_SIGNAL("void pressed(int, int, int, const QPoint&)")]
 		void Pressed(int row, int col, int button, QPoint mousePos);
-		[Q_SIGNAL("selectionChanged()")]
+		[Q_SIGNAL("void selectionChanged()")]
 		void SelectionChanged();
-		[Q_SIGNAL("valueChanged(int, int)")]
+		[Q_SIGNAL("void valueChanged(int, int)")]
 		void ValueChanged(int row, int col);
-		[Q_SIGNAL("contextMenuRequested(int, int, const QPoint&)")]
+		[Q_SIGNAL("void contextMenuRequested(int, int, const QPoint&)")]
 		void ContextMenuRequested(int row, int col, QPoint pos);
-		[Q_SIGNAL("dropped(QDropEvent*)")]
+		[Q_SIGNAL("void dropped(QDropEvent*)")]
 		void Dropped(QDropEvent e);
 	}
 }

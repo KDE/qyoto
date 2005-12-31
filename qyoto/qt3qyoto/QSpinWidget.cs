@@ -113,12 +113,12 @@ namespace Qt {
 		public void Arrange() {
 			ProxyQSpinWidget().Arrange();
 		}
-		[Q_SLOT("stepUp()")]
+		[Q_SLOT("void stepUp()")]
 		[SmokeMethod("stepUp()")]
 		public void StepUp() {
 			ProxyQSpinWidget().StepUp();
 		}
-		[Q_SLOT("stepDown()")]
+		[Q_SLOT("void stepDown()")]
 		[SmokeMethod("stepDown()")]
 		public void StepDown() {
 			ProxyQSpinWidget().StepDown();
@@ -194,9 +194,9 @@ namespace Qt {
 	}
 
 	public interface IQSpinWidgetSignals : IQWidgetSignals {
-		[Q_SIGNAL("stepUpPressed()")]
+		[Q_SIGNAL("void stepUpPressed()")]
 		void StepUpPressed();
-		[Q_SIGNAL("stepDownPressed()")]
+		[Q_SIGNAL("void stepDownPressed()")]
 		void StepDownPressed();
 	}
 }

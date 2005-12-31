@@ -269,112 +269,112 @@ namespace Qt {
 		public bool GetSelection(out int arg1, out int arg2) {
 			return ProxyQLineEdit().GetSelection(out arg1,out arg2);
 		}
-		[Q_SLOT("setText(const QString&)")]
+		[Q_SLOT("void setText(const QString&)")]
 		[SmokeMethod("setText(const QString&)")]
 		public virtual void SetText(string arg1) {
 			ProxyQLineEdit().SetText(arg1);
 		}
-		[Q_SLOT("selectAll()")]
+		[Q_SLOT("void selectAll()")]
 		[SmokeMethod("selectAll()")]
 		public virtual void SelectAll() {
 			ProxyQLineEdit().SelectAll();
 		}
-		[Q_SLOT("deselect()")]
+		[Q_SLOT("void deselect()")]
 		[SmokeMethod("deselect()")]
 		public virtual void Deselect() {
 			ProxyQLineEdit().Deselect();
 		}
-		[Q_SLOT("clearValidator()")]
+		[Q_SLOT("void clearValidator()")]
 		[SmokeMethod("clearValidator()")]
 		public virtual void ClearValidator() {
 			ProxyQLineEdit().ClearValidator();
 		}
-		[Q_SLOT("insert(const QString&)")]
+		[Q_SLOT("void insert(const QString&)")]
 		[SmokeMethod("insert(const QString&)")]
 		public virtual void Insert(string arg1) {
 			ProxyQLineEdit().Insert(arg1);
 		}
-		[Q_SLOT("clear()")]
+		[Q_SLOT("void clear()")]
 		[SmokeMethod("clear()")]
 		public virtual void Clear() {
 			ProxyQLineEdit().Clear();
 		}
-		[Q_SLOT("undo()")]
+		[Q_SLOT("void undo()")]
 		[SmokeMethod("undo()")]
 		public virtual void Undo() {
 			ProxyQLineEdit().Undo();
 		}
-		[Q_SLOT("redo()")]
+		[Q_SLOT("void redo()")]
 		[SmokeMethod("redo()")]
 		public virtual void Redo() {
 			ProxyQLineEdit().Redo();
 		}
-		[Q_SLOT("setMaxLength(int)")]
+		[Q_SLOT("void setMaxLength(int)")]
 		[SmokeMethod("setMaxLength(int)")]
 		public virtual void SetMaxLength(int arg1) {
 			ProxyQLineEdit().SetMaxLength(arg1);
 		}
-		[Q_SLOT("setFrame(bool)")]
+		[Q_SLOT("void setFrame(bool)")]
 		[SmokeMethod("setFrame(bool)")]
 		public virtual void SetFrame(bool arg1) {
 			ProxyQLineEdit().SetFrame(arg1);
 		}
-		[Q_SLOT("setEchoMode(QLineEdit::EchoMode)")]
+		[Q_SLOT("void setEchoMode(QLineEdit::EchoMode)")]
 		[SmokeMethod("setEchoMode(QLineEdit::EchoMode)")]
 		public virtual void SetEchoMode(int arg1) {
 			ProxyQLineEdit().SetEchoMode(arg1);
 		}
-		[Q_SLOT("setReadOnly(bool)")]
+		[Q_SLOT("void setReadOnly(bool)")]
 		[SmokeMethod("setReadOnly(bool)")]
 		public virtual void SetReadOnly(bool arg1) {
 			ProxyQLineEdit().SetReadOnly(arg1);
 		}
-		[Q_SLOT("setValidator(const QValidator*)")]
+		[Q_SLOT("void setValidator(const QValidator*)")]
 		[SmokeMethod("setValidator(const QValidator*)")]
 		public virtual void SetValidator(QValidator arg1) {
 			ProxyQLineEdit().SetValidator(arg1);
 		}
-		[Q_SLOT("setFont(const QFont&)")]
+		[Q_SLOT("void setFont(const QFont&)")]
 		[SmokeMethod("setFont(const QFont&)")]
 		public new virtual void SetFont(QFont arg1) {
 			ProxyQLineEdit().SetFont(arg1);
 		}
-		[Q_SLOT("setPalette(const QPalette&)")]
+		[Q_SLOT("void setPalette(const QPalette&)")]
 		[SmokeMethod("setPalette(const QPalette&)")]
 		public new virtual void SetPalette(QPalette arg1) {
 			ProxyQLineEdit().SetPalette(arg1);
 		}
-		[Q_SLOT("setSelection(int, int)")]
+		[Q_SLOT("void setSelection(int, int)")]
 		[SmokeMethod("setSelection(int, int)")]
 		public virtual void SetSelection(int arg1, int arg2) {
 			ProxyQLineEdit().SetSelection(arg1,arg2);
 		}
-		[Q_SLOT("setCursorPosition(int)")]
+		[Q_SLOT("void setCursorPosition(int)")]
 		[SmokeMethod("setCursorPosition(int)")]
 		public virtual void SetCursorPosition(int arg1) {
 			ProxyQLineEdit().SetCursorPosition(arg1);
 		}
-		[Q_SLOT("setAlignment(int)")]
+		[Q_SLOT("void setAlignment(int)")]
 		[SmokeMethod("setAlignment(int)")]
 		public virtual void SetAlignment(int flag) {
 			ProxyQLineEdit().SetAlignment(flag);
 		}
-		[Q_SLOT("cut()")]
+		[Q_SLOT("void cut()")]
 		[SmokeMethod("cut()")]
 		public virtual void Cut() {
 			ProxyQLineEdit().Cut();
 		}
-		[Q_SLOT("copy() const")]
+		[Q_SLOT("void copy() const")]
 		[SmokeMethod("copy() const")]
 		public virtual void Copy() {
 			ProxyQLineEdit().Copy();
 		}
-		[Q_SLOT("paste()")]
+		[Q_SLOT("void paste()")]
 		[SmokeMethod("paste()")]
 		public virtual void Paste() {
 			ProxyQLineEdit().Paste();
 		}
-		[Q_SLOT("setDragEnabled(bool)")]
+		[Q_SLOT("void setDragEnabled(bool)")]
 		[SmokeMethod("setDragEnabled(bool)")]
 		public virtual void SetDragEnabled(bool b) {
 			ProxyQLineEdit().SetDragEnabled(b);
@@ -498,13 +498,13 @@ namespace Qt {
 	}
 
 	public interface IQLineEditSignals : IQFrameSignals {
-		[Q_SIGNAL("textChanged(const QString&)")]
+		[Q_SIGNAL("void textChanged(const QString&)")]
 		void TextChanged(string arg1);
-		[Q_SIGNAL("returnPressed()")]
+		[Q_SIGNAL("void returnPressed()")]
 		void ReturnPressed();
-		[Q_SIGNAL("lostFocus()")]
+		[Q_SIGNAL("void lostFocus()")]
 		void LostFocus();
-		[Q_SIGNAL("selectionChanged()")]
+		[Q_SIGNAL("void selectionChanged()")]
 		void SelectionChanged();
 	}
 }

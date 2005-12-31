@@ -155,42 +155,42 @@ namespace Qt {
 		public new QSize SizeHint() {
 			return ProxyQLCDNumber().SizeHint();
 		}
-		[Q_SLOT("display(const QString&)")]
+		[Q_SLOT("void display(const QString&)")]
 		[SmokeMethod("display(const QString&)")]
 		public void Display(string str) {
 			ProxyQLCDNumber().Display(str);
 		}
-		[Q_SLOT("display(int)")]
+		[Q_SLOT("void display(int)")]
 		[SmokeMethod("display(int)")]
 		public void Display(int num) {
 			ProxyQLCDNumber().Display(num);
 		}
-		[Q_SLOT("display(double)")]
+		[Q_SLOT("void display(double)")]
 		[SmokeMethod("display(double)")]
 		public void Display(double num) {
 			ProxyQLCDNumber().Display(num);
 		}
-		[Q_SLOT("setHexMode()")]
+		[Q_SLOT("void setHexMode()")]
 		[SmokeMethod("setHexMode()")]
 		public virtual void SetHexMode() {
 			ProxyQLCDNumber().SetHexMode();
 		}
-		[Q_SLOT("setDecMode()")]
+		[Q_SLOT("void setDecMode()")]
 		[SmokeMethod("setDecMode()")]
 		public virtual void SetDecMode() {
 			ProxyQLCDNumber().SetDecMode();
 		}
-		[Q_SLOT("setOctMode()")]
+		[Q_SLOT("void setOctMode()")]
 		[SmokeMethod("setOctMode()")]
 		public virtual void SetOctMode() {
 			ProxyQLCDNumber().SetOctMode();
 		}
-		[Q_SLOT("setBinMode()")]
+		[Q_SLOT("void setBinMode()")]
 		[SmokeMethod("setBinMode()")]
 		public virtual void SetBinMode() {
 			ProxyQLCDNumber().SetBinMode();
 		}
-		[Q_SLOT("setSmallDecimalPoint(bool)")]
+		[Q_SLOT("void setSmallDecimalPoint(bool)")]
 		[SmokeMethod("setSmallDecimalPoint(bool)")]
 		public virtual void SetSmallDecimalPoint(bool arg1) {
 			ProxyQLCDNumber().SetSmallDecimalPoint(arg1);
@@ -234,7 +234,7 @@ namespace Qt {
 	}
 
 	public interface IQLCDNumberSignals : IQFrameSignals {
-		[Q_SIGNAL("overflow()")]
+		[Q_SIGNAL("void overflow()")]
 		void Overflow();
 	}
 }

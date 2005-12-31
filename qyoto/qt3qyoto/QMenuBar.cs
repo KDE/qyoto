@@ -577,9 +577,9 @@ namespace Qt {
 	}
 
 	public interface IQMenuBarSignals : IQFrameSignals {
-		[Q_SIGNAL("activated(int)")]
+		[Q_SIGNAL("void activated(int)")]
 		void Activated(int itemId);
-		[Q_SIGNAL("highlighted(int)")]
+		[Q_SIGNAL("void highlighted(int)")]
 		void Highlighted(int itemId);
 	}
 }

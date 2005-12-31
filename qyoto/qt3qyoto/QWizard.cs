@@ -171,27 +171,27 @@ namespace Qt {
 		public new bool EventFilter(QObject arg1, QEvent arg2) {
 			return ProxyQWizard().EventFilter(arg1,arg2);
 		}
-		[Q_SLOT("setBackEnabled(QWidget*, bool)")]
+		[Q_SLOT("void setBackEnabled(QWidget*, bool)")]
 		[SmokeMethod("setBackEnabled(QWidget*, bool)")]
 		public virtual void SetBackEnabled(QWidget arg1, bool arg2) {
 			ProxyQWizard().SetBackEnabled(arg1,arg2);
 		}
-		[Q_SLOT("setNextEnabled(QWidget*, bool)")]
+		[Q_SLOT("void setNextEnabled(QWidget*, bool)")]
 		[SmokeMethod("setNextEnabled(QWidget*, bool)")]
 		public virtual void SetNextEnabled(QWidget arg1, bool arg2) {
 			ProxyQWizard().SetNextEnabled(arg1,arg2);
 		}
-		[Q_SLOT("setFinishEnabled(QWidget*, bool)")]
+		[Q_SLOT("void setFinishEnabled(QWidget*, bool)")]
 		[SmokeMethod("setFinishEnabled(QWidget*, bool)")]
 		public virtual void SetFinishEnabled(QWidget arg1, bool arg2) {
 			ProxyQWizard().SetFinishEnabled(arg1,arg2);
 		}
-		[Q_SLOT("setHelpEnabled(QWidget*, bool)")]
+		[Q_SLOT("void setHelpEnabled(QWidget*, bool)")]
 		[SmokeMethod("setHelpEnabled(QWidget*, bool)")]
 		public virtual void SetHelpEnabled(QWidget arg1, bool arg2) {
 			ProxyQWizard().SetHelpEnabled(arg1,arg2);
 		}
-		[Q_SLOT("setFinish(QWidget*, bool)")]
+		[Q_SLOT("void setFinish(QWidget*, bool)")]
 		[SmokeMethod("setFinish(QWidget*, bool)")]
 		public virtual void SetFinish(QWidget arg1, bool arg2) {
 			ProxyQWizard().SetFinish(arg1,arg2);
@@ -220,17 +220,17 @@ namespace Qt {
 		protected virtual void LayOutTitleRow(QHBoxLayout arg1, string arg2) {
 			ProxyQWizard().LayOutTitleRow(arg1,arg2);
 		}
-		[Q_SLOT("back()")]
+		[Q_SLOT("void back()")]
 		[SmokeMethod("back()")]
 		protected virtual void Back() {
 			ProxyQWizard().Back();
 		}
-		[Q_SLOT("next()")]
+		[Q_SLOT("void next()")]
 		[SmokeMethod("next()")]
 		protected virtual void Next() {
 			ProxyQWizard().Next();
 		}
-		[Q_SLOT("help()")]
+		[Q_SLOT("void help()")]
 		[SmokeMethod("help()")]
 		protected virtual void Help() {
 			ProxyQWizard().Help();
@@ -254,9 +254,9 @@ namespace Qt {
 	}
 
 	public interface IQWizardSignals : IQDialogSignals {
-		[Q_SIGNAL("helpClicked()")]
+		[Q_SIGNAL("void helpClicked()")]
 		void HelpClicked();
-		[Q_SIGNAL("selected(const QString&)")]
+		[Q_SIGNAL("void selected(const QString&)")]
 		void Selected(string arg1);
 	}
 }

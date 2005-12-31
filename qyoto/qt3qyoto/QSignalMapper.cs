@@ -68,7 +68,7 @@ namespace Qt {
 		public void RemoveMappings(QObject sender) {
 			ProxyQSignalMapper().RemoveMappings(sender);
 		}
-		[Q_SLOT("map()")]
+		[Q_SLOT("void map()")]
 		[SmokeMethod("map()")]
 		public void Map() {
 			ProxyQSignalMapper().Map();
@@ -108,9 +108,9 @@ namespace Qt {
 	}
 
 	public interface IQSignalMapperSignals : IQObjectSignals {
-		[Q_SIGNAL("mapped(int)")]
+		[Q_SIGNAL("void mapped(int)")]
 		void Mapped(int arg1);
-		[Q_SIGNAL("mapped(const QString&)")]
+		[Q_SIGNAL("void mapped(const QString&)")]
 		void Mapped(string arg1);
 	}
 }

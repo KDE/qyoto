@@ -339,47 +339,47 @@ namespace Qt {
 		public new void ShowColumn(int col) {
 			ProxyQDataTable().ShowColumn(col);
 		}
-		[Q_SLOT("find(const QString&, bool, bool)")]
+		[Q_SLOT("void find(const QString&, bool, bool)")]
 		[SmokeMethod("find(const QString&, bool, bool)")]
 		public new virtual void Find(string str, bool caseSensitive, bool backwards) {
 			ProxyQDataTable().Find(str,caseSensitive,backwards);
 		}
-		[Q_SLOT("sortAscending(int)")]
+		[Q_SLOT("void sortAscending(int)")]
 		[SmokeMethod("sortAscending(int)")]
 		public virtual void SortAscending(int col) {
 			ProxyQDataTable().SortAscending(col);
 		}
-		[Q_SLOT("sortDescending(int)")]
+		[Q_SLOT("void sortDescending(int)")]
 		[SmokeMethod("sortDescending(int)")]
 		public virtual void SortDescending(int col) {
 			ProxyQDataTable().SortDescending(col);
 		}
-		[Q_SLOT("refresh()")]
+		[Q_SLOT("void refresh()")]
 		[SmokeMethod("refresh()")]
 		public virtual void Refresh() {
 			ProxyQDataTable().Refresh();
 		}
-		[Q_SLOT("setColumnWidth(int, int)")]
+		[Q_SLOT("void setColumnWidth(int, int)")]
 		[SmokeMethod("setColumnWidth(int, int)")]
 		public new void SetColumnWidth(int col, int w) {
 			ProxyQDataTable().SetColumnWidth(col,w);
 		}
-		[Q_SLOT("adjustColumn(int)")]
+		[Q_SLOT("void adjustColumn(int)")]
 		[SmokeMethod("adjustColumn(int)")]
 		public new void AdjustColumn(int col) {
 			ProxyQDataTable().AdjustColumn(col);
 		}
-		[Q_SLOT("setColumnStretchable(int, bool)")]
+		[Q_SLOT("void setColumnStretchable(int, bool)")]
 		[SmokeMethod("setColumnStretchable(int, bool)")]
 		public new void SetColumnStretchable(int col, bool stretch) {
 			ProxyQDataTable().SetColumnStretchable(col,stretch);
 		}
-		[Q_SLOT("swapColumns(int, int, bool)")]
+		[Q_SLOT("void swapColumns(int, int, bool)")]
 		[SmokeMethod("swapColumns(int, int, bool)")]
 		public new void SwapColumns(int col1, int col2, bool swapHeaders) {
 			ProxyQDataTable().SwapColumns(col1,col2,swapHeaders);
 		}
-		[Q_SLOT("swapColumns(int, int)")]
+		[Q_SLOT("void swapColumns(int, int)")]
 		[SmokeMethod("swapColumns(int, int)")]
 		public new void SwapColumns(int col1, int col2) {
 			ProxyQDataTable().SwapColumns(col1,col2);
@@ -543,21 +543,21 @@ namespace Qt {
 	}
 
 	public interface IQDataTableSignals : IQTableSignals {
-		[Q_SIGNAL("currentChanged(QSqlRecord*)")]
+		[Q_SIGNAL("void currentChanged(QSqlRecord*)")]
 		void CurrentChanged(QSqlRecord record);
-		[Q_SIGNAL("primeInsert(QSqlRecord*)")]
+		[Q_SIGNAL("void primeInsert(QSqlRecord*)")]
 		void PrimeInsert(QSqlRecord buf);
-		[Q_SIGNAL("primeUpdate(QSqlRecord*)")]
+		[Q_SIGNAL("void primeUpdate(QSqlRecord*)")]
 		void PrimeUpdate(QSqlRecord buf);
-		[Q_SIGNAL("primeDelete(QSqlRecord*)")]
+		[Q_SIGNAL("void primeDelete(QSqlRecord*)")]
 		void PrimeDelete(QSqlRecord buf);
-		[Q_SIGNAL("beforeInsert(QSqlRecord*)")]
+		[Q_SIGNAL("void beforeInsert(QSqlRecord*)")]
 		void BeforeInsert(QSqlRecord buf);
-		[Q_SIGNAL("beforeUpdate(QSqlRecord*)")]
+		[Q_SIGNAL("void beforeUpdate(QSqlRecord*)")]
 		void BeforeUpdate(QSqlRecord buf);
-		[Q_SIGNAL("beforeDelete(QSqlRecord*)")]
+		[Q_SIGNAL("void beforeDelete(QSqlRecord*)")]
 		void BeforeDelete(QSqlRecord buf);
-		[Q_SIGNAL("cursorChanged(QSql::Op)")]
+		[Q_SIGNAL("void cursorChanged(QSql::Op)")]
 		void CursorChanged(int mode);
 	}
 }

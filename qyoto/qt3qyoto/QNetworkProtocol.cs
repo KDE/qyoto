@@ -209,24 +209,24 @@ namespace Qt {
 	}
 
 	public interface IQNetworkProtocolSignals : IQObjectSignals {
-		[Q_SIGNAL("data(const QByteArray&, QNetworkOperation*)")]
+		[Q_SIGNAL("void data(const QByteArray&, QNetworkOperation*)")]
 		void Data(QByteArray arg1, QNetworkOperation res);
-		[Q_SIGNAL("connectionStateChanged(int, const QString&)")]
+		[Q_SIGNAL("void connectionStateChanged(int, const QString&)")]
 		void ConnectionStateChanged(int state, string data);
-		[Q_SIGNAL("finished(QNetworkOperation*)")]
+		[Q_SIGNAL("void finished(QNetworkOperation*)")]
 		void Finished(QNetworkOperation res);
-		[Q_SIGNAL("start(QNetworkOperation*)")]
+		[Q_SIGNAL("void start(QNetworkOperation*)")]
 		void Start(QNetworkOperation res);
 		// void newChildren(const QValueList<QUrlInfo>& arg1,QNetworkOperation* arg2); >>>> NOT CONVERTED
-		[Q_SIGNAL("newChild(const QUrlInfo&, QNetworkOperation*)")]
+		[Q_SIGNAL("void newChild(const QUrlInfo&, QNetworkOperation*)")]
 		void NewChild(QUrlInfo arg1, QNetworkOperation res);
-		[Q_SIGNAL("createdDirectory(const QUrlInfo&, QNetworkOperation*)")]
+		[Q_SIGNAL("void createdDirectory(const QUrlInfo&, QNetworkOperation*)")]
 		void CreatedDirectory(QUrlInfo arg1, QNetworkOperation res);
-		[Q_SIGNAL("removed(QNetworkOperation*)")]
+		[Q_SIGNAL("void removed(QNetworkOperation*)")]
 		void Removed(QNetworkOperation res);
-		[Q_SIGNAL("itemChanged(QNetworkOperation*)")]
+		[Q_SIGNAL("void itemChanged(QNetworkOperation*)")]
 		void ItemChanged(QNetworkOperation res);
-		[Q_SIGNAL("dataTransferProgress(int, int, QNetworkOperation*)")]
+		[Q_SIGNAL("void dataTransferProgress(int, int, QNetworkOperation*)")]
 		void DataTransferProgress(int bytesDone, int bytesTotal, QNetworkOperation res);
 	}
 }

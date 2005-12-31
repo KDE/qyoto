@@ -64,12 +64,12 @@ namespace Qt {
 		public bool Enabled() {
 			return ProxyQToolTipGroup().Enabled();
 		}
-		[Q_SLOT("setDelay(bool)")]
+		[Q_SLOT("void setDelay(bool)")]
 		[SmokeMethod("setDelay(bool)")]
 		public void SetDelay(bool arg1) {
 			ProxyQToolTipGroup().SetDelay(arg1);
 		}
-		[Q_SLOT("setEnabled(bool)")]
+		[Q_SLOT("void setEnabled(bool)")]
 		[SmokeMethod("setEnabled(bool)")]
 		public void SetEnabled(bool arg1) {
 			ProxyQToolTipGroup().SetEnabled(arg1);
@@ -109,9 +109,9 @@ namespace Qt {
 	}
 
 	public interface IQToolTipGroupSignals : IQObjectSignals {
-		[Q_SIGNAL("showTip(const QString&)")]
+		[Q_SIGNAL("void showTip(const QString&)")]
 		void ShowTip(string arg1);
-		[Q_SIGNAL("removeTip()")]
+		[Q_SIGNAL("void removeTip()")]
 		void RemoveTip();
 	}
 }

@@ -386,32 +386,32 @@ using System.Collections;
 		public void HideColumn(int column) {
 			ProxyQListView().HideColumn(column);
 		}
-		[Q_SLOT("clear()")]
+		[Q_SLOT("void clear()")]
 		[SmokeMethod("clear()")]
 		public virtual void Clear() {
 			ProxyQListView().Clear();
 		}
-		[Q_SLOT("invertSelection()")]
+		[Q_SLOT("void invertSelection()")]
 		[SmokeMethod("invertSelection()")]
 		public virtual void InvertSelection() {
 			ProxyQListView().InvertSelection();
 		}
-		[Q_SLOT("selectAll(bool)")]
+		[Q_SLOT("void selectAll(bool)")]
 		[SmokeMethod("selectAll(bool)")]
 		public virtual void SelectAll(bool select) {
 			ProxyQListView().SelectAll(select);
 		}
-		[Q_SLOT("triggerUpdate()")]
+		[Q_SLOT("void triggerUpdate()")]
 		[SmokeMethod("triggerUpdate()")]
 		public void TriggerUpdate() {
 			ProxyQListView().TriggerUpdate();
 		}
-		[Q_SLOT("setContentsPos(int, int)")]
+		[Q_SLOT("void setContentsPos(int, int)")]
 		[SmokeMethod("setContentsPos(int, int)")]
 		public new void SetContentsPos(int x, int y) {
 			ProxyQListView().SetContentsPos(x,y);
 		}
-		[Q_SLOT("adjustColumn(int)")]
+		[Q_SLOT("void adjustColumn(int)")]
 		[SmokeMethod("adjustColumn(int)")]
 		public void AdjustColumn(int col) {
 			ProxyQListView().AdjustColumn(col);
@@ -516,12 +516,12 @@ using System.Collections;
 		protected new void WindowActivationChange(bool arg1) {
 			ProxyQListView().WindowActivationChange(arg1);
 		}
-		[Q_SLOT("updateContents()")]
+		[Q_SLOT("void updateContents()")]
 		[SmokeMethod("updateContents()")]
 		public new void UpdateContents() {
 			ProxyQListView().UpdateContents();
 		}
-		[Q_SLOT("doAutoScroll()")]
+		[Q_SLOT("void doAutoScroll()")]
 		[SmokeMethod("doAutoScroll()")]
 		protected void DoAutoScroll() {
 			ProxyQListView().DoAutoScroll();
@@ -546,51 +546,51 @@ using System.Collections;
 	}
 
 	public interface IQListViewSignals : IQScrollViewSignals {
-		[Q_SIGNAL("selectionChanged()")]
+		[Q_SIGNAL("void selectionChanged()")]
 		void SelectionChanged();
-		[Q_SIGNAL("selectionChanged(QListViewItem*)")]
+		[Q_SIGNAL("void selectionChanged(QListViewItem*)")]
 		void SelectionChanged(QListViewItem arg1);
-		[Q_SIGNAL("currentChanged(QListViewItem*)")]
+		[Q_SIGNAL("void currentChanged(QListViewItem*)")]
 		void CurrentChanged(QListViewItem arg1);
-		[Q_SIGNAL("clicked(QListViewItem*)")]
+		[Q_SIGNAL("void clicked(QListViewItem*)")]
 		void Clicked(QListViewItem arg1);
-		[Q_SIGNAL("clicked(QListViewItem*, const QPoint&, int)")]
+		[Q_SIGNAL("void clicked(QListViewItem*, const QPoint&, int)")]
 		void Clicked(QListViewItem arg1, QPoint arg2, int arg3);
-		[Q_SIGNAL("pressed(QListViewItem*)")]
+		[Q_SIGNAL("void pressed(QListViewItem*)")]
 		void Pressed(QListViewItem arg1);
-		[Q_SIGNAL("pressed(QListViewItem*, const QPoint&, int)")]
+		[Q_SIGNAL("void pressed(QListViewItem*, const QPoint&, int)")]
 		void Pressed(QListViewItem arg1, QPoint arg2, int arg3);
-		[Q_SIGNAL("doubleClicked(QListViewItem*)")]
+		[Q_SIGNAL("void doubleClicked(QListViewItem*)")]
 		void DoubleClicked(QListViewItem arg1);
-		[Q_SIGNAL("doubleClicked(QListViewItem*, const QPoint&, int)")]
+		[Q_SIGNAL("void doubleClicked(QListViewItem*, const QPoint&, int)")]
 		void DoubleClicked(QListViewItem arg1, QPoint arg2, int arg3);
-		[Q_SIGNAL("returnPressed(QListViewItem*)")]
+		[Q_SIGNAL("void returnPressed(QListViewItem*)")]
 		void ReturnPressed(QListViewItem arg1);
-		[Q_SIGNAL("spacePressed(QListViewItem*)")]
+		[Q_SIGNAL("void spacePressed(QListViewItem*)")]
 		void SpacePressed(QListViewItem arg1);
-		[Q_SIGNAL("rightButtonClicked(QListViewItem*, const QPoint&, int)")]
+		[Q_SIGNAL("void rightButtonClicked(QListViewItem*, const QPoint&, int)")]
 		void RightButtonClicked(QListViewItem arg1, QPoint arg2, int arg3);
-		[Q_SIGNAL("rightButtonPressed(QListViewItem*, const QPoint&, int)")]
+		[Q_SIGNAL("void rightButtonPressed(QListViewItem*, const QPoint&, int)")]
 		void RightButtonPressed(QListViewItem arg1, QPoint arg2, int arg3);
-		[Q_SIGNAL("mouseButtonPressed(int, QListViewItem*, const QPoint&, int)")]
+		[Q_SIGNAL("void mouseButtonPressed(int, QListViewItem*, const QPoint&, int)")]
 		void MouseButtonPressed(int arg1, QListViewItem arg2, QPoint arg3, int arg4);
-		[Q_SIGNAL("mouseButtonClicked(int, QListViewItem*, const QPoint&, int)")]
+		[Q_SIGNAL("void mouseButtonClicked(int, QListViewItem*, const QPoint&, int)")]
 		void MouseButtonClicked(int arg1, QListViewItem arg2, QPoint arg3, int arg4);
-		[Q_SIGNAL("contextMenuRequested(QListViewItem*, const QPoint&, int)")]
+		[Q_SIGNAL("void contextMenuRequested(QListViewItem*, const QPoint&, int)")]
 		void ContextMenuRequested(QListViewItem arg1, QPoint arg2, int arg3);
-		[Q_SIGNAL("onItem(QListViewItem*)")]
+		[Q_SIGNAL("void onItem(QListViewItem*)")]
 		void OnItem(QListViewItem item);
-		[Q_SIGNAL("onViewport()")]
+		[Q_SIGNAL("void onViewport()")]
 		void OnViewport();
-		[Q_SIGNAL("expanded(QListViewItem*)")]
+		[Q_SIGNAL("void expanded(QListViewItem*)")]
 		void Expanded(QListViewItem item);
-		[Q_SIGNAL("collapsed(QListViewItem*)")]
+		[Q_SIGNAL("void collapsed(QListViewItem*)")]
 		void Collapsed(QListViewItem item);
-		[Q_SIGNAL("dropped(QDropEvent*)")]
+		[Q_SIGNAL("void dropped(QDropEvent*)")]
 		void Dropped(QDropEvent e);
-		[Q_SIGNAL("itemRenamed(QListViewItem*, int, const QString&)")]
+		[Q_SIGNAL("void itemRenamed(QListViewItem*, int, const QString&)")]
 		void ItemRenamed(QListViewItem item, int col, string arg3);
-		[Q_SIGNAL("itemRenamed(QListViewItem*, int)")]
+		[Q_SIGNAL("void itemRenamed(QListViewItem*, int)")]
 		void ItemRenamed(QListViewItem item, int col);
 	}
 }

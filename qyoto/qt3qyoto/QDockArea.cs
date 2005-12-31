@@ -138,7 +138,7 @@ namespace Qt {
 		public void SetAcceptDockWindow(QDockWindow dw, bool accept) {
 			ProxyQDockArea().SetAcceptDockWindow(dw,accept);
 		}
-		[Q_SLOT("lineUp(bool)")]
+		[Q_SLOT("void lineUp(bool)")]
 		[SmokeMethod("lineUp(bool)")]
 		public void LineUp(bool keepNewLines) {
 			ProxyQDockArea().LineUp(keepNewLines);

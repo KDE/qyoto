@@ -87,12 +87,12 @@ namespace Qt {
 		public bool IsFinished() {
 			return ProxyQSound().IsFinished();
 		}
-		[Q_SLOT("play()")]
+		[Q_SLOT("void play()")]
 		[SmokeMethod("play()")]
 		public void Play() {
 			ProxyQSound().Play();
 		}
-		[Q_SLOT("stop()")]
+		[Q_SLOT("void stop()")]
 		[SmokeMethod("stop()")]
 		public void Stop() {
 			ProxyQSound().Stop();

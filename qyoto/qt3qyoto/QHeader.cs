@@ -308,12 +308,12 @@ namespace Qt {
 		public void AdjustHeaderSize() {
 			ProxyQHeader().AdjustHeaderSize();
 		}
-		[Q_SLOT("setUpdatesEnabled(bool)")]
+		[Q_SLOT("void setUpdatesEnabled(bool)")]
 		[SmokeMethod("setUpdatesEnabled(bool)")]
 		public new void SetUpdatesEnabled(bool enable) {
 			ProxyQHeader().SetUpdatesEnabled(enable);
 		}
-		[Q_SLOT("setOffset(int)")]
+		[Q_SLOT("void setOffset(int)")]
 		[SmokeMethod("setOffset(int)")]
 		public virtual void SetOffset(int pos) {
 			ProxyQHeader().SetOffset(pos);
@@ -405,21 +405,21 @@ namespace Qt {
 	}
 
 	public interface IQHeaderSignals : IQWidgetSignals {
-		[Q_SIGNAL("clicked(int)")]
+		[Q_SIGNAL("void clicked(int)")]
 		void Clicked(int section);
-		[Q_SIGNAL("pressed(int)")]
+		[Q_SIGNAL("void pressed(int)")]
 		void Pressed(int section);
-		[Q_SIGNAL("released(int)")]
+		[Q_SIGNAL("void released(int)")]
 		void Released(int section);
-		[Q_SIGNAL("sizeChange(int, int, int)")]
+		[Q_SIGNAL("void sizeChange(int, int, int)")]
 		void SizeChange(int section, int oldSize, int newSize);
-		[Q_SIGNAL("indexChange(int, int, int)")]
+		[Q_SIGNAL("void indexChange(int, int, int)")]
 		void IndexChange(int section, int fromIndex, int toIndex);
-		[Q_SIGNAL("sectionClicked(int)")]
+		[Q_SIGNAL("void sectionClicked(int)")]
 		void SectionClicked(int arg1);
-		[Q_SIGNAL("moved(int, int)")]
+		[Q_SIGNAL("void moved(int, int)")]
 		void Moved(int arg1, int arg2);
-		[Q_SIGNAL("sectionHandleDoubleClicked(int)")]
+		[Q_SIGNAL("void sectionHandleDoubleClicked(int)")]
 		void SectionHandleDoubleClicked(int section);
 	}
 }

@@ -778,212 +778,212 @@ namespace Qt {
 		public void SetFont(QFont f, bool arg2) {
 			ProxyQWidget().SetFont(f,arg2);
 		}
-		[Q_SLOT("setEnabled(bool)")]
+		[Q_SLOT("void setEnabled(bool)")]
 		[SmokeMethod("setEnabled(bool)")]
 		public virtual void SetEnabled(bool arg1) {
 			ProxyQWidget().SetEnabled(arg1);
 		}
-		[Q_SLOT("setDisabled(bool)")]
+		[Q_SLOT("void setDisabled(bool)")]
 		[SmokeMethod("setDisabled(bool)")]
 		public void SetDisabled(bool arg1) {
 			ProxyQWidget().SetDisabled(arg1);
 		}
-		[Q_SLOT("setCaption(const QString&)")]
+		[Q_SLOT("void setCaption(const QString&)")]
 		[SmokeMethod("setCaption(const QString&)")]
 		public virtual void SetCaption(string arg1) {
 			ProxyQWidget().SetCaption(arg1);
 		}
-		[Q_SLOT("setIcon(const QPixmap&)")]
+		[Q_SLOT("void setIcon(const QPixmap&)")]
 		[SmokeMethod("setIcon(const QPixmap&)")]
 		public virtual void SetIcon(QPixmap arg1) {
 			ProxyQWidget().SetIcon(arg1);
 		}
-		[Q_SLOT("setIconText(const QString&)")]
+		[Q_SLOT("void setIconText(const QString&)")]
 		[SmokeMethod("setIconText(const QString&)")]
 		public virtual void SetIconText(string arg1) {
 			ProxyQWidget().SetIconText(arg1);
 		}
-		[Q_SLOT("setMouseTracking(bool)")]
+		[Q_SLOT("void setMouseTracking(bool)")]
 		[SmokeMethod("setMouseTracking(bool)")]
 		public virtual void SetMouseTracking(bool enable) {
 			ProxyQWidget().SetMouseTracking(enable);
 		}
-		[Q_SLOT("setFocus()")]
+		[Q_SLOT("void setFocus()")]
 		[SmokeMethod("setFocus()")]
 		public virtual void SetFocus() {
 			ProxyQWidget().SetFocus();
 		}
-		[Q_SLOT("clearFocus()")]
+		[Q_SLOT("void clearFocus()")]
 		[SmokeMethod("clearFocus()")]
 		public void ClearFocus() {
 			ProxyQWidget().ClearFocus();
 		}
-		[Q_SLOT("setUpdatesEnabled(bool)")]
+		[Q_SLOT("void setUpdatesEnabled(bool)")]
 		[SmokeMethod("setUpdatesEnabled(bool)")]
 		public virtual void SetUpdatesEnabled(bool enable) {
 			ProxyQWidget().SetUpdatesEnabled(enable);
 		}
-		[Q_SLOT("update()")]
+		[Q_SLOT("void update()")]
 		[SmokeMethod("update()")]
 		public void Update() {
 			ProxyQWidget().Update();
 		}
-		[Q_SLOT("update(int, int, int, int)")]
+		[Q_SLOT("void update(int, int, int, int)")]
 		[SmokeMethod("update(int, int, int, int)")]
 		public void Update(int x, int y, int w, int h) {
 			ProxyQWidget().Update(x,y,w,h);
 		}
-		[Q_SLOT("update(const QRect&)")]
+		[Q_SLOT("void update(const QRect&)")]
 		[SmokeMethod("update(const QRect&)")]
 		public void Update(QRect arg1) {
 			ProxyQWidget().Update(arg1);
 		}
-		[Q_SLOT("repaint()")]
+		[Q_SLOT("void repaint()")]
 		[SmokeMethod("repaint()")]
 		public void Repaint() {
 			ProxyQWidget().Repaint();
 		}
-		[Q_SLOT("repaint(bool)")]
+		[Q_SLOT("void repaint(bool)")]
 		[SmokeMethod("repaint(bool)")]
 		public void Repaint(bool erase) {
 			ProxyQWidget().Repaint(erase);
 		}
-		[Q_SLOT("repaint(int, int, int, int, bool)")]
+		[Q_SLOT("void repaint(int, int, int, int, bool)")]
 		[SmokeMethod("repaint(int, int, int, int, bool)")]
 		public void Repaint(int x, int y, int w, int h, bool erase) {
 			ProxyQWidget().Repaint(x,y,w,h,erase);
 		}
-		[Q_SLOT("repaint(int, int, int, int)")]
+		[Q_SLOT("void repaint(int, int, int, int)")]
 		[SmokeMethod("repaint(int, int, int, int)")]
 		public void Repaint(int x, int y, int w, int h) {
 			ProxyQWidget().Repaint(x,y,w,h);
 		}
-		[Q_SLOT("repaint(const QRect&, bool)")]
+		[Q_SLOT("void repaint(const QRect&, bool)")]
 		[SmokeMethod("repaint(const QRect&, bool)")]
 		public void Repaint(QRect arg1, bool erase) {
 			ProxyQWidget().Repaint(arg1,erase);
 		}
-		[Q_SLOT("repaint(const QRect&)")]
+		[Q_SLOT("void repaint(const QRect&)")]
 		[SmokeMethod("repaint(const QRect&)")]
 		public void Repaint(QRect arg1) {
 			ProxyQWidget().Repaint(arg1);
 		}
-		[Q_SLOT("repaint(const QRegion&, bool)")]
+		[Q_SLOT("void repaint(const QRegion&, bool)")]
 		[SmokeMethod("repaint(const QRegion&, bool)")]
 		public void Repaint(QRegion arg1, bool erase) {
 			ProxyQWidget().Repaint(arg1,erase);
 		}
-		[Q_SLOT("repaint(const QRegion&)")]
+		[Q_SLOT("void repaint(const QRegion&)")]
 		[SmokeMethod("repaint(const QRegion&)")]
 		public void Repaint(QRegion arg1) {
 			ProxyQWidget().Repaint(arg1);
 		}
-		[Q_SLOT("show()")]
+		[Q_SLOT("void show()")]
 		[SmokeMethod("show()")]
 		public virtual void Show() {
 			ProxyQWidget().Show();
 		}
-		[Q_SLOT("hide()")]
+		[Q_SLOT("void hide()")]
 		[SmokeMethod("hide()")]
 		public virtual void Hide() {
 			ProxyQWidget().Hide();
 		}
-		[Q_SLOT("setShown(bool)")]
+		[Q_SLOT("void setShown(bool)")]
 		[SmokeMethod("setShown(bool)")]
 		public void SetShown(bool show) {
 			ProxyQWidget().SetShown(show);
 		}
-		[Q_SLOT("setHidden(bool)")]
+		[Q_SLOT("void setHidden(bool)")]
 		[SmokeMethod("setHidden(bool)")]
 		public void SetHidden(bool hide) {
 			ProxyQWidget().SetHidden(hide);
 		}
-		[Q_SLOT("iconify()")]
+		[Q_SLOT("void iconify()")]
 		[SmokeMethod("iconify()")]
 		public void Iconify() {
 			ProxyQWidget().Iconify();
 		}
-		[Q_SLOT("showMinimized()")]
+		[Q_SLOT("void showMinimized()")]
 		[SmokeMethod("showMinimized()")]
 		public virtual void ShowMinimized() {
 			ProxyQWidget().ShowMinimized();
 		}
-		[Q_SLOT("showMaximized()")]
+		[Q_SLOT("void showMaximized()")]
 		[SmokeMethod("showMaximized()")]
 		public virtual void ShowMaximized() {
 			ProxyQWidget().ShowMaximized();
 		}
-		[Q_SLOT("showFullScreen()")]
+		[Q_SLOT("void showFullScreen()")]
 		[SmokeMethod("showFullScreen()")]
 		public void ShowFullScreen() {
 			ProxyQWidget().ShowFullScreen();
 		}
-		[Q_SLOT("showNormal()")]
+		[Q_SLOT("void showNormal()")]
 		[SmokeMethod("showNormal()")]
 		public virtual void ShowNormal() {
 			ProxyQWidget().ShowNormal();
 		}
-		[Q_SLOT("polish()")]
+		[Q_SLOT("void polish()")]
 		[SmokeMethod("polish()")]
 		public virtual void Polish() {
 			ProxyQWidget().Polish();
 		}
-		[Q_SLOT("constPolish() const")]
+		[Q_SLOT("void constPolish() const")]
 		[SmokeMethod("constPolish() const")]
 		public void ConstPolish() {
 			ProxyQWidget().ConstPolish();
 		}
-		[Q_SLOT("close()")]
+		[Q_SLOT("bool close()")]
 		[SmokeMethod("close()")]
 		public bool Close() {
 			return ProxyQWidget().Close();
 		}
-		[Q_SLOT("raise()")]
+		[Q_SLOT("void raise()")]
 		[SmokeMethod("raise()")]
 		public void Raise() {
 			ProxyQWidget().Raise();
 		}
-		[Q_SLOT("lower()")]
+		[Q_SLOT("void lower()")]
 		[SmokeMethod("lower()")]
 		public void Lower() {
 			ProxyQWidget().Lower();
 		}
-		[Q_SLOT("stackUnder(QWidget*)")]
+		[Q_SLOT("void stackUnder(QWidget*)")]
 		[SmokeMethod("stackUnder(QWidget*)")]
 		public void StackUnder(QWidget arg1) {
 			ProxyQWidget().StackUnder(arg1);
 		}
-		[Q_SLOT("move(int, int)")]
+		[Q_SLOT("void move(int, int)")]
 		[SmokeMethod("move(int, int)")]
 		public virtual void Move(int x, int y) {
 			ProxyQWidget().Move(x,y);
 		}
-		[Q_SLOT("move(const QPoint&)")]
+		[Q_SLOT("void move(const QPoint&)")]
 		[SmokeMethod("move(const QPoint&)")]
 		public void Move(QPoint arg1) {
 			ProxyQWidget().Move(arg1);
 		}
-		[Q_SLOT("resize(int, int)")]
+		[Q_SLOT("void resize(int, int)")]
 		[SmokeMethod("resize(int, int)")]
 		public virtual void Resize(int w, int h) {
 			ProxyQWidget().Resize(w,h);
 		}
-		[Q_SLOT("resize(const QSize&)")]
+		[Q_SLOT("void resize(const QSize&)")]
 		[SmokeMethod("resize(const QSize&)")]
 		public void Resize(QSize arg1) {
 			ProxyQWidget().Resize(arg1);
 		}
-		[Q_SLOT("setGeometry(int, int, int, int)")]
+		[Q_SLOT("void setGeometry(int, int, int, int)")]
 		[SmokeMethod("setGeometry(int, int, int, int)")]
 		public virtual void SetGeometry(int x, int y, int w, int h) {
 			ProxyQWidget().SetGeometry(x,y,w,h);
 		}
-		[Q_SLOT("setGeometry(const QRect&)")]
+		[Q_SLOT("void setGeometry(const QRect&)")]
 		[SmokeMethod("setGeometry(const QRect&)")]
 		public virtual void SetGeometry(QRect arg1) {
 			ProxyQWidget().SetGeometry(arg1);
 		}
-		[Q_SLOT("adjustSize()")]
+		[Q_SLOT("void adjustSize()")]
 		[SmokeMethod("adjustSize()")]
 		public virtual void AdjustSize() {
 			ProxyQWidget().AdjustSize();

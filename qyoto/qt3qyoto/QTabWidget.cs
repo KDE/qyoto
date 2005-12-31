@@ -234,17 +234,17 @@ namespace Qt {
 		public int Count() {
 			return ProxyQTabWidget().Count();
 		}
-		[Q_SLOT("setCurrentPage(int)")]
+		[Q_SLOT("void setCurrentPage(int)")]
 		[SmokeMethod("setCurrentPage(int)")]
 		public void SetCurrentPage(int arg1) {
 			ProxyQTabWidget().SetCurrentPage(arg1);
 		}
-		[Q_SLOT("showPage(QWidget*)")]
+		[Q_SLOT("void showPage(QWidget*)")]
 		[SmokeMethod("showPage(QWidget*)")]
 		public virtual void ShowPage(QWidget arg1) {
 			ProxyQTabWidget().ShowPage(arg1);
 		}
-		[Q_SLOT("removePage(QWidget*)")]
+		[Q_SLOT("void removePage(QWidget*)")]
 		[SmokeMethod("removePage(QWidget*)")]
 		public virtual void RemovePage(QWidget arg1) {
 			ProxyQTabWidget().RemovePage(arg1);
@@ -312,9 +312,9 @@ namespace Qt {
 	}
 
 	public interface IQTabWidgetSignals : IQWidgetSignals {
-		[Q_SIGNAL("currentChanged(QWidget*)")]
+		[Q_SIGNAL("void currentChanged(QWidget*)")]
 		void CurrentChanged(QWidget arg1);
-		[Q_SIGNAL("selected(const QString&)")]
+		[Q_SIGNAL("void selected(const QString&)")]
 		void Selected(string arg1);
 	}
 }

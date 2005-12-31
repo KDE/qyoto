@@ -169,42 +169,42 @@ namespace Qt {
 		public int Value() {
 			return ProxyQDial().Value();
 		}
-		[Q_SLOT("setValue(int)")]
+		[Q_SLOT("void setValue(int)")]
 		[SmokeMethod("setValue(int)")]
 		public virtual void SetValue(int arg1) {
 			ProxyQDial().SetValue(arg1);
 		}
-		[Q_SLOT("addLine()")]
+		[Q_SLOT("void addLine()")]
 		[SmokeMethod("addLine()")]
 		public void AddLine() {
 			ProxyQDial().AddLine();
 		}
-		[Q_SLOT("subtractLine()")]
+		[Q_SLOT("void subtractLine()")]
 		[SmokeMethod("subtractLine()")]
 		public void SubtractLine() {
 			ProxyQDial().SubtractLine();
 		}
-		[Q_SLOT("addPage()")]
+		[Q_SLOT("void addPage()")]
 		[SmokeMethod("addPage()")]
 		public void AddPage() {
 			ProxyQDial().AddPage();
 		}
-		[Q_SLOT("subtractPage()")]
+		[Q_SLOT("void subtractPage()")]
 		[SmokeMethod("subtractPage()")]
 		public void SubtractPage() {
 			ProxyQDial().SubtractPage();
 		}
-		[Q_SLOT("setNotchesVisible(bool)")]
+		[Q_SLOT("void setNotchesVisible(bool)")]
 		[SmokeMethod("setNotchesVisible(bool)")]
 		public virtual void SetNotchesVisible(bool b) {
 			ProxyQDial().SetNotchesVisible(b);
 		}
-		[Q_SLOT("setWrapping(bool)")]
+		[Q_SLOT("void setWrapping(bool)")]
 		[SmokeMethod("setWrapping(bool)")]
 		public virtual void SetWrapping(bool on) {
 			ProxyQDial().SetWrapping(on);
 		}
-		[Q_SLOT("setTracking(bool)")]
+		[Q_SLOT("void setTracking(bool)")]
 		[SmokeMethod("setTracking(bool)")]
 		public virtual void SetTracking(bool enable) {
 			ProxyQDial().SetTracking(enable);
@@ -328,13 +328,13 @@ namespace Qt {
 	}
 
 	public interface IQDialSignals : IQWidgetSignals {
-		[Q_SIGNAL("valueChanged(int)")]
+		[Q_SIGNAL("void valueChanged(int)")]
 		void ValueChanged(int value);
-		[Q_SIGNAL("dialPressed()")]
+		[Q_SIGNAL("void dialPressed()")]
 		void DialPressed();
-		[Q_SIGNAL("dialMoved(int)")]
+		[Q_SIGNAL("void dialMoved(int)")]
 		void DialMoved(int value);
-		[Q_SIGNAL("dialReleased()")]
+		[Q_SIGNAL("void dialReleased()")]
 		void DialReleased();
 	}
 }

@@ -159,12 +159,12 @@ namespace Qt {
 		public string ToolTip(int index) {
 			return ProxyQTabBar().ToolTip(index);
 		}
-		[Q_SLOT("setCurrentTab(int)")]
+		[Q_SLOT("void setCurrentTab(int)")]
 		[SmokeMethod("setCurrentTab(int)")]
 		public virtual void SetCurrentTab(int arg1) {
 			ProxyQTabBar().SetCurrentTab(arg1);
 		}
-		[Q_SLOT("setCurrentTab(QTab*)")]
+		[Q_SLOT("void setCurrentTab(QTab*)")]
 		[SmokeMethod("setCurrentTab(QTab*)")]
 		public virtual void SetCurrentTab(QTab arg1) {
 			ProxyQTabBar().SetCurrentTab(arg1);
@@ -257,9 +257,9 @@ namespace Qt {
 	}
 
 	public interface IQTabBarSignals : IQWidgetSignals {
-		[Q_SIGNAL("selected(int)")]
+		[Q_SIGNAL("void selected(int)")]
 		void Selected(int arg1);
-		[Q_SIGNAL("layoutChanged()")]
+		[Q_SIGNAL("void layoutChanged()")]
 		void LayoutChanged();
 	}
 }

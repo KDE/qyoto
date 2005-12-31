@@ -188,7 +188,7 @@ namespace Qt {
 	}
 
 	public interface IQActionGroupSignals : IQActionSignals {
-		[Q_SIGNAL("selected(QAction*)")]
+		[Q_SIGNAL("void selected(QAction*)")]
 		void Selected(QAction arg1);
 	}
 }

@@ -239,32 +239,32 @@ namespace Qt {
 		public virtual bool RemoveFrom(QWidget arg1) {
 			return ProxyQAction().RemoveFrom(arg1);
 		}
-		[Q_SLOT("activate()")]
+		[Q_SLOT("void activate()")]
 		[SmokeMethod("activate()")]
 		public void Activate() {
 			ProxyQAction().Activate();
 		}
-		[Q_SLOT("toggle()")]
+		[Q_SLOT("void toggle()")]
 		[SmokeMethod("toggle()")]
 		public void Toggle() {
 			ProxyQAction().Toggle();
 		}
-		[Q_SLOT("setOn(bool)")]
+		[Q_SLOT("void setOn(bool)")]
 		[SmokeMethod("setOn(bool)")]
 		public virtual void SetOn(bool arg1) {
 			ProxyQAction().SetOn(arg1);
 		}
-		[Q_SLOT("setEnabled(bool)")]
+		[Q_SLOT("void setEnabled(bool)")]
 		[SmokeMethod("setEnabled(bool)")]
 		public virtual void SetEnabled(bool arg1) {
 			ProxyQAction().SetEnabled(arg1);
 		}
-		[Q_SLOT("setDisabled(bool)")]
+		[Q_SLOT("void setDisabled(bool)")]
 		[SmokeMethod("setDisabled(bool)")]
 		public void SetDisabled(bool arg1) {
 			ProxyQAction().SetDisabled(arg1);
 		}
-		[Q_SLOT("setVisible(bool)")]
+		[Q_SLOT("void setVisible(bool)")]
 		[SmokeMethod("setVisible(bool)")]
 		public void SetVisible(bool arg1) {
 			ProxyQAction().SetVisible(arg1);
@@ -312,9 +312,9 @@ namespace Qt {
 	}
 
 	public interface IQActionSignals : IQObjectSignals {
-		[Q_SIGNAL("activated()")]
+		[Q_SIGNAL("void activated()")]
 		void Activated();
-		[Q_SIGNAL("toggled(bool)")]
+		[Q_SIGNAL("void toggled(bool)")]
 		void Toggled(bool arg1);
 	}
 }

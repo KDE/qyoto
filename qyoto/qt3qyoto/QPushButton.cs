@@ -171,7 +171,7 @@ namespace Qt {
 		public bool IsFlat() {
 			return ProxyQPushButton().IsFlat();
 		}
-		[Q_SLOT("setOn(bool)")]
+		[Q_SLOT("void setOn(bool)")]
 		[SmokeMethod("setOn(bool)")]
 		public new virtual void SetOn(bool arg1) {
 			ProxyQPushButton().SetOn(arg1);

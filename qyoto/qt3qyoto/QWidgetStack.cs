@@ -114,12 +114,12 @@ namespace Qt {
 		public new void SetFrameRect(QRect arg1) {
 			ProxyQWidgetStack().SetFrameRect(arg1);
 		}
-		[Q_SLOT("raiseWidget(int)")]
+		[Q_SLOT("void raiseWidget(int)")]
 		[SmokeMethod("raiseWidget(int)")]
 		public void RaiseWidget(int arg1) {
 			ProxyQWidgetStack().RaiseWidget(arg1);
 		}
-		[Q_SLOT("raiseWidget(QWidget*)")]
+		[Q_SLOT("void raiseWidget(QWidget*)")]
 		[SmokeMethod("raiseWidget(QWidget*)")]
 		public void RaiseWidget(QWidget arg1) {
 			ProxyQWidgetStack().RaiseWidget(arg1);
@@ -175,9 +175,9 @@ namespace Qt {
 	}
 
 	public interface IQWidgetStackSignals : IQFrameSignals {
-		[Q_SIGNAL("aboutToShow(int)")]
+		[Q_SIGNAL("void aboutToShow(int)")]
 		void AboutToShow(int arg1);
-		[Q_SIGNAL("aboutToShow(QWidget*)")]
+		[Q_SIGNAL("void aboutToShow(QWidget*)")]
 		void AboutToShow(QWidget arg1);
 	}
 }

@@ -313,47 +313,47 @@ namespace Qt {
 		public void DisableSizeHintCaching() {
 			ProxyQScrollView().DisableSizeHintCaching();
 		}
-		[Q_SLOT("resizeContents(int, int)")]
+		[Q_SLOT("void resizeContents(int, int)")]
 		[SmokeMethod("resizeContents(int, int)")]
 		public virtual void ResizeContents(int w, int h) {
 			ProxyQScrollView().ResizeContents(w,h);
 		}
-		[Q_SLOT("scrollBy(int, int)")]
+		[Q_SLOT("void scrollBy(int, int)")]
 		[SmokeMethod("scrollBy(int, int)")]
 		public void ScrollBy(int dx, int dy) {
 			ProxyQScrollView().ScrollBy(dx,dy);
 		}
-		[Q_SLOT("setContentsPos(int, int)")]
+		[Q_SLOT("void setContentsPos(int, int)")]
 		[SmokeMethod("setContentsPos(int, int)")]
 		public virtual void SetContentsPos(int x, int y) {
 			ProxyQScrollView().SetContentsPos(x,y);
 		}
-		[Q_SLOT("ensureVisible(int, int)")]
+		[Q_SLOT("void ensureVisible(int, int)")]
 		[SmokeMethod("ensureVisible(int, int)")]
 		public void EnsureVisible(int x, int y) {
 			ProxyQScrollView().EnsureVisible(x,y);
 		}
-		[Q_SLOT("ensureVisible(int, int, int, int)")]
+		[Q_SLOT("void ensureVisible(int, int, int, int)")]
 		[SmokeMethod("ensureVisible(int, int, int, int)")]
 		public void EnsureVisible(int x, int y, int xmargin, int ymargin) {
 			ProxyQScrollView().EnsureVisible(x,y,xmargin,ymargin);
 		}
-		[Q_SLOT("center(int, int)")]
+		[Q_SLOT("void center(int, int)")]
 		[SmokeMethod("center(int, int)")]
 		public void Center(int x, int y) {
 			ProxyQScrollView().Center(x,y);
 		}
-		[Q_SLOT("center(int, int, float, float)")]
+		[Q_SLOT("void center(int, int, float, float)")]
 		[SmokeMethod("center(int, int, float, float)")]
 		public void Center(int x, int y, float xmargin, float ymargin) {
 			ProxyQScrollView().Center(x,y,xmargin,ymargin);
 		}
-		[Q_SLOT("updateScrollBars()")]
+		[Q_SLOT("void updateScrollBars()")]
 		[SmokeMethod("updateScrollBars()")]
 		public void UpdateScrollBars() {
 			ProxyQScrollView().UpdateScrollBars();
 		}
-		[Q_SLOT("setEnabled(bool)")]
+		[Q_SLOT("void setEnabled(bool)")]
 		[SmokeMethod("setEnabled(bool)")]
 		public new void SetEnabled(bool enable) {
 			ProxyQScrollView().SetEnabled(enable);
@@ -569,15 +569,15 @@ namespace Qt {
 	}
 
 	public interface IQScrollViewSignals : IQFrameSignals {
-		[Q_SIGNAL("contentsMoving(int, int)")]
+		[Q_SIGNAL("void contentsMoving(int, int)")]
 		void ContentsMoving(int x, int y);
-		[Q_SIGNAL("horizontalSliderPressed()")]
+		[Q_SIGNAL("void horizontalSliderPressed()")]
 		void HorizontalSliderPressed();
-		[Q_SIGNAL("horizontalSliderReleased()")]
+		[Q_SIGNAL("void horizontalSliderReleased()")]
 		void HorizontalSliderReleased();
-		[Q_SIGNAL("verticalSliderPressed()")]
+		[Q_SIGNAL("void verticalSliderPressed()")]
 		void VerticalSliderPressed();
-		[Q_SIGNAL("verticalSliderReleased()")]
+		[Q_SIGNAL("void verticalSliderReleased()")]
 		void VerticalSliderReleased();
 	}
 }

@@ -226,17 +226,17 @@ namespace Qt {
 		public static new string TrUtf8(string arg1) {
 			return StaticQSocket().TrUtf8(arg1);
 		}
-		[Q_SLOT("sn_read(bool)")]
+		[Q_SLOT("void sn_read(bool)")]
 		[SmokeMethod("sn_read(bool)")]
 		protected virtual void Sn_read(bool force) {
 			ProxyQSocket().Sn_read(force);
 		}
-		[Q_SLOT("sn_read()")]
+		[Q_SLOT("void sn_read()")]
 		[SmokeMethod("sn_read()")]
 		protected virtual void Sn_read() {
 			ProxyQSocket().Sn_read();
 		}
-		[Q_SLOT("sn_write()")]
+		[Q_SLOT("void sn_write()")]
 		[SmokeMethod("sn_write()")]
 		protected virtual void Sn_write() {
 			ProxyQSocket().Sn_write();
@@ -360,19 +360,19 @@ namespace Qt {
 	}
 
 	public interface IQSocketSignals : IQObjectSignals {
-		[Q_SIGNAL("hostFound()")]
+		[Q_SIGNAL("void hostFound()")]
 		void HostFound();
-		[Q_SIGNAL("connected()")]
+		[Q_SIGNAL("void connected()")]
 		void Connected();
-		[Q_SIGNAL("connectionClosed()")]
+		[Q_SIGNAL("void connectionClosed()")]
 		void ConnectionClosed();
-		[Q_SIGNAL("delayedCloseFinished()")]
+		[Q_SIGNAL("void delayedCloseFinished()")]
 		void DelayedCloseFinished();
-		[Q_SIGNAL("readyRead()")]
+		[Q_SIGNAL("void readyRead()")]
 		void ReadyRead();
-		[Q_SIGNAL("bytesWritten(int)")]
+		[Q_SIGNAL("void bytesWritten(int)")]
 		void BytesWritten(int nbytes);
-		[Q_SIGNAL("error(int)")]
+		[Q_SIGNAL("void error(int)")]
 		void Error(int arg1);
 	}
 }

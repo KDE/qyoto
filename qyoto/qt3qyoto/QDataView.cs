@@ -89,22 +89,22 @@ namespace Qt {
 		public QSqlRecord Record() {
 			return ProxyQDataView().Record();
 		}
-		[Q_SLOT("refresh(QSqlRecord*)")]
+		[Q_SLOT("void refresh(QSqlRecord*)")]
 		[SmokeMethod("refresh(QSqlRecord*)")]
 		public virtual void Refresh(QSqlRecord buf) {
 			ProxyQDataView().Refresh(buf);
 		}
-		[Q_SLOT("readFields()")]
+		[Q_SLOT("void readFields()")]
 		[SmokeMethod("readFields()")]
 		public virtual void ReadFields() {
 			ProxyQDataView().ReadFields();
 		}
-		[Q_SLOT("writeFields()")]
+		[Q_SLOT("void writeFields()")]
 		[SmokeMethod("writeFields()")]
 		public virtual void WriteFields() {
 			ProxyQDataView().WriteFields();
 		}
-		[Q_SLOT("clearValues()")]
+		[Q_SLOT("void clearValues()")]
 		[SmokeMethod("clearValues()")]
 		public virtual void ClearValues() {
 			ProxyQDataView().ClearValues();

@@ -204,27 +204,27 @@ namespace Qt {
 		public int Value() {
 			return ProxyQSlider().Value();
 		}
-		[Q_SLOT("setValue(int)")]
+		[Q_SLOT("void setValue(int)")]
 		[SmokeMethod("setValue(int)")]
 		public virtual void SetValue(int arg1) {
 			ProxyQSlider().SetValue(arg1);
 		}
-		[Q_SLOT("addStep()")]
+		[Q_SLOT("void addStep()")]
 		[SmokeMethod("addStep()")]
 		public void AddStep() {
 			ProxyQSlider().AddStep();
 		}
-		[Q_SLOT("subtractStep()")]
+		[Q_SLOT("void subtractStep()")]
 		[SmokeMethod("subtractStep()")]
 		public void SubtractStep() {
 			ProxyQSlider().SubtractStep();
 		}
-		[Q_SLOT("addLine()")]
+		[Q_SLOT("void addLine()")]
 		[SmokeMethod("addLine()")]
 		public void AddLine() {
 			ProxyQSlider().AddLine();
 		}
-		[Q_SLOT("subtractLine()")]
+		[Q_SLOT("void subtractLine()")]
 		[SmokeMethod("subtractLine()")]
 		public void SubtractLine() {
 			ProxyQSlider().SubtractLine();
@@ -352,13 +352,13 @@ namespace Qt {
 	}
 
 	public interface IQSliderSignals : IQWidgetSignals {
-		[Q_SIGNAL("valueChanged(int)")]
+		[Q_SIGNAL("void valueChanged(int)")]
 		void ValueChanged(int value);
-		[Q_SIGNAL("sliderPressed()")]
+		[Q_SIGNAL("void sliderPressed()")]
 		void SliderPressed();
-		[Q_SIGNAL("sliderMoved(int)")]
+		[Q_SIGNAL("void sliderMoved(int)")]
 		void SliderMoved(int value);
-		[Q_SIGNAL("sliderReleased()")]
+		[Q_SIGNAL("void sliderReleased()")]
 		void SliderReleased();
 	}
 }

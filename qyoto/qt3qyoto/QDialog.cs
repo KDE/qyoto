@@ -162,7 +162,7 @@ namespace Qt {
 		public new bool IsModal() {
 			return ProxyQDialog().IsModal();
 		}
-		[Q_SLOT("exec()")]
+		[Q_SLOT("int exec()")]
 		[SmokeMethod("exec()")]
 		public int Exec() {
 			return ProxyQDialog().Exec();
@@ -211,22 +211,22 @@ namespace Qt {
 		protected void AdjustPosition(QWidget arg1) {
 			ProxyQDialog().AdjustPosition(arg1);
 		}
-		[Q_SLOT("done(int)")]
+		[Q_SLOT("void done(int)")]
 		[SmokeMethod("done(int)")]
 		protected virtual void Done(int arg1) {
 			ProxyQDialog().Done(arg1);
 		}
-		[Q_SLOT("accept()")]
+		[Q_SLOT("void accept()")]
 		[SmokeMethod("accept()")]
 		protected virtual void Accept() {
 			ProxyQDialog().Accept();
 		}
-		[Q_SLOT("reject()")]
+		[Q_SLOT("void reject()")]
 		[SmokeMethod("reject()")]
 		protected virtual void Reject() {
 			ProxyQDialog().Reject();
 		}
-		[Q_SLOT("showExtension(bool)")]
+		[Q_SLOT("void showExtension(bool)")]
 		[SmokeMethod("showExtension(bool)")]
 		protected void ShowExtension(bool arg1) {
 			ProxyQDialog().ShowExtension(arg1);

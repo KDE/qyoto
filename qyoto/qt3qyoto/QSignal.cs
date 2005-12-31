@@ -177,9 +177,9 @@ namespace Qt {
 	}
 
 	public interface IQSignalSignals : IQObjectSignals {
-		[Q_SIGNAL("signal(const QVariant&)")]
+		[Q_SIGNAL("void signal(const QVariant&)")]
 		void Signal(QVariant arg1);
-		[Q_SIGNAL("intSignal(int)")]
+		[Q_SIGNAL("void intSignal(int)")]
 		void IntSignal(int arg1);
 	}
 }

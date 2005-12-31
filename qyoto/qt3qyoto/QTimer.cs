@@ -170,7 +170,7 @@ namespace Qt {
 	}
 
 	public interface IQTimerSignals : IQObjectSignals {
-		[Q_SIGNAL("timeout()")]
+		[Q_SIGNAL("void timeout()")]
 		void Timeout();
 	}
 }

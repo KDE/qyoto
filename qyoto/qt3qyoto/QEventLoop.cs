@@ -170,9 +170,9 @@ namespace Qt {
 	}
 
 	public interface IQEventLoopSignals : IQObjectSignals {
-		[Q_SIGNAL("awake()")]
+		[Q_SIGNAL("void awake()")]
 		void Awake();
-		[Q_SIGNAL("aboutToBlock()")]
+		[Q_SIGNAL("void aboutToBlock()")]
 		void AboutToBlock();
 	}
 }

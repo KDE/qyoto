@@ -185,42 +185,42 @@ namespace Qt {
 		public new void SetText(string txt) {
 			ProxyQToolButton().SetText(txt);
 		}
-		[Q_SLOT("setUsesBigPixmap(bool)")]
+		[Q_SLOT("void setUsesBigPixmap(bool)")]
 		[SmokeMethod("setUsesBigPixmap(bool)")]
 		public virtual void SetUsesBigPixmap(bool enable) {
 			ProxyQToolButton().SetUsesBigPixmap(enable);
 		}
-		[Q_SLOT("setUsesTextLabel(bool)")]
+		[Q_SLOT("void setUsesTextLabel(bool)")]
 		[SmokeMethod("setUsesTextLabel(bool)")]
 		public virtual void SetUsesTextLabel(bool enable) {
 			ProxyQToolButton().SetUsesTextLabel(enable);
 		}
-		[Q_SLOT("setTextLabel(const QString&, bool)")]
+		[Q_SLOT("void setTextLabel(const QString&, bool)")]
 		[SmokeMethod("setTextLabel(const QString&, bool)")]
 		public virtual void SetTextLabel(string arg1, bool arg2) {
 			ProxyQToolButton().SetTextLabel(arg1,arg2);
 		}
-		[Q_SLOT("setToggleButton(bool)")]
+		[Q_SLOT("void setToggleButton(bool)")]
 		[SmokeMethod("setToggleButton(bool)")]
 		public new virtual void SetToggleButton(bool enable) {
 			ProxyQToolButton().SetToggleButton(enable);
 		}
-		[Q_SLOT("setOn(bool)")]
+		[Q_SLOT("void setOn(bool)")]
 		[SmokeMethod("setOn(bool)")]
 		public new virtual void SetOn(bool enable) {
 			ProxyQToolButton().SetOn(enable);
 		}
-		[Q_SLOT("toggle()")]
+		[Q_SLOT("void toggle()")]
 		[SmokeMethod("toggle()")]
 		public new void Toggle() {
 			ProxyQToolButton().Toggle();
 		}
-		[Q_SLOT("setTextLabel(const QString&)")]
+		[Q_SLOT("void setTextLabel(const QString&)")]
 		[SmokeMethod("setTextLabel(const QString&)")]
 		public void SetTextLabel(string arg1) {
 			ProxyQToolButton().SetTextLabel(arg1);
 		}
-		[Q_SLOT("setTextPosition(QToolButton::TextPosition)")]
+		[Q_SLOT("void setTextPosition(QToolButton::TextPosition)")]
 		[SmokeMethod("setTextPosition(QToolButton::TextPosition)")]
 		public void SetTextPosition(int pos) {
 			ProxyQToolButton().SetTextPosition(pos);

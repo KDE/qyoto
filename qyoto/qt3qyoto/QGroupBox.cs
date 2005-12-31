@@ -230,7 +230,7 @@ namespace Qt {
 		public new void SetEnabled(bool on) {
 			ProxyQGroupBox().SetEnabled(on);
 		}
-		[Q_SLOT("setChecked(bool)")]
+		[Q_SLOT("void setChecked(bool)")]
 		[SmokeMethod("setChecked(bool)")]
 		public void SetChecked(bool b) {
 			ProxyQGroupBox().SetChecked(b);
@@ -294,7 +294,7 @@ namespace Qt {
 	}
 
 	public interface IQGroupBoxSignals : IQFrameSignals {
-		[Q_SIGNAL("toggled(bool)")]
+		[Q_SIGNAL("void toggled(bool)")]
 		void Toggled(bool arg1);
 	}
 }

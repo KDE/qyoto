@@ -215,7 +215,7 @@ namespace Qt {
 		public string ErrorString() {
 			return ProxyQFtp().ErrorString();
 		}
-		[Q_SLOT("abort()")]
+		[Q_SLOT("void abort()")]
 		[SmokeMethod("abort()")]
 		public void Abort() {
 			ProxyQFtp().Abort();
@@ -264,47 +264,47 @@ namespace Qt {
 		protected new void OperationPut(QNetworkOperation op) {
 			ProxyQFtp().OperationPut(op);
 		}
-		[Q_SLOT("hostFound()")]
+		[Q_SLOT("void hostFound()")]
 		[SmokeMethod("hostFound()")]
 		protected void HostFound() {
 			ProxyQFtp().HostFound();
 		}
-		[Q_SLOT("connected()")]
+		[Q_SLOT("void connected()")]
 		[SmokeMethod("connected()")]
 		protected void Connected() {
 			ProxyQFtp().Connected();
 		}
-		[Q_SLOT("closed()")]
+		[Q_SLOT("void closed()")]
 		[SmokeMethod("closed()")]
 		protected void Closed() {
 			ProxyQFtp().Closed();
 		}
-		[Q_SLOT("dataHostFound()")]
+		[Q_SLOT("void dataHostFound()")]
 		[SmokeMethod("dataHostFound()")]
 		protected void DataHostFound() {
 			ProxyQFtp().DataHostFound();
 		}
-		[Q_SLOT("dataConnected()")]
+		[Q_SLOT("void dataConnected()")]
 		[SmokeMethod("dataConnected()")]
 		protected void DataConnected() {
 			ProxyQFtp().DataConnected();
 		}
-		[Q_SLOT("dataClosed()")]
+		[Q_SLOT("void dataClosed()")]
 		[SmokeMethod("dataClosed()")]
 		protected void DataClosed() {
 			ProxyQFtp().DataClosed();
 		}
-		[Q_SLOT("dataReadyRead()")]
+		[Q_SLOT("void dataReadyRead()")]
 		[SmokeMethod("dataReadyRead()")]
 		protected void DataReadyRead() {
 			ProxyQFtp().DataReadyRead();
 		}
-		[Q_SLOT("dataBytesWritten(int)")]
+		[Q_SLOT("void dataBytesWritten(int)")]
 		[SmokeMethod("dataBytesWritten(int)")]
 		protected void DataBytesWritten(int nbytes) {
 			ProxyQFtp().DataBytesWritten(nbytes);
 		}
-		[Q_SLOT("error(int)")]
+		[Q_SLOT("void error(int)")]
 		[SmokeMethod("error(int)")]
 		protected void Error(int arg1) {
 			ProxyQFtp().Error(arg1);
@@ -328,21 +328,21 @@ namespace Qt {
 	}
 
 	public interface IQFtpSignals : IQNetworkProtocolSignals {
-		[Q_SIGNAL("stateChanged(int)")]
+		[Q_SIGNAL("void stateChanged(int)")]
 		void StateChanged(int arg1);
-		[Q_SIGNAL("listInfo(const QUrlInfo&)")]
+		[Q_SIGNAL("void listInfo(const QUrlInfo&)")]
 		void ListInfo(QUrlInfo arg1);
-		[Q_SIGNAL("readyRead()")]
+		[Q_SIGNAL("void readyRead()")]
 		void ReadyRead();
-		[Q_SIGNAL("dataTransferProgress(int, int)")]
+		[Q_SIGNAL("void dataTransferProgress(int, int)")]
 		void DataTransferProgress(int arg1, int arg2);
-		[Q_SIGNAL("rawCommandReply(int, const QString&)")]
+		[Q_SIGNAL("void rawCommandReply(int, const QString&)")]
 		void RawCommandReply(int arg1, string arg2);
-		[Q_SIGNAL("commandStarted(int)")]
+		[Q_SIGNAL("void commandStarted(int)")]
 		void CommandStarted(int arg1);
-		[Q_SIGNAL("commandFinished(int, bool)")]
+		[Q_SIGNAL("void commandFinished(int, bool)")]
 		void CommandFinished(int arg1, bool arg2);
-		[Q_SIGNAL("done(bool)")]
+		[Q_SIGNAL("void done(bool)")]
 		void Done(bool arg1);
 	}
 }

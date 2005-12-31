@@ -222,22 +222,22 @@ namespace Qt {
 		public new bool Event(QEvent e) {
 			return ProxyQButtonGroup().Event(e);
 		}
-		[Q_SLOT("buttonPressed()")]
+		[Q_SLOT("void buttonPressed()")]
 		[SmokeMethod("buttonPressed()")]
 		protected void ButtonPressed() {
 			ProxyQButtonGroup().ButtonPressed();
 		}
-		[Q_SLOT("buttonReleased()")]
+		[Q_SLOT("void buttonReleased()")]
 		[SmokeMethod("buttonReleased()")]
 		protected void ButtonReleased() {
 			ProxyQButtonGroup().ButtonReleased();
 		}
-		[Q_SLOT("buttonClicked()")]
+		[Q_SLOT("void buttonClicked()")]
 		[SmokeMethod("buttonClicked()")]
 		protected void ButtonClicked() {
 			ProxyQButtonGroup().ButtonClicked();
 		}
-		[Q_SLOT("buttonToggled(bool)")]
+		[Q_SLOT("void buttonToggled(bool)")]
 		[SmokeMethod("buttonToggled(bool)")]
 		protected void ButtonToggled(bool on) {
 			ProxyQButtonGroup().ButtonToggled(on);
@@ -261,11 +261,11 @@ namespace Qt {
 	}
 
 	public interface IQButtonGroupSignals : IQGroupBoxSignals {
-		[Q_SIGNAL("pressed(int)")]
+		[Q_SIGNAL("void pressed(int)")]
 		void Pressed(int id);
-		[Q_SIGNAL("released(int)")]
+		[Q_SIGNAL("void released(int)")]
 		void Released(int id);
-		[Q_SIGNAL("clicked(int)")]
+		[Q_SIGNAL("void clicked(int)")]
 		void Clicked(int id);
 	}
 }

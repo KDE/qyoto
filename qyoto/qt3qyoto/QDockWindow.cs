@@ -260,27 +260,27 @@ namespace Qt {
 		public new bool EventFilter(QObject o, QEvent e) {
 			return ProxyQDockWindow().EventFilter(o,e);
 		}
-		[Q_SLOT("undock(QWidget*)")]
+		[Q_SLOT("void undock(QWidget*)")]
 		[SmokeMethod("undock(QWidget*)")]
 		public virtual void Undock(QWidget w) {
 			ProxyQDockWindow().Undock(w);
 		}
-		[Q_SLOT("undock()")]
+		[Q_SLOT("void undock()")]
 		[SmokeMethod("undock()")]
 		public virtual void Undock() {
 			ProxyQDockWindow().Undock();
 		}
-		[Q_SLOT("dock()")]
+		[Q_SLOT("void dock()")]
 		[SmokeMethod("dock()")]
 		public virtual void Dock() {
 			ProxyQDockWindow().Dock();
 		}
-		[Q_SLOT("setOrientation(Qt::Orientation)")]
+		[Q_SLOT("void setOrientation(Qt::Orientation)")]
 		[SmokeMethod("setOrientation(Qt::Orientation)")]
 		public virtual void SetOrientation(int o) {
 			ProxyQDockWindow().SetOrientation(o);
 		}
-		[Q_SLOT("setCaption(const QString&)")]
+		[Q_SLOT("void setCaption(const QString&)")]
 		[SmokeMethod("setCaption(const QString&)")]
 		public new void SetCaption(string s) {
 			ProxyQDockWindow().SetCaption(s);
@@ -348,11 +348,11 @@ namespace Qt {
 	}
 
 	public interface IQDockWindowSignals : IQFrameSignals {
-		[Q_SIGNAL("orientationChanged(Qt::Orientation)")]
+		[Q_SIGNAL("void orientationChanged(Qt::Orientation)")]
 		void OrientationChanged(int o);
-		[Q_SIGNAL("placeChanged(QDockWindow::Place)")]
+		[Q_SIGNAL("void placeChanged(QDockWindow::Place)")]
 		void PlaceChanged(int p);
-		[Q_SIGNAL("visibilityChanged(bool)")]
+		[Q_SIGNAL("void visibilityChanged(bool)")]
 		void VisibilityChanged(bool arg1);
 	}
 }

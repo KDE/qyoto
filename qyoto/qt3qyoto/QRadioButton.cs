@@ -81,7 +81,7 @@ namespace Qt {
 		public new QSize SizeHint() {
 			return ProxyQRadioButton().SizeHint();
 		}
-		[Q_SLOT("setChecked(bool)")]
+		[Q_SLOT("void setChecked(bool)")]
 		[SmokeMethod("setChecked(bool)")]
 		public virtual void SetChecked(bool check) {
 			ProxyQRadioButton().SetChecked(check);

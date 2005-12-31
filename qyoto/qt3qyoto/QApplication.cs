@@ -311,17 +311,17 @@ namespace Qt {
 		public void WakeUpGuiThread() {
 			ProxyQApplication().WakeUpGuiThread();
 		}
-		[Q_SLOT("quit()")]
+		[Q_SLOT("void quit()")]
 		[SmokeMethod("quit()")]
 		public void Quit() {
 			ProxyQApplication().Quit();
 		}
-		[Q_SLOT("closeAllWindows()")]
+		[Q_SLOT("void closeAllWindows()")]
 		[SmokeMethod("closeAllWindows()")]
 		public void CloseAllWindows() {
 			ProxyQApplication().CloseAllWindows();
 		}
-		[Q_SLOT("aboutQt()")]
+		[Q_SLOT("void aboutQt()")]
 		[SmokeMethod("aboutQt()")]
 		public void AboutQt() {
 			ProxyQApplication().AboutQt();
@@ -663,11 +663,11 @@ namespace Qt {
 	}
 
 	public interface IQApplicationSignals : IQObjectSignals {
-		[Q_SIGNAL("lastWindowClosed()")]
+		[Q_SIGNAL("void lastWindowClosed()")]
 		void LastWindowClosed();
-		[Q_SIGNAL("aboutToQuit()")]
+		[Q_SIGNAL("void aboutToQuit()")]
 		void AboutToQuit();
-		[Q_SIGNAL("guiThreadAwake()")]
+		[Q_SIGNAL("void guiThreadAwake()")]
 		void GuiThreadAwake();
 	}
 }

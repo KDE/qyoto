@@ -292,12 +292,12 @@ namespace Qt {
 		public virtual void SetDoubleBuffering(bool y) {
 			ProxyQCanvas().SetDoubleBuffering(y);
 		}
-		[Q_SLOT("advance()")]
+		[Q_SLOT("void advance()")]
 		[SmokeMethod("advance()")]
 		public virtual void Advance() {
 			ProxyQCanvas().Advance();
 		}
-		[Q_SLOT("update()")]
+		[Q_SLOT("void update()")]
 		[SmokeMethod("update()")]
 		public virtual void Update() {
 			ProxyQCanvas().Update();
@@ -345,7 +345,7 @@ namespace Qt {
 	}
 
 	public interface IQCanvasSignals : IQObjectSignals {
-		[Q_SIGNAL("resized()")]
+		[Q_SIGNAL("void resized()")]
 		void Resized();
 	}
 }

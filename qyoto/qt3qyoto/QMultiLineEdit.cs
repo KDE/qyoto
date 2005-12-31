@@ -164,7 +164,7 @@ namespace Qt {
 		public void SetMaxLines(int arg1) {
 			ProxyQMultiLineEdit().SetMaxLines(arg1);
 		}
-		[Q_SLOT("deselect()")]
+		[Q_SLOT("void deselect()")]
 		[SmokeMethod("deselect()")]
 		public void Deselect() {
 			ProxyQMultiLineEdit().Deselect();

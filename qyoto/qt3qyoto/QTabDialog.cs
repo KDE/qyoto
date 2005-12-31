@@ -290,19 +290,19 @@ namespace Qt {
 	}
 
 	public interface IQTabDialogSignals : IQDialogSignals {
-		[Q_SIGNAL("aboutToShow()")]
+		[Q_SIGNAL("void aboutToShow()")]
 		void AboutToShow();
-		[Q_SIGNAL("applyButtonPressed()")]
+		[Q_SIGNAL("void applyButtonPressed()")]
 		void ApplyButtonPressed();
-		[Q_SIGNAL("cancelButtonPressed()")]
+		[Q_SIGNAL("void cancelButtonPressed()")]
 		void CancelButtonPressed();
-		[Q_SIGNAL("defaultButtonPressed()")]
+		[Q_SIGNAL("void defaultButtonPressed()")]
 		void DefaultButtonPressed();
-		[Q_SIGNAL("helpButtonPressed()")]
+		[Q_SIGNAL("void helpButtonPressed()")]
 		void HelpButtonPressed();
-		[Q_SIGNAL("currentChanged(QWidget*)")]
+		[Q_SIGNAL("void currentChanged(QWidget*)")]
 		void CurrentChanged(QWidget arg1);
-		[Q_SIGNAL("selected(const QString&)")]
+		[Q_SIGNAL("void selected(const QString&)")]
 		void Selected(string arg1);
 	}
 }

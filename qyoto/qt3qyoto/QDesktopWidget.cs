@@ -154,9 +154,9 @@ namespace Qt {
 	}
 
 	public interface IQDesktopWidgetSignals : IQWidgetSignals {
-		[Q_SIGNAL("resized(int)")]
+		[Q_SIGNAL("void resized(int)")]
 		void Resized(int arg1);
-		[Q_SIGNAL("workAreaResized(int)")]
+		[Q_SIGNAL("void workAreaResized(int)")]
 		void WorkAreaResized(int arg1);
 	}
 }

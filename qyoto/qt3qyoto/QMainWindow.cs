@@ -322,52 +322,52 @@ namespace Qt {
 		public QPopupMenu CreateDockWindowMenu() {
 			return ProxyQMainWindow().CreateDockWindowMenu();
 		}
-		[Q_SLOT("setRightJustification(bool)")]
+		[Q_SLOT("void setRightJustification(bool)")]
 		[SmokeMethod("setRightJustification(bool)")]
 		public virtual void SetRightJustification(bool arg1) {
 			ProxyQMainWindow().SetRightJustification(arg1);
 		}
-		[Q_SLOT("setUsesBigPixmaps(bool)")]
+		[Q_SLOT("void setUsesBigPixmaps(bool)")]
 		[SmokeMethod("setUsesBigPixmaps(bool)")]
 		public virtual void SetUsesBigPixmaps(bool arg1) {
 			ProxyQMainWindow().SetUsesBigPixmaps(arg1);
 		}
-		[Q_SLOT("setUsesTextLabel(bool)")]
+		[Q_SLOT("void setUsesTextLabel(bool)")]
 		[SmokeMethod("setUsesTextLabel(bool)")]
 		public virtual void SetUsesTextLabel(bool arg1) {
 			ProxyQMainWindow().SetUsesTextLabel(arg1);
 		}
-		[Q_SLOT("setDockWindowsMovable(bool)")]
+		[Q_SLOT("void setDockWindowsMovable(bool)")]
 		[SmokeMethod("setDockWindowsMovable(bool)")]
 		public virtual void SetDockWindowsMovable(bool arg1) {
 			ProxyQMainWindow().SetDockWindowsMovable(arg1);
 		}
-		[Q_SLOT("setOpaqueMoving(bool)")]
+		[Q_SLOT("void setOpaqueMoving(bool)")]
 		[SmokeMethod("setOpaqueMoving(bool)")]
 		public virtual void SetOpaqueMoving(bool arg1) {
 			ProxyQMainWindow().SetOpaqueMoving(arg1);
 		}
-		[Q_SLOT("setDockMenuEnabled(bool)")]
+		[Q_SLOT("void setDockMenuEnabled(bool)")]
 		[SmokeMethod("setDockMenuEnabled(bool)")]
 		public virtual void SetDockMenuEnabled(bool arg1) {
 			ProxyQMainWindow().SetDockMenuEnabled(arg1);
 		}
-		[Q_SLOT("whatsThis()")]
+		[Q_SLOT("void whatsThis()")]
 		[SmokeMethod("whatsThis()")]
 		public virtual void WhatsThis() {
 			ProxyQMainWindow().WhatsThis();
 		}
-		[Q_SLOT("setAppropriate(QDockWindow*, bool)")]
+		[Q_SLOT("void setAppropriate(QDockWindow*, bool)")]
 		[SmokeMethod("setAppropriate(QDockWindow*, bool)")]
 		public virtual void SetAppropriate(QDockWindow dw, bool a) {
 			ProxyQMainWindow().SetAppropriate(dw,a);
 		}
-		[Q_SLOT("customize()")]
+		[Q_SLOT("void customize()")]
 		[SmokeMethod("customize()")]
 		public virtual void Customize() {
 			ProxyQMainWindow().Customize();
 		}
-		[Q_SLOT("setToolBarsMovable(bool)")]
+		[Q_SLOT("void setToolBarsMovable(bool)")]
 		[SmokeMethod("setToolBarsMovable(bool)")]
 		public void SetToolBarsMovable(bool arg1) {
 			ProxyQMainWindow().SetToolBarsMovable(arg1);
@@ -404,17 +404,17 @@ namespace Qt {
 		public new void StyleChange(QStyle arg1) {
 			ProxyQMainWindow().StyleChange(arg1);
 		}
-		[Q_SLOT("setUpLayout()")]
+		[Q_SLOT("void setUpLayout()")]
 		[SmokeMethod("setUpLayout()")]
 		protected virtual void SetUpLayout() {
 			ProxyQMainWindow().SetUpLayout();
 		}
-		[Q_SLOT("showDockMenu(const QPoint&)")]
+		[Q_SLOT("bool showDockMenu(const QPoint&)")]
 		[SmokeMethod("showDockMenu(const QPoint&)")]
 		protected virtual bool ShowDockMenu(QPoint globalPos) {
 			return ProxyQMainWindow().ShowDockMenu(globalPos);
 		}
-		[Q_SLOT("menuAboutToShow()")]
+		[Q_SLOT("void menuAboutToShow()")]
 		[SmokeMethod("menuAboutToShow()")]
 		protected void MenuAboutToShow() {
 			ProxyQMainWindow().MenuAboutToShow();
@@ -438,13 +438,13 @@ namespace Qt {
 	}
 
 	public interface IQMainWindowSignals : IQWidgetSignals {
-		[Q_SIGNAL("pixmapSizeChanged(bool)")]
+		[Q_SIGNAL("void pixmapSizeChanged(bool)")]
 		void PixmapSizeChanged(bool arg1);
-		[Q_SIGNAL("usesTextLabelChanged(bool)")]
+		[Q_SIGNAL("void usesTextLabelChanged(bool)")]
 		void UsesTextLabelChanged(bool arg1);
-		[Q_SIGNAL("dockWindowPositionChanged(QDockWindow*)")]
+		[Q_SIGNAL("void dockWindowPositionChanged(QDockWindow*)")]
 		void DockWindowPositionChanged(QDockWindow arg1);
-		[Q_SIGNAL("toolBarPositionChanged(QToolBar*)")]
+		[Q_SIGNAL("void toolBarPositionChanged(QToolBar*)")]
 		void ToolBarPositionChanged(QToolBar arg1);
 	}
 }
