@@ -44,8 +44,7 @@ namespace Qt {
 		[FieldOffset(0)] public float s_float;
 		[FieldOffset(0)] public double s_double;
         [FieldOffset(0)] public long s_enum;
-		[FieldOffset(0)] public void * s_class;
-		[FieldOffset(0)] public IntPtr s_intptr;
+		[FieldOffset(0)] public IntPtr s_class;
 	}
 	
 	public class SmokeInvocation : RealProxy {
@@ -299,7 +298,7 @@ namespace Qt {
 				for (int i = 0; i < callMessage.ArgCount; i++) {
 					if (callMessage.Args[i] == null) {
 						unsafe {
-							stack[i+1].s_intptr = (IntPtr) 0;
+							stack[i+1].s_class = (IntPtr) 0;
 						}
 					} else if (types[i] == typeof(bool)) {
 						stack[i+1].s_bool = (bool) callMessage.Args[i];
@@ -324,9 +323,9 @@ namespace Qt {
 					} else if (types[i] == typeof(double)) {
 						stack[i+1].s_double = (double) callMessage.Args[i];
 					} else if (types[i] == typeof(string)) {
-						stack[i+1].s_intptr = (IntPtr) GCHandle.Alloc(callMessage.Args[i]);
+						stack[i+1].s_class = (IntPtr) GCHandle.Alloc(callMessage.Args[i]);
 					} else {
-						stack[i+1].s_intptr = (IntPtr) GCHandle.Alloc(callMessage.Args[i]);
+						stack[i+1].s_class = (IntPtr) GCHandle.Alloc(callMessage.Args[i]);
 					}
 				}
 			}
@@ -365,10 +364,10 @@ namespace Qt {
 					} else if (returnType == typeof(double)) {
 						returnValue.ReturnValue = stack[0].s_double;
 					} else if (returnType == typeof(string)) {
-						returnValue.ReturnValue = ((GCHandle) stack[0].s_intptr).Target;
-						((GCHandle) stack[0].s_intptr).Free();
+						returnValue.ReturnValue = ((GCHandle) stack[0].s_class).Target;
+						((GCHandle) stack[0].s_class).Free();
 					} else {
-						returnValue.ReturnValue = ((GCHandle) stack[0].s_intptr).Target;
+						returnValue.ReturnValue = ((GCHandle) stack[0].s_class).Target;
 					}
 				}
 			}
