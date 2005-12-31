@@ -131,70 +131,6 @@ namespace Qt {
 		public new virtual string ClassName() {
 			return ProxyQApplication().ClassName();
 		}
-
-		/* Constructor #1 */
-		public QApplication(string[] argv) : this((Type) null) {
-			Qyoto.Init_qyoto();
-			CreateQApplicationProxy();
-			CreateQApplicationSignalProxy();
-			
-			string[] args = new string[argv.Length + 1];
-			args[0] = System.Reflection.Assembly.GetExecutingAssembly().Location;
-			argv.CopyTo(args, 1);
-			
-			NewQApplication(args);
-		}
-		private void NewQApplication(string[] argv) {
-			ProxyQApplication().NewQApplication(argv.Length, argv);
-		}
-		[SmokeMethod("QApplication(int&, char**)")]
-		private void NewQApplication(int argc, string[] argv) {
-			ProxyQApplication().NewQApplication(argc, argv);
-		}
-		/* end Constructor #1 */
-
-		/* Constructor #2 */
-		public QApplication(string[] argv, bool GUIenabled) : this((Type) null) {
-			Qyoto.Init_qyoto();
-			CreateQApplicationProxy();
-			CreateQApplicationSignalProxy();
-			
-			string[] args = new string[argv.Length + 1];
-			args[0] = System.Reflection.Assembly.GetExecutingAssembly().Location;
-			argv.CopyTo(args, 1);
-
-			NewQApplication(args,GUIenabled);
-		}
-		private void NewQApplication(string[] argv, bool GUIenabled) {
-			ProxyQApplication().NewQApplication(argv.Length, argv,GUIenabled);
-		}
-		[SmokeMethod("QApplication(int&, char**, bool)")]
-		private void NewQApplication(int argc, string[] argv, bool GUIenabled) {
-			ProxyQApplication().NewQApplication(argc, argv,GUIenabled);
-		}
-		/* end Constructor #2 */
-
-		/* Constructor #3 */
-		public QApplication(string[] argv, int arg3) : this((Type) null) {
-			Qyoto.Init_qyoto();
-			CreateQApplicationProxy();
-			CreateQApplicationSignalProxy();
-			
-			string[] args = new string[argv.Length + 1];
-			args[0] = System.Reflection.Assembly.GetExecutingAssembly().Location;
-			argv.CopyTo(args, 1);
-
-			NewQApplication(args,arg3);
-		}
-		private void NewQApplication(string[] argv, int arg3) {
-			ProxyQApplication().NewQApplication(argv.Length,argv,arg3);
-		}
-		[SmokeMethod("QApplication(int&, char**, QApplication::Type)")]
-		private void NewQApplication(int argc, string[] argv, int arg3) {
-			ProxyQApplication().NewQApplication(argc,argv,arg3);
-		}
-		/* end Constructor #3 */
-
 		[SmokeMethod("mainWidget() const")]
 		public QWidget MainWidget() {
 			return ProxyQApplication().MainWidget();
@@ -651,7 +587,70 @@ namespace Qt {
 		private void DisposeQApplication() {
 			ProxyQApplication().DisposeQApplication();
 		}
-//	public native string[] args();
+		/* Constructor #1 */
+		public QApplication(string[] argv) : this((Type) null) {
+			Qyoto.Init_qyoto();
+			CreateQApplicationProxy();
+			CreateQApplicationSignalProxy();
+			
+			string[] args = new string[argv.Length + 1];
+			args[0] = System.Reflection.Assembly.GetExecutingAssembly().Location;
+			argv.CopyTo(args, 1);
+			
+			NewQApplication(args);
+		}
+		private void NewQApplication(string[] argv) {
+			ProxyQApplication().NewQApplication(argv.Length, argv);
+		}
+		[SmokeMethod("QApplication(int&, char**)")]
+		private void NewQApplication(int argc, string[] argv) {
+			ProxyQApplication().NewQApplication(argc, argv);
+		}
+		/* end Constructor #1 */
+
+		/* Constructor #2 */
+		public QApplication(string[] argv, bool GUIenabled) : this((Type) null) {
+			Qyoto.Init_qyoto();
+			CreateQApplicationProxy();
+			CreateQApplicationSignalProxy();
+			
+			string[] args = new string[argv.Length + 1];
+			args[0] = System.Reflection.Assembly.GetExecutingAssembly().Location;
+			argv.CopyTo(args, 1);
+
+			NewQApplication(args,GUIenabled);
+		}
+		private void NewQApplication(string[] argv, bool GUIenabled) {
+			ProxyQApplication().NewQApplication(argv.Length, argv,GUIenabled);
+		}
+		[SmokeMethod("QApplication(int&, char**, bool)")]
+		private void NewQApplication(int argc, string[] argv, bool GUIenabled) {
+			ProxyQApplication().NewQApplication(argc, argv,GUIenabled);
+		}
+		/* end Constructor #2 */
+
+		/* Constructor #3 */
+		public QApplication(string[] argv, int arg3) : this((Type) null) {
+			Qyoto.Init_qyoto();
+			CreateQApplicationProxy();
+			CreateQApplicationSignalProxy();
+			
+			string[] args = new string[argv.Length + 1];
+			args[0] = System.Reflection.Assembly.GetExecutingAssembly().Location;
+			argv.CopyTo(args, 1);
+
+			NewQApplication(args,arg3);
+		}
+		private void NewQApplication(string[] argv, int arg3) {
+			ProxyQApplication().NewQApplication(argv.Length,argv,arg3);
+		}
+		[SmokeMethod("QApplication(int&, char**, QApplication::Type)")]
+		private void NewQApplication(int argc, string[] argv, int arg3) {
+			ProxyQApplication().NewQApplication(argc,argv,arg3);
+		}
+		/* end Constructor #3 */
+
+//		public string[] args(return Argv());
 
 		protected void CreateQApplicationSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQApplicationSignals), this);
