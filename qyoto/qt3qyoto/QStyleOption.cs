@@ -34,6 +34,7 @@ namespace Qt {
 			CreateQStyleOptionProxy();
 			NewQStyleOption(arg1);
 		}
+		[SmokeMethod("QStyleOption(QStyleOption::StyleOptionDefault)")]
 		private void NewQStyleOption(int arg1) {
 			ProxyQStyleOption().NewQStyleOption(arg1);
 		}
@@ -41,6 +42,7 @@ namespace Qt {
 			CreateQStyleOptionProxy();
 			NewQStyleOption();
 		}
+		[SmokeMethod("QStyleOption()")]
 		private void NewQStyleOption() {
 			ProxyQStyleOption().NewQStyleOption();
 		}
@@ -48,6 +50,7 @@ namespace Qt {
 			CreateQStyleOptionProxy();
 			NewQStyleOption(in1,in2);
 		}
+		[SmokeMethod("QStyleOption(int, int)")]
 		private void NewQStyleOption(int in1, int in2) {
 			ProxyQStyleOption().NewQStyleOption(in1,in2);
 		}
@@ -55,6 +58,7 @@ namespace Qt {
 			CreateQStyleOptionProxy();
 			NewQStyleOption(in1,in2,in3,in4);
 		}
+		[SmokeMethod("QStyleOption(int, int, int, int)")]
 		private void NewQStyleOption(int in1, int in2, int in3, int in4) {
 			ProxyQStyleOption().NewQStyleOption(in1,in2,in3,in4);
 		}
@@ -62,6 +66,7 @@ namespace Qt {
 			CreateQStyleOptionProxy();
 			NewQStyleOption(m);
 		}
+		[SmokeMethod("QStyleOption(QMenuItem*)")]
 		private void NewQStyleOption(QMenuItem m) {
 			ProxyQStyleOption().NewQStyleOption(m);
 		}
@@ -69,6 +74,7 @@ namespace Qt {
 			CreateQStyleOptionProxy();
 			NewQStyleOption(m,in1);
 		}
+		[SmokeMethod("QStyleOption(QMenuItem*, int)")]
 		private void NewQStyleOption(QMenuItem m, int in1) {
 			ProxyQStyleOption().NewQStyleOption(m,in1);
 		}
@@ -76,6 +82,7 @@ namespace Qt {
 			CreateQStyleOptionProxy();
 			NewQStyleOption(m,in1,in2);
 		}
+		[SmokeMethod("QStyleOption(QMenuItem*, int, int)")]
 		private void NewQStyleOption(QMenuItem m, int in1, int in2) {
 			ProxyQStyleOption().NewQStyleOption(m,in1,in2);
 		}
@@ -83,6 +90,7 @@ namespace Qt {
 			CreateQStyleOptionProxy();
 			NewQStyleOption(c);
 		}
+		[SmokeMethod("QStyleOption(const QColor&)")]
 		private void NewQStyleOption(QColor c) {
 			ProxyQStyleOption().NewQStyleOption(c);
 		}
@@ -90,6 +98,7 @@ namespace Qt {
 			CreateQStyleOptionProxy();
 			NewQStyleOption(t);
 		}
+		[SmokeMethod("QStyleOption(QTab*)")]
 		private void NewQStyleOption(QTab t) {
 			ProxyQStyleOption().NewQStyleOption(t);
 		}
@@ -97,6 +106,7 @@ namespace Qt {
 			CreateQStyleOptionProxy();
 			NewQStyleOption(i);
 		}
+		[SmokeMethod("QStyleOption(QListViewItem*)")]
 		private void NewQStyleOption(QListViewItem i) {
 			ProxyQStyleOption().NewQStyleOption(i);
 		}
@@ -104,6 +114,7 @@ namespace Qt {
 			CreateQStyleOptionProxy();
 			NewQStyleOption(i);
 		}
+		[SmokeMethod("QStyleOption(QCheckListItem*)")]
 		private void NewQStyleOption(QCheckListItem i) {
 			ProxyQStyleOption().NewQStyleOption(i);
 		}
@@ -111,6 +122,7 @@ namespace Qt {
 			CreateQStyleOptionProxy();
 			NewQStyleOption(r);
 		}
+		[SmokeMethod("QStyleOption(const QRect&)")]
 		private void NewQStyleOption(QRect r) {
 			ProxyQStyleOption().NewQStyleOption(r);
 		}
@@ -118,65 +130,86 @@ namespace Qt {
 			CreateQStyleOptionProxy();
 			NewQStyleOption(w);
 		}
+		[SmokeMethod("QStyleOption(QWidget*)")]
 		private void NewQStyleOption(QWidget w) {
 			ProxyQStyleOption().NewQStyleOption(w);
 		}
+		[SmokeMethod("isDefault() const")]
 		public bool IsDefault() {
 			return ProxyQStyleOption().IsDefault();
 		}
+		[SmokeMethod("day() const")]
 		public int Day() {
 			return ProxyQStyleOption().Day();
 		}
+		[SmokeMethod("lineWidth() const")]
 		public int LineWidth() {
 			return ProxyQStyleOption().LineWidth();
 		}
+		[SmokeMethod("midLineWidth() const")]
 		public int MidLineWidth() {
 			return ProxyQStyleOption().MidLineWidth();
 		}
+		[SmokeMethod("frameShape() const")]
 		public int FrameShape() {
 			return ProxyQStyleOption().FrameShape();
 		}
+		[SmokeMethod("frameShadow() const")]
 		public int FrameShadow() {
 			return ProxyQStyleOption().FrameShadow();
 		}
+		[SmokeMethod("headerSection() const")]
 		public int HeaderSection() {
 			return ProxyQStyleOption().HeaderSection();
 		}
+		[SmokeMethod("menuItem() const")]
 		public QMenuItem MenuItem() {
 			return ProxyQStyleOption().MenuItem();
 		}
+		[SmokeMethod("maxIconWidth() const")]
 		public int MaxIconWidth() {
 			return ProxyQStyleOption().MaxIconWidth();
 		}
+		[SmokeMethod("tabWidth() const")]
 		public int TabWidth() {
 			return ProxyQStyleOption().TabWidth();
 		}
+		[SmokeMethod("color() const")]
 		public QColor Color() {
 			return ProxyQStyleOption().Color();
 		}
+		[SmokeMethod("tab() const")]
 		public QTab Tab() {
 			return ProxyQStyleOption().Tab();
 		}
+		[SmokeMethod("checkListItem() const")]
 		public QCheckListItem CheckListItem() {
 			return ProxyQStyleOption().CheckListItem();
 		}
+		[SmokeMethod("listViewItem() const")]
 		public QListViewItem ListViewItem() {
 			return ProxyQStyleOption().ListViewItem();
 		}
+		[SmokeMethod("arrowType() const")]
 		public int ArrowType() {
 			return ProxyQStyleOption().ArrowType();
 		}
+		[SmokeMethod("rect() const")]
 		public QRect Rect() {
 			return ProxyQStyleOption().Rect();
 		}
+		[SmokeMethod("widget() const")]
 		public QWidget Widget() {
 			return ProxyQStyleOption().Widget();
 		}
 		~QStyleOption() {
-			ProxyQStyleOption().Dispose();
+			DisposeQStyleOption();
 		}
 		public void Dispose() {
-			ProxyQStyleOption().Dispose();
+			DisposeQStyleOption();
+		}
+		private void DisposeQStyleOption() {
+			ProxyQStyleOption().DisposeQStyleOption();
 		}
 	}
 }

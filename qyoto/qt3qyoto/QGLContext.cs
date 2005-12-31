@@ -29,6 +29,7 @@ namespace Qt {
 			CreateQGLContextProxy();
 			NewQGLContext(format,device);
 		}
+		[SmokeMethod("QGLContext(const QGLFormat&, QPaintDevice*)")]
 		private void NewQGLContext(QGLFormat format, IQPaintDevice device) {
 			ProxyQGLContext().NewQGLContext(format,device);
 		}
@@ -36,89 +37,118 @@ namespace Qt {
 			CreateQGLContextProxy();
 			NewQGLContext(format);
 		}
+		[SmokeMethod("QGLContext(const QGLFormat&)")]
 		private void NewQGLContext(QGLFormat format) {
 			ProxyQGLContext().NewQGLContext(format);
 		}
+		[SmokeMethod("create(const QGLContext*)")]
 		public virtual bool Create(QGLContext shareContext) {
 			return ProxyQGLContext().Create(shareContext);
 		}
+		[SmokeMethod("create()")]
 		public virtual bool Create() {
 			return ProxyQGLContext().Create();
 		}
+		[SmokeMethod("isValid() const")]
 		public bool IsValid() {
 			return ProxyQGLContext().IsValid();
 		}
+		[SmokeMethod("isSharing() const")]
 		public bool IsSharing() {
 			return ProxyQGLContext().IsSharing();
 		}
+		[SmokeMethod("reset()")]
 		public virtual void Reset() {
 			ProxyQGLContext().Reset();
 		}
+		[SmokeMethod("format() const")]
 		public QGLFormat Format() {
 			return ProxyQGLContext().Format();
 		}
+		[SmokeMethod("requestedFormat() const")]
 		public QGLFormat RequestedFormat() {
 			return ProxyQGLContext().RequestedFormat();
 		}
+		[SmokeMethod("setFormat(const QGLFormat&)")]
 		public virtual void SetFormat(QGLFormat format) {
 			ProxyQGLContext().SetFormat(format);
 		}
+		[SmokeMethod("makeCurrent()")]
 		public virtual void MakeCurrent() {
 			ProxyQGLContext().MakeCurrent();
 		}
+		[SmokeMethod("swapBuffers() const")]
 		public virtual void SwapBuffers() {
 			ProxyQGLContext().SwapBuffers();
 		}
+		[SmokeMethod("device() const")]
 		public IQPaintDevice Device() {
 			return ProxyQGLContext().Device();
 		}
+		[SmokeMethod("overlayTransparentColor() const")]
 		public QColor OverlayTransparentColor() {
 			return ProxyQGLContext().OverlayTransparentColor();
 		}
+		[SmokeMethod("currentContext()")]
 		public static QGLContext CurrentContext() {
 			return StaticQGLContext().CurrentContext();
 		}
+		[SmokeMethod("chooseContext(const QGLContext*)")]
 		protected virtual bool ChooseContext(QGLContext shareContext) {
 			return ProxyQGLContext().ChooseContext(shareContext);
 		}
+		[SmokeMethod("chooseContext()")]
 		protected virtual bool ChooseContext() {
 			return ProxyQGLContext().ChooseContext();
 		}
+		[SmokeMethod("doneCurrent()")]
 		protected virtual void DoneCurrent() {
 			ProxyQGLContext().DoneCurrent();
 		}
+		[SmokeMethod("deviceIsPixmap() const")]
 		protected bool DeviceIsPixmap() {
 			return ProxyQGLContext().DeviceIsPixmap();
 		}
+		[SmokeMethod("windowCreated() const")]
 		protected bool WindowCreated() {
 			return ProxyQGLContext().WindowCreated();
 		}
+		[SmokeMethod("setWindowCreated(bool)")]
 		protected void SetWindowCreated(bool on) {
 			ProxyQGLContext().SetWindowCreated(on);
 		}
+		[SmokeMethod("initialized() const")]
 		protected bool Initialized() {
 			return ProxyQGLContext().Initialized();
 		}
+		[SmokeMethod("setInitialized(bool)")]
 		protected void SetInitialized(bool on) {
 			ProxyQGLContext().SetInitialized(on);
 		}
+		[SmokeMethod("generateFontDisplayLists(const QFont&, int)")]
 		protected void GenerateFontDisplayLists(QFont fnt, int listBase) {
 			ProxyQGLContext().GenerateFontDisplayLists(fnt,listBase);
 		}
+		[SmokeMethod("colorIndex(const QColor&) const")]
 		protected uint ColorIndex(QColor c) {
 			return ProxyQGLContext().ColorIndex(c);
 		}
+		[SmokeMethod("setValid(bool)")]
 		protected void SetValid(bool valid) {
 			ProxyQGLContext().SetValid(valid);
 		}
+		[SmokeMethod("setDevice(QPaintDevice*)")]
 		protected void SetDevice(IQPaintDevice pDev) {
 			ProxyQGLContext().SetDevice(pDev);
 		}
 		~QGLContext() {
-			ProxyQGLContext().Dispose();
+			DisposeQGLContext();
 		}
 		public void Dispose() {
-			ProxyQGLContext().Dispose();
+			DisposeQGLContext();
+		}
+		private void DisposeQGLContext() {
+			ProxyQGLContext().DisposeQGLContext();
 		}
 	}
 }

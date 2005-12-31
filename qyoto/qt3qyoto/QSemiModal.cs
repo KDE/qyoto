@@ -29,64 +29,93 @@ namespace Qt {
 			return (IQSemiModalProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQSemiModal().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQSemiModal().ClassName();
 		}
 		public QSemiModal(QWidget parent, string name, bool modal, int f) : this((Type) null) {
 			CreateQSemiModalProxy();
+			CreateQSemiModalSignalProxy();
 			NewQSemiModal(parent,name,modal,f);
 		}
+		[SmokeMethod("QSemiModal(QWidget*, const char*, bool, Qt::WFlags)")]
 		private void NewQSemiModal(QWidget parent, string name, bool modal, int f) {
 			ProxyQSemiModal().NewQSemiModal(parent,name,modal,f);
 		}
 		public QSemiModal(QWidget parent, string name, bool modal) : this((Type) null) {
 			CreateQSemiModalProxy();
+			CreateQSemiModalSignalProxy();
 			NewQSemiModal(parent,name,modal);
 		}
+		[SmokeMethod("QSemiModal(QWidget*, const char*, bool)")]
 		private void NewQSemiModal(QWidget parent, string name, bool modal) {
 			ProxyQSemiModal().NewQSemiModal(parent,name,modal);
 		}
 		public QSemiModal(QWidget parent, string name) : this((Type) null) {
 			CreateQSemiModalProxy();
+			CreateQSemiModalSignalProxy();
 			NewQSemiModal(parent,name);
 		}
+		[SmokeMethod("QSemiModal(QWidget*, const char*)")]
 		private void NewQSemiModal(QWidget parent, string name) {
 			ProxyQSemiModal().NewQSemiModal(parent,name);
 		}
 		public QSemiModal(QWidget parent) : this((Type) null) {
 			CreateQSemiModalProxy();
+			CreateQSemiModalSignalProxy();
 			NewQSemiModal(parent);
 		}
+		[SmokeMethod("QSemiModal(QWidget*)")]
 		private void NewQSemiModal(QWidget parent) {
 			ProxyQSemiModal().NewQSemiModal(parent);
 		}
 		public QSemiModal() : this((Type) null) {
 			CreateQSemiModalProxy();
+			CreateQSemiModalSignalProxy();
 			NewQSemiModal();
 		}
+		[SmokeMethod("QSemiModal()")]
 		private void NewQSemiModal() {
 			ProxyQSemiModal().NewQSemiModal();
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQSemiModal().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQSemiModal().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQSemiModal().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQSemiModal().TrUtf8(arg1);
 		}
 		~QSemiModal() {
-			ProxyQSemiModal().Dispose();
+			DisposeQSemiModal();
 		}
 		public new void Dispose() {
-			ProxyQSemiModal().Dispose();
+			DisposeQSemiModal();
 		}
+		private void DisposeQSemiModal() {
+			ProxyQSemiModal().DisposeQSemiModal();
+		}
+		protected void CreateQSemiModalSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQSemiModalSignals), this);
+			_signalInterceptor = (IQSemiModalSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQSemiModalSignals Emit() {
+			return (IQSemiModalSignals) _signalInterceptor;
+		}
+	}
+
+	public interface IQSemiModalSignals : IQDialogSignals {
 	}
 }

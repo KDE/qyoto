@@ -45,49 +45,64 @@ namespace Qt {
 			return (IQLayoutItemProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("sizeHint() const")]
 		public virtual QSize SizeHint() {
 			return ProxyQLayoutItem().SizeHint();
 		}
+		[SmokeMethod("minimumSize() const")]
 		public virtual QSize MinimumSize() {
 			return ProxyQLayoutItem().MinimumSize();
 		}
+		[SmokeMethod("maximumSize() const")]
 		public virtual QSize MaximumSize() {
 			return ProxyQLayoutItem().MaximumSize();
 		}
+		[SmokeMethod("expanding() const")]
 		public virtual int Expanding() {
 			return ProxyQLayoutItem().Expanding();
 		}
+		[SmokeMethod("setGeometry(const QRect&)")]
 		public virtual void SetGeometry(QRect arg1) {
 			ProxyQLayoutItem().SetGeometry(arg1);
 		}
+		[SmokeMethod("geometry() const")]
 		public virtual QRect Geometry() {
 			return ProxyQLayoutItem().Geometry();
 		}
+		[SmokeMethod("isEmpty() const")]
 		public virtual bool IsEmpty() {
 			return ProxyQLayoutItem().IsEmpty();
 		}
+		[SmokeMethod("hasHeightForWidth() const")]
 		public virtual bool HasHeightForWidth() {
 			return ProxyQLayoutItem().HasHeightForWidth();
 		}
+		[SmokeMethod("heightForWidth(int) const")]
 		public virtual int HeightForWidth(int arg1) {
 			return ProxyQLayoutItem().HeightForWidth(arg1);
 		}
+		[SmokeMethod("invalidate()")]
 		public virtual void Invalidate() {
 			ProxyQLayoutItem().Invalidate();
 		}
+		[SmokeMethod("widget()")]
 		public virtual QWidget Widget() {
 			return ProxyQLayoutItem().Widget();
 		}
 		// QLayoutIterator iterator(); >>>> NOT CONVERTED
+		[SmokeMethod("layout()")]
 		public virtual QLayout Layout() {
 			return ProxyQLayoutItem().Layout();
 		}
+		[SmokeMethod("spacerItem()")]
 		public virtual QSpacerItem SpacerItem() {
 			return ProxyQLayoutItem().SpacerItem();
 		}
+		[SmokeMethod("alignment() const")]
 		public int Alignment() {
 			return ProxyQLayoutItem().Alignment();
 		}
+		[SmokeMethod("setAlignment(int)")]
 		public virtual void SetAlignment(int a) {
 			ProxyQLayoutItem().SetAlignment(a);
 		}

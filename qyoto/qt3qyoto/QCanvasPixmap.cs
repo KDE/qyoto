@@ -29,6 +29,7 @@ namespace Qt {
 			CreateQCanvasPixmapProxy();
 			NewQCanvasPixmap(datafilename);
 		}
+		[SmokeMethod("QCanvasPixmap(const QString&)")]
 		private void NewQCanvasPixmap(string datafilename) {
 			ProxyQCanvasPixmap().NewQCanvasPixmap(datafilename);
 		}
@@ -36,6 +37,7 @@ namespace Qt {
 			CreateQCanvasPixmapProxy();
 			NewQCanvasPixmap(image);
 		}
+		[SmokeMethod("QCanvasPixmap(const QImage&)")]
 		private void NewQCanvasPixmap(QImage image) {
 			ProxyQCanvasPixmap().NewQCanvasPixmap(image);
 		}
@@ -43,23 +45,30 @@ namespace Qt {
 			CreateQCanvasPixmapProxy();
 			NewQCanvasPixmap(arg1,hotspot);
 		}
+		[SmokeMethod("QCanvasPixmap(const QPixmap&, const QPoint&)")]
 		private void NewQCanvasPixmap(QPixmap arg1, QPoint hotspot) {
 			ProxyQCanvasPixmap().NewQCanvasPixmap(arg1,hotspot);
 		}
+		[SmokeMethod("offsetX() const")]
 		public int OffsetX() {
 			return ProxyQCanvasPixmap().OffsetX();
 		}
+		[SmokeMethod("offsetY() const")]
 		public int OffsetY() {
 			return ProxyQCanvasPixmap().OffsetY();
 		}
+		[SmokeMethod("setOffset(int, int)")]
 		public void SetOffset(int x, int y) {
 			ProxyQCanvasPixmap().SetOffset(x,y);
 		}
 		~QCanvasPixmap() {
-			ProxyQCanvasPixmap().Dispose();
+			DisposeQCanvasPixmap();
 		}
 		public void Dispose() {
-			ProxyQCanvasPixmap().Dispose();
+			DisposeQCanvasPixmap();
+		}
+		private void DisposeQCanvasPixmap() {
+			ProxyQCanvasPixmap().DisposeQCanvasPixmap();
 		}
 	}
 }

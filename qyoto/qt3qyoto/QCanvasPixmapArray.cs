@@ -33,6 +33,7 @@ namespace Qt {
 			CreateQCanvasPixmapArrayProxy();
 			NewQCanvasPixmapArray();
 		}
+		[SmokeMethod("QCanvasPixmapArray()")]
 		private void NewQCanvasPixmapArray() {
 			ProxyQCanvasPixmapArray().NewQCanvasPixmapArray();
 		}
@@ -40,6 +41,7 @@ namespace Qt {
 			CreateQCanvasPixmapArrayProxy();
 			NewQCanvasPixmapArray(datafilenamepattern,framecount);
 		}
+		[SmokeMethod("QCanvasPixmapArray(const QString&, int)")]
 		private void NewQCanvasPixmapArray(string datafilenamepattern, int framecount) {
 			ProxyQCanvasPixmapArray().NewQCanvasPixmapArray(datafilenamepattern,framecount);
 		}
@@ -47,41 +49,53 @@ namespace Qt {
 			CreateQCanvasPixmapArrayProxy();
 			NewQCanvasPixmapArray(datafilenamepattern);
 		}
+		[SmokeMethod("QCanvasPixmapArray(const QString&)")]
 		private void NewQCanvasPixmapArray(string datafilenamepattern) {
 			ProxyQCanvasPixmapArray().NewQCanvasPixmapArray(datafilenamepattern);
 		}
 		// QCanvasPixmapArray* QCanvasPixmapArray(QPtrList<QPixmap> arg1,QPtrList<QPoint> arg2); >>>> NOT CONVERTED
 		// QCanvasPixmapArray* QCanvasPixmapArray(QValueList<QPixmap> arg1,QPointArray arg2); >>>> NOT CONVERTED
 		// QCanvasPixmapArray* QCanvasPixmapArray(QValueList<QPixmap> arg1); >>>> NOT CONVERTED
+		[SmokeMethod("readPixmaps(const QString&, int)")]
 		public bool ReadPixmaps(string datafilenamepattern, int framecount) {
 			return ProxyQCanvasPixmapArray().ReadPixmaps(datafilenamepattern,framecount);
 		}
+		[SmokeMethod("readPixmaps(const QString&)")]
 		public bool ReadPixmaps(string datafilenamepattern) {
 			return ProxyQCanvasPixmapArray().ReadPixmaps(datafilenamepattern);
 		}
+		[SmokeMethod("readCollisionMasks(const QString&)")]
 		public bool ReadCollisionMasks(string filenamepattern) {
 			return ProxyQCanvasPixmapArray().ReadCollisionMasks(filenamepattern);
 		}
+		[SmokeMethod("operator!()")]
 		public static bool operator!(QCanvasPixmapArray lhs) {
 			return StaticQCanvasPixmapArray().op_not(lhs);
 		}
+		[SmokeMethod("isValid() const")]
 		public bool IsValid() {
 			return ProxyQCanvasPixmapArray().IsValid();
 		}
+		[SmokeMethod("image(int) const")]
 		public QCanvasPixmap Image(int i) {
 			return ProxyQCanvasPixmapArray().Image(i);
 		}
+		[SmokeMethod("setImage(int, QCanvasPixmap*)")]
 		public void SetImage(int i, QCanvasPixmap p) {
 			ProxyQCanvasPixmapArray().SetImage(i,p);
 		}
+		[SmokeMethod("count() const")]
 		public uint Count() {
 			return ProxyQCanvasPixmapArray().Count();
 		}
 		~QCanvasPixmapArray() {
-			ProxyQCanvasPixmapArray().Dispose();
+			DisposeQCanvasPixmapArray();
 		}
 		public void Dispose() {
-			ProxyQCanvasPixmapArray().Dispose();
+			DisposeQCanvasPixmapArray();
+		}
+		private void DisposeQCanvasPixmapArray() {
+			ProxyQCanvasPixmapArray().DisposeQCanvasPixmapArray();
 		}
 	}
 }

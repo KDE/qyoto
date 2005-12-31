@@ -29,81 +29,120 @@ namespace Qt {
 			return (IQDataViewProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQDataView().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQDataView().ClassName();
 		}
 		public QDataView(QWidget parent, string name, int fl) : this((Type) null) {
 			CreateQDataViewProxy();
+			CreateQDataViewSignalProxy();
 			NewQDataView(parent,name,fl);
 		}
+		[SmokeMethod("QDataView(QWidget*, const char*, Qt::WFlags)")]
 		private void NewQDataView(QWidget parent, string name, int fl) {
 			ProxyQDataView().NewQDataView(parent,name,fl);
 		}
 		public QDataView(QWidget parent, string name) : this((Type) null) {
 			CreateQDataViewProxy();
+			CreateQDataViewSignalProxy();
 			NewQDataView(parent,name);
 		}
+		[SmokeMethod("QDataView(QWidget*, const char*)")]
 		private void NewQDataView(QWidget parent, string name) {
 			ProxyQDataView().NewQDataView(parent,name);
 		}
 		public QDataView(QWidget parent) : this((Type) null) {
 			CreateQDataViewProxy();
+			CreateQDataViewSignalProxy();
 			NewQDataView(parent);
 		}
+		[SmokeMethod("QDataView(QWidget*)")]
 		private void NewQDataView(QWidget parent) {
 			ProxyQDataView().NewQDataView(parent);
 		}
 		public QDataView() : this((Type) null) {
 			CreateQDataViewProxy();
+			CreateQDataViewSignalProxy();
 			NewQDataView();
 		}
+		[SmokeMethod("QDataView()")]
 		private void NewQDataView() {
 			ProxyQDataView().NewQDataView();
 		}
+		[SmokeMethod("setForm(QSqlForm*)")]
 		public virtual void SetForm(QSqlForm form) {
 			ProxyQDataView().SetForm(form);
 		}
+		[SmokeMethod("form()")]
 		public QSqlForm Form() {
 			return ProxyQDataView().Form();
 		}
+		[SmokeMethod("setRecord(QSqlRecord*)")]
 		public virtual void SetRecord(QSqlRecord record) {
 			ProxyQDataView().SetRecord(record);
 		}
+		[SmokeMethod("record()")]
 		public QSqlRecord Record() {
 			return ProxyQDataView().Record();
 		}
+		[Q_SLOT("refresh(QSqlRecord*)")]
+		[SmokeMethod("refresh(QSqlRecord*)")]
 		public virtual void Refresh(QSqlRecord buf) {
 			ProxyQDataView().Refresh(buf);
 		}
+		[Q_SLOT("readFields()")]
+		[SmokeMethod("readFields()")]
 		public virtual void ReadFields() {
 			ProxyQDataView().ReadFields();
 		}
+		[Q_SLOT("writeFields()")]
+		[SmokeMethod("writeFields()")]
 		public virtual void WriteFields() {
 			ProxyQDataView().WriteFields();
 		}
+		[Q_SLOT("clearValues()")]
+		[SmokeMethod("clearValues()")]
 		public virtual void ClearValues() {
 			ProxyQDataView().ClearValues();
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQDataView().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQDataView().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQDataView().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQDataView().TrUtf8(arg1);
 		}
 		~QDataView() {
-			ProxyQDataView().Dispose();
+			DisposeQDataView();
 		}
 		public new void Dispose() {
-			ProxyQDataView().Dispose();
+			DisposeQDataView();
 		}
+		private void DisposeQDataView() {
+			ProxyQDataView().DisposeQDataView();
+		}
+		protected void CreateQDataViewSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQDataViewSignals), this);
+			_signalInterceptor = (IQDataViewSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQDataViewSignals Emit() {
+			return (IQDataViewSignals) _signalInterceptor;
+		}
+	}
+
+	public interface IQDataViewSignals : IQWidgetSignals {
 	}
 }

@@ -27,24 +27,31 @@ namespace Qt {
 			return (IQImageConsumerProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("end()")]
 		public virtual void End() {
 			ProxyQImageConsumer().End();
 		}
+		[SmokeMethod("changed(const QRect&)")]
 		public virtual void Changed(QRect arg1) {
 			ProxyQImageConsumer().Changed(arg1);
 		}
+		[SmokeMethod("frameDone()")]
 		public virtual void FrameDone() {
 			ProxyQImageConsumer().FrameDone();
 		}
+		[SmokeMethod("frameDone(const QPoint&, const QRect&)")]
 		public virtual void FrameDone(QPoint arg1, QRect arg2) {
 			ProxyQImageConsumer().FrameDone(arg1,arg2);
 		}
+		[SmokeMethod("setLooping(int)")]
 		public virtual void SetLooping(int arg1) {
 			ProxyQImageConsumer().SetLooping(arg1);
 		}
+		[SmokeMethod("setFramePeriod(int)")]
 		public virtual void SetFramePeriod(int arg1) {
 			ProxyQImageConsumer().SetFramePeriod(arg1);
 		}
+		[SmokeMethod("setSize(int, int)")]
 		public virtual void SetSize(int arg1, int arg2) {
 			ProxyQImageConsumer().SetSize(arg1,arg2);
 		}

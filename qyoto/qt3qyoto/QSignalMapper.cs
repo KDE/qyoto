@@ -30,60 +30,87 @@ namespace Qt {
 			return (IQSignalMapperProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQSignalMapper().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQSignalMapper().ClassName();
 		}
 		public QSignalMapper(QObject parent, string name) : this((Type) null) {
 			CreateQSignalMapperProxy();
+			CreateQSignalMapperSignalProxy();
 			NewQSignalMapper(parent,name);
 		}
+		[SmokeMethod("QSignalMapper(QObject*, const char*)")]
 		private void NewQSignalMapper(QObject parent, string name) {
 			ProxyQSignalMapper().NewQSignalMapper(parent,name);
 		}
 		public QSignalMapper(QObject parent) : this((Type) null) {
 			CreateQSignalMapperProxy();
+			CreateQSignalMapperSignalProxy();
 			NewQSignalMapper(parent);
 		}
+		[SmokeMethod("QSignalMapper(QObject*)")]
 		private void NewQSignalMapper(QObject parent) {
 			ProxyQSignalMapper().NewQSignalMapper(parent);
 		}
+		[SmokeMethod("setMapping(const QObject*, int)")]
 		public virtual void SetMapping(QObject sender, int identifier) {
 			ProxyQSignalMapper().SetMapping(sender,identifier);
 		}
+		[SmokeMethod("setMapping(const QObject*, const QString&)")]
 		public virtual void SetMapping(QObject sender, string identifier) {
 			ProxyQSignalMapper().SetMapping(sender,identifier);
 		}
+		[SmokeMethod("removeMappings(const QObject*)")]
 		public void RemoveMappings(QObject sender) {
 			ProxyQSignalMapper().RemoveMappings(sender);
 		}
+		[Q_SLOT("map()")]
+		[SmokeMethod("map()")]
 		public void Map() {
 			ProxyQSignalMapper().Map();
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQSignalMapper().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQSignalMapper().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQSignalMapper().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQSignalMapper().TrUtf8(arg1);
 		}
 		~QSignalMapper() {
-			ProxyQSignalMapper().Dispose();
+			DisposeQSignalMapper();
 		}
 		public new void Dispose() {
-			ProxyQSignalMapper().Dispose();
+			DisposeQSignalMapper();
+		}
+		private void DisposeQSignalMapper() {
+			ProxyQSignalMapper().DisposeQSignalMapper();
+		}
+		protected void CreateQSignalMapperSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQSignalMapperSignals), this);
+			_signalInterceptor = (IQSignalMapperSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQSignalMapperSignals Emit() {
+			return (IQSignalMapperSignals) _signalInterceptor;
 		}
 	}
 
-	public interface IQSignalMapperSignals {
+	public interface IQSignalMapperSignals : IQObjectSignals {
+		[Q_SIGNAL("mapped(int)")]
 		void Mapped(int arg1);
+		[Q_SIGNAL("mapped(const QString&)")]
 		void Mapped(string arg1);
 	}
 }

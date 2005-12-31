@@ -45,68 +45,90 @@ namespace Qt {
 			CreateQWhatsThisProxy();
 			NewQWhatsThis(arg1);
 		}
+		[SmokeMethod("QWhatsThis(QWidget*)")]
 		private void NewQWhatsThis(QWidget arg1) {
 			ProxyQWhatsThis().NewQWhatsThis(arg1);
 		}
+		[SmokeMethod("text(const QPoint&)")]
 		public virtual string Text(QPoint arg1) {
 			return ProxyQWhatsThis().Text(arg1);
 		}
+		[SmokeMethod("clicked(const QString&)")]
 		public virtual bool Clicked(string href) {
 			return ProxyQWhatsThis().Clicked(href);
 		}
+		[SmokeMethod("setFont(const QFont&)")]
 		public static void SetFont(QFont font) {
 			StaticQWhatsThis().SetFont(font);
 		}
+		[SmokeMethod("add(QWidget*, const QString&)")]
 		public static void Add(QWidget arg1, string arg2) {
 			StaticQWhatsThis().Add(arg1,arg2);
 		}
+		[SmokeMethod("remove(QWidget*)")]
 		public static void Remove(QWidget arg1) {
 			StaticQWhatsThis().Remove(arg1);
 		}
+		[SmokeMethod("textFor(QWidget*, const QPoint&, bool)")]
 		public static string TextFor(QWidget arg1, QPoint pos, bool includeParents) {
 			return StaticQWhatsThis().TextFor(arg1,pos,includeParents);
 		}
+		[SmokeMethod("textFor(QWidget*, const QPoint&)")]
 		public static string TextFor(QWidget arg1, QPoint pos) {
 			return StaticQWhatsThis().TextFor(arg1,pos);
 		}
+		[SmokeMethod("textFor(QWidget*)")]
 		public static string TextFor(QWidget arg1) {
 			return StaticQWhatsThis().TextFor(arg1);
 		}
+		[SmokeMethod("whatsThisButton(QWidget*)")]
 		public static QToolButton WhatsThisButton(QWidget parent) {
 			return StaticQWhatsThis().WhatsThisButton(parent);
 		}
+		[SmokeMethod("enterWhatsThisMode()")]
 		public static void EnterWhatsThisMode() {
 			StaticQWhatsThis().EnterWhatsThisMode();
 		}
+		[SmokeMethod("inWhatsThisMode()")]
 		public static bool InWhatsThisMode() {
 			return StaticQWhatsThis().InWhatsThisMode();
 		}
+		[SmokeMethod("leaveWhatsThisMode(const QString&, const QPoint&, QWidget*)")]
 		public static void LeaveWhatsThisMode(string arg1, QPoint pos, QWidget w) {
 			StaticQWhatsThis().LeaveWhatsThisMode(arg1,pos,w);
 		}
+		[SmokeMethod("leaveWhatsThisMode(const QString&, const QPoint&)")]
 		public static void LeaveWhatsThisMode(string arg1, QPoint pos) {
 			StaticQWhatsThis().LeaveWhatsThisMode(arg1,pos);
 		}
+		[SmokeMethod("leaveWhatsThisMode(const QString&)")]
 		public static void LeaveWhatsThisMode(string arg1) {
 			StaticQWhatsThis().LeaveWhatsThisMode(arg1);
 		}
+		[SmokeMethod("leaveWhatsThisMode()")]
 		public static void LeaveWhatsThisMode() {
 			StaticQWhatsThis().LeaveWhatsThisMode();
 		}
+		[SmokeMethod("display(const QString&, const QPoint&, QWidget*)")]
 		public static void Display(string text, QPoint pos, QWidget w) {
 			StaticQWhatsThis().Display(text,pos,w);
 		}
+		[SmokeMethod("display(const QString&, const QPoint&)")]
 		public static void Display(string text, QPoint pos) {
 			StaticQWhatsThis().Display(text,pos);
 		}
+		[SmokeMethod("display(const QString&)")]
 		public static void Display(string text) {
 			StaticQWhatsThis().Display(text);
 		}
 		~QWhatsThis() {
-			ProxyQWhatsThis().Dispose();
+			DisposeQWhatsThis();
 		}
 		public void Dispose() {
-			ProxyQWhatsThis().Dispose();
+			DisposeQWhatsThis();
+		}
+		private void DisposeQWhatsThis() {
+			ProxyQWhatsThis().DisposeQWhatsThis();
 		}
 	}
 }

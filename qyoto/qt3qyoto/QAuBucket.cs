@@ -29,10 +29,13 @@ namespace Qt {
 
 		// QAuBucket* QAuBucket(); >>>> NOT CONVERTED
 		~QAuBucket() {
-			ProxyQAuBucket().Dispose();
+			DisposeQAuBucket();
 		}
 		public void Dispose() {
-			ProxyQAuBucket().Dispose();
+			DisposeQAuBucket();
+		}
+		private void DisposeQAuBucket() {
+			ProxyQAuBucket().DisposeQAuBucket();
 		}
 	}
 }

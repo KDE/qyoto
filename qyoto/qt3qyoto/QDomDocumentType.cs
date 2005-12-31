@@ -29,6 +29,7 @@ namespace Qt {
 			CreateQDomDocumentTypeProxy();
 			NewQDomDocumentType();
 		}
+		[SmokeMethod("QDomDocumentType()")]
 		private void NewQDomDocumentType() {
 			ProxyQDomDocumentType().NewQDomDocumentType();
 		}
@@ -36,38 +37,50 @@ namespace Qt {
 			CreateQDomDocumentTypeProxy();
 			NewQDomDocumentType(x);
 		}
+		[SmokeMethod("QDomDocumentType(const QDomDocumentType&)")]
 		private void NewQDomDocumentType(QDomDocumentType x) {
 			ProxyQDomDocumentType().NewQDomDocumentType(x);
 		}
+		[SmokeMethod("name() const")]
 		public virtual string Name() {
 			return ProxyQDomDocumentType().Name();
 		}
+		[SmokeMethod("entities() const")]
 		public virtual QDomNamedNodeMap Entities() {
 			return ProxyQDomDocumentType().Entities();
 		}
+		[SmokeMethod("notations() const")]
 		public virtual QDomNamedNodeMap Notations() {
 			return ProxyQDomDocumentType().Notations();
 		}
+		[SmokeMethod("publicId() const")]
 		public virtual string PublicId() {
 			return ProxyQDomDocumentType().PublicId();
 		}
+		[SmokeMethod("systemId() const")]
 		public virtual string SystemId() {
 			return ProxyQDomDocumentType().SystemId();
 		}
+		[SmokeMethod("internalSubset() const")]
 		public virtual string InternalSubset() {
 			return ProxyQDomDocumentType().InternalSubset();
 		}
+		[SmokeMethod("nodeType() const")]
 		public new int NodeType() {
 			return ProxyQDomDocumentType().NodeType();
 		}
+		[SmokeMethod("isDocumentType() const")]
 		public new bool IsDocumentType() {
 			return ProxyQDomDocumentType().IsDocumentType();
 		}
 		~QDomDocumentType() {
-			ProxyQDomDocumentType().Dispose();
+			DisposeQDomDocumentType();
 		}
 		public new void Dispose() {
-			ProxyQDomDocumentType().Dispose();
+			DisposeQDomDocumentType();
+		}
+		private void DisposeQDomDocumentType() {
+			ProxyQDomDocumentType().DisposeQDomDocumentType();
 		}
 	}
 }

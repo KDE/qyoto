@@ -30,185 +30,259 @@ namespace Qt {
 			return (IQProgressDialogProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQProgressDialog().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQProgressDialog().ClassName();
 		}
 		public QProgressDialog(QWidget parent, string name, bool modal, int f) : this((Type) null) {
 			CreateQProgressDialogProxy();
+			CreateQProgressDialogSignalProxy();
 			NewQProgressDialog(parent,name,modal,f);
 		}
+		[SmokeMethod("QProgressDialog(QWidget*, const char*, bool, Qt::WFlags)")]
 		private void NewQProgressDialog(QWidget parent, string name, bool modal, int f) {
 			ProxyQProgressDialog().NewQProgressDialog(parent,name,modal,f);
 		}
 		public QProgressDialog(QWidget parent, string name, bool modal) : this((Type) null) {
 			CreateQProgressDialogProxy();
+			CreateQProgressDialogSignalProxy();
 			NewQProgressDialog(parent,name,modal);
 		}
+		[SmokeMethod("QProgressDialog(QWidget*, const char*, bool)")]
 		private void NewQProgressDialog(QWidget parent, string name, bool modal) {
 			ProxyQProgressDialog().NewQProgressDialog(parent,name,modal);
 		}
 		public QProgressDialog(QWidget parent, string name) : this((Type) null) {
 			CreateQProgressDialogProxy();
+			CreateQProgressDialogSignalProxy();
 			NewQProgressDialog(parent,name);
 		}
+		[SmokeMethod("QProgressDialog(QWidget*, const char*)")]
 		private void NewQProgressDialog(QWidget parent, string name) {
 			ProxyQProgressDialog().NewQProgressDialog(parent,name);
 		}
 		public QProgressDialog(QWidget parent) : this((Type) null) {
 			CreateQProgressDialogProxy();
+			CreateQProgressDialogSignalProxy();
 			NewQProgressDialog(parent);
 		}
+		[SmokeMethod("QProgressDialog(QWidget*)")]
 		private void NewQProgressDialog(QWidget parent) {
 			ProxyQProgressDialog().NewQProgressDialog(parent);
 		}
 		public QProgressDialog() : this((Type) null) {
 			CreateQProgressDialogProxy();
+			CreateQProgressDialogSignalProxy();
 			NewQProgressDialog();
 		}
+		[SmokeMethod("QProgressDialog()")]
 		private void NewQProgressDialog() {
 			ProxyQProgressDialog().NewQProgressDialog();
 		}
 		public QProgressDialog(string labelText, string cancelButtonText, int totalSteps, QWidget parent, string name, bool modal, int f) : this((Type) null) {
 			CreateQProgressDialogProxy();
+			CreateQProgressDialogSignalProxy();
 			NewQProgressDialog(labelText,cancelButtonText,totalSteps,parent,name,modal,f);
 		}
+		[SmokeMethod("QProgressDialog(const QString&, const QString&, int, QWidget*, const char*, bool, Qt::WFlags)")]
 		private void NewQProgressDialog(string labelText, string cancelButtonText, int totalSteps, QWidget parent, string name, bool modal, int f) {
 			ProxyQProgressDialog().NewQProgressDialog(labelText,cancelButtonText,totalSteps,parent,name,modal,f);
 		}
 		public QProgressDialog(string labelText, string cancelButtonText, int totalSteps, QWidget parent, string name, bool modal) : this((Type) null) {
 			CreateQProgressDialogProxy();
+			CreateQProgressDialogSignalProxy();
 			NewQProgressDialog(labelText,cancelButtonText,totalSteps,parent,name,modal);
 		}
+		[SmokeMethod("QProgressDialog(const QString&, const QString&, int, QWidget*, const char*, bool)")]
 		private void NewQProgressDialog(string labelText, string cancelButtonText, int totalSteps, QWidget parent, string name, bool modal) {
 			ProxyQProgressDialog().NewQProgressDialog(labelText,cancelButtonText,totalSteps,parent,name,modal);
 		}
 		public QProgressDialog(string labelText, string cancelButtonText, int totalSteps, QWidget parent, string name) : this((Type) null) {
 			CreateQProgressDialogProxy();
+			CreateQProgressDialogSignalProxy();
 			NewQProgressDialog(labelText,cancelButtonText,totalSteps,parent,name);
 		}
+		[SmokeMethod("QProgressDialog(const QString&, const QString&, int, QWidget*, const char*)")]
 		private void NewQProgressDialog(string labelText, string cancelButtonText, int totalSteps, QWidget parent, string name) {
 			ProxyQProgressDialog().NewQProgressDialog(labelText,cancelButtonText,totalSteps,parent,name);
 		}
 		public QProgressDialog(string labelText, string cancelButtonText, int totalSteps, QWidget parent) : this((Type) null) {
 			CreateQProgressDialogProxy();
+			CreateQProgressDialogSignalProxy();
 			NewQProgressDialog(labelText,cancelButtonText,totalSteps,parent);
 		}
+		[SmokeMethod("QProgressDialog(const QString&, const QString&, int, QWidget*)")]
 		private void NewQProgressDialog(string labelText, string cancelButtonText, int totalSteps, QWidget parent) {
 			ProxyQProgressDialog().NewQProgressDialog(labelText,cancelButtonText,totalSteps,parent);
 		}
 		public QProgressDialog(string labelText, string cancelButtonText, int totalSteps) : this((Type) null) {
 			CreateQProgressDialogProxy();
+			CreateQProgressDialogSignalProxy();
 			NewQProgressDialog(labelText,cancelButtonText,totalSteps);
 		}
+		[SmokeMethod("QProgressDialog(const QString&, const QString&, int)")]
 		private void NewQProgressDialog(string labelText, string cancelButtonText, int totalSteps) {
 			ProxyQProgressDialog().NewQProgressDialog(labelText,cancelButtonText,totalSteps);
 		}
+		[SmokeMethod("setLabel(QLabel*)")]
 		public void SetLabel(QLabel arg1) {
 			ProxyQProgressDialog().SetLabel(arg1);
 		}
+		[SmokeMethod("setCancelButton(QPushButton*)")]
 		public void SetCancelButton(QPushButton arg1) {
 			ProxyQProgressDialog().SetCancelButton(arg1);
 		}
+		[SmokeMethod("setBar(QProgressBar*)")]
 		public void SetBar(QProgressBar arg1) {
 			ProxyQProgressDialog().SetBar(arg1);
 		}
+		[SmokeMethod("wasCancelled() const")]
 		public bool WasCancelled() {
 			return ProxyQProgressDialog().WasCancelled();
 		}
+		[SmokeMethod("wasCanceled() const")]
 		public bool WasCanceled() {
 			return ProxyQProgressDialog().WasCanceled();
 		}
+		[SmokeMethod("totalSteps() const")]
 		public int TotalSteps() {
 			return ProxyQProgressDialog().TotalSteps();
 		}
+		[SmokeMethod("progress() const")]
 		public int Progress() {
 			return ProxyQProgressDialog().Progress();
 		}
+		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {
 			return ProxyQProgressDialog().SizeHint();
 		}
+		[SmokeMethod("labelText() const")]
 		public string LabelText() {
 			return ProxyQProgressDialog().LabelText();
 		}
+		[SmokeMethod("setAutoReset(bool)")]
 		public void SetAutoReset(bool b) {
 			ProxyQProgressDialog().SetAutoReset(b);
 		}
+		[SmokeMethod("autoReset() const")]
 		public bool AutoReset() {
 			return ProxyQProgressDialog().AutoReset();
 		}
+		[SmokeMethod("setAutoClose(bool)")]
 		public void SetAutoClose(bool b) {
 			ProxyQProgressDialog().SetAutoClose(b);
 		}
+		[SmokeMethod("autoClose() const")]
 		public bool AutoClose() {
 			return ProxyQProgressDialog().AutoClose();
 		}
+		[SmokeMethod("minimumDuration() const")]
 		public int MinimumDuration() {
 			return ProxyQProgressDialog().MinimumDuration();
 		}
+		[Q_SLOT("cancel()")]
+		[SmokeMethod("cancel()")]
 		public void Cancel() {
 			ProxyQProgressDialog().Cancel();
 		}
+		[Q_SLOT("reset()")]
+		[SmokeMethod("reset()")]
 		public void Reset() {
 			ProxyQProgressDialog().Reset();
 		}
+		[Q_SLOT("setTotalSteps(int)")]
+		[SmokeMethod("setTotalSteps(int)")]
 		public void SetTotalSteps(int totalSteps) {
 			ProxyQProgressDialog().SetTotalSteps(totalSteps);
 		}
+		[Q_SLOT("setProgress(int)")]
+		[SmokeMethod("setProgress(int)")]
 		public void SetProgress(int progress) {
 			ProxyQProgressDialog().SetProgress(progress);
 		}
+		[Q_SLOT("setProgress(int, int)")]
+		[SmokeMethod("setProgress(int, int)")]
 		public void SetProgress(int progress, int totalSteps) {
 			ProxyQProgressDialog().SetProgress(progress,totalSteps);
 		}
+		[Q_SLOT("setLabelText(const QString&)")]
+		[SmokeMethod("setLabelText(const QString&)")]
 		public void SetLabelText(string arg1) {
 			ProxyQProgressDialog().SetLabelText(arg1);
 		}
+		[Q_SLOT("setCancelButtonText(const QString&)")]
+		[SmokeMethod("setCancelButtonText(const QString&)")]
 		public void SetCancelButtonText(string arg1) {
 			ProxyQProgressDialog().SetCancelButtonText(arg1);
 		}
+		[Q_SLOT("setMinimumDuration(int)")]
+		[SmokeMethod("setMinimumDuration(int)")]
 		public void SetMinimumDuration(int ms) {
 			ProxyQProgressDialog().SetMinimumDuration(ms);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQProgressDialog().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQProgressDialog().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQProgressDialog().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQProgressDialog().TrUtf8(arg1);
 		}
+		[SmokeMethod("resizeEvent(QResizeEvent*)")]
 		protected new void ResizeEvent(QResizeEvent arg1) {
 			ProxyQProgressDialog().ResizeEvent(arg1);
 		}
+		[SmokeMethod("closeEvent(QCloseEvent*)")]
 		protected new void CloseEvent(QCloseEvent arg1) {
 			ProxyQProgressDialog().CloseEvent(arg1);
 		}
+		[SmokeMethod("styleChange(QStyle&)")]
 		public new void StyleChange(QStyle arg1) {
 			ProxyQProgressDialog().StyleChange(arg1);
 		}
+		[SmokeMethod("showEvent(QShowEvent*)")]
 		public new void ShowEvent(QShowEvent e) {
 			ProxyQProgressDialog().ShowEvent(e);
 		}
+		[Q_SLOT("forceShow()")]
+		[SmokeMethod("forceShow()")]
 		protected void ForceShow() {
 			ProxyQProgressDialog().ForceShow();
 		}
 		~QProgressDialog() {
-			ProxyQProgressDialog().Dispose();
+			DisposeQProgressDialog();
 		}
 		public new void Dispose() {
-			ProxyQProgressDialog().Dispose();
+			DisposeQProgressDialog();
+		}
+		private void DisposeQProgressDialog() {
+			ProxyQProgressDialog().DisposeQProgressDialog();
+		}
+		protected void CreateQProgressDialogSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQProgressDialogSignals), this);
+			_signalInterceptor = (IQProgressDialogSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQProgressDialogSignals Emit() {
+			return (IQProgressDialogSignals) _signalInterceptor;
 		}
 	}
 
-	public interface IQProgressDialogSignals {
+	public interface IQProgressDialogSignals : IQDialogSignals {
+		[Q_SIGNAL("cancelled()")]
 		void Cancelled();
+		[Q_SIGNAL("canceled()")]
 		void Canceled();
 	}
 }

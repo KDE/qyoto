@@ -106,20 +106,22 @@ namespace Qt {
 			CreateQEventProxy();
 			NewQEvent(type);
 		}
+		[SmokeMethod("QEvent(QEvent::Type)")]
 		private void NewQEvent(int type) {
 			ProxyQEvent().NewQEvent(type);
 		}
-		public int Type() {
-			return ProxyQEvent().Type();
-		}
+		[SmokeMethod("spontaneous() const")]
 		public bool Spontaneous() {
 			return ProxyQEvent().Spontaneous();
 		}
 		~QEvent() {
-			ProxyQEvent().Dispose();
+			DisposeQEvent();
 		}
 		public void Dispose() {
-			ProxyQEvent().Dispose();
+			DisposeQEvent();
+		}
+		private void DisposeQEvent() {
+			ProxyQEvent().DisposeQEvent();
 		}
 	}
 }

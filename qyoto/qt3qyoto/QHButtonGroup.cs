@@ -29,71 +29,102 @@ namespace Qt {
 			return (IQHButtonGroupProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQHButtonGroup().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQHButtonGroup().ClassName();
 		}
 		public QHButtonGroup(QWidget parent, string name) : this((Type) null) {
 			CreateQHButtonGroupProxy();
+			CreateQHButtonGroupSignalProxy();
 			NewQHButtonGroup(parent,name);
 		}
+		[SmokeMethod("QHButtonGroup(QWidget*, const char*)")]
 		private void NewQHButtonGroup(QWidget parent, string name) {
 			ProxyQHButtonGroup().NewQHButtonGroup(parent,name);
 		}
 		public QHButtonGroup(QWidget parent) : this((Type) null) {
 			CreateQHButtonGroupProxy();
+			CreateQHButtonGroupSignalProxy();
 			NewQHButtonGroup(parent);
 		}
+		[SmokeMethod("QHButtonGroup(QWidget*)")]
 		private void NewQHButtonGroup(QWidget parent) {
 			ProxyQHButtonGroup().NewQHButtonGroup(parent);
 		}
 		public QHButtonGroup() : this((Type) null) {
 			CreateQHButtonGroupProxy();
+			CreateQHButtonGroupSignalProxy();
 			NewQHButtonGroup();
 		}
+		[SmokeMethod("QHButtonGroup()")]
 		private void NewQHButtonGroup() {
 			ProxyQHButtonGroup().NewQHButtonGroup();
 		}
 		public QHButtonGroup(string title, QWidget parent, string name) : this((Type) null) {
 			CreateQHButtonGroupProxy();
+			CreateQHButtonGroupSignalProxy();
 			NewQHButtonGroup(title,parent,name);
 		}
+		[SmokeMethod("QHButtonGroup(const QString&, QWidget*, const char*)")]
 		private void NewQHButtonGroup(string title, QWidget parent, string name) {
 			ProxyQHButtonGroup().NewQHButtonGroup(title,parent,name);
 		}
 		public QHButtonGroup(string title, QWidget parent) : this((Type) null) {
 			CreateQHButtonGroupProxy();
+			CreateQHButtonGroupSignalProxy();
 			NewQHButtonGroup(title,parent);
 		}
+		[SmokeMethod("QHButtonGroup(const QString&, QWidget*)")]
 		private void NewQHButtonGroup(string title, QWidget parent) {
 			ProxyQHButtonGroup().NewQHButtonGroup(title,parent);
 		}
 		public QHButtonGroup(string title) : this((Type) null) {
 			CreateQHButtonGroupProxy();
+			CreateQHButtonGroupSignalProxy();
 			NewQHButtonGroup(title);
 		}
+		[SmokeMethod("QHButtonGroup(const QString&)")]
 		private void NewQHButtonGroup(string title) {
 			ProxyQHButtonGroup().NewQHButtonGroup(title);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQHButtonGroup().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQHButtonGroup().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQHButtonGroup().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQHButtonGroup().TrUtf8(arg1);
 		}
 		~QHButtonGroup() {
-			ProxyQHButtonGroup().Dispose();
+			DisposeQHButtonGroup();
 		}
 		public new void Dispose() {
-			ProxyQHButtonGroup().Dispose();
+			DisposeQHButtonGroup();
 		}
+		private void DisposeQHButtonGroup() {
+			ProxyQHButtonGroup().DisposeQHButtonGroup();
+		}
+		protected void CreateQHButtonGroupSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQHButtonGroupSignals), this);
+			_signalInterceptor = (IQHButtonGroupSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQHButtonGroupSignals Emit() {
+			return (IQHButtonGroupSignals) _signalInterceptor;
+		}
+	}
+
+	public interface IQHButtonGroupSignals : IQButtonGroupSignals {
 	}
 }

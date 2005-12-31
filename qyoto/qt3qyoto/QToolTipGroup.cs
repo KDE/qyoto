@@ -30,60 +30,88 @@ namespace Qt {
 			return (IQToolTipGroupProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQToolTipGroup().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQToolTipGroup().ClassName();
 		}
 		public QToolTipGroup(QObject parent, string name) : this((Type) null) {
 			CreateQToolTipGroupProxy();
+			CreateQToolTipGroupSignalProxy();
 			NewQToolTipGroup(parent,name);
 		}
+		[SmokeMethod("QToolTipGroup(QObject*, const char*)")]
 		private void NewQToolTipGroup(QObject parent, string name) {
 			ProxyQToolTipGroup().NewQToolTipGroup(parent,name);
 		}
 		public QToolTipGroup(QObject parent) : this((Type) null) {
 			CreateQToolTipGroupProxy();
+			CreateQToolTipGroupSignalProxy();
 			NewQToolTipGroup(parent);
 		}
+		[SmokeMethod("QToolTipGroup(QObject*)")]
 		private void NewQToolTipGroup(QObject parent) {
 			ProxyQToolTipGroup().NewQToolTipGroup(parent);
 		}
+		[SmokeMethod("delay() const")]
 		public bool Delay() {
 			return ProxyQToolTipGroup().Delay();
 		}
+		[SmokeMethod("enabled() const")]
 		public bool Enabled() {
 			return ProxyQToolTipGroup().Enabled();
 		}
+		[Q_SLOT("setDelay(bool)")]
+		[SmokeMethod("setDelay(bool)")]
 		public void SetDelay(bool arg1) {
 			ProxyQToolTipGroup().SetDelay(arg1);
 		}
+		[Q_SLOT("setEnabled(bool)")]
+		[SmokeMethod("setEnabled(bool)")]
 		public void SetEnabled(bool arg1) {
 			ProxyQToolTipGroup().SetEnabled(arg1);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQToolTipGroup().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQToolTipGroup().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQToolTipGroup().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQToolTipGroup().TrUtf8(arg1);
 		}
 		~QToolTipGroup() {
-			ProxyQToolTipGroup().Dispose();
+			DisposeQToolTipGroup();
 		}
 		public new void Dispose() {
-			ProxyQToolTipGroup().Dispose();
+			DisposeQToolTipGroup();
+		}
+		private void DisposeQToolTipGroup() {
+			ProxyQToolTipGroup().DisposeQToolTipGroup();
+		}
+		protected void CreateQToolTipGroupSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQToolTipGroupSignals), this);
+			_signalInterceptor = (IQToolTipGroupSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQToolTipGroupSignals Emit() {
+			return (IQToolTipGroupSignals) _signalInterceptor;
 		}
 	}
 
-	public interface IQToolTipGroupSignals {
+	public interface IQToolTipGroupSignals : IQObjectSignals {
+		[Q_SIGNAL("showTip(const QString&)")]
 		void ShowTip(string arg1);
+		[Q_SIGNAL("removeTip()")]
 		void RemoveTip();
 	}
 }

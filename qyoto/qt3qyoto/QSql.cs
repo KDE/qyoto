@@ -57,14 +57,18 @@ namespace Qt {
 			CreateQSqlProxy();
 			NewQSql();
 		}
+		[SmokeMethod("QSql()")]
 		private void NewQSql() {
 			ProxyQSql().NewQSql();
 		}
 		~QSql() {
-			ProxyQSql().Dispose();
+			DisposeQSql();
 		}
 		public void Dispose() {
-			ProxyQSql().Dispose();
+			DisposeQSql();
+		}
+		private void DisposeQSql() {
+			ProxyQSql().DisposeQSql();
 		}
 	}
 }

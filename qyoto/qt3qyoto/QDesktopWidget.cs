@@ -30,95 +30,133 @@ namespace Qt {
 			return (IQDesktopWidgetProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQDesktopWidget().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQDesktopWidget().ClassName();
 		}
 		public QDesktopWidget() : this((Type) null) {
 			CreateQDesktopWidgetProxy();
+			CreateQDesktopWidgetSignalProxy();
 			NewQDesktopWidget();
 		}
+		[SmokeMethod("QDesktopWidget()")]
 		private void NewQDesktopWidget() {
 			ProxyQDesktopWidget().NewQDesktopWidget();
 		}
+		[SmokeMethod("isVirtualDesktop() const")]
 		public bool IsVirtualDesktop() {
 			return ProxyQDesktopWidget().IsVirtualDesktop();
 		}
+		[SmokeMethod("numScreens() const")]
 		public int NumScreens() {
 			return ProxyQDesktopWidget().NumScreens();
 		}
+		[SmokeMethod("primaryScreen() const")]
 		public int PrimaryScreen() {
 			return ProxyQDesktopWidget().PrimaryScreen();
 		}
+		[SmokeMethod("screenNumber(QWidget*) const")]
 		public int ScreenNumber(QWidget widget) {
 			return ProxyQDesktopWidget().ScreenNumber(widget);
 		}
+		[SmokeMethod("screenNumber() const")]
 		public int ScreenNumber() {
 			return ProxyQDesktopWidget().ScreenNumber();
 		}
+		[SmokeMethod("screenNumber(const QPoint&) const")]
 		public int ScreenNumber(QPoint arg1) {
 			return ProxyQDesktopWidget().ScreenNumber(arg1);
 		}
+		[SmokeMethod("screen(int)")]
 		public QWidget Screen(int screen) {
 			return ProxyQDesktopWidget().Screen(screen);
 		}
+		[SmokeMethod("screen()")]
 		public QWidget Screen() {
 			return ProxyQDesktopWidget().Screen();
 		}
+		[SmokeMethod("screenGeometry(int) const")]
 		public QRect ScreenGeometry(int screen) {
 			return ProxyQDesktopWidget().ScreenGeometry(screen);
 		}
+		[SmokeMethod("screenGeometry() const")]
 		public QRect ScreenGeometry() {
 			return ProxyQDesktopWidget().ScreenGeometry();
 		}
+		[SmokeMethod("screenGeometry(QWidget*) const")]
 		public QRect ScreenGeometry(QWidget widget) {
 			return ProxyQDesktopWidget().ScreenGeometry(widget);
 		}
+		[SmokeMethod("screenGeometry(const QPoint&) const")]
 		public QRect ScreenGeometry(QPoint point) {
 			return ProxyQDesktopWidget().ScreenGeometry(point);
 		}
+		[SmokeMethod("availableGeometry(int) const")]
 		public QRect AvailableGeometry(int screen) {
 			return ProxyQDesktopWidget().AvailableGeometry(screen);
 		}
+		[SmokeMethod("availableGeometry() const")]
 		public QRect AvailableGeometry() {
 			return ProxyQDesktopWidget().AvailableGeometry();
 		}
+		[SmokeMethod("availableGeometry(QWidget*) const")]
 		public QRect AvailableGeometry(QWidget widget) {
 			return ProxyQDesktopWidget().AvailableGeometry(widget);
 		}
+		[SmokeMethod("availableGeometry(const QPoint&) const")]
 		public QRect AvailableGeometry(QPoint point) {
 			return ProxyQDesktopWidget().AvailableGeometry(point);
 		}
+		[SmokeMethod("insertChild(QObject*)")]
 		public new void InsertChild(QObject arg1) {
 			ProxyQDesktopWidget().InsertChild(arg1);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQDesktopWidget().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQDesktopWidget().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQDesktopWidget().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQDesktopWidget().TrUtf8(arg1);
 		}
+		[SmokeMethod("resizeEvent(QResizeEvent*)")]
 		protected new void ResizeEvent(QResizeEvent e) {
 			ProxyQDesktopWidget().ResizeEvent(e);
 		}
 		~QDesktopWidget() {
-			ProxyQDesktopWidget().Dispose();
+			DisposeQDesktopWidget();
 		}
 		public new void Dispose() {
-			ProxyQDesktopWidget().Dispose();
+			DisposeQDesktopWidget();
+		}
+		private void DisposeQDesktopWidget() {
+			ProxyQDesktopWidget().DisposeQDesktopWidget();
+		}
+		protected void CreateQDesktopWidgetSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQDesktopWidgetSignals), this);
+			_signalInterceptor = (IQDesktopWidgetSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQDesktopWidgetSignals Emit() {
+			return (IQDesktopWidgetSignals) _signalInterceptor;
 		}
 	}
 
-	public interface IQDesktopWidgetSignals {
+	public interface IQDesktopWidgetSignals : IQWidgetSignals {
+		[Q_SIGNAL("resized(int)")]
 		void Resized(int arg1);
+		[Q_SIGNAL("workAreaResized(int)")]
 		void WorkAreaResized(int arg1);
 	}
 }

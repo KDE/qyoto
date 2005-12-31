@@ -44,6 +44,7 @@ namespace Qt {
 			CreateQTranslatorMessageProxy();
 			NewQTranslatorMessage();
 		}
+		[SmokeMethod("QTranslatorMessage()")]
 		private void NewQTranslatorMessage() {
 			ProxyQTranslatorMessage().NewQTranslatorMessage();
 		}
@@ -51,6 +52,7 @@ namespace Qt {
 			CreateQTranslatorMessageProxy();
 			NewQTranslatorMessage(context,sourceText,comment,translation);
 		}
+		[SmokeMethod("QTranslatorMessage(const char*, const char*, const char*, const QString&)")]
 		private void NewQTranslatorMessage(string context, string sourceText, string comment, string translation) {
 			ProxyQTranslatorMessage().NewQTranslatorMessage(context,sourceText,comment,translation);
 		}
@@ -58,6 +60,7 @@ namespace Qt {
 			CreateQTranslatorMessageProxy();
 			NewQTranslatorMessage(context,sourceText,comment);
 		}
+		[SmokeMethod("QTranslatorMessage(const char*, const char*, const char*)")]
 		private void NewQTranslatorMessage(string context, string sourceText, string comment) {
 			ProxyQTranslatorMessage().NewQTranslatorMessage(context,sourceText,comment);
 		}
@@ -65,6 +68,7 @@ namespace Qt {
 			CreateQTranslatorMessageProxy();
 			NewQTranslatorMessage(arg1);
 		}
+		[SmokeMethod("QTranslatorMessage(QDataStream&)")]
 		private void NewQTranslatorMessage(QDataStream arg1) {
 			ProxyQTranslatorMessage().NewQTranslatorMessage(arg1);
 		}
@@ -72,39 +76,51 @@ namespace Qt {
 			CreateQTranslatorMessageProxy();
 			NewQTranslatorMessage(m);
 		}
+		[SmokeMethod("QTranslatorMessage(const QTranslatorMessage&)")]
 		private void NewQTranslatorMessage(QTranslatorMessage m) {
 			ProxyQTranslatorMessage().NewQTranslatorMessage(m);
 		}
+		[SmokeMethod("hash() const")]
 		public uint Hash() {
 			return ProxyQTranslatorMessage().Hash();
 		}
+		[SmokeMethod("context() const")]
 		public string Context() {
 			return ProxyQTranslatorMessage().Context();
 		}
+		[SmokeMethod("sourceText() const")]
 		public string SourceText() {
 			return ProxyQTranslatorMessage().SourceText();
 		}
+		[SmokeMethod("comment() const")]
 		public string Comment() {
 			return ProxyQTranslatorMessage().Comment();
 		}
+		[SmokeMethod("setTranslation(const QString&)")]
 		public void SetTranslation(string translation) {
 			ProxyQTranslatorMessage().SetTranslation(translation);
 		}
+		[SmokeMethod("translation() const")]
 		public string Translation() {
 			return ProxyQTranslatorMessage().Translation();
 		}
+		[SmokeMethod("write(QDataStream&, bool, QTranslatorMessage::Prefix) const")]
 		public void Write(QDataStream s, bool strip, int prefix) {
 			ProxyQTranslatorMessage().Write(s,strip,prefix);
 		}
+		[SmokeMethod("write(QDataStream&, bool) const")]
 		public void Write(QDataStream s, bool strip) {
 			ProxyQTranslatorMessage().Write(s,strip);
 		}
+		[SmokeMethod("write(QDataStream&) const")]
 		public void Write(QDataStream s) {
 			ProxyQTranslatorMessage().Write(s);
 		}
+		[SmokeMethod("commonPrefix(const QTranslatorMessage&) const")]
 		public int CommonPrefix(QTranslatorMessage arg1) {
 			return ProxyQTranslatorMessage().CommonPrefix(arg1);
 		}
+		[SmokeMethod("operator==(const QTranslatorMessage&) const")]
 		public static bool operator==(QTranslatorMessage lhs, QTranslatorMessage m) {
 			return StaticQTranslatorMessage().op_equals(lhs,m);
 		}
@@ -118,23 +134,30 @@ namespace Qt {
 		public override int GetHashCode() {
 			return ProxyQTranslatorMessage().GetHashCode();
 		}
+		[SmokeMethod("operator<(const QTranslatorMessage&) const")]
 		public static bool operator<(QTranslatorMessage lhs, QTranslatorMessage m) {
 			return StaticQTranslatorMessage().op_lt(lhs,m);
 		}
+		[SmokeMethod("operator<=(const QTranslatorMessage&) const")]
 		public static bool operator<=(QTranslatorMessage lhs, QTranslatorMessage m) {
 			return StaticQTranslatorMessage().op_lte(lhs,m);
 		}
+		[SmokeMethod("operator>(const QTranslatorMessage&) const")]
 		public static bool operator>(QTranslatorMessage lhs, QTranslatorMessage m) {
 			return StaticQTranslatorMessage().op_gt(lhs,m);
 		}
+		[SmokeMethod("operator>=(const QTranslatorMessage&) const")]
 		public static bool operator>=(QTranslatorMessage lhs, QTranslatorMessage m) {
 			return StaticQTranslatorMessage().op_gte(lhs,m);
 		}
 		~QTranslatorMessage() {
-			ProxyQTranslatorMessage().Dispose();
+			DisposeQTranslatorMessage();
 		}
 		public void Dispose() {
-			ProxyQTranslatorMessage().Dispose();
+			DisposeQTranslatorMessage();
+		}
+		private void DisposeQTranslatorMessage() {
+			ProxyQTranslatorMessage().DisposeQTranslatorMessage();
 		}
 	}
 }

@@ -38,241 +38,326 @@ namespace Qt {
 			return (IQObjectProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public virtual QMetaObject MetaObject() {
 			return ProxyQObject().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public virtual string ClassName() {
 			return ProxyQObject().ClassName();
 		}
 		public QObject(QObject parent, string name) : this((Type) null) {
 			CreateQObjectProxy();
+			CreateQObjectSignalProxy();
 			NewQObject(parent,name);
 		}
+		[SmokeMethod("QObject(QObject*, const char*)")]
 		private void NewQObject(QObject parent, string name) {
 			ProxyQObject().NewQObject(parent,name);
 		}
 		public QObject(QObject parent) : this((Type) null) {
 			CreateQObjectProxy();
+			CreateQObjectSignalProxy();
 			NewQObject(parent);
 		}
+		[SmokeMethod("QObject(QObject*)")]
 		private void NewQObject(QObject parent) {
 			ProxyQObject().NewQObject(parent);
 		}
 		public QObject() : this((Type) null) {
 			CreateQObjectProxy();
+			CreateQObjectSignalProxy();
 			NewQObject();
 		}
+		[SmokeMethod("QObject()")]
 		private void NewQObject() {
 			ProxyQObject().NewQObject();
 		}
+		[SmokeMethod("event(QEvent*)")]
 		public virtual bool Event(QEvent arg1) {
 			return ProxyQObject().Event(arg1);
 		}
+		[SmokeMethod("eventFilter(QObject*, QEvent*)")]
 		public virtual bool EventFilter(QObject arg1, QEvent arg2) {
 			return ProxyQObject().EventFilter(arg1,arg2);
 		}
+		[SmokeMethod("isA(const char*) const")]
 		public bool IsA(string arg1) {
 			return ProxyQObject().IsA(arg1);
 		}
+		[SmokeMethod("inherits(const char*) const")]
 		public bool Inherits(string arg1) {
 			return ProxyQObject().Inherits(arg1);
 		}
+		[SmokeMethod("name() const")]
 		public string Name() {
 			return ProxyQObject().Name();
 		}
+		[SmokeMethod("name(const char*) const")]
 		public string Name(string defaultName) {
 			return ProxyQObject().Name(defaultName);
 		}
+		[SmokeMethod("setName(const char*)")]
 		public virtual void SetName(string name) {
 			ProxyQObject().SetName(name);
 		}
+		[SmokeMethod("isWidgetType() const")]
 		public bool IsWidgetType() {
 			return ProxyQObject().IsWidgetType();
 		}
+		[SmokeMethod("highPriority() const")]
 		public bool HighPriority() {
 			return ProxyQObject().HighPriority();
 		}
+		[SmokeMethod("signalsBlocked() const")]
 		public bool SignalsBlocked() {
 			return ProxyQObject().SignalsBlocked();
 		}
+		[SmokeMethod("blockSignals(bool)")]
 		public void BlockSignals(bool b) {
 			ProxyQObject().BlockSignals(b);
 		}
+		[SmokeMethod("startTimer(int)")]
 		public int StartTimer(int interval) {
 			return ProxyQObject().StartTimer(interval);
 		}
+		[SmokeMethod("killTimer(int)")]
 		public void KillTimer(int id) {
 			ProxyQObject().KillTimer(id);
 		}
+		[SmokeMethod("killTimers()")]
 		public void KillTimers() {
 			ProxyQObject().KillTimers();
 		}
+		[SmokeMethod("child(const char*, const char*, bool)")]
 		public QObject Child(string objName, string inheritsClass, bool recursiveSearch) {
 			return ProxyQObject().Child(objName,inheritsClass,recursiveSearch);
 		}
+		[SmokeMethod("child(const char*, const char*)")]
 		public QObject Child(string objName, string inheritsClass) {
 			return ProxyQObject().Child(objName,inheritsClass);
 		}
+		[SmokeMethod("child(const char*)")]
 		public QObject Child(string objName) {
 			return ProxyQObject().Child(objName);
 		}
+		[SmokeMethod("children() const")]
 		public ArrayList Children() {
 			return ProxyQObject().Children();
 		}
+		[SmokeMethod("queryList(const char*, const char*, bool, bool) const")]
 		public ArrayList QueryList(string inheritsClass, string objName, bool regexpMatch, bool recursiveSearch) {
 			return ProxyQObject().QueryList(inheritsClass,objName,regexpMatch,recursiveSearch);
 		}
+		[SmokeMethod("queryList(const char*, const char*, bool) const")]
 		public ArrayList QueryList(string inheritsClass, string objName, bool regexpMatch) {
 			return ProxyQObject().QueryList(inheritsClass,objName,regexpMatch);
 		}
+		[SmokeMethod("queryList(const char*, const char*) const")]
 		public ArrayList QueryList(string inheritsClass, string objName) {
 			return ProxyQObject().QueryList(inheritsClass,objName);
 		}
+		[SmokeMethod("queryList(const char*) const")]
 		public ArrayList QueryList(string inheritsClass) {
 			return ProxyQObject().QueryList(inheritsClass);
 		}
+		[SmokeMethod("queryList() const")]
 		public ArrayList QueryList() {
 			return ProxyQObject().QueryList();
 		}
+		[SmokeMethod("insertChild(QObject*)")]
 		public virtual void InsertChild(QObject arg1) {
 			ProxyQObject().InsertChild(arg1);
 		}
+		[SmokeMethod("removeChild(QObject*)")]
 		public virtual void RemoveChild(QObject arg1) {
 			ProxyQObject().RemoveChild(arg1);
 		}
+		[SmokeMethod("installEventFilter(const QObject*)")]
 		public void InstallEventFilter(QObject arg1) {
 			ProxyQObject().InstallEventFilter(arg1);
 		}
+		[SmokeMethod("removeEventFilter(const QObject*)")]
 		public void RemoveEventFilter(QObject arg1) {
 			ProxyQObject().RemoveEventFilter(arg1);
 		}
+		[SmokeMethod("connect(const QObject*, const char*, const char*) const")]
 		public bool Connect(QObject sender, string signal, string member) {
 			return ProxyQObject().Connect(sender,signal,member);
 		}
+		[SmokeMethod("disconnect(const char*, const QObject*, const char*)")]
 		public bool Disconnect(string signal, QObject receiver, string member) {
 			return ProxyQObject().Disconnect(signal,receiver,member);
 		}
+		[SmokeMethod("disconnect(const char*, const QObject*)")]
 		public bool Disconnect(string signal, QObject receiver) {
 			return ProxyQObject().Disconnect(signal,receiver);
 		}
+		[SmokeMethod("disconnect(const char*)")]
 		public bool Disconnect(string signal) {
 			return ProxyQObject().Disconnect(signal);
 		}
+		[SmokeMethod("disconnect()")]
 		public bool Disconnect() {
 			return ProxyQObject().Disconnect();
 		}
+		[SmokeMethod("disconnect(const QObject*, const char*)")]
 		public bool Disconnect(QObject receiver, string member) {
 			return ProxyQObject().Disconnect(receiver,member);
 		}
+		[SmokeMethod("disconnect(const QObject*)")]
 		public bool Disconnect(QObject receiver) {
 			return ProxyQObject().Disconnect(receiver);
 		}
+		[SmokeMethod("dumpObjectTree()")]
 		public void DumpObjectTree() {
 			ProxyQObject().DumpObjectTree();
 		}
+		[SmokeMethod("dumpObjectInfo()")]
 		public void DumpObjectInfo() {
 			ProxyQObject().DumpObjectInfo();
 		}
+		[SmokeMethod("setProperty(const char*, const QVariant&)")]
 		public virtual bool SetProperty(string name, QVariant value) {
 			return ProxyQObject().SetProperty(name,value);
 		}
+		[SmokeMethod("property(const char*) const")]
 		public virtual QVariant Property(string name) {
 			return ProxyQObject().Property(name);
 		}
 		// void setUserData(uint arg1,QObjectUserData* arg2); >>>> NOT CONVERTED
 		// QObjectUserData* userData(uint arg1); >>>> NOT CONVERTED
+		[SmokeMethod("parent() const")]
 		public QObject Parent() {
 			return ProxyQObject().Parent();
 		}
+		[Q_SLOT("deleteLater()")]
+		[SmokeMethod("deleteLater()")]
 		public void DeleteLater() {
 			ProxyQObject().DeleteLater();
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static string Tr(string arg1, string arg2) {
 			return StaticQObject().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static string Tr(string arg1) {
 			return StaticQObject().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static string TrUtf8(string arg1, string arg2) {
 			return StaticQObject().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static string TrUtf8(string arg1) {
 			return StaticQObject().TrUtf8(arg1);
 		}
+		[SmokeMethod("objectTrees()")]
 		public static ArrayList ObjectTrees() {
 			return StaticQObject().ObjectTrees();
 		}
+		[SmokeMethod("connect(const QObject*, const char*, const QObject*, const char*)")]
 		public static bool Connect(QObject sender, string signal, QObject receiver, string member) {
 			return StaticQObject().Connect(sender,signal,receiver,member);
 		}
+		[SmokeMethod("disconnect(const QObject*, const char*, const QObject*, const char*)")]
 		public static bool Disconnect(QObject sender, string signal, QObject receiver, string member) {
 			return StaticQObject().Disconnect(sender,signal,receiver,member);
 		}
+		[SmokeMethod("connectInternal(const QObject*, int, const QObject*, int, int)")]
 		public static void ConnectInternal(QObject sender, int signal_index, QObject receiver, int membcode, int member_index) {
 			StaticQObject().ConnectInternal(sender,signal_index,receiver,membcode,member_index);
 		}
+		[SmokeMethod("disconnectInternal(const QObject*, int, const QObject*, int, int)")]
 		public static bool DisconnectInternal(QObject sender, int signal_index, QObject receiver, int membcode, int member_index) {
 			return StaticQObject().DisconnectInternal(sender,signal_index,receiver,membcode,member_index);
 		}
+		[SmokeMethod("registerUserData()")]
 		public static uint RegisterUserData() {
 			return StaticQObject().RegisterUserData();
 		}
+		[SmokeMethod("activate_filters(QEvent*)")]
 		protected bool Activate_filters(QEvent arg1) {
 			return ProxyQObject().Activate_filters(arg1);
 		}
 		// QConnectionList* receivers(const char* arg1); >>>> NOT CONVERTED
 		// QConnectionList* receivers(int arg1); >>>> NOT CONVERTED
+		[SmokeMethod("activate_signal(int)")]
 		protected void Activate_signal(int signal) {
 			ProxyQObject().Activate_signal(signal);
 		}
+		[SmokeMethod("activate_signal(int, int)")]
 		protected void Activate_signal(int signal, int arg2) {
 			ProxyQObject().Activate_signal(signal,arg2);
 		}
+		[SmokeMethod("activate_signal(int, double)")]
 		protected void Activate_signal(int signal, double arg2) {
 			ProxyQObject().Activate_signal(signal,arg2);
 		}
+		[SmokeMethod("activate_signal(int, QString)")]
 		protected void Activate_signal(int signal, string arg2) {
 			ProxyQObject().Activate_signal(signal,arg2);
 		}
+		[SmokeMethod("activate_signal_bool(int, bool)")]
 		protected void Activate_signal_bool(int signal, bool arg2) {
 			ProxyQObject().Activate_signal_bool(signal,arg2);
 		}
 		// void activate_signal(QConnectionList* arg1,QUObject* arg2); >>>> NOT CONVERTED
+		[SmokeMethod("sender()")]
 		protected QObject Sender() {
 			return ProxyQObject().Sender();
 		}
+		[SmokeMethod("timerEvent(QTimerEvent*)")]
 		protected virtual void TimerEvent(QTimerEvent arg1) {
 			ProxyQObject().TimerEvent(arg1);
 		}
+		[SmokeMethod("childEvent(QChildEvent*)")]
 		protected virtual void ChildEvent(QChildEvent arg1) {
 			ProxyQObject().ChildEvent(arg1);
 		}
+		[SmokeMethod("customEvent(QCustomEvent*)")]
 		protected virtual void CustomEvent(QCustomEvent arg1) {
 			ProxyQObject().CustomEvent(arg1);
 		}
+		[SmokeMethod("connectNotify(const char*)")]
 		protected virtual void ConnectNotify(string signal) {
 			ProxyQObject().ConnectNotify(signal);
 		}
+		[SmokeMethod("disconnectNotify(const char*)")]
 		protected virtual void DisconnectNotify(string signal) {
 			ProxyQObject().DisconnectNotify(signal);
 		}
+		[SmokeMethod("checkConnectArgs(const char*, const QObject*, const char*)")]
 		protected virtual bool CheckConnectArgs(string signal, QObject receiver, string member) {
 			return ProxyQObject().CheckConnectArgs(signal,receiver,member);
 		}
+		[SmokeMethod("normalizeSignalSlot(const char*)")]
 		protected static string NormalizeSignalSlot(string signalSlot) {
 			return StaticQObject().NormalizeSignalSlot(signalSlot);
 		}
 		~QObject() {
-			ProxyQObject().Dispose();
+			DisposeQObject();
 		}
 		public void Dispose() {
-			ProxyQObject().Dispose();
+			DisposeQObject();
 		}
-
+		private void DisposeQObject() {
+			ProxyQObject().DisposeQObject();
+		}
+		protected Object _signalInterceptor = null;
+		protected void CreateQObjectSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQObjectSignals), this);
+			_signalInterceptor = (IQObjectSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQObjectSignals Emit() {
+			return (IQObjectSignals) _signalInterceptor;
+		}
 	}
 
 	public interface IQObjectSignals {
+		[Q_SIGNAL("destroyed()")]
 		void Destroyed();
+		[Q_SIGNAL("destroyed(QObject*)")]
 		void Destroyed(QObject arg1);
 	}
 }

@@ -5,13 +5,13 @@ namespace Qt {
 	using System.Text;
 
 	///<remarks>*************************************************
-	/// $Id: qt/qtimer.h   3.3.4   edited May 27 2003 $
+	/// $Id: qt/qtimer.h   3.3.5   edited Aug 31 12:17 $
 	///
 	///* Definition of QTimer class
 	///
 	///* Created : 931111
 	///
-	///* Copyright (C) 1992-2000 Trolltech AS.  All rights reserved.
+	///* Copyright (C) 1992-2005 Trolltech AS.  All rights reserved.
 	///
 	///* This file is part of the kernel module of the Qt GUI Toolkit.
 	///
@@ -68,78 +68,109 @@ namespace Qt {
 			return (IQTimerProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQTimer().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQTimer().ClassName();
 		}
 		public QTimer(QObject parent, string name) : this((Type) null) {
 			CreateQTimerProxy();
+			CreateQTimerSignalProxy();
 			NewQTimer(parent,name);
 		}
+		[SmokeMethod("QTimer(QObject*, const char*)")]
 		private void NewQTimer(QObject parent, string name) {
 			ProxyQTimer().NewQTimer(parent,name);
 		}
 		public QTimer(QObject parent) : this((Type) null) {
 			CreateQTimerProxy();
+			CreateQTimerSignalProxy();
 			NewQTimer(parent);
 		}
+		[SmokeMethod("QTimer(QObject*)")]
 		private void NewQTimer(QObject parent) {
 			ProxyQTimer().NewQTimer(parent);
 		}
 		public QTimer() : this((Type) null) {
 			CreateQTimerProxy();
+			CreateQTimerSignalProxy();
 			NewQTimer();
 		}
+		[SmokeMethod("QTimer()")]
 		private void NewQTimer() {
 			ProxyQTimer().NewQTimer();
 		}
+		[SmokeMethod("isActive() const")]
 		public bool IsActive() {
 			return ProxyQTimer().IsActive();
 		}
+		[SmokeMethod("start(int, bool)")]
 		public int Start(int msec, bool sshot) {
 			return ProxyQTimer().Start(msec,sshot);
 		}
+		[SmokeMethod("start(int)")]
 		public int Start(int msec) {
 			return ProxyQTimer().Start(msec);
 		}
+		[SmokeMethod("changeInterval(int)")]
 		public void ChangeInterval(int msec) {
 			ProxyQTimer().ChangeInterval(msec);
 		}
+		[SmokeMethod("stop()")]
 		public void Stop() {
 			ProxyQTimer().Stop();
 		}
+		[SmokeMethod("timerId() const")]
 		public int TimerId() {
 			return ProxyQTimer().TimerId();
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQTimer().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQTimer().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQTimer().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQTimer().TrUtf8(arg1);
 		}
+		[SmokeMethod("singleShot(int, QObject*, const char*)")]
 		public static void SingleShot(int msec, QObject receiver, string member) {
 			StaticQTimer().SingleShot(msec,receiver,member);
 		}
+		[SmokeMethod("event(QEvent*)")]
 		public new bool Event(QEvent arg1) {
 			return ProxyQTimer().Event(arg1);
 		}
 		~QTimer() {
-			ProxyQTimer().Dispose();
+			DisposeQTimer();
 		}
 		public new void Dispose() {
-			ProxyQTimer().Dispose();
+			DisposeQTimer();
+		}
+		private void DisposeQTimer() {
+			ProxyQTimer().DisposeQTimer();
+		}
+		protected void CreateQTimerSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQTimerSignals), this);
+			_signalInterceptor = (IQTimerSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQTimerSignals Emit() {
+			return (IQTimerSignals) _signalInterceptor;
 		}
 	}
 
-	public interface IQTimerSignals {
+	public interface IQTimerSignals : IQObjectSignals {
+		[Q_SIGNAL("timeout()")]
 		void Timeout();
 	}
 }

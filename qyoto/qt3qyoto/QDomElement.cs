@@ -30,6 +30,7 @@ namespace Qt {
 			CreateQDomElementProxy();
 			NewQDomElement();
 		}
+		[SmokeMethod("QDomElement()")]
 		private void NewQDomElement() {
 			ProxyQDomElement().NewQDomElement();
 		}
@@ -37,110 +38,146 @@ namespace Qt {
 			CreateQDomElementProxy();
 			NewQDomElement(x);
 		}
+		[SmokeMethod("QDomElement(const QDomElement&)")]
 		private void NewQDomElement(QDomElement x) {
 			ProxyQDomElement().NewQDomElement(x);
 		}
+		[SmokeMethod("attribute(const QString&, const QString&) const")]
 		public string Attribute(string name, string defValue) {
 			return ProxyQDomElement().Attribute(name,defValue);
 		}
+		[SmokeMethod("attribute(const QString&) const")]
 		public string Attribute(string name) {
 			return ProxyQDomElement().Attribute(name);
 		}
+		[SmokeMethod("setAttribute(const QString&, const QString&)")]
 		public void SetAttribute(string name, string value) {
 			ProxyQDomElement().SetAttribute(name,value);
 		}
+		[SmokeMethod("setAttribute(const QString&, int)")]
 		public void SetAttribute(string name, int value) {
 			ProxyQDomElement().SetAttribute(name,value);
 		}
+		[SmokeMethod("setAttribute(const QString&, uint)")]
 		public void SetAttribute(string name, uint value) {
 			ProxyQDomElement().SetAttribute(name,value);
 		}
+		[SmokeMethod("setAttribute(const QString&, long)")]
 		public void SetAttribute(string name, long value) {
 			ProxyQDomElement().SetAttribute(name,value);
 		}
+		[SmokeMethod("setAttribute(const QString&, ulong)")]
 		public void SetAttribute(string name, ulong value) {
 			ProxyQDomElement().SetAttribute(name,value);
 		}
+		[SmokeMethod("setAttribute(const QString&, double)")]
 		public void SetAttribute(string name, double value) {
 			ProxyQDomElement().SetAttribute(name,value);
 		}
+		[SmokeMethod("removeAttribute(const QString&)")]
 		public void RemoveAttribute(string name) {
 			ProxyQDomElement().RemoveAttribute(name);
 		}
+		[SmokeMethod("attributeNode(const QString&)")]
 		public QDomAttr AttributeNode(string name) {
 			return ProxyQDomElement().AttributeNode(name);
 		}
+		[SmokeMethod("setAttributeNode(const QDomAttr&)")]
 		public QDomAttr SetAttributeNode(QDomAttr newAttr) {
 			return ProxyQDomElement().SetAttributeNode(newAttr);
 		}
+		[SmokeMethod("removeAttributeNode(const QDomAttr&)")]
 		public QDomAttr RemoveAttributeNode(QDomAttr oldAttr) {
 			return ProxyQDomElement().RemoveAttributeNode(oldAttr);
 		}
+		[SmokeMethod("elementsByTagName(const QString&) const")]
 		public virtual ArrayList ElementsByTagName(string tagname) {
 			return ProxyQDomElement().ElementsByTagName(tagname);
 		}
+		[SmokeMethod("hasAttribute(const QString&) const")]
 		public bool HasAttribute(string name) {
 			return ProxyQDomElement().HasAttribute(name);
 		}
+		[SmokeMethod("attributeNS(const QString, const QString&, const QString&) const")]
 		public string AttributeNS(string nsURI, string localName, string defValue) {
 			return ProxyQDomElement().AttributeNS(nsURI,localName,defValue);
 		}
+		[SmokeMethod("setAttributeNS(const QString, const QString&, const QString&)")]
 		public void SetAttributeNS(string nsURI, string qName, string value) {
 			ProxyQDomElement().SetAttributeNS(nsURI,qName,value);
 		}
+		[SmokeMethod("setAttributeNS(const QString, const QString&, int)")]
 		public void SetAttributeNS(string nsURI, string qName, int value) {
 			ProxyQDomElement().SetAttributeNS(nsURI,qName,value);
 		}
+		[SmokeMethod("setAttributeNS(const QString, const QString&, uint)")]
 		public void SetAttributeNS(string nsURI, string qName, uint value) {
 			ProxyQDomElement().SetAttributeNS(nsURI,qName,value);
 		}
+		[SmokeMethod("setAttributeNS(const QString, const QString&, long)")]
 		public void SetAttributeNS(string nsURI, string qName, long value) {
 			ProxyQDomElement().SetAttributeNS(nsURI,qName,value);
 		}
+		[SmokeMethod("setAttributeNS(const QString, const QString&, ulong)")]
 		public void SetAttributeNS(string nsURI, string qName, ulong value) {
 			ProxyQDomElement().SetAttributeNS(nsURI,qName,value);
 		}
+		[SmokeMethod("setAttributeNS(const QString, const QString&, double)")]
 		public void SetAttributeNS(string nsURI, string qName, double value) {
 			ProxyQDomElement().SetAttributeNS(nsURI,qName,value);
 		}
+		[SmokeMethod("removeAttributeNS(const QString&, const QString&)")]
 		public void RemoveAttributeNS(string nsURI, string localName) {
 			ProxyQDomElement().RemoveAttributeNS(nsURI,localName);
 		}
+		[SmokeMethod("attributeNodeNS(const QString&, const QString&)")]
 		public QDomAttr AttributeNodeNS(string nsURI, string localName) {
 			return ProxyQDomElement().AttributeNodeNS(nsURI,localName);
 		}
+		[SmokeMethod("setAttributeNodeNS(const QDomAttr&)")]
 		public QDomAttr SetAttributeNodeNS(QDomAttr newAttr) {
 			return ProxyQDomElement().SetAttributeNodeNS(newAttr);
 		}
+		[SmokeMethod("elementsByTagNameNS(const QString&, const QString&) const")]
 		public virtual ArrayList ElementsByTagNameNS(string nsURI, string localName) {
 			return ProxyQDomElement().ElementsByTagNameNS(nsURI,localName);
 		}
+		[SmokeMethod("hasAttributeNS(const QString&, const QString&) const")]
 		public bool HasAttributeNS(string nsURI, string localName) {
 			return ProxyQDomElement().HasAttributeNS(nsURI,localName);
 		}
+		[SmokeMethod("tagName() const")]
 		public string TagName() {
 			return ProxyQDomElement().TagName();
 		}
+		[SmokeMethod("setTagName(const QString&)")]
 		public void SetTagName(string name) {
 			ProxyQDomElement().SetTagName(name);
 		}
+		[SmokeMethod("attributes() const")]
 		public new QDomNamedNodeMap Attributes() {
 			return ProxyQDomElement().Attributes();
 		}
+		[SmokeMethod("nodeType() const")]
 		public new int NodeType() {
 			return ProxyQDomElement().NodeType();
 		}
+		[SmokeMethod("isElement() const")]
 		public new bool IsElement() {
 			return ProxyQDomElement().IsElement();
 		}
+		[SmokeMethod("text() const")]
 		public string Text() {
 			return ProxyQDomElement().Text();
 		}
 		~QDomElement() {
-			ProxyQDomElement().Dispose();
+			DisposeQDomElement();
 		}
 		public new void Dispose() {
-			ProxyQDomElement().Dispose();
+			DisposeQDomElement();
+		}
+		private void DisposeQDomElement() {
+			ProxyQDomElement().DisposeQDomElement();
 		}
 	}
 }

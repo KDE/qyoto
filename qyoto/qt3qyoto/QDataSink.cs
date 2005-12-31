@@ -24,15 +24,19 @@ namespace Qt {
 			return (IQDataSinkProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("readyToReceive()")]
 		public virtual int ReadyToReceive() {
 			return ProxyQDataSink().ReadyToReceive();
 		}
+		[SmokeMethod("receive(const uchar*, int)")]
 		public virtual void Receive(char[] arg1, int count) {
 			ProxyQDataSink().Receive(arg1,count);
 		}
+		[SmokeMethod("eof()")]
 		public virtual void Eof() {
 			ProxyQDataSink().Eof();
 		}
+		[SmokeMethod("maybeReady()")]
 		public void MaybeReady() {
 			ProxyQDataSink().MaybeReady();
 		}

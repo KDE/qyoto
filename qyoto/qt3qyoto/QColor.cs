@@ -50,6 +50,7 @@ namespace Qt {
 			CreateQColorProxy();
 			NewQColor();
 		}
+		[SmokeMethod("QColor()")]
 		private void NewQColor() {
 			ProxyQColor().NewQColor();
 		}
@@ -57,6 +58,7 @@ namespace Qt {
 			CreateQColorProxy();
 			NewQColor(r,g,b);
 		}
+		[SmokeMethod("QColor(int, int, int)")]
 		private void NewQColor(int r, int g, int b) {
 			ProxyQColor().NewQColor(r,g,b);
 		}
@@ -64,6 +66,7 @@ namespace Qt {
 			CreateQColorProxy();
 			NewQColor(x,y,z,arg4);
 		}
+		[SmokeMethod("QColor(int, int, int, QColor::Spec)")]
 		private void NewQColor(int x, int y, int z, int arg4) {
 			ProxyQColor().NewQColor(x,y,z,arg4);
 		}
@@ -71,6 +74,7 @@ namespace Qt {
 			CreateQColorProxy();
 			NewQColor(rgb,pixel);
 		}
+		[SmokeMethod("QColor(QRgb, uint)")]
 		private void NewQColor(uint rgb, uint pixel) {
 			ProxyQColor().NewQColor(rgb,pixel);
 		}
@@ -78,6 +82,7 @@ namespace Qt {
 			CreateQColorProxy();
 			NewQColor(rgb);
 		}
+		[SmokeMethod("QColor(QRgb)")]
 		private void NewQColor(uint rgb) {
 			ProxyQColor().NewQColor(rgb);
 		}
@@ -85,6 +90,7 @@ namespace Qt {
 			CreateQColorProxy();
 			NewQColor(name);
 		}
+		[SmokeMethod("QColor(const QString&)")]
 		private void NewQColor(string name) {
 			ProxyQColor().NewQColor(name);
 		}
@@ -92,66 +98,87 @@ namespace Qt {
 			CreateQColorProxy();
 			NewQColor(arg1);
 		}
+		[SmokeMethod("QColor(const QColor&)")]
 		private void NewQColor(QColor arg1) {
 			ProxyQColor().NewQColor(arg1);
 		}
+		[SmokeMethod("isValid() const")]
 		public bool IsValid() {
 			return ProxyQColor().IsValid();
 		}
+		[SmokeMethod("isDirty() const")]
 		public bool IsDirty() {
 			return ProxyQColor().IsDirty();
 		}
+		[SmokeMethod("name() const")]
 		public string Name() {
 			return ProxyQColor().Name();
 		}
+		[SmokeMethod("setNamedColor(const QString&)")]
 		public void SetNamedColor(string name) {
 			ProxyQColor().SetNamedColor(name);
 		}
+		[SmokeMethod("rgb() const")]
 		public uint Rgb() {
 			return ProxyQColor().Rgb();
 		}
+		[SmokeMethod("setRgb(int, int, int)")]
 		public void SetRgb(int r, int g, int b) {
 			ProxyQColor().SetRgb(r,g,b);
 		}
+		[SmokeMethod("setRgb(QRgb)")]
 		public void SetRgb(uint rgb) {
 			ProxyQColor().SetRgb(rgb);
 		}
+		[SmokeMethod("getRgb(int*, int*, int*) const")]
 		public void GetRgb(out int r, out int g, out int b) {
 			ProxyQColor().GetRgb(out r,out g,out b);
 		}
+		[SmokeMethod("rgb(int*, int*, int*) const")]
 		public void Rgb(out int r, out int g, out int b) {
 			ProxyQColor().Rgb(out r,out g,out b);
 		}
+		[SmokeMethod("red() const")]
 		public int Red() {
 			return ProxyQColor().Red();
 		}
+		[SmokeMethod("green() const")]
 		public int Green() {
 			return ProxyQColor().Green();
 		}
+		[SmokeMethod("blue() const")]
 		public int Blue() {
 			return ProxyQColor().Blue();
 		}
+		[SmokeMethod("setHsv(int, int, int)")]
 		public void SetHsv(int h, int s, int v) {
 			ProxyQColor().SetHsv(h,s,v);
 		}
+		[SmokeMethod("getHsv(int*, int*, int*) const")]
 		public void GetHsv(out int h, out int s, out int v) {
 			ProxyQColor().GetHsv(out h,out s,out v);
 		}
+		[SmokeMethod("hsv(int*, int*, int*) const")]
 		public void Hsv(out int h, out int s, out int v) {
 			ProxyQColor().Hsv(out h,out s,out v);
 		}
+		[SmokeMethod("light(int) const")]
 		public QColor Light(int f) {
 			return ProxyQColor().Light(f);
 		}
+		[SmokeMethod("light() const")]
 		public QColor Light() {
 			return ProxyQColor().Light();
 		}
+		[SmokeMethod("dark(int) const")]
 		public QColor Dark(int f) {
 			return ProxyQColor().Dark(f);
 		}
+		[SmokeMethod("dark() const")]
 		public QColor Dark() {
 			return ProxyQColor().Dark();
 		}
+		[SmokeMethod("operator==(const QColor&) const")]
 		public static bool operator==(QColor lhs, QColor c) {
 			return StaticQColor().op_equals(lhs,c);
 		}
@@ -165,44 +192,58 @@ namespace Qt {
 		public override int GetHashCode() {
 			return ProxyQColor().GetHashCode();
 		}
+		[SmokeMethod("alloc()")]
 		public uint Alloc() {
 			return ProxyQColor().Alloc();
 		}
+		[SmokeMethod("pixel() const")]
 		public uint Pixel() {
 			return ProxyQColor().Pixel();
 		}
+		[SmokeMethod("maxColors()")]
 		public static int MaxColors() {
 			return StaticQColor().MaxColors();
 		}
+		[SmokeMethod("numBitPlanes()")]
 		public static int NumBitPlanes() {
 			return StaticQColor().NumBitPlanes();
 		}
+		[SmokeMethod("enterAllocContext()")]
 		public static int EnterAllocContext() {
 			return StaticQColor().EnterAllocContext();
 		}
+		[SmokeMethod("leaveAllocContext()")]
 		public static void LeaveAllocContext() {
 			StaticQColor().LeaveAllocContext();
 		}
+		[SmokeMethod("currentAllocContext()")]
 		public static int CurrentAllocContext() {
 			return StaticQColor().CurrentAllocContext();
 		}
+		[SmokeMethod("destroyAllocContext(int)")]
 		public static void DestroyAllocContext(int arg1) {
 			StaticQColor().DestroyAllocContext(arg1);
 		}
+		[SmokeMethod("initialize()")]
 		public static void Initialize() {
 			StaticQColor().Initialize();
 		}
+		[SmokeMethod("cleanup()")]
 		public static void Cleanup() {
 			StaticQColor().Cleanup();
 		}
+		[SmokeMethod("colorNames()")]
 		public static ArrayList ColorNames() {
 			return StaticQColor().ColorNames();
 		}
 		~QColor() {
-			ProxyQColor().Dispose();
+			DisposeQColor();
 		}
 		public void Dispose() {
-			ProxyQColor().Dispose();
+			DisposeQColor();
+		}
+		private void DisposeQColor() {
+			ProxyQColor().DisposeQColor();
 		}
 	}
 }

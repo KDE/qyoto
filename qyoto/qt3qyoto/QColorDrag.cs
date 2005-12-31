@@ -31,80 +31,114 @@ namespace Qt {
 			return (IQColorDragProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQColorDrag().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQColorDrag().ClassName();
 		}
 		public QColorDrag(QColor col, QWidget dragsource, string name) : this((Type) null) {
 			CreateQColorDragProxy();
+			CreateQColorDragSignalProxy();
 			NewQColorDrag(col,dragsource,name);
 		}
+		[SmokeMethod("QColorDrag(const QColor&, QWidget*, const char*)")]
 		private void NewQColorDrag(QColor col, QWidget dragsource, string name) {
 			ProxyQColorDrag().NewQColorDrag(col,dragsource,name);
 		}
 		public QColorDrag(QColor col, QWidget dragsource) : this((Type) null) {
 			CreateQColorDragProxy();
+			CreateQColorDragSignalProxy();
 			NewQColorDrag(col,dragsource);
 		}
+		[SmokeMethod("QColorDrag(const QColor&, QWidget*)")]
 		private void NewQColorDrag(QColor col, QWidget dragsource) {
 			ProxyQColorDrag().NewQColorDrag(col,dragsource);
 		}
 		public QColorDrag(QColor col) : this((Type) null) {
 			CreateQColorDragProxy();
+			CreateQColorDragSignalProxy();
 			NewQColorDrag(col);
 		}
+		[SmokeMethod("QColorDrag(const QColor&)")]
 		private void NewQColorDrag(QColor col) {
 			ProxyQColorDrag().NewQColorDrag(col);
 		}
 		public QColorDrag(QWidget dragSource, string name) : this((Type) null) {
 			CreateQColorDragProxy();
+			CreateQColorDragSignalProxy();
 			NewQColorDrag(dragSource,name);
 		}
+		[SmokeMethod("QColorDrag(QWidget*, const char*)")]
 		private void NewQColorDrag(QWidget dragSource, string name) {
 			ProxyQColorDrag().NewQColorDrag(dragSource,name);
 		}
 		public QColorDrag(QWidget dragSource) : this((Type) null) {
 			CreateQColorDragProxy();
+			CreateQColorDragSignalProxy();
 			NewQColorDrag(dragSource);
 		}
+		[SmokeMethod("QColorDrag(QWidget*)")]
 		private void NewQColorDrag(QWidget dragSource) {
 			ProxyQColorDrag().NewQColorDrag(dragSource);
 		}
 		public QColorDrag() : this((Type) null) {
 			CreateQColorDragProxy();
+			CreateQColorDragSignalProxy();
 			NewQColorDrag();
 		}
+		[SmokeMethod("QColorDrag()")]
 		private void NewQColorDrag() {
 			ProxyQColorDrag().NewQColorDrag();
 		}
+		[SmokeMethod("setColor(const QColor&)")]
 		public void SetColor(QColor col) {
 			ProxyQColorDrag().SetColor(col);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQColorDrag().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQColorDrag().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQColorDrag().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQColorDrag().TrUtf8(arg1);
 		}
+		[SmokeMethod("canDecode(QMimeSource*)")]
 		public static bool CanDecode(IQMimeSource arg1) {
 			return StaticQColorDrag().CanDecode(arg1);
 		}
+		[SmokeMethod("decode(QMimeSource*, QColor&)")]
 		public static bool Decode(IQMimeSource arg1, QColor col) {
 			return StaticQColorDrag().Decode(arg1,col);
 		}
 		~QColorDrag() {
-			ProxyQColorDrag().Dispose();
+			DisposeQColorDrag();
 		}
 		public new void Dispose() {
-			ProxyQColorDrag().Dispose();
+			DisposeQColorDrag();
 		}
+		private void DisposeQColorDrag() {
+			ProxyQColorDrag().DisposeQColorDrag();
+		}
+		protected void CreateQColorDragSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQColorDragSignals), this);
+			_signalInterceptor = (IQColorDragSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQColorDragSignals Emit() {
+			return (IQColorDragSignals) _signalInterceptor;
+		}
+	}
+
+	public interface IQColorDragSignals : IQStoredDragSignals {
 	}
 }

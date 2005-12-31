@@ -30,450 +30,608 @@ namespace Qt {
 			return (IQPopupMenuProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQPopupMenu().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQPopupMenu().ClassName();
 		}
 		public QPopupMenu(QWidget parent, string name) : this((Type) null) {
 			CreateQPopupMenuProxy();
+			CreateQPopupMenuSignalProxy();
 			NewQPopupMenu(parent,name);
 		}
+		[SmokeMethod("QPopupMenu(QWidget*, const char*)")]
 		private void NewQPopupMenu(QWidget parent, string name) {
 			ProxyQPopupMenu().NewQPopupMenu(parent,name);
 		}
 		public QPopupMenu(QWidget parent) : this((Type) null) {
 			CreateQPopupMenuProxy();
+			CreateQPopupMenuSignalProxy();
 			NewQPopupMenu(parent);
 		}
+		[SmokeMethod("QPopupMenu(QWidget*)")]
 		private void NewQPopupMenu(QWidget parent) {
 			ProxyQPopupMenu().NewQPopupMenu(parent);
 		}
 		public QPopupMenu() : this((Type) null) {
 			CreateQPopupMenuProxy();
+			CreateQPopupMenuSignalProxy();
 			NewQPopupMenu();
 		}
+		[SmokeMethod("QPopupMenu()")]
 		private void NewQPopupMenu() {
 			ProxyQPopupMenu().NewQPopupMenu();
 		}
+		[SmokeMethod("popup(const QPoint&, int)")]
 		public void Popup(QPoint pos, int indexAtPoint) {
 			ProxyQPopupMenu().Popup(pos,indexAtPoint);
 		}
+		[SmokeMethod("popup(const QPoint&)")]
 		public void Popup(QPoint pos) {
 			ProxyQPopupMenu().Popup(pos);
 		}
+		[SmokeMethod("updateItem(int)")]
 		public void UpdateItem(int id) {
 			ProxyQPopupMenu().UpdateItem(id);
 		}
+		[SmokeMethod("setCheckable(bool)")]
 		public virtual void SetCheckable(bool arg1) {
 			ProxyQPopupMenu().SetCheckable(arg1);
 		}
+		[SmokeMethod("isCheckable() const")]
 		public bool IsCheckable() {
 			return ProxyQPopupMenu().IsCheckable();
 		}
+		[SmokeMethod("setFont(const QFont&)")]
 		public new void SetFont(QFont arg1) {
 			ProxyQPopupMenu().SetFont(arg1);
 		}
+		[SmokeMethod("show()")]
 		public new void Show() {
 			ProxyQPopupMenu().Show();
 		}
+		[SmokeMethod("hide()")]
 		public new void Hide() {
 			ProxyQPopupMenu().Hide();
 		}
+		[SmokeMethod("exec()")]
 		public int Exec() {
 			return ProxyQPopupMenu().Exec();
 		}
+		[SmokeMethod("exec(const QPoint&, int)")]
 		public int Exec(QPoint pos, int indexAtPoint) {
 			return ProxyQPopupMenu().Exec(pos,indexAtPoint);
 		}
+		[SmokeMethod("exec(const QPoint&)")]
 		public int Exec(QPoint pos) {
 			return ProxyQPopupMenu().Exec(pos);
 		}
+		[SmokeMethod("setActiveItem(int)")]
 		public virtual void SetActiveItem(int arg1) {
 			ProxyQPopupMenu().SetActiveItem(arg1);
 		}
+		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {
 			return ProxyQPopupMenu().SizeHint();
 		}
+		[SmokeMethod("idAt(int) const")]
 		public int IdAt(int index) {
 			return ProxyQPopupMenu().IdAt(index);
 		}
+		[SmokeMethod("idAt(const QPoint&) const")]
 		public int IdAt(QPoint pos) {
 			return ProxyQPopupMenu().IdAt(pos);
 		}
+		[SmokeMethod("customWhatsThis() const")]
 		public new bool CustomWhatsThis() {
 			return ProxyQPopupMenu().CustomWhatsThis();
 		}
+		[SmokeMethod("insertTearOffHandle(int, int)")]
 		public int InsertTearOffHandle(int id, int index) {
 			return ProxyQPopupMenu().InsertTearOffHandle(id,index);
 		}
+		[SmokeMethod("insertTearOffHandle(int)")]
 		public int InsertTearOffHandle(int id) {
 			return ProxyQPopupMenu().InsertTearOffHandle(id);
 		}
+		[SmokeMethod("insertTearOffHandle()")]
 		public int InsertTearOffHandle() {
 			return ProxyQPopupMenu().InsertTearOffHandle();
 		}
+		[SmokeMethod("activateItemAt(int)")]
 		public void ActivateItemAt(int index) {
 			ProxyQPopupMenu().ActivateItemAt(index);
 		}
+		[SmokeMethod("itemGeometry(int)")]
 		public QRect ItemGeometry(int index) {
 			return ProxyQPopupMenu().ItemGeometry(index);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQPopupMenu().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQPopupMenu().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQPopupMenu().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQPopupMenu().TrUtf8(arg1);
 		}
+		[SmokeMethod("itemHeight(int) const")]
 		protected int ItemHeight(int arg1) {
 			return ProxyQPopupMenu().ItemHeight(arg1);
 		}
+		[SmokeMethod("itemHeight(QMenuItem*) const")]
 		protected int ItemHeight(QMenuItem mi) {
 			return ProxyQPopupMenu().ItemHeight(mi);
 		}
+		[SmokeMethod("drawItem(QPainter*, int, QMenuItem*, bool, int, int, int, int)")]
 		protected void DrawItem(QPainter p, int tab, QMenuItem mi, bool act, int x, int y, int w, int h) {
 			ProxyQPopupMenu().DrawItem(p,tab,mi,act,x,y,w,h);
 		}
+		[SmokeMethod("drawContents(QPainter*)")]
 		protected new void DrawContents(QPainter arg1) {
 			ProxyQPopupMenu().DrawContents(arg1);
 		}
+		[SmokeMethod("closeEvent(QCloseEvent*)")]
 		protected new void CloseEvent(QCloseEvent e) {
 			ProxyQPopupMenu().CloseEvent(e);
 		}
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected new void PaintEvent(QPaintEvent arg1) {
 			ProxyQPopupMenu().PaintEvent(arg1);
 		}
+		[SmokeMethod("mousePressEvent(QMouseEvent*)")]
 		protected new void MousePressEvent(QMouseEvent arg1) {
 			ProxyQPopupMenu().MousePressEvent(arg1);
 		}
+		[SmokeMethod("mouseReleaseEvent(QMouseEvent*)")]
 		protected new void MouseReleaseEvent(QMouseEvent arg1) {
 			ProxyQPopupMenu().MouseReleaseEvent(arg1);
 		}
+		[SmokeMethod("mouseMoveEvent(QMouseEvent*)")]
 		protected new void MouseMoveEvent(QMouseEvent arg1) {
 			ProxyQPopupMenu().MouseMoveEvent(arg1);
 		}
+		[SmokeMethod("keyPressEvent(QKeyEvent*)")]
 		protected new void KeyPressEvent(QKeyEvent arg1) {
 			ProxyQPopupMenu().KeyPressEvent(arg1);
 		}
+		[SmokeMethod("focusInEvent(QFocusEvent*)")]
 		protected new void FocusInEvent(QFocusEvent arg1) {
 			ProxyQPopupMenu().FocusInEvent(arg1);
 		}
+		[SmokeMethod("focusOutEvent(QFocusEvent*)")]
 		protected new void FocusOutEvent(QFocusEvent arg1) {
 			ProxyQPopupMenu().FocusOutEvent(arg1);
 		}
+		[SmokeMethod("timerEvent(QTimerEvent*)")]
 		protected new void TimerEvent(QTimerEvent arg1) {
 			ProxyQPopupMenu().TimerEvent(arg1);
 		}
+		[SmokeMethod("leaveEvent(QEvent*)")]
 		protected new void LeaveEvent(QEvent arg1) {
 			ProxyQPopupMenu().LeaveEvent(arg1);
 		}
+		[SmokeMethod("styleChange(QStyle&)")]
 		public new void StyleChange(QStyle arg1) {
 			ProxyQPopupMenu().StyleChange(arg1);
 		}
+		[SmokeMethod("enabledChange(bool)")]
 		protected new void EnabledChange(bool arg1) {
 			ProxyQPopupMenu().EnabledChange(arg1);
 		}
+		[SmokeMethod("columns() const")]
 		protected int Columns() {
 			return ProxyQPopupMenu().Columns();
 		}
+		[SmokeMethod("focusNextPrevChild(bool)")]
 		protected new bool FocusNextPrevChild(bool next) {
 			return ProxyQPopupMenu().FocusNextPrevChild(next);
 		}
+		[SmokeMethod("itemAtPos(const QPoint&, bool) const")]
 		protected int ItemAtPos(QPoint arg1, bool ignoreSeparator) {
 			return ProxyQPopupMenu().ItemAtPos(arg1,ignoreSeparator);
 		}
+		[SmokeMethod("itemAtPos(const QPoint&) const")]
 		protected int ItemAtPos(QPoint arg1) {
 			return ProxyQPopupMenu().ItemAtPos(arg1);
 		}
 		~QPopupMenu() {
-			ProxyQPopupMenu().Dispose();
+			DisposeQPopupMenu();
 		}
 		public new void Dispose() {
-			ProxyQPopupMenu().Dispose();
+			DisposeQPopupMenu();
 		}
+		private void DisposeQPopupMenu() {
+			ProxyQPopupMenu().DisposeQPopupMenu();
+		}
+		[SmokeMethod("count() const")]
 		public uint Count() {
 			return ProxyQPopupMenu().Count();
 		}
+		[SmokeMethod("insertItem(const QString&, const QObject*, const char*, const QKeySequence&, int, int)")]
 		public int InsertItem(string text, QObject receiver, string member, QKeySequence accel, int id, int index) {
 			return ProxyQPopupMenu().InsertItem(text,receiver,member,accel,id,index);
 		}
+		[SmokeMethod("insertItem(const QString&, const QObject*, const char*, const QKeySequence&, int)")]
 		public int InsertItem(string text, QObject receiver, string member, QKeySequence accel, int id) {
 			return ProxyQPopupMenu().InsertItem(text,receiver,member,accel,id);
 		}
+		[SmokeMethod("insertItem(const QString&, const QObject*, const char*, const QKeySequence&)")]
 		public int InsertItem(string text, QObject receiver, string member, QKeySequence accel) {
 			return ProxyQPopupMenu().InsertItem(text,receiver,member,accel);
 		}
+		[SmokeMethod("insertItem(const QString&, const QObject*, const char*)")]
 		public int InsertItem(string text, QObject receiver, string member) {
 			return ProxyQPopupMenu().InsertItem(text,receiver,member);
 		}
+		[SmokeMethod("insertItem(const QIconSet&, const QString&, const QObject*, const char*, const QKeySequence&, int, int)")]
 		public int InsertItem(QIconSet icon, string text, QObject receiver, string member, QKeySequence accel, int id, int index) {
 			return ProxyQPopupMenu().InsertItem(icon,text,receiver,member,accel,id,index);
 		}
+		[SmokeMethod("insertItem(const QIconSet&, const QString&, const QObject*, const char*, const QKeySequence&, int)")]
 		public int InsertItem(QIconSet icon, string text, QObject receiver, string member, QKeySequence accel, int id) {
 			return ProxyQPopupMenu().InsertItem(icon,text,receiver,member,accel,id);
 		}
+		[SmokeMethod("insertItem(const QIconSet&, const QString&, const QObject*, const char*, const QKeySequence&)")]
 		public int InsertItem(QIconSet icon, string text, QObject receiver, string member, QKeySequence accel) {
 			return ProxyQPopupMenu().InsertItem(icon,text,receiver,member,accel);
 		}
+		[SmokeMethod("insertItem(const QIconSet&, const QString&, const QObject*, const char*)")]
 		public int InsertItem(QIconSet icon, string text, QObject receiver, string member) {
 			return ProxyQPopupMenu().InsertItem(icon,text,receiver,member);
 		}
+		[SmokeMethod("insertItem(const QPixmap&, const QObject*, const char*, const QKeySequence&, int, int)")]
 		public int InsertItem(QPixmap pixmap, QObject receiver, string member, QKeySequence accel, int id, int index) {
 			return ProxyQPopupMenu().InsertItem(pixmap,receiver,member,accel,id,index);
 		}
+		[SmokeMethod("insertItem(const QPixmap&, const QObject*, const char*, const QKeySequence&, int)")]
 		public int InsertItem(QPixmap pixmap, QObject receiver, string member, QKeySequence accel, int id) {
 			return ProxyQPopupMenu().InsertItem(pixmap,receiver,member,accel,id);
 		}
+		[SmokeMethod("insertItem(const QPixmap&, const QObject*, const char*, const QKeySequence&)")]
 		public int InsertItem(QPixmap pixmap, QObject receiver, string member, QKeySequence accel) {
 			return ProxyQPopupMenu().InsertItem(pixmap,receiver,member,accel);
 		}
+		[SmokeMethod("insertItem(const QPixmap&, const QObject*, const char*)")]
 		public int InsertItem(QPixmap pixmap, QObject receiver, string member) {
 			return ProxyQPopupMenu().InsertItem(pixmap,receiver,member);
 		}
+		[SmokeMethod("insertItem(const QIconSet&, const QPixmap&, const QObject*, const char*, const QKeySequence&, int, int)")]
 		public int InsertItem(QIconSet icon, QPixmap pixmap, QObject receiver, string member, QKeySequence accel, int id, int index) {
 			return ProxyQPopupMenu().InsertItem(icon,pixmap,receiver,member,accel,id,index);
 		}
+		[SmokeMethod("insertItem(const QIconSet&, const QPixmap&, const QObject*, const char*, const QKeySequence&, int)")]
 		public int InsertItem(QIconSet icon, QPixmap pixmap, QObject receiver, string member, QKeySequence accel, int id) {
 			return ProxyQPopupMenu().InsertItem(icon,pixmap,receiver,member,accel,id);
 		}
+		[SmokeMethod("insertItem(const QIconSet&, const QPixmap&, const QObject*, const char*, const QKeySequence&)")]
 		public int InsertItem(QIconSet icon, QPixmap pixmap, QObject receiver, string member, QKeySequence accel) {
 			return ProxyQPopupMenu().InsertItem(icon,pixmap,receiver,member,accel);
 		}
+		[SmokeMethod("insertItem(const QIconSet&, const QPixmap&, const QObject*, const char*)")]
 		public int InsertItem(QIconSet icon, QPixmap pixmap, QObject receiver, string member) {
 			return ProxyQPopupMenu().InsertItem(icon,pixmap,receiver,member);
 		}
+		[SmokeMethod("insertItem(const QString&, int, int)")]
 		public int InsertItem(string text, int id, int index) {
 			return ProxyQPopupMenu().InsertItem(text,id,index);
 		}
+		[SmokeMethod("insertItem(const QString&, int)")]
 		public int InsertItem(string text, int id) {
 			return ProxyQPopupMenu().InsertItem(text,id);
 		}
+		[SmokeMethod("insertItem(const QString&)")]
 		public int InsertItem(string text) {
 			return ProxyQPopupMenu().InsertItem(text);
 		}
+		[SmokeMethod("insertItem(const QIconSet&, const QString&, int, int)")]
 		public int InsertItem(QIconSet icon, string text, int id, int index) {
 			return ProxyQPopupMenu().InsertItem(icon,text,id,index);
 		}
+		[SmokeMethod("insertItem(const QIconSet&, const QString&, int)")]
 		public int InsertItem(QIconSet icon, string text, int id) {
 			return ProxyQPopupMenu().InsertItem(icon,text,id);
 		}
+		[SmokeMethod("insertItem(const QIconSet&, const QString&)")]
 		public int InsertItem(QIconSet icon, string text) {
 			return ProxyQPopupMenu().InsertItem(icon,text);
 		}
+		[SmokeMethod("insertItem(const QString&, QPopupMenu*, int, int)")]
 		public int InsertItem(string text, QPopupMenu popup, int id, int index) {
 			return ProxyQPopupMenu().InsertItem(text,popup,id,index);
 		}
+		[SmokeMethod("insertItem(const QString&, QPopupMenu*, int)")]
 		public int InsertItem(string text, QPopupMenu popup, int id) {
 			return ProxyQPopupMenu().InsertItem(text,popup,id);
 		}
+		[SmokeMethod("insertItem(const QString&, QPopupMenu*)")]
 		public int InsertItem(string text, QPopupMenu popup) {
 			return ProxyQPopupMenu().InsertItem(text,popup);
 		}
+		[SmokeMethod("insertItem(const QIconSet&, const QString&, QPopupMenu*, int, int)")]
 		public int InsertItem(QIconSet icon, string text, QPopupMenu popup, int id, int index) {
 			return ProxyQPopupMenu().InsertItem(icon,text,popup,id,index);
 		}
+		[SmokeMethod("insertItem(const QIconSet&, const QString&, QPopupMenu*, int)")]
 		public int InsertItem(QIconSet icon, string text, QPopupMenu popup, int id) {
 			return ProxyQPopupMenu().InsertItem(icon,text,popup,id);
 		}
+		[SmokeMethod("insertItem(const QIconSet&, const QString&, QPopupMenu*)")]
 		public int InsertItem(QIconSet icon, string text, QPopupMenu popup) {
 			return ProxyQPopupMenu().InsertItem(icon,text,popup);
 		}
+		[SmokeMethod("insertItem(const QPixmap&, int, int)")]
 		public int InsertItem(QPixmap pixmap, int id, int index) {
 			return ProxyQPopupMenu().InsertItem(pixmap,id,index);
 		}
+		[SmokeMethod("insertItem(const QPixmap&, int)")]
 		public int InsertItem(QPixmap pixmap, int id) {
 			return ProxyQPopupMenu().InsertItem(pixmap,id);
 		}
+		[SmokeMethod("insertItem(const QPixmap&)")]
 		public int InsertItem(QPixmap pixmap) {
 			return ProxyQPopupMenu().InsertItem(pixmap);
 		}
+		[SmokeMethod("insertItem(const QIconSet&, const QPixmap&, int, int)")]
 		public int InsertItem(QIconSet icon, QPixmap pixmap, int id, int index) {
 			return ProxyQPopupMenu().InsertItem(icon,pixmap,id,index);
 		}
+		[SmokeMethod("insertItem(const QIconSet&, const QPixmap&, int)")]
 		public int InsertItem(QIconSet icon, QPixmap pixmap, int id) {
 			return ProxyQPopupMenu().InsertItem(icon,pixmap,id);
 		}
+		[SmokeMethod("insertItem(const QIconSet&, const QPixmap&)")]
 		public int InsertItem(QIconSet icon, QPixmap pixmap) {
 			return ProxyQPopupMenu().InsertItem(icon,pixmap);
 		}
+		[SmokeMethod("insertItem(const QPixmap&, QPopupMenu*, int, int)")]
 		public int InsertItem(QPixmap pixmap, QPopupMenu popup, int id, int index) {
 			return ProxyQPopupMenu().InsertItem(pixmap,popup,id,index);
 		}
+		[SmokeMethod("insertItem(const QPixmap&, QPopupMenu*, int)")]
 		public int InsertItem(QPixmap pixmap, QPopupMenu popup, int id) {
 			return ProxyQPopupMenu().InsertItem(pixmap,popup,id);
 		}
+		[SmokeMethod("insertItem(const QPixmap&, QPopupMenu*)")]
 		public int InsertItem(QPixmap pixmap, QPopupMenu popup) {
 			return ProxyQPopupMenu().InsertItem(pixmap,popup);
 		}
+		[SmokeMethod("insertItem(const QIconSet&, const QPixmap&, QPopupMenu*, int, int)")]
 		public int InsertItem(QIconSet icon, QPixmap pixmap, QPopupMenu popup, int id, int index) {
 			return ProxyQPopupMenu().InsertItem(icon,pixmap,popup,id,index);
 		}
+		[SmokeMethod("insertItem(const QIconSet&, const QPixmap&, QPopupMenu*, int)")]
 		public int InsertItem(QIconSet icon, QPixmap pixmap, QPopupMenu popup, int id) {
 			return ProxyQPopupMenu().InsertItem(icon,pixmap,popup,id);
 		}
+		[SmokeMethod("insertItem(const QIconSet&, const QPixmap&, QPopupMenu*)")]
 		public int InsertItem(QIconSet icon, QPixmap pixmap, QPopupMenu popup) {
 			return ProxyQPopupMenu().InsertItem(icon,pixmap,popup);
 		}
+		[SmokeMethod("insertItem(QWidget*, int, int)")]
 		public int InsertItem(QWidget widget, int id, int index) {
 			return ProxyQPopupMenu().InsertItem(widget,id,index);
 		}
+		[SmokeMethod("insertItem(QWidget*, int)")]
 		public int InsertItem(QWidget widget, int id) {
 			return ProxyQPopupMenu().InsertItem(widget,id);
 		}
+		[SmokeMethod("insertItem(QWidget*)")]
 		public int InsertItem(QWidget widget) {
 			return ProxyQPopupMenu().InsertItem(widget);
 		}
+		[SmokeMethod("insertItem(const QIconSet&, QCustomMenuItem*, int, int)")]
 		public int InsertItem(QIconSet icon, QCustomMenuItem custom, int id, int index) {
 			return ProxyQPopupMenu().InsertItem(icon,custom,id,index);
 		}
+		[SmokeMethod("insertItem(const QIconSet&, QCustomMenuItem*, int)")]
 		public int InsertItem(QIconSet icon, QCustomMenuItem custom, int id) {
 			return ProxyQPopupMenu().InsertItem(icon,custom,id);
 		}
+		[SmokeMethod("insertItem(const QIconSet&, QCustomMenuItem*)")]
 		public int InsertItem(QIconSet icon, QCustomMenuItem custom) {
 			return ProxyQPopupMenu().InsertItem(icon,custom);
 		}
+		[SmokeMethod("insertItem(QCustomMenuItem*, int, int)")]
 		public int InsertItem(QCustomMenuItem custom, int id, int index) {
 			return ProxyQPopupMenu().InsertItem(custom,id,index);
 		}
+		[SmokeMethod("insertItem(QCustomMenuItem*, int)")]
 		public int InsertItem(QCustomMenuItem custom, int id) {
 			return ProxyQPopupMenu().InsertItem(custom,id);
 		}
+		[SmokeMethod("insertItem(QCustomMenuItem*)")]
 		public int InsertItem(QCustomMenuItem custom) {
 			return ProxyQPopupMenu().InsertItem(custom);
 		}
+		[SmokeMethod("insertSeparator(int)")]
 		public int InsertSeparator(int index) {
 			return ProxyQPopupMenu().InsertSeparator(index);
 		}
+		[SmokeMethod("insertSeparator()")]
 		public int InsertSeparator() {
 			return ProxyQPopupMenu().InsertSeparator();
 		}
+		[SmokeMethod("removeItem(int)")]
 		public void RemoveItem(int id) {
 			ProxyQPopupMenu().RemoveItem(id);
 		}
+		[SmokeMethod("removeItemAt(int)")]
 		public void RemoveItemAt(int index) {
 			ProxyQPopupMenu().RemoveItemAt(index);
 		}
+		[SmokeMethod("clear()")]
 		public void Clear() {
 			ProxyQPopupMenu().Clear();
 		}
+		[SmokeMethod("accel(int) const")]
 		public QKeySequence Accel(int id) {
 			return ProxyQPopupMenu().Accel(id);
 		}
+		[SmokeMethod("setAccel(const QKeySequence&, int)")]
 		public void SetAccel(QKeySequence key, int id) {
 			ProxyQPopupMenu().SetAccel(key,id);
 		}
+		[SmokeMethod("iconSet(int) const")]
 		public QIconSet IconSet(int id) {
 			return ProxyQPopupMenu().IconSet(id);
 		}
+		[SmokeMethod("text(int) const")]
 		public string Text(int id) {
 			return ProxyQPopupMenu().Text(id);
 		}
+		[SmokeMethod("pixmap(int) const")]
 		public QPixmap Pixmap(int id) {
 			return ProxyQPopupMenu().Pixmap(id);
 		}
+		[SmokeMethod("setWhatsThis(int, const QString&)")]
 		public void SetWhatsThis(int id, string arg2) {
 			ProxyQPopupMenu().SetWhatsThis(id,arg2);
 		}
+		[SmokeMethod("whatsThis(int) const")]
 		public string WhatsThis(int id) {
 			return ProxyQPopupMenu().WhatsThis(id);
 		}
+		[SmokeMethod("changeItem(int, const QString&)")]
 		public void ChangeItem(int id, string text) {
 			ProxyQPopupMenu().ChangeItem(id,text);
 		}
+		[SmokeMethod("changeItem(int, const QPixmap&)")]
 		public void ChangeItem(int id, QPixmap pixmap) {
 			ProxyQPopupMenu().ChangeItem(id,pixmap);
 		}
+		[SmokeMethod("changeItem(int, const QIconSet&, const QString&)")]
 		public void ChangeItem(int id, QIconSet icon, string text) {
 			ProxyQPopupMenu().ChangeItem(id,icon,text);
 		}
+		[SmokeMethod("changeItem(int, const QIconSet&, const QPixmap&)")]
 		public void ChangeItem(int id, QIconSet icon, QPixmap pixmap) {
 			ProxyQPopupMenu().ChangeItem(id,icon,pixmap);
 		}
+		[SmokeMethod("changeItem(const QString&, int)")]
 		public void ChangeItem(string text, int id) {
 			ProxyQPopupMenu().ChangeItem(text,id);
 		}
+		[SmokeMethod("changeItem(const QPixmap&, int)")]
 		public void ChangeItem(QPixmap pixmap, int id) {
 			ProxyQPopupMenu().ChangeItem(pixmap,id);
 		}
+		[SmokeMethod("changeItem(const QIconSet&, const QString&, int)")]
 		public void ChangeItem(QIconSet icon, string text, int id) {
 			ProxyQPopupMenu().ChangeItem(icon,text,id);
 		}
+		[SmokeMethod("isItemActive(int) const")]
 		public bool IsItemActive(int id) {
 			return ProxyQPopupMenu().IsItemActive(id);
 		}
+		[SmokeMethod("isItemEnabled(int) const")]
 		public bool IsItemEnabled(int id) {
 			return ProxyQPopupMenu().IsItemEnabled(id);
 		}
+		[SmokeMethod("setItemEnabled(int, bool)")]
 		public void SetItemEnabled(int id, bool enable) {
 			ProxyQPopupMenu().SetItemEnabled(id,enable);
 		}
+		[SmokeMethod("isItemChecked(int) const")]
 		public bool IsItemChecked(int id) {
 			return ProxyQPopupMenu().IsItemChecked(id);
 		}
+		[SmokeMethod("setItemChecked(int, bool)")]
 		public void SetItemChecked(int id, bool check) {
 			ProxyQPopupMenu().SetItemChecked(id,check);
 		}
+		[SmokeMethod("isItemVisible(int) const")]
 		public bool IsItemVisible(int id) {
 			return ProxyQPopupMenu().IsItemVisible(id);
 		}
+		[SmokeMethod("setItemVisible(int, bool)")]
 		public void SetItemVisible(int id, bool visible) {
 			ProxyQPopupMenu().SetItemVisible(id,visible);
 		}
+		[SmokeMethod("indexOf(int) const")]
 		public int IndexOf(int id) {
 			return ProxyQPopupMenu().IndexOf(id);
 		}
+		[SmokeMethod("setId(int, int)")]
 		public virtual void SetId(int index, int id) {
 			ProxyQPopupMenu().SetId(index,id);
 		}
+		[SmokeMethod("connectItem(int, const QObject*, const char*)")]
 		public bool ConnectItem(int id, QObject receiver, string member) {
 			return ProxyQPopupMenu().ConnectItem(id,receiver,member);
 		}
+		[SmokeMethod("disconnectItem(int, const QObject*, const char*)")]
 		public bool DisconnectItem(int id, QObject receiver, string member) {
 			return ProxyQPopupMenu().DisconnectItem(id,receiver,member);
 		}
+		[SmokeMethod("setItemParameter(int, int)")]
 		public bool SetItemParameter(int id, int param) {
 			return ProxyQPopupMenu().SetItemParameter(id,param);
 		}
+		[SmokeMethod("itemParameter(int) const")]
 		public int ItemParameter(int id) {
 			return ProxyQPopupMenu().ItemParameter(id);
 		}
+		[SmokeMethod("findItem(int) const")]
 		public QMenuItem FindItem(int id) {
 			return ProxyQPopupMenu().FindItem(id);
 		}
 		// QMenuItem* findItem(int arg1,QMenuData** arg2); >>>> NOT CONVERTED
+		[SmokeMethod("findPopup(QPopupMenu*, int*)")]
 		public QMenuItem FindPopup(QPopupMenu arg1, out int index) {
 			return ProxyQPopupMenu().FindPopup(arg1,out index);
 		}
+		[SmokeMethod("findPopup(QPopupMenu*)")]
 		public QMenuItem FindPopup(QPopupMenu arg1) {
 			return ProxyQPopupMenu().FindPopup(arg1);
 		}
+		[SmokeMethod("menuContentsChanged()")]
 		protected virtual void MenuContentsChanged() {
 			ProxyQPopupMenu().MenuContentsChanged();
 		}
+		[SmokeMethod("menuStateChanged()")]
 		protected virtual void MenuStateChanged() {
 			ProxyQPopupMenu().MenuStateChanged();
 		}
+		[SmokeMethod("menuInsPopup(QPopupMenu*)")]
 		protected virtual void MenuInsPopup(QPopupMenu arg1) {
 			ProxyQPopupMenu().MenuInsPopup(arg1);
 		}
+		[SmokeMethod("menuDelPopup(QPopupMenu*)")]
 		protected virtual void MenuDelPopup(QPopupMenu arg1) {
 			ProxyQPopupMenu().MenuDelPopup(arg1);
 		}
+		protected void CreateQPopupMenuSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQPopupMenuSignals), this);
+			_signalInterceptor = (IQPopupMenuSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQPopupMenuSignals Emit() {
+			return (IQPopupMenuSignals) _signalInterceptor;
+		}
 	}
 
-	public interface IQPopupMenuSignals {
+	public interface IQPopupMenuSignals : IQFrameSignals {
+		[Q_SIGNAL("activated(int)")]
 		void Activated(int itemId);
+		[Q_SIGNAL("highlighted(int)")]
 		void Highlighted(int itemId);
+		[Q_SIGNAL("activatedRedirect(int)")]
 		void ActivatedRedirect(int itemId);
+		[Q_SIGNAL("highlightedRedirect(int)")]
 		void HighlightedRedirect(int itemId);
+		[Q_SIGNAL("aboutToShow()")]
 		void AboutToShow();
+		[Q_SIGNAL("aboutToHide()")]
 		void AboutToHide();
 	}
 }

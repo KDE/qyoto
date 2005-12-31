@@ -39,6 +39,7 @@ namespace Qt {
 			CreateQSqlErrorProxy();
 			NewQSqlError(driverText,databaseText,type,number);
 		}
+		[SmokeMethod("QSqlError(const QString&, const QString&, int, int)")]
 		private void NewQSqlError(string driverText, string databaseText, int type, int number) {
 			ProxyQSqlError().NewQSqlError(driverText,databaseText,type,number);
 		}
@@ -46,6 +47,7 @@ namespace Qt {
 			CreateQSqlErrorProxy();
 			NewQSqlError(driverText,databaseText,type);
 		}
+		[SmokeMethod("QSqlError(const QString&, const QString&, int)")]
 		private void NewQSqlError(string driverText, string databaseText, int type) {
 			ProxyQSqlError().NewQSqlError(driverText,databaseText,type);
 		}
@@ -53,6 +55,7 @@ namespace Qt {
 			CreateQSqlErrorProxy();
 			NewQSqlError(driverText,databaseText);
 		}
+		[SmokeMethod("QSqlError(const QString&, const QString&)")]
 		private void NewQSqlError(string driverText, string databaseText) {
 			ProxyQSqlError().NewQSqlError(driverText,databaseText);
 		}
@@ -60,6 +63,7 @@ namespace Qt {
 			CreateQSqlErrorProxy();
 			NewQSqlError(driverText);
 		}
+		[SmokeMethod("QSqlError(const QString&)")]
 		private void NewQSqlError(string driverText) {
 			ProxyQSqlError().NewQSqlError(driverText);
 		}
@@ -67,6 +71,7 @@ namespace Qt {
 			CreateQSqlErrorProxy();
 			NewQSqlError();
 		}
+		[SmokeMethod("QSqlError()")]
 		private void NewQSqlError() {
 			ProxyQSqlError().NewQSqlError();
 		}
@@ -74,47 +79,58 @@ namespace Qt {
 			CreateQSqlErrorProxy();
 			NewQSqlError(other);
 		}
+		[SmokeMethod("QSqlError(const QSqlError&)")]
 		private void NewQSqlError(QSqlError other) {
 			ProxyQSqlError().NewQSqlError(other);
 		}
+		[SmokeMethod("driverText() const")]
 		public string DriverText() {
 			return ProxyQSqlError().DriverText();
 		}
+		[SmokeMethod("setDriverText(const QString&)")]
 		public virtual void SetDriverText(string driverText) {
 			ProxyQSqlError().SetDriverText(driverText);
 		}
+		[SmokeMethod("databaseText() const")]
 		public string DatabaseText() {
 			return ProxyQSqlError().DatabaseText();
 		}
+		[SmokeMethod("setDatabaseText(const QString&)")]
 		public virtual void SetDatabaseText(string databaseText) {
 			ProxyQSqlError().SetDatabaseText(databaseText);
 		}
-		public int Type() {
-			return ProxyQSqlError().Type();
-		}
+		[SmokeMethod("setType(int)")]
 		public virtual void SetType(int type) {
 			ProxyQSqlError().SetType(type);
 		}
+		[SmokeMethod("number() const")]
 		public int Number() {
 			return ProxyQSqlError().Number();
 		}
+		[SmokeMethod("setNumber(int)")]
 		public virtual void SetNumber(int number) {
 			ProxyQSqlError().SetNumber(number);
 		}
+		[SmokeMethod("text() const")]
 		public string Text() {
 			return ProxyQSqlError().Text();
 		}
+		[SmokeMethod("showMessage(const QString&) const")]
 		public void ShowMessage(string msg) {
 			ProxyQSqlError().ShowMessage(msg);
 		}
+		[SmokeMethod("showMessage() const")]
 		public void ShowMessage() {
 			ProxyQSqlError().ShowMessage();
 		}
 		~QSqlError() {
-			ProxyQSqlError().Dispose();
+			DisposeQSqlError();
 		}
 		public void Dispose() {
-			ProxyQSqlError().Dispose();
+			DisposeQSqlError();
+		}
+		private void DisposeQSqlError() {
+			ProxyQSqlError().DisposeQSqlError();
 		}
 	}
 }

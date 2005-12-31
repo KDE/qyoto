@@ -27,6 +27,7 @@ namespace Qt {
 			return (IQNetworkProtocolFactoryBaseProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("createObject()")]
 		public virtual QNetworkProtocol CreateObject() {
 			return ProxyQNetworkProtocolFactoryBase().CreateObject();
 		}

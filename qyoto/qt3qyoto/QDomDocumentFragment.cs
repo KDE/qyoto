@@ -28,6 +28,7 @@ namespace Qt {
 			CreateQDomDocumentFragmentProxy();
 			NewQDomDocumentFragment();
 		}
+		[SmokeMethod("QDomDocumentFragment()")]
 		private void NewQDomDocumentFragment() {
 			ProxyQDomDocumentFragment().NewQDomDocumentFragment();
 		}
@@ -35,20 +36,26 @@ namespace Qt {
 			CreateQDomDocumentFragmentProxy();
 			NewQDomDocumentFragment(x);
 		}
+		[SmokeMethod("QDomDocumentFragment(const QDomDocumentFragment&)")]
 		private void NewQDomDocumentFragment(QDomDocumentFragment x) {
 			ProxyQDomDocumentFragment().NewQDomDocumentFragment(x);
 		}
+		[SmokeMethod("nodeType() const")]
 		public new int NodeType() {
 			return ProxyQDomDocumentFragment().NodeType();
 		}
+		[SmokeMethod("isDocumentFragment() const")]
 		public new bool IsDocumentFragment() {
 			return ProxyQDomDocumentFragment().IsDocumentFragment();
 		}
 		~QDomDocumentFragment() {
-			ProxyQDomDocumentFragment().Dispose();
+			DisposeQDomDocumentFragment();
 		}
 		public new void Dispose() {
-			ProxyQDomDocumentFragment().Dispose();
+			DisposeQDomDocumentFragment();
+		}
+		private void DisposeQDomDocumentFragment() {
+			ProxyQDomDocumentFragment().DisposeQDomDocumentFragment();
 		}
 	}
 }

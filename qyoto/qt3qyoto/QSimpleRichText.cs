@@ -32,6 +32,7 @@ namespace Qt {
 			CreateQSimpleRichTextProxy();
 			NewQSimpleRichText(text,fnt,context,sheet);
 		}
+		[SmokeMethod("QSimpleRichText(const QString&, const QFont&, const QString&, const QStyleSheet*)")]
 		private void NewQSimpleRichText(string text, QFont fnt, string context, QStyleSheet sheet) {
 			ProxyQSimpleRichText().NewQSimpleRichText(text,fnt,context,sheet);
 		}
@@ -39,6 +40,7 @@ namespace Qt {
 			CreateQSimpleRichTextProxy();
 			NewQSimpleRichText(text,fnt,context);
 		}
+		[SmokeMethod("QSimpleRichText(const QString&, const QFont&, const QString&)")]
 		private void NewQSimpleRichText(string text, QFont fnt, string context) {
 			ProxyQSimpleRichText().NewQSimpleRichText(text,fnt,context);
 		}
@@ -46,6 +48,7 @@ namespace Qt {
 			CreateQSimpleRichTextProxy();
 			NewQSimpleRichText(text,fnt);
 		}
+		[SmokeMethod("QSimpleRichText(const QString&, const QFont&)")]
 		private void NewQSimpleRichText(string text, QFont fnt) {
 			ProxyQSimpleRichText().NewQSimpleRichText(text,fnt);
 		}
@@ -53,6 +56,7 @@ namespace Qt {
 			CreateQSimpleRichTextProxy();
 			NewQSimpleRichText(text,fnt,context,sheet,factory,pageBreak,linkColor,linkUnderline);
 		}
+		[SmokeMethod("QSimpleRichText(const QString&, const QFont&, const QString&, const QStyleSheet*, const QMimeSourceFactory*, int, const QColor&, bool)")]
 		private void NewQSimpleRichText(string text, QFont fnt, string context, QStyleSheet sheet, QMimeSourceFactory factory, int pageBreak, QColor linkColor, bool linkUnderline) {
 			ProxyQSimpleRichText().NewQSimpleRichText(text,fnt,context,sheet,factory,pageBreak,linkColor,linkUnderline);
 		}
@@ -60,6 +64,7 @@ namespace Qt {
 			CreateQSimpleRichTextProxy();
 			NewQSimpleRichText(text,fnt,context,sheet,factory,pageBreak,linkColor);
 		}
+		[SmokeMethod("QSimpleRichText(const QString&, const QFont&, const QString&, const QStyleSheet*, const QMimeSourceFactory*, int, const QColor&)")]
 		private void NewQSimpleRichText(string text, QFont fnt, string context, QStyleSheet sheet, QMimeSourceFactory factory, int pageBreak, QColor linkColor) {
 			ProxyQSimpleRichText().NewQSimpleRichText(text,fnt,context,sheet,factory,pageBreak,linkColor);
 		}
@@ -67,6 +72,7 @@ namespace Qt {
 			CreateQSimpleRichTextProxy();
 			NewQSimpleRichText(text,fnt,context,sheet,factory,pageBreak);
 		}
+		[SmokeMethod("QSimpleRichText(const QString&, const QFont&, const QString&, const QStyleSheet*, const QMimeSourceFactory*, int)")]
 		private void NewQSimpleRichText(string text, QFont fnt, string context, QStyleSheet sheet, QMimeSourceFactory factory, int pageBreak) {
 			ProxyQSimpleRichText().NewQSimpleRichText(text,fnt,context,sheet,factory,pageBreak);
 		}
@@ -74,56 +80,74 @@ namespace Qt {
 			CreateQSimpleRichTextProxy();
 			NewQSimpleRichText(text,fnt,context,sheet,factory);
 		}
+		[SmokeMethod("QSimpleRichText(const QString&, const QFont&, const QString&, const QStyleSheet*, const QMimeSourceFactory*)")]
 		private void NewQSimpleRichText(string text, QFont fnt, string context, QStyleSheet sheet, QMimeSourceFactory factory) {
 			ProxyQSimpleRichText().NewQSimpleRichText(text,fnt,context,sheet,factory);
 		}
+		[SmokeMethod("setWidth(int)")]
 		public void SetWidth(int arg1) {
 			ProxyQSimpleRichText().SetWidth(arg1);
 		}
+		[SmokeMethod("setWidth(QPainter*, int)")]
 		public void SetWidth(QPainter arg1, int arg2) {
 			ProxyQSimpleRichText().SetWidth(arg1,arg2);
 		}
+		[SmokeMethod("setDefaultFont(const QFont&)")]
 		public void SetDefaultFont(QFont f) {
 			ProxyQSimpleRichText().SetDefaultFont(f);
 		}
+		[SmokeMethod("width() const")]
 		public int Width() {
 			return ProxyQSimpleRichText().Width();
 		}
+		[SmokeMethod("widthUsed() const")]
 		public int WidthUsed() {
 			return ProxyQSimpleRichText().WidthUsed();
 		}
+		[SmokeMethod("height() const")]
 		public int Height() {
 			return ProxyQSimpleRichText().Height();
 		}
+		[SmokeMethod("adjustSize()")]
 		public void AdjustSize() {
 			ProxyQSimpleRichText().AdjustSize();
 		}
+		[SmokeMethod("draw(QPainter*, int, int, const QRect&, const QColorGroup&, const QBrush*) const")]
 		public void Draw(QPainter p, int x, int y, QRect clipRect, QColorGroup cg, QBrush paper) {
 			ProxyQSimpleRichText().Draw(p,x,y,clipRect,cg,paper);
 		}
+		[SmokeMethod("draw(QPainter*, int, int, const QRect&, const QColorGroup&) const")]
 		public void Draw(QPainter p, int x, int y, QRect clipRect, QColorGroup cg) {
 			ProxyQSimpleRichText().Draw(p,x,y,clipRect,cg);
 		}
+		[SmokeMethod("draw(QPainter*, int, int, const QRegion&, const QColorGroup&, const QBrush*) const")]
 		public void Draw(QPainter p, int x, int y, QRegion clipRegion, QColorGroup cg, QBrush paper) {
 			ProxyQSimpleRichText().Draw(p,x,y,clipRegion,cg,paper);
 		}
+		[SmokeMethod("draw(QPainter*, int, int, const QRegion&, const QColorGroup&) const")]
 		public void Draw(QPainter p, int x, int y, QRegion clipRegion, QColorGroup cg) {
 			ProxyQSimpleRichText().Draw(p,x,y,clipRegion,cg);
 		}
+		[SmokeMethod("context() const")]
 		public string Context() {
 			return ProxyQSimpleRichText().Context();
 		}
+		[SmokeMethod("anchorAt(const QPoint&) const")]
 		public string AnchorAt(QPoint pos) {
 			return ProxyQSimpleRichText().AnchorAt(pos);
 		}
+		[SmokeMethod("inText(const QPoint&) const")]
 		public bool InText(QPoint pos) {
 			return ProxyQSimpleRichText().InText(pos);
 		}
 		~QSimpleRichText() {
-			ProxyQSimpleRichText().Dispose();
+			DisposeQSimpleRichText();
 		}
 		public void Dispose() {
-			ProxyQSimpleRichText().Dispose();
+			DisposeQSimpleRichText();
+		}
+		private void DisposeQSimpleRichText() {
+			ProxyQSimpleRichText().DisposeQSimpleRichText();
 		}
 	}
 }

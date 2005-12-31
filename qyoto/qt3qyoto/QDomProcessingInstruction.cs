@@ -29,6 +29,7 @@ namespace Qt {
 			CreateQDomProcessingInstructionProxy();
 			NewQDomProcessingInstruction();
 		}
+		[SmokeMethod("QDomProcessingInstruction()")]
 		private void NewQDomProcessingInstruction() {
 			ProxyQDomProcessingInstruction().NewQDomProcessingInstruction();
 		}
@@ -36,29 +37,38 @@ namespace Qt {
 			CreateQDomProcessingInstructionProxy();
 			NewQDomProcessingInstruction(x);
 		}
+		[SmokeMethod("QDomProcessingInstruction(const QDomProcessingInstruction&)")]
 		private void NewQDomProcessingInstruction(QDomProcessingInstruction x) {
 			ProxyQDomProcessingInstruction().NewQDomProcessingInstruction(x);
 		}
+		[SmokeMethod("target() const")]
 		public virtual string Target() {
 			return ProxyQDomProcessingInstruction().Target();
 		}
+		[SmokeMethod("data() const")]
 		public virtual string Data() {
 			return ProxyQDomProcessingInstruction().Data();
 		}
+		[SmokeMethod("setData(const QString&)")]
 		public virtual void SetData(string d) {
 			ProxyQDomProcessingInstruction().SetData(d);
 		}
+		[SmokeMethod("nodeType() const")]
 		public new int NodeType() {
 			return ProxyQDomProcessingInstruction().NodeType();
 		}
+		[SmokeMethod("isProcessingInstruction() const")]
 		public new bool IsProcessingInstruction() {
 			return ProxyQDomProcessingInstruction().IsProcessingInstruction();
 		}
 		~QDomProcessingInstruction() {
-			ProxyQDomProcessingInstruction().Dispose();
+			DisposeQDomProcessingInstruction();
 		}
 		public new void Dispose() {
-			ProxyQDomProcessingInstruction().Dispose();
+			DisposeQDomProcessingInstruction();
+		}
+		private void DisposeQDomProcessingInstruction() {
+			ProxyQDomProcessingInstruction().DisposeQDomProcessingInstruction();
 		}
 	}
 }

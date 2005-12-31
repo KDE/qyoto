@@ -50,6 +50,7 @@ namespace Qt {
 			CreateQUuidProxy();
 			NewQUuid();
 		}
+		[SmokeMethod("QUuid()")]
 		private void NewQUuid() {
 			ProxyQUuid().NewQUuid();
 		}
@@ -57,6 +58,7 @@ namespace Qt {
 			CreateQUuidProxy();
 			NewQUuid(l,w1,w2,b1,b2,b3,b4,b5,b6,b7,b8);
 		}
+		[SmokeMethod("QUuid(uint, ushort, ushort, uchar, uchar, uchar, uchar, uchar, uchar, uchar, uchar)")]
 		private void NewQUuid(uint l, ushort w1, ushort w2, ushort b1, ushort b2, ushort b3, ushort b4, ushort b5, ushort b6, ushort b7, ushort b8) {
 			ProxyQUuid().NewQUuid(l,w1,w2,b1,b2,b3,b4,b5,b6,b7,b8);
 		}
@@ -64,6 +66,7 @@ namespace Qt {
 			CreateQUuidProxy();
 			NewQUuid(uuid);
 		}
+		[SmokeMethod("QUuid(const QUuid&)")]
 		private void NewQUuid(QUuid uuid) {
 			ProxyQUuid().NewQUuid(uuid);
 		}
@@ -71,16 +74,20 @@ namespace Qt {
 			CreateQUuidProxy();
 			NewQUuid(arg1);
 		}
+		[SmokeMethod("QUuid(const QString&)")]
 		private void NewQUuid(string arg1) {
 			ProxyQUuid().NewQUuid(arg1);
 		}
+		[SmokeMethod("toString() const")]
 		public new string ToString() {
 			return ProxyQUuid().ToString();
 		}
 		//  operator QString(); >>>> NOT CONVERTED
+		[SmokeMethod("isNull() const")]
 		public bool IsNull() {
 			return ProxyQUuid().IsNull();
 		}
+		[SmokeMethod("operator==(const QUuid&) const")]
 		public static bool operator==(QUuid lhs, QUuid orig) {
 			return StaticQUuid().op_equals(lhs,orig);
 		}
@@ -94,26 +101,34 @@ namespace Qt {
 		public override int GetHashCode() {
 			return ProxyQUuid().GetHashCode();
 		}
+		[SmokeMethod("operator<(const QUuid&) const")]
 		public static bool operator<(QUuid lhs, QUuid other) {
 			return StaticQUuid().op_lt(lhs,other);
 		}
+		[SmokeMethod("operator>(const QUuid&) const")]
 		public static bool operator>(QUuid lhs, QUuid other) {
 			return StaticQUuid().op_gt(lhs,other);
 		}
+		[SmokeMethod("variant() const")]
 		public int Variant() {
 			return ProxyQUuid().Variant();
 		}
+		[SmokeMethod("version() const")]
 		public int Version() {
 			return ProxyQUuid().Version();
 		}
+		[SmokeMethod("createUuid()")]
 		public static QUuid CreateUuid() {
 			return StaticQUuid().CreateUuid();
 		}
 		~QUuid() {
-			ProxyQUuid().Dispose();
+			DisposeQUuid();
 		}
 		public void Dispose() {
-			ProxyQUuid().Dispose();
+			DisposeQUuid();
+		}
+		private void DisposeQUuid() {
+			ProxyQUuid().DisposeQUuid();
 		}
 	}
 }

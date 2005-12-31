@@ -50,6 +50,7 @@ namespace Qt {
 			CreateQSocketDeviceProxy();
 			NewQSocketDevice(type);
 		}
+		[SmokeMethod("QSocketDevice(QSocketDevice::Type)")]
 		private void NewQSocketDevice(int type) {
 			ProxyQSocketDevice().NewQSocketDevice(type);
 		}
@@ -57,6 +58,7 @@ namespace Qt {
 			CreateQSocketDeviceProxy();
 			NewQSocketDevice();
 		}
+		[SmokeMethod("QSocketDevice()")]
 		private void NewQSocketDevice() {
 			ProxyQSocketDevice().NewQSocketDevice();
 		}
@@ -64,6 +66,7 @@ namespace Qt {
 			CreateQSocketDeviceProxy();
 			NewQSocketDevice(type,protocol,dummy);
 		}
+		[SmokeMethod("QSocketDevice(QSocketDevice::Type, QSocketDevice::Protocol, int)")]
 		private void NewQSocketDevice(int type, int protocol, int dummy) {
 			ProxyQSocketDevice().NewQSocketDevice(type,protocol,dummy);
 		}
@@ -71,131 +74,170 @@ namespace Qt {
 			CreateQSocketDeviceProxy();
 			NewQSocketDevice(socket,type);
 		}
+		[SmokeMethod("QSocketDevice(int, QSocketDevice::Type)")]
 		private void NewQSocketDevice(int socket, int type) {
 			ProxyQSocketDevice().NewQSocketDevice(socket,type);
 		}
+		[SmokeMethod("isValid() const")]
 		public bool IsValid() {
 			return ProxyQSocketDevice().IsValid();
 		}
-		public int Type() {
-			return ProxyQSocketDevice().Type();
-		}
+		[SmokeMethod("protocol() const")]
 		public int Protocol() {
 			return ProxyQSocketDevice().Protocol();
 		}
+		[SmokeMethod("socket() const")]
 		public int Socket() {
 			return ProxyQSocketDevice().Socket();
 		}
+		[SmokeMethod("setSocket(int, QSocketDevice::Type)")]
 		public virtual void SetSocket(int socket, int type) {
 			ProxyQSocketDevice().SetSocket(socket,type);
 		}
+		[SmokeMethod("open(int)")]
 		public new bool Open(int mode) {
 			return ProxyQSocketDevice().Open(mode);
 		}
+		[SmokeMethod("close()")]
 		public new void Close() {
 			ProxyQSocketDevice().Close();
 		}
+		[SmokeMethod("flush()")]
 		public new void Flush() {
 			ProxyQSocketDevice().Flush();
 		}
+		[SmokeMethod("size() const")]
 		public new ulong Size() {
 			return ProxyQSocketDevice().Size();
 		}
+		[SmokeMethod("at() const")]
 		public new ulong At() {
 			return ProxyQSocketDevice().At();
 		}
+		[SmokeMethod("at(QIODevice::Offset)")]
 		public new bool At(ulong arg1) {
 			return ProxyQSocketDevice().At(arg1);
 		}
+		[SmokeMethod("atEnd() const")]
 		public new bool AtEnd() {
 			return ProxyQSocketDevice().AtEnd();
 		}
+		[SmokeMethod("blocking() const")]
 		public bool Blocking() {
 			return ProxyQSocketDevice().Blocking();
 		}
+		[SmokeMethod("setBlocking(bool)")]
 		public virtual void SetBlocking(bool arg1) {
 			ProxyQSocketDevice().SetBlocking(arg1);
 		}
+		[SmokeMethod("addressReusable() const")]
 		public bool AddressReusable() {
 			return ProxyQSocketDevice().AddressReusable();
 		}
+		[SmokeMethod("setAddressReusable(bool)")]
 		public virtual void SetAddressReusable(bool arg1) {
 			ProxyQSocketDevice().SetAddressReusable(arg1);
 		}
+		[SmokeMethod("receiveBufferSize() const")]
 		public int ReceiveBufferSize() {
 			return ProxyQSocketDevice().ReceiveBufferSize();
 		}
+		[SmokeMethod("setReceiveBufferSize(uint)")]
 		public virtual void SetReceiveBufferSize(uint arg1) {
 			ProxyQSocketDevice().SetReceiveBufferSize(arg1);
 		}
+		[SmokeMethod("sendBufferSize() const")]
 		public int SendBufferSize() {
 			return ProxyQSocketDevice().SendBufferSize();
 		}
+		[SmokeMethod("setSendBufferSize(uint)")]
 		public virtual void SetSendBufferSize(uint arg1) {
 			ProxyQSocketDevice().SetSendBufferSize(arg1);
 		}
+		[SmokeMethod("connect(const QHostAddress&, Q_UINT16)")]
 		public virtual bool Connect(QHostAddress arg1, ushort arg2) {
 			return ProxyQSocketDevice().Connect(arg1,arg2);
 		}
+		[SmokeMethod("bind(const QHostAddress&, Q_UINT16)")]
 		public virtual bool Bind(QHostAddress arg1, ushort arg2) {
 			return ProxyQSocketDevice().Bind(arg1,arg2);
 		}
+		[SmokeMethod("listen(int)")]
 		public virtual bool Listen(int backlog) {
 			return ProxyQSocketDevice().Listen(backlog);
 		}
+		[SmokeMethod("accept()")]
 		public virtual int Accept() {
 			return ProxyQSocketDevice().Accept();
 		}
+		[SmokeMethod("bytesAvailable() const")]
 		public long BytesAvailable() {
 			return ProxyQSocketDevice().BytesAvailable();
 		}
+		[SmokeMethod("waitForMore(int, bool*) const")]
 		public long WaitForMore(int msecs, out bool timeout) {
 			return ProxyQSocketDevice().WaitForMore(msecs,out timeout);
 		}
+		[SmokeMethod("waitForMore(int) const")]
 		public long WaitForMore(int msecs) {
 			return ProxyQSocketDevice().WaitForMore(msecs);
 		}
+		[SmokeMethod("readBlock(char*, Q_ULONG)")]
 		public new long ReadBlock(string data, long maxlen) {
 			return ProxyQSocketDevice().ReadBlock(data,maxlen);
 		}
+		[SmokeMethod("writeBlock(const char*, Q_ULONG)")]
 		public new long WriteBlock(string data, long len) {
 			return ProxyQSocketDevice().WriteBlock(data,len);
 		}
+		[SmokeMethod("writeBlock(const char*, Q_ULONG, const QHostAddress&, Q_UINT16)")]
 		public new virtual long WriteBlock(string data, long len, QHostAddress host, ushort port) {
 			return ProxyQSocketDevice().WriteBlock(data,len,host,port);
 		}
+		[SmokeMethod("getch()")]
 		public new int Getch() {
 			return ProxyQSocketDevice().Getch();
 		}
+		[SmokeMethod("putch(int)")]
 		public new int Putch(int arg1) {
 			return ProxyQSocketDevice().Putch(arg1);
 		}
+		[SmokeMethod("ungetch(int)")]
 		public new int Ungetch(int arg1) {
 			return ProxyQSocketDevice().Ungetch(arg1);
 		}
+		[SmokeMethod("port() const")]
 		public ushort Port() {
 			return ProxyQSocketDevice().Port();
 		}
+		[SmokeMethod("peerPort() const")]
 		public ushort PeerPort() {
 			return ProxyQSocketDevice().PeerPort();
 		}
+		[SmokeMethod("address() const")]
 		public QHostAddress Address() {
 			return ProxyQSocketDevice().Address();
 		}
+		[SmokeMethod("peerAddress() const")]
 		public QHostAddress PeerAddress() {
 			return ProxyQSocketDevice().PeerAddress();
 		}
+		[SmokeMethod("error() const")]
 		public int Error() {
 			return ProxyQSocketDevice().Error();
 		}
+		[SmokeMethod("setError(QSocketDevice::Error)")]
 		protected void SetError(int err) {
 			ProxyQSocketDevice().SetError(err);
 		}
 		~QSocketDevice() {
-			ProxyQSocketDevice().Dispose();
+			DisposeQSocketDevice();
 		}
 		public void Dispose() {
-			ProxyQSocketDevice().Dispose();
+			DisposeQSocketDevice();
+		}
+		private void DisposeQSocketDevice() {
+			ProxyQSocketDevice().DisposeQSocketDevice();
 		}
 	}
 }

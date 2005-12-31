@@ -34,20 +34,26 @@ namespace Qt {
 			CreateQTextCodecFactoryProxy();
 			NewQTextCodecFactory();
 		}
+		[SmokeMethod("QTextCodecFactory()")]
 		private void NewQTextCodecFactory() {
 			ProxyQTextCodecFactory().NewQTextCodecFactory();
 		}
+		[SmokeMethod("createForName(const QString&)")]
 		public static QTextCodec CreateForName(string arg1) {
 			return StaticQTextCodecFactory().CreateForName(arg1);
 		}
+		[SmokeMethod("createForMib(int)")]
 		public static QTextCodec CreateForMib(int arg1) {
 			return StaticQTextCodecFactory().CreateForMib(arg1);
 		}
 		~QTextCodecFactory() {
-			ProxyQTextCodecFactory().Dispose();
+			DisposeQTextCodecFactory();
 		}
 		public void Dispose() {
-			ProxyQTextCodecFactory().Dispose();
+			DisposeQTextCodecFactory();
+		}
+		private void DisposeQTextCodecFactory() {
+			ProxyQTextCodecFactory().DisposeQTextCodecFactory();
 		}
 	}
 }

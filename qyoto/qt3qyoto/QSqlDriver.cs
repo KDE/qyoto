@@ -39,95 +39,135 @@ namespace Qt {
 			NamedPlaceholders = 5,
 			PositionalPlaceholders = 6,
 		}
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQSqlDriver().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQSqlDriver().ClassName();
 		}
+		[SmokeMethod("isOpen() const")]
 		public bool IsOpen() {
 			return ProxyQSqlDriver().IsOpen();
 		}
+		[SmokeMethod("isOpenError() const")]
 		public bool IsOpenError() {
 			return ProxyQSqlDriver().IsOpenError();
 		}
+		[SmokeMethod("beginTransaction()")]
 		public virtual bool BeginTransaction() {
 			return ProxyQSqlDriver().BeginTransaction();
 		}
+		[SmokeMethod("commitTransaction()")]
 		public virtual bool CommitTransaction() {
 			return ProxyQSqlDriver().CommitTransaction();
 		}
+		[SmokeMethod("rollbackTransaction()")]
 		public virtual bool RollbackTransaction() {
 			return ProxyQSqlDriver().RollbackTransaction();
 		}
+		[SmokeMethod("tables(const QString&) const")]
 		public virtual ArrayList Tables(string tableType) {
 			return ProxyQSqlDriver().Tables(tableType);
 		}
+		[SmokeMethod("primaryIndex(const QString&) const")]
 		public virtual QSqlIndex PrimaryIndex(string tableName) {
 			return ProxyQSqlDriver().PrimaryIndex(tableName);
 		}
+		[SmokeMethod("record(const QString&) const")]
 		public virtual QSqlRecord Record(string tableName) {
 			return ProxyQSqlDriver().Record(tableName);
 		}
+		[SmokeMethod("record(const QSqlQuery&) const")]
 		public virtual QSqlRecord Record(IQSqlQuery query) {
 			return ProxyQSqlDriver().Record(query);
 		}
+		[SmokeMethod("recordInfo(const QString&) const")]
 		public virtual QSqlRecordInfo RecordInfo(string tablename) {
 			return ProxyQSqlDriver().RecordInfo(tablename);
 		}
+		[SmokeMethod("recordInfo(const QSqlQuery&) const")]
 		public virtual QSqlRecordInfo RecordInfo(IQSqlQuery query) {
 			return ProxyQSqlDriver().RecordInfo(query);
 		}
+		[SmokeMethod("nullText() const")]
 		public virtual string NullText() {
 			return ProxyQSqlDriver().NullText();
 		}
+		[SmokeMethod("formatValue(const QSqlField*, bool) const")]
 		public virtual string FormatValue(QSqlField field, bool trimStrings) {
 			return ProxyQSqlDriver().FormatValue(field,trimStrings);
 		}
+		[SmokeMethod("formatValue(const QSqlField*) const")]
 		public virtual string FormatValue(QSqlField field) {
 			return ProxyQSqlDriver().FormatValue(field);
 		}
+		[SmokeMethod("lastError() const")]
 		public QSqlError LastError() {
 			return ProxyQSqlDriver().LastError();
 		}
+		[SmokeMethod("hasFeature(QSqlDriver::DriverFeature) const")]
 		public virtual bool HasFeature(int f) {
 			return ProxyQSqlDriver().HasFeature(f);
 		}
+		[SmokeMethod("open(const QString&, const QString&, const QString&, const QString&, int)")]
 		public virtual bool Open(string db, string user, string password, string host, int port) {
 			return ProxyQSqlDriver().Open(db,user,password,host,port);
 		}
+		[SmokeMethod("open(const QString&, const QString&, const QString&, const QString&)")]
 		public virtual bool Open(string db, string user, string password, string host) {
 			return ProxyQSqlDriver().Open(db,user,password,host);
 		}
+		[SmokeMethod("open(const QString&, const QString&, const QString&)")]
 		public virtual bool Open(string db, string user, string password) {
 			return ProxyQSqlDriver().Open(db,user,password);
 		}
+		[SmokeMethod("open(const QString&, const QString&)")]
 		public virtual bool Open(string db, string user) {
 			return ProxyQSqlDriver().Open(db,user);
 		}
+		[SmokeMethod("open(const QString&)")]
 		public virtual bool Open(string db) {
 			return ProxyQSqlDriver().Open(db);
 		}
+		[SmokeMethod("close()")]
 		public virtual void Close() {
 			ProxyQSqlDriver().Close();
 		}
+		[SmokeMethod("createQuery() const")]
 		public virtual IQSqlQuery CreateQuery() {
 			return ProxyQSqlDriver().CreateQuery();
 		}
+		[SmokeMethod("open(const QString&, const QString&, const QString&, const QString&, int, const QString&)")]
 		public bool Open(string db, string user, string password, string host, int port, string connOpts) {
 			return ProxyQSqlDriver().Open(db,user,password,host,port,connOpts);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQSqlDriver().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQSqlDriver().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQSqlDriver().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQSqlDriver().TrUtf8(arg1);
 		}
+		protected void CreateQSqlDriverSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQSqlDriverSignals), this);
+			_signalInterceptor = (IQSqlDriverSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQSqlDriverSignals Emit() {
+			return (IQSqlDriverSignals) _signalInterceptor;
+		}
+	}
+
+	public interface IQSqlDriverSignals : IQObjectSignals {
 	}
 }

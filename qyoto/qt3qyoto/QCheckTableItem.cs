@@ -29,38 +29,50 @@ namespace Qt {
 			CreateQCheckTableItemProxy();
 			NewQCheckTableItem(table,txt);
 		}
+		[SmokeMethod("QCheckTableItem(QTable*, const QString&)")]
 		private void NewQCheckTableItem(QTable table, string txt) {
 			ProxyQCheckTableItem().NewQCheckTableItem(table,txt);
 		}
+		[SmokeMethod("setText(const QString&)")]
 		public new void SetText(string t) {
 			ProxyQCheckTableItem().SetText(t);
 		}
+		[SmokeMethod("createEditor() const")]
 		public new virtual QWidget CreateEditor() {
 			return ProxyQCheckTableItem().CreateEditor();
 		}
+		[SmokeMethod("setContentFromEditor(QWidget*)")]
 		public new virtual void SetContentFromEditor(QWidget w) {
 			ProxyQCheckTableItem().SetContentFromEditor(w);
 		}
+		[SmokeMethod("paint(QPainter*, const QColorGroup&, const QRect&, bool)")]
 		public new virtual void Paint(QPainter p, QColorGroup cg, QRect cr, bool selected) {
 			ProxyQCheckTableItem().Paint(p,cg,cr,selected);
 		}
+		[SmokeMethod("setChecked(bool)")]
 		public virtual void SetChecked(bool b) {
 			ProxyQCheckTableItem().SetChecked(b);
 		}
+		[SmokeMethod("isChecked() const")]
 		public bool IsChecked() {
 			return ProxyQCheckTableItem().IsChecked();
 		}
+		[SmokeMethod("rtti() const")]
 		public new int Rtti() {
 			return ProxyQCheckTableItem().Rtti();
 		}
+		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {
 			return ProxyQCheckTableItem().SizeHint();
 		}
 		~QCheckTableItem() {
-			ProxyQCheckTableItem().Dispose();
+			DisposeQCheckTableItem();
 		}
 		public new void Dispose() {
-			ProxyQCheckTableItem().Dispose();
+			DisposeQCheckTableItem();
+		}
+		private void DisposeQCheckTableItem() {
+			ProxyQCheckTableItem().DisposeQCheckTableItem();
 		}
 	}
 }

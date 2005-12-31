@@ -25,24 +25,31 @@ namespace Qt {
 			return (IQBig5hkscsCodecProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("mibEnum() const")]
 		public new virtual int MibEnum() {
 			return ProxyQBig5hkscsCodec().MibEnum();
 		}
+		[SmokeMethod("name() const")]
 		public new string Name() {
 			return ProxyQBig5hkscsCodec().Name();
 		}
+		[SmokeMethod("makeDecoder() const")]
 		public new QTextDecoder MakeDecoder() {
 			return ProxyQBig5hkscsCodec().MakeDecoder();
 		}
+		[SmokeMethod("fromUnicode(const QString&, int&) const")]
 		public new string FromUnicode(string uc, out int lenInOut) {
 			return ProxyQBig5hkscsCodec().FromUnicode(uc,out lenInOut);
 		}
+		[SmokeMethod("toUnicode(const char*, int) const")]
 		public new string ToUnicode(string chars, int len) {
 			return ProxyQBig5hkscsCodec().ToUnicode(chars,len);
 		}
+		[SmokeMethod("heuristicContentMatch(const char*, int) const")]
 		public new int HeuristicContentMatch(string chars, int len) {
 			return ProxyQBig5hkscsCodec().HeuristicContentMatch(chars,len);
 		}
+		[SmokeMethod("heuristicNameMatch(const char*) const")]
 		public new int HeuristicNameMatch(string hint) {
 			return ProxyQBig5hkscsCodec().HeuristicNameMatch(hint);
 		}
@@ -50,14 +57,18 @@ namespace Qt {
 			CreateQBig5hkscsCodecProxy();
 			NewQBig5hkscsCodec();
 		}
+		[SmokeMethod("QBig5hkscsCodec()")]
 		private void NewQBig5hkscsCodec() {
 			ProxyQBig5hkscsCodec().NewQBig5hkscsCodec();
 		}
 		~QBig5hkscsCodec() {
-			ProxyQBig5hkscsCodec().Dispose();
+			DisposeQBig5hkscsCodec();
 		}
 		public new void Dispose() {
-			ProxyQBig5hkscsCodec().Dispose();
+			DisposeQBig5hkscsCodec();
+		}
+		private void DisposeQBig5hkscsCodec() {
+			ProxyQBig5hkscsCodec().DisposeQBig5hkscsCodec();
 		}
 	}
 }

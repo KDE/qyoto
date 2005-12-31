@@ -45,138 +45,196 @@ namespace Qt {
 			Filled = 1,
 			Flat = 2,
 		}
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQLCDNumber().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQLCDNumber().ClassName();
 		}
 		public QLCDNumber(QWidget parent, string name) : this((Type) null) {
 			CreateQLCDNumberProxy();
+			CreateQLCDNumberSignalProxy();
 			NewQLCDNumber(parent,name);
 		}
+		[SmokeMethod("QLCDNumber(QWidget*, const char*)")]
 		private void NewQLCDNumber(QWidget parent, string name) {
 			ProxyQLCDNumber().NewQLCDNumber(parent,name);
 		}
 		public QLCDNumber(QWidget parent) : this((Type) null) {
 			CreateQLCDNumberProxy();
+			CreateQLCDNumberSignalProxy();
 			NewQLCDNumber(parent);
 		}
+		[SmokeMethod("QLCDNumber(QWidget*)")]
 		private void NewQLCDNumber(QWidget parent) {
 			ProxyQLCDNumber().NewQLCDNumber(parent);
 		}
 		public QLCDNumber() : this((Type) null) {
 			CreateQLCDNumberProxy();
+			CreateQLCDNumberSignalProxy();
 			NewQLCDNumber();
 		}
+		[SmokeMethod("QLCDNumber()")]
 		private void NewQLCDNumber() {
 			ProxyQLCDNumber().NewQLCDNumber();
 		}
 		public QLCDNumber(uint numDigits, QWidget parent, string name) : this((Type) null) {
 			CreateQLCDNumberProxy();
+			CreateQLCDNumberSignalProxy();
 			NewQLCDNumber(numDigits,parent,name);
 		}
+		[SmokeMethod("QLCDNumber(uint, QWidget*, const char*)")]
 		private void NewQLCDNumber(uint numDigits, QWidget parent, string name) {
 			ProxyQLCDNumber().NewQLCDNumber(numDigits,parent,name);
 		}
 		public QLCDNumber(uint numDigits, QWidget parent) : this((Type) null) {
 			CreateQLCDNumberProxy();
+			CreateQLCDNumberSignalProxy();
 			NewQLCDNumber(numDigits,parent);
 		}
+		[SmokeMethod("QLCDNumber(uint, QWidget*)")]
 		private void NewQLCDNumber(uint numDigits, QWidget parent) {
 			ProxyQLCDNumber().NewQLCDNumber(numDigits,parent);
 		}
 		public QLCDNumber(uint numDigits) : this((Type) null) {
 			CreateQLCDNumberProxy();
+			CreateQLCDNumberSignalProxy();
 			NewQLCDNumber(numDigits);
 		}
+		[SmokeMethod("QLCDNumber(uint)")]
 		private void NewQLCDNumber(uint numDigits) {
 			ProxyQLCDNumber().NewQLCDNumber(numDigits);
 		}
+		[SmokeMethod("smallDecimalPoint() const")]
 		public bool SmallDecimalPoint() {
 			return ProxyQLCDNumber().SmallDecimalPoint();
 		}
+		[SmokeMethod("numDigits() const")]
 		public int NumDigits() {
 			return ProxyQLCDNumber().NumDigits();
 		}
+		[SmokeMethod("setNumDigits(int)")]
 		public virtual void SetNumDigits(int nDigits) {
 			ProxyQLCDNumber().SetNumDigits(nDigits);
 		}
+		[SmokeMethod("checkOverflow(double) const")]
 		public bool CheckOverflow(double num) {
 			return ProxyQLCDNumber().CheckOverflow(num);
 		}
+		[SmokeMethod("checkOverflow(int) const")]
 		public bool CheckOverflow(int num) {
 			return ProxyQLCDNumber().CheckOverflow(num);
 		}
+		[SmokeMethod("mode() const")]
 		public int Mode() {
 			return ProxyQLCDNumber().Mode();
 		}
+		[SmokeMethod("setMode(QLCDNumber::Mode)")]
 		public virtual void SetMode(int arg1) {
 			ProxyQLCDNumber().SetMode(arg1);
 		}
+		[SmokeMethod("segmentStyle() const")]
 		public int SegmentStyle() {
 			return ProxyQLCDNumber().SegmentStyle();
 		}
+		[SmokeMethod("setSegmentStyle(QLCDNumber::SegmentStyle)")]
 		public virtual void SetSegmentStyle(int arg1) {
 			ProxyQLCDNumber().SetSegmentStyle(arg1);
 		}
+		[SmokeMethod("value() const")]
 		public double Value() {
 			return ProxyQLCDNumber().Value();
 		}
+		[SmokeMethod("intValue() const")]
 		public int IntValue() {
 			return ProxyQLCDNumber().IntValue();
 		}
+		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {
 			return ProxyQLCDNumber().SizeHint();
 		}
+		[Q_SLOT("display(const QString&)")]
+		[SmokeMethod("display(const QString&)")]
 		public void Display(string str) {
 			ProxyQLCDNumber().Display(str);
 		}
+		[Q_SLOT("display(int)")]
+		[SmokeMethod("display(int)")]
 		public void Display(int num) {
 			ProxyQLCDNumber().Display(num);
 		}
+		[Q_SLOT("display(double)")]
+		[SmokeMethod("display(double)")]
 		public void Display(double num) {
 			ProxyQLCDNumber().Display(num);
 		}
+		[Q_SLOT("setHexMode()")]
+		[SmokeMethod("setHexMode()")]
 		public virtual void SetHexMode() {
 			ProxyQLCDNumber().SetHexMode();
 		}
+		[Q_SLOT("setDecMode()")]
+		[SmokeMethod("setDecMode()")]
 		public virtual void SetDecMode() {
 			ProxyQLCDNumber().SetDecMode();
 		}
+		[Q_SLOT("setOctMode()")]
+		[SmokeMethod("setOctMode()")]
 		public virtual void SetOctMode() {
 			ProxyQLCDNumber().SetOctMode();
 		}
+		[Q_SLOT("setBinMode()")]
+		[SmokeMethod("setBinMode()")]
 		public virtual void SetBinMode() {
 			ProxyQLCDNumber().SetBinMode();
 		}
+		[Q_SLOT("setSmallDecimalPoint(bool)")]
+		[SmokeMethod("setSmallDecimalPoint(bool)")]
 		public virtual void SetSmallDecimalPoint(bool arg1) {
 			ProxyQLCDNumber().SetSmallDecimalPoint(arg1);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQLCDNumber().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQLCDNumber().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQLCDNumber().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQLCDNumber().TrUtf8(arg1);
 		}
+		[SmokeMethod("drawContents(QPainter*)")]
 		protected new void DrawContents(QPainter arg1) {
 			ProxyQLCDNumber().DrawContents(arg1);
 		}
 		~QLCDNumber() {
-			ProxyQLCDNumber().Dispose();
+			DisposeQLCDNumber();
 		}
 		public new void Dispose() {
-			ProxyQLCDNumber().Dispose();
+			DisposeQLCDNumber();
+		}
+		private void DisposeQLCDNumber() {
+			ProxyQLCDNumber().DisposeQLCDNumber();
+		}
+		protected void CreateQLCDNumberSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQLCDNumberSignals), this);
+			_signalInterceptor = (IQLCDNumberSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQLCDNumberSignals Emit() {
+			return (IQLCDNumberSignals) _signalInterceptor;
 		}
 	}
 
-	public interface IQLCDNumberSignals {
+	public interface IQLCDNumberSignals : IQFrameSignals {
+		[Q_SIGNAL("overflow()")]
 		void Overflow();
 	}
 }

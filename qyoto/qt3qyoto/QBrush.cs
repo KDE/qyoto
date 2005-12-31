@@ -29,6 +29,7 @@ namespace Qt {
 			CreateQBrushProxy();
 			NewQBrush();
 		}
+		[SmokeMethod("QBrush()")]
 		private void NewQBrush() {
 			ProxyQBrush().NewQBrush();
 		}
@@ -36,6 +37,7 @@ namespace Qt {
 			CreateQBrushProxy();
 			NewQBrush(arg1);
 		}
+		[SmokeMethod("QBrush(Qt::BrushStyle)")]
 		private void NewQBrush(int arg1) {
 			ProxyQBrush().NewQBrush(arg1);
 		}
@@ -43,6 +45,7 @@ namespace Qt {
 			CreateQBrushProxy();
 			NewQBrush(arg1,arg2);
 		}
+		[SmokeMethod("QBrush(const QColor&, Qt::BrushStyle)")]
 		private void NewQBrush(QColor arg1, int arg2) {
 			ProxyQBrush().NewQBrush(arg1,arg2);
 		}
@@ -50,6 +53,7 @@ namespace Qt {
 			CreateQBrushProxy();
 			NewQBrush(arg1);
 		}
+		[SmokeMethod("QBrush(const QColor&)")]
 		private void NewQBrush(QColor arg1) {
 			ProxyQBrush().NewQBrush(arg1);
 		}
@@ -57,6 +61,7 @@ namespace Qt {
 			CreateQBrushProxy();
 			NewQBrush(arg1,arg2);
 		}
+		[SmokeMethod("QBrush(const QColor&, const QPixmap&)")]
 		private void NewQBrush(QColor arg1, QPixmap arg2) {
 			ProxyQBrush().NewQBrush(arg1,arg2);
 		}
@@ -64,27 +69,35 @@ namespace Qt {
 			CreateQBrushProxy();
 			NewQBrush(arg1);
 		}
+		[SmokeMethod("QBrush(const QBrush&)")]
 		private void NewQBrush(QBrush arg1) {
 			ProxyQBrush().NewQBrush(arg1);
 		}
+		[SmokeMethod("style() const")]
 		public int Style() {
 			return ProxyQBrush().Style();
 		}
+		[SmokeMethod("setStyle(Qt::BrushStyle)")]
 		public void SetStyle(int arg1) {
 			ProxyQBrush().SetStyle(arg1);
 		}
+		[SmokeMethod("color() const")]
 		public QColor Color() {
 			return ProxyQBrush().Color();
 		}
+		[SmokeMethod("setColor(const QColor&)")]
 		public void SetColor(QColor arg1) {
 			ProxyQBrush().SetColor(arg1);
 		}
+		[SmokeMethod("pixmap() const")]
 		public QPixmap Pixmap() {
 			return ProxyQBrush().Pixmap();
 		}
+		[SmokeMethod("setPixmap(const QPixmap&)")]
 		public void SetPixmap(QPixmap arg1) {
 			ProxyQBrush().SetPixmap(arg1);
 		}
+		[SmokeMethod("operator==(const QBrush&) const")]
 		public static bool operator==(QBrush lhs, QBrush p) {
 			return StaticQBrush().op_equals(lhs,p);
 		}
@@ -99,10 +112,13 @@ namespace Qt {
 			return ProxyQBrush().GetHashCode();
 		}
 		~QBrush() {
-			ProxyQBrush().Dispose();
+			DisposeQBrush();
 		}
 		public void Dispose() {
-			ProxyQBrush().Dispose();
+			DisposeQBrush();
+		}
+		private void DisposeQBrush() {
+			ProxyQBrush().DisposeQBrush();
 		}
 	}
 }

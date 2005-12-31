@@ -30,52 +30,79 @@ namespace Qt {
 			return (IQErrorMessageProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQErrorMessage().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQErrorMessage().ClassName();
 		}
 		public QErrorMessage(QWidget parent, string name) : this((Type) null) {
 			CreateQErrorMessageProxy();
+			CreateQErrorMessageSignalProxy();
 			NewQErrorMessage(parent,name);
 		}
+		[SmokeMethod("QErrorMessage(QWidget*, const char*)")]
 		private void NewQErrorMessage(QWidget parent, string name) {
 			ProxyQErrorMessage().NewQErrorMessage(parent,name);
 		}
 		public QErrorMessage(QWidget parent) : this((Type) null) {
 			CreateQErrorMessageProxy();
+			CreateQErrorMessageSignalProxy();
 			NewQErrorMessage(parent);
 		}
+		[SmokeMethod("QErrorMessage(QWidget*)")]
 		private void NewQErrorMessage(QWidget parent) {
 			ProxyQErrorMessage().NewQErrorMessage(parent);
 		}
+		[Q_SLOT("message(const QString&)")]
+		[SmokeMethod("message(const QString&)")]
 		public void Message(string arg1) {
 			ProxyQErrorMessage().Message(arg1);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQErrorMessage().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQErrorMessage().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQErrorMessage().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQErrorMessage().TrUtf8(arg1);
 		}
+		[SmokeMethod("qtHandler()")]
 		public static QErrorMessage QtHandler() {
 			return StaticQErrorMessage().QtHandler();
 		}
+		[SmokeMethod("done(int)")]
 		protected new void Done(int arg1) {
 			ProxyQErrorMessage().Done(arg1);
 		}
 		~QErrorMessage() {
-			ProxyQErrorMessage().Dispose();
+			DisposeQErrorMessage();
 		}
 		public new void Dispose() {
-			ProxyQErrorMessage().Dispose();
+			DisposeQErrorMessage();
 		}
+		private void DisposeQErrorMessage() {
+			ProxyQErrorMessage().DisposeQErrorMessage();
+		}
+		protected void CreateQErrorMessageSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQErrorMessageSignals), this);
+			_signalInterceptor = (IQErrorMessageSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQErrorMessageSignals Emit() {
+			return (IQErrorMessageSignals) _signalInterceptor;
+		}
+	}
+
+	public interface IQErrorMessageSignals : IQDialogSignals {
 	}
 }

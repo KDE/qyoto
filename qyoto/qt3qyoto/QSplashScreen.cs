@@ -30,84 +30,121 @@ namespace Qt {
 			return (IQSplashScreenProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQSplashScreen().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQSplashScreen().ClassName();
 		}
 		public QSplashScreen(QPixmap pixmap, int f) : this((Type) null) {
 			CreateQSplashScreenProxy();
+			CreateQSplashScreenSignalProxy();
 			NewQSplashScreen(pixmap,f);
 		}
+		[SmokeMethod("QSplashScreen(const QPixmap&, Qt::WFlags)")]
 		private void NewQSplashScreen(QPixmap pixmap, int f) {
 			ProxyQSplashScreen().NewQSplashScreen(pixmap,f);
 		}
 		public QSplashScreen(QPixmap pixmap) : this((Type) null) {
 			CreateQSplashScreenProxy();
+			CreateQSplashScreenSignalProxy();
 			NewQSplashScreen(pixmap);
 		}
+		[SmokeMethod("QSplashScreen(const QPixmap&)")]
 		private void NewQSplashScreen(QPixmap pixmap) {
 			ProxyQSplashScreen().NewQSplashScreen(pixmap);
 		}
 		public QSplashScreen() : this((Type) null) {
 			CreateQSplashScreenProxy();
+			CreateQSplashScreenSignalProxy();
 			NewQSplashScreen();
 		}
+		[SmokeMethod("QSplashScreen()")]
 		private void NewQSplashScreen() {
 			ProxyQSplashScreen().NewQSplashScreen();
 		}
+		[SmokeMethod("setPixmap(const QPixmap&)")]
 		public void SetPixmap(QPixmap pixmap) {
 			ProxyQSplashScreen().SetPixmap(pixmap);
 		}
+		[SmokeMethod("pixmap() const")]
 		public QPixmap Pixmap() {
 			return ProxyQSplashScreen().Pixmap();
 		}
+		[SmokeMethod("finish(QWidget*)")]
 		public void Finish(QWidget w) {
 			ProxyQSplashScreen().Finish(w);
 		}
+		[SmokeMethod("repaint()")]
 		public new void Repaint() {
 			ProxyQSplashScreen().Repaint();
 		}
+		[Q_SLOT("message(const QString&, int, const QColor&)")]
+		[SmokeMethod("message(const QString&, int, const QColor&)")]
 		public void Message(string str, int flags, QColor color) {
 			ProxyQSplashScreen().Message(str,flags,color);
 		}
+		[Q_SLOT("message(const QString&, int)")]
+		[SmokeMethod("message(const QString&, int)")]
 		public void Message(string str, int flags) {
 			ProxyQSplashScreen().Message(str,flags);
 		}
+		[Q_SLOT("message(const QString&)")]
+		[SmokeMethod("message(const QString&)")]
 		public void Message(string str) {
 			ProxyQSplashScreen().Message(str);
 		}
+		[Q_SLOT("clear()")]
+		[SmokeMethod("clear()")]
 		public void Clear() {
 			ProxyQSplashScreen().Clear();
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQSplashScreen().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQSplashScreen().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQSplashScreen().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQSplashScreen().TrUtf8(arg1);
 		}
+		[SmokeMethod("drawContents(QPainter*)")]
 		protected virtual void DrawContents(QPainter painter) {
 			ProxyQSplashScreen().DrawContents(painter);
 		}
+		[SmokeMethod("mousePressEvent(QMouseEvent*)")]
 		protected new void MousePressEvent(QMouseEvent arg1) {
 			ProxyQSplashScreen().MousePressEvent(arg1);
 		}
 		~QSplashScreen() {
-			ProxyQSplashScreen().Dispose();
+			DisposeQSplashScreen();
 		}
 		public new void Dispose() {
-			ProxyQSplashScreen().Dispose();
+			DisposeQSplashScreen();
+		}
+		private void DisposeQSplashScreen() {
+			ProxyQSplashScreen().DisposeQSplashScreen();
+		}
+		protected void CreateQSplashScreenSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQSplashScreenSignals), this);
+			_signalInterceptor = (IQSplashScreenSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQSplashScreenSignals Emit() {
+			return (IQSplashScreenSignals) _signalInterceptor;
 		}
 	}
 
-	public interface IQSplashScreenSignals {
+	public interface IQSplashScreenSignals : IQWidgetSignals {
+		[Q_SIGNAL("messageChanged(const QString&)")]
 		void MessageChanged(string str);
 	}
 }

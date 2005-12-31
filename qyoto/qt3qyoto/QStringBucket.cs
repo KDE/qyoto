@@ -26,14 +26,18 @@ namespace Qt {
 		}
 
 		// QStringBucket* QStringBucket(const QString& arg1,QPtrCollection::Item arg2,QBaseBucket* arg3); >>>> NOT CONVERTED
+		[SmokeMethod("getKey() const")]
 		public string GetKey() {
 			return ProxyQStringBucket().GetKey();
 		}
 		~QStringBucket() {
-			ProxyQStringBucket().Dispose();
+			DisposeQStringBucket();
 		}
 		public void Dispose() {
-			ProxyQStringBucket().Dispose();
+			DisposeQStringBucket();
+		}
+		private void DisposeQStringBucket() {
+			ProxyQStringBucket().DisposeQStringBucket();
 		}
 	}
 }

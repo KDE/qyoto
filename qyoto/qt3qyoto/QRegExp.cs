@@ -40,6 +40,7 @@ namespace Qt {
 			CreateQRegExpProxy();
 			NewQRegExp();
 		}
+		[SmokeMethod("QRegExp()")]
 		private void NewQRegExp() {
 			ProxyQRegExp().NewQRegExp();
 		}
@@ -47,6 +48,7 @@ namespace Qt {
 			CreateQRegExpProxy();
 			NewQRegExp(pattern,caseSensitive,wildcard);
 		}
+		[SmokeMethod("QRegExp(const QString&, bool, bool)")]
 		private void NewQRegExp(string pattern, bool caseSensitive, bool wildcard) {
 			ProxyQRegExp().NewQRegExp(pattern,caseSensitive,wildcard);
 		}
@@ -54,6 +56,7 @@ namespace Qt {
 			CreateQRegExpProxy();
 			NewQRegExp(pattern,caseSensitive);
 		}
+		[SmokeMethod("QRegExp(const QString&, bool)")]
 		private void NewQRegExp(string pattern, bool caseSensitive) {
 			ProxyQRegExp().NewQRegExp(pattern,caseSensitive);
 		}
@@ -61,6 +64,7 @@ namespace Qt {
 			CreateQRegExpProxy();
 			NewQRegExp(pattern);
 		}
+		[SmokeMethod("QRegExp(const QString&)")]
 		private void NewQRegExp(string pattern) {
 			ProxyQRegExp().NewQRegExp(pattern);
 		}
@@ -68,9 +72,11 @@ namespace Qt {
 			CreateQRegExpProxy();
 			NewQRegExp(rx);
 		}
+		[SmokeMethod("QRegExp(const QRegExp&)")]
 		private void NewQRegExp(QRegExp rx) {
 			ProxyQRegExp().NewQRegExp(rx);
 		}
+		[SmokeMethod("operator==(const QRegExp&) const")]
 		public static bool operator==(QRegExp lhs, QRegExp rx) {
 			return StaticQRegExp().op_equals(lhs,rx);
 		}
@@ -84,101 +90,134 @@ namespace Qt {
 		public override int GetHashCode() {
 			return ProxyQRegExp().GetHashCode();
 		}
+		[SmokeMethod("isEmpty() const")]
 		public bool IsEmpty() {
 			return ProxyQRegExp().IsEmpty();
 		}
+		[SmokeMethod("isValid() const")]
 		public bool IsValid() {
 			return ProxyQRegExp().IsValid();
 		}
+		[SmokeMethod("pattern() const")]
 		public string Pattern() {
 			return ProxyQRegExp().Pattern();
 		}
+		[SmokeMethod("setPattern(const QString&)")]
 		public void SetPattern(string pattern) {
 			ProxyQRegExp().SetPattern(pattern);
 		}
+		[SmokeMethod("caseSensitive() const")]
 		public bool CaseSensitive() {
 			return ProxyQRegExp().CaseSensitive();
 		}
+		[SmokeMethod("setCaseSensitive(bool)")]
 		public void SetCaseSensitive(bool sensitive) {
 			ProxyQRegExp().SetCaseSensitive(sensitive);
 		}
+		[SmokeMethod("wildcard() const")]
 		public bool Wildcard() {
 			return ProxyQRegExp().Wildcard();
 		}
+		[SmokeMethod("setWildcard(bool)")]
 		public void SetWildcard(bool wildcard) {
 			ProxyQRegExp().SetWildcard(wildcard);
 		}
+		[SmokeMethod("minimal() const")]
 		public bool Minimal() {
 			return ProxyQRegExp().Minimal();
 		}
+		[SmokeMethod("setMinimal(bool)")]
 		public void SetMinimal(bool minimal) {
 			ProxyQRegExp().SetMinimal(minimal);
 		}
+		[SmokeMethod("exactMatch(const QString&) const")]
 		public bool ExactMatch(string str) {
 			return ProxyQRegExp().ExactMatch(str);
 		}
+		[SmokeMethod("match(const QString&, int, int*, bool) const")]
 		public int Match(string str, int index, out int len, bool indexIsStart) {
 			return ProxyQRegExp().Match(str,index,out len,indexIsStart);
 		}
+		[SmokeMethod("match(const QString&, int, int*) const")]
 		public int Match(string str, int index, out int len) {
 			return ProxyQRegExp().Match(str,index,out len);
 		}
+		[SmokeMethod("match(const QString&, int) const")]
 		public int Match(string str, int index) {
 			return ProxyQRegExp().Match(str,index);
 		}
+		[SmokeMethod("match(const QString&) const")]
 		public int Match(string str) {
 			return ProxyQRegExp().Match(str);
 		}
+		[SmokeMethod("search(const QString&, int, QRegExp::CaretMode) const")]
 		public int Search(string str, int offset, int caretMode) {
 			return ProxyQRegExp().Search(str,offset,caretMode);
 		}
+		[SmokeMethod("search(const QString&, int) const")]
 		public int Search(string str, int offset) {
 			return ProxyQRegExp().Search(str,offset);
 		}
+		[SmokeMethod("search(const QString&) const")]
 		public int Search(string str) {
 			return ProxyQRegExp().Search(str);
 		}
+		[SmokeMethod("searchRev(const QString&, int, QRegExp::CaretMode) const")]
 		public int SearchRev(string str, int offset, int caretMode) {
 			return ProxyQRegExp().SearchRev(str,offset,caretMode);
 		}
+		[SmokeMethod("searchRev(const QString&, int) const")]
 		public int SearchRev(string str, int offset) {
 			return ProxyQRegExp().SearchRev(str,offset);
 		}
+		[SmokeMethod("searchRev(const QString&) const")]
 		public int SearchRev(string str) {
 			return ProxyQRegExp().SearchRev(str);
 		}
+		[SmokeMethod("matchedLength() const")]
 		public int MatchedLength() {
 			return ProxyQRegExp().MatchedLength();
 		}
+		[SmokeMethod("numCaptures() const")]
 		public int NumCaptures() {
 			return ProxyQRegExp().NumCaptures();
 		}
+		[SmokeMethod("capturedTexts()")]
 		public ArrayList CapturedTexts() {
 			return ProxyQRegExp().CapturedTexts();
 		}
+		[SmokeMethod("cap(int)")]
 		public string Cap(int nth) {
 			return ProxyQRegExp().Cap(nth);
 		}
+		[SmokeMethod("cap()")]
 		public string Cap() {
 			return ProxyQRegExp().Cap();
 		}
+		[SmokeMethod("pos(int)")]
 		public int Pos(int nth) {
 			return ProxyQRegExp().Pos(nth);
 		}
+		[SmokeMethod("pos()")]
 		public int Pos() {
 			return ProxyQRegExp().Pos();
 		}
+		[SmokeMethod("errorString()")]
 		public string ErrorString() {
 			return ProxyQRegExp().ErrorString();
 		}
+		[SmokeMethod("escape(const QString&)")]
 		public static string Escape(string str) {
 			return StaticQRegExp().Escape(str);
 		}
 		~QRegExp() {
-			ProxyQRegExp().Dispose();
+			DisposeQRegExp();
 		}
 		public void Dispose() {
-			ProxyQRegExp().Dispose();
+			DisposeQRegExp();
+		}
+		private void DisposeQRegExp() {
+			ProxyQRegExp().DisposeQRegExp();
 		}
 	}
 }

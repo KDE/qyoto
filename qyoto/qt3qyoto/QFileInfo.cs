@@ -46,6 +46,7 @@ namespace Qt {
 			CreateQFileInfoProxy();
 			NewQFileInfo();
 		}
+		[SmokeMethod("QFileInfo()")]
 		private void NewQFileInfo() {
 			ProxyQFileInfo().NewQFileInfo();
 		}
@@ -53,6 +54,7 @@ namespace Qt {
 			CreateQFileInfoProxy();
 			NewQFileInfo(file);
 		}
+		[SmokeMethod("QFileInfo(const QString&)")]
 		private void NewQFileInfo(string file) {
 			ProxyQFileInfo().NewQFileInfo(file);
 		}
@@ -60,6 +62,7 @@ namespace Qt {
 			CreateQFileInfoProxy();
 			NewQFileInfo(arg1);
 		}
+		[SmokeMethod("QFileInfo(const QFile&)")]
 		private void NewQFileInfo(QFile arg1) {
 			ProxyQFileInfo().NewQFileInfo(arg1);
 		}
@@ -67,6 +70,7 @@ namespace Qt {
 			CreateQFileInfoProxy();
 			NewQFileInfo(arg1,fileName);
 		}
+		[SmokeMethod("QFileInfo(const QDir&, const QString&)")]
 		private void NewQFileInfo(QDir arg1, string fileName) {
 			ProxyQFileInfo().NewQFileInfo(arg1,fileName);
 		}
@@ -74,125 +78,166 @@ namespace Qt {
 			CreateQFileInfoProxy();
 			NewQFileInfo(arg1);
 		}
+		[SmokeMethod("QFileInfo(const QFileInfo&)")]
 		private void NewQFileInfo(QFileInfo arg1) {
 			ProxyQFileInfo().NewQFileInfo(arg1);
 		}
+		[SmokeMethod("setFile(const QString&)")]
 		public void SetFile(string file) {
 			ProxyQFileInfo().SetFile(file);
 		}
+		[SmokeMethod("setFile(const QFile&)")]
 		public void SetFile(QFile arg1) {
 			ProxyQFileInfo().SetFile(arg1);
 		}
+		[SmokeMethod("setFile(const QDir&, const QString&)")]
 		public void SetFile(QDir arg1, string fileName) {
 			ProxyQFileInfo().SetFile(arg1,fileName);
 		}
+		[SmokeMethod("exists() const")]
 		public bool Exists() {
 			return ProxyQFileInfo().Exists();
 		}
+		[SmokeMethod("refresh() const")]
 		public void Refresh() {
 			ProxyQFileInfo().Refresh();
 		}
+		[SmokeMethod("caching() const")]
 		public bool Caching() {
 			return ProxyQFileInfo().Caching();
 		}
+		[SmokeMethod("setCaching(bool)")]
 		public void SetCaching(bool arg1) {
 			ProxyQFileInfo().SetCaching(arg1);
 		}
+		[SmokeMethod("filePath() const")]
 		public string FilePath() {
 			return ProxyQFileInfo().FilePath();
 		}
+		[SmokeMethod("fileName() const")]
 		public string FileName() {
 			return ProxyQFileInfo().FileName();
 		}
+		[SmokeMethod("absFilePath() const")]
 		public string AbsFilePath() {
 			return ProxyQFileInfo().AbsFilePath();
 		}
+		[SmokeMethod("baseName(bool) const")]
 		public string BaseName(bool complete) {
 			return ProxyQFileInfo().BaseName(complete);
 		}
+		[SmokeMethod("baseName() const")]
 		public string BaseName() {
 			return ProxyQFileInfo().BaseName();
 		}
+		[SmokeMethod("extension(bool) const")]
 		public string Extension(bool complete) {
 			return ProxyQFileInfo().Extension(complete);
 		}
+		[SmokeMethod("extension() const")]
 		public string Extension() {
 			return ProxyQFileInfo().Extension();
 		}
+		[SmokeMethod("dirPath(bool) const")]
 		public string DirPath(bool absPath) {
 			return ProxyQFileInfo().DirPath(absPath);
 		}
+		[SmokeMethod("dirPath() const")]
 		public string DirPath() {
 			return ProxyQFileInfo().DirPath();
 		}
+		[SmokeMethod("dir(bool) const")]
 		public QDir Dir(bool absPath) {
 			return ProxyQFileInfo().Dir(absPath);
 		}
+		[SmokeMethod("dir() const")]
 		public QDir Dir() {
 			return ProxyQFileInfo().Dir();
 		}
+		[SmokeMethod("isReadable() const")]
 		public bool IsReadable() {
 			return ProxyQFileInfo().IsReadable();
 		}
+		[SmokeMethod("isWritable() const")]
 		public bool IsWritable() {
 			return ProxyQFileInfo().IsWritable();
 		}
+		[SmokeMethod("isExecutable() const")]
 		public bool IsExecutable() {
 			return ProxyQFileInfo().IsExecutable();
 		}
+		[SmokeMethod("isHidden() const")]
 		public bool IsHidden() {
 			return ProxyQFileInfo().IsHidden();
 		}
+		[SmokeMethod("isRelative() const")]
 		public bool IsRelative() {
 			return ProxyQFileInfo().IsRelative();
 		}
+		[SmokeMethod("convertToAbs()")]
 		public bool ConvertToAbs() {
 			return ProxyQFileInfo().ConvertToAbs();
 		}
+		[SmokeMethod("isFile() const")]
 		public bool IsFile() {
 			return ProxyQFileInfo().IsFile();
 		}
+		[SmokeMethod("isDir() const")]
 		public bool IsDir() {
 			return ProxyQFileInfo().IsDir();
 		}
+		[SmokeMethod("isSymLink() const")]
 		public bool IsSymLink() {
 			return ProxyQFileInfo().IsSymLink();
 		}
+		[SmokeMethod("readLink() const")]
 		public string ReadLink() {
 			return ProxyQFileInfo().ReadLink();
 		}
+		[SmokeMethod("owner() const")]
 		public string Owner() {
 			return ProxyQFileInfo().Owner();
 		}
+		[SmokeMethod("ownerId() const")]
 		public uint OwnerId() {
 			return ProxyQFileInfo().OwnerId();
 		}
+		[SmokeMethod("group() const")]
 		public string Group() {
 			return ProxyQFileInfo().Group();
 		}
+		[SmokeMethod("groupId() const")]
 		public uint GroupId() {
 			return ProxyQFileInfo().GroupId();
 		}
+		[SmokeMethod("permission(int) const")]
 		public bool Permission(int permissionSpec) {
 			return ProxyQFileInfo().Permission(permissionSpec);
 		}
+		[SmokeMethod("size() const")]
 		public ulong Size() {
 			return ProxyQFileInfo().Size();
 		}
+		[SmokeMethod("created() const")]
 		public DateTime Created() {
 			return ProxyQFileInfo().Created();
 		}
+		[SmokeMethod("lastModified() const")]
 		public DateTime LastModified() {
 			return ProxyQFileInfo().LastModified();
 		}
+		[SmokeMethod("lastRead() const")]
 		public DateTime LastRead() {
 			return ProxyQFileInfo().LastRead();
 		}
 		~QFileInfo() {
-			ProxyQFileInfo().Dispose();
+			DisposeQFileInfo();
 		}
 		public void Dispose() {
-			ProxyQFileInfo().Dispose();
+			DisposeQFileInfo();
+		}
+		private void DisposeQFileInfo() {
+			ProxyQFileInfo().DisposeQFileInfo();
 		}
 	}
 }

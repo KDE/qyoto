@@ -27,6 +27,7 @@ namespace Qt {
 			return (IQMetaObjectCleanUpProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("setMetaObject(QMetaObject*&)")]
 		public void SetMetaObject(QMetaObject mo) {
 			ProxyQMetaObjectCleanUp().SetMetaObject(mo);
 		}

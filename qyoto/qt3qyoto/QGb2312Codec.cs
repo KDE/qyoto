@@ -29,35 +29,46 @@ namespace Qt {
 			CreateQGb2312CodecProxy();
 			NewQGb2312Codec();
 		}
+		[SmokeMethod("QGb2312Codec()")]
 		private void NewQGb2312Codec() {
 			ProxyQGb2312Codec().NewQGb2312Codec();
 		}
+		[SmokeMethod("mibEnum() const")]
 		public new int MibEnum() {
 			return ProxyQGb2312Codec().MibEnum();
 		}
+		[SmokeMethod("name() const")]
 		public new string Name() {
 			return ProxyQGb2312Codec().Name();
 		}
+		[SmokeMethod("makeDecoder() const")]
 		public new QTextDecoder MakeDecoder() {
 			return ProxyQGb2312Codec().MakeDecoder();
 		}
+		[SmokeMethod("fromUnicode(const QString&, int&) const")]
 		public new string FromUnicode(string uc, out int lenInOut) {
 			return ProxyQGb2312Codec().FromUnicode(uc,out lenInOut);
 		}
+		[SmokeMethod("toUnicode(const char*, int) const")]
 		public new string ToUnicode(string chars, int len) {
 			return ProxyQGb2312Codec().ToUnicode(chars,len);
 		}
+		[SmokeMethod("heuristicContentMatch(const char*, int) const")]
 		public new int HeuristicContentMatch(string chars, int len) {
 			return ProxyQGb2312Codec().HeuristicContentMatch(chars,len);
 		}
+		[SmokeMethod("heuristicNameMatch(const char*) const")]
 		public new int HeuristicNameMatch(string hint) {
 			return ProxyQGb2312Codec().HeuristicNameMatch(hint);
 		}
 		~QGb2312Codec() {
-			ProxyQGb2312Codec().Dispose();
+			DisposeQGb2312Codec();
 		}
 		public new void Dispose() {
-			ProxyQGb2312Codec().Dispose();
+			DisposeQGb2312Codec();
+		}
+		private void DisposeQGb2312Codec() {
+			ProxyQGb2312Codec().DisposeQGb2312Codec();
 		}
 	}
 }

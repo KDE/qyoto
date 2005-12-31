@@ -35,10 +35,13 @@ namespace Qt {
 		// QMapNodeBase* maximum(); >>>> NOT CONVERTED
 		// QMapNodeBase* QMapNodeBase(); >>>> NOT CONVERTED
 		~QMapNodeBase() {
-			ProxyQMapNodeBase().Dispose();
+			DisposeQMapNodeBase();
 		}
 		public void Dispose() {
-			ProxyQMapNodeBase().Dispose();
+			DisposeQMapNodeBase();
+		}
+		private void DisposeQMapNodeBase() {
+			ProxyQMapNodeBase().DisposeQMapNodeBase();
 		}
 	}
 }

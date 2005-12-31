@@ -28,17 +28,22 @@ namespace Qt {
 			CreateQTimerEventProxy();
 			NewQTimerEvent(timerId);
 		}
+		[SmokeMethod("QTimerEvent(int)")]
 		private void NewQTimerEvent(int timerId) {
 			ProxyQTimerEvent().NewQTimerEvent(timerId);
 		}
+		[SmokeMethod("timerId() const")]
 		public int TimerId() {
 			return ProxyQTimerEvent().TimerId();
 		}
 		~QTimerEvent() {
-			ProxyQTimerEvent().Dispose();
+			DisposeQTimerEvent();
 		}
 		public new void Dispose() {
-			ProxyQTimerEvent().Dispose();
+			DisposeQTimerEvent();
+		}
+		private void DisposeQTimerEvent() {
+			ProxyQTimerEvent().DisposeQTimerEvent();
 		}
 	}
 }

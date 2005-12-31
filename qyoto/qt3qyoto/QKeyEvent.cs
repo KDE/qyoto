@@ -29,6 +29,7 @@ namespace Qt {
 			CreateQKeyEventProxy();
 			NewQKeyEvent(type,key,ascii,state,text,autorep,count);
 		}
+		[SmokeMethod("QKeyEvent(QEvent::Type, int, int, int, const QString&, bool, ushort)")]
 		private void NewQKeyEvent(int type, int key, int ascii, int state, string text, bool autorep, ushort count) {
 			ProxyQKeyEvent().NewQKeyEvent(type,key,ascii,state,text,autorep,count);
 		}
@@ -36,6 +37,7 @@ namespace Qt {
 			CreateQKeyEventProxy();
 			NewQKeyEvent(type,key,ascii,state,text,autorep);
 		}
+		[SmokeMethod("QKeyEvent(QEvent::Type, int, int, int, const QString&, bool)")]
 		private void NewQKeyEvent(int type, int key, int ascii, int state, string text, bool autorep) {
 			ProxyQKeyEvent().NewQKeyEvent(type,key,ascii,state,text,autorep);
 		}
@@ -43,6 +45,7 @@ namespace Qt {
 			CreateQKeyEventProxy();
 			NewQKeyEvent(type,key,ascii,state,text);
 		}
+		[SmokeMethod("QKeyEvent(QEvent::Type, int, int, int, const QString&)")]
 		private void NewQKeyEvent(int type, int key, int ascii, int state, string text) {
 			ProxyQKeyEvent().NewQKeyEvent(type,key,ascii,state,text);
 		}
@@ -50,44 +53,58 @@ namespace Qt {
 			CreateQKeyEventProxy();
 			NewQKeyEvent(type,key,ascii,state);
 		}
+		[SmokeMethod("QKeyEvent(QEvent::Type, int, int, int)")]
 		private void NewQKeyEvent(int type, int key, int ascii, int state) {
 			ProxyQKeyEvent().NewQKeyEvent(type,key,ascii,state);
 		}
+		[SmokeMethod("key() const")]
 		public int Key() {
 			return ProxyQKeyEvent().Key();
 		}
+		[SmokeMethod("ascii() const")]
 		public int Ascii() {
 			return ProxyQKeyEvent().Ascii();
 		}
+		[SmokeMethod("state() const")]
 		public int State() {
 			return ProxyQKeyEvent().State();
 		}
+		[SmokeMethod("stateAfter() const")]
 		public int StateAfter() {
 			return ProxyQKeyEvent().StateAfter();
 		}
+		[SmokeMethod("isAccepted() const")]
 		public bool IsAccepted() {
 			return ProxyQKeyEvent().IsAccepted();
 		}
+		[SmokeMethod("text() const")]
 		public string Text() {
 			return ProxyQKeyEvent().Text();
 		}
+		[SmokeMethod("isAutoRepeat() const")]
 		public bool IsAutoRepeat() {
 			return ProxyQKeyEvent().IsAutoRepeat();
 		}
+		[SmokeMethod("count() const")]
 		public int Count() {
 			return ProxyQKeyEvent().Count();
 		}
+		[SmokeMethod("accept()")]
 		public void Accept() {
 			ProxyQKeyEvent().Accept();
 		}
+		[SmokeMethod("ignore()")]
 		public void Ignore() {
 			ProxyQKeyEvent().Ignore();
 		}
 		~QKeyEvent() {
-			ProxyQKeyEvent().Dispose();
+			DisposeQKeyEvent();
 		}
 		public new void Dispose() {
-			ProxyQKeyEvent().Dispose();
+			DisposeQKeyEvent();
+		}
+		private void DisposeQKeyEvent() {
+			ProxyQKeyEvent().DisposeQKeyEvent();
 		}
 	}
 }

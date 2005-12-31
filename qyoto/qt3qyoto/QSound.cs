@@ -32,80 +32,117 @@ namespace Qt {
 			return (IQSoundProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQSound().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQSound().ClassName();
 		}
 		public QSound(string filename, QObject parent, string name) : this((Type) null) {
 			CreateQSoundProxy();
+			CreateQSoundSignalProxy();
 			NewQSound(filename,parent,name);
 		}
+		[SmokeMethod("QSound(const QString&, QObject*, const char*)")]
 		private void NewQSound(string filename, QObject parent, string name) {
 			ProxyQSound().NewQSound(filename,parent,name);
 		}
 		public QSound(string filename, QObject parent) : this((Type) null) {
 			CreateQSoundProxy();
+			CreateQSoundSignalProxy();
 			NewQSound(filename,parent);
 		}
+		[SmokeMethod("QSound(const QString&, QObject*)")]
 		private void NewQSound(string filename, QObject parent) {
 			ProxyQSound().NewQSound(filename,parent);
 		}
 		public QSound(string filename) : this((Type) null) {
 			CreateQSoundProxy();
+			CreateQSoundSignalProxy();
 			NewQSound(filename);
 		}
+		[SmokeMethod("QSound(const QString&)")]
 		private void NewQSound(string filename) {
 			ProxyQSound().NewQSound(filename);
 		}
+		[SmokeMethod("loops() const")]
 		public int Loops() {
 			return ProxyQSound().Loops();
 		}
+		[SmokeMethod("loopsRemaining() const")]
 		public int LoopsRemaining() {
 			return ProxyQSound().LoopsRemaining();
 		}
+		[SmokeMethod("setLoops(int)")]
 		public void SetLoops(int arg1) {
 			ProxyQSound().SetLoops(arg1);
 		}
+		[SmokeMethod("fileName() const")]
 		public string FileName() {
 			return ProxyQSound().FileName();
 		}
+		[SmokeMethod("isFinished() const")]
 		public bool IsFinished() {
 			return ProxyQSound().IsFinished();
 		}
+		[Q_SLOT("play()")]
+		[SmokeMethod("play()")]
 		public void Play() {
 			ProxyQSound().Play();
 		}
+		[Q_SLOT("stop()")]
+		[SmokeMethod("stop()")]
 		public void Stop() {
 			ProxyQSound().Stop();
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQSound().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQSound().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQSound().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQSound().TrUtf8(arg1);
 		}
+		[SmokeMethod("isAvailable()")]
 		public static bool IsAvailable() {
 			return StaticQSound().IsAvailable();
 		}
+		[SmokeMethod("play(const QString&)")]
 		public static void Play(string filename) {
 			StaticQSound().Play(filename);
 		}
+		[SmokeMethod("available()")]
 		public static bool Available() {
 			return StaticQSound().Available();
 		}
 		~QSound() {
-			ProxyQSound().Dispose();
+			DisposeQSound();
 		}
 		public new void Dispose() {
-			ProxyQSound().Dispose();
+			DisposeQSound();
 		}
+		private void DisposeQSound() {
+			ProxyQSound().DisposeQSound();
+		}
+		protected void CreateQSoundSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQSoundSignals), this);
+			_signalInterceptor = (IQSoundSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQSoundSignals Emit() {
+			return (IQSoundSignals) _signalInterceptor;
+		}
+	}
+
+	public interface IQSoundSignals : IQObjectSignals {
 	}
 }

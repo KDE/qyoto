@@ -424,6 +424,7 @@ namespace Qt {
 			CreateQLocaleProxy();
 			NewQLocale();
 		}
+		[SmokeMethod("QLocale()")]
 		private void NewQLocale() {
 			ProxyQLocale().NewQLocale();
 		}
@@ -431,6 +432,7 @@ namespace Qt {
 			CreateQLocaleProxy();
 			NewQLocale(name);
 		}
+		[SmokeMethod("QLocale(const QString&)")]
 		private void NewQLocale(string name) {
 			ProxyQLocale().NewQLocale(name);
 		}
@@ -438,6 +440,7 @@ namespace Qt {
 			CreateQLocaleProxy();
 			NewQLocale(language,country);
 		}
+		[SmokeMethod("QLocale(QLocale::Language, QLocale::Country)")]
 		private void NewQLocale(int language, int country) {
 			ProxyQLocale().NewQLocale(language,country);
 		}
@@ -445,6 +448,7 @@ namespace Qt {
 			CreateQLocaleProxy();
 			NewQLocale(language);
 		}
+		[SmokeMethod("QLocale(QLocale::Language)")]
 		private void NewQLocale(int language) {
 			ProxyQLocale().NewQLocale(language);
 		}
@@ -452,131 +456,164 @@ namespace Qt {
 			CreateQLocaleProxy();
 			NewQLocale(other);
 		}
+		[SmokeMethod("QLocale(const QLocale&)")]
 		private void NewQLocale(QLocale other) {
 			ProxyQLocale().NewQLocale(other);
 		}
+		[SmokeMethod("language() const")]
 		public int Language() {
 			return ProxyQLocale().Language();
 		}
+		[SmokeMethod("country() const")]
 		public int Country() {
 			return ProxyQLocale().Country();
 		}
+		[SmokeMethod("name() const")]
 		public string Name() {
 			return ProxyQLocale().Name();
 		}
+		[SmokeMethod("toShort(const QString&, bool*) const")]
 		public short ToShort(string s, out bool ok) {
 			return ProxyQLocale().ToShort(s,out ok);
 		}
+		[SmokeMethod("toShort(const QString&) const")]
 		public short ToShort(string s) {
 			return ProxyQLocale().ToShort(s);
 		}
+		[SmokeMethod("toUShort(const QString&, bool*) const")]
 		public ushort ToUShort(string s, out bool ok) {
 			return ProxyQLocale().ToUShort(s,out ok);
 		}
+		[SmokeMethod("toUShort(const QString&) const")]
 		public ushort ToUShort(string s) {
 			return ProxyQLocale().ToUShort(s);
 		}
+		[SmokeMethod("toInt(const QString&, bool*) const")]
 		public int ToInt(string s, out bool ok) {
 			return ProxyQLocale().ToInt(s,out ok);
 		}
+		[SmokeMethod("toInt(const QString&) const")]
 		public int ToInt(string s) {
 			return ProxyQLocale().ToInt(s);
 		}
+		[SmokeMethod("toUInt(const QString&, bool*) const")]
 		public uint ToUInt(string s, out bool ok) {
 			return ProxyQLocale().ToUInt(s,out ok);
 		}
+		[SmokeMethod("toUInt(const QString&) const")]
 		public uint ToUInt(string s) {
 			return ProxyQLocale().ToUInt(s);
 		}
+		[SmokeMethod("toLong(const QString&, bool*) const")]
 		public long ToLong(string s, out bool ok) {
 			return ProxyQLocale().ToLong(s,out ok);
 		}
+		[SmokeMethod("toLong(const QString&) const")]
 		public long ToLong(string s) {
 			return ProxyQLocale().ToLong(s);
 		}
+		[SmokeMethod("toULong(const QString&, bool*) const")]
 		public long ToULong(string s, out bool ok) {
 			return ProxyQLocale().ToULong(s,out ok);
 		}
+		[SmokeMethod("toULong(const QString&) const")]
 		public long ToULong(string s) {
 			return ProxyQLocale().ToULong(s);
 		}
-		public long ToLongLong(string s, out bool ok) {
-			return ProxyQLocale().ToLongLong(s,out ok);
-		}
-		public long ToLongLong(string s) {
-			return ProxyQLocale().ToLongLong(s);
-		}
-		public long ToULongLong(string s, out bool ok) {
-			return ProxyQLocale().ToULongLong(s,out ok);
-		}
-		public long ToULongLong(string s) {
-			return ProxyQLocale().ToULongLong(s);
-		}
+		// Q_LLONG toLongLong(const QString& arg1,bool* arg2); >>>> NOT CONVERTED
+		// Q_LLONG toLongLong(const QString& arg1); >>>> NOT CONVERTED
+		// Q_ULLONG toULongLong(const QString& arg1,bool* arg2); >>>> NOT CONVERTED
+		// Q_ULLONG toULongLong(const QString& arg1); >>>> NOT CONVERTED
+		[SmokeMethod("toFloat(const QString&, bool*) const")]
 		public float ToFloat(string s, out bool ok) {
 			return ProxyQLocale().ToFloat(s,out ok);
 		}
+		[SmokeMethod("toFloat(const QString&) const")]
 		public float ToFloat(string s) {
 			return ProxyQLocale().ToFloat(s);
 		}
+		[SmokeMethod("toDouble(const QString&, bool*) const")]
 		public double ToDouble(string s, out bool ok) {
 			return ProxyQLocale().ToDouble(s,out ok);
 		}
+		[SmokeMethod("toDouble(const QString&) const")]
 		public double ToDouble(string s) {
 			return ProxyQLocale().ToDouble(s);
 		}
+		[SmokeMethod("toString(short) const")]
 		public new string ToString(short i) {
 			return ProxyQLocale().ToString(i);
 		}
+		[SmokeMethod("toString(ushort) const")]
 		public new string ToString(ushort i) {
 			return ProxyQLocale().ToString(i);
 		}
+		[SmokeMethod("toString(int) const")]
 		public new string ToString(int i) {
 			return ProxyQLocale().ToString(i);
 		}
+		[SmokeMethod("toString(uint) const")]
 		public new string ToString(uint i) {
 			return ProxyQLocale().ToString(i);
 		}
+		[SmokeMethod("toString(Q_LONG) const")]
 		public new string ToString(long i) {
 			return ProxyQLocale().ToString(i);
 		}
+		// QString toString(Q_LLONG arg1); >>>> NOT CONVERTED
+		// QString toString(Q_ULLONG arg1); >>>> NOT CONVERTED
+		[SmokeMethod("toString(float, char, int) const")]
 		public new string ToString(float i, char f, int prec) {
 			return ProxyQLocale().ToString(i,f,prec);
 		}
+		[SmokeMethod("toString(float, char) const")]
 		public new string ToString(float i, char f) {
 			return ProxyQLocale().ToString(i,f);
 		}
+		[SmokeMethod("toString(float) const")]
 		public new string ToString(float i) {
 			return ProxyQLocale().ToString(i);
 		}
+		[SmokeMethod("toString(double, char, int) const")]
 		public new string ToString(double i, char f, int prec) {
 			return ProxyQLocale().ToString(i,f,prec);
 		}
+		[SmokeMethod("toString(double, char) const")]
 		public new string ToString(double i, char f) {
 			return ProxyQLocale().ToString(i,f);
 		}
+		[SmokeMethod("toString(double) const")]
 		public new string ToString(double i) {
 			return ProxyQLocale().ToString(i);
 		}
+		[SmokeMethod("languageToString(QLocale::Language)")]
 		public static string LanguageToString(int language) {
 			return StaticQLocale().LanguageToString(language);
 		}
+		[SmokeMethod("countryToString(QLocale::Country)")]
 		public static string CountryToString(int country) {
 			return StaticQLocale().CountryToString(country);
 		}
+		[SmokeMethod("setDefault(const QLocale&)")]
 		public static void SetDefault(QLocale locale) {
 			StaticQLocale().SetDefault(locale);
 		}
+		[SmokeMethod("c()")]
 		public static QLocale C() {
 			return StaticQLocale().C();
 		}
+		[SmokeMethod("system()")]
 		public static QLocale System() {
 			return StaticQLocale().System();
 		}
 		~QLocale() {
-			ProxyQLocale().Dispose();
+			DisposeQLocale();
 		}
 		public void Dispose() {
-			ProxyQLocale().Dispose();
+			DisposeQLocale();
+		}
+		private void DisposeQLocale() {
+			ProxyQLocale().DisposeQLocale();
 		}
 	}
 }

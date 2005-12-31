@@ -39,27 +39,35 @@ namespace Qt {
 			return (IQXmlLexicalHandlerProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("startDTD(const QString&, const QString&, const QString&)")]
 		public virtual bool StartDTD(string name, string publicId, string systemId) {
 			return ProxyQXmlLexicalHandler().StartDTD(name,publicId,systemId);
 		}
+		[SmokeMethod("endDTD()")]
 		public virtual bool EndDTD() {
 			return ProxyQXmlLexicalHandler().EndDTD();
 		}
+		[SmokeMethod("startEntity(const QString&)")]
 		public virtual bool StartEntity(string name) {
 			return ProxyQXmlLexicalHandler().StartEntity(name);
 		}
+		[SmokeMethod("endEntity(const QString&)")]
 		public virtual bool EndEntity(string name) {
 			return ProxyQXmlLexicalHandler().EndEntity(name);
 		}
+		[SmokeMethod("startCDATA()")]
 		public virtual bool StartCDATA() {
 			return ProxyQXmlLexicalHandler().StartCDATA();
 		}
+		[SmokeMethod("endCDATA()")]
 		public virtual bool EndCDATA() {
 			return ProxyQXmlLexicalHandler().EndCDATA();
 		}
+		[SmokeMethod("comment(const QString&)")]
 		public virtual bool Comment(string ch) {
 			return ProxyQXmlLexicalHandler().Comment(ch);
 		}
+		[SmokeMethod("errorString()")]
 		public virtual string ErrorString() {
 			return ProxyQXmlLexicalHandler().ErrorString();
 		}

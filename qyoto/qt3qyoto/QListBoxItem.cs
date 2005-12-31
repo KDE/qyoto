@@ -28,45 +28,59 @@ namespace Qt {
 			return (IQListBoxItemProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("text() const")]
 		public virtual string Text() {
 			return ProxyQListBoxItem().Text();
 		}
+		[SmokeMethod("pixmap() const")]
 		public virtual QPixmap Pixmap() {
 			return ProxyQListBoxItem().Pixmap();
 		}
+		[SmokeMethod("height(const QListBox*) const")]
 		public virtual int Height(QListBox arg1) {
 			return ProxyQListBoxItem().Height(arg1);
 		}
+		[SmokeMethod("width(const QListBox*) const")]
 		public virtual int Width(QListBox arg1) {
 			return ProxyQListBoxItem().Width(arg1);
 		}
+		[SmokeMethod("isSelected() const")]
 		public bool IsSelected() {
 			return ProxyQListBoxItem().IsSelected();
 		}
+		[SmokeMethod("isCurrent() const")]
 		public bool IsCurrent() {
 			return ProxyQListBoxItem().IsCurrent();
 		}
+		[SmokeMethod("selected() const")]
 		public bool Selected() {
 			return ProxyQListBoxItem().Selected();
 		}
+		[SmokeMethod("current() const")]
 		public bool Current() {
 			return ProxyQListBoxItem().Current();
 		}
+		[SmokeMethod("listBox() const")]
 		public QListBox ListBox() {
 			return ProxyQListBoxItem().ListBox();
 		}
+		[SmokeMethod("setSelectable(bool)")]
 		public void SetSelectable(bool b) {
 			ProxyQListBoxItem().SetSelectable(b);
 		}
+		[SmokeMethod("isSelectable() const")]
 		public bool IsSelectable() {
 			return ProxyQListBoxItem().IsSelectable();
 		}
+		[SmokeMethod("next() const")]
 		public QListBoxItem Next() {
 			return ProxyQListBoxItem().Next();
 		}
+		[SmokeMethod("prev() const")]
 		public QListBoxItem Prev() {
 			return ProxyQListBoxItem().Prev();
 		}
+		[SmokeMethod("rtti() const")]
 		public virtual int Rtti() {
 			return ProxyQListBoxItem().Rtti();
 		}

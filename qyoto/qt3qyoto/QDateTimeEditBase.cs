@@ -29,41 +29,65 @@ namespace Qt {
 			return (IQDateTimeEditBaseProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQDateTimeEditBase().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQDateTimeEditBase().ClassName();
 		}
+		[SmokeMethod("setFocusSection(int)")]
 		public virtual bool SetFocusSection(int sec) {
 			return ProxyQDateTimeEditBase().SetFocusSection(sec);
 		}
+		[SmokeMethod("sectionFormattedText(int)")]
 		public virtual string SectionFormattedText(int sec) {
 			return ProxyQDateTimeEditBase().SectionFormattedText(sec);
 		}
+		[SmokeMethod("addNumber(int, int)")]
 		public virtual void AddNumber(int sec, int num) {
 			ProxyQDateTimeEditBase().AddNumber(sec,num);
 		}
+		[SmokeMethod("removeLastNumber(int)")]
 		public virtual void RemoveLastNumber(int sec) {
 			ProxyQDateTimeEditBase().RemoveLastNumber(sec);
 		}
+		[Q_SLOT("stepUp()")]
+		[SmokeMethod("stepUp()")]
 		public virtual void StepUp() {
 			ProxyQDateTimeEditBase().StepUp();
 		}
+		[Q_SLOT("stepDown()")]
+		[SmokeMethod("stepDown()")]
 		public virtual void StepDown() {
 			ProxyQDateTimeEditBase().StepDown();
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQDateTimeEditBase().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQDateTimeEditBase().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQDateTimeEditBase().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQDateTimeEditBase().TrUtf8(arg1);
 		}
+		protected void CreateQDateTimeEditBaseSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQDateTimeEditBaseSignals), this);
+			_signalInterceptor = (IQDateTimeEditBaseSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQDateTimeEditBaseSignals Emit() {
+			return (IQDateTimeEditBaseSignals) _signalInterceptor;
+		}
+	}
+
+	public interface IQDateTimeEditBaseSignals : IQWidgetSignals {
 	}
 }

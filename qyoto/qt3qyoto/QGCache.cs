@@ -35,6 +35,7 @@ namespace Qt {
 			CreateQGCacheProxy();
 			NewQGCache(maxCost,size,kt,caseSensitive,copyKeys);
 		}
+		[SmokeMethod("QGCache(int, uint, QGCache::KeyType, bool, bool)")]
 		private void NewQGCache(int maxCost, uint size, int kt, bool caseSensitive, bool copyKeys) {
 			ProxyQGCache().NewQGCache(maxCost,size,kt,caseSensitive,copyKeys);
 		}
@@ -42,32 +43,41 @@ namespace Qt {
 			CreateQGCacheProxy();
 			NewQGCache(arg1);
 		}
+		[SmokeMethod("QGCache(const QGCache&)")]
 		private void NewQGCache(QGCache arg1) {
 			ProxyQGCache().NewQGCache(arg1);
 		}
+		[SmokeMethod("count() const")]
 		protected new uint Count() {
 			return ProxyQGCache().Count();
 		}
+		[SmokeMethod("size() const")]
 		protected uint Size() {
 			return ProxyQGCache().Size();
 		}
+		[SmokeMethod("maxCost() const")]
 		protected int MaxCost() {
 			return ProxyQGCache().MaxCost();
 		}
+		[SmokeMethod("totalCost() const")]
 		protected int TotalCost() {
 			return ProxyQGCache().TotalCost();
 		}
+		[SmokeMethod("setMaxCost(int)")]
 		protected void SetMaxCost(int maxCost) {
 			ProxyQGCache().SetMaxCost(maxCost);
 		}
+		[SmokeMethod("clear()")]
 		protected new void Clear() {
 			ProxyQGCache().Clear();
 		}
 		// bool insert_string(const QString& arg1,QPtrCollection::Item arg2,int arg3,int arg4); >>>> NOT CONVERTED
 		// bool insert_other(const char* arg1,QPtrCollection::Item arg2,int arg3,int arg4); >>>> NOT CONVERTED
+		[SmokeMethod("remove_string(const QString&)")]
 		protected bool Remove_string(string key) {
 			return ProxyQGCache().Remove_string(key);
 		}
+		[SmokeMethod("remove_other(const char*)")]
 		protected bool Remove_other(string key) {
 			return ProxyQGCache().Remove_other(key);
 		}
@@ -77,6 +87,7 @@ namespace Qt {
 		// QPtrCollection::Item find_string(const QString& arg1); >>>> NOT CONVERTED
 		// QPtrCollection::Item find_other(const char* arg1,bool arg2); >>>> NOT CONVERTED
 		// QPtrCollection::Item find_other(const char* arg1); >>>> NOT CONVERTED
+		[SmokeMethod("statistics() const")]
 		protected void Statistics() {
 			ProxyQGCache().Statistics();
 		}

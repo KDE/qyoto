@@ -29,36 +29,57 @@ namespace Qt {
 			return (IQDataPumpProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQDataPump().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQDataPump().ClassName();
 		}
 		public QDataPump(QDataSource arg1, QDataSink arg2) : this((Type) null) {
 			CreateQDataPumpProxy();
+			CreateQDataPumpSignalProxy();
 			NewQDataPump(arg1,arg2);
 		}
+		[SmokeMethod("QDataPump(QDataSource*, QDataSink*)")]
 		private void NewQDataPump(QDataSource arg1, QDataSink arg2) {
 			ProxyQDataPump().NewQDataPump(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQDataPump().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQDataPump().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQDataPump().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQDataPump().TrUtf8(arg1);
 		}
 		~QDataPump() {
-			ProxyQDataPump().Dispose();
+			DisposeQDataPump();
 		}
 		public new void Dispose() {
-			ProxyQDataPump().Dispose();
+			DisposeQDataPump();
 		}
+		private void DisposeQDataPump() {
+			ProxyQDataPump().DisposeQDataPump();
+		}
+		protected void CreateQDataPumpSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQDataPumpSignals), this);
+			_signalInterceptor = (IQDataPumpSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQDataPumpSignals Emit() {
+			return (IQDataPumpSignals) _signalInterceptor;
+		}
+	}
+
+	public interface IQDataPumpSignals : IQObjectSignals {
 	}
 }

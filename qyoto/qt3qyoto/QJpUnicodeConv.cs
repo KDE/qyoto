@@ -41,90 +41,119 @@ namespace Qt {
 			UDC = 0x0200,
 			IBM_VDC = 0x0400,
 		}
+		[SmokeMethod("asciiToUnicode(uint, uint) const")]
 		public virtual uint AsciiToUnicode(uint h, uint l) {
 			return ProxyQJpUnicodeConv().AsciiToUnicode(h,l);
 		}
+		[SmokeMethod("jisx0201ToUnicode(uint, uint) const")]
 		public uint Jisx0201ToUnicode(uint h, uint l) {
 			return ProxyQJpUnicodeConv().Jisx0201ToUnicode(h,l);
 		}
+		[SmokeMethod("jisx0201LatinToUnicode(uint, uint) const")]
 		public virtual uint Jisx0201LatinToUnicode(uint h, uint l) {
 			return ProxyQJpUnicodeConv().Jisx0201LatinToUnicode(h,l);
 		}
+		[SmokeMethod("jisx0201KanaToUnicode(uint, uint) const")]
 		public uint Jisx0201KanaToUnicode(uint h, uint l) {
 			return ProxyQJpUnicodeConv().Jisx0201KanaToUnicode(h,l);
 		}
+		[SmokeMethod("jisx0208ToUnicode(uint, uint) const")]
 		public virtual uint Jisx0208ToUnicode(uint h, uint l) {
 			return ProxyQJpUnicodeConv().Jisx0208ToUnicode(h,l);
 		}
+		[SmokeMethod("jisx0212ToUnicode(uint, uint) const")]
 		public virtual uint Jisx0212ToUnicode(uint h, uint l) {
 			return ProxyQJpUnicodeConv().Jisx0212ToUnicode(h,l);
 		}
+		[SmokeMethod("asciiToUnicode(uint) const")]
 		public uint AsciiToUnicode(uint ascii) {
 			return ProxyQJpUnicodeConv().AsciiToUnicode(ascii);
 		}
+		[SmokeMethod("jisx0201ToUnicode(uint) const")]
 		public uint Jisx0201ToUnicode(uint jis) {
 			return ProxyQJpUnicodeConv().Jisx0201ToUnicode(jis);
 		}
+		[SmokeMethod("jisx0201LatinToUnicode(uint) const")]
 		public uint Jisx0201LatinToUnicode(uint jis) {
 			return ProxyQJpUnicodeConv().Jisx0201LatinToUnicode(jis);
 		}
+		[SmokeMethod("jisx0201KanaToUnicode(uint) const")]
 		public uint Jisx0201KanaToUnicode(uint jis) {
 			return ProxyQJpUnicodeConv().Jisx0201KanaToUnicode(jis);
 		}
+		[SmokeMethod("jisx0208ToUnicode(uint) const")]
 		public uint Jisx0208ToUnicode(uint jis) {
 			return ProxyQJpUnicodeConv().Jisx0208ToUnicode(jis);
 		}
+		[SmokeMethod("jisx0212ToUnicode(uint) const")]
 		public uint Jisx0212ToUnicode(uint jis) {
 			return ProxyQJpUnicodeConv().Jisx0212ToUnicode(jis);
 		}
+		[SmokeMethod("unicodeToAscii(uint, uint) const")]
 		public virtual uint UnicodeToAscii(uint h, uint l) {
 			return ProxyQJpUnicodeConv().UnicodeToAscii(h,l);
 		}
+		[SmokeMethod("unicodeToJisx0201(uint, uint) const")]
 		public uint UnicodeToJisx0201(uint h, uint l) {
 			return ProxyQJpUnicodeConv().UnicodeToJisx0201(h,l);
 		}
+		[SmokeMethod("unicodeToJisx0201Latin(uint, uint) const")]
 		public virtual uint UnicodeToJisx0201Latin(uint h, uint l) {
 			return ProxyQJpUnicodeConv().UnicodeToJisx0201Latin(h,l);
 		}
+		[SmokeMethod("unicodeToJisx0201Kana(uint, uint) const")]
 		public uint UnicodeToJisx0201Kana(uint h, uint l) {
 			return ProxyQJpUnicodeConv().UnicodeToJisx0201Kana(h,l);
 		}
+		[SmokeMethod("unicodeToJisx0208(uint, uint) const")]
 		public virtual uint UnicodeToJisx0208(uint h, uint l) {
 			return ProxyQJpUnicodeConv().UnicodeToJisx0208(h,l);
 		}
+		[SmokeMethod("unicodeToJisx0212(uint, uint) const")]
 		public virtual uint UnicodeToJisx0212(uint h, uint l) {
 			return ProxyQJpUnicodeConv().UnicodeToJisx0212(h,l);
 		}
+		[SmokeMethod("unicodeToAscii(uint) const")]
 		public uint UnicodeToAscii(uint unicode) {
 			return ProxyQJpUnicodeConv().UnicodeToAscii(unicode);
 		}
+		[SmokeMethod("unicodeToJisx0201(uint) const")]
 		public uint UnicodeToJisx0201(uint unicode) {
 			return ProxyQJpUnicodeConv().UnicodeToJisx0201(unicode);
 		}
+		[SmokeMethod("unicodeToJisx0201Latin(uint) const")]
 		public uint UnicodeToJisx0201Latin(uint unicode) {
 			return ProxyQJpUnicodeConv().UnicodeToJisx0201Latin(unicode);
 		}
+		[SmokeMethod("unicodeToJisx0201Kana(uint) const")]
 		public uint UnicodeToJisx0201Kana(uint unicode) {
 			return ProxyQJpUnicodeConv().UnicodeToJisx0201Kana(unicode);
 		}
+		[SmokeMethod("unicodeToJisx0208(uint) const")]
 		public uint UnicodeToJisx0208(uint unicode) {
 			return ProxyQJpUnicodeConv().UnicodeToJisx0208(unicode);
 		}
+		[SmokeMethod("unicodeToJisx0212(uint) const")]
 		public uint UnicodeToJisx0212(uint unicode) {
 			return ProxyQJpUnicodeConv().UnicodeToJisx0212(unicode);
 		}
+		[SmokeMethod("sjisToUnicode(uint, uint) const")]
 		public uint SjisToUnicode(uint h, uint l) {
 			return ProxyQJpUnicodeConv().SjisToUnicode(h,l);
 		}
+		[SmokeMethod("unicodeToSjis(uint, uint) const")]
 		public uint UnicodeToSjis(uint h, uint l) {
 			return ProxyQJpUnicodeConv().UnicodeToSjis(h,l);
 		}
+		[SmokeMethod("sjisToUnicode(uint) const")]
 		public uint SjisToUnicode(uint sjis) {
 			return ProxyQJpUnicodeConv().SjisToUnicode(sjis);
 		}
+		[SmokeMethod("unicodeToSjis(uint) const")]
 		public uint UnicodeToSjis(uint unicode) {
 			return ProxyQJpUnicodeConv().UnicodeToSjis(unicode);
 		}
+		[SmokeMethod("newConverter(int)")]
 		public static QJpUnicodeConv NewConverter(int rule) {
 			return StaticQJpUnicodeConv().NewConverter(rule);
 		}
@@ -132,14 +161,18 @@ namespace Qt {
 			CreateQJpUnicodeConvProxy();
 			NewQJpUnicodeConv(r);
 		}
+		[SmokeMethod("QJpUnicodeConv(int)")]
 		private void NewQJpUnicodeConv(int r) {
 			ProxyQJpUnicodeConv().NewQJpUnicodeConv(r);
 		}
 		~QJpUnicodeConv() {
-			ProxyQJpUnicodeConv().Dispose();
+			DisposeQJpUnicodeConv();
 		}
 		public void Dispose() {
-			ProxyQJpUnicodeConv().Dispose();
+			DisposeQJpUnicodeConv();
+		}
+		private void DisposeQJpUnicodeConv() {
+			ProxyQJpUnicodeConv().DisposeQJpUnicodeConv();
 		}
 	}
 }

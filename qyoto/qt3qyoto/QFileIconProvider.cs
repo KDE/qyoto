@@ -29,53 +29,79 @@ namespace Qt {
 			return (IQFileIconProviderProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQFileIconProvider().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQFileIconProvider().ClassName();
 		}
 		public QFileIconProvider(QObject parent, string name) : this((Type) null) {
 			CreateQFileIconProviderProxy();
+			CreateQFileIconProviderSignalProxy();
 			NewQFileIconProvider(parent,name);
 		}
+		[SmokeMethod("QFileIconProvider(QObject*, const char*)")]
 		private void NewQFileIconProvider(QObject parent, string name) {
 			ProxyQFileIconProvider().NewQFileIconProvider(parent,name);
 		}
 		public QFileIconProvider(QObject parent) : this((Type) null) {
 			CreateQFileIconProviderProxy();
+			CreateQFileIconProviderSignalProxy();
 			NewQFileIconProvider(parent);
 		}
+		[SmokeMethod("QFileIconProvider(QObject*)")]
 		private void NewQFileIconProvider(QObject parent) {
 			ProxyQFileIconProvider().NewQFileIconProvider(parent);
 		}
 		public QFileIconProvider() : this((Type) null) {
 			CreateQFileIconProviderProxy();
+			CreateQFileIconProviderSignalProxy();
 			NewQFileIconProvider();
 		}
+		[SmokeMethod("QFileIconProvider()")]
 		private void NewQFileIconProvider() {
 			ProxyQFileIconProvider().NewQFileIconProvider();
 		}
+		[SmokeMethod("pixmap(const QFileInfo&)")]
 		public virtual QPixmap Pixmap(QFileInfo arg1) {
 			return ProxyQFileIconProvider().Pixmap(arg1);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQFileIconProvider().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQFileIconProvider().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQFileIconProvider().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQFileIconProvider().TrUtf8(arg1);
 		}
 		~QFileIconProvider() {
-			ProxyQFileIconProvider().Dispose();
+			DisposeQFileIconProvider();
 		}
 		public new void Dispose() {
-			ProxyQFileIconProvider().Dispose();
+			DisposeQFileIconProvider();
 		}
+		private void DisposeQFileIconProvider() {
+			ProxyQFileIconProvider().DisposeQFileIconProvider();
+		}
+		protected void CreateQFileIconProviderSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQFileIconProviderSignals), this);
+			_signalInterceptor = (IQFileIconProviderSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQFileIconProviderSignals Emit() {
+			return (IQFileIconProviderSignals) _signalInterceptor;
+		}
+	}
+
+	public interface IQFileIconProviderSignals : IQObjectSignals {
 	}
 }

@@ -28,6 +28,7 @@ namespace Qt {
 			CreateQWheelEventProxy();
 			NewQWheelEvent(pos,delta,state,orient);
 		}
+		[SmokeMethod("QWheelEvent(const QPoint&, int, int, Qt::Orientation)")]
 		private void NewQWheelEvent(QPoint pos, int delta, int state, int orient) {
 			ProxyQWheelEvent().NewQWheelEvent(pos,delta,state,orient);
 		}
@@ -35,6 +36,7 @@ namespace Qt {
 			CreateQWheelEventProxy();
 			NewQWheelEvent(pos,delta,state);
 		}
+		[SmokeMethod("QWheelEvent(const QPoint&, int, int)")]
 		private void NewQWheelEvent(QPoint pos, int delta, int state) {
 			ProxyQWheelEvent().NewQWheelEvent(pos,delta,state);
 		}
@@ -42,6 +44,7 @@ namespace Qt {
 			CreateQWheelEventProxy();
 			NewQWheelEvent(pos,globalPos,delta,state,orient);
 		}
+		[SmokeMethod("QWheelEvent(const QPoint&, const QPoint&, int, int, Qt::Orientation)")]
 		private void NewQWheelEvent(QPoint pos, QPoint globalPos, int delta, int state, int orient) {
 			ProxyQWheelEvent().NewQWheelEvent(pos,globalPos,delta,state,orient);
 		}
@@ -49,50 +52,66 @@ namespace Qt {
 			CreateQWheelEventProxy();
 			NewQWheelEvent(pos,globalPos,delta,state);
 		}
+		[SmokeMethod("QWheelEvent(const QPoint&, const QPoint&, int, int)")]
 		private void NewQWheelEvent(QPoint pos, QPoint globalPos, int delta, int state) {
 			ProxyQWheelEvent().NewQWheelEvent(pos,globalPos,delta,state);
 		}
+		[SmokeMethod("delta() const")]
 		public int Delta() {
 			return ProxyQWheelEvent().Delta();
 		}
+		[SmokeMethod("pos() const")]
 		public QPoint Pos() {
 			return ProxyQWheelEvent().Pos();
 		}
+		[SmokeMethod("globalPos() const")]
 		public QPoint GlobalPos() {
 			return ProxyQWheelEvent().GlobalPos();
 		}
+		[SmokeMethod("x() const")]
 		public int X() {
 			return ProxyQWheelEvent().X();
 		}
+		[SmokeMethod("y() const")]
 		public int Y() {
 			return ProxyQWheelEvent().Y();
 		}
+		[SmokeMethod("globalX() const")]
 		public int GlobalX() {
 			return ProxyQWheelEvent().GlobalX();
 		}
+		[SmokeMethod("globalY() const")]
 		public int GlobalY() {
 			return ProxyQWheelEvent().GlobalY();
 		}
+		[SmokeMethod("state() const")]
 		public int State() {
 			return ProxyQWheelEvent().State();
 		}
+		[SmokeMethod("orientation() const")]
 		public int Orientation() {
 			return ProxyQWheelEvent().Orientation();
 		}
+		[SmokeMethod("isAccepted() const")]
 		public bool IsAccepted() {
 			return ProxyQWheelEvent().IsAccepted();
 		}
+		[SmokeMethod("accept()")]
 		public void Accept() {
 			ProxyQWheelEvent().Accept();
 		}
+		[SmokeMethod("ignore()")]
 		public void Ignore() {
 			ProxyQWheelEvent().Ignore();
 		}
 		~QWheelEvent() {
-			ProxyQWheelEvent().Dispose();
+			DisposeQWheelEvent();
 		}
 		public new void Dispose() {
-			ProxyQWheelEvent().Dispose();
+			DisposeQWheelEvent();
+		}
+		private void DisposeQWheelEvent() {
+			ProxyQWheelEvent().DisposeQWheelEvent();
 		}
 	}
 }

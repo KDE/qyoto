@@ -28,6 +28,7 @@ namespace Qt {
 			CreateQCanvasEllipseProxy();
 			NewQCanvasEllipse(canvas);
 		}
+		[SmokeMethod("QCanvasEllipse(QCanvas*)")]
 		private void NewQCanvasEllipse(QCanvas canvas) {
 			ProxyQCanvasEllipse().NewQCanvasEllipse(canvas);
 		}
@@ -35,6 +36,7 @@ namespace Qt {
 			CreateQCanvasEllipseProxy();
 			NewQCanvasEllipse(width,height,canvas);
 		}
+		[SmokeMethod("QCanvasEllipse(int, int, QCanvas*)")]
 		private void NewQCanvasEllipse(int width, int height, QCanvas canvas) {
 			ProxyQCanvasEllipse().NewQCanvasEllipse(width,height,canvas);
 		}
@@ -42,44 +44,58 @@ namespace Qt {
 			CreateQCanvasEllipseProxy();
 			NewQCanvasEllipse(width,height,startangle,angle,canvas);
 		}
+		[SmokeMethod("QCanvasEllipse(int, int, int, int, QCanvas*)")]
 		private void NewQCanvasEllipse(int width, int height, int startangle, int angle, QCanvas canvas) {
 			ProxyQCanvasEllipse().NewQCanvasEllipse(width,height,startangle,angle,canvas);
 		}
+		[SmokeMethod("width() const")]
 		public int Width() {
 			return ProxyQCanvasEllipse().Width();
 		}
+		[SmokeMethod("height() const")]
 		public int Height() {
 			return ProxyQCanvasEllipse().Height();
 		}
+		[SmokeMethod("setSize(int, int)")]
 		public void SetSize(int w, int h) {
 			ProxyQCanvasEllipse().SetSize(w,h);
 		}
+		[SmokeMethod("setAngles(int, int)")]
 		public void SetAngles(int start, int length) {
 			ProxyQCanvasEllipse().SetAngles(start,length);
 		}
+		[SmokeMethod("angleStart() const")]
 		public int AngleStart() {
 			return ProxyQCanvasEllipse().AngleStart();
 		}
+		[SmokeMethod("angleLength() const")]
 		public int AngleLength() {
 			return ProxyQCanvasEllipse().AngleLength();
 		}
+		[SmokeMethod("areaPoints() const")]
 		public new QPointArray AreaPoints() {
 			return ProxyQCanvasEllipse().AreaPoints();
 		}
+		[SmokeMethod("collidesWith(const QCanvasItem*) const")]
 		public new bool CollidesWith(QCanvasItem arg1) {
 			return ProxyQCanvasEllipse().CollidesWith(arg1);
 		}
+		[SmokeMethod("rtti() const")]
 		public new int Rtti() {
 			return ProxyQCanvasEllipse().Rtti();
 		}
+		[SmokeMethod("drawShape(QPainter&)")]
 		protected new void DrawShape(QPainter arg1) {
 			ProxyQCanvasEllipse().DrawShape(arg1);
 		}
 		~QCanvasEllipse() {
-			ProxyQCanvasEllipse().Dispose();
+			DisposeQCanvasEllipse();
 		}
 		public new void Dispose() {
-			ProxyQCanvasEllipse().Dispose();
+			DisposeQCanvasEllipse();
+		}
+		private void DisposeQCanvasEllipse() {
+			ProxyQCanvasEllipse().DisposeQCanvasEllipse();
 		}
 	}
 }

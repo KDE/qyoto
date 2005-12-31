@@ -38,237 +38,327 @@ namespace Qt {
 			Right = Below,
 			Both = 3,
 		}
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQSlider().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQSlider().ClassName();
 		}
 		public QSlider(QWidget parent, string name) : this((Type) null) {
 			CreateQSliderProxy();
+			CreateQSliderSignalProxy();
 			NewQSlider(parent,name);
 		}
+		[SmokeMethod("QSlider(QWidget*, const char*)")]
 		private void NewQSlider(QWidget parent, string name) {
 			ProxyQSlider().NewQSlider(parent,name);
 		}
 		public QSlider(QWidget parent) : this((Type) null) {
 			CreateQSliderProxy();
+			CreateQSliderSignalProxy();
 			NewQSlider(parent);
 		}
+		[SmokeMethod("QSlider(QWidget*)")]
 		private void NewQSlider(QWidget parent) {
 			ProxyQSlider().NewQSlider(parent);
 		}
 		public QSlider(int arg1, QWidget parent, string name) : this((Type) null) {
 			CreateQSliderProxy();
+			CreateQSliderSignalProxy();
 			NewQSlider(arg1,parent,name);
 		}
+		[SmokeMethod("QSlider(Qt::Orientation, QWidget*, const char*)")]
 		private void NewQSlider(int arg1, QWidget parent, string name) {
 			ProxyQSlider().NewQSlider(arg1,parent,name);
 		}
 		public QSlider(int arg1, QWidget parent) : this((Type) null) {
 			CreateQSliderProxy();
+			CreateQSliderSignalProxy();
 			NewQSlider(arg1,parent);
 		}
+		[SmokeMethod("QSlider(Qt::Orientation, QWidget*)")]
 		private void NewQSlider(int arg1, QWidget parent) {
 			ProxyQSlider().NewQSlider(arg1,parent);
 		}
 		public QSlider(int minValue, int maxValue, int pageStep, int value, int arg5, QWidget parent, string name) : this((Type) null) {
 			CreateQSliderProxy();
+			CreateQSliderSignalProxy();
 			NewQSlider(minValue,maxValue,pageStep,value,arg5,parent,name);
 		}
+		[SmokeMethod("QSlider(int, int, int, int, Qt::Orientation, QWidget*, const char*)")]
 		private void NewQSlider(int minValue, int maxValue, int pageStep, int value, int arg5, QWidget parent, string name) {
 			ProxyQSlider().NewQSlider(minValue,maxValue,pageStep,value,arg5,parent,name);
 		}
 		public QSlider(int minValue, int maxValue, int pageStep, int value, int arg5, QWidget parent) : this((Type) null) {
 			CreateQSliderProxy();
+			CreateQSliderSignalProxy();
 			NewQSlider(minValue,maxValue,pageStep,value,arg5,parent);
 		}
+		[SmokeMethod("QSlider(int, int, int, int, Qt::Orientation, QWidget*)")]
 		private void NewQSlider(int minValue, int maxValue, int pageStep, int value, int arg5, QWidget parent) {
 			ProxyQSlider().NewQSlider(minValue,maxValue,pageStep,value,arg5,parent);
 		}
+		[SmokeMethod("setOrientation(Qt::Orientation)")]
 		public virtual void SetOrientation(int arg1) {
 			ProxyQSlider().SetOrientation(arg1);
 		}
+		[SmokeMethod("orientation() const")]
 		public int Orientation() {
 			return ProxyQSlider().Orientation();
 		}
+		[SmokeMethod("setTracking(bool)")]
 		public virtual void SetTracking(bool enable) {
 			ProxyQSlider().SetTracking(enable);
 		}
+		[SmokeMethod("tracking() const")]
 		public bool Tracking() {
 			return ProxyQSlider().Tracking();
 		}
+		[SmokeMethod("setPalette(const QPalette&)")]
 		public new virtual void SetPalette(QPalette arg1) {
 			ProxyQSlider().SetPalette(arg1);
 		}
+		[SmokeMethod("sliderStart() const")]
 		public int SliderStart() {
 			return ProxyQSlider().SliderStart();
 		}
+		[SmokeMethod("sliderRect() const")]
 		public QRect SliderRect() {
 			return ProxyQSlider().SliderRect();
 		}
+		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {
 			return ProxyQSlider().SizeHint();
 		}
+		[SmokeMethod("setSizePolicy(QSizePolicy)")]
 		public new void SetSizePolicy(QSizePolicy sp) {
 			ProxyQSlider().SetSizePolicy(sp);
 		}
+		[SmokeMethod("setSizePolicy(QSizePolicy::SizeType, QSizePolicy::SizeType, bool)")]
 		public new void SetSizePolicy(int hor, int ver, bool hfw) {
 			ProxyQSlider().SetSizePolicy(hor,ver,hfw);
 		}
+		[SmokeMethod("setSizePolicy(QSizePolicy::SizeType, QSizePolicy::SizeType)")]
 		public new void SetSizePolicy(int hor, int ver) {
 			ProxyQSlider().SetSizePolicy(hor,ver);
 		}
+		[SmokeMethod("sizePolicy() const")]
 		public new QSizePolicy SizePolicy() {
 			return ProxyQSlider().SizePolicy();
 		}
+		[SmokeMethod("minimumSizeHint() const")]
 		public new QSize MinimumSizeHint() {
 			return ProxyQSlider().MinimumSizeHint();
 		}
+		[SmokeMethod("setTickmarks(QSlider::TickSetting)")]
 		public virtual void SetTickmarks(int arg1) {
 			ProxyQSlider().SetTickmarks(arg1);
 		}
+		[SmokeMethod("tickmarks() const")]
 		public int Tickmarks() {
 			return ProxyQSlider().Tickmarks();
 		}
+		[SmokeMethod("setTickInterval(int)")]
 		public virtual void SetTickInterval(int arg1) {
 			ProxyQSlider().SetTickInterval(arg1);
 		}
+		[SmokeMethod("tickInterval() const")]
 		public int TickInterval() {
 			return ProxyQSlider().TickInterval();
 		}
+		[SmokeMethod("minValue() const")]
 		public int MinValue() {
 			return ProxyQSlider().MinValue();
 		}
+		[SmokeMethod("maxValue() const")]
 		public int MaxValue() {
 			return ProxyQSlider().MaxValue();
 		}
+		[SmokeMethod("setMinValue(int)")]
 		public void SetMinValue(int arg1) {
 			ProxyQSlider().SetMinValue(arg1);
 		}
+		[SmokeMethod("setMaxValue(int)")]
 		public void SetMaxValue(int arg1) {
 			ProxyQSlider().SetMaxValue(arg1);
 		}
+		[SmokeMethod("lineStep() const")]
 		public int LineStep() {
 			return ProxyQSlider().LineStep();
 		}
+		[SmokeMethod("pageStep() const")]
 		public int PageStep() {
 			return ProxyQSlider().PageStep();
 		}
+		[SmokeMethod("setLineStep(int)")]
 		public void SetLineStep(int arg1) {
 			ProxyQSlider().SetLineStep(arg1);
 		}
+		[SmokeMethod("setPageStep(int)")]
 		public void SetPageStep(int arg1) {
 			ProxyQSlider().SetPageStep(arg1);
 		}
+		[SmokeMethod("value() const")]
 		public int Value() {
 			return ProxyQSlider().Value();
 		}
+		[Q_SLOT("setValue(int)")]
+		[SmokeMethod("setValue(int)")]
 		public virtual void SetValue(int arg1) {
 			ProxyQSlider().SetValue(arg1);
 		}
+		[Q_SLOT("addStep()")]
+		[SmokeMethod("addStep()")]
 		public void AddStep() {
 			ProxyQSlider().AddStep();
 		}
+		[Q_SLOT("subtractStep()")]
+		[SmokeMethod("subtractStep()")]
 		public void SubtractStep() {
 			ProxyQSlider().SubtractStep();
 		}
+		[Q_SLOT("addLine()")]
+		[SmokeMethod("addLine()")]
 		public void AddLine() {
 			ProxyQSlider().AddLine();
 		}
+		[Q_SLOT("subtractLine()")]
+		[SmokeMethod("subtractLine()")]
 		public void SubtractLine() {
 			ProxyQSlider().SubtractLine();
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQSlider().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQSlider().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQSlider().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQSlider().TrUtf8(arg1);
 		}
+		[SmokeMethod("resizeEvent(QResizeEvent*)")]
 		protected new void ResizeEvent(QResizeEvent arg1) {
 			ProxyQSlider().ResizeEvent(arg1);
 		}
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected new void PaintEvent(QPaintEvent arg1) {
 			ProxyQSlider().PaintEvent(arg1);
 		}
+		[SmokeMethod("keyPressEvent(QKeyEvent*)")]
 		protected new void KeyPressEvent(QKeyEvent arg1) {
 			ProxyQSlider().KeyPressEvent(arg1);
 		}
+		[SmokeMethod("mousePressEvent(QMouseEvent*)")]
 		protected new void MousePressEvent(QMouseEvent arg1) {
 			ProxyQSlider().MousePressEvent(arg1);
 		}
+		[SmokeMethod("mouseReleaseEvent(QMouseEvent*)")]
 		protected new void MouseReleaseEvent(QMouseEvent arg1) {
 			ProxyQSlider().MouseReleaseEvent(arg1);
 		}
+		[SmokeMethod("mouseMoveEvent(QMouseEvent*)")]
 		protected new void MouseMoveEvent(QMouseEvent arg1) {
 			ProxyQSlider().MouseMoveEvent(arg1);
 		}
+		[SmokeMethod("wheelEvent(QWheelEvent*)")]
 		protected new void WheelEvent(QWheelEvent arg1) {
 			ProxyQSlider().WheelEvent(arg1);
 		}
+		[SmokeMethod("focusInEvent(QFocusEvent*)")]
 		protected new void FocusInEvent(QFocusEvent e) {
 			ProxyQSlider().FocusInEvent(e);
 		}
+		[SmokeMethod("focusOutEvent(QFocusEvent*)")]
 		protected new void FocusOutEvent(QFocusEvent e) {
 			ProxyQSlider().FocusOutEvent(e);
 		}
+		[SmokeMethod("styleChange(QStyle&)")]
 		public new void StyleChange(QStyle arg1) {
 			ProxyQSlider().StyleChange(arg1);
 		}
+		[SmokeMethod("valueChange()")]
 		protected void ValueChange() {
 			ProxyQSlider().ValueChange();
 		}
+		[SmokeMethod("rangeChange()")]
 		protected void RangeChange() {
 			ProxyQSlider().RangeChange();
 		}
 		~QSlider() {
-			ProxyQSlider().Dispose();
+			DisposeQSlider();
 		}
 		public new void Dispose() {
-			ProxyQSlider().Dispose();
+			DisposeQSlider();
 		}
+		private void DisposeQSlider() {
+			ProxyQSlider().DisposeQSlider();
+		}
+		[SmokeMethod("addPage()")]
 		public void AddPage() {
 			ProxyQSlider().AddPage();
 		}
+		[SmokeMethod("subtractPage()")]
 		public void SubtractPage() {
 			ProxyQSlider().SubtractPage();
 		}
+		[SmokeMethod("setRange(int, int)")]
 		public void SetRange(int minValue, int maxValue) {
 			ProxyQSlider().SetRange(minValue,maxValue);
 		}
+		[SmokeMethod("setSteps(int, int)")]
 		public void SetSteps(int line, int page) {
 			ProxyQSlider().SetSteps(line,page);
 		}
+		[SmokeMethod("bound(int) const")]
 		public int Bound(int arg1) {
 			return ProxyQSlider().Bound(arg1);
 		}
+		[SmokeMethod("positionFromValue(int, int) const")]
 		protected int PositionFromValue(int val, int space) {
 			return ProxyQSlider().PositionFromValue(val,space);
 		}
+		[SmokeMethod("valueFromPosition(int, int) const")]
 		protected int ValueFromPosition(int pos, int space) {
 			return ProxyQSlider().ValueFromPosition(pos,space);
 		}
+		[SmokeMethod("directSetValue(int)")]
 		protected void DirectSetValue(int val) {
 			ProxyQSlider().DirectSetValue(val);
 		}
+		[SmokeMethod("prevValue() const")]
 		protected int PrevValue() {
 			return ProxyQSlider().PrevValue();
 		}
+		[SmokeMethod("stepChange()")]
 		protected virtual void StepChange() {
 			ProxyQSlider().StepChange();
 		}
+		protected void CreateQSliderSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQSliderSignals), this);
+			_signalInterceptor = (IQSliderSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQSliderSignals Emit() {
+			return (IQSliderSignals) _signalInterceptor;
+		}
 	}
 
-	public interface IQSliderSignals {
+	public interface IQSliderSignals : IQWidgetSignals {
+		[Q_SIGNAL("valueChanged(int)")]
 		void ValueChanged(int value);
+		[Q_SIGNAL("sliderPressed()")]
 		void SliderPressed();
+		[Q_SIGNAL("sliderMoved(int)")]
 		void SliderMoved(int value);
+		[Q_SIGNAL("sliderReleased()")]
 		void SliderReleased();
 	}
 }

@@ -32,6 +32,7 @@ namespace Qt {
 			CreateQGCacheIteratorProxy();
 			NewQGCacheIterator(arg1);
 		}
+		[SmokeMethod("QGCacheIterator(const QGCache&)")]
 		private void NewQGCacheIterator(QGCache arg1) {
 			ProxyQGCacheIterator().NewQGCacheIterator(arg1);
 		}
@@ -39,27 +40,34 @@ namespace Qt {
 			CreateQGCacheIteratorProxy();
 			NewQGCacheIterator(arg1);
 		}
+		[SmokeMethod("QGCacheIterator(const QGCacheIterator&)")]
 		private void NewQGCacheIterator(QGCacheIterator arg1) {
 			ProxyQGCacheIterator().NewQGCacheIterator(arg1);
 		}
+		[SmokeMethod("count() const")]
 		protected uint Count() {
 			return ProxyQGCacheIterator().Count();
 		}
+		[SmokeMethod("atFirst() const")]
 		protected bool AtFirst() {
 			return ProxyQGCacheIterator().AtFirst();
 		}
+		[SmokeMethod("atLast() const")]
 		protected bool AtLast() {
 			return ProxyQGCacheIterator().AtLast();
 		}
 		// QPtrCollection::Item toFirst(); >>>> NOT CONVERTED
 		// QPtrCollection::Item toLast(); >>>> NOT CONVERTED
 		// QPtrCollection::Item get(); >>>> NOT CONVERTED
+		[SmokeMethod("getKeyString() const")]
 		protected string GetKeyString() {
 			return ProxyQGCacheIterator().GetKeyString();
 		}
+		[SmokeMethod("getKeyAscii() const")]
 		protected string GetKeyAscii() {
 			return ProxyQGCacheIterator().GetKeyAscii();
 		}
+		[SmokeMethod("getKeyInt() const")]
 		protected long GetKeyInt() {
 			return ProxyQGCacheIterator().GetKeyInt();
 		}

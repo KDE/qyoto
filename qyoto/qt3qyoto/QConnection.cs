@@ -31,32 +31,42 @@ namespace Qt {
 			CreateQConnectionProxy();
 			NewQConnection(arg1,arg2,memberName,memberType);
 		}
+		[SmokeMethod("QConnection(const QObject*, int, const char*, int)")]
 		private void NewQConnection(QObject arg1, int arg2, string memberName, int memberType) {
 			ProxyQConnection().NewQConnection(arg1,arg2,memberName,memberType);
 		}
+		[SmokeMethod("isConnected() const")]
 		public bool IsConnected() {
 			return ProxyQConnection().IsConnected();
 		}
+		[SmokeMethod("object() const")]
 		public QObject Object() {
 			return ProxyQConnection().Object();
 		}
+		[SmokeMethod("member() const")]
 		public int Member() {
 			return ProxyQConnection().Member();
 		}
+		[SmokeMethod("memberName() const")]
 		public string MemberName() {
 			return ProxyQConnection().MemberName();
 		}
+		[SmokeMethod("memberType() const")]
 		public int MemberType() {
 			return ProxyQConnection().MemberType();
 		}
+		[SmokeMethod("numArgs() const")]
 		public int NumArgs() {
 			return ProxyQConnection().NumArgs();
 		}
 		~QConnection() {
-			ProxyQConnection().Dispose();
+			DisposeQConnection();
 		}
 		public void Dispose() {
-			ProxyQConnection().Dispose();
+			DisposeQConnection();
+		}
+		private void DisposeQConnection() {
+			ProxyQConnection().DisposeQConnection();
 		}
 	}
 }

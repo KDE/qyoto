@@ -30,29 +30,47 @@ namespace Qt {
 			return (IQStylePluginProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQStylePlugin().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQStylePlugin().ClassName();
 		}
+		[SmokeMethod("keys() const")]
 		public virtual ArrayList Keys() {
 			return ProxyQStylePlugin().Keys();
 		}
+		[SmokeMethod("create(const QString&)")]
 		public virtual QStyle Create(string key) {
 			return ProxyQStylePlugin().Create(key);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQStylePlugin().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQStylePlugin().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQStylePlugin().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQStylePlugin().TrUtf8(arg1);
 		}
+		protected void CreateQStylePluginSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQStylePluginSignals), this);
+			_signalInterceptor = (IQStylePluginSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQStylePluginSignals Emit() {
+			return (IQStylePluginSignals) _signalInterceptor;
+		}
+	}
+
+	public interface IQStylePluginSignals : IQGPluginSignals {
 	}
 }

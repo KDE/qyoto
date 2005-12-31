@@ -29,57 +29,84 @@ namespace Qt {
 			return (IQVBoxProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQVBox().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQVBox().ClassName();
 		}
 		public QVBox(QWidget parent, string name, int f) : this((Type) null) {
 			CreateQVBoxProxy();
+			CreateQVBoxSignalProxy();
 			NewQVBox(parent,name,f);
 		}
+		[SmokeMethod("QVBox(QWidget*, const char*, Qt::WFlags)")]
 		private void NewQVBox(QWidget parent, string name, int f) {
 			ProxyQVBox().NewQVBox(parent,name,f);
 		}
 		public QVBox(QWidget parent, string name) : this((Type) null) {
 			CreateQVBoxProxy();
+			CreateQVBoxSignalProxy();
 			NewQVBox(parent,name);
 		}
+		[SmokeMethod("QVBox(QWidget*, const char*)")]
 		private void NewQVBox(QWidget parent, string name) {
 			ProxyQVBox().NewQVBox(parent,name);
 		}
 		public QVBox(QWidget parent) : this((Type) null) {
 			CreateQVBoxProxy();
+			CreateQVBoxSignalProxy();
 			NewQVBox(parent);
 		}
+		[SmokeMethod("QVBox(QWidget*)")]
 		private void NewQVBox(QWidget parent) {
 			ProxyQVBox().NewQVBox(parent);
 		}
 		public QVBox() : this((Type) null) {
 			CreateQVBoxProxy();
+			CreateQVBoxSignalProxy();
 			NewQVBox();
 		}
+		[SmokeMethod("QVBox()")]
 		private void NewQVBox() {
 			ProxyQVBox().NewQVBox();
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQVBox().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQVBox().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQVBox().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQVBox().TrUtf8(arg1);
 		}
 		~QVBox() {
-			ProxyQVBox().Dispose();
+			DisposeQVBox();
 		}
 		public new void Dispose() {
-			ProxyQVBox().Dispose();
+			DisposeQVBox();
 		}
+		private void DisposeQVBox() {
+			ProxyQVBox().DisposeQVBox();
+		}
+		protected void CreateQVBoxSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQVBoxSignals), this);
+			_signalInterceptor = (IQVBoxSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQVBoxSignals Emit() {
+			return (IQVBoxSignals) _signalInterceptor;
+		}
+	}
+
+	public interface IQVBoxSignals : IQHBoxSignals {
 	}
 }

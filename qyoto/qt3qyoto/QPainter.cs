@@ -62,6 +62,7 @@ namespace Qt {
 			CreateQPainterProxy();
 			NewQPainter();
 		}
+		[SmokeMethod("QPainter()")]
 		private void NewQPainter() {
 			ProxyQPainter().NewQPainter();
 		}
@@ -69,6 +70,7 @@ namespace Qt {
 			CreateQPainterProxy();
 			NewQPainter(arg1,unclipped);
 		}
+		[SmokeMethod("QPainter(const QPaintDevice*, bool)")]
 		private void NewQPainter(IQPaintDevice arg1, bool unclipped) {
 			ProxyQPainter().NewQPainter(arg1,unclipped);
 		}
@@ -76,6 +78,7 @@ namespace Qt {
 			CreateQPainterProxy();
 			NewQPainter(arg1);
 		}
+		[SmokeMethod("QPainter(const QPaintDevice*)")]
 		private void NewQPainter(IQPaintDevice arg1) {
 			ProxyQPainter().NewQPainter(arg1);
 		}
@@ -83,6 +86,7 @@ namespace Qt {
 			CreateQPainterProxy();
 			NewQPainter(arg1,arg2,unclipped);
 		}
+		[SmokeMethod("QPainter(const QPaintDevice*, const QWidget*, bool)")]
 		private void NewQPainter(IQPaintDevice arg1, QWidget arg2, bool unclipped) {
 			ProxyQPainter().NewQPainter(arg1,arg2,unclipped);
 		}
@@ -90,549 +94,730 @@ namespace Qt {
 			CreateQPainterProxy();
 			NewQPainter(arg1,arg2);
 		}
+		[SmokeMethod("QPainter(const QPaintDevice*, const QWidget*)")]
 		private void NewQPainter(IQPaintDevice arg1, QWidget arg2) {
 			ProxyQPainter().NewQPainter(arg1,arg2);
 		}
+		[SmokeMethod("begin(const QPaintDevice*, bool)")]
 		public bool Begin(IQPaintDevice arg1, bool unclipped) {
 			return ProxyQPainter().Begin(arg1,unclipped);
 		}
+		[SmokeMethod("begin(const QPaintDevice*)")]
 		public bool Begin(IQPaintDevice arg1) {
 			return ProxyQPainter().Begin(arg1);
 		}
+		[SmokeMethod("begin(const QPaintDevice*, const QWidget*, bool)")]
 		public bool Begin(IQPaintDevice arg1, QWidget arg2, bool unclipped) {
 			return ProxyQPainter().Begin(arg1,arg2,unclipped);
 		}
+		[SmokeMethod("begin(const QPaintDevice*, const QWidget*)")]
 		public bool Begin(IQPaintDevice arg1, QWidget arg2) {
 			return ProxyQPainter().Begin(arg1,arg2);
 		}
+		[SmokeMethod("end()")]
 		public bool End() {
 			return ProxyQPainter().End();
 		}
+		[SmokeMethod("device() const")]
 		public IQPaintDevice Device() {
 			return ProxyQPainter().Device();
 		}
+		[SmokeMethod("isActive() const")]
 		public bool IsActive() {
 			return ProxyQPainter().IsActive();
 		}
+		[SmokeMethod("flush(const QRegion&, QPainter::CoordinateMode)")]
 		public void Flush(QRegion region, int cm) {
 			ProxyQPainter().Flush(region,cm);
 		}
+		[SmokeMethod("flush(const QRegion&)")]
 		public void Flush(QRegion region) {
 			ProxyQPainter().Flush(region);
 		}
+		[SmokeMethod("flush()")]
 		public void Flush() {
 			ProxyQPainter().Flush();
 		}
+		[SmokeMethod("save()")]
 		public void Save() {
 			ProxyQPainter().Save();
 		}
+		[SmokeMethod("restore()")]
 		public void Restore() {
 			ProxyQPainter().Restore();
 		}
+		[SmokeMethod("fontMetrics() const")]
 		public QFontMetrics FontMetrics() {
 			return ProxyQPainter().FontMetrics();
 		}
+		[SmokeMethod("fontInfo() const")]
 		public QFontInfo FontInfo() {
 			return ProxyQPainter().FontInfo();
 		}
+		[SmokeMethod("font() const")]
 		public QFont Font() {
 			return ProxyQPainter().Font();
 		}
+		[SmokeMethod("setFont(const QFont&)")]
 		public void SetFont(QFont arg1) {
 			ProxyQPainter().SetFont(arg1);
 		}
+		[SmokeMethod("pen() const")]
 		public QPen Pen() {
 			return ProxyQPainter().Pen();
 		}
+		[SmokeMethod("setPen(const QPen&)")]
 		public void SetPen(QPen arg1) {
 			ProxyQPainter().SetPen(arg1);
 		}
+		[SmokeMethod("setPen(Qt::PenStyle)")]
 		public void SetPen(int arg1) {
 			ProxyQPainter().SetPen(arg1);
 		}
+		[SmokeMethod("setPen(const QColor&)")]
 		public void SetPen(QColor arg1) {
 			ProxyQPainter().SetPen(arg1);
 		}
+		[SmokeMethod("brush() const")]
 		public QBrush Brush() {
 			return ProxyQPainter().Brush();
 		}
+		[SmokeMethod("setBrush(const QBrush&)")]
 		public void SetBrush(QBrush arg1) {
 			ProxyQPainter().SetBrush(arg1);
 		}
+		[SmokeMethod("setBrush(Qt::BrushStyle)")]
 		public void SetBrush(int arg1) {
 			ProxyQPainter().SetBrush(arg1);
 		}
+		[SmokeMethod("setBrush(const QColor&)")]
 		public void SetBrush(QColor arg1) {
 			ProxyQPainter().SetBrush(arg1);
 		}
+		[SmokeMethod("pos() const")]
 		public QPoint Pos() {
 			return ProxyQPainter().Pos();
 		}
+		[SmokeMethod("backgroundColor() const")]
 		public QColor BackgroundColor() {
 			return ProxyQPainter().BackgroundColor();
 		}
+		[SmokeMethod("setBackgroundColor(const QColor&)")]
 		public void SetBackgroundColor(QColor arg1) {
 			ProxyQPainter().SetBackgroundColor(arg1);
 		}
+		[SmokeMethod("backgroundMode() const")]
 		public int BackgroundMode() {
 			return ProxyQPainter().BackgroundMode();
 		}
+		[SmokeMethod("setBackgroundMode(Qt::BGMode)")]
 		public void SetBackgroundMode(int arg1) {
 			ProxyQPainter().SetBackgroundMode(arg1);
 		}
+		[SmokeMethod("rasterOp() const")]
 		public int RasterOp() {
 			return ProxyQPainter().RasterOp();
 		}
+		[SmokeMethod("setRasterOp(Qt::RasterOp)")]
 		public void SetRasterOp(int arg1) {
 			ProxyQPainter().SetRasterOp(arg1);
 		}
+		[SmokeMethod("brushOrigin() const")]
 		public QPoint BrushOrigin() {
 			return ProxyQPainter().BrushOrigin();
 		}
+		[SmokeMethod("setBrushOrigin(int, int)")]
 		public void SetBrushOrigin(int x, int y) {
 			ProxyQPainter().SetBrushOrigin(x,y);
 		}
+		[SmokeMethod("setBrushOrigin(const QPoint&)")]
 		public void SetBrushOrigin(QPoint arg1) {
 			ProxyQPainter().SetBrushOrigin(arg1);
 		}
+		[SmokeMethod("hasViewXForm() const")]
 		public bool HasViewXForm() {
 			return ProxyQPainter().HasViewXForm();
 		}
+		[SmokeMethod("hasWorldXForm() const")]
 		public bool HasWorldXForm() {
 			return ProxyQPainter().HasWorldXForm();
 		}
+		[SmokeMethod("setViewXForm(bool)")]
 		public void SetViewXForm(bool arg1) {
 			ProxyQPainter().SetViewXForm(arg1);
 		}
+		[SmokeMethod("window() const")]
 		public QRect Window() {
 			return ProxyQPainter().Window();
 		}
+		[SmokeMethod("setWindow(const QRect&)")]
 		public void SetWindow(QRect arg1) {
 			ProxyQPainter().SetWindow(arg1);
 		}
+		[SmokeMethod("setWindow(int, int, int, int)")]
 		public void SetWindow(int x, int y, int w, int h) {
 			ProxyQPainter().SetWindow(x,y,w,h);
 		}
+		[SmokeMethod("viewport() const")]
 		public QRect Viewport() {
 			return ProxyQPainter().Viewport();
 		}
+		[SmokeMethod("setViewport(const QRect&)")]
 		public void SetViewport(QRect arg1) {
 			ProxyQPainter().SetViewport(arg1);
 		}
+		[SmokeMethod("setViewport(int, int, int, int)")]
 		public void SetViewport(int x, int y, int w, int h) {
 			ProxyQPainter().SetViewport(x,y,w,h);
 		}
+		[SmokeMethod("setWorldXForm(bool)")]
 		public void SetWorldXForm(bool arg1) {
 			ProxyQPainter().SetWorldXForm(arg1);
 		}
+		[SmokeMethod("worldMatrix() const")]
 		public QWMatrix WorldMatrix() {
 			return ProxyQPainter().WorldMatrix();
 		}
+		[SmokeMethod("setWorldMatrix(const QWMatrix&, bool)")]
 		public void SetWorldMatrix(QWMatrix arg1, bool combine) {
 			ProxyQPainter().SetWorldMatrix(arg1,combine);
 		}
+		[SmokeMethod("setWorldMatrix(const QWMatrix&)")]
 		public void SetWorldMatrix(QWMatrix arg1) {
 			ProxyQPainter().SetWorldMatrix(arg1);
 		}
+		[SmokeMethod("saveWorldMatrix()")]
 		public void SaveWorldMatrix() {
 			ProxyQPainter().SaveWorldMatrix();
 		}
+		[SmokeMethod("restoreWorldMatrix()")]
 		public void RestoreWorldMatrix() {
 			ProxyQPainter().RestoreWorldMatrix();
 		}
+		[SmokeMethod("scale(double, double)")]
 		public void Scale(double sx, double sy) {
 			ProxyQPainter().Scale(sx,sy);
 		}
+		[SmokeMethod("shear(double, double)")]
 		public void Shear(double sh, double sv) {
 			ProxyQPainter().Shear(sh,sv);
 		}
+		[SmokeMethod("rotate(double)")]
 		public void Rotate(double a) {
 			ProxyQPainter().Rotate(a);
 		}
+		[SmokeMethod("translate(double, double)")]
 		public void Translate(double dx, double dy) {
 			ProxyQPainter().Translate(dx,dy);
 		}
+		[SmokeMethod("resetXForm()")]
 		public void ResetXForm() {
 			ProxyQPainter().ResetXForm();
 		}
+		[SmokeMethod("translationX() const")]
 		public double TranslationX() {
 			return ProxyQPainter().TranslationX();
 		}
+		[SmokeMethod("translationY() const")]
 		public double TranslationY() {
 			return ProxyQPainter().TranslationY();
 		}
+		[SmokeMethod("xForm(const QPoint&) const")]
 		public Object XForm(QPoint arg1) {
 			return ProxyQPainter().XForm(arg1);
 		}
+		[SmokeMethod("xForm(const QRect&) const")]
 		public Object XForm(QRect arg1) {
 			return ProxyQPainter().XForm(arg1);
 		}
+		[SmokeMethod("xForm(const QPointArray&) const")]
 		public Object XForm(QPointArray arg1) {
 			return ProxyQPainter().XForm(arg1);
 		}
+		[SmokeMethod("xForm(const QPointArray&, int, int) const")]
 		public Object XForm(QPointArray arg1, int index, int npoints) {
 			return ProxyQPainter().XForm(arg1,index,npoints);
 		}
+		[SmokeMethod("xFormDev(const QPoint&) const")]
 		public QPoint XFormDev(QPoint arg1) {
 			return ProxyQPainter().XFormDev(arg1);
 		}
+		[SmokeMethod("xFormDev(const QRect&) const")]
 		public QRect XFormDev(QRect arg1) {
 			return ProxyQPainter().XFormDev(arg1);
 		}
+		[SmokeMethod("xFormDev(const QPointArray&) const")]
 		public QPointArray XFormDev(QPointArray arg1) {
 			return ProxyQPainter().XFormDev(arg1);
 		}
+		[SmokeMethod("xFormDev(const QPointArray&, int, int) const")]
 		public QPointArray XFormDev(QPointArray arg1, int index, int npoints) {
 			return ProxyQPainter().XFormDev(arg1,index,npoints);
 		}
+		[SmokeMethod("setClipping(bool)")]
 		public void SetClipping(bool arg1) {
 			ProxyQPainter().SetClipping(arg1);
 		}
+		[SmokeMethod("hasClipping() const")]
 		public bool HasClipping() {
 			return ProxyQPainter().HasClipping();
 		}
+		[SmokeMethod("clipRegion(QPainter::CoordinateMode) const")]
 		public QRegion ClipRegion(int arg1) {
 			return ProxyQPainter().ClipRegion(arg1);
 		}
+		[SmokeMethod("clipRegion() const")]
 		public QRegion ClipRegion() {
 			return ProxyQPainter().ClipRegion();
 		}
+		[SmokeMethod("setClipRect(const QRect&, QPainter::CoordinateMode)")]
 		public void SetClipRect(QRect arg1, int arg2) {
 			ProxyQPainter().SetClipRect(arg1,arg2);
 		}
+		[SmokeMethod("setClipRect(const QRect&)")]
 		public void SetClipRect(QRect arg1) {
 			ProxyQPainter().SetClipRect(arg1);
 		}
+		[SmokeMethod("setClipRect(int, int, int, int, QPainter::CoordinateMode)")]
 		public void SetClipRect(int x, int y, int w, int h, int arg5) {
 			ProxyQPainter().SetClipRect(x,y,w,h,arg5);
 		}
+		[SmokeMethod("setClipRect(int, int, int, int)")]
 		public void SetClipRect(int x, int y, int w, int h) {
 			ProxyQPainter().SetClipRect(x,y,w,h);
 		}
+		[SmokeMethod("setClipRegion(const QRegion&, QPainter::CoordinateMode)")]
 		public void SetClipRegion(QRegion arg1, int arg2) {
 			ProxyQPainter().SetClipRegion(arg1,arg2);
 		}
+		[SmokeMethod("setClipRegion(const QRegion&)")]
 		public void SetClipRegion(QRegion arg1) {
 			ProxyQPainter().SetClipRegion(arg1);
 		}
+		[SmokeMethod("drawPoint(int, int)")]
 		public void DrawPoint(int x, int y) {
 			ProxyQPainter().DrawPoint(x,y);
 		}
+		[SmokeMethod("drawPoint(const QPoint&)")]
 		public void DrawPoint(QPoint arg1) {
 			ProxyQPainter().DrawPoint(arg1);
 		}
+		[SmokeMethod("drawPoints(const QPointArray&, int, int)")]
 		public void DrawPoints(QPointArray a, int index, int npoints) {
 			ProxyQPainter().DrawPoints(a,index,npoints);
 		}
+		[SmokeMethod("drawPoints(const QPointArray&, int)")]
 		public void DrawPoints(QPointArray a, int index) {
 			ProxyQPainter().DrawPoints(a,index);
 		}
+		[SmokeMethod("drawPoints(const QPointArray&)")]
 		public void DrawPoints(QPointArray a) {
 			ProxyQPainter().DrawPoints(a);
 		}
+		[SmokeMethod("moveTo(int, int)")]
 		public void MoveTo(int x, int y) {
 			ProxyQPainter().MoveTo(x,y);
 		}
+		[SmokeMethod("moveTo(const QPoint&)")]
 		public void MoveTo(QPoint arg1) {
 			ProxyQPainter().MoveTo(arg1);
 		}
+		[SmokeMethod("lineTo(int, int)")]
 		public void LineTo(int x, int y) {
 			ProxyQPainter().LineTo(x,y);
 		}
+		[SmokeMethod("lineTo(const QPoint&)")]
 		public void LineTo(QPoint arg1) {
 			ProxyQPainter().LineTo(arg1);
 		}
+		[SmokeMethod("drawLine(int, int, int, int)")]
 		public void DrawLine(int x1, int y1, int x2, int y2) {
 			ProxyQPainter().DrawLine(x1,y1,x2,y2);
 		}
+		[SmokeMethod("drawLine(const QPoint&, const QPoint&)")]
 		public void DrawLine(QPoint arg1, QPoint arg2) {
 			ProxyQPainter().DrawLine(arg1,arg2);
 		}
+		[SmokeMethod("drawRect(int, int, int, int)")]
 		public void DrawRect(int x, int y, int w, int h) {
 			ProxyQPainter().DrawRect(x,y,w,h);
 		}
+		[SmokeMethod("drawRect(const QRect&)")]
 		public void DrawRect(QRect arg1) {
 			ProxyQPainter().DrawRect(arg1);
 		}
+		[SmokeMethod("drawWinFocusRect(int, int, int, int)")]
 		public void DrawWinFocusRect(int x, int y, int w, int h) {
 			ProxyQPainter().DrawWinFocusRect(x,y,w,h);
 		}
+		[SmokeMethod("drawWinFocusRect(int, int, int, int, const QColor&)")]
 		public void DrawWinFocusRect(int x, int y, int w, int h, QColor bgColor) {
 			ProxyQPainter().DrawWinFocusRect(x,y,w,h,bgColor);
 		}
+		[SmokeMethod("drawWinFocusRect(const QRect&)")]
 		public void DrawWinFocusRect(QRect arg1) {
 			ProxyQPainter().DrawWinFocusRect(arg1);
 		}
+		[SmokeMethod("drawWinFocusRect(const QRect&, const QColor&)")]
 		public void DrawWinFocusRect(QRect arg1, QColor bgColor) {
 			ProxyQPainter().DrawWinFocusRect(arg1,bgColor);
 		}
+		[SmokeMethod("drawRoundRect(int, int, int, int, int, int)")]
 		public void DrawRoundRect(int x, int y, int w, int h, int arg5, int arg6) {
 			ProxyQPainter().DrawRoundRect(x,y,w,h,arg5,arg6);
 		}
+		[SmokeMethod("drawRoundRect(int, int, int, int, int)")]
 		public void DrawRoundRect(int x, int y, int w, int h, int arg5) {
 			ProxyQPainter().DrawRoundRect(x,y,w,h,arg5);
 		}
+		[SmokeMethod("drawRoundRect(int, int, int, int)")]
 		public void DrawRoundRect(int x, int y, int w, int h) {
 			ProxyQPainter().DrawRoundRect(x,y,w,h);
 		}
+		[SmokeMethod("drawRoundRect(const QRect&, int, int)")]
 		public void DrawRoundRect(QRect arg1, int arg2, int arg3) {
 			ProxyQPainter().DrawRoundRect(arg1,arg2,arg3);
 		}
+		[SmokeMethod("drawRoundRect(const QRect&, int)")]
 		public void DrawRoundRect(QRect arg1, int arg2) {
 			ProxyQPainter().DrawRoundRect(arg1,arg2);
 		}
+		[SmokeMethod("drawRoundRect(const QRect&)")]
 		public void DrawRoundRect(QRect arg1) {
 			ProxyQPainter().DrawRoundRect(arg1);
 		}
+		[SmokeMethod("drawEllipse(int, int, int, int)")]
 		public void DrawEllipse(int x, int y, int w, int h) {
 			ProxyQPainter().DrawEllipse(x,y,w,h);
 		}
+		[SmokeMethod("drawEllipse(const QRect&)")]
 		public void DrawEllipse(QRect arg1) {
 			ProxyQPainter().DrawEllipse(arg1);
 		}
+		[SmokeMethod("drawArc(int, int, int, int, int, int)")]
 		public void DrawArc(int x, int y, int w, int h, int a, int alen) {
 			ProxyQPainter().DrawArc(x,y,w,h,a,alen);
 		}
+		[SmokeMethod("drawArc(const QRect&, int, int)")]
 		public void DrawArc(QRect arg1, int a, int alen) {
 			ProxyQPainter().DrawArc(arg1,a,alen);
 		}
+		[SmokeMethod("drawPie(int, int, int, int, int, int)")]
 		public void DrawPie(int x, int y, int w, int h, int a, int alen) {
 			ProxyQPainter().DrawPie(x,y,w,h,a,alen);
 		}
+		[SmokeMethod("drawPie(const QRect&, int, int)")]
 		public void DrawPie(QRect arg1, int a, int alen) {
 			ProxyQPainter().DrawPie(arg1,a,alen);
 		}
+		[SmokeMethod("drawChord(int, int, int, int, int, int)")]
 		public void DrawChord(int x, int y, int w, int h, int a, int alen) {
 			ProxyQPainter().DrawChord(x,y,w,h,a,alen);
 		}
+		[SmokeMethod("drawChord(const QRect&, int, int)")]
 		public void DrawChord(QRect arg1, int a, int alen) {
 			ProxyQPainter().DrawChord(arg1,a,alen);
 		}
+		[SmokeMethod("drawLineSegments(const QPointArray&, int, int)")]
 		public void DrawLineSegments(QPointArray arg1, int index, int nlines) {
 			ProxyQPainter().DrawLineSegments(arg1,index,nlines);
 		}
+		[SmokeMethod("drawLineSegments(const QPointArray&, int)")]
 		public void DrawLineSegments(QPointArray arg1, int index) {
 			ProxyQPainter().DrawLineSegments(arg1,index);
 		}
+		[SmokeMethod("drawLineSegments(const QPointArray&)")]
 		public void DrawLineSegments(QPointArray arg1) {
 			ProxyQPainter().DrawLineSegments(arg1);
 		}
+		[SmokeMethod("drawPolyline(const QPointArray&, int, int)")]
 		public void DrawPolyline(QPointArray arg1, int index, int npoints) {
 			ProxyQPainter().DrawPolyline(arg1,index,npoints);
 		}
+		[SmokeMethod("drawPolyline(const QPointArray&, int)")]
 		public void DrawPolyline(QPointArray arg1, int index) {
 			ProxyQPainter().DrawPolyline(arg1,index);
 		}
+		[SmokeMethod("drawPolyline(const QPointArray&)")]
 		public void DrawPolyline(QPointArray arg1) {
 			ProxyQPainter().DrawPolyline(arg1);
 		}
+		[SmokeMethod("drawPolygon(const QPointArray&, bool, int, int)")]
 		public void DrawPolygon(QPointArray arg1, bool winding, int index, int npoints) {
 			ProxyQPainter().DrawPolygon(arg1,winding,index,npoints);
 		}
+		[SmokeMethod("drawPolygon(const QPointArray&, bool, int)")]
 		public void DrawPolygon(QPointArray arg1, bool winding, int index) {
 			ProxyQPainter().DrawPolygon(arg1,winding,index);
 		}
+		[SmokeMethod("drawPolygon(const QPointArray&, bool)")]
 		public void DrawPolygon(QPointArray arg1, bool winding) {
 			ProxyQPainter().DrawPolygon(arg1,winding);
 		}
+		[SmokeMethod("drawPolygon(const QPointArray&)")]
 		public void DrawPolygon(QPointArray arg1) {
 			ProxyQPainter().DrawPolygon(arg1);
 		}
+		[SmokeMethod("drawConvexPolygon(const QPointArray&, int, int)")]
 		public void DrawConvexPolygon(QPointArray arg1, int index, int npoints) {
 			ProxyQPainter().DrawConvexPolygon(arg1,index,npoints);
 		}
+		[SmokeMethod("drawConvexPolygon(const QPointArray&, int)")]
 		public void DrawConvexPolygon(QPointArray arg1, int index) {
 			ProxyQPainter().DrawConvexPolygon(arg1,index);
 		}
+		[SmokeMethod("drawConvexPolygon(const QPointArray&)")]
 		public void DrawConvexPolygon(QPointArray arg1) {
 			ProxyQPainter().DrawConvexPolygon(arg1);
 		}
+		[SmokeMethod("drawCubicBezier(const QPointArray&, int)")]
 		public void DrawCubicBezier(QPointArray arg1, int index) {
 			ProxyQPainter().DrawCubicBezier(arg1,index);
 		}
+		[SmokeMethod("drawCubicBezier(const QPointArray&)")]
 		public void DrawCubicBezier(QPointArray arg1) {
 			ProxyQPainter().DrawCubicBezier(arg1);
 		}
+		[SmokeMethod("drawPixmap(int, int, const QPixmap&, int, int, int, int)")]
 		public void DrawPixmap(int x, int y, QPixmap arg3, int sx, int sy, int sw, int sh) {
 			ProxyQPainter().DrawPixmap(x,y,arg3,sx,sy,sw,sh);
 		}
+		[SmokeMethod("drawPixmap(int, int, const QPixmap&, int, int, int)")]
 		public void DrawPixmap(int x, int y, QPixmap arg3, int sx, int sy, int sw) {
 			ProxyQPainter().DrawPixmap(x,y,arg3,sx,sy,sw);
 		}
+		[SmokeMethod("drawPixmap(int, int, const QPixmap&, int, int)")]
 		public void DrawPixmap(int x, int y, QPixmap arg3, int sx, int sy) {
 			ProxyQPainter().DrawPixmap(x,y,arg3,sx,sy);
 		}
+		[SmokeMethod("drawPixmap(int, int, const QPixmap&, int)")]
 		public void DrawPixmap(int x, int y, QPixmap arg3, int sx) {
 			ProxyQPainter().DrawPixmap(x,y,arg3,sx);
 		}
+		[SmokeMethod("drawPixmap(int, int, const QPixmap&)")]
 		public void DrawPixmap(int x, int y, QPixmap arg3) {
 			ProxyQPainter().DrawPixmap(x,y,arg3);
 		}
+		[SmokeMethod("drawPixmap(const QPoint&, const QPixmap&, const QRect&)")]
 		public void DrawPixmap(QPoint arg1, QPixmap arg2, QRect sr) {
 			ProxyQPainter().DrawPixmap(arg1,arg2,sr);
 		}
+		[SmokeMethod("drawPixmap(const QPoint&, const QPixmap&)")]
 		public void DrawPixmap(QPoint arg1, QPixmap arg2) {
 			ProxyQPainter().DrawPixmap(arg1,arg2);
 		}
+		[SmokeMethod("drawPixmap(const QRect&, const QPixmap&)")]
 		public void DrawPixmap(QRect arg1, QPixmap arg2) {
 			ProxyQPainter().DrawPixmap(arg1,arg2);
 		}
+		[SmokeMethod("drawImage(int, int, const QImage&, int, int, int, int, int)")]
 		public void DrawImage(int x, int y, QImage arg3, int sx, int sy, int sw, int sh, int conversionFlags) {
 			ProxyQPainter().DrawImage(x,y,arg3,sx,sy,sw,sh,conversionFlags);
 		}
+		[SmokeMethod("drawImage(int, int, const QImage&, int, int, int, int)")]
 		public void DrawImage(int x, int y, QImage arg3, int sx, int sy, int sw, int sh) {
 			ProxyQPainter().DrawImage(x,y,arg3,sx,sy,sw,sh);
 		}
+		[SmokeMethod("drawImage(int, int, const QImage&, int, int, int)")]
 		public void DrawImage(int x, int y, QImage arg3, int sx, int sy, int sw) {
 			ProxyQPainter().DrawImage(x,y,arg3,sx,sy,sw);
 		}
+		[SmokeMethod("drawImage(int, int, const QImage&, int, int)")]
 		public void DrawImage(int x, int y, QImage arg3, int sx, int sy) {
 			ProxyQPainter().DrawImage(x,y,arg3,sx,sy);
 		}
+		[SmokeMethod("drawImage(int, int, const QImage&, int)")]
 		public void DrawImage(int x, int y, QImage arg3, int sx) {
 			ProxyQPainter().DrawImage(x,y,arg3,sx);
 		}
+		[SmokeMethod("drawImage(int, int, const QImage&)")]
 		public void DrawImage(int x, int y, QImage arg3) {
 			ProxyQPainter().DrawImage(x,y,arg3);
 		}
+		[SmokeMethod("drawImage(const QPoint&, const QImage&, const QRect&, int)")]
 		public void DrawImage(QPoint arg1, QImage arg2, QRect sr, int conversionFlags) {
 			ProxyQPainter().DrawImage(arg1,arg2,sr,conversionFlags);
 		}
+		[SmokeMethod("drawImage(const QPoint&, const QImage&, const QRect&)")]
 		public void DrawImage(QPoint arg1, QImage arg2, QRect sr) {
 			ProxyQPainter().DrawImage(arg1,arg2,sr);
 		}
+		[SmokeMethod("drawImage(const QPoint&, const QImage&, int)")]
 		public void DrawImage(QPoint arg1, QImage arg2, int conversion_flags) {
 			ProxyQPainter().DrawImage(arg1,arg2,conversion_flags);
 		}
+		[SmokeMethod("drawImage(const QPoint&, const QImage&)")]
 		public void DrawImage(QPoint arg1, QImage arg2) {
 			ProxyQPainter().DrawImage(arg1,arg2);
 		}
+		[SmokeMethod("drawImage(const QRect&, const QImage&)")]
 		public void DrawImage(QRect arg1, QImage arg2) {
 			ProxyQPainter().DrawImage(arg1,arg2);
 		}
+		[SmokeMethod("drawTiledPixmap(int, int, int, int, const QPixmap&, int, int)")]
 		public void DrawTiledPixmap(int x, int y, int w, int h, QPixmap arg5, int sx, int sy) {
 			ProxyQPainter().DrawTiledPixmap(x,y,w,h,arg5,sx,sy);
 		}
+		[SmokeMethod("drawTiledPixmap(int, int, int, int, const QPixmap&, int)")]
 		public void DrawTiledPixmap(int x, int y, int w, int h, QPixmap arg5, int sx) {
 			ProxyQPainter().DrawTiledPixmap(x,y,w,h,arg5,sx);
 		}
+		[SmokeMethod("drawTiledPixmap(int, int, int, int, const QPixmap&)")]
 		public void DrawTiledPixmap(int x, int y, int w, int h, QPixmap arg5) {
 			ProxyQPainter().DrawTiledPixmap(x,y,w,h,arg5);
 		}
+		[SmokeMethod("drawTiledPixmap(const QRect&, const QPixmap&, const QPoint&)")]
 		public void DrawTiledPixmap(QRect arg1, QPixmap arg2, QPoint arg3) {
 			ProxyQPainter().DrawTiledPixmap(arg1,arg2,arg3);
 		}
+		[SmokeMethod("drawTiledPixmap(const QRect&, const QPixmap&)")]
 		public void DrawTiledPixmap(QRect arg1, QPixmap arg2) {
 			ProxyQPainter().DrawTiledPixmap(arg1,arg2);
 		}
+		[SmokeMethod("drawPicture(const QPicture&)")]
 		public void DrawPicture(QPicture arg1) {
 			ProxyQPainter().DrawPicture(arg1);
 		}
+		[SmokeMethod("drawPicture(int, int, const QPicture&)")]
 		public void DrawPicture(int x, int y, QPicture arg3) {
 			ProxyQPainter().DrawPicture(x,y,arg3);
 		}
+		[SmokeMethod("drawPicture(const QPoint&, const QPicture&)")]
 		public void DrawPicture(QPoint arg1, QPicture arg2) {
 			ProxyQPainter().DrawPicture(arg1,arg2);
 		}
+		[SmokeMethod("fillRect(int, int, int, int, const QBrush&)")]
 		public void FillRect(int x, int y, int w, int h, QBrush arg5) {
 			ProxyQPainter().FillRect(x,y,w,h,arg5);
 		}
+		[SmokeMethod("fillRect(const QRect&, const QBrush&)")]
 		public void FillRect(QRect arg1, QBrush arg2) {
 			ProxyQPainter().FillRect(arg1,arg2);
 		}
+		[SmokeMethod("eraseRect(int, int, int, int)")]
 		public void EraseRect(int x, int y, int w, int h) {
 			ProxyQPainter().EraseRect(x,y,w,h);
 		}
+		[SmokeMethod("eraseRect(const QRect&)")]
 		public void EraseRect(QRect arg1) {
 			ProxyQPainter().EraseRect(arg1);
 		}
+		[SmokeMethod("drawText(int, int, const QString&, int, QPainter::TextDirection)")]
 		public void DrawText(int x, int y, string arg3, int len, int dir) {
 			ProxyQPainter().DrawText(x,y,arg3,len,dir);
 		}
+		[SmokeMethod("drawText(int, int, const QString&, int)")]
 		public void DrawText(int x, int y, string arg3, int len) {
 			ProxyQPainter().DrawText(x,y,arg3,len);
 		}
+		[SmokeMethod("drawText(int, int, const QString&)")]
 		public void DrawText(int x, int y, string arg3) {
 			ProxyQPainter().DrawText(x,y,arg3);
 		}
+		[SmokeMethod("drawText(const QPoint&, const QString&, int, QPainter::TextDirection)")]
 		public void DrawText(QPoint arg1, string arg2, int len, int dir) {
 			ProxyQPainter().DrawText(arg1,arg2,len,dir);
 		}
+		[SmokeMethod("drawText(const QPoint&, const QString&, int)")]
 		public void DrawText(QPoint arg1, string arg2, int len) {
 			ProxyQPainter().DrawText(arg1,arg2,len);
 		}
+		[SmokeMethod("drawText(const QPoint&, const QString&)")]
 		public void DrawText(QPoint arg1, string arg2) {
 			ProxyQPainter().DrawText(arg1,arg2);
 		}
+		[SmokeMethod("drawText(int, int, const QString&, int, int, QPainter::TextDirection)")]
 		public void DrawText(int x, int y, string arg3, int pos, int len, int dir) {
 			ProxyQPainter().DrawText(x,y,arg3,pos,len,dir);
 		}
+		[SmokeMethod("drawText(const QPoint&, const QString&, int, int, QPainter::TextDirection)")]
 		public void DrawText(QPoint p, string arg2, int pos, int len, int dir) {
 			ProxyQPainter().DrawText(p,arg2,pos,len,dir);
 		}
 		// void drawText(int arg1,int arg2,int arg3,int arg4,int arg5,const QString& arg6,int arg7,QRect* arg8,QTextParag** arg9); >>>> NOT CONVERTED
+		[SmokeMethod("drawText(int, int, int, int, int, const QString&, int, QRect*)")]
 		public void DrawText(int x, int y, int w, int h, int flags, string arg6, int len, QRect br) {
 			ProxyQPainter().DrawText(x,y,w,h,flags,arg6,len,br);
 		}
+		[SmokeMethod("drawText(int, int, int, int, int, const QString&, int)")]
 		public void DrawText(int x, int y, int w, int h, int flags, string arg6, int len) {
 			ProxyQPainter().DrawText(x,y,w,h,flags,arg6,len);
 		}
+		[SmokeMethod("drawText(int, int, int, int, int, const QString&)")]
 		public void DrawText(int x, int y, int w, int h, int flags, string arg6) {
 			ProxyQPainter().DrawText(x,y,w,h,flags,arg6);
 		}
 		// void drawText(const QRect& arg1,int arg2,const QString& arg3,int arg4,QRect* arg5,QTextParag** arg6); >>>> NOT CONVERTED
+		[SmokeMethod("drawText(const QRect&, int, const QString&, int, QRect*)")]
 		public void DrawText(QRect arg1, int flags, string arg3, int len, QRect br) {
 			ProxyQPainter().DrawText(arg1,flags,arg3,len,br);
 		}
+		[SmokeMethod("drawText(const QRect&, int, const QString&, int)")]
 		public void DrawText(QRect arg1, int flags, string arg3, int len) {
 			ProxyQPainter().DrawText(arg1,flags,arg3,len);
 		}
+		[SmokeMethod("drawText(const QRect&, int, const QString&)")]
 		public void DrawText(QRect arg1, int flags, string arg3) {
 			ProxyQPainter().DrawText(arg1,flags,arg3);
 		}
 		// QRect boundingRect(int arg1,int arg2,int arg3,int arg4,int arg5,const QString& arg6,int arg7,QTextParag** arg8); >>>> NOT CONVERTED
+		[SmokeMethod("boundingRect(int, int, int, int, int, const QString&, int)")]
 		public QRect BoundingRect(int x, int y, int w, int h, int flags, string arg6, int len) {
 			return ProxyQPainter().BoundingRect(x,y,w,h,flags,arg6,len);
 		}
+		[SmokeMethod("boundingRect(int, int, int, int, int, const QString&)")]
 		public QRect BoundingRect(int x, int y, int w, int h, int flags, string arg6) {
 			return ProxyQPainter().BoundingRect(x,y,w,h,flags,arg6);
 		}
 		// QRect boundingRect(const QRect& arg1,int arg2,const QString& arg3,int arg4,QTextParag** arg5); >>>> NOT CONVERTED
+		[SmokeMethod("boundingRect(const QRect&, int, const QString&, int)")]
 		public QRect BoundingRect(QRect arg1, int flags, string arg3, int len) {
 			return ProxyQPainter().BoundingRect(arg1,flags,arg3,len);
 		}
+		[SmokeMethod("boundingRect(const QRect&, int, const QString&)")]
 		public QRect BoundingRect(QRect arg1, int flags, string arg3) {
 			return ProxyQPainter().BoundingRect(arg1,flags,arg3);
 		}
+		[SmokeMethod("tabStops() const")]
 		public int TabStops() {
 			return ProxyQPainter().TabStops();
 		}
+		[SmokeMethod("setTabStops(int)")]
 		public void SetTabStops(int arg1) {
 			ProxyQPainter().SetTabStops(arg1);
 		}
+		[SmokeMethod("tabArray() const")]
 		public  int TabArray() {
 			return ProxyQPainter().TabArray();
 		}
+		[SmokeMethod("setTabArray(int*)")]
 		public void SetTabArray(out int arg1) {
 			ProxyQPainter().SetTabArray(out arg1);
 		}
+		[SmokeMethod("redirect(QPaintDevice*, QPaintDevice*)")]
 		public static void Redirect(IQPaintDevice pdev, IQPaintDevice replacement) {
 			StaticQPainter().Redirect(pdev,replacement);
 		}
+		[SmokeMethod("redirect(QPaintDevice*)")]
 		public static IQPaintDevice Redirect(IQPaintDevice pdev) {
 			return StaticQPainter().Redirect(pdev);
 		}
+		[SmokeMethod("initialize()")]
 		public static void Initialize() {
 			StaticQPainter().Initialize();
 		}
+		[SmokeMethod("cleanup()")]
 		public static void Cleanup() {
 			StaticQPainter().Cleanup();
 		}
 		~QPainter() {
-			ProxyQPainter().Dispose();
+			DisposeQPainter();
 		}
 		public void Dispose() {
-			ProxyQPainter().Dispose();
+			DisposeQPainter();
+		}
+		private void DisposeQPainter() {
+			ProxyQPainter().DisposeQPainter();
 		}
 	}
 }

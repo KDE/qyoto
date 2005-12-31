@@ -34,10 +34,13 @@ namespace Qt {
 		// void rebalance(QMapNodeBase* arg1,QMapNodeBase*& arg2); >>>> NOT CONVERTED
 		// QMapNodeBase* removeAndRebalance(QMapNodeBase* arg1,QMapNodeBase*& arg2,QMapNodeBase*& arg3,QMapNodeBase*& arg4); >>>> NOT CONVERTED
 		~QMapPrivateBase() {
-			ProxyQMapPrivateBase().Dispose();
+			DisposeQMapPrivateBase();
 		}
 		public void Dispose() {
-			ProxyQMapPrivateBase().Dispose();
+			DisposeQMapPrivateBase();
+		}
+		private void DisposeQMapPrivateBase() {
+			ProxyQMapPrivateBase().DisposeQMapPrivateBase();
 		}
 	}
 }

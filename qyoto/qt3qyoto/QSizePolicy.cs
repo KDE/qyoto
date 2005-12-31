@@ -56,6 +56,7 @@ namespace Qt {
 			CreateQSizePolicyProxy();
 			NewQSizePolicy();
 		}
+		[SmokeMethod("QSizePolicy()")]
 		private void NewQSizePolicy() {
 			ProxyQSizePolicy().NewQSizePolicy();
 		}
@@ -63,6 +64,7 @@ namespace Qt {
 			CreateQSizePolicyProxy();
 			NewQSizePolicy(hor,ver,hfw);
 		}
+		[SmokeMethod("QSizePolicy(QSizePolicy::SizeType, QSizePolicy::SizeType, bool)")]
 		private void NewQSizePolicy(int hor, int ver, bool hfw) {
 			ProxyQSizePolicy().NewQSizePolicy(hor,ver,hfw);
 		}
@@ -70,6 +72,7 @@ namespace Qt {
 			CreateQSizePolicyProxy();
 			NewQSizePolicy(hor,ver);
 		}
+		[SmokeMethod("QSizePolicy(QSizePolicy::SizeType, QSizePolicy::SizeType)")]
 		private void NewQSizePolicy(int hor, int ver) {
 			ProxyQSizePolicy().NewQSizePolicy(hor,ver);
 		}
@@ -77,6 +80,7 @@ namespace Qt {
 			CreateQSizePolicyProxy();
 			NewQSizePolicy(hor,ver,hors,vers,hfw);
 		}
+		[SmokeMethod("QSizePolicy(QSizePolicy::SizeType, QSizePolicy::SizeType, uchar, uchar, bool)")]
 		private void NewQSizePolicy(int hor, int ver, ushort hors, ushort vers, bool hfw) {
 			ProxyQSizePolicy().NewQSizePolicy(hor,ver,hors,vers,hfw);
 		}
@@ -84,42 +88,55 @@ namespace Qt {
 			CreateQSizePolicyProxy();
 			NewQSizePolicy(hor,ver,hors,vers);
 		}
+		[SmokeMethod("QSizePolicy(QSizePolicy::SizeType, QSizePolicy::SizeType, uchar, uchar)")]
 		private void NewQSizePolicy(int hor, int ver, ushort hors, ushort vers) {
 			ProxyQSizePolicy().NewQSizePolicy(hor,ver,hors,vers);
 		}
+		[SmokeMethod("horData() const")]
 		public int HorData() {
 			return ProxyQSizePolicy().HorData();
 		}
+		[SmokeMethod("verData() const")]
 		public int VerData() {
 			return ProxyQSizePolicy().VerData();
 		}
+		[SmokeMethod("mayShrinkHorizontally() const")]
 		public bool MayShrinkHorizontally() {
 			return ProxyQSizePolicy().MayShrinkHorizontally();
 		}
+		[SmokeMethod("mayShrinkVertically() const")]
 		public bool MayShrinkVertically() {
 			return ProxyQSizePolicy().MayShrinkVertically();
 		}
+		[SmokeMethod("mayGrowHorizontally() const")]
 		public bool MayGrowHorizontally() {
 			return ProxyQSizePolicy().MayGrowHorizontally();
 		}
+		[SmokeMethod("mayGrowVertically() const")]
 		public bool MayGrowVertically() {
 			return ProxyQSizePolicy().MayGrowVertically();
 		}
+		[SmokeMethod("expanding() const")]
 		public int Expanding() {
 			return ProxyQSizePolicy().Expanding();
 		}
+		[SmokeMethod("setHorData(QSizePolicy::SizeType)")]
 		public void SetHorData(int d) {
 			ProxyQSizePolicy().SetHorData(d);
 		}
+		[SmokeMethod("setVerData(QSizePolicy::SizeType)")]
 		public void SetVerData(int d) {
 			ProxyQSizePolicy().SetVerData(d);
 		}
+		[SmokeMethod("setHeightForWidth(bool)")]
 		public void SetHeightForWidth(bool b) {
 			ProxyQSizePolicy().SetHeightForWidth(b);
 		}
+		[SmokeMethod("hasHeightForWidth() const")]
 		public bool HasHeightForWidth() {
 			return ProxyQSizePolicy().HasHeightForWidth();
 		}
+		[SmokeMethod("operator==(const QSizePolicy&) const")]
 		public static bool operator==(QSizePolicy lhs, QSizePolicy s) {
 			return StaticQSizePolicy().op_equals(lhs,s);
 		}
@@ -133,26 +150,34 @@ namespace Qt {
 		public override int GetHashCode() {
 			return ProxyQSizePolicy().GetHashCode();
 		}
+		[SmokeMethod("horStretch() const")]
 		public uint HorStretch() {
 			return ProxyQSizePolicy().HorStretch();
 		}
+		[SmokeMethod("verStretch() const")]
 		public uint VerStretch() {
 			return ProxyQSizePolicy().VerStretch();
 		}
+		[SmokeMethod("setHorStretch(uchar)")]
 		public void SetHorStretch(ushort sf) {
 			ProxyQSizePolicy().SetHorStretch(sf);
 		}
+		[SmokeMethod("setVerStretch(uchar)")]
 		public void SetVerStretch(ushort sf) {
 			ProxyQSizePolicy().SetVerStretch(sf);
 		}
+		[SmokeMethod("transpose()")]
 		public void Transpose() {
 			ProxyQSizePolicy().Transpose();
 		}
 		~QSizePolicy() {
-			ProxyQSizePolicy().Dispose();
+			DisposeQSizePolicy();
 		}
 		public void Dispose() {
-			ProxyQSizePolicy().Dispose();
+			DisposeQSizePolicy();
+		}
+		private void DisposeQSizePolicy() {
+			ProxyQSizePolicy().DisposeQSizePolicy();
 		}
 	}
 }

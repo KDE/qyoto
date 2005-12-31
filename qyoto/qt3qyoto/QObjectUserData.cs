@@ -29,10 +29,13 @@ namespace Qt {
 
 		// QObjectUserData* QObjectUserData(); >>>> NOT CONVERTED
 		~QObjectUserData() {
-			ProxyQObjectUserData().Dispose();
+			DisposeQObjectUserData();
 		}
 		public void Dispose() {
-			ProxyQObjectUserData().Dispose();
+			DisposeQObjectUserData();
+		}
+		private void DisposeQObjectUserData() {
+			ProxyQObjectUserData().DisposeQObjectUserData();
 		}
 	}
 }

@@ -29,6 +29,7 @@ namespace Qt {
 			CreateQCanvasTextProxy();
 			NewQCanvasText(canvas);
 		}
+		[SmokeMethod("QCanvasText(QCanvas*)")]
 		private void NewQCanvasText(QCanvas canvas) {
 			ProxyQCanvasText().NewQCanvasText(canvas);
 		}
@@ -36,6 +37,7 @@ namespace Qt {
 			CreateQCanvasTextProxy();
 			NewQCanvasText(arg1,canvas);
 		}
+		[SmokeMethod("QCanvasText(const QString&, QCanvas*)")]
 		private void NewQCanvasText(string arg1, QCanvas canvas) {
 			ProxyQCanvasText().NewQCanvasText(arg1,canvas);
 		}
@@ -43,53 +45,70 @@ namespace Qt {
 			CreateQCanvasTextProxy();
 			NewQCanvasText(arg1,arg2,canvas);
 		}
+		[SmokeMethod("QCanvasText(const QString&, QFont, QCanvas*)")]
 		private void NewQCanvasText(string arg1, QFont arg2, QCanvas canvas) {
 			ProxyQCanvasText().NewQCanvasText(arg1,arg2,canvas);
 		}
+		[SmokeMethod("setText(const QString&)")]
 		public void SetText(string arg1) {
 			ProxyQCanvasText().SetText(arg1);
 		}
+		[SmokeMethod("setFont(const QFont&)")]
 		public void SetFont(QFont arg1) {
 			ProxyQCanvasText().SetFont(arg1);
 		}
+		[SmokeMethod("setColor(const QColor&)")]
 		public void SetColor(QColor arg1) {
 			ProxyQCanvasText().SetColor(arg1);
 		}
+		[SmokeMethod("text() const")]
 		public string Text() {
 			return ProxyQCanvasText().Text();
 		}
+		[SmokeMethod("font() const")]
 		public QFont Font() {
 			return ProxyQCanvasText().Font();
 		}
+		[SmokeMethod("color() const")]
 		public QColor Color() {
 			return ProxyQCanvasText().Color();
 		}
+		[SmokeMethod("moveBy(double, double)")]
 		public new void MoveBy(double dx, double dy) {
 			ProxyQCanvasText().MoveBy(dx,dy);
 		}
+		[SmokeMethod("textFlags() const")]
 		public int TextFlags() {
 			return ProxyQCanvasText().TextFlags();
 		}
+		[SmokeMethod("setTextFlags(int)")]
 		public void SetTextFlags(int arg1) {
 			ProxyQCanvasText().SetTextFlags(arg1);
 		}
+		[SmokeMethod("boundingRect() const")]
 		public new QRect BoundingRect() {
 			return ProxyQCanvasText().BoundingRect();
 		}
+		[SmokeMethod("collidesWith(const QCanvasItem*) const")]
 		public new bool CollidesWith(QCanvasItem arg1) {
 			return ProxyQCanvasText().CollidesWith(arg1);
 		}
+		[SmokeMethod("rtti() const")]
 		public new int Rtti() {
 			return ProxyQCanvasText().Rtti();
 		}
+		[SmokeMethod("draw(QPainter&)")]
 		public new virtual void Draw(QPainter arg1) {
 			ProxyQCanvasText().Draw(arg1);
 		}
 		~QCanvasText() {
-			ProxyQCanvasText().Dispose();
+			DisposeQCanvasText();
 		}
 		public new void Dispose() {
-			ProxyQCanvasText().Dispose();
+			DisposeQCanvasText();
+		}
+		private void DisposeQCanvasText() {
+			ProxyQCanvasText().DisposeQCanvasText();
 		}
 	}
 }

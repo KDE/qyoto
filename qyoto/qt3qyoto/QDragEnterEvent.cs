@@ -28,14 +28,18 @@ namespace Qt {
 			CreateQDragEnterEventProxy();
 			NewQDragEnterEvent(pos);
 		}
+		[SmokeMethod("QDragEnterEvent(const QPoint&)")]
 		private void NewQDragEnterEvent(QPoint pos) {
 			ProxyQDragEnterEvent().NewQDragEnterEvent(pos);
 		}
 		~QDragEnterEvent() {
-			ProxyQDragEnterEvent().Dispose();
+			DisposeQDragEnterEvent();
 		}
 		public new void Dispose() {
-			ProxyQDragEnterEvent().Dispose();
+			DisposeQDragEnterEvent();
+		}
+		private void DisposeQDragEnterEvent() {
+			ProxyQDragEnterEvent().DisposeQDragEnterEvent();
 		}
 	}
 }

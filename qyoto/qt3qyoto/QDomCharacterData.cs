@@ -29,6 +29,7 @@ namespace Qt {
 			CreateQDomCharacterDataProxy();
 			NewQDomCharacterData();
 		}
+		[SmokeMethod("QDomCharacterData()")]
 		private void NewQDomCharacterData() {
 			ProxyQDomCharacterData().NewQDomCharacterData();
 		}
@@ -36,44 +37,58 @@ namespace Qt {
 			CreateQDomCharacterDataProxy();
 			NewQDomCharacterData(x);
 		}
+		[SmokeMethod("QDomCharacterData(const QDomCharacterData&)")]
 		private void NewQDomCharacterData(QDomCharacterData x) {
 			ProxyQDomCharacterData().NewQDomCharacterData(x);
 		}
+		[SmokeMethod("substringData(unsigned long, unsigned long)")]
 		public virtual string SubstringData(ulong offset, ulong count) {
 			return ProxyQDomCharacterData().SubstringData(offset,count);
 		}
+		[SmokeMethod("appendData(const QString&)")]
 		public virtual void AppendData(string arg) {
 			ProxyQDomCharacterData().AppendData(arg);
 		}
+		[SmokeMethod("insertData(unsigned long, const QString&)")]
 		public virtual void InsertData(ulong offset, string arg) {
 			ProxyQDomCharacterData().InsertData(offset,arg);
 		}
+		[SmokeMethod("deleteData(unsigned long, unsigned long)")]
 		public virtual void DeleteData(ulong offset, ulong count) {
 			ProxyQDomCharacterData().DeleteData(offset,count);
 		}
+		[SmokeMethod("replaceData(unsigned long, unsigned long, const QString&)")]
 		public virtual void ReplaceData(ulong offset, ulong count, string arg) {
 			ProxyQDomCharacterData().ReplaceData(offset,count,arg);
 		}
+		[SmokeMethod("length() const")]
 		public virtual uint Length() {
 			return ProxyQDomCharacterData().Length();
 		}
+		[SmokeMethod("data() const")]
 		public virtual string Data() {
 			return ProxyQDomCharacterData().Data();
 		}
+		[SmokeMethod("setData(const QString&)")]
 		public virtual void SetData(string arg1) {
 			ProxyQDomCharacterData().SetData(arg1);
 		}
+		[SmokeMethod("nodeType() const")]
 		public new int NodeType() {
 			return ProxyQDomCharacterData().NodeType();
 		}
+		[SmokeMethod("isCharacterData() const")]
 		public new bool IsCharacterData() {
 			return ProxyQDomCharacterData().IsCharacterData();
 		}
 		~QDomCharacterData() {
-			ProxyQDomCharacterData().Dispose();
+			DisposeQDomCharacterData();
 		}
 		public new void Dispose() {
-			ProxyQDomCharacterData().Dispose();
+			DisposeQDomCharacterData();
+		}
+		private void DisposeQDomCharacterData() {
+			ProxyQDomCharacterData().DisposeQDomCharacterData();
 		}
 	}
 }

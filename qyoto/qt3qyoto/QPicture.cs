@@ -29,6 +29,7 @@ namespace Qt {
 			CreateQPictureProxy();
 			NewQPicture(formatVersion);
 		}
+		[SmokeMethod("QPicture(int)")]
 		private void NewQPicture(int formatVersion) {
 			ProxyQPicture().NewQPicture(formatVersion);
 		}
@@ -36,6 +37,7 @@ namespace Qt {
 			CreateQPictureProxy();
 			NewQPicture();
 		}
+		[SmokeMethod("QPicture()")]
 		private void NewQPicture() {
 			ProxyQPicture().NewQPicture();
 		}
@@ -43,69 +45,91 @@ namespace Qt {
 			CreateQPictureProxy();
 			NewQPicture(arg1);
 		}
+		[SmokeMethod("QPicture(const QPicture&)")]
 		private void NewQPicture(QPicture arg1) {
 			ProxyQPicture().NewQPicture(arg1);
 		}
+		[SmokeMethod("isNull() const")]
 		public bool IsNull() {
 			return ProxyQPicture().IsNull();
 		}
+		[SmokeMethod("size() const")]
 		public uint Size() {
 			return ProxyQPicture().Size();
 		}
+		[SmokeMethod("data() const")]
 		public string Data() {
 			return ProxyQPicture().Data();
 		}
+		[SmokeMethod("setData(const char*, uint)")]
 		public virtual void SetData(string data, uint size) {
 			ProxyQPicture().SetData(data,size);
 		}
+		[SmokeMethod("play(QPainter*)")]
 		public bool Play(QPainter arg1) {
 			return ProxyQPicture().Play(arg1);
 		}
+		[SmokeMethod("load(QIODevice*, const char*)")]
 		public bool Load(IQIODevice dev, string format) {
 			return ProxyQPicture().Load(dev,format);
 		}
+		[SmokeMethod("load(QIODevice*)")]
 		public bool Load(IQIODevice dev) {
 			return ProxyQPicture().Load(dev);
 		}
+		[SmokeMethod("load(const QString&, const char*)")]
 		public bool Load(string fileName, string format) {
 			return ProxyQPicture().Load(fileName,format);
 		}
+		[SmokeMethod("load(const QString&)")]
 		public bool Load(string fileName) {
 			return ProxyQPicture().Load(fileName);
 		}
+		[SmokeMethod("save(QIODevice*, const char*)")]
 		public bool Save(IQIODevice dev, string format) {
 			return ProxyQPicture().Save(dev,format);
 		}
+		[SmokeMethod("save(QIODevice*)")]
 		public bool Save(IQIODevice dev) {
 			return ProxyQPicture().Save(dev);
 		}
+		[SmokeMethod("save(const QString&, const char*)")]
 		public bool Save(string fileName, string format) {
 			return ProxyQPicture().Save(fileName,format);
 		}
+		[SmokeMethod("save(const QString&)")]
 		public bool Save(string fileName) {
 			return ProxyQPicture().Save(fileName);
 		}
+		[SmokeMethod("boundingRect() const")]
 		public QRect BoundingRect() {
 			return ProxyQPicture().BoundingRect();
 		}
+		[SmokeMethod("setBoundingRect(const QRect&)")]
 		public void SetBoundingRect(QRect r) {
 			ProxyQPicture().SetBoundingRect(r);
 		}
 		// bool cmd(int arg1,QPainter* arg2,QPDevCmdParam* arg3); >>>> NOT CONVERTED
+		[SmokeMethod("metric(int) const")]
 		protected new int Metric(int arg1) {
 			return ProxyQPicture().Metric(arg1);
 		}
+		[SmokeMethod("detach()")]
 		public void Detach() {
 			ProxyQPicture().Detach();
 		}
+		[SmokeMethod("copy() const")]
 		public QPicture Copy() {
 			return ProxyQPicture().Copy();
 		}
 		~QPicture() {
-			ProxyQPicture().Dispose();
+			DisposeQPicture();
 		}
 		public void Dispose() {
-			ProxyQPicture().Dispose();
+			DisposeQPicture();
+		}
+		private void DisposeQPicture() {
+			ProxyQPicture().DisposeQPicture();
 		}
 	}
 }

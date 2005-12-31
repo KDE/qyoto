@@ -33,17 +33,21 @@ namespace Qt {
 			CreateQGDictIteratorProxy();
 			NewQGDictIterator(arg1);
 		}
+		[SmokeMethod("QGDictIterator(const QGDictIterator&)")]
 		private void NewQGDictIterator(QGDictIterator arg1) {
 			ProxyQGDictIterator().NewQGDictIterator(arg1);
 		}
 		// QPtrCollection::Item toFirst(); >>>> NOT CONVERTED
 		// QPtrCollection::Item get(); >>>> NOT CONVERTED
+		[SmokeMethod("getKeyString() const")]
 		public string GetKeyString() {
 			return ProxyQGDictIterator().GetKeyString();
 		}
+		[SmokeMethod("getKeyAscii() const")]
 		public string GetKeyAscii() {
 			return ProxyQGDictIterator().GetKeyAscii();
 		}
+		[SmokeMethod("getKeyInt() const")]
 		public long GetKeyInt() {
 			return ProxyQGDictIterator().GetKeyInt();
 		}
@@ -51,10 +55,13 @@ namespace Qt {
 		// QPtrCollection::Item operator()(); >>>> NOT CONVERTED
 		// QPtrCollection::Item operator++(); >>>> NOT CONVERTED
 		~QGDictIterator() {
-			ProxyQGDictIterator().Dispose();
+			DisposeQGDictIterator();
 		}
 		public void Dispose() {
-			ProxyQGDictIterator().Dispose();
+			DisposeQGDictIterator();
+		}
+		private void DisposeQGDictIterator() {
+			ProxyQGDictIterator().DisposeQGDictIterator();
 		}
 	}
 }

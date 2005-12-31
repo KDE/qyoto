@@ -30,96 +30,136 @@ namespace Qt {
 			return (IQStatusBarProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQStatusBar().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQStatusBar().ClassName();
 		}
 		public QStatusBar(QWidget parent, string name) : this((Type) null) {
 			CreateQStatusBarProxy();
+			CreateQStatusBarSignalProxy();
 			NewQStatusBar(parent,name);
 		}
+		[SmokeMethod("QStatusBar(QWidget*, const char*)")]
 		private void NewQStatusBar(QWidget parent, string name) {
 			ProxyQStatusBar().NewQStatusBar(parent,name);
 		}
 		public QStatusBar(QWidget parent) : this((Type) null) {
 			CreateQStatusBarProxy();
+			CreateQStatusBarSignalProxy();
 			NewQStatusBar(parent);
 		}
+		[SmokeMethod("QStatusBar(QWidget*)")]
 		private void NewQStatusBar(QWidget parent) {
 			ProxyQStatusBar().NewQStatusBar(parent);
 		}
 		public QStatusBar() : this((Type) null) {
 			CreateQStatusBarProxy();
+			CreateQStatusBarSignalProxy();
 			NewQStatusBar();
 		}
+		[SmokeMethod("QStatusBar()")]
 		private void NewQStatusBar() {
 			ProxyQStatusBar().NewQStatusBar();
 		}
+		[SmokeMethod("addWidget(QWidget*, int, bool)")]
 		public virtual void AddWidget(QWidget arg1, int stretch, bool arg3) {
 			ProxyQStatusBar().AddWidget(arg1,stretch,arg3);
 		}
+		[SmokeMethod("addWidget(QWidget*, int)")]
 		public virtual void AddWidget(QWidget arg1, int stretch) {
 			ProxyQStatusBar().AddWidget(arg1,stretch);
 		}
+		[SmokeMethod("addWidget(QWidget*)")]
 		public virtual void AddWidget(QWidget arg1) {
 			ProxyQStatusBar().AddWidget(arg1);
 		}
+		[SmokeMethod("removeWidget(QWidget*)")]
 		public virtual void RemoveWidget(QWidget arg1) {
 			ProxyQStatusBar().RemoveWidget(arg1);
 		}
+		[SmokeMethod("setSizeGripEnabled(bool)")]
 		public void SetSizeGripEnabled(bool arg1) {
 			ProxyQStatusBar().SetSizeGripEnabled(arg1);
 		}
+		[SmokeMethod("isSizeGripEnabled() const")]
 		public bool IsSizeGripEnabled() {
 			return ProxyQStatusBar().IsSizeGripEnabled();
 		}
+		[Q_SLOT("message(const QString&)")]
+		[SmokeMethod("message(const QString&)")]
 		public void Message(string arg1) {
 			ProxyQStatusBar().Message(arg1);
 		}
+		[Q_SLOT("message(const QString&, int)")]
+		[SmokeMethod("message(const QString&, int)")]
 		public void Message(string arg1, int arg2) {
 			ProxyQStatusBar().Message(arg1,arg2);
 		}
+		[Q_SLOT("clear()")]
+		[SmokeMethod("clear()")]
 		public void Clear() {
 			ProxyQStatusBar().Clear();
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQStatusBar().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQStatusBar().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQStatusBar().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQStatusBar().TrUtf8(arg1);
 		}
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected new void PaintEvent(QPaintEvent arg1) {
 			ProxyQStatusBar().PaintEvent(arg1);
 		}
+		[SmokeMethod("resizeEvent(QResizeEvent*)")]
 		protected new void ResizeEvent(QResizeEvent arg1) {
 			ProxyQStatusBar().ResizeEvent(arg1);
 		}
+		[SmokeMethod("reformat()")]
 		protected void Reformat() {
 			ProxyQStatusBar().Reformat();
 		}
+		[SmokeMethod("hideOrShow()")]
 		protected void HideOrShow() {
 			ProxyQStatusBar().HideOrShow();
 		}
+		[SmokeMethod("event(QEvent*)")]
 		public new bool Event(QEvent arg1) {
 			return ProxyQStatusBar().Event(arg1);
 		}
 		~QStatusBar() {
-			ProxyQStatusBar().Dispose();
+			DisposeQStatusBar();
 		}
 		public new void Dispose() {
-			ProxyQStatusBar().Dispose();
+			DisposeQStatusBar();
+		}
+		private void DisposeQStatusBar() {
+			ProxyQStatusBar().DisposeQStatusBar();
+		}
+		protected void CreateQStatusBarSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQStatusBarSignals), this);
+			_signalInterceptor = (IQStatusBarSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQStatusBarSignals Emit() {
+			return (IQStatusBarSignals) _signalInterceptor;
 		}
 	}
 
-	public interface IQStatusBarSignals {
+	public interface IQStatusBarSignals : IQWidgetSignals {
+		[Q_SIGNAL("messageChanged(const QString&)")]
 		void MessageChanged(string text);
 	}
 }

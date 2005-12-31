@@ -33,6 +33,7 @@ namespace Qt {
 			CreateQSqlRecordProxy();
 			NewQSqlRecord();
 		}
+		[SmokeMethod("QSqlRecord()")]
 		private void NewQSqlRecord() {
 			ProxyQSqlRecord().NewQSqlRecord();
 		}
@@ -40,104 +41,138 @@ namespace Qt {
 			CreateQSqlRecordProxy();
 			NewQSqlRecord(other);
 		}
+		[SmokeMethod("QSqlRecord(const QSqlRecord&)")]
 		private void NewQSqlRecord(QSqlRecord other) {
 			ProxyQSqlRecord().NewQSqlRecord(other);
 		}
+		[SmokeMethod("value(int) const")]
 		public virtual QVariant Value(int i) {
 			return ProxyQSqlRecord().Value(i);
 		}
+		[SmokeMethod("value(const QString&) const")]
 		public virtual QVariant Value(string name) {
 			return ProxyQSqlRecord().Value(name);
 		}
+		[SmokeMethod("setValue(int, const QVariant&)")]
 		public virtual void SetValue(int i, QVariant val) {
 			ProxyQSqlRecord().SetValue(i,val);
 		}
+		[SmokeMethod("setValue(const QString&, const QVariant&)")]
 		public virtual void SetValue(string name, QVariant val) {
 			ProxyQSqlRecord().SetValue(name,val);
 		}
+		[SmokeMethod("isGenerated(int) const")]
 		public bool IsGenerated(int i) {
 			return ProxyQSqlRecord().IsGenerated(i);
 		}
+		[SmokeMethod("isGenerated(const QString&) const")]
 		public bool IsGenerated(string name) {
 			return ProxyQSqlRecord().IsGenerated(name);
 		}
+		[SmokeMethod("setGenerated(const QString&, bool)")]
 		public virtual void SetGenerated(string name, bool generated) {
 			ProxyQSqlRecord().SetGenerated(name,generated);
 		}
+		[SmokeMethod("setGenerated(int, bool)")]
 		public virtual void SetGenerated(int i, bool generated) {
 			ProxyQSqlRecord().SetGenerated(i,generated);
 		}
+		[SmokeMethod("setNull(int)")]
 		public virtual void SetNull(int i) {
 			ProxyQSqlRecord().SetNull(i);
 		}
+		[SmokeMethod("setNull(const QString&)")]
 		public virtual void SetNull(string name) {
 			ProxyQSqlRecord().SetNull(name);
 		}
+		[SmokeMethod("isNull(int)")]
 		public bool IsNull(int i) {
 			return ProxyQSqlRecord().IsNull(i);
 		}
+		[SmokeMethod("isNull(const QString&)")]
 		public bool IsNull(string name) {
 			return ProxyQSqlRecord().IsNull(name);
 		}
+		[SmokeMethod("position(const QString&) const")]
 		public int Position(string name) {
 			return ProxyQSqlRecord().Position(name);
 		}
+		[SmokeMethod("fieldName(int) const")]
 		public string FieldName(int i) {
 			return ProxyQSqlRecord().FieldName(i);
 		}
+		[SmokeMethod("field(int)")]
 		public QSqlField Field(int i) {
 			return ProxyQSqlRecord().Field(i);
 		}
+		[SmokeMethod("field(const QString&)")]
 		public QSqlField Field(string name) {
 			return ProxyQSqlRecord().Field(name);
 		}
+		[SmokeMethod("append(const QSqlField&)")]
 		public virtual void Append(QSqlField field) {
 			ProxyQSqlRecord().Append(field);
 		}
+		[SmokeMethod("insert(int, const QSqlField&)")]
 		public virtual void Insert(int pos, QSqlField field) {
 			ProxyQSqlRecord().Insert(pos,field);
 		}
+		[SmokeMethod("remove(int)")]
 		public virtual void Remove(int pos) {
 			ProxyQSqlRecord().Remove(pos);
 		}
+		[SmokeMethod("isEmpty() const")]
 		public bool IsEmpty() {
 			return ProxyQSqlRecord().IsEmpty();
 		}
+		[SmokeMethod("contains(const QString&) const")]
 		public bool Contains(string name) {
 			return ProxyQSqlRecord().Contains(name);
 		}
+		[SmokeMethod("clear()")]
 		public virtual void Clear() {
 			ProxyQSqlRecord().Clear();
 		}
+		[SmokeMethod("clearValues(bool)")]
 		public virtual void ClearValues(bool nullify) {
 			ProxyQSqlRecord().ClearValues(nullify);
 		}
+		[SmokeMethod("clearValues()")]
 		public virtual void ClearValues() {
 			ProxyQSqlRecord().ClearValues();
 		}
+		[SmokeMethod("count() const")]
 		public uint Count() {
 			return ProxyQSqlRecord().Count();
 		}
+		[SmokeMethod("toString(const QString&, const QString&) const")]
 		public new virtual string ToString(string prefix, string sep) {
 			return ProxyQSqlRecord().ToString(prefix,sep);
 		}
+		[SmokeMethod("toString(const QString&) const")]
 		public new virtual string ToString(string prefix) {
 			return ProxyQSqlRecord().ToString(prefix);
 		}
+		[SmokeMethod("toString() const")]
 		public new virtual string ToString() {
 			return ProxyQSqlRecord().ToString();
 		}
+		[SmokeMethod("toStringList(const QString&) const")]
 		public virtual ArrayList ToStringList(string prefix) {
 			return ProxyQSqlRecord().ToStringList(prefix);
 		}
+		[SmokeMethod("toStringList() const")]
 		public virtual ArrayList ToStringList() {
 			return ProxyQSqlRecord().ToStringList();
 		}
 		~QSqlRecord() {
-			ProxyQSqlRecord().Dispose();
+			DisposeQSqlRecord();
 		}
 		public void Dispose() {
-			ProxyQSqlRecord().Dispose();
+			DisposeQSqlRecord();
+		}
+		private void DisposeQSqlRecord() {
+			ProxyQSqlRecord().DisposeQSqlRecord();
 		}
 	}
 }

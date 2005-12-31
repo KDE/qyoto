@@ -29,93 +29,133 @@ namespace Qt {
 			return (IQCheckBoxProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQCheckBox().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQCheckBox().ClassName();
 		}
 		public QCheckBox(QWidget parent, string name) : this((Type) null) {
 			CreateQCheckBoxProxy();
+			CreateQCheckBoxSignalProxy();
 			NewQCheckBox(parent,name);
 		}
+		[SmokeMethod("QCheckBox(QWidget*, const char*)")]
 		private void NewQCheckBox(QWidget parent, string name) {
 			ProxyQCheckBox().NewQCheckBox(parent,name);
 		}
 		public QCheckBox(QWidget parent) : this((Type) null) {
 			CreateQCheckBoxProxy();
+			CreateQCheckBoxSignalProxy();
 			NewQCheckBox(parent);
 		}
+		[SmokeMethod("QCheckBox(QWidget*)")]
 		private void NewQCheckBox(QWidget parent) {
 			ProxyQCheckBox().NewQCheckBox(parent);
 		}
 		public QCheckBox(string text, QWidget parent, string name) : this((Type) null) {
 			CreateQCheckBoxProxy();
+			CreateQCheckBoxSignalProxy();
 			NewQCheckBox(text,parent,name);
 		}
+		[SmokeMethod("QCheckBox(const QString&, QWidget*, const char*)")]
 		private void NewQCheckBox(string text, QWidget parent, string name) {
 			ProxyQCheckBox().NewQCheckBox(text,parent,name);
 		}
 		public QCheckBox(string text, QWidget parent) : this((Type) null) {
 			CreateQCheckBoxProxy();
+			CreateQCheckBoxSignalProxy();
 			NewQCheckBox(text,parent);
 		}
+		[SmokeMethod("QCheckBox(const QString&, QWidget*)")]
 		private void NewQCheckBox(string text, QWidget parent) {
 			ProxyQCheckBox().NewQCheckBox(text,parent);
 		}
+		[SmokeMethod("isChecked() const")]
 		public bool IsChecked() {
 			return ProxyQCheckBox().IsChecked();
 		}
+		[SmokeMethod("setNoChange()")]
 		public void SetNoChange() {
 			ProxyQCheckBox().SetNoChange();
 		}
+		[SmokeMethod("setTristate(bool)")]
 		public void SetTristate(bool y) {
 			ProxyQCheckBox().SetTristate(y);
 		}
+		[SmokeMethod("setTristate()")]
 		public void SetTristate() {
 			ProxyQCheckBox().SetTristate();
 		}
+		[SmokeMethod("isTristate() const")]
 		public bool IsTristate() {
 			return ProxyQCheckBox().IsTristate();
 		}
+		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {
 			return ProxyQCheckBox().SizeHint();
 		}
+		[Q_SLOT("setChecked(bool)")]
+		[SmokeMethod("setChecked(bool)")]
 		public void SetChecked(bool check) {
 			ProxyQCheckBox().SetChecked(check);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQCheckBox().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQCheckBox().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQCheckBox().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQCheckBox().TrUtf8(arg1);
 		}
+		[SmokeMethod("resizeEvent(QResizeEvent*)")]
 		protected new void ResizeEvent(QResizeEvent arg1) {
 			ProxyQCheckBox().ResizeEvent(arg1);
 		}
+		[SmokeMethod("drawButton(QPainter*)")]
 		protected new void DrawButton(QPainter arg1) {
 			ProxyQCheckBox().DrawButton(arg1);
 		}
+		[SmokeMethod("drawButtonLabel(QPainter*)")]
 		protected new void DrawButtonLabel(QPainter arg1) {
 			ProxyQCheckBox().DrawButtonLabel(arg1);
 		}
+		[SmokeMethod("updateMask()")]
 		protected new void UpdateMask() {
 			ProxyQCheckBox().UpdateMask();
 		}
+		[SmokeMethod("hitButton(const QPoint&) const")]
 		protected new bool HitButton(QPoint pos) {
 			return ProxyQCheckBox().HitButton(pos);
 		}
 		~QCheckBox() {
-			ProxyQCheckBox().Dispose();
+			DisposeQCheckBox();
 		}
 		public new void Dispose() {
-			ProxyQCheckBox().Dispose();
+			DisposeQCheckBox();
 		}
+		private void DisposeQCheckBox() {
+			ProxyQCheckBox().DisposeQCheckBox();
+		}
+		protected void CreateQCheckBoxSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQCheckBoxSignals), this);
+			_signalInterceptor = (IQCheckBoxSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQCheckBoxSignals Emit() {
+			return (IQCheckBoxSignals) _signalInterceptor;
+		}
+	}
+
+	public interface IQCheckBoxSignals : IQButtonSignals {
 	}
 }

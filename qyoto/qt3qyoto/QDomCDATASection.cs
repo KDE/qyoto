@@ -28,6 +28,7 @@ namespace Qt {
 			CreateQDomCDATASectionProxy();
 			NewQDomCDATASection();
 		}
+		[SmokeMethod("QDomCDATASection()")]
 		private void NewQDomCDATASection() {
 			ProxyQDomCDATASection().NewQDomCDATASection();
 		}
@@ -35,20 +36,26 @@ namespace Qt {
 			CreateQDomCDATASectionProxy();
 			NewQDomCDATASection(x);
 		}
+		[SmokeMethod("QDomCDATASection(const QDomCDATASection&)")]
 		private void NewQDomCDATASection(QDomCDATASection x) {
 			ProxyQDomCDATASection().NewQDomCDATASection(x);
 		}
+		[SmokeMethod("nodeType() const")]
 		public new int NodeType() {
 			return ProxyQDomCDATASection().NodeType();
 		}
+		[SmokeMethod("isCDATASection() const")]
 		public new bool IsCDATASection() {
 			return ProxyQDomCDATASection().IsCDATASection();
 		}
 		~QDomCDATASection() {
-			ProxyQDomCDATASection().Dispose();
+			DisposeQDomCDATASection();
 		}
 		public new void Dispose() {
-			ProxyQDomCDATASection().Dispose();
+			DisposeQDomCDATASection();
+		}
+		private void DisposeQDomCDATASection() {
+			ProxyQDomCDATASection().DisposeQDomCDATASection();
 		}
 	}
 }

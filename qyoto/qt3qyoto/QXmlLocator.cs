@@ -27,9 +27,11 @@ namespace Qt {
 			return (IQXmlLocatorProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("columnNumber()")]
 		public virtual int ColumnNumber() {
 			return ProxyQXmlLocator().ColumnNumber();
 		}
+		[SmokeMethod("lineNumber()")]
 		public virtual int LineNumber() {
 			return ProxyQXmlLocator().LineNumber();
 		}

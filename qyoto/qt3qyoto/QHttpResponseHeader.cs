@@ -29,6 +29,7 @@ namespace Qt {
 			CreateQHttpResponseHeaderProxy();
 			NewQHttpResponseHeader();
 		}
+		[SmokeMethod("QHttpResponseHeader()")]
 		private void NewQHttpResponseHeader() {
 			ProxyQHttpResponseHeader().NewQHttpResponseHeader();
 		}
@@ -36,32 +37,42 @@ namespace Qt {
 			CreateQHttpResponseHeaderProxy();
 			NewQHttpResponseHeader(header);
 		}
+		[SmokeMethod("QHttpResponseHeader(const QHttpResponseHeader&)")]
 		private void NewQHttpResponseHeader(QHttpResponseHeader header) {
 			ProxyQHttpResponseHeader().NewQHttpResponseHeader(header);
 		}
+		[SmokeMethod("statusCode() const")]
 		public int StatusCode() {
 			return ProxyQHttpResponseHeader().StatusCode();
 		}
+		[SmokeMethod("reasonPhrase() const")]
 		public string ReasonPhrase() {
 			return ProxyQHttpResponseHeader().ReasonPhrase();
 		}
+		[SmokeMethod("majorVersion() const")]
 		public new int MajorVersion() {
 			return ProxyQHttpResponseHeader().MajorVersion();
 		}
+		[SmokeMethod("minorVersion() const")]
 		public new int MinorVersion() {
 			return ProxyQHttpResponseHeader().MinorVersion();
 		}
+		[SmokeMethod("toString() const")]
 		public new string ToString() {
 			return ProxyQHttpResponseHeader().ToString();
 		}
+		[SmokeMethod("parseLine(const QString&, int)")]
 		protected new bool ParseLine(string line, int number) {
 			return ProxyQHttpResponseHeader().ParseLine(line,number);
 		}
 		~QHttpResponseHeader() {
-			ProxyQHttpResponseHeader().Dispose();
+			DisposeQHttpResponseHeader();
 		}
 		public new void Dispose() {
-			ProxyQHttpResponseHeader().Dispose();
+			DisposeQHttpResponseHeader();
+		}
+		private void DisposeQHttpResponseHeader() {
+			ProxyQHttpResponseHeader().DisposeQHttpResponseHeader();
 		}
 	}
 }

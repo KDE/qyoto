@@ -57,107 +57,151 @@ namespace Qt {
 			return (IQInputDialogProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQInputDialog().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQInputDialog().ClassName();
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQInputDialog().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQInputDialog().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQInputDialog().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQInputDialog().TrUtf8(arg1);
 		}
+		[SmokeMethod("getText(const QString&, const QString&, QLineEdit::EchoMode, const QString&, bool*, QWidget*, const char*)")]
 		public static string GetText(string caption, string label, int echo, string text, out bool ok, QWidget parent, string name) {
 			return StaticQInputDialog().GetText(caption,label,echo,text,out ok,parent,name);
 		}
+		[SmokeMethod("getText(const QString&, const QString&, QLineEdit::EchoMode, const QString&, bool*, QWidget*)")]
 		public static string GetText(string caption, string label, int echo, string text, out bool ok, QWidget parent) {
 			return StaticQInputDialog().GetText(caption,label,echo,text,out ok,parent);
 		}
+		[SmokeMethod("getText(const QString&, const QString&, QLineEdit::EchoMode, const QString&, bool*)")]
 		public static string GetText(string caption, string label, int echo, string text, out bool ok) {
 			return StaticQInputDialog().GetText(caption,label,echo,text,out ok);
 		}
+		[SmokeMethod("getText(const QString&, const QString&, QLineEdit::EchoMode, const QString&)")]
 		public static string GetText(string caption, string label, int echo, string text) {
 			return StaticQInputDialog().GetText(caption,label,echo,text);
 		}
+		[SmokeMethod("getText(const QString&, const QString&, QLineEdit::EchoMode)")]
 		public static string GetText(string caption, string label, int echo) {
 			return StaticQInputDialog().GetText(caption,label,echo);
 		}
+		[SmokeMethod("getText(const QString&, const QString&)")]
 		public static string GetText(string caption, string label) {
 			return StaticQInputDialog().GetText(caption,label);
 		}
+		[SmokeMethod("getInteger(const QString&, const QString&, int, int, int, int, bool*, QWidget*, const char*)")]
 		public static int GetInteger(string caption, string label, int value, int minValue, int maxValue, int step, out bool ok, QWidget parent, string name) {
 			return StaticQInputDialog().GetInteger(caption,label,value,minValue,maxValue,step,out ok,parent,name);
 		}
+		[SmokeMethod("getInteger(const QString&, const QString&, int, int, int, int, bool*, QWidget*)")]
 		public static int GetInteger(string caption, string label, int value, int minValue, int maxValue, int step, out bool ok, QWidget parent) {
 			return StaticQInputDialog().GetInteger(caption,label,value,minValue,maxValue,step,out ok,parent);
 		}
+		[SmokeMethod("getInteger(const QString&, const QString&, int, int, int, int, bool*)")]
 		public static int GetInteger(string caption, string label, int value, int minValue, int maxValue, int step, out bool ok) {
 			return StaticQInputDialog().GetInteger(caption,label,value,minValue,maxValue,step,out ok);
 		}
+		[SmokeMethod("getInteger(const QString&, const QString&, int, int, int, int)")]
 		public static int GetInteger(string caption, string label, int value, int minValue, int maxValue, int step) {
 			return StaticQInputDialog().GetInteger(caption,label,value,minValue,maxValue,step);
 		}
+		[SmokeMethod("getInteger(const QString&, const QString&, int, int, int)")]
 		public static int GetInteger(string caption, string label, int value, int minValue, int maxValue) {
 			return StaticQInputDialog().GetInteger(caption,label,value,minValue,maxValue);
 		}
+		[SmokeMethod("getInteger(const QString&, const QString&, int, int)")]
 		public static int GetInteger(string caption, string label, int value, int minValue) {
 			return StaticQInputDialog().GetInteger(caption,label,value,minValue);
 		}
+		[SmokeMethod("getInteger(const QString&, const QString&, int)")]
 		public static int GetInteger(string caption, string label, int value) {
 			return StaticQInputDialog().GetInteger(caption,label,value);
 		}
+		[SmokeMethod("getInteger(const QString&, const QString&)")]
 		public static int GetInteger(string caption, string label) {
 			return StaticQInputDialog().GetInteger(caption,label);
 		}
+		[SmokeMethod("getDouble(const QString&, const QString&, double, double, double, int, bool*, QWidget*, const char*)")]
 		public static double GetDouble(string caption, string label, double value, double minValue, double maxValue, int decimals, out bool ok, QWidget parent, string name) {
 			return StaticQInputDialog().GetDouble(caption,label,value,minValue,maxValue,decimals,out ok,parent,name);
 		}
+		[SmokeMethod("getDouble(const QString&, const QString&, double, double, double, int, bool*, QWidget*)")]
 		public static double GetDouble(string caption, string label, double value, double minValue, double maxValue, int decimals, out bool ok, QWidget parent) {
 			return StaticQInputDialog().GetDouble(caption,label,value,minValue,maxValue,decimals,out ok,parent);
 		}
+		[SmokeMethod("getDouble(const QString&, const QString&, double, double, double, int, bool*)")]
 		public static double GetDouble(string caption, string label, double value, double minValue, double maxValue, int decimals, out bool ok) {
 			return StaticQInputDialog().GetDouble(caption,label,value,minValue,maxValue,decimals,out ok);
 		}
+		[SmokeMethod("getDouble(const QString&, const QString&, double, double, double, int)")]
 		public static double GetDouble(string caption, string label, double value, double minValue, double maxValue, int decimals) {
 			return StaticQInputDialog().GetDouble(caption,label,value,minValue,maxValue,decimals);
 		}
+		[SmokeMethod("getDouble(const QString&, const QString&, double, double, double)")]
 		public static double GetDouble(string caption, string label, double value, double minValue, double maxValue) {
 			return StaticQInputDialog().GetDouble(caption,label,value,minValue,maxValue);
 		}
+		[SmokeMethod("getDouble(const QString&, const QString&, double, double)")]
 		public static double GetDouble(string caption, string label, double value, double minValue) {
 			return StaticQInputDialog().GetDouble(caption,label,value,minValue);
 		}
+		[SmokeMethod("getDouble(const QString&, const QString&, double)")]
 		public static double GetDouble(string caption, string label, double value) {
 			return StaticQInputDialog().GetDouble(caption,label,value);
 		}
+		[SmokeMethod("getDouble(const QString&, const QString&)")]
 		public static double GetDouble(string caption, string label) {
 			return StaticQInputDialog().GetDouble(caption,label);
 		}
+		[SmokeMethod("getItem(const QString&, const QString&, const QStringList&, int, bool, bool*, QWidget*, const char*)")]
 		public static string GetItem(string caption, string label, string[] list, int current, bool editable, out bool ok, QWidget parent, string name) {
 			return StaticQInputDialog().GetItem(caption,label,list,current,editable,out ok,parent,name);
 		}
+		[SmokeMethod("getItem(const QString&, const QString&, const QStringList&, int, bool, bool*, QWidget*)")]
 		public static string GetItem(string caption, string label, string[] list, int current, bool editable, out bool ok, QWidget parent) {
 			return StaticQInputDialog().GetItem(caption,label,list,current,editable,out ok,parent);
 		}
+		[SmokeMethod("getItem(const QString&, const QString&, const QStringList&, int, bool, bool*)")]
 		public static string GetItem(string caption, string label, string[] list, int current, bool editable, out bool ok) {
 			return StaticQInputDialog().GetItem(caption,label,list,current,editable,out ok);
 		}
+		[SmokeMethod("getItem(const QString&, const QString&, const QStringList&, int, bool)")]
 		public static string GetItem(string caption, string label, string[] list, int current, bool editable) {
 			return StaticQInputDialog().GetItem(caption,label,list,current,editable);
 		}
+		[SmokeMethod("getItem(const QString&, const QString&, const QStringList&, int)")]
 		public static string GetItem(string caption, string label, string[] list, int current) {
 			return StaticQInputDialog().GetItem(caption,label,list,current);
 		}
+		[SmokeMethod("getItem(const QString&, const QString&, const QStringList&)")]
 		public static string GetItem(string caption, string label, string[] list) {
 			return StaticQInputDialog().GetItem(caption,label,list);
 		}
+		protected void CreateQInputDialogSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQInputDialogSignals), this);
+			_signalInterceptor = (IQInputDialogSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQInputDialogSignals Emit() {
+			return (IQInputDialogSignals) _signalInterceptor;
+		}
+	}
+
+	public interface IQInputDialogSignals : IQDialogSignals {
 	}
 }

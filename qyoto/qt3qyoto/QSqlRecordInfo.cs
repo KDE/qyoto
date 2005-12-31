@@ -32,6 +32,7 @@ namespace Qt {
 			CreateQSqlRecordInfoProxy();
 			NewQSqlRecordInfo();
 		}
+		[SmokeMethod("QSqlRecordInfo()")]
 		private void NewQSqlRecordInfo() {
 			ProxyQSqlRecordInfo().NewQSqlRecordInfo();
 		}
@@ -40,23 +41,30 @@ namespace Qt {
 			CreateQSqlRecordInfoProxy();
 			NewQSqlRecordInfo(other);
 		}
+		[SmokeMethod("QSqlRecordInfo(const QSqlRecord&)")]
 		private void NewQSqlRecordInfo(QSqlRecord other) {
 			ProxyQSqlRecordInfo().NewQSqlRecordInfo(other);
 		}
+		[SmokeMethod("contains(const QString&) const")]
 		public int Contains(string fieldName) {
 			return ProxyQSqlRecordInfo().Contains(fieldName);
 		}
+		[SmokeMethod("find(const QString&) const")]
 		public QSqlFieldInfo Find(string fieldName) {
 			return ProxyQSqlRecordInfo().Find(fieldName);
 		}
+		[SmokeMethod("toRecord() const")]
 		public QSqlRecord ToRecord() {
 			return ProxyQSqlRecordInfo().ToRecord();
 		}
 		~QSqlRecordInfo() {
-			ProxyQSqlRecordInfo().Dispose();
+			DisposeQSqlRecordInfo();
 		}
 		public void Dispose() {
-			ProxyQSqlRecordInfo().Dispose();
+			DisposeQSqlRecordInfo();
+		}
+		private void DisposeQSqlRecordInfo() {
+			ProxyQSqlRecordInfo().DisposeQSqlRecordInfo();
 		}
 	}
 }

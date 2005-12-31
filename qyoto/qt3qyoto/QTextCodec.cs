@@ -43,99 +43,131 @@ namespace Qt {
 			return (IQTextCodecProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("name() const")]
 		public virtual string Name() {
 			return ProxyQTextCodec().Name();
 		}
+		[SmokeMethod("mimeName() const")]
 		public virtual string MimeName() {
 			return ProxyQTextCodec().MimeName();
 		}
+		[SmokeMethod("mibEnum() const")]
 		public virtual int MibEnum() {
 			return ProxyQTextCodec().MibEnum();
 		}
+		[SmokeMethod("makeDecoder() const")]
 		public virtual QTextDecoder MakeDecoder() {
 			return ProxyQTextCodec().MakeDecoder();
 		}
+		[SmokeMethod("makeEncoder() const")]
 		public virtual QTextEncoder MakeEncoder() {
 			return ProxyQTextCodec().MakeEncoder();
 		}
+		[SmokeMethod("toUnicode(const char*, int) const")]
 		public virtual string ToUnicode(string chars, int len) {
 			return ProxyQTextCodec().ToUnicode(chars,len);
 		}
+		[SmokeMethod("fromUnicode(const QString&, int&) const")]
 		public virtual string FromUnicode(string uc, out int lenInOut) {
 			return ProxyQTextCodec().FromUnicode(uc,out lenInOut);
 		}
+		[SmokeMethod("fromUnicode(const QString&) const")]
 		public string FromUnicode(string uc) {
 			return ProxyQTextCodec().FromUnicode(uc);
 		}
-		public string ToUnicode(byte[] arg1, int len) {
+		[SmokeMethod("toUnicode(const QByteArray&, int) const")]
+		public string ToUnicode(QByteArray arg1, int len) {
 			return ProxyQTextCodec().ToUnicode(arg1,len);
 		}
-		public string ToUnicode(byte[] arg1) {
+		[SmokeMethod("toUnicode(const QByteArray&) const")]
+		public string ToUnicode(QByteArray arg1) {
 			return ProxyQTextCodec().ToUnicode(arg1);
 		}
+		[SmokeMethod("toUnicode(const QCString&) const")]
 		public string ToUnicode(string arg1) {
 			return ProxyQTextCodec().ToUnicode(arg1);
 		}
+		[SmokeMethod("canEncode(QChar) const")]
 		public virtual bool CanEncode(char arg1) {
 			return ProxyQTextCodec().CanEncode(arg1);
 		}
+		[SmokeMethod("canEncode(const QString&) const")]
 		public virtual bool CanEncode(string arg1) {
 			return ProxyQTextCodec().CanEncode(arg1);
 		}
+		[SmokeMethod("heuristicContentMatch(const char*, int) const")]
 		public virtual int HeuristicContentMatch(string chars, int len) {
 			return ProxyQTextCodec().HeuristicContentMatch(chars,len);
 		}
+		[SmokeMethod("heuristicNameMatch(const char*) const")]
 		public virtual int HeuristicNameMatch(string hint) {
 			return ProxyQTextCodec().HeuristicNameMatch(hint);
 		}
-		public virtual byte[] FromUnicode(string uc, int from, int len) {
+		[SmokeMethod("fromUnicode(const QString&, int, int) const")]
+		public virtual QByteArray FromUnicode(string uc, int from, int len) {
 			return ProxyQTextCodec().FromUnicode(uc,from,len);
 		}
+		[SmokeMethod("characterFromUnicode(const QString&, int) const")]
 		public virtual ushort CharacterFromUnicode(string str, int pos) {
 			return ProxyQTextCodec().CharacterFromUnicode(str,pos);
 		}
+		[SmokeMethod("loadCharmap(QIODevice*)")]
 		public static QTextCodec LoadCharmap(IQIODevice arg1) {
 			return StaticQTextCodec().LoadCharmap(arg1);
 		}
+		[SmokeMethod("loadCharmapFile(QString)")]
 		public static QTextCodec LoadCharmapFile(string filename) {
 			return StaticQTextCodec().LoadCharmapFile(filename);
 		}
+		[SmokeMethod("codecForMib(int)")]
 		public static QTextCodec CodecForMib(int mib) {
 			return StaticQTextCodec().CodecForMib(mib);
 		}
+		[SmokeMethod("codecForName(const char*, int)")]
 		public static QTextCodec CodecForName(string hint, int accuracy) {
 			return StaticQTextCodec().CodecForName(hint,accuracy);
 		}
+		[SmokeMethod("codecForName(const char*)")]
 		public static QTextCodec CodecForName(string hint) {
 			return StaticQTextCodec().CodecForName(hint);
 		}
+		[SmokeMethod("codecForContent(const char*, int)")]
 		public static QTextCodec CodecForContent(string chars, int len) {
 			return StaticQTextCodec().CodecForContent(chars,len);
 		}
+		[SmokeMethod("codecForIndex(int)")]
 		public static QTextCodec CodecForIndex(int i) {
 			return StaticQTextCodec().CodecForIndex(i);
 		}
+		[SmokeMethod("codecForLocale()")]
 		public static QTextCodec CodecForLocale() {
 			return StaticQTextCodec().CodecForLocale();
 		}
+		[SmokeMethod("setCodecForLocale(QTextCodec*)")]
 		public static void SetCodecForLocale(QTextCodec c) {
 			StaticQTextCodec().SetCodecForLocale(c);
 		}
+		[SmokeMethod("codecForTr()")]
 		public static QTextCodec CodecForTr() {
 			return StaticQTextCodec().CodecForTr();
 		}
+		[SmokeMethod("setCodecForTr(QTextCodec*)")]
 		public static void SetCodecForTr(QTextCodec c) {
 			StaticQTextCodec().SetCodecForTr(c);
 		}
+		[SmokeMethod("codecForCStrings()")]
 		public static QTextCodec CodecForCStrings() {
 			return StaticQTextCodec().CodecForCStrings();
 		}
+		[SmokeMethod("setCodecForCStrings(QTextCodec*)")]
 		public static void SetCodecForCStrings(QTextCodec c) {
 			StaticQTextCodec().SetCodecForCStrings(c);
 		}
+		[SmokeMethod("deleteAllCodecs()")]
 		public static void DeleteAllCodecs() {
 			StaticQTextCodec().DeleteAllCodecs();
 		}
+		[SmokeMethod("locale()")]
 		public static string Locale() {
 			return StaticQTextCodec().Locale();
 		}

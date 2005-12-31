@@ -27,24 +27,31 @@ namespace Qt {
 			return (IQFocusDataProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("focusWidget() const")]
 		public QWidget FocusWidget() {
 			return ProxyQFocusData().FocusWidget();
 		}
+		[SmokeMethod("home()")]
 		public QWidget Home() {
 			return ProxyQFocusData().Home();
 		}
+		[SmokeMethod("next()")]
 		public QWidget Next() {
 			return ProxyQFocusData().Next();
 		}
+		[SmokeMethod("prev()")]
 		public QWidget Prev() {
 			return ProxyQFocusData().Prev();
 		}
+		[SmokeMethod("first() const")]
 		public QWidget First() {
 			return ProxyQFocusData().First();
 		}
+		[SmokeMethod("last() const")]
 		public QWidget Last() {
 			return ProxyQFocusData().Last();
 		}
+		[SmokeMethod("count() const")]
 		public int Count() {
 			return ProxyQFocusData().Count();
 		}

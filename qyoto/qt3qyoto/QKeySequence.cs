@@ -30,6 +30,7 @@ namespace Qt {
 			CreateQKeySequenceProxy();
 			NewQKeySequence();
 		}
+		[SmokeMethod("QKeySequence()")]
 		private void NewQKeySequence() {
 			ProxyQKeySequence().NewQKeySequence();
 		}
@@ -37,6 +38,7 @@ namespace Qt {
 			CreateQKeySequenceProxy();
 			NewQKeySequence(key);
 		}
+		[SmokeMethod("QKeySequence(const QString&)")]
 		private void NewQKeySequence(string key) {
 			ProxyQKeySequence().NewQKeySequence(key);
 		}
@@ -44,6 +46,7 @@ namespace Qt {
 			CreateQKeySequenceProxy();
 			NewQKeySequence(key);
 		}
+		[SmokeMethod("QKeySequence(int)")]
 		private void NewQKeySequence(int key) {
 			ProxyQKeySequence().NewQKeySequence(key);
 		}
@@ -51,6 +54,7 @@ namespace Qt {
 			CreateQKeySequenceProxy();
 			NewQKeySequence(k1,k2,k3,k4);
 		}
+		[SmokeMethod("QKeySequence(int, int, int, int)")]
 		private void NewQKeySequence(int k1, int k2, int k3, int k4) {
 			ProxyQKeySequence().NewQKeySequence(k1,k2,k3,k4);
 		}
@@ -58,6 +62,7 @@ namespace Qt {
 			CreateQKeySequenceProxy();
 			NewQKeySequence(k1,k2,k3);
 		}
+		[SmokeMethod("QKeySequence(int, int, int)")]
 		private void NewQKeySequence(int k1, int k2, int k3) {
 			ProxyQKeySequence().NewQKeySequence(k1,k2,k3);
 		}
@@ -65,6 +70,7 @@ namespace Qt {
 			CreateQKeySequenceProxy();
 			NewQKeySequence(k1,k2);
 		}
+		[SmokeMethod("QKeySequence(int, int)")]
 		private void NewQKeySequence(int k1, int k2) {
 			ProxyQKeySequence().NewQKeySequence(k1,k2);
 		}
@@ -72,20 +78,25 @@ namespace Qt {
 			CreateQKeySequenceProxy();
 			NewQKeySequence(arg1);
 		}
+		[SmokeMethod("QKeySequence(const QKeySequence&)")]
 		private void NewQKeySequence(QKeySequence arg1) {
 			ProxyQKeySequence().NewQKeySequence(arg1);
 		}
+		[SmokeMethod("count() const")]
 		public uint Count() {
 			return ProxyQKeySequence().Count();
 		}
+		[SmokeMethod("isEmpty() const")]
 		public bool IsEmpty() {
 			return ProxyQKeySequence().IsEmpty();
 		}
+		[SmokeMethod("matches(const QKeySequence&) const")]
 		public int Matches(QKeySequence arg1) {
 			return ProxyQKeySequence().Matches(arg1);
 		}
 		//  operator QString(); >>>> NOT CONVERTED
 		//  operator int(); >>>> NOT CONVERTED
+		[SmokeMethod("operator==(const QKeySequence&) const")]
 		public static bool operator==(QKeySequence lhs, QKeySequence arg1) {
 			return StaticQKeySequence().op_equals(lhs,arg1);
 		}
@@ -100,10 +111,13 @@ namespace Qt {
 			return ProxyQKeySequence().GetHashCode();
 		}
 		~QKeySequence() {
-			ProxyQKeySequence().Dispose();
+			DisposeQKeySequence();
 		}
 		public void Dispose() {
-			ProxyQKeySequence().Dispose();
+			DisposeQKeySequence();
+		}
+		private void DisposeQKeySequence() {
+			ProxyQKeySequence().DisposeQKeySequence();
 		}
 	}
 }

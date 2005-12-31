@@ -29,32 +29,42 @@ namespace Qt {
 			CreateQIMEventProxy();
 			NewQIMEvent(type,text,cursorPosition);
 		}
+		[SmokeMethod("QIMEvent(QEvent::Type, const QString&, int)")]
 		private void NewQIMEvent(int type, string text, int cursorPosition) {
 			ProxyQIMEvent().NewQIMEvent(type,text,cursorPosition);
 		}
+		[SmokeMethod("text() const")]
 		public string Text() {
 			return ProxyQIMEvent().Text();
 		}
+		[SmokeMethod("cursorPos() const")]
 		public int CursorPos() {
 			return ProxyQIMEvent().CursorPos();
 		}
+		[SmokeMethod("isAccepted() const")]
 		public bool IsAccepted() {
 			return ProxyQIMEvent().IsAccepted();
 		}
+		[SmokeMethod("accept()")]
 		public void Accept() {
 			ProxyQIMEvent().Accept();
 		}
+		[SmokeMethod("ignore()")]
 		public void Ignore() {
 			ProxyQIMEvent().Ignore();
 		}
+		[SmokeMethod("selectionLength() const")]
 		public int SelectionLength() {
 			return ProxyQIMEvent().SelectionLength();
 		}
 		~QIMEvent() {
-			ProxyQIMEvent().Dispose();
+			DisposeQIMEvent();
 		}
 		public new void Dispose() {
-			ProxyQIMEvent().Dispose();
+			DisposeQIMEvent();
+		}
+		private void DisposeQIMEvent() {
+			ProxyQIMEvent().DisposeQIMEvent();
 		}
 	}
 }

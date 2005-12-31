@@ -28,6 +28,7 @@ namespace Qt {
 			return (IQTextDecoderProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("toUnicode(const char*, int)")]
 		public virtual string ToUnicode(string chars, int len) {
 			return ProxyQTextDecoder().ToUnicode(chars,len);
 		}

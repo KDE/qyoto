@@ -28,6 +28,7 @@ namespace Qt {
 			CreateQCustomEventProxy();
 			NewQCustomEvent(type);
 		}
+		[SmokeMethod("QCustomEvent(int)")]
 		private void NewQCustomEvent(int type) {
 			ProxyQCustomEvent().NewQCustomEvent(type);
 		}
@@ -35,10 +36,13 @@ namespace Qt {
 		// void* data(); >>>> NOT CONVERTED
 		// void setData(void* arg1); >>>> NOT CONVERTED
 		~QCustomEvent() {
-			ProxyQCustomEvent().Dispose();
+			DisposeQCustomEvent();
 		}
 		public new void Dispose() {
-			ProxyQCustomEvent().Dispose();
+			DisposeQCustomEvent();
+		}
+		private void DisposeQCustomEvent() {
+			ProxyQCustomEvent().DisposeQCustomEvent();
 		}
 	}
 }

@@ -31,14 +31,18 @@ namespace Qt {
 			CreateQDropSiteProxy();
 			NewQDropSite(parent);
 		}
+		[SmokeMethod("QDropSite(QWidget*)")]
 		private void NewQDropSite(QWidget parent) {
 			ProxyQDropSite().NewQDropSite(parent);
 		}
 		~QDropSite() {
-			ProxyQDropSite().Dispose();
+			DisposeQDropSite();
 		}
 		public void Dispose() {
-			ProxyQDropSite().Dispose();
+			DisposeQDropSite();
+		}
+		private void DisposeQDropSite() {
+			ProxyQDropSite().DisposeQDropSite();
 		}
 	}
 }

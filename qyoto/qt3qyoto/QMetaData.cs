@@ -36,14 +36,18 @@ namespace Qt {
 			CreateQMetaDataProxy();
 			NewQMetaData();
 		}
+		[SmokeMethod("QMetaData()")]
 		private void NewQMetaData() {
 			ProxyQMetaData().NewQMetaData();
 		}
 		~QMetaData() {
-			ProxyQMetaData().Dispose();
+			DisposeQMetaData();
 		}
 		public void Dispose() {
-			ProxyQMetaData().Dispose();
+			DisposeQMetaData();
+		}
+		private void DisposeQMetaData() {
+			ProxyQMetaData().DisposeQMetaData();
 		}
 	}
 }

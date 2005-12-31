@@ -33,6 +33,7 @@ namespace Qt {
 			CreateQSqlFieldProxy();
 			NewQSqlField(fieldName,type);
 		}
+		[SmokeMethod("QSqlField(const QString&, QVariant::Type)")]
 		private void NewQSqlField(string fieldName, int type) {
 			ProxyQSqlField().NewQSqlField(fieldName,type);
 		}
@@ -40,6 +41,7 @@ namespace Qt {
 			CreateQSqlFieldProxy();
 			NewQSqlField(fieldName);
 		}
+		[SmokeMethod("QSqlField(const QString&)")]
 		private void NewQSqlField(string fieldName) {
 			ProxyQSqlField().NewQSqlField(fieldName);
 		}
@@ -47,6 +49,7 @@ namespace Qt {
 			CreateQSqlFieldProxy();
 			NewQSqlField();
 		}
+		[SmokeMethod("QSqlField()")]
 		private void NewQSqlField() {
 			ProxyQSqlField().NewQSqlField();
 		}
@@ -54,9 +57,11 @@ namespace Qt {
 			CreateQSqlFieldProxy();
 			NewQSqlField(other);
 		}
+		[SmokeMethod("QSqlField(const QSqlField&)")]
 		private void NewQSqlField(QSqlField other) {
 			ProxyQSqlField().NewQSqlField(other);
 		}
+		[SmokeMethod("operator==(const QSqlField&) const")]
 		public static bool operator==(QSqlField lhs, QSqlField other) {
 			return StaticQSqlField().op_equals(lhs,other);
 		}
@@ -70,44 +75,54 @@ namespace Qt {
 		public override int GetHashCode() {
 			return ProxyQSqlField().GetHashCode();
 		}
+		[SmokeMethod("setValue(const QVariant&)")]
 		public virtual void SetValue(QVariant value) {
 			ProxyQSqlField().SetValue(value);
 		}
+		[SmokeMethod("value() const")]
 		public virtual QVariant Value() {
 			return ProxyQSqlField().Value();
 		}
+		[SmokeMethod("setName(const QString&)")]
 		public virtual void SetName(string name) {
 			ProxyQSqlField().SetName(name);
 		}
+		[SmokeMethod("name() const")]
 		public string Name() {
 			return ProxyQSqlField().Name();
 		}
+		[SmokeMethod("setNull()")]
 		public virtual void SetNull() {
 			ProxyQSqlField().SetNull();
 		}
+		[SmokeMethod("isNull() const")]
 		public bool IsNull() {
 			return ProxyQSqlField().IsNull();
 		}
+		[SmokeMethod("setReadOnly(bool)")]
 		public virtual void SetReadOnly(bool readOnly) {
 			ProxyQSqlField().SetReadOnly(readOnly);
 		}
+		[SmokeMethod("isReadOnly() const")]
 		public bool IsReadOnly() {
 			return ProxyQSqlField().IsReadOnly();
 		}
+		[SmokeMethod("clear(bool)")]
 		public void Clear(bool nullify) {
 			ProxyQSqlField().Clear(nullify);
 		}
+		[SmokeMethod("clear()")]
 		public void Clear() {
 			ProxyQSqlField().Clear();
 		}
-		public int Type() {
-			return ProxyQSqlField().Type();
-		}
 		~QSqlField() {
-			ProxyQSqlField().Dispose();
+			DisposeQSqlField();
 		}
 		public void Dispose() {
-			ProxyQSqlField().Dispose();
+			DisposeQSqlField();
+		}
+		private void DisposeQSqlField() {
+			ProxyQSqlField().DisposeQSqlField();
 		}
 	}
 }

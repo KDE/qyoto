@@ -27,6 +27,7 @@ namespace Qt {
 			return (IQFilePreviewProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("previewUrl(const QUrl&)")]
 		public virtual void PreviewUrl(IQUrl url) {
 			ProxyQFilePreview().PreviewUrl(url);
 		}

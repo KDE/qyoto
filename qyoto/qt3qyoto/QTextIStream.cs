@@ -29,21 +29,26 @@ namespace Qt {
 			CreateQTextIStreamProxy();
 			NewQTextIStream(s);
 		}
+		[SmokeMethod("QTextIStream(const QString*)")]
 		private void NewQTextIStream(string s) {
 			ProxyQTextIStream().NewQTextIStream(s);
 		}
-		public QTextIStream(byte[] ba) : this((Type) null) {
+		public QTextIStream(QByteArray ba) : this((Type) null) {
 			CreateQTextIStreamProxy();
 			NewQTextIStream(ba);
 		}
-		private void NewQTextIStream(byte[] ba) {
+		[SmokeMethod("QTextIStream(QByteArray)")]
+		private void NewQTextIStream(QByteArray ba) {
 			ProxyQTextIStream().NewQTextIStream(ba);
 		}
 		~QTextIStream() {
-			ProxyQTextIStream().Dispose();
+			DisposeQTextIStream();
 		}
 		public new void Dispose() {
-			ProxyQTextIStream().Dispose();
+			DisposeQTextIStream();
+		}
+		private void DisposeQTextIStream() {
+			ProxyQTextIStream().DisposeQTextIStream();
 		}
 	}
 }

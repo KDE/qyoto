@@ -29,74 +29,107 @@ namespace Qt {
 			return (IQGridViewProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQGridView().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQGridView().ClassName();
 		}
+		[SmokeMethod("numRows() const")]
 		public int NumRows() {
 			return ProxyQGridView().NumRows();
 		}
+		[SmokeMethod("setNumRows(int)")]
 		public virtual void SetNumRows(int arg1) {
 			ProxyQGridView().SetNumRows(arg1);
 		}
+		[SmokeMethod("numCols() const")]
 		public int NumCols() {
 			return ProxyQGridView().NumCols();
 		}
+		[SmokeMethod("setNumCols(int)")]
 		public virtual void SetNumCols(int arg1) {
 			ProxyQGridView().SetNumCols(arg1);
 		}
+		[SmokeMethod("cellWidth() const")]
 		public int CellWidth() {
 			return ProxyQGridView().CellWidth();
 		}
+		[SmokeMethod("setCellWidth(int)")]
 		public virtual void SetCellWidth(int arg1) {
 			ProxyQGridView().SetCellWidth(arg1);
 		}
+		[SmokeMethod("cellHeight() const")]
 		public int CellHeight() {
 			return ProxyQGridView().CellHeight();
 		}
+		[SmokeMethod("setCellHeight(int)")]
 		public virtual void SetCellHeight(int arg1) {
 			ProxyQGridView().SetCellHeight(arg1);
 		}
+		[SmokeMethod("cellRect() const")]
 		public QRect CellRect() {
 			return ProxyQGridView().CellRect();
 		}
+		[SmokeMethod("cellGeometry(int, int)")]
 		public QRect CellGeometry(int row, int column) {
 			return ProxyQGridView().CellGeometry(row,column);
 		}
+		[SmokeMethod("gridSize() const")]
 		public QSize GridSize() {
 			return ProxyQGridView().GridSize();
 		}
+		[SmokeMethod("rowAt(int) const")]
 		public int RowAt(int y) {
 			return ProxyQGridView().RowAt(y);
 		}
+		[SmokeMethod("columnAt(int) const")]
 		public int ColumnAt(int x) {
 			return ProxyQGridView().ColumnAt(x);
 		}
+		[SmokeMethod("repaintCell(int, int, bool)")]
 		public void RepaintCell(int row, int column, bool erase) {
 			ProxyQGridView().RepaintCell(row,column,erase);
 		}
+		[SmokeMethod("repaintCell(int, int)")]
 		public void RepaintCell(int row, int column) {
 			ProxyQGridView().RepaintCell(row,column);
 		}
+		[SmokeMethod("updateCell(int, int)")]
 		public void UpdateCell(int row, int column) {
 			ProxyQGridView().UpdateCell(row,column);
 		}
+		[SmokeMethod("ensureCellVisible(int, int)")]
 		public void EnsureCellVisible(int row, int column) {
 			ProxyQGridView().EnsureCellVisible(row,column);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQGridView().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQGridView().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQGridView().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQGridView().TrUtf8(arg1);
 		}
+		protected void CreateQGridViewSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQGridViewSignals), this);
+			_signalInterceptor = (IQGridViewSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQGridViewSignals Emit() {
+			return (IQGridViewSignals) _signalInterceptor;
+		}
+	}
+
+	public interface IQGridViewSignals : IQScrollViewSignals {
 	}
 }

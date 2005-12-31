@@ -27,6 +27,7 @@ namespace Qt {
 			return (IQAsyncIOProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("connect(QObject*, const char*)")]
 		public void Connect(QObject arg1, string member) {
 			ProxyQAsyncIO().Connect(arg1,member);
 		}
@@ -34,17 +35,22 @@ namespace Qt {
 			CreateQAsyncIOProxy();
 			NewQAsyncIO();
 		}
+		[SmokeMethod("QAsyncIO()")]
 		private void NewQAsyncIO() {
 			ProxyQAsyncIO().NewQAsyncIO();
 		}
+		[SmokeMethod("ready()")]
 		protected void Ready() {
 			ProxyQAsyncIO().Ready();
 		}
 		~QAsyncIO() {
-			ProxyQAsyncIO().Dispose();
+			DisposeQAsyncIO();
 		}
 		public void Dispose() {
-			ProxyQAsyncIO().Dispose();
+			DisposeQAsyncIO();
+		}
+		private void DisposeQAsyncIO() {
+			ProxyQAsyncIO().DisposeQAsyncIO();
 		}
 	}
 }

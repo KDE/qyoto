@@ -28,66 +28,86 @@ namespace Qt {
 			CreateQBufferProxy();
 			NewQBuffer();
 		}
+		[SmokeMethod("QBuffer()")]
 		private void NewQBuffer() {
 			ProxyQBuffer().NewQBuffer();
 		}
-		public QBuffer(byte[] arg1) : this((Type) null) {
+		public QBuffer(QByteArray arg1) : this((Type) null) {
 			CreateQBufferProxy();
 			NewQBuffer(arg1);
 		}
-		private void NewQBuffer(byte[] arg1) {
+		[SmokeMethod("QBuffer(QByteArray)")]
+		private void NewQBuffer(QByteArray arg1) {
 			ProxyQBuffer().NewQBuffer(arg1);
 		}
-		public byte[] Buffer() {
+		[SmokeMethod("buffer() const")]
+		public QByteArray Buffer() {
 			return ProxyQBuffer().Buffer();
 		}
-		public bool SetBuffer(byte[] arg1) {
+		[SmokeMethod("setBuffer(QByteArray)")]
+		public bool SetBuffer(QByteArray arg1) {
 			return ProxyQBuffer().SetBuffer(arg1);
 		}
+		[SmokeMethod("open(int)")]
 		public new bool Open(int arg1) {
 			return ProxyQBuffer().Open(arg1);
 		}
+		[SmokeMethod("close()")]
 		public new void Close() {
 			ProxyQBuffer().Close();
 		}
+		[SmokeMethod("flush()")]
 		public new void Flush() {
 			ProxyQBuffer().Flush();
 		}
+		[SmokeMethod("size() const")]
 		public new ulong Size() {
 			return ProxyQBuffer().Size();
 		}
+		[SmokeMethod("at() const")]
 		public new ulong At() {
 			return ProxyQBuffer().At();
 		}
+		[SmokeMethod("at(QIODevice::Offset)")]
 		public new bool At(ulong arg1) {
 			return ProxyQBuffer().At(arg1);
 		}
+		[SmokeMethod("readBlock(char*, Q_ULONG)")]
 		public new long ReadBlock(string p, long arg2) {
 			return ProxyQBuffer().ReadBlock(p,arg2);
 		}
+		[SmokeMethod("writeBlock(const char*, Q_ULONG)")]
 		public new long WriteBlock(string p, long arg2) {
 			return ProxyQBuffer().WriteBlock(p,arg2);
 		}
-		public new long WriteBlock(byte[] data) {
+		[SmokeMethod("writeBlock(const QByteArray&)")]
+		public new long WriteBlock(QByteArray data) {
 			return ProxyQBuffer().WriteBlock(data);
 		}
+		[SmokeMethod("readLine(char*, Q_ULONG)")]
 		public new long ReadLine(string p, long arg2) {
 			return ProxyQBuffer().ReadLine(p,arg2);
 		}
+		[SmokeMethod("getch()")]
 		public new int Getch() {
 			return ProxyQBuffer().Getch();
 		}
+		[SmokeMethod("putch(int)")]
 		public new int Putch(int arg1) {
 			return ProxyQBuffer().Putch(arg1);
 		}
+		[SmokeMethod("ungetch(int)")]
 		public new int Ungetch(int arg1) {
 			return ProxyQBuffer().Ungetch(arg1);
 		}
 		~QBuffer() {
-			ProxyQBuffer().Dispose();
+			DisposeQBuffer();
 		}
 		public void Dispose() {
-			ProxyQBuffer().Dispose();
+			DisposeQBuffer();
+		}
+		private void DisposeQBuffer() {
+			ProxyQBuffer().DisposeQBuffer();
 		}
 	}
 }

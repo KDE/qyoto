@@ -32,15 +32,19 @@ namespace Qt {
 			CreateQIconDragItemProxy();
 			NewQIconDragItem();
 		}
+		[SmokeMethod("QIconDragItem()")]
 		private void NewQIconDragItem() {
 			ProxyQIconDragItem().NewQIconDragItem();
 		}
-		public virtual byte[] Data() {
+		[SmokeMethod("data() const")]
+		public virtual QByteArray Data() {
 			return ProxyQIconDragItem().Data();
 		}
-		public virtual void SetData(byte[] d) {
+		[SmokeMethod("setData(const QByteArray&)")]
+		public virtual void SetData(QByteArray d) {
 			ProxyQIconDragItem().SetData(d);
 		}
+		[SmokeMethod("operator==(const QIconDragItem&) const")]
 		public static bool operator==(QIconDragItem lhs, QIconDragItem arg1) {
 			return StaticQIconDragItem().op_equals(lhs,arg1);
 		}
@@ -55,10 +59,13 @@ namespace Qt {
 			return ProxyQIconDragItem().GetHashCode();
 		}
 		~QIconDragItem() {
-			ProxyQIconDragItem().Dispose();
+			DisposeQIconDragItem();
 		}
 		public void Dispose() {
-			ProxyQIconDragItem().Dispose();
+			DisposeQIconDragItem();
+		}
+		private void DisposeQIconDragItem() {
+			ProxyQIconDragItem().DisposeQIconDragItem();
 		}
 	}
 }

@@ -39,35 +39,46 @@ namespace Qt {
 			CreateQPixmapCacheProxy();
 			NewQPixmapCache();
 		}
+		[SmokeMethod("QPixmapCache()")]
 		private void NewQPixmapCache() {
 			ProxyQPixmapCache().NewQPixmapCache();
 		}
+		[SmokeMethod("cacheLimit()")]
 		public static int CacheLimit() {
 			return StaticQPixmapCache().CacheLimit();
 		}
+		[SmokeMethod("setCacheLimit(int)")]
 		public static void SetCacheLimit(int arg1) {
 			StaticQPixmapCache().SetCacheLimit(arg1);
 		}
+		[SmokeMethod("find(const QString&)")]
 		public static QPixmap Find(string key) {
 			return StaticQPixmapCache().Find(key);
 		}
+		[SmokeMethod("find(const QString&, QPixmap&)")]
 		public static bool Find(string key, QPixmap arg2) {
 			return StaticQPixmapCache().Find(key,arg2);
 		}
+		[SmokeMethod("insert(const QString&, QPixmap*)")]
 		public static bool Insert(string key, QPixmap arg2) {
 			return StaticQPixmapCache().Insert(key,arg2);
 		}
+		[SmokeMethod("remove(const QString&)")]
 		public static void Remove(string key) {
 			StaticQPixmapCache().Remove(key);
 		}
+		[SmokeMethod("clear()")]
 		public static void Clear() {
 			StaticQPixmapCache().Clear();
 		}
 		~QPixmapCache() {
-			ProxyQPixmapCache().Dispose();
+			DisposeQPixmapCache();
 		}
 		public void Dispose() {
-			ProxyQPixmapCache().Dispose();
+			DisposeQPixmapCache();
+		}
+		private void DisposeQPixmapCache() {
+			ProxyQPixmapCache().DisposeQPixmapCache();
 		}
 	}
 }

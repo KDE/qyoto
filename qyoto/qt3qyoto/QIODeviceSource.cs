@@ -28,6 +28,7 @@ namespace Qt {
 			CreateQIODeviceSourceProxy();
 			NewQIODeviceSource(arg1,bufsize);
 		}
+		[SmokeMethod("QIODeviceSource(QIODevice*, int)")]
 		private void NewQIODeviceSource(IQIODevice arg1, int bufsize) {
 			ProxyQIODeviceSource().NewQIODeviceSource(arg1,bufsize);
 		}
@@ -35,29 +36,38 @@ namespace Qt {
 			CreateQIODeviceSourceProxy();
 			NewQIODeviceSource(arg1);
 		}
+		[SmokeMethod("QIODeviceSource(QIODevice*)")]
 		private void NewQIODeviceSource(IQIODevice arg1) {
 			ProxyQIODeviceSource().NewQIODeviceSource(arg1);
 		}
+		[SmokeMethod("readyToSend()")]
 		public new int ReadyToSend() {
 			return ProxyQIODeviceSource().ReadyToSend();
 		}
+		[SmokeMethod("sendTo(QDataSink*, int)")]
 		public new void SendTo(QDataSink sink, int n) {
 			ProxyQIODeviceSource().SendTo(sink,n);
 		}
+		[SmokeMethod("rewindable() const")]
 		public new bool Rewindable() {
 			return ProxyQIODeviceSource().Rewindable();
 		}
+		[SmokeMethod("enableRewind(bool)")]
 		public new void EnableRewind(bool on) {
 			ProxyQIODeviceSource().EnableRewind(on);
 		}
+		[SmokeMethod("rewind()")]
 		public new void Rewind() {
 			ProxyQIODeviceSource().Rewind();
 		}
 		~QIODeviceSource() {
-			ProxyQIODeviceSource().Dispose();
+			DisposeQIODeviceSource();
 		}
 		public new void Dispose() {
-			ProxyQIODeviceSource().Dispose();
+			DisposeQIODeviceSource();
+		}
+		private void DisposeQIODeviceSource() {
+			ProxyQIODeviceSource().DisposeQIODeviceSource();
 		}
 	}
 }

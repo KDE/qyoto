@@ -28,6 +28,7 @@ namespace Qt {
 			CreateQCanvasRectangleProxy();
 			NewQCanvasRectangle(canvas);
 		}
+		[SmokeMethod("QCanvasRectangle(QCanvas*)")]
 		private void NewQCanvasRectangle(QCanvas canvas) {
 			ProxyQCanvasRectangle().NewQCanvasRectangle(canvas);
 		}
@@ -35,6 +36,7 @@ namespace Qt {
 			CreateQCanvasRectangleProxy();
 			NewQCanvasRectangle(arg1,canvas);
 		}
+		[SmokeMethod("QCanvasRectangle(const QRect&, QCanvas*)")]
 		private void NewQCanvasRectangle(QRect arg1, QCanvas canvas) {
 			ProxyQCanvasRectangle().NewQCanvasRectangle(arg1,canvas);
 		}
@@ -42,44 +44,58 @@ namespace Qt {
 			CreateQCanvasRectangleProxy();
 			NewQCanvasRectangle(x,y,width,height,canvas);
 		}
+		[SmokeMethod("QCanvasRectangle(int, int, int, int, QCanvas*)")]
 		private void NewQCanvasRectangle(int x, int y, int width, int height, QCanvas canvas) {
 			ProxyQCanvasRectangle().NewQCanvasRectangle(x,y,width,height,canvas);
 		}
+		[SmokeMethod("width() const")]
 		public int Width() {
 			return ProxyQCanvasRectangle().Width();
 		}
+		[SmokeMethod("height() const")]
 		public int Height() {
 			return ProxyQCanvasRectangle().Height();
 		}
+		[SmokeMethod("setSize(int, int)")]
 		public void SetSize(int w, int h) {
 			ProxyQCanvasRectangle().SetSize(w,h);
 		}
+		[SmokeMethod("size() const")]
 		public QSize Size() {
 			return ProxyQCanvasRectangle().Size();
 		}
+		[SmokeMethod("areaPoints() const")]
 		public new QPointArray AreaPoints() {
 			return ProxyQCanvasRectangle().AreaPoints();
 		}
+		[SmokeMethod("rect() const")]
 		public QRect Rect() {
 			return ProxyQCanvasRectangle().Rect();
 		}
+		[SmokeMethod("collidesWith(const QCanvasItem*) const")]
 		public new bool CollidesWith(QCanvasItem arg1) {
 			return ProxyQCanvasRectangle().CollidesWith(arg1);
 		}
+		[SmokeMethod("rtti() const")]
 		public new int Rtti() {
 			return ProxyQCanvasRectangle().Rtti();
 		}
+		[SmokeMethod("drawShape(QPainter&)")]
 		protected new void DrawShape(QPainter arg1) {
 			ProxyQCanvasRectangle().DrawShape(arg1);
 		}
+		[SmokeMethod("chunks() const")]
 		protected new QPointArray Chunks() {
 			return ProxyQCanvasRectangle().Chunks();
 		}
 		~QCanvasRectangle() {
-			ProxyQCanvasRectangle().Dispose();
+			DisposeQCanvasRectangle();
 		}
 		public new void Dispose() {
-			ProxyQCanvasRectangle().Dispose();
+			DisposeQCanvasRectangle();
+		}
+		private void DisposeQCanvasRectangle() {
+			ProxyQCanvasRectangle().DisposeQCanvasRectangle();
 		}
 	}
 }

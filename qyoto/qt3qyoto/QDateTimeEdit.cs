@@ -30,108 +30,150 @@ namespace Qt {
 			return (IQDateTimeEditProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQDateTimeEdit().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQDateTimeEdit().ClassName();
 		}
 		public QDateTimeEdit(QWidget parent, string name) : this((Type) null) {
 			CreateQDateTimeEditProxy();
+			CreateQDateTimeEditSignalProxy();
 			NewQDateTimeEdit(parent,name);
 		}
+		[SmokeMethod("QDateTimeEdit(QWidget*, const char*)")]
 		private void NewQDateTimeEdit(QWidget parent, string name) {
 			ProxyQDateTimeEdit().NewQDateTimeEdit(parent,name);
 		}
 		public QDateTimeEdit(QWidget parent) : this((Type) null) {
 			CreateQDateTimeEditProxy();
+			CreateQDateTimeEditSignalProxy();
 			NewQDateTimeEdit(parent);
 		}
+		[SmokeMethod("QDateTimeEdit(QWidget*)")]
 		private void NewQDateTimeEdit(QWidget parent) {
 			ProxyQDateTimeEdit().NewQDateTimeEdit(parent);
 		}
 		public QDateTimeEdit() : this((Type) null) {
 			CreateQDateTimeEditProxy();
+			CreateQDateTimeEditSignalProxy();
 			NewQDateTimeEdit();
 		}
+		[SmokeMethod("QDateTimeEdit()")]
 		private void NewQDateTimeEdit() {
 			ProxyQDateTimeEdit().NewQDateTimeEdit();
 		}
 		public QDateTimeEdit(DateTime datetime, QWidget parent, string name) : this((Type) null) {
 			CreateQDateTimeEditProxy();
+			CreateQDateTimeEditSignalProxy();
 			NewQDateTimeEdit(datetime,parent,name);
 		}
+		[SmokeMethod("QDateTimeEdit(const QDateTime&, QWidget*, const char*)")]
 		private void NewQDateTimeEdit(DateTime datetime, QWidget parent, string name) {
 			ProxyQDateTimeEdit().NewQDateTimeEdit(datetime,parent,name);
 		}
 		public QDateTimeEdit(DateTime datetime, QWidget parent) : this((Type) null) {
 			CreateQDateTimeEditProxy();
+			CreateQDateTimeEditSignalProxy();
 			NewQDateTimeEdit(datetime,parent);
 		}
+		[SmokeMethod("QDateTimeEdit(const QDateTime&, QWidget*)")]
 		private void NewQDateTimeEdit(DateTime datetime, QWidget parent) {
 			ProxyQDateTimeEdit().NewQDateTimeEdit(datetime,parent);
 		}
 		public QDateTimeEdit(DateTime datetime) : this((Type) null) {
 			CreateQDateTimeEditProxy();
+			CreateQDateTimeEditSignalProxy();
 			NewQDateTimeEdit(datetime);
 		}
+		[SmokeMethod("QDateTimeEdit(const QDateTime&)")]
 		private void NewQDateTimeEdit(DateTime datetime) {
 			ProxyQDateTimeEdit().NewQDateTimeEdit(datetime);
 		}
+		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {
 			return ProxyQDateTimeEdit().SizeHint();
 		}
+		[SmokeMethod("minimumSizeHint() const")]
 		public new QSize MinimumSizeHint() {
 			return ProxyQDateTimeEdit().MinimumSizeHint();
 		}
+		[SmokeMethod("dateTime() const")]
 		public DateTime DateTime() {
 			return ProxyQDateTimeEdit().DateTime();
 		}
+		[SmokeMethod("dateEdit()")]
 		public QDateEdit DateEdit() {
 			return ProxyQDateTimeEdit().DateEdit();
 		}
+		[SmokeMethod("timeEdit()")]
 		public QTimeEdit TimeEdit() {
 			return ProxyQDateTimeEdit().TimeEdit();
 		}
+		[SmokeMethod("setAutoAdvance(bool)")]
 		public virtual void SetAutoAdvance(bool advance) {
 			ProxyQDateTimeEdit().SetAutoAdvance(advance);
 		}
+		[SmokeMethod("autoAdvance() const")]
 		public bool AutoAdvance() {
 			return ProxyQDateTimeEdit().AutoAdvance();
 		}
+		[Q_SLOT("setDateTime(const QDateTime&)")]
+		[SmokeMethod("setDateTime(const QDateTime&)")]
 		public virtual void SetDateTime(DateTime dt) {
 			ProxyQDateTimeEdit().SetDateTime(dt);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQDateTimeEdit().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQDateTimeEdit().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQDateTimeEdit().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQDateTimeEdit().TrUtf8(arg1);
 		}
+		[SmokeMethod("init()")]
 		protected void Init() {
 			ProxyQDateTimeEdit().Init();
 		}
+		[SmokeMethod("resizeEvent(QResizeEvent*)")]
 		protected new void ResizeEvent(QResizeEvent arg1) {
 			ProxyQDateTimeEdit().ResizeEvent(arg1);
 		}
+		[Q_SLOT("newValue(const QDate&)")]
+		[SmokeMethod("newValue(const QDate&)")]
 		protected void NewValue(DateTime d) {
 			ProxyQDateTimeEdit().NewValue(d);
 		}
 		~QDateTimeEdit() {
-			ProxyQDateTimeEdit().Dispose();
+			DisposeQDateTimeEdit();
 		}
 		public new void Dispose() {
-			ProxyQDateTimeEdit().Dispose();
+			DisposeQDateTimeEdit();
+		}
+		private void DisposeQDateTimeEdit() {
+			ProxyQDateTimeEdit().DisposeQDateTimeEdit();
+		}
+		protected void CreateQDateTimeEditSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQDateTimeEditSignals), this);
+			_signalInterceptor = (IQDateTimeEditSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQDateTimeEditSignals Emit() {
+			return (IQDateTimeEditSignals) _signalInterceptor;
 		}
 	}
 
-	public interface IQDateTimeEditSignals {
+	public interface IQDateTimeEditSignals : IQWidgetSignals {
+		[Q_SIGNAL("valueChanged(const QDateTime&)")]
 		void ValueChanged(DateTime datetime);
 	}
 }

@@ -28,23 +28,30 @@ namespace Qt {
 			CreateQCloseEventProxy();
 			NewQCloseEvent();
 		}
+		[SmokeMethod("QCloseEvent()")]
 		private void NewQCloseEvent() {
 			ProxyQCloseEvent().NewQCloseEvent();
 		}
+		[SmokeMethod("isAccepted() const")]
 		public bool IsAccepted() {
 			return ProxyQCloseEvent().IsAccepted();
 		}
+		[SmokeMethod("accept()")]
 		public void Accept() {
 			ProxyQCloseEvent().Accept();
 		}
+		[SmokeMethod("ignore()")]
 		public void Ignore() {
 			ProxyQCloseEvent().Ignore();
 		}
 		~QCloseEvent() {
-			ProxyQCloseEvent().Dispose();
+			DisposeQCloseEvent();
 		}
 		public new void Dispose() {
-			ProxyQCloseEvent().Dispose();
+			DisposeQCloseEvent();
+		}
+		private void DisposeQCloseEvent() {
+			ProxyQCloseEvent().DisposeQCloseEvent();
 		}
 	}
 }

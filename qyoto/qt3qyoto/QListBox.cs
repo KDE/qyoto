@@ -42,451 +42,626 @@ namespace Qt {
 			FitToHeight = FitToWidth,
 			Variable = 2,
 		}
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQListBox().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQListBox().ClassName();
 		}
 		public QListBox(QWidget parent, string name, int f) : this((Type) null) {
 			CreateQListBoxProxy();
+			CreateQListBoxSignalProxy();
 			NewQListBox(parent,name,f);
 		}
+		[SmokeMethod("QListBox(QWidget*, const char*, Qt::WFlags)")]
 		private void NewQListBox(QWidget parent, string name, int f) {
 			ProxyQListBox().NewQListBox(parent,name,f);
 		}
 		public QListBox(QWidget parent, string name) : this((Type) null) {
 			CreateQListBoxProxy();
+			CreateQListBoxSignalProxy();
 			NewQListBox(parent,name);
 		}
+		[SmokeMethod("QListBox(QWidget*, const char*)")]
 		private void NewQListBox(QWidget parent, string name) {
 			ProxyQListBox().NewQListBox(parent,name);
 		}
 		public QListBox(QWidget parent) : this((Type) null) {
 			CreateQListBoxProxy();
+			CreateQListBoxSignalProxy();
 			NewQListBox(parent);
 		}
+		[SmokeMethod("QListBox(QWidget*)")]
 		private void NewQListBox(QWidget parent) {
 			ProxyQListBox().NewQListBox(parent);
 		}
 		public QListBox() : this((Type) null) {
 			CreateQListBoxProxy();
+			CreateQListBoxSignalProxy();
 			NewQListBox();
 		}
+		[SmokeMethod("QListBox()")]
 		private void NewQListBox() {
 			ProxyQListBox().NewQListBox();
 		}
+		[SmokeMethod("setFont(const QFont&)")]
 		public new virtual void SetFont(QFont arg1) {
 			ProxyQListBox().SetFont(arg1);
 		}
+		[SmokeMethod("count() const")]
 		public uint Count() {
 			return ProxyQListBox().Count();
 		}
+		[SmokeMethod("insertStringList(const QStringList&, int)")]
 		public void InsertStringList(string[] arg1, int index) {
 			ProxyQListBox().InsertStringList(arg1,index);
 		}
+		[SmokeMethod("insertStringList(const QStringList&)")]
 		public void InsertStringList(string[] arg1) {
 			ProxyQListBox().InsertStringList(arg1);
 		}
+		[SmokeMethod("insertStrList(const QStrList*, int)")]
 		public void InsertStrList(string[] arg1, int index) {
 			ProxyQListBox().InsertStrList(arg1,index);
 		}
+		[SmokeMethod("insertStrList(const QStrList*)")]
 		public void InsertStrList(string[] arg1) {
 			ProxyQListBox().InsertStrList(arg1);
 		}
+		[SmokeMethod("insertStrList(const char**, int, int)")]
 		public void InsertStrList(string[] arg1, int numStrings, int index) {
 			ProxyQListBox().InsertStrList(arg1,numStrings,index);
 		}
+		[SmokeMethod("insertItem(const QListBoxItem*, int)")]
 		public void InsertItem(QListBoxItem arg1, int index) {
 			ProxyQListBox().InsertItem(arg1,index);
 		}
+		[SmokeMethod("insertItem(const QListBoxItem*)")]
 		public void InsertItem(QListBoxItem arg1) {
 			ProxyQListBox().InsertItem(arg1);
 		}
+		[SmokeMethod("insertItem(const QListBoxItem*, const QListBoxItem*)")]
 		public void InsertItem(QListBoxItem arg1, QListBoxItem after) {
 			ProxyQListBox().InsertItem(arg1,after);
 		}
+		[SmokeMethod("insertItem(const QString&, int)")]
 		public void InsertItem(string text, int index) {
 			ProxyQListBox().InsertItem(text,index);
 		}
+		[SmokeMethod("insertItem(const QString&)")]
 		public void InsertItem(string text) {
 			ProxyQListBox().InsertItem(text);
 		}
+		[SmokeMethod("insertItem(const QPixmap&, int)")]
 		public void InsertItem(QPixmap pixmap, int index) {
 			ProxyQListBox().InsertItem(pixmap,index);
 		}
+		[SmokeMethod("insertItem(const QPixmap&)")]
 		public void InsertItem(QPixmap pixmap) {
 			ProxyQListBox().InsertItem(pixmap);
 		}
+		[SmokeMethod("insertItem(const QPixmap&, const QString&, int)")]
 		public void InsertItem(QPixmap pixmap, string text, int index) {
 			ProxyQListBox().InsertItem(pixmap,text,index);
 		}
+		[SmokeMethod("insertItem(const QPixmap&, const QString&)")]
 		public void InsertItem(QPixmap pixmap, string text) {
 			ProxyQListBox().InsertItem(pixmap,text);
 		}
+		[SmokeMethod("removeItem(int)")]
 		public void RemoveItem(int index) {
 			ProxyQListBox().RemoveItem(index);
 		}
+		[SmokeMethod("text(int) const")]
 		public string Text(int index) {
 			return ProxyQListBox().Text(index);
 		}
+		[SmokeMethod("pixmap(int) const")]
 		public QPixmap Pixmap(int index) {
 			return ProxyQListBox().Pixmap(index);
 		}
+		[SmokeMethod("changeItem(const QListBoxItem*, int)")]
 		public void ChangeItem(QListBoxItem arg1, int index) {
 			ProxyQListBox().ChangeItem(arg1,index);
 		}
+		[SmokeMethod("changeItem(const QString&, int)")]
 		public void ChangeItem(string text, int index) {
 			ProxyQListBox().ChangeItem(text,index);
 		}
+		[SmokeMethod("changeItem(const QPixmap&, int)")]
 		public void ChangeItem(QPixmap pixmap, int index) {
 			ProxyQListBox().ChangeItem(pixmap,index);
 		}
+		[SmokeMethod("changeItem(const QPixmap&, const QString&, int)")]
 		public void ChangeItem(QPixmap pixmap, string text, int index) {
 			ProxyQListBox().ChangeItem(pixmap,text,index);
 		}
+		[SmokeMethod("takeItem(const QListBoxItem*)")]
 		public void TakeItem(QListBoxItem arg1) {
 			ProxyQListBox().TakeItem(arg1);
 		}
+		[SmokeMethod("numItemsVisible() const")]
 		public int NumItemsVisible() {
 			return ProxyQListBox().NumItemsVisible();
 		}
+		[SmokeMethod("currentItem() const")]
 		public int CurrentItem() {
 			return ProxyQListBox().CurrentItem();
 		}
+		[SmokeMethod("currentText() const")]
 		public string CurrentText() {
 			return ProxyQListBox().CurrentText();
 		}
+		[SmokeMethod("setCurrentItem(int)")]
 		public virtual void SetCurrentItem(int index) {
 			ProxyQListBox().SetCurrentItem(index);
 		}
+		[SmokeMethod("setCurrentItem(QListBoxItem*)")]
 		public virtual void SetCurrentItem(QListBoxItem arg1) {
 			ProxyQListBox().SetCurrentItem(arg1);
 		}
+		[SmokeMethod("centerCurrentItem()")]
 		public void CenterCurrentItem() {
 			ProxyQListBox().CenterCurrentItem();
 		}
+		[SmokeMethod("topItem() const")]
 		public int TopItem() {
 			return ProxyQListBox().TopItem();
 		}
+		[SmokeMethod("setTopItem(int)")]
 		public virtual void SetTopItem(int index) {
 			ProxyQListBox().SetTopItem(index);
 		}
+		[SmokeMethod("setBottomItem(int)")]
 		public virtual void SetBottomItem(int index) {
 			ProxyQListBox().SetBottomItem(index);
 		}
+		[SmokeMethod("maxItemWidth() const")]
 		public long MaxItemWidth() {
 			return ProxyQListBox().MaxItemWidth();
 		}
+		[SmokeMethod("setSelectionMode(QListBox::SelectionMode)")]
 		public virtual void SetSelectionMode(int arg1) {
 			ProxyQListBox().SetSelectionMode(arg1);
 		}
+		[SmokeMethod("selectionMode() const")]
 		public int SelectionMode() {
 			return ProxyQListBox().SelectionMode();
 		}
+		[SmokeMethod("setMultiSelection(bool)")]
 		public void SetMultiSelection(bool multi) {
 			ProxyQListBox().SetMultiSelection(multi);
 		}
+		[SmokeMethod("isMultiSelection() const")]
 		public bool IsMultiSelection() {
 			return ProxyQListBox().IsMultiSelection();
 		}
+		[SmokeMethod("setSelected(QListBoxItem*, bool)")]
 		public virtual void SetSelected(QListBoxItem arg1, bool arg2) {
 			ProxyQListBox().SetSelected(arg1,arg2);
 		}
+		[SmokeMethod("setSelected(int, bool)")]
 		public void SetSelected(int arg1, bool arg2) {
 			ProxyQListBox().SetSelected(arg1,arg2);
 		}
+		[SmokeMethod("isSelected(int) const")]
 		public bool IsSelected(int arg1) {
 			return ProxyQListBox().IsSelected(arg1);
 		}
+		[SmokeMethod("isSelected(const QListBoxItem*) const")]
 		public bool IsSelected(QListBoxItem arg1) {
 			return ProxyQListBox().IsSelected(arg1);
 		}
+		[SmokeMethod("selectedItem() const")]
 		public QListBoxItem SelectedItem() {
 			return ProxyQListBox().SelectedItem();
 		}
+		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {
 			return ProxyQListBox().SizeHint();
 		}
+		[SmokeMethod("minimumSizeHint() const")]
 		public new QSize MinimumSizeHint() {
 			return ProxyQListBox().MinimumSizeHint();
 		}
+		[SmokeMethod("item(int) const")]
 		public QListBoxItem Item(int index) {
 			return ProxyQListBox().Item(index);
 		}
+		[SmokeMethod("index(const QListBoxItem*) const")]
 		public int Index(QListBoxItem arg1) {
 			return ProxyQListBox().Index(arg1);
 		}
+		[SmokeMethod("findItem(const QString&, Qt::ComparisonFlags) const")]
 		public QListBoxItem FindItem(string text, uint compare) {
 			return ProxyQListBox().FindItem(text,compare);
 		}
+		[SmokeMethod("findItem(const QString&) const")]
 		public QListBoxItem FindItem(string text) {
 			return ProxyQListBox().FindItem(text);
 		}
+		[SmokeMethod("triggerUpdate(bool)")]
 		public void TriggerUpdate(bool doLayout) {
 			ProxyQListBox().TriggerUpdate(doLayout);
 		}
+		[SmokeMethod("itemVisible(int)")]
 		public bool ItemVisible(int index) {
 			return ProxyQListBox().ItemVisible(index);
 		}
+		[SmokeMethod("itemVisible(const QListBoxItem*)")]
 		public bool ItemVisible(QListBoxItem arg1) {
 			return ProxyQListBox().ItemVisible(arg1);
 		}
+		[SmokeMethod("setColumnMode(QListBox::LayoutMode)")]
 		public virtual void SetColumnMode(int arg1) {
 			ProxyQListBox().SetColumnMode(arg1);
 		}
+		[SmokeMethod("setRowMode(QListBox::LayoutMode)")]
 		public virtual void SetRowMode(int arg1) {
 			ProxyQListBox().SetRowMode(arg1);
 		}
+		[SmokeMethod("columnMode() const")]
 		public int ColumnMode() {
 			return ProxyQListBox().ColumnMode();
 		}
+		[SmokeMethod("rowMode() const")]
 		public int RowMode() {
 			return ProxyQListBox().RowMode();
 		}
+		[SmokeMethod("numColumns() const")]
 		public int NumColumns() {
 			return ProxyQListBox().NumColumns();
 		}
+		[SmokeMethod("numRows() const")]
 		public int NumRows() {
 			return ProxyQListBox().NumRows();
 		}
+		[SmokeMethod("variableWidth() const")]
 		public bool VariableWidth() {
 			return ProxyQListBox().VariableWidth();
 		}
+		[SmokeMethod("setVariableWidth(bool)")]
 		public virtual void SetVariableWidth(bool arg1) {
 			ProxyQListBox().SetVariableWidth(arg1);
 		}
+		[SmokeMethod("variableHeight() const")]
 		public bool VariableHeight() {
 			return ProxyQListBox().VariableHeight();
 		}
+		[SmokeMethod("setVariableHeight(bool)")]
 		public virtual void SetVariableHeight(bool arg1) {
 			ProxyQListBox().SetVariableHeight(arg1);
 		}
+		[SmokeMethod("viewportPaintEvent(QPaintEvent*)")]
 		public new void ViewportPaintEvent(QPaintEvent arg1) {
 			ProxyQListBox().ViewportPaintEvent(arg1);
 		}
+		[SmokeMethod("dragSelect() const")]
 		public bool DragSelect() {
 			return ProxyQListBox().DragSelect();
 		}
+		[SmokeMethod("setDragSelect(bool)")]
 		public void SetDragSelect(bool arg1) {
 			ProxyQListBox().SetDragSelect(arg1);
 		}
+		[SmokeMethod("autoScroll() const")]
 		public bool AutoScroll() {
 			return ProxyQListBox().AutoScroll();
 		}
+		[SmokeMethod("setAutoScroll(bool)")]
 		public void SetAutoScroll(bool arg1) {
 			ProxyQListBox().SetAutoScroll(arg1);
 		}
+		[SmokeMethod("autoScrollBar() const")]
 		public bool AutoScrollBar() {
 			return ProxyQListBox().AutoScrollBar();
 		}
+		[SmokeMethod("setAutoScrollBar(bool)")]
 		public void SetAutoScrollBar(bool enable) {
 			ProxyQListBox().SetAutoScrollBar(enable);
 		}
+		[SmokeMethod("scrollBar() const")]
 		public bool ScrollBar() {
 			return ProxyQListBox().ScrollBar();
 		}
+		[SmokeMethod("setScrollBar(bool)")]
 		public void SetScrollBar(bool enable) {
 			ProxyQListBox().SetScrollBar(enable);
 		}
+		[SmokeMethod("autoBottomScrollBar() const")]
 		public bool AutoBottomScrollBar() {
 			return ProxyQListBox().AutoBottomScrollBar();
 		}
+		[SmokeMethod("setAutoBottomScrollBar(bool)")]
 		public void SetAutoBottomScrollBar(bool enable) {
 			ProxyQListBox().SetAutoBottomScrollBar(enable);
 		}
+		[SmokeMethod("bottomScrollBar() const")]
 		public bool BottomScrollBar() {
 			return ProxyQListBox().BottomScrollBar();
 		}
+		[SmokeMethod("setBottomScrollBar(bool)")]
 		public void SetBottomScrollBar(bool enable) {
 			ProxyQListBox().SetBottomScrollBar(enable);
 		}
+		[SmokeMethod("smoothScrolling() const")]
 		public bool SmoothScrolling() {
 			return ProxyQListBox().SmoothScrolling();
 		}
+		[SmokeMethod("setSmoothScrolling(bool)")]
 		public void SetSmoothScrolling(bool arg1) {
 			ProxyQListBox().SetSmoothScrolling(arg1);
 		}
+		[SmokeMethod("autoUpdate() const")]
 		public bool AutoUpdate() {
 			return ProxyQListBox().AutoUpdate();
 		}
+		[SmokeMethod("setAutoUpdate(bool)")]
 		public void SetAutoUpdate(bool arg1) {
 			ProxyQListBox().SetAutoUpdate(arg1);
 		}
+		[SmokeMethod("setFixedVisibleLines(int)")]
 		public void SetFixedVisibleLines(int lines) {
 			ProxyQListBox().SetFixedVisibleLines(lines);
 		}
+		[SmokeMethod("inSort(const QListBoxItem*)")]
 		public int InSort(QListBoxItem arg1) {
 			return ProxyQListBox().InSort(arg1);
 		}
+		[SmokeMethod("inSort(const QString&)")]
 		public int InSort(string text) {
 			return ProxyQListBox().InSort(text);
 		}
+		[SmokeMethod("cellHeight(int) const")]
 		public int CellHeight(int i) {
 			return ProxyQListBox().CellHeight(i);
 		}
+		[SmokeMethod("cellHeight() const")]
 		public int CellHeight() {
 			return ProxyQListBox().CellHeight();
 		}
+		[SmokeMethod("cellWidth() const")]
 		public int CellWidth() {
 			return ProxyQListBox().CellWidth();
 		}
+		[SmokeMethod("cellWidth(int) const")]
 		public int CellWidth(int i) {
 			return ProxyQListBox().CellWidth(i);
 		}
+		[SmokeMethod("numCols() const")]
 		public int NumCols() {
 			return ProxyQListBox().NumCols();
 		}
+		[SmokeMethod("itemHeight(int) const")]
 		public int ItemHeight(int index) {
 			return ProxyQListBox().ItemHeight(index);
 		}
+		[SmokeMethod("itemHeight() const")]
 		public int ItemHeight() {
 			return ProxyQListBox().ItemHeight();
 		}
+		[SmokeMethod("itemAt(const QPoint&) const")]
 		public QListBoxItem ItemAt(QPoint arg1) {
 			return ProxyQListBox().ItemAt(arg1);
 		}
+		[SmokeMethod("itemRect(QListBoxItem*) const")]
 		public QRect ItemRect(QListBoxItem item) {
 			return ProxyQListBox().ItemRect(item);
 		}
+		[SmokeMethod("firstItem() const")]
 		public QListBoxItem FirstItem() {
 			return ProxyQListBox().FirstItem();
 		}
+		[SmokeMethod("sort(bool)")]
 		public void Sort(bool ascending) {
 			ProxyQListBox().Sort(ascending);
 		}
+		[SmokeMethod("sort()")]
 		public void Sort() {
 			ProxyQListBox().Sort();
 		}
+		[Q_SLOT("clear()")]
+		[SmokeMethod("clear()")]
 		public void Clear() {
 			ProxyQListBox().Clear();
 		}
+		[Q_SLOT("ensureCurrentVisible()")]
+		[SmokeMethod("ensureCurrentVisible()")]
 		public virtual void EnsureCurrentVisible() {
 			ProxyQListBox().EnsureCurrentVisible();
 		}
+		[Q_SLOT("clearSelection()")]
+		[SmokeMethod("clearSelection()")]
 		public virtual void ClearSelection() {
 			ProxyQListBox().ClearSelection();
 		}
+		[Q_SLOT("selectAll(bool)")]
+		[SmokeMethod("selectAll(bool)")]
 		public virtual void SelectAll(bool select) {
 			ProxyQListBox().SelectAll(select);
 		}
+		[Q_SLOT("invertSelection()")]
+		[SmokeMethod("invertSelection()")]
 		public virtual void InvertSelection() {
 			ProxyQListBox().InvertSelection();
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQListBox().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQListBox().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQListBox().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQListBox().TrUtf8(arg1);
 		}
+		[SmokeMethod("mousePressEvent(QMouseEvent*)")]
 		protected new void MousePressEvent(QMouseEvent arg1) {
 			ProxyQListBox().MousePressEvent(arg1);
 		}
+		[SmokeMethod("mouseReleaseEvent(QMouseEvent*)")]
 		protected new void MouseReleaseEvent(QMouseEvent arg1) {
 			ProxyQListBox().MouseReleaseEvent(arg1);
 		}
+		[SmokeMethod("mouseDoubleClickEvent(QMouseEvent*)")]
 		protected new void MouseDoubleClickEvent(QMouseEvent arg1) {
 			ProxyQListBox().MouseDoubleClickEvent(arg1);
 		}
+		[SmokeMethod("mouseMoveEvent(QMouseEvent*)")]
 		protected new void MouseMoveEvent(QMouseEvent arg1) {
 			ProxyQListBox().MouseMoveEvent(arg1);
 		}
+		[SmokeMethod("contentsContextMenuEvent(QContextMenuEvent*)")]
 		protected new void ContentsContextMenuEvent(QContextMenuEvent arg1) {
 			ProxyQListBox().ContentsContextMenuEvent(arg1);
 		}
+		[SmokeMethod("keyPressEvent(QKeyEvent*)")]
 		protected new void KeyPressEvent(QKeyEvent e) {
 			ProxyQListBox().KeyPressEvent(e);
 		}
+		[SmokeMethod("focusInEvent(QFocusEvent*)")]
 		protected new void FocusInEvent(QFocusEvent e) {
 			ProxyQListBox().FocusInEvent(e);
 		}
+		[SmokeMethod("focusOutEvent(QFocusEvent*)")]
 		protected new void FocusOutEvent(QFocusEvent e) {
 			ProxyQListBox().FocusOutEvent(e);
 		}
+		[SmokeMethod("resizeEvent(QResizeEvent*)")]
 		protected new void ResizeEvent(QResizeEvent arg1) {
 			ProxyQListBox().ResizeEvent(arg1);
 		}
+		[SmokeMethod("showEvent(QShowEvent*)")]
 		public new void ShowEvent(QShowEvent arg1) {
 			ProxyQListBox().ShowEvent(arg1);
 		}
+		[SmokeMethod("eventFilter(QObject*, QEvent*)")]
 		public new bool EventFilter(QObject o, QEvent e) {
 			return ProxyQListBox().EventFilter(o,e);
 		}
+		[SmokeMethod("updateItem(int)")]
 		protected void UpdateItem(int index) {
 			ProxyQListBox().UpdateItem(index);
 		}
+		[SmokeMethod("updateItem(QListBoxItem*)")]
 		protected void UpdateItem(QListBoxItem arg1) {
 			ProxyQListBox().UpdateItem(arg1);
 		}
+		[SmokeMethod("updateCellWidth()")]
 		protected void UpdateCellWidth() {
 			ProxyQListBox().UpdateCellWidth();
 		}
+		[SmokeMethod("totalWidth() const")]
 		protected int TotalWidth() {
 			return ProxyQListBox().TotalWidth();
 		}
+		[SmokeMethod("totalHeight() const")]
 		protected int TotalHeight() {
 			return ProxyQListBox().TotalHeight();
 		}
+		[SmokeMethod("paintCell(QPainter*, int, int)")]
 		public virtual void PaintCell(QPainter arg1, int row, int col) {
 			ProxyQListBox().PaintCell(arg1,row,col);
 		}
+		[SmokeMethod("toggleCurrentItem()")]
 		protected void ToggleCurrentItem() {
 			ProxyQListBox().ToggleCurrentItem();
 		}
+		[SmokeMethod("isRubberSelecting() const")]
 		protected bool IsRubberSelecting() {
 			return ProxyQListBox().IsRubberSelecting();
 		}
+		[SmokeMethod("doLayout() const")]
 		protected void DoLayout() {
 			ProxyQListBox().DoLayout();
 		}
+		[SmokeMethod("windowActivationChange(bool)")]
 		protected new void WindowActivationChange(bool arg1) {
 			ProxyQListBox().WindowActivationChange(arg1);
 		}
+		[SmokeMethod("itemYPos(int, int*) const")]
 		protected bool ItemYPos(int index, out int yPos) {
 			return ProxyQListBox().ItemYPos(index,out yPos);
 		}
+		[SmokeMethod("findItem(int) const")]
 		protected int FindItem(int yPos) {
 			return ProxyQListBox().FindItem(yPos);
 		}
+		[Q_SLOT("clearInputString()")]
+		[SmokeMethod("clearInputString()")]
 		protected void ClearInputString() {
 			ProxyQListBox().ClearInputString();
 		}
 		~QListBox() {
-			ProxyQListBox().Dispose();
+			DisposeQListBox();
 		}
 		public new void Dispose() {
-			ProxyQListBox().Dispose();
+			DisposeQListBox();
+		}
+		private void DisposeQListBox() {
+			ProxyQListBox().DisposeQListBox();
+		}
+		protected void CreateQListBoxSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQListBoxSignals), this);
+			_signalInterceptor = (IQListBoxSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQListBoxSignals Emit() {
+			return (IQListBoxSignals) _signalInterceptor;
 		}
 	}
 
-	public interface IQListBoxSignals {
+	public interface IQListBoxSignals : IQScrollViewSignals {
+		[Q_SIGNAL("highlighted(int)")]
 		void Highlighted(int index);
+		[Q_SIGNAL("selected(int)")]
 		void Selected(int index);
+		[Q_SIGNAL("highlighted(const QString&)")]
 		void Highlighted(string arg1);
+		[Q_SIGNAL("selected(const QString&)")]
 		void Selected(string arg1);
+		[Q_SIGNAL("highlighted(QListBoxItem*)")]
 		void Highlighted(QListBoxItem arg1);
+		[Q_SIGNAL("selected(QListBoxItem*)")]
 		void Selected(QListBoxItem arg1);
+		[Q_SIGNAL("selectionChanged()")]
 		void SelectionChanged();
+		[Q_SIGNAL("selectionChanged(QListBoxItem*)")]
 		void SelectionChanged(QListBoxItem arg1);
+		[Q_SIGNAL("currentChanged(QListBoxItem*)")]
 		void CurrentChanged(QListBoxItem arg1);
+		[Q_SIGNAL("clicked(QListBoxItem*)")]
 		void Clicked(QListBoxItem arg1);
+		[Q_SIGNAL("clicked(QListBoxItem*, const QPoint&)")]
 		void Clicked(QListBoxItem arg1, QPoint arg2);
+		[Q_SIGNAL("pressed(QListBoxItem*)")]
 		void Pressed(QListBoxItem arg1);
+		[Q_SIGNAL("pressed(QListBoxItem*, const QPoint&)")]
 		void Pressed(QListBoxItem arg1, QPoint arg2);
+		[Q_SIGNAL("doubleClicked(QListBoxItem*)")]
 		void DoubleClicked(QListBoxItem arg1);
+		[Q_SIGNAL("returnPressed(QListBoxItem*)")]
 		void ReturnPressed(QListBoxItem arg1);
+		[Q_SIGNAL("rightButtonClicked(QListBoxItem*, const QPoint&)")]
 		void RightButtonClicked(QListBoxItem arg1, QPoint arg2);
+		[Q_SIGNAL("rightButtonPressed(QListBoxItem*, const QPoint&)")]
 		void RightButtonPressed(QListBoxItem arg1, QPoint arg2);
+		[Q_SIGNAL("mouseButtonPressed(int, QListBoxItem*, const QPoint&)")]
 		void MouseButtonPressed(int arg1, QListBoxItem arg2, QPoint arg3);
+		[Q_SIGNAL("mouseButtonClicked(int, QListBoxItem*, const QPoint&)")]
 		void MouseButtonClicked(int arg1, QListBoxItem arg2, QPoint arg3);
+		[Q_SIGNAL("contextMenuRequested(QListBoxItem*, const QPoint&)")]
 		void ContextMenuRequested(QListBoxItem arg1, QPoint arg2);
+		[Q_SIGNAL("onItem(QListBoxItem*)")]
 		void OnItem(QListBoxItem item);
+		[Q_SIGNAL("onViewport()")]
 		void OnViewport();
 	}
 }

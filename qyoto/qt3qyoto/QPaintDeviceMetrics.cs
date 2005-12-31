@@ -42,44 +42,58 @@ namespace Qt {
 			CreateQPaintDeviceMetricsProxy();
 			NewQPaintDeviceMetrics(arg1);
 		}
+		[SmokeMethod("QPaintDeviceMetrics(const QPaintDevice*)")]
 		private void NewQPaintDeviceMetrics(IQPaintDevice arg1) {
 			ProxyQPaintDeviceMetrics().NewQPaintDeviceMetrics(arg1);
 		}
+		[SmokeMethod("width() const")]
 		public int Width() {
 			return ProxyQPaintDeviceMetrics().Width();
 		}
+		[SmokeMethod("height() const")]
 		public int Height() {
 			return ProxyQPaintDeviceMetrics().Height();
 		}
+		[SmokeMethod("widthMM() const")]
 		public int WidthMM() {
 			return ProxyQPaintDeviceMetrics().WidthMM();
 		}
+		[SmokeMethod("heightMM() const")]
 		public int HeightMM() {
 			return ProxyQPaintDeviceMetrics().HeightMM();
 		}
+		[SmokeMethod("logicalDpiX() const")]
 		public int LogicalDpiX() {
 			return ProxyQPaintDeviceMetrics().LogicalDpiX();
 		}
+		[SmokeMethod("logicalDpiY() const")]
 		public int LogicalDpiY() {
 			return ProxyQPaintDeviceMetrics().LogicalDpiY();
 		}
+		[SmokeMethod("physicalDpiX() const")]
 		public int PhysicalDpiX() {
 			return ProxyQPaintDeviceMetrics().PhysicalDpiX();
 		}
+		[SmokeMethod("physicalDpiY() const")]
 		public int PhysicalDpiY() {
 			return ProxyQPaintDeviceMetrics().PhysicalDpiY();
 		}
+		[SmokeMethod("numColors() const")]
 		public int NumColors() {
 			return ProxyQPaintDeviceMetrics().NumColors();
 		}
+		[SmokeMethod("depth() const")]
 		public int Depth() {
 			return ProxyQPaintDeviceMetrics().Depth();
 		}
 		~QPaintDeviceMetrics() {
-			ProxyQPaintDeviceMetrics().Dispose();
+			DisposeQPaintDeviceMetrics();
 		}
 		public void Dispose() {
-			ProxyQPaintDeviceMetrics().Dispose();
+			DisposeQPaintDeviceMetrics();
+		}
+		private void DisposeQPaintDeviceMetrics() {
+			ProxyQPaintDeviceMetrics().DisposeQPaintDeviceMetrics();
 		}
 	}
 }

@@ -25,21 +25,27 @@ namespace Qt {
 			return (IQHebrewCodecProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("mibEnum() const")]
 		public new virtual int MibEnum() {
 			return ProxyQHebrewCodec().MibEnum();
 		}
+		[SmokeMethod("name() const")]
 		public new string Name() {
 			return ProxyQHebrewCodec().Name();
 		}
+		[SmokeMethod("mimeName() const")]
 		public new string MimeName() {
 			return ProxyQHebrewCodec().MimeName();
 		}
+		[SmokeMethod("fromUnicode(const QString&, int&) const")]
 		public new string FromUnicode(string uc, out int lenInOut) {
 			return ProxyQHebrewCodec().FromUnicode(uc,out lenInOut);
 		}
+		[SmokeMethod("toUnicode(const char*, int) const")]
 		public new string ToUnicode(string chars, int len) {
 			return ProxyQHebrewCodec().ToUnicode(chars,len);
 		}
+		[SmokeMethod("heuristicContentMatch(const char*, int) const")]
 		public new int HeuristicContentMatch(string chars, int len) {
 			return ProxyQHebrewCodec().HeuristicContentMatch(chars,len);
 		}
@@ -47,14 +53,18 @@ namespace Qt {
 			CreateQHebrewCodecProxy();
 			NewQHebrewCodec();
 		}
+		[SmokeMethod("QHebrewCodec()")]
 		private void NewQHebrewCodec() {
 			ProxyQHebrewCodec().NewQHebrewCodec();
 		}
 		~QHebrewCodec() {
-			ProxyQHebrewCodec().Dispose();
+			DisposeQHebrewCodec();
 		}
 		public new void Dispose() {
-			ProxyQHebrewCodec().Dispose();
+			DisposeQHebrewCodec();
+		}
+		private void DisposeQHebrewCodec() {
+			ProxyQHebrewCodec().DisposeQHebrewCodec();
 		}
 	}
 }

@@ -35,6 +35,7 @@ namespace Qt {
 			CreateQPointProxy();
 			NewQPoint();
 		}
+		[SmokeMethod("QPoint()")]
 		private void NewQPoint() {
 			ProxyQPoint().NewQPoint();
 		}
@@ -42,50 +43,66 @@ namespace Qt {
 			CreateQPointProxy();
 			NewQPoint(xpos,ypos);
 		}
+		[SmokeMethod("QPoint(int, int)")]
 		private void NewQPoint(int xpos, int ypos) {
 			ProxyQPoint().NewQPoint(xpos,ypos);
 		}
+		[SmokeMethod("isNull() const")]
 		public bool IsNull() {
 			return ProxyQPoint().IsNull();
 		}
+		[SmokeMethod("x() const")]
 		public int X() {
 			return ProxyQPoint().X();
 		}
+		[SmokeMethod("y() const")]
 		public int Y() {
 			return ProxyQPoint().Y();
 		}
+		[SmokeMethod("setX(int)")]
 		public void SetX(int x) {
 			ProxyQPoint().SetX(x);
 		}
+		[SmokeMethod("setY(int)")]
 		public void SetY(int y) {
 			ProxyQPoint().SetY(y);
 		}
+		[SmokeMethod("manhattanLength() const")]
 		public int ManhattanLength() {
 			return ProxyQPoint().ManhattanLength();
 		}
+		[SmokeMethod("rx()")]
 		public short Rx() {
 			return ProxyQPoint().Rx();
 		}
+		[SmokeMethod("ry()")]
 		public short Ry() {
 			return ProxyQPoint().Ry();
 		}
+		[SmokeMethod("operator*=(int)")]
 		public static QPoint operator*(QPoint lhs, int c) {
 			return StaticQPoint().op_mult(lhs,c);
 		}
+		[SmokeMethod("operator*=(double)")]
 		public static QPoint operator*(QPoint lhs, double c) {
 			return StaticQPoint().op_mult(lhs,c);
 		}
+		[SmokeMethod("operator/=(int)")]
 		public static QPoint operator/(QPoint lhs, int c) {
 			return StaticQPoint().op_div(lhs,c);
 		}
+		[SmokeMethod("operator/=(double)")]
 		public static QPoint operator/(QPoint lhs, double c) {
 			return StaticQPoint().op_div(lhs,c);
 		}
 		~QPoint() {
-			ProxyQPoint().Dispose();
+			DisposeQPoint();
 		}
 		public void Dispose() {
-			ProxyQPoint().Dispose();
+			DisposeQPoint();
+		}
+		private void DisposeQPoint() {
+			ProxyQPoint().DisposeQPoint();
 		}
 	}
 }

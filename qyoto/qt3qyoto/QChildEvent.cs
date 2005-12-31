@@ -28,23 +28,30 @@ namespace Qt {
 			CreateQChildEventProxy();
 			NewQChildEvent(type,child);
 		}
+		[SmokeMethod("QChildEvent(QEvent::Type, QObject*)")]
 		private void NewQChildEvent(int type, QObject child) {
 			ProxyQChildEvent().NewQChildEvent(type,child);
 		}
+		[SmokeMethod("child() const")]
 		public QObject Child() {
 			return ProxyQChildEvent().Child();
 		}
+		[SmokeMethod("inserted() const")]
 		public bool Inserted() {
 			return ProxyQChildEvent().Inserted();
 		}
+		[SmokeMethod("removed() const")]
 		public bool Removed() {
 			return ProxyQChildEvent().Removed();
 		}
 		~QChildEvent() {
-			ProxyQChildEvent().Dispose();
+			DisposeQChildEvent();
 		}
 		public new void Dispose() {
-			ProxyQChildEvent().Dispose();
+			DisposeQChildEvent();
+		}
+		private void DisposeQChildEvent() {
+			ProxyQChildEvent().DisposeQChildEvent();
 		}
 	}
 }

@@ -32,12 +32,15 @@ namespace Qt {
 			CreateQGListIteratorProxy();
 			NewQGListIterator(arg1);
 		}
+		[SmokeMethod("QGListIterator(const QGListIterator&)")]
 		private void NewQGListIterator(QGListIterator arg1) {
 			ProxyQGListIterator().NewQGListIterator(arg1);
 		}
+		[SmokeMethod("atFirst() const")]
 		protected bool AtFirst() {
 			return ProxyQGListIterator().AtFirst();
 		}
+		[SmokeMethod("atLast() const")]
 		protected bool AtLast() {
 			return ProxyQGListIterator().AtLast();
 		}

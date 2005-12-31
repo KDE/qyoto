@@ -33,21 +33,27 @@ namespace Qt {
 			Top = 4,
 			Bottom = 8,
 		}
+		[SmokeMethod("scan(const QPointArray&, bool, int, int)")]
 		public void Scan(QPointArray pa, bool winding, int index, int npoints) {
 			ProxyQPolygonScanner().Scan(pa,winding,index,npoints);
 		}
+		[SmokeMethod("scan(const QPointArray&, bool, int)")]
 		public void Scan(QPointArray pa, bool winding, int index) {
 			ProxyQPolygonScanner().Scan(pa,winding,index);
 		}
+		[SmokeMethod("scan(const QPointArray&, bool)")]
 		public void Scan(QPointArray pa, bool winding) {
 			ProxyQPolygonScanner().Scan(pa,winding);
 		}
+		[SmokeMethod("scan(const QPointArray&, bool, int, int, bool)")]
 		public void Scan(QPointArray pa, bool winding, int index, int npoints, bool stitchable) {
 			ProxyQPolygonScanner().Scan(pa,winding,index,npoints,stitchable);
 		}
+		[SmokeMethod("scan(const QPointArray&, bool, int, int, QPolygonScanner::Edge)")]
 		public void Scan(QPointArray pa, bool winding, int index, int npoints, int edges) {
 			ProxyQPolygonScanner().Scan(pa,winding,index,npoints,edges);
 		}
+		[SmokeMethod("processSpans(int, QPoint*, int*)")]
 		public virtual void ProcessSpans(int n, QPoint point, out int width) {
 			ProxyQPolygonScanner().ProcessSpans(n,point,out width);
 		}

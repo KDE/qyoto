@@ -30,29 +30,47 @@ namespace Qt {
 			return (IQSqlDriverPluginProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQSqlDriverPlugin().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQSqlDriverPlugin().ClassName();
 		}
+		[SmokeMethod("keys() const")]
 		public virtual ArrayList Keys() {
 			return ProxyQSqlDriverPlugin().Keys();
 		}
+		[SmokeMethod("create(const QString&)")]
 		public virtual QSqlDriver Create(string key) {
 			return ProxyQSqlDriverPlugin().Create(key);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQSqlDriverPlugin().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQSqlDriverPlugin().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQSqlDriverPlugin().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQSqlDriverPlugin().TrUtf8(arg1);
 		}
+		protected void CreateQSqlDriverPluginSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQSqlDriverPluginSignals), this);
+			_signalInterceptor = (IQSqlDriverPluginSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQSqlDriverPluginSignals Emit() {
+			return (IQSqlDriverPluginSignals) _signalInterceptor;
+		}
+	}
+
+	public interface IQSqlDriverPluginSignals : IQGPluginSignals {
 	}
 }

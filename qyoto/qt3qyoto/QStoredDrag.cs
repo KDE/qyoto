@@ -29,59 +29,87 @@ namespace Qt {
 			return (IQStoredDragProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQStoredDrag().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQStoredDrag().ClassName();
 		}
 		public QStoredDrag(string mimeType, QWidget dragSource, string name) : this((Type) null) {
 			CreateQStoredDragProxy();
+			CreateQStoredDragSignalProxy();
 			NewQStoredDrag(mimeType,dragSource,name);
 		}
+		[SmokeMethod("QStoredDrag(const char*, QWidget*, const char*)")]
 		private void NewQStoredDrag(string mimeType, QWidget dragSource, string name) {
 			ProxyQStoredDrag().NewQStoredDrag(mimeType,dragSource,name);
 		}
 		public QStoredDrag(string mimeType, QWidget dragSource) : this((Type) null) {
 			CreateQStoredDragProxy();
+			CreateQStoredDragSignalProxy();
 			NewQStoredDrag(mimeType,dragSource);
 		}
+		[SmokeMethod("QStoredDrag(const char*, QWidget*)")]
 		private void NewQStoredDrag(string mimeType, QWidget dragSource) {
 			ProxyQStoredDrag().NewQStoredDrag(mimeType,dragSource);
 		}
 		public QStoredDrag(string mimeType) : this((Type) null) {
 			CreateQStoredDragProxy();
+			CreateQStoredDragSignalProxy();
 			NewQStoredDrag(mimeType);
 		}
+		[SmokeMethod("QStoredDrag(const char*)")]
 		private void NewQStoredDrag(string mimeType) {
 			ProxyQStoredDrag().NewQStoredDrag(mimeType);
 		}
-		public virtual void SetEncodedData(byte[] arg1) {
+		[SmokeMethod("setEncodedData(const QByteArray&)")]
+		public virtual void SetEncodedData(QByteArray arg1) {
 			ProxyQStoredDrag().SetEncodedData(arg1);
 		}
+		[SmokeMethod("format(int) const")]
 		public new string Format(int i) {
 			return ProxyQStoredDrag().Format(i);
 		}
-		public new virtual byte[] EncodedData(string arg1) {
+		[SmokeMethod("encodedData(const char*) const")]
+		public new virtual QByteArray EncodedData(string arg1) {
 			return ProxyQStoredDrag().EncodedData(arg1);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQStoredDrag().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQStoredDrag().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQStoredDrag().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQStoredDrag().TrUtf8(arg1);
 		}
 		~QStoredDrag() {
-			ProxyQStoredDrag().Dispose();
+			DisposeQStoredDrag();
 		}
 		public new void Dispose() {
-			ProxyQStoredDrag().Dispose();
+			DisposeQStoredDrag();
 		}
+		private void DisposeQStoredDrag() {
+			ProxyQStoredDrag().DisposeQStoredDrag();
+		}
+		protected void CreateQStoredDragSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQStoredDragSignals), this);
+			_signalInterceptor = (IQStoredDragSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQStoredDragSignals Emit() {
+			return (IQStoredDragSignals) _signalInterceptor;
+		}
+	}
+
+	public interface IQStoredDragSignals : IQDragObjectSignals {
 	}
 }

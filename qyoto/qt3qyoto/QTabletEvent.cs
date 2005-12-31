@@ -32,51 +32,67 @@ namespace Qt {
 		}
 		// QTabletEvent* QTabletEvent(QEvent::Type arg1,const QPoint& arg2,const QPoint& arg3,int arg4,int arg5,int arg6,int arg7,const QPair<int, int>& arg8); >>>> NOT CONVERTED
 		// QTabletEvent* QTabletEvent(const QPoint& arg1,const QPoint& arg2,int arg3,int arg4,int arg5,int arg6,const QPair<int, int>& arg7); >>>> NOT CONVERTED
+		[SmokeMethod("pressure() const")]
 		public int Pressure() {
 			return ProxyQTabletEvent().Pressure();
 		}
+		[SmokeMethod("xTilt() const")]
 		public int XTilt() {
 			return ProxyQTabletEvent().XTilt();
 		}
+		[SmokeMethod("yTilt() const")]
 		public int YTilt() {
 			return ProxyQTabletEvent().YTilt();
 		}
+		[SmokeMethod("pos() const")]
 		public QPoint Pos() {
 			return ProxyQTabletEvent().Pos();
 		}
+		[SmokeMethod("globalPos() const")]
 		public QPoint GlobalPos() {
 			return ProxyQTabletEvent().GlobalPos();
 		}
+		[SmokeMethod("x() const")]
 		public int X() {
 			return ProxyQTabletEvent().X();
 		}
+		[SmokeMethod("y() const")]
 		public int Y() {
 			return ProxyQTabletEvent().Y();
 		}
+		[SmokeMethod("globalX() const")]
 		public int GlobalX() {
 			return ProxyQTabletEvent().GlobalX();
 		}
+		[SmokeMethod("globalY() const")]
 		public int GlobalY() {
 			return ProxyQTabletEvent().GlobalY();
 		}
+		[SmokeMethod("device() const")]
 		public int Device() {
 			return ProxyQTabletEvent().Device();
 		}
+		[SmokeMethod("isAccepted() const")]
 		public int IsAccepted() {
 			return ProxyQTabletEvent().IsAccepted();
 		}
+		[SmokeMethod("accept()")]
 		public void Accept() {
 			ProxyQTabletEvent().Accept();
 		}
+		[SmokeMethod("ignore()")]
 		public void Ignore() {
 			ProxyQTabletEvent().Ignore();
 		}
 		// QPair<int, int> uniqueId(); >>>> NOT CONVERTED
 		~QTabletEvent() {
-			ProxyQTabletEvent().Dispose();
+			DisposeQTabletEvent();
 		}
 		public new void Dispose() {
-			ProxyQTabletEvent().Dispose();
+			DisposeQTabletEvent();
+		}
+		private void DisposeQTabletEvent() {
+			ProxyQTabletEvent().DisposeQTabletEvent();
 		}
 	}
 }

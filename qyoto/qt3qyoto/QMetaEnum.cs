@@ -31,14 +31,18 @@ namespace Qt {
 			CreateQMetaEnumProxy();
 			NewQMetaEnum();
 		}
+		[SmokeMethod("QMetaEnum()")]
 		private void NewQMetaEnum() {
 			ProxyQMetaEnum().NewQMetaEnum();
 		}
 		~QMetaEnum() {
-			ProxyQMetaEnum().Dispose();
+			DisposeQMetaEnum();
 		}
 		public void Dispose() {
-			ProxyQMetaEnum().Dispose();
+			DisposeQMetaEnum();
+		}
+		private void DisposeQMetaEnum() {
+			ProxyQMetaEnum().DisposeQMetaEnum();
 		}
 	}
 }

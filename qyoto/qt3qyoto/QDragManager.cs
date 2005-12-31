@@ -29,23 +29,39 @@ namespace Qt {
 			return (IQDragManagerProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQDragManager().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQDragManager().ClassName();
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQDragManager().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQDragManager().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQDragManager().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQDragManager().TrUtf8(arg1);
 		}
+		protected void CreateQDragManagerSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQDragManagerSignals), this);
+			_signalInterceptor = (IQDragManagerSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQDragManagerSignals Emit() {
+			return (IQDragManagerSignals) _signalInterceptor;
+		}
+	}
+
+	public interface IQDragManagerSignals : IQObjectSignals {
 	}
 }

@@ -32,89 +32,126 @@ namespace Qt {
 			return (IQImageDragProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQImageDrag().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQImageDrag().ClassName();
 		}
 		public QImageDrag(QImage image, QWidget dragSource, string name) : this((Type) null) {
 			CreateQImageDragProxy();
+			CreateQImageDragSignalProxy();
 			NewQImageDrag(image,dragSource,name);
 		}
+		[SmokeMethod("QImageDrag(QImage, QWidget*, const char*)")]
 		private void NewQImageDrag(QImage image, QWidget dragSource, string name) {
 			ProxyQImageDrag().NewQImageDrag(image,dragSource,name);
 		}
 		public QImageDrag(QImage image, QWidget dragSource) : this((Type) null) {
 			CreateQImageDragProxy();
+			CreateQImageDragSignalProxy();
 			NewQImageDrag(image,dragSource);
 		}
+		[SmokeMethod("QImageDrag(QImage, QWidget*)")]
 		private void NewQImageDrag(QImage image, QWidget dragSource) {
 			ProxyQImageDrag().NewQImageDrag(image,dragSource);
 		}
 		public QImageDrag(QImage image) : this((Type) null) {
 			CreateQImageDragProxy();
+			CreateQImageDragSignalProxy();
 			NewQImageDrag(image);
 		}
+		[SmokeMethod("QImageDrag(QImage)")]
 		private void NewQImageDrag(QImage image) {
 			ProxyQImageDrag().NewQImageDrag(image);
 		}
 		public QImageDrag(QWidget dragSource, string name) : this((Type) null) {
 			CreateQImageDragProxy();
+			CreateQImageDragSignalProxy();
 			NewQImageDrag(dragSource,name);
 		}
+		[SmokeMethod("QImageDrag(QWidget*, const char*)")]
 		private void NewQImageDrag(QWidget dragSource, string name) {
 			ProxyQImageDrag().NewQImageDrag(dragSource,name);
 		}
 		public QImageDrag(QWidget dragSource) : this((Type) null) {
 			CreateQImageDragProxy();
+			CreateQImageDragSignalProxy();
 			NewQImageDrag(dragSource);
 		}
+		[SmokeMethod("QImageDrag(QWidget*)")]
 		private void NewQImageDrag(QWidget dragSource) {
 			ProxyQImageDrag().NewQImageDrag(dragSource);
 		}
 		public QImageDrag() : this((Type) null) {
 			CreateQImageDragProxy();
+			CreateQImageDragSignalProxy();
 			NewQImageDrag();
 		}
+		[SmokeMethod("QImageDrag()")]
 		private void NewQImageDrag() {
 			ProxyQImageDrag().NewQImageDrag();
 		}
+		[SmokeMethod("setImage(QImage)")]
 		public virtual void SetImage(QImage image) {
 			ProxyQImageDrag().SetImage(image);
 		}
+		[SmokeMethod("format(int) const")]
 		public new string Format(int i) {
 			return ProxyQImageDrag().Format(i);
 		}
-		public new virtual byte[] EncodedData(string arg1) {
+		[SmokeMethod("encodedData(const char*) const")]
+		public new virtual QByteArray EncodedData(string arg1) {
 			return ProxyQImageDrag().EncodedData(arg1);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQImageDrag().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQImageDrag().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQImageDrag().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQImageDrag().TrUtf8(arg1);
 		}
+		[SmokeMethod("canDecode(const QMimeSource*)")]
 		public static bool CanDecode(IQMimeSource e) {
 			return StaticQImageDrag().CanDecode(e);
 		}
+		[SmokeMethod("decode(const QMimeSource*, QImage&)")]
 		public static bool Decode(IQMimeSource e, QImage i) {
 			return StaticQImageDrag().Decode(e,i);
 		}
+		[SmokeMethod("decode(const QMimeSource*, QPixmap&)")]
 		public static bool Decode(IQMimeSource e, QPixmap i) {
 			return StaticQImageDrag().Decode(e,i);
 		}
 		~QImageDrag() {
-			ProxyQImageDrag().Dispose();
+			DisposeQImageDrag();
 		}
 		public new void Dispose() {
-			ProxyQImageDrag().Dispose();
+			DisposeQImageDrag();
 		}
+		private void DisposeQImageDrag() {
+			ProxyQImageDrag().DisposeQImageDrag();
+		}
+		protected void CreateQImageDragSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQImageDragSignals), this);
+			_signalInterceptor = (IQImageDragSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQImageDragSignals Emit() {
+			return (IQImageDragSignals) _signalInterceptor;
+		}
+	}
+
+	public interface IQImageDragSignals : IQDragObjectSignals {
 	}
 }

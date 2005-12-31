@@ -34,32 +34,42 @@ namespace Qt {
 			CreateQSqlPropertyMapProxy();
 			NewQSqlPropertyMap();
 		}
+		[SmokeMethod("QSqlPropertyMap()")]
 		private void NewQSqlPropertyMap() {
 			ProxyQSqlPropertyMap().NewQSqlPropertyMap();
 		}
+		[SmokeMethod("property(QWidget*)")]
 		public QVariant Property(QWidget widget) {
 			return ProxyQSqlPropertyMap().Property(widget);
 		}
+		[SmokeMethod("setProperty(QWidget*, const QVariant&)")]
 		public virtual void SetProperty(QWidget widget, QVariant value) {
 			ProxyQSqlPropertyMap().SetProperty(widget,value);
 		}
+		[SmokeMethod("insert(const QString&, const QString&)")]
 		public void Insert(string classname, string property) {
 			ProxyQSqlPropertyMap().Insert(classname,property);
 		}
+		[SmokeMethod("remove(const QString&)")]
 		public void Remove(string classname) {
 			ProxyQSqlPropertyMap().Remove(classname);
 		}
+		[SmokeMethod("defaultMap()")]
 		public static QSqlPropertyMap DefaultMap() {
 			return StaticQSqlPropertyMap().DefaultMap();
 		}
+		[SmokeMethod("installDefaultMap(QSqlPropertyMap*)")]
 		public static void InstallDefaultMap(QSqlPropertyMap map) {
 			StaticQSqlPropertyMap().InstallDefaultMap(map);
 		}
 		~QSqlPropertyMap() {
-			ProxyQSqlPropertyMap().Dispose();
+			DisposeQSqlPropertyMap();
 		}
 		public void Dispose() {
-			ProxyQSqlPropertyMap().Dispose();
+			DisposeQSqlPropertyMap();
+		}
+		private void DisposeQSqlPropertyMap() {
+			ProxyQSqlPropertyMap().DisposeQSqlPropertyMap();
 		}
 	}
 }

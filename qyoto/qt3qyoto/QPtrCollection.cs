@@ -27,15 +27,19 @@ namespace Qt {
 			return (IQPtrCollectionProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("autoDelete() const")]
 		public bool AutoDelete() {
 			return ProxyQPtrCollection().AutoDelete();
 		}
+		[SmokeMethod("setAutoDelete(bool)")]
 		public void SetAutoDelete(bool enable) {
 			ProxyQPtrCollection().SetAutoDelete(enable);
 		}
+		[SmokeMethod("count() const")]
 		public virtual uint Count() {
 			return ProxyQPtrCollection().Count();
 		}
+		[SmokeMethod("clear()")]
 		public virtual void Clear() {
 			ProxyQPtrCollection().Clear();
 		}

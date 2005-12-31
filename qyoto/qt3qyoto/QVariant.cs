@@ -73,6 +73,7 @@ namespace Qt {
 			CreateQVariantProxy();
 			NewQVariant();
 		}
+		[SmokeMethod("QVariant()")]
 		private void NewQVariant() {
 			ProxyQVariant().NewQVariant();
 		}
@@ -80,6 +81,7 @@ namespace Qt {
 			CreateQVariantProxy();
 			NewQVariant(arg1);
 		}
+		[SmokeMethod("QVariant(const QVariant&)")]
 		private void NewQVariant(QVariant arg1) {
 			ProxyQVariant().NewQVariant(arg1);
 		}
@@ -87,6 +89,7 @@ namespace Qt {
 			CreateQVariantProxy();
 			NewQVariant(s);
 		}
+		[SmokeMethod("QVariant(QDataStream&)")]
 		private void NewQVariant(QDataStream s) {
 			ProxyQVariant().NewQVariant(s);
 		}
@@ -94,6 +97,7 @@ namespace Qt {
 			CreateQVariantProxy();
 			NewQVariant(arg1);
 		}
+		[SmokeMethod("QVariant(const QString&)")]
 		private void NewQVariant(string arg1) {
 			ProxyQVariant().NewQVariant(arg1);
 		}
@@ -101,6 +105,7 @@ namespace Qt {
 			CreateQVariantProxy();
 			NewQVariant(arg1);
 		}
+		[SmokeMethod("QVariant(const QStringList&)")]
 		private void NewQVariant(string[] arg1) {
 			ProxyQVariant().NewQVariant(arg1);
 		}
@@ -108,6 +113,7 @@ namespace Qt {
 			CreateQVariantProxy();
 			NewQVariant(arg1);
 		}
+		[SmokeMethod("QVariant(const QFont&)")]
 		private void NewQVariant(QFont arg1) {
 			ProxyQVariant().NewQVariant(arg1);
 		}
@@ -115,6 +121,7 @@ namespace Qt {
 			CreateQVariantProxy();
 			NewQVariant(arg1);
 		}
+		[SmokeMethod("QVariant(const QPixmap&)")]
 		private void NewQVariant(QPixmap arg1) {
 			ProxyQVariant().NewQVariant(arg1);
 		}
@@ -122,6 +129,7 @@ namespace Qt {
 			CreateQVariantProxy();
 			NewQVariant(arg1);
 		}
+		[SmokeMethod("QVariant(const QImage&)")]
 		private void NewQVariant(QImage arg1) {
 			ProxyQVariant().NewQVariant(arg1);
 		}
@@ -129,6 +137,7 @@ namespace Qt {
 			CreateQVariantProxy();
 			NewQVariant(arg1);
 		}
+		[SmokeMethod("QVariant(const QBrush&)")]
 		private void NewQVariant(QBrush arg1) {
 			ProxyQVariant().NewQVariant(arg1);
 		}
@@ -136,6 +145,7 @@ namespace Qt {
 			CreateQVariantProxy();
 			NewQVariant(arg1);
 		}
+		[SmokeMethod("QVariant(const QPoint&)")]
 		private void NewQVariant(QPoint arg1) {
 			ProxyQVariant().NewQVariant(arg1);
 		}
@@ -143,6 +153,7 @@ namespace Qt {
 			CreateQVariantProxy();
 			NewQVariant(arg1);
 		}
+		[SmokeMethod("QVariant(const QRect&)")]
 		private void NewQVariant(QRect arg1) {
 			ProxyQVariant().NewQVariant(arg1);
 		}
@@ -150,6 +161,7 @@ namespace Qt {
 			CreateQVariantProxy();
 			NewQVariant(arg1);
 		}
+		[SmokeMethod("QVariant(const QSize&)")]
 		private void NewQVariant(QSize arg1) {
 			ProxyQVariant().NewQVariant(arg1);
 		}
@@ -157,6 +169,7 @@ namespace Qt {
 			CreateQVariantProxy();
 			NewQVariant(arg1);
 		}
+		[SmokeMethod("QVariant(const QColor&)")]
 		private void NewQVariant(QColor arg1) {
 			ProxyQVariant().NewQVariant(arg1);
 		}
@@ -164,6 +177,7 @@ namespace Qt {
 			CreateQVariantProxy();
 			NewQVariant(arg1);
 		}
+		[SmokeMethod("QVariant(const QPalette&)")]
 		private void NewQVariant(QPalette arg1) {
 			ProxyQVariant().NewQVariant(arg1);
 		}
@@ -171,6 +185,7 @@ namespace Qt {
 			CreateQVariantProxy();
 			NewQVariant(arg1);
 		}
+		[SmokeMethod("QVariant(const QColorGroup&)")]
 		private void NewQVariant(QColorGroup arg1) {
 			ProxyQVariant().NewQVariant(arg1);
 		}
@@ -178,6 +193,7 @@ namespace Qt {
 			CreateQVariantProxy();
 			NewQVariant(arg1);
 		}
+		[SmokeMethod("QVariant(const QIconSet&)")]
 		private void NewQVariant(QIconSet arg1) {
 			ProxyQVariant().NewQVariant(arg1);
 		}
@@ -185,6 +201,7 @@ namespace Qt {
 			CreateQVariantProxy();
 			NewQVariant(arg1);
 		}
+		[SmokeMethod("QVariant(const QPointArray&)")]
 		private void NewQVariant(QPointArray arg1) {
 			ProxyQVariant().NewQVariant(arg1);
 		}
@@ -192,6 +209,7 @@ namespace Qt {
 			CreateQVariantProxy();
 			NewQVariant(arg1);
 		}
+		[SmokeMethod("QVariant(const QRegion&)")]
 		private void NewQVariant(QRegion arg1) {
 			ProxyQVariant().NewQVariant(arg1);
 		}
@@ -199,6 +217,7 @@ namespace Qt {
 			CreateQVariantProxy();
 			NewQVariant(arg1);
 		}
+		[SmokeMethod("QVariant(const QBitmap&)")]
 		private void NewQVariant(QBitmap arg1) {
 			ProxyQVariant().NewQVariant(arg1);
 		}
@@ -206,6 +225,7 @@ namespace Qt {
 			CreateQVariantProxy();
 			NewQVariant(arg1);
 		}
+		[SmokeMethod("QVariant(const QCursor&)")]
 		private void NewQVariant(QCursor arg1) {
 			ProxyQVariant().NewQVariant(arg1);
 		}
@@ -213,14 +233,16 @@ namespace Qt {
 			CreateQVariantProxy();
 			NewQVariant(arg1);
 		}
+		[SmokeMethod("QVariant(const QDate&)")]
 		private void NewQVariant(DateTime arg1) {
 			ProxyQVariant().NewQVariant(arg1);
 		}
-		public QVariant(byte[] arg1) : this((Type) null) {
+		public QVariant(QByteArray arg1) : this((Type) null) {
 			CreateQVariantProxy();
 			NewQVariant(arg1);
 		}
-		private void NewQVariant(byte[] arg1) {
+		[SmokeMethod("QVariant(const QByteArray&)")]
+		private void NewQVariant(QByteArray arg1) {
 			ProxyQVariant().NewQVariant(arg1);
 		}
 		// QVariant* QVariant(const QBitArray& arg1); >>>> NOT CONVERTED
@@ -228,6 +250,7 @@ namespace Qt {
 			CreateQVariantProxy();
 			NewQVariant(arg1);
 		}
+		[SmokeMethod("QVariant(const QKeySequence&)")]
 		private void NewQVariant(QKeySequence arg1) {
 			ProxyQVariant().NewQVariant(arg1);
 		}
@@ -235,6 +258,7 @@ namespace Qt {
 			CreateQVariantProxy();
 			NewQVariant(arg1);
 		}
+		[SmokeMethod("QVariant(const QPen&)")]
 		private void NewQVariant(QPen arg1) {
 			ProxyQVariant().NewQVariant(arg1);
 		}
@@ -244,6 +268,7 @@ namespace Qt {
 			CreateQVariantProxy();
 			NewQVariant(arg1);
 		}
+		[SmokeMethod("QVariant(int)")]
 		private void NewQVariant(int arg1) {
 			ProxyQVariant().NewQVariant(arg1);
 		}
@@ -251,20 +276,17 @@ namespace Qt {
 			CreateQVariantProxy();
 			NewQVariant(arg1);
 		}
+		[SmokeMethod("QVariant(uint)")]
 		private void NewQVariant(uint arg1) {
 			ProxyQVariant().NewQVariant(arg1);
 		}
-		public QVariant(long arg1) : this((Type) null) {
-			CreateQVariantProxy();
-			NewQVariant(arg1);
-		}
-		private void NewQVariant(long arg1) {
-			ProxyQVariant().NewQVariant(arg1);
-		}
+		// QVariant* QVariant(Q_LLONG arg1); >>>> NOT CONVERTED
+		// QVariant* QVariant(Q_ULLONG arg1); >>>> NOT CONVERTED
 		public QVariant(bool arg1, int arg2) : this((Type) null) {
 			CreateQVariantProxy();
 			NewQVariant(arg1,arg2);
 		}
+		[SmokeMethod("QVariant(bool, int)")]
 		private void NewQVariant(bool arg1, int arg2) {
 			ProxyQVariant().NewQVariant(arg1,arg2);
 		}
@@ -272,6 +294,7 @@ namespace Qt {
 			CreateQVariantProxy();
 			NewQVariant(arg1);
 		}
+		[SmokeMethod("QVariant(double)")]
 		private void NewQVariant(double arg1) {
 			ProxyQVariant().NewQVariant(arg1);
 		}
@@ -279,9 +302,11 @@ namespace Qt {
 			CreateQVariantProxy();
 			NewQVariant(arg1);
 		}
+		[SmokeMethod("QVariant(QSizePolicy)")]
 		private void NewQVariant(QSizePolicy arg1) {
 			ProxyQVariant().NewQVariant(arg1);
 		}
+		[SmokeMethod("operator==(const QVariant&) const")]
 		public static bool operator==(QVariant lhs, QVariant arg1) {
 			return StaticQVariant().op_equals(lhs,arg1);
 		}
@@ -295,135 +320,162 @@ namespace Qt {
 		public override int GetHashCode() {
 			return ProxyQVariant().GetHashCode();
 		}
-		public int Type() {
-			return ProxyQVariant().Type();
-		}
+		[SmokeMethod("typeName() const")]
 		public string TypeName() {
 			return ProxyQVariant().TypeName();
 		}
+		[SmokeMethod("canCast(QVariant::Type) const")]
 		public bool CanCast(int arg1) {
 			return ProxyQVariant().CanCast(arg1);
 		}
+		[SmokeMethod("cast(QVariant::Type)")]
 		public bool Cast(int arg1) {
 			return ProxyQVariant().Cast(arg1);
 		}
+		[SmokeMethod("isValid() const")]
 		public bool IsValid() {
 			return ProxyQVariant().IsValid();
 		}
+		[SmokeMethod("isNull() const")]
 		public bool IsNull() {
 			return ProxyQVariant().IsNull();
 		}
+		[SmokeMethod("clear()")]
 		public void Clear() {
 			ProxyQVariant().Clear();
 		}
+		[SmokeMethod("toString() const")]
 		public new string ToString() {
 			return ProxyQVariant().ToString();
 		}
+		[SmokeMethod("toCString() const")]
 		public string ToCString() {
 			return ProxyQVariant().ToCString();
 		}
+		[SmokeMethod("toStringList() const")]
 		public ArrayList ToStringList() {
 			return ProxyQVariant().ToStringList();
 		}
+		[SmokeMethod("toFont() const")]
 		public QFont ToFont() {
 			return ProxyQVariant().ToFont();
 		}
+		[SmokeMethod("toPixmap() const")]
 		public QPixmap ToPixmap() {
 			return ProxyQVariant().ToPixmap();
 		}
+		[SmokeMethod("toImage() const")]
 		public QImage ToImage() {
 			return ProxyQVariant().ToImage();
 		}
+		[SmokeMethod("toBrush() const")]
 		public QBrush ToBrush() {
 			return ProxyQVariant().ToBrush();
 		}
+		[SmokeMethod("toPoint() const")]
 		public QPoint ToPoint() {
 			return ProxyQVariant().ToPoint();
 		}
+		[SmokeMethod("toRect() const")]
 		public QRect ToRect() {
 			return ProxyQVariant().ToRect();
 		}
+		[SmokeMethod("toSize() const")]
 		public QSize ToSize() {
 			return ProxyQVariant().ToSize();
 		}
+		[SmokeMethod("toColor() const")]
 		public QColor ToColor() {
 			return ProxyQVariant().ToColor();
 		}
+		[SmokeMethod("toPalette() const")]
 		public QPalette ToPalette() {
 			return ProxyQVariant().ToPalette();
 		}
+		[SmokeMethod("toColorGroup() const")]
 		public QColorGroup ToColorGroup() {
 			return ProxyQVariant().ToColorGroup();
 		}
+		[SmokeMethod("toIconSet() const")]
 		public QIconSet ToIconSet() {
 			return ProxyQVariant().ToIconSet();
 		}
+		[SmokeMethod("toPointArray() const")]
 		public QPointArray ToPointArray() {
 			return ProxyQVariant().ToPointArray();
 		}
+		[SmokeMethod("toBitmap() const")]
 		public QBitmap ToBitmap() {
 			return ProxyQVariant().ToBitmap();
 		}
+		[SmokeMethod("toRegion() const")]
 		public QRegion ToRegion() {
 			return ProxyQVariant().ToRegion();
 		}
+		[SmokeMethod("toCursor() const")]
 		public QCursor ToCursor() {
 			return ProxyQVariant().ToCursor();
 		}
+		[SmokeMethod("toDate() const")]
 		public DateTime ToDate() {
 			return ProxyQVariant().ToDate();
 		}
+		[SmokeMethod("toTime() const")]
 		public DateTime ToTime() {
 			return ProxyQVariant().ToTime();
 		}
+		[SmokeMethod("toDateTime() const")]
 		public DateTime ToDateTime() {
 			return ProxyQVariant().ToDateTime();
 		}
-		public byte[] ToByteArray() {
+		[SmokeMethod("toByteArray() const")]
+		public QByteArray ToByteArray() {
 			return ProxyQVariant().ToByteArray();
 		}
 		// const QBitArray toBitArray(); >>>> NOT CONVERTED
+		[SmokeMethod("toKeySequence() const")]
 		public QKeySequence ToKeySequence() {
 			return ProxyQVariant().ToKeySequence();
 		}
+		[SmokeMethod("toPen() const")]
 		public QPen ToPen() {
 			return ProxyQVariant().ToPen();
 		}
+		[SmokeMethod("toInt(bool*) const")]
 		public int ToInt(out bool ok) {
 			return ProxyQVariant().ToInt(out ok);
 		}
+		[SmokeMethod("toInt() const")]
 		public int ToInt() {
 			return ProxyQVariant().ToInt();
 		}
+		[SmokeMethod("toUInt(bool*) const")]
 		public uint ToUInt(out bool ok) {
 			return ProxyQVariant().ToUInt(out ok);
 		}
+		[SmokeMethod("toUInt() const")]
 		public uint ToUInt() {
 			return ProxyQVariant().ToUInt();
 		}
-		public long ToLongLong(out bool ok) {
-			return ProxyQVariant().ToLongLong(out ok);
-		}
-		public long ToLongLong() {
-			return ProxyQVariant().ToLongLong();
-		}
-		public long ToULongLong(out bool ok) {
-			return ProxyQVariant().ToULongLong(out ok);
-		}
-		public long ToULongLong() {
-			return ProxyQVariant().ToULongLong();
-		}
+		// Q_LLONG toLongLong(bool* arg1); >>>> NOT CONVERTED
+		// Q_LLONG toLongLong(); >>>> NOT CONVERTED
+		// Q_ULLONG toULongLong(bool* arg1); >>>> NOT CONVERTED
+		// Q_ULLONG toULongLong(); >>>> NOT CONVERTED
+		[SmokeMethod("toBool() const")]
 		public bool ToBool() {
 			return ProxyQVariant().ToBool();
 		}
+		[SmokeMethod("toDouble(bool*) const")]
 		public double ToDouble(out bool ok) {
 			return ProxyQVariant().ToDouble(out ok);
 		}
+		[SmokeMethod("toDouble() const")]
 		public double ToDouble() {
 			return ProxyQVariant().ToDouble();
 		}
 		// const QValueList<QVariant> toList(); >>>> NOT CONVERTED
 		// const QMap<QString, QVariant> toMap(); >>>> NOT CONVERTED
+		[SmokeMethod("toSizePolicy() const")]
 		public QSizePolicy ToSizePolicy() {
 			return ProxyQVariant().ToSizePolicy();
 		}
@@ -434,101 +486,132 @@ namespace Qt {
 		// QMapConstIterator<QString, QVariant> mapBegin(); >>>> NOT CONVERTED
 		// QMapConstIterator<QString, QVariant> mapEnd(); >>>> NOT CONVERTED
 		// QMapConstIterator<QString, QVariant> mapFind(const QString& arg1); >>>> NOT CONVERTED
+		[SmokeMethod("asString()")]
 		public string AsString() {
 			return ProxyQVariant().AsString();
 		}
+		[SmokeMethod("asCString()")]
 		public string AsCString() {
 			return ProxyQVariant().AsCString();
 		}
+		[SmokeMethod("asStringList()")]
 		public ArrayList AsStringList() {
 			return ProxyQVariant().AsStringList();
 		}
+		[SmokeMethod("asFont()")]
 		public QFont AsFont() {
 			return ProxyQVariant().AsFont();
 		}
+		[SmokeMethod("asPixmap()")]
 		public QPixmap AsPixmap() {
 			return ProxyQVariant().AsPixmap();
 		}
+		[SmokeMethod("asImage()")]
 		public QImage AsImage() {
 			return ProxyQVariant().AsImage();
 		}
+		[SmokeMethod("asBrush()")]
 		public QBrush AsBrush() {
 			return ProxyQVariant().AsBrush();
 		}
+		[SmokeMethod("asPoint()")]
 		public QPoint AsPoint() {
 			return ProxyQVariant().AsPoint();
 		}
+		[SmokeMethod("asRect()")]
 		public QRect AsRect() {
 			return ProxyQVariant().AsRect();
 		}
+		[SmokeMethod("asSize()")]
 		public QSize AsSize() {
 			return ProxyQVariant().AsSize();
 		}
+		[SmokeMethod("asColor()")]
 		public QColor AsColor() {
 			return ProxyQVariant().AsColor();
 		}
+		[SmokeMethod("asPalette()")]
 		public QPalette AsPalette() {
 			return ProxyQVariant().AsPalette();
 		}
+		[SmokeMethod("asColorGroup()")]
 		public QColorGroup AsColorGroup() {
 			return ProxyQVariant().AsColorGroup();
 		}
+		[SmokeMethod("asIconSet()")]
 		public QIconSet AsIconSet() {
 			return ProxyQVariant().AsIconSet();
 		}
+		[SmokeMethod("asPointArray()")]
 		public QPointArray AsPointArray() {
 			return ProxyQVariant().AsPointArray();
 		}
+		[SmokeMethod("asBitmap()")]
 		public QBitmap AsBitmap() {
 			return ProxyQVariant().AsBitmap();
 		}
+		[SmokeMethod("asRegion()")]
 		public QRegion AsRegion() {
 			return ProxyQVariant().AsRegion();
 		}
+		[SmokeMethod("asCursor()")]
 		public QCursor AsCursor() {
 			return ProxyQVariant().AsCursor();
 		}
+		[SmokeMethod("asDate()")]
 		public DateTime AsDate() {
 			return ProxyQVariant().AsDate();
 		}
+		[SmokeMethod("asTime()")]
 		public DateTime AsTime() {
 			return ProxyQVariant().AsTime();
 		}
+		[SmokeMethod("asDateTime()")]
 		public DateTime AsDateTime() {
 			return ProxyQVariant().AsDateTime();
 		}
-		public byte[] AsByteArray() {
+		[SmokeMethod("asByteArray()")]
+		public QByteArray AsByteArray() {
 			return ProxyQVariant().AsByteArray();
 		}
 		// QBitArray& asBitArray(); >>>> NOT CONVERTED
+		[SmokeMethod("asKeySequence()")]
 		public QKeySequence AsKeySequence() {
 			return ProxyQVariant().AsKeySequence();
 		}
+		[SmokeMethod("asPen()")]
 		public QPen AsPen() {
 			return ProxyQVariant().AsPen();
 		}
+		[SmokeMethod("asInt()")]
 		public int AsInt() {
 			return ProxyQVariant().AsInt();
 		}
+		[SmokeMethod("asUInt()")]
 		public uint AsUInt() {
 			return ProxyQVariant().AsUInt();
 		}
 		// Q_LLONG& asLongLong(); >>>> NOT CONVERTED
 		// Q_ULLONG& asULongLong(); >>>> NOT CONVERTED
+		[SmokeMethod("asBool()")]
 		public bool AsBool() {
 			return ProxyQVariant().AsBool();
 		}
+		[SmokeMethod("asDouble()")]
 		public double AsDouble() {
 			return ProxyQVariant().AsDouble();
 		}
 		// QValueList<QVariant>& asList(); >>>> NOT CONVERTED
 		// QMap<QString, QVariant>& asMap(); >>>> NOT CONVERTED
+		[SmokeMethod("asSizePolicy()")]
 		public QSizePolicy AsSizePolicy() {
 			return ProxyQVariant().AsSizePolicy();
 		}
+		[SmokeMethod("load(QDataStream&)")]
 		public void Load(QDataStream arg1) {
 			ProxyQVariant().Load(arg1);
 		}
+		[SmokeMethod("save(QDataStream&) const")]
 		public void Save(QDataStream arg1) {
 			ProxyQVariant().Save(arg1);
 		}
@@ -536,17 +619,22 @@ namespace Qt {
 		// void* rawAccess(void* arg1,QVariant::Type arg2); >>>> NOT CONVERTED
 		// void* rawAccess(void* arg1); >>>> NOT CONVERTED
 		// void* rawAccess(); >>>> NOT CONVERTED
+		[SmokeMethod("typeToName(QVariant::Type)")]
 		public static string TypeToName(int typ) {
 			return StaticQVariant().TypeToName(typ);
 		}
+		[SmokeMethod("nameToType(const char*)")]
 		public static int NameToType(string name) {
 			return StaticQVariant().NameToType(name);
 		}
 		~QVariant() {
-			ProxyQVariant().Dispose();
+			DisposeQVariant();
 		}
 		public void Dispose() {
-			ProxyQVariant().Dispose();
+			DisposeQVariant();
+		}
+		private void DisposeQVariant() {
+			ProxyQVariant().DisposeQVariant();
 		}
 	}
 }

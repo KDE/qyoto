@@ -32,6 +32,7 @@ namespace Qt {
 			CreateQTableSelectionProxy();
 			NewQTableSelection();
 		}
+		[SmokeMethod("QTableSelection()")]
 		private void NewQTableSelection() {
 			ProxyQTableSelection().NewQTableSelection();
 		}
@@ -39,15 +40,19 @@ namespace Qt {
 			CreateQTableSelectionProxy();
 			NewQTableSelection(start_row,start_col,end_row,end_col);
 		}
+		[SmokeMethod("QTableSelection(int, int, int, int)")]
 		private void NewQTableSelection(int start_row, int start_col, int end_row, int end_col) {
 			ProxyQTableSelection().NewQTableSelection(start_row,start_col,end_row,end_col);
 		}
+		[SmokeMethod("init(int, int)")]
 		public void Init(int row, int col) {
 			ProxyQTableSelection().Init(row,col);
 		}
+		[SmokeMethod("expandTo(int, int)")]
 		public void ExpandTo(int row, int col) {
 			ProxyQTableSelection().ExpandTo(row,col);
 		}
+		[SmokeMethod("operator==(const QTableSelection&) const")]
 		public static bool operator==(QTableSelection lhs, QTableSelection s) {
 			return StaticQTableSelection().op_equals(lhs,s);
 		}
@@ -61,41 +66,54 @@ namespace Qt {
 		public override int GetHashCode() {
 			return ProxyQTableSelection().GetHashCode();
 		}
+		[SmokeMethod("topRow() const")]
 		public int TopRow() {
 			return ProxyQTableSelection().TopRow();
 		}
+		[SmokeMethod("bottomRow() const")]
 		public int BottomRow() {
 			return ProxyQTableSelection().BottomRow();
 		}
+		[SmokeMethod("leftCol() const")]
 		public int LeftCol() {
 			return ProxyQTableSelection().LeftCol();
 		}
+		[SmokeMethod("rightCol() const")]
 		public int RightCol() {
 			return ProxyQTableSelection().RightCol();
 		}
+		[SmokeMethod("anchorRow() const")]
 		public int AnchorRow() {
 			return ProxyQTableSelection().AnchorRow();
 		}
+		[SmokeMethod("anchorCol() const")]
 		public int AnchorCol() {
 			return ProxyQTableSelection().AnchorCol();
 		}
+		[SmokeMethod("numRows() const")]
 		public int NumRows() {
 			return ProxyQTableSelection().NumRows();
 		}
+		[SmokeMethod("numCols() const")]
 		public int NumCols() {
 			return ProxyQTableSelection().NumCols();
 		}
+		[SmokeMethod("isActive() const")]
 		public bool IsActive() {
 			return ProxyQTableSelection().IsActive();
 		}
+		[SmokeMethod("isEmpty() const")]
 		public bool IsEmpty() {
 			return ProxyQTableSelection().IsEmpty();
 		}
 		~QTableSelection() {
-			ProxyQTableSelection().Dispose();
+			DisposeQTableSelection();
 		}
 		public void Dispose() {
-			ProxyQTableSelection().Dispose();
+			DisposeQTableSelection();
+		}
+		private void DisposeQTableSelection() {
+			ProxyQTableSelection().DisposeQTableSelection();
 		}
 	}
 }

@@ -25,21 +25,27 @@ namespace Qt {
 			return (IQUtf8CodecProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("mibEnum() const")]
 		public new virtual int MibEnum() {
 			return ProxyQUtf8Codec().MibEnum();
 		}
+		[SmokeMethod("name() const")]
 		public new string Name() {
 			return ProxyQUtf8Codec().Name();
 		}
+		[SmokeMethod("makeDecoder() const")]
 		public new QTextDecoder MakeDecoder() {
 			return ProxyQUtf8Codec().MakeDecoder();
 		}
+		[SmokeMethod("fromUnicode(const QString&, int&) const")]
 		public new string FromUnicode(string uc, out int lenInOut) {
 			return ProxyQUtf8Codec().FromUnicode(uc,out lenInOut);
 		}
+		[SmokeMethod("toUnicode(const char*, int) const")]
 		public new string ToUnicode(string chars, int len) {
 			return ProxyQUtf8Codec().ToUnicode(chars,len);
 		}
+		[SmokeMethod("heuristicContentMatch(const char*, int) const")]
 		public new int HeuristicContentMatch(string chars, int len) {
 			return ProxyQUtf8Codec().HeuristicContentMatch(chars,len);
 		}
@@ -47,14 +53,18 @@ namespace Qt {
 			CreateQUtf8CodecProxy();
 			NewQUtf8Codec();
 		}
+		[SmokeMethod("QUtf8Codec()")]
 		private void NewQUtf8Codec() {
 			ProxyQUtf8Codec().NewQUtf8Codec();
 		}
 		~QUtf8Codec() {
-			ProxyQUtf8Codec().Dispose();
+			DisposeQUtf8Codec();
 		}
 		public new void Dispose() {
-			ProxyQUtf8Codec().Dispose();
+			DisposeQUtf8Codec();
+		}
+		private void DisposeQUtf8Codec() {
+			ProxyQUtf8Codec().DisposeQUtf8Codec();
 		}
 	}
 }

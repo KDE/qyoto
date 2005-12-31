@@ -43,63 +43,83 @@ namespace Qt {
 			return (IQToolTipProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("parentWidget() const")]
 		public QWidget ParentWidget() {
 			return ProxyQToolTip().ParentWidget();
 		}
+		[SmokeMethod("group() const")]
 		public QToolTipGroup Group() {
 			return ProxyQToolTip().Group();
 		}
+		[SmokeMethod("add(QWidget*, const QString&)")]
 		public static void Add(QWidget arg1, string arg2) {
 			StaticQToolTip().Add(arg1,arg2);
 		}
+		[SmokeMethod("add(QWidget*, const QString&, QToolTipGroup*, const QString&)")]
 		public static void Add(QWidget arg1, string arg2, QToolTipGroup arg3, string arg4) {
 			StaticQToolTip().Add(arg1,arg2,arg3,arg4);
 		}
+		[SmokeMethod("remove(QWidget*)")]
 		public static void Remove(QWidget arg1) {
 			StaticQToolTip().Remove(arg1);
 		}
+		[SmokeMethod("add(QWidget*, const QRect&, const QString&)")]
 		public static void Add(QWidget arg1, QRect arg2, string arg3) {
 			StaticQToolTip().Add(arg1,arg2,arg3);
 		}
+		[SmokeMethod("add(QWidget*, const QRect&, const QString&, QToolTipGroup*, const QString&)")]
 		public static void Add(QWidget arg1, QRect arg2, string arg3, QToolTipGroup arg4, string arg5) {
 			StaticQToolTip().Add(arg1,arg2,arg3,arg4,arg5);
 		}
+		[SmokeMethod("remove(QWidget*, const QRect&)")]
 		public static void Remove(QWidget arg1, QRect arg2) {
 			StaticQToolTip().Remove(arg1,arg2);
 		}
+		[SmokeMethod("textFor(QWidget*, const QPoint&)")]
 		public static string TextFor(QWidget arg1, QPoint pos) {
 			return StaticQToolTip().TextFor(arg1,pos);
 		}
+		[SmokeMethod("textFor(QWidget*)")]
 		public static string TextFor(QWidget arg1) {
 			return StaticQToolTip().TextFor(arg1);
 		}
+		[SmokeMethod("hide()")]
 		public static void Hide() {
 			StaticQToolTip().Hide();
 		}
+		[SmokeMethod("font()")]
 		public static QFont Font() {
 			return StaticQToolTip().Font();
 		}
+		[SmokeMethod("setFont(const QFont&)")]
 		public static void SetFont(QFont arg1) {
 			StaticQToolTip().SetFont(arg1);
 		}
+		[SmokeMethod("palette()")]
 		public static QPalette Palette() {
 			return StaticQToolTip().Palette();
 		}
+		[SmokeMethod("setPalette(const QPalette&)")]
 		public static void SetPalette(QPalette arg1) {
 			StaticQToolTip().SetPalette(arg1);
 		}
+		[SmokeMethod("setEnabled(bool)")]
 		public static void SetEnabled(bool enable) {
 			StaticQToolTip().SetEnabled(enable);
 		}
+		[SmokeMethod("enabled()")]
 		public static bool Enabled() {
 			return StaticQToolTip().Enabled();
 		}
+		[SmokeMethod("setGloballyEnabled(bool)")]
 		public static void SetGloballyEnabled(bool arg1) {
 			StaticQToolTip().SetGloballyEnabled(arg1);
 		}
+		[SmokeMethod("isGloballyEnabled()")]
 		public static bool IsGloballyEnabled() {
 			return StaticQToolTip().IsGloballyEnabled();
 		}
+		[SmokeMethod("setWakeUpDelay(int)")]
 		public static void SetWakeUpDelay(int arg1) {
 			StaticQToolTip().SetWakeUpDelay(arg1);
 		}

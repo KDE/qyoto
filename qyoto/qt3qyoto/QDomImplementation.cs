@@ -33,6 +33,7 @@ namespace Qt {
 			CreateQDomImplementationProxy();
 			NewQDomImplementation();
 		}
+		[SmokeMethod("QDomImplementation()")]
 		private void NewQDomImplementation() {
 			ProxyQDomImplementation().NewQDomImplementation();
 		}
@@ -40,9 +41,11 @@ namespace Qt {
 			CreateQDomImplementationProxy();
 			NewQDomImplementation(arg1);
 		}
+		[SmokeMethod("QDomImplementation(const QDomImplementation&)")]
 		private void NewQDomImplementation(QDomImplementation arg1) {
 			ProxyQDomImplementation().NewQDomImplementation(arg1);
 		}
+		[SmokeMethod("operator==(const QDomImplementation&) const")]
 		public static bool operator==(QDomImplementation lhs, QDomImplementation arg1) {
 			return StaticQDomImplementation().op_equals(lhs,arg1);
 		}
@@ -56,23 +59,30 @@ namespace Qt {
 		public override int GetHashCode() {
 			return ProxyQDomImplementation().GetHashCode();
 		}
+		[SmokeMethod("hasFeature(const QString&, const QString&)")]
 		public virtual bool HasFeature(string feature, string version) {
 			return ProxyQDomImplementation().HasFeature(feature,version);
 		}
+		[SmokeMethod("createDocumentType(const QString&, const QString&, const QString&)")]
 		public virtual QDomDocumentType CreateDocumentType(string qName, string publicId, string systemId) {
 			return ProxyQDomImplementation().CreateDocumentType(qName,publicId,systemId);
 		}
+		[SmokeMethod("createDocument(const QString&, const QString&, const QDomDocumentType&)")]
 		public virtual QDomDocument CreateDocument(string nsURI, string qName, QDomDocumentType doctype) {
 			return ProxyQDomImplementation().CreateDocument(nsURI,qName,doctype);
 		}
+		[SmokeMethod("isNull()")]
 		public bool IsNull() {
 			return ProxyQDomImplementation().IsNull();
 		}
 		~QDomImplementation() {
-			ProxyQDomImplementation().Dispose();
+			DisposeQDomImplementation();
 		}
 		public void Dispose() {
-			ProxyQDomImplementation().Dispose();
+			DisposeQDomImplementation();
+		}
+		private void DisposeQDomImplementation() {
+			ProxyQDomImplementation().DisposeQDomImplementation();
 		}
 	}
 }

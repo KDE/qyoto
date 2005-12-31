@@ -35,41 +35,63 @@ namespace Qt {
 			return (IQFontDialogProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQFontDialog().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQFontDialog().ClassName();
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQFontDialog().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQFontDialog().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQFontDialog().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQFontDialog().TrUtf8(arg1);
 		}
+		[SmokeMethod("getFont(bool*, const QFont&, QWidget*, const char*)")]
 		public static QFont GetFont(out bool ok, QFont def, QWidget parent, string name) {
 			return StaticQFontDialog().GetFont(out ok,def,parent,name);
 		}
+		[SmokeMethod("getFont(bool*, const QFont&, QWidget*)")]
 		public static QFont GetFont(out bool ok, QFont def, QWidget parent) {
 			return StaticQFontDialog().GetFont(out ok,def,parent);
 		}
+		[SmokeMethod("getFont(bool*, const QFont&)")]
 		public static QFont GetFont(out bool ok, QFont def) {
 			return StaticQFontDialog().GetFont(out ok,def);
 		}
+		[SmokeMethod("getFont(bool*, QWidget*, const char*)")]
 		public static QFont GetFont(out bool ok, QWidget parent, string name) {
 			return StaticQFontDialog().GetFont(out ok,parent,name);
 		}
+		[SmokeMethod("getFont(bool*, QWidget*)")]
 		public static QFont GetFont(out bool ok, QWidget parent) {
 			return StaticQFontDialog().GetFont(out ok,parent);
 		}
+		[SmokeMethod("getFont(bool*)")]
 		public static QFont GetFont(out bool ok) {
 			return StaticQFontDialog().GetFont(out ok);
 		}
+		protected void CreateQFontDialogSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQFontDialogSignals), this);
+			_signalInterceptor = (IQFontDialogSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQFontDialogSignals Emit() {
+			return (IQFontDialogSignals) _signalInterceptor;
+		}
+	}
+
+	public interface IQFontDialogSignals : IQDialogSignals {
 	}
 }

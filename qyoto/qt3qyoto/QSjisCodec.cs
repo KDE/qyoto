@@ -25,27 +25,35 @@ namespace Qt {
 			return (IQSjisCodecProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("mibEnum() const")]
 		public new virtual int MibEnum() {
 			return ProxyQSjisCodec().MibEnum();
 		}
+		[SmokeMethod("name() const")]
 		public new string Name() {
 			return ProxyQSjisCodec().Name();
 		}
+		[SmokeMethod("mimeName() const")]
 		public new string MimeName() {
 			return ProxyQSjisCodec().MimeName();
 		}
+		[SmokeMethod("makeDecoder() const")]
 		public new QTextDecoder MakeDecoder() {
 			return ProxyQSjisCodec().MakeDecoder();
 		}
+		[SmokeMethod("fromUnicode(const QString&, int&) const")]
 		public new string FromUnicode(string uc, out int lenInOut) {
 			return ProxyQSjisCodec().FromUnicode(uc,out lenInOut);
 		}
+		[SmokeMethod("toUnicode(const char*, int) const")]
 		public new string ToUnicode(string chars, int len) {
 			return ProxyQSjisCodec().ToUnicode(chars,len);
 		}
+		[SmokeMethod("heuristicContentMatch(const char*, int) const")]
 		public new int HeuristicContentMatch(string chars, int len) {
 			return ProxyQSjisCodec().HeuristicContentMatch(chars,len);
 		}
+		[SmokeMethod("heuristicNameMatch(const char*) const")]
 		public new int HeuristicNameMatch(string hint) {
 			return ProxyQSjisCodec().HeuristicNameMatch(hint);
 		}
@@ -53,14 +61,18 @@ namespace Qt {
 			CreateQSjisCodecProxy();
 			NewQSjisCodec();
 		}
+		[SmokeMethod("QSjisCodec()")]
 		private void NewQSjisCodec() {
 			ProxyQSjisCodec().NewQSjisCodec();
 		}
 		~QSjisCodec() {
-			ProxyQSjisCodec().Dispose();
+			DisposeQSjisCodec();
 		}
 		public new void Dispose() {
-			ProxyQSjisCodec().Dispose();
+			DisposeQSjisCodec();
+		}
+		private void DisposeQSjisCodec() {
+			ProxyQSjisCodec().DisposeQSjisCodec();
 		}
 	}
 }

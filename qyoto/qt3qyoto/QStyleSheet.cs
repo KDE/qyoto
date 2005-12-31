@@ -35,81 +35,116 @@ namespace Qt {
 			return (IQStyleSheetProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQStyleSheet().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQStyleSheet().ClassName();
 		}
 		public QStyleSheet(QObject parent, string name) : this((Type) null) {
 			CreateQStyleSheetProxy();
+			CreateQStyleSheetSignalProxy();
 			NewQStyleSheet(parent,name);
 		}
+		[SmokeMethod("QStyleSheet(QObject*, const char*)")]
 		private void NewQStyleSheet(QObject parent, string name) {
 			ProxyQStyleSheet().NewQStyleSheet(parent,name);
 		}
 		public QStyleSheet(QObject parent) : this((Type) null) {
 			CreateQStyleSheetProxy();
+			CreateQStyleSheetSignalProxy();
 			NewQStyleSheet(parent);
 		}
+		[SmokeMethod("QStyleSheet(QObject*)")]
 		private void NewQStyleSheet(QObject parent) {
 			ProxyQStyleSheet().NewQStyleSheet(parent);
 		}
 		public QStyleSheet() : this((Type) null) {
 			CreateQStyleSheetProxy();
+			CreateQStyleSheetSignalProxy();
 			NewQStyleSheet();
 		}
+		[SmokeMethod("QStyleSheet()")]
 		private void NewQStyleSheet() {
 			ProxyQStyleSheet().NewQStyleSheet();
 		}
+		[SmokeMethod("item(const QString&)")]
 		public QStyleSheetItem Item(string name) {
 			return ProxyQStyleSheet().Item(name);
 		}
+		[SmokeMethod("insert(QStyleSheetItem*)")]
 		public void Insert(QStyleSheetItem item) {
 			ProxyQStyleSheet().Insert(item);
 		}
 		// QTextCustomItem* tag(const QString& arg1,const QMap<QString, QString>& arg2,const QString& arg3,const QMimeSourceFactory& arg4,bool arg5,QTextDocument* arg6); >>>> NOT CONVERTED
+		[SmokeMethod("scaleFont(QFont&, int) const")]
 		public virtual void ScaleFont(QFont font, int logicalSize) {
 			ProxyQStyleSheet().ScaleFont(font,logicalSize);
 		}
+		[SmokeMethod("error(const QString&) const")]
 		public virtual void Error(string arg1) {
 			ProxyQStyleSheet().Error(arg1);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQStyleSheet().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQStyleSheet().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQStyleSheet().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQStyleSheet().TrUtf8(arg1);
 		}
+		[SmokeMethod("defaultSheet()")]
 		public static QStyleSheet DefaultSheet() {
 			return StaticQStyleSheet().DefaultSheet();
 		}
+		[SmokeMethod("setDefaultSheet(QStyleSheet*)")]
 		public static void SetDefaultSheet(QStyleSheet arg1) {
 			StaticQStyleSheet().SetDefaultSheet(arg1);
 		}
+		[SmokeMethod("escape(const QString&)")]
 		public static string Escape(string arg1) {
 			return StaticQStyleSheet().Escape(arg1);
 		}
+		[SmokeMethod("convertFromPlainText(const QString&, QStyleSheetItem::WhiteSpaceMode)")]
 		public static string ConvertFromPlainText(string arg1, int mode) {
 			return StaticQStyleSheet().ConvertFromPlainText(arg1,mode);
 		}
+		[SmokeMethod("convertFromPlainText(const QString&)")]
 		public static string ConvertFromPlainText(string arg1) {
 			return StaticQStyleSheet().ConvertFromPlainText(arg1);
 		}
+		[SmokeMethod("mightBeRichText(const QString&)")]
 		public static bool MightBeRichText(string arg1) {
 			return StaticQStyleSheet().MightBeRichText(arg1);
 		}
 		~QStyleSheet() {
-			ProxyQStyleSheet().Dispose();
+			DisposeQStyleSheet();
 		}
 		public new void Dispose() {
-			ProxyQStyleSheet().Dispose();
+			DisposeQStyleSheet();
 		}
+		private void DisposeQStyleSheet() {
+			ProxyQStyleSheet().DisposeQStyleSheet();
+		}
+		protected void CreateQStyleSheetSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQStyleSheetSignals), this);
+			_signalInterceptor = (IQStyleSheetSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQStyleSheetSignals Emit() {
+			return (IQStyleSheetSignals) _signalInterceptor;
+		}
+	}
+
+	public interface IQStyleSheetSignals : IQObjectSignals {
 	}
 }

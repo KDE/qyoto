@@ -5,13 +5,13 @@ namespace Qt {
 	using System.Text;
 
 	///<remarks>*************************************************
-	/// $Id: qt/qsignal.h   3.3.4   edited May 27 2003 $
+	/// $Id: qt/qsignal.h   3.3.5   edited Aug 31 12:17 $
 	///
 	///* Definition of QSignal class
 	///
 	///* Created : 941201
 	///
-	///* Copyright (C) 1992-2000 Trolltech AS.  All rights reserved.
+	///* Copyright (C) 1992-2005 Trolltech AS.  All rights reserved.
 	///
 	///* This file is part of the kernel module of the Qt GUI Toolkit.
 	///
@@ -67,85 +67,119 @@ namespace Qt {
 			return (IQSignalProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQSignal().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQSignal().ClassName();
 		}
 		public QSignal(QObject parent, string name) : this((Type) null) {
 			CreateQSignalProxy();
+			CreateQSignalSignalProxy();
 			NewQSignal(parent,name);
 		}
+		[SmokeMethod("QSignal(QObject*, const char*)")]
 		private void NewQSignal(QObject parent, string name) {
 			ProxyQSignal().NewQSignal(parent,name);
 		}
 		public QSignal(QObject parent) : this((Type) null) {
 			CreateQSignalProxy();
+			CreateQSignalSignalProxy();
 			NewQSignal(parent);
 		}
+		[SmokeMethod("QSignal(QObject*)")]
 		private void NewQSignal(QObject parent) {
 			ProxyQSignal().NewQSignal(parent);
 		}
 		public QSignal() : this((Type) null) {
 			CreateQSignalProxy();
+			CreateQSignalSignalProxy();
 			NewQSignal();
 		}
+		[SmokeMethod("QSignal()")]
 		private void NewQSignal() {
 			ProxyQSignal().NewQSignal();
 		}
+		[SmokeMethod("connect(const QObject*, const char*)")]
 		public new bool Connect(QObject receiver, string member) {
 			return ProxyQSignal().Connect(receiver,member);
 		}
+		[SmokeMethod("disconnect(const QObject*, const char*)")]
 		public new bool Disconnect(QObject receiver, string member) {
 			return ProxyQSignal().Disconnect(receiver,member);
 		}
+		[SmokeMethod("disconnect(const QObject*)")]
 		public new bool Disconnect(QObject receiver) {
 			return ProxyQSignal().Disconnect(receiver);
 		}
+		[SmokeMethod("activate()")]
 		public void Activate() {
 			ProxyQSignal().Activate();
 		}
+		[SmokeMethod("isBlocked() const")]
 		public bool IsBlocked() {
 			return ProxyQSignal().IsBlocked();
 		}
+		[SmokeMethod("block(bool)")]
 		public void Block(bool b) {
 			ProxyQSignal().Block(b);
 		}
+		[SmokeMethod("setParameter(int)")]
 		public void SetParameter(int value) {
 			ProxyQSignal().SetParameter(value);
 		}
+		[SmokeMethod("parameter() const")]
 		public int Parameter() {
 			return ProxyQSignal().Parameter();
 		}
+		[SmokeMethod("setValue(const QVariant&)")]
 		public void SetValue(QVariant value) {
 			ProxyQSignal().SetValue(value);
 		}
+		[SmokeMethod("value() const")]
 		public QVariant Value() {
 			return ProxyQSignal().Value();
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQSignal().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQSignal().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQSignal().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQSignal().TrUtf8(arg1);
 		}
 		~QSignal() {
-			ProxyQSignal().Dispose();
+			DisposeQSignal();
 		}
 		public new void Dispose() {
-			ProxyQSignal().Dispose();
+			DisposeQSignal();
+		}
+		private void DisposeQSignal() {
+			ProxyQSignal().DisposeQSignal();
+		}
+		protected void CreateQSignalSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQSignalSignals), this);
+			_signalInterceptor = (IQSignalSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQSignalSignals Emit() {
+			return (IQSignalSignals) _signalInterceptor;
 		}
 	}
 
-	public interface IQSignalSignals {
+	public interface IQSignalSignals : IQObjectSignals {
+		[Q_SIGNAL("signal(const QVariant&)")]
 		void Signal(QVariant arg1);
+		[Q_SIGNAL("intSignal(int)")]
 		void IntSignal(int arg1);
 	}
 }

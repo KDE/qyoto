@@ -35,188 +35,266 @@ namespace Qt {
 			Right = BesideIcon,
 			Under = BelowIcon,
 		}
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQToolButton().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQToolButton().ClassName();
 		}
 		public QToolButton(QWidget parent, string name) : this((Type) null) {
 			CreateQToolButtonProxy();
+			CreateQToolButtonSignalProxy();
 			NewQToolButton(parent,name);
 		}
+		[SmokeMethod("QToolButton(QWidget*, const char*)")]
 		private void NewQToolButton(QWidget parent, string name) {
 			ProxyQToolButton().NewQToolButton(parent,name);
 		}
 		public QToolButton(QWidget parent) : this((Type) null) {
 			CreateQToolButtonProxy();
+			CreateQToolButtonSignalProxy();
 			NewQToolButton(parent);
 		}
+		[SmokeMethod("QToolButton(QWidget*)")]
 		private void NewQToolButton(QWidget parent) {
 			ProxyQToolButton().NewQToolButton(parent);
 		}
 		public QToolButton(QIconSet s, string textLabel, string grouptext, QObject receiver, string slot, QToolBar parent, string name) : this((Type) null) {
 			CreateQToolButtonProxy();
+			CreateQToolButtonSignalProxy();
 			NewQToolButton(s,textLabel,grouptext,receiver,slot,parent,name);
 		}
+		[SmokeMethod("QToolButton(const QIconSet&, const QString&, const QString&, QObject*, const char*, QToolBar*, const char*)")]
 		private void NewQToolButton(QIconSet s, string textLabel, string grouptext, QObject receiver, string slot, QToolBar parent, string name) {
 			ProxyQToolButton().NewQToolButton(s,textLabel,grouptext,receiver,slot,parent,name);
 		}
 		public QToolButton(QIconSet s, string textLabel, string grouptext, QObject receiver, string slot, QToolBar parent) : this((Type) null) {
 			CreateQToolButtonProxy();
+			CreateQToolButtonSignalProxy();
 			NewQToolButton(s,textLabel,grouptext,receiver,slot,parent);
 		}
+		[SmokeMethod("QToolButton(const QIconSet&, const QString&, const QString&, QObject*, const char*, QToolBar*)")]
 		private void NewQToolButton(QIconSet s, string textLabel, string grouptext, QObject receiver, string slot, QToolBar parent) {
 			ProxyQToolButton().NewQToolButton(s,textLabel,grouptext,receiver,slot,parent);
 		}
 		public QToolButton(int type, QWidget parent, string name) : this((Type) null) {
 			CreateQToolButtonProxy();
+			CreateQToolButtonSignalProxy();
 			NewQToolButton(type,parent,name);
 		}
+		[SmokeMethod("QToolButton(Qt::ArrowType, QWidget*, const char*)")]
 		private void NewQToolButton(int type, QWidget parent, string name) {
 			ProxyQToolButton().NewQToolButton(type,parent,name);
 		}
 		public QToolButton(int type, QWidget parent) : this((Type) null) {
 			CreateQToolButtonProxy();
+			CreateQToolButtonSignalProxy();
 			NewQToolButton(type,parent);
 		}
+		[SmokeMethod("QToolButton(Qt::ArrowType, QWidget*)")]
 		private void NewQToolButton(int type, QWidget parent) {
 			ProxyQToolButton().NewQToolButton(type,parent);
 		}
+		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {
 			return ProxyQToolButton().SizeHint();
 		}
+		[SmokeMethod("minimumSizeHint() const")]
 		public new QSize MinimumSizeHint() {
 			return ProxyQToolButton().MinimumSizeHint();
 		}
+		[SmokeMethod("setOnIconSet(const QIconSet&)")]
 		public void SetOnIconSet(QIconSet arg1) {
 			ProxyQToolButton().SetOnIconSet(arg1);
 		}
+		[SmokeMethod("setOffIconSet(const QIconSet&)")]
 		public void SetOffIconSet(QIconSet arg1) {
 			ProxyQToolButton().SetOffIconSet(arg1);
 		}
+		[SmokeMethod("setIconSet(const QIconSet&, bool)")]
 		public void SetIconSet(QIconSet arg1, bool on) {
 			ProxyQToolButton().SetIconSet(arg1,on);
 		}
+		[SmokeMethod("onIconSet() const")]
 		public QIconSet OnIconSet() {
 			return ProxyQToolButton().OnIconSet();
 		}
+		[SmokeMethod("offIconSet() const")]
 		public QIconSet OffIconSet() {
 			return ProxyQToolButton().OffIconSet();
 		}
+		[SmokeMethod("iconSet(bool) const")]
 		public QIconSet IconSet(bool on) {
 			return ProxyQToolButton().IconSet(on);
 		}
+		[SmokeMethod("setIconSet(const QIconSet&)")]
 		public virtual void SetIconSet(QIconSet arg1) {
 			ProxyQToolButton().SetIconSet(arg1);
 		}
+		[SmokeMethod("iconSet() const")]
 		public QIconSet IconSet() {
 			return ProxyQToolButton().IconSet();
 		}
+		[SmokeMethod("usesBigPixmap() const")]
 		public bool UsesBigPixmap() {
 			return ProxyQToolButton().UsesBigPixmap();
 		}
+		[SmokeMethod("usesTextLabel() const")]
 		public bool UsesTextLabel() {
 			return ProxyQToolButton().UsesTextLabel();
 		}
+		[SmokeMethod("textLabel() const")]
 		public string TextLabel() {
 			return ProxyQToolButton().TextLabel();
 		}
+		[SmokeMethod("setPopup(QPopupMenu*)")]
 		public void SetPopup(QPopupMenu popup) {
 			ProxyQToolButton().SetPopup(popup);
 		}
+		[SmokeMethod("popup() const")]
 		public QPopupMenu Popup() {
 			return ProxyQToolButton().Popup();
 		}
+		[SmokeMethod("setPopupDelay(int)")]
 		public void SetPopupDelay(int delay) {
 			ProxyQToolButton().SetPopupDelay(delay);
 		}
+		[SmokeMethod("popupDelay() const")]
 		public int PopupDelay() {
 			return ProxyQToolButton().PopupDelay();
 		}
+		[SmokeMethod("openPopup()")]
 		public void OpenPopup() {
 			ProxyQToolButton().OpenPopup();
 		}
+		[SmokeMethod("setAutoRaise(bool)")]
 		public void SetAutoRaise(bool enable) {
 			ProxyQToolButton().SetAutoRaise(enable);
 		}
+		[SmokeMethod("autoRaise() const")]
 		public bool AutoRaise() {
 			return ProxyQToolButton().AutoRaise();
 		}
+		[SmokeMethod("textPosition() const")]
 		public int TextPosition() {
 			return ProxyQToolButton().TextPosition();
 		}
+		[SmokeMethod("setText(const QString&)")]
 		public new void SetText(string txt) {
 			ProxyQToolButton().SetText(txt);
 		}
+		[Q_SLOT("setUsesBigPixmap(bool)")]
+		[SmokeMethod("setUsesBigPixmap(bool)")]
 		public virtual void SetUsesBigPixmap(bool enable) {
 			ProxyQToolButton().SetUsesBigPixmap(enable);
 		}
+		[Q_SLOT("setUsesTextLabel(bool)")]
+		[SmokeMethod("setUsesTextLabel(bool)")]
 		public virtual void SetUsesTextLabel(bool enable) {
 			ProxyQToolButton().SetUsesTextLabel(enable);
 		}
+		[Q_SLOT("setTextLabel(const QString&, bool)")]
+		[SmokeMethod("setTextLabel(const QString&, bool)")]
 		public virtual void SetTextLabel(string arg1, bool arg2) {
 			ProxyQToolButton().SetTextLabel(arg1,arg2);
 		}
+		[Q_SLOT("setToggleButton(bool)")]
+		[SmokeMethod("setToggleButton(bool)")]
 		public new virtual void SetToggleButton(bool enable) {
 			ProxyQToolButton().SetToggleButton(enable);
 		}
+		[Q_SLOT("setOn(bool)")]
+		[SmokeMethod("setOn(bool)")]
 		public new virtual void SetOn(bool enable) {
 			ProxyQToolButton().SetOn(enable);
 		}
+		[Q_SLOT("toggle()")]
+		[SmokeMethod("toggle()")]
 		public new void Toggle() {
 			ProxyQToolButton().Toggle();
 		}
+		[Q_SLOT("setTextLabel(const QString&)")]
+		[SmokeMethod("setTextLabel(const QString&)")]
 		public void SetTextLabel(string arg1) {
 			ProxyQToolButton().SetTextLabel(arg1);
 		}
+		[Q_SLOT("setTextPosition(QToolButton::TextPosition)")]
+		[SmokeMethod("setTextPosition(QToolButton::TextPosition)")]
 		public void SetTextPosition(int pos) {
 			ProxyQToolButton().SetTextPosition(pos);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQToolButton().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQToolButton().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQToolButton().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQToolButton().TrUtf8(arg1);
 		}
+		[SmokeMethod("mousePressEvent(QMouseEvent*)")]
 		protected new void MousePressEvent(QMouseEvent arg1) {
 			ProxyQToolButton().MousePressEvent(arg1);
 		}
+		[SmokeMethod("drawButton(QPainter*)")]
 		protected new void DrawButton(QPainter arg1) {
 			ProxyQToolButton().DrawButton(arg1);
 		}
+		[SmokeMethod("drawButtonLabel(QPainter*)")]
 		protected new void DrawButtonLabel(QPainter arg1) {
 			ProxyQToolButton().DrawButtonLabel(arg1);
 		}
+		[SmokeMethod("enterEvent(QEvent*)")]
 		protected new void EnterEvent(QEvent arg1) {
 			ProxyQToolButton().EnterEvent(arg1);
 		}
+		[SmokeMethod("leaveEvent(QEvent*)")]
 		protected new void LeaveEvent(QEvent arg1) {
 			ProxyQToolButton().LeaveEvent(arg1);
 		}
+		[SmokeMethod("moveEvent(QMoveEvent*)")]
 		protected new void MoveEvent(QMoveEvent arg1) {
 			ProxyQToolButton().MoveEvent(arg1);
 		}
+		[SmokeMethod("uses3D() const")]
 		protected bool Uses3D() {
 			return ProxyQToolButton().Uses3D();
 		}
+		[SmokeMethod("eventFilter(QObject*, QEvent*)")]
 		public new bool EventFilter(QObject o, QEvent e) {
 			return ProxyQToolButton().EventFilter(o,e);
 		}
+		[SmokeMethod("paletteChange(const QPalette&)")]
 		protected new void PaletteChange(QPalette arg1) {
 			ProxyQToolButton().PaletteChange(arg1);
 		}
 		~QToolButton() {
-			ProxyQToolButton().Dispose();
+			DisposeQToolButton();
 		}
 		public new void Dispose() {
-			ProxyQToolButton().Dispose();
+			DisposeQToolButton();
 		}
+		private void DisposeQToolButton() {
+			ProxyQToolButton().DisposeQToolButton();
+		}
+		protected void CreateQToolButtonSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQToolButtonSignals), this);
+			_signalInterceptor = (IQToolButtonSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQToolButtonSignals Emit() {
+			return (IQToolButtonSignals) _signalInterceptor;
+		}
+	}
+
+	public interface IQToolButtonSignals : IQButtonSignals {
 	}
 }

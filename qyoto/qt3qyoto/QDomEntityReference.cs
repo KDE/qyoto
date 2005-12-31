@@ -28,6 +28,7 @@ namespace Qt {
 			CreateQDomEntityReferenceProxy();
 			NewQDomEntityReference();
 		}
+		[SmokeMethod("QDomEntityReference()")]
 		private void NewQDomEntityReference() {
 			ProxyQDomEntityReference().NewQDomEntityReference();
 		}
@@ -35,20 +36,26 @@ namespace Qt {
 			CreateQDomEntityReferenceProxy();
 			NewQDomEntityReference(x);
 		}
+		[SmokeMethod("QDomEntityReference(const QDomEntityReference&)")]
 		private void NewQDomEntityReference(QDomEntityReference x) {
 			ProxyQDomEntityReference().NewQDomEntityReference(x);
 		}
+		[SmokeMethod("nodeType() const")]
 		public new int NodeType() {
 			return ProxyQDomEntityReference().NodeType();
 		}
+		[SmokeMethod("isEntityReference() const")]
 		public new bool IsEntityReference() {
 			return ProxyQDomEntityReference().IsEntityReference();
 		}
 		~QDomEntityReference() {
-			ProxyQDomEntityReference().Dispose();
+			DisposeQDomEntityReference();
 		}
 		public new void Dispose() {
-			ProxyQDomEntityReference().Dispose();
+			DisposeQDomEntityReference();
+		}
+		private void DisposeQDomEntityReference() {
+			ProxyQDomEntityReference().DisposeQDomEntityReference();
 		}
 	}
 }

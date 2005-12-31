@@ -34,254 +34,351 @@ namespace Qt {
 			UpDownArrows = 0,
 			PlusMinus = 1,
 		}
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQSpinBox().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQSpinBox().ClassName();
 		}
 		public QSpinBox(QWidget parent, string name) : this((Type) null) {
 			CreateQSpinBoxProxy();
+			CreateQSpinBoxSignalProxy();
 			NewQSpinBox(parent,name);
 		}
+		[SmokeMethod("QSpinBox(QWidget*, const char*)")]
 		private void NewQSpinBox(QWidget parent, string name) {
 			ProxyQSpinBox().NewQSpinBox(parent,name);
 		}
 		public QSpinBox(QWidget parent) : this((Type) null) {
 			CreateQSpinBoxProxy();
+			CreateQSpinBoxSignalProxy();
 			NewQSpinBox(parent);
 		}
+		[SmokeMethod("QSpinBox(QWidget*)")]
 		private void NewQSpinBox(QWidget parent) {
 			ProxyQSpinBox().NewQSpinBox(parent);
 		}
 		public QSpinBox() : this((Type) null) {
 			CreateQSpinBoxProxy();
+			CreateQSpinBoxSignalProxy();
 			NewQSpinBox();
 		}
+		[SmokeMethod("QSpinBox()")]
 		private void NewQSpinBox() {
 			ProxyQSpinBox().NewQSpinBox();
 		}
 		public QSpinBox(int minValue, int maxValue, int step, QWidget parent, string name) : this((Type) null) {
 			CreateQSpinBoxProxy();
+			CreateQSpinBoxSignalProxy();
 			NewQSpinBox(minValue,maxValue,step,parent,name);
 		}
+		[SmokeMethod("QSpinBox(int, int, int, QWidget*, const char*)")]
 		private void NewQSpinBox(int minValue, int maxValue, int step, QWidget parent, string name) {
 			ProxyQSpinBox().NewQSpinBox(minValue,maxValue,step,parent,name);
 		}
 		public QSpinBox(int minValue, int maxValue, int step, QWidget parent) : this((Type) null) {
 			CreateQSpinBoxProxy();
+			CreateQSpinBoxSignalProxy();
 			NewQSpinBox(minValue,maxValue,step,parent);
 		}
+		[SmokeMethod("QSpinBox(int, int, int, QWidget*)")]
 		private void NewQSpinBox(int minValue, int maxValue, int step, QWidget parent) {
 			ProxyQSpinBox().NewQSpinBox(minValue,maxValue,step,parent);
 		}
 		public QSpinBox(int minValue, int maxValue, int step) : this((Type) null) {
 			CreateQSpinBoxProxy();
+			CreateQSpinBoxSignalProxy();
 			NewQSpinBox(minValue,maxValue,step);
 		}
+		[SmokeMethod("QSpinBox(int, int, int)")]
 		private void NewQSpinBox(int minValue, int maxValue, int step) {
 			ProxyQSpinBox().NewQSpinBox(minValue,maxValue,step);
 		}
 		public QSpinBox(int minValue, int maxValue) : this((Type) null) {
 			CreateQSpinBoxProxy();
+			CreateQSpinBoxSignalProxy();
 			NewQSpinBox(minValue,maxValue);
 		}
+		[SmokeMethod("QSpinBox(int, int)")]
 		private void NewQSpinBox(int minValue, int maxValue) {
 			ProxyQSpinBox().NewQSpinBox(minValue,maxValue);
 		}
+		[SmokeMethod("text() const")]
 		public string Text() {
 			return ProxyQSpinBox().Text();
 		}
+		[SmokeMethod("prefix() const")]
 		public virtual string Prefix() {
 			return ProxyQSpinBox().Prefix();
 		}
+		[SmokeMethod("suffix() const")]
 		public virtual string Suffix() {
 			return ProxyQSpinBox().Suffix();
 		}
+		[SmokeMethod("cleanText() const")]
 		public virtual string CleanText() {
 			return ProxyQSpinBox().CleanText();
 		}
+		[SmokeMethod("setSpecialValueText(const QString&)")]
 		public virtual void SetSpecialValueText(string text) {
 			ProxyQSpinBox().SetSpecialValueText(text);
 		}
+		[SmokeMethod("specialValueText() const")]
 		public string SpecialValueText() {
 			return ProxyQSpinBox().SpecialValueText();
 		}
+		[SmokeMethod("setWrapping(bool)")]
 		public virtual void SetWrapping(bool on) {
 			ProxyQSpinBox().SetWrapping(on);
 		}
+		[SmokeMethod("wrapping() const")]
 		public bool Wrapping() {
 			return ProxyQSpinBox().Wrapping();
 		}
+		[SmokeMethod("setButtonSymbols(QSpinBox::ButtonSymbols)")]
 		public virtual void SetButtonSymbols(int arg1) {
 			ProxyQSpinBox().SetButtonSymbols(arg1);
 		}
+		[SmokeMethod("buttonSymbols() const")]
 		public int ButtonSymbols() {
 			return ProxyQSpinBox().ButtonSymbols();
 		}
+		[SmokeMethod("setValidator(const QValidator*)")]
 		public virtual void SetValidator(QValidator v) {
 			ProxyQSpinBox().SetValidator(v);
 		}
+		[SmokeMethod("validator() const")]
 		public QValidator Validator() {
 			return ProxyQSpinBox().Validator();
 		}
+		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {
 			return ProxyQSpinBox().SizeHint();
 		}
+		[SmokeMethod("minimumSizeHint() const")]
 		public new QSize MinimumSizeHint() {
 			return ProxyQSpinBox().MinimumSizeHint();
 		}
+		[SmokeMethod("minValue() const")]
 		public int MinValue() {
 			return ProxyQSpinBox().MinValue();
 		}
+		[SmokeMethod("maxValue() const")]
 		public int MaxValue() {
 			return ProxyQSpinBox().MaxValue();
 		}
+		[SmokeMethod("setMinValue(int)")]
 		public void SetMinValue(int arg1) {
 			ProxyQSpinBox().SetMinValue(arg1);
 		}
+		[SmokeMethod("setMaxValue(int)")]
 		public void SetMaxValue(int arg1) {
 			ProxyQSpinBox().SetMaxValue(arg1);
 		}
+		[SmokeMethod("lineStep() const")]
 		public int LineStep() {
 			return ProxyQSpinBox().LineStep();
 		}
+		[SmokeMethod("setLineStep(int)")]
 		public void SetLineStep(int arg1) {
 			ProxyQSpinBox().SetLineStep(arg1);
 		}
+		[SmokeMethod("value() const")]
 		public int Value() {
 			return ProxyQSpinBox().Value();
 		}
+		[SmokeMethod("upRect() const")]
 		public QRect UpRect() {
 			return ProxyQSpinBox().UpRect();
 		}
+		[SmokeMethod("downRect() const")]
 		public QRect DownRect() {
 			return ProxyQSpinBox().DownRect();
 		}
+		[Q_SLOT("setValue(int)")]
+		[SmokeMethod("setValue(int)")]
 		public virtual void SetValue(int value) {
 			ProxyQSpinBox().SetValue(value);
 		}
+		[Q_SLOT("setPrefix(const QString&)")]
+		[SmokeMethod("setPrefix(const QString&)")]
 		public virtual void SetPrefix(string text) {
 			ProxyQSpinBox().SetPrefix(text);
 		}
+		[Q_SLOT("setSuffix(const QString&)")]
+		[SmokeMethod("setSuffix(const QString&)")]
 		public virtual void SetSuffix(string text) {
 			ProxyQSpinBox().SetSuffix(text);
 		}
+		[Q_SLOT("stepUp()")]
+		[SmokeMethod("stepUp()")]
 		public virtual void StepUp() {
 			ProxyQSpinBox().StepUp();
 		}
+		[Q_SLOT("stepDown()")]
+		[SmokeMethod("stepDown()")]
 		public virtual void StepDown() {
 			ProxyQSpinBox().StepDown();
 		}
+		[Q_SLOT("setEnabled(bool)")]
+		[SmokeMethod("setEnabled(bool)")]
 		public new virtual void SetEnabled(bool enabled) {
 			ProxyQSpinBox().SetEnabled(enabled);
 		}
+		[Q_SLOT("selectAll()")]
+		[SmokeMethod("selectAll()")]
 		public virtual void SelectAll() {
 			ProxyQSpinBox().SelectAll();
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQSpinBox().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQSpinBox().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQSpinBox().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQSpinBox().TrUtf8(arg1);
 		}
+		[SmokeMethod("mapValueToText(int)")]
 		protected virtual string MapValueToText(int value) {
 			return ProxyQSpinBox().MapValueToText(value);
 		}
+		[SmokeMethod("mapTextToValue(bool*)")]
 		protected virtual int MapTextToValue(out bool ok) {
 			return ProxyQSpinBox().MapTextToValue(out ok);
 		}
+		[SmokeMethod("currentValueText()")]
 		protected string CurrentValueText() {
 			return ProxyQSpinBox().CurrentValueText();
 		}
+		[SmokeMethod("updateDisplay()")]
 		protected virtual void UpdateDisplay() {
 			ProxyQSpinBox().UpdateDisplay();
 		}
+		[SmokeMethod("interpretText()")]
 		protected virtual void InterpretText() {
 			ProxyQSpinBox().InterpretText();
 		}
+		[SmokeMethod("editor() const")]
 		protected QLineEdit Editor() {
 			return ProxyQSpinBox().Editor();
 		}
+		[SmokeMethod("valueChange()")]
 		protected virtual void ValueChange() {
 			ProxyQSpinBox().ValueChange();
 		}
+		[SmokeMethod("rangeChange()")]
 		protected virtual void RangeChange() {
 			ProxyQSpinBox().RangeChange();
 		}
+		[SmokeMethod("eventFilter(QObject*, QEvent*)")]
 		public new bool EventFilter(QObject arg1, QEvent ev) {
 			return ProxyQSpinBox().EventFilter(arg1,ev);
 		}
+		[SmokeMethod("resizeEvent(QResizeEvent*)")]
 		protected new void ResizeEvent(QResizeEvent ev) {
 			ProxyQSpinBox().ResizeEvent(ev);
 		}
+		[SmokeMethod("wheelEvent(QWheelEvent*)")]
 		protected new void WheelEvent(QWheelEvent arg1) {
 			ProxyQSpinBox().WheelEvent(arg1);
 		}
+		[SmokeMethod("leaveEvent(QEvent*)")]
 		protected new void LeaveEvent(QEvent arg1) {
 			ProxyQSpinBox().LeaveEvent(arg1);
 		}
+		[SmokeMethod("styleChange(QStyle&)")]
 		public new void StyleChange(QStyle arg1) {
 			ProxyQSpinBox().StyleChange(arg1);
 		}
+		[Q_SLOT("textChanged()")]
+		[SmokeMethod("textChanged()")]
 		protected void TextChanged() {
 			ProxyQSpinBox().TextChanged();
 		}
 		~QSpinBox() {
-			ProxyQSpinBox().Dispose();
+			DisposeQSpinBox();
 		}
 		public new void Dispose() {
-			ProxyQSpinBox().Dispose();
+			DisposeQSpinBox();
 		}
+		private void DisposeQSpinBox() {
+			ProxyQSpinBox().DisposeQSpinBox();
+		}
+		[SmokeMethod("addPage()")]
 		public void AddPage() {
 			ProxyQSpinBox().AddPage();
 		}
+		[SmokeMethod("subtractPage()")]
 		public void SubtractPage() {
 			ProxyQSpinBox().SubtractPage();
 		}
+		[SmokeMethod("addLine()")]
 		public void AddLine() {
 			ProxyQSpinBox().AddLine();
 		}
+		[SmokeMethod("subtractLine()")]
 		public void SubtractLine() {
 			ProxyQSpinBox().SubtractLine();
 		}
+		[SmokeMethod("setRange(int, int)")]
 		public void SetRange(int minValue, int maxValue) {
 			ProxyQSpinBox().SetRange(minValue,maxValue);
 		}
+		[SmokeMethod("pageStep() const")]
 		public int PageStep() {
 			return ProxyQSpinBox().PageStep();
 		}
+		[SmokeMethod("setSteps(int, int)")]
 		public void SetSteps(int line, int page) {
 			ProxyQSpinBox().SetSteps(line,page);
 		}
+		[SmokeMethod("bound(int) const")]
 		public int Bound(int arg1) {
 			return ProxyQSpinBox().Bound(arg1);
 		}
+		[SmokeMethod("positionFromValue(int, int) const")]
 		protected int PositionFromValue(int val, int space) {
 			return ProxyQSpinBox().PositionFromValue(val,space);
 		}
+		[SmokeMethod("valueFromPosition(int, int) const")]
 		protected int ValueFromPosition(int pos, int space) {
 			return ProxyQSpinBox().ValueFromPosition(pos,space);
 		}
+		[SmokeMethod("directSetValue(int)")]
 		protected void DirectSetValue(int val) {
 			ProxyQSpinBox().DirectSetValue(val);
 		}
+		[SmokeMethod("prevValue() const")]
 		protected int PrevValue() {
 			return ProxyQSpinBox().PrevValue();
 		}
+		[SmokeMethod("stepChange()")]
 		protected virtual void StepChange() {
 			ProxyQSpinBox().StepChange();
 		}
+		protected void CreateQSpinBoxSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQSpinBoxSignals), this);
+			_signalInterceptor = (IQSpinBoxSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQSpinBoxSignals Emit() {
+			return (IQSpinBoxSignals) _signalInterceptor;
+		}
 	}
 
-	public interface IQSpinBoxSignals {
+	public interface IQSpinBoxSignals : IQWidgetSignals {
+		[Q_SIGNAL("valueChanged(int)")]
 		void ValueChanged(int value);
+		[Q_SIGNAL("valueChanged(const QString&)")]
 		void ValueChanged(string valueText);
 	}
 }

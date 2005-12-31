@@ -40,29 +40,38 @@ namespace Qt {
 			CreateQFocusEventProxy();
 			NewQFocusEvent(type);
 		}
+		[SmokeMethod("QFocusEvent(QEvent::Type)")]
 		private void NewQFocusEvent(int type) {
 			ProxyQFocusEvent().NewQFocusEvent(type);
 		}
+		[SmokeMethod("gotFocus() const")]
 		public bool GotFocus() {
 			return ProxyQFocusEvent().GotFocus();
 		}
+		[SmokeMethod("lostFocus() const")]
 		public bool LostFocus() {
 			return ProxyQFocusEvent().LostFocus();
 		}
+		[SmokeMethod("reason()")]
 		public static int Reason() {
 			return StaticQFocusEvent().Reason();
 		}
+		[SmokeMethod("setReason(QFocusEvent::Reason)")]
 		public static void SetReason(int reason) {
 			StaticQFocusEvent().SetReason(reason);
 		}
+		[SmokeMethod("resetReason()")]
 		public static void ResetReason() {
 			StaticQFocusEvent().ResetReason();
 		}
 		~QFocusEvent() {
-			ProxyQFocusEvent().Dispose();
+			DisposeQFocusEvent();
 		}
 		public new void Dispose() {
-			ProxyQFocusEvent().Dispose();
+			DisposeQFocusEvent();
+		}
+		private void DisposeQFocusEvent() {
+			ProxyQFocusEvent().DisposeQFocusEvent();
 		}
 	}
 }

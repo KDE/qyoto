@@ -27,6 +27,7 @@ namespace Qt {
 			return (IQSqlDriverCreatorBaseProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("createObject()")]
 		public virtual QSqlDriver CreateObject() {
 			return ProxyQSqlDriverCreatorBase().CreateObject();
 		}

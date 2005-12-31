@@ -28,6 +28,7 @@ namespace Qt {
 			CreateQDragMoveEventProxy();
 			NewQDragMoveEvent(pos,typ);
 		}
+		[SmokeMethod("QDragMoveEvent(const QPoint&, QEvent::Type)")]
 		private void NewQDragMoveEvent(QPoint pos, int typ) {
 			ProxyQDragMoveEvent().NewQDragMoveEvent(pos,typ);
 		}
@@ -35,32 +36,42 @@ namespace Qt {
 			CreateQDragMoveEventProxy();
 			NewQDragMoveEvent(pos);
 		}
+		[SmokeMethod("QDragMoveEvent(const QPoint&)")]
 		private void NewQDragMoveEvent(QPoint pos) {
 			ProxyQDragMoveEvent().NewQDragMoveEvent(pos);
 		}
+		[SmokeMethod("answerRect() const")]
 		public QRect AnswerRect() {
 			return ProxyQDragMoveEvent().AnswerRect();
 		}
+		[SmokeMethod("accept(bool)")]
 		public new void Accept(bool y) {
 			ProxyQDragMoveEvent().Accept(y);
 		}
+		[SmokeMethod("accept()")]
 		public new void Accept() {
 			ProxyQDragMoveEvent().Accept();
 		}
+		[SmokeMethod("accept(const QRect&)")]
 		public new void Accept(QRect r) {
 			ProxyQDragMoveEvent().Accept(r);
 		}
+		[SmokeMethod("ignore(const QRect&)")]
 		public new void Ignore(QRect r) {
 			ProxyQDragMoveEvent().Ignore(r);
 		}
+		[SmokeMethod("ignore()")]
 		public new void Ignore() {
 			ProxyQDragMoveEvent().Ignore();
 		}
 		~QDragMoveEvent() {
-			ProxyQDragMoveEvent().Dispose();
+			DisposeQDragMoveEvent();
 		}
 		public new void Dispose() {
-			ProxyQDragMoveEvent().Dispose();
+			DisposeQDragMoveEvent();
+		}
+		private void DisposeQDragMoveEvent() {
+			ProxyQDragMoveEvent().DisposeQDragMoveEvent();
 		}
 	}
 }

@@ -29,6 +29,7 @@ namespace Qt {
 			CreateQPenProxy();
 			NewQPen();
 		}
+		[SmokeMethod("QPen()")]
 		private void NewQPen() {
 			ProxyQPen().NewQPen();
 		}
@@ -36,6 +37,7 @@ namespace Qt {
 			CreateQPenProxy();
 			NewQPen(arg1);
 		}
+		[SmokeMethod("QPen(Qt::PenStyle)")]
 		private void NewQPen(int arg1) {
 			ProxyQPen().NewQPen(arg1);
 		}
@@ -43,6 +45,7 @@ namespace Qt {
 			CreateQPenProxy();
 			NewQPen(color,width,style);
 		}
+		[SmokeMethod("QPen(const QColor&, uint, Qt::PenStyle)")]
 		private void NewQPen(QColor color, uint width, int style) {
 			ProxyQPen().NewQPen(color,width,style);
 		}
@@ -50,6 +53,7 @@ namespace Qt {
 			CreateQPenProxy();
 			NewQPen(color,width);
 		}
+		[SmokeMethod("QPen(const QColor&, uint)")]
 		private void NewQPen(QColor color, uint width) {
 			ProxyQPen().NewQPen(color,width);
 		}
@@ -57,6 +61,7 @@ namespace Qt {
 			CreateQPenProxy();
 			NewQPen(color);
 		}
+		[SmokeMethod("QPen(const QColor&)")]
 		private void NewQPen(QColor color) {
 			ProxyQPen().NewQPen(color);
 		}
@@ -64,6 +69,7 @@ namespace Qt {
 			CreateQPenProxy();
 			NewQPen(cl,w,s,c,j);
 		}
+		[SmokeMethod("QPen(const QColor&, uint, Qt::PenStyle, Qt::PenCapStyle, Qt::PenJoinStyle)")]
 		private void NewQPen(QColor cl, uint w, int s, int c, int j) {
 			ProxyQPen().NewQPen(cl,w,s,c,j);
 		}
@@ -71,39 +77,51 @@ namespace Qt {
 			CreateQPenProxy();
 			NewQPen(arg1);
 		}
+		[SmokeMethod("QPen(const QPen&)")]
 		private void NewQPen(QPen arg1) {
 			ProxyQPen().NewQPen(arg1);
 		}
+		[SmokeMethod("style() const")]
 		public int Style() {
 			return ProxyQPen().Style();
 		}
+		[SmokeMethod("setStyle(Qt::PenStyle)")]
 		public void SetStyle(int arg1) {
 			ProxyQPen().SetStyle(arg1);
 		}
+		[SmokeMethod("width() const")]
 		public uint Width() {
 			return ProxyQPen().Width();
 		}
+		[SmokeMethod("setWidth(uint)")]
 		public void SetWidth(uint arg1) {
 			ProxyQPen().SetWidth(arg1);
 		}
+		[SmokeMethod("color() const")]
 		public QColor Color() {
 			return ProxyQPen().Color();
 		}
+		[SmokeMethod("setColor(const QColor&)")]
 		public void SetColor(QColor arg1) {
 			ProxyQPen().SetColor(arg1);
 		}
+		[SmokeMethod("capStyle() const")]
 		public int CapStyle() {
 			return ProxyQPen().CapStyle();
 		}
+		[SmokeMethod("setCapStyle(Qt::PenCapStyle)")]
 		public void SetCapStyle(int arg1) {
 			ProxyQPen().SetCapStyle(arg1);
 		}
+		[SmokeMethod("joinStyle() const")]
 		public int JoinStyle() {
 			return ProxyQPen().JoinStyle();
 		}
+		[SmokeMethod("setJoinStyle(Qt::PenJoinStyle)")]
 		public void SetJoinStyle(int arg1) {
 			ProxyQPen().SetJoinStyle(arg1);
 		}
+		[SmokeMethod("operator==(const QPen&) const")]
 		public static bool operator==(QPen lhs, QPen p) {
 			return StaticQPen().op_equals(lhs,p);
 		}
@@ -118,10 +136,13 @@ namespace Qt {
 			return ProxyQPen().GetHashCode();
 		}
 		~QPen() {
-			ProxyQPen().Dispose();
+			DisposeQPen();
 		}
 		public void Dispose() {
-			ProxyQPen().Dispose();
+			DisposeQPen();
+		}
+		private void DisposeQPen() {
+			ProxyQPen().DisposeQPen();
 		}
 	}
 }

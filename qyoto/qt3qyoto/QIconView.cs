@@ -48,377 +48,528 @@ namespace Qt {
 			Bottom = 0,
 			Right = 1,
 		}
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQIconView().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQIconView().ClassName();
 		}
 		public QIconView(QWidget parent, string name, int f) : this((Type) null) {
 			CreateQIconViewProxy();
+			CreateQIconViewSignalProxy();
 			NewQIconView(parent,name,f);
 		}
+		[SmokeMethod("QIconView(QWidget*, const char*, Qt::WFlags)")]
 		private void NewQIconView(QWidget parent, string name, int f) {
 			ProxyQIconView().NewQIconView(parent,name,f);
 		}
 		public QIconView(QWidget parent, string name) : this((Type) null) {
 			CreateQIconViewProxy();
+			CreateQIconViewSignalProxy();
 			NewQIconView(parent,name);
 		}
+		[SmokeMethod("QIconView(QWidget*, const char*)")]
 		private void NewQIconView(QWidget parent, string name) {
 			ProxyQIconView().NewQIconView(parent,name);
 		}
 		public QIconView(QWidget parent) : this((Type) null) {
 			CreateQIconViewProxy();
+			CreateQIconViewSignalProxy();
 			NewQIconView(parent);
 		}
+		[SmokeMethod("QIconView(QWidget*)")]
 		private void NewQIconView(QWidget parent) {
 			ProxyQIconView().NewQIconView(parent);
 		}
 		public QIconView() : this((Type) null) {
 			CreateQIconViewProxy();
+			CreateQIconViewSignalProxy();
 			NewQIconView();
 		}
+		[SmokeMethod("QIconView()")]
 		private void NewQIconView() {
 			ProxyQIconView().NewQIconView();
 		}
+		[SmokeMethod("insertItem(QIconViewItem*, QIconViewItem*)")]
 		public virtual void InsertItem(QIconViewItem item, QIconViewItem after) {
 			ProxyQIconView().InsertItem(item,after);
 		}
+		[SmokeMethod("insertItem(QIconViewItem*)")]
 		public virtual void InsertItem(QIconViewItem item) {
 			ProxyQIconView().InsertItem(item);
 		}
+		[SmokeMethod("takeItem(QIconViewItem*)")]
 		public virtual void TakeItem(QIconViewItem item) {
 			ProxyQIconView().TakeItem(item);
 		}
+		[SmokeMethod("index(const QIconViewItem*) const")]
 		public int Index(QIconViewItem item) {
 			return ProxyQIconView().Index(item);
 		}
+		[SmokeMethod("firstItem() const")]
 		public QIconViewItem FirstItem() {
 			return ProxyQIconView().FirstItem();
 		}
+		[SmokeMethod("lastItem() const")]
 		public QIconViewItem LastItem() {
 			return ProxyQIconView().LastItem();
 		}
+		[SmokeMethod("currentItem() const")]
 		public QIconViewItem CurrentItem() {
 			return ProxyQIconView().CurrentItem();
 		}
+		[SmokeMethod("setCurrentItem(QIconViewItem*)")]
 		public virtual void SetCurrentItem(QIconViewItem item) {
 			ProxyQIconView().SetCurrentItem(item);
 		}
+		[SmokeMethod("setSelected(QIconViewItem*, bool, bool)")]
 		public virtual void SetSelected(QIconViewItem item, bool s, bool cb) {
 			ProxyQIconView().SetSelected(item,s,cb);
 		}
+		[SmokeMethod("setSelected(QIconViewItem*, bool)")]
 		public virtual void SetSelected(QIconViewItem item, bool s) {
 			ProxyQIconView().SetSelected(item,s);
 		}
+		[SmokeMethod("count() const")]
 		public uint Count() {
 			return ProxyQIconView().Count();
 		}
+		[SmokeMethod("showEvent(QShowEvent*)")]
 		public new virtual void ShowEvent(QShowEvent arg1) {
 			ProxyQIconView().ShowEvent(arg1);
 		}
+		[SmokeMethod("setSelectionMode(QIconView::SelectionMode)")]
 		public virtual void SetSelectionMode(int m) {
 			ProxyQIconView().SetSelectionMode(m);
 		}
+		[SmokeMethod("selectionMode() const")]
 		public int SelectionMode() {
 			return ProxyQIconView().SelectionMode();
 		}
+		[SmokeMethod("findItem(const QPoint&) const")]
 		public QIconViewItem FindItem(QPoint pos) {
 			return ProxyQIconView().FindItem(pos);
 		}
+		[SmokeMethod("findItem(const QString&, Qt::ComparisonFlags) const")]
 		public QIconViewItem FindItem(string text, uint compare) {
 			return ProxyQIconView().FindItem(text,compare);
 		}
+		[SmokeMethod("findItem(const QString&) const")]
 		public QIconViewItem FindItem(string text) {
 			return ProxyQIconView().FindItem(text);
 		}
+		[SmokeMethod("selectAll(bool)")]
 		public virtual void SelectAll(bool select) {
 			ProxyQIconView().SelectAll(select);
 		}
+		[SmokeMethod("clearSelection()")]
 		public virtual void ClearSelection() {
 			ProxyQIconView().ClearSelection();
 		}
+		[SmokeMethod("invertSelection()")]
 		public virtual void InvertSelection() {
 			ProxyQIconView().InvertSelection();
 		}
+		[SmokeMethod("repaintItem(QIconViewItem*)")]
 		public virtual void RepaintItem(QIconViewItem item) {
 			ProxyQIconView().RepaintItem(item);
 		}
+		[SmokeMethod("repaintSelectedItems()")]
 		public void RepaintSelectedItems() {
 			ProxyQIconView().RepaintSelectedItems();
 		}
+		[SmokeMethod("ensureItemVisible(QIconViewItem*)")]
 		public void EnsureItemVisible(QIconViewItem item) {
 			ProxyQIconView().EnsureItemVisible(item);
 		}
+		[SmokeMethod("findFirstVisibleItem(const QRect&) const")]
 		public QIconViewItem FindFirstVisibleItem(QRect r) {
 			return ProxyQIconView().FindFirstVisibleItem(r);
 		}
+		[SmokeMethod("findLastVisibleItem(const QRect&) const")]
 		public QIconViewItem FindLastVisibleItem(QRect r) {
 			return ProxyQIconView().FindLastVisibleItem(r);
 		}
+		[SmokeMethod("clear()")]
 		public virtual void Clear() {
 			ProxyQIconView().Clear();
 		}
+		[SmokeMethod("setGridX(int)")]
 		public virtual void SetGridX(int rx) {
 			ProxyQIconView().SetGridX(rx);
 		}
+		[SmokeMethod("setGridY(int)")]
 		public virtual void SetGridY(int ry) {
 			ProxyQIconView().SetGridY(ry);
 		}
+		[SmokeMethod("gridX() const")]
 		public int GridX() {
 			return ProxyQIconView().GridX();
 		}
+		[SmokeMethod("gridY() const")]
 		public int GridY() {
 			return ProxyQIconView().GridY();
 		}
+		[SmokeMethod("setSpacing(int)")]
 		public virtual void SetSpacing(int sp) {
 			ProxyQIconView().SetSpacing(sp);
 		}
+		[SmokeMethod("spacing() const")]
 		public int Spacing() {
 			return ProxyQIconView().Spacing();
 		}
+		[SmokeMethod("setItemTextPos(QIconView::ItemTextPos)")]
 		public virtual void SetItemTextPos(int pos) {
 			ProxyQIconView().SetItemTextPos(pos);
 		}
+		[SmokeMethod("itemTextPos() const")]
 		public int ItemTextPos() {
 			return ProxyQIconView().ItemTextPos();
 		}
+		[SmokeMethod("setItemTextBackground(const QBrush&)")]
 		public virtual void SetItemTextBackground(QBrush b) {
 			ProxyQIconView().SetItemTextBackground(b);
 		}
+		[SmokeMethod("itemTextBackground() const")]
 		public QBrush ItemTextBackground() {
 			return ProxyQIconView().ItemTextBackground();
 		}
+		[SmokeMethod("setArrangement(QIconView::Arrangement)")]
 		public virtual void SetArrangement(int am) {
 			ProxyQIconView().SetArrangement(am);
 		}
+		[SmokeMethod("arrangement() const")]
 		public int Arrangement() {
 			return ProxyQIconView().Arrangement();
 		}
+		[SmokeMethod("setResizeMode(QIconView::ResizeMode)")]
 		public virtual void SetResizeMode(int am) {
 			ProxyQIconView().SetResizeMode(am);
 		}
+		[SmokeMethod("resizeMode() const")]
 		public int ResizeMode() {
 			return ProxyQIconView().ResizeMode();
 		}
+		[SmokeMethod("setMaxItemWidth(int)")]
 		public virtual void SetMaxItemWidth(int w) {
 			ProxyQIconView().SetMaxItemWidth(w);
 		}
+		[SmokeMethod("maxItemWidth() const")]
 		public int MaxItemWidth() {
 			return ProxyQIconView().MaxItemWidth();
 		}
+		[SmokeMethod("setMaxItemTextLength(int)")]
 		public virtual void SetMaxItemTextLength(int w) {
 			ProxyQIconView().SetMaxItemTextLength(w);
 		}
+		[SmokeMethod("maxItemTextLength() const")]
 		public int MaxItemTextLength() {
 			return ProxyQIconView().MaxItemTextLength();
 		}
+		[SmokeMethod("setAutoArrange(bool)")]
 		public virtual void SetAutoArrange(bool b) {
 			ProxyQIconView().SetAutoArrange(b);
 		}
+		[SmokeMethod("autoArrange() const")]
 		public bool AutoArrange() {
 			return ProxyQIconView().AutoArrange();
 		}
+		[SmokeMethod("setShowToolTips(bool)")]
 		public virtual void SetShowToolTips(bool b) {
 			ProxyQIconView().SetShowToolTips(b);
 		}
+		[SmokeMethod("showToolTips() const")]
 		public bool ShowToolTips() {
 			return ProxyQIconView().ShowToolTips();
 		}
+		[SmokeMethod("setSorting(bool, bool)")]
 		public void SetSorting(bool sort, bool ascending) {
 			ProxyQIconView().SetSorting(sort,ascending);
 		}
+		[SmokeMethod("setSorting(bool)")]
 		public void SetSorting(bool sort) {
 			ProxyQIconView().SetSorting(sort);
 		}
+		[SmokeMethod("sorting() const")]
 		public bool SortOnInsert() {
 			return ProxyQIconView().SortOnInsert();
 		}
+		[SmokeMethod("sortDirection() const")]
 		public bool SortDirection() {
 			return ProxyQIconView().SortDirection();
 		}
+		[SmokeMethod("setItemsMovable(bool)")]
 		public virtual void SetItemsMovable(bool b) {
 			ProxyQIconView().SetItemsMovable(b);
 		}
+		[SmokeMethod("itemsMovable() const")]
 		public bool ItemsMovable() {
 			return ProxyQIconView().ItemsMovable();
 		}
+		[SmokeMethod("setWordWrapIconText(bool)")]
 		public virtual void SetWordWrapIconText(bool b) {
 			ProxyQIconView().SetWordWrapIconText(b);
 		}
+		[SmokeMethod("wordWrapIconText() const")]
 		public bool WordWrapIconText() {
 			return ProxyQIconView().WordWrapIconText();
 		}
+		[SmokeMethod("eventFilter(QObject*, QEvent*)")]
 		public new bool EventFilter(QObject o, QEvent arg2) {
 			return ProxyQIconView().EventFilter(o,arg2);
 		}
+		[SmokeMethod("minimumSizeHint() const")]
 		public new QSize MinimumSizeHint() {
 			return ProxyQIconView().MinimumSizeHint();
 		}
+		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {
 			return ProxyQIconView().SizeHint();
 		}
+		[SmokeMethod("sort(bool)")]
 		public virtual void Sort(bool ascending) {
 			ProxyQIconView().Sort(ascending);
 		}
+		[SmokeMethod("sort()")]
 		public virtual void Sort() {
 			ProxyQIconView().Sort();
 		}
+		[SmokeMethod("setFont(const QFont&)")]
 		public new virtual void SetFont(QFont arg1) {
 			ProxyQIconView().SetFont(arg1);
 		}
+		[SmokeMethod("setPalette(const QPalette&)")]
 		public new virtual void SetPalette(QPalette arg1) {
 			ProxyQIconView().SetPalette(arg1);
 		}
+		[SmokeMethod("isRenaming() const")]
 		public bool IsRenaming() {
 			return ProxyQIconView().IsRenaming();
 		}
+		[Q_SLOT("arrangeItemsInGrid(const QSize&, bool)")]
+		[SmokeMethod("arrangeItemsInGrid(const QSize&, bool)")]
 		public virtual void ArrangeItemsInGrid(QSize grid, bool update) {
 			ProxyQIconView().ArrangeItemsInGrid(grid,update);
 		}
+		[Q_SLOT("arrangeItemsInGrid(const QSize&)")]
+		[SmokeMethod("arrangeItemsInGrid(const QSize&)")]
 		public virtual void ArrangeItemsInGrid(QSize grid) {
 			ProxyQIconView().ArrangeItemsInGrid(grid);
 		}
+		[Q_SLOT("arrangeItemsInGrid(bool)")]
+		[SmokeMethod("arrangeItemsInGrid(bool)")]
 		public virtual void ArrangeItemsInGrid(bool update) {
 			ProxyQIconView().ArrangeItemsInGrid(update);
 		}
+		[Q_SLOT("arrangeItemsInGrid()")]
+		[SmokeMethod("arrangeItemsInGrid()")]
 		public virtual void ArrangeItemsInGrid() {
 			ProxyQIconView().ArrangeItemsInGrid();
 		}
+		[Q_SLOT("setContentsPos(int, int)")]
+		[SmokeMethod("setContentsPos(int, int)")]
 		public new virtual void SetContentsPos(int x, int y) {
 			ProxyQIconView().SetContentsPos(x,y);
 		}
+		[Q_SLOT("updateContents()")]
+		[SmokeMethod("updateContents()")]
 		public new virtual void UpdateContents() {
 			ProxyQIconView().UpdateContents();
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQIconView().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQIconView().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQIconView().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQIconView().TrUtf8(arg1);
 		}
+		[SmokeMethod("drawContents(QPainter*, int, int, int, int)")]
 		protected new void DrawContents(QPainter p, int cx, int cy, int cw, int ch) {
 			ProxyQIconView().DrawContents(p,cx,cy,cw,ch);
 		}
+		[SmokeMethod("contentsMousePressEvent(QMouseEvent*)")]
 		protected new void ContentsMousePressEvent(QMouseEvent e) {
 			ProxyQIconView().ContentsMousePressEvent(e);
 		}
+		[SmokeMethod("contentsMouseReleaseEvent(QMouseEvent*)")]
 		protected new void ContentsMouseReleaseEvent(QMouseEvent e) {
 			ProxyQIconView().ContentsMouseReleaseEvent(e);
 		}
+		[SmokeMethod("contentsMouseMoveEvent(QMouseEvent*)")]
 		protected new void ContentsMouseMoveEvent(QMouseEvent e) {
 			ProxyQIconView().ContentsMouseMoveEvent(e);
 		}
+		[SmokeMethod("contentsMouseDoubleClickEvent(QMouseEvent*)")]
 		protected new void ContentsMouseDoubleClickEvent(QMouseEvent e) {
 			ProxyQIconView().ContentsMouseDoubleClickEvent(e);
 		}
+		[SmokeMethod("contentsContextMenuEvent(QContextMenuEvent*)")]
 		protected new void ContentsContextMenuEvent(QContextMenuEvent e) {
 			ProxyQIconView().ContentsContextMenuEvent(e);
 		}
+		[SmokeMethod("contentsDragEnterEvent(QDragEnterEvent*)")]
 		protected new void ContentsDragEnterEvent(QDragEnterEvent e) {
 			ProxyQIconView().ContentsDragEnterEvent(e);
 		}
+		[SmokeMethod("contentsDragMoveEvent(QDragMoveEvent*)")]
 		protected new void ContentsDragMoveEvent(QDragMoveEvent e) {
 			ProxyQIconView().ContentsDragMoveEvent(e);
 		}
+		[SmokeMethod("contentsDragLeaveEvent(QDragLeaveEvent*)")]
 		protected new void ContentsDragLeaveEvent(QDragLeaveEvent e) {
 			ProxyQIconView().ContentsDragLeaveEvent(e);
 		}
+		[SmokeMethod("contentsDropEvent(QDropEvent*)")]
 		protected new void ContentsDropEvent(QDropEvent e) {
 			ProxyQIconView().ContentsDropEvent(e);
 		}
+		[SmokeMethod("resizeEvent(QResizeEvent*)")]
 		protected new void ResizeEvent(QResizeEvent e) {
 			ProxyQIconView().ResizeEvent(e);
 		}
+		[SmokeMethod("keyPressEvent(QKeyEvent*)")]
 		protected new void KeyPressEvent(QKeyEvent e) {
 			ProxyQIconView().KeyPressEvent(e);
 		}
+		[SmokeMethod("focusInEvent(QFocusEvent*)")]
 		protected new void FocusInEvent(QFocusEvent e) {
 			ProxyQIconView().FocusInEvent(e);
 		}
+		[SmokeMethod("focusOutEvent(QFocusEvent*)")]
 		protected new void FocusOutEvent(QFocusEvent e) {
 			ProxyQIconView().FocusOutEvent(e);
 		}
+		[SmokeMethod("enterEvent(QEvent*)")]
 		protected new void EnterEvent(QEvent e) {
 			ProxyQIconView().EnterEvent(e);
 		}
+		[SmokeMethod("drawRubber(QPainter*)")]
 		protected virtual void DrawRubber(QPainter p) {
 			ProxyQIconView().DrawRubber(p);
 		}
+		[SmokeMethod("dragObject()")]
 		protected virtual QDragObject DragObject() {
 			return ProxyQIconView().DragObject();
 		}
+		[SmokeMethod("startDrag()")]
 		protected virtual void StartDrag() {
 			ProxyQIconView().StartDrag();
 		}
+		[SmokeMethod("insertInGrid(QIconViewItem*)")]
 		protected virtual void InsertInGrid(QIconViewItem item) {
 			ProxyQIconView().InsertInGrid(item);
 		}
+		[SmokeMethod("drawBackground(QPainter*, const QRect&)")]
 		protected virtual void DrawBackground(QPainter p, QRect r) {
 			ProxyQIconView().DrawBackground(p,r);
 		}
+		[SmokeMethod("emitSelectionChanged(QIconViewItem*)")]
 		protected void EmitSelectionChanged(QIconViewItem i) {
 			ProxyQIconView().EmitSelectionChanged(i);
 		}
+		[SmokeMethod("emitSelectionChanged()")]
 		protected void EmitSelectionChanged() {
 			ProxyQIconView().EmitSelectionChanged();
 		}
+		[SmokeMethod("emitRenamed(QIconViewItem*)")]
 		protected void EmitRenamed(QIconViewItem item) {
 			ProxyQIconView().EmitRenamed(item);
 		}
+		[SmokeMethod("makeRowLayout(QIconViewItem*, int&, bool&)")]
 		protected QIconViewItem MakeRowLayout(QIconViewItem begin, out int y, bool changed) {
 			return ProxyQIconView().MakeRowLayout(begin,out y,changed);
 		}
+		[SmokeMethod("styleChange(QStyle&)")]
 		public new void StyleChange(QStyle arg1) {
 			ProxyQIconView().StyleChange(arg1);
 		}
+		[SmokeMethod("windowActivationChange(bool)")]
 		protected new void WindowActivationChange(bool arg1) {
 			ProxyQIconView().WindowActivationChange(arg1);
 		}
+		[Q_SLOT("doAutoScroll()")]
+		[SmokeMethod("doAutoScroll()")]
 		protected virtual void DoAutoScroll() {
 			ProxyQIconView().DoAutoScroll();
 		}
+		[Q_SLOT("adjustItems()")]
+		[SmokeMethod("adjustItems()")]
 		protected virtual void AdjustItems() {
 			ProxyQIconView().AdjustItems();
 		}
+		[Q_SLOT("slotUpdate()")]
+		[SmokeMethod("slotUpdate()")]
 		protected virtual void SlotUpdate() {
 			ProxyQIconView().SlotUpdate();
 		}
 		~QIconView() {
-			ProxyQIconView().Dispose();
+			DisposeQIconView();
 		}
 		public new void Dispose() {
-			ProxyQIconView().Dispose();
+			DisposeQIconView();
+		}
+		private void DisposeQIconView() {
+			ProxyQIconView().DisposeQIconView();
+		}
+		protected void CreateQIconViewSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQIconViewSignals), this);
+			_signalInterceptor = (IQIconViewSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQIconViewSignals Emit() {
+			return (IQIconViewSignals) _signalInterceptor;
 		}
 	}
 
-	public interface IQIconViewSignals {
+	public interface IQIconViewSignals : IQScrollViewSignals {
+		[Q_SIGNAL("selectionChanged()")]
 		void SelectionChanged();
+		[Q_SIGNAL("selectionChanged(QIconViewItem*)")]
 		void SelectionChanged(QIconViewItem item);
+		[Q_SIGNAL("currentChanged(QIconViewItem*)")]
 		void CurrentChanged(QIconViewItem item);
+		[Q_SIGNAL("clicked(QIconViewItem*)")]
 		void Clicked(QIconViewItem arg1);
+		[Q_SIGNAL("clicked(QIconViewItem*, const QPoint&)")]
 		void Clicked(QIconViewItem arg1, QPoint arg2);
+		[Q_SIGNAL("pressed(QIconViewItem*)")]
 		void Pressed(QIconViewItem arg1);
+		[Q_SIGNAL("pressed(QIconViewItem*, const QPoint&)")]
 		void Pressed(QIconViewItem arg1, QPoint arg2);
+		[Q_SIGNAL("doubleClicked(QIconViewItem*)")]
 		void DoubleClicked(QIconViewItem item);
+		[Q_SIGNAL("returnPressed(QIconViewItem*)")]
 		void ReturnPressed(QIconViewItem item);
+		[Q_SIGNAL("rightButtonClicked(QIconViewItem*, const QPoint&)")]
 		void RightButtonClicked(QIconViewItem item, QPoint pos);
+		[Q_SIGNAL("rightButtonPressed(QIconViewItem*, const QPoint&)")]
 		void RightButtonPressed(QIconViewItem item, QPoint pos);
+		[Q_SIGNAL("mouseButtonPressed(int, QIconViewItem*, const QPoint&)")]
 		void MouseButtonPressed(int button, QIconViewItem item, QPoint pos);
+		[Q_SIGNAL("mouseButtonClicked(int, QIconViewItem*, const QPoint&)")]
 		void MouseButtonClicked(int button, QIconViewItem item, QPoint pos);
+		[Q_SIGNAL("contextMenuRequested(QIconViewItem*, const QPoint&)")]
 		void ContextMenuRequested(QIconViewItem item, QPoint pos);
 		// void dropped(QDropEvent* arg1,const QValueList<QIconDragItem>& arg2); >>>> NOT CONVERTED
+		[Q_SIGNAL("moved()")]
 		void Moved();
+		[Q_SIGNAL("onItem(QIconViewItem*)")]
 		void OnItem(QIconViewItem item);
+		[Q_SIGNAL("onViewport()")]
 		void OnViewport();
+		[Q_SIGNAL("itemRenamed(QIconViewItem*, const QString&)")]
 		void ItemRenamed(QIconViewItem item, string arg2);
+		[Q_SIGNAL("itemRenamed(QIconViewItem*)")]
 		void ItemRenamed(QIconViewItem item);
 	}
 }

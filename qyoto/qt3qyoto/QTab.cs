@@ -29,6 +29,7 @@ namespace Qt {
 			CreateQTabProxy();
 			NewQTab();
 		}
+		[SmokeMethod("QTab()")]
 		private void NewQTab() {
 			ProxyQTab().NewQTab();
 		}
@@ -36,6 +37,7 @@ namespace Qt {
 			CreateQTabProxy();
 			NewQTab(text);
 		}
+		[SmokeMethod("QTab(const QString&)")]
 		private void NewQTab(string text) {
 			ProxyQTab().NewQTab(text);
 		}
@@ -43,6 +45,7 @@ namespace Qt {
 			CreateQTabProxy();
 			NewQTab(icon,text);
 		}
+		[SmokeMethod("QTab(const QIconSet&, const QString&)")]
 		private void NewQTab(QIconSet icon, string text) {
 			ProxyQTab().NewQTab(icon,text);
 		}
@@ -50,44 +53,58 @@ namespace Qt {
 			CreateQTabProxy();
 			NewQTab(icon);
 		}
+		[SmokeMethod("QTab(const QIconSet&)")]
 		private void NewQTab(QIconSet icon) {
 			ProxyQTab().NewQTab(icon);
 		}
+		[SmokeMethod("setText(const QString&)")]
 		public void SetText(string text) {
 			ProxyQTab().SetText(text);
 		}
+		[SmokeMethod("text() const")]
 		public string Text() {
 			return ProxyQTab().Text();
 		}
+		[SmokeMethod("setIconSet(const QIconSet&)")]
 		public void SetIconSet(QIconSet icon) {
 			ProxyQTab().SetIconSet(icon);
 		}
+		[SmokeMethod("iconSet() const")]
 		public QIconSet IconSet() {
 			return ProxyQTab().IconSet();
 		}
+		[SmokeMethod("setRect(const QRect&)")]
 		public void SetRect(QRect rect) {
 			ProxyQTab().SetRect(rect);
 		}
+		[SmokeMethod("rect() const")]
 		public QRect Rect() {
 			return ProxyQTab().Rect();
 		}
+		[SmokeMethod("setEnabled(bool)")]
 		public void SetEnabled(bool enable) {
 			ProxyQTab().SetEnabled(enable);
 		}
+		[SmokeMethod("isEnabled() const")]
 		public bool IsEnabled() {
 			return ProxyQTab().IsEnabled();
 		}
+		[SmokeMethod("setIdentifier(int)")]
 		public void SetIdentifier(int i) {
 			ProxyQTab().SetIdentifier(i);
 		}
+		[SmokeMethod("identifier() const")]
 		public int Identifier() {
 			return ProxyQTab().Identifier();
 		}
 		~QTab() {
-			ProxyQTab().Dispose();
+			DisposeQTab();
 		}
 		public void Dispose() {
-			ProxyQTab().Dispose();
+			DisposeQTab();
+		}
+		private void DisposeQTab() {
+			ProxyQTab().DisposeQTab();
 		}
 	}
 }

@@ -5,13 +5,13 @@ namespace Qt {
 	using System.Text;
 
 	///<remarks>*************************************************
-	/// $Id: qt/qsocketnotifier.h   3.3.4   edited May 27 2003 $
+	/// $Id: qt/qsocketnotifier.h   3.3.5   edited Aug 31 12:17 $
 	///
 	///* Definition of QSocketNotifier class
 	///
 	///* Created : 951114
 	///
-	///* Copyright (C) 1992-2000 Trolltech AS.  All rights reserved.
+	///* Copyright (C) 1992-2005 Trolltech AS.  All rights reserved.
 	///
 	///* This file is part of the kernel module of the Qt GUI Toolkit.
 	///
@@ -72,69 +72,93 @@ namespace Qt {
 			Write = 1,
 			Exception = 2,
 		}
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQSocketNotifier().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQSocketNotifier().ClassName();
 		}
 		public QSocketNotifier(int socket, int arg2, QObject parent, string name) : this((Type) null) {
 			CreateQSocketNotifierProxy();
+			CreateQSocketNotifierSignalProxy();
 			NewQSocketNotifier(socket,arg2,parent,name);
 		}
+		[SmokeMethod("QSocketNotifier(int, QSocketNotifier::Type, QObject*, const char*)")]
 		private void NewQSocketNotifier(int socket, int arg2, QObject parent, string name) {
 			ProxyQSocketNotifier().NewQSocketNotifier(socket,arg2,parent,name);
 		}
 		public QSocketNotifier(int socket, int arg2, QObject parent) : this((Type) null) {
 			CreateQSocketNotifierProxy();
+			CreateQSocketNotifierSignalProxy();
 			NewQSocketNotifier(socket,arg2,parent);
 		}
+		[SmokeMethod("QSocketNotifier(int, QSocketNotifier::Type, QObject*)")]
 		private void NewQSocketNotifier(int socket, int arg2, QObject parent) {
 			ProxyQSocketNotifier().NewQSocketNotifier(socket,arg2,parent);
 		}
 		public QSocketNotifier(int socket, int arg2) : this((Type) null) {
 			CreateQSocketNotifierProxy();
+			CreateQSocketNotifierSignalProxy();
 			NewQSocketNotifier(socket,arg2);
 		}
+		[SmokeMethod("QSocketNotifier(int, QSocketNotifier::Type)")]
 		private void NewQSocketNotifier(int socket, int arg2) {
 			ProxyQSocketNotifier().NewQSocketNotifier(socket,arg2);
 		}
+		[SmokeMethod("socket() const")]
 		public int Socket() {
 			return ProxyQSocketNotifier().Socket();
 		}
-		public int Type() {
-			return ProxyQSocketNotifier().Type();
-		}
+		[SmokeMethod("isEnabled() const")]
 		public bool IsEnabled() {
 			return ProxyQSocketNotifier().IsEnabled();
 		}
+		[SmokeMethod("setEnabled(bool)")]
 		public virtual void SetEnabled(bool arg1) {
 			ProxyQSocketNotifier().SetEnabled(arg1);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQSocketNotifier().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQSocketNotifier().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQSocketNotifier().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQSocketNotifier().TrUtf8(arg1);
 		}
+		[SmokeMethod("event(QEvent*)")]
 		public new bool Event(QEvent arg1) {
 			return ProxyQSocketNotifier().Event(arg1);
 		}
 		~QSocketNotifier() {
-			ProxyQSocketNotifier().Dispose();
+			DisposeQSocketNotifier();
 		}
 		public new void Dispose() {
-			ProxyQSocketNotifier().Dispose();
+			DisposeQSocketNotifier();
+		}
+		private void DisposeQSocketNotifier() {
+			ProxyQSocketNotifier().DisposeQSocketNotifier();
+		}
+		protected void CreateQSocketNotifierSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQSocketNotifierSignals), this);
+			_signalInterceptor = (IQSocketNotifierSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQSocketNotifierSignals Emit() {
+			return (IQSocketNotifierSignals) _signalInterceptor;
 		}
 	}
 
-	public interface IQSocketNotifierSignals {
+	public interface IQSocketNotifierSignals : IQObjectSignals {
+		[Q_SIGNAL("activated(int)")]
 		void Activated(int socket);
 	}
 }

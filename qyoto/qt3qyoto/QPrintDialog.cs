@@ -32,71 +32,103 @@ namespace Qt {
 			return (IQPrintDialogProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQPrintDialog().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQPrintDialog().ClassName();
 		}
 		public QPrintDialog(QPrinter arg1, QWidget parent, string name) : this((Type) null) {
 			CreateQPrintDialogProxy();
+			CreateQPrintDialogSignalProxy();
 			NewQPrintDialog(arg1,parent,name);
 		}
+		[SmokeMethod("QPrintDialog(QPrinter*, QWidget*, const char*)")]
 		private void NewQPrintDialog(QPrinter arg1, QWidget parent, string name) {
 			ProxyQPrintDialog().NewQPrintDialog(arg1,parent,name);
 		}
 		public QPrintDialog(QPrinter arg1, QWidget parent) : this((Type) null) {
 			CreateQPrintDialogProxy();
+			CreateQPrintDialogSignalProxy();
 			NewQPrintDialog(arg1,parent);
 		}
+		[SmokeMethod("QPrintDialog(QPrinter*, QWidget*)")]
 		private void NewQPrintDialog(QPrinter arg1, QWidget parent) {
 			ProxyQPrintDialog().NewQPrintDialog(arg1,parent);
 		}
 		public QPrintDialog(QPrinter arg1) : this((Type) null) {
 			CreateQPrintDialogProxy();
+			CreateQPrintDialogSignalProxy();
 			NewQPrintDialog(arg1);
 		}
+		[SmokeMethod("QPrintDialog(QPrinter*)")]
 		private void NewQPrintDialog(QPrinter arg1) {
 			ProxyQPrintDialog().NewQPrintDialog(arg1);
 		}
+		[SmokeMethod("setPrinter(QPrinter*, bool)")]
 		public void SetPrinter(QPrinter arg1, bool arg2) {
 			ProxyQPrintDialog().SetPrinter(arg1,arg2);
 		}
+		[SmokeMethod("setPrinter(QPrinter*)")]
 		public void SetPrinter(QPrinter arg1) {
 			ProxyQPrintDialog().SetPrinter(arg1);
 		}
+		[SmokeMethod("printer() const")]
 		public QPrinter Printer() {
 			return ProxyQPrintDialog().Printer();
 		}
+		[SmokeMethod("addButton(QPushButton*)")]
 		public void AddButton(QPushButton but) {
 			ProxyQPrintDialog().AddButton(but);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQPrintDialog().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQPrintDialog().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQPrintDialog().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQPrintDialog().TrUtf8(arg1);
 		}
+		[SmokeMethod("getPrinterSetup(QPrinter*, QWidget*)")]
 		public static bool GetPrinterSetup(QPrinter arg1, QWidget arg2) {
 			return StaticQPrintDialog().GetPrinterSetup(arg1,arg2);
 		}
+		[SmokeMethod("getPrinterSetup(QPrinter*)")]
 		public static bool GetPrinterSetup(QPrinter arg1) {
 			return StaticQPrintDialog().GetPrinterSetup(arg1);
 		}
+		[SmokeMethod("setGlobalPrintDialog(QPrintDialog*)")]
 		public static void SetGlobalPrintDialog(QPrintDialog arg1) {
 			StaticQPrintDialog().SetGlobalPrintDialog(arg1);
 		}
 		~QPrintDialog() {
-			ProxyQPrintDialog().Dispose();
+			DisposeQPrintDialog();
 		}
 		public new void Dispose() {
-			ProxyQPrintDialog().Dispose();
+			DisposeQPrintDialog();
 		}
+		private void DisposeQPrintDialog() {
+			ProxyQPrintDialog().DisposeQPrintDialog();
+		}
+		protected void CreateQPrintDialogSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQPrintDialogSignals), this);
+			_signalInterceptor = (IQPrintDialogSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQPrintDialogSignals Emit() {
+			return (IQPrintDialogSignals) _signalInterceptor;
+		}
+	}
+
+	public interface IQPrintDialogSignals : IQDialogSignals {
 	}
 }

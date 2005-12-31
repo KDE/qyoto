@@ -30,86 +30,130 @@ namespace Qt {
 			return (IQTextBrowserProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQTextBrowser().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQTextBrowser().ClassName();
 		}
 		public QTextBrowser(QWidget parent, string name) : this((Type) null) {
 			CreateQTextBrowserProxy();
+			CreateQTextBrowserSignalProxy();
 			NewQTextBrowser(parent,name);
 		}
+		[SmokeMethod("QTextBrowser(QWidget*, const char*)")]
 		private void NewQTextBrowser(QWidget parent, string name) {
 			ProxyQTextBrowser().NewQTextBrowser(parent,name);
 		}
 		public QTextBrowser(QWidget parent) : this((Type) null) {
 			CreateQTextBrowserProxy();
+			CreateQTextBrowserSignalProxy();
 			NewQTextBrowser(parent);
 		}
+		[SmokeMethod("QTextBrowser(QWidget*)")]
 		private void NewQTextBrowser(QWidget parent) {
 			ProxyQTextBrowser().NewQTextBrowser(parent);
 		}
 		public QTextBrowser() : this((Type) null) {
 			CreateQTextBrowserProxy();
+			CreateQTextBrowserSignalProxy();
 			NewQTextBrowser();
 		}
+		[SmokeMethod("QTextBrowser()")]
 		private void NewQTextBrowser() {
 			ProxyQTextBrowser().NewQTextBrowser();
 		}
+		[SmokeMethod("source() const")]
 		public string Source() {
 			return ProxyQTextBrowser().Source();
 		}
+		[Q_SLOT("setSource(const QString&)")]
+		[SmokeMethod("setSource(const QString&)")]
 		public virtual void SetSource(string name) {
 			ProxyQTextBrowser().SetSource(name);
 		}
+		[Q_SLOT("backward()")]
+		[SmokeMethod("backward()")]
 		public virtual void Backward() {
 			ProxyQTextBrowser().Backward();
 		}
+		[Q_SLOT("forward()")]
+		[SmokeMethod("forward()")]
 		public virtual void Forward() {
 			ProxyQTextBrowser().Forward();
 		}
+		[Q_SLOT("home()")]
+		[SmokeMethod("home()")]
 		public virtual void Home() {
 			ProxyQTextBrowser().Home();
 		}
+		[Q_SLOT("reload()")]
+		[SmokeMethod("reload()")]
 		public virtual void Reload() {
 			ProxyQTextBrowser().Reload();
 		}
+		[Q_SLOT("setText(const QString&)")]
+		[SmokeMethod("setText(const QString&)")]
 		public new void SetText(string txt) {
 			ProxyQTextBrowser().SetText(txt);
 		}
+		[Q_SLOT("setText(const QString&, const QString&)")]
+		[SmokeMethod("setText(const QString&, const QString&)")]
 		public new virtual void SetText(string txt, string context) {
 			ProxyQTextBrowser().SetText(txt,context);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQTextBrowser().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQTextBrowser().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQTextBrowser().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQTextBrowser().TrUtf8(arg1);
 		}
+		[SmokeMethod("keyPressEvent(QKeyEvent*)")]
 		protected new void KeyPressEvent(QKeyEvent e) {
 			ProxyQTextBrowser().KeyPressEvent(e);
 		}
 		~QTextBrowser() {
-			ProxyQTextBrowser().Dispose();
+			DisposeQTextBrowser();
 		}
 		public new void Dispose() {
-			ProxyQTextBrowser().Dispose();
+			DisposeQTextBrowser();
+		}
+		private void DisposeQTextBrowser() {
+			ProxyQTextBrowser().DisposeQTextBrowser();
+		}
+		protected void CreateQTextBrowserSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQTextBrowserSignals), this);
+			_signalInterceptor = (IQTextBrowserSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQTextBrowserSignals Emit() {
+			return (IQTextBrowserSignals) _signalInterceptor;
 		}
 	}
 
-	public interface IQTextBrowserSignals {
+	public interface IQTextBrowserSignals : IQTextEditSignals {
+		[Q_SIGNAL("backwardAvailable(bool)")]
 		void BackwardAvailable(bool arg1);
+		[Q_SIGNAL("forwardAvailable(bool)")]
 		void ForwardAvailable(bool arg1);
+		[Q_SIGNAL("sourceChanged(const QString&)")]
 		void SourceChanged(string arg1);
+		[Q_SIGNAL("highlighted(const QString&)")]
 		void Highlighted(string arg1);
+		[Q_SIGNAL("linkClicked(const QString&)")]
 		void LinkClicked(string arg1);
+		[Q_SIGNAL("anchorClicked(const QString&, const QString&)")]
 		void AnchorClicked(string arg1, string arg2);
 	}
 }

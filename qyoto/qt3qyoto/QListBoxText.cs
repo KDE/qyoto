@@ -29,6 +29,7 @@ namespace Qt {
 			CreateQListBoxTextProxy();
 			NewQListBoxText(listbox,text);
 		}
+		[SmokeMethod("QListBoxText(QListBox*, const QString&)")]
 		private void NewQListBoxText(QListBox listbox, string text) {
 			ProxyQListBoxText().NewQListBoxText(listbox,text);
 		}
@@ -36,6 +37,7 @@ namespace Qt {
 			CreateQListBoxTextProxy();
 			NewQListBoxText(listbox);
 		}
+		[SmokeMethod("QListBoxText(QListBox*)")]
 		private void NewQListBoxText(QListBox listbox) {
 			ProxyQListBoxText().NewQListBoxText(listbox);
 		}
@@ -43,6 +45,7 @@ namespace Qt {
 			CreateQListBoxTextProxy();
 			NewQListBoxText(text);
 		}
+		[SmokeMethod("QListBoxText(const QString&)")]
 		private void NewQListBoxText(string text) {
 			ProxyQListBoxText().NewQListBoxText(text);
 		}
@@ -50,6 +53,7 @@ namespace Qt {
 			CreateQListBoxTextProxy();
 			NewQListBoxText();
 		}
+		[SmokeMethod("QListBoxText()")]
 		private void NewQListBoxText() {
 			ProxyQListBoxText().NewQListBoxText();
 		}
@@ -57,26 +61,34 @@ namespace Qt {
 			CreateQListBoxTextProxy();
 			NewQListBoxText(listbox,text,after);
 		}
+		[SmokeMethod("QListBoxText(QListBox*, const QString&, QListBoxItem*)")]
 		private void NewQListBoxText(QListBox listbox, string text, QListBoxItem after) {
 			ProxyQListBoxText().NewQListBoxText(listbox,text,after);
 		}
+		[SmokeMethod("height(const QListBox*) const")]
 		public new int Height(QListBox arg1) {
 			return ProxyQListBoxText().Height(arg1);
 		}
+		[SmokeMethod("width(const QListBox*) const")]
 		public new int Width(QListBox arg1) {
 			return ProxyQListBoxText().Width(arg1);
 		}
+		[SmokeMethod("rtti() const")]
 		public new int Rtti() {
 			return ProxyQListBoxText().Rtti();
 		}
+		[SmokeMethod("paint(QPainter*)")]
 		protected new void Paint(QPainter arg1) {
 			ProxyQListBoxText().Paint(arg1);
 		}
 		~QListBoxText() {
-			ProxyQListBoxText().Dispose();
+			DisposeQListBoxText();
 		}
 		public new void Dispose() {
-			ProxyQListBoxText().Dispose();
+			DisposeQListBoxText();
+		}
+		private void DisposeQListBoxText() {
+			ProxyQListBoxText().DisposeQListBoxText();
 		}
 	}
 }

@@ -35,20 +35,26 @@ namespace Qt {
 			CreateQStyleFactoryProxy();
 			NewQStyleFactory();
 		}
+		[SmokeMethod("QStyleFactory()")]
 		private void NewQStyleFactory() {
 			ProxyQStyleFactory().NewQStyleFactory();
 		}
+		[SmokeMethod("keys()")]
 		public static ArrayList Keys() {
 			return StaticQStyleFactory().Keys();
 		}
+		[SmokeMethod("create(const QString&)")]
 		public static QStyle Create(string arg1) {
 			return StaticQStyleFactory().Create(arg1);
 		}
 		~QStyleFactory() {
-			ProxyQStyleFactory().Dispose();
+			DisposeQStyleFactory();
 		}
 		public void Dispose() {
-			ProxyQStyleFactory().Dispose();
+			DisposeQStyleFactory();
+		}
+		private void DisposeQStyleFactory() {
+			ProxyQStyleFactory().DisposeQStyleFactory();
 		}
 	}
 }

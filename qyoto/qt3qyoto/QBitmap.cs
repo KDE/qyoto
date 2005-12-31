@@ -29,6 +29,7 @@ namespace Qt {
 			CreateQBitmapProxy();
 			NewQBitmap();
 		}
+		[SmokeMethod("QBitmap()")]
 		private void NewQBitmap() {
 			ProxyQBitmap().NewQBitmap();
 		}
@@ -36,6 +37,7 @@ namespace Qt {
 			CreateQBitmapProxy();
 			NewQBitmap(w,h,clear,arg4);
 		}
+		[SmokeMethod("QBitmap(int, int, bool, QPixmap::Optimization)")]
 		private void NewQBitmap(int w, int h, bool clear, int arg4) {
 			ProxyQBitmap().NewQBitmap(w,h,clear,arg4);
 		}
@@ -43,6 +45,7 @@ namespace Qt {
 			CreateQBitmapProxy();
 			NewQBitmap(w,h,clear);
 		}
+		[SmokeMethod("QBitmap(int, int, bool)")]
 		private void NewQBitmap(int w, int h, bool clear) {
 			ProxyQBitmap().NewQBitmap(w,h,clear);
 		}
@@ -50,6 +53,7 @@ namespace Qt {
 			CreateQBitmapProxy();
 			NewQBitmap(w,h);
 		}
+		[SmokeMethod("QBitmap(int, int)")]
 		private void NewQBitmap(int w, int h) {
 			ProxyQBitmap().NewQBitmap(w,h);
 		}
@@ -57,6 +61,7 @@ namespace Qt {
 			CreateQBitmapProxy();
 			NewQBitmap(arg1,clear,arg3);
 		}
+		[SmokeMethod("QBitmap(const QSize&, bool, QPixmap::Optimization)")]
 		private void NewQBitmap(QSize arg1, bool clear, int arg3) {
 			ProxyQBitmap().NewQBitmap(arg1,clear,arg3);
 		}
@@ -64,6 +69,7 @@ namespace Qt {
 			CreateQBitmapProxy();
 			NewQBitmap(arg1,clear);
 		}
+		[SmokeMethod("QBitmap(const QSize&, bool)")]
 		private void NewQBitmap(QSize arg1, bool clear) {
 			ProxyQBitmap().NewQBitmap(arg1,clear);
 		}
@@ -71,6 +77,7 @@ namespace Qt {
 			CreateQBitmapProxy();
 			NewQBitmap(arg1);
 		}
+		[SmokeMethod("QBitmap(const QSize&)")]
 		private void NewQBitmap(QSize arg1) {
 			ProxyQBitmap().NewQBitmap(arg1);
 		}
@@ -78,6 +85,7 @@ namespace Qt {
 			CreateQBitmapProxy();
 			NewQBitmap(w,h,bits,isXbitmap);
 		}
+		[SmokeMethod("QBitmap(int, int, const uchar*, bool)")]
 		private void NewQBitmap(int w, int h, char[] bits, bool isXbitmap) {
 			ProxyQBitmap().NewQBitmap(w,h,bits,isXbitmap);
 		}
@@ -85,6 +93,7 @@ namespace Qt {
 			CreateQBitmapProxy();
 			NewQBitmap(w,h,bits);
 		}
+		[SmokeMethod("QBitmap(int, int, const uchar*)")]
 		private void NewQBitmap(int w, int h, char[] bits) {
 			ProxyQBitmap().NewQBitmap(w,h,bits);
 		}
@@ -92,6 +101,7 @@ namespace Qt {
 			CreateQBitmapProxy();
 			NewQBitmap(arg1,bits,isXbitmap);
 		}
+		[SmokeMethod("QBitmap(const QSize&, const uchar*, bool)")]
 		private void NewQBitmap(QSize arg1, char[] bits, bool isXbitmap) {
 			ProxyQBitmap().NewQBitmap(arg1,bits,isXbitmap);
 		}
@@ -99,6 +109,7 @@ namespace Qt {
 			CreateQBitmapProxy();
 			NewQBitmap(arg1,bits);
 		}
+		[SmokeMethod("QBitmap(const QSize&, const uchar*)")]
 		private void NewQBitmap(QSize arg1, char[] bits) {
 			ProxyQBitmap().NewQBitmap(arg1,bits);
 		}
@@ -106,6 +117,7 @@ namespace Qt {
 			CreateQBitmapProxy();
 			NewQBitmap(arg1);
 		}
+		[SmokeMethod("QBitmap(const QBitmap&)")]
 		private void NewQBitmap(QBitmap arg1) {
 			ProxyQBitmap().NewQBitmap(arg1);
 		}
@@ -113,6 +125,7 @@ namespace Qt {
 			CreateQBitmapProxy();
 			NewQBitmap(fileName,format);
 		}
+		[SmokeMethod("QBitmap(const QString&, const char*)")]
 		private void NewQBitmap(string fileName, string format) {
 			ProxyQBitmap().NewQBitmap(fileName,format);
 		}
@@ -120,17 +133,22 @@ namespace Qt {
 			CreateQBitmapProxy();
 			NewQBitmap(fileName);
 		}
+		[SmokeMethod("QBitmap(const QString&)")]
 		private void NewQBitmap(string fileName) {
 			ProxyQBitmap().NewQBitmap(fileName);
 		}
+		[SmokeMethod("xForm(const QWMatrix&) const")]
 		public new Object XForm(QWMatrix arg1) {
 			return ProxyQBitmap().XForm(arg1);
 		}
 		~QBitmap() {
-			ProxyQBitmap().Dispose();
+			DisposeQBitmap();
 		}
 		public void Dispose() {
-			ProxyQBitmap().Dispose();
+			DisposeQBitmap();
+		}
+		private void DisposeQBitmap() {
+			ProxyQBitmap().DisposeQBitmap();
 		}
 //	public QBitmap(QPixmap arg1) {
 //		super((Class) null);

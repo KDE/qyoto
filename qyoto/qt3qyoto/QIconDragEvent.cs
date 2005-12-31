@@ -28,23 +28,30 @@ namespace Qt {
 			CreateQIconDragEventProxy();
 			NewQIconDragEvent();
 		}
+		[SmokeMethod("QIconDragEvent()")]
 		private void NewQIconDragEvent() {
 			ProxyQIconDragEvent().NewQIconDragEvent();
 		}
+		[SmokeMethod("isAccepted() const")]
 		public bool IsAccepted() {
 			return ProxyQIconDragEvent().IsAccepted();
 		}
+		[SmokeMethod("accept()")]
 		public void Accept() {
 			ProxyQIconDragEvent().Accept();
 		}
+		[SmokeMethod("ignore()")]
 		public void Ignore() {
 			ProxyQIconDragEvent().Ignore();
 		}
 		~QIconDragEvent() {
-			ProxyQIconDragEvent().Dispose();
+			DisposeQIconDragEvent();
 		}
 		public new void Dispose() {
-			ProxyQIconDragEvent().Dispose();
+			DisposeQIconDragEvent();
+		}
+		private void DisposeQIconDragEvent() {
+			ProxyQIconDragEvent().DisposeQIconDragEvent();
 		}
 	}
 }

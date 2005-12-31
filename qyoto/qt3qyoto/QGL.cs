@@ -3,7 +3,10 @@ namespace Qt {
 
 	using System;
 
-	public class QGL : MarshalByRefObject, IDisposable {
+	public interface IQGL {
+	}
+
+	public class QGL : MarshalByRefObject, IQGL, IDisposable {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
@@ -51,14 +54,18 @@ namespace Qt {
 			CreateQGLProxy();
 			NewQGL();
 		}
+		[SmokeMethod("QGL()")]
 		private void NewQGL() {
 			ProxyQGL().NewQGL();
 		}
 		~QGL() {
-			ProxyQGL().Dispose();
+			DisposeQGL();
 		}
 		public void Dispose() {
-			ProxyQGL().Dispose();
+			DisposeQGL();
+		}
+		private void DisposeQGL() {
+			ProxyQGL().DisposeQGL();
 		}
 	}
 }

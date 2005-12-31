@@ -28,14 +28,18 @@ namespace Qt {
 			CreateQShowEventProxy();
 			NewQShowEvent();
 		}
+		[SmokeMethod("QShowEvent()")]
 		private void NewQShowEvent() {
 			ProxyQShowEvent().NewQShowEvent();
 		}
 		~QShowEvent() {
-			ProxyQShowEvent().Dispose();
+			DisposeQShowEvent();
 		}
 		public new void Dispose() {
-			ProxyQShowEvent().Dispose();
+			DisposeQShowEvent();
+		}
+		private void DisposeQShowEvent() {
+			ProxyQShowEvent().DisposeQShowEvent();
 		}
 	}
 }

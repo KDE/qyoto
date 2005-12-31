@@ -24,12 +24,15 @@ namespace Qt {
 			return (IQGLayoutIteratorProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("next()")]
 		public virtual IQLayoutItem Next() {
 			return ProxyQGLayoutIterator().Next();
 		}
+		[SmokeMethod("current()")]
 		public virtual IQLayoutItem Current() {
 			return ProxyQGLayoutIterator().Current();
 		}
+		[SmokeMethod("takeCurrent()")]
 		public virtual IQLayoutItem TakeCurrent() {
 			return ProxyQGLayoutIterator().TakeCurrent();
 		}

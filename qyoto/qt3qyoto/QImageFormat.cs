@@ -27,6 +27,7 @@ namespace Qt {
 			return (IQImageFormatProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("decode(QImage&, QImageConsumer*, const uchar*, int)")]
 		public virtual int Decode(QImage img, QImageConsumer consumer, char[] buffer, int length) {
 			return ProxyQImageFormat().Decode(img,consumer,buffer,length);
 		}

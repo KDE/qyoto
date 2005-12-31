@@ -28,6 +28,7 @@ namespace Qt {
 			CreateQDomCommentProxy();
 			NewQDomComment();
 		}
+		[SmokeMethod("QDomComment()")]
 		private void NewQDomComment() {
 			ProxyQDomComment().NewQDomComment();
 		}
@@ -35,20 +36,26 @@ namespace Qt {
 			CreateQDomCommentProxy();
 			NewQDomComment(x);
 		}
+		[SmokeMethod("QDomComment(const QDomComment&)")]
 		private void NewQDomComment(QDomComment x) {
 			ProxyQDomComment().NewQDomComment(x);
 		}
+		[SmokeMethod("nodeType() const")]
 		public new int NodeType() {
 			return ProxyQDomComment().NodeType();
 		}
+		[SmokeMethod("isComment() const")]
 		public new bool IsComment() {
 			return ProxyQDomComment().IsComment();
 		}
 		~QDomComment() {
-			ProxyQDomComment().Dispose();
+			DisposeQDomComment();
 		}
 		public new void Dispose() {
-			ProxyQDomComment().Dispose();
+			DisposeQDomComment();
+		}
+		private void DisposeQDomComment() {
+			ProxyQDomComment().DisposeQDomComment();
 		}
 	}
 }

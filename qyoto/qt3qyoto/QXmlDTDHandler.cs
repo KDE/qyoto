@@ -34,12 +34,15 @@ namespace Qt {
 			return (IQXmlDTDHandlerProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("notationDecl(const QString&, const QString&, const QString&)")]
 		public virtual bool NotationDecl(string name, string publicId, string systemId) {
 			return ProxyQXmlDTDHandler().NotationDecl(name,publicId,systemId);
 		}
+		[SmokeMethod("unparsedEntityDecl(const QString&, const QString&, const QString&, const QString&)")]
 		public virtual bool UnparsedEntityDecl(string name, string publicId, string systemId, string notationName) {
 			return ProxyQXmlDTDHandler().UnparsedEntityDecl(name,publicId,systemId,notationName);
 		}
+		[SmokeMethod("errorString()")]
 		public virtual string ErrorString() {
 			return ProxyQXmlDTDHandler().ErrorString();
 		}

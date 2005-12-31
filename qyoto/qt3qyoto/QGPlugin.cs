@@ -29,32 +29,51 @@ namespace Qt {
 			return (IQGPluginProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQGPlugin().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQGPlugin().ClassName();
 		}
 		// QGPlugin* QGPlugin(QUnknownInterface* arg1); >>>> NOT CONVERTED
 		// QUnknownInterface* iface(); >>>> NOT CONVERTED
 		// void setIface(QUnknownInterface* arg1); >>>> NOT CONVERTED
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQGPlugin().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQGPlugin().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQGPlugin().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQGPlugin().TrUtf8(arg1);
 		}
 		~QGPlugin() {
-			ProxyQGPlugin().Dispose();
+			DisposeQGPlugin();
 		}
 		public new void Dispose() {
-			ProxyQGPlugin().Dispose();
+			DisposeQGPlugin();
 		}
+		private void DisposeQGPlugin() {
+			ProxyQGPlugin().DisposeQGPlugin();
+		}
+		protected void CreateQGPluginSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQGPluginSignals), this);
+			_signalInterceptor = (IQGPluginSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQGPluginSignals Emit() {
+			return (IQGPluginSignals) _signalInterceptor;
+		}
+	}
+
+	public interface IQGPluginSignals : IQObjectSignals {
 	}
 }

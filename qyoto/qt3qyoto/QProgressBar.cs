@@ -29,142 +29,200 @@ namespace Qt {
 			return (IQProgressBarProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQProgressBar().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQProgressBar().ClassName();
 		}
 		public QProgressBar(QWidget parent, string name, int f) : this((Type) null) {
 			CreateQProgressBarProxy();
+			CreateQProgressBarSignalProxy();
 			NewQProgressBar(parent,name,f);
 		}
+		[SmokeMethod("QProgressBar(QWidget*, const char*, Qt::WFlags)")]
 		private void NewQProgressBar(QWidget parent, string name, int f) {
 			ProxyQProgressBar().NewQProgressBar(parent,name,f);
 		}
 		public QProgressBar(QWidget parent, string name) : this((Type) null) {
 			CreateQProgressBarProxy();
+			CreateQProgressBarSignalProxy();
 			NewQProgressBar(parent,name);
 		}
+		[SmokeMethod("QProgressBar(QWidget*, const char*)")]
 		private void NewQProgressBar(QWidget parent, string name) {
 			ProxyQProgressBar().NewQProgressBar(parent,name);
 		}
 		public QProgressBar(QWidget parent) : this((Type) null) {
 			CreateQProgressBarProxy();
+			CreateQProgressBarSignalProxy();
 			NewQProgressBar(parent);
 		}
+		[SmokeMethod("QProgressBar(QWidget*)")]
 		private void NewQProgressBar(QWidget parent) {
 			ProxyQProgressBar().NewQProgressBar(parent);
 		}
 		public QProgressBar() : this((Type) null) {
 			CreateQProgressBarProxy();
+			CreateQProgressBarSignalProxy();
 			NewQProgressBar();
 		}
+		[SmokeMethod("QProgressBar()")]
 		private void NewQProgressBar() {
 			ProxyQProgressBar().NewQProgressBar();
 		}
 		public QProgressBar(int totalSteps, QWidget parent, string name, int f) : this((Type) null) {
 			CreateQProgressBarProxy();
+			CreateQProgressBarSignalProxy();
 			NewQProgressBar(totalSteps,parent,name,f);
 		}
+		[SmokeMethod("QProgressBar(int, QWidget*, const char*, Qt::WFlags)")]
 		private void NewQProgressBar(int totalSteps, QWidget parent, string name, int f) {
 			ProxyQProgressBar().NewQProgressBar(totalSteps,parent,name,f);
 		}
 		public QProgressBar(int totalSteps, QWidget parent, string name) : this((Type) null) {
 			CreateQProgressBarProxy();
+			CreateQProgressBarSignalProxy();
 			NewQProgressBar(totalSteps,parent,name);
 		}
+		[SmokeMethod("QProgressBar(int, QWidget*, const char*)")]
 		private void NewQProgressBar(int totalSteps, QWidget parent, string name) {
 			ProxyQProgressBar().NewQProgressBar(totalSteps,parent,name);
 		}
 		public QProgressBar(int totalSteps, QWidget parent) : this((Type) null) {
 			CreateQProgressBarProxy();
+			CreateQProgressBarSignalProxy();
 			NewQProgressBar(totalSteps,parent);
 		}
+		[SmokeMethod("QProgressBar(int, QWidget*)")]
 		private void NewQProgressBar(int totalSteps, QWidget parent) {
 			ProxyQProgressBar().NewQProgressBar(totalSteps,parent);
 		}
 		public QProgressBar(int totalSteps) : this((Type) null) {
 			CreateQProgressBarProxy();
+			CreateQProgressBarSignalProxy();
 			NewQProgressBar(totalSteps);
 		}
+		[SmokeMethod("QProgressBar(int)")]
 		private void NewQProgressBar(int totalSteps) {
 			ProxyQProgressBar().NewQProgressBar(totalSteps);
 		}
+		[SmokeMethod("totalSteps() const")]
 		public int TotalSteps() {
 			return ProxyQProgressBar().TotalSteps();
 		}
+		[SmokeMethod("progress() const")]
 		public int Progress() {
 			return ProxyQProgressBar().Progress();
 		}
+		[SmokeMethod("progressString() const")]
 		public string ProgressString() {
 			return ProxyQProgressBar().ProgressString();
 		}
+		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {
 			return ProxyQProgressBar().SizeHint();
 		}
+		[SmokeMethod("minimumSizeHint() const")]
 		public new QSize MinimumSizeHint() {
 			return ProxyQProgressBar().MinimumSizeHint();
 		}
+		[SmokeMethod("setCenterIndicator(bool)")]
 		public void SetCenterIndicator(bool on) {
 			ProxyQProgressBar().SetCenterIndicator(on);
 		}
+		[SmokeMethod("centerIndicator() const")]
 		public bool CenterIndicator() {
 			return ProxyQProgressBar().CenterIndicator();
 		}
+		[SmokeMethod("setIndicatorFollowsStyle(bool)")]
 		public void SetIndicatorFollowsStyle(bool arg1) {
 			ProxyQProgressBar().SetIndicatorFollowsStyle(arg1);
 		}
+		[SmokeMethod("indicatorFollowsStyle() const")]
 		public bool IndicatorFollowsStyle() {
 			return ProxyQProgressBar().IndicatorFollowsStyle();
 		}
+		[SmokeMethod("percentageVisible() const")]
 		public bool PercentageVisible() {
 			return ProxyQProgressBar().PercentageVisible();
 		}
+		[SmokeMethod("setPercentageVisible(bool)")]
 		public void SetPercentageVisible(bool arg1) {
 			ProxyQProgressBar().SetPercentageVisible(arg1);
 		}
+		[SmokeMethod("show()")]
 		public new void Show() {
 			ProxyQProgressBar().Show();
 		}
+		[Q_SLOT("reset()")]
+		[SmokeMethod("reset()")]
 		public void Reset() {
 			ProxyQProgressBar().Reset();
 		}
+		[Q_SLOT("setTotalSteps(int)")]
+		[SmokeMethod("setTotalSteps(int)")]
 		public virtual void SetTotalSteps(int totalSteps) {
 			ProxyQProgressBar().SetTotalSteps(totalSteps);
 		}
+		[Q_SLOT("setProgress(int)")]
+		[SmokeMethod("setProgress(int)")]
 		public virtual void SetProgress(int progress) {
 			ProxyQProgressBar().SetProgress(progress);
 		}
+		[Q_SLOT("setProgress(int, int)")]
+		[SmokeMethod("setProgress(int, int)")]
 		public void SetProgress(int progress, int totalSteps) {
 			ProxyQProgressBar().SetProgress(progress,totalSteps);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQProgressBar().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQProgressBar().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQProgressBar().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQProgressBar().TrUtf8(arg1);
 		}
+		[SmokeMethod("drawContents(QPainter*)")]
 		protected new void DrawContents(QPainter arg1) {
 			ProxyQProgressBar().DrawContents(arg1);
 		}
+		[SmokeMethod("setIndicator(QString&, int, int)")]
 		protected virtual bool SetIndicator(StringBuilder progress_str, int progress, int totalSteps) {
 			return ProxyQProgressBar().SetIndicator(progress_str,progress,totalSteps);
 		}
+		[SmokeMethod("styleChange(QStyle&)")]
 		public new void StyleChange(QStyle arg1) {
 			ProxyQProgressBar().StyleChange(arg1);
 		}
 		~QProgressBar() {
-			ProxyQProgressBar().Dispose();
+			DisposeQProgressBar();
 		}
 		public new void Dispose() {
-			ProxyQProgressBar().Dispose();
+			DisposeQProgressBar();
 		}
+		private void DisposeQProgressBar() {
+			ProxyQProgressBar().DisposeQProgressBar();
+		}
+		protected void CreateQProgressBarSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQProgressBarSignals), this);
+			_signalInterceptor = (IQProgressBarSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQProgressBarSignals Emit() {
+			return (IQProgressBarSignals) _signalInterceptor;
+		}
+	}
+
+	public interface IQProgressBarSignals : IQFrameSignals {
 	}
 }

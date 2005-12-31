@@ -28,44 +28,58 @@ namespace Qt {
 			CreateQWidgetItemProxy();
 			NewQWidgetItem(w);
 		}
+		[SmokeMethod("QWidgetItem(QWidget*)")]
 		private void NewQWidgetItem(QWidget w) {
 			ProxyQWidgetItem().NewQWidgetItem(w);
 		}
+		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {
 			return ProxyQWidgetItem().SizeHint();
 		}
+		[SmokeMethod("minimumSize() const")]
 		public new QSize MinimumSize() {
 			return ProxyQWidgetItem().MinimumSize();
 		}
+		[SmokeMethod("maximumSize() const")]
 		public new QSize MaximumSize() {
 			return ProxyQWidgetItem().MaximumSize();
 		}
+		[SmokeMethod("expanding() const")]
 		public new int Expanding() {
 			return ProxyQWidgetItem().Expanding();
 		}
+		[SmokeMethod("isEmpty() const")]
 		public new bool IsEmpty() {
 			return ProxyQWidgetItem().IsEmpty();
 		}
+		[SmokeMethod("setGeometry(const QRect&)")]
 		public new void SetGeometry(QRect arg1) {
 			ProxyQWidgetItem().SetGeometry(arg1);
 		}
+		[SmokeMethod("geometry() const")]
 		public new QRect Geometry() {
 			return ProxyQWidgetItem().Geometry();
 		}
+		[SmokeMethod("widget()")]
 		public new virtual QWidget Widget() {
 			return ProxyQWidgetItem().Widget();
 		}
+		[SmokeMethod("hasHeightForWidth() const")]
 		public new bool HasHeightForWidth() {
 			return ProxyQWidgetItem().HasHeightForWidth();
 		}
+		[SmokeMethod("heightForWidth(int) const")]
 		public new int HeightForWidth(int arg1) {
 			return ProxyQWidgetItem().HeightForWidth(arg1);
 		}
 		~QWidgetItem() {
-			ProxyQWidgetItem().Dispose();
+			DisposeQWidgetItem();
 		}
 		public void Dispose() {
-			ProxyQWidgetItem().Dispose();
+			DisposeQWidgetItem();
+		}
+		private void DisposeQWidgetItem() {
+			ProxyQWidgetItem().DisposeQWidgetItem();
 		}
 	}
 }

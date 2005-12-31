@@ -29,84 +29,120 @@ namespace Qt {
 			return (IQDoubleValidatorProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQDoubleValidator().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQDoubleValidator().ClassName();
 		}
 		public QDoubleValidator(QObject parent, string name) : this((Type) null) {
 			CreateQDoubleValidatorProxy();
+			CreateQDoubleValidatorSignalProxy();
 			NewQDoubleValidator(parent,name);
 		}
+		[SmokeMethod("QDoubleValidator(QObject*, const char*)")]
 		private void NewQDoubleValidator(QObject parent, string name) {
 			ProxyQDoubleValidator().NewQDoubleValidator(parent,name);
 		}
 		public QDoubleValidator(QObject parent) : this((Type) null) {
 			CreateQDoubleValidatorProxy();
+			CreateQDoubleValidatorSignalProxy();
 			NewQDoubleValidator(parent);
 		}
+		[SmokeMethod("QDoubleValidator(QObject*)")]
 		private void NewQDoubleValidator(QObject parent) {
 			ProxyQDoubleValidator().NewQDoubleValidator(parent);
 		}
 		public QDoubleValidator(double bottom, double top, int decimals, QObject parent, string name) : this((Type) null) {
 			CreateQDoubleValidatorProxy();
+			CreateQDoubleValidatorSignalProxy();
 			NewQDoubleValidator(bottom,top,decimals,parent,name);
 		}
+		[SmokeMethod("QDoubleValidator(double, double, int, QObject*, const char*)")]
 		private void NewQDoubleValidator(double bottom, double top, int decimals, QObject parent, string name) {
 			ProxyQDoubleValidator().NewQDoubleValidator(bottom,top,decimals,parent,name);
 		}
 		public QDoubleValidator(double bottom, double top, int decimals, QObject parent) : this((Type) null) {
 			CreateQDoubleValidatorProxy();
+			CreateQDoubleValidatorSignalProxy();
 			NewQDoubleValidator(bottom,top,decimals,parent);
 		}
+		[SmokeMethod("QDoubleValidator(double, double, int, QObject*)")]
 		private void NewQDoubleValidator(double bottom, double top, int decimals, QObject parent) {
 			ProxyQDoubleValidator().NewQDoubleValidator(bottom,top,decimals,parent);
 		}
+		[SmokeMethod("validate(QString&, int&) const")]
 		public new int Validate(StringBuilder arg1, out int arg2) {
 			return ProxyQDoubleValidator().Validate(arg1,out arg2);
 		}
+		[SmokeMethod("setRange(double, double, int)")]
 		public virtual void SetRange(double bottom, double top, int decimals) {
 			ProxyQDoubleValidator().SetRange(bottom,top,decimals);
 		}
+		[SmokeMethod("setRange(double, double)")]
 		public virtual void SetRange(double bottom, double top) {
 			ProxyQDoubleValidator().SetRange(bottom,top);
 		}
+		[SmokeMethod("setBottom(double)")]
 		public void SetBottom(double arg1) {
 			ProxyQDoubleValidator().SetBottom(arg1);
 		}
+		[SmokeMethod("setTop(double)")]
 		public void SetTop(double arg1) {
 			ProxyQDoubleValidator().SetTop(arg1);
 		}
+		[SmokeMethod("setDecimals(int)")]
 		public void SetDecimals(int arg1) {
 			ProxyQDoubleValidator().SetDecimals(arg1);
 		}
+		[SmokeMethod("bottom() const")]
 		public double Bottom() {
 			return ProxyQDoubleValidator().Bottom();
 		}
+		[SmokeMethod("top() const")]
 		public double Top() {
 			return ProxyQDoubleValidator().Top();
 		}
+		[SmokeMethod("decimals() const")]
 		public int Decimals() {
 			return ProxyQDoubleValidator().Decimals();
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQDoubleValidator().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQDoubleValidator().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQDoubleValidator().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQDoubleValidator().TrUtf8(arg1);
 		}
 		~QDoubleValidator() {
-			ProxyQDoubleValidator().Dispose();
+			DisposeQDoubleValidator();
 		}
 		public new void Dispose() {
-			ProxyQDoubleValidator().Dispose();
+			DisposeQDoubleValidator();
 		}
+		private void DisposeQDoubleValidator() {
+			ProxyQDoubleValidator().DisposeQDoubleValidator();
+		}
+		protected void CreateQDoubleValidatorSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQDoubleValidatorSignals), this);
+			_signalInterceptor = (IQDoubleValidatorSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQDoubleValidatorSignals Emit() {
+			return (IQDoubleValidatorSignals) _signalInterceptor;
+		}
+	}
+
+	public interface IQDoubleValidatorSignals : IQValidatorSignals {
 	}
 }

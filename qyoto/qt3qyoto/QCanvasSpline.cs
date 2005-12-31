@@ -28,29 +28,38 @@ namespace Qt {
 			CreateQCanvasSplineProxy();
 			NewQCanvasSpline(canvas);
 		}
+		[SmokeMethod("QCanvasSpline(QCanvas*)")]
 		private void NewQCanvasSpline(QCanvas canvas) {
 			ProxyQCanvasSpline().NewQCanvasSpline(canvas);
 		}
+		[SmokeMethod("setControlPoints(QPointArray, bool)")]
 		public void SetControlPoints(QPointArray arg1, bool closed) {
 			ProxyQCanvasSpline().SetControlPoints(arg1,closed);
 		}
+		[SmokeMethod("setControlPoints(QPointArray)")]
 		public void SetControlPoints(QPointArray arg1) {
 			ProxyQCanvasSpline().SetControlPoints(arg1);
 		}
+		[SmokeMethod("controlPoints() const")]
 		public QPointArray ControlPoints() {
 			return ProxyQCanvasSpline().ControlPoints();
 		}
+		[SmokeMethod("closed() const")]
 		public bool Closed() {
 			return ProxyQCanvasSpline().Closed();
 		}
+		[SmokeMethod("rtti() const")]
 		public new int Rtti() {
 			return ProxyQCanvasSpline().Rtti();
 		}
 		~QCanvasSpline() {
-			ProxyQCanvasSpline().Dispose();
+			DisposeQCanvasSpline();
 		}
 		public new void Dispose() {
-			ProxyQCanvasSpline().Dispose();
+			DisposeQCanvasSpline();
+		}
+		private void DisposeQCanvasSpline() {
+			ProxyQCanvasSpline().DisposeQCanvasSpline();
 		}
 	}
 }

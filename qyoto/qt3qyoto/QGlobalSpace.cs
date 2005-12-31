@@ -10,20 +10,6 @@ namespace Qt {
 		private IntPtr _smokeObject;
  		protected QGlobalSpace(Type dummy) {}
 		interface IQGlobalSpaceProxy {
-			QDataStream op_read(QDataStream s, QVariant p);
-			QDataStream op_write(QDataStream s, QVariant p);
-			QDataStream op_read(QDataStream s, int p);
-			QDataStream op_write(QDataStream s, int p);
-			QDataStream op_write(QDataStream arg1, QImage arg2);
-			QDataStream op_read(QDataStream arg1, QImage arg2);
-			void BitBlt(QImage dst, int dx, int dy, QImage src, int sx, int sy, int sw, int sh, int conversion_flags);
-			void BitBlt(QImage dst, int dx, int dy, QImage src, int sx, int sy, int sw, int sh);
-			void BitBlt(QImage dst, int dx, int dy, QImage src, int sx, int sy, int sw);
-			void BitBlt(QImage dst, int dx, int dy, QImage src, int sx, int sy);
-			void BitBlt(QImage dst, int dx, int dy, QImage src, int sx);
-			void BitBlt(QImage dst, int dx, int dy, QImage src);
-			QTextStream op_write(QTextStream arg1, QDockArea arg2);
-			QTextStream op_read(QTextStream arg1, QDockArea arg2);
 			QDataStream op_write(QDataStream arg1, QPoint arg2);
 			QDataStream op_read(QDataStream arg1, QPoint arg2);
 			bool op_equals(QPoint p1, QPoint p2);
@@ -36,38 +22,12 @@ namespace Qt {
 			QPoint op_minus(QPoint p);
 			QPoint op_div(QPoint p, int c);
 			QPoint op_div(QPoint p, double c);
-			bool op_equals(QRect arg1, QRect arg2);
-			QDataStream op_write(QDataStream arg1, QRect arg2);
-			QDataStream op_read(QDataStream arg1, QRect arg2);
-			QDataStream op_write(QDataStream arg1, QBrush arg2);
-			QDataStream op_read(QDataStream arg1, QBrush arg2);
-			QDataStream op_write(QDataStream arg1, QSize arg2);
-			QDataStream op_read(QDataStream arg1, QSize arg2);
-			bool op_equals(QSize s1, QSize s2);
-			QSize op_plus(QSize s1, QSize s2);
-			QSize op_minus(QSize s1, QSize s2);
-			QSize op_mult(QSize s, int c);
-			QSize op_mult(int c, QSize s);
-			QSize op_mult(QSize s, double c);
-			QSize op_mult(double c, QSize s);
-			QSize op_div(QSize s, int c);
-			QSize op_div(QSize s, double c);
-			string QGLVersion();
-			bool op_equals(QGLFormat arg1, QGLFormat arg2);
-			QDataStream op_read(QDataStream arg1, string[] arg2);
-			QDataStream op_write(QDataStream arg1, string[] arg2);
-			QDataStream op_write(QDataStream arg1, QUuid arg2);
-			QDataStream op_read(QDataStream arg1, QUuid arg2);
-			int QRed(uint rgb);
-			int QGreen(uint rgb);
-			int QBlue(uint rgb);
-			int QAlpha(uint rgb);
-			uint QRgb(int r, int g, int b);
-			uint QRgba(int r, int g, int b, int a);
-			int QGray(int r, int g, int b);
-			int QGray(uint rgb);
-			QDataStream op_write(QDataStream arg1, QColor arg2);
-			QDataStream op_read(QDataStream arg1, QColor arg2);
+			QDataStream op_write(QDataStream arg1, QRegion arg2);
+			QDataStream op_read(QDataStream arg1, QRegion arg2);
+			QDataStream op_write(QDataStream arg1, QColorGroup arg2);
+			QDataStream op_read(QDataStream arg1, QColorGroup arg2);
+			QDataStream op_write(QDataStream arg1, QPalette arg2);
+			QDataStream op_read(QDataStream arg1, QPalette arg2);
 			QTextStream Bin(QTextStream s);
 			QTextStream Oct(QTextStream s);
 			QTextStream Dec(QTextStream s);
@@ -76,80 +36,6 @@ namespace Qt {
 			QTextStream Flush(QTextStream s);
 			QTextStream Ws(QTextStream s);
 			QTextStream Reset(QTextStream s);
-			void QInitNetworkProtocols();
-			QDataStream op_write(QDataStream arg1, QCursor arg2);
-			QDataStream op_read(QDataStream arg1, QCursor arg2);
-			int QRound(double d);
-			string QVersion();
-			bool QSysInfo(out int wordSize, out bool bigEndian);
-			bool QSharedBuild();
-			void QSystemWarning(string arg1, int code);
-			void QSystemWarning(string arg1);
-			void QSuppressObsoleteWarnings(bool arg1);
-			void QSuppressObsoleteWarnings();
-			void QObsolete(string arg1, string oldfunc, string newfunc);
-			void QObsolete(string arg1, string oldfunc);
-			void QObsolete(string message);
-			string QInstallPath();
-			string QInstallPathDocs();
-			string QInstallPathHeaders();
-			string QInstallPathLibs();
-			string QInstallPathBins();
-			string QInstallPathPlugins();
-			string QInstallPathData();
-			string QInstallPathTranslations();
-			string QInstallPathSysconf();
-			QDataStream op_write(QDataStream arg1, QPicture arg2);
-			QDataStream op_read(QDataStream arg1, QPicture arg2);
-			string Qstrdup(string arg1);
-			uint Qstrlen(string str);
-			string Qstrcpy(string dst, string src);
-			string Qstrncpy(string dst, string src, uint len);
-			int Qstrcmp(string str1, string str2);
-			int Qstrncmp(string str1, string str2, uint len);
-			int Qstricmp(string arg1, string arg2);
-			int Qstrnicmp(string arg1, string arg2, uint len);
-			uint Cstrlen(string str);
-			string Cstrcpy(string dst, string src);
-			int Cstrcmp(string str1, string str2);
-			int Cstrncmp(string str1, string str2, uint len);
-			ushort QChecksum(string s, uint len);
-			byte[] QCompress(char[] data, int nbytes);
-			byte[] QUncompress(char[] data, int nbytes);
-			byte[] QCompress(byte[] data);
-			byte[] QUncompress(byte[] data);
-			QDataStream op_write(QDataStream arg1, byte[] arg2);
-			QDataStream op_read(QDataStream arg1, byte[] arg2);
-			QDataStream op_write(QDataStream arg1, string arg2);
-			QDataStream op_read(QDataStream arg1, StringBuilder arg2);
-			bool op_equals(string s1, string s2);
-			bool op_lt(string s1, string s2);
-			bool op_lte(string s1, string s2);
-			bool op_gt(string s1, string s2);
-			bool op_gte(string s1, string s2);
-			string op_plus(string s1, string s2);
-			string op_plus(string s1, char c2);
-			string op_plus(char c1, string s2);
-			QWMatrix op_mult(QWMatrix arg1, QWMatrix arg2);
-			QDataStream op_write(QDataStream arg1, QWMatrix arg2);
-			QDataStream op_read(QDataStream arg1, QWMatrix arg2);
-			QTextStream op_write(QTextStream arg1, QMainWindow arg2);
-			QTextStream op_read(QTextStream arg1, QMainWindow arg2);
-			QDataStream op_write(QDataStream arg1, QPixmap arg2);
-			QDataStream op_read(QDataStream arg1, QPixmap arg2);
-			void CopyBlt(QPixmap dst, int dx, int dy, QPixmap src, int sx, int sy, int sw, int sh);
-			void CopyBlt(QPixmap dst, int dx, int dy, QPixmap src, int sx, int sy, int sw);
-			void CopyBlt(QPixmap dst, int dx, int dy, QPixmap src, int sx, int sy);
-			void CopyBlt(QPixmap dst, int dx, int dy, QPixmap src, int sx);
-			void CopyBlt(QPixmap dst, int dx, int dy, QPixmap src);
-			string QAppName();
-			QTextStream op_write(QTextStream arg1, QDomNode arg2);
-			QDataStream op_write(QDataStream arg1, QKeySequence arg2);
-			QDataStream op_read(QDataStream arg1, QKeySequence arg2);
-			QDataStream op_write(QDataStream arg1, QPen arg2);
-			QDataStream op_read(QDataStream arg1, QPen arg2);
-			QDataStream op_write(QDataStream arg1, QPointArray arg2);
-			QDataStream op_read(QDataStream arg1, QPointArray arg2);
 			void QDrawShadeLine(QPainter p, int x1, int y1, int x2, int y2, QColorGroup g, bool sunken, int lineWidth, int midLineWidth);
 			void QDrawShadeLine(QPainter p, int x1, int y1, int x2, int y2, QColorGroup g, bool sunken, int lineWidth);
 			void QDrawShadeLine(QPainter p, int x1, int y1, int x2, int y2, QColorGroup g, bool sunken);
@@ -200,23 +86,134 @@ namespace Qt {
 			void QDrawItem(QPainter p, int gs, int x, int y, int w, int h, int flags, QColorGroup g, bool enabled, QPixmap pixmap, string text, int len);
 			void QDrawItem(QPainter p, int gs, int x, int y, int w, int h, int flags, QColorGroup g, bool enabled, QPixmap pixmap, string text);
 			void QDrawArrow(QPainter p, int type, int style, bool down, int x, int y, int w, int h, QColorGroup g, bool enabled);
-			QDataStream op_write(QDataStream arg1, QColorGroup arg2);
-			QDataStream op_read(QDataStream arg1, QColorGroup arg2);
-			QDataStream op_write(QDataStream arg1, QPalette arg2);
-			QDataStream op_read(QDataStream arg1, QPalette arg2);
-			QDataStream op_write(QDataStream arg1, DateTime arg2);
-			QDataStream op_read(QDataStream arg1, DateTime arg2);
+			QDataStream op_write(QDataStream arg1, QCursor arg2);
+			QDataStream op_read(QDataStream arg1, QCursor arg2);
+			string QAppName();
+			string Qstrdup(string arg1);
+			uint Qstrlen(string str);
+			string Qstrcpy(string dst, string src);
+			string Qstrncpy(string dst, string src, uint len);
+			int Qstrcmp(string str1, string str2);
+			int Qstrncmp(string str1, string str2, uint len);
+			int Qstricmp(string arg1, string arg2);
+			int Qstrnicmp(string arg1, string arg2, uint len);
+			uint Cstrlen(string str);
+			string Cstrcpy(string dst, string src);
+			int Cstrcmp(string str1, string str2);
+			int Cstrncmp(string str1, string str2, uint len);
+			ushort QChecksum(string s, uint len);
+			QByteArray QCompress(char[] data, int nbytes);
+			QByteArray QUncompress(char[] data, int nbytes);
+			QByteArray QCompress(QByteArray data);
+			QByteArray QUncompress(QByteArray data);
+			QDataStream op_write(QDataStream arg1, QByteArray arg2);
+			QDataStream op_read(QDataStream arg1, QByteArray arg2);
+			QDataStream op_write(QDataStream arg1, string arg2);
+			QDataStream op_read(QDataStream arg1, StringBuilder arg2);
+			bool op_equals(string s1, string s2);
+			bool op_lt(string s1, string s2);
+			bool op_lte(string s1, string s2);
+			bool op_gt(string s1, string s2);
+			bool op_gte(string s1, string s2);
+			string op_plus(string s1, string s2);
+			string op_plus(string s1, char c2);
+			string op_plus(char c1, string s2);
+			QTextStream op_write(QTextStream arg1, QDomNode arg2);
+			QWMatrix op_mult(QWMatrix arg1, QWMatrix arg2);
+			QDataStream op_write(QDataStream arg1, QWMatrix arg2);
+			QDataStream op_read(QDataStream arg1, QWMatrix arg2);
+			QDataStream op_write(QDataStream arg1, QBrush arg2);
+			QDataStream op_read(QDataStream arg1, QBrush arg2);
 			bool op_equals(char ch, char c);
 			bool op_lte(char c, char ch);
 			bool op_gte(char c, char ch);
 			bool op_lt(char c, char ch);
 			bool op_gt(char c, char ch);
-			QDataStream op_write(QDataStream arg1, QRegion arg2);
-			QDataStream op_read(QDataStream arg1, QRegion arg2);
-			QTextStream op_write(QTextStream arg1, QSplitter arg2);
-			QTextStream op_read(QTextStream arg1, QSplitter arg2);
+			QDataStream op_write(QDataStream arg1, QImage arg2);
+			QDataStream op_read(QDataStream arg1, QImage arg2);
+			void BitBlt(QImage dst, int dx, int dy, QImage src, int sx, int sy, int sw, int sh, int conversion_flags);
+			void BitBlt(QImage dst, int dx, int dy, QImage src, int sx, int sy, int sw, int sh);
+			void BitBlt(QImage dst, int dx, int dy, QImage src, int sx, int sy, int sw);
+			void BitBlt(QImage dst, int dx, int dy, QImage src, int sx, int sy);
+			void BitBlt(QImage dst, int dx, int dy, QImage src, int sx);
+			void BitBlt(QImage dst, int dx, int dy, QImage src);
+			QDataStream op_read(QDataStream s, QVariant p);
+			QDataStream op_write(QDataStream s, QVariant p);
+			QDataStream op_read(QDataStream s, int p);
+			QDataStream op_write(QDataStream s, int p);
+			string QGLVersion();
+			bool op_equals(QGLFormat arg1, QGLFormat arg2);
 			QDataStream op_write(QDataStream arg1, QFont arg2);
 			QDataStream op_read(QDataStream arg1, QFont arg2);
+			QDataStream op_write(QDataStream arg1, QSize arg2);
+			QDataStream op_read(QDataStream arg1, QSize arg2);
+			bool op_equals(QSize s1, QSize s2);
+			QSize op_plus(QSize s1, QSize s2);
+			QSize op_minus(QSize s1, QSize s2);
+			QSize op_mult(QSize s, int c);
+			QSize op_mult(int c, QSize s);
+			QSize op_mult(QSize s, double c);
+			QSize op_mult(double c, QSize s);
+			QSize op_div(QSize s, int c);
+			QSize op_div(QSize s, double c);
+			QDataStream op_read(QDataStream arg1, string[] arg2);
+			QDataStream op_write(QDataStream arg1, string[] arg2);
+			QDataStream op_write(QDataStream arg1, QPixmap arg2);
+			QDataStream op_read(QDataStream arg1, QPixmap arg2);
+			void CopyBlt(QPixmap dst, int dx, int dy, QPixmap src, int sx, int sy, int sw, int sh);
+			void CopyBlt(QPixmap dst, int dx, int dy, QPixmap src, int sx, int sy, int sw);
+			void CopyBlt(QPixmap dst, int dx, int dy, QPixmap src, int sx, int sy);
+			void CopyBlt(QPixmap dst, int dx, int dy, QPixmap src, int sx);
+			void CopyBlt(QPixmap dst, int dx, int dy, QPixmap src);
+			void QInitNetworkProtocols();
+			QDataStream op_write(QDataStream arg1, QPointArray arg2);
+			QDataStream op_read(QDataStream arg1, QPointArray arg2);
+			QDataStream op_write(QDataStream arg1, QPen arg2);
+			QDataStream op_read(QDataStream arg1, QPen arg2);
+			int QRed(uint rgb);
+			int QGreen(uint rgb);
+			int QBlue(uint rgb);
+			int QAlpha(uint rgb);
+			uint QRgb(int r, int g, int b);
+			uint QRgba(int r, int g, int b, int a);
+			int QGray(int r, int g, int b);
+			int QGray(uint rgb);
+			QDataStream op_write(QDataStream arg1, QColor arg2);
+			QDataStream op_read(QDataStream arg1, QColor arg2);
+			QTextStream op_write(QTextStream arg1, QSplitter arg2);
+			QTextStream op_read(QTextStream arg1, QSplitter arg2);
+			QDataStream op_write(QDataStream arg1, QUuid arg2);
+			QDataStream op_read(QDataStream arg1, QUuid arg2);
+			QDataStream op_write(QDataStream arg1, DateTime arg2);
+			QDataStream op_read(QDataStream arg1, DateTime arg2);
+			QDataStream op_write(QDataStream arg1, QKeySequence arg2);
+			QDataStream op_read(QDataStream arg1, QKeySequence arg2);
+			QDataStream op_write(QDataStream arg1, QPicture arg2);
+			QDataStream op_read(QDataStream arg1, QPicture arg2);
+			QTextStream op_write(QTextStream arg1, QMainWindow arg2);
+			QTextStream op_read(QTextStream arg1, QMainWindow arg2);
+			int QRound(double d);
+			string QVersion();
+			bool QSysInfo(out int wordSize, out bool bigEndian);
+			bool QSharedBuild();
+			void QSystemWarning(string arg1, int code);
+			void QSystemWarning(string arg1);
+			void QSuppressObsoleteWarnings(bool arg1);
+			void QSuppressObsoleteWarnings();
+			void QObsolete(string arg1, string oldfunc, string newfunc);
+			void QObsolete(string arg1, string oldfunc);
+			void QObsolete(string message);
+			string QInstallPath();
+			string QInstallPathDocs();
+			string QInstallPathHeaders();
+			string QInstallPathLibs();
+			string QInstallPathBins();
+			string QInstallPathPlugins();
+			string QInstallPathData();
+			string QInstallPathTranslations();
+			string QInstallPathSysconf();
+			QTextStream op_write(QTextStream arg1, QDockArea arg2);
+			QTextStream op_read(QTextStream arg1, QDockArea arg2);
 			void BitBlt(IQPaintDevice dst, int dx, int dy, IQPaintDevice src, int sx, int sy, int sw, int sh, int arg9, bool ignoreMask);
 			void BitBlt(IQPaintDevice dst, int dx, int dy, IQPaintDevice src, int sx, int sy, int sw, int sh, int arg9);
 			void BitBlt(IQPaintDevice dst, int dx, int dy, IQPaintDevice src, int sx, int sy, int sw, int sh);
@@ -234,6 +231,9 @@ namespace Qt {
 			void BitBlt(IQPaintDevice dst, QPoint dp, IQPaintDevice src, QRect sr, int rop);
 			void BitBlt(IQPaintDevice dst, QPoint dp, IQPaintDevice src, QRect sr);
 			void BitBlt(IQPaintDevice dst, QPoint dp, IQPaintDevice src);
+			bool op_equals(QRect arg1, QRect arg2);
+			QDataStream op_write(QDataStream arg1, QRect arg2);
+			QDataStream op_read(QDataStream arg1, QRect arg2);
 		}
 
 		protected void CreateQGlobalSpaceProxy() {
@@ -252,163 +252,593 @@ namespace Qt {
 			return (IQGlobalSpaceProxy) _staticInterceptor;
 		}
 
-		public static QDataStream op_read(QDataStream s, QVariant p) {
-			return StaticQGlobalSpace().op_read(s,p);
-		}
-		public static QDataStream op_write(QDataStream s, QVariant p) {
-			return StaticQGlobalSpace().op_write(s,p);
-		}
-		public static QDataStream op_read(QDataStream s, int p) {
-			return StaticQGlobalSpace().op_read(s,p);
-		}
-		public static QDataStream op_write(QDataStream s, int p) {
-			return StaticQGlobalSpace().op_write(s,p);
-		}
-		public static QDataStream op_write(QDataStream arg1, QImage arg2) {
-			return StaticQGlobalSpace().op_write(arg1,arg2);
-		}
-		public static QDataStream op_read(QDataStream arg1, QImage arg2) {
-			return StaticQGlobalSpace().op_read(arg1,arg2);
-		}
-		public static void BitBlt(QImage dst, int dx, int dy, QImage src, int sx, int sy, int sw, int sh, int conversion_flags) {
-			StaticQGlobalSpace().BitBlt(dst,dx,dy,src,sx,sy,sw,sh,conversion_flags);
-		}
-		public static void BitBlt(QImage dst, int dx, int dy, QImage src, int sx, int sy, int sw, int sh) {
-			StaticQGlobalSpace().BitBlt(dst,dx,dy,src,sx,sy,sw,sh);
-		}
-		public static void BitBlt(QImage dst, int dx, int dy, QImage src, int sx, int sy, int sw) {
-			StaticQGlobalSpace().BitBlt(dst,dx,dy,src,sx,sy,sw);
-		}
-		public static void BitBlt(QImage dst, int dx, int dy, QImage src, int sx, int sy) {
-			StaticQGlobalSpace().BitBlt(dst,dx,dy,src,sx,sy);
-		}
-		public static void BitBlt(QImage dst, int dx, int dy, QImage src, int sx) {
-			StaticQGlobalSpace().BitBlt(dst,dx,dy,src,sx);
-		}
-		public static void BitBlt(QImage dst, int dx, int dy, QImage src) {
-			StaticQGlobalSpace().BitBlt(dst,dx,dy,src);
-		}
-		public static QTextStream op_write(QTextStream arg1, QDockArea arg2) {
-			return StaticQGlobalSpace().op_write(arg1,arg2);
-		}
-		public static QTextStream op_read(QTextStream arg1, QDockArea arg2) {
-			return StaticQGlobalSpace().op_read(arg1,arg2);
-		}
 		///<remarks>**************************************************
 		///  QPoint stream functions
 		///**************************************************</remarks>		<short>                                                                                QPoint stream functions                                                                            </short>
+		[SmokeMethod("operator<<(QDataStream&, const QPoint&)")]
 		public static QDataStream op_write(QDataStream arg1, QPoint arg2) {
 			return StaticQGlobalSpace().op_write(arg1,arg2);
 		}
+		[SmokeMethod("operator>>(QDataStream&, QPoint&)")]
 		public static QDataStream op_read(QDataStream arg1, QPoint arg2) {
 			return StaticQGlobalSpace().op_read(arg1,arg2);
 		}
 		///<remarks>**************************************************
 		///  QPoint inline functions
 		///**************************************************</remarks>		<short>                                                                                QPoint inline functions                                                                            </short>
+		[SmokeMethod("operator==(const QPoint&, const QPoint&)")]
 		public static bool op_equals(QPoint p1, QPoint p2) {
 			return StaticQGlobalSpace().op_equals(p1,p2);
 		}
+		[SmokeMethod("operator+(const QPoint&, const QPoint&)")]
 		public static QPoint op_plus(QPoint p1, QPoint p2) {
 			return StaticQGlobalSpace().op_plus(p1,p2);
 		}
+		[SmokeMethod("operator-(const QPoint&, const QPoint&)")]
 		public static QPoint op_minus(QPoint p1, QPoint p2) {
 			return StaticQGlobalSpace().op_minus(p1,p2);
 		}
+		[SmokeMethod("operator*(const QPoint&, int)")]
 		public static QPoint op_mult(QPoint p, int c) {
 			return StaticQGlobalSpace().op_mult(p,c);
 		}
+		[SmokeMethod("operator*(int, const QPoint&)")]
 		public static QPoint op_mult(int c, QPoint p) {
 			return StaticQGlobalSpace().op_mult(c,p);
 		}
+		[SmokeMethod("operator*(const QPoint&, double)")]
 		public static QPoint op_mult(QPoint p, double c) {
 			return StaticQGlobalSpace().op_mult(p,c);
 		}
+		[SmokeMethod("operator*(double, const QPoint&)")]
 		public static QPoint op_mult(double c, QPoint p) {
 			return StaticQGlobalSpace().op_mult(c,p);
 		}
+		[SmokeMethod("operator-(const QPoint&)")]
 		public static QPoint op_minus(QPoint p) {
 			return StaticQGlobalSpace().op_minus(p);
 		}
+		[SmokeMethod("operator/(const QPoint&, int)")]
 		public static QPoint op_div(QPoint p, int c) {
 			return StaticQGlobalSpace().op_div(p,c);
 		}
+		[SmokeMethod("operator/(const QPoint&, double)")]
 		public static QPoint op_div(QPoint p, double c) {
 			return StaticQGlobalSpace().op_div(p,c);
 		}
 		///<remarks>**************************************************
-		///  QGVector stream functions
-		///**************************************************</remarks>		<short>                                                                                QGVector stream functions                                                                            </short>
-		// QDataStream& operator>>(QDataStream& arg1,QGVector& arg2); >>>> NOT CONVERTED
-		// QDataStream& operator<<(QDataStream& arg1,const QGVector& arg2); >>>> NOT CONVERTED
-		public static bool op_equals(QRect arg1, QRect arg2) {
-			return StaticQGlobalSpace().op_equals(arg1,arg2);
-		}
-		///<remarks>**************************************************
-		///  QRect stream functions
-		///**************************************************</remarks>		<short>                                                                                QRect stream functions                                                                            </short>
-		public static QDataStream op_write(QDataStream arg1, QRect arg2) {
+		///  QRegion stream functions
+		///**************************************************</remarks>		<short>                                                                                QRegion stream functions                                                                            </short>
+		[SmokeMethod("operator<<(QDataStream&, const QRegion&)")]
+		public static QDataStream op_write(QDataStream arg1, QRegion arg2) {
 			return StaticQGlobalSpace().op_write(arg1,arg2);
 		}
-		public static QDataStream op_read(QDataStream arg1, QRect arg2) {
+		[SmokeMethod("operator>>(QDataStream&, QRegion&)")]
+		public static QDataStream op_read(QDataStream arg1, QRegion arg2) {
+			return StaticQGlobalSpace().op_read(arg1,arg2);
+		}
+		///<remarks>**************************************************
+		///  Misc. QBitArray operator functions
+		///**************************************************</remarks>		<short>                                                                                Misc.</short>
+		// QBitArray operator&(const QBitArray& arg1,const QBitArray& arg2); >>>> NOT CONVERTED
+		// QBitArray operator|(const QBitArray& arg1,const QBitArray& arg2); >>>> NOT CONVERTED
+		// QBitArray operator^(const QBitArray& arg1,const QBitArray& arg2); >>>> NOT CONVERTED
+		///<remarks>**************************************************
+		///  QBitArray stream functions
+		///**************************************************</remarks>		<short>                                                                                QBitArray stream functions                                                                            </short>
+		// QDataStream& operator<<(QDataStream& arg1,const QBitArray& arg2); >>>> NOT CONVERTED
+		// QDataStream& operator>>(QDataStream& arg1,QBitArray& arg2); >>>> NOT CONVERTED
+		///<remarks>**************************************************
+		///  QColorGroup/QPalette stream functions
+		///**************************************************</remarks>		<short>                                                                                QColorGroup/QPalette stream functions                                                                            </short>
+		[SmokeMethod("operator<<(QDataStream&, const QColorGroup&)")]
+		public static QDataStream op_write(QDataStream arg1, QColorGroup arg2) {
+			return StaticQGlobalSpace().op_write(arg1,arg2);
+		}
+		[SmokeMethod("operator>>(QDataStream&, QColorGroup&)")]
+		public static QDataStream op_read(QDataStream arg1, QColorGroup arg2) {
+			return StaticQGlobalSpace().op_read(arg1,arg2);
+		}
+		[SmokeMethod("operator<<(QDataStream&, const QPalette&)")]
+		public static QDataStream op_write(QDataStream arg1, QPalette arg2) {
+			return StaticQGlobalSpace().op_write(arg1,arg2);
+		}
+		[SmokeMethod("operator>>(QDataStream&, QPalette&)")]
+		public static QDataStream op_read(QDataStream arg1, QPalette arg2) {
+			return StaticQGlobalSpace().op_read(arg1,arg2);
+		}
+		// QTextStream& operator>>(QTextStream& arg1,QTSFUNC arg2); >>>> NOT CONVERTED
+		// QTextStream& operator<<(QTextStream& arg1,QTSFUNC arg2); >>>> NOT CONVERTED
+		// QTextStream& operator<<(QTextStream& arg1,QTSManip arg2); >>>> NOT CONVERTED
+		[SmokeMethod("bin(QTextStream&)")]
+		public static QTextStream Bin(QTextStream s) {
+			return StaticQGlobalSpace().Bin(s);
+		}
+		[SmokeMethod("oct(QTextStream&)")]
+		public static QTextStream Oct(QTextStream s) {
+			return StaticQGlobalSpace().Oct(s);
+		}
+		[SmokeMethod("dec(QTextStream&)")]
+		public static QTextStream Dec(QTextStream s) {
+			return StaticQGlobalSpace().Dec(s);
+		}
+		[SmokeMethod("hex(QTextStream&)")]
+		public static QTextStream Hex(QTextStream s) {
+			return StaticQGlobalSpace().Hex(s);
+		}
+		[SmokeMethod("endl(QTextStream&)")]
+		public static QTextStream Endl(QTextStream s) {
+			return StaticQGlobalSpace().Endl(s);
+		}
+		[SmokeMethod("flush(QTextStream&)")]
+		public static QTextStream Flush(QTextStream s) {
+			return StaticQGlobalSpace().Flush(s);
+		}
+		[SmokeMethod("ws(QTextStream&)")]
+		public static QTextStream Ws(QTextStream s) {
+			return StaticQGlobalSpace().Ws(s);
+		}
+		[SmokeMethod("reset(QTextStream&)")]
+		public static QTextStream Reset(QTextStream s) {
+			return StaticQGlobalSpace().Reset(s);
+		}
+		// QTSManip qSetW(int arg1); >>>> NOT CONVERTED
+		// QTSManip qSetFill(int arg1); >>>> NOT CONVERTED
+		// QTSManip qSetPrecision(int arg1); >>>> NOT CONVERTED
+		// QDataStream& operator>>(QDataStream& arg1,QGList& arg2); >>>> NOT CONVERTED
+		// QDataStream& operator<<(QDataStream& arg1,const QGList& arg2); >>>> NOT CONVERTED
+		[SmokeMethod("qDrawShadeLine(QPainter*, int, int, int, int, const QColorGroup&, bool, int, int)")]
+		public static void QDrawShadeLine(QPainter p, int x1, int y1, int x2, int y2, QColorGroup g, bool sunken, int lineWidth, int midLineWidth) {
+			StaticQGlobalSpace().QDrawShadeLine(p,x1,y1,x2,y2,g,sunken,lineWidth,midLineWidth);
+		}
+		[SmokeMethod("qDrawShadeLine(QPainter*, int, int, int, int, const QColorGroup&, bool, int)")]
+		public static void QDrawShadeLine(QPainter p, int x1, int y1, int x2, int y2, QColorGroup g, bool sunken, int lineWidth) {
+			StaticQGlobalSpace().QDrawShadeLine(p,x1,y1,x2,y2,g,sunken,lineWidth);
+		}
+		[SmokeMethod("qDrawShadeLine(QPainter*, int, int, int, int, const QColorGroup&, bool)")]
+		public static void QDrawShadeLine(QPainter p, int x1, int y1, int x2, int y2, QColorGroup g, bool sunken) {
+			StaticQGlobalSpace().QDrawShadeLine(p,x1,y1,x2,y2,g,sunken);
+		}
+		[SmokeMethod("qDrawShadeLine(QPainter*, int, int, int, int, const QColorGroup&)")]
+		public static void QDrawShadeLine(QPainter p, int x1, int y1, int x2, int y2, QColorGroup g) {
+			StaticQGlobalSpace().QDrawShadeLine(p,x1,y1,x2,y2,g);
+		}
+		[SmokeMethod("qDrawShadeLine(QPainter*, const QPoint&, const QPoint&, const QColorGroup&, bool, int, int)")]
+		public static void QDrawShadeLine(QPainter p, QPoint p1, QPoint p2, QColorGroup g, bool sunken, int lineWidth, int midLineWidth) {
+			StaticQGlobalSpace().QDrawShadeLine(p,p1,p2,g,sunken,lineWidth,midLineWidth);
+		}
+		[SmokeMethod("qDrawShadeLine(QPainter*, const QPoint&, const QPoint&, const QColorGroup&, bool, int)")]
+		public static void QDrawShadeLine(QPainter p, QPoint p1, QPoint p2, QColorGroup g, bool sunken, int lineWidth) {
+			StaticQGlobalSpace().QDrawShadeLine(p,p1,p2,g,sunken,lineWidth);
+		}
+		[SmokeMethod("qDrawShadeLine(QPainter*, const QPoint&, const QPoint&, const QColorGroup&, bool)")]
+		public static void QDrawShadeLine(QPainter p, QPoint p1, QPoint p2, QColorGroup g, bool sunken) {
+			StaticQGlobalSpace().QDrawShadeLine(p,p1,p2,g,sunken);
+		}
+		[SmokeMethod("qDrawShadeLine(QPainter*, const QPoint&, const QPoint&, const QColorGroup&)")]
+		public static void QDrawShadeLine(QPainter p, QPoint p1, QPoint p2, QColorGroup g) {
+			StaticQGlobalSpace().QDrawShadeLine(p,p1,p2,g);
+		}
+		[SmokeMethod("qDrawShadeRect(QPainter*, int, int, int, int, const QColorGroup&, bool, int, int, const QBrush*)")]
+		public static void QDrawShadeRect(QPainter p, int x, int y, int w, int h, QColorGroup arg6, bool sunken, int lineWidth, int midLineWidth, QBrush fill) {
+			StaticQGlobalSpace().QDrawShadeRect(p,x,y,w,h,arg6,sunken,lineWidth,midLineWidth,fill);
+		}
+		[SmokeMethod("qDrawShadeRect(QPainter*, int, int, int, int, const QColorGroup&, bool, int, int)")]
+		public static void QDrawShadeRect(QPainter p, int x, int y, int w, int h, QColorGroup arg6, bool sunken, int lineWidth, int midLineWidth) {
+			StaticQGlobalSpace().QDrawShadeRect(p,x,y,w,h,arg6,sunken,lineWidth,midLineWidth);
+		}
+		[SmokeMethod("qDrawShadeRect(QPainter*, int, int, int, int, const QColorGroup&, bool, int)")]
+		public static void QDrawShadeRect(QPainter p, int x, int y, int w, int h, QColorGroup arg6, bool sunken, int lineWidth) {
+			StaticQGlobalSpace().QDrawShadeRect(p,x,y,w,h,arg6,sunken,lineWidth);
+		}
+		[SmokeMethod("qDrawShadeRect(QPainter*, int, int, int, int, const QColorGroup&, bool)")]
+		public static void QDrawShadeRect(QPainter p, int x, int y, int w, int h, QColorGroup arg6, bool sunken) {
+			StaticQGlobalSpace().QDrawShadeRect(p,x,y,w,h,arg6,sunken);
+		}
+		[SmokeMethod("qDrawShadeRect(QPainter*, int, int, int, int, const QColorGroup&)")]
+		public static void QDrawShadeRect(QPainter p, int x, int y, int w, int h, QColorGroup arg6) {
+			StaticQGlobalSpace().QDrawShadeRect(p,x,y,w,h,arg6);
+		}
+		[SmokeMethod("qDrawShadeRect(QPainter*, const QRect&, const QColorGroup&, bool, int, int, const QBrush*)")]
+		public static void QDrawShadeRect(QPainter p, QRect r, QColorGroup arg3, bool sunken, int lineWidth, int midLineWidth, QBrush fill) {
+			StaticQGlobalSpace().QDrawShadeRect(p,r,arg3,sunken,lineWidth,midLineWidth,fill);
+		}
+		[SmokeMethod("qDrawShadeRect(QPainter*, const QRect&, const QColorGroup&, bool, int, int)")]
+		public static void QDrawShadeRect(QPainter p, QRect r, QColorGroup arg3, bool sunken, int lineWidth, int midLineWidth) {
+			StaticQGlobalSpace().QDrawShadeRect(p,r,arg3,sunken,lineWidth,midLineWidth);
+		}
+		[SmokeMethod("qDrawShadeRect(QPainter*, const QRect&, const QColorGroup&, bool, int)")]
+		public static void QDrawShadeRect(QPainter p, QRect r, QColorGroup arg3, bool sunken, int lineWidth) {
+			StaticQGlobalSpace().QDrawShadeRect(p,r,arg3,sunken,lineWidth);
+		}
+		[SmokeMethod("qDrawShadeRect(QPainter*, const QRect&, const QColorGroup&, bool)")]
+		public static void QDrawShadeRect(QPainter p, QRect r, QColorGroup arg3, bool sunken) {
+			StaticQGlobalSpace().QDrawShadeRect(p,r,arg3,sunken);
+		}
+		[SmokeMethod("qDrawShadeRect(QPainter*, const QRect&, const QColorGroup&)")]
+		public static void QDrawShadeRect(QPainter p, QRect r, QColorGroup arg3) {
+			StaticQGlobalSpace().QDrawShadeRect(p,r,arg3);
+		}
+		[SmokeMethod("qDrawShadePanel(QPainter*, int, int, int, int, const QColorGroup&, bool, int, const QBrush*)")]
+		public static void QDrawShadePanel(QPainter p, int x, int y, int w, int h, QColorGroup arg6, bool sunken, int lineWidth, QBrush fill) {
+			StaticQGlobalSpace().QDrawShadePanel(p,x,y,w,h,arg6,sunken,lineWidth,fill);
+		}
+		[SmokeMethod("qDrawShadePanel(QPainter*, int, int, int, int, const QColorGroup&, bool, int)")]
+		public static void QDrawShadePanel(QPainter p, int x, int y, int w, int h, QColorGroup arg6, bool sunken, int lineWidth) {
+			StaticQGlobalSpace().QDrawShadePanel(p,x,y,w,h,arg6,sunken,lineWidth);
+		}
+		[SmokeMethod("qDrawShadePanel(QPainter*, int, int, int, int, const QColorGroup&, bool)")]
+		public static void QDrawShadePanel(QPainter p, int x, int y, int w, int h, QColorGroup arg6, bool sunken) {
+			StaticQGlobalSpace().QDrawShadePanel(p,x,y,w,h,arg6,sunken);
+		}
+		[SmokeMethod("qDrawShadePanel(QPainter*, int, int, int, int, const QColorGroup&)")]
+		public static void QDrawShadePanel(QPainter p, int x, int y, int w, int h, QColorGroup arg6) {
+			StaticQGlobalSpace().QDrawShadePanel(p,x,y,w,h,arg6);
+		}
+		[SmokeMethod("qDrawShadePanel(QPainter*, const QRect&, const QColorGroup&, bool, int, const QBrush*)")]
+		public static void QDrawShadePanel(QPainter p, QRect r, QColorGroup arg3, bool sunken, int lineWidth, QBrush fill) {
+			StaticQGlobalSpace().QDrawShadePanel(p,r,arg3,sunken,lineWidth,fill);
+		}
+		[SmokeMethod("qDrawShadePanel(QPainter*, const QRect&, const QColorGroup&, bool, int)")]
+		public static void QDrawShadePanel(QPainter p, QRect r, QColorGroup arg3, bool sunken, int lineWidth) {
+			StaticQGlobalSpace().QDrawShadePanel(p,r,arg3,sunken,lineWidth);
+		}
+		[SmokeMethod("qDrawShadePanel(QPainter*, const QRect&, const QColorGroup&, bool)")]
+		public static void QDrawShadePanel(QPainter p, QRect r, QColorGroup arg3, bool sunken) {
+			StaticQGlobalSpace().QDrawShadePanel(p,r,arg3,sunken);
+		}
+		[SmokeMethod("qDrawShadePanel(QPainter*, const QRect&, const QColorGroup&)")]
+		public static void QDrawShadePanel(QPainter p, QRect r, QColorGroup arg3) {
+			StaticQGlobalSpace().QDrawShadePanel(p,r,arg3);
+		}
+		[SmokeMethod("qDrawWinButton(QPainter*, int, int, int, int, const QColorGroup&, bool, const QBrush*)")]
+		public static void QDrawWinButton(QPainter p, int x, int y, int w, int h, QColorGroup g, bool sunken, QBrush fill) {
+			StaticQGlobalSpace().QDrawWinButton(p,x,y,w,h,g,sunken,fill);
+		}
+		[SmokeMethod("qDrawWinButton(QPainter*, int, int, int, int, const QColorGroup&, bool)")]
+		public static void QDrawWinButton(QPainter p, int x, int y, int w, int h, QColorGroup g, bool sunken) {
+			StaticQGlobalSpace().QDrawWinButton(p,x,y,w,h,g,sunken);
+		}
+		[SmokeMethod("qDrawWinButton(QPainter*, int, int, int, int, const QColorGroup&)")]
+		public static void QDrawWinButton(QPainter p, int x, int y, int w, int h, QColorGroup g) {
+			StaticQGlobalSpace().QDrawWinButton(p,x,y,w,h,g);
+		}
+		[SmokeMethod("qDrawWinButton(QPainter*, const QRect&, const QColorGroup&, bool, const QBrush*)")]
+		public static void QDrawWinButton(QPainter p, QRect r, QColorGroup g, bool sunken, QBrush fill) {
+			StaticQGlobalSpace().QDrawWinButton(p,r,g,sunken,fill);
+		}
+		[SmokeMethod("qDrawWinButton(QPainter*, const QRect&, const QColorGroup&, bool)")]
+		public static void QDrawWinButton(QPainter p, QRect r, QColorGroup g, bool sunken) {
+			StaticQGlobalSpace().QDrawWinButton(p,r,g,sunken);
+		}
+		[SmokeMethod("qDrawWinButton(QPainter*, const QRect&, const QColorGroup&)")]
+		public static void QDrawWinButton(QPainter p, QRect r, QColorGroup g) {
+			StaticQGlobalSpace().QDrawWinButton(p,r,g);
+		}
+		[SmokeMethod("qDrawWinPanel(QPainter*, int, int, int, int, const QColorGroup&, bool, const QBrush*)")]
+		public static void QDrawWinPanel(QPainter p, int x, int y, int w, int h, QColorGroup arg6, bool sunken, QBrush fill) {
+			StaticQGlobalSpace().QDrawWinPanel(p,x,y,w,h,arg6,sunken,fill);
+		}
+		[SmokeMethod("qDrawWinPanel(QPainter*, int, int, int, int, const QColorGroup&, bool)")]
+		public static void QDrawWinPanel(QPainter p, int x, int y, int w, int h, QColorGroup arg6, bool sunken) {
+			StaticQGlobalSpace().QDrawWinPanel(p,x,y,w,h,arg6,sunken);
+		}
+		[SmokeMethod("qDrawWinPanel(QPainter*, int, int, int, int, const QColorGroup&)")]
+		public static void QDrawWinPanel(QPainter p, int x, int y, int w, int h, QColorGroup arg6) {
+			StaticQGlobalSpace().QDrawWinPanel(p,x,y,w,h,arg6);
+		}
+		[SmokeMethod("qDrawWinPanel(QPainter*, const QRect&, const QColorGroup&, bool, const QBrush*)")]
+		public static void QDrawWinPanel(QPainter p, QRect r, QColorGroup arg3, bool sunken, QBrush fill) {
+			StaticQGlobalSpace().QDrawWinPanel(p,r,arg3,sunken,fill);
+		}
+		[SmokeMethod("qDrawWinPanel(QPainter*, const QRect&, const QColorGroup&, bool)")]
+		public static void QDrawWinPanel(QPainter p, QRect r, QColorGroup arg3, bool sunken) {
+			StaticQGlobalSpace().QDrawWinPanel(p,r,arg3,sunken);
+		}
+		[SmokeMethod("qDrawWinPanel(QPainter*, const QRect&, const QColorGroup&)")]
+		public static void QDrawWinPanel(QPainter p, QRect r, QColorGroup arg3) {
+			StaticQGlobalSpace().QDrawWinPanel(p,r,arg3);
+		}
+		[SmokeMethod("qDrawPlainRect(QPainter*, int, int, int, int, const QColor&, int, const QBrush*)")]
+		public static void QDrawPlainRect(QPainter p, int x, int y, int w, int h, QColor arg6, int lineWidth, QBrush fill) {
+			StaticQGlobalSpace().QDrawPlainRect(p,x,y,w,h,arg6,lineWidth,fill);
+		}
+		[SmokeMethod("qDrawPlainRect(QPainter*, int, int, int, int, const QColor&, int)")]
+		public static void QDrawPlainRect(QPainter p, int x, int y, int w, int h, QColor arg6, int lineWidth) {
+			StaticQGlobalSpace().QDrawPlainRect(p,x,y,w,h,arg6,lineWidth);
+		}
+		[SmokeMethod("qDrawPlainRect(QPainter*, int, int, int, int, const QColor&)")]
+		public static void QDrawPlainRect(QPainter p, int x, int y, int w, int h, QColor arg6) {
+			StaticQGlobalSpace().QDrawPlainRect(p,x,y,w,h,arg6);
+		}
+		[SmokeMethod("qDrawPlainRect(QPainter*, const QRect&, const QColor&, int, const QBrush*)")]
+		public static void QDrawPlainRect(QPainter p, QRect r, QColor arg3, int lineWidth, QBrush fill) {
+			StaticQGlobalSpace().QDrawPlainRect(p,r,arg3,lineWidth,fill);
+		}
+		[SmokeMethod("qDrawPlainRect(QPainter*, const QRect&, const QColor&, int)")]
+		public static void QDrawPlainRect(QPainter p, QRect r, QColor arg3, int lineWidth) {
+			StaticQGlobalSpace().QDrawPlainRect(p,r,arg3,lineWidth);
+		}
+		[SmokeMethod("qDrawPlainRect(QPainter*, const QRect&, const QColor&)")]
+		public static void QDrawPlainRect(QPainter p, QRect r, QColor arg3) {
+			StaticQGlobalSpace().QDrawPlainRect(p,r,arg3);
+		}
+		[SmokeMethod("qItemRect(QPainter*, Qt::GUIStyle, int, int, int, int, int, bool, const QPixmap*, const QString&, int)")]
+		public static QRect QItemRect(QPainter p, int gs, int x, int y, int w, int h, int flags, bool enabled, QPixmap pixmap, string text, int len) {
+			return StaticQGlobalSpace().QItemRect(p,gs,x,y,w,h,flags,enabled,pixmap,text,len);
+		}
+		[SmokeMethod("qItemRect(QPainter*, Qt::GUIStyle, int, int, int, int, int, bool, const QPixmap*, const QString&)")]
+		public static QRect QItemRect(QPainter p, int gs, int x, int y, int w, int h, int flags, bool enabled, QPixmap pixmap, string text) {
+			return StaticQGlobalSpace().QItemRect(p,gs,x,y,w,h,flags,enabled,pixmap,text);
+		}
+		[SmokeMethod("qDrawItem(QPainter*, Qt::GUIStyle, int, int, int, int, int, const QColorGroup&, bool, const QPixmap*, const QString&, int, const QColor*)")]
+		public static void QDrawItem(QPainter p, int gs, int x, int y, int w, int h, int flags, QColorGroup g, bool enabled, QPixmap pixmap, string text, int len, QColor penColor) {
+			StaticQGlobalSpace().QDrawItem(p,gs,x,y,w,h,flags,g,enabled,pixmap,text,len,penColor);
+		}
+		[SmokeMethod("qDrawItem(QPainter*, Qt::GUIStyle, int, int, int, int, int, const QColorGroup&, bool, const QPixmap*, const QString&, int)")]
+		public static void QDrawItem(QPainter p, int gs, int x, int y, int w, int h, int flags, QColorGroup g, bool enabled, QPixmap pixmap, string text, int len) {
+			StaticQGlobalSpace().QDrawItem(p,gs,x,y,w,h,flags,g,enabled,pixmap,text,len);
+		}
+		[SmokeMethod("qDrawItem(QPainter*, Qt::GUIStyle, int, int, int, int, int, const QColorGroup&, bool, const QPixmap*, const QString&)")]
+		public static void QDrawItem(QPainter p, int gs, int x, int y, int w, int h, int flags, QColorGroup g, bool enabled, QPixmap pixmap, string text) {
+			StaticQGlobalSpace().QDrawItem(p,gs,x,y,w,h,flags,g,enabled,pixmap,text);
+		}
+		[SmokeMethod("qDrawArrow(QPainter*, Qt::ArrowType, Qt::GUIStyle, bool, int, int, int, int, const QColorGroup&, bool)")]
+		public static void QDrawArrow(QPainter p, int type, int style, bool down, int x, int y, int w, int h, QColorGroup g, bool enabled) {
+			StaticQGlobalSpace().QDrawArrow(p,type,style,down,x,y,w,h,g,enabled);
+		}
+		///<remarks>**************************************************
+		///  QCursor stream functions
+		///**************************************************</remarks>		<short>                                                                                QCursor stream functions                                                                            </short>
+		[SmokeMethod("operator<<(QDataStream&, const QCursor&)")]
+		public static QDataStream op_write(QDataStream arg1, QCursor arg2) {
+			return StaticQGlobalSpace().op_write(arg1,arg2);
+		}
+		[SmokeMethod("operator>>(QDataStream&, QCursor&)")]
+		public static QDataStream op_read(QDataStream arg1, QCursor arg2) {
+			return StaticQGlobalSpace().op_read(arg1,arg2);
+		}
+		[SmokeMethod("qAppName()")]
+		public static string QAppName() {
+			return StaticQGlobalSpace().QAppName();
+		}
+		// void qAddPostRoutine(QtCleanUpFunction arg1); >>>> NOT CONVERTED
+		// void qRemovePostRoutine(QtCleanUpFunction arg1); >>>> NOT CONVERTED
+		///<remarks>**************************************************
+		///  Safe and portable C string functions; extensions to standard string.h
+		///**************************************************</remarks>		<short>                                                                                Safe and portable C string functions; extensions to standard string.</short>
+		// void* qmemmove(void* arg1,const void* arg2,uint arg3); >>>> NOT CONVERTED
+		[SmokeMethod("qstrdup(const char*)")]
+		public static string Qstrdup(string arg1) {
+			return StaticQGlobalSpace().Qstrdup(arg1);
+		}
+		[SmokeMethod("qstrlen(const char*)")]
+		public static uint Qstrlen(string str) {
+			return StaticQGlobalSpace().Qstrlen(str);
+		}
+		[SmokeMethod("qstrcpy(char*, const char*)")]
+		public static string Qstrcpy(string dst, string src) {
+			return StaticQGlobalSpace().Qstrcpy(dst,src);
+		}
+		[SmokeMethod("qstrncpy(char*, const char*, uint)")]
+		public static string Qstrncpy(string dst, string src, uint len) {
+			return StaticQGlobalSpace().Qstrncpy(dst,src,len);
+		}
+		[SmokeMethod("qstrcmp(const char*, const char*)")]
+		public static int Qstrcmp(string str1, string str2) {
+			return StaticQGlobalSpace().Qstrcmp(str1,str2);
+		}
+		[SmokeMethod("qstrncmp(const char*, const char*, uint)")]
+		public static int Qstrncmp(string str1, string str2, uint len) {
+			return StaticQGlobalSpace().Qstrncmp(str1,str2,len);
+		}
+		[SmokeMethod("qstricmp(const char*, const char*)")]
+		public static int Qstricmp(string arg1, string arg2) {
+			return StaticQGlobalSpace().Qstricmp(arg1,arg2);
+		}
+		[SmokeMethod("qstrnicmp(const char*, const char*, uint)")]
+		public static int Qstrnicmp(string arg1, string arg2, uint len) {
+			return StaticQGlobalSpace().Qstrnicmp(arg1,arg2,len);
+		}
+		[SmokeMethod("cstrlen(const char*)")]
+		public static uint Cstrlen(string str) {
+			return StaticQGlobalSpace().Cstrlen(str);
+		}
+		[SmokeMethod("cstrcpy(char*, const char*)")]
+		public static string Cstrcpy(string dst, string src) {
+			return StaticQGlobalSpace().Cstrcpy(dst,src);
+		}
+		[SmokeMethod("cstrcmp(const char*, const char*)")]
+		public static int Cstrcmp(string str1, string str2) {
+			return StaticQGlobalSpace().Cstrcmp(str1,str2);
+		}
+		[SmokeMethod("cstrncmp(const char*, const char*, uint)")]
+		public static int Cstrncmp(string str1, string str2, uint len) {
+			return StaticQGlobalSpace().Cstrncmp(str1,str2,len);
+		}
+		[SmokeMethod("qChecksum(const char*, uint)")]
+		public static ushort QChecksum(string s, uint len) {
+			return StaticQGlobalSpace().QChecksum(s,len);
+		}
+		[SmokeMethod("qCompress(const uchar*, int)")]
+		public static QByteArray QCompress(char[] data, int nbytes) {
+			return StaticQGlobalSpace().QCompress(data,nbytes);
+		}
+		[SmokeMethod("qUncompress(const uchar*, int)")]
+		public static QByteArray QUncompress(char[] data, int nbytes) {
+			return StaticQGlobalSpace().QUncompress(data,nbytes);
+		}
+		[SmokeMethod("qCompress(const QByteArray&)")]
+		public static QByteArray QCompress(QByteArray data) {
+			return StaticQGlobalSpace().QCompress(data);
+		}
+		[SmokeMethod("qUncompress(const QByteArray&)")]
+		public static QByteArray QUncompress(QByteArray data) {
+			return StaticQGlobalSpace().QUncompress(data);
+		}
+		///<remarks>**************************************************
+		///  QByteArray stream functions
+		///**************************************************</remarks>		<short>                                                                                QByteArray stream functions                                                                            </short>
+		[SmokeMethod("operator<<(QDataStream&, const QByteArray&)")]
+		public static QDataStream op_write(QDataStream arg1, QByteArray arg2) {
+			return StaticQGlobalSpace().op_write(arg1,arg2);
+		}
+		[SmokeMethod("operator>>(QDataStream&, QByteArray&)")]
+		public static QDataStream op_read(QDataStream arg1, QByteArray arg2) {
+			return StaticQGlobalSpace().op_read(arg1,arg2);
+		}
+		///<remarks>**************************************************
+		///  string stream functions
+		///**************************************************</remarks>		<short>                                                                                QCString stream functions                                                                            </short>
+		[SmokeMethod("operator<<(QDataStream&, const QCString&)")]
+		public static QDataStream op_write(QDataStream arg1, string arg2) {
+			return StaticQGlobalSpace().op_write(arg1,arg2);
+		}
+		[SmokeMethod("operator>>(QDataStream&, QCString&)")]
+		public static QDataStream op_read(QDataStream arg1, StringBuilder arg2) {
+			return StaticQGlobalSpace().op_read(arg1,arg2);
+		}
+		///<remarks>**************************************************
+		///  string non-member operators
+		///**************************************************</remarks>		<short>                                                                                QCString non-member operators                                                                            </short>
+		[SmokeMethod("operator==(const QCString&, const QCString&)")]
+		public static bool op_equals(string s1, string s2) {
+			return StaticQGlobalSpace().op_equals(s1,s2);
+		}
+		[SmokeMethod("operator<(const QCString&, const QCString&)")]
+		public static bool op_lt(string s1, string s2) {
+			return StaticQGlobalSpace().op_lt(s1,s2);
+		}
+		[SmokeMethod("operator<=(const QCString&, const QCString&)")]
+		public static bool op_lte(string s1, string s2) {
+			return StaticQGlobalSpace().op_lte(s1,s2);
+		}
+		[SmokeMethod("operator>(const QCString&, const QCString&)")]
+		public static bool op_gt(string s1, string s2) {
+			return StaticQGlobalSpace().op_gt(s1,s2);
+		}
+		[SmokeMethod("operator>=(const QCString&, const QCString&)")]
+		public static bool op_gte(string s1, string s2) {
+			return StaticQGlobalSpace().op_gte(s1,s2);
+		}
+		[SmokeMethod("operator+(const QCString&, const QCString&)")]
+		public static string op_plus(string s1, string s2) {
+			return StaticQGlobalSpace().op_plus(s1,s2);
+		}
+		[SmokeMethod("operator+(const QCString&, char)")]
+		public static string op_plus(string s1, char c2) {
+			return StaticQGlobalSpace().op_plus(s1,c2);
+		}
+		[SmokeMethod("operator+(char, const QCString&)")]
+		public static string op_plus(char c1, string s2) {
+			return StaticQGlobalSpace().op_plus(c1,s2);
+		}
+		[SmokeMethod("operator<<(QTextStream&, const QDomNode&)")]
+		public static QTextStream op_write(QTextStream arg1, QDomNode arg2) {
+			return StaticQGlobalSpace().op_write(arg1,arg2);
+		}
+		[SmokeMethod("operator*(const QWMatrix&, const QWMatrix&)")]
+		public static QWMatrix op_mult(QWMatrix arg1, QWMatrix arg2) {
+			return StaticQGlobalSpace().op_mult(arg1,arg2);
+		}
+		///<remarks>**************************************************
+		///  QWMatrix stream functions
+		///**************************************************</remarks>		<short>                                                                                QWMatrix stream functions                                                                            </short>
+		[SmokeMethod("operator<<(QDataStream&, const QWMatrix&)")]
+		public static QDataStream op_write(QDataStream arg1, QWMatrix arg2) {
+			return StaticQGlobalSpace().op_write(arg1,arg2);
+		}
+		[SmokeMethod("operator>>(QDataStream&, QWMatrix&)")]
+		public static QDataStream op_read(QDataStream arg1, QWMatrix arg2) {
 			return StaticQGlobalSpace().op_read(arg1,arg2);
 		}
 		///<remarks>**************************************************
 		///  QBrush stream functions
 		///**************************************************</remarks>		<short>                                                                                QBrush stream functions                                                                            </short>
+		[SmokeMethod("operator<<(QDataStream&, const QBrush&)")]
 		public static QDataStream op_write(QDataStream arg1, QBrush arg2) {
 			return StaticQGlobalSpace().op_write(arg1,arg2);
 		}
+		[SmokeMethod("operator>>(QDataStream&, QBrush&)")]
 		public static QDataStream op_read(QDataStream arg1, QBrush arg2) {
 			return StaticQGlobalSpace().op_read(arg1,arg2);
 		}
-		///<remarks>**************************************************
-		///  QSize stream functions
-		///**************************************************</remarks>		<short>                                                                                QSize stream functions                                                                            </short>
-		public static QDataStream op_write(QDataStream arg1, QSize arg2) {
+		[SmokeMethod("operator==(char, QChar)")]
+		public static bool op_equals(char ch, char c) {
+			return StaticQGlobalSpace().op_equals(ch,c);
+		}
+		[SmokeMethod("operator<=(QChar, char)")]
+		public static bool op_lte(char c, char ch) {
+			return StaticQGlobalSpace().op_lte(c,ch);
+		}
+		[SmokeMethod("operator>=(QChar, char)")]
+		public static bool op_gte(char c, char ch) {
+			return StaticQGlobalSpace().op_gte(c,ch);
+		}
+		[SmokeMethod("operator<(QChar, char)")]
+		public static bool op_lt(char c, char ch) {
+			return StaticQGlobalSpace().op_lt(c,ch);
+		}
+		[SmokeMethod("operator>(QChar, char)")]
+		public static bool op_gt(char c, char ch) {
+			return StaticQGlobalSpace().op_gt(c,ch);
+		}
+		[SmokeMethod("operator<<(QDataStream&, const QImage&)")]
+		public static QDataStream op_write(QDataStream arg1, QImage arg2) {
 			return StaticQGlobalSpace().op_write(arg1,arg2);
 		}
-		public static QDataStream op_read(QDataStream arg1, QSize arg2) {
+		[SmokeMethod("operator>>(QDataStream&, QImage&)")]
+		public static QDataStream op_read(QDataStream arg1, QImage arg2) {
 			return StaticQGlobalSpace().op_read(arg1,arg2);
 		}
-		///<remarks>**************************************************
-		///  QSize inline functions
-		///**************************************************</remarks>		<short>                                                                                QSize inline functions                                                                            </short>
-		public static bool op_equals(QSize s1, QSize s2) {
-			return StaticQGlobalSpace().op_equals(s1,s2);
+		[SmokeMethod("bitBlt(QImage*, int, int, const QImage*, int, int, int, int, int)")]
+		public static void BitBlt(QImage dst, int dx, int dy, QImage src, int sx, int sy, int sw, int sh, int conversion_flags) {
+			StaticQGlobalSpace().BitBlt(dst,dx,dy,src,sx,sy,sw,sh,conversion_flags);
 		}
-		public static QSize op_plus(QSize s1, QSize s2) {
-			return StaticQGlobalSpace().op_plus(s1,s2);
+		[SmokeMethod("bitBlt(QImage*, int, int, const QImage*, int, int, int, int)")]
+		public static void BitBlt(QImage dst, int dx, int dy, QImage src, int sx, int sy, int sw, int sh) {
+			StaticQGlobalSpace().BitBlt(dst,dx,dy,src,sx,sy,sw,sh);
 		}
-		public static QSize op_minus(QSize s1, QSize s2) {
-			return StaticQGlobalSpace().op_minus(s1,s2);
+		[SmokeMethod("bitBlt(QImage*, int, int, const QImage*, int, int, int)")]
+		public static void BitBlt(QImage dst, int dx, int dy, QImage src, int sx, int sy, int sw) {
+			StaticQGlobalSpace().BitBlt(dst,dx,dy,src,sx,sy,sw);
 		}
-		public static QSize op_mult(QSize s, int c) {
-			return StaticQGlobalSpace().op_mult(s,c);
+		[SmokeMethod("bitBlt(QImage*, int, int, const QImage*, int, int)")]
+		public static void BitBlt(QImage dst, int dx, int dy, QImage src, int sx, int sy) {
+			StaticQGlobalSpace().BitBlt(dst,dx,dy,src,sx,sy);
 		}
-		public static QSize op_mult(int c, QSize s) {
-			return StaticQGlobalSpace().op_mult(c,s);
+		[SmokeMethod("bitBlt(QImage*, int, int, const QImage*, int)")]
+		public static void BitBlt(QImage dst, int dx, int dy, QImage src, int sx) {
+			StaticQGlobalSpace().BitBlt(dst,dx,dy,src,sx);
 		}
-		public static QSize op_mult(QSize s, double c) {
-			return StaticQGlobalSpace().op_mult(s,c);
+		[SmokeMethod("bitBlt(QImage*, int, int, const QImage*)")]
+		public static void BitBlt(QImage dst, int dx, int dy, QImage src) {
+			StaticQGlobalSpace().BitBlt(dst,dx,dy,src);
 		}
-		public static QSize op_mult(double c, QSize s) {
-			return StaticQGlobalSpace().op_mult(c,s);
+		[SmokeMethod("operator>>(QDataStream&, QVariant&)")]
+		public static QDataStream op_read(QDataStream s, QVariant p) {
+			return StaticQGlobalSpace().op_read(s,p);
 		}
-		public static QSize op_div(QSize s, int c) {
-			return StaticQGlobalSpace().op_div(s,c);
+		[SmokeMethod("operator<<(QDataStream&, const QVariant&)")]
+		public static QDataStream op_write(QDataStream s, QVariant p) {
+			return StaticQGlobalSpace().op_write(s,p);
 		}
-		public static QSize op_div(QSize s, double c) {
-			return StaticQGlobalSpace().op_div(s,c);
+		[SmokeMethod("operator>>(QDataStream&, QVariant::Type&)")]
+		public static QDataStream op_read(QDataStream s, int p) {
+			return StaticQGlobalSpace().op_read(s,p);
+		}
+		[SmokeMethod("operator<<(QDataStream&, const QVariant::Type)")]
+		public static QDataStream op_write(QDataStream s, int p) {
+			return StaticQGlobalSpace().op_write(s,p);
 		}
 		///<remarks>*************************************************
-		/// $Id: qt/qgl.h   3.3.4   edited Jul 9 2003 $
+		/// $Id: qt/qgl.h   3.3.5   edited Aug 31 12:17 $
 		///
 		///* Definition of OpenGL classes for Qt
 		///
 		///* Created : 970112
 		///
-		///* Copyright (C) 1992-2000 Trolltech AS.  All rights reserved.
+		///* Copyright (C) 1992-2005 Trolltech AS.  All rights reserved.
 		///
 		///* This file is part of the opengl module of the Qt GUI Toolkit.
 		///
@@ -437,103 +867,122 @@ namespace Qt {
 		/// not clear to you.
 		///
 		///**********************************************</remarks>		<short>                                                                               $Id: qt/qgl.</short>
+		[SmokeMethod("qGLVersion()")]
 		public static string QGLVersion() {
 			return StaticQGlobalSpace().QGLVersion();
 		}
+		[SmokeMethod("operator==(const QGLFormat&, const QGLFormat&)")]
 		public static bool op_equals(QGLFormat arg1, QGLFormat arg2) {
 			return StaticQGlobalSpace().op_equals(arg1,arg2);
 		}
+		///<remarks>**************************************************
+		///  QFont stream functions
+		///**************************************************</remarks>		<short>                                                                                QFont stream functions                                                                            </short>
+		[SmokeMethod("operator<<(QDataStream&, const QFont&)")]
+		public static QDataStream op_write(QDataStream arg1, QFont arg2) {
+			return StaticQGlobalSpace().op_write(arg1,arg2);
+		}
+		[SmokeMethod("operator>>(QDataStream&, QFont&)")]
+		public static QDataStream op_read(QDataStream arg1, QFont arg2) {
+			return StaticQGlobalSpace().op_read(arg1,arg2);
+		}
+		///<remarks>**************************************************
+		///  QSize stream functions
+		///**************************************************</remarks>		<short>                                                                                QSize stream functions                                                                            </short>
+		[SmokeMethod("operator<<(QDataStream&, const QSize&)")]
+		public static QDataStream op_write(QDataStream arg1, QSize arg2) {
+			return StaticQGlobalSpace().op_write(arg1,arg2);
+		}
+		[SmokeMethod("operator>>(QDataStream&, QSize&)")]
+		public static QDataStream op_read(QDataStream arg1, QSize arg2) {
+			return StaticQGlobalSpace().op_read(arg1,arg2);
+		}
+		///<remarks>**************************************************
+		///  QSize inline functions
+		///**************************************************</remarks>		<short>                                                                                QSize inline functions                                                                            </short>
+		[SmokeMethod("operator==(const QSize&, const QSize&)")]
+		public static bool op_equals(QSize s1, QSize s2) {
+			return StaticQGlobalSpace().op_equals(s1,s2);
+		}
+		[SmokeMethod("operator+(const QSize&, const QSize&)")]
+		public static QSize op_plus(QSize s1, QSize s2) {
+			return StaticQGlobalSpace().op_plus(s1,s2);
+		}
+		[SmokeMethod("operator-(const QSize&, const QSize&)")]
+		public static QSize op_minus(QSize s1, QSize s2) {
+			return StaticQGlobalSpace().op_minus(s1,s2);
+		}
+		[SmokeMethod("operator*(const QSize&, int)")]
+		public static QSize op_mult(QSize s, int c) {
+			return StaticQGlobalSpace().op_mult(s,c);
+		}
+		[SmokeMethod("operator*(int, const QSize&)")]
+		public static QSize op_mult(int c, QSize s) {
+			return StaticQGlobalSpace().op_mult(c,s);
+		}
+		[SmokeMethod("operator*(const QSize&, double)")]
+		public static QSize op_mult(QSize s, double c) {
+			return StaticQGlobalSpace().op_mult(s,c);
+		}
+		[SmokeMethod("operator*(double, const QSize&)")]
+		public static QSize op_mult(double c, QSize s) {
+			return StaticQGlobalSpace().op_mult(c,s);
+		}
+		[SmokeMethod("operator/(const QSize&, int)")]
+		public static QSize op_div(QSize s, int c) {
+			return StaticQGlobalSpace().op_div(s,c);
+		}
+		[SmokeMethod("operator/(const QSize&, double)")]
+		public static QSize op_div(QSize s, double c) {
+			return StaticQGlobalSpace().op_div(s,c);
+		}
+		[SmokeMethod("operator>>(QDataStream&, QStringList&)")]
 		public static QDataStream op_read(QDataStream arg1, string[] arg2) {
 			return StaticQGlobalSpace().op_read(arg1,arg2);
 		}
+		[SmokeMethod("operator<<(QDataStream&, const QStringList&)")]
 		public static QDataStream op_write(QDataStream arg1, string[] arg2) {
 			return StaticQGlobalSpace().op_write(arg1,arg2);
 		}
-		public static QDataStream op_write(QDataStream arg1, QUuid arg2) {
+		///<remarks>**************************************************
+		///  QPixmap stream functions
+		///**************************************************</remarks>		<short>                                                                                QPixmap stream functions                                                                            </short>
+		[SmokeMethod("operator<<(QDataStream&, const QPixmap&)")]
+		public static QDataStream op_write(QDataStream arg1, QPixmap arg2) {
 			return StaticQGlobalSpace().op_write(arg1,arg2);
 		}
-		public static QDataStream op_read(QDataStream arg1, QUuid arg2) {
+		[SmokeMethod("operator>>(QDataStream&, QPixmap&)")]
+		public static QDataStream op_read(QDataStream arg1, QPixmap arg2) {
 			return StaticQGlobalSpace().op_read(arg1,arg2);
 		}
-		public static int QRed(uint rgb) {
-			return StaticQGlobalSpace().QRed(rgb);
+		[SmokeMethod("copyBlt(QPixmap*, int, int, const QPixmap*, int, int, int, int)")]
+		public static void CopyBlt(QPixmap dst, int dx, int dy, QPixmap src, int sx, int sy, int sw, int sh) {
+			StaticQGlobalSpace().CopyBlt(dst,dx,dy,src,sx,sy,sw,sh);
 		}
-		public static int QGreen(uint rgb) {
-			return StaticQGlobalSpace().QGreen(rgb);
+		[SmokeMethod("copyBlt(QPixmap*, int, int, const QPixmap*, int, int, int)")]
+		public static void CopyBlt(QPixmap dst, int dx, int dy, QPixmap src, int sx, int sy, int sw) {
+			StaticQGlobalSpace().CopyBlt(dst,dx,dy,src,sx,sy,sw);
 		}
-		public static int QBlue(uint rgb) {
-			return StaticQGlobalSpace().QBlue(rgb);
+		[SmokeMethod("copyBlt(QPixmap*, int, int, const QPixmap*, int, int)")]
+		public static void CopyBlt(QPixmap dst, int dx, int dy, QPixmap src, int sx, int sy) {
+			StaticQGlobalSpace().CopyBlt(dst,dx,dy,src,sx,sy);
 		}
-		public static int QAlpha(uint rgb) {
-			return StaticQGlobalSpace().QAlpha(rgb);
+		[SmokeMethod("copyBlt(QPixmap*, int, int, const QPixmap*, int)")]
+		public static void CopyBlt(QPixmap dst, int dx, int dy, QPixmap src, int sx) {
+			StaticQGlobalSpace().CopyBlt(dst,dx,dy,src,sx);
 		}
-		public static uint QRgb(int r, int g, int b) {
-			return StaticQGlobalSpace().QRgb(r,g,b);
+		[SmokeMethod("copyBlt(QPixmap*, int, int, const QPixmap*)")]
+		public static void CopyBlt(QPixmap dst, int dx, int dy, QPixmap src) {
+			StaticQGlobalSpace().CopyBlt(dst,dx,dy,src);
 		}
-		public static uint QRgba(int r, int g, int b, int a) {
-			return StaticQGlobalSpace().QRgba(r,g,b,a);
-		}
-		public static int QGray(int r, int g, int b) {
-			return StaticQGlobalSpace().QGray(r,g,b);
-		}
-		public static int QGray(uint rgb) {
-			return StaticQGlobalSpace().QGray(rgb);
-		}
-		///<remarks>**************************************************
-		///  QColor stream functions
-		///**************************************************</remarks>		<short>                                                                                QColor stream functions                                                                            </short>
-		public static QDataStream op_write(QDataStream arg1, QColor arg2) {
-			return StaticQGlobalSpace().op_write(arg1,arg2);
-		}
-		public static QDataStream op_read(QDataStream arg1, QColor arg2) {
-			return StaticQGlobalSpace().op_read(arg1,arg2);
-		}
-		///<remarks>**************************************************
-		///  Misc. QBitArray operator functions
-		///**************************************************</remarks>		<short>                                                                                Misc.</short>
-		// QBitArray operator&(const QBitArray& arg1,const QBitArray& arg2); >>>> NOT CONVERTED
-		// QBitArray operator|(const QBitArray& arg1,const QBitArray& arg2); >>>> NOT CONVERTED
-		// QBitArray operator^(const QBitArray& arg1,const QBitArray& arg2); >>>> NOT CONVERTED
-		// QDataStream& operator<<(QDataStream& arg1,const QBitArray& arg2); >>>> NOT CONVERTED
-		// QDataStream& operator>>(QDataStream& arg1,QBitArray& arg2); >>>> NOT CONVERTED
-		// QTextStream& operator>>(QTextStream& arg1,QTSFUNC arg2); >>>> NOT CONVERTED
-		// QTextStream& operator<<(QTextStream& arg1,QTSFUNC arg2); >>>> NOT CONVERTED
-		// QTextStream& operator<<(QTextStream& arg1,QTSManip arg2); >>>> NOT CONVERTED
-		public static QTextStream Bin(QTextStream s) {
-			return StaticQGlobalSpace().Bin(s);
-		}
-		public static QTextStream Oct(QTextStream s) {
-			return StaticQGlobalSpace().Oct(s);
-		}
-		public static QTextStream Dec(QTextStream s) {
-			return StaticQGlobalSpace().Dec(s);
-		}
-		public static QTextStream Hex(QTextStream s) {
-			return StaticQGlobalSpace().Hex(s);
-		}
-		public static QTextStream Endl(QTextStream s) {
-			return StaticQGlobalSpace().Endl(s);
-		}
-		public static QTextStream Flush(QTextStream s) {
-			return StaticQGlobalSpace().Flush(s);
-		}
-		public static QTextStream Ws(QTextStream s) {
-			return StaticQGlobalSpace().Ws(s);
-		}
-		public static QTextStream Reset(QTextStream s) {
-			return StaticQGlobalSpace().Reset(s);
-		}
-		// QTSManip qSetW(int arg1); >>>> NOT CONVERTED
-		// QTSManip qSetFill(int arg1); >>>> NOT CONVERTED
-		// QTSManip qSetPrecision(int arg1); >>>> NOT CONVERTED
 		///<remarks>*************************************************
-		/// $Id: qt/qnetwork.h   3.3.4   edited May 27 2003 $
+		/// $Id: qt/qnetwork.h   3.3.5   edited Aug 31 12:17 $
 		///
 		///* Definition of qInitNetworkProtocols function.
 		///
 		///* Created : 970521
 		///
-		///* Copyright (C) 1992-2000 Trolltech AS.  All rights reserved.
+		///* Copyright (C) 1992-2005 Trolltech AS.  All rights reserved.
 		///
 		///* This file is part of the network module of the Qt GUI Toolkit.
 		///
@@ -562,536 +1011,314 @@ namespace Qt {
 		/// not clear to you.
 		///
 		///**********************************************</remarks>		<short>                                                                               $Id: qt/qnetwork.</short>
+		[SmokeMethod("qInitNetworkProtocols()")]
 		public static void QInitNetworkProtocols() {
 			StaticQGlobalSpace().QInitNetworkProtocols();
 		}
 		///<remarks>**************************************************
-		///  QCursor stream functions
-		///**************************************************</remarks>		<short>                                                                                QCursor stream functions                                                                            </short>
-		public static QDataStream op_write(QDataStream arg1, QCursor arg2) {
+		///  QPointArray stream functions
+		///**************************************************</remarks>		<short>                                                                                QPointArray stream functions                                                                            </short>
+		[SmokeMethod("operator<<(QDataStream&, const QPointArray&)")]
+		public static QDataStream op_write(QDataStream arg1, QPointArray arg2) {
 			return StaticQGlobalSpace().op_write(arg1,arg2);
 		}
-		public static QDataStream op_read(QDataStream arg1, QCursor arg2) {
-			return StaticQGlobalSpace().op_read(arg1,arg2);
-		}
-		public static int QRound(double d) {
-			return StaticQGlobalSpace().QRound(d);
-		}
-		public static string QVersion() {
-			return StaticQGlobalSpace().QVersion();
-		}
-		public static bool QSysInfo(out int wordSize, out bool bigEndian) {
-			return StaticQGlobalSpace().QSysInfo(out wordSize,out bigEndian);
-		}
-		public static bool QSharedBuild() {
-			return StaticQGlobalSpace().QSharedBuild();
-		}
-		public static void QSystemWarning(string arg1, int code) {
-			StaticQGlobalSpace().QSystemWarning(arg1,code);
-		}
-		public static void QSystemWarning(string arg1) {
-			StaticQGlobalSpace().QSystemWarning(arg1);
-		}
-		// QtMsgHandler qInstallMsgHandler(QtMsgHandler arg1); >>>> NOT CONVERTED
-		public static void QSuppressObsoleteWarnings(bool arg1) {
-			StaticQGlobalSpace().QSuppressObsoleteWarnings(arg1);
-		}
-		public static void QSuppressObsoleteWarnings() {
-			StaticQGlobalSpace().QSuppressObsoleteWarnings();
-		}
-		public static void QObsolete(string arg1, string oldfunc, string newfunc) {
-			StaticQGlobalSpace().QObsolete(arg1,oldfunc,newfunc);
-		}
-		public static void QObsolete(string arg1, string oldfunc) {
-			StaticQGlobalSpace().QObsolete(arg1,oldfunc);
-		}
-		public static void QObsolete(string message) {
-			StaticQGlobalSpace().QObsolete(message);
-		}
-		public static string QInstallPath() {
-			return StaticQGlobalSpace().QInstallPath();
-		}
-		public static string QInstallPathDocs() {
-			return StaticQGlobalSpace().QInstallPathDocs();
-		}
-		public static string QInstallPathHeaders() {
-			return StaticQGlobalSpace().QInstallPathHeaders();
-		}
-		public static string QInstallPathLibs() {
-			return StaticQGlobalSpace().QInstallPathLibs();
-		}
-		public static string QInstallPathBins() {
-			return StaticQGlobalSpace().QInstallPathBins();
-		}
-		public static string QInstallPathPlugins() {
-			return StaticQGlobalSpace().QInstallPathPlugins();
-		}
-		public static string QInstallPathData() {
-			return StaticQGlobalSpace().QInstallPathData();
-		}
-		public static string QInstallPathTranslations() {
-			return StaticQGlobalSpace().QInstallPathTranslations();
-		}
-		public static string QInstallPathSysconf() {
-			return StaticQGlobalSpace().QInstallPathSysconf();
-		}
-		///<remarks>**************************************************
-		///  QPicture stream functions
-		///**************************************************</remarks>		<short>                                                                                QPicture stream functions                                                                            </short>
-		public static QDataStream op_write(QDataStream arg1, QPicture arg2) {
-			return StaticQGlobalSpace().op_write(arg1,arg2);
-		}
-		public static QDataStream op_read(QDataStream arg1, QPicture arg2) {
-			return StaticQGlobalSpace().op_read(arg1,arg2);
-		}
-		///<remarks>**************************************************
-		///  Safe and portable C string functions; extensions to standard string.h
-		///**************************************************</remarks>		<short>                                                                                Safe and portable C string functions; extensions to standard string.</short>
-		// void* qmemmove(void* arg1,const void* arg2,uint arg3); >>>> NOT CONVERTED
-		public static string Qstrdup(string arg1) {
-			return StaticQGlobalSpace().Qstrdup(arg1);
-		}
-		public static uint Qstrlen(string str) {
-			return StaticQGlobalSpace().Qstrlen(str);
-		}
-		public static string Qstrcpy(string dst, string src) {
-			return StaticQGlobalSpace().Qstrcpy(dst,src);
-		}
-		public static string Qstrncpy(string dst, string src, uint len) {
-			return StaticQGlobalSpace().Qstrncpy(dst,src,len);
-		}
-		public static int Qstrcmp(string str1, string str2) {
-			return StaticQGlobalSpace().Qstrcmp(str1,str2);
-		}
-		public static int Qstrncmp(string str1, string str2, uint len) {
-			return StaticQGlobalSpace().Qstrncmp(str1,str2,len);
-		}
-		public static int Qstricmp(string arg1, string arg2) {
-			return StaticQGlobalSpace().Qstricmp(arg1,arg2);
-		}
-		public static int Qstrnicmp(string arg1, string arg2, uint len) {
-			return StaticQGlobalSpace().Qstrnicmp(arg1,arg2,len);
-		}
-		public static uint Cstrlen(string str) {
-			return StaticQGlobalSpace().Cstrlen(str);
-		}
-		public static string Cstrcpy(string dst, string src) {
-			return StaticQGlobalSpace().Cstrcpy(dst,src);
-		}
-		public static int Cstrcmp(string str1, string str2) {
-			return StaticQGlobalSpace().Cstrcmp(str1,str2);
-		}
-		public static int Cstrncmp(string str1, string str2, uint len) {
-			return StaticQGlobalSpace().Cstrncmp(str1,str2,len);
-		}
-		public static ushort QChecksum(string s, uint len) {
-			return StaticQGlobalSpace().QChecksum(s,len);
-		}
-		public static byte[] QCompress(char[] data, int nbytes) {
-			return StaticQGlobalSpace().QCompress(data,nbytes);
-		}
-		public static byte[] QUncompress(char[] data, int nbytes) {
-			return StaticQGlobalSpace().QUncompress(data,nbytes);
-		}
-		public static byte[] QCompress(byte[] data) {
-			return StaticQGlobalSpace().QCompress(data);
-		}
-		public static byte[] QUncompress(byte[] data) {
-			return StaticQGlobalSpace().QUncompress(data);
-		}
-		///<remarks>**************************************************
-		///  byte[] stream functions
-		///**************************************************</remarks>		<short>                                                                                QByteArray stream functions                                                                            </short>
-		public static QDataStream op_write(QDataStream arg1, byte[] arg2) {
-			return StaticQGlobalSpace().op_write(arg1,arg2);
-		}
-		public static QDataStream op_read(QDataStream arg1, byte[] arg2) {
-			return StaticQGlobalSpace().op_read(arg1,arg2);
-		}
-		///<remarks>**************************************************
-		///  string stream functions
-		///**************************************************</remarks>		<short>                                                                                QCString stream functions                                                                            </short>
-		public static QDataStream op_write(QDataStream arg1, string arg2) {
-			return StaticQGlobalSpace().op_write(arg1,arg2);
-		}
-		public static QDataStream op_read(QDataStream arg1, StringBuilder arg2) {
-			return StaticQGlobalSpace().op_read(arg1,arg2);
-		}
-		///<remarks>**************************************************
-		///  string non-member operators
-		///**************************************************</remarks>		<short>                                                                                QCString non-member operators                                                                            </short>
-		public static bool op_equals(string s1, string s2) {
-			return StaticQGlobalSpace().op_equals(s1,s2);
-		}
-		public static bool op_lt(string s1, string s2) {
-			return StaticQGlobalSpace().op_lt(s1,s2);
-		}
-		public static bool op_lte(string s1, string s2) {
-			return StaticQGlobalSpace().op_lte(s1,s2);
-		}
-		public static bool op_gt(string s1, string s2) {
-			return StaticQGlobalSpace().op_gt(s1,s2);
-		}
-		public static bool op_gte(string s1, string s2) {
-			return StaticQGlobalSpace().op_gte(s1,s2);
-		}
-		public static string op_plus(string s1, string s2) {
-			return StaticQGlobalSpace().op_plus(s1,s2);
-		}
-		public static string op_plus(string s1, char c2) {
-			return StaticQGlobalSpace().op_plus(s1,c2);
-		}
-		public static string op_plus(char c1, string s2) {
-			return StaticQGlobalSpace().op_plus(c1,s2);
-		}
-		public static QWMatrix op_mult(QWMatrix arg1, QWMatrix arg2) {
-			return StaticQGlobalSpace().op_mult(arg1,arg2);
-		}
-		///<remarks>**************************************************
-		///  QWMatrix stream functions
-		///**************************************************</remarks>		<short>                                                                                QWMatrix stream functions                                                                            </short>
-		public static QDataStream op_write(QDataStream arg1, QWMatrix arg2) {
-			return StaticQGlobalSpace().op_write(arg1,arg2);
-		}
-		public static QDataStream op_read(QDataStream arg1, QWMatrix arg2) {
-			return StaticQGlobalSpace().op_read(arg1,arg2);
-		}
-		public static QTextStream op_write(QTextStream arg1, QMainWindow arg2) {
-			return StaticQGlobalSpace().op_write(arg1,arg2);
-		}
-		public static QTextStream op_read(QTextStream arg1, QMainWindow arg2) {
-			return StaticQGlobalSpace().op_read(arg1,arg2);
-		}
-		///<remarks>**************************************************
-		///  QPixmap stream functions
-		///**************************************************</remarks>		<short>                                                                                QPixmap stream functions                                                                            </short>
-		public static QDataStream op_write(QDataStream arg1, QPixmap arg2) {
-			return StaticQGlobalSpace().op_write(arg1,arg2);
-		}
-		public static QDataStream op_read(QDataStream arg1, QPixmap arg2) {
-			return StaticQGlobalSpace().op_read(arg1,arg2);
-		}
-		public static void CopyBlt(QPixmap dst, int dx, int dy, QPixmap src, int sx, int sy, int sw, int sh) {
-			StaticQGlobalSpace().CopyBlt(dst,dx,dy,src,sx,sy,sw,sh);
-		}
-		public static void CopyBlt(QPixmap dst, int dx, int dy, QPixmap src, int sx, int sy, int sw) {
-			StaticQGlobalSpace().CopyBlt(dst,dx,dy,src,sx,sy,sw);
-		}
-		public static void CopyBlt(QPixmap dst, int dx, int dy, QPixmap src, int sx, int sy) {
-			StaticQGlobalSpace().CopyBlt(dst,dx,dy,src,sx,sy);
-		}
-		public static void CopyBlt(QPixmap dst, int dx, int dy, QPixmap src, int sx) {
-			StaticQGlobalSpace().CopyBlt(dst,dx,dy,src,sx);
-		}
-		public static void CopyBlt(QPixmap dst, int dx, int dy, QPixmap src) {
-			StaticQGlobalSpace().CopyBlt(dst,dx,dy,src);
-		}
-		public static string QAppName() {
-			return StaticQGlobalSpace().QAppName();
-		}
-		// void qAddPostRoutine(QtCleanUpFunction arg1); >>>> NOT CONVERTED
-		// void qRemovePostRoutine(QtCleanUpFunction arg1); >>>> NOT CONVERTED
-		public static QTextStream op_write(QTextStream arg1, QDomNode arg2) {
-			return StaticQGlobalSpace().op_write(arg1,arg2);
-		}
-		public static QDataStream op_write(QDataStream arg1, QKeySequence arg2) {
-			return StaticQGlobalSpace().op_write(arg1,arg2);
-		}
-		public static QDataStream op_read(QDataStream arg1, QKeySequence arg2) {
+		[SmokeMethod("operator>>(QDataStream&, QPointArray&)")]
+		public static QDataStream op_read(QDataStream arg1, QPointArray arg2) {
 			return StaticQGlobalSpace().op_read(arg1,arg2);
 		}
 		///<remarks>**************************************************
 		///  QPen stream functions
 		///**************************************************</remarks>		<short>                                                                                QPen stream functions                                                                            </short>
+		[SmokeMethod("operator<<(QDataStream&, const QPen&)")]
 		public static QDataStream op_write(QDataStream arg1, QPen arg2) {
 			return StaticQGlobalSpace().op_write(arg1,arg2);
 		}
+		[SmokeMethod("operator>>(QDataStream&, QPen&)")]
 		public static QDataStream op_read(QDataStream arg1, QPen arg2) {
 			return StaticQGlobalSpace().op_read(arg1,arg2);
 		}
-		///<remarks>**************************************************
-		///  QPointArray stream functions
-		///**************************************************</remarks>		<short>                                                                                QPointArray stream functions                                                                            </short>
-		public static QDataStream op_write(QDataStream arg1, QPointArray arg2) {
-			return StaticQGlobalSpace().op_write(arg1,arg2);
+		[SmokeMethod("qRed(QRgb)")]
+		public static int QRed(uint rgb) {
+			return StaticQGlobalSpace().QRed(rgb);
 		}
-		public static QDataStream op_read(QDataStream arg1, QPointArray arg2) {
-			return StaticQGlobalSpace().op_read(arg1,arg2);
+		[SmokeMethod("qGreen(QRgb)")]
+		public static int QGreen(uint rgb) {
+			return StaticQGlobalSpace().QGreen(rgb);
 		}
-		public static void QDrawShadeLine(QPainter p, int x1, int y1, int x2, int y2, QColorGroup g, bool sunken, int lineWidth, int midLineWidth) {
-			StaticQGlobalSpace().QDrawShadeLine(p,x1,y1,x2,y2,g,sunken,lineWidth,midLineWidth);
+		[SmokeMethod("qBlue(QRgb)")]
+		public static int QBlue(uint rgb) {
+			return StaticQGlobalSpace().QBlue(rgb);
 		}
-		public static void QDrawShadeLine(QPainter p, int x1, int y1, int x2, int y2, QColorGroup g, bool sunken, int lineWidth) {
-			StaticQGlobalSpace().QDrawShadeLine(p,x1,y1,x2,y2,g,sunken,lineWidth);
+		[SmokeMethod("qAlpha(QRgb)")]
+		public static int QAlpha(uint rgb) {
+			return StaticQGlobalSpace().QAlpha(rgb);
 		}
-		public static void QDrawShadeLine(QPainter p, int x1, int y1, int x2, int y2, QColorGroup g, bool sunken) {
-			StaticQGlobalSpace().QDrawShadeLine(p,x1,y1,x2,y2,g,sunken);
+		[SmokeMethod("qRgb(int, int, int)")]
+		public static uint QRgb(int r, int g, int b) {
+			return StaticQGlobalSpace().QRgb(r,g,b);
 		}
-		public static void QDrawShadeLine(QPainter p, int x1, int y1, int x2, int y2, QColorGroup g) {
-			StaticQGlobalSpace().QDrawShadeLine(p,x1,y1,x2,y2,g);
+		[SmokeMethod("qRgba(int, int, int, int)")]
+		public static uint QRgba(int r, int g, int b, int a) {
+			return StaticQGlobalSpace().QRgba(r,g,b,a);
 		}
-		public static void QDrawShadeLine(QPainter p, QPoint p1, QPoint p2, QColorGroup g, bool sunken, int lineWidth, int midLineWidth) {
-			StaticQGlobalSpace().QDrawShadeLine(p,p1,p2,g,sunken,lineWidth,midLineWidth);
+		[SmokeMethod("qGray(int, int, int)")]
+		public static int QGray(int r, int g, int b) {
+			return StaticQGlobalSpace().QGray(r,g,b);
 		}
-		public static void QDrawShadeLine(QPainter p, QPoint p1, QPoint p2, QColorGroup g, bool sunken, int lineWidth) {
-			StaticQGlobalSpace().QDrawShadeLine(p,p1,p2,g,sunken,lineWidth);
-		}
-		public static void QDrawShadeLine(QPainter p, QPoint p1, QPoint p2, QColorGroup g, bool sunken) {
-			StaticQGlobalSpace().QDrawShadeLine(p,p1,p2,g,sunken);
-		}
-		public static void QDrawShadeLine(QPainter p, QPoint p1, QPoint p2, QColorGroup g) {
-			StaticQGlobalSpace().QDrawShadeLine(p,p1,p2,g);
-		}
-		public static void QDrawShadeRect(QPainter p, int x, int y, int w, int h, QColorGroup arg6, bool sunken, int lineWidth, int midLineWidth, QBrush fill) {
-			StaticQGlobalSpace().QDrawShadeRect(p,x,y,w,h,arg6,sunken,lineWidth,midLineWidth,fill);
-		}
-		public static void QDrawShadeRect(QPainter p, int x, int y, int w, int h, QColorGroup arg6, bool sunken, int lineWidth, int midLineWidth) {
-			StaticQGlobalSpace().QDrawShadeRect(p,x,y,w,h,arg6,sunken,lineWidth,midLineWidth);
-		}
-		public static void QDrawShadeRect(QPainter p, int x, int y, int w, int h, QColorGroup arg6, bool sunken, int lineWidth) {
-			StaticQGlobalSpace().QDrawShadeRect(p,x,y,w,h,arg6,sunken,lineWidth);
-		}
-		public static void QDrawShadeRect(QPainter p, int x, int y, int w, int h, QColorGroup arg6, bool sunken) {
-			StaticQGlobalSpace().QDrawShadeRect(p,x,y,w,h,arg6,sunken);
-		}
-		public static void QDrawShadeRect(QPainter p, int x, int y, int w, int h, QColorGroup arg6) {
-			StaticQGlobalSpace().QDrawShadeRect(p,x,y,w,h,arg6);
-		}
-		public static void QDrawShadeRect(QPainter p, QRect r, QColorGroup arg3, bool sunken, int lineWidth, int midLineWidth, QBrush fill) {
-			StaticQGlobalSpace().QDrawShadeRect(p,r,arg3,sunken,lineWidth,midLineWidth,fill);
-		}
-		public static void QDrawShadeRect(QPainter p, QRect r, QColorGroup arg3, bool sunken, int lineWidth, int midLineWidth) {
-			StaticQGlobalSpace().QDrawShadeRect(p,r,arg3,sunken,lineWidth,midLineWidth);
-		}
-		public static void QDrawShadeRect(QPainter p, QRect r, QColorGroup arg3, bool sunken, int lineWidth) {
-			StaticQGlobalSpace().QDrawShadeRect(p,r,arg3,sunken,lineWidth);
-		}
-		public static void QDrawShadeRect(QPainter p, QRect r, QColorGroup arg3, bool sunken) {
-			StaticQGlobalSpace().QDrawShadeRect(p,r,arg3,sunken);
-		}
-		public static void QDrawShadeRect(QPainter p, QRect r, QColorGroup arg3) {
-			StaticQGlobalSpace().QDrawShadeRect(p,r,arg3);
-		}
-		public static void QDrawShadePanel(QPainter p, int x, int y, int w, int h, QColorGroup arg6, bool sunken, int lineWidth, QBrush fill) {
-			StaticQGlobalSpace().QDrawShadePanel(p,x,y,w,h,arg6,sunken,lineWidth,fill);
-		}
-		public static void QDrawShadePanel(QPainter p, int x, int y, int w, int h, QColorGroup arg6, bool sunken, int lineWidth) {
-			StaticQGlobalSpace().QDrawShadePanel(p,x,y,w,h,arg6,sunken,lineWidth);
-		}
-		public static void QDrawShadePanel(QPainter p, int x, int y, int w, int h, QColorGroup arg6, bool sunken) {
-			StaticQGlobalSpace().QDrawShadePanel(p,x,y,w,h,arg6,sunken);
-		}
-		public static void QDrawShadePanel(QPainter p, int x, int y, int w, int h, QColorGroup arg6) {
-			StaticQGlobalSpace().QDrawShadePanel(p,x,y,w,h,arg6);
-		}
-		public static void QDrawShadePanel(QPainter p, QRect r, QColorGroup arg3, bool sunken, int lineWidth, QBrush fill) {
-			StaticQGlobalSpace().QDrawShadePanel(p,r,arg3,sunken,lineWidth,fill);
-		}
-		public static void QDrawShadePanel(QPainter p, QRect r, QColorGroup arg3, bool sunken, int lineWidth) {
-			StaticQGlobalSpace().QDrawShadePanel(p,r,arg3,sunken,lineWidth);
-		}
-		public static void QDrawShadePanel(QPainter p, QRect r, QColorGroup arg3, bool sunken) {
-			StaticQGlobalSpace().QDrawShadePanel(p,r,arg3,sunken);
-		}
-		public static void QDrawShadePanel(QPainter p, QRect r, QColorGroup arg3) {
-			StaticQGlobalSpace().QDrawShadePanel(p,r,arg3);
-		}
-		public static void QDrawWinButton(QPainter p, int x, int y, int w, int h, QColorGroup g, bool sunken, QBrush fill) {
-			StaticQGlobalSpace().QDrawWinButton(p,x,y,w,h,g,sunken,fill);
-		}
-		public static void QDrawWinButton(QPainter p, int x, int y, int w, int h, QColorGroup g, bool sunken) {
-			StaticQGlobalSpace().QDrawWinButton(p,x,y,w,h,g,sunken);
-		}
-		public static void QDrawWinButton(QPainter p, int x, int y, int w, int h, QColorGroup g) {
-			StaticQGlobalSpace().QDrawWinButton(p,x,y,w,h,g);
-		}
-		public static void QDrawWinButton(QPainter p, QRect r, QColorGroup g, bool sunken, QBrush fill) {
-			StaticQGlobalSpace().QDrawWinButton(p,r,g,sunken,fill);
-		}
-		public static void QDrawWinButton(QPainter p, QRect r, QColorGroup g, bool sunken) {
-			StaticQGlobalSpace().QDrawWinButton(p,r,g,sunken);
-		}
-		public static void QDrawWinButton(QPainter p, QRect r, QColorGroup g) {
-			StaticQGlobalSpace().QDrawWinButton(p,r,g);
-		}
-		public static void QDrawWinPanel(QPainter p, int x, int y, int w, int h, QColorGroup arg6, bool sunken, QBrush fill) {
-			StaticQGlobalSpace().QDrawWinPanel(p,x,y,w,h,arg6,sunken,fill);
-		}
-		public static void QDrawWinPanel(QPainter p, int x, int y, int w, int h, QColorGroup arg6, bool sunken) {
-			StaticQGlobalSpace().QDrawWinPanel(p,x,y,w,h,arg6,sunken);
-		}
-		public static void QDrawWinPanel(QPainter p, int x, int y, int w, int h, QColorGroup arg6) {
-			StaticQGlobalSpace().QDrawWinPanel(p,x,y,w,h,arg6);
-		}
-		public static void QDrawWinPanel(QPainter p, QRect r, QColorGroup arg3, bool sunken, QBrush fill) {
-			StaticQGlobalSpace().QDrawWinPanel(p,r,arg3,sunken,fill);
-		}
-		public static void QDrawWinPanel(QPainter p, QRect r, QColorGroup arg3, bool sunken) {
-			StaticQGlobalSpace().QDrawWinPanel(p,r,arg3,sunken);
-		}
-		public static void QDrawWinPanel(QPainter p, QRect r, QColorGroup arg3) {
-			StaticQGlobalSpace().QDrawWinPanel(p,r,arg3);
-		}
-		public static void QDrawPlainRect(QPainter p, int x, int y, int w, int h, QColor arg6, int lineWidth, QBrush fill) {
-			StaticQGlobalSpace().QDrawPlainRect(p,x,y,w,h,arg6,lineWidth,fill);
-		}
-		public static void QDrawPlainRect(QPainter p, int x, int y, int w, int h, QColor arg6, int lineWidth) {
-			StaticQGlobalSpace().QDrawPlainRect(p,x,y,w,h,arg6,lineWidth);
-		}
-		public static void QDrawPlainRect(QPainter p, int x, int y, int w, int h, QColor arg6) {
-			StaticQGlobalSpace().QDrawPlainRect(p,x,y,w,h,arg6);
-		}
-		public static void QDrawPlainRect(QPainter p, QRect r, QColor arg3, int lineWidth, QBrush fill) {
-			StaticQGlobalSpace().QDrawPlainRect(p,r,arg3,lineWidth,fill);
-		}
-		public static void QDrawPlainRect(QPainter p, QRect r, QColor arg3, int lineWidth) {
-			StaticQGlobalSpace().QDrawPlainRect(p,r,arg3,lineWidth);
-		}
-		public static void QDrawPlainRect(QPainter p, QRect r, QColor arg3) {
-			StaticQGlobalSpace().QDrawPlainRect(p,r,arg3);
-		}
-		public static QRect QItemRect(QPainter p, int gs, int x, int y, int w, int h, int flags, bool enabled, QPixmap pixmap, string text, int len) {
-			return StaticQGlobalSpace().QItemRect(p,gs,x,y,w,h,flags,enabled,pixmap,text,len);
-		}
-		public static QRect QItemRect(QPainter p, int gs, int x, int y, int w, int h, int flags, bool enabled, QPixmap pixmap, string text) {
-			return StaticQGlobalSpace().QItemRect(p,gs,x,y,w,h,flags,enabled,pixmap,text);
-		}
-		public static void QDrawItem(QPainter p, int gs, int x, int y, int w, int h, int flags, QColorGroup g, bool enabled, QPixmap pixmap, string text, int len, QColor penColor) {
-			StaticQGlobalSpace().QDrawItem(p,gs,x,y,w,h,flags,g,enabled,pixmap,text,len,penColor);
-		}
-		public static void QDrawItem(QPainter p, int gs, int x, int y, int w, int h, int flags, QColorGroup g, bool enabled, QPixmap pixmap, string text, int len) {
-			StaticQGlobalSpace().QDrawItem(p,gs,x,y,w,h,flags,g,enabled,pixmap,text,len);
-		}
-		public static void QDrawItem(QPainter p, int gs, int x, int y, int w, int h, int flags, QColorGroup g, bool enabled, QPixmap pixmap, string text) {
-			StaticQGlobalSpace().QDrawItem(p,gs,x,y,w,h,flags,g,enabled,pixmap,text);
-		}
-		public static void QDrawArrow(QPainter p, int type, int style, bool down, int x, int y, int w, int h, QColorGroup g, bool enabled) {
-			StaticQGlobalSpace().QDrawArrow(p,type,style,down,x,y,w,h,g,enabled);
+		[SmokeMethod("qGray(QRgb)")]
+		public static int QGray(uint rgb) {
+			return StaticQGlobalSpace().QGray(rgb);
 		}
 		///<remarks>**************************************************
-		///  QColorGroup/QPalette stream functions
-		///**************************************************</remarks>		<short>                                                                                QColorGroup/QPalette stream functions                                                                            </short>
-		public static QDataStream op_write(QDataStream arg1, QColorGroup arg2) {
+		///  QColor stream functions
+		///**************************************************</remarks>		<short>                                                                                QColor stream functions                                                                            </short>
+		[SmokeMethod("operator<<(QDataStream&, const QColor&)")]
+		public static QDataStream op_write(QDataStream arg1, QColor arg2) {
 			return StaticQGlobalSpace().op_write(arg1,arg2);
 		}
-		public static QDataStream op_read(QDataStream arg1, QColorGroup arg2) {
+		[SmokeMethod("operator>>(QDataStream&, QColor&)")]
+		public static QDataStream op_read(QDataStream arg1, QColor arg2) {
 			return StaticQGlobalSpace().op_read(arg1,arg2);
 		}
-		public static QDataStream op_write(QDataStream arg1, QPalette arg2) {
-			return StaticQGlobalSpace().op_write(arg1,arg2);
-		}
-		public static QDataStream op_read(QDataStream arg1, QPalette arg2) {
-			return StaticQGlobalSpace().op_read(arg1,arg2);
-		}
-		// QDataStream& operator>>(QDataStream& arg1,QGList& arg2); >>>> NOT CONVERTED
-		// QDataStream& operator<<(QDataStream& arg1,const QGList& arg2); >>>> NOT CONVERTED
-		///<remarks>**************************************************
-		///  Date and time stream functions
-		///**************************************************</remarks>		<short>                                                                                Date and time stream functions                                                                            </short>
-		public static QDataStream op_write(QDataStream arg1, DateTime arg2) {
-			return StaticQGlobalSpace().op_write(arg1,arg2);
-		}
-		public static QDataStream op_read(QDataStream arg1, DateTime arg2) {
-			return StaticQGlobalSpace().op_read(arg1,arg2);
-		}
-		public static bool op_equals(char ch, char c) {
-			return StaticQGlobalSpace().op_equals(ch,c);
-		}
-		public static bool op_lte(char c, char ch) {
-			return StaticQGlobalSpace().op_lte(c,ch);
-		}
-		public static bool op_gte(char c, char ch) {
-			return StaticQGlobalSpace().op_gte(c,ch);
-		}
-		public static bool op_lt(char c, char ch) {
-			return StaticQGlobalSpace().op_lt(c,ch);
-		}
-		public static bool op_gt(char c, char ch) {
-			return StaticQGlobalSpace().op_gt(c,ch);
-		}
-		///<remarks>**************************************************
-		///  QRegion stream functions
-		///**************************************************</remarks>		<short>                                                                                QRegion stream functions                                                                            </short>
-		public static QDataStream op_write(QDataStream arg1, QRegion arg2) {
-			return StaticQGlobalSpace().op_write(arg1,arg2);
-		}
-		public static QDataStream op_read(QDataStream arg1, QRegion arg2) {
-			return StaticQGlobalSpace().op_read(arg1,arg2);
-		}
+		[SmokeMethod("operator<<(QTextStream&, const QSplitter&)")]
 		public static QTextStream op_write(QTextStream arg1, QSplitter arg2) {
 			return StaticQGlobalSpace().op_write(arg1,arg2);
 		}
+		[SmokeMethod("operator>>(QTextStream&, QSplitter&)")]
 		public static QTextStream op_read(QTextStream arg1, QSplitter arg2) {
 			return StaticQGlobalSpace().op_read(arg1,arg2);
 		}
-		///<remarks>**************************************************
-		///  QFont stream functions
-		///**************************************************</remarks>		<short>                                                                                QFont stream functions                                                                            </short>
-		public static QDataStream op_write(QDataStream arg1, QFont arg2) {
+		[SmokeMethod("operator<<(QDataStream&, const QUuid&)")]
+		public static QDataStream op_write(QDataStream arg1, QUuid arg2) {
 			return StaticQGlobalSpace().op_write(arg1,arg2);
 		}
-		public static QDataStream op_read(QDataStream arg1, QFont arg2) {
+		[SmokeMethod("operator>>(QDataStream&, QUuid&)")]
+		public static QDataStream op_read(QDataStream arg1, QUuid arg2) {
 			return StaticQGlobalSpace().op_read(arg1,arg2);
 		}
+		///<remarks>**************************************************
+		///  Date and time stream functions
+		///**************************************************</remarks>		<short>                                                                                Date and time stream functions                                                                            </short>
+		[SmokeMethod("operator<<(QDataStream&, const QDate&)")]
+		public static QDataStream op_write(QDataStream arg1, DateTime arg2) {
+			return StaticQGlobalSpace().op_write(arg1,arg2);
+		}
+		[SmokeMethod("operator>>(QDataStream&, QDate&)")]
+		public static QDataStream op_read(QDataStream arg1, DateTime arg2) {
+			return StaticQGlobalSpace().op_read(arg1,arg2);
+		}
+		[SmokeMethod("operator<<(QDataStream&, const QKeySequence&)")]
+		public static QDataStream op_write(QDataStream arg1, QKeySequence arg2) {
+			return StaticQGlobalSpace().op_write(arg1,arg2);
+		}
+		[SmokeMethod("operator>>(QDataStream&, QKeySequence&)")]
+		public static QDataStream op_read(QDataStream arg1, QKeySequence arg2) {
+			return StaticQGlobalSpace().op_read(arg1,arg2);
+		}
+		///<remarks>**************************************************
+		///  QPicture stream functions
+		///**************************************************</remarks>		<short>                                                                                QPicture stream functions                                                                            </short>
+		[SmokeMethod("operator<<(QDataStream&, const QPicture&)")]
+		public static QDataStream op_write(QDataStream arg1, QPicture arg2) {
+			return StaticQGlobalSpace().op_write(arg1,arg2);
+		}
+		[SmokeMethod("operator>>(QDataStream&, QPicture&)")]
+		public static QDataStream op_read(QDataStream arg1, QPicture arg2) {
+			return StaticQGlobalSpace().op_read(arg1,arg2);
+		}
+		[SmokeMethod("operator<<(QTextStream&, const QMainWindow&)")]
+		public static QTextStream op_write(QTextStream arg1, QMainWindow arg2) {
+			return StaticQGlobalSpace().op_write(arg1,arg2);
+		}
+		[SmokeMethod("operator>>(QTextStream&, QMainWindow&)")]
+		public static QTextStream op_read(QTextStream arg1, QMainWindow arg2) {
+			return StaticQGlobalSpace().op_read(arg1,arg2);
+		}
+		// QDataStream& operator>>(QDataStream& arg1,QGVector& arg2); >>>> NOT CONVERTED
+		// QDataStream& operator<<(QDataStream& arg1,const QGVector& arg2); >>>> NOT CONVERTED
+		[SmokeMethod("qRound(double)")]
+		public static int QRound(double d) {
+			return StaticQGlobalSpace().QRound(d);
+		}
+		[SmokeMethod("qVersion()")]
+		public static string QVersion() {
+			return StaticQGlobalSpace().QVersion();
+		}
+		[SmokeMethod("qSysInfo(int*, bool*)")]
+		public static bool QSysInfo(out int wordSize, out bool bigEndian) {
+			return StaticQGlobalSpace().QSysInfo(out wordSize,out bigEndian);
+		}
+		[SmokeMethod("qSharedBuild()")]
+		public static bool QSharedBuild() {
+			return StaticQGlobalSpace().QSharedBuild();
+		}
+		[SmokeMethod("qSystemWarning(const char*, int)")]
+		public static void QSystemWarning(string arg1, int code) {
+			StaticQGlobalSpace().QSystemWarning(arg1,code);
+		}
+		[SmokeMethod("qSystemWarning(const char*)")]
+		public static void QSystemWarning(string arg1) {
+			StaticQGlobalSpace().QSystemWarning(arg1);
+		}
+		// QtMsgHandler qInstallMsgHandler(QtMsgHandler arg1); >>>> NOT CONVERTED
+		[SmokeMethod("qSuppressObsoleteWarnings(bool)")]
+		public static void QSuppressObsoleteWarnings(bool arg1) {
+			StaticQGlobalSpace().QSuppressObsoleteWarnings(arg1);
+		}
+		[SmokeMethod("qSuppressObsoleteWarnings()")]
+		public static void QSuppressObsoleteWarnings() {
+			StaticQGlobalSpace().QSuppressObsoleteWarnings();
+		}
+		[SmokeMethod("qObsolete(const char*, const char*, const char*)")]
+		public static void QObsolete(string arg1, string oldfunc, string newfunc) {
+			StaticQGlobalSpace().QObsolete(arg1,oldfunc,newfunc);
+		}
+		[SmokeMethod("qObsolete(const char*, const char*)")]
+		public static void QObsolete(string arg1, string oldfunc) {
+			StaticQGlobalSpace().QObsolete(arg1,oldfunc);
+		}
+		[SmokeMethod("qObsolete(const char*)")]
+		public static void QObsolete(string message) {
+			StaticQGlobalSpace().QObsolete(message);
+		}
+		[SmokeMethod("qInstallPath()")]
+		public static string QInstallPath() {
+			return StaticQGlobalSpace().QInstallPath();
+		}
+		[SmokeMethod("qInstallPathDocs()")]
+		public static string QInstallPathDocs() {
+			return StaticQGlobalSpace().QInstallPathDocs();
+		}
+		[SmokeMethod("qInstallPathHeaders()")]
+		public static string QInstallPathHeaders() {
+			return StaticQGlobalSpace().QInstallPathHeaders();
+		}
+		[SmokeMethod("qInstallPathLibs()")]
+		public static string QInstallPathLibs() {
+			return StaticQGlobalSpace().QInstallPathLibs();
+		}
+		[SmokeMethod("qInstallPathBins()")]
+		public static string QInstallPathBins() {
+			return StaticQGlobalSpace().QInstallPathBins();
+		}
+		[SmokeMethod("qInstallPathPlugins()")]
+		public static string QInstallPathPlugins() {
+			return StaticQGlobalSpace().QInstallPathPlugins();
+		}
+		[SmokeMethod("qInstallPathData()")]
+		public static string QInstallPathData() {
+			return StaticQGlobalSpace().QInstallPathData();
+		}
+		[SmokeMethod("qInstallPathTranslations()")]
+		public static string QInstallPathTranslations() {
+			return StaticQGlobalSpace().QInstallPathTranslations();
+		}
+		[SmokeMethod("qInstallPathSysconf()")]
+		public static string QInstallPathSysconf() {
+			return StaticQGlobalSpace().QInstallPathSysconf();
+		}
+		[SmokeMethod("operator<<(QTextStream&, const QDockArea&)")]
+		public static QTextStream op_write(QTextStream arg1, QDockArea arg2) {
+			return StaticQGlobalSpace().op_write(arg1,arg2);
+		}
+		[SmokeMethod("operator>>(QTextStream&, QDockArea&)")]
+		public static QTextStream op_read(QTextStream arg1, QDockArea arg2) {
+			return StaticQGlobalSpace().op_read(arg1,arg2);
+		}
+		[SmokeMethod("bitBlt(QPaintDevice*, int, int, const QPaintDevice*, int, int, int, int, Qt::RasterOp, bool)")]
 		public static void BitBlt(IQPaintDevice dst, int dx, int dy, IQPaintDevice src, int sx, int sy, int sw, int sh, int arg9, bool ignoreMask) {
 			StaticQGlobalSpace().BitBlt(dst,dx,dy,src,sx,sy,sw,sh,arg9,ignoreMask);
 		}
+		[SmokeMethod("bitBlt(QPaintDevice*, int, int, const QPaintDevice*, int, int, int, int, Qt::RasterOp)")]
 		public static void BitBlt(IQPaintDevice dst, int dx, int dy, IQPaintDevice src, int sx, int sy, int sw, int sh, int arg9) {
 			StaticQGlobalSpace().BitBlt(dst,dx,dy,src,sx,sy,sw,sh,arg9);
 		}
+		[SmokeMethod("bitBlt(QPaintDevice*, int, int, const QPaintDevice*, int, int, int, int)")]
 		public static void BitBlt(IQPaintDevice dst, int dx, int dy, IQPaintDevice src, int sx, int sy, int sw, int sh) {
 			StaticQGlobalSpace().BitBlt(dst,dx,dy,src,sx,sy,sw,sh);
 		}
+		[SmokeMethod("bitBlt(QPaintDevice*, int, int, const QPaintDevice*, int, int, int)")]
 		public static void BitBlt(IQPaintDevice dst, int dx, int dy, IQPaintDevice src, int sx, int sy, int sw) {
 			StaticQGlobalSpace().BitBlt(dst,dx,dy,src,sx,sy,sw);
 		}
+		[SmokeMethod("bitBlt(QPaintDevice*, int, int, const QPaintDevice*, int, int)")]
 		public static void BitBlt(IQPaintDevice dst, int dx, int dy, IQPaintDevice src, int sx, int sy) {
 			StaticQGlobalSpace().BitBlt(dst,dx,dy,src,sx,sy);
 		}
+		[SmokeMethod("bitBlt(QPaintDevice*, int, int, const QPaintDevice*, int)")]
 		public static void BitBlt(IQPaintDevice dst, int dx, int dy, IQPaintDevice src, int sx) {
 			StaticQGlobalSpace().BitBlt(dst,dx,dy,src,sx);
 		}
+		[SmokeMethod("bitBlt(QPaintDevice*, int, int, const QPaintDevice*)")]
 		public static void BitBlt(IQPaintDevice dst, int dx, int dy, IQPaintDevice src) {
 			StaticQGlobalSpace().BitBlt(dst,dx,dy,src);
 		}
+		[SmokeMethod("bitBlt(QPaintDevice*, int, int, const QImage*, int, int, int, int, int)")]
 		public static void BitBlt(IQPaintDevice dst, int dx, int dy, QImage src, int sx, int sy, int sw, int sh, int conversion_flags) {
 			StaticQGlobalSpace().BitBlt(dst,dx,dy,src,sx,sy,sw,sh,conversion_flags);
 		}
+		[SmokeMethod("bitBlt(QPaintDevice*, int, int, const QImage*, int, int, int, int)")]
 		public static void BitBlt(IQPaintDevice dst, int dx, int dy, QImage src, int sx, int sy, int sw, int sh) {
 			StaticQGlobalSpace().BitBlt(dst,dx,dy,src,sx,sy,sw,sh);
 		}
+		[SmokeMethod("bitBlt(QPaintDevice*, int, int, const QImage*, int, int, int)")]
 		public static void BitBlt(IQPaintDevice dst, int dx, int dy, QImage src, int sx, int sy, int sw) {
 			StaticQGlobalSpace().BitBlt(dst,dx,dy,src,sx,sy,sw);
 		}
+		[SmokeMethod("bitBlt(QPaintDevice*, int, int, const QImage*, int, int)")]
 		public static void BitBlt(IQPaintDevice dst, int dx, int dy, QImage src, int sx, int sy) {
 			StaticQGlobalSpace().BitBlt(dst,dx,dy,src,sx,sy);
 		}
+		[SmokeMethod("bitBlt(QPaintDevice*, int, int, const QImage*, int)")]
 		public static void BitBlt(IQPaintDevice dst, int dx, int dy, QImage src, int sx) {
 			StaticQGlobalSpace().BitBlt(dst,dx,dy,src,sx);
 		}
+		[SmokeMethod("bitBlt(QPaintDevice*, int, int, const QImage*)")]
 		public static void BitBlt(IQPaintDevice dst, int dx, int dy, QImage src) {
 			StaticQGlobalSpace().BitBlt(dst,dx,dy,src);
 		}
 		///<remarks>**************************************************
 		///  Inline functions
 		///**************************************************</remarks>		<short>                                                                                Inline functions                                                                            </short>
+		[SmokeMethod("bitBlt(QPaintDevice*, const QPoint&, const QPaintDevice*, const QRect&, Qt::RasterOp, bool)")]
 		public static void BitBlt(IQPaintDevice dst, QPoint dp, IQPaintDevice src, QRect sr, int rop, bool ignoreMask) {
 			StaticQGlobalSpace().BitBlt(dst,dp,src,sr,rop,ignoreMask);
 		}
+		[SmokeMethod("bitBlt(QPaintDevice*, const QPoint&, const QPaintDevice*, const QRect&, Qt::RasterOp)")]
 		public static void BitBlt(IQPaintDevice dst, QPoint dp, IQPaintDevice src, QRect sr, int rop) {
 			StaticQGlobalSpace().BitBlt(dst,dp,src,sr,rop);
 		}
+		[SmokeMethod("bitBlt(QPaintDevice*, const QPoint&, const QPaintDevice*, const QRect&)")]
 		public static void BitBlt(IQPaintDevice dst, QPoint dp, IQPaintDevice src, QRect sr) {
 			StaticQGlobalSpace().BitBlt(dst,dp,src,sr);
 		}
+		[SmokeMethod("bitBlt(QPaintDevice*, const QPoint&, const QPaintDevice*)")]
 		public static void BitBlt(IQPaintDevice dst, QPoint dp, IQPaintDevice src) {
 			StaticQGlobalSpace().BitBlt(dst,dp,src);
 		}
+		[SmokeMethod("operator==(const QRect&, const QRect&)")]
+		public static bool op_equals(QRect arg1, QRect arg2) {
+			return StaticQGlobalSpace().op_equals(arg1,arg2);
+		}
+		///<remarks>**************************************************
+		///  QRect stream functions
+		///**************************************************</remarks>		<short>                                                                                QRect stream functions                                                                            </short>
+		[SmokeMethod("operator<<(QDataStream&, const QRect&)")]
+		public static QDataStream op_write(QDataStream arg1, QRect arg2) {
+			return StaticQGlobalSpace().op_write(arg1,arg2);
+		}
+		[SmokeMethod("operator>>(QDataStream&, QRect&)")]
+		public static QDataStream op_read(QDataStream arg1, QRect arg2) {
+			return StaticQGlobalSpace().op_read(arg1,arg2);
+		}
 		~QGlobalSpace() {
-			ProxyQGlobalSpace().Dispose();
+			DisposeQGlobalSpace();
 		}
 		public void Dispose() {
-			ProxyQGlobalSpace().Dispose();
+			DisposeQGlobalSpace();
+		}
+		private void DisposeQGlobalSpace() {
+			ProxyQGlobalSpace().DisposeQGlobalSpace();
 		}
 	}
 }

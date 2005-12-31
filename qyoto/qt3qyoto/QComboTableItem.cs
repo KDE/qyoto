@@ -29,6 +29,7 @@ namespace Qt {
 			CreateQComboTableItemProxy();
 			NewQComboTableItem(table,list,editable);
 		}
+		[SmokeMethod("QComboTableItem(QTable*, const QStringList&, bool)")]
 		private void NewQComboTableItem(QTable table, string[] list, bool editable) {
 			ProxyQComboTableItem().NewQComboTableItem(table,list,editable);
 		}
@@ -36,56 +37,74 @@ namespace Qt {
 			CreateQComboTableItemProxy();
 			NewQComboTableItem(table,list);
 		}
+		[SmokeMethod("QComboTableItem(QTable*, const QStringList&)")]
 		private void NewQComboTableItem(QTable table, string[] list) {
 			ProxyQComboTableItem().NewQComboTableItem(table,list);
 		}
+		[SmokeMethod("createEditor() const")]
 		public new virtual QWidget CreateEditor() {
 			return ProxyQComboTableItem().CreateEditor();
 		}
+		[SmokeMethod("setContentFromEditor(QWidget*)")]
 		public new virtual void SetContentFromEditor(QWidget w) {
 			ProxyQComboTableItem().SetContentFromEditor(w);
 		}
+		[SmokeMethod("paint(QPainter*, const QColorGroup&, const QRect&, bool)")]
 		public new virtual void Paint(QPainter p, QColorGroup cg, QRect cr, bool selected) {
 			ProxyQComboTableItem().Paint(p,cg,cr,selected);
 		}
+		[SmokeMethod("setCurrentItem(int)")]
 		public virtual void SetCurrentItem(int i) {
 			ProxyQComboTableItem().SetCurrentItem(i);
 		}
+		[SmokeMethod("setCurrentItem(const QString&)")]
 		public virtual void SetCurrentItem(string i) {
 			ProxyQComboTableItem().SetCurrentItem(i);
 		}
+		[SmokeMethod("currentItem() const")]
 		public int CurrentItem() {
 			return ProxyQComboTableItem().CurrentItem();
 		}
+		[SmokeMethod("currentText() const")]
 		public string CurrentText() {
 			return ProxyQComboTableItem().CurrentText();
 		}
+		[SmokeMethod("count() const")]
 		public int Count() {
 			return ProxyQComboTableItem().Count();
 		}
+		[SmokeMethod("text(int) const")]
 		public new string Text(int i) {
 			return ProxyQComboTableItem().Text(i);
 		}
+		[SmokeMethod("setEditable(bool)")]
 		public virtual void SetEditable(bool b) {
 			ProxyQComboTableItem().SetEditable(b);
 		}
+		[SmokeMethod("isEditable() const")]
 		public bool IsEditable() {
 			return ProxyQComboTableItem().IsEditable();
 		}
+		[SmokeMethod("setStringList(const QStringList&)")]
 		public virtual void SetStringList(string[] l) {
 			ProxyQComboTableItem().SetStringList(l);
 		}
+		[SmokeMethod("rtti() const")]
 		public new int Rtti() {
 			return ProxyQComboTableItem().Rtti();
 		}
+		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {
 			return ProxyQComboTableItem().SizeHint();
 		}
 		~QComboTableItem() {
-			ProxyQComboTableItem().Dispose();
+			DisposeQComboTableItem();
 		}
 		public new void Dispose() {
-			ProxyQComboTableItem().Dispose();
+			DisposeQComboTableItem();
+		}
+		private void DisposeQComboTableItem() {
+			ProxyQComboTableItem().DisposeQComboTableItem();
 		}
 	}
 }

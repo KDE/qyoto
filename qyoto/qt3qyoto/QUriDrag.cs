@@ -35,102 +35,142 @@ using System.Collections;
 			return (IQUriDragProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQUriDrag().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQUriDrag().ClassName();
 		}
 		public QUriDrag(string[] uris, QWidget dragSource, string name) : this((Type) null) {
 			CreateQUriDragProxy();
+			CreateQUriDragSignalProxy();
 			NewQUriDrag(uris,dragSource,name);
 		}
+		[SmokeMethod("QUriDrag(QStrList, QWidget*, const char*)")]
 		private void NewQUriDrag(string[] uris, QWidget dragSource, string name) {
 			ProxyQUriDrag().NewQUriDrag(uris,dragSource,name);
 		}
 		public QUriDrag(string[] uris, QWidget dragSource) : this((Type) null) {
 			CreateQUriDragProxy();
+			CreateQUriDragSignalProxy();
 			NewQUriDrag(uris,dragSource);
 		}
+		[SmokeMethod("QUriDrag(QStrList, QWidget*)")]
 		private void NewQUriDrag(string[] uris, QWidget dragSource) {
 			ProxyQUriDrag().NewQUriDrag(uris,dragSource);
 		}
 		public QUriDrag(string[] uris) : this((Type) null) {
 			CreateQUriDragProxy();
+			CreateQUriDragSignalProxy();
 			NewQUriDrag(uris);
 		}
+		[SmokeMethod("QUriDrag(QStrList)")]
 		private void NewQUriDrag(string[] uris) {
 			ProxyQUriDrag().NewQUriDrag(uris);
 		}
 		public QUriDrag(QWidget dragSource, string name) : this((Type) null) {
 			CreateQUriDragProxy();
+			CreateQUriDragSignalProxy();
 			NewQUriDrag(dragSource,name);
 		}
+		[SmokeMethod("QUriDrag(QWidget*, const char*)")]
 		private void NewQUriDrag(QWidget dragSource, string name) {
 			ProxyQUriDrag().NewQUriDrag(dragSource,name);
 		}
 		public QUriDrag(QWidget dragSource) : this((Type) null) {
 			CreateQUriDragProxy();
+			CreateQUriDragSignalProxy();
 			NewQUriDrag(dragSource);
 		}
+		[SmokeMethod("QUriDrag(QWidget*)")]
 		private void NewQUriDrag(QWidget dragSource) {
 			ProxyQUriDrag().NewQUriDrag(dragSource);
 		}
 		public QUriDrag() : this((Type) null) {
 			CreateQUriDragProxy();
+			CreateQUriDragSignalProxy();
 			NewQUriDrag();
 		}
+		[SmokeMethod("QUriDrag()")]
 		private void NewQUriDrag() {
 			ProxyQUriDrag().NewQUriDrag();
 		}
+		[SmokeMethod("setFilenames(const QStringList&)")]
 		public void SetFilenames(string[] fnames) {
 			ProxyQUriDrag().SetFilenames(fnames);
 		}
+		[SmokeMethod("setFileNames(const QStringList&)")]
 		public void SetFileNames(string[] fnames) {
 			ProxyQUriDrag().SetFileNames(fnames);
 		}
+		[SmokeMethod("setUnicodeUris(const QStringList&)")]
 		public void SetUnicodeUris(string[] uuris) {
 			ProxyQUriDrag().SetUnicodeUris(uuris);
 		}
+		[SmokeMethod("setUris(QStrList)")]
 		public virtual void SetUris(string[] uris) {
 			ProxyQUriDrag().SetUris(uris);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQUriDrag().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQUriDrag().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQUriDrag().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQUriDrag().TrUtf8(arg1);
 		}
+		[SmokeMethod("uriToLocalFile(const char*)")]
 		public static string UriToLocalFile(string arg1) {
 			return StaticQUriDrag().UriToLocalFile(arg1);
 		}
+		[SmokeMethod("localFileToUri(const QString&)")]
 		public static string LocalFileToUri(string arg1) {
 			return StaticQUriDrag().LocalFileToUri(arg1);
 		}
+		[SmokeMethod("uriToUnicodeUri(const char*)")]
 		public static string UriToUnicodeUri(string arg1) {
 			return StaticQUriDrag().UriToUnicodeUri(arg1);
 		}
+		[SmokeMethod("unicodeUriToUri(const QString&)")]
 		public static string UnicodeUriToUri(string arg1) {
 			return StaticQUriDrag().UnicodeUriToUri(arg1);
 		}
+		[SmokeMethod("canDecode(const QMimeSource*)")]
 		public static bool CanDecode(IQMimeSource e) {
 			return StaticQUriDrag().CanDecode(e);
 		}
 		~QUriDrag() {
-			ProxyQUriDrag().Dispose();
+			DisposeQUriDrag();
 		}
 		public new void Dispose() {
-			ProxyQUriDrag().Dispose();
+			DisposeQUriDrag();
+		}
+		private void DisposeQUriDrag() {
+			ProxyQUriDrag().DisposeQUriDrag();
 		}
 //	public static native bool decode(QMimeSourceInterface e, ArrayList i);
 //	public static native bool decodeToUnicodeUris(QMimeSourceInterface e, ArrayList i);
 //	public static native bool decodeLocalFiles(QMimeSourceInterface e, ArrayList i);
 	
+		protected void CreateQUriDragSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQUriDragSignals), this);
+			_signalInterceptor = (IQUriDragSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQUriDragSignals Emit() {
+			return (IQUriDragSignals) _signalInterceptor;
+		}
+	}
+
+	public interface IQUriDragSignals : IQStoredDragSignals {
 	}
 }

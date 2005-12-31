@@ -28,6 +28,7 @@ namespace Qt {
 			CreateQStringDataProxy();
 			NewQStringData();
 		}
+		[SmokeMethod("QStringData()")]
 		private void NewQStringData() {
 			ProxyQStringData().NewQStringData();
 		}
@@ -35,20 +36,26 @@ namespace Qt {
 			CreateQStringDataProxy();
 			NewQStringData(u,l,m);
 		}
+		[SmokeMethod("QStringData(QChar*, uint, uint)")]
 		private void NewQStringData(char u, uint l, uint m) {
 			ProxyQStringData().NewQStringData(u,l,m);
 		}
+		[SmokeMethod("deleteSelf()")]
 		public void DeleteSelf() {
 			ProxyQStringData().DeleteSelf();
 		}
+		[SmokeMethod("setDirty()")]
 		public void SetDirty() {
 			ProxyQStringData().SetDirty();
 		}
 		~QStringData() {
-			ProxyQStringData().Dispose();
+			DisposeQStringData();
 		}
 		public void Dispose() {
-			ProxyQStringData().Dispose();
+			DisposeQStringData();
+		}
+		private void DisposeQStringData() {
+			ProxyQStringData().DisposeQStringData();
 		}
 	}
 }

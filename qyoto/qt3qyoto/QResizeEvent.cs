@@ -28,20 +28,26 @@ namespace Qt {
 			CreateQResizeEventProxy();
 			NewQResizeEvent(size,oldSize);
 		}
+		[SmokeMethod("QResizeEvent(const QSize&, const QSize&)")]
 		private void NewQResizeEvent(QSize size, QSize oldSize) {
 			ProxyQResizeEvent().NewQResizeEvent(size,oldSize);
 		}
+		[SmokeMethod("size() const")]
 		public QSize Size() {
 			return ProxyQResizeEvent().Size();
 		}
+		[SmokeMethod("oldSize() const")]
 		public QSize OldSize() {
 			return ProxyQResizeEvent().OldSize();
 		}
 		~QResizeEvent() {
-			ProxyQResizeEvent().Dispose();
+			DisposeQResizeEvent();
 		}
 		public new void Dispose() {
-			ProxyQResizeEvent().Dispose();
+			DisposeQResizeEvent();
+		}
+		private void DisposeQResizeEvent() {
+			ProxyQResizeEvent().DisposeQResizeEvent();
 		}
 	}
 }

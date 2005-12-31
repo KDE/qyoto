@@ -31,154 +31,204 @@ namespace Qt {
 		}
 
 		// QMetaObject* QMetaObject(const char* arg1,QMetaObject* arg2,const QMetaData* arg3,int arg4,const QMetaData* arg5,int arg6,const QMetaProperty* arg7,int arg8,const QMetaEnum* arg9,int arg10,const QClassInfo* arg11,int arg12); >>>> NOT CONVERTED
+		[SmokeMethod("className() const")]
 		public string ClassName() {
 			return ProxyQMetaObject().ClassName();
 		}
+		[SmokeMethod("superClassName() const")]
 		public string SuperClassName() {
 			return ProxyQMetaObject().SuperClassName();
 		}
+		[SmokeMethod("superClass() const")]
 		public QMetaObject SuperClass() {
 			return ProxyQMetaObject().SuperClass();
 		}
+		[SmokeMethod("inherits(const char*) const")]
 		public bool Inherits(string clname) {
 			return ProxyQMetaObject().Inherits(clname);
 		}
+		[SmokeMethod("numSlots(bool) const")]
 		public int NumSlots(bool arg1) {
 			return ProxyQMetaObject().NumSlots(arg1);
 		}
+		[SmokeMethod("numSlots() const")]
 		public int NumSlots() {
 			return ProxyQMetaObject().NumSlots();
 		}
+		[SmokeMethod("numSignals(bool) const")]
 		public int NumSignals(bool arg1) {
 			return ProxyQMetaObject().NumSignals(arg1);
 		}
+		[SmokeMethod("numSignals() const")]
 		public int NumSignals() {
 			return ProxyQMetaObject().NumSignals();
 		}
+		[SmokeMethod("findSlot(const char*, bool) const")]
 		public int FindSlot(string arg1, bool arg2) {
 			return ProxyQMetaObject().FindSlot(arg1,arg2);
 		}
+		[SmokeMethod("findSlot(const char*) const")]
 		public int FindSlot(string arg1) {
 			return ProxyQMetaObject().FindSlot(arg1);
 		}
+		[SmokeMethod("findSignal(const char*, bool) const")]
 		public int FindSignal(string arg1, bool arg2) {
 			return ProxyQMetaObject().FindSignal(arg1,arg2);
 		}
+		[SmokeMethod("findSignal(const char*) const")]
 		public int FindSignal(string arg1) {
 			return ProxyQMetaObject().FindSignal(arg1);
 		}
+		[SmokeMethod("slot(int, bool) const")]
 		public QMetaData Slot(int index, bool arg2) {
 			return ProxyQMetaObject().Slot(index,arg2);
 		}
+		[SmokeMethod("slot(int) const")]
 		public QMetaData Slot(int index) {
 			return ProxyQMetaObject().Slot(index);
 		}
+		[SmokeMethod("signal(int, bool) const")]
 		public QMetaData Signal(int index, bool arg2) {
 			return ProxyQMetaObject().Signal(index,arg2);
 		}
+		[SmokeMethod("signal(int) const")]
 		public QMetaData Signal(int index) {
 			return ProxyQMetaObject().Signal(index);
 		}
+		[SmokeMethod("slotNames(bool) const")]
 		public ArrayList SlotNames(bool arg1) {
 			return ProxyQMetaObject().SlotNames(arg1);
 		}
+		[SmokeMethod("slotNames() const")]
 		public ArrayList SlotNames() {
 			return ProxyQMetaObject().SlotNames();
 		}
+		[SmokeMethod("signalNames(bool) const")]
 		public ArrayList SignalNames(bool arg1) {
 			return ProxyQMetaObject().SignalNames(arg1);
 		}
+		[SmokeMethod("signalNames() const")]
 		public ArrayList SignalNames() {
 			return ProxyQMetaObject().SignalNames();
 		}
+		[SmokeMethod("slotOffset() const")]
 		public int SlotOffset() {
 			return ProxyQMetaObject().SlotOffset();
 		}
+		[SmokeMethod("signalOffset() const")]
 		public int SignalOffset() {
 			return ProxyQMetaObject().SignalOffset();
 		}
+		[SmokeMethod("propertyOffset() const")]
 		public int PropertyOffset() {
 			return ProxyQMetaObject().PropertyOffset();
 		}
+		[SmokeMethod("numClassInfo(bool) const")]
 		public int NumClassInfo(bool arg1) {
 			return ProxyQMetaObject().NumClassInfo(arg1);
 		}
+		[SmokeMethod("numClassInfo() const")]
 		public int NumClassInfo() {
 			return ProxyQMetaObject().NumClassInfo();
 		}
+		[SmokeMethod("classInfo(int, bool) const")]
 		public QClassInfo ClassInfo(int index, bool arg2) {
 			return ProxyQMetaObject().ClassInfo(index,arg2);
 		}
+		[SmokeMethod("classInfo(int) const")]
 		public QClassInfo ClassInfo(int index) {
 			return ProxyQMetaObject().ClassInfo(index);
 		}
+		[SmokeMethod("classInfo(const char*, bool) const")]
 		public string ClassInfo(string name, bool arg2) {
 			return ProxyQMetaObject().ClassInfo(name,arg2);
 		}
+		[SmokeMethod("classInfo(const char*) const")]
 		public string ClassInfo(string name) {
 			return ProxyQMetaObject().ClassInfo(name);
 		}
+		[SmokeMethod("property(int, bool) const")]
 		public QMetaProperty Property(int index, bool arg2) {
 			return ProxyQMetaObject().Property(index,arg2);
 		}
+		[SmokeMethod("property(int) const")]
 		public QMetaProperty Property(int index) {
 			return ProxyQMetaObject().Property(index);
 		}
+		[SmokeMethod("findProperty(const char*, bool) const")]
 		public int FindProperty(string name, bool arg2) {
 			return ProxyQMetaObject().FindProperty(name,arg2);
 		}
+		[SmokeMethod("findProperty(const char*) const")]
 		public int FindProperty(string name) {
 			return ProxyQMetaObject().FindProperty(name);
 		}
+		[SmokeMethod("indexOfProperty(const QMetaProperty*, bool) const")]
 		public int IndexOfProperty(QMetaProperty arg1, bool arg2) {
 			return ProxyQMetaObject().IndexOfProperty(arg1,arg2);
 		}
+		[SmokeMethod("indexOfProperty(const QMetaProperty*) const")]
 		public int IndexOfProperty(QMetaProperty arg1) {
 			return ProxyQMetaObject().IndexOfProperty(arg1);
 		}
+		[SmokeMethod("resolveProperty(const QMetaProperty*) const")]
 		public QMetaProperty ResolveProperty(QMetaProperty arg1) {
 			return ProxyQMetaObject().ResolveProperty(arg1);
 		}
+		[SmokeMethod("resolveProperty(int) const")]
 		public int ResolveProperty(int arg1) {
 			return ProxyQMetaObject().ResolveProperty(arg1);
 		}
+		[SmokeMethod("propertyNames(bool) const")]
 		public ArrayList PropertyNames(bool arg1) {
 			return ProxyQMetaObject().PropertyNames(arg1);
 		}
+		[SmokeMethod("propertyNames() const")]
 		public ArrayList PropertyNames() {
 			return ProxyQMetaObject().PropertyNames();
 		}
+		[SmokeMethod("numProperties(bool) const")]
 		public int NumProperties(bool arg1) {
 			return ProxyQMetaObject().NumProperties(arg1);
 		}
+		[SmokeMethod("numProperties() const")]
 		public int NumProperties() {
 			return ProxyQMetaObject().NumProperties();
 		}
+		[SmokeMethod("enumeratorNames(bool) const")]
 		public ArrayList EnumeratorNames(bool arg1) {
 			return ProxyQMetaObject().EnumeratorNames(arg1);
 		}
+		[SmokeMethod("enumeratorNames() const")]
 		public ArrayList EnumeratorNames() {
 			return ProxyQMetaObject().EnumeratorNames();
 		}
+		[SmokeMethod("numEnumerators(bool) const")]
 		public int NumEnumerators(bool arg1) {
 			return ProxyQMetaObject().NumEnumerators(arg1);
 		}
+		[SmokeMethod("numEnumerators() const")]
 		public int NumEnumerators() {
 			return ProxyQMetaObject().NumEnumerators();
 		}
+		[SmokeMethod("enumerator(const char*, bool) const")]
 		public QMetaEnum Enumerator(string name, bool arg2) {
 			return ProxyQMetaObject().Enumerator(name,arg2);
 		}
+		[SmokeMethod("enumerator(const char*) const")]
 		public QMetaEnum Enumerator(string name) {
 			return ProxyQMetaObject().Enumerator(name);
 		}
+		[SmokeMethod("qt_static_property(QObject*, int, int, QVariant*)")]
 		public bool Qt_static_property(QObject o, int id, int f, QVariant v) {
 			return ProxyQMetaObject().Qt_static_property(o,id,f,v);
 		}
 		// QMetaObject* new_metaobject(const char* arg1,QMetaObject* arg2,const QMetaData* arg3,int arg4,const QMetaData* arg5,int arg6,const QMetaProperty* arg7,int arg8,const QMetaEnum* arg9,int arg10,const QClassInfo* arg11,int arg12); >>>> NOT CONVERTED
+		[SmokeMethod("metaObject(const char*)")]
 		public static QMetaObject MetaObject(string class_name) {
 			return StaticQMetaObject().MetaObject(class_name);
 		}
+		[SmokeMethod("hasMetaObject(const char*)")]
 		public static bool HasMetaObject(string class_name) {
 			return StaticQMetaObject().HasMetaObject(class_name);
 		}

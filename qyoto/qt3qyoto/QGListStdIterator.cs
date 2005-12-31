@@ -31,18 +31,23 @@ namespace Qt {
 			CreateQGListStdIteratorProxy();
 			NewQGListStdIterator(n);
 		}
+		[SmokeMethod("QGListStdIterator(QLNode*)")]
 		private void NewQGListStdIterator(QLNode n) {
 			ProxyQGListStdIterator().NewQGListStdIterator(n);
 		}
 		//  operator QLNode*(); >>>> NOT CONVERTED
+		[SmokeMethod("next()")]
 		protected QLNode Next() {
 			return ProxyQGListStdIterator().Next();
 		}
 		~QGListStdIterator() {
-			ProxyQGListStdIterator().Dispose();
+			DisposeQGListStdIterator();
 		}
 		public void Dispose() {
-			ProxyQGListStdIterator().Dispose();
+			DisposeQGListStdIterator();
+		}
+		private void DisposeQGListStdIterator() {
+			ProxyQGListStdIterator().DisposeQGListStdIterator();
 		}
 	}
 }

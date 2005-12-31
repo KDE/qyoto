@@ -24,21 +24,27 @@ namespace Qt {
 			return (IQDataSourceProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("readyToSend()")]
 		public virtual int ReadyToSend() {
 			return ProxyQDataSource().ReadyToSend();
 		}
+		[SmokeMethod("sendTo(QDataSink*, int)")]
 		public virtual void SendTo(QDataSink arg1, int count) {
 			ProxyQDataSource().SendTo(arg1,count);
 		}
+		[SmokeMethod("maybeReady()")]
 		public void MaybeReady() {
 			ProxyQDataSource().MaybeReady();
 		}
+		[SmokeMethod("rewindable() const")]
 		public virtual bool Rewindable() {
 			return ProxyQDataSource().Rewindable();
 		}
+		[SmokeMethod("enableRewind(bool)")]
 		public virtual void EnableRewind(bool arg1) {
 			ProxyQDataSource().EnableRewind(arg1);
 		}
+		[SmokeMethod("rewind()")]
 		public virtual void Rewind() {
 			ProxyQDataSource().Rewind();
 		}

@@ -24,18 +24,23 @@ namespace Qt {
 			return (IQCustomMenuItemProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("fullSpan() const")]
 		public virtual bool FullSpan() {
 			return ProxyQCustomMenuItem().FullSpan();
 		}
+		[SmokeMethod("isSeparator() const")]
 		public virtual bool IsSeparator() {
 			return ProxyQCustomMenuItem().IsSeparator();
 		}
+		[SmokeMethod("setFont(const QFont&)")]
 		public virtual void SetFont(QFont font) {
 			ProxyQCustomMenuItem().SetFont(font);
 		}
+		[SmokeMethod("paint(QPainter*, const QColorGroup&, bool, bool, int, int, int, int)")]
 		public virtual void Paint(QPainter p, QColorGroup cg, bool act, bool enabled, int x, int y, int w, int h) {
 			ProxyQCustomMenuItem().Paint(p,cg,act,enabled,x,y,w,h);
 		}
+		[SmokeMethod("sizeHint()")]
 		public virtual QSize SizeHint() {
 			return ProxyQCustomMenuItem().SizeHint();
 		}

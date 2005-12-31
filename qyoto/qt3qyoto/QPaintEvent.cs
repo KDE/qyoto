@@ -28,6 +28,7 @@ namespace Qt {
 			CreateQPaintEventProxy();
 			NewQPaintEvent(paintRegion,erased);
 		}
+		[SmokeMethod("QPaintEvent(const QRegion&, bool)")]
 		private void NewQPaintEvent(QRegion paintRegion, bool erased) {
 			ProxyQPaintEvent().NewQPaintEvent(paintRegion,erased);
 		}
@@ -35,6 +36,7 @@ namespace Qt {
 			CreateQPaintEventProxy();
 			NewQPaintEvent(paintRegion);
 		}
+		[SmokeMethod("QPaintEvent(const QRegion&)")]
 		private void NewQPaintEvent(QRegion paintRegion) {
 			ProxyQPaintEvent().NewQPaintEvent(paintRegion);
 		}
@@ -42,6 +44,7 @@ namespace Qt {
 			CreateQPaintEventProxy();
 			NewQPaintEvent(paintRect,erased);
 		}
+		[SmokeMethod("QPaintEvent(const QRect&, bool)")]
 		private void NewQPaintEvent(QRect paintRect, bool erased) {
 			ProxyQPaintEvent().NewQPaintEvent(paintRect,erased);
 		}
@@ -49,6 +52,7 @@ namespace Qt {
 			CreateQPaintEventProxy();
 			NewQPaintEvent(paintRect);
 		}
+		[SmokeMethod("QPaintEvent(const QRect&)")]
 		private void NewQPaintEvent(QRect paintRect) {
 			ProxyQPaintEvent().NewQPaintEvent(paintRect);
 		}
@@ -56,6 +60,7 @@ namespace Qt {
 			CreateQPaintEventProxy();
 			NewQPaintEvent(paintRegion,paintRect,erased);
 		}
+		[SmokeMethod("QPaintEvent(const QRegion&, const QRect&, bool)")]
 		private void NewQPaintEvent(QRegion paintRegion, QRect paintRect, bool erased) {
 			ProxyQPaintEvent().NewQPaintEvent(paintRegion,paintRect,erased);
 		}
@@ -63,23 +68,30 @@ namespace Qt {
 			CreateQPaintEventProxy();
 			NewQPaintEvent(paintRegion,paintRect);
 		}
+		[SmokeMethod("QPaintEvent(const QRegion&, const QRect&)")]
 		private void NewQPaintEvent(QRegion paintRegion, QRect paintRect) {
 			ProxyQPaintEvent().NewQPaintEvent(paintRegion,paintRect);
 		}
+		[SmokeMethod("rect() const")]
 		public QRect Rect() {
 			return ProxyQPaintEvent().Rect();
 		}
+		[SmokeMethod("region() const")]
 		public QRegion Region() {
 			return ProxyQPaintEvent().Region();
 		}
+		[SmokeMethod("erased() const")]
 		public bool Erased() {
 			return ProxyQPaintEvent().Erased();
 		}
 		~QPaintEvent() {
-			ProxyQPaintEvent().Dispose();
+			DisposeQPaintEvent();
 		}
 		public new void Dispose() {
-			ProxyQPaintEvent().Dispose();
+			DisposeQPaintEvent();
+		}
+		private void DisposeQPaintEvent() {
+			ProxyQPaintEvent().DisposeQPaintEvent();
 		}
 	}
 }

@@ -34,6 +34,7 @@ namespace Qt {
 			CreateQGLFormatProxy();
 			NewQGLFormat();
 		}
+		[SmokeMethod("QGLFormat()")]
 		private void NewQGLFormat() {
 			ProxyQGLFormat().NewQGLFormat();
 		}
@@ -41,6 +42,7 @@ namespace Qt {
 			CreateQGLFormatProxy();
 			NewQGLFormat(options,plane);
 		}
+		[SmokeMethod("QGLFormat(int, int)")]
 		private void NewQGLFormat(int options, int plane) {
 			ProxyQGLFormat().NewQGLFormat(options,plane);
 		}
@@ -48,98 +50,130 @@ namespace Qt {
 			CreateQGLFormatProxy();
 			NewQGLFormat(options);
 		}
+		[SmokeMethod("QGLFormat(int)")]
 		private void NewQGLFormat(int options) {
 			ProxyQGLFormat().NewQGLFormat(options);
 		}
+		[SmokeMethod("doubleBuffer() const")]
 		public bool DoubleBuffer() {
 			return ProxyQGLFormat().DoubleBuffer();
 		}
+		[SmokeMethod("setDoubleBuffer(bool)")]
 		public void SetDoubleBuffer(bool enable) {
 			ProxyQGLFormat().SetDoubleBuffer(enable);
 		}
+		[SmokeMethod("depth() const")]
 		public bool Depth() {
 			return ProxyQGLFormat().Depth();
 		}
+		[SmokeMethod("setDepth(bool)")]
 		public void SetDepth(bool enable) {
 			ProxyQGLFormat().SetDepth(enable);
 		}
+		[SmokeMethod("rgba() const")]
 		public bool Rgba() {
 			return ProxyQGLFormat().Rgba();
 		}
+		[SmokeMethod("setRgba(bool)")]
 		public void SetRgba(bool enable) {
 			ProxyQGLFormat().SetRgba(enable);
 		}
+		[SmokeMethod("alpha() const")]
 		public bool Alpha() {
 			return ProxyQGLFormat().Alpha();
 		}
+		[SmokeMethod("setAlpha(bool)")]
 		public void SetAlpha(bool enable) {
 			ProxyQGLFormat().SetAlpha(enable);
 		}
+		[SmokeMethod("accum() const")]
 		public bool Accum() {
 			return ProxyQGLFormat().Accum();
 		}
+		[SmokeMethod("setAccum(bool)")]
 		public void SetAccum(bool enable) {
 			ProxyQGLFormat().SetAccum(enable);
 		}
+		[SmokeMethod("stencil() const")]
 		public bool Stencil() {
 			return ProxyQGLFormat().Stencil();
 		}
+		[SmokeMethod("setStencil(bool)")]
 		public void SetStencil(bool enable) {
 			ProxyQGLFormat().SetStencil(enable);
 		}
+		[SmokeMethod("stereo() const")]
 		public bool Stereo() {
 			return ProxyQGLFormat().Stereo();
 		}
+		[SmokeMethod("setStereo(bool)")]
 		public void SetStereo(bool enable) {
 			ProxyQGLFormat().SetStereo(enable);
 		}
+		[SmokeMethod("directRendering() const")]
 		public bool DirectRendering() {
 			return ProxyQGLFormat().DirectRendering();
 		}
+		[SmokeMethod("setDirectRendering(bool)")]
 		public void SetDirectRendering(bool enable) {
 			ProxyQGLFormat().SetDirectRendering(enable);
 		}
+		[SmokeMethod("hasOverlay() const")]
 		public bool HasOverlay() {
 			return ProxyQGLFormat().HasOverlay();
 		}
+		[SmokeMethod("setOverlay(bool)")]
 		public void SetOverlay(bool enable) {
 			ProxyQGLFormat().SetOverlay(enable);
 		}
+		[SmokeMethod("plane() const")]
 		public int Plane() {
 			return ProxyQGLFormat().Plane();
 		}
+		[SmokeMethod("setPlane(int)")]
 		public void SetPlane(int plane) {
 			ProxyQGLFormat().SetPlane(plane);
 		}
+		[SmokeMethod("setOption(QGL::FormatOption)")]
 		public void SetOption(int opt) {
 			ProxyQGLFormat().SetOption(opt);
 		}
+		[SmokeMethod("testOption(QGL::FormatOption) const")]
 		public bool TestOption(int opt) {
 			return ProxyQGLFormat().TestOption(opt);
 		}
+		[SmokeMethod("defaultFormat()")]
 		public static QGLFormat DefaultFormat() {
 			return StaticQGLFormat().DefaultFormat();
 		}
+		[SmokeMethod("setDefaultFormat(const QGLFormat&)")]
 		public static void SetDefaultFormat(QGLFormat f) {
 			StaticQGLFormat().SetDefaultFormat(f);
 		}
+		[SmokeMethod("defaultOverlayFormat()")]
 		public static QGLFormat DefaultOverlayFormat() {
 			return StaticQGLFormat().DefaultOverlayFormat();
 		}
+		[SmokeMethod("setDefaultOverlayFormat(const QGLFormat&)")]
 		public static void SetDefaultOverlayFormat(QGLFormat f) {
 			StaticQGLFormat().SetDefaultOverlayFormat(f);
 		}
+		[SmokeMethod("hasOpenGL()")]
 		public static bool HasOpenGL() {
 			return StaticQGLFormat().HasOpenGL();
 		}
+		[SmokeMethod("hasOpenGLOverlays()")]
 		public static bool HasOpenGLOverlays() {
 			return StaticQGLFormat().HasOpenGLOverlays();
 		}
 		~QGLFormat() {
-			ProxyQGLFormat().Dispose();
+			DisposeQGLFormat();
 		}
 		public void Dispose() {
-			ProxyQGLFormat().Dispose();
+			DisposeQGLFormat();
+		}
+		private void DisposeQGLFormat() {
+			ProxyQGLFormat().DisposeQGLFormat();
 		}
 	}
 }

@@ -41,6 +41,7 @@ namespace Qt {
 			CreateQCheckListItemProxy();
 			NewQCheckListItem(parent,text,arg3);
 		}
+		[SmokeMethod("QCheckListItem(QCheckListItem*, const QString&, QCheckListItem::Type)")]
 		private void NewQCheckListItem(QCheckListItem parent, string text, int arg3) {
 			ProxyQCheckListItem().NewQCheckListItem(parent,text,arg3);
 		}
@@ -48,6 +49,7 @@ namespace Qt {
 			CreateQCheckListItemProxy();
 			NewQCheckListItem(parent,text);
 		}
+		[SmokeMethod("QCheckListItem(QCheckListItem*, const QString&)")]
 		private void NewQCheckListItem(QCheckListItem parent, string text) {
 			ProxyQCheckListItem().NewQCheckListItem(parent,text);
 		}
@@ -55,6 +57,7 @@ namespace Qt {
 			CreateQCheckListItemProxy();
 			NewQCheckListItem(parent,after,text,arg4);
 		}
+		[SmokeMethod("QCheckListItem(QCheckListItem*, QListViewItem*, const QString&, QCheckListItem::Type)")]
 		private void NewQCheckListItem(QCheckListItem parent, QListViewItem after, string text, int arg4) {
 			ProxyQCheckListItem().NewQCheckListItem(parent,after,text,arg4);
 		}
@@ -62,6 +65,7 @@ namespace Qt {
 			CreateQCheckListItemProxy();
 			NewQCheckListItem(parent,after,text);
 		}
+		[SmokeMethod("QCheckListItem(QCheckListItem*, QListViewItem*, const QString&)")]
 		private void NewQCheckListItem(QCheckListItem parent, QListViewItem after, string text) {
 			ProxyQCheckListItem().NewQCheckListItem(parent,after,text);
 		}
@@ -69,6 +73,7 @@ namespace Qt {
 			CreateQCheckListItemProxy();
 			NewQCheckListItem(parent,text,arg3);
 		}
+		[SmokeMethod("QCheckListItem(QListViewItem*, const QString&, QCheckListItem::Type)")]
 		private void NewQCheckListItem(QListViewItem parent, string text, int arg3) {
 			ProxyQCheckListItem().NewQCheckListItem(parent,text,arg3);
 		}
@@ -76,6 +81,7 @@ namespace Qt {
 			CreateQCheckListItemProxy();
 			NewQCheckListItem(parent,text);
 		}
+		[SmokeMethod("QCheckListItem(QListViewItem*, const QString&)")]
 		private void NewQCheckListItem(QListViewItem parent, string text) {
 			ProxyQCheckListItem().NewQCheckListItem(parent,text);
 		}
@@ -83,6 +89,7 @@ namespace Qt {
 			CreateQCheckListItemProxy();
 			NewQCheckListItem(parent,after,text,arg4);
 		}
+		[SmokeMethod("QCheckListItem(QListViewItem*, QListViewItem*, const QString&, QCheckListItem::Type)")]
 		private void NewQCheckListItem(QListViewItem parent, QListViewItem after, string text, int arg4) {
 			ProxyQCheckListItem().NewQCheckListItem(parent,after,text,arg4);
 		}
@@ -90,6 +97,7 @@ namespace Qt {
 			CreateQCheckListItemProxy();
 			NewQCheckListItem(parent,after,text);
 		}
+		[SmokeMethod("QCheckListItem(QListViewItem*, QListViewItem*, const QString&)")]
 		private void NewQCheckListItem(QListViewItem parent, QListViewItem after, string text) {
 			ProxyQCheckListItem().NewQCheckListItem(parent,after,text);
 		}
@@ -97,6 +105,7 @@ namespace Qt {
 			CreateQCheckListItemProxy();
 			NewQCheckListItem(parent,text,arg3);
 		}
+		[SmokeMethod("QCheckListItem(QListView*, const QString&, QCheckListItem::Type)")]
 		private void NewQCheckListItem(QListView parent, string text, int arg3) {
 			ProxyQCheckListItem().NewQCheckListItem(parent,text,arg3);
 		}
@@ -104,6 +113,7 @@ namespace Qt {
 			CreateQCheckListItemProxy();
 			NewQCheckListItem(parent,text);
 		}
+		[SmokeMethod("QCheckListItem(QListView*, const QString&)")]
 		private void NewQCheckListItem(QListView parent, string text) {
 			ProxyQCheckListItem().NewQCheckListItem(parent,text);
 		}
@@ -111,6 +121,7 @@ namespace Qt {
 			CreateQCheckListItemProxy();
 			NewQCheckListItem(parent,after,text,arg4);
 		}
+		[SmokeMethod("QCheckListItem(QListView*, QListViewItem*, const QString&, QCheckListItem::Type)")]
 		private void NewQCheckListItem(QListView parent, QListViewItem after, string text, int arg4) {
 			ProxyQCheckListItem().NewQCheckListItem(parent,after,text,arg4);
 		}
@@ -118,6 +129,7 @@ namespace Qt {
 			CreateQCheckListItemProxy();
 			NewQCheckListItem(parent,after,text);
 		}
+		[SmokeMethod("QCheckListItem(QListView*, QListViewItem*, const QString&)")]
 		private void NewQCheckListItem(QListView parent, QListViewItem after, string text) {
 			ProxyQCheckListItem().NewQCheckListItem(parent,after,text);
 		}
@@ -125,6 +137,7 @@ namespace Qt {
 			CreateQCheckListItemProxy();
 			NewQCheckListItem(parent,text,arg3);
 		}
+		[SmokeMethod("QCheckListItem(QListViewItem*, const QString&, const QPixmap&)")]
 		private void NewQCheckListItem(QListViewItem parent, string text, QPixmap arg3) {
 			ProxyQCheckListItem().NewQCheckListItem(parent,text,arg3);
 		}
@@ -132,65 +145,82 @@ namespace Qt {
 			CreateQCheckListItemProxy();
 			NewQCheckListItem(parent,text,arg3);
 		}
+		[SmokeMethod("QCheckListItem(QListView*, const QString&, const QPixmap&)")]
 		private void NewQCheckListItem(QListView parent, string text, QPixmap arg3) {
 			ProxyQCheckListItem().NewQCheckListItem(parent,text,arg3);
 		}
+		[SmokeMethod("paintCell(QPainter*, const QColorGroup&, int, int, int)")]
 		public new void PaintCell(QPainter arg1, QColorGroup cg, int column, int width, int alignment) {
 			ProxyQCheckListItem().PaintCell(arg1,cg,column,width,alignment);
 		}
+		[SmokeMethod("paintFocus(QPainter*, const QColorGroup&, const QRect&)")]
 		public new virtual void PaintFocus(QPainter arg1, QColorGroup cg, QRect r) {
 			ProxyQCheckListItem().PaintFocus(arg1,cg,r);
 		}
+		[SmokeMethod("width(const QFontMetrics&, const QListView*, int) const")]
 		public new int Width(QFontMetrics arg1, QListView arg2, int column) {
 			return ProxyQCheckListItem().Width(arg1,arg2,column);
 		}
+		[SmokeMethod("setup()")]
 		public new void Setup() {
 			ProxyQCheckListItem().Setup();
 		}
+		[SmokeMethod("setOn(bool)")]
 		public virtual void SetOn(bool arg1) {
 			ProxyQCheckListItem().SetOn(arg1);
 		}
+		[SmokeMethod("isOn() const")]
 		public bool IsOn() {
 			return ProxyQCheckListItem().IsOn();
 		}
-		public int Type() {
-			return ProxyQCheckListItem().Type();
-		}
+		[SmokeMethod("text() const")]
 		public new string Text() {
 			return ProxyQCheckListItem().Text();
 		}
+		[SmokeMethod("text(int) const")]
 		public new string Text(int n) {
 			return ProxyQCheckListItem().Text(n);
 		}
+		[SmokeMethod("setTristate(bool)")]
 		public void SetTristate(bool arg1) {
 			ProxyQCheckListItem().SetTristate(arg1);
 		}
+		[SmokeMethod("isTristate() const")]
 		public bool IsTristate() {
 			return ProxyQCheckListItem().IsTristate();
 		}
+		[SmokeMethod("state() const")]
 		public int State() {
 			return ProxyQCheckListItem().State();
 		}
+		[SmokeMethod("setState(QCheckListItem::ToggleState)")]
 		public void SetState(int s) {
 			ProxyQCheckListItem().SetState(s);
 		}
+		[SmokeMethod("rtti() const")]
 		public new int Rtti() {
 			return ProxyQCheckListItem().Rtti();
 		}
+		[SmokeMethod("activate()")]
 		protected new void Activate() {
 			ProxyQCheckListItem().Activate();
 		}
+		[SmokeMethod("turnOffChild()")]
 		protected void TurnOffChild() {
 			ProxyQCheckListItem().TurnOffChild();
 		}
+		[SmokeMethod("stateChange(bool)")]
 		protected virtual void StateChange(bool arg1) {
 			ProxyQCheckListItem().StateChange(arg1);
 		}
 		~QCheckListItem() {
-			ProxyQCheckListItem().Dispose();
+			DisposeQCheckListItem();
 		}
 		public new void Dispose() {
-			ProxyQCheckListItem().Dispose();
+			DisposeQCheckListItem();
+		}
+		private void DisposeQCheckListItem() {
+			ProxyQCheckListItem().DisposeQCheckListItem();
 		}
 	}
 }

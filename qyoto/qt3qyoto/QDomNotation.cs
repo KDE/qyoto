@@ -29,6 +29,7 @@ namespace Qt {
 			CreateQDomNotationProxy();
 			NewQDomNotation();
 		}
+		[SmokeMethod("QDomNotation()")]
 		private void NewQDomNotation() {
 			ProxyQDomNotation().NewQDomNotation();
 		}
@@ -36,26 +37,34 @@ namespace Qt {
 			CreateQDomNotationProxy();
 			NewQDomNotation(x);
 		}
+		[SmokeMethod("QDomNotation(const QDomNotation&)")]
 		private void NewQDomNotation(QDomNotation x) {
 			ProxyQDomNotation().NewQDomNotation(x);
 		}
+		[SmokeMethod("publicId() const")]
 		public string PublicId() {
 			return ProxyQDomNotation().PublicId();
 		}
+		[SmokeMethod("systemId() const")]
 		public string SystemId() {
 			return ProxyQDomNotation().SystemId();
 		}
+		[SmokeMethod("nodeType() const")]
 		public new int NodeType() {
 			return ProxyQDomNotation().NodeType();
 		}
+		[SmokeMethod("isNotation() const")]
 		public new bool IsNotation() {
 			return ProxyQDomNotation().IsNotation();
 		}
 		~QDomNotation() {
-			ProxyQDomNotation().Dispose();
+			DisposeQDomNotation();
 		}
 		public new void Dispose() {
-			ProxyQDomNotation().Dispose();
+			DisposeQDomNotation();
+		}
+		private void DisposeQDomNotation() {
+			ProxyQDomNotation().DisposeQDomNotation();
 		}
 	}
 }

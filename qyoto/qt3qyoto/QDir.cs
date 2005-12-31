@@ -69,12 +69,14 @@ namespace Qt {
 			DirsFirst = 0x04,
 			Reversed = 0x08,
 			IgnoreCase = 0x10,
+			LocaleAware = 0x20,
 			DefaultSort = -1,
 		}
 		public QDir() : this((Type) null) {
 			CreateQDirProxy();
 			NewQDir();
 		}
+		[SmokeMethod("QDir()")]
 		private void NewQDir() {
 			ProxyQDir().NewQDir();
 		}
@@ -82,6 +84,7 @@ namespace Qt {
 			CreateQDirProxy();
 			NewQDir(path,nameFilter,sortSpec,filterSpec);
 		}
+		[SmokeMethod("QDir(const QString&, const QString&, int, int)")]
 		private void NewQDir(string path, string nameFilter, int sortSpec, int filterSpec) {
 			ProxyQDir().NewQDir(path,nameFilter,sortSpec,filterSpec);
 		}
@@ -89,6 +92,7 @@ namespace Qt {
 			CreateQDirProxy();
 			NewQDir(path,nameFilter,sortSpec);
 		}
+		[SmokeMethod("QDir(const QString&, const QString&, int)")]
 		private void NewQDir(string path, string nameFilter, int sortSpec) {
 			ProxyQDir().NewQDir(path,nameFilter,sortSpec);
 		}
@@ -96,6 +100,7 @@ namespace Qt {
 			CreateQDirProxy();
 			NewQDir(path,nameFilter);
 		}
+		[SmokeMethod("QDir(const QString&, const QString&)")]
 		private void NewQDir(string path, string nameFilter) {
 			ProxyQDir().NewQDir(path,nameFilter);
 		}
@@ -103,6 +108,7 @@ namespace Qt {
 			CreateQDirProxy();
 			NewQDir(path);
 		}
+		[SmokeMethod("QDir(const QString&)")]
 		private void NewQDir(string path) {
 			ProxyQDir().NewQDir(path);
 		}
@@ -110,105 +116,139 @@ namespace Qt {
 			CreateQDirProxy();
 			NewQDir(arg1);
 		}
+		[SmokeMethod("QDir(const QDir&)")]
 		private void NewQDir(QDir arg1) {
 			ProxyQDir().NewQDir(arg1);
 		}
+		[SmokeMethod("setPath(const QString&)")]
 		public virtual void SetPath(string path) {
 			ProxyQDir().SetPath(path);
 		}
+		[SmokeMethod("path() const")]
 		public virtual string Path() {
 			return ProxyQDir().Path();
 		}
+		[SmokeMethod("absPath() const")]
 		public virtual string AbsPath() {
 			return ProxyQDir().AbsPath();
 		}
+		[SmokeMethod("canonicalPath() const")]
 		public virtual string CanonicalPath() {
 			return ProxyQDir().CanonicalPath();
 		}
+		[SmokeMethod("dirName() const")]
 		public virtual string DirName() {
 			return ProxyQDir().DirName();
 		}
+		[SmokeMethod("filePath(const QString&, bool) const")]
 		public virtual string FilePath(string fileName, bool acceptAbsPath) {
 			return ProxyQDir().FilePath(fileName,acceptAbsPath);
 		}
+		[SmokeMethod("filePath(const QString&) const")]
 		public virtual string FilePath(string fileName) {
 			return ProxyQDir().FilePath(fileName);
 		}
+		[SmokeMethod("absFilePath(const QString&, bool) const")]
 		public virtual string AbsFilePath(string fileName, bool acceptAbsPath) {
 			return ProxyQDir().AbsFilePath(fileName,acceptAbsPath);
 		}
+		[SmokeMethod("absFilePath(const QString&) const")]
 		public virtual string AbsFilePath(string fileName) {
 			return ProxyQDir().AbsFilePath(fileName);
 		}
+		[SmokeMethod("cd(const QString&, bool)")]
 		public virtual bool Cd(string dirName, bool acceptAbsPath) {
 			return ProxyQDir().Cd(dirName,acceptAbsPath);
 		}
+		[SmokeMethod("cd(const QString&)")]
 		public virtual bool Cd(string dirName) {
 			return ProxyQDir().Cd(dirName);
 		}
+		[SmokeMethod("cdUp()")]
 		public virtual bool CdUp() {
 			return ProxyQDir().CdUp();
 		}
+		[SmokeMethod("nameFilter() const")]
 		public string NameFilter() {
 			return ProxyQDir().NameFilter();
 		}
+		[SmokeMethod("setNameFilter(const QString&)")]
 		public virtual void SetNameFilter(string nameFilter) {
 			ProxyQDir().SetNameFilter(nameFilter);
 		}
+		[SmokeMethod("filter() const")]
 		public int Filter() {
 			return ProxyQDir().Filter();
 		}
+		[SmokeMethod("setFilter(int)")]
 		public virtual void SetFilter(int filterSpec) {
 			ProxyQDir().SetFilter(filterSpec);
 		}
+		[SmokeMethod("sorting() const")]
 		public int Sorting() {
 			return ProxyQDir().Sorting();
 		}
+		[SmokeMethod("setSorting(int)")]
 		public virtual void SetSorting(int sortSpec) {
 			ProxyQDir().SetSorting(sortSpec);
 		}
+		[SmokeMethod("matchAllDirs() const")]
 		public bool MatchAllDirs() {
 			return ProxyQDir().MatchAllDirs();
 		}
+		[SmokeMethod("setMatchAllDirs(bool)")]
 		public virtual void SetMatchAllDirs(bool arg1) {
 			ProxyQDir().SetMatchAllDirs(arg1);
 		}
+		[SmokeMethod("count() const")]
 		public uint Count() {
 			return ProxyQDir().Count();
 		}
+		[SmokeMethod("encodedEntryList(int, int) const")]
 		public virtual ArrayList EncodedEntryList(int filterSpec, int sortSpec) {
 			return ProxyQDir().EncodedEntryList(filterSpec,sortSpec);
 		}
+		[SmokeMethod("encodedEntryList(int) const")]
 		public virtual ArrayList EncodedEntryList(int filterSpec) {
 			return ProxyQDir().EncodedEntryList(filterSpec);
 		}
+		[SmokeMethod("encodedEntryList() const")]
 		public virtual ArrayList EncodedEntryList() {
 			return ProxyQDir().EncodedEntryList();
 		}
+		[SmokeMethod("encodedEntryList(const QString&, int, int) const")]
 		public virtual ArrayList EncodedEntryList(string nameFilter, int filterSpec, int sortSpec) {
 			return ProxyQDir().EncodedEntryList(nameFilter,filterSpec,sortSpec);
 		}
+		[SmokeMethod("encodedEntryList(const QString&, int) const")]
 		public virtual ArrayList EncodedEntryList(string nameFilter, int filterSpec) {
 			return ProxyQDir().EncodedEntryList(nameFilter,filterSpec);
 		}
+		[SmokeMethod("encodedEntryList(const QString&) const")]
 		public virtual ArrayList EncodedEntryList(string nameFilter) {
 			return ProxyQDir().EncodedEntryList(nameFilter);
 		}
+		[SmokeMethod("entryList(int, int) const")]
 		public virtual ArrayList EntryList(int filterSpec, int sortSpec) {
 			return ProxyQDir().EntryList(filterSpec,sortSpec);
 		}
+		[SmokeMethod("entryList(int) const")]
 		public virtual ArrayList EntryList(int filterSpec) {
 			return ProxyQDir().EntryList(filterSpec);
 		}
+		[SmokeMethod("entryList() const")]
 		public virtual ArrayList EntryList() {
 			return ProxyQDir().EntryList();
 		}
+		[SmokeMethod("entryList(const QString&, int, int) const")]
 		public virtual ArrayList EntryList(string nameFilter, int filterSpec, int sortSpec) {
 			return ProxyQDir().EntryList(nameFilter,filterSpec,sortSpec);
 		}
+		[SmokeMethod("entryList(const QString&, int) const")]
 		public virtual ArrayList EntryList(string nameFilter, int filterSpec) {
 			return ProxyQDir().EntryList(nameFilter,filterSpec);
 		}
+		[SmokeMethod("entryList(const QString&) const")]
 		public virtual ArrayList EntryList(string nameFilter) {
 			return ProxyQDir().EntryList(nameFilter);
 		}
@@ -218,33 +258,43 @@ namespace Qt {
 		// const QFileInfoList* entryInfoList(const QString& arg1,int arg2,int arg3); >>>> NOT CONVERTED
 		// const QFileInfoList* entryInfoList(const QString& arg1,int arg2); >>>> NOT CONVERTED
 		// const QFileInfoList* entryInfoList(const QString& arg1); >>>> NOT CONVERTED
+		[SmokeMethod("mkdir(const QString&, bool) const")]
 		public virtual bool Mkdir(string dirName, bool acceptAbsPath) {
 			return ProxyQDir().Mkdir(dirName,acceptAbsPath);
 		}
+		[SmokeMethod("mkdir(const QString&) const")]
 		public virtual bool Mkdir(string dirName) {
 			return ProxyQDir().Mkdir(dirName);
 		}
+		[SmokeMethod("rmdir(const QString&, bool) const")]
 		public virtual bool Rmdir(string dirName, bool acceptAbsPath) {
 			return ProxyQDir().Rmdir(dirName,acceptAbsPath);
 		}
+		[SmokeMethod("rmdir(const QString&) const")]
 		public virtual bool Rmdir(string dirName) {
 			return ProxyQDir().Rmdir(dirName);
 		}
+		[SmokeMethod("isReadable() const")]
 		public virtual bool IsReadable() {
 			return ProxyQDir().IsReadable();
 		}
+		[SmokeMethod("exists() const")]
 		public virtual bool Exists() {
 			return ProxyQDir().Exists();
 		}
+		[SmokeMethod("isRoot() const")]
 		public virtual bool IsRoot() {
 			return ProxyQDir().IsRoot();
 		}
+		[SmokeMethod("isRelative() const")]
 		public virtual bool IsRelative() {
 			return ProxyQDir().IsRelative();
 		}
+		[SmokeMethod("convertToAbs()")]
 		public virtual void ConvertToAbs() {
 			ProxyQDir().ConvertToAbs();
 		}
+		[SmokeMethod("operator==(const QDir&) const")]
 		public static bool operator==(QDir lhs, QDir arg1) {
 			return StaticQDir().op_equals(lhs,arg1);
 		}
@@ -258,72 +308,95 @@ namespace Qt {
 		public override int GetHashCode() {
 			return ProxyQDir().GetHashCode();
 		}
+		[SmokeMethod("remove(const QString&, bool)")]
 		public virtual bool Remove(string fileName, bool acceptAbsPath) {
 			return ProxyQDir().Remove(fileName,acceptAbsPath);
 		}
+		[SmokeMethod("remove(const QString&)")]
 		public virtual bool Remove(string fileName) {
 			return ProxyQDir().Remove(fileName);
 		}
+		[SmokeMethod("rename(const QString&, const QString&, bool)")]
 		public virtual bool Rename(string name, string newName, bool acceptAbsPaths) {
 			return ProxyQDir().Rename(name,newName,acceptAbsPaths);
 		}
+		[SmokeMethod("rename(const QString&, const QString&)")]
 		public virtual bool Rename(string name, string newName) {
 			return ProxyQDir().Rename(name,newName);
 		}
+		[SmokeMethod("exists(const QString&, bool)")]
 		public virtual bool Exists(string name, bool acceptAbsPath) {
 			return ProxyQDir().Exists(name,acceptAbsPath);
 		}
+		[SmokeMethod("exists(const QString&)")]
 		public virtual bool Exists(string name) {
 			return ProxyQDir().Exists(name);
 		}
+		[SmokeMethod("refresh() const")]
 		public void Refresh() {
 			ProxyQDir().Refresh();
 		}
+		[SmokeMethod("convertSeparators(const QString&)")]
 		public static string ConvertSeparators(string pathName) {
 			return StaticQDir().ConvertSeparators(pathName);
 		}
 		// const QFileInfoList* drives(); >>>> NOT CONVERTED
+		[SmokeMethod("separator()")]
 		public static char Separator() {
 			return StaticQDir().Separator();
 		}
+		[SmokeMethod("setCurrent(const QString&)")]
 		public static bool SetCurrent(string path) {
 			return StaticQDir().SetCurrent(path);
 		}
+		[SmokeMethod("current()")]
 		public static QDir Current() {
 			return StaticQDir().Current();
 		}
+		[SmokeMethod("home()")]
 		public static QDir Home() {
 			return StaticQDir().Home();
 		}
+		[SmokeMethod("root()")]
 		public static QDir Root() {
 			return StaticQDir().Root();
 		}
+		[SmokeMethod("currentDirPath()")]
 		public static string CurrentDirPath() {
 			return StaticQDir().CurrentDirPath();
 		}
+		[SmokeMethod("homeDirPath()")]
 		public static string HomeDirPath() {
 			return StaticQDir().HomeDirPath();
 		}
+		[SmokeMethod("rootDirPath()")]
 		public static string RootDirPath() {
 			return StaticQDir().RootDirPath();
 		}
+		[SmokeMethod("match(const QStringList&, const QString&)")]
 		public static bool Match(string[] filters, string fileName) {
 			return StaticQDir().Match(filters,fileName);
 		}
+		[SmokeMethod("match(const QString&, const QString&)")]
 		public static bool Match(string filter, string fileName) {
 			return StaticQDir().Match(filter,fileName);
 		}
+		[SmokeMethod("cleanDirPath(const QString&)")]
 		public static string CleanDirPath(string dirPath) {
 			return StaticQDir().CleanDirPath(dirPath);
 		}
+		[SmokeMethod("isRelativePath(const QString&)")]
 		public static bool IsRelativePath(string path) {
 			return StaticQDir().IsRelativePath(path);
 		}
 		~QDir() {
-			ProxyQDir().Dispose();
+			DisposeQDir();
 		}
 		public void Dispose() {
-			ProxyQDir().Dispose();
+			DisposeQDir();
+		}
+		private void DisposeQDir() {
+			ProxyQDir().DisposeQDir();
 		}
 	}
 }

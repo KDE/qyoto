@@ -272,6 +272,7 @@ namespace Qt {
 			string mungedName = callMessage.MethodName;
 			mungedName = char.ToLower(mungedName[0]) + mungedName.Substring(1, mungedName.Length-1);
 			mungedName = Regex.Replace(mungedName, @"^new", "");
+			IMethodReturnMessage returnMessage = (IMethodReturnMessage) message;
 
 			if (callMessage.MethodSignature != null) {
 				Type[] types = (Type[]) callMessage.MethodSignature;
@@ -292,7 +293,8 @@ namespace Qt {
 
 				methods = FindMethod(mungedName);
 				if (methods.Count == 0) {
-					return null;
+//					Console.WriteLine("LEAVE Invoke() ** Missing method **");
+					return returnMessage;
 				}
 
 				for (int i = 0; i < callMessage.ArgCount; i++) {
@@ -331,7 +333,6 @@ namespace Qt {
 			}
 			
 			GCHandle instanceHandle = GCHandle.Alloc(_instance);
-			IMethodReturnMessage returnMessage = (IMethodReturnMessage) message;
 			MethodReturnMessageWrapper returnValue = new MethodReturnMessageWrapper((IMethodReturnMessage) returnMessage); 
 			
 			unsafe {
@@ -379,6 +380,27 @@ namespace Qt {
 			return returnMessage;
 		}
 		
+		public override int GetHashCode() {
+			return _instance.GetHashCode();
+		}
+	}
+
+	public class SignalInvocation : RealProxy {
+		private Type	_classToProxy;
+		private Object	_instance;
+		private string	_className;
+
+		public SignalInvocation(Type classToProxy, Object instance) : base(classToProxy) 
+		{
+			_classToProxy = classToProxy;
+			_instance = instance;
+			_className = Regex.Replace(_classToProxy.ToString(), @"^.*I(.*)Signals$", "$1");
+		}
+
+		public override IMessage Invoke(IMessage message) {
+			return null;
+		}
+
 		public override int GetHashCode() {
 			return _instance.GetHashCode();
 		}

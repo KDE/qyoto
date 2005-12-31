@@ -33,44 +33,58 @@ namespace Qt {
 			CreateQXmlNamespaceSupportProxy();
 			NewQXmlNamespaceSupport();
 		}
+		[SmokeMethod("QXmlNamespaceSupport()")]
 		private void NewQXmlNamespaceSupport() {
 			ProxyQXmlNamespaceSupport().NewQXmlNamespaceSupport();
 		}
+		[SmokeMethod("setPrefix(const QString&, const QString&)")]
 		public void SetPrefix(string arg1, string arg2) {
 			ProxyQXmlNamespaceSupport().SetPrefix(arg1,arg2);
 		}
+		[SmokeMethod("prefix(const QString&) const")]
 		public string Prefix(string arg1) {
 			return ProxyQXmlNamespaceSupport().Prefix(arg1);
 		}
+		[SmokeMethod("uri(const QString&) const")]
 		public string Uri(string arg1) {
 			return ProxyQXmlNamespaceSupport().Uri(arg1);
 		}
+		[SmokeMethod("splitName(const QString&, QString&, QString&) const")]
 		public void SplitName(string arg1, StringBuilder arg2, StringBuilder arg3) {
 			ProxyQXmlNamespaceSupport().SplitName(arg1,arg2,arg3);
 		}
+		[SmokeMethod("processName(const QString&, bool, QString&, QString&) const")]
 		public void ProcessName(string arg1, bool arg2, StringBuilder arg3, StringBuilder arg4) {
 			ProxyQXmlNamespaceSupport().ProcessName(arg1,arg2,arg3,arg4);
 		}
+		[SmokeMethod("prefixes() const")]
 		public ArrayList Prefixes() {
 			return ProxyQXmlNamespaceSupport().Prefixes();
 		}
+		[SmokeMethod("prefixes(const QString&) const")]
 		public ArrayList Prefixes(string arg1) {
 			return ProxyQXmlNamespaceSupport().Prefixes(arg1);
 		}
+		[SmokeMethod("pushContext()")]
 		public void PushContext() {
 			ProxyQXmlNamespaceSupport().PushContext();
 		}
+		[SmokeMethod("popContext()")]
 		public void PopContext() {
 			ProxyQXmlNamespaceSupport().PopContext();
 		}
+		[SmokeMethod("reset()")]
 		public void Reset() {
 			ProxyQXmlNamespaceSupport().Reset();
 		}
 		~QXmlNamespaceSupport() {
-			ProxyQXmlNamespaceSupport().Dispose();
+			DisposeQXmlNamespaceSupport();
 		}
 		public void Dispose() {
-			ProxyQXmlNamespaceSupport().Dispose();
+			DisposeQXmlNamespaceSupport();
+		}
+		private void DisposeQXmlNamespaceSupport() {
+			ProxyQXmlNamespaceSupport().DisposeQXmlNamespaceSupport();
 		}
 	}
 }

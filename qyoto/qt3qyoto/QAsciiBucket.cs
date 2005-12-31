@@ -25,14 +25,18 @@ namespace Qt {
 		}
 
 		// QAsciiBucket* QAsciiBucket(const char* arg1,QPtrCollection::Item arg2,QBaseBucket* arg3); >>>> NOT CONVERTED
+		[SmokeMethod("getKey() const")]
 		public string GetKey() {
 			return ProxyQAsciiBucket().GetKey();
 		}
 		~QAsciiBucket() {
-			ProxyQAsciiBucket().Dispose();
+			DisposeQAsciiBucket();
 		}
 		public void Dispose() {
-			ProxyQAsciiBucket().Dispose();
+			DisposeQAsciiBucket();
+		}
+		private void DisposeQAsciiBucket() {
+			ProxyQAsciiBucket().DisposeQAsciiBucket();
 		}
 	}
 }

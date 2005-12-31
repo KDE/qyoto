@@ -27,10 +27,13 @@ namespace Qt {
 		// QPtrBucket* QPtrBucket(void* arg1,QPtrCollection::Item arg2,QBaseBucket* arg3); >>>> NOT CONVERTED
 		// void* getKey(); >>>> NOT CONVERTED
 		~QPtrBucket() {
-			ProxyQPtrBucket().Dispose();
+			DisposeQPtrBucket();
 		}
 		public void Dispose() {
-			ProxyQPtrBucket().Dispose();
+			DisposeQPtrBucket();
+		}
+		private void DisposeQPtrBucket() {
+			ProxyQPtrBucket().DisposeQPtrBucket();
 		}
 	}
 }

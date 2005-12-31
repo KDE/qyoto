@@ -31,14 +31,18 @@ namespace Qt {
 			CreateQDirSortItemProxy();
 			NewQDirSortItem();
 		}
+		[SmokeMethod("QDirSortItem()")]
 		private void NewQDirSortItem() {
 			ProxyQDirSortItem().NewQDirSortItem();
 		}
 		~QDirSortItem() {
-			ProxyQDirSortItem().Dispose();
+			DisposeQDirSortItem();
 		}
 		public void Dispose() {
-			ProxyQDirSortItem().Dispose();
+			DisposeQDirSortItem();
+		}
+		private void DisposeQDirSortItem() {
+			ProxyQDirSortItem().DisposeQDirSortItem();
 		}
 	}
 }

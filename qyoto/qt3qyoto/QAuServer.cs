@@ -29,38 +29,59 @@ namespace Qt {
 			return (IQAuServerProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQAuServer().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQAuServer().ClassName();
 		}
+		[SmokeMethod("init(QSound*)")]
 		public virtual void Init(QSound arg1) {
 			ProxyQAuServer().Init(arg1);
 		}
+		[SmokeMethod("play(const QString&)")]
 		public virtual void Play(string filename) {
 			ProxyQAuServer().Play(filename);
 		}
+		[SmokeMethod("play(QSound*)")]
 		public virtual void Play(QSound arg1) {
 			ProxyQAuServer().Play(arg1);
 		}
+		[SmokeMethod("stop(QSound*)")]
 		public virtual void Stop(QSound arg1) {
 			ProxyQAuServer().Stop(arg1);
 		}
+		[SmokeMethod("okay()")]
 		public virtual bool Okay() {
 			return ProxyQAuServer().Okay();
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQAuServer().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQAuServer().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQAuServer().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQAuServer().TrUtf8(arg1);
 		}
+		protected void CreateQAuServerSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQAuServerSignals), this);
+			_signalInterceptor = (IQAuServerSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQAuServerSignals Emit() {
+			return (IQAuServerSignals) _signalInterceptor;
+		}
+	}
+
+	public interface IQAuServerSignals : IQObjectSignals {
 	}
 }

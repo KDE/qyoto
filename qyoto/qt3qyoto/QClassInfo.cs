@@ -31,14 +31,18 @@ namespace Qt {
 			CreateQClassInfoProxy();
 			NewQClassInfo();
 		}
+		[SmokeMethod("QClassInfo()")]
 		private void NewQClassInfo() {
 			ProxyQClassInfo().NewQClassInfo();
 		}
 		~QClassInfo() {
-			ProxyQClassInfo().Dispose();
+			DisposeQClassInfo();
 		}
 		public void Dispose() {
-			ProxyQClassInfo().Dispose();
+			DisposeQClassInfo();
+		}
+		private void DisposeQClassInfo() {
+			ProxyQClassInfo().DisposeQClassInfo();
 		}
 	}
 }

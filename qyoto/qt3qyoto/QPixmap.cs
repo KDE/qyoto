@@ -57,6 +57,7 @@ namespace Qt {
 			CreateQPixmapProxy();
 			NewQPixmap();
 		}
+		[SmokeMethod("QPixmap()")]
 		private void NewQPixmap() {
 			ProxyQPixmap().NewQPixmap();
 		}
@@ -64,6 +65,7 @@ namespace Qt {
 			CreateQPixmapProxy();
 			NewQPixmap(image);
 		}
+		[SmokeMethod("QPixmap(const QImage&)")]
 		private void NewQPixmap(QImage image) {
 			ProxyQPixmap().NewQPixmap(image);
 		}
@@ -71,6 +73,7 @@ namespace Qt {
 			CreateQPixmapProxy();
 			NewQPixmap(w,h,depth,arg4);
 		}
+		[SmokeMethod("QPixmap(int, int, int, QPixmap::Optimization)")]
 		private void NewQPixmap(int w, int h, int depth, int arg4) {
 			ProxyQPixmap().NewQPixmap(w,h,depth,arg4);
 		}
@@ -78,6 +81,7 @@ namespace Qt {
 			CreateQPixmapProxy();
 			NewQPixmap(w,h,depth);
 		}
+		[SmokeMethod("QPixmap(int, int, int)")]
 		private void NewQPixmap(int w, int h, int depth) {
 			ProxyQPixmap().NewQPixmap(w,h,depth);
 		}
@@ -85,6 +89,7 @@ namespace Qt {
 			CreateQPixmapProxy();
 			NewQPixmap(w,h);
 		}
+		[SmokeMethod("QPixmap(int, int)")]
 		private void NewQPixmap(int w, int h) {
 			ProxyQPixmap().NewQPixmap(w,h);
 		}
@@ -92,6 +97,7 @@ namespace Qt {
 			CreateQPixmapProxy();
 			NewQPixmap(arg1,depth,arg3);
 		}
+		[SmokeMethod("QPixmap(const QSize&, int, QPixmap::Optimization)")]
 		private void NewQPixmap(QSize arg1, int depth, int arg3) {
 			ProxyQPixmap().NewQPixmap(arg1,depth,arg3);
 		}
@@ -99,6 +105,7 @@ namespace Qt {
 			CreateQPixmapProxy();
 			NewQPixmap(arg1,depth);
 		}
+		[SmokeMethod("QPixmap(const QSize&, int)")]
 		private void NewQPixmap(QSize arg1, int depth) {
 			ProxyQPixmap().NewQPixmap(arg1,depth);
 		}
@@ -106,6 +113,7 @@ namespace Qt {
 			CreateQPixmapProxy();
 			NewQPixmap(arg1);
 		}
+		[SmokeMethod("QPixmap(const QSize&)")]
 		private void NewQPixmap(QSize arg1) {
 			ProxyQPixmap().NewQPixmap(arg1);
 		}
@@ -113,6 +121,7 @@ namespace Qt {
 			CreateQPixmapProxy();
 			NewQPixmap(fileName,format,mode);
 		}
+		[SmokeMethod("QPixmap(const QString&, const char*, QPixmap::ColorMode)")]
 		private void NewQPixmap(string fileName, string format, int mode) {
 			ProxyQPixmap().NewQPixmap(fileName,format,mode);
 		}
@@ -120,6 +129,7 @@ namespace Qt {
 			CreateQPixmapProxy();
 			NewQPixmap(fileName,format);
 		}
+		[SmokeMethod("QPixmap(const QString&, const char*)")]
 		private void NewQPixmap(string fileName, string format) {
 			ProxyQPixmap().NewQPixmap(fileName,format);
 		}
@@ -127,6 +137,7 @@ namespace Qt {
 			CreateQPixmapProxy();
 			NewQPixmap(fileName);
 		}
+		[SmokeMethod("QPixmap(const QString&)")]
 		private void NewQPixmap(string fileName) {
 			ProxyQPixmap().NewQPixmap(fileName);
 		}
@@ -134,191 +145,251 @@ namespace Qt {
 			CreateQPixmapProxy();
 			NewQPixmap(xpm);
 		}
+		[SmokeMethod("QPixmap(const char**)")]
 		private void NewQPixmap(string[] xpm) {
 			ProxyQPixmap().NewQPixmap(xpm);
 		}
-		public QPixmap(byte[] data) : this((Type) null) {
+		public QPixmap(QByteArray data) : this((Type) null) {
 			CreateQPixmapProxy();
 			NewQPixmap(data);
 		}
-		private void NewQPixmap(byte[] data) {
+		[SmokeMethod("QPixmap(const QByteArray&)")]
+		private void NewQPixmap(QByteArray data) {
 			ProxyQPixmap().NewQPixmap(data);
 		}
 		public QPixmap(QPixmap arg1) : this((Type) null) {
 			CreateQPixmapProxy();
 			NewQPixmap(arg1);
 		}
+		[SmokeMethod("QPixmap(const QPixmap&)")]
 		private void NewQPixmap(QPixmap arg1) {
 			ProxyQPixmap().NewQPixmap(arg1);
 		}
+		[SmokeMethod("isNull() const")]
 		public bool IsNull() {
 			return ProxyQPixmap().IsNull();
 		}
+		[SmokeMethod("width() const")]
 		public int Width() {
 			return ProxyQPixmap().Width();
 		}
+		[SmokeMethod("height() const")]
 		public int Height() {
 			return ProxyQPixmap().Height();
 		}
+		[SmokeMethod("size() const")]
 		public QSize Size() {
 			return ProxyQPixmap().Size();
 		}
+		[SmokeMethod("rect() const")]
 		public QRect Rect() {
 			return ProxyQPixmap().Rect();
 		}
+		[SmokeMethod("depth() const")]
 		public int Depth() {
 			return ProxyQPixmap().Depth();
 		}
+		[SmokeMethod("fill(const QColor&)")]
 		public void Fill(QColor fillColor) {
 			ProxyQPixmap().Fill(fillColor);
 		}
+		[SmokeMethod("fill()")]
 		public void Fill() {
 			ProxyQPixmap().Fill();
 		}
+		[SmokeMethod("fill(const QWidget*, int, int)")]
 		public void Fill(QWidget arg1, int xofs, int yofs) {
 			ProxyQPixmap().Fill(arg1,xofs,yofs);
 		}
+		[SmokeMethod("fill(const QWidget*, const QPoint&)")]
 		public void Fill(QWidget arg1, QPoint ofs) {
 			ProxyQPixmap().Fill(arg1,ofs);
 		}
+		[SmokeMethod("resize(int, int)")]
 		public void Resize(int width, int height) {
 			ProxyQPixmap().Resize(width,height);
 		}
+		[SmokeMethod("resize(const QSize&)")]
 		public void Resize(QSize arg1) {
 			ProxyQPixmap().Resize(arg1);
 		}
+		[SmokeMethod("mask() const")]
 		public QBitmap Mask() {
 			return ProxyQPixmap().Mask();
 		}
+		[SmokeMethod("setMask(const QBitmap&)")]
 		public void SetMask(QBitmap arg1) {
 			ProxyQPixmap().SetMask(arg1);
 		}
+		[SmokeMethod("selfMask() const")]
 		public bool SelfMask() {
 			return ProxyQPixmap().SelfMask();
 		}
+		[SmokeMethod("hasAlpha() const")]
 		public bool HasAlpha() {
 			return ProxyQPixmap().HasAlpha();
 		}
+		[SmokeMethod("hasAlphaChannel() const")]
 		public bool HasAlphaChannel() {
 			return ProxyQPixmap().HasAlphaChannel();
 		}
+		[SmokeMethod("createHeuristicMask(bool) const")]
 		public QBitmap CreateHeuristicMask(bool clipTight) {
 			return ProxyQPixmap().CreateHeuristicMask(clipTight);
 		}
+		[SmokeMethod("createHeuristicMask() const")]
 		public QBitmap CreateHeuristicMask() {
 			return ProxyQPixmap().CreateHeuristicMask();
 		}
+		[SmokeMethod("xForm(const QWMatrix&) const")]
 		public Object XForm(QWMatrix arg1) {
 			return ProxyQPixmap().XForm(arg1);
 		}
+		[SmokeMethod("convertToImage() const")]
 		public QImage ConvertToImage() {
 			return ProxyQPixmap().ConvertToImage();
 		}
+		[SmokeMethod("convertFromImage(const QImage&, QPixmap::ColorMode)")]
 		public bool ConvertFromImage(QImage arg1, int mode) {
 			return ProxyQPixmap().ConvertFromImage(arg1,mode);
 		}
+		[SmokeMethod("convertFromImage(const QImage&)")]
 		public bool ConvertFromImage(QImage arg1) {
 			return ProxyQPixmap().ConvertFromImage(arg1);
 		}
+		[SmokeMethod("load(const QString&, const char*, QPixmap::ColorMode)")]
 		public bool Load(string fileName, string format, int mode) {
 			return ProxyQPixmap().Load(fileName,format,mode);
 		}
+		[SmokeMethod("load(const QString&, const char*)")]
 		public bool Load(string fileName, string format) {
 			return ProxyQPixmap().Load(fileName,format);
 		}
+		[SmokeMethod("load(const QString&)")]
 		public bool Load(string fileName) {
 			return ProxyQPixmap().Load(fileName);
 		}
+		[SmokeMethod("loadFromData(const uchar*, uint, const char*, QPixmap::ColorMode)")]
 		public bool LoadFromData(char[] buf, uint len, string format, int mode) {
 			return ProxyQPixmap().LoadFromData(buf,len,format,mode);
 		}
+		[SmokeMethod("loadFromData(const uchar*, uint, const char*)")]
 		public bool LoadFromData(char[] buf, uint len, string format) {
 			return ProxyQPixmap().LoadFromData(buf,len,format);
 		}
+		[SmokeMethod("loadFromData(const uchar*, uint)")]
 		public bool LoadFromData(char[] buf, uint len) {
 			return ProxyQPixmap().LoadFromData(buf,len);
 		}
-		public bool LoadFromData(byte[] data, string format, int conversion_flags) {
+		[SmokeMethod("loadFromData(const QByteArray&, const char*, int)")]
+		public bool LoadFromData(QByteArray data, string format, int conversion_flags) {
 			return ProxyQPixmap().LoadFromData(data,format,conversion_flags);
 		}
-		public bool LoadFromData(byte[] data, string format) {
+		[SmokeMethod("loadFromData(const QByteArray&, const char*)")]
+		public bool LoadFromData(QByteArray data, string format) {
 			return ProxyQPixmap().LoadFromData(data,format);
 		}
-		public bool LoadFromData(byte[] data) {
+		[SmokeMethod("loadFromData(const QByteArray&)")]
+		public bool LoadFromData(QByteArray data) {
 			return ProxyQPixmap().LoadFromData(data);
 		}
+		[SmokeMethod("save(const QString&, const char*, int) const")]
 		public bool Save(string fileName, string format, int quality) {
 			return ProxyQPixmap().Save(fileName,format,quality);
 		}
+		[SmokeMethod("save(const QString&, const char*) const")]
 		public bool Save(string fileName, string format) {
 			return ProxyQPixmap().Save(fileName,format);
 		}
+		[SmokeMethod("save(QIODevice*, const char*, int) const")]
 		public bool Save(IQIODevice device, string format, int quality) {
 			return ProxyQPixmap().Save(device,format,quality);
 		}
+		[SmokeMethod("save(QIODevice*, const char*) const")]
 		public bool Save(IQIODevice device, string format) {
 			return ProxyQPixmap().Save(device,format);
 		}
+		[SmokeMethod("serialNumber() const")]
 		public int SerialNumber() {
 			return ProxyQPixmap().SerialNumber();
 		}
+		[SmokeMethod("optimization() const")]
 		public int Optimization() {
 			return ProxyQPixmap().Optimization();
 		}
+		[SmokeMethod("setOptimization(QPixmap::Optimization)")]
 		public void SetOptimization(int arg1) {
 			ProxyQPixmap().SetOptimization(arg1);
 		}
+		[SmokeMethod("detach()")]
 		public virtual void Detach() {
 			ProxyQPixmap().Detach();
 		}
+		[SmokeMethod("isQBitmap() const")]
 		public bool IsQBitmap() {
 			return ProxyQPixmap().IsQBitmap();
 		}
+		[SmokeMethod("defaultDepth()")]
 		public static int DefaultDepth() {
 			return StaticQPixmap().DefaultDepth();
 		}
+		[SmokeMethod("fromMimeSource(const QString&)")]
 		public static QPixmap FromMimeSource(string abs_name) {
 			return StaticQPixmap().FromMimeSource(abs_name);
 		}
+		[SmokeMethod("grabWindow(WId, int, int, int, int)")]
 		public static QPixmap GrabWindow(ulong arg1, int x, int y, int w, int h) {
 			return StaticQPixmap().GrabWindow(arg1,x,y,w,h);
 		}
+		[SmokeMethod("grabWindow(WId, int, int, int)")]
 		public static QPixmap GrabWindow(ulong arg1, int x, int y, int w) {
 			return StaticQPixmap().GrabWindow(arg1,x,y,w);
 		}
+		[SmokeMethod("grabWindow(WId, int, int)")]
 		public static QPixmap GrabWindow(ulong arg1, int x, int y) {
 			return StaticQPixmap().GrabWindow(arg1,x,y);
 		}
+		[SmokeMethod("grabWindow(WId, int)")]
 		public static QPixmap GrabWindow(ulong arg1, int x) {
 			return StaticQPixmap().GrabWindow(arg1,x);
 		}
+		[SmokeMethod("grabWindow(WId)")]
 		public static QPixmap GrabWindow(ulong arg1) {
 			return StaticQPixmap().GrabWindow(arg1);
 		}
+		[SmokeMethod("grabWidget(QWidget*, int, int, int, int)")]
 		public static QPixmap GrabWidget(QWidget widget, int x, int y, int w, int h) {
 			return StaticQPixmap().GrabWidget(widget,x,y,w,h);
 		}
+		[SmokeMethod("grabWidget(QWidget*, int, int, int)")]
 		public static QPixmap GrabWidget(QWidget widget, int x, int y, int w) {
 			return StaticQPixmap().GrabWidget(widget,x,y,w);
 		}
+		[SmokeMethod("grabWidget(QWidget*, int, int)")]
 		public static QPixmap GrabWidget(QWidget widget, int x, int y) {
 			return StaticQPixmap().GrabWidget(widget,x,y);
 		}
+		[SmokeMethod("grabWidget(QWidget*, int)")]
 		public static QPixmap GrabWidget(QWidget widget, int x) {
 			return StaticQPixmap().GrabWidget(widget,x);
 		}
+		[SmokeMethod("grabWidget(QWidget*)")]
 		public static QPixmap GrabWidget(QWidget widget) {
 			return StaticQPixmap().GrabWidget(widget);
 		}
+		[SmokeMethod("trueMatrix(const QWMatrix&, int, int)")]
 		public static QWMatrix TrueMatrix(QWMatrix arg1, int w, int h) {
 			return StaticQPixmap().TrueMatrix(arg1,w,h);
 		}
+		[SmokeMethod("imageFormat(const QString&)")]
 		public static string ImageFormat(string fileName) {
 			return StaticQPixmap().ImageFormat(fileName);
 		}
+		[SmokeMethod("defaultOptimization()")]
 		public static int DefaultOptimization() {
 			return StaticQPixmap().DefaultOptimization();
 		}
+		[SmokeMethod("setDefaultOptimization(QPixmap::Optimization)")]
 		public static void SetDefaultOptimization(int arg1) {
 			StaticQPixmap().SetDefaultOptimization(arg1);
 		}
@@ -326,43 +397,57 @@ namespace Qt {
 			CreateQPixmapProxy();
 			NewQPixmap(w,h,data,isXbitmap);
 		}
+		[SmokeMethod("QPixmap(int, int, const uchar*, bool)")]
 		private void NewQPixmap(int w, int h, char[] data, bool isXbitmap) {
 			ProxyQPixmap().NewQPixmap(w,h,data,isXbitmap);
 		}
+		[SmokeMethod("metric(int) const")]
 		protected int Metric(int arg1) {
 			return ProxyQPixmap().Metric(arg1);
 		}
 		~QPixmap() {
-			ProxyQPixmap().Dispose();
+			DisposeQPixmap();
 		}
 		public void Dispose() {
-			ProxyQPixmap().Dispose();
+			DisposeQPixmap();
 		}
+		private void DisposeQPixmap() {
+			ProxyQPixmap().DisposeQPixmap();
+		}
+		[SmokeMethod("devType() const")]
 		public int DevType() {
 			return ProxyQPixmap().DevType();
 		}
+		[SmokeMethod("isExtDev() const")]
 		public bool IsExtDev() {
 			return ProxyQPixmap().IsExtDev();
 		}
+		[SmokeMethod("paintingActive() const")]
 		public bool PaintingActive() {
 			return ProxyQPixmap().PaintingActive();
 		}
+		[SmokeMethod("setResolution(int)")]
 		public virtual void SetResolution(int arg1) {
 			ProxyQPixmap().SetResolution(arg1);
 		}
+		[SmokeMethod("resolution() const")]
 		public virtual int Resolution() {
 			return ProxyQPixmap().Resolution();
 		}
 		// bool cmd(int arg1,QPainter* arg2,QPDevCmdParam* arg3); >>>> NOT CONVERTED
+		[SmokeMethod("fontMet(QFont*, int, const char*, int) const")]
 		protected virtual int FontMet(QFont arg1, int arg2, string arg3, int arg4) {
 			return ProxyQPixmap().FontMet(arg1,arg2,arg3,arg4);
 		}
+		[SmokeMethod("fontMet(QFont*, int, const char*) const")]
 		protected virtual int FontMet(QFont arg1, int arg2, string arg3) {
 			return ProxyQPixmap().FontMet(arg1,arg2,arg3);
 		}
+		[SmokeMethod("fontMet(QFont*, int) const")]
 		protected virtual int FontMet(QFont arg1, int arg2) {
 			return ProxyQPixmap().FontMet(arg1,arg2);
 		}
+		[SmokeMethod("fontInf(QFont*, int) const")]
 		protected virtual int FontInf(QFont arg1, int arg2) {
 			return ProxyQPixmap().FontInf(arg1,arg2);
 		}

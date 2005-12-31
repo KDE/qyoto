@@ -106,6 +106,7 @@ namespace Qt {
 			CreateQPrinterProxy();
 			NewQPrinter(mode);
 		}
+		[SmokeMethod("QPrinter(QPrinter::PrinterMode)")]
 		private void NewQPrinter(int mode) {
 			ProxyQPrinter().NewQPrinter(mode);
 		}
@@ -113,174 +114,231 @@ namespace Qt {
 			CreateQPrinterProxy();
 			NewQPrinter();
 		}
+		[SmokeMethod("QPrinter()")]
 		private void NewQPrinter() {
 			ProxyQPrinter().NewQPrinter();
 		}
+		[SmokeMethod("printerName() const")]
 		public string PrinterName() {
 			return ProxyQPrinter().PrinterName();
 		}
+		[SmokeMethod("setPrinterName(const QString&)")]
 		public virtual void SetPrinterName(string arg1) {
 			ProxyQPrinter().SetPrinterName(arg1);
 		}
+		[SmokeMethod("outputToFile() const")]
 		public bool OutputToFile() {
 			return ProxyQPrinter().OutputToFile();
 		}
+		[SmokeMethod("setOutputToFile(bool)")]
 		public virtual void SetOutputToFile(bool arg1) {
 			ProxyQPrinter().SetOutputToFile(arg1);
 		}
+		[SmokeMethod("outputFileName() const")]
 		public string OutputFileName() {
 			return ProxyQPrinter().OutputFileName();
 		}
+		[SmokeMethod("setOutputFileName(const QString&)")]
 		public virtual void SetOutputFileName(string arg1) {
 			ProxyQPrinter().SetOutputFileName(arg1);
 		}
+		[SmokeMethod("printProgram() const")]
 		public string PrintProgram() {
 			return ProxyQPrinter().PrintProgram();
 		}
+		[SmokeMethod("setPrintProgram(const QString&)")]
 		public virtual void SetPrintProgram(string arg1) {
 			ProxyQPrinter().SetPrintProgram(arg1);
 		}
+		[SmokeMethod("printerSelectionOption() const")]
 		public string PrinterSelectionOption() {
 			return ProxyQPrinter().PrinterSelectionOption();
 		}
+		[SmokeMethod("setPrinterSelectionOption(const QString&)")]
 		public virtual void SetPrinterSelectionOption(string arg1) {
 			ProxyQPrinter().SetPrinterSelectionOption(arg1);
 		}
+		[SmokeMethod("docName() const")]
 		public string DocName() {
 			return ProxyQPrinter().DocName();
 		}
+		[SmokeMethod("setDocName(const QString&)")]
 		public virtual void SetDocName(string arg1) {
 			ProxyQPrinter().SetDocName(arg1);
 		}
+		[SmokeMethod("creator() const")]
 		public string Creator() {
 			return ProxyQPrinter().Creator();
 		}
+		[SmokeMethod("setCreator(const QString&)")]
 		public virtual void SetCreator(string arg1) {
 			ProxyQPrinter().SetCreator(arg1);
 		}
+		[SmokeMethod("orientation() const")]
 		public int Orientation() {
 			return ProxyQPrinter().Orientation();
 		}
+		[SmokeMethod("setOrientation(QPrinter::Orientation)")]
 		public virtual void SetOrientation(int arg1) {
 			ProxyQPrinter().SetOrientation(arg1);
 		}
+		[SmokeMethod("pageSize() const")]
 		public int PageSize() {
 			return ProxyQPrinter().PageSize();
 		}
+		[SmokeMethod("setPageSize(QPrinter::PageSize)")]
 		public virtual void SetPageSize(int arg1) {
 			ProxyQPrinter().SetPageSize(arg1);
 		}
+		[SmokeMethod("setPageOrder(QPrinter::PageOrder)")]
 		public virtual void SetPageOrder(int arg1) {
 			ProxyQPrinter().SetPageOrder(arg1);
 		}
+		[SmokeMethod("pageOrder() const")]
 		public int PageOrder() {
 			return ProxyQPrinter().PageOrder();
 		}
+		[SmokeMethod("setResolution(int)")]
 		public new void SetResolution(int arg1) {
 			ProxyQPrinter().SetResolution(arg1);
 		}
+		[SmokeMethod("resolution() const")]
 		public new int Resolution() {
 			return ProxyQPrinter().Resolution();
 		}
+		[SmokeMethod("setColorMode(QPrinter::ColorMode)")]
 		public virtual void SetColorMode(int arg1) {
 			ProxyQPrinter().SetColorMode(arg1);
 		}
+		[SmokeMethod("colorMode() const")]
 		public int ColorMode() {
 			return ProxyQPrinter().ColorMode();
 		}
+		[SmokeMethod("setFullPage(bool)")]
 		public virtual void SetFullPage(bool arg1) {
 			ProxyQPrinter().SetFullPage(arg1);
 		}
+		[SmokeMethod("fullPage() const")]
 		public bool FullPage() {
 			return ProxyQPrinter().FullPage();
 		}
+		[SmokeMethod("margins() const")]
 		public QSize Margins() {
 			return ProxyQPrinter().Margins();
 		}
+		[SmokeMethod("setMargins(uint, uint, uint, uint)")]
 		public void SetMargins(uint top, uint left, uint bottom, uint right) {
 			ProxyQPrinter().SetMargins(top,left,bottom,right);
 		}
+		[SmokeMethod("margins(uint*, uint*, uint*, uint*) const")]
 		public void Margins(out int top, out int left, out int bottom, out int right) {
 			ProxyQPrinter().Margins(out top,out left,out bottom,out right);
 		}
+		[SmokeMethod("fromPage() const")]
 		public int FromPage() {
 			return ProxyQPrinter().FromPage();
 		}
+		[SmokeMethod("toPage() const")]
 		public int ToPage() {
 			return ProxyQPrinter().ToPage();
 		}
+		[SmokeMethod("setFromTo(int, int)")]
 		public virtual void SetFromTo(int fromPage, int toPage) {
 			ProxyQPrinter().SetFromTo(fromPage,toPage);
 		}
+		[SmokeMethod("minPage() const")]
 		public int MinPage() {
 			return ProxyQPrinter().MinPage();
 		}
+		[SmokeMethod("maxPage() const")]
 		public int MaxPage() {
 			return ProxyQPrinter().MaxPage();
 		}
+		[SmokeMethod("setMinMax(int, int)")]
 		public virtual void SetMinMax(int minPage, int maxPage) {
 			ProxyQPrinter().SetMinMax(minPage,maxPage);
 		}
+		[SmokeMethod("numCopies() const")]
 		public int NumCopies() {
 			return ProxyQPrinter().NumCopies();
 		}
+		[SmokeMethod("setNumCopies(int)")]
 		public virtual void SetNumCopies(int arg1) {
 			ProxyQPrinter().SetNumCopies(arg1);
 		}
+		[SmokeMethod("collateCopiesEnabled() const")]
 		public bool CollateCopiesEnabled() {
 			return ProxyQPrinter().CollateCopiesEnabled();
 		}
+		[SmokeMethod("setCollateCopiesEnabled(bool)")]
 		public void SetCollateCopiesEnabled(bool arg1) {
 			ProxyQPrinter().SetCollateCopiesEnabled(arg1);
 		}
+		[SmokeMethod("collateCopies() const")]
 		public bool CollateCopies() {
 			return ProxyQPrinter().CollateCopies();
 		}
+		[SmokeMethod("setCollateCopies(bool)")]
 		public void SetCollateCopies(bool arg1) {
 			ProxyQPrinter().SetCollateCopies(arg1);
 		}
+		[SmokeMethod("printRange() const")]
 		public int PrintRange() {
 			return ProxyQPrinter().PrintRange();
 		}
+		[SmokeMethod("setPrintRange(QPrinter::PrintRange)")]
 		public void SetPrintRange(int range) {
 			ProxyQPrinter().SetPrintRange(range);
 		}
+		[SmokeMethod("newPage()")]
 		public bool NewPage() {
 			return ProxyQPrinter().NewPage();
 		}
+		[SmokeMethod("abort()")]
 		public bool Abort() {
 			return ProxyQPrinter().Abort();
 		}
+		[SmokeMethod("aborted() const")]
 		public bool Aborted() {
 			return ProxyQPrinter().Aborted();
 		}
+		[SmokeMethod("setup(QWidget*)")]
 		public bool Setup(QWidget parent) {
 			return ProxyQPrinter().Setup(parent);
 		}
+		[SmokeMethod("setup()")]
 		public bool Setup() {
 			return ProxyQPrinter().Setup();
 		}
+		[SmokeMethod("paperSource() const")]
 		public int PaperSource() {
 			return ProxyQPrinter().PaperSource();
 		}
+		[SmokeMethod("setPaperSource(QPrinter::PaperSource)")]
 		public virtual void SetPaperSource(int arg1) {
 			ProxyQPrinter().SetPaperSource(arg1);
 		}
+		[SmokeMethod("setOptionEnabled(QPrinter::PrinterOption, bool)")]
 		public void SetOptionEnabled(int arg1, bool enable) {
 			ProxyQPrinter().SetOptionEnabled(arg1,enable);
 		}
+		[SmokeMethod("isOptionEnabled(QPrinter::PrinterOption)")]
 		public bool IsOptionEnabled(int arg1) {
 			return ProxyQPrinter().IsOptionEnabled(arg1);
 		}
 		// bool cmd(int arg1,QPainter* arg2,QPDevCmdParam* arg3); >>>> NOT CONVERTED
+		[SmokeMethod("metric(int) const")]
 		protected new int Metric(int arg1) {
 			return ProxyQPrinter().Metric(arg1);
 		}
 		~QPrinter() {
-			ProxyQPrinter().Dispose();
+			DisposeQPrinter();
 		}
 		public void Dispose() {
-			ProxyQPrinter().Dispose();
+			DisposeQPrinter();
+		}
+		private void DisposeQPrinter() {
+			ProxyQPrinter().DisposeQPrinter();
 		}
 	}
 }

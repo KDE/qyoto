@@ -67,6 +67,7 @@ namespace Qt {
 			CreateQSqlQueryProxy();
 			NewQSqlQuery(r);
 		}
+		[SmokeMethod("QSqlQuery(QSqlResult*)")]
 		private void NewQSqlQuery(QSqlResult r) {
 			ProxyQSqlQuery().NewQSqlQuery(r);
 		}
@@ -74,6 +75,7 @@ namespace Qt {
 			CreateQSqlQueryProxy();
 			NewQSqlQuery(query,db);
 		}
+		[SmokeMethod("QSqlQuery(const QString&, QSqlDatabase*)")]
 		private void NewQSqlQuery(string query, QSqlDatabase db) {
 			ProxyQSqlQuery().NewQSqlQuery(query,db);
 		}
@@ -81,6 +83,7 @@ namespace Qt {
 			CreateQSqlQueryProxy();
 			NewQSqlQuery(query);
 		}
+		[SmokeMethod("QSqlQuery(const QString&)")]
 		private void NewQSqlQuery(string query) {
 			ProxyQSqlQuery().NewQSqlQuery(query);
 		}
@@ -88,6 +91,7 @@ namespace Qt {
 			CreateQSqlQueryProxy();
 			NewQSqlQuery();
 		}
+		[SmokeMethod("QSqlQuery()")]
 		private void NewQSqlQuery() {
 			ProxyQSqlQuery().NewQSqlQuery();
 		}
@@ -95,6 +99,7 @@ namespace Qt {
 			CreateQSqlQueryProxy();
 			NewQSqlQuery(db);
 		}
+		[SmokeMethod("QSqlQuery(QSqlDatabase*)")]
 		private void NewQSqlQuery(QSqlDatabase db) {
 			ProxyQSqlQuery().NewQSqlQuery(db);
 		}
@@ -102,117 +107,155 @@ namespace Qt {
 			CreateQSqlQueryProxy();
 			NewQSqlQuery(other);
 		}
+		[SmokeMethod("QSqlQuery(const QSqlQuery&)")]
 		private void NewQSqlQuery(IQSqlQuery other) {
 			ProxyQSqlQuery().NewQSqlQuery(other);
 		}
+		[SmokeMethod("isValid() const")]
 		public bool IsValid() {
 			return ProxyQSqlQuery().IsValid();
 		}
+		[SmokeMethod("isActive() const")]
 		public bool IsActive() {
 			return ProxyQSqlQuery().IsActive();
 		}
+		[SmokeMethod("isNull(int) const")]
 		public bool IsNull(int field) {
 			return ProxyQSqlQuery().IsNull(field);
 		}
+		[SmokeMethod("at() const")]
 		public int At() {
 			return ProxyQSqlQuery().At();
 		}
+		[SmokeMethod("lastQuery() const")]
 		public string LastQuery() {
 			return ProxyQSqlQuery().LastQuery();
 		}
+		[SmokeMethod("numRowsAffected() const")]
 		public int NumRowsAffected() {
 			return ProxyQSqlQuery().NumRowsAffected();
 		}
+		[SmokeMethod("lastError() const")]
 		public QSqlError LastError() {
 			return ProxyQSqlQuery().LastError();
 		}
+		[SmokeMethod("isSelect() const")]
 		public bool IsSelect() {
 			return ProxyQSqlQuery().IsSelect();
 		}
+		[SmokeMethod("size() const")]
 		public int Size() {
 			return ProxyQSqlQuery().Size();
 		}
+		[SmokeMethod("driver() const")]
 		public QSqlDriver Driver() {
 			return ProxyQSqlQuery().Driver();
 		}
+		[SmokeMethod("result() const")]
 		public QSqlResult Result() {
 			return ProxyQSqlQuery().Result();
 		}
+		[SmokeMethod("isForwardOnly() const")]
 		public bool IsForwardOnly() {
 			return ProxyQSqlQuery().IsForwardOnly();
 		}
+		[SmokeMethod("setForwardOnly(bool)")]
 		public void SetForwardOnly(bool forward) {
 			ProxyQSqlQuery().SetForwardOnly(forward);
 		}
+		[SmokeMethod("exec(const QString&)")]
 		public virtual bool Exec(string query) {
 			return ProxyQSqlQuery().Exec(query);
 		}
+		[SmokeMethod("value(int) const")]
 		public virtual QVariant Value(int i) {
 			return ProxyQSqlQuery().Value(i);
 		}
+		[SmokeMethod("seek(int, bool)")]
 		public virtual bool Seek(int i, bool relative) {
 			return ProxyQSqlQuery().Seek(i,relative);
 		}
+		[SmokeMethod("seek(int)")]
 		public virtual bool Seek(int i) {
 			return ProxyQSqlQuery().Seek(i);
 		}
+		[SmokeMethod("next()")]
 		public virtual bool Next() {
 			return ProxyQSqlQuery().Next();
 		}
+		[SmokeMethod("prev()")]
 		public virtual bool Prev() {
 			return ProxyQSqlQuery().Prev();
 		}
+		[SmokeMethod("first()")]
 		public virtual bool First() {
 			return ProxyQSqlQuery().First();
 		}
+		[SmokeMethod("last()")]
 		public virtual bool Last() {
 			return ProxyQSqlQuery().Last();
 		}
+		[SmokeMethod("exec()")]
 		public bool Exec() {
 			return ProxyQSqlQuery().Exec();
 		}
+		[SmokeMethod("prepare(const QString&)")]
 		public bool Prepare(string query) {
 			return ProxyQSqlQuery().Prepare(query);
 		}
+		[SmokeMethod("bindValue(const QString&, const QVariant&)")]
 		public void BindValue(string placeholder, QVariant val) {
 			ProxyQSqlQuery().BindValue(placeholder,val);
 		}
+		[SmokeMethod("bindValue(int, const QVariant&)")]
 		public void BindValue(int pos, QVariant val) {
 			ProxyQSqlQuery().BindValue(pos,val);
 		}
+		[SmokeMethod("addBindValue(const QVariant&)")]
 		public void AddBindValue(QVariant val) {
 			ProxyQSqlQuery().AddBindValue(val);
 		}
+		[SmokeMethod("bindValue(const QString&, const QVariant&, QSql::ParameterType)")]
 		public void BindValue(string placeholder, QVariant val, int type) {
 			ProxyQSqlQuery().BindValue(placeholder,val,type);
 		}
+		[SmokeMethod("bindValue(int, const QVariant&, QSql::ParameterType)")]
 		public void BindValue(int pos, QVariant val, int type) {
 			ProxyQSqlQuery().BindValue(pos,val,type);
 		}
+		[SmokeMethod("addBindValue(const QVariant&, QSql::ParameterType)")]
 		public void AddBindValue(QVariant val, int type) {
 			ProxyQSqlQuery().AddBindValue(val,type);
 		}
+		[SmokeMethod("boundValue(const QString&) const")]
 		public QVariant BoundValue(string placeholder) {
 			return ProxyQSqlQuery().BoundValue(placeholder);
 		}
+		[SmokeMethod("boundValue(int) const")]
 		public QVariant BoundValue(int pos) {
 			return ProxyQSqlQuery().BoundValue(pos);
 		}
 		// QMap<QString, QVariant> boundValues(); >>>> NOT CONVERTED
+		[SmokeMethod("executedQuery() const")]
 		public string ExecutedQuery() {
 			return ProxyQSqlQuery().ExecutedQuery();
 		}
+		[SmokeMethod("beforeSeek()")]
 		protected virtual void BeforeSeek() {
 			ProxyQSqlQuery().BeforeSeek();
 		}
+		[SmokeMethod("afterSeek()")]
 		protected virtual void AfterSeek() {
 			ProxyQSqlQuery().AfterSeek();
 		}
 		~QSqlQuery() {
-			ProxyQSqlQuery().Dispose();
+			DisposeQSqlQuery();
 		}
 		public void Dispose() {
-			ProxyQSqlQuery().Dispose();
+			DisposeQSqlQuery();
+		}
+		private void DisposeQSqlQuery() {
+			ProxyQSqlQuery().DisposeQSqlQuery();
 		}
 	}
 }

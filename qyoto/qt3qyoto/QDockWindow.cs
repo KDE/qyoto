@@ -40,232 +40,319 @@ namespace Qt {
 			Undocked = 2,
 			Always = Docked|Undocked,
 		}
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQDockWindow().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQDockWindow().ClassName();
 		}
 		public QDockWindow(int p, QWidget parent, string name, int f) : this((Type) null) {
 			CreateQDockWindowProxy();
+			CreateQDockWindowSignalProxy();
 			NewQDockWindow(p,parent,name,f);
 		}
+		[SmokeMethod("QDockWindow(QDockWindow::Place, QWidget*, const char*, Qt::WFlags)")]
 		private void NewQDockWindow(int p, QWidget parent, string name, int f) {
 			ProxyQDockWindow().NewQDockWindow(p,parent,name,f);
 		}
 		public QDockWindow(int p, QWidget parent, string name) : this((Type) null) {
 			CreateQDockWindowProxy();
+			CreateQDockWindowSignalProxy();
 			NewQDockWindow(p,parent,name);
 		}
+		[SmokeMethod("QDockWindow(QDockWindow::Place, QWidget*, const char*)")]
 		private void NewQDockWindow(int p, QWidget parent, string name) {
 			ProxyQDockWindow().NewQDockWindow(p,parent,name);
 		}
 		public QDockWindow(int p, QWidget parent) : this((Type) null) {
 			CreateQDockWindowProxy();
+			CreateQDockWindowSignalProxy();
 			NewQDockWindow(p,parent);
 		}
+		[SmokeMethod("QDockWindow(QDockWindow::Place, QWidget*)")]
 		private void NewQDockWindow(int p, QWidget parent) {
 			ProxyQDockWindow().NewQDockWindow(p,parent);
 		}
 		public QDockWindow(int p) : this((Type) null) {
 			CreateQDockWindowProxy();
+			CreateQDockWindowSignalProxy();
 			NewQDockWindow(p);
 		}
+		[SmokeMethod("QDockWindow(QDockWindow::Place)")]
 		private void NewQDockWindow(int p) {
 			ProxyQDockWindow().NewQDockWindow(p);
 		}
 		public QDockWindow() : this((Type) null) {
 			CreateQDockWindowProxy();
+			CreateQDockWindowSignalProxy();
 			NewQDockWindow();
 		}
+		[SmokeMethod("QDockWindow()")]
 		private void NewQDockWindow() {
 			ProxyQDockWindow().NewQDockWindow();
 		}
 		public QDockWindow(QWidget parent, string name, int f) : this((Type) null) {
 			CreateQDockWindowProxy();
+			CreateQDockWindowSignalProxy();
 			NewQDockWindow(parent,name,f);
 		}
+		[SmokeMethod("QDockWindow(QWidget*, const char*, Qt::WFlags)")]
 		private void NewQDockWindow(QWidget parent, string name, int f) {
 			ProxyQDockWindow().NewQDockWindow(parent,name,f);
 		}
 		public QDockWindow(QWidget parent, string name) : this((Type) null) {
 			CreateQDockWindowProxy();
+			CreateQDockWindowSignalProxy();
 			NewQDockWindow(parent,name);
 		}
+		[SmokeMethod("QDockWindow(QWidget*, const char*)")]
 		private void NewQDockWindow(QWidget parent, string name) {
 			ProxyQDockWindow().NewQDockWindow(parent,name);
 		}
 		public QDockWindow(QWidget parent) : this((Type) null) {
 			CreateQDockWindowProxy();
+			CreateQDockWindowSignalProxy();
 			NewQDockWindow(parent);
 		}
+		[SmokeMethod("QDockWindow(QWidget*)")]
 		private void NewQDockWindow(QWidget parent) {
 			ProxyQDockWindow().NewQDockWindow(parent);
 		}
+		[SmokeMethod("setWidget(QWidget*)")]
 		public virtual void SetWidget(QWidget w) {
 			ProxyQDockWindow().SetWidget(w);
 		}
+		[SmokeMethod("widget() const")]
 		public QWidget Widget() {
 			return ProxyQDockWindow().Widget();
 		}
+		[SmokeMethod("place() const")]
 		public int Place() {
 			return ProxyQDockWindow().Place();
 		}
+		[SmokeMethod("area() const")]
 		public QDockArea Area() {
 			return ProxyQDockWindow().Area();
 		}
+		[SmokeMethod("setCloseMode(int)")]
 		public virtual void SetCloseMode(int m) {
 			ProxyQDockWindow().SetCloseMode(m);
 		}
+		[SmokeMethod("isCloseEnabled() const")]
 		public bool IsCloseEnabled() {
 			return ProxyQDockWindow().IsCloseEnabled();
 		}
+		[SmokeMethod("closeMode() const")]
 		public int CloseMode() {
 			return ProxyQDockWindow().CloseMode();
 		}
+		[SmokeMethod("setResizeEnabled(bool)")]
 		public virtual void SetResizeEnabled(bool b) {
 			ProxyQDockWindow().SetResizeEnabled(b);
 		}
+		[SmokeMethod("setMovingEnabled(bool)")]
 		public virtual void SetMovingEnabled(bool b) {
 			ProxyQDockWindow().SetMovingEnabled(b);
 		}
+		[SmokeMethod("isResizeEnabled() const")]
 		public bool IsResizeEnabled() {
 			return ProxyQDockWindow().IsResizeEnabled();
 		}
+		[SmokeMethod("isMovingEnabled() const")]
 		public bool IsMovingEnabled() {
 			return ProxyQDockWindow().IsMovingEnabled();
 		}
+		[SmokeMethod("setHorizontallyStretchable(bool)")]
 		public virtual void SetHorizontallyStretchable(bool b) {
 			ProxyQDockWindow().SetHorizontallyStretchable(b);
 		}
+		[SmokeMethod("setVerticallyStretchable(bool)")]
 		public virtual void SetVerticallyStretchable(bool b) {
 			ProxyQDockWindow().SetVerticallyStretchable(b);
 		}
+		[SmokeMethod("isHorizontallyStretchable() const")]
 		public bool IsHorizontallyStretchable() {
 			return ProxyQDockWindow().IsHorizontallyStretchable();
 		}
+		[SmokeMethod("isVerticallyStretchable() const")]
 		public bool IsVerticallyStretchable() {
 			return ProxyQDockWindow().IsVerticallyStretchable();
 		}
+		[SmokeMethod("setHorizontalStretchable(bool)")]
 		public void SetHorizontalStretchable(bool b) {
 			ProxyQDockWindow().SetHorizontalStretchable(b);
 		}
+		[SmokeMethod("setVerticalStretchable(bool)")]
 		public void SetVerticalStretchable(bool b) {
 			ProxyQDockWindow().SetVerticalStretchable(b);
 		}
+		[SmokeMethod("isHorizontalStretchable() const")]
 		public bool IsHorizontalStretchable() {
 			return ProxyQDockWindow().IsHorizontalStretchable();
 		}
+		[SmokeMethod("isVerticalStretchable() const")]
 		public bool IsVerticalStretchable() {
 			return ProxyQDockWindow().IsVerticalStretchable();
 		}
+		[SmokeMethod("isStretchable() const")]
 		public bool IsStretchable() {
 			return ProxyQDockWindow().IsStretchable();
 		}
+		[SmokeMethod("setOffset(int)")]
 		public virtual void SetOffset(int o) {
 			ProxyQDockWindow().SetOffset(o);
 		}
+		[SmokeMethod("offset() const")]
 		public int Offset() {
 			return ProxyQDockWindow().Offset();
 		}
+		[SmokeMethod("setFixedExtentWidth(int)")]
 		public virtual void SetFixedExtentWidth(int w) {
 			ProxyQDockWindow().SetFixedExtentWidth(w);
 		}
+		[SmokeMethod("setFixedExtentHeight(int)")]
 		public virtual void SetFixedExtentHeight(int h) {
 			ProxyQDockWindow().SetFixedExtentHeight(h);
 		}
+		[SmokeMethod("fixedExtent() const")]
 		public QSize FixedExtent() {
 			return ProxyQDockWindow().FixedExtent();
 		}
+		[SmokeMethod("setNewLine(bool)")]
 		public virtual void SetNewLine(bool b) {
 			ProxyQDockWindow().SetNewLine(b);
 		}
+		[SmokeMethod("newLine() const")]
 		public bool NewLine() {
 			return ProxyQDockWindow().NewLine();
 		}
+		[SmokeMethod("orientation() const")]
 		public int Orientation() {
 			return ProxyQDockWindow().Orientation();
 		}
+		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {
 			return ProxyQDockWindow().SizeHint();
 		}
+		[SmokeMethod("minimumSize() const")]
 		public new QSize MinimumSize() {
 			return ProxyQDockWindow().MinimumSize();
 		}
+		[SmokeMethod("minimumSizeHint() const")]
 		public new QSize MinimumSizeHint() {
 			return ProxyQDockWindow().MinimumSizeHint();
 		}
+		[SmokeMethod("boxLayout()")]
 		public QBoxLayout BoxLayout() {
 			return ProxyQDockWindow().BoxLayout();
 		}
+		[SmokeMethod("setOpaqueMoving(bool)")]
 		public virtual void SetOpaqueMoving(bool b) {
 			ProxyQDockWindow().SetOpaqueMoving(b);
 		}
+		[SmokeMethod("opaqueMoving() const")]
 		public bool OpaqueMoving() {
 			return ProxyQDockWindow().OpaqueMoving();
 		}
+		[SmokeMethod("eventFilter(QObject*, QEvent*)")]
 		public new bool EventFilter(QObject o, QEvent e) {
 			return ProxyQDockWindow().EventFilter(o,e);
 		}
+		[Q_SLOT("undock(QWidget*)")]
+		[SmokeMethod("undock(QWidget*)")]
 		public virtual void Undock(QWidget w) {
 			ProxyQDockWindow().Undock(w);
 		}
+		[Q_SLOT("undock()")]
+		[SmokeMethod("undock()")]
 		public virtual void Undock() {
 			ProxyQDockWindow().Undock();
 		}
+		[Q_SLOT("dock()")]
+		[SmokeMethod("dock()")]
 		public virtual void Dock() {
 			ProxyQDockWindow().Dock();
 		}
+		[Q_SLOT("setOrientation(Qt::Orientation)")]
+		[SmokeMethod("setOrientation(Qt::Orientation)")]
 		public virtual void SetOrientation(int o) {
 			ProxyQDockWindow().SetOrientation(o);
 		}
+		[Q_SLOT("setCaption(const QString&)")]
+		[SmokeMethod("setCaption(const QString&)")]
 		public new void SetCaption(string s) {
 			ProxyQDockWindow().SetCaption(s);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQDockWindow().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQDockWindow().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQDockWindow().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQDockWindow().TrUtf8(arg1);
 		}
+		[SmokeMethod("resizeEvent(QResizeEvent*)")]
 		protected new void ResizeEvent(QResizeEvent e) {
 			ProxyQDockWindow().ResizeEvent(e);
 		}
+		[SmokeMethod("showEvent(QShowEvent*)")]
 		public new void ShowEvent(QShowEvent e) {
 			ProxyQDockWindow().ShowEvent(e);
 		}
+		[SmokeMethod("hideEvent(QHideEvent*)")]
 		protected new void HideEvent(QHideEvent e) {
 			ProxyQDockWindow().HideEvent(e);
 		}
+		[SmokeMethod("contextMenuEvent(QContextMenuEvent*)")]
 		protected new void ContextMenuEvent(QContextMenuEvent e) {
 			ProxyQDockWindow().ContextMenuEvent(e);
 		}
+		[SmokeMethod("drawFrame(QPainter*)")]
 		protected new void DrawFrame(QPainter arg1) {
 			ProxyQDockWindow().DrawFrame(arg1);
 		}
+		[SmokeMethod("drawContents(QPainter*)")]
 		protected new void DrawContents(QPainter arg1) {
 			ProxyQDockWindow().DrawContents(arg1);
 		}
+		[SmokeMethod("event(QEvent*)")]
 		public new bool Event(QEvent e) {
 			return ProxyQDockWindow().Event(e);
 		}
 		~QDockWindow() {
-			ProxyQDockWindow().Dispose();
+			DisposeQDockWindow();
 		}
 		public new void Dispose() {
-			ProxyQDockWindow().Dispose();
+			DisposeQDockWindow();
+		}
+		private void DisposeQDockWindow() {
+			ProxyQDockWindow().DisposeQDockWindow();
+		}
+		protected void CreateQDockWindowSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQDockWindowSignals), this);
+			_signalInterceptor = (IQDockWindowSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQDockWindowSignals Emit() {
+			return (IQDockWindowSignals) _signalInterceptor;
 		}
 	}
 
-	public interface IQDockWindowSignals {
+	public interface IQDockWindowSignals : IQFrameSignals {
+		[Q_SIGNAL("orientationChanged(Qt::Orientation)")]
 		void OrientationChanged(int o);
+		[Q_SIGNAL("placeChanged(QDockWindow::Place)")]
 		void PlaceChanged(int p);
+		[Q_SIGNAL("visibilityChanged(bool)")]
 		void VisibilityChanged(bool arg1);
 	}
 }

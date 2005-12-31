@@ -28,76 +28,100 @@ namespace Qt {
 			return (IQCharRefProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("unicode() const")]
 		public ushort Unicode() {
 			return ProxyQCharRef().Unicode();
 		}
+		[SmokeMethod("latin1() const")]
 		public char Latin1() {
 			return ProxyQCharRef().Latin1();
 		}
 		//  operator QChar(); >>>> NOT CONVERTED
+		[SmokeMethod("isNull() const")]
 		public bool IsNull() {
 			return ProxyQCharRef().IsNull();
 		}
+		[SmokeMethod("isPrint() const")]
 		public bool IsPrint() {
 			return ProxyQCharRef().IsPrint();
 		}
+		[SmokeMethod("isPunct() const")]
 		public bool IsPunct() {
 			return ProxyQCharRef().IsPunct();
 		}
+		[SmokeMethod("isSpace() const")]
 		public bool IsSpace() {
 			return ProxyQCharRef().IsSpace();
 		}
+		[SmokeMethod("isMark() const")]
 		public bool IsMark() {
 			return ProxyQCharRef().IsMark();
 		}
+		[SmokeMethod("isLetter() const")]
 		public bool IsLetter() {
 			return ProxyQCharRef().IsLetter();
 		}
+		[SmokeMethod("isNumber() const")]
 		public bool IsNumber() {
 			return ProxyQCharRef().IsNumber();
 		}
+		[SmokeMethod("isLetterOrNumber()")]
 		public bool IsLetterOrNumber() {
 			return ProxyQCharRef().IsLetterOrNumber();
 		}
+		[SmokeMethod("isDigit() const")]
 		public bool IsDigit() {
 			return ProxyQCharRef().IsDigit();
 		}
+		[SmokeMethod("digitValue() const")]
 		public int DigitValue() {
 			return ProxyQCharRef().DigitValue();
 		}
+		[SmokeMethod("lower() const")]
 		public char Lower() {
 			return ProxyQCharRef().Lower();
 		}
+		[SmokeMethod("upper() const")]
 		public char Upper() {
 			return ProxyQCharRef().Upper();
 		}
+		[SmokeMethod("category() const")]
 		public char Category() {
 			return ProxyQCharRef().Category();
 		}
+		[SmokeMethod("direction() const")]
 		public char Direction() {
 			return ProxyQCharRef().Direction();
 		}
+		[SmokeMethod("joining() const")]
 		public char Joining() {
 			return ProxyQCharRef().Joining();
 		}
+		[SmokeMethod("mirrored() const")]
 		public bool Mirrored() {
 			return ProxyQCharRef().Mirrored();
 		}
+		[SmokeMethod("mirroredChar() const")]
 		public char MirroredChar() {
 			return ProxyQCharRef().MirroredChar();
 		}
+		[SmokeMethod("decomposition() const")]
 		public string Decomposition() {
 			return ProxyQCharRef().Decomposition();
 		}
+		[SmokeMethod("decompositionTag() const")]
 		public char DecompositionTag() {
 			return ProxyQCharRef().DecompositionTag();
 		}
+		[SmokeMethod("combiningClass() const")]
 		public ushort CombiningClass() {
 			return ProxyQCharRef().CombiningClass();
 		}
+		[SmokeMethod("cell() const")]
 		public ushort Cell() {
 			return ProxyQCharRef().Cell();
 		}
+		[SmokeMethod("row() const")]
 		public ushort Row() {
 			return ProxyQCharRef().Row();
 		}

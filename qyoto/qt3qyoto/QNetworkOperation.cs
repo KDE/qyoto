@@ -29,79 +29,114 @@ namespace Qt {
 			return (IQNetworkOperationProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQNetworkOperation().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQNetworkOperation().ClassName();
 		}
 		public QNetworkOperation(int operation, string arg0, string arg1, string arg2) : this((Type) null) {
 			CreateQNetworkOperationProxy();
+			CreateQNetworkOperationSignalProxy();
 			NewQNetworkOperation(operation,arg0,arg1,arg2);
 		}
+		[SmokeMethod("QNetworkOperation(QNetworkProtocol::Operation, const QString&, const QString&, const QString&)")]
 		private void NewQNetworkOperation(int operation, string arg0, string arg1, string arg2) {
 			ProxyQNetworkOperation().NewQNetworkOperation(operation,arg0,arg1,arg2);
 		}
-		public QNetworkOperation(int operation, byte[] arg0, byte[] arg1, byte[] arg2) : this((Type) null) {
+		public QNetworkOperation(int operation, QByteArray arg0, QByteArray arg1, QByteArray arg2) : this((Type) null) {
 			CreateQNetworkOperationProxy();
+			CreateQNetworkOperationSignalProxy();
 			NewQNetworkOperation(operation,arg0,arg1,arg2);
 		}
-		private void NewQNetworkOperation(int operation, byte[] arg0, byte[] arg1, byte[] arg2) {
+		[SmokeMethod("QNetworkOperation(QNetworkProtocol::Operation, const QByteArray&, const QByteArray&, const QByteArray&)")]
+		private void NewQNetworkOperation(int operation, QByteArray arg0, QByteArray arg1, QByteArray arg2) {
 			ProxyQNetworkOperation().NewQNetworkOperation(operation,arg0,arg1,arg2);
 		}
+		[SmokeMethod("setState(QNetworkProtocol::State)")]
 		public void SetState(int state) {
 			ProxyQNetworkOperation().SetState(state);
 		}
+		[SmokeMethod("setProtocolDetail(const QString&)")]
 		public void SetProtocolDetail(string detail) {
 			ProxyQNetworkOperation().SetProtocolDetail(detail);
 		}
+		[SmokeMethod("setErrorCode(int)")]
 		public void SetErrorCode(int ec) {
 			ProxyQNetworkOperation().SetErrorCode(ec);
 		}
+		[SmokeMethod("setArg(int, const QString&)")]
 		public void SetArg(int num, string arg) {
 			ProxyQNetworkOperation().SetArg(num,arg);
 		}
-		public void SetRawArg(int num, byte[] arg) {
+		[SmokeMethod("setRawArg(int, const QByteArray&)")]
+		public void SetRawArg(int num, QByteArray arg) {
 			ProxyQNetworkOperation().SetRawArg(num,arg);
 		}
+		[SmokeMethod("operation() const")]
 		public int Operation() {
 			return ProxyQNetworkOperation().Operation();
 		}
+		[SmokeMethod("state() const")]
 		public int State() {
 			return ProxyQNetworkOperation().State();
 		}
+		[SmokeMethod("arg(int) const")]
 		public string Arg(int num) {
 			return ProxyQNetworkOperation().Arg(num);
 		}
-		public byte[] RawArg(int num) {
+		[SmokeMethod("rawArg(int) const")]
+		public QByteArray RawArg(int num) {
 			return ProxyQNetworkOperation().RawArg(num);
 		}
+		[SmokeMethod("protocolDetail() const")]
 		public string ProtocolDetail() {
 			return ProxyQNetworkOperation().ProtocolDetail();
 		}
+		[SmokeMethod("errorCode() const")]
 		public int ErrorCode() {
 			return ProxyQNetworkOperation().ErrorCode();
 		}
+		[SmokeMethod("free()")]
 		public void Free() {
 			ProxyQNetworkOperation().Free();
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQNetworkOperation().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQNetworkOperation().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQNetworkOperation().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQNetworkOperation().TrUtf8(arg1);
 		}
 		~QNetworkOperation() {
-			ProxyQNetworkOperation().Dispose();
+			DisposeQNetworkOperation();
 		}
 		public new void Dispose() {
-			ProxyQNetworkOperation().Dispose();
+			DisposeQNetworkOperation();
 		}
+		private void DisposeQNetworkOperation() {
+			ProxyQNetworkOperation().DisposeQNetworkOperation();
+		}
+		protected void CreateQNetworkOperationSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQNetworkOperationSignals), this);
+			_signalInterceptor = (IQNetworkOperationSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQNetworkOperationSignals Emit() {
+			return (IQNetworkOperationSignals) _signalInterceptor;
+		}
+	}
+
+	public interface IQNetworkOperationSignals : IQObjectSignals {
 	}
 }

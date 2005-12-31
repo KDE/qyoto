@@ -28,42 +28,65 @@ namespace Qt {
 
 		public QSqlEditorFactory(QObject parent, string name) : this((Type) null) {
 			CreateQSqlEditorFactoryProxy();
+			CreateQSqlEditorFactorySignalProxy();
 			NewQSqlEditorFactory(parent,name);
 		}
+		[SmokeMethod("QSqlEditorFactory(QObject*, const char*)")]
 		private void NewQSqlEditorFactory(QObject parent, string name) {
 			ProxyQSqlEditorFactory().NewQSqlEditorFactory(parent,name);
 		}
 		public QSqlEditorFactory(QObject parent) : this((Type) null) {
 			CreateQSqlEditorFactoryProxy();
+			CreateQSqlEditorFactorySignalProxy();
 			NewQSqlEditorFactory(parent);
 		}
+		[SmokeMethod("QSqlEditorFactory(QObject*)")]
 		private void NewQSqlEditorFactory(QObject parent) {
 			ProxyQSqlEditorFactory().NewQSqlEditorFactory(parent);
 		}
 		public QSqlEditorFactory() : this((Type) null) {
 			CreateQSqlEditorFactoryProxy();
+			CreateQSqlEditorFactorySignalProxy();
 			NewQSqlEditorFactory();
 		}
+		[SmokeMethod("QSqlEditorFactory()")]
 		private void NewQSqlEditorFactory() {
 			ProxyQSqlEditorFactory().NewQSqlEditorFactory();
 		}
+		[SmokeMethod("createEditor(QWidget*, const QVariant&)")]
 		public new virtual QWidget CreateEditor(QWidget parent, QVariant variant) {
 			return ProxyQSqlEditorFactory().CreateEditor(parent,variant);
 		}
+		[SmokeMethod("createEditor(QWidget*, const QSqlField*)")]
 		public new virtual QWidget CreateEditor(QWidget parent, QSqlField field) {
 			return ProxyQSqlEditorFactory().CreateEditor(parent,field);
 		}
+		[SmokeMethod("defaultFactory()")]
 		public static new QEditorFactory DefaultFactory() {
 			return StaticQSqlEditorFactory().DefaultFactory();
 		}
+		[SmokeMethod("installDefaultFactory(QSqlEditorFactory*)")]
 		public static new void InstallDefaultFactory(QSqlEditorFactory factory) {
 			StaticQSqlEditorFactory().InstallDefaultFactory(factory);
 		}
 		~QSqlEditorFactory() {
-			ProxyQSqlEditorFactory().Dispose();
+			DisposeQSqlEditorFactory();
 		}
 		public new void Dispose() {
-			ProxyQSqlEditorFactory().Dispose();
+			DisposeQSqlEditorFactory();
 		}
+		private void DisposeQSqlEditorFactory() {
+			ProxyQSqlEditorFactory().DisposeQSqlEditorFactory();
+		}
+		protected void CreateQSqlEditorFactorySignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQSqlEditorFactorySignals), this);
+			_signalInterceptor = (IQSqlEditorFactorySignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQSqlEditorFactorySignals Emit() {
+			return (IQSqlEditorFactorySignals) _signalInterceptor;
+		}
+	}
+
+	public interface IQSqlEditorFactorySignals : IQEditorFactorySignals {
 	}
 }

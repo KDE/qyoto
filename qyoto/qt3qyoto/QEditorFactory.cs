@@ -28,39 +28,61 @@ namespace Qt {
 
 		public QEditorFactory(QObject parent, string name) : this((Type) null) {
 			CreateQEditorFactoryProxy();
+			CreateQEditorFactorySignalProxy();
 			NewQEditorFactory(parent,name);
 		}
+		[SmokeMethod("QEditorFactory(QObject*, const char*)")]
 		private void NewQEditorFactory(QObject parent, string name) {
 			ProxyQEditorFactory().NewQEditorFactory(parent,name);
 		}
 		public QEditorFactory(QObject parent) : this((Type) null) {
 			CreateQEditorFactoryProxy();
+			CreateQEditorFactorySignalProxy();
 			NewQEditorFactory(parent);
 		}
+		[SmokeMethod("QEditorFactory(QObject*)")]
 		private void NewQEditorFactory(QObject parent) {
 			ProxyQEditorFactory().NewQEditorFactory(parent);
 		}
 		public QEditorFactory() : this((Type) null) {
 			CreateQEditorFactoryProxy();
+			CreateQEditorFactorySignalProxy();
 			NewQEditorFactory();
 		}
+		[SmokeMethod("QEditorFactory()")]
 		private void NewQEditorFactory() {
 			ProxyQEditorFactory().NewQEditorFactory();
 		}
+		[SmokeMethod("createEditor(QWidget*, const QVariant&)")]
 		public virtual QWidget CreateEditor(QWidget parent, QVariant v) {
 			return ProxyQEditorFactory().CreateEditor(parent,v);
 		}
+		[SmokeMethod("defaultFactory()")]
 		public static QEditorFactory DefaultFactory() {
 			return StaticQEditorFactory().DefaultFactory();
 		}
+		[SmokeMethod("installDefaultFactory(QEditorFactory*)")]
 		public static void InstallDefaultFactory(QEditorFactory factory) {
 			StaticQEditorFactory().InstallDefaultFactory(factory);
 		}
 		~QEditorFactory() {
-			ProxyQEditorFactory().Dispose();
+			DisposeQEditorFactory();
 		}
 		public new void Dispose() {
-			ProxyQEditorFactory().Dispose();
+			DisposeQEditorFactory();
 		}
+		private void DisposeQEditorFactory() {
+			ProxyQEditorFactory().DisposeQEditorFactory();
+		}
+		protected void CreateQEditorFactorySignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQEditorFactorySignals), this);
+			_signalInterceptor = (IQEditorFactorySignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQEditorFactorySignals Emit() {
+			return (IQEditorFactorySignals) _signalInterceptor;
+		}
+	}
+
+	public interface IQEditorFactorySignals : IQObjectSignals {
 	}
 }

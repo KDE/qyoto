@@ -29,48 +29,73 @@ namespace Qt {
 			return (IQObjectCleanupHandlerProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQObjectCleanupHandler().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQObjectCleanupHandler().ClassName();
 		}
 		public QObjectCleanupHandler() : this((Type) null) {
 			CreateQObjectCleanupHandlerProxy();
+			CreateQObjectCleanupHandlerSignalProxy();
 			NewQObjectCleanupHandler();
 		}
+		[SmokeMethod("QObjectCleanupHandler()")]
 		private void NewQObjectCleanupHandler() {
 			ProxyQObjectCleanupHandler().NewQObjectCleanupHandler();
 		}
+		[SmokeMethod("add(QObject*)")]
 		public QObject Add(QObject arg1) {
 			return ProxyQObjectCleanupHandler().Add(arg1);
 		}
+		[SmokeMethod("remove(QObject*)")]
 		public void Remove(QObject arg1) {
 			ProxyQObjectCleanupHandler().Remove(arg1);
 		}
+		[SmokeMethod("isEmpty() const")]
 		public bool IsEmpty() {
 			return ProxyQObjectCleanupHandler().IsEmpty();
 		}
+		[SmokeMethod("clear()")]
 		public void Clear() {
 			ProxyQObjectCleanupHandler().Clear();
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQObjectCleanupHandler().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQObjectCleanupHandler().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQObjectCleanupHandler().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQObjectCleanupHandler().TrUtf8(arg1);
 		}
 		~QObjectCleanupHandler() {
-			ProxyQObjectCleanupHandler().Dispose();
+			DisposeQObjectCleanupHandler();
 		}
 		public new void Dispose() {
-			ProxyQObjectCleanupHandler().Dispose();
+			DisposeQObjectCleanupHandler();
 		}
+		private void DisposeQObjectCleanupHandler() {
+			ProxyQObjectCleanupHandler().DisposeQObjectCleanupHandler();
+		}
+		protected void CreateQObjectCleanupHandlerSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQObjectCleanupHandlerSignals), this);
+			_signalInterceptor = (IQObjectCleanupHandlerSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQObjectCleanupHandlerSignals Emit() {
+			return (IQObjectCleanupHandlerSignals) _signalInterceptor;
+		}
+	}
+
+	public interface IQObjectCleanupHandlerSignals : IQObjectSignals {
 	}
 }

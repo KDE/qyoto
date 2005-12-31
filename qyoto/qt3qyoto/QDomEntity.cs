@@ -29,6 +29,7 @@ namespace Qt {
 			CreateQDomEntityProxy();
 			NewQDomEntity();
 		}
+		[SmokeMethod("QDomEntity()")]
 		private void NewQDomEntity() {
 			ProxyQDomEntity().NewQDomEntity();
 		}
@@ -36,29 +37,38 @@ namespace Qt {
 			CreateQDomEntityProxy();
 			NewQDomEntity(x);
 		}
+		[SmokeMethod("QDomEntity(const QDomEntity&)")]
 		private void NewQDomEntity(QDomEntity x) {
 			ProxyQDomEntity().NewQDomEntity(x);
 		}
+		[SmokeMethod("publicId() const")]
 		public virtual string PublicId() {
 			return ProxyQDomEntity().PublicId();
 		}
+		[SmokeMethod("systemId() const")]
 		public virtual string SystemId() {
 			return ProxyQDomEntity().SystemId();
 		}
+		[SmokeMethod("notationName() const")]
 		public virtual string NotationName() {
 			return ProxyQDomEntity().NotationName();
 		}
+		[SmokeMethod("nodeType() const")]
 		public new int NodeType() {
 			return ProxyQDomEntity().NodeType();
 		}
+		[SmokeMethod("isEntity() const")]
 		public new bool IsEntity() {
 			return ProxyQDomEntity().IsEntity();
 		}
 		~QDomEntity() {
-			ProxyQDomEntity().Dispose();
+			DisposeQDomEntity();
 		}
 		public new void Dispose() {
-			ProxyQDomEntity().Dispose();
+			DisposeQDomEntity();
+		}
+		private void DisposeQDomEntity() {
+			ProxyQDomEntity().DisposeQDomEntity();
 		}
 	}
 }

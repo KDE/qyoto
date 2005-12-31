@@ -25,24 +25,31 @@ namespace Qt {
 			return (IQSyntaxHighlighterProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("highlightParagraph(const QString&, int)")]
 		public virtual int HighlightParagraph(string text, int endStateOfLastPara) {
 			return ProxyQSyntaxHighlighter().HighlightParagraph(text,endStateOfLastPara);
 		}
+		[SmokeMethod("setFormat(int, int, const QFont&, const QColor&)")]
 		public void SetFormat(int start, int count, QFont font, QColor color) {
 			ProxyQSyntaxHighlighter().SetFormat(start,count,font,color);
 		}
+		[SmokeMethod("setFormat(int, int, const QColor&)")]
 		public void SetFormat(int start, int count, QColor color) {
 			ProxyQSyntaxHighlighter().SetFormat(start,count,color);
 		}
+		[SmokeMethod("setFormat(int, int, const QFont&)")]
 		public void SetFormat(int start, int count, QFont font) {
 			ProxyQSyntaxHighlighter().SetFormat(start,count,font);
 		}
+		[SmokeMethod("textEdit() const")]
 		public QTextEdit TextEdit() {
 			return ProxyQSyntaxHighlighter().TextEdit();
 		}
+		[SmokeMethod("rehighlight()")]
 		public void Rehighlight() {
 			ProxyQSyntaxHighlighter().Rehighlight();
 		}
+		[SmokeMethod("currentParagraph() const")]
 		public int CurrentParagraph() {
 			return ProxyQSyntaxHighlighter().CurrentParagraph();
 		}

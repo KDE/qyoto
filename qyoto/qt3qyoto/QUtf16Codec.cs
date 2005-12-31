@@ -24,18 +24,23 @@ namespace Qt {
 			return (IQUtf16CodecProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("mibEnum() const")]
 		public new virtual int MibEnum() {
 			return ProxyQUtf16Codec().MibEnum();
 		}
+		[SmokeMethod("name() const")]
 		public new string Name() {
 			return ProxyQUtf16Codec().Name();
 		}
+		[SmokeMethod("makeDecoder() const")]
 		public new QTextDecoder MakeDecoder() {
 			return ProxyQUtf16Codec().MakeDecoder();
 		}
+		[SmokeMethod("makeEncoder() const")]
 		public new QTextEncoder MakeEncoder() {
 			return ProxyQUtf16Codec().MakeEncoder();
 		}
+		[SmokeMethod("heuristicContentMatch(const char*, int) const")]
 		public new int HeuristicContentMatch(string chars, int len) {
 			return ProxyQUtf16Codec().HeuristicContentMatch(chars,len);
 		}
@@ -43,14 +48,18 @@ namespace Qt {
 			CreateQUtf16CodecProxy();
 			NewQUtf16Codec();
 		}
+		[SmokeMethod("QUtf16Codec()")]
 		private void NewQUtf16Codec() {
 			ProxyQUtf16Codec().NewQUtf16Codec();
 		}
 		~QUtf16Codec() {
-			ProxyQUtf16Codec().Dispose();
+			DisposeQUtf16Codec();
 		}
 		public new void Dispose() {
-			ProxyQUtf16Codec().Dispose();
+			DisposeQUtf16Codec();
+		}
+		private void DisposeQUtf16Codec() {
+			ProxyQUtf16Codec().DisposeQUtf16Codec();
 		}
 	}
 }

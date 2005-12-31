@@ -29,58 +29,86 @@ namespace Qt {
 			return (IQSizeGripProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQSizeGrip().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQSizeGrip().ClassName();
 		}
 		public QSizeGrip(QWidget parent, string name) : this((Type) null) {
 			CreateQSizeGripProxy();
+			CreateQSizeGripSignalProxy();
 			NewQSizeGrip(parent,name);
 		}
+		[SmokeMethod("QSizeGrip(QWidget*, const char*)")]
 		private void NewQSizeGrip(QWidget parent, string name) {
 			ProxyQSizeGrip().NewQSizeGrip(parent,name);
 		}
 		public QSizeGrip(QWidget parent) : this((Type) null) {
 			CreateQSizeGripProxy();
+			CreateQSizeGripSignalProxy();
 			NewQSizeGrip(parent);
 		}
+		[SmokeMethod("QSizeGrip(QWidget*)")]
 		private void NewQSizeGrip(QWidget parent) {
 			ProxyQSizeGrip().NewQSizeGrip(parent);
 		}
+		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {
 			return ProxyQSizeGrip().SizeHint();
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQSizeGrip().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQSizeGrip().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQSizeGrip().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQSizeGrip().TrUtf8(arg1);
 		}
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected new void PaintEvent(QPaintEvent arg1) {
 			ProxyQSizeGrip().PaintEvent(arg1);
 		}
+		[SmokeMethod("mousePressEvent(QMouseEvent*)")]
 		protected new void MousePressEvent(QMouseEvent arg1) {
 			ProxyQSizeGrip().MousePressEvent(arg1);
 		}
+		[SmokeMethod("mouseMoveEvent(QMouseEvent*)")]
 		protected new void MouseMoveEvent(QMouseEvent arg1) {
 			ProxyQSizeGrip().MouseMoveEvent(arg1);
 		}
+		[SmokeMethod("eventFilter(QObject*, QEvent*)")]
 		public new bool EventFilter(QObject arg1, QEvent arg2) {
 			return ProxyQSizeGrip().EventFilter(arg1,arg2);
 		}
 		~QSizeGrip() {
-			ProxyQSizeGrip().Dispose();
+			DisposeQSizeGrip();
 		}
 		public new void Dispose() {
-			ProxyQSizeGrip().Dispose();
+			DisposeQSizeGrip();
 		}
+		private void DisposeQSizeGrip() {
+			ProxyQSizeGrip().DisposeQSizeGrip();
+		}
+		protected void CreateQSizeGripSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQSizeGripSignals), this);
+			_signalInterceptor = (IQSizeGripSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQSizeGripSignals Emit() {
+			return (IQSizeGripSignals) _signalInterceptor;
+		}
+	}
+
+	public interface IQSizeGripSignals : IQWidgetSignals {
 	}
 }

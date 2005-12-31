@@ -123,18 +123,20 @@ namespace Qt {
 			DefaultCodec = 0,
 			UnicodeUTF8 = 1,
 		}
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQApplication().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQApplication().ClassName();
 		}
-		
-		
+
 		/* Constructor #1 */
 		public QApplication(string[] argv) : this((Type) null) {
 			Qyoto.Init_qyoto();
 			CreateQApplicationProxy();
+			CreateQApplicationSignalProxy();
 			
 			string[] args = new string[argv.Length + 1];
 			args[0] = System.Reflection.Assembly.GetExecutingAssembly().Location;
@@ -145,15 +147,17 @@ namespace Qt {
 		private void NewQApplication(string[] argv) {
 			ProxyQApplication().NewQApplication(argv.Length, argv);
 		}
+		[SmokeMethod("QApplication(int&, char**)")]
 		private void NewQApplication(int argc, string[] argv) {
 			ProxyQApplication().NewQApplication(argc, argv);
 		}
 		/* end Constructor #1 */
-		
+
 		/* Constructor #2 */
 		public QApplication(string[] argv, bool GUIenabled) : this((Type) null) {
 			Qyoto.Init_qyoto();
 			CreateQApplicationProxy();
+			CreateQApplicationSignalProxy();
 			
 			string[] args = new string[argv.Length + 1];
 			args[0] = System.Reflection.Assembly.GetExecutingAssembly().Location;
@@ -164,15 +168,17 @@ namespace Qt {
 		private void NewQApplication(string[] argv, bool GUIenabled) {
 			ProxyQApplication().NewQApplication(argv.Length, argv,GUIenabled);
 		}
+		[SmokeMethod("QApplication(int&, char**, bool)")]
 		private void NewQApplication(int argc, string[] argv, bool GUIenabled) {
 			ProxyQApplication().NewQApplication(argc, argv,GUIenabled);
 		}
 		/* end Constructor #2 */
-		
+
 		/* Constructor #3 */
 		public QApplication(string[] argv, int arg3) : this((Type) null) {
 			Qyoto.Init_qyoto();
 			CreateQApplicationProxy();
+			CreateQApplicationSignalProxy();
 			
 			string[] args = new string[argv.Length + 1];
 			args[0] = System.Reflection.Assembly.GetExecutingAssembly().Location;
@@ -183,360 +189,485 @@ namespace Qt {
 		private void NewQApplication(string[] argv, int arg3) {
 			ProxyQApplication().NewQApplication(argv.Length,argv,arg3);
 		}
+		[SmokeMethod("QApplication(int&, char**, QApplication::Type)")]
 		private void NewQApplication(int argc, string[] argv, int arg3) {
 			ProxyQApplication().NewQApplication(argc,argv,arg3);
 		}
 		/* end Constructor #3 */
-		
-		public int Type() {
-			return ProxyQApplication().Type();
-		}
+
+		[SmokeMethod("mainWidget() const")]
 		public QWidget MainWidget() {
 			return ProxyQApplication().MainWidget();
 		}
+		[SmokeMethod("setMainWidget(QWidget*)")]
 		public virtual void SetMainWidget(QWidget arg1) {
 			ProxyQApplication().SetMainWidget(arg1);
 		}
+		[SmokeMethod("polish(QWidget*)")]
 		public virtual void Polish(QWidget arg1) {
 			ProxyQApplication().Polish(arg1);
 		}
+		[SmokeMethod("focusWidget() const")]
 		public QWidget FocusWidget() {
 			return ProxyQApplication().FocusWidget();
 		}
+		[SmokeMethod("activeWindow() const")]
 		public QWidget ActiveWindow() {
 			return ProxyQApplication().ActiveWindow();
 		}
+		[SmokeMethod("exec()")]
 		public int Exec() {
 			return ProxyQApplication().Exec();
 		}
+		[SmokeMethod("processEvents()")]
 		public void ProcessEvents() {
 			ProxyQApplication().ProcessEvents();
 		}
+		[SmokeMethod("processEvents(int)")]
 		public void ProcessEvents(int maxtime) {
 			ProxyQApplication().ProcessEvents(maxtime);
 		}
+		[SmokeMethod("processOneEvent()")]
 		public void ProcessOneEvent() {
 			ProxyQApplication().ProcessOneEvent();
 		}
+		[SmokeMethod("hasPendingEvents()")]
 		public bool HasPendingEvents() {
 			return ProxyQApplication().HasPendingEvents();
 		}
+		[SmokeMethod("enter_loop()")]
 		public int Enter_loop() {
 			return ProxyQApplication().Enter_loop();
 		}
+		[SmokeMethod("exit_loop()")]
 		public void Exit_loop() {
 			ProxyQApplication().Exit_loop();
 		}
+		[SmokeMethod("loopLevel() const")]
 		public int LoopLevel() {
 			return ProxyQApplication().LoopLevel();
 		}
+		[SmokeMethod("notify(QObject*, QEvent*)")]
 		public virtual bool Notify(QObject arg1, QEvent arg2) {
 			return ProxyQApplication().Notify(arg1,arg2);
 		}
+		[SmokeMethod("setDefaultCodec(QTextCodec*)")]
 		public void SetDefaultCodec(QTextCodec arg1) {
 			ProxyQApplication().SetDefaultCodec(arg1);
 		}
+		[SmokeMethod("defaultCodec() const")]
 		public QTextCodec DefaultCodec() {
 			return ProxyQApplication().DefaultCodec();
 		}
+		[SmokeMethod("installTranslator(QTranslator*)")]
 		public void InstallTranslator(QTranslator arg1) {
 			ProxyQApplication().InstallTranslator(arg1);
 		}
+		[SmokeMethod("removeTranslator(QTranslator*)")]
 		public void RemoveTranslator(QTranslator arg1) {
 			ProxyQApplication().RemoveTranslator(arg1);
 		}
+		[SmokeMethod("translate(const char*, const char*, const char*, QApplication::Encoding) const")]
 		public string Translate(string context, string key, string comment, int encoding) {
 			return ProxyQApplication().Translate(context,key,comment,encoding);
 		}
+		[SmokeMethod("translate(const char*, const char*, const char*) const")]
 		public string Translate(string context, string key, string comment) {
 			return ProxyQApplication().Translate(context,key,comment);
 		}
+		[SmokeMethod("translate(const char*, const char*) const")]
 		public string Translate(string context, string key) {
 			return ProxyQApplication().Translate(context,key);
 		}
+		[SmokeMethod("applicationDirPath()")]
 		public string ApplicationDirPath() {
 			return ProxyQApplication().ApplicationDirPath();
 		}
+		[SmokeMethod("applicationFilePath()")]
 		public string ApplicationFilePath() {
 			return ProxyQApplication().ApplicationFilePath();
 		}
+		[SmokeMethod("isSessionRestored() const")]
 		public bool IsSessionRestored() {
 			return ProxyQApplication().IsSessionRestored();
 		}
+		[SmokeMethod("sessionId() const")]
 		public string SessionId() {
 			return ProxyQApplication().SessionId();
 		}
+		[SmokeMethod("sessionKey() const")]
 		public string SessionKey() {
 			return ProxyQApplication().SessionKey();
 		}
+		[SmokeMethod("commitData(QSessionManager&)")]
 		public virtual void CommitData(QSessionManager sm) {
 			ProxyQApplication().CommitData(sm);
 		}
+		[SmokeMethod("saveState(QSessionManager&)")]
 		public virtual void SaveState(QSessionManager sm) {
 			ProxyQApplication().SaveState(sm);
 		}
+		[SmokeMethod("wakeUpGuiThread()")]
 		public void WakeUpGuiThread() {
 			ProxyQApplication().WakeUpGuiThread();
 		}
+		[Q_SLOT("quit()")]
+		[SmokeMethod("quit()")]
 		public void Quit() {
 			ProxyQApplication().Quit();
 		}
+		[Q_SLOT("closeAllWindows()")]
+		[SmokeMethod("closeAllWindows()")]
 		public void CloseAllWindows() {
 			ProxyQApplication().CloseAllWindows();
 		}
+		[Q_SLOT("aboutQt()")]
+		[SmokeMethod("aboutQt()")]
 		public void AboutQt() {
 			ProxyQApplication().AboutQt();
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQApplication().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQApplication().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQApplication().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQApplication().TrUtf8(arg1);
 		}
+		[SmokeMethod("style()")]
 		public static QStyle Style() {
 			return StaticQApplication().Style();
 		}
+		[SmokeMethod("setStyle(QStyle*)")]
 		public static void SetStyle(QStyle arg1) {
 			StaticQApplication().SetStyle(arg1);
 		}
+		[SmokeMethod("setStyle(const QString&)")]
 		public static QStyle SetStyle(string arg1) {
 			return StaticQApplication().SetStyle(arg1);
 		}
+		[SmokeMethod("colorMode()")]
 		public static int ColorMode() {
 			return StaticQApplication().ColorMode();
 		}
+		[SmokeMethod("setColorMode(QApplication::ColorMode)")]
 		public static void SetColorMode(int arg1) {
 			StaticQApplication().SetColorMode(arg1);
 		}
+		[SmokeMethod("colorSpec()")]
 		public static int ColorSpec() {
 			return StaticQApplication().ColorSpec();
 		}
+		[SmokeMethod("setColorSpec(int)")]
 		public static void SetColorSpec(int arg1) {
 			StaticQApplication().SetColorSpec(arg1);
 		}
+		[SmokeMethod("overrideCursor()")]
 		public static QCursor OverrideCursor() {
 			return StaticQApplication().OverrideCursor();
 		}
+		[SmokeMethod("setOverrideCursor(const QCursor&, bool)")]
 		public static void SetOverrideCursor(QCursor arg1, bool replace) {
 			StaticQApplication().SetOverrideCursor(arg1,replace);
 		}
+		[SmokeMethod("setOverrideCursor(const QCursor&)")]
 		public static void SetOverrideCursor(QCursor arg1) {
 			StaticQApplication().SetOverrideCursor(arg1);
 		}
+		[SmokeMethod("restoreOverrideCursor()")]
 		public static void RestoreOverrideCursor() {
 			StaticQApplication().RestoreOverrideCursor();
 		}
+		[SmokeMethod("hasGlobalMouseTracking()")]
 		public static bool HasGlobalMouseTracking() {
 			return StaticQApplication().HasGlobalMouseTracking();
 		}
+		[SmokeMethod("setGlobalMouseTracking(bool)")]
 		public static void SetGlobalMouseTracking(bool enable) {
 			StaticQApplication().SetGlobalMouseTracking(enable);
 		}
+		[SmokeMethod("palette(const QWidget*)")]
 		public static QPalette Palette(QWidget arg1) {
 			return StaticQApplication().Palette(arg1);
 		}
+		[SmokeMethod("palette()")]
 		public static QPalette Palette() {
 			return StaticQApplication().Palette();
 		}
+		[SmokeMethod("setPalette(const QPalette&, bool, const char*)")]
 		public static void SetPalette(QPalette arg1, bool informWidgets, string className) {
 			StaticQApplication().SetPalette(arg1,informWidgets,className);
 		}
+		[SmokeMethod("setPalette(const QPalette&, bool)")]
 		public static void SetPalette(QPalette arg1, bool informWidgets) {
 			StaticQApplication().SetPalette(arg1,informWidgets);
 		}
+		[SmokeMethod("setPalette(const QPalette&)")]
 		public static void SetPalette(QPalette arg1) {
 			StaticQApplication().SetPalette(arg1);
 		}
+		[SmokeMethod("font(const QWidget*)")]
 		public static QFont Font(QWidget arg1) {
 			return StaticQApplication().Font(arg1);
 		}
+		[SmokeMethod("font()")]
 		public static QFont Font() {
 			return StaticQApplication().Font();
 		}
+		[SmokeMethod("setFont(const QFont&, bool, const char*)")]
 		public static void SetFont(QFont arg1, bool informWidgets, string className) {
 			StaticQApplication().SetFont(arg1,informWidgets,className);
 		}
+		[SmokeMethod("setFont(const QFont&, bool)")]
 		public static void SetFont(QFont arg1, bool informWidgets) {
 			StaticQApplication().SetFont(arg1,informWidgets);
 		}
+		[SmokeMethod("setFont(const QFont&)")]
 		public static void SetFont(QFont arg1) {
 			StaticQApplication().SetFont(arg1);
 		}
+		[SmokeMethod("fontMetrics()")]
 		public static QFontMetrics FontMetrics() {
 			return StaticQApplication().FontMetrics();
 		}
+		[SmokeMethod("allWidgets()")]
 		public static ArrayList AllWidgets() {
 			return StaticQApplication().AllWidgets();
 		}
+		[SmokeMethod("topLevelWidgets()")]
 		public static ArrayList TopLevelWidgets() {
 			return StaticQApplication().TopLevelWidgets();
 		}
+		[SmokeMethod("desktop()")]
 		public static QDesktopWidget Desktop() {
 			return StaticQApplication().Desktop();
 		}
+		[SmokeMethod("activePopupWidget()")]
 		public static QWidget ActivePopupWidget() {
 			return StaticQApplication().ActivePopupWidget();
 		}
+		[SmokeMethod("activeModalWidget()")]
 		public static QWidget ActiveModalWidget() {
 			return StaticQApplication().ActiveModalWidget();
 		}
+		[SmokeMethod("clipboard()")]
 		public static QClipboard Clipboard() {
 			return StaticQApplication().Clipboard();
 		}
+		[SmokeMethod("widgetAt(int, int, bool)")]
 		public static QWidget WidgetAt(int x, int y, bool child) {
 			return StaticQApplication().WidgetAt(x,y,child);
 		}
+		[SmokeMethod("widgetAt(int, int)")]
 		public static QWidget WidgetAt(int x, int y) {
 			return StaticQApplication().WidgetAt(x,y);
 		}
+		[SmokeMethod("widgetAt(const QPoint&, bool)")]
 		public static QWidget WidgetAt(QPoint arg1, bool child) {
 			return StaticQApplication().WidgetAt(arg1,child);
 		}
+		[SmokeMethod("widgetAt(const QPoint&)")]
 		public static QWidget WidgetAt(QPoint arg1) {
 			return StaticQApplication().WidgetAt(arg1);
 		}
+		[SmokeMethod("eventLoop()")]
 		public static QEventLoop EventLoop() {
 			return StaticQApplication().EventLoop();
 		}
+		[SmokeMethod("exit(int)")]
 		public static void Exit(int retcode) {
 			StaticQApplication().Exit(retcode);
 		}
+		[SmokeMethod("exit()")]
 		public static void Exit() {
 			StaticQApplication().Exit();
 		}
+		[SmokeMethod("sendEvent(QObject*, QEvent*)")]
 		public static bool SendEvent(QObject receiver, QEvent arg2) {
 			return StaticQApplication().SendEvent(receiver,arg2);
 		}
+		[SmokeMethod("postEvent(QObject*, QEvent*)")]
 		public static void PostEvent(QObject receiver, QEvent arg2) {
 			StaticQApplication().PostEvent(receiver,arg2);
 		}
+		[SmokeMethod("sendPostedEvents(QObject*, int)")]
 		public static void SendPostedEvents(QObject receiver, int event_type) {
 			StaticQApplication().SendPostedEvents(receiver,event_type);
 		}
+		[SmokeMethod("sendPostedEvents()")]
 		public static void SendPostedEvents() {
 			StaticQApplication().SendPostedEvents();
 		}
+		[SmokeMethod("removePostedEvents(QObject*)")]
 		public static void RemovePostedEvents(QObject receiver) {
 			StaticQApplication().RemovePostedEvents(receiver);
 		}
+		[SmokeMethod("startingUp()")]
 		public static bool StartingUp() {
 			return StaticQApplication().StartingUp();
 		}
+		[SmokeMethod("closingDown()")]
 		public static bool ClosingDown() {
 			return StaticQApplication().ClosingDown();
 		}
+		[SmokeMethod("flushX()")]
 		public static void FlushX() {
 			StaticQApplication().FlushX();
 		}
+		[SmokeMethod("flush()")]
 		public static void Flush() {
 			StaticQApplication().Flush();
 		}
+		[SmokeMethod("syncX()")]
 		public static void SyncX() {
 			StaticQApplication().SyncX();
 		}
+		[SmokeMethod("beep()")]
 		public static void Beep() {
 			StaticQApplication().Beep();
 		}
+		[SmokeMethod("setWinStyleHighlightColor(const QColor&)")]
 		public static void SetWinStyleHighlightColor(QColor c) {
 			StaticQApplication().SetWinStyleHighlightColor(c);
 		}
+		[SmokeMethod("winStyleHighlightColor()")]
 		public static QColor WinStyleHighlightColor() {
 			return StaticQApplication().WinStyleHighlightColor();
 		}
+		[SmokeMethod("setDesktopSettingsAware(bool)")]
 		public static void SetDesktopSettingsAware(bool arg1) {
 			StaticQApplication().SetDesktopSettingsAware(arg1);
 		}
+		[SmokeMethod("desktopSettingsAware()")]
 		public static bool DesktopSettingsAware() {
 			return StaticQApplication().DesktopSettingsAware();
 		}
+		[SmokeMethod("setCursorFlashTime(int)")]
 		public static void SetCursorFlashTime(int arg1) {
 			StaticQApplication().SetCursorFlashTime(arg1);
 		}
+		[SmokeMethod("cursorFlashTime()")]
 		public static int CursorFlashTime() {
 			return StaticQApplication().CursorFlashTime();
 		}
+		[SmokeMethod("setDoubleClickInterval(int)")]
 		public static void SetDoubleClickInterval(int arg1) {
 			StaticQApplication().SetDoubleClickInterval(arg1);
 		}
+		[SmokeMethod("doubleClickInterval()")]
 		public static int DoubleClickInterval() {
 			return StaticQApplication().DoubleClickInterval();
 		}
+		[SmokeMethod("setWheelScrollLines(int)")]
 		public static void SetWheelScrollLines(int arg1) {
 			StaticQApplication().SetWheelScrollLines(arg1);
 		}
+		[SmokeMethod("wheelScrollLines()")]
 		public static int WheelScrollLines() {
 			return StaticQApplication().WheelScrollLines();
 		}
+		[SmokeMethod("setGlobalStrut(const QSize&)")]
 		public static void SetGlobalStrut(QSize arg1) {
 			StaticQApplication().SetGlobalStrut(arg1);
 		}
+		[SmokeMethod("globalStrut()")]
 		public static QSize GlobalStrut() {
 			return StaticQApplication().GlobalStrut();
 		}
+		[SmokeMethod("setLibraryPaths(const QStringList&)")]
 		public static void SetLibraryPaths(string[] arg1) {
 			StaticQApplication().SetLibraryPaths(arg1);
 		}
+		[SmokeMethod("libraryPaths()")]
 		public static ArrayList LibraryPaths() {
 			return StaticQApplication().LibraryPaths();
 		}
+		[SmokeMethod("addLibraryPath(const QString&)")]
 		public static void AddLibraryPath(string arg1) {
 			StaticQApplication().AddLibraryPath(arg1);
 		}
+		[SmokeMethod("removeLibraryPath(const QString&)")]
 		public static void RemoveLibraryPath(string arg1) {
 			StaticQApplication().RemoveLibraryPath(arg1);
 		}
+		[SmokeMethod("setStartDragTime(int)")]
 		public static void SetStartDragTime(int ms) {
 			StaticQApplication().SetStartDragTime(ms);
 		}
+		[SmokeMethod("startDragTime()")]
 		public static int StartDragTime() {
 			return StaticQApplication().StartDragTime();
 		}
+		[SmokeMethod("setStartDragDistance(int)")]
 		public static void SetStartDragDistance(int l) {
 			StaticQApplication().SetStartDragDistance(l);
 		}
+		[SmokeMethod("startDragDistance()")]
 		public static int StartDragDistance() {
 			return StaticQApplication().StartDragDistance();
 		}
+		[SmokeMethod("setReverseLayout(bool)")]
 		public static void SetReverseLayout(bool b) {
 			StaticQApplication().SetReverseLayout(b);
 		}
+		[SmokeMethod("reverseLayout()")]
 		public static bool ReverseLayout() {
 			return StaticQApplication().ReverseLayout();
 		}
+		[SmokeMethod("horizontalAlignment(int)")]
 		public static int HorizontalAlignment(int align) {
 			return StaticQApplication().HorizontalAlignment(align);
 		}
+		[SmokeMethod("isEffectEnabled(Qt::UIEffect)")]
 		public static bool IsEffectEnabled(int arg1) {
 			return StaticQApplication().IsEffectEnabled(arg1);
 		}
+		[SmokeMethod("setEffectEnabled(Qt::UIEffect, bool)")]
 		public static void SetEffectEnabled(int arg1, bool enable) {
 			StaticQApplication().SetEffectEnabled(arg1,enable);
 		}
+		[SmokeMethod("setEffectEnabled(Qt::UIEffect)")]
 		public static void SetEffectEnabled(int arg1) {
 			StaticQApplication().SetEffectEnabled(arg1);
 		}
+		[SmokeMethod("event(QEvent*)")]
 		public new bool Event(QEvent arg1) {
 			return ProxyQApplication().Event(arg1);
 		}
 		~QApplication() {
-			ProxyQApplication().Dispose();
+			DisposeQApplication();
 		}
 		public new void Dispose() {
-			ProxyQApplication().Dispose();
+			DisposeQApplication();
+		}
+		private void DisposeQApplication() {
+			ProxyQApplication().DisposeQApplication();
 		}
 //	public native string[] args();
 
+		protected void CreateQApplicationSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQApplicationSignals), this);
+			_signalInterceptor = (IQApplicationSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQApplicationSignals Emit() {
+			return (IQApplicationSignals) _signalInterceptor;
+		}
 	}
 
-	public interface IQApplicationSignals {
+	public interface IQApplicationSignals : IQObjectSignals {
+		[Q_SIGNAL("lastWindowClosed()")]
 		void LastWindowClosed();
+		[Q_SIGNAL("aboutToQuit()")]
 		void AboutToQuit();
+		[Q_SIGNAL("guiThreadAwake()")]
 		void GuiThreadAwake();
 	}
 }

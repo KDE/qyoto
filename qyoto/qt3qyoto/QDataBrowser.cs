@@ -39,216 +39,312 @@ namespace Qt {
 			End = 4,
 			AfterEnd = 5,
 		}
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQDataBrowser().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQDataBrowser().ClassName();
 		}
 		public QDataBrowser(QWidget parent, string name, int fl) : this((Type) null) {
 			CreateQDataBrowserProxy();
+			CreateQDataBrowserSignalProxy();
 			NewQDataBrowser(parent,name,fl);
 		}
+		[SmokeMethod("QDataBrowser(QWidget*, const char*, Qt::WFlags)")]
 		private void NewQDataBrowser(QWidget parent, string name, int fl) {
 			ProxyQDataBrowser().NewQDataBrowser(parent,name,fl);
 		}
 		public QDataBrowser(QWidget parent, string name) : this((Type) null) {
 			CreateQDataBrowserProxy();
+			CreateQDataBrowserSignalProxy();
 			NewQDataBrowser(parent,name);
 		}
+		[SmokeMethod("QDataBrowser(QWidget*, const char*)")]
 		private void NewQDataBrowser(QWidget parent, string name) {
 			ProxyQDataBrowser().NewQDataBrowser(parent,name);
 		}
 		public QDataBrowser(QWidget parent) : this((Type) null) {
 			CreateQDataBrowserProxy();
+			CreateQDataBrowserSignalProxy();
 			NewQDataBrowser(parent);
 		}
+		[SmokeMethod("QDataBrowser(QWidget*)")]
 		private void NewQDataBrowser(QWidget parent) {
 			ProxyQDataBrowser().NewQDataBrowser(parent);
 		}
 		public QDataBrowser() : this((Type) null) {
 			CreateQDataBrowserProxy();
+			CreateQDataBrowserSignalProxy();
 			NewQDataBrowser();
 		}
+		[SmokeMethod("QDataBrowser()")]
 		private void NewQDataBrowser() {
 			ProxyQDataBrowser().NewQDataBrowser();
 		}
+		[SmokeMethod("boundary()")]
 		public int Boundary() {
 			return ProxyQDataBrowser().Boundary();
 		}
+		[SmokeMethod("setBoundaryChecking(bool)")]
 		public void SetBoundaryChecking(bool active) {
 			ProxyQDataBrowser().SetBoundaryChecking(active);
 		}
+		[SmokeMethod("boundaryChecking() const")]
 		public bool BoundaryChecking() {
 			return ProxyQDataBrowser().BoundaryChecking();
 		}
+		[SmokeMethod("setSort(const QSqlIndex&)")]
 		public void SetSort(QSqlIndex sort) {
 			ProxyQDataBrowser().SetSort(sort);
 		}
+		[SmokeMethod("setSort(const QStringList&)")]
 		public void SetSort(string[] sort) {
 			ProxyQDataBrowser().SetSort(sort);
 		}
+		[SmokeMethod("sort() const")]
 		public ArrayList Sort() {
 			return ProxyQDataBrowser().Sort();
 		}
+		[SmokeMethod("setFilter(const QString&)")]
 		public void SetFilter(string filter) {
 			ProxyQDataBrowser().SetFilter(filter);
 		}
+		[SmokeMethod("filter() const")]
 		public string Filter() {
 			return ProxyQDataBrowser().Filter();
 		}
+		[SmokeMethod("setSqlCursor(QSqlCursor*, bool)")]
 		public virtual void SetSqlCursor(QSqlCursor cursor, bool autoDelete) {
 			ProxyQDataBrowser().SetSqlCursor(cursor,autoDelete);
 		}
+		[SmokeMethod("setSqlCursor(QSqlCursor*)")]
 		public virtual void SetSqlCursor(QSqlCursor cursor) {
 			ProxyQDataBrowser().SetSqlCursor(cursor);
 		}
+		[SmokeMethod("sqlCursor() const")]
 		public QSqlCursor SqlCursor() {
 			return ProxyQDataBrowser().SqlCursor();
 		}
+		[SmokeMethod("setForm(QSqlForm*)")]
 		public virtual void SetForm(QSqlForm form) {
 			ProxyQDataBrowser().SetForm(form);
 		}
+		[SmokeMethod("form()")]
 		public QSqlForm Form() {
 			return ProxyQDataBrowser().Form();
 		}
+		[SmokeMethod("setConfirmEdits(bool)")]
 		public virtual void SetConfirmEdits(bool confirm) {
 			ProxyQDataBrowser().SetConfirmEdits(confirm);
 		}
+		[SmokeMethod("setConfirmInsert(bool)")]
 		public virtual void SetConfirmInsert(bool confirm) {
 			ProxyQDataBrowser().SetConfirmInsert(confirm);
 		}
+		[SmokeMethod("setConfirmUpdate(bool)")]
 		public virtual void SetConfirmUpdate(bool confirm) {
 			ProxyQDataBrowser().SetConfirmUpdate(confirm);
 		}
+		[SmokeMethod("setConfirmDelete(bool)")]
 		public virtual void SetConfirmDelete(bool confirm) {
 			ProxyQDataBrowser().SetConfirmDelete(confirm);
 		}
+		[SmokeMethod("setConfirmCancels(bool)")]
 		public virtual void SetConfirmCancels(bool confirm) {
 			ProxyQDataBrowser().SetConfirmCancels(confirm);
 		}
+		[SmokeMethod("confirmEdits() const")]
 		public bool ConfirmEdits() {
 			return ProxyQDataBrowser().ConfirmEdits();
 		}
+		[SmokeMethod("confirmInsert() const")]
 		public bool ConfirmInsert() {
 			return ProxyQDataBrowser().ConfirmInsert();
 		}
+		[SmokeMethod("confirmUpdate() const")]
 		public bool ConfirmUpdate() {
 			return ProxyQDataBrowser().ConfirmUpdate();
 		}
+		[SmokeMethod("confirmDelete() const")]
 		public bool ConfirmDelete() {
 			return ProxyQDataBrowser().ConfirmDelete();
 		}
+		[SmokeMethod("confirmCancels() const")]
 		public bool ConfirmCancels() {
 			return ProxyQDataBrowser().ConfirmCancels();
 		}
+		[SmokeMethod("setReadOnly(bool)")]
 		public virtual void SetReadOnly(bool active) {
 			ProxyQDataBrowser().SetReadOnly(active);
 		}
+		[SmokeMethod("isReadOnly() const")]
 		public bool IsReadOnly() {
 			return ProxyQDataBrowser().IsReadOnly();
 		}
+		[SmokeMethod("setAutoEdit(bool)")]
 		public virtual void SetAutoEdit(bool autoEdit) {
 			ProxyQDataBrowser().SetAutoEdit(autoEdit);
 		}
+		[SmokeMethod("autoEdit() const")]
 		public bool AutoEdit() {
 			return ProxyQDataBrowser().AutoEdit();
 		}
+		[SmokeMethod("seek(int, bool)")]
 		public virtual bool Seek(int i, bool relative) {
 			return ProxyQDataBrowser().Seek(i,relative);
 		}
+		[SmokeMethod("seek(int)")]
 		public virtual bool Seek(int i) {
 			return ProxyQDataBrowser().Seek(i);
 		}
+		[Q_SLOT("refresh()")]
+		[SmokeMethod("refresh()")]
 		public virtual void Refresh() {
 			ProxyQDataBrowser().Refresh();
 		}
+		[Q_SLOT("insert()")]
+		[SmokeMethod("insert()")]
 		public virtual void Insert() {
 			ProxyQDataBrowser().Insert();
 		}
+		[Q_SLOT("update()")]
+		[SmokeMethod("update()")]
 		public new virtual void Update() {
 			ProxyQDataBrowser().Update();
 		}
+		[Q_SLOT("del()")]
+		[SmokeMethod("del()")]
 		public virtual void Del() {
 			ProxyQDataBrowser().Del();
 		}
+		[Q_SLOT("first()")]
+		[SmokeMethod("first()")]
 		public virtual void First() {
 			ProxyQDataBrowser().First();
 		}
+		[Q_SLOT("last()")]
+		[SmokeMethod("last()")]
 		public virtual void Last() {
 			ProxyQDataBrowser().Last();
 		}
+		[Q_SLOT("next()")]
+		[SmokeMethod("next()")]
 		public virtual void Next() {
 			ProxyQDataBrowser().Next();
 		}
+		[Q_SLOT("prev()")]
+		[SmokeMethod("prev()")]
 		public virtual void Prev() {
 			ProxyQDataBrowser().Prev();
 		}
+		[Q_SLOT("readFields()")]
+		[SmokeMethod("readFields()")]
 		public virtual void ReadFields() {
 			ProxyQDataBrowser().ReadFields();
 		}
+		[Q_SLOT("writeFields()")]
+		[SmokeMethod("writeFields()")]
 		public virtual void WriteFields() {
 			ProxyQDataBrowser().WriteFields();
 		}
+		[Q_SLOT("clearValues()")]
+		[SmokeMethod("clearValues()")]
 		public virtual void ClearValues() {
 			ProxyQDataBrowser().ClearValues();
 		}
+		[Q_SLOT("updateBoundary()")]
+		[SmokeMethod("updateBoundary()")]
 		public void UpdateBoundary() {
 			ProxyQDataBrowser().UpdateBoundary();
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQDataBrowser().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQDataBrowser().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQDataBrowser().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQDataBrowser().TrUtf8(arg1);
 		}
+		[SmokeMethod("insertCurrent()")]
 		protected virtual bool InsertCurrent() {
 			return ProxyQDataBrowser().InsertCurrent();
 		}
+		[SmokeMethod("updateCurrent()")]
 		protected virtual bool UpdateCurrent() {
 			return ProxyQDataBrowser().UpdateCurrent();
 		}
+		[SmokeMethod("deleteCurrent()")]
 		protected virtual bool DeleteCurrent() {
 			return ProxyQDataBrowser().DeleteCurrent();
 		}
+		[SmokeMethod("currentEdited()")]
 		protected virtual bool CurrentEdited() {
 			return ProxyQDataBrowser().CurrentEdited();
 		}
+		[SmokeMethod("confirmEdit(QSql::Op)")]
 		protected virtual int ConfirmEdit(int m) {
 			return ProxyQDataBrowser().ConfirmEdit(m);
 		}
+		[SmokeMethod("confirmCancel(QSql::Op)")]
 		protected virtual int ConfirmCancel(int m) {
 			return ProxyQDataBrowser().ConfirmCancel(m);
 		}
+		[SmokeMethod("handleError(const QSqlError&)")]
 		protected virtual void HandleError(QSqlError error) {
 			ProxyQDataBrowser().HandleError(error);
 		}
 		~QDataBrowser() {
-			ProxyQDataBrowser().Dispose();
+			DisposeQDataBrowser();
 		}
 		public new void Dispose() {
-			ProxyQDataBrowser().Dispose();
+			DisposeQDataBrowser();
+		}
+		private void DisposeQDataBrowser() {
+			ProxyQDataBrowser().DisposeQDataBrowser();
+		}
+		protected void CreateQDataBrowserSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQDataBrowserSignals), this);
+			_signalInterceptor = (IQDataBrowserSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQDataBrowserSignals Emit() {
+			return (IQDataBrowserSignals) _signalInterceptor;
 		}
 	}
 
-	public interface IQDataBrowserSignals {
+	public interface IQDataBrowserSignals : IQWidgetSignals {
+		[Q_SIGNAL("firstRecordAvailable(bool)")]
 		void FirstRecordAvailable(bool available);
+		[Q_SIGNAL("lastRecordAvailable(bool)")]
 		void LastRecordAvailable(bool available);
+		[Q_SIGNAL("nextRecordAvailable(bool)")]
 		void NextRecordAvailable(bool available);
+		[Q_SIGNAL("prevRecordAvailable(bool)")]
 		void PrevRecordAvailable(bool available);
+		[Q_SIGNAL("currentChanged(const QSqlRecord*)")]
 		void CurrentChanged(QSqlRecord record);
+		[Q_SIGNAL("primeInsert(QSqlRecord*)")]
 		void PrimeInsert(QSqlRecord buf);
+		[Q_SIGNAL("primeUpdate(QSqlRecord*)")]
 		void PrimeUpdate(QSqlRecord buf);
+		[Q_SIGNAL("primeDelete(QSqlRecord*)")]
 		void PrimeDelete(QSqlRecord buf);
+		[Q_SIGNAL("beforeInsert(QSqlRecord*)")]
 		void BeforeInsert(QSqlRecord buf);
+		[Q_SIGNAL("beforeUpdate(QSqlRecord*)")]
 		void BeforeUpdate(QSqlRecord buf);
+		[Q_SIGNAL("beforeDelete(QSqlRecord*)")]
 		void BeforeDelete(QSqlRecord buf);
+		[Q_SIGNAL("cursorChanged(QSqlCursor::Mode)")]
 		void CursorChanged(int mode);
 	}
 }

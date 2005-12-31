@@ -28,6 +28,7 @@ namespace Qt {
 			CreateQSpacerItemProxy();
 			NewQSpacerItem(w,h,hData,vData);
 		}
+		[SmokeMethod("QSpacerItem(int, int, QSizePolicy::SizeType, QSizePolicy::SizeType)")]
 		private void NewQSpacerItem(int w, int h, int hData, int vData) {
 			ProxyQSpacerItem().NewQSpacerItem(w,h,hData,vData);
 		}
@@ -35,6 +36,7 @@ namespace Qt {
 			CreateQSpacerItemProxy();
 			NewQSpacerItem(w,h,hData);
 		}
+		[SmokeMethod("QSpacerItem(int, int, QSizePolicy::SizeType)")]
 		private void NewQSpacerItem(int w, int h, int hData) {
 			ProxyQSpacerItem().NewQSpacerItem(w,h,hData);
 		}
@@ -42,47 +44,62 @@ namespace Qt {
 			CreateQSpacerItemProxy();
 			NewQSpacerItem(w,h);
 		}
+		[SmokeMethod("QSpacerItem(int, int)")]
 		private void NewQSpacerItem(int w, int h) {
 			ProxyQSpacerItem().NewQSpacerItem(w,h);
 		}
+		[SmokeMethod("changeSize(int, int, QSizePolicy::SizeType, QSizePolicy::SizeType)")]
 		public void ChangeSize(int w, int h, int hData, int vData) {
 			ProxyQSpacerItem().ChangeSize(w,h,hData,vData);
 		}
+		[SmokeMethod("changeSize(int, int, QSizePolicy::SizeType)")]
 		public void ChangeSize(int w, int h, int hData) {
 			ProxyQSpacerItem().ChangeSize(w,h,hData);
 		}
+		[SmokeMethod("changeSize(int, int)")]
 		public void ChangeSize(int w, int h) {
 			ProxyQSpacerItem().ChangeSize(w,h);
 		}
+		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {
 			return ProxyQSpacerItem().SizeHint();
 		}
+		[SmokeMethod("minimumSize() const")]
 		public new QSize MinimumSize() {
 			return ProxyQSpacerItem().MinimumSize();
 		}
+		[SmokeMethod("maximumSize() const")]
 		public new QSize MaximumSize() {
 			return ProxyQSpacerItem().MaximumSize();
 		}
+		[SmokeMethod("expanding() const")]
 		public new int Expanding() {
 			return ProxyQSpacerItem().Expanding();
 		}
+		[SmokeMethod("isEmpty() const")]
 		public new bool IsEmpty() {
 			return ProxyQSpacerItem().IsEmpty();
 		}
+		[SmokeMethod("setGeometry(const QRect&)")]
 		public new void SetGeometry(QRect arg1) {
 			ProxyQSpacerItem().SetGeometry(arg1);
 		}
+		[SmokeMethod("geometry() const")]
 		public new QRect Geometry() {
 			return ProxyQSpacerItem().Geometry();
 		}
+		[SmokeMethod("spacerItem()")]
 		public new QSpacerItem SpacerItem() {
 			return ProxyQSpacerItem().SpacerItem();
 		}
 		~QSpacerItem() {
-			ProxyQSpacerItem().Dispose();
+			DisposeQSpacerItem();
 		}
 		public void Dispose() {
-			ProxyQSpacerItem().Dispose();
+			DisposeQSpacerItem();
+		}
+		private void DisposeQSpacerItem() {
+			ProxyQSpacerItem().DisposeQSpacerItem();
 		}
 	}
 }

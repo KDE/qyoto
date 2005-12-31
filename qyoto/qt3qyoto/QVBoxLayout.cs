@@ -29,99 +29,138 @@ namespace Qt {
 			return (IQVBoxLayoutProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQVBoxLayout().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQVBoxLayout().ClassName();
 		}
 		public QVBoxLayout(QWidget parent, int border, int spacing, string name) : this((Type) null) {
 			CreateQVBoxLayoutProxy();
+			CreateQVBoxLayoutSignalProxy();
 			NewQVBoxLayout(parent,border,spacing,name);
 		}
+		[SmokeMethod("QVBoxLayout(QWidget*, int, int, const char*)")]
 		private void NewQVBoxLayout(QWidget parent, int border, int spacing, string name) {
 			ProxyQVBoxLayout().NewQVBoxLayout(parent,border,spacing,name);
 		}
 		public QVBoxLayout(QWidget parent, int border, int spacing) : this((Type) null) {
 			CreateQVBoxLayoutProxy();
+			CreateQVBoxLayoutSignalProxy();
 			NewQVBoxLayout(parent,border,spacing);
 		}
+		[SmokeMethod("QVBoxLayout(QWidget*, int, int)")]
 		private void NewQVBoxLayout(QWidget parent, int border, int spacing) {
 			ProxyQVBoxLayout().NewQVBoxLayout(parent,border,spacing);
 		}
 		public QVBoxLayout(QWidget parent, int border) : this((Type) null) {
 			CreateQVBoxLayoutProxy();
+			CreateQVBoxLayoutSignalProxy();
 			NewQVBoxLayout(parent,border);
 		}
+		[SmokeMethod("QVBoxLayout(QWidget*, int)")]
 		private void NewQVBoxLayout(QWidget parent, int border) {
 			ProxyQVBoxLayout().NewQVBoxLayout(parent,border);
 		}
 		public QVBoxLayout(QWidget parent) : this((Type) null) {
 			CreateQVBoxLayoutProxy();
+			CreateQVBoxLayoutSignalProxy();
 			NewQVBoxLayout(parent);
 		}
+		[SmokeMethod("QVBoxLayout(QWidget*)")]
 		private void NewQVBoxLayout(QWidget parent) {
 			ProxyQVBoxLayout().NewQVBoxLayout(parent);
 		}
 		public QVBoxLayout(QLayout parentLayout, int spacing, string name) : this((Type) null) {
 			CreateQVBoxLayoutProxy();
+			CreateQVBoxLayoutSignalProxy();
 			NewQVBoxLayout(parentLayout,spacing,name);
 		}
+		[SmokeMethod("QVBoxLayout(QLayout*, int, const char*)")]
 		private void NewQVBoxLayout(QLayout parentLayout, int spacing, string name) {
 			ProxyQVBoxLayout().NewQVBoxLayout(parentLayout,spacing,name);
 		}
 		public QVBoxLayout(QLayout parentLayout, int spacing) : this((Type) null) {
 			CreateQVBoxLayoutProxy();
+			CreateQVBoxLayoutSignalProxy();
 			NewQVBoxLayout(parentLayout,spacing);
 		}
+		[SmokeMethod("QVBoxLayout(QLayout*, int)")]
 		private void NewQVBoxLayout(QLayout parentLayout, int spacing) {
 			ProxyQVBoxLayout().NewQVBoxLayout(parentLayout,spacing);
 		}
 		public QVBoxLayout(QLayout parentLayout) : this((Type) null) {
 			CreateQVBoxLayoutProxy();
+			CreateQVBoxLayoutSignalProxy();
 			NewQVBoxLayout(parentLayout);
 		}
+		[SmokeMethod("QVBoxLayout(QLayout*)")]
 		private void NewQVBoxLayout(QLayout parentLayout) {
 			ProxyQVBoxLayout().NewQVBoxLayout(parentLayout);
 		}
 		public QVBoxLayout(int spacing, string name) : this((Type) null) {
 			CreateQVBoxLayoutProxy();
+			CreateQVBoxLayoutSignalProxy();
 			NewQVBoxLayout(spacing,name);
 		}
+		[SmokeMethod("QVBoxLayout(int, const char*)")]
 		private void NewQVBoxLayout(int spacing, string name) {
 			ProxyQVBoxLayout().NewQVBoxLayout(spacing,name);
 		}
 		public QVBoxLayout(int spacing) : this((Type) null) {
 			CreateQVBoxLayoutProxy();
+			CreateQVBoxLayoutSignalProxy();
 			NewQVBoxLayout(spacing);
 		}
+		[SmokeMethod("QVBoxLayout(int)")]
 		private void NewQVBoxLayout(int spacing) {
 			ProxyQVBoxLayout().NewQVBoxLayout(spacing);
 		}
 		public QVBoxLayout() : this((Type) null) {
 			CreateQVBoxLayoutProxy();
+			CreateQVBoxLayoutSignalProxy();
 			NewQVBoxLayout();
 		}
+		[SmokeMethod("QVBoxLayout()")]
 		private void NewQVBoxLayout() {
 			ProxyQVBoxLayout().NewQVBoxLayout();
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQVBoxLayout().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQVBoxLayout().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQVBoxLayout().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQVBoxLayout().TrUtf8(arg1);
 		}
 		~QVBoxLayout() {
-			ProxyQVBoxLayout().Dispose();
+			DisposeQVBoxLayout();
 		}
 		public new void Dispose() {
-			ProxyQVBoxLayout().Dispose();
+			DisposeQVBoxLayout();
 		}
+		private void DisposeQVBoxLayout() {
+			ProxyQVBoxLayout().DisposeQVBoxLayout();
+		}
+		protected void CreateQVBoxLayoutSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQVBoxLayoutSignals), this);
+			_signalInterceptor = (IQVBoxLayoutSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQVBoxLayoutSignals Emit() {
+			return (IQVBoxLayoutSignals) _signalInterceptor;
+		}
+	}
+
+	public interface IQVBoxLayoutSignals : IQBoxLayoutSignals {
 	}
 }

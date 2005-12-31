@@ -38,62 +38,82 @@ namespace Qt {
 			CreateQMimeSourceFactoryProxy();
 			NewQMimeSourceFactory();
 		}
+		[SmokeMethod("QMimeSourceFactory()")]
 		private void NewQMimeSourceFactory() {
 			ProxyQMimeSourceFactory().NewQMimeSourceFactory();
 		}
+		[SmokeMethod("data(const QString&) const")]
 		public virtual IQMimeSource Data(string abs_name) {
 			return ProxyQMimeSourceFactory().Data(abs_name);
 		}
+		[SmokeMethod("makeAbsolute(const QString&, const QString&) const")]
 		public virtual string MakeAbsolute(string abs_or_rel_name, string context) {
 			return ProxyQMimeSourceFactory().MakeAbsolute(abs_or_rel_name,context);
 		}
+		[SmokeMethod("data(const QString&, const QString&) const")]
 		public IQMimeSource Data(string abs_or_rel_name, string context) {
 			return ProxyQMimeSourceFactory().Data(abs_or_rel_name,context);
 		}
+		[SmokeMethod("setText(const QString&, const QString&)")]
 		public virtual void SetText(string abs_name, string text) {
 			ProxyQMimeSourceFactory().SetText(abs_name,text);
 		}
+		[SmokeMethod("setImage(const QString&, const QImage&)")]
 		public virtual void SetImage(string abs_name, QImage im) {
 			ProxyQMimeSourceFactory().SetImage(abs_name,im);
 		}
+		[SmokeMethod("setPixmap(const QString&, const QPixmap&)")]
 		public virtual void SetPixmap(string abs_name, QPixmap pm) {
 			ProxyQMimeSourceFactory().SetPixmap(abs_name,pm);
 		}
+		[SmokeMethod("setData(const QString&, QMimeSource*)")]
 		public virtual void SetData(string abs_name, IQMimeSource data) {
 			ProxyQMimeSourceFactory().SetData(abs_name,data);
 		}
+		[SmokeMethod("setFilePath(const QStringList&)")]
 		public virtual void SetFilePath(string[] arg1) {
 			ProxyQMimeSourceFactory().SetFilePath(arg1);
 		}
+		[SmokeMethod("filePath() const")]
 		public virtual ArrayList FilePath() {
 			return ProxyQMimeSourceFactory().FilePath();
 		}
+		[SmokeMethod("addFilePath(const QString&)")]
 		public void AddFilePath(string arg1) {
 			ProxyQMimeSourceFactory().AddFilePath(arg1);
 		}
+		[SmokeMethod("setExtensionType(const QString&, const char*)")]
 		public virtual void SetExtensionType(string ext, string mimetype) {
 			ProxyQMimeSourceFactory().SetExtensionType(ext,mimetype);
 		}
+		[SmokeMethod("defaultFactory()")]
 		public static QMimeSourceFactory DefaultFactory() {
 			return StaticQMimeSourceFactory().DefaultFactory();
 		}
+		[SmokeMethod("setDefaultFactory(QMimeSourceFactory*)")]
 		public static void SetDefaultFactory(QMimeSourceFactory arg1) {
 			StaticQMimeSourceFactory().SetDefaultFactory(arg1);
 		}
+		[SmokeMethod("takeDefaultFactory()")]
 		public static QMimeSourceFactory TakeDefaultFactory() {
 			return StaticQMimeSourceFactory().TakeDefaultFactory();
 		}
+		[SmokeMethod("addFactory(QMimeSourceFactory*)")]
 		public static void AddFactory(QMimeSourceFactory f) {
 			StaticQMimeSourceFactory().AddFactory(f);
 		}
+		[SmokeMethod("removeFactory(QMimeSourceFactory*)")]
 		public static void RemoveFactory(QMimeSourceFactory f) {
 			StaticQMimeSourceFactory().RemoveFactory(f);
 		}
 		~QMimeSourceFactory() {
-			ProxyQMimeSourceFactory().Dispose();
+			DisposeQMimeSourceFactory();
 		}
 		public void Dispose() {
-			ProxyQMimeSourceFactory().Dispose();
+			DisposeQMimeSourceFactory();
+		}
+		private void DisposeQMimeSourceFactory() {
+			ProxyQMimeSourceFactory().DisposeQMimeSourceFactory();
 		}
 	}
 }

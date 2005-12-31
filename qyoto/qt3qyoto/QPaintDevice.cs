@@ -87,18 +87,23 @@ namespace Qt {
 			PdcReservedStart = 0,
 			PdcReservedStop = 199,
 		}
+		[SmokeMethod("devType() const")]
 		public int DevType() {
 			return ProxyQPaintDevice().DevType();
 		}
+		[SmokeMethod("isExtDev() const")]
 		public bool IsExtDev() {
 			return ProxyQPaintDevice().IsExtDev();
 		}
+		[SmokeMethod("paintingActive() const")]
 		public bool PaintingActive() {
 			return ProxyQPaintDevice().PaintingActive();
 		}
+		[SmokeMethod("setResolution(int)")]
 		public virtual void SetResolution(int arg1) {
 			ProxyQPaintDevice().SetResolution(arg1);
 		}
+		[SmokeMethod("resolution() const")]
 		public virtual int Resolution() {
 			return ProxyQPaintDevice().Resolution();
 		}
@@ -106,30 +111,39 @@ namespace Qt {
 			CreateQPaintDeviceProxy();
 			NewQPaintDevice(devflags);
 		}
+		[SmokeMethod("QPaintDevice(uint)")]
 		private void NewQPaintDevice(uint devflags) {
 			ProxyQPaintDevice().NewQPaintDevice(devflags);
 		}
 		// bool cmd(int arg1,QPainter* arg2,QPDevCmdParam* arg3); >>>> NOT CONVERTED
+		[SmokeMethod("metric(int) const")]
 		protected virtual int Metric(int arg1) {
 			return ProxyQPaintDevice().Metric(arg1);
 		}
+		[SmokeMethod("fontMet(QFont*, int, const char*, int) const")]
 		protected virtual int FontMet(QFont arg1, int arg2, string arg3, int arg4) {
 			return ProxyQPaintDevice().FontMet(arg1,arg2,arg3,arg4);
 		}
+		[SmokeMethod("fontMet(QFont*, int, const char*) const")]
 		protected virtual int FontMet(QFont arg1, int arg2, string arg3) {
 			return ProxyQPaintDevice().FontMet(arg1,arg2,arg3);
 		}
+		[SmokeMethod("fontMet(QFont*, int) const")]
 		protected virtual int FontMet(QFont arg1, int arg2) {
 			return ProxyQPaintDevice().FontMet(arg1,arg2);
 		}
+		[SmokeMethod("fontInf(QFont*, int) const")]
 		protected virtual int FontInf(QFont arg1, int arg2) {
 			return ProxyQPaintDevice().FontInf(arg1,arg2);
 		}
 		~QPaintDevice() {
-			ProxyQPaintDevice().Dispose();
+			DisposeQPaintDevice();
 		}
 		public void Dispose() {
-			ProxyQPaintDevice().Dispose();
+			DisposeQPaintDevice();
+		}
+		private void DisposeQPaintDevice() {
+			ProxyQPaintDevice().DisposeQPaintDevice();
 		}
 
 	}

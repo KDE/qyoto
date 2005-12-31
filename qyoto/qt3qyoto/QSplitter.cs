@@ -37,155 +37,214 @@ namespace Qt {
 			FollowSizeHint = 2,
 			Auto = 3,
 		}
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQSplitter().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQSplitter().ClassName();
 		}
 		public QSplitter(QWidget parent, string name) : this((Type) null) {
 			CreateQSplitterProxy();
+			CreateQSplitterSignalProxy();
 			NewQSplitter(parent,name);
 		}
+		[SmokeMethod("QSplitter(QWidget*, const char*)")]
 		private void NewQSplitter(QWidget parent, string name) {
 			ProxyQSplitter().NewQSplitter(parent,name);
 		}
 		public QSplitter(QWidget parent) : this((Type) null) {
 			CreateQSplitterProxy();
+			CreateQSplitterSignalProxy();
 			NewQSplitter(parent);
 		}
+		[SmokeMethod("QSplitter(QWidget*)")]
 		private void NewQSplitter(QWidget parent) {
 			ProxyQSplitter().NewQSplitter(parent);
 		}
 		public QSplitter() : this((Type) null) {
 			CreateQSplitterProxy();
+			CreateQSplitterSignalProxy();
 			NewQSplitter();
 		}
+		[SmokeMethod("QSplitter()")]
 		private void NewQSplitter() {
 			ProxyQSplitter().NewQSplitter();
 		}
 		public QSplitter(int arg1, QWidget parent, string name) : this((Type) null) {
 			CreateQSplitterProxy();
+			CreateQSplitterSignalProxy();
 			NewQSplitter(arg1,parent,name);
 		}
+		[SmokeMethod("QSplitter(Qt::Orientation, QWidget*, const char*)")]
 		private void NewQSplitter(int arg1, QWidget parent, string name) {
 			ProxyQSplitter().NewQSplitter(arg1,parent,name);
 		}
 		public QSplitter(int arg1, QWidget parent) : this((Type) null) {
 			CreateQSplitterProxy();
+			CreateQSplitterSignalProxy();
 			NewQSplitter(arg1,parent);
 		}
+		[SmokeMethod("QSplitter(Qt::Orientation, QWidget*)")]
 		private void NewQSplitter(int arg1, QWidget parent) {
 			ProxyQSplitter().NewQSplitter(arg1,parent);
 		}
 		public QSplitter(int arg1) : this((Type) null) {
 			CreateQSplitterProxy();
+			CreateQSplitterSignalProxy();
 			NewQSplitter(arg1);
 		}
+		[SmokeMethod("QSplitter(Qt::Orientation)")]
 		private void NewQSplitter(int arg1) {
 			ProxyQSplitter().NewQSplitter(arg1);
 		}
+		[SmokeMethod("setOrientation(Qt::Orientation)")]
 		public virtual void SetOrientation(int arg1) {
 			ProxyQSplitter().SetOrientation(arg1);
 		}
+		[SmokeMethod("orientation() const")]
 		public int Orientation() {
 			return ProxyQSplitter().Orientation();
 		}
+		[SmokeMethod("setChildrenCollapsible(bool)")]
 		public void SetChildrenCollapsible(bool arg1) {
 			ProxyQSplitter().SetChildrenCollapsible(arg1);
 		}
+		[SmokeMethod("childrenCollapsible() const")]
 		public bool ChildrenCollapsible() {
 			return ProxyQSplitter().ChildrenCollapsible();
 		}
+		[SmokeMethod("setCollapsible(QWidget*, bool)")]
 		public void SetCollapsible(QWidget w, bool arg2) {
 			ProxyQSplitter().SetCollapsible(w,arg2);
 		}
+		[SmokeMethod("setResizeMode(QWidget*, QSplitter::ResizeMode)")]
 		public virtual void SetResizeMode(QWidget w, int arg2) {
 			ProxyQSplitter().SetResizeMode(w,arg2);
 		}
+		[SmokeMethod("setOpaqueResize(bool)")]
 		public virtual void SetOpaqueResize(bool arg1) {
 			ProxyQSplitter().SetOpaqueResize(arg1);
 		}
+		[SmokeMethod("setOpaqueResize()")]
 		public virtual void SetOpaqueResize() {
 			ProxyQSplitter().SetOpaqueResize();
 		}
+		[SmokeMethod("opaqueResize() const")]
 		public bool OpaqueResize() {
 			return ProxyQSplitter().OpaqueResize();
 		}
+		[SmokeMethod("moveToFirst(QWidget*)")]
 		public void MoveToFirst(QWidget arg1) {
 			ProxyQSplitter().MoveToFirst(arg1);
 		}
+		[SmokeMethod("moveToLast(QWidget*)")]
 		public void MoveToLast(QWidget arg1) {
 			ProxyQSplitter().MoveToLast(arg1);
 		}
+		[SmokeMethod("refresh()")]
 		public void Refresh() {
 			ProxyQSplitter().Refresh();
 		}
+		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {
 			return ProxyQSplitter().SizeHint();
 		}
+		[SmokeMethod("minimumSizeHint() const")]
 		public new QSize MinimumSizeHint() {
 			return ProxyQSplitter().MinimumSizeHint();
 		}
+		[SmokeMethod("sizes() const")]
 		public int[] Sizes() {
 			return ProxyQSplitter().Sizes();
 		}
+		[SmokeMethod("setSizes(QValueList<int>)")]
 		public void SetSizes(int[] arg1) {
 			ProxyQSplitter().SetSizes(arg1);
 		}
+		[SmokeMethod("handleWidth() const")]
 		public int HandleWidth() {
 			return ProxyQSplitter().HandleWidth();
 		}
+		[SmokeMethod("setHandleWidth(int)")]
 		public void SetHandleWidth(int arg1) {
 			ProxyQSplitter().SetHandleWidth(arg1);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQSplitter().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQSplitter().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQSplitter().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQSplitter().TrUtf8(arg1);
 		}
+		[SmokeMethod("childEvent(QChildEvent*)")]
 		protected new void ChildEvent(QChildEvent arg1) {
 			ProxyQSplitter().ChildEvent(arg1);
 		}
+		[SmokeMethod("event(QEvent*)")]
 		public new bool Event(QEvent arg1) {
 			return ProxyQSplitter().Event(arg1);
 		}
+		[SmokeMethod("resizeEvent(QResizeEvent*)")]
 		protected new void ResizeEvent(QResizeEvent arg1) {
 			ProxyQSplitter().ResizeEvent(arg1);
 		}
+		[SmokeMethod("idAfter(QWidget*) const")]
 		protected int IdAfter(QWidget arg1) {
 			return ProxyQSplitter().IdAfter(arg1);
 		}
+		[SmokeMethod("moveSplitter(QCOORD, int)")]
 		protected void MoveSplitter(int pos, int id) {
 			ProxyQSplitter().MoveSplitter(pos,id);
 		}
+		[SmokeMethod("drawSplitter(QPainter*, QCOORD, QCOORD, QCOORD, QCOORD)")]
 		protected virtual void DrawSplitter(QPainter arg1, int x, int y, int w, int h) {
 			ProxyQSplitter().DrawSplitter(arg1,x,y,w,h);
 		}
+		[SmokeMethod("styleChange(QStyle&)")]
 		public new void StyleChange(QStyle arg1) {
 			ProxyQSplitter().StyleChange(arg1);
 		}
+		[SmokeMethod("adjustPos(int, int)")]
 		protected int AdjustPos(int arg1, int arg2) {
 			return ProxyQSplitter().AdjustPos(arg1,arg2);
 		}
+		[SmokeMethod("setRubberband(int)")]
 		protected virtual void SetRubberband(int arg1) {
 			ProxyQSplitter().SetRubberband(arg1);
 		}
+		[SmokeMethod("getRange(int, int*, int*)")]
 		protected void GetRange(int id, out int arg2, out int arg3) {
 			ProxyQSplitter().GetRange(id,out arg2,out arg3);
 		}
 		~QSplitter() {
-			ProxyQSplitter().Dispose();
+			DisposeQSplitter();
 		}
 		public new void Dispose() {
-			ProxyQSplitter().Dispose();
+			DisposeQSplitter();
 		}
+		private void DisposeQSplitter() {
+			ProxyQSplitter().DisposeQSplitter();
+		}
+		protected void CreateQSplitterSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQSplitterSignals), this);
+			_signalInterceptor = (IQSplitterSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQSplitterSignals Emit() {
+			return (IQSplitterSignals) _signalInterceptor;
+		}
+	}
+
+	public interface IQSplitterSignals : IQFrameSignals {
 	}
 }

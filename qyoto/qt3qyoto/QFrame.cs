@@ -51,129 +51,180 @@ namespace Qt {
 			Sunken = 0x0030,
 			MShadow = 0x00f0,
 		}
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQFrame().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQFrame().ClassName();
 		}
 		public QFrame(QWidget parent, string name, int f) : this((Type) null) {
 			CreateQFrameProxy();
+			CreateQFrameSignalProxy();
 			NewQFrame(parent,name,f);
 		}
+		[SmokeMethod("QFrame(QWidget*, const char*, Qt::WFlags)")]
 		private void NewQFrame(QWidget parent, string name, int f) {
 			ProxyQFrame().NewQFrame(parent,name,f);
 		}
 		public QFrame(QWidget parent, string name) : this((Type) null) {
 			CreateQFrameProxy();
+			CreateQFrameSignalProxy();
 			NewQFrame(parent,name);
 		}
+		[SmokeMethod("QFrame(QWidget*, const char*)")]
 		private void NewQFrame(QWidget parent, string name) {
 			ProxyQFrame().NewQFrame(parent,name);
 		}
 		public QFrame(QWidget parent) : this((Type) null) {
 			CreateQFrameProxy();
+			CreateQFrameSignalProxy();
 			NewQFrame(parent);
 		}
+		[SmokeMethod("QFrame(QWidget*)")]
 		private void NewQFrame(QWidget parent) {
 			ProxyQFrame().NewQFrame(parent);
 		}
 		public QFrame() : this((Type) null) {
 			CreateQFrameProxy();
+			CreateQFrameSignalProxy();
 			NewQFrame();
 		}
+		[SmokeMethod("QFrame()")]
 		private void NewQFrame() {
 			ProxyQFrame().NewQFrame();
 		}
+		[SmokeMethod("frameStyle() const")]
 		public int FrameStyle() {
 			return ProxyQFrame().FrameStyle();
 		}
+		[SmokeMethod("setFrameStyle(int)")]
 		public virtual void SetFrameStyle(int arg1) {
 			ProxyQFrame().SetFrameStyle(arg1);
 		}
+		[SmokeMethod("frameWidth() const")]
 		public int FrameWidth() {
 			return ProxyQFrame().FrameWidth();
 		}
+		[SmokeMethod("contentsRect() const")]
 		public QRect ContentsRect() {
 			return ProxyQFrame().ContentsRect();
 		}
+		[SmokeMethod("lineShapesOk() const")]
 		public bool LineShapesOk() {
 			return ProxyQFrame().LineShapesOk();
 		}
+		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {
 			return ProxyQFrame().SizeHint();
 		}
+		[SmokeMethod("frameShape() const")]
 		public int FrameShape() {
 			return ProxyQFrame().FrameShape();
 		}
+		[SmokeMethod("setFrameShape(QFrame::Shape)")]
 		public void SetFrameShape(int arg1) {
 			ProxyQFrame().SetFrameShape(arg1);
 		}
+		[SmokeMethod("frameShadow() const")]
 		public int FrameShadow() {
 			return ProxyQFrame().FrameShadow();
 		}
+		[SmokeMethod("setFrameShadow(QFrame::Shadow)")]
 		public void SetFrameShadow(int arg1) {
 			ProxyQFrame().SetFrameShadow(arg1);
 		}
+		[SmokeMethod("lineWidth() const")]
 		public int LineWidth() {
 			return ProxyQFrame().LineWidth();
 		}
+		[SmokeMethod("setLineWidth(int)")]
 		public virtual void SetLineWidth(int arg1) {
 			ProxyQFrame().SetLineWidth(arg1);
 		}
+		[SmokeMethod("margin() const")]
 		public int Margin() {
 			return ProxyQFrame().Margin();
 		}
+		[SmokeMethod("setMargin(int)")]
 		public virtual void SetMargin(int arg1) {
 			ProxyQFrame().SetMargin(arg1);
 		}
+		[SmokeMethod("midLineWidth() const")]
 		public int MidLineWidth() {
 			return ProxyQFrame().MidLineWidth();
 		}
+		[SmokeMethod("setMidLineWidth(int)")]
 		public virtual void SetMidLineWidth(int arg1) {
 			ProxyQFrame().SetMidLineWidth(arg1);
 		}
+		[SmokeMethod("frameRect() const")]
 		public QRect FrameRect() {
 			return ProxyQFrame().FrameRect();
 		}
+		[SmokeMethod("setFrameRect(const QRect&)")]
 		public virtual void SetFrameRect(QRect arg1) {
 			ProxyQFrame().SetFrameRect(arg1);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQFrame().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQFrame().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQFrame().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQFrame().TrUtf8(arg1);
 		}
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected new void PaintEvent(QPaintEvent arg1) {
 			ProxyQFrame().PaintEvent(arg1);
 		}
+		[SmokeMethod("resizeEvent(QResizeEvent*)")]
 		protected new void ResizeEvent(QResizeEvent arg1) {
 			ProxyQFrame().ResizeEvent(arg1);
 		}
+		[SmokeMethod("drawFrame(QPainter*)")]
 		protected virtual void DrawFrame(QPainter arg1) {
 			ProxyQFrame().DrawFrame(arg1);
 		}
+		[SmokeMethod("drawContents(QPainter*)")]
 		protected virtual void DrawContents(QPainter arg1) {
 			ProxyQFrame().DrawContents(arg1);
 		}
+		[SmokeMethod("frameChanged()")]
 		protected virtual void FrameChanged() {
 			ProxyQFrame().FrameChanged();
 		}
+		[SmokeMethod("styleChange(QStyle&)")]
 		public new void StyleChange(QStyle arg1) {
 			ProxyQFrame().StyleChange(arg1);
 		}
 		~QFrame() {
-			ProxyQFrame().Dispose();
+			DisposeQFrame();
 		}
 		public new void Dispose() {
-			ProxyQFrame().Dispose();
+			DisposeQFrame();
 		}
+		private void DisposeQFrame() {
+			ProxyQFrame().DisposeQFrame();
+		}
+		protected void CreateQFrameSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQFrameSignals), this);
+			_signalInterceptor = (IQFrameSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQFrameSignals Emit() {
+			return (IQFrameSignals) _signalInterceptor;
+		}
+	}
+
+	public interface IQFrameSignals : IQWidgetSignals {
 	}
 }

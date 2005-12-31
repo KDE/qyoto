@@ -43,6 +43,7 @@ namespace Qt {
 			CreateQWMatrixProxy();
 			NewQWMatrix();
 		}
+		[SmokeMethod("QWMatrix()")]
 		private void NewQWMatrix() {
 			ProxyQWMatrix().NewQWMatrix();
 		}
@@ -50,87 +51,115 @@ namespace Qt {
 			CreateQWMatrixProxy();
 			NewQWMatrix(m11,m12,m21,m22,dx,dy);
 		}
+		[SmokeMethod("QWMatrix(double, double, double, double, double, double)")]
 		private void NewQWMatrix(double m11, double m12, double m21, double m22, double dx, double dy) {
 			ProxyQWMatrix().NewQWMatrix(m11,m12,m21,m22,dx,dy);
 		}
+		[SmokeMethod("setMatrix(double, double, double, double, double, double)")]
 		public void SetMatrix(double m11, double m12, double m21, double m22, double dx, double dy) {
 			ProxyQWMatrix().SetMatrix(m11,m12,m21,m22,dx,dy);
 		}
+		[SmokeMethod("m11() const")]
 		public double M11() {
 			return ProxyQWMatrix().M11();
 		}
+		[SmokeMethod("m12() const")]
 		public double M12() {
 			return ProxyQWMatrix().M12();
 		}
+		[SmokeMethod("m21() const")]
 		public double M21() {
 			return ProxyQWMatrix().M21();
 		}
+		[SmokeMethod("m22() const")]
 		public double M22() {
 			return ProxyQWMatrix().M22();
 		}
+		[SmokeMethod("dx() const")]
 		public double Dx() {
 			return ProxyQWMatrix().Dx();
 		}
+		[SmokeMethod("dy() const")]
 		public double Dy() {
 			return ProxyQWMatrix().Dy();
 		}
+		[SmokeMethod("map(int, int, int*, int*) const")]
 		public void Map(int x, int y, out int tx, out int ty) {
 			ProxyQWMatrix().Map(x,y,out tx,out ty);
 		}
+		[SmokeMethod("map(double, double, double*, double*) const")]
 		public void Map(double x, double y, out double tx, out double ty) {
 			ProxyQWMatrix().Map(x,y,out tx,out ty);
 		}
+		[SmokeMethod("mapRect(const QRect&) const")]
 		public QRect MapRect(QRect arg1) {
 			return ProxyQWMatrix().MapRect(arg1);
 		}
+		[SmokeMethod("map(const QPoint&) const")]
 		public QPoint Map(QPoint p) {
 			return ProxyQWMatrix().Map(p);
 		}
+		[SmokeMethod("map(const QRect&) const")]
 		public QRect Map(QRect r) {
 			return ProxyQWMatrix().Map(r);
 		}
+		[SmokeMethod("map(const QPointArray&) const")]
 		public QPointArray Map(QPointArray a) {
 			return ProxyQWMatrix().Map(a);
 		}
+		[SmokeMethod("map(const QRegion&) const")]
 		public QRegion Map(QRegion r) {
 			return ProxyQWMatrix().Map(r);
 		}
+		[SmokeMethod("mapToRegion(const QRect&) const")]
 		public QRegion MapToRegion(QRect r) {
 			return ProxyQWMatrix().MapToRegion(r);
 		}
+		[SmokeMethod("mapToPolygon(const QRect&) const")]
 		public QPointArray MapToPolygon(QRect r) {
 			return ProxyQWMatrix().MapToPolygon(r);
 		}
+		[SmokeMethod("reset()")]
 		public void Reset() {
 			ProxyQWMatrix().Reset();
 		}
+		[SmokeMethod("isIdentity() const")]
 		public bool IsIdentity() {
 			return ProxyQWMatrix().IsIdentity();
 		}
+		[SmokeMethod("translate(double, double)")]
 		public QWMatrix Translate(double dx, double dy) {
 			return ProxyQWMatrix().Translate(dx,dy);
 		}
+		[SmokeMethod("scale(double, double)")]
 		public QWMatrix Scale(double sx, double sy) {
 			return ProxyQWMatrix().Scale(sx,sy);
 		}
+		[SmokeMethod("shear(double, double)")]
 		public QWMatrix Shear(double sh, double sv) {
 			return ProxyQWMatrix().Shear(sh,sv);
 		}
+		[SmokeMethod("rotate(double)")]
 		public QWMatrix Rotate(double a) {
 			return ProxyQWMatrix().Rotate(a);
 		}
+		[SmokeMethod("isInvertible() const")]
 		public bool IsInvertible() {
 			return ProxyQWMatrix().IsInvertible();
 		}
+		[SmokeMethod("det() const")]
 		public double Det() {
 			return ProxyQWMatrix().Det();
 		}
+		[SmokeMethod("invert(bool*) const")]
 		public QWMatrix Invert(out bool arg1) {
 			return ProxyQWMatrix().Invert(out arg1);
 		}
+		[SmokeMethod("invert() const")]
 		public QWMatrix Invert() {
 			return ProxyQWMatrix().Invert();
 		}
+		[SmokeMethod("operator==(const QWMatrix&) const")]
 		public static bool operator==(QWMatrix lhs, QWMatrix arg1) {
 			return StaticQWMatrix().op_equals(lhs,arg1);
 		}
@@ -144,32 +173,42 @@ namespace Qt {
 		public override int GetHashCode() {
 			return ProxyQWMatrix().GetHashCode();
 		}
+		[SmokeMethod("operator*=(const QWMatrix&)")]
 		public static QWMatrix operator*(QWMatrix lhs, QWMatrix arg1) {
 			return StaticQWMatrix().op_mult(lhs,arg1);
 		}
+		[SmokeMethod("operator*(const QPoint&) const")]
 		public static QPoint operator*(QWMatrix lhs, QPoint arg1) {
 			return StaticQWMatrix().op_mult(lhs,arg1);
 		}
+		[SmokeMethod("operator*(const QRect&) const")]
 		public static QRegion operator*(QWMatrix lhs, QRect arg1) {
 			return StaticQWMatrix().op_mult(lhs,arg1);
 		}
+		[SmokeMethod("operator*(const QRegion&) const")]
 		public static QRegion operator*(QWMatrix lhs, QRegion arg1) {
 			return StaticQWMatrix().op_mult(lhs,arg1);
 		}
+		[SmokeMethod("operator*(const QPointArray&) const")]
 		public static QPointArray operator*(QWMatrix lhs, QPointArray a) {
 			return StaticQWMatrix().op_mult(lhs,a);
 		}
+		[SmokeMethod("setTransformationMode(QWMatrix::TransformationMode)")]
 		public static void SetTransformationMode(int m) {
 			StaticQWMatrix().SetTransformationMode(m);
 		}
+		[SmokeMethod("transformationMode()")]
 		public static int TransformationMode() {
 			return StaticQWMatrix().TransformationMode();
 		}
 		~QWMatrix() {
-			ProxyQWMatrix().Dispose();
+			DisposeQWMatrix();
 		}
 		public void Dispose() {
-			ProxyQWMatrix().Dispose();
+			DisposeQWMatrix();
+		}
+		private void DisposeQWMatrix() {
+			ProxyQWMatrix().DisposeQWMatrix();
 		}
 	}
 }

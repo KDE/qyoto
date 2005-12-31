@@ -37,35 +37,46 @@ namespace Qt {
 			CreateQImageDecoderProxy();
 			NewQImageDecoder(c);
 		}
+		[SmokeMethod("QImageDecoder(QImageConsumer*)")]
 		private void NewQImageDecoder(QImageConsumer c) {
 			ProxyQImageDecoder().NewQImageDecoder(c);
 		}
+		[SmokeMethod("image()")]
 		public QImage Image() {
 			return ProxyQImageDecoder().Image();
 		}
+		[SmokeMethod("decode(const uchar*, int)")]
 		public int Decode(char[] buffer, int length) {
 			return ProxyQImageDecoder().Decode(buffer,length);
 		}
+		[SmokeMethod("formatName(const uchar*, int)")]
 		public static string FormatName(char[] buffer, int length) {
 			return StaticQImageDecoder().FormatName(buffer,length);
 		}
+		[SmokeMethod("format(const char*)")]
 		public static QImageFormatType Format(string name) {
 			return StaticQImageDecoder().Format(name);
 		}
+		[SmokeMethod("inputFormats()")]
 		public static ArrayList InputFormats() {
 			return StaticQImageDecoder().InputFormats();
 		}
+		[SmokeMethod("registerDecoderFactory(QImageFormatType*)")]
 		public static void RegisterDecoderFactory(QImageFormatType arg1) {
 			StaticQImageDecoder().RegisterDecoderFactory(arg1);
 		}
+		[SmokeMethod("unregisterDecoderFactory(QImageFormatType*)")]
 		public static void UnregisterDecoderFactory(QImageFormatType arg1) {
 			StaticQImageDecoder().UnregisterDecoderFactory(arg1);
 		}
 		~QImageDecoder() {
-			ProxyQImageDecoder().Dispose();
+			DisposeQImageDecoder();
 		}
 		public void Dispose() {
-			ProxyQImageDecoder().Dispose();
+			DisposeQImageDecoder();
+		}
+		private void DisposeQImageDecoder() {
+			ProxyQImageDecoder().DisposeQImageDecoder();
 		}
 	}
 }

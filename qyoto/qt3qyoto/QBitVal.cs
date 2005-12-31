@@ -30,10 +30,13 @@ namespace Qt {
 		// QBitVal* QBitVal(QBitArray* arg1,uint arg2); >>>> NOT CONVERTED
 		//  operator int(); >>>> NOT CONVERTED
 		~QBitVal() {
-			ProxyQBitVal().Dispose();
+			DisposeQBitVal();
 		}
 		public void Dispose() {
-			ProxyQBitVal().Dispose();
+			DisposeQBitVal();
+		}
+		private void DisposeQBitVal() {
+			ProxyQBitVal().DisposeQBitVal();
 		}
 	}
 }

@@ -30,35 +30,55 @@ namespace Qt {
 			return (IQTextCodecPluginProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQTextCodecPlugin().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQTextCodecPlugin().ClassName();
 		}
+		[SmokeMethod("names() const")]
 		public virtual ArrayList Names() {
 			return ProxyQTextCodecPlugin().Names();
 		}
+		[SmokeMethod("createForName(const QString&)")]
 		public virtual QTextCodec CreateForName(string name) {
 			return ProxyQTextCodecPlugin().CreateForName(name);
 		}
+		[SmokeMethod("mibEnums() const")]
 		public virtual int[] MibEnums() {
 			return ProxyQTextCodecPlugin().MibEnums();
 		}
+		[SmokeMethod("createForMib(int)")]
 		public virtual QTextCodec CreateForMib(int mib) {
 			return ProxyQTextCodecPlugin().CreateForMib(mib);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQTextCodecPlugin().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQTextCodecPlugin().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQTextCodecPlugin().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQTextCodecPlugin().TrUtf8(arg1);
 		}
+		protected void CreateQTextCodecPluginSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQTextCodecPluginSignals), this);
+			_signalInterceptor = (IQTextCodecPluginSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQTextCodecPluginSignals Emit() {
+			return (IQTextCodecPluginSignals) _signalInterceptor;
+		}
+	}
+
+	public interface IQTextCodecPluginSignals : IQGPluginSignals {
 	}
 }

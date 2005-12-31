@@ -32,34 +32,44 @@ namespace Qt {
 			CreateQLibraryProxy();
 			NewQLibrary(filename);
 		}
+		[SmokeMethod("QLibrary(const QString&)")]
 		private void NewQLibrary(string filename) {
 			ProxyQLibrary().NewQLibrary(filename);
 		}
 		// void* resolve(const char* arg1); >>>> NOT CONVERTED
+		[SmokeMethod("load()")]
 		public bool Load() {
 			return ProxyQLibrary().Load();
 		}
+		[SmokeMethod("unload()")]
 		public virtual bool Unload() {
 			return ProxyQLibrary().Unload();
 		}
+		[SmokeMethod("isLoaded() const")]
 		public bool IsLoaded() {
 			return ProxyQLibrary().IsLoaded();
 		}
+		[SmokeMethod("autoUnload() const")]
 		public bool AutoUnload() {
 			return ProxyQLibrary().AutoUnload();
 		}
+		[SmokeMethod("setAutoUnload(bool)")]
 		public void SetAutoUnload(bool enable) {
 			ProxyQLibrary().SetAutoUnload(enable);
 		}
+		[SmokeMethod("library() const")]
 		public string Library() {
 			return ProxyQLibrary().Library();
 		}
 		// void* resolve(const QString& arg1,const char* arg2); >>>> NOT CONVERTED
 		~QLibrary() {
-			ProxyQLibrary().Dispose();
+			DisposeQLibrary();
 		}
 		public void Dispose() {
-			ProxyQLibrary().Dispose();
+			DisposeQLibrary();
+		}
+		private void DisposeQLibrary() {
+			ProxyQLibrary().DisposeQLibrary();
 		}
 	}
 }

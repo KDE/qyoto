@@ -29,98 +29,130 @@ namespace Qt {
 			CreateQXmlDefaultHandlerProxy();
 			NewQXmlDefaultHandler();
 		}
+		[SmokeMethod("QXmlDefaultHandler()")]
 		private void NewQXmlDefaultHandler() {
 			ProxyQXmlDefaultHandler().NewQXmlDefaultHandler();
 		}
+		[SmokeMethod("setDocumentLocator(QXmlLocator*)")]
 		public void SetDocumentLocator(QXmlLocator locator) {
 			ProxyQXmlDefaultHandler().SetDocumentLocator(locator);
 		}
+		[SmokeMethod("startDocument()")]
 		public bool StartDocument() {
 			return ProxyQXmlDefaultHandler().StartDocument();
 		}
+		[SmokeMethod("endDocument()")]
 		public bool EndDocument() {
 			return ProxyQXmlDefaultHandler().EndDocument();
 		}
+		[SmokeMethod("startPrefixMapping(const QString&, const QString&)")]
 		public bool StartPrefixMapping(string prefix, string uri) {
 			return ProxyQXmlDefaultHandler().StartPrefixMapping(prefix,uri);
 		}
+		[SmokeMethod("endPrefixMapping(const QString&)")]
 		public bool EndPrefixMapping(string prefix) {
 			return ProxyQXmlDefaultHandler().EndPrefixMapping(prefix);
 		}
+		[SmokeMethod("startElement(const QString&, const QString&, const QString&, const QXmlAttributes&)")]
 		public bool StartElement(string namespaceURI, string localName, string qName, QXmlAttributes atts) {
 			return ProxyQXmlDefaultHandler().StartElement(namespaceURI,localName,qName,atts);
 		}
+		[SmokeMethod("endElement(const QString&, const QString&, const QString&)")]
 		public bool EndElement(string namespaceURI, string localName, string qName) {
 			return ProxyQXmlDefaultHandler().EndElement(namespaceURI,localName,qName);
 		}
+		[SmokeMethod("characters(const QString&)")]
 		public bool Characters(string ch) {
 			return ProxyQXmlDefaultHandler().Characters(ch);
 		}
+		[SmokeMethod("ignorableWhitespace(const QString&)")]
 		public bool IgnorableWhitespace(string ch) {
 			return ProxyQXmlDefaultHandler().IgnorableWhitespace(ch);
 		}
+		[SmokeMethod("processingInstruction(const QString&, const QString&)")]
 		public bool ProcessingInstruction(string target, string data) {
 			return ProxyQXmlDefaultHandler().ProcessingInstruction(target,data);
 		}
+		[SmokeMethod("skippedEntity(const QString&)")]
 		public bool SkippedEntity(string name) {
 			return ProxyQXmlDefaultHandler().SkippedEntity(name);
 		}
+		[SmokeMethod("warning(const QXmlParseException&)")]
 		public bool Warning(QXmlParseException exception) {
 			return ProxyQXmlDefaultHandler().Warning(exception);
 		}
+		[SmokeMethod("error(const QXmlParseException&)")]
 		public bool Error(QXmlParseException exception) {
 			return ProxyQXmlDefaultHandler().Error(exception);
 		}
+		[SmokeMethod("fatalError(const QXmlParseException&)")]
 		public bool FatalError(QXmlParseException exception) {
 			return ProxyQXmlDefaultHandler().FatalError(exception);
 		}
+		[SmokeMethod("notationDecl(const QString&, const QString&, const QString&)")]
 		public bool NotationDecl(string name, string publicId, string systemId) {
 			return ProxyQXmlDefaultHandler().NotationDecl(name,publicId,systemId);
 		}
+		[SmokeMethod("unparsedEntityDecl(const QString&, const QString&, const QString&, const QString&)")]
 		public bool UnparsedEntityDecl(string name, string publicId, string systemId, string notationName) {
 			return ProxyQXmlDefaultHandler().UnparsedEntityDecl(name,publicId,systemId,notationName);
 		}
+		[SmokeMethod("resolveEntity(const QString&, const QString&, QXmlInputSource*&)")]
 		public bool ResolveEntity(string publicId, string systemId, QXmlInputSource ret) {
 			return ProxyQXmlDefaultHandler().ResolveEntity(publicId,systemId,ret);
 		}
+		[SmokeMethod("startDTD(const QString&, const QString&, const QString&)")]
 		public bool StartDTD(string name, string publicId, string systemId) {
 			return ProxyQXmlDefaultHandler().StartDTD(name,publicId,systemId);
 		}
+		[SmokeMethod("endDTD()")]
 		public bool EndDTD() {
 			return ProxyQXmlDefaultHandler().EndDTD();
 		}
+		[SmokeMethod("startEntity(const QString&)")]
 		public bool StartEntity(string name) {
 			return ProxyQXmlDefaultHandler().StartEntity(name);
 		}
+		[SmokeMethod("endEntity(const QString&)")]
 		public bool EndEntity(string name) {
 			return ProxyQXmlDefaultHandler().EndEntity(name);
 		}
+		[SmokeMethod("startCDATA()")]
 		public bool StartCDATA() {
 			return ProxyQXmlDefaultHandler().StartCDATA();
 		}
+		[SmokeMethod("endCDATA()")]
 		public bool EndCDATA() {
 			return ProxyQXmlDefaultHandler().EndCDATA();
 		}
+		[SmokeMethod("comment(const QString&)")]
 		public bool Comment(string ch) {
 			return ProxyQXmlDefaultHandler().Comment(ch);
 		}
+		[SmokeMethod("attributeDecl(const QString&, const QString&, const QString&, const QString&, const QString&)")]
 		public bool AttributeDecl(string eName, string aName, string type, string valueDefault, string value) {
 			return ProxyQXmlDefaultHandler().AttributeDecl(eName,aName,type,valueDefault,value);
 		}
+		[SmokeMethod("internalEntityDecl(const QString&, const QString&)")]
 		public bool InternalEntityDecl(string name, string value) {
 			return ProxyQXmlDefaultHandler().InternalEntityDecl(name,value);
 		}
+		[SmokeMethod("externalEntityDecl(const QString&, const QString&, const QString&)")]
 		public bool ExternalEntityDecl(string name, string publicId, string systemId) {
 			return ProxyQXmlDefaultHandler().ExternalEntityDecl(name,publicId,systemId);
 		}
+		[SmokeMethod("errorString()")]
 		public string ErrorString() {
 			return ProxyQXmlDefaultHandler().ErrorString();
 		}
 		~QXmlDefaultHandler() {
-			ProxyQXmlDefaultHandler().Dispose();
+			DisposeQXmlDefaultHandler();
 		}
 		public void Dispose() {
-			ProxyQXmlDefaultHandler().Dispose();
+			DisposeQXmlDefaultHandler();
+		}
+		private void DisposeQXmlDefaultHandler() {
+			ProxyQXmlDefaultHandler().DisposeQXmlDefaultHandler();
 		}
 	}
 }

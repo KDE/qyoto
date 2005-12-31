@@ -35,15 +35,19 @@ namespace Qt {
 			return (IQXmlErrorHandlerProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("warning(const QXmlParseException&)")]
 		public virtual bool Warning(QXmlParseException exception) {
 			return ProxyQXmlErrorHandler().Warning(exception);
 		}
+		[SmokeMethod("error(const QXmlParseException&)")]
 		public virtual bool Error(QXmlParseException exception) {
 			return ProxyQXmlErrorHandler().Error(exception);
 		}
+		[SmokeMethod("fatalError(const QXmlParseException&)")]
 		public virtual bool FatalError(QXmlParseException exception) {
 			return ProxyQXmlErrorHandler().FatalError(exception);
 		}
+		[SmokeMethod("errorString()")]
 		public virtual string ErrorString() {
 			return ProxyQXmlErrorHandler().ErrorString();
 		}

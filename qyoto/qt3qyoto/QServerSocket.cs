@@ -29,41 +29,63 @@ namespace Qt {
 			return (IQServerSocketProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQServerSocket().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQServerSocket().ClassName();
 		}
+		[SmokeMethod("ok() const")]
 		public bool Ok() {
 			return ProxyQServerSocket().Ok();
 		}
+		[SmokeMethod("port() const")]
 		public ushort Port() {
 			return ProxyQServerSocket().Port();
 		}
+		[SmokeMethod("socket() const")]
 		public int Socket() {
 			return ProxyQServerSocket().Socket();
 		}
+		[SmokeMethod("setSocket(int)")]
 		public virtual void SetSocket(int socket) {
 			ProxyQServerSocket().SetSocket(socket);
 		}
+		[SmokeMethod("address() const")]
 		public QHostAddress Address() {
 			return ProxyQServerSocket().Address();
 		}
+		[SmokeMethod("newConnection(int)")]
 		public virtual void NewConnection(int socket) {
 			ProxyQServerSocket().NewConnection(socket);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQServerSocket().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQServerSocket().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQServerSocket().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQServerSocket().TrUtf8(arg1);
 		}
+		protected void CreateQServerSocketSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQServerSocketSignals), this);
+			_signalInterceptor = (IQServerSocketSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQServerSocketSignals Emit() {
+			return (IQServerSocketSignals) _signalInterceptor;
+		}
+	}
+
+	public interface IQServerSocketSignals : IQObjectSignals {
 	}
 }

@@ -29,6 +29,7 @@ namespace Qt {
 			CreateQListBoxPixmapProxy();
 			NewQListBoxPixmap(listbox,arg2);
 		}
+		[SmokeMethod("QListBoxPixmap(QListBox*, const QPixmap&)")]
 		private void NewQListBoxPixmap(QListBox listbox, QPixmap arg2) {
 			ProxyQListBoxPixmap().NewQListBoxPixmap(listbox,arg2);
 		}
@@ -36,6 +37,7 @@ namespace Qt {
 			CreateQListBoxPixmapProxy();
 			NewQListBoxPixmap(arg1);
 		}
+		[SmokeMethod("QListBoxPixmap(const QPixmap&)")]
 		private void NewQListBoxPixmap(QPixmap arg1) {
 			ProxyQListBoxPixmap().NewQListBoxPixmap(arg1);
 		}
@@ -43,6 +45,7 @@ namespace Qt {
 			CreateQListBoxPixmapProxy();
 			NewQListBoxPixmap(listbox,pix,after);
 		}
+		[SmokeMethod("QListBoxPixmap(QListBox*, const QPixmap&, QListBoxItem*)")]
 		private void NewQListBoxPixmap(QListBox listbox, QPixmap pix, QListBoxItem after) {
 			ProxyQListBoxPixmap().NewQListBoxPixmap(listbox,pix,after);
 		}
@@ -50,6 +53,7 @@ namespace Qt {
 			CreateQListBoxPixmapProxy();
 			NewQListBoxPixmap(listbox,arg2,arg3);
 		}
+		[SmokeMethod("QListBoxPixmap(QListBox*, const QPixmap&, const QString&)")]
 		private void NewQListBoxPixmap(QListBox listbox, QPixmap arg2, string arg3) {
 			ProxyQListBoxPixmap().NewQListBoxPixmap(listbox,arg2,arg3);
 		}
@@ -57,6 +61,7 @@ namespace Qt {
 			CreateQListBoxPixmapProxy();
 			NewQListBoxPixmap(arg1,arg2);
 		}
+		[SmokeMethod("QListBoxPixmap(const QPixmap&, const QString&)")]
 		private void NewQListBoxPixmap(QPixmap arg1, string arg2) {
 			ProxyQListBoxPixmap().NewQListBoxPixmap(arg1,arg2);
 		}
@@ -64,29 +69,38 @@ namespace Qt {
 			CreateQListBoxPixmapProxy();
 			NewQListBoxPixmap(listbox,pix,arg3,after);
 		}
+		[SmokeMethod("QListBoxPixmap(QListBox*, const QPixmap&, const QString&, QListBoxItem*)")]
 		private void NewQListBoxPixmap(QListBox listbox, QPixmap pix, string arg3, QListBoxItem after) {
 			ProxyQListBoxPixmap().NewQListBoxPixmap(listbox,pix,arg3,after);
 		}
+		[SmokeMethod("pixmap() const")]
 		public new QPixmap Pixmap() {
 			return ProxyQListBoxPixmap().Pixmap();
 		}
+		[SmokeMethod("height(const QListBox*) const")]
 		public new int Height(QListBox arg1) {
 			return ProxyQListBoxPixmap().Height(arg1);
 		}
+		[SmokeMethod("width(const QListBox*) const")]
 		public new int Width(QListBox arg1) {
 			return ProxyQListBoxPixmap().Width(arg1);
 		}
+		[SmokeMethod("rtti() const")]
 		public new int Rtti() {
 			return ProxyQListBoxPixmap().Rtti();
 		}
+		[SmokeMethod("paint(QPainter*)")]
 		protected new void Paint(QPainter arg1) {
 			ProxyQListBoxPixmap().Paint(arg1);
 		}
 		~QListBoxPixmap() {
-			ProxyQListBoxPixmap().Dispose();
+			DisposeQListBoxPixmap();
 		}
 		public new void Dispose() {
-			ProxyQListBoxPixmap().Dispose();
+			DisposeQListBoxPixmap();
+		}
+		private void DisposeQListBoxPixmap() {
+			ProxyQListBoxPixmap().DisposeQListBoxPixmap();
 		}
 	}
 }

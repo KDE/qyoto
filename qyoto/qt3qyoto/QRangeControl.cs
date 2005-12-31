@@ -49,6 +49,7 @@ namespace Qt {
 			CreateQRangeControlProxy();
 			NewQRangeControl();
 		}
+		[SmokeMethod("QRangeControl()")]
 		private void NewQRangeControl() {
 			ProxyQRangeControl().NewQRangeControl();
 		}
@@ -56,80 +57,106 @@ namespace Qt {
 			CreateQRangeControlProxy();
 			NewQRangeControl(minValue,maxValue,lineStep,pageStep,value);
 		}
+		[SmokeMethod("QRangeControl(int, int, int, int, int)")]
 		private void NewQRangeControl(int minValue, int maxValue, int lineStep, int pageStep, int value) {
 			ProxyQRangeControl().NewQRangeControl(minValue,maxValue,lineStep,pageStep,value);
 		}
+		[SmokeMethod("value() const")]
 		public int Value() {
 			return ProxyQRangeControl().Value();
 		}
+		[SmokeMethod("setValue(int)")]
 		public void SetValue(int arg1) {
 			ProxyQRangeControl().SetValue(arg1);
 		}
+		[SmokeMethod("addPage()")]
 		public void AddPage() {
 			ProxyQRangeControl().AddPage();
 		}
+		[SmokeMethod("subtractPage()")]
 		public void SubtractPage() {
 			ProxyQRangeControl().SubtractPage();
 		}
+		[SmokeMethod("addLine()")]
 		public void AddLine() {
 			ProxyQRangeControl().AddLine();
 		}
+		[SmokeMethod("subtractLine()")]
 		public void SubtractLine() {
 			ProxyQRangeControl().SubtractLine();
 		}
+		[SmokeMethod("minValue() const")]
 		public int MinValue() {
 			return ProxyQRangeControl().MinValue();
 		}
+		[SmokeMethod("maxValue() const")]
 		public int MaxValue() {
 			return ProxyQRangeControl().MaxValue();
 		}
+		[SmokeMethod("setRange(int, int)")]
 		public void SetRange(int minValue, int maxValue) {
 			ProxyQRangeControl().SetRange(minValue,maxValue);
 		}
+		[SmokeMethod("setMinValue(int)")]
 		public void SetMinValue(int minVal) {
 			ProxyQRangeControl().SetMinValue(minVal);
 		}
+		[SmokeMethod("setMaxValue(int)")]
 		public void SetMaxValue(int minVal) {
 			ProxyQRangeControl().SetMaxValue(minVal);
 		}
+		[SmokeMethod("lineStep() const")]
 		public int LineStep() {
 			return ProxyQRangeControl().LineStep();
 		}
+		[SmokeMethod("pageStep() const")]
 		public int PageStep() {
 			return ProxyQRangeControl().PageStep();
 		}
+		[SmokeMethod("setSteps(int, int)")]
 		public void SetSteps(int line, int page) {
 			ProxyQRangeControl().SetSteps(line,page);
 		}
+		[SmokeMethod("bound(int) const")]
 		public int Bound(int arg1) {
 			return ProxyQRangeControl().Bound(arg1);
 		}
+		[SmokeMethod("positionFromValue(int, int) const")]
 		protected int PositionFromValue(int val, int space) {
 			return ProxyQRangeControl().PositionFromValue(val,space);
 		}
+		[SmokeMethod("valueFromPosition(int, int) const")]
 		protected int ValueFromPosition(int pos, int space) {
 			return ProxyQRangeControl().ValueFromPosition(pos,space);
 		}
+		[SmokeMethod("directSetValue(int)")]
 		protected void DirectSetValue(int val) {
 			ProxyQRangeControl().DirectSetValue(val);
 		}
+		[SmokeMethod("prevValue() const")]
 		protected int PrevValue() {
 			return ProxyQRangeControl().PrevValue();
 		}
+		[SmokeMethod("valueChange()")]
 		protected virtual void ValueChange() {
 			ProxyQRangeControl().ValueChange();
 		}
+		[SmokeMethod("rangeChange()")]
 		protected virtual void RangeChange() {
 			ProxyQRangeControl().RangeChange();
 		}
+		[SmokeMethod("stepChange()")]
 		protected virtual void StepChange() {
 			ProxyQRangeControl().StepChange();
 		}
 		~QRangeControl() {
-			ProxyQRangeControl().Dispose();
+			DisposeQRangeControl();
 		}
 		public void Dispose() {
-			ProxyQRangeControl().Dispose();
+			DisposeQRangeControl();
+		}
+		private void DisposeQRangeControl() {
+			ProxyQRangeControl().DisposeQRangeControl();
 		}
 	}
 }

@@ -34,410 +34,552 @@ namespace Qt {
 			Never = 0,
 			InWindowsStyle = 1,
 		}
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQMenuBar().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQMenuBar().ClassName();
 		}
 		public QMenuBar(QWidget parent, string name) : this((Type) null) {
 			CreateQMenuBarProxy();
+			CreateQMenuBarSignalProxy();
 			NewQMenuBar(parent,name);
 		}
+		[SmokeMethod("QMenuBar(QWidget*, const char*)")]
 		private void NewQMenuBar(QWidget parent, string name) {
 			ProxyQMenuBar().NewQMenuBar(parent,name);
 		}
 		public QMenuBar(QWidget parent) : this((Type) null) {
 			CreateQMenuBarProxy();
+			CreateQMenuBarSignalProxy();
 			NewQMenuBar(parent);
 		}
+		[SmokeMethod("QMenuBar(QWidget*)")]
 		private void NewQMenuBar(QWidget parent) {
 			ProxyQMenuBar().NewQMenuBar(parent);
 		}
 		public QMenuBar() : this((Type) null) {
 			CreateQMenuBarProxy();
+			CreateQMenuBarSignalProxy();
 			NewQMenuBar();
 		}
+		[SmokeMethod("QMenuBar()")]
 		private void NewQMenuBar() {
 			ProxyQMenuBar().NewQMenuBar();
 		}
+		[SmokeMethod("updateItem(int)")]
 		public void UpdateItem(int id) {
 			ProxyQMenuBar().UpdateItem(id);
 		}
+		[SmokeMethod("show()")]
 		public new void Show() {
 			ProxyQMenuBar().Show();
 		}
+		[SmokeMethod("hide()")]
 		public new void Hide() {
 			ProxyQMenuBar().Hide();
 		}
+		[SmokeMethod("eventFilter(QObject*, QEvent*)")]
 		public new bool EventFilter(QObject arg1, QEvent arg2) {
 			return ProxyQMenuBar().EventFilter(arg1,arg2);
 		}
+		[SmokeMethod("heightForWidth(int) const")]
 		public new int HeightForWidth(int arg1) {
 			return ProxyQMenuBar().HeightForWidth(arg1);
 		}
+		[SmokeMethod("separator() const")]
 		public int Separator() {
 			return ProxyQMenuBar().Separator();
 		}
+		[SmokeMethod("setSeparator(QMenuBar::Separator)")]
 		public virtual void SetSeparator(int when) {
 			ProxyQMenuBar().SetSeparator(when);
 		}
+		[SmokeMethod("setDefaultUp(bool)")]
 		public void SetDefaultUp(bool arg1) {
 			ProxyQMenuBar().SetDefaultUp(arg1);
 		}
+		[SmokeMethod("isDefaultUp() const")]
 		public bool IsDefaultUp() {
 			return ProxyQMenuBar().IsDefaultUp();
 		}
+		[SmokeMethod("customWhatsThis() const")]
 		public new bool CustomWhatsThis() {
 			return ProxyQMenuBar().CustomWhatsThis();
 		}
+		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {
 			return ProxyQMenuBar().SizeHint();
 		}
+		[SmokeMethod("minimumSize() const")]
 		public new QSize MinimumSize() {
 			return ProxyQMenuBar().MinimumSize();
 		}
+		[SmokeMethod("minimumSizeHint() const")]
 		public new QSize MinimumSizeHint() {
 			return ProxyQMenuBar().MinimumSizeHint();
 		}
+		[SmokeMethod("activateItemAt(int)")]
 		public void ActivateItemAt(int index) {
 			ProxyQMenuBar().ActivateItemAt(index);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQMenuBar().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQMenuBar().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQMenuBar().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQMenuBar().TrUtf8(arg1);
 		}
+		[SmokeMethod("drawContents(QPainter*)")]
 		protected new void DrawContents(QPainter arg1) {
 			ProxyQMenuBar().DrawContents(arg1);
 		}
+		[SmokeMethod("fontChange(const QFont&)")]
 		protected new void FontChange(QFont arg1) {
 			ProxyQMenuBar().FontChange(arg1);
 		}
+		[SmokeMethod("mousePressEvent(QMouseEvent*)")]
 		protected new void MousePressEvent(QMouseEvent arg1) {
 			ProxyQMenuBar().MousePressEvent(arg1);
 		}
+		[SmokeMethod("mouseReleaseEvent(QMouseEvent*)")]
 		protected new void MouseReleaseEvent(QMouseEvent arg1) {
 			ProxyQMenuBar().MouseReleaseEvent(arg1);
 		}
+		[SmokeMethod("mouseMoveEvent(QMouseEvent*)")]
 		protected new void MouseMoveEvent(QMouseEvent arg1) {
 			ProxyQMenuBar().MouseMoveEvent(arg1);
 		}
+		[SmokeMethod("keyPressEvent(QKeyEvent*)")]
 		protected new void KeyPressEvent(QKeyEvent arg1) {
 			ProxyQMenuBar().KeyPressEvent(arg1);
 		}
+		[SmokeMethod("focusInEvent(QFocusEvent*)")]
 		protected new void FocusInEvent(QFocusEvent arg1) {
 			ProxyQMenuBar().FocusInEvent(arg1);
 		}
+		[SmokeMethod("focusOutEvent(QFocusEvent*)")]
 		protected new void FocusOutEvent(QFocusEvent arg1) {
 			ProxyQMenuBar().FocusOutEvent(arg1);
 		}
+		[SmokeMethod("resizeEvent(QResizeEvent*)")]
 		protected new void ResizeEvent(QResizeEvent arg1) {
 			ProxyQMenuBar().ResizeEvent(arg1);
 		}
+		[SmokeMethod("leaveEvent(QEvent*)")]
 		protected new void LeaveEvent(QEvent arg1) {
 			ProxyQMenuBar().LeaveEvent(arg1);
 		}
+		[SmokeMethod("menuContentsChanged()")]
 		protected void MenuContentsChanged() {
 			ProxyQMenuBar().MenuContentsChanged();
 		}
+		[SmokeMethod("menuStateChanged()")]
 		protected void MenuStateChanged() {
 			ProxyQMenuBar().MenuStateChanged();
 		}
+		[SmokeMethod("styleChange(QStyle&)")]
 		public new void StyleChange(QStyle arg1) {
 			ProxyQMenuBar().StyleChange(arg1);
 		}
+		[SmokeMethod("itemAtPos(const QPoint&)")]
 		protected int ItemAtPos(QPoint arg1) {
 			return ProxyQMenuBar().ItemAtPos(arg1);
 		}
+		[SmokeMethod("hidePopups()")]
 		protected void HidePopups() {
 			ProxyQMenuBar().HidePopups();
 		}
+		[SmokeMethod("itemRect(int)")]
 		protected QRect ItemRect(int item) {
 			return ProxyQMenuBar().ItemRect(item);
 		}
 		~QMenuBar() {
-			ProxyQMenuBar().Dispose();
+			DisposeQMenuBar();
 		}
 		public new void Dispose() {
-			ProxyQMenuBar().Dispose();
+			DisposeQMenuBar();
 		}
+		private void DisposeQMenuBar() {
+			ProxyQMenuBar().DisposeQMenuBar();
+		}
+		[SmokeMethod("count() const")]
 		public uint Count() {
 			return ProxyQMenuBar().Count();
 		}
+		[SmokeMethod("insertItem(const QString&, const QObject*, const char*, const QKeySequence&, int, int)")]
 		public int InsertItem(string text, QObject receiver, string member, QKeySequence accel, int id, int index) {
 			return ProxyQMenuBar().InsertItem(text,receiver,member,accel,id,index);
 		}
+		[SmokeMethod("insertItem(const QString&, const QObject*, const char*, const QKeySequence&, int)")]
 		public int InsertItem(string text, QObject receiver, string member, QKeySequence accel, int id) {
 			return ProxyQMenuBar().InsertItem(text,receiver,member,accel,id);
 		}
+		[SmokeMethod("insertItem(const QString&, const QObject*, const char*, const QKeySequence&)")]
 		public int InsertItem(string text, QObject receiver, string member, QKeySequence accel) {
 			return ProxyQMenuBar().InsertItem(text,receiver,member,accel);
 		}
+		[SmokeMethod("insertItem(const QString&, const QObject*, const char*)")]
 		public int InsertItem(string text, QObject receiver, string member) {
 			return ProxyQMenuBar().InsertItem(text,receiver,member);
 		}
+		[SmokeMethod("insertItem(const QIconSet&, const QString&, const QObject*, const char*, const QKeySequence&, int, int)")]
 		public int InsertItem(QIconSet icon, string text, QObject receiver, string member, QKeySequence accel, int id, int index) {
 			return ProxyQMenuBar().InsertItem(icon,text,receiver,member,accel,id,index);
 		}
+		[SmokeMethod("insertItem(const QIconSet&, const QString&, const QObject*, const char*, const QKeySequence&, int)")]
 		public int InsertItem(QIconSet icon, string text, QObject receiver, string member, QKeySequence accel, int id) {
 			return ProxyQMenuBar().InsertItem(icon,text,receiver,member,accel,id);
 		}
+		[SmokeMethod("insertItem(const QIconSet&, const QString&, const QObject*, const char*, const QKeySequence&)")]
 		public int InsertItem(QIconSet icon, string text, QObject receiver, string member, QKeySequence accel) {
 			return ProxyQMenuBar().InsertItem(icon,text,receiver,member,accel);
 		}
+		[SmokeMethod("insertItem(const QIconSet&, const QString&, const QObject*, const char*)")]
 		public int InsertItem(QIconSet icon, string text, QObject receiver, string member) {
 			return ProxyQMenuBar().InsertItem(icon,text,receiver,member);
 		}
+		[SmokeMethod("insertItem(const QPixmap&, const QObject*, const char*, const QKeySequence&, int, int)")]
 		public int InsertItem(QPixmap pixmap, QObject receiver, string member, QKeySequence accel, int id, int index) {
 			return ProxyQMenuBar().InsertItem(pixmap,receiver,member,accel,id,index);
 		}
+		[SmokeMethod("insertItem(const QPixmap&, const QObject*, const char*, const QKeySequence&, int)")]
 		public int InsertItem(QPixmap pixmap, QObject receiver, string member, QKeySequence accel, int id) {
 			return ProxyQMenuBar().InsertItem(pixmap,receiver,member,accel,id);
 		}
+		[SmokeMethod("insertItem(const QPixmap&, const QObject*, const char*, const QKeySequence&)")]
 		public int InsertItem(QPixmap pixmap, QObject receiver, string member, QKeySequence accel) {
 			return ProxyQMenuBar().InsertItem(pixmap,receiver,member,accel);
 		}
+		[SmokeMethod("insertItem(const QPixmap&, const QObject*, const char*)")]
 		public int InsertItem(QPixmap pixmap, QObject receiver, string member) {
 			return ProxyQMenuBar().InsertItem(pixmap,receiver,member);
 		}
+		[SmokeMethod("insertItem(const QIconSet&, const QPixmap&, const QObject*, const char*, const QKeySequence&, int, int)")]
 		public int InsertItem(QIconSet icon, QPixmap pixmap, QObject receiver, string member, QKeySequence accel, int id, int index) {
 			return ProxyQMenuBar().InsertItem(icon,pixmap,receiver,member,accel,id,index);
 		}
+		[SmokeMethod("insertItem(const QIconSet&, const QPixmap&, const QObject*, const char*, const QKeySequence&, int)")]
 		public int InsertItem(QIconSet icon, QPixmap pixmap, QObject receiver, string member, QKeySequence accel, int id) {
 			return ProxyQMenuBar().InsertItem(icon,pixmap,receiver,member,accel,id);
 		}
+		[SmokeMethod("insertItem(const QIconSet&, const QPixmap&, const QObject*, const char*, const QKeySequence&)")]
 		public int InsertItem(QIconSet icon, QPixmap pixmap, QObject receiver, string member, QKeySequence accel) {
 			return ProxyQMenuBar().InsertItem(icon,pixmap,receiver,member,accel);
 		}
+		[SmokeMethod("insertItem(const QIconSet&, const QPixmap&, const QObject*, const char*)")]
 		public int InsertItem(QIconSet icon, QPixmap pixmap, QObject receiver, string member) {
 			return ProxyQMenuBar().InsertItem(icon,pixmap,receiver,member);
 		}
+		[SmokeMethod("insertItem(const QString&, int, int)")]
 		public int InsertItem(string text, int id, int index) {
 			return ProxyQMenuBar().InsertItem(text,id,index);
 		}
+		[SmokeMethod("insertItem(const QString&, int)")]
 		public int InsertItem(string text, int id) {
 			return ProxyQMenuBar().InsertItem(text,id);
 		}
+		[SmokeMethod("insertItem(const QString&)")]
 		public int InsertItem(string text) {
 			return ProxyQMenuBar().InsertItem(text);
 		}
+		[SmokeMethod("insertItem(const QIconSet&, const QString&, int, int)")]
 		public int InsertItem(QIconSet icon, string text, int id, int index) {
 			return ProxyQMenuBar().InsertItem(icon,text,id,index);
 		}
+		[SmokeMethod("insertItem(const QIconSet&, const QString&, int)")]
 		public int InsertItem(QIconSet icon, string text, int id) {
 			return ProxyQMenuBar().InsertItem(icon,text,id);
 		}
+		[SmokeMethod("insertItem(const QIconSet&, const QString&)")]
 		public int InsertItem(QIconSet icon, string text) {
 			return ProxyQMenuBar().InsertItem(icon,text);
 		}
+		[SmokeMethod("insertItem(const QString&, QPopupMenu*, int, int)")]
 		public int InsertItem(string text, QPopupMenu popup, int id, int index) {
 			return ProxyQMenuBar().InsertItem(text,popup,id,index);
 		}
+		[SmokeMethod("insertItem(const QString&, QPopupMenu*, int)")]
 		public int InsertItem(string text, QPopupMenu popup, int id) {
 			return ProxyQMenuBar().InsertItem(text,popup,id);
 		}
+		[SmokeMethod("insertItem(const QString&, QPopupMenu*)")]
 		public int InsertItem(string text, QPopupMenu popup) {
 			return ProxyQMenuBar().InsertItem(text,popup);
 		}
+		[SmokeMethod("insertItem(const QIconSet&, const QString&, QPopupMenu*, int, int)")]
 		public int InsertItem(QIconSet icon, string text, QPopupMenu popup, int id, int index) {
 			return ProxyQMenuBar().InsertItem(icon,text,popup,id,index);
 		}
+		[SmokeMethod("insertItem(const QIconSet&, const QString&, QPopupMenu*, int)")]
 		public int InsertItem(QIconSet icon, string text, QPopupMenu popup, int id) {
 			return ProxyQMenuBar().InsertItem(icon,text,popup,id);
 		}
+		[SmokeMethod("insertItem(const QIconSet&, const QString&, QPopupMenu*)")]
 		public int InsertItem(QIconSet icon, string text, QPopupMenu popup) {
 			return ProxyQMenuBar().InsertItem(icon,text,popup);
 		}
+		[SmokeMethod("insertItem(const QPixmap&, int, int)")]
 		public int InsertItem(QPixmap pixmap, int id, int index) {
 			return ProxyQMenuBar().InsertItem(pixmap,id,index);
 		}
+		[SmokeMethod("insertItem(const QPixmap&, int)")]
 		public int InsertItem(QPixmap pixmap, int id) {
 			return ProxyQMenuBar().InsertItem(pixmap,id);
 		}
+		[SmokeMethod("insertItem(const QPixmap&)")]
 		public int InsertItem(QPixmap pixmap) {
 			return ProxyQMenuBar().InsertItem(pixmap);
 		}
+		[SmokeMethod("insertItem(const QIconSet&, const QPixmap&, int, int)")]
 		public int InsertItem(QIconSet icon, QPixmap pixmap, int id, int index) {
 			return ProxyQMenuBar().InsertItem(icon,pixmap,id,index);
 		}
+		[SmokeMethod("insertItem(const QIconSet&, const QPixmap&, int)")]
 		public int InsertItem(QIconSet icon, QPixmap pixmap, int id) {
 			return ProxyQMenuBar().InsertItem(icon,pixmap,id);
 		}
+		[SmokeMethod("insertItem(const QIconSet&, const QPixmap&)")]
 		public int InsertItem(QIconSet icon, QPixmap pixmap) {
 			return ProxyQMenuBar().InsertItem(icon,pixmap);
 		}
+		[SmokeMethod("insertItem(const QPixmap&, QPopupMenu*, int, int)")]
 		public int InsertItem(QPixmap pixmap, QPopupMenu popup, int id, int index) {
 			return ProxyQMenuBar().InsertItem(pixmap,popup,id,index);
 		}
+		[SmokeMethod("insertItem(const QPixmap&, QPopupMenu*, int)")]
 		public int InsertItem(QPixmap pixmap, QPopupMenu popup, int id) {
 			return ProxyQMenuBar().InsertItem(pixmap,popup,id);
 		}
+		[SmokeMethod("insertItem(const QPixmap&, QPopupMenu*)")]
 		public int InsertItem(QPixmap pixmap, QPopupMenu popup) {
 			return ProxyQMenuBar().InsertItem(pixmap,popup);
 		}
+		[SmokeMethod("insertItem(const QIconSet&, const QPixmap&, QPopupMenu*, int, int)")]
 		public int InsertItem(QIconSet icon, QPixmap pixmap, QPopupMenu popup, int id, int index) {
 			return ProxyQMenuBar().InsertItem(icon,pixmap,popup,id,index);
 		}
+		[SmokeMethod("insertItem(const QIconSet&, const QPixmap&, QPopupMenu*, int)")]
 		public int InsertItem(QIconSet icon, QPixmap pixmap, QPopupMenu popup, int id) {
 			return ProxyQMenuBar().InsertItem(icon,pixmap,popup,id);
 		}
+		[SmokeMethod("insertItem(const QIconSet&, const QPixmap&, QPopupMenu*)")]
 		public int InsertItem(QIconSet icon, QPixmap pixmap, QPopupMenu popup) {
 			return ProxyQMenuBar().InsertItem(icon,pixmap,popup);
 		}
+		[SmokeMethod("insertItem(QWidget*, int, int)")]
 		public int InsertItem(QWidget widget, int id, int index) {
 			return ProxyQMenuBar().InsertItem(widget,id,index);
 		}
+		[SmokeMethod("insertItem(QWidget*, int)")]
 		public int InsertItem(QWidget widget, int id) {
 			return ProxyQMenuBar().InsertItem(widget,id);
 		}
+		[SmokeMethod("insertItem(QWidget*)")]
 		public int InsertItem(QWidget widget) {
 			return ProxyQMenuBar().InsertItem(widget);
 		}
+		[SmokeMethod("insertItem(const QIconSet&, QCustomMenuItem*, int, int)")]
 		public int InsertItem(QIconSet icon, QCustomMenuItem custom, int id, int index) {
 			return ProxyQMenuBar().InsertItem(icon,custom,id,index);
 		}
+		[SmokeMethod("insertItem(const QIconSet&, QCustomMenuItem*, int)")]
 		public int InsertItem(QIconSet icon, QCustomMenuItem custom, int id) {
 			return ProxyQMenuBar().InsertItem(icon,custom,id);
 		}
+		[SmokeMethod("insertItem(const QIconSet&, QCustomMenuItem*)")]
 		public int InsertItem(QIconSet icon, QCustomMenuItem custom) {
 			return ProxyQMenuBar().InsertItem(icon,custom);
 		}
+		[SmokeMethod("insertItem(QCustomMenuItem*, int, int)")]
 		public int InsertItem(QCustomMenuItem custom, int id, int index) {
 			return ProxyQMenuBar().InsertItem(custom,id,index);
 		}
+		[SmokeMethod("insertItem(QCustomMenuItem*, int)")]
 		public int InsertItem(QCustomMenuItem custom, int id) {
 			return ProxyQMenuBar().InsertItem(custom,id);
 		}
+		[SmokeMethod("insertItem(QCustomMenuItem*)")]
 		public int InsertItem(QCustomMenuItem custom) {
 			return ProxyQMenuBar().InsertItem(custom);
 		}
+		[SmokeMethod("insertSeparator(int)")]
 		public int InsertSeparator(int index) {
 			return ProxyQMenuBar().InsertSeparator(index);
 		}
+		[SmokeMethod("insertSeparator()")]
 		public int InsertSeparator() {
 			return ProxyQMenuBar().InsertSeparator();
 		}
+		[SmokeMethod("removeItem(int)")]
 		public void RemoveItem(int id) {
 			ProxyQMenuBar().RemoveItem(id);
 		}
+		[SmokeMethod("removeItemAt(int)")]
 		public void RemoveItemAt(int index) {
 			ProxyQMenuBar().RemoveItemAt(index);
 		}
+		[SmokeMethod("clear()")]
 		public void Clear() {
 			ProxyQMenuBar().Clear();
 		}
+		[SmokeMethod("accel(int) const")]
 		public QKeySequence Accel(int id) {
 			return ProxyQMenuBar().Accel(id);
 		}
+		[SmokeMethod("setAccel(const QKeySequence&, int)")]
 		public void SetAccel(QKeySequence key, int id) {
 			ProxyQMenuBar().SetAccel(key,id);
 		}
+		[SmokeMethod("iconSet(int) const")]
 		public QIconSet IconSet(int id) {
 			return ProxyQMenuBar().IconSet(id);
 		}
+		[SmokeMethod("text(int) const")]
 		public string Text(int id) {
 			return ProxyQMenuBar().Text(id);
 		}
+		[SmokeMethod("pixmap(int) const")]
 		public QPixmap Pixmap(int id) {
 			return ProxyQMenuBar().Pixmap(id);
 		}
+		[SmokeMethod("setWhatsThis(int, const QString&)")]
 		public void SetWhatsThis(int id, string arg2) {
 			ProxyQMenuBar().SetWhatsThis(id,arg2);
 		}
+		[SmokeMethod("whatsThis(int) const")]
 		public string WhatsThis(int id) {
 			return ProxyQMenuBar().WhatsThis(id);
 		}
+		[SmokeMethod("changeItem(int, const QString&)")]
 		public void ChangeItem(int id, string text) {
 			ProxyQMenuBar().ChangeItem(id,text);
 		}
+		[SmokeMethod("changeItem(int, const QPixmap&)")]
 		public void ChangeItem(int id, QPixmap pixmap) {
 			ProxyQMenuBar().ChangeItem(id,pixmap);
 		}
+		[SmokeMethod("changeItem(int, const QIconSet&, const QString&)")]
 		public void ChangeItem(int id, QIconSet icon, string text) {
 			ProxyQMenuBar().ChangeItem(id,icon,text);
 		}
+		[SmokeMethod("changeItem(int, const QIconSet&, const QPixmap&)")]
 		public void ChangeItem(int id, QIconSet icon, QPixmap pixmap) {
 			ProxyQMenuBar().ChangeItem(id,icon,pixmap);
 		}
+		[SmokeMethod("changeItem(const QString&, int)")]
 		public void ChangeItem(string text, int id) {
 			ProxyQMenuBar().ChangeItem(text,id);
 		}
+		[SmokeMethod("changeItem(const QPixmap&, int)")]
 		public void ChangeItem(QPixmap pixmap, int id) {
 			ProxyQMenuBar().ChangeItem(pixmap,id);
 		}
+		[SmokeMethod("changeItem(const QIconSet&, const QString&, int)")]
 		public void ChangeItem(QIconSet icon, string text, int id) {
 			ProxyQMenuBar().ChangeItem(icon,text,id);
 		}
+		[SmokeMethod("isItemActive(int) const")]
 		public bool IsItemActive(int id) {
 			return ProxyQMenuBar().IsItemActive(id);
 		}
+		[SmokeMethod("isItemEnabled(int) const")]
 		public bool IsItemEnabled(int id) {
 			return ProxyQMenuBar().IsItemEnabled(id);
 		}
+		[SmokeMethod("setItemEnabled(int, bool)")]
 		public void SetItemEnabled(int id, bool enable) {
 			ProxyQMenuBar().SetItemEnabled(id,enable);
 		}
+		[SmokeMethod("isItemChecked(int) const")]
 		public bool IsItemChecked(int id) {
 			return ProxyQMenuBar().IsItemChecked(id);
 		}
+		[SmokeMethod("setItemChecked(int, bool)")]
 		public void SetItemChecked(int id, bool check) {
 			ProxyQMenuBar().SetItemChecked(id,check);
 		}
+		[SmokeMethod("isItemVisible(int) const")]
 		public bool IsItemVisible(int id) {
 			return ProxyQMenuBar().IsItemVisible(id);
 		}
+		[SmokeMethod("setItemVisible(int, bool)")]
 		public void SetItemVisible(int id, bool visible) {
 			ProxyQMenuBar().SetItemVisible(id,visible);
 		}
+		[SmokeMethod("indexOf(int) const")]
 		public int IndexOf(int id) {
 			return ProxyQMenuBar().IndexOf(id);
 		}
+		[SmokeMethod("idAt(int) const")]
 		public int IdAt(int index) {
 			return ProxyQMenuBar().IdAt(index);
 		}
+		[SmokeMethod("setId(int, int)")]
 		public virtual void SetId(int index, int id) {
 			ProxyQMenuBar().SetId(index,id);
 		}
+		[SmokeMethod("connectItem(int, const QObject*, const char*)")]
 		public bool ConnectItem(int id, QObject receiver, string member) {
 			return ProxyQMenuBar().ConnectItem(id,receiver,member);
 		}
+		[SmokeMethod("disconnectItem(int, const QObject*, const char*)")]
 		public bool DisconnectItem(int id, QObject receiver, string member) {
 			return ProxyQMenuBar().DisconnectItem(id,receiver,member);
 		}
+		[SmokeMethod("setItemParameter(int, int)")]
 		public bool SetItemParameter(int id, int param) {
 			return ProxyQMenuBar().SetItemParameter(id,param);
 		}
+		[SmokeMethod("itemParameter(int) const")]
 		public int ItemParameter(int id) {
 			return ProxyQMenuBar().ItemParameter(id);
 		}
+		[SmokeMethod("findItem(int) const")]
 		public QMenuItem FindItem(int id) {
 			return ProxyQMenuBar().FindItem(id);
 		}
 		// QMenuItem* findItem(int arg1,QMenuData** arg2); >>>> NOT CONVERTED
+		[SmokeMethod("findPopup(QPopupMenu*, int*)")]
 		public QMenuItem FindPopup(QPopupMenu arg1, out int index) {
 			return ProxyQMenuBar().FindPopup(arg1,out index);
 		}
+		[SmokeMethod("findPopup(QPopupMenu*)")]
 		public QMenuItem FindPopup(QPopupMenu arg1) {
 			return ProxyQMenuBar().FindPopup(arg1);
 		}
+		[SmokeMethod("menuInsPopup(QPopupMenu*)")]
 		protected virtual void MenuInsPopup(QPopupMenu arg1) {
 			ProxyQMenuBar().MenuInsPopup(arg1);
 		}
+		[SmokeMethod("menuDelPopup(QPopupMenu*)")]
 		protected virtual void MenuDelPopup(QPopupMenu arg1) {
 			ProxyQMenuBar().MenuDelPopup(arg1);
 		}
+		protected void CreateQMenuBarSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQMenuBarSignals), this);
+			_signalInterceptor = (IQMenuBarSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQMenuBarSignals Emit() {
+			return (IQMenuBarSignals) _signalInterceptor;
+		}
 	}
 
-	public interface IQMenuBarSignals {
+	public interface IQMenuBarSignals : IQFrameSignals {
+		[Q_SIGNAL("activated(int)")]
 		void Activated(int itemId);
+		[Q_SIGNAL("highlighted(int)")]
 		void Highlighted(int itemId);
 	}
 }

@@ -29,6 +29,7 @@ namespace Qt {
 			CreateQDomAttrProxy();
 			NewQDomAttr();
 		}
+		[SmokeMethod("QDomAttr()")]
 		private void NewQDomAttr() {
 			ProxyQDomAttr().NewQDomAttr();
 		}
@@ -36,35 +37,46 @@ namespace Qt {
 			CreateQDomAttrProxy();
 			NewQDomAttr(x);
 		}
+		[SmokeMethod("QDomAttr(const QDomAttr&)")]
 		private void NewQDomAttr(QDomAttr x) {
 			ProxyQDomAttr().NewQDomAttr(x);
 		}
+		[SmokeMethod("name() const")]
 		public virtual string Name() {
 			return ProxyQDomAttr().Name();
 		}
+		[SmokeMethod("specified() const")]
 		public virtual bool Specified() {
 			return ProxyQDomAttr().Specified();
 		}
+		[SmokeMethod("ownerElement() const")]
 		public virtual QDomElement OwnerElement() {
 			return ProxyQDomAttr().OwnerElement();
 		}
+		[SmokeMethod("value() const")]
 		public virtual string Value() {
 			return ProxyQDomAttr().Value();
 		}
+		[SmokeMethod("setValue(const QString&)")]
 		public virtual void SetValue(string arg1) {
 			ProxyQDomAttr().SetValue(arg1);
 		}
+		[SmokeMethod("nodeType() const")]
 		public new int NodeType() {
 			return ProxyQDomAttr().NodeType();
 		}
+		[SmokeMethod("isAttr() const")]
 		public new bool IsAttr() {
 			return ProxyQDomAttr().IsAttr();
 		}
 		~QDomAttr() {
-			ProxyQDomAttr().Dispose();
+			DisposeQDomAttr();
 		}
 		public new void Dispose() {
-			ProxyQDomAttr().Dispose();
+			DisposeQDomAttr();
+		}
+		private void DisposeQDomAttr() {
+			ProxyQDomAttr().DisposeQDomAttr();
 		}
 	}
 }

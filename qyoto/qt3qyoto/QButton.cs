@@ -40,173 +40,240 @@ namespace Qt {
 			NoChange = 1,
 			On = 2,
 		}
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQButton().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQButton().ClassName();
 		}
 		public QButton(QWidget parent, string name, int f) : this((Type) null) {
 			CreateQButtonProxy();
+			CreateQButtonSignalProxy();
 			NewQButton(parent,name,f);
 		}
+		[SmokeMethod("QButton(QWidget*, const char*, Qt::WFlags)")]
 		private void NewQButton(QWidget parent, string name, int f) {
 			ProxyQButton().NewQButton(parent,name,f);
 		}
 		public QButton(QWidget parent, string name) : this((Type) null) {
 			CreateQButtonProxy();
+			CreateQButtonSignalProxy();
 			NewQButton(parent,name);
 		}
+		[SmokeMethod("QButton(QWidget*, const char*)")]
 		private void NewQButton(QWidget parent, string name) {
 			ProxyQButton().NewQButton(parent,name);
 		}
 		public QButton(QWidget parent) : this((Type) null) {
 			CreateQButtonProxy();
+			CreateQButtonSignalProxy();
 			NewQButton(parent);
 		}
+		[SmokeMethod("QButton(QWidget*)")]
 		private void NewQButton(QWidget parent) {
 			ProxyQButton().NewQButton(parent);
 		}
 		public QButton() : this((Type) null) {
 			CreateQButtonProxy();
+			CreateQButtonSignalProxy();
 			NewQButton();
 		}
+		[SmokeMethod("QButton()")]
 		private void NewQButton() {
 			ProxyQButton().NewQButton();
 		}
+		[SmokeMethod("text() const")]
 		public string Text() {
 			return ProxyQButton().Text();
 		}
+		[SmokeMethod("setText(const QString&)")]
 		public virtual void SetText(string arg1) {
 			ProxyQButton().SetText(arg1);
 		}
+		[SmokeMethod("pixmap() const")]
 		public QPixmap Pixmap() {
 			return ProxyQButton().Pixmap();
 		}
+		[SmokeMethod("setPixmap(const QPixmap&)")]
 		public virtual void SetPixmap(QPixmap arg1) {
 			ProxyQButton().SetPixmap(arg1);
 		}
+		[SmokeMethod("accel() const")]
 		public QKeySequence Accel() {
 			return ProxyQButton().Accel();
 		}
+		[SmokeMethod("setAccel(const QKeySequence&)")]
 		public virtual void SetAccel(QKeySequence arg1) {
 			ProxyQButton().SetAccel(arg1);
 		}
+		[SmokeMethod("isToggleButton() const")]
 		public bool IsToggleButton() {
 			return ProxyQButton().IsToggleButton();
 		}
+		[SmokeMethod("toggleType() const")]
 		public int ToggleType() {
 			return ProxyQButton().ToggleType();
 		}
+		[SmokeMethod("setDown(bool)")]
 		public virtual void SetDown(bool arg1) {
 			ProxyQButton().SetDown(arg1);
 		}
+		[SmokeMethod("isDown() const")]
 		public bool IsDown() {
 			return ProxyQButton().IsDown();
 		}
+		[SmokeMethod("isOn() const")]
 		public bool IsOn() {
 			return ProxyQButton().IsOn();
 		}
+		[SmokeMethod("state() const")]
 		public int State() {
 			return ProxyQButton().State();
 		}
+		[SmokeMethod("autoResize() const")]
 		public bool AutoResize() {
 			return ProxyQButton().AutoResize();
 		}
+		[SmokeMethod("setAutoResize(bool)")]
 		public void SetAutoResize(bool arg1) {
 			ProxyQButton().SetAutoResize(arg1);
 		}
+		[SmokeMethod("autoRepeat() const")]
 		public bool AutoRepeat() {
 			return ProxyQButton().AutoRepeat();
 		}
+		[SmokeMethod("setAutoRepeat(bool)")]
 		public virtual void SetAutoRepeat(bool arg1) {
 			ProxyQButton().SetAutoRepeat(arg1);
 		}
+		[SmokeMethod("isExclusiveToggle() const")]
 		public bool IsExclusiveToggle() {
 			return ProxyQButton().IsExclusiveToggle();
 		}
+		[SmokeMethod("group() const")]
 		public QButtonGroup Group() {
 			return ProxyQButton().Group();
 		}
+		[Q_SLOT("animateClick()")]
+		[SmokeMethod("animateClick()")]
 		public void AnimateClick() {
 			ProxyQButton().AnimateClick();
 		}
+		[Q_SLOT("toggle()")]
+		[SmokeMethod("toggle()")]
 		public void Toggle() {
 			ProxyQButton().Toggle();
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQButton().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQButton().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQButton().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQButton().TrUtf8(arg1);
 		}
+		[SmokeMethod("setToggleButton(bool)")]
 		protected void SetToggleButton(bool arg1) {
 			ProxyQButton().SetToggleButton(arg1);
 		}
+		[SmokeMethod("setToggleType(QButton::ToggleType)")]
 		protected virtual void SetToggleType(int arg1) {
 			ProxyQButton().SetToggleType(arg1);
 		}
+		[SmokeMethod("setOn(bool)")]
 		protected void SetOn(bool arg1) {
 			ProxyQButton().SetOn(arg1);
 		}
+		[SmokeMethod("setState(QButton::ToggleState)")]
 		public virtual void SetState(int arg1) {
 			ProxyQButton().SetState(arg1);
 		}
+		[SmokeMethod("hitButton(const QPoint&) const")]
 		protected virtual bool HitButton(QPoint pos) {
 			return ProxyQButton().HitButton(pos);
 		}
+		[SmokeMethod("drawButton(QPainter*)")]
 		protected virtual void DrawButton(QPainter arg1) {
 			ProxyQButton().DrawButton(arg1);
 		}
+		[SmokeMethod("drawButtonLabel(QPainter*)")]
 		protected virtual void DrawButtonLabel(QPainter arg1) {
 			ProxyQButton().DrawButtonLabel(arg1);
 		}
+		[SmokeMethod("keyPressEvent(QKeyEvent*)")]
 		protected new void KeyPressEvent(QKeyEvent arg1) {
 			ProxyQButton().KeyPressEvent(arg1);
 		}
+		[SmokeMethod("keyReleaseEvent(QKeyEvent*)")]
 		protected new void KeyReleaseEvent(QKeyEvent arg1) {
 			ProxyQButton().KeyReleaseEvent(arg1);
 		}
+		[SmokeMethod("mousePressEvent(QMouseEvent*)")]
 		protected new void MousePressEvent(QMouseEvent arg1) {
 			ProxyQButton().MousePressEvent(arg1);
 		}
+		[SmokeMethod("mouseReleaseEvent(QMouseEvent*)")]
 		protected new void MouseReleaseEvent(QMouseEvent arg1) {
 			ProxyQButton().MouseReleaseEvent(arg1);
 		}
+		[SmokeMethod("mouseMoveEvent(QMouseEvent*)")]
 		protected new void MouseMoveEvent(QMouseEvent arg1) {
 			ProxyQButton().MouseMoveEvent(arg1);
 		}
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected new void PaintEvent(QPaintEvent arg1) {
 			ProxyQButton().PaintEvent(arg1);
 		}
+		[SmokeMethod("focusInEvent(QFocusEvent*)")]
 		protected new void FocusInEvent(QFocusEvent arg1) {
 			ProxyQButton().FocusInEvent(arg1);
 		}
+		[SmokeMethod("focusOutEvent(QFocusEvent*)")]
 		protected new void FocusOutEvent(QFocusEvent arg1) {
 			ProxyQButton().FocusOutEvent(arg1);
 		}
+		[SmokeMethod("enabledChange(bool)")]
 		protected new void EnabledChange(bool arg1) {
 			ProxyQButton().EnabledChange(arg1);
 		}
 		~QButton() {
-			ProxyQButton().Dispose();
+			DisposeQButton();
 		}
 		public new void Dispose() {
-			ProxyQButton().Dispose();
+			DisposeQButton();
+		}
+		private void DisposeQButton() {
+			ProxyQButton().DisposeQButton();
+		}
+		protected void CreateQButtonSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQButtonSignals), this);
+			_signalInterceptor = (IQButtonSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQButtonSignals Emit() {
+			return (IQButtonSignals) _signalInterceptor;
 		}
 	}
 
-	public interface IQButtonSignals {
+	public interface IQButtonSignals : IQWidgetSignals {
+		[Q_SIGNAL("pressed()")]
 		void Pressed();
+		[Q_SIGNAL("released()")]
 		void Released();
+		[Q_SIGNAL("clicked()")]
 		void Clicked();
+		[Q_SIGNAL("toggled(bool)")]
 		void Toggled(bool arg1);
+		[Q_SIGNAL("stateChanged(int)")]
 		void StateChanged(int arg1);
 	}
 }

@@ -28,14 +28,18 @@ namespace Qt {
 			CreateQHideEventProxy();
 			NewQHideEvent();
 		}
+		[SmokeMethod("QHideEvent()")]
 		private void NewQHideEvent() {
 			ProxyQHideEvent().NewQHideEvent();
 		}
 		~QHideEvent() {
-			ProxyQHideEvent().Dispose();
+			DisposeQHideEvent();
 		}
 		public new void Dispose() {
-			ProxyQHideEvent().Dispose();
+			DisposeQHideEvent();
+		}
+		private void DisposeQHideEvent() {
+			ProxyQHideEvent().DisposeQHideEvent();
 		}
 	}
 }

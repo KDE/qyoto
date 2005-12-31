@@ -33,6 +33,7 @@ namespace Qt {
 			CreateQDomNodeListProxy();
 			NewQDomNodeList();
 		}
+		[SmokeMethod("QDomNodeList()")]
 		private void NewQDomNodeList() {
 			ProxyQDomNodeList().NewQDomNodeList();
 		}
@@ -40,9 +41,11 @@ namespace Qt {
 			CreateQDomNodeListProxy();
 			NewQDomNodeList(arg1);
 		}
+		[SmokeMethod("QDomNodeList(const QDomNodeList&)")]
 		private void NewQDomNodeList(ArrayList arg1) {
 			ProxyQDomNodeList().NewQDomNodeList(arg1);
 		}
+		[SmokeMethod("operator==(const QDomNodeList&) const")]
 		public static bool operator==(QDomNodeList lhs, ArrayList arg1) {
 			return StaticQDomNodeList().op_equals(lhs,arg1);
 		}
@@ -56,20 +59,26 @@ namespace Qt {
 		public override int GetHashCode() {
 			return ProxyQDomNodeList().GetHashCode();
 		}
+		[SmokeMethod("item(int) const")]
 		public virtual QDomNode Item(int index) {
 			return ProxyQDomNodeList().Item(index);
 		}
+		[SmokeMethod("length() const")]
 		public virtual uint Length() {
 			return ProxyQDomNodeList().Length();
 		}
+		[SmokeMethod("count() const")]
 		public uint Count() {
 			return ProxyQDomNodeList().Count();
 		}
 		~QDomNodeList() {
-			ProxyQDomNodeList().Dispose();
+			DisposeQDomNodeList();
 		}
 		public void Dispose() {
-			ProxyQDomNodeList().Dispose();
+			DisposeQDomNodeList();
+		}
+		private void DisposeQDomNodeList() {
+			ProxyQDomNodeList().DisposeQDomNodeList();
 		}
 	}
 }

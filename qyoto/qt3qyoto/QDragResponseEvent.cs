@@ -28,17 +28,22 @@ namespace Qt {
 			CreateQDragResponseEventProxy();
 			NewQDragResponseEvent(accepted);
 		}
+		[SmokeMethod("QDragResponseEvent(bool)")]
 		private void NewQDragResponseEvent(bool accepted) {
 			ProxyQDragResponseEvent().NewQDragResponseEvent(accepted);
 		}
+		[SmokeMethod("dragAccepted() const")]
 		public bool DragAccepted() {
 			return ProxyQDragResponseEvent().DragAccepted();
 		}
 		~QDragResponseEvent() {
-			ProxyQDragResponseEvent().Dispose();
+			DisposeQDragResponseEvent();
 		}
 		public new void Dispose() {
-			ProxyQDragResponseEvent().Dispose();
+			DisposeQDragResponseEvent();
+		}
+		private void DisposeQDragResponseEvent() {
+			ProxyQDragResponseEvent().DisposeQDragResponseEvent();
 		}
 	}
 }

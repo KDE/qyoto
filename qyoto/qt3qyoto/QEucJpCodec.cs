@@ -25,27 +25,35 @@ namespace Qt {
 			return (IQEucJpCodecProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("mibEnum() const")]
 		public new virtual int MibEnum() {
 			return ProxyQEucJpCodec().MibEnum();
 		}
+		[SmokeMethod("name() const")]
 		public new string Name() {
 			return ProxyQEucJpCodec().Name();
 		}
+		[SmokeMethod("mimeName() const")]
 		public new string MimeName() {
 			return ProxyQEucJpCodec().MimeName();
 		}
+		[SmokeMethod("makeDecoder() const")]
 		public new QTextDecoder MakeDecoder() {
 			return ProxyQEucJpCodec().MakeDecoder();
 		}
+		[SmokeMethod("fromUnicode(const QString&, int&) const")]
 		public new string FromUnicode(string uc, out int lenInOut) {
 			return ProxyQEucJpCodec().FromUnicode(uc,out lenInOut);
 		}
+		[SmokeMethod("toUnicode(const char*, int) const")]
 		public new string ToUnicode(string chars, int len) {
 			return ProxyQEucJpCodec().ToUnicode(chars,len);
 		}
+		[SmokeMethod("heuristicContentMatch(const char*, int) const")]
 		public new int HeuristicContentMatch(string chars, int len) {
 			return ProxyQEucJpCodec().HeuristicContentMatch(chars,len);
 		}
+		[SmokeMethod("heuristicNameMatch(const char*) const")]
 		public new int HeuristicNameMatch(string hint) {
 			return ProxyQEucJpCodec().HeuristicNameMatch(hint);
 		}
@@ -53,14 +61,18 @@ namespace Qt {
 			CreateQEucJpCodecProxy();
 			NewQEucJpCodec();
 		}
+		[SmokeMethod("QEucJpCodec()")]
 		private void NewQEucJpCodec() {
 			ProxyQEucJpCodec().NewQEucJpCodec();
 		}
 		~QEucJpCodec() {
-			ProxyQEucJpCodec().Dispose();
+			DisposeQEucJpCodec();
 		}
 		public new void Dispose() {
-			ProxyQEucJpCodec().Dispose();
+			DisposeQEucJpCodec();
+		}
+		private void DisposeQEucJpCodec() {
+			ProxyQEucJpCodec().DisposeQEucJpCodec();
 		}
 	}
 }

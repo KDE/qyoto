@@ -135,6 +135,7 @@ namespace Qt {
 			CreateQCharProxy();
 			NewQChar();
 		}
+		[SmokeMethod("QChar()")]
 		private void NewQChar() {
 			ProxyQChar().NewQChar();
 		}
@@ -142,6 +143,7 @@ namespace Qt {
 			CreateQCharProxy();
 			NewQChar(c);
 		}
+		[SmokeMethod("QChar(char)")]
 		private void NewQChar(char c) {
 			ProxyQChar().NewQChar(c);
 		}
@@ -149,6 +151,7 @@ namespace Qt {
 			CreateQCharProxy();
 			NewQChar(c);
 		}
+		[SmokeMethod("QChar(uchar)")]
 		private void NewQChar(ushort c) {
 			ProxyQChar().NewQChar(c);
 		}
@@ -156,6 +159,7 @@ namespace Qt {
 			CreateQCharProxy();
 			NewQChar(c,r);
 		}
+		[SmokeMethod("QChar(uchar, uchar)")]
 		private void NewQChar(ushort c, ushort r) {
 			ProxyQChar().NewQChar(c,r);
 		}
@@ -163,6 +167,7 @@ namespace Qt {
 			CreateQCharProxy();
 			NewQChar(rc);
 		}
+		[SmokeMethod("QChar(short)")]
 		private void NewQChar(short rc) {
 			ProxyQChar().NewQChar(rc);
 		}
@@ -170,6 +175,7 @@ namespace Qt {
 			CreateQCharProxy();
 			NewQChar(rc);
 		}
+		[SmokeMethod("QChar(uint)")]
 		private void NewQChar(uint rc) {
 			ProxyQChar().NewQChar(rc);
 		}
@@ -177,100 +183,132 @@ namespace Qt {
 			CreateQCharProxy();
 			NewQChar(rc);
 		}
+		[SmokeMethod("QChar(int)")]
 		private void NewQChar(int rc) {
 			ProxyQChar().NewQChar(rc);
 		}
+		[SmokeMethod("digitValue() const")]
 		public int DigitValue() {
 			return ProxyQChar().DigitValue();
 		}
+		[SmokeMethod("lower() const")]
 		public char Lower() {
 			return ProxyQChar().Lower();
 		}
+		[SmokeMethod("upper() const")]
 		public char Upper() {
 			return ProxyQChar().Upper();
 		}
+		[SmokeMethod("category() const")]
 		public char Category() {
 			return ProxyQChar().Category();
 		}
+		[SmokeMethod("direction() const")]
 		public char Direction() {
 			return ProxyQChar().Direction();
 		}
+		[SmokeMethod("joining() const")]
 		public char Joining() {
 			return ProxyQChar().Joining();
 		}
+		[SmokeMethod("mirrored() const")]
 		public bool Mirrored() {
 			return ProxyQChar().Mirrored();
 		}
+		[SmokeMethod("mirroredChar() const")]
 		public char MirroredChar() {
 			return ProxyQChar().MirroredChar();
 		}
+		[SmokeMethod("decomposition() const")]
 		public string Decomposition() {
 			return ProxyQChar().Decomposition();
 		}
+		[SmokeMethod("decompositionTag() const")]
 		public char DecompositionTag() {
 			return ProxyQChar().DecompositionTag();
 		}
+		[SmokeMethod("combiningClass() const")]
 		public ushort CombiningClass() {
 			return ProxyQChar().CombiningClass();
 		}
+		[SmokeMethod("latin1() const")]
 		public char Latin1() {
 			return ProxyQChar().Latin1();
 		}
+		[SmokeMethod("unicode() const")]
 		public ushort Unicode() {
 			return ProxyQChar().Unicode();
 		}
 		// ushort& unicode(); >>>> NOT CONVERTED
 		//  operator char(); >>>> NOT CONVERTED
+		[SmokeMethod("isNull() const")]
 		public bool IsNull() {
 			return ProxyQChar().IsNull();
 		}
+		[SmokeMethod("isPrint() const")]
 		public bool IsPrint() {
 			return ProxyQChar().IsPrint();
 		}
+		[SmokeMethod("isPunct() const")]
 		public bool IsPunct() {
 			return ProxyQChar().IsPunct();
 		}
+		[SmokeMethod("isSpace() const")]
 		public bool IsSpace() {
 			return ProxyQChar().IsSpace();
 		}
+		[SmokeMethod("isMark() const")]
 		public bool IsMark() {
 			return ProxyQChar().IsMark();
 		}
+		[SmokeMethod("isLetter() const")]
 		public bool IsLetter() {
 			return ProxyQChar().IsLetter();
 		}
+		[SmokeMethod("isNumber() const")]
 		public bool IsNumber() {
 			return ProxyQChar().IsNumber();
 		}
+		[SmokeMethod("isLetterOrNumber() const")]
 		public bool IsLetterOrNumber() {
 			return ProxyQChar().IsLetterOrNumber();
 		}
+		[SmokeMethod("isDigit() const")]
 		public bool IsDigit() {
 			return ProxyQChar().IsDigit();
 		}
+		[SmokeMethod("isSymbol() const")]
 		public bool IsSymbol() {
 			return ProxyQChar().IsSymbol();
 		}
+		[SmokeMethod("cell() const")]
 		public ushort Cell() {
 			return ProxyQChar().Cell();
 		}
+		[SmokeMethod("row() const")]
 		public ushort Row() {
 			return ProxyQChar().Row();
 		}
+		[SmokeMethod("setCell(uchar)")]
 		public void SetCell(ushort cell) {
 			ProxyQChar().SetCell(cell);
 		}
+		[SmokeMethod("setRow(uchar)")]
 		public void SetRow(ushort row) {
 			ProxyQChar().SetRow(row);
 		}
+		[SmokeMethod("networkOrdered()")]
 		public static bool NetworkOrdered() {
 			return StaticQChar().NetworkOrdered();
 		}
 		~QChar() {
-			ProxyQChar().Dispose();
+			DisposeQChar();
 		}
 		public void Dispose() {
-			ProxyQChar().Dispose();
+			DisposeQChar();
+		}
+		private void DisposeQChar() {
+			ProxyQChar().DisposeQChar();
 		}
 	}
 }

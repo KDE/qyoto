@@ -32,74 +32,98 @@ namespace Qt {
 			CreateQMenuItemProxy();
 			NewQMenuItem();
 		}
+		[SmokeMethod("QMenuItem()")]
 		private void NewQMenuItem() {
 			ProxyQMenuItem().NewQMenuItem();
 		}
+		[SmokeMethod("id() const")]
 		public int Id() {
 			return ProxyQMenuItem().Id();
 		}
+		[SmokeMethod("iconSet() const")]
 		public QIconSet IconSet() {
 			return ProxyQMenuItem().IconSet();
 		}
+		[SmokeMethod("text() const")]
 		public string Text() {
 			return ProxyQMenuItem().Text();
 		}
+		[SmokeMethod("whatsThis() const")]
 		public string WhatsThis() {
 			return ProxyQMenuItem().WhatsThis();
 		}
+		[SmokeMethod("pixmap() const")]
 		public QPixmap Pixmap() {
 			return ProxyQMenuItem().Pixmap();
 		}
+		[SmokeMethod("popup() const")]
 		public QPopupMenu Popup() {
 			return ProxyQMenuItem().Popup();
 		}
+		[SmokeMethod("widget() const")]
 		public QWidget Widget() {
 			return ProxyQMenuItem().Widget();
 		}
+		[SmokeMethod("custom() const")]
 		public QCustomMenuItem Custom() {
 			return ProxyQMenuItem().Custom();
 		}
+		[SmokeMethod("key() const")]
 		public QKeySequence Key() {
 			return ProxyQMenuItem().Key();
 		}
+		[SmokeMethod("signal() const")]
 		public QSignal Signal() {
 			return ProxyQMenuItem().Signal();
 		}
+		[SmokeMethod("isSeparator() const")]
 		public bool IsSeparator() {
 			return ProxyQMenuItem().IsSeparator();
 		}
+		[SmokeMethod("isEnabled() const")]
 		public bool IsEnabled() {
 			return ProxyQMenuItem().IsEnabled();
 		}
+		[SmokeMethod("isChecked() const")]
 		public bool IsChecked() {
 			return ProxyQMenuItem().IsChecked();
 		}
+		[SmokeMethod("isDirty() const")]
 		public bool IsDirty() {
 			return ProxyQMenuItem().IsDirty();
 		}
+		[SmokeMethod("isVisible() const")]
 		public bool IsVisible() {
 			return ProxyQMenuItem().IsVisible();
 		}
+		[SmokeMethod("isEnabledAndVisible() const")]
 		public bool IsEnabledAndVisible() {
 			return ProxyQMenuItem().IsEnabledAndVisible();
 		}
+		[SmokeMethod("setText(const QString&)")]
 		public void SetText(string text) {
 			ProxyQMenuItem().SetText(text);
 		}
+		[SmokeMethod("setDirty(bool)")]
 		public void SetDirty(bool dirty) {
 			ProxyQMenuItem().SetDirty(dirty);
 		}
+		[SmokeMethod("setVisible(bool)")]
 		public void SetVisible(bool visible) {
 			ProxyQMenuItem().SetVisible(visible);
 		}
+		[SmokeMethod("setWhatsThis(const QString&)")]
 		public void SetWhatsThis(string text) {
 			ProxyQMenuItem().SetWhatsThis(text);
 		}
 		~QMenuItem() {
-			ProxyQMenuItem().Dispose();
+			DisposeQMenuItem();
 		}
 		public void Dispose() {
-			ProxyQMenuItem().Dispose();
+			DisposeQMenuItem();
+		}
+		private void DisposeQMenuItem() {
+			ProxyQMenuItem().DisposeQMenuItem();
 		}
 	}
 }

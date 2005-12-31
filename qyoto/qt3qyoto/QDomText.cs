@@ -28,6 +28,7 @@ namespace Qt {
 			CreateQDomTextProxy();
 			NewQDomText();
 		}
+		[SmokeMethod("QDomText()")]
 		private void NewQDomText() {
 			ProxyQDomText().NewQDomText();
 		}
@@ -35,23 +36,30 @@ namespace Qt {
 			CreateQDomTextProxy();
 			NewQDomText(x);
 		}
+		[SmokeMethod("QDomText(const QDomText&)")]
 		private void NewQDomText(QDomText x) {
 			ProxyQDomText().NewQDomText(x);
 		}
+		[SmokeMethod("splitText(int)")]
 		public QDomText SplitText(int offset) {
 			return ProxyQDomText().SplitText(offset);
 		}
+		[SmokeMethod("nodeType() const")]
 		public new int NodeType() {
 			return ProxyQDomText().NodeType();
 		}
+		[SmokeMethod("isText() const")]
 		public new bool IsText() {
 			return ProxyQDomText().IsText();
 		}
 		~QDomText() {
-			ProxyQDomText().Dispose();
+			DisposeQDomText();
 		}
 		public new void Dispose() {
-			ProxyQDomText().Dispose();
+			DisposeQDomText();
+		}
+		private void DisposeQDomText() {
+			ProxyQDomText().DisposeQDomText();
 		}
 	}
 }

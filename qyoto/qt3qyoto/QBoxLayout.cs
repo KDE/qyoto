@@ -37,199 +37,271 @@ namespace Qt {
 			Down = TopToBottom,
 			Up = BottomToTop,
 		}
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQBoxLayout().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQBoxLayout().ClassName();
 		}
 		public QBoxLayout(QWidget parent, int arg2, int border, int spacing, string name) : this((Type) null) {
 			CreateQBoxLayoutProxy();
+			CreateQBoxLayoutSignalProxy();
 			NewQBoxLayout(parent,arg2,border,spacing,name);
 		}
+		[SmokeMethod("QBoxLayout(QWidget*, QBoxLayout::Direction, int, int, const char*)")]
 		private void NewQBoxLayout(QWidget parent, int arg2, int border, int spacing, string name) {
 			ProxyQBoxLayout().NewQBoxLayout(parent,arg2,border,spacing,name);
 		}
 		public QBoxLayout(QWidget parent, int arg2, int border, int spacing) : this((Type) null) {
 			CreateQBoxLayoutProxy();
+			CreateQBoxLayoutSignalProxy();
 			NewQBoxLayout(parent,arg2,border,spacing);
 		}
+		[SmokeMethod("QBoxLayout(QWidget*, QBoxLayout::Direction, int, int)")]
 		private void NewQBoxLayout(QWidget parent, int arg2, int border, int spacing) {
 			ProxyQBoxLayout().NewQBoxLayout(parent,arg2,border,spacing);
 		}
 		public QBoxLayout(QWidget parent, int arg2, int border) : this((Type) null) {
 			CreateQBoxLayoutProxy();
+			CreateQBoxLayoutSignalProxy();
 			NewQBoxLayout(parent,arg2,border);
 		}
+		[SmokeMethod("QBoxLayout(QWidget*, QBoxLayout::Direction, int)")]
 		private void NewQBoxLayout(QWidget parent, int arg2, int border) {
 			ProxyQBoxLayout().NewQBoxLayout(parent,arg2,border);
 		}
 		public QBoxLayout(QWidget parent, int arg2) : this((Type) null) {
 			CreateQBoxLayoutProxy();
+			CreateQBoxLayoutSignalProxy();
 			NewQBoxLayout(parent,arg2);
 		}
+		[SmokeMethod("QBoxLayout(QWidget*, QBoxLayout::Direction)")]
 		private void NewQBoxLayout(QWidget parent, int arg2) {
 			ProxyQBoxLayout().NewQBoxLayout(parent,arg2);
 		}
 		public QBoxLayout(QLayout parentLayout, int arg2, int spacing, string name) : this((Type) null) {
 			CreateQBoxLayoutProxy();
+			CreateQBoxLayoutSignalProxy();
 			NewQBoxLayout(parentLayout,arg2,spacing,name);
 		}
+		[SmokeMethod("QBoxLayout(QLayout*, QBoxLayout::Direction, int, const char*)")]
 		private void NewQBoxLayout(QLayout parentLayout, int arg2, int spacing, string name) {
 			ProxyQBoxLayout().NewQBoxLayout(parentLayout,arg2,spacing,name);
 		}
 		public QBoxLayout(QLayout parentLayout, int arg2, int spacing) : this((Type) null) {
 			CreateQBoxLayoutProxy();
+			CreateQBoxLayoutSignalProxy();
 			NewQBoxLayout(parentLayout,arg2,spacing);
 		}
+		[SmokeMethod("QBoxLayout(QLayout*, QBoxLayout::Direction, int)")]
 		private void NewQBoxLayout(QLayout parentLayout, int arg2, int spacing) {
 			ProxyQBoxLayout().NewQBoxLayout(parentLayout,arg2,spacing);
 		}
 		public QBoxLayout(QLayout parentLayout, int arg2) : this((Type) null) {
 			CreateQBoxLayoutProxy();
+			CreateQBoxLayoutSignalProxy();
 			NewQBoxLayout(parentLayout,arg2);
 		}
+		[SmokeMethod("QBoxLayout(QLayout*, QBoxLayout::Direction)")]
 		private void NewQBoxLayout(QLayout parentLayout, int arg2) {
 			ProxyQBoxLayout().NewQBoxLayout(parentLayout,arg2);
 		}
 		public QBoxLayout(int arg1, int spacing, string name) : this((Type) null) {
 			CreateQBoxLayoutProxy();
+			CreateQBoxLayoutSignalProxy();
 			NewQBoxLayout(arg1,spacing,name);
 		}
+		[SmokeMethod("QBoxLayout(QBoxLayout::Direction, int, const char*)")]
 		private void NewQBoxLayout(int arg1, int spacing, string name) {
 			ProxyQBoxLayout().NewQBoxLayout(arg1,spacing,name);
 		}
 		public QBoxLayout(int arg1, int spacing) : this((Type) null) {
 			CreateQBoxLayoutProxy();
+			CreateQBoxLayoutSignalProxy();
 			NewQBoxLayout(arg1,spacing);
 		}
+		[SmokeMethod("QBoxLayout(QBoxLayout::Direction, int)")]
 		private void NewQBoxLayout(int arg1, int spacing) {
 			ProxyQBoxLayout().NewQBoxLayout(arg1,spacing);
 		}
 		public QBoxLayout(int arg1) : this((Type) null) {
 			CreateQBoxLayoutProxy();
+			CreateQBoxLayoutSignalProxy();
 			NewQBoxLayout(arg1);
 		}
+		[SmokeMethod("QBoxLayout(QBoxLayout::Direction)")]
 		private void NewQBoxLayout(int arg1) {
 			ProxyQBoxLayout().NewQBoxLayout(arg1);
 		}
+		[SmokeMethod("addItem(QLayoutItem*)")]
 		public new void AddItem(IQLayoutItem arg1) {
 			ProxyQBoxLayout().AddItem(arg1);
 		}
+		[SmokeMethod("direction() const")]
 		public int Direction() {
 			return ProxyQBoxLayout().Direction();
 		}
+		[SmokeMethod("setDirection(QBoxLayout::Direction)")]
 		public void SetDirection(int arg1) {
 			ProxyQBoxLayout().SetDirection(arg1);
 		}
+		[SmokeMethod("addSpacing(int)")]
 		public void AddSpacing(int size) {
 			ProxyQBoxLayout().AddSpacing(size);
 		}
+		[SmokeMethod("addStretch(int)")]
 		public void AddStretch(int stretch) {
 			ProxyQBoxLayout().AddStretch(stretch);
 		}
+		[SmokeMethod("addStretch()")]
 		public void AddStretch() {
 			ProxyQBoxLayout().AddStretch();
 		}
+		[SmokeMethod("addWidget(QWidget*, int, int)")]
 		public void AddWidget(QWidget arg1, int stretch, int alignment) {
 			ProxyQBoxLayout().AddWidget(arg1,stretch,alignment);
 		}
+		[SmokeMethod("addWidget(QWidget*, int)")]
 		public void AddWidget(QWidget arg1, int stretch) {
 			ProxyQBoxLayout().AddWidget(arg1,stretch);
 		}
+		[SmokeMethod("addWidget(QWidget*)")]
 		public void AddWidget(QWidget arg1) {
 			ProxyQBoxLayout().AddWidget(arg1);
 		}
+		[SmokeMethod("addLayout(QLayout*, int)")]
 		public void AddLayout(QLayout layout, int stretch) {
 			ProxyQBoxLayout().AddLayout(layout,stretch);
 		}
+		[SmokeMethod("addLayout(QLayout*)")]
 		public void AddLayout(QLayout layout) {
 			ProxyQBoxLayout().AddLayout(layout);
 		}
+		[SmokeMethod("addStrut(int)")]
 		public void AddStrut(int arg1) {
 			ProxyQBoxLayout().AddStrut(arg1);
 		}
+		[SmokeMethod("insertSpacing(int, int)")]
 		public void InsertSpacing(int index, int size) {
 			ProxyQBoxLayout().InsertSpacing(index,size);
 		}
+		[SmokeMethod("insertStretch(int, int)")]
 		public void InsertStretch(int index, int stretch) {
 			ProxyQBoxLayout().InsertStretch(index,stretch);
 		}
+		[SmokeMethod("insertStretch(int)")]
 		public void InsertStretch(int index) {
 			ProxyQBoxLayout().InsertStretch(index);
 		}
+		[SmokeMethod("insertWidget(int, QWidget*, int, int)")]
 		public void InsertWidget(int index, QWidget widget, int stretch, int alignment) {
 			ProxyQBoxLayout().InsertWidget(index,widget,stretch,alignment);
 		}
+		[SmokeMethod("insertWidget(int, QWidget*, int)")]
 		public void InsertWidget(int index, QWidget widget, int stretch) {
 			ProxyQBoxLayout().InsertWidget(index,widget,stretch);
 		}
+		[SmokeMethod("insertWidget(int, QWidget*)")]
 		public void InsertWidget(int index, QWidget widget) {
 			ProxyQBoxLayout().InsertWidget(index,widget);
 		}
+		[SmokeMethod("insertLayout(int, QLayout*, int)")]
 		public void InsertLayout(int index, QLayout layout, int stretch) {
 			ProxyQBoxLayout().InsertLayout(index,layout,stretch);
 		}
+		[SmokeMethod("insertLayout(int, QLayout*)")]
 		public void InsertLayout(int index, QLayout layout) {
 			ProxyQBoxLayout().InsertLayout(index,layout);
 		}
+		[SmokeMethod("setStretchFactor(QWidget*, int)")]
 		public bool SetStretchFactor(QWidget arg1, int stretch) {
 			return ProxyQBoxLayout().SetStretchFactor(arg1,stretch);
 		}
+		[SmokeMethod("setStretchFactor(QLayout*, int)")]
 		public bool SetStretchFactor(QLayout l, int stretch) {
 			return ProxyQBoxLayout().SetStretchFactor(l,stretch);
 		}
+		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {
 			return ProxyQBoxLayout().SizeHint();
 		}
+		[SmokeMethod("minimumSize() const")]
 		public new QSize MinimumSize() {
 			return ProxyQBoxLayout().MinimumSize();
 		}
+		[SmokeMethod("maximumSize() const")]
 		public new QSize MaximumSize() {
 			return ProxyQBoxLayout().MaximumSize();
 		}
+		[SmokeMethod("hasHeightForWidth() const")]
 		public new bool HasHeightForWidth() {
 			return ProxyQBoxLayout().HasHeightForWidth();
 		}
+		[SmokeMethod("heightForWidth(int) const")]
 		public new int HeightForWidth(int arg1) {
 			return ProxyQBoxLayout().HeightForWidth(arg1);
 		}
+		[SmokeMethod("minimumHeightForWidth(int) const")]
 		public int MinimumHeightForWidth(int arg1) {
 			return ProxyQBoxLayout().MinimumHeightForWidth(arg1);
 		}
+		[SmokeMethod("expanding() const")]
 		public new int Expanding() {
 			return ProxyQBoxLayout().Expanding();
 		}
+		[SmokeMethod("invalidate()")]
 		public new void Invalidate() {
 			ProxyQBoxLayout().Invalidate();
 		}
 		// QLayoutIterator iterator(); >>>> NOT CONVERTED
+		[SmokeMethod("setGeometry(const QRect&)")]
 		public new void SetGeometry(QRect arg1) {
 			ProxyQBoxLayout().SetGeometry(arg1);
 		}
+		[SmokeMethod("findWidget(QWidget*)")]
 		public int FindWidget(QWidget w) {
 			return ProxyQBoxLayout().FindWidget(w);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQBoxLayout().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQBoxLayout().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQBoxLayout().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQBoxLayout().TrUtf8(arg1);
 		}
+		[SmokeMethod("insertItem(int, QLayoutItem*)")]
 		public void InsertItem(int index, IQLayoutItem arg2) {
 			ProxyQBoxLayout().InsertItem(index,arg2);
 		}
 		~QBoxLayout() {
-			ProxyQBoxLayout().Dispose();
+			DisposeQBoxLayout();
 		}
 		public new void Dispose() {
-			ProxyQBoxLayout().Dispose();
+			DisposeQBoxLayout();
 		}
+		private void DisposeQBoxLayout() {
+			ProxyQBoxLayout().DisposeQBoxLayout();
+		}
+		protected void CreateQBoxLayoutSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQBoxLayoutSignals), this);
+			_signalInterceptor = (IQBoxLayoutSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQBoxLayoutSignals Emit() {
+			return (IQBoxLayoutSignals) _signalInterceptor;
+		}
+	}
+
+	public interface IQBoxLayoutSignals : IQLayoutSignals {
 	}
 }

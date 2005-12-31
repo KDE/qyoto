@@ -41,6 +41,7 @@ namespace Qt {
 			CreateQMovieProxy();
 			NewQMovie();
 		}
+		[SmokeMethod("QMovie()")]
 		private void NewQMovie() {
 			ProxyQMovie().NewQMovie();
 		}
@@ -48,6 +49,7 @@ namespace Qt {
 			CreateQMovieProxy();
 			NewQMovie(bufsize);
 		}
+		[SmokeMethod("QMovie(int)")]
 		private void NewQMovie(int bufsize) {
 			ProxyQMovie().NewQMovie(bufsize);
 		}
@@ -55,6 +57,7 @@ namespace Qt {
 			CreateQMovieProxy();
 			NewQMovie(arg1,bufsize);
 		}
+		[SmokeMethod("QMovie(QDataSource*, int)")]
 		private void NewQMovie(QDataSource arg1, int bufsize) {
 			ProxyQMovie().NewQMovie(arg1,bufsize);
 		}
@@ -62,6 +65,7 @@ namespace Qt {
 			CreateQMovieProxy();
 			NewQMovie(arg1);
 		}
+		[SmokeMethod("QMovie(QDataSource*)")]
 		private void NewQMovie(QDataSource arg1) {
 			ProxyQMovie().NewQMovie(arg1);
 		}
@@ -69,6 +73,7 @@ namespace Qt {
 			CreateQMovieProxy();
 			NewQMovie(fileName,bufsize);
 		}
+		[SmokeMethod("QMovie(const QString&, int)")]
 		private void NewQMovie(string fileName, int bufsize) {
 			ProxyQMovie().NewQMovie(fileName,bufsize);
 		}
@@ -76,122 +81,158 @@ namespace Qt {
 			CreateQMovieProxy();
 			NewQMovie(fileName);
 		}
+		[SmokeMethod("QMovie(const QString&)")]
 		private void NewQMovie(string fileName) {
 			ProxyQMovie().NewQMovie(fileName);
 		}
-		public QMovie(byte[] data, int bufsize) : this((Type) null) {
+		public QMovie(QByteArray data, int bufsize) : this((Type) null) {
 			CreateQMovieProxy();
 			NewQMovie(data,bufsize);
 		}
-		private void NewQMovie(byte[] data, int bufsize) {
+		[SmokeMethod("QMovie(QByteArray, int)")]
+		private void NewQMovie(QByteArray data, int bufsize) {
 			ProxyQMovie().NewQMovie(data,bufsize);
 		}
-		public QMovie(byte[] data) : this((Type) null) {
+		public QMovie(QByteArray data) : this((Type) null) {
 			CreateQMovieProxy();
 			NewQMovie(data);
 		}
-		private void NewQMovie(byte[] data) {
+		[SmokeMethod("QMovie(QByteArray)")]
+		private void NewQMovie(QByteArray data) {
 			ProxyQMovie().NewQMovie(data);
 		}
 		public QMovie(QMovie arg1) : this((Type) null) {
 			CreateQMovieProxy();
 			NewQMovie(arg1);
 		}
+		[SmokeMethod("QMovie(const QMovie&)")]
 		private void NewQMovie(QMovie arg1) {
 			ProxyQMovie().NewQMovie(arg1);
 		}
+		[SmokeMethod("pushSpace() const")]
 		public int PushSpace() {
 			return ProxyQMovie().PushSpace();
 		}
+		[SmokeMethod("pushData(const uchar*, int)")]
 		public void PushData(char[] data, int length) {
 			ProxyQMovie().PushData(data,length);
 		}
+		[SmokeMethod("backgroundColor() const")]
 		public QColor BackgroundColor() {
 			return ProxyQMovie().BackgroundColor();
 		}
+		[SmokeMethod("setBackgroundColor(const QColor&)")]
 		public void SetBackgroundColor(QColor arg1) {
 			ProxyQMovie().SetBackgroundColor(arg1);
 		}
+		[SmokeMethod("getValidRect() const")]
 		public QRect GetValidRect() {
 			return ProxyQMovie().GetValidRect();
 		}
+		[SmokeMethod("framePixmap() const")]
 		public QPixmap FramePixmap() {
 			return ProxyQMovie().FramePixmap();
 		}
+		[SmokeMethod("frameImage() const")]
 		public QImage FrameImage() {
 			return ProxyQMovie().FrameImage();
 		}
+		[SmokeMethod("isNull() const")]
 		public bool IsNull() {
 			return ProxyQMovie().IsNull();
 		}
+		[SmokeMethod("frameNumber() const")]
 		public int FrameNumber() {
 			return ProxyQMovie().FrameNumber();
 		}
+		[SmokeMethod("steps() const")]
 		public int Steps() {
 			return ProxyQMovie().Steps();
 		}
+		[SmokeMethod("paused() const")]
 		public bool Paused() {
 			return ProxyQMovie().Paused();
 		}
+		[SmokeMethod("finished() const")]
 		public bool Finished() {
 			return ProxyQMovie().Finished();
 		}
+		[SmokeMethod("running() const")]
 		public bool Running() {
 			return ProxyQMovie().Running();
 		}
+		[SmokeMethod("unpause()")]
 		public void Unpause() {
 			ProxyQMovie().Unpause();
 		}
+		[SmokeMethod("pause()")]
 		public void Pause() {
 			ProxyQMovie().Pause();
 		}
+		[SmokeMethod("step()")]
 		public void Step() {
 			ProxyQMovie().Step();
 		}
+		[SmokeMethod("step(int)")]
 		public void Step(int arg1) {
 			ProxyQMovie().Step(arg1);
 		}
+		[SmokeMethod("restart()")]
 		public void Restart() {
 			ProxyQMovie().Restart();
 		}
+		[SmokeMethod("speed() const")]
 		public int Speed() {
 			return ProxyQMovie().Speed();
 		}
+		[SmokeMethod("setSpeed(int)")]
 		public void SetSpeed(int arg1) {
 			ProxyQMovie().SetSpeed(arg1);
 		}
+		[SmokeMethod("connectResize(QObject*, const char*)")]
 		public void ConnectResize(QObject receiver, string member) {
 			ProxyQMovie().ConnectResize(receiver,member);
 		}
+		[SmokeMethod("disconnectResize(QObject*, const char*)")]
 		public void DisconnectResize(QObject receiver, string member) {
 			ProxyQMovie().DisconnectResize(receiver,member);
 		}
+		[SmokeMethod("disconnectResize(QObject*)")]
 		public void DisconnectResize(QObject receiver) {
 			ProxyQMovie().DisconnectResize(receiver);
 		}
+		[SmokeMethod("connectUpdate(QObject*, const char*)")]
 		public void ConnectUpdate(QObject receiver, string member) {
 			ProxyQMovie().ConnectUpdate(receiver,member);
 		}
+		[SmokeMethod("disconnectUpdate(QObject*, const char*)")]
 		public void DisconnectUpdate(QObject receiver, string member) {
 			ProxyQMovie().DisconnectUpdate(receiver,member);
 		}
+		[SmokeMethod("disconnectUpdate(QObject*)")]
 		public void DisconnectUpdate(QObject receiver) {
 			ProxyQMovie().DisconnectUpdate(receiver);
 		}
+		[SmokeMethod("connectStatus(QObject*, const char*)")]
 		public void ConnectStatus(QObject receiver, string member) {
 			ProxyQMovie().ConnectStatus(receiver,member);
 		}
+		[SmokeMethod("disconnectStatus(QObject*, const char*)")]
 		public void DisconnectStatus(QObject receiver, string member) {
 			ProxyQMovie().DisconnectStatus(receiver,member);
 		}
+		[SmokeMethod("disconnectStatus(QObject*)")]
 		public void DisconnectStatus(QObject receiver) {
 			ProxyQMovie().DisconnectStatus(receiver);
 		}
 		~QMovie() {
-			ProxyQMovie().Dispose();
+			DisposeQMovie();
 		}
 		public void Dispose() {
-			ProxyQMovie().Dispose();
+			DisposeQMovie();
+		}
+		private void DisposeQMovie() {
+			ProxyQMovie().DisposeQMovie();
 		}
 	}
 }

@@ -7,7 +7,7 @@ namespace Qt {
 			string Format(int n);
 			string Format();
 			bool Provides(string arg1);
-			byte[] EncodedData(string arg1);
+			QByteArray EncodedData(string arg1);
 			int SerialNumber();
 	}
 
@@ -35,18 +35,23 @@ namespace Qt {
 			return (IQMimeSourceProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("format(int) const")]
 		public virtual string Format(int n) {
 			return ProxyQMimeSource().Format(n);
 		}
+		[SmokeMethod("format() const")]
 		public virtual string Format() {
 			return ProxyQMimeSource().Format();
 		}
+		[SmokeMethod("provides(const char*) const")]
 		public virtual bool Provides(string arg1) {
 			return ProxyQMimeSource().Provides(arg1);
 		}
-		public virtual byte[] EncodedData(string arg1) {
+		[SmokeMethod("encodedData(const char*) const")]
+		public virtual QByteArray EncodedData(string arg1) {
 			return ProxyQMimeSource().EncodedData(arg1);
 		}
+		[SmokeMethod("serialNumber() const")]
 		public int SerialNumber() {
 			return ProxyQMimeSource().SerialNumber();
 		}

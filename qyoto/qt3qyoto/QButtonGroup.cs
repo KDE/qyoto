@@ -30,176 +30,242 @@ namespace Qt {
 			return (IQButtonGroupProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQButtonGroup().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQButtonGroup().ClassName();
 		}
 		public QButtonGroup(QWidget parent, string name) : this((Type) null) {
 			CreateQButtonGroupProxy();
+			CreateQButtonGroupSignalProxy();
 			NewQButtonGroup(parent,name);
 		}
+		[SmokeMethod("QButtonGroup(QWidget*, const char*)")]
 		private void NewQButtonGroup(QWidget parent, string name) {
 			ProxyQButtonGroup().NewQButtonGroup(parent,name);
 		}
 		public QButtonGroup(QWidget parent) : this((Type) null) {
 			CreateQButtonGroupProxy();
+			CreateQButtonGroupSignalProxy();
 			NewQButtonGroup(parent);
 		}
+		[SmokeMethod("QButtonGroup(QWidget*)")]
 		private void NewQButtonGroup(QWidget parent) {
 			ProxyQButtonGroup().NewQButtonGroup(parent);
 		}
 		public QButtonGroup() : this((Type) null) {
 			CreateQButtonGroupProxy();
+			CreateQButtonGroupSignalProxy();
 			NewQButtonGroup();
 		}
+		[SmokeMethod("QButtonGroup()")]
 		private void NewQButtonGroup() {
 			ProxyQButtonGroup().NewQButtonGroup();
 		}
 		public QButtonGroup(string title, QWidget parent, string name) : this((Type) null) {
 			CreateQButtonGroupProxy();
+			CreateQButtonGroupSignalProxy();
 			NewQButtonGroup(title,parent,name);
 		}
+		[SmokeMethod("QButtonGroup(const QString&, QWidget*, const char*)")]
 		private void NewQButtonGroup(string title, QWidget parent, string name) {
 			ProxyQButtonGroup().NewQButtonGroup(title,parent,name);
 		}
 		public QButtonGroup(string title, QWidget parent) : this((Type) null) {
 			CreateQButtonGroupProxy();
+			CreateQButtonGroupSignalProxy();
 			NewQButtonGroup(title,parent);
 		}
+		[SmokeMethod("QButtonGroup(const QString&, QWidget*)")]
 		private void NewQButtonGroup(string title, QWidget parent) {
 			ProxyQButtonGroup().NewQButtonGroup(title,parent);
 		}
 		public QButtonGroup(string title) : this((Type) null) {
 			CreateQButtonGroupProxy();
+			CreateQButtonGroupSignalProxy();
 			NewQButtonGroup(title);
 		}
+		[SmokeMethod("QButtonGroup(const QString&)")]
 		private void NewQButtonGroup(string title) {
 			ProxyQButtonGroup().NewQButtonGroup(title);
 		}
 		public QButtonGroup(int columns, int o, QWidget parent, string name) : this((Type) null) {
 			CreateQButtonGroupProxy();
+			CreateQButtonGroupSignalProxy();
 			NewQButtonGroup(columns,o,parent,name);
 		}
+		[SmokeMethod("QButtonGroup(int, Qt::Orientation, QWidget*, const char*)")]
 		private void NewQButtonGroup(int columns, int o, QWidget parent, string name) {
 			ProxyQButtonGroup().NewQButtonGroup(columns,o,parent,name);
 		}
 		public QButtonGroup(int columns, int o, QWidget parent) : this((Type) null) {
 			CreateQButtonGroupProxy();
+			CreateQButtonGroupSignalProxy();
 			NewQButtonGroup(columns,o,parent);
 		}
+		[SmokeMethod("QButtonGroup(int, Qt::Orientation, QWidget*)")]
 		private void NewQButtonGroup(int columns, int o, QWidget parent) {
 			ProxyQButtonGroup().NewQButtonGroup(columns,o,parent);
 		}
 		public QButtonGroup(int columns, int o) : this((Type) null) {
 			CreateQButtonGroupProxy();
+			CreateQButtonGroupSignalProxy();
 			NewQButtonGroup(columns,o);
 		}
+		[SmokeMethod("QButtonGroup(int, Qt::Orientation)")]
 		private void NewQButtonGroup(int columns, int o) {
 			ProxyQButtonGroup().NewQButtonGroup(columns,o);
 		}
 		public QButtonGroup(int columns, int o, string title, QWidget parent, string name) : this((Type) null) {
 			CreateQButtonGroupProxy();
+			CreateQButtonGroupSignalProxy();
 			NewQButtonGroup(columns,o,title,parent,name);
 		}
+		[SmokeMethod("QButtonGroup(int, Qt::Orientation, const QString&, QWidget*, const char*)")]
 		private void NewQButtonGroup(int columns, int o, string title, QWidget parent, string name) {
 			ProxyQButtonGroup().NewQButtonGroup(columns,o,title,parent,name);
 		}
 		public QButtonGroup(int columns, int o, string title, QWidget parent) : this((Type) null) {
 			CreateQButtonGroupProxy();
+			CreateQButtonGroupSignalProxy();
 			NewQButtonGroup(columns,o,title,parent);
 		}
+		[SmokeMethod("QButtonGroup(int, Qt::Orientation, const QString&, QWidget*)")]
 		private void NewQButtonGroup(int columns, int o, string title, QWidget parent) {
 			ProxyQButtonGroup().NewQButtonGroup(columns,o,title,parent);
 		}
 		public QButtonGroup(int columns, int o, string title) : this((Type) null) {
 			CreateQButtonGroupProxy();
+			CreateQButtonGroupSignalProxy();
 			NewQButtonGroup(columns,o,title);
 		}
+		[SmokeMethod("QButtonGroup(int, Qt::Orientation, const QString&)")]
 		private void NewQButtonGroup(int columns, int o, string title) {
 			ProxyQButtonGroup().NewQButtonGroup(columns,o,title);
 		}
+		[SmokeMethod("isExclusive() const")]
 		public bool IsExclusive() {
 			return ProxyQButtonGroup().IsExclusive();
 		}
+		[SmokeMethod("isRadioButtonExclusive() const")]
 		public bool IsRadioButtonExclusive() {
 			return ProxyQButtonGroup().IsRadioButtonExclusive();
 		}
+		[SmokeMethod("setExclusive(bool)")]
 		public virtual void SetExclusive(bool arg1) {
 			ProxyQButtonGroup().SetExclusive(arg1);
 		}
+		[SmokeMethod("setRadioButtonExclusive(bool)")]
 		public virtual void SetRadioButtonExclusive(bool arg1) {
 			ProxyQButtonGroup().SetRadioButtonExclusive(arg1);
 		}
+		[SmokeMethod("insert(QButton*, int)")]
 		public int Insert(QButton arg1, int id) {
 			return ProxyQButtonGroup().Insert(arg1,id);
 		}
+		[SmokeMethod("insert(QButton*)")]
 		public int Insert(QButton arg1) {
 			return ProxyQButtonGroup().Insert(arg1);
 		}
+		[SmokeMethod("remove(QButton*)")]
 		public void Remove(QButton arg1) {
 			ProxyQButtonGroup().Remove(arg1);
 		}
+		[SmokeMethod("find(int) const")]
 		public new QButton FindButton(int id) {
 			return ProxyQButtonGroup().FindButton(id);
 		}
+		[SmokeMethod("id(QButton*) const")]
 		public int Id(QButton arg1) {
 			return ProxyQButtonGroup().Id(arg1);
 		}
+		[SmokeMethod("count() const")]
 		public int Count() {
 			return ProxyQButtonGroup().Count();
 		}
+		[SmokeMethod("setButton(int)")]
 		public virtual void SetButton(int id) {
 			ProxyQButtonGroup().SetButton(id);
 		}
+		[SmokeMethod("moveFocus(int)")]
 		public virtual void MoveFocus(int arg1) {
 			ProxyQButtonGroup().MoveFocus(arg1);
 		}
+		[SmokeMethod("selected() const")]
 		public QButton Selected() {
 			return ProxyQButtonGroup().Selected();
 		}
+		[SmokeMethod("selectedId() const")]
 		public int SelectedId() {
 			return ProxyQButtonGroup().SelectedId();
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQButtonGroup().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQButtonGroup().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQButtonGroup().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQButtonGroup().TrUtf8(arg1);
 		}
+		[SmokeMethod("event(QEvent*)")]
 		public new bool Event(QEvent e) {
 			return ProxyQButtonGroup().Event(e);
 		}
+		[Q_SLOT("buttonPressed()")]
+		[SmokeMethod("buttonPressed()")]
 		protected void ButtonPressed() {
 			ProxyQButtonGroup().ButtonPressed();
 		}
+		[Q_SLOT("buttonReleased()")]
+		[SmokeMethod("buttonReleased()")]
 		protected void ButtonReleased() {
 			ProxyQButtonGroup().ButtonReleased();
 		}
+		[Q_SLOT("buttonClicked()")]
+		[SmokeMethod("buttonClicked()")]
 		protected void ButtonClicked() {
 			ProxyQButtonGroup().ButtonClicked();
 		}
+		[Q_SLOT("buttonToggled(bool)")]
+		[SmokeMethod("buttonToggled(bool)")]
 		protected void ButtonToggled(bool on) {
 			ProxyQButtonGroup().ButtonToggled(on);
 		}
 		~QButtonGroup() {
-			ProxyQButtonGroup().Dispose();
+			DisposeQButtonGroup();
 		}
 		public new void Dispose() {
-			ProxyQButtonGroup().Dispose();
+			DisposeQButtonGroup();
+		}
+		private void DisposeQButtonGroup() {
+			ProxyQButtonGroup().DisposeQButtonGroup();
+		}
+		protected void CreateQButtonGroupSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQButtonGroupSignals), this);
+			_signalInterceptor = (IQButtonGroupSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQButtonGroupSignals Emit() {
+			return (IQButtonGroupSignals) _signalInterceptor;
 		}
 	}
 
-	public interface IQButtonGroupSignals {
+	public interface IQButtonGroupSignals : IQGroupBoxSignals {
+		[Q_SIGNAL("pressed(int)")]
 		void Pressed(int id);
+		[Q_SIGNAL("released(int)")]
 		void Released(int id);
+		[Q_SIGNAL("clicked(int)")]
 		void Clicked(int id);
 	}
 }

@@ -28,14 +28,18 @@ namespace Qt {
 			CreateQDragLeaveEventProxy();
 			NewQDragLeaveEvent();
 		}
+		[SmokeMethod("QDragLeaveEvent()")]
 		private void NewQDragLeaveEvent() {
 			ProxyQDragLeaveEvent().NewQDragLeaveEvent();
 		}
 		~QDragLeaveEvent() {
-			ProxyQDragLeaveEvent().Dispose();
+			DisposeQDragLeaveEvent();
 		}
 		public new void Dispose() {
-			ProxyQDragLeaveEvent().Dispose();
+			DisposeQDragLeaveEvent();
+		}
+		private void DisposeQDragLeaveEvent() {
+			ProxyQDragLeaveEvent().DisposeQDragLeaveEvent();
 		}
 	}
 }

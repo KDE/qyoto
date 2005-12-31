@@ -35,298 +35,416 @@ namespace Qt {
 			NoToolBars = 1,
 			AllDockWindows = 2,
 		}
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQMainWindow().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQMainWindow().ClassName();
 		}
 		public QMainWindow(QWidget parent, string name, int f) : this((Type) null) {
 			CreateQMainWindowProxy();
+			CreateQMainWindowSignalProxy();
 			NewQMainWindow(parent,name,f);
 		}
+		[SmokeMethod("QMainWindow(QWidget*, const char*, Qt::WFlags)")]
 		private void NewQMainWindow(QWidget parent, string name, int f) {
 			ProxyQMainWindow().NewQMainWindow(parent,name,f);
 		}
 		public QMainWindow(QWidget parent, string name) : this((Type) null) {
 			CreateQMainWindowProxy();
+			CreateQMainWindowSignalProxy();
 			NewQMainWindow(parent,name);
 		}
+		[SmokeMethod("QMainWindow(QWidget*, const char*)")]
 		private void NewQMainWindow(QWidget parent, string name) {
 			ProxyQMainWindow().NewQMainWindow(parent,name);
 		}
 		public QMainWindow(QWidget parent) : this((Type) null) {
 			CreateQMainWindowProxy();
+			CreateQMainWindowSignalProxy();
 			NewQMainWindow(parent);
 		}
+		[SmokeMethod("QMainWindow(QWidget*)")]
 		private void NewQMainWindow(QWidget parent) {
 			ProxyQMainWindow().NewQMainWindow(parent);
 		}
 		public QMainWindow() : this((Type) null) {
 			CreateQMainWindowProxy();
+			CreateQMainWindowSignalProxy();
 			NewQMainWindow();
 		}
+		[SmokeMethod("QMainWindow()")]
 		private void NewQMainWindow() {
 			ProxyQMainWindow().NewQMainWindow();
 		}
+		[SmokeMethod("menuBar() const")]
 		public QMenuBar MenuBar() {
 			return ProxyQMainWindow().MenuBar();
 		}
+		[SmokeMethod("statusBar() const")]
 		public QStatusBar StatusBar() {
 			return ProxyQMainWindow().StatusBar();
 		}
+		[SmokeMethod("toolTipGroup() const")]
 		public QToolTipGroup ToolTipGroup() {
 			return ProxyQMainWindow().ToolTipGroup();
 		}
+		[SmokeMethod("setCentralWidget(QWidget*)")]
 		public virtual void SetCentralWidget(QWidget arg1) {
 			ProxyQMainWindow().SetCentralWidget(arg1);
 		}
+		[SmokeMethod("centralWidget() const")]
 		public QWidget CentralWidget() {
 			return ProxyQMainWindow().CentralWidget();
 		}
+		[SmokeMethod("setDockEnabled(Qt::Dock, bool)")]
 		public virtual void SetDockEnabled(int dock, bool enable) {
 			ProxyQMainWindow().SetDockEnabled(dock,enable);
 		}
+		[SmokeMethod("isDockEnabled(Qt::Dock) const")]
 		public bool IsDockEnabled(int dock) {
 			return ProxyQMainWindow().IsDockEnabled(dock);
 		}
+		[SmokeMethod("isDockEnabled(QDockArea*) const")]
 		public bool IsDockEnabled(QDockArea area) {
 			return ProxyQMainWindow().IsDockEnabled(area);
 		}
+		[SmokeMethod("setDockEnabled(QDockWindow*, Qt::Dock, bool)")]
 		public virtual void SetDockEnabled(QDockWindow tb, int dock, bool enable) {
 			ProxyQMainWindow().SetDockEnabled(tb,dock,enable);
 		}
+		[SmokeMethod("isDockEnabled(QDockWindow*, Qt::Dock) const")]
 		public bool IsDockEnabled(QDockWindow tb, int dock) {
 			return ProxyQMainWindow().IsDockEnabled(tb,dock);
 		}
+		[SmokeMethod("isDockEnabled(QDockWindow*, QDockArea*) const")]
 		public bool IsDockEnabled(QDockWindow tb, QDockArea area) {
 			return ProxyQMainWindow().IsDockEnabled(tb,area);
 		}
+		[SmokeMethod("addDockWindow(QDockWindow*, Qt::Dock, bool)")]
 		public virtual void AddDockWindow(QDockWindow arg1, int arg2, bool newLine) {
 			ProxyQMainWindow().AddDockWindow(arg1,arg2,newLine);
 		}
+		[SmokeMethod("addDockWindow(QDockWindow*, Qt::Dock)")]
 		public virtual void AddDockWindow(QDockWindow arg1, int arg2) {
 			ProxyQMainWindow().AddDockWindow(arg1,arg2);
 		}
+		[SmokeMethod("addDockWindow(QDockWindow*)")]
 		public virtual void AddDockWindow(QDockWindow arg1) {
 			ProxyQMainWindow().AddDockWindow(arg1);
 		}
+		[SmokeMethod("addDockWindow(QDockWindow*, const QString&, Qt::Dock, bool)")]
 		public virtual void AddDockWindow(QDockWindow arg1, string label, int arg3, bool newLine) {
 			ProxyQMainWindow().AddDockWindow(arg1,label,arg3,newLine);
 		}
+		[SmokeMethod("addDockWindow(QDockWindow*, const QString&, Qt::Dock)")]
 		public virtual void AddDockWindow(QDockWindow arg1, string label, int arg3) {
 			ProxyQMainWindow().AddDockWindow(arg1,label,arg3);
 		}
+		[SmokeMethod("addDockWindow(QDockWindow*, const QString&)")]
 		public virtual void AddDockWindow(QDockWindow arg1, string label) {
 			ProxyQMainWindow().AddDockWindow(arg1,label);
 		}
+		[SmokeMethod("moveDockWindow(QDockWindow*, Qt::Dock)")]
 		public virtual void MoveDockWindow(QDockWindow arg1, int arg2) {
 			ProxyQMainWindow().MoveDockWindow(arg1,arg2);
 		}
+		[SmokeMethod("moveDockWindow(QDockWindow*)")]
 		public virtual void MoveDockWindow(QDockWindow arg1) {
 			ProxyQMainWindow().MoveDockWindow(arg1);
 		}
+		[SmokeMethod("moveDockWindow(QDockWindow*, Qt::Dock, bool, int, int)")]
 		public virtual void MoveDockWindow(QDockWindow arg1, int arg2, bool nl, int index, int extraOffset) {
 			ProxyQMainWindow().MoveDockWindow(arg1,arg2,nl,index,extraOffset);
 		}
+		[SmokeMethod("moveDockWindow(QDockWindow*, Qt::Dock, bool, int)")]
 		public virtual void MoveDockWindow(QDockWindow arg1, int arg2, bool nl, int index) {
 			ProxyQMainWindow().MoveDockWindow(arg1,arg2,nl,index);
 		}
+		[SmokeMethod("removeDockWindow(QDockWindow*)")]
 		public virtual void RemoveDockWindow(QDockWindow arg1) {
 			ProxyQMainWindow().RemoveDockWindow(arg1);
 		}
+		[SmokeMethod("show()")]
 		public new void Show() {
 			ProxyQMainWindow().Show();
 		}
+		[SmokeMethod("hide()")]
 		public new void Hide() {
 			ProxyQMainWindow().Hide();
 		}
+		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {
 			return ProxyQMainWindow().SizeHint();
 		}
+		[SmokeMethod("minimumSizeHint() const")]
 		public new QSize MinimumSizeHint() {
 			return ProxyQMainWindow().MinimumSizeHint();
 		}
+		[SmokeMethod("rightJustification() const")]
 		public bool RightJustification() {
 			return ProxyQMainWindow().RightJustification();
 		}
+		[SmokeMethod("usesBigPixmaps() const")]
 		public bool UsesBigPixmaps() {
 			return ProxyQMainWindow().UsesBigPixmaps();
 		}
+		[SmokeMethod("usesTextLabel() const")]
 		public bool UsesTextLabel() {
 			return ProxyQMainWindow().UsesTextLabel();
 		}
+		[SmokeMethod("dockWindowsMovable() const")]
 		public bool DockWindowsMovable() {
 			return ProxyQMainWindow().DockWindowsMovable();
 		}
+		[SmokeMethod("opaqueMoving() const")]
 		public bool OpaqueMoving() {
 			return ProxyQMainWindow().OpaqueMoving();
 		}
+		[SmokeMethod("eventFilter(QObject*, QEvent*)")]
 		public new bool EventFilter(QObject arg1, QEvent arg2) {
 			return ProxyQMainWindow().EventFilter(arg1,arg2);
 		}
+		[SmokeMethod("getLocation(QDockWindow*, Qt::Dock&, int&, bool&, int&) const")]
 		public bool GetLocation(QDockWindow tb, int dock, out int index, bool nl, out int extraOffset) {
 			return ProxyQMainWindow().GetLocation(tb,dock,out index,nl,out extraOffset);
 		}
 		// QPtrList<QDockWindow> dockWindows(Qt::Dock arg1); >>>> NOT CONVERTED
 		// QPtrList<QDockWindow> dockWindows(); >>>> NOT CONVERTED
+		[SmokeMethod("lineUpDockWindows(bool)")]
 		public void LineUpDockWindows(bool keepNewLines) {
 			ProxyQMainWindow().LineUpDockWindows(keepNewLines);
 		}
+		[SmokeMethod("lineUpDockWindows()")]
 		public void LineUpDockWindows() {
 			ProxyQMainWindow().LineUpDockWindows();
 		}
+		[SmokeMethod("isDockMenuEnabled() const")]
 		public bool IsDockMenuEnabled() {
 			return ProxyQMainWindow().IsDockMenuEnabled();
 		}
+		[SmokeMethod("hasDockWindow(QDockWindow*)")]
 		public bool HasDockWindow(QDockWindow dw) {
 			return ProxyQMainWindow().HasDockWindow(dw);
 		}
+		[SmokeMethod("addToolBar(QDockWindow*, Qt::Dock, bool)")]
 		public void AddToolBar(QDockWindow arg1, int arg2, bool newLine) {
 			ProxyQMainWindow().AddToolBar(arg1,arg2,newLine);
 		}
+		[SmokeMethod("addToolBar(QDockWindow*, Qt::Dock)")]
 		public void AddToolBar(QDockWindow arg1, int arg2) {
 			ProxyQMainWindow().AddToolBar(arg1,arg2);
 		}
+		[SmokeMethod("addToolBar(QDockWindow*)")]
 		public void AddToolBar(QDockWindow arg1) {
 			ProxyQMainWindow().AddToolBar(arg1);
 		}
+		[SmokeMethod("addToolBar(QDockWindow*, const QString&, Qt::Dock, bool)")]
 		public void AddToolBar(QDockWindow arg1, string label, int arg3, bool newLine) {
 			ProxyQMainWindow().AddToolBar(arg1,label,arg3,newLine);
 		}
+		[SmokeMethod("addToolBar(QDockWindow*, const QString&, Qt::Dock)")]
 		public void AddToolBar(QDockWindow arg1, string label, int arg3) {
 			ProxyQMainWindow().AddToolBar(arg1,label,arg3);
 		}
+		[SmokeMethod("addToolBar(QDockWindow*, const QString&)")]
 		public void AddToolBar(QDockWindow arg1, string label) {
 			ProxyQMainWindow().AddToolBar(arg1,label);
 		}
+		[SmokeMethod("moveToolBar(QDockWindow*, Qt::Dock)")]
 		public void MoveToolBar(QDockWindow arg1, int arg2) {
 			ProxyQMainWindow().MoveToolBar(arg1,arg2);
 		}
+		[SmokeMethod("moveToolBar(QDockWindow*)")]
 		public void MoveToolBar(QDockWindow arg1) {
 			ProxyQMainWindow().MoveToolBar(arg1);
 		}
+		[SmokeMethod("moveToolBar(QDockWindow*, Qt::Dock, bool, int, int)")]
 		public void MoveToolBar(QDockWindow arg1, int arg2, bool nl, int index, int extraOffset) {
 			ProxyQMainWindow().MoveToolBar(arg1,arg2,nl,index,extraOffset);
 		}
+		[SmokeMethod("moveToolBar(QDockWindow*, Qt::Dock, bool, int)")]
 		public void MoveToolBar(QDockWindow arg1, int arg2, bool nl, int index) {
 			ProxyQMainWindow().MoveToolBar(arg1,arg2,nl,index);
 		}
+		[SmokeMethod("removeToolBar(QDockWindow*)")]
 		public void RemoveToolBar(QDockWindow arg1) {
 			ProxyQMainWindow().RemoveToolBar(arg1);
 		}
+		[SmokeMethod("toolBarsMovable() const")]
 		public bool ToolBarsMovable() {
 			return ProxyQMainWindow().ToolBarsMovable();
 		}
 		// QPtrList<QToolBar> toolBars(Qt::Dock arg1); >>>> NOT CONVERTED
+		[SmokeMethod("lineUpToolBars(bool)")]
 		public void LineUpToolBars(bool keepNewLines) {
 			ProxyQMainWindow().LineUpToolBars(keepNewLines);
 		}
+		[SmokeMethod("lineUpToolBars()")]
 		public void LineUpToolBars() {
 			ProxyQMainWindow().LineUpToolBars();
 		}
+		[SmokeMethod("dockingArea(const QPoint&)")]
 		public virtual QDockArea DockingArea(QPoint p) {
 			return ProxyQMainWindow().DockingArea(p);
 		}
+		[SmokeMethod("leftDock() const")]
 		public QDockArea LeftDock() {
 			return ProxyQMainWindow().LeftDock();
 		}
+		[SmokeMethod("rightDock() const")]
 		public QDockArea RightDock() {
 			return ProxyQMainWindow().RightDock();
 		}
+		[SmokeMethod("topDock() const")]
 		public QDockArea TopDock() {
 			return ProxyQMainWindow().TopDock();
 		}
+		[SmokeMethod("bottomDock() const")]
 		public QDockArea BottomDock() {
 			return ProxyQMainWindow().BottomDock();
 		}
+		[SmokeMethod("isCustomizable() const")]
 		public virtual bool IsCustomizable() {
 			return ProxyQMainWindow().IsCustomizable();
 		}
+		[SmokeMethod("appropriate(QDockWindow*) const")]
 		public bool Appropriate(QDockWindow dw) {
 			return ProxyQMainWindow().Appropriate(dw);
 		}
+		[SmokeMethod("createDockWindowMenu(QMainWindow::DockWindows) const")]
 		public QPopupMenu CreateDockWindowMenu(int dockWindows) {
 			return ProxyQMainWindow().CreateDockWindowMenu(dockWindows);
 		}
+		[SmokeMethod("createDockWindowMenu() const")]
 		public QPopupMenu CreateDockWindowMenu() {
 			return ProxyQMainWindow().CreateDockWindowMenu();
 		}
+		[Q_SLOT("setRightJustification(bool)")]
+		[SmokeMethod("setRightJustification(bool)")]
 		public virtual void SetRightJustification(bool arg1) {
 			ProxyQMainWindow().SetRightJustification(arg1);
 		}
+		[Q_SLOT("setUsesBigPixmaps(bool)")]
+		[SmokeMethod("setUsesBigPixmaps(bool)")]
 		public virtual void SetUsesBigPixmaps(bool arg1) {
 			ProxyQMainWindow().SetUsesBigPixmaps(arg1);
 		}
+		[Q_SLOT("setUsesTextLabel(bool)")]
+		[SmokeMethod("setUsesTextLabel(bool)")]
 		public virtual void SetUsesTextLabel(bool arg1) {
 			ProxyQMainWindow().SetUsesTextLabel(arg1);
 		}
+		[Q_SLOT("setDockWindowsMovable(bool)")]
+		[SmokeMethod("setDockWindowsMovable(bool)")]
 		public virtual void SetDockWindowsMovable(bool arg1) {
 			ProxyQMainWindow().SetDockWindowsMovable(arg1);
 		}
+		[Q_SLOT("setOpaqueMoving(bool)")]
+		[SmokeMethod("setOpaqueMoving(bool)")]
 		public virtual void SetOpaqueMoving(bool arg1) {
 			ProxyQMainWindow().SetOpaqueMoving(arg1);
 		}
+		[Q_SLOT("setDockMenuEnabled(bool)")]
+		[SmokeMethod("setDockMenuEnabled(bool)")]
 		public virtual void SetDockMenuEnabled(bool arg1) {
 			ProxyQMainWindow().SetDockMenuEnabled(arg1);
 		}
+		[Q_SLOT("whatsThis()")]
+		[SmokeMethod("whatsThis()")]
 		public virtual void WhatsThis() {
 			ProxyQMainWindow().WhatsThis();
 		}
+		[Q_SLOT("setAppropriate(QDockWindow*, bool)")]
+		[SmokeMethod("setAppropriate(QDockWindow*, bool)")]
 		public virtual void SetAppropriate(QDockWindow dw, bool a) {
 			ProxyQMainWindow().SetAppropriate(dw,a);
 		}
+		[Q_SLOT("customize()")]
+		[SmokeMethod("customize()")]
 		public virtual void Customize() {
 			ProxyQMainWindow().Customize();
 		}
+		[Q_SLOT("setToolBarsMovable(bool)")]
+		[SmokeMethod("setToolBarsMovable(bool)")]
 		public void SetToolBarsMovable(bool arg1) {
 			ProxyQMainWindow().SetToolBarsMovable(arg1);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQMainWindow().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQMainWindow().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQMainWindow().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQMainWindow().TrUtf8(arg1);
 		}
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected new void PaintEvent(QPaintEvent arg1) {
 			ProxyQMainWindow().PaintEvent(arg1);
 		}
+		[SmokeMethod("childEvent(QChildEvent*)")]
 		protected new void ChildEvent(QChildEvent arg1) {
 			ProxyQMainWindow().ChildEvent(arg1);
 		}
+		[SmokeMethod("event(QEvent*)")]
 		public new bool Event(QEvent arg1) {
 			return ProxyQMainWindow().Event(arg1);
 		}
+		[SmokeMethod("styleChange(QStyle&)")]
 		public new void StyleChange(QStyle arg1) {
 			ProxyQMainWindow().StyleChange(arg1);
 		}
+		[Q_SLOT("setUpLayout()")]
+		[SmokeMethod("setUpLayout()")]
 		protected virtual void SetUpLayout() {
 			ProxyQMainWindow().SetUpLayout();
 		}
+		[Q_SLOT("showDockMenu(const QPoint&)")]
+		[SmokeMethod("showDockMenu(const QPoint&)")]
 		protected virtual bool ShowDockMenu(QPoint globalPos) {
 			return ProxyQMainWindow().ShowDockMenu(globalPos);
 		}
+		[Q_SLOT("menuAboutToShow()")]
+		[SmokeMethod("menuAboutToShow()")]
 		protected void MenuAboutToShow() {
 			ProxyQMainWindow().MenuAboutToShow();
 		}
 		~QMainWindow() {
-			ProxyQMainWindow().Dispose();
+			DisposeQMainWindow();
 		}
 		public new void Dispose() {
-			ProxyQMainWindow().Dispose();
+			DisposeQMainWindow();
+		}
+		private void DisposeQMainWindow() {
+			ProxyQMainWindow().DisposeQMainWindow();
+		}
+		protected void CreateQMainWindowSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQMainWindowSignals), this);
+			_signalInterceptor = (IQMainWindowSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQMainWindowSignals Emit() {
+			return (IQMainWindowSignals) _signalInterceptor;
 		}
 	}
 
-	public interface IQMainWindowSignals {
+	public interface IQMainWindowSignals : IQWidgetSignals {
+		[Q_SIGNAL("pixmapSizeChanged(bool)")]
 		void PixmapSizeChanged(bool arg1);
+		[Q_SIGNAL("usesTextLabelChanged(bool)")]
 		void UsesTextLabelChanged(bool arg1);
+		[Q_SIGNAL("dockWindowPositionChanged(QDockWindow*)")]
 		void DockWindowPositionChanged(QDockWindow arg1);
+		[Q_SIGNAL("toolBarPositionChanged(QToolBar*)")]
 		void ToolBarPositionChanged(QToolBar arg1);
 	}
 }

@@ -29,14 +29,18 @@ namespace Qt {
 			CreateQIMComposeEventProxy();
 			NewQIMComposeEvent(type,text,cursorPosition,selLength);
 		}
+		[SmokeMethod("QIMComposeEvent(QEvent::Type, const QString&, int, int)")]
 		private void NewQIMComposeEvent(int type, string text, int cursorPosition, int selLength) {
 			ProxyQIMComposeEvent().NewQIMComposeEvent(type,text,cursorPosition,selLength);
 		}
 		~QIMComposeEvent() {
-			ProxyQIMComposeEvent().Dispose();
+			DisposeQIMComposeEvent();
 		}
 		public new void Dispose() {
-			ProxyQIMComposeEvent().Dispose();
+			DisposeQIMComposeEvent();
+		}
+		private void DisposeQIMComposeEvent() {
+			ProxyQIMComposeEvent().DisposeQIMComposeEvent();
 		}
 	}
 }

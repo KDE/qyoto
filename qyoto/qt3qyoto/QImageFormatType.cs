@@ -27,9 +27,11 @@ namespace Qt {
 			return (IQImageFormatTypeProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("decoderFor(const uchar*, int)")]
 		public virtual QImageFormat DecoderFor(char[] buffer, int length) {
 			return ProxyQImageFormatType().DecoderFor(buffer,length);
 		}
+		[SmokeMethod("formatName() const")]
 		public virtual string FormatName() {
 			return ProxyQImageFormatType().FormatName();
 		}

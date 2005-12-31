@@ -29,18 +29,23 @@ namespace Qt {
 
 		// QPtrCollection::Item getData(); >>>> NOT CONVERTED
 		// QPtrCollection::Item setData(QPtrCollection::Item arg1); >>>> NOT CONVERTED
+		[SmokeMethod("getNext()")]
 		public QBaseBucket GetNext() {
 			return ProxyQBaseBucket().GetNext();
 		}
+		[SmokeMethod("setNext(QBaseBucket*)")]
 		public void SetNext(QBaseBucket n) {
 			ProxyQBaseBucket().SetNext(n);
 		}
 		// QBaseBucket* QBaseBucket(QPtrCollection::Item arg1,QBaseBucket* arg2); >>>> NOT CONVERTED
 		~QBaseBucket() {
-			ProxyQBaseBucket().Dispose();
+			DisposeQBaseBucket();
 		}
 		public void Dispose() {
-			ProxyQBaseBucket().Dispose();
+			DisposeQBaseBucket();
+		}
+		private void DisposeQBaseBucket() {
+			ProxyQBaseBucket().DisposeQBaseBucket();
 		}
 	}
 }

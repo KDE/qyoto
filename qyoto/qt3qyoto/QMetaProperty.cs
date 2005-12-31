@@ -37,69 +37,87 @@ namespace Qt {
 			StdSet = 0x00000100,
 			Override = 0x00000200,
 		}
-		public string Type() {
-			return ProxyQMetaProperty().Type();
-		}
+		[SmokeMethod("name() const")]
 		public string Name() {
 			return ProxyQMetaProperty().Name();
 		}
+		[SmokeMethod("writable() const")]
 		public bool Writable() {
 			return ProxyQMetaProperty().Writable();
 		}
+		[SmokeMethod("isValid() const")]
 		public bool IsValid() {
 			return ProxyQMetaProperty().IsValid();
 		}
+		[SmokeMethod("isSetType() const")]
 		public bool IsSetType() {
 			return ProxyQMetaProperty().IsSetType();
 		}
+		[SmokeMethod("isEnumType() const")]
 		public bool IsEnumType() {
 			return ProxyQMetaProperty().IsEnumType();
 		}
+		[SmokeMethod("enumKeys() const")]
 		public ArrayList EnumKeys() {
 			return ProxyQMetaProperty().EnumKeys();
 		}
+		[SmokeMethod("keyToValue(const char*) const")]
 		public int KeyToValue(string key) {
 			return ProxyQMetaProperty().KeyToValue(key);
 		}
+		[SmokeMethod("valueToKey(int) const")]
 		public string ValueToKey(int value) {
 			return ProxyQMetaProperty().ValueToKey(value);
 		}
+		[SmokeMethod("keysToValue(const QStrList&) const")]
 		public int KeysToValue(string[] keys) {
 			return ProxyQMetaProperty().KeysToValue(keys);
 		}
+		[SmokeMethod("valueToKeys(int) const")]
 		public ArrayList ValueToKeys(int value) {
 			return ProxyQMetaProperty().ValueToKeys(value);
 		}
+		[SmokeMethod("designable(QObject*) const")]
 		public bool Designable(QObject arg1) {
 			return ProxyQMetaProperty().Designable(arg1);
 		}
+		[SmokeMethod("designable() const")]
 		public bool Designable() {
 			return ProxyQMetaProperty().Designable();
 		}
+		[SmokeMethod("scriptable(QObject*) const")]
 		public bool Scriptable(QObject arg1) {
 			return ProxyQMetaProperty().Scriptable(arg1);
 		}
+		[SmokeMethod("scriptable() const")]
 		public bool Scriptable() {
 			return ProxyQMetaProperty().Scriptable();
 		}
+		[SmokeMethod("stored(QObject*) const")]
 		public bool Stored(QObject arg1) {
 			return ProxyQMetaProperty().Stored(arg1);
 		}
+		[SmokeMethod("stored() const")]
 		public bool Stored() {
 			return ProxyQMetaProperty().Stored();
 		}
+		[SmokeMethod("reset(QObject*) const")]
 		public bool Reset(QObject arg1) {
 			return ProxyQMetaProperty().Reset(arg1);
 		}
+		[SmokeMethod("testFlags(uint) const")]
 		public bool TestFlags(uint f) {
 			return ProxyQMetaProperty().TestFlags(f);
 		}
+		[SmokeMethod("stdSet() const")]
 		public bool StdSet() {
 			return ProxyQMetaProperty().StdSet();
 		}
+		[SmokeMethod("id() const")]
 		public int Id() {
 			return ProxyQMetaProperty().Id();
 		}
+		[SmokeMethod("clear()")]
 		public void Clear() {
 			ProxyQMetaProperty().Clear();
 		}
@@ -107,14 +125,18 @@ namespace Qt {
 			CreateQMetaPropertyProxy();
 			NewQMetaProperty();
 		}
+		[SmokeMethod("QMetaProperty()")]
 		private void NewQMetaProperty() {
 			ProxyQMetaProperty().NewQMetaProperty();
 		}
 		~QMetaProperty() {
-			ProxyQMetaProperty().Dispose();
+			DisposeQMetaProperty();
 		}
 		public void Dispose() {
-			ProxyQMetaProperty().Dispose();
+			DisposeQMetaProperty();
+		}
+		private void DisposeQMetaProperty() {
+			ProxyQMetaProperty().DisposeQMetaProperty();
 		}
 	}
 }

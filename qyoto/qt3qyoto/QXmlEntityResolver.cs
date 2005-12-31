@@ -33,9 +33,11 @@ namespace Qt {
 			return (IQXmlEntityResolverProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("resolveEntity(const QString&, const QString&, QXmlInputSource*&)")]
 		public virtual bool ResolveEntity(string publicId, string systemId, QXmlInputSource ret) {
 			return ProxyQXmlEntityResolver().ResolveEntity(publicId,systemId,ret);
 		}
+		[SmokeMethod("errorString()")]
 		public virtual string ErrorString() {
 			return ProxyQXmlEntityResolver().ErrorString();
 		}

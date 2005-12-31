@@ -46,518 +46,748 @@ namespace Qt {
 			Editing = 1,
 			Replacing = 2,
 		}
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQTable().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQTable().ClassName();
 		}
 		public QTable(QWidget parent, string name) : this((Type) null) {
 			CreateQTableProxy();
+			CreateQTableSignalProxy();
 			NewQTable(parent,name);
 		}
+		[SmokeMethod("QTable(QWidget*, const char*)")]
 		private void NewQTable(QWidget parent, string name) {
 			ProxyQTable().NewQTable(parent,name);
 		}
 		public QTable(QWidget parent) : this((Type) null) {
 			CreateQTableProxy();
+			CreateQTableSignalProxy();
 			NewQTable(parent);
 		}
+		[SmokeMethod("QTable(QWidget*)")]
 		private void NewQTable(QWidget parent) {
 			ProxyQTable().NewQTable(parent);
 		}
 		public QTable() : this((Type) null) {
 			CreateQTableProxy();
+			CreateQTableSignalProxy();
 			NewQTable();
 		}
+		[SmokeMethod("QTable()")]
 		private void NewQTable() {
 			ProxyQTable().NewQTable();
 		}
 		public QTable(int numRows, int numCols, QWidget parent, string name) : this((Type) null) {
 			CreateQTableProxy();
+			CreateQTableSignalProxy();
 			NewQTable(numRows,numCols,parent,name);
 		}
+		[SmokeMethod("QTable(int, int, QWidget*, const char*)")]
 		private void NewQTable(int numRows, int numCols, QWidget parent, string name) {
 			ProxyQTable().NewQTable(numRows,numCols,parent,name);
 		}
 		public QTable(int numRows, int numCols, QWidget parent) : this((Type) null) {
 			CreateQTableProxy();
+			CreateQTableSignalProxy();
 			NewQTable(numRows,numCols,parent);
 		}
+		[SmokeMethod("QTable(int, int, QWidget*)")]
 		private void NewQTable(int numRows, int numCols, QWidget parent) {
 			ProxyQTable().NewQTable(numRows,numCols,parent);
 		}
 		public QTable(int numRows, int numCols) : this((Type) null) {
 			CreateQTableProxy();
+			CreateQTableSignalProxy();
 			NewQTable(numRows,numCols);
 		}
+		[SmokeMethod("QTable(int, int)")]
 		private void NewQTable(int numRows, int numCols) {
 			ProxyQTable().NewQTable(numRows,numCols);
 		}
+		[SmokeMethod("horizontalHeader() const")]
 		public QHeader HorizontalHeader() {
 			return ProxyQTable().HorizontalHeader();
 		}
+		[SmokeMethod("verticalHeader() const")]
 		public QHeader VerticalHeader() {
 			return ProxyQTable().VerticalHeader();
 		}
+		[SmokeMethod("setSelectionMode(QTable::SelectionMode)")]
 		public virtual void SetSelectionMode(int mode) {
 			ProxyQTable().SetSelectionMode(mode);
 		}
+		[SmokeMethod("selectionMode() const")]
 		public int SelectionMode() {
 			return ProxyQTable().SelectionMode();
 		}
+		[SmokeMethod("setItem(int, int, QTableItem*)")]
 		public virtual void SetItem(int row, int col, QTableItem item) {
 			ProxyQTable().SetItem(row,col,item);
 		}
+		[SmokeMethod("setText(int, int, const QString&)")]
 		public virtual void SetText(int row, int col, string text) {
 			ProxyQTable().SetText(row,col,text);
 		}
+		[SmokeMethod("setPixmap(int, int, const QPixmap&)")]
 		public virtual void SetPixmap(int row, int col, QPixmap pix) {
 			ProxyQTable().SetPixmap(row,col,pix);
 		}
+		[SmokeMethod("item(int, int) const")]
 		public virtual QTableItem Item(int row, int col) {
 			return ProxyQTable().Item(row,col);
 		}
+		[SmokeMethod("text(int, int) const")]
 		public virtual string Text(int row, int col) {
 			return ProxyQTable().Text(row,col);
 		}
+		[SmokeMethod("pixmap(int, int) const")]
 		public virtual QPixmap Pixmap(int row, int col) {
 			return ProxyQTable().Pixmap(row,col);
 		}
+		[SmokeMethod("clearCell(int, int)")]
 		public virtual void ClearCell(int row, int col) {
 			ProxyQTable().ClearCell(row,col);
 		}
+		[SmokeMethod("cellGeometry(int, int) const")]
 		public virtual QRect CellGeometry(int row, int col) {
 			return ProxyQTable().CellGeometry(row,col);
 		}
+		[SmokeMethod("columnWidth(int) const")]
 		public virtual int ColumnWidth(int col) {
 			return ProxyQTable().ColumnWidth(col);
 		}
+		[SmokeMethod("rowHeight(int) const")]
 		public virtual int RowHeight(int row) {
 			return ProxyQTable().RowHeight(row);
 		}
+		[SmokeMethod("columnPos(int) const")]
 		public virtual int ColumnPos(int col) {
 			return ProxyQTable().ColumnPos(col);
 		}
+		[SmokeMethod("rowPos(int) const")]
 		public virtual int RowPos(int row) {
 			return ProxyQTable().RowPos(row);
 		}
+		[SmokeMethod("columnAt(int) const")]
 		public virtual int ColumnAt(int x) {
 			return ProxyQTable().ColumnAt(x);
 		}
+		[SmokeMethod("rowAt(int) const")]
 		public virtual int RowAt(int y) {
 			return ProxyQTable().RowAt(y);
 		}
+		[SmokeMethod("numRows() const")]
 		public virtual int NumRows() {
 			return ProxyQTable().NumRows();
 		}
+		[SmokeMethod("numCols() const")]
 		public virtual int NumCols() {
 			return ProxyQTable().NumCols();
 		}
+		[SmokeMethod("updateCell(int, int)")]
 		public void UpdateCell(int row, int col) {
 			ProxyQTable().UpdateCell(row,col);
 		}
+		[SmokeMethod("eventFilter(QObject*, QEvent*)")]
 		public new bool EventFilter(QObject o, QEvent arg2) {
 			return ProxyQTable().EventFilter(o,arg2);
 		}
+		[SmokeMethod("currentRow() const")]
 		public int CurrentRow() {
 			return ProxyQTable().CurrentRow();
 		}
+		[SmokeMethod("currentColumn() const")]
 		public int CurrentColumn() {
 			return ProxyQTable().CurrentColumn();
 		}
+		[SmokeMethod("ensureCellVisible(int, int)")]
 		public void EnsureCellVisible(int row, int col) {
 			ProxyQTable().EnsureCellVisible(row,col);
 		}
+		[SmokeMethod("isSelected(int, int) const")]
 		public bool IsSelected(int row, int col) {
 			return ProxyQTable().IsSelected(row,col);
 		}
+		[SmokeMethod("isRowSelected(int, bool) const")]
 		public bool IsRowSelected(int row, bool full) {
 			return ProxyQTable().IsRowSelected(row,full);
 		}
+		[SmokeMethod("isRowSelected(int) const")]
 		public bool IsRowSelected(int row) {
 			return ProxyQTable().IsRowSelected(row);
 		}
+		[SmokeMethod("isColumnSelected(int, bool) const")]
 		public bool IsColumnSelected(int col, bool full) {
 			return ProxyQTable().IsColumnSelected(col,full);
 		}
+		[SmokeMethod("isColumnSelected(int) const")]
 		public bool IsColumnSelected(int col) {
 			return ProxyQTable().IsColumnSelected(col);
 		}
+		[SmokeMethod("numSelections() const")]
 		public int NumSelections() {
 			return ProxyQTable().NumSelections();
 		}
+		[SmokeMethod("selection(int) const")]
 		public QTableSelection Selection(int num) {
 			return ProxyQTable().Selection(num);
 		}
+		[SmokeMethod("addSelection(const QTableSelection&)")]
 		public virtual int AddSelection(QTableSelection s) {
 			return ProxyQTable().AddSelection(s);
 		}
+		[SmokeMethod("removeSelection(const QTableSelection&)")]
 		public virtual void RemoveSelection(QTableSelection s) {
 			ProxyQTable().RemoveSelection(s);
 		}
+		[SmokeMethod("removeSelection(int)")]
 		public virtual void RemoveSelection(int num) {
 			ProxyQTable().RemoveSelection(num);
 		}
+		[SmokeMethod("currentSelection() const")]
 		public virtual int CurrentSelection() {
 			return ProxyQTable().CurrentSelection();
 		}
+		[SmokeMethod("selectCells(int, int, int, int)")]
 		public void SelectCells(int start_row, int start_col, int end_row, int end_col) {
 			ProxyQTable().SelectCells(start_row,start_col,end_row,end_col);
 		}
+		[SmokeMethod("selectRow(int)")]
 		public void SelectRow(int row) {
 			ProxyQTable().SelectRow(row);
 		}
+		[SmokeMethod("selectColumn(int)")]
 		public void SelectColumn(int col) {
 			ProxyQTable().SelectColumn(col);
 		}
+		[SmokeMethod("showGrid() const")]
 		public bool ShowGrid() {
 			return ProxyQTable().ShowGrid();
 		}
+		[SmokeMethod("columnMovingEnabled() const")]
 		public bool ColumnMovingEnabled() {
 			return ProxyQTable().ColumnMovingEnabled();
 		}
+		[SmokeMethod("rowMovingEnabled() const")]
 		public bool RowMovingEnabled() {
 			return ProxyQTable().RowMovingEnabled();
 		}
+		[SmokeMethod("sortColumn(int, bool, bool)")]
 		public virtual void SortColumn(int col, bool ascending, bool wholeRows) {
 			ProxyQTable().SortColumn(col,ascending,wholeRows);
 		}
+		[SmokeMethod("sortColumn(int, bool)")]
 		public virtual void SortColumn(int col, bool ascending) {
 			ProxyQTable().SortColumn(col,ascending);
 		}
+		[SmokeMethod("sortColumn(int)")]
 		public virtual void SortColumn(int col) {
 			ProxyQTable().SortColumn(col);
 		}
+		[SmokeMethod("sorting() const")]
 		public bool SortOnInsert() {
 			return ProxyQTable().SortOnInsert();
 		}
+		[SmokeMethod("takeItem(QTableItem*)")]
 		public virtual void TakeItem(QTableItem i) {
 			ProxyQTable().TakeItem(i);
 		}
+		[SmokeMethod("setCellWidget(int, int, QWidget*)")]
 		public virtual void SetCellWidget(int row, int col, QWidget e) {
 			ProxyQTable().SetCellWidget(row,col,e);
 		}
+		[SmokeMethod("cellWidget(int, int) const")]
 		public virtual QWidget CellWidget(int row, int col) {
 			return ProxyQTable().CellWidget(row,col);
 		}
+		[SmokeMethod("clearCellWidget(int, int)")]
 		public virtual void ClearCellWidget(int row, int col) {
 			ProxyQTable().ClearCellWidget(row,col);
 		}
+		[SmokeMethod("cellRect(int, int) const")]
 		public virtual QRect CellRect(int row, int col) {
 			return ProxyQTable().CellRect(row,col);
 		}
+		[SmokeMethod("paintCell(QPainter*, int, int, const QRect&, bool)")]
 		public virtual void PaintCell(QPainter p, int row, int col, QRect cr, bool selected) {
 			ProxyQTable().PaintCell(p,row,col,cr,selected);
 		}
+		[SmokeMethod("paintCell(QPainter*, int, int, const QRect&, bool, const QColorGroup&)")]
 		public virtual void PaintCell(QPainter p, int row, int col, QRect cr, bool selected, QColorGroup cg) {
 			ProxyQTable().PaintCell(p,row,col,cr,selected,cg);
 		}
+		[SmokeMethod("paintFocus(QPainter*, const QRect&)")]
 		public virtual void PaintFocus(QPainter p, QRect r) {
 			ProxyQTable().PaintFocus(p,r);
 		}
+		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {
 			return ProxyQTable().SizeHint();
 		}
+		[SmokeMethod("isReadOnly() const")]
 		public bool IsReadOnly() {
 			return ProxyQTable().IsReadOnly();
 		}
+		[SmokeMethod("isRowReadOnly(int) const")]
 		public bool IsRowReadOnly(int row) {
 			return ProxyQTable().IsRowReadOnly(row);
 		}
+		[SmokeMethod("isColumnReadOnly(int) const")]
 		public bool IsColumnReadOnly(int col) {
 			return ProxyQTable().IsColumnReadOnly(col);
 		}
+		[SmokeMethod("setEnabled(bool)")]
 		public new void SetEnabled(bool b) {
 			ProxyQTable().SetEnabled(b);
 		}
+		[SmokeMethod("repaintSelections()")]
 		public void RepaintSelections() {
 			ProxyQTable().RepaintSelections();
 		}
+		[SmokeMethod("setFocusStyle(QTable::FocusStyle)")]
 		public virtual void SetFocusStyle(int fs) {
 			ProxyQTable().SetFocusStyle(fs);
 		}
+		[SmokeMethod("focusStyle() const")]
 		public int FocusStyle() {
 			return ProxyQTable().FocusStyle();
 		}
+		[SmokeMethod("updateHeaderStates()")]
 		public void UpdateHeaderStates() {
 			ProxyQTable().UpdateHeaderStates();
 		}
+		[Q_SLOT("setNumRows(int)")]
+		[SmokeMethod("setNumRows(int)")]
 		public virtual void SetNumRows(int r) {
 			ProxyQTable().SetNumRows(r);
 		}
+		[Q_SLOT("setNumCols(int)")]
+		[SmokeMethod("setNumCols(int)")]
 		public virtual void SetNumCols(int r) {
 			ProxyQTable().SetNumCols(r);
 		}
+		[Q_SLOT("setShowGrid(bool)")]
+		[SmokeMethod("setShowGrid(bool)")]
 		public virtual void SetShowGrid(bool b) {
 			ProxyQTable().SetShowGrid(b);
 		}
+		[Q_SLOT("hideRow(int)")]
+		[SmokeMethod("hideRow(int)")]
 		public virtual void HideRow(int row) {
 			ProxyQTable().HideRow(row);
 		}
+		[Q_SLOT("hideColumn(int)")]
+		[SmokeMethod("hideColumn(int)")]
 		public virtual void HideColumn(int col) {
 			ProxyQTable().HideColumn(col);
 		}
+		[Q_SLOT("showRow(int)")]
+		[SmokeMethod("showRow(int)")]
 		public virtual void ShowRow(int row) {
 			ProxyQTable().ShowRow(row);
 		}
+		[Q_SLOT("showColumn(int)")]
+		[SmokeMethod("showColumn(int)")]
 		public virtual void ShowColumn(int col) {
 			ProxyQTable().ShowColumn(col);
 		}
+		[Q_SLOT("isRowHidden(int) const")]
+		[SmokeMethod("isRowHidden(int) const")]
 		public bool IsRowHidden(int row) {
 			return ProxyQTable().IsRowHidden(row);
 		}
+		[Q_SLOT("isColumnHidden(int) const")]
+		[SmokeMethod("isColumnHidden(int) const")]
 		public bool IsColumnHidden(int col) {
 			return ProxyQTable().IsColumnHidden(col);
 		}
+		[Q_SLOT("setColumnWidth(int, int)")]
+		[SmokeMethod("setColumnWidth(int, int)")]
 		public virtual void SetColumnWidth(int col, int w) {
 			ProxyQTable().SetColumnWidth(col,w);
 		}
+		[Q_SLOT("setRowHeight(int, int)")]
+		[SmokeMethod("setRowHeight(int, int)")]
 		public virtual void SetRowHeight(int row, int h) {
 			ProxyQTable().SetRowHeight(row,h);
 		}
+		[Q_SLOT("adjustColumn(int)")]
+		[SmokeMethod("adjustColumn(int)")]
 		public virtual void AdjustColumn(int col) {
 			ProxyQTable().AdjustColumn(col);
 		}
+		[Q_SLOT("adjustRow(int)")]
+		[SmokeMethod("adjustRow(int)")]
 		public virtual void AdjustRow(int row) {
 			ProxyQTable().AdjustRow(row);
 		}
+		[Q_SLOT("setColumnStretchable(int, bool)")]
+		[SmokeMethod("setColumnStretchable(int, bool)")]
 		public virtual void SetColumnStretchable(int col, bool stretch) {
 			ProxyQTable().SetColumnStretchable(col,stretch);
 		}
+		[Q_SLOT("setRowStretchable(int, bool)")]
+		[SmokeMethod("setRowStretchable(int, bool)")]
 		public virtual void SetRowStretchable(int row, bool stretch) {
 			ProxyQTable().SetRowStretchable(row,stretch);
 		}
+		[Q_SLOT("isColumnStretchable(int) const")]
+		[SmokeMethod("isColumnStretchable(int) const")]
 		public bool IsColumnStretchable(int col) {
 			return ProxyQTable().IsColumnStretchable(col);
 		}
+		[Q_SLOT("isRowStretchable(int) const")]
+		[SmokeMethod("isRowStretchable(int) const")]
 		public bool IsRowStretchable(int row) {
 			return ProxyQTable().IsRowStretchable(row);
 		}
+		[Q_SLOT("setSorting(bool)")]
+		[SmokeMethod("setSorting(bool)")]
 		public virtual void SetSorting(bool b) {
 			ProxyQTable().SetSorting(b);
 		}
+		[Q_SLOT("swapRows(int, int, bool)")]
+		[SmokeMethod("swapRows(int, int, bool)")]
 		public virtual void SwapRows(int row1, int row2, bool swapHeader) {
 			ProxyQTable().SwapRows(row1,row2,swapHeader);
 		}
+		[Q_SLOT("swapRows(int, int)")]
+		[SmokeMethod("swapRows(int, int)")]
 		public virtual void SwapRows(int row1, int row2) {
 			ProxyQTable().SwapRows(row1,row2);
 		}
+		[Q_SLOT("swapColumns(int, int, bool)")]
+		[SmokeMethod("swapColumns(int, int, bool)")]
 		public virtual void SwapColumns(int col1, int col2, bool swapHeader) {
 			ProxyQTable().SwapColumns(col1,col2,swapHeader);
 		}
+		[Q_SLOT("swapColumns(int, int)")]
+		[SmokeMethod("swapColumns(int, int)")]
 		public virtual void SwapColumns(int col1, int col2) {
 			ProxyQTable().SwapColumns(col1,col2);
 		}
+		[Q_SLOT("swapCells(int, int, int, int)")]
+		[SmokeMethod("swapCells(int, int, int, int)")]
 		public virtual void SwapCells(int row1, int col1, int row2, int col2) {
 			ProxyQTable().SwapCells(row1,col1,row2,col2);
 		}
+		[Q_SLOT("setLeftMargin(int)")]
+		[SmokeMethod("setLeftMargin(int)")]
 		public virtual void SetLeftMargin(int m) {
 			ProxyQTable().SetLeftMargin(m);
 		}
+		[Q_SLOT("setTopMargin(int)")]
+		[SmokeMethod("setTopMargin(int)")]
 		public virtual void SetTopMargin(int m) {
 			ProxyQTable().SetTopMargin(m);
 		}
+		[Q_SLOT("setCurrentCell(int, int)")]
+		[SmokeMethod("setCurrentCell(int, int)")]
 		public virtual void SetCurrentCell(int row, int col) {
 			ProxyQTable().SetCurrentCell(row,col);
 		}
+		[Q_SLOT("clearSelection(bool)")]
+		[SmokeMethod("clearSelection(bool)")]
 		public void ClearSelection(bool repaint) {
 			ProxyQTable().ClearSelection(repaint);
 		}
+		[Q_SLOT("clearSelection()")]
+		[SmokeMethod("clearSelection()")]
 		public void ClearSelection() {
 			ProxyQTable().ClearSelection();
 		}
+		[Q_SLOT("setColumnMovingEnabled(bool)")]
+		[SmokeMethod("setColumnMovingEnabled(bool)")]
 		public virtual void SetColumnMovingEnabled(bool b) {
 			ProxyQTable().SetColumnMovingEnabled(b);
 		}
+		[Q_SLOT("setRowMovingEnabled(bool)")]
+		[SmokeMethod("setRowMovingEnabled(bool)")]
 		public virtual void SetRowMovingEnabled(bool b) {
 			ProxyQTable().SetRowMovingEnabled(b);
 		}
+		[Q_SLOT("setReadOnly(bool)")]
+		[SmokeMethod("setReadOnly(bool)")]
 		public virtual void SetReadOnly(bool b) {
 			ProxyQTable().SetReadOnly(b);
 		}
+		[Q_SLOT("setRowReadOnly(int, bool)")]
+		[SmokeMethod("setRowReadOnly(int, bool)")]
 		public virtual void SetRowReadOnly(int row, bool ro) {
 			ProxyQTable().SetRowReadOnly(row,ro);
 		}
+		[Q_SLOT("setColumnReadOnly(int, bool)")]
+		[SmokeMethod("setColumnReadOnly(int, bool)")]
 		public virtual void SetColumnReadOnly(int col, bool ro) {
 			ProxyQTable().SetColumnReadOnly(col,ro);
 		}
+		[Q_SLOT("setDragEnabled(bool)")]
+		[SmokeMethod("setDragEnabled(bool)")]
 		public virtual void SetDragEnabled(bool b) {
 			ProxyQTable().SetDragEnabled(b);
 		}
+		[Q_SLOT("dragEnabled() const")]
+		[SmokeMethod("dragEnabled() const")]
 		public bool DragEnabled() {
 			return ProxyQTable().DragEnabled();
 		}
+		[Q_SLOT("insertRows(int, int)")]
+		[SmokeMethod("insertRows(int, int)")]
 		public virtual void InsertRows(int row, int count) {
 			ProxyQTable().InsertRows(row,count);
 		}
+		[Q_SLOT("insertRows(int)")]
+		[SmokeMethod("insertRows(int)")]
 		public virtual void InsertRows(int row) {
 			ProxyQTable().InsertRows(row);
 		}
+		[Q_SLOT("insertColumns(int, int)")]
+		[SmokeMethod("insertColumns(int, int)")]
 		public virtual void InsertColumns(int col, int count) {
 			ProxyQTable().InsertColumns(col,count);
 		}
+		[Q_SLOT("insertColumns(int)")]
+		[SmokeMethod("insertColumns(int)")]
 		public virtual void InsertColumns(int col) {
 			ProxyQTable().InsertColumns(col);
 		}
+		[Q_SLOT("removeRow(int)")]
+		[SmokeMethod("removeRow(int)")]
 		public virtual void RemoveRow(int row) {
 			ProxyQTable().RemoveRow(row);
 		}
 		// void removeRows(const QMemArray<int>& arg1); >>>> NOT CONVERTED
+		[Q_SLOT("removeColumn(int)")]
+		[SmokeMethod("removeColumn(int)")]
 		public virtual void RemoveColumn(int col) {
 			ProxyQTable().RemoveColumn(col);
 		}
 		// void removeColumns(const QMemArray<int>& arg1); >>>> NOT CONVERTED
+		[Q_SLOT("editCell(int, int, bool)")]
+		[SmokeMethod("editCell(int, int, bool)")]
 		public virtual void EditCell(int row, int col, bool replace) {
 			ProxyQTable().EditCell(row,col,replace);
 		}
+		[Q_SLOT("editCell(int, int)")]
+		[SmokeMethod("editCell(int, int)")]
 		public virtual void EditCell(int row, int col) {
 			ProxyQTable().EditCell(row,col);
 		}
+		[Q_SLOT("setRowLabels(const QStringList&)")]
+		[SmokeMethod("setRowLabels(const QStringList&)")]
 		public void SetRowLabels(string[] labels) {
 			ProxyQTable().SetRowLabels(labels);
 		}
+		[Q_SLOT("setColumnLabels(const QStringList&)")]
+		[SmokeMethod("setColumnLabels(const QStringList&)")]
 		public void SetColumnLabels(string[] labels) {
 			ProxyQTable().SetColumnLabels(labels);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQTable().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQTable().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQTable().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQTable().TrUtf8(arg1);
 		}
+		[SmokeMethod("drawContents(QPainter*, int, int, int, int)")]
 		protected new void DrawContents(QPainter p, int cx, int cy, int cw, int ch) {
 			ProxyQTable().DrawContents(p,cx,cy,cw,ch);
 		}
+		[SmokeMethod("contentsMousePressEvent(QMouseEvent*)")]
 		protected new void ContentsMousePressEvent(QMouseEvent arg1) {
 			ProxyQTable().ContentsMousePressEvent(arg1);
 		}
+		[SmokeMethod("contentsMouseMoveEvent(QMouseEvent*)")]
 		protected new void ContentsMouseMoveEvent(QMouseEvent arg1) {
 			ProxyQTable().ContentsMouseMoveEvent(arg1);
 		}
+		[SmokeMethod("contentsMouseDoubleClickEvent(QMouseEvent*)")]
 		protected new void ContentsMouseDoubleClickEvent(QMouseEvent arg1) {
 			ProxyQTable().ContentsMouseDoubleClickEvent(arg1);
 		}
+		[SmokeMethod("contentsMouseReleaseEvent(QMouseEvent*)")]
 		protected new void ContentsMouseReleaseEvent(QMouseEvent arg1) {
 			ProxyQTable().ContentsMouseReleaseEvent(arg1);
 		}
+		[SmokeMethod("contentsContextMenuEvent(QContextMenuEvent*)")]
 		protected new void ContentsContextMenuEvent(QContextMenuEvent e) {
 			ProxyQTable().ContentsContextMenuEvent(e);
 		}
+		[SmokeMethod("keyPressEvent(QKeyEvent*)")]
 		protected new void KeyPressEvent(QKeyEvent arg1) {
 			ProxyQTable().KeyPressEvent(arg1);
 		}
+		[SmokeMethod("focusInEvent(QFocusEvent*)")]
 		protected new void FocusInEvent(QFocusEvent arg1) {
 			ProxyQTable().FocusInEvent(arg1);
 		}
+		[SmokeMethod("focusOutEvent(QFocusEvent*)")]
 		protected new void FocusOutEvent(QFocusEvent arg1) {
 			ProxyQTable().FocusOutEvent(arg1);
 		}
+		[SmokeMethod("viewportResizeEvent(QResizeEvent*)")]
 		protected new void ViewportResizeEvent(QResizeEvent arg1) {
 			ProxyQTable().ViewportResizeEvent(arg1);
 		}
+		[SmokeMethod("showEvent(QShowEvent*)")]
 		public new void ShowEvent(QShowEvent e) {
 			ProxyQTable().ShowEvent(e);
 		}
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected new void PaintEvent(QPaintEvent e) {
 			ProxyQTable().PaintEvent(e);
 		}
 		// void setEditMode(QTable::EditMode arg1,int arg2,int arg3); >>>> NOT CONVERTED
+		[SmokeMethod("contentsDragEnterEvent(QDragEnterEvent*)")]
 		protected new virtual void ContentsDragEnterEvent(QDragEnterEvent e) {
 			ProxyQTable().ContentsDragEnterEvent(e);
 		}
+		[SmokeMethod("contentsDragMoveEvent(QDragMoveEvent*)")]
 		protected new virtual void ContentsDragMoveEvent(QDragMoveEvent e) {
 			ProxyQTable().ContentsDragMoveEvent(e);
 		}
+		[SmokeMethod("contentsDragLeaveEvent(QDragLeaveEvent*)")]
 		protected new virtual void ContentsDragLeaveEvent(QDragLeaveEvent e) {
 			ProxyQTable().ContentsDragLeaveEvent(e);
 		}
+		[SmokeMethod("contentsDropEvent(QDropEvent*)")]
 		protected new virtual void ContentsDropEvent(QDropEvent e) {
 			ProxyQTable().ContentsDropEvent(e);
 		}
+		[SmokeMethod("dragObject()")]
 		protected virtual QDragObject DragObject() {
 			return ProxyQTable().DragObject();
 		}
+		[SmokeMethod("startDrag()")]
 		protected virtual void StartDrag() {
 			ProxyQTable().StartDrag();
 		}
+		[SmokeMethod("paintEmptyArea(QPainter*, int, int, int, int)")]
 		protected virtual void PaintEmptyArea(QPainter p, int cx, int cy, int cw, int ch) {
 			ProxyQTable().PaintEmptyArea(p,cx,cy,cw,ch);
 		}
+		[SmokeMethod("activateNextCell()")]
 		protected virtual void ActivateNextCell() {
 			ProxyQTable().ActivateNextCell();
 		}
+		[SmokeMethod("createEditor(int, int, bool) const")]
 		protected virtual QWidget CreateEditor(int row, int col, bool initFromCell) {
 			return ProxyQTable().CreateEditor(row,col,initFromCell);
 		}
+		[SmokeMethod("setCellContentFromEditor(int, int)")]
 		protected virtual void SetCellContentFromEditor(int row, int col) {
 			ProxyQTable().SetCellContentFromEditor(row,col);
 		}
+		[SmokeMethod("beginEdit(int, int, bool)")]
 		protected virtual QWidget BeginEdit(int row, int col, bool replace) {
 			return ProxyQTable().BeginEdit(row,col,replace);
 		}
+		[SmokeMethod("endEdit(int, int, bool, bool)")]
 		protected virtual void EndEdit(int row, int col, bool accept, bool replace) {
 			ProxyQTable().EndEdit(row,col,accept,replace);
 		}
+		[SmokeMethod("resizeData(int)")]
 		protected virtual void ResizeData(int len) {
 			ProxyQTable().ResizeData(len);
 		}
+		[SmokeMethod("insertWidget(int, int, QWidget*)")]
 		protected virtual void InsertWidget(int row, int col, QWidget w) {
 			ProxyQTable().InsertWidget(row,col,w);
 		}
+		[SmokeMethod("indexOf(int, int) const")]
 		protected int IndexOf(int row, int col) {
 			return ProxyQTable().IndexOf(row,col);
 		}
+		[SmokeMethod("windowActivationChange(bool)")]
 		protected new void WindowActivationChange(bool arg1) {
 			ProxyQTable().WindowActivationChange(arg1);
 		}
+		[SmokeMethod("isEditing() const")]
 		protected bool IsEditing() {
 			return ProxyQTable().IsEditing();
 		}
 		// QTable::EditMode editMode(); >>>> NOT CONVERTED
+		[SmokeMethod("currEditRow() const")]
 		protected int CurrEditRow() {
 			return ProxyQTable().CurrEditRow();
 		}
+		[SmokeMethod("currEditCol() const")]
 		protected int CurrEditCol() {
 			return ProxyQTable().CurrEditCol();
 		}
+		[Q_SLOT("columnWidthChanged(int)")]
+		[SmokeMethod("columnWidthChanged(int)")]
 		protected virtual void ColumnWidthChanged(int col) {
 			ProxyQTable().ColumnWidthChanged(col);
 		}
+		[Q_SLOT("rowHeightChanged(int)")]
+		[SmokeMethod("rowHeightChanged(int)")]
 		protected virtual void RowHeightChanged(int row) {
 			ProxyQTable().RowHeightChanged(row);
 		}
+		[Q_SLOT("columnIndexChanged(int, int, int)")]
+		[SmokeMethod("columnIndexChanged(int, int, int)")]
 		protected virtual void ColumnIndexChanged(int section, int fromIndex, int toIndex) {
 			ProxyQTable().ColumnIndexChanged(section,fromIndex,toIndex);
 		}
+		[Q_SLOT("rowIndexChanged(int, int, int)")]
+		[SmokeMethod("rowIndexChanged(int, int, int)")]
 		protected virtual void RowIndexChanged(int section, int fromIndex, int toIndex) {
 			ProxyQTable().RowIndexChanged(section,fromIndex,toIndex);
 		}
+		[Q_SLOT("columnClicked(int)")]
+		[SmokeMethod("columnClicked(int)")]
 		protected virtual void ColumnClicked(int col) {
 			ProxyQTable().ColumnClicked(col);
 		}
 		~QTable() {
-			ProxyQTable().Dispose();
+			DisposeQTable();
 		}
 		public new void Dispose() {
-			ProxyQTable().Dispose();
+			DisposeQTable();
+		}
+		private void DisposeQTable() {
+			ProxyQTable().DisposeQTable();
+		}
+		protected void CreateQTableSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQTableSignals), this);
+			_signalInterceptor = (IQTableSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQTableSignals Emit() {
+			return (IQTableSignals) _signalInterceptor;
 		}
 	}
 
-	public interface IQTableSignals {
+	public interface IQTableSignals : IQScrollViewSignals {
+		[Q_SIGNAL("currentChanged(int, int)")]
 		void CurrentChanged(int row, int col);
+		[Q_SIGNAL("clicked(int, int, int, const QPoint&)")]
 		void Clicked(int row, int col, int button, QPoint mousePos);
+		[Q_SIGNAL("doubleClicked(int, int, int, const QPoint&)")]
 		void DoubleClicked(int row, int col, int button, QPoint mousePos);
+		[Q_SIGNAL("pressed(int, int, int, const QPoint&)")]
 		void Pressed(int row, int col, int button, QPoint mousePos);
+		[Q_SIGNAL("selectionChanged()")]
 		void SelectionChanged();
+		[Q_SIGNAL("valueChanged(int, int)")]
 		void ValueChanged(int row, int col);
+		[Q_SIGNAL("contextMenuRequested(int, int, const QPoint&)")]
 		void ContextMenuRequested(int row, int col, QPoint pos);
+		[Q_SIGNAL("dropped(QDropEvent*)")]
 		void Dropped(QDropEvent e);
 	}
 }

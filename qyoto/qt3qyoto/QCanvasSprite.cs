@@ -32,98 +32,130 @@ namespace Qt {
 			CreateQCanvasSpriteProxy();
 			NewQCanvasSprite(array,canvas);
 		}
+		[SmokeMethod("QCanvasSprite(QCanvasPixmapArray*, QCanvas*)")]
 		private void NewQCanvasSprite(QCanvasPixmapArray array, QCanvas canvas) {
 			ProxyQCanvasSprite().NewQCanvasSprite(array,canvas);
 		}
+		[SmokeMethod("setSequence(QCanvasPixmapArray*)")]
 		public void SetSequence(QCanvasPixmapArray seq) {
 			ProxyQCanvasSprite().SetSequence(seq);
 		}
+		[SmokeMethod("move(double, double)")]
 		public new void Move(double x, double y) {
 			ProxyQCanvasSprite().Move(x,y);
 		}
+		[SmokeMethod("move(double, double, int)")]
 		public new virtual void Move(double x, double y, int frame) {
 			ProxyQCanvasSprite().Move(x,y,frame);
 		}
+		[SmokeMethod("setFrame(int)")]
 		public void SetFrame(int arg1) {
 			ProxyQCanvasSprite().SetFrame(arg1);
 		}
+		[SmokeMethod("setFrameAnimation(QCanvasSprite::FrameAnimationType, int, int)")]
 		public virtual void SetFrameAnimation(int arg1, int step, int state) {
 			ProxyQCanvasSprite().SetFrameAnimation(arg1,step,state);
 		}
+		[SmokeMethod("setFrameAnimation(QCanvasSprite::FrameAnimationType, int)")]
 		public virtual void SetFrameAnimation(int arg1, int step) {
 			ProxyQCanvasSprite().SetFrameAnimation(arg1,step);
 		}
+		[SmokeMethod("setFrameAnimation(QCanvasSprite::FrameAnimationType)")]
 		public virtual void SetFrameAnimation(int arg1) {
 			ProxyQCanvasSprite().SetFrameAnimation(arg1);
 		}
+		[SmokeMethod("setFrameAnimation()")]
 		public virtual void SetFrameAnimation() {
 			ProxyQCanvasSprite().SetFrameAnimation();
 		}
+		[SmokeMethod("frame() const")]
 		public int Frame() {
 			return ProxyQCanvasSprite().Frame();
 		}
+		[SmokeMethod("frameCount() const")]
 		public int FrameCount() {
 			return ProxyQCanvasSprite().FrameCount();
 		}
+		[SmokeMethod("rtti() const")]
 		public new int Rtti() {
 			return ProxyQCanvasSprite().Rtti();
 		}
+		[SmokeMethod("collidesWith(const QCanvasItem*) const")]
 		public new bool CollidesWith(QCanvasItem arg1) {
 			return ProxyQCanvasSprite().CollidesWith(arg1);
 		}
+		[SmokeMethod("boundingRect() const")]
 		public new QRect BoundingRect() {
 			return ProxyQCanvasSprite().BoundingRect();
 		}
+		[SmokeMethod("width() const")]
 		public int Width() {
 			return ProxyQCanvasSprite().Width();
 		}
+		[SmokeMethod("height() const")]
 		public int Height() {
 			return ProxyQCanvasSprite().Height();
 		}
+		[SmokeMethod("leftEdge() const")]
 		public int LeftEdge() {
 			return ProxyQCanvasSprite().LeftEdge();
 		}
+		[SmokeMethod("topEdge() const")]
 		public int TopEdge() {
 			return ProxyQCanvasSprite().TopEdge();
 		}
+		[SmokeMethod("rightEdge() const")]
 		public int RightEdge() {
 			return ProxyQCanvasSprite().RightEdge();
 		}
+		[SmokeMethod("bottomEdge() const")]
 		public int BottomEdge() {
 			return ProxyQCanvasSprite().BottomEdge();
 		}
+		[SmokeMethod("leftEdge(int) const")]
 		public int LeftEdge(int nx) {
 			return ProxyQCanvasSprite().LeftEdge(nx);
 		}
+		[SmokeMethod("topEdge(int) const")]
 		public int TopEdge(int ny) {
 			return ProxyQCanvasSprite().TopEdge(ny);
 		}
+		[SmokeMethod("rightEdge(int) const")]
 		public int RightEdge(int nx) {
 			return ProxyQCanvasSprite().RightEdge(nx);
 		}
+		[SmokeMethod("bottomEdge(int) const")]
 		public int BottomEdge(int ny) {
 			return ProxyQCanvasSprite().BottomEdge(ny);
 		}
+		[SmokeMethod("image() const")]
 		public QCanvasPixmap Image() {
 			return ProxyQCanvasSprite().Image();
 		}
+		[SmokeMethod("imageAdvanced() const")]
 		public virtual QCanvasPixmap ImageAdvanced() {
 			return ProxyQCanvasSprite().ImageAdvanced();
 		}
+		[SmokeMethod("image(int) const")]
 		public QCanvasPixmap Image(int f) {
 			return ProxyQCanvasSprite().Image(f);
 		}
+		[SmokeMethod("advance(int)")]
 		public new virtual void Advance(int stage) {
 			ProxyQCanvasSprite().Advance(stage);
 		}
+		[SmokeMethod("draw(QPainter&)")]
 		public new void Draw(QPainter painter) {
 			ProxyQCanvasSprite().Draw(painter);
 		}
 		~QCanvasSprite() {
-			ProxyQCanvasSprite().Dispose();
+			DisposeQCanvasSprite();
 		}
 		public new void Dispose() {
-			ProxyQCanvasSprite().Dispose();
+			DisposeQCanvasSprite();
+		}
+		private void DisposeQCanvasSprite() {
+			ProxyQCanvasSprite().DisposeQCanvasSprite();
 		}
 	}
 }

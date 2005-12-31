@@ -33,98 +33,139 @@ namespace Qt {
 			Clipboard = 0,
 			Selection = 1,
 		}
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQClipboard().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQClipboard().ClassName();
 		}
+		[SmokeMethod("clear(QClipboard::Mode)")]
 		public void Clear(int mode) {
 			ProxyQClipboard().Clear(mode);
 		}
+		[SmokeMethod("clear()")]
 		public void Clear() {
 			ProxyQClipboard().Clear();
 		}
+		[SmokeMethod("supportsSelection() const")]
 		public bool SupportsSelection() {
 			return ProxyQClipboard().SupportsSelection();
 		}
+		[SmokeMethod("ownsSelection() const")]
 		public bool OwnsSelection() {
 			return ProxyQClipboard().OwnsSelection();
 		}
+		[SmokeMethod("ownsClipboard() const")]
 		public bool OwnsClipboard() {
 			return ProxyQClipboard().OwnsClipboard();
 		}
+		[SmokeMethod("setSelectionMode(bool)")]
 		public void SetSelectionMode(bool enable) {
 			ProxyQClipboard().SetSelectionMode(enable);
 		}
+		[SmokeMethod("selectionModeEnabled() const")]
 		public bool SelectionModeEnabled() {
 			return ProxyQClipboard().SelectionModeEnabled();
 		}
+		[SmokeMethod("text(QClipboard::Mode) const")]
 		public string Text(int mode) {
 			return ProxyQClipboard().Text(mode);
 		}
+		[SmokeMethod("text(QCString&, QClipboard::Mode) const")]
 		public string Text(StringBuilder subtype, int mode) {
 			return ProxyQClipboard().Text(subtype,mode);
 		}
+		[SmokeMethod("setText(const QString&, QClipboard::Mode)")]
 		public void SetText(string arg1, int mode) {
 			ProxyQClipboard().SetText(arg1,mode);
 		}
+		[SmokeMethod("data(QClipboard::Mode) const")]
 		public IQMimeSource Data(int mode) {
 			return ProxyQClipboard().Data(mode);
 		}
+		[SmokeMethod("setData(QMimeSource*, QClipboard::Mode)")]
 		public void SetData(IQMimeSource arg1, int mode) {
 			ProxyQClipboard().SetData(arg1,mode);
 		}
+		[SmokeMethod("image(QClipboard::Mode) const")]
 		public QImage Image(int mode) {
 			return ProxyQClipboard().Image(mode);
 		}
+		[SmokeMethod("pixmap(QClipboard::Mode) const")]
 		public QPixmap Pixmap(int mode) {
 			return ProxyQClipboard().Pixmap(mode);
 		}
+		[SmokeMethod("setImage(const QImage&, QClipboard::Mode)")]
 		public void SetImage(QImage arg1, int mode) {
 			ProxyQClipboard().SetImage(arg1,mode);
 		}
+		[SmokeMethod("setPixmap(const QPixmap&, QClipboard::Mode)")]
 		public void SetPixmap(QPixmap arg1, int mode) {
 			ProxyQClipboard().SetPixmap(arg1,mode);
 		}
+		[SmokeMethod("text() const")]
 		public string Text() {
 			return ProxyQClipboard().Text();
 		}
+		[SmokeMethod("text(QCString&) const")]
 		public string Text(StringBuilder subtype) {
 			return ProxyQClipboard().Text(subtype);
 		}
+		[SmokeMethod("setText(const QString&)")]
 		public void SetText(string arg1) {
 			ProxyQClipboard().SetText(arg1);
 		}
+		[SmokeMethod("data() const")]
 		public IQMimeSource Data() {
 			return ProxyQClipboard().Data();
 		}
+		[SmokeMethod("setData(QMimeSource*)")]
 		public void SetData(IQMimeSource arg1) {
 			ProxyQClipboard().SetData(arg1);
 		}
+		[SmokeMethod("image() const")]
 		public QImage Image() {
 			return ProxyQClipboard().Image();
 		}
+		[SmokeMethod("pixmap() const")]
 		public QPixmap Pixmap() {
 			return ProxyQClipboard().Pixmap();
 		}
+		[SmokeMethod("setImage(const QImage&)")]
 		public void SetImage(QImage arg1) {
 			ProxyQClipboard().SetImage(arg1);
 		}
+		[SmokeMethod("setPixmap(const QPixmap&)")]
 		public void SetPixmap(QPixmap arg1) {
 			ProxyQClipboard().SetPixmap(arg1);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQClipboard().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQClipboard().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQClipboard().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQClipboard().TrUtf8(arg1);
 		}
+		protected void CreateQClipboardSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQClipboardSignals), this);
+			_signalInterceptor = (IQClipboardSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQClipboardSignals Emit() {
+			return (IQClipboardSignals) _signalInterceptor;
+		}
+	}
+
+	public interface IQClipboardSignals : IQObjectSignals {
 	}
 }

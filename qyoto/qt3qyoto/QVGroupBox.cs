@@ -29,71 +29,102 @@ namespace Qt {
 			return (IQVGroupBoxProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQVGroupBox().MetaObject();
 		}
+		[SmokeMethod("className() const")]
 		public new virtual string ClassName() {
 			return ProxyQVGroupBox().ClassName();
 		}
 		public QVGroupBox(QWidget parent, string name) : this((Type) null) {
 			CreateQVGroupBoxProxy();
+			CreateQVGroupBoxSignalProxy();
 			NewQVGroupBox(parent,name);
 		}
+		[SmokeMethod("QVGroupBox(QWidget*, const char*)")]
 		private void NewQVGroupBox(QWidget parent, string name) {
 			ProxyQVGroupBox().NewQVGroupBox(parent,name);
 		}
 		public QVGroupBox(QWidget parent) : this((Type) null) {
 			CreateQVGroupBoxProxy();
+			CreateQVGroupBoxSignalProxy();
 			NewQVGroupBox(parent);
 		}
+		[SmokeMethod("QVGroupBox(QWidget*)")]
 		private void NewQVGroupBox(QWidget parent) {
 			ProxyQVGroupBox().NewQVGroupBox(parent);
 		}
 		public QVGroupBox() : this((Type) null) {
 			CreateQVGroupBoxProxy();
+			CreateQVGroupBoxSignalProxy();
 			NewQVGroupBox();
 		}
+		[SmokeMethod("QVGroupBox()")]
 		private void NewQVGroupBox() {
 			ProxyQVGroupBox().NewQVGroupBox();
 		}
 		public QVGroupBox(string title, QWidget parent, string name) : this((Type) null) {
 			CreateQVGroupBoxProxy();
+			CreateQVGroupBoxSignalProxy();
 			NewQVGroupBox(title,parent,name);
 		}
+		[SmokeMethod("QVGroupBox(const QString&, QWidget*, const char*)")]
 		private void NewQVGroupBox(string title, QWidget parent, string name) {
 			ProxyQVGroupBox().NewQVGroupBox(title,parent,name);
 		}
 		public QVGroupBox(string title, QWidget parent) : this((Type) null) {
 			CreateQVGroupBoxProxy();
+			CreateQVGroupBoxSignalProxy();
 			NewQVGroupBox(title,parent);
 		}
+		[SmokeMethod("QVGroupBox(const QString&, QWidget*)")]
 		private void NewQVGroupBox(string title, QWidget parent) {
 			ProxyQVGroupBox().NewQVGroupBox(title,parent);
 		}
 		public QVGroupBox(string title) : this((Type) null) {
 			CreateQVGroupBoxProxy();
+			CreateQVGroupBoxSignalProxy();
 			NewQVGroupBox(title);
 		}
+		[SmokeMethod("QVGroupBox(const QString&)")]
 		private void NewQVGroupBox(string title) {
 			ProxyQVGroupBox().NewQVGroupBox(title);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string arg1, string arg2) {
 			return StaticQVGroupBox().Tr(arg1,arg2);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string arg1) {
 			return StaticQVGroupBox().Tr(arg1);
 		}
+		[SmokeMethod("trUtf8(const char*, const char*)")]
 		public static new string TrUtf8(string arg1, string arg2) {
 			return StaticQVGroupBox().TrUtf8(arg1,arg2);
 		}
+		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQVGroupBox().TrUtf8(arg1);
 		}
 		~QVGroupBox() {
-			ProxyQVGroupBox().Dispose();
+			DisposeQVGroupBox();
 		}
 		public new void Dispose() {
-			ProxyQVGroupBox().Dispose();
+			DisposeQVGroupBox();
 		}
+		private void DisposeQVGroupBox() {
+			ProxyQVGroupBox().DisposeQVGroupBox();
+		}
+		protected void CreateQVGroupBoxSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQVGroupBoxSignals), this);
+			_signalInterceptor = (IQVGroupBoxSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQVGroupBoxSignals Emit() {
+			return (IQVGroupBoxSignals) _signalInterceptor;
+		}
+	}
+
+	public interface IQVGroupBoxSignals : IQGroupBoxSignals {
 	}
 }

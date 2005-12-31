@@ -28,20 +28,26 @@ namespace Qt {
 			CreateQMoveEventProxy();
 			NewQMoveEvent(pos,oldPos);
 		}
+		[SmokeMethod("QMoveEvent(const QPoint&, const QPoint&)")]
 		private void NewQMoveEvent(QPoint pos, QPoint oldPos) {
 			ProxyQMoveEvent().NewQMoveEvent(pos,oldPos);
 		}
+		[SmokeMethod("pos() const")]
 		public QPoint Pos() {
 			return ProxyQMoveEvent().Pos();
 		}
+		[SmokeMethod("oldPos() const")]
 		public QPoint OldPos() {
 			return ProxyQMoveEvent().OldPos();
 		}
 		~QMoveEvent() {
-			ProxyQMoveEvent().Dispose();
+			DisposeQMoveEvent();
 		}
 		public new void Dispose() {
-			ProxyQMoveEvent().Dispose();
+			DisposeQMoveEvent();
+		}
+		private void DisposeQMoveEvent() {
+			ProxyQMoveEvent().DisposeQMoveEvent();
 		}
 	}
 }

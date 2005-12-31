@@ -31,20 +31,26 @@ namespace Qt {
 			CreateQSharedProxy();
 			NewQShared();
 		}
+		[SmokeMethod("QShared()")]
 		private void NewQShared() {
 			ProxyQShared().NewQShared();
 		}
+		[SmokeMethod("ref()")]
 		public void Ref() {
 			ProxyQShared().Ref();
 		}
+		[SmokeMethod("deref()")]
 		public bool Deref() {
 			return ProxyQShared().Deref();
 		}
 		~QShared() {
-			ProxyQShared().Dispose();
+			DisposeQShared();
 		}
 		public void Dispose() {
-			ProxyQShared().Dispose();
+			DisposeQShared();
+		}
+		private void DisposeQShared() {
+			ProxyQShared().DisposeQShared();
 		}
 	}
 }

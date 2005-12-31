@@ -25,21 +25,27 @@ namespace Qt {
 			return (IQTsciiCodecProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("mibEnum() const")]
 		public new virtual int MibEnum() {
 			return ProxyQTsciiCodec().MibEnum();
 		}
+		[SmokeMethod("name() const")]
 		public new string Name() {
 			return ProxyQTsciiCodec().Name();
 		}
+		[SmokeMethod("fromUnicode(const QString&, int&) const")]
 		public new string FromUnicode(string uc, out int lenInOut) {
 			return ProxyQTsciiCodec().FromUnicode(uc,out lenInOut);
 		}
+		[SmokeMethod("toUnicode(const char*, int) const")]
 		public new string ToUnicode(string chars, int len) {
 			return ProxyQTsciiCodec().ToUnicode(chars,len);
 		}
+		[SmokeMethod("heuristicContentMatch(const char*, int) const")]
 		public new int HeuristicContentMatch(string chars, int len) {
 			return ProxyQTsciiCodec().HeuristicContentMatch(chars,len);
 		}
+		[SmokeMethod("heuristicNameMatch(const char*) const")]
 		public new int HeuristicNameMatch(string hint) {
 			return ProxyQTsciiCodec().HeuristicNameMatch(hint);
 		}
@@ -47,14 +53,18 @@ namespace Qt {
 			CreateQTsciiCodecProxy();
 			NewQTsciiCodec();
 		}
+		[SmokeMethod("QTsciiCodec()")]
 		private void NewQTsciiCodec() {
 			ProxyQTsciiCodec().NewQTsciiCodec();
 		}
 		~QTsciiCodec() {
-			ProxyQTsciiCodec().Dispose();
+			DisposeQTsciiCodec();
 		}
 		public new void Dispose() {
-			ProxyQTsciiCodec().Dispose();
+			DisposeQTsciiCodec();
+		}
+		private void DisposeQTsciiCodec() {
+			ProxyQTsciiCodec().DisposeQTsciiCodec();
 		}
 	}
 }

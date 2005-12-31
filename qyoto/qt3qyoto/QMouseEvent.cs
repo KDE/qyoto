@@ -28,6 +28,7 @@ namespace Qt {
 			CreateQMouseEventProxy();
 			NewQMouseEvent(type,pos,button,state);
 		}
+		[SmokeMethod("QMouseEvent(QEvent::Type, const QPoint&, int, int)")]
 		private void NewQMouseEvent(int type, QPoint pos, int button, int state) {
 			ProxyQMouseEvent().NewQMouseEvent(type,pos,button,state);
 		}
@@ -35,50 +36,66 @@ namespace Qt {
 			CreateQMouseEventProxy();
 			NewQMouseEvent(type,pos,globalPos,button,state);
 		}
+		[SmokeMethod("QMouseEvent(QEvent::Type, const QPoint&, const QPoint&, int, int)")]
 		private void NewQMouseEvent(int type, QPoint pos, QPoint globalPos, int button, int state) {
 			ProxyQMouseEvent().NewQMouseEvent(type,pos,globalPos,button,state);
 		}
+		[SmokeMethod("pos() const")]
 		public QPoint Pos() {
 			return ProxyQMouseEvent().Pos();
 		}
+		[SmokeMethod("globalPos() const")]
 		public QPoint GlobalPos() {
 			return ProxyQMouseEvent().GlobalPos();
 		}
+		[SmokeMethod("x() const")]
 		public int X() {
 			return ProxyQMouseEvent().X();
 		}
+		[SmokeMethod("y() const")]
 		public int Y() {
 			return ProxyQMouseEvent().Y();
 		}
+		[SmokeMethod("globalX() const")]
 		public int GlobalX() {
 			return ProxyQMouseEvent().GlobalX();
 		}
+		[SmokeMethod("globalY() const")]
 		public int GlobalY() {
 			return ProxyQMouseEvent().GlobalY();
 		}
+		[SmokeMethod("button() const")]
 		public int Button() {
 			return ProxyQMouseEvent().Button();
 		}
+		[SmokeMethod("state() const")]
 		public int State() {
 			return ProxyQMouseEvent().State();
 		}
+		[SmokeMethod("stateAfter() const")]
 		public int StateAfter() {
 			return ProxyQMouseEvent().StateAfter();
 		}
+		[SmokeMethod("isAccepted() const")]
 		public bool IsAccepted() {
 			return ProxyQMouseEvent().IsAccepted();
 		}
+		[SmokeMethod("accept()")]
 		public void Accept() {
 			ProxyQMouseEvent().Accept();
 		}
+		[SmokeMethod("ignore()")]
 		public void Ignore() {
 			ProxyQMouseEvent().Ignore();
 		}
 		~QMouseEvent() {
-			ProxyQMouseEvent().Dispose();
+			DisposeQMouseEvent();
 		}
 		public new void Dispose() {
-			ProxyQMouseEvent().Dispose();
+			DisposeQMouseEvent();
+		}
+		private void DisposeQMouseEvent() {
+			ProxyQMouseEvent().DisposeQMouseEvent();
 		}
 	}
 }
