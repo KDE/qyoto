@@ -592,6 +592,7 @@ namespace Qt {
 			Qyoto.Init_qyoto();
 			CreateQApplicationProxy();
 			CreateQApplicationSignalProxy();
+			Qt.qApp = this;
 			
 			string[] args = new string[argv.Length + 1];
 			args[0] = System.Reflection.Assembly.GetExecutingAssembly().Location;
@@ -613,7 +614,8 @@ namespace Qt {
 			Qyoto.Init_qyoto();
 			CreateQApplicationProxy();
 			CreateQApplicationSignalProxy();
-			
+			Qt.qApp = this;
+
 			string[] args = new string[argv.Length + 1];
 			args[0] = System.Reflection.Assembly.GetExecutingAssembly().Location;
 			argv.CopyTo(args, 1);
@@ -634,6 +636,7 @@ namespace Qt {
 			Qyoto.Init_qyoto();
 			CreateQApplicationProxy();
 			CreateQApplicationSignalProxy();
+			Qt.qApp = this;
 			
 			string[] args = new string[argv.Length + 1];
 			args[0] = System.Reflection.Assembly.GetExecutingAssembly().Location;

@@ -1826,6 +1826,8 @@ namespace Qt {
 		public const int IO_TimeOutError    = 7;
 		public const int IO_UnspecifiedError= 8;
 
+		public static QApplication qApp = null;
+
 		public static string SIGNAL(string signal) {
 			return "2"+ signal;
 		}
