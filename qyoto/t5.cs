@@ -25,7 +25,6 @@ public class MyWidget : QVBox
 		QApplication a = new QApplication(args);
 
 		MyWidget w = new MyWidget();
-		w.SetGeometry( 100, 100, 200, 120 );
 		a.SetMainWidget( w );
 		w.Show();
 		return a.Exec();
