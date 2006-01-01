@@ -27,11 +27,9 @@ public class MyWidget : QVBox
 
 		QGrid grid = new QGrid( 4, this );
 
-		for( int r = 0 ; r < 4 ; r++ ) {
-			for( int c = 0 ; c < 4 ; c++ ) {
-				new LCDRange( grid );
-			}
-		}
+		for ( int r = 0; r < 4; r++ )
+			for ( int c =0; c < 4; c++ )
+				new LCDRange(grid);
 	}
 
 	public static int Main(String[] args) {
