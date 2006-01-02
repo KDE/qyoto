@@ -15,6 +15,8 @@
  *                                                                         *
  ***************************************************************************/
 
+// #define DEBUG
+
 namespace Qt {
 
 	using Qt;
@@ -262,10 +264,12 @@ namespace Qt {
 			ArrayList	methods = null;
 			
 			IMethodCallMessage callMessage = (IMethodCallMessage) message;
-//			Console.WriteLine(	"ENTER Invoke() MethodName: {0} Type: {1} ArgCount: {2}", 
-//								callMessage.MethodName, 
-//								callMessage.TypeName, 
-//								callMessage.ArgCount.ToString() );
+#if DEBUG
+			Console.WriteLine(	"ENTER Invoke() MethodName: {0} Type: {1} ArgCount: {2}", 
+								callMessage.MethodName, 
+								callMessage.TypeName, 
+								callMessage.ArgCount.ToString() );
+#endif
 
 			StackItem[] stack = new StackItem[callMessage.ArgCount+1];
 			
@@ -293,7 +297,9 @@ namespace Qt {
 
 				methods = FindMethod(mungedName);
 				if (methods.Count == 0) {
-//					Console.WriteLine("LEAVE Invoke() ** Missing method **");
+#if DEBUG
+					Console.WriteLine("LEAVE Invoke() ** Missing method **");
+#endif
 					return returnMessage;
 				}
 
@@ -376,7 +382,9 @@ namespace Qt {
 			instanceHandle.Free();
 			returnMessage = returnValue;
 
-//			Console.WriteLine("LEAVE Invoke()");
+#if DEBUG
+			Console.WriteLine("LEAVE Invoke()");
+#endif
 			return returnMessage;
 		}
 		
@@ -386,6 +394,9 @@ namespace Qt {
 	}
 
 	public class SignalInvocation : RealProxy {
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		static extern void SignalEmit(string signature, IntPtr target, IntPtr sp, int items);
+
 		private Type	_classToProxy;
 		private Object	_instance;
 		private string	_className;
@@ -398,7 +409,68 @@ namespace Qt {
 		}
 
 		public override IMessage Invoke(IMessage message) {
-			return null;
+			IMethodCallMessage callMessage = (IMethodCallMessage) message;
+			StackItem[] stack = new StackItem[callMessage.ArgCount+1];
+
+			if (callMessage.MethodSignature != null) {
+				Type[] types = (Type[]) callMessage.MethodSignature;
+
+				for (int i = 0; i < callMessage.ArgCount; i++) {
+					if (callMessage.Args[i] == null) {
+						unsafe {
+							stack[i+1].s_class = (IntPtr) 0;
+						}
+					} else if (types[i] == typeof(bool)) {
+						stack[i+1].s_bool = (bool) callMessage.Args[i];
+					} else if (types[i] == typeof(sbyte)) {
+						stack[i+1].s_char = (sbyte) callMessage.Args[i];
+					} else if (types[i] == typeof(byte)) {
+						stack[i+1].s_uchar = (byte) callMessage.Args[i];
+					} else if (types[i] == typeof(short)) {
+						stack[i+1].s_short = (short) callMessage.Args[i];
+					} else if (types[i] == typeof(ushort)) {
+						stack[i+1].s_ushort = (ushort) callMessage.Args[i];
+					} else if (types[i] == typeof(int)) {
+						stack[i+1].s_int = (int) callMessage.Args[i];
+					} else if (types[i] == typeof(uint)) {
+						stack[i+1].s_uint = (uint) callMessage.Args[i];
+					} else if (types[i] == typeof(long)) {
+						stack[i+1].s_long = (long) callMessage.Args[i];
+					} else if (types[i] == typeof(ulong)) {
+						stack[i+1].s_ulong = (ulong) callMessage.Args[i];
+					} else if (types[i] == typeof(float)) {
+						stack[i+1].s_float = (float) callMessage.Args[i];
+					} else if (types[i] == typeof(double)) {
+						stack[i+1].s_double = (double) callMessage.Args[i];
+					} else if (types[i] == typeof(string)) {
+						stack[i+1].s_class = (IntPtr) GCHandle.Alloc(callMessage.Args[i]);
+					} else {
+						stack[i+1].s_class = (IntPtr) GCHandle.Alloc(callMessage.Args[i]);
+					}
+				}
+			}
+
+			IMethodReturnMessage returnMessage = (IMethodReturnMessage) message;
+			GCHandle instanceHandle = GCHandle.Alloc(_instance);
+
+			string signature = "";
+			object[] attributes = ((MethodInfo) callMessage.MethodBase).GetCustomAttributes(typeof(Q_SIGNAL), false);
+			if (attributes.Length > 0) {
+				signature = ((Q_SIGNAL) attributes[0]).Signature;
+#if DEBUG
+				Console.WriteLine( "Q_SIGNAL signature: {0}", signature );
+#endif
+			}
+
+			unsafe {
+				fixed(StackItem * stackPtr = stack) {
+					SignalEmit(signature, (IntPtr) instanceHandle, (IntPtr) stackPtr, callMessage.ArgCount);
+				}
+			}
+
+			instanceHandle.Free();
+
+			return returnMessage;
 		}
 
 		public override int GetHashCode() {

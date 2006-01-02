@@ -23,6 +23,11 @@
 #include <qstring.h>
 #include <qptrdict.h>
 #include <qintdict.h>
+#include <qregexp.h>
+#include <qstrlist.h>
+#include <qmetaobject.h>
+#include <private/qucomextra_p.h>
+#include <qsignalslotimp.h>
 
 #undef DEBUG
 #ifndef __USE_POSIX
@@ -304,6 +309,155 @@ public:
     }
 };
 
+class UnencapsulatedQObject : public QObject {
+public:
+    QConnectionList *public_receivers(int signal) const { return receivers(signal); }
+    void public_activate_signal(QConnectionList *clist, QUObject *o) { activate_signal(clist, o); }
+};
+
+class EmitSignal : public Marshall {
+    UnencapsulatedQObject *_qobj;
+    int _id;
+    MocArgument *_args;
+    Smoke::StackItem * _sp;
+    int _items;
+    int _cur;
+    Smoke::Stack _stack;
+    bool _called;
+public:
+    EmitSignal(QObject *qobj, int id, int items, MocArgument * args, Smoke::StackItem *sp) :
+    _qobj((UnencapsulatedQObject*)qobj), _id(id), _sp(sp), _items(items), _args(args),
+    _cur(-1), _called(false)
+    {
+//	_items = NUM2INT(rb_ary_entry(args, 0));
+//	Data_Get_Struct(rb_ary_entry(args, 1), MocArgument, _args);
+	_stack = new Smoke::StackItem[_items];
+    }
+	~EmitSignal() {
+		delete[] _stack;
+		delete[] _args;
+	}
+    const MocArgument &arg() { return _args[_cur]; }
+    SmokeType type() { return arg().st; }
+    Marshall::Action action() { return Marshall::FromObject; }
+    Smoke::StackItem &item() { return _stack[_cur]; }
+    Smoke::StackItem & var() { return _sp[_cur]; }
+    void unsupported() {
+//	rb_raise(rb_eArgError, "Cannot handle '%s' as signal argument", type().name());
+    }
+    Smoke *smoke() { return type().smoke(); }
+    void emitSignal() {
+	if(_called) return;
+	_called = true;
+
+	QConnectionList *clist = _qobj->public_receivers(_id);
+	if(!clist) return;
+
+	QUObject *o = new QUObject[_items + 1];
+	for(int i = 0; i < _items; i++) {
+	    QUObject *po = o + i + 1;
+	    Smoke::StackItem *si = _stack + i;
+	    switch(_args[i].argType) {
+	      case xmoc_bool:
+		static_QUType_bool.set(po, si->s_bool);
+		break;
+	      case xmoc_int:
+		static_QUType_int.set(po, si->s_int);
+		break;
+	      case xmoc_double:
+		static_QUType_double.set(po, si->s_double);
+		break;
+	      case xmoc_charstar:
+		static_QUType_charstar.set(po, (char*)si->s_voidp);
+		break;
+	      case xmoc_QString:
+		static_QUType_QString.set(po, *(QString*)si->s_voidp);
+		break;
+	      default:
+		{
+		    const SmokeType &t = _args[i].st;
+		    void *p;
+		    switch(t.elem()) {
+		      case Smoke::t_bool:
+			p = &si->s_bool;
+			break;
+		      case Smoke::t_char:
+			p = &si->s_char;
+			break;
+		      case Smoke::t_uchar:
+			p = &si->s_uchar;
+			break;
+		      case Smoke::t_short:
+			p = &si->s_short;
+			break;
+		      case Smoke::t_ushort:
+			p = &si->s_ushort;
+			break;
+		      case Smoke::t_int:
+			p = &si->s_int;
+			break;
+		      case Smoke::t_uint:
+			p = &si->s_uint;
+			break;
+		      case Smoke::t_long:
+			p = &si->s_long;
+			break;
+		      case Smoke::t_ulong:
+			p = &si->s_ulong;
+			break;
+		      case Smoke::t_float:
+			p = &si->s_float;
+			break;
+		      case Smoke::t_double:
+			p = &si->s_double;
+			break;
+		      case Smoke::t_enum:
+			{
+			    // allocate a new enum value
+			    Smoke::EnumFn fn = SmokeClass(t).enumFn();
+			    if(!fn) {
+//				rb_warning("Unknown enumeration %s\n", t.name());
+				p = new int((int)si->s_enum);
+				break;
+			    }
+			    Smoke::Index id = t.typeId();
+			    (*fn)(Smoke::EnumNew, id, p, si->s_enum);
+			    (*fn)(Smoke::EnumFromLong, id, p, si->s_enum);
+			    // FIXME: MEMORY LEAK
+			}
+			break;
+		      case Smoke::t_class:
+		      case Smoke::t_voidp:
+			p = si->s_voidp;
+			break;
+		      default:
+			p = 0;
+			break;
+		    }
+		    static_QUType_ptr.set(po, p);
+		}
+	    }
+	}
+
+	_qobj->public_activate_signal(clist, o);
+        delete[] o;
+    }
+    void next() {
+	int oldcur = _cur;
+	_cur++;
+
+	while(!_called && _cur < _items) {
+	    Marshall::HandlerFn fn = getMarshallFn(type());
+	    (*fn)(this);
+	    _cur++;
+	}
+
+	emitSignal();
+	_cur = oldcur;
+    }
+    bool cleanup() { return true; }
+};
+
 class QyotoSmokeBinding : public SmokeBinding {
 public:
     QyotoSmokeBinding(Smoke *s) : SmokeBinding(s) {}
@@ -430,6 +584,92 @@ CallMethod(int methodId, void * obj, Smoke::StackItem * sp, int items)
 #endif
 
 	return;
+}
+
+static bool
+setMocType(MocArgument *arg, int idx, const char * name, const char * static_type)
+{
+    Smoke::Index typeId = qt_Smoke->idType(name);
+    if(!typeId) return false;
+    arg[idx].st.set(qt_Smoke, typeId);
+    if(strcmp(static_type, "ptr") == 0)
+	arg[idx].argType = xmoc_ptr;
+    else if(strcmp(static_type, "bool") == 0)
+	arg[idx].argType = xmoc_bool;
+    else if(strcmp(static_type, "int") == 0)
+	arg[idx].argType = xmoc_int;
+    else if(strcmp(static_type, "double") == 0)
+	arg[idx].argType = xmoc_double;
+    else if(strcmp(static_type, "char*") == 0)
+	arg[idx].argType = xmoc_charstar;
+    else if(strcmp(static_type, "QString") == 0)
+	arg[idx].argType = xmoc_QString;
+    return true;
+}
+
+static MocArgument *
+getMocArguments(QString member) 
+{
+	QRegExp rx1("^.*\\((.*)\\)$");
+	QRegExp rx2("^(bool|int|double|char\\*|QString)&?$");
+	int match = rx1.search(member);
+	if (match == -1) {
+		return 0;
+	}
+
+	QString argStr = rx1.cap(1);
+//	printf("argStr: %s\n", argStr.latin1());
+	QStringList args = QStringList::split(",", argStr);
+	MocArgument * mocargs = new MocArgument[args.size() + 1];
+	int i = 0;
+	for ( QStringList::Iterator it = args.begin(); it != args.end(); ++it ) {
+		QString a = (*it).replace(QRegExp("^const\\s+"), "");
+		a = (rx2.search(a) == -1) ? "ptr" : rx2.cap(1);
+//		printf("a: %s\n", a.latin1());
+		bool valid = setMocType(mocargs, i, (*it).latin1(), a.latin1());
+		i++;
+    }
+
+	return mocargs;
+}
+
+bool
+SignalEmit(char * signature, void * obj, Smoke::StackItem * sp, int items)
+{
+#ifdef DEBUG
+	printf("ENTER SignalEmit(signature: %s target: 0x%8.8x items: %d)\n", signature, obj, items);
+#endif
+
+	QString sig(signature);
+	sig.replace(QRegExp("^void "), "");
+	smokeqyoto_object *o = value_obj_info(obj);
+    QObject *qobj = (QObject*)o->smoke->cast(o->ptr, o->classId, o->smoke->idClass("QObject"));
+    
+	if (qobj->signalsBlocked()) {
+		return false;
+	}
+
+	MocArgument * args = getMocArguments(sig);
+	QStrList signalNames = qobj->metaObject()->signalNames(true);
+
+    char * signalStr = 0;
+	int index = 0;
+    for ( signalStr = signalNames.first(); signalStr != 0; signalStr = signalNames.next() ) {
+		if (strcmp(signalStr, sig.latin1()) == 0) {
+			break;
+		}
+		index++;
+	}
+
+//	printf("signal id: %d\n", index);
+
+    EmitSignal signal(qobj, index, items, args, sp);
+    signal.next();
+#ifdef DEBUG
+	printf("LEAVE SignalEmit()\n");
+#endif
+
+	return true;
 }
 
 void
