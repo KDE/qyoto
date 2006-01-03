@@ -60,13 +60,15 @@ namespace Qt {
 		static extern int FindAmbiguousMethodId(int ambigousId);
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		static extern void CallMethod(int methodId, IntPtr target, IntPtr sp, int items);
+		static extern void CallSmokeMethod(int methodId, IntPtr target, IntPtr sp, int items);
 		
 		delegate IntPtr GetIntPtr(IntPtr instance);
 		delegate void SetIntPtr(IntPtr instance, IntPtr ptr);
 		delegate void RemoveIntPtr(IntPtr ptr);
 		delegate IntPtr GetIntPtrFromString(string str);
 		delegate string GetStringFromIntPtr(IntPtr ptr);
+		delegate IntPtr OverridenMethodFn(IntPtr instance, string method);
+		delegate void InvokeMethodFn(IntPtr instance, IntPtr method, IntPtr args);
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern IntPtr StringArrayToCharStarStar(int length, string[] strArray);
@@ -107,6 +109,12 @@ namespace Qt {
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern void AddIntPtrFromQString(GetIntPtr callback);
 		
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		static extern void AddOverridenMethod(OverridenMethodFn callback);
+
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		static extern void AddInvokeMethod(InvokeMethodFn callback);
+		
 		static IntPtr GetSmokeObject(IntPtr instancePtr) {
 			Object instance = ((GCHandle) instancePtr).Target;
 			if (instance == null) {
@@ -131,6 +139,10 @@ namespace Qt {
 			fieldInfo.SetValue(instance, smokeObjectPtr);
 			return;
 		}
+
+		// The key is an IntPtr corresponding to the address of the C++ instance,
+		// and the value is a WeakReference to the C# instance.
+		static private Hashtable pointerMap = new Hashtable();
 
 		static void MapPointer(IntPtr ptr, IntPtr instancePtr) {
 			Object instance = ((GCHandle) instancePtr).Target;
@@ -162,7 +174,7 @@ namespace Qt {
 				return (IntPtr) 0;
 			}
 		}
-		
+
 		static IntPtr IntPtrToCharStarStar(IntPtr ptr) {
 			string[] temp = (string[]) ((GCHandle) ptr).Target;
 			return StringArrayToCharStarStar(temp.Length, temp);
@@ -186,7 +198,35 @@ namespace Qt {
 			return (IntPtr) GCHandle.Alloc(StringFromQString(ptr));
 		}
 
-		static private Hashtable pointerMap = new Hashtable();
+		static void InvokeMethod(IntPtr instance, IntPtr method, IntPtr stack) {
+			Console.WriteLine("InvokeMethod()");
+			return;
+		}
+
+		// The key is a type name of a class which has overriden one or more
+		// virtual methods, and the value is a Hashtable of the smoke type
+		// signatures as keys retrieving a suitable MethodInfo to invoke via 
+		// reflection.
+		static private Hashtable overridenMethods = new Hashtable();
+		
+		static IntPtr OverridenMethod(IntPtr instance, string method) {
+			object temp = ((GCHandle) instance).Target;
+			string instanceType = temp.ToString();
+			Console.WriteLine("OverridenMethod() instanceType: {0} method: {1}", instanceType, method);
+			Hashtable methods = (Hashtable) overridenMethods[instanceType];
+			if (methods == null) {
+				return (IntPtr) 0;
+			}
+
+			MethodInfo methodInfo = (MethodInfo) methods[method];
+			if (methodInfo == null) {
+				return (IntPtr) 0;
+			}
+
+			return (IntPtr) GCHandle.Alloc(methodInfo);
+		}
+
+
 		static private GetIntPtr getSmokeObject = new GetIntPtr(GetSmokeObject);
 		static private SetIntPtr setSmokeObject = new SetIntPtr(SetSmokeObject);
 		
@@ -199,6 +239,9 @@ namespace Qt {
 		static private GetIntPtrFromString intPtrFromString = new GetIntPtrFromString(IntPtrFromString);
 		static private GetIntPtr intPtrToQString = new GetIntPtr(IntPtrToQString);
 		static private GetIntPtr intPtrFromQString = new GetIntPtr(IntPtrFromQString);
+		
+		static private OverridenMethodFn overridenMethod = new OverridenMethodFn(OverridenMethod);
+		static private InvokeMethodFn invokeMethod = new InvokeMethodFn(InvokeMethod);
 		
 		static SmokeInvocation() {
 			AddGetSmokeObject(getSmokeObject);
@@ -213,6 +256,9 @@ namespace Qt {
 			AddIntPtrFromCharStar(intPtrFromString);
 			AddIntPtrToQString(intPtrToQString);
 			AddIntPtrFromQString(intPtrFromQString);
+
+			AddOverridenMethod(overridenMethod);
+			AddInvokeMethod(invokeMethod);
 		}
 		
 		private Type	_classToProxy;
@@ -343,7 +389,7 @@ namespace Qt {
 			
 			unsafe {
 				fixed(StackItem * stackPtr = stack) {
-					CallMethod((int) methods[0], (IntPtr) instanceHandle, (IntPtr) stackPtr, callMessage.ArgCount);
+					CallSmokeMethod((int) methods[0], (IntPtr) instanceHandle, (IntPtr) stackPtr, callMessage.ArgCount);
 					Type returnType = ((MethodInfo) returnMessage.MethodBase).ReturnType;
 					
 					if (returnType == typeof(void)) {

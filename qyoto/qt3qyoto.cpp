@@ -67,6 +67,9 @@ static SetIntPtr MapPointer;
 static RemoveIntPtr UnmapPointer;
 static GetIntPtr GetPointerObject;
 
+static OverridenMethodFn OverridenMethod;
+static InvokeMethodFn InvokeMethod;
+
 // Maps from a classname in the form Qt::Widget to an int id
 QIntDict<char> classname(2179);
 
@@ -118,7 +121,7 @@ void unmapPointer(smokeqyoto_object *o, Smoke::Index classId, void *lastptr) {
 		
 		if (do_debug & qtdb_gc) {
 			const char *className = o->smoke->classes[o->classId].className;
-			printf("unmapPointer (%s*)%p -> %p", className, ptr, obj_ptr);
+			qWarning("unmapPointer (%s*)%p -> %p", className, ptr, obj_ptr);
 		}
 	    
 		(*UnmapPointer)(ptr);
@@ -141,7 +144,7 @@ void mapPointer(void * obj, smokeqyoto_object *o, Smoke::Index classId, void *la
 		lastptr = ptr;
 		if (do_debug & qtdb_gc) {
 			const char *className = o->smoke->classes[o->classId].className;
-			printf("mapPointer (%s*)%p -> %p", className, ptr, (void*)obj);
+			qWarning("mapPointer (%s*)%p -> %p", className, ptr, (void*)obj);
 		}
 		(*MapPointer)(ptr, obj);
     }
@@ -168,6 +171,103 @@ set_obj_info(const char * className, smokeqyoto_object * o)
 
 Marshall::HandlerFn getMarshallFn(const SmokeType &type);
 
+class VirtualMethodReturnValue : public Marshall {
+    Smoke *_smoke;
+    Smoke::Index _method;
+    Smoke::Stack _stack;
+    SmokeType _st;
+    Smoke::StackItem * _retval;
+public:
+    const Smoke::Method &method() { return _smoke->methods[_method]; }
+    SmokeType type() { return _st; }
+    Marshall::Action action() { return Marshall::FromObject; }
+    Smoke::StackItem &item() { return _stack[0]; }
+    Smoke::StackItem &var() {
+    	return *_retval;
+    }
+
+	void unsupported() {
+		qFatal(	"Cannot handle '%s' as return-type of virtual method %s::%s",
+				type().name(),
+				_smoke->className(method().classId),
+				_smoke->methodNames[method().name] );
+    }
+
+    Smoke *smoke() { return _smoke; }
+    void next() {}
+    bool cleanup() { return false; }
+
+    VirtualMethodReturnValue(Smoke *smoke, Smoke::Index meth, Smoke::Stack stack, Smoke::StackItem * retval) :
+    _smoke(smoke), _method(meth), _stack(stack), _retval(retval) {
+	_st.set(_smoke, method().ret);
+	Marshall::HandlerFn fn = getMarshallFn(type());
+	(*fn)(this);
+   }
+};
+
+class VirtualMethodCall : public Marshall {
+    Smoke *_smoke;
+    Smoke::Index _method;
+    Smoke::Stack _stack;
+    void * _obj;
+	void * _overridenMethod;
+    int _cur;
+    Smoke::Index *_args;
+    Smoke::Stack _sp;
+    bool _called;
+
+public:
+    SmokeType type() { return SmokeType(_smoke, _args[_cur]); }
+    Marshall::Action action() { return Marshall::ToObject; }
+    Smoke::StackItem &item() { return _stack[_cur + 1]; }
+
+	Smoke::StackItem &var() {
+		return _sp[_cur];
+    }
+
+	const Smoke::Method &method() { return _smoke->methods[_method]; }
+
+    void unsupported() {
+		qFatal(	"Cannot handle '%s' as argument of virtual method %s::%s",
+				type().name(),
+				_smoke->className(method().classId),
+				_smoke->methodNames[method().name] );
+    }
+    Smoke *smoke() { return _smoke; }
+	void callMethod() {
+		if (_called) return;
+		_called = true;
+	
+		(*InvokeMethod)(_obj, _overridenMethod, _sp);
+		Smoke::StackItem * _retval = _sp;
+		VirtualMethodReturnValue r(_smoke, _method, _stack, _retval);
+    }
+
+	void next() {
+		int oldcur = _cur;
+		_cur++;
+		while(!_called && _cur < method().numArgs) {
+			Marshall::HandlerFn fn = getMarshallFn(type());
+			(*fn)(this);
+			_cur++;
+		}
+		callMethod();
+		_cur = oldcur;
+    }
+
+    bool cleanup() { return false; }   // is this right?
+
+	VirtualMethodCall(Smoke *smoke, Smoke::Index meth, Smoke::Stack stack, void * obj, void * overridenMethod) :
+		_smoke(smoke), _method(meth), _stack(stack), _obj(obj), _overridenMethod(overridenMethod), _cur(-1), _sp(0), _called(false) {
+		_sp = new Smoke::StackItem[method().numArgs];
+		_args = _smoke->argumentList + method().args;
+    }
+
+    ~VirtualMethodCall() {
+		free(_sp);
+    }
+};
+
 class MethodReturnValue : public Marshall {
     Smoke *_smoke;
     Smoke::Index _method;
@@ -187,11 +287,12 @@ public:
     Smoke::StackItem &var() {
     	return *_retval;
     }
-    void unsupported() {
-//	rb_raise(rb_eArgError, "Cannot handle '%s' as return-type of %s::%s",
-//		type().name(),
-//		strcmp(_smoke->className(method().classId), "QGlobalSpace") == 0 ? "" : _smoke->className(method().classId),
-//		_smoke->methodNames[method().name]);
+
+	void unsupported() {
+		qFatal(	"Cannot handle '%s' as return-type of %s::%s",
+				type().name(),
+				strcmp(_smoke->className(method().classId), "QGlobalSpace") == 0 ? "" : _smoke->className(method().classId),
+				_smoke->methodNames[method().name] );
     }
     Smoke *smoke() { return _smoke; }
     void next() {}
@@ -244,9 +345,9 @@ public:
     	return _stack[_cur + 1];
     }
 
-    Smoke::StackItem &var() {
-	if(_cur < 0) return *_retval;
-	return _sp[_cur + 1];
+	Smoke::StackItem &var() {
+		if (_cur < 0) return *_retval;
+		return _sp[_cur + 1];
     }
 
     inline const Smoke::Method &method() {
@@ -255,14 +356,14 @@ public:
 
     void unsupported() {
     	if (strcmp(_smoke->className(method().classId), "QGlobalSpace") == 0) {
-//			rb_raise(rb_eArgError, "Cannot handle '%s' as argument to %s",
-//				type().name(),
-//				_smoke->methodNames[method().name]);
+			qFatal("Cannot handle '%s' as argument to %s",
+				type().name(),
+				_smoke->methodNames[method().name]);
 		} else {
-//			rb_raise(rb_eArgError, "Cannot handle '%s' as argument to %s::%s",
-//				type().name(),
-//				_smoke->className(method().classId),
-//				_smoke->methodNames[method().name]);
+			qFatal("Cannot handle '%s' as argument to %s::%s",
+				type().name(),
+				_smoke->className(method().classId),
+				_smoke->methodNames[method().name]);
 		}
     }
 
@@ -343,7 +444,7 @@ public:
     Smoke::StackItem &item() { return _stack[_cur]; }
     Smoke::StackItem & var() { return _sp[_cur]; }
     void unsupported() {
-//	rb_raise(rb_eArgError, "Cannot handle '%s' as signal argument", type().name());
+		qFatal("Cannot handle '%s' as signal argument", type().name());
     }
     Smoke *smoke() { return type().smoke(); }
     void emitSignal() {
@@ -458,50 +559,194 @@ public:
     bool cleanup() { return true; }
 };
 
+class InvokeSlot : public Marshall {
+    void * _obj;
+    char * _slotname;
+    int _items;
+    MocArgument *_args;
+    QUObject *_o;
+    int _cur;
+    bool _called;
+    Smoke::StackItem *_sp;
+    Smoke::Stack _stack;
+public:
+    const MocArgument &arg() { return _args[_cur]; }
+    SmokeType type() { return arg().st; }
+    Marshall::Action action() { return Marshall::ToObject; }
+    Smoke::StackItem &item() { return _stack[_cur]; }
+    Smoke::StackItem & var() { return _sp[_cur]; }
+    Smoke *smoke() { return type().smoke(); }
+    bool cleanup() { return false; }
+	void unsupported() {
+		qFatal("Cannot handle '%s' as slot argument\n", type().name());
+	}
+	void copyArguments() {
+	for (int i = 0; i < _items; i++) {
+		QUObject *o = _o + i + 1;
+		switch(_args[i].argType) {
+		case xmoc_bool:
+			_stack[i].s_bool = static_QUType_bool.get(o);
+			break;
+		case xmoc_int:
+			_stack[i].s_int = static_QUType_int.get(o);
+			break;
+		case xmoc_double:
+			_stack[i].s_double = static_QUType_double.get(o);
+			break;
+		case xmoc_charstar:
+			_stack[i].s_voidp = static_QUType_charstar.get(o);
+			break;
+		case xmoc_QString:
+			_stack[i].s_voidp = &static_QUType_QString.get(o);
+			break;
+		default:	// case xmoc_ptr:
+		{
+			const SmokeType &t = _args[i].st;
+			void *p = static_QUType_ptr.get(o);
+			switch(t.elem()) {
+			case Smoke::t_bool:
+				_stack[i].s_bool = *(bool*)p;
+				break;
+			case Smoke::t_char:
+				_stack[i].s_char = *(char*)p;
+				break;
+			case Smoke::t_uchar:
+				_stack[i].s_uchar = *(unsigned char*)p;
+				break;
+			case Smoke::t_short:
+				_stack[i].s_short = *(short*)p;
+				break;
+			case Smoke::t_ushort:
+				_stack[i].s_ushort = *(unsigned short*)p;
+				break;
+			case Smoke::t_int:
+				_stack[i].s_int = *(int*)p;
+				break;
+			case Smoke::t_uint:
+				_stack[i].s_uint = *(unsigned int*)p;
+				break;
+			case Smoke::t_long:
+				_stack[i].s_long = *(long*)p;
+				break;
+			case Smoke::t_ulong:
+				_stack[i].s_ulong = *(unsigned long*)p;
+				break;
+			case Smoke::t_float:
+				_stack[i].s_float = *(float*)p;
+				break;
+			case Smoke::t_double:
+				_stack[i].s_double = *(double*)p;
+				break;
+			case Smoke::t_enum:
+			{
+				Smoke::EnumFn fn = SmokeClass(t).enumFn();
+			    if (!fn) {
+					qFatal("Unknown enumeration %s\n", t.name());
+					_stack[i].s_enum = *(int*)p;
+					break;
+			    }
+			    Smoke::Index id = t.typeId();
+			    (*fn)(Smoke::EnumToLong, id, p, _stack[i].s_enum);
+			}
+			break;
+			case Smoke::t_class:
+			case Smoke::t_voidp:
+				_stack[i].s_voidp = p;
+				break;
+		    }
+		}
+	}
+	}
+	}
+	void invokeSlot() {
+		if (_called) return;
+		_called = true;
+//		(void) rb_funcall2(_obj, _slotname, _items, _sp);
+	}
+
+	void next() {
+		int oldcur = _cur;
+		_cur++;
+
+		while (!_called && _cur < _items) {
+			Marshall::HandlerFn fn = getMarshallFn(type());
+			(*fn)(this);
+			_cur++;
+		}
+
+		invokeSlot();
+		_cur = oldcur;
+	}
+
+    InvokeSlot(void * obj, char * slotname, int items, MocArgument * args, QUObject *o) :
+    _obj(obj), _slotname(slotname), _items(items), _args(args), _o(o), _cur(-1), _called(false)
+    {
+//	_items = NUM2INT(rb_ary_entry(args, 0));
+//	Data_Get_Struct(rb_ary_entry(args, 1), MocArgument, _args);
+//	_sp = (VALUE *) calloc(_items, sizeof(VALUE));
+		_sp = new Smoke::StackItem[_items];
+		_stack = new Smoke::StackItem[_items];
+		copyArguments();
+    }
+
+	~InvokeSlot() {
+		delete[] _stack;
+		delete[] _sp;
+	}
+};
+
 class QyotoSmokeBinding : public SmokeBinding {
 public:
     QyotoSmokeBinding(Smoke *s) : SmokeBinding(s) {}
 
-    void deleted(Smoke::Index classId, void *ptr) {
-	void * obj = getPointerObject(ptr);
-	smokeqyoto_object *o = value_obj_info(obj);
-	if(do_debug & qtdb_gc) {
-	    printf("%p->~%s()", ptr, smoke->className(classId));
-	}
-	if(!o || !o->ptr) {
-	    return;
-	}
-	unmapPointer(o, o->classId, 0);
-	o->ptr = 0;
+	void deleted(Smoke::Index classId, void *ptr) {
+		void * obj = getPointerObject(ptr);
+		smokeqyoto_object *o = value_obj_info(obj);
+	
+		if(do_debug & qtdb_gc) {
+			qWarning("%p->~%s()", ptr, smoke->className(classId));
+		}
+	
+		if(!o || !o->ptr) {
+			return;
+		}
+		unmapPointer(o, o->classId, 0);
+		o->ptr = 0;
     }
 
-    bool callMethod(Smoke::Index method, void *ptr, Smoke::Stack args, bool /*isAbstract*/) {
+	bool callMethod(Smoke::Index method, void *ptr, Smoke::Stack args, bool /*isAbstract*/) {
+		if (do_debug & qtdb_virtual) {
+			qWarning(	"virtual %p->%s::%s() called", 
+						ptr,
+						smoke->classes[smoke->methods[method].classId].className,
+						smoke->methodNames[smoke->methods[method].name] );
+		}
+
+		void * obj = getPointerObject(ptr);
+		smokeqyoto_object *o = value_obj_info(obj);
+
+		if (!o) {
+			if( do_debug & qtdb_virtual ) {  // if not in global destruction
+				qWarning("Cannot find object for virtual method %p -> %p", ptr, obj);
+			}
+
+			return false;
+		}
+
+		const char *methodName = smoke->methodNames[smoke->methods[method].name];
+		void * overridenMethod = (*OverridenMethod)(obj, methodName);
+
+		if (overridenMethod == 0) {
+			return false;
+		}
+
 		// Always fail for now..
 		return false;
 
-	void * obj = getPointerObject(ptr);
-	smokeqyoto_object *o = value_obj_info(obj);
-	if(do_debug & qtdb_virtual) 
-	    printf("virtual %p->%s::%s() called", ptr,
-		    smoke->classes[smoke->methods[method].classId].className,
-		    smoke->methodNames[smoke->methods[method].name]
-		    );
-
-	if(!o) {
-	    if( do_debug & qtdb_virtual )   // if not in global destruction
-		printf("Cannot find object for virtual method %p -> %p", ptr, obj);
-	    return false;
+		VirtualMethodCall c(smoke, method, args, obj, overridenMethod);
+		c.next();
+		return true;
 	}
-
-	const char *methodName = smoke->methodNames[smoke->methods[method].name];
-//	if (rb_respond_to(obj, rb_intern(methodName)) == 0) {
-//	    return false;
-//	}
-
-//	VirtualMethodCall c(smoke, method, args, obj);
-//	c.next();
-	return true;
-    }
 
     char *className(Smoke::Index classId) {
 		return classname.find((int) classId);
@@ -569,18 +814,28 @@ void AddGetPointerObject(GetIntPtr callback)
 	GetPointerObject = callback;
 }
 
+void AddOverridenMethod(OverridenMethodFn callback)
+{
+	OverridenMethod = callback;
+}
+
+void AddInvokeMethod(InvokeMethodFn callback)
+{
+	InvokeMethod = callback;
+}
+
 void
-CallMethod(int methodId, void * obj, Smoke::StackItem * sp, int items)
+CallSmokeMethod(int methodId, void * obj, Smoke::StackItem * sp, int items)
 {
 #ifdef DEBUG
-	printf("ENTER CallMethod(methodId: %d target: 0x%8.8x items: %d)\n", methodId, obj, items);
+	printf("ENTER CallSmokeMethod(methodId: %d target: 0x%8.8x items: %d)\n", methodId, obj, items);
 #endif
 
 	MethodCall c(qt_Smoke, methodId, obj, sp, items);
 	c.next();
 
 #ifdef DEBUG
-	printf("LEAVE CallMethod()\n");
+	printf("LEAVE CallSmokeMethod()\n");
 #endif
 
 	return;
@@ -607,8 +862,8 @@ setMocType(MocArgument *arg, int idx, const char * name, const char * static_typ
     return true;
 }
 
-static MocArgument *
-getMocArguments(QString member) 
+MocArgument *
+GetMocArguments(QString member) 
 {
 	QRegExp rx1("^.*\\((.*)\\)$");
 	QRegExp rx2("^(bool|int|double|char\\*|QString)&?$");
@@ -640,8 +895,6 @@ SignalEmit(char * signature, void * obj, Smoke::StackItem * sp, int items)
 	printf("ENTER SignalEmit(signature: %s target: 0x%8.8x items: %d)\n", signature, obj, items);
 #endif
 
-	QString sig(signature);
-	sig.replace(QRegExp("^void "), "");
 	smokeqyoto_object *o = value_obj_info(obj);
     QObject *qobj = (QObject*)o->smoke->cast(o->ptr, o->classId, o->smoke->idClass("QObject"));
     
@@ -649,16 +902,22 @@ SignalEmit(char * signature, void * obj, Smoke::StackItem * sp, int items)
 		return false;
 	}
 
-	MocArgument * args = getMocArguments(sig);
+	QString sig(signature);
+	sig.replace(QRegExp("^void "), "");
+	MocArgument * args = GetMocArguments(sig);
 	QStrList signalNames = qobj->metaObject()->signalNames(true);
 
     char * signalStr = 0;
-	int index = 0;
-    for ( signalStr = signalNames.first(); signalStr != 0; signalStr = signalNames.next() ) {
-		if (strcmp(signalStr, sig.latin1()) == 0) {
+	const char * signatureStr = sig.latin1();
+	int index;
+
+    for (	signalStr = signalNames.first(), index = 0; 
+			signalStr != 0; 
+			signalStr = signalNames.next(), index++ ) 
+	{
+		if (strcmp(signalStr, signatureStr) == 0) {
 			break;
 		}
-		index++;
 	}
 
 //	printf("signal id: %d\n", index);
@@ -678,6 +937,14 @@ Init_qyoto()
 	init_qt_Smoke();
 	qt_Smoke->binding = new QyotoSmokeBinding(qt_Smoke);
 	install_handlers(Qt_handlers);
+	QString classPrefix("Qt.");
+	QString className;
+
+    for (int i = 1; i <= qt_Smoke->numClasses; i++) {
+		className = classPrefix + qt_Smoke->classes[i].className;
+//		printf("classname: %s id: %d\n", className.latin1(), i);
+		classname.insert(i, strdup(className.latin1()));
+    }
 }
 
 }

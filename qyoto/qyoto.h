@@ -57,5 +57,7 @@ typedef void (*SetIntPtr)(void *, void *);
 typedef void (*RemoveIntPtr)(void *);
 typedef void* (*GetIntPtrFromCharStar)(char *);
 typedef char* (*GetCharStarFromIntPtr)(void *);
+typedef void* (*OverridenMethodFn)(void *, const char *);
+typedef void (*InvokeMethodFn)(void *, void *, void *);
 
 #endif
