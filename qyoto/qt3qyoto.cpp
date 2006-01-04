@@ -877,10 +877,11 @@ GetMocArguments(QString member)
 	QStringList args = QStringList::split(",", argStr);
 	MocArgument * mocargs = new MocArgument[args.size() + 1];
 	int i = 0;
-	for ( QStringList::Iterator it = args.begin(); it != args.end(); ++it ) {
-		QString a = (*it).replace(QRegExp("^const\\s+"), "");
+	for (QStringList::Iterator it = args.begin(); it != args.end(); ++it) {
+		QString a = (*it);
+		a.replace(QRegExp("^const\\s+"), "");
 		a = (rx2.search(a) == -1) ? "ptr" : rx2.cap(1);
-//		printf("a: %s\n", a.latin1());
+//		printf("arg: %s a: %s\n", (*it).latin1(), a.latin1());
 		bool valid = setMocType(mocargs, i, (*it).latin1(), a.latin1());
 		i++;
     }
