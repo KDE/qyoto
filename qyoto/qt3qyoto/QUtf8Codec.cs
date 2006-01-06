@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QUtf8Codec")]
 	public class QUtf8Codec : QTextCodec, IDisposable {
  		protected QUtf8Codec(Type dummy) : base((Type) null) {}
 		interface IQUtf8CodecProxy {

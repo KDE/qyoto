@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QImageFormat")]
 	public class QImageFormat : MarshalByRefObject {
 		protected Object _interceptor = null;
  

@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QLNode")]
 	public class QLNode : MarshalByRefObject {
 		protected Object _interceptor = null;
  

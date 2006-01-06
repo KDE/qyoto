@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQScrollBarSignals"></see> for signals emitted by QScrollBar
+	[SmokeClass("QScrollBar")]
 	public class QScrollBar : QWidget, IQRangeControl, IDisposable {
  		protected QScrollBar(Type dummy) : base((Type) null) {}
 		interface IQScrollBarProxy {
@@ -304,10 +305,10 @@ namespace Qt {
 		}
 		protected void CreateQScrollBarSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQScrollBarSignals), this);
-			_signalInterceptor = (IQScrollBarSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQScrollBarSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQScrollBarSignals Emit() {
-			return (IQScrollBarSignals) _signalInterceptor;
+			return (IQScrollBarSignals) Q_EMIT;
 		}
 	}
 

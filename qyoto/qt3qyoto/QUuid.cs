@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QUuid")]
 	public class QUuid : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

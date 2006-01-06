@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QEditorFactory")]
 	public class QEditorFactory : QObject, IDisposable {
  		protected QEditorFactory(Type dummy) : base((Type) null) {}
 		interface IQEditorFactoryProxy {
@@ -76,10 +77,10 @@ namespace Qt {
 		}
 		protected void CreateQEditorFactorySignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQEditorFactorySignals), this);
-			_signalInterceptor = (IQEditorFactorySignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQEditorFactorySignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQEditorFactorySignals Emit() {
-			return (IQEditorFactorySignals) _signalInterceptor;
+			return (IQEditorFactorySignals) Q_EMIT;
 		}
 	}
 

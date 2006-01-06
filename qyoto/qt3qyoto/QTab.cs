@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QTab")]
 	public class QTab : Qt, IDisposable {
  		protected QTab(Type dummy) : base((Type) null) {}
 		interface IQTabProxy {

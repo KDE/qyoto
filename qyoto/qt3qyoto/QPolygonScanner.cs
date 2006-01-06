@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QPolygonScanner")]
 	public class QPolygonScanner : MarshalByRefObject {
 		protected Object _interceptor = null;
  

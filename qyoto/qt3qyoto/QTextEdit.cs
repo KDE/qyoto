@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQTextEditSignals"></see> for signals emitted by QTextEdit
+	[SmokeClass("QTextEdit")]
 	public class QTextEdit : QScrollView, IDisposable {
  		protected QTextEdit(Type dummy) : base((Type) null) {}
 		interface IQTextEditProxy {
@@ -892,10 +893,10 @@ namespace Qt {
 		}
 		protected void CreateQTextEditSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQTextEditSignals), this);
-			_signalInterceptor = (IQTextEditSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQTextEditSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQTextEditSignals Emit() {
-			return (IQTextEditSignals) _signalInterceptor;
+			return (IQTextEditSignals) Q_EMIT;
 		}
 	}
 

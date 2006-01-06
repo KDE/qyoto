@@ -42,6 +42,7 @@ namespace Qt {
 	///********************************************** See <see cref="IQTimerSignals"></see> for signals emitted by QTimer
 	///</remarks>		<short>                                                                               $Id: qt/qtimer.</short>
 
+	[SmokeClass("QTimer")]
 	public class QTimer : QObject, IDisposable {
  		protected QTimer(Type dummy) : base((Type) null) {}
 		interface IQTimerProxy {
@@ -162,10 +163,10 @@ namespace Qt {
 		}
 		protected void CreateQTimerSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQTimerSignals), this);
-			_signalInterceptor = (IQTimerSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQTimerSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQTimerSignals Emit() {
-			return (IQTimerSignals) _signalInterceptor;
+			return (IQTimerSignals) Q_EMIT;
 		}
 	}
 

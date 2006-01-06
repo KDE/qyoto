@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QDomText")]
 	public class QDomText : QDomCharacterData, IDisposable {
  		protected QDomText(Type dummy) : base((Type) null) {}
 		interface IQDomTextProxy {

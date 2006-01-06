@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQWidgetStackSignals"></see> for signals emitted by QWidgetStack
+	[SmokeClass("QWidgetStack")]
 	public class QWidgetStack : QFrame, IDisposable {
  		protected QWidgetStack(Type dummy) : base((Type) null) {}
 		interface IQWidgetStackProxy {
@@ -167,10 +168,10 @@ namespace Qt {
 		}
 		protected void CreateQWidgetStackSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQWidgetStackSignals), this);
-			_signalInterceptor = (IQWidgetStackSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQWidgetStackSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQWidgetStackSignals Emit() {
-			return (IQWidgetStackSignals) _signalInterceptor;
+			return (IQWidgetStackSignals) Q_EMIT;
 		}
 	}
 

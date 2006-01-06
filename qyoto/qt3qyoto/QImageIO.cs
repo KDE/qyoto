@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Collections;
 	using System.Text;
 
+	[SmokeClass("QImageIO")]
 	public class QImageIO : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

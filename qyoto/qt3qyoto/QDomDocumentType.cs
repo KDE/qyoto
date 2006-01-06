@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QDomDocumentType")]
 	public class QDomDocumentType : QDomNode, IDisposable {
  		protected QDomDocumentType(Type dummy) : base((Type) null) {}
 		interface IQDomDocumentTypeProxy {

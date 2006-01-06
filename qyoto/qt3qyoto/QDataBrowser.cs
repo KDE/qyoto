@@ -6,6 +6,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQDataBrowserSignals"></see> for signals emitted by QDataBrowser
+	[SmokeClass("QDataBrowser")]
 	public class QDataBrowser : QWidget, IDisposable {
  		protected QDataBrowser(Type dummy) : base((Type) null) {}
 		interface IQDataBrowserProxy {
@@ -314,10 +315,10 @@ namespace Qt {
 		}
 		protected void CreateQDataBrowserSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQDataBrowserSignals), this);
-			_signalInterceptor = (IQDataBrowserSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQDataBrowserSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQDataBrowserSignals Emit() {
-			return (IQDataBrowserSignals) _signalInterceptor;
+			return (IQDataBrowserSignals) Q_EMIT;
 		}
 	}
 

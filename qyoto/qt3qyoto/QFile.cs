@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QFile")]
 	public class QFile : QIODevice, IDisposable {
  		protected QFile(Type dummy) : base((Type) null) {}
 		interface IQFileProxy {

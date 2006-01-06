@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Collections;
 
+	[SmokeClass("QCanvasItem")]
 	public class QCanvasItem : Qt {
  		protected QCanvasItem(Type dummy) : base((Type) null) {}
 		interface IQCanvasItemProxy {

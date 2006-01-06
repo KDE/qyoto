@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QIconDragEvent")]
 	public class QIconDragEvent : QEvent, IDisposable {
  		protected QIconDragEvent(Type dummy) : base((Type) null) {}
 		interface IQIconDragEventProxy {

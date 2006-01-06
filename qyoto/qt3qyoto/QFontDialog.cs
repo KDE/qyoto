@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QFontDialog")]
 	public class QFontDialog : QDialog {
  		protected QFontDialog(Type dummy) : base((Type) null) {}
 		interface IQFontDialogProxy {
@@ -85,10 +86,10 @@ namespace Qt {
 		}
 		protected void CreateQFontDialogSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQFontDialogSignals), this);
-			_signalInterceptor = (IQFontDialogSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQFontDialogSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQFontDialogSignals Emit() {
-			return (IQFontDialogSignals) _signalInterceptor;
+			return (IQFontDialogSignals) Q_EMIT;
 		}
 	}
 

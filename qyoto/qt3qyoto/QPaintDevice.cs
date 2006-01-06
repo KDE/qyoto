@@ -11,6 +11,7 @@ namespace Qt {
 			int Resolution();
 	}
 
+	[SmokeClass("QPaintDevice")]
 	public class QPaintDevice : MarshalByRefObject, IQPaintDevice, IDisposable {
 		protected Object _interceptor = null;
  

@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QSocketDevice")]
 	public class QSocketDevice : QIODevice, IDisposable {
  		protected QSocketDevice(Type dummy) : base((Type) null) {}
 		interface IQSocketDeviceProxy {

@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQLineEditSignals"></see> for signals emitted by QLineEdit
+	[SmokeClass("QLineEdit")]
 	public class QLineEdit : QFrame, IDisposable {
  		protected QLineEdit(Type dummy) : base((Type) null) {}
 		interface IQLineEditProxy {
@@ -490,10 +491,10 @@ namespace Qt {
 		}
 		protected void CreateQLineEditSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQLineEditSignals), this);
-			_signalInterceptor = (IQLineEditSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQLineEditSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQLineEditSignals Emit() {
-			return (IQLineEditSignals) _signalInterceptor;
+			return (IQLineEditSignals) Q_EMIT;
 		}
 	}
 

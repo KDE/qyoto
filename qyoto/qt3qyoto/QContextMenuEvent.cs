@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QContextMenuEvent")]
 	public class QContextMenuEvent : QEvent, IDisposable {
  		protected QContextMenuEvent(Type dummy) : base((Type) null) {}
 		interface IQContextMenuEventProxy {

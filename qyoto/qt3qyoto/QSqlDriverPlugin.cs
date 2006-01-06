@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Collections;
 	using System.Text;
 
+	[SmokeClass("QSqlDriverPlugin")]
 	public class QSqlDriverPlugin : QGPlugin {
  		protected QSqlDriverPlugin(Type dummy) : base((Type) null) {}
 		interface IQSqlDriverPluginProxy {
@@ -64,10 +65,10 @@ namespace Qt {
 		}
 		protected void CreateQSqlDriverPluginSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQSqlDriverPluginSignals), this);
-			_signalInterceptor = (IQSqlDriverPluginSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQSqlDriverPluginSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQSqlDriverPluginSignals Emit() {
-			return (IQSqlDriverPluginSignals) _signalInterceptor;
+			return (IQSqlDriverPluginSignals) Q_EMIT;
 		}
 	}
 

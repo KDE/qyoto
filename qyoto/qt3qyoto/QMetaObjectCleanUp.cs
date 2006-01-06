@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QMetaObjectCleanUp")]
 	public class QMetaObjectCleanUp : MarshalByRefObject {
 		protected Object _interceptor = null;
  

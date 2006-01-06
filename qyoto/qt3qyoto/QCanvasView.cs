@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QCanvasView")]
 	public class QCanvasView : QScrollView, IDisposable {
  		protected QCanvasView(Type dummy) : base((Type) null) {}
 		interface IQCanvasViewProxy {
@@ -164,10 +165,10 @@ namespace Qt {
 		}
 		protected void CreateQCanvasViewSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQCanvasViewSignals), this);
-			_signalInterceptor = (IQCanvasViewSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQCanvasViewSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQCanvasViewSignals Emit() {
-			return (IQCanvasViewSignals) _signalInterceptor;
+			return (IQCanvasViewSignals) Q_EMIT;
 		}
 	}
 

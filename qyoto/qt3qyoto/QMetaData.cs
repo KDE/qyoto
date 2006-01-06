@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QMetaData")]
 	public class QMetaData : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

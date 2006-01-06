@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Collections;
 
+	[SmokeClass("QMetaProperty")]
 	public class QMetaProperty : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

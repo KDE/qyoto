@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QShowEvent")]
 	public class QShowEvent : QEvent, IDisposable {
  		protected QShowEvent(Type dummy) : base((Type) null) {}
 		interface IQShowEventProxy {

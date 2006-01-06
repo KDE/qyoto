@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QGCache")]
 	public class QGCache : QPtrCollection {
  		protected QGCache(Type dummy) : base((Type) null) {}
 		interface IQGCacheProxy {

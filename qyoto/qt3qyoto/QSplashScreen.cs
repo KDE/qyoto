@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQSplashScreenSignals"></see> for signals emitted by QSplashScreen
+	[SmokeClass("QSplashScreen")]
 	public class QSplashScreen : QWidget, IDisposable {
  		protected QSplashScreen(Type dummy) : base((Type) null) {}
 		interface IQSplashScreenProxy {
@@ -136,10 +137,10 @@ namespace Qt {
 		}
 		protected void CreateQSplashScreenSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQSplashScreenSignals), this);
-			_signalInterceptor = (IQSplashScreenSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQSplashScreenSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQSplashScreenSignals Emit() {
-			return (IQSplashScreenSignals) _signalInterceptor;
+			return (IQSplashScreenSignals) Q_EMIT;
 		}
 	}
 

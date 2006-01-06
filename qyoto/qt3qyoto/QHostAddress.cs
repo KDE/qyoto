@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QHostAddress")]
 	public class QHostAddress : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

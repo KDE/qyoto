@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QDataSource")]
 	public class QDataSource : QAsyncIO {
  		protected QDataSource(Type dummy) : base((Type) null) {}
 		interface IQDataSourceProxy {

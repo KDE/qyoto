@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QDataSink")]
 	public class QDataSink : QAsyncIO {
  		protected QDataSink(Type dummy) : base((Type) null) {}
 		interface IQDataSinkProxy {

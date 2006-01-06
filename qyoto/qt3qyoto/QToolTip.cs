@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QToolTip")]
 	public class QToolTip : Qt {
  		protected QToolTip(Type dummy) : base((Type) null) {}
 		interface IQToolTipProxy {

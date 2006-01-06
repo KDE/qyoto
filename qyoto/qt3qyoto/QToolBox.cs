@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQToolBoxSignals"></see> for signals emitted by QToolBox
+	[SmokeClass("QToolBox")]
 	public class QToolBox : QFrame, IDisposable {
  		protected QToolBox(Type dummy) : base((Type) null) {}
 		interface IQToolBoxProxy {
@@ -202,10 +203,10 @@ namespace Qt {
 		}
 		protected void CreateQToolBoxSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQToolBoxSignals), this);
-			_signalInterceptor = (IQToolBoxSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQToolBoxSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQToolBoxSignals Emit() {
-			return (IQToolBoxSignals) _signalInterceptor;
+			return (IQToolBoxSignals) Q_EMIT;
 		}
 	}
 

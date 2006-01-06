@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQPopupMenuSignals"></see> for signals emitted by QPopupMenu
+	[SmokeClass("QPopupMenu")]
 	public class QPopupMenu : QFrame, IQMenuData, IDisposable {
  		protected QPopupMenu(Type dummy) : base((Type) null) {}
 		interface IQPopupMenuProxy {
@@ -613,10 +614,10 @@ namespace Qt {
 		}
 		protected void CreateQPopupMenuSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQPopupMenuSignals), this);
-			_signalInterceptor = (IQPopupMenuSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQPopupMenuSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQPopupMenuSignals Emit() {
-			return (IQPopupMenuSignals) _signalInterceptor;
+			return (IQPopupMenuSignals) Q_EMIT;
 		}
 	}
 

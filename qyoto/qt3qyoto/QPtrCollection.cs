@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QPtrCollection")]
 	public class QPtrCollection : MarshalByRefObject {
 		protected Object _interceptor = null;
  

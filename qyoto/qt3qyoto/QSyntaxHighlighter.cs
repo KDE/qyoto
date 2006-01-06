@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QSyntaxHighlighter")]
 	public class QSyntaxHighlighter : Qt {
  		protected QSyntaxHighlighter(Type dummy) : base((Type) null) {}
 		interface IQSyntaxHighlighterProxy {

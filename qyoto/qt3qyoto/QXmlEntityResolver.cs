@@ -9,6 +9,7 @@ namespace Qt {
 			string ErrorString();
 	}
 
+	[SmokeClass("QXmlEntityResolver")]
 	public class QXmlEntityResolver : MarshalByRefObject, IQXmlEntityResolver {
 		protected Object _interceptor = null;
  

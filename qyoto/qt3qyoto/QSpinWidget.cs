@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQSpinWidgetSignals"></see> for signals emitted by QSpinWidget
+	[SmokeClass("QSpinWidget")]
 	public class QSpinWidget : QWidget, IDisposable {
  		protected QSpinWidget(Type dummy) : base((Type) null) {}
 		interface IQSpinWidgetProxy {
@@ -186,10 +187,10 @@ namespace Qt {
 		}
 		protected void CreateQSpinWidgetSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQSpinWidgetSignals), this);
-			_signalInterceptor = (IQSpinWidgetSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQSpinWidgetSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQSpinWidgetSignals Emit() {
-			return (IQSpinWidgetSignals) _signalInterceptor;
+			return (IQSpinWidgetSignals) Q_EMIT;
 		}
 	}
 

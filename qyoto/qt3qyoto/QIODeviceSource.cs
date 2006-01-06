@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QIODeviceSource")]
 	public class QIODeviceSource : QDataSource, IDisposable {
  		protected QIODeviceSource(Type dummy) : base((Type) null) {}
 		interface IQIODeviceSourceProxy {

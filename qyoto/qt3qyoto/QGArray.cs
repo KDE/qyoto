@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QGArray")]
 	public class QGArray : MarshalByRefObject {
 		protected Object _interceptor = null;
  

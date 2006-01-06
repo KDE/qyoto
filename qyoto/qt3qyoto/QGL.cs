@@ -6,6 +6,7 @@ namespace Qt {
 	public interface IQGL {
 	}
 
+	[SmokeClass("QGL")]
 	public class QGL : MarshalByRefObject, IQGL, IDisposable {
 		protected Object _interceptor = null;
  

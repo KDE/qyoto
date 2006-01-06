@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QFontMetrics")]
 	public class QFontMetrics : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

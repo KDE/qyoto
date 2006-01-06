@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QStringData")]
 	public class QStringData : QShared, IDisposable {
  		protected QStringData(Type dummy) : base((Type) null) {}
 		interface IQStringDataProxy {

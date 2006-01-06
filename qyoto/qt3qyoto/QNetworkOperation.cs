@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QNetworkOperation")]
 	public class QNetworkOperation : QObject, IDisposable {
  		protected QNetworkOperation(Type dummy) : base((Type) null) {}
 		interface IQNetworkOperationProxy {
@@ -130,10 +131,10 @@ namespace Qt {
 		}
 		protected void CreateQNetworkOperationSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQNetworkOperationSignals), this);
-			_signalInterceptor = (IQNetworkOperationSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQNetworkOperationSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQNetworkOperationSignals Emit() {
-			return (IQNetworkOperationSignals) _signalInterceptor;
+			return (IQNetworkOperationSignals) Q_EMIT;
 		}
 	}
 

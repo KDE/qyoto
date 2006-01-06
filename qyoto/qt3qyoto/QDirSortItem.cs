@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QDirSortItem")]
 	public class QDirSortItem : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

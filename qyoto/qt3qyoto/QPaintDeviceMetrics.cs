@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QPaintDeviceMetrics")]
 	public class QPaintDeviceMetrics : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

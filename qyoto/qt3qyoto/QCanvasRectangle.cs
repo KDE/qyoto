@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QCanvasRectangle")]
 	public class QCanvasRectangle : QCanvasPolygonalItem, IDisposable {
  		protected QCanvasRectangle(Type dummy) : base((Type) null) {}
 		interface IQCanvasRectangleProxy {

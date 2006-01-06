@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QWidgetItem")]
 	public class QWidgetItem : QLayoutItem, IDisposable {
  		protected QWidgetItem(Type dummy) : base((Type) null) {}
 		interface IQWidgetItemProxy {

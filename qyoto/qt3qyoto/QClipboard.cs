@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QClipboard")]
 	public class QClipboard : QObject {
  		protected QClipboard(Type dummy) : base((Type) null) {}
 		interface IQClipboardProxy {
@@ -159,10 +160,10 @@ namespace Qt {
 		}
 		protected void CreateQClipboardSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQClipboardSignals), this);
-			_signalInterceptor = (IQClipboardSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQClipboardSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQClipboardSignals Emit() {
-			return (IQClipboardSignals) _signalInterceptor;
+			return (IQClipboardSignals) Q_EMIT;
 		}
 	}
 

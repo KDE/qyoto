@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QNetworkProtocolFactoryBase")]
 	public class QNetworkProtocolFactoryBase : MarshalByRefObject {
 		protected Object _interceptor = null;
  

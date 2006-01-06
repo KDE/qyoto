@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QGb2312Codec")]
 	public class QGb2312Codec : QGb18030Codec, IDisposable {
  		protected QGb2312Codec(Type dummy) : base((Type) null) {}
 		interface IQGb2312CodecProxy {

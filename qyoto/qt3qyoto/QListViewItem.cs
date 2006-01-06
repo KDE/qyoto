@@ -5,6 +5,7 @@ namespace Qt {
 using System.Collections;
 	using System.Text;
 
+	[SmokeClass("QListViewItem")]
 	public class QListViewItem : Qt, IDisposable {
  		protected QListViewItem(Type dummy) : base((Type) null) {}
 		interface IQListViewItemProxy {

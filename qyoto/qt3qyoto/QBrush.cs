@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QBrush")]
 	public class QBrush : Qt, IDisposable {
  		protected QBrush(Type dummy) : base((Type) null) {}
 		interface IQBrushProxy {

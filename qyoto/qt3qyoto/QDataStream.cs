@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QDataStream")]
 	public class QDataStream : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

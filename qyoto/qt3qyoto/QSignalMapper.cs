@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQSignalMapperSignals"></see> for signals emitted by QSignalMapper
+	[SmokeClass("QSignalMapper")]
 	public class QSignalMapper : QObject, IDisposable {
  		protected QSignalMapper(Type dummy) : base((Type) null) {}
 		interface IQSignalMapperProxy {
@@ -100,10 +101,10 @@ namespace Qt {
 		}
 		protected void CreateQSignalMapperSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQSignalMapperSignals), this);
-			_signalInterceptor = (IQSignalMapperSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQSignalMapperSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQSignalMapperSignals Emit() {
-			return (IQSignalMapperSignals) _signalInterceptor;
+			return (IQSignalMapperSignals) Q_EMIT;
 		}
 	}
 

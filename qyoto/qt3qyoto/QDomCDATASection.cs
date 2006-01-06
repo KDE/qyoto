@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QDomCDATASection")]
 	public class QDomCDATASection : QDomText, IDisposable {
  		protected QDomCDATASection(Type dummy) : base((Type) null) {}
 		interface IQDomCDATASectionProxy {

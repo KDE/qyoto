@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQHttpSignals"></see> for signals emitted by QHttp
+	[SmokeClass("QHttp")]
 	public class QHttp : QNetworkProtocol, IDisposable {
  		protected QHttp(Type dummy) : base((Type) null) {}
 		interface IQHttpProxy {
@@ -276,10 +277,10 @@ namespace Qt {
 		}
 		protected void CreateQHttpSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQHttpSignals), this);
-			_signalInterceptor = (IQHttpSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQHttpSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQHttpSignals Emit() {
-			return (IQHttpSignals) _signalInterceptor;
+			return (IQHttpSignals) Q_EMIT;
 		}
 	}
 

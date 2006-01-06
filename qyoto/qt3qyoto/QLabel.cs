@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QLabel")]
 	public class QLabel : QFrame, IDisposable {
  		protected QLabel(Type dummy) : base((Type) null) {}
 		interface IQLabelProxy {
@@ -272,10 +273,10 @@ namespace Qt {
 		}
 		protected void CreateQLabelSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQLabelSignals), this);
-			_signalInterceptor = (IQLabelSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQLabelSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQLabelSignals Emit() {
-			return (IQLabelSignals) _signalInterceptor;
+			return (IQLabelSignals) Q_EMIT;
 		}
 	}
 

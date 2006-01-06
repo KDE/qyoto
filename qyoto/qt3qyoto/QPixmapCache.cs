@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QPixmapCache")]
 	public class QPixmapCache : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

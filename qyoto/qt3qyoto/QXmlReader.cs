@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QXmlReader")]
 	public class QXmlReader : MarshalByRefObject {
 		protected Object _interceptor = null;
  

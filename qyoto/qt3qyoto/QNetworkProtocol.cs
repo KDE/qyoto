@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQNetworkProtocolSignals"></see> for signals emitted by QNetworkProtocol
+	[SmokeClass("QNetworkProtocol")]
 	public class QNetworkProtocol : QObject, IDisposable {
  		protected QNetworkProtocol(Type dummy) : base((Type) null) {}
 		interface IQNetworkProtocolProxy {
@@ -201,10 +202,10 @@ namespace Qt {
 		}
 		protected void CreateQNetworkProtocolSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQNetworkProtocolSignals), this);
-			_signalInterceptor = (IQNetworkProtocolSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQNetworkProtocolSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQNetworkProtocolSignals Emit() {
-			return (IQNetworkProtocolSignals) _signalInterceptor;
+			return (IQNetworkProtocolSignals) Q_EMIT;
 		}
 	}
 

@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQTableSignals"></see> for signals emitted by QTable
+	[SmokeClass("QTable")]
 	public class QTable : QScrollView, IDisposable {
  		protected QTable(Type dummy) : base((Type) null) {}
 		interface IQTableProxy {
@@ -765,10 +766,10 @@ namespace Qt {
 		}
 		protected void CreateQTableSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQTableSignals), this);
-			_signalInterceptor = (IQTableSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQTableSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQTableSignals Emit() {
-			return (IQTableSignals) _signalInterceptor;
+			return (IQTableSignals) Q_EMIT;
 		}
 	}
 

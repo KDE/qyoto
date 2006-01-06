@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Collections;
 	using System.Text;
 
+	[SmokeClass("QSqlIndex")]
 	public class QSqlIndex : QSqlRecord, IDisposable {
  		protected QSqlIndex(Type dummy) : base((Type) null) {}
 		interface IQSqlIndexProxy {

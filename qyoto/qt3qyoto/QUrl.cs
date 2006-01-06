@@ -42,6 +42,7 @@ namespace Qt {
 			bool CdUp();
 	}
 
+	[SmokeClass("QUrl")]
 	public class QUrl : MarshalByRefObject, IQUrl, IDisposable {
 		protected Object _interceptor = null;
  

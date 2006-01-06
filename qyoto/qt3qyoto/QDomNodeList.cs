@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Collections;
 
+	[SmokeClass("QDomNodeList")]
 	public class QDomNodeList : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

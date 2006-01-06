@@ -11,6 +11,7 @@ namespace Qt {
 			string ErrorString();
 	}
 
+	[SmokeClass("QXmlErrorHandler")]
 	public class QXmlErrorHandler : MarshalByRefObject, IQXmlErrorHandler {
 		protected Object _interceptor = null;
  

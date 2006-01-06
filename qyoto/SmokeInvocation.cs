@@ -64,7 +64,7 @@ namespace Qt {
 		
 		delegate IntPtr GetIntPtr(IntPtr instance);
 		delegate void SetIntPtr(IntPtr instance, IntPtr ptr);
-		delegate void RemoveIntPtr(IntPtr ptr);
+		delegate void FromIntPtr(IntPtr ptr);
 		delegate IntPtr GetIntPtrFromString(string str);
 		delegate string GetStringFromIntPtr(IntPtr ptr);
 		delegate IntPtr OverridenMethodFn(IntPtr instance, string method);
@@ -80,6 +80,9 @@ namespace Qt {
 		static extern string StringFromQString(IntPtr ptr);
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		static extern void AddFreeGCHandle(FromIntPtr callback);
+		
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern void AddGetSmokeObject(GetIntPtr callback);
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
@@ -89,7 +92,7 @@ namespace Qt {
 		static extern void AddMapPointer(SetIntPtr callback);
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		static extern void AddUnmapPointer(RemoveIntPtr callback);
+		static extern void AddUnmapPointer(FromIntPtr callback);
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern void AddGetPointerObject(GetIntPtr callback);
@@ -115,6 +118,10 @@ namespace Qt {
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern void AddInvokeMethod(InvokeMethodFn callback);
 		
+		static void FreeGCHandle(IntPtr handle) {
+			((GCHandle) handle).Free();
+		}
+
 		static IntPtr GetSmokeObject(IntPtr instancePtr) {
 			Object instance = ((GCHandle) instancePtr).Target;
 			if (instance == null) {
@@ -198,21 +205,74 @@ namespace Qt {
 			return (IntPtr) GCHandle.Alloc(StringFromQString(ptr));
 		}
 
-		static void InvokeMethod(IntPtr instance, IntPtr method, IntPtr stack) {
-			Console.WriteLine("InvokeMethod()");
-			return;
-		}
-
 		// The key is a type name of a class which has overriden one or more
 		// virtual methods, and the value is a Hashtable of the smoke type
 		// signatures as keys retrieving a suitable MethodInfo to invoke via 
 		// reflection.
 		static private Hashtable overridenMethods = new Hashtable();
 		
+		static void AddOverridenMethods(Type klass) {
+			object[] attributes = klass.GetCustomAttributes(typeof(SmokeClass), false);
+			if (attributes.Length > 0) {
+				return;
+			}
+
+			string instanceType = klass.ToString();
+			Hashtable methodsHash = (Hashtable) overridenMethods[instanceType];
+			if (methodsHash != null) {
+				return;
+			}
+
+			methodsHash = new Hashtable();
+			overridenMethods[instanceType] = methodsHash;
+
+			do {
+				MemberInfo[] methods = klass.FindMembers(	MemberTypes.Method,
+															BindingFlags.Public 
+															| BindingFlags.NonPublic 
+															| BindingFlags.Instance
+															| BindingFlags.DeclaredOnly,
+															Type.FilterName,
+															"*" );
+				foreach (MemberInfo method in methods) {
+					Type parent = klass.BaseType;
+					string signature = null;
+					while (signature == null && parent != typeof(Qt)) {
+						MemberInfo[] parentMethods = parent.FindMembers(	MemberTypes.Method,
+																			BindingFlags.Public 
+																			| BindingFlags.NonPublic 
+																			| BindingFlags.Instance
+																			| BindingFlags.DeclaredOnly,
+																			Type.FilterName,
+																			method.Name );
+						foreach (MemberInfo parentMethod in parentMethods) {
+							if (method.ToString() == parentMethod.ToString()) {
+//								Console.WriteLine("found a parent {0} {1}", parent, parentMethod);
+								object[] smokeMethod = parentMethod.GetCustomAttributes(typeof(SmokeMethod), false);
+								if (smokeMethod.Length > 0) {
+									signature = ((SmokeMethod) smokeMethod[0]).Signature;
+								}
+								
+							}
+						}
+	
+						parent = parent.BaseType;
+					}
+	
+					if (signature != null) {
+						methodsHash[signature] = method;
+					}
+				}
+
+				klass = klass.BaseType;
+				attributes = klass.GetCustomAttributes(typeof(SmokeClass), false);
+			} while (attributes.Length == 0);
+		}
+
 		static IntPtr OverridenMethod(IntPtr instance, string method) {
 			object temp = ((GCHandle) instance).Target;
 			string instanceType = temp.ToString();
-			Console.WriteLine("OverridenMethod() instanceType: {0} method: {1}", instanceType, method);
+//			Console.WriteLine("OverridenMethod() instanceType: {0} method: {1}", instanceType, method);
 			Hashtable methods = (Hashtable) overridenMethods[instanceType];
 			if (methods == null) {
 				return (IntPtr) 0;
@@ -226,12 +286,90 @@ namespace Qt {
 			return (IntPtr) GCHandle.Alloc(methodInfo);
 		}
 
+		static void InvokeMethod(IntPtr instanceHandle, IntPtr methodHandle, IntPtr stack) {
+			object instance = ((GCHandle) instanceHandle).Target;
+			MethodInfo method = (MethodInfo) ((GCHandle) methodHandle).Target;
+//			Console.WriteLine("InvokeMethod() {0}.{1}", instance, method.Name);
+
+			unsafe {
+				StackItem * stackPtr = (StackItem *) stack;
+				ParameterInfo[] parameters = method.GetParameters();
+				object[] args = new object[parameters.Length];
+
+				for (int i = 0; i < args.Length; i++) {
+					if (parameters[i].ParameterType == typeof(bool)) {
+						args[i] = stackPtr[i+1].s_bool;
+					} else if (parameters[i].ParameterType == typeof(sbyte)) {
+						args[i] = stackPtr[i+1].s_char;
+					} else if (parameters[i].ParameterType == typeof(byte)) {
+						args[i] = stackPtr[i+1].s_uchar;
+					} else if (parameters[i].ParameterType == typeof(short)) {
+						args[i] = stackPtr[i+1].s_short;
+					} else if (parameters[i].ParameterType == typeof(ushort)) {
+						args[i] = stackPtr[i+1].s_ushort;
+					} else if (parameters[i].ParameterType == typeof(int)) {
+						args[i] = stackPtr[i+1].s_int;
+					} else if (parameters[i].ParameterType == typeof(uint)) {
+						args[i] = stackPtr[i+1].s_uint;
+					} else if (parameters[i].ParameterType == typeof(long)) {
+						args[i] = stackPtr[i+1].s_long;
+					} else if (parameters[i].ParameterType == typeof(ulong)) {
+						args[i] = stackPtr[i+1].s_ulong;
+					} else if (parameters[i].ParameterType == typeof(float)) {
+						args[i] = stackPtr[i+1].s_float;
+					} else if (parameters[i].ParameterType == typeof(double)) {
+						args[i] = stackPtr[i+1].s_double;
+					} else if (parameters[i].ParameterType == typeof(string)) {
+						args[i] = (string) ((GCHandle) stackPtr[i+1].s_class).Target;
+					} else {
+						args[i] = ((GCHandle) stackPtr[i+1].s_class).Target;
+					}
+				}
+
+				object returnValue = method.Invoke(instance, args);
+				Type returnType = method.ReturnType;
+
+				if (returnType == typeof(void)) {
+					;
+				} else if (returnType == typeof(bool)) {
+					stackPtr[0].s_bool = (bool) returnValue;
+				} else if (returnType == typeof(sbyte)) {
+					stackPtr[0].s_char = (sbyte) returnValue;
+				} else if (returnType == typeof(byte)) {
+					stackPtr[0].s_uchar = (byte) returnValue;
+				} else if (returnType == typeof(short)) {
+					stackPtr[0].s_short = (short) returnValue;
+				} else if (returnType == typeof(ushort)) {
+					stackPtr[0].s_ushort = (ushort) returnValue;
+				} else if (returnType == typeof(int)) {
+					stackPtr[0].s_int = (int) returnValue;
+				} else if (returnType == typeof(uint)) {
+					stackPtr[0].s_uint = (uint) returnValue;
+				} else if (returnType == typeof(long)) {
+					stackPtr[0].s_long = (long) returnValue;
+				} else if (returnType == typeof(ulong)) {
+					stackPtr[0].s_ulong = (ulong) returnValue;
+				} else if (returnType == typeof(float)) {
+					stackPtr[0].s_float = (float) returnValue;
+				} else if (returnType == typeof(double)) {
+					stackPtr[0].s_double = (double) returnValue;
+				} else if (returnType == typeof(string)) {
+					stackPtr[0].s_class = (IntPtr) GCHandle.Alloc(returnValue);
+				} else {
+					stackPtr[0].s_class = (IntPtr) GCHandle.Alloc(returnValue);
+				}
+			}
+
+			return;
+		}
+
+		static private FromIntPtr freeGCHandle = new FromIntPtr(FreeGCHandle);
 
 		static private GetIntPtr getSmokeObject = new GetIntPtr(GetSmokeObject);
 		static private SetIntPtr setSmokeObject = new SetIntPtr(SetSmokeObject);
 		
 		static private SetIntPtr mapPointer = new SetIntPtr(MapPointer);
-		static private RemoveIntPtr unmapPointer = new RemoveIntPtr(UnmapPointer);
+		static private FromIntPtr unmapPointer = new FromIntPtr(UnmapPointer);
 		static private GetIntPtr getPointerObject = new GetIntPtr(GetPointerObject);
 		
 		static private GetIntPtr intPtrToCharStarStar = new GetIntPtr(IntPtrToCharStarStar);
@@ -244,6 +382,8 @@ namespace Qt {
 		static private InvokeMethodFn invokeMethod = new InvokeMethodFn(InvokeMethod);
 		
 		static SmokeInvocation() {
+			AddFreeGCHandle(freeGCHandle);
+
 			AddGetSmokeObject(getSmokeObject);
 			AddSetSmokeObject(setSmokeObject);
 			
@@ -270,6 +410,9 @@ namespace Qt {
 			_classToProxy = classToProxy;
 			_instance = instance;
 			_className = Regex.Replace(_classToProxy.ToString(), @"^[^\.]*.([^+]*).*", "$1");
+			if (_instance != null) {
+				AddOverridenMethods(_instance.GetType());
+			}
 		}
 
 		public ArrayList FindMethod(string name) {

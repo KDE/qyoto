@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QSemiModal")]
 	public class QSemiModal : QDialog, IDisposable {
  		protected QSemiModal(Type dummy) : base((Type) null) {}
 		interface IQSemiModalProxy {
@@ -109,10 +110,10 @@ namespace Qt {
 		}
 		protected void CreateQSemiModalSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQSemiModalSignals), this);
-			_signalInterceptor = (IQSemiModalSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQSemiModalSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQSemiModalSignals Emit() {
-			return (IQSemiModalSignals) _signalInterceptor;
+			return (IQSemiModalSignals) Q_EMIT;
 		}
 	}
 

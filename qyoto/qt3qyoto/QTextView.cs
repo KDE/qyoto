@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QTextView")]
 	public class QTextView : QTextEdit, IDisposable {
  		protected QTextView(Type dummy) : base((Type) null) {}
 		interface IQTextViewProxy {
@@ -127,10 +128,10 @@ namespace Qt {
 		}
 		protected void CreateQTextViewSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQTextViewSignals), this);
-			_signalInterceptor = (IQTextViewSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQTextViewSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQTextViewSignals Emit() {
-			return (IQTextViewSignals) _signalInterceptor;
+			return (IQTextViewSignals) Q_EMIT;
 		}
 	}
 

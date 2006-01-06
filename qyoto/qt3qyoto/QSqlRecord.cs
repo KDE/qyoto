@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Collections;
 	using System.Text;
 
+	[SmokeClass("QSqlRecord")]
 	public class QSqlRecord : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

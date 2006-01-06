@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQButtonGroupSignals"></see> for signals emitted by QButtonGroup
+	[SmokeClass("QButtonGroup")]
 	public class QButtonGroup : QGroupBox, IDisposable {
  		protected QButtonGroup(Type dummy) : base((Type) null) {}
 		interface IQButtonGroupProxy {
@@ -253,10 +254,10 @@ namespace Qt {
 		}
 		protected void CreateQButtonGroupSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQButtonGroupSignals), this);
-			_signalInterceptor = (IQButtonGroupSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQButtonGroupSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQButtonGroupSignals Emit() {
-			return (IQButtonGroupSignals) _signalInterceptor;
+			return (IQButtonGroupSignals) Q_EMIT;
 		}
 	}
 

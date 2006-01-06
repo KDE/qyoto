@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QKeySequence")]
 	public class QKeySequence : Qt, IDisposable {
  		protected QKeySequence(Type dummy) : base((Type) null) {}
 		interface IQKeySequenceProxy {

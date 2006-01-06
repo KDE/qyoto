@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QCanvasSprite")]
 	public class QCanvasSprite : QCanvasItem, IDisposable {
  		protected QCanvasSprite(Type dummy) : base((Type) null) {}
 		interface IQCanvasSpriteProxy {

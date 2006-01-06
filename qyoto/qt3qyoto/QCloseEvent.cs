@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QCloseEvent")]
 	public class QCloseEvent : QEvent, IDisposable {
  		protected QCloseEvent(Type dummy) : base((Type) null) {}
 		interface IQCloseEventProxy {

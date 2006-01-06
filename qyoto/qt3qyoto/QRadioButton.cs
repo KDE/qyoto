@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QRadioButton")]
 	public class QRadioButton : QButton, IDisposable {
  		protected QRadioButton(Type dummy) : base((Type) null) {}
 		interface IQRadioButtonProxy {
@@ -133,10 +134,10 @@ namespace Qt {
 		}
 		protected void CreateQRadioButtonSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQRadioButtonSignals), this);
-			_signalInterceptor = (IQRadioButtonSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQRadioButtonSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQRadioButtonSignals Emit() {
-			return (IQRadioButtonSignals) _signalInterceptor;
+			return (IQRadioButtonSignals) Q_EMIT;
 		}
 	}
 

@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QInputDialog")]
 	public class QInputDialog : QDialog {
  		protected QInputDialog(Type dummy) : base((Type) null) {}
 		interface IQInputDialogProxy {
@@ -195,10 +196,10 @@ namespace Qt {
 		}
 		protected void CreateQInputDialogSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQInputDialogSignals), this);
-			_signalInterceptor = (IQInputDialogSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQInputDialogSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQInputDialogSignals Emit() {
-			return (IQInputDialogSignals) _signalInterceptor;
+			return (IQInputDialogSignals) Q_EMIT;
 		}
 	}
 

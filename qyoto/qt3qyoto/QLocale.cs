@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QLocale")]
 	public class QLocale : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QHButtonGroup")]
 	public class QHButtonGroup : QButtonGroup, IDisposable {
  		protected QHButtonGroup(Type dummy) : base((Type) null) {}
 		interface IQHButtonGroupProxy {
@@ -118,10 +119,10 @@ namespace Qt {
 		}
 		protected void CreateQHButtonGroupSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQHButtonGroupSignals), this);
-			_signalInterceptor = (IQHButtonGroupSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQHButtonGroupSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQHButtonGroupSignals Emit() {
-			return (IQHButtonGroupSignals) _signalInterceptor;
+			return (IQHButtonGroupSignals) Q_EMIT;
 		}
 	}
 

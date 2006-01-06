@@ -11,6 +11,7 @@ namespace Qt {
 			string ErrorString();
 	}
 
+	[SmokeClass("QXmlDeclHandler")]
 	public class QXmlDeclHandler : MarshalByRefObject, IQXmlDeclHandler {
 		protected Object _interceptor = null;
  

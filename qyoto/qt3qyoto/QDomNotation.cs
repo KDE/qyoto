@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QDomNotation")]
 	public class QDomNotation : QDomNode, IDisposable {
  		protected QDomNotation(Type dummy) : base((Type) null) {}
 		interface IQDomNotationProxy {

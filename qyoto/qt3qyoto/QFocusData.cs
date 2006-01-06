@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QFocusData")]
 	public class QFocusData : MarshalByRefObject {
 		protected Object _interceptor = null;
  

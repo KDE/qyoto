@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QCanvasEllipse")]
 	public class QCanvasEllipse : QCanvasPolygonalItem, IDisposable {
  		protected QCanvasEllipse(Type dummy) : base((Type) null) {}
 		interface IQCanvasEllipseProxy {

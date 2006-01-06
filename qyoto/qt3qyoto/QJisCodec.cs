@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QJisCodec")]
 	public class QJisCodec : QTextCodec, IDisposable {
  		protected QJisCodec(Type dummy) : base((Type) null) {}
 		interface IQJisCodecProxy {

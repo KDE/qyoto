@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QServerSocket")]
 	public class QServerSocket : QObject {
  		protected QServerSocket(Type dummy) : base((Type) null) {}
 		interface IQServerSocketProxy {
@@ -79,10 +80,10 @@ namespace Qt {
 		}
 		protected void CreateQServerSocketSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQServerSocketSignals), this);
-			_signalInterceptor = (IQServerSocketSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQServerSocketSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQServerSocketSignals Emit() {
-			return (IQServerSocketSignals) _signalInterceptor;
+			return (IQServerSocketSignals) Q_EMIT;
 		}
 	}
 

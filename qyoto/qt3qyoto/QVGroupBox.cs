@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QVGroupBox")]
 	public class QVGroupBox : QGroupBox, IDisposable {
  		protected QVGroupBox(Type dummy) : base((Type) null) {}
 		interface IQVGroupBoxProxy {
@@ -118,10 +119,10 @@ namespace Qt {
 		}
 		protected void CreateQVGroupBoxSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQVGroupBoxSignals), this);
-			_signalInterceptor = (IQVGroupBoxSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQVGroupBoxSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQVGroupBoxSignals Emit() {
-			return (IQVGroupBoxSignals) _signalInterceptor;
+			return (IQVGroupBoxSignals) Q_EMIT;
 		}
 	}
 

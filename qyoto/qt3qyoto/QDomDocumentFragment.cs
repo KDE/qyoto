@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QDomDocumentFragment")]
 	public class QDomDocumentFragment : QDomNode, IDisposable {
  		protected QDomDocumentFragment(Type dummy) : base((Type) null) {}
 		interface IQDomDocumentFragmentProxy {

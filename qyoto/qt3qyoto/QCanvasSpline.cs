@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QCanvasSpline")]
 	public class QCanvasSpline : QCanvasPolygon, IDisposable {
  		protected QCanvasSpline(Type dummy) : base((Type) null) {}
 		interface IQCanvasSplineProxy {

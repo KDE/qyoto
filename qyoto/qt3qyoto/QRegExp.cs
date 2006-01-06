@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Collections;
 	using System.Text;
 
+	[SmokeClass("QRegExp")]
 	public class QRegExp : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QColorGroup")]
 	public class QColorGroup : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

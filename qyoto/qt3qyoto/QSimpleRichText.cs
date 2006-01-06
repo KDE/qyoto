@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QSimpleRichText")]
 	public class QSimpleRichText : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

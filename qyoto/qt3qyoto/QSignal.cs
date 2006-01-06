@@ -42,6 +42,7 @@ namespace Qt {
 	///********************************************** See <see cref="IQSignalSignals"></see> for signals emitted by QSignal
 	///</remarks>		<short>                                                                               $Id: qt/qsignal.</short>
 
+	[SmokeClass("QSignal")]
 	public class QSignal : QObject, IDisposable {
  		protected QSignal(Type dummy) : base((Type) null) {}
 		interface IQSignalProxy {
@@ -169,10 +170,10 @@ namespace Qt {
 		}
 		protected void CreateQSignalSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQSignalSignals), this);
-			_signalInterceptor = (IQSignalSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQSignalSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQSignalSignals Emit() {
-			return (IQSignalSignals) _signalInterceptor;
+			return (IQSignalSignals) Q_EMIT;
 		}
 	}
 

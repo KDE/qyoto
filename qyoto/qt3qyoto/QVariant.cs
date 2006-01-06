@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Collections;
 	using System.Text;
 
+	[SmokeClass("QVariant")]
 	public class QVariant : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

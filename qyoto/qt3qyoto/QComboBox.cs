@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQComboBoxSignals"></see> for signals emitted by QComboBox
+	[SmokeClass("QComboBox")]
 	public class QComboBox : QWidget, IDisposable {
  		protected QComboBox(Type dummy) : base((Type) null) {}
 		interface IQComboBoxProxy {
@@ -391,10 +392,10 @@ namespace Qt {
 		}
 		protected void CreateQComboBoxSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQComboBoxSignals), this);
-			_signalInterceptor = (IQComboBoxSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQComboBoxSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQComboBoxSignals Emit() {
-			return (IQComboBoxSignals) _signalInterceptor;
+			return (IQComboBoxSignals) Q_EMIT;
 		}
 	}
 

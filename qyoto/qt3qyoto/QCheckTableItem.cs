@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QCheckTableItem")]
 	public class QCheckTableItem : QTableItem, IDisposable {
  		protected QCheckTableItem(Type dummy) : base((Type) null) {}
 		interface IQCheckTableItemProxy {

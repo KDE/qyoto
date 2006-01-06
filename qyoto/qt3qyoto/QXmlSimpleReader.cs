@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QXmlSimpleReader")]
 	public class QXmlSimpleReader : QXmlReader, IDisposable {
  		protected QXmlSimpleReader(Type dummy) : base((Type) null) {}
 		interface IQXmlSimpleReaderProxy {

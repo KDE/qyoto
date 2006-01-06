@@ -6,6 +6,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQDataTableSignals"></see> for signals emitted by QDataTable
+	[SmokeClass("QDataTable")]
 	public class QDataTable : QTable, IDisposable {
  		protected QDataTable(Type dummy) : base((Type) null) {}
 		interface IQDataTableProxy {
@@ -535,10 +536,10 @@ namespace Qt {
 		}
 		protected void CreateQDataTableSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQDataTableSignals), this);
-			_signalInterceptor = (IQDataTableSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQDataTableSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQDataTableSignals Emit() {
-			return (IQDataTableSignals) _signalInterceptor;
+			return (IQDataTableSignals) Q_EMIT;
 		}
 	}
 

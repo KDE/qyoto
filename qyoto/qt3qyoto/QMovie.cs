@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QMovie")]
 	public class QMovie : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

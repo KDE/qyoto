@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QColorDialog")]
 	public class QColorDialog : QDialog {
  		protected QColorDialog(Type dummy) : base((Type) null) {}
 		interface IQColorDialogProxy {
@@ -115,10 +116,10 @@ namespace Qt {
 		}
 		protected void CreateQColorDialogSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQColorDialogSignals), this);
-			_signalInterceptor = (IQColorDialogSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQColorDialogSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQColorDialogSignals Emit() {
-			return (IQColorDialogSignals) _signalInterceptor;
+			return (IQColorDialogSignals) Q_EMIT;
 		}
 	}
 

@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QGrid")]
 	public class QGrid : QFrame, IDisposable {
  		protected QGrid(Type dummy) : base((Type) null) {}
 		interface IQGridProxy {
@@ -148,10 +149,10 @@ namespace Qt {
 		}
 		protected void CreateQGridSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQGridSignals), this);
-			_signalInterceptor = (IQGridSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQGridSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQGridSignals Emit() {
-			return (IQGridSignals) _signalInterceptor;
+			return (IQGridSignals) Q_EMIT;
 		}
 	}
 

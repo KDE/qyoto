@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QGLWidget")]
 	public class QGLWidget : QWidget, IQGL, IDisposable {
  		protected QGLWidget(Type dummy) : base((Type) null) {}
 		interface IQGLWidgetProxy {
@@ -385,10 +386,10 @@ namespace Qt {
 		}
 		protected void CreateQGLWidgetSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQGLWidgetSignals), this);
-			_signalInterceptor = (IQGLWidgetSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQGLWidgetSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQGLWidgetSignals Emit() {
-			return (IQGLWidgetSignals) _signalInterceptor;
+			return (IQGLWidgetSignals) Q_EMIT;
 		}
 	}
 

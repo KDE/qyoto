@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QSqlDriverCreatorBase")]
 	public class QSqlDriverCreatorBase : MarshalByRefObject {
 		protected Object _interceptor = null;
  

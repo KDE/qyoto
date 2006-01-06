@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QSqlForm")]
 	public class QSqlForm : QObject, IDisposable {
  		protected QSqlForm(Type dummy) : base((Type) null) {}
 		interface IQSqlFormProxy {
@@ -170,10 +171,10 @@ namespace Qt {
 		}
 		protected void CreateQSqlFormSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQSqlFormSignals), this);
-			_signalInterceptor = (IQSqlFormSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQSqlFormSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQSqlFormSignals Emit() {
-			return (IQSqlFormSignals) _signalInterceptor;
+			return (IQSqlFormSignals) Q_EMIT;
 		}
 	}
 

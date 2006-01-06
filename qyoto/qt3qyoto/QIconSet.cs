@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QIconSet")]
 	public class QIconSet : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

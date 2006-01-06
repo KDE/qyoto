@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QAsyncIO")]
 	public class QAsyncIO : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

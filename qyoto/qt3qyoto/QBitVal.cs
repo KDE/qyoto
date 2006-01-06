@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QBitVal")]
 	public class QBitVal : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

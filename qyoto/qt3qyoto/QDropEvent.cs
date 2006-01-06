@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QDropEvent")]
 	public class QDropEvent : QEvent, IQMimeSource, IDisposable {
  		protected QDropEvent(Type dummy) : base((Type) null) {}
 		interface IQDropEventProxy {

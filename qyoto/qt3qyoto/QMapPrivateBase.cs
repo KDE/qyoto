@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QMapPrivateBase")]
 	public class QMapPrivateBase : QShared, IDisposable {
  		protected QMapPrivateBase(Type dummy) : base((Type) null) {}
 		interface IQMapPrivateBaseProxy {

@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQDateEditSignals"></see> for signals emitted by QDateEdit
+	[SmokeClass("QDateEdit")]
 	public class QDateEdit : QDateTimeEditBase, IDisposable {
  		protected QDateEdit(Type dummy) : base((Type) null) {}
 		interface IQDateEditProxy {
@@ -251,10 +252,10 @@ namespace Qt {
 		}
 		protected void CreateQDateEditSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQDateEditSignals), this);
-			_signalInterceptor = (IQDateEditSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQDateEditSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQDateEditSignals Emit() {
-			return (IQDateEditSignals) _signalInterceptor;
+			return (IQDateEditSignals) Q_EMIT;
 		}
 	}
 

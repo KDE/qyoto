@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQToolTipGroupSignals"></see> for signals emitted by QToolTipGroup
+	[SmokeClass("QToolTipGroup")]
 	public class QToolTipGroup : QObject, IDisposable {
  		protected QToolTipGroup(Type dummy) : base((Type) null) {}
 		interface IQToolTipGroupProxy {
@@ -101,10 +102,10 @@ namespace Qt {
 		}
 		protected void CreateQToolTipGroupSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQToolTipGroupSignals), this);
-			_signalInterceptor = (IQToolTipGroupSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQToolTipGroupSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQToolTipGroupSignals Emit() {
-			return (IQToolTipGroupSignals) _signalInterceptor;
+			return (IQToolTipGroupSignals) Q_EMIT;
 		}
 	}
 

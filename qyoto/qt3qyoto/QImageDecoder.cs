@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Collections;
 
+	[SmokeClass("QImageDecoder")]
 	public class QImageDecoder : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

@@ -9,6 +9,25 @@ namespace Qt
 		public static extern void Init_qyoto();
 	}
 
+	[AttributeUsage( AttributeTargets.Class )]
+	class SmokeClass : Attribute
+	{
+		public string signature;
+	
+		public string Signature
+		{
+			get
+			{
+				return signature;
+			}
+		}
+	
+		public SmokeClass(string signature)
+		{
+			this.signature = signature;
+		}
+	}
+
 	[AttributeUsage( AttributeTargets.Method )]
 	class SmokeMethod : Attribute
 	{

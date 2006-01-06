@@ -6,6 +6,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQCanvasSignals"></see> for signals emitted by QCanvas
+	[SmokeClass("QCanvas")]
 	public class QCanvas : QObject, IDisposable {
  		protected QCanvas(Type dummy) : base((Type) null) {}
 		interface IQCanvasProxy {
@@ -337,10 +338,10 @@ namespace Qt {
 		}
 		protected void CreateQCanvasSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQCanvasSignals), this);
-			_signalInterceptor = (IQCanvasSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQCanvasSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQCanvasSignals Emit() {
-			return (IQCanvasSignals) _signalInterceptor;
+			return (IQCanvasSignals) Q_EMIT;
 		}
 	}
 

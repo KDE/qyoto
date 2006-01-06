@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Collections;
 	using System.Text;
 
+	[SmokeClass("QDomDocument")]
 	public class QDomDocument : QDomNode, IDisposable {
  		protected QDomDocument(Type dummy) : base((Type) null) {}
 		interface IQDomDocumentProxy {

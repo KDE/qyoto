@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QCheckBox")]
 	public class QCheckBox : QButton, IDisposable {
  		protected QCheckBox(Type dummy) : base((Type) null) {}
 		interface IQCheckBoxProxy {
@@ -149,10 +150,10 @@ namespace Qt {
 		}
 		protected void CreateQCheckBoxSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQCheckBoxSignals), this);
-			_signalInterceptor = (IQCheckBoxSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQCheckBoxSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQCheckBoxSignals Emit() {
-			return (IQCheckBoxSignals) _signalInterceptor;
+			return (IQCheckBoxSignals) Q_EMIT;
 		}
 	}
 

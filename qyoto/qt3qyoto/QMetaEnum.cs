@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QMetaEnum")]
 	public class QMetaEnum : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

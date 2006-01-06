@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QMoveEvent")]
 	public class QMoveEvent : QEvent, IDisposable {
  		protected QMoveEvent(Type dummy) : base((Type) null) {}
 		interface IQMoveEventProxy {

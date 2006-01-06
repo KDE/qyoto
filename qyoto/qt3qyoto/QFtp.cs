@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQFtpSignals"></see> for signals emitted by QFtp
+	[SmokeClass("QFtp")]
 	public class QFtp : QNetworkProtocol, IDisposable {
  		protected QFtp(Type dummy) : base((Type) null) {}
 		interface IQFtpProxy {
@@ -320,10 +321,10 @@ namespace Qt {
 		}
 		protected void CreateQFtpSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQFtpSignals), this);
-			_signalInterceptor = (IQFtpSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQFtpSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQFtpSignals Emit() {
-			return (IQFtpSignals) _signalInterceptor;
+			return (IQFtpSignals) Q_EMIT;
 		}
 	}
 

@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QHebrewCodec")]
 	public class QHebrewCodec : QTextCodec, IDisposable {
  		protected QHebrewCodec(Type dummy) : base((Type) null) {}
 		interface IQHebrewCodecProxy {

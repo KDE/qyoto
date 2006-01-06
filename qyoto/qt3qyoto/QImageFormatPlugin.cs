@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Collections;
 	using System.Text;
 
+	[SmokeClass("QImageFormatPlugin")]
 	public class QImageFormatPlugin : QGPlugin {
  		protected QImageFormatPlugin(Type dummy) : base((Type) null) {}
 		interface IQImageFormatPluginProxy {
@@ -72,10 +73,10 @@ namespace Qt {
 		}
 		protected void CreateQImageFormatPluginSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQImageFormatPluginSignals), this);
-			_signalInterceptor = (IQImageFormatPluginSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQImageFormatPluginSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQImageFormatPluginSignals Emit() {
-			return (IQImageFormatPluginSignals) _signalInterceptor;
+			return (IQImageFormatPluginSignals) Q_EMIT;
 		}
 	}
 

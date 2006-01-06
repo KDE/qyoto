@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QTextOStream")]
 	public class QTextOStream : QTextStream, IDisposable {
  		protected QTextOStream(Type dummy) : base((Type) null) {}
 		interface IQTextOStreamProxy {

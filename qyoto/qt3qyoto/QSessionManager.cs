@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Collections;
 	using System.Text;
 
+	[SmokeClass("QSessionManager")]
 	public class QSessionManager : QObject {
  		protected QSessionManager(Type dummy) : base((Type) null) {}
 		interface IQSessionManagerProxy {
@@ -126,10 +127,10 @@ namespace Qt {
 		}
 		protected void CreateQSessionManagerSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQSessionManagerSignals), this);
-			_signalInterceptor = (IQSessionManagerSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQSessionManagerSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQSessionManagerSignals Emit() {
-			return (IQSessionManagerSignals) _signalInterceptor;
+			return (IQSessionManagerSignals) Q_EMIT;
 		}
 	}
 

@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Collections;
 	using System.Text;
 
+	[SmokeClass("QTextCodecPlugin")]
 	public class QTextCodecPlugin : QGPlugin {
  		protected QTextCodecPlugin(Type dummy) : base((Type) null) {}
 		interface IQTextCodecPluginProxy {
@@ -72,10 +73,10 @@ namespace Qt {
 		}
 		protected void CreateQTextCodecPluginSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQTextCodecPluginSignals), this);
-			_signalInterceptor = (IQTextCodecPluginSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQTextCodecPluginSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQTextCodecPluginSignals Emit() {
-			return (IQTextCodecPluginSignals) _signalInterceptor;
+			return (IQTextCodecPluginSignals) Q_EMIT;
 		}
 	}
 

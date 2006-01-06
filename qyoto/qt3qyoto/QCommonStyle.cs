@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QCommonStyle")]
 	public class QCommonStyle : QStyle, IDisposable {
  		protected QCommonStyle(Type dummy) : base((Type) null) {}
 		interface IQCommonStyleProxy {
@@ -182,10 +183,10 @@ namespace Qt {
 		}
 		protected void CreateQCommonStyleSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQCommonStyleSignals), this);
-			_signalInterceptor = (IQCommonStyleSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQCommonStyleSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQCommonStyleSignals Emit() {
-			return (IQCommonStyleSignals) _signalInterceptor;
+			return (IQCommonStyleSignals) Q_EMIT;
 		}
 	}
 

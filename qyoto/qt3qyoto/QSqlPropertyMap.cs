@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QSqlPropertyMap")]
 	public class QSqlPropertyMap : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

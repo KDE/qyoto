@@ -6,6 +6,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQApplicationSignals"></see> for signals emitted by QApplication
+	[SmokeClass("QApplication")]
 	public class QApplication : QObject, IDisposable {
  		protected QApplication(Type dummy) : base((Type) null) {}
 		interface IQApplicationProxy {
@@ -657,10 +658,10 @@ namespace Qt {
 
 		protected void CreateQApplicationSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQApplicationSignals), this);
-			_signalInterceptor = (IQApplicationSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQApplicationSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQApplicationSignals Emit() {
-			return (IQApplicationSignals) _signalInterceptor;
+			return (IQApplicationSignals) Q_EMIT;
 		}
 	}
 

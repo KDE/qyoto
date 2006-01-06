@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QPixmap")]
 	public class QPixmap : Qt, IQPaintDevice, IDisposable {
  		protected QPixmap(Type dummy) : base((Type) null) {}
 		interface IQPixmapProxy {

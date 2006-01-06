@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QPainter")]
 	public class QPainter : Qt, IDisposable {
  		protected QPainter(Type dummy) : base((Type) null) {}
 		interface IQPainterProxy {

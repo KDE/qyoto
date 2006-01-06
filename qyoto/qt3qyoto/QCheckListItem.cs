@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QCheckListItem")]
 	public class QCheckListItem : QListViewItem, IDisposable {
  		protected QCheckListItem(Type dummy) : base((Type) null) {}
 		interface IQCheckListItemProxy {

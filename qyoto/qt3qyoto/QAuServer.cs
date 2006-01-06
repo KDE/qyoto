@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QAuServer")]
 	public class QAuServer : QObject {
  		protected QAuServer(Type dummy) : base((Type) null) {}
 		interface IQAuServerProxy {
@@ -75,10 +76,10 @@ namespace Qt {
 		}
 		protected void CreateQAuServerSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQAuServerSignals), this);
-			_signalInterceptor = (IQAuServerSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQAuServerSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQAuServerSignals Emit() {
-			return (IQAuServerSignals) _signalInterceptor;
+			return (IQAuServerSignals) Q_EMIT;
 		}
 	}
 

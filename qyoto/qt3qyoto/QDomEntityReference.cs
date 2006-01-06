@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QDomEntityReference")]
 	public class QDomEntityReference : QDomNode, IDisposable {
  		protected QDomEntityReference(Type dummy) : base((Type) null) {}
 		interface IQDomEntityReferenceProxy {

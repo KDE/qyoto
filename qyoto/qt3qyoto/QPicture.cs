@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QPicture")]
 	public class QPicture : QPaintDevice, IDisposable {
  		protected QPicture(Type dummy) : base((Type) null) {}
 		interface IQPictureProxy {

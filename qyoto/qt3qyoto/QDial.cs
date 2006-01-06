@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQDialSignals"></see> for signals emitted by QDial
+	[SmokeClass("QDial")]
 	public class QDial : QWidget, IQRangeControl, IDisposable {
  		protected QDial(Type dummy) : base((Type) null) {}
 		interface IQDialProxy {
@@ -320,10 +321,10 @@ namespace Qt {
 		}
 		protected void CreateQDialSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQDialSignals), this);
-			_signalInterceptor = (IQDialSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQDialSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQDialSignals Emit() {
-			return (IQDialSignals) _signalInterceptor;
+			return (IQDialSignals) Q_EMIT;
 		}
 	}
 

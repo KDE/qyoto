@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QProgressBar")]
 	public class QProgressBar : QFrame, IDisposable {
  		protected QProgressBar(Type dummy) : base((Type) null) {}
 		interface IQProgressBarProxy {
@@ -216,10 +217,10 @@ namespace Qt {
 		}
 		protected void CreateQProgressBarSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQProgressBarSignals), this);
-			_signalInterceptor = (IQProgressBarSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQProgressBarSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQProgressBarSignals Emit() {
-			return (IQProgressBarSignals) _signalInterceptor;
+			return (IQProgressBarSignals) Q_EMIT;
 		}
 	}
 

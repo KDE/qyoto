@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QDataView")]
 	public class QDataView : QWidget, IDisposable {
  		protected QDataView(Type dummy) : base((Type) null) {}
 		interface IQDataViewProxy {
@@ -136,10 +137,10 @@ namespace Qt {
 		}
 		protected void CreateQDataViewSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQDataViewSignals), this);
-			_signalInterceptor = (IQDataViewSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQDataViewSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQDataViewSignals Emit() {
-			return (IQDataViewSignals) _signalInterceptor;
+			return (IQDataViewSignals) Q_EMIT;
 		}
 	}
 

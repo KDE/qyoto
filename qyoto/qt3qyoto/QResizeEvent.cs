@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QResizeEvent")]
 	public class QResizeEvent : QEvent, IDisposable {
  		protected QResizeEvent(Type dummy) : base((Type) null) {}
 		interface IQResizeEventProxy {

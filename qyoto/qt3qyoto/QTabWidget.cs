@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQTabWidgetSignals"></see> for signals emitted by QTabWidget
+	[SmokeClass("QTabWidget")]
 	public class QTabWidget : QWidget, IDisposable {
  		protected QTabWidget(Type dummy) : base((Type) null) {}
 		interface IQTabWidgetProxy {
@@ -304,10 +305,10 @@ namespace Qt {
 		}
 		protected void CreateQTabWidgetSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQTabWidgetSignals), this);
-			_signalInterceptor = (IQTabWidgetSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQTabWidgetSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQTabWidgetSignals Emit() {
-			return (IQTabWidgetSignals) _signalInterceptor;
+			return (IQTabWidgetSignals) Q_EMIT;
 		}
 	}
 

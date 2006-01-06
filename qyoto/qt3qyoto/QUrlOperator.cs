@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQUrlOperatorSignals"></see> for signals emitted by QUrlOperator
+	[SmokeClass("QUrlOperator")]
 	public class QUrlOperator : QObject, IQUrl, IDisposable {
  		protected QUrlOperator(Type dummy) : base((Type) null) {}
 		interface IQUrlOperatorProxy {
@@ -357,10 +358,10 @@ namespace Qt {
 		}
 		protected void CreateQUrlOperatorSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQUrlOperatorSignals), this);
-			_signalInterceptor = (IQUrlOperatorSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQUrlOperatorSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQUrlOperatorSignals Emit() {
-			return (IQUrlOperatorSignals) _signalInterceptor;
+			return (IQUrlOperatorSignals) Q_EMIT;
 		}
 	}
 

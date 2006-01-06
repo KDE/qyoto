@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QSqlResult")]
 	public class QSqlResult : MarshalByRefObject {
 		protected Object _interceptor = null;
  

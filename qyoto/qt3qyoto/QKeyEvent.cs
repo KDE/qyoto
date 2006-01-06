@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QKeyEvent")]
 	public class QKeyEvent : QEvent, IDisposable {
  		protected QKeyEvent(Type dummy) : base((Type) null) {}
 		interface IQKeyEventProxy {

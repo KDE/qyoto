@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QTextEncoder")]
 	public class QTextEncoder : MarshalByRefObject {
 		protected Object _interceptor = null;
  

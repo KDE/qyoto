@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQLCDNumberSignals"></see> for signals emitted by QLCDNumber
+	[SmokeClass("QLCDNumber")]
 	public class QLCDNumber : QFrame, IDisposable {
  		protected QLCDNumber(Type dummy) : base((Type) null) {}
 		interface IQLCDNumberProxy {
@@ -226,10 +227,10 @@ namespace Qt {
 		}
 		protected void CreateQLCDNumberSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQLCDNumberSignals), this);
-			_signalInterceptor = (IQLCDNumberSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQLCDNumberSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQLCDNumberSignals Emit() {
-			return (IQLCDNumberSignals) _signalInterceptor;
+			return (IQLCDNumberSignals) Q_EMIT;
 		}
 	}
 

@@ -95,6 +95,7 @@ namespace Qt {
 			void ActivateItemAt(int index);
 	}
 
+	[SmokeClass("QMenuData")]
 	public class QMenuData : MarshalByRefObject, IQMenuData, IDisposable {
 		protected Object _interceptor = null;
  

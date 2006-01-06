@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQWizardSignals"></see> for signals emitted by QWizard
+	[SmokeClass("QWizard")]
 	public class QWizard : QDialog, IDisposable {
  		protected QWizard(Type dummy) : base((Type) null) {}
 		interface IQWizardProxy {
@@ -246,10 +247,10 @@ namespace Qt {
 		}
 		protected void CreateQWizardSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQWizardSignals), this);
-			_signalInterceptor = (IQWizardSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQWizardSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQWizardSignals Emit() {
-			return (IQWizardSignals) _signalInterceptor;
+			return (IQWizardSignals) Q_EMIT;
 		}
 	}
 

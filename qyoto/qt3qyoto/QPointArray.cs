@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QPointArray")]
 	public class QPointArray : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

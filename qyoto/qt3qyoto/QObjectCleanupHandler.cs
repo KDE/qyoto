@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QObjectCleanupHandler")]
 	public class QObjectCleanupHandler : QObject, IDisposable {
  		protected QObjectCleanupHandler(Type dummy) : base((Type) null) {}
 		interface IQObjectCleanupHandlerProxy {
@@ -89,10 +90,10 @@ namespace Qt {
 		}
 		protected void CreateQObjectCleanupHandlerSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQObjectCleanupHandlerSignals), this);
-			_signalInterceptor = (IQObjectCleanupHandlerSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQObjectCleanupHandlerSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQObjectCleanupHandlerSignals Emit() {
-			return (IQObjectCleanupHandlerSignals) _signalInterceptor;
+			return (IQObjectCleanupHandlerSignals) Q_EMIT;
 		}
 	}
 

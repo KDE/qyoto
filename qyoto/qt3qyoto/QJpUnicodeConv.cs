@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QJpUnicodeConv")]
 	public class QJpUnicodeConv : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

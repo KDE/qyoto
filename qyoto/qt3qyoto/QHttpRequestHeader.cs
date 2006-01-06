@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QHttpRequestHeader")]
 	public class QHttpRequestHeader : QHttpHeader, IDisposable {
  		protected QHttpRequestHeader(Type dummy) : base((Type) null) {}
 		interface IQHttpRequestHeaderProxy {

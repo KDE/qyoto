@@ -10,6 +10,7 @@ namespace Qt {
 			string ErrorString();
 	}
 
+	[SmokeClass("QXmlDTDHandler")]
 	public class QXmlDTDHandler : MarshalByRefObject, IQXmlDTDHandler {
 		protected Object _interceptor = null;
  

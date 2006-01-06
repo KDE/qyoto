@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QDomComment")]
 	public class QDomComment : QDomCharacterData, IDisposable {
  		protected QDomComment(Type dummy) : base((Type) null) {}
 		interface IQDomCommentProxy {

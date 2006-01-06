@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QMenuItem")]
 	public class QMenuItem : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

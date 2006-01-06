@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QTimerEvent")]
 	public class QTimerEvent : QEvent, IDisposable {
  		protected QTimerEvent(Type dummy) : base((Type) null) {}
 		interface IQTimerEventProxy {

@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QSqlField")]
 	public class QSqlField : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

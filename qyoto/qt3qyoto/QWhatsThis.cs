@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QWhatsThis")]
 	public class QWhatsThis : Qt, IDisposable {
  		protected QWhatsThis(Type dummy) : base((Type) null) {}
 		interface IQWhatsThisProxy {

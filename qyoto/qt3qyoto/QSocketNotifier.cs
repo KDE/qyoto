@@ -42,6 +42,7 @@ namespace Qt {
 	///********************************************** See <see cref="IQSocketNotifierSignals"></see> for signals emitted by QSocketNotifier
 	///</remarks>		<short>                                                                               $Id: qt/qsocketnotifier.</short>
 
+	[SmokeClass("QSocketNotifier")]
 	public class QSocketNotifier : QObject, IDisposable {
  		protected QSocketNotifier(Type dummy) : base((Type) null) {}
 		interface IQSocketNotifierProxy {
@@ -150,10 +151,10 @@ namespace Qt {
 		}
 		protected void CreateQSocketNotifierSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQSocketNotifierSignals), this);
-			_signalInterceptor = (IQSocketNotifierSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQSocketNotifierSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQSocketNotifierSignals Emit() {
-			return (IQSocketNotifierSignals) _signalInterceptor;
+			return (IQSocketNotifierSignals) Q_EMIT;
 		}
 	}
 

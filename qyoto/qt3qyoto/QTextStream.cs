@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QTextStream")]
 	public class QTextStream : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

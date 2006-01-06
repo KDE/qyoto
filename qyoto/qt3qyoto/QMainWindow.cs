@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQMainWindowSignals"></see> for signals emitted by QMainWindow
+	[SmokeClass("QMainWindow")]
 	public class QMainWindow : QWidget, IDisposable {
  		protected QMainWindow(Type dummy) : base((Type) null) {}
 		interface IQMainWindowProxy {
@@ -430,10 +431,10 @@ namespace Qt {
 		}
 		protected void CreateQMainWindowSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQMainWindowSignals), this);
-			_signalInterceptor = (IQMainWindowSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQMainWindowSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQMainWindowSignals Emit() {
-			return (IQMainWindowSignals) _signalInterceptor;
+			return (IQMainWindowSignals) Q_EMIT;
 		}
 	}
 

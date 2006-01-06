@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QDateTimeEditBase")]
 	public class QDateTimeEditBase : QWidget {
  		protected QDateTimeEditBase(Type dummy) : base((Type) null) {}
 		interface IQDateTimeEditBaseProxy {
@@ -81,10 +82,10 @@ namespace Qt {
 		}
 		protected void CreateQDateTimeEditBaseSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQDateTimeEditBaseSignals), this);
-			_signalInterceptor = (IQDateTimeEditBaseSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQDateTimeEditBaseSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQDateTimeEditBaseSignals Emit() {
-			return (IQDateTimeEditBaseSignals) _signalInterceptor;
+			return (IQDateTimeEditBaseSignals) Q_EMIT;
 		}
 	}
 

@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QSqlError")]
 	public class QSqlError : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

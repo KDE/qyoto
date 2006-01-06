@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQEventLoopSignals"></see> for signals emitted by QEventLoop
+	[SmokeClass("QEventLoop")]
 	public class QEventLoop : QObject, IDisposable {
  		protected QEventLoop(Type dummy) : base((Type) null) {}
 		interface IQEventLoopProxy {
@@ -162,10 +163,10 @@ namespace Qt {
 		}
 		protected void CreateQEventLoopSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQEventLoopSignals), this);
-			_signalInterceptor = (IQEventLoopSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQEventLoopSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQEventLoopSignals Emit() {
-			return (IQEventLoopSignals) _signalInterceptor;
+			return (IQEventLoopSignals) Q_EMIT;
 		}
 	}
 

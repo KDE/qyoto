@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QIMEvent")]
 	public class QIMEvent : QEvent, IDisposable {
  		protected QIMEvent(Type dummy) : base((Type) null) {}
 		interface IQIMEventProxy {

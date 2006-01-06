@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QGLContext")]
 	public class QGLContext : QGL, IDisposable {
  		protected QGLContext(Type dummy) : base((Type) null) {}
 		interface IQGLContextProxy {

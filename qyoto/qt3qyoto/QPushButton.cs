@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QPushButton")]
 	public class QPushButton : QButton, IDisposable {
  		protected QPushButton(Type dummy) : base((Type) null) {}
 		interface IQPushButtonProxy {
@@ -227,10 +228,10 @@ namespace Qt {
 		}
 		protected void CreateQPushButtonSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQPushButtonSignals), this);
-			_signalInterceptor = (IQPushButtonSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQPushButtonSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQPushButtonSignals Emit() {
-			return (IQPushButtonSignals) _signalInterceptor;
+			return (IQPushButtonSignals) Q_EMIT;
 		}
 	}
 

@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QMouseEvent")]
 	public class QMouseEvent : QEvent, IDisposable {
  		protected QMouseEvent(Type dummy) : base((Type) null) {}
 		interface IQMouseEventProxy {

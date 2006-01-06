@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QGlobalSpace")]
 	public class QGlobalSpace : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

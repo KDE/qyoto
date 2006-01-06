@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQDockWindowSignals"></see> for signals emitted by QDockWindow
+	[SmokeClass("QDockWindow")]
 	public class QDockWindow : QFrame, IDisposable {
  		protected QDockWindow(Type dummy) : base((Type) null) {}
 		interface IQDockWindowProxy {
@@ -340,10 +341,10 @@ namespace Qt {
 		}
 		protected void CreateQDockWindowSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQDockWindowSignals), this);
-			_signalInterceptor = (IQDockWindowSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQDockWindowSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQDockWindowSignals Emit() {
-			return (IQDockWindowSignals) _signalInterceptor;
+			return (IQDockWindowSignals) Q_EMIT;
 		}
 	}
 

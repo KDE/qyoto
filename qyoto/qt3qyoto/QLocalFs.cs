@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QLocalFs")]
 	public class QLocalFs : QNetworkProtocol, IDisposable {
  		protected QLocalFs(Type dummy) : base((Type) null) {}
 		interface IQLocalFsProxy {
@@ -101,10 +102,10 @@ namespace Qt {
 		}
 		protected void CreateQLocalFsSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQLocalFsSignals), this);
-			_signalInterceptor = (IQLocalFsSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQLocalFsSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQLocalFsSignals Emit() {
-			return (IQLocalFsSignals) _signalInterceptor;
+			return (IQLocalFsSignals) Q_EMIT;
 		}
 	}
 

@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QBuffer")]
 	public class QBuffer : QIODevice, IDisposable {
  		protected QBuffer(Type dummy) : base((Type) null) {}
 		interface IQBufferProxy {

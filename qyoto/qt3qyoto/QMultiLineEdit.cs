@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QMultiLineEdit")]
 	public class QMultiLineEdit : QTextEdit, IDisposable {
  		protected QMultiLineEdit(Type dummy) : base((Type) null) {}
 		interface IQMultiLineEditProxy {
@@ -296,10 +297,10 @@ namespace Qt {
 		}
 		protected void CreateQMultiLineEditSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQMultiLineEditSignals), this);
-			_signalInterceptor = (IQMultiLineEditSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQMultiLineEditSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQMultiLineEditSignals Emit() {
-			return (IQMultiLineEditSignals) _signalInterceptor;
+			return (IQMultiLineEditSignals) Q_EMIT;
 		}
 	}
 

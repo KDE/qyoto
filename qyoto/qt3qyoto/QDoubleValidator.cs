@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QDoubleValidator")]
 	public class QDoubleValidator : QValidator, IDisposable {
  		protected QDoubleValidator(Type dummy) : base((Type) null) {}
 		interface IQDoubleValidatorProxy {
@@ -136,10 +137,10 @@ namespace Qt {
 		}
 		protected void CreateQDoubleValidatorSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQDoubleValidatorSignals), this);
-			_signalInterceptor = (IQDoubleValidatorSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQDoubleValidatorSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQDoubleValidatorSignals Emit() {
-			return (IQDoubleValidatorSignals) _signalInterceptor;
+			return (IQDoubleValidatorSignals) Q_EMIT;
 		}
 	}
 

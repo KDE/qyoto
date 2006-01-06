@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QBaseBucket")]
 	public class QBaseBucket : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

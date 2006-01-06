@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QSqlSelectCursor")]
 	public class QSqlSelectCursor : QSqlCursor, IDisposable {
  		protected QSqlSelectCursor(Type dummy) : base((Type) null) {}
 		interface IQSqlSelectCursorProxy {

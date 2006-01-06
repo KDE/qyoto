@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QFrame")]
 	public class QFrame : QWidget, IDisposable {
  		protected QFrame(Type dummy) : base((Type) null) {}
 		interface IQFrameProxy {
@@ -218,10 +219,10 @@ namespace Qt {
 		}
 		protected void CreateQFrameSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQFrameSignals), this);
-			_signalInterceptor = (IQFrameSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQFrameSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQFrameSignals Emit() {
-			return (IQFrameSignals) _signalInterceptor;
+			return (IQFrameSignals) Q_EMIT;
 		}
 	}
 

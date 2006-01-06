@@ -6,6 +6,7 @@ using System.Collections;
 	using System.Text;
 
 	/// See <see cref="IQListViewSignals"></see> for signals emitted by QListView
+	[SmokeClass("QListView")]
 	public class QListView : QScrollView, IDisposable {
  		protected QListView(Type dummy) : base((Type) null) {}
 		interface IQListViewProxy {
@@ -538,10 +539,10 @@ using System.Collections;
 
 		protected void CreateQListViewSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQListViewSignals), this);
-			_signalInterceptor = (IQListViewSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQListViewSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQListViewSignals Emit() {
-			return (IQListViewSignals) _signalInterceptor;
+			return (IQListViewSignals) Q_EMIT;
 		}
 	}
 

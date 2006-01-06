@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QGLColormap")]
 	public class QGLColormap : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

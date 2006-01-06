@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QImageConsumer")]
 	public class QImageConsumer : MarshalByRefObject {
 		protected Object _interceptor = null;
  

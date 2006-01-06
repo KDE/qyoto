@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QStringBucket")]
 	public class QStringBucket : QBaseBucket, IDisposable {
  		protected QStringBucket(Type dummy) : base((Type) null) {}
 		interface IQStringBucketProxy {

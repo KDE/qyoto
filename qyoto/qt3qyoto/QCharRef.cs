@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QCharRef")]
 	public class QCharRef : MarshalByRefObject {
 		protected Object _interceptor = null;
  

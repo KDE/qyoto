@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QPalette")]
 	public class QPalette : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

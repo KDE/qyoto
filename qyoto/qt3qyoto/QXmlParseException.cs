@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QXmlParseException")]
 	public class QXmlParseException : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

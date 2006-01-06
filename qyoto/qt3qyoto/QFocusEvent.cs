@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QFocusEvent")]
 	public class QFocusEvent : QEvent, IDisposable {
  		protected QFocusEvent(Type dummy) : base((Type) null) {}
 		interface IQFocusEventProxy {

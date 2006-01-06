@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QPen")]
 	public class QPen : Qt, IDisposable {
  		protected QPen(Type dummy) : base((Type) null) {}
 		interface IQPenProxy {

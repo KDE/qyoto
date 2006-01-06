@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QTableSelection")]
 	public class QTableSelection : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

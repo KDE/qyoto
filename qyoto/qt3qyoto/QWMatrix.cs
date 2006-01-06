@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QWMatrix")]
 	public class QWMatrix : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

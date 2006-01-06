@@ -21,6 +21,7 @@ namespace Qt {
 			void SetAlignment(int a);
 	}
 
+	[SmokeClass("QLayoutItem")]
 	public class QLayoutItem : MarshalByRefObject, IQLayoutItem {
 		protected Object _interceptor = null;
  

@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QDragResponseEvent")]
 	public class QDragResponseEvent : QEvent, IDisposable {
  		protected QDragResponseEvent(Type dummy) : base((Type) null) {}
 		interface IQDragResponseEventProxy {

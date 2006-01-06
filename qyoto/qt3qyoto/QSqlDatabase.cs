@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Collections;
 	using System.Text;
 
+	[SmokeClass("QSqlDatabase")]
 	public class QSqlDatabase : QObject, IDisposable {
  		protected QSqlDatabase(Type dummy) : base((Type) null) {}
 		interface IQSqlDatabaseProxy {
@@ -317,10 +318,10 @@ namespace Qt {
 		}
 		protected void CreateQSqlDatabaseSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQSqlDatabaseSignals), this);
-			_signalInterceptor = (IQSqlDatabaseSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQSqlDatabaseSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQSqlDatabaseSignals Emit() {
-			return (IQSqlDatabaseSignals) _signalInterceptor;
+			return (IQSqlDatabaseSignals) Q_EMIT;
 		}
 	}
 

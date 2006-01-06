@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QXmlLocator")]
 	public class QXmlLocator : MarshalByRefObject {
 		protected Object _interceptor = null;
  

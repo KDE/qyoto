@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QDockArea")]
 	public class QDockArea : QWidget, IDisposable {
  		protected QDockArea(Type dummy) : base((Type) null) {}
 		interface IQDockAreaProxy {
@@ -170,10 +171,10 @@ namespace Qt {
 		}
 		protected void CreateQDockAreaSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQDockAreaSignals), this);
-			_signalInterceptor = (IQDockAreaSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQDockAreaSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQDockAreaSignals Emit() {
-			return (IQDockAreaSignals) _signalInterceptor;
+			return (IQDockAreaSignals) Q_EMIT;
 		}
 	}
 

@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QDate")]
 	public class QDate : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

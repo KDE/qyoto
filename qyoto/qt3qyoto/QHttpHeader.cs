@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Collections;
 	using System.Text;
 
+	[SmokeClass("QHttpHeader")]
 	public class QHttpHeader : MarshalByRefObject {
 		protected Object _interceptor = null;
  

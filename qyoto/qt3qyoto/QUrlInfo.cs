@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QUrlInfo")]
 	public class QUrlInfo : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

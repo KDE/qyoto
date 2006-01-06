@@ -39,6 +39,7 @@ namespace Qt {
 			string ExecutedQuery();
 	}
 
+	[SmokeClass("QSqlQuery")]
 	public class QSqlQuery : MarshalByRefObject, IQSqlQuery, IDisposable {
 		protected Object _interceptor = null;
  

@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QSplitter")]
 	public class QSplitter : QFrame, IDisposable {
  		protected QSplitter(Type dummy) : base((Type) null) {}
 		interface IQSplitterProxy {
@@ -238,10 +239,10 @@ namespace Qt {
 		}
 		protected void CreateQSplitterSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQSplitterSignals), this);
-			_signalInterceptor = (IQSplitterSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQSplitterSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQSplitterSignals Emit() {
-			return (IQSplitterSignals) _signalInterceptor;
+			return (IQSplitterSignals) Q_EMIT;
 		}
 	}
 

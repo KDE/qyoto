@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QListBoxText")]
 	public class QListBoxText : QListBoxItem, IDisposable {
  		protected QListBoxText(Type dummy) : base((Type) null) {}
 		interface IQListBoxTextProxy {

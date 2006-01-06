@@ -6,6 +6,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQFileDialogSignals"></see> for signals emitted by QFileDialog
+	[SmokeClass("QFileDialog")]
 	public class QFileDialog : QDialog, IDisposable {
  		protected QFileDialog(Type dummy) : base((Type) null) {}
 		interface IQFileDialogProxy {
@@ -502,10 +503,10 @@ namespace Qt {
 		}
 		protected void CreateQFileDialogSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQFileDialogSignals), this);
-			_signalInterceptor = (IQFileDialogSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQFileDialogSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQFileDialogSignals Emit() {
-			return (IQFileDialogSignals) _signalInterceptor;
+			return (IQFileDialogSignals) Q_EMIT;
 		}
 	}
 

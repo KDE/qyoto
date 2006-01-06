@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QDragEnterEvent")]
 	public class QDragEnterEvent : QDragMoveEvent, IDisposable {
  		protected QDragEnterEvent(Type dummy) : base((Type) null) {}
 		interface IQDragEnterEventProxy {

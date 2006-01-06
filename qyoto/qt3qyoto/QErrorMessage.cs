@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QErrorMessage")]
 	public class QErrorMessage : QDialog, IDisposable {
  		protected QErrorMessage(Type dummy) : base((Type) null) {}
 		interface IQErrorMessageProxy {
@@ -96,10 +97,10 @@ namespace Qt {
 		}
 		protected void CreateQErrorMessageSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQErrorMessageSignals), this);
-			_signalInterceptor = (IQErrorMessageSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQErrorMessageSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQErrorMessageSignals Emit() {
-			return (IQErrorMessageSignals) _signalInterceptor;
+			return (IQErrorMessageSignals) Q_EMIT;
 		}
 	}
 

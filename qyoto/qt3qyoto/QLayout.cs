@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QLayout")]
 	public class QLayout : QObject, IQLayoutItem {
  		protected QLayout(Type dummy) : base((Type) null) {}
 		interface IQLayoutProxy {
@@ -231,10 +232,10 @@ namespace Qt {
 		}
 		protected void CreateQLayoutSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQLayoutSignals), this);
-			_signalInterceptor = (IQLayoutSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQLayoutSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQLayoutSignals Emit() {
-			return (IQLayoutSignals) _signalInterceptor;
+			return (IQLayoutSignals) Q_EMIT;
 		}
 	}
 

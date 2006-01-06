@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QIconDragItem")]
 	public class QIconDragItem : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

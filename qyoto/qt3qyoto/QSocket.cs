@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQSocketSignals"></see> for signals emitted by QSocket
+	[SmokeClass("QSocket")]
 	public class QSocket : QObject, IQIODevice, IDisposable {
  		protected QSocket(Type dummy) : base((Type) null) {}
 		interface IQSocketProxy {
@@ -352,10 +353,10 @@ namespace Qt {
 		}
 		protected void CreateQSocketSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQSocketSignals), this);
-			_signalInterceptor = (IQSocketSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQSocketSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQSocketSignals Emit() {
-			return (IQSocketSignals) _signalInterceptor;
+			return (IQSocketSignals) Q_EMIT;
 		}
 	}
 

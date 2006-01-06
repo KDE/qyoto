@@ -21,6 +21,7 @@ namespace Qt {
 			int Bound(int arg1);
 	}
 
+	[SmokeClass("QRangeControl")]
 	public class QRangeControl : MarshalByRefObject, IQRangeControl, IDisposable {
 		protected Object _interceptor = null;
  

@@ -5,6 +5,7 @@ namespace Qt {
 using System.Collections;
 	using System.Text;
 
+	[SmokeClass("QUriDrag")]
 	public class QUriDrag : QStoredDrag, IDisposable {
  		protected QUriDrag(Type dummy) : base((Type) null) {}
 		interface IQUriDragProxy {
@@ -164,10 +165,10 @@ using System.Collections;
 	
 		protected void CreateQUriDragSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQUriDragSignals), this);
-			_signalInterceptor = (IQUriDragSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQUriDragSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQUriDragSignals Emit() {
-			return (IQUriDragSignals) _signalInterceptor;
+			return (IQUriDragSignals) Q_EMIT;
 		}
 	}
 

@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QGLayoutIterator")]
 	public class QGLayoutIterator : QShared {
  		protected QGLayoutIterator(Type dummy) : base((Type) null) {}
 		interface IQGLayoutIteratorProxy {

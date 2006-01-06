@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QPrinter")]
 	public class QPrinter : QPaintDevice, IDisposable {
  		protected QPrinter(Type dummy) : base((Type) null) {}
 		interface IQPrinterProxy {

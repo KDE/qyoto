@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QByteArray")]
 	public class QByteArray : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
@@ -52,5 +53,6 @@ namespace Qt {
 		private void DisposeQByteArray() {
 			ProxyQByteArray().DisposeQByteArray();
 		}
+	
 	}
 }

@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQButtonSignals"></see> for signals emitted by QButton
+	[SmokeClass("QButton")]
 	public class QButton : QWidget, IDisposable {
  		protected QButton(Type dummy) : base((Type) null) {}
 		interface IQButtonProxy {
@@ -257,10 +258,10 @@ namespace Qt {
 		}
 		protected void CreateQButtonSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQButtonSignals), this);
-			_signalInterceptor = (IQButtonSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQButtonSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQButtonSignals Emit() {
-			return (IQButtonSignals) _signalInterceptor;
+			return (IQButtonSignals) Q_EMIT;
 		}
 	}
 

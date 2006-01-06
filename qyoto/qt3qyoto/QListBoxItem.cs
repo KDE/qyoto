@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QListBoxItem")]
 	public class QListBoxItem : MarshalByRefObject {
 		protected Object _interceptor = null;
  

@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQDesktopWidgetSignals"></see> for signals emitted by QDesktopWidget
+	[SmokeClass("QDesktopWidget")]
 	public class QDesktopWidget : QWidget, IDisposable {
  		protected QDesktopWidget(Type dummy) : base((Type) null) {}
 		interface IQDesktopWidgetProxy {
@@ -146,10 +147,10 @@ namespace Qt {
 		}
 		protected void CreateQDesktopWidgetSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQDesktopWidgetSignals), this);
-			_signalInterceptor = (IQDesktopWidgetSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQDesktopWidgetSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQDesktopWidgetSignals Emit() {
-			return (IQDesktopWidgetSignals) _signalInterceptor;
+			return (IQDesktopWidgetSignals) Q_EMIT;
 		}
 	}
 

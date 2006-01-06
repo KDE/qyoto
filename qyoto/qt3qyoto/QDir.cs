@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Collections;
 	using System.Text;
 
+	[SmokeClass("QDir")]
 	public class QDir : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

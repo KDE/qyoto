@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QSize")]
 	public class QSize : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

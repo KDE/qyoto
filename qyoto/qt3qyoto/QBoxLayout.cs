@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QBoxLayout")]
 	public class QBoxLayout : QLayout, IDisposable {
  		protected QBoxLayout(Type dummy) : base((Type) null) {}
 		interface IQBoxLayoutProxy {
@@ -295,10 +296,10 @@ namespace Qt {
 		}
 		protected void CreateQBoxLayoutSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQBoxLayoutSignals), this);
-			_signalInterceptor = (IQBoxLayoutSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQBoxLayoutSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQBoxLayoutSignals Emit() {
-			return (IQBoxLayoutSignals) _signalInterceptor;
+			return (IQBoxLayoutSignals) Q_EMIT;
 		}
 	}
 

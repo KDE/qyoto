@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQScrollViewSignals"></see> for signals emitted by QScrollView
+	[SmokeClass("QScrollView")]
 	public class QScrollView : QFrame, IDisposable {
  		protected QScrollView(Type dummy) : base((Type) null) {}
 		interface IQScrollViewProxy {
@@ -561,10 +562,10 @@ namespace Qt {
 		}
 		protected void CreateQScrollViewSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQScrollViewSignals), this);
-			_signalInterceptor = (IQScrollViewSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQScrollViewSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQScrollViewSignals Emit() {
-			return (IQScrollViewSignals) _signalInterceptor;
+			return (IQScrollViewSignals) Q_EMIT;
 		}
 	}
 

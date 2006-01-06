@@ -60,11 +60,13 @@ int do_debug = qtdb_gc;
 int do_debug = qtdb_none;
 #endif
 
+static FromIntPtr FreeGCHandle;
+
 static GetIntPtr GetSmokeObject;
 static SetIntPtr SetSmokeObject;
 
 static SetIntPtr MapPointer;
-static RemoveIntPtr UnmapPointer;
+static FromIntPtr UnmapPointer;
 static GetIntPtr GetPointerObject;
 
 static OverridenMethodFn OverridenMethod;
@@ -234,6 +236,7 @@ public:
 				_smoke->methodNames[method().name] );
     }
     Smoke *smoke() { return _smoke; }
+
 	void callMethod() {
 		if (_called) return;
 		_called = true;
@@ -265,6 +268,7 @@ public:
 
     ~VirtualMethodCall() {
 		free(_sp);
+		(*FreeGCHandle)(_overridenMethod);
     }
 };
 
@@ -715,11 +719,25 @@ public:
     }
 
 	bool callMethod(Smoke::Index method, void *ptr, Smoke::Stack args, bool /*isAbstract*/) {
+		Smoke::Method & meth = smoke->methods[method];
+		QCString signature(smoke->methodNames[meth.name]);
+		signature += "(";
+
+		for (int i = 0; i < meth.numArgs; i++) {
+			if (i != 0) signature += ", ";
+			signature += smoke->types[smoke->argumentList[meth.args + i]].name;
+		}
+
+		signature += ")";
+		if (meth.flags & Smoke::mf_const) {
+			signature += " const";
+		}
+
 		if (do_debug & qtdb_virtual) {
-			qWarning(	"virtual %p->%s::%s() called", 
+			qWarning(	"virtual %p->%s::%s called", 
 						ptr,
 						smoke->classes[smoke->methods[method].classId].className,
-						smoke->methodNames[smoke->methods[method].name] );
+						(const char *) signature );
 		}
 
 		void * obj = getPointerObject(ptr);
@@ -733,15 +751,10 @@ public:
 			return false;
 		}
 
-		const char *methodName = smoke->methodNames[smoke->methods[method].name];
-		void * overridenMethod = (*OverridenMethod)(obj, methodName);
-
+		void * overridenMethod = (*OverridenMethod)(obj, (const char *) signature);
 		if (overridenMethod == 0) {
 			return false;
 		}
-
-		// Always fail for now..
-		return false;
 
 		VirtualMethodCall c(smoke, method, args, obj, overridenMethod);
 		c.next();
@@ -789,37 +802,50 @@ FindAmbiguousMethodId(int ambiguousId)
 	return -1;
 }
 
-void AddGetSmokeObject(GetIntPtr callback)
+void 
+AddFreeGCHandle(FromIntPtr callback)
+{
+	FreeGCHandle = callback;
+}
+
+void 
+AddGetSmokeObject(GetIntPtr callback)
 {
 	GetSmokeObject = callback;
 }
 
-void AddSetSmokeObject(SetIntPtr callback)
+void 
+AddSetSmokeObject(SetIntPtr callback)
 {
 	SetSmokeObject = callback;
 }
 
-void AddMapPointer(SetIntPtr callback)
+void 
+AddMapPointer(SetIntPtr callback)
 {
 	MapPointer = callback;
 }
 
-void AddUnmapPointer(RemoveIntPtr callback)
+void 
+AddUnmapPointer(FromIntPtr callback)
 {
 	UnmapPointer = callback;
 }
 
-void AddGetPointerObject(GetIntPtr callback)
+void 
+AddGetPointerObject(GetIntPtr callback)
 {
 	GetPointerObject = callback;
 }
 
-void AddOverridenMethod(OverridenMethodFn callback)
+void 
+AddOverridenMethod(OverridenMethodFn callback)
 {
 	OverridenMethod = callback;
 }
 
-void AddInvokeMethod(InvokeMethodFn callback)
+void 
+AddInvokeMethod(InvokeMethodFn callback)
 {
 	InvokeMethod = callback;
 }

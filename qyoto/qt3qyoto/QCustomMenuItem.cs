@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QCustomMenuItem")]
 	public class QCustomMenuItem : Qt {
  		protected QCustomMenuItem(Type dummy) : base((Type) null) {}
 		interface IQCustomMenuItemProxy {

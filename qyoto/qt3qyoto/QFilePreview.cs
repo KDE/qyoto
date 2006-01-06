@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QFilePreview")]
 	public class QFilePreview : MarshalByRefObject {
 		protected Object _interceptor = null;
  

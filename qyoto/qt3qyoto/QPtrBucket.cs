@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QPtrBucket")]
 	public class QPtrBucket : QBaseBucket, IDisposable {
  		protected QPtrBucket(Type dummy) : base((Type) null) {}
 		interface IQPtrBucketProxy {

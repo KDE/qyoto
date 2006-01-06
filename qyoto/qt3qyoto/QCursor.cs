@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QCursor")]
 	public class QCursor : Qt, IDisposable {
  		protected QCursor(Type dummy) : base((Type) null) {}
 		interface IQCursorProxy {

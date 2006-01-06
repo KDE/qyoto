@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QTextCodecFactory")]
 	public class QTextCodecFactory : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QStyleSheetItem")]
 	public class QStyleSheetItem : Qt, IDisposable {
  		protected QStyleSheetItem(Type dummy) : base((Type) null) {}
 		interface IQStyleSheetItemProxy {

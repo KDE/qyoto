@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QUtf16Codec")]
 	public class QUtf16Codec : QTextCodec, IDisposable {
  		protected QUtf16Codec(Type dummy) : base((Type) null) {}
 		interface IQUtf16CodecProxy {

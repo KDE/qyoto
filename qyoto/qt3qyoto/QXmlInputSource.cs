@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QXmlInputSource")]
 	public class QXmlInputSource : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

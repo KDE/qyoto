@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QIconViewItem")]
 	public class QIconViewItem : Qt, IDisposable {
  		protected QIconViewItem(Type dummy) : base((Type) null) {}
 		interface IQIconViewItemProxy {

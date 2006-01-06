@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QDropSite")]
 	public class QDropSite : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

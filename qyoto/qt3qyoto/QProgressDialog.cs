@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQProgressDialogSignals"></see> for signals emitted by QProgressDialog
+	[SmokeClass("QProgressDialog")]
 	public class QProgressDialog : QDialog, IDisposable {
  		protected QProgressDialog(Type dummy) : base((Type) null) {}
 		interface IQProgressDialogProxy {
@@ -272,10 +273,10 @@ namespace Qt {
 		}
 		protected void CreateQProgressDialogSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQProgressDialogSignals), this);
-			_signalInterceptor = (IQProgressDialogSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQProgressDialogSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQProgressDialogSignals Emit() {
-			return (IQProgressDialogSignals) _signalInterceptor;
+			return (IQProgressDialogSignals) Q_EMIT;
 		}
 	}
 

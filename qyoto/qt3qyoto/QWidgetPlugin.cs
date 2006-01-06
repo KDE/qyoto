@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Collections;
 	using System.Text;
 
+	[SmokeClass("QWidgetPlugin")]
 	public class QWidgetPlugin : QGPlugin {
  		protected QWidgetPlugin(Type dummy) : base((Type) null) {}
 		interface IQWidgetPluginProxy {
@@ -96,10 +97,10 @@ namespace Qt {
 		}
 		protected void CreateQWidgetPluginSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQWidgetPluginSignals), this);
-			_signalInterceptor = (IQWidgetPluginSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQWidgetPluginSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQWidgetPluginSignals Emit() {
-			return (IQWidgetPluginSignals) _signalInterceptor;
+			return (IQWidgetPluginSignals) Q_EMIT;
 		}
 	}
 

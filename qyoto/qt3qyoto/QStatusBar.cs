@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQStatusBarSignals"></see> for signals emitted by QStatusBar
+	[SmokeClass("QStatusBar")]
 	public class QStatusBar : QWidget, IDisposable {
  		protected QStatusBar(Type dummy) : base((Type) null) {}
 		interface IQStatusBarProxy {
@@ -151,10 +152,10 @@ namespace Qt {
 		}
 		protected void CreateQStatusBarSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQStatusBarSignals), this);
-			_signalInterceptor = (IQStatusBarSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQStatusBarSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQStatusBarSignals Emit() {
-			return (IQStatusBarSignals) _signalInterceptor;
+			return (IQStatusBarSignals) Q_EMIT;
 		}
 	}
 

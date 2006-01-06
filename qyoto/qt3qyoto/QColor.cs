@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Collections;
 	using System.Text;
 
+	[SmokeClass("QColor")]
 	public class QColor : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

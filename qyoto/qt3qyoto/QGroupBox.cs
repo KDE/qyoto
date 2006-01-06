@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQGroupBoxSignals"></see> for signals emitted by QGroupBox
+	[SmokeClass("QGroupBox")]
 	public class QGroupBox : QFrame, IDisposable {
  		protected QGroupBox(Type dummy) : base((Type) null) {}
 		interface IQGroupBoxProxy {
@@ -286,10 +287,10 @@ namespace Qt {
 		}
 		protected void CreateQGroupBoxSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQGroupBoxSignals), this);
-			_signalInterceptor = (IQGroupBoxSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQGroupBoxSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQGroupBoxSignals Emit() {
-			return (IQGroupBoxSignals) _signalInterceptor;
+			return (IQGroupBoxSignals) Q_EMIT;
 		}
 	}
 

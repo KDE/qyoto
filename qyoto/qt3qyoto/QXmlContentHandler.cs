@@ -19,6 +19,7 @@ namespace Qt {
 			string ErrorString();
 	}
 
+	[SmokeClass("QXmlContentHandler")]
 	public class QXmlContentHandler : MarshalByRefObject, IQXmlContentHandler {
 		protected Object _interceptor = null;
  

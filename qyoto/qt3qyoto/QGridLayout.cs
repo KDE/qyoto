@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QGridLayout")]
 	public class QGridLayout : QLayout, IDisposable {
  		protected QGridLayout(Type dummy) : base((Type) null) {}
 		interface IQGridLayoutProxy {
@@ -367,10 +368,10 @@ namespace Qt {
 		}
 		protected void CreateQGridLayoutSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQGridLayoutSignals), this);
-			_signalInterceptor = (IQGridLayoutSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQGridLayoutSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQGridLayoutSignals Emit() {
-			return (IQGridLayoutSignals) _signalInterceptor;
+			return (IQGridLayoutSignals) Q_EMIT;
 		}
 	}
 

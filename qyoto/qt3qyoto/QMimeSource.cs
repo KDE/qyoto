@@ -11,6 +11,7 @@ namespace Qt {
 			int SerialNumber();
 	}
 
+	[SmokeClass("QMimeSource")]
 	public class QMimeSource : MarshalByRefObject, IQMimeSource {
 		protected Object _interceptor = null;
  

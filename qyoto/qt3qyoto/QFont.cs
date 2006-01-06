@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Collections;
 	using System.Text;
 
+	[SmokeClass("QFont")]
 	public class QFont : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

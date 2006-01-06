@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QStyleOption")]
 	public class QStyleOption : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

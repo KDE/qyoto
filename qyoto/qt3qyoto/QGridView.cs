@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QGridView")]
 	public class QGridView : QScrollView {
  		protected QGridView(Type dummy) : base((Type) null) {}
 		interface IQGridViewProxy {
@@ -123,10 +124,10 @@ namespace Qt {
 		}
 		protected void CreateQGridViewSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQGridViewSignals), this);
-			_signalInterceptor = (IQGridViewSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQGridViewSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQGridViewSignals Emit() {
-			return (IQGridViewSignals) _signalInterceptor;
+			return (IQGridViewSignals) Q_EMIT;
 		}
 	}
 

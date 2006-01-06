@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QGLFormat")]
 	public class QGLFormat : QGL, IDisposable {
  		protected QGLFormat(Type dummy) : base((Type) null) {}
 		interface IQGLFormatProxy {

@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QSound")]
 	public class QSound : QObject, IDisposable {
  		protected QSound(Type dummy) : base((Type) null) {}
 		interface IQSoundProxy {
@@ -136,10 +137,10 @@ namespace Qt {
 		}
 		protected void CreateQSoundSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQSoundSignals), this);
-			_signalInterceptor = (IQSoundSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQSoundSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQSoundSignals Emit() {
-			return (IQSoundSignals) _signalInterceptor;
+			return (IQSoundSignals) Q_EMIT;
 		}
 	}
 

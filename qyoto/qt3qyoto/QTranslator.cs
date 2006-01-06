@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QTranslator")]
 	public class QTranslator : QObject, IDisposable {
  		protected QTranslator(Type dummy) : base((Type) null) {}
 		interface IQTranslatorProxy {
@@ -184,10 +185,10 @@ namespace Qt {
 		}
 		protected void CreateQTranslatorSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQTranslatorSignals), this);
-			_signalInterceptor = (IQTranslatorSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQTranslatorSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQTranslatorSignals Emit() {
-			return (IQTranslatorSignals) _signalInterceptor;
+			return (IQTranslatorSignals) Q_EMIT;
 		}
 	}
 

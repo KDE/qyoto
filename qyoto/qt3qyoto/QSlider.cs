@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQSliderSignals"></see> for signals emitted by QSlider
+	[SmokeClass("QSlider")]
 	public class QSlider : QWidget, IQRangeControl, IDisposable {
  		protected QSlider(Type dummy) : base((Type) null) {}
 		interface IQSliderProxy {
@@ -344,10 +345,10 @@ namespace Qt {
 		}
 		protected void CreateQSliderSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQSliderSignals), this);
-			_signalInterceptor = (IQSliderSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQSliderSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQSliderSignals Emit() {
-			return (IQSliderSignals) _signalInterceptor;
+			return (IQSliderSignals) Q_EMIT;
 		}
 	}
 

@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QDomCharacterData")]
 	public class QDomCharacterData : QDomNode, IDisposable {
  		protected QDomCharacterData(Type dummy) : base((Type) null) {}
 		interface IQDomCharacterDataProxy {

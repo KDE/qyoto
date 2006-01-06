@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQAccelSignals"></see> for signals emitted by QAccel
+	[SmokeClass("QAccel")]
 	public class QAccel : QObject, IDisposable {
  		protected QAccel(Type dummy) : base((Type) null) {}
 		interface IQAccelProxy {
@@ -192,10 +193,10 @@ namespace Qt {
 		}
 		protected void CreateQAccelSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQAccelSignals), this);
-			_signalInterceptor = (IQAccelSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQAccelSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQAccelSignals Emit() {
-			return (IQAccelSignals) _signalInterceptor;
+			return (IQAccelSignals) Q_EMIT;
 		}
 	}
 

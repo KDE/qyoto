@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QDialog")]
 	public class QDialog : QWidget, IDisposable {
  		protected QDialog(Type dummy) : base((Type) null) {}
 		interface IQDialogProxy {
@@ -242,10 +243,10 @@ namespace Qt {
 		}
 		protected void CreateQDialogSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQDialogSignals), this);
-			_signalInterceptor = (IQDialogSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQDialogSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQDialogSignals Emit() {
-			return (IQDialogSignals) _signalInterceptor;
+			return (IQDialogSignals) Q_EMIT;
 		}
 	}
 

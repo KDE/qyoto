@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QGCacheIterator")]
 	public class QGCacheIterator : MarshalByRefObject {
 		protected Object _interceptor = null;
  

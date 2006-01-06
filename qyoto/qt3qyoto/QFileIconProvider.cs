@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QFileIconProvider")]
 	public class QFileIconProvider : QObject, IDisposable {
  		protected QFileIconProvider(Type dummy) : base((Type) null) {}
 		interface IQFileIconProviderProxy {
@@ -95,10 +96,10 @@ namespace Qt {
 		}
 		protected void CreateQFileIconProviderSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQFileIconProviderSignals), this);
-			_signalInterceptor = (IQFileIconProviderSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQFileIconProviderSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQFileIconProviderSignals Emit() {
-			return (IQFileIconProviderSignals) _signalInterceptor;
+			return (IQFileIconProviderSignals) Q_EMIT;
 		}
 	}
 

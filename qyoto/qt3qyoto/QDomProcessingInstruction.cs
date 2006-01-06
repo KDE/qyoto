@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QDomProcessingInstruction")]
 	public class QDomProcessingInstruction : QDomNode, IDisposable {
  		protected QDomProcessingInstruction(Type dummy) : base((Type) null) {}
 		interface IQDomProcessingInstructionProxy {

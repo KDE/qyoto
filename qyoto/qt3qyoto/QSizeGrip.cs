@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QSizeGrip")]
 	public class QSizeGrip : QWidget, IDisposable {
  		protected QSizeGrip(Type dummy) : base((Type) null) {}
 		interface IQSizeGripProxy {
@@ -102,10 +103,10 @@ namespace Qt {
 		}
 		protected void CreateQSizeGripSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQSizeGripSignals), this);
-			_signalInterceptor = (IQSizeGripSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQSizeGripSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQSizeGripSignals Emit() {
-			return (IQSizeGripSignals) _signalInterceptor;
+			return (IQSizeGripSignals) Q_EMIT;
 		}
 	}
 

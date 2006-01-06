@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QGListStdIterator")]
 	public class QGListStdIterator : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

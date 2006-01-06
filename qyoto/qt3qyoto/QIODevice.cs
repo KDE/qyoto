@@ -40,6 +40,7 @@ namespace Qt {
 			int Ungetch(int arg1);
 	}
 
+	[SmokeClass("QIODevice")]
 	public class QIODevice : MarshalByRefObject, IQIODevice {
 		protected Object _interceptor = null;
  

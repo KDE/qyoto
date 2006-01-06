@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QConnection")]
 	public class QConnection : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QToolBar")]
 	public class QToolBar : QDockWindow, IDisposable {
  		protected QToolBar(Type dummy) : base((Type) null) {}
 		interface IQToolBarProxy {
@@ -223,10 +224,10 @@ namespace Qt {
 		}
 		protected void CreateQToolBarSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQToolBarSignals), this);
-			_signalInterceptor = (IQToolBarSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQToolBarSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQToolBarSignals Emit() {
-			return (IQToolBarSignals) _signalInterceptor;
+			return (IQToolBarSignals) Q_EMIT;
 		}
 	}
 

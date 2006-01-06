@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QShared")]
 	public class QShared : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

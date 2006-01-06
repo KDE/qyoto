@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QDomAttr")]
 	public class QDomAttr : QDomNode, IDisposable {
  		protected QDomAttr(Type dummy) : base((Type) null) {}
 		interface IQDomAttrProxy {

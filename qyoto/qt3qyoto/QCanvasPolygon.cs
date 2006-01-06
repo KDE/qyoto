@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QCanvasPolygon")]
 	public class QCanvasPolygon : QCanvasPolygonalItem, IDisposable {
  		protected QCanvasPolygon(Type dummy) : base((Type) null) {}
 		interface IQCanvasPolygonProxy {

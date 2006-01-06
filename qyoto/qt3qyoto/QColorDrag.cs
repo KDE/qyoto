@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QColorDrag")]
 	public class QColorDrag : QStoredDrag, IDisposable {
  		protected QColorDrag(Type dummy) : base((Type) null) {}
 		interface IQColorDragProxy {
@@ -132,10 +133,10 @@ namespace Qt {
 		}
 		protected void CreateQColorDragSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQColorDragSignals), this);
-			_signalInterceptor = (IQColorDragSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQColorDragSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQColorDragSignals Emit() {
-			return (IQColorDragSignals) _signalInterceptor;
+			return (IQColorDragSignals) Q_EMIT;
 		}
 	}
 

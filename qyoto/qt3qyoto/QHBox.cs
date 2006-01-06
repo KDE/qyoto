@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QHBox")]
 	public class QHBox : QFrame, IDisposable {
  		protected QHBox(Type dummy) : base((Type) null) {}
 		interface IQHBoxProxy {
@@ -134,10 +135,10 @@ namespace Qt {
 		}
 		protected void CreateQHBoxSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQHBoxSignals), this);
-			_signalInterceptor = (IQHBoxSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQHBoxSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQHBoxSignals Emit() {
-			return (IQHBoxSignals) _signalInterceptor;
+			return (IQHBoxSignals) Q_EMIT;
 		}
 	}
 

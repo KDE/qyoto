@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QXmlDefaultHandler")]
 	public class QXmlDefaultHandler : QXmlLexicalHandler, IQXmlContentHandler, IQXmlDTDHandler, IQXmlDeclHandler, IQXmlEntityResolver, IQXmlErrorHandler, IQXmlLexicalHandler, IDisposable {
  		protected QXmlDefaultHandler(Type dummy) : base((Type) null) {}
 		interface IQXmlDefaultHandlerProxy {

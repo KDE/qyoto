@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QDataPump")]
 	public class QDataPump : QObject, IDisposable {
  		protected QDataPump(Type dummy) : base((Type) null) {}
 		interface IQDataPumpProxy {
@@ -73,10 +74,10 @@ namespace Qt {
 		}
 		protected void CreateQDataPumpSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQDataPumpSignals), this);
-			_signalInterceptor = (IQDataPumpSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQDataPumpSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQDataPumpSignals Emit() {
-			return (IQDataPumpSignals) _signalInterceptor;
+			return (IQDataPumpSignals) Q_EMIT;
 		}
 	}
 

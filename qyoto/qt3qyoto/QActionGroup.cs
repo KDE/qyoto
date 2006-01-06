@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQActionGroupSignals"></see> for signals emitted by QActionGroup
+	[SmokeClass("QActionGroup")]
 	public class QActionGroup : QAction, IDisposable {
  		protected QActionGroup(Type dummy) : base((Type) null) {}
 		interface IQActionGroupProxy {
@@ -180,10 +181,10 @@ namespace Qt {
 		}
 		protected void CreateQActionGroupSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQActionGroupSignals), this);
-			_signalInterceptor = (IQActionGroupSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQActionGroupSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQActionGroupSignals Emit() {
-			return (IQActionGroupSignals) _signalInterceptor;
+			return (IQActionGroupSignals) Q_EMIT;
 		}
 	}
 

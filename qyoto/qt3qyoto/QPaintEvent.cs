@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QPaintEvent")]
 	public class QPaintEvent : QEvent, IDisposable {
  		protected QPaintEvent(Type dummy) : base((Type) null) {}
 		interface IQPaintEventProxy {

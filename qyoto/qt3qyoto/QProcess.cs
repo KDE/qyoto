@@ -6,6 +6,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQProcessSignals"></see> for signals emitted by QProcess
+	[SmokeClass("QProcess")]
 	public class QProcess : QObject, IDisposable {
  		protected QProcess(Type dummy) : base((Type) null) {}
 		interface IQProcessProxy {
@@ -286,10 +287,10 @@ namespace Qt {
 		}
 		protected void CreateQProcessSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQProcessSignals), this);
-			_signalInterceptor = (IQProcessSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQProcessSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQProcessSignals Emit() {
-			return (IQProcessSignals) _signalInterceptor;
+			return (IQProcessSignals) Q_EMIT;
 		}
 	}
 

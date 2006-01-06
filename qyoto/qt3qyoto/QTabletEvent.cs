@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QTabletEvent")]
 	public class QTabletEvent : QEvent, IDisposable {
  		protected QTabletEvent(Type dummy) : base((Type) null) {}
 		interface IQTabletEventProxy {

@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQHeaderSignals"></see> for signals emitted by QHeader
+	[SmokeClass("QHeader")]
 	public class QHeader : QWidget, IDisposable {
  		protected QHeader(Type dummy) : base((Type) null) {}
 		interface IQHeaderProxy {
@@ -397,10 +398,10 @@ namespace Qt {
 		}
 		protected void CreateQHeaderSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQHeaderSignals), this);
-			_signalInterceptor = (IQHeaderSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQHeaderSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQHeaderSignals Emit() {
-			return (IQHeaderSignals) _signalInterceptor;
+			return (IQHeaderSignals) Q_EMIT;
 		}
 	}
 

@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QDomNamedNodeMap")]
 	public class QDomNamedNodeMap : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

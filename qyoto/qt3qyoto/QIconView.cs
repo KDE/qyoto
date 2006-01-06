@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQIconViewSignals"></see> for signals emitted by QIconView
+	[SmokeClass("QIconView")]
 	public class QIconView : QScrollView, IDisposable {
  		protected QIconView(Type dummy) : base((Type) null) {}
 		interface IQIconViewProxy {
@@ -524,10 +525,10 @@ namespace Qt {
 		}
 		protected void CreateQIconViewSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQIconViewSignals), this);
-			_signalInterceptor = (IQIconViewSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQIconViewSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQIconViewSignals Emit() {
-			return (IQIconViewSignals) _signalInterceptor;
+			return (IQIconViewSignals) Q_EMIT;
 		}
 	}
 

@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QPrintDialog")]
 	public class QPrintDialog : QDialog, IDisposable {
  		protected QPrintDialog(Type dummy) : base((Type) null) {}
 		interface IQPrintDialogProxy {
@@ -122,10 +123,10 @@ namespace Qt {
 		}
 		protected void CreateQPrintDialogSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQPrintDialogSignals), this);
-			_signalInterceptor = (IQPrintDialogSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQPrintDialogSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQPrintDialogSignals Emit() {
-			return (IQPrintDialogSignals) _signalInterceptor;
+			return (IQPrintDialogSignals) Q_EMIT;
 		}
 	}
 

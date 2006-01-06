@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QMapNodeBase")]
 	public class QMapNodeBase : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

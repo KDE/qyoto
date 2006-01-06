@@ -6,6 +6,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQObjectSignals"></see> for signals emitted by QObject
+	[SmokeClass("QObject")]
 	public class QObject : Qt, IDisposable {
  		protected QObject(Type dummy) : base((Type) null) {}
 		interface IQObjectProxy {
@@ -344,13 +345,14 @@ namespace Qt {
 		private void DisposeQObject() {
 			ProxyQObject().DisposeQObject();
 		}
-		protected Object _signalInterceptor = null;
+
+		protected Object Q_EMIT = null;
 		protected void CreateQObjectSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQObjectSignals), this);
-			_signalInterceptor = (IQObjectSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQObjectSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQObjectSignals Emit() {
-			return (IQObjectSignals) _signalInterceptor;
+			return (IQObjectSignals) Q_EMIT;
 		}
 	}
 

@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QListBoxPixmap")]
 	public class QListBoxPixmap : QListBoxItem, IDisposable {
  		protected QListBoxPixmap(Type dummy) : base((Type) null) {}
 		interface IQListBoxPixmapProxy {

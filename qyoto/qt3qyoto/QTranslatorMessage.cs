@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QTranslatorMessage")]
 	public class QTranslatorMessage : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  

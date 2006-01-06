@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QCanvasText")]
 	public class QCanvasText : QCanvasItem, IDisposable {
  		protected QCanvasText(Type dummy) : base((Type) null) {}
 		interface IQCanvasTextProxy {

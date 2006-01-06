@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQListBoxSignals"></see> for signals emitted by QListBox
+	[SmokeClass("QListBox")]
 	public class QListBox : QScrollView, IDisposable {
  		protected QListBox(Type dummy) : base((Type) null) {}
 		interface IQListBoxProxy {
@@ -611,10 +612,10 @@ namespace Qt {
 		}
 		protected void CreateQListBoxSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQListBoxSignals), this);
-			_signalInterceptor = (IQListBoxSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQListBoxSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQListBoxSignals Emit() {
-			return (IQListBoxSignals) _signalInterceptor;
+			return (IQListBoxSignals) Q_EMIT;
 		}
 	}
 

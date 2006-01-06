@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QDragObject")]
 	public class QDragObject : QObject, IQMimeSource {
  		protected QDragObject(Type dummy) : base((Type) null) {}
 		interface IQDragObjectProxy {
@@ -129,10 +130,10 @@ namespace Qt {
 
 		protected void CreateQDragObjectSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQDragObjectSignals), this);
-			_signalInterceptor = (IQDragObjectSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQDragObjectSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQDragObjectSignals Emit() {
-			return (IQDragObjectSignals) _signalInterceptor;
+			return (IQDragObjectSignals) Q_EMIT;
 		}
 	}
 

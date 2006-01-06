@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QAsciiBucket")]
 	public class QAsciiBucket : QBaseBucket, IDisposable {
  		protected QAsciiBucket(Type dummy) : base((Type) null) {}
 		interface IQAsciiBucketProxy {

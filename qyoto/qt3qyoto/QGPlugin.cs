@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QGPlugin")]
 	public class QGPlugin : QObject, IDisposable {
  		protected QGPlugin(Type dummy) : base((Type) null) {}
 		interface IQGPluginProxy {
@@ -67,10 +68,10 @@ namespace Qt {
 		}
 		protected void CreateQGPluginSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQGPluginSignals), this);
-			_signalInterceptor = (IQGPluginSignals) realProxy.GetTransparentProxy();
+			Q_EMIT = (IQGPluginSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQGPluginSignals Emit() {
-			return (IQGPluginSignals) _signalInterceptor;
+			return (IQGPluginSignals) Q_EMIT;
 		}
 	}
 
