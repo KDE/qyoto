@@ -60,4 +60,6 @@ typedef char* (*GetCharStarFromIntPtr)(void *);
 typedef void* (*OverridenMethodFn)(void *, const char *);
 typedef void (*InvokeMethodFn)(void *, void *, void *);
 
+extern FromIntPtr FreeGCHandle;
+
 #endif

@@ -561,14 +561,12 @@ namespace Qt {
 						returnValue.ReturnValue = stack[0].s_double;
 					} else if (returnType == typeof(string)) {
 						returnValue.ReturnValue = ((GCHandle) stack[0].s_class).Target;
-						((GCHandle) stack[0].s_class).Free();
 					} else {
 						returnValue.ReturnValue = ((GCHandle) stack[0].s_class).Target;
 					}
 				}
 			}
 						
-			instanceHandle.Free();
 			returnMessage = returnValue;
 
 #if DEBUG
@@ -656,8 +654,6 @@ namespace Qt {
 					SignalEmit(signature, (IntPtr) instanceHandle, (IntPtr) stackPtr, callMessage.ArgCount);
 				}
 			}
-
-			instanceHandle.Free();
 
 			return returnMessage;
 		}

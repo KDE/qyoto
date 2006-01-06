@@ -60,7 +60,7 @@ int do_debug = qtdb_gc;
 int do_debug = qtdb_none;
 #endif
 
-static FromIntPtr FreeGCHandle;
+FromIntPtr FreeGCHandle;
 
 static GetIntPtr GetSmokeObject;
 static SetIntPtr SetSmokeObject;
@@ -334,9 +334,10 @@ public:
 	_retval = _sp;
     }
 
-    ~MethodCall() {
-	delete[] _stack;
-    }
+	~MethodCall() {
+		delete[] _stack;
+		(*FreeGCHandle)(_target);
+	}
 
     SmokeType type() {
     	return SmokeType(_smoke, _args[_cur]);
@@ -685,9 +686,6 @@ public:
     InvokeSlot(void * obj, char * slotname, int items, MocArgument * args, QUObject *o) :
     _obj(obj), _slotname(slotname), _items(items), _args(args), _o(o), _cur(-1), _called(false)
     {
-//	_items = NUM2INT(rb_ary_entry(args, 0));
-//	Data_Get_Struct(rb_ary_entry(args, 1), MocArgument, _args);
-//	_sp = (VALUE *) calloc(_items, sizeof(VALUE));
 		_sp = new Smoke::StackItem[_items];
 		_stack = new Smoke::StackItem[_items];
 		copyArguments();
@@ -696,6 +694,7 @@ public:
 	~InvokeSlot() {
 		delete[] _stack;
 		delete[] _sp;
+		(*FreeGCHandle)(_obj);
 	}
 };
 
