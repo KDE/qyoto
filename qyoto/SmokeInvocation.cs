@@ -259,7 +259,7 @@ namespace Qt {
 						parent = parent.BaseType;
 					}
 	
-					if (signature != null) {
+					if (signature != null && methodsHash[signature] == null) {
 						methodsHash[signature] = method;
 					}
 				}
