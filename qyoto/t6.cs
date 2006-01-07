@@ -8,7 +8,7 @@ public class LCDRange : QVBox
 
 	public LCDRange(QWidget parent, string name) : base(parent, name) {
 		QLCDNumber lcd  = new QLCDNumber( 2, this, "lcd" );
-		QSlider slider = new QSlider( (int) Orientation.Horizontal, this, "slider" );
+		QSlider slider = new QSlider( Orientation.Horizontal, this, "slider" );
 		slider.SetRange( 0, 99 );
 		slider.SetValue( 0 );
 		Connect( slider, SIGNAL("valueChanged(int)"), lcd, SLOT("display(int)") );
@@ -21,7 +21,7 @@ public class MyWidget : QVBox
 
 	public MyWidget(QWidget parent, string name) : base(parent, name) {
 		QPushButton quit = new QPushButton( "Quit", this, "quit" );
-		quit.SetFont( new QFont( "Times", 18, (int) QFont.E_Weight.Bold ) );
+		quit.SetFont( new QFont( "Times", 18, (int) QFont.Weight.Bold ) );
 
 		Connect( quit, SIGNAL("clicked()"), qApp, SLOT("quit()") );
 

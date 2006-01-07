@@ -12,7 +12,7 @@ public class T3 : Qt
 		box.Resize( 200, 120 );
 
 		QPushButton quit = new QPushButton( "Quit", box );
-		quit.SetFont( new QFont( "Times", 18, (int) QFont.E_Weight.Bold ) );
+		quit.SetFont( new QFont( "Times", 18, (int) QFont.Weight.Bold ) );
 
 		QObject.Connect( quit, SIGNAL("clicked()"), a, SLOT("quit()") );
 		

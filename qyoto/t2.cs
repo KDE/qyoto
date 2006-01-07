@@ -10,7 +10,7 @@ public class T2 : Qt
 		
 		QPushButton quit = new QPushButton( "Quit", null );
 		quit.Resize( 75, 30 );
-		quit.SetFont( new QFont( "Times", 18, (int) QFont.E_Weight.Bold ) );
+		quit.SetFont( new QFont( "Times", 18, (int) QFont.Weight.Bold ) );
 
 		QObject.Connect( quit, SIGNAL("clicked()"), a, SLOT("quit()") );
 		

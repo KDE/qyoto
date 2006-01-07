@@ -12,7 +12,7 @@ public class MyWidget : QWidget
 
 		QPushButton quit = new QPushButton( "Quit", this, "quit" );
 		quit.SetGeometry( 62, 40, 75, 30 );
-		quit.SetFont( new QFont( "Times", 18, (int) QFont.E_Weight.Bold ) );
+		quit.SetFont( new QFont( "Times", 18, (int) QFont.Weight.Bold ) );
 
 		Connect( quit, SIGNAL("clicked()"), qApp, SLOT("quit()") );
 	}
