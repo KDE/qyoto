@@ -33,5 +33,22 @@ namespace Qt {
 		public virtual string ToUnicode(string chars, int len) {
 			return ProxyQTextDecoder().ToUnicode(chars,len);
 		}
+		public QTextDecoder() : this((Type) null) {
+			CreateQTextDecoderProxy();
+			NewQTextDecoder();
+		}
+		[SmokeMethod("QTextDecoder()")]
+		private void NewQTextDecoder() {
+			ProxyQTextDecoder().NewQTextDecoder();
+		}
+		~QTextDecoder() {
+			DisposeQTextDecoder();
+		}
+		public void Dispose() {
+			DisposeQTextDecoder();
+		}
+		private void DisposeQTextDecoder() {
+			ProxyQTextDecoder().DisposeQTextDecoder();
+		}
 	}
 }

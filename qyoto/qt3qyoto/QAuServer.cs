@@ -38,6 +38,15 @@ namespace Qt {
 		public new virtual string ClassName() {
 			return ProxyQAuServer().ClassName();
 		}
+		public QAuServer(QObject parent, string name) : this((Type) null) {
+			CreateQAuServerProxy();
+			CreateQAuServerSignalProxy();
+			NewQAuServer(parent,name);
+		}
+		[SmokeMethod("QAuServer(QObject*, const char*)")]
+		private void NewQAuServer(QObject parent, string name) {
+			ProxyQAuServer().NewQAuServer(parent,name);
+		}
 		[SmokeMethod("init(QSound*)")]
 		public virtual void Init(QSound arg1) {
 			ProxyQAuServer().Init(arg1);
@@ -73,6 +82,15 @@ namespace Qt {
 		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQAuServer().TrUtf8(arg1);
+		}
+		~QAuServer() {
+			DisposeQAuServer();
+		}
+		public new void Dispose() {
+			DisposeQAuServer();
+		}
+		private void DisposeQAuServer() {
+			ProxyQAuServer().DisposeQAuServer();
 		}
 		protected void CreateQAuServerSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQAuServerSignals), this);

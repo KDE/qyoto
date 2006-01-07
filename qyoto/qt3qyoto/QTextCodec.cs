@@ -172,5 +172,14 @@ namespace Qt {
 		public static string Locale() {
 			return StaticQTextCodec().Locale();
 		}
+		~QTextCodec() {
+			DisposeQTextCodec();
+		}
+		public void Dispose() {
+			DisposeQTextCodec();
+		}
+		private void DisposeQTextCodec() {
+			ProxyQTextCodec().DisposeQTextCodec();
+		}
 	}
 }

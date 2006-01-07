@@ -28,9 +28,26 @@ namespace Qt {
 			return (IQMetaObjectCleanUpProxy) _staticInterceptor;
 		}
 
+		public QMetaObjectCleanUp() : this((Type) null) {
+			CreateQMetaObjectCleanUpProxy();
+			NewQMetaObjectCleanUp();
+		}
+		[SmokeMethod("QMetaObjectCleanUp()")]
+		private void NewQMetaObjectCleanUp() {
+			ProxyQMetaObjectCleanUp().NewQMetaObjectCleanUp();
+		}
 		[SmokeMethod("setMetaObject(QMetaObject*&)")]
 		public void SetMetaObject(QMetaObject mo) {
 			ProxyQMetaObjectCleanUp().SetMetaObject(mo);
+		}
+		~QMetaObjectCleanUp() {
+			DisposeQMetaObjectCleanUp();
+		}
+		public void Dispose() {
+			DisposeQMetaObjectCleanUp();
+		}
+		private void DisposeQMetaObjectCleanUp() {
+			ProxyQMetaObjectCleanUp().DisposeQMetaObjectCleanUp();
 		}
 	}
 }

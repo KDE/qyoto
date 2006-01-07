@@ -28,6 +28,14 @@ namespace Qt {
 			return (IQXmlLocatorProxy) _staticInterceptor;
 		}
 
+		public QXmlLocator() : this((Type) null) {
+			CreateQXmlLocatorProxy();
+			NewQXmlLocator();
+		}
+		[SmokeMethod("QXmlLocator()")]
+		private void NewQXmlLocator() {
+			ProxyQXmlLocator().NewQXmlLocator();
+		}
 		[SmokeMethod("columnNumber()")]
 		public virtual int ColumnNumber() {
 			return ProxyQXmlLocator().ColumnNumber();
@@ -35,6 +43,15 @@ namespace Qt {
 		[SmokeMethod("lineNumber()")]
 		public virtual int LineNumber() {
 			return ProxyQXmlLocator().LineNumber();
+		}
+		~QXmlLocator() {
+			DisposeQXmlLocator();
+		}
+		public void Dispose() {
+			DisposeQXmlLocator();
+		}
+		private void DisposeQXmlLocator() {
+			ProxyQXmlLocator().DisposeQXmlLocator();
 		}
 	}
 }

@@ -48,6 +48,33 @@ namespace Qt {
 		public new virtual string ClassName() {
 			return ProxyQSqlDriver().ClassName();
 		}
+		public QSqlDriver(QObject parent, string name) : this((Type) null) {
+			CreateQSqlDriverProxy();
+			CreateQSqlDriverSignalProxy();
+			NewQSqlDriver(parent,name);
+		}
+		[SmokeMethod("QSqlDriver(QObject*, const char*)")]
+		private void NewQSqlDriver(QObject parent, string name) {
+			ProxyQSqlDriver().NewQSqlDriver(parent,name);
+		}
+		public QSqlDriver(QObject parent) : this((Type) null) {
+			CreateQSqlDriverProxy();
+			CreateQSqlDriverSignalProxy();
+			NewQSqlDriver(parent);
+		}
+		[SmokeMethod("QSqlDriver(QObject*)")]
+		private void NewQSqlDriver(QObject parent) {
+			ProxyQSqlDriver().NewQSqlDriver(parent);
+		}
+		public QSqlDriver() : this((Type) null) {
+			CreateQSqlDriverProxy();
+			CreateQSqlDriverSignalProxy();
+			NewQSqlDriver();
+		}
+		[SmokeMethod("QSqlDriver()")]
+		private void NewQSqlDriver() {
+			ProxyQSqlDriver().NewQSqlDriver();
+		}
 		[SmokeMethod("isOpen() const")]
 		public bool IsOpen() {
 			return ProxyQSqlDriver().IsOpen();
@@ -159,6 +186,15 @@ namespace Qt {
 		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQSqlDriver().TrUtf8(arg1);
+		}
+		~QSqlDriver() {
+			DisposeQSqlDriver();
+		}
+		public new void Dispose() {
+			DisposeQSqlDriver();
+		}
+		private void DisposeQSqlDriver() {
+			ProxyQSqlDriver().DisposeQSqlDriver();
 		}
 		protected void CreateQSqlDriverSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQSqlDriverSignals), this);

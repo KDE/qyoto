@@ -29,5 +29,14 @@ namespace Qt {
 		}
 
 		// QPtrCollection::Item getData(); >>>> NOT CONVERTED
+		~QLNode() {
+			DisposeQLNode();
+		}
+		public void Dispose() {
+			DisposeQLNode();
+		}
+		private void DisposeQLNode() {
+			ProxyQLNode().DisposeQLNode();
+		}
 	}
 }

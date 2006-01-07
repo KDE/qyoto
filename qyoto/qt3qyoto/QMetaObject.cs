@@ -233,5 +233,14 @@ namespace Qt {
 		public static bool HasMetaObject(string class_name) {
 			return StaticQMetaObject().HasMetaObject(class_name);
 		}
+		~QMetaObject() {
+			DisposeQMetaObject();
+		}
+		public void Dispose() {
+			DisposeQMetaObject();
+		}
+		private void DisposeQMetaObject() {
+			ProxyQMetaObject().DisposeQMetaObject();
+		}
 	}
 }

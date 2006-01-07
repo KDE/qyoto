@@ -347,6 +347,15 @@ namespace Qt {
 		public new virtual string ClassName() {
 			return ProxyQStyle().ClassName();
 		}
+		public QStyle() : this((Type) null) {
+			CreateQStyleProxy();
+			CreateQStyleSignalProxy();
+			NewQStyle();
+		}
+		[SmokeMethod("QStyle()")]
+		private void NewQStyle() {
+			ProxyQStyle().NewQStyle();
+		}
 		[SmokeMethod("polish(QWidget*)")]
 		public virtual void Polish(QWidget arg1) {
 			ProxyQStyle().Polish(arg1);
@@ -547,6 +556,15 @@ namespace Qt {
 		[SmokeMethod("visualRect(const QRect&, const QRect&)")]
 		public static QRect VisualRect(QRect logical, QRect bounding) {
 			return StaticQStyle().VisualRect(logical,bounding);
+		}
+		~QStyle() {
+			DisposeQStyle();
+		}
+		public new void Dispose() {
+			DisposeQStyle();
+		}
+		private void DisposeQStyle() {
+			ProxyQStyle().DisposeQStyle();
 		}
 		protected void CreateQStyleSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQStyleSignals), this);

@@ -46,6 +46,22 @@ namespace Qt {
 			return (IQLayoutItemProxy) _staticInterceptor;
 		}
 
+		public QLayoutItem(int alignment) : this((Type) null) {
+			CreateQLayoutItemProxy();
+			NewQLayoutItem(alignment);
+		}
+		[SmokeMethod("QLayoutItem(int)")]
+		private void NewQLayoutItem(int alignment) {
+			ProxyQLayoutItem().NewQLayoutItem(alignment);
+		}
+		public QLayoutItem() : this((Type) null) {
+			CreateQLayoutItemProxy();
+			NewQLayoutItem();
+		}
+		[SmokeMethod("QLayoutItem()")]
+		private void NewQLayoutItem() {
+			ProxyQLayoutItem().NewQLayoutItem();
+		}
 		[SmokeMethod("sizeHint() const")]
 		public virtual QSize SizeHint() {
 			return ProxyQLayoutItem().SizeHint();
@@ -106,6 +122,15 @@ namespace Qt {
 		[SmokeMethod("setAlignment(int)")]
 		public virtual void SetAlignment(int a) {
 			ProxyQLayoutItem().SetAlignment(a);
+		}
+		~QLayoutItem() {
+			DisposeQLayoutItem();
+		}
+		public void Dispose() {
+			DisposeQLayoutItem();
+		}
+		private void DisposeQLayoutItem() {
+			ProxyQLayoutItem().DisposeQLayoutItem();
 		}
 	}
 }

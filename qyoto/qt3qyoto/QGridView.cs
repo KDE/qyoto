@@ -38,6 +38,42 @@ namespace Qt {
 		public new virtual string ClassName() {
 			return ProxyQGridView().ClassName();
 		}
+		public QGridView(QWidget parent, string name, int f) : this((Type) null) {
+			CreateQGridViewProxy();
+			CreateQGridViewSignalProxy();
+			NewQGridView(parent,name,f);
+		}
+		[SmokeMethod("QGridView(QWidget*, const char*, Qt::WFlags)")]
+		private void NewQGridView(QWidget parent, string name, int f) {
+			ProxyQGridView().NewQGridView(parent,name,f);
+		}
+		public QGridView(QWidget parent, string name) : this((Type) null) {
+			CreateQGridViewProxy();
+			CreateQGridViewSignalProxy();
+			NewQGridView(parent,name);
+		}
+		[SmokeMethod("QGridView(QWidget*, const char*)")]
+		private void NewQGridView(QWidget parent, string name) {
+			ProxyQGridView().NewQGridView(parent,name);
+		}
+		public QGridView(QWidget parent) : this((Type) null) {
+			CreateQGridViewProxy();
+			CreateQGridViewSignalProxy();
+			NewQGridView(parent);
+		}
+		[SmokeMethod("QGridView(QWidget*)")]
+		private void NewQGridView(QWidget parent) {
+			ProxyQGridView().NewQGridView(parent);
+		}
+		public QGridView() : this((Type) null) {
+			CreateQGridViewProxy();
+			CreateQGridViewSignalProxy();
+			NewQGridView();
+		}
+		[SmokeMethod("QGridView()")]
+		private void NewQGridView() {
+			ProxyQGridView().NewQGridView();
+		}
 		[SmokeMethod("numRows() const")]
 		public int NumRows() {
 			return ProxyQGridView().NumRows();
@@ -121,6 +157,15 @@ namespace Qt {
 		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQGridView().TrUtf8(arg1);
+		}
+		~QGridView() {
+			DisposeQGridView();
+		}
+		public new void Dispose() {
+			DisposeQGridView();
+		}
+		private void DisposeQGridView() {
+			ProxyQGridView().DisposeQGridView();
 		}
 		protected void CreateQGridViewSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQGridViewSignals), this);

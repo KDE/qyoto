@@ -29,6 +29,30 @@ namespace Qt {
 			return (IQListBoxItemProxy) _staticInterceptor;
 		}
 
+		public QListBoxItem(QListBox listbox) : this((Type) null) {
+			CreateQListBoxItemProxy();
+			NewQListBoxItem(listbox);
+		}
+		[SmokeMethod("QListBoxItem(QListBox*)")]
+		private void NewQListBoxItem(QListBox listbox) {
+			ProxyQListBoxItem().NewQListBoxItem(listbox);
+		}
+		public QListBoxItem() : this((Type) null) {
+			CreateQListBoxItemProxy();
+			NewQListBoxItem();
+		}
+		[SmokeMethod("QListBoxItem()")]
+		private void NewQListBoxItem() {
+			ProxyQListBoxItem().NewQListBoxItem();
+		}
+		public QListBoxItem(QListBox listbox, QListBoxItem after) : this((Type) null) {
+			CreateQListBoxItemProxy();
+			NewQListBoxItem(listbox,after);
+		}
+		[SmokeMethod("QListBoxItem(QListBox*, QListBoxItem*)")]
+		private void NewQListBoxItem(QListBox listbox, QListBoxItem after) {
+			ProxyQListBoxItem().NewQListBoxItem(listbox,after);
+		}
 		[SmokeMethod("text() const")]
 		public virtual string Text() {
 			return ProxyQListBoxItem().Text();
@@ -84,6 +108,15 @@ namespace Qt {
 		[SmokeMethod("rtti() const")]
 		public virtual int Rtti() {
 			return ProxyQListBoxItem().Rtti();
+		}
+		~QListBoxItem() {
+			DisposeQListBoxItem();
+		}
+		public void Dispose() {
+			DisposeQListBoxItem();
+		}
+		private void DisposeQListBoxItem() {
+			ProxyQListBoxItem().DisposeQListBoxItem();
 		}
 	}
 }

@@ -72,5 +72,22 @@ namespace Qt {
 		public virtual string ErrorString() {
 			return ProxyQXmlLexicalHandler().ErrorString();
 		}
+		public QXmlLexicalHandler() : this((Type) null) {
+			CreateQXmlLexicalHandlerProxy();
+			NewQXmlLexicalHandler();
+		}
+		[SmokeMethod("QXmlLexicalHandler()")]
+		private void NewQXmlLexicalHandler() {
+			ProxyQXmlLexicalHandler().NewQXmlLexicalHandler();
+		}
+		~QXmlLexicalHandler() {
+			DisposeQXmlLexicalHandler();
+		}
+		public void Dispose() {
+			DisposeQXmlLexicalHandler();
+		}
+		private void DisposeQXmlLexicalHandler() {
+			ProxyQXmlLexicalHandler().DisposeQXmlLexicalHandler();
+		}
 	}
 }

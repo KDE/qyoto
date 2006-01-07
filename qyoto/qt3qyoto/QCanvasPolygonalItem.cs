@@ -25,6 +25,14 @@ namespace Qt {
 			return (IQCanvasPolygonalItemProxy) _staticInterceptor;
 		}
 
+		public QCanvasPolygonalItem(QCanvas canvas) : this((Type) null) {
+			CreateQCanvasPolygonalItemProxy();
+			NewQCanvasPolygonalItem(canvas);
+		}
+		[SmokeMethod("QCanvasPolygonalItem(QCanvas*)")]
+		private void NewQCanvasPolygonalItem(QCanvas canvas) {
+			ProxyQCanvasPolygonalItem().NewQCanvasPolygonalItem(canvas);
+		}
 		[SmokeMethod("collidesWith(const QCanvasItem*) const")]
 		public new bool CollidesWith(QCanvasItem arg1) {
 			return ProxyQCanvasPolygonalItem().CollidesWith(arg1);
@@ -60,6 +68,15 @@ namespace Qt {
 		[SmokeMethod("rtti() const")]
 		public new int Rtti() {
 			return ProxyQCanvasPolygonalItem().Rtti();
+		}
+		~QCanvasPolygonalItem() {
+			DisposeQCanvasPolygonalItem();
+		}
+		public new void Dispose() {
+			DisposeQCanvasPolygonalItem();
+		}
+		private void DisposeQCanvasPolygonalItem() {
+			ProxyQCanvasPolygonalItem().DisposeQCanvasPolygonalItem();
 		}
 	}
 }

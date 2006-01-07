@@ -56,5 +56,14 @@ namespace Qt {
 		public int Count() {
 			return ProxyQFocusData().Count();
 		}
+		~QFocusData() {
+			DisposeQFocusData();
+		}
+		public void Dispose() {
+			DisposeQFocusData();
+		}
+		private void DisposeQFocusData() {
+			ProxyQFocusData().DisposeQFocusData();
+		}
 	}
 }

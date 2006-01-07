@@ -32,5 +32,22 @@ namespace Qt {
 		public virtual int Decode(QImage img, QImageConsumer consumer, char[] buffer, int length) {
 			return ProxyQImageFormat().Decode(img,consumer,buffer,length);
 		}
+		public QImageFormat() : this((Type) null) {
+			CreateQImageFormatProxy();
+			NewQImageFormat();
+		}
+		[SmokeMethod("QImageFormat()")]
+		private void NewQImageFormat() {
+			ProxyQImageFormat().NewQImageFormat();
+		}
+		~QImageFormat() {
+			DisposeQImageFormat();
+		}
+		public void Dispose() {
+			DisposeQImageFormat();
+		}
+		private void DisposeQImageFormat() {
+			ProxyQImageFormat().DisposeQImageFormat();
+		}
 	}
 }

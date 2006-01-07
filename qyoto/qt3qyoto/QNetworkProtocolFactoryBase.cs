@@ -33,5 +33,14 @@ namespace Qt {
 			return ProxyQNetworkProtocolFactoryBase().CreateObject();
 		}
 		// QNetworkProtocolFactoryBase* QNetworkProtocolFactoryBase(); >>>> NOT CONVERTED
+		~QNetworkProtocolFactoryBase() {
+			DisposeQNetworkProtocolFactoryBase();
+		}
+		public void Dispose() {
+			DisposeQNetworkProtocolFactoryBase();
+		}
+		private void DisposeQNetworkProtocolFactoryBase() {
+			ProxyQNetworkProtocolFactoryBase().DisposeQNetworkProtocolFactoryBase();
+		}
 	}
 }

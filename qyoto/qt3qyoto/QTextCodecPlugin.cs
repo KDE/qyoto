@@ -39,6 +39,15 @@ namespace Qt {
 		public new virtual string ClassName() {
 			return ProxyQTextCodecPlugin().ClassName();
 		}
+		public QTextCodecPlugin() : this((Type) null) {
+			CreateQTextCodecPluginProxy();
+			CreateQTextCodecPluginSignalProxy();
+			NewQTextCodecPlugin();
+		}
+		[SmokeMethod("QTextCodecPlugin()")]
+		private void NewQTextCodecPlugin() {
+			ProxyQTextCodecPlugin().NewQTextCodecPlugin();
+		}
 		[SmokeMethod("names() const")]
 		public virtual ArrayList Names() {
 			return ProxyQTextCodecPlugin().Names();
@@ -70,6 +79,15 @@ namespace Qt {
 		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQTextCodecPlugin().TrUtf8(arg1);
+		}
+		~QTextCodecPlugin() {
+			DisposeQTextCodecPlugin();
+		}
+		public new void Dispose() {
+			DisposeQTextCodecPlugin();
+		}
+		private void DisposeQTextCodecPlugin() {
+			ProxyQTextCodecPlugin().DisposeQTextCodecPlugin();
 		}
 		protected void CreateQTextCodecPluginSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQTextCodecPluginSignals), this);

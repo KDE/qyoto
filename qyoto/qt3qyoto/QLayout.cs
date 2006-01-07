@@ -44,6 +44,96 @@ namespace Qt {
 		public new virtual string ClassName() {
 			return ProxyQLayout().ClassName();
 		}
+		public QLayout(QWidget parent, int margin, int spacing, string name) : this((Type) null) {
+			CreateQLayoutProxy();
+			CreateQLayoutSignalProxy();
+			NewQLayout(parent,margin,spacing,name);
+		}
+		[SmokeMethod("QLayout(QWidget*, int, int, const char*)")]
+		private void NewQLayout(QWidget parent, int margin, int spacing, string name) {
+			ProxyQLayout().NewQLayout(parent,margin,spacing,name);
+		}
+		public QLayout(QWidget parent, int margin, int spacing) : this((Type) null) {
+			CreateQLayoutProxy();
+			CreateQLayoutSignalProxy();
+			NewQLayout(parent,margin,spacing);
+		}
+		[SmokeMethod("QLayout(QWidget*, int, int)")]
+		private void NewQLayout(QWidget parent, int margin, int spacing) {
+			ProxyQLayout().NewQLayout(parent,margin,spacing);
+		}
+		public QLayout(QWidget parent, int margin) : this((Type) null) {
+			CreateQLayoutProxy();
+			CreateQLayoutSignalProxy();
+			NewQLayout(parent,margin);
+		}
+		[SmokeMethod("QLayout(QWidget*, int)")]
+		private void NewQLayout(QWidget parent, int margin) {
+			ProxyQLayout().NewQLayout(parent,margin);
+		}
+		public QLayout(QWidget parent) : this((Type) null) {
+			CreateQLayoutProxy();
+			CreateQLayoutSignalProxy();
+			NewQLayout(parent);
+		}
+		[SmokeMethod("QLayout(QWidget*)")]
+		private void NewQLayout(QWidget parent) {
+			ProxyQLayout().NewQLayout(parent);
+		}
+		public QLayout(QLayout parentLayout, int spacing, string name) : this((Type) null) {
+			CreateQLayoutProxy();
+			CreateQLayoutSignalProxy();
+			NewQLayout(parentLayout,spacing,name);
+		}
+		[SmokeMethod("QLayout(QLayout*, int, const char*)")]
+		private void NewQLayout(QLayout parentLayout, int spacing, string name) {
+			ProxyQLayout().NewQLayout(parentLayout,spacing,name);
+		}
+		public QLayout(QLayout parentLayout, int spacing) : this((Type) null) {
+			CreateQLayoutProxy();
+			CreateQLayoutSignalProxy();
+			NewQLayout(parentLayout,spacing);
+		}
+		[SmokeMethod("QLayout(QLayout*, int)")]
+		private void NewQLayout(QLayout parentLayout, int spacing) {
+			ProxyQLayout().NewQLayout(parentLayout,spacing);
+		}
+		public QLayout(QLayout parentLayout) : this((Type) null) {
+			CreateQLayoutProxy();
+			CreateQLayoutSignalProxy();
+			NewQLayout(parentLayout);
+		}
+		[SmokeMethod("QLayout(QLayout*)")]
+		private void NewQLayout(QLayout parentLayout) {
+			ProxyQLayout().NewQLayout(parentLayout);
+		}
+		public QLayout(int spacing, string name) : this((Type) null) {
+			CreateQLayoutProxy();
+			CreateQLayoutSignalProxy();
+			NewQLayout(spacing,name);
+		}
+		[SmokeMethod("QLayout(int, const char*)")]
+		private void NewQLayout(int spacing, string name) {
+			ProxyQLayout().NewQLayout(spacing,name);
+		}
+		public QLayout(int spacing) : this((Type) null) {
+			CreateQLayoutProxy();
+			CreateQLayoutSignalProxy();
+			NewQLayout(spacing);
+		}
+		[SmokeMethod("QLayout(int)")]
+		private void NewQLayout(int spacing) {
+			ProxyQLayout().NewQLayout(spacing);
+		}
+		public QLayout() : this((Type) null) {
+			CreateQLayoutProxy();
+			CreateQLayoutSignalProxy();
+			NewQLayout();
+		}
+		[SmokeMethod("QLayout()")]
+		private void NewQLayout() {
+			ProxyQLayout().NewQLayout();
+		}
 		[SmokeMethod("margin() const")]
 		public int Margin() {
 			return ProxyQLayout().Margin();
@@ -200,6 +290,15 @@ namespace Qt {
 		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQLayout().TrUtf8(arg1);
+		}
+		~QLayout() {
+			DisposeQLayout();
+		}
+		public new void Dispose() {
+			DisposeQLayout();
+		}
+		private void DisposeQLayout() {
+			ProxyQLayout().DisposeQLayout();
 		}
 		[SmokeMethod("sizeHint() const")]
 		public virtual QSize SizeHint() {

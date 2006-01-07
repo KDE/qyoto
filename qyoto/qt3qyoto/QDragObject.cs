@@ -47,6 +47,33 @@ namespace Qt {
 		public new virtual string ClassName() {
 			return ProxyQDragObject().ClassName();
 		}
+		public QDragObject(QWidget dragSource, string name) : this((Type) null) {
+			CreateQDragObjectProxy();
+			CreateQDragObjectSignalProxy();
+			NewQDragObject(dragSource,name);
+		}
+		[SmokeMethod("QDragObject(QWidget*, const char*)")]
+		private void NewQDragObject(QWidget dragSource, string name) {
+			ProxyQDragObject().NewQDragObject(dragSource,name);
+		}
+		public QDragObject(QWidget dragSource) : this((Type) null) {
+			CreateQDragObjectProxy();
+			CreateQDragObjectSignalProxy();
+			NewQDragObject(dragSource);
+		}
+		[SmokeMethod("QDragObject(QWidget*)")]
+		private void NewQDragObject(QWidget dragSource) {
+			ProxyQDragObject().NewQDragObject(dragSource);
+		}
+		public QDragObject() : this((Type) null) {
+			CreateQDragObjectProxy();
+			CreateQDragObjectSignalProxy();
+			NewQDragObject();
+		}
+		[SmokeMethod("QDragObject()")]
+		private void NewQDragObject() {
+			ProxyQDragObject().NewQDragObject();
+		}
 		[SmokeMethod("drag()")]
 		public bool Drag() {
 			return ProxyQDragObject().Drag();
@@ -106,6 +133,15 @@ namespace Qt {
 		[SmokeMethod("setTarget(QWidget*)")]
 		public static void SetTarget(QWidget arg1) {
 			StaticQDragObject().SetTarget(arg1);
+		}
+		~QDragObject() {
+			DisposeQDragObject();
+		}
+		public new void Dispose() {
+			DisposeQDragObject();
+		}
+		private void DisposeQDragObject() {
+			ProxyQDragObject().DisposeQDragObject();
 		}
 		[SmokeMethod("format(int) const")]
 		public virtual string Format(int n) {

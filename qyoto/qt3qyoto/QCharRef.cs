@@ -126,5 +126,14 @@ namespace Qt {
 		public ushort Row() {
 			return ProxyQCharRef().Row();
 		}
+		~QCharRef() {
+			DisposeQCharRef();
+		}
+		public void Dispose() {
+			DisposeQCharRef();
+		}
+		private void DisposeQCharRef() {
+			ProxyQCharRef().DisposeQCharRef();
+		}
 	}
 }

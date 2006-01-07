@@ -25,6 +25,14 @@ namespace Qt {
 			return (IQCustomMenuItemProxy) _staticInterceptor;
 		}
 
+		public QCustomMenuItem() : this((Type) null) {
+			CreateQCustomMenuItemProxy();
+			NewQCustomMenuItem();
+		}
+		[SmokeMethod("QCustomMenuItem()")]
+		private void NewQCustomMenuItem() {
+			ProxyQCustomMenuItem().NewQCustomMenuItem();
+		}
 		[SmokeMethod("fullSpan() const")]
 		public virtual bool FullSpan() {
 			return ProxyQCustomMenuItem().FullSpan();
@@ -44,6 +52,15 @@ namespace Qt {
 		[SmokeMethod("sizeHint()")]
 		public virtual QSize SizeHint() {
 			return ProxyQCustomMenuItem().SizeHint();
+		}
+		~QCustomMenuItem() {
+			DisposeQCustomMenuItem();
+		}
+		public void Dispose() {
+			DisposeQCustomMenuItem();
+		}
+		private void DisposeQCustomMenuItem() {
+			ProxyQCustomMenuItem().DisposeQCustomMenuItem();
 		}
 	}
 }

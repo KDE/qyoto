@@ -52,5 +52,22 @@ namespace Qt {
 		public virtual string ErrorString() {
 			return ProxyQXmlDeclHandler().ErrorString();
 		}
+		public QXmlDeclHandler() : this((Type) null) {
+			CreateQXmlDeclHandlerProxy();
+			NewQXmlDeclHandler();
+		}
+		[SmokeMethod("QXmlDeclHandler()")]
+		private void NewQXmlDeclHandler() {
+			ProxyQXmlDeclHandler().NewQXmlDeclHandler();
+		}
+		~QXmlDeclHandler() {
+			DisposeQXmlDeclHandler();
+		}
+		public void Dispose() {
+			DisposeQXmlDeclHandler();
+		}
+		private void DisposeQXmlDeclHandler() {
+			ProxyQXmlDeclHandler().DisposeQXmlDeclHandler();
+		}
 	}
 }

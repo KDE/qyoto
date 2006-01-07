@@ -49,5 +49,22 @@ namespace Qt {
 		public virtual void Rewind() {
 			ProxyQDataSource().Rewind();
 		}
+		public QDataSource() : this((Type) null) {
+			CreateQDataSourceProxy();
+			NewQDataSource();
+		}
+		[SmokeMethod("QDataSource()")]
+		private void NewQDataSource() {
+			ProxyQDataSource().NewQDataSource();
+		}
+		~QDataSource() {
+			DisposeQDataSource();
+		}
+		public new void Dispose() {
+			DisposeQDataSource();
+		}
+		private void DisposeQDataSource() {
+			ProxyQDataSource().DisposeQDataSource();
+		}
 	}
 }

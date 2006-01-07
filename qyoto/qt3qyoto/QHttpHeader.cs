@@ -30,6 +30,30 @@ namespace Qt {
 			return (IQHttpHeaderProxy) _staticInterceptor;
 		}
 
+		public QHttpHeader() : this((Type) null) {
+			CreateQHttpHeaderProxy();
+			NewQHttpHeader();
+		}
+		[SmokeMethod("QHttpHeader()")]
+		private void NewQHttpHeader() {
+			ProxyQHttpHeader().NewQHttpHeader();
+		}
+		public QHttpHeader(QHttpHeader header) : this((Type) null) {
+			CreateQHttpHeaderProxy();
+			NewQHttpHeader(header);
+		}
+		[SmokeMethod("QHttpHeader(const QHttpHeader&)")]
+		private void NewQHttpHeader(QHttpHeader header) {
+			ProxyQHttpHeader().NewQHttpHeader(header);
+		}
+		public QHttpHeader(string str) : this((Type) null) {
+			CreateQHttpHeaderProxy();
+			NewQHttpHeader(str);
+		}
+		[SmokeMethod("QHttpHeader(const QString&)")]
+		private void NewQHttpHeader(string str) {
+			ProxyQHttpHeader().NewQHttpHeader(str);
+		}
 		[SmokeMethod("value(const QString&) const")]
 		public string Value(string key) {
 			return ProxyQHttpHeader().Value(key);
@@ -89,6 +113,15 @@ namespace Qt {
 		[SmokeMethod("minorVersion() const")]
 		public virtual int MinorVersion() {
 			return ProxyQHttpHeader().MinorVersion();
+		}
+		~QHttpHeader() {
+			DisposeQHttpHeader();
+		}
+		public void Dispose() {
+			DisposeQHttpHeader();
+		}
+		private void DisposeQHttpHeader() {
+			ProxyQHttpHeader().DisposeQHttpHeader();
 		}
 	}
 }

@@ -26,6 +26,14 @@ namespace Qt {
 			return (IQSyntaxHighlighterProxy) _staticInterceptor;
 		}
 
+		public QSyntaxHighlighter(QTextEdit textEdit) : this((Type) null) {
+			CreateQSyntaxHighlighterProxy();
+			NewQSyntaxHighlighter(textEdit);
+		}
+		[SmokeMethod("QSyntaxHighlighter(QTextEdit*)")]
+		private void NewQSyntaxHighlighter(QTextEdit textEdit) {
+			ProxyQSyntaxHighlighter().NewQSyntaxHighlighter(textEdit);
+		}
 		[SmokeMethod("highlightParagraph(const QString&, int)")]
 		public virtual int HighlightParagraph(string text, int endStateOfLastPara) {
 			return ProxyQSyntaxHighlighter().HighlightParagraph(text,endStateOfLastPara);
@@ -53,6 +61,15 @@ namespace Qt {
 		[SmokeMethod("currentParagraph() const")]
 		public int CurrentParagraph() {
 			return ProxyQSyntaxHighlighter().CurrentParagraph();
+		}
+		~QSyntaxHighlighter() {
+			DisposeQSyntaxHighlighter();
+		}
+		public void Dispose() {
+			DisposeQSyntaxHighlighter();
+		}
+		private void DisposeQSyntaxHighlighter() {
+			ProxyQSyntaxHighlighter().DisposeQSyntaxHighlighter();
 		}
 	}
 }

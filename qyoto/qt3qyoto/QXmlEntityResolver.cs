@@ -42,5 +42,22 @@ namespace Qt {
 		public virtual string ErrorString() {
 			return ProxyQXmlEntityResolver().ErrorString();
 		}
+		public QXmlEntityResolver() : this((Type) null) {
+			CreateQXmlEntityResolverProxy();
+			NewQXmlEntityResolver();
+		}
+		[SmokeMethod("QXmlEntityResolver()")]
+		private void NewQXmlEntityResolver() {
+			ProxyQXmlEntityResolver().NewQXmlEntityResolver();
+		}
+		~QXmlEntityResolver() {
+			DisposeQXmlEntityResolver();
+		}
+		public void Dispose() {
+			DisposeQXmlEntityResolver();
+		}
+		private void DisposeQXmlEntityResolver() {
+			ProxyQXmlEntityResolver().DisposeQXmlEntityResolver();
+		}
 	}
 }

@@ -39,6 +39,15 @@ namespace Qt {
 		public new virtual string ClassName() {
 			return ProxyQImageFormatPlugin().ClassName();
 		}
+		public QImageFormatPlugin() : this((Type) null) {
+			CreateQImageFormatPluginProxy();
+			CreateQImageFormatPluginSignalProxy();
+			NewQImageFormatPlugin();
+		}
+		[SmokeMethod("QImageFormatPlugin()")]
+		private void NewQImageFormatPlugin() {
+			ProxyQImageFormatPlugin().NewQImageFormatPlugin();
+		}
 		[SmokeMethod("keys() const")]
 		public virtual ArrayList Keys() {
 			return ProxyQImageFormatPlugin().Keys();
@@ -70,6 +79,15 @@ namespace Qt {
 		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQImageFormatPlugin().TrUtf8(arg1);
+		}
+		~QImageFormatPlugin() {
+			DisposeQImageFormatPlugin();
+		}
+		public new void Dispose() {
+			DisposeQImageFormatPlugin();
+		}
+		private void DisposeQImageFormatPlugin() {
+			ProxyQImageFormatPlugin().DisposeQImageFormatPlugin();
 		}
 		protected void CreateQImageFormatPluginSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQImageFormatPluginSignals), this);

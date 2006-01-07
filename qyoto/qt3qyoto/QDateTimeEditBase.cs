@@ -38,6 +38,33 @@ namespace Qt {
 		public new virtual string ClassName() {
 			return ProxyQDateTimeEditBase().ClassName();
 		}
+		public QDateTimeEditBase(QWidget parent, string name) : this((Type) null) {
+			CreateQDateTimeEditBaseProxy();
+			CreateQDateTimeEditBaseSignalProxy();
+			NewQDateTimeEditBase(parent,name);
+		}
+		[SmokeMethod("QDateTimeEditBase(QWidget*, const char*)")]
+		private void NewQDateTimeEditBase(QWidget parent, string name) {
+			ProxyQDateTimeEditBase().NewQDateTimeEditBase(parent,name);
+		}
+		public QDateTimeEditBase(QWidget parent) : this((Type) null) {
+			CreateQDateTimeEditBaseProxy();
+			CreateQDateTimeEditBaseSignalProxy();
+			NewQDateTimeEditBase(parent);
+		}
+		[SmokeMethod("QDateTimeEditBase(QWidget*)")]
+		private void NewQDateTimeEditBase(QWidget parent) {
+			ProxyQDateTimeEditBase().NewQDateTimeEditBase(parent);
+		}
+		public QDateTimeEditBase() : this((Type) null) {
+			CreateQDateTimeEditBaseProxy();
+			CreateQDateTimeEditBaseSignalProxy();
+			NewQDateTimeEditBase();
+		}
+		[SmokeMethod("QDateTimeEditBase()")]
+		private void NewQDateTimeEditBase() {
+			ProxyQDateTimeEditBase().NewQDateTimeEditBase();
+		}
 		[SmokeMethod("setFocusSection(int)")]
 		public virtual bool SetFocusSection(int sec) {
 			return ProxyQDateTimeEditBase().SetFocusSection(sec);
@@ -79,6 +106,15 @@ namespace Qt {
 		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQDateTimeEditBase().TrUtf8(arg1);
+		}
+		~QDateTimeEditBase() {
+			DisposeQDateTimeEditBase();
+		}
+		public new void Dispose() {
+			DisposeQDateTimeEditBase();
+		}
+		private void DisposeQDateTimeEditBase() {
+			ProxyQDateTimeEditBase().DisposeQDateTimeEditBase();
 		}
 		protected void CreateQDateTimeEditBaseSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQDateTimeEditBaseSignals), this);

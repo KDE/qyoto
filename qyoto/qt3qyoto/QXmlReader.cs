@@ -104,5 +104,22 @@ namespace Qt {
 		public virtual bool Parse(QXmlInputSource input) {
 			return ProxyQXmlReader().Parse(input);
 		}
+		public QXmlReader() : this((Type) null) {
+			CreateQXmlReaderProxy();
+			NewQXmlReader();
+		}
+		[SmokeMethod("QXmlReader()")]
+		private void NewQXmlReader() {
+			ProxyQXmlReader().NewQXmlReader();
+		}
+		~QXmlReader() {
+			DisposeQXmlReader();
+		}
+		public void Dispose() {
+			DisposeQXmlReader();
+		}
+		private void DisposeQXmlReader() {
+			ProxyQXmlReader().DisposeQXmlReader();
+		}
 	}
 }

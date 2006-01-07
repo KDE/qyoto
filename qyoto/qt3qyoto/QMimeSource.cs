@@ -36,6 +36,14 @@ namespace Qt {
 			return (IQMimeSourceProxy) _staticInterceptor;
 		}
 
+		public QMimeSource() : this((Type) null) {
+			CreateQMimeSourceProxy();
+			NewQMimeSource();
+		}
+		[SmokeMethod("QMimeSource()")]
+		private void NewQMimeSource() {
+			ProxyQMimeSource().NewQMimeSource();
+		}
 		[SmokeMethod("format(int) const")]
 		public virtual string Format(int n) {
 			return ProxyQMimeSource().Format(n);
@@ -55,6 +63,15 @@ namespace Qt {
 		[SmokeMethod("serialNumber() const")]
 		public int SerialNumber() {
 			return ProxyQMimeSource().SerialNumber();
+		}
+		~QMimeSource() {
+			DisposeQMimeSource();
+		}
+		public void Dispose() {
+			DisposeQMimeSource();
+		}
+		private void DisposeQMimeSource() {
+			ProxyQMimeSource().DisposeQMimeSource();
 		}
 	}
 }

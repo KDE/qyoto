@@ -58,5 +58,22 @@ namespace Qt {
 		public virtual void ProcessSpans(int n, QPoint point, out int width) {
 			ProxyQPolygonScanner().ProcessSpans(n,point,out width);
 		}
+		public QPolygonScanner() : this((Type) null) {
+			CreateQPolygonScannerProxy();
+			NewQPolygonScanner();
+		}
+		[SmokeMethod("QPolygonScanner()")]
+		private void NewQPolygonScanner() {
+			ProxyQPolygonScanner().NewQPolygonScanner();
+		}
+		~QPolygonScanner() {
+			DisposeQPolygonScanner();
+		}
+		public void Dispose() {
+			DisposeQPolygonScanner();
+		}
+		private void DisposeQPolygonScanner() {
+			ProxyQPolygonScanner().DisposeQPolygonScanner();
+		}
 	}
 }

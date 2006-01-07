@@ -44,6 +44,22 @@ namespace Qt {
 			return (IQToolTipProxy) _staticInterceptor;
 		}
 
+		public QToolTip(QWidget arg1, QToolTipGroup arg2) : this((Type) null) {
+			CreateQToolTipProxy();
+			NewQToolTip(arg1,arg2);
+		}
+		[SmokeMethod("QToolTip(QWidget*, QToolTipGroup*)")]
+		private void NewQToolTip(QWidget arg1, QToolTipGroup arg2) {
+			ProxyQToolTip().NewQToolTip(arg1,arg2);
+		}
+		public QToolTip(QWidget arg1) : this((Type) null) {
+			CreateQToolTipProxy();
+			NewQToolTip(arg1);
+		}
+		[SmokeMethod("QToolTip(QWidget*)")]
+		private void NewQToolTip(QWidget arg1) {
+			ProxyQToolTip().NewQToolTip(arg1);
+		}
 		[SmokeMethod("parentWidget() const")]
 		public QWidget ParentWidget() {
 			return ProxyQToolTip().ParentWidget();
@@ -123,6 +139,15 @@ namespace Qt {
 		[SmokeMethod("setWakeUpDelay(int)")]
 		public static void SetWakeUpDelay(int arg1) {
 			StaticQToolTip().SetWakeUpDelay(arg1);
+		}
+		~QToolTip() {
+			DisposeQToolTip();
+		}
+		public void Dispose() {
+			DisposeQToolTip();
+		}
+		private void DisposeQToolTip() {
+			ProxyQToolTip().DisposeQToolTip();
 		}
 	}
 }

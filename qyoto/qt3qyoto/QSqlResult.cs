@@ -30,5 +30,14 @@ namespace Qt {
 
 		// void setExtension(QSqlExtension* arg1); >>>> NOT CONVERTED
 		// QSqlExtension* extension(); >>>> NOT CONVERTED
+		~QSqlResult() {
+			DisposeQSqlResult();
+		}
+		public void Dispose() {
+			DisposeQSqlResult();
+		}
+		private void DisposeQSqlResult() {
+			ProxyQSqlResult().DisposeQSqlResult();
+		}
 	}
 }

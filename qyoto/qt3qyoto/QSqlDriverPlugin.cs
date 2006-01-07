@@ -39,6 +39,15 @@ namespace Qt {
 		public new virtual string ClassName() {
 			return ProxyQSqlDriverPlugin().ClassName();
 		}
+		public QSqlDriverPlugin() : this((Type) null) {
+			CreateQSqlDriverPluginProxy();
+			CreateQSqlDriverPluginSignalProxy();
+			NewQSqlDriverPlugin();
+		}
+		[SmokeMethod("QSqlDriverPlugin()")]
+		private void NewQSqlDriverPlugin() {
+			ProxyQSqlDriverPlugin().NewQSqlDriverPlugin();
+		}
 		[SmokeMethod("keys() const")]
 		public virtual ArrayList Keys() {
 			return ProxyQSqlDriverPlugin().Keys();
@@ -62,6 +71,15 @@ namespace Qt {
 		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQSqlDriverPlugin().TrUtf8(arg1);
+		}
+		~QSqlDriverPlugin() {
+			DisposeQSqlDriverPlugin();
+		}
+		public new void Dispose() {
+			DisposeQSqlDriverPlugin();
+		}
+		private void DisposeQSqlDriverPlugin() {
+			ProxyQSqlDriverPlugin().DisposeQSqlDriverPlugin();
 		}
 		protected void CreateQSqlDriverPluginSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQSqlDriverPluginSignals), this);

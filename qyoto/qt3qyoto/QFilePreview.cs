@@ -28,9 +28,26 @@ namespace Qt {
 			return (IQFilePreviewProxy) _staticInterceptor;
 		}
 
+		public QFilePreview() : this((Type) null) {
+			CreateQFilePreviewProxy();
+			NewQFilePreview();
+		}
+		[SmokeMethod("QFilePreview()")]
+		private void NewQFilePreview() {
+			ProxyQFilePreview().NewQFilePreview();
+		}
 		[SmokeMethod("previewUrl(const QUrl&)")]
 		public virtual void PreviewUrl(IQUrl url) {
 			ProxyQFilePreview().PreviewUrl(url);
+		}
+		~QFilePreview() {
+			DisposeQFilePreview();
+		}
+		public void Dispose() {
+			DisposeQFilePreview();
+		}
+		private void DisposeQFilePreview() {
+			ProxyQFilePreview().DisposeQFilePreview();
 		}
 	}
 }

@@ -47,5 +47,22 @@ namespace Qt {
 		public virtual string ErrorString() {
 			return ProxyQXmlDTDHandler().ErrorString();
 		}
+		public QXmlDTDHandler() : this((Type) null) {
+			CreateQXmlDTDHandlerProxy();
+			NewQXmlDTDHandler();
+		}
+		[SmokeMethod("QXmlDTDHandler()")]
+		private void NewQXmlDTDHandler() {
+			ProxyQXmlDTDHandler().NewQXmlDTDHandler();
+		}
+		~QXmlDTDHandler() {
+			DisposeQXmlDTDHandler();
+		}
+		public void Dispose() {
+			DisposeQXmlDTDHandler();
+		}
+		private void DisposeQXmlDTDHandler() {
+			ProxyQXmlDTDHandler().DisposeQXmlDTDHandler();
+		}
 	}
 }

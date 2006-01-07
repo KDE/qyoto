@@ -33,5 +33,14 @@ namespace Qt {
 			return ProxyQSqlDriverCreatorBase().CreateObject();
 		}
 		// QSqlDriverCreatorBase* QSqlDriverCreatorBase(); >>>> NOT CONVERTED
+		~QSqlDriverCreatorBase() {
+			DisposeQSqlDriverCreatorBase();
+		}
+		public void Dispose() {
+			DisposeQSqlDriverCreatorBase();
+		}
+		private void DisposeQSqlDriverCreatorBase() {
+			ProxyQSqlDriverCreatorBase().DisposeQSqlDriverCreatorBase();
+		}
 	}
 }

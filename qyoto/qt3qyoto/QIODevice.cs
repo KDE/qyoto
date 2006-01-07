@@ -65,6 +65,14 @@ namespace Qt {
 			return (IQIODeviceProxy) _staticInterceptor;
 		}
 
+		public QIODevice() : this((Type) null) {
+			CreateQIODeviceProxy();
+			NewQIODevice();
+		}
+		[SmokeMethod("QIODevice()")]
+		private void NewQIODevice() {
+			ProxyQIODevice().NewQIODevice();
+		}
 		[SmokeMethod("flags() const")]
 		public int Flags() {
 			return ProxyQIODevice().Flags();
@@ -200,6 +208,15 @@ namespace Qt {
 		[SmokeMethod("ungetch(int)")]
 		public virtual int Ungetch(int arg1) {
 			return ProxyQIODevice().Ungetch(arg1);
+		}
+		~QIODevice() {
+			DisposeQIODevice();
+		}
+		public void Dispose() {
+			DisposeQIODevice();
+		}
+		private void DisposeQIODevice() {
+			ProxyQIODevice().DisposeQIODevice();
 		}
 
 

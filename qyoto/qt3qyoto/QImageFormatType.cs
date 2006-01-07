@@ -36,5 +36,14 @@ namespace Qt {
 		public virtual string FormatName() {
 			return ProxyQImageFormatType().FormatName();
 		}
+		~QImageFormatType() {
+			DisposeQImageFormatType();
+		}
+		public void Dispose() {
+			DisposeQImageFormatType();
+		}
+		private void DisposeQImageFormatType() {
+			ProxyQImageFormatType().DisposeQImageFormatType();
+		}
 	}
 }

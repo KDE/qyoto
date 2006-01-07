@@ -37,5 +37,22 @@ namespace Qt {
 		public virtual IQLayoutItem TakeCurrent() {
 			return ProxyQGLayoutIterator().TakeCurrent();
 		}
+		public QGLayoutIterator() : this((Type) null) {
+			CreateQGLayoutIteratorProxy();
+			NewQGLayoutIterator();
+		}
+		[SmokeMethod("QGLayoutIterator()")]
+		private void NewQGLayoutIterator() {
+			ProxyQGLayoutIterator().NewQGLayoutIterator();
+		}
+		~QGLayoutIterator() {
+			DisposeQGLayoutIterator();
+		}
+		public void Dispose() {
+			DisposeQGLayoutIterator();
+		}
+		private void DisposeQGLayoutIterator() {
+			ProxyQGLayoutIterator().DisposeQGLayoutIterator();
+		}
 	}
 }

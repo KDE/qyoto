@@ -56,5 +56,22 @@ namespace Qt {
 		public virtual void SetSize(int arg1, int arg2) {
 			ProxyQImageConsumer().SetSize(arg1,arg2);
 		}
+		public QImageConsumer() : this((Type) null) {
+			CreateQImageConsumerProxy();
+			NewQImageConsumer();
+		}
+		[SmokeMethod("QImageConsumer()")]
+		private void NewQImageConsumer() {
+			ProxyQImageConsumer().NewQImageConsumer();
+		}
+		~QImageConsumer() {
+			DisposeQImageConsumer();
+		}
+		public void Dispose() {
+			DisposeQImageConsumer();
+		}
+		private void DisposeQImageConsumer() {
+			ProxyQImageConsumer().DisposeQImageConsumer();
+		}
 	}
 }

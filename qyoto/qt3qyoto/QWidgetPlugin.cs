@@ -39,6 +39,15 @@ namespace Qt {
 		public new virtual string ClassName() {
 			return ProxyQWidgetPlugin().ClassName();
 		}
+		public QWidgetPlugin() : this((Type) null) {
+			CreateQWidgetPluginProxy();
+			CreateQWidgetPluginSignalProxy();
+			NewQWidgetPlugin();
+		}
+		[SmokeMethod("QWidgetPlugin()")]
+		private void NewQWidgetPlugin() {
+			ProxyQWidgetPlugin().NewQWidgetPlugin();
+		}
 		[SmokeMethod("keys() const")]
 		public virtual ArrayList Keys() {
 			return ProxyQWidgetPlugin().Keys();
@@ -94,6 +103,15 @@ namespace Qt {
 		[SmokeMethod("trUtf8(const char*)")]
 		public static new string TrUtf8(string arg1) {
 			return StaticQWidgetPlugin().TrUtf8(arg1);
+		}
+		~QWidgetPlugin() {
+			DisposeQWidgetPlugin();
+		}
+		public new void Dispose() {
+			DisposeQWidgetPlugin();
+		}
+		private void DisposeQWidgetPlugin() {
+			ProxyQWidgetPlugin().DisposeQWidgetPlugin();
 		}
 		protected void CreateQWidgetPluginSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQWidgetPluginSignals), this);

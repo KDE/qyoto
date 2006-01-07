@@ -41,5 +41,22 @@ namespace Qt {
 		public void MaybeReady() {
 			ProxyQDataSink().MaybeReady();
 		}
+		public QDataSink() : this((Type) null) {
+			CreateQDataSinkProxy();
+			NewQDataSink();
+		}
+		[SmokeMethod("QDataSink()")]
+		private void NewQDataSink() {
+			ProxyQDataSink().NewQDataSink();
+		}
+		~QDataSink() {
+			DisposeQDataSink();
+		}
+		public new void Dispose() {
+			DisposeQDataSink();
+		}
+		private void DisposeQDataSink() {
+			ProxyQDataSink().DisposeQDataSink();
+		}
 	}
 }

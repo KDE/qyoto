@@ -37,6 +37,14 @@ namespace Qt {
 			Rtti_Line = 7,
 			Rtti_Spline = 8,
 		}
+		public QCanvasItem(QCanvas canvas) : this((Type) null) {
+			CreateQCanvasItemProxy();
+			NewQCanvasItem(canvas);
+		}
+		[SmokeMethod("QCanvasItem(QCanvas*)")]
+		private void NewQCanvasItem(QCanvas canvas) {
+			ProxyQCanvasItem().NewQCanvasItem(canvas);
+		}
 		[SmokeMethod("x() const")]
 		public double X() {
 			return ProxyQCanvasItem().X();
@@ -188,6 +196,15 @@ namespace Qt {
 		[SmokeMethod("canvas() const")]
 		public QCanvas Canvas() {
 			return ProxyQCanvasItem().Canvas();
+		}
+		~QCanvasItem() {
+			DisposeQCanvasItem();
+		}
+		public void Dispose() {
+			DisposeQCanvasItem();
+		}
+		private void DisposeQCanvasItem() {
+			ProxyQCanvasItem().DisposeQCanvasItem();
 		}
 	}
 }
