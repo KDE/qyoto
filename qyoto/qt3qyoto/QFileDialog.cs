@@ -65,18 +65,18 @@ namespace Qt {
 			return (IQFileDialogProxy) _staticInterceptor;
 		}
 
-		enum E_Mode {
+		public enum Mode {
 			AnyFile = 0,
 			ExistingFile = 1,
 			Directory = 2,
 			ExistingFiles = 3,
 			DirectoryOnly = 4,
 		}
-		enum E_ViewMode {
+		public enum ViewMode {
 			Detail = 0,
 			List = 1,
 		}
-		enum E_PreviewMode {
+		public enum PreviewMode {
 			NoPreview = 0,
 			Contents = 1,
 			Info = 2,
@@ -227,28 +227,28 @@ namespace Qt {
 			ProxyQFileDialog().ResortDir();
 		}
 		[SmokeMethod("setMode(QFileDialog::Mode)")]
-		public void SetMode(int arg1) {
+		public void SetMode(QFileDialog.Mode arg1) {
 			ProxyQFileDialog().SetMode(arg1);
 		}
 		[SmokeMethod("mode() const")]
-		public int Mode() {
-			return ProxyQFileDialog().Mode();
+		public QFileDialog.Mode mode() {
+			return ProxyQFileDialog().mode();
 		}
 		[SmokeMethod("setViewMode(QFileDialog::ViewMode)")]
-		public void SetViewMode(int m) {
+		public void SetViewMode(QFileDialog.ViewMode m) {
 			ProxyQFileDialog().SetViewMode(m);
 		}
 		[SmokeMethod("viewMode() const")]
-		public int ViewMode() {
-			return ProxyQFileDialog().ViewMode();
+		public QFileDialog.ViewMode viewMode() {
+			return ProxyQFileDialog().viewMode();
 		}
 		[SmokeMethod("setPreviewMode(QFileDialog::PreviewMode)")]
-		public void SetPreviewMode(int m) {
+		public void SetPreviewMode(QFileDialog.PreviewMode m) {
 			ProxyQFileDialog().SetPreviewMode(m);
 		}
 		[SmokeMethod("previewMode() const")]
-		public int PreviewMode() {
-			return ProxyQFileDialog().PreviewMode();
+		public QFileDialog.PreviewMode previewMode() {
+			return ProxyQFileDialog().previewMode();
 		}
 		[SmokeMethod("eventFilter(QObject*, QEvent*)")]
 		public new bool EventFilter(QObject arg1, QEvent arg2) {

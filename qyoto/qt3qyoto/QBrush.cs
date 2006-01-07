@@ -34,20 +34,20 @@ namespace Qt {
 		private void NewQBrush() {
 			ProxyQBrush().NewQBrush();
 		}
-		public QBrush(int arg1) : this((Type) null) {
+		public QBrush(Qt.BrushStyle arg1) : this((Type) null) {
 			CreateQBrushProxy();
 			NewQBrush(arg1);
 		}
 		[SmokeMethod("QBrush(Qt::BrushStyle)")]
-		private void NewQBrush(int arg1) {
+		private void NewQBrush(Qt.BrushStyle arg1) {
 			ProxyQBrush().NewQBrush(arg1);
 		}
-		public QBrush(QColor arg1, int arg2) : this((Type) null) {
+		public QBrush(QColor arg1, Qt.BrushStyle arg2) : this((Type) null) {
 			CreateQBrushProxy();
 			NewQBrush(arg1,arg2);
 		}
 		[SmokeMethod("QBrush(const QColor&, Qt::BrushStyle)")]
-		private void NewQBrush(QColor arg1, int arg2) {
+		private void NewQBrush(QColor arg1, Qt.BrushStyle arg2) {
 			ProxyQBrush().NewQBrush(arg1,arg2);
 		}
 		public QBrush(QColor arg1) : this((Type) null) {
@@ -75,11 +75,11 @@ namespace Qt {
 			ProxyQBrush().NewQBrush(arg1);
 		}
 		[SmokeMethod("style() const")]
-		public int Style() {
+		public Qt.BrushStyle Style() {
 			return ProxyQBrush().Style();
 		}
 		[SmokeMethod("setStyle(Qt::BrushStyle)")]
-		public void SetStyle(int arg1) {
+		public void SetStyle(Qt.BrushStyle arg1) {
 			ProxyQBrush().SetStyle(arg1);
 		}
 		[SmokeMethod("color() const")]

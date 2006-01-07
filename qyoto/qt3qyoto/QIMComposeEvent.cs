@@ -26,12 +26,12 @@ namespace Qt {
 			return (IQIMComposeEventProxy) _staticInterceptor;
 		}
 
-		public QIMComposeEvent(int type, string text, int cursorPosition, int selLength) : this((Type) null) {
+		public QIMComposeEvent(QEvent.E_Type type, string text, int cursorPosition, int selLength) : this((Type) null) {
 			CreateQIMComposeEventProxy();
 			NewQIMComposeEvent(type,text,cursorPosition,selLength);
 		}
 		[SmokeMethod("QIMComposeEvent(QEvent::Type, const QString&, int, int)")]
-		private void NewQIMComposeEvent(int type, string text, int cursorPosition, int selLength) {
+		private void NewQIMComposeEvent(QEvent.E_Type type, string text, int cursorPosition, int selLength) {
 			ProxyQIMComposeEvent().NewQIMComposeEvent(type,text,cursorPosition,selLength);
 		}
 		~QIMComposeEvent() {

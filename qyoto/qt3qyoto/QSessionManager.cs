@@ -31,7 +31,7 @@ namespace Qt {
 			return (IQSessionManagerProxy) _staticInterceptor;
 		}
 
-		enum E_RestartHint {
+		public enum RestartHint {
 			RestartIfRunning = 0,
 			RestartAnyway = 1,
 			RestartImmediately = 2,
@@ -70,12 +70,12 @@ namespace Qt {
 			ProxyQSessionManager().Cancel();
 		}
 		[SmokeMethod("setRestartHint(QSessionManager::RestartHint)")]
-		public void SetRestartHint(int arg1) {
+		public void SetRestartHint(QSessionManager.RestartHint arg1) {
 			ProxyQSessionManager().SetRestartHint(arg1);
 		}
 		[SmokeMethod("restartHint() const")]
-		public int RestartHint() {
-			return ProxyQSessionManager().RestartHint();
+		public QSessionManager.RestartHint restartHint() {
+			return ProxyQSessionManager().restartHint();
 		}
 		[SmokeMethod("setRestartCommand(const QStringList&)")]
 		public void SetRestartCommand(string[] arg1) {

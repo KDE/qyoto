@@ -31,7 +31,7 @@ namespace Qt {
 			return (IQHttpProxy) _staticInterceptor;
 		}
 
-		enum E_State {
+		public enum State {
 			Unconnected = 0,
 			HostLookup = 1,
 			Connecting = 2,
@@ -40,7 +40,7 @@ namespace Qt {
 			Connected = 5,
 			Closing = 6,
 		}
-		enum E_Error {
+		public enum Error {
 			NoError = 0,
 			UnknownError = 1,
 			HostNotFound = 2,
@@ -222,12 +222,12 @@ namespace Qt {
 			ProxyQHttp().ClearPendingRequests();
 		}
 		[SmokeMethod("state() const")]
-		public int State() {
-			return ProxyQHttp().State();
+		public QHttp.State state() {
+			return ProxyQHttp().state();
 		}
 		[SmokeMethod("error() const")]
-		public int Error() {
-			return ProxyQHttp().Error();
+		public QHttp.Error error() {
+			return ProxyQHttp().error();
 		}
 		[SmokeMethod("errorString() const")]
 		public string ErrorString() {

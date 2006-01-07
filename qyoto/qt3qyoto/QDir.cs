@@ -44,7 +44,7 @@ namespace Qt {
 			return (IQDirProxy) _staticInterceptor;
 		}
 
-		enum FilterSpec {
+		public enum FilterSpec {
 			Dirs = 0x001,
 			Files = 0x002,
 			Drives = 0x004,
@@ -61,7 +61,7 @@ namespace Qt {
 			AccessMask = 0x3F0,
 			DefaultFilter = -1,
 		}
-		enum SortSpec {
+		public enum SortSpec {
 			Name = 0x00,
 			Time = 0x01,
 			Size = 0x02,
@@ -178,7 +178,7 @@ namespace Qt {
 			ProxyQDir().SetNameFilter(nameFilter);
 		}
 		[SmokeMethod("filter() const")]
-		public int Filter() {
+		public QDir.FilterSpec Filter() {
 			return ProxyQDir().Filter();
 		}
 		[SmokeMethod("setFilter(int)")]
@@ -186,7 +186,7 @@ namespace Qt {
 			ProxyQDir().SetFilter(filterSpec);
 		}
 		[SmokeMethod("sorting() const")]
-		public int Sorting() {
+		public QDir.SortSpec Sorting() {
 			return ProxyQDir().Sorting();
 		}
 		[SmokeMethod("setSorting(int)")]

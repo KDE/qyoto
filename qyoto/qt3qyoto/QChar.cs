@@ -30,7 +30,7 @@ namespace Qt {
 			return (IQCharProxy) _staticInterceptor;
 		}
 
-		enum E_Category {
+		public enum Category {
 			NoCategory = 0,
 			Mark_NonSpacing = 1,
 			Mark_SpacingCombining = 2,
@@ -64,7 +64,7 @@ namespace Qt {
 			Symbol_Modifier = 29,
 			Symbol_Other = 30,
 		}
-		enum E_Direction {
+		public enum Direction {
 			DirL = 0,
 			DirR = 1,
 			DirEN = 2,
@@ -85,7 +85,7 @@ namespace Qt {
 			DirNSM = 17,
 			DirBN = 18,
 		}
-		enum E_Decomposition {
+		public enum Decomposition {
 			Single = 0,
 			Canonical = 1,
 			Font = 2,
@@ -105,13 +105,13 @@ namespace Qt {
 			Compat = 16,
 			Fraction = 17,
 		}
-		enum E_Joining {
+		public enum Joining {
 			OtherJoining = 0,
 			Dual = 1,
 			Right = 2,
 			Center = 3,
 		}
-		enum E_CombiningClass {
+		public enum CombiningClass {
 			Combining_BelowLeftAttached = 200,
 			Combining_BelowAttached = 202,
 			Combining_BelowRightAttached = 204,
@@ -201,16 +201,16 @@ namespace Qt {
 			return ProxyQChar().Upper();
 		}
 		[SmokeMethod("category() const")]
-		public char Category() {
-			return ProxyQChar().Category();
+		public char category() {
+			return ProxyQChar().category();
 		}
 		[SmokeMethod("direction() const")]
-		public char Direction() {
-			return ProxyQChar().Direction();
+		public char direction() {
+			return ProxyQChar().direction();
 		}
 		[SmokeMethod("joining() const")]
-		public char Joining() {
-			return ProxyQChar().Joining();
+		public char joining() {
+			return ProxyQChar().joining();
 		}
 		[SmokeMethod("mirrored() const")]
 		public bool Mirrored() {
@@ -221,16 +221,16 @@ namespace Qt {
 			return ProxyQChar().MirroredChar();
 		}
 		[SmokeMethod("decomposition() const")]
-		public string Decomposition() {
-			return ProxyQChar().Decomposition();
+		public string decomposition() {
+			return ProxyQChar().decomposition();
 		}
 		[SmokeMethod("decompositionTag() const")]
 		public char DecompositionTag() {
 			return ProxyQChar().DecompositionTag();
 		}
 		[SmokeMethod("combiningClass() const")]
-		public ushort CombiningClass() {
-			return ProxyQChar().CombiningClass();
+		public ushort combiningClass() {
+			return ProxyQChar().combiningClass();
 		}
 		[SmokeMethod("latin1() const")]
 		public char Latin1() {

@@ -31,21 +31,21 @@ namespace Qt {
 			return (IQIconViewProxy) _staticInterceptor;
 		}
 
-		enum E_SelectionMode {
+		public enum SelectionMode {
 			Single = 0,
 			Multi = 1,
 			Extended = 2,
 			NoSelection = 3,
 		}
-		enum E_Arrangement {
+		public enum Arrangement {
 			LeftToRight = 0,
 			TopToBottom = 1,
 		}
-		enum E_ResizeMode {
+		public enum ResizeMode {
 			Fixed = 0,
 			Adjust = 1,
 		}
-		enum E_ItemTextPos {
+		public enum ItemTextPos {
 			Bottom = 0,
 			Right = 1,
 		}
@@ -142,12 +142,12 @@ namespace Qt {
 			ProxyQIconView().ShowEvent(arg1);
 		}
 		[SmokeMethod("setSelectionMode(QIconView::SelectionMode)")]
-		public virtual void SetSelectionMode(int m) {
+		public virtual void SetSelectionMode(QIconView.SelectionMode m) {
 			ProxyQIconView().SetSelectionMode(m);
 		}
 		[SmokeMethod("selectionMode() const")]
-		public int SelectionMode() {
-			return ProxyQIconView().SelectionMode();
+		public QIconView.SelectionMode selectionMode() {
+			return ProxyQIconView().selectionMode();
 		}
 		[SmokeMethod("findItem(const QPoint&) const")]
 		public QIconViewItem FindItem(QPoint pos) {
@@ -222,12 +222,12 @@ namespace Qt {
 			return ProxyQIconView().Spacing();
 		}
 		[SmokeMethod("setItemTextPos(QIconView::ItemTextPos)")]
-		public virtual void SetItemTextPos(int pos) {
+		public virtual void SetItemTextPos(QIconView.ItemTextPos pos) {
 			ProxyQIconView().SetItemTextPos(pos);
 		}
 		[SmokeMethod("itemTextPos() const")]
-		public int ItemTextPos() {
-			return ProxyQIconView().ItemTextPos();
+		public QIconView.ItemTextPos itemTextPos() {
+			return ProxyQIconView().itemTextPos();
 		}
 		[SmokeMethod("setItemTextBackground(const QBrush&)")]
 		public virtual void SetItemTextBackground(QBrush b) {
@@ -238,20 +238,20 @@ namespace Qt {
 			return ProxyQIconView().ItemTextBackground();
 		}
 		[SmokeMethod("setArrangement(QIconView::Arrangement)")]
-		public virtual void SetArrangement(int am) {
+		public virtual void SetArrangement(QIconView.Arrangement am) {
 			ProxyQIconView().SetArrangement(am);
 		}
 		[SmokeMethod("arrangement() const")]
-		public int Arrangement() {
-			return ProxyQIconView().Arrangement();
+		public QIconView.Arrangement arrangement() {
+			return ProxyQIconView().arrangement();
 		}
 		[SmokeMethod("setResizeMode(QIconView::ResizeMode)")]
-		public virtual void SetResizeMode(int am) {
+		public virtual void SetResizeMode(QIconView.ResizeMode am) {
 			ProxyQIconView().SetResizeMode(am);
 		}
 		[SmokeMethod("resizeMode() const")]
-		public int ResizeMode() {
-			return ProxyQIconView().ResizeMode();
+		public QIconView.ResizeMode resizeMode() {
+			return ProxyQIconView().resizeMode();
 		}
 		[SmokeMethod("setMaxItemWidth(int)")]
 		public virtual void SetMaxItemWidth(int w) {

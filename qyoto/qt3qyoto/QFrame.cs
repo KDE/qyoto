@@ -30,7 +30,7 @@ namespace Qt {
 			return (IQFrameProxy) _staticInterceptor;
 		}
 
-		enum Shape {
+		public enum Shape {
 			NoFrame = 0,
 			Box = 0x0001,
 			Panel = 0x0002,
@@ -46,7 +46,7 @@ namespace Qt {
 			GroupBoxPanel = 0x000c,
 			MShape = 0x000f,
 		}
-		enum Shadow {
+		public enum Shadow {
 			Plain = 0x0010,
 			Raised = 0x0020,
 			Sunken = 0x0030,
@@ -121,19 +121,19 @@ namespace Qt {
 			return ProxyQFrame().SizeHint();
 		}
 		[SmokeMethod("frameShape() const")]
-		public int FrameShape() {
+		public QFrame.Shape FrameShape() {
 			return ProxyQFrame().FrameShape();
 		}
 		[SmokeMethod("setFrameShape(QFrame::Shape)")]
-		public void SetFrameShape(int arg1) {
+		public void SetFrameShape(QFrame.Shape arg1) {
 			ProxyQFrame().SetFrameShape(arg1);
 		}
 		[SmokeMethod("frameShadow() const")]
-		public int FrameShadow() {
+		public QFrame.Shadow FrameShadow() {
 			return ProxyQFrame().FrameShadow();
 		}
 		[SmokeMethod("setFrameShadow(QFrame::Shadow)")]
-		public void SetFrameShadow(int arg1) {
+		public void SetFrameShadow(QFrame.Shadow arg1) {
 			ProxyQFrame().SetFrameShadow(arg1);
 		}
 		[SmokeMethod("lineWidth() const")]

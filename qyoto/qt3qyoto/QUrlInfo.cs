@@ -32,7 +32,7 @@ namespace Qt {
 			return (IQUrlInfoProxy) _staticInterceptor;
 		}
 
-		enum PermissionSpec {
+		public enum PermissionSpec {
 			ReadOwner = 00400,
 			WriteOwner = 00200,
 			ExeOwner = 00100,

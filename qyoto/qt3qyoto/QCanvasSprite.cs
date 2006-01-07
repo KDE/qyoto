@@ -25,7 +25,7 @@ namespace Qt {
 			return (IQCanvasSpriteProxy) _staticInterceptor;
 		}
 
-		enum FrameAnimationType {
+		public enum FrameAnimationType {
 			Cycle = 0,
 			Oscillate = 1,
 		}
@@ -54,15 +54,15 @@ namespace Qt {
 			ProxyQCanvasSprite().SetFrame(arg1);
 		}
 		[SmokeMethod("setFrameAnimation(QCanvasSprite::FrameAnimationType, int, int)")]
-		public virtual void SetFrameAnimation(int arg1, int step, int state) {
+		public virtual void SetFrameAnimation(QCanvasSprite.FrameAnimationType arg1, int step, int state) {
 			ProxyQCanvasSprite().SetFrameAnimation(arg1,step,state);
 		}
 		[SmokeMethod("setFrameAnimation(QCanvasSprite::FrameAnimationType, int)")]
-		public virtual void SetFrameAnimation(int arg1, int step) {
+		public virtual void SetFrameAnimation(QCanvasSprite.FrameAnimationType arg1, int step) {
 			ProxyQCanvasSprite().SetFrameAnimation(arg1,step);
 		}
 		[SmokeMethod("setFrameAnimation(QCanvasSprite::FrameAnimationType)")]
-		public virtual void SetFrameAnimation(int arg1) {
+		public virtual void SetFrameAnimation(QCanvasSprite.FrameAnimationType arg1) {
 			ProxyQCanvasSprite().SetFrameAnimation(arg1);
 		}
 		[SmokeMethod("setFrameAnimation()")]

@@ -28,7 +28,7 @@ namespace Qt {
 			return (IQGArrayProxy) _staticInterceptor;
 		}
 
-		enum Optimization {
+		public enum Optimization {
 			MemOptim = 0,
 			SpeedOptim = 1,
 		}
@@ -85,7 +85,7 @@ namespace Qt {
 			return ProxyQGArray().IsEqual(a);
 		}
 		[SmokeMethod("resize(uint, QGArray::Optimization)")]
-		protected bool Resize(uint newsize, int optim) {
+		protected bool Resize(uint newsize, QGArray.Optimization optim) {
 			return ProxyQGArray().Resize(newsize,optim);
 		}
 		[SmokeMethod("resize(uint)")]

@@ -31,7 +31,7 @@ namespace Qt {
 			return (IQLineEditProxy) _staticInterceptor;
 		}
 
-		enum E_EchoMode {
+		public enum EchoMode {
 			Normal = 0,
 			NoEcho = 1,
 			Password = 2,
@@ -115,8 +115,8 @@ namespace Qt {
 			return ProxyQLineEdit().Frame();
 		}
 		[SmokeMethod("echoMode() const")]
-		public int EchoMode() {
-			return ProxyQLineEdit().EchoMode();
+		public QLineEdit.EchoMode echoMode() {
+			return ProxyQLineEdit().echoMode();
 		}
 		[SmokeMethod("isReadOnly() const")]
 		public bool IsReadOnly() {
@@ -322,7 +322,7 @@ namespace Qt {
 		}
 		[Q_SLOT("void setEchoMode(QLineEdit::EchoMode)")]
 		[SmokeMethod("setEchoMode(QLineEdit::EchoMode)")]
-		public virtual void SetEchoMode(int arg1) {
+		public virtual void SetEchoMode(QLineEdit.EchoMode arg1) {
 			ProxyQLineEdit().SetEchoMode(arg1);
 		}
 		[Q_SLOT("void setReadOnly(bool)")]

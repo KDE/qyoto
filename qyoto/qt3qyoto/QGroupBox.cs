@@ -93,62 +93,62 @@ namespace Qt {
 		private void NewQGroupBox(string title) {
 			ProxyQGroupBox().NewQGroupBox(title);
 		}
-		public QGroupBox(int strips, int o, QWidget parent, string name) : this((Type) null) {
+		public QGroupBox(int strips, Qt.Orientation o, QWidget parent, string name) : this((Type) null) {
 			CreateQGroupBoxProxy();
 			CreateQGroupBoxSignalProxy();
 			NewQGroupBox(strips,o,parent,name);
 		}
 		[SmokeMethod("QGroupBox(int, Qt::Orientation, QWidget*, const char*)")]
-		private void NewQGroupBox(int strips, int o, QWidget parent, string name) {
+		private void NewQGroupBox(int strips, Qt.Orientation o, QWidget parent, string name) {
 			ProxyQGroupBox().NewQGroupBox(strips,o,parent,name);
 		}
-		public QGroupBox(int strips, int o, QWidget parent) : this((Type) null) {
+		public QGroupBox(int strips, Qt.Orientation o, QWidget parent) : this((Type) null) {
 			CreateQGroupBoxProxy();
 			CreateQGroupBoxSignalProxy();
 			NewQGroupBox(strips,o,parent);
 		}
 		[SmokeMethod("QGroupBox(int, Qt::Orientation, QWidget*)")]
-		private void NewQGroupBox(int strips, int o, QWidget parent) {
+		private void NewQGroupBox(int strips, Qt.Orientation o, QWidget parent) {
 			ProxyQGroupBox().NewQGroupBox(strips,o,parent);
 		}
-		public QGroupBox(int strips, int o) : this((Type) null) {
+		public QGroupBox(int strips, Qt.Orientation o) : this((Type) null) {
 			CreateQGroupBoxProxy();
 			CreateQGroupBoxSignalProxy();
 			NewQGroupBox(strips,o);
 		}
 		[SmokeMethod("QGroupBox(int, Qt::Orientation)")]
-		private void NewQGroupBox(int strips, int o) {
+		private void NewQGroupBox(int strips, Qt.Orientation o) {
 			ProxyQGroupBox().NewQGroupBox(strips,o);
 		}
-		public QGroupBox(int strips, int o, string title, QWidget parent, string name) : this((Type) null) {
+		public QGroupBox(int strips, Qt.Orientation o, string title, QWidget parent, string name) : this((Type) null) {
 			CreateQGroupBoxProxy();
 			CreateQGroupBoxSignalProxy();
 			NewQGroupBox(strips,o,title,parent,name);
 		}
 		[SmokeMethod("QGroupBox(int, Qt::Orientation, const QString&, QWidget*, const char*)")]
-		private void NewQGroupBox(int strips, int o, string title, QWidget parent, string name) {
+		private void NewQGroupBox(int strips, Qt.Orientation o, string title, QWidget parent, string name) {
 			ProxyQGroupBox().NewQGroupBox(strips,o,title,parent,name);
 		}
-		public QGroupBox(int strips, int o, string title, QWidget parent) : this((Type) null) {
+		public QGroupBox(int strips, Qt.Orientation o, string title, QWidget parent) : this((Type) null) {
 			CreateQGroupBoxProxy();
 			CreateQGroupBoxSignalProxy();
 			NewQGroupBox(strips,o,title,parent);
 		}
 		[SmokeMethod("QGroupBox(int, Qt::Orientation, const QString&, QWidget*)")]
-		private void NewQGroupBox(int strips, int o, string title, QWidget parent) {
+		private void NewQGroupBox(int strips, Qt.Orientation o, string title, QWidget parent) {
 			ProxyQGroupBox().NewQGroupBox(strips,o,title,parent);
 		}
-		public QGroupBox(int strips, int o, string title) : this((Type) null) {
+		public QGroupBox(int strips, Qt.Orientation o, string title) : this((Type) null) {
 			CreateQGroupBoxProxy();
 			CreateQGroupBoxSignalProxy();
 			NewQGroupBox(strips,o,title);
 		}
 		[SmokeMethod("QGroupBox(int, Qt::Orientation, const QString&)")]
-		private void NewQGroupBox(int strips, int o, string title) {
+		private void NewQGroupBox(int strips, Qt.Orientation o, string title) {
 			ProxyQGroupBox().NewQGroupBox(strips,o,title);
 		}
 		[SmokeMethod("setColumnLayout(int, Qt::Orientation)")]
-		public virtual void SetColumnLayout(int strips, int o) {
+		public virtual void SetColumnLayout(int strips, Qt.Orientation o) {
 			ProxyQGroupBox().SetColumnLayout(strips,o);
 		}
 		[SmokeMethod("title() const")]
@@ -176,11 +176,11 @@ namespace Qt {
 			ProxyQGroupBox().SetColumns(arg1);
 		}
 		[SmokeMethod("orientation() const")]
-		public int Orientation() {
+		public Qt.Orientation Orientation() {
 			return ProxyQGroupBox().Orientation();
 		}
 		[SmokeMethod("setOrientation(Qt::Orientation)")]
-		public void SetOrientation(int arg1) {
+		public void SetOrientation(Qt.Orientation arg1) {
 			ProxyQGroupBox().SetOrientation(arg1);
 		}
 		[SmokeMethod("insideMargin() const")]

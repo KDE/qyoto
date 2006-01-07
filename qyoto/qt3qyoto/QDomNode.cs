@@ -31,7 +31,7 @@ namespace Qt {
 			return (IQDomNodeProxy) _staticInterceptor;
 		}
 
-		enum E_NodeType {
+		public enum NodeType {
 			ElementNode = 1,
 			AttributeNode = 2,
 			TextNode = 3,
@@ -122,8 +122,8 @@ namespace Qt {
 			return ProxyQDomNode().NodeName();
 		}
 		[SmokeMethod("nodeType() const")]
-		public virtual int NodeType() {
-			return ProxyQDomNode().NodeType();
+		public virtual QDomNode.NodeType nodeType() {
+			return ProxyQDomNode().nodeType();
 		}
 		[SmokeMethod("parentNode() const")]
 		public virtual QDomNode ParentNode() {

@@ -26,28 +26,28 @@ namespace Qt {
 			return (IQStyleSheetItemProxy) _staticInterceptor;
 		}
 
-		enum AdditionalStyleValues {
+		public enum AdditionalStyleValues {
 			Undefined = -1,
 		}
-		enum E_DisplayMode {
+		public enum DisplayMode {
 			DisplayBlock = 0,
 			DisplayInline = 1,
 			DisplayListItem = 2,
 			DisplayNone = 3,
 			DisplayModeUndefined = -1,
 		}
-		enum E_VerticalAlignment {
+		public enum VerticalAlignment {
 			VAlignBaseline = 0,
 			VAlignSub = 1,
 			VAlignSuper = 2,
 		}
-		enum E_WhiteSpaceMode {
+		public enum WhiteSpaceMode {
 			WhiteSpaceNormal = 0,
 			WhiteSpacePre = 1,
 			WhiteSpaceNoWrap = 2,
 			WhiteSpaceModeUndefined = -1,
 		}
-		enum E_Margin {
+		public enum Margin {
 			MarginLeft = 0,
 			MarginRight = 1,
 			MarginTop = 2,
@@ -58,7 +58,7 @@ namespace Qt {
 			MarginHorizontal = 7,
 			MarginUndefined = -1,
 		}
-		enum E_ListStyle {
+		public enum ListStyle {
 			ListDisc = 0,
 			ListCircle = 1,
 			ListSquare = 2,
@@ -92,11 +92,11 @@ namespace Qt {
 			return ProxyQStyleSheetItem().StyleSheet();
 		}
 		[SmokeMethod("displayMode() const")]
-		public int DisplayMode() {
-			return ProxyQStyleSheetItem().DisplayMode();
+		public QStyleSheetItem.DisplayMode displayMode() {
+			return ProxyQStyleSheetItem().displayMode();
 		}
 		[SmokeMethod("setDisplayMode(QStyleSheetItem::DisplayMode)")]
-		public void SetDisplayMode(int m) {
+		public void SetDisplayMode(QStyleSheetItem.DisplayMode m) {
 			ProxyQStyleSheetItem().SetDisplayMode(m);
 		}
 		[SmokeMethod("alignment() const")]
@@ -108,11 +108,11 @@ namespace Qt {
 			ProxyQStyleSheetItem().SetAlignment(f);
 		}
 		[SmokeMethod("verticalAlignment() const")]
-		public int VerticalAlignment() {
-			return ProxyQStyleSheetItem().VerticalAlignment();
+		public QStyleSheetItem.VerticalAlignment verticalAlignment() {
+			return ProxyQStyleSheetItem().verticalAlignment();
 		}
 		[SmokeMethod("setVerticalAlignment(QStyleSheetItem::VerticalAlignment)")]
-		public void SetVerticalAlignment(int valign) {
+		public void SetVerticalAlignment(QStyleSheetItem.VerticalAlignment valign) {
 			ProxyQStyleSheetItem().SetVerticalAlignment(valign);
 		}
 		[SmokeMethod("fontWeight() const")]
@@ -216,27 +216,27 @@ namespace Qt {
 			ProxyQStyleSheetItem().SetAnchor(anc);
 		}
 		[SmokeMethod("whiteSpaceMode() const")]
-		public int WhiteSpaceMode() {
-			return ProxyQStyleSheetItem().WhiteSpaceMode();
+		public QStyleSheetItem.WhiteSpaceMode whiteSpaceMode() {
+			return ProxyQStyleSheetItem().whiteSpaceMode();
 		}
 		[SmokeMethod("setWhiteSpaceMode(QStyleSheetItem::WhiteSpaceMode)")]
-		public void SetWhiteSpaceMode(int m) {
+		public void SetWhiteSpaceMode(QStyleSheetItem.WhiteSpaceMode m) {
 			ProxyQStyleSheetItem().SetWhiteSpaceMode(m);
 		}
 		[SmokeMethod("margin(QStyleSheetItem::Margin) const")]
-		public int Margin(int m) {
-			return ProxyQStyleSheetItem().Margin(m);
+		public int margin(QStyleSheetItem.Margin m) {
+			return ProxyQStyleSheetItem().margin(m);
 		}
 		[SmokeMethod("setMargin(QStyleSheetItem::Margin, int)")]
-		public void SetMargin(int arg1, int arg2) {
+		public void SetMargin(QStyleSheetItem.Margin arg1, int arg2) {
 			ProxyQStyleSheetItem().SetMargin(arg1,arg2);
 		}
 		[SmokeMethod("listStyle() const")]
-		public int ListStyle() {
-			return ProxyQStyleSheetItem().ListStyle();
+		public QStyleSheetItem.ListStyle listStyle() {
+			return ProxyQStyleSheetItem().listStyle();
 		}
 		[SmokeMethod("setListStyle(QStyleSheetItem::ListStyle)")]
-		public void SetListStyle(int arg1) {
+		public void SetListStyle(QStyleSheetItem.ListStyle arg1) {
 			ProxyQStyleSheetItem().SetListStyle(arg1);
 		}
 		[SmokeMethod("contexts() const")]

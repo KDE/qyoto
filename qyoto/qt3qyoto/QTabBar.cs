@@ -31,7 +31,7 @@ namespace Qt {
 			return (IQTabBarProxy) _staticInterceptor;
 		}
 
-		enum E_Shape {
+		public enum Shape {
 			RoundedAbove = 0,
 			RoundedBelow = 1,
 			TriangularAbove = 2,
@@ -73,11 +73,11 @@ namespace Qt {
 			ProxyQTabBar().NewQTabBar();
 		}
 		[SmokeMethod("shape() const")]
-		public int Shape() {
-			return ProxyQTabBar().Shape();
+		public QTabBar.Shape shape() {
+			return ProxyQTabBar().shape();
 		}
 		[SmokeMethod("setShape(QTabBar::Shape)")]
-		public virtual void SetShape(int arg1) {
+		public virtual void SetShape(QTabBar.Shape arg1) {
 			ProxyQTabBar().SetShape(arg1);
 		}
 		[SmokeMethod("show()")]

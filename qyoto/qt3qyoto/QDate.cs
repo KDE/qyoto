@@ -23,8 +23,8 @@ namespace Qt {
 			string LongMonthName(int month);
 			string LongDayName(int weekday);
 			DateTime CurrentDate();
-			DateTime CurrentDate(int arg1);
-			DateTime FromString(string s, int f);
+			DateTime CurrentDate(Qt.TimeSpec arg1);
+			DateTime FromString(string s, Qt.DateFormat f);
 			DateTime FromString(string s);
 			bool IsValid(int y, int m, int d);
 			bool LeapYear(int year);
@@ -109,7 +109,7 @@ namespace Qt {
 			return ProxyQDate().WeekNumber();
 		}
 		[SmokeMethod("toString(Qt::DateFormat) const")]
-		public new string ToString(int f) {
+		public new string ToString(Qt.DateFormat f) {
 			return ProxyQDate().ToString(f);
 		}
 		[SmokeMethod("toString() const")]
@@ -199,11 +199,11 @@ namespace Qt {
 			return StaticQDate().CurrentDate();
 		}
 		[SmokeMethod("currentDate(Qt::TimeSpec)")]
-		public static DateTime CurrentDate(int arg1) {
+		public static DateTime CurrentDate(Qt.TimeSpec arg1) {
 			return StaticQDate().CurrentDate(arg1);
 		}
 		[SmokeMethod("fromString(const QString&, Qt::DateFormat)")]
-		public static DateTime FromString(string s, int f) {
+		public static DateTime FromString(string s, Qt.DateFormat f) {
 			return StaticQDate().FromString(s,f);
 		}
 		[SmokeMethod("fromString(const QString&)")]

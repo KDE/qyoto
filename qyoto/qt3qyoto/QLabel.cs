@@ -136,11 +136,11 @@ namespace Qt {
 			return ProxyQLabel().Movie();
 		}
 		[SmokeMethod("textFormat() const")]
-		public int TextFormat() {
+		public Qt.TextFormat TextFormat() {
 			return ProxyQLabel().TextFormat();
 		}
 		[SmokeMethod("setTextFormat(Qt::TextFormat)")]
-		public void SetTextFormat(int arg1) {
+		public void SetTextFormat(Qt.TextFormat arg1) {
 			ProxyQLabel().SetTextFormat(arg1);
 		}
 		[SmokeMethod("alignment() const")]

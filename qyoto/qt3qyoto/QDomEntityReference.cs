@@ -42,7 +42,7 @@ namespace Qt {
 			ProxyQDomEntityReference().NewQDomEntityReference(x);
 		}
 		[SmokeMethod("nodeType() const")]
-		public new int NodeType() {
+		public new QDomNode.NodeType NodeType() {
 			return ProxyQDomEntityReference().NodeType();
 		}
 		[SmokeMethod("isEntityReference() const")]

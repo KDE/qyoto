@@ -25,12 +25,12 @@ namespace Qt {
 			return (IQChildEventProxy) _staticInterceptor;
 		}
 
-		public QChildEvent(int type, QObject child) : this((Type) null) {
+		public QChildEvent(QEvent.E_Type type, QObject child) : this((Type) null) {
 			CreateQChildEventProxy();
 			NewQChildEvent(type,child);
 		}
 		[SmokeMethod("QChildEvent(QEvent::Type, QObject*)")]
-		private void NewQChildEvent(int type, QObject child) {
+		private void NewQChildEvent(QEvent.E_Type type, QObject child) {
 			ProxyQChildEvent().NewQChildEvent(type,child);
 		}
 		[SmokeMethod("child() const")]

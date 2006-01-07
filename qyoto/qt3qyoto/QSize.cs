@@ -32,7 +32,7 @@ namespace Qt {
 			return (IQSizeProxy) _staticInterceptor;
 		}
 
-		enum ScaleMode {
+		public enum ScaleMode {
 			ScaleFree = 0,
 			ScaleMin = 1,
 			ScaleMax = 2,
@@ -86,11 +86,11 @@ namespace Qt {
 			ProxyQSize().Transpose();
 		}
 		[SmokeMethod("scale(int, int, QSize::ScaleMode)")]
-		public void Scale(int w, int h, int mode) {
+		public void Scale(int w, int h, QSize.ScaleMode mode) {
 			ProxyQSize().Scale(w,h,mode);
 		}
 		[SmokeMethod("scale(const QSize&, QSize::ScaleMode)")]
-		public void Scale(QSize s, int mode) {
+		public void Scale(QSize s, QSize.ScaleMode mode) {
 			ProxyQSize().Scale(s,mode);
 		}
 		[SmokeMethod("expandedTo(const QSize&) const")]

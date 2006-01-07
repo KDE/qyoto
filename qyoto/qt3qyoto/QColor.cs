@@ -43,7 +43,7 @@ namespace Qt {
 		public const int Dirt = 0x44495254;
 		public const int Invalid = 0x49000000;
 
-		enum Spec {
+		public enum Spec {
 			Rgb = 0,
 			Hsv = 1,
 		}
@@ -63,12 +63,12 @@ namespace Qt {
 		private void NewQColor(int r, int g, int b) {
 			ProxyQColor().NewQColor(r,g,b);
 		}
-		public QColor(int x, int y, int z, int arg4) : this((Type) null) {
+		public QColor(int x, int y, int z, QColor.Spec arg4) : this((Type) null) {
 			CreateQColorProxy();
 			NewQColor(x,y,z,arg4);
 		}
 		[SmokeMethod("QColor(int, int, int, QColor::Spec)")]
-		private void NewQColor(int x, int y, int z, int arg4) {
+		private void NewQColor(int x, int y, int z, QColor.Spec arg4) {
 			ProxyQColor().NewQColor(x,y,z,arg4);
 		}
 		public QColor(uint rgb, uint pixel) : this((Type) null) {

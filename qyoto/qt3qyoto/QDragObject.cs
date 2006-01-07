@@ -32,7 +32,7 @@ namespace Qt {
 			return (IQDragObjectProxy) _staticInterceptor;
 		}
 
-		enum DragMode {
+		public enum DragMode {
 			DragDefault = 0,
 			DragCopy = 1,
 			DragMove = 2,

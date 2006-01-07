@@ -92,7 +92,7 @@ namespace Qt {
 			return ProxyQKeySequence().IsEmpty();
 		}
 		[SmokeMethod("matches(const QKeySequence&) const")]
-		public int Matches(QKeySequence arg1) {
+		public Qt.SequenceMatch Matches(QKeySequence arg1) {
 			return ProxyQKeySequence().Matches(arg1);
 		}
 		//  operator QString(); >>>> NOT CONVERTED

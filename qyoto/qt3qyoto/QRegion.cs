@@ -35,7 +35,7 @@ namespace Qt {
 			return (IQRegionProxy) _staticInterceptor;
 		}
 
-		enum RegionType {
+		public enum RegionType {
 			Rectangle = 0,
 			Ellipse = 1,
 		}
@@ -47,12 +47,12 @@ namespace Qt {
 		private void NewQRegion() {
 			ProxyQRegion().NewQRegion();
 		}
-		public QRegion(int x, int y, int w, int h, int arg5) : this((Type) null) {
+		public QRegion(int x, int y, int w, int h, QRegion.RegionType arg5) : this((Type) null) {
 			CreateQRegionProxy();
 			NewQRegion(x,y,w,h,arg5);
 		}
 		[SmokeMethod("QRegion(int, int, int, int, QRegion::RegionType)")]
-		private void NewQRegion(int x, int y, int w, int h, int arg5) {
+		private void NewQRegion(int x, int y, int w, int h, QRegion.RegionType arg5) {
 			ProxyQRegion().NewQRegion(x,y,w,h,arg5);
 		}
 		public QRegion(int x, int y, int w, int h) : this((Type) null) {
@@ -63,12 +63,12 @@ namespace Qt {
 		private void NewQRegion(int x, int y, int w, int h) {
 			ProxyQRegion().NewQRegion(x,y,w,h);
 		}
-		public QRegion(QRect arg1, int arg2) : this((Type) null) {
+		public QRegion(QRect arg1, QRegion.RegionType arg2) : this((Type) null) {
 			CreateQRegionProxy();
 			NewQRegion(arg1,arg2);
 		}
 		[SmokeMethod("QRegion(const QRect&, QRegion::RegionType)")]
-		private void NewQRegion(QRect arg1, int arg2) {
+		private void NewQRegion(QRect arg1, QRegion.RegionType arg2) {
 			ProxyQRegion().NewQRegion(arg1,arg2);
 		}
 		public QRegion(QRect arg1) : this((Type) null) {

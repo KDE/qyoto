@@ -81,12 +81,12 @@ namespace Qt {
 			void QDrawPlainRect(QPainter p, QRect r, QColor arg3, int lineWidth, QBrush fill);
 			void QDrawPlainRect(QPainter p, QRect r, QColor arg3, int lineWidth);
 			void QDrawPlainRect(QPainter p, QRect r, QColor arg3);
-			QRect QItemRect(QPainter p, int gs, int x, int y, int w, int h, int flags, bool enabled, QPixmap pixmap, string text, int len);
-			QRect QItemRect(QPainter p, int gs, int x, int y, int w, int h, int flags, bool enabled, QPixmap pixmap, string text);
-			void QDrawItem(QPainter p, int gs, int x, int y, int w, int h, int flags, QColorGroup g, bool enabled, QPixmap pixmap, string text, int len, QColor penColor);
-			void QDrawItem(QPainter p, int gs, int x, int y, int w, int h, int flags, QColorGroup g, bool enabled, QPixmap pixmap, string text, int len);
-			void QDrawItem(QPainter p, int gs, int x, int y, int w, int h, int flags, QColorGroup g, bool enabled, QPixmap pixmap, string text);
-			void QDrawArrow(QPainter p, int type, int style, bool down, int x, int y, int w, int h, QColorGroup g, bool enabled);
+			QRect QItemRect(QPainter p, Qt.GUIStyle gs, int x, int y, int w, int h, int flags, bool enabled, QPixmap pixmap, string text, int len);
+			QRect QItemRect(QPainter p, Qt.GUIStyle gs, int x, int y, int w, int h, int flags, bool enabled, QPixmap pixmap, string text);
+			void QDrawItem(QPainter p, Qt.GUIStyle gs, int x, int y, int w, int h, int flags, QColorGroup g, bool enabled, QPixmap pixmap, string text, int len, QColor penColor);
+			void QDrawItem(QPainter p, Qt.GUIStyle gs, int x, int y, int w, int h, int flags, QColorGroup g, bool enabled, QPixmap pixmap, string text, int len);
+			void QDrawItem(QPainter p, Qt.GUIStyle gs, int x, int y, int w, int h, int flags, QColorGroup g, bool enabled, QPixmap pixmap, string text);
+			void QDrawArrow(QPainter p, Qt.ArrowType type, Qt.GUIStyle style, bool down, int x, int y, int w, int h, QColorGroup g, bool enabled);
 			QDataStream op_write(QDataStream arg1, QCursor arg2);
 			QDataStream op_read(QDataStream arg1, QCursor arg2);
 			string QAppName();
@@ -106,8 +106,8 @@ namespace Qt {
 			void BitBlt(QImage dst, int dx, int dy, QImage src);
 			QDataStream op_read(QDataStream s, QVariant p);
 			QDataStream op_write(QDataStream s, QVariant p);
-			QDataStream op_read(QDataStream s, int p);
-			QDataStream op_write(QDataStream s, int p);
+			QDataStream op_read(QDataStream s, QVariant.E_Type p);
+			QDataStream op_write(QDataStream s, QVariant.E_Type p);
 			string QGLVersion();
 			bool op_equals(QGLFormat arg1, QGLFormat arg2);
 			QDataStream op_write(QDataStream arg1, QFont arg2);
@@ -181,8 +181,8 @@ namespace Qt {
 			string QInstallPathSysconf();
 			QTextStream op_write(QTextStream arg1, QDockArea arg2);
 			QTextStream op_read(QTextStream arg1, QDockArea arg2);
-			void BitBlt(IQPaintDevice dst, int dx, int dy, IQPaintDevice src, int sx, int sy, int sw, int sh, int arg9, bool ignoreMask);
-			void BitBlt(IQPaintDevice dst, int dx, int dy, IQPaintDevice src, int sx, int sy, int sw, int sh, int arg9);
+			void BitBlt(IQPaintDevice dst, int dx, int dy, IQPaintDevice src, int sx, int sy, int sw, int sh, Qt.RasterOp arg9, bool ignoreMask);
+			void BitBlt(IQPaintDevice dst, int dx, int dy, IQPaintDevice src, int sx, int sy, int sw, int sh, Qt.RasterOp arg9);
 			void BitBlt(IQPaintDevice dst, int dx, int dy, IQPaintDevice src, int sx, int sy, int sw, int sh);
 			void BitBlt(IQPaintDevice dst, int dx, int dy, IQPaintDevice src, int sx, int sy, int sw);
 			void BitBlt(IQPaintDevice dst, int dx, int dy, IQPaintDevice src, int sx, int sy);
@@ -194,8 +194,8 @@ namespace Qt {
 			void BitBlt(IQPaintDevice dst, int dx, int dy, QImage src, int sx, int sy);
 			void BitBlt(IQPaintDevice dst, int dx, int dy, QImage src, int sx);
 			void BitBlt(IQPaintDevice dst, int dx, int dy, QImage src);
-			void BitBlt(IQPaintDevice dst, QPoint dp, IQPaintDevice src, QRect sr, int rop, bool ignoreMask);
-			void BitBlt(IQPaintDevice dst, QPoint dp, IQPaintDevice src, QRect sr, int rop);
+			void BitBlt(IQPaintDevice dst, QPoint dp, IQPaintDevice src, QRect sr, Qt.RasterOp rop, bool ignoreMask);
+			void BitBlt(IQPaintDevice dst, QPoint dp, IQPaintDevice src, QRect sr, Qt.RasterOp rop);
 			void BitBlt(IQPaintDevice dst, QPoint dp, IQPaintDevice src, QRect sr);
 			void BitBlt(IQPaintDevice dst, QPoint dp, IQPaintDevice src);
 			bool op_equals(QRect arg1, QRect arg2);
@@ -219,7 +219,7 @@ namespace Qt {
 			return (IQtProxy) _staticInterceptor;
 		}
 
-		enum ButtonState {
+		public enum ButtonState {
 			NoButton = 0x0000,
 			LeftButton = 0x0001,
 			RightButton = 0x0002,
@@ -232,15 +232,15 @@ namespace Qt {
 			KeyButtonMask = 0x0f00,
 			Keypad = 0x4000,
 		}
-		enum Orientation {
+		public enum Orientation {
 			Horizontal = 0,
 			Vertical = 1,
 		}
-		enum SortOrder {
+		public enum SortOrder {
 			Ascending = 0,
 			Descending = 1,
 		}
-		enum AlignmentFlags {
+		public enum AlignmentFlags {
 			AlignAuto = 0x0000,
 			AlignLeft = 0x0001,
 			AlignRight = 0x0002,
@@ -253,7 +253,7 @@ namespace Qt {
 			AlignVertical_Mask = AlignTop|AlignBottom|AlignVCenter,
 			AlignCenter = AlignVCenter|AlignHCenter,
 		}
-		enum TextFlags {
+		public enum TextFlags {
 			SingleLine = 0x0080,
 			DontClip = 0x0100,
 			ExpandTabs = 0x0200,
@@ -267,7 +267,7 @@ namespace Qt {
 			IncludeTrailingSpaces = 0x08000000,
 			NoAccel = 0x4000,
 		}
-		enum WidgetState {
+		public enum WidgetState {
 			WState_Created = 0x00000001,
 			WState_Disabled = 0x00000002,
 			WState_Visible = 0x00000004,
@@ -293,7 +293,7 @@ namespace Qt {
 			WState_Exposed = 0x00400000,
 			WState_HasMouse = 0x00800000,
 		}
-		enum WidgetFlags {
+		public enum WidgetFlags {
 			WType_TopLevel = 0x00000001,
 			WType_Dialog = 0x00000002,
 			WType_Popup = 0x00000004,
@@ -336,14 +336,14 @@ namespace Qt {
 			WStyle_Dialog = WType_Dialog,
 			WStyle_NoBorderEx = WStyle_NoBorder,
 		}
-		enum WindowState {
+		public enum WindowState {
 			WindowNoState = 0x00000000,
 			WindowMinimized = 0x00000001,
 			WindowMaximized = 0x00000002,
 			WindowFullScreen = 0x00000004,
 			WindowActive = 0x00000008,
 		}
-		enum ImageConversionFlags {
+		public enum ImageConversionFlags {
 			ColorMode_Mask = 0x00000003,
 			AutoColor = 0x00000000,
 			ColorOnly = 0x00000003,
@@ -362,11 +362,11 @@ namespace Qt {
 			PreferDither = 0x00000040,
 			AvoidDither = 0x00000080,
 		}
-		enum BGMode {
+		public enum BGMode {
 			TransparentMode = 0,
 			OpaqueMode = 1,
 		}
-		enum PaintUnit {
+		public enum PaintUnit {
 			PixelUnit = 0,
 			LoMetricUnit = 1,
 			HiMetricUnit = 2,
@@ -374,19 +374,19 @@ namespace Qt {
 			HiEnglishUnit = 4,
 			TwipsUnit = 5,
 		}
-		enum GUIStyle {
+		public enum GUIStyle {
 			MacStyle = 0,
 			WindowsStyle = 1,
 			Win3Style = 2,
 			PMStyle = 3,
 			MotifStyle = 4,
 		}
-		enum SequenceMatch {
+		public enum SequenceMatch {
 			NoMatch = 0,
 			PartialMatch = 1,
 			Identical = 2,
 		}
-		enum Modifier {
+		public enum Modifier {
 			META = 0x00100000,
 			SHIFT = 0x00200000,
 			CTRL = 0x00400000,
@@ -395,7 +395,7 @@ namespace Qt {
 			UNICODE_ACCEL = 0x10000000,
 			ASCII_ACCEL = UNICODE_ACCEL,
 		}
-		enum Key {
+		public enum Key {
 			Key_Escape = 0x1000,
 			Key_Tab = 0x1001,
 			Key_Backtab = 0x1002,
@@ -679,13 +679,13 @@ namespace Qt {
 			Key_MediaLast = 0x1fff,
 			Key_unknown = 0xffff,
 		}
-		enum ArrowType {
+		public enum ArrowType {
 			UpArrow = 0,
 			DownArrow = 1,
 			LeftArrow = 2,
 			RightArrow = 3,
 		}
-		enum RasterOp {
+		public enum RasterOp {
 			CopyROP = 0,
 			OrROP = 1,
 			XorROP = 2,
@@ -706,7 +706,7 @@ namespace Qt {
 			NorROP = 15,
 			LastROP = NorROP,
 		}
-		enum PenStyle {
+		public enum PenStyle {
 			NoPen = 0,
 			SolidLine = 1,
 			DashLine = 2,
@@ -715,19 +715,19 @@ namespace Qt {
 			DashDotDotLine = 5,
 			MPenStyle = 0x0f,
 		}
-		enum PenCapStyle {
+		public enum PenCapStyle {
 			FlatCap = 0x00,
 			SquareCap = 0x10,
 			RoundCap = 0x20,
 			MPenCapStyle = 0x30,
 		}
-		enum PenJoinStyle {
+		public enum PenJoinStyle {
 			MiterJoin = 0x00,
 			BevelJoin = 0x40,
 			RoundJoin = 0x80,
 			MPenJoinStyle = 0xc0,
 		}
-		enum BrushStyle {
+		public enum BrushStyle {
 			NoBrush = 0,
 			SolidPattern = 1,
 			Dense1Pattern = 2,
@@ -745,7 +745,7 @@ namespace Qt {
 			DiagCrossPattern = 14,
 			CustomPattern = 24,
 		}
-		enum MacintoshVersion {
+		public enum MacintoshVersion {
 			MV_Unknown = 0x0000,
 			MV_9 = 0x0001,
 			MV_10_DOT_0 = 0x0002,
@@ -759,7 +759,7 @@ namespace Qt {
 			MV_PANTHER = MV_10_DOT_3,
 			MV_TIGER = MV_10_DOT_4,
 		}
-		enum WindowsVersion {
+		public enum WindowsVersion {
 			WV_32s = 0x0001,
 			WV_95 = 0x0002,
 			WV_98 = 0x0003,
@@ -774,7 +774,7 @@ namespace Qt {
 			WV_CENET = 0x0200,
 			WV_CE_based = 0x0f00,
 		}
-		enum UIEffect {
+		public enum UIEffect {
 			UI_General = 0,
 			UI_AnimateMenu = 1,
 			UI_FadeMenu = 2,
@@ -783,7 +783,7 @@ namespace Qt {
 			UI_FadeTooltip = 5,
 			UI_AnimateToolBox = 6,
 		}
-		enum CursorShape {
+		public enum CursorShape {
 			ArrowCursor = 0,
 			UpArrowCursor = 1,
 			CrossCursor = 2,
@@ -804,17 +804,17 @@ namespace Qt {
 			LastCursor = BusyCursor,
 			BitmapCursor = 24,
 		}
-		enum TextFormat {
+		public enum TextFormat {
 			PlainText = 0,
 			RichText = 1,
 			AutoText = 2,
 			LogText = 3,
 		}
-		enum AnchorAttribute {
+		public enum AnchorAttribute {
 			AnchorName = 0,
 			AnchorHref = 1,
 		}
-		enum Dock {
+		public enum Dock {
 			DockUnmanaged = 0,
 			DockTornOff = 1,
 			DockTop = 2,
@@ -830,16 +830,16 @@ namespace Qt {
 			Left = DockLeft,
 			Minimized = DockMinimized,
 		}
-		enum DateFormat {
+		public enum DateFormat {
 			TextDate = 0,
 			ISODate = 1,
 			LocalDate = 2,
 		}
-		enum TimeSpec {
+		public enum TimeSpec {
 			LocalTime = 0,
 			UTC = 1,
 		}
-		enum BackgroundMode {
+		public enum BackgroundMode {
 			FixedColor = 0,
 			FixedPixmap = 1,
 			NoBackground = 2,
@@ -861,14 +861,14 @@ namespace Qt {
 			PaletteLinkVisited = 18,
 			X11ParentRelative = 19,
 		}
-		enum StringComparisonMode {
+		public enum StringComparisonMode {
 			CaseSensitive = 0x00001,
 			BeginsWith = 0x00002,
 			EndsWith = 0x00004,
 			Contains = 0x00008,
 			ExactMatch = 0x00010,
 		}
-		enum Corner {
+		public enum Corner {
 			TopLeft = 0x00000,
 			TopRight = 0x00001,
 			BottomLeft = 0x00002,
@@ -1203,27 +1203,27 @@ namespace Qt {
 			StaticQt().QDrawPlainRect(p,r,arg3);
 		}
 		[SmokeMethod("qItemRect(QPainter*, Qt::GUIStyle, int, int, int, int, int, bool, const QPixmap*, const QString&, int)")]
-		public static QRect QItemRect(QPainter p, int gs, int x, int y, int w, int h, int flags, bool enabled, QPixmap pixmap, string text, int len) {
+		public static QRect QItemRect(QPainter p, Qt.GUIStyle gs, int x, int y, int w, int h, int flags, bool enabled, QPixmap pixmap, string text, int len) {
 			return StaticQt().QItemRect(p,gs,x,y,w,h,flags,enabled,pixmap,text,len);
 		}
 		[SmokeMethod("qItemRect(QPainter*, Qt::GUIStyle, int, int, int, int, int, bool, const QPixmap*, const QString&)")]
-		public static QRect QItemRect(QPainter p, int gs, int x, int y, int w, int h, int flags, bool enabled, QPixmap pixmap, string text) {
+		public static QRect QItemRect(QPainter p, Qt.GUIStyle gs, int x, int y, int w, int h, int flags, bool enabled, QPixmap pixmap, string text) {
 			return StaticQt().QItemRect(p,gs,x,y,w,h,flags,enabled,pixmap,text);
 		}
 		[SmokeMethod("qDrawItem(QPainter*, Qt::GUIStyle, int, int, int, int, int, const QColorGroup&, bool, const QPixmap*, const QString&, int, const QColor*)")]
-		public static void QDrawItem(QPainter p, int gs, int x, int y, int w, int h, int flags, QColorGroup g, bool enabled, QPixmap pixmap, string text, int len, QColor penColor) {
+		public static void QDrawItem(QPainter p, Qt.GUIStyle gs, int x, int y, int w, int h, int flags, QColorGroup g, bool enabled, QPixmap pixmap, string text, int len, QColor penColor) {
 			StaticQt().QDrawItem(p,gs,x,y,w,h,flags,g,enabled,pixmap,text,len,penColor);
 		}
 		[SmokeMethod("qDrawItem(QPainter*, Qt::GUIStyle, int, int, int, int, int, const QColorGroup&, bool, const QPixmap*, const QString&, int)")]
-		public static void QDrawItem(QPainter p, int gs, int x, int y, int w, int h, int flags, QColorGroup g, bool enabled, QPixmap pixmap, string text, int len) {
+		public static void QDrawItem(QPainter p, Qt.GUIStyle gs, int x, int y, int w, int h, int flags, QColorGroup g, bool enabled, QPixmap pixmap, string text, int len) {
 			StaticQt().QDrawItem(p,gs,x,y,w,h,flags,g,enabled,pixmap,text,len);
 		}
 		[SmokeMethod("qDrawItem(QPainter*, Qt::GUIStyle, int, int, int, int, int, const QColorGroup&, bool, const QPixmap*, const QString&)")]
-		public static void QDrawItem(QPainter p, int gs, int x, int y, int w, int h, int flags, QColorGroup g, bool enabled, QPixmap pixmap, string text) {
+		public static void QDrawItem(QPainter p, Qt.GUIStyle gs, int x, int y, int w, int h, int flags, QColorGroup g, bool enabled, QPixmap pixmap, string text) {
 			StaticQt().QDrawItem(p,gs,x,y,w,h,flags,g,enabled,pixmap,text);
 		}
 		[SmokeMethod("qDrawArrow(QPainter*, Qt::ArrowType, Qt::GUIStyle, bool, int, int, int, int, const QColorGroup&, bool)")]
-		public static void QDrawArrow(QPainter p, int type, int style, bool down, int x, int y, int w, int h, QColorGroup g, bool enabled) {
+		public static void QDrawArrow(QPainter p, Qt.ArrowType type, Qt.GUIStyle style, bool down, int x, int y, int w, int h, QColorGroup g, bool enabled) {
 			StaticQt().QDrawArrow(p,type,style,down,x,y,w,h,g,enabled);
 		}
 		///<remarks>**************************************************
@@ -1314,11 +1314,11 @@ namespace Qt {
 			return StaticQt().op_write(s,p);
 		}
 		[SmokeMethod("operator>>(QDataStream&, QVariant::Type&)")]
-		public static QDataStream op_read(QDataStream s, int p) {
+		public static QDataStream op_read(QDataStream s, QVariant.E_Type p) {
 			return StaticQt().op_read(s,p);
 		}
 		[SmokeMethod("operator<<(QDataStream&, const QVariant::Type)")]
-		public static QDataStream op_write(QDataStream s, int p) {
+		public static QDataStream op_write(QDataStream s, QVariant.E_Type p) {
 			return StaticQt().op_write(s,p);
 		}
 		///<remarks>*************************************************
@@ -1716,11 +1716,11 @@ namespace Qt {
 			return StaticQt().op_read(arg1,arg2);
 		}
 		[SmokeMethod("bitBlt(QPaintDevice*, int, int, const QPaintDevice*, int, int, int, int, Qt::RasterOp, bool)")]
-		public static void BitBlt(IQPaintDevice dst, int dx, int dy, IQPaintDevice src, int sx, int sy, int sw, int sh, int arg9, bool ignoreMask) {
+		public static void BitBlt(IQPaintDevice dst, int dx, int dy, IQPaintDevice src, int sx, int sy, int sw, int sh, Qt.RasterOp arg9, bool ignoreMask) {
 			StaticQt().BitBlt(dst,dx,dy,src,sx,sy,sw,sh,arg9,ignoreMask);
 		}
 		[SmokeMethod("bitBlt(QPaintDevice*, int, int, const QPaintDevice*, int, int, int, int, Qt::RasterOp)")]
-		public static void BitBlt(IQPaintDevice dst, int dx, int dy, IQPaintDevice src, int sx, int sy, int sw, int sh, int arg9) {
+		public static void BitBlt(IQPaintDevice dst, int dx, int dy, IQPaintDevice src, int sx, int sy, int sw, int sh, Qt.RasterOp arg9) {
 			StaticQt().BitBlt(dst,dx,dy,src,sx,sy,sw,sh,arg9);
 		}
 		[SmokeMethod("bitBlt(QPaintDevice*, int, int, const QPaintDevice*, int, int, int, int)")]
@@ -1771,11 +1771,11 @@ namespace Qt {
 		///  Inline functions
 		///**************************************************</remarks>		<short>                                                                                Inline functions                                                                            </short>
 		[SmokeMethod("bitBlt(QPaintDevice*, const QPoint&, const QPaintDevice*, const QRect&, Qt::RasterOp, bool)")]
-		public static void BitBlt(IQPaintDevice dst, QPoint dp, IQPaintDevice src, QRect sr, int rop, bool ignoreMask) {
+		public static void BitBlt(IQPaintDevice dst, QPoint dp, IQPaintDevice src, QRect sr, Qt.RasterOp rop, bool ignoreMask) {
 			StaticQt().BitBlt(dst,dp,src,sr,rop,ignoreMask);
 		}
 		[SmokeMethod("bitBlt(QPaintDevice*, const QPoint&, const QPaintDevice*, const QRect&, Qt::RasterOp)")]
-		public static void BitBlt(IQPaintDevice dst, QPoint dp, IQPaintDevice src, QRect sr, int rop) {
+		public static void BitBlt(IQPaintDevice dst, QPoint dp, IQPaintDevice src, QRect sr, Qt.RasterOp rop) {
 			StaticQt().BitBlt(dst,dp,src,sr,rop);
 		}
 		[SmokeMethod("bitBlt(QPaintDevice*, const QPoint&, const QPaintDevice*, const QRect&)")]

@@ -13,8 +13,8 @@ namespace Qt {
  		protected QVariant(Type dummy) {}
 		interface IQVariantProxy {
 			bool op_equals(QVariant lhs, QVariant arg1);
-			string TypeToName(int typ);
-			int NameToType(string name);
+			string TypeToName(QVariant.E_Type typ);
+			QVariant.E_Type NameToType(string name);
 		}
 
 		protected void CreateQVariantProxy() {
@@ -33,7 +33,7 @@ namespace Qt {
 			return (IQVariantProxy) _staticInterceptor;
 		}
 
-		enum E_Type {
+		public enum E_Type {
 			Invalid = 0,
 			Map = 1,
 			List = 2,
@@ -326,11 +326,11 @@ namespace Qt {
 			return ProxyQVariant().TypeName();
 		}
 		[SmokeMethod("canCast(QVariant::Type) const")]
-		public bool CanCast(int arg1) {
+		public bool CanCast(QVariant.E_Type arg1) {
 			return ProxyQVariant().CanCast(arg1);
 		}
 		[SmokeMethod("cast(QVariant::Type)")]
-		public bool Cast(int arg1) {
+		public bool Cast(QVariant.E_Type arg1) {
 			return ProxyQVariant().Cast(arg1);
 		}
 		[SmokeMethod("isValid() const")]
@@ -621,11 +621,11 @@ namespace Qt {
 		// void* rawAccess(void* arg1); >>>> NOT CONVERTED
 		// void* rawAccess(); >>>> NOT CONVERTED
 		[SmokeMethod("typeToName(QVariant::Type)")]
-		public static string TypeToName(int typ) {
+		public static string TypeToName(QVariant.E_Type typ) {
 			return StaticQVariant().TypeToName(typ);
 		}
 		[SmokeMethod("nameToType(const char*)")]
-		public static int NameToType(string name) {
+		public static QVariant.E_Type NameToType(string name) {
 			return StaticQVariant().NameToType(name);
 		}
 		~QVariant() {

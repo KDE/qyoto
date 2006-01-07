@@ -13,8 +13,8 @@ namespace Qt {
  		protected QFontDatabase(Type dummy) {}
 		interface IQFontDatabaseProxy {
 			int[] StandardSizes();
-			string ScriptName(int arg1);
-			string ScriptSample(int arg1);
+			string ScriptName(QFont.Script arg1);
+			string ScriptSample(QFont.Script arg1);
 		}
 
 		protected void CreateQFontDatabaseProxy() {
@@ -46,7 +46,7 @@ namespace Qt {
 			return ProxyQFontDatabase().Families();
 		}
 		[SmokeMethod("families(QFont::Script) const")]
-		public ArrayList Families(int arg1) {
+		public ArrayList Families(QFont.Script arg1) {
 			return ProxyQFontDatabase().Families(arg1);
 		}
 		[SmokeMethod("styles(const QString&) const")]
@@ -170,11 +170,11 @@ namespace Qt {
 			return StaticQFontDatabase().StandardSizes();
 		}
 		[SmokeMethod("scriptName(QFont::Script)")]
-		public static string ScriptName(int arg1) {
+		public static string ScriptName(QFont.Script arg1) {
 			return StaticQFontDatabase().ScriptName(arg1);
 		}
 		[SmokeMethod("scriptSample(QFont::Script)")]
-		public static string ScriptSample(int arg1) {
+		public static string ScriptSample(QFont.Script arg1) {
 			return StaticQFontDatabase().ScriptSample(arg1);
 		}
 		~QFontDatabase() {

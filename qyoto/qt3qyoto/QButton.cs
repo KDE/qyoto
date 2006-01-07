@@ -31,12 +31,12 @@ namespace Qt {
 			return (IQButtonProxy) _staticInterceptor;
 		}
 
-		enum E_ToggleType {
+		public enum ToggleType {
 			SingleShot = 0,
 			Toggle = 1,
 			Tristate = 2,
 		}
-		enum ToggleState {
+		public enum ToggleState {
 			Off = 0,
 			NoChange = 1,
 			On = 2,
@@ -114,8 +114,8 @@ namespace Qt {
 			return ProxyQButton().IsToggleButton();
 		}
 		[SmokeMethod("toggleType() const")]
-		public int ToggleType() {
-			return ProxyQButton().ToggleType();
+		public QButton.ToggleType toggleType() {
+			return ProxyQButton().toggleType();
 		}
 		[SmokeMethod("setDown(bool)")]
 		public virtual void SetDown(bool arg1) {
@@ -130,7 +130,7 @@ namespace Qt {
 			return ProxyQButton().IsOn();
 		}
 		[SmokeMethod("state() const")]
-		public int State() {
+		public QButton.ToggleState State() {
 			return ProxyQButton().State();
 		}
 		[SmokeMethod("autoResize() const")]
@@ -188,7 +188,7 @@ namespace Qt {
 			ProxyQButton().SetToggleButton(arg1);
 		}
 		[SmokeMethod("setToggleType(QButton::ToggleType)")]
-		protected virtual void SetToggleType(int arg1) {
+		protected virtual void SetToggleType(QButton.ToggleType arg1) {
 			ProxyQButton().SetToggleType(arg1);
 		}
 		[SmokeMethod("setOn(bool)")]
@@ -196,7 +196,7 @@ namespace Qt {
 			ProxyQButton().SetOn(arg1);
 		}
 		[SmokeMethod("setState(QButton::ToggleState)")]
-		public virtual void SetState(int arg1) {
+		public virtual void SetState(QButton.ToggleState arg1) {
 			ProxyQButton().SetState(arg1);
 		}
 		[SmokeMethod("hitButton(const QPoint&) const")]

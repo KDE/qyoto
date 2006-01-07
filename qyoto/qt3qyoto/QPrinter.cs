@@ -26,17 +26,17 @@ namespace Qt {
 			return (IQPrinterProxy) _staticInterceptor;
 		}
 
-		enum PrinterMode {
+		public enum PrinterMode {
 			ScreenResolution = 0,
 			PrinterResolution = 1,
 			HighResolution = 2,
 			Compatible = 3,
 		}
-		enum E_Orientation {
+		public enum Orientation {
 			Portrait = 0,
 			Landscape = 1,
 		}
-		enum E_PageSize {
+		public enum PageSize {
 			A4 = 0,
 			B5 = 1,
 			Letter = 2,
@@ -70,15 +70,15 @@ namespace Qt {
 			Custom = 30,
 			NPageSize = Custom,
 		}
-		enum E_PageOrder {
+		public enum PageOrder {
 			FirstPageFirst = 0,
 			LastPageFirst = 1,
 		}
-		enum E_ColorMode {
+		public enum ColorMode {
 			GrayScale = 0,
 			Color = 1,
 		}
-		enum E_PaperSource {
+		public enum PaperSource {
 			OnlyOne = 0,
 			Lower = 1,
 			Middle = 2,
@@ -93,22 +93,22 @@ namespace Qt {
 			Cassette = 11,
 			FormSource = 12,
 		}
-		enum E_PrintRange {
+		public enum PrintRange {
 			AllPages = 0,
 			Selection = 1,
 			PageRange = 2,
 		}
-		enum PrinterOption {
+		public enum PrinterOption {
 			PrintToFile = 0,
 			PrintSelection = 1,
 			PrintPageRange = 2,
 		}
-		public QPrinter(int mode) : this((Type) null) {
+		public QPrinter(QPrinter.PrinterMode mode) : this((Type) null) {
 			CreateQPrinterProxy();
 			NewQPrinter(mode);
 		}
 		[SmokeMethod("QPrinter(QPrinter::PrinterMode)")]
-		private void NewQPrinter(int mode) {
+		private void NewQPrinter(QPrinter.PrinterMode mode) {
 			ProxyQPrinter().NewQPrinter(mode);
 		}
 		public QPrinter() : this((Type) null) {
@@ -176,28 +176,28 @@ namespace Qt {
 			ProxyQPrinter().SetCreator(arg1);
 		}
 		[SmokeMethod("orientation() const")]
-		public int Orientation() {
-			return ProxyQPrinter().Orientation();
+		public QPrinter.Orientation orientation() {
+			return ProxyQPrinter().orientation();
 		}
 		[SmokeMethod("setOrientation(QPrinter::Orientation)")]
-		public virtual void SetOrientation(int arg1) {
+		public virtual void SetOrientation(QPrinter.Orientation arg1) {
 			ProxyQPrinter().SetOrientation(arg1);
 		}
 		[SmokeMethod("pageSize() const")]
-		public int PageSize() {
-			return ProxyQPrinter().PageSize();
+		public QPrinter.PageSize pageSize() {
+			return ProxyQPrinter().pageSize();
 		}
 		[SmokeMethod("setPageSize(QPrinter::PageSize)")]
-		public virtual void SetPageSize(int arg1) {
+		public virtual void SetPageSize(QPrinter.PageSize arg1) {
 			ProxyQPrinter().SetPageSize(arg1);
 		}
 		[SmokeMethod("setPageOrder(QPrinter::PageOrder)")]
-		public virtual void SetPageOrder(int arg1) {
+		public virtual void SetPageOrder(QPrinter.PageOrder arg1) {
 			ProxyQPrinter().SetPageOrder(arg1);
 		}
 		[SmokeMethod("pageOrder() const")]
-		public int PageOrder() {
-			return ProxyQPrinter().PageOrder();
+		public QPrinter.PageOrder pageOrder() {
+			return ProxyQPrinter().pageOrder();
 		}
 		[SmokeMethod("setResolution(int)")]
 		public new void SetResolution(int arg1) {
@@ -208,12 +208,12 @@ namespace Qt {
 			return ProxyQPrinter().Resolution();
 		}
 		[SmokeMethod("setColorMode(QPrinter::ColorMode)")]
-		public virtual void SetColorMode(int arg1) {
+		public virtual void SetColorMode(QPrinter.ColorMode arg1) {
 			ProxyQPrinter().SetColorMode(arg1);
 		}
 		[SmokeMethod("colorMode() const")]
-		public int ColorMode() {
-			return ProxyQPrinter().ColorMode();
+		public QPrinter.ColorMode colorMode() {
+			return ProxyQPrinter().colorMode();
 		}
 		[SmokeMethod("setFullPage(bool)")]
 		public virtual void SetFullPage(bool arg1) {
@@ -284,11 +284,11 @@ namespace Qt {
 			ProxyQPrinter().SetCollateCopies(arg1);
 		}
 		[SmokeMethod("printRange() const")]
-		public int PrintRange() {
-			return ProxyQPrinter().PrintRange();
+		public QPrinter.PrintRange printRange() {
+			return ProxyQPrinter().printRange();
 		}
 		[SmokeMethod("setPrintRange(QPrinter::PrintRange)")]
-		public void SetPrintRange(int range) {
+		public void SetPrintRange(QPrinter.PrintRange range) {
 			ProxyQPrinter().SetPrintRange(range);
 		}
 		[SmokeMethod("newPage()")]
@@ -312,19 +312,19 @@ namespace Qt {
 			return ProxyQPrinter().Setup();
 		}
 		[SmokeMethod("paperSource() const")]
-		public int PaperSource() {
-			return ProxyQPrinter().PaperSource();
+		public QPrinter.PaperSource paperSource() {
+			return ProxyQPrinter().paperSource();
 		}
 		[SmokeMethod("setPaperSource(QPrinter::PaperSource)")]
-		public virtual void SetPaperSource(int arg1) {
+		public virtual void SetPaperSource(QPrinter.PaperSource arg1) {
 			ProxyQPrinter().SetPaperSource(arg1);
 		}
 		[SmokeMethod("setOptionEnabled(QPrinter::PrinterOption, bool)")]
-		public void SetOptionEnabled(int arg1, bool enable) {
+		public void SetOptionEnabled(QPrinter.PrinterOption arg1, bool enable) {
 			ProxyQPrinter().SetOptionEnabled(arg1,enable);
 		}
 		[SmokeMethod("isOptionEnabled(QPrinter::PrinterOption)")]
-		public bool IsOptionEnabled(int arg1) {
+		public bool IsOptionEnabled(QPrinter.PrinterOption arg1) {
 			return ProxyQPrinter().IsOptionEnabled(arg1);
 		}
 		// bool cmd(int arg1,QPainter* arg2,QPDevCmdParam* arg3); >>>> NOT CONVERTED

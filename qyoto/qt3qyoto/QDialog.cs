@@ -30,7 +30,7 @@ namespace Qt {
 			return (IQDialogProxy) _staticInterceptor;
 		}
 
-		enum DialogCode {
+		public enum DialogCode {
 			Rejected = 0,
 			Accepted = 1,
 		}
@@ -124,11 +124,11 @@ namespace Qt {
 			ProxyQDialog().SetGeometry(arg1);
 		}
 		[SmokeMethod("setOrientation(Qt::Orientation)")]
-		public void SetOrientation(int orientation) {
+		public void SetOrientation(Qt.Orientation orientation) {
 			ProxyQDialog().SetOrientation(orientation);
 		}
 		[SmokeMethod("orientation() const")]
-		public int Orientation() {
+		public Qt.Orientation Orientation() {
 			return ProxyQDialog().Orientation();
 		}
 		[SmokeMethod("setExtension(QWidget*)")]

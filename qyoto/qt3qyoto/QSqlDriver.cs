@@ -31,7 +31,7 @@ namespace Qt {
 			return (IQSqlDriverProxy) _staticInterceptor;
 		}
 
-		enum DriverFeature {
+		public enum DriverFeature {
 			Transactions = 0,
 			QuerySize = 1,
 			BLOB = 2,
@@ -136,7 +136,7 @@ namespace Qt {
 			return ProxyQSqlDriver().LastError();
 		}
 		[SmokeMethod("hasFeature(QSqlDriver::DriverFeature) const")]
-		public virtual bool HasFeature(int f) {
+		public virtual bool HasFeature(QSqlDriver.DriverFeature f) {
 			return ProxyQSqlDriver().HasFeature(f);
 		}
 		[SmokeMethod("open(const QString&, const QString&, const QString&, const QString&, int)")]

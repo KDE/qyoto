@@ -31,24 +31,24 @@ namespace Qt {
 			return (IQTextEditProxy) _staticInterceptor;
 		}
 
-		enum E_WordWrap {
+		public enum WordWrap {
 			NoWrap = 0,
 			WidgetWidth = 1,
 			FixedPixelWidth = 2,
 			FixedColumnWidth = 3,
 		}
-		enum E_WrapPolicy {
+		public enum WrapPolicy {
 			AtWordBoundary = 0,
 			AtWhiteSpace = AtWordBoundary,
 			Anywhere = 1,
 			AtWordOrDocumentBoundary = 2,
 		}
-		enum E_AutoFormatting : uint {
+		public enum AutoFormatting : uint {
 			AutoNone = 0,
 			AutoBulletList = 0x00000001,
 			AutoAll = 0xffffffff,
 		}
-		enum KeyboardAction {
+		public enum KeyboardAction {
 			ActionBackspace = 0,
 			ActionDelete = 1,
 			ActionReturn = 2,
@@ -56,7 +56,7 @@ namespace Qt {
 			ActionWordBackspace = 4,
 			ActionWordDelete = 5,
 		}
-		enum CursorAction {
+		public enum CursorAction {
 			MoveBackward = 0,
 			MoveForward = 1,
 			MoveWordBackward = 2,
@@ -70,12 +70,12 @@ namespace Qt {
 			MovePgUp = 10,
 			MovePgDown = 11,
 		}
-		enum VerticalAlignment {
+		public enum VerticalAlignment {
 			AlignNormal = 0,
 			AlignSuperScript = 1,
 			AlignSubScript = 2,
 		}
-		enum TextInsertionFlags {
+		public enum TextInsertionFlags {
 			RedoIndentation = 0x0001,
 			CheckNewLines = 0x0002,
 			RemoveSelected = 0x0004,
@@ -164,7 +164,7 @@ namespace Qt {
 			return ProxyQTextEdit().Text(para);
 		}
 		[SmokeMethod("textFormat() const")]
-		public int TextFormat() {
+		public Qt.TextFormat TextFormat() {
 			return ProxyQTextEdit().TextFormat();
 		}
 		[SmokeMethod("context() const")]
@@ -272,16 +272,16 @@ namespace Qt {
 			return ProxyQTextEdit().IsRedoAvailable();
 		}
 		[SmokeMethod("wordWrap() const")]
-		public int WordWrap() {
-			return ProxyQTextEdit().WordWrap();
+		public QTextEdit.WordWrap wordWrap() {
+			return ProxyQTextEdit().wordWrap();
 		}
 		[SmokeMethod("wrapColumnOrWidth() const")]
 		public int WrapColumnOrWidth() {
 			return ProxyQTextEdit().WrapColumnOrWidth();
 		}
 		[SmokeMethod("wrapPolicy() const")]
-		public int WrapPolicy() {
-			return ProxyQTextEdit().WrapPolicy();
+		public QTextEdit.WrapPolicy wrapPolicy() {
+			return ProxyQTextEdit().wrapPolicy();
 		}
 		[SmokeMethod("tabStopWidth() const")]
 		public int TabStopWidth() {
@@ -292,7 +292,7 @@ namespace Qt {
 			return ProxyQTextEdit().AnchorAt(pos);
 		}
 		[SmokeMethod("anchorAt(const QPoint&, Qt::AnchorAttribute)")]
-		public string AnchorAt(QPoint pos, int a) {
+		public string AnchorAt(QPoint pos, Qt.AnchorAttribute a) {
 			return ProxyQTextEdit().AnchorAt(pos,a);
 		}
 		[SmokeMethod("sizeHint() const")]
@@ -352,11 +352,11 @@ namespace Qt {
 			return ProxyQTextEdit().UndoDepth();
 		}
 		[SmokeMethod("getFormat(int, int, QFont*, QColor*, QTextEdit::VerticalAlignment*)")]
-		public virtual bool GetFormat(int para, int index, QFont font, QColor color, int verticalAlignment) {
+		public virtual bool GetFormat(int para, int index, QFont font, QColor color, QTextEdit.VerticalAlignment verticalAlignment) {
 			return ProxyQTextEdit().GetFormat(para,index,font,color,verticalAlignment);
 		}
 		[SmokeMethod("getParagraphFormat(int, QFont*, QColor*, QTextEdit::VerticalAlignment*, int*, QStyleSheetItem::DisplayMode*, QStyleSheetItem::ListStyle*, int*)")]
-		public virtual bool GetParagraphFormat(int para, QFont font, QColor color, int verticalAlignment, out int alignment, int displayMode, int listStyle, out int listDepth) {
+		public virtual bool GetParagraphFormat(int para, QFont font, QColor color, QTextEdit.VerticalAlignment verticalAlignment, out int alignment, QStyleSheetItem.DisplayMode displayMode, QStyleSheetItem.ListStyle listStyle, out int listDepth) {
 			return ProxyQTextEdit().GetParagraphFormat(para,font,color,verticalAlignment,out alignment,displayMode,listStyle,out listDepth);
 		}
 		[SmokeMethod("isOverwriteMode() const")]
@@ -384,8 +384,8 @@ namespace Qt {
 			ProxyQTextEdit().SetAutoFormatting(features);
 		}
 		[SmokeMethod("autoFormatting() const")]
-		public uint AutoFormatting() {
-			return ProxyQTextEdit().AutoFormatting();
+		public uint autoFormatting() {
+			return ProxyQTextEdit().autoFormatting();
 		}
 		[SmokeMethod("syntaxHighlighter() const")]
 		public QSyntaxHighlighter SyntaxHighlighter() {
@@ -423,7 +423,7 @@ namespace Qt {
 		}
 		[Q_SLOT("void setWordWrap(QTextEdit::WordWrap)")]
 		[SmokeMethod("setWordWrap(QTextEdit::WordWrap)")]
-		public virtual void SetWordWrap(int mode) {
+		public virtual void SetWordWrap(QTextEdit.WordWrap mode) {
 			ProxyQTextEdit().SetWordWrap(mode);
 		}
 		[Q_SLOT("void setWrapColumnOrWidth(int)")]
@@ -433,7 +433,7 @@ namespace Qt {
 		}
 		[Q_SLOT("void setWrapPolicy(QTextEdit::WrapPolicy)")]
 		[SmokeMethod("setWrapPolicy(QTextEdit::WrapPolicy)")]
-		public virtual void SetWrapPolicy(int policy) {
+		public virtual void SetWrapPolicy(QTextEdit.WrapPolicy policy) {
 			ProxyQTextEdit().SetWrapPolicy(policy);
 		}
 		[Q_SLOT("void copy()")]
@@ -458,7 +458,7 @@ namespace Qt {
 		}
 		[Q_SLOT("void setTextFormat(Qt::TextFormat)")]
 		[SmokeMethod("setTextFormat(Qt::TextFormat)")]
-		public virtual void SetTextFormat(int f) {
+		public virtual void SetTextFormat(Qt.TextFormat f) {
 			ProxyQTextEdit().SetTextFormat(f);
 		}
 		[Q_SLOT("void selectAll(bool)")]
@@ -588,7 +588,7 @@ namespace Qt {
 		}
 		[Q_SLOT("void setVerticalAlignment(QTextEdit::VerticalAlignment)")]
 		[SmokeMethod("setVerticalAlignment(QTextEdit::VerticalAlignment)")]
-		public virtual void SetVerticalAlignment(int a) {
+		public virtual void SetVerticalAlignment(QTextEdit.VerticalAlignment a) {
 			ProxyQTextEdit().SetVerticalAlignment(a);
 		}
 		[Q_SLOT("void setAlignment(int)")]
@@ -598,7 +598,7 @@ namespace Qt {
 		}
 		[Q_SLOT("void setParagType(QStyleSheetItem::DisplayMode, QStyleSheetItem::ListStyle)")]
 		[SmokeMethod("setParagType(QStyleSheetItem::DisplayMode, QStyleSheetItem::ListStyle)")]
-		public virtual void SetParagType(int dm, int listStyle) {
+		public virtual void SetParagType(QStyleSheetItem.DisplayMode dm, QStyleSheetItem.ListStyle listStyle) {
 			ProxyQTextEdit().SetParagType(dm,listStyle);
 		}
 		[Q_SLOT("void setCursorPosition(int, int)")]
@@ -650,12 +650,12 @@ namespace Qt {
 		}
 		[Q_SLOT("void moveCursor(QTextEdit::CursorAction, bool)")]
 		[SmokeMethod("moveCursor(QTextEdit::CursorAction, bool)")]
-		public virtual void MoveCursor(int action, bool select) {
+		public virtual void MoveCursor(QTextEdit.CursorAction action, bool select) {
 			ProxyQTextEdit().MoveCursor(action,select);
 		}
 		[Q_SLOT("void doKeyboardAction(QTextEdit::KeyboardAction)")]
 		[SmokeMethod("doKeyboardAction(QTextEdit::KeyboardAction)")]
-		public virtual void DoKeyboardAction(int action) {
+		public virtual void DoKeyboardAction(QTextEdit.KeyboardAction action) {
 			ProxyQTextEdit().DoKeyboardAction(action);
 		}
 		[Q_SLOT("void removeSelectedText(int)")]
@@ -918,7 +918,7 @@ namespace Qt {
 		[Q_SIGNAL("void currentAlignmentChanged(int)")]
 		void CurrentAlignmentChanged(int a);
 		[Q_SIGNAL("void currentVerticalAlignmentChanged(QTextEdit::VerticalAlignment)")]
-		void CurrentVerticalAlignmentChanged(int a);
+		void CurrentVerticalAlignmentChanged(QTextEdit.VerticalAlignment a);
 		// void cursorPositionChanged(QTextCursor* arg1); >>>> NOT CONVERTED
 		[Q_SIGNAL("void cursorPositionChanged(int, int)")]
 		void CursorPositionChanged(int para, int pos);

@@ -30,7 +30,7 @@ namespace Qt {
 			return (IQToolButtonProxy) _staticInterceptor;
 		}
 
-		enum E_TextPosition {
+		public enum TextPosition {
 			BesideIcon = 0,
 			BelowIcon = 1,
 			Right = BesideIcon,
@@ -80,22 +80,22 @@ namespace Qt {
 		private void NewQToolButton(QIconSet s, string textLabel, string grouptext, QObject receiver, string slot, QToolBar parent) {
 			ProxyQToolButton().NewQToolButton(s,textLabel,grouptext,receiver,slot,parent);
 		}
-		public QToolButton(int type, QWidget parent, string name) : this((Type) null) {
+		public QToolButton(Qt.ArrowType type, QWidget parent, string name) : this((Type) null) {
 			CreateQToolButtonProxy();
 			CreateQToolButtonSignalProxy();
 			NewQToolButton(type,parent,name);
 		}
 		[SmokeMethod("QToolButton(Qt::ArrowType, QWidget*, const char*)")]
-		private void NewQToolButton(int type, QWidget parent, string name) {
+		private void NewQToolButton(Qt.ArrowType type, QWidget parent, string name) {
 			ProxyQToolButton().NewQToolButton(type,parent,name);
 		}
-		public QToolButton(int type, QWidget parent) : this((Type) null) {
+		public QToolButton(Qt.ArrowType type, QWidget parent) : this((Type) null) {
 			CreateQToolButtonProxy();
 			CreateQToolButtonSignalProxy();
 			NewQToolButton(type,parent);
 		}
 		[SmokeMethod("QToolButton(Qt::ArrowType, QWidget*)")]
-		private void NewQToolButton(int type, QWidget parent) {
+		private void NewQToolButton(Qt.ArrowType type, QWidget parent) {
 			ProxyQToolButton().NewQToolButton(type,parent);
 		}
 		[SmokeMethod("sizeHint() const")]
@@ -179,8 +179,8 @@ namespace Qt {
 			return ProxyQToolButton().AutoRaise();
 		}
 		[SmokeMethod("textPosition() const")]
-		public int TextPosition() {
-			return ProxyQToolButton().TextPosition();
+		public QToolButton.TextPosition textPosition() {
+			return ProxyQToolButton().textPosition();
 		}
 		[SmokeMethod("setText(const QString&)")]
 		public new void SetText(string txt) {
@@ -223,7 +223,7 @@ namespace Qt {
 		}
 		[Q_SLOT("void setTextPosition(QToolButton::TextPosition)")]
 		[SmokeMethod("setTextPosition(QToolButton::TextPosition)")]
-		public void SetTextPosition(int pos) {
+		public void SetTextPosition(QToolButton.TextPosition pos) {
 			ProxyQToolButton().SetTextPosition(pos);
 		}
 		[SmokeMethod("tr(const char*, const char*)")]

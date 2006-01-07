@@ -34,14 +34,14 @@ namespace Qt {
 			return (IQWidgetProxy) _staticInterceptor;
 		}
 
-		enum E_FocusPolicy {
+		public enum FocusPolicy {
 			NoFocus = 0,
 			TabFocus = 0x1,
 			ClickFocus = 0x2,
 			StrongFocus = TabFocus|ClickFocus|0x8,
 			WheelFocus = StrongFocus|0x4,
 		}
-		enum E_BackgroundOrigin {
+		public enum BackgroundOrigin {
 			WidgetOrigin = 0,
 			ParentOrigin = 1,
 			WindowOrigin = 2,
@@ -316,15 +316,15 @@ namespace Qt {
 			return ProxyQWidget().TopLevelWidget();
 		}
 		[SmokeMethod("backgroundMode() const")]
-		public int BackgroundMode() {
+		public Qt.BackgroundMode BackgroundMode() {
 			return ProxyQWidget().BackgroundMode();
 		}
 		[SmokeMethod("setBackgroundMode(Qt::BackgroundMode)")]
-		public virtual void SetBackgroundMode(int arg1) {
+		public virtual void SetBackgroundMode(Qt.BackgroundMode arg1) {
 			ProxyQWidget().SetBackgroundMode(arg1);
 		}
 		[SmokeMethod("setBackgroundMode(Qt::BackgroundMode, Qt::BackgroundMode)")]
-		public void SetBackgroundMode(int arg1, int arg2) {
+		public void SetBackgroundMode(Qt.BackgroundMode arg1, Qt.BackgroundMode arg2) {
 			ProxyQWidget().SetBackgroundMode(arg1,arg2);
 		}
 		[SmokeMethod("foregroundColor() const")]
@@ -496,11 +496,11 @@ namespace Qt {
 			return ProxyQWidget().IsFocusEnabled();
 		}
 		[SmokeMethod("focusPolicy() const")]
-		public int FocusPolicy() {
-			return ProxyQWidget().FocusPolicy();
+		public QWidget.FocusPolicy focusPolicy() {
+			return ProxyQWidget().focusPolicy();
 		}
 		[SmokeMethod("setFocusPolicy(QWidget::FocusPolicy)")]
-		public virtual void SetFocusPolicy(int arg1) {
+		public virtual void SetFocusPolicy(QWidget.FocusPolicy arg1) {
 			ProxyQWidget().SetFocusPolicy(arg1);
 		}
 		[SmokeMethod("hasFocus() const")]
@@ -612,11 +612,11 @@ namespace Qt {
 			ProxyQWidget().SetSizePolicy(arg1);
 		}
 		[SmokeMethod("setSizePolicy(QSizePolicy::SizeType, QSizePolicy::SizeType, bool)")]
-		public void SetSizePolicy(int hor, int ver, bool hfw) {
+		public void SetSizePolicy(QSizePolicy.SizeType hor, QSizePolicy.SizeType ver, bool hfw) {
 			ProxyQWidget().SetSizePolicy(hor,ver,hfw);
 		}
 		[SmokeMethod("setSizePolicy(QSizePolicy::SizeType, QSizePolicy::SizeType)")]
-		public void SetSizePolicy(int hor, int ver) {
+		public void SetSizePolicy(QSizePolicy.SizeType hor, QSizePolicy.SizeType ver) {
 			ProxyQWidget().SetSizePolicy(hor,ver);
 		}
 		[SmokeMethod("heightForWidth(int) const")]
@@ -716,12 +716,12 @@ namespace Qt {
 			return ProxyQWidget().AutoMask();
 		}
 		[SmokeMethod("setBackgroundOrigin(QWidget::BackgroundOrigin)")]
-		public virtual void SetBackgroundOrigin(int arg1) {
+		public virtual void SetBackgroundOrigin(QWidget.BackgroundOrigin arg1) {
 			ProxyQWidget().SetBackgroundOrigin(arg1);
 		}
 		[SmokeMethod("backgroundOrigin() const")]
-		public int BackgroundOrigin() {
-			return ProxyQWidget().BackgroundOrigin();
+		public QWidget.BackgroundOrigin backgroundOrigin() {
+			return ProxyQWidget().backgroundOrigin();
 		}
 		[SmokeMethod("backgroundOffset() const")]
 		public QPoint BackgroundOffset() {

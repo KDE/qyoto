@@ -57,48 +57,48 @@ namespace Qt {
 		private void NewQScrollBar(QWidget parent) {
 			ProxyQScrollBar().NewQScrollBar(parent);
 		}
-		public QScrollBar(int arg1, QWidget parent, string name) : this((Type) null) {
+		public QScrollBar(Qt.Orientation arg1, QWidget parent, string name) : this((Type) null) {
 			CreateQScrollBarProxy();
 			CreateQScrollBarSignalProxy();
 			NewQScrollBar(arg1,parent,name);
 		}
 		[SmokeMethod("QScrollBar(Qt::Orientation, QWidget*, const char*)")]
-		private void NewQScrollBar(int arg1, QWidget parent, string name) {
+		private void NewQScrollBar(Qt.Orientation arg1, QWidget parent, string name) {
 			ProxyQScrollBar().NewQScrollBar(arg1,parent,name);
 		}
-		public QScrollBar(int arg1, QWidget parent) : this((Type) null) {
+		public QScrollBar(Qt.Orientation arg1, QWidget parent) : this((Type) null) {
 			CreateQScrollBarProxy();
 			CreateQScrollBarSignalProxy();
 			NewQScrollBar(arg1,parent);
 		}
 		[SmokeMethod("QScrollBar(Qt::Orientation, QWidget*)")]
-		private void NewQScrollBar(int arg1, QWidget parent) {
+		private void NewQScrollBar(Qt.Orientation arg1, QWidget parent) {
 			ProxyQScrollBar().NewQScrollBar(arg1,parent);
 		}
-		public QScrollBar(int minValue, int maxValue, int lineStep, int pageStep, int value, int arg6, QWidget parent, string name) : this((Type) null) {
+		public QScrollBar(int minValue, int maxValue, int lineStep, int pageStep, int value, Qt.Orientation arg6, QWidget parent, string name) : this((Type) null) {
 			CreateQScrollBarProxy();
 			CreateQScrollBarSignalProxy();
 			NewQScrollBar(minValue,maxValue,lineStep,pageStep,value,arg6,parent,name);
 		}
 		[SmokeMethod("QScrollBar(int, int, int, int, int, Qt::Orientation, QWidget*, const char*)")]
-		private void NewQScrollBar(int minValue, int maxValue, int lineStep, int pageStep, int value, int arg6, QWidget parent, string name) {
+		private void NewQScrollBar(int minValue, int maxValue, int lineStep, int pageStep, int value, Qt.Orientation arg6, QWidget parent, string name) {
 			ProxyQScrollBar().NewQScrollBar(minValue,maxValue,lineStep,pageStep,value,arg6,parent,name);
 		}
-		public QScrollBar(int minValue, int maxValue, int lineStep, int pageStep, int value, int arg6, QWidget parent) : this((Type) null) {
+		public QScrollBar(int minValue, int maxValue, int lineStep, int pageStep, int value, Qt.Orientation arg6, QWidget parent) : this((Type) null) {
 			CreateQScrollBarProxy();
 			CreateQScrollBarSignalProxy();
 			NewQScrollBar(minValue,maxValue,lineStep,pageStep,value,arg6,parent);
 		}
 		[SmokeMethod("QScrollBar(int, int, int, int, int, Qt::Orientation, QWidget*)")]
-		private void NewQScrollBar(int minValue, int maxValue, int lineStep, int pageStep, int value, int arg6, QWidget parent) {
+		private void NewQScrollBar(int minValue, int maxValue, int lineStep, int pageStep, int value, Qt.Orientation arg6, QWidget parent) {
 			ProxyQScrollBar().NewQScrollBar(minValue,maxValue,lineStep,pageStep,value,arg6,parent);
 		}
 		[SmokeMethod("setOrientation(Qt::Orientation)")]
-		public virtual void SetOrientation(int arg1) {
+		public virtual void SetOrientation(Qt.Orientation arg1) {
 			ProxyQScrollBar().SetOrientation(arg1);
 		}
 		[SmokeMethod("orientation() const")]
-		public int Orientation() {
+		public Qt.Orientation Orientation() {
 			return ProxyQScrollBar().Orientation();
 		}
 		[SmokeMethod("setTracking(bool)")]
@@ -126,11 +126,11 @@ namespace Qt {
 			ProxyQScrollBar().SetSizePolicy(sp);
 		}
 		[SmokeMethod("setSizePolicy(QSizePolicy::SizeType, QSizePolicy::SizeType, bool)")]
-		public new void SetSizePolicy(int hor, int ver, bool hfw) {
+		public new void SetSizePolicy(QSizePolicy.SizeType hor, QSizePolicy.SizeType ver, bool hfw) {
 			ProxyQScrollBar().SetSizePolicy(hor,ver,hfw);
 		}
 		[SmokeMethod("setSizePolicy(QSizePolicy::SizeType, QSizePolicy::SizeType)")]
-		public new void SetSizePolicy(int hor, int ver) {
+		public new void SetSizePolicy(QSizePolicy.SizeType hor, QSizePolicy.SizeType ver) {
 			ProxyQScrollBar().SetSizePolicy(hor,ver);
 		}
 		[SmokeMethod("minValue() const")]

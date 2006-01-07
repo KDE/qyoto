@@ -31,11 +31,11 @@ namespace Qt {
 			return (IQDockWindowProxy) _staticInterceptor;
 		}
 
-		enum E_Place {
+		public enum Place {
 			InDock = 0,
 			OutsideDock = 1,
 		}
-		enum E_CloseMode {
+		public enum CloseMode {
 			Never = 0,
 			Docked = 1,
 			Undocked = 2,
@@ -49,40 +49,40 @@ namespace Qt {
 		public new virtual string ClassName() {
 			return ProxyQDockWindow().ClassName();
 		}
-		public QDockWindow(int p, QWidget parent, string name, int f) : this((Type) null) {
+		public QDockWindow(QDockWindow.Place p, QWidget parent, string name, int f) : this((Type) null) {
 			CreateQDockWindowProxy();
 			CreateQDockWindowSignalProxy();
 			NewQDockWindow(p,parent,name,f);
 		}
 		[SmokeMethod("QDockWindow(QDockWindow::Place, QWidget*, const char*, Qt::WFlags)")]
-		private void NewQDockWindow(int p, QWidget parent, string name, int f) {
+		private void NewQDockWindow(QDockWindow.Place p, QWidget parent, string name, int f) {
 			ProxyQDockWindow().NewQDockWindow(p,parent,name,f);
 		}
-		public QDockWindow(int p, QWidget parent, string name) : this((Type) null) {
+		public QDockWindow(QDockWindow.Place p, QWidget parent, string name) : this((Type) null) {
 			CreateQDockWindowProxy();
 			CreateQDockWindowSignalProxy();
 			NewQDockWindow(p,parent,name);
 		}
 		[SmokeMethod("QDockWindow(QDockWindow::Place, QWidget*, const char*)")]
-		private void NewQDockWindow(int p, QWidget parent, string name) {
+		private void NewQDockWindow(QDockWindow.Place p, QWidget parent, string name) {
 			ProxyQDockWindow().NewQDockWindow(p,parent,name);
 		}
-		public QDockWindow(int p, QWidget parent) : this((Type) null) {
+		public QDockWindow(QDockWindow.Place p, QWidget parent) : this((Type) null) {
 			CreateQDockWindowProxy();
 			CreateQDockWindowSignalProxy();
 			NewQDockWindow(p,parent);
 		}
 		[SmokeMethod("QDockWindow(QDockWindow::Place, QWidget*)")]
-		private void NewQDockWindow(int p, QWidget parent) {
+		private void NewQDockWindow(QDockWindow.Place p, QWidget parent) {
 			ProxyQDockWindow().NewQDockWindow(p,parent);
 		}
-		public QDockWindow(int p) : this((Type) null) {
+		public QDockWindow(QDockWindow.Place p) : this((Type) null) {
 			CreateQDockWindowProxy();
 			CreateQDockWindowSignalProxy();
 			NewQDockWindow(p);
 		}
 		[SmokeMethod("QDockWindow(QDockWindow::Place)")]
-		private void NewQDockWindow(int p) {
+		private void NewQDockWindow(QDockWindow.Place p) {
 			ProxyQDockWindow().NewQDockWindow(p);
 		}
 		public QDockWindow() : this((Type) null) {
@@ -130,8 +130,8 @@ namespace Qt {
 			return ProxyQDockWindow().Widget();
 		}
 		[SmokeMethod("place() const")]
-		public int Place() {
-			return ProxyQDockWindow().Place();
+		public QDockWindow.Place place() {
+			return ProxyQDockWindow().place();
 		}
 		[SmokeMethod("area() const")]
 		public QDockArea Area() {
@@ -146,8 +146,8 @@ namespace Qt {
 			return ProxyQDockWindow().IsCloseEnabled();
 		}
 		[SmokeMethod("closeMode() const")]
-		public int CloseMode() {
-			return ProxyQDockWindow().CloseMode();
+		public int closeMode() {
+			return ProxyQDockWindow().closeMode();
 		}
 		[SmokeMethod("setResizeEnabled(bool)")]
 		public virtual void SetResizeEnabled(bool b) {
@@ -230,7 +230,7 @@ namespace Qt {
 			return ProxyQDockWindow().NewLine();
 		}
 		[SmokeMethod("orientation() const")]
-		public int Orientation() {
+		public Qt.Orientation Orientation() {
 			return ProxyQDockWindow().Orientation();
 		}
 		[SmokeMethod("sizeHint() const")]
@@ -278,7 +278,7 @@ namespace Qt {
 		}
 		[Q_SLOT("void setOrientation(Qt::Orientation)")]
 		[SmokeMethod("setOrientation(Qt::Orientation)")]
-		public virtual void SetOrientation(int o) {
+		public virtual void SetOrientation(Qt.Orientation o) {
 			ProxyQDockWindow().SetOrientation(o);
 		}
 		[Q_SLOT("void setCaption(const QString&)")]
@@ -350,9 +350,9 @@ namespace Qt {
 
 	public interface IQDockWindowSignals : IQFrameSignals {
 		[Q_SIGNAL("void orientationChanged(Qt::Orientation)")]
-		void OrientationChanged(int o);
+		void OrientationChanged(Qt.Orientation o);
 		[Q_SIGNAL("void placeChanged(QDockWindow::Place)")]
-		void PlaceChanged(int p);
+		void PlaceChanged(QDockWindow.Place p);
 		[Q_SIGNAL("void visibilityChanged(bool)")]
 		void VisibilityChanged(bool arg1);
 	}

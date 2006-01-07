@@ -46,7 +46,7 @@ namespace Qt {
 			return ProxyQDomText().SplitText(offset);
 		}
 		[SmokeMethod("nodeType() const")]
-		public new int NodeType() {
+		public new QDomNode.NodeType NodeType() {
 			return ProxyQDomText().NodeType();
 		}
 		[SmokeMethod("isText() const")]

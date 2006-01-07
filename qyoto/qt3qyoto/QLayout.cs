@@ -30,7 +30,7 @@ namespace Qt {
 			return (IQLayoutProxy) _staticInterceptor;
 		}
 
-		enum E_ResizeMode {
+		public enum ResizeMode {
 			FreeResize = 0,
 			Minimum = 1,
 			Fixed = 2,
@@ -163,12 +163,12 @@ namespace Qt {
 			ProxyQLayout().Freeze();
 		}
 		[SmokeMethod("setResizeMode(QLayout::ResizeMode)")]
-		public void SetResizeMode(int arg1) {
+		public void SetResizeMode(QLayout.ResizeMode arg1) {
 			ProxyQLayout().SetResizeMode(arg1);
 		}
 		[SmokeMethod("resizeMode() const")]
-		public int ResizeMode() {
-			return ProxyQLayout().ResizeMode();
+		public QLayout.ResizeMode resizeMode() {
+			return ProxyQLayout().resizeMode();
 		}
 		[SmokeMethod("setMenuBar(QMenuBar*)")]
 		public virtual void SetMenuBar(QMenuBar w) {
@@ -223,7 +223,7 @@ namespace Qt {
 			ProxyQLayout().RemoveItem(arg1);
 		}
 		[SmokeMethod("expanding() const")]
-		public int Expanding() {
+		public QSizePolicy.ExpandData Expanding() {
 			return ProxyQLayout().Expanding();
 		}
 		[SmokeMethod("minimumSize() const")]

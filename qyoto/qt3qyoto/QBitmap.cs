@@ -34,12 +34,12 @@ namespace Qt {
 		private void NewQBitmap() {
 			ProxyQBitmap().NewQBitmap();
 		}
-		public QBitmap(int w, int h, bool clear, int arg4) : this((Type) null) {
+		public QBitmap(int w, int h, bool clear, QPixmap.Optimization arg4) : this((Type) null) {
 			CreateQBitmapProxy();
 			NewQBitmap(w,h,clear,arg4);
 		}
 		[SmokeMethod("QBitmap(int, int, bool, QPixmap::Optimization)")]
-		private void NewQBitmap(int w, int h, bool clear, int arg4) {
+		private void NewQBitmap(int w, int h, bool clear, QPixmap.Optimization arg4) {
 			ProxyQBitmap().NewQBitmap(w,h,clear,arg4);
 		}
 		public QBitmap(int w, int h, bool clear) : this((Type) null) {
@@ -58,12 +58,12 @@ namespace Qt {
 		private void NewQBitmap(int w, int h) {
 			ProxyQBitmap().NewQBitmap(w,h);
 		}
-		public QBitmap(QSize arg1, bool clear, int arg3) : this((Type) null) {
+		public QBitmap(QSize arg1, bool clear, QPixmap.Optimization arg3) : this((Type) null) {
 			CreateQBitmapProxy();
 			NewQBitmap(arg1,clear,arg3);
 		}
 		[SmokeMethod("QBitmap(const QSize&, bool, QPixmap::Optimization)")]
-		private void NewQBitmap(QSize arg1, bool clear, int arg3) {
+		private void NewQBitmap(QSize arg1, bool clear, QPixmap.Optimization arg3) {
 			ProxyQBitmap().NewQBitmap(arg1,clear,arg3);
 		}
 		public QBitmap(QSize arg1, bool clear) : this((Type) null) {

@@ -26,7 +26,7 @@ namespace Qt {
 			return (IQSqlCursorProxy) _staticInterceptor;
 		}
 
-		enum E_Mode {
+		public enum Mode {
 			ReadOnly = 0,
 			Insert = 1,
 			Update = 2,
@@ -182,8 +182,8 @@ namespace Qt {
 			ProxyQSqlCursor().SetMode(flags);
 		}
 		[SmokeMethod("mode() const")]
-		public int Mode() {
-			return ProxyQSqlCursor().Mode();
+		public int mode() {
+			return ProxyQSqlCursor().mode();
 		}
 		[SmokeMethod("setCalculated(const QString&, bool)")]
 		public virtual void SetCalculated(string name, bool calculated) {
@@ -427,15 +427,15 @@ namespace Qt {
 			ProxyQSqlCursor().AddBindValue(val);
 		}
 		[SmokeMethod("bindValue(const QString&, const QVariant&, QSql::ParameterType)")]
-		public void BindValue(string placeholder, QVariant val, int type) {
+		public void BindValue(string placeholder, QVariant val, QSql.ParameterType type) {
 			ProxyQSqlCursor().BindValue(placeholder,val,type);
 		}
 		[SmokeMethod("bindValue(int, const QVariant&, QSql::ParameterType)")]
-		public void BindValue(int pos, QVariant val, int type) {
+		public void BindValue(int pos, QVariant val, QSql.ParameterType type) {
 			ProxyQSqlCursor().BindValue(pos,val,type);
 		}
 		[SmokeMethod("addBindValue(const QVariant&, QSql::ParameterType)")]
-		public void AddBindValue(QVariant val, int type) {
+		public void AddBindValue(QVariant val, QSql.ParameterType type) {
 			ProxyQSqlCursor().AddBindValue(val,type);
 		}
 		[SmokeMethod("boundValue(const QString&) const")]

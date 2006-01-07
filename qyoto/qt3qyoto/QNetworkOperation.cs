@@ -38,26 +38,26 @@ namespace Qt {
 		public new virtual string ClassName() {
 			return ProxyQNetworkOperation().ClassName();
 		}
-		public QNetworkOperation(int operation, string arg0, string arg1, string arg2) : this((Type) null) {
+		public QNetworkOperation(QNetworkProtocol.Operation operation, string arg0, string arg1, string arg2) : this((Type) null) {
 			CreateQNetworkOperationProxy();
 			CreateQNetworkOperationSignalProxy();
 			NewQNetworkOperation(operation,arg0,arg1,arg2);
 		}
 		[SmokeMethod("QNetworkOperation(QNetworkProtocol::Operation, const QString&, const QString&, const QString&)")]
-		private void NewQNetworkOperation(int operation, string arg0, string arg1, string arg2) {
+		private void NewQNetworkOperation(QNetworkProtocol.Operation operation, string arg0, string arg1, string arg2) {
 			ProxyQNetworkOperation().NewQNetworkOperation(operation,arg0,arg1,arg2);
 		}
-		public QNetworkOperation(int operation, QByteArray arg0, QByteArray arg1, QByteArray arg2) : this((Type) null) {
+		public QNetworkOperation(QNetworkProtocol.Operation operation, QByteArray arg0, QByteArray arg1, QByteArray arg2) : this((Type) null) {
 			CreateQNetworkOperationProxy();
 			CreateQNetworkOperationSignalProxy();
 			NewQNetworkOperation(operation,arg0,arg1,arg2);
 		}
 		[SmokeMethod("QNetworkOperation(QNetworkProtocol::Operation, const QByteArray&, const QByteArray&, const QByteArray&)")]
-		private void NewQNetworkOperation(int operation, QByteArray arg0, QByteArray arg1, QByteArray arg2) {
+		private void NewQNetworkOperation(QNetworkProtocol.Operation operation, QByteArray arg0, QByteArray arg1, QByteArray arg2) {
 			ProxyQNetworkOperation().NewQNetworkOperation(operation,arg0,arg1,arg2);
 		}
 		[SmokeMethod("setState(QNetworkProtocol::State)")]
-		public void SetState(int state) {
+		public void SetState(QNetworkProtocol.State state) {
 			ProxyQNetworkOperation().SetState(state);
 		}
 		[SmokeMethod("setProtocolDetail(const QString&)")]
@@ -77,11 +77,11 @@ namespace Qt {
 			ProxyQNetworkOperation().SetRawArg(num,arg);
 		}
 		[SmokeMethod("operation() const")]
-		public int Operation() {
+		public QNetworkProtocol.Operation Operation() {
 			return ProxyQNetworkOperation().Operation();
 		}
 		[SmokeMethod("state() const")]
-		public int State() {
+		public QNetworkProtocol.State State() {
 			return ProxyQNetworkOperation().State();
 		}
 		[SmokeMethod("arg(int) const")]

@@ -32,22 +32,22 @@ using System.Collections;
 			return (IQListViewProxy) _staticInterceptor;
 		}
 
-		enum WidthMode {
+		public enum WidthMode {
 			Manual = 0,
 			Maximum = 1,
 		}
-		enum E_SelectionMode {
+		public enum SelectionMode {
 			Single = 0,
 			Multi = 1,
 			Extended = 2,
 			NoSelection = 3,
 		}
-		enum E_ResizeMode {
+		public enum ResizeMode {
 			NoColumn = 0,
 			AllColumns = 1,
 			LastColumn = 2,
 		}
-		enum RenameAction {
+		public enum RenameAction {
 			Accept = 0,
 			Reject = 1,
 		}
@@ -160,11 +160,11 @@ using System.Collections;
 			return ProxyQListView().ColumnWidth(column);
 		}
 		[SmokeMethod("setColumnWidthMode(int, QListView::WidthMode)")]
-		public virtual void SetColumnWidthMode(int column, int arg2) {
+		public virtual void SetColumnWidthMode(int column, QListView.WidthMode arg2) {
 			ProxyQListView().SetColumnWidthMode(column,arg2);
 		}
 		[SmokeMethod("columnWidthMode(int) const")]
-		public int ColumnWidthMode(int column) {
+		public QListView.WidthMode ColumnWidthMode(int column) {
 			return ProxyQListView().ColumnWidthMode(column);
 		}
 		[SmokeMethod("columns() const")]
@@ -212,12 +212,12 @@ using System.Collections;
 			return ProxyQListView().IsMultiSelection();
 		}
 		[SmokeMethod("setSelectionMode(QListView::SelectionMode)")]
-		public void SetSelectionMode(int mode) {
+		public void SetSelectionMode(QListView.SelectionMode mode) {
 			ProxyQListView().SetSelectionMode(mode);
 		}
 		[SmokeMethod("selectionMode() const")]
-		public int SelectionMode() {
-			return ProxyQListView().SelectionMode();
+		public QListView.SelectionMode selectionMode() {
+			return ProxyQListView().selectionMode();
 		}
 		[SmokeMethod("clearSelection()")]
 		public virtual void ClearSelection() {
@@ -308,11 +308,11 @@ using System.Collections;
 			ProxyQListView().SetSortColumn(column);
 		}
 		[SmokeMethod("sortOrder() const")]
-		public int SortOrder() {
+		public Qt.SortOrder SortOrder() {
 			return ProxyQListView().SortOrder();
 		}
 		[SmokeMethod("setSortOrder(Qt::SortOrder)")]
-		public void SetSortOrder(int order) {
+		public void SetSortOrder(Qt.SortOrder order) {
 			ProxyQListView().SetSortOrder(order);
 		}
 		[SmokeMethod("sort()")]
@@ -356,12 +356,12 @@ using System.Collections;
 			return ProxyQListView().ShowToolTips();
 		}
 		[SmokeMethod("setResizeMode(QListView::ResizeMode)")]
-		public virtual void SetResizeMode(int m) {
+		public virtual void SetResizeMode(QListView.ResizeMode m) {
 			ProxyQListView().SetResizeMode(m);
 		}
 		[SmokeMethod("resizeMode() const")]
-		public int ResizeMode() {
-			return ProxyQListView().ResizeMode();
+		public QListView.ResizeMode resizeMode() {
+			return ProxyQListView().resizeMode();
 		}
 		[SmokeMethod("findItem(const QString&, int, Qt::ComparisonFlags) const")]
 		public QListViewItem FindItem(string text, int column, uint compare) {
@@ -372,11 +372,11 @@ using System.Collections;
 			return ProxyQListView().FindItem(text,column);
 		}
 		[SmokeMethod("setDefaultRenameAction(QListView::RenameAction)")]
-		public virtual void SetDefaultRenameAction(int a) {
+		public virtual void SetDefaultRenameAction(QListView.RenameAction a) {
 			ProxyQListView().SetDefaultRenameAction(a);
 		}
 		[SmokeMethod("defaultRenameAction() const")]
-		public int DefaultRenameAction() {
+		public QListView.RenameAction DefaultRenameAction() {
 			return ProxyQListView().DefaultRenameAction();
 		}
 		[SmokeMethod("isRenaming() const")]

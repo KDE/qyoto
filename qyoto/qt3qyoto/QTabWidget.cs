@@ -31,11 +31,11 @@ namespace Qt {
 			return (IQTabWidgetProxy) _staticInterceptor;
 		}
 
-		enum E_TabPosition {
+		public enum TabPosition {
 			Top = 0,
 			Bottom = 1,
 		}
-		enum E_TabShape {
+		public enum TabShape {
 			Rounded = 0,
 			Triangular = 1,
 		}
@@ -136,7 +136,7 @@ namespace Qt {
 			ProxyQTabWidget().SetTabEnabled(arg1,arg2);
 		}
 		[SmokeMethod("setCornerWidget(QWidget*, Qt::Corner)")]
-		public void SetCornerWidget(QWidget w, int corner) {
+		public void SetCornerWidget(QWidget w, Qt.Corner corner) {
 			ProxyQTabWidget().SetCornerWidget(w,corner);
 		}
 		[SmokeMethod("setCornerWidget(QWidget*)")]
@@ -144,7 +144,7 @@ namespace Qt {
 			ProxyQTabWidget().SetCornerWidget(w);
 		}
 		[SmokeMethod("cornerWidget(Qt::Corner) const")]
-		public QWidget CornerWidget(int corner) {
+		public QWidget CornerWidget(Qt.Corner corner) {
 			return ProxyQTabWidget().CornerWidget(corner);
 		}
 		[SmokeMethod("cornerWidget() const")]
@@ -208,19 +208,19 @@ namespace Qt {
 			return ProxyQTabWidget().MinimumSizeHint();
 		}
 		[SmokeMethod("tabPosition() const")]
-		public int TabPosition() {
-			return ProxyQTabWidget().TabPosition();
+		public QTabWidget.TabPosition tabPosition() {
+			return ProxyQTabWidget().tabPosition();
 		}
 		[SmokeMethod("setTabPosition(QTabWidget::TabPosition)")]
-		public void SetTabPosition(int arg1) {
+		public void SetTabPosition(QTabWidget.TabPosition arg1) {
 			ProxyQTabWidget().SetTabPosition(arg1);
 		}
 		[SmokeMethod("tabShape() const")]
-		public int TabShape() {
-			return ProxyQTabWidget().TabShape();
+		public QTabWidget.TabShape tabShape() {
+			return ProxyQTabWidget().tabShape();
 		}
 		[SmokeMethod("setTabShape(QTabWidget::TabShape)")]
-		public void SetTabShape(int s) {
+		public void SetTabShape(QTabWidget.TabShape s) {
 			ProxyQTabWidget().SetTabShape(s);
 		}
 		[SmokeMethod("margin() const")]

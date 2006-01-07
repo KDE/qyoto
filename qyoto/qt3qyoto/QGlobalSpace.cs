@@ -81,12 +81,12 @@ namespace Qt {
 			void QDrawPlainRect(QPainter p, QRect r, QColor arg3, int lineWidth, QBrush fill);
 			void QDrawPlainRect(QPainter p, QRect r, QColor arg3, int lineWidth);
 			void QDrawPlainRect(QPainter p, QRect r, QColor arg3);
-			QRect QItemRect(QPainter p, int gs, int x, int y, int w, int h, int flags, bool enabled, QPixmap pixmap, string text, int len);
-			QRect QItemRect(QPainter p, int gs, int x, int y, int w, int h, int flags, bool enabled, QPixmap pixmap, string text);
-			void QDrawItem(QPainter p, int gs, int x, int y, int w, int h, int flags, QColorGroup g, bool enabled, QPixmap pixmap, string text, int len, QColor penColor);
-			void QDrawItem(QPainter p, int gs, int x, int y, int w, int h, int flags, QColorGroup g, bool enabled, QPixmap pixmap, string text, int len);
-			void QDrawItem(QPainter p, int gs, int x, int y, int w, int h, int flags, QColorGroup g, bool enabled, QPixmap pixmap, string text);
-			void QDrawArrow(QPainter p, int type, int style, bool down, int x, int y, int w, int h, QColorGroup g, bool enabled);
+			QRect QItemRect(QPainter p, Qt.GUIStyle gs, int x, int y, int w, int h, int flags, bool enabled, QPixmap pixmap, string text, int len);
+			QRect QItemRect(QPainter p, Qt.GUIStyle gs, int x, int y, int w, int h, int flags, bool enabled, QPixmap pixmap, string text);
+			void QDrawItem(QPainter p, Qt.GUIStyle gs, int x, int y, int w, int h, int flags, QColorGroup g, bool enabled, QPixmap pixmap, string text, int len, QColor penColor);
+			void QDrawItem(QPainter p, Qt.GUIStyle gs, int x, int y, int w, int h, int flags, QColorGroup g, bool enabled, QPixmap pixmap, string text, int len);
+			void QDrawItem(QPainter p, Qt.GUIStyle gs, int x, int y, int w, int h, int flags, QColorGroup g, bool enabled, QPixmap pixmap, string text);
+			void QDrawArrow(QPainter p, Qt.ArrowType type, Qt.GUIStyle style, bool down, int x, int y, int w, int h, QColorGroup g, bool enabled);
 			QDataStream op_write(QDataStream arg1, QCursor arg2);
 			QDataStream op_read(QDataStream arg1, QCursor arg2);
 			string QAppName();
@@ -140,8 +140,8 @@ namespace Qt {
 			void BitBlt(QImage dst, int dx, int dy, QImage src);
 			QDataStream op_read(QDataStream s, QVariant p);
 			QDataStream op_write(QDataStream s, QVariant p);
-			QDataStream op_read(QDataStream s, int p);
-			QDataStream op_write(QDataStream s, int p);
+			QDataStream op_read(QDataStream s, QVariant.E_Type p);
+			QDataStream op_write(QDataStream s, QVariant.E_Type p);
 			string QGLVersion();
 			bool op_equals(QGLFormat arg1, QGLFormat arg2);
 			QDataStream op_write(QDataStream arg1, QFont arg2);
@@ -215,8 +215,8 @@ namespace Qt {
 			string QInstallPathSysconf();
 			QTextStream op_write(QTextStream arg1, QDockArea arg2);
 			QTextStream op_read(QTextStream arg1, QDockArea arg2);
-			void BitBlt(IQPaintDevice dst, int dx, int dy, IQPaintDevice src, int sx, int sy, int sw, int sh, int arg9, bool ignoreMask);
-			void BitBlt(IQPaintDevice dst, int dx, int dy, IQPaintDevice src, int sx, int sy, int sw, int sh, int arg9);
+			void BitBlt(IQPaintDevice dst, int dx, int dy, IQPaintDevice src, int sx, int sy, int sw, int sh, Qt.RasterOp arg9, bool ignoreMask);
+			void BitBlt(IQPaintDevice dst, int dx, int dy, IQPaintDevice src, int sx, int sy, int sw, int sh, Qt.RasterOp arg9);
 			void BitBlt(IQPaintDevice dst, int dx, int dy, IQPaintDevice src, int sx, int sy, int sw, int sh);
 			void BitBlt(IQPaintDevice dst, int dx, int dy, IQPaintDevice src, int sx, int sy, int sw);
 			void BitBlt(IQPaintDevice dst, int dx, int dy, IQPaintDevice src, int sx, int sy);
@@ -228,8 +228,8 @@ namespace Qt {
 			void BitBlt(IQPaintDevice dst, int dx, int dy, QImage src, int sx, int sy);
 			void BitBlt(IQPaintDevice dst, int dx, int dy, QImage src, int sx);
 			void BitBlt(IQPaintDevice dst, int dx, int dy, QImage src);
-			void BitBlt(IQPaintDevice dst, QPoint dp, IQPaintDevice src, QRect sr, int rop, bool ignoreMask);
-			void BitBlt(IQPaintDevice dst, QPoint dp, IQPaintDevice src, QRect sr, int rop);
+			void BitBlt(IQPaintDevice dst, QPoint dp, IQPaintDevice src, QRect sr, Qt.RasterOp rop, bool ignoreMask);
+			void BitBlt(IQPaintDevice dst, QPoint dp, IQPaintDevice src, QRect sr, Qt.RasterOp rop);
 			void BitBlt(IQPaintDevice dst, QPoint dp, IQPaintDevice src, QRect sr);
 			void BitBlt(IQPaintDevice dst, QPoint dp, IQPaintDevice src);
 			bool op_equals(QRect arg1, QRect arg2);
@@ -565,27 +565,27 @@ namespace Qt {
 			StaticQGlobalSpace().QDrawPlainRect(p,r,arg3);
 		}
 		[SmokeMethod("qItemRect(QPainter*, Qt::GUIStyle, int, int, int, int, int, bool, const QPixmap*, const QString&, int)")]
-		public static QRect QItemRect(QPainter p, int gs, int x, int y, int w, int h, int flags, bool enabled, QPixmap pixmap, string text, int len) {
+		public static QRect QItemRect(QPainter p, Qt.GUIStyle gs, int x, int y, int w, int h, int flags, bool enabled, QPixmap pixmap, string text, int len) {
 			return StaticQGlobalSpace().QItemRect(p,gs,x,y,w,h,flags,enabled,pixmap,text,len);
 		}
 		[SmokeMethod("qItemRect(QPainter*, Qt::GUIStyle, int, int, int, int, int, bool, const QPixmap*, const QString&)")]
-		public static QRect QItemRect(QPainter p, int gs, int x, int y, int w, int h, int flags, bool enabled, QPixmap pixmap, string text) {
+		public static QRect QItemRect(QPainter p, Qt.GUIStyle gs, int x, int y, int w, int h, int flags, bool enabled, QPixmap pixmap, string text) {
 			return StaticQGlobalSpace().QItemRect(p,gs,x,y,w,h,flags,enabled,pixmap,text);
 		}
 		[SmokeMethod("qDrawItem(QPainter*, Qt::GUIStyle, int, int, int, int, int, const QColorGroup&, bool, const QPixmap*, const QString&, int, const QColor*)")]
-		public static void QDrawItem(QPainter p, int gs, int x, int y, int w, int h, int flags, QColorGroup g, bool enabled, QPixmap pixmap, string text, int len, QColor penColor) {
+		public static void QDrawItem(QPainter p, Qt.GUIStyle gs, int x, int y, int w, int h, int flags, QColorGroup g, bool enabled, QPixmap pixmap, string text, int len, QColor penColor) {
 			StaticQGlobalSpace().QDrawItem(p,gs,x,y,w,h,flags,g,enabled,pixmap,text,len,penColor);
 		}
 		[SmokeMethod("qDrawItem(QPainter*, Qt::GUIStyle, int, int, int, int, int, const QColorGroup&, bool, const QPixmap*, const QString&, int)")]
-		public static void QDrawItem(QPainter p, int gs, int x, int y, int w, int h, int flags, QColorGroup g, bool enabled, QPixmap pixmap, string text, int len) {
+		public static void QDrawItem(QPainter p, Qt.GUIStyle gs, int x, int y, int w, int h, int flags, QColorGroup g, bool enabled, QPixmap pixmap, string text, int len) {
 			StaticQGlobalSpace().QDrawItem(p,gs,x,y,w,h,flags,g,enabled,pixmap,text,len);
 		}
 		[SmokeMethod("qDrawItem(QPainter*, Qt::GUIStyle, int, int, int, int, int, const QColorGroup&, bool, const QPixmap*, const QString&)")]
-		public static void QDrawItem(QPainter p, int gs, int x, int y, int w, int h, int flags, QColorGroup g, bool enabled, QPixmap pixmap, string text) {
+		public static void QDrawItem(QPainter p, Qt.GUIStyle gs, int x, int y, int w, int h, int flags, QColorGroup g, bool enabled, QPixmap pixmap, string text) {
 			StaticQGlobalSpace().QDrawItem(p,gs,x,y,w,h,flags,g,enabled,pixmap,text);
 		}
 		[SmokeMethod("qDrawArrow(QPainter*, Qt::ArrowType, Qt::GUIStyle, bool, int, int, int, int, const QColorGroup&, bool)")]
-		public static void QDrawArrow(QPainter p, int type, int style, bool down, int x, int y, int w, int h, QColorGroup g, bool enabled) {
+		public static void QDrawArrow(QPainter p, Qt.ArrowType type, Qt.GUIStyle style, bool down, int x, int y, int w, int h, QColorGroup g, bool enabled) {
 			StaticQGlobalSpace().QDrawArrow(p,type,style,down,x,y,w,h,g,enabled);
 		}
 		///<remarks>**************************************************
@@ -825,11 +825,11 @@ namespace Qt {
 			return StaticQGlobalSpace().op_write(s,p);
 		}
 		[SmokeMethod("operator>>(QDataStream&, QVariant::Type&)")]
-		public static QDataStream op_read(QDataStream s, int p) {
+		public static QDataStream op_read(QDataStream s, QVariant.E_Type p) {
 			return StaticQGlobalSpace().op_read(s,p);
 		}
 		[SmokeMethod("operator<<(QDataStream&, const QVariant::Type)")]
-		public static QDataStream op_write(QDataStream s, int p) {
+		public static QDataStream op_write(QDataStream s, QVariant.E_Type p) {
 			return StaticQGlobalSpace().op_write(s,p);
 		}
 		///<remarks>*************************************************
@@ -1227,11 +1227,11 @@ namespace Qt {
 			return StaticQGlobalSpace().op_read(arg1,arg2);
 		}
 		[SmokeMethod("bitBlt(QPaintDevice*, int, int, const QPaintDevice*, int, int, int, int, Qt::RasterOp, bool)")]
-		public static void BitBlt(IQPaintDevice dst, int dx, int dy, IQPaintDevice src, int sx, int sy, int sw, int sh, int arg9, bool ignoreMask) {
+		public static void BitBlt(IQPaintDevice dst, int dx, int dy, IQPaintDevice src, int sx, int sy, int sw, int sh, Qt.RasterOp arg9, bool ignoreMask) {
 			StaticQGlobalSpace().BitBlt(dst,dx,dy,src,sx,sy,sw,sh,arg9,ignoreMask);
 		}
 		[SmokeMethod("bitBlt(QPaintDevice*, int, int, const QPaintDevice*, int, int, int, int, Qt::RasterOp)")]
-		public static void BitBlt(IQPaintDevice dst, int dx, int dy, IQPaintDevice src, int sx, int sy, int sw, int sh, int arg9) {
+		public static void BitBlt(IQPaintDevice dst, int dx, int dy, IQPaintDevice src, int sx, int sy, int sw, int sh, Qt.RasterOp arg9) {
 			StaticQGlobalSpace().BitBlt(dst,dx,dy,src,sx,sy,sw,sh,arg9);
 		}
 		[SmokeMethod("bitBlt(QPaintDevice*, int, int, const QPaintDevice*, int, int, int, int)")]
@@ -1282,11 +1282,11 @@ namespace Qt {
 		///  Inline functions
 		///**************************************************</remarks>		<short>                                                                                Inline functions                                                                            </short>
 		[SmokeMethod("bitBlt(QPaintDevice*, const QPoint&, const QPaintDevice*, const QRect&, Qt::RasterOp, bool)")]
-		public static void BitBlt(IQPaintDevice dst, QPoint dp, IQPaintDevice src, QRect sr, int rop, bool ignoreMask) {
+		public static void BitBlt(IQPaintDevice dst, QPoint dp, IQPaintDevice src, QRect sr, Qt.RasterOp rop, bool ignoreMask) {
 			StaticQGlobalSpace().BitBlt(dst,dp,src,sr,rop,ignoreMask);
 		}
 		[SmokeMethod("bitBlt(QPaintDevice*, const QPoint&, const QPaintDevice*, const QRect&, Qt::RasterOp)")]
-		public static void BitBlt(IQPaintDevice dst, QPoint dp, IQPaintDevice src, QRect sr, int rop) {
+		public static void BitBlt(IQPaintDevice dst, QPoint dp, IQPaintDevice src, QRect sr, Qt.RasterOp rop) {
 			StaticQGlobalSpace().BitBlt(dst,dp,src,sr,rop);
 		}
 		[SmokeMethod("bitBlt(QPaintDevice*, const QPoint&, const QPaintDevice*, const QRect&)")]

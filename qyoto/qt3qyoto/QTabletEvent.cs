@@ -25,7 +25,7 @@ namespace Qt {
 			return (IQTabletEventProxy) _staticInterceptor;
 		}
 
-		enum TabletDevice {
+		public enum TabletDevice {
 			NoDevice = -1,
 			Puck = 0,
 			Stylus = 1,
@@ -70,7 +70,7 @@ namespace Qt {
 			return ProxyQTabletEvent().GlobalY();
 		}
 		[SmokeMethod("device() const")]
-		public int Device() {
+		public QTabletEvent.TabletDevice Device() {
 			return ProxyQTabletEvent().Device();
 		}
 		[SmokeMethod("isAccepted() const")]

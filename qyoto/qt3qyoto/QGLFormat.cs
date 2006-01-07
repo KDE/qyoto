@@ -136,11 +136,11 @@ namespace Qt {
 			ProxyQGLFormat().SetPlane(plane);
 		}
 		[SmokeMethod("setOption(QGL::FormatOption)")]
-		public void SetOption(int opt) {
+		public void SetOption(QGL.FormatOption opt) {
 			ProxyQGLFormat().SetOption(opt);
 		}
 		[SmokeMethod("testOption(QGL::FormatOption) const")]
-		public bool TestOption(int opt) {
+		public bool TestOption(QGL.FormatOption opt) {
 			return ProxyQGLFormat().TestOption(opt);
 		}
 		[SmokeMethod("defaultFormat()")]

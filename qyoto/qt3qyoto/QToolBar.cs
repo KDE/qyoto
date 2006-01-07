@@ -182,7 +182,7 @@ namespace Qt {
 			return ProxyQToolBar().MinimumSizeHint();
 		}
 		[SmokeMethod("setOrientation(Qt::Orientation)")]
-		public new void SetOrientation(int o) {
+		public new void SetOrientation(Qt.Orientation o) {
 			ProxyQToolBar().SetOrientation(o);
 		}
 		[SmokeMethod("setMinimumSize(int, int)")]

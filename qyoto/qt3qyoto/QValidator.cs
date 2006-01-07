@@ -30,7 +30,7 @@ namespace Qt {
 			return (IQValidatorProxy) _staticInterceptor;
 		}
 
-		enum State {
+		public enum State {
 			Invalid = 0,
 			Intermediate = 1,
 			Valid = Intermediate,

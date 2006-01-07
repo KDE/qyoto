@@ -55,7 +55,7 @@ namespace Qt {
 			ProxyQDomProcessingInstruction().SetData(d);
 		}
 		[SmokeMethod("nodeType() const")]
-		public new int NodeType() {
+		public new QDomNode.NodeType NodeType() {
 			return ProxyQDomProcessingInstruction().NodeType();
 		}
 		[SmokeMethod("isProcessingInstruction() const")]

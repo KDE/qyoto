@@ -31,12 +31,12 @@ namespace Qt {
 			return (IQSocketProxy) _staticInterceptor;
 		}
 
-		enum E_Error {
+		public enum Error {
 			ErrConnectionRefused = 0,
 			ErrHostNotFound = 1,
 			ErrSocketRead = 2,
 		}
-		enum E_State {
+		public enum State {
 			Idle = 0,
 			HostLookup = 1,
 			Connecting = 2,
@@ -80,8 +80,8 @@ namespace Qt {
 			ProxyQSocket().NewQSocket();
 		}
 		[SmokeMethod("state() const")]
-		public int State() {
-			return ProxyQSocket().State();
+		public int state() {
+			return ProxyQSocket().state();
 		}
 		[SmokeMethod("socket() const")]
 		public int Socket() {

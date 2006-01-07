@@ -17,8 +17,8 @@ namespace Qt {
 			bool op_gt(QTime lhs, DateTime d);
 			bool op_gte(QTime lhs, DateTime d);
 			DateTime CurrentTime();
-			DateTime CurrentTime(int arg1);
-			DateTime FromString(string s, int f);
+			DateTime CurrentTime(Qt.TimeSpec arg1);
+			DateTime FromString(string s, Qt.DateFormat f);
 			DateTime FromString(string s);
 			bool IsValid(int h, int m, int s, int ms);
 			bool IsValid(int h, int m, int s);
@@ -97,7 +97,7 @@ namespace Qt {
 			return ProxyQTime().Msec();
 		}
 		[SmokeMethod("toString(Qt::DateFormat) const")]
-		public new string ToString(int f) {
+		public new string ToString(Qt.DateFormat f) {
 			return ProxyQTime().ToString(f);
 		}
 		[SmokeMethod("toString() const")]
@@ -179,11 +179,11 @@ namespace Qt {
 			return StaticQTime().CurrentTime();
 		}
 		[SmokeMethod("currentTime(Qt::TimeSpec)")]
-		public static DateTime CurrentTime(int arg1) {
+		public static DateTime CurrentTime(Qt.TimeSpec arg1) {
 			return StaticQTime().CurrentTime(arg1);
 		}
 		[SmokeMethod("fromString(const QString&, Qt::DateFormat)")]
-		public static DateTime FromString(string s, int f) {
+		public static DateTime FromString(string s, Qt.DateFormat f) {
 			return StaticQTime().FromString(s,f);
 		}
 		[SmokeMethod("fromString(const QString&)")]

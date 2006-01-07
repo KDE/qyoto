@@ -31,7 +31,7 @@ namespace Qt {
 			return (IQEventLoopProxy) _staticInterceptor;
 		}
 
-		enum E_ProcessEvents {
+		public enum ProcessEvents {
 			AllEvents = 0x00,
 			ExcludeUserInput = 0x01,
 			ExcludeSocketNotifiers = 0x02,
@@ -73,12 +73,12 @@ namespace Qt {
 			ProxyQEventLoop().NewQEventLoop();
 		}
 		[SmokeMethod("processEvents(QEventLoop::ProcessEventsFlags, int)")]
-		public void ProcessEvents(uint flags, int maxtime) {
-			ProxyQEventLoop().ProcessEvents(flags,maxtime);
+		public void processEvents(uint flags, int maxtime) {
+			ProxyQEventLoop().processEvents(flags,maxtime);
 		}
 		[SmokeMethod("processEvents(QEventLoop::ProcessEventsFlags)")]
-		public virtual bool ProcessEvents(uint flags) {
-			return ProxyQEventLoop().ProcessEvents(flags);
+		public virtual bool processEvents(uint flags) {
+			return ProxyQEventLoop().processEvents(flags);
 		}
 		[SmokeMethod("hasPendingEvents() const")]
 		public virtual bool HasPendingEvents() {

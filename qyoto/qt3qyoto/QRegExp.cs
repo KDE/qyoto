@@ -32,7 +32,7 @@ namespace Qt {
 			return (IQRegExpProxy) _staticInterceptor;
 		}
 
-		enum CaretMode {
+		public enum CaretMode {
 			CaretAtZero = 0,
 			CaretAtOffset = 1,
 			CaretWontMatch = 2,
@@ -152,7 +152,7 @@ namespace Qt {
 			return ProxyQRegExp().Match(str);
 		}
 		[SmokeMethod("search(const QString&, int, QRegExp::CaretMode) const")]
-		public int Search(string str, int offset, int caretMode) {
+		public int Search(string str, int offset, QRegExp.CaretMode caretMode) {
 			return ProxyQRegExp().Search(str,offset,caretMode);
 		}
 		[SmokeMethod("search(const QString&, int) const")]
@@ -164,7 +164,7 @@ namespace Qt {
 			return ProxyQRegExp().Search(str);
 		}
 		[SmokeMethod("searchRev(const QString&, int, QRegExp::CaretMode) const")]
-		public int SearchRev(string str, int offset, int caretMode) {
+		public int SearchRev(string str, int offset, QRegExp.CaretMode caretMode) {
 			return ProxyQRegExp().SearchRev(str,offset,caretMode);
 		}
 		[SmokeMethod("searchRev(const QString&, int) const")]

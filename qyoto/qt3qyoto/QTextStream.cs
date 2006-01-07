@@ -59,7 +59,7 @@ namespace Qt {
 		public const int scientific = 0x1000;
 		public const int _fixed = 0x2000;
 
-		enum Encoding {
+		public enum Encoding {
 			Locale = 0,
 			Latin1 = 1,
 			Unicode = 2,
@@ -69,7 +69,7 @@ namespace Qt {
 			UnicodeUTF8 = 6,
 		}
 		[SmokeMethod("setEncoding(QTextStream::Encoding)")]
-		public void SetEncoding(int arg1) {
+		public void SetEncoding(QTextStream.Encoding arg1) {
 			ProxyQTextStream().SetEncoding(arg1);
 		}
 		[SmokeMethod("setCodec(QTextCodec*)")]

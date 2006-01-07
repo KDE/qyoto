@@ -34,7 +34,7 @@ namespace Qt {
 			return (IQTranslatorMessageProxy) _staticInterceptor;
 		}
 
-		enum Prefix {
+		public enum Prefix {
 			NoPrefix = 0,
 			Hash = 1,
 			HashContext = 2,
@@ -106,7 +106,7 @@ namespace Qt {
 			return ProxyQTranslatorMessage().Translation();
 		}
 		[SmokeMethod("write(QDataStream&, bool, QTranslatorMessage::Prefix) const")]
-		public void Write(QDataStream s, bool strip, int prefix) {
+		public void Write(QDataStream s, bool strip, QTranslatorMessage.Prefix prefix) {
 			ProxyQTranslatorMessage().Write(s,strip,prefix);
 		}
 		[SmokeMethod("write(QDataStream&, bool) const")]
@@ -118,7 +118,7 @@ namespace Qt {
 			ProxyQTranslatorMessage().Write(s);
 		}
 		[SmokeMethod("commonPrefix(const QTranslatorMessage&) const")]
-		public int CommonPrefix(QTranslatorMessage arg1) {
+		public QTranslatorMessage.Prefix CommonPrefix(QTranslatorMessage arg1) {
 			return ProxyQTranslatorMessage().CommonPrefix(arg1);
 		}
 		[SmokeMethod("operator==(const QTranslatorMessage&) const")]

@@ -46,7 +46,7 @@ namespace Qt {
 			return (IQDataStreamProxy) _staticInterceptor;
 		}
 
-		enum E_ByteOrder {
+		public enum ByteOrder {
 			BigEndian = 0,
 			LittleEndian = 1,
 		}
@@ -95,8 +95,8 @@ namespace Qt {
 			return ProxyQDataStream().Eof();
 		}
 		[SmokeMethod("byteOrder() const")]
-		public int ByteOrder() {
-			return ProxyQDataStream().ByteOrder();
+		public int byteOrder() {
+			return ProxyQDataStream().byteOrder();
 		}
 		[SmokeMethod("setByteOrder(int)")]
 		public void SetByteOrder(int arg1) {

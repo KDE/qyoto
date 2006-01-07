@@ -28,7 +28,7 @@ namespace Qt {
 			return (IQPolygonScannerProxy) _staticInterceptor;
 		}
 
-		enum Edge {
+		public enum Edge {
 			Left = 1,
 			Right = 2,
 			Top = 4,
@@ -51,7 +51,7 @@ namespace Qt {
 			ProxyQPolygonScanner().Scan(pa,winding,index,npoints,stitchable);
 		}
 		[SmokeMethod("scan(const QPointArray&, bool, int, int, QPolygonScanner::Edge)")]
-		public void Scan(QPointArray pa, bool winding, int index, int npoints, int edges) {
+		public void Scan(QPointArray pa, bool winding, int index, int npoints, QPolygonScanner.Edge edges) {
 			ProxyQPolygonScanner().Scan(pa,winding,index,npoints,edges);
 		}
 		[SmokeMethod("processSpans(int, QPoint*, int*)")]

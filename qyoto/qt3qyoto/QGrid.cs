@@ -74,40 +74,40 @@ namespace Qt {
 		private void NewQGrid(int n) {
 			ProxyQGrid().NewQGrid(n);
 		}
-		public QGrid(int n, int orient, QWidget parent, string name, int f) : this((Type) null) {
+		public QGrid(int n, Qt.Orientation orient, QWidget parent, string name, int f) : this((Type) null) {
 			CreateQGridProxy();
 			CreateQGridSignalProxy();
 			NewQGrid(n,orient,parent,name,f);
 		}
 		[SmokeMethod("QGrid(int, Qt::Orientation, QWidget*, const char*, Qt::WFlags)")]
-		private void NewQGrid(int n, int orient, QWidget parent, string name, int f) {
+		private void NewQGrid(int n, Qt.Orientation orient, QWidget parent, string name, int f) {
 			ProxyQGrid().NewQGrid(n,orient,parent,name,f);
 		}
-		public QGrid(int n, int orient, QWidget parent, string name) : this((Type) null) {
+		public QGrid(int n, Qt.Orientation orient, QWidget parent, string name) : this((Type) null) {
 			CreateQGridProxy();
 			CreateQGridSignalProxy();
 			NewQGrid(n,orient,parent,name);
 		}
 		[SmokeMethod("QGrid(int, Qt::Orientation, QWidget*, const char*)")]
-		private void NewQGrid(int n, int orient, QWidget parent, string name) {
+		private void NewQGrid(int n, Qt.Orientation orient, QWidget parent, string name) {
 			ProxyQGrid().NewQGrid(n,orient,parent,name);
 		}
-		public QGrid(int n, int orient, QWidget parent) : this((Type) null) {
+		public QGrid(int n, Qt.Orientation orient, QWidget parent) : this((Type) null) {
 			CreateQGridProxy();
 			CreateQGridSignalProxy();
 			NewQGrid(n,orient,parent);
 		}
 		[SmokeMethod("QGrid(int, Qt::Orientation, QWidget*)")]
-		private void NewQGrid(int n, int orient, QWidget parent) {
+		private void NewQGrid(int n, Qt.Orientation orient, QWidget parent) {
 			ProxyQGrid().NewQGrid(n,orient,parent);
 		}
-		public QGrid(int n, int orient) : this((Type) null) {
+		public QGrid(int n, Qt.Orientation orient) : this((Type) null) {
 			CreateQGridProxy();
 			CreateQGridSignalProxy();
 			NewQGrid(n,orient);
 		}
 		[SmokeMethod("QGrid(int, Qt::Orientation)")]
-		private void NewQGrid(int n, int orient) {
+		private void NewQGrid(int n, Qt.Orientation orient) {
 			ProxyQGrid().NewQGrid(n,orient);
 		}
 		[SmokeMethod("setSpacing(int)")]

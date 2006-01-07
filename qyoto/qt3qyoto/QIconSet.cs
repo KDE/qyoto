@@ -11,8 +11,8 @@ namespace Qt {
 		private IntPtr _smokeObject;
  		protected QIconSet(Type dummy) {}
 		interface IQIconSetProxy {
-			void SetIconSize(int which, QSize size);
-			QSize IconSize(int which);
+			void SetIconSize(QIconSet.Size which, QSize size);
+			QSize IconSize(QIconSet.Size which);
 		}
 
 		protected void CreateQIconSetProxy() {
@@ -31,17 +31,17 @@ namespace Qt {
 			return (IQIconSetProxy) _staticInterceptor;
 		}
 
-		enum Size {
+		public enum Size {
 			Automatic = 0,
 			Small = 1,
 			Large = 2,
 		}
-		enum Mode {
+		public enum Mode {
 			Normal = 0,
 			Disabled = 1,
 			Active = 2,
 		}
-		enum State {
+		public enum State {
 			On = 0,
 			Off = 1,
 		}
@@ -53,12 +53,12 @@ namespace Qt {
 		private void NewQIconSet() {
 			ProxyQIconSet().NewQIconSet();
 		}
-		public QIconSet(QPixmap pixmap, int size) : this((Type) null) {
+		public QIconSet(QPixmap pixmap, QIconSet.Size size) : this((Type) null) {
 			CreateQIconSetProxy();
 			NewQIconSet(pixmap,size);
 		}
 		[SmokeMethod("QIconSet(const QPixmap&, QIconSet::Size)")]
-		private void NewQIconSet(QPixmap pixmap, int size) {
+		private void NewQIconSet(QPixmap pixmap, QIconSet.Size size) {
 			ProxyQIconSet().NewQIconSet(pixmap,size);
 		}
 		public QIconSet(QPixmap pixmap) : this((Type) null) {
@@ -86,47 +86,47 @@ namespace Qt {
 			ProxyQIconSet().NewQIconSet(other);
 		}
 		[SmokeMethod("reset(const QPixmap&, QIconSet::Size)")]
-		public void Reset(QPixmap pixmap, int size) {
+		public void Reset(QPixmap pixmap, QIconSet.Size size) {
 			ProxyQIconSet().Reset(pixmap,size);
 		}
 		[SmokeMethod("setPixmap(const QPixmap&, QIconSet::Size, QIconSet::Mode, QIconSet::State)")]
-		public virtual void SetPixmap(QPixmap pixmap, int size, int mode, int state) {
+		public virtual void SetPixmap(QPixmap pixmap, QIconSet.Size size, QIconSet.Mode mode, QIconSet.State state) {
 			ProxyQIconSet().SetPixmap(pixmap,size,mode,state);
 		}
 		[SmokeMethod("setPixmap(const QPixmap&, QIconSet::Size, QIconSet::Mode)")]
-		public virtual void SetPixmap(QPixmap pixmap, int size, int mode) {
+		public virtual void SetPixmap(QPixmap pixmap, QIconSet.Size size, QIconSet.Mode mode) {
 			ProxyQIconSet().SetPixmap(pixmap,size,mode);
 		}
 		[SmokeMethod("setPixmap(const QPixmap&, QIconSet::Size)")]
-		public virtual void SetPixmap(QPixmap pixmap, int size) {
+		public virtual void SetPixmap(QPixmap pixmap, QIconSet.Size size) {
 			ProxyQIconSet().SetPixmap(pixmap,size);
 		}
 		[SmokeMethod("setPixmap(const QString&, QIconSet::Size, QIconSet::Mode, QIconSet::State)")]
-		public virtual void SetPixmap(string fileName, int size, int mode, int state) {
+		public virtual void SetPixmap(string fileName, QIconSet.Size size, QIconSet.Mode mode, QIconSet.State state) {
 			ProxyQIconSet().SetPixmap(fileName,size,mode,state);
 		}
 		[SmokeMethod("setPixmap(const QString&, QIconSet::Size, QIconSet::Mode)")]
-		public virtual void SetPixmap(string fileName, int size, int mode) {
+		public virtual void SetPixmap(string fileName, QIconSet.Size size, QIconSet.Mode mode) {
 			ProxyQIconSet().SetPixmap(fileName,size,mode);
 		}
 		[SmokeMethod("setPixmap(const QString&, QIconSet::Size)")]
-		public virtual void SetPixmap(string fileName, int size) {
+		public virtual void SetPixmap(string fileName, QIconSet.Size size) {
 			ProxyQIconSet().SetPixmap(fileName,size);
 		}
 		[SmokeMethod("pixmap(QIconSet::Size, QIconSet::Mode, QIconSet::State) const")]
-		public QPixmap Pixmap(int size, int mode, int state) {
+		public QPixmap Pixmap(QIconSet.Size size, QIconSet.Mode mode, QIconSet.State state) {
 			return ProxyQIconSet().Pixmap(size,mode,state);
 		}
 		[SmokeMethod("pixmap(QIconSet::Size, QIconSet::Mode) const")]
-		public QPixmap Pixmap(int size, int mode) {
+		public QPixmap Pixmap(QIconSet.Size size, QIconSet.Mode mode) {
 			return ProxyQIconSet().Pixmap(size,mode);
 		}
 		[SmokeMethod("pixmap(QIconSet::Size, bool, QIconSet::State) const")]
-		public QPixmap Pixmap(int size, bool enabled, int state) {
+		public QPixmap Pixmap(QIconSet.Size size, bool enabled, QIconSet.State state) {
 			return ProxyQIconSet().Pixmap(size,enabled,state);
 		}
 		[SmokeMethod("pixmap(QIconSet::Size, bool) const")]
-		public QPixmap Pixmap(int size, bool enabled) {
+		public QPixmap Pixmap(QIconSet.Size size, bool enabled) {
 			return ProxyQIconSet().Pixmap(size,enabled);
 		}
 		[SmokeMethod("pixmap() const")]
@@ -134,11 +134,11 @@ namespace Qt {
 			return ProxyQIconSet().Pixmap();
 		}
 		[SmokeMethod("isGenerated(QIconSet::Size, QIconSet::Mode, QIconSet::State) const")]
-		public bool IsGenerated(int size, int mode, int state) {
+		public bool IsGenerated(QIconSet.Size size, QIconSet.Mode mode, QIconSet.State state) {
 			return ProxyQIconSet().IsGenerated(size,mode,state);
 		}
 		[SmokeMethod("isGenerated(QIconSet::Size, QIconSet::Mode) const")]
-		public bool IsGenerated(int size, int mode) {
+		public bool IsGenerated(QIconSet.Size size, QIconSet.Mode mode) {
 			return ProxyQIconSet().IsGenerated(size,mode);
 		}
 		[SmokeMethod("clearGenerated()")]
@@ -155,11 +155,11 @@ namespace Qt {
 			ProxyQIconSet().Detach();
 		}
 		[SmokeMethod("setIconSize(QIconSet::Size, const QSize&)")]
-		public static void SetIconSize(int which, QSize size) {
+		public static void SetIconSize(QIconSet.Size which, QSize size) {
 			StaticQIconSet().SetIconSize(which,size);
 		}
 		[SmokeMethod("iconSize(QIconSet::Size)")]
-		public static QSize IconSize(int which) {
+		public static QSize IconSize(QIconSet.Size which) {
 			return StaticQIconSet().IconSize(which);
 		}
 		~QIconSet() {

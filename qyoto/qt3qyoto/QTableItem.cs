@@ -26,34 +26,34 @@ namespace Qt {
 			return (IQTableItemProxy) _staticInterceptor;
 		}
 
-		enum E_EditType {
+		public enum EditType {
 			Never = 0,
 			OnTyping = 1,
 			WhenCurrent = 2,
 			Always = 3,
 		}
-		public QTableItem(QTable table, int et) : this((Type) null) {
+		public QTableItem(QTable table, QTableItem.EditType et) : this((Type) null) {
 			CreateQTableItemProxy();
 			NewQTableItem(table,et);
 		}
 		[SmokeMethod("QTableItem(QTable*, QTableItem::EditType)")]
-		private void NewQTableItem(QTable table, int et) {
+		private void NewQTableItem(QTable table, QTableItem.EditType et) {
 			ProxyQTableItem().NewQTableItem(table,et);
 		}
-		public QTableItem(QTable table, int et, string text) : this((Type) null) {
+		public QTableItem(QTable table, QTableItem.EditType et, string text) : this((Type) null) {
 			CreateQTableItemProxy();
 			NewQTableItem(table,et,text);
 		}
 		[SmokeMethod("QTableItem(QTable*, QTableItem::EditType, const QString&)")]
-		private void NewQTableItem(QTable table, int et, string text) {
+		private void NewQTableItem(QTable table, QTableItem.EditType et, string text) {
 			ProxyQTableItem().NewQTableItem(table,et,text);
 		}
-		public QTableItem(QTable table, int et, string text, QPixmap p) : this((Type) null) {
+		public QTableItem(QTable table, QTableItem.EditType et, string text, QPixmap p) : this((Type) null) {
 			CreateQTableItemProxy();
 			NewQTableItem(table,et,text,p);
 		}
 		[SmokeMethod("QTableItem(QTable*, QTableItem::EditType, const QString&, const QPixmap&)")]
-		private void NewQTableItem(QTable table, int et, string text, QPixmap p) {
+		private void NewQTableItem(QTable table, QTableItem.EditType et, string text, QPixmap p) {
 			ProxyQTableItem().NewQTableItem(table,et,text,p);
 		}
 		[SmokeMethod("pixmap() const")]
@@ -89,8 +89,8 @@ namespace Qt {
 			return ProxyQTableItem().WordWrap();
 		}
 		[SmokeMethod("editType() const")]
-		public int EditType() {
-			return ProxyQTableItem().EditType();
+		public QTableItem.EditType editType() {
+			return ProxyQTableItem().editType();
 		}
 		[SmokeMethod("createEditor() const")]
 		public virtual QWidget CreateEditor() {

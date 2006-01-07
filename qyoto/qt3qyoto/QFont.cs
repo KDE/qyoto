@@ -42,7 +42,7 @@ namespace Qt {
 			return (IQFontProxy) _staticInterceptor;
 		}
 
-		enum E_StyleHint {
+		public enum StyleHint {
 			Helvetica = 0,
 			SansSerif = Helvetica,
 			Times = 1,
@@ -54,7 +54,7 @@ namespace Qt {
 			System = 4,
 			AnyStyle = 5,
 		}
-		enum E_StyleStrategy {
+		public enum StyleStrategy {
 			PreferDefault = 0x0001,
 			PreferBitmap = 0x0002,
 			PreferDevice = 0x0004,
@@ -66,14 +66,14 @@ namespace Qt {
 			NoAntialias = 0x0100,
 			OpenGLCompatible = 0x0200,
 		}
-		enum E_Weight {
+		public enum Weight {
 			Light = 25,
 			Normal = 50,
 			DemiBold = 63,
 			Bold = 75,
 			Black = 87,
 		}
-		enum E_Stretch {
+		public enum Stretch {
 			UltraCondensed = 50,
 			ExtraCondensed = 62,
 			Condensed = 75,
@@ -84,7 +84,7 @@ namespace Qt {
 			ExtraExpanded = 150,
 			UltraExpanded = 200,
 		}
-		enum Script {
+		public enum Script {
 			Latin = 0,
 			Greek = 1,
 			Cyrillic = 2,
@@ -234,8 +234,8 @@ namespace Qt {
 			ProxyQFont().SetPixelSizeFloat(arg1);
 		}
 		[SmokeMethod("weight() const")]
-		public int Weight() {
-			return ProxyQFont().Weight();
+		public int weight() {
+			return ProxyQFont().weight();
 		}
 		[SmokeMethod("setWeight(int)")]
 		public void SetWeight(int arg1) {
@@ -290,28 +290,28 @@ namespace Qt {
 			ProxyQFont().SetFixedPitch(arg1);
 		}
 		[SmokeMethod("styleHint() const")]
-		public int StyleHint() {
-			return ProxyQFont().StyleHint();
+		public QFont.StyleHint styleHint() {
+			return ProxyQFont().styleHint();
 		}
 		[SmokeMethod("styleStrategy() const")]
-		public int StyleStrategy() {
-			return ProxyQFont().StyleStrategy();
+		public QFont.StyleStrategy styleStrategy() {
+			return ProxyQFont().styleStrategy();
 		}
 		[SmokeMethod("setStyleHint(QFont::StyleHint, QFont::StyleStrategy)")]
-		public void SetStyleHint(int arg1, int arg2) {
+		public void SetStyleHint(QFont.StyleHint arg1, QFont.StyleStrategy arg2) {
 			ProxyQFont().SetStyleHint(arg1,arg2);
 		}
 		[SmokeMethod("setStyleHint(QFont::StyleHint)")]
-		public void SetStyleHint(int arg1) {
+		public void SetStyleHint(QFont.StyleHint arg1) {
 			ProxyQFont().SetStyleHint(arg1);
 		}
 		[SmokeMethod("setStyleStrategy(QFont::StyleStrategy)")]
-		public void SetStyleStrategy(int s) {
+		public void SetStyleStrategy(QFont.StyleStrategy s) {
 			ProxyQFont().SetStyleStrategy(s);
 		}
 		[SmokeMethod("stretch() const")]
-		public int Stretch() {
-			return ProxyQFont().Stretch();
+		public int stretch() {
+			return ProxyQFont().stretch();
 		}
 		[SmokeMethod("setStretch(int)")]
 		public void SetStretch(int arg1) {

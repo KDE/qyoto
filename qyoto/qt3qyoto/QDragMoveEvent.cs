@@ -25,12 +25,12 @@ namespace Qt {
 			return (IQDragMoveEventProxy) _staticInterceptor;
 		}
 
-		public QDragMoveEvent(QPoint pos, int typ) : this((Type) null) {
+		public QDragMoveEvent(QPoint pos, QEvent.E_Type typ) : this((Type) null) {
 			CreateQDragMoveEventProxy();
 			NewQDragMoveEvent(pos,typ);
 		}
 		[SmokeMethod("QDragMoveEvent(const QPoint&, QEvent::Type)")]
-		private void NewQDragMoveEvent(QPoint pos, int typ) {
+		private void NewQDragMoveEvent(QPoint pos, QEvent.E_Type typ) {
 			ProxyQDragMoveEvent().NewQDragMoveEvent(pos,typ);
 		}
 		public QDragMoveEvent(QPoint pos) : this((Type) null) {

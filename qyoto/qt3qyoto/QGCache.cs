@@ -26,18 +26,18 @@ namespace Qt {
 			return (IQGCacheProxy) _staticInterceptor;
 		}
 
-		enum KeyType {
+		public enum KeyType {
 			StringKey = 0,
 			AsciiKey = 1,
 			IntKey = 2,
 			PtrKey = 3,
 		}
-		public QGCache(int maxCost, uint size, int kt, bool caseSensitive, bool copyKeys) : this((Type) null) {
+		public QGCache(int maxCost, uint size, QGCache.KeyType kt, bool caseSensitive, bool copyKeys) : this((Type) null) {
 			CreateQGCacheProxy();
 			NewQGCache(maxCost,size,kt,caseSensitive,copyKeys);
 		}
 		[SmokeMethod("QGCache(int, uint, QGCache::KeyType, bool, bool)")]
-		private void NewQGCache(int maxCost, uint size, int kt, bool caseSensitive, bool copyKeys) {
+		private void NewQGCache(int maxCost, uint size, QGCache.KeyType kt, bool caseSensitive, bool copyKeys) {
 			ProxyQGCache().NewQGCache(maxCost,size,kt,caseSensitive,copyKeys);
 		}
 		public QGCache(QGCache arg1) : this((Type) null) {

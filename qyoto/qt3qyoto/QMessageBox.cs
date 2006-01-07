@@ -58,8 +58,8 @@ namespace Qt {
 			bool Query(string caption, string text, string yesButtonText, string noButtonText);
 			bool Query(string caption, string text, string yesButtonText);
 			bool Query(string caption, string text);
-			QPixmap StandardIcon(int icon, int arg2);
-			QPixmap StandardIcon(int icon);
+			QPixmap StandardIcon(QMessageBox.Icon icon, Qt.GUIStyle arg2);
+			QPixmap StandardIcon(QMessageBox.Icon icon);
 		}
 
 		protected void CreateQMessageBoxProxy() {
@@ -93,7 +93,7 @@ namespace Qt {
 		public const int Escape = 0x200;
 		public const int FlagMask = 0x300;
 
-		enum E_Icon {
+		public enum Icon {
 			NoIcon = 0,
 			Information = 1,
 			Warning = 2,
@@ -135,49 +135,49 @@ namespace Qt {
 		private void NewQMessageBox() {
 			ProxyQMessageBox().NewQMessageBox();
 		}
-		public QMessageBox(string caption, string text, int icon, int button0, int button1, int button2, QWidget parent, string name, bool modal, int f) : this((Type) null) {
+		public QMessageBox(string caption, string text, QMessageBox.Icon icon, int button0, int button1, int button2, QWidget parent, string name, bool modal, int f) : this((Type) null) {
 			CreateQMessageBoxProxy();
 			CreateQMessageBoxSignalProxy();
 			NewQMessageBox(caption,text,icon,button0,button1,button2,parent,name,modal,f);
 		}
 		[SmokeMethod("QMessageBox(const QString&, const QString&, QMessageBox::Icon, int, int, int, QWidget*, const char*, bool, Qt::WFlags)")]
-		private void NewQMessageBox(string caption, string text, int icon, int button0, int button1, int button2, QWidget parent, string name, bool modal, int f) {
+		private void NewQMessageBox(string caption, string text, QMessageBox.Icon icon, int button0, int button1, int button2, QWidget parent, string name, bool modal, int f) {
 			ProxyQMessageBox().NewQMessageBox(caption,text,icon,button0,button1,button2,parent,name,modal,f);
 		}
-		public QMessageBox(string caption, string text, int icon, int button0, int button1, int button2, QWidget parent, string name, bool modal) : this((Type) null) {
+		public QMessageBox(string caption, string text, QMessageBox.Icon icon, int button0, int button1, int button2, QWidget parent, string name, bool modal) : this((Type) null) {
 			CreateQMessageBoxProxy();
 			CreateQMessageBoxSignalProxy();
 			NewQMessageBox(caption,text,icon,button0,button1,button2,parent,name,modal);
 		}
 		[SmokeMethod("QMessageBox(const QString&, const QString&, QMessageBox::Icon, int, int, int, QWidget*, const char*, bool)")]
-		private void NewQMessageBox(string caption, string text, int icon, int button0, int button1, int button2, QWidget parent, string name, bool modal) {
+		private void NewQMessageBox(string caption, string text, QMessageBox.Icon icon, int button0, int button1, int button2, QWidget parent, string name, bool modal) {
 			ProxyQMessageBox().NewQMessageBox(caption,text,icon,button0,button1,button2,parent,name,modal);
 		}
-		public QMessageBox(string caption, string text, int icon, int button0, int button1, int button2, QWidget parent, string name) : this((Type) null) {
+		public QMessageBox(string caption, string text, QMessageBox.Icon icon, int button0, int button1, int button2, QWidget parent, string name) : this((Type) null) {
 			CreateQMessageBoxProxy();
 			CreateQMessageBoxSignalProxy();
 			NewQMessageBox(caption,text,icon,button0,button1,button2,parent,name);
 		}
 		[SmokeMethod("QMessageBox(const QString&, const QString&, QMessageBox::Icon, int, int, int, QWidget*, const char*)")]
-		private void NewQMessageBox(string caption, string text, int icon, int button0, int button1, int button2, QWidget parent, string name) {
+		private void NewQMessageBox(string caption, string text, QMessageBox.Icon icon, int button0, int button1, int button2, QWidget parent, string name) {
 			ProxyQMessageBox().NewQMessageBox(caption,text,icon,button0,button1,button2,parent,name);
 		}
-		public QMessageBox(string caption, string text, int icon, int button0, int button1, int button2, QWidget parent) : this((Type) null) {
+		public QMessageBox(string caption, string text, QMessageBox.Icon icon, int button0, int button1, int button2, QWidget parent) : this((Type) null) {
 			CreateQMessageBoxProxy();
 			CreateQMessageBoxSignalProxy();
 			NewQMessageBox(caption,text,icon,button0,button1,button2,parent);
 		}
 		[SmokeMethod("QMessageBox(const QString&, const QString&, QMessageBox::Icon, int, int, int, QWidget*)")]
-		private void NewQMessageBox(string caption, string text, int icon, int button0, int button1, int button2, QWidget parent) {
+		private void NewQMessageBox(string caption, string text, QMessageBox.Icon icon, int button0, int button1, int button2, QWidget parent) {
 			ProxyQMessageBox().NewQMessageBox(caption,text,icon,button0,button1,button2,parent);
 		}
-		public QMessageBox(string caption, string text, int icon, int button0, int button1, int button2) : this((Type) null) {
+		public QMessageBox(string caption, string text, QMessageBox.Icon icon, int button0, int button1, int button2) : this((Type) null) {
 			CreateQMessageBoxProxy();
 			CreateQMessageBoxSignalProxy();
 			NewQMessageBox(caption,text,icon,button0,button1,button2);
 		}
 		[SmokeMethod("QMessageBox(const QString&, const QString&, QMessageBox::Icon, int, int, int)")]
-		private void NewQMessageBox(string caption, string text, int icon, int button0, int button1, int button2) {
+		private void NewQMessageBox(string caption, string text, QMessageBox.Icon icon, int button0, int button1, int button2) {
 			ProxyQMessageBox().NewQMessageBox(caption,text,icon,button0,button1,button2);
 		}
 		[SmokeMethod("text() const")]
@@ -189,11 +189,11 @@ namespace Qt {
 			ProxyQMessageBox().SetText(arg1);
 		}
 		[SmokeMethod("icon() const")]
-		public new int IconId() {
+		public new QMessageBox.Icon IconId() {
 			return ProxyQMessageBox().IconId();
 		}
 		[SmokeMethod("setIcon(QMessageBox::Icon)")]
-		public new void SetIcon(int arg1) {
+		public new void SetIcon(QMessageBox.Icon arg1) {
 			ProxyQMessageBox().SetIcon(arg1);
 		}
 		[SmokeMethod("setIcon(const QPixmap&)")]
@@ -221,11 +221,11 @@ namespace Qt {
 			ProxyQMessageBox().AdjustSize();
 		}
 		[SmokeMethod("textFormat() const")]
-		public int TextFormat() {
+		public Qt.TextFormat TextFormat() {
 			return ProxyQMessageBox().TextFormat();
 		}
 		[SmokeMethod("setTextFormat(Qt::TextFormat)")]
-		public void SetTextFormat(int arg1) {
+		public void SetTextFormat(Qt.TextFormat arg1) {
 			ProxyQMessageBox().SetTextFormat(arg1);
 		}
 		[SmokeMethod("tr(const char*, const char*)")]
@@ -429,11 +429,11 @@ namespace Qt {
 			return StaticQMessageBox().Query(caption,text);
 		}
 		[SmokeMethod("standardIcon(QMessageBox::Icon, Qt::GUIStyle)")]
-		public static QPixmap StandardIcon(int icon, int arg2) {
+		public static QPixmap StandardIcon(QMessageBox.Icon icon, Qt.GUIStyle arg2) {
 			return StaticQMessageBox().StandardIcon(icon,arg2);
 		}
 		[SmokeMethod("standardIcon(QMessageBox::Icon)")]
-		public static QPixmap StandardIcon(int icon) {
+		public static QPixmap StandardIcon(QMessageBox.Icon icon) {
 			return StaticQMessageBox().StandardIcon(icon);
 		}
 		[SmokeMethod("resizeEvent(QResizeEvent*)")]

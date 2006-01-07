@@ -67,7 +67,7 @@ namespace Qt {
 			return ProxyQDomDocumentType().InternalSubset();
 		}
 		[SmokeMethod("nodeType() const")]
-		public new int NodeType() {
+		public new QDomNode.NodeType NodeType() {
 			return ProxyQDomDocumentType().NodeType();
 		}
 		[SmokeMethod("isDocumentType() const")]

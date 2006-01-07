@@ -138,11 +138,11 @@ namespace Qt {
 			return ProxyQHeader().IconSet(section);
 		}
 		[SmokeMethod("setOrientation(Qt::Orientation)")]
-		public virtual void SetOrientation(int arg1) {
+		public virtual void SetOrientation(Qt.Orientation arg1) {
 			ProxyQHeader().SetOrientation(arg1);
 		}
 		[SmokeMethod("orientation() const")]
-		public int Orientation() {
+		public Qt.Orientation Orientation() {
 			return ProxyQHeader().Orientation();
 		}
 		[SmokeMethod("setTracking(bool)")]
@@ -294,7 +294,7 @@ namespace Qt {
 			ProxyQHeader().SetSortIndicator(section);
 		}
 		[SmokeMethod("setSortIndicator(int, Qt::SortOrder)")]
-		public void SetSortIndicator(int section, int order) {
+		public void SetSortIndicator(int section, Qt.SortOrder order) {
 			ProxyQHeader().SetSortIndicator(section,order);
 		}
 		[SmokeMethod("sortIndicatorSection() const")]
@@ -302,7 +302,7 @@ namespace Qt {
 			return ProxyQHeader().SortIndicatorSection();
 		}
 		[SmokeMethod("sortIndicatorOrder() const")]
-		public int SortIndicatorOrder() {
+		public Qt.SortOrder SortIndicatorOrder() {
 			return ProxyQHeader().SortIndicatorOrder();
 		}
 		[SmokeMethod("adjustHeaderSize()")]

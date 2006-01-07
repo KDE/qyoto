@@ -11,8 +11,8 @@ namespace Qt {
 		private IntPtr _smokeObject;
  		protected QLocale(Type dummy) {}
 		interface IQLocaleProxy {
-			string LanguageToString(int language);
-			string CountryToString(int country);
+			string LanguageToString(QLocale.Language language);
+			string CountryToString(QLocale.Country country);
 			void SetDefault(QLocale locale);
 			QLocale C();
 			QLocale System();
@@ -34,7 +34,7 @@ namespace Qt {
 			return (IQLocaleProxy) _staticInterceptor;
 		}
 
-		enum E_Language {
+		public enum Language {
 			C = 1,
 			Abkhazian = 2,
 			Afan = 3,
@@ -177,7 +177,7 @@ namespace Qt {
 			Zulu = 140,
 			LastLanguage = Zulu,
 		}
-		enum E_Country {
+		public enum Country {
 			AnyCountry = 0,
 			Afghanistan = 1,
 			Albania = 2,
@@ -437,20 +437,20 @@ namespace Qt {
 		private void NewQLocale(string name) {
 			ProxyQLocale().NewQLocale(name);
 		}
-		public QLocale(int language, int country) : this((Type) null) {
+		public QLocale(QLocale.Language language, QLocale.Country country) : this((Type) null) {
 			CreateQLocaleProxy();
 			NewQLocale(language,country);
 		}
 		[SmokeMethod("QLocale(QLocale::Language, QLocale::Country)")]
-		private void NewQLocale(int language, int country) {
+		private void NewQLocale(QLocale.Language language, QLocale.Country country) {
 			ProxyQLocale().NewQLocale(language,country);
 		}
-		public QLocale(int language) : this((Type) null) {
+		public QLocale(QLocale.Language language) : this((Type) null) {
 			CreateQLocaleProxy();
 			NewQLocale(language);
 		}
 		[SmokeMethod("QLocale(QLocale::Language)")]
-		private void NewQLocale(int language) {
+		private void NewQLocale(QLocale.Language language) {
 			ProxyQLocale().NewQLocale(language);
 		}
 		public QLocale(QLocale other) : this((Type) null) {
@@ -462,12 +462,12 @@ namespace Qt {
 			ProxyQLocale().NewQLocale(other);
 		}
 		[SmokeMethod("language() const")]
-		public int Language() {
-			return ProxyQLocale().Language();
+		public QLocale.Language language() {
+			return ProxyQLocale().language();
 		}
 		[SmokeMethod("country() const")]
-		public int Country() {
-			return ProxyQLocale().Country();
+		public QLocale.Country country() {
+			return ProxyQLocale().country();
 		}
 		[SmokeMethod("name() const")]
 		public string Name() {
@@ -588,11 +588,11 @@ namespace Qt {
 			return ProxyQLocale().ToString(i);
 		}
 		[SmokeMethod("languageToString(QLocale::Language)")]
-		public static string LanguageToString(int language) {
+		public static string LanguageToString(QLocale.Language language) {
 			return StaticQLocale().LanguageToString(language);
 		}
 		[SmokeMethod("countryToString(QLocale::Country)")]
-		public static string CountryToString(int country) {
+		public static string CountryToString(QLocale.Country country) {
 			return StaticQLocale().CountryToString(country);
 		}
 		[SmokeMethod("setDefault(const QLocale&)")]

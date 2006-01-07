@@ -307,7 +307,9 @@ namespace Qt {
 						args[i] = stackPtr[i+1].s_short;
 					} else if (parameters[i].ParameterType == typeof(ushort)) {
 						args[i] = stackPtr[i+1].s_ushort;
-					} else if (parameters[i].ParameterType == typeof(int)) {
+					} else if (	parameters[i].ParameterType == typeof(int) 
+								|| parameters[i].ParameterType.IsEnum ) 
+					{
 						args[i] = stackPtr[i+1].s_int;
 					} else if (parameters[i].ParameterType == typeof(uint)) {
 						args[i] = stackPtr[i+1].s_uint;
@@ -341,7 +343,7 @@ namespace Qt {
 					stackPtr[0].s_short = (short) returnValue;
 				} else if (returnType == typeof(ushort)) {
 					stackPtr[0].s_ushort = (ushort) returnValue;
-				} else if (returnType == typeof(int)) {
+				} else if (returnType == typeof(int) || returnType.IsEnum) {
 					stackPtr[0].s_int = (int) returnValue;
 				} else if (returnType == typeof(uint)) {
 					stackPtr[0].s_uint = (uint) returnValue;
@@ -475,6 +477,7 @@ namespace Qt {
 					{
 						mungedName += "?";
 					} else if (	types[i].IsPrimitive 
+								|| types[i].IsEnum
 								|| types[i] == typeof(System.String) 
 								|| types[i] == typeof(System.Text.StringBuilder) ) 
 					{
@@ -487,7 +490,7 @@ namespace Qt {
 				methods = FindMethod(mungedName);
 				if (methods.Count == 0) {
 #if DEBUG
-					Console.WriteLine("LEAVE Invoke() ** Missing method **");
+					Console.WriteLine("LEAVE Invoke() ** Missing method ** {0}", mungedName);
 #endif
 					return returnMessage;
 				}
@@ -507,7 +510,7 @@ namespace Qt {
 						stack[i+1].s_short = (short) callMessage.Args[i];
 					} else if (types[i] == typeof(ushort)) {
 						stack[i+1].s_ushort = (ushort) callMessage.Args[i];
-					} else if (types[i] == typeof(int)) {
+					} else if (types[i] == typeof(int) || types[i].IsEnum) {
 						stack[i+1].s_int = (int) callMessage.Args[i];
 					} else if (types[i] == typeof(uint)) {
 						stack[i+1].s_uint = (uint) callMessage.Args[i];
@@ -547,7 +550,7 @@ namespace Qt {
 						returnValue.ReturnValue = stack[0].s_short;
 					} else if (returnType == typeof(ushort)) {
 						returnValue.ReturnValue = stack[0].s_ushort;
-					} else if (returnType == typeof(int)) {
+					} else if (returnType == typeof(int) || returnType.IsEnum) {
 						returnValue.ReturnValue = stack[0].s_int;
 					} else if (returnType == typeof(uint)) {
 						returnValue.ReturnValue = stack[0].s_uint;
@@ -617,7 +620,7 @@ namespace Qt {
 						stack[i+1].s_short = (short) callMessage.Args[i];
 					} else if (types[i] == typeof(ushort)) {
 						stack[i+1].s_ushort = (ushort) callMessage.Args[i];
-					} else if (types[i] == typeof(int)) {
+					} else if (types[i] == typeof(int) || types[i].IsEnum) {
 						stack[i+1].s_int = (int) callMessage.Args[i];
 					} else if (types[i] == typeof(uint)) {
 						stack[i+1].s_uint = (uint) callMessage.Args[i];

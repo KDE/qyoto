@@ -26,7 +26,7 @@ namespace Qt {
 			return (IQCanvasItemProxy) _staticInterceptor;
 		}
 
-		enum RttiValues {
+		public enum RttiValues {
 			Rtti_Item = 0,
 			Rtti_Sprite = 1,
 			Rtti_PolygonalItem = 2,

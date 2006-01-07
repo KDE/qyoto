@@ -15,7 +15,7 @@ namespace Qt {
 			QStyleSheet DefaultSheet();
 			void SetDefaultSheet(QStyleSheet arg1);
 			string Escape(string arg1);
-			string ConvertFromPlainText(string arg1, int mode);
+			string ConvertFromPlainText(string arg1, QStyleSheetItem.WhiteSpaceMode mode);
 			string ConvertFromPlainText(string arg1);
 			bool MightBeRichText(string arg1);
 		}
@@ -117,7 +117,7 @@ namespace Qt {
 			return StaticQStyleSheet().Escape(arg1);
 		}
 		[SmokeMethod("convertFromPlainText(const QString&, QStyleSheetItem::WhiteSpaceMode)")]
-		public static string ConvertFromPlainText(string arg1, int mode) {
+		public static string ConvertFromPlainText(string arg1, QStyleSheetItem.WhiteSpaceMode mode) {
 			return StaticQStyleSheet().ConvertFromPlainText(arg1,mode);
 		}
 		[SmokeMethod("convertFromPlainText(const QString&)")]

@@ -50,11 +50,11 @@ namespace Qt {
 		public const int VolatileDC = 0x20000;
 		public const int Qt2Compat = 0x40000;
 
-		enum CoordinateMode {
+		public enum CoordinateMode {
 			CoordDevice = 0,
 			CoordPainter = 1,
 		}
-		enum TextDirection {
+		public enum TextDirection {
 			Auto = 0,
 			RTL = 1,
 			LTR = 2,
@@ -128,7 +128,7 @@ namespace Qt {
 			return ProxyQPainter().IsActive();
 		}
 		[SmokeMethod("flush(const QRegion&, QPainter::CoordinateMode)")]
-		public void Flush(QRegion region, int cm) {
+		public void Flush(QRegion region, QPainter.CoordinateMode cm) {
 			ProxyQPainter().Flush(region,cm);
 		}
 		[SmokeMethod("flush(const QRegion&)")]
@@ -172,7 +172,7 @@ namespace Qt {
 			ProxyQPainter().SetPen(arg1);
 		}
 		[SmokeMethod("setPen(Qt::PenStyle)")]
-		public void SetPen(int arg1) {
+		public void SetPen(Qt.PenStyle arg1) {
 			ProxyQPainter().SetPen(arg1);
 		}
 		[SmokeMethod("setPen(const QColor&)")]
@@ -188,7 +188,7 @@ namespace Qt {
 			ProxyQPainter().SetBrush(arg1);
 		}
 		[SmokeMethod("setBrush(Qt::BrushStyle)")]
-		public void SetBrush(int arg1) {
+		public void SetBrush(Qt.BrushStyle arg1) {
 			ProxyQPainter().SetBrush(arg1);
 		}
 		[SmokeMethod("setBrush(const QColor&)")]
@@ -208,19 +208,19 @@ namespace Qt {
 			ProxyQPainter().SetBackgroundColor(arg1);
 		}
 		[SmokeMethod("backgroundMode() const")]
-		public int BackgroundMode() {
+		public Qt.BGMode BackgroundMode() {
 			return ProxyQPainter().BackgroundMode();
 		}
 		[SmokeMethod("setBackgroundMode(Qt::BGMode)")]
-		public void SetBackgroundMode(int arg1) {
+		public void SetBackgroundMode(Qt.BGMode arg1) {
 			ProxyQPainter().SetBackgroundMode(arg1);
 		}
 		[SmokeMethod("rasterOp() const")]
-		public int RasterOp() {
+		public Qt.RasterOp RasterOp() {
 			return ProxyQPainter().RasterOp();
 		}
 		[SmokeMethod("setRasterOp(Qt::RasterOp)")]
-		public void SetRasterOp(int arg1) {
+		public void SetRasterOp(Qt.RasterOp arg1) {
 			ProxyQPainter().SetRasterOp(arg1);
 		}
 		[SmokeMethod("brushOrigin() const")]
@@ -364,7 +364,7 @@ namespace Qt {
 			return ProxyQPainter().HasClipping();
 		}
 		[SmokeMethod("clipRegion(QPainter::CoordinateMode) const")]
-		public QRegion ClipRegion(int arg1) {
+		public QRegion ClipRegion(QPainter.CoordinateMode arg1) {
 			return ProxyQPainter().ClipRegion(arg1);
 		}
 		[SmokeMethod("clipRegion() const")]
@@ -372,7 +372,7 @@ namespace Qt {
 			return ProxyQPainter().ClipRegion();
 		}
 		[SmokeMethod("setClipRect(const QRect&, QPainter::CoordinateMode)")]
-		public void SetClipRect(QRect arg1, int arg2) {
+		public void SetClipRect(QRect arg1, QPainter.CoordinateMode arg2) {
 			ProxyQPainter().SetClipRect(arg1,arg2);
 		}
 		[SmokeMethod("setClipRect(const QRect&)")]
@@ -380,7 +380,7 @@ namespace Qt {
 			ProxyQPainter().SetClipRect(arg1);
 		}
 		[SmokeMethod("setClipRect(int, int, int, int, QPainter::CoordinateMode)")]
-		public void SetClipRect(int x, int y, int w, int h, int arg5) {
+		public void SetClipRect(int x, int y, int w, int h, QPainter.CoordinateMode arg5) {
 			ProxyQPainter().SetClipRect(x,y,w,h,arg5);
 		}
 		[SmokeMethod("setClipRect(int, int, int, int)")]
@@ -388,7 +388,7 @@ namespace Qt {
 			ProxyQPainter().SetClipRect(x,y,w,h);
 		}
 		[SmokeMethod("setClipRegion(const QRegion&, QPainter::CoordinateMode)")]
-		public void SetClipRegion(QRegion arg1, int arg2) {
+		public void SetClipRegion(QRegion arg1, QPainter.CoordinateMode arg2) {
 			ProxyQPainter().SetClipRegion(arg1,arg2);
 		}
 		[SmokeMethod("setClipRegion(const QRegion&)")]
@@ -704,7 +704,7 @@ namespace Qt {
 			ProxyQPainter().EraseRect(arg1);
 		}
 		[SmokeMethod("drawText(int, int, const QString&, int, QPainter::TextDirection)")]
-		public void DrawText(int x, int y, string arg3, int len, int dir) {
+		public void DrawText(int x, int y, string arg3, int len, QPainter.TextDirection dir) {
 			ProxyQPainter().DrawText(x,y,arg3,len,dir);
 		}
 		[SmokeMethod("drawText(int, int, const QString&, int)")]
@@ -716,7 +716,7 @@ namespace Qt {
 			ProxyQPainter().DrawText(x,y,arg3);
 		}
 		[SmokeMethod("drawText(const QPoint&, const QString&, int, QPainter::TextDirection)")]
-		public void DrawText(QPoint arg1, string arg2, int len, int dir) {
+		public void DrawText(QPoint arg1, string arg2, int len, QPainter.TextDirection dir) {
 			ProxyQPainter().DrawText(arg1,arg2,len,dir);
 		}
 		[SmokeMethod("drawText(const QPoint&, const QString&, int)")]
@@ -728,12 +728,20 @@ namespace Qt {
 			ProxyQPainter().DrawText(arg1,arg2);
 		}
 		[SmokeMethod("drawText(int, int, const QString&, int, int, QPainter::TextDirection)")]
-		public void DrawText(int x, int y, string arg3, int pos, int len, int dir) {
+		public void DrawText(int x, int y, string arg3, int pos, int len, QPainter.TextDirection dir) {
 			ProxyQPainter().DrawText(x,y,arg3,pos,len,dir);
 		}
+		[SmokeMethod("drawText(int, int, const QString&, int, int)")]
+		public void DrawText(int x, int y, string arg3, int pos, int len) {
+			ProxyQPainter().DrawText(x,y,arg3,pos,len);
+		}
 		[SmokeMethod("drawText(const QPoint&, const QString&, int, int, QPainter::TextDirection)")]
-		public void DrawText(QPoint p, string arg2, int pos, int len, int dir) {
+		public void DrawText(QPoint p, string arg2, int pos, int len, QPainter.TextDirection dir) {
 			ProxyQPainter().DrawText(p,arg2,pos,len,dir);
+		}
+		[SmokeMethod("drawText(const QPoint&, const QString&, int, int)")]
+		public void DrawText(QPoint p, string arg2, int pos, int len) {
+			ProxyQPainter().DrawText(p,arg2,pos,len);
 		}
 		// void drawText(int arg1,int arg2,int arg3,int arg4,int arg5,const QString& arg6,int arg7,QRect* arg8,QTextParag** arg9); >>>> NOT CONVERTED
 		[SmokeMethod("drawText(int, int, int, int, int, const QString&, int, QRect*)")]

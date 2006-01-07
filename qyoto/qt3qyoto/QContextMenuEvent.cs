@@ -25,25 +25,25 @@ namespace Qt {
 			return (IQContextMenuEventProxy) _staticInterceptor;
 		}
 
-		enum E_Reason {
+		public enum Reason {
 			Mouse = 0,
 			Keyboard = 1,
 			Other = 2,
 		}
-		public QContextMenuEvent(int reason, QPoint pos, QPoint globalPos, int state) : this((Type) null) {
+		public QContextMenuEvent(QContextMenuEvent.Reason reason, QPoint pos, QPoint globalPos, int state) : this((Type) null) {
 			CreateQContextMenuEventProxy();
 			NewQContextMenuEvent(reason,pos,globalPos,state);
 		}
 		[SmokeMethod("QContextMenuEvent(QContextMenuEvent::Reason, const QPoint&, const QPoint&, int)")]
-		private void NewQContextMenuEvent(int reason, QPoint pos, QPoint globalPos, int state) {
+		private void NewQContextMenuEvent(QContextMenuEvent.Reason reason, QPoint pos, QPoint globalPos, int state) {
 			ProxyQContextMenuEvent().NewQContextMenuEvent(reason,pos,globalPos,state);
 		}
-		public QContextMenuEvent(int reason, QPoint pos, int state) : this((Type) null) {
+		public QContextMenuEvent(QContextMenuEvent.Reason reason, QPoint pos, int state) : this((Type) null) {
 			CreateQContextMenuEventProxy();
 			NewQContextMenuEvent(reason,pos,state);
 		}
 		[SmokeMethod("QContextMenuEvent(QContextMenuEvent::Reason, const QPoint&, int)")]
-		private void NewQContextMenuEvent(int reason, QPoint pos, int state) {
+		private void NewQContextMenuEvent(QContextMenuEvent.Reason reason, QPoint pos, int state) {
 			ProxyQContextMenuEvent().NewQContextMenuEvent(reason,pos,state);
 		}
 		[SmokeMethod("x() const")]
@@ -71,7 +71,7 @@ namespace Qt {
 			return ProxyQContextMenuEvent().GlobalPos();
 		}
 		[SmokeMethod("state() const")]
-		public int State() {
+		public Qt.ButtonState State() {
 			return ProxyQContextMenuEvent().State();
 		}
 		[SmokeMethod("isAccepted() const")]
@@ -95,8 +95,8 @@ namespace Qt {
 			ProxyQContextMenuEvent().Ignore();
 		}
 		[SmokeMethod("reason() const")]
-		public int Reason() {
-			return ProxyQContextMenuEvent().Reason();
+		public QContextMenuEvent.Reason reason() {
+			return ProxyQContextMenuEvent().reason();
 		}
 		~QContextMenuEvent() {
 			DisposeQContextMenuEvent();

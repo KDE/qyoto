@@ -30,12 +30,12 @@ namespace Qt {
 			return (IQSqlFieldProxy) _staticInterceptor;
 		}
 
-		public QSqlField(string fieldName, int type) : this((Type) null) {
+		public QSqlField(string fieldName, QVariant.E_Type type) : this((Type) null) {
 			CreateQSqlFieldProxy();
 			NewQSqlField(fieldName,type);
 		}
 		[SmokeMethod("QSqlField(const QString&, QVariant::Type)")]
-		private void NewQSqlField(string fieldName, int type) {
+		private void NewQSqlField(string fieldName, QVariant.E_Type type) {
 			ProxyQSqlField().NewQSqlField(fieldName,type);
 		}
 		public QSqlField(string fieldName) : this((Type) null) {

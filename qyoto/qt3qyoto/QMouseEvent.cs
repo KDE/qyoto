@@ -25,20 +25,20 @@ namespace Qt {
 			return (IQMouseEventProxy) _staticInterceptor;
 		}
 
-		public QMouseEvent(int type, QPoint pos, int button, int state) : this((Type) null) {
+		public QMouseEvent(QEvent.E_Type type, QPoint pos, int button, int state) : this((Type) null) {
 			CreateQMouseEventProxy();
 			NewQMouseEvent(type,pos,button,state);
 		}
 		[SmokeMethod("QMouseEvent(QEvent::Type, const QPoint&, int, int)")]
-		private void NewQMouseEvent(int type, QPoint pos, int button, int state) {
+		private void NewQMouseEvent(QEvent.E_Type type, QPoint pos, int button, int state) {
 			ProxyQMouseEvent().NewQMouseEvent(type,pos,button,state);
 		}
-		public QMouseEvent(int type, QPoint pos, QPoint globalPos, int button, int state) : this((Type) null) {
+		public QMouseEvent(QEvent.E_Type type, QPoint pos, QPoint globalPos, int button, int state) : this((Type) null) {
 			CreateQMouseEventProxy();
 			NewQMouseEvent(type,pos,globalPos,button,state);
 		}
 		[SmokeMethod("QMouseEvent(QEvent::Type, const QPoint&, const QPoint&, int, int)")]
-		private void NewQMouseEvent(int type, QPoint pos, QPoint globalPos, int button, int state) {
+		private void NewQMouseEvent(QEvent.E_Type type, QPoint pos, QPoint globalPos, int button, int state) {
 			ProxyQMouseEvent().NewQMouseEvent(type,pos,globalPos,button,state);
 		}
 		[SmokeMethod("pos() const")]
@@ -66,15 +66,15 @@ namespace Qt {
 			return ProxyQMouseEvent().GlobalY();
 		}
 		[SmokeMethod("button() const")]
-		public int Button() {
+		public Qt.ButtonState Button() {
 			return ProxyQMouseEvent().Button();
 		}
 		[SmokeMethod("state() const")]
-		public int State() {
+		public Qt.ButtonState State() {
 			return ProxyQMouseEvent().State();
 		}
 		[SmokeMethod("stateAfter() const")]
-		public int StateAfter() {
+		public Qt.ButtonState StateAfter() {
 			return ProxyQMouseEvent().StateAfter();
 		}
 		[SmokeMethod("isAccepted() const")]

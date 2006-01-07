@@ -33,14 +33,14 @@ namespace Qt {
 			return (IQNetworkProtocolProxy) _staticInterceptor;
 		}
 
-		enum State {
+		public enum State {
 			StWaiting = 0,
 			StInProgress = 1,
 			StDone = 2,
 			StFailed = 3,
 			StStopped = 4,
 		}
-		enum Operation {
+		public enum Operation {
 			OpListChildren = 1,
 			OpMkDir = 2,
 			OpMkdir = OpMkDir,
@@ -49,12 +49,12 @@ namespace Qt {
 			OpGet = 32,
 			OpPut = 64,
 		}
-		enum ConnectionState {
+		public enum ConnectionState {
 			ConHostFound = 0,
 			ConConnected = 1,
 			ConClosed = 2,
 		}
-		enum Error {
+		public enum Error {
 			NoError = 0,
 			ErrValid = 1,
 			ErrUnknownProtocol = 2,

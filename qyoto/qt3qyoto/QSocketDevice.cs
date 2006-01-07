@@ -25,16 +25,16 @@ namespace Qt {
 			return (IQSocketDeviceProxy) _staticInterceptor;
 		}
 
-		enum E_Type {
+		public enum E_Type {
 			Stream = 0,
 			Datagram = 1,
 		}
-		enum E_Protocol {
+		public enum Protocol {
 			IPv4 = 0,
 			IPv6 = 1,
 			Unknown = 2,
 		}
-		enum E_Error {
+		public enum Error {
 			NoError = 0,
 			AlreadyBound = 1,
 			Inaccessible = 2,
@@ -47,12 +47,12 @@ namespace Qt {
 			NetworkFailure = 8,
 			UnknownError = 9,
 		}
-		public QSocketDevice(int type) : this((Type) null) {
+		public QSocketDevice(QSocketDevice.E_Type type) : this((Type) null) {
 			CreateQSocketDeviceProxy();
 			NewQSocketDevice(type);
 		}
 		[SmokeMethod("QSocketDevice(QSocketDevice::Type)")]
-		private void NewQSocketDevice(int type) {
+		private void NewQSocketDevice(QSocketDevice.E_Type type) {
 			ProxyQSocketDevice().NewQSocketDevice(type);
 		}
 		public QSocketDevice() : this((Type) null) {
@@ -63,20 +63,20 @@ namespace Qt {
 		private void NewQSocketDevice() {
 			ProxyQSocketDevice().NewQSocketDevice();
 		}
-		public QSocketDevice(int type, int protocol, int dummy) : this((Type) null) {
+		public QSocketDevice(QSocketDevice.E_Type type, QSocketDevice.Protocol protocol, int dummy) : this((Type) null) {
 			CreateQSocketDeviceProxy();
 			NewQSocketDevice(type,protocol,dummy);
 		}
 		[SmokeMethod("QSocketDevice(QSocketDevice::Type, QSocketDevice::Protocol, int)")]
-		private void NewQSocketDevice(int type, int protocol, int dummy) {
+		private void NewQSocketDevice(QSocketDevice.E_Type type, QSocketDevice.Protocol protocol, int dummy) {
 			ProxyQSocketDevice().NewQSocketDevice(type,protocol,dummy);
 		}
-		public QSocketDevice(int socket, int type) : this((Type) null) {
+		public QSocketDevice(int socket, QSocketDevice.E_Type type) : this((Type) null) {
 			CreateQSocketDeviceProxy();
 			NewQSocketDevice(socket,type);
 		}
 		[SmokeMethod("QSocketDevice(int, QSocketDevice::Type)")]
-		private void NewQSocketDevice(int socket, int type) {
+		private void NewQSocketDevice(int socket, QSocketDevice.E_Type type) {
 			ProxyQSocketDevice().NewQSocketDevice(socket,type);
 		}
 		[SmokeMethod("isValid() const")]
@@ -84,15 +84,15 @@ namespace Qt {
 			return ProxyQSocketDevice().IsValid();
 		}
 		[SmokeMethod("protocol() const")]
-		public int Protocol() {
-			return ProxyQSocketDevice().Protocol();
+		public QSocketDevice.Protocol protocol() {
+			return ProxyQSocketDevice().protocol();
 		}
 		[SmokeMethod("socket() const")]
 		public int Socket() {
 			return ProxyQSocketDevice().Socket();
 		}
 		[SmokeMethod("setSocket(int, QSocketDevice::Type)")]
-		public virtual void SetSocket(int socket, int type) {
+		public virtual void SetSocket(int socket, QSocketDevice.E_Type type) {
 			ProxyQSocketDevice().SetSocket(socket,type);
 		}
 		[SmokeMethod("open(int)")]
@@ -224,11 +224,11 @@ namespace Qt {
 			return ProxyQSocketDevice().PeerAddress();
 		}
 		[SmokeMethod("error() const")]
-		public int Error() {
-			return ProxyQSocketDevice().Error();
+		public QSocketDevice.Error error() {
+			return ProxyQSocketDevice().error();
 		}
 		[SmokeMethod("setError(QSocketDevice::Error)")]
-		protected void SetError(int err) {
+		protected void SetError(QSocketDevice.Error err) {
 			ProxyQSocketDevice().SetError(err);
 		}
 		~QSocketDevice() {

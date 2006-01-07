@@ -31,7 +31,7 @@ namespace Qt {
 			return (IQGLProxy) _staticInterceptor;
 		}
 
-		enum FormatOption {
+		public enum FormatOption {
 			DoubleBuffer = 0x0001,
 			DepthBuffer = 0x0002,
 			Rgba = 0x0004,

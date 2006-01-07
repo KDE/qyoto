@@ -30,7 +30,7 @@ namespace Qt {
 			return (IQDockAreaProxy) _staticInterceptor;
 		}
 
-		enum E_HandlePosition {
+		public enum HandlePosition {
 			Normal = 0,
 			Reverse = 1,
 		}
@@ -42,40 +42,40 @@ namespace Qt {
 		public new virtual string ClassName() {
 			return ProxyQDockArea().ClassName();
 		}
-		public QDockArea(int o, int h, QWidget parent, string name) : this((Type) null) {
+		public QDockArea(Qt.Orientation o, QDockArea.HandlePosition h, QWidget parent, string name) : this((Type) null) {
 			CreateQDockAreaProxy();
 			CreateQDockAreaSignalProxy();
 			NewQDockArea(o,h,parent,name);
 		}
 		[SmokeMethod("QDockArea(Qt::Orientation, QDockArea::HandlePosition, QWidget*, const char*)")]
-		private void NewQDockArea(int o, int h, QWidget parent, string name) {
+		private void NewQDockArea(Qt.Orientation o, QDockArea.HandlePosition h, QWidget parent, string name) {
 			ProxyQDockArea().NewQDockArea(o,h,parent,name);
 		}
-		public QDockArea(int o, int h, QWidget parent) : this((Type) null) {
+		public QDockArea(Qt.Orientation o, QDockArea.HandlePosition h, QWidget parent) : this((Type) null) {
 			CreateQDockAreaProxy();
 			CreateQDockAreaSignalProxy();
 			NewQDockArea(o,h,parent);
 		}
 		[SmokeMethod("QDockArea(Qt::Orientation, QDockArea::HandlePosition, QWidget*)")]
-		private void NewQDockArea(int o, int h, QWidget parent) {
+		private void NewQDockArea(Qt.Orientation o, QDockArea.HandlePosition h, QWidget parent) {
 			ProxyQDockArea().NewQDockArea(o,h,parent);
 		}
-		public QDockArea(int o, int h) : this((Type) null) {
+		public QDockArea(Qt.Orientation o, QDockArea.HandlePosition h) : this((Type) null) {
 			CreateQDockAreaProxy();
 			CreateQDockAreaSignalProxy();
 			NewQDockArea(o,h);
 		}
 		[SmokeMethod("QDockArea(Qt::Orientation, QDockArea::HandlePosition)")]
-		private void NewQDockArea(int o, int h) {
+		private void NewQDockArea(Qt.Orientation o, QDockArea.HandlePosition h) {
 			ProxyQDockArea().NewQDockArea(o,h);
 		}
-		public QDockArea(int o) : this((Type) null) {
+		public QDockArea(Qt.Orientation o) : this((Type) null) {
 			CreateQDockAreaProxy();
 			CreateQDockAreaSignalProxy();
 			NewQDockArea(o);
 		}
 		[SmokeMethod("QDockArea(Qt::Orientation)")]
-		private void NewQDockArea(int o) {
+		private void NewQDockArea(Qt.Orientation o) {
 			ProxyQDockArea().NewQDockArea(o);
 		}
 		[SmokeMethod("moveDockWindow(QDockWindow*, const QPoint&, const QRect&, bool)")]
@@ -111,12 +111,12 @@ namespace Qt {
 			ProxyQDockArea().InvalidNextOffset(dw);
 		}
 		[SmokeMethod("orientation() const")]
-		public int Orientation() {
+		public Qt.Orientation Orientation() {
 			return ProxyQDockArea().Orientation();
 		}
 		[SmokeMethod("handlePosition() const")]
-		public int HandlePosition() {
-			return ProxyQDockArea().HandlePosition();
+		public QDockArea.HandlePosition handlePosition() {
+			return ProxyQDockArea().handlePosition();
 		}
 		[SmokeMethod("eventFilter(QObject*, QEvent*)")]
 		public new bool EventFilter(QObject arg1, QEvent arg2) {

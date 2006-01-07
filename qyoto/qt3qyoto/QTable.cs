@@ -31,18 +31,18 @@ namespace Qt {
 			return (IQTableProxy) _staticInterceptor;
 		}
 
-		enum E_SelectionMode {
+		public enum SelectionMode {
 			Single = 0,
 			Multi = 1,
 			SingleRow = 2,
 			MultiRow = 3,
 			NoSelection = 4,
 		}
-		enum E_FocusStyle {
+		public enum FocusStyle {
 			FollowStyle = 0,
 			SpreadSheet = 1,
 		}
-		enum E_EditMode {
+		public enum EditMode {
 			NotEditing = 0,
 			Editing = 1,
 			Replacing = 2,
@@ -118,12 +118,12 @@ namespace Qt {
 			return ProxyQTable().VerticalHeader();
 		}
 		[SmokeMethod("setSelectionMode(QTable::SelectionMode)")]
-		public virtual void SetSelectionMode(int mode) {
+		public virtual void SetSelectionMode(QTable.SelectionMode mode) {
 			ProxyQTable().SetSelectionMode(mode);
 		}
 		[SmokeMethod("selectionMode() const")]
-		public int SelectionMode() {
-			return ProxyQTable().SelectionMode();
+		public QTable.SelectionMode selectionMode() {
+			return ProxyQTable().selectionMode();
 		}
 		[SmokeMethod("setItem(int, int, QTableItem*)")]
 		public virtual void SetItem(int row, int col, QTableItem item) {
@@ -350,12 +350,12 @@ namespace Qt {
 			ProxyQTable().RepaintSelections();
 		}
 		[SmokeMethod("setFocusStyle(QTable::FocusStyle)")]
-		public virtual void SetFocusStyle(int fs) {
+		public virtual void SetFocusStyle(QTable.FocusStyle fs) {
 			ProxyQTable().SetFocusStyle(fs);
 		}
 		[SmokeMethod("focusStyle() const")]
-		public int FocusStyle() {
-			return ProxyQTable().FocusStyle();
+		public QTable.FocusStyle focusStyle() {
+			return ProxyQTable().focusStyle();
 		}
 		[SmokeMethod("updateHeaderStates()")]
 		public void UpdateHeaderStates() {

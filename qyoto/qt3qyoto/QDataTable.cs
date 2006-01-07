@@ -32,7 +32,7 @@ namespace Qt {
 			return (IQDataTableProxy) _staticInterceptor;
 		}
 
-		enum E_Refresh {
+		public enum Refresh {
 			RefreshData = 1,
 			RefreshColumns = 2,
 			RefreshAll = 3,
@@ -157,7 +157,7 @@ namespace Qt {
 			return ProxyQDataTable().FalseText();
 		}
 		[SmokeMethod("dateFormat() const")]
-		public int DateFormat() {
+		public Qt.DateFormat DateFormat() {
 			return ProxyQDataTable().DateFormat();
 		}
 		[SmokeMethod("confirmEdits() const")]
@@ -229,7 +229,7 @@ namespace Qt {
 			ProxyQDataTable().SetFalseText(falseText);
 		}
 		[SmokeMethod("setDateFormat(const Qt::DateFormat)")]
-		public virtual void SetDateFormat(int f) {
+		public virtual void SetDateFormat(Qt.DateFormat f) {
 			ProxyQDataTable().SetDateFormat(f);
 		}
 		[SmokeMethod("setConfirmEdits(bool)")]
@@ -273,8 +273,8 @@ namespace Qt {
 			ProxyQDataTable().SetSort(sort);
 		}
 		[SmokeMethod("refresh(QDataTable::Refresh)")]
-		public void Refresh(int mode) {
-			ProxyQDataTable().Refresh(mode);
+		public void refresh(QDataTable.Refresh mode) {
+			ProxyQDataTable().refresh(mode);
 		}
 		[SmokeMethod("sortColumn(int, bool, bool)")]
 		public new void SortColumn(int col, bool ascending, bool wholeRows) {
@@ -357,8 +357,8 @@ namespace Qt {
 		}
 		[Q_SLOT("void refresh()")]
 		[SmokeMethod("refresh()")]
-		public virtual void Refresh() {
-			ProxyQDataTable().Refresh();
+		public virtual void refresh() {
+			ProxyQDataTable().refresh();
 		}
 		[Q_SLOT("void setColumnWidth(int, int)")]
 		[SmokeMethod("setColumnWidth(int, int)")]
@@ -414,11 +414,11 @@ namespace Qt {
 			return ProxyQDataTable().DeleteCurrent();
 		}
 		[SmokeMethod("confirmEdit(QSql::Op)")]
-		protected virtual int ConfirmEdit(int m) {
+		protected virtual QSql.Confirm ConfirmEdit(QSql.Op m) {
 			return ProxyQDataTable().ConfirmEdit(m);
 		}
 		[SmokeMethod("confirmCancel(QSql::Op)")]
-		protected virtual int ConfirmCancel(int m) {
+		protected virtual QSql.Confirm ConfirmCancel(QSql.Op m) {
 			return ProxyQDataTable().ConfirmCancel(m);
 		}
 		[SmokeMethod("handleError(const QSqlError&)")]
@@ -559,6 +559,6 @@ namespace Qt {
 		[Q_SIGNAL("void beforeDelete(QSqlRecord*)")]
 		void BeforeDelete(QSqlRecord buf);
 		[Q_SIGNAL("void cursorChanged(QSql::Op)")]
-		void CursorChanged(int mode);
+		void CursorChanged(QSql.Op mode);
 	}
 }

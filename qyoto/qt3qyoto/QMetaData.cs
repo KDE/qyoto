@@ -28,7 +28,7 @@ namespace Qt {
 			return (IQMetaDataProxy) _staticInterceptor;
 		}
 
-		enum Access {
+		public enum Access {
 			Private = 0,
 			Protected = 1,
 			Public = 2,

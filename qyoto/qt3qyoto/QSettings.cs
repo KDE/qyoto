@@ -30,16 +30,16 @@ namespace Qt {
 			return (IQSettingsProxy) _staticInterceptor;
 		}
 
-		enum Format {
+		public enum Format {
 			Native = 0,
 			Ini = 1,
 		}
-		enum System {
+		public enum System {
 			Unix = 0,
 			Windows = 1,
 			Mac = 2,
 		}
-		enum Scope {
+		public enum Scope {
 			User = 0,
 			Global = 1,
 		}
@@ -51,12 +51,12 @@ namespace Qt {
 		private void NewQSettings() {
 			ProxyQSettings().NewQSettings();
 		}
-		public QSettings(int format) : this((Type) null) {
+		public QSettings(QSettings.Format format) : this((Type) null) {
 			CreateQSettingsProxy();
 			NewQSettings(format);
 		}
 		[SmokeMethod("QSettings(QSettings::Format)")]
-		private void NewQSettings(int format) {
+		private void NewQSettings(QSettings.Format format) {
 			ProxyQSettings().NewQSettings(format);
 		}
 		[SmokeMethod("writeEntry(const QString&, bool)")]
@@ -160,15 +160,15 @@ namespace Qt {
 			return ProxyQSettings().RemoveEntry(arg1);
 		}
 		[SmokeMethod("insertSearchPath(QSettings::System, const QString&)")]
-		public void InsertSearchPath(int arg1, string arg2) {
+		public void InsertSearchPath(QSettings.System arg1, string arg2) {
 			ProxyQSettings().InsertSearchPath(arg1,arg2);
 		}
 		[SmokeMethod("removeSearchPath(QSettings::System, const QString&)")]
-		public void RemoveSearchPath(int arg1, string arg2) {
+		public void RemoveSearchPath(QSettings.System arg1, string arg2) {
 			ProxyQSettings().RemoveSearchPath(arg1,arg2);
 		}
 		[SmokeMethod("setPath(const QString&, const QString&, QSettings::Scope)")]
-		public void SetPath(string domain, string product, int arg3) {
+		public void SetPath(string domain, string product, QSettings.Scope arg3) {
 			ProxyQSettings().SetPath(domain,product,arg3);
 		}
 		[SmokeMethod("setPath(const QString&, const QString&)")]

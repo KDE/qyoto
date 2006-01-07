@@ -33,14 +33,14 @@ namespace Qt {
 			return (IQUuidProxy) _staticInterceptor;
 		}
 
-		enum E_Variant {
+		public enum Variant {
 			VarUnknown = -1,
 			NCS = 0,
 			DCE = 2,
 			Microsoft = 6,
 			Reserved = 7,
 		}
-		enum E_Version {
+		public enum Version {
 			VerUnknown = -1,
 			Time = 1,
 			EmbeddedPOSIX = 2,
@@ -111,12 +111,12 @@ namespace Qt {
 			return StaticQUuid().op_gt(lhs,other);
 		}
 		[SmokeMethod("variant() const")]
-		public int Variant() {
-			return ProxyQUuid().Variant();
+		public QUuid.Variant variant() {
+			return ProxyQUuid().variant();
 		}
 		[SmokeMethod("version() const")]
-		public int Version() {
-			return ProxyQUuid().Version();
+		public QUuid.Version version() {
+			return ProxyQUuid().version();
 		}
 		[SmokeMethod("createUuid()")]
 		public static QUuid CreateUuid() {

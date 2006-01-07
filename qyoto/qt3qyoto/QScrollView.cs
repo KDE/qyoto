@@ -31,13 +31,13 @@ namespace Qt {
 			return (IQScrollViewProxy) _staticInterceptor;
 		}
 
-		enum E_ResizePolicy {
+		public enum ResizePolicy {
 			Default = 0,
 			Manual = 1,
 			AutoOne = 2,
 			AutoOneFit = 3,
 		}
-		enum ScrollBarMode {
+		public enum ScrollBarMode {
 			Auto = 0,
 			AlwaysOff = 1,
 			AlwaysOn = 2,
@@ -87,12 +87,12 @@ namespace Qt {
 			ProxyQScrollView().NewQScrollView();
 		}
 		[SmokeMethod("setResizePolicy(QScrollView::ResizePolicy)")]
-		public virtual void SetResizePolicy(int arg1) {
+		public virtual void SetResizePolicy(QScrollView.ResizePolicy arg1) {
 			ProxyQScrollView().SetResizePolicy(arg1);
 		}
 		[SmokeMethod("resizePolicy() const")]
-		public int ResizePolicy() {
-			return ProxyQScrollView().ResizePolicy();
+		public QScrollView.ResizePolicy resizePolicy() {
+			return ProxyQScrollView().resizePolicy();
 		}
 		[SmokeMethod("styleChange(QStyle&)")]
 		public new void StyleChange(QStyle arg1) {
@@ -139,19 +139,19 @@ namespace Qt {
 			ProxyQScrollView().ShowChild(child);
 		}
 		[SmokeMethod("vScrollBarMode() const")]
-		public int VScrollBarMode() {
+		public QScrollView.ScrollBarMode VScrollBarMode() {
 			return ProxyQScrollView().VScrollBarMode();
 		}
 		[SmokeMethod("setVScrollBarMode(QScrollView::ScrollBarMode)")]
-		public virtual void SetVScrollBarMode(int arg1) {
+		public virtual void SetVScrollBarMode(QScrollView.ScrollBarMode arg1) {
 			ProxyQScrollView().SetVScrollBarMode(arg1);
 		}
 		[SmokeMethod("hScrollBarMode() const")]
-		public int HScrollBarMode() {
+		public QScrollView.ScrollBarMode HScrollBarMode() {
 			return ProxyQScrollView().HScrollBarMode();
 		}
 		[SmokeMethod("setHScrollBarMode(QScrollView::ScrollBarMode)")]
-		public virtual void SetHScrollBarMode(int arg1) {
+		public virtual void SetHScrollBarMode(QScrollView.ScrollBarMode arg1) {
 			ProxyQScrollView().SetHScrollBarMode(arg1);
 		}
 		[SmokeMethod("cornerWidget() const")]

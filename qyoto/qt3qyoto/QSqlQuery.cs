@@ -31,9 +31,9 @@ namespace Qt {
 			void BindValue(string placeholder, QVariant val);
 			void BindValue(int pos, QVariant val);
 			void AddBindValue(QVariant val);
-			void BindValue(string placeholder, QVariant val, int type);
-			void BindValue(int pos, QVariant val, int type);
-			void AddBindValue(QVariant val, int type);
+			void BindValue(string placeholder, QVariant val, QSql.ParameterType type);
+			void BindValue(int pos, QVariant val, QSql.ParameterType type);
+			void AddBindValue(QVariant val, QSql.ParameterType type);
 			QVariant BoundValue(string placeholder);
 			QVariant BoundValue(int pos);
 			string ExecutedQuery();
@@ -217,15 +217,15 @@ namespace Qt {
 			ProxyQSqlQuery().AddBindValue(val);
 		}
 		[SmokeMethod("bindValue(const QString&, const QVariant&, QSql::ParameterType)")]
-		public void BindValue(string placeholder, QVariant val, int type) {
+		public void BindValue(string placeholder, QVariant val, QSql.ParameterType type) {
 			ProxyQSqlQuery().BindValue(placeholder,val,type);
 		}
 		[SmokeMethod("bindValue(int, const QVariant&, QSql::ParameterType)")]
-		public void BindValue(int pos, QVariant val, int type) {
+		public void BindValue(int pos, QVariant val, QSql.ParameterType type) {
 			ProxyQSqlQuery().BindValue(pos,val,type);
 		}
 		[SmokeMethod("addBindValue(const QVariant&, QSql::ParameterType)")]
-		public void AddBindValue(QVariant val, int type) {
+		public void AddBindValue(QVariant val, QSql.ParameterType type) {
 			ProxyQSqlQuery().AddBindValue(val,type);
 		}
 		[SmokeMethod("boundValue(const QString&) const")]

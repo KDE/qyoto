@@ -32,7 +32,7 @@ namespace Qt {
 			return (IQProcessProxy) _staticInterceptor;
 		}
 
-		enum E_Communication {
+		public enum Communication {
 			Stdin = 0x01,
 			Stdout = 0x02,
 			Stderr = 0x04,
@@ -156,8 +156,8 @@ namespace Qt {
 			ProxyQProcess().SetCommunication(c);
 		}
 		[SmokeMethod("communication() const")]
-		public int Communication() {
-			return ProxyQProcess().Communication();
+		public int communication() {
+			return ProxyQProcess().communication();
 		}
 		[SmokeMethod("start(QStringList*)")]
 		public virtual bool Start(string[] arg1) {

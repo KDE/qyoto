@@ -29,7 +29,7 @@ namespace Qt {
 			return (IQMovieProxy) _staticInterceptor;
 		}
 
-		enum Status {
+		public enum Status {
 			SourceEmpty = -2,
 			UnrecognizedFormat = -1,
 			Paused = 1,

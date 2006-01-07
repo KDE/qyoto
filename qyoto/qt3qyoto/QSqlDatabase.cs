@@ -77,7 +77,7 @@ namespace Qt {
 			return ProxyQSqlDatabase().Tables();
 		}
 		[SmokeMethod("tables(QSql::TableType) const")]
-		public ArrayList Tables(int type) {
+		public ArrayList Tables(QSql.TableType type) {
 			return ProxyQSqlDatabase().Tables(type);
 		}
 		[SmokeMethod("primaryIndex(const QString&) const")]

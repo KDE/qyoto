@@ -6,7 +6,7 @@ namespace Qt {
 	public interface IQIODevice {
 			int Flags();
 			int Mode();
-			int State();
+			int state();
 			bool IsDirectAccess();
 			bool IsSequentialAccess();
 			bool IsCombinedAccess();
@@ -82,8 +82,8 @@ namespace Qt {
 			return ProxyQIODevice().Mode();
 		}
 		[SmokeMethod("state() const")]
-		public int State() {
-			return ProxyQIODevice().State();
+		public int state() {
+			return ProxyQIODevice().state();
 		}
 		[SmokeMethod("isDirectAccess() const")]
 		public bool IsDirectAccess() {

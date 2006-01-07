@@ -22,8 +22,8 @@ namespace Qt {
 			QPixmap GrabWidget(QWidget widget);
 			QWMatrix TrueMatrix(QWMatrix arg1, int w, int h);
 			string ImageFormat(string fileName);
-			int DefaultOptimization();
-			void SetDefaultOptimization(int arg1);
+			QPixmap.Optimization DefaultOptimization();
+			void SetDefaultOptimization(QPixmap.Optimization arg1);
 		}
 
 		protected void CreateQPixmapProxy() {
@@ -42,12 +42,12 @@ namespace Qt {
 			return (IQPixmapProxy) _staticInterceptor;
 		}
 
-		enum ColorMode {
+		public enum ColorMode {
 			Auto = 0,
 			Color = 1,
 			Mono = 2,
 		}
-		enum E_Optimization {
+		public enum Optimization {
 			DefaultOptim = 0,
 			NoOptim = 1,
 			MemoryOptim = NoOptim,
@@ -70,12 +70,12 @@ namespace Qt {
 		private void NewQPixmap(QImage image) {
 			ProxyQPixmap().NewQPixmap(image);
 		}
-		public QPixmap(int w, int h, int depth, int arg4) : this((Type) null) {
+		public QPixmap(int w, int h, int depth, QPixmap.Optimization arg4) : this((Type) null) {
 			CreateQPixmapProxy();
 			NewQPixmap(w,h,depth,arg4);
 		}
 		[SmokeMethod("QPixmap(int, int, int, QPixmap::Optimization)")]
-		private void NewQPixmap(int w, int h, int depth, int arg4) {
+		private void NewQPixmap(int w, int h, int depth, QPixmap.Optimization arg4) {
 			ProxyQPixmap().NewQPixmap(w,h,depth,arg4);
 		}
 		public QPixmap(int w, int h, int depth) : this((Type) null) {
@@ -94,12 +94,12 @@ namespace Qt {
 		private void NewQPixmap(int w, int h) {
 			ProxyQPixmap().NewQPixmap(w,h);
 		}
-		public QPixmap(QSize arg1, int depth, int arg3) : this((Type) null) {
+		public QPixmap(QSize arg1, int depth, QPixmap.Optimization arg3) : this((Type) null) {
 			CreateQPixmapProxy();
 			NewQPixmap(arg1,depth,arg3);
 		}
 		[SmokeMethod("QPixmap(const QSize&, int, QPixmap::Optimization)")]
-		private void NewQPixmap(QSize arg1, int depth, int arg3) {
+		private void NewQPixmap(QSize arg1, int depth, QPixmap.Optimization arg3) {
 			ProxyQPixmap().NewQPixmap(arg1,depth,arg3);
 		}
 		public QPixmap(QSize arg1, int depth) : this((Type) null) {
@@ -118,12 +118,12 @@ namespace Qt {
 		private void NewQPixmap(QSize arg1) {
 			ProxyQPixmap().NewQPixmap(arg1);
 		}
-		public QPixmap(string fileName, string format, int mode) : this((Type) null) {
+		public QPixmap(string fileName, string format, QPixmap.ColorMode mode) : this((Type) null) {
 			CreateQPixmapProxy();
 			NewQPixmap(fileName,format,mode);
 		}
 		[SmokeMethod("QPixmap(const QString&, const char*, QPixmap::ColorMode)")]
-		private void NewQPixmap(string fileName, string format, int mode) {
+		private void NewQPixmap(string fileName, string format, QPixmap.ColorMode mode) {
 			ProxyQPixmap().NewQPixmap(fileName,format,mode);
 		}
 		public QPixmap(string fileName, string format) : this((Type) null) {
@@ -141,6 +141,14 @@ namespace Qt {
 		[SmokeMethod("QPixmap(const QString&)")]
 		private void NewQPixmap(string fileName) {
 			ProxyQPixmap().NewQPixmap(fileName);
+		}
+		public QPixmap(string fileName, string format, int conversion_flags) : this((Type) null) {
+			CreateQPixmapProxy();
+			NewQPixmap(fileName,format,conversion_flags);
+		}
+		[SmokeMethod("QPixmap(const QString&, const char*, int)")]
+		private void NewQPixmap(string fileName, string format, int conversion_flags) {
+			ProxyQPixmap().NewQPixmap(fileName,format,conversion_flags);
 		}
 		public QPixmap(string[] xpm) : this((Type) null) {
 			CreateQPixmapProxy();
@@ -251,15 +259,19 @@ namespace Qt {
 			return ProxyQPixmap().ConvertToImage();
 		}
 		[SmokeMethod("convertFromImage(const QImage&, QPixmap::ColorMode)")]
-		public bool ConvertFromImage(QImage arg1, int mode) {
+		public bool ConvertFromImage(QImage arg1, QPixmap.ColorMode mode) {
 			return ProxyQPixmap().ConvertFromImage(arg1,mode);
 		}
 		[SmokeMethod("convertFromImage(const QImage&)")]
 		public bool ConvertFromImage(QImage arg1) {
 			return ProxyQPixmap().ConvertFromImage(arg1);
 		}
+		[SmokeMethod("convertFromImage(const QImage&, int)")]
+		public bool ConvertFromImage(QImage arg1, int conversion_flags) {
+			return ProxyQPixmap().ConvertFromImage(arg1,conversion_flags);
+		}
 		[SmokeMethod("load(const QString&, const char*, QPixmap::ColorMode)")]
-		public bool Load(string fileName, string format, int mode) {
+		public bool Load(string fileName, string format, QPixmap.ColorMode mode) {
 			return ProxyQPixmap().Load(fileName,format,mode);
 		}
 		[SmokeMethod("load(const QString&, const char*)")]
@@ -270,8 +282,12 @@ namespace Qt {
 		public bool Load(string fileName) {
 			return ProxyQPixmap().Load(fileName);
 		}
+		[SmokeMethod("load(const QString&, const char*, int)")]
+		public bool Load(string fileName, string format, int conversion_flags) {
+			return ProxyQPixmap().Load(fileName,format,conversion_flags);
+		}
 		[SmokeMethod("loadFromData(const uchar*, uint, const char*, QPixmap::ColorMode)")]
-		public bool LoadFromData(char[] buf, uint len, string format, int mode) {
+		public bool LoadFromData(char[] buf, uint len, string format, QPixmap.ColorMode mode) {
 			return ProxyQPixmap().LoadFromData(buf,len,format,mode);
 		}
 		[SmokeMethod("loadFromData(const uchar*, uint, const char*)")]
@@ -281,6 +297,10 @@ namespace Qt {
 		[SmokeMethod("loadFromData(const uchar*, uint)")]
 		public bool LoadFromData(char[] buf, uint len) {
 			return ProxyQPixmap().LoadFromData(buf,len);
+		}
+		[SmokeMethod("loadFromData(const uchar*, uint, const char*, int)")]
+		public bool LoadFromData(char[] buf, uint len, string format, int conversion_flags) {
+			return ProxyQPixmap().LoadFromData(buf,len,format,conversion_flags);
 		}
 		[SmokeMethod("loadFromData(const QByteArray&, const char*, int)")]
 		public bool LoadFromData(QByteArray data, string format, int conversion_flags) {
@@ -315,11 +335,11 @@ namespace Qt {
 			return ProxyQPixmap().SerialNumber();
 		}
 		[SmokeMethod("optimization() const")]
-		public int Optimization() {
-			return ProxyQPixmap().Optimization();
+		public QPixmap.Optimization optimization() {
+			return ProxyQPixmap().optimization();
 		}
 		[SmokeMethod("setOptimization(QPixmap::Optimization)")]
-		public void SetOptimization(int arg1) {
+		public void SetOptimization(QPixmap.Optimization arg1) {
 			ProxyQPixmap().SetOptimization(arg1);
 		}
 		[SmokeMethod("detach()")]
@@ -387,11 +407,11 @@ namespace Qt {
 			return StaticQPixmap().ImageFormat(fileName);
 		}
 		[SmokeMethod("defaultOptimization()")]
-		public static int DefaultOptimization() {
+		public static QPixmap.Optimization DefaultOptimization() {
 			return StaticQPixmap().DefaultOptimization();
 		}
 		[SmokeMethod("setDefaultOptimization(QPixmap::Optimization)")]
-		public static void SetDefaultOptimization(int arg1) {
+		public static void SetDefaultOptimization(QPixmap.Optimization arg1) {
 			StaticQPixmap().SetDefaultOptimization(arg1);
 		}
 		public QPixmap(int w, int h, char[] data, bool isXbitmap) : this((Type) null) {

@@ -25,19 +25,19 @@ namespace Qt {
 			return (IQDropEventProxy) _staticInterceptor;
 		}
 
-		enum E_Action {
+		public enum Action {
 			Copy = 0,
 			Link = 1,
 			Move = 2,
 			Private = 3,
 			UserAction = 100,
 		}
-		public QDropEvent(QPoint pos, int typ) : this((Type) null) {
+		public QDropEvent(QPoint pos, QEvent.E_Type typ) : this((Type) null) {
 			CreateQDropEventProxy();
 			NewQDropEvent(pos,typ);
 		}
 		[SmokeMethod("QDropEvent(const QPoint&, QEvent::Type)")]
-		private void NewQDropEvent(QPoint pos, int typ) {
+		private void NewQDropEvent(QPoint pos, QEvent.E_Type typ) {
 			ProxyQDropEvent().NewQDropEvent(pos,typ);
 		}
 		public QDropEvent(QPoint pos) : this((Type) null) {
@@ -81,12 +81,12 @@ namespace Qt {
 			ProxyQDropEvent().AcceptAction();
 		}
 		[SmokeMethod("setAction(QDropEvent::Action)")]
-		public void SetAction(int a) {
+		public void SetAction(QDropEvent.Action a) {
 			ProxyQDropEvent().SetAction(a);
 		}
 		[SmokeMethod("action() const")]
-		public int Action() {
-			return ProxyQDropEvent().Action();
+		public QDropEvent.Action action() {
+			return ProxyQDropEvent().action();
 		}
 		[SmokeMethod("source() const")]
 		public QWidget Source() {

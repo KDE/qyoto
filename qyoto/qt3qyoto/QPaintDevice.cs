@@ -36,7 +36,7 @@ namespace Qt {
 			return (IQPaintDeviceProxy) _staticInterceptor;
 		}
 
-		enum PDevCmd {
+		public enum PDevCmd {
 			PdcNOP = 0,
 			PdcDrawPoint = 1,
 			PdcDrawFirst = PdcDrawPoint,

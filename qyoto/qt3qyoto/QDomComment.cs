@@ -42,7 +42,7 @@ namespace Qt {
 			ProxyQDomComment().NewQDomComment(x);
 		}
 		[SmokeMethod("nodeType() const")]
-		public new int NodeType() {
+		public new QDomNode.NodeType NodeType() {
 			return ProxyQDomComment().NodeType();
 		}
 		[SmokeMethod("isComment() const")]

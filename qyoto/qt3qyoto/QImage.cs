@@ -14,8 +14,8 @@ namespace Qt {
 		interface IQImageProxy {
 			bool op_equals(QImage lhs, QImage arg1);
 			QImage FromMimeSource(string abs_name);
-			int SystemBitOrder();
-			int SystemByteOrder();
+			QImage.Endian SystemBitOrder();
+			QImage.Endian SystemByteOrder();
 			string ImageFormat(string fileName);
 			ArrayList InputFormats();
 			ArrayList OutputFormats();
@@ -39,12 +39,12 @@ namespace Qt {
 			return (IQImageProxy) _staticInterceptor;
 		}
 
-		enum Endian {
+		public enum Endian {
 			IgnoreEndian = 0,
 			BigEndian = 1,
 			LittleEndian = 2,
 		}
-		enum ScaleMode {
+		public enum ScaleMode {
 			ScaleFree = 0,
 			ScaleMin = 1,
 			ScaleMax = 2,
@@ -57,12 +57,12 @@ namespace Qt {
 		private void NewQImage() {
 			ProxyQImage().NewQImage();
 		}
-		public QImage(int width, int height, int depth, int numColors, int bitOrder) : this((Type) null) {
+		public QImage(int width, int height, int depth, int numColors, QImage.Endian bitOrder) : this((Type) null) {
 			CreateQImageProxy();
 			NewQImage(width,height,depth,numColors,bitOrder);
 		}
 		[SmokeMethod("QImage(int, int, int, int, QImage::Endian)")]
-		private void NewQImage(int width, int height, int depth, int numColors, int bitOrder) {
+		private void NewQImage(int width, int height, int depth, int numColors, QImage.Endian bitOrder) {
 			ProxyQImage().NewQImage(width,height,depth,numColors,bitOrder);
 		}
 		public QImage(int width, int height, int depth, int numColors) : this((Type) null) {
@@ -81,12 +81,12 @@ namespace Qt {
 		private void NewQImage(int width, int height, int depth) {
 			ProxyQImage().NewQImage(width,height,depth);
 		}
-		public QImage(QSize arg1, int depth, int numColors, int bitOrder) : this((Type) null) {
+		public QImage(QSize arg1, int depth, int numColors, QImage.Endian bitOrder) : this((Type) null) {
 			CreateQImageProxy();
 			NewQImage(arg1,depth,numColors,bitOrder);
 		}
 		[SmokeMethod("QImage(const QSize&, int, int, QImage::Endian)")]
-		private void NewQImage(QSize arg1, int depth, int numColors, int bitOrder) {
+		private void NewQImage(QSize arg1, int depth, int numColors, QImage.Endian bitOrder) {
 			ProxyQImage().NewQImage(arg1,depth,numColors,bitOrder);
 		}
 		public QImage(QSize arg1, int depth, int numColors) : this((Type) null) {
@@ -130,12 +130,12 @@ namespace Qt {
 		private void NewQImage(QByteArray data) {
 			ProxyQImage().NewQImage(data);
 		}
-		public QImage(char[] data, int w, int h, int depth, out int colortable, int numColors, int bitOrder) : this((Type) null) {
+		public QImage(char[] data, int w, int h, int depth, out int colortable, int numColors, QImage.Endian bitOrder) : this((Type) null) {
 			CreateQImageProxy();
 			NewQImage(data,w,h,depth,out colortable,numColors,bitOrder);
 		}
 		[SmokeMethod("QImage(uchar*, int, int, int, QRgb*, int, QImage::Endian)")]
-		private void NewQImage(char[] data, int w, int h, int depth, out int colortable, int numColors, int bitOrder) {
+		private void NewQImage(char[] data, int w, int h, int depth, out int colortable, int numColors, QImage.Endian bitOrder) {
 			ProxyQImage().NewQImage(data,w,h,depth,out colortable,numColors,bitOrder);
 		}
 		public QImage(QImage arg1) : this((Type) null) {
@@ -209,7 +209,7 @@ namespace Qt {
 			return ProxyQImage().NumColors();
 		}
 		[SmokeMethod("bitOrder() const")]
-		public int BitOrder() {
+		public QImage.Endian BitOrder() {
 			return ProxyQImage().BitOrder();
 		}
 		[SmokeMethod("color(int) const")]
@@ -265,7 +265,7 @@ namespace Qt {
 			return ProxyQImage().BytesPerLine();
 		}
 		[SmokeMethod("create(int, int, int, int, QImage::Endian)")]
-		public bool Create(int width, int height, int depth, int numColors, int bitOrder) {
+		public bool Create(int width, int height, int depth, int numColors, QImage.Endian bitOrder) {
 			return ProxyQImage().Create(width,height,depth,numColors,bitOrder);
 		}
 		[SmokeMethod("create(int, int, int, int)")]
@@ -277,7 +277,7 @@ namespace Qt {
 			return ProxyQImage().Create(width,height,depth);
 		}
 		[SmokeMethod("create(const QSize&, int, int, QImage::Endian)")]
-		public bool Create(QSize arg1, int depth, int numColors, int bitOrder) {
+		public bool Create(QSize arg1, int depth, int numColors, QImage.Endian bitOrder) {
 			return ProxyQImage().Create(arg1,depth,numColors,bitOrder);
 		}
 		[SmokeMethod("create(const QSize&, int, int)")]
@@ -321,11 +321,11 @@ namespace Qt {
 			return ProxyQImage().ConvertDepth(arg1,conversion_flags);
 		}
 		[SmokeMethod("convertBitOrder(QImage::Endian) const")]
-		public QImage ConvertBitOrder(int arg1) {
+		public QImage ConvertBitOrder(QImage.Endian arg1) {
 			return ProxyQImage().ConvertBitOrder(arg1);
 		}
 		[SmokeMethod("smoothScale(int, int, QImage::ScaleMode) const")]
-		public QImage SmoothScale(int w, int h, int mode) {
+		public QImage SmoothScale(int w, int h, QImage.ScaleMode mode) {
 			return ProxyQImage().SmoothScale(w,h,mode);
 		}
 		[SmokeMethod("smoothScale(int, int) const")]
@@ -333,7 +333,7 @@ namespace Qt {
 			return ProxyQImage().SmoothScale(w,h);
 		}
 		[SmokeMethod("smoothScale(const QSize&, QImage::ScaleMode) const")]
-		public QImage SmoothScale(QSize s, int mode) {
+		public QImage SmoothScale(QSize s, QImage.ScaleMode mode) {
 			return ProxyQImage().SmoothScale(s,mode);
 		}
 		[SmokeMethod("smoothScale(const QSize&) const")]
@@ -341,7 +341,7 @@ namespace Qt {
 			return ProxyQImage().SmoothScale(s);
 		}
 		[SmokeMethod("scale(int, int, QImage::ScaleMode) const")]
-		public QImage Scale(int w, int h, int mode) {
+		public QImage Scale(int w, int h, QImage.ScaleMode mode) {
 			return ProxyQImage().Scale(w,h,mode);
 		}
 		[SmokeMethod("scale(int, int) const")]
@@ -349,7 +349,7 @@ namespace Qt {
 			return ProxyQImage().Scale(w,h);
 		}
 		[SmokeMethod("scale(const QSize&, QImage::ScaleMode) const")]
-		public QImage Scale(QSize s, int mode) {
+		public QImage Scale(QSize s, QImage.ScaleMode mode) {
 			return ProxyQImage().Scale(s,mode);
 		}
 		[SmokeMethod("scale(const QSize&) const")]
@@ -503,11 +503,11 @@ namespace Qt {
 			return StaticQImage().FromMimeSource(abs_name);
 		}
 		[SmokeMethod("systemBitOrder()")]
-		public static int SystemBitOrder() {
+		public static QImage.Endian SystemBitOrder() {
 			return StaticQImage().SystemBitOrder();
 		}
 		[SmokeMethod("systemByteOrder()")]
-		public static int SystemByteOrder() {
+		public static QImage.Endian SystemByteOrder() {
 			return StaticQImage().SystemByteOrder();
 		}
 		[SmokeMethod("imageFormat(const QString&)")]

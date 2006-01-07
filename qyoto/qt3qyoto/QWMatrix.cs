@@ -16,8 +16,8 @@ namespace Qt {
 			QRegion op_mult(QWMatrix lhs, QRect arg1);
 			QRegion op_mult(QWMatrix lhs, QRegion arg1);
 			QPointArray op_mult(QWMatrix lhs, QPointArray a);
-			void SetTransformationMode(int m);
-			int TransformationMode();
+			void SetTransformationMode(QWMatrix.TransformationMode m);
+			QWMatrix.TransformationMode transformationMode();
 		}
 
 		protected void CreateQWMatrixProxy() {
@@ -36,7 +36,7 @@ namespace Qt {
 			return (IQWMatrixProxy) _staticInterceptor;
 		}
 
-		enum E_TransformationMode {
+		public enum TransformationMode {
 			Points = 0,
 			Areas = 1,
 		}
@@ -195,12 +195,12 @@ namespace Qt {
 			return StaticQWMatrix().op_mult(lhs,a);
 		}
 		[SmokeMethod("setTransformationMode(QWMatrix::TransformationMode)")]
-		public static void SetTransformationMode(int m) {
+		public static void SetTransformationMode(QWMatrix.TransformationMode m) {
 			StaticQWMatrix().SetTransformationMode(m);
 		}
 		[SmokeMethod("transformationMode()")]
-		public static int TransformationMode() {
-			return StaticQWMatrix().TransformationMode();
+		public static QWMatrix.TransformationMode transformationMode() {
+			return StaticQWMatrix().transformationMode();
 		}
 		~QWMatrix() {
 			DisposeQWMatrix();

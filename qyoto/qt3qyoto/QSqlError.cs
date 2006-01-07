@@ -29,7 +29,7 @@ namespace Qt {
 			return (IQSqlErrorProxy) _staticInterceptor;
 		}
 
-		enum E_Type {
+		public enum E_Type {
 			None = 0,
 			Connection = 1,
 			Statement = 2,

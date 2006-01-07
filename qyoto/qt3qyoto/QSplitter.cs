@@ -32,7 +32,7 @@ namespace Qt {
 
 		public const int DefaultResizeMode = 3;
 
-		enum ResizeMode {
+		public enum ResizeMode {
 			Stretch = 0,
 			KeepSize = 1,
 			FollowSizeHint = 2,
@@ -73,39 +73,39 @@ namespace Qt {
 		private void NewQSplitter() {
 			ProxyQSplitter().NewQSplitter();
 		}
-		public QSplitter(int arg1, QWidget parent, string name) : this((Type) null) {
+		public QSplitter(Qt.Orientation arg1, QWidget parent, string name) : this((Type) null) {
 			CreateQSplitterProxy();
 			CreateQSplitterSignalProxy();
 			NewQSplitter(arg1,parent,name);
 		}
 		[SmokeMethod("QSplitter(Qt::Orientation, QWidget*, const char*)")]
-		private void NewQSplitter(int arg1, QWidget parent, string name) {
+		private void NewQSplitter(Qt.Orientation arg1, QWidget parent, string name) {
 			ProxyQSplitter().NewQSplitter(arg1,parent,name);
 		}
-		public QSplitter(int arg1, QWidget parent) : this((Type) null) {
+		public QSplitter(Qt.Orientation arg1, QWidget parent) : this((Type) null) {
 			CreateQSplitterProxy();
 			CreateQSplitterSignalProxy();
 			NewQSplitter(arg1,parent);
 		}
 		[SmokeMethod("QSplitter(Qt::Orientation, QWidget*)")]
-		private void NewQSplitter(int arg1, QWidget parent) {
+		private void NewQSplitter(Qt.Orientation arg1, QWidget parent) {
 			ProxyQSplitter().NewQSplitter(arg1,parent);
 		}
-		public QSplitter(int arg1) : this((Type) null) {
+		public QSplitter(Qt.Orientation arg1) : this((Type) null) {
 			CreateQSplitterProxy();
 			CreateQSplitterSignalProxy();
 			NewQSplitter(arg1);
 		}
 		[SmokeMethod("QSplitter(Qt::Orientation)")]
-		private void NewQSplitter(int arg1) {
+		private void NewQSplitter(Qt.Orientation arg1) {
 			ProxyQSplitter().NewQSplitter(arg1);
 		}
 		[SmokeMethod("setOrientation(Qt::Orientation)")]
-		public virtual void SetOrientation(int arg1) {
+		public virtual void SetOrientation(Qt.Orientation arg1) {
 			ProxyQSplitter().SetOrientation(arg1);
 		}
 		[SmokeMethod("orientation() const")]
-		public int Orientation() {
+		public Qt.Orientation Orientation() {
 			return ProxyQSplitter().Orientation();
 		}
 		[SmokeMethod("setChildrenCollapsible(bool)")]
@@ -121,7 +121,7 @@ namespace Qt {
 			ProxyQSplitter().SetCollapsible(w,arg2);
 		}
 		[SmokeMethod("setResizeMode(QWidget*, QSplitter::ResizeMode)")]
-		public virtual void SetResizeMode(QWidget w, int arg2) {
+		public virtual void SetResizeMode(QWidget w, QSplitter.ResizeMode arg2) {
 			ProxyQSplitter().SetResizeMode(w,arg2);
 		}
 		[SmokeMethod("setOpaqueResize(bool)")]

@@ -37,12 +37,12 @@ namespace Qt {
 		private void NewQFontInfo(QFont arg1) {
 			ProxyQFontInfo().NewQFontInfo(arg1);
 		}
-		public QFontInfo(QFont arg1, int arg2) : this((Type) null) {
+		public QFontInfo(QFont arg1, QFont.Script arg2) : this((Type) null) {
 			CreateQFontInfoProxy();
 			NewQFontInfo(arg1,arg2);
 		}
 		[SmokeMethod("QFontInfo(const QFont&, QFont::Script)")]
-		private void NewQFontInfo(QFont arg1, int arg2) {
+		private void NewQFontInfo(QFont arg1, QFont.Script arg2) {
 			ProxyQFontInfo().NewQFontInfo(arg1,arg2);
 		}
 		public QFontInfo(QFontInfo arg1) : this((Type) null) {
@@ -94,7 +94,7 @@ namespace Qt {
 			return ProxyQFontInfo().FixedPitch();
 		}
 		[SmokeMethod("styleHint() const")]
-		public int StyleHint() {
+		public QFont.StyleHint StyleHint() {
 			return ProxyQFontInfo().StyleHint();
 		}
 		[SmokeMethod("rawMode() const")]

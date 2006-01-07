@@ -31,13 +31,13 @@ namespace Qt {
 			return (IQListBoxProxy) _staticInterceptor;
 		}
 
-		enum E_SelectionMode {
+		public enum SelectionMode {
 			Single = 0,
 			Multi = 1,
 			Extended = 2,
 			NoSelection = 3,
 		}
-		enum LayoutMode {
+		public enum LayoutMode {
 			FixedNumber = 0,
 			FitToWidth = 1,
 			FitToHeight = FitToWidth,
@@ -224,12 +224,12 @@ namespace Qt {
 			return ProxyQListBox().MaxItemWidth();
 		}
 		[SmokeMethod("setSelectionMode(QListBox::SelectionMode)")]
-		public virtual void SetSelectionMode(int arg1) {
+		public virtual void SetSelectionMode(QListBox.SelectionMode arg1) {
 			ProxyQListBox().SetSelectionMode(arg1);
 		}
 		[SmokeMethod("selectionMode() const")]
-		public int SelectionMode() {
-			return ProxyQListBox().SelectionMode();
+		public QListBox.SelectionMode selectionMode() {
+			return ProxyQListBox().selectionMode();
 		}
 		[SmokeMethod("setMultiSelection(bool)")]
 		public void SetMultiSelection(bool multi) {
@@ -296,19 +296,27 @@ namespace Qt {
 			return ProxyQListBox().ItemVisible(arg1);
 		}
 		[SmokeMethod("setColumnMode(QListBox::LayoutMode)")]
+		public virtual void SetColumnMode(QListBox.LayoutMode arg1) {
+			ProxyQListBox().SetColumnMode(arg1);
+		}
+		[SmokeMethod("setColumnMode(int)")]
 		public virtual void SetColumnMode(int arg1) {
 			ProxyQListBox().SetColumnMode(arg1);
 		}
 		[SmokeMethod("setRowMode(QListBox::LayoutMode)")]
+		public virtual void SetRowMode(QListBox.LayoutMode arg1) {
+			ProxyQListBox().SetRowMode(arg1);
+		}
+		[SmokeMethod("setRowMode(int)")]
 		public virtual void SetRowMode(int arg1) {
 			ProxyQListBox().SetRowMode(arg1);
 		}
 		[SmokeMethod("columnMode() const")]
-		public int ColumnMode() {
+		public QListBox.LayoutMode ColumnMode() {
 			return ProxyQListBox().ColumnMode();
 		}
 		[SmokeMethod("rowMode() const")]
-		public int RowMode() {
+		public QListBox.LayoutMode RowMode() {
 			return ProxyQListBox().RowMode();
 		}
 		[SmokeMethod("numColumns() const")]

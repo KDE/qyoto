@@ -63,7 +63,7 @@ namespace Qt {
 			ProxyQDomAttr().SetValue(arg1);
 		}
 		[SmokeMethod("nodeType() const")]
-		public new int NodeType() {
+		public new QDomNode.NodeType NodeType() {
 			return ProxyQDomAttr().NodeType();
 		}
 		[SmokeMethod("isAttr() const")]

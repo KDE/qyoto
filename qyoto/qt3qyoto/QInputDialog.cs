@@ -12,11 +12,11 @@ namespace Qt {
 			string Tr(string arg1);
 			string TrUtf8(string arg1, string arg2);
 			string TrUtf8(string arg1);
-			string GetText(string caption, string label, int echo, string text, out bool ok, QWidget parent, string name);
-			string GetText(string caption, string label, int echo, string text, out bool ok, QWidget parent);
-			string GetText(string caption, string label, int echo, string text, out bool ok);
-			string GetText(string caption, string label, int echo, string text);
-			string GetText(string caption, string label, int echo);
+			string GetText(string caption, string label, QLineEdit.EchoMode echo, string text, out bool ok, QWidget parent, string name);
+			string GetText(string caption, string label, QLineEdit.EchoMode echo, string text, out bool ok, QWidget parent);
+			string GetText(string caption, string label, QLineEdit.EchoMode echo, string text, out bool ok);
+			string GetText(string caption, string label, QLineEdit.EchoMode echo, string text);
+			string GetText(string caption, string label, QLineEdit.EchoMode echo);
 			string GetText(string caption, string label);
 			int GetInteger(string caption, string label, int value, int minValue, int maxValue, int step, out bool ok, QWidget parent, string name);
 			int GetInteger(string caption, string label, int value, int minValue, int maxValue, int step, out bool ok, QWidget parent);
@@ -83,23 +83,23 @@ namespace Qt {
 			return StaticQInputDialog().TrUtf8(arg1);
 		}
 		[SmokeMethod("getText(const QString&, const QString&, QLineEdit::EchoMode, const QString&, bool*, QWidget*, const char*)")]
-		public static string GetText(string caption, string label, int echo, string text, out bool ok, QWidget parent, string name) {
+		public static string GetText(string caption, string label, QLineEdit.EchoMode echo, string text, out bool ok, QWidget parent, string name) {
 			return StaticQInputDialog().GetText(caption,label,echo,text,out ok,parent,name);
 		}
 		[SmokeMethod("getText(const QString&, const QString&, QLineEdit::EchoMode, const QString&, bool*, QWidget*)")]
-		public static string GetText(string caption, string label, int echo, string text, out bool ok, QWidget parent) {
+		public static string GetText(string caption, string label, QLineEdit.EchoMode echo, string text, out bool ok, QWidget parent) {
 			return StaticQInputDialog().GetText(caption,label,echo,text,out ok,parent);
 		}
 		[SmokeMethod("getText(const QString&, const QString&, QLineEdit::EchoMode, const QString&, bool*)")]
-		public static string GetText(string caption, string label, int echo, string text, out bool ok) {
+		public static string GetText(string caption, string label, QLineEdit.EchoMode echo, string text, out bool ok) {
 			return StaticQInputDialog().GetText(caption,label,echo,text,out ok);
 		}
 		[SmokeMethod("getText(const QString&, const QString&, QLineEdit::EchoMode, const QString&)")]
-		public static string GetText(string caption, string label, int echo, string text) {
+		public static string GetText(string caption, string label, QLineEdit.EchoMode echo, string text) {
 			return StaticQInputDialog().GetText(caption,label,echo,text);
 		}
 		[SmokeMethod("getText(const QString&, const QString&, QLineEdit::EchoMode)")]
-		public static string GetText(string caption, string label, int echo) {
+		public static string GetText(string caption, string label, QLineEdit.EchoMode echo) {
 			return StaticQInputDialog().GetText(caption,label,echo);
 		}
 		[SmokeMethod("getText(const QString&, const QString&)")]

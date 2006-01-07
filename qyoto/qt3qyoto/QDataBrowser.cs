@@ -32,7 +32,7 @@ namespace Qt {
 			return (IQDataBrowserProxy) _staticInterceptor;
 		}
 
-		enum E_Boundary {
+		public enum Boundary {
 			Unknown = 0,
 			None = 1,
 			BeforeBeginning = 2,
@@ -85,8 +85,8 @@ namespace Qt {
 			ProxyQDataBrowser().NewQDataBrowser();
 		}
 		[SmokeMethod("boundary()")]
-		public int Boundary() {
-			return ProxyQDataBrowser().Boundary();
+		public QDataBrowser.Boundary boundary() {
+			return ProxyQDataBrowser().boundary();
 		}
 		[SmokeMethod("setBoundaryChecking(bool)")]
 		public void SetBoundaryChecking(bool active) {
@@ -293,11 +293,11 @@ namespace Qt {
 			return ProxyQDataBrowser().CurrentEdited();
 		}
 		[SmokeMethod("confirmEdit(QSql::Op)")]
-		protected virtual int ConfirmEdit(int m) {
+		protected virtual QSql.Confirm ConfirmEdit(QSql.Op m) {
 			return ProxyQDataBrowser().ConfirmEdit(m);
 		}
 		[SmokeMethod("confirmCancel(QSql::Op)")]
-		protected virtual int ConfirmCancel(int m) {
+		protected virtual QSql.Confirm ConfirmCancel(QSql.Op m) {
 			return ProxyQDataBrowser().ConfirmCancel(m);
 		}
 		[SmokeMethod("handleError(const QSqlError&)")]
@@ -346,6 +346,6 @@ namespace Qt {
 		[Q_SIGNAL("void beforeDelete(QSqlRecord*)")]
 		void BeforeDelete(QSqlRecord buf);
 		[Q_SIGNAL("void cursorChanged(QSqlCursor::Mode)")]
-		void CursorChanged(int mode);
+		void CursorChanged(QSqlCursor.Mode mode);
 	}
 }

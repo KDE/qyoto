@@ -17,8 +17,8 @@ namespace Qt {
 			bool op_gt(QDateTime lhs, DateTime dt);
 			bool op_gte(QDateTime lhs, DateTime dt);
 			DateTime CurrentDateTime();
-			DateTime CurrentDateTime(int arg1);
-			DateTime FromString(string s, int f);
+			DateTime CurrentDateTime(Qt.TimeSpec arg1);
+			DateTime FromString(string s, Qt.DateFormat f);
 			DateTime FromString(string s);
 		}
 
@@ -95,11 +95,11 @@ namespace Qt {
 			ProxyQDateTime().SetTime_t(secsSince1Jan1970UTC);
 		}
 		[SmokeMethod("setTime_t(uint, Qt::TimeSpec)")]
-		public void SetTime_t(uint secsSince1Jan1970UTC, int arg2) {
+		public void SetTime_t(uint secsSince1Jan1970UTC, Qt.TimeSpec arg2) {
 			ProxyQDateTime().SetTime_t(secsSince1Jan1970UTC,arg2);
 		}
 		[SmokeMethod("toString(Qt::DateFormat) const")]
-		public new string ToString(int f) {
+		public new string ToString(Qt.DateFormat f) {
 			return ProxyQDateTime().ToString(f);
 		}
 		[SmokeMethod("toString() const")]
@@ -169,11 +169,11 @@ namespace Qt {
 			return StaticQDateTime().CurrentDateTime();
 		}
 		[SmokeMethod("currentDateTime(Qt::TimeSpec)")]
-		public static DateTime CurrentDateTime(int arg1) {
+		public static DateTime CurrentDateTime(Qt.TimeSpec arg1) {
 			return StaticQDateTime().CurrentDateTime(arg1);
 		}
 		[SmokeMethod("fromString(const QString&, Qt::DateFormat)")]
-		public static DateTime FromString(string s, int f) {
+		public static DateTime FromString(string s, Qt.DateFormat f) {
 			return StaticQDateTime().FromString(s,f);
 		}
 		[SmokeMethod("fromString(const QString&)")]

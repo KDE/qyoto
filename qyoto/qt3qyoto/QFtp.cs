@@ -31,7 +31,7 @@ namespace Qt {
 			return (IQFtpProxy) _staticInterceptor;
 		}
 
-		enum E_State {
+		public enum State {
 			Unconnected = 0,
 			HostLookup = 1,
 			Connecting = 2,
@@ -39,14 +39,14 @@ namespace Qt {
 			LoggedIn = 4,
 			Closing = 5,
 		}
-		enum E_Error {
+		public enum Error {
 			NoError = 0,
 			UnknownError = 1,
 			HostNotFound = 2,
 			ConnectionRefused = 3,
 			NotConnected = 4,
 		}
-		enum Command {
+		public enum Command {
 			None = 0,
 			ConnectToHost = 1,
 			Login = 2,
@@ -193,7 +193,7 @@ namespace Qt {
 			return ProxyQFtp().CurrentDevice();
 		}
 		[SmokeMethod("currentCommand() const")]
-		public int CurrentCommand() {
+		public QFtp.Command CurrentCommand() {
 			return ProxyQFtp().CurrentCommand();
 		}
 		[SmokeMethod("hasPendingCommands() const")]
@@ -205,12 +205,12 @@ namespace Qt {
 			ProxyQFtp().ClearPendingCommands();
 		}
 		[SmokeMethod("state() const")]
-		public int State() {
-			return ProxyQFtp().State();
+		public QFtp.State state() {
+			return ProxyQFtp().state();
 		}
 		[SmokeMethod("error() const")]
-		public int Error() {
-			return ProxyQFtp().Error();
+		public QFtp.Error error() {
+			return ProxyQFtp().error();
 		}
 		[SmokeMethod("errorString() const")]
 		public string ErrorString() {
@@ -307,8 +307,8 @@ namespace Qt {
 		}
 		[Q_SLOT("void error(int)")]
 		[SmokeMethod("error(int)")]
-		protected void Error(int arg1) {
-			ProxyQFtp().Error(arg1);
+		protected void error(int arg1) {
+			ProxyQFtp().error(arg1);
 		}
 		~QFtp() {
 			DisposeQFtp();

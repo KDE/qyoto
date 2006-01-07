@@ -42,7 +42,7 @@ namespace Qt {
 			ProxyQDomDocumentFragment().NewQDomDocumentFragment(x);
 		}
 		[SmokeMethod("nodeType() const")]
-		public new int NodeType() {
+		public new QDomNode.NodeType NodeType() {
 			return ProxyQDomDocumentFragment().NodeType();
 		}
 		[SmokeMethod("isDocumentFragment() const")]

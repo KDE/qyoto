@@ -7,8 +7,8 @@ namespace Qt {
 	public class QFocusEvent : QEvent, IDisposable {
  		protected QFocusEvent(Type dummy) : base((Type) null) {}
 		interface IQFocusEventProxy {
-			int Reason();
-			void SetReason(int reason);
+			QFocusEvent.Reason reason();
+			void SetReason(QFocusEvent.Reason reason);
 			void ResetReason();
 		}
 
@@ -28,7 +28,7 @@ namespace Qt {
 			return (IQFocusEventProxy) _staticInterceptor;
 		}
 
-		enum E_Reason {
+		public enum Reason {
 			Mouse = 0,
 			Tab = 1,
 			Backtab = 2,
@@ -37,12 +37,12 @@ namespace Qt {
 			Shortcut = 5,
 			Other = 6,
 		}
-		public QFocusEvent(int type) : this((Type) null) {
+		public QFocusEvent(QEvent.E_Type type) : this((Type) null) {
 			CreateQFocusEventProxy();
 			NewQFocusEvent(type);
 		}
 		[SmokeMethod("QFocusEvent(QEvent::Type)")]
-		private void NewQFocusEvent(int type) {
+		private void NewQFocusEvent(QEvent.E_Type type) {
 			ProxyQFocusEvent().NewQFocusEvent(type);
 		}
 		[SmokeMethod("gotFocus() const")]
@@ -54,11 +54,11 @@ namespace Qt {
 			return ProxyQFocusEvent().LostFocus();
 		}
 		[SmokeMethod("reason()")]
-		public static int Reason() {
-			return StaticQFocusEvent().Reason();
+		public static QFocusEvent.Reason reason() {
+			return StaticQFocusEvent().reason();
 		}
 		[SmokeMethod("setReason(QFocusEvent::Reason)")]
-		public static void SetReason(int reason) {
+		public static void SetReason(QFocusEvent.Reason reason) {
 			StaticQFocusEvent().SetReason(reason);
 		}
 		[SmokeMethod("resetReason()")]

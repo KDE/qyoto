@@ -28,15 +28,15 @@ namespace Qt {
 			return (IQStyleOptionProxy) _staticInterceptor;
 		}
 
-		enum StyleOptionDefault {
+		public enum StyleOptionDefault {
 			Default = 0,
 		}
-		public QStyleOption(int arg1) : this((Type) null) {
+		public QStyleOption(QStyleOption.StyleOptionDefault arg1) : this((Type) null) {
 			CreateQStyleOptionProxy();
 			NewQStyleOption(arg1);
 		}
 		[SmokeMethod("QStyleOption(QStyleOption::StyleOptionDefault)")]
-		private void NewQStyleOption(int arg1) {
+		private void NewQStyleOption(QStyleOption.StyleOptionDefault arg1) {
 			ProxyQStyleOption().NewQStyleOption(arg1);
 		}
 		public QStyleOption() : this((Type) null) {
@@ -46,6 +46,14 @@ namespace Qt {
 		[SmokeMethod("QStyleOption()")]
 		private void NewQStyleOption() {
 			ProxyQStyleOption().NewQStyleOption();
+		}
+		public QStyleOption(int in1) : this((Type) null) {
+			CreateQStyleOptionProxy();
+			NewQStyleOption(in1);
+		}
+		[SmokeMethod("QStyleOption(int)")]
+		private void NewQStyleOption(int in1) {
+			ProxyQStyleOption().NewQStyleOption(in1);
 		}
 		public QStyleOption(int in1, int in2) : this((Type) null) {
 			CreateQStyleOptionProxy();
@@ -118,6 +126,14 @@ namespace Qt {
 		[SmokeMethod("QStyleOption(QCheckListItem*)")]
 		private void NewQStyleOption(QCheckListItem i) {
 			ProxyQStyleOption().NewQStyleOption(i);
+		}
+		public QStyleOption(Qt.ArrowType a) : this((Type) null) {
+			CreateQStyleOptionProxy();
+			NewQStyleOption(a);
+		}
+		[SmokeMethod("QStyleOption(Qt::ArrowType)")]
+		private void NewQStyleOption(Qt.ArrowType a) {
+			ProxyQStyleOption().NewQStyleOption(a);
 		}
 		public QStyleOption(QRect r) : this((Type) null) {
 			CreateQStyleOptionProxy();
@@ -192,7 +208,7 @@ namespace Qt {
 			return ProxyQStyleOption().ListViewItem();
 		}
 		[SmokeMethod("arrowType() const")]
-		public int ArrowType() {
+		public Qt.ArrowType ArrowType() {
 			return ProxyQStyleOption().ArrowType();
 		}
 		[SmokeMethod("rect() const")]

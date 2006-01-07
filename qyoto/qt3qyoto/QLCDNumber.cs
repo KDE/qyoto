@@ -31,7 +31,7 @@ namespace Qt {
 			return (IQLCDNumberProxy) _staticInterceptor;
 		}
 
-		enum E_Mode {
+		public enum Mode {
 			Hex = 0,
 			Dec = 1,
 			Oct = 2,
@@ -41,7 +41,7 @@ namespace Qt {
 			OCT = Oct,
 			BIN = Bin,
 		}
-		enum E_SegmentStyle {
+		public enum SegmentStyle {
 			Outline = 0,
 			Filled = 1,
 			Flat = 2,
@@ -129,19 +129,19 @@ namespace Qt {
 			return ProxyQLCDNumber().CheckOverflow(num);
 		}
 		[SmokeMethod("mode() const")]
-		public int Mode() {
-			return ProxyQLCDNumber().Mode();
+		public QLCDNumber.Mode mode() {
+			return ProxyQLCDNumber().mode();
 		}
 		[SmokeMethod("setMode(QLCDNumber::Mode)")]
-		public virtual void SetMode(int arg1) {
+		public virtual void SetMode(QLCDNumber.Mode arg1) {
 			ProxyQLCDNumber().SetMode(arg1);
 		}
 		[SmokeMethod("segmentStyle() const")]
-		public int SegmentStyle() {
-			return ProxyQLCDNumber().SegmentStyle();
+		public QLCDNumber.SegmentStyle segmentStyle() {
+			return ProxyQLCDNumber().segmentStyle();
 		}
 		[SmokeMethod("setSegmentStyle(QLCDNumber::SegmentStyle)")]
-		public virtual void SetSegmentStyle(int arg1) {
+		public virtual void SetSegmentStyle(QLCDNumber.SegmentStyle arg1) {
 			ProxyQLCDNumber().SetSegmentStyle(arg1);
 		}
 		[SmokeMethod("value() const")]

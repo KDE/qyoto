@@ -17,9 +17,9 @@ namespace Qt {
 			QStyle Style();
 			void SetStyle(QStyle arg1);
 			QStyle SetStyle(string arg1);
-			int ColorMode();
-			void SetColorMode(int arg1);
-			int ColorSpec();
+			QApplication.ColorMode colorMode();
+			void SetColorMode(QApplication.ColorMode arg1);
+			int colorSpec();
 			void SetColorSpec(int arg1);
 			QCursor OverrideCursor();
 			void SetOverrideCursor(QCursor arg1, bool replace);
@@ -85,9 +85,9 @@ namespace Qt {
 			void SetReverseLayout(bool b);
 			bool ReverseLayout();
 			int HorizontalAlignment(int align);
-			bool IsEffectEnabled(int arg1);
-			void SetEffectEnabled(int arg1, bool enable);
-			void SetEffectEnabled(int arg1);
+			bool IsEffectEnabled(Qt.UIEffect arg1);
+			void SetEffectEnabled(Qt.UIEffect arg1, bool enable);
+			void SetEffectEnabled(Qt.UIEffect arg1);
 		}
 
 		protected void CreateQApplicationProxy() {
@@ -106,21 +106,21 @@ namespace Qt {
 			return (IQApplicationProxy) _staticInterceptor;
 		}
 
-		enum E_Type {
+		public enum E_Type {
 			Tty = 0,
 			GuiClient = 1,
 			GuiServer = 2,
 		}
-		enum E_ColorMode {
+		public enum ColorMode {
 			NormalColors = 0,
 			CustomColors = 1,
 		}
-		enum E_ColorSpec {
+		public enum ColorSpec {
 			NormalColor = 0,
 			CustomColor = 1,
 			ManyColor = 2,
 		}
-		enum Encoding {
+		public enum Encoding {
 			DefaultCodec = 0,
 			UnicodeUTF8 = 1,
 		}
@@ -205,7 +205,7 @@ namespace Qt {
 			ProxyQApplication().RemoveTranslator(arg1);
 		}
 		[SmokeMethod("translate(const char*, const char*, const char*, QApplication::Encoding) const")]
-		public string Translate(string context, string key, string comment, int encoding) {
+		public string Translate(string context, string key, string comment, QApplication.Encoding encoding) {
 			return ProxyQApplication().Translate(context,key,comment,encoding);
 		}
 		[SmokeMethod("translate(const char*, const char*, const char*) const")]
@@ -292,16 +292,16 @@ namespace Qt {
 			return StaticQApplication().SetStyle(arg1);
 		}
 		[SmokeMethod("colorMode()")]
-		public static int ColorMode() {
-			return StaticQApplication().ColorMode();
+		public static QApplication.ColorMode colorMode() {
+			return StaticQApplication().colorMode();
 		}
 		[SmokeMethod("setColorMode(QApplication::ColorMode)")]
-		public static void SetColorMode(int arg1) {
+		public static void SetColorMode(QApplication.ColorMode arg1) {
 			StaticQApplication().SetColorMode(arg1);
 		}
 		[SmokeMethod("colorSpec()")]
-		public static int ColorSpec() {
-			return StaticQApplication().ColorSpec();
+		public static int colorSpec() {
+			return StaticQApplication().colorSpec();
 		}
 		[SmokeMethod("setColorSpec(int)")]
 		public static void SetColorSpec(int arg1) {
@@ -564,15 +564,15 @@ namespace Qt {
 			return StaticQApplication().HorizontalAlignment(align);
 		}
 		[SmokeMethod("isEffectEnabled(Qt::UIEffect)")]
-		public static bool IsEffectEnabled(int arg1) {
+		public static bool IsEffectEnabled(Qt.UIEffect arg1) {
 			return StaticQApplication().IsEffectEnabled(arg1);
 		}
 		[SmokeMethod("setEffectEnabled(Qt::UIEffect, bool)")]
-		public static void SetEffectEnabled(int arg1, bool enable) {
+		public static void SetEffectEnabled(Qt.UIEffect arg1, bool enable) {
 			StaticQApplication().SetEffectEnabled(arg1,enable);
 		}
 		[SmokeMethod("setEffectEnabled(Qt::UIEffect)")]
-		public static void SetEffectEnabled(int arg1) {
+		public static void SetEffectEnabled(Qt.UIEffect arg1) {
 			StaticQApplication().SetEffectEnabled(arg1);
 		}
 		[SmokeMethod("event(QEvent*)")]

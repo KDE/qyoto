@@ -31,7 +31,7 @@ namespace Qt {
 			return (IQSpinWidgetProxy) _staticInterceptor;
 		}
 
-		enum E_ButtonSymbols {
+		public enum ButtonSymbols {
 			UpDownArrows = 0,
 			PlusMinus = 1,
 		}
@@ -103,12 +103,12 @@ namespace Qt {
 			return ProxyQSpinWidget().IsDownEnabled();
 		}
 		[SmokeMethod("setButtonSymbols(QSpinWidget::ButtonSymbols)")]
-		public virtual void SetButtonSymbols(int bs) {
+		public virtual void SetButtonSymbols(QSpinWidget.ButtonSymbols bs) {
 			ProxyQSpinWidget().SetButtonSymbols(bs);
 		}
 		[SmokeMethod("buttonSymbols() const")]
-		public int ButtonSymbols() {
-			return ProxyQSpinWidget().ButtonSymbols();
+		public QSpinWidget.ButtonSymbols buttonSymbols() {
+			return ProxyQSpinWidget().buttonSymbols();
 		}
 		[SmokeMethod("arrange()")]
 		public void Arrange() {

@@ -29,7 +29,7 @@ namespace Qt {
 			return (IQColorGroupProxy) _staticInterceptor;
 		}
 
-		enum ColorRole {
+		public enum ColorRole {
 			Foreground = 0,
 			Button = 1,
 			Light = 2,
@@ -81,19 +81,19 @@ namespace Qt {
 			ProxyQColorGroup().NewQColorGroup(arg1);
 		}
 		[SmokeMethod("color(QColorGroup::ColorRole) const")]
-		public QColor Color(int arg1) {
+		public QColor Color(QColorGroup.ColorRole arg1) {
 			return ProxyQColorGroup().Color(arg1);
 		}
 		[SmokeMethod("brush(QColorGroup::ColorRole) const")]
-		public QBrush Brush(int arg1) {
+		public QBrush Brush(QColorGroup.ColorRole arg1) {
 			return ProxyQColorGroup().Brush(arg1);
 		}
 		[SmokeMethod("setColor(QColorGroup::ColorRole, const QColor&)")]
-		public void SetColor(int arg1, QColor arg2) {
+		public void SetColor(QColorGroup.ColorRole arg1, QColor arg2) {
 			ProxyQColorGroup().SetColor(arg1,arg2);
 		}
 		[SmokeMethod("setBrush(QColorGroup::ColorRole, const QBrush&)")]
-		public void SetBrush(int arg1, QBrush arg2) {
+		public void SetBrush(QColorGroup.ColorRole arg1, QBrush arg2) {
 			ProxyQColorGroup().SetBrush(arg1,arg2);
 		}
 		[SmokeMethod("foreground() const")]

@@ -75,7 +75,7 @@ namespace Qt {
 			ProxyQDomCharacterData().SetData(arg1);
 		}
 		[SmokeMethod("nodeType() const")]
-		public new int NodeType() {
+		public new QDomNode.NodeType NodeType() {
 			return ProxyQDomCharacterData().NodeType();
 		}
 		[SmokeMethod("isCharacterData() const")]

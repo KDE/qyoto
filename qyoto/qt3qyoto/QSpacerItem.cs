@@ -25,20 +25,20 @@ namespace Qt {
 			return (IQSpacerItemProxy) _staticInterceptor;
 		}
 
-		public QSpacerItem(int w, int h, int hData, int vData) : this((Type) null) {
+		public QSpacerItem(int w, int h, QSizePolicy.SizeType hData, QSizePolicy.SizeType vData) : this((Type) null) {
 			CreateQSpacerItemProxy();
 			NewQSpacerItem(w,h,hData,vData);
 		}
 		[SmokeMethod("QSpacerItem(int, int, QSizePolicy::SizeType, QSizePolicy::SizeType)")]
-		private void NewQSpacerItem(int w, int h, int hData, int vData) {
+		private void NewQSpacerItem(int w, int h, QSizePolicy.SizeType hData, QSizePolicy.SizeType vData) {
 			ProxyQSpacerItem().NewQSpacerItem(w,h,hData,vData);
 		}
-		public QSpacerItem(int w, int h, int hData) : this((Type) null) {
+		public QSpacerItem(int w, int h, QSizePolicy.SizeType hData) : this((Type) null) {
 			CreateQSpacerItemProxy();
 			NewQSpacerItem(w,h,hData);
 		}
 		[SmokeMethod("QSpacerItem(int, int, QSizePolicy::SizeType)")]
-		private void NewQSpacerItem(int w, int h, int hData) {
+		private void NewQSpacerItem(int w, int h, QSizePolicy.SizeType hData) {
 			ProxyQSpacerItem().NewQSpacerItem(w,h,hData);
 		}
 		public QSpacerItem(int w, int h) : this((Type) null) {
@@ -50,11 +50,11 @@ namespace Qt {
 			ProxyQSpacerItem().NewQSpacerItem(w,h);
 		}
 		[SmokeMethod("changeSize(int, int, QSizePolicy::SizeType, QSizePolicy::SizeType)")]
-		public void ChangeSize(int w, int h, int hData, int vData) {
+		public void ChangeSize(int w, int h, QSizePolicy.SizeType hData, QSizePolicy.SizeType vData) {
 			ProxyQSpacerItem().ChangeSize(w,h,hData,vData);
 		}
 		[SmokeMethod("changeSize(int, int, QSizePolicy::SizeType)")]
-		public void ChangeSize(int w, int h, int hData) {
+		public void ChangeSize(int w, int h, QSizePolicy.SizeType hData) {
 			ProxyQSpacerItem().ChangeSize(w,h,hData);
 		}
 		[SmokeMethod("changeSize(int, int)")]
@@ -74,7 +74,7 @@ namespace Qt {
 			return ProxyQSpacerItem().MaximumSize();
 		}
 		[SmokeMethod("expanding() const")]
-		public new int Expanding() {
+		public new QSizePolicy.ExpandData Expanding() {
 			return ProxyQSpacerItem().Expanding();
 		}
 		[SmokeMethod("isEmpty() const")]

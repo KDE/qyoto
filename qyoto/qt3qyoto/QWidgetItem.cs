@@ -46,7 +46,7 @@ namespace Qt {
 			return ProxyQWidgetItem().MaximumSize();
 		}
 		[SmokeMethod("expanding() const")]
-		public new int Expanding() {
+		public new QSizePolicy.ExpandData Expanding() {
 			return ProxyQWidgetItem().Expanding();
 		}
 		[SmokeMethod("isEmpty() const")]

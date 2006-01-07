@@ -240,7 +240,7 @@ namespace Qt {
 			return ProxyQDomDocument().SetContent(source,reader);
 		}
 		[SmokeMethod("nodeType() const")]
-		public new int NodeType() {
+		public new QDomNode.NodeType NodeType() {
 			return ProxyQDomDocument().NodeType();
 		}
 		[SmokeMethod("isDocument() const")]

@@ -37,12 +37,12 @@ namespace Qt {
 		private void NewQFontMetrics(QFont arg1) {
 			ProxyQFontMetrics().NewQFontMetrics(arg1);
 		}
-		public QFontMetrics(QFont arg1, int arg2) : this((Type) null) {
+		public QFontMetrics(QFont arg1, QFont.Script arg2) : this((Type) null) {
 			CreateQFontMetricsProxy();
 			NewQFontMetrics(arg1,arg2);
 		}
 		[SmokeMethod("QFontMetrics(const QFont&, QFont::Script)")]
-		private void NewQFontMetrics(QFont arg1, int arg2) {
+		private void NewQFontMetrics(QFont arg1, QFont.Script arg2) {
 			ProxyQFontMetrics().NewQFontMetrics(arg1,arg2);
 		}
 		public QFontMetrics(QFontMetrics arg1) : this((Type) null) {

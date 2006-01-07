@@ -25,7 +25,7 @@ namespace Qt {
 			return (IQEventProxy) _staticInterceptor;
 		}
 
-		enum E_Type {
+		public enum E_Type {
 			None = 0,
 			Timer = 1,
 			MouseButtonPress = 2,
@@ -103,12 +103,12 @@ namespace Qt {
 			User = 1000,
 			MaxUser = 65535,
 		}
-		public QEvent(int type) : this((Type) null) {
+		public QEvent(QEvent.E_Type type) : this((Type) null) {
 			CreateQEventProxy();
 			NewQEvent(type);
 		}
 		[SmokeMethod("QEvent(QEvent::Type)")]
-		private void NewQEvent(int type) {
+		private void NewQEvent(QEvent.E_Type type) {
 			ProxyQEvent().NewQEvent(type);
 		}
 		[SmokeMethod("spontaneous() const")]

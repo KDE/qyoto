@@ -29,7 +29,7 @@ namespace Qt {
 			return (IQMetaPropertyProxy) _staticInterceptor;
 		}
 
-		enum Flags {
+		public enum Flags {
 			Invalid = 0x00000000,
 			Readable = 0x00000001,
 			Writable = 0x00000002,

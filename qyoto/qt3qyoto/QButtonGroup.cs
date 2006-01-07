@@ -93,58 +93,58 @@ namespace Qt {
 		private void NewQButtonGroup(string title) {
 			ProxyQButtonGroup().NewQButtonGroup(title);
 		}
-		public QButtonGroup(int columns, int o, QWidget parent, string name) : this((Type) null) {
+		public QButtonGroup(int columns, Qt.Orientation o, QWidget parent, string name) : this((Type) null) {
 			CreateQButtonGroupProxy();
 			CreateQButtonGroupSignalProxy();
 			NewQButtonGroup(columns,o,parent,name);
 		}
 		[SmokeMethod("QButtonGroup(int, Qt::Orientation, QWidget*, const char*)")]
-		private void NewQButtonGroup(int columns, int o, QWidget parent, string name) {
+		private void NewQButtonGroup(int columns, Qt.Orientation o, QWidget parent, string name) {
 			ProxyQButtonGroup().NewQButtonGroup(columns,o,parent,name);
 		}
-		public QButtonGroup(int columns, int o, QWidget parent) : this((Type) null) {
+		public QButtonGroup(int columns, Qt.Orientation o, QWidget parent) : this((Type) null) {
 			CreateQButtonGroupProxy();
 			CreateQButtonGroupSignalProxy();
 			NewQButtonGroup(columns,o,parent);
 		}
 		[SmokeMethod("QButtonGroup(int, Qt::Orientation, QWidget*)")]
-		private void NewQButtonGroup(int columns, int o, QWidget parent) {
+		private void NewQButtonGroup(int columns, Qt.Orientation o, QWidget parent) {
 			ProxyQButtonGroup().NewQButtonGroup(columns,o,parent);
 		}
-		public QButtonGroup(int columns, int o) : this((Type) null) {
+		public QButtonGroup(int columns, Qt.Orientation o) : this((Type) null) {
 			CreateQButtonGroupProxy();
 			CreateQButtonGroupSignalProxy();
 			NewQButtonGroup(columns,o);
 		}
 		[SmokeMethod("QButtonGroup(int, Qt::Orientation)")]
-		private void NewQButtonGroup(int columns, int o) {
+		private void NewQButtonGroup(int columns, Qt.Orientation o) {
 			ProxyQButtonGroup().NewQButtonGroup(columns,o);
 		}
-		public QButtonGroup(int columns, int o, string title, QWidget parent, string name) : this((Type) null) {
+		public QButtonGroup(int columns, Qt.Orientation o, string title, QWidget parent, string name) : this((Type) null) {
 			CreateQButtonGroupProxy();
 			CreateQButtonGroupSignalProxy();
 			NewQButtonGroup(columns,o,title,parent,name);
 		}
 		[SmokeMethod("QButtonGroup(int, Qt::Orientation, const QString&, QWidget*, const char*)")]
-		private void NewQButtonGroup(int columns, int o, string title, QWidget parent, string name) {
+		private void NewQButtonGroup(int columns, Qt.Orientation o, string title, QWidget parent, string name) {
 			ProxyQButtonGroup().NewQButtonGroup(columns,o,title,parent,name);
 		}
-		public QButtonGroup(int columns, int o, string title, QWidget parent) : this((Type) null) {
+		public QButtonGroup(int columns, Qt.Orientation o, string title, QWidget parent) : this((Type) null) {
 			CreateQButtonGroupProxy();
 			CreateQButtonGroupSignalProxy();
 			NewQButtonGroup(columns,o,title,parent);
 		}
 		[SmokeMethod("QButtonGroup(int, Qt::Orientation, const QString&, QWidget*)")]
-		private void NewQButtonGroup(int columns, int o, string title, QWidget parent) {
+		private void NewQButtonGroup(int columns, Qt.Orientation o, string title, QWidget parent) {
 			ProxyQButtonGroup().NewQButtonGroup(columns,o,title,parent);
 		}
-		public QButtonGroup(int columns, int o, string title) : this((Type) null) {
+		public QButtonGroup(int columns, Qt.Orientation o, string title) : this((Type) null) {
 			CreateQButtonGroupProxy();
 			CreateQButtonGroupSignalProxy();
 			NewQButtonGroup(columns,o,title);
 		}
 		[SmokeMethod("QButtonGroup(int, Qt::Orientation, const QString&)")]
-		private void NewQButtonGroup(int columns, int o, string title) {
+		private void NewQButtonGroup(int columns, Qt.Orientation o, string title) {
 			ProxyQButtonGroup().NewQButtonGroup(columns,o,title);
 		}
 		[SmokeMethod("isExclusive() const")]

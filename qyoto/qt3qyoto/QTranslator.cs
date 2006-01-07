@@ -30,7 +30,7 @@ namespace Qt {
 			return (IQTranslatorProxy) _staticInterceptor;
 		}
 
-		enum SaveMode {
+		public enum SaveMode {
 			Everything = 0,
 			Stripped = 1,
 		}
@@ -110,7 +110,7 @@ namespace Qt {
 			ProxyQTranslator().Clear();
 		}
 		[SmokeMethod("save(const QString&, QTranslator::SaveMode)")]
-		public bool Save(string filename, int mode) {
+		public bool Save(string filename, QTranslator.SaveMode mode) {
 			return ProxyQTranslator().Save(filename,mode);
 		}
 		[SmokeMethod("save(const QString&)")]
@@ -142,7 +142,7 @@ namespace Qt {
 			return ProxyQTranslator().Contains(arg1,arg2);
 		}
 		[SmokeMethod("squeeze(QTranslator::SaveMode)")]
-		public void Squeeze(int arg1) {
+		public void Squeeze(QTranslator.SaveMode arg1) {
 			ProxyQTranslator().Squeeze(arg1);
 		}
 		[SmokeMethod("squeeze()")]

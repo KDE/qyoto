@@ -31,7 +31,7 @@ namespace Qt {
 			return (IQSliderProxy) _staticInterceptor;
 		}
 
-		enum TickSetting {
+		public enum TickSetting {
 			NoMarks = 0,
 			Above = 1,
 			Left = Above,
@@ -65,48 +65,48 @@ namespace Qt {
 		private void NewQSlider(QWidget parent) {
 			ProxyQSlider().NewQSlider(parent);
 		}
-		public QSlider(int arg1, QWidget parent, string name) : this((Type) null) {
+		public QSlider(Qt.Orientation arg1, QWidget parent, string name) : this((Type) null) {
 			CreateQSliderProxy();
 			CreateQSliderSignalProxy();
 			NewQSlider(arg1,parent,name);
 		}
 		[SmokeMethod("QSlider(Qt::Orientation, QWidget*, const char*)")]
-		private void NewQSlider(int arg1, QWidget parent, string name) {
+		private void NewQSlider(Qt.Orientation arg1, QWidget parent, string name) {
 			ProxyQSlider().NewQSlider(arg1,parent,name);
 		}
-		public QSlider(int arg1, QWidget parent) : this((Type) null) {
+		public QSlider(Qt.Orientation arg1, QWidget parent) : this((Type) null) {
 			CreateQSliderProxy();
 			CreateQSliderSignalProxy();
 			NewQSlider(arg1,parent);
 		}
 		[SmokeMethod("QSlider(Qt::Orientation, QWidget*)")]
-		private void NewQSlider(int arg1, QWidget parent) {
+		private void NewQSlider(Qt.Orientation arg1, QWidget parent) {
 			ProxyQSlider().NewQSlider(arg1,parent);
 		}
-		public QSlider(int minValue, int maxValue, int pageStep, int value, int arg5, QWidget parent, string name) : this((Type) null) {
+		public QSlider(int minValue, int maxValue, int pageStep, int value, Qt.Orientation arg5, QWidget parent, string name) : this((Type) null) {
 			CreateQSliderProxy();
 			CreateQSliderSignalProxy();
 			NewQSlider(minValue,maxValue,pageStep,value,arg5,parent,name);
 		}
 		[SmokeMethod("QSlider(int, int, int, int, Qt::Orientation, QWidget*, const char*)")]
-		private void NewQSlider(int minValue, int maxValue, int pageStep, int value, int arg5, QWidget parent, string name) {
+		private void NewQSlider(int minValue, int maxValue, int pageStep, int value, Qt.Orientation arg5, QWidget parent, string name) {
 			ProxyQSlider().NewQSlider(minValue,maxValue,pageStep,value,arg5,parent,name);
 		}
-		public QSlider(int minValue, int maxValue, int pageStep, int value, int arg5, QWidget parent) : this((Type) null) {
+		public QSlider(int minValue, int maxValue, int pageStep, int value, Qt.Orientation arg5, QWidget parent) : this((Type) null) {
 			CreateQSliderProxy();
 			CreateQSliderSignalProxy();
 			NewQSlider(minValue,maxValue,pageStep,value,arg5,parent);
 		}
 		[SmokeMethod("QSlider(int, int, int, int, Qt::Orientation, QWidget*)")]
-		private void NewQSlider(int minValue, int maxValue, int pageStep, int value, int arg5, QWidget parent) {
+		private void NewQSlider(int minValue, int maxValue, int pageStep, int value, Qt.Orientation arg5, QWidget parent) {
 			ProxyQSlider().NewQSlider(minValue,maxValue,pageStep,value,arg5,parent);
 		}
 		[SmokeMethod("setOrientation(Qt::Orientation)")]
-		public virtual void SetOrientation(int arg1) {
+		public virtual void SetOrientation(Qt.Orientation arg1) {
 			ProxyQSlider().SetOrientation(arg1);
 		}
 		[SmokeMethod("orientation() const")]
-		public int Orientation() {
+		public Qt.Orientation Orientation() {
 			return ProxyQSlider().Orientation();
 		}
 		[SmokeMethod("setTracking(bool)")]
@@ -138,11 +138,11 @@ namespace Qt {
 			ProxyQSlider().SetSizePolicy(sp);
 		}
 		[SmokeMethod("setSizePolicy(QSizePolicy::SizeType, QSizePolicy::SizeType, bool)")]
-		public new void SetSizePolicy(int hor, int ver, bool hfw) {
+		public new void SetSizePolicy(QSizePolicy.SizeType hor, QSizePolicy.SizeType ver, bool hfw) {
 			ProxyQSlider().SetSizePolicy(hor,ver,hfw);
 		}
 		[SmokeMethod("setSizePolicy(QSizePolicy::SizeType, QSizePolicy::SizeType)")]
-		public new void SetSizePolicy(int hor, int ver) {
+		public new void SetSizePolicy(QSizePolicy.SizeType hor, QSizePolicy.SizeType ver) {
 			ProxyQSlider().SetSizePolicy(hor,ver);
 		}
 		[SmokeMethod("sizePolicy() const")]
@@ -154,11 +154,11 @@ namespace Qt {
 			return ProxyQSlider().MinimumSizeHint();
 		}
 		[SmokeMethod("setTickmarks(QSlider::TickSetting)")]
-		public virtual void SetTickmarks(int arg1) {
+		public virtual void SetTickmarks(QSlider.TickSetting arg1) {
 			ProxyQSlider().SetTickmarks(arg1);
 		}
 		[SmokeMethod("tickmarks() const")]
-		public int Tickmarks() {
+		public QSlider.TickSetting Tickmarks() {
 			return ProxyQSlider().Tickmarks();
 		}
 		[SmokeMethod("setTickInterval(int)")]

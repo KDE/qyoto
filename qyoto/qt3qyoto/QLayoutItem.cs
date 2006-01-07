@@ -7,7 +7,7 @@ namespace Qt {
 			QSize SizeHint();
 			QSize MinimumSize();
 			QSize MaximumSize();
-			int Expanding();
+			QSizePolicy.ExpandData Expanding();
 			void SetGeometry(QRect arg1);
 			QRect Geometry();
 			bool IsEmpty();
@@ -75,7 +75,7 @@ namespace Qt {
 			return ProxyQLayoutItem().MaximumSize();
 		}
 		[SmokeMethod("expanding() const")]
-		public virtual int Expanding() {
+		public virtual QSizePolicy.ExpandData Expanding() {
 			return ProxyQLayoutItem().Expanding();
 		}
 		[SmokeMethod("setGeometry(const QRect&)")]

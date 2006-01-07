@@ -30,7 +30,7 @@ namespace Qt {
 			return (IQClipboardProxy) _staticInterceptor;
 		}
 
-		enum Mode {
+		public enum Mode {
 			Clipboard = 0,
 			Selection = 1,
 		}
@@ -43,7 +43,7 @@ namespace Qt {
 			return ProxyQClipboard().ClassName();
 		}
 		[SmokeMethod("clear(QClipboard::Mode)")]
-		public void Clear(int mode) {
+		public void Clear(QClipboard.Mode mode) {
 			ProxyQClipboard().Clear(mode);
 		}
 		[SmokeMethod("clear()")]
@@ -71,39 +71,39 @@ namespace Qt {
 			return ProxyQClipboard().SelectionModeEnabled();
 		}
 		[SmokeMethod("text(QClipboard::Mode) const")]
-		public string Text(int mode) {
+		public string Text(QClipboard.Mode mode) {
 			return ProxyQClipboard().Text(mode);
 		}
 		[SmokeMethod("text(QCString&, QClipboard::Mode) const")]
-		public string Text(StringBuilder subtype, int mode) {
+		public string Text(StringBuilder subtype, QClipboard.Mode mode) {
 			return ProxyQClipboard().Text(subtype,mode);
 		}
 		[SmokeMethod("setText(const QString&, QClipboard::Mode)")]
-		public void SetText(string arg1, int mode) {
+		public void SetText(string arg1, QClipboard.Mode mode) {
 			ProxyQClipboard().SetText(arg1,mode);
 		}
 		[SmokeMethod("data(QClipboard::Mode) const")]
-		public IQMimeSource Data(int mode) {
+		public IQMimeSource Data(QClipboard.Mode mode) {
 			return ProxyQClipboard().Data(mode);
 		}
 		[SmokeMethod("setData(QMimeSource*, QClipboard::Mode)")]
-		public void SetData(IQMimeSource arg1, int mode) {
+		public void SetData(IQMimeSource arg1, QClipboard.Mode mode) {
 			ProxyQClipboard().SetData(arg1,mode);
 		}
 		[SmokeMethod("image(QClipboard::Mode) const")]
-		public QImage Image(int mode) {
+		public QImage Image(QClipboard.Mode mode) {
 			return ProxyQClipboard().Image(mode);
 		}
 		[SmokeMethod("pixmap(QClipboard::Mode) const")]
-		public QPixmap Pixmap(int mode) {
+		public QPixmap Pixmap(QClipboard.Mode mode) {
 			return ProxyQClipboard().Pixmap(mode);
 		}
 		[SmokeMethod("setImage(const QImage&, QClipboard::Mode)")]
-		public void SetImage(QImage arg1, int mode) {
+		public void SetImage(QImage arg1, QClipboard.Mode mode) {
 			ProxyQClipboard().SetImage(arg1,mode);
 		}
 		[SmokeMethod("setPixmap(const QPixmap&, QClipboard::Mode)")]
-		public void SetPixmap(QPixmap arg1, int mode) {
+		public void SetPixmap(QPixmap arg1, QClipboard.Mode mode) {
 			ProxyQClipboard().SetPixmap(arg1,mode);
 		}
 		[SmokeMethod("text() const")]

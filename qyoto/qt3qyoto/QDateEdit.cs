@@ -31,7 +31,7 @@ namespace Qt {
 			return (IQDateEditProxy) _staticInterceptor;
 		}
 
-		enum E_Order {
+		public enum Order {
 			DMY = 0,
 			MDY = 1,
 			YMD = 2,
@@ -112,12 +112,12 @@ namespace Qt {
 			return ProxyQDateEdit().Date();
 		}
 		[SmokeMethod("setOrder(QDateEdit::Order)")]
-		public virtual void SetOrder(int order) {
+		public virtual void SetOrder(QDateEdit.Order order) {
 			ProxyQDateEdit().SetOrder(order);
 		}
 		[SmokeMethod("order() const")]
-		public int Order() {
-			return ProxyQDateEdit().Order();
+		public QDateEdit.Order order() {
+			return ProxyQDateEdit().order();
 		}
 		[SmokeMethod("setAutoAdvance(bool)")]
 		public virtual void SetAutoAdvance(bool advance) {

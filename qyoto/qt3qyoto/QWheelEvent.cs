@@ -25,12 +25,12 @@ namespace Qt {
 			return (IQWheelEventProxy) _staticInterceptor;
 		}
 
-		public QWheelEvent(QPoint pos, int delta, int state, int orient) : this((Type) null) {
+		public QWheelEvent(QPoint pos, int delta, int state, Qt.Orientation orient) : this((Type) null) {
 			CreateQWheelEventProxy();
 			NewQWheelEvent(pos,delta,state,orient);
 		}
 		[SmokeMethod("QWheelEvent(const QPoint&, int, int, Qt::Orientation)")]
-		private void NewQWheelEvent(QPoint pos, int delta, int state, int orient) {
+		private void NewQWheelEvent(QPoint pos, int delta, int state, Qt.Orientation orient) {
 			ProxyQWheelEvent().NewQWheelEvent(pos,delta,state,orient);
 		}
 		public QWheelEvent(QPoint pos, int delta, int state) : this((Type) null) {
@@ -41,12 +41,12 @@ namespace Qt {
 		private void NewQWheelEvent(QPoint pos, int delta, int state) {
 			ProxyQWheelEvent().NewQWheelEvent(pos,delta,state);
 		}
-		public QWheelEvent(QPoint pos, QPoint globalPos, int delta, int state, int orient) : this((Type) null) {
+		public QWheelEvent(QPoint pos, QPoint globalPos, int delta, int state, Qt.Orientation orient) : this((Type) null) {
 			CreateQWheelEventProxy();
 			NewQWheelEvent(pos,globalPos,delta,state,orient);
 		}
 		[SmokeMethod("QWheelEvent(const QPoint&, const QPoint&, int, int, Qt::Orientation)")]
-		private void NewQWheelEvent(QPoint pos, QPoint globalPos, int delta, int state, int orient) {
+		private void NewQWheelEvent(QPoint pos, QPoint globalPos, int delta, int state, Qt.Orientation orient) {
 			ProxyQWheelEvent().NewQWheelEvent(pos,globalPos,delta,state,orient);
 		}
 		public QWheelEvent(QPoint pos, QPoint globalPos, int delta, int state) : this((Type) null) {
@@ -86,11 +86,11 @@ namespace Qt {
 			return ProxyQWheelEvent().GlobalY();
 		}
 		[SmokeMethod("state() const")]
-		public int State() {
+		public Qt.ButtonState State() {
 			return ProxyQWheelEvent().State();
 		}
 		[SmokeMethod("orientation() const")]
-		public int Orientation() {
+		public Qt.Orientation Orientation() {
 			return ProxyQWheelEvent().Orientation();
 		}
 		[SmokeMethod("isAccepted() const")]

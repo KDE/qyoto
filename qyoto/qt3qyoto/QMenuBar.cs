@@ -31,7 +31,7 @@ namespace Qt {
 			return (IQMenuBarProxy) _staticInterceptor;
 		}
 
-		enum E_Separator {
+		public enum Separator {
 			Never = 0,
 			InWindowsStyle = 1,
 		}
@@ -91,11 +91,11 @@ namespace Qt {
 			return ProxyQMenuBar().HeightForWidth(arg1);
 		}
 		[SmokeMethod("separator() const")]
-		public int Separator() {
-			return ProxyQMenuBar().Separator();
+		public QMenuBar.Separator separator() {
+			return ProxyQMenuBar().separator();
 		}
 		[SmokeMethod("setSeparator(QMenuBar::Separator)")]
-		public virtual void SetSeparator(int when) {
+		public virtual void SetSeparator(QMenuBar.Separator when) {
 			ProxyQMenuBar().SetSeparator(when);
 		}
 		[SmokeMethod("setDefaultUp(bool)")]

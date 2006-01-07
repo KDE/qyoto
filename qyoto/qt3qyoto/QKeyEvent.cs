@@ -26,36 +26,36 @@ namespace Qt {
 			return (IQKeyEventProxy) _staticInterceptor;
 		}
 
-		public QKeyEvent(int type, int key, int ascii, int state, string text, bool autorep, ushort count) : this((Type) null) {
+		public QKeyEvent(QEvent.E_Type type, int key, int ascii, int state, string text, bool autorep, ushort count) : this((Type) null) {
 			CreateQKeyEventProxy();
 			NewQKeyEvent(type,key,ascii,state,text,autorep,count);
 		}
 		[SmokeMethod("QKeyEvent(QEvent::Type, int, int, int, const QString&, bool, ushort)")]
-		private void NewQKeyEvent(int type, int key, int ascii, int state, string text, bool autorep, ushort count) {
+		private void NewQKeyEvent(QEvent.E_Type type, int key, int ascii, int state, string text, bool autorep, ushort count) {
 			ProxyQKeyEvent().NewQKeyEvent(type,key,ascii,state,text,autorep,count);
 		}
-		public QKeyEvent(int type, int key, int ascii, int state, string text, bool autorep) : this((Type) null) {
+		public QKeyEvent(QEvent.E_Type type, int key, int ascii, int state, string text, bool autorep) : this((Type) null) {
 			CreateQKeyEventProxy();
 			NewQKeyEvent(type,key,ascii,state,text,autorep);
 		}
 		[SmokeMethod("QKeyEvent(QEvent::Type, int, int, int, const QString&, bool)")]
-		private void NewQKeyEvent(int type, int key, int ascii, int state, string text, bool autorep) {
+		private void NewQKeyEvent(QEvent.E_Type type, int key, int ascii, int state, string text, bool autorep) {
 			ProxyQKeyEvent().NewQKeyEvent(type,key,ascii,state,text,autorep);
 		}
-		public QKeyEvent(int type, int key, int ascii, int state, string text) : this((Type) null) {
+		public QKeyEvent(QEvent.E_Type type, int key, int ascii, int state, string text) : this((Type) null) {
 			CreateQKeyEventProxy();
 			NewQKeyEvent(type,key,ascii,state,text);
 		}
 		[SmokeMethod("QKeyEvent(QEvent::Type, int, int, int, const QString&)")]
-		private void NewQKeyEvent(int type, int key, int ascii, int state, string text) {
+		private void NewQKeyEvent(QEvent.E_Type type, int key, int ascii, int state, string text) {
 			ProxyQKeyEvent().NewQKeyEvent(type,key,ascii,state,text);
 		}
-		public QKeyEvent(int type, int key, int ascii, int state) : this((Type) null) {
+		public QKeyEvent(QEvent.E_Type type, int key, int ascii, int state) : this((Type) null) {
 			CreateQKeyEventProxy();
 			NewQKeyEvent(type,key,ascii,state);
 		}
 		[SmokeMethod("QKeyEvent(QEvent::Type, int, int, int)")]
-		private void NewQKeyEvent(int type, int key, int ascii, int state) {
+		private void NewQKeyEvent(QEvent.E_Type type, int key, int ascii, int state) {
 			ProxyQKeyEvent().NewQKeyEvent(type,key,ascii,state);
 		}
 		[SmokeMethod("key() const")]
@@ -67,11 +67,11 @@ namespace Qt {
 			return ProxyQKeyEvent().Ascii();
 		}
 		[SmokeMethod("state() const")]
-		public int State() {
+		public Qt.ButtonState State() {
 			return ProxyQKeyEvent().State();
 		}
 		[SmokeMethod("stateAfter() const")]
-		public int StateAfter() {
+		public Qt.ButtonState StateAfter() {
 			return ProxyQKeyEvent().StateAfter();
 		}
 		[SmokeMethod("isAccepted() const")]

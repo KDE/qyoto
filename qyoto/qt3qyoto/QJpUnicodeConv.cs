@@ -29,7 +29,7 @@ namespace Qt {
 			return (IQJpUnicodeConvProxy) _staticInterceptor;
 		}
 
-		enum Rules {
+		public enum Rules {
 			Default = 0x0000,
 			Unicode = 0x0001,
 			Unicode_JISX0201 = 0x0001,

@@ -31,7 +31,7 @@ namespace Qt {
 			return (IQComboBoxProxy) _staticInterceptor;
 		}
 
-		enum Policy {
+		public enum Policy {
 			NoInsertion = 0,
 			AtTop = 1,
 			AtCurrent = 2,
@@ -230,11 +230,11 @@ namespace Qt {
 			return ProxyQComboBox().MaxCount();
 		}
 		[SmokeMethod("setInsertionPolicy(QComboBox::Policy)")]
-		public virtual void SetInsertionPolicy(int policy) {
+		public virtual void SetInsertionPolicy(QComboBox.Policy policy) {
 			ProxyQComboBox().SetInsertionPolicy(policy);
 		}
 		[SmokeMethod("insertionPolicy() const")]
-		public int InsertionPolicy() {
+		public QComboBox.Policy InsertionPolicy() {
 			return ProxyQComboBox().InsertionPolicy();
 		}
 		[SmokeMethod("setValidator(const QValidator*)")]

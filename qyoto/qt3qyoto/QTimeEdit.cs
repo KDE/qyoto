@@ -31,7 +31,7 @@ namespace Qt {
 			return (IQTimeEditProxy) _staticInterceptor;
 		}
 
-		enum E_Display {
+		public enum Display {
 			Hours = 0x01,
 			Minutes = 0x02,
 			Seconds = 0x04,
@@ -148,8 +148,8 @@ namespace Qt {
 			ProxyQTimeEdit().SetSeparator(s);
 		}
 		[SmokeMethod("display() const")]
-		public uint Display() {
-			return ProxyQTimeEdit().Display();
+		public uint display() {
+			return ProxyQTimeEdit().display();
 		}
 		[SmokeMethod("setDisplay(uint)")]
 		public void SetDisplay(uint disp) {

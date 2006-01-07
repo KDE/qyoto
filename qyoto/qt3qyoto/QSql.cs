@@ -28,27 +28,27 @@ namespace Qt {
 			return (IQSqlProxy) _staticInterceptor;
 		}
 
-		enum Op {
+		public enum Op {
 			None = -1,
 			Insert = 0,
 			Update = 1,
 			Delete = 2,
 		}
-		enum Location {
+		public enum Location {
 			BeforeFirst = -1,
 			AfterLast = -2,
 		}
-		enum Confirm {
+		public enum Confirm {
 			Cancel = -1,
 			No = 0,
 			Yes = 1,
 		}
-		enum ParameterType {
+		public enum ParameterType {
 			In = 1,
 			Out = 2,
 			InOut = 3,
 		}
-		enum TableType {
+		public enum TableType {
 			Tables = 0x01,
 			SystemTables = 0x02,
 			Views = 0x04,

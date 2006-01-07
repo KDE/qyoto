@@ -26,12 +26,12 @@ namespace Qt {
 			return (IQIMEventProxy) _staticInterceptor;
 		}
 
-		public QIMEvent(int type, string text, int cursorPosition) : this((Type) null) {
+		public QIMEvent(QEvent.E_Type type, string text, int cursorPosition) : this((Type) null) {
 			CreateQIMEventProxy();
 			NewQIMEvent(type,text,cursorPosition);
 		}
 		[SmokeMethod("QIMEvent(QEvent::Type, const QString&, int)")]
-		private void NewQIMEvent(int type, string text, int cursorPosition) {
+		private void NewQIMEvent(QEvent.E_Type type, string text, int cursorPosition) {
 			ProxyQIMEvent().NewQIMEvent(type,text,cursorPosition);
 		}
 		[SmokeMethod("text() const")]

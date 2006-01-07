@@ -30,7 +30,7 @@ namespace Qt {
 			return (IQGridLayoutProxy) _staticInterceptor;
 		}
 
-		enum Corner {
+		public enum Corner {
 			TopLeft = 0,
 			TopRight = 1,
 			BottomLeft = 2,
@@ -257,7 +257,7 @@ namespace Qt {
 			return ProxyQGridLayout().MinimumHeightForWidth(arg1);
 		}
 		[SmokeMethod("expanding() const")]
-		public new int Expanding() {
+		public new QSizePolicy.ExpandData Expanding() {
 			return ProxyQGridLayout().Expanding();
 		}
 		[SmokeMethod("invalidate()")]
@@ -321,11 +321,11 @@ namespace Qt {
 			ProxyQGridLayout().Expand(rows,cols);
 		}
 		[SmokeMethod("setOrigin(QGridLayout::Corner)")]
-		public void SetOrigin(int arg1) {
+		public void SetOrigin(QGridLayout.Corner arg1) {
 			ProxyQGridLayout().SetOrigin(arg1);
 		}
 		[SmokeMethod("origin() const")]
-		public int Origin() {
+		public QGridLayout.Corner Origin() {
 			return ProxyQGridLayout().Origin();
 		}
 		// QLayoutIterator iterator(); >>>> NOT CONVERTED

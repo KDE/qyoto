@@ -11,8 +11,8 @@ namespace Qt {
  		protected QPalette(Type dummy) {}
 		interface IQPaletteProxy {
 			bool op_equals(QPalette lhs, QPalette p);
-			int ForegroundRoleFromMode(int mode);
-			int BackgroundRoleFromMode(int mode);
+			QColorGroup.ColorRole ForegroundRoleFromMode(Qt.BackgroundMode mode);
+			QColorGroup.ColorRole BackgroundRoleFromMode(Qt.BackgroundMode mode);
 		}
 
 		protected void CreateQPaletteProxy() {
@@ -31,7 +31,7 @@ namespace Qt {
 			return (IQPaletteProxy) _staticInterceptor;
 		}
 
-		enum ColorGroup {
+		public enum ColorGroup {
 			Disabled = 0,
 			Active = 1,
 			Inactive = 2,
@@ -79,27 +79,27 @@ namespace Qt {
 			ProxyQPalette().NewQPalette(arg1);
 		}
 		[SmokeMethod("color(QPalette::ColorGroup, QColorGroup::ColorRole) const")]
-		public QColor Color(int arg1, int arg2) {
+		public QColor Color(QPalette.ColorGroup arg1, QColorGroup.ColorRole arg2) {
 			return ProxyQPalette().Color(arg1,arg2);
 		}
 		[SmokeMethod("brush(QPalette::ColorGroup, QColorGroup::ColorRole) const")]
-		public QBrush Brush(int arg1, int arg2) {
+		public QBrush Brush(QPalette.ColorGroup arg1, QColorGroup.ColorRole arg2) {
 			return ProxyQPalette().Brush(arg1,arg2);
 		}
 		[SmokeMethod("setColor(QPalette::ColorGroup, QColorGroup::ColorRole, const QColor&)")]
-		public void SetColor(int arg1, int arg2, QColor arg3) {
+		public void SetColor(QPalette.ColorGroup arg1, QColorGroup.ColorRole arg2, QColor arg3) {
 			ProxyQPalette().SetColor(arg1,arg2,arg3);
 		}
 		[SmokeMethod("setBrush(QPalette::ColorGroup, QColorGroup::ColorRole, const QBrush&)")]
-		public void SetBrush(int arg1, int arg2, QBrush arg3) {
+		public void SetBrush(QPalette.ColorGroup arg1, QColorGroup.ColorRole arg2, QBrush arg3) {
 			ProxyQPalette().SetBrush(arg1,arg2,arg3);
 		}
 		[SmokeMethod("setColor(QColorGroup::ColorRole, const QColor&)")]
-		public void SetColor(int arg1, QColor arg2) {
+		public void SetColor(QColorGroup.ColorRole arg1, QColor arg2) {
 			ProxyQPalette().SetColor(arg1,arg2);
 		}
 		[SmokeMethod("setBrush(QColorGroup::ColorRole, const QBrush&)")]
-		public void SetBrush(int arg1, QBrush arg2) {
+		public void SetBrush(QColorGroup.ColorRole arg1, QBrush arg2) {
 			ProxyQPalette().SetBrush(arg1,arg2);
 		}
 		[SmokeMethod("copy() const")]
@@ -161,11 +161,11 @@ namespace Qt {
 			return ProxyQPalette().SerialNumber();
 		}
 		[SmokeMethod("foregroundRoleFromMode(Qt::BackgroundMode)")]
-		public static int ForegroundRoleFromMode(int mode) {
+		public static QColorGroup.ColorRole ForegroundRoleFromMode(Qt.BackgroundMode mode) {
 			return StaticQPalette().ForegroundRoleFromMode(mode);
 		}
 		[SmokeMethod("backgroundRoleFromMode(Qt::BackgroundMode)")]
-		public static int BackgroundRoleFromMode(int mode) {
+		public static QColorGroup.ColorRole BackgroundRoleFromMode(Qt.BackgroundMode mode) {
 			return StaticQPalette().BackgroundRoleFromMode(mode);
 		}
 		~QPalette() {

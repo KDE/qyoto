@@ -26,24 +26,24 @@ namespace Qt {
 			return (IQCheckListItemProxy) _staticInterceptor;
 		}
 
-		enum E_Type {
+		public enum E_Type {
 			RadioButton = 0,
 			CheckBox = 1,
 			Controller = 2,
 			RadioButtonController = Controller,
 			CheckBoxController = 3,
 		}
-		enum ToggleState {
+		public enum ToggleState {
 			Off = 0,
 			NoChange = 1,
 			On = 2,
 		}
-		public QCheckListItem(QCheckListItem parent, string text, int arg3) : this((Type) null) {
+		public QCheckListItem(QCheckListItem parent, string text, QCheckListItem.E_Type arg3) : this((Type) null) {
 			CreateQCheckListItemProxy();
 			NewQCheckListItem(parent,text,arg3);
 		}
 		[SmokeMethod("QCheckListItem(QCheckListItem*, const QString&, QCheckListItem::Type)")]
-		private void NewQCheckListItem(QCheckListItem parent, string text, int arg3) {
+		private void NewQCheckListItem(QCheckListItem parent, string text, QCheckListItem.E_Type arg3) {
 			ProxyQCheckListItem().NewQCheckListItem(parent,text,arg3);
 		}
 		public QCheckListItem(QCheckListItem parent, string text) : this((Type) null) {
@@ -54,12 +54,12 @@ namespace Qt {
 		private void NewQCheckListItem(QCheckListItem parent, string text) {
 			ProxyQCheckListItem().NewQCheckListItem(parent,text);
 		}
-		public QCheckListItem(QCheckListItem parent, QListViewItem after, string text, int arg4) : this((Type) null) {
+		public QCheckListItem(QCheckListItem parent, QListViewItem after, string text, QCheckListItem.E_Type arg4) : this((Type) null) {
 			CreateQCheckListItemProxy();
 			NewQCheckListItem(parent,after,text,arg4);
 		}
 		[SmokeMethod("QCheckListItem(QCheckListItem*, QListViewItem*, const QString&, QCheckListItem::Type)")]
-		private void NewQCheckListItem(QCheckListItem parent, QListViewItem after, string text, int arg4) {
+		private void NewQCheckListItem(QCheckListItem parent, QListViewItem after, string text, QCheckListItem.E_Type arg4) {
 			ProxyQCheckListItem().NewQCheckListItem(parent,after,text,arg4);
 		}
 		public QCheckListItem(QCheckListItem parent, QListViewItem after, string text) : this((Type) null) {
@@ -70,12 +70,12 @@ namespace Qt {
 		private void NewQCheckListItem(QCheckListItem parent, QListViewItem after, string text) {
 			ProxyQCheckListItem().NewQCheckListItem(parent,after,text);
 		}
-		public QCheckListItem(QListViewItem parent, string text, int arg3) : this((Type) null) {
+		public QCheckListItem(QListViewItem parent, string text, QCheckListItem.E_Type arg3) : this((Type) null) {
 			CreateQCheckListItemProxy();
 			NewQCheckListItem(parent,text,arg3);
 		}
 		[SmokeMethod("QCheckListItem(QListViewItem*, const QString&, QCheckListItem::Type)")]
-		private void NewQCheckListItem(QListViewItem parent, string text, int arg3) {
+		private void NewQCheckListItem(QListViewItem parent, string text, QCheckListItem.E_Type arg3) {
 			ProxyQCheckListItem().NewQCheckListItem(parent,text,arg3);
 		}
 		public QCheckListItem(QListViewItem parent, string text) : this((Type) null) {
@@ -86,12 +86,12 @@ namespace Qt {
 		private void NewQCheckListItem(QListViewItem parent, string text) {
 			ProxyQCheckListItem().NewQCheckListItem(parent,text);
 		}
-		public QCheckListItem(QListViewItem parent, QListViewItem after, string text, int arg4) : this((Type) null) {
+		public QCheckListItem(QListViewItem parent, QListViewItem after, string text, QCheckListItem.E_Type arg4) : this((Type) null) {
 			CreateQCheckListItemProxy();
 			NewQCheckListItem(parent,after,text,arg4);
 		}
 		[SmokeMethod("QCheckListItem(QListViewItem*, QListViewItem*, const QString&, QCheckListItem::Type)")]
-		private void NewQCheckListItem(QListViewItem parent, QListViewItem after, string text, int arg4) {
+		private void NewQCheckListItem(QListViewItem parent, QListViewItem after, string text, QCheckListItem.E_Type arg4) {
 			ProxyQCheckListItem().NewQCheckListItem(parent,after,text,arg4);
 		}
 		public QCheckListItem(QListViewItem parent, QListViewItem after, string text) : this((Type) null) {
@@ -102,12 +102,12 @@ namespace Qt {
 		private void NewQCheckListItem(QListViewItem parent, QListViewItem after, string text) {
 			ProxyQCheckListItem().NewQCheckListItem(parent,after,text);
 		}
-		public QCheckListItem(QListView parent, string text, int arg3) : this((Type) null) {
+		public QCheckListItem(QListView parent, string text, QCheckListItem.E_Type arg3) : this((Type) null) {
 			CreateQCheckListItemProxy();
 			NewQCheckListItem(parent,text,arg3);
 		}
 		[SmokeMethod("QCheckListItem(QListView*, const QString&, QCheckListItem::Type)")]
-		private void NewQCheckListItem(QListView parent, string text, int arg3) {
+		private void NewQCheckListItem(QListView parent, string text, QCheckListItem.E_Type arg3) {
 			ProxyQCheckListItem().NewQCheckListItem(parent,text,arg3);
 		}
 		public QCheckListItem(QListView parent, string text) : this((Type) null) {
@@ -118,12 +118,12 @@ namespace Qt {
 		private void NewQCheckListItem(QListView parent, string text) {
 			ProxyQCheckListItem().NewQCheckListItem(parent,text);
 		}
-		public QCheckListItem(QListView parent, QListViewItem after, string text, int arg4) : this((Type) null) {
+		public QCheckListItem(QListView parent, QListViewItem after, string text, QCheckListItem.E_Type arg4) : this((Type) null) {
 			CreateQCheckListItemProxy();
 			NewQCheckListItem(parent,after,text,arg4);
 		}
 		[SmokeMethod("QCheckListItem(QListView*, QListViewItem*, const QString&, QCheckListItem::Type)")]
-		private void NewQCheckListItem(QListView parent, QListViewItem after, string text, int arg4) {
+		private void NewQCheckListItem(QListView parent, QListViewItem after, string text, QCheckListItem.E_Type arg4) {
 			ProxyQCheckListItem().NewQCheckListItem(parent,after,text,arg4);
 		}
 		public QCheckListItem(QListView parent, QListViewItem after, string text) : this((Type) null) {
@@ -191,11 +191,11 @@ namespace Qt {
 			return ProxyQCheckListItem().IsTristate();
 		}
 		[SmokeMethod("state() const")]
-		public int State() {
+		public QCheckListItem.ToggleState State() {
 			return ProxyQCheckListItem().State();
 		}
 		[SmokeMethod("setState(QCheckListItem::ToggleState)")]
-		public void SetState(int s) {
+		public void SetState(QCheckListItem.ToggleState s) {
 			ProxyQCheckListItem().SetState(s);
 		}
 		[SmokeMethod("rtti() const")]

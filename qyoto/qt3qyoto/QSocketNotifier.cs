@@ -68,7 +68,7 @@ namespace Qt {
 			return (IQSocketNotifierProxy) _staticInterceptor;
 		}
 
-		enum E_Type {
+		public enum E_Type {
 			Read = 0,
 			Write = 1,
 			Exception = 2,
@@ -81,31 +81,31 @@ namespace Qt {
 		public new virtual string ClassName() {
 			return ProxyQSocketNotifier().ClassName();
 		}
-		public QSocketNotifier(int socket, int arg2, QObject parent, string name) : this((Type) null) {
+		public QSocketNotifier(int socket, QSocketNotifier.E_Type arg2, QObject parent, string name) : this((Type) null) {
 			CreateQSocketNotifierProxy();
 			CreateQSocketNotifierSignalProxy();
 			NewQSocketNotifier(socket,arg2,parent,name);
 		}
 		[SmokeMethod("QSocketNotifier(int, QSocketNotifier::Type, QObject*, const char*)")]
-		private void NewQSocketNotifier(int socket, int arg2, QObject parent, string name) {
+		private void NewQSocketNotifier(int socket, QSocketNotifier.E_Type arg2, QObject parent, string name) {
 			ProxyQSocketNotifier().NewQSocketNotifier(socket,arg2,parent,name);
 		}
-		public QSocketNotifier(int socket, int arg2, QObject parent) : this((Type) null) {
+		public QSocketNotifier(int socket, QSocketNotifier.E_Type arg2, QObject parent) : this((Type) null) {
 			CreateQSocketNotifierProxy();
 			CreateQSocketNotifierSignalProxy();
 			NewQSocketNotifier(socket,arg2,parent);
 		}
 		[SmokeMethod("QSocketNotifier(int, QSocketNotifier::Type, QObject*)")]
-		private void NewQSocketNotifier(int socket, int arg2, QObject parent) {
+		private void NewQSocketNotifier(int socket, QSocketNotifier.E_Type arg2, QObject parent) {
 			ProxyQSocketNotifier().NewQSocketNotifier(socket,arg2,parent);
 		}
-		public QSocketNotifier(int socket, int arg2) : this((Type) null) {
+		public QSocketNotifier(int socket, QSocketNotifier.E_Type arg2) : this((Type) null) {
 			CreateQSocketNotifierProxy();
 			CreateQSocketNotifierSignalProxy();
 			NewQSocketNotifier(socket,arg2);
 		}
 		[SmokeMethod("QSocketNotifier(int, QSocketNotifier::Type)")]
-		private void NewQSocketNotifier(int socket, int arg2) {
+		private void NewQSocketNotifier(int socket, QSocketNotifier.E_Type arg2) {
 			ProxyQSocketNotifier().NewQSocketNotifier(socket,arg2);
 		}
 		[SmokeMethod("socket() const")]
