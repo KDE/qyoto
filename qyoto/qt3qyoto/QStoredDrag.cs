@@ -14,7 +14,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQStoredDragProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStoredDrag), this);
 			_interceptor = (QStoredDrag) realProxy.GetTransparentProxy();
 		}
@@ -39,8 +39,8 @@ namespace Qt {
 			return ProxyQStoredDrag().ClassName();
 		}
 		public QStoredDrag(string mimeType, QWidget dragSource, string name) : this((Type) null) {
-			CreateQStoredDragProxy();
-			CreateQStoredDragSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQStoredDrag(mimeType,dragSource,name);
 		}
 		[SmokeMethod("QStoredDrag(const char*, QWidget*, const char*)")]
@@ -48,8 +48,8 @@ namespace Qt {
 			ProxyQStoredDrag().NewQStoredDrag(mimeType,dragSource,name);
 		}
 		public QStoredDrag(string mimeType, QWidget dragSource) : this((Type) null) {
-			CreateQStoredDragProxy();
-			CreateQStoredDragSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQStoredDrag(mimeType,dragSource);
 		}
 		[SmokeMethod("QStoredDrag(const char*, QWidget*)")]
@@ -57,8 +57,8 @@ namespace Qt {
 			ProxyQStoredDrag().NewQStoredDrag(mimeType,dragSource);
 		}
 		public QStoredDrag(string mimeType) : this((Type) null) {
-			CreateQStoredDragProxy();
-			CreateQStoredDragSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQStoredDrag(mimeType);
 		}
 		[SmokeMethod("QStoredDrag(const char*)")]
@@ -102,7 +102,7 @@ namespace Qt {
 		private void DisposeQStoredDrag() {
 			ProxyQStoredDrag().DisposeQStoredDrag();
 		}
-		protected void CreateQStoredDragSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQStoredDragSignals), this);
 			Q_EMIT = (IQStoredDragSignals) realProxy.GetTransparentProxy();
 		}

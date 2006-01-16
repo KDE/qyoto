@@ -14,7 +14,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQToolButtonProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QToolButton), this);
 			_interceptor = (QToolButton) realProxy.GetTransparentProxy();
 		}
@@ -45,8 +45,8 @@ namespace Qt {
 			return ProxyQToolButton().ClassName();
 		}
 		public QToolButton(QWidget parent, string name) : this((Type) null) {
-			CreateQToolButtonProxy();
-			CreateQToolButtonSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQToolButton(parent,name);
 		}
 		[SmokeMethod("QToolButton(QWidget*, const char*)")]
@@ -54,8 +54,8 @@ namespace Qt {
 			ProxyQToolButton().NewQToolButton(parent,name);
 		}
 		public QToolButton(QWidget parent) : this((Type) null) {
-			CreateQToolButtonProxy();
-			CreateQToolButtonSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQToolButton(parent);
 		}
 		[SmokeMethod("QToolButton(QWidget*)")]
@@ -63,8 +63,8 @@ namespace Qt {
 			ProxyQToolButton().NewQToolButton(parent);
 		}
 		public QToolButton(QIconSet s, string textLabel, string grouptext, QObject receiver, string slot, QToolBar parent, string name) : this((Type) null) {
-			CreateQToolButtonProxy();
-			CreateQToolButtonSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQToolButton(s,textLabel,grouptext,receiver,slot,parent,name);
 		}
 		[SmokeMethod("QToolButton(const QIconSet&, const QString&, const QString&, QObject*, const char*, QToolBar*, const char*)")]
@@ -72,8 +72,8 @@ namespace Qt {
 			ProxyQToolButton().NewQToolButton(s,textLabel,grouptext,receiver,slot,parent,name);
 		}
 		public QToolButton(QIconSet s, string textLabel, string grouptext, QObject receiver, string slot, QToolBar parent) : this((Type) null) {
-			CreateQToolButtonProxy();
-			CreateQToolButtonSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQToolButton(s,textLabel,grouptext,receiver,slot,parent);
 		}
 		[SmokeMethod("QToolButton(const QIconSet&, const QString&, const QString&, QObject*, const char*, QToolBar*)")]
@@ -81,8 +81,8 @@ namespace Qt {
 			ProxyQToolButton().NewQToolButton(s,textLabel,grouptext,receiver,slot,parent);
 		}
 		public QToolButton(Qt.ArrowType type, QWidget parent, string name) : this((Type) null) {
-			CreateQToolButtonProxy();
-			CreateQToolButtonSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQToolButton(type,parent,name);
 		}
 		[SmokeMethod("QToolButton(Qt::ArrowType, QWidget*, const char*)")]
@@ -90,8 +90,8 @@ namespace Qt {
 			ProxyQToolButton().NewQToolButton(type,parent,name);
 		}
 		public QToolButton(Qt.ArrowType type, QWidget parent) : this((Type) null) {
-			CreateQToolButtonProxy();
-			CreateQToolButtonSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQToolButton(type,parent);
 		}
 		[SmokeMethod("QToolButton(Qt::ArrowType, QWidget*)")]
@@ -287,7 +287,7 @@ namespace Qt {
 		private void DisposeQToolButton() {
 			ProxyQToolButton().DisposeQToolButton();
 		}
-		protected void CreateQToolButtonSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQToolButtonSignals), this);
 			Q_EMIT = (IQToolButtonSignals) realProxy.GetTransparentProxy();
 		}

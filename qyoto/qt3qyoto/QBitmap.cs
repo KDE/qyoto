@@ -10,7 +10,7 @@ namespace Qt {
 		interface IQBitmapProxy {
 		}
 
-		protected void CreateQBitmapProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QBitmap), this);
 			_interceptor = (QBitmap) realProxy.GetTransparentProxy();
 		}
@@ -27,7 +27,7 @@ namespace Qt {
 		}
 
 		public QBitmap() : this((Type) null) {
-			CreateQBitmapProxy();
+			CreateProxy();
 			NewQBitmap();
 		}
 		[SmokeMethod("QBitmap()")]
@@ -35,7 +35,7 @@ namespace Qt {
 			ProxyQBitmap().NewQBitmap();
 		}
 		public QBitmap(int w, int h, bool clear, QPixmap.Optimization arg4) : this((Type) null) {
-			CreateQBitmapProxy();
+			CreateProxy();
 			NewQBitmap(w,h,clear,arg4);
 		}
 		[SmokeMethod("QBitmap(int, int, bool, QPixmap::Optimization)")]
@@ -43,7 +43,7 @@ namespace Qt {
 			ProxyQBitmap().NewQBitmap(w,h,clear,arg4);
 		}
 		public QBitmap(int w, int h, bool clear) : this((Type) null) {
-			CreateQBitmapProxy();
+			CreateProxy();
 			NewQBitmap(w,h,clear);
 		}
 		[SmokeMethod("QBitmap(int, int, bool)")]
@@ -51,7 +51,7 @@ namespace Qt {
 			ProxyQBitmap().NewQBitmap(w,h,clear);
 		}
 		public QBitmap(int w, int h) : this((Type) null) {
-			CreateQBitmapProxy();
+			CreateProxy();
 			NewQBitmap(w,h);
 		}
 		[SmokeMethod("QBitmap(int, int)")]
@@ -59,7 +59,7 @@ namespace Qt {
 			ProxyQBitmap().NewQBitmap(w,h);
 		}
 		public QBitmap(QSize arg1, bool clear, QPixmap.Optimization arg3) : this((Type) null) {
-			CreateQBitmapProxy();
+			CreateProxy();
 			NewQBitmap(arg1,clear,arg3);
 		}
 		[SmokeMethod("QBitmap(const QSize&, bool, QPixmap::Optimization)")]
@@ -67,7 +67,7 @@ namespace Qt {
 			ProxyQBitmap().NewQBitmap(arg1,clear,arg3);
 		}
 		public QBitmap(QSize arg1, bool clear) : this((Type) null) {
-			CreateQBitmapProxy();
+			CreateProxy();
 			NewQBitmap(arg1,clear);
 		}
 		[SmokeMethod("QBitmap(const QSize&, bool)")]
@@ -75,7 +75,7 @@ namespace Qt {
 			ProxyQBitmap().NewQBitmap(arg1,clear);
 		}
 		public QBitmap(QSize arg1) : this((Type) null) {
-			CreateQBitmapProxy();
+			CreateProxy();
 			NewQBitmap(arg1);
 		}
 		[SmokeMethod("QBitmap(const QSize&)")]
@@ -83,7 +83,7 @@ namespace Qt {
 			ProxyQBitmap().NewQBitmap(arg1);
 		}
 		public QBitmap(int w, int h, char[] bits, bool isXbitmap) : this((Type) null) {
-			CreateQBitmapProxy();
+			CreateProxy();
 			NewQBitmap(w,h,bits,isXbitmap);
 		}
 		[SmokeMethod("QBitmap(int, int, const uchar*, bool)")]
@@ -91,7 +91,7 @@ namespace Qt {
 			ProxyQBitmap().NewQBitmap(w,h,bits,isXbitmap);
 		}
 		public QBitmap(int w, int h, char[] bits) : this((Type) null) {
-			CreateQBitmapProxy();
+			CreateProxy();
 			NewQBitmap(w,h,bits);
 		}
 		[SmokeMethod("QBitmap(int, int, const uchar*)")]
@@ -99,7 +99,7 @@ namespace Qt {
 			ProxyQBitmap().NewQBitmap(w,h,bits);
 		}
 		public QBitmap(QSize arg1, char[] bits, bool isXbitmap) : this((Type) null) {
-			CreateQBitmapProxy();
+			CreateProxy();
 			NewQBitmap(arg1,bits,isXbitmap);
 		}
 		[SmokeMethod("QBitmap(const QSize&, const uchar*, bool)")]
@@ -107,7 +107,7 @@ namespace Qt {
 			ProxyQBitmap().NewQBitmap(arg1,bits,isXbitmap);
 		}
 		public QBitmap(QSize arg1, char[] bits) : this((Type) null) {
-			CreateQBitmapProxy();
+			CreateProxy();
 			NewQBitmap(arg1,bits);
 		}
 		[SmokeMethod("QBitmap(const QSize&, const uchar*)")]
@@ -115,7 +115,7 @@ namespace Qt {
 			ProxyQBitmap().NewQBitmap(arg1,bits);
 		}
 		public QBitmap(QBitmap arg1) : this((Type) null) {
-			CreateQBitmapProxy();
+			CreateProxy();
 			NewQBitmap(arg1);
 		}
 		[SmokeMethod("QBitmap(const QBitmap&)")]
@@ -123,7 +123,7 @@ namespace Qt {
 			ProxyQBitmap().NewQBitmap(arg1);
 		}
 		public QBitmap(string fileName, string format) : this((Type) null) {
-			CreateQBitmapProxy();
+			CreateProxy();
 			NewQBitmap(fileName,format);
 		}
 		[SmokeMethod("QBitmap(const QString&, const char*)")]
@@ -131,7 +131,7 @@ namespace Qt {
 			ProxyQBitmap().NewQBitmap(fileName,format);
 		}
 		public QBitmap(string fileName) : this((Type) null) {
-			CreateQBitmapProxy();
+			CreateProxy();
 			NewQBitmap(fileName);
 		}
 		[SmokeMethod("QBitmap(const QString&)")]

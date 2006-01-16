@@ -20,7 +20,7 @@ namespace Qt {
 		interface IQXmlDeclHandlerProxy {
 		}
 
-		protected void CreateQXmlDeclHandlerProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlDeclHandler), this);
 			_interceptor = (QXmlDeclHandler) realProxy.GetTransparentProxy();
 		}
@@ -53,7 +53,7 @@ namespace Qt {
 			return ProxyQXmlDeclHandler().ErrorString();
 		}
 		public QXmlDeclHandler() : this((Type) null) {
-			CreateQXmlDeclHandlerProxy();
+			CreateProxy();
 			NewQXmlDeclHandler();
 		}
 		[SmokeMethod("QXmlDeclHandler()")]

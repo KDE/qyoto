@@ -20,7 +20,7 @@ namespace Qt {
 			bool MightBeRichText(string arg1);
 		}
 
-		protected void CreateQStyleSheetProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleSheet), this);
 			_interceptor = (QStyleSheet) realProxy.GetTransparentProxy();
 		}
@@ -45,8 +45,8 @@ namespace Qt {
 			return ProxyQStyleSheet().ClassName();
 		}
 		public QStyleSheet(QObject parent, string name) : this((Type) null) {
-			CreateQStyleSheetProxy();
-			CreateQStyleSheetSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQStyleSheet(parent,name);
 		}
 		[SmokeMethod("QStyleSheet(QObject*, const char*)")]
@@ -54,8 +54,8 @@ namespace Qt {
 			ProxyQStyleSheet().NewQStyleSheet(parent,name);
 		}
 		public QStyleSheet(QObject parent) : this((Type) null) {
-			CreateQStyleSheetProxy();
-			CreateQStyleSheetSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQStyleSheet(parent);
 		}
 		[SmokeMethod("QStyleSheet(QObject*)")]
@@ -63,8 +63,8 @@ namespace Qt {
 			ProxyQStyleSheet().NewQStyleSheet(parent);
 		}
 		public QStyleSheet() : this((Type) null) {
-			CreateQStyleSheetProxy();
-			CreateQStyleSheetSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQStyleSheet();
 		}
 		[SmokeMethod("QStyleSheet()")]
@@ -137,7 +137,7 @@ namespace Qt {
 		private void DisposeQStyleSheet() {
 			ProxyQStyleSheet().DisposeQStyleSheet();
 		}
-		protected void CreateQStyleSheetSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQStyleSheetSignals), this);
 			Q_EMIT = (IQStyleSheetSignals) realProxy.GetTransparentProxy();
 		}

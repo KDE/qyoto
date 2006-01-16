@@ -10,7 +10,7 @@ namespace Qt {
 		interface IQBig5hkscsCodecProxy {
 		}
 
-		protected void CreateQBig5hkscsCodecProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QBig5hkscsCodec), this);
 			_interceptor = (QBig5hkscsCodec) realProxy.GetTransparentProxy();
 		}
@@ -55,7 +55,7 @@ namespace Qt {
 			return ProxyQBig5hkscsCodec().HeuristicNameMatch(hint);
 		}
 		public QBig5hkscsCodec() : this((Type) null) {
-			CreateQBig5hkscsCodecProxy();
+			CreateProxy();
 			NewQBig5hkscsCodec();
 		}
 		[SmokeMethod("QBig5hkscsCodec()")]

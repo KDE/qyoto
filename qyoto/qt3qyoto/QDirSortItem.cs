@@ -12,7 +12,7 @@ namespace Qt {
 		interface IQDirSortItemProxy {
 		}
 
-		protected void CreateQDirSortItemProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDirSortItem), this);
 			_interceptor = (QDirSortItem) realProxy.GetTransparentProxy();
 		}
@@ -29,7 +29,7 @@ namespace Qt {
 		}
 
 		public QDirSortItem() : this((Type) null) {
-			CreateQDirSortItemProxy();
+			CreateProxy();
 			NewQDirSortItem();
 		}
 		[SmokeMethod("QDirSortItem()")]

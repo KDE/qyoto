@@ -10,7 +10,7 @@ namespace Qt {
 			QGLContext CurrentContext();
 		}
 
-		protected void CreateQGLContextProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGLContext), this);
 			_interceptor = (QGLContext) realProxy.GetTransparentProxy();
 		}
@@ -27,7 +27,7 @@ namespace Qt {
 		}
 
 		public QGLContext(QGLFormat format, IQPaintDevice device) : this((Type) null) {
-			CreateQGLContextProxy();
+			CreateProxy();
 			NewQGLContext(format,device);
 		}
 		[SmokeMethod("QGLContext(const QGLFormat&, QPaintDevice*)")]
@@ -35,7 +35,7 @@ namespace Qt {
 			ProxyQGLContext().NewQGLContext(format,device);
 		}
 		public QGLContext(QGLFormat format) : this((Type) null) {
-			CreateQGLContextProxy();
+			CreateProxy();
 			NewQGLContext(format);
 		}
 		[SmokeMethod("QGLContext(const QGLFormat&)")]

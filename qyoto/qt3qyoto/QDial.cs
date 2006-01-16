@@ -15,7 +15,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQDialProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDial), this);
 			_interceptor = (QDial) realProxy.GetTransparentProxy();
 		}
@@ -40,8 +40,8 @@ namespace Qt {
 			return ProxyQDial().ClassName();
 		}
 		public QDial(QWidget parent, string name, int f) : this((Type) null) {
-			CreateQDialProxy();
-			CreateQDialSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQDial(parent,name,f);
 		}
 		[SmokeMethod("QDial(QWidget*, const char*, Qt::WFlags)")]
@@ -49,8 +49,8 @@ namespace Qt {
 			ProxyQDial().NewQDial(parent,name,f);
 		}
 		public QDial(QWidget parent, string name) : this((Type) null) {
-			CreateQDialProxy();
-			CreateQDialSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQDial(parent,name);
 		}
 		[SmokeMethod("QDial(QWidget*, const char*)")]
@@ -58,8 +58,8 @@ namespace Qt {
 			ProxyQDial().NewQDial(parent,name);
 		}
 		public QDial(QWidget parent) : this((Type) null) {
-			CreateQDialProxy();
-			CreateQDialSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQDial(parent);
 		}
 		[SmokeMethod("QDial(QWidget*)")]
@@ -67,8 +67,8 @@ namespace Qt {
 			ProxyQDial().NewQDial(parent);
 		}
 		public QDial() : this((Type) null) {
-			CreateQDialProxy();
-			CreateQDialSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQDial();
 		}
 		[SmokeMethod("QDial()")]
@@ -76,8 +76,8 @@ namespace Qt {
 			ProxyQDial().NewQDial();
 		}
 		public QDial(int minValue, int maxValue, int pageStep, int value, QWidget parent, string name) : this((Type) null) {
-			CreateQDialProxy();
-			CreateQDialSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQDial(minValue,maxValue,pageStep,value,parent,name);
 		}
 		[SmokeMethod("QDial(int, int, int, int, QWidget*, const char*)")]
@@ -85,8 +85,8 @@ namespace Qt {
 			ProxyQDial().NewQDial(minValue,maxValue,pageStep,value,parent,name);
 		}
 		public QDial(int minValue, int maxValue, int pageStep, int value, QWidget parent) : this((Type) null) {
-			CreateQDialProxy();
-			CreateQDialSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQDial(minValue,maxValue,pageStep,value,parent);
 		}
 		[SmokeMethod("QDial(int, int, int, int, QWidget*)")]
@@ -94,8 +94,8 @@ namespace Qt {
 			ProxyQDial().NewQDial(minValue,maxValue,pageStep,value,parent);
 		}
 		public QDial(int minValue, int maxValue, int pageStep, int value) : this((Type) null) {
-			CreateQDialProxy();
-			CreateQDialSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQDial(minValue,maxValue,pageStep,value);
 		}
 		[SmokeMethod("QDial(int, int, int, int)")]
@@ -319,7 +319,7 @@ namespace Qt {
 		protected virtual void StepChange() {
 			ProxyQDial().StepChange();
 		}
-		protected void CreateQDialSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQDialSignals), this);
 			Q_EMIT = (IQDialSignals) realProxy.GetTransparentProxy();
 		}

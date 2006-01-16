@@ -15,7 +15,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQScrollBarProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QScrollBar), this);
 			_interceptor = (QScrollBar) realProxy.GetTransparentProxy();
 		}
@@ -40,8 +40,8 @@ namespace Qt {
 			return ProxyQScrollBar().ClassName();
 		}
 		public QScrollBar(QWidget parent, string name) : this((Type) null) {
-			CreateQScrollBarProxy();
-			CreateQScrollBarSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQScrollBar(parent,name);
 		}
 		[SmokeMethod("QScrollBar(QWidget*, const char*)")]
@@ -49,8 +49,8 @@ namespace Qt {
 			ProxyQScrollBar().NewQScrollBar(parent,name);
 		}
 		public QScrollBar(QWidget parent) : this((Type) null) {
-			CreateQScrollBarProxy();
-			CreateQScrollBarSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQScrollBar(parent);
 		}
 		[SmokeMethod("QScrollBar(QWidget*)")]
@@ -58,8 +58,8 @@ namespace Qt {
 			ProxyQScrollBar().NewQScrollBar(parent);
 		}
 		public QScrollBar(Qt.Orientation arg1, QWidget parent, string name) : this((Type) null) {
-			CreateQScrollBarProxy();
-			CreateQScrollBarSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQScrollBar(arg1,parent,name);
 		}
 		[SmokeMethod("QScrollBar(Qt::Orientation, QWidget*, const char*)")]
@@ -67,8 +67,8 @@ namespace Qt {
 			ProxyQScrollBar().NewQScrollBar(arg1,parent,name);
 		}
 		public QScrollBar(Qt.Orientation arg1, QWidget parent) : this((Type) null) {
-			CreateQScrollBarProxy();
-			CreateQScrollBarSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQScrollBar(arg1,parent);
 		}
 		[SmokeMethod("QScrollBar(Qt::Orientation, QWidget*)")]
@@ -76,8 +76,8 @@ namespace Qt {
 			ProxyQScrollBar().NewQScrollBar(arg1,parent);
 		}
 		public QScrollBar(int minValue, int maxValue, int lineStep, int pageStep, int value, Qt.Orientation arg6, QWidget parent, string name) : this((Type) null) {
-			CreateQScrollBarProxy();
-			CreateQScrollBarSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQScrollBar(minValue,maxValue,lineStep,pageStep,value,arg6,parent,name);
 		}
 		[SmokeMethod("QScrollBar(int, int, int, int, int, Qt::Orientation, QWidget*, const char*)")]
@@ -85,8 +85,8 @@ namespace Qt {
 			ProxyQScrollBar().NewQScrollBar(minValue,maxValue,lineStep,pageStep,value,arg6,parent,name);
 		}
 		public QScrollBar(int minValue, int maxValue, int lineStep, int pageStep, int value, Qt.Orientation arg6, QWidget parent) : this((Type) null) {
-			CreateQScrollBarProxy();
-			CreateQScrollBarSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQScrollBar(minValue,maxValue,lineStep,pageStep,value,arg6,parent);
 		}
 		[SmokeMethod("QScrollBar(int, int, int, int, int, Qt::Orientation, QWidget*)")]
@@ -303,7 +303,7 @@ namespace Qt {
 		protected int PrevValue() {
 			return ProxyQScrollBar().PrevValue();
 		}
-		protected void CreateQScrollBarSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQScrollBarSignals), this);
 			Q_EMIT = (IQScrollBarSignals) realProxy.GetTransparentProxy();
 		}

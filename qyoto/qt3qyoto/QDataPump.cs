@@ -14,7 +14,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQDataPumpProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDataPump), this);
 			_interceptor = (QDataPump) realProxy.GetTransparentProxy();
 		}
@@ -39,8 +39,8 @@ namespace Qt {
 			return ProxyQDataPump().ClassName();
 		}
 		public QDataPump(QDataSource arg1, QDataSink arg2) : this((Type) null) {
-			CreateQDataPumpProxy();
-			CreateQDataPumpSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQDataPump(arg1,arg2);
 		}
 		[SmokeMethod("QDataPump(QDataSource*, QDataSink*)")]
@@ -72,7 +72,7 @@ namespace Qt {
 		private void DisposeQDataPump() {
 			ProxyQDataPump().DisposeQDataPump();
 		}
-		protected void CreateQDataPumpSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQDataPumpSignals), this);
 			Q_EMIT = (IQDataPumpSignals) realProxy.GetTransparentProxy();
 		}

@@ -9,7 +9,7 @@ namespace Qt {
 		interface IQIconDragEventProxy {
 		}
 
-		protected void CreateQIconDragEventProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QIconDragEvent), this);
 			_interceptor = (QIconDragEvent) realProxy.GetTransparentProxy();
 		}
@@ -26,7 +26,7 @@ namespace Qt {
 		}
 
 		public QIconDragEvent() : this((Type) null) {
-			CreateQIconDragEventProxy();
+			CreateProxy();
 			NewQIconDragEvent();
 		}
 		[SmokeMethod("QIconDragEvent()")]

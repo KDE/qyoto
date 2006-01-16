@@ -12,7 +12,7 @@ namespace Qt {
 		interface IQFilePreviewProxy {
 		}
 
-		protected void CreateQFilePreviewProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFilePreview), this);
 			_interceptor = (QFilePreview) realProxy.GetTransparentProxy();
 		}
@@ -29,7 +29,7 @@ namespace Qt {
 		}
 
 		public QFilePreview() : this((Type) null) {
-			CreateQFilePreviewProxy();
+			CreateProxy();
 			NewQFilePreview();
 		}
 		[SmokeMethod("QFilePreview()")]

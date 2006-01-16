@@ -14,7 +14,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQObjectCleanupHandlerProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QObjectCleanupHandler), this);
 			_interceptor = (QObjectCleanupHandler) realProxy.GetTransparentProxy();
 		}
@@ -39,8 +39,8 @@ namespace Qt {
 			return ProxyQObjectCleanupHandler().ClassName();
 		}
 		public QObjectCleanupHandler() : this((Type) null) {
-			CreateQObjectCleanupHandlerProxy();
-			CreateQObjectCleanupHandlerSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQObjectCleanupHandler();
 		}
 		[SmokeMethod("QObjectCleanupHandler()")]
@@ -88,7 +88,7 @@ namespace Qt {
 		private void DisposeQObjectCleanupHandler() {
 			ProxyQObjectCleanupHandler().DisposeQObjectCleanupHandler();
 		}
-		protected void CreateQObjectCleanupHandlerSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQObjectCleanupHandlerSignals), this);
 			Q_EMIT = (IQObjectCleanupHandlerSignals) realProxy.GetTransparentProxy();
 		}

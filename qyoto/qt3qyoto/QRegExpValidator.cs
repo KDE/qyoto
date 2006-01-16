@@ -14,7 +14,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQRegExpValidatorProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QRegExpValidator), this);
 			_interceptor = (QRegExpValidator) realProxy.GetTransparentProxy();
 		}
@@ -39,8 +39,8 @@ namespace Qt {
 			return ProxyQRegExpValidator().ClassName();
 		}
 		public QRegExpValidator(QObject parent, string name) : this((Type) null) {
-			CreateQRegExpValidatorProxy();
-			CreateQRegExpValidatorSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQRegExpValidator(parent,name);
 		}
 		[SmokeMethod("QRegExpValidator(QObject*, const char*)")]
@@ -48,8 +48,8 @@ namespace Qt {
 			ProxyQRegExpValidator().NewQRegExpValidator(parent,name);
 		}
 		public QRegExpValidator(QObject parent) : this((Type) null) {
-			CreateQRegExpValidatorProxy();
-			CreateQRegExpValidatorSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQRegExpValidator(parent);
 		}
 		[SmokeMethod("QRegExpValidator(QObject*)")]
@@ -57,8 +57,8 @@ namespace Qt {
 			ProxyQRegExpValidator().NewQRegExpValidator(parent);
 		}
 		public QRegExpValidator(QRegExp rx, QObject parent, string name) : this((Type) null) {
-			CreateQRegExpValidatorProxy();
-			CreateQRegExpValidatorSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQRegExpValidator(rx,parent,name);
 		}
 		[SmokeMethod("QRegExpValidator(const QRegExp&, QObject*, const char*)")]
@@ -66,8 +66,8 @@ namespace Qt {
 			ProxyQRegExpValidator().NewQRegExpValidator(rx,parent,name);
 		}
 		public QRegExpValidator(QRegExp rx, QObject parent) : this((Type) null) {
-			CreateQRegExpValidatorProxy();
-			CreateQRegExpValidatorSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQRegExpValidator(rx,parent);
 		}
 		[SmokeMethod("QRegExpValidator(const QRegExp&, QObject*)")]
@@ -111,7 +111,7 @@ namespace Qt {
 		private void DisposeQRegExpValidator() {
 			ProxyQRegExpValidator().DisposeQRegExpValidator();
 		}
-		protected void CreateQRegExpValidatorSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQRegExpValidatorSignals), this);
 			Q_EMIT = (IQRegExpValidatorSignals) realProxy.GetTransparentProxy();
 		}

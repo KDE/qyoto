@@ -24,7 +24,7 @@ namespace Qt {
 		interface IQXmlLexicalHandlerProxy {
 		}
 
-		protected void CreateQXmlLexicalHandlerProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlLexicalHandler), this);
 			_interceptor = (QXmlLexicalHandler) realProxy.GetTransparentProxy();
 		}
@@ -73,7 +73,7 @@ namespace Qt {
 			return ProxyQXmlLexicalHandler().ErrorString();
 		}
 		public QXmlLexicalHandler() : this((Type) null) {
-			CreateQXmlLexicalHandlerProxy();
+			CreateProxy();
 			NewQXmlLexicalHandler();
 		}
 		[SmokeMethod("QXmlLexicalHandler()")]

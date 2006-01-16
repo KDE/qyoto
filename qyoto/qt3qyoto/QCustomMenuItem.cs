@@ -9,7 +9,7 @@ namespace Qt {
 		interface IQCustomMenuItemProxy {
 		}
 
-		protected void CreateQCustomMenuItemProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QCustomMenuItem), this);
 			_interceptor = (QCustomMenuItem) realProxy.GetTransparentProxy();
 		}
@@ -26,7 +26,7 @@ namespace Qt {
 		}
 
 		public QCustomMenuItem() : this((Type) null) {
-			CreateQCustomMenuItemProxy();
+			CreateProxy();
 			NewQCustomMenuItem();
 		}
 		[SmokeMethod("QCustomMenuItem()")]

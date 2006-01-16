@@ -12,7 +12,7 @@ namespace Qt {
 		interface IQPolygonScannerProxy {
 		}
 
-		protected void CreateQPolygonScannerProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPolygonScanner), this);
 			_interceptor = (QPolygonScanner) realProxy.GetTransparentProxy();
 		}
@@ -59,7 +59,7 @@ namespace Qt {
 			ProxyQPolygonScanner().ProcessSpans(n,point,out width);
 		}
 		public QPolygonScanner() : this((Type) null) {
-			CreateQPolygonScannerProxy();
+			CreateProxy();
 			NewQPolygonScanner();
 		}
 		[SmokeMethod("QPolygonScanner()")]

@@ -15,7 +15,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQImageFormatPluginProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QImageFormatPlugin), this);
 			_interceptor = (QImageFormatPlugin) realProxy.GetTransparentProxy();
 		}
@@ -40,8 +40,8 @@ namespace Qt {
 			return ProxyQImageFormatPlugin().ClassName();
 		}
 		public QImageFormatPlugin() : this((Type) null) {
-			CreateQImageFormatPluginProxy();
-			CreateQImageFormatPluginSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQImageFormatPlugin();
 		}
 		[SmokeMethod("QImageFormatPlugin()")]
@@ -89,7 +89,7 @@ namespace Qt {
 		private void DisposeQImageFormatPlugin() {
 			ProxyQImageFormatPlugin().DisposeQImageFormatPlugin();
 		}
-		protected void CreateQImageFormatPluginSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQImageFormatPluginSignals), this);
 			Q_EMIT = (IQImageFormatPluginSignals) realProxy.GetTransparentProxy();
 		}

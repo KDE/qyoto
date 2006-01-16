@@ -20,7 +20,7 @@ namespace Qt {
 		interface IQPaintDeviceProxy {
 		}
 
-		protected void CreateQPaintDeviceProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPaintDevice), this);
 			_interceptor = (QPaintDevice) realProxy.GetTransparentProxy();
 		}
@@ -109,7 +109,7 @@ namespace Qt {
 			return ProxyQPaintDevice().Resolution();
 		}
 		public QPaintDevice(uint devflags) : this((Type) null) {
-			CreateQPaintDeviceProxy();
+			CreateProxy();
 			NewQPaintDevice(devflags);
 		}
 		[SmokeMethod("QPaintDevice(uint)")]

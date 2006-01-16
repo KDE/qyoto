@@ -9,7 +9,7 @@ namespace Qt {
 		interface IQDataSourceProxy {
 		}
 
-		protected void CreateQDataSourceProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDataSource), this);
 			_interceptor = (QDataSource) realProxy.GetTransparentProxy();
 		}
@@ -50,7 +50,7 @@ namespace Qt {
 			ProxyQDataSource().Rewind();
 		}
 		public QDataSource() : this((Type) null) {
-			CreateQDataSourceProxy();
+			CreateProxy();
 			NewQDataSource();
 		}
 		[SmokeMethod("QDataSource()")]

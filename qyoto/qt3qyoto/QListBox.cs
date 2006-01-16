@@ -15,7 +15,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQListBoxProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QListBox), this);
 			_interceptor = (QListBox) realProxy.GetTransparentProxy();
 		}
@@ -52,8 +52,8 @@ namespace Qt {
 			return ProxyQListBox().ClassName();
 		}
 		public QListBox(QWidget parent, string name, int f) : this((Type) null) {
-			CreateQListBoxProxy();
-			CreateQListBoxSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQListBox(parent,name,f);
 		}
 		[SmokeMethod("QListBox(QWidget*, const char*, Qt::WFlags)")]
@@ -61,8 +61,8 @@ namespace Qt {
 			ProxyQListBox().NewQListBox(parent,name,f);
 		}
 		public QListBox(QWidget parent, string name) : this((Type) null) {
-			CreateQListBoxProxy();
-			CreateQListBoxSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQListBox(parent,name);
 		}
 		[SmokeMethod("QListBox(QWidget*, const char*)")]
@@ -70,8 +70,8 @@ namespace Qt {
 			ProxyQListBox().NewQListBox(parent,name);
 		}
 		public QListBox(QWidget parent) : this((Type) null) {
-			CreateQListBoxProxy();
-			CreateQListBoxSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQListBox(parent);
 		}
 		[SmokeMethod("QListBox(QWidget*)")]
@@ -79,8 +79,8 @@ namespace Qt {
 			ProxyQListBox().NewQListBox(parent);
 		}
 		public QListBox() : this((Type) null) {
-			CreateQListBoxProxy();
-			CreateQListBoxSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQListBox();
 		}
 		[SmokeMethod("QListBox()")]
@@ -618,7 +618,7 @@ namespace Qt {
 		private void DisposeQListBox() {
 			ProxyQListBox().DisposeQListBox();
 		}
-		protected void CreateQListBoxSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQListBoxSignals), this);
 			Q_EMIT = (IQListBoxSignals) realProxy.GetTransparentProxy();
 		}

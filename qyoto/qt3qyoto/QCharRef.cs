@@ -13,7 +13,7 @@ namespace Qt {
 		interface IQCharRefProxy {
 		}
 
-		protected void CreateQCharRefProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QCharRef), this);
 			_interceptor = (QCharRef) realProxy.GetTransparentProxy();
 		}

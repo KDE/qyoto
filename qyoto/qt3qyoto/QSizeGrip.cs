@@ -14,7 +14,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQSizeGripProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSizeGrip), this);
 			_interceptor = (QSizeGrip) realProxy.GetTransparentProxy();
 		}
@@ -39,8 +39,8 @@ namespace Qt {
 			return ProxyQSizeGrip().ClassName();
 		}
 		public QSizeGrip(QWidget parent, string name) : this((Type) null) {
-			CreateQSizeGripProxy();
-			CreateQSizeGripSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQSizeGrip(parent,name);
 		}
 		[SmokeMethod("QSizeGrip(QWidget*, const char*)")]
@@ -48,8 +48,8 @@ namespace Qt {
 			ProxyQSizeGrip().NewQSizeGrip(parent,name);
 		}
 		public QSizeGrip(QWidget parent) : this((Type) null) {
-			CreateQSizeGripProxy();
-			CreateQSizeGripSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQSizeGrip(parent);
 		}
 		[SmokeMethod("QSizeGrip(QWidget*)")]
@@ -101,7 +101,7 @@ namespace Qt {
 		private void DisposeQSizeGrip() {
 			ProxyQSizeGrip().DisposeQSizeGrip();
 		}
-		protected void CreateQSizeGripSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQSizeGripSignals), this);
 			Q_EMIT = (IQSizeGripSignals) realProxy.GetTransparentProxy();
 		}

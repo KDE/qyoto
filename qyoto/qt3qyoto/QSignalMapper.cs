@@ -15,7 +15,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQSignalMapperProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSignalMapper), this);
 			_interceptor = (QSignalMapper) realProxy.GetTransparentProxy();
 		}
@@ -40,8 +40,8 @@ namespace Qt {
 			return ProxyQSignalMapper().ClassName();
 		}
 		public QSignalMapper(QObject parent, string name) : this((Type) null) {
-			CreateQSignalMapperProxy();
-			CreateQSignalMapperSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQSignalMapper(parent,name);
 		}
 		[SmokeMethod("QSignalMapper(QObject*, const char*)")]
@@ -49,8 +49,8 @@ namespace Qt {
 			ProxyQSignalMapper().NewQSignalMapper(parent,name);
 		}
 		public QSignalMapper(QObject parent) : this((Type) null) {
-			CreateQSignalMapperProxy();
-			CreateQSignalMapperSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQSignalMapper(parent);
 		}
 		[SmokeMethod("QSignalMapper(QObject*)")]
@@ -99,7 +99,7 @@ namespace Qt {
 		private void DisposeQSignalMapper() {
 			ProxyQSignalMapper().DisposeQSignalMapper();
 		}
-		protected void CreateQSignalMapperSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQSignalMapperSignals), this);
 			Q_EMIT = (IQSignalMapperSignals) realProxy.GetTransparentProxy();
 		}

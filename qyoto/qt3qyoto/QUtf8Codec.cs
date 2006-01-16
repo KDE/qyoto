@@ -10,7 +10,7 @@ namespace Qt {
 		interface IQUtf8CodecProxy {
 		}
 
-		protected void CreateQUtf8CodecProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QUtf8Codec), this);
 			_interceptor = (QUtf8Codec) realProxy.GetTransparentProxy();
 		}
@@ -51,7 +51,7 @@ namespace Qt {
 			return ProxyQUtf8Codec().HeuristicContentMatch(chars,len);
 		}
 		public QUtf8Codec() : this((Type) null) {
-			CreateQUtf8CodecProxy();
+			CreateProxy();
 			NewQUtf8Codec();
 		}
 		[SmokeMethod("QUtf8Codec()")]

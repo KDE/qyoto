@@ -20,7 +20,7 @@ namespace Qt {
 			QWMatrix.TransformationMode transformationMode();
 		}
 
-		protected void CreateQWMatrixProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QWMatrix), this);
 			_interceptor = (QWMatrix) realProxy.GetTransparentProxy();
 		}
@@ -41,7 +41,7 @@ namespace Qt {
 			Areas = 1,
 		}
 		public QWMatrix() : this((Type) null) {
-			CreateQWMatrixProxy();
+			CreateProxy();
 			NewQWMatrix();
 		}
 		[SmokeMethod("QWMatrix()")]
@@ -49,7 +49,7 @@ namespace Qt {
 			ProxyQWMatrix().NewQWMatrix();
 		}
 		public QWMatrix(double m11, double m12, double m21, double m22, double dx, double dy) : this((Type) null) {
-			CreateQWMatrixProxy();
+			CreateProxy();
 			NewQWMatrix(m11,m12,m21,m22,dx,dy);
 		}
 		[SmokeMethod("QWMatrix(double, double, double, double, double, double)")]

@@ -12,7 +12,7 @@ namespace Qt {
 		interface IQSqlDriverCreatorBaseProxy {
 		}
 
-		protected void CreateQSqlDriverCreatorBaseProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSqlDriverCreatorBase), this);
 			_interceptor = (QSqlDriverCreatorBase) realProxy.GetTransparentProxy();
 		}

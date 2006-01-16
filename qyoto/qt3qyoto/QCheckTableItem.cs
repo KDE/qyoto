@@ -10,7 +10,7 @@ namespace Qt {
 		interface IQCheckTableItemProxy {
 		}
 
-		protected void CreateQCheckTableItemProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QCheckTableItem), this);
 			_interceptor = (QCheckTableItem) realProxy.GetTransparentProxy();
 		}
@@ -27,7 +27,7 @@ namespace Qt {
 		}
 
 		public QCheckTableItem(QTable table, string txt) : this((Type) null) {
-			CreateQCheckTableItemProxy();
+			CreateProxy();
 			NewQCheckTableItem(table,txt);
 		}
 		[SmokeMethod("QCheckTableItem(QTable*, const QString&)")]

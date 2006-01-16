@@ -14,7 +14,7 @@ namespace Qt {
 			void Cleanup();
 		}
 
-		protected void CreateQPainterProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPainter), this);
 			_interceptor = (QPainter) realProxy.GetTransparentProxy();
 		}
@@ -60,7 +60,7 @@ namespace Qt {
 			LTR = 2,
 		}
 		public QPainter() : this((Type) null) {
-			CreateQPainterProxy();
+			CreateProxy();
 			NewQPainter();
 		}
 		[SmokeMethod("QPainter()")]
@@ -68,7 +68,7 @@ namespace Qt {
 			ProxyQPainter().NewQPainter();
 		}
 		public QPainter(IQPaintDevice arg1, bool unclipped) : this((Type) null) {
-			CreateQPainterProxy();
+			CreateProxy();
 			NewQPainter(arg1,unclipped);
 		}
 		[SmokeMethod("QPainter(const QPaintDevice*, bool)")]
@@ -76,7 +76,7 @@ namespace Qt {
 			ProxyQPainter().NewQPainter(arg1,unclipped);
 		}
 		public QPainter(IQPaintDevice arg1) : this((Type) null) {
-			CreateQPainterProxy();
+			CreateProxy();
 			NewQPainter(arg1);
 		}
 		[SmokeMethod("QPainter(const QPaintDevice*)")]
@@ -84,7 +84,7 @@ namespace Qt {
 			ProxyQPainter().NewQPainter(arg1);
 		}
 		public QPainter(IQPaintDevice arg1, QWidget arg2, bool unclipped) : this((Type) null) {
-			CreateQPainterProxy();
+			CreateProxy();
 			NewQPainter(arg1,arg2,unclipped);
 		}
 		[SmokeMethod("QPainter(const QPaintDevice*, const QWidget*, bool)")]
@@ -92,7 +92,7 @@ namespace Qt {
 			ProxyQPainter().NewQPainter(arg1,arg2,unclipped);
 		}
 		public QPainter(IQPaintDevice arg1, QWidget arg2) : this((Type) null) {
-			CreateQPainterProxy();
+			CreateProxy();
 			NewQPainter(arg1,arg2);
 		}
 		[SmokeMethod("QPainter(const QPaintDevice*, const QWidget*)")]

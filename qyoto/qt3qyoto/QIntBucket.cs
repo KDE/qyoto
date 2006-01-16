@@ -9,7 +9,7 @@ namespace Qt {
 		interface IQIntBucketProxy {
 		}
 
-		protected void CreateQIntBucketProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QIntBucket), this);
 			_interceptor = (QIntBucket) realProxy.GetTransparentProxy();
 		}

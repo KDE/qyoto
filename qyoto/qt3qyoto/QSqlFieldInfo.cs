@@ -14,7 +14,7 @@ namespace Qt {
 			bool op_equals(QSqlFieldInfo lhs, QSqlFieldInfo f);
 		}
 
-		protected void CreateQSqlFieldInfoProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSqlFieldInfo), this);
 			_interceptor = (QSqlFieldInfo) realProxy.GetTransparentProxy();
 		}
@@ -31,7 +31,7 @@ namespace Qt {
 		}
 
 		public QSqlFieldInfo(string name, QVariant.E_Type typ, int required, int len, int prec, QVariant defValue, int sqlType, bool generated, bool trim, bool calculated) : this((Type) null) {
-			CreateQSqlFieldInfoProxy();
+			CreateProxy();
 			NewQSqlFieldInfo(name,typ,required,len,prec,defValue,sqlType,generated,trim,calculated);
 		}
 		[SmokeMethod("QSqlFieldInfo(const QString&, QVariant::Type, int, int, int, const QVariant&, int, bool, bool, bool)")]
@@ -39,7 +39,7 @@ namespace Qt {
 			ProxyQSqlFieldInfo().NewQSqlFieldInfo(name,typ,required,len,prec,defValue,sqlType,generated,trim,calculated);
 		}
 		public QSqlFieldInfo(string name, QVariant.E_Type typ, int required, int len, int prec, QVariant defValue, int sqlType, bool generated, bool trim) : this((Type) null) {
-			CreateQSqlFieldInfoProxy();
+			CreateProxy();
 			NewQSqlFieldInfo(name,typ,required,len,prec,defValue,sqlType,generated,trim);
 		}
 		[SmokeMethod("QSqlFieldInfo(const QString&, QVariant::Type, int, int, int, const QVariant&, int, bool, bool)")]
@@ -47,7 +47,7 @@ namespace Qt {
 			ProxyQSqlFieldInfo().NewQSqlFieldInfo(name,typ,required,len,prec,defValue,sqlType,generated,trim);
 		}
 		public QSqlFieldInfo(string name, QVariant.E_Type typ, int required, int len, int prec, QVariant defValue, int sqlType, bool generated) : this((Type) null) {
-			CreateQSqlFieldInfoProxy();
+			CreateProxy();
 			NewQSqlFieldInfo(name,typ,required,len,prec,defValue,sqlType,generated);
 		}
 		[SmokeMethod("QSqlFieldInfo(const QString&, QVariant::Type, int, int, int, const QVariant&, int, bool)")]
@@ -55,7 +55,7 @@ namespace Qt {
 			ProxyQSqlFieldInfo().NewQSqlFieldInfo(name,typ,required,len,prec,defValue,sqlType,generated);
 		}
 		public QSqlFieldInfo(string name, QVariant.E_Type typ, int required, int len, int prec, QVariant defValue, int sqlType) : this((Type) null) {
-			CreateQSqlFieldInfoProxy();
+			CreateProxy();
 			NewQSqlFieldInfo(name,typ,required,len,prec,defValue,sqlType);
 		}
 		[SmokeMethod("QSqlFieldInfo(const QString&, QVariant::Type, int, int, int, const QVariant&, int)")]
@@ -63,7 +63,7 @@ namespace Qt {
 			ProxyQSqlFieldInfo().NewQSqlFieldInfo(name,typ,required,len,prec,defValue,sqlType);
 		}
 		public QSqlFieldInfo(string name, QVariant.E_Type typ, int required, int len, int prec, QVariant defValue) : this((Type) null) {
-			CreateQSqlFieldInfoProxy();
+			CreateProxy();
 			NewQSqlFieldInfo(name,typ,required,len,prec,defValue);
 		}
 		[SmokeMethod("QSqlFieldInfo(const QString&, QVariant::Type, int, int, int, const QVariant&)")]
@@ -71,7 +71,7 @@ namespace Qt {
 			ProxyQSqlFieldInfo().NewQSqlFieldInfo(name,typ,required,len,prec,defValue);
 		}
 		public QSqlFieldInfo(string name, QVariant.E_Type typ, int required, int len, int prec) : this((Type) null) {
-			CreateQSqlFieldInfoProxy();
+			CreateProxy();
 			NewQSqlFieldInfo(name,typ,required,len,prec);
 		}
 		[SmokeMethod("QSqlFieldInfo(const QString&, QVariant::Type, int, int, int)")]
@@ -79,7 +79,7 @@ namespace Qt {
 			ProxyQSqlFieldInfo().NewQSqlFieldInfo(name,typ,required,len,prec);
 		}
 		public QSqlFieldInfo(string name, QVariant.E_Type typ, int required, int len) : this((Type) null) {
-			CreateQSqlFieldInfoProxy();
+			CreateProxy();
 			NewQSqlFieldInfo(name,typ,required,len);
 		}
 		[SmokeMethod("QSqlFieldInfo(const QString&, QVariant::Type, int, int)")]
@@ -87,7 +87,7 @@ namespace Qt {
 			ProxyQSqlFieldInfo().NewQSqlFieldInfo(name,typ,required,len);
 		}
 		public QSqlFieldInfo(string name, QVariant.E_Type typ, int required) : this((Type) null) {
-			CreateQSqlFieldInfoProxy();
+			CreateProxy();
 			NewQSqlFieldInfo(name,typ,required);
 		}
 		[SmokeMethod("QSqlFieldInfo(const QString&, QVariant::Type, int)")]
@@ -95,7 +95,7 @@ namespace Qt {
 			ProxyQSqlFieldInfo().NewQSqlFieldInfo(name,typ,required);
 		}
 		public QSqlFieldInfo(string name, QVariant.E_Type typ) : this((Type) null) {
-			CreateQSqlFieldInfoProxy();
+			CreateProxy();
 			NewQSqlFieldInfo(name,typ);
 		}
 		[SmokeMethod("QSqlFieldInfo(const QString&, QVariant::Type)")]
@@ -103,7 +103,7 @@ namespace Qt {
 			ProxyQSqlFieldInfo().NewQSqlFieldInfo(name,typ);
 		}
 		public QSqlFieldInfo(string name) : this((Type) null) {
-			CreateQSqlFieldInfoProxy();
+			CreateProxy();
 			NewQSqlFieldInfo(name);
 		}
 		[SmokeMethod("QSqlFieldInfo(const QString&)")]
@@ -111,7 +111,7 @@ namespace Qt {
 			ProxyQSqlFieldInfo().NewQSqlFieldInfo(name);
 		}
 		public QSqlFieldInfo() : this((Type) null) {
-			CreateQSqlFieldInfoProxy();
+			CreateProxy();
 			NewQSqlFieldInfo();
 		}
 		[SmokeMethod("QSqlFieldInfo()")]
@@ -119,7 +119,7 @@ namespace Qt {
 			ProxyQSqlFieldInfo().NewQSqlFieldInfo();
 		}
 		public QSqlFieldInfo(QSqlFieldInfo other) : this((Type) null) {
-			CreateQSqlFieldInfoProxy();
+			CreateProxy();
 			NewQSqlFieldInfo(other);
 		}
 		[SmokeMethod("QSqlFieldInfo(const QSqlFieldInfo&)")]
@@ -127,7 +127,7 @@ namespace Qt {
 			ProxyQSqlFieldInfo().NewQSqlFieldInfo(other);
 		}
 		public QSqlFieldInfo(QSqlField other, bool generated) : this((Type) null) {
-			CreateQSqlFieldInfoProxy();
+			CreateProxy();
 			NewQSqlFieldInfo(other,generated);
 		}
 		[SmokeMethod("QSqlFieldInfo(const QSqlField&, bool)")]
@@ -135,7 +135,7 @@ namespace Qt {
 			ProxyQSqlFieldInfo().NewQSqlFieldInfo(other,generated);
 		}
 		public QSqlFieldInfo(QSqlField other) : this((Type) null) {
-			CreateQSqlFieldInfoProxy();
+			CreateProxy();
 			NewQSqlFieldInfo(other);
 		}
 		[SmokeMethod("QSqlFieldInfo(const QSqlField&)")]

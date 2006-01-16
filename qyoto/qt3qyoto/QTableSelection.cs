@@ -13,7 +13,7 @@ namespace Qt {
 			bool op_equals(QTableSelection lhs, QTableSelection s);
 		}
 
-		protected void CreateQTableSelectionProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTableSelection), this);
 			_interceptor = (QTableSelection) realProxy.GetTransparentProxy();
 		}
@@ -30,7 +30,7 @@ namespace Qt {
 		}
 
 		public QTableSelection() : this((Type) null) {
-			CreateQTableSelectionProxy();
+			CreateProxy();
 			NewQTableSelection();
 		}
 		[SmokeMethod("QTableSelection()")]
@@ -38,7 +38,7 @@ namespace Qt {
 			ProxyQTableSelection().NewQTableSelection();
 		}
 		public QTableSelection(int start_row, int start_col, int end_row, int end_col) : this((Type) null) {
-			CreateQTableSelectionProxy();
+			CreateProxy();
 			NewQTableSelection(start_row,start_col,end_row,end_col);
 		}
 		[SmokeMethod("QTableSelection(int, int, int, int)")]

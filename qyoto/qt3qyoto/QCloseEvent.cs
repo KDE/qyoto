@@ -9,7 +9,7 @@ namespace Qt {
 		interface IQCloseEventProxy {
 		}
 
-		protected void CreateQCloseEventProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QCloseEvent), this);
 			_interceptor = (QCloseEvent) realProxy.GetTransparentProxy();
 		}
@@ -26,7 +26,7 @@ namespace Qt {
 		}
 
 		public QCloseEvent() : this((Type) null) {
-			CreateQCloseEventProxy();
+			CreateProxy();
 			NewQCloseEvent();
 		}
 		[SmokeMethod("QCloseEvent()")]

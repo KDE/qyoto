@@ -10,7 +10,7 @@ namespace Qt {
 		interface IQXmlSimpleReaderProxy {
 		}
 
-		protected void CreateQXmlSimpleReaderProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlSimpleReader), this);
 			_interceptor = (QXmlSimpleReader) realProxy.GetTransparentProxy();
 		}
@@ -27,7 +27,7 @@ namespace Qt {
 		}
 
 		public QXmlSimpleReader() : this((Type) null) {
-			CreateQXmlSimpleReaderProxy();
+			CreateProxy();
 			NewQXmlSimpleReader();
 		}
 		[SmokeMethod("QXmlSimpleReader()")]

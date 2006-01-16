@@ -13,7 +13,7 @@ namespace Qt {
 		interface IQSimpleRichTextProxy {
 		}
 
-		protected void CreateQSimpleRichTextProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSimpleRichText), this);
 			_interceptor = (QSimpleRichText) realProxy.GetTransparentProxy();
 		}
@@ -30,7 +30,7 @@ namespace Qt {
 		}
 
 		public QSimpleRichText(string text, QFont fnt, string context, QStyleSheet sheet) : this((Type) null) {
-			CreateQSimpleRichTextProxy();
+			CreateProxy();
 			NewQSimpleRichText(text,fnt,context,sheet);
 		}
 		[SmokeMethod("QSimpleRichText(const QString&, const QFont&, const QString&, const QStyleSheet*)")]
@@ -38,7 +38,7 @@ namespace Qt {
 			ProxyQSimpleRichText().NewQSimpleRichText(text,fnt,context,sheet);
 		}
 		public QSimpleRichText(string text, QFont fnt, string context) : this((Type) null) {
-			CreateQSimpleRichTextProxy();
+			CreateProxy();
 			NewQSimpleRichText(text,fnt,context);
 		}
 		[SmokeMethod("QSimpleRichText(const QString&, const QFont&, const QString&)")]
@@ -46,7 +46,7 @@ namespace Qt {
 			ProxyQSimpleRichText().NewQSimpleRichText(text,fnt,context);
 		}
 		public QSimpleRichText(string text, QFont fnt) : this((Type) null) {
-			CreateQSimpleRichTextProxy();
+			CreateProxy();
 			NewQSimpleRichText(text,fnt);
 		}
 		[SmokeMethod("QSimpleRichText(const QString&, const QFont&)")]
@@ -54,7 +54,7 @@ namespace Qt {
 			ProxyQSimpleRichText().NewQSimpleRichText(text,fnt);
 		}
 		public QSimpleRichText(string text, QFont fnt, string context, QStyleSheet sheet, QMimeSourceFactory factory, int pageBreak, QColor linkColor, bool linkUnderline) : this((Type) null) {
-			CreateQSimpleRichTextProxy();
+			CreateProxy();
 			NewQSimpleRichText(text,fnt,context,sheet,factory,pageBreak,linkColor,linkUnderline);
 		}
 		[SmokeMethod("QSimpleRichText(const QString&, const QFont&, const QString&, const QStyleSheet*, const QMimeSourceFactory*, int, const QColor&, bool)")]
@@ -62,7 +62,7 @@ namespace Qt {
 			ProxyQSimpleRichText().NewQSimpleRichText(text,fnt,context,sheet,factory,pageBreak,linkColor,linkUnderline);
 		}
 		public QSimpleRichText(string text, QFont fnt, string context, QStyleSheet sheet, QMimeSourceFactory factory, int pageBreak, QColor linkColor) : this((Type) null) {
-			CreateQSimpleRichTextProxy();
+			CreateProxy();
 			NewQSimpleRichText(text,fnt,context,sheet,factory,pageBreak,linkColor);
 		}
 		[SmokeMethod("QSimpleRichText(const QString&, const QFont&, const QString&, const QStyleSheet*, const QMimeSourceFactory*, int, const QColor&)")]
@@ -70,7 +70,7 @@ namespace Qt {
 			ProxyQSimpleRichText().NewQSimpleRichText(text,fnt,context,sheet,factory,pageBreak,linkColor);
 		}
 		public QSimpleRichText(string text, QFont fnt, string context, QStyleSheet sheet, QMimeSourceFactory factory, int pageBreak) : this((Type) null) {
-			CreateQSimpleRichTextProxy();
+			CreateProxy();
 			NewQSimpleRichText(text,fnt,context,sheet,factory,pageBreak);
 		}
 		[SmokeMethod("QSimpleRichText(const QString&, const QFont&, const QString&, const QStyleSheet*, const QMimeSourceFactory*, int)")]
@@ -78,7 +78,7 @@ namespace Qt {
 			ProxyQSimpleRichText().NewQSimpleRichText(text,fnt,context,sheet,factory,pageBreak);
 		}
 		public QSimpleRichText(string text, QFont fnt, string context, QStyleSheet sheet, QMimeSourceFactory factory) : this((Type) null) {
-			CreateQSimpleRichTextProxy();
+			CreateProxy();
 			NewQSimpleRichText(text,fnt,context,sheet,factory);
 		}
 		[SmokeMethod("QSimpleRichText(const QString&, const QFont&, const QString&, const QStyleSheet*, const QMimeSourceFactory*)")]

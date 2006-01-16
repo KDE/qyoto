@@ -9,7 +9,7 @@ namespace Qt {
 		interface IQMouseEventProxy {
 		}
 
-		protected void CreateQMouseEventProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMouseEvent), this);
 			_interceptor = (QMouseEvent) realProxy.GetTransparentProxy();
 		}
@@ -26,7 +26,7 @@ namespace Qt {
 		}
 
 		public QMouseEvent(QEvent.E_Type type, QPoint pos, int button, int state) : this((Type) null) {
-			CreateQMouseEventProxy();
+			CreateProxy();
 			NewQMouseEvent(type,pos,button,state);
 		}
 		[SmokeMethod("QMouseEvent(QEvent::Type, const QPoint&, int, int)")]
@@ -34,7 +34,7 @@ namespace Qt {
 			ProxyQMouseEvent().NewQMouseEvent(type,pos,button,state);
 		}
 		public QMouseEvent(QEvent.E_Type type, QPoint pos, QPoint globalPos, int button, int state) : this((Type) null) {
-			CreateQMouseEventProxy();
+			CreateProxy();
 			NewQMouseEvent(type,pos,globalPos,button,state);
 		}
 		[SmokeMethod("QMouseEvent(QEvent::Type, const QPoint&, const QPoint&, int, int)")]

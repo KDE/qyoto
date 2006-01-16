@@ -9,7 +9,7 @@ namespace Qt {
 		interface IQTimerEventProxy {
 		}
 
-		protected void CreateQTimerEventProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTimerEvent), this);
 			_interceptor = (QTimerEvent) realProxy.GetTransparentProxy();
 		}
@@ -26,7 +26,7 @@ namespace Qt {
 		}
 
 		public QTimerEvent(int timerId) : this((Type) null) {
-			CreateQTimerEventProxy();
+			CreateProxy();
 			NewQTimerEvent(timerId);
 		}
 		[SmokeMethod("QTimerEvent(int)")]

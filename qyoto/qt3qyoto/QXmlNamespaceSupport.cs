@@ -14,7 +14,7 @@ namespace Qt {
 		interface IQXmlNamespaceSupportProxy {
 		}
 
-		protected void CreateQXmlNamespaceSupportProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlNamespaceSupport), this);
 			_interceptor = (QXmlNamespaceSupport) realProxy.GetTransparentProxy();
 		}
@@ -31,7 +31,7 @@ namespace Qt {
 		}
 
 		public QXmlNamespaceSupport() : this((Type) null) {
-			CreateQXmlNamespaceSupportProxy();
+			CreateProxy();
 			NewQXmlNamespaceSupport();
 		}
 		[SmokeMethod("QXmlNamespaceSupport()")]

@@ -12,7 +12,7 @@ namespace Qt {
 			void ResetReason();
 		}
 
-		protected void CreateQFocusEventProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFocusEvent), this);
 			_interceptor = (QFocusEvent) realProxy.GetTransparentProxy();
 		}
@@ -38,7 +38,7 @@ namespace Qt {
 			Other = 6,
 		}
 		public QFocusEvent(QEvent.E_Type type) : this((Type) null) {
-			CreateQFocusEventProxy();
+			CreateProxy();
 			NewQFocusEvent(type);
 		}
 		[SmokeMethod("QFocusEvent(QEvent::Type)")]

@@ -17,7 +17,7 @@ namespace Qt {
 			QUuid CreateUuid();
 		}
 
-		protected void CreateQUuidProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QUuid), this);
 			_interceptor = (QUuid) realProxy.GetTransparentProxy();
 		}
@@ -48,7 +48,7 @@ namespace Qt {
 			Random = 4,
 		}
 		public QUuid() : this((Type) null) {
-			CreateQUuidProxy();
+			CreateProxy();
 			NewQUuid();
 		}
 		[SmokeMethod("QUuid()")]
@@ -56,7 +56,7 @@ namespace Qt {
 			ProxyQUuid().NewQUuid();
 		}
 		public QUuid(uint l, ushort w1, ushort w2, ushort b1, ushort b2, ushort b3, ushort b4, ushort b5, ushort b6, ushort b7, ushort b8) : this((Type) null) {
-			CreateQUuidProxy();
+			CreateProxy();
 			NewQUuid(l,w1,w2,b1,b2,b3,b4,b5,b6,b7,b8);
 		}
 		[SmokeMethod("QUuid(uint, ushort, ushort, uchar, uchar, uchar, uchar, uchar, uchar, uchar, uchar)")]
@@ -64,7 +64,7 @@ namespace Qt {
 			ProxyQUuid().NewQUuid(l,w1,w2,b1,b2,b3,b4,b5,b6,b7,b8);
 		}
 		public QUuid(QUuid uuid) : this((Type) null) {
-			CreateQUuidProxy();
+			CreateProxy();
 			NewQUuid(uuid);
 		}
 		[SmokeMethod("QUuid(const QUuid&)")]
@@ -72,7 +72,7 @@ namespace Qt {
 			ProxyQUuid().NewQUuid(uuid);
 		}
 		public QUuid(string arg1) : this((Type) null) {
-			CreateQUuidProxy();
+			CreateProxy();
 			NewQUuid(arg1);
 		}
 		[SmokeMethod("QUuid(const QString&)")]

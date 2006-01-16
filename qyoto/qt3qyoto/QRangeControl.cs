@@ -30,7 +30,7 @@ namespace Qt {
 		interface IQRangeControlProxy {
 		}
 
-		protected void CreateQRangeControlProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QRangeControl), this);
 			_interceptor = (QRangeControl) realProxy.GetTransparentProxy();
 		}
@@ -47,7 +47,7 @@ namespace Qt {
 		}
 
 		public QRangeControl() : this((Type) null) {
-			CreateQRangeControlProxy();
+			CreateProxy();
 			NewQRangeControl();
 		}
 		[SmokeMethod("QRangeControl()")]
@@ -55,7 +55,7 @@ namespace Qt {
 			ProxyQRangeControl().NewQRangeControl();
 		}
 		public QRangeControl(int minValue, int maxValue, int lineStep, int pageStep, int value) : this((Type) null) {
-			CreateQRangeControlProxy();
+			CreateProxy();
 			NewQRangeControl(minValue,maxValue,lineStep,pageStep,value);
 		}
 		[SmokeMethod("QRangeControl(int, int, int, int, int)")]

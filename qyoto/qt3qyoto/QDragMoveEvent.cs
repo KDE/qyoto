@@ -9,7 +9,7 @@ namespace Qt {
 		interface IQDragMoveEventProxy {
 		}
 
-		protected void CreateQDragMoveEventProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDragMoveEvent), this);
 			_interceptor = (QDragMoveEvent) realProxy.GetTransparentProxy();
 		}
@@ -26,7 +26,7 @@ namespace Qt {
 		}
 
 		public QDragMoveEvent(QPoint pos, QEvent.E_Type typ) : this((Type) null) {
-			CreateQDragMoveEventProxy();
+			CreateProxy();
 			NewQDragMoveEvent(pos,typ);
 		}
 		[SmokeMethod("QDragMoveEvent(const QPoint&, QEvent::Type)")]
@@ -34,7 +34,7 @@ namespace Qt {
 			ProxyQDragMoveEvent().NewQDragMoveEvent(pos,typ);
 		}
 		public QDragMoveEvent(QPoint pos) : this((Type) null) {
-			CreateQDragMoveEventProxy();
+			CreateProxy();
 			NewQDragMoveEvent(pos);
 		}
 		[SmokeMethod("QDragMoveEvent(const QPoint&)")]

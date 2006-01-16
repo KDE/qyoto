@@ -24,7 +24,7 @@ namespace Qt {
 			bool IsValid(int h, int m, int s);
 		}
 
-		protected void CreateQTimeProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTime), this);
 			_interceptor = (QTime) realProxy.GetTransparentProxy();
 		}
@@ -41,7 +41,7 @@ namespace Qt {
 		}
 
 		public QTime() : this((Type) null) {
-			CreateQTimeProxy();
+			CreateProxy();
 			NewQTime();
 		}
 		[SmokeMethod("QTime()")]
@@ -49,7 +49,7 @@ namespace Qt {
 			ProxyQTime().NewQTime();
 		}
 		public QTime(int h, int m, int s, int ms) : this((Type) null) {
-			CreateQTimeProxy();
+			CreateProxy();
 			NewQTime(h,m,s,ms);
 		}
 		[SmokeMethod("QTime(int, int, int, int)")]
@@ -57,7 +57,7 @@ namespace Qt {
 			ProxyQTime().NewQTime(h,m,s,ms);
 		}
 		public QTime(int h, int m, int s) : this((Type) null) {
-			CreateQTimeProxy();
+			CreateProxy();
 			NewQTime(h,m,s);
 		}
 		[SmokeMethod("QTime(int, int, int)")]
@@ -65,7 +65,7 @@ namespace Qt {
 			ProxyQTime().NewQTime(h,m,s);
 		}
 		public QTime(int h, int m) : this((Type) null) {
-			CreateQTimeProxy();
+			CreateProxy();
 			NewQTime(h,m);
 		}
 		[SmokeMethod("QTime(int, int)")]

@@ -14,7 +14,7 @@ namespace Qt {
 			bool NetworkOrdered();
 		}
 
-		protected void CreateQCharProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QChar), this);
 			_interceptor = (QChar) realProxy.GetTransparentProxy();
 		}
@@ -133,7 +133,7 @@ namespace Qt {
 			Combining_IotaSubscript = 240,
 		}
 		public QChar() : this((Type) null) {
-			CreateQCharProxy();
+			CreateProxy();
 			NewQChar();
 		}
 		[SmokeMethod("QChar()")]
@@ -141,7 +141,7 @@ namespace Qt {
 			ProxyQChar().NewQChar();
 		}
 		public QChar(char c) : this((Type) null) {
-			CreateQCharProxy();
+			CreateProxy();
 			NewQChar(c);
 		}
 		[SmokeMethod("QChar(char)")]
@@ -149,7 +149,7 @@ namespace Qt {
 			ProxyQChar().NewQChar(c);
 		}
 		public QChar(ushort c) : this((Type) null) {
-			CreateQCharProxy();
+			CreateProxy();
 			NewQChar(c);
 		}
 		[SmokeMethod("QChar(uchar)")]
@@ -157,7 +157,7 @@ namespace Qt {
 			ProxyQChar().NewQChar(c);
 		}
 		public QChar(ushort c, ushort r) : this((Type) null) {
-			CreateQCharProxy();
+			CreateProxy();
 			NewQChar(c,r);
 		}
 		[SmokeMethod("QChar(uchar, uchar)")]
@@ -165,7 +165,7 @@ namespace Qt {
 			ProxyQChar().NewQChar(c,r);
 		}
 		public QChar(short rc) : this((Type) null) {
-			CreateQCharProxy();
+			CreateProxy();
 			NewQChar(rc);
 		}
 		[SmokeMethod("QChar(short)")]
@@ -173,7 +173,7 @@ namespace Qt {
 			ProxyQChar().NewQChar(rc);
 		}
 		public QChar(uint rc) : this((Type) null) {
-			CreateQCharProxy();
+			CreateProxy();
 			NewQChar(rc);
 		}
 		[SmokeMethod("QChar(uint)")]
@@ -181,7 +181,7 @@ namespace Qt {
 			ProxyQChar().NewQChar(rc);
 		}
 		public QChar(int rc) : this((Type) null) {
-			CreateQCharProxy();
+			CreateProxy();
 			NewQChar(rc);
 		}
 		[SmokeMethod("QChar(int)")]

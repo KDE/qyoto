@@ -14,7 +14,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQDockAreaProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDockArea), this);
 			_interceptor = (QDockArea) realProxy.GetTransparentProxy();
 		}
@@ -43,8 +43,8 @@ namespace Qt {
 			return ProxyQDockArea().ClassName();
 		}
 		public QDockArea(Qt.Orientation o, QDockArea.HandlePosition h, QWidget parent, string name) : this((Type) null) {
-			CreateQDockAreaProxy();
-			CreateQDockAreaSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQDockArea(o,h,parent,name);
 		}
 		[SmokeMethod("QDockArea(Qt::Orientation, QDockArea::HandlePosition, QWidget*, const char*)")]
@@ -52,8 +52,8 @@ namespace Qt {
 			ProxyQDockArea().NewQDockArea(o,h,parent,name);
 		}
 		public QDockArea(Qt.Orientation o, QDockArea.HandlePosition h, QWidget parent) : this((Type) null) {
-			CreateQDockAreaProxy();
-			CreateQDockAreaSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQDockArea(o,h,parent);
 		}
 		[SmokeMethod("QDockArea(Qt::Orientation, QDockArea::HandlePosition, QWidget*)")]
@@ -61,8 +61,8 @@ namespace Qt {
 			ProxyQDockArea().NewQDockArea(o,h,parent);
 		}
 		public QDockArea(Qt.Orientation o, QDockArea.HandlePosition h) : this((Type) null) {
-			CreateQDockAreaProxy();
-			CreateQDockAreaSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQDockArea(o,h);
 		}
 		[SmokeMethod("QDockArea(Qt::Orientation, QDockArea::HandlePosition)")]
@@ -70,8 +70,8 @@ namespace Qt {
 			ProxyQDockArea().NewQDockArea(o,h);
 		}
 		public QDockArea(Qt.Orientation o) : this((Type) null) {
-			CreateQDockAreaProxy();
-			CreateQDockAreaSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQDockArea(o);
 		}
 		[SmokeMethod("QDockArea(Qt::Orientation)")]
@@ -169,7 +169,7 @@ namespace Qt {
 		private void DisposeQDockArea() {
 			ProxyQDockArea().DisposeQDockArea();
 		}
-		protected void CreateQDockAreaSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQDockAreaSignals), this);
 			Q_EMIT = (IQDockAreaSignals) realProxy.GetTransparentProxy();
 		}

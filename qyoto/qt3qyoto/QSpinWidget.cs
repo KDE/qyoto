@@ -15,7 +15,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQSpinWidgetProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSpinWidget), this);
 			_interceptor = (QSpinWidget) realProxy.GetTransparentProxy();
 		}
@@ -44,8 +44,8 @@ namespace Qt {
 			return ProxyQSpinWidget().ClassName();
 		}
 		public QSpinWidget(QWidget parent, string name) : this((Type) null) {
-			CreateQSpinWidgetProxy();
-			CreateQSpinWidgetSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQSpinWidget(parent,name);
 		}
 		[SmokeMethod("QSpinWidget(QWidget*, const char*)")]
@@ -53,8 +53,8 @@ namespace Qt {
 			ProxyQSpinWidget().NewQSpinWidget(parent,name);
 		}
 		public QSpinWidget(QWidget parent) : this((Type) null) {
-			CreateQSpinWidgetProxy();
-			CreateQSpinWidgetSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQSpinWidget(parent);
 		}
 		[SmokeMethod("QSpinWidget(QWidget*)")]
@@ -62,8 +62,8 @@ namespace Qt {
 			ProxyQSpinWidget().NewQSpinWidget(parent);
 		}
 		public QSpinWidget() : this((Type) null) {
-			CreateQSpinWidgetProxy();
-			CreateQSpinWidgetSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQSpinWidget();
 		}
 		[SmokeMethod("QSpinWidget()")]
@@ -185,7 +185,7 @@ namespace Qt {
 		private void DisposeQSpinWidget() {
 			ProxyQSpinWidget().DisposeQSpinWidget();
 		}
-		protected void CreateQSpinWidgetSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQSpinWidgetSignals), this);
 			Q_EMIT = (IQSpinWidgetSignals) realProxy.GetTransparentProxy();
 		}

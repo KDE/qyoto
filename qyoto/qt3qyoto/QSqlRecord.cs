@@ -14,7 +14,7 @@ namespace Qt {
 		interface IQSqlRecordProxy {
 		}
 
-		protected void CreateQSqlRecordProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSqlRecord), this);
 			_interceptor = (QSqlRecord) realProxy.GetTransparentProxy();
 		}
@@ -31,7 +31,7 @@ namespace Qt {
 		}
 
 		public QSqlRecord() : this((Type) null) {
-			CreateQSqlRecordProxy();
+			CreateProxy();
 			NewQSqlRecord();
 		}
 		[SmokeMethod("QSqlRecord()")]
@@ -39,7 +39,7 @@ namespace Qt {
 			ProxyQSqlRecord().NewQSqlRecord();
 		}
 		public QSqlRecord(QSqlRecord other) : this((Type) null) {
-			CreateQSqlRecordProxy();
+			CreateProxy();
 			NewQSqlRecord(other);
 		}
 		[SmokeMethod("QSqlRecord(const QSqlRecord&)")]

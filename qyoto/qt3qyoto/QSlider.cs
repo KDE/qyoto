@@ -15,7 +15,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQSliderProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSlider), this);
 			_interceptor = (QSlider) realProxy.GetTransparentProxy();
 		}
@@ -48,8 +48,8 @@ namespace Qt {
 			return ProxyQSlider().ClassName();
 		}
 		public QSlider(QWidget parent, string name) : this((Type) null) {
-			CreateQSliderProxy();
-			CreateQSliderSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQSlider(parent,name);
 		}
 		[SmokeMethod("QSlider(QWidget*, const char*)")]
@@ -57,8 +57,8 @@ namespace Qt {
 			ProxyQSlider().NewQSlider(parent,name);
 		}
 		public QSlider(QWidget parent) : this((Type) null) {
-			CreateQSliderProxy();
-			CreateQSliderSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQSlider(parent);
 		}
 		[SmokeMethod("QSlider(QWidget*)")]
@@ -66,8 +66,8 @@ namespace Qt {
 			ProxyQSlider().NewQSlider(parent);
 		}
 		public QSlider(Qt.Orientation arg1, QWidget parent, string name) : this((Type) null) {
-			CreateQSliderProxy();
-			CreateQSliderSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQSlider(arg1,parent,name);
 		}
 		[SmokeMethod("QSlider(Qt::Orientation, QWidget*, const char*)")]
@@ -75,8 +75,8 @@ namespace Qt {
 			ProxyQSlider().NewQSlider(arg1,parent,name);
 		}
 		public QSlider(Qt.Orientation arg1, QWidget parent) : this((Type) null) {
-			CreateQSliderProxy();
-			CreateQSliderSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQSlider(arg1,parent);
 		}
 		[SmokeMethod("QSlider(Qt::Orientation, QWidget*)")]
@@ -84,8 +84,8 @@ namespace Qt {
 			ProxyQSlider().NewQSlider(arg1,parent);
 		}
 		public QSlider(int minValue, int maxValue, int pageStep, int value, Qt.Orientation arg5, QWidget parent, string name) : this((Type) null) {
-			CreateQSliderProxy();
-			CreateQSliderSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQSlider(minValue,maxValue,pageStep,value,arg5,parent,name);
 		}
 		[SmokeMethod("QSlider(int, int, int, int, Qt::Orientation, QWidget*, const char*)")]
@@ -93,8 +93,8 @@ namespace Qt {
 			ProxyQSlider().NewQSlider(minValue,maxValue,pageStep,value,arg5,parent,name);
 		}
 		public QSlider(int minValue, int maxValue, int pageStep, int value, Qt.Orientation arg5, QWidget parent) : this((Type) null) {
-			CreateQSliderProxy();
-			CreateQSliderSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQSlider(minValue,maxValue,pageStep,value,arg5,parent);
 		}
 		[SmokeMethod("QSlider(int, int, int, int, Qt::Orientation, QWidget*)")]
@@ -343,7 +343,7 @@ namespace Qt {
 		protected virtual void StepChange() {
 			ProxyQSlider().StepChange();
 		}
-		protected void CreateQSliderSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQSliderSignals), this);
 			Q_EMIT = (IQSliderSignals) realProxy.GetTransparentProxy();
 		}

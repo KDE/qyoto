@@ -15,7 +15,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQScrollViewProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QScrollView), this);
 			_interceptor = (QScrollView) realProxy.GetTransparentProxy();
 		}
@@ -51,8 +51,8 @@ namespace Qt {
 			return ProxyQScrollView().ClassName();
 		}
 		public QScrollView(QWidget parent, string name, int f) : this((Type) null) {
-			CreateQScrollViewProxy();
-			CreateQScrollViewSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQScrollView(parent,name,f);
 		}
 		[SmokeMethod("QScrollView(QWidget*, const char*, Qt::WFlags)")]
@@ -60,8 +60,8 @@ namespace Qt {
 			ProxyQScrollView().NewQScrollView(parent,name,f);
 		}
 		public QScrollView(QWidget parent, string name) : this((Type) null) {
-			CreateQScrollViewProxy();
-			CreateQScrollViewSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQScrollView(parent,name);
 		}
 		[SmokeMethod("QScrollView(QWidget*, const char*)")]
@@ -69,8 +69,8 @@ namespace Qt {
 			ProxyQScrollView().NewQScrollView(parent,name);
 		}
 		public QScrollView(QWidget parent) : this((Type) null) {
-			CreateQScrollViewProxy();
-			CreateQScrollViewSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQScrollView(parent);
 		}
 		[SmokeMethod("QScrollView(QWidget*)")]
@@ -78,8 +78,8 @@ namespace Qt {
 			ProxyQScrollView().NewQScrollView(parent);
 		}
 		public QScrollView() : this((Type) null) {
-			CreateQScrollViewProxy();
-			CreateQScrollViewSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQScrollView();
 		}
 		[SmokeMethod("QScrollView()")]
@@ -560,7 +560,7 @@ namespace Qt {
 		private void DisposeQScrollView() {
 			ProxyQScrollView().DisposeQScrollView();
 		}
-		protected void CreateQScrollViewSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQScrollViewSignals), this);
 			Q_EMIT = (IQScrollViewSignals) realProxy.GetTransparentProxy();
 		}

@@ -13,7 +13,7 @@ namespace Qt {
 		interface IQMenuItemProxy {
 		}
 
-		protected void CreateQMenuItemProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMenuItem), this);
 			_interceptor = (QMenuItem) realProxy.GetTransparentProxy();
 		}
@@ -30,7 +30,7 @@ namespace Qt {
 		}
 
 		public QMenuItem() : this((Type) null) {
-			CreateQMenuItemProxy();
+			CreateProxy();
 			NewQMenuItem();
 		}
 		[SmokeMethod("QMenuItem()")]

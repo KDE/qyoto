@@ -9,7 +9,7 @@ namespace Qt {
 		interface IQShowEventProxy {
 		}
 
-		protected void CreateQShowEventProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QShowEvent), this);
 			_interceptor = (QShowEvent) realProxy.GetTransparentProxy();
 		}
@@ -26,7 +26,7 @@ namespace Qt {
 		}
 
 		public QShowEvent() : this((Type) null) {
-			CreateQShowEventProxy();
+			CreateProxy();
 			NewQShowEvent();
 		}
 		[SmokeMethod("QShowEvent()")]

@@ -16,7 +16,7 @@ namespace Qt {
 			QPoint op_div(QPoint lhs, double c);
 		}
 
-		protected void CreateQPointProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPoint), this);
 			_interceptor = (QPoint) realProxy.GetTransparentProxy();
 		}
@@ -33,7 +33,7 @@ namespace Qt {
 		}
 
 		public QPoint() : this((Type) null) {
-			CreateQPointProxy();
+			CreateProxy();
 			NewQPoint();
 		}
 		[SmokeMethod("QPoint()")]
@@ -41,7 +41,7 @@ namespace Qt {
 			ProxyQPoint().NewQPoint();
 		}
 		public QPoint(int xpos, int ypos) : this((Type) null) {
-			CreateQPointProxy();
+			CreateProxy();
 			NewQPoint(xpos,ypos);
 		}
 		[SmokeMethod("QPoint(int, int)")]

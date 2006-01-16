@@ -52,7 +52,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQSignalProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSignal), this);
 			_interceptor = (QSignal) realProxy.GetTransparentProxy();
 		}
@@ -77,8 +77,8 @@ namespace Qt {
 			return ProxyQSignal().ClassName();
 		}
 		public QSignal(QObject parent, string name) : this((Type) null) {
-			CreateQSignalProxy();
-			CreateQSignalSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQSignal(parent,name);
 		}
 		[SmokeMethod("QSignal(QObject*, const char*)")]
@@ -86,8 +86,8 @@ namespace Qt {
 			ProxyQSignal().NewQSignal(parent,name);
 		}
 		public QSignal(QObject parent) : this((Type) null) {
-			CreateQSignalProxy();
-			CreateQSignalSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQSignal(parent);
 		}
 		[SmokeMethod("QSignal(QObject*)")]
@@ -95,8 +95,8 @@ namespace Qt {
 			ProxyQSignal().NewQSignal(parent);
 		}
 		public QSignal() : this((Type) null) {
-			CreateQSignalProxy();
-			CreateQSignalSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQSignal();
 		}
 		[SmokeMethod("QSignal()")]
@@ -168,7 +168,7 @@ namespace Qt {
 		private void DisposeQSignal() {
 			ProxyQSignal().DisposeQSignal();
 		}
-		protected void CreateQSignalSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQSignalSignals), this);
 			Q_EMIT = (IQSignalSignals) realProxy.GetTransparentProxy();
 		}

@@ -9,7 +9,7 @@ namespace Qt {
 		interface IQDomDocumentFragmentProxy {
 		}
 
-		protected void CreateQDomDocumentFragmentProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomDocumentFragment), this);
 			_interceptor = (QDomDocumentFragment) realProxy.GetTransparentProxy();
 		}
@@ -26,7 +26,7 @@ namespace Qt {
 		}
 
 		public QDomDocumentFragment() : this((Type) null) {
-			CreateQDomDocumentFragmentProxy();
+			CreateProxy();
 			NewQDomDocumentFragment();
 		}
 		[SmokeMethod("QDomDocumentFragment()")]
@@ -34,7 +34,7 @@ namespace Qt {
 			ProxyQDomDocumentFragment().NewQDomDocumentFragment();
 		}
 		public QDomDocumentFragment(QDomDocumentFragment x) : this((Type) null) {
-			CreateQDomDocumentFragmentProxy();
+			CreateProxy();
 			NewQDomDocumentFragment(x);
 		}
 		[SmokeMethod("QDomDocumentFragment(const QDomDocumentFragment&)")]

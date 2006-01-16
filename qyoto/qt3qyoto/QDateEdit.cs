@@ -15,7 +15,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQDateEditProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDateEdit), this);
 			_interceptor = (QDateEdit) realProxy.GetTransparentProxy();
 		}
@@ -46,8 +46,8 @@ namespace Qt {
 			return ProxyQDateEdit().ClassName();
 		}
 		public QDateEdit(QWidget parent, string name) : this((Type) null) {
-			CreateQDateEditProxy();
-			CreateQDateEditSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQDateEdit(parent,name);
 		}
 		[SmokeMethod("QDateEdit(QWidget*, const char*)")]
@@ -55,8 +55,8 @@ namespace Qt {
 			ProxyQDateEdit().NewQDateEdit(parent,name);
 		}
 		public QDateEdit(QWidget parent) : this((Type) null) {
-			CreateQDateEditProxy();
-			CreateQDateEditSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQDateEdit(parent);
 		}
 		[SmokeMethod("QDateEdit(QWidget*)")]
@@ -64,8 +64,8 @@ namespace Qt {
 			ProxyQDateEdit().NewQDateEdit(parent);
 		}
 		public QDateEdit() : this((Type) null) {
-			CreateQDateEditProxy();
-			CreateQDateEditSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQDateEdit();
 		}
 		[SmokeMethod("QDateEdit()")]
@@ -73,8 +73,8 @@ namespace Qt {
 			ProxyQDateEdit().NewQDateEdit();
 		}
 		public QDateEdit(DateTime date, QWidget parent, string name) : this((Type) null) {
-			CreateQDateEditProxy();
-			CreateQDateEditSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQDateEdit(date,parent,name);
 		}
 		[SmokeMethod("QDateEdit(const QDate&, QWidget*, const char*)")]
@@ -82,8 +82,8 @@ namespace Qt {
 			ProxyQDateEdit().NewQDateEdit(date,parent,name);
 		}
 		public QDateEdit(DateTime date, QWidget parent) : this((Type) null) {
-			CreateQDateEditProxy();
-			CreateQDateEditSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQDateEdit(date,parent);
 		}
 		[SmokeMethod("QDateEdit(const QDate&, QWidget*)")]
@@ -91,8 +91,8 @@ namespace Qt {
 			ProxyQDateEdit().NewQDateEdit(date,parent);
 		}
 		public QDateEdit(DateTime date) : this((Type) null) {
-			CreateQDateEditProxy();
-			CreateQDateEditSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQDateEdit(date);
 		}
 		[SmokeMethod("QDateEdit(const QDate&)")]
@@ -250,7 +250,7 @@ namespace Qt {
 		private void DisposeQDateEdit() {
 			ProxyQDateEdit().DisposeQDateEdit();
 		}
-		protected void CreateQDateEditSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQDateEditSignals), this);
 			Q_EMIT = (IQDateEditSignals) realProxy.GetTransparentProxy();
 		}

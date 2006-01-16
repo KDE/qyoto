@@ -28,7 +28,7 @@ namespace Qt {
 			string Locale();
 		}
 
-		protected void CreateQTextCodecProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextCodec), this);
 			_interceptor = (QTextCodec) realProxy.GetTransparentProxy();
 		}

@@ -12,7 +12,7 @@ namespace Qt {
 		interface IQPaintDeviceMetricsProxy {
 		}
 
-		protected void CreateQPaintDeviceMetricsProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPaintDeviceMetrics), this);
 			_interceptor = (QPaintDeviceMetrics) realProxy.GetTransparentProxy();
 		}
@@ -40,7 +40,7 @@ namespace Qt {
 		public const int PdmPhysicalDpiY = 10;
 
 		public QPaintDeviceMetrics(IQPaintDevice arg1) : this((Type) null) {
-			CreateQPaintDeviceMetricsProxy();
+			CreateProxy();
 			NewQPaintDeviceMetrics(arg1);
 		}
 		[SmokeMethod("QPaintDeviceMetrics(const QPaintDevice*)")]

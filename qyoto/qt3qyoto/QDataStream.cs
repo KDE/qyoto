@@ -30,7 +30,7 @@ namespace Qt {
 			QDataStream op_write(QDataStream lhs, string str);
 		}
 
-		protected void CreateQDataStreamProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDataStream), this);
 			_interceptor = (QDataStream) realProxy.GetTransparentProxy();
 		}
@@ -51,7 +51,7 @@ namespace Qt {
 			LittleEndian = 1,
 		}
 		public QDataStream() : this((Type) null) {
-			CreateQDataStreamProxy();
+			CreateProxy();
 			NewQDataStream();
 		}
 		[SmokeMethod("QDataStream()")]
@@ -59,7 +59,7 @@ namespace Qt {
 			ProxyQDataStream().NewQDataStream();
 		}
 		public QDataStream(IQIODevice arg1) : this((Type) null) {
-			CreateQDataStreamProxy();
+			CreateProxy();
 			NewQDataStream(arg1);
 		}
 		[SmokeMethod("QDataStream(QIODevice*)")]
@@ -67,7 +67,7 @@ namespace Qt {
 			ProxyQDataStream().NewQDataStream(arg1);
 		}
 		public QDataStream(QByteArray arg1, int mode) : this((Type) null) {
-			CreateQDataStreamProxy();
+			CreateProxy();
 			NewQDataStream(arg1,mode);
 		}
 		[SmokeMethod("QDataStream(QByteArray, int)")]

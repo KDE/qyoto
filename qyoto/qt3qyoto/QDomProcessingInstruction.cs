@@ -10,7 +10,7 @@ namespace Qt {
 		interface IQDomProcessingInstructionProxy {
 		}
 
-		protected void CreateQDomProcessingInstructionProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomProcessingInstruction), this);
 			_interceptor = (QDomProcessingInstruction) realProxy.GetTransparentProxy();
 		}
@@ -27,7 +27,7 @@ namespace Qt {
 		}
 
 		public QDomProcessingInstruction() : this((Type) null) {
-			CreateQDomProcessingInstructionProxy();
+			CreateProxy();
 			NewQDomProcessingInstruction();
 		}
 		[SmokeMethod("QDomProcessingInstruction()")]
@@ -35,7 +35,7 @@ namespace Qt {
 			ProxyQDomProcessingInstruction().NewQDomProcessingInstruction();
 		}
 		public QDomProcessingInstruction(QDomProcessingInstruction x) : this((Type) null) {
-			CreateQDomProcessingInstructionProxy();
+			CreateProxy();
 			NewQDomProcessingInstruction(x);
 		}
 		[SmokeMethod("QDomProcessingInstruction(const QDomProcessingInstruction&)")]

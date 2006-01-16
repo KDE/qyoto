@@ -15,7 +15,7 @@ namespace Qt {
 			void InstallDefaultMap(QSqlPropertyMap map);
 		}
 
-		protected void CreateQSqlPropertyMapProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSqlPropertyMap), this);
 			_interceptor = (QSqlPropertyMap) realProxy.GetTransparentProxy();
 		}
@@ -32,7 +32,7 @@ namespace Qt {
 		}
 
 		public QSqlPropertyMap() : this((Type) null) {
-			CreateQSqlPropertyMapProxy();
+			CreateProxy();
 			NewQSqlPropertyMap();
 		}
 		[SmokeMethod("QSqlPropertyMap()")]

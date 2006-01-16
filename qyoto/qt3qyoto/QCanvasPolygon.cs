@@ -9,7 +9,7 @@ namespace Qt {
 		interface IQCanvasPolygonProxy {
 		}
 
-		protected void CreateQCanvasPolygonProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QCanvasPolygon), this);
 			_interceptor = (QCanvasPolygon) realProxy.GetTransparentProxy();
 		}
@@ -26,7 +26,7 @@ namespace Qt {
 		}
 
 		public QCanvasPolygon(QCanvas canvas) : this((Type) null) {
-			CreateQCanvasPolygonProxy();
+			CreateProxy();
 			NewQCanvasPolygon(canvas);
 		}
 		[SmokeMethod("QCanvasPolygon(QCanvas*)")]

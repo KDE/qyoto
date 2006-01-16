@@ -10,7 +10,7 @@ namespace Qt {
 		interface IQKeyEventProxy {
 		}
 
-		protected void CreateQKeyEventProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QKeyEvent), this);
 			_interceptor = (QKeyEvent) realProxy.GetTransparentProxy();
 		}
@@ -27,7 +27,7 @@ namespace Qt {
 		}
 
 		public QKeyEvent(QEvent.E_Type type, int key, int ascii, int state, string text, bool autorep, ushort count) : this((Type) null) {
-			CreateQKeyEventProxy();
+			CreateProxy();
 			NewQKeyEvent(type,key,ascii,state,text,autorep,count);
 		}
 		[SmokeMethod("QKeyEvent(QEvent::Type, int, int, int, const QString&, bool, ushort)")]
@@ -35,7 +35,7 @@ namespace Qt {
 			ProxyQKeyEvent().NewQKeyEvent(type,key,ascii,state,text,autorep,count);
 		}
 		public QKeyEvent(QEvent.E_Type type, int key, int ascii, int state, string text, bool autorep) : this((Type) null) {
-			CreateQKeyEventProxy();
+			CreateProxy();
 			NewQKeyEvent(type,key,ascii,state,text,autorep);
 		}
 		[SmokeMethod("QKeyEvent(QEvent::Type, int, int, int, const QString&, bool)")]
@@ -43,7 +43,7 @@ namespace Qt {
 			ProxyQKeyEvent().NewQKeyEvent(type,key,ascii,state,text,autorep);
 		}
 		public QKeyEvent(QEvent.E_Type type, int key, int ascii, int state, string text) : this((Type) null) {
-			CreateQKeyEventProxy();
+			CreateProxy();
 			NewQKeyEvent(type,key,ascii,state,text);
 		}
 		[SmokeMethod("QKeyEvent(QEvent::Type, int, int, int, const QString&)")]
@@ -51,7 +51,7 @@ namespace Qt {
 			ProxyQKeyEvent().NewQKeyEvent(type,key,ascii,state,text);
 		}
 		public QKeyEvent(QEvent.E_Type type, int key, int ascii, int state) : this((Type) null) {
-			CreateQKeyEventProxy();
+			CreateProxy();
 			NewQKeyEvent(type,key,ascii,state);
 		}
 		[SmokeMethod("QKeyEvent(QEvent::Type, int, int, int)")]

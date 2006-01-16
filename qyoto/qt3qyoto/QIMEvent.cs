@@ -10,7 +10,7 @@ namespace Qt {
 		interface IQIMEventProxy {
 		}
 
-		protected void CreateQIMEventProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QIMEvent), this);
 			_interceptor = (QIMEvent) realProxy.GetTransparentProxy();
 		}
@@ -27,7 +27,7 @@ namespace Qt {
 		}
 
 		public QIMEvent(QEvent.E_Type type, string text, int cursorPosition) : this((Type) null) {
-			CreateQIMEventProxy();
+			CreateProxy();
 			NewQIMEvent(type,text,cursorPosition);
 		}
 		[SmokeMethod("QIMEvent(QEvent::Type, const QString&, int)")]

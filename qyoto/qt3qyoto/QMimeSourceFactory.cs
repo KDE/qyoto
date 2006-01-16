@@ -19,7 +19,7 @@ namespace Qt {
 			void RemoveFactory(QMimeSourceFactory f);
 		}
 
-		protected void CreateQMimeSourceFactoryProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMimeSourceFactory), this);
 			_interceptor = (QMimeSourceFactory) realProxy.GetTransparentProxy();
 		}
@@ -36,7 +36,7 @@ namespace Qt {
 		}
 
 		public QMimeSourceFactory() : this((Type) null) {
-			CreateQMimeSourceFactoryProxy();
+			CreateProxy();
 			NewQMimeSourceFactory();
 		}
 		[SmokeMethod("QMimeSourceFactory()")]

@@ -71,6 +71,7 @@ static GetIntPtr GetPointerObject;
 
 static OverridenMethodFn OverridenMethod;
 static InvokeMethodFn InvokeMethod;
+static CreateInstanceFn CreateInstance;
 
 // Maps from a classname in the form Qt::Widget to an int id
 QIntDict<char> classname(2179);
@@ -163,12 +164,10 @@ void mapPointer(void * obj, smokeqyoto_object *o, Smoke::Index classId, void *la
 void *
 set_obj_info(const char * className, smokeqyoto_object * o)
 {
-//    VALUE klass = rb_funcall(qt_internal_module,
-//			     rb_intern("find_class"),
-//			     1,
-//			     rb_str_new2(className) );
-//    VALUE obj = Data_Wrap_Struct(klass, smokeruby_mark, smokeruby_free, (void *) o);
-    return 0;
+//	void * obj = (*CreateInstance)(className);
+//	(*SetSmokeObject)(obj, o);
+//	return obj;
+	return 0;
 }
 
 Marshall::HandlerFn getMarshallFn(const SmokeType &type);
@@ -385,6 +384,7 @@ public:
 		(*fn)(method().method, ptr, _stack);
 		MethodReturnValue r(_smoke, _method, _stack, _retval);
 
+		// A constructor
 		if (strcmp(_smoke->methodNames[method().name], _smoke->className(method().classId)) == 0) {
 			smokeqyoto_object  * o = (smokeqyoto_object *) malloc(sizeof(smokeqyoto_object));
 			o->smoke = _smoke;
@@ -847,6 +847,12 @@ void
 AddInvokeMethod(InvokeMethodFn callback)
 {
 	InvokeMethod = callback;
+}
+
+void 
+AddCreateInstance(CreateInstanceFn callback)
+{
+	CreateInstance = callback;
 }
 
 void

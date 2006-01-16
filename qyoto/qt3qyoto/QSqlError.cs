@@ -13,7 +13,7 @@ namespace Qt {
 		interface IQSqlErrorProxy {
 		}
 
-		protected void CreateQSqlErrorProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSqlError), this);
 			_interceptor = (QSqlError) realProxy.GetTransparentProxy();
 		}
@@ -37,7 +37,7 @@ namespace Qt {
 			Unknown = 4,
 		}
 		public QSqlError(string driverText, string databaseText, int type, int number) : this((Type) null) {
-			CreateQSqlErrorProxy();
+			CreateProxy();
 			NewQSqlError(driverText,databaseText,type,number);
 		}
 		[SmokeMethod("QSqlError(const QString&, const QString&, int, int)")]
@@ -45,7 +45,7 @@ namespace Qt {
 			ProxyQSqlError().NewQSqlError(driverText,databaseText,type,number);
 		}
 		public QSqlError(string driverText, string databaseText, int type) : this((Type) null) {
-			CreateQSqlErrorProxy();
+			CreateProxy();
 			NewQSqlError(driverText,databaseText,type);
 		}
 		[SmokeMethod("QSqlError(const QString&, const QString&, int)")]
@@ -53,7 +53,7 @@ namespace Qt {
 			ProxyQSqlError().NewQSqlError(driverText,databaseText,type);
 		}
 		public QSqlError(string driverText, string databaseText) : this((Type) null) {
-			CreateQSqlErrorProxy();
+			CreateProxy();
 			NewQSqlError(driverText,databaseText);
 		}
 		[SmokeMethod("QSqlError(const QString&, const QString&)")]
@@ -61,7 +61,7 @@ namespace Qt {
 			ProxyQSqlError().NewQSqlError(driverText,databaseText);
 		}
 		public QSqlError(string driverText) : this((Type) null) {
-			CreateQSqlErrorProxy();
+			CreateProxy();
 			NewQSqlError(driverText);
 		}
 		[SmokeMethod("QSqlError(const QString&)")]
@@ -69,7 +69,7 @@ namespace Qt {
 			ProxyQSqlError().NewQSqlError(driverText);
 		}
 		public QSqlError() : this((Type) null) {
-			CreateQSqlErrorProxy();
+			CreateProxy();
 			NewQSqlError();
 		}
 		[SmokeMethod("QSqlError()")]
@@ -77,7 +77,7 @@ namespace Qt {
 			ProxyQSqlError().NewQSqlError();
 		}
 		public QSqlError(QSqlError other) : this((Type) null) {
-			CreateQSqlErrorProxy();
+			CreateProxy();
 			NewQSqlError(other);
 		}
 		[SmokeMethod("QSqlError(const QSqlError&)")]

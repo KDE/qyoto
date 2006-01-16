@@ -32,7 +32,7 @@ namespace Qt {
 			void JulianToGregorian(uint jd, out int y, out int m, out int d);
 		}
 
-		protected void CreateQDateProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDate), this);
 			_interceptor = (QDate) realProxy.GetTransparentProxy();
 		}
@@ -49,7 +49,7 @@ namespace Qt {
 		}
 
 		public QDate() : this((Type) null) {
-			CreateQDateProxy();
+			CreateProxy();
 			NewQDate();
 		}
 		[SmokeMethod("QDate()")]
@@ -57,7 +57,7 @@ namespace Qt {
 			ProxyQDate().NewQDate();
 		}
 		public QDate(int y, int m, int d) : this((Type) null) {
-			CreateQDateProxy();
+			CreateProxy();
 			NewQDate(y,m,d);
 		}
 		[SmokeMethod("QDate(int, int, int)")]

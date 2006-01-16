@@ -9,7 +9,7 @@ namespace Qt {
 		interface IQCanvasPolygonalItemProxy {
 		}
 
-		protected void CreateQCanvasPolygonalItemProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QCanvasPolygonalItem), this);
 			_interceptor = (QCanvasPolygonalItem) realProxy.GetTransparentProxy();
 		}
@@ -26,7 +26,7 @@ namespace Qt {
 		}
 
 		public QCanvasPolygonalItem(QCanvas canvas) : this((Type) null) {
-			CreateQCanvasPolygonalItemProxy();
+			CreateProxy();
 			NewQCanvasPolygonalItem(canvas);
 		}
 		[SmokeMethod("QCanvasPolygonalItem(QCanvas*)")]

@@ -10,7 +10,7 @@ namespace Qt {
 		interface IQTableItemProxy {
 		}
 
-		protected void CreateQTableItemProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTableItem), this);
 			_interceptor = (QTableItem) realProxy.GetTransparentProxy();
 		}
@@ -33,7 +33,7 @@ namespace Qt {
 			Always = 3,
 		}
 		public QTableItem(QTable table, QTableItem.EditType et) : this((Type) null) {
-			CreateQTableItemProxy();
+			CreateProxy();
 			NewQTableItem(table,et);
 		}
 		[SmokeMethod("QTableItem(QTable*, QTableItem::EditType)")]
@@ -41,7 +41,7 @@ namespace Qt {
 			ProxyQTableItem().NewQTableItem(table,et);
 		}
 		public QTableItem(QTable table, QTableItem.EditType et, string text) : this((Type) null) {
-			CreateQTableItemProxy();
+			CreateProxy();
 			NewQTableItem(table,et,text);
 		}
 		[SmokeMethod("QTableItem(QTable*, QTableItem::EditType, const QString&)")]
@@ -49,7 +49,7 @@ namespace Qt {
 			ProxyQTableItem().NewQTableItem(table,et,text);
 		}
 		public QTableItem(QTable table, QTableItem.EditType et, string text, QPixmap p) : this((Type) null) {
-			CreateQTableItemProxy();
+			CreateProxy();
 			NewQTableItem(table,et,text,p);
 		}
 		[SmokeMethod("QTableItem(QTable*, QTableItem::EditType, const QString&, const QPixmap&)")]

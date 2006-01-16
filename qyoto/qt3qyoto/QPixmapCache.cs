@@ -20,7 +20,7 @@ namespace Qt {
 			void Clear();
 		}
 
-		protected void CreateQPixmapCacheProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPixmapCache), this);
 			_interceptor = (QPixmapCache) realProxy.GetTransparentProxy();
 		}
@@ -37,7 +37,7 @@ namespace Qt {
 		}
 
 		public QPixmapCache() : this((Type) null) {
-			CreateQPixmapCacheProxy();
+			CreateProxy();
 			NewQPixmapCache();
 		}
 		[SmokeMethod("QPixmapCache()")]

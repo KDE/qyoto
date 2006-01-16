@@ -12,7 +12,7 @@ namespace Qt {
 		interface IQSqlProxy {
 		}
 
-		protected void CreateQSqlProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSql), this);
 			_interceptor = (QSql) realProxy.GetTransparentProxy();
 		}
@@ -55,7 +55,7 @@ namespace Qt {
 			AllTables = 0xff,
 		}
 		public QSql() : this((Type) null) {
-			CreateQSqlProxy();
+			CreateProxy();
 			NewQSql();
 		}
 		[SmokeMethod("QSql()")]

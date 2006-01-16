@@ -18,7 +18,7 @@ namespace Qt {
 			ArrayList OutputFormats();
 		}
 
-		protected void CreateQImageIOProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QImageIO), this);
 			_interceptor = (QImageIO) realProxy.GetTransparentProxy();
 		}
@@ -35,7 +35,7 @@ namespace Qt {
 		}
 
 		public QImageIO() : this((Type) null) {
-			CreateQImageIOProxy();
+			CreateProxy();
 			NewQImageIO();
 		}
 		[SmokeMethod("QImageIO()")]
@@ -43,7 +43,7 @@ namespace Qt {
 			ProxyQImageIO().NewQImageIO();
 		}
 		public QImageIO(IQIODevice ioDevice, string format) : this((Type) null) {
-			CreateQImageIOProxy();
+			CreateProxy();
 			NewQImageIO(ioDevice,format);
 		}
 		[SmokeMethod("QImageIO(QIODevice*, const char*)")]
@@ -51,7 +51,7 @@ namespace Qt {
 			ProxyQImageIO().NewQImageIO(ioDevice,format);
 		}
 		public QImageIO(string fileName, string format) : this((Type) null) {
-			CreateQImageIOProxy();
+			CreateProxy();
 			NewQImageIO(fileName,format);
 		}
 		[SmokeMethod("QImageIO(const QString&, const char*)")]

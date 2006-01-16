@@ -13,7 +13,7 @@ namespace Qt {
 		interface IQMovieProxy {
 		}
 
-		protected void CreateQMovieProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMovie), this);
 			_interceptor = (QMovie) realProxy.GetTransparentProxy();
 		}
@@ -39,7 +39,7 @@ namespace Qt {
 			SpeedChanged = 5,
 		}
 		public QMovie() : this((Type) null) {
-			CreateQMovieProxy();
+			CreateProxy();
 			NewQMovie();
 		}
 		[SmokeMethod("QMovie()")]
@@ -47,7 +47,7 @@ namespace Qt {
 			ProxyQMovie().NewQMovie();
 		}
 		public QMovie(int bufsize) : this((Type) null) {
-			CreateQMovieProxy();
+			CreateProxy();
 			NewQMovie(bufsize);
 		}
 		[SmokeMethod("QMovie(int)")]
@@ -55,7 +55,7 @@ namespace Qt {
 			ProxyQMovie().NewQMovie(bufsize);
 		}
 		public QMovie(QDataSource arg1, int bufsize) : this((Type) null) {
-			CreateQMovieProxy();
+			CreateProxy();
 			NewQMovie(arg1,bufsize);
 		}
 		[SmokeMethod("QMovie(QDataSource*, int)")]
@@ -63,7 +63,7 @@ namespace Qt {
 			ProxyQMovie().NewQMovie(arg1,bufsize);
 		}
 		public QMovie(QDataSource arg1) : this((Type) null) {
-			CreateQMovieProxy();
+			CreateProxy();
 			NewQMovie(arg1);
 		}
 		[SmokeMethod("QMovie(QDataSource*)")]
@@ -71,7 +71,7 @@ namespace Qt {
 			ProxyQMovie().NewQMovie(arg1);
 		}
 		public QMovie(string fileName, int bufsize) : this((Type) null) {
-			CreateQMovieProxy();
+			CreateProxy();
 			NewQMovie(fileName,bufsize);
 		}
 		[SmokeMethod("QMovie(const QString&, int)")]
@@ -79,7 +79,7 @@ namespace Qt {
 			ProxyQMovie().NewQMovie(fileName,bufsize);
 		}
 		public QMovie(string fileName) : this((Type) null) {
-			CreateQMovieProxy();
+			CreateProxy();
 			NewQMovie(fileName);
 		}
 		[SmokeMethod("QMovie(const QString&)")]
@@ -87,7 +87,7 @@ namespace Qt {
 			ProxyQMovie().NewQMovie(fileName);
 		}
 		public QMovie(QByteArray data, int bufsize) : this((Type) null) {
-			CreateQMovieProxy();
+			CreateProxy();
 			NewQMovie(data,bufsize);
 		}
 		[SmokeMethod("QMovie(QByteArray, int)")]
@@ -95,7 +95,7 @@ namespace Qt {
 			ProxyQMovie().NewQMovie(data,bufsize);
 		}
 		public QMovie(QByteArray data) : this((Type) null) {
-			CreateQMovieProxy();
+			CreateProxy();
 			NewQMovie(data);
 		}
 		[SmokeMethod("QMovie(QByteArray)")]
@@ -103,7 +103,7 @@ namespace Qt {
 			ProxyQMovie().NewQMovie(data);
 		}
 		public QMovie(QMovie arg1) : this((Type) null) {
-			CreateQMovieProxy();
+			CreateProxy();
 			NewQMovie(arg1);
 		}
 		[SmokeMethod("QMovie(const QMovie&)")]

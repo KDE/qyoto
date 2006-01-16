@@ -11,7 +11,7 @@ namespace Qt {
 			bool op_equals(QKeySequence lhs, QKeySequence arg1);
 		}
 
-		protected void CreateQKeySequenceProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QKeySequence), this);
 			_interceptor = (QKeySequence) realProxy.GetTransparentProxy();
 		}
@@ -28,7 +28,7 @@ namespace Qt {
 		}
 
 		public QKeySequence() : this((Type) null) {
-			CreateQKeySequenceProxy();
+			CreateProxy();
 			NewQKeySequence();
 		}
 		[SmokeMethod("QKeySequence()")]
@@ -36,7 +36,7 @@ namespace Qt {
 			ProxyQKeySequence().NewQKeySequence();
 		}
 		public QKeySequence(string key) : this((Type) null) {
-			CreateQKeySequenceProxy();
+			CreateProxy();
 			NewQKeySequence(key);
 		}
 		[SmokeMethod("QKeySequence(const QString&)")]
@@ -44,7 +44,7 @@ namespace Qt {
 			ProxyQKeySequence().NewQKeySequence(key);
 		}
 		public QKeySequence(int key) : this((Type) null) {
-			CreateQKeySequenceProxy();
+			CreateProxy();
 			NewQKeySequence(key);
 		}
 		[SmokeMethod("QKeySequence(int)")]
@@ -52,7 +52,7 @@ namespace Qt {
 			ProxyQKeySequence().NewQKeySequence(key);
 		}
 		public QKeySequence(int k1, int k2, int k3, int k4) : this((Type) null) {
-			CreateQKeySequenceProxy();
+			CreateProxy();
 			NewQKeySequence(k1,k2,k3,k4);
 		}
 		[SmokeMethod("QKeySequence(int, int, int, int)")]
@@ -60,7 +60,7 @@ namespace Qt {
 			ProxyQKeySequence().NewQKeySequence(k1,k2,k3,k4);
 		}
 		public QKeySequence(int k1, int k2, int k3) : this((Type) null) {
-			CreateQKeySequenceProxy();
+			CreateProxy();
 			NewQKeySequence(k1,k2,k3);
 		}
 		[SmokeMethod("QKeySequence(int, int, int)")]
@@ -68,7 +68,7 @@ namespace Qt {
 			ProxyQKeySequence().NewQKeySequence(k1,k2,k3);
 		}
 		public QKeySequence(int k1, int k2) : this((Type) null) {
-			CreateQKeySequenceProxy();
+			CreateProxy();
 			NewQKeySequence(k1,k2);
 		}
 		[SmokeMethod("QKeySequence(int, int)")]
@@ -76,7 +76,7 @@ namespace Qt {
 			ProxyQKeySequence().NewQKeySequence(k1,k2);
 		}
 		public QKeySequence(QKeySequence arg1) : this((Type) null) {
-			CreateQKeySequenceProxy();
+			CreateProxy();
 			NewQKeySequence(arg1);
 		}
 		[SmokeMethod("QKeySequence(const QKeySequence&)")]

@@ -12,7 +12,7 @@ namespace Qt {
 		interface IQBitValProxy {
 		}
 
-		protected void CreateQBitValProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QBitVal), this);
 			_interceptor = (QBitVal) realProxy.GetTransparentProxy();
 		}

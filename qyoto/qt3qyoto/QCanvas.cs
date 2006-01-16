@@ -16,7 +16,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQCanvasProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QCanvas), this);
 			_interceptor = (QCanvas) realProxy.GetTransparentProxy();
 		}
@@ -41,8 +41,8 @@ namespace Qt {
 			return ProxyQCanvas().ClassName();
 		}
 		public QCanvas(QObject parent, string name) : this((Type) null) {
-			CreateQCanvasProxy();
-			CreateQCanvasSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQCanvas(parent,name);
 		}
 		[SmokeMethod("QCanvas(QObject*, const char*)")]
@@ -50,8 +50,8 @@ namespace Qt {
 			ProxyQCanvas().NewQCanvas(parent,name);
 		}
 		public QCanvas(QObject parent) : this((Type) null) {
-			CreateQCanvasProxy();
-			CreateQCanvasSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQCanvas(parent);
 		}
 		[SmokeMethod("QCanvas(QObject*)")]
@@ -59,8 +59,8 @@ namespace Qt {
 			ProxyQCanvas().NewQCanvas(parent);
 		}
 		public QCanvas() : this((Type) null) {
-			CreateQCanvasProxy();
-			CreateQCanvasSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQCanvas();
 		}
 		[SmokeMethod("QCanvas()")]
@@ -68,8 +68,8 @@ namespace Qt {
 			ProxyQCanvas().NewQCanvas();
 		}
 		public QCanvas(int w, int h) : this((Type) null) {
-			CreateQCanvasProxy();
-			CreateQCanvasSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQCanvas(w,h);
 		}
 		[SmokeMethod("QCanvas(int, int)")]
@@ -77,8 +77,8 @@ namespace Qt {
 			ProxyQCanvas().NewQCanvas(w,h);
 		}
 		public QCanvas(QPixmap p, int h, int v, int tilewidth, int tileheight) : this((Type) null) {
-			CreateQCanvasProxy();
-			CreateQCanvasSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQCanvas(p,h,v,tilewidth,tileheight);
 		}
 		[SmokeMethod("QCanvas(QPixmap, int, int, int, int)")]
@@ -336,7 +336,7 @@ namespace Qt {
 		private void DisposeQCanvas() {
 			ProxyQCanvas().DisposeQCanvas();
 		}
-		protected void CreateQCanvasSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQCanvasSignals), this);
 			Q_EMIT = (IQCanvasSignals) realProxy.GetTransparentProxy();
 		}

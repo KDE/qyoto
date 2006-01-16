@@ -14,7 +14,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQCommonStyleProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QCommonStyle), this);
 			_interceptor = (QCommonStyle) realProxy.GetTransparentProxy();
 		}
@@ -39,8 +39,8 @@ namespace Qt {
 			return ProxyQCommonStyle().ClassName();
 		}
 		public QCommonStyle() : this((Type) null) {
-			CreateQCommonStyleProxy();
-			CreateQCommonStyleSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQCommonStyle();
 		}
 		[SmokeMethod("QCommonStyle()")]
@@ -181,7 +181,7 @@ namespace Qt {
 		private void DisposeQCommonStyle() {
 			ProxyQCommonStyle().DisposeQCommonStyle();
 		}
-		protected void CreateQCommonStyleSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQCommonStyleSignals), this);
 			Q_EMIT = (IQCommonStyleSignals) realProxy.GetTransparentProxy();
 		}

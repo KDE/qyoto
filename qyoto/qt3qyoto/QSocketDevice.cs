@@ -9,7 +9,7 @@ namespace Qt {
 		interface IQSocketDeviceProxy {
 		}
 
-		protected void CreateQSocketDeviceProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSocketDevice), this);
 			_interceptor = (QSocketDevice) realProxy.GetTransparentProxy();
 		}
@@ -48,7 +48,7 @@ namespace Qt {
 			UnknownError = 9,
 		}
 		public QSocketDevice(QSocketDevice.E_Type type) : this((Type) null) {
-			CreateQSocketDeviceProxy();
+			CreateProxy();
 			NewQSocketDevice(type);
 		}
 		[SmokeMethod("QSocketDevice(QSocketDevice::Type)")]
@@ -56,7 +56,7 @@ namespace Qt {
 			ProxyQSocketDevice().NewQSocketDevice(type);
 		}
 		public QSocketDevice() : this((Type) null) {
-			CreateQSocketDeviceProxy();
+			CreateProxy();
 			NewQSocketDevice();
 		}
 		[SmokeMethod("QSocketDevice()")]
@@ -64,7 +64,7 @@ namespace Qt {
 			ProxyQSocketDevice().NewQSocketDevice();
 		}
 		public QSocketDevice(QSocketDevice.E_Type type, QSocketDevice.Protocol protocol, int dummy) : this((Type) null) {
-			CreateQSocketDeviceProxy();
+			CreateProxy();
 			NewQSocketDevice(type,protocol,dummy);
 		}
 		[SmokeMethod("QSocketDevice(QSocketDevice::Type, QSocketDevice::Protocol, int)")]
@@ -72,7 +72,7 @@ namespace Qt {
 			ProxyQSocketDevice().NewQSocketDevice(type,protocol,dummy);
 		}
 		public QSocketDevice(int socket, QSocketDevice.E_Type type) : this((Type) null) {
-			CreateQSocketDeviceProxy();
+			CreateProxy();
 			NewQSocketDevice(socket,type);
 		}
 		[SmokeMethod("QSocketDevice(int, QSocketDevice::Type)")]

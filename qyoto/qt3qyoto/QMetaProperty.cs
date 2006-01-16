@@ -13,7 +13,7 @@ namespace Qt {
 		interface IQMetaPropertyProxy {
 		}
 
-		protected void CreateQMetaPropertyProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMetaProperty), this);
 			_interceptor = (QMetaProperty) realProxy.GetTransparentProxy();
 		}
@@ -123,7 +123,7 @@ namespace Qt {
 			ProxyQMetaProperty().Clear();
 		}
 		public QMetaProperty() : this((Type) null) {
-			CreateQMetaPropertyProxy();
+			CreateProxy();
 			NewQMetaProperty();
 		}
 		[SmokeMethod("QMetaProperty()")]

@@ -26,7 +26,7 @@ namespace Qt {
 			void SetDefaultFont(QFont arg1);
 		}
 
-		protected void CreateQFontProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFont), this);
 			_interceptor = (QFont) realProxy.GetTransparentProxy();
 		}
@@ -150,7 +150,7 @@ namespace Qt {
 			LastPrivateScript = 61,
 		}
 		public QFont() : this((Type) null) {
-			CreateQFontProxy();
+			CreateProxy();
 			NewQFont();
 		}
 		[SmokeMethod("QFont()")]
@@ -158,7 +158,7 @@ namespace Qt {
 			ProxyQFont().NewQFont();
 		}
 		public QFont(string family, int pointSize, int weight, bool italic) : this((Type) null) {
-			CreateQFontProxy();
+			CreateProxy();
 			NewQFont(family,pointSize,weight,italic);
 		}
 		[SmokeMethod("QFont(const QString&, int, int, bool)")]
@@ -166,7 +166,7 @@ namespace Qt {
 			ProxyQFont().NewQFont(family,pointSize,weight,italic);
 		}
 		public QFont(string family, int pointSize, int weight) : this((Type) null) {
-			CreateQFontProxy();
+			CreateProxy();
 			NewQFont(family,pointSize,weight);
 		}
 		[SmokeMethod("QFont(const QString&, int, int)")]
@@ -174,7 +174,7 @@ namespace Qt {
 			ProxyQFont().NewQFont(family,pointSize,weight);
 		}
 		public QFont(string family, int pointSize) : this((Type) null) {
-			CreateQFontProxy();
+			CreateProxy();
 			NewQFont(family,pointSize);
 		}
 		[SmokeMethod("QFont(const QString&, int)")]
@@ -182,7 +182,7 @@ namespace Qt {
 			ProxyQFont().NewQFont(family,pointSize);
 		}
 		public QFont(string family) : this((Type) null) {
-			CreateQFontProxy();
+			CreateProxy();
 			NewQFont(family);
 		}
 		[SmokeMethod("QFont(const QString&)")]
@@ -190,7 +190,7 @@ namespace Qt {
 			ProxyQFont().NewQFont(family);
 		}
 		public QFont(QFont arg1) : this((Type) null) {
-			CreateQFontProxy();
+			CreateProxy();
 			NewQFont(arg1);
 		}
 		[SmokeMethod("QFont(const QFont&)")]

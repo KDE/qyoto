@@ -16,7 +16,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQDataTableProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDataTable), this);
 			_interceptor = (QDataTable) realProxy.GetTransparentProxy();
 		}
@@ -46,8 +46,8 @@ namespace Qt {
 			return ProxyQDataTable().ClassName();
 		}
 		public QDataTable(QWidget parent, string name) : this((Type) null) {
-			CreateQDataTableProxy();
-			CreateQDataTableSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQDataTable(parent,name);
 		}
 		[SmokeMethod("QDataTable(QWidget*, const char*)")]
@@ -55,8 +55,8 @@ namespace Qt {
 			ProxyQDataTable().NewQDataTable(parent,name);
 		}
 		public QDataTable(QWidget parent) : this((Type) null) {
-			CreateQDataTableProxy();
-			CreateQDataTableSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQDataTable(parent);
 		}
 		[SmokeMethod("QDataTable(QWidget*)")]
@@ -64,8 +64,8 @@ namespace Qt {
 			ProxyQDataTable().NewQDataTable(parent);
 		}
 		public QDataTable() : this((Type) null) {
-			CreateQDataTableProxy();
-			CreateQDataTableSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQDataTable();
 		}
 		[SmokeMethod("QDataTable()")]
@@ -73,8 +73,8 @@ namespace Qt {
 			ProxyQDataTable().NewQDataTable();
 		}
 		public QDataTable(QSqlCursor cursor, bool autoPopulate, QWidget parent, string name) : this((Type) null) {
-			CreateQDataTableProxy();
-			CreateQDataTableSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQDataTable(cursor,autoPopulate,parent,name);
 		}
 		[SmokeMethod("QDataTable(QSqlCursor*, bool, QWidget*, const char*)")]
@@ -82,8 +82,8 @@ namespace Qt {
 			ProxyQDataTable().NewQDataTable(cursor,autoPopulate,parent,name);
 		}
 		public QDataTable(QSqlCursor cursor, bool autoPopulate, QWidget parent) : this((Type) null) {
-			CreateQDataTableProxy();
-			CreateQDataTableSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQDataTable(cursor,autoPopulate,parent);
 		}
 		[SmokeMethod("QDataTable(QSqlCursor*, bool, QWidget*)")]
@@ -91,8 +91,8 @@ namespace Qt {
 			ProxyQDataTable().NewQDataTable(cursor,autoPopulate,parent);
 		}
 		public QDataTable(QSqlCursor cursor, bool autoPopulate) : this((Type) null) {
-			CreateQDataTableProxy();
-			CreateQDataTableSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQDataTable(cursor,autoPopulate);
 		}
 		[SmokeMethod("QDataTable(QSqlCursor*, bool)")]
@@ -100,8 +100,8 @@ namespace Qt {
 			ProxyQDataTable().NewQDataTable(cursor,autoPopulate);
 		}
 		public QDataTable(QSqlCursor cursor) : this((Type) null) {
-			CreateQDataTableProxy();
-			CreateQDataTableSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQDataTable(cursor);
 		}
 		[SmokeMethod("QDataTable(QSqlCursor*)")]
@@ -534,7 +534,7 @@ namespace Qt {
 		private void DisposeQDataTable() {
 			ProxyQDataTable().DisposeQDataTable();
 		}
-		protected void CreateQDataTableSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQDataTableSignals), this);
 			Q_EMIT = (IQDataTableSignals) realProxy.GetTransparentProxy();
 		}

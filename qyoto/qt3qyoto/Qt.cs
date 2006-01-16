@@ -203,7 +203,7 @@ namespace Qt {
 			QDataStream op_read(QDataStream arg1, QRect arg2);
 		}
 
-		protected void CreateQtProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(Qt), this);
 			_interceptor = (Qt) realProxy.GetTransparentProxy();
 		}
@@ -875,7 +875,7 @@ namespace Qt {
 			BottomRight = 0x00003,
 		}
 		public Qt() : this((Type) null) {
-			CreateQtProxy();
+			CreateProxy();
 			NewQt();
 		}
 		[SmokeMethod("Qt()")]

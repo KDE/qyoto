@@ -12,7 +12,7 @@ namespace Qt {
 		interface IQAsyncIOProxy {
 		}
 
-		protected void CreateQAsyncIOProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAsyncIO), this);
 			_interceptor = (QAsyncIO) realProxy.GetTransparentProxy();
 		}
@@ -33,7 +33,7 @@ namespace Qt {
 			ProxyQAsyncIO().Connect(arg1,member);
 		}
 		public QAsyncIO() : this((Type) null) {
-			CreateQAsyncIOProxy();
+			CreateProxy();
 			NewQAsyncIO();
 		}
 		[SmokeMethod("QAsyncIO()")]

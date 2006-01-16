@@ -11,7 +11,7 @@ using System.Collections;
 		interface IQListViewItemProxy {
 		}
 
-		protected void CreateQListViewItemProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QListViewItem), this);
 			_interceptor = (QListViewItem) realProxy.GetTransparentProxy();
 		}
@@ -28,7 +28,7 @@ using System.Collections;
 		}
 
 		public QListViewItem(QListView parent) : this((Type) null) {
-			CreateQListViewItemProxy();
+			CreateProxy();
 			NewQListViewItem(parent);
 		}
 		[SmokeMethod("QListViewItem(QListView*)")]
@@ -36,7 +36,7 @@ using System.Collections;
 			ProxyQListViewItem().NewQListViewItem(parent);
 		}
 		public QListViewItem(QListViewItem parent) : this((Type) null) {
-			CreateQListViewItemProxy();
+			CreateProxy();
 			NewQListViewItem(parent);
 		}
 		[SmokeMethod("QListViewItem(QListViewItem*)")]
@@ -44,7 +44,7 @@ using System.Collections;
 			ProxyQListViewItem().NewQListViewItem(parent);
 		}
 		public QListViewItem(QListView parent, QListViewItem after) : this((Type) null) {
-			CreateQListViewItemProxy();
+			CreateProxy();
 			NewQListViewItem(parent,after);
 		}
 		[SmokeMethod("QListViewItem(QListView*, QListViewItem*)")]
@@ -52,7 +52,7 @@ using System.Collections;
 			ProxyQListViewItem().NewQListViewItem(parent,after);
 		}
 		public QListViewItem(QListViewItem parent, QListViewItem after) : this((Type) null) {
-			CreateQListViewItemProxy();
+			CreateProxy();
 			NewQListViewItem(parent,after);
 		}
 		[SmokeMethod("QListViewItem(QListViewItem*, QListViewItem*)")]
@@ -60,7 +60,7 @@ using System.Collections;
 			ProxyQListViewItem().NewQListViewItem(parent,after);
 		}
 		public QListViewItem(QListView parent, string arg2, string arg3, string arg4, string arg5, string arg6, string arg7, string arg8, string arg9) : this((Type) null) {
-			CreateQListViewItemProxy();
+			CreateProxy();
 			NewQListViewItem(parent,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9);
 		}
 		[SmokeMethod("QListViewItem(QListView*, QString, QString, QString, QString, QString, QString, QString, QString)")]
@@ -68,7 +68,7 @@ using System.Collections;
 			ProxyQListViewItem().NewQListViewItem(parent,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9);
 		}
 		public QListViewItem(QListView parent, string arg2, string arg3, string arg4, string arg5, string arg6, string arg7, string arg8) : this((Type) null) {
-			CreateQListViewItemProxy();
+			CreateProxy();
 			NewQListViewItem(parent,arg2,arg3,arg4,arg5,arg6,arg7,arg8);
 		}
 		[SmokeMethod("QListViewItem(QListView*, QString, QString, QString, QString, QString, QString, QString)")]
@@ -76,7 +76,7 @@ using System.Collections;
 			ProxyQListViewItem().NewQListViewItem(parent,arg2,arg3,arg4,arg5,arg6,arg7,arg8);
 		}
 		public QListViewItem(QListView parent, string arg2, string arg3, string arg4, string arg5, string arg6, string arg7) : this((Type) null) {
-			CreateQListViewItemProxy();
+			CreateProxy();
 			NewQListViewItem(parent,arg2,arg3,arg4,arg5,arg6,arg7);
 		}
 		[SmokeMethod("QListViewItem(QListView*, QString, QString, QString, QString, QString, QString)")]
@@ -84,7 +84,7 @@ using System.Collections;
 			ProxyQListViewItem().NewQListViewItem(parent,arg2,arg3,arg4,arg5,arg6,arg7);
 		}
 		public QListViewItem(QListView parent, string arg2, string arg3, string arg4, string arg5, string arg6) : this((Type) null) {
-			CreateQListViewItemProxy();
+			CreateProxy();
 			NewQListViewItem(parent,arg2,arg3,arg4,arg5,arg6);
 		}
 		[SmokeMethod("QListViewItem(QListView*, QString, QString, QString, QString, QString)")]
@@ -92,7 +92,7 @@ using System.Collections;
 			ProxyQListViewItem().NewQListViewItem(parent,arg2,arg3,arg4,arg5,arg6);
 		}
 		public QListViewItem(QListView parent, string arg2, string arg3, string arg4, string arg5) : this((Type) null) {
-			CreateQListViewItemProxy();
+			CreateProxy();
 			NewQListViewItem(parent,arg2,arg3,arg4,arg5);
 		}
 		[SmokeMethod("QListViewItem(QListView*, QString, QString, QString, QString)")]
@@ -100,7 +100,7 @@ using System.Collections;
 			ProxyQListViewItem().NewQListViewItem(parent,arg2,arg3,arg4,arg5);
 		}
 		public QListViewItem(QListView parent, string arg2, string arg3, string arg4) : this((Type) null) {
-			CreateQListViewItemProxy();
+			CreateProxy();
 			NewQListViewItem(parent,arg2,arg3,arg4);
 		}
 		[SmokeMethod("QListViewItem(QListView*, QString, QString, QString)")]
@@ -108,7 +108,7 @@ using System.Collections;
 			ProxyQListViewItem().NewQListViewItem(parent,arg2,arg3,arg4);
 		}
 		public QListViewItem(QListView parent, string arg2, string arg3) : this((Type) null) {
-			CreateQListViewItemProxy();
+			CreateProxy();
 			NewQListViewItem(parent,arg2,arg3);
 		}
 		[SmokeMethod("QListViewItem(QListView*, QString, QString)")]
@@ -116,7 +116,7 @@ using System.Collections;
 			ProxyQListViewItem().NewQListViewItem(parent,arg2,arg3);
 		}
 		public QListViewItem(QListView parent, string arg2) : this((Type) null) {
-			CreateQListViewItemProxy();
+			CreateProxy();
 			NewQListViewItem(parent,arg2);
 		}
 		[SmokeMethod("QListViewItem(QListView*, QString)")]
@@ -124,7 +124,7 @@ using System.Collections;
 			ProxyQListViewItem().NewQListViewItem(parent,arg2);
 		}
 		public QListViewItem(QListViewItem parent, string arg2, string arg3, string arg4, string arg5, string arg6, string arg7, string arg8, string arg9) : this((Type) null) {
-			CreateQListViewItemProxy();
+			CreateProxy();
 			NewQListViewItem(parent,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9);
 		}
 		[SmokeMethod("QListViewItem(QListViewItem*, QString, QString, QString, QString, QString, QString, QString, QString)")]
@@ -132,7 +132,7 @@ using System.Collections;
 			ProxyQListViewItem().NewQListViewItem(parent,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9);
 		}
 		public QListViewItem(QListViewItem parent, string arg2, string arg3, string arg4, string arg5, string arg6, string arg7, string arg8) : this((Type) null) {
-			CreateQListViewItemProxy();
+			CreateProxy();
 			NewQListViewItem(parent,arg2,arg3,arg4,arg5,arg6,arg7,arg8);
 		}
 		[SmokeMethod("QListViewItem(QListViewItem*, QString, QString, QString, QString, QString, QString, QString)")]
@@ -140,7 +140,7 @@ using System.Collections;
 			ProxyQListViewItem().NewQListViewItem(parent,arg2,arg3,arg4,arg5,arg6,arg7,arg8);
 		}
 		public QListViewItem(QListViewItem parent, string arg2, string arg3, string arg4, string arg5, string arg6, string arg7) : this((Type) null) {
-			CreateQListViewItemProxy();
+			CreateProxy();
 			NewQListViewItem(parent,arg2,arg3,arg4,arg5,arg6,arg7);
 		}
 		[SmokeMethod("QListViewItem(QListViewItem*, QString, QString, QString, QString, QString, QString)")]
@@ -148,7 +148,7 @@ using System.Collections;
 			ProxyQListViewItem().NewQListViewItem(parent,arg2,arg3,arg4,arg5,arg6,arg7);
 		}
 		public QListViewItem(QListViewItem parent, string arg2, string arg3, string arg4, string arg5, string arg6) : this((Type) null) {
-			CreateQListViewItemProxy();
+			CreateProxy();
 			NewQListViewItem(parent,arg2,arg3,arg4,arg5,arg6);
 		}
 		[SmokeMethod("QListViewItem(QListViewItem*, QString, QString, QString, QString, QString)")]
@@ -156,7 +156,7 @@ using System.Collections;
 			ProxyQListViewItem().NewQListViewItem(parent,arg2,arg3,arg4,arg5,arg6);
 		}
 		public QListViewItem(QListViewItem parent, string arg2, string arg3, string arg4, string arg5) : this((Type) null) {
-			CreateQListViewItemProxy();
+			CreateProxy();
 			NewQListViewItem(parent,arg2,arg3,arg4,arg5);
 		}
 		[SmokeMethod("QListViewItem(QListViewItem*, QString, QString, QString, QString)")]
@@ -164,7 +164,7 @@ using System.Collections;
 			ProxyQListViewItem().NewQListViewItem(parent,arg2,arg3,arg4,arg5);
 		}
 		public QListViewItem(QListViewItem parent, string arg2, string arg3, string arg4) : this((Type) null) {
-			CreateQListViewItemProxy();
+			CreateProxy();
 			NewQListViewItem(parent,arg2,arg3,arg4);
 		}
 		[SmokeMethod("QListViewItem(QListViewItem*, QString, QString, QString)")]
@@ -172,7 +172,7 @@ using System.Collections;
 			ProxyQListViewItem().NewQListViewItem(parent,arg2,arg3,arg4);
 		}
 		public QListViewItem(QListViewItem parent, string arg2, string arg3) : this((Type) null) {
-			CreateQListViewItemProxy();
+			CreateProxy();
 			NewQListViewItem(parent,arg2,arg3);
 		}
 		[SmokeMethod("QListViewItem(QListViewItem*, QString, QString)")]
@@ -180,7 +180,7 @@ using System.Collections;
 			ProxyQListViewItem().NewQListViewItem(parent,arg2,arg3);
 		}
 		public QListViewItem(QListViewItem parent, string arg2) : this((Type) null) {
-			CreateQListViewItemProxy();
+			CreateProxy();
 			NewQListViewItem(parent,arg2);
 		}
 		[SmokeMethod("QListViewItem(QListViewItem*, QString)")]
@@ -188,7 +188,7 @@ using System.Collections;
 			ProxyQListViewItem().NewQListViewItem(parent,arg2);
 		}
 		public QListViewItem(QListView parent, QListViewItem after, string arg3, string arg4, string arg5, string arg6, string arg7, string arg8, string arg9, string arg10) : this((Type) null) {
-			CreateQListViewItemProxy();
+			CreateProxy();
 			NewQListViewItem(parent,after,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10);
 		}
 		[SmokeMethod("QListViewItem(QListView*, QListViewItem*, QString, QString, QString, QString, QString, QString, QString, QString)")]
@@ -196,7 +196,7 @@ using System.Collections;
 			ProxyQListViewItem().NewQListViewItem(parent,after,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10);
 		}
 		public QListViewItem(QListView parent, QListViewItem after, string arg3, string arg4, string arg5, string arg6, string arg7, string arg8, string arg9) : this((Type) null) {
-			CreateQListViewItemProxy();
+			CreateProxy();
 			NewQListViewItem(parent,after,arg3,arg4,arg5,arg6,arg7,arg8,arg9);
 		}
 		[SmokeMethod("QListViewItem(QListView*, QListViewItem*, QString, QString, QString, QString, QString, QString, QString)")]
@@ -204,7 +204,7 @@ using System.Collections;
 			ProxyQListViewItem().NewQListViewItem(parent,after,arg3,arg4,arg5,arg6,arg7,arg8,arg9);
 		}
 		public QListViewItem(QListView parent, QListViewItem after, string arg3, string arg4, string arg5, string arg6, string arg7, string arg8) : this((Type) null) {
-			CreateQListViewItemProxy();
+			CreateProxy();
 			NewQListViewItem(parent,after,arg3,arg4,arg5,arg6,arg7,arg8);
 		}
 		[SmokeMethod("QListViewItem(QListView*, QListViewItem*, QString, QString, QString, QString, QString, QString)")]
@@ -212,7 +212,7 @@ using System.Collections;
 			ProxyQListViewItem().NewQListViewItem(parent,after,arg3,arg4,arg5,arg6,arg7,arg8);
 		}
 		public QListViewItem(QListView parent, QListViewItem after, string arg3, string arg4, string arg5, string arg6, string arg7) : this((Type) null) {
-			CreateQListViewItemProxy();
+			CreateProxy();
 			NewQListViewItem(parent,after,arg3,arg4,arg5,arg6,arg7);
 		}
 		[SmokeMethod("QListViewItem(QListView*, QListViewItem*, QString, QString, QString, QString, QString)")]
@@ -220,7 +220,7 @@ using System.Collections;
 			ProxyQListViewItem().NewQListViewItem(parent,after,arg3,arg4,arg5,arg6,arg7);
 		}
 		public QListViewItem(QListView parent, QListViewItem after, string arg3, string arg4, string arg5, string arg6) : this((Type) null) {
-			CreateQListViewItemProxy();
+			CreateProxy();
 			NewQListViewItem(parent,after,arg3,arg4,arg5,arg6);
 		}
 		[SmokeMethod("QListViewItem(QListView*, QListViewItem*, QString, QString, QString, QString)")]
@@ -228,7 +228,7 @@ using System.Collections;
 			ProxyQListViewItem().NewQListViewItem(parent,after,arg3,arg4,arg5,arg6);
 		}
 		public QListViewItem(QListView parent, QListViewItem after, string arg3, string arg4, string arg5) : this((Type) null) {
-			CreateQListViewItemProxy();
+			CreateProxy();
 			NewQListViewItem(parent,after,arg3,arg4,arg5);
 		}
 		[SmokeMethod("QListViewItem(QListView*, QListViewItem*, QString, QString, QString)")]
@@ -236,7 +236,7 @@ using System.Collections;
 			ProxyQListViewItem().NewQListViewItem(parent,after,arg3,arg4,arg5);
 		}
 		public QListViewItem(QListView parent, QListViewItem after, string arg3, string arg4) : this((Type) null) {
-			CreateQListViewItemProxy();
+			CreateProxy();
 			NewQListViewItem(parent,after,arg3,arg4);
 		}
 		[SmokeMethod("QListViewItem(QListView*, QListViewItem*, QString, QString)")]
@@ -244,7 +244,7 @@ using System.Collections;
 			ProxyQListViewItem().NewQListViewItem(parent,after,arg3,arg4);
 		}
 		public QListViewItem(QListView parent, QListViewItem after, string arg3) : this((Type) null) {
-			CreateQListViewItemProxy();
+			CreateProxy();
 			NewQListViewItem(parent,after,arg3);
 		}
 		[SmokeMethod("QListViewItem(QListView*, QListViewItem*, QString)")]
@@ -252,7 +252,7 @@ using System.Collections;
 			ProxyQListViewItem().NewQListViewItem(parent,after,arg3);
 		}
 		public QListViewItem(QListViewItem parent, QListViewItem after, string arg3, string arg4, string arg5, string arg6, string arg7, string arg8, string arg9, string arg10) : this((Type) null) {
-			CreateQListViewItemProxy();
+			CreateProxy();
 			NewQListViewItem(parent,after,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10);
 		}
 		[SmokeMethod("QListViewItem(QListViewItem*, QListViewItem*, QString, QString, QString, QString, QString, QString, QString, QString)")]
@@ -260,7 +260,7 @@ using System.Collections;
 			ProxyQListViewItem().NewQListViewItem(parent,after,arg3,arg4,arg5,arg6,arg7,arg8,arg9,arg10);
 		}
 		public QListViewItem(QListViewItem parent, QListViewItem after, string arg3, string arg4, string arg5, string arg6, string arg7, string arg8, string arg9) : this((Type) null) {
-			CreateQListViewItemProxy();
+			CreateProxy();
 			NewQListViewItem(parent,after,arg3,arg4,arg5,arg6,arg7,arg8,arg9);
 		}
 		[SmokeMethod("QListViewItem(QListViewItem*, QListViewItem*, QString, QString, QString, QString, QString, QString, QString)")]
@@ -268,7 +268,7 @@ using System.Collections;
 			ProxyQListViewItem().NewQListViewItem(parent,after,arg3,arg4,arg5,arg6,arg7,arg8,arg9);
 		}
 		public QListViewItem(QListViewItem parent, QListViewItem after, string arg3, string arg4, string arg5, string arg6, string arg7, string arg8) : this((Type) null) {
-			CreateQListViewItemProxy();
+			CreateProxy();
 			NewQListViewItem(parent,after,arg3,arg4,arg5,arg6,arg7,arg8);
 		}
 		[SmokeMethod("QListViewItem(QListViewItem*, QListViewItem*, QString, QString, QString, QString, QString, QString)")]
@@ -276,7 +276,7 @@ using System.Collections;
 			ProxyQListViewItem().NewQListViewItem(parent,after,arg3,arg4,arg5,arg6,arg7,arg8);
 		}
 		public QListViewItem(QListViewItem parent, QListViewItem after, string arg3, string arg4, string arg5, string arg6, string arg7) : this((Type) null) {
-			CreateQListViewItemProxy();
+			CreateProxy();
 			NewQListViewItem(parent,after,arg3,arg4,arg5,arg6,arg7);
 		}
 		[SmokeMethod("QListViewItem(QListViewItem*, QListViewItem*, QString, QString, QString, QString, QString)")]
@@ -284,7 +284,7 @@ using System.Collections;
 			ProxyQListViewItem().NewQListViewItem(parent,after,arg3,arg4,arg5,arg6,arg7);
 		}
 		public QListViewItem(QListViewItem parent, QListViewItem after, string arg3, string arg4, string arg5, string arg6) : this((Type) null) {
-			CreateQListViewItemProxy();
+			CreateProxy();
 			NewQListViewItem(parent,after,arg3,arg4,arg5,arg6);
 		}
 		[SmokeMethod("QListViewItem(QListViewItem*, QListViewItem*, QString, QString, QString, QString)")]
@@ -292,7 +292,7 @@ using System.Collections;
 			ProxyQListViewItem().NewQListViewItem(parent,after,arg3,arg4,arg5,arg6);
 		}
 		public QListViewItem(QListViewItem parent, QListViewItem after, string arg3, string arg4, string arg5) : this((Type) null) {
-			CreateQListViewItemProxy();
+			CreateProxy();
 			NewQListViewItem(parent,after,arg3,arg4,arg5);
 		}
 		[SmokeMethod("QListViewItem(QListViewItem*, QListViewItem*, QString, QString, QString)")]
@@ -300,7 +300,7 @@ using System.Collections;
 			ProxyQListViewItem().NewQListViewItem(parent,after,arg3,arg4,arg5);
 		}
 		public QListViewItem(QListViewItem parent, QListViewItem after, string arg3, string arg4) : this((Type) null) {
-			CreateQListViewItemProxy();
+			CreateProxy();
 			NewQListViewItem(parent,after,arg3,arg4);
 		}
 		[SmokeMethod("QListViewItem(QListViewItem*, QListViewItem*, QString, QString)")]
@@ -308,7 +308,7 @@ using System.Collections;
 			ProxyQListViewItem().NewQListViewItem(parent,after,arg3,arg4);
 		}
 		public QListViewItem(QListViewItem parent, QListViewItem after, string arg3) : this((Type) null) {
-			CreateQListViewItemProxy();
+			CreateProxy();
 			NewQListViewItem(parent,after,arg3);
 		}
 		[SmokeMethod("QListViewItem(QListViewItem*, QListViewItem*, QString)")]

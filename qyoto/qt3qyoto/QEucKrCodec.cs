@@ -10,7 +10,7 @@ namespace Qt {
 		interface IQEucKrCodecProxy {
 		}
 
-		protected void CreateQEucKrCodecProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QEucKrCodec), this);
 			_interceptor = (QEucKrCodec) realProxy.GetTransparentProxy();
 		}
@@ -59,7 +59,7 @@ namespace Qt {
 			return ProxyQEucKrCodec().HeuristicNameMatch(hint);
 		}
 		public QEucKrCodec() : this((Type) null) {
-			CreateQEucKrCodecProxy();
+			CreateProxy();
 			NewQEucKrCodec();
 		}
 		[SmokeMethod("QEucKrCodec()")]

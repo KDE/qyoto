@@ -15,7 +15,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQSessionManagerProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSessionManager), this);
 			_interceptor = (QSessionManager) realProxy.GetTransparentProxy();
 		}
@@ -125,7 +125,7 @@ namespace Qt {
 		public static new string TrUtf8(string arg1) {
 			return StaticQSessionManager().TrUtf8(arg1);
 		}
-		protected void CreateQSessionManagerSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQSessionManagerSignals), this);
 			Q_EMIT = (IQSessionManagerSignals) realProxy.GetTransparentProxy();
 		}

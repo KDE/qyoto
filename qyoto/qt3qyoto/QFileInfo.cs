@@ -13,7 +13,7 @@ namespace Qt {
 		interface IQFileInfoProxy {
 		}
 
-		protected void CreateQFileInfoProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFileInfo), this);
 			_interceptor = (QFileInfo) realProxy.GetTransparentProxy();
 		}
@@ -44,7 +44,7 @@ namespace Qt {
 			ExeOther = 00001,
 		}
 		public QFileInfo() : this((Type) null) {
-			CreateQFileInfoProxy();
+			CreateProxy();
 			NewQFileInfo();
 		}
 		[SmokeMethod("QFileInfo()")]
@@ -52,7 +52,7 @@ namespace Qt {
 			ProxyQFileInfo().NewQFileInfo();
 		}
 		public QFileInfo(string file) : this((Type) null) {
-			CreateQFileInfoProxy();
+			CreateProxy();
 			NewQFileInfo(file);
 		}
 		[SmokeMethod("QFileInfo(const QString&)")]
@@ -60,7 +60,7 @@ namespace Qt {
 			ProxyQFileInfo().NewQFileInfo(file);
 		}
 		public QFileInfo(QFile arg1) : this((Type) null) {
-			CreateQFileInfoProxy();
+			CreateProxy();
 			NewQFileInfo(arg1);
 		}
 		[SmokeMethod("QFileInfo(const QFile&)")]
@@ -68,7 +68,7 @@ namespace Qt {
 			ProxyQFileInfo().NewQFileInfo(arg1);
 		}
 		public QFileInfo(QDir arg1, string fileName) : this((Type) null) {
-			CreateQFileInfoProxy();
+			CreateProxy();
 			NewQFileInfo(arg1,fileName);
 		}
 		[SmokeMethod("QFileInfo(const QDir&, const QString&)")]
@@ -76,7 +76,7 @@ namespace Qt {
 			ProxyQFileInfo().NewQFileInfo(arg1,fileName);
 		}
 		public QFileInfo(QFileInfo arg1) : this((Type) null) {
-			CreateQFileInfoProxy();
+			CreateProxy();
 			NewQFileInfo(arg1);
 		}
 		[SmokeMethod("QFileInfo(const QFileInfo&)")]

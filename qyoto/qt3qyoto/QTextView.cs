@@ -14,7 +14,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQTextViewProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextView), this);
 			_interceptor = (QTextView) realProxy.GetTransparentProxy();
 		}
@@ -39,8 +39,8 @@ namespace Qt {
 			return ProxyQTextView().ClassName();
 		}
 		public QTextView(string text, string context, QWidget parent, string name) : this((Type) null) {
-			CreateQTextViewProxy();
-			CreateQTextViewSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQTextView(text,context,parent,name);
 		}
 		[SmokeMethod("QTextView(const QString&, const QString&, QWidget*, const char*)")]
@@ -48,8 +48,8 @@ namespace Qt {
 			ProxyQTextView().NewQTextView(text,context,parent,name);
 		}
 		public QTextView(string text, string context, QWidget parent) : this((Type) null) {
-			CreateQTextViewProxy();
-			CreateQTextViewSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQTextView(text,context,parent);
 		}
 		[SmokeMethod("QTextView(const QString&, const QString&, QWidget*)")]
@@ -57,8 +57,8 @@ namespace Qt {
 			ProxyQTextView().NewQTextView(text,context,parent);
 		}
 		public QTextView(string text, string context) : this((Type) null) {
-			CreateQTextViewProxy();
-			CreateQTextViewSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQTextView(text,context);
 		}
 		[SmokeMethod("QTextView(const QString&, const QString&)")]
@@ -66,8 +66,8 @@ namespace Qt {
 			ProxyQTextView().NewQTextView(text,context);
 		}
 		public QTextView(string text) : this((Type) null) {
-			CreateQTextViewProxy();
-			CreateQTextViewSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQTextView(text);
 		}
 		[SmokeMethod("QTextView(const QString&)")]
@@ -75,8 +75,8 @@ namespace Qt {
 			ProxyQTextView().NewQTextView(text);
 		}
 		public QTextView(QWidget parent, string name) : this((Type) null) {
-			CreateQTextViewProxy();
-			CreateQTextViewSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQTextView(parent,name);
 		}
 		[SmokeMethod("QTextView(QWidget*, const char*)")]
@@ -84,8 +84,8 @@ namespace Qt {
 			ProxyQTextView().NewQTextView(parent,name);
 		}
 		public QTextView(QWidget parent) : this((Type) null) {
-			CreateQTextViewProxy();
-			CreateQTextViewSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQTextView(parent);
 		}
 		[SmokeMethod("QTextView(QWidget*)")]
@@ -93,8 +93,8 @@ namespace Qt {
 			ProxyQTextView().NewQTextView(parent);
 		}
 		public QTextView() : this((Type) null) {
-			CreateQTextViewProxy();
-			CreateQTextViewSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQTextView();
 		}
 		[SmokeMethod("QTextView()")]
@@ -126,7 +126,7 @@ namespace Qt {
 		private void DisposeQTextView() {
 			ProxyQTextView().DisposeQTextView();
 		}
-		protected void CreateQTextViewSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQTextViewSignals), this);
 			Q_EMIT = (IQTextViewSignals) realProxy.GetTransparentProxy();
 		}

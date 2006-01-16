@@ -10,7 +10,7 @@ namespace Qt {
 		interface IQStyleSheetItemProxy {
 		}
 
-		protected void CreateQStyleSheetItemProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleSheetItem), this);
 			_interceptor = (QStyleSheetItem) realProxy.GetTransparentProxy();
 		}
@@ -68,7 +68,7 @@ namespace Qt {
 			ListStyleUndefined = -1,
 		}
 		public QStyleSheetItem(QStyleSheet parent, string name) : this((Type) null) {
-			CreateQStyleSheetItemProxy();
+			CreateProxy();
 			NewQStyleSheetItem(parent,name);
 		}
 		[SmokeMethod("QStyleSheetItem(QStyleSheet*, const QString&)")]
@@ -76,7 +76,7 @@ namespace Qt {
 			ProxyQStyleSheetItem().NewQStyleSheetItem(parent,name);
 		}
 		public QStyleSheetItem(QStyleSheetItem arg1) : this((Type) null) {
-			CreateQStyleSheetItemProxy();
+			CreateProxy();
 			NewQStyleSheetItem(arg1);
 		}
 		[SmokeMethod("QStyleSheetItem(const QStyleSheetItem&)")]

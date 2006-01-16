@@ -9,7 +9,7 @@ namespace Qt {
 		interface IQCanvasEllipseProxy {
 		}
 
-		protected void CreateQCanvasEllipseProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QCanvasEllipse), this);
 			_interceptor = (QCanvasEllipse) realProxy.GetTransparentProxy();
 		}
@@ -26,7 +26,7 @@ namespace Qt {
 		}
 
 		public QCanvasEllipse(QCanvas canvas) : this((Type) null) {
-			CreateQCanvasEllipseProxy();
+			CreateProxy();
 			NewQCanvasEllipse(canvas);
 		}
 		[SmokeMethod("QCanvasEllipse(QCanvas*)")]
@@ -34,7 +34,7 @@ namespace Qt {
 			ProxyQCanvasEllipse().NewQCanvasEllipse(canvas);
 		}
 		public QCanvasEllipse(int width, int height, QCanvas canvas) : this((Type) null) {
-			CreateQCanvasEllipseProxy();
+			CreateProxy();
 			NewQCanvasEllipse(width,height,canvas);
 		}
 		[SmokeMethod("QCanvasEllipse(int, int, QCanvas*)")]
@@ -42,7 +42,7 @@ namespace Qt {
 			ProxyQCanvasEllipse().NewQCanvasEllipse(width,height,canvas);
 		}
 		public QCanvasEllipse(int width, int height, int startangle, int angle, QCanvas canvas) : this((Type) null) {
-			CreateQCanvasEllipseProxy();
+			CreateProxy();
 			NewQCanvasEllipse(width,height,startangle,angle,canvas);
 		}
 		[SmokeMethod("QCanvasEllipse(int, int, int, int, QCanvas*)")]

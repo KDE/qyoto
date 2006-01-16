@@ -20,7 +20,7 @@ using System.Collections;
 			bool CanDecode(IQMimeSource e);
 		}
 
-		protected void CreateQUriDragProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QUriDrag), this);
 			_interceptor = (QUriDrag) realProxy.GetTransparentProxy();
 		}
@@ -45,8 +45,8 @@ using System.Collections;
 			return ProxyQUriDrag().ClassName();
 		}
 		public QUriDrag(string[] uris, QWidget dragSource, string name) : this((Type) null) {
-			CreateQUriDragProxy();
-			CreateQUriDragSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQUriDrag(uris,dragSource,name);
 		}
 		[SmokeMethod("QUriDrag(QStrList, QWidget*, const char*)")]
@@ -54,8 +54,8 @@ using System.Collections;
 			ProxyQUriDrag().NewQUriDrag(uris,dragSource,name);
 		}
 		public QUriDrag(string[] uris, QWidget dragSource) : this((Type) null) {
-			CreateQUriDragProxy();
-			CreateQUriDragSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQUriDrag(uris,dragSource);
 		}
 		[SmokeMethod("QUriDrag(QStrList, QWidget*)")]
@@ -63,8 +63,8 @@ using System.Collections;
 			ProxyQUriDrag().NewQUriDrag(uris,dragSource);
 		}
 		public QUriDrag(string[] uris) : this((Type) null) {
-			CreateQUriDragProxy();
-			CreateQUriDragSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQUriDrag(uris);
 		}
 		[SmokeMethod("QUriDrag(QStrList)")]
@@ -72,8 +72,8 @@ using System.Collections;
 			ProxyQUriDrag().NewQUriDrag(uris);
 		}
 		public QUriDrag(QWidget dragSource, string name) : this((Type) null) {
-			CreateQUriDragProxy();
-			CreateQUriDragSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQUriDrag(dragSource,name);
 		}
 		[SmokeMethod("QUriDrag(QWidget*, const char*)")]
@@ -81,8 +81,8 @@ using System.Collections;
 			ProxyQUriDrag().NewQUriDrag(dragSource,name);
 		}
 		public QUriDrag(QWidget dragSource) : this((Type) null) {
-			CreateQUriDragProxy();
-			CreateQUriDragSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQUriDrag(dragSource);
 		}
 		[SmokeMethod("QUriDrag(QWidget*)")]
@@ -90,8 +90,8 @@ using System.Collections;
 			ProxyQUriDrag().NewQUriDrag(dragSource);
 		}
 		public QUriDrag() : this((Type) null) {
-			CreateQUriDragProxy();
-			CreateQUriDragSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQUriDrag();
 		}
 		[SmokeMethod("QUriDrag()")]
@@ -163,7 +163,7 @@ using System.Collections;
 //	public static native bool decodeToUnicodeUris(QMimeSourceInterface e, ArrayList i);
 //	public static native bool decodeLocalFiles(QMimeSourceInterface e, ArrayList i);
 	
-		protected void CreateQUriDragSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQUriDragSignals), this);
 			Q_EMIT = (IQUriDragSignals) realProxy.GetTransparentProxy();
 		}

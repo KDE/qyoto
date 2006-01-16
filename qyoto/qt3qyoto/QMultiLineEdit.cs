@@ -14,7 +14,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQMultiLineEditProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMultiLineEdit), this);
 			_interceptor = (QMultiLineEdit) realProxy.GetTransparentProxy();
 		}
@@ -39,8 +39,8 @@ namespace Qt {
 			return ProxyQMultiLineEdit().ClassName();
 		}
 		public QMultiLineEdit(QWidget parent, string name) : this((Type) null) {
-			CreateQMultiLineEditProxy();
-			CreateQMultiLineEditSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQMultiLineEdit(parent,name);
 		}
 		[SmokeMethod("QMultiLineEdit(QWidget*, const char*)")]
@@ -48,8 +48,8 @@ namespace Qt {
 			ProxyQMultiLineEdit().NewQMultiLineEdit(parent,name);
 		}
 		public QMultiLineEdit(QWidget parent) : this((Type) null) {
-			CreateQMultiLineEditProxy();
-			CreateQMultiLineEditSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQMultiLineEdit(parent);
 		}
 		[SmokeMethod("QMultiLineEdit(QWidget*)")]
@@ -57,8 +57,8 @@ namespace Qt {
 			ProxyQMultiLineEdit().NewQMultiLineEdit(parent);
 		}
 		public QMultiLineEdit() : this((Type) null) {
-			CreateQMultiLineEditProxy();
-			CreateQMultiLineEditSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQMultiLineEdit();
 		}
 		[SmokeMethod("QMultiLineEdit()")]
@@ -295,7 +295,7 @@ namespace Qt {
 		private void DisposeQMultiLineEdit() {
 			ProxyQMultiLineEdit().DisposeQMultiLineEdit();
 		}
-		protected void CreateQMultiLineEditSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQMultiLineEditSignals), this);
 			Q_EMIT = (IQMultiLineEditSignals) realProxy.GetTransparentProxy();
 		}

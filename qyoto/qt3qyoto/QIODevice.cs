@@ -49,7 +49,7 @@ namespace Qt {
 		interface IQIODeviceProxy {
 		}
 
-		protected void CreateQIODeviceProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QIODevice), this);
 			_interceptor = (QIODevice) realProxy.GetTransparentProxy();
 		}
@@ -66,7 +66,7 @@ namespace Qt {
 		}
 
 		public QIODevice() : this((Type) null) {
-			CreateQIODeviceProxy();
+			CreateProxy();
 			NewQIODevice();
 		}
 		[SmokeMethod("QIODevice()")]

@@ -13,7 +13,7 @@ namespace Qt {
 		interface IQFontMetricsProxy {
 		}
 
-		protected void CreateQFontMetricsProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFontMetrics), this);
 			_interceptor = (QFontMetrics) realProxy.GetTransparentProxy();
 		}
@@ -30,7 +30,7 @@ namespace Qt {
 		}
 
 		public QFontMetrics(QFont arg1) : this((Type) null) {
-			CreateQFontMetricsProxy();
+			CreateProxy();
 			NewQFontMetrics(arg1);
 		}
 		[SmokeMethod("QFontMetrics(const QFont&)")]
@@ -38,7 +38,7 @@ namespace Qt {
 			ProxyQFontMetrics().NewQFontMetrics(arg1);
 		}
 		public QFontMetrics(QFont arg1, QFont.Script arg2) : this((Type) null) {
-			CreateQFontMetricsProxy();
+			CreateProxy();
 			NewQFontMetrics(arg1,arg2);
 		}
 		[SmokeMethod("QFontMetrics(const QFont&, QFont::Script)")]
@@ -46,7 +46,7 @@ namespace Qt {
 			ProxyQFontMetrics().NewQFontMetrics(arg1,arg2);
 		}
 		public QFontMetrics(QFontMetrics arg1) : this((Type) null) {
-			CreateQFontMetricsProxy();
+			CreateProxy();
 			NewQFontMetrics(arg1);
 		}
 		[SmokeMethod("QFontMetrics(const QFontMetrics&)")]

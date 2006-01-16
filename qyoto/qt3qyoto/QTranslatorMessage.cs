@@ -18,7 +18,7 @@ namespace Qt {
 			bool op_gte(QTranslatorMessage lhs, QTranslatorMessage m);
 		}
 
-		protected void CreateQTranslatorMessageProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTranslatorMessage), this);
 			_interceptor = (QTranslatorMessage) realProxy.GetTransparentProxy();
 		}
@@ -42,7 +42,7 @@ namespace Qt {
 			HashContextSourceTextComment = 4,
 		}
 		public QTranslatorMessage() : this((Type) null) {
-			CreateQTranslatorMessageProxy();
+			CreateProxy();
 			NewQTranslatorMessage();
 		}
 		[SmokeMethod("QTranslatorMessage()")]
@@ -50,7 +50,7 @@ namespace Qt {
 			ProxyQTranslatorMessage().NewQTranslatorMessage();
 		}
 		public QTranslatorMessage(string context, string sourceText, string comment, string translation) : this((Type) null) {
-			CreateQTranslatorMessageProxy();
+			CreateProxy();
 			NewQTranslatorMessage(context,sourceText,comment,translation);
 		}
 		[SmokeMethod("QTranslatorMessage(const char*, const char*, const char*, const QString&)")]
@@ -58,7 +58,7 @@ namespace Qt {
 			ProxyQTranslatorMessage().NewQTranslatorMessage(context,sourceText,comment,translation);
 		}
 		public QTranslatorMessage(string context, string sourceText, string comment) : this((Type) null) {
-			CreateQTranslatorMessageProxy();
+			CreateProxy();
 			NewQTranslatorMessage(context,sourceText,comment);
 		}
 		[SmokeMethod("QTranslatorMessage(const char*, const char*, const char*)")]
@@ -66,7 +66,7 @@ namespace Qt {
 			ProxyQTranslatorMessage().NewQTranslatorMessage(context,sourceText,comment);
 		}
 		public QTranslatorMessage(QDataStream arg1) : this((Type) null) {
-			CreateQTranslatorMessageProxy();
+			CreateProxy();
 			NewQTranslatorMessage(arg1);
 		}
 		[SmokeMethod("QTranslatorMessage(QDataStream&)")]
@@ -74,7 +74,7 @@ namespace Qt {
 			ProxyQTranslatorMessage().NewQTranslatorMessage(arg1);
 		}
 		public QTranslatorMessage(QTranslatorMessage m) : this((Type) null) {
-			CreateQTranslatorMessageProxy();
+			CreateProxy();
 			NewQTranslatorMessage(m);
 		}
 		[SmokeMethod("QTranslatorMessage(const QTranslatorMessage&)")]

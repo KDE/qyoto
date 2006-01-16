@@ -237,7 +237,7 @@ namespace Qt {
 			QDataStream op_read(QDataStream arg1, QRect arg2);
 		}
 
-		protected void CreateQGlobalSpaceProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGlobalSpace), this);
 			_interceptor = (QGlobalSpace) realProxy.GetTransparentProxy();
 		}

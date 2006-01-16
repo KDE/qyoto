@@ -13,7 +13,7 @@ namespace Qt {
 			bool op_equals(QColorGroup lhs, QColorGroup g);
 		}
 
-		protected void CreateQColorGroupProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QColorGroup), this);
 			_interceptor = (QColorGroup) realProxy.GetTransparentProxy();
 		}
@@ -49,7 +49,7 @@ namespace Qt {
 			NColorRoles = 16,
 		}
 		public QColorGroup() : this((Type) null) {
-			CreateQColorGroupProxy();
+			CreateProxy();
 			NewQColorGroup();
 		}
 		[SmokeMethod("QColorGroup()")]
@@ -57,7 +57,7 @@ namespace Qt {
 			ProxyQColorGroup().NewQColorGroup();
 		}
 		public QColorGroup(QColor foreground, QColor button, QColor light, QColor dark, QColor mid, QColor text, QColor arg7) : this((Type) null) {
-			CreateQColorGroupProxy();
+			CreateProxy();
 			NewQColorGroup(foreground,button,light,dark,mid,text,arg7);
 		}
 		[SmokeMethod("QColorGroup(const QColor&, const QColor&, const QColor&, const QColor&, const QColor&, const QColor&, const QColor&)")]
@@ -65,7 +65,7 @@ namespace Qt {
 			ProxyQColorGroup().NewQColorGroup(foreground,button,light,dark,mid,text,arg7);
 		}
 		public QColorGroup(QBrush foreground, QBrush button, QBrush light, QBrush dark, QBrush mid, QBrush text, QBrush bright_text, QBrush arg8, QBrush background) : this((Type) null) {
-			CreateQColorGroupProxy();
+			CreateProxy();
 			NewQColorGroup(foreground,button,light,dark,mid,text,bright_text,arg8,background);
 		}
 		[SmokeMethod("QColorGroup(const QBrush&, const QBrush&, const QBrush&, const QBrush&, const QBrush&, const QBrush&, const QBrush&, const QBrush&, const QBrush&)")]
@@ -73,7 +73,7 @@ namespace Qt {
 			ProxyQColorGroup().NewQColorGroup(foreground,button,light,dark,mid,text,bright_text,arg8,background);
 		}
 		public QColorGroup(QColorGroup arg1) : this((Type) null) {
-			CreateQColorGroupProxy();
+			CreateProxy();
 			NewQColorGroup(arg1);
 		}
 		[SmokeMethod("QColorGroup(const QColorGroup&)")]

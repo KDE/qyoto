@@ -10,7 +10,7 @@ namespace Qt {
 			bool op_equals(QPen lhs, QPen p);
 		}
 
-		protected void CreateQPenProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPen), this);
 			_interceptor = (QPen) realProxy.GetTransparentProxy();
 		}
@@ -27,7 +27,7 @@ namespace Qt {
 		}
 
 		public QPen() : this((Type) null) {
-			CreateQPenProxy();
+			CreateProxy();
 			NewQPen();
 		}
 		[SmokeMethod("QPen()")]
@@ -35,7 +35,7 @@ namespace Qt {
 			ProxyQPen().NewQPen();
 		}
 		public QPen(Qt.PenStyle arg1) : this((Type) null) {
-			CreateQPenProxy();
+			CreateProxy();
 			NewQPen(arg1);
 		}
 		[SmokeMethod("QPen(Qt::PenStyle)")]
@@ -43,7 +43,7 @@ namespace Qt {
 			ProxyQPen().NewQPen(arg1);
 		}
 		public QPen(QColor color, uint width, Qt.PenStyle style) : this((Type) null) {
-			CreateQPenProxy();
+			CreateProxy();
 			NewQPen(color,width,style);
 		}
 		[SmokeMethod("QPen(const QColor&, uint, Qt::PenStyle)")]
@@ -51,7 +51,7 @@ namespace Qt {
 			ProxyQPen().NewQPen(color,width,style);
 		}
 		public QPen(QColor color, uint width) : this((Type) null) {
-			CreateQPenProxy();
+			CreateProxy();
 			NewQPen(color,width);
 		}
 		[SmokeMethod("QPen(const QColor&, uint)")]
@@ -59,7 +59,7 @@ namespace Qt {
 			ProxyQPen().NewQPen(color,width);
 		}
 		public QPen(QColor color) : this((Type) null) {
-			CreateQPenProxy();
+			CreateProxy();
 			NewQPen(color);
 		}
 		[SmokeMethod("QPen(const QColor&)")]
@@ -67,7 +67,7 @@ namespace Qt {
 			ProxyQPen().NewQPen(color);
 		}
 		public QPen(QColor cl, uint w, Qt.PenStyle s, Qt.PenCapStyle c, Qt.PenJoinStyle j) : this((Type) null) {
-			CreateQPenProxy();
+			CreateProxy();
 			NewQPen(cl,w,s,c,j);
 		}
 		[SmokeMethod("QPen(const QColor&, uint, Qt::PenStyle, Qt::PenCapStyle, Qt::PenJoinStyle)")]
@@ -75,7 +75,7 @@ namespace Qt {
 			ProxyQPen().NewQPen(cl,w,s,c,j);
 		}
 		public QPen(QPen arg1) : this((Type) null) {
-			CreateQPenProxy();
+			CreateProxy();
 			NewQPen(arg1);
 		}
 		[SmokeMethod("QPen(const QPen&)")]

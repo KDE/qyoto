@@ -15,7 +15,7 @@ namespace Qt {
 		interface IQGLProxy {
 		}
 
-		protected void CreateQGLProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGL), this);
 			_interceptor = (QGL) realProxy.GetTransparentProxy();
 		}
@@ -52,7 +52,7 @@ namespace Qt {
 			NoOverlay = HasOverlay<<16,
 		}
 		public QGL() : this((Type) null) {
-			CreateQGLProxy();
+			CreateProxy();
 			NewQGL();
 		}
 		[SmokeMethod("QGL()")]

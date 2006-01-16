@@ -14,7 +14,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQFileIconProviderProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFileIconProvider), this);
 			_interceptor = (QFileIconProvider) realProxy.GetTransparentProxy();
 		}
@@ -39,8 +39,8 @@ namespace Qt {
 			return ProxyQFileIconProvider().ClassName();
 		}
 		public QFileIconProvider(QObject parent, string name) : this((Type) null) {
-			CreateQFileIconProviderProxy();
-			CreateQFileIconProviderSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQFileIconProvider(parent,name);
 		}
 		[SmokeMethod("QFileIconProvider(QObject*, const char*)")]
@@ -48,8 +48,8 @@ namespace Qt {
 			ProxyQFileIconProvider().NewQFileIconProvider(parent,name);
 		}
 		public QFileIconProvider(QObject parent) : this((Type) null) {
-			CreateQFileIconProviderProxy();
-			CreateQFileIconProviderSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQFileIconProvider(parent);
 		}
 		[SmokeMethod("QFileIconProvider(QObject*)")]
@@ -57,8 +57,8 @@ namespace Qt {
 			ProxyQFileIconProvider().NewQFileIconProvider(parent);
 		}
 		public QFileIconProvider() : this((Type) null) {
-			CreateQFileIconProviderProxy();
-			CreateQFileIconProviderSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQFileIconProvider();
 		}
 		[SmokeMethod("QFileIconProvider()")]
@@ -94,7 +94,7 @@ namespace Qt {
 		private void DisposeQFileIconProvider() {
 			ProxyQFileIconProvider().DisposeQFileIconProvider();
 		}
-		protected void CreateQFileIconProviderSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQFileIconProviderSignals), this);
 			Q_EMIT = (IQFileIconProviderSignals) realProxy.GetTransparentProxy();
 		}

@@ -9,7 +9,7 @@ namespace Qt {
 		interface IQDropEventProxy {
 		}
 
-		protected void CreateQDropEventProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDropEvent), this);
 			_interceptor = (QDropEvent) realProxy.GetTransparentProxy();
 		}
@@ -33,7 +33,7 @@ namespace Qt {
 			UserAction = 100,
 		}
 		public QDropEvent(QPoint pos, QEvent.E_Type typ) : this((Type) null) {
-			CreateQDropEventProxy();
+			CreateProxy();
 			NewQDropEvent(pos,typ);
 		}
 		[SmokeMethod("QDropEvent(const QPoint&, QEvent::Type)")]
@@ -41,7 +41,7 @@ namespace Qt {
 			ProxyQDropEvent().NewQDropEvent(pos,typ);
 		}
 		public QDropEvent(QPoint pos) : this((Type) null) {
-			CreateQDropEventProxy();
+			CreateProxy();
 			NewQDropEvent(pos);
 		}
 		[SmokeMethod("QDropEvent(const QPoint&)")]

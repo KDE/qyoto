@@ -17,7 +17,7 @@ namespace Qt {
 			bool Decode(IQMimeSource e, StringBuilder s, StringBuilder subtype);
 		}
 
-		protected void CreateQTextDragProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextDrag), this);
 			_interceptor = (QTextDrag) realProxy.GetTransparentProxy();
 		}
@@ -42,8 +42,8 @@ namespace Qt {
 			return ProxyQTextDrag().ClassName();
 		}
 		public QTextDrag(string arg1, QWidget dragSource, string name) : this((Type) null) {
-			CreateQTextDragProxy();
-			CreateQTextDragSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQTextDrag(arg1,dragSource,name);
 		}
 		[SmokeMethod("QTextDrag(const QString&, QWidget*, const char*)")]
@@ -51,8 +51,8 @@ namespace Qt {
 			ProxyQTextDrag().NewQTextDrag(arg1,dragSource,name);
 		}
 		public QTextDrag(string arg1, QWidget dragSource) : this((Type) null) {
-			CreateQTextDragProxy();
-			CreateQTextDragSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQTextDrag(arg1,dragSource);
 		}
 		[SmokeMethod("QTextDrag(const QString&, QWidget*)")]
@@ -60,8 +60,8 @@ namespace Qt {
 			ProxyQTextDrag().NewQTextDrag(arg1,dragSource);
 		}
 		public QTextDrag(string arg1) : this((Type) null) {
-			CreateQTextDragProxy();
-			CreateQTextDragSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQTextDrag(arg1);
 		}
 		[SmokeMethod("QTextDrag(const QString&)")]
@@ -69,8 +69,8 @@ namespace Qt {
 			ProxyQTextDrag().NewQTextDrag(arg1);
 		}
 		public QTextDrag(QWidget dragSource, string name) : this((Type) null) {
-			CreateQTextDragProxy();
-			CreateQTextDragSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQTextDrag(dragSource,name);
 		}
 		[SmokeMethod("QTextDrag(QWidget*, const char*)")]
@@ -78,8 +78,8 @@ namespace Qt {
 			ProxyQTextDrag().NewQTextDrag(dragSource,name);
 		}
 		public QTextDrag(QWidget dragSource) : this((Type) null) {
-			CreateQTextDragProxy();
-			CreateQTextDragSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQTextDrag(dragSource);
 		}
 		[SmokeMethod("QTextDrag(QWidget*)")]
@@ -87,8 +87,8 @@ namespace Qt {
 			ProxyQTextDrag().NewQTextDrag(dragSource);
 		}
 		public QTextDrag() : this((Type) null) {
-			CreateQTextDragProxy();
-			CreateQTextDragSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQTextDrag();
 		}
 		[SmokeMethod("QTextDrag()")]
@@ -148,7 +148,7 @@ namespace Qt {
 		private void DisposeQTextDrag() {
 			ProxyQTextDrag().DisposeQTextDrag();
 		}
-		protected void CreateQTextDragSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQTextDragSignals), this);
 			Q_EMIT = (IQTextDragSignals) realProxy.GetTransparentProxy();
 		}

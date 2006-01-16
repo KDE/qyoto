@@ -10,7 +10,7 @@ namespace Qt {
 		interface IQTabProxy {
 		}
 
-		protected void CreateQTabProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTab), this);
 			_interceptor = (QTab) realProxy.GetTransparentProxy();
 		}
@@ -27,7 +27,7 @@ namespace Qt {
 		}
 
 		public QTab() : this((Type) null) {
-			CreateQTabProxy();
+			CreateProxy();
 			NewQTab();
 		}
 		[SmokeMethod("QTab()")]
@@ -35,7 +35,7 @@ namespace Qt {
 			ProxyQTab().NewQTab();
 		}
 		public QTab(string text) : this((Type) null) {
-			CreateQTabProxy();
+			CreateProxy();
 			NewQTab(text);
 		}
 		[SmokeMethod("QTab(const QString&)")]
@@ -43,7 +43,7 @@ namespace Qt {
 			ProxyQTab().NewQTab(text);
 		}
 		public QTab(QIconSet icon, string text) : this((Type) null) {
-			CreateQTabProxy();
+			CreateProxy();
 			NewQTab(icon,text);
 		}
 		[SmokeMethod("QTab(const QIconSet&, const QString&)")]
@@ -51,7 +51,7 @@ namespace Qt {
 			ProxyQTab().NewQTab(icon,text);
 		}
 		public QTab(QIconSet icon) : this((Type) null) {
-			CreateQTabProxy();
+			CreateProxy();
 			NewQTab(icon);
 		}
 		[SmokeMethod("QTab(const QIconSet&)")]

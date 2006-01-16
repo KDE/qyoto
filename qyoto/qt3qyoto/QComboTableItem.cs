@@ -10,7 +10,7 @@ namespace Qt {
 		interface IQComboTableItemProxy {
 		}
 
-		protected void CreateQComboTableItemProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QComboTableItem), this);
 			_interceptor = (QComboTableItem) realProxy.GetTransparentProxy();
 		}
@@ -27,7 +27,7 @@ namespace Qt {
 		}
 
 		public QComboTableItem(QTable table, string[] list, bool editable) : this((Type) null) {
-			CreateQComboTableItemProxy();
+			CreateProxy();
 			NewQComboTableItem(table,list,editable);
 		}
 		[SmokeMethod("QComboTableItem(QTable*, const QStringList&, bool)")]
@@ -35,7 +35,7 @@ namespace Qt {
 			ProxyQComboTableItem().NewQComboTableItem(table,list,editable);
 		}
 		public QComboTableItem(QTable table, string[] list) : this((Type) null) {
-			CreateQComboTableItemProxy();
+			CreateProxy();
 			NewQComboTableItem(table,list);
 		}
 		[SmokeMethod("QComboTableItem(QTable*, const QStringList&)")]

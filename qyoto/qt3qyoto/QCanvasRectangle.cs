@@ -9,7 +9,7 @@ namespace Qt {
 		interface IQCanvasRectangleProxy {
 		}
 
-		protected void CreateQCanvasRectangleProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QCanvasRectangle), this);
 			_interceptor = (QCanvasRectangle) realProxy.GetTransparentProxy();
 		}
@@ -26,7 +26,7 @@ namespace Qt {
 		}
 
 		public QCanvasRectangle(QCanvas canvas) : this((Type) null) {
-			CreateQCanvasRectangleProxy();
+			CreateProxy();
 			NewQCanvasRectangle(canvas);
 		}
 		[SmokeMethod("QCanvasRectangle(QCanvas*)")]
@@ -34,7 +34,7 @@ namespace Qt {
 			ProxyQCanvasRectangle().NewQCanvasRectangle(canvas);
 		}
 		public QCanvasRectangle(QRect arg1, QCanvas canvas) : this((Type) null) {
-			CreateQCanvasRectangleProxy();
+			CreateProxy();
 			NewQCanvasRectangle(arg1,canvas);
 		}
 		[SmokeMethod("QCanvasRectangle(const QRect&, QCanvas*)")]
@@ -42,7 +42,7 @@ namespace Qt {
 			ProxyQCanvasRectangle().NewQCanvasRectangle(arg1,canvas);
 		}
 		public QCanvasRectangle(int x, int y, int width, int height, QCanvas canvas) : this((Type) null) {
-			CreateQCanvasRectangleProxy();
+			CreateProxy();
 			NewQCanvasRectangle(x,y,width,height,canvas);
 		}
 		[SmokeMethod("QCanvasRectangle(int, int, int, int, QCanvas*)")]

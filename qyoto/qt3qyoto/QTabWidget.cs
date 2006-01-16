@@ -15,7 +15,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQTabWidgetProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTabWidget), this);
 			_interceptor = (QTabWidget) realProxy.GetTransparentProxy();
 		}
@@ -48,8 +48,8 @@ namespace Qt {
 			return ProxyQTabWidget().ClassName();
 		}
 		public QTabWidget(QWidget parent, string name, int f) : this((Type) null) {
-			CreateQTabWidgetProxy();
-			CreateQTabWidgetSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQTabWidget(parent,name,f);
 		}
 		[SmokeMethod("QTabWidget(QWidget*, const char*, Qt::WFlags)")]
@@ -57,8 +57,8 @@ namespace Qt {
 			ProxyQTabWidget().NewQTabWidget(parent,name,f);
 		}
 		public QTabWidget(QWidget parent, string name) : this((Type) null) {
-			CreateQTabWidgetProxy();
-			CreateQTabWidgetSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQTabWidget(parent,name);
 		}
 		[SmokeMethod("QTabWidget(QWidget*, const char*)")]
@@ -66,8 +66,8 @@ namespace Qt {
 			ProxyQTabWidget().NewQTabWidget(parent,name);
 		}
 		public QTabWidget(QWidget parent) : this((Type) null) {
-			CreateQTabWidgetProxy();
-			CreateQTabWidgetSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQTabWidget(parent);
 		}
 		[SmokeMethod("QTabWidget(QWidget*)")]
@@ -75,8 +75,8 @@ namespace Qt {
 			ProxyQTabWidget().NewQTabWidget(parent);
 		}
 		public QTabWidget() : this((Type) null) {
-			CreateQTabWidgetProxy();
-			CreateQTabWidgetSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQTabWidget();
 		}
 		[SmokeMethod("QTabWidget()")]
@@ -303,7 +303,7 @@ namespace Qt {
 		private void DisposeQTabWidget() {
 			ProxyQTabWidget().DisposeQTabWidget();
 		}
-		protected void CreateQTabWidgetSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQTabWidgetSignals), this);
 			Q_EMIT = (IQTabWidgetSignals) realProxy.GetTransparentProxy();
 		}

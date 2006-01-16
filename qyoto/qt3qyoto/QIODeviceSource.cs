@@ -9,7 +9,7 @@ namespace Qt {
 		interface IQIODeviceSourceProxy {
 		}
 
-		protected void CreateQIODeviceSourceProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QIODeviceSource), this);
 			_interceptor = (QIODeviceSource) realProxy.GetTransparentProxy();
 		}
@@ -26,7 +26,7 @@ namespace Qt {
 		}
 
 		public QIODeviceSource(IQIODevice arg1, int bufsize) : this((Type) null) {
-			CreateQIODeviceSourceProxy();
+			CreateProxy();
 			NewQIODeviceSource(arg1,bufsize);
 		}
 		[SmokeMethod("QIODeviceSource(QIODevice*, int)")]
@@ -34,7 +34,7 @@ namespace Qt {
 			ProxyQIODeviceSource().NewQIODeviceSource(arg1,bufsize);
 		}
 		public QIODeviceSource(IQIODevice arg1) : this((Type) null) {
-			CreateQIODeviceSourceProxy();
+			CreateProxy();
 			NewQIODeviceSource(arg1);
 		}
 		[SmokeMethod("QIODeviceSource(QIODevice*)")]

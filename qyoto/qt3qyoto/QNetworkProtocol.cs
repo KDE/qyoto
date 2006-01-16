@@ -17,7 +17,7 @@ namespace Qt {
 			bool HasOnlyLocalFileSystem();
 		}
 
-		protected void CreateQNetworkProtocolProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QNetworkProtocol), this);
 			_interceptor = (QNetworkProtocol) realProxy.GetTransparentProxy();
 		}
@@ -82,8 +82,8 @@ namespace Qt {
 			return ProxyQNetworkProtocol().ClassName();
 		}
 		public QNetworkProtocol() : this((Type) null) {
-			CreateQNetworkProtocolProxy();
-			CreateQNetworkProtocolSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQNetworkProtocol();
 		}
 		[SmokeMethod("QNetworkProtocol()")]
@@ -200,7 +200,7 @@ namespace Qt {
 		private void DisposeQNetworkProtocol() {
 			ProxyQNetworkProtocol().DisposeQNetworkProtocol();
 		}
-		protected void CreateQNetworkProtocolSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQNetworkProtocolSignals), this);
 			Q_EMIT = (IQNetworkProtocolSignals) realProxy.GetTransparentProxy();
 		}

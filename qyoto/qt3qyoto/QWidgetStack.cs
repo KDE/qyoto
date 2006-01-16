@@ -15,7 +15,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQWidgetStackProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QWidgetStack), this);
 			_interceptor = (QWidgetStack) realProxy.GetTransparentProxy();
 		}
@@ -40,8 +40,8 @@ namespace Qt {
 			return ProxyQWidgetStack().ClassName();
 		}
 		public QWidgetStack(QWidget parent, string name) : this((Type) null) {
-			CreateQWidgetStackProxy();
-			CreateQWidgetStackSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQWidgetStack(parent,name);
 		}
 		[SmokeMethod("QWidgetStack(QWidget*, const char*)")]
@@ -49,8 +49,8 @@ namespace Qt {
 			ProxyQWidgetStack().NewQWidgetStack(parent,name);
 		}
 		public QWidgetStack(QWidget parent) : this((Type) null) {
-			CreateQWidgetStackProxy();
-			CreateQWidgetStackSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQWidgetStack(parent);
 		}
 		[SmokeMethod("QWidgetStack(QWidget*)")]
@@ -58,8 +58,8 @@ namespace Qt {
 			ProxyQWidgetStack().NewQWidgetStack(parent);
 		}
 		public QWidgetStack() : this((Type) null) {
-			CreateQWidgetStackProxy();
-			CreateQWidgetStackSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQWidgetStack();
 		}
 		[SmokeMethod("QWidgetStack()")]
@@ -67,8 +67,8 @@ namespace Qt {
 			ProxyQWidgetStack().NewQWidgetStack();
 		}
 		public QWidgetStack(QWidget parent, string name, int f) : this((Type) null) {
-			CreateQWidgetStackProxy();
-			CreateQWidgetStackSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQWidgetStack(parent,name,f);
 		}
 		[SmokeMethod("QWidgetStack(QWidget*, const char*, Qt::WFlags)")]
@@ -166,7 +166,7 @@ namespace Qt {
 		private void DisposeQWidgetStack() {
 			ProxyQWidgetStack().DisposeQWidgetStack();
 		}
-		protected void CreateQWidgetStackSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQWidgetStackSignals), this);
 			Q_EMIT = (IQWidgetStackSignals) realProxy.GetTransparentProxy();
 		}

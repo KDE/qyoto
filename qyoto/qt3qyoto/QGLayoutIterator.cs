@@ -9,7 +9,7 @@ namespace Qt {
 		interface IQGLayoutIteratorProxy {
 		}
 
-		protected void CreateQGLayoutIteratorProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGLayoutIterator), this);
 			_interceptor = (QGLayoutIterator) realProxy.GetTransparentProxy();
 		}
@@ -38,7 +38,7 @@ namespace Qt {
 			return ProxyQGLayoutIterator().TakeCurrent();
 		}
 		public QGLayoutIterator() : this((Type) null) {
-			CreateQGLayoutIteratorProxy();
+			CreateProxy();
 			NewQGLayoutIterator();
 		}
 		[SmokeMethod("QGLayoutIterator()")]

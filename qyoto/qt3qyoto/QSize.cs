@@ -16,7 +16,7 @@ namespace Qt {
 			QSize op_div(QSize lhs, double c);
 		}
 
-		protected void CreateQSizeProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSize), this);
 			_interceptor = (QSize) realProxy.GetTransparentProxy();
 		}
@@ -38,7 +38,7 @@ namespace Qt {
 			ScaleMax = 2,
 		}
 		public QSize() : this((Type) null) {
-			CreateQSizeProxy();
+			CreateProxy();
 			NewQSize();
 		}
 		[SmokeMethod("QSize()")]
@@ -46,7 +46,7 @@ namespace Qt {
 			ProxyQSize().NewQSize();
 		}
 		public QSize(int w, int h) : this((Type) null) {
-			CreateQSizeProxy();
+			CreateProxy();
 			NewQSize(w,h);
 		}
 		[SmokeMethod("QSize(int, int)")]

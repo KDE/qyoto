@@ -11,7 +11,7 @@ namespace Qt {
 		interface IQDomElementProxy {
 		}
 
-		protected void CreateQDomElementProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomElement), this);
 			_interceptor = (QDomElement) realProxy.GetTransparentProxy();
 		}
@@ -28,7 +28,7 @@ namespace Qt {
 		}
 
 		public QDomElement() : this((Type) null) {
-			CreateQDomElementProxy();
+			CreateProxy();
 			NewQDomElement();
 		}
 		[SmokeMethod("QDomElement()")]
@@ -36,7 +36,7 @@ namespace Qt {
 			ProxyQDomElement().NewQDomElement();
 		}
 		public QDomElement(QDomElement x) : this((Type) null) {
-			CreateQDomElementProxy();
+			CreateProxy();
 			NewQDomElement(x);
 		}
 		[SmokeMethod("QDomElement(const QDomElement&)")]

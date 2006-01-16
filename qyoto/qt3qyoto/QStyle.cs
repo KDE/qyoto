@@ -16,7 +16,7 @@ namespace Qt {
 			QRect VisualRect(QRect logical, QRect bounding);
 		}
 
-		protected void CreateQStyleProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyle), this);
 			_interceptor = (QStyle) realProxy.GetTransparentProxy();
 		}
@@ -348,8 +348,8 @@ namespace Qt {
 			return ProxyQStyle().ClassName();
 		}
 		public QStyle() : this((Type) null) {
-			CreateQStyleProxy();
-			CreateQStyleSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQStyle();
 		}
 		[SmokeMethod("QStyle()")]
@@ -566,7 +566,7 @@ namespace Qt {
 		private void DisposeQStyle() {
 			ProxyQStyle().DisposeQStyle();
 		}
-		protected void CreateQStyleSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQStyleSignals), this);
 			Q_EMIT = (IQStyleSignals) realProxy.GetTransparentProxy();
 		}

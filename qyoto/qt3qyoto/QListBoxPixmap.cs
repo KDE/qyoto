@@ -10,7 +10,7 @@ namespace Qt {
 		interface IQListBoxPixmapProxy {
 		}
 
-		protected void CreateQListBoxPixmapProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QListBoxPixmap), this);
 			_interceptor = (QListBoxPixmap) realProxy.GetTransparentProxy();
 		}
@@ -27,7 +27,7 @@ namespace Qt {
 		}
 
 		public QListBoxPixmap(QListBox listbox, QPixmap arg2) : this((Type) null) {
-			CreateQListBoxPixmapProxy();
+			CreateProxy();
 			NewQListBoxPixmap(listbox,arg2);
 		}
 		[SmokeMethod("QListBoxPixmap(QListBox*, const QPixmap&)")]
@@ -35,7 +35,7 @@ namespace Qt {
 			ProxyQListBoxPixmap().NewQListBoxPixmap(listbox,arg2);
 		}
 		public QListBoxPixmap(QPixmap arg1) : this((Type) null) {
-			CreateQListBoxPixmapProxy();
+			CreateProxy();
 			NewQListBoxPixmap(arg1);
 		}
 		[SmokeMethod("QListBoxPixmap(const QPixmap&)")]
@@ -43,7 +43,7 @@ namespace Qt {
 			ProxyQListBoxPixmap().NewQListBoxPixmap(arg1);
 		}
 		public QListBoxPixmap(QListBox listbox, QPixmap pix, QListBoxItem after) : this((Type) null) {
-			CreateQListBoxPixmapProxy();
+			CreateProxy();
 			NewQListBoxPixmap(listbox,pix,after);
 		}
 		[SmokeMethod("QListBoxPixmap(QListBox*, const QPixmap&, QListBoxItem*)")]
@@ -51,7 +51,7 @@ namespace Qt {
 			ProxyQListBoxPixmap().NewQListBoxPixmap(listbox,pix,after);
 		}
 		public QListBoxPixmap(QListBox listbox, QPixmap arg2, string arg3) : this((Type) null) {
-			CreateQListBoxPixmapProxy();
+			CreateProxy();
 			NewQListBoxPixmap(listbox,arg2,arg3);
 		}
 		[SmokeMethod("QListBoxPixmap(QListBox*, const QPixmap&, const QString&)")]
@@ -59,7 +59,7 @@ namespace Qt {
 			ProxyQListBoxPixmap().NewQListBoxPixmap(listbox,arg2,arg3);
 		}
 		public QListBoxPixmap(QPixmap arg1, string arg2) : this((Type) null) {
-			CreateQListBoxPixmapProxy();
+			CreateProxy();
 			NewQListBoxPixmap(arg1,arg2);
 		}
 		[SmokeMethod("QListBoxPixmap(const QPixmap&, const QString&)")]
@@ -67,7 +67,7 @@ namespace Qt {
 			ProxyQListBoxPixmap().NewQListBoxPixmap(arg1,arg2);
 		}
 		public QListBoxPixmap(QListBox listbox, QPixmap pix, string arg3, QListBoxItem after) : this((Type) null) {
-			CreateQListBoxPixmapProxy();
+			CreateProxy();
 			NewQListBoxPixmap(listbox,pix,arg3,after);
 		}
 		[SmokeMethod("QListBoxPixmap(QListBox*, const QPixmap&, const QString&, QListBoxItem*)")]

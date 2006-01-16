@@ -12,7 +12,7 @@ namespace Qt {
 		interface IQObjectUserDataProxy {
 		}
 
-		protected void CreateQObjectUserDataProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QObjectUserData), this);
 			_interceptor = (QObjectUserData) realProxy.GetTransparentProxy();
 		}

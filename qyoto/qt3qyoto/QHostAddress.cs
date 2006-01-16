@@ -14,7 +14,7 @@ namespace Qt {
 			bool op_equals(QHostAddress lhs, QHostAddress arg1);
 		}
 
-		protected void CreateQHostAddressProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QHostAddress), this);
 			_interceptor = (QHostAddress) realProxy.GetTransparentProxy();
 		}
@@ -31,7 +31,7 @@ namespace Qt {
 		}
 
 		public QHostAddress() : this((Type) null) {
-			CreateQHostAddressProxy();
+			CreateProxy();
 			NewQHostAddress();
 		}
 		[SmokeMethod("QHostAddress()")]
@@ -39,7 +39,7 @@ namespace Qt {
 			ProxyQHostAddress().NewQHostAddress();
 		}
 		public QHostAddress(uint ip4Addr) : this((Type) null) {
-			CreateQHostAddressProxy();
+			CreateProxy();
 			NewQHostAddress(ip4Addr);
 		}
 		[SmokeMethod("QHostAddress(Q_UINT32)")]
@@ -47,7 +47,7 @@ namespace Qt {
 			ProxyQHostAddress().NewQHostAddress(ip4Addr);
 		}
 		public QHostAddress(ushort ip6Addr) : this((Type) null) {
-			CreateQHostAddressProxy();
+			CreateProxy();
 			NewQHostAddress(ip6Addr);
 		}
 		[SmokeMethod("QHostAddress(Q_UINT8*)")]
@@ -56,7 +56,7 @@ namespace Qt {
 		}
 		// QHostAddress* QHostAddress(const Q_IPV6ADDR& arg1); >>>> NOT CONVERTED
 		public QHostAddress(string address) : this((Type) null) {
-			CreateQHostAddressProxy();
+			CreateProxy();
 			NewQHostAddress(address);
 		}
 		[SmokeMethod("QHostAddress(const QString&)")]
@@ -64,7 +64,7 @@ namespace Qt {
 			ProxyQHostAddress().NewQHostAddress(address);
 		}
 		public QHostAddress(QHostAddress arg1) : this((Type) null) {
-			CreateQHostAddressProxy();
+			CreateProxy();
 			NewQHostAddress(arg1);
 		}
 		[SmokeMethod("QHostAddress(const QHostAddress&)")]

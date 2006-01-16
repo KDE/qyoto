@@ -14,7 +14,7 @@ namespace Qt {
 		interface IQSettingsProxy {
 		}
 
-		protected void CreateQSettingsProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSettings), this);
 			_interceptor = (QSettings) realProxy.GetTransparentProxy();
 		}
@@ -44,7 +44,7 @@ namespace Qt {
 			Global = 1,
 		}
 		public QSettings() : this((Type) null) {
-			CreateQSettingsProxy();
+			CreateProxy();
 			NewQSettings();
 		}
 		[SmokeMethod("QSettings()")]
@@ -52,7 +52,7 @@ namespace Qt {
 			ProxyQSettings().NewQSettings();
 		}
 		public QSettings(QSettings.Format format) : this((Type) null) {
-			CreateQSettingsProxy();
+			CreateProxy();
 			NewQSettings(format);
 		}
 		[SmokeMethod("QSettings(QSettings::Format)")]

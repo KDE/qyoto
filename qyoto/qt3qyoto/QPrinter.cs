@@ -10,7 +10,7 @@ namespace Qt {
 		interface IQPrinterProxy {
 		}
 
-		protected void CreateQPrinterProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPrinter), this);
 			_interceptor = (QPrinter) realProxy.GetTransparentProxy();
 		}
@@ -104,7 +104,7 @@ namespace Qt {
 			PrintPageRange = 2,
 		}
 		public QPrinter(QPrinter.PrinterMode mode) : this((Type) null) {
-			CreateQPrinterProxy();
+			CreateProxy();
 			NewQPrinter(mode);
 		}
 		[SmokeMethod("QPrinter(QPrinter::PrinterMode)")]
@@ -112,7 +112,7 @@ namespace Qt {
 			ProxyQPrinter().NewQPrinter(mode);
 		}
 		public QPrinter() : this((Type) null) {
-			CreateQPrinterProxy();
+			CreateProxy();
 			NewQPrinter();
 		}
 		[SmokeMethod("QPrinter()")]

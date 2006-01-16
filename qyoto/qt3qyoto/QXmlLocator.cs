@@ -12,7 +12,7 @@ namespace Qt {
 		interface IQXmlLocatorProxy {
 		}
 
-		protected void CreateQXmlLocatorProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlLocator), this);
 			_interceptor = (QXmlLocator) realProxy.GetTransparentProxy();
 		}
@@ -29,7 +29,7 @@ namespace Qt {
 		}
 
 		public QXmlLocator() : this((Type) null) {
-			CreateQXmlLocatorProxy();
+			CreateProxy();
 			NewQXmlLocator();
 		}
 		[SmokeMethod("QXmlLocator()")]

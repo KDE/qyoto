@@ -13,7 +13,7 @@ namespace Qt {
 			void CleanBuffers();
 		}
 
-		protected void CreateQPointArrayProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPointArray), this);
 			_interceptor = (QPointArray) realProxy.GetTransparentProxy();
 		}
@@ -30,7 +30,7 @@ namespace Qt {
 		}
 
 		public QPointArray() : this((Type) null) {
-			CreateQPointArrayProxy();
+			CreateProxy();
 			NewQPointArray();
 		}
 		[SmokeMethod("QPointArray()")]
@@ -38,7 +38,7 @@ namespace Qt {
 			ProxyQPointArray().NewQPointArray();
 		}
 		public QPointArray(int size) : this((Type) null) {
-			CreateQPointArrayProxy();
+			CreateProxy();
 			NewQPointArray(size);
 		}
 		[SmokeMethod("QPointArray(int)")]
@@ -46,7 +46,7 @@ namespace Qt {
 			ProxyQPointArray().NewQPointArray(size);
 		}
 		public QPointArray(QPointArray a) : this((Type) null) {
-			CreateQPointArrayProxy();
+			CreateProxy();
 			NewQPointArray(a);
 		}
 		[SmokeMethod("QPointArray(const QPointArray&)")]
@@ -54,7 +54,7 @@ namespace Qt {
 			ProxyQPointArray().NewQPointArray(a);
 		}
 		public QPointArray(QRect r, bool closed) : this((Type) null) {
-			CreateQPointArrayProxy();
+			CreateProxy();
 			NewQPointArray(r,closed);
 		}
 		[SmokeMethod("QPointArray(const QRect&, bool)")]
@@ -62,7 +62,7 @@ namespace Qt {
 			ProxyQPointArray().NewQPointArray(r,closed);
 		}
 		public QPointArray(QRect r) : this((Type) null) {
-			CreateQPointArrayProxy();
+			CreateProxy();
 			NewQPointArray(r);
 		}
 		[SmokeMethod("QPointArray(const QRect&)")]
@@ -70,7 +70,7 @@ namespace Qt {
 			ProxyQPointArray().NewQPointArray(r);
 		}
 		public QPointArray(int nPoints, out short points) : this((Type) null) {
-			CreateQPointArrayProxy();
+			CreateProxy();
 			NewQPointArray(nPoints,out points);
 		}
 		[SmokeMethod("QPointArray(int, const QCOORD*)")]

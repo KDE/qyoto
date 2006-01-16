@@ -15,7 +15,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQTextCodecPluginProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextCodecPlugin), this);
 			_interceptor = (QTextCodecPlugin) realProxy.GetTransparentProxy();
 		}
@@ -40,8 +40,8 @@ namespace Qt {
 			return ProxyQTextCodecPlugin().ClassName();
 		}
 		public QTextCodecPlugin() : this((Type) null) {
-			CreateQTextCodecPluginProxy();
-			CreateQTextCodecPluginSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQTextCodecPlugin();
 		}
 		[SmokeMethod("QTextCodecPlugin()")]
@@ -89,7 +89,7 @@ namespace Qt {
 		private void DisposeQTextCodecPlugin() {
 			ProxyQTextCodecPlugin().DisposeQTextCodecPlugin();
 		}
-		protected void CreateQTextCodecPluginSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQTextCodecPluginSignals), this);
 			Q_EMIT = (IQTextCodecPluginSignals) realProxy.GetTransparentProxy();
 		}

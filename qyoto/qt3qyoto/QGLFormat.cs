@@ -15,7 +15,7 @@ namespace Qt {
 			bool HasOpenGLOverlays();
 		}
 
-		protected void CreateQGLFormatProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGLFormat), this);
 			_interceptor = (QGLFormat) realProxy.GetTransparentProxy();
 		}
@@ -32,7 +32,7 @@ namespace Qt {
 		}
 
 		public QGLFormat() : this((Type) null) {
-			CreateQGLFormatProxy();
+			CreateProxy();
 			NewQGLFormat();
 		}
 		[SmokeMethod("QGLFormat()")]
@@ -40,7 +40,7 @@ namespace Qt {
 			ProxyQGLFormat().NewQGLFormat();
 		}
 		public QGLFormat(int options, int plane) : this((Type) null) {
-			CreateQGLFormatProxy();
+			CreateProxy();
 			NewQGLFormat(options,plane);
 		}
 		[SmokeMethod("QGLFormat(int, int)")]
@@ -48,7 +48,7 @@ namespace Qt {
 			ProxyQGLFormat().NewQGLFormat(options,plane);
 		}
 		public QGLFormat(int options) : this((Type) null) {
-			CreateQGLFormatProxy();
+			CreateProxy();
 			NewQGLFormat(options);
 		}
 		[SmokeMethod("QGLFormat(int)")]

@@ -10,7 +10,7 @@ namespace Qt {
 		interface IQHttpResponseHeaderProxy {
 		}
 
-		protected void CreateQHttpResponseHeaderProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QHttpResponseHeader), this);
 			_interceptor = (QHttpResponseHeader) realProxy.GetTransparentProxy();
 		}
@@ -27,7 +27,7 @@ namespace Qt {
 		}
 
 		public QHttpResponseHeader() : this((Type) null) {
-			CreateQHttpResponseHeaderProxy();
+			CreateProxy();
 			NewQHttpResponseHeader();
 		}
 		[SmokeMethod("QHttpResponseHeader()")]
@@ -35,7 +35,7 @@ namespace Qt {
 			ProxyQHttpResponseHeader().NewQHttpResponseHeader();
 		}
 		public QHttpResponseHeader(QHttpResponseHeader header) : this((Type) null) {
-			CreateQHttpResponseHeaderProxy();
+			CreateProxy();
 			NewQHttpResponseHeader(header);
 		}
 		[SmokeMethod("QHttpResponseHeader(const QHttpResponseHeader&)")]

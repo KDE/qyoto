@@ -20,7 +20,7 @@ namespace Qt {
 		interface IQXmlErrorHandlerProxy {
 		}
 
-		protected void CreateQXmlErrorHandlerProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlErrorHandler), this);
 			_interceptor = (QXmlErrorHandler) realProxy.GetTransparentProxy();
 		}
@@ -53,7 +53,7 @@ namespace Qt {
 			return ProxyQXmlErrorHandler().ErrorString();
 		}
 		public QXmlErrorHandler() : this((Type) null) {
-			CreateQXmlErrorHandlerProxy();
+			CreateProxy();
 			NewQXmlErrorHandler();
 		}
 		[SmokeMethod("QXmlErrorHandler()")]

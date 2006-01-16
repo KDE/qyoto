@@ -13,7 +13,7 @@ namespace Qt {
 			QJpUnicodeConv NewConverter(int rule);
 		}
 
-		protected void CreateQJpUnicodeConvProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QJpUnicodeConv), this);
 			_interceptor = (QJpUnicodeConv) realProxy.GetTransparentProxy();
 		}
@@ -159,7 +159,7 @@ namespace Qt {
 			return StaticQJpUnicodeConv().NewConverter(rule);
 		}
 		public QJpUnicodeConv(int r) : this((Type) null) {
-			CreateQJpUnicodeConvProxy();
+			CreateProxy();
 			NewQJpUnicodeConv(r);
 		}
 		[SmokeMethod("QJpUnicodeConv(int)")]

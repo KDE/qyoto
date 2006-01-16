@@ -26,7 +26,7 @@ namespace Qt {
 			void Display(string text);
 		}
 
-		protected void CreateQWhatsThisProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QWhatsThis), this);
 			_interceptor = (QWhatsThis) realProxy.GetTransparentProxy();
 		}
@@ -43,7 +43,7 @@ namespace Qt {
 		}
 
 		public QWhatsThis(QWidget arg1) : this((Type) null) {
-			CreateQWhatsThisProxy();
+			CreateProxy();
 			NewQWhatsThis(arg1);
 		}
 		[SmokeMethod("QWhatsThis(QWidget*)")]

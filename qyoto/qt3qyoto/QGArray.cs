@@ -12,7 +12,7 @@ namespace Qt {
 		interface IQGArrayProxy {
 		}
 
-		protected void CreateQGArrayProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGArray), this);
 			_interceptor = (QGArray) realProxy.GetTransparentProxy();
 		}
@@ -33,7 +33,7 @@ namespace Qt {
 			SpeedOptim = 1,
 		}
 		public QGArray() : this((Type) null) {
-			CreateQGArrayProxy();
+			CreateProxy();
 			NewQGArray();
 		}
 		[SmokeMethod("QGArray()")]
@@ -41,7 +41,7 @@ namespace Qt {
 			ProxyQGArray().NewQGArray();
 		}
 		public QGArray(int arg1, int arg2) : this((Type) null) {
-			CreateQGArrayProxy();
+			CreateProxy();
 			NewQGArray(arg1,arg2);
 		}
 		[SmokeMethod("QGArray(int, int)")]
@@ -49,7 +49,7 @@ namespace Qt {
 			ProxyQGArray().NewQGArray(arg1,arg2);
 		}
 		public QGArray(int size) : this((Type) null) {
-			CreateQGArrayProxy();
+			CreateProxy();
 			NewQGArray(size);
 		}
 		[SmokeMethod("QGArray(int)")]
@@ -57,7 +57,7 @@ namespace Qt {
 			ProxyQGArray().NewQGArray(size);
 		}
 		public QGArray(QGArray a) : this((Type) null) {
-			CreateQGArrayProxy();
+			CreateProxy();
 			NewQGArray(a);
 		}
 		[SmokeMethod("QGArray(const QGArray&)")]

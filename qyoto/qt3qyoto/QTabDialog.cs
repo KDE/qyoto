@@ -15,7 +15,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQTabDialogProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTabDialog), this);
 			_interceptor = (QTabDialog) realProxy.GetTransparentProxy();
 		}
@@ -40,8 +40,8 @@ namespace Qt {
 			return ProxyQTabDialog().ClassName();
 		}
 		public QTabDialog(QWidget parent, string name, bool modal, int f) : this((Type) null) {
-			CreateQTabDialogProxy();
-			CreateQTabDialogSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQTabDialog(parent,name,modal,f);
 		}
 		[SmokeMethod("QTabDialog(QWidget*, const char*, bool, Qt::WFlags)")]
@@ -49,8 +49,8 @@ namespace Qt {
 			ProxyQTabDialog().NewQTabDialog(parent,name,modal,f);
 		}
 		public QTabDialog(QWidget parent, string name, bool modal) : this((Type) null) {
-			CreateQTabDialogProxy();
-			CreateQTabDialogSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQTabDialog(parent,name,modal);
 		}
 		[SmokeMethod("QTabDialog(QWidget*, const char*, bool)")]
@@ -58,8 +58,8 @@ namespace Qt {
 			ProxyQTabDialog().NewQTabDialog(parent,name,modal);
 		}
 		public QTabDialog(QWidget parent, string name) : this((Type) null) {
-			CreateQTabDialogProxy();
-			CreateQTabDialogSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQTabDialog(parent,name);
 		}
 		[SmokeMethod("QTabDialog(QWidget*, const char*)")]
@@ -67,8 +67,8 @@ namespace Qt {
 			ProxyQTabDialog().NewQTabDialog(parent,name);
 		}
 		public QTabDialog(QWidget parent) : this((Type) null) {
-			CreateQTabDialogProxy();
-			CreateQTabDialogSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQTabDialog(parent);
 		}
 		[SmokeMethod("QTabDialog(QWidget*)")]
@@ -76,8 +76,8 @@ namespace Qt {
 			ProxyQTabDialog().NewQTabDialog(parent);
 		}
 		public QTabDialog() : this((Type) null) {
-			CreateQTabDialogProxy();
-			CreateQTabDialogSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQTabDialog();
 		}
 		[SmokeMethod("QTabDialog()")]
@@ -281,7 +281,7 @@ namespace Qt {
 		private void DisposeQTabDialog() {
 			ProxyQTabDialog().DisposeQTabDialog();
 		}
-		protected void CreateQTabDialogSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQTabDialogSignals), this);
 			Q_EMIT = (IQTabDialogSignals) realProxy.GetTransparentProxy();
 		}

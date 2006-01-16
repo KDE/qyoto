@@ -14,7 +14,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQNetworkOperationProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QNetworkOperation), this);
 			_interceptor = (QNetworkOperation) realProxy.GetTransparentProxy();
 		}
@@ -39,8 +39,8 @@ namespace Qt {
 			return ProxyQNetworkOperation().ClassName();
 		}
 		public QNetworkOperation(QNetworkProtocol.Operation operation, string arg0, string arg1, string arg2) : this((Type) null) {
-			CreateQNetworkOperationProxy();
-			CreateQNetworkOperationSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQNetworkOperation(operation,arg0,arg1,arg2);
 		}
 		[SmokeMethod("QNetworkOperation(QNetworkProtocol::Operation, const QString&, const QString&, const QString&)")]
@@ -48,8 +48,8 @@ namespace Qt {
 			ProxyQNetworkOperation().NewQNetworkOperation(operation,arg0,arg1,arg2);
 		}
 		public QNetworkOperation(QNetworkProtocol.Operation operation, QByteArray arg0, QByteArray arg1, QByteArray arg2) : this((Type) null) {
-			CreateQNetworkOperationProxy();
-			CreateQNetworkOperationSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQNetworkOperation(operation,arg0,arg1,arg2);
 		}
 		[SmokeMethod("QNetworkOperation(QNetworkProtocol::Operation, const QByteArray&, const QByteArray&, const QByteArray&)")]
@@ -129,7 +129,7 @@ namespace Qt {
 		private void DisposeQNetworkOperation() {
 			ProxyQNetworkOperation().DisposeQNetworkOperation();
 		}
-		protected void CreateQNetworkOperationSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQNetworkOperationSignals), this);
 			Q_EMIT = (IQNetworkOperationSignals) realProxy.GetTransparentProxy();
 		}

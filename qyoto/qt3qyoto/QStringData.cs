@@ -9,7 +9,7 @@ namespace Qt {
 		interface IQStringDataProxy {
 		}
 
-		protected void CreateQStringDataProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStringData), this);
 			_interceptor = (QStringData) realProxy.GetTransparentProxy();
 		}
@@ -26,7 +26,7 @@ namespace Qt {
 		}
 
 		public QStringData() : this((Type) null) {
-			CreateQStringDataProxy();
+			CreateProxy();
 			NewQStringData();
 		}
 		[SmokeMethod("QStringData()")]
@@ -34,7 +34,7 @@ namespace Qt {
 			ProxyQStringData().NewQStringData();
 		}
 		public QStringData(char u, uint l, uint m) : this((Type) null) {
-			CreateQStringDataProxy();
+			CreateProxy();
 			NewQStringData(u,l,m);
 		}
 		[SmokeMethod("QStringData(QChar*, uint, uint)")]

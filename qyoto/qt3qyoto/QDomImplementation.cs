@@ -14,7 +14,7 @@ namespace Qt {
 			bool op_equals(QDomImplementation lhs, QDomImplementation arg1);
 		}
 
-		protected void CreateQDomImplementationProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomImplementation), this);
 			_interceptor = (QDomImplementation) realProxy.GetTransparentProxy();
 		}
@@ -31,7 +31,7 @@ namespace Qt {
 		}
 
 		public QDomImplementation() : this((Type) null) {
-			CreateQDomImplementationProxy();
+			CreateProxy();
 			NewQDomImplementation();
 		}
 		[SmokeMethod("QDomImplementation()")]
@@ -39,7 +39,7 @@ namespace Qt {
 			ProxyQDomImplementation().NewQDomImplementation();
 		}
 		public QDomImplementation(QDomImplementation arg1) : this((Type) null) {
-			CreateQDomImplementationProxy();
+			CreateProxy();
 			NewQDomImplementation(arg1);
 		}
 		[SmokeMethod("QDomImplementation(const QDomImplementation&)")]

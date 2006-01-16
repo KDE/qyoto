@@ -30,7 +30,7 @@ namespace Qt {
 		interface IQLayoutItemProxy {
 		}
 
-		protected void CreateQLayoutItemProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QLayoutItem), this);
 			_interceptor = (QLayoutItem) realProxy.GetTransparentProxy();
 		}
@@ -47,7 +47,7 @@ namespace Qt {
 		}
 
 		public QLayoutItem(int alignment) : this((Type) null) {
-			CreateQLayoutItemProxy();
+			CreateProxy();
 			NewQLayoutItem(alignment);
 		}
 		[SmokeMethod("QLayoutItem(int)")]
@@ -55,7 +55,7 @@ namespace Qt {
 			ProxyQLayoutItem().NewQLayoutItem(alignment);
 		}
 		public QLayoutItem() : this((Type) null) {
-			CreateQLayoutItemProxy();
+			CreateProxy();
 			NewQLayoutItem();
 		}
 		[SmokeMethod("QLayoutItem()")]

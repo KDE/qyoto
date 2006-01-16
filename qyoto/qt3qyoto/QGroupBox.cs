@@ -15,7 +15,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQGroupBoxProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGroupBox), this);
 			_interceptor = (QGroupBox) realProxy.GetTransparentProxy();
 		}
@@ -40,8 +40,8 @@ namespace Qt {
 			return ProxyQGroupBox().ClassName();
 		}
 		public QGroupBox(QWidget parent, string name) : this((Type) null) {
-			CreateQGroupBoxProxy();
-			CreateQGroupBoxSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQGroupBox(parent,name);
 		}
 		[SmokeMethod("QGroupBox(QWidget*, const char*)")]
@@ -49,8 +49,8 @@ namespace Qt {
 			ProxyQGroupBox().NewQGroupBox(parent,name);
 		}
 		public QGroupBox(QWidget parent) : this((Type) null) {
-			CreateQGroupBoxProxy();
-			CreateQGroupBoxSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQGroupBox(parent);
 		}
 		[SmokeMethod("QGroupBox(QWidget*)")]
@@ -58,8 +58,8 @@ namespace Qt {
 			ProxyQGroupBox().NewQGroupBox(parent);
 		}
 		public QGroupBox() : this((Type) null) {
-			CreateQGroupBoxProxy();
-			CreateQGroupBoxSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQGroupBox();
 		}
 		[SmokeMethod("QGroupBox()")]
@@ -67,8 +67,8 @@ namespace Qt {
 			ProxyQGroupBox().NewQGroupBox();
 		}
 		public QGroupBox(string title, QWidget parent, string name) : this((Type) null) {
-			CreateQGroupBoxProxy();
-			CreateQGroupBoxSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQGroupBox(title,parent,name);
 		}
 		[SmokeMethod("QGroupBox(const QString&, QWidget*, const char*)")]
@@ -76,8 +76,8 @@ namespace Qt {
 			ProxyQGroupBox().NewQGroupBox(title,parent,name);
 		}
 		public QGroupBox(string title, QWidget parent) : this((Type) null) {
-			CreateQGroupBoxProxy();
-			CreateQGroupBoxSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQGroupBox(title,parent);
 		}
 		[SmokeMethod("QGroupBox(const QString&, QWidget*)")]
@@ -85,8 +85,8 @@ namespace Qt {
 			ProxyQGroupBox().NewQGroupBox(title,parent);
 		}
 		public QGroupBox(string title) : this((Type) null) {
-			CreateQGroupBoxProxy();
-			CreateQGroupBoxSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQGroupBox(title);
 		}
 		[SmokeMethod("QGroupBox(const QString&)")]
@@ -94,8 +94,8 @@ namespace Qt {
 			ProxyQGroupBox().NewQGroupBox(title);
 		}
 		public QGroupBox(int strips, Qt.Orientation o, QWidget parent, string name) : this((Type) null) {
-			CreateQGroupBoxProxy();
-			CreateQGroupBoxSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQGroupBox(strips,o,parent,name);
 		}
 		[SmokeMethod("QGroupBox(int, Qt::Orientation, QWidget*, const char*)")]
@@ -103,8 +103,8 @@ namespace Qt {
 			ProxyQGroupBox().NewQGroupBox(strips,o,parent,name);
 		}
 		public QGroupBox(int strips, Qt.Orientation o, QWidget parent) : this((Type) null) {
-			CreateQGroupBoxProxy();
-			CreateQGroupBoxSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQGroupBox(strips,o,parent);
 		}
 		[SmokeMethod("QGroupBox(int, Qt::Orientation, QWidget*)")]
@@ -112,8 +112,8 @@ namespace Qt {
 			ProxyQGroupBox().NewQGroupBox(strips,o,parent);
 		}
 		public QGroupBox(int strips, Qt.Orientation o) : this((Type) null) {
-			CreateQGroupBoxProxy();
-			CreateQGroupBoxSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQGroupBox(strips,o);
 		}
 		[SmokeMethod("QGroupBox(int, Qt::Orientation)")]
@@ -121,8 +121,8 @@ namespace Qt {
 			ProxyQGroupBox().NewQGroupBox(strips,o);
 		}
 		public QGroupBox(int strips, Qt.Orientation o, string title, QWidget parent, string name) : this((Type) null) {
-			CreateQGroupBoxProxy();
-			CreateQGroupBoxSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQGroupBox(strips,o,title,parent,name);
 		}
 		[SmokeMethod("QGroupBox(int, Qt::Orientation, const QString&, QWidget*, const char*)")]
@@ -130,8 +130,8 @@ namespace Qt {
 			ProxyQGroupBox().NewQGroupBox(strips,o,title,parent,name);
 		}
 		public QGroupBox(int strips, Qt.Orientation o, string title, QWidget parent) : this((Type) null) {
-			CreateQGroupBoxProxy();
-			CreateQGroupBoxSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQGroupBox(strips,o,title,parent);
 		}
 		[SmokeMethod("QGroupBox(int, Qt::Orientation, const QString&, QWidget*)")]
@@ -139,8 +139,8 @@ namespace Qt {
 			ProxyQGroupBox().NewQGroupBox(strips,o,title,parent);
 		}
 		public QGroupBox(int strips, Qt.Orientation o, string title) : this((Type) null) {
-			CreateQGroupBoxProxy();
-			CreateQGroupBoxSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQGroupBox(strips,o,title);
 		}
 		[SmokeMethod("QGroupBox(int, Qt::Orientation, const QString&)")]
@@ -285,7 +285,7 @@ namespace Qt {
 		private void DisposeQGroupBox() {
 			ProxyQGroupBox().DisposeQGroupBox();
 		}
-		protected void CreateQGroupBoxSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQGroupBoxSignals), this);
 			Q_EMIT = (IQGroupBoxSignals) realProxy.GetTransparentProxy();
 		}

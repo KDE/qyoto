@@ -13,7 +13,7 @@ namespace Qt {
 		interface IQFontInfoProxy {
 		}
 
-		protected void CreateQFontInfoProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFontInfo), this);
 			_interceptor = (QFontInfo) realProxy.GetTransparentProxy();
 		}
@@ -30,7 +30,7 @@ namespace Qt {
 		}
 
 		public QFontInfo(QFont arg1) : this((Type) null) {
-			CreateQFontInfoProxy();
+			CreateProxy();
 			NewQFontInfo(arg1);
 		}
 		[SmokeMethod("QFontInfo(const QFont&)")]
@@ -38,7 +38,7 @@ namespace Qt {
 			ProxyQFontInfo().NewQFontInfo(arg1);
 		}
 		public QFontInfo(QFont arg1, QFont.Script arg2) : this((Type) null) {
-			CreateQFontInfoProxy();
+			CreateProxy();
 			NewQFontInfo(arg1,arg2);
 		}
 		[SmokeMethod("QFontInfo(const QFont&, QFont::Script)")]
@@ -46,7 +46,7 @@ namespace Qt {
 			ProxyQFontInfo().NewQFontInfo(arg1,arg2);
 		}
 		public QFontInfo(QFontInfo arg1) : this((Type) null) {
-			CreateQFontInfoProxy();
+			CreateProxy();
 			NewQFontInfo(arg1);
 		}
 		[SmokeMethod("QFontInfo(const QFontInfo&)")]

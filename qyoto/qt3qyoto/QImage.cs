@@ -23,7 +23,7 @@ namespace Qt {
 			ArrayList OutputFormatList();
 		}
 
-		protected void CreateQImageProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QImage), this);
 			_interceptor = (QImage) realProxy.GetTransparentProxy();
 		}
@@ -50,7 +50,7 @@ namespace Qt {
 			ScaleMax = 2,
 		}
 		public QImage() : this((Type) null) {
-			CreateQImageProxy();
+			CreateProxy();
 			NewQImage();
 		}
 		[SmokeMethod("QImage()")]
@@ -58,7 +58,7 @@ namespace Qt {
 			ProxyQImage().NewQImage();
 		}
 		public QImage(int width, int height, int depth, int numColors, QImage.Endian bitOrder) : this((Type) null) {
-			CreateQImageProxy();
+			CreateProxy();
 			NewQImage(width,height,depth,numColors,bitOrder);
 		}
 		[SmokeMethod("QImage(int, int, int, int, QImage::Endian)")]
@@ -66,7 +66,7 @@ namespace Qt {
 			ProxyQImage().NewQImage(width,height,depth,numColors,bitOrder);
 		}
 		public QImage(int width, int height, int depth, int numColors) : this((Type) null) {
-			CreateQImageProxy();
+			CreateProxy();
 			NewQImage(width,height,depth,numColors);
 		}
 		[SmokeMethod("QImage(int, int, int, int)")]
@@ -74,7 +74,7 @@ namespace Qt {
 			ProxyQImage().NewQImage(width,height,depth,numColors);
 		}
 		public QImage(int width, int height, int depth) : this((Type) null) {
-			CreateQImageProxy();
+			CreateProxy();
 			NewQImage(width,height,depth);
 		}
 		[SmokeMethod("QImage(int, int, int)")]
@@ -82,7 +82,7 @@ namespace Qt {
 			ProxyQImage().NewQImage(width,height,depth);
 		}
 		public QImage(QSize arg1, int depth, int numColors, QImage.Endian bitOrder) : this((Type) null) {
-			CreateQImageProxy();
+			CreateProxy();
 			NewQImage(arg1,depth,numColors,bitOrder);
 		}
 		[SmokeMethod("QImage(const QSize&, int, int, QImage::Endian)")]
@@ -90,7 +90,7 @@ namespace Qt {
 			ProxyQImage().NewQImage(arg1,depth,numColors,bitOrder);
 		}
 		public QImage(QSize arg1, int depth, int numColors) : this((Type) null) {
-			CreateQImageProxy();
+			CreateProxy();
 			NewQImage(arg1,depth,numColors);
 		}
 		[SmokeMethod("QImage(const QSize&, int, int)")]
@@ -98,7 +98,7 @@ namespace Qt {
 			ProxyQImage().NewQImage(arg1,depth,numColors);
 		}
 		public QImage(QSize arg1, int depth) : this((Type) null) {
-			CreateQImageProxy();
+			CreateProxy();
 			NewQImage(arg1,depth);
 		}
 		[SmokeMethod("QImage(const QSize&, int)")]
@@ -106,7 +106,7 @@ namespace Qt {
 			ProxyQImage().NewQImage(arg1,depth);
 		}
 		public QImage(string fileName, string format) : this((Type) null) {
-			CreateQImageProxy();
+			CreateProxy();
 			NewQImage(fileName,format);
 		}
 		[SmokeMethod("QImage(const QString&, const char*)")]
@@ -114,7 +114,7 @@ namespace Qt {
 			ProxyQImage().NewQImage(fileName,format);
 		}
 		public QImage(string fileName) : this((Type) null) {
-			CreateQImageProxy();
+			CreateProxy();
 			NewQImage(fileName);
 		}
 		[SmokeMethod("QImage(const QString&)")]
@@ -123,7 +123,7 @@ namespace Qt {
 		}
 		// QImage* QImage(const char** arg1); >>>> NOT CONVERTED
 		public QImage(QByteArray data) : this((Type) null) {
-			CreateQImageProxy();
+			CreateProxy();
 			NewQImage(data);
 		}
 		[SmokeMethod("QImage(const QByteArray&)")]
@@ -131,7 +131,7 @@ namespace Qt {
 			ProxyQImage().NewQImage(data);
 		}
 		public QImage(char[] data, int w, int h, int depth, out int colortable, int numColors, QImage.Endian bitOrder) : this((Type) null) {
-			CreateQImageProxy();
+			CreateProxy();
 			NewQImage(data,w,h,depth,out colortable,numColors,bitOrder);
 		}
 		[SmokeMethod("QImage(uchar*, int, int, int, QRgb*, int, QImage::Endian)")]
@@ -139,7 +139,7 @@ namespace Qt {
 			ProxyQImage().NewQImage(data,w,h,depth,out colortable,numColors,bitOrder);
 		}
 		public QImage(QImage arg1) : this((Type) null) {
-			CreateQImageProxy();
+			CreateProxy();
 			NewQImage(arg1);
 		}
 		[SmokeMethod("QImage(const QImage&)")]

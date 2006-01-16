@@ -12,7 +12,7 @@ namespace Qt {
 		interface IQSharedProxy {
 		}
 
-		protected void CreateQSharedProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QShared), this);
 			_interceptor = (QShared) realProxy.GetTransparentProxy();
 		}
@@ -29,7 +29,7 @@ namespace Qt {
 		}
 
 		public QShared() : this((Type) null) {
-			CreateQSharedProxy();
+			CreateProxy();
 			NewQShared();
 		}
 		[SmokeMethod("QShared()")]

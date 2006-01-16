@@ -13,7 +13,7 @@ namespace Qt {
 		interface IQGCacheIteratorProxy {
 		}
 
-		protected void CreateQGCacheIteratorProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGCacheIterator), this);
 			_interceptor = (QGCacheIterator) realProxy.GetTransparentProxy();
 		}
@@ -30,7 +30,7 @@ namespace Qt {
 		}
 
 		public QGCacheIterator(QGCache arg1) : this((Type) null) {
-			CreateQGCacheIteratorProxy();
+			CreateProxy();
 			NewQGCacheIterator(arg1);
 		}
 		[SmokeMethod("QGCacheIterator(const QGCache&)")]
@@ -38,7 +38,7 @@ namespace Qt {
 			ProxyQGCacheIterator().NewQGCacheIterator(arg1);
 		}
 		public QGCacheIterator(QGCacheIterator arg1) : this((Type) null) {
-			CreateQGCacheIteratorProxy();
+			CreateProxy();
 			NewQGCacheIterator(arg1);
 		}
 		[SmokeMethod("QGCacheIterator(const QGCacheIterator&)")]

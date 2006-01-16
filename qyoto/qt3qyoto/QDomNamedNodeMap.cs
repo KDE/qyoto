@@ -14,7 +14,7 @@ namespace Qt {
 			bool op_equals(QDomNamedNodeMap lhs, QDomNamedNodeMap arg1);
 		}
 
-		protected void CreateQDomNamedNodeMapProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomNamedNodeMap), this);
 			_interceptor = (QDomNamedNodeMap) realProxy.GetTransparentProxy();
 		}
@@ -31,7 +31,7 @@ namespace Qt {
 		}
 
 		public QDomNamedNodeMap() : this((Type) null) {
-			CreateQDomNamedNodeMapProxy();
+			CreateProxy();
 			NewQDomNamedNodeMap();
 		}
 		[SmokeMethod("QDomNamedNodeMap()")]
@@ -39,7 +39,7 @@ namespace Qt {
 			ProxyQDomNamedNodeMap().NewQDomNamedNodeMap();
 		}
 		public QDomNamedNodeMap(QDomNamedNodeMap arg1) : this((Type) null) {
-			CreateQDomNamedNodeMapProxy();
+			CreateProxy();
 			NewQDomNamedNodeMap(arg1);
 		}
 		[SmokeMethod("QDomNamedNodeMap(const QDomNamedNodeMap&)")]

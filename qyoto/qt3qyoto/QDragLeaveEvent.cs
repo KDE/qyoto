@@ -9,7 +9,7 @@ namespace Qt {
 		interface IQDragLeaveEventProxy {
 		}
 
-		protected void CreateQDragLeaveEventProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDragLeaveEvent), this);
 			_interceptor = (QDragLeaveEvent) realProxy.GetTransparentProxy();
 		}
@@ -26,7 +26,7 @@ namespace Qt {
 		}
 
 		public QDragLeaveEvent() : this((Type) null) {
-			CreateQDragLeaveEventProxy();
+			CreateProxy();
 			NewQDragLeaveEvent();
 		}
 		[SmokeMethod("QDragLeaveEvent()")]

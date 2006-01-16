@@ -9,7 +9,7 @@ namespace Qt {
 		interface IQDomCommentProxy {
 		}
 
-		protected void CreateQDomCommentProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomComment), this);
 			_interceptor = (QDomComment) realProxy.GetTransparentProxy();
 		}
@@ -26,7 +26,7 @@ namespace Qt {
 		}
 
 		public QDomComment() : this((Type) null) {
-			CreateQDomCommentProxy();
+			CreateProxy();
 			NewQDomComment();
 		}
 		[SmokeMethod("QDomComment()")]
@@ -34,7 +34,7 @@ namespace Qt {
 			ProxyQDomComment().NewQDomComment();
 		}
 		public QDomComment(QDomComment x) : this((Type) null) {
-			CreateQDomCommentProxy();
+			CreateProxy();
 			NewQDomComment(x);
 		}
 		[SmokeMethod("QDomComment(const QDomComment&)")]

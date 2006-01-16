@@ -10,7 +10,7 @@ namespace Qt {
 		interface IQJisCodecProxy {
 		}
 
-		protected void CreateQJisCodecProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QJisCodec), this);
 			_interceptor = (QJisCodec) realProxy.GetTransparentProxy();
 		}
@@ -59,7 +59,7 @@ namespace Qt {
 			return ProxyQJisCodec().HeuristicNameMatch(hint);
 		}
 		public QJisCodec() : this((Type) null) {
-			CreateQJisCodecProxy();
+			CreateProxy();
 			NewQJisCodec();
 		}
 		[SmokeMethod("QJisCodec()")]

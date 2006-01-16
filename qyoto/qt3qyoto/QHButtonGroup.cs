@@ -14,7 +14,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQHButtonGroupProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QHButtonGroup), this);
 			_interceptor = (QHButtonGroup) realProxy.GetTransparentProxy();
 		}
@@ -39,8 +39,8 @@ namespace Qt {
 			return ProxyQHButtonGroup().ClassName();
 		}
 		public QHButtonGroup(QWidget parent, string name) : this((Type) null) {
-			CreateQHButtonGroupProxy();
-			CreateQHButtonGroupSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQHButtonGroup(parent,name);
 		}
 		[SmokeMethod("QHButtonGroup(QWidget*, const char*)")]
@@ -48,8 +48,8 @@ namespace Qt {
 			ProxyQHButtonGroup().NewQHButtonGroup(parent,name);
 		}
 		public QHButtonGroup(QWidget parent) : this((Type) null) {
-			CreateQHButtonGroupProxy();
-			CreateQHButtonGroupSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQHButtonGroup(parent);
 		}
 		[SmokeMethod("QHButtonGroup(QWidget*)")]
@@ -57,8 +57,8 @@ namespace Qt {
 			ProxyQHButtonGroup().NewQHButtonGroup(parent);
 		}
 		public QHButtonGroup() : this((Type) null) {
-			CreateQHButtonGroupProxy();
-			CreateQHButtonGroupSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQHButtonGroup();
 		}
 		[SmokeMethod("QHButtonGroup()")]
@@ -66,8 +66,8 @@ namespace Qt {
 			ProxyQHButtonGroup().NewQHButtonGroup();
 		}
 		public QHButtonGroup(string title, QWidget parent, string name) : this((Type) null) {
-			CreateQHButtonGroupProxy();
-			CreateQHButtonGroupSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQHButtonGroup(title,parent,name);
 		}
 		[SmokeMethod("QHButtonGroup(const QString&, QWidget*, const char*)")]
@@ -75,8 +75,8 @@ namespace Qt {
 			ProxyQHButtonGroup().NewQHButtonGroup(title,parent,name);
 		}
 		public QHButtonGroup(string title, QWidget parent) : this((Type) null) {
-			CreateQHButtonGroupProxy();
-			CreateQHButtonGroupSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQHButtonGroup(title,parent);
 		}
 		[SmokeMethod("QHButtonGroup(const QString&, QWidget*)")]
@@ -84,8 +84,8 @@ namespace Qt {
 			ProxyQHButtonGroup().NewQHButtonGroup(title,parent);
 		}
 		public QHButtonGroup(string title) : this((Type) null) {
-			CreateQHButtonGroupProxy();
-			CreateQHButtonGroupSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQHButtonGroup(title);
 		}
 		[SmokeMethod("QHButtonGroup(const QString&)")]
@@ -117,7 +117,7 @@ namespace Qt {
 		private void DisposeQHButtonGroup() {
 			ProxyQHButtonGroup().DisposeQHButtonGroup();
 		}
-		protected void CreateQHButtonGroupSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQHButtonGroupSignals), this);
 			Q_EMIT = (IQHButtonGroupSignals) realProxy.GetTransparentProxy();
 		}

@@ -10,7 +10,7 @@ namespace Qt {
 		interface IQPictureProxy {
 		}
 
-		protected void CreateQPictureProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPicture), this);
 			_interceptor = (QPicture) realProxy.GetTransparentProxy();
 		}
@@ -27,7 +27,7 @@ namespace Qt {
 		}
 
 		public QPicture(int formatVersion) : this((Type) null) {
-			CreateQPictureProxy();
+			CreateProxy();
 			NewQPicture(formatVersion);
 		}
 		[SmokeMethod("QPicture(int)")]
@@ -35,7 +35,7 @@ namespace Qt {
 			ProxyQPicture().NewQPicture(formatVersion);
 		}
 		public QPicture() : this((Type) null) {
-			CreateQPictureProxy();
+			CreateProxy();
 			NewQPicture();
 		}
 		[SmokeMethod("QPicture()")]
@@ -43,7 +43,7 @@ namespace Qt {
 			ProxyQPicture().NewQPicture();
 		}
 		public QPicture(QPicture arg1) : this((Type) null) {
-			CreateQPictureProxy();
+			CreateProxy();
 			NewQPicture(arg1);
 		}
 		[SmokeMethod("QPicture(const QPicture&)")]

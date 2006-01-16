@@ -22,7 +22,7 @@ namespace Qt {
 			DateTime FromString(string s);
 		}
 
-		protected void CreateQDateTimeProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDateTime), this);
 			_interceptor = (QDateTime) realProxy.GetTransparentProxy();
 		}
@@ -39,7 +39,7 @@ namespace Qt {
 		}
 
 		public QDateTime() : this((Type) null) {
-			CreateQDateTimeProxy();
+			CreateProxy();
 			NewQDateTime();
 		}
 		[SmokeMethod("QDateTime()")]
@@ -47,7 +47,7 @@ namespace Qt {
 			ProxyQDateTime().NewQDateTime();
 		}
 		public QDateTime(DateTime arg1) : this((Type) null) {
-			CreateQDateTimeProxy();
+			CreateProxy();
 			NewQDateTime(arg1);
 		}
 		[SmokeMethod("QDateTime(const QDate&)")]
@@ -55,7 +55,7 @@ namespace Qt {
 			ProxyQDateTime().NewQDateTime(arg1);
 		}
 		public QDateTime(DateTime arg1, DateTime arg2) : this((Type) null) {
-			CreateQDateTimeProxy();
+			CreateProxy();
 			NewQDateTime(arg1,arg2);
 		}
 		[SmokeMethod("QDateTime(const QDate&, const QTime&)")]

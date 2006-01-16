@@ -9,7 +9,7 @@ namespace Qt {
 		interface IQDragEnterEventProxy {
 		}
 
-		protected void CreateQDragEnterEventProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDragEnterEvent), this);
 			_interceptor = (QDragEnterEvent) realProxy.GetTransparentProxy();
 		}
@@ -26,7 +26,7 @@ namespace Qt {
 		}
 
 		public QDragEnterEvent(QPoint pos) : this((Type) null) {
-			CreateQDragEnterEventProxy();
+			CreateProxy();
 			NewQDragEnterEvent(pos);
 		}
 		[SmokeMethod("QDragEnterEvent(const QPoint&)")]

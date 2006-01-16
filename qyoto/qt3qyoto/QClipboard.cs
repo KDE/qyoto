@@ -14,7 +14,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQClipboardProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QClipboard), this);
 			_interceptor = (QClipboard) realProxy.GetTransparentProxy();
 		}
@@ -158,7 +158,7 @@ namespace Qt {
 		public static new string TrUtf8(string arg1) {
 			return StaticQClipboard().TrUtf8(arg1);
 		}
-		protected void CreateQClipboardSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQClipboardSignals), this);
 			Q_EMIT = (IQClipboardSignals) realProxy.GetTransparentProxy();
 		}

@@ -9,7 +9,7 @@ namespace Qt {
 		interface IQDomTextProxy {
 		}
 
-		protected void CreateQDomTextProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomText), this);
 			_interceptor = (QDomText) realProxy.GetTransparentProxy();
 		}
@@ -26,7 +26,7 @@ namespace Qt {
 		}
 
 		public QDomText() : this((Type) null) {
-			CreateQDomTextProxy();
+			CreateProxy();
 			NewQDomText();
 		}
 		[SmokeMethod("QDomText()")]
@@ -34,7 +34,7 @@ namespace Qt {
 			ProxyQDomText().NewQDomText();
 		}
 		public QDomText(QDomText x) : this((Type) null) {
-			CreateQDomTextProxy();
+			CreateProxy();
 			NewQDomText(x);
 		}
 		[SmokeMethod("QDomText(const QDomText&)")]

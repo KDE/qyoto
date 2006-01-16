@@ -9,7 +9,7 @@ namespace Qt {
 		interface IQEventProxy {
 		}
 
-		protected void CreateQEventProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QEvent), this);
 			_interceptor = (QEvent) realProxy.GetTransparentProxy();
 		}
@@ -104,7 +104,7 @@ namespace Qt {
 			MaxUser = 65535,
 		}
 		public QEvent(QEvent.E_Type type) : this((Type) null) {
-			CreateQEventProxy();
+			CreateProxy();
 			NewQEvent(type);
 		}
 		[SmokeMethod("QEvent(QEvent::Type)")]

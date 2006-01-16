@@ -14,7 +14,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQLocalFsProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QLocalFs), this);
 			_interceptor = (QLocalFs) realProxy.GetTransparentProxy();
 		}
@@ -39,8 +39,8 @@ namespace Qt {
 			return ProxyQLocalFs().ClassName();
 		}
 		public QLocalFs() : this((Type) null) {
-			CreateQLocalFsProxy();
-			CreateQLocalFsSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQLocalFs();
 		}
 		[SmokeMethod("QLocalFs()")]
@@ -100,7 +100,7 @@ namespace Qt {
 		private void DisposeQLocalFs() {
 			ProxyQLocalFs().DisposeQLocalFs();
 		}
-		protected void CreateQLocalFsSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQLocalFsSignals), this);
 			Q_EMIT = (IQLocalFsSignals) realProxy.GetTransparentProxy();
 		}

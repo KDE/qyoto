@@ -13,7 +13,7 @@ namespace Qt {
 		interface IQTextDecoderProxy {
 		}
 
-		protected void CreateQTextDecoderProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextDecoder), this);
 			_interceptor = (QTextDecoder) realProxy.GetTransparentProxy();
 		}
@@ -34,7 +34,7 @@ namespace Qt {
 			return ProxyQTextDecoder().ToUnicode(chars,len);
 		}
 		public QTextDecoder() : this((Type) null) {
-			CreateQTextDecoderProxy();
+			CreateProxy();
 			NewQTextDecoder();
 		}
 		[SmokeMethod("QTextDecoder()")]

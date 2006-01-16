@@ -9,7 +9,7 @@ namespace Qt {
 		interface IQDomCDATASectionProxy {
 		}
 
-		protected void CreateQDomCDATASectionProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomCDATASection), this);
 			_interceptor = (QDomCDATASection) realProxy.GetTransparentProxy();
 		}
@@ -26,7 +26,7 @@ namespace Qt {
 		}
 
 		public QDomCDATASection() : this((Type) null) {
-			CreateQDomCDATASectionProxy();
+			CreateProxy();
 			NewQDomCDATASection();
 		}
 		[SmokeMethod("QDomCDATASection()")]
@@ -34,7 +34,7 @@ namespace Qt {
 			ProxyQDomCDATASection().NewQDomCDATASection();
 		}
 		public QDomCDATASection(QDomCDATASection x) : this((Type) null) {
-			CreateQDomCDATASectionProxy();
+			CreateProxy();
 			NewQDomCDATASection(x);
 		}
 		[SmokeMethod("QDomCDATASection(const QDomCDATASection&)")]

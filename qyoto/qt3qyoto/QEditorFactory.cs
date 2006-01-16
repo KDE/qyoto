@@ -11,7 +11,7 @@ namespace Qt {
 			void InstallDefaultFactory(QEditorFactory factory);
 		}
 
-		protected void CreateQEditorFactoryProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QEditorFactory), this);
 			_interceptor = (QEditorFactory) realProxy.GetTransparentProxy();
 		}
@@ -28,8 +28,8 @@ namespace Qt {
 		}
 
 		public QEditorFactory(QObject parent, string name) : this((Type) null) {
-			CreateQEditorFactoryProxy();
-			CreateQEditorFactorySignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQEditorFactory(parent,name);
 		}
 		[SmokeMethod("QEditorFactory(QObject*, const char*)")]
@@ -37,8 +37,8 @@ namespace Qt {
 			ProxyQEditorFactory().NewQEditorFactory(parent,name);
 		}
 		public QEditorFactory(QObject parent) : this((Type) null) {
-			CreateQEditorFactoryProxy();
-			CreateQEditorFactorySignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQEditorFactory(parent);
 		}
 		[SmokeMethod("QEditorFactory(QObject*)")]
@@ -46,8 +46,8 @@ namespace Qt {
 			ProxyQEditorFactory().NewQEditorFactory(parent);
 		}
 		public QEditorFactory() : this((Type) null) {
-			CreateQEditorFactoryProxy();
-			CreateQEditorFactorySignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQEditorFactory();
 		}
 		[SmokeMethod("QEditorFactory()")]
@@ -75,7 +75,7 @@ namespace Qt {
 		private void DisposeQEditorFactory() {
 			ProxyQEditorFactory().DisposeQEditorFactory();
 		}
-		protected void CreateQEditorFactorySignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQEditorFactorySignals), this);
 			Q_EMIT = (IQEditorFactorySignals) realProxy.GetTransparentProxy();
 		}

@@ -10,7 +10,7 @@ namespace Qt {
 		interface IQCanvasItemProxy {
 		}
 
-		protected void CreateQCanvasItemProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QCanvasItem), this);
 			_interceptor = (QCanvasItem) realProxy.GetTransparentProxy();
 		}
@@ -38,7 +38,7 @@ namespace Qt {
 			Rtti_Spline = 8,
 		}
 		public QCanvasItem(QCanvas canvas) : this((Type) null) {
-			CreateQCanvasItemProxy();
+			CreateProxy();
 			NewQCanvasItem(canvas);
 		}
 		[SmokeMethod("QCanvasItem(QCanvas*)")]

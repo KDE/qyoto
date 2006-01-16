@@ -15,7 +15,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQLCDNumberProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QLCDNumber), this);
 			_interceptor = (QLCDNumber) realProxy.GetTransparentProxy();
 		}
@@ -55,8 +55,8 @@ namespace Qt {
 			return ProxyQLCDNumber().ClassName();
 		}
 		public QLCDNumber(QWidget parent, string name) : this((Type) null) {
-			CreateQLCDNumberProxy();
-			CreateQLCDNumberSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQLCDNumber(parent,name);
 		}
 		[SmokeMethod("QLCDNumber(QWidget*, const char*)")]
@@ -64,8 +64,8 @@ namespace Qt {
 			ProxyQLCDNumber().NewQLCDNumber(parent,name);
 		}
 		public QLCDNumber(QWidget parent) : this((Type) null) {
-			CreateQLCDNumberProxy();
-			CreateQLCDNumberSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQLCDNumber(parent);
 		}
 		[SmokeMethod("QLCDNumber(QWidget*)")]
@@ -73,8 +73,8 @@ namespace Qt {
 			ProxyQLCDNumber().NewQLCDNumber(parent);
 		}
 		public QLCDNumber() : this((Type) null) {
-			CreateQLCDNumberProxy();
-			CreateQLCDNumberSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQLCDNumber();
 		}
 		[SmokeMethod("QLCDNumber()")]
@@ -82,8 +82,8 @@ namespace Qt {
 			ProxyQLCDNumber().NewQLCDNumber();
 		}
 		public QLCDNumber(uint numDigits, QWidget parent, string name) : this((Type) null) {
-			CreateQLCDNumberProxy();
-			CreateQLCDNumberSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQLCDNumber(numDigits,parent,name);
 		}
 		[SmokeMethod("QLCDNumber(uint, QWidget*, const char*)")]
@@ -91,8 +91,8 @@ namespace Qt {
 			ProxyQLCDNumber().NewQLCDNumber(numDigits,parent,name);
 		}
 		public QLCDNumber(uint numDigits, QWidget parent) : this((Type) null) {
-			CreateQLCDNumberProxy();
-			CreateQLCDNumberSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQLCDNumber(numDigits,parent);
 		}
 		[SmokeMethod("QLCDNumber(uint, QWidget*)")]
@@ -100,8 +100,8 @@ namespace Qt {
 			ProxyQLCDNumber().NewQLCDNumber(numDigits,parent);
 		}
 		public QLCDNumber(uint numDigits) : this((Type) null) {
-			CreateQLCDNumberProxy();
-			CreateQLCDNumberSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQLCDNumber(numDigits);
 		}
 		[SmokeMethod("QLCDNumber(uint)")]
@@ -225,7 +225,7 @@ namespace Qt {
 		private void DisposeQLCDNumber() {
 			ProxyQLCDNumber().DisposeQLCDNumber();
 		}
-		protected void CreateQLCDNumberSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQLCDNumberSignals), this);
 			Q_EMIT = (IQLCDNumberSignals) realProxy.GetTransparentProxy();
 		}

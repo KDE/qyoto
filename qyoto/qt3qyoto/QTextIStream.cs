@@ -10,7 +10,7 @@ namespace Qt {
 		interface IQTextIStreamProxy {
 		}
 
-		protected void CreateQTextIStreamProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextIStream), this);
 			_interceptor = (QTextIStream) realProxy.GetTransparentProxy();
 		}
@@ -27,7 +27,7 @@ namespace Qt {
 		}
 
 		public QTextIStream(string s) : this((Type) null) {
-			CreateQTextIStreamProxy();
+			CreateProxy();
 			NewQTextIStream(s);
 		}
 		[SmokeMethod("QTextIStream(const QString*)")]
@@ -35,7 +35,7 @@ namespace Qt {
 			ProxyQTextIStream().NewQTextIStream(s);
 		}
 		public QTextIStream(QByteArray ba) : this((Type) null) {
-			CreateQTextIStreamProxy();
+			CreateProxy();
 			NewQTextIStream(ba);
 		}
 		[SmokeMethod("QTextIStream(QByteArray)")]

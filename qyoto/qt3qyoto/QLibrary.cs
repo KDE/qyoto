@@ -13,7 +13,7 @@ namespace Qt {
 		interface IQLibraryProxy {
 		}
 
-		protected void CreateQLibraryProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QLibrary), this);
 			_interceptor = (QLibrary) realProxy.GetTransparentProxy();
 		}
@@ -30,7 +30,7 @@ namespace Qt {
 		}
 
 		public QLibrary(string filename) : this((Type) null) {
-			CreateQLibraryProxy();
+			CreateProxy();
 			NewQLibrary(filename);
 		}
 		[SmokeMethod("QLibrary(const QString&)")]

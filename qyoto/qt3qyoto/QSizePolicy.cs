@@ -13,7 +13,7 @@ namespace Qt {
 			bool op_equals(QSizePolicy lhs, QSizePolicy s);
 		}
 
-		protected void CreateQSizePolicyProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSizePolicy), this);
 			_interceptor = (QSizePolicy) realProxy.GetTransparentProxy();
 		}
@@ -47,7 +47,7 @@ namespace Qt {
 			BothDirections = Horizontally|Vertically,
 		}
 		public QSizePolicy() : this((Type) null) {
-			CreateQSizePolicyProxy();
+			CreateProxy();
 			NewQSizePolicy();
 		}
 		[SmokeMethod("QSizePolicy()")]
@@ -55,7 +55,7 @@ namespace Qt {
 			ProxyQSizePolicy().NewQSizePolicy();
 		}
 		public QSizePolicy(QSizePolicy.SizeType hor, QSizePolicy.SizeType ver, bool hfw) : this((Type) null) {
-			CreateQSizePolicyProxy();
+			CreateProxy();
 			NewQSizePolicy(hor,ver,hfw);
 		}
 		[SmokeMethod("QSizePolicy(QSizePolicy::SizeType, QSizePolicy::SizeType, bool)")]
@@ -63,7 +63,7 @@ namespace Qt {
 			ProxyQSizePolicy().NewQSizePolicy(hor,ver,hfw);
 		}
 		public QSizePolicy(QSizePolicy.SizeType hor, QSizePolicy.SizeType ver) : this((Type) null) {
-			CreateQSizePolicyProxy();
+			CreateProxy();
 			NewQSizePolicy(hor,ver);
 		}
 		[SmokeMethod("QSizePolicy(QSizePolicy::SizeType, QSizePolicy::SizeType)")]
@@ -71,7 +71,7 @@ namespace Qt {
 			ProxyQSizePolicy().NewQSizePolicy(hor,ver);
 		}
 		public QSizePolicy(QSizePolicy.SizeType hor, QSizePolicy.SizeType ver, ushort hors, ushort vers, bool hfw) : this((Type) null) {
-			CreateQSizePolicyProxy();
+			CreateProxy();
 			NewQSizePolicy(hor,ver,hors,vers,hfw);
 		}
 		[SmokeMethod("QSizePolicy(QSizePolicy::SizeType, QSizePolicy::SizeType, uchar, uchar, bool)")]
@@ -79,7 +79,7 @@ namespace Qt {
 			ProxyQSizePolicy().NewQSizePolicy(hor,ver,hors,vers,hfw);
 		}
 		public QSizePolicy(QSizePolicy.SizeType hor, QSizePolicy.SizeType ver, ushort hors, ushort vers) : this((Type) null) {
-			CreateQSizePolicyProxy();
+			CreateProxy();
 			NewQSizePolicy(hor,ver,hors,vers);
 		}
 		[SmokeMethod("QSizePolicy(QSizePolicy::SizeType, QSizePolicy::SizeType, uchar, uchar)")]

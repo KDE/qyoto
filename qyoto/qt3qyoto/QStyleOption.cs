@@ -12,7 +12,7 @@ namespace Qt {
 		interface IQStyleOptionProxy {
 		}
 
-		protected void CreateQStyleOptionProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOption), this);
 			_interceptor = (QStyleOption) realProxy.GetTransparentProxy();
 		}
@@ -32,7 +32,7 @@ namespace Qt {
 			Default = 0,
 		}
 		public QStyleOption(QStyleOption.StyleOptionDefault arg1) : this((Type) null) {
-			CreateQStyleOptionProxy();
+			CreateProxy();
 			NewQStyleOption(arg1);
 		}
 		[SmokeMethod("QStyleOption(QStyleOption::StyleOptionDefault)")]
@@ -40,7 +40,7 @@ namespace Qt {
 			ProxyQStyleOption().NewQStyleOption(arg1);
 		}
 		public QStyleOption() : this((Type) null) {
-			CreateQStyleOptionProxy();
+			CreateProxy();
 			NewQStyleOption();
 		}
 		[SmokeMethod("QStyleOption()")]
@@ -48,7 +48,7 @@ namespace Qt {
 			ProxyQStyleOption().NewQStyleOption();
 		}
 		public QStyleOption(int in1) : this((Type) null) {
-			CreateQStyleOptionProxy();
+			CreateProxy();
 			NewQStyleOption(in1);
 		}
 		[SmokeMethod("QStyleOption(int)")]
@@ -56,7 +56,7 @@ namespace Qt {
 			ProxyQStyleOption().NewQStyleOption(in1);
 		}
 		public QStyleOption(int in1, int in2) : this((Type) null) {
-			CreateQStyleOptionProxy();
+			CreateProxy();
 			NewQStyleOption(in1,in2);
 		}
 		[SmokeMethod("QStyleOption(int, int)")]
@@ -64,7 +64,7 @@ namespace Qt {
 			ProxyQStyleOption().NewQStyleOption(in1,in2);
 		}
 		public QStyleOption(int in1, int in2, int in3, int in4) : this((Type) null) {
-			CreateQStyleOptionProxy();
+			CreateProxy();
 			NewQStyleOption(in1,in2,in3,in4);
 		}
 		[SmokeMethod("QStyleOption(int, int, int, int)")]
@@ -72,7 +72,7 @@ namespace Qt {
 			ProxyQStyleOption().NewQStyleOption(in1,in2,in3,in4);
 		}
 		public QStyleOption(QMenuItem m) : this((Type) null) {
-			CreateQStyleOptionProxy();
+			CreateProxy();
 			NewQStyleOption(m);
 		}
 		[SmokeMethod("QStyleOption(QMenuItem*)")]
@@ -80,7 +80,7 @@ namespace Qt {
 			ProxyQStyleOption().NewQStyleOption(m);
 		}
 		public QStyleOption(QMenuItem m, int in1) : this((Type) null) {
-			CreateQStyleOptionProxy();
+			CreateProxy();
 			NewQStyleOption(m,in1);
 		}
 		[SmokeMethod("QStyleOption(QMenuItem*, int)")]
@@ -88,7 +88,7 @@ namespace Qt {
 			ProxyQStyleOption().NewQStyleOption(m,in1);
 		}
 		public QStyleOption(QMenuItem m, int in1, int in2) : this((Type) null) {
-			CreateQStyleOptionProxy();
+			CreateProxy();
 			NewQStyleOption(m,in1,in2);
 		}
 		[SmokeMethod("QStyleOption(QMenuItem*, int, int)")]
@@ -96,7 +96,7 @@ namespace Qt {
 			ProxyQStyleOption().NewQStyleOption(m,in1,in2);
 		}
 		public QStyleOption(QColor c) : this((Type) null) {
-			CreateQStyleOptionProxy();
+			CreateProxy();
 			NewQStyleOption(c);
 		}
 		[SmokeMethod("QStyleOption(const QColor&)")]
@@ -104,7 +104,7 @@ namespace Qt {
 			ProxyQStyleOption().NewQStyleOption(c);
 		}
 		public QStyleOption(QTab t) : this((Type) null) {
-			CreateQStyleOptionProxy();
+			CreateProxy();
 			NewQStyleOption(t);
 		}
 		[SmokeMethod("QStyleOption(QTab*)")]
@@ -112,7 +112,7 @@ namespace Qt {
 			ProxyQStyleOption().NewQStyleOption(t);
 		}
 		public QStyleOption(QListViewItem i) : this((Type) null) {
-			CreateQStyleOptionProxy();
+			CreateProxy();
 			NewQStyleOption(i);
 		}
 		[SmokeMethod("QStyleOption(QListViewItem*)")]
@@ -120,7 +120,7 @@ namespace Qt {
 			ProxyQStyleOption().NewQStyleOption(i);
 		}
 		public QStyleOption(QCheckListItem i) : this((Type) null) {
-			CreateQStyleOptionProxy();
+			CreateProxy();
 			NewQStyleOption(i);
 		}
 		[SmokeMethod("QStyleOption(QCheckListItem*)")]
@@ -128,7 +128,7 @@ namespace Qt {
 			ProxyQStyleOption().NewQStyleOption(i);
 		}
 		public QStyleOption(Qt.ArrowType a) : this((Type) null) {
-			CreateQStyleOptionProxy();
+			CreateProxy();
 			NewQStyleOption(a);
 		}
 		[SmokeMethod("QStyleOption(Qt::ArrowType)")]
@@ -136,7 +136,7 @@ namespace Qt {
 			ProxyQStyleOption().NewQStyleOption(a);
 		}
 		public QStyleOption(QRect r) : this((Type) null) {
-			CreateQStyleOptionProxy();
+			CreateProxy();
 			NewQStyleOption(r);
 		}
 		[SmokeMethod("QStyleOption(const QRect&)")]
@@ -144,7 +144,7 @@ namespace Qt {
 			ProxyQStyleOption().NewQStyleOption(r);
 		}
 		public QStyleOption(QWidget w) : this((Type) null) {
-			CreateQStyleOptionProxy();
+			CreateProxy();
 			NewQStyleOption(w);
 		}
 		[SmokeMethod("QStyleOption(QWidget*)")]

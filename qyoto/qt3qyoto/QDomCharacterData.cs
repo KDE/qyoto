@@ -10,7 +10,7 @@ namespace Qt {
 		interface IQDomCharacterDataProxy {
 		}
 
-		protected void CreateQDomCharacterDataProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomCharacterData), this);
 			_interceptor = (QDomCharacterData) realProxy.GetTransparentProxy();
 		}
@@ -27,7 +27,7 @@ namespace Qt {
 		}
 
 		public QDomCharacterData() : this((Type) null) {
-			CreateQDomCharacterDataProxy();
+			CreateProxy();
 			NewQDomCharacterData();
 		}
 		[SmokeMethod("QDomCharacterData()")]
@@ -35,7 +35,7 @@ namespace Qt {
 			ProxyQDomCharacterData().NewQDomCharacterData();
 		}
 		public QDomCharacterData(QDomCharacterData x) : this((Type) null) {
-			CreateQDomCharacterDataProxy();
+			CreateProxy();
 			NewQDomCharacterData(x);
 		}
 		[SmokeMethod("QDomCharacterData(const QDomCharacterData&)")]

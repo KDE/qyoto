@@ -12,7 +12,7 @@ namespace Qt {
 		interface IQNetworkProtocolFactoryBaseProxy {
 		}
 
-		protected void CreateQNetworkProtocolFactoryBaseProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QNetworkProtocolFactoryBase), this);
 			_interceptor = (QNetworkProtocolFactoryBase) realProxy.GetTransparentProxy();
 		}

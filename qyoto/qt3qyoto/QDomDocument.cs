@@ -11,7 +11,7 @@ namespace Qt {
 		interface IQDomDocumentProxy {
 		}
 
-		protected void CreateQDomDocumentProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomDocument), this);
 			_interceptor = (QDomDocument) realProxy.GetTransparentProxy();
 		}
@@ -28,7 +28,7 @@ namespace Qt {
 		}
 
 		public QDomDocument() : this((Type) null) {
-			CreateQDomDocumentProxy();
+			CreateProxy();
 			NewQDomDocument();
 		}
 		[SmokeMethod("QDomDocument()")]
@@ -36,7 +36,7 @@ namespace Qt {
 			ProxyQDomDocument().NewQDomDocument();
 		}
 		public QDomDocument(string name) : this((Type) null) {
-			CreateQDomDocumentProxy();
+			CreateProxy();
 			NewQDomDocument(name);
 		}
 		[SmokeMethod("QDomDocument(const QString&)")]
@@ -44,7 +44,7 @@ namespace Qt {
 			ProxyQDomDocument().NewQDomDocument(name);
 		}
 		public QDomDocument(QDomDocumentType doctype) : this((Type) null) {
-			CreateQDomDocumentProxy();
+			CreateProxy();
 			NewQDomDocument(doctype);
 		}
 		[SmokeMethod("QDomDocument(const QDomDocumentType&)")]
@@ -52,7 +52,7 @@ namespace Qt {
 			ProxyQDomDocument().NewQDomDocument(doctype);
 		}
 		public QDomDocument(QDomDocument x) : this((Type) null) {
-			CreateQDomDocumentProxy();
+			CreateProxy();
 			NewQDomDocument(x);
 		}
 		[SmokeMethod("QDomDocument(const QDomDocument&)")]

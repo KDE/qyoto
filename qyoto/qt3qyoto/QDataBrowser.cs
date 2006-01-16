@@ -16,7 +16,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQDataBrowserProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDataBrowser), this);
 			_interceptor = (QDataBrowser) realProxy.GetTransparentProxy();
 		}
@@ -49,8 +49,8 @@ namespace Qt {
 			return ProxyQDataBrowser().ClassName();
 		}
 		public QDataBrowser(QWidget parent, string name, int fl) : this((Type) null) {
-			CreateQDataBrowserProxy();
-			CreateQDataBrowserSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQDataBrowser(parent,name,fl);
 		}
 		[SmokeMethod("QDataBrowser(QWidget*, const char*, Qt::WFlags)")]
@@ -58,8 +58,8 @@ namespace Qt {
 			ProxyQDataBrowser().NewQDataBrowser(parent,name,fl);
 		}
 		public QDataBrowser(QWidget parent, string name) : this((Type) null) {
-			CreateQDataBrowserProxy();
-			CreateQDataBrowserSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQDataBrowser(parent,name);
 		}
 		[SmokeMethod("QDataBrowser(QWidget*, const char*)")]
@@ -67,8 +67,8 @@ namespace Qt {
 			ProxyQDataBrowser().NewQDataBrowser(parent,name);
 		}
 		public QDataBrowser(QWidget parent) : this((Type) null) {
-			CreateQDataBrowserProxy();
-			CreateQDataBrowserSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQDataBrowser(parent);
 		}
 		[SmokeMethod("QDataBrowser(QWidget*)")]
@@ -76,8 +76,8 @@ namespace Qt {
 			ProxyQDataBrowser().NewQDataBrowser(parent);
 		}
 		public QDataBrowser() : this((Type) null) {
-			CreateQDataBrowserProxy();
-			CreateQDataBrowserSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQDataBrowser();
 		}
 		[SmokeMethod("QDataBrowser()")]
@@ -313,7 +313,7 @@ namespace Qt {
 		private void DisposeQDataBrowser() {
 			ProxyQDataBrowser().DisposeQDataBrowser();
 		}
-		protected void CreateQDataBrowserSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQDataBrowserSignals), this);
 			Q_EMIT = (IQDataBrowserSignals) realProxy.GetTransparentProxy();
 		}

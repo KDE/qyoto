@@ -54,7 +54,7 @@ namespace Qt {
 			bool IsRelativeUrl(string url);
 		}
 
-		protected void CreateQUrlProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QUrl), this);
 			_interceptor = (QUrl) realProxy.GetTransparentProxy();
 		}
@@ -71,7 +71,7 @@ namespace Qt {
 		}
 
 		public QUrl() : this((Type) null) {
-			CreateQUrlProxy();
+			CreateProxy();
 			NewQUrl();
 		}
 		[SmokeMethod("QUrl()")]
@@ -79,7 +79,7 @@ namespace Qt {
 			ProxyQUrl().NewQUrl();
 		}
 		public QUrl(string url) : this((Type) null) {
-			CreateQUrlProxy();
+			CreateProxy();
 			NewQUrl(url);
 		}
 		[SmokeMethod("QUrl(const QString&)")]
@@ -87,7 +87,7 @@ namespace Qt {
 			ProxyQUrl().NewQUrl(url);
 		}
 		public QUrl(IQUrl url) : this((Type) null) {
-			CreateQUrlProxy();
+			CreateProxy();
 			NewQUrl(url);
 		}
 		[SmokeMethod("QUrl(const QUrl&)")]
@@ -95,7 +95,7 @@ namespace Qt {
 			ProxyQUrl().NewQUrl(url);
 		}
 		public QUrl(IQUrl url, string relUrl, bool checkSlash) : this((Type) null) {
-			CreateQUrlProxy();
+			CreateProxy();
 			NewQUrl(url,relUrl,checkSlash);
 		}
 		[SmokeMethod("QUrl(const QUrl&, const QString&, bool)")]
@@ -103,7 +103,7 @@ namespace Qt {
 			ProxyQUrl().NewQUrl(url,relUrl,checkSlash);
 		}
 		public QUrl(IQUrl url, string relUrl) : this((Type) null) {
-			CreateQUrlProxy();
+			CreateProxy();
 			NewQUrl(url,relUrl);
 		}
 		[SmokeMethod("QUrl(const QUrl&, const QString&)")]

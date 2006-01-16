@@ -12,7 +12,7 @@ namespace Qt {
 		interface IQSqlResultProxy {
 		}
 
-		protected void CreateQSqlResultProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSqlResult), this);
 			_interceptor = (QSqlResult) realProxy.GetTransparentProxy();
 		}

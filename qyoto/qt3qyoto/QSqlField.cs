@@ -14,7 +14,7 @@ namespace Qt {
 			bool op_equals(QSqlField lhs, QSqlField other);
 		}
 
-		protected void CreateQSqlFieldProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSqlField), this);
 			_interceptor = (QSqlField) realProxy.GetTransparentProxy();
 		}
@@ -31,7 +31,7 @@ namespace Qt {
 		}
 
 		public QSqlField(string fieldName, QVariant.E_Type type) : this((Type) null) {
-			CreateQSqlFieldProxy();
+			CreateProxy();
 			NewQSqlField(fieldName,type);
 		}
 		[SmokeMethod("QSqlField(const QString&, QVariant::Type)")]
@@ -39,7 +39,7 @@ namespace Qt {
 			ProxyQSqlField().NewQSqlField(fieldName,type);
 		}
 		public QSqlField(string fieldName) : this((Type) null) {
-			CreateQSqlFieldProxy();
+			CreateProxy();
 			NewQSqlField(fieldName);
 		}
 		[SmokeMethod("QSqlField(const QString&)")]
@@ -47,7 +47,7 @@ namespace Qt {
 			ProxyQSqlField().NewQSqlField(fieldName);
 		}
 		public QSqlField() : this((Type) null) {
-			CreateQSqlFieldProxy();
+			CreateProxy();
 			NewQSqlField();
 		}
 		[SmokeMethod("QSqlField()")]
@@ -55,7 +55,7 @@ namespace Qt {
 			ProxyQSqlField().NewQSqlField();
 		}
 		public QSqlField(QSqlField other) : this((Type) null) {
-			CreateQSqlFieldProxy();
+			CreateProxy();
 			NewQSqlField(other);
 		}
 		[SmokeMethod("QSqlField(const QSqlField&)")]

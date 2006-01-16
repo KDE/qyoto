@@ -20,7 +20,7 @@ namespace Qt {
 		interface IQMimeSourceProxy {
 		}
 
-		protected void CreateQMimeSourceProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMimeSource), this);
 			_interceptor = (QMimeSource) realProxy.GetTransparentProxy();
 		}
@@ -37,7 +37,7 @@ namespace Qt {
 		}
 
 		public QMimeSource() : this((Type) null) {
-			CreateQMimeSourceProxy();
+			CreateProxy();
 			NewQMimeSource();
 		}
 		[SmokeMethod("QMimeSource()")]

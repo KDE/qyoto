@@ -12,7 +12,7 @@ namespace Qt {
 		interface IQConnectionProxy {
 		}
 
-		protected void CreateQConnectionProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QConnection), this);
 			_interceptor = (QConnection) realProxy.GetTransparentProxy();
 		}
@@ -29,7 +29,7 @@ namespace Qt {
 		}
 
 		public QConnection(QObject arg1, int arg2, string memberName, int memberType) : this((Type) null) {
-			CreateQConnectionProxy();
+			CreateProxy();
 			NewQConnection(arg1,arg2,memberName,memberType);
 		}
 		[SmokeMethod("QConnection(const QObject*, int, const char*, int)")]

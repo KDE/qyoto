@@ -9,7 +9,7 @@ namespace Qt {
 		interface IQCanvasSpriteProxy {
 		}
 
-		protected void CreateQCanvasSpriteProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QCanvasSprite), this);
 			_interceptor = (QCanvasSprite) realProxy.GetTransparentProxy();
 		}
@@ -30,7 +30,7 @@ namespace Qt {
 			Oscillate = 1,
 		}
 		public QCanvasSprite(QCanvasPixmapArray array, QCanvas canvas) : this((Type) null) {
-			CreateQCanvasSpriteProxy();
+			CreateProxy();
 			NewQCanvasSprite(array,canvas);
 		}
 		[SmokeMethod("QCanvasSprite(QCanvasPixmapArray*, QCanvas*)")]

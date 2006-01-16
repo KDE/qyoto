@@ -15,7 +15,7 @@ namespace Qt {
 			bool HasMetaObject(string class_name);
 		}
 
-		protected void CreateQMetaObjectProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMetaObject), this);
 			_interceptor = (QMetaObject) realProxy.GetTransparentProxy();
 		}

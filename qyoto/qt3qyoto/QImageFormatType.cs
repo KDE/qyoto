@@ -12,7 +12,7 @@ namespace Qt {
 		interface IQImageFormatTypeProxy {
 		}
 
-		protected void CreateQImageFormatTypeProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QImageFormatType), this);
 			_interceptor = (QImageFormatType) realProxy.GetTransparentProxy();
 		}

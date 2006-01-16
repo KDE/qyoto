@@ -12,7 +12,7 @@ namespace Qt {
 		interface IQLNodeProxy {
 		}
 
-		protected void CreateQLNodeProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QLNode), this);
 			_interceptor = (QLNode) realProxy.GetTransparentProxy();
 		}

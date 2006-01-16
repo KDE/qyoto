@@ -14,7 +14,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQSqlFormProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSqlForm), this);
 			_interceptor = (QSqlForm) realProxy.GetTransparentProxy();
 		}
@@ -39,8 +39,8 @@ namespace Qt {
 			return ProxyQSqlForm().ClassName();
 		}
 		public QSqlForm(QObject parent, string name) : this((Type) null) {
-			CreateQSqlFormProxy();
-			CreateQSqlFormSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQSqlForm(parent,name);
 		}
 		[SmokeMethod("QSqlForm(QObject*, const char*)")]
@@ -48,8 +48,8 @@ namespace Qt {
 			ProxyQSqlForm().NewQSqlForm(parent,name);
 		}
 		public QSqlForm(QObject parent) : this((Type) null) {
-			CreateQSqlFormProxy();
-			CreateQSqlFormSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQSqlForm(parent);
 		}
 		[SmokeMethod("QSqlForm(QObject*)")]
@@ -57,8 +57,8 @@ namespace Qt {
 			ProxyQSqlForm().NewQSqlForm(parent);
 		}
 		public QSqlForm() : this((Type) null) {
-			CreateQSqlFormProxy();
-			CreateQSqlFormSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQSqlForm();
 		}
 		[SmokeMethod("QSqlForm()")]
@@ -169,7 +169,7 @@ namespace Qt {
 		private void DisposeQSqlForm() {
 			ProxyQSqlForm().DisposeQSqlForm();
 		}
-		protected void CreateQSqlFormSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQSqlFormSignals), this);
 			Q_EMIT = (IQSqlFormSignals) realProxy.GetTransparentProxy();
 		}

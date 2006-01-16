@@ -16,7 +16,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQProcessProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QProcess), this);
 			_interceptor = (QProcess) realProxy.GetTransparentProxy();
 		}
@@ -47,8 +47,8 @@ namespace Qt {
 			return ProxyQProcess().ClassName();
 		}
 		public QProcess(QObject parent, string name) : this((Type) null) {
-			CreateQProcessProxy();
-			CreateQProcessSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQProcess(parent,name);
 		}
 		[SmokeMethod("QProcess(QObject*, const char*)")]
@@ -56,8 +56,8 @@ namespace Qt {
 			ProxyQProcess().NewQProcess(parent,name);
 		}
 		public QProcess(QObject parent) : this((Type) null) {
-			CreateQProcessProxy();
-			CreateQProcessSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQProcess(parent);
 		}
 		[SmokeMethod("QProcess(QObject*)")]
@@ -65,8 +65,8 @@ namespace Qt {
 			ProxyQProcess().NewQProcess(parent);
 		}
 		public QProcess() : this((Type) null) {
-			CreateQProcessProxy();
-			CreateQProcessSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQProcess();
 		}
 		[SmokeMethod("QProcess()")]
@@ -74,8 +74,8 @@ namespace Qt {
 			ProxyQProcess().NewQProcess();
 		}
 		public QProcess(string arg0, QObject parent, string name) : this((Type) null) {
-			CreateQProcessProxy();
-			CreateQProcessSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQProcess(arg0,parent,name);
 		}
 		[SmokeMethod("QProcess(const QString&, QObject*, const char*)")]
@@ -83,8 +83,8 @@ namespace Qt {
 			ProxyQProcess().NewQProcess(arg0,parent,name);
 		}
 		public QProcess(string arg0, QObject parent) : this((Type) null) {
-			CreateQProcessProxy();
-			CreateQProcessSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQProcess(arg0,parent);
 		}
 		[SmokeMethod("QProcess(const QString&, QObject*)")]
@@ -92,8 +92,8 @@ namespace Qt {
 			ProxyQProcess().NewQProcess(arg0,parent);
 		}
 		public QProcess(string arg0) : this((Type) null) {
-			CreateQProcessProxy();
-			CreateQProcessSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQProcess(arg0);
 		}
 		[SmokeMethod("QProcess(const QString&)")]
@@ -101,8 +101,8 @@ namespace Qt {
 			ProxyQProcess().NewQProcess(arg0);
 		}
 		public QProcess(string[] args, QObject parent, string name) : this((Type) null) {
-			CreateQProcessProxy();
-			CreateQProcessSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQProcess(args,parent,name);
 		}
 		[SmokeMethod("QProcess(const QStringList&, QObject*, const char*)")]
@@ -110,8 +110,8 @@ namespace Qt {
 			ProxyQProcess().NewQProcess(args,parent,name);
 		}
 		public QProcess(string[] args, QObject parent) : this((Type) null) {
-			CreateQProcessProxy();
-			CreateQProcessSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQProcess(args,parent);
 		}
 		[SmokeMethod("QProcess(const QStringList&, QObject*)")]
@@ -119,8 +119,8 @@ namespace Qt {
 			ProxyQProcess().NewQProcess(args,parent);
 		}
 		public QProcess(string[] args) : this((Type) null) {
-			CreateQProcessProxy();
-			CreateQProcessSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQProcess(args);
 		}
 		[SmokeMethod("QProcess(const QStringList&)")]
@@ -285,7 +285,7 @@ namespace Qt {
 		private void DisposeQProcess() {
 			ProxyQProcess().DisposeQProcess();
 		}
-		protected void CreateQProcessSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQProcessSignals), this);
 			Q_EMIT = (IQProcessSignals) realProxy.GetTransparentProxy();
 		}

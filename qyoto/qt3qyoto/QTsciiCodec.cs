@@ -10,7 +10,7 @@ namespace Qt {
 		interface IQTsciiCodecProxy {
 		}
 
-		protected void CreateQTsciiCodecProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTsciiCodec), this);
 			_interceptor = (QTsciiCodec) realProxy.GetTransparentProxy();
 		}
@@ -51,7 +51,7 @@ namespace Qt {
 			return ProxyQTsciiCodec().HeuristicNameMatch(hint);
 		}
 		public QTsciiCodec() : this((Type) null) {
-			CreateQTsciiCodecProxy();
+			CreateProxy();
 			NewQTsciiCodec();
 		}
 		[SmokeMethod("QTsciiCodec()")]

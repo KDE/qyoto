@@ -10,7 +10,7 @@ namespace Qt {
 		interface IQGCacheProxy {
 		}
 
-		protected void CreateQGCacheProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGCache), this);
 			_interceptor = (QGCache) realProxy.GetTransparentProxy();
 		}
@@ -33,7 +33,7 @@ namespace Qt {
 			PtrKey = 3,
 		}
 		public QGCache(int maxCost, uint size, QGCache.KeyType kt, bool caseSensitive, bool copyKeys) : this((Type) null) {
-			CreateQGCacheProxy();
+			CreateProxy();
 			NewQGCache(maxCost,size,kt,caseSensitive,copyKeys);
 		}
 		[SmokeMethod("QGCache(int, uint, QGCache::KeyType, bool, bool)")]
@@ -41,7 +41,7 @@ namespace Qt {
 			ProxyQGCache().NewQGCache(maxCost,size,kt,caseSensitive,copyKeys);
 		}
 		public QGCache(QGCache arg1) : this((Type) null) {
-			CreateQGCacheProxy();
+			CreateProxy();
 			NewQGCache(arg1);
 		}
 		[SmokeMethod("QGCache(const QGCache&)")]

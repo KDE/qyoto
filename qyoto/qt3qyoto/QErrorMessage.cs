@@ -15,7 +15,7 @@ namespace Qt {
 			QErrorMessage QtHandler();
 		}
 
-		protected void CreateQErrorMessageProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QErrorMessage), this);
 			_interceptor = (QErrorMessage) realProxy.GetTransparentProxy();
 		}
@@ -40,8 +40,8 @@ namespace Qt {
 			return ProxyQErrorMessage().ClassName();
 		}
 		public QErrorMessage(QWidget parent, string name) : this((Type) null) {
-			CreateQErrorMessageProxy();
-			CreateQErrorMessageSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQErrorMessage(parent,name);
 		}
 		[SmokeMethod("QErrorMessage(QWidget*, const char*)")]
@@ -49,8 +49,8 @@ namespace Qt {
 			ProxyQErrorMessage().NewQErrorMessage(parent,name);
 		}
 		public QErrorMessage(QWidget parent) : this((Type) null) {
-			CreateQErrorMessageProxy();
-			CreateQErrorMessageSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQErrorMessage(parent);
 		}
 		[SmokeMethod("QErrorMessage(QWidget*)")]
@@ -95,7 +95,7 @@ namespace Qt {
 		private void DisposeQErrorMessage() {
 			ProxyQErrorMessage().DisposeQErrorMessage();
 		}
-		protected void CreateQErrorMessageSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQErrorMessageSignals), this);
 			Q_EMIT = (IQErrorMessageSignals) realProxy.GetTransparentProxy();
 		}

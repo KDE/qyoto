@@ -9,7 +9,7 @@ namespace Qt {
 		interface IQPaintEventProxy {
 		}
 
-		protected void CreateQPaintEventProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPaintEvent), this);
 			_interceptor = (QPaintEvent) realProxy.GetTransparentProxy();
 		}
@@ -26,7 +26,7 @@ namespace Qt {
 		}
 
 		public QPaintEvent(QRegion paintRegion, bool erased) : this((Type) null) {
-			CreateQPaintEventProxy();
+			CreateProxy();
 			NewQPaintEvent(paintRegion,erased);
 		}
 		[SmokeMethod("QPaintEvent(const QRegion&, bool)")]
@@ -34,7 +34,7 @@ namespace Qt {
 			ProxyQPaintEvent().NewQPaintEvent(paintRegion,erased);
 		}
 		public QPaintEvent(QRegion paintRegion) : this((Type) null) {
-			CreateQPaintEventProxy();
+			CreateProxy();
 			NewQPaintEvent(paintRegion);
 		}
 		[SmokeMethod("QPaintEvent(const QRegion&)")]
@@ -42,7 +42,7 @@ namespace Qt {
 			ProxyQPaintEvent().NewQPaintEvent(paintRegion);
 		}
 		public QPaintEvent(QRect paintRect, bool erased) : this((Type) null) {
-			CreateQPaintEventProxy();
+			CreateProxy();
 			NewQPaintEvent(paintRect,erased);
 		}
 		[SmokeMethod("QPaintEvent(const QRect&, bool)")]
@@ -50,7 +50,7 @@ namespace Qt {
 			ProxyQPaintEvent().NewQPaintEvent(paintRect,erased);
 		}
 		public QPaintEvent(QRect paintRect) : this((Type) null) {
-			CreateQPaintEventProxy();
+			CreateProxy();
 			NewQPaintEvent(paintRect);
 		}
 		[SmokeMethod("QPaintEvent(const QRect&)")]
@@ -58,7 +58,7 @@ namespace Qt {
 			ProxyQPaintEvent().NewQPaintEvent(paintRect);
 		}
 		public QPaintEvent(QRegion paintRegion, QRect paintRect, bool erased) : this((Type) null) {
-			CreateQPaintEventProxy();
+			CreateProxy();
 			NewQPaintEvent(paintRegion,paintRect,erased);
 		}
 		[SmokeMethod("QPaintEvent(const QRegion&, const QRect&, bool)")]
@@ -66,7 +66,7 @@ namespace Qt {
 			ProxyQPaintEvent().NewQPaintEvent(paintRegion,paintRect,erased);
 		}
 		public QPaintEvent(QRegion paintRegion, QRect paintRect) : this((Type) null) {
-			CreateQPaintEventProxy();
+			CreateProxy();
 			NewQPaintEvent(paintRegion,paintRect);
 		}
 		[SmokeMethod("QPaintEvent(const QRegion&, const QRect&)")]

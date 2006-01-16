@@ -18,7 +18,7 @@ namespace Qt {
 		interface IQXmlEntityResolverProxy {
 		}
 
-		protected void CreateQXmlEntityResolverProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlEntityResolver), this);
 			_interceptor = (QXmlEntityResolver) realProxy.GetTransparentProxy();
 		}
@@ -43,7 +43,7 @@ namespace Qt {
 			return ProxyQXmlEntityResolver().ErrorString();
 		}
 		public QXmlEntityResolver() : this((Type) null) {
-			CreateQXmlEntityResolverProxy();
+			CreateProxy();
 			NewQXmlEntityResolver();
 		}
 		[SmokeMethod("QXmlEntityResolver()")]

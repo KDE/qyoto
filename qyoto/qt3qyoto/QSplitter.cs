@@ -14,7 +14,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQSplitterProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSplitter), this);
 			_interceptor = (QSplitter) realProxy.GetTransparentProxy();
 		}
@@ -47,8 +47,8 @@ namespace Qt {
 			return ProxyQSplitter().ClassName();
 		}
 		public QSplitter(QWidget parent, string name) : this((Type) null) {
-			CreateQSplitterProxy();
-			CreateQSplitterSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQSplitter(parent,name);
 		}
 		[SmokeMethod("QSplitter(QWidget*, const char*)")]
@@ -56,8 +56,8 @@ namespace Qt {
 			ProxyQSplitter().NewQSplitter(parent,name);
 		}
 		public QSplitter(QWidget parent) : this((Type) null) {
-			CreateQSplitterProxy();
-			CreateQSplitterSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQSplitter(parent);
 		}
 		[SmokeMethod("QSplitter(QWidget*)")]
@@ -65,8 +65,8 @@ namespace Qt {
 			ProxyQSplitter().NewQSplitter(parent);
 		}
 		public QSplitter() : this((Type) null) {
-			CreateQSplitterProxy();
-			CreateQSplitterSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQSplitter();
 		}
 		[SmokeMethod("QSplitter()")]
@@ -74,8 +74,8 @@ namespace Qt {
 			ProxyQSplitter().NewQSplitter();
 		}
 		public QSplitter(Qt.Orientation arg1, QWidget parent, string name) : this((Type) null) {
-			CreateQSplitterProxy();
-			CreateQSplitterSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQSplitter(arg1,parent,name);
 		}
 		[SmokeMethod("QSplitter(Qt::Orientation, QWidget*, const char*)")]
@@ -83,8 +83,8 @@ namespace Qt {
 			ProxyQSplitter().NewQSplitter(arg1,parent,name);
 		}
 		public QSplitter(Qt.Orientation arg1, QWidget parent) : this((Type) null) {
-			CreateQSplitterProxy();
-			CreateQSplitterSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQSplitter(arg1,parent);
 		}
 		[SmokeMethod("QSplitter(Qt::Orientation, QWidget*)")]
@@ -92,8 +92,8 @@ namespace Qt {
 			ProxyQSplitter().NewQSplitter(arg1,parent);
 		}
 		public QSplitter(Qt.Orientation arg1) : this((Type) null) {
-			CreateQSplitterProxy();
-			CreateQSplitterSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQSplitter(arg1);
 		}
 		[SmokeMethod("QSplitter(Qt::Orientation)")]
@@ -237,7 +237,7 @@ namespace Qt {
 		private void DisposeQSplitter() {
 			ProxyQSplitter().DisposeQSplitter();
 		}
-		protected void CreateQSplitterSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQSplitterSignals), this);
 			Q_EMIT = (IQSplitterSignals) realProxy.GetTransparentProxy();
 		}

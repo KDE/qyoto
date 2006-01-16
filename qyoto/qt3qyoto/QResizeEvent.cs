@@ -9,7 +9,7 @@ namespace Qt {
 		interface IQResizeEventProxy {
 		}
 
-		protected void CreateQResizeEventProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QResizeEvent), this);
 			_interceptor = (QResizeEvent) realProxy.GetTransparentProxy();
 		}
@@ -26,7 +26,7 @@ namespace Qt {
 		}
 
 		public QResizeEvent(QSize size, QSize oldSize) : this((Type) null) {
-			CreateQResizeEventProxy();
+			CreateProxy();
 			NewQResizeEvent(size,oldSize);
 		}
 		[SmokeMethod("QResizeEvent(const QSize&, const QSize&)")]

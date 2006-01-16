@@ -15,7 +15,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQSqlDriverPluginProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSqlDriverPlugin), this);
 			_interceptor = (QSqlDriverPlugin) realProxy.GetTransparentProxy();
 		}
@@ -40,8 +40,8 @@ namespace Qt {
 			return ProxyQSqlDriverPlugin().ClassName();
 		}
 		public QSqlDriverPlugin() : this((Type) null) {
-			CreateQSqlDriverPluginProxy();
-			CreateQSqlDriverPluginSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQSqlDriverPlugin();
 		}
 		[SmokeMethod("QSqlDriverPlugin()")]
@@ -81,7 +81,7 @@ namespace Qt {
 		private void DisposeQSqlDriverPlugin() {
 			ProxyQSqlDriverPlugin().DisposeQSqlDriverPlugin();
 		}
-		protected void CreateQSqlDriverPluginSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQSqlDriverPluginSignals), this);
 			Q_EMIT = (IQSqlDriverPluginSignals) realProxy.GetTransparentProxy();
 		}

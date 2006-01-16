@@ -14,7 +14,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQGPluginProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGPlugin), this);
 			_interceptor = (QGPlugin) realProxy.GetTransparentProxy();
 		}
@@ -66,7 +66,7 @@ namespace Qt {
 		private void DisposeQGPlugin() {
 			ProxyQGPlugin().DisposeQGPlugin();
 		}
-		protected void CreateQGPluginSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQGPluginSignals), this);
 			Q_EMIT = (IQGPluginSignals) realProxy.GetTransparentProxy();
 		}

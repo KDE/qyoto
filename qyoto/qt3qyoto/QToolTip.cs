@@ -28,7 +28,7 @@ namespace Qt {
 			void SetWakeUpDelay(int arg1);
 		}
 
-		protected void CreateQToolTipProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QToolTip), this);
 			_interceptor = (QToolTip) realProxy.GetTransparentProxy();
 		}
@@ -45,7 +45,7 @@ namespace Qt {
 		}
 
 		public QToolTip(QWidget arg1, QToolTipGroup arg2) : this((Type) null) {
-			CreateQToolTipProxy();
+			CreateProxy();
 			NewQToolTip(arg1,arg2);
 		}
 		[SmokeMethod("QToolTip(QWidget*, QToolTipGroup*)")]
@@ -53,7 +53,7 @@ namespace Qt {
 			ProxyQToolTip().NewQToolTip(arg1,arg2);
 		}
 		public QToolTip(QWidget arg1) : this((Type) null) {
-			CreateQToolTipProxy();
+			CreateProxy();
 			NewQToolTip(arg1);
 		}
 		[SmokeMethod("QToolTip(QWidget*)")]

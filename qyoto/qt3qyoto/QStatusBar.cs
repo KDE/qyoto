@@ -15,7 +15,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQStatusBarProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStatusBar), this);
 			_interceptor = (QStatusBar) realProxy.GetTransparentProxy();
 		}
@@ -40,8 +40,8 @@ namespace Qt {
 			return ProxyQStatusBar().ClassName();
 		}
 		public QStatusBar(QWidget parent, string name) : this((Type) null) {
-			CreateQStatusBarProxy();
-			CreateQStatusBarSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQStatusBar(parent,name);
 		}
 		[SmokeMethod("QStatusBar(QWidget*, const char*)")]
@@ -49,8 +49,8 @@ namespace Qt {
 			ProxyQStatusBar().NewQStatusBar(parent,name);
 		}
 		public QStatusBar(QWidget parent) : this((Type) null) {
-			CreateQStatusBarProxy();
-			CreateQStatusBarSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQStatusBar(parent);
 		}
 		[SmokeMethod("QStatusBar(QWidget*)")]
@@ -58,8 +58,8 @@ namespace Qt {
 			ProxyQStatusBar().NewQStatusBar(parent);
 		}
 		public QStatusBar() : this((Type) null) {
-			CreateQStatusBarProxy();
-			CreateQStatusBarSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQStatusBar();
 		}
 		[SmokeMethod("QStatusBar()")]
@@ -150,7 +150,7 @@ namespace Qt {
 		private void DisposeQStatusBar() {
 			ProxyQStatusBar().DisposeQStatusBar();
 		}
-		protected void CreateQStatusBarSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQStatusBarSignals), this);
 			Q_EMIT = (IQStatusBarSignals) realProxy.GetTransparentProxy();
 		}

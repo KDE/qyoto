@@ -14,7 +14,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQProgressBarProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QProgressBar), this);
 			_interceptor = (QProgressBar) realProxy.GetTransparentProxy();
 		}
@@ -39,8 +39,8 @@ namespace Qt {
 			return ProxyQProgressBar().ClassName();
 		}
 		public QProgressBar(QWidget parent, string name, int f) : this((Type) null) {
-			CreateQProgressBarProxy();
-			CreateQProgressBarSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQProgressBar(parent,name,f);
 		}
 		[SmokeMethod("QProgressBar(QWidget*, const char*, Qt::WFlags)")]
@@ -48,8 +48,8 @@ namespace Qt {
 			ProxyQProgressBar().NewQProgressBar(parent,name,f);
 		}
 		public QProgressBar(QWidget parent, string name) : this((Type) null) {
-			CreateQProgressBarProxy();
-			CreateQProgressBarSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQProgressBar(parent,name);
 		}
 		[SmokeMethod("QProgressBar(QWidget*, const char*)")]
@@ -57,8 +57,8 @@ namespace Qt {
 			ProxyQProgressBar().NewQProgressBar(parent,name);
 		}
 		public QProgressBar(QWidget parent) : this((Type) null) {
-			CreateQProgressBarProxy();
-			CreateQProgressBarSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQProgressBar(parent);
 		}
 		[SmokeMethod("QProgressBar(QWidget*)")]
@@ -66,8 +66,8 @@ namespace Qt {
 			ProxyQProgressBar().NewQProgressBar(parent);
 		}
 		public QProgressBar() : this((Type) null) {
-			CreateQProgressBarProxy();
-			CreateQProgressBarSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQProgressBar();
 		}
 		[SmokeMethod("QProgressBar()")]
@@ -75,8 +75,8 @@ namespace Qt {
 			ProxyQProgressBar().NewQProgressBar();
 		}
 		public QProgressBar(int totalSteps, QWidget parent, string name, int f) : this((Type) null) {
-			CreateQProgressBarProxy();
-			CreateQProgressBarSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQProgressBar(totalSteps,parent,name,f);
 		}
 		[SmokeMethod("QProgressBar(int, QWidget*, const char*, Qt::WFlags)")]
@@ -84,8 +84,8 @@ namespace Qt {
 			ProxyQProgressBar().NewQProgressBar(totalSteps,parent,name,f);
 		}
 		public QProgressBar(int totalSteps, QWidget parent, string name) : this((Type) null) {
-			CreateQProgressBarProxy();
-			CreateQProgressBarSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQProgressBar(totalSteps,parent,name);
 		}
 		[SmokeMethod("QProgressBar(int, QWidget*, const char*)")]
@@ -93,8 +93,8 @@ namespace Qt {
 			ProxyQProgressBar().NewQProgressBar(totalSteps,parent,name);
 		}
 		public QProgressBar(int totalSteps, QWidget parent) : this((Type) null) {
-			CreateQProgressBarProxy();
-			CreateQProgressBarSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQProgressBar(totalSteps,parent);
 		}
 		[SmokeMethod("QProgressBar(int, QWidget*)")]
@@ -102,8 +102,8 @@ namespace Qt {
 			ProxyQProgressBar().NewQProgressBar(totalSteps,parent);
 		}
 		public QProgressBar(int totalSteps) : this((Type) null) {
-			CreateQProgressBarProxy();
-			CreateQProgressBarSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQProgressBar(totalSteps);
 		}
 		[SmokeMethod("QProgressBar(int)")]
@@ -215,7 +215,7 @@ namespace Qt {
 		private void DisposeQProgressBar() {
 			ProxyQProgressBar().DisposeQProgressBar();
 		}
-		protected void CreateQProgressBarSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQProgressBarSignals), this);
 			Q_EMIT = (IQProgressBarSignals) realProxy.GetTransparentProxy();
 		}

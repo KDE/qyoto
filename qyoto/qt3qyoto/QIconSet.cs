@@ -15,7 +15,7 @@ namespace Qt {
 			QSize IconSize(QIconSet.Size which);
 		}
 
-		protected void CreateQIconSetProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QIconSet), this);
 			_interceptor = (QIconSet) realProxy.GetTransparentProxy();
 		}
@@ -46,7 +46,7 @@ namespace Qt {
 			Off = 1,
 		}
 		public QIconSet() : this((Type) null) {
-			CreateQIconSetProxy();
+			CreateProxy();
 			NewQIconSet();
 		}
 		[SmokeMethod("QIconSet()")]
@@ -54,7 +54,7 @@ namespace Qt {
 			ProxyQIconSet().NewQIconSet();
 		}
 		public QIconSet(QPixmap pixmap, QIconSet.Size size) : this((Type) null) {
-			CreateQIconSetProxy();
+			CreateProxy();
 			NewQIconSet(pixmap,size);
 		}
 		[SmokeMethod("QIconSet(const QPixmap&, QIconSet::Size)")]
@@ -62,7 +62,7 @@ namespace Qt {
 			ProxyQIconSet().NewQIconSet(pixmap,size);
 		}
 		public QIconSet(QPixmap pixmap) : this((Type) null) {
-			CreateQIconSetProxy();
+			CreateProxy();
 			NewQIconSet(pixmap);
 		}
 		[SmokeMethod("QIconSet(const QPixmap&)")]
@@ -70,7 +70,7 @@ namespace Qt {
 			ProxyQIconSet().NewQIconSet(pixmap);
 		}
 		public QIconSet(QPixmap smallPix, QPixmap largePix) : this((Type) null) {
-			CreateQIconSetProxy();
+			CreateProxy();
 			NewQIconSet(smallPix,largePix);
 		}
 		[SmokeMethod("QIconSet(const QPixmap&, const QPixmap&)")]
@@ -78,7 +78,7 @@ namespace Qt {
 			ProxyQIconSet().NewQIconSet(smallPix,largePix);
 		}
 		public QIconSet(QIconSet other) : this((Type) null) {
-			CreateQIconSetProxy();
+			CreateProxy();
 			NewQIconSet(other);
 		}
 		[SmokeMethod("QIconSet(const QIconSet&)")]

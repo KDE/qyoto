@@ -13,7 +13,7 @@ namespace Qt {
 		interface IQXmlInputSourceProxy {
 		}
 
-		protected void CreateQXmlInputSourceProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlInputSource), this);
 			_interceptor = (QXmlInputSource) realProxy.GetTransparentProxy();
 		}
@@ -30,7 +30,7 @@ namespace Qt {
 		}
 
 		public QXmlInputSource() : this((Type) null) {
-			CreateQXmlInputSourceProxy();
+			CreateProxy();
 			NewQXmlInputSource();
 		}
 		[SmokeMethod("QXmlInputSource()")]
@@ -38,7 +38,7 @@ namespace Qt {
 			ProxyQXmlInputSource().NewQXmlInputSource();
 		}
 		public QXmlInputSource(IQIODevice dev) : this((Type) null) {
-			CreateQXmlInputSourceProxy();
+			CreateProxy();
 			NewQXmlInputSource(dev);
 		}
 		[SmokeMethod("QXmlInputSource(QIODevice*)")]
@@ -46,7 +46,7 @@ namespace Qt {
 			ProxyQXmlInputSource().NewQXmlInputSource(dev);
 		}
 		public QXmlInputSource(QFile file) : this((Type) null) {
-			CreateQXmlInputSourceProxy();
+			CreateProxy();
 			NewQXmlInputSource(file);
 		}
 		[SmokeMethod("QXmlInputSource(QFile&)")]
@@ -54,7 +54,7 @@ namespace Qt {
 			ProxyQXmlInputSource().NewQXmlInputSource(file);
 		}
 		public QXmlInputSource(QTextStream stream) : this((Type) null) {
-			CreateQXmlInputSourceProxy();
+			CreateProxy();
 			NewQXmlInputSource(stream);
 		}
 		[SmokeMethod("QXmlInputSource(QTextStream&)")]

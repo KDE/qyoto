@@ -14,7 +14,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQDoubleValidatorProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDoubleValidator), this);
 			_interceptor = (QDoubleValidator) realProxy.GetTransparentProxy();
 		}
@@ -39,8 +39,8 @@ namespace Qt {
 			return ProxyQDoubleValidator().ClassName();
 		}
 		public QDoubleValidator(QObject parent, string name) : this((Type) null) {
-			CreateQDoubleValidatorProxy();
-			CreateQDoubleValidatorSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQDoubleValidator(parent,name);
 		}
 		[SmokeMethod("QDoubleValidator(QObject*, const char*)")]
@@ -48,8 +48,8 @@ namespace Qt {
 			ProxyQDoubleValidator().NewQDoubleValidator(parent,name);
 		}
 		public QDoubleValidator(QObject parent) : this((Type) null) {
-			CreateQDoubleValidatorProxy();
-			CreateQDoubleValidatorSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQDoubleValidator(parent);
 		}
 		[SmokeMethod("QDoubleValidator(QObject*)")]
@@ -57,8 +57,8 @@ namespace Qt {
 			ProxyQDoubleValidator().NewQDoubleValidator(parent);
 		}
 		public QDoubleValidator(double bottom, double top, int decimals, QObject parent, string name) : this((Type) null) {
-			CreateQDoubleValidatorProxy();
-			CreateQDoubleValidatorSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQDoubleValidator(bottom,top,decimals,parent,name);
 		}
 		[SmokeMethod("QDoubleValidator(double, double, int, QObject*, const char*)")]
@@ -66,8 +66,8 @@ namespace Qt {
 			ProxyQDoubleValidator().NewQDoubleValidator(bottom,top,decimals,parent,name);
 		}
 		public QDoubleValidator(double bottom, double top, int decimals, QObject parent) : this((Type) null) {
-			CreateQDoubleValidatorProxy();
-			CreateQDoubleValidatorSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQDoubleValidator(bottom,top,decimals,parent);
 		}
 		[SmokeMethod("QDoubleValidator(double, double, int, QObject*)")]
@@ -135,7 +135,7 @@ namespace Qt {
 		private void DisposeQDoubleValidator() {
 			ProxyQDoubleValidator().DisposeQDoubleValidator();
 		}
-		protected void CreateQDoubleValidatorSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQDoubleValidatorSignals), this);
 			Q_EMIT = (IQDoubleValidatorSignals) realProxy.GetTransparentProxy();
 		}

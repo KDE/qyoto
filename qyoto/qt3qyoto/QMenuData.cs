@@ -104,7 +104,7 @@ namespace Qt {
 		interface IQMenuDataProxy {
 		}
 
-		protected void CreateQMenuDataProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMenuData), this);
 			_interceptor = (QMenuData) realProxy.GetTransparentProxy();
 		}
@@ -121,7 +121,7 @@ namespace Qt {
 		}
 
 		public QMenuData() : this((Type) null) {
-			CreateQMenuDataProxy();
+			CreateProxy();
 			NewQMenuData();
 		}
 		[SmokeMethod("QMenuData()")]

@@ -15,7 +15,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQMainWindowProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMainWindow), this);
 			_interceptor = (QMainWindow) realProxy.GetTransparentProxy();
 		}
@@ -45,8 +45,8 @@ namespace Qt {
 			return ProxyQMainWindow().ClassName();
 		}
 		public QMainWindow(QWidget parent, string name, int f) : this((Type) null) {
-			CreateQMainWindowProxy();
-			CreateQMainWindowSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQMainWindow(parent,name,f);
 		}
 		[SmokeMethod("QMainWindow(QWidget*, const char*, Qt::WFlags)")]
@@ -54,8 +54,8 @@ namespace Qt {
 			ProxyQMainWindow().NewQMainWindow(parent,name,f);
 		}
 		public QMainWindow(QWidget parent, string name) : this((Type) null) {
-			CreateQMainWindowProxy();
-			CreateQMainWindowSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQMainWindow(parent,name);
 		}
 		[SmokeMethod("QMainWindow(QWidget*, const char*)")]
@@ -63,8 +63,8 @@ namespace Qt {
 			ProxyQMainWindow().NewQMainWindow(parent,name);
 		}
 		public QMainWindow(QWidget parent) : this((Type) null) {
-			CreateQMainWindowProxy();
-			CreateQMainWindowSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQMainWindow(parent);
 		}
 		[SmokeMethod("QMainWindow(QWidget*)")]
@@ -72,8 +72,8 @@ namespace Qt {
 			ProxyQMainWindow().NewQMainWindow(parent);
 		}
 		public QMainWindow() : this((Type) null) {
-			CreateQMainWindowProxy();
-			CreateQMainWindowSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQMainWindow();
 		}
 		[SmokeMethod("QMainWindow()")]
@@ -429,7 +429,7 @@ namespace Qt {
 		private void DisposeQMainWindow() {
 			ProxyQMainWindow().DisposeQMainWindow();
 		}
-		protected void CreateQMainWindowSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQMainWindowSignals), this);
 			Q_EMIT = (IQMainWindowSignals) realProxy.GetTransparentProxy();
 		}

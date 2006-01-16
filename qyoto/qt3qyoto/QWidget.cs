@@ -18,7 +18,7 @@ namespace Qt {
 			QWidget Find(ulong arg1);
 		}
 
-		protected void CreateQWidgetProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QWidget), this);
 			_interceptor = (QWidget) realProxy.GetTransparentProxy();
 		}
@@ -56,8 +56,8 @@ namespace Qt {
 			return ProxyQWidget().ClassName();
 		}
 		public QWidget(QWidget parent, string name, int f) : this((Type) null) {
-			CreateQWidgetProxy();
-			CreateQWidgetSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQWidget(parent,name,f);
 		}
 		[SmokeMethod("QWidget(QWidget*, const char*, Qt::WFlags)")]
@@ -65,8 +65,8 @@ namespace Qt {
 			ProxyQWidget().NewQWidget(parent,name,f);
 		}
 		public QWidget(QWidget parent, string name) : this((Type) null) {
-			CreateQWidgetProxy();
-			CreateQWidgetSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQWidget(parent,name);
 		}
 		[SmokeMethod("QWidget(QWidget*, const char*)")]
@@ -74,8 +74,8 @@ namespace Qt {
 			ProxyQWidget().NewQWidget(parent,name);
 		}
 		public QWidget(QWidget parent) : this((Type) null) {
-			CreateQWidgetProxy();
-			CreateQWidgetSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQWidget(parent);
 		}
 		[SmokeMethod("QWidget(QWidget*)")]
@@ -83,8 +83,8 @@ namespace Qt {
 			ProxyQWidget().NewQWidget(parent);
 		}
 		public QWidget() : this((Type) null) {
-			CreateQWidgetProxy();
-			CreateQWidgetSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQWidget();
 		}
 		[SmokeMethod("QWidget()")]
@@ -1287,7 +1287,7 @@ namespace Qt {
 			return ProxyQWidget().FontInf(arg1,arg2);
 		}
 
-		protected void CreateQWidgetSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQWidgetSignals), this);
 			Q_EMIT = (IQWidgetSignals) realProxy.GetTransparentProxy();
 		}

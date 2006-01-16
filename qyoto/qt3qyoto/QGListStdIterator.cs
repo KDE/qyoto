@@ -12,7 +12,7 @@ namespace Qt {
 		interface IQGListStdIteratorProxy {
 		}
 
-		protected void CreateQGListStdIteratorProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGListStdIterator), this);
 			_interceptor = (QGListStdIterator) realProxy.GetTransparentProxy();
 		}
@@ -29,7 +29,7 @@ namespace Qt {
 		}
 
 		public QGListStdIterator(QLNode n) : this((Type) null) {
-			CreateQGListStdIteratorProxy();
+			CreateProxy();
 			NewQGListStdIterator(n);
 		}
 		[SmokeMethod("QGListStdIterator(QLNode*)")]

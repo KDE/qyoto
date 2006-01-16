@@ -14,7 +14,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQPushButtonProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPushButton), this);
 			_interceptor = (QPushButton) realProxy.GetTransparentProxy();
 		}
@@ -39,8 +39,8 @@ namespace Qt {
 			return ProxyQPushButton().ClassName();
 		}
 		public QPushButton(QWidget parent, string name) : this((Type) null) {
-			CreateQPushButtonProxy();
-			CreateQPushButtonSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQPushButton(parent,name);
 		}
 		[SmokeMethod("QPushButton(QWidget*, const char*)")]
@@ -48,8 +48,8 @@ namespace Qt {
 			ProxyQPushButton().NewQPushButton(parent,name);
 		}
 		public QPushButton(QWidget parent) : this((Type) null) {
-			CreateQPushButtonProxy();
-			CreateQPushButtonSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQPushButton(parent);
 		}
 		[SmokeMethod("QPushButton(QWidget*)")]
@@ -57,8 +57,8 @@ namespace Qt {
 			ProxyQPushButton().NewQPushButton(parent);
 		}
 		public QPushButton(string text, QWidget parent, string name) : this((Type) null) {
-			CreateQPushButtonProxy();
-			CreateQPushButtonSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQPushButton(text,parent,name);
 		}
 		[SmokeMethod("QPushButton(const QString&, QWidget*, const char*)")]
@@ -66,8 +66,8 @@ namespace Qt {
 			ProxyQPushButton().NewQPushButton(text,parent,name);
 		}
 		public QPushButton(string text, QWidget parent) : this((Type) null) {
-			CreateQPushButtonProxy();
-			CreateQPushButtonSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQPushButton(text,parent);
 		}
 		[SmokeMethod("QPushButton(const QString&, QWidget*)")]
@@ -75,8 +75,8 @@ namespace Qt {
 			ProxyQPushButton().NewQPushButton(text,parent);
 		}
 		public QPushButton(QIconSet icon, string text, QWidget parent, string name) : this((Type) null) {
-			CreateQPushButtonProxy();
-			CreateQPushButtonSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQPushButton(icon,text,parent,name);
 		}
 		[SmokeMethod("QPushButton(const QIconSet&, const QString&, QWidget*, const char*)")]
@@ -84,8 +84,8 @@ namespace Qt {
 			ProxyQPushButton().NewQPushButton(icon,text,parent,name);
 		}
 		public QPushButton(QIconSet icon, string text, QWidget parent) : this((Type) null) {
-			CreateQPushButtonProxy();
-			CreateQPushButtonSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQPushButton(icon,text,parent);
 		}
 		[SmokeMethod("QPushButton(const QIconSet&, const QString&, QWidget*)")]
@@ -226,7 +226,7 @@ namespace Qt {
 		private void DisposeQPushButton() {
 			ProxyQPushButton().DisposeQPushButton();
 		}
-		protected void CreateQPushButtonSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQPushButtonSignals), this);
 			Q_EMIT = (IQPushButtonSignals) realProxy.GetTransparentProxy();
 		}

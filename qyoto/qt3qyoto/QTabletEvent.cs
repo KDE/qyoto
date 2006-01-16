@@ -9,7 +9,7 @@ namespace Qt {
 		interface IQTabletEventProxy {
 		}
 
-		protected void CreateQTabletEventProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTabletEvent), this);
 			_interceptor = (QTabletEvent) realProxy.GetTransparentProxy();
 		}

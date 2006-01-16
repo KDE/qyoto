@@ -14,7 +14,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQToolBarProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QToolBar), this);
 			_interceptor = (QToolBar) realProxy.GetTransparentProxy();
 		}
@@ -39,8 +39,8 @@ namespace Qt {
 			return ProxyQToolBar().ClassName();
 		}
 		public QToolBar(string label, QMainWindow arg2, int arg3, bool newLine, string name) : this((Type) null) {
-			CreateQToolBarProxy();
-			CreateQToolBarSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQToolBar(label,arg2,arg3,newLine,name);
 		}
 		[SmokeMethod("QToolBar(const QString&, QMainWindow*, Qt::ToolBarDock, bool, const char*)")]
@@ -48,8 +48,8 @@ namespace Qt {
 			ProxyQToolBar().NewQToolBar(label,arg2,arg3,newLine,name);
 		}
 		public QToolBar(string label, QMainWindow arg2, int arg3, bool newLine) : this((Type) null) {
-			CreateQToolBarProxy();
-			CreateQToolBarSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQToolBar(label,arg2,arg3,newLine);
 		}
 		[SmokeMethod("QToolBar(const QString&, QMainWindow*, Qt::ToolBarDock, bool)")]
@@ -57,8 +57,8 @@ namespace Qt {
 			ProxyQToolBar().NewQToolBar(label,arg2,arg3,newLine);
 		}
 		public QToolBar(string label, QMainWindow arg2, int arg3) : this((Type) null) {
-			CreateQToolBarProxy();
-			CreateQToolBarSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQToolBar(label,arg2,arg3);
 		}
 		[SmokeMethod("QToolBar(const QString&, QMainWindow*, Qt::ToolBarDock)")]
@@ -66,8 +66,8 @@ namespace Qt {
 			ProxyQToolBar().NewQToolBar(label,arg2,arg3);
 		}
 		public QToolBar(string label, QMainWindow arg2) : this((Type) null) {
-			CreateQToolBarProxy();
-			CreateQToolBarSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQToolBar(label,arg2);
 		}
 		[SmokeMethod("QToolBar(const QString&, QMainWindow*)")]
@@ -75,8 +75,8 @@ namespace Qt {
 			ProxyQToolBar().NewQToolBar(label,arg2);
 		}
 		public QToolBar(string label, QMainWindow arg2, QWidget arg3, bool newLine, string name, int f) : this((Type) null) {
-			CreateQToolBarProxy();
-			CreateQToolBarSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQToolBar(label,arg2,arg3,newLine,name,f);
 		}
 		[SmokeMethod("QToolBar(const QString&, QMainWindow*, QWidget*, bool, const char*, Qt::WFlags)")]
@@ -84,8 +84,8 @@ namespace Qt {
 			ProxyQToolBar().NewQToolBar(label,arg2,arg3,newLine,name,f);
 		}
 		public QToolBar(string label, QMainWindow arg2, QWidget arg3, bool newLine, string name) : this((Type) null) {
-			CreateQToolBarProxy();
-			CreateQToolBarSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQToolBar(label,arg2,arg3,newLine,name);
 		}
 		[SmokeMethod("QToolBar(const QString&, QMainWindow*, QWidget*, bool, const char*)")]
@@ -93,8 +93,8 @@ namespace Qt {
 			ProxyQToolBar().NewQToolBar(label,arg2,arg3,newLine,name);
 		}
 		public QToolBar(string label, QMainWindow arg2, QWidget arg3, bool newLine) : this((Type) null) {
-			CreateQToolBarProxy();
-			CreateQToolBarSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQToolBar(label,arg2,arg3,newLine);
 		}
 		[SmokeMethod("QToolBar(const QString&, QMainWindow*, QWidget*, bool)")]
@@ -102,8 +102,8 @@ namespace Qt {
 			ProxyQToolBar().NewQToolBar(label,arg2,arg3,newLine);
 		}
 		public QToolBar(string label, QMainWindow arg2, QWidget arg3) : this((Type) null) {
-			CreateQToolBarProxy();
-			CreateQToolBarSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQToolBar(label,arg2,arg3);
 		}
 		[SmokeMethod("QToolBar(const QString&, QMainWindow*, QWidget*)")]
@@ -111,8 +111,8 @@ namespace Qt {
 			ProxyQToolBar().NewQToolBar(label,arg2,arg3);
 		}
 		public QToolBar(QMainWindow parent, string name) : this((Type) null) {
-			CreateQToolBarProxy();
-			CreateQToolBarSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQToolBar(parent,name);
 		}
 		[SmokeMethod("QToolBar(QMainWindow*, const char*)")]
@@ -120,8 +120,8 @@ namespace Qt {
 			ProxyQToolBar().NewQToolBar(parent,name);
 		}
 		public QToolBar(QMainWindow parent) : this((Type) null) {
-			CreateQToolBarProxy();
-			CreateQToolBarSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQToolBar(parent);
 		}
 		[SmokeMethod("QToolBar(QMainWindow*)")]
@@ -129,8 +129,8 @@ namespace Qt {
 			ProxyQToolBar().NewQToolBar(parent);
 		}
 		public QToolBar() : this((Type) null) {
-			CreateQToolBarProxy();
-			CreateQToolBarSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQToolBar();
 		}
 		[SmokeMethod("QToolBar()")]
@@ -222,7 +222,7 @@ namespace Qt {
 		private void DisposeQToolBar() {
 			ProxyQToolBar().DisposeQToolBar();
 		}
-		protected void CreateQToolBarSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQToolBarSignals), this);
 			Q_EMIT = (IQToolBarSignals) realProxy.GetTransparentProxy();
 		}

@@ -14,7 +14,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQCheckBoxProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QCheckBox), this);
 			_interceptor = (QCheckBox) realProxy.GetTransparentProxy();
 		}
@@ -39,8 +39,8 @@ namespace Qt {
 			return ProxyQCheckBox().ClassName();
 		}
 		public QCheckBox(QWidget parent, string name) : this((Type) null) {
-			CreateQCheckBoxProxy();
-			CreateQCheckBoxSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQCheckBox(parent,name);
 		}
 		[SmokeMethod("QCheckBox(QWidget*, const char*)")]
@@ -48,8 +48,8 @@ namespace Qt {
 			ProxyQCheckBox().NewQCheckBox(parent,name);
 		}
 		public QCheckBox(QWidget parent) : this((Type) null) {
-			CreateQCheckBoxProxy();
-			CreateQCheckBoxSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQCheckBox(parent);
 		}
 		[SmokeMethod("QCheckBox(QWidget*)")]
@@ -57,8 +57,8 @@ namespace Qt {
 			ProxyQCheckBox().NewQCheckBox(parent);
 		}
 		public QCheckBox(string text, QWidget parent, string name) : this((Type) null) {
-			CreateQCheckBoxProxy();
-			CreateQCheckBoxSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQCheckBox(text,parent,name);
 		}
 		[SmokeMethod("QCheckBox(const QString&, QWidget*, const char*)")]
@@ -66,8 +66,8 @@ namespace Qt {
 			ProxyQCheckBox().NewQCheckBox(text,parent,name);
 		}
 		public QCheckBox(string text, QWidget parent) : this((Type) null) {
-			CreateQCheckBoxProxy();
-			CreateQCheckBoxSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQCheckBox(text,parent);
 		}
 		[SmokeMethod("QCheckBox(const QString&, QWidget*)")]
@@ -148,7 +148,7 @@ namespace Qt {
 		private void DisposeQCheckBox() {
 			ProxyQCheckBox().DisposeQCheckBox();
 		}
-		protected void CreateQCheckBoxSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQCheckBoxSignals), this);
 			Q_EMIT = (IQCheckBoxSignals) realProxy.GetTransparentProxy();
 		}

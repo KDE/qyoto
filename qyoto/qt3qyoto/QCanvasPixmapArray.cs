@@ -14,7 +14,7 @@ namespace Qt {
 			bool op_not(QCanvasPixmapArray lhs);
 		}
 
-		protected void CreateQCanvasPixmapArrayProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QCanvasPixmapArray), this);
 			_interceptor = (QCanvasPixmapArray) realProxy.GetTransparentProxy();
 		}
@@ -31,7 +31,7 @@ namespace Qt {
 		}
 
 		public QCanvasPixmapArray() : this((Type) null) {
-			CreateQCanvasPixmapArrayProxy();
+			CreateProxy();
 			NewQCanvasPixmapArray();
 		}
 		[SmokeMethod("QCanvasPixmapArray()")]
@@ -39,7 +39,7 @@ namespace Qt {
 			ProxyQCanvasPixmapArray().NewQCanvasPixmapArray();
 		}
 		public QCanvasPixmapArray(string datafilenamepattern, int framecount) : this((Type) null) {
-			CreateQCanvasPixmapArrayProxy();
+			CreateProxy();
 			NewQCanvasPixmapArray(datafilenamepattern,framecount);
 		}
 		[SmokeMethod("QCanvasPixmapArray(const QString&, int)")]
@@ -47,7 +47,7 @@ namespace Qt {
 			ProxyQCanvasPixmapArray().NewQCanvasPixmapArray(datafilenamepattern,framecount);
 		}
 		public QCanvasPixmapArray(string datafilenamepattern) : this((Type) null) {
-			CreateQCanvasPixmapArrayProxy();
+			CreateProxy();
 			NewQCanvasPixmapArray(datafilenamepattern);
 		}
 		[SmokeMethod("QCanvasPixmapArray(const QString&)")]

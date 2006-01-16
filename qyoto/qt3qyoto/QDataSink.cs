@@ -9,7 +9,7 @@ namespace Qt {
 		interface IQDataSinkProxy {
 		}
 
-		protected void CreateQDataSinkProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDataSink), this);
 			_interceptor = (QDataSink) realProxy.GetTransparentProxy();
 		}
@@ -42,7 +42,7 @@ namespace Qt {
 			ProxyQDataSink().MaybeReady();
 		}
 		public QDataSink() : this((Type) null) {
-			CreateQDataSinkProxy();
+			CreateProxy();
 			NewQDataSink();
 		}
 		[SmokeMethod("QDataSink()")]

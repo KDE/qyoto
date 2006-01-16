@@ -12,7 +12,7 @@ namespace Qt {
 		interface IQDropSiteProxy {
 		}
 
-		protected void CreateQDropSiteProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDropSite), this);
 			_interceptor = (QDropSite) realProxy.GetTransparentProxy();
 		}
@@ -29,7 +29,7 @@ namespace Qt {
 		}
 
 		public QDropSite(QWidget parent) : this((Type) null) {
-			CreateQDropSiteProxy();
+			CreateProxy();
 			NewQDropSite(parent);
 		}
 		[SmokeMethod("QDropSite(QWidget*)")]

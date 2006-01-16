@@ -12,7 +12,7 @@ namespace Qt {
 		interface IQPtrCollectionProxy {
 		}
 
-		protected void CreateQPtrCollectionProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPtrCollection), this);
 			_interceptor = (QPtrCollection) realProxy.GetTransparentProxy();
 		}

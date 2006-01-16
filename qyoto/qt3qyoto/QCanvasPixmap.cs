@@ -10,7 +10,7 @@ namespace Qt {
 		interface IQCanvasPixmapProxy {
 		}
 
-		protected void CreateQCanvasPixmapProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QCanvasPixmap), this);
 			_interceptor = (QCanvasPixmap) realProxy.GetTransparentProxy();
 		}
@@ -27,7 +27,7 @@ namespace Qt {
 		}
 
 		public QCanvasPixmap(string datafilename) : this((Type) null) {
-			CreateQCanvasPixmapProxy();
+			CreateProxy();
 			NewQCanvasPixmap(datafilename);
 		}
 		[SmokeMethod("QCanvasPixmap(const QString&)")]
@@ -35,7 +35,7 @@ namespace Qt {
 			ProxyQCanvasPixmap().NewQCanvasPixmap(datafilename);
 		}
 		public QCanvasPixmap(QImage image) : this((Type) null) {
-			CreateQCanvasPixmapProxy();
+			CreateProxy();
 			NewQCanvasPixmap(image);
 		}
 		[SmokeMethod("QCanvasPixmap(const QImage&)")]
@@ -43,7 +43,7 @@ namespace Qt {
 			ProxyQCanvasPixmap().NewQCanvasPixmap(image);
 		}
 		public QCanvasPixmap(QPixmap arg1, QPoint hotspot) : this((Type) null) {
-			CreateQCanvasPixmapProxy();
+			CreateProxy();
 			NewQCanvasPixmap(arg1,hotspot);
 		}
 		[SmokeMethod("QCanvasPixmap(const QPixmap&, const QPoint&)")]

@@ -15,7 +15,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQButtonGroupProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QButtonGroup), this);
 			_interceptor = (QButtonGroup) realProxy.GetTransparentProxy();
 		}
@@ -40,8 +40,8 @@ namespace Qt {
 			return ProxyQButtonGroup().ClassName();
 		}
 		public QButtonGroup(QWidget parent, string name) : this((Type) null) {
-			CreateQButtonGroupProxy();
-			CreateQButtonGroupSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQButtonGroup(parent,name);
 		}
 		[SmokeMethod("QButtonGroup(QWidget*, const char*)")]
@@ -49,8 +49,8 @@ namespace Qt {
 			ProxyQButtonGroup().NewQButtonGroup(parent,name);
 		}
 		public QButtonGroup(QWidget parent) : this((Type) null) {
-			CreateQButtonGroupProxy();
-			CreateQButtonGroupSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQButtonGroup(parent);
 		}
 		[SmokeMethod("QButtonGroup(QWidget*)")]
@@ -58,8 +58,8 @@ namespace Qt {
 			ProxyQButtonGroup().NewQButtonGroup(parent);
 		}
 		public QButtonGroup() : this((Type) null) {
-			CreateQButtonGroupProxy();
-			CreateQButtonGroupSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQButtonGroup();
 		}
 		[SmokeMethod("QButtonGroup()")]
@@ -67,8 +67,8 @@ namespace Qt {
 			ProxyQButtonGroup().NewQButtonGroup();
 		}
 		public QButtonGroup(string title, QWidget parent, string name) : this((Type) null) {
-			CreateQButtonGroupProxy();
-			CreateQButtonGroupSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQButtonGroup(title,parent,name);
 		}
 		[SmokeMethod("QButtonGroup(const QString&, QWidget*, const char*)")]
@@ -76,8 +76,8 @@ namespace Qt {
 			ProxyQButtonGroup().NewQButtonGroup(title,parent,name);
 		}
 		public QButtonGroup(string title, QWidget parent) : this((Type) null) {
-			CreateQButtonGroupProxy();
-			CreateQButtonGroupSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQButtonGroup(title,parent);
 		}
 		[SmokeMethod("QButtonGroup(const QString&, QWidget*)")]
@@ -85,8 +85,8 @@ namespace Qt {
 			ProxyQButtonGroup().NewQButtonGroup(title,parent);
 		}
 		public QButtonGroup(string title) : this((Type) null) {
-			CreateQButtonGroupProxy();
-			CreateQButtonGroupSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQButtonGroup(title);
 		}
 		[SmokeMethod("QButtonGroup(const QString&)")]
@@ -94,8 +94,8 @@ namespace Qt {
 			ProxyQButtonGroup().NewQButtonGroup(title);
 		}
 		public QButtonGroup(int columns, Qt.Orientation o, QWidget parent, string name) : this((Type) null) {
-			CreateQButtonGroupProxy();
-			CreateQButtonGroupSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQButtonGroup(columns,o,parent,name);
 		}
 		[SmokeMethod("QButtonGroup(int, Qt::Orientation, QWidget*, const char*)")]
@@ -103,8 +103,8 @@ namespace Qt {
 			ProxyQButtonGroup().NewQButtonGroup(columns,o,parent,name);
 		}
 		public QButtonGroup(int columns, Qt.Orientation o, QWidget parent) : this((Type) null) {
-			CreateQButtonGroupProxy();
-			CreateQButtonGroupSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQButtonGroup(columns,o,parent);
 		}
 		[SmokeMethod("QButtonGroup(int, Qt::Orientation, QWidget*)")]
@@ -112,8 +112,8 @@ namespace Qt {
 			ProxyQButtonGroup().NewQButtonGroup(columns,o,parent);
 		}
 		public QButtonGroup(int columns, Qt.Orientation o) : this((Type) null) {
-			CreateQButtonGroupProxy();
-			CreateQButtonGroupSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQButtonGroup(columns,o);
 		}
 		[SmokeMethod("QButtonGroup(int, Qt::Orientation)")]
@@ -121,8 +121,8 @@ namespace Qt {
 			ProxyQButtonGroup().NewQButtonGroup(columns,o);
 		}
 		public QButtonGroup(int columns, Qt.Orientation o, string title, QWidget parent, string name) : this((Type) null) {
-			CreateQButtonGroupProxy();
-			CreateQButtonGroupSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQButtonGroup(columns,o,title,parent,name);
 		}
 		[SmokeMethod("QButtonGroup(int, Qt::Orientation, const QString&, QWidget*, const char*)")]
@@ -130,8 +130,8 @@ namespace Qt {
 			ProxyQButtonGroup().NewQButtonGroup(columns,o,title,parent,name);
 		}
 		public QButtonGroup(int columns, Qt.Orientation o, string title, QWidget parent) : this((Type) null) {
-			CreateQButtonGroupProxy();
-			CreateQButtonGroupSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQButtonGroup(columns,o,title,parent);
 		}
 		[SmokeMethod("QButtonGroup(int, Qt::Orientation, const QString&, QWidget*)")]
@@ -139,8 +139,8 @@ namespace Qt {
 			ProxyQButtonGroup().NewQButtonGroup(columns,o,title,parent);
 		}
 		public QButtonGroup(int columns, Qt.Orientation o, string title) : this((Type) null) {
-			CreateQButtonGroupProxy();
-			CreateQButtonGroupSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQButtonGroup(columns,o,title);
 		}
 		[SmokeMethod("QButtonGroup(int, Qt::Orientation, const QString&)")]
@@ -252,7 +252,7 @@ namespace Qt {
 		private void DisposeQButtonGroup() {
 			ProxyQButtonGroup().DisposeQButtonGroup();
 		}
-		protected void CreateQButtonGroupSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQButtonGroupSignals), this);
 			Q_EMIT = (IQButtonGroupSignals) realProxy.GetTransparentProxy();
 		}

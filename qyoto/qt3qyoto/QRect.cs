@@ -14,7 +14,7 @@ namespace Qt {
 			QRect op_and(QRect lhs, QRect r);
 		}
 
-		protected void CreateQRectProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QRect), this);
 			_interceptor = (QRect) realProxy.GetTransparentProxy();
 		}
@@ -31,7 +31,7 @@ namespace Qt {
 		}
 
 		public QRect() : this((Type) null) {
-			CreateQRectProxy();
+			CreateProxy();
 			NewQRect();
 		}
 		[SmokeMethod("QRect()")]
@@ -39,7 +39,7 @@ namespace Qt {
 			ProxyQRect().NewQRect();
 		}
 		public QRect(QPoint topleft, QPoint bottomright) : this((Type) null) {
-			CreateQRectProxy();
+			CreateProxy();
 			NewQRect(topleft,bottomright);
 		}
 		[SmokeMethod("QRect(const QPoint&, const QPoint&)")]
@@ -47,7 +47,7 @@ namespace Qt {
 			ProxyQRect().NewQRect(topleft,bottomright);
 		}
 		public QRect(QPoint topleft, QSize size) : this((Type) null) {
-			CreateQRectProxy();
+			CreateProxy();
 			NewQRect(topleft,size);
 		}
 		[SmokeMethod("QRect(const QPoint&, const QSize&)")]
@@ -55,7 +55,7 @@ namespace Qt {
 			ProxyQRect().NewQRect(topleft,size);
 		}
 		public QRect(int left, int top, int width, int height) : this((Type) null) {
-			CreateQRectProxy();
+			CreateProxy();
 			NewQRect(left,top,width,height);
 		}
 		[SmokeMethod("QRect(int, int, int, int)")]

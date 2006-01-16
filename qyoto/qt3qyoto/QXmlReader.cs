@@ -13,7 +13,7 @@ namespace Qt {
 		interface IQXmlReaderProxy {
 		}
 
-		protected void CreateQXmlReaderProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlReader), this);
 			_interceptor = (QXmlReader) realProxy.GetTransparentProxy();
 		}
@@ -105,7 +105,7 @@ namespace Qt {
 			return ProxyQXmlReader().Parse(input);
 		}
 		public QXmlReader() : this((Type) null) {
-			CreateQXmlReaderProxy();
+			CreateProxy();
 			NewQXmlReader();
 		}
 		[SmokeMethod("QXmlReader()")]

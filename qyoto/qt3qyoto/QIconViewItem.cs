@@ -10,7 +10,7 @@ namespace Qt {
 		interface IQIconViewItemProxy {
 		}
 
-		protected void CreateQIconViewItemProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QIconViewItem), this);
 			_interceptor = (QIconViewItem) realProxy.GetTransparentProxy();
 		}
@@ -27,7 +27,7 @@ namespace Qt {
 		}
 
 		public QIconViewItem(QIconView parent) : this((Type) null) {
-			CreateQIconViewItemProxy();
+			CreateProxy();
 			NewQIconViewItem(parent);
 		}
 		[SmokeMethod("QIconViewItem(QIconView*)")]
@@ -35,7 +35,7 @@ namespace Qt {
 			ProxyQIconViewItem().NewQIconViewItem(parent);
 		}
 		public QIconViewItem(QIconView parent, QIconViewItem after) : this((Type) null) {
-			CreateQIconViewItemProxy();
+			CreateProxy();
 			NewQIconViewItem(parent,after);
 		}
 		[SmokeMethod("QIconViewItem(QIconView*, QIconViewItem*)")]
@@ -43,7 +43,7 @@ namespace Qt {
 			ProxyQIconViewItem().NewQIconViewItem(parent,after);
 		}
 		public QIconViewItem(QIconView parent, string text) : this((Type) null) {
-			CreateQIconViewItemProxy();
+			CreateProxy();
 			NewQIconViewItem(parent,text);
 		}
 		[SmokeMethod("QIconViewItem(QIconView*, const QString&)")]
@@ -51,7 +51,7 @@ namespace Qt {
 			ProxyQIconViewItem().NewQIconViewItem(parent,text);
 		}
 		public QIconViewItem(QIconView parent, QIconViewItem after, string text) : this((Type) null) {
-			CreateQIconViewItemProxy();
+			CreateProxy();
 			NewQIconViewItem(parent,after,text);
 		}
 		[SmokeMethod("QIconViewItem(QIconView*, QIconViewItem*, const QString&)")]
@@ -59,7 +59,7 @@ namespace Qt {
 			ProxyQIconViewItem().NewQIconViewItem(parent,after,text);
 		}
 		public QIconViewItem(QIconView parent, string text, QPixmap icon) : this((Type) null) {
-			CreateQIconViewItemProxy();
+			CreateProxy();
 			NewQIconViewItem(parent,text,icon);
 		}
 		[SmokeMethod("QIconViewItem(QIconView*, const QString&, const QPixmap&)")]
@@ -67,7 +67,7 @@ namespace Qt {
 			ProxyQIconViewItem().NewQIconViewItem(parent,text,icon);
 		}
 		public QIconViewItem(QIconView parent, QIconViewItem after, string text, QPixmap icon) : this((Type) null) {
-			CreateQIconViewItemProxy();
+			CreateProxy();
 			NewQIconViewItem(parent,after,text,icon);
 		}
 		[SmokeMethod("QIconViewItem(QIconView*, QIconViewItem*, const QString&, const QPixmap&)")]
@@ -75,7 +75,7 @@ namespace Qt {
 			ProxyQIconViewItem().NewQIconViewItem(parent,after,text,icon);
 		}
 		public QIconViewItem(QIconView parent, string text, QPicture picture) : this((Type) null) {
-			CreateQIconViewItemProxy();
+			CreateProxy();
 			NewQIconViewItem(parent,text,picture);
 		}
 		[SmokeMethod("QIconViewItem(QIconView*, const QString&, const QPicture&)")]
@@ -83,7 +83,7 @@ namespace Qt {
 			ProxyQIconViewItem().NewQIconViewItem(parent,text,picture);
 		}
 		public QIconViewItem(QIconView parent, QIconViewItem after, string text, QPicture picture) : this((Type) null) {
-			CreateQIconViewItemProxy();
+			CreateProxy();
 			NewQIconViewItem(parent,after,text,picture);
 		}
 		[SmokeMethod("QIconViewItem(QIconView*, QIconViewItem*, const QString&, const QPicture&)")]

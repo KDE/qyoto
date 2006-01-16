@@ -17,7 +17,7 @@ namespace Qt {
 			bool Available();
 		}
 
-		protected void CreateQSoundProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSound), this);
 			_interceptor = (QSound) realProxy.GetTransparentProxy();
 		}
@@ -42,8 +42,8 @@ namespace Qt {
 			return ProxyQSound().ClassName();
 		}
 		public QSound(string filename, QObject parent, string name) : this((Type) null) {
-			CreateQSoundProxy();
-			CreateQSoundSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQSound(filename,parent,name);
 		}
 		[SmokeMethod("QSound(const QString&, QObject*, const char*)")]
@@ -51,8 +51,8 @@ namespace Qt {
 			ProxyQSound().NewQSound(filename,parent,name);
 		}
 		public QSound(string filename, QObject parent) : this((Type) null) {
-			CreateQSoundProxy();
-			CreateQSoundSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQSound(filename,parent);
 		}
 		[SmokeMethod("QSound(const QString&, QObject*)")]
@@ -60,8 +60,8 @@ namespace Qt {
 			ProxyQSound().NewQSound(filename,parent);
 		}
 		public QSound(string filename) : this((Type) null) {
-			CreateQSoundProxy();
-			CreateQSoundSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQSound(filename);
 		}
 		[SmokeMethod("QSound(const QString&)")]
@@ -135,7 +135,7 @@ namespace Qt {
 		private void DisposeQSound() {
 			ProxyQSound().DisposeQSound();
 		}
-		protected void CreateQSoundSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQSoundSignals), this);
 			Q_EMIT = (IQSoundSignals) realProxy.GetTransparentProxy();
 		}

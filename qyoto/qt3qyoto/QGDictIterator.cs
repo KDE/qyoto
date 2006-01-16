@@ -13,7 +13,7 @@ namespace Qt {
 		interface IQGDictIteratorProxy {
 		}
 
-		protected void CreateQGDictIteratorProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGDictIterator), this);
 			_interceptor = (QGDictIterator) realProxy.GetTransparentProxy();
 		}
@@ -31,7 +31,7 @@ namespace Qt {
 
 		// QGDictIterator* QGDictIterator(const QGDict& arg1); >>>> NOT CONVERTED
 		public QGDictIterator(QGDictIterator arg1) : this((Type) null) {
-			CreateQGDictIteratorProxy();
+			CreateProxy();
 			NewQGDictIterator(arg1);
 		}
 		[SmokeMethod("QGDictIterator(const QGDictIterator&)")]

@@ -9,7 +9,7 @@ namespace Qt {
 		interface IQChildEventProxy {
 		}
 
-		protected void CreateQChildEventProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QChildEvent), this);
 			_interceptor = (QChildEvent) realProxy.GetTransparentProxy();
 		}
@@ -26,7 +26,7 @@ namespace Qt {
 		}
 
 		public QChildEvent(QEvent.E_Type type, QObject child) : this((Type) null) {
-			CreateQChildEventProxy();
+			CreateProxy();
 			NewQChildEvent(type,child);
 		}
 		[SmokeMethod("QChildEvent(QEvent::Type, QObject*)")]

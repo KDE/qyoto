@@ -15,7 +15,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQMenuBarProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMenuBar), this);
 			_interceptor = (QMenuBar) realProxy.GetTransparentProxy();
 		}
@@ -44,8 +44,8 @@ namespace Qt {
 			return ProxyQMenuBar().ClassName();
 		}
 		public QMenuBar(QWidget parent, string name) : this((Type) null) {
-			CreateQMenuBarProxy();
-			CreateQMenuBarSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQMenuBar(parent,name);
 		}
 		[SmokeMethod("QMenuBar(QWidget*, const char*)")]
@@ -53,8 +53,8 @@ namespace Qt {
 			ProxyQMenuBar().NewQMenuBar(parent,name);
 		}
 		public QMenuBar(QWidget parent) : this((Type) null) {
-			CreateQMenuBarProxy();
-			CreateQMenuBarSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQMenuBar(parent);
 		}
 		[SmokeMethod("QMenuBar(QWidget*)")]
@@ -62,8 +62,8 @@ namespace Qt {
 			ProxyQMenuBar().NewQMenuBar(parent);
 		}
 		public QMenuBar() : this((Type) null) {
-			CreateQMenuBarProxy();
-			CreateQMenuBarSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQMenuBar();
 		}
 		[SmokeMethod("QMenuBar()")]
@@ -568,7 +568,7 @@ namespace Qt {
 		protected virtual void MenuDelPopup(QPopupMenu arg1) {
 			ProxyQMenuBar().MenuDelPopup(arg1);
 		}
-		protected void CreateQMenuBarSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQMenuBarSignals), this);
 			Q_EMIT = (IQMenuBarSignals) realProxy.GetTransparentProxy();
 		}

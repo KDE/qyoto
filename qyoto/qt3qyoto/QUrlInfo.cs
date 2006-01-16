@@ -16,7 +16,7 @@ namespace Qt {
 			bool Equal(QUrlInfo i1, QUrlInfo i2, int sortBy);
 		}
 
-		protected void CreateQUrlInfoProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QUrlInfo), this);
 			_interceptor = (QUrlInfo) realProxy.GetTransparentProxy();
 		}
@@ -44,7 +44,7 @@ namespace Qt {
 			ExeOther = 00001,
 		}
 		public QUrlInfo() : this((Type) null) {
-			CreateQUrlInfoProxy();
+			CreateProxy();
 			NewQUrlInfo();
 		}
 		[SmokeMethod("QUrlInfo()")]
@@ -52,7 +52,7 @@ namespace Qt {
 			ProxyQUrlInfo().NewQUrlInfo();
 		}
 		public QUrlInfo(QUrlOperator path, string file) : this((Type) null) {
-			CreateQUrlInfoProxy();
+			CreateProxy();
 			NewQUrlInfo(path,file);
 		}
 		[SmokeMethod("QUrlInfo(const QUrlOperator&, const QString&)")]
@@ -60,7 +60,7 @@ namespace Qt {
 			ProxyQUrlInfo().NewQUrlInfo(path,file);
 		}
 		public QUrlInfo(QUrlInfo ui) : this((Type) null) {
-			CreateQUrlInfoProxy();
+			CreateProxy();
 			NewQUrlInfo(ui);
 		}
 		[SmokeMethod("QUrlInfo(const QUrlInfo&)")]
@@ -68,7 +68,7 @@ namespace Qt {
 			ProxyQUrlInfo().NewQUrlInfo(ui);
 		}
 		public QUrlInfo(string name, int permissions, string owner, string group, ulong size, DateTime lastModified, DateTime lastRead, bool isDir, bool isFile, bool isSymLink, bool isWritable, bool isReadable, bool isExecutable) : this((Type) null) {
-			CreateQUrlInfoProxy();
+			CreateProxy();
 			NewQUrlInfo(name,permissions,owner,group,size,lastModified,lastRead,isDir,isFile,isSymLink,isWritable,isReadable,isExecutable);
 		}
 		[SmokeMethod("QUrlInfo(const QString&, int, const QString&, const QString&, QIODevice::Offset, const QDateTime&, const QDateTime&, bool, bool, bool, bool, bool, bool)")]
@@ -76,7 +76,7 @@ namespace Qt {
 			ProxyQUrlInfo().NewQUrlInfo(name,permissions,owner,group,size,lastModified,lastRead,isDir,isFile,isSymLink,isWritable,isReadable,isExecutable);
 		}
 		public QUrlInfo(IQUrl url, int permissions, string owner, string group, ulong size, DateTime lastModified, DateTime lastRead, bool isDir, bool isFile, bool isSymLink, bool isWritable, bool isReadable, bool isExecutable) : this((Type) null) {
-			CreateQUrlInfoProxy();
+			CreateProxy();
 			NewQUrlInfo(url,permissions,owner,group,size,lastModified,lastRead,isDir,isFile,isSymLink,isWritable,isReadable,isExecutable);
 		}
 		[SmokeMethod("QUrlInfo(const QUrl&, int, const QString&, const QString&, QIODevice::Offset, const QDateTime&, const QDateTime&, bool, bool, bool, bool, bool, bool)")]

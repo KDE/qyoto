@@ -18,7 +18,7 @@ namespace Qt {
 			QLocale System();
 		}
 
-		protected void CreateQLocaleProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QLocale), this);
 			_interceptor = (QLocale) realProxy.GetTransparentProxy();
 		}
@@ -422,7 +422,7 @@ namespace Qt {
 			LastCountry = Zimbabwe,
 		}
 		public QLocale() : this((Type) null) {
-			CreateQLocaleProxy();
+			CreateProxy();
 			NewQLocale();
 		}
 		[SmokeMethod("QLocale()")]
@@ -430,7 +430,7 @@ namespace Qt {
 			ProxyQLocale().NewQLocale();
 		}
 		public QLocale(string name) : this((Type) null) {
-			CreateQLocaleProxy();
+			CreateProxy();
 			NewQLocale(name);
 		}
 		[SmokeMethod("QLocale(const QString&)")]
@@ -438,7 +438,7 @@ namespace Qt {
 			ProxyQLocale().NewQLocale(name);
 		}
 		public QLocale(QLocale.Language language, QLocale.Country country) : this((Type) null) {
-			CreateQLocaleProxy();
+			CreateProxy();
 			NewQLocale(language,country);
 		}
 		[SmokeMethod("QLocale(QLocale::Language, QLocale::Country)")]
@@ -446,7 +446,7 @@ namespace Qt {
 			ProxyQLocale().NewQLocale(language,country);
 		}
 		public QLocale(QLocale.Language language) : this((Type) null) {
-			CreateQLocaleProxy();
+			CreateProxy();
 			NewQLocale(language);
 		}
 		[SmokeMethod("QLocale(QLocale::Language)")]
@@ -454,7 +454,7 @@ namespace Qt {
 			ProxyQLocale().NewQLocale(language);
 		}
 		public QLocale(QLocale other) : this((Type) null) {
-			CreateQLocaleProxy();
+			CreateProxy();
 			NewQLocale(other);
 		}
 		[SmokeMethod("QLocale(const QLocale&)")]

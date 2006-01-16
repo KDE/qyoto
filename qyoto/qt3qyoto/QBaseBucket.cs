@@ -12,7 +12,7 @@ namespace Qt {
 		interface IQBaseBucketProxy {
 		}
 
-		protected void CreateQBaseBucketProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QBaseBucket), this);
 			_interceptor = (QBaseBucket) realProxy.GetTransparentProxy();
 		}

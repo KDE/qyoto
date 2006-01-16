@@ -12,7 +12,7 @@ namespace Qt {
 		interface IQFocusDataProxy {
 		}
 
-		protected void CreateQFocusDataProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFocusData), this);
 			_interceptor = (QFocusData) realProxy.GetTransparentProxy();
 		}

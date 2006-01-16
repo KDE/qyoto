@@ -9,7 +9,7 @@ namespace Qt {
 		interface IQMoveEventProxy {
 		}
 
-		protected void CreateQMoveEventProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMoveEvent), this);
 			_interceptor = (QMoveEvent) realProxy.GetTransparentProxy();
 		}
@@ -26,7 +26,7 @@ namespace Qt {
 		}
 
 		public QMoveEvent(QPoint pos, QPoint oldPos) : this((Type) null) {
-			CreateQMoveEventProxy();
+			CreateProxy();
 			NewQMoveEvent(pos,oldPos);
 		}
 		[SmokeMethod("QMoveEvent(const QPoint&, const QPoint&)")]

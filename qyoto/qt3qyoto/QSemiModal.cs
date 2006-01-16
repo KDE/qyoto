@@ -14,7 +14,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQSemiModalProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSemiModal), this);
 			_interceptor = (QSemiModal) realProxy.GetTransparentProxy();
 		}
@@ -39,8 +39,8 @@ namespace Qt {
 			return ProxyQSemiModal().ClassName();
 		}
 		public QSemiModal(QWidget parent, string name, bool modal, int f) : this((Type) null) {
-			CreateQSemiModalProxy();
-			CreateQSemiModalSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQSemiModal(parent,name,modal,f);
 		}
 		[SmokeMethod("QSemiModal(QWidget*, const char*, bool, Qt::WFlags)")]
@@ -48,8 +48,8 @@ namespace Qt {
 			ProxyQSemiModal().NewQSemiModal(parent,name,modal,f);
 		}
 		public QSemiModal(QWidget parent, string name, bool modal) : this((Type) null) {
-			CreateQSemiModalProxy();
-			CreateQSemiModalSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQSemiModal(parent,name,modal);
 		}
 		[SmokeMethod("QSemiModal(QWidget*, const char*, bool)")]
@@ -57,8 +57,8 @@ namespace Qt {
 			ProxyQSemiModal().NewQSemiModal(parent,name,modal);
 		}
 		public QSemiModal(QWidget parent, string name) : this((Type) null) {
-			CreateQSemiModalProxy();
-			CreateQSemiModalSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQSemiModal(parent,name);
 		}
 		[SmokeMethod("QSemiModal(QWidget*, const char*)")]
@@ -66,8 +66,8 @@ namespace Qt {
 			ProxyQSemiModal().NewQSemiModal(parent,name);
 		}
 		public QSemiModal(QWidget parent) : this((Type) null) {
-			CreateQSemiModalProxy();
-			CreateQSemiModalSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQSemiModal(parent);
 		}
 		[SmokeMethod("QSemiModal(QWidget*)")]
@@ -75,8 +75,8 @@ namespace Qt {
 			ProxyQSemiModal().NewQSemiModal(parent);
 		}
 		public QSemiModal() : this((Type) null) {
-			CreateQSemiModalProxy();
-			CreateQSemiModalSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQSemiModal();
 		}
 		[SmokeMethod("QSemiModal()")]
@@ -108,7 +108,7 @@ namespace Qt {
 		private void DisposeQSemiModal() {
 			ProxyQSemiModal().DisposeQSemiModal();
 		}
-		protected void CreateQSemiModalSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQSemiModalSignals), this);
 			Q_EMIT = (IQSemiModalSignals) realProxy.GetTransparentProxy();
 		}

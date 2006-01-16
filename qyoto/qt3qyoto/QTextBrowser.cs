@@ -15,7 +15,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQTextBrowserProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextBrowser), this);
 			_interceptor = (QTextBrowser) realProxy.GetTransparentProxy();
 		}
@@ -40,8 +40,8 @@ namespace Qt {
 			return ProxyQTextBrowser().ClassName();
 		}
 		public QTextBrowser(QWidget parent, string name) : this((Type) null) {
-			CreateQTextBrowserProxy();
-			CreateQTextBrowserSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQTextBrowser(parent,name);
 		}
 		[SmokeMethod("QTextBrowser(QWidget*, const char*)")]
@@ -49,8 +49,8 @@ namespace Qt {
 			ProxyQTextBrowser().NewQTextBrowser(parent,name);
 		}
 		public QTextBrowser(QWidget parent) : this((Type) null) {
-			CreateQTextBrowserProxy();
-			CreateQTextBrowserSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQTextBrowser(parent);
 		}
 		[SmokeMethod("QTextBrowser(QWidget*)")]
@@ -58,8 +58,8 @@ namespace Qt {
 			ProxyQTextBrowser().NewQTextBrowser(parent);
 		}
 		public QTextBrowser() : this((Type) null) {
-			CreateQTextBrowserProxy();
-			CreateQTextBrowserSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQTextBrowser();
 		}
 		[SmokeMethod("QTextBrowser()")]
@@ -134,7 +134,7 @@ namespace Qt {
 		private void DisposeQTextBrowser() {
 			ProxyQTextBrowser().DisposeQTextBrowser();
 		}
-		protected void CreateQTextBrowserSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQTextBrowserSignals), this);
 			Q_EMIT = (IQTextBrowserSignals) realProxy.GetTransparentProxy();
 		}

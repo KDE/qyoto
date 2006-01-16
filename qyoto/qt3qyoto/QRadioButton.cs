@@ -14,7 +14,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQRadioButtonProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QRadioButton), this);
 			_interceptor = (QRadioButton) realProxy.GetTransparentProxy();
 		}
@@ -39,8 +39,8 @@ namespace Qt {
 			return ProxyQRadioButton().ClassName();
 		}
 		public QRadioButton(QWidget parent, string name) : this((Type) null) {
-			CreateQRadioButtonProxy();
-			CreateQRadioButtonSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQRadioButton(parent,name);
 		}
 		[SmokeMethod("QRadioButton(QWidget*, const char*)")]
@@ -48,8 +48,8 @@ namespace Qt {
 			ProxyQRadioButton().NewQRadioButton(parent,name);
 		}
 		public QRadioButton(QWidget parent) : this((Type) null) {
-			CreateQRadioButtonProxy();
-			CreateQRadioButtonSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQRadioButton(parent);
 		}
 		[SmokeMethod("QRadioButton(QWidget*)")]
@@ -57,8 +57,8 @@ namespace Qt {
 			ProxyQRadioButton().NewQRadioButton(parent);
 		}
 		public QRadioButton(string text, QWidget parent, string name) : this((Type) null) {
-			CreateQRadioButtonProxy();
-			CreateQRadioButtonSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQRadioButton(text,parent,name);
 		}
 		[SmokeMethod("QRadioButton(const QString&, QWidget*, const char*)")]
@@ -66,8 +66,8 @@ namespace Qt {
 			ProxyQRadioButton().NewQRadioButton(text,parent,name);
 		}
 		public QRadioButton(string text, QWidget parent) : this((Type) null) {
-			CreateQRadioButtonProxy();
-			CreateQRadioButtonSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQRadioButton(text,parent);
 		}
 		[SmokeMethod("QRadioButton(const QString&, QWidget*)")]
@@ -132,7 +132,7 @@ namespace Qt {
 		private void DisposeQRadioButton() {
 			ProxyQRadioButton().DisposeQRadioButton();
 		}
-		protected void CreateQRadioButtonSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQRadioButtonSignals), this);
 			Q_EMIT = (IQRadioButtonSignals) realProxy.GetTransparentProxy();
 		}

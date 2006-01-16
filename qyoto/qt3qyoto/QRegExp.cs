@@ -16,7 +16,7 @@ namespace Qt {
 			string Escape(string str);
 		}
 
-		protected void CreateQRegExpProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QRegExp), this);
 			_interceptor = (QRegExp) realProxy.GetTransparentProxy();
 		}
@@ -38,7 +38,7 @@ namespace Qt {
 			CaretWontMatch = 2,
 		}
 		public QRegExp() : this((Type) null) {
-			CreateQRegExpProxy();
+			CreateProxy();
 			NewQRegExp();
 		}
 		[SmokeMethod("QRegExp()")]
@@ -46,7 +46,7 @@ namespace Qt {
 			ProxyQRegExp().NewQRegExp();
 		}
 		public QRegExp(string pattern, bool caseSensitive, bool wildcard) : this((Type) null) {
-			CreateQRegExpProxy();
+			CreateProxy();
 			NewQRegExp(pattern,caseSensitive,wildcard);
 		}
 		[SmokeMethod("QRegExp(const QString&, bool, bool)")]
@@ -54,7 +54,7 @@ namespace Qt {
 			ProxyQRegExp().NewQRegExp(pattern,caseSensitive,wildcard);
 		}
 		public QRegExp(string pattern, bool caseSensitive) : this((Type) null) {
-			CreateQRegExpProxy();
+			CreateProxy();
 			NewQRegExp(pattern,caseSensitive);
 		}
 		[SmokeMethod("QRegExp(const QString&, bool)")]
@@ -62,7 +62,7 @@ namespace Qt {
 			ProxyQRegExp().NewQRegExp(pattern,caseSensitive);
 		}
 		public QRegExp(string pattern) : this((Type) null) {
-			CreateQRegExpProxy();
+			CreateProxy();
 			NewQRegExp(pattern);
 		}
 		[SmokeMethod("QRegExp(const QString&)")]
@@ -70,7 +70,7 @@ namespace Qt {
 			ProxyQRegExp().NewQRegExp(pattern);
 		}
 		public QRegExp(QRegExp rx) : this((Type) null) {
-			CreateQRegExpProxy();
+			CreateProxy();
 			NewQRegExp(rx);
 		}
 		[SmokeMethod("QRegExp(const QRegExp&)")]

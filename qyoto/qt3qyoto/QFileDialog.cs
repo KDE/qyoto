@@ -49,7 +49,7 @@ namespace Qt {
 			QFileIconProvider IconProvider();
 		}
 
-		protected void CreateQFileDialogProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFileDialog), this);
 			_interceptor = (QFileDialog) realProxy.GetTransparentProxy();
 		}
@@ -90,8 +90,8 @@ namespace Qt {
 			return ProxyQFileDialog().ClassName();
 		}
 		public QFileDialog(string dirName, string filter, QWidget parent, string name, bool modal) : this((Type) null) {
-			CreateQFileDialogProxy();
-			CreateQFileDialogSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQFileDialog(dirName,filter,parent,name,modal);
 		}
 		[SmokeMethod("QFileDialog(const QString&, const QString&, QWidget*, const char*, bool)")]
@@ -99,8 +99,8 @@ namespace Qt {
 			ProxyQFileDialog().NewQFileDialog(dirName,filter,parent,name,modal);
 		}
 		public QFileDialog(string dirName, string filter, QWidget parent, string name) : this((Type) null) {
-			CreateQFileDialogProxy();
-			CreateQFileDialogSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQFileDialog(dirName,filter,parent,name);
 		}
 		[SmokeMethod("QFileDialog(const QString&, const QString&, QWidget*, const char*)")]
@@ -108,8 +108,8 @@ namespace Qt {
 			ProxyQFileDialog().NewQFileDialog(dirName,filter,parent,name);
 		}
 		public QFileDialog(string dirName, string filter, QWidget parent) : this((Type) null) {
-			CreateQFileDialogProxy();
-			CreateQFileDialogSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQFileDialog(dirName,filter,parent);
 		}
 		[SmokeMethod("QFileDialog(const QString&, const QString&, QWidget*)")]
@@ -117,8 +117,8 @@ namespace Qt {
 			ProxyQFileDialog().NewQFileDialog(dirName,filter,parent);
 		}
 		public QFileDialog(string dirName, string filter) : this((Type) null) {
-			CreateQFileDialogProxy();
-			CreateQFileDialogSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQFileDialog(dirName,filter);
 		}
 		[SmokeMethod("QFileDialog(const QString&, const QString&)")]
@@ -126,8 +126,8 @@ namespace Qt {
 			ProxyQFileDialog().NewQFileDialog(dirName,filter);
 		}
 		public QFileDialog(string dirName) : this((Type) null) {
-			CreateQFileDialogProxy();
-			CreateQFileDialogSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQFileDialog(dirName);
 		}
 		[SmokeMethod("QFileDialog(const QString&)")]
@@ -135,8 +135,8 @@ namespace Qt {
 			ProxyQFileDialog().NewQFileDialog(dirName);
 		}
 		public QFileDialog(QWidget parent, string name, bool modal) : this((Type) null) {
-			CreateQFileDialogProxy();
-			CreateQFileDialogSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQFileDialog(parent,name,modal);
 		}
 		[SmokeMethod("QFileDialog(QWidget*, const char*, bool)")]
@@ -144,8 +144,8 @@ namespace Qt {
 			ProxyQFileDialog().NewQFileDialog(parent,name,modal);
 		}
 		public QFileDialog(QWidget parent, string name) : this((Type) null) {
-			CreateQFileDialogProxy();
-			CreateQFileDialogSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQFileDialog(parent,name);
 		}
 		[SmokeMethod("QFileDialog(QWidget*, const char*)")]
@@ -153,8 +153,8 @@ namespace Qt {
 			ProxyQFileDialog().NewQFileDialog(parent,name);
 		}
 		public QFileDialog(QWidget parent) : this((Type) null) {
-			CreateQFileDialogProxy();
-			CreateQFileDialogSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQFileDialog(parent);
 		}
 		[SmokeMethod("QFileDialog(QWidget*)")]
@@ -162,8 +162,8 @@ namespace Qt {
 			ProxyQFileDialog().NewQFileDialog(parent);
 		}
 		public QFileDialog() : this((Type) null) {
-			CreateQFileDialogProxy();
-			CreateQFileDialogSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQFileDialog();
 		}
 		[SmokeMethod("QFileDialog()")]
@@ -501,7 +501,7 @@ namespace Qt {
 		private void DisposeQFileDialog() {
 			ProxyQFileDialog().DisposeQFileDialog();
 		}
-		protected void CreateQFileDialogSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQFileDialogSignals), this);
 			Q_EMIT = (IQFileDialogSignals) realProxy.GetTransparentProxy();
 		}

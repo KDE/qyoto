@@ -28,7 +28,7 @@ namespace Qt {
 			bool IsDriverAvailable(string name);
 		}
 
-		protected void CreateQSqlDatabaseProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSqlDatabase), this);
 			_interceptor = (QSqlDatabase) realProxy.GetTransparentProxy();
 		}
@@ -254,8 +254,8 @@ namespace Qt {
 			return StaticQSqlDatabase().IsDriverAvailable(name);
 		}
 		public QSqlDatabase(string type, string name, QObject parent, string objname) : this((Type) null) {
-			CreateQSqlDatabaseProxy();
-			CreateQSqlDatabaseSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQSqlDatabase(type,name,parent,objname);
 		}
 		[SmokeMethod("QSqlDatabase(const QString&, const QString&, QObject*, const char*)")]
@@ -263,8 +263,8 @@ namespace Qt {
 			ProxyQSqlDatabase().NewQSqlDatabase(type,name,parent,objname);
 		}
 		public QSqlDatabase(string type, string name, QObject parent) : this((Type) null) {
-			CreateQSqlDatabaseProxy();
-			CreateQSqlDatabaseSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQSqlDatabase(type,name,parent);
 		}
 		[SmokeMethod("QSqlDatabase(const QString&, const QString&, QObject*)")]
@@ -272,8 +272,8 @@ namespace Qt {
 			ProxyQSqlDatabase().NewQSqlDatabase(type,name,parent);
 		}
 		public QSqlDatabase(string type, string name) : this((Type) null) {
-			CreateQSqlDatabaseProxy();
-			CreateQSqlDatabaseSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQSqlDatabase(type,name);
 		}
 		[SmokeMethod("QSqlDatabase(const QString&, const QString&)")]
@@ -281,8 +281,8 @@ namespace Qt {
 			ProxyQSqlDatabase().NewQSqlDatabase(type,name);
 		}
 		public QSqlDatabase(QSqlDriver driver, QObject parent, string objname) : this((Type) null) {
-			CreateQSqlDatabaseProxy();
-			CreateQSqlDatabaseSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQSqlDatabase(driver,parent,objname);
 		}
 		[SmokeMethod("QSqlDatabase(QSqlDriver*, QObject*, const char*)")]
@@ -290,8 +290,8 @@ namespace Qt {
 			ProxyQSqlDatabase().NewQSqlDatabase(driver,parent,objname);
 		}
 		public QSqlDatabase(QSqlDriver driver, QObject parent) : this((Type) null) {
-			CreateQSqlDatabaseProxy();
-			CreateQSqlDatabaseSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQSqlDatabase(driver,parent);
 		}
 		[SmokeMethod("QSqlDatabase(QSqlDriver*, QObject*)")]
@@ -299,8 +299,8 @@ namespace Qt {
 			ProxyQSqlDatabase().NewQSqlDatabase(driver,parent);
 		}
 		public QSqlDatabase(QSqlDriver driver) : this((Type) null) {
-			CreateQSqlDatabaseProxy();
-			CreateQSqlDatabaseSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQSqlDatabase(driver);
 		}
 		[SmokeMethod("QSqlDatabase(QSqlDriver*)")]
@@ -316,7 +316,7 @@ namespace Qt {
 		private void DisposeQSqlDatabase() {
 			ProxyQSqlDatabase().DisposeQSqlDatabase();
 		}
-		protected void CreateQSqlDatabaseSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQSqlDatabaseSignals), this);
 			Q_EMIT = (IQSqlDatabaseSignals) realProxy.GetTransparentProxy();
 		}

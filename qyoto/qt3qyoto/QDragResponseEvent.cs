@@ -9,7 +9,7 @@ namespace Qt {
 		interface IQDragResponseEventProxy {
 		}
 
-		protected void CreateQDragResponseEventProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDragResponseEvent), this);
 			_interceptor = (QDragResponseEvent) realProxy.GetTransparentProxy();
 		}
@@ -26,7 +26,7 @@ namespace Qt {
 		}
 
 		public QDragResponseEvent(bool accepted) : this((Type) null) {
-			CreateQDragResponseEventProxy();
+			CreateProxy();
 			NewQDragResponseEvent(accepted);
 		}
 		[SmokeMethod("QDragResponseEvent(bool)")]

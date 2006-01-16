@@ -20,7 +20,7 @@ namespace Qt {
 			QFont GetFont(out bool ok);
 		}
 
-		protected void CreateQFontDialogProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFontDialog), this);
 			_interceptor = (QFontDialog) realProxy.GetTransparentProxy();
 		}
@@ -84,7 +84,7 @@ namespace Qt {
 		public static QFont GetFont(out bool ok) {
 			return StaticQFontDialog().GetFont(out ok);
 		}
-		protected void CreateQFontDialogSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQFontDialogSignals), this);
 			Q_EMIT = (IQFontDialogSignals) realProxy.GetTransparentProxy();
 		}

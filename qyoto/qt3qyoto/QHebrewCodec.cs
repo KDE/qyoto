@@ -10,7 +10,7 @@ namespace Qt {
 		interface IQHebrewCodecProxy {
 		}
 
-		protected void CreateQHebrewCodecProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QHebrewCodec), this);
 			_interceptor = (QHebrewCodec) realProxy.GetTransparentProxy();
 		}
@@ -51,7 +51,7 @@ namespace Qt {
 			return ProxyQHebrewCodec().HeuristicContentMatch(chars,len);
 		}
 		public QHebrewCodec() : this((Type) null) {
-			CreateQHebrewCodecProxy();
+			CreateProxy();
 			NewQHebrewCodec();
 		}
 		[SmokeMethod("QHebrewCodec()")]

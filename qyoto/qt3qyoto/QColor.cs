@@ -24,7 +24,7 @@ namespace Qt {
 			ArrayList ColorNames();
 		}
 
-		protected void CreateQColorProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QColor), this);
 			_interceptor = (QColor) realProxy.GetTransparentProxy();
 		}
@@ -48,7 +48,7 @@ namespace Qt {
 			Hsv = 1,
 		}
 		public QColor() : this((Type) null) {
-			CreateQColorProxy();
+			CreateProxy();
 			NewQColor();
 		}
 		[SmokeMethod("QColor()")]
@@ -56,7 +56,7 @@ namespace Qt {
 			ProxyQColor().NewQColor();
 		}
 		public QColor(int r, int g, int b) : this((Type) null) {
-			CreateQColorProxy();
+			CreateProxy();
 			NewQColor(r,g,b);
 		}
 		[SmokeMethod("QColor(int, int, int)")]
@@ -64,7 +64,7 @@ namespace Qt {
 			ProxyQColor().NewQColor(r,g,b);
 		}
 		public QColor(int x, int y, int z, QColor.Spec arg4) : this((Type) null) {
-			CreateQColorProxy();
+			CreateProxy();
 			NewQColor(x,y,z,arg4);
 		}
 		[SmokeMethod("QColor(int, int, int, QColor::Spec)")]
@@ -72,7 +72,7 @@ namespace Qt {
 			ProxyQColor().NewQColor(x,y,z,arg4);
 		}
 		public QColor(uint rgb, uint pixel) : this((Type) null) {
-			CreateQColorProxy();
+			CreateProxy();
 			NewQColor(rgb,pixel);
 		}
 		[SmokeMethod("QColor(QRgb, uint)")]
@@ -80,7 +80,7 @@ namespace Qt {
 			ProxyQColor().NewQColor(rgb,pixel);
 		}
 		public QColor(uint rgb) : this((Type) null) {
-			CreateQColorProxy();
+			CreateProxy();
 			NewQColor(rgb);
 		}
 		[SmokeMethod("QColor(QRgb)")]
@@ -88,7 +88,7 @@ namespace Qt {
 			ProxyQColor().NewQColor(rgb);
 		}
 		public QColor(string name) : this((Type) null) {
-			CreateQColorProxy();
+			CreateProxy();
 			NewQColor(name);
 		}
 		[SmokeMethod("QColor(const QString&)")]
@@ -96,7 +96,7 @@ namespace Qt {
 			ProxyQColor().NewQColor(name);
 		}
 		public QColor(QColor arg1) : this((Type) null) {
-			CreateQColorProxy();
+			CreateProxy();
 			NewQColor(arg1);
 		}
 		[SmokeMethod("QColor(const QColor&)")]

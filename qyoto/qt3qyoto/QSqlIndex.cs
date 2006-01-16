@@ -12,7 +12,7 @@ namespace Qt {
 			QSqlIndex FromStringList(string[] l, QSqlCursor cursor);
 		}
 
-		protected void CreateQSqlIndexProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSqlIndex), this);
 			_interceptor = (QSqlIndex) realProxy.GetTransparentProxy();
 		}
@@ -29,7 +29,7 @@ namespace Qt {
 		}
 
 		public QSqlIndex(string cursorName, string name) : this((Type) null) {
-			CreateQSqlIndexProxy();
+			CreateProxy();
 			NewQSqlIndex(cursorName,name);
 		}
 		[SmokeMethod("QSqlIndex(const QString&, const QString&)")]
@@ -37,7 +37,7 @@ namespace Qt {
 			ProxyQSqlIndex().NewQSqlIndex(cursorName,name);
 		}
 		public QSqlIndex(string cursorName) : this((Type) null) {
-			CreateQSqlIndexProxy();
+			CreateProxy();
 			NewQSqlIndex(cursorName);
 		}
 		[SmokeMethod("QSqlIndex(const QString&)")]
@@ -45,7 +45,7 @@ namespace Qt {
 			ProxyQSqlIndex().NewQSqlIndex(cursorName);
 		}
 		public QSqlIndex() : this((Type) null) {
-			CreateQSqlIndexProxy();
+			CreateProxy();
 			NewQSqlIndex();
 		}
 		[SmokeMethod("QSqlIndex()")]
@@ -53,7 +53,7 @@ namespace Qt {
 			ProxyQSqlIndex().NewQSqlIndex();
 		}
 		public QSqlIndex(QSqlIndex other) : this((Type) null) {
-			CreateQSqlIndexProxy();
+			CreateProxy();
 			NewQSqlIndex(other);
 		}
 		[SmokeMethod("QSqlIndex(const QSqlIndex&)")]

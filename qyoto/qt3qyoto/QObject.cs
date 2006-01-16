@@ -23,7 +23,7 @@ namespace Qt {
 			string NormalizeSignalSlot(string signalSlot);
 		}
 
-		protected void CreateQObjectProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QObject), this);
 			_interceptor = (QObject) realProxy.GetTransparentProxy();
 		}
@@ -48,8 +48,8 @@ namespace Qt {
 			return ProxyQObject().ClassName();
 		}
 		public QObject(QObject parent, string name) : this((Type) null) {
-			CreateQObjectProxy();
-			CreateQObjectSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQObject(parent,name);
 		}
 		[SmokeMethod("QObject(QObject*, const char*)")]
@@ -57,8 +57,8 @@ namespace Qt {
 			ProxyQObject().NewQObject(parent,name);
 		}
 		public QObject(QObject parent) : this((Type) null) {
-			CreateQObjectProxy();
-			CreateQObjectSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQObject(parent);
 		}
 		[SmokeMethod("QObject(QObject*)")]
@@ -66,8 +66,8 @@ namespace Qt {
 			ProxyQObject().NewQObject(parent);
 		}
 		public QObject() : this((Type) null) {
-			CreateQObjectProxy();
-			CreateQObjectSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQObject();
 		}
 		[SmokeMethod("QObject()")]
@@ -347,7 +347,7 @@ namespace Qt {
 		}
 
 		protected Object Q_EMIT = null;
-		protected void CreateQObjectSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQObjectSignals), this);
 			Q_EMIT = (IQObjectSignals) realProxy.GetTransparentProxy();
 		}

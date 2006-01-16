@@ -26,7 +26,7 @@ namespace Qt {
 			void SetDefaultOptimization(QPixmap.Optimization arg1);
 		}
 
-		protected void CreateQPixmapProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPixmap), this);
 			_interceptor = (QPixmap) realProxy.GetTransparentProxy();
 		}
@@ -55,7 +55,7 @@ namespace Qt {
 			BestOptim = 3,
 		}
 		public QPixmap() : this((Type) null) {
-			CreateQPixmapProxy();
+			CreateProxy();
 			NewQPixmap();
 		}
 		[SmokeMethod("QPixmap()")]
@@ -63,7 +63,7 @@ namespace Qt {
 			ProxyQPixmap().NewQPixmap();
 		}
 		public QPixmap(QImage image) : this((Type) null) {
-			CreateQPixmapProxy();
+			CreateProxy();
 			NewQPixmap(image);
 		}
 		[SmokeMethod("QPixmap(const QImage&)")]
@@ -71,7 +71,7 @@ namespace Qt {
 			ProxyQPixmap().NewQPixmap(image);
 		}
 		public QPixmap(int w, int h, int depth, QPixmap.Optimization arg4) : this((Type) null) {
-			CreateQPixmapProxy();
+			CreateProxy();
 			NewQPixmap(w,h,depth,arg4);
 		}
 		[SmokeMethod("QPixmap(int, int, int, QPixmap::Optimization)")]
@@ -79,7 +79,7 @@ namespace Qt {
 			ProxyQPixmap().NewQPixmap(w,h,depth,arg4);
 		}
 		public QPixmap(int w, int h, int depth) : this((Type) null) {
-			CreateQPixmapProxy();
+			CreateProxy();
 			NewQPixmap(w,h,depth);
 		}
 		[SmokeMethod("QPixmap(int, int, int)")]
@@ -87,7 +87,7 @@ namespace Qt {
 			ProxyQPixmap().NewQPixmap(w,h,depth);
 		}
 		public QPixmap(int w, int h) : this((Type) null) {
-			CreateQPixmapProxy();
+			CreateProxy();
 			NewQPixmap(w,h);
 		}
 		[SmokeMethod("QPixmap(int, int)")]
@@ -95,7 +95,7 @@ namespace Qt {
 			ProxyQPixmap().NewQPixmap(w,h);
 		}
 		public QPixmap(QSize arg1, int depth, QPixmap.Optimization arg3) : this((Type) null) {
-			CreateQPixmapProxy();
+			CreateProxy();
 			NewQPixmap(arg1,depth,arg3);
 		}
 		[SmokeMethod("QPixmap(const QSize&, int, QPixmap::Optimization)")]
@@ -103,7 +103,7 @@ namespace Qt {
 			ProxyQPixmap().NewQPixmap(arg1,depth,arg3);
 		}
 		public QPixmap(QSize arg1, int depth) : this((Type) null) {
-			CreateQPixmapProxy();
+			CreateProxy();
 			NewQPixmap(arg1,depth);
 		}
 		[SmokeMethod("QPixmap(const QSize&, int)")]
@@ -111,7 +111,7 @@ namespace Qt {
 			ProxyQPixmap().NewQPixmap(arg1,depth);
 		}
 		public QPixmap(QSize arg1) : this((Type) null) {
-			CreateQPixmapProxy();
+			CreateProxy();
 			NewQPixmap(arg1);
 		}
 		[SmokeMethod("QPixmap(const QSize&)")]
@@ -119,7 +119,7 @@ namespace Qt {
 			ProxyQPixmap().NewQPixmap(arg1);
 		}
 		public QPixmap(string fileName, string format, QPixmap.ColorMode mode) : this((Type) null) {
-			CreateQPixmapProxy();
+			CreateProxy();
 			NewQPixmap(fileName,format,mode);
 		}
 		[SmokeMethod("QPixmap(const QString&, const char*, QPixmap::ColorMode)")]
@@ -127,7 +127,7 @@ namespace Qt {
 			ProxyQPixmap().NewQPixmap(fileName,format,mode);
 		}
 		public QPixmap(string fileName, string format) : this((Type) null) {
-			CreateQPixmapProxy();
+			CreateProxy();
 			NewQPixmap(fileName,format);
 		}
 		[SmokeMethod("QPixmap(const QString&, const char*)")]
@@ -135,7 +135,7 @@ namespace Qt {
 			ProxyQPixmap().NewQPixmap(fileName,format);
 		}
 		public QPixmap(string fileName) : this((Type) null) {
-			CreateQPixmapProxy();
+			CreateProxy();
 			NewQPixmap(fileName);
 		}
 		[SmokeMethod("QPixmap(const QString&)")]
@@ -143,7 +143,7 @@ namespace Qt {
 			ProxyQPixmap().NewQPixmap(fileName);
 		}
 		public QPixmap(string fileName, string format, int conversion_flags) : this((Type) null) {
-			CreateQPixmapProxy();
+			CreateProxy();
 			NewQPixmap(fileName,format,conversion_flags);
 		}
 		[SmokeMethod("QPixmap(const QString&, const char*, int)")]
@@ -151,7 +151,7 @@ namespace Qt {
 			ProxyQPixmap().NewQPixmap(fileName,format,conversion_flags);
 		}
 		public QPixmap(string[] xpm) : this((Type) null) {
-			CreateQPixmapProxy();
+			CreateProxy();
 			NewQPixmap(xpm);
 		}
 		[SmokeMethod("QPixmap(const char**)")]
@@ -159,7 +159,7 @@ namespace Qt {
 			ProxyQPixmap().NewQPixmap(xpm);
 		}
 		public QPixmap(QByteArray data) : this((Type) null) {
-			CreateQPixmapProxy();
+			CreateProxy();
 			NewQPixmap(data);
 		}
 		[SmokeMethod("QPixmap(const QByteArray&)")]
@@ -167,7 +167,7 @@ namespace Qt {
 			ProxyQPixmap().NewQPixmap(data);
 		}
 		public QPixmap(QPixmap arg1) : this((Type) null) {
-			CreateQPixmapProxy();
+			CreateProxy();
 			NewQPixmap(arg1);
 		}
 		[SmokeMethod("QPixmap(const QPixmap&)")]
@@ -415,7 +415,7 @@ namespace Qt {
 			StaticQPixmap().SetDefaultOptimization(arg1);
 		}
 		public QPixmap(int w, int h, char[] data, bool isXbitmap) : this((Type) null) {
-			CreateQPixmapProxy();
+			CreateProxy();
 			NewQPixmap(w,h,data,isXbitmap);
 		}
 		[SmokeMethod("QPixmap(int, int, const uchar*, bool)")]

@@ -12,7 +12,7 @@ namespace Qt {
 		interface IQImageConsumerProxy {
 		}
 
-		protected void CreateQImageConsumerProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QImageConsumer), this);
 			_interceptor = (QImageConsumer) realProxy.GetTransparentProxy();
 		}
@@ -57,7 +57,7 @@ namespace Qt {
 			ProxyQImageConsumer().SetSize(arg1,arg2);
 		}
 		public QImageConsumer() : this((Type) null) {
-			CreateQImageConsumerProxy();
+			CreateProxy();
 			NewQImageConsumer();
 		}
 		[SmokeMethod("QImageConsumer()")]

@@ -13,7 +13,7 @@ namespace Qt {
 		interface IQXmlParseExceptionProxy {
 		}
 
-		protected void CreateQXmlParseExceptionProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlParseException), this);
 			_interceptor = (QXmlParseException) realProxy.GetTransparentProxy();
 		}
@@ -30,7 +30,7 @@ namespace Qt {
 		}
 
 		public QXmlParseException(string name, int c, int l, string p, string s) : this((Type) null) {
-			CreateQXmlParseExceptionProxy();
+			CreateProxy();
 			NewQXmlParseException(name,c,l,p,s);
 		}
 		[SmokeMethod("QXmlParseException(const QString&, int, int, const QString&, const QString&)")]
@@ -38,7 +38,7 @@ namespace Qt {
 			ProxyQXmlParseException().NewQXmlParseException(name,c,l,p,s);
 		}
 		public QXmlParseException(string name, int c, int l, string p) : this((Type) null) {
-			CreateQXmlParseExceptionProxy();
+			CreateProxy();
 			NewQXmlParseException(name,c,l,p);
 		}
 		[SmokeMethod("QXmlParseException(const QString&, int, int, const QString&)")]
@@ -46,7 +46,7 @@ namespace Qt {
 			ProxyQXmlParseException().NewQXmlParseException(name,c,l,p);
 		}
 		public QXmlParseException(string name, int c, int l) : this((Type) null) {
-			CreateQXmlParseExceptionProxy();
+			CreateProxy();
 			NewQXmlParseException(name,c,l);
 		}
 		[SmokeMethod("QXmlParseException(const QString&, int, int)")]
@@ -54,7 +54,7 @@ namespace Qt {
 			ProxyQXmlParseException().NewQXmlParseException(name,c,l);
 		}
 		public QXmlParseException(string name, int c) : this((Type) null) {
-			CreateQXmlParseExceptionProxy();
+			CreateProxy();
 			NewQXmlParseException(name,c);
 		}
 		[SmokeMethod("QXmlParseException(const QString&, int)")]
@@ -62,7 +62,7 @@ namespace Qt {
 			ProxyQXmlParseException().NewQXmlParseException(name,c);
 		}
 		public QXmlParseException(string name) : this((Type) null) {
-			CreateQXmlParseExceptionProxy();
+			CreateProxy();
 			NewQXmlParseException(name);
 		}
 		[SmokeMethod("QXmlParseException(const QString&)")]
@@ -70,7 +70,7 @@ namespace Qt {
 			ProxyQXmlParseException().NewQXmlParseException(name);
 		}
 		public QXmlParseException() : this((Type) null) {
-			CreateQXmlParseExceptionProxy();
+			CreateProxy();
 			NewQXmlParseException();
 		}
 		[SmokeMethod("QXmlParseException()")]

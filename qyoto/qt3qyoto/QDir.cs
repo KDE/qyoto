@@ -28,7 +28,7 @@ namespace Qt {
 			bool IsRelativePath(string path);
 		}
 
-		protected void CreateQDirProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDir), this);
 			_interceptor = (QDir) realProxy.GetTransparentProxy();
 		}
@@ -74,7 +74,7 @@ namespace Qt {
 			DefaultSort = -1,
 		}
 		public QDir() : this((Type) null) {
-			CreateQDirProxy();
+			CreateProxy();
 			NewQDir();
 		}
 		[SmokeMethod("QDir()")]
@@ -82,7 +82,7 @@ namespace Qt {
 			ProxyQDir().NewQDir();
 		}
 		public QDir(string path, string nameFilter, int sortSpec, int filterSpec) : this((Type) null) {
-			CreateQDirProxy();
+			CreateProxy();
 			NewQDir(path,nameFilter,sortSpec,filterSpec);
 		}
 		[SmokeMethod("QDir(const QString&, const QString&, int, int)")]
@@ -90,7 +90,7 @@ namespace Qt {
 			ProxyQDir().NewQDir(path,nameFilter,sortSpec,filterSpec);
 		}
 		public QDir(string path, string nameFilter, int sortSpec) : this((Type) null) {
-			CreateQDirProxy();
+			CreateProxy();
 			NewQDir(path,nameFilter,sortSpec);
 		}
 		[SmokeMethod("QDir(const QString&, const QString&, int)")]
@@ -98,7 +98,7 @@ namespace Qt {
 			ProxyQDir().NewQDir(path,nameFilter,sortSpec);
 		}
 		public QDir(string path, string nameFilter) : this((Type) null) {
-			CreateQDirProxy();
+			CreateProxy();
 			NewQDir(path,nameFilter);
 		}
 		[SmokeMethod("QDir(const QString&, const QString&)")]
@@ -106,7 +106,7 @@ namespace Qt {
 			ProxyQDir().NewQDir(path,nameFilter);
 		}
 		public QDir(string path) : this((Type) null) {
-			CreateQDirProxy();
+			CreateProxy();
 			NewQDir(path);
 		}
 		[SmokeMethod("QDir(const QString&)")]
@@ -114,7 +114,7 @@ namespace Qt {
 			ProxyQDir().NewQDir(path);
 		}
 		public QDir(QDir arg1) : this((Type) null) {
-			CreateQDirProxy();
+			CreateProxy();
 			NewQDir(arg1);
 		}
 		[SmokeMethod("QDir(const QDir&)")]

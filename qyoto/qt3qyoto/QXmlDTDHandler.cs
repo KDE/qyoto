@@ -19,7 +19,7 @@ namespace Qt {
 		interface IQXmlDTDHandlerProxy {
 		}
 
-		protected void CreateQXmlDTDHandlerProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlDTDHandler), this);
 			_interceptor = (QXmlDTDHandler) realProxy.GetTransparentProxy();
 		}
@@ -48,7 +48,7 @@ namespace Qt {
 			return ProxyQXmlDTDHandler().ErrorString();
 		}
 		public QXmlDTDHandler() : this((Type) null) {
-			CreateQXmlDTDHandlerProxy();
+			CreateProxy();
 			NewQXmlDTDHandler();
 		}
 		[SmokeMethod("QXmlDTDHandler()")]

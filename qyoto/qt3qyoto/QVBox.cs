@@ -14,7 +14,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQVBoxProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QVBox), this);
 			_interceptor = (QVBox) realProxy.GetTransparentProxy();
 		}
@@ -39,8 +39,8 @@ namespace Qt {
 			return ProxyQVBox().ClassName();
 		}
 		public QVBox(QWidget parent, string name, int f) : this((Type) null) {
-			CreateQVBoxProxy();
-			CreateQVBoxSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQVBox(parent,name,f);
 		}
 		[SmokeMethod("QVBox(QWidget*, const char*, Qt::WFlags)")]
@@ -48,8 +48,8 @@ namespace Qt {
 			ProxyQVBox().NewQVBox(parent,name,f);
 		}
 		public QVBox(QWidget parent, string name) : this((Type) null) {
-			CreateQVBoxProxy();
-			CreateQVBoxSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQVBox(parent,name);
 		}
 		[SmokeMethod("QVBox(QWidget*, const char*)")]
@@ -57,8 +57,8 @@ namespace Qt {
 			ProxyQVBox().NewQVBox(parent,name);
 		}
 		public QVBox(QWidget parent) : this((Type) null) {
-			CreateQVBoxProxy();
-			CreateQVBoxSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQVBox(parent);
 		}
 		[SmokeMethod("QVBox(QWidget*)")]
@@ -66,8 +66,8 @@ namespace Qt {
 			ProxyQVBox().NewQVBox(parent);
 		}
 		public QVBox() : this((Type) null) {
-			CreateQVBoxProxy();
-			CreateQVBoxSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQVBox();
 		}
 		[SmokeMethod("QVBox()")]
@@ -99,7 +99,7 @@ namespace Qt {
 		private void DisposeQVBox() {
 			ProxyQVBox().DisposeQVBox();
 		}
-		protected void CreateQVBoxSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQVBoxSignals), this);
 			Q_EMIT = (IQVBoxSignals) realProxy.GetTransparentProxy();
 		}

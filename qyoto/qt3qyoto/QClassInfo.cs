@@ -12,7 +12,7 @@ namespace Qt {
 		interface IQClassInfoProxy {
 		}
 
-		protected void CreateQClassInfoProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QClassInfo), this);
 			_interceptor = (QClassInfo) realProxy.GetTransparentProxy();
 		}
@@ -29,7 +29,7 @@ namespace Qt {
 		}
 
 		public QClassInfo() : this((Type) null) {
-			CreateQClassInfoProxy();
+			CreateProxy();
 			NewQClassInfo();
 		}
 		[SmokeMethod("QClassInfo()")]

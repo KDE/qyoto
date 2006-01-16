@@ -10,7 +10,7 @@ namespace Qt {
 		interface IQCanvasTextProxy {
 		}
 
-		protected void CreateQCanvasTextProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QCanvasText), this);
 			_interceptor = (QCanvasText) realProxy.GetTransparentProxy();
 		}
@@ -27,7 +27,7 @@ namespace Qt {
 		}
 
 		public QCanvasText(QCanvas canvas) : this((Type) null) {
-			CreateQCanvasTextProxy();
+			CreateProxy();
 			NewQCanvasText(canvas);
 		}
 		[SmokeMethod("QCanvasText(QCanvas*)")]
@@ -35,7 +35,7 @@ namespace Qt {
 			ProxyQCanvasText().NewQCanvasText(canvas);
 		}
 		public QCanvasText(string arg1, QCanvas canvas) : this((Type) null) {
-			CreateQCanvasTextProxy();
+			CreateProxy();
 			NewQCanvasText(arg1,canvas);
 		}
 		[SmokeMethod("QCanvasText(const QString&, QCanvas*)")]
@@ -43,7 +43,7 @@ namespace Qt {
 			ProxyQCanvasText().NewQCanvasText(arg1,canvas);
 		}
 		public QCanvasText(string arg1, QFont arg2, QCanvas canvas) : this((Type) null) {
-			CreateQCanvasTextProxy();
+			CreateProxy();
 			NewQCanvasText(arg1,arg2,canvas);
 		}
 		[SmokeMethod("QCanvasText(const QString&, QFont, QCanvas*)")]

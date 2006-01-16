@@ -52,7 +52,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQSocketNotifierProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSocketNotifier), this);
 			_interceptor = (QSocketNotifier) realProxy.GetTransparentProxy();
 		}
@@ -82,8 +82,8 @@ namespace Qt {
 			return ProxyQSocketNotifier().ClassName();
 		}
 		public QSocketNotifier(int socket, QSocketNotifier.E_Type arg2, QObject parent, string name) : this((Type) null) {
-			CreateQSocketNotifierProxy();
-			CreateQSocketNotifierSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQSocketNotifier(socket,arg2,parent,name);
 		}
 		[SmokeMethod("QSocketNotifier(int, QSocketNotifier::Type, QObject*, const char*)")]
@@ -91,8 +91,8 @@ namespace Qt {
 			ProxyQSocketNotifier().NewQSocketNotifier(socket,arg2,parent,name);
 		}
 		public QSocketNotifier(int socket, QSocketNotifier.E_Type arg2, QObject parent) : this((Type) null) {
-			CreateQSocketNotifierProxy();
-			CreateQSocketNotifierSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQSocketNotifier(socket,arg2,parent);
 		}
 		[SmokeMethod("QSocketNotifier(int, QSocketNotifier::Type, QObject*)")]
@@ -100,8 +100,8 @@ namespace Qt {
 			ProxyQSocketNotifier().NewQSocketNotifier(socket,arg2,parent);
 		}
 		public QSocketNotifier(int socket, QSocketNotifier.E_Type arg2) : this((Type) null) {
-			CreateQSocketNotifierProxy();
-			CreateQSocketNotifierSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQSocketNotifier(socket,arg2);
 		}
 		[SmokeMethod("QSocketNotifier(int, QSocketNotifier::Type)")]
@@ -149,7 +149,7 @@ namespace Qt {
 		private void DisposeQSocketNotifier() {
 			ProxyQSocketNotifier().DisposeQSocketNotifier();
 		}
-		protected void CreateQSocketNotifierSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQSocketNotifierSignals), this);
 			Q_EMIT = (IQSocketNotifierSignals) realProxy.GetTransparentProxy();
 		}

@@ -13,7 +13,7 @@ namespace Qt {
 			bool op_equals(QIconDragItem lhs, QIconDragItem arg1);
 		}
 
-		protected void CreateQIconDragItemProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QIconDragItem), this);
 			_interceptor = (QIconDragItem) realProxy.GetTransparentProxy();
 		}
@@ -30,7 +30,7 @@ namespace Qt {
 		}
 
 		public QIconDragItem() : this((Type) null) {
-			CreateQIconDragItemProxy();
+			CreateProxy();
 			NewQIconDragItem();
 		}
 		[SmokeMethod("QIconDragItem()")]

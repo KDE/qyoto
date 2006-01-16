@@ -14,7 +14,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQDragManagerProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDragManager), this);
 			_interceptor = (QDragManager) realProxy.GetTransparentProxy();
 		}
@@ -54,7 +54,7 @@ namespace Qt {
 		public static new string TrUtf8(string arg1) {
 			return StaticQDragManager().TrUtf8(arg1);
 		}
-		protected void CreateQDragManagerSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQDragManagerSignals), this);
 			Q_EMIT = (IQDragManagerSignals) realProxy.GetTransparentProxy();
 		}

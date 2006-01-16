@@ -15,7 +15,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQSpinBoxProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSpinBox), this);
 			_interceptor = (QSpinBox) realProxy.GetTransparentProxy();
 		}
@@ -44,8 +44,8 @@ namespace Qt {
 			return ProxyQSpinBox().ClassName();
 		}
 		public QSpinBox(QWidget parent, string name) : this((Type) null) {
-			CreateQSpinBoxProxy();
-			CreateQSpinBoxSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQSpinBox(parent,name);
 		}
 		[SmokeMethod("QSpinBox(QWidget*, const char*)")]
@@ -53,8 +53,8 @@ namespace Qt {
 			ProxyQSpinBox().NewQSpinBox(parent,name);
 		}
 		public QSpinBox(QWidget parent) : this((Type) null) {
-			CreateQSpinBoxProxy();
-			CreateQSpinBoxSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQSpinBox(parent);
 		}
 		[SmokeMethod("QSpinBox(QWidget*)")]
@@ -62,8 +62,8 @@ namespace Qt {
 			ProxyQSpinBox().NewQSpinBox(parent);
 		}
 		public QSpinBox() : this((Type) null) {
-			CreateQSpinBoxProxy();
-			CreateQSpinBoxSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQSpinBox();
 		}
 		[SmokeMethod("QSpinBox()")]
@@ -71,8 +71,8 @@ namespace Qt {
 			ProxyQSpinBox().NewQSpinBox();
 		}
 		public QSpinBox(int minValue, int maxValue, int step, QWidget parent, string name) : this((Type) null) {
-			CreateQSpinBoxProxy();
-			CreateQSpinBoxSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQSpinBox(minValue,maxValue,step,parent,name);
 		}
 		[SmokeMethod("QSpinBox(int, int, int, QWidget*, const char*)")]
@@ -80,8 +80,8 @@ namespace Qt {
 			ProxyQSpinBox().NewQSpinBox(minValue,maxValue,step,parent,name);
 		}
 		public QSpinBox(int minValue, int maxValue, int step, QWidget parent) : this((Type) null) {
-			CreateQSpinBoxProxy();
-			CreateQSpinBoxSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQSpinBox(minValue,maxValue,step,parent);
 		}
 		[SmokeMethod("QSpinBox(int, int, int, QWidget*)")]
@@ -89,8 +89,8 @@ namespace Qt {
 			ProxyQSpinBox().NewQSpinBox(minValue,maxValue,step,parent);
 		}
 		public QSpinBox(int minValue, int maxValue, int step) : this((Type) null) {
-			CreateQSpinBoxProxy();
-			CreateQSpinBoxSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQSpinBox(minValue,maxValue,step);
 		}
 		[SmokeMethod("QSpinBox(int, int, int)")]
@@ -98,8 +98,8 @@ namespace Qt {
 			ProxyQSpinBox().NewQSpinBox(minValue,maxValue,step);
 		}
 		public QSpinBox(int minValue, int maxValue) : this((Type) null) {
-			CreateQSpinBoxProxy();
-			CreateQSpinBoxSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQSpinBox(minValue,maxValue);
 		}
 		[SmokeMethod("QSpinBox(int, int)")]
@@ -367,7 +367,7 @@ namespace Qt {
 		protected virtual void StepChange() {
 			ProxyQSpinBox().StepChange();
 		}
-		protected void CreateQSpinBoxSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQSpinBoxSignals), this);
 			Q_EMIT = (IQSpinBoxSignals) realProxy.GetTransparentProxy();
 		}

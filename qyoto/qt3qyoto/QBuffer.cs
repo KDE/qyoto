@@ -9,7 +9,7 @@ namespace Qt {
 		interface IQBufferProxy {
 		}
 
-		protected void CreateQBufferProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QBuffer), this);
 			_interceptor = (QBuffer) realProxy.GetTransparentProxy();
 		}
@@ -26,7 +26,7 @@ namespace Qt {
 		}
 
 		public QBuffer() : this((Type) null) {
-			CreateQBufferProxy();
+			CreateProxy();
 			NewQBuffer();
 		}
 		[SmokeMethod("QBuffer()")]
@@ -34,7 +34,7 @@ namespace Qt {
 			ProxyQBuffer().NewQBuffer();
 		}
 		public QBuffer(QByteArray arg1) : this((Type) null) {
-			CreateQBufferProxy();
+			CreateProxy();
 			NewQBuffer(arg1);
 		}
 		[SmokeMethod("QBuffer(QByteArray)")]

@@ -13,7 +13,7 @@ namespace Qt {
 		interface IQListBoxItemProxy {
 		}
 
-		protected void CreateQListBoxItemProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QListBoxItem), this);
 			_interceptor = (QListBoxItem) realProxy.GetTransparentProxy();
 		}
@@ -30,7 +30,7 @@ namespace Qt {
 		}
 
 		public QListBoxItem(QListBox listbox) : this((Type) null) {
-			CreateQListBoxItemProxy();
+			CreateProxy();
 			NewQListBoxItem(listbox);
 		}
 		[SmokeMethod("QListBoxItem(QListBox*)")]
@@ -38,7 +38,7 @@ namespace Qt {
 			ProxyQListBoxItem().NewQListBoxItem(listbox);
 		}
 		public QListBoxItem() : this((Type) null) {
-			CreateQListBoxItemProxy();
+			CreateProxy();
 			NewQListBoxItem();
 		}
 		[SmokeMethod("QListBoxItem()")]
@@ -46,7 +46,7 @@ namespace Qt {
 			ProxyQListBoxItem().NewQListBoxItem();
 		}
 		public QListBoxItem(QListBox listbox, QListBoxItem after) : this((Type) null) {
-			CreateQListBoxItemProxy();
+			CreateProxy();
 			NewQListBoxItem(listbox,after);
 		}
 		[SmokeMethod("QListBoxItem(QListBox*, QListBoxItem*)")]

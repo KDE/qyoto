@@ -10,7 +10,7 @@ namespace Qt {
 		interface IQCheckListItemProxy {
 		}
 
-		protected void CreateQCheckListItemProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QCheckListItem), this);
 			_interceptor = (QCheckListItem) realProxy.GetTransparentProxy();
 		}
@@ -39,7 +39,7 @@ namespace Qt {
 			On = 2,
 		}
 		public QCheckListItem(QCheckListItem parent, string text, QCheckListItem.E_Type arg3) : this((Type) null) {
-			CreateQCheckListItemProxy();
+			CreateProxy();
 			NewQCheckListItem(parent,text,arg3);
 		}
 		[SmokeMethod("QCheckListItem(QCheckListItem*, const QString&, QCheckListItem::Type)")]
@@ -47,7 +47,7 @@ namespace Qt {
 			ProxyQCheckListItem().NewQCheckListItem(parent,text,arg3);
 		}
 		public QCheckListItem(QCheckListItem parent, string text) : this((Type) null) {
-			CreateQCheckListItemProxy();
+			CreateProxy();
 			NewQCheckListItem(parent,text);
 		}
 		[SmokeMethod("QCheckListItem(QCheckListItem*, const QString&)")]
@@ -55,7 +55,7 @@ namespace Qt {
 			ProxyQCheckListItem().NewQCheckListItem(parent,text);
 		}
 		public QCheckListItem(QCheckListItem parent, QListViewItem after, string text, QCheckListItem.E_Type arg4) : this((Type) null) {
-			CreateQCheckListItemProxy();
+			CreateProxy();
 			NewQCheckListItem(parent,after,text,arg4);
 		}
 		[SmokeMethod("QCheckListItem(QCheckListItem*, QListViewItem*, const QString&, QCheckListItem::Type)")]
@@ -63,7 +63,7 @@ namespace Qt {
 			ProxyQCheckListItem().NewQCheckListItem(parent,after,text,arg4);
 		}
 		public QCheckListItem(QCheckListItem parent, QListViewItem after, string text) : this((Type) null) {
-			CreateQCheckListItemProxy();
+			CreateProxy();
 			NewQCheckListItem(parent,after,text);
 		}
 		[SmokeMethod("QCheckListItem(QCheckListItem*, QListViewItem*, const QString&)")]
@@ -71,7 +71,7 @@ namespace Qt {
 			ProxyQCheckListItem().NewQCheckListItem(parent,after,text);
 		}
 		public QCheckListItem(QListViewItem parent, string text, QCheckListItem.E_Type arg3) : this((Type) null) {
-			CreateQCheckListItemProxy();
+			CreateProxy();
 			NewQCheckListItem(parent,text,arg3);
 		}
 		[SmokeMethod("QCheckListItem(QListViewItem*, const QString&, QCheckListItem::Type)")]
@@ -79,7 +79,7 @@ namespace Qt {
 			ProxyQCheckListItem().NewQCheckListItem(parent,text,arg3);
 		}
 		public QCheckListItem(QListViewItem parent, string text) : this((Type) null) {
-			CreateQCheckListItemProxy();
+			CreateProxy();
 			NewQCheckListItem(parent,text);
 		}
 		[SmokeMethod("QCheckListItem(QListViewItem*, const QString&)")]
@@ -87,7 +87,7 @@ namespace Qt {
 			ProxyQCheckListItem().NewQCheckListItem(parent,text);
 		}
 		public QCheckListItem(QListViewItem parent, QListViewItem after, string text, QCheckListItem.E_Type arg4) : this((Type) null) {
-			CreateQCheckListItemProxy();
+			CreateProxy();
 			NewQCheckListItem(parent,after,text,arg4);
 		}
 		[SmokeMethod("QCheckListItem(QListViewItem*, QListViewItem*, const QString&, QCheckListItem::Type)")]
@@ -95,7 +95,7 @@ namespace Qt {
 			ProxyQCheckListItem().NewQCheckListItem(parent,after,text,arg4);
 		}
 		public QCheckListItem(QListViewItem parent, QListViewItem after, string text) : this((Type) null) {
-			CreateQCheckListItemProxy();
+			CreateProxy();
 			NewQCheckListItem(parent,after,text);
 		}
 		[SmokeMethod("QCheckListItem(QListViewItem*, QListViewItem*, const QString&)")]
@@ -103,7 +103,7 @@ namespace Qt {
 			ProxyQCheckListItem().NewQCheckListItem(parent,after,text);
 		}
 		public QCheckListItem(QListView parent, string text, QCheckListItem.E_Type arg3) : this((Type) null) {
-			CreateQCheckListItemProxy();
+			CreateProxy();
 			NewQCheckListItem(parent,text,arg3);
 		}
 		[SmokeMethod("QCheckListItem(QListView*, const QString&, QCheckListItem::Type)")]
@@ -111,7 +111,7 @@ namespace Qt {
 			ProxyQCheckListItem().NewQCheckListItem(parent,text,arg3);
 		}
 		public QCheckListItem(QListView parent, string text) : this((Type) null) {
-			CreateQCheckListItemProxy();
+			CreateProxy();
 			NewQCheckListItem(parent,text);
 		}
 		[SmokeMethod("QCheckListItem(QListView*, const QString&)")]
@@ -119,7 +119,7 @@ namespace Qt {
 			ProxyQCheckListItem().NewQCheckListItem(parent,text);
 		}
 		public QCheckListItem(QListView parent, QListViewItem after, string text, QCheckListItem.E_Type arg4) : this((Type) null) {
-			CreateQCheckListItemProxy();
+			CreateProxy();
 			NewQCheckListItem(parent,after,text,arg4);
 		}
 		[SmokeMethod("QCheckListItem(QListView*, QListViewItem*, const QString&, QCheckListItem::Type)")]
@@ -127,7 +127,7 @@ namespace Qt {
 			ProxyQCheckListItem().NewQCheckListItem(parent,after,text,arg4);
 		}
 		public QCheckListItem(QListView parent, QListViewItem after, string text) : this((Type) null) {
-			CreateQCheckListItemProxy();
+			CreateProxy();
 			NewQCheckListItem(parent,after,text);
 		}
 		[SmokeMethod("QCheckListItem(QListView*, QListViewItem*, const QString&)")]
@@ -135,7 +135,7 @@ namespace Qt {
 			ProxyQCheckListItem().NewQCheckListItem(parent,after,text);
 		}
 		public QCheckListItem(QListViewItem parent, string text, QPixmap arg3) : this((Type) null) {
-			CreateQCheckListItemProxy();
+			CreateProxy();
 			NewQCheckListItem(parent,text,arg3);
 		}
 		[SmokeMethod("QCheckListItem(QListViewItem*, const QString&, const QPixmap&)")]
@@ -143,7 +143,7 @@ namespace Qt {
 			ProxyQCheckListItem().NewQCheckListItem(parent,text,arg3);
 		}
 		public QCheckListItem(QListView parent, string text, QPixmap arg3) : this((Type) null) {
-			CreateQCheckListItemProxy();
+			CreateProxy();
 			NewQCheckListItem(parent,text,arg3);
 		}
 		[SmokeMethod("QCheckListItem(QListView*, const QString&, const QPixmap&)")]

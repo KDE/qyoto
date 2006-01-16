@@ -48,7 +48,7 @@ namespace Qt {
 		interface IQSqlQueryProxy {
 		}
 
-		protected void CreateQSqlQueryProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSqlQuery), this);
 			_interceptor = (QSqlQuery) realProxy.GetTransparentProxy();
 		}
@@ -65,7 +65,7 @@ namespace Qt {
 		}
 
 		public QSqlQuery(QSqlResult r) : this((Type) null) {
-			CreateQSqlQueryProxy();
+			CreateProxy();
 			NewQSqlQuery(r);
 		}
 		[SmokeMethod("QSqlQuery(QSqlResult*)")]
@@ -73,7 +73,7 @@ namespace Qt {
 			ProxyQSqlQuery().NewQSqlQuery(r);
 		}
 		public QSqlQuery(string query, QSqlDatabase db) : this((Type) null) {
-			CreateQSqlQueryProxy();
+			CreateProxy();
 			NewQSqlQuery(query,db);
 		}
 		[SmokeMethod("QSqlQuery(const QString&, QSqlDatabase*)")]
@@ -81,7 +81,7 @@ namespace Qt {
 			ProxyQSqlQuery().NewQSqlQuery(query,db);
 		}
 		public QSqlQuery(string query) : this((Type) null) {
-			CreateQSqlQueryProxy();
+			CreateProxy();
 			NewQSqlQuery(query);
 		}
 		[SmokeMethod("QSqlQuery(const QString&)")]
@@ -89,7 +89,7 @@ namespace Qt {
 			ProxyQSqlQuery().NewQSqlQuery(query);
 		}
 		public QSqlQuery() : this((Type) null) {
-			CreateQSqlQueryProxy();
+			CreateProxy();
 			NewQSqlQuery();
 		}
 		[SmokeMethod("QSqlQuery()")]
@@ -97,7 +97,7 @@ namespace Qt {
 			ProxyQSqlQuery().NewQSqlQuery();
 		}
 		public QSqlQuery(QSqlDatabase db) : this((Type) null) {
-			CreateQSqlQueryProxy();
+			CreateProxy();
 			NewQSqlQuery(db);
 		}
 		[SmokeMethod("QSqlQuery(QSqlDatabase*)")]
@@ -105,7 +105,7 @@ namespace Qt {
 			ProxyQSqlQuery().NewQSqlQuery(db);
 		}
 		public QSqlQuery(IQSqlQuery other) : this((Type) null) {
-			CreateQSqlQueryProxy();
+			CreateProxy();
 			NewQSqlQuery(other);
 		}
 		[SmokeMethod("QSqlQuery(const QSqlQuery&)")]

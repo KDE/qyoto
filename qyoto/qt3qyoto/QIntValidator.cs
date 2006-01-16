@@ -14,7 +14,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQIntValidatorProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QIntValidator), this);
 			_interceptor = (QIntValidator) realProxy.GetTransparentProxy();
 		}
@@ -39,8 +39,8 @@ namespace Qt {
 			return ProxyQIntValidator().ClassName();
 		}
 		public QIntValidator(QObject parent, string name) : this((Type) null) {
-			CreateQIntValidatorProxy();
-			CreateQIntValidatorSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQIntValidator(parent,name);
 		}
 		[SmokeMethod("QIntValidator(QObject*, const char*)")]
@@ -48,8 +48,8 @@ namespace Qt {
 			ProxyQIntValidator().NewQIntValidator(parent,name);
 		}
 		public QIntValidator(QObject parent) : this((Type) null) {
-			CreateQIntValidatorProxy();
-			CreateQIntValidatorSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQIntValidator(parent);
 		}
 		[SmokeMethod("QIntValidator(QObject*)")]
@@ -57,8 +57,8 @@ namespace Qt {
 			ProxyQIntValidator().NewQIntValidator(parent);
 		}
 		public QIntValidator(int bottom, int top, QObject parent, string name) : this((Type) null) {
-			CreateQIntValidatorProxy();
-			CreateQIntValidatorSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQIntValidator(bottom,top,parent,name);
 		}
 		[SmokeMethod("QIntValidator(int, int, QObject*, const char*)")]
@@ -66,8 +66,8 @@ namespace Qt {
 			ProxyQIntValidator().NewQIntValidator(bottom,top,parent,name);
 		}
 		public QIntValidator(int bottom, int top, QObject parent) : this((Type) null) {
-			CreateQIntValidatorProxy();
-			CreateQIntValidatorSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQIntValidator(bottom,top,parent);
 		}
 		[SmokeMethod("QIntValidator(int, int, QObject*)")]
@@ -123,7 +123,7 @@ namespace Qt {
 		private void DisposeQIntValidator() {
 			ProxyQIntValidator().DisposeQIntValidator();
 		}
-		protected void CreateQIntValidatorSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQIntValidatorSignals), this);
 			Q_EMIT = (IQIntValidatorSignals) realProxy.GetTransparentProxy();
 		}

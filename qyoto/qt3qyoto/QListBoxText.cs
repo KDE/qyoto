@@ -10,7 +10,7 @@ namespace Qt {
 		interface IQListBoxTextProxy {
 		}
 
-		protected void CreateQListBoxTextProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QListBoxText), this);
 			_interceptor = (QListBoxText) realProxy.GetTransparentProxy();
 		}
@@ -27,7 +27,7 @@ namespace Qt {
 		}
 
 		public QListBoxText(QListBox listbox, string text) : this((Type) null) {
-			CreateQListBoxTextProxy();
+			CreateProxy();
 			NewQListBoxText(listbox,text);
 		}
 		[SmokeMethod("QListBoxText(QListBox*, const QString&)")]
@@ -35,7 +35,7 @@ namespace Qt {
 			ProxyQListBoxText().NewQListBoxText(listbox,text);
 		}
 		public QListBoxText(QListBox listbox) : this((Type) null) {
-			CreateQListBoxTextProxy();
+			CreateProxy();
 			NewQListBoxText(listbox);
 		}
 		[SmokeMethod("QListBoxText(QListBox*)")]
@@ -43,7 +43,7 @@ namespace Qt {
 			ProxyQListBoxText().NewQListBoxText(listbox);
 		}
 		public QListBoxText(string text) : this((Type) null) {
-			CreateQListBoxTextProxy();
+			CreateProxy();
 			NewQListBoxText(text);
 		}
 		[SmokeMethod("QListBoxText(const QString&)")]
@@ -51,7 +51,7 @@ namespace Qt {
 			ProxyQListBoxText().NewQListBoxText(text);
 		}
 		public QListBoxText() : this((Type) null) {
-			CreateQListBoxTextProxy();
+			CreateProxy();
 			NewQListBoxText();
 		}
 		[SmokeMethod("QListBoxText()")]
@@ -59,7 +59,7 @@ namespace Qt {
 			ProxyQListBoxText().NewQListBoxText();
 		}
 		public QListBoxText(QListBox listbox, string text, QListBoxItem after) : this((Type) null) {
-			CreateQListBoxTextProxy();
+			CreateProxy();
 			NewQListBoxText(listbox,text,after);
 		}
 		[SmokeMethod("QListBoxText(QListBox*, const QString&, QListBoxItem*)")]

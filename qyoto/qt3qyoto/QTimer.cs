@@ -53,7 +53,7 @@ namespace Qt {
 			void SingleShot(int msec, QObject receiver, string member);
 		}
 
-		protected void CreateQTimerProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTimer), this);
 			_interceptor = (QTimer) realProxy.GetTransparentProxy();
 		}
@@ -78,8 +78,8 @@ namespace Qt {
 			return ProxyQTimer().ClassName();
 		}
 		public QTimer(QObject parent, string name) : this((Type) null) {
-			CreateQTimerProxy();
-			CreateQTimerSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQTimer(parent,name);
 		}
 		[SmokeMethod("QTimer(QObject*, const char*)")]
@@ -87,8 +87,8 @@ namespace Qt {
 			ProxyQTimer().NewQTimer(parent,name);
 		}
 		public QTimer(QObject parent) : this((Type) null) {
-			CreateQTimerProxy();
-			CreateQTimerSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQTimer(parent);
 		}
 		[SmokeMethod("QTimer(QObject*)")]
@@ -96,8 +96,8 @@ namespace Qt {
 			ProxyQTimer().NewQTimer(parent);
 		}
 		public QTimer() : this((Type) null) {
-			CreateQTimerProxy();
-			CreateQTimerSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQTimer();
 		}
 		[SmokeMethod("QTimer()")]
@@ -161,7 +161,7 @@ namespace Qt {
 		private void DisposeQTimer() {
 			ProxyQTimer().DisposeQTimer();
 		}
-		protected void CreateQTimerSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQTimerSignals), this);
 			Q_EMIT = (IQTimerSignals) realProxy.GetTransparentProxy();
 		}

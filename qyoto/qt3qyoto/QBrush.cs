@@ -10,7 +10,7 @@ namespace Qt {
 			bool op_equals(QBrush lhs, QBrush p);
 		}
 
-		protected void CreateQBrushProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QBrush), this);
 			_interceptor = (QBrush) realProxy.GetTransparentProxy();
 		}
@@ -27,7 +27,7 @@ namespace Qt {
 		}
 
 		public QBrush() : this((Type) null) {
-			CreateQBrushProxy();
+			CreateProxy();
 			NewQBrush();
 		}
 		[SmokeMethod("QBrush()")]
@@ -35,7 +35,7 @@ namespace Qt {
 			ProxyQBrush().NewQBrush();
 		}
 		public QBrush(Qt.BrushStyle arg1) : this((Type) null) {
-			CreateQBrushProxy();
+			CreateProxy();
 			NewQBrush(arg1);
 		}
 		[SmokeMethod("QBrush(Qt::BrushStyle)")]
@@ -43,7 +43,7 @@ namespace Qt {
 			ProxyQBrush().NewQBrush(arg1);
 		}
 		public QBrush(QColor arg1, Qt.BrushStyle arg2) : this((Type) null) {
-			CreateQBrushProxy();
+			CreateProxy();
 			NewQBrush(arg1,arg2);
 		}
 		[SmokeMethod("QBrush(const QColor&, Qt::BrushStyle)")]
@@ -51,7 +51,7 @@ namespace Qt {
 			ProxyQBrush().NewQBrush(arg1,arg2);
 		}
 		public QBrush(QColor arg1) : this((Type) null) {
-			CreateQBrushProxy();
+			CreateProxy();
 			NewQBrush(arg1);
 		}
 		[SmokeMethod("QBrush(const QColor&)")]
@@ -59,7 +59,7 @@ namespace Qt {
 			ProxyQBrush().NewQBrush(arg1);
 		}
 		public QBrush(QColor arg1, QPixmap arg2) : this((Type) null) {
-			CreateQBrushProxy();
+			CreateProxy();
 			NewQBrush(arg1,arg2);
 		}
 		[SmokeMethod("QBrush(const QColor&, const QPixmap&)")]
@@ -67,7 +67,7 @@ namespace Qt {
 			ProxyQBrush().NewQBrush(arg1,arg2);
 		}
 		public QBrush(QBrush arg1) : this((Type) null) {
-			CreateQBrushProxy();
+			CreateProxy();
 			NewQBrush(arg1);
 		}
 		[SmokeMethod("QBrush(const QBrush&)")]

@@ -17,7 +17,7 @@ namespace Qt {
 			string ScriptSample(QFont.Script arg1);
 		}
 
-		protected void CreateQFontDatabaseProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFontDatabase), this);
 			_interceptor = (QFontDatabase) realProxy.GetTransparentProxy();
 		}
@@ -34,7 +34,7 @@ namespace Qt {
 		}
 
 		public QFontDatabase() : this((Type) null) {
-			CreateQFontDatabaseProxy();
+			CreateProxy();
 			NewQFontDatabase();
 		}
 		[SmokeMethod("QFontDatabase()")]

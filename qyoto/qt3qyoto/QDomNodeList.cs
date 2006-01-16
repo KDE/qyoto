@@ -14,7 +14,7 @@ namespace Qt {
 			bool op_equals(QDomNodeList lhs, ArrayList arg1);
 		}
 
-		protected void CreateQDomNodeListProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomNodeList), this);
 			_interceptor = (QDomNodeList) realProxy.GetTransparentProxy();
 		}
@@ -31,7 +31,7 @@ namespace Qt {
 		}
 
 		public QDomNodeList() : this((Type) null) {
-			CreateQDomNodeListProxy();
+			CreateProxy();
 			NewQDomNodeList();
 		}
 		[SmokeMethod("QDomNodeList()")]
@@ -39,7 +39,7 @@ namespace Qt {
 			ProxyQDomNodeList().NewQDomNodeList();
 		}
 		public QDomNodeList(ArrayList arg1) : this((Type) null) {
-			CreateQDomNodeListProxy();
+			CreateProxy();
 			NewQDomNodeList(arg1);
 		}
 		[SmokeMethod("QDomNodeList(const QDomNodeList&)")]

@@ -15,7 +15,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQTimeEditProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTimeEdit), this);
 			_interceptor = (QTimeEdit) realProxy.GetTransparentProxy();
 		}
@@ -46,8 +46,8 @@ namespace Qt {
 			return ProxyQTimeEdit().ClassName();
 		}
 		public QTimeEdit(QWidget parent, string name) : this((Type) null) {
-			CreateQTimeEditProxy();
-			CreateQTimeEditSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQTimeEdit(parent,name);
 		}
 		[SmokeMethod("QTimeEdit(QWidget*, const char*)")]
@@ -55,8 +55,8 @@ namespace Qt {
 			ProxyQTimeEdit().NewQTimeEdit(parent,name);
 		}
 		public QTimeEdit(QWidget parent) : this((Type) null) {
-			CreateQTimeEditProxy();
-			CreateQTimeEditSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQTimeEdit(parent);
 		}
 		[SmokeMethod("QTimeEdit(QWidget*)")]
@@ -64,8 +64,8 @@ namespace Qt {
 			ProxyQTimeEdit().NewQTimeEdit(parent);
 		}
 		public QTimeEdit() : this((Type) null) {
-			CreateQTimeEditProxy();
-			CreateQTimeEditSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQTimeEdit();
 		}
 		[SmokeMethod("QTimeEdit()")]
@@ -73,8 +73,8 @@ namespace Qt {
 			ProxyQTimeEdit().NewQTimeEdit();
 		}
 		public QTimeEdit(DateTime time, QWidget parent, string name) : this((Type) null) {
-			CreateQTimeEditProxy();
-			CreateQTimeEditSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQTimeEdit(time,parent,name);
 		}
 		[SmokeMethod("QTimeEdit(const QTime&, QWidget*, const char*)")]
@@ -82,8 +82,8 @@ namespace Qt {
 			ProxyQTimeEdit().NewQTimeEdit(time,parent,name);
 		}
 		public QTimeEdit(DateTime time, QWidget parent) : this((Type) null) {
-			CreateQTimeEditProxy();
-			CreateQTimeEditSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQTimeEdit(time,parent);
 		}
 		[SmokeMethod("QTimeEdit(const QTime&, QWidget*)")]
@@ -91,8 +91,8 @@ namespace Qt {
 			ProxyQTimeEdit().NewQTimeEdit(time,parent);
 		}
 		public QTimeEdit(DateTime time) : this((Type) null) {
-			CreateQTimeEditProxy();
-			CreateQTimeEditSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQTimeEdit(time);
 		}
 		[SmokeMethod("QTimeEdit(const QTime&)")]
@@ -246,7 +246,7 @@ namespace Qt {
 		private void DisposeQTimeEdit() {
 			ProxyQTimeEdit().DisposeQTimeEdit();
 		}
-		protected void CreateQTimeEditSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQTimeEditSignals), this);
 			Q_EMIT = (IQTimeEditSignals) realProxy.GetTransparentProxy();
 		}

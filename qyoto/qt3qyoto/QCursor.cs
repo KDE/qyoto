@@ -14,7 +14,7 @@ namespace Qt {
 			void Cleanup();
 		}
 
-		protected void CreateQCursorProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QCursor), this);
 			_interceptor = (QCursor) realProxy.GetTransparentProxy();
 		}
@@ -31,7 +31,7 @@ namespace Qt {
 		}
 
 		public QCursor() : this((Type) null) {
-			CreateQCursorProxy();
+			CreateProxy();
 			NewQCursor();
 		}
 		[SmokeMethod("QCursor()")]
@@ -39,7 +39,7 @@ namespace Qt {
 			ProxyQCursor().NewQCursor();
 		}
 		public QCursor(int shape) : this((Type) null) {
-			CreateQCursorProxy();
+			CreateProxy();
 			NewQCursor(shape);
 		}
 		[SmokeMethod("QCursor(int)")]
@@ -47,7 +47,7 @@ namespace Qt {
 			ProxyQCursor().NewQCursor(shape);
 		}
 		public QCursor(QBitmap bitmap, QBitmap mask, int hotX, int hotY) : this((Type) null) {
-			CreateQCursorProxy();
+			CreateProxy();
 			NewQCursor(bitmap,mask,hotX,hotY);
 		}
 		[SmokeMethod("QCursor(const QBitmap&, const QBitmap&, int, int)")]
@@ -55,7 +55,7 @@ namespace Qt {
 			ProxyQCursor().NewQCursor(bitmap,mask,hotX,hotY);
 		}
 		public QCursor(QBitmap bitmap, QBitmap mask, int hotX) : this((Type) null) {
-			CreateQCursorProxy();
+			CreateProxy();
 			NewQCursor(bitmap,mask,hotX);
 		}
 		[SmokeMethod("QCursor(const QBitmap&, const QBitmap&, int)")]
@@ -63,7 +63,7 @@ namespace Qt {
 			ProxyQCursor().NewQCursor(bitmap,mask,hotX);
 		}
 		public QCursor(QBitmap bitmap, QBitmap mask) : this((Type) null) {
-			CreateQCursorProxy();
+			CreateProxy();
 			NewQCursor(bitmap,mask);
 		}
 		[SmokeMethod("QCursor(const QBitmap&, const QBitmap&)")]
@@ -71,7 +71,7 @@ namespace Qt {
 			ProxyQCursor().NewQCursor(bitmap,mask);
 		}
 		public QCursor(QPixmap pixmap, int hotX, int hotY) : this((Type) null) {
-			CreateQCursorProxy();
+			CreateProxy();
 			NewQCursor(pixmap,hotX,hotY);
 		}
 		[SmokeMethod("QCursor(const QPixmap&, int, int)")]
@@ -79,7 +79,7 @@ namespace Qt {
 			ProxyQCursor().NewQCursor(pixmap,hotX,hotY);
 		}
 		public QCursor(QPixmap pixmap, int hotX) : this((Type) null) {
-			CreateQCursorProxy();
+			CreateProxy();
 			NewQCursor(pixmap,hotX);
 		}
 		[SmokeMethod("QCursor(const QPixmap&, int)")]
@@ -87,7 +87,7 @@ namespace Qt {
 			ProxyQCursor().NewQCursor(pixmap,hotX);
 		}
 		public QCursor(QPixmap pixmap) : this((Type) null) {
-			CreateQCursorProxy();
+			CreateProxy();
 			NewQCursor(pixmap);
 		}
 		[SmokeMethod("QCursor(const QPixmap&)")]
@@ -95,7 +95,7 @@ namespace Qt {
 			ProxyQCursor().NewQCursor(pixmap);
 		}
 		public QCursor(QCursor arg1) : this((Type) null) {
-			CreateQCursorProxy();
+			CreateProxy();
 			NewQCursor(arg1);
 		}
 		[SmokeMethod("QCursor(const QCursor&)")]

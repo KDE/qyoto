@@ -9,7 +9,7 @@ namespace Qt {
 		interface IQWheelEventProxy {
 		}
 
-		protected void CreateQWheelEventProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QWheelEvent), this);
 			_interceptor = (QWheelEvent) realProxy.GetTransparentProxy();
 		}
@@ -26,7 +26,7 @@ namespace Qt {
 		}
 
 		public QWheelEvent(QPoint pos, int delta, int state, Qt.Orientation orient) : this((Type) null) {
-			CreateQWheelEventProxy();
+			CreateProxy();
 			NewQWheelEvent(pos,delta,state,orient);
 		}
 		[SmokeMethod("QWheelEvent(const QPoint&, int, int, Qt::Orientation)")]
@@ -34,7 +34,7 @@ namespace Qt {
 			ProxyQWheelEvent().NewQWheelEvent(pos,delta,state,orient);
 		}
 		public QWheelEvent(QPoint pos, int delta, int state) : this((Type) null) {
-			CreateQWheelEventProxy();
+			CreateProxy();
 			NewQWheelEvent(pos,delta,state);
 		}
 		[SmokeMethod("QWheelEvent(const QPoint&, int, int)")]
@@ -42,7 +42,7 @@ namespace Qt {
 			ProxyQWheelEvent().NewQWheelEvent(pos,delta,state);
 		}
 		public QWheelEvent(QPoint pos, QPoint globalPos, int delta, int state, Qt.Orientation orient) : this((Type) null) {
-			CreateQWheelEventProxy();
+			CreateProxy();
 			NewQWheelEvent(pos,globalPos,delta,state,orient);
 		}
 		[SmokeMethod("QWheelEvent(const QPoint&, const QPoint&, int, int, Qt::Orientation)")]
@@ -50,7 +50,7 @@ namespace Qt {
 			ProxyQWheelEvent().NewQWheelEvent(pos,globalPos,delta,state,orient);
 		}
 		public QWheelEvent(QPoint pos, QPoint globalPos, int delta, int state) : this((Type) null) {
-			CreateQWheelEventProxy();
+			CreateProxy();
 			NewQWheelEvent(pos,globalPos,delta,state);
 		}
 		[SmokeMethod("QWheelEvent(const QPoint&, const QPoint&, int, int)")]

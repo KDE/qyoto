@@ -90,7 +90,7 @@ namespace Qt {
 			void SetEffectEnabled(Qt.UIEffect arg1);
 		}
 
-		protected void CreateQApplicationProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QApplication), this);
 			_interceptor = (QApplication) realProxy.GetTransparentProxy();
 		}
@@ -591,8 +591,8 @@ namespace Qt {
 		/* Constructor #1 */
 		public QApplication(string[] argv) : this((Type) null) {
 			Qyoto.Init_qyoto();
-			CreateQApplicationProxy();
-			CreateQApplicationSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			Qt.qApp = this;
 			
 			string[] args = new string[argv.Length + 1];
@@ -613,8 +613,8 @@ namespace Qt {
 		/* Constructor #2 */
 		public QApplication(string[] argv, bool GUIenabled) : this((Type) null) {
 			Qyoto.Init_qyoto();
-			CreateQApplicationProxy();
-			CreateQApplicationSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			Qt.qApp = this;
 
 			string[] args = new string[argv.Length + 1];
@@ -635,8 +635,8 @@ namespace Qt {
 		/* Constructor #3 */
 		public QApplication(string[] argv, int arg3) : this((Type) null) {
 			Qyoto.Init_qyoto();
-			CreateQApplicationProxy();
-			CreateQApplicationSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			Qt.qApp = this;
 			
 			string[] args = new string[argv.Length + 1];
@@ -656,7 +656,7 @@ namespace Qt {
 
 //		public string[] args(return Argv());
 
-		protected void CreateQApplicationSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQApplicationSignals), this);
 			Q_EMIT = (IQApplicationSignals) realProxy.GetTransparentProxy();
 		}

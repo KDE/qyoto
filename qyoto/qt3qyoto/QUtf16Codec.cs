@@ -9,7 +9,7 @@ namespace Qt {
 		interface IQUtf16CodecProxy {
 		}
 
-		protected void CreateQUtf16CodecProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QUtf16Codec), this);
 			_interceptor = (QUtf16Codec) realProxy.GetTransparentProxy();
 		}
@@ -46,7 +46,7 @@ namespace Qt {
 			return ProxyQUtf16Codec().HeuristicContentMatch(chars,len);
 		}
 		public QUtf16Codec() : this((Type) null) {
-			CreateQUtf16CodecProxy();
+			CreateProxy();
 			NewQUtf16Codec();
 		}
 		[SmokeMethod("QUtf16Codec()")]

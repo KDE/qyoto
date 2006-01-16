@@ -14,7 +14,7 @@ namespace Qt {
 			bool Remove(string fileName);
 		}
 
-		protected void CreateQFileProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFile), this);
 			_interceptor = (QFile) realProxy.GetTransparentProxy();
 		}
@@ -31,7 +31,7 @@ namespace Qt {
 		}
 
 		public QFile() : this((Type) null) {
-			CreateQFileProxy();
+			CreateProxy();
 			NewQFile();
 		}
 		[SmokeMethod("QFile()")]
@@ -39,7 +39,7 @@ namespace Qt {
 			ProxyQFile().NewQFile();
 		}
 		public QFile(string name) : this((Type) null) {
-			CreateQFileProxy();
+			CreateProxy();
 			NewQFile(name);
 		}
 		[SmokeMethod("QFile(const QString&)")]

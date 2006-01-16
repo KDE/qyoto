@@ -9,7 +9,7 @@ namespace Qt {
 		interface IQSpacerItemProxy {
 		}
 
-		protected void CreateQSpacerItemProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSpacerItem), this);
 			_interceptor = (QSpacerItem) realProxy.GetTransparentProxy();
 		}
@@ -26,7 +26,7 @@ namespace Qt {
 		}
 
 		public QSpacerItem(int w, int h, QSizePolicy.SizeType hData, QSizePolicy.SizeType vData) : this((Type) null) {
-			CreateQSpacerItemProxy();
+			CreateProxy();
 			NewQSpacerItem(w,h,hData,vData);
 		}
 		[SmokeMethod("QSpacerItem(int, int, QSizePolicy::SizeType, QSizePolicy::SizeType)")]
@@ -34,7 +34,7 @@ namespace Qt {
 			ProxyQSpacerItem().NewQSpacerItem(w,h,hData,vData);
 		}
 		public QSpacerItem(int w, int h, QSizePolicy.SizeType hData) : this((Type) null) {
-			CreateQSpacerItemProxy();
+			CreateProxy();
 			NewQSpacerItem(w,h,hData);
 		}
 		[SmokeMethod("QSpacerItem(int, int, QSizePolicy::SizeType)")]
@@ -42,7 +42,7 @@ namespace Qt {
 			ProxyQSpacerItem().NewQSpacerItem(w,h,hData);
 		}
 		public QSpacerItem(int w, int h) : this((Type) null) {
-			CreateQSpacerItemProxy();
+			CreateProxy();
 			NewQSpacerItem(w,h);
 		}
 		[SmokeMethod("QSpacerItem(int, int)")]

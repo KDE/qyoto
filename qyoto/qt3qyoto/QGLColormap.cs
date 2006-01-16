@@ -12,7 +12,7 @@ namespace Qt {
 		interface IQGLColormapProxy {
 		}
 
-		protected void CreateQGLColormapProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGLColormap), this);
 			_interceptor = (QGLColormap) realProxy.GetTransparentProxy();
 		}
@@ -29,7 +29,7 @@ namespace Qt {
 		}
 
 		public QGLColormap() : this((Type) null) {
-			CreateQGLColormapProxy();
+			CreateProxy();
 			NewQGLColormap();
 		}
 		[SmokeMethod("QGLColormap()")]
@@ -37,7 +37,7 @@ namespace Qt {
 			ProxyQGLColormap().NewQGLColormap();
 		}
 		public QGLColormap(QGLColormap arg1) : this((Type) null) {
-			CreateQGLColormapProxy();
+			CreateProxy();
 			NewQGLColormap(arg1);
 		}
 		[SmokeMethod("QGLColormap(const QGLColormap&)")]

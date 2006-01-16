@@ -15,7 +15,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQWizardProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QWizard), this);
 			_interceptor = (QWizard) realProxy.GetTransparentProxy();
 		}
@@ -40,8 +40,8 @@ namespace Qt {
 			return ProxyQWizard().ClassName();
 		}
 		public QWizard(QWidget parent, string name, bool modal, int f) : this((Type) null) {
-			CreateQWizardProxy();
-			CreateQWizardSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQWizard(parent,name,modal,f);
 		}
 		[SmokeMethod("QWizard(QWidget*, const char*, bool, Qt::WFlags)")]
@@ -49,8 +49,8 @@ namespace Qt {
 			ProxyQWizard().NewQWizard(parent,name,modal,f);
 		}
 		public QWizard(QWidget parent, string name, bool modal) : this((Type) null) {
-			CreateQWizardProxy();
-			CreateQWizardSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQWizard(parent,name,modal);
 		}
 		[SmokeMethod("QWizard(QWidget*, const char*, bool)")]
@@ -58,8 +58,8 @@ namespace Qt {
 			ProxyQWizard().NewQWizard(parent,name,modal);
 		}
 		public QWizard(QWidget parent, string name) : this((Type) null) {
-			CreateQWizardProxy();
-			CreateQWizardSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQWizard(parent,name);
 		}
 		[SmokeMethod("QWizard(QWidget*, const char*)")]
@@ -67,8 +67,8 @@ namespace Qt {
 			ProxyQWizard().NewQWizard(parent,name);
 		}
 		public QWizard(QWidget parent) : this((Type) null) {
-			CreateQWizardProxy();
-			CreateQWizardSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQWizard(parent);
 		}
 		[SmokeMethod("QWizard(QWidget*)")]
@@ -76,8 +76,8 @@ namespace Qt {
 			ProxyQWizard().NewQWizard(parent);
 		}
 		public QWizard() : this((Type) null) {
-			CreateQWizardProxy();
-			CreateQWizardSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQWizard();
 		}
 		[SmokeMethod("QWizard()")]
@@ -245,7 +245,7 @@ namespace Qt {
 		private void DisposeQWizard() {
 			ProxyQWizard().DisposeQWizard();
 		}
-		protected void CreateQWizardSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQWizardSignals), this);
 			Q_EMIT = (IQWizardSignals) realProxy.GetTransparentProxy();
 		}

@@ -19,7 +19,7 @@ namespace Qt {
 			bool op_equals(QRegion lhs, QRegion arg1);
 		}
 
-		protected void CreateQRegionProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QRegion), this);
 			_interceptor = (QRegion) realProxy.GetTransparentProxy();
 		}
@@ -40,7 +40,7 @@ namespace Qt {
 			Ellipse = 1,
 		}
 		public QRegion() : this((Type) null) {
-			CreateQRegionProxy();
+			CreateProxy();
 			NewQRegion();
 		}
 		[SmokeMethod("QRegion()")]
@@ -48,7 +48,7 @@ namespace Qt {
 			ProxyQRegion().NewQRegion();
 		}
 		public QRegion(int x, int y, int w, int h, QRegion.RegionType arg5) : this((Type) null) {
-			CreateQRegionProxy();
+			CreateProxy();
 			NewQRegion(x,y,w,h,arg5);
 		}
 		[SmokeMethod("QRegion(int, int, int, int, QRegion::RegionType)")]
@@ -56,7 +56,7 @@ namespace Qt {
 			ProxyQRegion().NewQRegion(x,y,w,h,arg5);
 		}
 		public QRegion(int x, int y, int w, int h) : this((Type) null) {
-			CreateQRegionProxy();
+			CreateProxy();
 			NewQRegion(x,y,w,h);
 		}
 		[SmokeMethod("QRegion(int, int, int, int)")]
@@ -64,7 +64,7 @@ namespace Qt {
 			ProxyQRegion().NewQRegion(x,y,w,h);
 		}
 		public QRegion(QRect arg1, QRegion.RegionType arg2) : this((Type) null) {
-			CreateQRegionProxy();
+			CreateProxy();
 			NewQRegion(arg1,arg2);
 		}
 		[SmokeMethod("QRegion(const QRect&, QRegion::RegionType)")]
@@ -72,7 +72,7 @@ namespace Qt {
 			ProxyQRegion().NewQRegion(arg1,arg2);
 		}
 		public QRegion(QRect arg1) : this((Type) null) {
-			CreateQRegionProxy();
+			CreateProxy();
 			NewQRegion(arg1);
 		}
 		[SmokeMethod("QRegion(const QRect&)")]
@@ -80,7 +80,7 @@ namespace Qt {
 			ProxyQRegion().NewQRegion(arg1);
 		}
 		public QRegion(QPointArray arg1, bool winding) : this((Type) null) {
-			CreateQRegionProxy();
+			CreateProxy();
 			NewQRegion(arg1,winding);
 		}
 		[SmokeMethod("QRegion(const QPointArray&, bool)")]
@@ -88,7 +88,7 @@ namespace Qt {
 			ProxyQRegion().NewQRegion(arg1,winding);
 		}
 		public QRegion(QPointArray arg1) : this((Type) null) {
-			CreateQRegionProxy();
+			CreateProxy();
 			NewQRegion(arg1);
 		}
 		[SmokeMethod("QRegion(const QPointArray&)")]
@@ -96,7 +96,7 @@ namespace Qt {
 			ProxyQRegion().NewQRegion(arg1);
 		}
 		public QRegion(QRegion arg1) : this((Type) null) {
-			CreateQRegionProxy();
+			CreateProxy();
 			NewQRegion(arg1);
 		}
 		[SmokeMethod("QRegion(const QRegion&)")]
@@ -104,7 +104,7 @@ namespace Qt {
 			ProxyQRegion().NewQRegion(arg1);
 		}
 		public QRegion(QBitmap arg1) : this((Type) null) {
-			CreateQRegionProxy();
+			CreateProxy();
 			NewQRegion(arg1);
 		}
 		[SmokeMethod("QRegion(const QBitmap&)")]

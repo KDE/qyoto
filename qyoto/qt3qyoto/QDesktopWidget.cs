@@ -15,7 +15,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQDesktopWidgetProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDesktopWidget), this);
 			_interceptor = (QDesktopWidget) realProxy.GetTransparentProxy();
 		}
@@ -40,8 +40,8 @@ namespace Qt {
 			return ProxyQDesktopWidget().ClassName();
 		}
 		public QDesktopWidget() : this((Type) null) {
-			CreateQDesktopWidgetProxy();
-			CreateQDesktopWidgetSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQDesktopWidget();
 		}
 		[SmokeMethod("QDesktopWidget()")]
@@ -145,7 +145,7 @@ namespace Qt {
 		private void DisposeQDesktopWidget() {
 			ProxyQDesktopWidget().DisposeQDesktopWidget();
 		}
-		protected void CreateQDesktopWidgetSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQDesktopWidgetSignals), this);
 			Q_EMIT = (IQDesktopWidgetSignals) realProxy.GetTransparentProxy();
 		}

@@ -10,7 +10,7 @@ namespace Qt {
 		interface IQGbkCodecProxy {
 		}
 
-		protected void CreateQGbkCodecProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGbkCodec), this);
 			_interceptor = (QGbkCodec) realProxy.GetTransparentProxy();
 		}
@@ -27,7 +27,7 @@ namespace Qt {
 		}
 
 		public QGbkCodec() : this((Type) null) {
-			CreateQGbkCodecProxy();
+			CreateProxy();
 			NewQGbkCodec();
 		}
 		[SmokeMethod("QGbkCodec()")]

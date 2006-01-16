@@ -13,7 +13,7 @@ namespace Qt {
 		interface IQSqlRecordInfoProxy {
 		}
 
-		protected void CreateQSqlRecordInfoProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSqlRecordInfo), this);
 			_interceptor = (QSqlRecordInfo) realProxy.GetTransparentProxy();
 		}
@@ -30,7 +30,7 @@ namespace Qt {
 		}
 
 		public QSqlRecordInfo() : this((Type) null) {
-			CreateQSqlRecordInfoProxy();
+			CreateProxy();
 			NewQSqlRecordInfo();
 		}
 		[SmokeMethod("QSqlRecordInfo()")]
@@ -39,7 +39,7 @@ namespace Qt {
 		}
 		// QSqlRecordInfo* QSqlRecordInfo(const QSqlFieldInfoList& arg1); >>>> NOT CONVERTED
 		public QSqlRecordInfo(QSqlRecord other) : this((Type) null) {
-			CreateQSqlRecordInfoProxy();
+			CreateProxy();
 			NewQSqlRecordInfo(other);
 		}
 		[SmokeMethod("QSqlRecordInfo(const QSqlRecord&)")]

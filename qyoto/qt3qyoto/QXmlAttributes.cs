@@ -13,7 +13,7 @@ namespace Qt {
 		interface IQXmlAttributesProxy {
 		}
 
-		protected void CreateQXmlAttributesProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlAttributes), this);
 			_interceptor = (QXmlAttributes) realProxy.GetTransparentProxy();
 		}
@@ -30,7 +30,7 @@ namespace Qt {
 		}
 
 		public QXmlAttributes() : this((Type) null) {
-			CreateQXmlAttributesProxy();
+			CreateProxy();
 			NewQXmlAttributes();
 		}
 		[SmokeMethod("QXmlAttributes()")]

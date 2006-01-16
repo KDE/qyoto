@@ -12,7 +12,7 @@ namespace Qt {
 		interface IQMetaEnumProxy {
 		}
 
-		protected void CreateQMetaEnumProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMetaEnum), this);
 			_interceptor = (QMetaEnum) realProxy.GetTransparentProxy();
 		}
@@ -29,7 +29,7 @@ namespace Qt {
 		}
 
 		public QMetaEnum() : this((Type) null) {
-			CreateQMetaEnumProxy();
+			CreateProxy();
 			NewQMetaEnum();
 		}
 		[SmokeMethod("QMetaEnum()")]

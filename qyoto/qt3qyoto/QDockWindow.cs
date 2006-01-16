@@ -15,7 +15,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQDockWindowProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDockWindow), this);
 			_interceptor = (QDockWindow) realProxy.GetTransparentProxy();
 		}
@@ -50,8 +50,8 @@ namespace Qt {
 			return ProxyQDockWindow().ClassName();
 		}
 		public QDockWindow(QDockWindow.Place p, QWidget parent, string name, int f) : this((Type) null) {
-			CreateQDockWindowProxy();
-			CreateQDockWindowSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQDockWindow(p,parent,name,f);
 		}
 		[SmokeMethod("QDockWindow(QDockWindow::Place, QWidget*, const char*, Qt::WFlags)")]
@@ -59,8 +59,8 @@ namespace Qt {
 			ProxyQDockWindow().NewQDockWindow(p,parent,name,f);
 		}
 		public QDockWindow(QDockWindow.Place p, QWidget parent, string name) : this((Type) null) {
-			CreateQDockWindowProxy();
-			CreateQDockWindowSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQDockWindow(p,parent,name);
 		}
 		[SmokeMethod("QDockWindow(QDockWindow::Place, QWidget*, const char*)")]
@@ -68,8 +68,8 @@ namespace Qt {
 			ProxyQDockWindow().NewQDockWindow(p,parent,name);
 		}
 		public QDockWindow(QDockWindow.Place p, QWidget parent) : this((Type) null) {
-			CreateQDockWindowProxy();
-			CreateQDockWindowSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQDockWindow(p,parent);
 		}
 		[SmokeMethod("QDockWindow(QDockWindow::Place, QWidget*)")]
@@ -77,8 +77,8 @@ namespace Qt {
 			ProxyQDockWindow().NewQDockWindow(p,parent);
 		}
 		public QDockWindow(QDockWindow.Place p) : this((Type) null) {
-			CreateQDockWindowProxy();
-			CreateQDockWindowSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQDockWindow(p);
 		}
 		[SmokeMethod("QDockWindow(QDockWindow::Place)")]
@@ -86,8 +86,8 @@ namespace Qt {
 			ProxyQDockWindow().NewQDockWindow(p);
 		}
 		public QDockWindow() : this((Type) null) {
-			CreateQDockWindowProxy();
-			CreateQDockWindowSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQDockWindow();
 		}
 		[SmokeMethod("QDockWindow()")]
@@ -95,8 +95,8 @@ namespace Qt {
 			ProxyQDockWindow().NewQDockWindow();
 		}
 		public QDockWindow(QWidget parent, string name, int f) : this((Type) null) {
-			CreateQDockWindowProxy();
-			CreateQDockWindowSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQDockWindow(parent,name,f);
 		}
 		[SmokeMethod("QDockWindow(QWidget*, const char*, Qt::WFlags)")]
@@ -104,8 +104,8 @@ namespace Qt {
 			ProxyQDockWindow().NewQDockWindow(parent,name,f);
 		}
 		public QDockWindow(QWidget parent, string name) : this((Type) null) {
-			CreateQDockWindowProxy();
-			CreateQDockWindowSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQDockWindow(parent,name);
 		}
 		[SmokeMethod("QDockWindow(QWidget*, const char*)")]
@@ -113,8 +113,8 @@ namespace Qt {
 			ProxyQDockWindow().NewQDockWindow(parent,name);
 		}
 		public QDockWindow(QWidget parent) : this((Type) null) {
-			CreateQDockWindowProxy();
-			CreateQDockWindowSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQDockWindow(parent);
 		}
 		[SmokeMethod("QDockWindow(QWidget*)")]
@@ -339,7 +339,7 @@ namespace Qt {
 		private void DisposeQDockWindow() {
 			ProxyQDockWindow().DisposeQDockWindow();
 		}
-		protected void CreateQDockWindowSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQDockWindowSignals), this);
 			Q_EMIT = (IQDockWindowSignals) realProxy.GetTransparentProxy();
 		}

@@ -14,7 +14,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQGridProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGrid), this);
 			_interceptor = (QGrid) realProxy.GetTransparentProxy();
 		}
@@ -39,8 +39,8 @@ namespace Qt {
 			return ProxyQGrid().ClassName();
 		}
 		public QGrid(int n, QWidget parent, string name, int f) : this((Type) null) {
-			CreateQGridProxy();
-			CreateQGridSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQGrid(n,parent,name,f);
 		}
 		[SmokeMethod("QGrid(int, QWidget*, const char*, Qt::WFlags)")]
@@ -48,8 +48,8 @@ namespace Qt {
 			ProxyQGrid().NewQGrid(n,parent,name,f);
 		}
 		public QGrid(int n, QWidget parent, string name) : this((Type) null) {
-			CreateQGridProxy();
-			CreateQGridSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQGrid(n,parent,name);
 		}
 		[SmokeMethod("QGrid(int, QWidget*, const char*)")]
@@ -57,8 +57,8 @@ namespace Qt {
 			ProxyQGrid().NewQGrid(n,parent,name);
 		}
 		public QGrid(int n, QWidget parent) : this((Type) null) {
-			CreateQGridProxy();
-			CreateQGridSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQGrid(n,parent);
 		}
 		[SmokeMethod("QGrid(int, QWidget*)")]
@@ -66,8 +66,8 @@ namespace Qt {
 			ProxyQGrid().NewQGrid(n,parent);
 		}
 		public QGrid(int n) : this((Type) null) {
-			CreateQGridProxy();
-			CreateQGridSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQGrid(n);
 		}
 		[SmokeMethod("QGrid(int)")]
@@ -75,8 +75,8 @@ namespace Qt {
 			ProxyQGrid().NewQGrid(n);
 		}
 		public QGrid(int n, Qt.Orientation orient, QWidget parent, string name, int f) : this((Type) null) {
-			CreateQGridProxy();
-			CreateQGridSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQGrid(n,orient,parent,name,f);
 		}
 		[SmokeMethod("QGrid(int, Qt::Orientation, QWidget*, const char*, Qt::WFlags)")]
@@ -84,8 +84,8 @@ namespace Qt {
 			ProxyQGrid().NewQGrid(n,orient,parent,name,f);
 		}
 		public QGrid(int n, Qt.Orientation orient, QWidget parent, string name) : this((Type) null) {
-			CreateQGridProxy();
-			CreateQGridSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQGrid(n,orient,parent,name);
 		}
 		[SmokeMethod("QGrid(int, Qt::Orientation, QWidget*, const char*)")]
@@ -93,8 +93,8 @@ namespace Qt {
 			ProxyQGrid().NewQGrid(n,orient,parent,name);
 		}
 		public QGrid(int n, Qt.Orientation orient, QWidget parent) : this((Type) null) {
-			CreateQGridProxy();
-			CreateQGridSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQGrid(n,orient,parent);
 		}
 		[SmokeMethod("QGrid(int, Qt::Orientation, QWidget*)")]
@@ -102,8 +102,8 @@ namespace Qt {
 			ProxyQGrid().NewQGrid(n,orient,parent);
 		}
 		public QGrid(int n, Qt.Orientation orient) : this((Type) null) {
-			CreateQGridProxy();
-			CreateQGridSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQGrid(n,orient);
 		}
 		[SmokeMethod("QGrid(int, Qt::Orientation)")]
@@ -147,7 +147,7 @@ namespace Qt {
 		private void DisposeQGrid() {
 			ProxyQGrid().DisposeQGrid();
 		}
-		protected void CreateQGridSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQGridSignals), this);
 			Q_EMIT = (IQGridSignals) realProxy.GetTransparentProxy();
 		}

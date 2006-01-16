@@ -10,7 +10,7 @@ namespace Qt {
 		interface IQSqlSelectCursorProxy {
 		}
 
-		protected void CreateQSqlSelectCursorProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSqlSelectCursor), this);
 			_interceptor = (QSqlSelectCursor) realProxy.GetTransparentProxy();
 		}
@@ -27,7 +27,7 @@ namespace Qt {
 		}
 
 		public QSqlSelectCursor(string query, QSqlDatabase db) : this((Type) null) {
-			CreateQSqlSelectCursorProxy();
+			CreateProxy();
 			NewQSqlSelectCursor(query,db);
 		}
 		[SmokeMethod("QSqlSelectCursor(const QString&, QSqlDatabase*)")]
@@ -35,7 +35,7 @@ namespace Qt {
 			ProxyQSqlSelectCursor().NewQSqlSelectCursor(query,db);
 		}
 		public QSqlSelectCursor(string query) : this((Type) null) {
-			CreateQSqlSelectCursorProxy();
+			CreateProxy();
 			NewQSqlSelectCursor(query);
 		}
 		[SmokeMethod("QSqlSelectCursor(const QString&)")]
@@ -43,7 +43,7 @@ namespace Qt {
 			ProxyQSqlSelectCursor().NewQSqlSelectCursor(query);
 		}
 		public QSqlSelectCursor() : this((Type) null) {
-			CreateQSqlSelectCursorProxy();
+			CreateProxy();
 			NewQSqlSelectCursor();
 		}
 		[SmokeMethod("QSqlSelectCursor()")]
@@ -51,7 +51,7 @@ namespace Qt {
 			ProxyQSqlSelectCursor().NewQSqlSelectCursor();
 		}
 		public QSqlSelectCursor(QSqlSelectCursor other) : this((Type) null) {
-			CreateQSqlSelectCursorProxy();
+			CreateProxy();
 			NewQSqlSelectCursor(other);
 		}
 		[SmokeMethod("QSqlSelectCursor(const QSqlSelectCursor&)")]

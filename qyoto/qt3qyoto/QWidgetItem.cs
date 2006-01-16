@@ -9,7 +9,7 @@ namespace Qt {
 		interface IQWidgetItemProxy {
 		}
 
-		protected void CreateQWidgetItemProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QWidgetItem), this);
 			_interceptor = (QWidgetItem) realProxy.GetTransparentProxy();
 		}
@@ -26,7 +26,7 @@ namespace Qt {
 		}
 
 		public QWidgetItem(QWidget w) : this((Type) null) {
-			CreateQWidgetItemProxy();
+			CreateProxy();
 			NewQWidgetItem(w);
 		}
 		[SmokeMethod("QWidgetItem(QWidget*)")]

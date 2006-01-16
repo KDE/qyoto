@@ -9,7 +9,7 @@ namespace Qt {
 		interface IQContextMenuEventProxy {
 		}
 
-		protected void CreateQContextMenuEventProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QContextMenuEvent), this);
 			_interceptor = (QContextMenuEvent) realProxy.GetTransparentProxy();
 		}
@@ -31,7 +31,7 @@ namespace Qt {
 			Other = 2,
 		}
 		public QContextMenuEvent(QContextMenuEvent.Reason reason, QPoint pos, QPoint globalPos, int state) : this((Type) null) {
-			CreateQContextMenuEventProxy();
+			CreateProxy();
 			NewQContextMenuEvent(reason,pos,globalPos,state);
 		}
 		[SmokeMethod("QContextMenuEvent(QContextMenuEvent::Reason, const QPoint&, const QPoint&, int)")]
@@ -39,7 +39,7 @@ namespace Qt {
 			ProxyQContextMenuEvent().NewQContextMenuEvent(reason,pos,globalPos,state);
 		}
 		public QContextMenuEvent(QContextMenuEvent.Reason reason, QPoint pos, int state) : this((Type) null) {
-			CreateQContextMenuEventProxy();
+			CreateProxy();
 			NewQContextMenuEvent(reason,pos,state);
 		}
 		[SmokeMethod("QContextMenuEvent(QContextMenuEvent::Reason, const QPoint&, int)")]

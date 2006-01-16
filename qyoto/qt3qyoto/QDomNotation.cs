@@ -10,7 +10,7 @@ namespace Qt {
 		interface IQDomNotationProxy {
 		}
 
-		protected void CreateQDomNotationProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomNotation), this);
 			_interceptor = (QDomNotation) realProxy.GetTransparentProxy();
 		}
@@ -27,7 +27,7 @@ namespace Qt {
 		}
 
 		public QDomNotation() : this((Type) null) {
-			CreateQDomNotationProxy();
+			CreateProxy();
 			NewQDomNotation();
 		}
 		[SmokeMethod("QDomNotation()")]
@@ -35,7 +35,7 @@ namespace Qt {
 			ProxyQDomNotation().NewQDomNotation();
 		}
 		public QDomNotation(QDomNotation x) : this((Type) null) {
-			CreateQDomNotationProxy();
+			CreateProxy();
 			NewQDomNotation(x);
 		}
 		[SmokeMethod("QDomNotation(const QDomNotation&)")]

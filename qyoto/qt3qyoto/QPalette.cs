@@ -15,7 +15,7 @@ namespace Qt {
 			QColorGroup.ColorRole BackgroundRoleFromMode(Qt.BackgroundMode mode);
 		}
 
-		protected void CreateQPaletteProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPalette), this);
 			_interceptor = (QPalette) realProxy.GetTransparentProxy();
 		}
@@ -39,7 +39,7 @@ namespace Qt {
 			Normal = Active,
 		}
 		public QPalette() : this((Type) null) {
-			CreateQPaletteProxy();
+			CreateProxy();
 			NewQPalette();
 		}
 		[SmokeMethod("QPalette()")]
@@ -47,7 +47,7 @@ namespace Qt {
 			ProxyQPalette().NewQPalette();
 		}
 		public QPalette(QColor button) : this((Type) null) {
-			CreateQPaletteProxy();
+			CreateProxy();
 			NewQPalette(button);
 		}
 		[SmokeMethod("QPalette(const QColor&)")]
@@ -55,7 +55,7 @@ namespace Qt {
 			ProxyQPalette().NewQPalette(button);
 		}
 		public QPalette(QColor button, QColor background) : this((Type) null) {
-			CreateQPaletteProxy();
+			CreateProxy();
 			NewQPalette(button,background);
 		}
 		[SmokeMethod("QPalette(const QColor&, const QColor&)")]
@@ -63,7 +63,7 @@ namespace Qt {
 			ProxyQPalette().NewQPalette(button,background);
 		}
 		public QPalette(QColorGroup active, QColorGroup disabled, QColorGroup inactive) : this((Type) null) {
-			CreateQPaletteProxy();
+			CreateProxy();
 			NewQPalette(active,disabled,inactive);
 		}
 		[SmokeMethod("QPalette(const QColorGroup&, const QColorGroup&, const QColorGroup&)")]
@@ -71,7 +71,7 @@ namespace Qt {
 			ProxyQPalette().NewQPalette(active,disabled,inactive);
 		}
 		public QPalette(QPalette arg1) : this((Type) null) {
-			CreateQPaletteProxy();
+			CreateProxy();
 			NewQPalette(arg1);
 		}
 		[SmokeMethod("QPalette(const QPalette&)")]

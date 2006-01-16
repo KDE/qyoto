@@ -16,7 +16,7 @@ namespace Qt {
 			QStyle Create(string arg1);
 		}
 
-		protected void CreateQStyleFactoryProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleFactory), this);
 			_interceptor = (QStyleFactory) realProxy.GetTransparentProxy();
 		}
@@ -33,7 +33,7 @@ namespace Qt {
 		}
 
 		public QStyleFactory() : this((Type) null) {
-			CreateQStyleFactoryProxy();
+			CreateProxy();
 			NewQStyleFactory();
 		}
 		[SmokeMethod("QStyleFactory()")]

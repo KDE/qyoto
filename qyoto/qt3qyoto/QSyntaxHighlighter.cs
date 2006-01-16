@@ -10,7 +10,7 @@ namespace Qt {
 		interface IQSyntaxHighlighterProxy {
 		}
 
-		protected void CreateQSyntaxHighlighterProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSyntaxHighlighter), this);
 			_interceptor = (QSyntaxHighlighter) realProxy.GetTransparentProxy();
 		}
@@ -27,7 +27,7 @@ namespace Qt {
 		}
 
 		public QSyntaxHighlighter(QTextEdit textEdit) : this((Type) null) {
-			CreateQSyntaxHighlighterProxy();
+			CreateProxy();
 			NewQSyntaxHighlighter(textEdit);
 		}
 		[SmokeMethod("QSyntaxHighlighter(QTextEdit*)")]

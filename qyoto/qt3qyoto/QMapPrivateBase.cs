@@ -9,7 +9,7 @@ namespace Qt {
 		interface IQMapPrivateBaseProxy {
 		}
 
-		protected void CreateQMapPrivateBaseProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMapPrivateBase), this);
 			_interceptor = (QMapPrivateBase) realProxy.GetTransparentProxy();
 		}

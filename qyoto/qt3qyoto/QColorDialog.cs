@@ -26,7 +26,7 @@ namespace Qt {
 			void SetStandardColor(int arg1, uint arg2);
 		}
 
-		protected void CreateQColorDialogProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QColorDialog), this);
 			_interceptor = (QColorDialog) realProxy.GetTransparentProxy();
 		}
@@ -114,7 +114,7 @@ namespace Qt {
 		public static void SetStandardColor(int arg1, uint arg2) {
 			StaticQColorDialog().SetStandardColor(arg1,arg2);
 		}
-		protected void CreateQColorDialogSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQColorDialogSignals), this);
 			Q_EMIT = (IQColorDialogSignals) realProxy.GetTransparentProxy();
 		}

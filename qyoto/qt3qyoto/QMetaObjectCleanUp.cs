@@ -12,7 +12,7 @@ namespace Qt {
 		interface IQMetaObjectCleanUpProxy {
 		}
 
-		protected void CreateQMetaObjectCleanUpProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMetaObjectCleanUp), this);
 			_interceptor = (QMetaObjectCleanUp) realProxy.GetTransparentProxy();
 		}
@@ -29,7 +29,7 @@ namespace Qt {
 		}
 
 		public QMetaObjectCleanUp() : this((Type) null) {
-			CreateQMetaObjectCleanUpProxy();
+			CreateProxy();
 			NewQMetaObjectCleanUp();
 		}
 		[SmokeMethod("QMetaObjectCleanUp()")]

@@ -18,7 +18,7 @@ namespace Qt {
 			void UnregisterDecoderFactory(QImageFormatType arg1);
 		}
 
-		protected void CreateQImageDecoderProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QImageDecoder), this);
 			_interceptor = (QImageDecoder) realProxy.GetTransparentProxy();
 		}
@@ -35,7 +35,7 @@ namespace Qt {
 		}
 
 		public QImageDecoder(QImageConsumer c) : this((Type) null) {
-			CreateQImageDecoderProxy();
+			CreateProxy();
 			NewQImageDecoder(c);
 		}
 		[SmokeMethod("QImageDecoder(QImageConsumer*)")]

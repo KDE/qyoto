@@ -14,7 +14,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQDateTimeEditBaseProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDateTimeEditBase), this);
 			_interceptor = (QDateTimeEditBase) realProxy.GetTransparentProxy();
 		}
@@ -39,8 +39,8 @@ namespace Qt {
 			return ProxyQDateTimeEditBase().ClassName();
 		}
 		public QDateTimeEditBase(QWidget parent, string name) : this((Type) null) {
-			CreateQDateTimeEditBaseProxy();
-			CreateQDateTimeEditBaseSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQDateTimeEditBase(parent,name);
 		}
 		[SmokeMethod("QDateTimeEditBase(QWidget*, const char*)")]
@@ -48,8 +48,8 @@ namespace Qt {
 			ProxyQDateTimeEditBase().NewQDateTimeEditBase(parent,name);
 		}
 		public QDateTimeEditBase(QWidget parent) : this((Type) null) {
-			CreateQDateTimeEditBaseProxy();
-			CreateQDateTimeEditBaseSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQDateTimeEditBase(parent);
 		}
 		[SmokeMethod("QDateTimeEditBase(QWidget*)")]
@@ -57,8 +57,8 @@ namespace Qt {
 			ProxyQDateTimeEditBase().NewQDateTimeEditBase(parent);
 		}
 		public QDateTimeEditBase() : this((Type) null) {
-			CreateQDateTimeEditBaseProxy();
-			CreateQDateTimeEditBaseSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQDateTimeEditBase();
 		}
 		[SmokeMethod("QDateTimeEditBase()")]
@@ -116,7 +116,7 @@ namespace Qt {
 		private void DisposeQDateTimeEditBase() {
 			ProxyQDateTimeEditBase().DisposeQDateTimeEditBase();
 		}
-		protected void CreateQDateTimeEditBaseSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQDateTimeEditBaseSignals), this);
 			Q_EMIT = (IQDateTimeEditBaseSignals) realProxy.GetTransparentProxy();
 		}

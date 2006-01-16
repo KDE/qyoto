@@ -15,7 +15,7 @@ namespace Qt {
 			QTextCodec CreateForMib(int arg1);
 		}
 
-		protected void CreateQTextCodecFactoryProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextCodecFactory), this);
 			_interceptor = (QTextCodecFactory) realProxy.GetTransparentProxy();
 		}
@@ -32,7 +32,7 @@ namespace Qt {
 		}
 
 		public QTextCodecFactory() : this((Type) null) {
-			CreateQTextCodecFactoryProxy();
+			CreateProxy();
 			NewQTextCodecFactory();
 		}
 		[SmokeMethod("QTextCodecFactory()")]

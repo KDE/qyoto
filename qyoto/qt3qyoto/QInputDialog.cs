@@ -42,7 +42,7 @@ namespace Qt {
 			string GetItem(string caption, string label, string[] list);
 		}
 
-		protected void CreateQInputDialogProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QInputDialog), this);
 			_interceptor = (QInputDialog) realProxy.GetTransparentProxy();
 		}
@@ -194,7 +194,7 @@ namespace Qt {
 		public static string GetItem(string caption, string label, string[] list) {
 			return StaticQInputDialog().GetItem(caption,label,list);
 		}
-		protected void CreateQInputDialogSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQInputDialogSignals), this);
 			Q_EMIT = (IQInputDialogSignals) realProxy.GetTransparentProxy();
 		}

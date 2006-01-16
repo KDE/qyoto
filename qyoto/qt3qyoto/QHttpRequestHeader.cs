@@ -10,7 +10,7 @@ namespace Qt {
 		interface IQHttpRequestHeaderProxy {
 		}
 
-		protected void CreateQHttpRequestHeaderProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QHttpRequestHeader), this);
 			_interceptor = (QHttpRequestHeader) realProxy.GetTransparentProxy();
 		}
@@ -27,7 +27,7 @@ namespace Qt {
 		}
 
 		public QHttpRequestHeader() : this((Type) null) {
-			CreateQHttpRequestHeaderProxy();
+			CreateProxy();
 			NewQHttpRequestHeader();
 		}
 		[SmokeMethod("QHttpRequestHeader()")]
@@ -35,7 +35,7 @@ namespace Qt {
 			ProxyQHttpRequestHeader().NewQHttpRequestHeader();
 		}
 		public QHttpRequestHeader(string method, string path, int majorVer, int minorVer) : this((Type) null) {
-			CreateQHttpRequestHeaderProxy();
+			CreateProxy();
 			NewQHttpRequestHeader(method,path,majorVer,minorVer);
 		}
 		[SmokeMethod("QHttpRequestHeader(const QString&, const QString&, int, int)")]
@@ -43,7 +43,7 @@ namespace Qt {
 			ProxyQHttpRequestHeader().NewQHttpRequestHeader(method,path,majorVer,minorVer);
 		}
 		public QHttpRequestHeader(string method, string path, int majorVer) : this((Type) null) {
-			CreateQHttpRequestHeaderProxy();
+			CreateProxy();
 			NewQHttpRequestHeader(method,path,majorVer);
 		}
 		[SmokeMethod("QHttpRequestHeader(const QString&, const QString&, int)")]
@@ -51,7 +51,7 @@ namespace Qt {
 			ProxyQHttpRequestHeader().NewQHttpRequestHeader(method,path,majorVer);
 		}
 		public QHttpRequestHeader(string method, string path) : this((Type) null) {
-			CreateQHttpRequestHeaderProxy();
+			CreateProxy();
 			NewQHttpRequestHeader(method,path);
 		}
 		[SmokeMethod("QHttpRequestHeader(const QString&, const QString&)")]
@@ -59,7 +59,7 @@ namespace Qt {
 			ProxyQHttpRequestHeader().NewQHttpRequestHeader(method,path);
 		}
 		public QHttpRequestHeader(QHttpRequestHeader header) : this((Type) null) {
-			CreateQHttpRequestHeaderProxy();
+			CreateProxy();
 			NewQHttpRequestHeader(header);
 		}
 		[SmokeMethod("QHttpRequestHeader(const QHttpRequestHeader&)")]
@@ -67,7 +67,7 @@ namespace Qt {
 			ProxyQHttpRequestHeader().NewQHttpRequestHeader(header);
 		}
 		public QHttpRequestHeader(string str) : this((Type) null) {
-			CreateQHttpRequestHeaderProxy();
+			CreateProxy();
 			NewQHttpRequestHeader(str);
 		}
 		[SmokeMethod("QHttpRequestHeader(const QString&)")]

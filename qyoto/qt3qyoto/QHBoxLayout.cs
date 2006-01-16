@@ -14,7 +14,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQHBoxLayoutProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QHBoxLayout), this);
 			_interceptor = (QHBoxLayout) realProxy.GetTransparentProxy();
 		}
@@ -39,8 +39,8 @@ namespace Qt {
 			return ProxyQHBoxLayout().ClassName();
 		}
 		public QHBoxLayout(QWidget parent, int border, int spacing, string name) : this((Type) null) {
-			CreateQHBoxLayoutProxy();
-			CreateQHBoxLayoutSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQHBoxLayout(parent,border,spacing,name);
 		}
 		[SmokeMethod("QHBoxLayout(QWidget*, int, int, const char*)")]
@@ -48,8 +48,8 @@ namespace Qt {
 			ProxyQHBoxLayout().NewQHBoxLayout(parent,border,spacing,name);
 		}
 		public QHBoxLayout(QWidget parent, int border, int spacing) : this((Type) null) {
-			CreateQHBoxLayoutProxy();
-			CreateQHBoxLayoutSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQHBoxLayout(parent,border,spacing);
 		}
 		[SmokeMethod("QHBoxLayout(QWidget*, int, int)")]
@@ -57,8 +57,8 @@ namespace Qt {
 			ProxyQHBoxLayout().NewQHBoxLayout(parent,border,spacing);
 		}
 		public QHBoxLayout(QWidget parent, int border) : this((Type) null) {
-			CreateQHBoxLayoutProxy();
-			CreateQHBoxLayoutSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQHBoxLayout(parent,border);
 		}
 		[SmokeMethod("QHBoxLayout(QWidget*, int)")]
@@ -66,8 +66,8 @@ namespace Qt {
 			ProxyQHBoxLayout().NewQHBoxLayout(parent,border);
 		}
 		public QHBoxLayout(QWidget parent) : this((Type) null) {
-			CreateQHBoxLayoutProxy();
-			CreateQHBoxLayoutSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQHBoxLayout(parent);
 		}
 		[SmokeMethod("QHBoxLayout(QWidget*)")]
@@ -75,8 +75,8 @@ namespace Qt {
 			ProxyQHBoxLayout().NewQHBoxLayout(parent);
 		}
 		public QHBoxLayout(QLayout parentLayout, int spacing, string name) : this((Type) null) {
-			CreateQHBoxLayoutProxy();
-			CreateQHBoxLayoutSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQHBoxLayout(parentLayout,spacing,name);
 		}
 		[SmokeMethod("QHBoxLayout(QLayout*, int, const char*)")]
@@ -84,8 +84,8 @@ namespace Qt {
 			ProxyQHBoxLayout().NewQHBoxLayout(parentLayout,spacing,name);
 		}
 		public QHBoxLayout(QLayout parentLayout, int spacing) : this((Type) null) {
-			CreateQHBoxLayoutProxy();
-			CreateQHBoxLayoutSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQHBoxLayout(parentLayout,spacing);
 		}
 		[SmokeMethod("QHBoxLayout(QLayout*, int)")]
@@ -93,8 +93,8 @@ namespace Qt {
 			ProxyQHBoxLayout().NewQHBoxLayout(parentLayout,spacing);
 		}
 		public QHBoxLayout(QLayout parentLayout) : this((Type) null) {
-			CreateQHBoxLayoutProxy();
-			CreateQHBoxLayoutSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQHBoxLayout(parentLayout);
 		}
 		[SmokeMethod("QHBoxLayout(QLayout*)")]
@@ -102,8 +102,8 @@ namespace Qt {
 			ProxyQHBoxLayout().NewQHBoxLayout(parentLayout);
 		}
 		public QHBoxLayout(int spacing, string name) : this((Type) null) {
-			CreateQHBoxLayoutProxy();
-			CreateQHBoxLayoutSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQHBoxLayout(spacing,name);
 		}
 		[SmokeMethod("QHBoxLayout(int, const char*)")]
@@ -111,8 +111,8 @@ namespace Qt {
 			ProxyQHBoxLayout().NewQHBoxLayout(spacing,name);
 		}
 		public QHBoxLayout(int spacing) : this((Type) null) {
-			CreateQHBoxLayoutProxy();
-			CreateQHBoxLayoutSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQHBoxLayout(spacing);
 		}
 		[SmokeMethod("QHBoxLayout(int)")]
@@ -120,8 +120,8 @@ namespace Qt {
 			ProxyQHBoxLayout().NewQHBoxLayout(spacing);
 		}
 		public QHBoxLayout() : this((Type) null) {
-			CreateQHBoxLayoutProxy();
-			CreateQHBoxLayoutSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQHBoxLayout();
 		}
 		[SmokeMethod("QHBoxLayout()")]
@@ -153,7 +153,7 @@ namespace Qt {
 		private void DisposeQHBoxLayout() {
 			ProxyQHBoxLayout().DisposeQHBoxLayout();
 		}
-		protected void CreateQHBoxLayoutSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQHBoxLayoutSignals), this);
 			Q_EMIT = (IQHBoxLayoutSignals) realProxy.GetTransparentProxy();
 		}

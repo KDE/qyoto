@@ -16,7 +16,7 @@ using System.Collections;
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQListViewProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QListView), this);
 			_interceptor = (QListView) realProxy.GetTransparentProxy();
 		}
@@ -60,8 +60,8 @@ using System.Collections;
 			return ProxyQListView().ClassName();
 		}
 		public QListView(QWidget parent, string name, int f) : this((Type) null) {
-			CreateQListViewProxy();
-			CreateQListViewSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQListView(parent,name,f);
 		}
 		[SmokeMethod("QListView(QWidget*, const char*, Qt::WFlags)")]
@@ -69,8 +69,8 @@ using System.Collections;
 			ProxyQListView().NewQListView(parent,name,f);
 		}
 		public QListView(QWidget parent, string name) : this((Type) null) {
-			CreateQListViewProxy();
-			CreateQListViewSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQListView(parent,name);
 		}
 		[SmokeMethod("QListView(QWidget*, const char*)")]
@@ -78,8 +78,8 @@ using System.Collections;
 			ProxyQListView().NewQListView(parent,name);
 		}
 		public QListView(QWidget parent) : this((Type) null) {
-			CreateQListViewProxy();
-			CreateQListViewSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQListView(parent);
 		}
 		[SmokeMethod("QListView(QWidget*)")]
@@ -87,8 +87,8 @@ using System.Collections;
 			ProxyQListView().NewQListView(parent);
 		}
 		public QListView() : this((Type) null) {
-			CreateQListViewProxy();
-			CreateQListViewSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQListView();
 		}
 		[SmokeMethod("QListView()")]
@@ -537,7 +537,7 @@ using System.Collections;
 			ProxyQListView().DisposeQListView();
 		}
 
-		protected void CreateQListViewSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQListViewSignals), this);
 			Q_EMIT = (IQListViewSignals) realProxy.GetTransparentProxy();
 		}

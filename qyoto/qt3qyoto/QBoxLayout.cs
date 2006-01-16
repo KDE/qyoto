@@ -14,7 +14,7 @@ namespace Qt {
 			string TrUtf8(string arg1);
 		}
 
-		protected void CreateQBoxLayoutProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QBoxLayout), this);
 			_interceptor = (QBoxLayout) realProxy.GetTransparentProxy();
 		}
@@ -47,8 +47,8 @@ namespace Qt {
 			return ProxyQBoxLayout().ClassName();
 		}
 		public QBoxLayout(QWidget parent, QBoxLayout.Direction arg2, int border, int spacing, string name) : this((Type) null) {
-			CreateQBoxLayoutProxy();
-			CreateQBoxLayoutSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQBoxLayout(parent,arg2,border,spacing,name);
 		}
 		[SmokeMethod("QBoxLayout(QWidget*, QBoxLayout::Direction, int, int, const char*)")]
@@ -56,8 +56,8 @@ namespace Qt {
 			ProxyQBoxLayout().NewQBoxLayout(parent,arg2,border,spacing,name);
 		}
 		public QBoxLayout(QWidget parent, QBoxLayout.Direction arg2, int border, int spacing) : this((Type) null) {
-			CreateQBoxLayoutProxy();
-			CreateQBoxLayoutSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQBoxLayout(parent,arg2,border,spacing);
 		}
 		[SmokeMethod("QBoxLayout(QWidget*, QBoxLayout::Direction, int, int)")]
@@ -65,8 +65,8 @@ namespace Qt {
 			ProxyQBoxLayout().NewQBoxLayout(parent,arg2,border,spacing);
 		}
 		public QBoxLayout(QWidget parent, QBoxLayout.Direction arg2, int border) : this((Type) null) {
-			CreateQBoxLayoutProxy();
-			CreateQBoxLayoutSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQBoxLayout(parent,arg2,border);
 		}
 		[SmokeMethod("QBoxLayout(QWidget*, QBoxLayout::Direction, int)")]
@@ -74,8 +74,8 @@ namespace Qt {
 			ProxyQBoxLayout().NewQBoxLayout(parent,arg2,border);
 		}
 		public QBoxLayout(QWidget parent, QBoxLayout.Direction arg2) : this((Type) null) {
-			CreateQBoxLayoutProxy();
-			CreateQBoxLayoutSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQBoxLayout(parent,arg2);
 		}
 		[SmokeMethod("QBoxLayout(QWidget*, QBoxLayout::Direction)")]
@@ -83,8 +83,8 @@ namespace Qt {
 			ProxyQBoxLayout().NewQBoxLayout(parent,arg2);
 		}
 		public QBoxLayout(QLayout parentLayout, QBoxLayout.Direction arg2, int spacing, string name) : this((Type) null) {
-			CreateQBoxLayoutProxy();
-			CreateQBoxLayoutSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQBoxLayout(parentLayout,arg2,spacing,name);
 		}
 		[SmokeMethod("QBoxLayout(QLayout*, QBoxLayout::Direction, int, const char*)")]
@@ -92,8 +92,8 @@ namespace Qt {
 			ProxyQBoxLayout().NewQBoxLayout(parentLayout,arg2,spacing,name);
 		}
 		public QBoxLayout(QLayout parentLayout, QBoxLayout.Direction arg2, int spacing) : this((Type) null) {
-			CreateQBoxLayoutProxy();
-			CreateQBoxLayoutSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQBoxLayout(parentLayout,arg2,spacing);
 		}
 		[SmokeMethod("QBoxLayout(QLayout*, QBoxLayout::Direction, int)")]
@@ -101,8 +101,8 @@ namespace Qt {
 			ProxyQBoxLayout().NewQBoxLayout(parentLayout,arg2,spacing);
 		}
 		public QBoxLayout(QLayout parentLayout, QBoxLayout.Direction arg2) : this((Type) null) {
-			CreateQBoxLayoutProxy();
-			CreateQBoxLayoutSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQBoxLayout(parentLayout,arg2);
 		}
 		[SmokeMethod("QBoxLayout(QLayout*, QBoxLayout::Direction)")]
@@ -110,8 +110,8 @@ namespace Qt {
 			ProxyQBoxLayout().NewQBoxLayout(parentLayout,arg2);
 		}
 		public QBoxLayout(QBoxLayout.Direction arg1, int spacing, string name) : this((Type) null) {
-			CreateQBoxLayoutProxy();
-			CreateQBoxLayoutSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQBoxLayout(arg1,spacing,name);
 		}
 		[SmokeMethod("QBoxLayout(QBoxLayout::Direction, int, const char*)")]
@@ -119,8 +119,8 @@ namespace Qt {
 			ProxyQBoxLayout().NewQBoxLayout(arg1,spacing,name);
 		}
 		public QBoxLayout(QBoxLayout.Direction arg1, int spacing) : this((Type) null) {
-			CreateQBoxLayoutProxy();
-			CreateQBoxLayoutSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQBoxLayout(arg1,spacing);
 		}
 		[SmokeMethod("QBoxLayout(QBoxLayout::Direction, int)")]
@@ -128,8 +128,8 @@ namespace Qt {
 			ProxyQBoxLayout().NewQBoxLayout(arg1,spacing);
 		}
 		public QBoxLayout(QBoxLayout.Direction arg1) : this((Type) null) {
-			CreateQBoxLayoutProxy();
-			CreateQBoxLayoutSignalProxy();
+			CreateProxy();
+			CreateSignalProxy();
 			NewQBoxLayout(arg1);
 		}
 		[SmokeMethod("QBoxLayout(QBoxLayout::Direction)")]
@@ -294,7 +294,7 @@ namespace Qt {
 		private void DisposeQBoxLayout() {
 			ProxyQBoxLayout().DisposeQBoxLayout();
 		}
-		protected void CreateQBoxLayoutSignalProxy() {
+		protected new void CreateSignalProxy() {
 			SignalInvocation realProxy = new SignalInvocation(typeof(IQBoxLayoutSignals), this);
 			Q_EMIT = (IQBoxLayoutSignals) realProxy.GetTransparentProxy();
 		}

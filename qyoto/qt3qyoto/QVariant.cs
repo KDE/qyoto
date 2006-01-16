@@ -17,7 +17,7 @@ namespace Qt {
 			QVariant.E_Type NameToType(string name);
 		}
 
-		protected void CreateQVariantProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QVariant), this);
 			_interceptor = (QVariant) realProxy.GetTransparentProxy();
 		}
@@ -71,7 +71,7 @@ namespace Qt {
 			ULongLong = 34,
 		}
 		public QVariant() : this((Type) null) {
-			CreateQVariantProxy();
+			CreateProxy();
 			NewQVariant();
 		}
 		[SmokeMethod("QVariant()")]
@@ -79,7 +79,7 @@ namespace Qt {
 			ProxyQVariant().NewQVariant();
 		}
 		public QVariant(QVariant arg1) : this((Type) null) {
-			CreateQVariantProxy();
+			CreateProxy();
 			NewQVariant(arg1);
 		}
 		[SmokeMethod("QVariant(const QVariant&)")]
@@ -87,7 +87,7 @@ namespace Qt {
 			ProxyQVariant().NewQVariant(arg1);
 		}
 		public QVariant(QDataStream s) : this((Type) null) {
-			CreateQVariantProxy();
+			CreateProxy();
 			NewQVariant(s);
 		}
 		[SmokeMethod("QVariant(QDataStream&)")]
@@ -95,7 +95,7 @@ namespace Qt {
 			ProxyQVariant().NewQVariant(s);
 		}
 		public QVariant(string arg1) : this((Type) null) {
-			CreateQVariantProxy();
+			CreateProxy();
 			NewQVariant(arg1);
 		}
 		[SmokeMethod("QVariant(const QString&)")]
@@ -103,7 +103,7 @@ namespace Qt {
 			ProxyQVariant().NewQVariant(arg1);
 		}
 		public QVariant(string[] arg1) : this((Type) null) {
-			CreateQVariantProxy();
+			CreateProxy();
 			NewQVariant(arg1);
 		}
 		[SmokeMethod("QVariant(const QStringList&)")]
@@ -111,7 +111,7 @@ namespace Qt {
 			ProxyQVariant().NewQVariant(arg1);
 		}
 		public QVariant(QFont arg1) : this((Type) null) {
-			CreateQVariantProxy();
+			CreateProxy();
 			NewQVariant(arg1);
 		}
 		[SmokeMethod("QVariant(const QFont&)")]
@@ -119,7 +119,7 @@ namespace Qt {
 			ProxyQVariant().NewQVariant(arg1);
 		}
 		public QVariant(QPixmap arg1) : this((Type) null) {
-			CreateQVariantProxy();
+			CreateProxy();
 			NewQVariant(arg1);
 		}
 		[SmokeMethod("QVariant(const QPixmap&)")]
@@ -127,7 +127,7 @@ namespace Qt {
 			ProxyQVariant().NewQVariant(arg1);
 		}
 		public QVariant(QImage arg1) : this((Type) null) {
-			CreateQVariantProxy();
+			CreateProxy();
 			NewQVariant(arg1);
 		}
 		[SmokeMethod("QVariant(const QImage&)")]
@@ -135,7 +135,7 @@ namespace Qt {
 			ProxyQVariant().NewQVariant(arg1);
 		}
 		public QVariant(QBrush arg1) : this((Type) null) {
-			CreateQVariantProxy();
+			CreateProxy();
 			NewQVariant(arg1);
 		}
 		[SmokeMethod("QVariant(const QBrush&)")]
@@ -143,7 +143,7 @@ namespace Qt {
 			ProxyQVariant().NewQVariant(arg1);
 		}
 		public QVariant(QPoint arg1) : this((Type) null) {
-			CreateQVariantProxy();
+			CreateProxy();
 			NewQVariant(arg1);
 		}
 		[SmokeMethod("QVariant(const QPoint&)")]
@@ -151,7 +151,7 @@ namespace Qt {
 			ProxyQVariant().NewQVariant(arg1);
 		}
 		public QVariant(QRect arg1) : this((Type) null) {
-			CreateQVariantProxy();
+			CreateProxy();
 			NewQVariant(arg1);
 		}
 		[SmokeMethod("QVariant(const QRect&)")]
@@ -159,7 +159,7 @@ namespace Qt {
 			ProxyQVariant().NewQVariant(arg1);
 		}
 		public QVariant(QSize arg1) : this((Type) null) {
-			CreateQVariantProxy();
+			CreateProxy();
 			NewQVariant(arg1);
 		}
 		[SmokeMethod("QVariant(const QSize&)")]
@@ -167,7 +167,7 @@ namespace Qt {
 			ProxyQVariant().NewQVariant(arg1);
 		}
 		public QVariant(QColor arg1) : this((Type) null) {
-			CreateQVariantProxy();
+			CreateProxy();
 			NewQVariant(arg1);
 		}
 		[SmokeMethod("QVariant(const QColor&)")]
@@ -175,7 +175,7 @@ namespace Qt {
 			ProxyQVariant().NewQVariant(arg1);
 		}
 		public QVariant(QPalette arg1) : this((Type) null) {
-			CreateQVariantProxy();
+			CreateProxy();
 			NewQVariant(arg1);
 		}
 		[SmokeMethod("QVariant(const QPalette&)")]
@@ -183,7 +183,7 @@ namespace Qt {
 			ProxyQVariant().NewQVariant(arg1);
 		}
 		public QVariant(QColorGroup arg1) : this((Type) null) {
-			CreateQVariantProxy();
+			CreateProxy();
 			NewQVariant(arg1);
 		}
 		[SmokeMethod("QVariant(const QColorGroup&)")]
@@ -191,7 +191,7 @@ namespace Qt {
 			ProxyQVariant().NewQVariant(arg1);
 		}
 		public QVariant(QIconSet arg1) : this((Type) null) {
-			CreateQVariantProxy();
+			CreateProxy();
 			NewQVariant(arg1);
 		}
 		[SmokeMethod("QVariant(const QIconSet&)")]
@@ -199,7 +199,7 @@ namespace Qt {
 			ProxyQVariant().NewQVariant(arg1);
 		}
 		public QVariant(QPointArray arg1) : this((Type) null) {
-			CreateQVariantProxy();
+			CreateProxy();
 			NewQVariant(arg1);
 		}
 		[SmokeMethod("QVariant(const QPointArray&)")]
@@ -207,7 +207,7 @@ namespace Qt {
 			ProxyQVariant().NewQVariant(arg1);
 		}
 		public QVariant(QRegion arg1) : this((Type) null) {
-			CreateQVariantProxy();
+			CreateProxy();
 			NewQVariant(arg1);
 		}
 		[SmokeMethod("QVariant(const QRegion&)")]
@@ -215,7 +215,7 @@ namespace Qt {
 			ProxyQVariant().NewQVariant(arg1);
 		}
 		public QVariant(QBitmap arg1) : this((Type) null) {
-			CreateQVariantProxy();
+			CreateProxy();
 			NewQVariant(arg1);
 		}
 		[SmokeMethod("QVariant(const QBitmap&)")]
@@ -223,7 +223,7 @@ namespace Qt {
 			ProxyQVariant().NewQVariant(arg1);
 		}
 		public QVariant(QCursor arg1) : this((Type) null) {
-			CreateQVariantProxy();
+			CreateProxy();
 			NewQVariant(arg1);
 		}
 		[SmokeMethod("QVariant(const QCursor&)")]
@@ -231,7 +231,7 @@ namespace Qt {
 			ProxyQVariant().NewQVariant(arg1);
 		}
 		public QVariant(DateTime arg1) : this((Type) null) {
-			CreateQVariantProxy();
+			CreateProxy();
 			NewQVariant(arg1);
 		}
 		[SmokeMethod("QVariant(const QDate&)")]
@@ -239,7 +239,7 @@ namespace Qt {
 			ProxyQVariant().NewQVariant(arg1);
 		}
 		public QVariant(QByteArray arg1) : this((Type) null) {
-			CreateQVariantProxy();
+			CreateProxy();
 			NewQVariant(arg1);
 		}
 		[SmokeMethod("QVariant(const QByteArray&)")]
@@ -248,7 +248,7 @@ namespace Qt {
 		}
 		// QVariant* QVariant(const QBitArray& arg1); >>>> NOT CONVERTED
 		public QVariant(QKeySequence arg1) : this((Type) null) {
-			CreateQVariantProxy();
+			CreateProxy();
 			NewQVariant(arg1);
 		}
 		[SmokeMethod("QVariant(const QKeySequence&)")]
@@ -256,7 +256,7 @@ namespace Qt {
 			ProxyQVariant().NewQVariant(arg1);
 		}
 		public QVariant(QPen arg1) : this((Type) null) {
-			CreateQVariantProxy();
+			CreateProxy();
 			NewQVariant(arg1);
 		}
 		[SmokeMethod("QVariant(const QPen&)")]
@@ -266,7 +266,7 @@ namespace Qt {
 		// QVariant* QVariant(const QValueList<QVariant>& arg1); >>>> NOT CONVERTED
 		// QVariant* QVariant(const QMap<QString, QVariant>& arg1); >>>> NOT CONVERTED
 		public QVariant(int arg1) : this((Type) null) {
-			CreateQVariantProxy();
+			CreateProxy();
 			NewQVariant(arg1);
 		}
 		[SmokeMethod("QVariant(int)")]
@@ -274,7 +274,7 @@ namespace Qt {
 			ProxyQVariant().NewQVariant(arg1);
 		}
 		public QVariant(uint arg1) : this((Type) null) {
-			CreateQVariantProxy();
+			CreateProxy();
 			NewQVariant(arg1);
 		}
 		[SmokeMethod("QVariant(uint)")]
@@ -284,7 +284,7 @@ namespace Qt {
 		// QVariant* QVariant(Q_LLONG arg1); >>>> NOT CONVERTED
 		// QVariant* QVariant(Q_ULLONG arg1); >>>> NOT CONVERTED
 		public QVariant(bool arg1, int arg2) : this((Type) null) {
-			CreateQVariantProxy();
+			CreateProxy();
 			NewQVariant(arg1,arg2);
 		}
 		[SmokeMethod("QVariant(bool, int)")]
@@ -292,7 +292,7 @@ namespace Qt {
 			ProxyQVariant().NewQVariant(arg1,arg2);
 		}
 		public QVariant(double arg1) : this((Type) null) {
-			CreateQVariantProxy();
+			CreateProxy();
 			NewQVariant(arg1);
 		}
 		[SmokeMethod("QVariant(double)")]
@@ -300,7 +300,7 @@ namespace Qt {
 			ProxyQVariant().NewQVariant(arg1);
 		}
 		public QVariant(QSizePolicy arg1) : this((Type) null) {
-			CreateQVariantProxy();
+			CreateProxy();
 			NewQVariant(arg1);
 		}
 		[SmokeMethod("QVariant(QSizePolicy)")]
