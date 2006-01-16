@@ -65,6 +65,7 @@ namespace Qt {
 		delegate IntPtr GetIntPtr(IntPtr instance);
 		delegate void SetIntPtr(IntPtr instance, IntPtr ptr);
 		delegate void FromIntPtr(IntPtr ptr);
+		delegate IntPtr CreateInstanceFn(string className);
 		delegate IntPtr GetIntPtrFromString(string str);
 		delegate string GetStringFromIntPtr(IntPtr ptr);
 		delegate IntPtr OverridenMethodFn(IntPtr instance, string method);
@@ -96,6 +97,9 @@ namespace Qt {
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern void AddGetPointerObject(GetIntPtr callback);
+
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		static extern void AddCreateInstance(CreateInstanceFn callback);
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern void AddIntPtrToCharStarStar(GetIntPtr callback);
@@ -180,6 +184,45 @@ namespace Qt {
 //				Console.WriteLine("GetPointerObject() weakRef dead");
 				return (IntPtr) 0;
 			}
+		}
+
+		// CreateInstance() creates a wrapper instance around a C++ instance which
+		// has been created in C++ code, and not via a Qyoto C# constructor call.
+		// It takes the class name string and obtains its Type. Then it finds the
+		// dummy constructor which takes a Type as an arg, like this for example:
+		//
+ 		//		protected QWidget(Type dummy) : base((Type) null) {}
+		//
+		// The constructor is run to create the wrapper instance. Then the method 
+		// 'CreateProxy()' to create the transparent proxy to forward the method
+		// calls to SmokeInvocation.Invoke() is called.
+		static IntPtr CreateInstance(string className) {
+			Type klass = Type.GetType(className);
+
+			ConstructorInfo[] constructorInfo = klass.GetConstructors(	BindingFlags.NonPublic 
+																	| BindingFlags.Instance
+																	| BindingFlags.DeclaredOnly);
+
+			Type[] constructorParamTypes = new Type[1];
+			constructorParamTypes[0] = Type.GetType("System.Type");;
+//			ConstructorInfo constructor = klass.GetConstructor(constructorParamTypes);
+			if (constructorInfo[0] == null) {
+				Console.WriteLine("CreateInstance(\"{0}\") constructor method missing {1}", className, constructorParamTypes[0]);
+				return (IntPtr) 0;
+			}
+			object result = constructorInfo[0].Invoke(new object [] { constructorParamTypes[0] });
+			Console.WriteLine("CreateInstance(\"{0}\") constructed {1}", className, result);
+
+			Type[] paramTypes = new Type[0];
+			MethodInfo proxyCreator = klass.GetMethod("CreateProxy", BindingFlags.NonPublic 
+																	| BindingFlags.Instance
+																	| BindingFlags.DeclaredOnly);
+			if (proxyCreator == null) {
+				Console.WriteLine("CreateInstance() proxyCreator method missing");
+				return (IntPtr) 0;
+			}
+			proxyCreator.Invoke(result, null);
+			return (IntPtr) GCHandle.Alloc(result);
 		}
 
 		static IntPtr IntPtrToCharStarStar(IntPtr ptr) {
@@ -382,6 +425,8 @@ namespace Qt {
 		
 		static private OverridenMethodFn overridenMethod = new OverridenMethodFn(OverridenMethod);
 		static private InvokeMethodFn invokeMethod = new InvokeMethodFn(InvokeMethod);
+
+		static private CreateInstanceFn createInstance = new CreateInstanceFn(CreateInstance);
 		
 		static SmokeInvocation() {
 			AddFreeGCHandle(freeGCHandle);
@@ -401,6 +446,8 @@ namespace Qt {
 
 			AddOverridenMethod(overridenMethod);
 			AddInvokeMethod(invokeMethod);
+
+			AddCreateInstance(createInstance);
 		}
 		
 		private Type	_classToProxy;
