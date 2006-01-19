@@ -76,54 +76,54 @@ resolve_classname(Smoke* smoke, int classId, void * ptr)
 		switch (qevent->type()) {
 		case QEvent::ChildInserted:
 		case QEvent::ChildRemoved:
-			return "Qt::ChildEvent";
+			return "Qt.QChildEvent";
 		case QEvent::Close:
-			return "Qt::CloseEvent";
+			return "Qt.QCloseEvent";
 		case QEvent::ContextMenu:
-			return "Qt::ContextMenuEvent";
+			return "Qt.QContextMenuEvent";
 //		case QEvent::User:
-//			return "Qt::CustomEvent";
+//			return "Qt.QCustomEvent";
 		case QEvent::DragEnter:
-			return "Qt::DragEnterEvent";
+			return "Qt.QDragEnterEvent";
 		case QEvent::DragLeave:
-			return "Qt::DragLeaveEvent";
+			return "Qt.QDragLeaveEvent";
 		case QEvent::DragMove:
-			return "Qt::DragMoveEvent";
+			return "Qt.QDragMoveEvent";
 		case QEvent::DragResponse:
-			return "Qt::DragResponseEvent";
+			return "Qt.QDragResponseEvent";
 		case QEvent::Drop:
-			return "Qt::DropEvent";
+			return "Qt.QDropEvent";
 		case QEvent::FocusIn:
 		case QEvent::FocusOut:
-			return "Qt::FocusEvent";
+			return "Qt.QFocusEvent";
 		case QEvent::Hide:
-			return "Qt::HideEvent";
+			return "Qt.QHideEvent";
 		case QEvent::KeyPress:
 		case QEvent::KeyRelease:
-			return "Qt::KeyEvent";
+			return "Qt.QKeyEvent";
 		case QEvent::IMStart:
 		case QEvent::IMCompose:
 		case QEvent::IMEnd:
-			return "Qt::IMEvent";
+			return "Qt.QIMEvent";
 		case QEvent::MouseButtonPress:
 		case QEvent::MouseButtonRelease:
 		case QEvent::MouseButtonDblClick:
 		case QEvent::MouseMove:
-			return "Qt::MouseEvent";
+			return "Qt.QMouseEvent";
 		case QEvent::Move:
-			return "Qt::MoveEvent";
+			return "Qt.QMoveEvent";
 		case QEvent::Paint:
-			return "Qt::PaintEvent";
+			return "Qt.QPaintEvent";
 		case QEvent::Resize:
-			return "Qt::ResizeEvent";
+			return "Qt.QResizeEvent";
 		case QEvent::Show:
-			return "Qt::ShowEvent";
+			return "Qt.QShowEvent";
 	//	case QEvent::Tablet:
-	//		 return "Qt::TabletEvent";
+	//		 return "Qt.QTabletEvent";
 		case QEvent::Timer:
-			return "Qt::TimerEvent";
+			return "Qt.QTimerEvent";
 		case QEvent::Wheel:
-			return "Qt::WheelEvent";
+			return "Qt.QWheelEvent";
 		default:
 			break;
 		}
@@ -145,21 +145,21 @@ resolve_classname(Smoke* smoke, int classId, void * ptr)
 		QCanvasItem * qcanvasitem = (QCanvasItem *) smoke->cast(ptr, classId, smoke->idClass("QCanvasItem"));
 		switch (qcanvasitem->rtti()) {
 		case QCanvasItem::Rtti_Sprite:
-			return "Qt::CanvasSprite";
+			return "Qt.QCanvasSprite";
 		case QCanvasItem::Rtti_PolygonalItem:
-			return "Qt::CanvasPolygonalItem";
+			return "Qt.QCanvasPolygonalItem";
 		case QCanvasItem::Rtti_Text:
-			return "Qt::CanvasText";
+			return "Qt.QCanvasText";
 		case QCanvasItem::Rtti_Polygon:
-			return "Qt::CanvasPolygon";
+			return "Qt.QCanvasPolygon";
 		case QCanvasItem::Rtti_Rectangle:
-			return "Qt::CanvasRectangle";
+			return "Qt.QCanvasRectangle";
 		case QCanvasItem::Rtti_Ellipse:
-			return "Qt::CanvasEllipse";
+			return "Qt.QCanvasEllipse";
 		case QCanvasItem::Rtti_Line:
-			return "Qt::CanvasLine";
+			return "Qt.QCanvasLine";
 		case QCanvasItem::Rtti_Spline:
-			return "Qt::CanvasSpline";
+			return "Qt.QCanvasSpline";
 		default:
 			break;
 		}
@@ -167,24 +167,24 @@ resolve_classname(Smoke* smoke, int classId, void * ptr)
 		QListViewItem * item = (QListViewItem *) smoke->cast(ptr, classId, smoke->idClass("QListViewItem"));
 		switch (item->rtti()) {
 		case 0:
-			return "Qt::ListViewItem";
+			return "Qt.QListViewItem";
 		case 1:
-			return "Qt::CheckListItem";
+			return "Qt.QCheckListItem";
 		default:
-			return "Qt::ListViewItem";
+			return "Qt.QListViewItem";
 			break;
 		}
 	} else if (isDerivedFromByName(smoke, smoke->classes[classId].className, "QTableItem")) {
 		QTableItem * item = (QTableItem *) smoke->cast(ptr, classId, smoke->idClass("QTableItem"));
 		switch (item->rtti()) {
 		case 0:
-			return "Qt::TableItem";
+			return "Qt.QTableItem";
 		case 1:
-			return "Qt::ComboTableItem";
+			return "Qt.QComboTableItem";
 		case 2:
-			return "Qt::CheckTableItem";
+			return "Qt.QCheckTableItem";
 		default:
-			return "Qt::TableItem";
+			return "Qt.QTableItem";
 			break;
 		}
 	}
