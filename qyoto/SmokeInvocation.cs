@@ -199,18 +199,15 @@ namespace Qt {
 		static IntPtr CreateInstance(string className) {
 			Type klass = Type.GetType(className);
 
-			ConstructorInfo[] constructorInfo = klass.GetConstructors(	BindingFlags.NonPublic 
-																	| BindingFlags.Instance
-																	| BindingFlags.DeclaredOnly);
-
 			Type[] constructorParamTypes = new Type[1];
-			constructorParamTypes[0] = Type.GetType("System.Type");;
-//			ConstructorInfo constructor = klass.GetConstructor(constructorParamTypes);
-			if (constructorInfo[0] == null) {
+			constructorParamTypes[0] = Type.GetType("System.Type");
+			ConstructorInfo constructorInfo = klass.GetConstructor(BindingFlags.NonPublic 
+					| BindingFlags.Instance, null, new Type[ ] { typeof( Type ) } , null);
+			if (constructorInfo == null) {
 				Console.WriteLine("CreateInstance(\"{0}\") constructor method missing {1}", className, constructorParamTypes[0]);
 				return (IntPtr) 0;
 			}
-			object result = constructorInfo[0].Invoke(new object [] { constructorParamTypes[0] });
+			object result = constructorInfo.Invoke(new object [] { constructorParamTypes[0] });
 			Console.WriteLine("CreateInstance(\"{0}\") constructed {1}", className, result);
 
 			Type[] paramTypes = new Type[0];
