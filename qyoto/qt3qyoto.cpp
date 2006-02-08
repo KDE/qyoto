@@ -963,6 +963,109 @@ SignalEmit(char * signature, void * obj, Smoke::StackItem * sp, int items)
 	return true;
 }
 
+static QUParameter *
+make_QUParameter(char * name, char * type, int inout)
+{
+    QUParameter *p = new QUParameter;
+    p->name = new char[strlen(name) + 1];
+    strcpy((char*)p->name, name);
+    if(strcmp(type, "bool") == 0)
+	p->type = &static_QUType_bool;
+    else if(strcmp(type, "int") == 0)
+	p->type = &static_QUType_int;
+    else if(strcmp(type, "double") == 0)
+	p->type = &static_QUType_double;
+    else if(strcmp(type, "char*") == 0 || strcmp(type, "const char*") == 0)
+	p->type = &static_QUType_charstar;
+    else if(strcmp(type, "QString") == 0 || strcmp(type, "QString&") == 0 ||
+	    strcmp(type, "const QString") == 0 || strcmp(type, "const QString&") == 0)
+	p->type = &static_QUType_QString;
+    else
+	p->type = &static_QUType_ptr;
+    // Lacking support for several types. Evil.
+    p->inOut = inout;
+    p->typeExtra = 0;
+//    return Data_Wrap_Struct(rb_cObject, 0, 0, p);
+    return p;
+}
+
+static QMetaData *
+make_QMetaData(char * name, void * method)
+{
+    QMetaData *m = new QMetaData;		// will be deleted
+    m->name = new char[strlen(name) + 1];
+    strcpy((char*)m->name, name);
+//    Data_Get_Struct(method, QUMethod, m->method);
+    m->access = QMetaData::Public;
+//    return Data_Wrap_Struct(rb_cObject, 0, 0, m);
+    return m;
+}
+
+static QUMethod *
+make_QUMethod(char * name, int count, QUParameter * p)
+{
+	QUMethod *m = new QUMethod;			// permanent memory allocation
+	m->name = new char[strlen(name) + 1];	// this too
+	strcpy((char*)m->name, name);
+	m->parameters = 0;
+	m->count = count;
+
+	if (m->count > 0) {
+		m->parameters = new QUParameter[m->count];
+		for (long i = 0; i < m->count; i++) {
+//	    VALUE param = rb_ary_entry(params, i);
+//	    QUParameter *p = 0;
+//	    Data_Get_Struct(param, QUParameter, p);
+			((QUParameter *) m->parameters)[i] = *p;
+			delete p;
+			p++;
+		}
+	}
+//    return Data_Wrap_Struct(rb_cObject, 0, 0, m);
+	return m;
+}
+
+static QMetaData *
+make_QMetaData_tbl(long count, QMetaData * old)
+{
+//    long count = RARRAY(list)->len;
+	QMetaData *m = new QMetaData[count];
+
+	for (long i = 0; i < count; i++) {
+//	VALUE item = rb_ary_entry(list, i);
+
+//	QMetaData *old = 0;
+//	Data_Get_Struct(item, QMetaData, old);
+		m[i] = *old;
+		delete old;
+		old++;
+	}
+
+//    return Data_Wrap_Struct(rb_cObject, 0, 0, m);
+    return m;
+}
+
+static void *
+make_metaObject(char * className, QMetaObject* parent, QMetaData * slot_tbl, int slot_count, QMetaData * signal_tbl, int signal_count)
+{
+	QMetaObject *meta = QMetaObject::new_metaobject(
+	className, parent,
+	(const QMetaData*)slot_tbl, slot_count,	// slots
+	(const QMetaData*)signal_tbl, signal_count,	// signals
+	0, 0,	// properties
+	0, 0,	// enums
+	0, 0);
+
+    smokeqyoto_object * o = (smokeqyoto_object *) malloc(sizeof(smokeqyoto_object));
+    o->smoke = qt_Smoke;
+    o->classId = qt_Smoke->idClass("QMetaObject");
+    o->ptr = meta;
+    o->allocated = true;
+
+//    return Data_Wrap_Struct(qt_qmetaobject_class, smokeruby_mark, smokeruby_free, o);
+	return set_obj_info("QMetaObject", o);
+}
+
 void
 Init_qyoto()
 {
