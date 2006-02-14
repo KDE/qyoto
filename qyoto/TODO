@@ -1,0 +1,39 @@
+* Change the way the signals interceptor 'Q_EMIT' is set up
+	* At the moment each generated QObject subclass has some code like
+		this to set up Q_EMIT
+
+		protected new void CreateSignalProxy() {
+			SignalInvocation realProxy = new SignalInvocation(typeof(IQWidgetSignals), this);
+			Q_EMIT = (IQWidgetSignals) realProxy.GetTransparentProxy();
+		}
+		protected new IQWidgetSignals Emit() {
+			return (IQWidgetSignals) Q_EMIT;
+		}
+
+	* Change the way it works so that instead it is set up in the dummy constructor 
+in QObject.cs:
+
+ 		protected QObject(Type dummy) : base((Type) null) {}
+
+	* Every subclass of QObject calls this constructor. From the current instance obtain
+the Emit() method via reflection, then obtain the return type. The return type can then
+be use to create a transparent proxy which is assigned to Q_EMIT
+	* Change the code generation in kalyptus to generate code for the new way of setting
+up Q_EMIT.
+
+* Add a Qyoto class to Qyoto.cs with some static methods.
+	* Obtain the C++ type string of each signal in a QObject class. First get the
+interface which is the return type of the class's Emit() method via reflection. Next get
+all the methods in the interface and extract their C++ Q_SIGNAL attribute strings.
+	* Obtain all the C++ type strings for a class's slots by getting all the methods for the
+class via reflection, and extracting any C++ type strings if they have a Q_SLOT attribute.
+Add the C++ string to a hash table as a key, with the C# method as a value . This hash table 
+is held within another Hashtable with the class name as key (this is very similar to the 
+Hashtables used for looking up C# virtual methods given a  C++ type string in SmokeInvocation.cs) .
+	* Add another Hashtable to Qyoto with a String of a class name as key, and a QMetaObject
+instance as a value.
+	* Add declarations for the C functions in qt3qyoto.cpp that create a QMetaObject at runtime
+so they can be called from C#. As each signal or slot C++ string is obtained above, use it as an arg to 
+pass to a suitable C function to construct a QMetaObject.
+	* Add a static method which can be called from C to look up a class's QOMetaObject in the
+Hashtable described above. If the QMetaObject doesn't exist then create it.
