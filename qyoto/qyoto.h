@@ -46,7 +46,7 @@ enum QtDebugChannel {
     qtdb_verbose = 0x20
 };
 
-// typedef void * GCHandle;
+typedef void * GCHandle;
 
 void unmapPointer(smokeqyoto_object *, Smoke::Index, void*);
 smokeqyoto_object *value_obj_info(void * value);

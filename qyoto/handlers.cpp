@@ -1,11 +1,10 @@
-#include <qstring.h>
-#include <qregexp.h>
-#include <qapplication.h>
-#include <qlistview.h>
-#include <qlayout.h>
-#include <qmetaobject.h>
-#include <qtablewidget.h>
-#include <qlistwidget.h>
+#include <QtCore/qstring.h>
+#include <QtCore/qregexp.h>
+#include <QtGui/qapplication.h>
+#include <QtGui/qlistwidget.h>
+#include <QtGui/qlayout.h>
+#include <QtCore/qmetaobject.h>
+#include <QtGui/qtablewidget.h>
 
 #include "smoke.h"
 
@@ -25,11 +24,43 @@
 #include "smokeqyoto.h"
 
 extern "C" {
-extern GCHandle set_obj_info(const char * className, smokeqyoto_object * o);
+static GetIntPtr IntPtrToCharStarStar;
+static GetCharStarFromIntPtr IntPtrToCharStar;
+static GetIntPtrFromCharStar IntPtrFromCharStar;
+static GetIntPtr IntPtrToQString;
+static GetIntPtr IntPtrFromQString;
+
+void AddIntPtrToCharStarStar(GetIntPtr callback)
+{
+	IntPtrToCharStarStar = callback;
+}
+
+void AddIntPtrToCharStar(GetCharStarFromIntPtr callback)
+{
+	IntPtrToCharStar = callback;
+}
+
+void AddIntPtrFromCharStar(GetIntPtrFromCharStar callback)
+{
+	IntPtrFromCharStar = callback;
+}
+
+void AddIntPtrToQString(GetIntPtr callback)
+{
+	IntPtrToQString = callback;
+}
+
+void AddIntPtrFromQString(GetIntPtr callback)
+{
+	IntPtrFromQString = callback;
+}
+
+extern void * set_obj_info(const char * className, smokeqyoto_object * o);
+//extern void * IntPtrToCharStarStar(void * item);
 };
 
 extern bool isDerivedFromByName(Smoke *smoke, const char *className, const char *baseClassName);
-extern void mapPointer(GCHandle obj, smokeqyoto_object *o, Smoke::Index classId, void *lastptr);
+extern void mapPointer(void * obj, smokeqyoto_object *o, Smoke::Index classId, void *lastptr);
 
 /*
  * Given an approximate classname and a qt instance, try to improve the resolution of the name
@@ -41,154 +72,158 @@ resolve_classname(Smoke* smoke, int classId, void * ptr)
 	if (isDerivedFromByName(smoke, smoke->classes[classId].className, "QEvent")) {
 		QEvent * qevent = (QEvent *) smoke->cast(ptr, classId, smoke->idClass("QEvent"));
 		switch (qevent->type()) {
-		case QEvent::Timer:
-			return "Qt::TimerEvent";
-		case QEvent::MouseButtonPress:
-		case QEvent::MouseButtonRelease:
-		case QEvent::MouseButtonDblClick:
-		case QEvent::MouseMove:
-			return "Qt::MouseEvent";
-		case QEvent::KeyPress:
-		case QEvent::KeyRelease:
-		case QEvent::ShortcutOverride:
-			return "Qt::KeyEvent";
-		case QEvent::FocusIn:
-		case QEvent::FocusOut:
-			return "Qt::FocusEvent";
-		case QEvent::Enter:
-		case QEvent::Leave:
-			return "Qt::Event";
-		case QEvent::Paint:
-			return "Qt::PaintEvent";
-		case QEvent::Move:
-			return "Qt::MoveEvent";
-		case QEvent::Resize:
-			return "Qt::ResizeEvent";
-		case QEvent::Create:
-		case QEvent::Destroy:
-			return "Qt::Event";
-		case QEvent::Show:
-			return "Qt::ShowEvent";
-		case QEvent::Hide:
-			return "Qt::HideEvent";
-		case QEvent::Close:
-			return "Qt::CloseEvent";
-		case QEvent::Quit:
-		case QEvent::ParentChange:
-		case QEvent::ParentAboutToChange:
-		case QEvent::ThreadChange:
-		case QEvent::WindowActivate:
-		case QEvent::WindowDeactivate:
-		case QEvent::ShowToParent:
-		case QEvent::HideToParent:
-			return "Qt::Event";
-		case QEvent::Wheel:
-			return "Qt::WheelEvent";
-		case QEvent::WindowTitleChange:
-		case QEvent::WindowIconChange:
-		case QEvent::ApplicationWindowIconChange:
-		case QEvent::ApplicationFontChange:
-		case QEvent::ApplicationLayoutDirectionChange:
-		case QEvent::ApplicationPaletteChange:
-		case QEvent::PaletteChange:
-			return "Qt::Event";
-		case QEvent::Clipboard:
-			return "Qt::ClipboardEvent";
-		case QEvent::Speech:
-		case QEvent::MetaCall:
-		case QEvent::SockAct:
-		case QEvent::WinEventAct:
-		case QEvent::DeferredDelete:
-			return "Qt::Event";
-		case QEvent::DragEnter:
-			return "Qt::DragEnterEvent";
-		case QEvent::DragLeave:
-			return "Qt::DragLeaveEvent";
-		case QEvent::DragMove:
-			return "Qt::DragMoveEvent";
-		case QEvent::Drop:
-			return "Qt::DropEvent";
-		case QEvent::DragResponse:
-			return "Qt::DragResponseEvent";
-		case QEvent::ChildAdded:
-		case QEvent::ChildRemoved:
-		case QEvent::ChildPolished:
-			return "Qt::ChildEvent";
-		case QEvent::ShowWindowRequest:
-		case QEvent::PolishRequest:
-		case QEvent::Polish:
-		case QEvent::LayoutRequest:
-		case QEvent::UpdateRequest:
-		case QEvent::EmbeddingControl:
-		case QEvent::ActivateControl:
-		case QEvent::DeactivateControl:
-			return "Qt::Event";
-		case QEvent::ContextMenu:
-			return "Qt::ContextMenuEvent";
-		case QEvent::InputMethod:
-			return "Qt::InputMethodEvent";
-		case QEvent::AccessibilityPrepare:
-			return "Qt::Event";
-		case QEvent::TabletMove:
-		case QEvent::TabletPress:
-		case QEvent::TabletRelease:
-			return "Qt::TabletEvent";
-		case QEvent::LocaleChange:
-		case QEvent::LanguageChange:
-		case QEvent::LayoutDirectionChange:
-		case QEvent::Style:
-		case QEvent::OkRequest:
-		case QEvent::HelpRequest:
-			return "Qt::Event";
-		case QEvent::IconDrag:
-			return "Qt::IconDragEvent";
-		case QEvent::FontChange:
-		case QEvent::EnabledChange:
-		case QEvent::ActivationChange:
-		case QEvent::StyleChange:
-		case QEvent::IconTextChange:
-		case QEvent::ModifiedChange:
-		case QEvent::MouseTrackingChange:
-			return "Qt::Event";
-		case QEvent::WindowBlocked:
-		case QEvent::WindowUnblocked:
-		case QEvent::WindowStateChange:
-			return "Qt::WindowStateChangeEvent";
-		case QEvent::ToolTip:
-		case QEvent::WhatsThis:
-			return "Qt::HelpEvent";
-		case QEvent::StatusTip:
-			return "Qt::Event";
-		case QEvent::ActionChanged:
-		case QEvent::ActionAdded:
-		case QEvent::ActionRemoved:
-			return "Qt::ActionEvent";
-		case QEvent::FileOpen:
-			return "Qt::FileOpenEvent";
-		case QEvent::Shortcut:
-			return "Qt::ShortcutEvent";
-		case QEvent::WhatsThisClicked:
-			return "Qt::WhatsThisClickedEvent";
-		case QEvent::ToolBarChange:
-			return "Qt::ToolBarChangeEvent";
-		case QEvent::ApplicationActivated:
-		case QEvent::ApplicationDeactivated:
-		case QEvent::QueryWhatsThis:
-		case QEvent::EnterWhatsThisMode:
-		case QEvent::LeaveWhatsThisMode:
-		case QEvent::ZOrderChange:
-			return "Qt::Event";
-		case QEvent::HoverEnter:
-		case QEvent::HoverLeave:
-		case QEvent::HoverMove:
-			return "Qt::HoverEvent";
-		case QEvent::AccessibilityHelp:
-		case QEvent::AccessibilityDescription:
-			return "Qt::Event";
+
+
+                case QEvent::Timer:
+                        return "Qt::TimerEvent";
+                case QEvent::MouseButtonPress:
+                case QEvent::MouseButtonRelease:
+                case QEvent::MouseButtonDblClick:
+                case QEvent::MouseMove:
+                        return "Qt::MouseEvent";
+                case QEvent::KeyPress:
+                case QEvent::KeyRelease:
+                case QEvent::ShortcutOverride:
+                        return "Qt::KeyEvent";
+                case QEvent::FocusIn:
+                case QEvent::FocusOut:
+                        return "Qt::FocusEvent";
+                case QEvent::Enter:
+                case QEvent::Leave:
+                        return "Qt::Event";
+                case QEvent::Paint:
+                        return "Qt::PaintEvent";
+                case QEvent::Move:
+                        return "Qt::MoveEvent";
+                case QEvent::Resize:
+                        return "Qt::ResizeEvent";
+                case QEvent::Create:
+                case QEvent::Destroy:
+                        return "Qt::Event";
+                case QEvent::Show:
+                        return "Qt::ShowEvent";
+                case QEvent::Hide:
+                        return "Qt::HideEvent";
+                case QEvent::Close:
+                        return "Qt::CloseEvent";
+                case QEvent::Quit:
+                case QEvent::ParentChange:
+                case QEvent::ParentAboutToChange:
+                case QEvent::ThreadChange:
+                case QEvent::WindowActivate:
+                case QEvent::WindowDeactivate:
+                case QEvent::ShowToParent:
+                case QEvent::HideToParent:
+                        return "Qt::Event";
+                case QEvent::Wheel:
+                        return "Qt::WheelEvent";
+                case QEvent::WindowTitleChange:
+                case QEvent::WindowIconChange:
+                case QEvent::ApplicationWindowIconChange:
+                case QEvent::ApplicationFontChange:
+                case QEvent::ApplicationLayoutDirectionChange:
+                case QEvent::ApplicationPaletteChange:
+                case QEvent::PaletteChange:
+                        return "Qt::Event";
+                case QEvent::Clipboard:
+                        return "Qt::ClipboardEvent";
+                case QEvent::Speech:
+                case QEvent::MetaCall:
+                case QEvent::SockAct:
+                case QEvent::WinEventAct:
+                case QEvent::DeferredDelete:
+                        return "Qt::Event";
+                case QEvent::DragEnter:
+                        return "Qt::DragEnterEvent";
+                case QEvent::DragLeave:
+                        return "Qt::DragLeaveEvent";
+                case QEvent::DragMove:
+                        return "Qt::DragMoveEvent";
+                case QEvent::Drop:
+                        return "Qt::DropEvent";
+                case QEvent::DragResponse:
+                        return "Qt::DragResponseEvent";
+                case QEvent::ChildAdded:
+                case QEvent::ChildRemoved:
+                case QEvent::ChildPolished:
+                        return "Qt::ChildEvent";
+                case QEvent::ShowWindowRequest:
+                case QEvent::PolishRequest:
+                case QEvent::Polish:
+                case QEvent::LayoutRequest:
+                case QEvent::UpdateRequest:
+                case QEvent::EmbeddingControl:
+                case QEvent::ActivateControl:
+                case QEvent::DeactivateControl:
+                        return "Qt::Event";
+                case QEvent::ContextMenu:
+                        return "Qt::ContextMenuEvent";
+                case QEvent::InputMethod:
+                        return "Qt::InputMethodEvent";
+                case QEvent::AccessibilityPrepare:
+                        return "Qt::Event";
+                case QEvent::TabletMove:
+                case QEvent::TabletPress:
+                case QEvent::TabletRelease:
+                        return "Qt::TabletEvent";
+                case QEvent::LocaleChange:
+                case QEvent::LanguageChange:
+                case QEvent::LayoutDirectionChange:
+                case QEvent::Style:
+                case QEvent::OkRequest:
+                case QEvent::HelpRequest:
+                        return "Qt::Event";
+                case QEvent::IconDrag:
+                        return "Qt::IconDragEvent";
+                case QEvent::FontChange:
+                case QEvent::EnabledChange:
+                case QEvent::ActivationChange:
+                case QEvent::StyleChange:
+                case QEvent::IconTextChange:
+                case QEvent::ModifiedChange:
+                case QEvent::MouseTrackingChange:
+                        return "Qt::Event";
+                case QEvent::WindowBlocked:
+                case QEvent::WindowUnblocked:
+                case QEvent::WindowStateChange:
+                        return "Qt::WindowStateChangeEvent";
+                case QEvent::ToolTip:
+                case QEvent::WhatsThis:
+                        return "Qt::HelpEvent";
+                case QEvent::StatusTip:
+                        return "Qt::Event";
+                case QEvent::ActionChanged:
+                case QEvent::ActionAdded:
+                case QEvent::ActionRemoved:
+                        return "Qt::ActionEvent";
+                case QEvent::FileOpen:
+                        return "Qt::FileOpenEvent";
+                case QEvent::Shortcut:
+                        return "Qt::ShortcutEvent";
+                case QEvent::WhatsThisClicked:
+                        return "Qt::WhatsThisClickedEvent";
+                case QEvent::ToolBarChange:
+                        return "Qt::ToolBarChangeEvent";
+                case QEvent::ApplicationActivated:
+                case QEvent::ApplicationDeactivated:
+                case QEvent::QueryWhatsThis:
+                case QEvent::EnterWhatsThisMode:
+                case QEvent::LeaveWhatsThisMode:
+                case QEvent::ZOrderChange:
+                        return "Qt::Event";
+                case QEvent::HoverEnter:
+                case QEvent::HoverLeave:
+                case QEvent::HoverMove:
+                        return "Qt::HoverEvent";
+                case QEvent::AccessibilityHelp:
+                case QEvent::AccessibilityDescription:
+                        return "Qt::Event";
 		default:
 			break;
 		}
 	} else if (isDerivedFromByName(smoke, smoke->classes[classId].className, "QObject")) {
+		return smoke->binding->className(classId);
+
 		QObject * qobject = (QObject *) smoke->cast(ptr, classId, smoke->idClass("QObject"));
 		const QMetaObject * meta = qobject->metaObject();
 
@@ -291,6 +326,35 @@ construct_copy(smokeqyoto_object *o)
     Smoke::ClassFn fn = o->smoke->classes[o->classId].classFn;
     (*fn)(o->smoke->methods[ccMeth].method, 0, args);
     return args[0].s_voidp;
+}
+
+extern "C" {
+
+void *
+StringArrayToCharStarStar(int length, char ** strArray)
+{
+	char ** result = (char **) calloc(length, sizeof(char *));
+	int i;
+	for (i = 0; i < length; i++) {
+		result[i] = strdup(strArray[i]);
+	}
+	return (void *) result;
+}
+
+void *
+StringToQString(char *str)
+{
+	QString * result = new QString((const char *) str);
+	return (void *) result;
+}
+
+char *
+StringFromQString(void *ptr)
+{
+    QByteArray ba = ((QString *) ptr)->toLatin1();
+    return strdup(ba.constData());
+}
+
 }
 
 void
@@ -457,6 +521,11 @@ marshall_basetype(Marshall *m)
 	switch(m->action()) {
 	  case Marshall::FromObject:
 	    {
+		if (m->var().s_class == 0) {
+			m->item().s_class = 0;
+			return;
+		}
+
 		smokeqyoto_object *o = value_obj_info(m->var().s_class);
 		if(!o || !o->ptr) {
                     if(m->type().isRef()) {
@@ -488,7 +557,7 @@ marshall_basetype(Marshall *m)
 		}
 
 		void *p = m->item().s_voidp;
-		GCHandle obj = getPointerObject(p);
+		void * obj = getPointerObject(p);
 		if(obj != 0) {
                     m->var().s_voidp = obj;
 		    break;
@@ -539,12 +608,43 @@ static void marshall_unknown(Marshall *m) {
     m->unsupported();
 }
 
+static void marshall_charP(Marshall *m) {
+    switch(m->action()) {
+        case Marshall::FromObject:
+            if (m->var().s_class == 0) {
+                    m->item().s_voidp = 0;
+            } else {
+                    m->item().s_voidp = (*IntPtrToCharStar)(m->var().s_class);
+            }
+            break;
+
+	case Marshall::ToObject:
+	{
+		char *p = (char*) m->item().s_voidp;
+	    if (p != 0) {
+			m->var().s_class = (*IntPtrFromCharStar)(strdup(p));
+	    } else {
+			m->var().s_class = 0;
+		}
+
+	    if (m->cleanup()) {
+			delete[] p;
+		}
+	}
+	break;
+		default:
+		m->unsupported();
+	break;
+	}
+}
+
 static void marshall_QString(Marshall *m) {
     switch(m->action()) {
       case Marshall::FromObject:
 	{
 	    QString* s = 0;
 	    if( m->var().s_voidp != 0) {
+			s = (QString *) (*IntPtrToQString)(m->var().s_voidp);
 #if 0
                if(SvUTF8(*(m->var())))
                     s = QString::fromUtf8(SvPV_nolen(*(m->var())));
@@ -575,12 +675,12 @@ static void marshall_QString(Marshall *m) {
       case Marshall::ToObject:
 	{
 	    QString *s = (QString*)m->item().s_voidp;
-	    if(s) {
-	    	if (s->isNull()) {
-                    m->var().s_voidp = 0;
-	     	} else {
-//                    *(m->var()) = rb_str_new2(s->latin1());
-	     	}
+	    if (s) {
+			if (s->isNull()) {
+				m->var().s_voidp = 0;
+			} else {
+				m->var().s_class = (*IntPtrFromQString)(s);
+			}
 //                if(!(PL_hints & HINT_BYTES))
 //                {
 //		    sv_setpv_mg(m->var(), (const char *)s->utf8());
@@ -590,52 +690,102 @@ static void marshall_QString(Marshall *m) {
 //                    sv_setpv_mg(m->var(), (const char *)s->local8Bit());
 //                else
 //                    sv_setpv_mg(m->var(), (const char *)s->latin1());
-	     	if(m->cleanup())
-	     	delete s;
-            } else {
-                m->var().s_voidp = 0;
-            }
+			if (m->cleanup())
+				delete s;
+			} else {
+				m->var().s_voidp = 0;
+			}
 	}
 	break;
-      default:
-	m->unsupported();
+		default:
+		m->unsupported();
 	break;
     }
 }
+
+
+static void marshall_intR(Marshall *m) {
+    switch(m->action()) {
+        case Marshall::FromObject:
+            {
+            int * i = new int;
+            *i = m->var().s_int;
+            m->item().s_voidp = i;
+            m->next();
+            if(m->cleanup() && m->type().isConst()) {
+                delete i;
+            } else {
+//                m->item().s_voidp = new int((int)NUM2INT(rv));
+            }
+            }
+            break;
+
+        case Marshall::ToObject:
+            {
+            int *ip = (int*)m->item().s_voidp;
+            m->var().s_int = *ip;
+            }
+            break;
+
+        default:
+            m->unsupported();
+            break;
+    }
+}
+
+
+static void marshall_charP_array(Marshall *m) {
+
+    switch(m->action()) {
+        case Marshall::FromObject:
+            {
+            m->item().s_voidp = (*IntPtrToCharStarStar)(m->var().s_voidp);
+            char ** temp = (char **) m->item().s_voidp;
+            }
+            break;
+
+        default:
+            m->unsupported();
+            break;
+    }
+
+}
+
 
 TypeHandler Qt_handlers[] = {
     { "QString", marshall_QString },
     { "QString&", marshall_QString },
     { "QString*", marshall_QString },
+    { "int&", marshall_intR },
+    { "int*", marshall_intR },
+    { "char*", marshall_charP },
+    { "char**", marshall_charP_array },
 
     { 0, 0 }
 };
 
-#include <qhash.h>
-QHash<QString, TypeHandler*> type_handlers;
+QHash<const char *,TypeHandler *> type_handlers;
 
 void install_handlers(TypeHandler *h) {
-	while(h->name) {
-		type_handlers.insert(h->name, h);
-		h++;
-	}
+    while(h->name) {
+	type_handlers.insert(h->name, h);
+	h++;
+    }
 }
 
 Marshall::HandlerFn getMarshallFn(const SmokeType &type) {
-	if(type.elem())
-		return marshall_basetype;
-	if(!type.name())
-		return marshall_void;
-	
+    if(type.elem())
+	return marshall_basetype;
+    if(!type.name())
+	return marshall_void;
 	TypeHandler *h = type_handlers[type.name()];
+    if(h == 0 && type.isConst() && strlen(type.name()) > strlen("const ")) {
+    	h = type_handlers[type.name() + strlen("const ")];
+    }
 	
-	if(h == 0 && type.isConst() && strlen(type.name()) > strlen("const ")) {
-			h = type_handlers[type.name() + strlen("const ")];
-	}
-	
-	if(h != 0) {
-		return h->fn;
-	}
+    if(h != 0) {
+	return h->fn;
+    }
 
-	return marshall_unknown;
+    return marshall_unknown;
 }
