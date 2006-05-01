@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQTcpServerSignals"></see> for signals emitted by QTcpServer
+	[SmokeClass("QTcpServer")]
 	public class QTcpServer : QObject, IDisposable {
  		protected QTcpServer(Type dummy) : base((Type) null) {}
 		interface IQTcpServerProxy {
@@ -12,7 +13,7 @@ namespace Qt {
 			string Tr(string s);
 		}
 
-		protected void CreateQTcpServerProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTcpServer), this);
 			_interceptor = (QTcpServer) realProxy.GetTransparentProxy();
 		}
@@ -28,97 +29,135 @@ namespace Qt {
 			return (IQTcpServerProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQTcpServer().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QTcpServer(QObject parent) : this((Type) null) {
-			CreateQTcpServerProxy();
+			CreateProxy();
 			NewQTcpServer(parent);
 		}
+		[SmokeMethod("QTcpServer(QObject*)")]
 		private void NewQTcpServer(QObject parent) {
 			ProxyQTcpServer().NewQTcpServer(parent);
 		}
 		public QTcpServer() : this((Type) null) {
-			CreateQTcpServerProxy();
+			CreateProxy();
 			NewQTcpServer();
 		}
+		[SmokeMethod("QTcpServer()")]
 		private void NewQTcpServer() {
 			ProxyQTcpServer().NewQTcpServer();
 		}
+		[SmokeMethod("listen(const QHostAddress&, quint16)")]
 		public bool Listen(QHostAddress address, ushort port) {
 			return ProxyQTcpServer().Listen(address,port);
 		}
+		[SmokeMethod("listen(const QHostAddress&)")]
 		public bool Listen(QHostAddress address) {
 			return ProxyQTcpServer().Listen(address);
 		}
+		[SmokeMethod("listen()")]
 		public bool Listen() {
 			return ProxyQTcpServer().Listen();
 		}
+		[SmokeMethod("close()")]
 		public void Close() {
 			ProxyQTcpServer().Close();
 		}
+		[SmokeMethod("isListening() const")]
 		public bool IsListening() {
 			return ProxyQTcpServer().IsListening();
 		}
+		[SmokeMethod("setMaxPendingConnections(int)")]
 		public void SetMaxPendingConnections(int numConnections) {
 			ProxyQTcpServer().SetMaxPendingConnections(numConnections);
 		}
+		[SmokeMethod("maxPendingConnections() const")]
 		public int MaxPendingConnections() {
 			return ProxyQTcpServer().MaxPendingConnections();
 		}
+		[SmokeMethod("serverPort() const")]
 		public ushort ServerPort() {
 			return ProxyQTcpServer().ServerPort();
 		}
+		[SmokeMethod("serverAddress() const")]
 		public QHostAddress ServerAddress() {
 			return ProxyQTcpServer().ServerAddress();
 		}
+		[SmokeMethod("socketDescriptor() const")]
 		public int SocketDescriptor() {
 			return ProxyQTcpServer().SocketDescriptor();
 		}
+		[SmokeMethod("setSocketDescriptor(int)")]
 		public bool SetSocketDescriptor(int socketDescriptor) {
 			return ProxyQTcpServer().SetSocketDescriptor(socketDescriptor);
 		}
+		[SmokeMethod("waitForNewConnection(int, bool*)")]
 		public bool WaitForNewConnection(int msec, out bool timedOut) {
 			return ProxyQTcpServer().WaitForNewConnection(msec,out timedOut);
 		}
+		[SmokeMethod("waitForNewConnection(int)")]
 		public bool WaitForNewConnection(int msec) {
 			return ProxyQTcpServer().WaitForNewConnection(msec);
 		}
+		[SmokeMethod("waitForNewConnection()")]
 		public bool WaitForNewConnection() {
 			return ProxyQTcpServer().WaitForNewConnection();
 		}
+		[SmokeMethod("hasPendingConnections() const")]
 		public virtual bool HasPendingConnections() {
 			return ProxyQTcpServer().HasPendingConnections();
 		}
+		[SmokeMethod("nextPendingConnection()")]
 		public virtual QTcpSocket NextPendingConnection() {
 			return ProxyQTcpServer().NextPendingConnection();
 		}
-		public int ServerError() {
+		[SmokeMethod("serverError() const")]
+		public QAbstractSocket.SocketError ServerError() {
 			return ProxyQTcpServer().ServerError();
 		}
+		[SmokeMethod("errorString() const")]
 		public string ErrorString() {
 			return ProxyQTcpServer().ErrorString();
 		}
+		[SmokeMethod("setProxy(const QNetworkProxy&)")]
+		public void SetProxy(QNetworkProxy networkProxy) {
+			ProxyQTcpServer().SetProxy(networkProxy);
+		}
+		[SmokeMethod("proxy() const")]
+		public QNetworkProxy Proxy() {
+			return ProxyQTcpServer().Proxy();
+		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQTcpServer().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQTcpServer().Tr(s);
 		}
+		[SmokeMethod("incomingConnection(int)")]
 		protected virtual void IncomingConnection(int handle) {
 			ProxyQTcpServer().IncomingConnection(handle);
 		}
 		~QTcpServer() {
-			ProxyQTcpServer().Dispose();
+			DisposeQTcpServer();
 		}
 		public new void Dispose() {
-			ProxyQTcpServer().Dispose();
+			DisposeQTcpServer();
+		}
+		private void DisposeQTcpServer() {
+			ProxyQTcpServer().DisposeQTcpServer();
+		}
+		protected new IQTcpServerSignals Emit() {
+			return (IQTcpServerSignals) Q_EMIT;
 		}
 	}
 
-	public interface IQTcpServerSignals {
+	public interface IQTcpServerSignals : IQObjectSignals {
+		[Q_SIGNAL("void newConnection()")]
 		void NewConnection();
 	}
 }

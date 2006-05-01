@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QStyleOptionComboBox")]
 	public class QStyleOptionComboBox : QStyleOptionComplex, IDisposable {
  		protected QStyleOptionComboBox(Type dummy) : base((Type) null) {}
 		interface IQStyleOptionComboBoxProxy {
 		}
 
-		protected void CreateQStyleOptionComboBoxProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionComboBox), this);
 			_interceptor = (QStyleOptionComboBox) realProxy.GetTransparentProxy();
 		}
@@ -24,36 +25,42 @@ namespace Qt {
 			return (IQStyleOptionComboBoxProxy) _staticInterceptor;
 		}
 
-		public const int Type = (int) OptionType.SO_ComboBox;
+		public const int Type = (int) QStyleOption.OptionType.SO_ComboBox;
 
 		public const int Version = 1;
 
 		public QStyleOptionComboBox() : this((Type) null) {
-			CreateQStyleOptionComboBoxProxy();
+			CreateProxy();
 			NewQStyleOptionComboBox();
 		}
+		[SmokeMethod("QStyleOptionComboBox()")]
 		private void NewQStyleOptionComboBox() {
 			ProxyQStyleOptionComboBox().NewQStyleOptionComboBox();
 		}
 		public QStyleOptionComboBox(QStyleOptionComboBox other) : this((Type) null) {
-			CreateQStyleOptionComboBoxProxy();
+			CreateProxy();
 			NewQStyleOptionComboBox(other);
 		}
+		[SmokeMethod("QStyleOptionComboBox(const QStyleOptionComboBox&)")]
 		private void NewQStyleOptionComboBox(QStyleOptionComboBox other) {
 			ProxyQStyleOptionComboBox().NewQStyleOptionComboBox(other);
 		}
 		public QStyleOptionComboBox(int version) : this((Type) null) {
-			CreateQStyleOptionComboBoxProxy();
+			CreateProxy();
 			NewQStyleOptionComboBox(version);
 		}
+		[SmokeMethod("QStyleOptionComboBox(int)")]
 		private void NewQStyleOptionComboBox(int version) {
 			ProxyQStyleOptionComboBox().NewQStyleOptionComboBox(version);
 		}
 		~QStyleOptionComboBox() {
-			ProxyQStyleOptionComboBox().Dispose();
+			DisposeQStyleOptionComboBox();
 		}
 		public void Dispose() {
-			ProxyQStyleOptionComboBox().Dispose();
+			DisposeQStyleOptionComboBox();
+		}
+		private void DisposeQStyleOptionComboBox() {
+			ProxyQStyleOptionComboBox().DisposeQStyleOptionComboBox();
 		}
 	}
 }

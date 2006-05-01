@@ -8,7 +8,7 @@ namespace Qt {
 		interface IQSqlProxy {
 		}
 
-		protected void CreateQSqlProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSql), this);
 			_interceptor = (QSql) realProxy.GetTransparentProxy();
 		}
@@ -24,21 +24,30 @@ namespace Qt {
 			return (IQSqlProxy) _staticInterceptor;
 		}
 
-		enum Location {
+		public enum Location {
 			BeforeFirstRow = -1,
 			AfterLastRow = -2,
 		}
-		enum ParamTypeFlag {
+		public enum ParamTypeFlag {
 			In = 0x00000001,
 			Out = 0x00000002,
 			InOut = In|Out,
 			Binary = 0x00000004,
 		}
-		enum TableType {
+		public enum TableType {
 			Tables = 0x01,
 			SystemTables = 0x02,
 			Views = 0x04,
 			AllTables = 0xff,
+		}
+		~QSql() {
+			DisposeQSql();
+		}
+		public void Dispose() {
+			DisposeQSql();
+		}
+		private void DisposeQSql() {
+			ProxyQSql().DisposeQSql();
 		}
 	}
 }

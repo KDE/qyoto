@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QStyleOptionMenuItem")]
 	public class QStyleOptionMenuItem : QStyleOption, IDisposable {
  		protected QStyleOptionMenuItem(Type dummy) : base((Type) null) {}
 		interface IQStyleOptionMenuItemProxy {
 		}
 
-		protected void CreateQStyleOptionMenuItemProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionMenuItem), this);
 			_interceptor = (QStyleOptionMenuItem) realProxy.GetTransparentProxy();
 		}
@@ -24,11 +25,7 @@ namespace Qt {
 			return (IQStyleOptionMenuItemProxy) _staticInterceptor;
 		}
 
-		public const int Type = (int) OptionType.SO_MenuItem;
-
-		public const int Version = 1;
-
-		enum MenuItemType {
+		public enum MenuItemType {
 			Normal = 0,
 			DefaultItem = 1,
 			Separator = 2,
@@ -38,37 +35,47 @@ namespace Qt {
 			Margin = 6,
 			EmptyArea = 7,
 		}
-		enum CheckType {
+		public enum CheckType {
 			NotCheckable = 0,
 			Exclusive = 1,
 			NonExclusive = 2,
 		}
+		public const int Type = (int) QStyleOption.OptionType.SO_MenuItem;
+
+		public const int Version = 1;
+
 		public QStyleOptionMenuItem() : this((Type) null) {
-			CreateQStyleOptionMenuItemProxy();
+			CreateProxy();
 			NewQStyleOptionMenuItem();
 		}
+		[SmokeMethod("QStyleOptionMenuItem()")]
 		private void NewQStyleOptionMenuItem() {
 			ProxyQStyleOptionMenuItem().NewQStyleOptionMenuItem();
 		}
 		public QStyleOptionMenuItem(QStyleOptionMenuItem other) : this((Type) null) {
-			CreateQStyleOptionMenuItemProxy();
+			CreateProxy();
 			NewQStyleOptionMenuItem(other);
 		}
+		[SmokeMethod("QStyleOptionMenuItem(const QStyleOptionMenuItem&)")]
 		private void NewQStyleOptionMenuItem(QStyleOptionMenuItem other) {
 			ProxyQStyleOptionMenuItem().NewQStyleOptionMenuItem(other);
 		}
 		public QStyleOptionMenuItem(int version) : this((Type) null) {
-			CreateQStyleOptionMenuItemProxy();
+			CreateProxy();
 			NewQStyleOptionMenuItem(version);
 		}
+		[SmokeMethod("QStyleOptionMenuItem(int)")]
 		private void NewQStyleOptionMenuItem(int version) {
 			ProxyQStyleOptionMenuItem().NewQStyleOptionMenuItem(version);
 		}
 		~QStyleOptionMenuItem() {
-			ProxyQStyleOptionMenuItem().Dispose();
+			DisposeQStyleOptionMenuItem();
 		}
 		public void Dispose() {
-			ProxyQStyleOptionMenuItem().Dispose();
+			DisposeQStyleOptionMenuItem();
+		}
+		private void DisposeQStyleOptionMenuItem() {
+			ProxyQStyleOptionMenuItem().DisposeQStyleOptionMenuItem();
 		}
 	}
 }

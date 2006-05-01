@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QPoint")]
 	public class QPoint : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
@@ -13,7 +14,7 @@ namespace Qt {
 			QPoint op_div(QPoint lhs, double c);
 		}
 
-		protected void CreateQPointProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPoint), this);
 			_interceptor = (QPoint) realProxy.GetTransparentProxy();
 		}
@@ -30,54 +31,69 @@ namespace Qt {
 		}
 
 		public QPoint() : this((Type) null) {
-			CreateQPointProxy();
+			CreateProxy();
 			NewQPoint();
 		}
+		[SmokeMethod("QPoint()")]
 		private void NewQPoint() {
 			ProxyQPoint().NewQPoint();
 		}
 		public QPoint(int xpos, int ypos) : this((Type) null) {
-			CreateQPointProxy();
+			CreateProxy();
 			NewQPoint(xpos,ypos);
 		}
+		[SmokeMethod("QPoint(int, int)")]
 		private void NewQPoint(int xpos, int ypos) {
 			ProxyQPoint().NewQPoint(xpos,ypos);
 		}
+		[SmokeMethod("isNull() const")]
 		public bool IsNull() {
 			return ProxyQPoint().IsNull();
 		}
+		[SmokeMethod("x() const")]
 		public int X() {
 			return ProxyQPoint().X();
 		}
+		[SmokeMethod("y() const")]
 		public int Y() {
 			return ProxyQPoint().Y();
 		}
+		[SmokeMethod("setX(int)")]
 		public void SetX(int x) {
 			ProxyQPoint().SetX(x);
 		}
+		[SmokeMethod("setY(int)")]
 		public void SetY(int y) {
 			ProxyQPoint().SetY(y);
 		}
+		[SmokeMethod("manhattanLength() const")]
 		public int ManhattanLength() {
 			return ProxyQPoint().ManhattanLength();
 		}
+		[SmokeMethod("rx()")]
 		public int Rx() {
 			return ProxyQPoint().Rx();
 		}
+		[SmokeMethod("ry()")]
 		public int Ry() {
 			return ProxyQPoint().Ry();
 		}
+		[SmokeMethod("operator*=(qreal)")]
 		public static QPoint operator*(QPoint lhs, double c) {
 			return StaticQPoint().op_mult(lhs,c);
 		}
+		[SmokeMethod("operator/=(qreal)")]
 		public static QPoint operator/(QPoint lhs, double c) {
 			return StaticQPoint().op_div(lhs,c);
 		}
 		~QPoint() {
-			ProxyQPoint().Dispose();
+			DisposeQPoint();
 		}
 		public void Dispose() {
-			ProxyQPoint().Dispose();
+			DisposeQPoint();
+		}
+		private void DisposeQPoint() {
+			ProxyQPoint().DisposeQPoint();
 		}
 	}
 }

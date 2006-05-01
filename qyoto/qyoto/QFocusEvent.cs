@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QFocusEvent")]
 	public class QFocusEvent : QEvent, IDisposable {
  		protected QFocusEvent(Type dummy) : base((Type) null) {}
 		interface IQFocusEventProxy {
 		}
 
-		protected void CreateQFocusEventProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFocusEvent), this);
 			_interceptor = (QFocusEvent) realProxy.GetTransparentProxy();
 		}
@@ -24,34 +25,42 @@ namespace Qt {
 			return (IQFocusEventProxy) _staticInterceptor;
 		}
 
-		public QFocusEvent(int type, int reason) : this((Type) null) {
-			CreateQFocusEventProxy();
+		public QFocusEvent(QEvent.E_Type type, Qt.FocusReason reason) : this((Type) null) {
+			CreateProxy();
 			NewQFocusEvent(type,reason);
 		}
-		private void NewQFocusEvent(int type, int reason) {
+		[SmokeMethod("QFocusEvent(QEvent::Type, Qt::FocusReason)")]
+		private void NewQFocusEvent(QEvent.E_Type type, Qt.FocusReason reason) {
 			ProxyQFocusEvent().NewQFocusEvent(type,reason);
 		}
-		public QFocusEvent(int type) : this((Type) null) {
-			CreateQFocusEventProxy();
+		public QFocusEvent(QEvent.E_Type type) : this((Type) null) {
+			CreateProxy();
 			NewQFocusEvent(type);
 		}
-		private void NewQFocusEvent(int type) {
+		[SmokeMethod("QFocusEvent(QEvent::Type)")]
+		private void NewQFocusEvent(QEvent.E_Type type) {
 			ProxyQFocusEvent().NewQFocusEvent(type);
 		}
+		[SmokeMethod("gotFocus() const")]
 		public bool GotFocus() {
 			return ProxyQFocusEvent().GotFocus();
 		}
+		[SmokeMethod("lostFocus() const")]
 		public bool LostFocus() {
 			return ProxyQFocusEvent().LostFocus();
 		}
-		public int Reason() {
+		[SmokeMethod("reason()")]
+		public Qt.FocusReason Reason() {
 			return ProxyQFocusEvent().Reason();
 		}
 		~QFocusEvent() {
-			ProxyQFocusEvent().Dispose();
+			DisposeQFocusEvent();
 		}
 		public new void Dispose() {
-			ProxyQFocusEvent().Dispose();
+			DisposeQFocusEvent();
+		}
+		private void DisposeQFocusEvent() {
+			ProxyQFocusEvent().DisposeQFocusEvent();
 		}
 	}
 }

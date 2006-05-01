@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QMetaMethod")]
 	public class QMetaMethod : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
@@ -11,7 +12,7 @@ namespace Qt {
 		interface IQMetaMethodProxy {
 		}
 
-		protected void CreateQMetaMethodProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMetaMethod), this);
 			_interceptor = (QMetaMethod) realProxy.GetTransparentProxy();
 		}
@@ -27,53 +28,63 @@ namespace Qt {
 			return (IQMetaMethodProxy) _staticInterceptor;
 		}
 
-		enum E_Access {
+		public enum Access {
 			Private = 0,
 			Protected = 1,
 			Public = 2,
 		}
-		enum E_MethodType {
+		public enum MethodType {
 			Method = 0,
 			Signal = 1,
 			Slot = 2,
 		}
-		enum E_Attributes {
+		public enum Attributes {
 			Compatibility = 0x1,
 			Cloned = 0x2,
 			Scriptable = 0x4,
 		}
 		public QMetaMethod() : this((Type) null) {
-			CreateQMetaMethodProxy();
+			CreateProxy();
 			NewQMetaMethod();
 		}
+		[SmokeMethod("QMetaMethod()")]
 		private void NewQMetaMethod() {
 			ProxyQMetaMethod().NewQMetaMethod();
 		}
+		[SmokeMethod("signature() const")]
 		public string Signature() {
 			return ProxyQMetaMethod().Signature();
 		}
+		[SmokeMethod("typeName() const")]
 		public string TypeName() {
 			return ProxyQMetaMethod().TypeName();
 		}
 		// QList<QByteArray> parameterTypes(); >>>> NOT CONVERTED
 		// QList<QByteArray> parameterNames(); >>>> NOT CONVERTED
+		[SmokeMethod("tag() const")]
 		public string Tag() {
 			return ProxyQMetaMethod().Tag();
 		}
-		public int Access() {
-			return ProxyQMetaMethod().Access();
+		[SmokeMethod("access() const")]
+		public QMetaMethod.Access access() {
+			return ProxyQMetaMethod().access();
 		}
-		public int MethodType() {
-			return ProxyQMetaMethod().MethodType();
+		[SmokeMethod("methodType() const")]
+		public QMetaMethod.MethodType methodType() {
+			return ProxyQMetaMethod().methodType();
 		}
-		public int Attributes() {
-			return ProxyQMetaMethod().Attributes();
+		[SmokeMethod("attributes() const")]
+		public int attributes() {
+			return ProxyQMetaMethod().attributes();
 		}
 		~QMetaMethod() {
-			ProxyQMetaMethod().Dispose();
+			DisposeQMetaMethod();
 		}
 		public void Dispose() {
-			ProxyQMetaMethod().Dispose();
+			DisposeQMetaMethod();
+		}
+		private void DisposeQMetaMethod() {
+			ProxyQMetaMethod().DisposeQMetaMethod();
 		}
 	}
 }

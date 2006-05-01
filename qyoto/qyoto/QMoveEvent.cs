@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QMoveEvent")]
 	public class QMoveEvent : QEvent, IDisposable {
  		protected QMoveEvent(Type dummy) : base((Type) null) {}
 		interface IQMoveEventProxy {
 		}
 
-		protected void CreateQMoveEventProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMoveEvent), this);
 			_interceptor = (QMoveEvent) realProxy.GetTransparentProxy();
 		}
@@ -25,23 +26,29 @@ namespace Qt {
 		}
 
 		public QMoveEvent(QPoint pos, QPoint oldPos) : this((Type) null) {
-			CreateQMoveEventProxy();
+			CreateProxy();
 			NewQMoveEvent(pos,oldPos);
 		}
+		[SmokeMethod("QMoveEvent(const QPoint&, const QPoint&)")]
 		private void NewQMoveEvent(QPoint pos, QPoint oldPos) {
 			ProxyQMoveEvent().NewQMoveEvent(pos,oldPos);
 		}
+		[SmokeMethod("pos() const")]
 		public QPoint Pos() {
 			return ProxyQMoveEvent().Pos();
 		}
+		[SmokeMethod("oldPos() const")]
 		public QPoint OldPos() {
 			return ProxyQMoveEvent().OldPos();
 		}
 		~QMoveEvent() {
-			ProxyQMoveEvent().Dispose();
+			DisposeQMoveEvent();
 		}
 		public new void Dispose() {
-			ProxyQMoveEvent().Dispose();
+			DisposeQMoveEvent();
+		}
+		private void DisposeQMoveEvent() {
+			ProxyQMoveEvent().DisposeQMoveEvent();
 		}
 	}
 }

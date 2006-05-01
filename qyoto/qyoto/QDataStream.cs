@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QDataStream")]
 	public class QDataStream : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
@@ -24,7 +25,7 @@ namespace Qt {
 			QDataStream op_write(QDataStream lhs, string str);
 		}
 
-		protected void CreateQDataStreamProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDataStream), this);
 			_interceptor = (QDataStream) realProxy.GetTransparentProxy();
 		}
@@ -40,7 +41,7 @@ namespace Qt {
 			return (IQDataStreamProxy) _staticInterceptor;
 		}
 
-		enum E_Version {
+		public enum Version {
 			Qt_1_0 = 1,
 			Qt_2_0 = 2,
 			Qt_2_1 = 3,
@@ -48,74 +49,78 @@ namespace Qt {
 			Qt_3_1 = 5,
 			Qt_3_3 = 6,
 			Qt_4_0 = 7,
+			Qt_4_1 = Qt_4_0,
 		}
-//		enum E_ByteOrder {
-//			BigEndian = QSysInfo.BigEndian,
-//			LittleEndian = QSysInfo.LittleEndian,
-//		}
-		enum E_Status {
+		public enum Status {
 			Ok = 0,
 			ReadPastEnd = 1,
 			ReadCorruptData = 2,
 		}
 		public QDataStream() : this((Type) null) {
-			CreateQDataStreamProxy();
+			CreateProxy();
 			NewQDataStream();
 		}
+		[SmokeMethod("QDataStream()")]
 		private void NewQDataStream() {
 			ProxyQDataStream().NewQDataStream();
 		}
 		public QDataStream(IQIODevice arg1) : this((Type) null) {
-			CreateQDataStreamProxy();
+			CreateProxy();
 			NewQDataStream(arg1);
 		}
+		[SmokeMethod("QDataStream(QIODevice*)")]
 		private void NewQDataStream(IQIODevice arg1) {
 			ProxyQDataStream().NewQDataStream(arg1);
 		}
 		public QDataStream(QByteArray arg1, int flags) : this((Type) null) {
-			CreateQDataStreamProxy();
+			CreateProxy();
 			NewQDataStream(arg1,flags);
 		}
+		[SmokeMethod("QDataStream(QByteArray*, QIODevice::OpenMode)")]
 		private void NewQDataStream(QByteArray arg1, int flags) {
 			ProxyQDataStream().NewQDataStream(arg1,flags);
 		}
 		public QDataStream(QByteArray arg1) : this((Type) null) {
-			CreateQDataStreamProxy();
+			CreateProxy();
 			NewQDataStream(arg1);
 		}
+		[SmokeMethod("QDataStream(const QByteArray&)")]
 		private void NewQDataStream(QByteArray arg1) {
 			ProxyQDataStream().NewQDataStream(arg1);
 		}
+		[SmokeMethod("device() const")]
 		public IQIODevice Device() {
 			return ProxyQDataStream().Device();
 		}
+		[SmokeMethod("setDevice(QIODevice*)")]
 		public void SetDevice(IQIODevice arg1) {
 			ProxyQDataStream().SetDevice(arg1);
 		}
+		[SmokeMethod("unsetDevice()")]
 		public void UnsetDevice() {
 			ProxyQDataStream().UnsetDevice();
 		}
+		[SmokeMethod("atEnd() const")]
 		public bool AtEnd() {
 			return ProxyQDataStream().AtEnd();
 		}
-		public int Status() {
-			return ProxyQDataStream().Status();
+		[SmokeMethod("status() const")]
+		public QDataStream.Status status() {
+			return ProxyQDataStream().status();
 		}
-		public void SetStatus(int status) {
+		[SmokeMethod("setStatus(QDataStream::Status)")]
+		public void SetStatus(QDataStream.Status status) {
 			ProxyQDataStream().SetStatus(status);
 		}
+		[SmokeMethod("resetStatus()")]
 		public void ResetStatus() {
 			ProxyQDataStream().ResetStatus();
 		}
-		public int ByteOrder() {
-			return ProxyQDataStream().ByteOrder();
+		[SmokeMethod("version() const")]
+		public int version() {
+			return ProxyQDataStream().version();
 		}
-		public void SetByteOrder(int arg1) {
-			ProxyQDataStream().SetByteOrder(arg1);
-		}
-		public int Version() {
-			return ProxyQDataStream().Version();
-		}
+		[SmokeMethod("setVersion(int)")]
 		public void SetVersion(int arg1) {
 			ProxyQDataStream().SetVersion(arg1);
 		}
@@ -123,69 +128,93 @@ namespace Qt {
 		// QDataStream& operator>>(quint8& arg1); >>>> NOT CONVERTED
 		// QDataStream& operator>>(qint16& arg1); >>>> NOT CONVERTED
 		// QDataStream& operator>>(quint16& arg1); >>>> NOT CONVERTED
+		[SmokeMethod("operator>>(qint32&)")]
 		public static QDataStream op_read(QDataStream lhs, int i) {
 			return StaticQDataStream().op_read(lhs,i);
 		}
 		// QDataStream& operator>>(quint32& arg1); >>>> NOT CONVERTED
 		// QDataStream& operator>>(qint64& arg1); >>>> NOT CONVERTED
 		// QDataStream& operator>>(quint64& arg1); >>>> NOT CONVERTED
+		[SmokeMethod("operator>>(bool&)")]
 		public static QDataStream op_read(QDataStream lhs, bool i) {
 			return StaticQDataStream().op_read(lhs,i);
 		}
+		[SmokeMethod("operator>>(float&)")]
 		public static QDataStream op_read(QDataStream lhs, float f) {
 			return StaticQDataStream().op_read(lhs,f);
 		}
+		[SmokeMethod("operator>>(double&)")]
 		public static QDataStream op_read(QDataStream lhs, double f) {
 			return StaticQDataStream().op_read(lhs,f);
 		}
+		[SmokeMethod("operator>>(char*&)")]
 		public static QDataStream op_read(QDataStream lhs, string str) {
 			return StaticQDataStream().op_read(lhs,str);
 		}
 		// QDataStream& operator<<(qint8 arg1); >>>> NOT CONVERTED
 		// QDataStream& operator<<(quint8 arg1); >>>> NOT CONVERTED
+		[SmokeMethod("operator<<(qint16)")]
 		public static QDataStream op_write(QDataStream lhs, short i) {
 			return StaticQDataStream().op_write(lhs,i);
 		}
+		[SmokeMethod("operator<<(quint16)")]
 		public static QDataStream op_write(QDataStream lhs, ushort i) {
 			return StaticQDataStream().op_write(lhs,i);
 		}
+		[SmokeMethod("operator<<(qint32)")]
 		public static QDataStream op_write(QDataStream lhs, int i) {
 			return StaticQDataStream().op_write(lhs,i);
 		}
+		[SmokeMethod("operator<<(quint32)")]
 		public static QDataStream op_write(QDataStream lhs, uint i) {
 			return StaticQDataStream().op_write(lhs,i);
 		}
 		// QDataStream& operator<<(qint64 arg1); >>>> NOT CONVERTED
 		// QDataStream& operator<<(quint64 arg1); >>>> NOT CONVERTED
+		[SmokeMethod("operator<<(bool)")]
 		public static QDataStream op_write(QDataStream lhs, bool i) {
 			return StaticQDataStream().op_write(lhs,i);
 		}
+		[SmokeMethod("operator<<(float)")]
 		public static QDataStream op_write(QDataStream lhs, float f) {
 			return StaticQDataStream().op_write(lhs,f);
 		}
+		[SmokeMethod("operator<<(double)")]
 		public static QDataStream op_write(QDataStream lhs, double f) {
 			return StaticQDataStream().op_write(lhs,f);
 		}
+		[SmokeMethod("operator<<(const char*)")]
 		public static QDataStream op_write(QDataStream lhs, string str) {
 			return StaticQDataStream().op_write(lhs,str);
 		}
+		[SmokeMethod("readBytes(char*&, uint&)")]
 		public QDataStream ReadBytes(string arg1, uint len) {
 			return ProxyQDataStream().ReadBytes(arg1,len);
 		}
+		[SmokeMethod("readRawData(char*, int)")]
 		public int ReadRawData(string arg1, int len) {
 			return ProxyQDataStream().ReadRawData(arg1,len);
 		}
+		[SmokeMethod("writeBytes(const char*, uint)")]
 		public QDataStream WriteBytes(string arg1, uint len) {
 			return ProxyQDataStream().WriteBytes(arg1,len);
 		}
+		[SmokeMethod("writeRawData(const char*, int)")]
 		public int WriteRawData(string arg1, int len) {
 			return ProxyQDataStream().WriteRawData(arg1,len);
 		}
+		[SmokeMethod("skipRawData(int)")]
+		public int SkipRawData(int len) {
+			return ProxyQDataStream().SkipRawData(len);
+		}
 		~QDataStream() {
-			ProxyQDataStream().Dispose();
+			DisposeQDataStream();
 		}
 		public void Dispose() {
-			ProxyQDataStream().Dispose();
+			DisposeQDataStream();
+		}
+		private void DisposeQDataStream() {
+			ProxyQDataStream().DisposeQDataStream();
 		}
 	}
 }

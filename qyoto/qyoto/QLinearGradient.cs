@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QLinearGradient")]
 	public class QLinearGradient : QGradient, IDisposable {
  		protected QLinearGradient(Type dummy) : base((Type) null) {}
 		interface IQLinearGradientProxy {
 		}
 
-		protected void CreateQLinearGradientProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QLinearGradient), this);
 			_interceptor = (QLinearGradient) realProxy.GetTransparentProxy();
 		}
@@ -25,30 +26,37 @@ namespace Qt {
 		}
 
 		public QLinearGradient(QPointF start, QPointF finalStop) : this((Type) null) {
-			CreateQLinearGradientProxy();
+			CreateProxy();
 			NewQLinearGradient(start,finalStop);
 		}
+		[SmokeMethod("QLinearGradient(const QPointF&, const QPointF&)")]
 		private void NewQLinearGradient(QPointF start, QPointF finalStop) {
 			ProxyQLinearGradient().NewQLinearGradient(start,finalStop);
 		}
 		public QLinearGradient(double xStart, double yStart, double xFinalStop, double yFinalStop) : this((Type) null) {
-			CreateQLinearGradientProxy();
+			CreateProxy();
 			NewQLinearGradient(xStart,yStart,xFinalStop,yFinalStop);
 		}
+		[SmokeMethod("QLinearGradient(qreal, qreal, qreal, qreal)")]
 		private void NewQLinearGradient(double xStart, double yStart, double xFinalStop, double yFinalStop) {
 			ProxyQLinearGradient().NewQLinearGradient(xStart,yStart,xFinalStop,yFinalStop);
 		}
+		[SmokeMethod("start() const")]
 		public QPointF Start() {
 			return ProxyQLinearGradient().Start();
 		}
+		[SmokeMethod("finalStop() const")]
 		public QPointF FinalStop() {
 			return ProxyQLinearGradient().FinalStop();
 		}
 		~QLinearGradient() {
-			ProxyQLinearGradient().Dispose();
+			DisposeQLinearGradient();
 		}
 		public void Dispose() {
-			ProxyQLinearGradient().Dispose();
+			DisposeQLinearGradient();
+		}
+		private void DisposeQLinearGradient() {
+			ProxyQLinearGradient().DisposeQLinearGradient();
 		}
 	}
 }

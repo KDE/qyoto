@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QPointF")]
 	public class QPointF : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
@@ -13,7 +14,7 @@ namespace Qt {
 			QPointF op_div(QPointF lhs, double c);
 		}
 
-		protected void CreateQPointFProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPointF), this);
 			_interceptor = (QPointF) realProxy.GetTransparentProxy();
 		}
@@ -30,57 +31,71 @@ namespace Qt {
 		}
 
 		public QPointF() : this((Type) null) {
-			CreateQPointFProxy();
+			CreateProxy();
 			NewQPointF();
 		}
+		[SmokeMethod("QPointF()")]
 		private void NewQPointF() {
 			ProxyQPointF().NewQPointF();
 		}
 		public QPointF(QPoint p) : this((Type) null) {
-			CreateQPointFProxy();
+			CreateProxy();
 			NewQPointF(p);
 		}
+		[SmokeMethod("QPointF(const QPoint&)")]
 		private void NewQPointF(QPoint p) {
 			ProxyQPointF().NewQPointF(p);
 		}
 		public QPointF(double xpos, double ypos) : this((Type) null) {
-			CreateQPointFProxy();
+			CreateProxy();
 			NewQPointF(xpos,ypos);
 		}
+		[SmokeMethod("QPointF(qreal, qreal)")]
 		private void NewQPointF(double xpos, double ypos) {
 			ProxyQPointF().NewQPointF(xpos,ypos);
 		}
+		[SmokeMethod("isNull() const")]
 		public bool IsNull() {
 			return ProxyQPointF().IsNull();
 		}
+		[SmokeMethod("x() const")]
 		public double X() {
 			return ProxyQPointF().X();
 		}
+		[SmokeMethod("y() const")]
 		public double Y() {
 			return ProxyQPointF().Y();
 		}
+		[SmokeMethod("setX(qreal)")]
 		public void SetX(double x) {
 			ProxyQPointF().SetX(x);
 		}
+		[SmokeMethod("setY(qreal)")]
 		public void SetY(double y) {
 			ProxyQPointF().SetY(y);
 		}
 		// qreal& rx(); >>>> NOT CONVERTED
 		// qreal& ry(); >>>> NOT CONVERTED
+		[SmokeMethod("operator*=(qreal)")]
 		public static QPointF operator*(QPointF lhs, double c) {
 			return StaticQPointF().op_mult(lhs,c);
 		}
+		[SmokeMethod("operator/=(qreal)")]
 		public static QPointF operator/(QPointF lhs, double c) {
 			return StaticQPointF().op_div(lhs,c);
 		}
+		[SmokeMethod("toPoint() const")]
 		public QPoint ToPoint() {
 			return ProxyQPointF().ToPoint();
 		}
 		~QPointF() {
-			ProxyQPointF().Dispose();
+			DisposeQPointF();
 		}
 		public void Dispose() {
-			ProxyQPointF().Dispose();
+			DisposeQPointF();
+		}
+		private void DisposeQPointF() {
+			ProxyQPointF().DisposeQPointF();
 		}
 	}
 }

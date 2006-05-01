@@ -4,12 +4,13 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QWhatsThisClickedEvent")]
 	public class QWhatsThisClickedEvent : QEvent, IDisposable {
  		protected QWhatsThisClickedEvent(Type dummy) : base((Type) null) {}
 		interface IQWhatsThisClickedEventProxy {
 		}
 
-		protected void CreateQWhatsThisClickedEventProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QWhatsThisClickedEvent), this);
 			_interceptor = (QWhatsThisClickedEvent) realProxy.GetTransparentProxy();
 		}
@@ -26,20 +27,25 @@ namespace Qt {
 		}
 
 		public QWhatsThisClickedEvent(string href) : this((Type) null) {
-			CreateQWhatsThisClickedEventProxy();
+			CreateProxy();
 			NewQWhatsThisClickedEvent(href);
 		}
+		[SmokeMethod("QWhatsThisClickedEvent(const QString&)")]
 		private void NewQWhatsThisClickedEvent(string href) {
 			ProxyQWhatsThisClickedEvent().NewQWhatsThisClickedEvent(href);
 		}
+		[SmokeMethod("href() const")]
 		public string Href() {
 			return ProxyQWhatsThisClickedEvent().Href();
 		}
 		~QWhatsThisClickedEvent() {
-			ProxyQWhatsThisClickedEvent().Dispose();
+			DisposeQWhatsThisClickedEvent();
 		}
 		public new void Dispose() {
-			ProxyQWhatsThisClickedEvent().Dispose();
+			DisposeQWhatsThisClickedEvent();
+		}
+		private void DisposeQWhatsThisClickedEvent() {
+			ProxyQWhatsThisClickedEvent().DisposeQWhatsThisClickedEvent();
 		}
 	}
 }

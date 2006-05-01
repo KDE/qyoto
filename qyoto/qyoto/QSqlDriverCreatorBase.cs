@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QSqlDriverCreatorBase")]
 	public class QSqlDriverCreatorBase : MarshalByRefObject {
 		protected Object _interceptor = null;
  
@@ -11,7 +12,7 @@ namespace Qt {
 		interface IQSqlDriverCreatorBaseProxy {
 		}
 
-		protected void CreateQSqlDriverCreatorBaseProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSqlDriverCreatorBase), this);
 			_interceptor = (QSqlDriverCreatorBase) realProxy.GetTransparentProxy();
 		}
@@ -27,9 +28,19 @@ namespace Qt {
 			return (IQSqlDriverCreatorBaseProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("createObject() const")]
 		public virtual QSqlDriver CreateObject() {
 			return ProxyQSqlDriverCreatorBase().CreateObject();
 		}
 		// QSqlDriverCreatorBase* QSqlDriverCreatorBase(); >>>> NOT CONVERTED
+		~QSqlDriverCreatorBase() {
+			DisposeQSqlDriverCreatorBase();
+		}
+		public void Dispose() {
+			DisposeQSqlDriverCreatorBase();
+		}
+		private void DisposeQSqlDriverCreatorBase() {
+			ProxyQSqlDriverCreatorBase().DisposeQSqlDriverCreatorBase();
+		}
 	}
 }

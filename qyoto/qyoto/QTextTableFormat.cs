@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QTextTableFormat")]
 	public class QTextTableFormat : QTextFrameFormat, IDisposable {
  		protected QTextTableFormat(Type dummy) : base((Type) null) {}
 		interface IQTextTableFormatProxy {
 		}
 
-		protected void CreateQTextTableFormatProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextTableFormat), this);
 			_interceptor = (QTextTableFormat) realProxy.GetTransparentProxy();
 		}
@@ -25,49 +26,63 @@ namespace Qt {
 		}
 
 		public QTextTableFormat() : this((Type) null) {
-			CreateQTextTableFormatProxy();
+			CreateProxy();
 			NewQTextTableFormat();
 		}
+		[SmokeMethod("QTextTableFormat()")]
 		private void NewQTextTableFormat() {
 			ProxyQTextTableFormat().NewQTextTableFormat();
 		}
+		[SmokeMethod("isValid() const")]
 		public new bool IsValid() {
 			return ProxyQTextTableFormat().IsValid();
 		}
+		[SmokeMethod("columns() const")]
 		public int Columns() {
 			return ProxyQTextTableFormat().Columns();
 		}
+		[SmokeMethod("setColumns(int)")]
 		public void SetColumns(int columns) {
 			ProxyQTextTableFormat().SetColumns(columns);
 		}
 		// void setColumnWidthConstraints(const QVector<QTextLength>& arg1); >>>> NOT CONVERTED
 		// QVector<QTextLength> columnWidthConstraints(); >>>> NOT CONVERTED
+		[SmokeMethod("clearColumnWidthConstraints()")]
 		public void ClearColumnWidthConstraints() {
 			ProxyQTextTableFormat().ClearColumnWidthConstraints();
 		}
+		[SmokeMethod("cellSpacing() const")]
 		public double CellSpacing() {
 			return ProxyQTextTableFormat().CellSpacing();
 		}
+		[SmokeMethod("setCellSpacing(qreal)")]
 		public void SetCellSpacing(double spacing) {
 			ProxyQTextTableFormat().SetCellSpacing(spacing);
 		}
+		[SmokeMethod("cellPadding() const")]
 		public double CellPadding() {
 			return ProxyQTextTableFormat().CellPadding();
 		}
+		[SmokeMethod("setCellPadding(qreal)")]
 		public void SetCellPadding(double padding) {
 			ProxyQTextTableFormat().SetCellPadding(padding);
 		}
+		[SmokeMethod("setAlignment(Qt::Alignment)")]
 		public void SetAlignment(int alignment) {
 			ProxyQTextTableFormat().SetAlignment(alignment);
 		}
+		[SmokeMethod("alignment() const")]
 		public int Alignment() {
 			return ProxyQTextTableFormat().Alignment();
 		}
 		~QTextTableFormat() {
-			ProxyQTextTableFormat().Dispose();
+			DisposeQTextTableFormat();
 		}
 		public void Dispose() {
-			ProxyQTextTableFormat().Dispose();
+			DisposeQTextTableFormat();
+		}
+		private void DisposeQTextTableFormat() {
+			ProxyQTextTableFormat().DisposeQTextTableFormat();
 		}
 	}
 }

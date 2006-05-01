@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QTextOption")]
 	public class QTextOption : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
@@ -11,7 +12,7 @@ namespace Qt {
 		interface IQTextOptionProxy {
 		}
 
-		protected void CreateQTextOptionProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextOption), this);
 			_interceptor = (QTextOption) realProxy.GetTransparentProxy();
 		}
@@ -27,80 +28,98 @@ namespace Qt {
 			return (IQTextOptionProxy) _staticInterceptor;
 		}
 
-		enum E_WrapMode {
+		public enum WrapMode {
 			NoWrap = 0,
 			WordWrap = 1,
 			ManualWrap = 2,
 			WrapAnywhere = 3,
 			WrapAtWordBoundaryOrAnywhere = 4,
 		}
-		enum Flag :long {
+		public enum Flag : long {
 			IncludeTrailingSpaces = 0x80000000,
 		}
 		public QTextOption() : this((Type) null) {
-			CreateQTextOptionProxy();
+			CreateProxy();
 			NewQTextOption();
 		}
+		[SmokeMethod("QTextOption()")]
 		private void NewQTextOption() {
 			ProxyQTextOption().NewQTextOption();
 		}
 		public QTextOption(int alignment) : this((Type) null) {
-			CreateQTextOptionProxy();
+			CreateProxy();
 			NewQTextOption(alignment);
 		}
+		[SmokeMethod("QTextOption(Qt::Alignment)")]
 		private void NewQTextOption(int alignment) {
 			ProxyQTextOption().NewQTextOption(alignment);
 		}
 		public QTextOption(QTextOption o) : this((Type) null) {
-			CreateQTextOptionProxy();
+			CreateProxy();
 			NewQTextOption(o);
 		}
+		[SmokeMethod("QTextOption(const QTextOption&)")]
 		private void NewQTextOption(QTextOption o) {
 			ProxyQTextOption().NewQTextOption(o);
 		}
+		[SmokeMethod("setAlignment(Qt::Alignment)")]
 		public void SetAlignment(int alignment) {
 			ProxyQTextOption().SetAlignment(alignment);
 		}
+		[SmokeMethod("alignment() const")]
 		public int Alignment() {
 			return ProxyQTextOption().Alignment();
 		}
-		public void SetTextDirection(int aDirection) {
+		[SmokeMethod("setTextDirection(Qt::LayoutDirection)")]
+		public void SetTextDirection(Qt.LayoutDirection aDirection) {
 			ProxyQTextOption().SetTextDirection(aDirection);
 		}
-		public int TextDirection() {
+		[SmokeMethod("textDirection() const")]
+		public Qt.LayoutDirection TextDirection() {
 			return ProxyQTextOption().TextDirection();
 		}
-		public void SetWrapMode(int wrap) {
+		[SmokeMethod("setWrapMode(QTextOption::WrapMode)")]
+		public void SetWrapMode(QTextOption.WrapMode wrap) {
 			ProxyQTextOption().SetWrapMode(wrap);
 		}
-		public int WrapMode() {
-			return ProxyQTextOption().WrapMode();
+		[SmokeMethod("wrapMode() const")]
+		public QTextOption.WrapMode wrapMode() {
+			return ProxyQTextOption().wrapMode();
 		}
+		[SmokeMethod("setFlags(Flags)")]
 		public void SetFlags(int flags) {
 			ProxyQTextOption().SetFlags(flags);
 		}
+		[SmokeMethod("flags() const")]
 		public int Flags() {
 			return ProxyQTextOption().Flags();
 		}
+		[SmokeMethod("setTabStop(qreal)")]
 		public void SetTabStop(double tabStop) {
 			ProxyQTextOption().SetTabStop(tabStop);
 		}
+		[SmokeMethod("tabStop() const")]
 		public double TabStop() {
 			return ProxyQTextOption().TabStop();
 		}
 		// void setTabArray(QList<qreal> arg1); >>>> NOT CONVERTED
 		// QList<qreal> tabArray(); >>>> NOT CONVERTED
+		[SmokeMethod("setUseDesignMetrics(bool)")]
 		public void SetUseDesignMetrics(bool b) {
 			ProxyQTextOption().SetUseDesignMetrics(b);
 		}
+		[SmokeMethod("useDesignMetrics() const")]
 		public bool UseDesignMetrics() {
 			return ProxyQTextOption().UseDesignMetrics();
 		}
 		~QTextOption() {
-			ProxyQTextOption().Dispose();
+			DisposeQTextOption();
 		}
 		public void Dispose() {
-			ProxyQTextOption().Dispose();
+			DisposeQTextOption();
+		}
+		private void DisposeQTextOption() {
+			ProxyQTextOption().DisposeQTextOption();
 		}
 	}
 }

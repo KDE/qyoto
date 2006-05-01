@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Collections;
 
+	[SmokeClass("QDomNodeList")]
 	public class QDomNodeList : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
@@ -13,7 +14,7 @@ namespace Qt {
 			bool op_equals(QDomNodeList lhs, ArrayList arg1);
 		}
 
-		protected void CreateQDomNodeListProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomNodeList), this);
 			_interceptor = (QDomNodeList) realProxy.GetTransparentProxy();
 		}
@@ -30,19 +31,22 @@ namespace Qt {
 		}
 
 		public QDomNodeList() : this((Type) null) {
-			CreateQDomNodeListProxy();
+			CreateProxy();
 			NewQDomNodeList();
 		}
+		[SmokeMethod("QDomNodeList()")]
 		private void NewQDomNodeList() {
 			ProxyQDomNodeList().NewQDomNodeList();
 		}
 		public QDomNodeList(ArrayList arg1) : this((Type) null) {
-			CreateQDomNodeListProxy();
+			CreateProxy();
 			NewQDomNodeList(arg1);
 		}
+		[SmokeMethod("QDomNodeList(const QDomNodeList&)")]
 		private void NewQDomNodeList(ArrayList arg1) {
 			ProxyQDomNodeList().NewQDomNodeList(arg1);
 		}
+		[SmokeMethod("operator==(const QDomNodeList&) const")]
 		public static bool operator==(QDomNodeList lhs, ArrayList arg1) {
 			return StaticQDomNodeList().op_equals(lhs,arg1);
 		}
@@ -56,20 +60,38 @@ namespace Qt {
 		public override int GetHashCode() {
 			return ProxyQDomNodeList().GetHashCode();
 		}
+		[SmokeMethod("item(int) const")]
 		public QDomNode Item(int index) {
 			return ProxyQDomNodeList().Item(index);
 		}
+		[SmokeMethod("at(int) const")]
+		public QDomNode At(int index) {
+			return ProxyQDomNodeList().At(index);
+		}
+		[SmokeMethod("length() const")]
 		public uint Length() {
 			return ProxyQDomNodeList().Length();
 		}
+		[SmokeMethod("count() const")]
 		public int Count() {
 			return ProxyQDomNodeList().Count();
 		}
+		[SmokeMethod("size() const")]
+		public int Size() {
+			return ProxyQDomNodeList().Size();
+		}
+		[SmokeMethod("isEmpty() const")]
+		public bool IsEmpty() {
+			return ProxyQDomNodeList().IsEmpty();
+		}
 		~QDomNodeList() {
-			ProxyQDomNodeList().Dispose();
+			DisposeQDomNodeList();
 		}
 		public void Dispose() {
-			ProxyQDomNodeList().Dispose();
+			DisposeQDomNodeList();
+		}
+		private void DisposeQDomNodeList() {
+			ProxyQDomNodeList().DisposeQDomNodeList();
 		}
 	}
 }

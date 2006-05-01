@@ -4,12 +4,13 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QFileOpenEvent")]
 	public class QFileOpenEvent : QEvent, IDisposable {
  		protected QFileOpenEvent(Type dummy) : base((Type) null) {}
 		interface IQFileOpenEventProxy {
 		}
 
-		protected void CreateQFileOpenEventProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFileOpenEvent), this);
 			_interceptor = (QFileOpenEvent) realProxy.GetTransparentProxy();
 		}
@@ -26,20 +27,25 @@ namespace Qt {
 		}
 
 		public QFileOpenEvent(string file) : this((Type) null) {
-			CreateQFileOpenEventProxy();
+			CreateProxy();
 			NewQFileOpenEvent(file);
 		}
+		[SmokeMethod("QFileOpenEvent(const QString&)")]
 		private void NewQFileOpenEvent(string file) {
 			ProxyQFileOpenEvent().NewQFileOpenEvent(file);
 		}
+		[SmokeMethod("file() const")]
 		public string File() {
 			return ProxyQFileOpenEvent().File();
 		}
 		~QFileOpenEvent() {
-			ProxyQFileOpenEvent().Dispose();
+			DisposeQFileOpenEvent();
 		}
 		public new void Dispose() {
-			ProxyQFileOpenEvent().Dispose();
+			DisposeQFileOpenEvent();
+		}
+		private void DisposeQFileOpenEvent() {
+			ProxyQFileOpenEvent().DisposeQFileOpenEvent();
 		}
 	}
 }

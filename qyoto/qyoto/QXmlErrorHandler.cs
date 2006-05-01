@@ -11,6 +11,7 @@ namespace Qt {
 			string ErrorString();
 	}
 
+	[SmokeClass("QXmlErrorHandler")]
 	public class QXmlErrorHandler : MarshalByRefObject, IQXmlErrorHandler {
 		protected Object _interceptor = null;
  
@@ -19,7 +20,7 @@ namespace Qt {
 		interface IQXmlErrorHandlerProxy {
 		}
 
-		protected void CreateQXmlErrorHandlerProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlErrorHandler), this);
 			_interceptor = (QXmlErrorHandler) realProxy.GetTransparentProxy();
 		}
@@ -35,17 +36,38 @@ namespace Qt {
 			return (IQXmlErrorHandlerProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("warning(const QXmlParseException&)")]
 		public virtual bool Warning(QXmlParseException exception) {
 			return ProxyQXmlErrorHandler().Warning(exception);
 		}
+		[SmokeMethod("error(const QXmlParseException&)")]
 		public virtual bool Error(QXmlParseException exception) {
 			return ProxyQXmlErrorHandler().Error(exception);
 		}
+		[SmokeMethod("fatalError(const QXmlParseException&)")]
 		public virtual bool FatalError(QXmlParseException exception) {
 			return ProxyQXmlErrorHandler().FatalError(exception);
 		}
+		[SmokeMethod("errorString() const")]
 		public virtual string ErrorString() {
 			return ProxyQXmlErrorHandler().ErrorString();
+		}
+		public QXmlErrorHandler() : this((Type) null) {
+			CreateProxy();
+			NewQXmlErrorHandler();
+		}
+		[SmokeMethod("QXmlErrorHandler()")]
+		private void NewQXmlErrorHandler() {
+			ProxyQXmlErrorHandler().NewQXmlErrorHandler();
+		}
+		~QXmlErrorHandler() {
+			DisposeQXmlErrorHandler();
+		}
+		public void Dispose() {
+			DisposeQXmlErrorHandler();
+		}
+		private void DisposeQXmlErrorHandler() {
+			ProxyQXmlErrorHandler().DisposeQXmlErrorHandler();
 		}
 	}
 }

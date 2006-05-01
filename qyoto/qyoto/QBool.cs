@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QBool")]
 	public class QBool : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
@@ -11,7 +12,7 @@ namespace Qt {
 		interface IQBoolProxy {
 		}
 
-		protected void CreateQBoolProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QBool), this);
 			_interceptor = (QBool) realProxy.GetTransparentProxy();
 		}
@@ -28,18 +29,22 @@ namespace Qt {
 		}
 
 		public QBool(bool B) : this((Type) null) {
-			CreateQBoolProxy();
+			CreateProxy();
 			NewQBool(B);
 		}
+		[SmokeMethod("QBool(bool)")]
 		private void NewQBool(bool B) {
 			ProxyQBool().NewQBool(B);
 		}
 		//  operator const void *(); >>>> NOT CONVERTED
 		~QBool() {
-			ProxyQBool().Dispose();
+			DisposeQBool();
 		}
 		public void Dispose() {
-			ProxyQBool().Dispose();
+			DisposeQBool();
+		}
+		private void DisposeQBool() {
+			ProxyQBool().DisposeQBool();
 		}
 	}
 }

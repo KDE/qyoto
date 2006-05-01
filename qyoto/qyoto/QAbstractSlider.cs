@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQAbstractSliderSignals"></see> for signals emitted by QAbstractSlider
+	[SmokeClass("QAbstractSlider")]
 	public class QAbstractSlider : QWidget, IDisposable {
  		protected QAbstractSlider(Type dummy) : base((Type) null) {}
 		interface IQAbstractSliderProxy {
@@ -12,7 +13,7 @@ namespace Qt {
 			string Tr(string s);
 		}
 
-		protected void CreateQAbstractSliderProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAbstractSlider), this);
 			_interceptor = (QAbstractSlider) realProxy.GetTransparentProxy();
 		}
@@ -28,7 +29,7 @@ namespace Qt {
 			return (IQAbstractSliderProxy) _staticInterceptor;
 		}
 
-		enum SliderAction {
+		public enum SliderAction {
 			SliderNoAction = 0,
 			SliderSingleStepAdd = 1,
 			SliderSingleStepSub = 2,
@@ -38,150 +39,203 @@ namespace Qt {
 			SliderToMaximum = 6,
 			SliderMove = 7,
 		}
-		enum E_SliderChange {
+		public enum SliderChange {
 			SliderRangeChange = 0,
 			SliderOrientationChange = 1,
 			SliderStepsChange = 2,
 			SliderValueChange = 3,
 		}
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQAbstractSlider().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QAbstractSlider(QWidget parent) : this((Type) null) {
-			CreateQAbstractSliderProxy();
+			CreateProxy();
 			NewQAbstractSlider(parent);
 		}
+		[SmokeMethod("QAbstractSlider(QWidget*)")]
 		private void NewQAbstractSlider(QWidget parent) {
 			ProxyQAbstractSlider().NewQAbstractSlider(parent);
 		}
 		public QAbstractSlider() : this((Type) null) {
-			CreateQAbstractSliderProxy();
+			CreateProxy();
 			NewQAbstractSlider();
 		}
+		[SmokeMethod("QAbstractSlider()")]
 		private void NewQAbstractSlider() {
 			ProxyQAbstractSlider().NewQAbstractSlider();
 		}
-		public int Orientation() {
+		[SmokeMethod("orientation() const")]
+		public Qt.Orientation Orientation() {
 			return ProxyQAbstractSlider().Orientation();
 		}
+		[SmokeMethod("setMinimum(int)")]
 		public void SetMinimum(int arg1) {
 			ProxyQAbstractSlider().SetMinimum(arg1);
 		}
+		[SmokeMethod("minimum() const")]
 		public int Minimum() {
 			return ProxyQAbstractSlider().Minimum();
 		}
+		[SmokeMethod("setMaximum(int)")]
 		public void SetMaximum(int arg1) {
 			ProxyQAbstractSlider().SetMaximum(arg1);
 		}
+		[SmokeMethod("maximum() const")]
 		public int Maximum() {
 			return ProxyQAbstractSlider().Maximum();
 		}
+		[SmokeMethod("setRange(int, int)")]
 		public void SetRange(int min, int max) {
 			ProxyQAbstractSlider().SetRange(min,max);
 		}
+		[SmokeMethod("setSingleStep(int)")]
 		public void SetSingleStep(int arg1) {
 			ProxyQAbstractSlider().SetSingleStep(arg1);
 		}
+		[SmokeMethod("singleStep() const")]
 		public int SingleStep() {
 			return ProxyQAbstractSlider().SingleStep();
 		}
+		[SmokeMethod("setPageStep(int)")]
 		public void SetPageStep(int arg1) {
 			ProxyQAbstractSlider().SetPageStep(arg1);
 		}
+		[SmokeMethod("pageStep() const")]
 		public int PageStep() {
 			return ProxyQAbstractSlider().PageStep();
 		}
+		[SmokeMethod("setTracking(bool)")]
 		public void SetTracking(bool enable) {
 			ProxyQAbstractSlider().SetTracking(enable);
 		}
+		[SmokeMethod("hasTracking() const")]
 		public bool HasTracking() {
 			return ProxyQAbstractSlider().HasTracking();
 		}
+		[SmokeMethod("setSliderDown(bool)")]
 		public void SetSliderDown(bool arg1) {
 			ProxyQAbstractSlider().SetSliderDown(arg1);
 		}
+		[SmokeMethod("isSliderDown() const")]
 		public bool IsSliderDown() {
 			return ProxyQAbstractSlider().IsSliderDown();
 		}
+		[SmokeMethod("setSliderPosition(int)")]
 		public void SetSliderPosition(int arg1) {
 			ProxyQAbstractSlider().SetSliderPosition(arg1);
 		}
+		[SmokeMethod("sliderPosition() const")]
 		public int SliderPosition() {
 			return ProxyQAbstractSlider().SliderPosition();
 		}
+		[SmokeMethod("setInvertedAppearance(bool)")]
 		public void SetInvertedAppearance(bool arg1) {
 			ProxyQAbstractSlider().SetInvertedAppearance(arg1);
 		}
+		[SmokeMethod("invertedAppearance() const")]
 		public bool InvertedAppearance() {
 			return ProxyQAbstractSlider().InvertedAppearance();
 		}
+		[SmokeMethod("setInvertedControls(bool)")]
 		public void SetInvertedControls(bool arg1) {
 			ProxyQAbstractSlider().SetInvertedControls(arg1);
 		}
+		[SmokeMethod("invertedControls() const")]
 		public bool InvertedControls() {
 			return ProxyQAbstractSlider().InvertedControls();
 		}
+		[SmokeMethod("value() const")]
 		public int Value() {
 			return ProxyQAbstractSlider().Value();
 		}
-		public void TriggerAction(int action) {
+		[SmokeMethod("triggerAction(QAbstractSlider::SliderAction)")]
+		public void TriggerAction(QAbstractSlider.SliderAction action) {
 			ProxyQAbstractSlider().TriggerAction(action);
 		}
+		[SmokeMethod("setValue(int)")]
 		public void SetValue(int arg1) {
 			ProxyQAbstractSlider().SetValue(arg1);
 		}
-		public void SetOrientation(int arg1) {
+		[SmokeMethod("setOrientation(Qt::Orientation)")]
+		public void SetOrientation(Qt.Orientation arg1) {
 			ProxyQAbstractSlider().SetOrientation(arg1);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQAbstractSlider().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQAbstractSlider().Tr(s);
 		}
-		protected void SetRepeatAction(int action, int thresholdTime, int repeatTime) {
+		[SmokeMethod("event(QEvent*)")]
+		public new bool Event(QEvent e) {
+			return ProxyQAbstractSlider().Event(e);
+		}
+		[SmokeMethod("setRepeatAction(QAbstractSlider::SliderAction, int, int)")]
+		protected void SetRepeatAction(QAbstractSlider.SliderAction action, int thresholdTime, int repeatTime) {
 			ProxyQAbstractSlider().SetRepeatAction(action,thresholdTime,repeatTime);
 		}
-		protected void SetRepeatAction(int action, int thresholdTime) {
+		[SmokeMethod("setRepeatAction(QAbstractSlider::SliderAction, int)")]
+		protected void SetRepeatAction(QAbstractSlider.SliderAction action, int thresholdTime) {
 			ProxyQAbstractSlider().SetRepeatAction(action,thresholdTime);
 		}
-		protected void SetRepeatAction(int action) {
+		[SmokeMethod("setRepeatAction(QAbstractSlider::SliderAction)")]
+		protected void SetRepeatAction(QAbstractSlider.SliderAction action) {
 			ProxyQAbstractSlider().SetRepeatAction(action);
 		}
-		protected int RepeatAction() {
+		[SmokeMethod("repeatAction() const")]
+		protected QAbstractSlider.SliderAction RepeatAction() {
 			return ProxyQAbstractSlider().RepeatAction();
 		}
-		protected virtual void SliderChange(int change) {
-			ProxyQAbstractSlider().SliderChange(change);
+		[SmokeMethod("sliderChange(QAbstractSlider::SliderChange)")]
+		protected virtual void sliderChange(QAbstractSlider.SliderChange change) {
+			ProxyQAbstractSlider().sliderChange(change);
 		}
+		[SmokeMethod("keyPressEvent(QKeyEvent*)")]
 		protected new void KeyPressEvent(QKeyEvent ev) {
 			ProxyQAbstractSlider().KeyPressEvent(ev);
 		}
+		[SmokeMethod("timerEvent(QTimerEvent*)")]
 		protected new void TimerEvent(QTimerEvent arg1) {
 			ProxyQAbstractSlider().TimerEvent(arg1);
 		}
+		[SmokeMethod("wheelEvent(QWheelEvent*)")]
 		protected new void WheelEvent(QWheelEvent e) {
 			ProxyQAbstractSlider().WheelEvent(e);
 		}
+		[SmokeMethod("changeEvent(QEvent*)")]
 		protected new void ChangeEvent(QEvent e) {
 			ProxyQAbstractSlider().ChangeEvent(e);
 		}
 		~QAbstractSlider() {
-			ProxyQAbstractSlider().Dispose();
+			DisposeQAbstractSlider();
 		}
 		public new void Dispose() {
-			ProxyQAbstractSlider().Dispose();
+			DisposeQAbstractSlider();
+		}
+		private void DisposeQAbstractSlider() {
+			ProxyQAbstractSlider().DisposeQAbstractSlider();
+		}
+		protected new IQAbstractSliderSignals Emit() {
+			return (IQAbstractSliderSignals) Q_EMIT;
 		}
 	}
 
-	public interface IQAbstractSliderSignals {
+	public interface IQAbstractSliderSignals : IQWidgetSignals {
+		[Q_SIGNAL("void valueChanged(int)")]
 		void ValueChanged(int value);
+		[Q_SIGNAL("void sliderPressed()")]
 		void SliderPressed();
+		[Q_SIGNAL("void sliderMoved(int)")]
 		void SliderMoved(int position);
+		[Q_SIGNAL("void sliderReleased()")]
 		void SliderReleased();
+		[Q_SIGNAL("void rangeChanged(int, int)")]
 		void RangeChanged(int min, int max);
+		[Q_SIGNAL("void actionTriggered(int)")]
 		void ActionTriggered(int action);
 	}
 }

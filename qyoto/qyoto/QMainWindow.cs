@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQMainWindowSignals"></see> for signals emitted by QMainWindow
+	[SmokeClass("QMainWindow")]
 	public class QMainWindow : QWidget, IDisposable {
  		protected QMainWindow(Type dummy) : base((Type) null) {}
 		interface IQMainWindowProxy {
@@ -12,7 +13,7 @@ namespace Qt {
 			string Tr(string s);
 		}
 
-		protected void CreateQMainWindowProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMainWindow), this);
 			_interceptor = (QMainWindow) realProxy.GetTransparentProxy();
 		}
@@ -28,147 +29,193 @@ namespace Qt {
 			return (IQMainWindowProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQMainWindow().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QMainWindow(QWidget parent, int flags) : this((Type) null) {
-			CreateQMainWindowProxy();
+			CreateProxy();
 			NewQMainWindow(parent,flags);
 		}
+		[SmokeMethod("QMainWindow(QWidget*, Qt::WFlags)")]
 		private void NewQMainWindow(QWidget parent, int flags) {
 			ProxyQMainWindow().NewQMainWindow(parent,flags);
 		}
 		public QMainWindow(QWidget parent) : this((Type) null) {
-			CreateQMainWindowProxy();
+			CreateProxy();
 			NewQMainWindow(parent);
 		}
+		[SmokeMethod("QMainWindow(QWidget*)")]
 		private void NewQMainWindow(QWidget parent) {
 			ProxyQMainWindow().NewQMainWindow(parent);
 		}
 		public QMainWindow() : this((Type) null) {
-			CreateQMainWindowProxy();
+			CreateProxy();
 			NewQMainWindow();
 		}
+		[SmokeMethod("QMainWindow()")]
 		private void NewQMainWindow() {
 			ProxyQMainWindow().NewQMainWindow();
 		}
+		[SmokeMethod("iconSize() const")]
 		public QSize IconSize() {
 			return ProxyQMainWindow().IconSize();
 		}
+		[SmokeMethod("setIconSize(const QSize&)")]
 		public void SetIconSize(QSize iconSize) {
 			ProxyQMainWindow().SetIconSize(iconSize);
 		}
-		public int ToolButtonStyle() {
+		[SmokeMethod("toolButtonStyle() const")]
+		public Qt.ToolButtonStyle ToolButtonStyle() {
 			return ProxyQMainWindow().ToolButtonStyle();
 		}
-		public void SetToolButtonStyle(int toolButtonStyle) {
+		[SmokeMethod("setToolButtonStyle(Qt::ToolButtonStyle)")]
+		public void SetToolButtonStyle(Qt.ToolButtonStyle toolButtonStyle) {
 			ProxyQMainWindow().SetToolButtonStyle(toolButtonStyle);
 		}
+		[SmokeMethod("menuBar() const")]
 		public QMenuBar MenuBar() {
 			return ProxyQMainWindow().MenuBar();
 		}
+		[SmokeMethod("setMenuBar(QMenuBar*)")]
 		public void SetMenuBar(QMenuBar menubar) {
 			ProxyQMainWindow().SetMenuBar(menubar);
 		}
+		[SmokeMethod("statusBar() const")]
 		public QStatusBar StatusBar() {
 			return ProxyQMainWindow().StatusBar();
 		}
+		[SmokeMethod("setStatusBar(QStatusBar*)")]
 		public void SetStatusBar(QStatusBar statusbar) {
 			ProxyQMainWindow().SetStatusBar(statusbar);
 		}
+		[SmokeMethod("centralWidget() const")]
 		public QWidget CentralWidget() {
 			return ProxyQMainWindow().CentralWidget();
 		}
+		[SmokeMethod("setCentralWidget(QWidget*)")]
 		public void SetCentralWidget(QWidget widget) {
 			ProxyQMainWindow().SetCentralWidget(widget);
 		}
-		public void SetCorner(int corner, int area) {
+		[SmokeMethod("setCorner(Qt::Corner, Qt::DockWidgetArea)")]
+		public void SetCorner(Qt.Corner corner, Qt.DockWidgetArea area) {
 			ProxyQMainWindow().SetCorner(corner,area);
 		}
-		public int Corner(int corner) {
+		[SmokeMethod("corner(Qt::Corner) const")]
+		public Qt.DockWidgetArea Corner(Qt.Corner corner) {
 			return ProxyQMainWindow().Corner(corner);
 		}
-		public void AddToolBarBreak(int area) {
+		[SmokeMethod("addToolBarBreak(Qt::ToolBarArea)")]
+		public void AddToolBarBreak(Qt.ToolBarArea area) {
 			ProxyQMainWindow().AddToolBarBreak(area);
 		}
+		[SmokeMethod("addToolBarBreak()")]
 		public void AddToolBarBreak() {
 			ProxyQMainWindow().AddToolBarBreak();
 		}
+		[SmokeMethod("insertToolBarBreak(QToolBar*)")]
 		public void InsertToolBarBreak(QToolBar before) {
 			ProxyQMainWindow().InsertToolBarBreak(before);
 		}
-		public void AddToolBar(int area, QToolBar toolbar) {
+		[SmokeMethod("addToolBar(Qt::ToolBarArea, QToolBar*)")]
+		public void AddToolBar(Qt.ToolBarArea area, QToolBar toolbar) {
 			ProxyQMainWindow().AddToolBar(area,toolbar);
 		}
+		[SmokeMethod("addToolBar(QToolBar*)")]
 		public void AddToolBar(QToolBar toolbar) {
 			ProxyQMainWindow().AddToolBar(toolbar);
 		}
+		[SmokeMethod("addToolBar(const QString&)")]
 		public QToolBar AddToolBar(string title) {
 			return ProxyQMainWindow().AddToolBar(title);
 		}
+		[SmokeMethod("insertToolBar(QToolBar*, QToolBar*)")]
 		public void InsertToolBar(QToolBar before, QToolBar toolbar) {
 			ProxyQMainWindow().InsertToolBar(before,toolbar);
 		}
+		[SmokeMethod("removeToolBar(QToolBar*)")]
 		public void RemoveToolBar(QToolBar toolbar) {
 			ProxyQMainWindow().RemoveToolBar(toolbar);
 		}
-		public int ToolBarArea(QToolBar toolbar) {
+		[SmokeMethod("toolBarArea(QToolBar*) const")]
+		public Qt.ToolBarArea ToolBarArea(QToolBar toolbar) {
 			return ProxyQMainWindow().ToolBarArea(toolbar);
 		}
-		public void AddDockWidget(int area, QDockWidget dockwidget) {
+		[SmokeMethod("addDockWidget(Qt::DockWidgetArea, QDockWidget*)")]
+		public void AddDockWidget(Qt.DockWidgetArea area, QDockWidget dockwidget) {
 			ProxyQMainWindow().AddDockWidget(area,dockwidget);
 		}
-		public void AddDockWidget(int area, QDockWidget dockwidget, int orientation) {
+		[SmokeMethod("addDockWidget(Qt::DockWidgetArea, QDockWidget*, Qt::Orientation)")]
+		public void AddDockWidget(Qt.DockWidgetArea area, QDockWidget dockwidget, Qt.Orientation orientation) {
 			ProxyQMainWindow().AddDockWidget(area,dockwidget,orientation);
 		}
-		public void SplitDockWidget(QDockWidget after, QDockWidget dockwidget, int orientation) {
+		[SmokeMethod("splitDockWidget(QDockWidget*, QDockWidget*, Qt::Orientation)")]
+		public void SplitDockWidget(QDockWidget after, QDockWidget dockwidget, Qt.Orientation orientation) {
 			ProxyQMainWindow().SplitDockWidget(after,dockwidget,orientation);
 		}
+		[SmokeMethod("removeDockWidget(QDockWidget*)")]
 		public void RemoveDockWidget(QDockWidget dockwidget) {
 			ProxyQMainWindow().RemoveDockWidget(dockwidget);
 		}
-		public int DockWidgetArea(QDockWidget dockwidget) {
+		[SmokeMethod("dockWidgetArea(QDockWidget*) const")]
+		public Qt.DockWidgetArea DockWidgetArea(QDockWidget dockwidget) {
 			return ProxyQMainWindow().DockWidgetArea(dockwidget);
 		}
+		[SmokeMethod("saveState(int) const")]
 		public QByteArray SaveState(int version) {
 			return ProxyQMainWindow().SaveState(version);
 		}
+		[SmokeMethod("saveState() const")]
 		public QByteArray SaveState() {
 			return ProxyQMainWindow().SaveState();
 		}
+		[SmokeMethod("restoreState(const QByteArray&, int)")]
 		public bool RestoreState(QByteArray state, int version) {
 			return ProxyQMainWindow().RestoreState(state,version);
 		}
+		[SmokeMethod("restoreState(const QByteArray&)")]
 		public bool RestoreState(QByteArray state) {
 			return ProxyQMainWindow().RestoreState(state);
 		}
+		[SmokeMethod("createPopupMenu()")]
 		public virtual QMenu CreatePopupMenu() {
 			return ProxyQMainWindow().CreatePopupMenu();
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQMainWindow().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQMainWindow().Tr(s);
 		}
+		[SmokeMethod("contextMenuEvent(QContextMenuEvent*)")]
 		protected new void ContextMenuEvent(QContextMenuEvent arg1) {
 			ProxyQMainWindow().ContextMenuEvent(arg1);
 		}
+		[SmokeMethod("event(QEvent*)")]
 		public new bool Event(QEvent arg1) {
 			return ProxyQMainWindow().Event(arg1);
 		}
 		~QMainWindow() {
-			ProxyQMainWindow().Dispose();
+			DisposeQMainWindow();
 		}
 		public new void Dispose() {
-			ProxyQMainWindow().Dispose();
+			DisposeQMainWindow();
+		}
+		private void DisposeQMainWindow() {
+			ProxyQMainWindow().DisposeQMainWindow();
+		}
+		protected new IQMainWindowSignals Emit() {
+			return (IQMainWindowSignals) Q_EMIT;
 		}
 	}
 
-	public interface IQMainWindowSignals {
+	public interface IQMainWindowSignals : IQWidgetSignals {
+		[Q_SIGNAL("void iconSizeChanged(const QSize&)")]
 		void IconSizeChanged(QSize iconSize);
-		void ToolButtonStyleChanged(int toolButtonStyle);
+		[Q_SIGNAL("void toolButtonStyleChanged(Qt::ToolButtonStyle)")]
+		void ToolButtonStyleChanged(Qt.ToolButtonStyle toolButtonStyle);
 	}
 }

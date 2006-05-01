@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QSound")]
 	public class QSound : QObject, IDisposable {
  		protected QSound(Type dummy) : base((Type) null) {}
 		interface IQSoundProxy {
@@ -13,7 +14,7 @@ namespace Qt {
 			void Play(string filename);
 		}
 
-		protected void CreateQSoundProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSound), this);
 			_interceptor = (QSound) realProxy.GetTransparentProxy();
 		}
@@ -29,63 +30,85 @@ namespace Qt {
 			return (IQSoundProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQSound().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QSound(string filename, QObject parent) : this((Type) null) {
-			CreateQSoundProxy();
+			CreateProxy();
 			NewQSound(filename,parent);
 		}
+		[SmokeMethod("QSound(const QString&, QObject*)")]
 		private void NewQSound(string filename, QObject parent) {
 			ProxyQSound().NewQSound(filename,parent);
 		}
 		public QSound(string filename) : this((Type) null) {
-			CreateQSoundProxy();
+			CreateProxy();
 			NewQSound(filename);
 		}
+		[SmokeMethod("QSound(const QString&)")]
 		private void NewQSound(string filename) {
 			ProxyQSound().NewQSound(filename);
 		}
+		[SmokeMethod("loops() const")]
 		public int Loops() {
 			return ProxyQSound().Loops();
 		}
+		[SmokeMethod("loopsRemaining() const")]
 		public int LoopsRemaining() {
 			return ProxyQSound().LoopsRemaining();
 		}
+		[SmokeMethod("setLoops(int)")]
 		public void SetLoops(int arg1) {
 			ProxyQSound().SetLoops(arg1);
 		}
+		[SmokeMethod("fileName() const")]
 		public string FileName() {
 			return ProxyQSound().FileName();
 		}
+		[SmokeMethod("isFinished() const")]
 		public bool IsFinished() {
 			return ProxyQSound().IsFinished();
 		}
+		[SmokeMethod("play()")]
 		public void Play() {
 			ProxyQSound().Play();
 		}
+		[SmokeMethod("stop()")]
 		public void Stop() {
 			ProxyQSound().Stop();
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQSound().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQSound().Tr(s);
 		}
+		[SmokeMethod("isAvailable()")]
 		public static bool IsAvailable() {
 			return StaticQSound().IsAvailable();
 		}
+		[SmokeMethod("play(const QString&)")]
 		public static void Play(string filename) {
 			StaticQSound().Play(filename);
 		}
 		~QSound() {
-			ProxyQSound().Dispose();
+			DisposeQSound();
 		}
 		public new void Dispose() {
-			ProxyQSound().Dispose();
+			DisposeQSound();
 		}
+		private void DisposeQSound() {
+			ProxyQSound().DisposeQSound();
+		}
+		protected new IQSoundSignals Emit() {
+			return (IQSoundSignals) Q_EMIT;
+		}
+	}
+
+	public interface IQSoundSignals : IQObjectSignals {
 	}
 }

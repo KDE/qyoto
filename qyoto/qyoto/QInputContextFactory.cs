@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Collections;
 	using System.Text;
 
+	[SmokeClass("QInputContextFactory")]
 	public class QInputContextFactory : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
@@ -18,7 +19,7 @@ namespace Qt {
 			string Description(string key);
 		}
 
-		protected void CreateQInputContextFactoryProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QInputContextFactory), this);
 			_interceptor = (QInputContextFactory) realProxy.GetTransparentProxy();
 		}
@@ -35,32 +36,41 @@ namespace Qt {
 		}
 
 		public QInputContextFactory() : this((Type) null) {
-			CreateQInputContextFactoryProxy();
+			CreateProxy();
 			NewQInputContextFactory();
 		}
+		[SmokeMethod("QInputContextFactory()")]
 		private void NewQInputContextFactory() {
 			ProxyQInputContextFactory().NewQInputContextFactory();
 		}
+		[SmokeMethod("keys()")]
 		public static ArrayList Keys() {
 			return StaticQInputContextFactory().Keys();
 		}
+		[SmokeMethod("create(const QString&, QObject*)")]
 		public static QInputContext Create(string key, QObject parent) {
 			return StaticQInputContextFactory().Create(key,parent);
 		}
+		[SmokeMethod("languages(const QString&)")]
 		public static ArrayList Languages(string key) {
 			return StaticQInputContextFactory().Languages(key);
 		}
+		[SmokeMethod("displayName(const QString&)")]
 		public static string DisplayName(string key) {
 			return StaticQInputContextFactory().DisplayName(key);
 		}
+		[SmokeMethod("description(const QString&)")]
 		public static string Description(string key) {
 			return StaticQInputContextFactory().Description(key);
 		}
 		~QInputContextFactory() {
-			ProxyQInputContextFactory().Dispose();
+			DisposeQInputContextFactory();
 		}
 		public void Dispose() {
-			ProxyQInputContextFactory().Dispose();
+			DisposeQInputContextFactory();
+		}
+		private void DisposeQInputContextFactory() {
+			ProxyQInputContextFactory().DisposeQInputContextFactory();
 		}
 	}
 }

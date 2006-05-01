@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QStyleOptionTab")]
 	public class QStyleOptionTab : QStyleOption, IDisposable {
  		protected QStyleOptionTab(Type dummy) : base((Type) null) {}
 		interface IQStyleOptionTabProxy {
 		}
 
-		protected void CreateQStyleOptionTabProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionTab), this);
 			_interceptor = (QStyleOptionTab) realProxy.GetTransparentProxy();
 		}
@@ -24,52 +25,58 @@ namespace Qt {
 			return (IQStyleOptionTabProxy) _staticInterceptor;
 		}
 
-		public const int Type = (int) OptionType.SO_Tab;
-
-		public const int Version = 1;
-
-		enum TabPosition {
+		public enum TabPosition {
 			Beginning = 0,
 			Middle = 1,
 			End = 2,
 			OnlyOneTab = 3,
 		}
-		enum SelectedPosition {
+		public enum SelectedPosition {
 			NotAdjacent = 0,
 			NextIsSelected = 1,
 			PreviousIsSelected = 2,
 		}
-		enum CornerWidget {
+		public enum CornerWidget {
 			NoCornerWidgets = 0x00,
 			LeftCornerWidget = 0x01,
 			RightCornerWidget = 0x02,
 		}
+		public const int Type = (int) QStyleOption.OptionType.SO_Tab;
+
+		public const int Version = 1;
+
 		public QStyleOptionTab() : this((Type) null) {
-			CreateQStyleOptionTabProxy();
+			CreateProxy();
 			NewQStyleOptionTab();
 		}
+		[SmokeMethod("QStyleOptionTab()")]
 		private void NewQStyleOptionTab() {
 			ProxyQStyleOptionTab().NewQStyleOptionTab();
 		}
 		public QStyleOptionTab(QStyleOptionTab other) : this((Type) null) {
-			CreateQStyleOptionTabProxy();
+			CreateProxy();
 			NewQStyleOptionTab(other);
 		}
+		[SmokeMethod("QStyleOptionTab(const QStyleOptionTab&)")]
 		private void NewQStyleOptionTab(QStyleOptionTab other) {
 			ProxyQStyleOptionTab().NewQStyleOptionTab(other);
 		}
 		public QStyleOptionTab(int version) : this((Type) null) {
-			CreateQStyleOptionTabProxy();
+			CreateProxy();
 			NewQStyleOptionTab(version);
 		}
+		[SmokeMethod("QStyleOptionTab(int)")]
 		private void NewQStyleOptionTab(int version) {
 			ProxyQStyleOptionTab().NewQStyleOptionTab(version);
 		}
 		~QStyleOptionTab() {
-			ProxyQStyleOptionTab().Dispose();
+			DisposeQStyleOptionTab();
 		}
 		public void Dispose() {
-			ProxyQStyleOptionTab().Dispose();
+			DisposeQStyleOptionTab();
+		}
+		private void DisposeQStyleOptionTab() {
+			ProxyQStyleOptionTab().DisposeQStyleOptionTab();
 		}
 	}
 }

@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QChildEvent")]
 	public class QChildEvent : QEvent, IDisposable {
  		protected QChildEvent(Type dummy) : base((Type) null) {}
 		interface IQChildEventProxy {
 		}
 
-		protected void CreateQChildEventProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QChildEvent), this);
 			_interceptor = (QChildEvent) realProxy.GetTransparentProxy();
 		}
@@ -24,30 +25,38 @@ namespace Qt {
 			return (IQChildEventProxy) _staticInterceptor;
 		}
 
-		public QChildEvent(int type, QObject child) : this((Type) null) {
-			CreateQChildEventProxy();
+		public QChildEvent(QEvent.E_Type type, QObject child) : this((Type) null) {
+			CreateProxy();
 			NewQChildEvent(type,child);
 		}
-		private void NewQChildEvent(int type, QObject child) {
+		[SmokeMethod("QChildEvent(QEvent::Type, QObject*)")]
+		private void NewQChildEvent(QEvent.E_Type type, QObject child) {
 			ProxyQChildEvent().NewQChildEvent(type,child);
 		}
+		[SmokeMethod("child() const")]
 		public QObject Child() {
 			return ProxyQChildEvent().Child();
 		}
+		[SmokeMethod("added() const")]
 		public bool Added() {
 			return ProxyQChildEvent().Added();
 		}
+		[SmokeMethod("polished() const")]
 		public bool Polished() {
 			return ProxyQChildEvent().Polished();
 		}
+		[SmokeMethod("removed() const")]
 		public bool Removed() {
 			return ProxyQChildEvent().Removed();
 		}
 		~QChildEvent() {
-			ProxyQChildEvent().Dispose();
+			DisposeQChildEvent();
 		}
 		public new void Dispose() {
-			ProxyQChildEvent().Dispose();
+			DisposeQChildEvent();
+		}
+		private void DisposeQChildEvent() {
+			ProxyQChildEvent().DisposeQChildEvent();
 		}
 	}
 }

@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QStyleOptionToolButton")]
 	public class QStyleOptionToolButton : QStyleOptionComplex, IDisposable {
  		protected QStyleOptionToolButton(Type dummy) : base((Type) null) {}
 		interface IQStyleOptionToolButtonProxy {
 		}
 
-		protected void CreateQStyleOptionToolButtonProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionToolButton), this);
 			_interceptor = (QStyleOptionToolButton) realProxy.GetTransparentProxy();
 		}
@@ -24,42 +25,48 @@ namespace Qt {
 			return (IQStyleOptionToolButtonProxy) _staticInterceptor;
 		}
 
-		public const int Type = (int) OptionType.SO_ToolButton;
-
-		public const int Version = 1;
-
-		enum ToolButtonFeature {
+		public enum ToolButtonFeature {
 			None = 0x00,
 			Arrow = 0x01,
 			Menu = 0x04,
 			PopupDelay = 0x08,
 		}
+		public const int Type = (int) QStyleOption.OptionType.SO_ToolButton;
+
+		public const int Version = 1;
+
 		public QStyleOptionToolButton() : this((Type) null) {
-			CreateQStyleOptionToolButtonProxy();
+			CreateProxy();
 			NewQStyleOptionToolButton();
 		}
+		[SmokeMethod("QStyleOptionToolButton()")]
 		private void NewQStyleOptionToolButton() {
 			ProxyQStyleOptionToolButton().NewQStyleOptionToolButton();
 		}
 		public QStyleOptionToolButton(QStyleOptionToolButton other) : this((Type) null) {
-			CreateQStyleOptionToolButtonProxy();
+			CreateProxy();
 			NewQStyleOptionToolButton(other);
 		}
+		[SmokeMethod("QStyleOptionToolButton(const QStyleOptionToolButton&)")]
 		private void NewQStyleOptionToolButton(QStyleOptionToolButton other) {
 			ProxyQStyleOptionToolButton().NewQStyleOptionToolButton(other);
 		}
 		public QStyleOptionToolButton(int version) : this((Type) null) {
-			CreateQStyleOptionToolButtonProxy();
+			CreateProxy();
 			NewQStyleOptionToolButton(version);
 		}
+		[SmokeMethod("QStyleOptionToolButton(int)")]
 		private void NewQStyleOptionToolButton(int version) {
 			ProxyQStyleOptionToolButton().NewQStyleOptionToolButton(version);
 		}
 		~QStyleOptionToolButton() {
-			ProxyQStyleOptionToolButton().Dispose();
+			DisposeQStyleOptionToolButton();
 		}
 		public void Dispose() {
-			ProxyQStyleOptionToolButton().Dispose();
+			DisposeQStyleOptionToolButton();
+		}
+		private void DisposeQStyleOptionToolButton() {
+			ProxyQStyleOptionToolButton().DisposeQStyleOptionToolButton();
 		}
 	}
 }

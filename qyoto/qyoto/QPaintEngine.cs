@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QPaintEngine")]
 	public class QPaintEngine : MarshalByRefObject {
 		protected Object _interceptor = null;
  
@@ -11,7 +12,7 @@ namespace Qt {
 		interface IQPaintEngineProxy {
 		}
 
-		protected void CreateQPaintEngineProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPaintEngine), this);
 			_interceptor = (QPaintEngine) realProxy.GetTransparentProxy();
 		}
@@ -27,7 +28,7 @@ namespace Qt {
 			return (IQPaintEngineProxy) _staticInterceptor;
 		}
 
-		enum PaintEngineFeature : uint {
+		public enum PaintEngineFeature : uint {
 			PrimitiveTransform = 0x00000001,
 			PatternTransform = 0x00000002,
 			PixmapTransform = 0x00000004,
@@ -43,7 +44,7 @@ namespace Qt {
 			PaintOutsidePaintEvent = 0x20000000,
 			AllFeatures = 0xffffffff,
 		}
-		enum DirtyFlag {
+		public enum DirtyFlag {
 			DirtyPen = 0x0001,
 			DirtyBrush = 0x0002,
 			DirtyBrushOrigin = 0x0004,
@@ -55,15 +56,16 @@ namespace Qt {
 			DirtyClipPath = 0x0100,
 			DirtyHints = 0x0200,
 			DirtyCompositionMode = 0x0400,
+			DirtyClipEnabled = 0x0800,
 			AllDirty = 0xffff,
 		}
-		enum PolygonDrawMode {
+		public enum PolygonDrawMode {
 			OddEvenMode = 0,
 			WindingMode = 1,
 			ConvexMode = 2,
 			PolylineMode = 3,
 		}
-		enum E_Type {
+		public enum E_Type {
 			X11 = 0,
 			Windows = 1,
 			QuickDraw = 2,
@@ -78,101 +80,170 @@ namespace Qt {
 			User = 50,
 			MaxUser = 100,
 		}
+		public QPaintEngine(int features) : this((Type) null) {
+			CreateProxy();
+			NewQPaintEngine(features);
+		}
+		[SmokeMethod("QPaintEngine(PaintEngineFeatures)")]
+		private void NewQPaintEngine(int features) {
+			ProxyQPaintEngine().NewQPaintEngine(features);
+		}
+		public QPaintEngine() : this((Type) null) {
+			CreateProxy();
+			NewQPaintEngine();
+		}
+		[SmokeMethod("QPaintEngine()")]
+		private void NewQPaintEngine() {
+			ProxyQPaintEngine().NewQPaintEngine();
+		}
+		[SmokeMethod("isActive() const")]
 		public bool IsActive() {
 			return ProxyQPaintEngine().IsActive();
 		}
+		[SmokeMethod("setActive(bool)")]
 		public void SetActive(bool newState) {
 			ProxyQPaintEngine().SetActive(newState);
 		}
+		[SmokeMethod("begin(QPaintDevice*)")]
 		public virtual bool Begin(IQPaintDevice pdev) {
 			return ProxyQPaintEngine().Begin(pdev);
 		}
+		[SmokeMethod("end()")]
 		public virtual bool End() {
 			return ProxyQPaintEngine().End();
 		}
+		[SmokeMethod("updateState(const QPaintEngineState&)")]
 		public virtual void UpdateState(QPaintEngineState state) {
 			ProxyQPaintEngine().UpdateState(state);
 		}
+		[SmokeMethod("drawRects(const QRect*, int)")]
 		public virtual void DrawRects(QRect rects, int rectCount) {
 			ProxyQPaintEngine().DrawRects(rects,rectCount);
 		}
+		[SmokeMethod("drawRects(const QRectF*, int)")]
 		public virtual void DrawRects(QRectF rects, int rectCount) {
 			ProxyQPaintEngine().DrawRects(rects,rectCount);
 		}
+		[SmokeMethod("drawLines(const QLine*, int)")]
 		public virtual void DrawLines(QLine lines, int lineCount) {
 			ProxyQPaintEngine().DrawLines(lines,lineCount);
 		}
+		[SmokeMethod("drawLines(const QLineF*, int)")]
 		public virtual void DrawLines(QLineF lines, int lineCount) {
 			ProxyQPaintEngine().DrawLines(lines,lineCount);
 		}
+		[SmokeMethod("drawEllipse(const QRectF&)")]
 		public virtual void DrawEllipse(QRectF r) {
 			ProxyQPaintEngine().DrawEllipse(r);
 		}
+		[SmokeMethod("drawEllipse(const QRect&)")]
 		public virtual void DrawEllipse(QRect r) {
 			ProxyQPaintEngine().DrawEllipse(r);
 		}
+		[SmokeMethod("drawPath(const QPainterPath&)")]
 		public virtual void DrawPath(QPainterPath path) {
 			ProxyQPaintEngine().DrawPath(path);
 		}
+		[SmokeMethod("drawPoints(const QPointF*, int)")]
 		public virtual void DrawPoints(QPointF points, int pointCount) {
 			ProxyQPaintEngine().DrawPoints(points,pointCount);
 		}
+		[SmokeMethod("drawPoints(const QPoint*, int)")]
 		public virtual void DrawPoints(QPoint points, int pointCount) {
 			ProxyQPaintEngine().DrawPoints(points,pointCount);
 		}
-		public virtual void DrawPolygon(QPointF points, int pointCount, int mode) {
+		[SmokeMethod("drawPolygon(const QPointF*, int, QPaintEngine::PolygonDrawMode)")]
+		public virtual void DrawPolygon(QPointF points, int pointCount, QPaintEngine.PolygonDrawMode mode) {
 			ProxyQPaintEngine().DrawPolygon(points,pointCount,mode);
 		}
-		public virtual void DrawPolygon(QPoint points, int pointCount, int mode) {
+		[SmokeMethod("drawPolygon(const QPoint*, int, QPaintEngine::PolygonDrawMode)")]
+		public virtual void DrawPolygon(QPoint points, int pointCount, QPaintEngine.PolygonDrawMode mode) {
 			ProxyQPaintEngine().DrawPolygon(points,pointCount,mode);
 		}
+		[SmokeMethod("drawPixmap(const QRectF&, const QPixmap&, const QRectF&)")]
 		public virtual void DrawPixmap(QRectF r, QPixmap pm, QRectF sr) {
 			ProxyQPaintEngine().DrawPixmap(r,pm,sr);
 		}
+		[SmokeMethod("drawTiledPixmap(const QRectF&, const QPixmap&, const QPointF&)")]
 		public virtual void DrawTiledPixmap(QRectF r, QPixmap pixmap, QPointF s) {
 			ProxyQPaintEngine().DrawTiledPixmap(r,pixmap,s);
 		}
+		[SmokeMethod("drawImage(const QRectF&, const QImage&, const QRectF&, Qt::ImageConversionFlags)")]
 		public virtual void DrawImage(QRectF r, QImage pm, QRectF sr, int flags) {
 			ProxyQPaintEngine().DrawImage(r,pm,sr,flags);
 		}
+		[SmokeMethod("drawImage(const QRectF&, const QImage&, const QRectF&)")]
 		public virtual void DrawImage(QRectF r, QImage pm, QRectF sr) {
 			ProxyQPaintEngine().DrawImage(r,pm,sr);
 		}
+		[SmokeMethod("setPaintDevice(QPaintDevice*)")]
 		public void SetPaintDevice(IQPaintDevice device) {
 			ProxyQPaintEngine().SetPaintDevice(device);
 		}
+		[SmokeMethod("paintDevice() const")]
 		public IQPaintDevice PaintDevice() {
 			return ProxyQPaintEngine().PaintDevice();
 		}
+		[SmokeMethod("setSystemClip(const QRegion&)")]
 		public void SetSystemClip(QRegion baseClip) {
 			ProxyQPaintEngine().SetSystemClip(baseClip);
 		}
+		[SmokeMethod("systemClip() const")]
 		public QRegion SystemClip() {
 			return ProxyQPaintEngine().SystemClip();
 		}
+		[SmokeMethod("setSystemRect(const QRect&)")]
+		public void SetSystemRect(QRect rect) {
+			ProxyQPaintEngine().SetSystemRect(rect);
+		}
+		[SmokeMethod("systemRect() const")]
+		public QRect SystemRect() {
+			return ProxyQPaintEngine().SystemRect();
+		}
+		[SmokeMethod("coordinateOffset() const")]
 		public virtual QPoint CoordinateOffset() {
 			return ProxyQPaintEngine().CoordinateOffset();
 		}
+		[SmokeMethod("type() const")]
+		public virtual QPaintEngine.E_Type type() {
+			return ProxyQPaintEngine().type();
+		}
+		[SmokeMethod("fix_neg_rect(int*, int*, int*, int*)")]
 		public void Fix_neg_rect(out int x, out int y, out int w, out int h) {
 			ProxyQPaintEngine().Fix_neg_rect(out x,out y,out w,out h);
 		}
+		[SmokeMethod("testDirty(DirtyFlags)")]
 		public bool TestDirty(int df) {
 			return ProxyQPaintEngine().TestDirty(df);
 		}
+		[SmokeMethod("setDirty(DirtyFlags)")]
 		public void SetDirty(int df) {
 			ProxyQPaintEngine().SetDirty(df);
 		}
+		[SmokeMethod("clearDirty(DirtyFlags)")]
 		public void ClearDirty(int df) {
 			ProxyQPaintEngine().ClearDirty(df);
 		}
+		[SmokeMethod("hasFeature(PaintEngineFeatures) const")]
 		public bool HasFeature(int feature) {
 			return ProxyQPaintEngine().HasFeature(feature);
 		}
+		[SmokeMethod("painter() const")]
 		public QPainter Painter() {
 			return ProxyQPaintEngine().Painter();
 		}
+		[SmokeMethod("syncState()")]
 		public void SyncState() {
 			ProxyQPaintEngine().SyncState();
+		}
+		~QPaintEngine() {
+			DisposeQPaintEngine();
+		}
+		public void Dispose() {
+			DisposeQPaintEngine();
+		}
+		private void DisposeQPaintEngine() {
+			ProxyQPaintEngine().DisposeQPaintEngine();
 		}
 	}
 }

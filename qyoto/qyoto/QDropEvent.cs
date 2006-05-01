@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QDropEvent")]
 	public class QDropEvent : QEvent, IQMimeSource, IDisposable {
  		protected QDropEvent(Type dummy) : base((Type) null) {}
 		interface IQDropEventProxy {
 		}
 
-		protected void CreateQDropEventProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDropEvent), this);
 			_interceptor = (QDropEvent) realProxy.GetTransparentProxy();
 		}
@@ -24,67 +25,86 @@ namespace Qt {
 			return (IQDropEventProxy) _staticInterceptor;
 		}
 
-		public QDropEvent(QPoint pos, int actions, QMimeData data, int buttons, int modifiers, int type) : this((Type) null) {
-			CreateQDropEventProxy();
+		public QDropEvent(QPoint pos, int actions, QMimeData data, int buttons, int modifiers, QEvent.E_Type type) : this((Type) null) {
+			CreateProxy();
 			NewQDropEvent(pos,actions,data,buttons,modifiers,type);
 		}
-		private void NewQDropEvent(QPoint pos, int actions, QMimeData data, int buttons, int modifiers, int type) {
+		[SmokeMethod("QDropEvent(const QPoint&, Qt::DropActions, const QMimeData*, Qt::MouseButtons, Qt::KeyboardModifiers, QEvent::Type)")]
+		private void NewQDropEvent(QPoint pos, int actions, QMimeData data, int buttons, int modifiers, QEvent.E_Type type) {
 			ProxyQDropEvent().NewQDropEvent(pos,actions,data,buttons,modifiers,type);
 		}
 		public QDropEvent(QPoint pos, int actions, QMimeData data, int buttons, int modifiers) : this((Type) null) {
-			CreateQDropEventProxy();
+			CreateProxy();
 			NewQDropEvent(pos,actions,data,buttons,modifiers);
 		}
+		[SmokeMethod("QDropEvent(const QPoint&, Qt::DropActions, const QMimeData*, Qt::MouseButtons, Qt::KeyboardModifiers)")]
 		private void NewQDropEvent(QPoint pos, int actions, QMimeData data, int buttons, int modifiers) {
 			ProxyQDropEvent().NewQDropEvent(pos,actions,data,buttons,modifiers);
 		}
+		[SmokeMethod("pos() const")]
 		public QPoint Pos() {
 			return ProxyQDropEvent().Pos();
 		}
+		[SmokeMethod("mouseButtons() const")]
 		public int MouseButtons() {
 			return ProxyQDropEvent().MouseButtons();
 		}
+		[SmokeMethod("keyboardModifiers() const")]
 		public int KeyboardModifiers() {
 			return ProxyQDropEvent().KeyboardModifiers();
 		}
+		[SmokeMethod("possibleActions() const")]
 		public int PossibleActions() {
 			return ProxyQDropEvent().PossibleActions();
 		}
-		public int ProposedAction() {
+		[SmokeMethod("proposedAction() const")]
+		public Qt.DropAction ProposedAction() {
 			return ProxyQDropEvent().ProposedAction();
 		}
+		[SmokeMethod("acceptProposedAction()")]
 		public void AcceptProposedAction() {
 			ProxyQDropEvent().AcceptProposedAction();
 		}
-		public int DropAction() {
+		[SmokeMethod("dropAction() const")]
+		public Qt.DropAction DropAction() {
 			return ProxyQDropEvent().DropAction();
 		}
-		public void SetDropAction(int action) {
+		[SmokeMethod("setDropAction(Qt::DropAction)")]
+		public void SetDropAction(Qt.DropAction action) {
 			ProxyQDropEvent().SetDropAction(action);
 		}
+		[SmokeMethod("source() const")]
 		public QWidget Source() {
 			return ProxyQDropEvent().Source();
 		}
+		[SmokeMethod("mimeData() const")]
 		public QMimeData MimeData() {
 			return ProxyQDropEvent().MimeData();
 		}
+		[SmokeMethod("format(int) const")]
 		public string Format(int n) {
 			return ProxyQDropEvent().Format(n);
 		}
+		[SmokeMethod("format() const")]
 		public string Format() {
 			return ProxyQDropEvent().Format();
 		}
+		[SmokeMethod("encodedData(const char*) const")]
 		public QByteArray EncodedData(string arg1) {
 			return ProxyQDropEvent().EncodedData(arg1);
 		}
+		[SmokeMethod("provides(const char*) const")]
 		public bool Provides(string arg1) {
 			return ProxyQDropEvent().Provides(arg1);
 		}
 		~QDropEvent() {
-			ProxyQDropEvent().Dispose();
+			DisposeQDropEvent();
 		}
 		public new void Dispose() {
-			ProxyQDropEvent().Dispose();
+			DisposeQDropEvent();
+		}
+		private void DisposeQDropEvent() {
+			ProxyQDropEvent().DisposeQDropEvent();
 		}
 	}
 }

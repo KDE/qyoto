@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QBuffer")]
 	public class QBuffer : QIODevice, IDisposable {
  		protected QBuffer(Type dummy) : base((Type) null) {}
 		interface IQBufferProxy {
@@ -11,7 +12,7 @@ namespace Qt {
 			string Tr(string s);
 		}
 
-		protected void CreateQBufferProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QBuffer), this);
 			_interceptor = (QBuffer) realProxy.GetTransparentProxy();
 		}
@@ -27,82 +28,106 @@ namespace Qt {
 			return (IQBufferProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQBuffer().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QBuffer(QObject parent) : this((Type) null) {
-			CreateQBufferProxy();
+			CreateProxy();
 			NewQBuffer(parent);
 		}
+		[SmokeMethod("QBuffer(QObject*)")]
 		private void NewQBuffer(QObject parent) {
 			ProxyQBuffer().NewQBuffer(parent);
 		}
 		public QBuffer() : this((Type) null) {
-			CreateQBufferProxy();
+			CreateProxy();
 			NewQBuffer();
 		}
+		[SmokeMethod("QBuffer()")]
 		private void NewQBuffer() {
 			ProxyQBuffer().NewQBuffer();
 		}
 		public QBuffer(QByteArray buf, QObject parent) : this((Type) null) {
-			CreateQBufferProxy();
+			CreateProxy();
 			NewQBuffer(buf,parent);
 		}
+		[SmokeMethod("QBuffer(QByteArray*, QObject*)")]
 		private void NewQBuffer(QByteArray buf, QObject parent) {
 			ProxyQBuffer().NewQBuffer(buf,parent);
 		}
 		public QBuffer(QByteArray buf) : this((Type) null) {
-			CreateQBufferProxy();
+			CreateProxy();
 			NewQBuffer(buf);
 		}
+		[SmokeMethod("QBuffer(QByteArray*)")]
 		private void NewQBuffer(QByteArray buf) {
 			ProxyQBuffer().NewQBuffer(buf);
 		}
+		[SmokeMethod("buffer()")]
 		public QByteArray Buffer() {
 			return ProxyQBuffer().Buffer();
 		}
+		[SmokeMethod("setBuffer(QByteArray*)")]
 		public void SetBuffer(QByteArray a) {
 			ProxyQBuffer().SetBuffer(a);
 		}
+		[SmokeMethod("setData(const QByteArray&)")]
 		public void SetData(QByteArray data) {
 			ProxyQBuffer().SetData(data);
 		}
+		[SmokeMethod("setData(const char*, int)")]
 		public void SetData(string data, int len) {
 			ProxyQBuffer().SetData(data,len);
 		}
+		[SmokeMethod("data() const")]
 		public QByteArray Data() {
 			return ProxyQBuffer().Data();
 		}
+		[SmokeMethod("open(OpenMode)")]
 		public new bool Open(int openMode) {
 			return ProxyQBuffer().Open(openMode);
 		}
+		[SmokeMethod("close()")]
 		public new void Close() {
 			ProxyQBuffer().Close();
 		}
 		// qint64 size(); >>>> NOT CONVERTED
 		// qint64 pos(); >>>> NOT CONVERTED
 		// bool seek(qint64 arg1); >>>> NOT CONVERTED
+		[SmokeMethod("atEnd() const")]
 		public new bool AtEnd() {
 			return ProxyQBuffer().AtEnd();
 		}
+		[SmokeMethod("canReadLine() const")]
 		public new bool CanReadLine() {
 			return ProxyQBuffer().CanReadLine();
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQBuffer().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQBuffer().Tr(s);
 		}
 		// qint64 readData(char* arg1,qint64 arg2); >>>> NOT CONVERTED
 		// qint64 writeData(const char* arg1,qint64 arg2); >>>> NOT CONVERTED
 		~QBuffer() {
-			ProxyQBuffer().Dispose();
+			DisposeQBuffer();
 		}
 		public void Dispose() {
-			ProxyQBuffer().Dispose();
+			DisposeQBuffer();
 		}
+		private void DisposeQBuffer() {
+			ProxyQBuffer().DisposeQBuffer();
+		}
+		protected new IQBufferSignals Emit() {
+			return (IQBufferSignals) Q_EMIT;
+		}
+	}
+
+	public interface IQBufferSignals : IQIODeviceSignals {
 	}
 }

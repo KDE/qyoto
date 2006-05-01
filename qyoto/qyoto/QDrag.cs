@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQDragSignals"></see> for signals emitted by QDrag
+	[SmokeClass("QDrag")]
 	public class QDrag : QObject, IDisposable {
  		protected QDrag(Type dummy) : base((Type) null) {}
 		interface IQDragProxy {
@@ -12,7 +13,7 @@ namespace Qt {
 			string Tr(string s);
 		}
 
-		protected void CreateQDragProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDrag), this);
 			_interceptor = (QDrag) realProxy.GetTransparentProxy();
 		}
@@ -28,67 +29,89 @@ namespace Qt {
 			return (IQDragProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQDrag().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QDrag(QWidget dragSource) : this((Type) null) {
-			CreateQDragProxy();
+			CreateProxy();
 			NewQDrag(dragSource);
 		}
+		[SmokeMethod("QDrag(QWidget*)")]
 		private void NewQDrag(QWidget dragSource) {
 			ProxyQDrag().NewQDrag(dragSource);
 		}
+		[SmokeMethod("setMimeData(QMimeData*)")]
 		public void SetMimeData(QMimeData data) {
 			ProxyQDrag().SetMimeData(data);
 		}
+		[SmokeMethod("mimeData() const")]
 		public QMimeData MimeData() {
 			return ProxyQDrag().MimeData();
 		}
+		[SmokeMethod("setPixmap(const QPixmap&)")]
 		public void SetPixmap(QPixmap arg1) {
 			ProxyQDrag().SetPixmap(arg1);
 		}
+		[SmokeMethod("pixmap() const")]
 		public QPixmap Pixmap() {
 			return ProxyQDrag().Pixmap();
 		}
+		[SmokeMethod("setHotSpot(const QPoint&)")]
 		public void SetHotSpot(QPoint hotspot) {
 			ProxyQDrag().SetHotSpot(hotspot);
 		}
+		[SmokeMethod("hotSpot() const")]
 		public QPoint HotSpot() {
 			return ProxyQDrag().HotSpot();
 		}
+		[SmokeMethod("source() const")]
 		public QWidget Source() {
 			return ProxyQDrag().Source();
 		}
+		[SmokeMethod("target() const")]
 		public QWidget Target() {
 			return ProxyQDrag().Target();
 		}
-		public int Start(int supportedActions) {
+		[SmokeMethod("start(Qt::DropActions)")]
+		public Qt.DropAction Start(int supportedActions) {
 			return ProxyQDrag().Start(supportedActions);
 		}
-		public int Start() {
+		[SmokeMethod("start()")]
+		public Qt.DropAction Start() {
 			return ProxyQDrag().Start();
 		}
-		public void SetDragCursor(QPixmap cursor, int action) {
+		[SmokeMethod("setDragCursor(const QPixmap&, Qt::DropAction)")]
+		public void SetDragCursor(QPixmap cursor, Qt.DropAction action) {
 			ProxyQDrag().SetDragCursor(cursor,action);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQDrag().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQDrag().Tr(s);
 		}
 		~QDrag() {
-			ProxyQDrag().Dispose();
+			DisposeQDrag();
 		}
 		public new void Dispose() {
-			ProxyQDrag().Dispose();
+			DisposeQDrag();
+		}
+		private void DisposeQDrag() {
+			ProxyQDrag().DisposeQDrag();
+		}
+		protected new IQDragSignals Emit() {
+			return (IQDragSignals) Q_EMIT;
 		}
 	}
 
-	public interface IQDragSignals {
-		void ActionChanged(int action);
+	public interface IQDragSignals : IQObjectSignals {
+		[Q_SIGNAL("void actionChanged(Qt::DropAction)")]
+		void ActionChanged(Qt.DropAction action);
+		[Q_SIGNAL("void targetChanged(QWidget*)")]
 		void TargetChanged(QWidget newTarget);
 	}
 }

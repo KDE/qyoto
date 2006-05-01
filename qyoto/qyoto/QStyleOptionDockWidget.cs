@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QStyleOptionDockWidget")]
 	public class QStyleOptionDockWidget : QStyleOption, IDisposable {
  		protected QStyleOptionDockWidget(Type dummy) : base((Type) null) {}
 		interface IQStyleOptionDockWidgetProxy {
 		}
 
-		protected void CreateQStyleOptionDockWidgetProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionDockWidget), this);
 			_interceptor = (QStyleOptionDockWidget) realProxy.GetTransparentProxy();
 		}
@@ -24,36 +25,42 @@ namespace Qt {
 			return (IQStyleOptionDockWidgetProxy) _staticInterceptor;
 		}
 
-		public const int Type = (int) OptionType.SO_DockWidget;
+		public const int Type = (int) QStyleOption.OptionType.SO_DockWidget;
 
 		public const int Version = 1;
 
 		public QStyleOptionDockWidget() : this((Type) null) {
-			CreateQStyleOptionDockWidgetProxy();
+			CreateProxy();
 			NewQStyleOptionDockWidget();
 		}
+		[SmokeMethod("QStyleOptionDockWidget()")]
 		private void NewQStyleOptionDockWidget() {
 			ProxyQStyleOptionDockWidget().NewQStyleOptionDockWidget();
 		}
 		public QStyleOptionDockWidget(QStyleOptionDockWidget other) : this((Type) null) {
-			CreateQStyleOptionDockWidgetProxy();
+			CreateProxy();
 			NewQStyleOptionDockWidget(other);
 		}
+		[SmokeMethod("QStyleOptionDockWidget(const QStyleOptionDockWidget&)")]
 		private void NewQStyleOptionDockWidget(QStyleOptionDockWidget other) {
 			ProxyQStyleOptionDockWidget().NewQStyleOptionDockWidget(other);
 		}
 		public QStyleOptionDockWidget(int version) : this((Type) null) {
-			CreateQStyleOptionDockWidgetProxy();
+			CreateProxy();
 			NewQStyleOptionDockWidget(version);
 		}
+		[SmokeMethod("QStyleOptionDockWidget(int)")]
 		private void NewQStyleOptionDockWidget(int version) {
 			ProxyQStyleOptionDockWidget().NewQStyleOptionDockWidget(version);
 		}
 		~QStyleOptionDockWidget() {
-			ProxyQStyleOptionDockWidget().Dispose();
+			DisposeQStyleOptionDockWidget();
 		}
 		public void Dispose() {
-			ProxyQStyleOptionDockWidget().Dispose();
+			DisposeQStyleOptionDockWidget();
+		}
+		private void DisposeQStyleOptionDockWidget() {
+			ProxyQStyleOptionDockWidget().DisposeQStyleOptionDockWidget();
 		}
 	}
 }

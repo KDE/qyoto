@@ -6,6 +6,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQWorkspaceSignals"></see> for signals emitted by QWorkspace
+	[SmokeClass("QWorkspace")]
 	public class QWorkspace : QWidget, IDisposable {
  		protected QWorkspace(Type dummy) : base((Type) null) {}
 		interface IQWorkspaceProxy {
@@ -13,7 +14,7 @@ namespace Qt {
 			string Tr(string s);
 		}
 
-		protected void CreateQWorkspaceProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QWorkspace), this);
 			_interceptor = (QWorkspace) realProxy.GetTransparentProxy();
 		}
@@ -29,119 +30,163 @@ namespace Qt {
 			return (IQWorkspaceProxy) _staticInterceptor;
 		}
 
-		enum WindowOrder {
+		public enum WindowOrder {
 			CreationOrder = 0,
 			StackingOrder = 1,
 		}
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQWorkspace().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QWorkspace(QWidget parent) : this((Type) null) {
-			CreateQWorkspaceProxy();
+			CreateProxy();
 			NewQWorkspace(parent);
 		}
+		[SmokeMethod("QWorkspace(QWidget*)")]
 		private void NewQWorkspace(QWidget parent) {
 			ProxyQWorkspace().NewQWorkspace(parent);
 		}
 		public QWorkspace() : this((Type) null) {
-			CreateQWorkspaceProxy();
+			CreateProxy();
 			NewQWorkspace();
 		}
+		[SmokeMethod("QWorkspace()")]
 		private void NewQWorkspace() {
 			ProxyQWorkspace().NewQWorkspace();
 		}
+		[SmokeMethod("activeWindow() const")]
 		public QWidget ActiveWindow() {
 			return ProxyQWorkspace().ActiveWindow();
 		}
-		public ArrayList WindowList(int order) {
+		[SmokeMethod("windowList(QWorkspace::WindowOrder) const")]
+		public ArrayList WindowList(QWorkspace.WindowOrder order) {
 			return ProxyQWorkspace().WindowList(order);
 		}
+		[SmokeMethod("windowList() const")]
 		public ArrayList WindowList() {
 			return ProxyQWorkspace().WindowList();
 		}
+		[SmokeMethod("addWindow(QWidget*, Qt::WFlags)")]
 		public QWidget AddWindow(QWidget w, int flags) {
 			return ProxyQWorkspace().AddWindow(w,flags);
 		}
+		[SmokeMethod("addWindow(QWidget*)")]
 		public QWidget AddWindow(QWidget w) {
 			return ProxyQWorkspace().AddWindow(w);
 		}
+		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {
 			return ProxyQWorkspace().SizeHint();
 		}
+		[SmokeMethod("scrollBarsEnabled() const")]
 		public bool ScrollBarsEnabled() {
 			return ProxyQWorkspace().ScrollBarsEnabled();
 		}
+		[SmokeMethod("setScrollBarsEnabled(bool)")]
 		public void SetScrollBarsEnabled(bool enable) {
 			ProxyQWorkspace().SetScrollBarsEnabled(enable);
 		}
+		[SmokeMethod("setBackground(const QBrush&)")]
 		public void SetBackground(QBrush background) {
 			ProxyQWorkspace().SetBackground(background);
 		}
+		[SmokeMethod("background() const")]
 		public QBrush Background() {
 			return ProxyQWorkspace().Background();
 		}
+		[SmokeMethod("setActiveWindow(QWidget*)")]
 		public void SetActiveWindow(QWidget w) {
 			ProxyQWorkspace().SetActiveWindow(w);
 		}
+		[SmokeMethod("cascade()")]
 		public void Cascade() {
 			ProxyQWorkspace().Cascade();
 		}
+		[SmokeMethod("tile()")]
 		public void Tile() {
 			ProxyQWorkspace().Tile();
 		}
+		[SmokeMethod("arrangeIcons()")]
+		public void ArrangeIcons() {
+			ProxyQWorkspace().ArrangeIcons();
+		}
+		[SmokeMethod("closeActiveWindow()")]
 		public void CloseActiveWindow() {
 			ProxyQWorkspace().CloseActiveWindow();
 		}
+		[SmokeMethod("closeAllWindows()")]
 		public void CloseAllWindows() {
 			ProxyQWorkspace().CloseAllWindows();
 		}
+		[SmokeMethod("activateNextWindow()")]
 		public void ActivateNextWindow() {
 			ProxyQWorkspace().ActivateNextWindow();
 		}
+		[SmokeMethod("activatePreviousWindow()")]
 		public void ActivatePreviousWindow() {
 			ProxyQWorkspace().ActivatePreviousWindow();
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQWorkspace().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQWorkspace().Tr(s);
 		}
+		[SmokeMethod("event(QEvent*)")]
+		public new bool Event(QEvent e) {
+			return ProxyQWorkspace().Event(e);
+		}
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected new void PaintEvent(QPaintEvent e) {
 			ProxyQWorkspace().PaintEvent(e);
 		}
+		[SmokeMethod("changeEvent(QEvent*)")]
 		protected new void ChangeEvent(QEvent arg1) {
 			ProxyQWorkspace().ChangeEvent(arg1);
 		}
+		[SmokeMethod("childEvent(QChildEvent*)")]
 		protected new void ChildEvent(QChildEvent arg1) {
 			ProxyQWorkspace().ChildEvent(arg1);
 		}
+		[SmokeMethod("resizeEvent(QResizeEvent*)")]
 		protected new void ResizeEvent(QResizeEvent arg1) {
 			ProxyQWorkspace().ResizeEvent(arg1);
 		}
+		[SmokeMethod("eventFilter(QObject*, QEvent*)")]
 		public new bool EventFilter(QObject arg1, QEvent arg2) {
 			return ProxyQWorkspace().EventFilter(arg1,arg2);
 		}
+		[SmokeMethod("showEvent(QShowEvent*)")]
 		public new void ShowEvent(QShowEvent e) {
 			ProxyQWorkspace().ShowEvent(e);
 		}
+		[SmokeMethod("hideEvent(QHideEvent*)")]
 		protected new void HideEvent(QHideEvent e) {
 			ProxyQWorkspace().HideEvent(e);
 		}
+		[SmokeMethod("wheelEvent(QWheelEvent*)")]
 		protected new void WheelEvent(QWheelEvent e) {
 			ProxyQWorkspace().WheelEvent(e);
 		}
 		~QWorkspace() {
-			ProxyQWorkspace().Dispose();
+			DisposeQWorkspace();
 		}
 		public new void Dispose() {
-			ProxyQWorkspace().Dispose();
+			DisposeQWorkspace();
+		}
+		private void DisposeQWorkspace() {
+			ProxyQWorkspace().DisposeQWorkspace();
+		}
+		protected new IQWorkspaceSignals Emit() {
+			return (IQWorkspaceSignals) Q_EMIT;
 		}
 	}
 
-	public interface IQWorkspaceSignals {
+	public interface IQWorkspaceSignals : IQWidgetSignals {
+		[Q_SIGNAL("void windowActivated(QWidget*)")]
 		void WindowActivated(QWidget w);
 	}
 }

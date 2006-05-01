@@ -4,12 +4,13 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QDomProcessingInstruction")]
 	public class QDomProcessingInstruction : QDomNode, IDisposable {
  		protected QDomProcessingInstruction(Type dummy) : base((Type) null) {}
 		interface IQDomProcessingInstructionProxy {
 		}
 
-		protected void CreateQDomProcessingInstructionProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomProcessingInstruction), this);
 			_interceptor = (QDomProcessingInstruction) realProxy.GetTransparentProxy();
 		}
@@ -26,36 +27,45 @@ namespace Qt {
 		}
 
 		public QDomProcessingInstruction() : this((Type) null) {
-			CreateQDomProcessingInstructionProxy();
+			CreateProxy();
 			NewQDomProcessingInstruction();
 		}
+		[SmokeMethod("QDomProcessingInstruction()")]
 		private void NewQDomProcessingInstruction() {
 			ProxyQDomProcessingInstruction().NewQDomProcessingInstruction();
 		}
 		public QDomProcessingInstruction(QDomProcessingInstruction x) : this((Type) null) {
-			CreateQDomProcessingInstructionProxy();
+			CreateProxy();
 			NewQDomProcessingInstruction(x);
 		}
+		[SmokeMethod("QDomProcessingInstruction(const QDomProcessingInstruction&)")]
 		private void NewQDomProcessingInstruction(QDomProcessingInstruction x) {
 			ProxyQDomProcessingInstruction().NewQDomProcessingInstruction(x);
 		}
+		[SmokeMethod("target() const")]
 		public string Target() {
 			return ProxyQDomProcessingInstruction().Target();
 		}
+		[SmokeMethod("data() const")]
 		public string Data() {
 			return ProxyQDomProcessingInstruction().Data();
 		}
+		[SmokeMethod("setData(const QString&)")]
 		public void SetData(string d) {
 			ProxyQDomProcessingInstruction().SetData(d);
 		}
-		public new int NodeType() {
+		[SmokeMethod("nodeType() const")]
+		public new QDomNode.NodeType NodeType() {
 			return ProxyQDomProcessingInstruction().NodeType();
 		}
 		~QDomProcessingInstruction() {
-			ProxyQDomProcessingInstruction().Dispose();
+			DisposeQDomProcessingInstruction();
 		}
 		public void Dispose() {
-			ProxyQDomProcessingInstruction().Dispose();
+			DisposeQDomProcessingInstruction();
+		}
+		private void DisposeQDomProcessingInstruction() {
+			ProxyQDomProcessingInstruction().DisposeQDomProcessingInstruction();
 		}
 	}
 }

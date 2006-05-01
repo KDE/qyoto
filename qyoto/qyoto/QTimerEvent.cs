@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QTimerEvent")]
 	public class QTimerEvent : QEvent, IDisposable {
  		protected QTimerEvent(Type dummy) : base((Type) null) {}
 		interface IQTimerEventProxy {
 		}
 
-		protected void CreateQTimerEventProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTimerEvent), this);
 			_interceptor = (QTimerEvent) realProxy.GetTransparentProxy();
 		}
@@ -25,20 +26,25 @@ namespace Qt {
 		}
 
 		public QTimerEvent(int timerId) : this((Type) null) {
-			CreateQTimerEventProxy();
+			CreateProxy();
 			NewQTimerEvent(timerId);
 		}
+		[SmokeMethod("QTimerEvent(int)")]
 		private void NewQTimerEvent(int timerId) {
 			ProxyQTimerEvent().NewQTimerEvent(timerId);
 		}
+		[SmokeMethod("timerId() const")]
 		public int TimerId() {
 			return ProxyQTimerEvent().TimerId();
 		}
 		~QTimerEvent() {
-			ProxyQTimerEvent().Dispose();
+			DisposeQTimerEvent();
 		}
 		public new void Dispose() {
-			ProxyQTimerEvent().Dispose();
+			DisposeQTimerEvent();
+		}
+		private void DisposeQTimerEvent() {
+			ProxyQTimerEvent().DisposeQTimerEvent();
 		}
 	}
 }

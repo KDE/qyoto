@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QXmlInputSource")]
 	public class QXmlInputSource : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
@@ -12,7 +13,7 @@ namespace Qt {
 		interface IQXmlInputSourceProxy {
 		}
 
-		protected void CreateQXmlInputSourceProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlInputSource), this);
 			_interceptor = (QXmlInputSource) realProxy.GetTransparentProxy();
 		}
@@ -29,48 +30,61 @@ namespace Qt {
 		}
 
 		public QXmlInputSource() : this((Type) null) {
-			CreateQXmlInputSourceProxy();
+			CreateProxy();
 			NewQXmlInputSource();
 		}
+		[SmokeMethod("QXmlInputSource()")]
 		private void NewQXmlInputSource() {
 			ProxyQXmlInputSource().NewQXmlInputSource();
 		}
 		public QXmlInputSource(IQIODevice dev) : this((Type) null) {
-			CreateQXmlInputSourceProxy();
+			CreateProxy();
 			NewQXmlInputSource(dev);
 		}
+		[SmokeMethod("QXmlInputSource(QIODevice*)")]
 		private void NewQXmlInputSource(IQIODevice dev) {
 			ProxyQXmlInputSource().NewQXmlInputSource(dev);
 		}
+		[SmokeMethod("setData(const QString&)")]
 		public virtual void SetData(string dat) {
 			ProxyQXmlInputSource().SetData(dat);
 		}
+		[SmokeMethod("setData(const QByteArray&)")]
 		public virtual void SetData(QByteArray dat) {
 			ProxyQXmlInputSource().SetData(dat);
 		}
+		[SmokeMethod("fetchData()")]
 		public virtual void FetchData() {
 			ProxyQXmlInputSource().FetchData();
 		}
+		[SmokeMethod("data() const")]
 		public virtual string Data() {
 			return ProxyQXmlInputSource().Data();
 		}
+		[SmokeMethod("next()")]
 		public virtual char Next() {
 			return ProxyQXmlInputSource().Next();
 		}
+		[SmokeMethod("reset()")]
 		public virtual void Reset() {
 			ProxyQXmlInputSource().Reset();
 		}
+		[SmokeMethod("fromRawData(const QByteArray&, bool)")]
 		protected virtual string FromRawData(QByteArray data, bool beginning) {
 			return ProxyQXmlInputSource().FromRawData(data,beginning);
 		}
+		[SmokeMethod("fromRawData(const QByteArray&)")]
 		protected virtual string FromRawData(QByteArray data) {
 			return ProxyQXmlInputSource().FromRawData(data);
 		}
 		~QXmlInputSource() {
-			ProxyQXmlInputSource().Dispose();
+			DisposeQXmlInputSource();
 		}
 		public void Dispose() {
-			ProxyQXmlInputSource().Dispose();
+			DisposeQXmlInputSource();
+		}
+		private void DisposeQXmlInputSource() {
+			ProxyQXmlInputSource().DisposeQXmlInputSource();
 		}
 	}
 }

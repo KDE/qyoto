@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QLibraryInfo")]
 	public class QLibraryInfo : MarshalByRefObject {
 		protected Object _interceptor = null;
  
@@ -13,10 +14,10 @@ namespace Qt {
 			string Licensee();
 			string LicensedProducts();
 			string BuildKey();
-			string Location(int arg1);
+			string Location(QLibraryInfo.LibraryLocation arg1);
 		}
 
-		protected void CreateQLibraryInfoProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QLibraryInfo), this);
 			_interceptor = (QLibraryInfo) realProxy.GetTransparentProxy();
 		}
@@ -32,7 +33,7 @@ namespace Qt {
 			return (IQLibraryInfoProxy) _staticInterceptor;
 		}
 
-		enum LibraryLocation {
+		public enum LibraryLocation {
 			PrefixPath = 0,
 			DocumentationPath = 1,
 			HeadersPath = 2,
@@ -45,17 +46,30 @@ namespace Qt {
 			DemosPath = 9,
 			ExamplesPath = 10,
 		}
+		[SmokeMethod("licensee()")]
 		public static string Licensee() {
 			return StaticQLibraryInfo().Licensee();
 		}
+		[SmokeMethod("licensedProducts()")]
 		public static string LicensedProducts() {
 			return StaticQLibraryInfo().LicensedProducts();
 		}
+		[SmokeMethod("buildKey()")]
 		public static string BuildKey() {
 			return StaticQLibraryInfo().BuildKey();
 		}
-		public static string Location(int arg1) {
+		[SmokeMethod("location(QLibraryInfo::LibraryLocation)")]
+		public static string Location(QLibraryInfo.LibraryLocation arg1) {
 			return StaticQLibraryInfo().Location(arg1);
+		}
+		~QLibraryInfo() {
+			DisposeQLibraryInfo();
+		}
+		public void Dispose() {
+			DisposeQLibraryInfo();
+		}
+		private void DisposeQLibraryInfo() {
+			ProxyQLibraryInfo().DisposeQLibraryInfo();
 		}
 	}
 }

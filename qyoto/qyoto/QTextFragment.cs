@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QTextFragment")]
 	public class QTextFragment : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
@@ -14,7 +15,7 @@ namespace Qt {
 			bool op_lt(QTextFragment lhs, QTextFragment o);
 		}
 
-		protected void CreateQTextFragmentProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextFragment), this);
 			_interceptor = (QTextFragment) realProxy.GetTransparentProxy();
 		}
@@ -31,22 +32,26 @@ namespace Qt {
 		}
 
 		public QTextFragment() : this((Type) null) {
-			CreateQTextFragmentProxy();
+			CreateProxy();
 			NewQTextFragment();
 		}
+		[SmokeMethod("QTextFragment()")]
 		private void NewQTextFragment() {
 			ProxyQTextFragment().NewQTextFragment();
 		}
 		public QTextFragment(QTextFragment o) : this((Type) null) {
-			CreateQTextFragmentProxy();
+			CreateProxy();
 			NewQTextFragment(o);
 		}
+		[SmokeMethod("QTextFragment(const QTextFragment&)")]
 		private void NewQTextFragment(QTextFragment o) {
 			ProxyQTextFragment().NewQTextFragment(o);
 		}
+		[SmokeMethod("isValid() const")]
 		public bool IsValid() {
 			return ProxyQTextFragment().IsValid();
 		}
+		[SmokeMethod("operator==(const QTextFragment&) const")]
 		public static bool operator==(QTextFragment lhs, QTextFragment o) {
 			return StaticQTextFragment().op_equals(lhs,o);
 		}
@@ -60,32 +65,46 @@ namespace Qt {
 		public override int GetHashCode() {
 			return ProxyQTextFragment().GetHashCode();
 		}
+		[SmokeMethod("operator<(const QTextFragment&) const")]
 		public static bool operator<(QTextFragment lhs, QTextFragment o) {
 			return StaticQTextFragment().op_lt(lhs,o);
 		}
+		public static bool operator>(QTextFragment lhs, QTextFragment o) {
+			return !StaticQTextFragment().op_lt(lhs,o)
+						&& !StaticQTextFragment().op_equals(lhs,o);
+		}
+		[SmokeMethod("position() const")]
 		public int Position() {
 			return ProxyQTextFragment().Position();
 		}
+		[SmokeMethod("length() const")]
 		public int Length() {
 			return ProxyQTextFragment().Length();
 		}
+		[SmokeMethod("contains(int) const")]
 		public bool Contains(int position) {
 			return ProxyQTextFragment().Contains(position);
 		}
+		[SmokeMethod("charFormat() const")]
 		public QTextCharFormat CharFormat() {
 			return ProxyQTextFragment().CharFormat();
 		}
+		[SmokeMethod("charFormatIndex() const")]
 		public int CharFormatIndex() {
 			return ProxyQTextFragment().CharFormatIndex();
 		}
+		[SmokeMethod("text() const")]
 		public string Text() {
 			return ProxyQTextFragment().Text();
 		}
 		~QTextFragment() {
-			ProxyQTextFragment().Dispose();
+			DisposeQTextFragment();
 		}
 		public void Dispose() {
-			ProxyQTextFragment().Dispose();
+			DisposeQTextFragment();
+		}
+		private void DisposeQTextFragment() {
+			ProxyQTextFragment().DisposeQTextFragment();
 		}
 	}
 }

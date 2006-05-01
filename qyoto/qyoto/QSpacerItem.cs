@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QSpacerItem")]
 	public class QSpacerItem : QLayoutItem, IDisposable {
  		protected QSpacerItem(Type dummy) : base((Type) null) {}
 		interface IQSpacerItemProxy {
 		}
 
-		protected void CreateQSpacerItemProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSpacerItem), this);
 			_interceptor = (QSpacerItem) realProxy.GetTransparentProxy();
 		}
@@ -24,65 +25,82 @@ namespace Qt {
 			return (IQSpacerItemProxy) _staticInterceptor;
 		}
 
-		public QSpacerItem(int w, int h, int hData, int vData) : this((Type) null) {
-			CreateQSpacerItemProxy();
+		public QSpacerItem(int w, int h, QSizePolicy.Policy hData, QSizePolicy.Policy vData) : this((Type) null) {
+			CreateProxy();
 			NewQSpacerItem(w,h,hData,vData);
 		}
-		private void NewQSpacerItem(int w, int h, int hData, int vData) {
+		[SmokeMethod("QSpacerItem(int, int, QSizePolicy::Policy, QSizePolicy::Policy)")]
+		private void NewQSpacerItem(int w, int h, QSizePolicy.Policy hData, QSizePolicy.Policy vData) {
 			ProxyQSpacerItem().NewQSpacerItem(w,h,hData,vData);
 		}
-		public QSpacerItem(int w, int h, int hData) : this((Type) null) {
-			CreateQSpacerItemProxy();
+		public QSpacerItem(int w, int h, QSizePolicy.Policy hData) : this((Type) null) {
+			CreateProxy();
 			NewQSpacerItem(w,h,hData);
 		}
-		private void NewQSpacerItem(int w, int h, int hData) {
+		[SmokeMethod("QSpacerItem(int, int, QSizePolicy::Policy)")]
+		private void NewQSpacerItem(int w, int h, QSizePolicy.Policy hData) {
 			ProxyQSpacerItem().NewQSpacerItem(w,h,hData);
 		}
 		public QSpacerItem(int w, int h) : this((Type) null) {
-			CreateQSpacerItemProxy();
+			CreateProxy();
 			NewQSpacerItem(w,h);
 		}
+		[SmokeMethod("QSpacerItem(int, int)")]
 		private void NewQSpacerItem(int w, int h) {
 			ProxyQSpacerItem().NewQSpacerItem(w,h);
 		}
-		public void ChangeSize(int w, int h, int hData, int vData) {
+		[SmokeMethod("changeSize(int, int, QSizePolicy::Policy, QSizePolicy::Policy)")]
+		public void ChangeSize(int w, int h, QSizePolicy.Policy hData, QSizePolicy.Policy vData) {
 			ProxyQSpacerItem().ChangeSize(w,h,hData,vData);
 		}
-		public void ChangeSize(int w, int h, int hData) {
+		[SmokeMethod("changeSize(int, int, QSizePolicy::Policy)")]
+		public void ChangeSize(int w, int h, QSizePolicy.Policy hData) {
 			ProxyQSpacerItem().ChangeSize(w,h,hData);
 		}
+		[SmokeMethod("changeSize(int, int)")]
 		public void ChangeSize(int w, int h) {
 			ProxyQSpacerItem().ChangeSize(w,h);
 		}
+		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {
 			return ProxyQSpacerItem().SizeHint();
 		}
+		[SmokeMethod("minimumSize() const")]
 		public new QSize MinimumSize() {
 			return ProxyQSpacerItem().MinimumSize();
 		}
+		[SmokeMethod("maximumSize() const")]
 		public new QSize MaximumSize() {
 			return ProxyQSpacerItem().MaximumSize();
 		}
+		[SmokeMethod("expandingDirections() const")]
 		public new int ExpandingDirections() {
 			return ProxyQSpacerItem().ExpandingDirections();
 		}
+		[SmokeMethod("isEmpty() const")]
 		public new bool IsEmpty() {
 			return ProxyQSpacerItem().IsEmpty();
 		}
+		[SmokeMethod("setGeometry(const QRect&)")]
 		public new void SetGeometry(QRect arg1) {
 			ProxyQSpacerItem().SetGeometry(arg1);
 		}
+		[SmokeMethod("geometry() const")]
 		public new QRect Geometry() {
 			return ProxyQSpacerItem().Geometry();
 		}
+		[SmokeMethod("spacerItem()")]
 		public new QSpacerItem SpacerItem() {
 			return ProxyQSpacerItem().SpacerItem();
 		}
 		~QSpacerItem() {
-			ProxyQSpacerItem().Dispose();
+			DisposeQSpacerItem();
 		}
 		public void Dispose() {
-			ProxyQSpacerItem().Dispose();
+			DisposeQSpacerItem();
+		}
+		private void DisposeQSpacerItem() {
+			ProxyQSpacerItem().DisposeQSpacerItem();
 		}
 	}
 }

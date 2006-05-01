@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QScrollBar")]
 	public class QScrollBar : QAbstractSlider, IDisposable {
  		protected QScrollBar(Type dummy) : base((Type) null) {}
 		interface IQScrollBarProxy {
@@ -11,7 +12,7 @@ namespace Qt {
 			string Tr(string s);
 		}
 
-		protected void CreateQScrollBarProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QScrollBar), this);
 			_interceptor = (QScrollBar) realProxy.GetTransparentProxy();
 		}
@@ -27,74 +28,101 @@ namespace Qt {
 			return (IQScrollBarProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQScrollBar().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QScrollBar(QWidget parent) : this((Type) null) {
-			CreateQScrollBarProxy();
+			CreateProxy();
 			NewQScrollBar(parent);
 		}
+		[SmokeMethod("QScrollBar(QWidget*)")]
 		private void NewQScrollBar(QWidget parent) {
 			ProxyQScrollBar().NewQScrollBar(parent);
 		}
 		public QScrollBar() : this((Type) null) {
-			CreateQScrollBarProxy();
+			CreateProxy();
 			NewQScrollBar();
 		}
+		[SmokeMethod("QScrollBar()")]
 		private void NewQScrollBar() {
 			ProxyQScrollBar().NewQScrollBar();
 		}
-		public QScrollBar(int arg1, QWidget parent) : this((Type) null) {
-			CreateQScrollBarProxy();
+		public QScrollBar(Qt.Orientation arg1, QWidget parent) : this((Type) null) {
+			CreateProxy();
 			NewQScrollBar(arg1,parent);
 		}
-		private void NewQScrollBar(int arg1, QWidget parent) {
+		[SmokeMethod("QScrollBar(Qt::Orientation, QWidget*)")]
+		private void NewQScrollBar(Qt.Orientation arg1, QWidget parent) {
 			ProxyQScrollBar().NewQScrollBar(arg1,parent);
 		}
-		public QScrollBar(int arg1) : this((Type) null) {
-			CreateQScrollBarProxy();
+		public QScrollBar(Qt.Orientation arg1) : this((Type) null) {
+			CreateProxy();
 			NewQScrollBar(arg1);
 		}
-		private void NewQScrollBar(int arg1) {
+		[SmokeMethod("QScrollBar(Qt::Orientation)")]
+		private void NewQScrollBar(Qt.Orientation arg1) {
 			ProxyQScrollBar().NewQScrollBar(arg1);
 		}
+		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {
 			return ProxyQScrollBar().SizeHint();
 		}
+		[SmokeMethod("event(QEvent*)")]
 		public new bool Event(QEvent arg1) {
 			return ProxyQScrollBar().Event(arg1);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQScrollBar().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQScrollBar().Tr(s);
 		}
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected new void PaintEvent(QPaintEvent arg1) {
 			ProxyQScrollBar().PaintEvent(arg1);
 		}
+		[SmokeMethod("mousePressEvent(QMouseEvent*)")]
 		protected new void MousePressEvent(QMouseEvent arg1) {
 			ProxyQScrollBar().MousePressEvent(arg1);
 		}
+		[SmokeMethod("mouseReleaseEvent(QMouseEvent*)")]
 		protected new void MouseReleaseEvent(QMouseEvent arg1) {
 			ProxyQScrollBar().MouseReleaseEvent(arg1);
 		}
+		[SmokeMethod("mouseMoveEvent(QMouseEvent*)")]
 		protected new void MouseMoveEvent(QMouseEvent arg1) {
 			ProxyQScrollBar().MouseMoveEvent(arg1);
 		}
+		[SmokeMethod("hideEvent(QHideEvent*)")]
 		protected new void HideEvent(QHideEvent arg1) {
 			ProxyQScrollBar().HideEvent(arg1);
 		}
-		protected new void SliderChange(int change) {
+		[SmokeMethod("sliderChange(QAbstractSlider::SliderChange)")]
+		protected new void SliderChange(QAbstractSlider.SliderChange change) {
 			ProxyQScrollBar().SliderChange(change);
 		}
+		[SmokeMethod("contextMenuEvent(QContextMenuEvent*)")]
+		protected new void ContextMenuEvent(QContextMenuEvent arg1) {
+			ProxyQScrollBar().ContextMenuEvent(arg1);
+		}
 		~QScrollBar() {
-			ProxyQScrollBar().Dispose();
+			DisposeQScrollBar();
 		}
 		public new void Dispose() {
-			ProxyQScrollBar().Dispose();
+			DisposeQScrollBar();
 		}
+		private void DisposeQScrollBar() {
+			ProxyQScrollBar().DisposeQScrollBar();
+		}
+		protected new IQScrollBarSignals Emit() {
+			return (IQScrollBarSignals) Q_EMIT;
+		}
+	}
+
+	public interface IQScrollBarSignals : IQAbstractSliderSignals {
 	}
 }

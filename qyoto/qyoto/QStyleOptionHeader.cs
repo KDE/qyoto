@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QStyleOptionHeader")]
 	public class QStyleOptionHeader : QStyleOption, IDisposable {
  		protected QStyleOptionHeader(Type dummy) : base((Type) null) {}
 		interface IQStyleOptionHeaderProxy {
 		}
 
-		protected void CreateQStyleOptionHeaderProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionHeader), this);
 			_interceptor = (QStyleOptionHeader) realProxy.GetTransparentProxy();
 		}
@@ -24,53 +25,59 @@ namespace Qt {
 			return (IQStyleOptionHeaderProxy) _staticInterceptor;
 		}
 
-		public const int Type = (int) OptionType.SO_Header;
-
-		public const int Version = 1;
-
-		enum SectionPosition {
+		public enum SectionPosition {
 			Beginning = 0,
 			Middle = 1,
 			End = 2,
 			OnlyOneSection = 3,
 		}
-		enum SelectedPosition {
+		public enum SelectedPosition {
 			NotAdjacent = 0,
 			NextIsSelected = 1,
 			PreviousIsSelected = 2,
 			NextAndPreviousAreSelected = 3,
 		}
-		enum SortIndicator {
+		public enum SortIndicator {
 			None = 0,
 			SortUp = 1,
 			SortDown = 2,
 		}
+		public const int Type = (int) QStyleOption.OptionType.SO_Header;
+
+		public const int Version = 1;
+
 		public QStyleOptionHeader() : this((Type) null) {
-			CreateQStyleOptionHeaderProxy();
+			CreateProxy();
 			NewQStyleOptionHeader();
 		}
+		[SmokeMethod("QStyleOptionHeader()")]
 		private void NewQStyleOptionHeader() {
 			ProxyQStyleOptionHeader().NewQStyleOptionHeader();
 		}
 		public QStyleOptionHeader(QStyleOptionHeader other) : this((Type) null) {
-			CreateQStyleOptionHeaderProxy();
+			CreateProxy();
 			NewQStyleOptionHeader(other);
 		}
+		[SmokeMethod("QStyleOptionHeader(const QStyleOptionHeader&)")]
 		private void NewQStyleOptionHeader(QStyleOptionHeader other) {
 			ProxyQStyleOptionHeader().NewQStyleOptionHeader(other);
 		}
 		public QStyleOptionHeader(int version) : this((Type) null) {
-			CreateQStyleOptionHeaderProxy();
+			CreateProxy();
 			NewQStyleOptionHeader(version);
 		}
+		[SmokeMethod("QStyleOptionHeader(int)")]
 		private void NewQStyleOptionHeader(int version) {
 			ProxyQStyleOptionHeader().NewQStyleOptionHeader(version);
 		}
 		~QStyleOptionHeader() {
-			ProxyQStyleOptionHeader().Dispose();
+			DisposeQStyleOptionHeader();
 		}
 		public void Dispose() {
-			ProxyQStyleOptionHeader().Dispose();
+			DisposeQStyleOptionHeader();
+		}
+		private void DisposeQStyleOptionHeader() {
+			ProxyQStyleOptionHeader().DisposeQStyleOptionHeader();
 		}
 	}
 }

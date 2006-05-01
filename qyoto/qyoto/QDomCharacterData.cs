@@ -4,12 +4,13 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QDomCharacterData")]
 	public class QDomCharacterData : QDomNode, IDisposable {
  		protected QDomCharacterData(Type dummy) : base((Type) null) {}
 		interface IQDomCharacterDataProxy {
 		}
 
-		protected void CreateQDomCharacterDataProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomCharacterData), this);
 			_interceptor = (QDomCharacterData) realProxy.GetTransparentProxy();
 		}
@@ -26,51 +27,65 @@ namespace Qt {
 		}
 
 		public QDomCharacterData() : this((Type) null) {
-			CreateQDomCharacterDataProxy();
+			CreateProxy();
 			NewQDomCharacterData();
 		}
+		[SmokeMethod("QDomCharacterData()")]
 		private void NewQDomCharacterData() {
 			ProxyQDomCharacterData().NewQDomCharacterData();
 		}
 		public QDomCharacterData(QDomCharacterData x) : this((Type) null) {
-			CreateQDomCharacterDataProxy();
+			CreateProxy();
 			NewQDomCharacterData(x);
 		}
+		[SmokeMethod("QDomCharacterData(const QDomCharacterData&)")]
 		private void NewQDomCharacterData(QDomCharacterData x) {
 			ProxyQDomCharacterData().NewQDomCharacterData(x);
 		}
+		[SmokeMethod("substringData(unsigned long, unsigned long)")]
 		public string SubstringData(ulong offset, ulong count) {
 			return ProxyQDomCharacterData().SubstringData(offset,count);
 		}
+		[SmokeMethod("appendData(const QString&)")]
 		public void AppendData(string arg) {
 			ProxyQDomCharacterData().AppendData(arg);
 		}
+		[SmokeMethod("insertData(unsigned long, const QString&)")]
 		public void InsertData(ulong offset, string arg) {
 			ProxyQDomCharacterData().InsertData(offset,arg);
 		}
+		[SmokeMethod("deleteData(unsigned long, unsigned long)")]
 		public void DeleteData(ulong offset, ulong count) {
 			ProxyQDomCharacterData().DeleteData(offset,count);
 		}
+		[SmokeMethod("replaceData(unsigned long, unsigned long, const QString&)")]
 		public void ReplaceData(ulong offset, ulong count, string arg) {
 			ProxyQDomCharacterData().ReplaceData(offset,count,arg);
 		}
+		[SmokeMethod("length() const")]
 		public uint Length() {
 			return ProxyQDomCharacterData().Length();
 		}
+		[SmokeMethod("data() const")]
 		public string Data() {
 			return ProxyQDomCharacterData().Data();
 		}
+		[SmokeMethod("setData(const QString&)")]
 		public void SetData(string arg1) {
 			ProxyQDomCharacterData().SetData(arg1);
 		}
-		public new int NodeType() {
+		[SmokeMethod("nodeType() const")]
+		public new QDomNode.NodeType NodeType() {
 			return ProxyQDomCharacterData().NodeType();
 		}
 		~QDomCharacterData() {
-			ProxyQDomCharacterData().Dispose();
+			DisposeQDomCharacterData();
 		}
 		public void Dispose() {
-			ProxyQDomCharacterData().Dispose();
+			DisposeQDomCharacterData();
+		}
+		private void DisposeQDomCharacterData() {
+			ProxyQDomCharacterData().DisposeQDomCharacterData();
 		}
 	}
 }

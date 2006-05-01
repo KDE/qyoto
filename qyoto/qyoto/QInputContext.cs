@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QInputContext")]
 	public class QInputContext : QObject {
  		protected QInputContext(Type dummy) : base((Type) null) {}
 		interface IQInputContextProxy {
@@ -11,7 +12,7 @@ namespace Qt {
 			string Tr(string s);
 		}
 
-		protected void CreateQInputContextProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QInputContext), this);
 			_interceptor = (QInputContext) realProxy.GetTransparentProxy();
 		}
@@ -27,58 +28,103 @@ namespace Qt {
 			return (IQInputContextProxy) _staticInterceptor;
 		}
 
-		enum E_StandardFormat {
+		public enum StandardFormat {
 			PreeditFormat = 0,
 			SelectionFormat = 1,
 		}
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQInputContext().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
+		public QInputContext(QObject parent) : this((Type) null) {
+			CreateProxy();
+			NewQInputContext(parent);
+		}
+		[SmokeMethod("QInputContext(QObject*)")]
+		private void NewQInputContext(QObject parent) {
+			ProxyQInputContext().NewQInputContext(parent);
+		}
+		public QInputContext() : this((Type) null) {
+			CreateProxy();
+			NewQInputContext();
+		}
+		[SmokeMethod("QInputContext()")]
+		private void NewQInputContext() {
+			ProxyQInputContext().NewQInputContext();
+		}
+		[SmokeMethod("identifierName()")]
 		public virtual string IdentifierName() {
 			return ProxyQInputContext().IdentifierName();
 		}
+		[SmokeMethod("language()")]
 		public virtual string Language() {
 			return ProxyQInputContext().Language();
 		}
+		[SmokeMethod("reset()")]
 		public virtual void Reset() {
 			ProxyQInputContext().Reset();
 		}
+		[SmokeMethod("update()")]
 		public virtual void Update() {
 			ProxyQInputContext().Update();
 		}
+		[SmokeMethod("mouseHandler(int, QMouseEvent*)")]
 		public virtual void MouseHandler(int x, QMouseEvent arg2) {
 			ProxyQInputContext().MouseHandler(x,arg2);
 		}
+		[SmokeMethod("font() const")]
 		public virtual QFont Font() {
 			return ProxyQInputContext().Font();
 		}
+		[SmokeMethod("isComposing() const")]
 		public virtual bool IsComposing() {
 			return ProxyQInputContext().IsComposing();
 		}
+		[SmokeMethod("focusWidget() const")]
 		public QWidget FocusWidget() {
 			return ProxyQInputContext().FocusWidget();
 		}
+		[SmokeMethod("setFocusWidget(QWidget*)")]
 		public virtual void SetFocusWidget(QWidget w) {
 			ProxyQInputContext().SetFocusWidget(w);
 		}
+		[SmokeMethod("widgetDestroyed(QWidget*)")]
 		public virtual void WidgetDestroyed(QWidget w) {
 			ProxyQInputContext().WidgetDestroyed(w);
 		}
 		// QList<QAction*> actions(); >>>> NOT CONVERTED
+		[SmokeMethod("filterEvent(const QEvent*)")]
 		public virtual bool FilterEvent(QEvent arg1) {
 			return ProxyQInputContext().FilterEvent(arg1);
 		}
+		[SmokeMethod("sendEvent(const QInputMethodEvent&)")]
 		public void SendEvent(QInputMethodEvent arg1) {
 			ProxyQInputContext().SendEvent(arg1);
 		}
 		// QTextFormat standardFormat(QInputContext::StandardFormat arg1); >>>> NOT CONVERTED
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQInputContext().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQInputContext().Tr(s);
 		}
+		~QInputContext() {
+			DisposeQInputContext();
+		}
+		public new void Dispose() {
+			DisposeQInputContext();
+		}
+		private void DisposeQInputContext() {
+			ProxyQInputContext().DisposeQInputContext();
+		}
+		protected new IQInputContextSignals Emit() {
+			return (IQInputContextSignals) Q_EMIT;
+		}
+	}
+
+	public interface IQInputContextSignals : IQObjectSignals {
 	}
 }

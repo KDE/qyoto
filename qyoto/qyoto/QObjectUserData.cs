@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QObjectUserData")]
 	public class QObjectUserData : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
@@ -11,7 +12,7 @@ namespace Qt {
 		interface IQObjectUserDataProxy {
 		}
 
-		protected void CreateQObjectUserDataProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QObjectUserData), this);
 			_interceptor = (QObjectUserData) realProxy.GetTransparentProxy();
 		}
@@ -29,10 +30,13 @@ namespace Qt {
 
 		// QObjectUserData* QObjectUserData(); >>>> NOT CONVERTED
 		~QObjectUserData() {
-			ProxyQObjectUserData().Dispose();
+			DisposeQObjectUserData();
 		}
 		public void Dispose() {
-			ProxyQObjectUserData().Dispose();
+			DisposeQObjectUserData();
+		}
+		private void DisposeQObjectUserData() {
+			ProxyQObjectUserData().DisposeQObjectUserData();
 		}
 	}
 }

@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Collections;
 	using System.Text;
 
+	[SmokeClass("QFont")]
 	public class QFont : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
@@ -24,7 +25,7 @@ namespace Qt {
 			void CacheStatistics();
 		}
 
-		protected void CreateQFontProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFont), this);
 			_interceptor = (QFont) realProxy.GetTransparentProxy();
 		}
@@ -40,7 +41,7 @@ namespace Qt {
 			return (IQFontProxy) _staticInterceptor;
 		}
 
-		enum E_StyleHint {
+		public enum StyleHint {
 			Helvetica = 0,
 			SansSerif = Helvetica,
 			Times = 1,
@@ -52,7 +53,7 @@ namespace Qt {
 			System = 4,
 			AnyStyle = 5,
 		}
-		enum E_StyleStrategy {
+		public enum StyleStrategy {
 			PreferDefault = 0x0001,
 			PreferBitmap = 0x0002,
 			PreferDevice = 0x0004,
@@ -64,19 +65,19 @@ namespace Qt {
 			NoAntialias = 0x0100,
 			OpenGLCompatible = 0x0200,
 		}
-		enum E_Weight {
+		public enum Weight {
 			Light = 25,
 			Normal = 50,
 			DemiBold = 63,
 			Bold = 75,
 			Black = 87,
 		}
-		enum E_Style {
+		public enum Style {
 			StyleNormal = 0,
 			StyleItalic = 1,
 			StyleOblique = 2,
 		}
-		enum E_Stretch {
+		public enum Stretch {
 			UltraCondensed = 50,
 			ExtraCondensed = 62,
 			Condensed = 75,
@@ -88,162 +89,206 @@ namespace Qt {
 			UltraExpanded = 200,
 		}
 		public QFont() : this((Type) null) {
-			CreateQFontProxy();
+			CreateProxy();
 			NewQFont();
 		}
+		[SmokeMethod("QFont()")]
 		private void NewQFont() {
 			ProxyQFont().NewQFont();
 		}
 		public QFont(string family, int pointSize, int weight, bool italic) : this((Type) null) {
-			CreateQFontProxy();
+			CreateProxy();
 			NewQFont(family,pointSize,weight,italic);
 		}
+		[SmokeMethod("QFont(const QString&, int, int, bool)")]
 		private void NewQFont(string family, int pointSize, int weight, bool italic) {
 			ProxyQFont().NewQFont(family,pointSize,weight,italic);
 		}
 		public QFont(string family, int pointSize, int weight) : this((Type) null) {
-			CreateQFontProxy();
+			CreateProxy();
 			NewQFont(family,pointSize,weight);
 		}
+		[SmokeMethod("QFont(const QString&, int, int)")]
 		private void NewQFont(string family, int pointSize, int weight) {
 			ProxyQFont().NewQFont(family,pointSize,weight);
 		}
 		public QFont(string family, int pointSize) : this((Type) null) {
-			CreateQFontProxy();
+			CreateProxy();
 			NewQFont(family,pointSize);
 		}
+		[SmokeMethod("QFont(const QString&, int)")]
 		private void NewQFont(string family, int pointSize) {
 			ProxyQFont().NewQFont(family,pointSize);
 		}
 		public QFont(string family) : this((Type) null) {
-			CreateQFontProxy();
+			CreateProxy();
 			NewQFont(family);
 		}
+		[SmokeMethod("QFont(const QString&)")]
 		private void NewQFont(string family) {
 			ProxyQFont().NewQFont(family);
 		}
 		public QFont(QFont arg1, IQPaintDevice pd) : this((Type) null) {
-			CreateQFontProxy();
+			CreateProxy();
 			NewQFont(arg1,pd);
 		}
+		[SmokeMethod("QFont(const QFont&, QPaintDevice*)")]
 		private void NewQFont(QFont arg1, IQPaintDevice pd) {
 			ProxyQFont().NewQFont(arg1,pd);
 		}
 		public QFont(QFont arg1) : this((Type) null) {
-			CreateQFontProxy();
+			CreateProxy();
 			NewQFont(arg1);
 		}
+		[SmokeMethod("QFont(const QFont&)")]
 		private void NewQFont(QFont arg1) {
 			ProxyQFont().NewQFont(arg1);
 		}
+		[SmokeMethod("family() const")]
 		public string Family() {
 			return ProxyQFont().Family();
 		}
+		[SmokeMethod("setFamily(const QString&)")]
 		public void SetFamily(string arg1) {
 			ProxyQFont().SetFamily(arg1);
 		}
+		[SmokeMethod("pointSize() const")]
 		public int PointSize() {
 			return ProxyQFont().PointSize();
 		}
+		[SmokeMethod("setPointSize(int)")]
 		public void SetPointSize(int arg1) {
 			ProxyQFont().SetPointSize(arg1);
 		}
+		[SmokeMethod("pointSizeF() const")]
 		public double PointSizeF() {
 			return ProxyQFont().PointSizeF();
 		}
+		[SmokeMethod("setPointSizeF(qreal)")]
 		public void SetPointSizeF(double arg1) {
 			ProxyQFont().SetPointSizeF(arg1);
 		}
+		[SmokeMethod("pixelSize() const")]
 		public int PixelSize() {
 			return ProxyQFont().PixelSize();
 		}
+		[SmokeMethod("setPixelSize(int)")]
 		public void SetPixelSize(int arg1) {
 			ProxyQFont().SetPixelSize(arg1);
 		}
-		public int Weight() {
-			return ProxyQFont().Weight();
+		[SmokeMethod("weight() const")]
+		public int weight() {
+			return ProxyQFont().weight();
 		}
+		[SmokeMethod("setWeight(int)")]
 		public void SetWeight(int arg1) {
 			ProxyQFont().SetWeight(arg1);
 		}
+		[SmokeMethod("bold() const")]
 		public bool Bold() {
 			return ProxyQFont().Bold();
 		}
+		[SmokeMethod("setBold(bool)")]
 		public void SetBold(bool arg1) {
 			ProxyQFont().SetBold(arg1);
 		}
-		public void SetStyle(int style) {
+		[SmokeMethod("setStyle(QFont::Style)")]
+		public void SetStyle(QFont.Style style) {
 			ProxyQFont().SetStyle(style);
 		}
-		public int Style() {
-			return ProxyQFont().Style();
+		[SmokeMethod("style() const")]
+		public QFont.Style style() {
+			return ProxyQFont().style();
 		}
+		[SmokeMethod("italic() const")]
 		public bool Italic() {
 			return ProxyQFont().Italic();
 		}
+		[SmokeMethod("setItalic(bool)")]
 		public void SetItalic(bool b) {
 			ProxyQFont().SetItalic(b);
 		}
+		[SmokeMethod("underline() const")]
 		public bool Underline() {
 			return ProxyQFont().Underline();
 		}
+		[SmokeMethod("setUnderline(bool)")]
 		public void SetUnderline(bool arg1) {
 			ProxyQFont().SetUnderline(arg1);
 		}
+		[SmokeMethod("overline() const")]
 		public bool Overline() {
 			return ProxyQFont().Overline();
 		}
+		[SmokeMethod("setOverline(bool)")]
 		public void SetOverline(bool arg1) {
 			ProxyQFont().SetOverline(arg1);
 		}
+		[SmokeMethod("strikeOut() const")]
 		public bool StrikeOut() {
 			return ProxyQFont().StrikeOut();
 		}
+		[SmokeMethod("setStrikeOut(bool)")]
 		public void SetStrikeOut(bool arg1) {
 			ProxyQFont().SetStrikeOut(arg1);
 		}
+		[SmokeMethod("fixedPitch() const")]
 		public bool FixedPitch() {
 			return ProxyQFont().FixedPitch();
 		}
+		[SmokeMethod("setFixedPitch(bool)")]
 		public void SetFixedPitch(bool arg1) {
 			ProxyQFont().SetFixedPitch(arg1);
 		}
+		[SmokeMethod("kerning() const")]
 		public bool Kerning() {
 			return ProxyQFont().Kerning();
 		}
+		[SmokeMethod("setKerning(bool)")]
 		public void SetKerning(bool arg1) {
 			ProxyQFont().SetKerning(arg1);
 		}
-		public int StyleHint() {
-			return ProxyQFont().StyleHint();
+		[SmokeMethod("styleHint() const")]
+		public QFont.StyleHint styleHint() {
+			return ProxyQFont().styleHint();
 		}
-		public int StyleStrategy() {
-			return ProxyQFont().StyleStrategy();
+		[SmokeMethod("styleStrategy() const")]
+		public QFont.StyleStrategy styleStrategy() {
+			return ProxyQFont().styleStrategy();
 		}
-		public void SetStyleHint(int arg1, int arg2) {
+		[SmokeMethod("setStyleHint(QFont::StyleHint, QFont::StyleStrategy)")]
+		public void SetStyleHint(QFont.StyleHint arg1, QFont.StyleStrategy arg2) {
 			ProxyQFont().SetStyleHint(arg1,arg2);
 		}
-		public void SetStyleHint(int arg1) {
+		[SmokeMethod("setStyleHint(QFont::StyleHint)")]
+		public void SetStyleHint(QFont.StyleHint arg1) {
 			ProxyQFont().SetStyleHint(arg1);
 		}
-		public void SetStyleStrategy(int s) {
+		[SmokeMethod("setStyleStrategy(QFont::StyleStrategy)")]
+		public void SetStyleStrategy(QFont.StyleStrategy s) {
 			ProxyQFont().SetStyleStrategy(s);
 		}
-		public int Stretch() {
-			return ProxyQFont().Stretch();
+		[SmokeMethod("stretch() const")]
+		public int stretch() {
+			return ProxyQFont().stretch();
 		}
+		[SmokeMethod("setStretch(int)")]
 		public void SetStretch(int arg1) {
 			ProxyQFont().SetStretch(arg1);
 		}
+		[SmokeMethod("rawMode() const")]
 		public bool RawMode() {
 			return ProxyQFont().RawMode();
 		}
+		[SmokeMethod("setRawMode(bool)")]
 		public void SetRawMode(bool arg1) {
 			ProxyQFont().SetRawMode(arg1);
 		}
+		[SmokeMethod("exactMatch() const")]
 		public bool ExactMatch() {
 			return ProxyQFont().ExactMatch();
 		}
+		[SmokeMethod("operator==(const QFont&) const")]
 		public static bool operator==(QFont lhs, QFont arg1) {
 			return StaticQFont().op_equals(lhs,arg1);
 		}
@@ -257,81 +302,107 @@ namespace Qt {
 		public override int GetHashCode() {
 			return ProxyQFont().GetHashCode();
 		}
+		[SmokeMethod("operator<(const QFont&) const")]
 		public static bool operator<(QFont lhs, QFont arg1) {
 			return StaticQFont().op_lt(lhs,arg1);
 		}
+		public static bool operator>(QFont lhs, QFont arg1) {
+			return !StaticQFont().op_lt(lhs,arg1)
+						&& !StaticQFont().op_equals(lhs,arg1);
+		}
 		//  operator QVariant(); >>>> NOT CONVERTED
+		[SmokeMethod("isCopyOf(const QFont&) const")]
 		public bool IsCopyOf(QFont arg1) {
 			return ProxyQFont().IsCopyOf(arg1);
 		}
-		public uint Handle() {
-			return ProxyQFont().Handle();
-		}
+		[SmokeMethod("setRawName(const QString&)")]
 		public void SetRawName(string arg1) {
 			ProxyQFont().SetRawName(arg1);
 		}
+		[SmokeMethod("rawName() const")]
 		public string RawName() {
 			return ProxyQFont().RawName();
 		}
+		[SmokeMethod("key() const")]
 		public string Key() {
 			return ProxyQFont().Key();
 		}
+		[SmokeMethod("toString() const")]
 		public new string ToString() {
 			return ProxyQFont().ToString();
 		}
+		[SmokeMethod("fromString(const QString&)")]
 		public bool FromString(string arg1) {
 			return ProxyQFont().FromString(arg1);
 		}
+		[SmokeMethod("defaultFamily() const")]
 		public string DefaultFamily() {
 			return ProxyQFont().DefaultFamily();
 		}
+		[SmokeMethod("lastResortFamily() const")]
 		public string LastResortFamily() {
 			return ProxyQFont().LastResortFamily();
 		}
+		[SmokeMethod("lastResortFont() const")]
 		public string LastResortFont() {
 			return ProxyQFont().LastResortFont();
 		}
+		[SmokeMethod("resolve(const QFont&) const")]
 		public QFont Resolve(QFont arg1) {
 			return ProxyQFont().Resolve(arg1);
 		}
+		[SmokeMethod("resolve() const")]
 		public uint Resolve() {
 			return ProxyQFont().Resolve();
 		}
+		[SmokeMethod("resolve(uint)")]
 		public void Resolve(uint mask) {
 			ProxyQFont().Resolve(mask);
 		}
+		[SmokeMethod("substitute(const QString&)")]
 		public static string Substitute(string arg1) {
 			return StaticQFont().Substitute(arg1);
 		}
+		[SmokeMethod("substitutes(const QString&)")]
 		public static ArrayList Substitutes(string arg1) {
 			return StaticQFont().Substitutes(arg1);
 		}
+		[SmokeMethod("substitutions()")]
 		public static ArrayList Substitutions() {
 			return StaticQFont().Substitutions();
 		}
+		[SmokeMethod("insertSubstitution(const QString&, const QString&)")]
 		public static void InsertSubstitution(string arg1, string arg2) {
 			StaticQFont().InsertSubstitution(arg1,arg2);
 		}
+		[SmokeMethod("insertSubstitutions(const QString&, const QStringList&)")]
 		public static void InsertSubstitutions(string arg1, string[] arg2) {
 			StaticQFont().InsertSubstitutions(arg1,arg2);
 		}
+		[SmokeMethod("removeSubstitution(const QString&)")]
 		public static void RemoveSubstitution(string arg1) {
 			StaticQFont().RemoveSubstitution(arg1);
 		}
+		[SmokeMethod("initialize()")]
 		public static void Initialize() {
 			StaticQFont().Initialize();
 		}
+		[SmokeMethod("cleanup()")]
 		public static void Cleanup() {
 			StaticQFont().Cleanup();
 		}
+		[SmokeMethod("cacheStatistics()")]
 		public static void CacheStatistics() {
 			StaticQFont().CacheStatistics();
 		}
 		~QFont() {
-			ProxyQFont().Dispose();
+			DisposeQFont();
 		}
 		public void Dispose() {
-			ProxyQFont().Dispose();
+			DisposeQFont();
+		}
+		private void DisposeQFont() {
+			ProxyQFont().DisposeQFont();
 		}
 	}
 }

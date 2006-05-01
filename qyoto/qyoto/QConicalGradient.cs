@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QConicalGradient")]
 	public class QConicalGradient : QGradient, IDisposable {
  		protected QConicalGradient(Type dummy) : base((Type) null) {}
 		interface IQConicalGradientProxy {
 		}
 
-		protected void CreateQConicalGradientProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QConicalGradient), this);
 			_interceptor = (QConicalGradient) realProxy.GetTransparentProxy();
 		}
@@ -25,30 +26,37 @@ namespace Qt {
 		}
 
 		public QConicalGradient(QPointF center, double startAngle) : this((Type) null) {
-			CreateQConicalGradientProxy();
+			CreateProxy();
 			NewQConicalGradient(center,startAngle);
 		}
+		[SmokeMethod("QConicalGradient(const QPointF&, qreal)")]
 		private void NewQConicalGradient(QPointF center, double startAngle) {
 			ProxyQConicalGradient().NewQConicalGradient(center,startAngle);
 		}
 		public QConicalGradient(double cx, double cy, double startAngle) : this((Type) null) {
-			CreateQConicalGradientProxy();
+			CreateProxy();
 			NewQConicalGradient(cx,cy,startAngle);
 		}
+		[SmokeMethod("QConicalGradient(qreal, qreal, qreal)")]
 		private void NewQConicalGradient(double cx, double cy, double startAngle) {
 			ProxyQConicalGradient().NewQConicalGradient(cx,cy,startAngle);
 		}
+		[SmokeMethod("center() const")]
 		public QPointF Center() {
 			return ProxyQConicalGradient().Center();
 		}
+		[SmokeMethod("angle() const")]
 		public double Angle() {
 			return ProxyQConicalGradient().Angle();
 		}
 		~QConicalGradient() {
-			ProxyQConicalGradient().Dispose();
+			DisposeQConicalGradient();
 		}
 		public void Dispose() {
-			ProxyQConicalGradient().Dispose();
+			DisposeQConicalGradient();
+		}
+		private void DisposeQConicalGradient() {
+			ProxyQConicalGradient().DisposeQConicalGradient();
 		}
 	}
 }

@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QDragLeaveEvent")]
 	public class QDragLeaveEvent : QEvent, IDisposable {
  		protected QDragLeaveEvent(Type dummy) : base((Type) null) {}
 		interface IQDragLeaveEventProxy {
 		}
 
-		protected void CreateQDragLeaveEventProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDragLeaveEvent), this);
 			_interceptor = (QDragLeaveEvent) realProxy.GetTransparentProxy();
 		}
@@ -25,17 +26,21 @@ namespace Qt {
 		}
 
 		public QDragLeaveEvent() : this((Type) null) {
-			CreateQDragLeaveEventProxy();
+			CreateProxy();
 			NewQDragLeaveEvent();
 		}
+		[SmokeMethod("QDragLeaveEvent()")]
 		private void NewQDragLeaveEvent() {
 			ProxyQDragLeaveEvent().NewQDragLeaveEvent();
 		}
 		~QDragLeaveEvent() {
-			ProxyQDragLeaveEvent().Dispose();
+			DisposeQDragLeaveEvent();
 		}
 		public new void Dispose() {
-			ProxyQDragLeaveEvent().Dispose();
+			DisposeQDragLeaveEvent();
+		}
+		private void DisposeQDragLeaveEvent() {
+			ProxyQDragLeaveEvent().DisposeQDragLeaveEvent();
 		}
 	}
 }

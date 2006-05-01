@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QLabel")]
 	public class QLabel : QFrame, IDisposable {
  		protected QLabel(Type dummy) : base((Type) null) {}
 		interface IQLabelProxy {
@@ -11,7 +12,7 @@ namespace Qt {
 			string Tr(string s);
 		}
 
-		protected void CreateQLabelProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QLabel), this);
 			_interceptor = (QLabel) realProxy.GetTransparentProxy();
 		}
@@ -27,157 +28,205 @@ namespace Qt {
 			return (IQLabelProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQLabel().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QLabel(QWidget parent, int f) : this((Type) null) {
-			CreateQLabelProxy();
+			CreateProxy();
 			NewQLabel(parent,f);
 		}
+		[SmokeMethod("QLabel(QWidget*, Qt::WFlags)")]
 		private void NewQLabel(QWidget parent, int f) {
 			ProxyQLabel().NewQLabel(parent,f);
 		}
 		public QLabel(QWidget parent) : this((Type) null) {
-			CreateQLabelProxy();
+			CreateProxy();
 			NewQLabel(parent);
 		}
+		[SmokeMethod("QLabel(QWidget*)")]
 		private void NewQLabel(QWidget parent) {
 			ProxyQLabel().NewQLabel(parent);
 		}
 		public QLabel() : this((Type) null) {
-			CreateQLabelProxy();
+			CreateProxy();
 			NewQLabel();
 		}
+		[SmokeMethod("QLabel()")]
 		private void NewQLabel() {
 			ProxyQLabel().NewQLabel();
 		}
 		public QLabel(string text, QWidget parent, int f) : this((Type) null) {
-			CreateQLabelProxy();
+			CreateProxy();
 			NewQLabel(text,parent,f);
 		}
+		[SmokeMethod("QLabel(const QString&, QWidget*, Qt::WFlags)")]
 		private void NewQLabel(string text, QWidget parent, int f) {
 			ProxyQLabel().NewQLabel(text,parent,f);
 		}
 		public QLabel(string text, QWidget parent) : this((Type) null) {
-			CreateQLabelProxy();
+			CreateProxy();
 			NewQLabel(text,parent);
 		}
+		[SmokeMethod("QLabel(const QString&, QWidget*)")]
 		private void NewQLabel(string text, QWidget parent) {
 			ProxyQLabel().NewQLabel(text,parent);
 		}
 		public QLabel(string text) : this((Type) null) {
-			CreateQLabelProxy();
+			CreateProxy();
 			NewQLabel(text);
 		}
+		[SmokeMethod("QLabel(const QString&)")]
 		private void NewQLabel(string text) {
 			ProxyQLabel().NewQLabel(text);
 		}
+		[SmokeMethod("text() const")]
 		public string Text() {
 			return ProxyQLabel().Text();
 		}
+		[SmokeMethod("pixmap() const")]
 		public QPixmap Pixmap() {
 			return ProxyQLabel().Pixmap();
 		}
+		[SmokeMethod("picture() const")]
 		public QPicture Picture() {
 			return ProxyQLabel().Picture();
 		}
+		[SmokeMethod("movie() const")]
 		public QMovie Movie() {
 			return ProxyQLabel().Movie();
 		}
-		public int TextFormat() {
+		[SmokeMethod("textFormat() const")]
+		public Qt.TextFormat TextFormat() {
 			return ProxyQLabel().TextFormat();
 		}
-		public void SetTextFormat(int arg1) {
+		[SmokeMethod("setTextFormat(Qt::TextFormat)")]
+		public void SetTextFormat(Qt.TextFormat arg1) {
 			ProxyQLabel().SetTextFormat(arg1);
 		}
+		[SmokeMethod("alignment() const")]
 		public int Alignment() {
 			return ProxyQLabel().Alignment();
 		}
+		[SmokeMethod("setAlignment(Qt::Alignment)")]
 		public void SetAlignment(int arg1) {
 			ProxyQLabel().SetAlignment(arg1);
 		}
+		[SmokeMethod("setWordWrap(bool)")]
 		public void SetWordWrap(bool on) {
 			ProxyQLabel().SetWordWrap(on);
 		}
+		[SmokeMethod("wordWrap() const")]
 		public bool WordWrap() {
 			return ProxyQLabel().WordWrap();
 		}
+		[SmokeMethod("indent() const")]
 		public int Indent() {
 			return ProxyQLabel().Indent();
 		}
+		[SmokeMethod("setIndent(int)")]
 		public void SetIndent(int arg1) {
 			ProxyQLabel().SetIndent(arg1);
 		}
+		[SmokeMethod("margin() const")]
 		public int Margin() {
 			return ProxyQLabel().Margin();
 		}
+		[SmokeMethod("setMargin(int)")]
 		public void SetMargin(int arg1) {
 			ProxyQLabel().SetMargin(arg1);
 		}
+		[SmokeMethod("hasScaledContents() const")]
 		public bool HasScaledContents() {
 			return ProxyQLabel().HasScaledContents();
 		}
+		[SmokeMethod("setScaledContents(bool)")]
 		public void SetScaledContents(bool arg1) {
 			ProxyQLabel().SetScaledContents(arg1);
 		}
+		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {
 			return ProxyQLabel().SizeHint();
 		}
+		[SmokeMethod("minimumSizeHint() const")]
 		public new QSize MinimumSizeHint() {
 			return ProxyQLabel().MinimumSizeHint();
 		}
+		[SmokeMethod("setBuddy(QWidget*)")]
 		public void SetBuddy(QWidget arg1) {
 			ProxyQLabel().SetBuddy(arg1);
 		}
+		[SmokeMethod("buddy() const")]
 		public QWidget Buddy() {
 			return ProxyQLabel().Buddy();
 		}
+		[SmokeMethod("heightForWidth(int) const")]
 		public new int HeightForWidth(int arg1) {
 			return ProxyQLabel().HeightForWidth(arg1);
 		}
+		[SmokeMethod("setText(const QString&)")]
 		public void SetText(string arg1) {
 			ProxyQLabel().SetText(arg1);
 		}
+		[SmokeMethod("setPixmap(const QPixmap&)")]
 		public void SetPixmap(QPixmap arg1) {
 			ProxyQLabel().SetPixmap(arg1);
 		}
+		[SmokeMethod("setPicture(const QPicture&)")]
 		public void SetPicture(QPicture arg1) {
 			ProxyQLabel().SetPicture(arg1);
 		}
+		[SmokeMethod("setMovie(QMovie*)")]
 		public void SetMovie(QMovie movie) {
 			ProxyQLabel().SetMovie(movie);
 		}
+		[SmokeMethod("setNum(int)")]
 		public void SetNum(int arg1) {
 			ProxyQLabel().SetNum(arg1);
 		}
+		[SmokeMethod("setNum(double)")]
 		public void SetNum(double arg1) {
 			ProxyQLabel().SetNum(arg1);
 		}
+		[SmokeMethod("clear()")]
 		public void Clear() {
 			ProxyQLabel().Clear();
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQLabel().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQLabel().Tr(s);
 		}
+		[SmokeMethod("event(QEvent*)")]
 		public new bool Event(QEvent e) {
 			return ProxyQLabel().Event(e);
 		}
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected new void PaintEvent(QPaintEvent arg1) {
 			ProxyQLabel().PaintEvent(arg1);
 		}
+		[SmokeMethod("changeEvent(QEvent*)")]
 		protected new void ChangeEvent(QEvent arg1) {
 			ProxyQLabel().ChangeEvent(arg1);
 		}
 		~QLabel() {
-			ProxyQLabel().Dispose();
+			DisposeQLabel();
 		}
 		public new void Dispose() {
-			ProxyQLabel().Dispose();
+			DisposeQLabel();
 		}
+		private void DisposeQLabel() {
+			ProxyQLabel().DisposeQLabel();
+		}
+		protected new IQLabelSignals Emit() {
+			return (IQLabelSignals) Q_EMIT;
+		}
+	}
+
+	public interface IQLabelSignals : IQFrameSignals {
 	}
 }

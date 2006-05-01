@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QTextLength")]
 	public class QTextLength : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
@@ -12,7 +13,7 @@ namespace Qt {
 			bool op_equals(QTextLength lhs, QTextLength other);
 		}
 
-		protected void CreateQTextLengthProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextLength), this);
 			_interceptor = (QTextLength) realProxy.GetTransparentProxy();
 		}
@@ -28,31 +29,40 @@ namespace Qt {
 			return (IQTextLengthProxy) _staticInterceptor;
 		}
 
-		enum E_Type {
+		public enum E_Type {
 			VariableLength = 0,
 			FixedLength = 1,
 			PercentageLength = 2,
 		}
 		public QTextLength() : this((Type) null) {
-			CreateQTextLengthProxy();
+			CreateProxy();
 			NewQTextLength();
 		}
+		[SmokeMethod("QTextLength()")]
 		private void NewQTextLength() {
 			ProxyQTextLength().NewQTextLength();
 		}
-		public QTextLength(int type, double value) : this((Type) null) {
-			CreateQTextLengthProxy();
+		public QTextLength(QTextLength.E_Type type, double value) : this((Type) null) {
+			CreateProxy();
 			NewQTextLength(type,value);
 		}
-		private void NewQTextLength(int type, double value) {
+		[SmokeMethod("QTextLength(QTextLength::Type, qreal)")]
+		private void NewQTextLength(QTextLength.E_Type type, double value) {
 			ProxyQTextLength().NewQTextLength(type,value);
 		}
+		[SmokeMethod("type() const")]
+		public QTextLength.E_Type type() {
+			return ProxyQTextLength().type();
+		}
+		[SmokeMethod("value(qreal) const")]
 		public double Value(double maximumLength) {
 			return ProxyQTextLength().Value(maximumLength);
 		}
+		[SmokeMethod("rawValue() const")]
 		public double RawValue() {
 			return ProxyQTextLength().RawValue();
 		}
+		[SmokeMethod("operator==(const QTextLength&) const")]
 		public static bool operator==(QTextLength lhs, QTextLength other) {
 			return StaticQTextLength().op_equals(lhs,other);
 		}
@@ -68,10 +78,13 @@ namespace Qt {
 		}
 		//  operator QVariant(); >>>> NOT CONVERTED
 		~QTextLength() {
-			ProxyQTextLength().Dispose();
+			DisposeQTextLength();
 		}
 		public void Dispose() {
-			ProxyQTextLength().Dispose();
+			DisposeQTextLength();
+		}
+		private void DisposeQTextLength() {
+			ProxyQTextLength().DisposeQTextLength();
 		}
 	}
 }

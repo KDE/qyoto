@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QAbstractPageSetupDialog")]
 	public class QAbstractPageSetupDialog : QDialog {
  		protected QAbstractPageSetupDialog(Type dummy) : base((Type) null) {}
 		interface IQAbstractPageSetupDialogProxy {
 		}
 
-		protected void CreateQAbstractPageSetupDialogProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAbstractPageSetupDialog), this);
 			_interceptor = (QAbstractPageSetupDialog) realProxy.GetTransparentProxy();
 		}
@@ -24,11 +25,44 @@ namespace Qt {
 			return (IQAbstractPageSetupDialogProxy) _staticInterceptor;
 		}
 
+		public QAbstractPageSetupDialog(QPrinter printer, QWidget parent) : this((Type) null) {
+			CreateProxy();
+			NewQAbstractPageSetupDialog(printer,parent);
+		}
+		[SmokeMethod("QAbstractPageSetupDialog(QPrinter*, QWidget*)")]
+		private void NewQAbstractPageSetupDialog(QPrinter printer, QWidget parent) {
+			ProxyQAbstractPageSetupDialog().NewQAbstractPageSetupDialog(printer,parent);
+		}
+		public QAbstractPageSetupDialog(QPrinter printer) : this((Type) null) {
+			CreateProxy();
+			NewQAbstractPageSetupDialog(printer);
+		}
+		[SmokeMethod("QAbstractPageSetupDialog(QPrinter*)")]
+		private void NewQAbstractPageSetupDialog(QPrinter printer) {
+			ProxyQAbstractPageSetupDialog().NewQAbstractPageSetupDialog(printer);
+		}
+		[SmokeMethod("exec()")]
 		public new virtual int Exec() {
 			return ProxyQAbstractPageSetupDialog().Exec();
 		}
+		[SmokeMethod("printer()")]
 		public QPrinter Printer() {
 			return ProxyQAbstractPageSetupDialog().Printer();
 		}
+		~QAbstractPageSetupDialog() {
+			DisposeQAbstractPageSetupDialog();
+		}
+		public new void Dispose() {
+			DisposeQAbstractPageSetupDialog();
+		}
+		private void DisposeQAbstractPageSetupDialog() {
+			ProxyQAbstractPageSetupDialog().DisposeQAbstractPageSetupDialog();
+		}
+		protected new IQAbstractPageSetupDialogSignals Emit() {
+			return (IQAbstractPageSetupDialogSignals) Q_EMIT;
+		}
+	}
+
+	public interface IQAbstractPageSetupDialogSignals : IQDialogSignals {
 	}
 }

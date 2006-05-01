@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQStackedWidgetSignals"></see> for signals emitted by QStackedWidget
+	[SmokeClass("QStackedWidget")]
 	public class QStackedWidget : QFrame, IDisposable {
  		protected QStackedWidget(Type dummy) : base((Type) null) {}
 		interface IQStackedWidgetProxy {
@@ -12,7 +13,7 @@ namespace Qt {
 			string Tr(string s);
 		}
 
-		protected void CreateQStackedWidgetProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStackedWidget), this);
 			_interceptor = (QStackedWidget) realProxy.GetTransparentProxy();
 		}
@@ -28,71 +29,97 @@ namespace Qt {
 			return (IQStackedWidgetProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQStackedWidget().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QStackedWidget(QWidget parent) : this((Type) null) {
-			CreateQStackedWidgetProxy();
+			CreateProxy();
 			NewQStackedWidget(parent);
 		}
+		[SmokeMethod("QStackedWidget(QWidget*)")]
 		private void NewQStackedWidget(QWidget parent) {
 			ProxyQStackedWidget().NewQStackedWidget(parent);
 		}
 		public QStackedWidget() : this((Type) null) {
-			CreateQStackedWidgetProxy();
+			CreateProxy();
 			NewQStackedWidget();
 		}
+		[SmokeMethod("QStackedWidget()")]
 		private void NewQStackedWidget() {
 			ProxyQStackedWidget().NewQStackedWidget();
 		}
+		[SmokeMethod("addWidget(QWidget*)")]
 		public int AddWidget(QWidget w) {
 			return ProxyQStackedWidget().AddWidget(w);
 		}
+		[SmokeMethod("insertWidget(int, QWidget*)")]
 		public int InsertWidget(int index, QWidget w) {
 			return ProxyQStackedWidget().InsertWidget(index,w);
 		}
+		[SmokeMethod("removeWidget(QWidget*)")]
 		public void RemoveWidget(QWidget w) {
 			ProxyQStackedWidget().RemoveWidget(w);
 		}
+		[SmokeMethod("currentWidget() const")]
 		public QWidget CurrentWidget() {
 			return ProxyQStackedWidget().CurrentWidget();
 		}
+		[SmokeMethod("currentIndex() const")]
 		public int CurrentIndex() {
 			return ProxyQStackedWidget().CurrentIndex();
 		}
+		[SmokeMethod("indexOf(QWidget*) const")]
 		public int IndexOf(QWidget arg1) {
 			return ProxyQStackedWidget().IndexOf(arg1);
 		}
+		[SmokeMethod("widget(int) const")]
 		public QWidget Widget(int arg1) {
 			return ProxyQStackedWidget().Widget(arg1);
 		}
+		[SmokeMethod("count() const")]
 		public int Count() {
 			return ProxyQStackedWidget().Count();
 		}
+		[SmokeMethod("setCurrentIndex(int)")]
 		public void SetCurrentIndex(int index) {
 			ProxyQStackedWidget().SetCurrentIndex(index);
 		}
+		[SmokeMethod("setCurrentWidget(QWidget*)")]
 		public void SetCurrentWidget(QWidget w) {
 			ProxyQStackedWidget().SetCurrentWidget(w);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQStackedWidget().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQStackedWidget().Tr(s);
 		}
+		[SmokeMethod("event(QEvent*)")]
+		public new bool Event(QEvent e) {
+			return ProxyQStackedWidget().Event(e);
+		}
 		~QStackedWidget() {
-			ProxyQStackedWidget().Dispose();
+			DisposeQStackedWidget();
 		}
 		public new void Dispose() {
-			ProxyQStackedWidget().Dispose();
+			DisposeQStackedWidget();
+		}
+		private void DisposeQStackedWidget() {
+			ProxyQStackedWidget().DisposeQStackedWidget();
+		}
+		protected new IQStackedWidgetSignals Emit() {
+			return (IQStackedWidgetSignals) Q_EMIT;
 		}
 	}
 
-	public interface IQStackedWidgetSignals {
+	public interface IQStackedWidgetSignals : IQFrameSignals {
+		[Q_SIGNAL("void currentChanged(int)")]
 		void CurrentChanged(int arg1);
+		[Q_SIGNAL("void widgetRemoved(int)")]
 		void WidgetRemoved(int index);
 	}
 }

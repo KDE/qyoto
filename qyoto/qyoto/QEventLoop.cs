@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QEventLoop")]
 	public class QEventLoop : QObject, IDisposable {
  		protected QEventLoop(Type dummy) : base((Type) null) {}
 		interface IQEventLoopProxy {
@@ -11,7 +12,7 @@ namespace Qt {
 			string Tr(string s);
 		}
 
-		protected void CreateQEventLoopProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QEventLoop), this);
 			_interceptor = (QEventLoop) realProxy.GetTransparentProxy();
 		}
@@ -27,72 +28,97 @@ namespace Qt {
 			return (IQEventLoopProxy) _staticInterceptor;
 		}
 
-		enum ProcessEventsFlag {
+		public enum ProcessEventsFlag {
 			AllEvents = 0x00,
 			ExcludeUserInputEvents = 0x01,
 			ExcludeSocketNotifiers = 0x02,
 			WaitForMoreEvents = 0x04,
+			X11ExcludeTimers = 0x08,
+			DeferredDeletion = 0x10,
 		}
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQEventLoop().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QEventLoop(QObject parent) : this((Type) null) {
-			CreateQEventLoopProxy();
+			CreateProxy();
 			NewQEventLoop(parent);
 		}
+		[SmokeMethod("QEventLoop(QObject*)")]
 		private void NewQEventLoop(QObject parent) {
 			ProxyQEventLoop().NewQEventLoop(parent);
 		}
 		public QEventLoop() : this((Type) null) {
-			CreateQEventLoopProxy();
+			CreateProxy();
 			NewQEventLoop();
 		}
+		[SmokeMethod("QEventLoop()")]
 		private void NewQEventLoop() {
 			ProxyQEventLoop().NewQEventLoop();
 		}
+		[SmokeMethod("processEvents(ProcessEventsFlags)")]
 		public bool ProcessEvents(int flags) {
 			return ProxyQEventLoop().ProcessEvents(flags);
 		}
+		[SmokeMethod("processEvents()")]
 		public bool ProcessEvents() {
 			return ProxyQEventLoop().ProcessEvents();
 		}
+		[SmokeMethod("processEvents(ProcessEventsFlags, int)")]
 		public void ProcessEvents(int flags, int maximumTime) {
 			ProxyQEventLoop().ProcessEvents(flags,maximumTime);
 		}
+		[SmokeMethod("exec(ProcessEventsFlags)")]
 		public int Exec(int flags) {
 			return ProxyQEventLoop().Exec(flags);
 		}
+		[SmokeMethod("exec()")]
 		public int Exec() {
 			return ProxyQEventLoop().Exec();
 		}
+		[SmokeMethod("exit(int)")]
 		public void Exit(int returnCode) {
 			ProxyQEventLoop().Exit(returnCode);
 		}
+		[SmokeMethod("exit()")]
 		public void Exit() {
 			ProxyQEventLoop().Exit();
 		}
+		[SmokeMethod("isRunning() const")]
 		public bool IsRunning() {
 			return ProxyQEventLoop().IsRunning();
 		}
+		[SmokeMethod("wakeUp()")]
 		public void WakeUp() {
 			ProxyQEventLoop().WakeUp();
 		}
+		[SmokeMethod("quit()")]
 		public void Quit() {
 			ProxyQEventLoop().Quit();
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQEventLoop().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQEventLoop().Tr(s);
 		}
 		~QEventLoop() {
-			ProxyQEventLoop().Dispose();
+			DisposeQEventLoop();
 		}
 		public new void Dispose() {
-			ProxyQEventLoop().Dispose();
+			DisposeQEventLoop();
 		}
+		private void DisposeQEventLoop() {
+			ProxyQEventLoop().DisposeQEventLoop();
+		}
+		protected new IQEventLoopSignals Emit() {
+			return (IQEventLoopSignals) Q_EMIT;
+		}
+	}
+
+	public interface IQEventLoopSignals : IQObjectSignals {
 	}
 }

@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQShortcutSignals"></see> for signals emitted by QShortcut
+	[SmokeClass("QShortcut")]
 	public class QShortcut : QObject, IDisposable {
  		protected QShortcut(Type dummy) : base((Type) null) {}
 		interface IQShortcutProxy {
@@ -12,7 +13,7 @@ namespace Qt {
 			string Tr(string s);
 		}
 
-		protected void CreateQShortcutProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QShortcut), this);
 			_interceptor = (QShortcut) realProxy.GetTransparentProxy();
 		}
@@ -28,95 +29,121 @@ namespace Qt {
 			return (IQShortcutProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQShortcut().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QShortcut(QWidget parent) : this((Type) null) {
-			CreateQShortcutProxy();
+			CreateProxy();
 			NewQShortcut(parent);
 		}
+		[SmokeMethod("QShortcut(QWidget*)")]
 		private void NewQShortcut(QWidget parent) {
 			ProxyQShortcut().NewQShortcut(parent);
 		}
-		public QShortcut(QKeySequence key, QWidget parent, string member, string ambiguousMember, int context) : this((Type) null) {
-			CreateQShortcutProxy();
+		public QShortcut(QKeySequence key, QWidget parent, string member, string ambiguousMember, Qt.ShortcutContext context) : this((Type) null) {
+			CreateProxy();
 			NewQShortcut(key,parent,member,ambiguousMember,context);
 		}
-		private void NewQShortcut(QKeySequence key, QWidget parent, string member, string ambiguousMember, int context) {
+		[SmokeMethod("QShortcut(const QKeySequence&, QWidget*, const char*, const char*, Qt::ShortcutContext)")]
+		private void NewQShortcut(QKeySequence key, QWidget parent, string member, string ambiguousMember, Qt.ShortcutContext context) {
 			ProxyQShortcut().NewQShortcut(key,parent,member,ambiguousMember,context);
 		}
 		public QShortcut(QKeySequence key, QWidget parent, string member, string ambiguousMember) : this((Type) null) {
-			CreateQShortcutProxy();
+			CreateProxy();
 			NewQShortcut(key,parent,member,ambiguousMember);
 		}
+		[SmokeMethod("QShortcut(const QKeySequence&, QWidget*, const char*, const char*)")]
 		private void NewQShortcut(QKeySequence key, QWidget parent, string member, string ambiguousMember) {
 			ProxyQShortcut().NewQShortcut(key,parent,member,ambiguousMember);
 		}
 		public QShortcut(QKeySequence key, QWidget parent, string member) : this((Type) null) {
-			CreateQShortcutProxy();
+			CreateProxy();
 			NewQShortcut(key,parent,member);
 		}
+		[SmokeMethod("QShortcut(const QKeySequence&, QWidget*, const char*)")]
 		private void NewQShortcut(QKeySequence key, QWidget parent, string member) {
 			ProxyQShortcut().NewQShortcut(key,parent,member);
 		}
 		public QShortcut(QKeySequence key, QWidget parent) : this((Type) null) {
-			CreateQShortcutProxy();
+			CreateProxy();
 			NewQShortcut(key,parent);
 		}
+		[SmokeMethod("QShortcut(const QKeySequence&, QWidget*)")]
 		private void NewQShortcut(QKeySequence key, QWidget parent) {
 			ProxyQShortcut().NewQShortcut(key,parent);
 		}
+		[SmokeMethod("setKey(const QKeySequence&)")]
 		public void SetKey(QKeySequence key) {
 			ProxyQShortcut().SetKey(key);
 		}
+		[SmokeMethod("key() const")]
 		public QKeySequence Key() {
 			return ProxyQShortcut().Key();
 		}
+		[SmokeMethod("setEnabled(bool)")]
 		public void SetEnabled(bool enable) {
 			ProxyQShortcut().SetEnabled(enable);
 		}
+		[SmokeMethod("isEnabled() const")]
 		public bool IsEnabled() {
 			return ProxyQShortcut().IsEnabled();
 		}
-		public void SetContext(int context) {
+		[SmokeMethod("setContext(Qt::ShortcutContext)")]
+		public void SetContext(Qt.ShortcutContext context) {
 			ProxyQShortcut().SetContext(context);
 		}
-		public int Context() {
+		[SmokeMethod("context()")]
+		public Qt.ShortcutContext Context() {
 			return ProxyQShortcut().Context();
 		}
+		[SmokeMethod("setWhatsThis(const QString&)")]
 		public void SetWhatsThis(string text) {
 			ProxyQShortcut().SetWhatsThis(text);
 		}
+		[SmokeMethod("whatsThis() const")]
 		public string WhatsThis() {
 			return ProxyQShortcut().WhatsThis();
 		}
+		[SmokeMethod("id() const")]
 		public int Id() {
 			return ProxyQShortcut().Id();
 		}
+		[SmokeMethod("parentWidget() const")]
 		public QWidget ParentWidget() {
 			return ProxyQShortcut().ParentWidget();
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQShortcut().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQShortcut().Tr(s);
 		}
+		[SmokeMethod("event(QEvent*)")]
 		public new bool Event(QEvent e) {
 			return ProxyQShortcut().Event(e);
 		}
 		~QShortcut() {
-			ProxyQShortcut().Dispose();
+			DisposeQShortcut();
 		}
 		public new void Dispose() {
-			ProxyQShortcut().Dispose();
+			DisposeQShortcut();
+		}
+		private void DisposeQShortcut() {
+			ProxyQShortcut().DisposeQShortcut();
+		}
+		protected new IQShortcutSignals Emit() {
+			return (IQShortcutSignals) Q_EMIT;
 		}
 	}
 
-	public interface IQShortcutSignals {
+	public interface IQShortcutSignals : IQObjectSignals {
+		[Q_SIGNAL("void activated()")]
 		void Activated();
+		[Q_SIGNAL("void activatedAmbiguously()")]
 		void ActivatedAmbiguously();
 	}
 }

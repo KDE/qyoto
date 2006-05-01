@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QStyleHintReturnMask")]
 	public class QStyleHintReturnMask : QStyleHintReturn, IDisposable {
  		protected QStyleHintReturnMask(Type dummy) : base((Type) null) {}
 		interface IQStyleHintReturnMaskProxy {
 		}
 
-		protected void CreateQStyleHintReturnMaskProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleHintReturnMask), this);
 			_interceptor = (QStyleHintReturnMask) realProxy.GetTransparentProxy();
 		}
@@ -24,27 +25,26 @@ namespace Qt {
 			return (IQStyleHintReturnMaskProxy) _staticInterceptor;
 		}
 
-		enum HintReturnType {
-			SH_Default = 0xf000,
-			SH_Mask = 0,
-		}
-
-		public const int Type = (int) HintReturnType.SH_Mask;
+		public const int Type = (int) QStyleHintReturn.HintReturnType.SH_Mask;
 
 		public const int Version = 1;
 
 		public QStyleHintReturnMask() : this((Type) null) {
-			CreateQStyleHintReturnMaskProxy();
+			CreateProxy();
 			NewQStyleHintReturnMask();
 		}
+		[SmokeMethod("QStyleHintReturnMask()")]
 		private void NewQStyleHintReturnMask() {
 			ProxyQStyleHintReturnMask().NewQStyleHintReturnMask();
 		}
 		~QStyleHintReturnMask() {
-			ProxyQStyleHintReturnMask().Dispose();
+			DisposeQStyleHintReturnMask();
 		}
 		public void Dispose() {
-			ProxyQStyleHintReturnMask().Dispose();
+			DisposeQStyleHintReturnMask();
+		}
+		private void DisposeQStyleHintReturnMask() {
+			ProxyQStyleHintReturnMask().DisposeQStyleHintReturnMask();
 		}
 	}
 }

@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QXmlReader")]
 	public class QXmlReader : MarshalByRefObject {
 		protected Object _interceptor = null;
  
@@ -12,7 +13,7 @@ namespace Qt {
 		interface IQXmlReaderProxy {
 		}
 
-		protected void CreateQXmlReaderProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlReader), this);
 			_interceptor = (QXmlReader) realProxy.GetTransparentProxy();
 		}
@@ -28,62 +29,97 @@ namespace Qt {
 			return (IQXmlReaderProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("feature(const QString&, bool*) const")]
 		public virtual bool Feature(string name, out bool ok) {
 			return ProxyQXmlReader().Feature(name,out ok);
 		}
+		[SmokeMethod("feature(const QString&) const")]
 		public virtual bool Feature(string name) {
 			return ProxyQXmlReader().Feature(name);
 		}
+		[SmokeMethod("setFeature(const QString&, bool)")]
 		public virtual void SetFeature(string name, bool value) {
 			ProxyQXmlReader().SetFeature(name,value);
 		}
+		[SmokeMethod("hasFeature(const QString&) const")]
 		public virtual bool HasFeature(string name) {
 			return ProxyQXmlReader().HasFeature(name);
 		}
 		// void* property(const QString& arg1,bool* arg2); >>>> NOT CONVERTED
 		// void* property(const QString& arg1); >>>> NOT CONVERTED
 		// void setProperty(const QString& arg1,void* arg2); >>>> NOT CONVERTED
+		[SmokeMethod("hasProperty(const QString&) const")]
 		public virtual bool HasProperty(string name) {
 			return ProxyQXmlReader().HasProperty(name);
 		}
+		[SmokeMethod("setEntityResolver(QXmlEntityResolver*)")]
 		public virtual void SetEntityResolver(IQXmlEntityResolver handler) {
 			ProxyQXmlReader().SetEntityResolver(handler);
 		}
+		[SmokeMethod("entityResolver() const")]
 		public virtual IQXmlEntityResolver EntityResolver() {
 			return ProxyQXmlReader().EntityResolver();
 		}
+		[SmokeMethod("setDTDHandler(QXmlDTDHandler*)")]
 		public virtual void SetDTDHandler(IQXmlDTDHandler handler) {
 			ProxyQXmlReader().SetDTDHandler(handler);
 		}
+		[SmokeMethod("DTDHandler() const")]
 		public virtual IQXmlDTDHandler DTDHandler() {
 			return ProxyQXmlReader().DTDHandler();
 		}
+		[SmokeMethod("setContentHandler(QXmlContentHandler*)")]
 		public virtual void SetContentHandler(IQXmlContentHandler handler) {
 			ProxyQXmlReader().SetContentHandler(handler);
 		}
+		[SmokeMethod("contentHandler() const")]
 		public virtual IQXmlContentHandler ContentHandler() {
 			return ProxyQXmlReader().ContentHandler();
 		}
+		[SmokeMethod("setErrorHandler(QXmlErrorHandler*)")]
 		public virtual void SetErrorHandler(IQXmlErrorHandler handler) {
 			ProxyQXmlReader().SetErrorHandler(handler);
 		}
+		[SmokeMethod("errorHandler() const")]
 		public virtual IQXmlErrorHandler ErrorHandler() {
 			return ProxyQXmlReader().ErrorHandler();
 		}
+		[SmokeMethod("setLexicalHandler(QXmlLexicalHandler*)")]
 		public virtual void SetLexicalHandler(IQXmlLexicalHandler handler) {
 			ProxyQXmlReader().SetLexicalHandler(handler);
 		}
+		[SmokeMethod("lexicalHandler() const")]
 		public virtual IQXmlLexicalHandler LexicalHandler() {
 			return ProxyQXmlReader().LexicalHandler();
 		}
+		[SmokeMethod("setDeclHandler(QXmlDeclHandler*)")]
 		public virtual void SetDeclHandler(IQXmlDeclHandler handler) {
 			ProxyQXmlReader().SetDeclHandler(handler);
 		}
+		[SmokeMethod("declHandler() const")]
 		public virtual IQXmlDeclHandler DeclHandler() {
 			return ProxyQXmlReader().DeclHandler();
 		}
+		[SmokeMethod("parse(const QXmlInputSource&)")]
 		public virtual bool Parse(QXmlInputSource input) {
 			return ProxyQXmlReader().Parse(input);
+		}
+		public QXmlReader() : this((Type) null) {
+			CreateProxy();
+			NewQXmlReader();
+		}
+		[SmokeMethod("QXmlReader()")]
+		private void NewQXmlReader() {
+			ProxyQXmlReader().NewQXmlReader();
+		}
+		~QXmlReader() {
+			DisposeQXmlReader();
+		}
+		public void Dispose() {
+			DisposeQXmlReader();
+		}
+		private void DisposeQXmlReader() {
+			ProxyQXmlReader().DisposeQXmlReader();
 		}
 	}
 }

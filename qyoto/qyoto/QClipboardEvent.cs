@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QClipboardEvent")]
 	public class QClipboardEvent : QEvent, IDisposable {
  		protected QClipboardEvent(Type dummy) : base((Type) null) {}
 		interface IQClipboardEventProxy {
 		}
 
-		protected void CreateQClipboardEventProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QClipboardEvent), this);
 			_interceptor = (QClipboardEvent) realProxy.GetTransparentProxy();
 		}
@@ -27,10 +28,13 @@ namespace Qt {
 		// QClipboardEvent* QClipboardEvent(QEventPrivate* arg1); >>>> NOT CONVERTED
 		// QEventPrivate* data(); >>>> NOT CONVERTED
 		~QClipboardEvent() {
-			ProxyQClipboardEvent().Dispose();
+			DisposeQClipboardEvent();
 		}
 		public new void Dispose() {
-			ProxyQClipboardEvent().Dispose();
+			DisposeQClipboardEvent();
+		}
+		private void DisposeQClipboardEvent() {
+			ProxyQClipboardEvent().DisposeQClipboardEvent();
 		}
 	}
 }

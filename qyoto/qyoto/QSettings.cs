@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Collections;
 	using System.Text;
 
+	[SmokeClass("QSettings")]
 	public class QSettings : QObject, IDisposable {
  		protected QSettings(Type dummy) : base((Type) null) {}
 		interface IQSettingsProxy {
@@ -12,9 +13,10 @@ namespace Qt {
 			string Tr(string s);
 			void SetSystemIniPath(string dir);
 			void SetUserIniPath(string dir);
+			void SetPath(QSettings.Format format, QSettings.Scope scope, string path);
 		}
 
-		protected void CreateQSettingsProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSettings), this);
 			_interceptor = (QSettings) realProxy.GetTransparentProxy();
 		}
@@ -30,204 +32,277 @@ namespace Qt {
 			return (IQSettingsProxy) _staticInterceptor;
 		}
 
-		enum E_Status {
+		public enum Status {
 			NoError = 0,
 			AccessError = 1,
 			FormatError = 2,
 		}
-		enum Format {
+		public enum Format {
 			NativeFormat = 0,
 			IniFormat = 1,
+			InvalidFormat = 16,
+			CustomFormat1 = 17,
+			CustomFormat2 = 18,
+			CustomFormat3 = 19,
+			CustomFormat4 = 20,
+			CustomFormat5 = 21,
+			CustomFormat6 = 22,
+			CustomFormat7 = 23,
+			CustomFormat8 = 24,
+			CustomFormat9 = 25,
+			CustomFormat10 = 26,
+			CustomFormat11 = 27,
+			CustomFormat12 = 28,
+			CustomFormat13 = 29,
+			CustomFormat14 = 30,
+			CustomFormat15 = 31,
+			CustomFormat16 = 32,
 		}
-		enum Scope {
+		public enum Scope {
 			UserScope = 0,
 			SystemScope = 1,
 		}
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQSettings().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QSettings(string organization, string application, QObject parent) : this((Type) null) {
-			CreateQSettingsProxy();
+			CreateProxy();
 			NewQSettings(organization,application,parent);
 		}
+		[SmokeMethod("QSettings(const QString&, const QString&, QObject*)")]
 		private void NewQSettings(string organization, string application, QObject parent) {
 			ProxyQSettings().NewQSettings(organization,application,parent);
 		}
 		public QSettings(string organization, string application) : this((Type) null) {
-			CreateQSettingsProxy();
+			CreateProxy();
 			NewQSettings(organization,application);
 		}
+		[SmokeMethod("QSettings(const QString&, const QString&)")]
 		private void NewQSettings(string organization, string application) {
 			ProxyQSettings().NewQSettings(organization,application);
 		}
 		public QSettings(string organization) : this((Type) null) {
-			CreateQSettingsProxy();
+			CreateProxy();
 			NewQSettings(organization);
 		}
+		[SmokeMethod("QSettings(const QString&)")]
 		private void NewQSettings(string organization) {
 			ProxyQSettings().NewQSettings(organization);
 		}
-		public QSettings(int scope, string organization, string application, QObject parent) : this((Type) null) {
-			CreateQSettingsProxy();
+		public QSettings(QSettings.Scope scope, string organization, string application, QObject parent) : this((Type) null) {
+			CreateProxy();
 			NewQSettings(scope,organization,application,parent);
 		}
-		private void NewQSettings(int scope, string organization, string application, QObject parent) {
+		[SmokeMethod("QSettings(QSettings::Scope, const QString&, const QString&, QObject*)")]
+		private void NewQSettings(QSettings.Scope scope, string organization, string application, QObject parent) {
 			ProxyQSettings().NewQSettings(scope,organization,application,parent);
 		}
-		public QSettings(int scope, string organization, string application) : this((Type) null) {
-			CreateQSettingsProxy();
+		public QSettings(QSettings.Scope scope, string organization, string application) : this((Type) null) {
+			CreateProxy();
 			NewQSettings(scope,organization,application);
 		}
-		private void NewQSettings(int scope, string organization, string application) {
+		[SmokeMethod("QSettings(QSettings::Scope, const QString&, const QString&)")]
+		private void NewQSettings(QSettings.Scope scope, string organization, string application) {
 			ProxyQSettings().NewQSettings(scope,organization,application);
 		}
-		public QSettings(int scope, string organization) : this((Type) null) {
-			CreateQSettingsProxy();
+		public QSettings(QSettings.Scope scope, string organization) : this((Type) null) {
+			CreateProxy();
 			NewQSettings(scope,organization);
 		}
-		private void NewQSettings(int scope, string organization) {
+		[SmokeMethod("QSettings(QSettings::Scope, const QString&)")]
+		private void NewQSettings(QSettings.Scope scope, string organization) {
 			ProxyQSettings().NewQSettings(scope,organization);
 		}
-		public QSettings(int format, int scope, string organization, string application, QObject parent) : this((Type) null) {
-			CreateQSettingsProxy();
+		public QSettings(QSettings.Format format, QSettings.Scope scope, string organization, string application, QObject parent) : this((Type) null) {
+			CreateProxy();
 			NewQSettings(format,scope,organization,application,parent);
 		}
-		private void NewQSettings(int format, int scope, string organization, string application, QObject parent) {
+		[SmokeMethod("QSettings(QSettings::Format, QSettings::Scope, const QString&, const QString&, QObject*)")]
+		private void NewQSettings(QSettings.Format format, QSettings.Scope scope, string organization, string application, QObject parent) {
 			ProxyQSettings().NewQSettings(format,scope,organization,application,parent);
 		}
-		public QSettings(int format, int scope, string organization, string application) : this((Type) null) {
-			CreateQSettingsProxy();
+		public QSettings(QSettings.Format format, QSettings.Scope scope, string organization, string application) : this((Type) null) {
+			CreateProxy();
 			NewQSettings(format,scope,organization,application);
 		}
-		private void NewQSettings(int format, int scope, string organization, string application) {
+		[SmokeMethod("QSettings(QSettings::Format, QSettings::Scope, const QString&, const QString&)")]
+		private void NewQSettings(QSettings.Format format, QSettings.Scope scope, string organization, string application) {
 			ProxyQSettings().NewQSettings(format,scope,organization,application);
 		}
-		public QSettings(int format, int scope, string organization) : this((Type) null) {
-			CreateQSettingsProxy();
+		public QSettings(QSettings.Format format, QSettings.Scope scope, string organization) : this((Type) null) {
+			CreateProxy();
 			NewQSettings(format,scope,organization);
 		}
-		private void NewQSettings(int format, int scope, string organization) {
+		[SmokeMethod("QSettings(QSettings::Format, QSettings::Scope, const QString&)")]
+		private void NewQSettings(QSettings.Format format, QSettings.Scope scope, string organization) {
 			ProxyQSettings().NewQSettings(format,scope,organization);
 		}
-		public QSettings(string fileName, int format, QObject parent) : this((Type) null) {
-			CreateQSettingsProxy();
+		public QSettings(string fileName, QSettings.Format format, QObject parent) : this((Type) null) {
+			CreateProxy();
 			NewQSettings(fileName,format,parent);
 		}
-		private void NewQSettings(string fileName, int format, QObject parent) {
+		[SmokeMethod("QSettings(const QString&, QSettings::Format, QObject*)")]
+		private void NewQSettings(string fileName, QSettings.Format format, QObject parent) {
 			ProxyQSettings().NewQSettings(fileName,format,parent);
 		}
-		public QSettings(string fileName, int format) : this((Type) null) {
-			CreateQSettingsProxy();
+		public QSettings(string fileName, QSettings.Format format) : this((Type) null) {
+			CreateProxy();
 			NewQSettings(fileName,format);
 		}
-		private void NewQSettings(string fileName, int format) {
+		[SmokeMethod("QSettings(const QString&, QSettings::Format)")]
+		private void NewQSettings(string fileName, QSettings.Format format) {
 			ProxyQSettings().NewQSettings(fileName,format);
 		}
 		public QSettings(QObject parent) : this((Type) null) {
-			CreateQSettingsProxy();
+			CreateProxy();
 			NewQSettings(parent);
 		}
+		[SmokeMethod("QSettings(QObject*)")]
 		private void NewQSettings(QObject parent) {
 			ProxyQSettings().NewQSettings(parent);
 		}
 		public QSettings() : this((Type) null) {
-			CreateQSettingsProxy();
+			CreateProxy();
 			NewQSettings();
 		}
+		[SmokeMethod("QSettings()")]
 		private void NewQSettings() {
 			ProxyQSettings().NewQSettings();
 		}
+		[SmokeMethod("clear()")]
 		public void Clear() {
 			ProxyQSettings().Clear();
 		}
+		[SmokeMethod("sync()")]
 		public void Sync() {
 			ProxyQSettings().Sync();
 		}
-		public int Status() {
-			return ProxyQSettings().Status();
+		[SmokeMethod("status() const")]
+		public QSettings.Status status() {
+			return ProxyQSettings().status();
 		}
+		[SmokeMethod("beginGroup(const QString&)")]
 		public void BeginGroup(string prefix) {
 			ProxyQSettings().BeginGroup(prefix);
 		}
+		[SmokeMethod("endGroup()")]
 		public void EndGroup() {
 			ProxyQSettings().EndGroup();
 		}
+		[SmokeMethod("group() const")]
 		public string Group() {
 			return ProxyQSettings().Group();
 		}
+		[SmokeMethod("beginReadArray(const QString&)")]
 		public int BeginReadArray(string prefix) {
 			return ProxyQSettings().BeginReadArray(prefix);
 		}
+		[SmokeMethod("beginWriteArray(const QString&, int)")]
 		public void BeginWriteArray(string prefix, int size) {
 			ProxyQSettings().BeginWriteArray(prefix,size);
 		}
+		[SmokeMethod("beginWriteArray(const QString&)")]
 		public void BeginWriteArray(string prefix) {
 			ProxyQSettings().BeginWriteArray(prefix);
 		}
+		[SmokeMethod("endArray()")]
 		public void EndArray() {
 			ProxyQSettings().EndArray();
 		}
+		[SmokeMethod("setArrayIndex(int)")]
 		public void SetArrayIndex(int i) {
 			ProxyQSettings().SetArrayIndex(i);
 		}
+		[SmokeMethod("allKeys() const")]
 		public ArrayList AllKeys() {
 			return ProxyQSettings().AllKeys();
 		}
+		[SmokeMethod("childKeys() const")]
 		public ArrayList ChildKeys() {
 			return ProxyQSettings().ChildKeys();
 		}
+		[SmokeMethod("childGroups() const")]
 		public ArrayList ChildGroups() {
 			return ProxyQSettings().ChildGroups();
 		}
+		[SmokeMethod("isWritable() const")]
 		public bool IsWritable() {
 			return ProxyQSettings().IsWritable();
 		}
+		[SmokeMethod("setValue(const QString&, const QVariant&)")]
 		public void SetValue(string key, QVariant value) {
 			ProxyQSettings().SetValue(key,value);
 		}
+		[SmokeMethod("value(const QString&, const QVariant&) const")]
 		public QVariant Value(string key, QVariant defaultValue) {
 			return ProxyQSettings().Value(key,defaultValue);
 		}
+		[SmokeMethod("value(const QString&) const")]
 		public QVariant Value(string key) {
 			return ProxyQSettings().Value(key);
 		}
+		[SmokeMethod("remove(const QString&)")]
 		public void Remove(string key) {
 			ProxyQSettings().Remove(key);
 		}
+		[SmokeMethod("contains(const QString&) const")]
 		public bool Contains(string key) {
 			return ProxyQSettings().Contains(key);
 		}
+		[SmokeMethod("setFallbacksEnabled(bool)")]
 		public void SetFallbacksEnabled(bool b) {
 			ProxyQSettings().SetFallbacksEnabled(b);
 		}
+		[SmokeMethod("fallbacksEnabled() const")]
 		public bool FallbacksEnabled() {
 			return ProxyQSettings().FallbacksEnabled();
 		}
+		[SmokeMethod("fileName() const")]
 		public string FileName() {
 			return ProxyQSettings().FileName();
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQSettings().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQSettings().Tr(s);
 		}
+		[SmokeMethod("setSystemIniPath(const QString&)")]
 		public static void SetSystemIniPath(string dir) {
 			StaticQSettings().SetSystemIniPath(dir);
 		}
+		[SmokeMethod("setUserIniPath(const QString&)")]
 		public static void SetUserIniPath(string dir) {
 			StaticQSettings().SetUserIniPath(dir);
 		}
+		[SmokeMethod("setPath(QSettings::Format, QSettings::Scope, const QString&)")]
+		public static void SetPath(QSettings.Format format, QSettings.Scope scope, string path) {
+			StaticQSettings().SetPath(format,scope,path);
+		}
+		// QSettings::Format registerFormat(const QString& arg1,ReadFunc arg2,WriteFunc arg3,Qt::CaseSensitivity arg4); >>>> NOT CONVERTED
+		// QSettings::Format registerFormat(const QString& arg1,ReadFunc arg2,WriteFunc arg3); >>>> NOT CONVERTED
+		[SmokeMethod("event(QEvent*)")]
 		public new bool Event(QEvent arg1) {
 			return ProxyQSettings().Event(arg1);
 		}
 		~QSettings() {
-			ProxyQSettings().Dispose();
+			DisposeQSettings();
 		}
 		public new void Dispose() {
-			ProxyQSettings().Dispose();
+			DisposeQSettings();
 		}
+		private void DisposeQSettings() {
+			ProxyQSettings().DisposeQSettings();
+		}
+		protected new IQSettingsSignals Emit() {
+			return (IQSettingsSignals) Q_EMIT;
+		}
+	}
+
+	public interface IQSettingsSignals : IQObjectSignals {
 	}
 }

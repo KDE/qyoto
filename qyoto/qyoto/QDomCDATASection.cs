@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QDomCDATASection")]
 	public class QDomCDATASection : QDomText, IDisposable {
  		protected QDomCDATASection(Type dummy) : base((Type) null) {}
 		interface IQDomCDATASectionProxy {
 		}
 
-		protected void CreateQDomCDATASectionProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomCDATASection), this);
 			_interceptor = (QDomCDATASection) realProxy.GetTransparentProxy();
 		}
@@ -25,27 +26,33 @@ namespace Qt {
 		}
 
 		public QDomCDATASection() : this((Type) null) {
-			CreateQDomCDATASectionProxy();
+			CreateProxy();
 			NewQDomCDATASection();
 		}
+		[SmokeMethod("QDomCDATASection()")]
 		private void NewQDomCDATASection() {
 			ProxyQDomCDATASection().NewQDomCDATASection();
 		}
 		public QDomCDATASection(QDomCDATASection x) : this((Type) null) {
-			CreateQDomCDATASectionProxy();
+			CreateProxy();
 			NewQDomCDATASection(x);
 		}
+		[SmokeMethod("QDomCDATASection(const QDomCDATASection&)")]
 		private void NewQDomCDATASection(QDomCDATASection x) {
 			ProxyQDomCDATASection().NewQDomCDATASection(x);
 		}
-		public new int NodeType() {
+		[SmokeMethod("nodeType() const")]
+		public new QDomNode.NodeType NodeType() {
 			return ProxyQDomCDATASection().NodeType();
 		}
 		~QDomCDATASection() {
-			ProxyQDomCDATASection().Dispose();
+			DisposeQDomCDATASection();
 		}
 		public void Dispose() {
-			ProxyQDomCDATASection().Dispose();
+			DisposeQDomCDATASection();
+		}
+		private void DisposeQDomCDATASection() {
+			ProxyQDomCDATASection().DisposeQDomCDATASection();
 		}
 	}
 }

@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QDateTime")]
 	public class QDateTime : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
@@ -16,12 +17,12 @@ namespace Qt {
 			bool op_gt(QDateTime lhs, DateTime other);
 			bool op_gte(QDateTime lhs, DateTime other);
 			DateTime CurrentDateTime();
-			DateTime FromString(string s, int f);
+			DateTime FromString(string s, Qt.DateFormat f);
 			DateTime FromString(string s);
 			DateTime FromString(string s, string format);
 		}
 
-		protected void CreateQDateTimeProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDateTime), this);
 			_interceptor = (QDateTime) realProxy.GetTransparentProxy();
 		}
@@ -38,99 +39,127 @@ namespace Qt {
 		}
 
 		public QDateTime() : this((Type) null) {
-			CreateQDateTimeProxy();
+			CreateProxy();
 			NewQDateTime();
 		}
+		[SmokeMethod("QDateTime()")]
 		private void NewQDateTime() {
 			ProxyQDateTime().NewQDateTime();
 		}
 		public QDateTime(DateTime arg1) : this((Type) null) {
-			CreateQDateTimeProxy();
+			CreateProxy();
 			NewQDateTime(arg1);
 		}
+		[SmokeMethod("QDateTime(const QDate&)")]
 		private void NewQDateTime(DateTime arg1) {
 			ProxyQDateTime().NewQDateTime(arg1);
 		}
-		public QDateTime(DateTime arg1, DateTime arg2, int spec) : this((Type) null) {
-			CreateQDateTimeProxy();
+		public QDateTime(DateTime arg1, DateTime arg2, Qt.TimeSpec spec) : this((Type) null) {
+			CreateProxy();
 			NewQDateTime(arg1,arg2,spec);
 		}
-		private void NewQDateTime(DateTime arg1, DateTime arg2, int spec) {
+		[SmokeMethod("QDateTime(const QDate&, const QTime&, Qt::TimeSpec)")]
+		private void NewQDateTime(DateTime arg1, DateTime arg2, Qt.TimeSpec spec) {
 			ProxyQDateTime().NewQDateTime(arg1,arg2,spec);
 		}
 		public QDateTime(DateTime arg1, DateTime arg2) : this((Type) null) {
-			CreateQDateTimeProxy();
+			CreateProxy();
 			NewQDateTime(arg1,arg2);
 		}
+		[SmokeMethod("QDateTime(const QDate&, const QTime&)")]
 		private void NewQDateTime(DateTime arg1, DateTime arg2) {
 			ProxyQDateTime().NewQDateTime(arg1,arg2);
 		}
+		[SmokeMethod("isNull() const")]
 		public bool IsNull() {
 			return ProxyQDateTime().IsNull();
 		}
+		[SmokeMethod("isValid() const")]
 		public bool IsValid() {
 			return ProxyQDateTime().IsValid();
 		}
+		[SmokeMethod("date() const")]
 		public DateTime Date() {
 			return ProxyQDateTime().Date();
 		}
+		[SmokeMethod("time() const")]
 		public DateTime Time() {
 			return ProxyQDateTime().Time();
 		}
-		public int TimeSpec() {
+		[SmokeMethod("timeSpec() const")]
+		public Qt.TimeSpec TimeSpec() {
 			return ProxyQDateTime().TimeSpec();
 		}
+		[SmokeMethod("toTime_t() const")]
 		public uint ToTime_t() {
 			return ProxyQDateTime().ToTime_t();
 		}
+		[SmokeMethod("setDate(const QDate&)")]
 		public void SetDate(DateTime date) {
 			ProxyQDateTime().SetDate(date);
 		}
+		[SmokeMethod("setTime(const QTime&)")]
 		public void SetTime(DateTime time) {
 			ProxyQDateTime().SetTime(time);
 		}
-		public void SetTimeSpec(int spec) {
+		[SmokeMethod("setTimeSpec(Qt::TimeSpec)")]
+		public void SetTimeSpec(Qt.TimeSpec spec) {
 			ProxyQDateTime().SetTimeSpec(spec);
 		}
+		[SmokeMethod("setTime_t(uint)")]
 		public void SetTime_t(uint secsSince1Jan1970UTC) {
 			ProxyQDateTime().SetTime_t(secsSince1Jan1970UTC);
 		}
-		public new string ToString(int f) {
+		[SmokeMethod("toString(Qt::DateFormat) const")]
+		public new string ToString(Qt.DateFormat f) {
 			return ProxyQDateTime().ToString(f);
 		}
+		[SmokeMethod("toString() const")]
 		public new string ToString() {
 			return ProxyQDateTime().ToString();
 		}
+		[SmokeMethod("toString(const QString&) const")]
 		public new string ToString(string format) {
 			return ProxyQDateTime().ToString(format);
 		}
+		[SmokeMethod("addDays(int) const")]
 		public DateTime AddDays(int days) {
 			return ProxyQDateTime().AddDays(days);
 		}
+		[SmokeMethod("addMonths(int) const")]
 		public DateTime AddMonths(int months) {
 			return ProxyQDateTime().AddMonths(months);
 		}
+		[SmokeMethod("addYears(int) const")]
 		public DateTime AddYears(int years) {
 			return ProxyQDateTime().AddYears(years);
 		}
+		[SmokeMethod("addSecs(int) const")]
 		public DateTime AddSecs(int secs) {
 			return ProxyQDateTime().AddSecs(secs);
 		}
-		public DateTime ToTimeSpec(int spec) {
+		// QDateTime addMSecs(qint64 arg1); >>>> NOT CONVERTED
+		[SmokeMethod("toTimeSpec(Qt::TimeSpec) const")]
+		public DateTime ToTimeSpec(Qt.TimeSpec spec) {
 			return ProxyQDateTime().ToTimeSpec(spec);
 		}
+		[SmokeMethod("toLocalTime() const")]
 		public DateTime ToLocalTime() {
 			return ProxyQDateTime().ToLocalTime();
 		}
+		[SmokeMethod("toUTC() const")]
 		public DateTime ToUTC() {
 			return ProxyQDateTime().ToUTC();
 		}
+		[SmokeMethod("daysTo(const QDateTime&) const")]
 		public int DaysTo(DateTime arg1) {
 			return ProxyQDateTime().DaysTo(arg1);
 		}
+		[SmokeMethod("secsTo(const QDateTime&) const")]
 		public int SecsTo(DateTime arg1) {
 			return ProxyQDateTime().SecsTo(arg1);
 		}
+		[SmokeMethod("operator==(const QDateTime&) const")]
 		public static bool operator==(QDateTime lhs, DateTime other) {
 			return StaticQDateTime().op_equals(lhs,other);
 		}
@@ -144,35 +173,46 @@ namespace Qt {
 		public override int GetHashCode() {
 			return ProxyQDateTime().GetHashCode();
 		}
+		[SmokeMethod("operator<(const QDateTime&) const")]
 		public static bool operator<(QDateTime lhs, DateTime other) {
 			return StaticQDateTime().op_lt(lhs,other);
 		}
+		[SmokeMethod("operator<=(const QDateTime&) const")]
 		public static bool operator<=(QDateTime lhs, DateTime other) {
 			return StaticQDateTime().op_lte(lhs,other);
 		}
+		[SmokeMethod("operator>(const QDateTime&) const")]
 		public static bool operator>(QDateTime lhs, DateTime other) {
 			return StaticQDateTime().op_gt(lhs,other);
 		}
+		[SmokeMethod("operator>=(const QDateTime&) const")]
 		public static bool operator>=(QDateTime lhs, DateTime other) {
 			return StaticQDateTime().op_gte(lhs,other);
 		}
+		[SmokeMethod("currentDateTime()")]
 		public static DateTime CurrentDateTime() {
 			return StaticQDateTime().CurrentDateTime();
 		}
-		public static DateTime FromString(string s, int f) {
+		[SmokeMethod("fromString(const QString&, Qt::DateFormat)")]
+		public static DateTime FromString(string s, Qt.DateFormat f) {
 			return StaticQDateTime().FromString(s,f);
 		}
+		[SmokeMethod("fromString(const QString&)")]
 		public static DateTime FromString(string s) {
 			return StaticQDateTime().FromString(s);
 		}
+		[SmokeMethod("fromString(const QString&, const QString&)")]
 		public static DateTime FromString(string s, string format) {
 			return StaticQDateTime().FromString(s,format);
 		}
 		~QDateTime() {
-			ProxyQDateTime().Dispose();
+			DisposeQDateTime();
 		}
 		public void Dispose() {
-			ProxyQDateTime().Dispose();
+			DisposeQDateTime();
+		}
+		private void DisposeQDateTime() {
+			ProxyQDateTime().DisposeQDateTime();
 		}
 	}
 }

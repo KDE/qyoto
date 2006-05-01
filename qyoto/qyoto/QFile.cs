@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QFile")]
 	public class QFile : QIODevice, IDisposable {
  		protected QFile(Type dummy) : base((Type) null) {}
 		interface IQFileProxy {
@@ -22,7 +23,7 @@ namespace Qt {
 			bool SetPermissions(string filename, int permissionSpec);
 		}
 
-		protected void CreateQFileProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFile), this);
 			_interceptor = (QFile) realProxy.GetTransparentProxy();
 		}
@@ -38,7 +39,7 @@ namespace Qt {
 			return (IQFileProxy) _staticInterceptor;
 		}
 
-		enum FileError {
+		public enum FileError {
 			NoError = 0,
 			ReadError = 1,
 			WriteError = 2,
@@ -55,7 +56,7 @@ namespace Qt {
 			PermissionsError = 13,
 			CopyError = 14,
 		}
-		enum Permission {
+		public enum Permission {
 			ReadOwner = 0x4000,
 			WriteOwner = 0x2000,
 			ExeOwner = 0x1000,
@@ -69,138 +70,170 @@ namespace Qt {
 			WriteOther = 0x0002,
 			ExeOther = 0x0001,
 		}
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQFile().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QFile() : this((Type) null) {
-			CreateQFileProxy();
+			CreateProxy();
 			NewQFile();
 		}
+		[SmokeMethod("QFile()")]
 		private void NewQFile() {
 			ProxyQFile().NewQFile();
 		}
 		public QFile(string name) : this((Type) null) {
-			CreateQFileProxy();
+			CreateProxy();
 			NewQFile(name);
 		}
+		[SmokeMethod("QFile(const QString&)")]
 		private void NewQFile(string name) {
 			ProxyQFile().NewQFile(name);
 		}
 		public QFile(QObject parent) : this((Type) null) {
-			CreateQFileProxy();
+			CreateProxy();
 			NewQFile(parent);
 		}
+		[SmokeMethod("QFile(QObject*)")]
 		private void NewQFile(QObject parent) {
 			ProxyQFile().NewQFile(parent);
 		}
 		public QFile(string name, QObject parent) : this((Type) null) {
-			CreateQFileProxy();
+			CreateProxy();
 			NewQFile(name,parent);
 		}
+		[SmokeMethod("QFile(const QString&, QObject*)")]
 		private void NewQFile(string name, QObject parent) {
 			ProxyQFile().NewQFile(name,parent);
 		}
-		public int Error() {
+		[SmokeMethod("error() const")]
+		public QFile.FileError Error() {
 			return ProxyQFile().Error();
 		}
+		[SmokeMethod("unsetError()")]
 		public void UnsetError() {
 			ProxyQFile().UnsetError();
 		}
+		[SmokeMethod("fileName() const")]
 		public string FileName() {
 			return ProxyQFile().FileName();
 		}
+		[SmokeMethod("setFileName(const QString&)")]
 		public void SetFileName(string name) {
 			ProxyQFile().SetFileName(name);
 		}
+		[SmokeMethod("exists() const")]
 		public bool Exists() {
 			return ProxyQFile().Exists();
 		}
+		[SmokeMethod("readLink() const")]
 		public string ReadLink() {
 			return ProxyQFile().ReadLink();
 		}
+		[SmokeMethod("remove()")]
 		public bool Remove() {
 			return ProxyQFile().Remove();
 		}
+		[SmokeMethod("rename(const QString&)")]
 		public bool Rename(string newName) {
 			return ProxyQFile().Rename(newName);
 		}
+		[SmokeMethod("link(const QString&)")]
 		public bool Link(string newName) {
 			return ProxyQFile().Link(newName);
 		}
+		[SmokeMethod("copy(const QString&)")]
 		public bool Copy(string newName) {
 			return ProxyQFile().Copy(newName);
 		}
+		[SmokeMethod("isSequential() const")]
 		public new bool IsSequential() {
 			return ProxyQFile().IsSequential();
 		}
+		[SmokeMethod("open(OpenMode)")]
 		public new bool Open(int flags) {
 			return ProxyQFile().Open(flags);
 		}
+		[SmokeMethod("open(int, OpenMode)")]
 		public new bool Open(int fd, int flags) {
 			return ProxyQFile().Open(fd,flags);
 		}
+		[SmokeMethod("close()")]
 		public new virtual void Close() {
 			ProxyQFile().Close();
 		}
 		// qint64 size(); >>>> NOT CONVERTED
 		// qint64 pos(); >>>> NOT CONVERTED
 		// bool seek(qint64 arg1); >>>> NOT CONVERTED
+		[SmokeMethod("atEnd() const")]
 		public new bool AtEnd() {
 			return ProxyQFile().AtEnd();
 		}
+		[SmokeMethod("flush()")]
 		public bool Flush() {
 			return ProxyQFile().Flush();
 		}
 		// bool resize(qint64 arg1); >>>> NOT CONVERTED
+		[SmokeMethod("permissions() const")]
 		public int Permissions() {
 			return ProxyQFile().Permissions();
 		}
+		[SmokeMethod("setPermissions(Permissions)")]
 		public bool SetPermissions(int permissionSpec) {
 			return ProxyQFile().SetPermissions(permissionSpec);
 		}
-		public int Handle() {
-			return ProxyQFile().Handle();
-		}
-		// QFileEngine* fileEngine(); >>>> NOT CONVERTED
+		// QAbstractFileEngine* fileEngine(); >>>> NOT CONVERTED
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQFile().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQFile().Tr(s);
 		}
+		[SmokeMethod("encodeName(const QString&)")]
 		public static QByteArray EncodeName(string fileName) {
 			return StaticQFile().EncodeName(fileName);
 		}
+		[SmokeMethod("decodeName(const QByteArray&)")]
 		public static string DecodeName(QByteArray localFileName) {
 			return StaticQFile().DecodeName(localFileName);
 		}
+		[SmokeMethod("decodeName(const char*)")]
 		public static string DecodeName(string localFileName) {
 			return StaticQFile().DecodeName(localFileName);
 		}
+		[SmokeMethod("exists(const QString&)")]
 		public static bool Exists(string fileName) {
 			return StaticQFile().Exists(fileName);
 		}
+		[SmokeMethod("readLink(const QString&)")]
 		public static string ReadLink(string fileName) {
 			return StaticQFile().ReadLink(fileName);
 		}
+		[SmokeMethod("remove(const QString&)")]
 		public static bool Remove(string fileName) {
 			return StaticQFile().Remove(fileName);
 		}
+		[SmokeMethod("rename(const QString&, const QString&)")]
 		public static bool Rename(string oldName, string newName) {
 			return StaticQFile().Rename(oldName,newName);
 		}
+		[SmokeMethod("link(const QString&, const QString&)")]
 		public static bool Link(string oldname, string newName) {
 			return StaticQFile().Link(oldname,newName);
 		}
+		[SmokeMethod("copy(const QString&, const QString&)")]
 		public static bool Copy(string fileName, string newName) {
 			return StaticQFile().Copy(fileName,newName);
 		}
 		// bool resize(const QString& arg1,qint64 arg2); >>>> NOT CONVERTED
+		[SmokeMethod("permissions(const QString&)")]
 		public static int Permissions(string filename) {
 			return StaticQFile().Permissions(filename);
 		}
+		[SmokeMethod("setPermissions(const QString&, Permissions)")]
 		public static bool SetPermissions(string filename, int permissionSpec) {
 			return StaticQFile().SetPermissions(filename,permissionSpec);
 		}
@@ -208,10 +241,19 @@ namespace Qt {
 		// qint64 writeData(const char* arg1,qint64 arg2); >>>> NOT CONVERTED
 		// qint64 readLineData(char* arg1,qint64 arg2); >>>> NOT CONVERTED
 		~QFile() {
-			ProxyQFile().Dispose();
+			DisposeQFile();
 		}
 		public void Dispose() {
-			ProxyQFile().Dispose();
+			DisposeQFile();
 		}
+		private void DisposeQFile() {
+			ProxyQFile().DisposeQFile();
+		}
+		protected new IQFileSignals Emit() {
+			return (IQFileSignals) Q_EMIT;
+		}
+	}
+
+	public interface IQFileSignals : IQIODeviceSignals {
 	}
 }

@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QModelIndex")]
 	public class QModelIndex : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
@@ -10,9 +11,10 @@ namespace Qt {
  		protected QModelIndex(Type dummy) {}
 		interface IQModelIndexProxy {
 			bool op_equals(QModelIndex lhs, QModelIndex other);
+			bool op_lt(QModelIndex lhs, QModelIndex other);
 		}
 
-		protected void CreateQModelIndexProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QModelIndex), this);
 			_interceptor = (QModelIndex) realProxy.GetTransparentProxy();
 		}
@@ -29,42 +31,60 @@ namespace Qt {
 		}
 
 		public QModelIndex() : this((Type) null) {
-			CreateQModelIndexProxy();
+			CreateProxy();
 			NewQModelIndex();
 		}
+		[SmokeMethod("QModelIndex()")]
 		private void NewQModelIndex() {
 			ProxyQModelIndex().NewQModelIndex();
 		}
 		public QModelIndex(QModelIndex other) : this((Type) null) {
-			CreateQModelIndexProxy();
+			CreateProxy();
 			NewQModelIndex(other);
 		}
+		[SmokeMethod("QModelIndex(const QModelIndex&)")]
 		private void NewQModelIndex(QModelIndex other) {
 			ProxyQModelIndex().NewQModelIndex(other);
 		}
+		[SmokeMethod("row() const")]
 		public int Row() {
 			return ProxyQModelIndex().Row();
 		}
+		[SmokeMethod("column() const")]
 		public int Column() {
 			return ProxyQModelIndex().Column();
 		}
 		// void* internalPointer(); >>>> NOT CONVERTED
 		// qint64 internalId(); >>>> NOT CONVERTED
+		[SmokeMethod("parent() const")]
 		public QModelIndex Parent() {
 			return ProxyQModelIndex().Parent();
 		}
+		[SmokeMethod("sibling(int, int) const")]
 		public QModelIndex Sibling(int row, int column) {
 			return ProxyQModelIndex().Sibling(row,column);
 		}
+		[SmokeMethod("child(int, int) const")]
 		public QModelIndex Child(int row, int column) {
 			return ProxyQModelIndex().Child(row,column);
 		}
+		[SmokeMethod("data(int) const")]
+		public QVariant Data(int role) {
+			return ProxyQModelIndex().Data(role);
+		}
+		[SmokeMethod("data() const")]
+		public QVariant Data() {
+			return ProxyQModelIndex().Data();
+		}
+		[SmokeMethod("model() const")]
 		public QAbstractItemModel Model() {
 			return ProxyQModelIndex().Model();
 		}
+		[SmokeMethod("isValid() const")]
 		public bool IsValid() {
 			return ProxyQModelIndex().IsValid();
 		}
+		[SmokeMethod("operator==(const QModelIndex&) const")]
 		public static bool operator==(QModelIndex lhs, QModelIndex other) {
 			return StaticQModelIndex().op_equals(lhs,other);
 		}
@@ -78,11 +98,22 @@ namespace Qt {
 		public override int GetHashCode() {
 			return ProxyQModelIndex().GetHashCode();
 		}
+		[SmokeMethod("operator<(const QModelIndex&) const")]
+		public static bool operator<(QModelIndex lhs, QModelIndex other) {
+			return StaticQModelIndex().op_lt(lhs,other);
+		}
+		public static bool operator>(QModelIndex lhs, QModelIndex other) {
+			return !StaticQModelIndex().op_lt(lhs,other)
+						&& !StaticQModelIndex().op_equals(lhs,other);
+		}
 		~QModelIndex() {
-			ProxyQModelIndex().Dispose();
+			DisposeQModelIndex();
 		}
 		public void Dispose() {
-			ProxyQModelIndex().Dispose();
+			DisposeQModelIndex();
+		}
+		private void DisposeQModelIndex() {
+			ProxyQModelIndex().DisposeQModelIndex();
 		}
 	}
 }

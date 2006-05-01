@@ -4,12 +4,13 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QDomDocumentType")]
 	public class QDomDocumentType : QDomNode, IDisposable {
  		protected QDomDocumentType(Type dummy) : base((Type) null) {}
 		interface IQDomDocumentTypeProxy {
 		}
 
-		protected void CreateQDomDocumentTypeProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomDocumentType), this);
 			_interceptor = (QDomDocumentType) realProxy.GetTransparentProxy();
 		}
@@ -26,45 +27,57 @@ namespace Qt {
 		}
 
 		public QDomDocumentType() : this((Type) null) {
-			CreateQDomDocumentTypeProxy();
+			CreateProxy();
 			NewQDomDocumentType();
 		}
+		[SmokeMethod("QDomDocumentType()")]
 		private void NewQDomDocumentType() {
 			ProxyQDomDocumentType().NewQDomDocumentType();
 		}
 		public QDomDocumentType(QDomDocumentType x) : this((Type) null) {
-			CreateQDomDocumentTypeProxy();
+			CreateProxy();
 			NewQDomDocumentType(x);
 		}
+		[SmokeMethod("QDomDocumentType(const QDomDocumentType&)")]
 		private void NewQDomDocumentType(QDomDocumentType x) {
 			ProxyQDomDocumentType().NewQDomDocumentType(x);
 		}
+		[SmokeMethod("name() const")]
 		public string Name() {
 			return ProxyQDomDocumentType().Name();
 		}
+		[SmokeMethod("entities() const")]
 		public QDomNamedNodeMap Entities() {
 			return ProxyQDomDocumentType().Entities();
 		}
+		[SmokeMethod("notations() const")]
 		public QDomNamedNodeMap Notations() {
 			return ProxyQDomDocumentType().Notations();
 		}
+		[SmokeMethod("publicId() const")]
 		public string PublicId() {
 			return ProxyQDomDocumentType().PublicId();
 		}
+		[SmokeMethod("systemId() const")]
 		public string SystemId() {
 			return ProxyQDomDocumentType().SystemId();
 		}
+		[SmokeMethod("internalSubset() const")]
 		public string InternalSubset() {
 			return ProxyQDomDocumentType().InternalSubset();
 		}
-		public new int NodeType() {
+		[SmokeMethod("nodeType() const")]
+		public new QDomNode.NodeType NodeType() {
 			return ProxyQDomDocumentType().NodeType();
 		}
 		~QDomDocumentType() {
-			ProxyQDomDocumentType().Dispose();
+			DisposeQDomDocumentType();
 		}
 		public void Dispose() {
-			ProxyQDomDocumentType().Dispose();
+			DisposeQDomDocumentType();
+		}
+		private void DisposeQDomDocumentType() {
+			ProxyQDomDocumentType().DisposeQDomDocumentType();
 		}
 	}
 }

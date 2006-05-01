@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QStyleOptionTitleBar")]
 	public class QStyleOptionTitleBar : QStyleOptionComplex, IDisposable {
  		protected QStyleOptionTitleBar(Type dummy) : base((Type) null) {}
 		interface IQStyleOptionTitleBarProxy {
 		}
 
-		protected void CreateQStyleOptionTitleBarProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionTitleBar), this);
 			_interceptor = (QStyleOptionTitleBar) realProxy.GetTransparentProxy();
 		}
@@ -24,36 +25,42 @@ namespace Qt {
 			return (IQStyleOptionTitleBarProxy) _staticInterceptor;
 		}
 
-		public const int Type = (int) OptionType.SO_TitleBar;
+		public const int Type = (int) QStyleOption.OptionType.SO_TitleBar;
 
 		public const int Version = 1;
 
 		public QStyleOptionTitleBar() : this((Type) null) {
-			CreateQStyleOptionTitleBarProxy();
+			CreateProxy();
 			NewQStyleOptionTitleBar();
 		}
+		[SmokeMethod("QStyleOptionTitleBar()")]
 		private void NewQStyleOptionTitleBar() {
 			ProxyQStyleOptionTitleBar().NewQStyleOptionTitleBar();
 		}
 		public QStyleOptionTitleBar(QStyleOptionTitleBar other) : this((Type) null) {
-			CreateQStyleOptionTitleBarProxy();
+			CreateProxy();
 			NewQStyleOptionTitleBar(other);
 		}
+		[SmokeMethod("QStyleOptionTitleBar(const QStyleOptionTitleBar&)")]
 		private void NewQStyleOptionTitleBar(QStyleOptionTitleBar other) {
 			ProxyQStyleOptionTitleBar().NewQStyleOptionTitleBar(other);
 		}
 		public QStyleOptionTitleBar(int version) : this((Type) null) {
-			CreateQStyleOptionTitleBarProxy();
+			CreateProxy();
 			NewQStyleOptionTitleBar(version);
 		}
+		[SmokeMethod("QStyleOptionTitleBar(int)")]
 		private void NewQStyleOptionTitleBar(int version) {
 			ProxyQStyleOptionTitleBar().NewQStyleOptionTitleBar(version);
 		}
 		~QStyleOptionTitleBar() {
-			ProxyQStyleOptionTitleBar().Dispose();
+			DisposeQStyleOptionTitleBar();
 		}
 		public void Dispose() {
-			ProxyQStyleOptionTitleBar().Dispose();
+			DisposeQStyleOptionTitleBar();
+		}
+		private void DisposeQStyleOptionTitleBar() {
+			ProxyQStyleOptionTitleBar().DisposeQStyleOptionTitleBar();
 		}
 	}
 }

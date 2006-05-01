@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQTextDocumentSignals"></see> for signals emitted by QTextDocument
+	[SmokeClass("QTextDocument")]
 	public class QTextDocument : QObject, IDisposable {
  		protected QTextDocument(Type dummy) : base((Type) null) {}
 		interface IQTextDocumentProxy {
@@ -12,7 +13,7 @@ namespace Qt {
 			string Tr(string s);
 		}
 
-		protected void CreateQTextDocumentProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextDocument), this);
 			_interceptor = (QTextDocument) realProxy.GetTransparentProxy();
 		}
@@ -28,23 +29,23 @@ namespace Qt {
 			return (IQTextDocumentProxy) _staticInterceptor;
 		}
 
-		enum E_MetaInformation {
+		public enum MetaInformation {
 			DocumentTitle = 0,
 		}
-		enum FindFlag {
+		public enum FindFlag {
 			FindBackward = 0x00001,
 			FindCaseSensitively = 0x00002,
 			FindWholeWords = 0x00004,
 		}
-		enum ResourceType {
+		public enum ResourceType {
 			HtmlResource = 1,
 			ImageResource = 2,
 			UserResource = 100,
 		}
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQTextDocument().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		// QTextDocument* QTextDocument(QObject* arg1); >>>> NOT CONVERTED
 		// QTextDocument* QTextDocument(); >>>> NOT CONVERTED
@@ -52,44 +53,57 @@ namespace Qt {
 		// QTextDocument* QTextDocument(const QString& arg1); >>>> NOT CONVERTED
 		// QTextDocument* clone(QObject* arg1); >>>> NOT CONVERTED
 		// QTextDocument* clone(); >>>> NOT CONVERTED
+		[SmokeMethod("isEmpty() const")]
 		public bool IsEmpty() {
 			return ProxyQTextDocument().IsEmpty();
 		}
+		[SmokeMethod("clear()")]
 		public virtual void Clear() {
 			ProxyQTextDocument().Clear();
 		}
+		[SmokeMethod("setUndoRedoEnabled(bool)")]
 		public void SetUndoRedoEnabled(bool enable) {
 			ProxyQTextDocument().SetUndoRedoEnabled(enable);
 		}
+		[SmokeMethod("isUndoRedoEnabled() const")]
 		public bool IsUndoRedoEnabled() {
 			return ProxyQTextDocument().IsUndoRedoEnabled();
 		}
+		[SmokeMethod("isUndoAvailable() const")]
 		public bool IsUndoAvailable() {
 			return ProxyQTextDocument().IsUndoAvailable();
 		}
+		[SmokeMethod("isRedoAvailable() const")]
 		public bool IsRedoAvailable() {
 			return ProxyQTextDocument().IsRedoAvailable();
 		}
+		[SmokeMethod("setDocumentLayout(QAbstractTextDocumentLayout*)")]
 		public void SetDocumentLayout(QAbstractTextDocumentLayout layout) {
 			ProxyQTextDocument().SetDocumentLayout(layout);
 		}
+		[SmokeMethod("documentLayout() const")]
 		public QAbstractTextDocumentLayout DocumentLayout() {
 			return ProxyQTextDocument().DocumentLayout();
 		}
 		// void setMetaInformation(QTextDocument::MetaInformation arg1,const QString& arg2); >>>> NOT CONVERTED
 		// QString metaInformation(QTextDocument::MetaInformation arg1); >>>> NOT CONVERTED
+		[SmokeMethod("toHtml(const QByteArray&) const")]
 		public string ToHtml(QByteArray encoding) {
 			return ProxyQTextDocument().ToHtml(encoding);
 		}
+		[SmokeMethod("toHtml() const")]
 		public string ToHtml() {
 			return ProxyQTextDocument().ToHtml();
 		}
+		[SmokeMethod("setHtml(const QString&)")]
 		public void SetHtml(string html) {
 			ProxyQTextDocument().SetHtml(html);
 		}
+		[SmokeMethod("toPlainText() const")]
 		public string ToPlainText() {
 			return ProxyQTextDocument().ToPlainText();
 		}
+		[SmokeMethod("setPlainText(const QString&)")]
 		public void SetPlainText(string text) {
 			ProxyQTextDocument().SetPlainText(text);
 		}
@@ -98,93 +112,135 @@ namespace Qt {
 		// QTextCursor find(const QString& arg1); >>>> NOT CONVERTED
 		// QTextCursor find(const QString& arg1,const QTextCursor& arg2,FindFlags arg3); >>>> NOT CONVERTED
 		// QTextCursor find(const QString& arg1,const QTextCursor& arg2); >>>> NOT CONVERTED
+		[SmokeMethod("frameAt(int) const")]
 		public QTextFrame FrameAt(int pos) {
 			return ProxyQTextDocument().FrameAt(pos);
 		}
+		[SmokeMethod("rootFrame() const")]
 		public QTextFrame RootFrame() {
 			return ProxyQTextDocument().RootFrame();
 		}
+		[SmokeMethod("object(int) const")]
 		public QTextObject Object(int objectIndex) {
 			return ProxyQTextDocument().Object(objectIndex);
 		}
 		// QTextObject* objectForFormat(const QTextFormat& arg1); >>>> NOT CONVERTED
+		[SmokeMethod("findBlock(int) const")]
 		public QTextBlock FindBlock(int pos) {
 			return ProxyQTextDocument().FindBlock(pos);
 		}
+		[SmokeMethod("begin() const")]
 		public QTextBlock Begin() {
 			return ProxyQTextDocument().Begin();
 		}
+		[SmokeMethod("end() const")]
 		public QTextBlock End() {
 			return ProxyQTextDocument().End();
 		}
+		[SmokeMethod("setPageSize(const QSizeF&)")]
 		public void SetPageSize(QSizeF size) {
 			ProxyQTextDocument().SetPageSize(size);
 		}
+		[SmokeMethod("pageSize() const")]
 		public QSizeF PageSize() {
 			return ProxyQTextDocument().PageSize();
 		}
+		[SmokeMethod("setDefaultFont(const QFont&)")]
 		public void SetDefaultFont(QFont font) {
 			ProxyQTextDocument().SetDefaultFont(font);
 		}
+		[SmokeMethod("defaultFont() const")]
 		public QFont DefaultFont() {
 			return ProxyQTextDocument().DefaultFont();
 		}
+		[SmokeMethod("pageCount() const")]
 		public int PageCount() {
 			return ProxyQTextDocument().PageCount();
 		}
+		[SmokeMethod("isModified() const")]
 		public bool IsModified() {
 			return ProxyQTextDocument().IsModified();
 		}
+		[SmokeMethod("print(QPrinter*) const")]
 		public void Print(QPrinter printer) {
 			ProxyQTextDocument().Print(printer);
 		}
+		[SmokeMethod("resource(int, const QUrl&) const")]
 		public QVariant Resource(int type, IQUrl name) {
 			return ProxyQTextDocument().Resource(type,name);
 		}
+		[SmokeMethod("addResource(int, const QUrl&, const QVariant&)")]
 		public void AddResource(int type, IQUrl name, QVariant resource) {
 			ProxyQTextDocument().AddResource(type,name,resource);
 		}
 		// QVector<QTextFormat> allFormats(); >>>> NOT CONVERTED
+		[SmokeMethod("markContentsDirty(int, int)")]
 		public void MarkContentsDirty(int from, int length) {
 			ProxyQTextDocument().MarkContentsDirty(from,length);
 		}
-		// QTextDocumentPrivate* docHandle(); >>>> NOT CONVERTED
+		[SmokeMethod("setUseDesignMetrics(bool)")]
+		public void SetUseDesignMetrics(bool b) {
+			ProxyQTextDocument().SetUseDesignMetrics(b);
+		}
+		[SmokeMethod("useDesignMetrics() const")]
+		public bool UseDesignMetrics() {
+			return ProxyQTextDocument().UseDesignMetrics();
+		}
+		[SmokeMethod("undo()")]
 		public void Undo() {
 			ProxyQTextDocument().Undo();
 		}
+		[SmokeMethod("redo()")]
 		public void Redo() {
 			ProxyQTextDocument().Redo();
 		}
 		// void appendUndoItem(QAbstractUndoItem* arg1); >>>> NOT CONVERTED
+		[SmokeMethod("setModified(bool)")]
 		public void SetModified(bool m) {
 			ProxyQTextDocument().SetModified(m);
 		}
+		[SmokeMethod("setModified()")]
 		public void SetModified() {
 			ProxyQTextDocument().SetModified();
 		}
+		// QTextDocumentPrivate* docHandle(); >>>> NOT CONVERTED
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQTextDocument().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQTextDocument().Tr(s);
 		}
 		// QTextObject* createObject(const QTextFormat& arg1); >>>> NOT CONVERTED
+		[SmokeMethod("loadResource(int, const QUrl&)")]
 		protected virtual QVariant LoadResource(int type, IQUrl name) {
 			return ProxyQTextDocument().LoadResource(type,name);
 		}
 		~QTextDocument() {
-			ProxyQTextDocument().Dispose();
+			DisposeQTextDocument();
 		}
 		public new void Dispose() {
-			ProxyQTextDocument().Dispose();
+			DisposeQTextDocument();
+		}
+		private void DisposeQTextDocument() {
+			ProxyQTextDocument().DisposeQTextDocument();
+		}
+		protected new IQTextDocumentSignals Emit() {
+			return (IQTextDocumentSignals) Q_EMIT;
 		}
 	}
 
-	public interface IQTextDocumentSignals {
+	public interface IQTextDocumentSignals : IQObjectSignals {
+		[Q_SIGNAL("void contentsChange(int, int, int)")]
 		void ContentsChange(int from, int charsRemoves, int charsAdded);
+		[Q_SIGNAL("void contentsChanged()")]
 		void ContentsChanged();
+		[Q_SIGNAL("void undoAvailable(bool)")]
 		void UndoAvailable(bool arg1);
+		[Q_SIGNAL("void redoAvailable(bool)")]
 		void RedoAvailable(bool arg1);
+		[Q_SIGNAL("void modificationChanged(bool)")]
 		void ModificationChanged(bool m);
 		// void cursorPositionChanged(const QTextCursor& arg1); >>>> NOT CONVERTED
 	}

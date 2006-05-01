@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QDomComment")]
 	public class QDomComment : QDomCharacterData, IDisposable {
  		protected QDomComment(Type dummy) : base((Type) null) {}
 		interface IQDomCommentProxy {
 		}
 
-		protected void CreateQDomCommentProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomComment), this);
 			_interceptor = (QDomComment) realProxy.GetTransparentProxy();
 		}
@@ -25,27 +26,33 @@ namespace Qt {
 		}
 
 		public QDomComment() : this((Type) null) {
-			CreateQDomCommentProxy();
+			CreateProxy();
 			NewQDomComment();
 		}
+		[SmokeMethod("QDomComment()")]
 		private void NewQDomComment() {
 			ProxyQDomComment().NewQDomComment();
 		}
 		public QDomComment(QDomComment x) : this((Type) null) {
-			CreateQDomCommentProxy();
+			CreateProxy();
 			NewQDomComment(x);
 		}
+		[SmokeMethod("QDomComment(const QDomComment&)")]
 		private void NewQDomComment(QDomComment x) {
 			ProxyQDomComment().NewQDomComment(x);
 		}
-		public new int NodeType() {
+		[SmokeMethod("nodeType() const")]
+		public new QDomNode.NodeType NodeType() {
 			return ProxyQDomComment().NodeType();
 		}
 		~QDomComment() {
-			ProxyQDomComment().Dispose();
+			DisposeQDomComment();
 		}
 		public void Dispose() {
-			ProxyQDomComment().Dispose();
+			DisposeQDomComment();
+		}
+		private void DisposeQDomComment() {
+			ProxyQDomComment().DisposeQDomComment();
 		}
 	}
 }

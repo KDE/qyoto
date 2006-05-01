@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QStyleOptionToolBox")]
 	public class QStyleOptionToolBox : QStyleOption, IDisposable {
  		protected QStyleOptionToolBox(Type dummy) : base((Type) null) {}
 		interface IQStyleOptionToolBoxProxy {
 		}
 
-		protected void CreateQStyleOptionToolBoxProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionToolBox), this);
 			_interceptor = (QStyleOptionToolBox) realProxy.GetTransparentProxy();
 		}
@@ -24,36 +25,42 @@ namespace Qt {
 			return (IQStyleOptionToolBoxProxy) _staticInterceptor;
 		}
 
-		public const int Type = (int) OptionType.SO_ToolBox;
+		public const int Type = (int) QStyleOption.OptionType.SO_ToolBox;
 
 		public const int Version = 1;
 
 		public QStyleOptionToolBox() : this((Type) null) {
-			CreateQStyleOptionToolBoxProxy();
+			CreateProxy();
 			NewQStyleOptionToolBox();
 		}
+		[SmokeMethod("QStyleOptionToolBox()")]
 		private void NewQStyleOptionToolBox() {
 			ProxyQStyleOptionToolBox().NewQStyleOptionToolBox();
 		}
 		public QStyleOptionToolBox(QStyleOptionToolBox other) : this((Type) null) {
-			CreateQStyleOptionToolBoxProxy();
+			CreateProxy();
 			NewQStyleOptionToolBox(other);
 		}
+		[SmokeMethod("QStyleOptionToolBox(const QStyleOptionToolBox&)")]
 		private void NewQStyleOptionToolBox(QStyleOptionToolBox other) {
 			ProxyQStyleOptionToolBox().NewQStyleOptionToolBox(other);
 		}
 		public QStyleOptionToolBox(int version) : this((Type) null) {
-			CreateQStyleOptionToolBoxProxy();
+			CreateProxy();
 			NewQStyleOptionToolBox(version);
 		}
+		[SmokeMethod("QStyleOptionToolBox(int)")]
 		private void NewQStyleOptionToolBox(int version) {
 			ProxyQStyleOptionToolBox().NewQStyleOptionToolBox(version);
 		}
 		~QStyleOptionToolBox() {
-			ProxyQStyleOptionToolBox().Dispose();
+			DisposeQStyleOptionToolBox();
 		}
 		public void Dispose() {
-			ProxyQStyleOptionToolBox().Dispose();
+			DisposeQStyleOptionToolBox();
+		}
+		private void DisposeQStyleOptionToolBox() {
+			ProxyQStyleOptionToolBox().DisposeQStyleOptionToolBox();
 		}
 	}
 }

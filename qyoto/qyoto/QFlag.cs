@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QFlag")]
 	public class QFlag : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
@@ -11,7 +12,7 @@ namespace Qt {
 		interface IQFlagProxy {
 		}
 
-		protected void CreateQFlagProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFlag), this);
 			_interceptor = (QFlag) realProxy.GetTransparentProxy();
 		}
@@ -28,18 +29,22 @@ namespace Qt {
 		}
 
 		public QFlag(int i) : this((Type) null) {
-			CreateQFlagProxy();
+			CreateProxy();
 			NewQFlag(i);
 		}
+		[SmokeMethod("QFlag(int)")]
 		private void NewQFlag(int i) {
 			ProxyQFlag().NewQFlag(i);
 		}
 		//  operator int(); >>>> NOT CONVERTED
 		~QFlag() {
-			ProxyQFlag().Dispose();
+			DisposeQFlag();
 		}
 		public void Dispose() {
-			ProxyQFlag().Dispose();
+			DisposeQFlag();
+		}
+		private void DisposeQFlag() {
+			ProxyQFlag().DisposeQFlag();
 		}
 	}
 }

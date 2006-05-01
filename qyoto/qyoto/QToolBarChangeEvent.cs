@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QToolBarChangeEvent")]
 	public class QToolBarChangeEvent : QEvent, IDisposable {
  		protected QToolBarChangeEvent(Type dummy) : base((Type) null) {}
 		interface IQToolBarChangeEventProxy {
 		}
 
-		protected void CreateQToolBarChangeEventProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QToolBarChangeEvent), this);
 			_interceptor = (QToolBarChangeEvent) realProxy.GetTransparentProxy();
 		}
@@ -25,20 +26,25 @@ namespace Qt {
 		}
 
 		public QToolBarChangeEvent(bool t) : this((Type) null) {
-			CreateQToolBarChangeEventProxy();
+			CreateProxy();
 			NewQToolBarChangeEvent(t);
 		}
+		[SmokeMethod("QToolBarChangeEvent(bool)")]
 		private void NewQToolBarChangeEvent(bool t) {
 			ProxyQToolBarChangeEvent().NewQToolBarChangeEvent(t);
 		}
+		[SmokeMethod("toggle() const")]
 		public bool Toggle() {
 			return ProxyQToolBarChangeEvent().Toggle();
 		}
 		~QToolBarChangeEvent() {
-			ProxyQToolBarChangeEvent().Dispose();
+			DisposeQToolBarChangeEvent();
 		}
 		public new void Dispose() {
-			ProxyQToolBarChangeEvent().Dispose();
+			DisposeQToolBarChangeEvent();
+		}
+		private void DisposeQToolBarChangeEvent() {
+			ProxyQToolBarChangeEvent().DisposeQToolBarChangeEvent();
 		}
 	}
 }

@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QStyleOptionFocusRect")]
 	public class QStyleOptionFocusRect : QStyleOption, IDisposable {
  		protected QStyleOptionFocusRect(Type dummy) : base((Type) null) {}
 		interface IQStyleOptionFocusRectProxy {
 		}
 
-		protected void CreateQStyleOptionFocusRectProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionFocusRect), this);
 			_interceptor = (QStyleOptionFocusRect) realProxy.GetTransparentProxy();
 		}
@@ -24,36 +25,42 @@ namespace Qt {
 			return (IQStyleOptionFocusRectProxy) _staticInterceptor;
 		}
 
-		public const int Type = (int) OptionType.SO_FocusRect;
+		public const int Type = (int) QStyleOption.OptionType.SO_FocusRect;
 
 		public const int Version = 1;
 
 		public QStyleOptionFocusRect() : this((Type) null) {
-			CreateQStyleOptionFocusRectProxy();
+			CreateProxy();
 			NewQStyleOptionFocusRect();
 		}
+		[SmokeMethod("QStyleOptionFocusRect()")]
 		private void NewQStyleOptionFocusRect() {
 			ProxyQStyleOptionFocusRect().NewQStyleOptionFocusRect();
 		}
 		public QStyleOptionFocusRect(QStyleOptionFocusRect other) : this((Type) null) {
-			CreateQStyleOptionFocusRectProxy();
+			CreateProxy();
 			NewQStyleOptionFocusRect(other);
 		}
+		[SmokeMethod("QStyleOptionFocusRect(const QStyleOptionFocusRect&)")]
 		private void NewQStyleOptionFocusRect(QStyleOptionFocusRect other) {
 			ProxyQStyleOptionFocusRect().NewQStyleOptionFocusRect(other);
 		}
 		public QStyleOptionFocusRect(int version) : this((Type) null) {
-			CreateQStyleOptionFocusRectProxy();
+			CreateProxy();
 			NewQStyleOptionFocusRect(version);
 		}
+		[SmokeMethod("QStyleOptionFocusRect(int)")]
 		private void NewQStyleOptionFocusRect(int version) {
 			ProxyQStyleOptionFocusRect().NewQStyleOptionFocusRect(version);
 		}
 		~QStyleOptionFocusRect() {
-			ProxyQStyleOptionFocusRect().Dispose();
+			DisposeQStyleOptionFocusRect();
 		}
 		public void Dispose() {
-			ProxyQStyleOptionFocusRect().Dispose();
+			DisposeQStyleOptionFocusRect();
+		}
+		private void DisposeQStyleOptionFocusRect() {
+			ProxyQStyleOptionFocusRect().DisposeQStyleOptionFocusRect();
 		}
 	}
 }

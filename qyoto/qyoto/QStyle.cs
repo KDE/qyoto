@@ -4,22 +4,23 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QStyle")]
 	public class QStyle : QObject {
  		protected QStyle(Type dummy) : base((Type) null) {}
 		interface IQStyleProxy {
 			string Tr(string s, string c);
 			string Tr(string s);
-			QRect VisualRect(int direction, QRect boundingRect, QRect logicalRect);
-			QPoint VisualPos(int direction, QRect boundingRect, QPoint logicalPos);
+			QRect VisualRect(Qt.LayoutDirection direction, QRect boundingRect, QRect logicalRect);
+			QPoint VisualPos(Qt.LayoutDirection direction, QRect boundingRect, QPoint logicalPos);
 			int SliderPositionFromValue(int min, int max, int val, int space, bool upsideDown);
 			int SliderPositionFromValue(int min, int max, int val, int space);
 			int SliderValueFromPosition(int min, int max, int pos, int space, bool upsideDown);
 			int SliderValueFromPosition(int min, int max, int pos, int space);
-			int VisualAlignment(int direction, int alignment);
-			QRect AlignedRect(int direction, int alignment, QSize size, QRect rectangle);
+			int VisualAlignment(Qt.LayoutDirection direction, int alignment);
+			QRect AlignedRect(Qt.LayoutDirection direction, int alignment, QSize size, QRect rectangle);
 		}
 
-		protected void CreateQStyleProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyle), this);
 			_interceptor = (QStyle) realProxy.GetTransparentProxy();
 		}
@@ -35,7 +36,7 @@ namespace Qt {
 			return (IQStyleProxy) _staticInterceptor;
 		}
 
-		enum StateFlag {
+		public enum StateFlag {
 			State_None = 0x00000000,
 			State_Enabled = 0x00000001,
 			State_Raised = 0x00000002,
@@ -60,8 +61,9 @@ namespace Qt {
 			State_Sibling = 0x00200000,
 			State_Editing = 0x00400000,
 			State_KeyboardFocusChange = 0x00800000,
+			State_ReadOnly = 0x02000000,
 		}
-		enum PrimitiveElement {
+		public enum PrimitiveElement {
 			PE_Q3CheckListController = 0,
 			PE_Q3CheckListExclusiveIndicator = 1,
 			PE_Q3CheckListIndicator = 2,
@@ -109,7 +111,7 @@ namespace Qt {
 			PE_IndicatorTabTear = 44,
 			PE_CustomBase = 0xf000000,
 		}
-		enum ControlElement : uint {
+		public enum ControlElement : uint {
 			CE_PushButton = 0,
 			CE_PushButtonBevel = 1,
 			CE_PushButtonLabel = 2,
@@ -151,9 +153,10 @@ namespace Qt {
 			CE_ScrollBarLast = 38,
 			CE_FocusFrame = 39,
 			CE_ComboBoxLabel = 40,
+			CE_ToolBar = 41,
 			CE_CustomBase = 0xf0000000,
 		}
-		enum SubElement : uint {
+		public enum SubElement : uint {
 			SE_PushButtonContents = 0,
 			SE_PushButtonFocusRect = 1,
 			SE_CheckBoxIndicator = 2,
@@ -189,9 +192,10 @@ namespace Qt {
 			SE_TabWidgetRightCorner = 32,
 			SE_ViewItemCheckIndicator = 33,
 			SE_TabBarTearIndicator = 34,
+			SE_TreeViewDisclosureItem = 35,
 			SE_CustomBase = 0xf0000000,
 		}
-		enum ComplexControl : uint {
+		public enum ComplexControl : uint {
 			CC_SpinBox = 0,
 			CC_ComboBox = 1,
 			CC_ScrollBar = 2,
@@ -200,9 +204,10 @@ namespace Qt {
 			CC_TitleBar = 5,
 			CC_Q3ListView = 6,
 			CC_Dial = 7,
+			CC_GroupBox = 8,
 			CC_CustomBase = 0xf0000000,
 		}
-		enum SubControl : uint {
+		public enum SubControl : uint {
 			SC_None = 0x00000000,
 			SC_ScrollBarAddLine = 0x00000001,
 			SC_ScrollBarSubLine = 0x00000002,
@@ -240,9 +245,13 @@ namespace Qt {
 			SC_DialGroove = 0x00000001,
 			SC_DialHandle = 0x00000002,
 			SC_DialTickmarks = 0x00000004,
+			SC_GroupBoxCheckBox = 0x00000001,
+			SC_GroupBoxLabel = 0x00000002,
+			SC_GroupBoxContents = 0x00000004,
+			SC_GroupBoxFrame = 0x00000008,
 			SC_All = 0xffffffff,
 		}
-		enum E_PixelMetric : uint {
+		public enum PixelMetric : uint {
 			PM_ButtonMargin = 0,
 			PM_ButtonDefaultIndicator = 1,
 			PM_MenuButtonIndicator = 2,
@@ -315,9 +324,13 @@ namespace Qt {
 			PM_FocusFrameVMargin = 69,
 			PM_FocusFrameHMargin = 70,
 			PM_ToolTipLabelFrameWidth = 71,
+			PM_CheckBoxLabelSpacing = 72,
+			PM_TabBarIconSize = 73,
+			PM_SizeGripSize = 74,
+			PM_DockWidgetTitleMargin = 75,
 			PM_CustomBase = 0xf0000000,
 		}
-		enum ContentsType : uint {
+		public enum ContentsType : uint {
 			CT_PushButton = 0,
 			CT_CheckBox = 1,
 			CT_RadioButton = 2,
@@ -340,9 +353,10 @@ namespace Qt {
 			CT_TabWidget = 19,
 			CT_DialogButtons = 20,
 			CT_HeaderSection = 21,
+			CT_GroupBox = 22,
 			CT_CustomBase = 0xf0000000,
 		}
-		enum E_StyleHint : uint {
+		public enum StyleHint : uint {
 			SH_EtchDisabledText = 0,
 			SH_DitherDisabledText = 1,
 			SH_ScrollBar_MiddleClickAbsolutePosition = 2,
@@ -406,9 +420,11 @@ namespace Qt {
 			SH_ItemView_EllipsisLocation = 60,
 			SH_ItemView_ShowDecorationSelected = 61,
 			SH_ItemView_ActivateItemOnSingleClick = 62,
+			SH_ScrollBar_ContextMenu = 63,
+			SH_ScrollBar_RollBetweenButtons = 64,
 			SH_CustomBase = 0xf0000000,
 		}
-		enum E_StandardPixmap : uint {
+		public enum StandardPixmap : uint {
 			SP_TitleBarMenuButton = 0,
 			SP_TitleBarMinButton = 1,
 			SP_TitleBarMaxButton = 2,
@@ -448,148 +464,229 @@ namespace Qt {
 			SP_FileDialogBack = 36,
 			SP_CustomBase = 0xf0000000,
 		}
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQStyle().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
+		public QStyle() : this((Type) null) {
+			CreateProxy();
+			NewQStyle();
+		}
+		[SmokeMethod("QStyle()")]
+		private void NewQStyle() {
+			ProxyQStyle().NewQStyle();
+		}
+		[SmokeMethod("polish(QWidget*)")]
 		public virtual void Polish(QWidget arg1) {
 			ProxyQStyle().Polish(arg1);
 		}
+		[SmokeMethod("unpolish(QWidget*)")]
 		public virtual void Unpolish(QWidget arg1) {
 			ProxyQStyle().Unpolish(arg1);
 		}
+		[SmokeMethod("polish(QApplication*)")]
 		public virtual void Polish(QApplication arg1) {
 			ProxyQStyle().Polish(arg1);
 		}
+		[SmokeMethod("unpolish(QApplication*)")]
 		public virtual void Unpolish(QApplication arg1) {
 			ProxyQStyle().Unpolish(arg1);
 		}
+		[SmokeMethod("polish(QPalette&)")]
 		public virtual void Polish(QPalette arg1) {
 			ProxyQStyle().Polish(arg1);
 		}
+		[SmokeMethod("itemTextRect(const QFontMetrics&, const QRect&, int, bool, const QString&) const")]
 		public virtual QRect ItemTextRect(QFontMetrics fm, QRect r, int flags, bool enabled, string text) {
 			return ProxyQStyle().ItemTextRect(fm,r,flags,enabled,text);
 		}
+		[SmokeMethod("itemPixmapRect(const QRect&, int, const QPixmap&) const")]
 		public virtual QRect ItemPixmapRect(QRect r, int flags, QPixmap pixmap) {
 			return ProxyQStyle().ItemPixmapRect(r,flags,pixmap);
 		}
-		public virtual void DrawItemText(QPainter painter, QRect rect, int flags, QPalette pal, bool enabled, string text, int textRole) {
+		[SmokeMethod("drawItemText(QPainter*, const QRect&, int, const QPalette&, bool, const QString&, QPalette::ColorRole) const")]
+		public virtual void DrawItemText(QPainter painter, QRect rect, int flags, QPalette pal, bool enabled, string text, QPalette.ColorRole textRole) {
 			ProxyQStyle().DrawItemText(painter,rect,flags,pal,enabled,text,textRole);
 		}
+		[SmokeMethod("drawItemText(QPainter*, const QRect&, int, const QPalette&, bool, const QString&) const")]
 		public virtual void DrawItemText(QPainter painter, QRect rect, int flags, QPalette pal, bool enabled, string text) {
 			ProxyQStyle().DrawItemText(painter,rect,flags,pal,enabled,text);
 		}
+		[SmokeMethod("drawItemPixmap(QPainter*, const QRect&, int, const QPixmap&) const")]
 		public virtual void DrawItemPixmap(QPainter painter, QRect rect, int alignment, QPixmap pixmap) {
 			ProxyQStyle().DrawItemPixmap(painter,rect,alignment,pixmap);
 		}
+		[SmokeMethod("standardPalette() const")]
 		public virtual QPalette StandardPalette() {
 			return ProxyQStyle().StandardPalette();
 		}
-		public virtual void DrawPrimitive(int pe, out int opt, QPainter p, QWidget w) {
+		[SmokeMethod("drawPrimitive(QStyle::PrimitiveElement, const QStyleOption*, QPainter*, const QWidget*) const")]
+		public virtual void DrawPrimitive(QStyle.PrimitiveElement pe, out int opt, QPainter p, QWidget w) {
 			ProxyQStyle().DrawPrimitive(pe,out opt,p,w);
 		}
-		public virtual void DrawPrimitive(int pe, out int opt, QPainter p) {
+		[SmokeMethod("drawPrimitive(QStyle::PrimitiveElement, const QStyleOption*, QPainter*) const")]
+		public virtual void DrawPrimitive(QStyle.PrimitiveElement pe, out int opt, QPainter p) {
 			ProxyQStyle().DrawPrimitive(pe,out opt,p);
 		}
-		public virtual void DrawControl(int element, out int opt, QPainter p, QWidget w) {
+		[SmokeMethod("drawControl(QStyle::ControlElement, const QStyleOption*, QPainter*, const QWidget*) const")]
+		public virtual void DrawControl(QStyle.ControlElement element, out int opt, QPainter p, QWidget w) {
 			ProxyQStyle().DrawControl(element,out opt,p,w);
 		}
-		public virtual void DrawControl(int element, out int opt, QPainter p) {
+		[SmokeMethod("drawControl(QStyle::ControlElement, const QStyleOption*, QPainter*) const")]
+		public virtual void DrawControl(QStyle.ControlElement element, out int opt, QPainter p) {
 			ProxyQStyle().DrawControl(element,out opt,p);
 		}
-		public virtual QRect SubElementRect(int subElement, out int option, QWidget widget) {
+		[SmokeMethod("subElementRect(QStyle::SubElement, const QStyleOption*, const QWidget*) const")]
+		public virtual QRect SubElementRect(QStyle.SubElement subElement, out int option, QWidget widget) {
 			return ProxyQStyle().SubElementRect(subElement,out option,widget);
 		}
-		public virtual QRect SubElementRect(int subElement, out int option) {
+		[SmokeMethod("subElementRect(QStyle::SubElement, const QStyleOption*) const")]
+		public virtual QRect SubElementRect(QStyle.SubElement subElement, out int option) {
 			return ProxyQStyle().SubElementRect(subElement,out option);
 		}
-		public virtual void DrawComplexControl(int cc, QStyleOptionComplex opt, QPainter p, QWidget widget) {
+		[SmokeMethod("drawComplexControl(QStyle::ComplexControl, const QStyleOptionComplex*, QPainter*, const QWidget*) const")]
+		public virtual void DrawComplexControl(QStyle.ComplexControl cc, QStyleOptionComplex opt, QPainter p, QWidget widget) {
 			ProxyQStyle().DrawComplexControl(cc,opt,p,widget);
 		}
-		public virtual void DrawComplexControl(int cc, QStyleOptionComplex opt, QPainter p) {
+		[SmokeMethod("drawComplexControl(QStyle::ComplexControl, const QStyleOptionComplex*, QPainter*) const")]
+		public virtual void DrawComplexControl(QStyle.ComplexControl cc, QStyleOptionComplex opt, QPainter p) {
 			ProxyQStyle().DrawComplexControl(cc,opt,p);
 		}
-		public virtual int HitTestComplexControl(int cc, QStyleOptionComplex opt, QPoint pt, QWidget widget) {
+		[SmokeMethod("hitTestComplexControl(QStyle::ComplexControl, const QStyleOptionComplex*, const QPoint&, const QWidget*) const")]
+		public virtual QStyle.SubControl HitTestComplexControl(QStyle.ComplexControl cc, QStyleOptionComplex opt, QPoint pt, QWidget widget) {
 			return ProxyQStyle().HitTestComplexControl(cc,opt,pt,widget);
 		}
-		public virtual int HitTestComplexControl(int cc, QStyleOptionComplex opt, QPoint pt) {
+		[SmokeMethod("hitTestComplexControl(QStyle::ComplexControl, const QStyleOptionComplex*, const QPoint&) const")]
+		public virtual QStyle.SubControl HitTestComplexControl(QStyle.ComplexControl cc, QStyleOptionComplex opt, QPoint pt) {
 			return ProxyQStyle().HitTestComplexControl(cc,opt,pt);
 		}
-		public virtual QRect SubControlRect(int cc, QStyleOptionComplex opt, int sc, QWidget widget) {
+		[SmokeMethod("subControlRect(QStyle::ComplexControl, const QStyleOptionComplex*, QStyle::SubControl, const QWidget*) const")]
+		public virtual QRect SubControlRect(QStyle.ComplexControl cc, QStyleOptionComplex opt, QStyle.SubControl sc, QWidget widget) {
 			return ProxyQStyle().SubControlRect(cc,opt,sc,widget);
 		}
-		public virtual QRect SubControlRect(int cc, QStyleOptionComplex opt, int sc) {
+		[SmokeMethod("subControlRect(QStyle::ComplexControl, const QStyleOptionComplex*, QStyle::SubControl) const")]
+		public virtual QRect SubControlRect(QStyle.ComplexControl cc, QStyleOptionComplex opt, QStyle.SubControl sc) {
 			return ProxyQStyle().SubControlRect(cc,opt,sc);
 		}
-		public virtual int PixelMetric(int metric, out int option, QWidget widget) {
-			return ProxyQStyle().PixelMetric(metric,out option,widget);
+		[SmokeMethod("pixelMetric(QStyle::PixelMetric, const QStyleOption*, const QWidget*) const")]
+		public virtual int pixelMetric(QStyle.PixelMetric metric, out int option, QWidget widget) {
+			return ProxyQStyle().pixelMetric(metric,out option,widget);
 		}
-		public virtual int PixelMetric(int metric, out int option) {
-			return ProxyQStyle().PixelMetric(metric,out option);
+		[SmokeMethod("pixelMetric(QStyle::PixelMetric, const QStyleOption*) const")]
+		public virtual int pixelMetric(QStyle.PixelMetric metric, out int option) {
+			return ProxyQStyle().pixelMetric(metric,out option);
 		}
-		public virtual int PixelMetric(int metric) {
-			return ProxyQStyle().PixelMetric(metric);
+		[SmokeMethod("pixelMetric(QStyle::PixelMetric) const")]
+		public virtual int pixelMetric(QStyle.PixelMetric metric) {
+			return ProxyQStyle().pixelMetric(metric);
 		}
-		public virtual QSize SizeFromContents(int ct, out int opt, QSize contentsSize, QWidget w) {
+		[SmokeMethod("sizeFromContents(QStyle::ContentsType, const QStyleOption*, const QSize&, const QWidget*) const")]
+		public virtual QSize SizeFromContents(QStyle.ContentsType ct, out int opt, QSize contentsSize, QWidget w) {
 			return ProxyQStyle().SizeFromContents(ct,out opt,contentsSize,w);
 		}
-		public virtual QSize SizeFromContents(int ct, out int opt, QSize contentsSize) {
+		[SmokeMethod("sizeFromContents(QStyle::ContentsType, const QStyleOption*, const QSize&) const")]
+		public virtual QSize SizeFromContents(QStyle.ContentsType ct, out int opt, QSize contentsSize) {
 			return ProxyQStyle().SizeFromContents(ct,out opt,contentsSize);
 		}
-		public virtual int StyleHint(int stylehint, out int opt, QWidget widget, QStyleHintReturn returnData) {
-			return ProxyQStyle().StyleHint(stylehint,out opt,widget,returnData);
+		[SmokeMethod("styleHint(QStyle::StyleHint, const QStyleOption*, const QWidget*, QStyleHintReturn*) const")]
+		public virtual int styleHint(QStyle.StyleHint stylehint, out int opt, QWidget widget, QStyleHintReturn returnData) {
+			return ProxyQStyle().styleHint(stylehint,out opt,widget,returnData);
 		}
-		public virtual int StyleHint(int stylehint, out int opt, QWidget widget) {
-			return ProxyQStyle().StyleHint(stylehint,out opt,widget);
+		[SmokeMethod("styleHint(QStyle::StyleHint, const QStyleOption*, const QWidget*) const")]
+		public virtual int styleHint(QStyle.StyleHint stylehint, out int opt, QWidget widget) {
+			return ProxyQStyle().styleHint(stylehint,out opt,widget);
 		}
-		public virtual int StyleHint(int stylehint, out int opt) {
-			return ProxyQStyle().StyleHint(stylehint,out opt);
+		[SmokeMethod("styleHint(QStyle::StyleHint, const QStyleOption*) const")]
+		public virtual int styleHint(QStyle.StyleHint stylehint, out int opt) {
+			return ProxyQStyle().styleHint(stylehint,out opt);
 		}
-		public virtual int StyleHint(int stylehint) {
-			return ProxyQStyle().StyleHint(stylehint);
+		[SmokeMethod("styleHint(QStyle::StyleHint) const")]
+		public virtual int styleHint(QStyle.StyleHint stylehint) {
+			return ProxyQStyle().styleHint(stylehint);
 		}
-		public virtual QPixmap StandardPixmap(int standardPixmap, out int opt, QWidget widget) {
-			return ProxyQStyle().StandardPixmap(standardPixmap,out opt,widget);
+		[SmokeMethod("standardPixmap(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const")]
+		public virtual QPixmap standardPixmap(QStyle.StandardPixmap standardPixmap, out int opt, QWidget widget) {
+			return ProxyQStyle().standardPixmap(standardPixmap,out opt,widget);
 		}
-		public virtual QPixmap StandardPixmap(int standardPixmap, out int opt) {
-			return ProxyQStyle().StandardPixmap(standardPixmap,out opt);
+		[SmokeMethod("standardPixmap(QStyle::StandardPixmap, const QStyleOption*) const")]
+		public virtual QPixmap standardPixmap(QStyle.StandardPixmap standardPixmap, out int opt) {
+			return ProxyQStyle().standardPixmap(standardPixmap,out opt);
 		}
-		public virtual QPixmap StandardPixmap(int standardPixmap) {
-			return ProxyQStyle().StandardPixmap(standardPixmap);
+		[SmokeMethod("standardPixmap(QStyle::StandardPixmap) const")]
+		public virtual QPixmap standardPixmap(QStyle.StandardPixmap standardPixmap) {
+			return ProxyQStyle().standardPixmap(standardPixmap);
 		}
-		public virtual QPixmap GeneratedIconPixmap(int iconMode, QPixmap pixmap, out int opt) {
+		[SmokeMethod("standardIcon(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const")]
+		public QIcon StandardIcon(QStyle.StandardPixmap standardIcon, out int option, QWidget widget) {
+			return ProxyQStyle().StandardIcon(standardIcon,out option,widget);
+		}
+		[SmokeMethod("standardIcon(QStyle::StandardPixmap, const QStyleOption*) const")]
+		public QIcon StandardIcon(QStyle.StandardPixmap standardIcon, out int option) {
+			return ProxyQStyle().StandardIcon(standardIcon,out option);
+		}
+		[SmokeMethod("standardIcon(QStyle::StandardPixmap) const")]
+		public QIcon StandardIcon(QStyle.StandardPixmap standardIcon) {
+			return ProxyQStyle().StandardIcon(standardIcon);
+		}
+		[SmokeMethod("generatedIconPixmap(QIcon::Mode, const QPixmap&, const QStyleOption*) const")]
+		public virtual QPixmap GeneratedIconPixmap(QIcon.Mode iconMode, QPixmap pixmap, out int opt) {
 			return ProxyQStyle().GeneratedIconPixmap(iconMode,pixmap,out opt);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQStyle().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQStyle().Tr(s);
 		}
-		public static QRect VisualRect(int direction, QRect boundingRect, QRect logicalRect) {
+		[SmokeMethod("visualRect(Qt::LayoutDirection, const QRect&, const QRect&)")]
+		public static QRect VisualRect(Qt.LayoutDirection direction, QRect boundingRect, QRect logicalRect) {
 			return StaticQStyle().VisualRect(direction,boundingRect,logicalRect);
 		}
-		public static QPoint VisualPos(int direction, QRect boundingRect, QPoint logicalPos) {
+		[SmokeMethod("visualPos(Qt::LayoutDirection, const QRect&, const QPoint&)")]
+		public static QPoint VisualPos(Qt.LayoutDirection direction, QRect boundingRect, QPoint logicalPos) {
 			return StaticQStyle().VisualPos(direction,boundingRect,logicalPos);
 		}
+		[SmokeMethod("sliderPositionFromValue(int, int, int, int, bool)")]
 		public static int SliderPositionFromValue(int min, int max, int val, int space, bool upsideDown) {
 			return StaticQStyle().SliderPositionFromValue(min,max,val,space,upsideDown);
 		}
+		[SmokeMethod("sliderPositionFromValue(int, int, int, int)")]
 		public static int SliderPositionFromValue(int min, int max, int val, int space) {
 			return StaticQStyle().SliderPositionFromValue(min,max,val,space);
 		}
+		[SmokeMethod("sliderValueFromPosition(int, int, int, int, bool)")]
 		public static int SliderValueFromPosition(int min, int max, int pos, int space, bool upsideDown) {
 			return StaticQStyle().SliderValueFromPosition(min,max,pos,space,upsideDown);
 		}
+		[SmokeMethod("sliderValueFromPosition(int, int, int, int)")]
 		public static int SliderValueFromPosition(int min, int max, int pos, int space) {
 			return StaticQStyle().SliderValueFromPosition(min,max,pos,space);
 		}
-		public static int VisualAlignment(int direction, int alignment) {
+		[SmokeMethod("visualAlignment(Qt::LayoutDirection, Qt::Alignment)")]
+		public static int VisualAlignment(Qt.LayoutDirection direction, int alignment) {
 			return StaticQStyle().VisualAlignment(direction,alignment);
 		}
-		public static QRect AlignedRect(int direction, int alignment, QSize size, QRect rectangle) {
+		[SmokeMethod("alignedRect(Qt::LayoutDirection, Qt::Alignment, const QSize&, const QRect&)")]
+		public static QRect AlignedRect(Qt.LayoutDirection direction, int alignment, QSize size, QRect rectangle) {
 			return StaticQStyle().AlignedRect(direction,alignment,size,rectangle);
 		}
+		~QStyle() {
+			DisposeQStyle();
+		}
+		public new void Dispose() {
+			DisposeQStyle();
+		}
+		private void DisposeQStyle() {
+			ProxyQStyle().DisposeQStyle();
+		}
+		protected new IQStyleSignals Emit() {
+			return (IQStyleSignals) Q_EMIT;
+		}
+	}
+
+	public interface IQStyleSignals : IQObjectSignals {
 	}
 }

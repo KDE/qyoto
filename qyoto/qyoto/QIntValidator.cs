@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QIntValidator")]
 	public class QIntValidator : QValidator, IDisposable {
  		protected QIntValidator(Type dummy) : base((Type) null) {}
 		interface IQIntValidatorProxy {
@@ -11,7 +12,7 @@ namespace Qt {
 			string Tr(string s);
 		}
 
-		protected void CreateQIntValidatorProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QIntValidator), this);
 			_interceptor = (QIntValidator) realProxy.GetTransparentProxy();
 		}
@@ -27,54 +28,73 @@ namespace Qt {
 			return (IQIntValidatorProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQIntValidator().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QIntValidator(QObject parent) : this((Type) null) {
-			CreateQIntValidatorProxy();
+			CreateProxy();
 			NewQIntValidator(parent);
 		}
+		[SmokeMethod("QIntValidator(QObject*)")]
 		private void NewQIntValidator(QObject parent) {
 			ProxyQIntValidator().NewQIntValidator(parent);
 		}
 		public QIntValidator(int bottom, int top, QObject parent) : this((Type) null) {
-			CreateQIntValidatorProxy();
+			CreateProxy();
 			NewQIntValidator(bottom,top,parent);
 		}
+		[SmokeMethod("QIntValidator(int, int, QObject*)")]
 		private void NewQIntValidator(int bottom, int top, QObject parent) {
 			ProxyQIntValidator().NewQIntValidator(bottom,top,parent);
 		}
+		[SmokeMethod("validate(QString&, int&) const")]
 		public new int Validate(StringBuilder arg1, out int arg2) {
 			return ProxyQIntValidator().Validate(arg1,out arg2);
 		}
+		[SmokeMethod("setBottom(int)")]
 		public void SetBottom(int arg1) {
 			ProxyQIntValidator().SetBottom(arg1);
 		}
+		[SmokeMethod("setTop(int)")]
 		public void SetTop(int arg1) {
 			ProxyQIntValidator().SetTop(arg1);
 		}
+		[SmokeMethod("setRange(int, int)")]
 		public virtual void SetRange(int bottom, int top) {
 			ProxyQIntValidator().SetRange(bottom,top);
 		}
+		[SmokeMethod("bottom() const")]
 		public int Bottom() {
 			return ProxyQIntValidator().Bottom();
 		}
+		[SmokeMethod("top() const")]
 		public int Top() {
 			return ProxyQIntValidator().Top();
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQIntValidator().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQIntValidator().Tr(s);
 		}
 		~QIntValidator() {
-			ProxyQIntValidator().Dispose();
+			DisposeQIntValidator();
 		}
 		public new void Dispose() {
-			ProxyQIntValidator().Dispose();
+			DisposeQIntValidator();
 		}
+		private void DisposeQIntValidator() {
+			ProxyQIntValidator().DisposeQIntValidator();
+		}
+		protected new IQIntValidatorSignals Emit() {
+			return (IQIntValidatorSignals) Q_EMIT;
+		}
+	}
+
+	public interface IQIntValidatorSignals : IQValidatorSignals {
 	}
 }

@@ -2,7 +2,9 @@
 namespace Qt {
 
 	using System;
+	using System.Text;
 
+	[SmokeClass("QFileIconProvider")]
 	public class QFileIconProvider : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
@@ -11,7 +13,7 @@ namespace Qt {
 		interface IQFileIconProviderProxy {
 		}
 
-		protected void CreateQFileIconProviderProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFileIconProvider), this);
 			_interceptor = (QFileIconProvider) realProxy.GetTransparentProxy();
 		}
@@ -27,7 +29,7 @@ namespace Qt {
 			return (IQFileIconProviderProxy) _staticInterceptor;
 		}
 
-		enum IconType {
+		public enum IconType {
 			Computer = 0,
 			Desktop = 1,
 			Trashcan = 2,
@@ -37,23 +39,33 @@ namespace Qt {
 			File = 6,
 		}
 		public QFileIconProvider() : this((Type) null) {
-			CreateQFileIconProviderProxy();
+			CreateProxy();
 			NewQFileIconProvider();
 		}
+		[SmokeMethod("QFileIconProvider()")]
 		private void NewQFileIconProvider() {
 			ProxyQFileIconProvider().NewQFileIconProvider();
 		}
-		public virtual QIcon Icon(int type) {
+		[SmokeMethod("icon(QFileIconProvider::IconType) const")]
+		public virtual QIcon Icon(QFileIconProvider.IconType type) {
 			return ProxyQFileIconProvider().Icon(type);
 		}
+		[SmokeMethod("icon(const QFileInfo&) const")]
 		public virtual QIcon Icon(QFileInfo info) {
 			return ProxyQFileIconProvider().Icon(info);
 		}
+		[SmokeMethod("type(const QFileInfo&) const")]
+		public virtual string type(QFileInfo info) {
+			return ProxyQFileIconProvider().type(info);
+		}
 		~QFileIconProvider() {
-			ProxyQFileIconProvider().Dispose();
+			DisposeQFileIconProvider();
 		}
 		public void Dispose() {
-			ProxyQFileIconProvider().Dispose();
+			DisposeQFileIconProvider();
+		}
+		private void DisposeQFileIconProvider() {
+			ProxyQFileIconProvider().DisposeQFileIconProvider();
 		}
 	}
 }

@@ -4,14 +4,16 @@ namespace Qt {
 	using System;
 	using System.Text;
 
-	public class QToolBar : QWidget {
+	/// See <see cref="IQToolBarSignals"></see> for signals emitted by QToolBar
+	[SmokeClass("QToolBar")]
+	public class QToolBar : QWidget, IDisposable {
  		protected QToolBar(Type dummy) : base((Type) null) {}
 		interface IQToolBarProxy {
 			string Tr(string s, string c);
 			string Tr(string s);
 		}
 
-		protected void CreateQToolBarProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QToolBar), this);
 			_interceptor = (QToolBar) realProxy.GetTransparentProxy();
 		}
@@ -27,22 +29,189 @@ namespace Qt {
 			return (IQToolBarProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQToolBar().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
+		public QToolBar(QWidget parent) : this((Type) null) {
+			CreateProxy();
+			NewQToolBar(parent);
+		}
+		[SmokeMethod("QToolBar(QWidget*)")]
+		private void NewQToolBar(QWidget parent) {
+			ProxyQToolBar().NewQToolBar(parent);
+		}
+		public QToolBar() : this((Type) null) {
+			CreateProxy();
+			NewQToolBar();
+		}
+		[SmokeMethod("QToolBar()")]
+		private void NewQToolBar() {
+			ProxyQToolBar().NewQToolBar();
+		}
+		[SmokeMethod("setMovable(bool)")]
+		public void SetMovable(bool movable) {
+			ProxyQToolBar().SetMovable(movable);
+		}
+		[SmokeMethod("isMovable() const")]
+		public bool IsMovable() {
+			return ProxyQToolBar().IsMovable();
+		}
+		[SmokeMethod("setAllowedAreas(Qt::ToolBarAreas)")]
+		public void SetAllowedAreas(int areas) {
+			ProxyQToolBar().SetAllowedAreas(areas);
+		}
+		[SmokeMethod("allowedAreas() const")]
+		public int AllowedAreas() {
+			return ProxyQToolBar().AllowedAreas();
+		}
+		[SmokeMethod("isAreaAllowed(Qt::ToolBarArea) const")]
+		public bool IsAreaAllowed(Qt.ToolBarArea area) {
+			return ProxyQToolBar().IsAreaAllowed(area);
+		}
+		[SmokeMethod("setOrientation(Qt::Orientation)")]
+		public void SetOrientation(Qt.Orientation orientation) {
+			ProxyQToolBar().SetOrientation(orientation);
+		}
+		[SmokeMethod("orientation() const")]
+		public Qt.Orientation Orientation() {
+			return ProxyQToolBar().Orientation();
+		}
+		[SmokeMethod("clear()")]
+		public void Clear() {
+			ProxyQToolBar().Clear();
+		}
+		[SmokeMethod("addAction(QAction*)")]
+		public new void AddAction(QAction action) {
+			ProxyQToolBar().AddAction(action);
+		}
+		[SmokeMethod("addAction(const QString&)")]
+		public new QAction AddAction(string text) {
+			return ProxyQToolBar().AddAction(text);
+		}
+		[SmokeMethod("addAction(const QIcon&, const QString&)")]
+		public new QAction AddAction(QIcon icon, string text) {
+			return ProxyQToolBar().AddAction(icon,text);
+		}
+		[SmokeMethod("addAction(const QString&, const QObject*, const char*)")]
+		public new QAction AddAction(string text, QObject receiver, string member) {
+			return ProxyQToolBar().AddAction(text,receiver,member);
+		}
+		[SmokeMethod("addAction(const QIcon&, const QString&, const QObject*, const char*)")]
+		public new QAction AddAction(QIcon icon, string text, QObject receiver, string member) {
+			return ProxyQToolBar().AddAction(icon,text,receiver,member);
+		}
+		[SmokeMethod("addSeparator()")]
+		public QAction AddSeparator() {
+			return ProxyQToolBar().AddSeparator();
+		}
+		[SmokeMethod("insertSeparator(QAction*)")]
+		public QAction InsertSeparator(QAction before) {
+			return ProxyQToolBar().InsertSeparator(before);
+		}
+		[SmokeMethod("addWidget(QWidget*)")]
+		public QAction AddWidget(QWidget widget) {
+			return ProxyQToolBar().AddWidget(widget);
+		}
+		[SmokeMethod("insertWidget(QAction*, QWidget*)")]
+		public QAction InsertWidget(QAction before, QWidget widget) {
+			return ProxyQToolBar().InsertWidget(before,widget);
+		}
+		[SmokeMethod("actionGeometry(QAction*) const")]
+		public QRect ActionGeometry(QAction action) {
+			return ProxyQToolBar().ActionGeometry(action);
+		}
+		[SmokeMethod("actionAt(const QPoint&) const")]
+		public QAction ActionAt(QPoint p) {
+			return ProxyQToolBar().ActionAt(p);
+		}
+		[SmokeMethod("actionAt(int, int) const")]
+		public QAction ActionAt(int x, int y) {
+			return ProxyQToolBar().ActionAt(x,y);
+		}
+		[SmokeMethod("toggleViewAction() const")]
+		public QAction ToggleViewAction() {
+			return ProxyQToolBar().ToggleViewAction();
+		}
+		[SmokeMethod("iconSize() const")]
+		public QSize IconSize() {
+			return ProxyQToolBar().IconSize();
+		}
+		[SmokeMethod("toolButtonStyle() const")]
+		public Qt.ToolButtonStyle ToolButtonStyle() {
+			return ProxyQToolBar().ToolButtonStyle();
+		}
+		[SmokeMethod("widgetForAction(QAction*) const")]
+		public QWidget WidgetForAction(QAction action) {
+			return ProxyQToolBar().WidgetForAction(action);
+		}
+		[SmokeMethod("setIconSize(const QSize&)")]
 		public void SetIconSize(QSize iconSize) {
 			ProxyQToolBar().SetIconSize(iconSize);
 		}
-		public void SetToolButtonStyle(int toolButtonStyle) {
+		[SmokeMethod("setToolButtonStyle(Qt::ToolButtonStyle)")]
+		public void SetToolButtonStyle(Qt.ToolButtonStyle toolButtonStyle) {
 			ProxyQToolBar().SetToolButtonStyle(toolButtonStyle);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQToolBar().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQToolBar().Tr(s);
 		}
+		[SmokeMethod("actionEvent(QActionEvent*)")]
+		protected new void ActionEvent(QActionEvent arg1) {
+			ProxyQToolBar().ActionEvent(arg1);
+		}
+		[SmokeMethod("changeEvent(QEvent*)")]
+		protected new void ChangeEvent(QEvent arg1) {
+			ProxyQToolBar().ChangeEvent(arg1);
+		}
+		[SmokeMethod("childEvent(QChildEvent*)")]
+		protected new void ChildEvent(QChildEvent arg1) {
+			ProxyQToolBar().ChildEvent(arg1);
+		}
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
+		protected new void PaintEvent(QPaintEvent arg1) {
+			ProxyQToolBar().PaintEvent(arg1);
+		}
+		[SmokeMethod("resizeEvent(QResizeEvent*)")]
+		protected new void ResizeEvent(QResizeEvent arg1) {
+			ProxyQToolBar().ResizeEvent(arg1);
+		}
+		[SmokeMethod("event(QEvent*)")]
+		public new bool Event(QEvent arg1) {
+			return ProxyQToolBar().Event(arg1);
+		}
+		~QToolBar() {
+			DisposeQToolBar();
+		}
+		public new void Dispose() {
+			DisposeQToolBar();
+		}
+		private void DisposeQToolBar() {
+			ProxyQToolBar().DisposeQToolBar();
+		}
+		protected new IQToolBarSignals Emit() {
+			return (IQToolBarSignals) Q_EMIT;
+		}
+	}
+
+	public interface IQToolBarSignals : IQWidgetSignals {
+		[Q_SIGNAL("void actionTriggered(QAction*)")]
+		void ActionTriggered(QAction action);
+		[Q_SIGNAL("void movableChanged(bool)")]
+		void MovableChanged(bool movable);
+		[Q_SIGNAL("void allowedAreasChanged(Qt::ToolBarAreas)")]
+		void AllowedAreasChanged(int allowedAreas);
+		[Q_SIGNAL("void orientationChanged(Qt::Orientation)")]
+		void OrientationChanged(Qt.Orientation orientation);
+		[Q_SIGNAL("void iconSizeChanged(const QSize&)")]
+		void IconSizeChanged(QSize iconSize);
+		[Q_SIGNAL("void toolButtonStyleChanged(Qt::ToolButtonStyle)")]
+		void ToolButtonStyleChanged(Qt.ToolButtonStyle toolButtonStyle);
 	}
 }

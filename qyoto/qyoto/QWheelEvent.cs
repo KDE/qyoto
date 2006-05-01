@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QWheelEvent")]
 	public class QWheelEvent : QInputEvent, IDisposable {
  		protected QWheelEvent(Type dummy) : base((Type) null) {}
 		interface IQWheelEventProxy {
 		}
 
-		protected void CreateQWheelEventProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QWheelEvent), this);
 			_interceptor = (QWheelEvent) realProxy.GetTransparentProxy();
 		}
@@ -24,66 +25,82 @@ namespace Qt {
 			return (IQWheelEventProxy) _staticInterceptor;
 		}
 
-		public QWheelEvent(QPoint pos, int delta, int buttons, int modifiers, int orient) : this((Type) null) {
-			CreateQWheelEventProxy();
+		public QWheelEvent(QPoint pos, int delta, int buttons, int modifiers, Qt.Orientation orient) : this((Type) null) {
+			CreateProxy();
 			NewQWheelEvent(pos,delta,buttons,modifiers,orient);
 		}
-		private void NewQWheelEvent(QPoint pos, int delta, int buttons, int modifiers, int orient) {
+		[SmokeMethod("QWheelEvent(const QPoint&, int, Qt::MouseButtons, Qt::KeyboardModifiers, Qt::Orientation)")]
+		private void NewQWheelEvent(QPoint pos, int delta, int buttons, int modifiers, Qt.Orientation orient) {
 			ProxyQWheelEvent().NewQWheelEvent(pos,delta,buttons,modifiers,orient);
 		}
 		public QWheelEvent(QPoint pos, int delta, int buttons, int modifiers) : this((Type) null) {
-			CreateQWheelEventProxy();
+			CreateProxy();
 			NewQWheelEvent(pos,delta,buttons,modifiers);
 		}
+		[SmokeMethod("QWheelEvent(const QPoint&, int, Qt::MouseButtons, Qt::KeyboardModifiers)")]
 		private void NewQWheelEvent(QPoint pos, int delta, int buttons, int modifiers) {
 			ProxyQWheelEvent().NewQWheelEvent(pos,delta,buttons,modifiers);
 		}
-		public QWheelEvent(QPoint pos, QPoint globalPos, int delta, int buttons, int modifiers, int orient) : this((Type) null) {
-			CreateQWheelEventProxy();
+		public QWheelEvent(QPoint pos, QPoint globalPos, int delta, int buttons, int modifiers, Qt.Orientation orient) : this((Type) null) {
+			CreateProxy();
 			NewQWheelEvent(pos,globalPos,delta,buttons,modifiers,orient);
 		}
-		private void NewQWheelEvent(QPoint pos, QPoint globalPos, int delta, int buttons, int modifiers, int orient) {
+		[SmokeMethod("QWheelEvent(const QPoint&, const QPoint&, int, Qt::MouseButtons, Qt::KeyboardModifiers, Qt::Orientation)")]
+		private void NewQWheelEvent(QPoint pos, QPoint globalPos, int delta, int buttons, int modifiers, Qt.Orientation orient) {
 			ProxyQWheelEvent().NewQWheelEvent(pos,globalPos,delta,buttons,modifiers,orient);
 		}
 		public QWheelEvent(QPoint pos, QPoint globalPos, int delta, int buttons, int modifiers) : this((Type) null) {
-			CreateQWheelEventProxy();
+			CreateProxy();
 			NewQWheelEvent(pos,globalPos,delta,buttons,modifiers);
 		}
+		[SmokeMethod("QWheelEvent(const QPoint&, const QPoint&, int, Qt::MouseButtons, Qt::KeyboardModifiers)")]
 		private void NewQWheelEvent(QPoint pos, QPoint globalPos, int delta, int buttons, int modifiers) {
 			ProxyQWheelEvent().NewQWheelEvent(pos,globalPos,delta,buttons,modifiers);
 		}
+		[SmokeMethod("delta() const")]
 		public int Delta() {
 			return ProxyQWheelEvent().Delta();
 		}
+		[SmokeMethod("pos() const")]
 		public QPoint Pos() {
 			return ProxyQWheelEvent().Pos();
 		}
+		[SmokeMethod("globalPos() const")]
 		public QPoint GlobalPos() {
 			return ProxyQWheelEvent().GlobalPos();
 		}
+		[SmokeMethod("x() const")]
 		public int X() {
 			return ProxyQWheelEvent().X();
 		}
+		[SmokeMethod("y() const")]
 		public int Y() {
 			return ProxyQWheelEvent().Y();
 		}
+		[SmokeMethod("globalX() const")]
 		public int GlobalX() {
 			return ProxyQWheelEvent().GlobalX();
 		}
+		[SmokeMethod("globalY() const")]
 		public int GlobalY() {
 			return ProxyQWheelEvent().GlobalY();
 		}
+		[SmokeMethod("buttons() const")]
 		public int Buttons() {
 			return ProxyQWheelEvent().Buttons();
 		}
-		public int Orientation() {
+		[SmokeMethod("orientation() const")]
+		public Qt.Orientation Orientation() {
 			return ProxyQWheelEvent().Orientation();
 		}
 		~QWheelEvent() {
-			ProxyQWheelEvent().Dispose();
+			DisposeQWheelEvent();
 		}
 		public new void Dispose() {
-			ProxyQWheelEvent().Dispose();
+			DisposeQWheelEvent();
+		}
+		private void DisposeQWheelEvent() {
+			ProxyQWheelEvent().DisposeQWheelEvent();
 		}
 	}
 }

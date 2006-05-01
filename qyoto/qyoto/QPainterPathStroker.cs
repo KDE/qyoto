@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QPainterPathStroker")]
 	public class QPainterPathStroker : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
@@ -11,7 +12,7 @@ namespace Qt {
 		interface IQPainterPathStrokerProxy {
 		}
 
-		protected void CreateQPainterPathStrokerProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPainterPathStroker), this);
 			_interceptor = (QPainterPathStroker) realProxy.GetTransparentProxy();
 		}
@@ -28,55 +29,71 @@ namespace Qt {
 		}
 
 		public QPainterPathStroker() : this((Type) null) {
-			CreateQPainterPathStrokerProxy();
+			CreateProxy();
 			NewQPainterPathStroker();
 		}
+		[SmokeMethod("QPainterPathStroker()")]
 		private void NewQPainterPathStroker() {
 			ProxyQPainterPathStroker().NewQPainterPathStroker();
 		}
+		[SmokeMethod("setWidth(qreal)")]
 		public void SetWidth(double width) {
 			ProxyQPainterPathStroker().SetWidth(width);
 		}
+		[SmokeMethod("width() const")]
 		public double Width() {
 			return ProxyQPainterPathStroker().Width();
 		}
-		public void SetCapStyle(int style) {
+		[SmokeMethod("setCapStyle(Qt::PenCapStyle)")]
+		public void SetCapStyle(Qt.PenCapStyle style) {
 			ProxyQPainterPathStroker().SetCapStyle(style);
 		}
-		public int CapStyle() {
+		[SmokeMethod("capStyle() const")]
+		public Qt.PenCapStyle CapStyle() {
 			return ProxyQPainterPathStroker().CapStyle();
 		}
-		public void SetJoinStyle(int style) {
+		[SmokeMethod("setJoinStyle(Qt::PenJoinStyle)")]
+		public void SetJoinStyle(Qt.PenJoinStyle style) {
 			ProxyQPainterPathStroker().SetJoinStyle(style);
 		}
-		public int JoinStyle() {
+		[SmokeMethod("joinStyle() const")]
+		public Qt.PenJoinStyle JoinStyle() {
 			return ProxyQPainterPathStroker().JoinStyle();
 		}
+		[SmokeMethod("setMiterLimit(qreal)")]
 		public void SetMiterLimit(double length) {
 			ProxyQPainterPathStroker().SetMiterLimit(length);
 		}
+		[SmokeMethod("miterLimit() const")]
 		public double MiterLimit() {
 			return ProxyQPainterPathStroker().MiterLimit();
 		}
+		[SmokeMethod("setCurveThreshold(qreal)")]
 		public void SetCurveThreshold(double threshold) {
 			ProxyQPainterPathStroker().SetCurveThreshold(threshold);
 		}
+		[SmokeMethod("curveThreshold() const")]
 		public double CurveThreshold() {
 			return ProxyQPainterPathStroker().CurveThreshold();
 		}
-		public void SetDashPattern(int arg1) {
+		[SmokeMethod("setDashPattern(Qt::PenStyle)")]
+		public void SetDashPattern(Qt.PenStyle arg1) {
 			ProxyQPainterPathStroker().SetDashPattern(arg1);
 		}
 		// void setDashPattern(const QVector<qreal>& arg1); >>>> NOT CONVERTED
 		// QVector<qreal> dashPattern(); >>>> NOT CONVERTED
+		[SmokeMethod("createStroke(const QPainterPath&) const")]
 		public QPainterPath CreateStroke(QPainterPath path) {
 			return ProxyQPainterPathStroker().CreateStroke(path);
 		}
 		~QPainterPathStroker() {
-			ProxyQPainterPathStroker().Dispose();
+			DisposeQPainterPathStroker();
 		}
 		public void Dispose() {
-			ProxyQPainterPathStroker().Dispose();
+			DisposeQPainterPathStroker();
+		}
+		private void DisposeQPainterPathStroker() {
+			ProxyQPainterPathStroker().DisposeQPainterPathStroker();
 		}
 	}
 }

@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QColorDialog")]
 	public class QColorDialog : QDialog {
  		protected QColorDialog(Type dummy) : base((Type) null) {}
 		interface IQColorDialogProxy {
@@ -21,7 +22,7 @@ namespace Qt {
 			void SetStandardColor(int arg1, uint arg2);
 		}
 
-		protected void CreateQColorDialogProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QColorDialog), this);
 			_interceptor = (QColorDialog) realProxy.GetTransparentProxy();
 		}
@@ -37,46 +38,64 @@ namespace Qt {
 			return (IQColorDialogProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQColorDialog().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQColorDialog().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQColorDialog().Tr(s);
 		}
+		[SmokeMethod("getColor(const QColor&, QWidget*)")]
 		public static QColor GetColor(QColor init, QWidget parent) {
 			return StaticQColorDialog().GetColor(init,parent);
 		}
+		[SmokeMethod("getColor(const QColor&)")]
 		public static QColor GetColor(QColor init) {
 			return StaticQColorDialog().GetColor(init);
 		}
+		[SmokeMethod("getColor()")]
 		public static QColor GetColor() {
 			return StaticQColorDialog().GetColor();
 		}
+		[SmokeMethod("getRgba(QRgb, bool*, QWidget*)")]
 		public static uint GetRgba(uint arg1, out bool ok, QWidget parent) {
 			return StaticQColorDialog().GetRgba(arg1,out ok,parent);
 		}
+		[SmokeMethod("getRgba(QRgb, bool*)")]
 		public static uint GetRgba(uint arg1, out bool ok) {
 			return StaticQColorDialog().GetRgba(arg1,out ok);
 		}
+		[SmokeMethod("getRgba(QRgb)")]
 		public static uint GetRgba(uint arg1) {
 			return StaticQColorDialog().GetRgba(arg1);
 		}
+		[SmokeMethod("customCount()")]
 		public static int CustomCount() {
 			return StaticQColorDialog().CustomCount();
 		}
+		[SmokeMethod("customColor(int)")]
 		public static uint CustomColor(int arg1) {
 			return StaticQColorDialog().CustomColor(arg1);
 		}
+		[SmokeMethod("setCustomColor(int, QRgb)")]
 		public static void SetCustomColor(int arg1, uint arg2) {
 			StaticQColorDialog().SetCustomColor(arg1,arg2);
 		}
+		[SmokeMethod("setStandardColor(int, QRgb)")]
 		public static void SetStandardColor(int arg1, uint arg2) {
 			StaticQColorDialog().SetStandardColor(arg1,arg2);
 		}
+		protected new IQColorDialogSignals Emit() {
+			return (IQColorDialogSignals) Q_EMIT;
+		}
+	}
+
+	public interface IQColorDialogSignals : IQDialogSignals {
 	}
 }

@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QStyleHintReturn")]
 	public class QStyleHintReturn : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
@@ -11,7 +12,7 @@ namespace Qt {
 		interface IQStyleHintReturnProxy {
 		}
 
-		protected void CreateQStyleHintReturnProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleHintReturn), this);
 			_interceptor = (QStyleHintReturn) realProxy.GetTransparentProxy();
 		}
@@ -27,40 +28,46 @@ namespace Qt {
 			return (IQStyleHintReturnProxy) _staticInterceptor;
 		}
 
-		public const int Type = (int) HintReturnType.SH_Default;
-
-		public const int Version = 1;
-
-		enum HintReturnType {
+		public enum HintReturnType {
 			SH_Default = 0xf000,
 			SH_Mask = 0,
 		}
+		public const int Type = (int) QStyleHintReturn.HintReturnType.SH_Default;
+
+		public const int Version = 1;
+
 		public QStyleHintReturn(int version, int type) : this((Type) null) {
-			CreateQStyleHintReturnProxy();
+			CreateProxy();
 			NewQStyleHintReturn(version,type);
 		}
+		[SmokeMethod("QStyleHintReturn(int, int)")]
 		private void NewQStyleHintReturn(int version, int type) {
 			ProxyQStyleHintReturn().NewQStyleHintReturn(version,type);
 		}
 		public QStyleHintReturn(int version) : this((Type) null) {
-			CreateQStyleHintReturnProxy();
+			CreateProxy();
 			NewQStyleHintReturn(version);
 		}
+		[SmokeMethod("QStyleHintReturn(int)")]
 		private void NewQStyleHintReturn(int version) {
 			ProxyQStyleHintReturn().NewQStyleHintReturn(version);
 		}
 		public QStyleHintReturn() : this((Type) null) {
-			CreateQStyleHintReturnProxy();
+			CreateProxy();
 			NewQStyleHintReturn();
 		}
+		[SmokeMethod("QStyleHintReturn()")]
 		private void NewQStyleHintReturn() {
 			ProxyQStyleHintReturn().NewQStyleHintReturn();
 		}
 		~QStyleHintReturn() {
-			ProxyQStyleHintReturn().Dispose();
+			DisposeQStyleHintReturn();
 		}
 		public void Dispose() {
-			ProxyQStyleHintReturn().Dispose();
+			DisposeQStyleHintReturn();
+		}
+		private void DisposeQStyleHintReturn() {
+			ProxyQStyleHintReturn().DisposeQStyleHintReturn();
 		}
 	}
 }

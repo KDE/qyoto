@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QTextItem")]
 	public class QTextItem : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
@@ -12,7 +13,7 @@ namespace Qt {
 		interface IQTextItemProxy {
 		}
 
-		protected void CreateQTextItemProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextItem), this);
 			_interceptor = (QTextItem) realProxy.GetTransparentProxy();
 		}
@@ -28,43 +29,53 @@ namespace Qt {
 			return (IQTextItemProxy) _staticInterceptor;
 		}
 
-		enum RenderFlag : uint {
+		public enum RenderFlag : uint {
 			RightToLeft = 0x1,
 			Overline = 0x10,
 			Underline = 0x20,
 			StrikeOut = 0x40,
 			Dummy = 0xffffffff,
 		}
+		[SmokeMethod("descent() const")]
 		public double Descent() {
 			return ProxyQTextItem().Descent();
 		}
+		[SmokeMethod("ascent() const")]
 		public double Ascent() {
 			return ProxyQTextItem().Ascent();
 		}
+		[SmokeMethod("width() const")]
 		public double Width() {
 			return ProxyQTextItem().Width();
 		}
+		[SmokeMethod("renderFlags() const")]
 		public int RenderFlags() {
 			return ProxyQTextItem().RenderFlags();
 		}
+		[SmokeMethod("text() const")]
 		public string Text() {
 			return ProxyQTextItem().Text();
 		}
+		[SmokeMethod("font() const")]
 		public QFont Font() {
 			return ProxyQTextItem().Font();
 		}
 		public QTextItem() : this((Type) null) {
-			CreateQTextItemProxy();
+			CreateProxy();
 			NewQTextItem();
 		}
+		[SmokeMethod("QTextItem()")]
 		private void NewQTextItem() {
 			ProxyQTextItem().NewQTextItem();
 		}
 		~QTextItem() {
-			ProxyQTextItem().Dispose();
+			DisposeQTextItem();
 		}
 		public void Dispose() {
-			ProxyQTextItem().Dispose();
+			DisposeQTextItem();
+		}
+		private void DisposeQTextItem() {
+			ProxyQTextItem().DisposeQTextItem();
 		}
 	}
 }

@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QWindowStateChangeEvent")]
 	public class QWindowStateChangeEvent : QEvent, IDisposable {
  		protected QWindowStateChangeEvent(Type dummy) : base((Type) null) {}
 		interface IQWindowStateChangeEventProxy {
 		}
 
-		protected void CreateQWindowStateChangeEventProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QWindowStateChangeEvent), this);
 			_interceptor = (QWindowStateChangeEvent) realProxy.GetTransparentProxy();
 		}
@@ -25,20 +26,37 @@ namespace Qt {
 		}
 
 		public QWindowStateChangeEvent(int aOldState) : this((Type) null) {
-			CreateQWindowStateChangeEventProxy();
+			CreateProxy();
 			NewQWindowStateChangeEvent(aOldState);
 		}
+		[SmokeMethod("QWindowStateChangeEvent(Qt::WindowStates)")]
 		private void NewQWindowStateChangeEvent(int aOldState) {
 			ProxyQWindowStateChangeEvent().NewQWindowStateChangeEvent(aOldState);
 		}
+		public QWindowStateChangeEvent(int aOldState, bool isOverride) : this((Type) null) {
+			CreateProxy();
+			NewQWindowStateChangeEvent(aOldState,isOverride);
+		}
+		[SmokeMethod("QWindowStateChangeEvent(Qt::WindowStates, bool)")]
+		private void NewQWindowStateChangeEvent(int aOldState, bool isOverride) {
+			ProxyQWindowStateChangeEvent().NewQWindowStateChangeEvent(aOldState,isOverride);
+		}
+		[SmokeMethod("oldState() const")]
 		public int OldState() {
 			return ProxyQWindowStateChangeEvent().OldState();
 		}
+		[SmokeMethod("isOverride() const")]
+		public bool IsOverride() {
+			return ProxyQWindowStateChangeEvent().IsOverride();
+		}
 		~QWindowStateChangeEvent() {
-			ProxyQWindowStateChangeEvent().Dispose();
+			DisposeQWindowStateChangeEvent();
 		}
 		public new void Dispose() {
-			ProxyQWindowStateChangeEvent().Dispose();
+			DisposeQWindowStateChangeEvent();
+		}
+		private void DisposeQWindowStateChangeEvent() {
+			ProxyQWindowStateChangeEvent().DisposeQWindowStateChangeEvent();
 		}
 	}
 }

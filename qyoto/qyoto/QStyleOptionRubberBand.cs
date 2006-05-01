@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QStyleOptionRubberBand")]
 	public class QStyleOptionRubberBand : QStyleOption, IDisposable {
  		protected QStyleOptionRubberBand(Type dummy) : base((Type) null) {}
 		interface IQStyleOptionRubberBandProxy {
 		}
 
-		protected void CreateQStyleOptionRubberBandProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionRubberBand), this);
 			_interceptor = (QStyleOptionRubberBand) realProxy.GetTransparentProxy();
 		}
@@ -24,36 +25,42 @@ namespace Qt {
 			return (IQStyleOptionRubberBandProxy) _staticInterceptor;
 		}
 
-		public const int Type = (int) OptionType.SO_RubberBand;
+		public const int Type = (int) QStyleOption.OptionType.SO_RubberBand;
 
 		public const int Version = 1;
 
 		public QStyleOptionRubberBand() : this((Type) null) {
-			CreateQStyleOptionRubberBandProxy();
+			CreateProxy();
 			NewQStyleOptionRubberBand();
 		}
+		[SmokeMethod("QStyleOptionRubberBand()")]
 		private void NewQStyleOptionRubberBand() {
 			ProxyQStyleOptionRubberBand().NewQStyleOptionRubberBand();
 		}
 		public QStyleOptionRubberBand(QStyleOptionRubberBand other) : this((Type) null) {
-			CreateQStyleOptionRubberBandProxy();
+			CreateProxy();
 			NewQStyleOptionRubberBand(other);
 		}
+		[SmokeMethod("QStyleOptionRubberBand(const QStyleOptionRubberBand&)")]
 		private void NewQStyleOptionRubberBand(QStyleOptionRubberBand other) {
 			ProxyQStyleOptionRubberBand().NewQStyleOptionRubberBand(other);
 		}
 		public QStyleOptionRubberBand(int version) : this((Type) null) {
-			CreateQStyleOptionRubberBandProxy();
+			CreateProxy();
 			NewQStyleOptionRubberBand(version);
 		}
+		[SmokeMethod("QStyleOptionRubberBand(int)")]
 		private void NewQStyleOptionRubberBand(int version) {
 			ProxyQStyleOptionRubberBand().NewQStyleOptionRubberBand(version);
 		}
 		~QStyleOptionRubberBand() {
-			ProxyQStyleOptionRubberBand().Dispose();
+			DisposeQStyleOptionRubberBand();
 		}
 		public void Dispose() {
-			ProxyQStyleOptionRubberBand().Dispose();
+			DisposeQStyleOptionRubberBand();
+		}
+		private void DisposeQStyleOptionRubberBand() {
+			ProxyQStyleOptionRubberBand().DisposeQStyleOptionRubberBand();
 		}
 	}
 }

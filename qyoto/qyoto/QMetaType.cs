@@ -3,17 +3,19 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QMetaType")]
 	public class QMetaType : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
  		protected QMetaType(Type dummy) {}
 		interface IQMetaTypeProxy {
+			int type(string typeName);
 			string TypeName(int type);
 			bool IsRegistered(int type);
 		}
 
-		protected void CreateQMetaTypeProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMetaType), this);
 			_interceptor = (QMetaType) realProxy.GetTransparentProxy();
 		}
@@ -29,7 +31,7 @@ namespace Qt {
 			return (IQMetaTypeProxy) _staticInterceptor;
 		}
 
-		enum E_Type {
+		public enum E_Type {
 			Void = 0,
 			Bool = 1,
 			Int = 2,
@@ -51,17 +53,24 @@ namespace Qt {
 			User = 256,
 		}
 		public QMetaType() : this((Type) null) {
-			CreateQMetaTypeProxy();
+			CreateProxy();
 			NewQMetaType();
 		}
+		[SmokeMethod("QMetaType()")]
 		private void NewQMetaType() {
 			ProxyQMetaType().NewQMetaType();
 		}
 		// void registerStreamOperators(const char* arg1,SaveOperator arg2,LoadOperator arg3); >>>> NOT CONVERTED
 		// int registerType(const char* arg1,Destructor arg2,Constructor arg3); >>>> NOT CONVERTED
+		[SmokeMethod("type(const char*)")]
+		public static int type(string typeName) {
+			return StaticQMetaType().type(typeName);
+		}
+		[SmokeMethod("typeName(int)")]
 		public static string TypeName(int type) {
 			return StaticQMetaType().TypeName(type);
 		}
+		[SmokeMethod("isRegistered(int)")]
 		public static bool IsRegistered(int type) {
 			return StaticQMetaType().IsRegistered(type);
 		}
@@ -70,10 +79,13 @@ namespace Qt {
 		// bool save(QDataStream& arg1,int arg2,const void* arg3); >>>> NOT CONVERTED
 		// bool load(QDataStream& arg1,int arg2,void* arg3); >>>> NOT CONVERTED
 		~QMetaType() {
-			ProxyQMetaType().Dispose();
+			DisposeQMetaType();
 		}
 		public void Dispose() {
-			ProxyQMetaType().Dispose();
+			DisposeQMetaType();
+		}
+		private void DisposeQMetaType() {
+			ProxyQMetaType().DisposeQMetaType();
 		}
 	}
 }

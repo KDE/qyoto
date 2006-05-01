@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QTextBlockGroup")]
 	public class QTextBlockGroup : QTextObject {
  		protected QTextBlockGroup(Type dummy) : base((Type) null) {}
 		interface IQTextBlockGroupProxy {
@@ -11,7 +12,7 @@ namespace Qt {
 			string Tr(string s);
 		}
 
-		protected void CreateQTextBlockGroupProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextBlockGroup), this);
 			_interceptor = (QTextBlockGroup) realProxy.GetTransparentProxy();
 		}
@@ -27,27 +28,38 @@ namespace Qt {
 			return (IQTextBlockGroupProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQTextBlockGroup().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQTextBlockGroup().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQTextBlockGroup().Tr(s);
 		}
 		// QTextBlockGroup* QTextBlockGroup(QTextDocument* arg1); >>>> NOT CONVERTED
+		[SmokeMethod("blockInserted(const QTextBlock&)")]
 		protected virtual void BlockInserted(QTextBlock block) {
 			ProxyQTextBlockGroup().BlockInserted(block);
 		}
+		[SmokeMethod("blockRemoved(const QTextBlock&)")]
 		protected virtual void BlockRemoved(QTextBlock block) {
 			ProxyQTextBlockGroup().BlockRemoved(block);
 		}
+		[SmokeMethod("blockFormatChanged(const QTextBlock&)")]
 		protected virtual void BlockFormatChanged(QTextBlock block) {
 			ProxyQTextBlockGroup().BlockFormatChanged(block);
 		}
 		// QList<QTextBlock> blockList(); >>>> NOT CONVERTED
+		protected new IQTextBlockGroupSignals Emit() {
+			return (IQTextBlockGroupSignals) Q_EMIT;
+		}
+	}
+
+	public interface IQTextBlockGroupSignals : IQTextObjectSignals {
 	}
 }

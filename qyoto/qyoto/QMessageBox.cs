@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QMessageBox")]
 	public class QMessageBox : QDialog, IDisposable {
  		protected QMessageBox(Type dummy) : base((Type) null) {}
 		interface IQMessageBoxProxy {
@@ -46,10 +47,10 @@ namespace Qt {
 			void About(QWidget parent, string caption, string text);
 			void AboutQt(QWidget parent, string caption);
 			void AboutQt(QWidget parent);
-			QPixmap StandardIcon(int icon);
+			QPixmap StandardIcon(QMessageBox.Icon icon);
 		}
 
-		protected void CreateQMessageBoxProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMessageBox), this);
 			_interceptor = (QMessageBox) realProxy.GetTransparentProxy();
 		}
@@ -65,14 +66,14 @@ namespace Qt {
 			return (IQMessageBoxProxy) _staticInterceptor;
 		}
 
-		enum E_Icon {
+		public enum Icon {
 			NoIcon = 0,
 			Information = 1,
 			Warning = 2,
 			Critical = 3,
 			Question = 4,
 		}
-		enum Button {
+		public enum Button {
 			NoButton = 0,
 			Ok = 1,
 			Cancel = 2,
@@ -88,219 +89,289 @@ namespace Qt {
 			Escape = 0x200,
 			FlagMask = 0x300,
 		}
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQMessageBox().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QMessageBox(QWidget parent) : this((Type) null) {
-			CreateQMessageBoxProxy();
+			CreateProxy();
 			NewQMessageBox(parent);
 		}
+		[SmokeMethod("QMessageBox(QWidget*)")]
 		private void NewQMessageBox(QWidget parent) {
 			ProxyQMessageBox().NewQMessageBox(parent);
 		}
 		public QMessageBox() : this((Type) null) {
-			CreateQMessageBoxProxy();
+			CreateProxy();
 			NewQMessageBox();
 		}
+		[SmokeMethod("QMessageBox()")]
 		private void NewQMessageBox() {
 			ProxyQMessageBox().NewQMessageBox();
 		}
-		public QMessageBox(string caption, string text, int icon, int button0, int button1, int button2, QWidget parent, int f) : this((Type) null) {
-			CreateQMessageBoxProxy();
+		public QMessageBox(string caption, string text, QMessageBox.Icon icon, int button0, int button1, int button2, QWidget parent, int f) : this((Type) null) {
+			CreateProxy();
 			NewQMessageBox(caption,text,icon,button0,button1,button2,parent,f);
 		}
-		private void NewQMessageBox(string caption, string text, int icon, int button0, int button1, int button2, QWidget parent, int f) {
+		[SmokeMethod("QMessageBox(const QString&, const QString&, QMessageBox::Icon, int, int, int, QWidget*, Qt::WFlags)")]
+		private void NewQMessageBox(string caption, string text, QMessageBox.Icon icon, int button0, int button1, int button2, QWidget parent, int f) {
 			ProxyQMessageBox().NewQMessageBox(caption,text,icon,button0,button1,button2,parent,f);
 		}
-		public QMessageBox(string caption, string text, int icon, int button0, int button1, int button2, QWidget parent) : this((Type) null) {
-			CreateQMessageBoxProxy();
+		public QMessageBox(string caption, string text, QMessageBox.Icon icon, int button0, int button1, int button2, QWidget parent) : this((Type) null) {
+			CreateProxy();
 			NewQMessageBox(caption,text,icon,button0,button1,button2,parent);
 		}
-		private void NewQMessageBox(string caption, string text, int icon, int button0, int button1, int button2, QWidget parent) {
+		[SmokeMethod("QMessageBox(const QString&, const QString&, QMessageBox::Icon, int, int, int, QWidget*)")]
+		private void NewQMessageBox(string caption, string text, QMessageBox.Icon icon, int button0, int button1, int button2, QWidget parent) {
 			ProxyQMessageBox().NewQMessageBox(caption,text,icon,button0,button1,button2,parent);
 		}
-		public QMessageBox(string caption, string text, int icon, int button0, int button1, int button2) : this((Type) null) {
-			CreateQMessageBoxProxy();
+		public QMessageBox(string caption, string text, QMessageBox.Icon icon, int button0, int button1, int button2) : this((Type) null) {
+			CreateProxy();
 			NewQMessageBox(caption,text,icon,button0,button1,button2);
 		}
-		private void NewQMessageBox(string caption, string text, int icon, int button0, int button1, int button2) {
+		[SmokeMethod("QMessageBox(const QString&, const QString&, QMessageBox::Icon, int, int, int)")]
+		private void NewQMessageBox(string caption, string text, QMessageBox.Icon icon, int button0, int button1, int button2) {
 			ProxyQMessageBox().NewQMessageBox(caption,text,icon,button0,button1,button2);
 		}
+		[SmokeMethod("text() const")]
 		public string Text() {
 			return ProxyQMessageBox().Text();
 		}
+		[SmokeMethod("setText(const QString&)")]
 		public void SetText(string arg1) {
 			ProxyQMessageBox().SetText(arg1);
 		}
-		public int IconId() {
+		[SmokeMethod("icon() const")]
+		public QMessageBox.Icon IconId() {
 			return ProxyQMessageBox().IconId();
 		}
-		public void SetIcon(int arg1) {
+		[SmokeMethod("setIcon(QMessageBox::Icon)")]
+		public void SetIcon(QMessageBox.Icon arg1) {
 			ProxyQMessageBox().SetIcon(arg1);
 		}
+		[SmokeMethod("iconPixmap() const")]
 		public QPixmap IconPixmap() {
 			return ProxyQMessageBox().IconPixmap();
 		}
+		[SmokeMethod("setIconPixmap(const QPixmap&)")]
 		public void SetIconPixmap(QPixmap arg1) {
 			ProxyQMessageBox().SetIconPixmap(arg1);
 		}
+		[SmokeMethod("buttonText(int) const")]
 		public string ButtonText(int button) {
 			return ProxyQMessageBox().ButtonText(button);
 		}
+		[SmokeMethod("setButtonText(int, const QString&)")]
 		public void SetButtonText(int button, string arg2) {
 			ProxyQMessageBox().SetButtonText(button,arg2);
 		}
-		public int TextFormat() {
+		[SmokeMethod("textFormat() const")]
+		public Qt.TextFormat TextFormat() {
 			return ProxyQMessageBox().TextFormat();
 		}
-		public void SetTextFormat(int arg1) {
+		[SmokeMethod("setTextFormat(Qt::TextFormat)")]
+		public void SetTextFormat(Qt.TextFormat arg1) {
 			ProxyQMessageBox().SetTextFormat(arg1);
 		}
+		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {
 			return ProxyQMessageBox().SizeHint();
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQMessageBox().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQMessageBox().Tr(s);
 		}
+		[SmokeMethod("information(QWidget*, const QString&, const QString&, int, int, int)")]
 		public static int Information(QWidget parent, string caption, string text, int button0, int button1, int button2) {
 			return StaticQMessageBox().Information(parent,caption,text,button0,button1,button2);
 		}
+		[SmokeMethod("information(QWidget*, const QString&, const QString&, int, int)")]
 		public static int Information(QWidget parent, string caption, string text, int button0, int button1) {
 			return StaticQMessageBox().Information(parent,caption,text,button0,button1);
 		}
+		[SmokeMethod("information(QWidget*, const QString&, const QString&, int)")]
 		public static int Information(QWidget parent, string caption, string text, int button0) {
 			return StaticQMessageBox().Information(parent,caption,text,button0);
 		}
+		[SmokeMethod("information(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&, int, int)")]
 		public static int Information(QWidget parent, string caption, string text, string button0Text, string button1Text, string button2Text, int defaultButtonNumber, int escapeButtonNumber) {
 			return StaticQMessageBox().Information(parent,caption,text,button0Text,button1Text,button2Text,defaultButtonNumber,escapeButtonNumber);
 		}
+		[SmokeMethod("information(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&, int)")]
 		public static int Information(QWidget parent, string caption, string text, string button0Text, string button1Text, string button2Text, int defaultButtonNumber) {
 			return StaticQMessageBox().Information(parent,caption,text,button0Text,button1Text,button2Text,defaultButtonNumber);
 		}
+		[SmokeMethod("information(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&)")]
 		public static int Information(QWidget parent, string caption, string text, string button0Text, string button1Text, string button2Text) {
 			return StaticQMessageBox().Information(parent,caption,text,button0Text,button1Text,button2Text);
 		}
+		[SmokeMethod("information(QWidget*, const QString&, const QString&, const QString&, const QString&)")]
 		public static int Information(QWidget parent, string caption, string text, string button0Text, string button1Text) {
 			return StaticQMessageBox().Information(parent,caption,text,button0Text,button1Text);
 		}
+		[SmokeMethod("information(QWidget*, const QString&, const QString&, const QString&)")]
 		public static int Information(QWidget parent, string caption, string text, string button0Text) {
 			return StaticQMessageBox().Information(parent,caption,text,button0Text);
 		}
+		[SmokeMethod("information(QWidget*, const QString&, const QString&)")]
 		public static int Information(QWidget parent, string caption, string text) {
 			return StaticQMessageBox().Information(parent,caption,text);
 		}
+		[SmokeMethod("question(QWidget*, const QString&, const QString&, int, int, int)")]
 		public static int Question(QWidget parent, string caption, string text, int button0, int button1, int button2) {
 			return StaticQMessageBox().Question(parent,caption,text,button0,button1,button2);
 		}
+		[SmokeMethod("question(QWidget*, const QString&, const QString&, int, int)")]
 		public static int Question(QWidget parent, string caption, string text, int button0, int button1) {
 			return StaticQMessageBox().Question(parent,caption,text,button0,button1);
 		}
+		[SmokeMethod("question(QWidget*, const QString&, const QString&, int)")]
 		public static int Question(QWidget parent, string caption, string text, int button0) {
 			return StaticQMessageBox().Question(parent,caption,text,button0);
 		}
+		[SmokeMethod("question(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&, int, int)")]
 		public static int Question(QWidget parent, string caption, string text, string button0Text, string button1Text, string button2Text, int defaultButtonNumber, int escapeButtonNumber) {
 			return StaticQMessageBox().Question(parent,caption,text,button0Text,button1Text,button2Text,defaultButtonNumber,escapeButtonNumber);
 		}
+		[SmokeMethod("question(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&, int)")]
 		public static int Question(QWidget parent, string caption, string text, string button0Text, string button1Text, string button2Text, int defaultButtonNumber) {
 			return StaticQMessageBox().Question(parent,caption,text,button0Text,button1Text,button2Text,defaultButtonNumber);
 		}
+		[SmokeMethod("question(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&)")]
 		public static int Question(QWidget parent, string caption, string text, string button0Text, string button1Text, string button2Text) {
 			return StaticQMessageBox().Question(parent,caption,text,button0Text,button1Text,button2Text);
 		}
+		[SmokeMethod("question(QWidget*, const QString&, const QString&, const QString&, const QString&)")]
 		public static int Question(QWidget parent, string caption, string text, string button0Text, string button1Text) {
 			return StaticQMessageBox().Question(parent,caption,text,button0Text,button1Text);
 		}
+		[SmokeMethod("question(QWidget*, const QString&, const QString&, const QString&)")]
 		public static int Question(QWidget parent, string caption, string text, string button0Text) {
 			return StaticQMessageBox().Question(parent,caption,text,button0Text);
 		}
+		[SmokeMethod("question(QWidget*, const QString&, const QString&)")]
 		public static int Question(QWidget parent, string caption, string text) {
 			return StaticQMessageBox().Question(parent,caption,text);
 		}
+		[SmokeMethod("warning(QWidget*, const QString&, const QString&, int, int, int)")]
 		public static int Warning(QWidget parent, string caption, string text, int button0, int button1, int button2) {
 			return StaticQMessageBox().Warning(parent,caption,text,button0,button1,button2);
 		}
+		[SmokeMethod("warning(QWidget*, const QString&, const QString&, int, int)")]
 		public static int Warning(QWidget parent, string caption, string text, int button0, int button1) {
 			return StaticQMessageBox().Warning(parent,caption,text,button0,button1);
 		}
+		[SmokeMethod("warning(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&, int, int)")]
 		public static int Warning(QWidget parent, string caption, string text, string button0Text, string button1Text, string button2Text, int defaultButtonNumber, int escapeButtonNumber) {
 			return StaticQMessageBox().Warning(parent,caption,text,button0Text,button1Text,button2Text,defaultButtonNumber,escapeButtonNumber);
 		}
+		[SmokeMethod("warning(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&, int)")]
 		public static int Warning(QWidget parent, string caption, string text, string button0Text, string button1Text, string button2Text, int defaultButtonNumber) {
 			return StaticQMessageBox().Warning(parent,caption,text,button0Text,button1Text,button2Text,defaultButtonNumber);
 		}
+		[SmokeMethod("warning(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&)")]
 		public static int Warning(QWidget parent, string caption, string text, string button0Text, string button1Text, string button2Text) {
 			return StaticQMessageBox().Warning(parent,caption,text,button0Text,button1Text,button2Text);
 		}
+		[SmokeMethod("warning(QWidget*, const QString&, const QString&, const QString&, const QString&)")]
 		public static int Warning(QWidget parent, string caption, string text, string button0Text, string button1Text) {
 			return StaticQMessageBox().Warning(parent,caption,text,button0Text,button1Text);
 		}
+		[SmokeMethod("warning(QWidget*, const QString&, const QString&, const QString&)")]
 		public static int Warning(QWidget parent, string caption, string text, string button0Text) {
 			return StaticQMessageBox().Warning(parent,caption,text,button0Text);
 		}
+		[SmokeMethod("warning(QWidget*, const QString&, const QString&)")]
 		public static int Warning(QWidget parent, string caption, string text) {
 			return StaticQMessageBox().Warning(parent,caption,text);
 		}
+		[SmokeMethod("critical(QWidget*, const QString&, const QString&, int, int, int)")]
 		public static int Critical(QWidget parent, string caption, string text, int button0, int button1, int button2) {
 			return StaticQMessageBox().Critical(parent,caption,text,button0,button1,button2);
 		}
+		[SmokeMethod("critical(QWidget*, const QString&, const QString&, int, int)")]
 		public static int Critical(QWidget parent, string caption, string text, int button0, int button1) {
 			return StaticQMessageBox().Critical(parent,caption,text,button0,button1);
 		}
+		[SmokeMethod("critical(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&, int, int)")]
 		public static int Critical(QWidget parent, string caption, string text, string button0Text, string button1Text, string button2Text, int defaultButtonNumber, int escapeButtonNumber) {
 			return StaticQMessageBox().Critical(parent,caption,text,button0Text,button1Text,button2Text,defaultButtonNumber,escapeButtonNumber);
 		}
+		[SmokeMethod("critical(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&, int)")]
 		public static int Critical(QWidget parent, string caption, string text, string button0Text, string button1Text, string button2Text, int defaultButtonNumber) {
 			return StaticQMessageBox().Critical(parent,caption,text,button0Text,button1Text,button2Text,defaultButtonNumber);
 		}
+		[SmokeMethod("critical(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&)")]
 		public static int Critical(QWidget parent, string caption, string text, string button0Text, string button1Text, string button2Text) {
 			return StaticQMessageBox().Critical(parent,caption,text,button0Text,button1Text,button2Text);
 		}
+		[SmokeMethod("critical(QWidget*, const QString&, const QString&, const QString&, const QString&)")]
 		public static int Critical(QWidget parent, string caption, string text, string button0Text, string button1Text) {
 			return StaticQMessageBox().Critical(parent,caption,text,button0Text,button1Text);
 		}
+		[SmokeMethod("critical(QWidget*, const QString&, const QString&, const QString&)")]
 		public static int Critical(QWidget parent, string caption, string text, string button0Text) {
 			return StaticQMessageBox().Critical(parent,caption,text,button0Text);
 		}
+		[SmokeMethod("critical(QWidget*, const QString&, const QString&)")]
 		public static int Critical(QWidget parent, string caption, string text) {
 			return StaticQMessageBox().Critical(parent,caption,text);
 		}
+		[SmokeMethod("about(QWidget*, const QString&, const QString&)")]
 		public static void About(QWidget parent, string caption, string text) {
 			StaticQMessageBox().About(parent,caption,text);
 		}
+		[SmokeMethod("aboutQt(QWidget*, const QString&)")]
 		public static void AboutQt(QWidget parent, string caption) {
 			StaticQMessageBox().AboutQt(parent,caption);
 		}
+		[SmokeMethod("aboutQt(QWidget*)")]
 		public static void AboutQt(QWidget parent) {
 			StaticQMessageBox().AboutQt(parent);
 		}
-		public static QPixmap StandardIcon(int icon) {
+		[SmokeMethod("standardIcon(QMessageBox::Icon)")]
+		public static QPixmap StandardIcon(QMessageBox.Icon icon) {
 			return StaticQMessageBox().StandardIcon(icon);
 		}
+		[SmokeMethod("resizeEvent(QResizeEvent*)")]
 		protected new void ResizeEvent(QResizeEvent arg1) {
 			ProxyQMessageBox().ResizeEvent(arg1);
 		}
+		[SmokeMethod("showEvent(QShowEvent*)")]
 		public new void ShowEvent(QShowEvent arg1) {
 			ProxyQMessageBox().ShowEvent(arg1);
 		}
+		[SmokeMethod("closeEvent(QCloseEvent*)")]
 		protected new void CloseEvent(QCloseEvent arg1) {
 			ProxyQMessageBox().CloseEvent(arg1);
 		}
+		[SmokeMethod("keyPressEvent(QKeyEvent*)")]
 		protected new void KeyPressEvent(QKeyEvent arg1) {
 			ProxyQMessageBox().KeyPressEvent(arg1);
 		}
+		[SmokeMethod("changeEvent(QEvent*)")]
 		protected new void ChangeEvent(QEvent arg1) {
 			ProxyQMessageBox().ChangeEvent(arg1);
 		}
 		~QMessageBox() {
-			ProxyQMessageBox().Dispose();
+			DisposeQMessageBox();
 		}
 		public new void Dispose() {
-			ProxyQMessageBox().Dispose();
+			DisposeQMessageBox();
 		}
+		private void DisposeQMessageBox() {
+			ProxyQMessageBox().DisposeQMessageBox();
+		}
+		protected new IQMessageBoxSignals Emit() {
+			return (IQMessageBoxSignals) Q_EMIT;
+		}
+	}
+
+	public interface IQMessageBoxSignals : IQDialogSignals {
 	}
 }

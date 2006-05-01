@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QDragEnterEvent")]
 	public class QDragEnterEvent : QDragMoveEvent, IDisposable {
  		protected QDragEnterEvent(Type dummy) : base((Type) null) {}
 		interface IQDragEnterEventProxy {
 		}
 
-		protected void CreateQDragEnterEventProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDragEnterEvent), this);
 			_interceptor = (QDragEnterEvent) realProxy.GetTransparentProxy();
 		}
@@ -25,17 +26,21 @@ namespace Qt {
 		}
 
 		public QDragEnterEvent(QPoint pos, int actions, QMimeData data, int buttons, int modifiers) : this((Type) null) {
-			CreateQDragEnterEventProxy();
+			CreateProxy();
 			NewQDragEnterEvent(pos,actions,data,buttons,modifiers);
 		}
+		[SmokeMethod("QDragEnterEvent(const QPoint&, Qt::DropActions, const QMimeData*, Qt::MouseButtons, Qt::KeyboardModifiers)")]
 		private void NewQDragEnterEvent(QPoint pos, int actions, QMimeData data, int buttons, int modifiers) {
 			ProxyQDragEnterEvent().NewQDragEnterEvent(pos,actions,data,buttons,modifiers);
 		}
 		~QDragEnterEvent() {
-			ProxyQDragEnterEvent().Dispose();
+			DisposeQDragEnterEvent();
 		}
 		public new void Dispose() {
-			ProxyQDragEnterEvent().Dispose();
+			DisposeQDragEnterEvent();
+		}
+		private void DisposeQDragEnterEvent() {
+			ProxyQDragEnterEvent().DisposeQDragEnterEvent();
 		}
 	}
 }

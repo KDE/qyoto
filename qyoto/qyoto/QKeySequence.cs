@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QKeySequence")]
 	public class QKeySequence : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
@@ -15,10 +16,12 @@ namespace Qt {
 			bool op_gt(QKeySequence lhs, QKeySequence other);
 			bool op_lte(QKeySequence lhs, QKeySequence other);
 			bool op_gte(QKeySequence lhs, QKeySequence other);
+			QKeySequence FromString(string str, QKeySequence.SequenceFormat format);
+			QKeySequence FromString(string str);
 			QKeySequence Mnemonic(string text);
 		}
 
-		protected void CreateQKeySequenceProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QKeySequence), this);
 			_interceptor = (QKeySequence) realProxy.GetTransparentProxy();
 		}
@@ -34,72 +37,95 @@ namespace Qt {
 			return (IQKeySequenceProxy) _staticInterceptor;
 		}
 
-		enum SequenceMatch {
+		public enum SequenceMatch {
 			NoMatch = 0,
 			PartialMatch = 1,
 			ExactMatch = 2,
 		}
+		public enum SequenceFormat {
+			NativeText = 0,
+			PortableText = 1,
+		}
 		public QKeySequence() : this((Type) null) {
-			CreateQKeySequenceProxy();
+			CreateProxy();
 			NewQKeySequence();
 		}
+		[SmokeMethod("QKeySequence()")]
 		private void NewQKeySequence() {
 			ProxyQKeySequence().NewQKeySequence();
 		}
 		public QKeySequence(string key) : this((Type) null) {
-			CreateQKeySequenceProxy();
+			CreateProxy();
 			NewQKeySequence(key);
 		}
+		[SmokeMethod("QKeySequence(const QString&)")]
 		private void NewQKeySequence(string key) {
 			ProxyQKeySequence().NewQKeySequence(key);
 		}
 		public QKeySequence(int k1, int k2, int k3, int k4) : this((Type) null) {
-			CreateQKeySequenceProxy();
+			CreateProxy();
 			NewQKeySequence(k1,k2,k3,k4);
 		}
+		[SmokeMethod("QKeySequence(int, int, int, int)")]
 		private void NewQKeySequence(int k1, int k2, int k3, int k4) {
 			ProxyQKeySequence().NewQKeySequence(k1,k2,k3,k4);
 		}
 		public QKeySequence(int k1, int k2, int k3) : this((Type) null) {
-			CreateQKeySequenceProxy();
+			CreateProxy();
 			NewQKeySequence(k1,k2,k3);
 		}
+		[SmokeMethod("QKeySequence(int, int, int)")]
 		private void NewQKeySequence(int k1, int k2, int k3) {
 			ProxyQKeySequence().NewQKeySequence(k1,k2,k3);
 		}
 		public QKeySequence(int k1, int k2) : this((Type) null) {
-			CreateQKeySequenceProxy();
+			CreateProxy();
 			NewQKeySequence(k1,k2);
 		}
+		[SmokeMethod("QKeySequence(int, int)")]
 		private void NewQKeySequence(int k1, int k2) {
 			ProxyQKeySequence().NewQKeySequence(k1,k2);
 		}
 		public QKeySequence(int k1) : this((Type) null) {
-			CreateQKeySequenceProxy();
+			CreateProxy();
 			NewQKeySequence(k1);
 		}
+		[SmokeMethod("QKeySequence(int)")]
 		private void NewQKeySequence(int k1) {
 			ProxyQKeySequence().NewQKeySequence(k1);
 		}
 		public QKeySequence(QKeySequence ks) : this((Type) null) {
-			CreateQKeySequenceProxy();
+			CreateProxy();
 			NewQKeySequence(ks);
 		}
+		[SmokeMethod("QKeySequence(const QKeySequence&)")]
 		private void NewQKeySequence(QKeySequence ks) {
 			ProxyQKeySequence().NewQKeySequence(ks);
 		}
+		[SmokeMethod("count() const")]
 		public uint Count() {
 			return ProxyQKeySequence().Count();
 		}
+		[SmokeMethod("isEmpty() const")]
 		public bool IsEmpty() {
 			return ProxyQKeySequence().IsEmpty();
 		}
-		public int Matches(QKeySequence seq) {
+		[SmokeMethod("toString(QKeySequence::SequenceFormat) const")]
+		public new string ToString(QKeySequence.SequenceFormat format) {
+			return ProxyQKeySequence().ToString(format);
+		}
+		[SmokeMethod("toString() const")]
+		public new string ToString() {
+			return ProxyQKeySequence().ToString();
+		}
+		[SmokeMethod("matches(const QKeySequence&) const")]
+		public QKeySequence.SequenceMatch Matches(QKeySequence seq) {
 			return ProxyQKeySequence().Matches(seq);
 		}
 		//  operator QString(); >>>> NOT CONVERTED
 		//  operator QVariant(); >>>> NOT CONVERTED
 		//  operator int(); >>>> NOT CONVERTED
+		[SmokeMethod("operator==(const QKeySequence&) const")]
 		public static bool operator==(QKeySequence lhs, QKeySequence other) {
 			return StaticQKeySequence().op_equals(lhs,other);
 		}
@@ -113,29 +139,46 @@ namespace Qt {
 		public override int GetHashCode() {
 			return ProxyQKeySequence().GetHashCode();
 		}
+		[SmokeMethod("operator<(const QKeySequence&) const")]
 		public static bool operator<(QKeySequence lhs, QKeySequence ks) {
 			return StaticQKeySequence().op_lt(lhs,ks);
 		}
+		[SmokeMethod("operator>(const QKeySequence&) const")]
 		public static bool operator>(QKeySequence lhs, QKeySequence other) {
 			return StaticQKeySequence().op_gt(lhs,other);
 		}
+		[SmokeMethod("operator<=(const QKeySequence&) const")]
 		public static bool operator<=(QKeySequence lhs, QKeySequence other) {
 			return StaticQKeySequence().op_lte(lhs,other);
 		}
+		[SmokeMethod("operator>=(const QKeySequence&) const")]
 		public static bool operator>=(QKeySequence lhs, QKeySequence other) {
 			return StaticQKeySequence().op_gte(lhs,other);
 		}
+		[SmokeMethod("isDetached() const")]
 		public bool IsDetached() {
 			return ProxyQKeySequence().IsDetached();
 		}
+		[SmokeMethod("fromString(const QString&, QKeySequence::SequenceFormat)")]
+		public static QKeySequence FromString(string str, QKeySequence.SequenceFormat format) {
+			return StaticQKeySequence().FromString(str,format);
+		}
+		[SmokeMethod("fromString(const QString&)")]
+		public static QKeySequence FromString(string str) {
+			return StaticQKeySequence().FromString(str);
+		}
+		[SmokeMethod("mnemonic(const QString&)")]
 		public static QKeySequence Mnemonic(string text) {
 			return StaticQKeySequence().Mnemonic(text);
 		}
 		~QKeySequence() {
-			ProxyQKeySequence().Dispose();
+			DisposeQKeySequence();
 		}
 		public void Dispose() {
-			ProxyQKeySequence().Dispose();
+			DisposeQKeySequence();
+		}
+		private void DisposeQKeySequence() {
+			ProxyQKeySequence().DisposeQKeySequence();
 		}
 	}
 }

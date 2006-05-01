@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QRegExpValidator")]
 	public class QRegExpValidator : QValidator, IDisposable {
  		protected QRegExpValidator(Type dummy) : base((Type) null) {}
 		interface IQRegExpValidatorProxy {
@@ -11,7 +12,7 @@ namespace Qt {
 			string Tr(string s);
 		}
 
-		protected void CreateQRegExpValidatorProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QRegExpValidator), this);
 			_interceptor = (QRegExpValidator) realProxy.GetTransparentProxy();
 		}
@@ -27,45 +28,61 @@ namespace Qt {
 			return (IQRegExpValidatorProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQRegExpValidator().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QRegExpValidator(QObject parent) : this((Type) null) {
-			CreateQRegExpValidatorProxy();
+			CreateProxy();
 			NewQRegExpValidator(parent);
 		}
+		[SmokeMethod("QRegExpValidator(QObject*)")]
 		private void NewQRegExpValidator(QObject parent) {
 			ProxyQRegExpValidator().NewQRegExpValidator(parent);
 		}
 		public QRegExpValidator(QRegExp rx, QObject parent) : this((Type) null) {
-			CreateQRegExpValidatorProxy();
+			CreateProxy();
 			NewQRegExpValidator(rx,parent);
 		}
+		[SmokeMethod("QRegExpValidator(const QRegExp&, QObject*)")]
 		private void NewQRegExpValidator(QRegExp rx, QObject parent) {
 			ProxyQRegExpValidator().NewQRegExpValidator(rx,parent);
 		}
+		[SmokeMethod("validate(QString&, int&) const")]
 		public new virtual int Validate(StringBuilder input, out int pos) {
 			return ProxyQRegExpValidator().Validate(input,out pos);
 		}
+		[SmokeMethod("setRegExp(const QRegExp&)")]
 		public void SetRegExp(QRegExp rx) {
 			ProxyQRegExpValidator().SetRegExp(rx);
 		}
+		[SmokeMethod("regExp() const")]
 		public QRegExp RegExp() {
 			return ProxyQRegExpValidator().RegExp();
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQRegExpValidator().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQRegExpValidator().Tr(s);
 		}
 		~QRegExpValidator() {
-			ProxyQRegExpValidator().Dispose();
+			DisposeQRegExpValidator();
 		}
 		public new void Dispose() {
-			ProxyQRegExpValidator().Dispose();
+			DisposeQRegExpValidator();
 		}
+		private void DisposeQRegExpValidator() {
+			ProxyQRegExpValidator().DisposeQRegExpValidator();
+		}
+		protected new IQRegExpValidatorSignals Emit() {
+			return (IQRegExpValidatorSignals) Q_EMIT;
+		}
+	}
+
+	public interface IQRegExpValidatorSignals : IQValidatorSignals {
 	}
 }

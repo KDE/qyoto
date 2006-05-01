@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QBitRef")]
 	public class QBitRef : MarshalByRefObject {
 		protected Object _interceptor = null;
  
@@ -12,7 +13,7 @@ namespace Qt {
 			bool op_not(QBitRef lhs);
 		}
 
-		protected void CreateQBitRefProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QBitRef), this);
 			_interceptor = (QBitRef) realProxy.GetTransparentProxy();
 		}
@@ -29,8 +30,18 @@ namespace Qt {
 		}
 
 		//  operator bool(); >>>> NOT CONVERTED
+		[SmokeMethod("operator!() const")]
 		public static bool operator!(QBitRef lhs) {
 			return StaticQBitRef().op_not(lhs);
+		}
+		~QBitRef() {
+			DisposeQBitRef();
+		}
+		public void Dispose() {
+			DisposeQBitRef();
+		}
+		private void DisposeQBitRef() {
+			ProxyQBitRef().DisposeQBitRef();
 		}
 	}
 }

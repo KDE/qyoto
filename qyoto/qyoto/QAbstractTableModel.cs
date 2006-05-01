@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QAbstractTableModel")]
 	public class QAbstractTableModel : QAbstractItemModel, IDisposable {
  		protected QAbstractTableModel(Type dummy) : base((Type) null) {}
 		interface IQAbstractTableModelProxy {
@@ -11,7 +12,7 @@ namespace Qt {
 			string Tr(string s);
 		}
 
-		protected void CreateQAbstractTableModelProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAbstractTableModel), this);
 			_interceptor = (QAbstractTableModel) realProxy.GetTransparentProxy();
 		}
@@ -27,42 +28,61 @@ namespace Qt {
 			return (IQAbstractTableModelProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQAbstractTableModel().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QAbstractTableModel(QObject parent) : this((Type) null) {
-			CreateQAbstractTableModelProxy();
+			CreateProxy();
 			NewQAbstractTableModel(parent);
 		}
+		[SmokeMethod("QAbstractTableModel(QObject*)")]
 		private void NewQAbstractTableModel(QObject parent) {
 			ProxyQAbstractTableModel().NewQAbstractTableModel(parent);
 		}
 		public QAbstractTableModel() : this((Type) null) {
-			CreateQAbstractTableModelProxy();
+			CreateProxy();
 			NewQAbstractTableModel();
 		}
+		[SmokeMethod("QAbstractTableModel()")]
 		private void NewQAbstractTableModel() {
 			ProxyQAbstractTableModel().NewQAbstractTableModel();
 		}
+		[SmokeMethod("index(int, int, const QModelIndex&) const")]
 		public new QModelIndex Index(int row, int column, QModelIndex parent) {
 			return ProxyQAbstractTableModel().Index(row,column,parent);
 		}
+		[SmokeMethod("index(int, int) const")]
 		public new QModelIndex Index(int row, int column) {
 			return ProxyQAbstractTableModel().Index(row,column);
 		}
+		[SmokeMethod("dropMimeData(const QMimeData*, Qt::DropAction, int, int, const QModelIndex&)")]
+		public new bool DropMimeData(QMimeData data, Qt.DropAction action, int row, int column, QModelIndex parent) {
+			return ProxyQAbstractTableModel().DropMimeData(data,action,row,column,parent);
+		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQAbstractTableModel().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQAbstractTableModel().Tr(s);
 		}
 		~QAbstractTableModel() {
-			ProxyQAbstractTableModel().Dispose();
+			DisposeQAbstractTableModel();
 		}
 		public new void Dispose() {
-			ProxyQAbstractTableModel().Dispose();
+			DisposeQAbstractTableModel();
 		}
+		private void DisposeQAbstractTableModel() {
+			ProxyQAbstractTableModel().DisposeQAbstractTableModel();
+		}
+		protected new IQAbstractTableModelSignals Emit() {
+			return (IQAbstractTableModelSignals) Q_EMIT;
+		}
+	}
+
+	public interface IQAbstractTableModelSignals : IQAbstractItemModelSignals {
 	}
 }

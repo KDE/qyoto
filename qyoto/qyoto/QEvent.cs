@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QEvent")]
 	public class QEvent : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
@@ -11,7 +12,7 @@ namespace Qt {
 		interface IQEventProxy {
 		}
 
-		protected void CreateQEventProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QEvent), this);
 			_interceptor = (QEvent) realProxy.GetTransparentProxy();
 		}
@@ -27,7 +28,7 @@ namespace Qt {
 			return (IQEventProxy) _staticInterceptor;
 		}
 
-		enum E_Type {
+		public enum E_Type {
 			None = 0,
 			Timer = 1,
 			MouseButtonPress = 2,
@@ -83,6 +84,7 @@ namespace Qt {
 			Polish = 75,
 			LayoutRequest = 76,
 			UpdateRequest = 77,
+			UpdateLater = 78,
 			EmbeddingControl = 79,
 			ActivateControl = 80,
 			DeactivateControl = 81,
@@ -131,36 +133,52 @@ namespace Qt {
 			HoverMove = 129,
 			AccessibilityHelp = 119,
 			AccessibilityDescription = 130,
+			AcceptDropsChange = 152,
+			MenubarUpdated = 153,
+			ZeroTimerEvent = 154,
 			User = 1000,
 			MaxUser = 65535,
 		}
-		public QEvent(int type) : this((Type) null) {
-			CreateQEventProxy();
+		public QEvent(QEvent.E_Type type) : this((Type) null) {
+			CreateProxy();
 			NewQEvent(type);
 		}
-		private void NewQEvent(int type) {
+		[SmokeMethod("QEvent(QEvent::Type)")]
+		private void NewQEvent(QEvent.E_Type type) {
 			ProxyQEvent().NewQEvent(type);
 		}
+		[SmokeMethod("type() const")]
+		public QEvent.E_Type type() {
+			return ProxyQEvent().type();
+		}
+		[SmokeMethod("spontaneous() const")]
 		public bool Spontaneous() {
 			return ProxyQEvent().Spontaneous();
 		}
+		[SmokeMethod("setAccepted(bool)")]
 		public void SetAccepted(bool accepted) {
 			ProxyQEvent().SetAccepted(accepted);
 		}
+		[SmokeMethod("isAccepted() const")]
 		public bool IsAccepted() {
 			return ProxyQEvent().IsAccepted();
 		}
+		[SmokeMethod("accept()")]
 		public void Accept() {
 			ProxyQEvent().Accept();
 		}
+		[SmokeMethod("ignore()")]
 		public void Ignore() {
 			ProxyQEvent().Ignore();
 		}
 		~QEvent() {
-			ProxyQEvent().Dispose();
+			DisposeQEvent();
 		}
 		public void Dispose() {
-			ProxyQEvent().Dispose();
+			DisposeQEvent();
+		}
+		private void DisposeQEvent() {
+			ProxyQEvent().DisposeQEvent();
 		}
 	}
 }

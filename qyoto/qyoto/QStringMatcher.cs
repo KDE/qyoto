@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QStringMatcher")]
 	public class QStringMatcher : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
@@ -12,7 +13,7 @@ namespace Qt {
 		interface IQStringMatcherProxy {
 		}
 
-		protected void CreateQStringMatcherProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStringMatcher), this);
 			_interceptor = (QStringMatcher) realProxy.GetTransparentProxy();
 		}
@@ -29,49 +30,61 @@ namespace Qt {
 		}
 
 		public QStringMatcher() : this((Type) null) {
-			CreateQStringMatcherProxy();
+			CreateProxy();
 			NewQStringMatcher();
 		}
+		[SmokeMethod("QStringMatcher()")]
 		private void NewQStringMatcher() {
 			ProxyQStringMatcher().NewQStringMatcher();
 		}
-		public QStringMatcher(string pattern, int cs) : this((Type) null) {
-			CreateQStringMatcherProxy();
+		public QStringMatcher(string pattern, Qt.CaseSensitivity cs) : this((Type) null) {
+			CreateProxy();
 			NewQStringMatcher(pattern,cs);
 		}
-		private void NewQStringMatcher(string pattern, int cs) {
+		[SmokeMethod("QStringMatcher(const QString&, Qt::CaseSensitivity)")]
+		private void NewQStringMatcher(string pattern, Qt.CaseSensitivity cs) {
 			ProxyQStringMatcher().NewQStringMatcher(pattern,cs);
 		}
 		public QStringMatcher(string pattern) : this((Type) null) {
-			CreateQStringMatcherProxy();
+			CreateProxy();
 			NewQStringMatcher(pattern);
 		}
+		[SmokeMethod("QStringMatcher(const QString&)")]
 		private void NewQStringMatcher(string pattern) {
 			ProxyQStringMatcher().NewQStringMatcher(pattern);
 		}
+		[SmokeMethod("setPattern(const QString&)")]
 		public void SetPattern(string pattern) {
 			ProxyQStringMatcher().SetPattern(pattern);
 		}
-		public void SetCaseSensitivity(int cs) {
+		[SmokeMethod("setCaseSensitivity(Qt::CaseSensitivity)")]
+		public void SetCaseSensitivity(Qt.CaseSensitivity cs) {
 			ProxyQStringMatcher().SetCaseSensitivity(cs);
 		}
+		[SmokeMethod("indexIn(const QString&, int) const")]
 		public int IndexIn(string str, int from) {
 			return ProxyQStringMatcher().IndexIn(str,from);
 		}
+		[SmokeMethod("indexIn(const QString&) const")]
 		public int IndexIn(string str) {
 			return ProxyQStringMatcher().IndexIn(str);
 		}
+		[SmokeMethod("pattern() const")]
 		public string Pattern() {
 			return ProxyQStringMatcher().Pattern();
 		}
-		public int CaseSensitivity() {
+		[SmokeMethod("caseSensitivity() const")]
+		public Qt.CaseSensitivity CaseSensitivity() {
 			return ProxyQStringMatcher().CaseSensitivity();
 		}
 		~QStringMatcher() {
-			ProxyQStringMatcher().Dispose();
+			DisposeQStringMatcher();
 		}
 		public void Dispose() {
-			ProxyQStringMatcher().Dispose();
+			DisposeQStringMatcher();
+		}
+		private void DisposeQStringMatcher() {
+			ProxyQStringMatcher().DisposeQStringMatcher();
 		}
 	}
 }

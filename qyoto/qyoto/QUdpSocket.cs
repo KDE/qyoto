@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QUdpSocket")]
 	public class QUdpSocket : QAbstractSocket, IDisposable {
  		protected QUdpSocket(Type dummy) : base((Type) null) {}
 		interface IQUdpSocketProxy {
@@ -11,7 +12,7 @@ namespace Qt {
 			string Tr(string s);
 		}
 
-		protected void CreateQUdpSocketProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QUdpSocket), this);
 			_interceptor = (QUdpSocket) realProxy.GetTransparentProxy();
 		}
@@ -27,34 +28,48 @@ namespace Qt {
 			return (IQUdpSocketProxy) _staticInterceptor;
 		}
 
+		public enum BindFlag {
+			DefaultForPlatform = 0x0,
+			ShareAddress = 0x1,
+			DontShareAddress = 0x2,
+			ReuseAddressHint = 0x4,
+		}
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQUdpSocket().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QUdpSocket(QObject parent) : this((Type) null) {
-			CreateQUdpSocketProxy();
+			CreateProxy();
 			NewQUdpSocket(parent);
 		}
+		[SmokeMethod("QUdpSocket(QObject*)")]
 		private void NewQUdpSocket(QObject parent) {
 			ProxyQUdpSocket().NewQUdpSocket(parent);
 		}
 		public QUdpSocket() : this((Type) null) {
-			CreateQUdpSocketProxy();
+			CreateProxy();
 			NewQUdpSocket();
 		}
+		[SmokeMethod("QUdpSocket()")]
 		private void NewQUdpSocket() {
 			ProxyQUdpSocket().NewQUdpSocket();
 		}
+		[SmokeMethod("bind(const QHostAddress&, quint16)")]
 		public bool Bind(QHostAddress address, ushort port) {
 			return ProxyQUdpSocket().Bind(address,port);
 		}
+		[SmokeMethod("bind(quint16)")]
 		public bool Bind(ushort port) {
 			return ProxyQUdpSocket().Bind(port);
 		}
+		[SmokeMethod("bind()")]
 		public bool Bind() {
 			return ProxyQUdpSocket().Bind();
 		}
+		// bool bind(const QHostAddress& arg1,quint16 arg2,BindMode arg3); >>>> NOT CONVERTED
+		// bool bind(quint16 arg1,BindMode arg2); >>>> NOT CONVERTED
+		[SmokeMethod("hasPendingDatagrams() const")]
 		public bool HasPendingDatagrams() {
 			return ProxyQUdpSocket().HasPendingDatagrams();
 		}
@@ -64,17 +79,28 @@ namespace Qt {
 		// qint64 readDatagram(char* arg1,qint64 arg2); >>>> NOT CONVERTED
 		// qint64 writeDatagram(const char* arg1,qint64 arg2,const QHostAddress& arg3,quint16 arg4); >>>> NOT CONVERTED
 		// qint64 writeDatagram(const QByteArray& arg1,const QHostAddress& arg2,quint16 arg3); >>>> NOT CONVERTED
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQUdpSocket().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQUdpSocket().Tr(s);
 		}
 		~QUdpSocket() {
-			ProxyQUdpSocket().Dispose();
+			DisposeQUdpSocket();
 		}
 		public new void Dispose() {
-			ProxyQUdpSocket().Dispose();
+			DisposeQUdpSocket();
 		}
+		private void DisposeQUdpSocket() {
+			ProxyQUdpSocket().DisposeQUdpSocket();
+		}
+		protected new IQUdpSocketSignals Emit() {
+			return (IQUdpSocketSignals) Q_EMIT;
+		}
+	}
+
+	public interface IQUdpSocketSignals : IQAbstractSocketSignals {
 	}
 }

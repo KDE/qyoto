@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QCloseEvent")]
 	public class QCloseEvent : QEvent, IDisposable {
  		protected QCloseEvent(Type dummy) : base((Type) null) {}
 		interface IQCloseEventProxy {
 		}
 
-		protected void CreateQCloseEventProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QCloseEvent), this);
 			_interceptor = (QCloseEvent) realProxy.GetTransparentProxy();
 		}
@@ -25,17 +26,21 @@ namespace Qt {
 		}
 
 		public QCloseEvent() : this((Type) null) {
-			CreateQCloseEventProxy();
+			CreateProxy();
 			NewQCloseEvent();
 		}
+		[SmokeMethod("QCloseEvent()")]
 		private void NewQCloseEvent() {
 			ProxyQCloseEvent().NewQCloseEvent();
 		}
 		~QCloseEvent() {
-			ProxyQCloseEvent().Dispose();
+			DisposeQCloseEvent();
 		}
 		public new void Dispose() {
-			ProxyQCloseEvent().Dispose();
+			DisposeQCloseEvent();
+		}
+		private void DisposeQCloseEvent() {
+			ProxyQCloseEvent().DisposeQCloseEvent();
 		}
 	}
 }

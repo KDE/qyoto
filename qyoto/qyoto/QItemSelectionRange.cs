@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QItemSelectionRange")]
 	public class QItemSelectionRange : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
@@ -12,7 +13,7 @@ namespace Qt {
 			bool op_equals(QItemSelectionRange lhs, QItemSelectionRange other);
 		}
 
-		protected void CreateQItemSelectionRangeProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QItemSelectionRange), this);
 			_interceptor = (QItemSelectionRange) realProxy.GetTransparentProxy();
 		}
@@ -29,72 +30,90 @@ namespace Qt {
 		}
 
 		public QItemSelectionRange() : this((Type) null) {
-			CreateQItemSelectionRangeProxy();
+			CreateProxy();
 			NewQItemSelectionRange();
 		}
+		[SmokeMethod("QItemSelectionRange()")]
 		private void NewQItemSelectionRange() {
 			ProxyQItemSelectionRange().NewQItemSelectionRange();
 		}
 		public QItemSelectionRange(QItemSelectionRange other) : this((Type) null) {
-			CreateQItemSelectionRangeProxy();
+			CreateProxy();
 			NewQItemSelectionRange(other);
 		}
+		[SmokeMethod("QItemSelectionRange(const QItemSelectionRange&)")]
 		private void NewQItemSelectionRange(QItemSelectionRange other) {
 			ProxyQItemSelectionRange().NewQItemSelectionRange(other);
 		}
 		public QItemSelectionRange(QModelIndex topLeft, QModelIndex bottomRight) : this((Type) null) {
-			CreateQItemSelectionRangeProxy();
+			CreateProxy();
 			NewQItemSelectionRange(topLeft,bottomRight);
 		}
+		[SmokeMethod("QItemSelectionRange(const QModelIndex&, const QModelIndex&)")]
 		private void NewQItemSelectionRange(QModelIndex topLeft, QModelIndex bottomRight) {
 			ProxyQItemSelectionRange().NewQItemSelectionRange(topLeft,bottomRight);
 		}
 		public QItemSelectionRange(QModelIndex index) : this((Type) null) {
-			CreateQItemSelectionRangeProxy();
+			CreateProxy();
 			NewQItemSelectionRange(index);
 		}
+		[SmokeMethod("QItemSelectionRange(const QModelIndex&)")]
 		private void NewQItemSelectionRange(QModelIndex index) {
 			ProxyQItemSelectionRange().NewQItemSelectionRange(index);
 		}
+		[SmokeMethod("top() const")]
 		public int Top() {
 			return ProxyQItemSelectionRange().Top();
 		}
+		[SmokeMethod("left() const")]
 		public int Left() {
 			return ProxyQItemSelectionRange().Left();
 		}
+		[SmokeMethod("bottom() const")]
 		public int Bottom() {
 			return ProxyQItemSelectionRange().Bottom();
 		}
+		[SmokeMethod("right() const")]
 		public int Right() {
 			return ProxyQItemSelectionRange().Right();
 		}
+		[SmokeMethod("width() const")]
 		public int Width() {
 			return ProxyQItemSelectionRange().Width();
 		}
+		[SmokeMethod("height() const")]
 		public int Height() {
 			return ProxyQItemSelectionRange().Height();
 		}
+		[SmokeMethod("topLeft() const")]
 		public QModelIndex TopLeft() {
 			return ProxyQItemSelectionRange().TopLeft();
 		}
+		[SmokeMethod("bottomRight() const")]
 		public QModelIndex BottomRight() {
 			return ProxyQItemSelectionRange().BottomRight();
 		}
+		[SmokeMethod("parent() const")]
 		public QModelIndex Parent() {
 			return ProxyQItemSelectionRange().Parent();
 		}
+		[SmokeMethod("model() const")]
 		public QAbstractItemModel Model() {
 			return ProxyQItemSelectionRange().Model();
 		}
+		[SmokeMethod("contains(const QModelIndex&) const")]
 		public bool Contains(QModelIndex index) {
 			return ProxyQItemSelectionRange().Contains(index);
 		}
+		[SmokeMethod("intersects(const QItemSelectionRange&) const")]
 		public bool Intersects(QItemSelectionRange other) {
 			return ProxyQItemSelectionRange().Intersects(other);
 		}
+		[SmokeMethod("intersect(const QItemSelectionRange&) const")]
 		public QItemSelectionRange Intersect(QItemSelectionRange other) {
 			return ProxyQItemSelectionRange().Intersect(other);
 		}
+		[SmokeMethod("operator==(const QItemSelectionRange&) const")]
 		public static bool operator==(QItemSelectionRange lhs, QItemSelectionRange other) {
 			return StaticQItemSelectionRange().op_equals(lhs,other);
 		}
@@ -108,15 +127,19 @@ namespace Qt {
 		public override int GetHashCode() {
 			return ProxyQItemSelectionRange().GetHashCode();
 		}
+		[SmokeMethod("isValid() const")]
 		public bool IsValid() {
 			return ProxyQItemSelectionRange().IsValid();
 		}
 		// QModelIndexList indexes(); >>>> NOT CONVERTED
 		~QItemSelectionRange() {
-			ProxyQItemSelectionRange().Dispose();
+			DisposeQItemSelectionRange();
 		}
 		public void Dispose() {
-			ProxyQItemSelectionRange().Dispose();
+			DisposeQItemSelectionRange();
+		}
+		private void DisposeQItemSelectionRange() {
+			ProxyQItemSelectionRange().DisposeQItemSelectionRange();
 		}
 	}
 }

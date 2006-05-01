@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QChar")]
 	public class QChar : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
@@ -14,7 +15,7 @@ namespace Qt {
 			char FromLatin1(char c);
 		}
 
-		protected void CreateQCharProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QChar), this);
 			_interceptor = (QChar) realProxy.GetTransparentProxy();
 		}
@@ -30,7 +31,7 @@ namespace Qt {
 			return (IQCharProxy) _staticInterceptor;
 		}
 
-		enum SpecialCharacter {
+		public enum SpecialCharacter {
 			Null = 0x0000,
 			Nbsp = 0x00a0,
 			ReplacementCharacter = 0xfffd,
@@ -40,7 +41,7 @@ namespace Qt {
 			ParagraphSeparator = 0x2029,
 			LineSeparator = 0x2028,
 		}
-		enum E_Category {
+		public enum Category {
 			NoCategory = 0,
 			Mark_NonSpacing = 1,
 			Mark_SpacingCombining = 2,
@@ -74,7 +75,7 @@ namespace Qt {
 			Symbol_Other = 30,
 			Punctuation_Dask = Punctuation_Dash,
 		}
-		enum E_Direction {
+		public enum Direction {
 			DirL = 0,
 			DirR = 1,
 			DirEN = 2,
@@ -95,7 +96,7 @@ namespace Qt {
 			DirNSM = 17,
 			DirBN = 18,
 		}
-		enum E_Decomposition {
+		public enum Decomposition {
 			NoDecomposition = 0,
 			Canonical = 1,
 			Font = 2,
@@ -115,13 +116,13 @@ namespace Qt {
 			Compat = 16,
 			Fraction = 17,
 		}
-		enum E_Joining {
+		public enum Joining {
 			OtherJoining = 0,
 			Dual = 1,
 			Right = 2,
 			Center = 3,
 		}
-		enum E_CombiningClass {
+		public enum CombiningClass {
 			Combining_BelowLeftAttached = 200,
 			Combining_BelowAttached = 202,
 			Combining_BelowRightAttached = 204,
@@ -142,7 +143,7 @@ namespace Qt {
 			Combining_DoubleAbove = 234,
 			Combining_IotaSubscript = 240,
 		}
-		enum E_UnicodeVersion {
+		public enum UnicodeVersion {
 			Unicode_Unassigned = 0,
 			Unicode_1_1 = 1,
 			Unicode_2_0 = 2,
@@ -153,166 +154,210 @@ namespace Qt {
 			Unicode_4_0 = 7,
 		}
 		public QChar() : this((Type) null) {
-			CreateQCharProxy();
+			CreateProxy();
 			NewQChar();
 		}
+		[SmokeMethod("QChar()")]
 		private void NewQChar() {
 			ProxyQChar().NewQChar();
 		}
 		public QChar(char c) : this((Type) null) {
-			CreateQCharProxy();
+			CreateProxy();
 			NewQChar(c);
 		}
+		[SmokeMethod("QChar(char)")]
 		private void NewQChar(char c) {
 			ProxyQChar().NewQChar(c);
 		}
 		public QChar(ushort c) : this((Type) null) {
-			CreateQCharProxy();
+			CreateProxy();
 			NewQChar(c);
 		}
+		[SmokeMethod("QChar(uchar)")]
 		private void NewQChar(ushort c) {
 			ProxyQChar().NewQChar(c);
 		}
 		public QChar(QLatin1Char ch) : this((Type) null) {
-			CreateQCharProxy();
+			CreateProxy();
 			NewQChar(ch);
 		}
+		[SmokeMethod("QChar(QLatin1Char)")]
 		private void NewQChar(QLatin1Char ch) {
 			ProxyQChar().NewQChar(ch);
 		}
 		public QChar(ushort c, ushort r) : this((Type) null) {
-			CreateQCharProxy();
+			CreateProxy();
 			NewQChar(c,r);
 		}
+		[SmokeMethod("QChar(uchar, uchar)")]
 		private void NewQChar(ushort c, ushort r) {
 			ProxyQChar().NewQChar(c,r);
 		}
 		public QChar(short rc) : this((Type) null) {
-			CreateQCharProxy();
+			CreateProxy();
 			NewQChar(rc);
 		}
+		[SmokeMethod("QChar(short)")]
 		private void NewQChar(short rc) {
 			ProxyQChar().NewQChar(rc);
 		}
 		public QChar(uint rc) : this((Type) null) {
-			CreateQCharProxy();
+			CreateProxy();
 			NewQChar(rc);
 		}
+		[SmokeMethod("QChar(uint)")]
 		private void NewQChar(uint rc) {
 			ProxyQChar().NewQChar(rc);
 		}
 		public QChar(int rc) : this((Type) null) {
-			CreateQCharProxy();
+			CreateProxy();
 			NewQChar(rc);
 		}
+		[SmokeMethod("QChar(int)")]
 		private void NewQChar(int rc) {
 			ProxyQChar().NewQChar(rc);
 		}
+		[SmokeMethod("digitValue() const")]
 		public int DigitValue() {
 			return ProxyQChar().DigitValue();
 		}
+		[SmokeMethod("toLower() const")]
 		public char ToLower() {
 			return ProxyQChar().ToLower();
 		}
+		[SmokeMethod("toUpper() const")]
 		public char ToUpper() {
 			return ProxyQChar().ToUpper();
 		}
-		public char Category() {
-			return ProxyQChar().Category();
+		[SmokeMethod("category() const")]
+		public char category() {
+			return ProxyQChar().category();
 		}
-		public char Direction() {
-			return ProxyQChar().Direction();
+		[SmokeMethod("direction() const")]
+		public char direction() {
+			return ProxyQChar().direction();
 		}
-		public char Joining() {
-			return ProxyQChar().Joining();
+		[SmokeMethod("joining() const")]
+		public char joining() {
+			return ProxyQChar().joining();
 		}
+		[SmokeMethod("hasMirrored() const")]
 		public bool HasMirrored() {
 			return ProxyQChar().HasMirrored();
 		}
+		[SmokeMethod("isLower() const")]
 		public bool IsLower() {
 			return ProxyQChar().IsLower();
 		}
+		[SmokeMethod("isUpper() const")]
 		public bool IsUpper() {
 			return ProxyQChar().IsUpper();
 		}
+		[SmokeMethod("mirroredChar() const")]
 		public char MirroredChar() {
 			return ProxyQChar().MirroredChar();
 		}
-		public string Decomposition() {
-			return ProxyQChar().Decomposition();
+		[SmokeMethod("decomposition() const")]
+		public string decomposition() {
+			return ProxyQChar().decomposition();
 		}
+		[SmokeMethod("decompositionTag() const")]
 		public char DecompositionTag() {
 			return ProxyQChar().DecompositionTag();
 		}
-		public ushort CombiningClass() {
-			return ProxyQChar().CombiningClass();
+		[SmokeMethod("combiningClass() const")]
+		public ushort combiningClass() {
+			return ProxyQChar().combiningClass();
 		}
-		public char UnicodeVersion() {
-			return ProxyQChar().UnicodeVersion();
+		[SmokeMethod("unicodeVersion() const")]
+		public char unicodeVersion() {
+			return ProxyQChar().unicodeVersion();
 		}
+		[SmokeMethod("toAscii() const")]
 		public char ToAscii() {
 			return ProxyQChar().ToAscii();
 		}
+		[SmokeMethod("toLatin1() const")]
 		public char ToLatin1() {
 			return ProxyQChar().ToLatin1();
 		}
+		[SmokeMethod("unicode() const")]
 		public ushort Unicode() {
 			return ProxyQChar().Unicode();
 		}
 		// ushort& unicode(); >>>> NOT CONVERTED
+		[SmokeMethod("isNull() const")]
 		public bool IsNull() {
 			return ProxyQChar().IsNull();
 		}
+		[SmokeMethod("isPrint() const")]
 		public bool IsPrint() {
 			return ProxyQChar().IsPrint();
 		}
+		[SmokeMethod("isPunct() const")]
 		public bool IsPunct() {
 			return ProxyQChar().IsPunct();
 		}
+		[SmokeMethod("isSpace() const")]
 		public bool IsSpace() {
 			return ProxyQChar().IsSpace();
 		}
+		[SmokeMethod("isMark() const")]
 		public bool IsMark() {
 			return ProxyQChar().IsMark();
 		}
+		[SmokeMethod("isLetter() const")]
 		public bool IsLetter() {
 			return ProxyQChar().IsLetter();
 		}
+		[SmokeMethod("isNumber() const")]
 		public bool IsNumber() {
 			return ProxyQChar().IsNumber();
 		}
+		[SmokeMethod("isLetterOrNumber() const")]
 		public bool IsLetterOrNumber() {
 			return ProxyQChar().IsLetterOrNumber();
 		}
+		[SmokeMethod("isDigit() const")]
 		public bool IsDigit() {
 			return ProxyQChar().IsDigit();
 		}
+		[SmokeMethod("isSymbol() const")]
 		public bool IsSymbol() {
 			return ProxyQChar().IsSymbol();
 		}
+		[SmokeMethod("cell() const")]
 		public ushort Cell() {
 			return ProxyQChar().Cell();
 		}
+		[SmokeMethod("row() const")]
 		public ushort Row() {
 			return ProxyQChar().Row();
 		}
+		[SmokeMethod("setCell(uchar)")]
 		public void SetCell(ushort cell) {
 			ProxyQChar().SetCell(cell);
 		}
+		[SmokeMethod("setRow(uchar)")]
 		public void SetRow(ushort row) {
 			ProxyQChar().SetRow(row);
 		}
+		[SmokeMethod("fromAscii(char)")]
 		public static char FromAscii(char c) {
 			return StaticQChar().FromAscii(c);
 		}
+		[SmokeMethod("fromLatin1(char)")]
 		public static char FromLatin1(char c) {
 			return StaticQChar().FromLatin1(c);
 		}
 		~QChar() {
-			ProxyQChar().Dispose();
+			DisposeQChar();
 		}
 		public void Dispose() {
-			ProxyQChar().Dispose();
+			DisposeQChar();
+		}
+		private void DisposeQChar() {
+			ProxyQChar().DisposeQChar();
 		}
 	}
 }

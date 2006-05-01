@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QHelpEvent")]
 	public class QHelpEvent : QEvent, IDisposable {
  		protected QHelpEvent(Type dummy) : base((Type) null) {}
 		interface IQHelpEventProxy {
 		}
 
-		protected void CreateQHelpEventProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QHelpEvent), this);
 			_interceptor = (QHelpEvent) realProxy.GetTransparentProxy();
 		}
@@ -24,36 +25,46 @@ namespace Qt {
 			return (IQHelpEventProxy) _staticInterceptor;
 		}
 
-		public QHelpEvent(int type, QPoint pos, QPoint globalPos) : this((Type) null) {
-			CreateQHelpEventProxy();
+		public QHelpEvent(QEvent.E_Type type, QPoint pos, QPoint globalPos) : this((Type) null) {
+			CreateProxy();
 			NewQHelpEvent(type,pos,globalPos);
 		}
-		private void NewQHelpEvent(int type, QPoint pos, QPoint globalPos) {
+		[SmokeMethod("QHelpEvent(QEvent::Type, const QPoint&, const QPoint&)")]
+		private void NewQHelpEvent(QEvent.E_Type type, QPoint pos, QPoint globalPos) {
 			ProxyQHelpEvent().NewQHelpEvent(type,pos,globalPos);
 		}
+		[SmokeMethod("x() const")]
 		public int X() {
 			return ProxyQHelpEvent().X();
 		}
+		[SmokeMethod("y() const")]
 		public int Y() {
 			return ProxyQHelpEvent().Y();
 		}
+		[SmokeMethod("globalX() const")]
 		public int GlobalX() {
 			return ProxyQHelpEvent().GlobalX();
 		}
+		[SmokeMethod("globalY() const")]
 		public int GlobalY() {
 			return ProxyQHelpEvent().GlobalY();
 		}
+		[SmokeMethod("pos() const")]
 		public QPoint Pos() {
 			return ProxyQHelpEvent().Pos();
 		}
+		[SmokeMethod("globalPos() const")]
 		public QPoint GlobalPos() {
 			return ProxyQHelpEvent().GlobalPos();
 		}
 		~QHelpEvent() {
-			ProxyQHelpEvent().Dispose();
+			DisposeQHelpEvent();
 		}
 		public new void Dispose() {
-			ProxyQHelpEvent().Dispose();
+			DisposeQHelpEvent();
+		}
+		private void DisposeQHelpEvent() {
+			ProxyQHelpEvent().DisposeQHelpEvent();
 		}
 	}
 }

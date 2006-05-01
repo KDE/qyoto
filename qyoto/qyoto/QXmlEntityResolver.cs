@@ -9,6 +9,7 @@ namespace Qt {
 			string ErrorString();
 	}
 
+	[SmokeClass("QXmlEntityResolver")]
 	public class QXmlEntityResolver : MarshalByRefObject, IQXmlEntityResolver {
 		protected Object _interceptor = null;
  
@@ -17,7 +18,7 @@ namespace Qt {
 		interface IQXmlEntityResolverProxy {
 		}
 
-		protected void CreateQXmlEntityResolverProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlEntityResolver), this);
 			_interceptor = (QXmlEntityResolver) realProxy.GetTransparentProxy();
 		}
@@ -33,11 +34,30 @@ namespace Qt {
 			return (IQXmlEntityResolverProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("resolveEntity(const QString&, const QString&, QXmlInputSource*&)")]
 		public virtual bool ResolveEntity(string publicId, string systemId, QXmlInputSource ret) {
 			return ProxyQXmlEntityResolver().ResolveEntity(publicId,systemId,ret);
 		}
+		[SmokeMethod("errorString() const")]
 		public virtual string ErrorString() {
 			return ProxyQXmlEntityResolver().ErrorString();
+		}
+		public QXmlEntityResolver() : this((Type) null) {
+			CreateProxy();
+			NewQXmlEntityResolver();
+		}
+		[SmokeMethod("QXmlEntityResolver()")]
+		private void NewQXmlEntityResolver() {
+			ProxyQXmlEntityResolver().NewQXmlEntityResolver();
+		}
+		~QXmlEntityResolver() {
+			DisposeQXmlEntityResolver();
+		}
+		public void Dispose() {
+			DisposeQXmlEntityResolver();
+		}
+		private void DisposeQXmlEntityResolver() {
+			ProxyQXmlEntityResolver().DisposeQXmlEntityResolver();
 		}
 	}
 }

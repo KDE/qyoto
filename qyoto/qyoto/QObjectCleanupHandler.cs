@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QObjectCleanupHandler")]
 	public class QObjectCleanupHandler : QObject, IDisposable {
  		protected QObjectCleanupHandler(Type dummy) : base((Type) null) {}
 		interface IQObjectCleanupHandlerProxy {
@@ -11,7 +12,7 @@ namespace Qt {
 			string Tr(string s);
 		}
 
-		protected void CreateQObjectCleanupHandlerProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QObjectCleanupHandler), this);
 			_interceptor = (QObjectCleanupHandler) realProxy.GetTransparentProxy();
 		}
@@ -27,41 +28,57 @@ namespace Qt {
 			return (IQObjectCleanupHandlerProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQObjectCleanupHandler().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QObjectCleanupHandler() : this((Type) null) {
-			CreateQObjectCleanupHandlerProxy();
+			CreateProxy();
 			NewQObjectCleanupHandler();
 		}
+		[SmokeMethod("QObjectCleanupHandler()")]
 		private void NewQObjectCleanupHandler() {
 			ProxyQObjectCleanupHandler().NewQObjectCleanupHandler();
 		}
+		[SmokeMethod("add(QObject*)")]
 		public QObject Add(QObject arg1) {
 			return ProxyQObjectCleanupHandler().Add(arg1);
 		}
+		[SmokeMethod("remove(QObject*)")]
 		public void Remove(QObject arg1) {
 			ProxyQObjectCleanupHandler().Remove(arg1);
 		}
+		[SmokeMethod("isEmpty() const")]
 		public bool IsEmpty() {
 			return ProxyQObjectCleanupHandler().IsEmpty();
 		}
+		[SmokeMethod("clear()")]
 		public void Clear() {
 			ProxyQObjectCleanupHandler().Clear();
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQObjectCleanupHandler().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQObjectCleanupHandler().Tr(s);
 		}
 		~QObjectCleanupHandler() {
-			ProxyQObjectCleanupHandler().Dispose();
+			DisposeQObjectCleanupHandler();
 		}
 		public new void Dispose() {
-			ProxyQObjectCleanupHandler().Dispose();
+			DisposeQObjectCleanupHandler();
 		}
+		private void DisposeQObjectCleanupHandler() {
+			ProxyQObjectCleanupHandler().DisposeQObjectCleanupHandler();
+		}
+		protected new IQObjectCleanupHandlerSignals Emit() {
+			return (IQObjectCleanupHandlerSignals) Q_EMIT;
+		}
+	}
+
+	public interface IQObjectCleanupHandlerSignals : IQObjectSignals {
 	}
 }

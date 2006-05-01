@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QDomDocumentFragment")]
 	public class QDomDocumentFragment : QDomNode, IDisposable {
  		protected QDomDocumentFragment(Type dummy) : base((Type) null) {}
 		interface IQDomDocumentFragmentProxy {
 		}
 
-		protected void CreateQDomDocumentFragmentProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomDocumentFragment), this);
 			_interceptor = (QDomDocumentFragment) realProxy.GetTransparentProxy();
 		}
@@ -25,27 +26,33 @@ namespace Qt {
 		}
 
 		public QDomDocumentFragment() : this((Type) null) {
-			CreateQDomDocumentFragmentProxy();
+			CreateProxy();
 			NewQDomDocumentFragment();
 		}
+		[SmokeMethod("QDomDocumentFragment()")]
 		private void NewQDomDocumentFragment() {
 			ProxyQDomDocumentFragment().NewQDomDocumentFragment();
 		}
 		public QDomDocumentFragment(QDomDocumentFragment x) : this((Type) null) {
-			CreateQDomDocumentFragmentProxy();
+			CreateProxy();
 			NewQDomDocumentFragment(x);
 		}
+		[SmokeMethod("QDomDocumentFragment(const QDomDocumentFragment&)")]
 		private void NewQDomDocumentFragment(QDomDocumentFragment x) {
 			ProxyQDomDocumentFragment().NewQDomDocumentFragment(x);
 		}
-		public new int NodeType() {
+		[SmokeMethod("nodeType() const")]
+		public new QDomNode.NodeType NodeType() {
 			return ProxyQDomDocumentFragment().NodeType();
 		}
 		~QDomDocumentFragment() {
-			ProxyQDomDocumentFragment().Dispose();
+			DisposeQDomDocumentFragment();
 		}
 		public void Dispose() {
-			ProxyQDomDocumentFragment().Dispose();
+			DisposeQDomDocumentFragment();
+		}
+		private void DisposeQDomDocumentFragment() {
+			ProxyQDomDocumentFragment().DisposeQDomDocumentFragment();
 		}
 	}
 }

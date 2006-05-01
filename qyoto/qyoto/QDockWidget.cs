@@ -4,14 +4,16 @@ namespace Qt {
 	using System;
 	using System.Text;
 
-	public class QDockWidget : QWidget {
+	/// See <see cref="IQDockWidgetSignals"></see> for signals emitted by QDockWidget
+	[SmokeClass("QDockWidget")]
+	public class QDockWidget : QWidget, IDisposable {
  		protected QDockWidget(Type dummy) : base((Type) null) {}
 		interface IQDockWidgetProxy {
 			string Tr(string s, string c);
 			string Tr(string s);
 		}
 
-		protected void CreateQDockWidgetProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDockWidget), this);
 			_interceptor = (QDockWidget) realProxy.GetTransparentProxy();
 		}
@@ -27,16 +29,146 @@ namespace Qt {
 			return (IQDockWidgetProxy) _staticInterceptor;
 		}
 
+		public enum DockWidgetFeature {
+			DockWidgetClosable = 0x01,
+			DockWidgetMovable = 0x02,
+			DockWidgetFloatable = 0x04,
+			DockWidgetFeatureMask = 0x07,
+			AllDockWidgetFeatures = DockWidgetFeatureMask,
+			NoDockWidgetFeatures = 0x00,
+			Reserved = 0xff,
+		}
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQDockWidget().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
+		public QDockWidget(string title, QWidget parent, int flags) : this((Type) null) {
+			CreateProxy();
+			NewQDockWidget(title,parent,flags);
+		}
+		[SmokeMethod("QDockWidget(const QString&, QWidget*, Qt::WFlags)")]
+		private void NewQDockWidget(string title, QWidget parent, int flags) {
+			ProxyQDockWidget().NewQDockWidget(title,parent,flags);
+		}
+		public QDockWidget(string title, QWidget parent) : this((Type) null) {
+			CreateProxy();
+			NewQDockWidget(title,parent);
+		}
+		[SmokeMethod("QDockWidget(const QString&, QWidget*)")]
+		private void NewQDockWidget(string title, QWidget parent) {
+			ProxyQDockWidget().NewQDockWidget(title,parent);
+		}
+		public QDockWidget(string title) : this((Type) null) {
+			CreateProxy();
+			NewQDockWidget(title);
+		}
+		[SmokeMethod("QDockWidget(const QString&)")]
+		private void NewQDockWidget(string title) {
+			ProxyQDockWidget().NewQDockWidget(title);
+		}
+		public QDockWidget(QWidget parent, int flags) : this((Type) null) {
+			CreateProxy();
+			NewQDockWidget(parent,flags);
+		}
+		[SmokeMethod("QDockWidget(QWidget*, Qt::WFlags)")]
+		private void NewQDockWidget(QWidget parent, int flags) {
+			ProxyQDockWidget().NewQDockWidget(parent,flags);
+		}
+		public QDockWidget(QWidget parent) : this((Type) null) {
+			CreateProxy();
+			NewQDockWidget(parent);
+		}
+		[SmokeMethod("QDockWidget(QWidget*)")]
+		private void NewQDockWidget(QWidget parent) {
+			ProxyQDockWidget().NewQDockWidget(parent);
+		}
+		public QDockWidget() : this((Type) null) {
+			CreateProxy();
+			NewQDockWidget();
+		}
+		[SmokeMethod("QDockWidget()")]
+		private void NewQDockWidget() {
+			ProxyQDockWidget().NewQDockWidget();
+		}
+		[SmokeMethod("widget() const")]
+		public QWidget Widget() {
+			return ProxyQDockWidget().Widget();
+		}
+		[SmokeMethod("setWidget(QWidget*)")]
+		public void SetWidget(QWidget widget) {
+			ProxyQDockWidget().SetWidget(widget);
+		}
+		// void setFeatures(DockWidgetFeatures arg1); >>>> NOT CONVERTED
+		// DockWidgetFeatures features(); >>>> NOT CONVERTED
+		[SmokeMethod("setFloating(bool)")]
+		public void SetFloating(bool floating) {
+			ProxyQDockWidget().SetFloating(floating);
+		}
+		[SmokeMethod("isFloating() const")]
+		public bool IsFloating() {
+			return ProxyQDockWidget().IsFloating();
+		}
+		[SmokeMethod("setAllowedAreas(Qt::DockWidgetAreas)")]
+		public void SetAllowedAreas(int areas) {
+			ProxyQDockWidget().SetAllowedAreas(areas);
+		}
+		[SmokeMethod("allowedAreas() const")]
+		public int AllowedAreas() {
+			return ProxyQDockWidget().AllowedAreas();
+		}
+		[SmokeMethod("isAreaAllowed(Qt::DockWidgetArea) const")]
+		public bool IsAreaAllowed(Qt.DockWidgetArea area) {
+			return ProxyQDockWidget().IsAreaAllowed(area);
+		}
+		[SmokeMethod("toggleViewAction() const")]
+		public QAction ToggleViewAction() {
+			return ProxyQDockWidget().ToggleViewAction();
+		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQDockWidget().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQDockWidget().Tr(s);
 		}
+		[SmokeMethod("changeEvent(QEvent*)")]
+		protected new void ChangeEvent(QEvent arg1) {
+			ProxyQDockWidget().ChangeEvent(arg1);
+		}
+		[SmokeMethod("closeEvent(QCloseEvent*)")]
+		protected new void CloseEvent(QCloseEvent arg1) {
+			ProxyQDockWidget().CloseEvent(arg1);
+		}
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
+		protected new void PaintEvent(QPaintEvent arg1) {
+			ProxyQDockWidget().PaintEvent(arg1);
+		}
+		[SmokeMethod("event(QEvent*)")]
+		public new bool Event(QEvent arg1) {
+			return ProxyQDockWidget().Event(arg1);
+		}
+		~QDockWidget() {
+			DisposeQDockWidget();
+		}
+		public new void Dispose() {
+			DisposeQDockWidget();
+		}
+		private void DisposeQDockWidget() {
+			ProxyQDockWidget().DisposeQDockWidget();
+		}
+		protected new IQDockWidgetSignals Emit() {
+			return (IQDockWidgetSignals) Q_EMIT;
+		}
+	}
+
+	public interface IQDockWidgetSignals : IQWidgetSignals {
+		[Q_SIGNAL("void featuresChanged(QDockWidget::DockWidgetFeatures)")]
+		void FeaturesChanged(int features);
+		[Q_SIGNAL("void topLevelChanged(bool)")]
+		void TopLevelChanged(bool topLevel);
+		[Q_SIGNAL("void allowedAreasChanged(Qt::DockWidgetAreas)")]
+		void AllowedAreasChanged(int allowedAreas);
 	}
 }

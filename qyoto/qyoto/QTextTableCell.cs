@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QTextTableCell")]
 	public class QTextTableCell : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
@@ -12,7 +13,7 @@ namespace Qt {
 			bool op_equals(QTextTableCell lhs, QTextTableCell other);
 		}
 
-		protected void CreateQTextTableCellProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextTableCell), this);
 			_interceptor = (QTextTableCell) realProxy.GetTransparentProxy();
 		}
@@ -29,45 +30,56 @@ namespace Qt {
 		}
 
 		public QTextTableCell() : this((Type) null) {
-			CreateQTextTableCellProxy();
+			CreateProxy();
 			NewQTextTableCell();
 		}
+		[SmokeMethod("QTextTableCell()")]
 		private void NewQTextTableCell() {
 			ProxyQTextTableCell().NewQTextTableCell();
 		}
 		public QTextTableCell(QTextTableCell o) : this((Type) null) {
-			CreateQTextTableCellProxy();
+			CreateProxy();
 			NewQTextTableCell(o);
 		}
+		[SmokeMethod("QTextTableCell(const QTextTableCell&)")]
 		private void NewQTextTableCell(QTextTableCell o) {
 			ProxyQTextTableCell().NewQTextTableCell(o);
 		}
+		[SmokeMethod("format() const")]
 		public QTextCharFormat Format() {
 			return ProxyQTextTableCell().Format();
 		}
+		[SmokeMethod("row() const")]
 		public int Row() {
 			return ProxyQTextTableCell().Row();
 		}
+		[SmokeMethod("column() const")]
 		public int Column() {
 			return ProxyQTextTableCell().Column();
 		}
+		[SmokeMethod("rowSpan() const")]
 		public int RowSpan() {
 			return ProxyQTextTableCell().RowSpan();
 		}
+		[SmokeMethod("columnSpan() const")]
 		public int ColumnSpan() {
 			return ProxyQTextTableCell().ColumnSpan();
 		}
+		[SmokeMethod("isValid() const")]
 		public bool IsValid() {
 			return ProxyQTextTableCell().IsValid();
 		}
 		// QTextCursor firstCursorPosition(); >>>> NOT CONVERTED
 		// QTextCursor lastCursorPosition(); >>>> NOT CONVERTED
+		[SmokeMethod("firstPosition() const")]
 		public int FirstPosition() {
 			return ProxyQTextTableCell().FirstPosition();
 		}
+		[SmokeMethod("lastPosition() const")]
 		public int LastPosition() {
 			return ProxyQTextTableCell().LastPosition();
 		}
+		[SmokeMethod("operator==(const QTextTableCell&) const")]
 		public static bool operator==(QTextTableCell lhs, QTextTableCell other) {
 			return StaticQTextTableCell().op_equals(lhs,other);
 		}
@@ -82,10 +94,13 @@ namespace Qt {
 			return ProxyQTextTableCell().GetHashCode();
 		}
 		~QTextTableCell() {
-			ProxyQTextTableCell().Dispose();
+			DisposeQTextTableCell();
 		}
 		public void Dispose() {
-			ProxyQTextTableCell().Dispose();
+			DisposeQTextTableCell();
+		}
+		private void DisposeQTextTableCell() {
+			ProxyQTextTableCell().DisposeQTextTableCell();
 		}
 	}
 }

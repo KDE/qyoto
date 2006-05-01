@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QPersistentModelIndex")]
 	public class QPersistentModelIndex : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
@@ -14,7 +15,7 @@ namespace Qt {
 			bool op_equals(QPersistentModelIndex lhs, QModelIndex other);
 		}
 
-		protected void CreateQPersistentModelIndexProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPersistentModelIndex), this);
 			_interceptor = (QPersistentModelIndex) realProxy.GetTransparentProxy();
 		}
@@ -31,29 +32,38 @@ namespace Qt {
 		}
 
 		public QPersistentModelIndex() : this((Type) null) {
-			CreateQPersistentModelIndexProxy();
+			CreateProxy();
 			NewQPersistentModelIndex();
 		}
+		[SmokeMethod("QPersistentModelIndex()")]
 		private void NewQPersistentModelIndex() {
 			ProxyQPersistentModelIndex().NewQPersistentModelIndex();
 		}
 		public QPersistentModelIndex(QModelIndex index) : this((Type) null) {
-			CreateQPersistentModelIndexProxy();
+			CreateProxy();
 			NewQPersistentModelIndex(index);
 		}
+		[SmokeMethod("QPersistentModelIndex(const QModelIndex&)")]
 		private void NewQPersistentModelIndex(QModelIndex index) {
 			ProxyQPersistentModelIndex().NewQPersistentModelIndex(index);
 		}
 		public QPersistentModelIndex(QPersistentModelIndex other) : this((Type) null) {
-			CreateQPersistentModelIndexProxy();
+			CreateProxy();
 			NewQPersistentModelIndex(other);
 		}
+		[SmokeMethod("QPersistentModelIndex(const QPersistentModelIndex&)")]
 		private void NewQPersistentModelIndex(QPersistentModelIndex other) {
 			ProxyQPersistentModelIndex().NewQPersistentModelIndex(other);
 		}
+		[SmokeMethod("operator<(const QPersistentModelIndex&) const")]
 		public static bool operator<(QPersistentModelIndex lhs, QPersistentModelIndex other) {
 			return StaticQPersistentModelIndex().op_lt(lhs,other);
 		}
+		public static bool operator>(QPersistentModelIndex lhs, QPersistentModelIndex other) {
+			return !StaticQPersistentModelIndex().op_lt(lhs,other)
+						&& !StaticQPersistentModelIndex().op_equals(lhs,other);
+		}
+		[SmokeMethod("operator==(const QPersistentModelIndex&) const")]
 		public static bool operator==(QPersistentModelIndex lhs, QPersistentModelIndex other) {
 			return StaticQPersistentModelIndex().op_equals(lhs,other);
 		}
@@ -67,50 +77,60 @@ namespace Qt {
 		public override int GetHashCode() {
 			return ProxyQPersistentModelIndex().GetHashCode();
 		}
+		[SmokeMethod("operator==(const QModelIndex&) const")]
 		public static bool operator==(QPersistentModelIndex lhs, QModelIndex other) {
 			return StaticQPersistentModelIndex().op_equals(lhs,other);
 		}
 		public static bool operator!=(QPersistentModelIndex lhs, QModelIndex other) {
 			return !StaticQPersistentModelIndex().op_equals(lhs,other);
 		}
-/*
-		public override bool Equals(object o) {
-			if (!(o is QPersistentModelIndex)) { return false; }
-			return this == (QPersistentModelIndex) o;
-		}
-		public override int GetHashCode() {
-			return ProxyQPersistentModelIndex().GetHashCode();
-		}
-*/
 		//  operator const QModelIndex&(); >>>> NOT CONVERTED
+		[SmokeMethod("row() const")]
 		public int Row() {
 			return ProxyQPersistentModelIndex().Row();
 		}
+		[SmokeMethod("column() const")]
 		public int Column() {
 			return ProxyQPersistentModelIndex().Column();
 		}
 		// void* internalPointer(); >>>> NOT CONVERTED
 		// qint64 internalId(); >>>> NOT CONVERTED
+		[SmokeMethod("parent() const")]
 		public QModelIndex Parent() {
 			return ProxyQPersistentModelIndex().Parent();
 		}
+		[SmokeMethod("sibling(int, int) const")]
 		public QModelIndex Sibling(int row, int column) {
 			return ProxyQPersistentModelIndex().Sibling(row,column);
 		}
+		[SmokeMethod("child(int, int) const")]
 		public QModelIndex Child(int row, int column) {
 			return ProxyQPersistentModelIndex().Child(row,column);
 		}
+		[SmokeMethod("data(int) const")]
+		public QVariant Data(int role) {
+			return ProxyQPersistentModelIndex().Data(role);
+		}
+		[SmokeMethod("data() const")]
+		public QVariant Data() {
+			return ProxyQPersistentModelIndex().Data();
+		}
+		[SmokeMethod("model() const")]
 		public QAbstractItemModel Model() {
 			return ProxyQPersistentModelIndex().Model();
 		}
+		[SmokeMethod("isValid() const")]
 		public bool IsValid() {
 			return ProxyQPersistentModelIndex().IsValid();
 		}
 		~QPersistentModelIndex() {
-			ProxyQPersistentModelIndex().Dispose();
+			DisposeQPersistentModelIndex();
 		}
 		public void Dispose() {
-			ProxyQPersistentModelIndex().Dispose();
+			DisposeQPersistentModelIndex();
+		}
+		private void DisposeQPersistentModelIndex() {
+			ProxyQPersistentModelIndex().DisposeQPersistentModelIndex();
 		}
 	}
 }

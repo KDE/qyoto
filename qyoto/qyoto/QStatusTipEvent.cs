@@ -4,12 +4,13 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QStatusTipEvent")]
 	public class QStatusTipEvent : QEvent, IDisposable {
  		protected QStatusTipEvent(Type dummy) : base((Type) null) {}
 		interface IQStatusTipEventProxy {
 		}
 
-		protected void CreateQStatusTipEventProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStatusTipEvent), this);
 			_interceptor = (QStatusTipEvent) realProxy.GetTransparentProxy();
 		}
@@ -26,20 +27,25 @@ namespace Qt {
 		}
 
 		public QStatusTipEvent(string tip) : this((Type) null) {
-			CreateQStatusTipEventProxy();
+			CreateProxy();
 			NewQStatusTipEvent(tip);
 		}
+		[SmokeMethod("QStatusTipEvent(const QString&)")]
 		private void NewQStatusTipEvent(string tip) {
 			ProxyQStatusTipEvent().NewQStatusTipEvent(tip);
 		}
+		[SmokeMethod("tip() const")]
 		public string Tip() {
 			return ProxyQStatusTipEvent().Tip();
 		}
 		~QStatusTipEvent() {
-			ProxyQStatusTipEvent().Dispose();
+			DisposeQStatusTipEvent();
 		}
 		public new void Dispose() {
-			ProxyQStatusTipEvent().Dispose();
+			DisposeQStatusTipEvent();
+		}
+		private void DisposeQStatusTipEvent() {
+			ProxyQStatusTipEvent().DisposeQStatusTipEvent();
 		}
 	}
 }

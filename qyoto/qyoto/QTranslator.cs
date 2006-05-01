@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QTranslator")]
 	public class QTranslator : QObject, IDisposable {
  		protected QTranslator(Type dummy) : base((Type) null) {}
 		interface IQTranslatorProxy {
@@ -11,7 +12,7 @@ namespace Qt {
 			string Tr(string s);
 		}
 
-		protected void CreateQTranslatorProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTranslator), this);
 			_interceptor = (QTranslator) realProxy.GetTransparentProxy();
 		}
@@ -27,60 +28,81 @@ namespace Qt {
 			return (IQTranslatorProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQTranslator().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QTranslator(QObject parent) : this((Type) null) {
-			CreateQTranslatorProxy();
+			CreateProxy();
 			NewQTranslator(parent);
 		}
+		[SmokeMethod("QTranslator(QObject*)")]
 		private void NewQTranslator(QObject parent) {
 			ProxyQTranslator().NewQTranslator(parent);
 		}
 		public QTranslator() : this((Type) null) {
-			CreateQTranslatorProxy();
+			CreateProxy();
 			NewQTranslator();
 		}
+		[SmokeMethod("QTranslator()")]
 		private void NewQTranslator() {
 			ProxyQTranslator().NewQTranslator();
 		}
+		[SmokeMethod("translate(const char*, const char*, const char*) const")]
 		public virtual string Translate(string context, string sourceText, string comment) {
 			return ProxyQTranslator().Translate(context,sourceText,comment);
 		}
+		[SmokeMethod("translate(const char*, const char*) const")]
 		public virtual string Translate(string context, string sourceText) {
 			return ProxyQTranslator().Translate(context,sourceText);
 		}
+		[SmokeMethod("isEmpty() const")]
 		public virtual bool IsEmpty() {
 			return ProxyQTranslator().IsEmpty();
 		}
+		[SmokeMethod("load(const QString&, const QString&, const QString&, const QString&)")]
 		public bool Load(string filename, string directory, string search_delimiters, string suffix) {
 			return ProxyQTranslator().Load(filename,directory,search_delimiters,suffix);
 		}
+		[SmokeMethod("load(const QString&, const QString&, const QString&)")]
 		public bool Load(string filename, string directory, string search_delimiters) {
 			return ProxyQTranslator().Load(filename,directory,search_delimiters);
 		}
+		[SmokeMethod("load(const QString&, const QString&)")]
 		public bool Load(string filename, string directory) {
 			return ProxyQTranslator().Load(filename,directory);
 		}
+		[SmokeMethod("load(const QString&)")]
 		public bool Load(string filename) {
 			return ProxyQTranslator().Load(filename);
 		}
+		[SmokeMethod("load(const uchar*, int)")]
 		public bool Load(char[] data, int len) {
 			return ProxyQTranslator().Load(data,len);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQTranslator().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQTranslator().Tr(s);
 		}
 		~QTranslator() {
-			ProxyQTranslator().Dispose();
+			DisposeQTranslator();
 		}
 		public new void Dispose() {
-			ProxyQTranslator().Dispose();
+			DisposeQTranslator();
 		}
+		private void DisposeQTranslator() {
+			ProxyQTranslator().DisposeQTranslator();
+		}
+		protected new IQTranslatorSignals Emit() {
+			return (IQTranslatorSignals) Q_EMIT;
+		}
+	}
+
+	public interface IQTranslatorSignals : IQObjectSignals {
 	}
 }

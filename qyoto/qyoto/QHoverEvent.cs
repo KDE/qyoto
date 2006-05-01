@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QHoverEvent")]
 	public class QHoverEvent : QEvent, IDisposable {
  		protected QHoverEvent(Type dummy) : base((Type) null) {}
 		interface IQHoverEventProxy {
 		}
 
-		protected void CreateQHoverEventProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QHoverEvent), this);
 			_interceptor = (QHoverEvent) realProxy.GetTransparentProxy();
 		}
@@ -24,24 +25,30 @@ namespace Qt {
 			return (IQHoverEventProxy) _staticInterceptor;
 		}
 
-		public QHoverEvent(int type, QPoint pos, QPoint oldPos) : this((Type) null) {
-			CreateQHoverEventProxy();
+		public QHoverEvent(QEvent.E_Type type, QPoint pos, QPoint oldPos) : this((Type) null) {
+			CreateProxy();
 			NewQHoverEvent(type,pos,oldPos);
 		}
-		private void NewQHoverEvent(int type, QPoint pos, QPoint oldPos) {
+		[SmokeMethod("QHoverEvent(QEvent::Type, const QPoint&, const QPoint&)")]
+		private void NewQHoverEvent(QEvent.E_Type type, QPoint pos, QPoint oldPos) {
 			ProxyQHoverEvent().NewQHoverEvent(type,pos,oldPos);
 		}
+		[SmokeMethod("pos() const")]
 		public QPoint Pos() {
 			return ProxyQHoverEvent().Pos();
 		}
+		[SmokeMethod("oldPos() const")]
 		public QPoint OldPos() {
 			return ProxyQHoverEvent().OldPos();
 		}
 		~QHoverEvent() {
-			ProxyQHoverEvent().Dispose();
+			DisposeQHoverEvent();
 		}
 		public new void Dispose() {
-			ProxyQHoverEvent().Dispose();
+			DisposeQHoverEvent();
+		}
+		private void DisposeQHoverEvent() {
+			ProxyQHoverEvent().DisposeQHoverEvent();
 		}
 	}
 }

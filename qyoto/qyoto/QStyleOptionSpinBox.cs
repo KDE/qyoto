@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QStyleOptionSpinBox")]
 	public class QStyleOptionSpinBox : QStyleOptionComplex, IDisposable {
  		protected QStyleOptionSpinBox(Type dummy) : base((Type) null) {}
 		interface IQStyleOptionSpinBoxProxy {
 		}
 
-		protected void CreateQStyleOptionSpinBoxProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionSpinBox), this);
 			_interceptor = (QStyleOptionSpinBox) realProxy.GetTransparentProxy();
 		}
@@ -24,36 +25,42 @@ namespace Qt {
 			return (IQStyleOptionSpinBoxProxy) _staticInterceptor;
 		}
 
-		public const int Type = (int) OptionType.SO_SpinBox;
+		public const int Type = (int) QStyleOption.OptionType.SO_SpinBox;
 
 		public const int Version = 1;
 
 		public QStyleOptionSpinBox() : this((Type) null) {
-			CreateQStyleOptionSpinBoxProxy();
+			CreateProxy();
 			NewQStyleOptionSpinBox();
 		}
+		[SmokeMethod("QStyleOptionSpinBox()")]
 		private void NewQStyleOptionSpinBox() {
 			ProxyQStyleOptionSpinBox().NewQStyleOptionSpinBox();
 		}
 		public QStyleOptionSpinBox(QStyleOptionSpinBox other) : this((Type) null) {
-			CreateQStyleOptionSpinBoxProxy();
+			CreateProxy();
 			NewQStyleOptionSpinBox(other);
 		}
+		[SmokeMethod("QStyleOptionSpinBox(const QStyleOptionSpinBox&)")]
 		private void NewQStyleOptionSpinBox(QStyleOptionSpinBox other) {
 			ProxyQStyleOptionSpinBox().NewQStyleOptionSpinBox(other);
 		}
 		public QStyleOptionSpinBox(int version) : this((Type) null) {
-			CreateQStyleOptionSpinBoxProxy();
+			CreateProxy();
 			NewQStyleOptionSpinBox(version);
 		}
+		[SmokeMethod("QStyleOptionSpinBox(int)")]
 		private void NewQStyleOptionSpinBox(int version) {
 			ProxyQStyleOptionSpinBox().NewQStyleOptionSpinBox(version);
 		}
 		~QStyleOptionSpinBox() {
-			ProxyQStyleOptionSpinBox().Dispose();
+			DisposeQStyleOptionSpinBox();
 		}
 		public void Dispose() {
-			ProxyQStyleOptionSpinBox().Dispose();
+			DisposeQStyleOptionSpinBox();
+		}
+		private void DisposeQStyleOptionSpinBox() {
+			ProxyQStyleOptionSpinBox().DisposeQStyleOptionSpinBox();
 		}
 	}
 }

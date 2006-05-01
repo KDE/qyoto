@@ -4,16 +4,17 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QBitmap")]
 	public class QBitmap : QPixmap, IDisposable {
  		protected QBitmap(Type dummy) : base((Type) null) {}
 		interface IQBitmapProxy {
 			QBitmap FromImage(QImage image, int flags);
 			QBitmap FromImage(QImage image);
-			QBitmap FromData(QSize size, char[] bits, int monoFormat);
+			QBitmap FromData(QSize size, char[] bits, QImage.Format monoFormat);
 			QBitmap FromData(QSize size, char[] bits);
 		}
 
-		protected void CreateQBitmapProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QBitmap), this);
 			_interceptor = (QBitmap) realProxy.GetTransparentProxy();
 		}
@@ -30,71 +31,86 @@ namespace Qt {
 		}
 
 		public QBitmap() : this((Type) null) {
-			CreateQBitmapProxy();
+			CreateProxy();
 			NewQBitmap();
 		}
+		[SmokeMethod("QBitmap()")]
 		private void NewQBitmap() {
 			ProxyQBitmap().NewQBitmap();
 		}
 		public QBitmap(QPixmap arg1) : this((Type) null) {
-			CreateQBitmapProxy();
+			CreateProxy();
 			NewQBitmap(arg1);
 		}
+		[SmokeMethod("QBitmap(const QPixmap&)")]
 		private void NewQBitmap(QPixmap arg1) {
 			ProxyQBitmap().NewQBitmap(arg1);
 		}
 		public QBitmap(int w, int h) : this((Type) null) {
-			CreateQBitmapProxy();
+			CreateProxy();
 			NewQBitmap(w,h);
 		}
+		[SmokeMethod("QBitmap(int, int)")]
 		private void NewQBitmap(int w, int h) {
 			ProxyQBitmap().NewQBitmap(w,h);
 		}
 		public QBitmap(QSize arg1) : this((Type) null) {
-			CreateQBitmapProxy();
+			CreateProxy();
 			NewQBitmap(arg1);
 		}
+		[SmokeMethod("QBitmap(const QSize&)")]
 		private void NewQBitmap(QSize arg1) {
 			ProxyQBitmap().NewQBitmap(arg1);
 		}
 		public QBitmap(string fileName, string format) : this((Type) null) {
-			CreateQBitmapProxy();
+			CreateProxy();
 			NewQBitmap(fileName,format);
 		}
+		[SmokeMethod("QBitmap(const QString&, const char*)")]
 		private void NewQBitmap(string fileName, string format) {
 			ProxyQBitmap().NewQBitmap(fileName,format);
 		}
 		public QBitmap(string fileName) : this((Type) null) {
-			CreateQBitmapProxy();
+			CreateProxy();
 			NewQBitmap(fileName);
 		}
+		[SmokeMethod("QBitmap(const QString&)")]
 		private void NewQBitmap(string fileName) {
 			ProxyQBitmap().NewQBitmap(fileName);
 		}
 		//  operator QVariant(); >>>> NOT CONVERTED
+		[SmokeMethod("clear()")]
 		public void Clear() {
 			ProxyQBitmap().Clear();
 		}
+		[SmokeMethod("transformed(const QMatrix&) const")]
 		public new QBitmap Transformed(QMatrix arg1) {
 			return ProxyQBitmap().Transformed(arg1);
 		}
+		[SmokeMethod("fromImage(const QImage&, Qt::ImageConversionFlags)")]
 		public static new QBitmap FromImage(QImage image, int flags) {
 			return StaticQBitmap().FromImage(image,flags);
 		}
+		[SmokeMethod("fromImage(const QImage&)")]
 		public static new QBitmap FromImage(QImage image) {
 			return StaticQBitmap().FromImage(image);
 		}
-		public static QBitmap FromData(QSize size, char[] bits, int monoFormat) {
+		[SmokeMethod("fromData(const QSize&, const uchar*, QImage::Format)")]
+		public static QBitmap FromData(QSize size, char[] bits, QImage.Format monoFormat) {
 			return StaticQBitmap().FromData(size,bits,monoFormat);
 		}
+		[SmokeMethod("fromData(const QSize&, const uchar*)")]
 		public static QBitmap FromData(QSize size, char[] bits) {
 			return StaticQBitmap().FromData(size,bits);
 		}
 		~QBitmap() {
-			ProxyQBitmap().Dispose();
+			DisposeQBitmap();
 		}
 		public void Dispose() {
-			ProxyQBitmap().Dispose();
+			DisposeQBitmap();
+		}
+		private void DisposeQBitmap() {
+			ProxyQBitmap().DisposeQBitmap();
 		}
 //	public QBitmap(QPixmap arg1) {
 //		super((Class) null);

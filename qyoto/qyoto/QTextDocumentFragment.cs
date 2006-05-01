@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QTextDocumentFragment")]
 	public class QTextDocumentFragment : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
@@ -12,7 +13,7 @@ namespace Qt {
 		interface IQTextDocumentFragmentProxy {
 		}
 
-		protected void CreateQTextDocumentFragmentProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextDocumentFragment), this);
 			_interceptor = (QTextDocumentFragment) realProxy.GetTransparentProxy();
 		}
@@ -32,22 +33,28 @@ namespace Qt {
 		// QTextDocumentFragment* QTextDocumentFragment(const QTextDocument* arg1); >>>> NOT CONVERTED
 		// QTextDocumentFragment* QTextDocumentFragment(const QTextCursor& arg1); >>>> NOT CONVERTED
 		// QTextDocumentFragment* QTextDocumentFragment(const QTextDocumentFragment& arg1); >>>> NOT CONVERTED
+		[SmokeMethod("isEmpty() const")]
 		public bool IsEmpty() {
 			return ProxyQTextDocumentFragment().IsEmpty();
 		}
+		[SmokeMethod("toPlainText() const")]
 		public string ToPlainText() {
 			return ProxyQTextDocumentFragment().ToPlainText();
 		}
+		[SmokeMethod("toHtml() const")]
 		public string ToHtml() {
 			return ProxyQTextDocumentFragment().ToHtml();
 		}
 		// QTextDocumentFragment fromPlainText(const QString& arg1); >>>> NOT CONVERTED
 		// QTextDocumentFragment fromHtml(const QString& arg1); >>>> NOT CONVERTED
 		~QTextDocumentFragment() {
-			ProxyQTextDocumentFragment().Dispose();
+			DisposeQTextDocumentFragment();
 		}
 		public void Dispose() {
-			ProxyQTextDocumentFragment().Dispose();
+			DisposeQTextDocumentFragment();
+		}
+		private void DisposeQTextDocumentFragment() {
+			ProxyQTextDocumentFragment().DisposeQTextDocumentFragment();
 		}
 	}
 }

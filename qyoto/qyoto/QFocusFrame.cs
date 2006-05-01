@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QFocusFrame")]
 	public class QFocusFrame : QWidget, IDisposable {
  		protected QFocusFrame(Type dummy) : base((Type) null) {}
 		interface IQFocusFrameProxy {
@@ -11,7 +12,7 @@ namespace Qt {
 			string Tr(string s);
 		}
 
-		protected void CreateQFocusFrameProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFocusFrame), this);
 			_interceptor = (QFocusFrame) realProxy.GetTransparentProxy();
 		}
@@ -27,48 +28,69 @@ namespace Qt {
 			return (IQFocusFrameProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQFocusFrame().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QFocusFrame(QWidget parent) : this((Type) null) {
-			CreateQFocusFrameProxy();
+			CreateProxy();
 			NewQFocusFrame(parent);
 		}
+		[SmokeMethod("QFocusFrame(QWidget*)")]
 		private void NewQFocusFrame(QWidget parent) {
 			ProxyQFocusFrame().NewQFocusFrame(parent);
 		}
 		public QFocusFrame() : this((Type) null) {
-			CreateQFocusFrameProxy();
+			CreateProxy();
 			NewQFocusFrame();
 		}
+		[SmokeMethod("QFocusFrame()")]
 		private void NewQFocusFrame() {
 			ProxyQFocusFrame().NewQFocusFrame();
 		}
+		[SmokeMethod("setWidget(QWidget*)")]
 		public void SetWidget(QWidget widget) {
 			ProxyQFocusFrame().SetWidget(widget);
 		}
+		[SmokeMethod("widget() const")]
 		public QWidget Widget() {
 			return ProxyQFocusFrame().Widget();
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQFocusFrame().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQFocusFrame().Tr(s);
 		}
+		[SmokeMethod("event(QEvent*)")]
+		public new bool Event(QEvent e) {
+			return ProxyQFocusFrame().Event(e);
+		}
+		[SmokeMethod("eventFilter(QObject*, QEvent*)")]
 		public new bool EventFilter(QObject arg1, QEvent arg2) {
 			return ProxyQFocusFrame().EventFilter(arg1,arg2);
 		}
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected new void PaintEvent(QPaintEvent arg1) {
 			ProxyQFocusFrame().PaintEvent(arg1);
 		}
 		~QFocusFrame() {
-			ProxyQFocusFrame().Dispose();
+			DisposeQFocusFrame();
 		}
 		public new void Dispose() {
-			ProxyQFocusFrame().Dispose();
+			DisposeQFocusFrame();
 		}
+		private void DisposeQFocusFrame() {
+			ProxyQFocusFrame().DisposeQFocusFrame();
+		}
+		protected new IQFocusFrameSignals Emit() {
+			return (IQFocusFrameSignals) Q_EMIT;
+		}
+	}
+
+	public interface IQFocusFrameSignals : IQWidgetSignals {
 	}
 }

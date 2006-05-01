@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QHostAddress")]
 	public class QHostAddress : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
@@ -11,10 +12,10 @@ namespace Qt {
  		protected QHostAddress(Type dummy) {}
 		interface IQHostAddressProxy {
 			bool op_equals(QHostAddress lhs, QHostAddress address);
-			bool op_equals(QHostAddress lhs, int address);
+			bool op_equals(QHostAddress lhs, QHostAddress.SpecialAddress address);
 		}
 
-		protected void CreateQHostAddressProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QHostAddress), this);
 			_interceptor = (QHostAddress) realProxy.GetTransparentProxy();
 		}
@@ -30,7 +31,7 @@ namespace Qt {
 			return (IQHostAddressProxy) _staticInterceptor;
 		}
 
-		enum SpecialAddress {
+		public enum SpecialAddress {
 			Null = 0,
 			Broadcast = 1,
 			LocalHost = 2,
@@ -39,60 +40,81 @@ namespace Qt {
 			AnyIPv6 = 5,
 		}
 		public QHostAddress() : this((Type) null) {
-			CreateQHostAddressProxy();
+			CreateProxy();
 			NewQHostAddress();
 		}
+		[SmokeMethod("QHostAddress()")]
 		private void NewQHostAddress() {
 			ProxyQHostAddress().NewQHostAddress();
 		}
 		public QHostAddress(uint ip4Addr) : this((Type) null) {
-			CreateQHostAddressProxy();
+			CreateProxy();
 			NewQHostAddress(ip4Addr);
 		}
+		[SmokeMethod("QHostAddress(quint32)")]
 		private void NewQHostAddress(uint ip4Addr) {
 			ProxyQHostAddress().NewQHostAddress(ip4Addr);
 		}
 		// QHostAddress* QHostAddress(quint8* arg1); >>>> NOT CONVERTED
 		// QHostAddress* QHostAddress(const Q_IPV6ADDR& arg1); >>>> NOT CONVERTED
+		// QHostAddress* QHostAddress(const sockaddr* arg1); >>>> NOT CONVERTED
 		public QHostAddress(string address) : this((Type) null) {
-			CreateQHostAddressProxy();
+			CreateProxy();
 			NewQHostAddress(address);
 		}
+		[SmokeMethod("QHostAddress(const QString&)")]
 		private void NewQHostAddress(string address) {
 			ProxyQHostAddress().NewQHostAddress(address);
 		}
 		public QHostAddress(QHostAddress copy) : this((Type) null) {
-			CreateQHostAddressProxy();
+			CreateProxy();
 			NewQHostAddress(copy);
 		}
+		[SmokeMethod("QHostAddress(const QHostAddress&)")]
 		private void NewQHostAddress(QHostAddress copy) {
 			ProxyQHostAddress().NewQHostAddress(copy);
 		}
-		public QHostAddress(int address) : this((Type) null) {
-			CreateQHostAddressProxy();
+		public QHostAddress(QHostAddress.SpecialAddress address) : this((Type) null) {
+			CreateProxy();
 			NewQHostAddress(address);
 		}
-		private void NewQHostAddress(int address) {
+		[SmokeMethod("QHostAddress(QHostAddress::SpecialAddress)")]
+		private void NewQHostAddress(QHostAddress.SpecialAddress address) {
 			ProxyQHostAddress().NewQHostAddress(address);
 		}
+		[SmokeMethod("setAddress(quint32)")]
 		public void SetAddress(uint ip4Addr) {
 			ProxyQHostAddress().SetAddress(ip4Addr);
 		}
 		// void setAddress(quint8* arg1); >>>> NOT CONVERTED
 		// void setAddress(const Q_IPV6ADDR& arg1); >>>> NOT CONVERTED
+		// void setAddress(const sockaddr* arg1); >>>> NOT CONVERTED
+		[SmokeMethod("setAddress(const QString&)")]
 		public bool SetAddress(string address) {
 			return ProxyQHostAddress().SetAddress(address);
 		}
-		public int Protocol() {
+		[SmokeMethod("protocol() const")]
+		public QAbstractSocket.NetworkLayerProtocol Protocol() {
 			return ProxyQHostAddress().Protocol();
 		}
+		[SmokeMethod("toIPv4Address() const")]
 		public uint ToIPv4Address() {
 			return ProxyQHostAddress().ToIPv4Address();
 		}
 		// Q_IPV6ADDR toIPv6Address(); >>>> NOT CONVERTED
+		[SmokeMethod("toString() const")]
 		public new string ToString() {
 			return ProxyQHostAddress().ToString();
 		}
+		[SmokeMethod("scopeId() const")]
+		public string ScopeId() {
+			return ProxyQHostAddress().ScopeId();
+		}
+		[SmokeMethod("setScopeId(const QString&)")]
+		public void SetScopeId(string id) {
+			ProxyQHostAddress().SetScopeId(id);
+		}
+		[SmokeMethod("operator==(const QHostAddress&) const")]
 		public static bool operator==(QHostAddress lhs, QHostAddress address) {
 			return StaticQHostAddress().op_equals(lhs,address);
 		}
@@ -106,32 +128,29 @@ namespace Qt {
 		public override int GetHashCode() {
 			return ProxyQHostAddress().GetHashCode();
 		}
-		public static bool operator==(QHostAddress lhs, int address) {
+		[SmokeMethod("operator==(QHostAddress::SpecialAddress) const")]
+		public static bool operator==(QHostAddress lhs, QHostAddress.SpecialAddress address) {
 			return StaticQHostAddress().op_equals(lhs,address);
 		}
-		public static bool operator!=(QHostAddress lhs, int address) {
+		public static bool operator!=(QHostAddress lhs, QHostAddress.SpecialAddress address) {
 			return !StaticQHostAddress().op_equals(lhs,address);
 		}
-/*
-		public override bool Equals(object o) {
-			if (!(o is QHostAddress)) { return false; }
-			return this == (QHostAddress) o;
-		}
-		public override int GetHashCode() {
-			return ProxyQHostAddress().GetHashCode();
-		}
-*/
+		[SmokeMethod("isNull() const")]
 		public bool IsNull() {
 			return ProxyQHostAddress().IsNull();
 		}
+		[SmokeMethod("clear()")]
 		public void Clear() {
 			ProxyQHostAddress().Clear();
 		}
 		~QHostAddress() {
-			ProxyQHostAddress().Dispose();
+			DisposeQHostAddress();
 		}
 		public void Dispose() {
-			ProxyQHostAddress().Dispose();
+			DisposeQHostAddress();
+		}
+		private void DisposeQHostAddress() {
+			ProxyQHostAddress().DisposeQHostAddress();
 		}
 	}
 }

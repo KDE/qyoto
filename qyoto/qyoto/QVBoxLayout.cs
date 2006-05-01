@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QVBoxLayout")]
 	public class QVBoxLayout : QBoxLayout, IDisposable {
  		protected QVBoxLayout(Type dummy) : base((Type) null) {}
 		interface IQVBoxLayoutProxy {
@@ -11,7 +12,7 @@ namespace Qt {
 			string Tr(string s);
 		}
 
-		protected void CreateQVBoxLayoutProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QVBoxLayout), this);
 			_interceptor = (QVBoxLayout) realProxy.GetTransparentProxy();
 		}
@@ -27,36 +28,49 @@ namespace Qt {
 			return (IQVBoxLayoutProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQVBoxLayout().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QVBoxLayout() : this((Type) null) {
-			CreateQVBoxLayoutProxy();
+			CreateProxy();
 			NewQVBoxLayout();
 		}
+		[SmokeMethod("QVBoxLayout()")]
 		private void NewQVBoxLayout() {
 			ProxyQVBoxLayout().NewQVBoxLayout();
 		}
 		public QVBoxLayout(QWidget parent) : this((Type) null) {
-			CreateQVBoxLayoutProxy();
+			CreateProxy();
 			NewQVBoxLayout(parent);
 		}
+		[SmokeMethod("QVBoxLayout(QWidget*)")]
 		private void NewQVBoxLayout(QWidget parent) {
 			ProxyQVBoxLayout().NewQVBoxLayout(parent);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQVBoxLayout().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQVBoxLayout().Tr(s);
 		}
 		~QVBoxLayout() {
-			ProxyQVBoxLayout().Dispose();
+			DisposeQVBoxLayout();
 		}
 		public new void Dispose() {
-			ProxyQVBoxLayout().Dispose();
+			DisposeQVBoxLayout();
 		}
+		private void DisposeQVBoxLayout() {
+			ProxyQVBoxLayout().DisposeQVBoxLayout();
+		}
+		protected new IQVBoxLayoutSignals Emit() {
+			return (IQVBoxLayoutSignals) Q_EMIT;
+		}
+	}
+
+	public interface IQVBoxLayoutSignals : IQBoxLayoutSignals {
 	}
 }

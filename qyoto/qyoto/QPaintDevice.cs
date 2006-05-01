@@ -19,6 +19,7 @@ namespace Qt {
 			int Depth();
 	}
 
+	[SmokeClass("QPaintDevice")]
 	public class QPaintDevice : MarshalByRefObject, IQPaintDevice {
 		protected Object _interceptor = null;
  
@@ -27,7 +28,7 @@ namespace Qt {
 		interface IQPaintDeviceProxy {
 		}
 
-		protected void CreateQPaintDeviceProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPaintDevice), this);
 			_interceptor = (QPaintDevice) realProxy.GetTransparentProxy();
 		}
@@ -43,7 +44,7 @@ namespace Qt {
 			return (IQPaintDeviceProxy) _staticInterceptor;
 		}
 
-		enum PaintDeviceMetric {
+		public enum PaintDeviceMetric {
 			PdmWidth = 1,
 			PdmHeight = 2,
 			PdmWidthMM = 3,
@@ -55,44 +56,66 @@ namespace Qt {
 			PdmPhysicalDpiX = 9,
 			PdmPhysicalDpiY = 10,
 		}
+		[SmokeMethod("devType() const")]
 		public virtual int DevType() {
 			return ProxyQPaintDevice().DevType();
 		}
+		[SmokeMethod("paintingActive() const")]
 		public bool PaintingActive() {
 			return ProxyQPaintDevice().PaintingActive();
 		}
+		[SmokeMethod("paintEngine() const")]
 		public virtual QPaintEngine PaintEngine() {
 			return ProxyQPaintDevice().PaintEngine();
 		}
+		[SmokeMethod("width() const")]
 		public int Width() {
 			return ProxyQPaintDevice().Width();
 		}
+		[SmokeMethod("height() const")]
 		public int Height() {
 			return ProxyQPaintDevice().Height();
 		}
+		[SmokeMethod("widthMM() const")]
 		public int WidthMM() {
 			return ProxyQPaintDevice().WidthMM();
 		}
+		[SmokeMethod("heightMM() const")]
 		public int HeightMM() {
 			return ProxyQPaintDevice().HeightMM();
 		}
+		[SmokeMethod("logicalDpiX() const")]
 		public int LogicalDpiX() {
 			return ProxyQPaintDevice().LogicalDpiX();
 		}
+		[SmokeMethod("logicalDpiY() const")]
 		public int LogicalDpiY() {
 			return ProxyQPaintDevice().LogicalDpiY();
 		}
+		[SmokeMethod("physicalDpiX() const")]
 		public int PhysicalDpiX() {
 			return ProxyQPaintDevice().PhysicalDpiX();
 		}
+		[SmokeMethod("physicalDpiY() const")]
 		public int PhysicalDpiY() {
 			return ProxyQPaintDevice().PhysicalDpiY();
 		}
+		[SmokeMethod("numColors() const")]
 		public int NumColors() {
 			return ProxyQPaintDevice().NumColors();
 		}
+		[SmokeMethod("depth() const")]
 		public int Depth() {
 			return ProxyQPaintDevice().Depth();
+		}
+		~QPaintDevice() {
+			DisposeQPaintDevice();
+		}
+		public void Dispose() {
+			DisposeQPaintDevice();
+		}
+		private void DisposeQPaintDevice() {
+			ProxyQPaintDevice().DisposeQPaintDevice();
 		}
 
 	}

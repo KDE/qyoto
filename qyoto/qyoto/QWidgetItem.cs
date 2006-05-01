@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QWidgetItem")]
 	public class QWidgetItem : QLayoutItem, IDisposable {
  		protected QWidgetItem(Type dummy) : base((Type) null) {}
 		interface IQWidgetItemProxy {
 		}
 
-		protected void CreateQWidgetItemProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QWidgetItem), this);
 			_interceptor = (QWidgetItem) realProxy.GetTransparentProxy();
 		}
@@ -25,47 +26,61 @@ namespace Qt {
 		}
 
 		public QWidgetItem(QWidget w) : this((Type) null) {
-			CreateQWidgetItemProxy();
+			CreateProxy();
 			NewQWidgetItem(w);
 		}
+		[SmokeMethod("QWidgetItem(QWidget*)")]
 		private void NewQWidgetItem(QWidget w) {
 			ProxyQWidgetItem().NewQWidgetItem(w);
 		}
+		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {
 			return ProxyQWidgetItem().SizeHint();
 		}
+		[SmokeMethod("minimumSize() const")]
 		public new QSize MinimumSize() {
 			return ProxyQWidgetItem().MinimumSize();
 		}
+		[SmokeMethod("maximumSize() const")]
 		public new QSize MaximumSize() {
 			return ProxyQWidgetItem().MaximumSize();
 		}
+		[SmokeMethod("expandingDirections() const")]
 		public new int ExpandingDirections() {
 			return ProxyQWidgetItem().ExpandingDirections();
 		}
+		[SmokeMethod("isEmpty() const")]
 		public new bool IsEmpty() {
 			return ProxyQWidgetItem().IsEmpty();
 		}
+		[SmokeMethod("setGeometry(const QRect&)")]
 		public new void SetGeometry(QRect arg1) {
 			ProxyQWidgetItem().SetGeometry(arg1);
 		}
+		[SmokeMethod("geometry() const")]
 		public new QRect Geometry() {
 			return ProxyQWidgetItem().Geometry();
 		}
+		[SmokeMethod("widget()")]
 		public new virtual QWidget Widget() {
 			return ProxyQWidgetItem().Widget();
 		}
+		[SmokeMethod("hasHeightForWidth() const")]
 		public new bool HasHeightForWidth() {
 			return ProxyQWidgetItem().HasHeightForWidth();
 		}
+		[SmokeMethod("heightForWidth(int) const")]
 		public new int HeightForWidth(int arg1) {
 			return ProxyQWidgetItem().HeightForWidth(arg1);
 		}
 		~QWidgetItem() {
-			ProxyQWidgetItem().Dispose();
+			DisposeQWidgetItem();
 		}
 		public void Dispose() {
-			ProxyQWidgetItem().Dispose();
+			DisposeQWidgetItem();
+		}
+		private void DisposeQWidgetItem() {
+			ProxyQWidgetItem().DisposeQWidgetItem();
 		}
 	}
 }

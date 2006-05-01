@@ -3,7 +3,8 @@ namespace Qt {
 
 	using System;
 
-	public class QPolygonF : IDisposable {
+	[SmokeClass("QPolygonF")]
+	public class QPolygonF : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
@@ -11,7 +12,7 @@ namespace Qt {
 		interface IQPolygonFProxy {
 		}
 
-		protected void CreateQPolygonFProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPolygonF), this);
 			_interceptor = (QPolygonF) realProxy.GetTransparentProxy();
 		}
@@ -28,61 +29,74 @@ namespace Qt {
 		}
 
 		public QPolygonF() : this((Type) null) {
-			CreateQPolygonFProxy();
+			CreateProxy();
 			NewQPolygonF();
 		}
+		[SmokeMethod("QPolygonF()")]
 		private void NewQPolygonF() {
 			ProxyQPolygonF().NewQPolygonF();
 		}
 		public QPolygonF(int size) : this((Type) null) {
-			CreateQPolygonFProxy();
+			CreateProxy();
 			NewQPolygonF(size);
 		}
+		[SmokeMethod("QPolygonF(int)")]
 		private void NewQPolygonF(int size) {
 			ProxyQPolygonF().NewQPolygonF(size);
 		}
 		public QPolygonF(QPolygonF a) : this((Type) null) {
-			CreateQPolygonFProxy();
+			CreateProxy();
 			NewQPolygonF(a);
 		}
+		[SmokeMethod("QPolygonF(const QPolygonF&)")]
 		private void NewQPolygonF(QPolygonF a) {
 			ProxyQPolygonF().NewQPolygonF(a);
 		}
 		// QPolygonF* QPolygonF(const QVector<QPointF>& arg1); >>>> NOT CONVERTED
 		public QPolygonF(QRectF r) : this((Type) null) {
-			CreateQPolygonFProxy();
+			CreateProxy();
 			NewQPolygonF(r);
 		}
+		[SmokeMethod("QPolygonF(const QRectF&)")]
 		private void NewQPolygonF(QRectF r) {
 			ProxyQPolygonF().NewQPolygonF(r);
 		}
 		public QPolygonF(QPolygon a) : this((Type) null) {
-			CreateQPolygonFProxy();
+			CreateProxy();
 			NewQPolygonF(a);
 		}
+		[SmokeMethod("QPolygonF(const QPolygon&)")]
 		private void NewQPolygonF(QPolygon a) {
 			ProxyQPolygonF().NewQPolygonF(a);
 		}
+		[SmokeMethod("translate(qreal, qreal)")]
 		public void Translate(double dx, double dy) {
 			ProxyQPolygonF().Translate(dx,dy);
 		}
+		[SmokeMethod("translate(const QPointF&)")]
 		public void Translate(QPointF offset) {
 			ProxyQPolygonF().Translate(offset);
 		}
+		[SmokeMethod("toPolygon() const")]
 		public QPolygon ToPolygon() {
 			return ProxyQPolygonF().ToPolygon();
 		}
+		[SmokeMethod("isClosed() const")]
 		public bool IsClosed() {
 			return ProxyQPolygonF().IsClosed();
 		}
+		[SmokeMethod("boundingRect() const")]
 		public QRectF BoundingRect() {
 			return ProxyQPolygonF().BoundingRect();
 		}
 		~QPolygonF() {
-			ProxyQPolygonF().Dispose();
+			DisposeQPolygonF();
 		}
 		public void Dispose() {
-			ProxyQPolygonF().Dispose();
+			DisposeQPolygonF();
+		}
+		private void DisposeQPolygonF() {
+			ProxyQPolygonF().DisposeQPolygonF();
 		}
 	}
 }

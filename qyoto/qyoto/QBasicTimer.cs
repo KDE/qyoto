@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QBasicTimer")]
 	public class QBasicTimer : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
@@ -11,7 +12,7 @@ namespace Qt {
 		interface IQBasicTimerProxy {
 		}
 
-		protected void CreateQBasicTimerProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QBasicTimer), this);
 			_interceptor = (QBasicTimer) realProxy.GetTransparentProxy();
 		}
@@ -28,29 +29,37 @@ namespace Qt {
 		}
 
 		public QBasicTimer() : this((Type) null) {
-			CreateQBasicTimerProxy();
+			CreateProxy();
 			NewQBasicTimer();
 		}
+		[SmokeMethod("QBasicTimer()")]
 		private void NewQBasicTimer() {
 			ProxyQBasicTimer().NewQBasicTimer();
 		}
+		[SmokeMethod("isActive() const")]
 		public bool IsActive() {
 			return ProxyQBasicTimer().IsActive();
 		}
+		[SmokeMethod("timerId() const")]
 		public int TimerId() {
 			return ProxyQBasicTimer().TimerId();
 		}
+		[SmokeMethod("start(int, QObject*)")]
 		public void Start(int msec, QObject arg2) {
 			ProxyQBasicTimer().Start(msec,arg2);
 		}
+		[SmokeMethod("stop()")]
 		public void Stop() {
 			ProxyQBasicTimer().Stop();
 		}
 		~QBasicTimer() {
-			ProxyQBasicTimer().Dispose();
+			DisposeQBasicTimer();
 		}
 		public void Dispose() {
-			ProxyQBasicTimer().Dispose();
+			DisposeQBasicTimer();
+		}
+		private void DisposeQBasicTimer() {
+			ProxyQBasicTimer().DisposeQBasicTimer();
 		}
 	}
 }

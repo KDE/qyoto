@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QXmlLocator")]
 	public class QXmlLocator : MarshalByRefObject {
 		protected Object _interceptor = null;
  
@@ -11,7 +12,7 @@ namespace Qt {
 		interface IQXmlLocatorProxy {
 		}
 
-		protected void CreateQXmlLocatorProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlLocator), this);
 			_interceptor = (QXmlLocator) realProxy.GetTransparentProxy();
 		}
@@ -27,11 +28,30 @@ namespace Qt {
 			return (IQXmlLocatorProxy) _staticInterceptor;
 		}
 
+		public QXmlLocator() : this((Type) null) {
+			CreateProxy();
+			NewQXmlLocator();
+		}
+		[SmokeMethod("QXmlLocator()")]
+		private void NewQXmlLocator() {
+			ProxyQXmlLocator().NewQXmlLocator();
+		}
+		[SmokeMethod("columnNumber() const")]
 		public virtual int ColumnNumber() {
 			return ProxyQXmlLocator().ColumnNumber();
 		}
+		[SmokeMethod("lineNumber() const")]
 		public virtual int LineNumber() {
 			return ProxyQXmlLocator().LineNumber();
+		}
+		~QXmlLocator() {
+			DisposeQXmlLocator();
+		}
+		public void Dispose() {
+			DisposeQXmlLocator();
+		}
+		private void DisposeQXmlLocator() {
+			ProxyQXmlLocator().DisposeQXmlLocator();
 		}
 	}
 }

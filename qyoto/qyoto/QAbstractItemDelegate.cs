@@ -5,15 +5,16 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQAbstractItemDelegateSignals"></see> for signals emitted by QAbstractItemDelegate
+	[SmokeClass("QAbstractItemDelegate")]
 	public class QAbstractItemDelegate : QObject {
  		protected QAbstractItemDelegate(Type dummy) : base((Type) null) {}
 		interface IQAbstractItemDelegateProxy {
 			string Tr(string s, string c);
 			string Tr(string s);
-			string ElidedText(QFontMetrics fontMetrics, int width, int mode, string text);
+			string ElidedText(QFontMetrics fontMetrics, int width, Qt.TextElideMode mode, string text);
 		}
 
-		protected void CreateQAbstractItemDelegateProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAbstractItemDelegate), this);
 			_interceptor = (QAbstractItemDelegate) realProxy.GetTransparentProxy();
 		}
@@ -29,53 +30,94 @@ namespace Qt {
 			return (IQAbstractItemDelegateProxy) _staticInterceptor;
 		}
 
-		enum EndEditHint {
+		public enum EndEditHint {
 			NoHint = 0,
 			EditNextItem = 1,
 			EditPreviousItem = 2,
 			SubmitModelCache = 3,
 			RevertModelCache = 4,
 		}
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQAbstractItemDelegate().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
+		public QAbstractItemDelegate(QObject parent) : this((Type) null) {
+			CreateProxy();
+			NewQAbstractItemDelegate(parent);
+		}
+		[SmokeMethod("QAbstractItemDelegate(QObject*)")]
+		private void NewQAbstractItemDelegate(QObject parent) {
+			ProxyQAbstractItemDelegate().NewQAbstractItemDelegate(parent);
+		}
+		public QAbstractItemDelegate() : this((Type) null) {
+			CreateProxy();
+			NewQAbstractItemDelegate();
+		}
+		[SmokeMethod("QAbstractItemDelegate()")]
+		private void NewQAbstractItemDelegate() {
+			ProxyQAbstractItemDelegate().NewQAbstractItemDelegate();
+		}
+		[SmokeMethod("paint(QPainter*, const QStyleOptionViewItem&, const QModelIndex&) const")]
 		public virtual void Paint(QPainter painter, QStyleOptionViewItem option, QModelIndex index) {
 			ProxyQAbstractItemDelegate().Paint(painter,option,index);
 		}
+		[SmokeMethod("sizeHint(const QStyleOptionViewItem&, const QModelIndex&) const")]
 		public virtual QSize SizeHint(QStyleOptionViewItem option, QModelIndex index) {
 			return ProxyQAbstractItemDelegate().SizeHint(option,index);
 		}
+		[SmokeMethod("createEditor(QWidget*, const QStyleOptionViewItem&, const QModelIndex&) const")]
 		public virtual QWidget CreateEditor(QWidget parent, QStyleOptionViewItem option, QModelIndex index) {
 			return ProxyQAbstractItemDelegate().CreateEditor(parent,option,index);
 		}
+		[SmokeMethod("setEditorData(QWidget*, const QModelIndex&) const")]
 		public virtual void SetEditorData(QWidget editor, QModelIndex index) {
 			ProxyQAbstractItemDelegate().SetEditorData(editor,index);
 		}
+		[SmokeMethod("setModelData(QWidget*, QAbstractItemModel*, const QModelIndex&) const")]
 		public virtual void SetModelData(QWidget editor, QAbstractItemModel model, QModelIndex index) {
 			ProxyQAbstractItemDelegate().SetModelData(editor,model,index);
 		}
+		[SmokeMethod("updateEditorGeometry(QWidget*, const QStyleOptionViewItem&, const QModelIndex&) const")]
 		public virtual void UpdateEditorGeometry(QWidget editor, QStyleOptionViewItem option, QModelIndex index) {
 			ProxyQAbstractItemDelegate().UpdateEditorGeometry(editor,option,index);
 		}
+		[SmokeMethod("editorEvent(QEvent*, QAbstractItemModel*, const QStyleOptionViewItem&, const QModelIndex&)")]
 		public virtual bool EditorEvent(QEvent arg1, QAbstractItemModel model, QStyleOptionViewItem option, QModelIndex index) {
 			return ProxyQAbstractItemDelegate().EditorEvent(arg1,model,option,index);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQAbstractItemDelegate().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQAbstractItemDelegate().Tr(s);
 		}
-		public static string ElidedText(QFontMetrics fontMetrics, int width, int mode, string text) {
+		[SmokeMethod("elidedText(const QFontMetrics&, int, Qt::TextElideMode, const QString&)")]
+		public static string ElidedText(QFontMetrics fontMetrics, int width, Qt.TextElideMode mode, string text) {
 			return StaticQAbstractItemDelegate().ElidedText(fontMetrics,width,mode,text);
+		}
+		~QAbstractItemDelegate() {
+			DisposeQAbstractItemDelegate();
+		}
+		public new void Dispose() {
+			DisposeQAbstractItemDelegate();
+		}
+		private void DisposeQAbstractItemDelegate() {
+			ProxyQAbstractItemDelegate().DisposeQAbstractItemDelegate();
+		}
+		protected new IQAbstractItemDelegateSignals Emit() {
+			return (IQAbstractItemDelegateSignals) Q_EMIT;
 		}
 	}
 
-	public interface IQAbstractItemDelegateSignals {
+	public interface IQAbstractItemDelegateSignals : IQObjectSignals {
+		[Q_SIGNAL("void commitData(QWidget*)")]
 		void CommitData(QWidget editor);
-		void CloseEditor(QWidget editor, int hint);
+		[Q_SIGNAL("void closeEditor(QWidget*, QAbstractItemDelegate::EndEditHint)")]
+		void CloseEditor(QWidget editor, QAbstractItemDelegate.EndEditHint hint);
+		[Q_SIGNAL("void closeEditor(QWidget*)")]
 		void CloseEditor(QWidget editor);
 	}
 }

@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Collections;
 
+	[SmokeClass("QFactoryInterface")]
 	public class QFactoryInterface : MarshalByRefObject {
 		protected Object _interceptor = null;
  
@@ -12,7 +13,7 @@ namespace Qt {
 		interface IQFactoryInterfaceProxy {
 		}
 
-		protected void CreateQFactoryInterfaceProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFactoryInterface), this);
 			_interceptor = (QFactoryInterface) realProxy.GetTransparentProxy();
 		}
@@ -28,8 +29,26 @@ namespace Qt {
 			return (IQFactoryInterfaceProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("keys() const")]
 		public virtual ArrayList Keys() {
 			return ProxyQFactoryInterface().Keys();
+		}
+		public QFactoryInterface() : this((Type) null) {
+			CreateProxy();
+			NewQFactoryInterface();
+		}
+		[SmokeMethod("QFactoryInterface()")]
+		private void NewQFactoryInterface() {
+			ProxyQFactoryInterface().NewQFactoryInterface();
+		}
+		~QFactoryInterface() {
+			DisposeQFactoryInterface();
+		}
+		public void Dispose() {
+			DisposeQFactoryInterface();
+		}
+		private void DisposeQFactoryInterface() {
+			ProxyQFactoryInterface().DisposeQFactoryInterface();
 		}
 	}
 }

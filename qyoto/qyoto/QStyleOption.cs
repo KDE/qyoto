@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QStyleOption")]
 	public class QStyleOption : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
@@ -11,7 +12,7 @@ namespace Qt {
 		interface IQStyleOptionProxy {
 		}
 
-		protected void CreateQStyleOptionProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOption), this);
 			_interceptor = (QStyleOption) realProxy.GetTransparentProxy();
 		}
@@ -27,9 +28,7 @@ namespace Qt {
 			return (IQStyleOptionProxy) _staticInterceptor;
 		}
 
-		public const int Version = 1;
-
-		enum OptionType {
+		public enum OptionType {
 			SO_Default = 0,
 			SO_FocusRect = 1,
 			SO_Button = 2,
@@ -46,55 +45,70 @@ namespace Qt {
 			SO_TabWidgetFrame = 13,
 			SO_TabBarBase = 14,
 			SO_RubberBand = 15,
+			SO_ToolBar = 16,
 			SO_Complex = 0xf0000,
-			SO_Slider = 16,
-			SO_SpinBox = 17,
-			SO_ToolButton = 18,
-			SO_ComboBox = 19,
-			SO_Q3ListView = 20,
-			SO_TitleBar = 21,
+			SO_Slider = 17,
+			SO_SpinBox = 18,
+			SO_ToolButton = 19,
+			SO_ComboBox = 20,
+			SO_Q3ListView = 21,
+			SO_TitleBar = 22,
+			SO_GroupBox = 23,
 			SO_CustomBase = 0xf00,
 			SO_ComplexCustomBase = 0xf000000,
 		}
+		public const int Type = (int) QStyleOption.OptionType.SO_Default;
 
-		public const int Type = (int) OptionType.SO_Default;
+		public const int Version = 1;
 
 		public QStyleOption(int version, int type) : this((Type) null) {
-			CreateQStyleOptionProxy();
+			CreateProxy();
 			NewQStyleOption(version,type);
 		}
+		[SmokeMethod("QStyleOption(int, int)")]
 		private void NewQStyleOption(int version, int type) {
 			ProxyQStyleOption().NewQStyleOption(version,type);
 		}
 		public QStyleOption(int version) : this((Type) null) {
-			CreateQStyleOptionProxy();
+			CreateProxy();
 			NewQStyleOption(version);
 		}
+		[SmokeMethod("QStyleOption(int)")]
 		private void NewQStyleOption(int version) {
 			ProxyQStyleOption().NewQStyleOption(version);
 		}
 		public QStyleOption() : this((Type) null) {
-			CreateQStyleOptionProxy();
+			CreateProxy();
 			NewQStyleOption();
 		}
+		[SmokeMethod("QStyleOption()")]
 		private void NewQStyleOption() {
 			ProxyQStyleOption().NewQStyleOption();
 		}
 		public QStyleOption(QStyleOption other) : this((Type) null) {
-			CreateQStyleOptionProxy();
+			CreateProxy();
 			NewQStyleOption(other);
 		}
+		[SmokeMethod("QStyleOption(const QStyleOption&)")]
 		private void NewQStyleOption(QStyleOption other) {
 			ProxyQStyleOption().NewQStyleOption(other);
 		}
+		[SmokeMethod("init(const QWidget*)")]
 		public void Init(QWidget w) {
 			ProxyQStyleOption().Init(w);
 		}
+		[SmokeMethod("initFrom(const QWidget*)")]
+		public void InitFrom(QWidget w) {
+			ProxyQStyleOption().InitFrom(w);
+		}
 		~QStyleOption() {
-			ProxyQStyleOption().Dispose();
+			DisposeQStyleOption();
 		}
 		public void Dispose() {
-			ProxyQStyleOption().Dispose();
+			DisposeQStyleOption();
+		}
+		private void DisposeQStyleOption() {
+			ProxyQStyleOption().DisposeQStyleOption();
 		}
 	}
 }

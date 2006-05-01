@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QPageSetupDialog")]
 	public class QPageSetupDialog : QAbstractPageSetupDialog, IDisposable {
  		protected QPageSetupDialog(Type dummy) : base((Type) null) {}
 		interface IQPageSetupDialogProxy {
 		}
 
-		protected void CreateQPageSetupDialogProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPageSetupDialog), this);
 			_interceptor = (QPageSetupDialog) realProxy.GetTransparentProxy();
 		}
@@ -25,30 +26,43 @@ namespace Qt {
 		}
 
 		public QPageSetupDialog(QPrinter printer, QWidget parent) : this((Type) null) {
-			CreateQPageSetupDialogProxy();
+			CreateProxy();
 			NewQPageSetupDialog(printer,parent);
 		}
+		[SmokeMethod("QPageSetupDialog(QPrinter*, QWidget*)")]
 		private void NewQPageSetupDialog(QPrinter printer, QWidget parent) {
 			ProxyQPageSetupDialog().NewQPageSetupDialog(printer,parent);
 		}
 		public QPageSetupDialog(QPrinter printer) : this((Type) null) {
-			CreateQPageSetupDialogProxy();
+			CreateProxy();
 			NewQPageSetupDialog(printer);
 		}
+		[SmokeMethod("QPageSetupDialog(QPrinter*)")]
 		private void NewQPageSetupDialog(QPrinter printer) {
 			ProxyQPageSetupDialog().NewQPageSetupDialog(printer);
 		}
+		[SmokeMethod("exec()")]
 		public new virtual int Exec() {
 			return ProxyQPageSetupDialog().Exec();
 		}
+		[SmokeMethod("printer()")]
 		public new QPrinter Printer() {
 			return ProxyQPageSetupDialog().Printer();
 		}
 		~QPageSetupDialog() {
-			ProxyQPageSetupDialog().Dispose();
+			DisposeQPageSetupDialog();
 		}
 		public new void Dispose() {
-			ProxyQPageSetupDialog().Dispose();
+			DisposeQPageSetupDialog();
 		}
+		private void DisposeQPageSetupDialog() {
+			ProxyQPageSetupDialog().DisposeQPageSetupDialog();
+		}
+		protected new IQPageSetupDialogSignals Emit() {
+			return (IQPageSetupDialogSignals) Q_EMIT;
+		}
+	}
+
+	public interface IQPageSetupDialogSignals : IQAbstractPageSetupDialogSignals {
 	}
 }

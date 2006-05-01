@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QActionEvent")]
 	public class QActionEvent : QEvent, IDisposable {
  		protected QActionEvent(Type dummy) : base((Type) null) {}
 		interface IQActionEventProxy {
 		}
 
-		protected void CreateQActionEventProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QActionEvent), this);
 			_interceptor = (QActionEvent) realProxy.GetTransparentProxy();
 		}
@@ -25,30 +26,37 @@ namespace Qt {
 		}
 
 		public QActionEvent(int type, QAction action, QAction before) : this((Type) null) {
-			CreateQActionEventProxy();
+			CreateProxy();
 			NewQActionEvent(type,action,before);
 		}
+		[SmokeMethod("QActionEvent(int, QAction*, QAction*)")]
 		private void NewQActionEvent(int type, QAction action, QAction before) {
 			ProxyQActionEvent().NewQActionEvent(type,action,before);
 		}
 		public QActionEvent(int type, QAction action) : this((Type) null) {
-			CreateQActionEventProxy();
+			CreateProxy();
 			NewQActionEvent(type,action);
 		}
+		[SmokeMethod("QActionEvent(int, QAction*)")]
 		private void NewQActionEvent(int type, QAction action) {
 			ProxyQActionEvent().NewQActionEvent(type,action);
 		}
+		[SmokeMethod("action() const")]
 		public QAction Action() {
 			return ProxyQActionEvent().Action();
 		}
+		[SmokeMethod("before() const")]
 		public QAction Before() {
 			return ProxyQActionEvent().Before();
 		}
 		~QActionEvent() {
-			ProxyQActionEvent().Dispose();
+			DisposeQActionEvent();
 		}
 		public new void Dispose() {
-			ProxyQActionEvent().Dispose();
+			DisposeQActionEvent();
+		}
+		private void DisposeQActionEvent() {
+			ProxyQActionEvent().DisposeQActionEvent();
 		}
 	}
 }

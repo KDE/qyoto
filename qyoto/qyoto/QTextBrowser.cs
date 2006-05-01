@@ -6,6 +6,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQTextBrowserSignals"></see> for signals emitted by QTextBrowser
+	[SmokeClass("QTextBrowser")]
 	public class QTextBrowser : QTextEdit, IDisposable {
  		protected QTextBrowser(Type dummy) : base((Type) null) {}
 		interface IQTextBrowserProxy {
@@ -13,7 +14,7 @@ namespace Qt {
 			string Tr(string s);
 		}
 
-		protected void CreateQTextBrowserProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextBrowser), this);
 			_interceptor = (QTextBrowser) realProxy.GetTransparentProxy();
 		}
@@ -29,93 +30,129 @@ namespace Qt {
 			return (IQTextBrowserProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQTextBrowser().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QTextBrowser(QWidget parent) : this((Type) null) {
-			CreateQTextBrowserProxy();
+			CreateProxy();
 			NewQTextBrowser(parent);
 		}
+		[SmokeMethod("QTextBrowser(QWidget*)")]
 		private void NewQTextBrowser(QWidget parent) {
 			ProxyQTextBrowser().NewQTextBrowser(parent);
 		}
 		public QTextBrowser() : this((Type) null) {
-			CreateQTextBrowserProxy();
+			CreateProxy();
 			NewQTextBrowser();
 		}
+		[SmokeMethod("QTextBrowser()")]
 		private void NewQTextBrowser() {
 			ProxyQTextBrowser().NewQTextBrowser();
 		}
+		[SmokeMethod("source() const")]
 		public IQUrl Source() {
 			return ProxyQTextBrowser().Source();
 		}
+		[SmokeMethod("searchPaths() const")]
 		public ArrayList SearchPaths() {
 			return ProxyQTextBrowser().SearchPaths();
 		}
+		[SmokeMethod("setSearchPaths(const QStringList&)")]
 		public void SetSearchPaths(string[] paths) {
 			ProxyQTextBrowser().SetSearchPaths(paths);
 		}
+		[SmokeMethod("loadResource(int, const QUrl&)")]
 		public new virtual QVariant LoadResource(int type, IQUrl name) {
 			return ProxyQTextBrowser().LoadResource(type,name);
 		}
+		[SmokeMethod("setSource(const QUrl&)")]
 		public virtual void SetSource(IQUrl name) {
 			ProxyQTextBrowser().SetSource(name);
 		}
+		[SmokeMethod("backward()")]
 		public virtual void Backward() {
 			ProxyQTextBrowser().Backward();
 		}
+		[SmokeMethod("forward()")]
 		public virtual void Forward() {
 			ProxyQTextBrowser().Forward();
 		}
+		[SmokeMethod("home()")]
 		public virtual void Home() {
 			ProxyQTextBrowser().Home();
 		}
+		[SmokeMethod("reload()")]
 		public virtual void Reload() {
 			ProxyQTextBrowser().Reload();
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQTextBrowser().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQTextBrowser().Tr(s);
 		}
+		[SmokeMethod("event(QEvent*)")]
+		public new bool Event(QEvent e) {
+			return ProxyQTextBrowser().Event(e);
+		}
+		[SmokeMethod("keyPressEvent(QKeyEvent*)")]
 		protected new virtual void KeyPressEvent(QKeyEvent ev) {
 			ProxyQTextBrowser().KeyPressEvent(ev);
 		}
+		[SmokeMethod("mouseMoveEvent(QMouseEvent*)")]
 		protected new virtual void MouseMoveEvent(QMouseEvent ev) {
 			ProxyQTextBrowser().MouseMoveEvent(ev);
 		}
+		[SmokeMethod("mousePressEvent(QMouseEvent*)")]
 		protected new virtual void MousePressEvent(QMouseEvent ev) {
 			ProxyQTextBrowser().MousePressEvent(ev);
 		}
+		[SmokeMethod("mouseReleaseEvent(QMouseEvent*)")]
 		protected new virtual void MouseReleaseEvent(QMouseEvent ev) {
 			ProxyQTextBrowser().MouseReleaseEvent(ev);
 		}
+		[SmokeMethod("focusOutEvent(QFocusEvent*)")]
 		protected new virtual void FocusOutEvent(QFocusEvent ev) {
 			ProxyQTextBrowser().FocusOutEvent(ev);
 		}
+		[SmokeMethod("focusNextPrevChild(bool)")]
 		protected new virtual bool FocusNextPrevChild(bool next) {
 			return ProxyQTextBrowser().FocusNextPrevChild(next);
 		}
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected new virtual void PaintEvent(QPaintEvent e) {
 			ProxyQTextBrowser().PaintEvent(e);
 		}
 		~QTextBrowser() {
-			ProxyQTextBrowser().Dispose();
+			DisposeQTextBrowser();
 		}
 		public new void Dispose() {
-			ProxyQTextBrowser().Dispose();
+			DisposeQTextBrowser();
+		}
+		private void DisposeQTextBrowser() {
+			ProxyQTextBrowser().DisposeQTextBrowser();
+		}
+		protected new IQTextBrowserSignals Emit() {
+			return (IQTextBrowserSignals) Q_EMIT;
 		}
 	}
 
-	public interface IQTextBrowserSignals {
+	public interface IQTextBrowserSignals : IQTextEditSignals {
+		[Q_SIGNAL("void backwardAvailable(bool)")]
 		void BackwardAvailable(bool arg1);
+		[Q_SIGNAL("void forwardAvailable(bool)")]
 		void ForwardAvailable(bool arg1);
+		[Q_SIGNAL("void sourceChanged(const QUrl&)")]
 		void SourceChanged(IQUrl arg1);
+		[Q_SIGNAL("void highlighted(const QUrl&)")]
 		void Highlighted(IQUrl arg1);
+		[Q_SIGNAL("void highlighted(const QString&)")]
 		void Highlighted(string arg1);
+		[Q_SIGNAL("void anchorClicked(const QUrl&)")]
 		void AnchorClicked(IQUrl arg1);
 	}
 }

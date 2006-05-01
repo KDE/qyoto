@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QPrintEngine")]
 	public class QPrintEngine : MarshalByRefObject {
 		protected Object _interceptor = null;
  
@@ -11,7 +12,7 @@ namespace Qt {
 		interface IQPrintEngineProxy {
 		}
 
-		protected void CreateQPrintEngineProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPrintEngine), this);
 			_interceptor = (QPrintEngine) realProxy.GetTransparentProxy();
 		}
@@ -27,7 +28,7 @@ namespace Qt {
 			return (IQPrintEngineProxy) _staticInterceptor;
 		}
 
-		enum PrintEnginePropertyKey {
+		public enum PrintEnginePropertyKey {
 			PPK_CollateCopies = 0,
 			PPK_ColorMode = 1,
 			PPK_Creator = 2,
@@ -47,25 +48,50 @@ namespace Qt {
 			PPK_SelectionOption = 16,
 			PPK_SupportedResolutions = 17,
 			PPK_WindowsPageSize = 18,
+			PPK_FontEmbedding = 19,
+			PPK_SuppressSystemPrintStatus = 20,
 			PPK_CustomBase = 0xff00,
 		}
-		public virtual void SetProperty(int key, QVariant value) {
+		[SmokeMethod("setProperty(QPrintEngine::PrintEnginePropertyKey, const QVariant&)")]
+		public virtual void SetProperty(QPrintEngine.PrintEnginePropertyKey key, QVariant value) {
 			ProxyQPrintEngine().SetProperty(key,value);
 		}
-		public virtual QVariant Property(int key) {
+		[SmokeMethod("property(QPrintEngine::PrintEnginePropertyKey) const")]
+		public virtual QVariant Property(QPrintEngine.PrintEnginePropertyKey key) {
 			return ProxyQPrintEngine().Property(key);
 		}
+		[SmokeMethod("newPage()")]
 		public virtual bool NewPage() {
 			return ProxyQPrintEngine().NewPage();
 		}
+		[SmokeMethod("abort()")]
 		public virtual bool Abort() {
 			return ProxyQPrintEngine().Abort();
 		}
+		[SmokeMethod("metric(QPaintDevice::PaintDeviceMetric) const")]
 		public virtual int Metric(IQPaintDevice arg1) {
 			return ProxyQPrintEngine().Metric(arg1);
 		}
-		public virtual int PrinterState() {
+		[SmokeMethod("printerState() const")]
+		public virtual QPrinter.PrinterState PrinterState() {
 			return ProxyQPrintEngine().PrinterState();
+		}
+		public QPrintEngine() : this((Type) null) {
+			CreateProxy();
+			NewQPrintEngine();
+		}
+		[SmokeMethod("QPrintEngine()")]
+		private void NewQPrintEngine() {
+			ProxyQPrintEngine().NewQPrintEngine();
+		}
+		~QPrintEngine() {
+			DisposeQPrintEngine();
+		}
+		public void Dispose() {
+			DisposeQPrintEngine();
+		}
+		private void DisposeQPrintEngine() {
+			ProxyQPrintEngine().DisposeQPrintEngine();
 		}
 	}
 }

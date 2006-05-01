@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QByteRef")]
 	public class QByteRef : MarshalByRefObject {
 		protected Object _interceptor = null;
  
@@ -16,7 +17,7 @@ namespace Qt {
 			bool op_lte(QByteRef lhs, char c);
 		}
 
-		protected void CreateQByteRefProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QByteRef), this);
 			_interceptor = (QByteRef) realProxy.GetTransparentProxy();
 		}
@@ -33,30 +34,37 @@ namespace Qt {
 		}
 
 		//  operator const char(); >>>> NOT CONVERTED
+		[SmokeMethod("operator==(char) const")]
 		public static bool operator==(QByteRef lhs, char c) {
 			return StaticQByteRef().op_equals(lhs,c);
 		}
 		public static bool operator!=(QByteRef lhs, char c) {
 			return !StaticQByteRef().op_equals(lhs,c);
 		}
-		public override bool Equals(object o) {
-			if (!(o is QByteRef)) { return false; }
-			return this == (QByteRef) o;
-		}
-		public override int GetHashCode() {
-			return ProxyQByteRef().GetHashCode();
-		}
+		[SmokeMethod("operator>(char) const")]
 		public static bool operator>(QByteRef lhs, char c) {
 			return StaticQByteRef().op_gt(lhs,c);
 		}
+		[SmokeMethod("operator>=(char) const")]
 		public static bool operator>=(QByteRef lhs, char c) {
 			return StaticQByteRef().op_gte(lhs,c);
 		}
+		[SmokeMethod("operator<(char) const")]
 		public static bool operator<(QByteRef lhs, char c) {
 			return StaticQByteRef().op_lt(lhs,c);
 		}
+		[SmokeMethod("operator<=(char) const")]
 		public static bool operator<=(QByteRef lhs, char c) {
 			return StaticQByteRef().op_lte(lhs,c);
+		}
+		~QByteRef() {
+			DisposeQByteRef();
+		}
+		public void Dispose() {
+			DisposeQByteRef();
+		}
+		private void DisposeQByteRef() {
+			ProxyQByteRef().DisposeQByteRef();
 		}
 	}
 }

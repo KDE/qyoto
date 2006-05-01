@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQProgressBarSignals"></see> for signals emitted by QProgressBar
+	[SmokeClass("QProgressBar")]
 	public class QProgressBar : QWidget, IDisposable {
  		protected QProgressBar(Type dummy) : base((Type) null) {}
 		interface IQProgressBarProxy {
@@ -12,7 +13,7 @@ namespace Qt {
 			string Tr(string s);
 		}
 
-		protected void CreateQProgressBarProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QProgressBar), this);
 			_interceptor = (QProgressBar) realProxy.GetTransparentProxy();
 		}
@@ -28,88 +29,147 @@ namespace Qt {
 			return (IQProgressBarProxy) _staticInterceptor;
 		}
 
+		public enum Direction {
+			TopToBottom = 0,
+			BottomToTop = 1,
+		}
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQProgressBar().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QProgressBar(QWidget parent) : this((Type) null) {
-			CreateQProgressBarProxy();
+			CreateProxy();
 			NewQProgressBar(parent);
 		}
+		[SmokeMethod("QProgressBar(QWidget*)")]
 		private void NewQProgressBar(QWidget parent) {
 			ProxyQProgressBar().NewQProgressBar(parent);
 		}
 		public QProgressBar() : this((Type) null) {
-			CreateQProgressBarProxy();
+			CreateProxy();
 			NewQProgressBar();
 		}
+		[SmokeMethod("QProgressBar()")]
 		private void NewQProgressBar() {
 			ProxyQProgressBar().NewQProgressBar();
 		}
+		[SmokeMethod("minimum() const")]
 		public int Minimum() {
 			return ProxyQProgressBar().Minimum();
 		}
+		[SmokeMethod("maximum() const")]
 		public int Maximum() {
 			return ProxyQProgressBar().Maximum();
 		}
+		[SmokeMethod("setRange(int, int)")]
 		public void SetRange(int minimum, int maximum) {
 			ProxyQProgressBar().SetRange(minimum,maximum);
 		}
+		[SmokeMethod("value() const")]
 		public int Value() {
 			return ProxyQProgressBar().Value();
 		}
+		[SmokeMethod("text() const")]
 		public virtual string Text() {
 			return ProxyQProgressBar().Text();
 		}
+		[SmokeMethod("setTextVisible(bool)")]
 		public void SetTextVisible(bool visible) {
 			ProxyQProgressBar().SetTextVisible(visible);
 		}
+		[SmokeMethod("isTextVisible() const")]
 		public bool IsTextVisible() {
 			return ProxyQProgressBar().IsTextVisible();
 		}
+		[SmokeMethod("alignment() const")]
 		public int Alignment() {
 			return ProxyQProgressBar().Alignment();
 		}
+		[SmokeMethod("setAlignment(Qt::Alignment)")]
 		public void SetAlignment(int alignment) {
 			ProxyQProgressBar().SetAlignment(alignment);
 		}
+		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {
 			return ProxyQProgressBar().SizeHint();
 		}
+		[SmokeMethod("minimumSizeHint() const")]
 		public new QSize MinimumSizeHint() {
 			return ProxyQProgressBar().MinimumSizeHint();
 		}
+		[SmokeMethod("orientation() const")]
+		public Qt.Orientation Orientation() {
+			return ProxyQProgressBar().Orientation();
+		}
+		[SmokeMethod("setInvertedAppearance(bool)")]
+		public void SetInvertedAppearance(bool invert) {
+			ProxyQProgressBar().SetInvertedAppearance(invert);
+		}
+		[SmokeMethod("invertedAppearance()")]
+		public bool InvertedAppearance() {
+			return ProxyQProgressBar().InvertedAppearance();
+		}
+		[SmokeMethod("setTextDirection(QProgressBar::Direction)")]
+		public void SetTextDirection(QProgressBar.Direction textDirection) {
+			ProxyQProgressBar().SetTextDirection(textDirection);
+		}
+		[SmokeMethod("textDirection()")]
+		public QProgressBar.Direction TextDirection() {
+			return ProxyQProgressBar().TextDirection();
+		}
+		[SmokeMethod("reset()")]
 		public void Reset() {
 			ProxyQProgressBar().Reset();
 		}
+		[SmokeMethod("setMinimum(int)")]
 		public void SetMinimum(int minimum) {
 			ProxyQProgressBar().SetMinimum(minimum);
 		}
+		[SmokeMethod("setMaximum(int)")]
 		public void SetMaximum(int maximum) {
 			ProxyQProgressBar().SetMaximum(maximum);
 		}
+		[SmokeMethod("setValue(int)")]
 		public void SetValue(int value) {
 			ProxyQProgressBar().SetValue(value);
 		}
+		[SmokeMethod("setOrientation(Qt::Orientation)")]
+		public void SetOrientation(Qt.Orientation arg1) {
+			ProxyQProgressBar().SetOrientation(arg1);
+		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQProgressBar().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQProgressBar().Tr(s);
 		}
+		[SmokeMethod("event(QEvent*)")]
+		public new bool Event(QEvent e) {
+			return ProxyQProgressBar().Event(e);
+		}
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected new void PaintEvent(QPaintEvent arg1) {
 			ProxyQProgressBar().PaintEvent(arg1);
 		}
 		~QProgressBar() {
-			ProxyQProgressBar().Dispose();
+			DisposeQProgressBar();
 		}
 		public new void Dispose() {
-			ProxyQProgressBar().Dispose();
+			DisposeQProgressBar();
+		}
+		private void DisposeQProgressBar() {
+			ProxyQProgressBar().DisposeQProgressBar();
+		}
+		protected new IQProgressBarSignals Emit() {
+			return (IQProgressBarSignals) Q_EMIT;
 		}
 	}
 
-	public interface IQProgressBarSignals {
+	public interface IQProgressBarSignals : IQWidgetSignals {
+		[Q_SIGNAL("void valueChanged(int)")]
 		void ValueChanged(int value);
 	}
 }

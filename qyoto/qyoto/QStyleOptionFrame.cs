@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QStyleOptionFrame")]
 	public class QStyleOptionFrame : QStyleOption, IDisposable {
  		protected QStyleOptionFrame(Type dummy) : base((Type) null) {}
 		interface IQStyleOptionFrameProxy {
 		}
 
-		protected void CreateQStyleOptionFrameProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionFrame), this);
 			_interceptor = (QStyleOptionFrame) realProxy.GetTransparentProxy();
 		}
@@ -24,36 +25,42 @@ namespace Qt {
 			return (IQStyleOptionFrameProxy) _staticInterceptor;
 		}
 
-		public const int Type = (int) OptionType.SO_Frame;
+		public const int Type = (int) QStyleOption.OptionType.SO_Frame;
 
 		public const int Version = 1;
 
 		public QStyleOptionFrame() : this((Type) null) {
-			CreateQStyleOptionFrameProxy();
+			CreateProxy();
 			NewQStyleOptionFrame();
 		}
+		[SmokeMethod("QStyleOptionFrame()")]
 		private void NewQStyleOptionFrame() {
 			ProxyQStyleOptionFrame().NewQStyleOptionFrame();
 		}
 		public QStyleOptionFrame(QStyleOptionFrame other) : this((Type) null) {
-			CreateQStyleOptionFrameProxy();
+			CreateProxy();
 			NewQStyleOptionFrame(other);
 		}
+		[SmokeMethod("QStyleOptionFrame(const QStyleOptionFrame&)")]
 		private void NewQStyleOptionFrame(QStyleOptionFrame other) {
 			ProxyQStyleOptionFrame().NewQStyleOptionFrame(other);
 		}
 		public QStyleOptionFrame(int version) : this((Type) null) {
-			CreateQStyleOptionFrameProxy();
+			CreateProxy();
 			NewQStyleOptionFrame(version);
 		}
+		[SmokeMethod("QStyleOptionFrame(int)")]
 		private void NewQStyleOptionFrame(int version) {
 			ProxyQStyleOptionFrame().NewQStyleOptionFrame(version);
 		}
 		~QStyleOptionFrame() {
-			ProxyQStyleOptionFrame().Dispose();
+			DisposeQStyleOptionFrame();
 		}
 		public void Dispose() {
-			ProxyQStyleOptionFrame().Dispose();
+			DisposeQStyleOptionFrame();
+		}
+		private void DisposeQStyleOptionFrame() {
+			ProxyQStyleOptionFrame().DisposeQStyleOptionFrame();
 		}
 	}
 }

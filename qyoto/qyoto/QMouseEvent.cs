@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QMouseEvent")]
 	public class QMouseEvent : QInputEvent, IDisposable {
  		protected QMouseEvent(Type dummy) : base((Type) null) {}
 		interface IQMouseEventProxy {
 		}
 
-		protected void CreateQMouseEventProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMouseEvent), this);
 			_interceptor = (QMouseEvent) realProxy.GetTransparentProxy();
 		}
@@ -24,49 +25,62 @@ namespace Qt {
 			return (IQMouseEventProxy) _staticInterceptor;
 		}
 
-		public QMouseEvent(int type, QPoint pos, int button, int buttons, int modifiers) : this((Type) null) {
-			CreateQMouseEventProxy();
+		public QMouseEvent(QEvent.E_Type type, QPoint pos, Qt.MouseButton button, int buttons, int modifiers) : this((Type) null) {
+			CreateProxy();
 			NewQMouseEvent(type,pos,button,buttons,modifiers);
 		}
-		private void NewQMouseEvent(int type, QPoint pos, int button, int buttons, int modifiers) {
+		[SmokeMethod("QMouseEvent(QEvent::Type, const QPoint&, Qt::MouseButton, Qt::MouseButtons, Qt::KeyboardModifiers)")]
+		private void NewQMouseEvent(QEvent.E_Type type, QPoint pos, Qt.MouseButton button, int buttons, int modifiers) {
 			ProxyQMouseEvent().NewQMouseEvent(type,pos,button,buttons,modifiers);
 		}
-		public QMouseEvent(int type, QPoint pos, QPoint globalPos, int button, int buttons, int modifiers) : this((Type) null) {
-			CreateQMouseEventProxy();
+		public QMouseEvent(QEvent.E_Type type, QPoint pos, QPoint globalPos, Qt.MouseButton button, int buttons, int modifiers) : this((Type) null) {
+			CreateProxy();
 			NewQMouseEvent(type,pos,globalPos,button,buttons,modifiers);
 		}
-		private void NewQMouseEvent(int type, QPoint pos, QPoint globalPos, int button, int buttons, int modifiers) {
+		[SmokeMethod("QMouseEvent(QEvent::Type, const QPoint&, const QPoint&, Qt::MouseButton, Qt::MouseButtons, Qt::KeyboardModifiers)")]
+		private void NewQMouseEvent(QEvent.E_Type type, QPoint pos, QPoint globalPos, Qt.MouseButton button, int buttons, int modifiers) {
 			ProxyQMouseEvent().NewQMouseEvent(type,pos,globalPos,button,buttons,modifiers);
 		}
+		[SmokeMethod("pos() const")]
 		public QPoint Pos() {
 			return ProxyQMouseEvent().Pos();
 		}
+		[SmokeMethod("globalPos() const")]
 		public QPoint GlobalPos() {
 			return ProxyQMouseEvent().GlobalPos();
 		}
+		[SmokeMethod("x() const")]
 		public int X() {
 			return ProxyQMouseEvent().X();
 		}
+		[SmokeMethod("y() const")]
 		public int Y() {
 			return ProxyQMouseEvent().Y();
 		}
+		[SmokeMethod("globalX() const")]
 		public int GlobalX() {
 			return ProxyQMouseEvent().GlobalX();
 		}
+		[SmokeMethod("globalY() const")]
 		public int GlobalY() {
 			return ProxyQMouseEvent().GlobalY();
 		}
-		public int Button() {
+		[SmokeMethod("button() const")]
+		public Qt.MouseButton Button() {
 			return ProxyQMouseEvent().Button();
 		}
+		[SmokeMethod("buttons() const")]
 		public int Buttons() {
 			return ProxyQMouseEvent().Buttons();
 		}
 		~QMouseEvent() {
-			ProxyQMouseEvent().Dispose();
+			DisposeQMouseEvent();
 		}
 		public new void Dispose() {
-			ProxyQMouseEvent().Dispose();
+			DisposeQMouseEvent();
+		}
+		private void DisposeQMouseEvent() {
+			ProxyQMouseEvent().DisposeQMouseEvent();
 		}
 	}
 }

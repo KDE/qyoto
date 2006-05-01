@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QErrorMessage")]
 	public class QErrorMessage : QDialog, IDisposable {
  		protected QErrorMessage(Type dummy) : base((Type) null) {}
 		interface IQErrorMessageProxy {
@@ -12,7 +13,7 @@ namespace Qt {
 			QErrorMessage QtHandler();
 		}
 
-		protected void CreateQErrorMessageProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QErrorMessage), this);
 			_interceptor = (QErrorMessage) realProxy.GetTransparentProxy();
 		}
@@ -28,45 +29,61 @@ namespace Qt {
 			return (IQErrorMessageProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQErrorMessage().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QErrorMessage(QWidget parent) : this((Type) null) {
-			CreateQErrorMessageProxy();
+			CreateProxy();
 			NewQErrorMessage(parent);
 		}
+		[SmokeMethod("QErrorMessage(QWidget*)")]
 		private void NewQErrorMessage(QWidget parent) {
 			ProxyQErrorMessage().NewQErrorMessage(parent);
 		}
 		public QErrorMessage() : this((Type) null) {
-			CreateQErrorMessageProxy();
+			CreateProxy();
 			NewQErrorMessage();
 		}
+		[SmokeMethod("QErrorMessage()")]
 		private void NewQErrorMessage() {
 			ProxyQErrorMessage().NewQErrorMessage();
 		}
+		[SmokeMethod("showMessage(const QString&)")]
 		public void ShowMessage(string message) {
 			ProxyQErrorMessage().ShowMessage(message);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQErrorMessage().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQErrorMessage().Tr(s);
 		}
+		[SmokeMethod("qtHandler()")]
 		public static QErrorMessage QtHandler() {
 			return StaticQErrorMessage().QtHandler();
 		}
+		[SmokeMethod("done(int)")]
 		protected new void Done(int arg1) {
 			ProxyQErrorMessage().Done(arg1);
 		}
 		~QErrorMessage() {
-			ProxyQErrorMessage().Dispose();
+			DisposeQErrorMessage();
 		}
 		public new void Dispose() {
-			ProxyQErrorMessage().Dispose();
+			DisposeQErrorMessage();
 		}
+		private void DisposeQErrorMessage() {
+			ProxyQErrorMessage().DisposeQErrorMessage();
+		}
+		protected new IQErrorMessageSignals Emit() {
+			return (IQErrorMessageSignals) Q_EMIT;
+		}
+	}
+
+	public interface IQErrorMessageSignals : IQDialogSignals {
 	}
 }

@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQStackedLayoutSignals"></see> for signals emitted by QStackedLayout
+	[SmokeClass("QStackedLayout")]
 	public class QStackedLayout : QLayout, IDisposable {
  		protected QStackedLayout(Type dummy) : base((Type) null) {}
 		interface IQStackedLayoutProxy {
@@ -12,7 +13,7 @@ namespace Qt {
 			string Tr(string s);
 		}
 
-		protected void CreateQStackedLayoutProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStackedLayout), this);
 			_interceptor = (QStackedLayout) realProxy.GetTransparentProxy();
 		}
@@ -28,93 +29,121 @@ namespace Qt {
 			return (IQStackedLayoutProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQStackedLayout().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QStackedLayout() : this((Type) null) {
-			CreateQStackedLayoutProxy();
+			CreateProxy();
 			NewQStackedLayout();
 		}
+		[SmokeMethod("QStackedLayout()")]
 		private void NewQStackedLayout() {
 			ProxyQStackedLayout().NewQStackedLayout();
 		}
 		public QStackedLayout(QWidget parent) : this((Type) null) {
-			CreateQStackedLayoutProxy();
+			CreateProxy();
 			NewQStackedLayout(parent);
 		}
+		[SmokeMethod("QStackedLayout(QWidget*)")]
 		private void NewQStackedLayout(QWidget parent) {
 			ProxyQStackedLayout().NewQStackedLayout(parent);
 		}
 		public QStackedLayout(QLayout parentLayout) : this((Type) null) {
-			CreateQStackedLayoutProxy();
+			CreateProxy();
 			NewQStackedLayout(parentLayout);
 		}
+		[SmokeMethod("QStackedLayout(QLayout*)")]
 		private void NewQStackedLayout(QLayout parentLayout) {
 			ProxyQStackedLayout().NewQStackedLayout(parentLayout);
 		}
+		[SmokeMethod("addWidget(QWidget*)")]
 		public new int AddWidget(QWidget w) {
 			return ProxyQStackedLayout().AddWidget(w);
 		}
+		[SmokeMethod("insertWidget(int, QWidget*)")]
 		public int InsertWidget(int index, QWidget w) {
 			return ProxyQStackedLayout().InsertWidget(index,w);
 		}
+		[SmokeMethod("currentWidget() const")]
 		public QWidget CurrentWidget() {
 			return ProxyQStackedLayout().CurrentWidget();
 		}
+		[SmokeMethod("currentIndex() const")]
 		public int CurrentIndex() {
 			return ProxyQStackedLayout().CurrentIndex();
 		}
+		[SmokeMethod("widget()")]
 		public new QWidget Widget() {
 			return ProxyQStackedLayout().Widget();
 		}
+		[SmokeMethod("widget(int) const")]
 		public new QWidget Widget(int arg1) {
 			return ProxyQStackedLayout().Widget(arg1);
 		}
+		[SmokeMethod("count() const")]
 		public new int Count() {
 			return ProxyQStackedLayout().Count();
 		}
+		[SmokeMethod("addItem(QLayoutItem*)")]
 		public new void AddItem(IQLayoutItem item) {
 			ProxyQStackedLayout().AddItem(item);
 		}
+		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {
 			return ProxyQStackedLayout().SizeHint();
 		}
+		[SmokeMethod("minimumSize() const")]
 		public new QSize MinimumSize() {
 			return ProxyQStackedLayout().MinimumSize();
 		}
+		[SmokeMethod("itemAt(int) const")]
 		public new IQLayoutItem ItemAt(int arg1) {
 			return ProxyQStackedLayout().ItemAt(arg1);
 		}
+		[SmokeMethod("takeAt(int)")]
 		public new IQLayoutItem TakeAt(int arg1) {
 			return ProxyQStackedLayout().TakeAt(arg1);
 		}
+		[SmokeMethod("setGeometry(const QRect&)")]
 		public new void SetGeometry(QRect rect) {
 			ProxyQStackedLayout().SetGeometry(rect);
 		}
+		[SmokeMethod("setCurrentIndex(int)")]
 		public void SetCurrentIndex(int index) {
 			ProxyQStackedLayout().SetCurrentIndex(index);
 		}
+		[SmokeMethod("setCurrentWidget(QWidget*)")]
 		public void SetCurrentWidget(QWidget w) {
 			ProxyQStackedLayout().SetCurrentWidget(w);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQStackedLayout().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQStackedLayout().Tr(s);
 		}
 		~QStackedLayout() {
-			ProxyQStackedLayout().Dispose();
+			DisposeQStackedLayout();
 		}
 		public new void Dispose() {
-			ProxyQStackedLayout().Dispose();
+			DisposeQStackedLayout();
+		}
+		private void DisposeQStackedLayout() {
+			ProxyQStackedLayout().DisposeQStackedLayout();
+		}
+		protected new IQStackedLayoutSignals Emit() {
+			return (IQStackedLayoutSignals) Q_EMIT;
 		}
 	}
 
-	public interface IQStackedLayoutSignals {
+	public interface IQStackedLayoutSignals : IQLayoutSignals {
+		[Q_SIGNAL("void widgetRemoved(int)")]
 		void WidgetRemoved(int index);
+		[Q_SIGNAL("void currentChanged(int)")]
 		void CurrentChanged(int index);
 	}
 }

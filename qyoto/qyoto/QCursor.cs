@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QCursor")]
 	public class QCursor : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
@@ -14,7 +15,7 @@ namespace Qt {
 			void SetPos(QPoint p);
 		}
 
-		protected void CreateQCursorProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QCursor), this);
 			_interceptor = (QCursor) realProxy.GetTransparentProxy();
 		}
@@ -31,101 +32,122 @@ namespace Qt {
 		}
 
 		public QCursor() : this((Type) null) {
-			CreateQCursorProxy();
+			CreateProxy();
 			NewQCursor();
 		}
+		[SmokeMethod("QCursor()")]
 		private void NewQCursor() {
 			ProxyQCursor().NewQCursor();
 		}
-		public QCursor(int shape) : this((Type) null) {
-			CreateQCursorProxy();
+		public QCursor(Qt.CursorShape shape) : this((Type) null) {
+			CreateProxy();
 			NewQCursor(shape);
 		}
-		private void NewQCursor(int shape) {
+		[SmokeMethod("QCursor(Qt::CursorShape)")]
+		private void NewQCursor(Qt.CursorShape shape) {
 			ProxyQCursor().NewQCursor(shape);
 		}
 		public QCursor(QBitmap bitmap, QBitmap mask, int hotX, int hotY) : this((Type) null) {
-			CreateQCursorProxy();
+			CreateProxy();
 			NewQCursor(bitmap,mask,hotX,hotY);
 		}
+		[SmokeMethod("QCursor(const QBitmap&, const QBitmap&, int, int)")]
 		private void NewQCursor(QBitmap bitmap, QBitmap mask, int hotX, int hotY) {
 			ProxyQCursor().NewQCursor(bitmap,mask,hotX,hotY);
 		}
 		public QCursor(QBitmap bitmap, QBitmap mask, int hotX) : this((Type) null) {
-			CreateQCursorProxy();
+			CreateProxy();
 			NewQCursor(bitmap,mask,hotX);
 		}
+		[SmokeMethod("QCursor(const QBitmap&, const QBitmap&, int)")]
 		private void NewQCursor(QBitmap bitmap, QBitmap mask, int hotX) {
 			ProxyQCursor().NewQCursor(bitmap,mask,hotX);
 		}
 		public QCursor(QBitmap bitmap, QBitmap mask) : this((Type) null) {
-			CreateQCursorProxy();
+			CreateProxy();
 			NewQCursor(bitmap,mask);
 		}
+		[SmokeMethod("QCursor(const QBitmap&, const QBitmap&)")]
 		private void NewQCursor(QBitmap bitmap, QBitmap mask) {
 			ProxyQCursor().NewQCursor(bitmap,mask);
 		}
 		public QCursor(QPixmap pixmap, int hotX, int hotY) : this((Type) null) {
-			CreateQCursorProxy();
+			CreateProxy();
 			NewQCursor(pixmap,hotX,hotY);
 		}
+		[SmokeMethod("QCursor(const QPixmap&, int, int)")]
 		private void NewQCursor(QPixmap pixmap, int hotX, int hotY) {
 			ProxyQCursor().NewQCursor(pixmap,hotX,hotY);
 		}
 		public QCursor(QPixmap pixmap, int hotX) : this((Type) null) {
-			CreateQCursorProxy();
+			CreateProxy();
 			NewQCursor(pixmap,hotX);
 		}
+		[SmokeMethod("QCursor(const QPixmap&, int)")]
 		private void NewQCursor(QPixmap pixmap, int hotX) {
 			ProxyQCursor().NewQCursor(pixmap,hotX);
 		}
 		public QCursor(QPixmap pixmap) : this((Type) null) {
-			CreateQCursorProxy();
+			CreateProxy();
 			NewQCursor(pixmap);
 		}
+		[SmokeMethod("QCursor(const QPixmap&)")]
 		private void NewQCursor(QPixmap pixmap) {
 			ProxyQCursor().NewQCursor(pixmap);
 		}
 		public QCursor(QCursor cursor) : this((Type) null) {
-			CreateQCursorProxy();
+			CreateProxy();
 			NewQCursor(cursor);
 		}
+		[SmokeMethod("QCursor(const QCursor&)")]
 		private void NewQCursor(QCursor cursor) {
 			ProxyQCursor().NewQCursor(cursor);
 		}
 		//  operator QVariant(); >>>> NOT CONVERTED
-		public int Shape() {
+		[SmokeMethod("shape() const")]
+		public Qt.CursorShape Shape() {
 			return ProxyQCursor().Shape();
 		}
-		public void SetShape(int newShape) {
+		[SmokeMethod("setShape(Qt::CursorShape)")]
+		public void SetShape(Qt.CursorShape newShape) {
 			ProxyQCursor().SetShape(newShape);
 		}
+		[SmokeMethod("bitmap() const")]
 		public QBitmap Bitmap() {
 			return ProxyQCursor().Bitmap();
 		}
+		[SmokeMethod("mask() const")]
 		public QBitmap Mask() {
 			return ProxyQCursor().Mask();
 		}
+		[SmokeMethod("pixmap() const")]
 		public QPixmap Pixmap() {
 			return ProxyQCursor().Pixmap();
 		}
+		[SmokeMethod("hotSpot() const")]
 		public QPoint HotSpot() {
 			return ProxyQCursor().HotSpot();
 		}
+		[SmokeMethod("pos()")]
 		public static QPoint Pos() {
 			return StaticQCursor().Pos();
 		}
+		[SmokeMethod("setPos(int, int)")]
 		public static void SetPos(int x, int y) {
 			StaticQCursor().SetPos(x,y);
 		}
+		[SmokeMethod("setPos(const QPoint&)")]
 		public static void SetPos(QPoint p) {
 			StaticQCursor().SetPos(p);
 		}
 		~QCursor() {
-			ProxyQCursor().Dispose();
+			DisposeQCursor();
 		}
 		public void Dispose() {
-			ProxyQCursor().Dispose();
+			DisposeQCursor();
+		}
+		private void DisposeQCursor() {
+			ProxyQCursor().DisposeQCursor();
 		}
 	}
 }

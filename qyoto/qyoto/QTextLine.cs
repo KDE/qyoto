@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QTextLine")]
 	public class QTextLine : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
@@ -11,7 +12,7 @@ namespace Qt {
 		interface IQTextLineProxy {
 		}
 
-		protected void CreateQTextLineProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextLine), this);
 			_interceptor = (QTextLine) realProxy.GetTransparentProxy();
 		}
@@ -27,98 +28,123 @@ namespace Qt {
 			return (IQTextLineProxy) _staticInterceptor;
 		}
 
-		enum Edge {
+		public enum Edge {
 			Leading = 0,
 			Trailing = 1,
 		}
-		enum CursorPosition {
+		public enum CursorPosition {
 			CursorBetweenCharacters = 0,
 			CursorOnCharacter = 1,
 		}
 		public QTextLine() : this((Type) null) {
-			CreateQTextLineProxy();
+			CreateProxy();
 			NewQTextLine();
 		}
+		[SmokeMethod("QTextLine()")]
 		private void NewQTextLine() {
 			ProxyQTextLine().NewQTextLine();
 		}
+		[SmokeMethod("isValid() const")]
 		public bool IsValid() {
 			return ProxyQTextLine().IsValid();
 		}
+		[SmokeMethod("rect() const")]
 		public QRectF Rect() {
 			return ProxyQTextLine().Rect();
 		}
+		[SmokeMethod("x() const")]
 		public double X() {
 			return ProxyQTextLine().X();
 		}
+		[SmokeMethod("y() const")]
 		public double Y() {
 			return ProxyQTextLine().Y();
 		}
+		[SmokeMethod("width() const")]
 		public double Width() {
 			return ProxyQTextLine().Width();
 		}
+		[SmokeMethod("ascent() const")]
 		public double Ascent() {
 			return ProxyQTextLine().Ascent();
 		}
+		[SmokeMethod("descent() const")]
 		public double Descent() {
 			return ProxyQTextLine().Descent();
 		}
+		[SmokeMethod("height() const")]
 		public double Height() {
 			return ProxyQTextLine().Height();
 		}
+		[SmokeMethod("naturalTextWidth() const")]
 		public double NaturalTextWidth() {
 			return ProxyQTextLine().NaturalTextWidth();
 		}
+		[SmokeMethod("naturalTextRect() const")]
 		public QRectF NaturalTextRect() {
 			return ProxyQTextLine().NaturalTextRect();
 		}
-		public double CursorToX(out int cursorPos, int edge) {
+		[SmokeMethod("cursorToX(int*, QTextLine::Edge) const")]
+		public double CursorToX(out int cursorPos, QTextLine.Edge edge) {
 			return ProxyQTextLine().CursorToX(out cursorPos,edge);
 		}
+		[SmokeMethod("cursorToX(int*) const")]
 		public double CursorToX(out int cursorPos) {
 			return ProxyQTextLine().CursorToX(out cursorPos);
 		}
-		public double CursorToX(int cursorPos, int edge) {
+		[SmokeMethod("cursorToX(int, QTextLine::Edge) const")]
+		public double CursorToX(int cursorPos, QTextLine.Edge edge) {
 			return ProxyQTextLine().CursorToX(cursorPos,edge);
 		}
+		[SmokeMethod("cursorToX(int) const")]
 		public double CursorToX(int cursorPos) {
 			return ProxyQTextLine().CursorToX(cursorPos);
 		}
-		public int XToCursor(double x, int arg2) {
+		[SmokeMethod("xToCursor(qreal, QTextLine::CursorPosition) const")]
+		public int XToCursor(double x, QTextLine.CursorPosition arg2) {
 			return ProxyQTextLine().XToCursor(x,arg2);
 		}
+		[SmokeMethod("xToCursor(qreal) const")]
 		public int XToCursor(double x) {
 			return ProxyQTextLine().XToCursor(x);
 		}
+		[SmokeMethod("setLineWidth(qreal)")]
 		public void SetLineWidth(double width) {
 			ProxyQTextLine().SetLineWidth(width);
 		}
+		[SmokeMethod("setNumColumns(int)")]
 		public void SetNumColumns(int columns) {
 			ProxyQTextLine().SetNumColumns(columns);
 		}
+		[SmokeMethod("setPosition(const QPointF&)")]
 		public void SetPosition(QPointF pos) {
 			ProxyQTextLine().SetPosition(pos);
 		}
+		[SmokeMethod("textStart() const")]
 		public int TextStart() {
 			return ProxyQTextLine().TextStart();
 		}
+		[SmokeMethod("textLength() const")]
 		public int TextLength() {
 			return ProxyQTextLine().TextLength();
 		}
+		[SmokeMethod("lineNumber() const")]
 		public int LineNumber() {
 			return ProxyQTextLine().LineNumber();
 		}
-//		public void Draw(QPainter p, QPointF point, FormatRange selection) {
-//			ProxyQTextLine().Draw(p,point,selection);
-//		}
+		// void draw(QPainter* arg1,const QPointF& arg2,const QTextLayout::FormatRange* arg3); >>>> NOT CONVERTED
+		[SmokeMethod("draw(QPainter*, const QPointF&) const")]
 		public void Draw(QPainter p, QPointF point) {
 			ProxyQTextLine().Draw(p,point);
 		}
 		~QTextLine() {
-			ProxyQTextLine().Dispose();
+			DisposeQTextLine();
 		}
 		public void Dispose() {
-			ProxyQTextLine().Dispose();
+			DisposeQTextLine();
+		}
+		private void DisposeQTextLine() {
+			ProxyQTextLine().DisposeQTextLine();
 		}
 	}
 }

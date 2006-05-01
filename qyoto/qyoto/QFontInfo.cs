@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QFontInfo")]
 	public class QFontInfo : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
@@ -12,7 +13,7 @@ namespace Qt {
 		interface IQFontInfoProxy {
 		}
 
-		protected void CreateQFontInfoProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFontInfo), this);
 			_interceptor = (QFontInfo) realProxy.GetTransparentProxy();
 		}
@@ -29,69 +30,89 @@ namespace Qt {
 		}
 
 		public QFontInfo(QFont arg1) : this((Type) null) {
-			CreateQFontInfoProxy();
+			CreateProxy();
 			NewQFontInfo(arg1);
 		}
+		[SmokeMethod("QFontInfo(const QFont&)")]
 		private void NewQFontInfo(QFont arg1) {
 			ProxyQFontInfo().NewQFontInfo(arg1);
 		}
 		public QFontInfo(QFontInfo arg1) : this((Type) null) {
-			CreateQFontInfoProxy();
+			CreateProxy();
 			NewQFontInfo(arg1);
 		}
+		[SmokeMethod("QFontInfo(const QFontInfo&)")]
 		private void NewQFontInfo(QFontInfo arg1) {
 			ProxyQFontInfo().NewQFontInfo(arg1);
 		}
+		[SmokeMethod("family() const")]
 		public string Family() {
 			return ProxyQFontInfo().Family();
 		}
+		[SmokeMethod("pixelSize() const")]
 		public int PixelSize() {
 			return ProxyQFontInfo().PixelSize();
 		}
+		[SmokeMethod("pointSize() const")]
 		public int PointSize() {
 			return ProxyQFontInfo().PointSize();
 		}
+		[SmokeMethod("pointSizeF() const")]
 		public double PointSizeF() {
 			return ProxyQFontInfo().PointSizeF();
 		}
+		[SmokeMethod("italic() const")]
 		public bool Italic() {
 			return ProxyQFontInfo().Italic();
 		}
-		public int Style() {
+		[SmokeMethod("style() const")]
+		public QFont.Style Style() {
 			return ProxyQFontInfo().Style();
 		}
+		[SmokeMethod("weight() const")]
 		public int Weight() {
 			return ProxyQFontInfo().Weight();
 		}
+		[SmokeMethod("bold() const")]
 		public bool Bold() {
 			return ProxyQFontInfo().Bold();
 		}
+		[SmokeMethod("underline() const")]
 		public bool Underline() {
 			return ProxyQFontInfo().Underline();
 		}
+		[SmokeMethod("overline() const")]
 		public bool Overline() {
 			return ProxyQFontInfo().Overline();
 		}
+		[SmokeMethod("strikeOut() const")]
 		public bool StrikeOut() {
 			return ProxyQFontInfo().StrikeOut();
 		}
+		[SmokeMethod("fixedPitch() const")]
 		public bool FixedPitch() {
 			return ProxyQFontInfo().FixedPitch();
 		}
-		public int StyleHint() {
+		[SmokeMethod("styleHint() const")]
+		public QFont.StyleHint StyleHint() {
 			return ProxyQFontInfo().StyleHint();
 		}
+		[SmokeMethod("rawMode() const")]
 		public bool RawMode() {
 			return ProxyQFontInfo().RawMode();
 		}
+		[SmokeMethod("exactMatch() const")]
 		public bool ExactMatch() {
 			return ProxyQFontInfo().ExactMatch();
 		}
 		~QFontInfo() {
-			ProxyQFontInfo().Dispose();
+			DisposeQFontInfo();
 		}
 		public void Dispose() {
-			ProxyQFontInfo().Dispose();
+			DisposeQFontInfo();
+		}
+		private void DisposeQFontInfo() {
+			ProxyQFontInfo().DisposeQFontInfo();
 		}
 	}
 }

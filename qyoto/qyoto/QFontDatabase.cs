@@ -5,17 +5,18 @@ namespace Qt {
 	using System.Collections;
 	using System.Text;
 
+	[SmokeClass("QFontDatabase")]
 	public class QFontDatabase : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
  		protected QFontDatabase(Type dummy) {}
 		interface IQFontDatabaseProxy {
-			string WritingSystemName(int writingSystem);
-			string WritingSystemSample(int writingSystem);
+			string WritingSystemName(QFontDatabase.WritingSystem writingSystem);
+			string WritingSystemSample(QFontDatabase.WritingSystem writingSystem);
 		}
 
-		protected void CreateQFontDatabaseProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFontDatabase), this);
 			_interceptor = (QFontDatabase) realProxy.GetTransparentProxy();
 		}
@@ -31,7 +32,7 @@ namespace Qt {
 			return (IQFontDatabaseProxy) _staticInterceptor;
 		}
 
-		enum WritingSystem {
+		public enum WritingSystem {
 			Any = 0,
 			Latin = 1,
 			Greek = 2,
@@ -66,76 +67,102 @@ namespace Qt {
 			WritingSystemsCount = 31,
 		}
 		public QFontDatabase() : this((Type) null) {
-			CreateQFontDatabaseProxy();
+			CreateProxy();
 			NewQFontDatabase();
 		}
+		[SmokeMethod("QFontDatabase()")]
 		private void NewQFontDatabase() {
 			ProxyQFontDatabase().NewQFontDatabase();
 		}
 		// QList<QFontDatabase::WritingSystem> writingSystems(); >>>> NOT CONVERTED
-		public ArrayList Families(int writingSystem) {
+		[SmokeMethod("families(QFontDatabase::WritingSystem) const")]
+		public ArrayList Families(QFontDatabase.WritingSystem writingSystem) {
 			return ProxyQFontDatabase().Families(writingSystem);
 		}
+		[SmokeMethod("families() const")]
 		public ArrayList Families() {
 			return ProxyQFontDatabase().Families();
 		}
+		[SmokeMethod("styles(const QString&) const")]
 		public ArrayList Styles(string family) {
 			return ProxyQFontDatabase().Styles(family);
 		}
 		// QList<int> pointSizes(const QString& arg1,const QString& arg2); >>>> NOT CONVERTED
 		// QList<int> pointSizes(const QString& arg1); >>>> NOT CONVERTED
 		// QList<int> smoothSizes(const QString& arg1,const QString& arg2); >>>> NOT CONVERTED
+		[SmokeMethod("styleString(const QFont&)")]
 		public string StyleString(QFont font) {
 			return ProxyQFontDatabase().StyleString(font);
 		}
+		[SmokeMethod("styleString(const QFontInfo&)")]
+		public string StyleString(QFontInfo fontInfo) {
+			return ProxyQFontDatabase().StyleString(fontInfo);
+		}
+		[SmokeMethod("font(const QString&, const QString&, int) const")]
 		public QFont Font(string family, string style, int pointSize) {
 			return ProxyQFontDatabase().Font(family,style,pointSize);
 		}
+		[SmokeMethod("isBitmapScalable(const QString&, const QString&) const")]
 		public bool IsBitmapScalable(string family, string style) {
 			return ProxyQFontDatabase().IsBitmapScalable(family,style);
 		}
+		[SmokeMethod("isBitmapScalable(const QString&) const")]
 		public bool IsBitmapScalable(string family) {
 			return ProxyQFontDatabase().IsBitmapScalable(family);
 		}
+		[SmokeMethod("isSmoothlyScalable(const QString&, const QString&) const")]
 		public bool IsSmoothlyScalable(string family, string style) {
 			return ProxyQFontDatabase().IsSmoothlyScalable(family,style);
 		}
+		[SmokeMethod("isSmoothlyScalable(const QString&) const")]
 		public bool IsSmoothlyScalable(string family) {
 			return ProxyQFontDatabase().IsSmoothlyScalable(family);
 		}
+		[SmokeMethod("isScalable(const QString&, const QString&) const")]
 		public bool IsScalable(string family, string style) {
 			return ProxyQFontDatabase().IsScalable(family,style);
 		}
+		[SmokeMethod("isScalable(const QString&) const")]
 		public bool IsScalable(string family) {
 			return ProxyQFontDatabase().IsScalable(family);
 		}
+		[SmokeMethod("isFixedPitch(const QString&, const QString&) const")]
 		public bool IsFixedPitch(string family, string style) {
 			return ProxyQFontDatabase().IsFixedPitch(family,style);
 		}
+		[SmokeMethod("isFixedPitch(const QString&) const")]
 		public bool IsFixedPitch(string family) {
 			return ProxyQFontDatabase().IsFixedPitch(family);
 		}
+		[SmokeMethod("italic(const QString&, const QString&) const")]
 		public bool Italic(string family, string style) {
 			return ProxyQFontDatabase().Italic(family,style);
 		}
+		[SmokeMethod("bold(const QString&, const QString&) const")]
 		public bool Bold(string family, string style) {
 			return ProxyQFontDatabase().Bold(family,style);
 		}
+		[SmokeMethod("weight(const QString&, const QString&) const")]
 		public int Weight(string family, string style) {
 			return ProxyQFontDatabase().Weight(family,style);
 		}
 		// QList<int> standardSizes(); >>>> NOT CONVERTED
-		public static string WritingSystemName(int writingSystem) {
+		[SmokeMethod("writingSystemName(QFontDatabase::WritingSystem)")]
+		public static string WritingSystemName(QFontDatabase.WritingSystem writingSystem) {
 			return StaticQFontDatabase().WritingSystemName(writingSystem);
 		}
-		public static string WritingSystemSample(int writingSystem) {
+		[SmokeMethod("writingSystemSample(QFontDatabase::WritingSystem)")]
+		public static string WritingSystemSample(QFontDatabase.WritingSystem writingSystem) {
 			return StaticQFontDatabase().WritingSystemSample(writingSystem);
 		}
 		~QFontDatabase() {
-			ProxyQFontDatabase().Dispose();
+			DisposeQFontDatabase();
 		}
 		public void Dispose() {
-			ProxyQFontDatabase().Dispose();
+			DisposeQFontDatabase();
+		}
+		private void DisposeQFontDatabase() {
+			ProxyQFontDatabase().DisposeQFontDatabase();
 		}
 	}
 }

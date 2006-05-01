@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Collections;
 	using System.Text;
 
+	[SmokeClass("QStyleFactory")]
 	public class QStyleFactory : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
@@ -15,7 +16,7 @@ namespace Qt {
 			QStyle Create(string arg1);
 		}
 
-		protected void CreateQStyleFactoryProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleFactory), this);
 			_interceptor = (QStyleFactory) realProxy.GetTransparentProxy();
 		}
@@ -32,23 +33,29 @@ namespace Qt {
 		}
 
 		public QStyleFactory() : this((Type) null) {
-			CreateQStyleFactoryProxy();
+			CreateProxy();
 			NewQStyleFactory();
 		}
+		[SmokeMethod("QStyleFactory()")]
 		private void NewQStyleFactory() {
 			ProxyQStyleFactory().NewQStyleFactory();
 		}
+		[SmokeMethod("keys()")]
 		public static ArrayList Keys() {
 			return StaticQStyleFactory().Keys();
 		}
+		[SmokeMethod("create(const QString&)")]
 		public static QStyle Create(string arg1) {
 			return StaticQStyleFactory().Create(arg1);
 		}
 		~QStyleFactory() {
-			ProxyQStyleFactory().Dispose();
+			DisposeQStyleFactory();
 		}
 		public void Dispose() {
-			ProxyQStyleFactory().Dispose();
+			DisposeQStyleFactory();
+		}
+		private void DisposeQStyleFactory() {
+			ProxyQStyleFactory().DisposeQStyleFactory();
 		}
 	}
 }

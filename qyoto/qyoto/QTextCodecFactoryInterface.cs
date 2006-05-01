@@ -4,12 +4,13 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QTextCodecFactoryInterface")]
 	public class QTextCodecFactoryInterface : QFactoryInterface {
  		protected QTextCodecFactoryInterface(Type dummy) : base((Type) null) {}
 		interface IQTextCodecFactoryInterfaceProxy {
 		}
 
-		protected void CreateQTextCodecFactoryInterfaceProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextCodecFactoryInterface), this);
 			_interceptor = (QTextCodecFactoryInterface) realProxy.GetTransparentProxy();
 		}
@@ -25,8 +26,26 @@ namespace Qt {
 			return (IQTextCodecFactoryInterfaceProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("create(const QString&)")]
 		public virtual QTextCodec Create(string key) {
 			return ProxyQTextCodecFactoryInterface().Create(key);
+		}
+		public QTextCodecFactoryInterface() : this((Type) null) {
+			CreateProxy();
+			NewQTextCodecFactoryInterface();
+		}
+		[SmokeMethod("QTextCodecFactoryInterface()")]
+		private void NewQTextCodecFactoryInterface() {
+			ProxyQTextCodecFactoryInterface().NewQTextCodecFactoryInterface();
+		}
+		~QTextCodecFactoryInterface() {
+			DisposeQTextCodecFactoryInterface();
+		}
+		public new void Dispose() {
+			DisposeQTextCodecFactoryInterface();
+		}
+		private void DisposeQTextCodecFactoryInterface() {
+			ProxyQTextCodecFactoryInterface().DisposeQTextCodecFactoryInterface();
 		}
 	}
 }

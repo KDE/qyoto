@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QMetaClassInfo")]
 	public class QMetaClassInfo : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
@@ -11,7 +12,7 @@ namespace Qt {
 		interface IQMetaClassInfoProxy {
 		}
 
-		protected void CreateQMetaClassInfoProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMetaClassInfo), this);
 			_interceptor = (QMetaClassInfo) realProxy.GetTransparentProxy();
 		}
@@ -28,23 +29,29 @@ namespace Qt {
 		}
 
 		public QMetaClassInfo() : this((Type) null) {
-			CreateQMetaClassInfoProxy();
+			CreateProxy();
 			NewQMetaClassInfo();
 		}
+		[SmokeMethod("QMetaClassInfo()")]
 		private void NewQMetaClassInfo() {
 			ProxyQMetaClassInfo().NewQMetaClassInfo();
 		}
+		[SmokeMethod("name() const")]
 		public string Name() {
 			return ProxyQMetaClassInfo().Name();
 		}
+		[SmokeMethod("value() const")]
 		public string Value() {
 			return ProxyQMetaClassInfo().Value();
 		}
 		~QMetaClassInfo() {
-			ProxyQMetaClassInfo().Dispose();
+			DisposeQMetaClassInfo();
 		}
 		public void Dispose() {
-			ProxyQMetaClassInfo().Dispose();
+			DisposeQMetaClassInfo();
+		}
+		private void DisposeQMetaClassInfo() {
+			ProxyQMetaClassInfo().DisposeQMetaClassInfo();
 		}
 	}
 }

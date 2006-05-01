@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QScrollArea")]
 	public class QScrollArea : QAbstractScrollArea, IDisposable {
  		protected QScrollArea(Type dummy) : base((Type) null) {}
 		interface IQScrollAreaProxy {
@@ -11,7 +12,7 @@ namespace Qt {
 			string Tr(string s);
 		}
 
-		protected void CreateQScrollAreaProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QScrollArea), this);
 			_interceptor = (QScrollArea) realProxy.GetTransparentProxy();
 		}
@@ -27,69 +28,105 @@ namespace Qt {
 			return (IQScrollAreaProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQScrollArea().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QScrollArea(QWidget parent) : this((Type) null) {
-			CreateQScrollAreaProxy();
+			CreateProxy();
 			NewQScrollArea(parent);
 		}
+		[SmokeMethod("QScrollArea(QWidget*)")]
 		private void NewQScrollArea(QWidget parent) {
 			ProxyQScrollArea().NewQScrollArea(parent);
 		}
 		public QScrollArea() : this((Type) null) {
-			CreateQScrollAreaProxy();
+			CreateProxy();
 			NewQScrollArea();
 		}
+		[SmokeMethod("QScrollArea()")]
 		private void NewQScrollArea() {
 			ProxyQScrollArea().NewQScrollArea();
 		}
+		[SmokeMethod("widget() const")]
 		public QWidget Widget() {
 			return ProxyQScrollArea().Widget();
 		}
+		[SmokeMethod("setWidget(QWidget*)")]
 		public void SetWidget(QWidget w) {
 			ProxyQScrollArea().SetWidget(w);
 		}
+		[SmokeMethod("takeWidget()")]
 		public QWidget TakeWidget() {
 			return ProxyQScrollArea().TakeWidget();
 		}
+		[SmokeMethod("widgetResizable() const")]
 		public bool WidgetResizable() {
 			return ProxyQScrollArea().WidgetResizable();
 		}
+		[SmokeMethod("setWidgetResizable(bool)")]
 		public void SetWidgetResizable(bool resizable) {
 			ProxyQScrollArea().SetWidgetResizable(resizable);
 		}
+		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {
 			return ProxyQScrollArea().SizeHint();
 		}
+		[SmokeMethod("focusNextPrevChild(bool)")]
 		public new bool FocusNextPrevChild(bool next) {
 			return ProxyQScrollArea().FocusNextPrevChild(next);
 		}
+		[SmokeMethod("ensureVisible(int, int, int, int)")]
+		public void EnsureVisible(int x, int y, int xmargin, int ymargin) {
+			ProxyQScrollArea().EnsureVisible(x,y,xmargin,ymargin);
+		}
+		[SmokeMethod("ensureVisible(int, int, int)")]
+		public void EnsureVisible(int x, int y, int xmargin) {
+			ProxyQScrollArea().EnsureVisible(x,y,xmargin);
+		}
+		[SmokeMethod("ensureVisible(int, int)")]
+		public void EnsureVisible(int x, int y) {
+			ProxyQScrollArea().EnsureVisible(x,y);
+		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQScrollArea().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQScrollArea().Tr(s);
 		}
+		[SmokeMethod("event(QEvent*)")]
 		public new bool Event(QEvent arg1) {
 			return ProxyQScrollArea().Event(arg1);
 		}
+		[SmokeMethod("eventFilter(QObject*, QEvent*)")]
 		public new bool EventFilter(QObject arg1, QEvent arg2) {
 			return ProxyQScrollArea().EventFilter(arg1,arg2);
 		}
+		[SmokeMethod("resizeEvent(QResizeEvent*)")]
 		protected new void ResizeEvent(QResizeEvent arg1) {
 			ProxyQScrollArea().ResizeEvent(arg1);
 		}
+		[SmokeMethod("scrollContentsBy(int, int)")]
 		protected new void ScrollContentsBy(int dx, int dy) {
 			ProxyQScrollArea().ScrollContentsBy(dx,dy);
 		}
 		~QScrollArea() {
-			ProxyQScrollArea().Dispose();
+			DisposeQScrollArea();
 		}
 		public new void Dispose() {
-			ProxyQScrollArea().Dispose();
+			DisposeQScrollArea();
 		}
+		private void DisposeQScrollArea() {
+			ProxyQScrollArea().DisposeQScrollArea();
+		}
+		protected new IQScrollAreaSignals Emit() {
+			return (IQScrollAreaSignals) Q_EMIT;
+		}
+	}
+
+	public interface IQScrollAreaSignals : IQAbstractScrollAreaSignals {
 	}
 }

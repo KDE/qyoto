@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QStyleOptionComplex")]
 	public class QStyleOptionComplex : QStyleOption, IDisposable {
  		protected QStyleOptionComplex(Type dummy) : base((Type) null) {}
 		interface IQStyleOptionComplexProxy {
 		}
 
-		protected void CreateQStyleOptionComplexProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionComplex), this);
 			_interceptor = (QStyleOptionComplex) realProxy.GetTransparentProxy();
 		}
@@ -24,43 +25,50 @@ namespace Qt {
 			return (IQStyleOptionComplexProxy) _staticInterceptor;
 		}
 
-		public const int Type = (int) OptionType.SO_Complex;
+		public const int Type = (int) QStyleOption.OptionType.SO_Complex;
 
 		public const int Version = 1;
 
 		public QStyleOptionComplex(int version, int type) : this((Type) null) {
-			CreateQStyleOptionComplexProxy();
+			CreateProxy();
 			NewQStyleOptionComplex(version,type);
 		}
+		[SmokeMethod("QStyleOptionComplex(int, int)")]
 		private void NewQStyleOptionComplex(int version, int type) {
 			ProxyQStyleOptionComplex().NewQStyleOptionComplex(version,type);
 		}
 		public QStyleOptionComplex(int version) : this((Type) null) {
-			CreateQStyleOptionComplexProxy();
+			CreateProxy();
 			NewQStyleOptionComplex(version);
 		}
+		[SmokeMethod("QStyleOptionComplex(int)")]
 		private void NewQStyleOptionComplex(int version) {
 			ProxyQStyleOptionComplex().NewQStyleOptionComplex(version);
 		}
 		public QStyleOptionComplex() : this((Type) null) {
-			CreateQStyleOptionComplexProxy();
+			CreateProxy();
 			NewQStyleOptionComplex();
 		}
+		[SmokeMethod("QStyleOptionComplex()")]
 		private void NewQStyleOptionComplex() {
 			ProxyQStyleOptionComplex().NewQStyleOptionComplex();
 		}
 		public QStyleOptionComplex(QStyleOptionComplex other) : this((Type) null) {
-			CreateQStyleOptionComplexProxy();
+			CreateProxy();
 			NewQStyleOptionComplex(other);
 		}
+		[SmokeMethod("QStyleOptionComplex(const QStyleOptionComplex&)")]
 		private void NewQStyleOptionComplex(QStyleOptionComplex other) {
 			ProxyQStyleOptionComplex().NewQStyleOptionComplex(other);
 		}
 		~QStyleOptionComplex() {
-			ProxyQStyleOptionComplex().Dispose();
+			DisposeQStyleOptionComplex();
 		}
 		public void Dispose() {
-			ProxyQStyleOptionComplex().Dispose();
+			DisposeQStyleOptionComplex();
+		}
+		private void DisposeQStyleOptionComplex() {
+			ProxyQStyleOptionComplex().DisposeQStyleOptionComplex();
 		}
 	}
 }

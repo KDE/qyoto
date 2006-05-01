@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QTextDecoder")]
 	public class QTextDecoder : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
@@ -12,7 +13,7 @@ namespace Qt {
 		interface IQTextDecoderProxy {
 		}
 
-		protected void CreateQTextDecoderProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextDecoder), this);
 			_interceptor = (QTextDecoder) realProxy.GetTransparentProxy();
 		}
@@ -29,23 +30,29 @@ namespace Qt {
 		}
 
 		public QTextDecoder(QTextCodec codec) : this((Type) null) {
-			CreateQTextDecoderProxy();
+			CreateProxy();
 			NewQTextDecoder(codec);
 		}
+		[SmokeMethod("QTextDecoder(const QTextCodec*)")]
 		private void NewQTextDecoder(QTextCodec codec) {
 			ProxyQTextDecoder().NewQTextDecoder(codec);
 		}
+		[SmokeMethod("toUnicode(const char*, int)")]
 		public string ToUnicode(string chars, int len) {
 			return ProxyQTextDecoder().ToUnicode(chars,len);
 		}
+		[SmokeMethod("toUnicode(const QByteArray&)")]
 		public string ToUnicode(QByteArray ba) {
 			return ProxyQTextDecoder().ToUnicode(ba);
 		}
 		~QTextDecoder() {
-			ProxyQTextDecoder().Dispose();
+			DisposeQTextDecoder();
 		}
 		public void Dispose() {
-			ProxyQTextDecoder().Dispose();
+			DisposeQTextDecoder();
+		}
+		private void DisposeQTextDecoder() {
+			ProxyQTextDecoder().DisposeQTextDecoder();
 		}
 	}
 }

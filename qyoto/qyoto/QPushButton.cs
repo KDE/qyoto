@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QPushButton")]
 	public class QPushButton : QAbstractButton, IDisposable {
  		protected QPushButton(Type dummy) : base((Type) null) {}
 		interface IQPushButtonProxy {
@@ -11,7 +12,7 @@ namespace Qt {
 			string Tr(string s);
 		}
 
-		protected void CreateQPushButtonProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPushButton), this);
 			_interceptor = (QPushButton) realProxy.GetTransparentProxy();
 		}
@@ -27,106 +28,141 @@ namespace Qt {
 			return (IQPushButtonProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQPushButton().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QPushButton(QWidget parent) : this((Type) null) {
-			CreateQPushButtonProxy();
+			CreateProxy();
 			NewQPushButton(parent);
 		}
+		[SmokeMethod("QPushButton(QWidget*)")]
 		private void NewQPushButton(QWidget parent) {
 			ProxyQPushButton().NewQPushButton(parent);
 		}
 		public QPushButton() : this((Type) null) {
-			CreateQPushButtonProxy();
+			CreateProxy();
 			NewQPushButton();
 		}
+		[SmokeMethod("QPushButton()")]
 		private void NewQPushButton() {
 			ProxyQPushButton().NewQPushButton();
 		}
 		public QPushButton(string text, QWidget parent) : this((Type) null) {
-			CreateQPushButtonProxy();
+			CreateProxy();
 			NewQPushButton(text,parent);
 		}
+		[SmokeMethod("QPushButton(const QString&, QWidget*)")]
 		private void NewQPushButton(string text, QWidget parent) {
 			ProxyQPushButton().NewQPushButton(text,parent);
 		}
 		public QPushButton(string text) : this((Type) null) {
-			CreateQPushButtonProxy();
+			CreateProxy();
 			NewQPushButton(text);
 		}
+		[SmokeMethod("QPushButton(const QString&)")]
 		private void NewQPushButton(string text) {
 			ProxyQPushButton().NewQPushButton(text);
 		}
 		public QPushButton(QIcon icon, string text, QWidget parent) : this((Type) null) {
-			CreateQPushButtonProxy();
+			CreateProxy();
 			NewQPushButton(icon,text,parent);
 		}
+		[SmokeMethod("QPushButton(const QIcon&, const QString&, QWidget*)")]
 		private void NewQPushButton(QIcon icon, string text, QWidget parent) {
 			ProxyQPushButton().NewQPushButton(icon,text,parent);
 		}
 		public QPushButton(QIcon icon, string text) : this((Type) null) {
-			CreateQPushButtonProxy();
+			CreateProxy();
 			NewQPushButton(icon,text);
 		}
+		[SmokeMethod("QPushButton(const QIcon&, const QString&)")]
 		private void NewQPushButton(QIcon icon, string text) {
 			ProxyQPushButton().NewQPushButton(icon,text);
 		}
+		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {
 			return ProxyQPushButton().SizeHint();
 		}
+		[SmokeMethod("autoDefault() const")]
 		public bool AutoDefault() {
 			return ProxyQPushButton().AutoDefault();
 		}
+		[SmokeMethod("setAutoDefault(bool)")]
 		public void SetAutoDefault(bool arg1) {
 			ProxyQPushButton().SetAutoDefault(arg1);
 		}
+		[SmokeMethod("isDefault() const")]
 		public bool IsDefault() {
 			return ProxyQPushButton().IsDefault();
 		}
+		[SmokeMethod("setDefault(bool)")]
 		public void SetDefault(bool arg1) {
 			ProxyQPushButton().SetDefault(arg1);
 		}
+		[SmokeMethod("setMenu(QMenu*)")]
 		public void SetMenu(QMenu menu) {
 			ProxyQPushButton().SetMenu(menu);
 		}
+		[SmokeMethod("menu() const")]
 		public QMenu Menu() {
 			return ProxyQPushButton().Menu();
 		}
+		[SmokeMethod("setFlat(bool)")]
 		public void SetFlat(bool arg1) {
 			ProxyQPushButton().SetFlat(arg1);
 		}
+		[SmokeMethod("isFlat() const")]
 		public bool IsFlat() {
 			return ProxyQPushButton().IsFlat();
 		}
+		[SmokeMethod("showMenu()")]
 		public void ShowMenu() {
 			ProxyQPushButton().ShowMenu();
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQPushButton().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQPushButton().Tr(s);
 		}
+		[SmokeMethod("event(QEvent*)")]
+		public new bool Event(QEvent e) {
+			return ProxyQPushButton().Event(e);
+		}
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected new void PaintEvent(QPaintEvent arg1) {
 			ProxyQPushButton().PaintEvent(arg1);
 		}
+		[SmokeMethod("keyPressEvent(QKeyEvent*)")]
 		protected new void KeyPressEvent(QKeyEvent arg1) {
 			ProxyQPushButton().KeyPressEvent(arg1);
 		}
+		[SmokeMethod("focusInEvent(QFocusEvent*)")]
 		protected new void FocusInEvent(QFocusEvent arg1) {
 			ProxyQPushButton().FocusInEvent(arg1);
 		}
+		[SmokeMethod("focusOutEvent(QFocusEvent*)")]
 		protected new void FocusOutEvent(QFocusEvent arg1) {
 			ProxyQPushButton().FocusOutEvent(arg1);
 		}
 		~QPushButton() {
-			ProxyQPushButton().Dispose();
+			DisposeQPushButton();
 		}
 		public new void Dispose() {
-			ProxyQPushButton().Dispose();
+			DisposeQPushButton();
 		}
+		private void DisposeQPushButton() {
+			ProxyQPushButton().DisposeQPushButton();
+		}
+		protected new IQPushButtonSignals Emit() {
+			return (IQPushButtonSignals) Q_EMIT;
+		}
+	}
+
+	public interface IQPushButtonSignals : IQAbstractButtonSignals {
 	}
 }

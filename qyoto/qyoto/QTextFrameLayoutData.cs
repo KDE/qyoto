@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QTextFrameLayoutData")]
 	public class QTextFrameLayoutData : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
@@ -11,7 +12,7 @@ namespace Qt {
 		interface IQTextFrameLayoutDataProxy {
 		}
 
-		protected void CreateQTextFrameLayoutDataProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextFrameLayoutData), this);
 			_interceptor = (QTextFrameLayoutData) realProxy.GetTransparentProxy();
 		}
@@ -28,17 +29,21 @@ namespace Qt {
 		}
 
 		public QTextFrameLayoutData() : this((Type) null) {
-			CreateQTextFrameLayoutDataProxy();
+			CreateProxy();
 			NewQTextFrameLayoutData();
 		}
+		[SmokeMethod("QTextFrameLayoutData()")]
 		private void NewQTextFrameLayoutData() {
 			ProxyQTextFrameLayoutData().NewQTextFrameLayoutData();
 		}
 		~QTextFrameLayoutData() {
-			ProxyQTextFrameLayoutData().Dispose();
+			DisposeQTextFrameLayoutData();
 		}
 		public void Dispose() {
-			ProxyQTextFrameLayoutData().Dispose();
+			DisposeQTextFrameLayoutData();
+		}
+		private void DisposeQTextFrameLayoutData() {
+			ProxyQTextFrameLayoutData().DisposeQTextFrameLayoutData();
 		}
 	}
 }

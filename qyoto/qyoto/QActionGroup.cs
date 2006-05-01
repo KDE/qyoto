@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQActionGroupSignals"></see> for signals emitted by QActionGroup
+	[SmokeClass("QActionGroup")]
 	public class QActionGroup : QObject, IDisposable {
  		protected QActionGroup(Type dummy) : base((Type) null) {}
 		interface IQActionGroupProxy {
@@ -12,7 +13,7 @@ namespace Qt {
 			string Tr(string s);
 		}
 
-		protected void CreateQActionGroupProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QActionGroup), this);
 			_interceptor = (QActionGroup) realProxy.GetTransparentProxy();
 		}
@@ -28,72 +29,96 @@ namespace Qt {
 			return (IQActionGroupProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQActionGroup().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QActionGroup(QObject parent) : this((Type) null) {
-			CreateQActionGroupProxy();
+			CreateProxy();
 			NewQActionGroup(parent);
 		}
+		[SmokeMethod("QActionGroup(QObject*)")]
 		private void NewQActionGroup(QObject parent) {
 			ProxyQActionGroup().NewQActionGroup(parent);
 		}
+		[SmokeMethod("addAction(QAction*)")]
 		public QAction AddAction(QAction a) {
 			return ProxyQActionGroup().AddAction(a);
 		}
+		[SmokeMethod("addAction(const QString&)")]
 		public QAction AddAction(string text) {
 			return ProxyQActionGroup().AddAction(text);
 		}
+		[SmokeMethod("addAction(const QIcon&, const QString&)")]
 		public QAction AddAction(QIcon icon, string text) {
 			return ProxyQActionGroup().AddAction(icon,text);
 		}
+		[SmokeMethod("removeAction(QAction*)")]
 		public void RemoveAction(QAction a) {
 			ProxyQActionGroup().RemoveAction(a);
 		}
 		// QList<QAction*> actions(); >>>> NOT CONVERTED
+		[SmokeMethod("checkedAction() const")]
 		public QAction CheckedAction() {
 			return ProxyQActionGroup().CheckedAction();
 		}
+		[SmokeMethod("isExclusive() const")]
 		public bool IsExclusive() {
 			return ProxyQActionGroup().IsExclusive();
 		}
+		[SmokeMethod("isEnabled() const")]
 		public bool IsEnabled() {
 			return ProxyQActionGroup().IsEnabled();
 		}
+		[SmokeMethod("isVisible() const")]
 		public bool IsVisible() {
 			return ProxyQActionGroup().IsVisible();
 		}
+		[SmokeMethod("setEnabled(bool)")]
 		public void SetEnabled(bool arg1) {
 			ProxyQActionGroup().SetEnabled(arg1);
 		}
+		[SmokeMethod("setDisabled(bool)")]
 		public void SetDisabled(bool b) {
 			ProxyQActionGroup().SetDisabled(b);
 		}
+		[SmokeMethod("setVisible(bool)")]
 		public void SetVisible(bool arg1) {
 			ProxyQActionGroup().SetVisible(arg1);
 		}
+		[SmokeMethod("setExclusive(bool)")]
 		public void SetExclusive(bool arg1) {
 			ProxyQActionGroup().SetExclusive(arg1);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQActionGroup().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQActionGroup().Tr(s);
 		}
 		~QActionGroup() {
-			ProxyQActionGroup().Dispose();
+			DisposeQActionGroup();
 		}
 		public new void Dispose() {
-			ProxyQActionGroup().Dispose();
+			DisposeQActionGroup();
+		}
+		private void DisposeQActionGroup() {
+			ProxyQActionGroup().DisposeQActionGroup();
+		}
+		protected new IQActionGroupSignals Emit() {
+			return (IQActionGroupSignals) Q_EMIT;
 		}
 	}
 
-	public interface IQActionGroupSignals {
+	public interface IQActionGroupSignals : IQObjectSignals {
+		[Q_SIGNAL("void triggered(QAction*)")]
 		void Triggered(QAction arg1);
+		[Q_SIGNAL("void selected(QAction*)")]
 		void Selected(QAction arg1);
+		[Q_SIGNAL("void hovered(QAction*)")]
 		void Hovered(QAction arg1);
 	}
 }

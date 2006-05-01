@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QTcpSocket")]
 	public class QTcpSocket : QAbstractSocket, IDisposable {
  		protected QTcpSocket(Type dummy) : base((Type) null) {}
 		interface IQTcpSocketProxy {
@@ -11,7 +12,7 @@ namespace Qt {
 			string Tr(string s);
 		}
 
-		protected void CreateQTcpSocketProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTcpSocket), this);
 			_interceptor = (QTcpSocket) realProxy.GetTransparentProxy();
 		}
@@ -27,36 +28,49 @@ namespace Qt {
 			return (IQTcpSocketProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQTcpSocket().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QTcpSocket(QObject parent) : this((Type) null) {
-			CreateQTcpSocketProxy();
+			CreateProxy();
 			NewQTcpSocket(parent);
 		}
+		[SmokeMethod("QTcpSocket(QObject*)")]
 		private void NewQTcpSocket(QObject parent) {
 			ProxyQTcpSocket().NewQTcpSocket(parent);
 		}
 		public QTcpSocket() : this((Type) null) {
-			CreateQTcpSocketProxy();
+			CreateProxy();
 			NewQTcpSocket();
 		}
+		[SmokeMethod("QTcpSocket()")]
 		private void NewQTcpSocket() {
 			ProxyQTcpSocket().NewQTcpSocket();
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQTcpSocket().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQTcpSocket().Tr(s);
 		}
 		~QTcpSocket() {
-			ProxyQTcpSocket().Dispose();
+			DisposeQTcpSocket();
 		}
 		public new void Dispose() {
-			ProxyQTcpSocket().Dispose();
+			DisposeQTcpSocket();
 		}
+		private void DisposeQTcpSocket() {
+			ProxyQTcpSocket().DisposeQTcpSocket();
+		}
+		protected new IQTcpSocketSignals Emit() {
+			return (IQTcpSocketSignals) Q_EMIT;
+		}
+	}
+
+	public interface IQTcpSocketSignals : IQAbstractSocketSignals {
 	}
 }

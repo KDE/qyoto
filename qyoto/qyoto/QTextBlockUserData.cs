@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QTextBlockUserData")]
 	public class QTextBlockUserData : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
@@ -11,7 +12,7 @@ namespace Qt {
 		interface IQTextBlockUserDataProxy {
 		}
 
-		protected void CreateQTextBlockUserDataProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextBlockUserData), this);
 			_interceptor = (QTextBlockUserData) realProxy.GetTransparentProxy();
 		}
@@ -28,17 +29,21 @@ namespace Qt {
 		}
 
 		public QTextBlockUserData() : this((Type) null) {
-			CreateQTextBlockUserDataProxy();
+			CreateProxy();
 			NewQTextBlockUserData();
 		}
+		[SmokeMethod("QTextBlockUserData()")]
 		private void NewQTextBlockUserData() {
 			ProxyQTextBlockUserData().NewQTextBlockUserData();
 		}
 		~QTextBlockUserData() {
-			ProxyQTextBlockUserData().Dispose();
+			DisposeQTextBlockUserData();
 		}
 		public void Dispose() {
-			ProxyQTextBlockUserData().Dispose();
+			DisposeQTextBlockUserData();
+		}
+		private void DisposeQTextBlockUserData() {
+			ProxyQTextBlockUserData().DisposeQTextBlockUserData();
 		}
 	}
 }

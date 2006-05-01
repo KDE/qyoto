@@ -3,17 +3,17 @@ namespace Qt {
 
 	using System;
 
-	public class QItemSelection : IDisposable {
+	[SmokeClass("QItemSelection")]
+	public class QItemSelection : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
  		protected QItemSelection(Type dummy) {}
-
 		interface IQItemSelectionProxy {
 			void Split(QItemSelectionRange range, QItemSelectionRange other, QItemSelection result);
 		}
 
-		protected void CreateQItemSelectionProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QItemSelection), this);
 			_interceptor = (QItemSelection) realProxy.GetTransparentProxy();
 		}
@@ -30,37 +30,46 @@ namespace Qt {
 		}
 
 		public QItemSelection() : this((Type) null) {
-			CreateQItemSelectionProxy();
+			CreateProxy();
 			NewQItemSelection();
 		}
+		[SmokeMethod("QItemSelection()")]
 		private void NewQItemSelection() {
 			ProxyQItemSelection().NewQItemSelection();
 		}
 		public QItemSelection(QModelIndex topLeft, QModelIndex bottomRight) : this((Type) null) {
-			CreateQItemSelectionProxy();
+			CreateProxy();
 			NewQItemSelection(topLeft,bottomRight);
 		}
+		[SmokeMethod("QItemSelection(const QModelIndex&, const QModelIndex&)")]
 		private void NewQItemSelection(QModelIndex topLeft, QModelIndex bottomRight) {
 			ProxyQItemSelection().NewQItemSelection(topLeft,bottomRight);
 		}
+		[SmokeMethod("select(const QModelIndex&, const QModelIndex&)")]
 		public void Select(QModelIndex topLeft, QModelIndex bottomRight) {
 			ProxyQItemSelection().Select(topLeft,bottomRight);
 		}
+		[SmokeMethod("contains(const QModelIndex&) const")]
 		public bool Contains(QModelIndex index) {
 			return ProxyQItemSelection().Contains(index);
 		}
 		// QModelIndexList indexes(); >>>> NOT CONVERTED
+		[SmokeMethod("merge(const QItemSelection&, QItemSelectionModel::SelectionFlags)")]
 		public void Merge(QItemSelection other, int command) {
 			ProxyQItemSelection().Merge(other,command);
 		}
+		[SmokeMethod("split(const QItemSelectionRange&, const QItemSelectionRange&, QItemSelection*)")]
 		public static void Split(QItemSelectionRange range, QItemSelectionRange other, QItemSelection result) {
 			StaticQItemSelection().Split(range,other,result);
 		}
 		~QItemSelection() {
-			ProxyQItemSelection().Dispose();
+			DisposeQItemSelection();
 		}
 		public void Dispose() {
-			ProxyQItemSelection().Dispose();
+			DisposeQItemSelection();
+		}
+		private void DisposeQItemSelection() {
+			ProxyQItemSelection().DisposeQItemSelection();
 		}
 	}
 }

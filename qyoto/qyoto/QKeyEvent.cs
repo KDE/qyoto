@@ -4,12 +4,13 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QKeyEvent")]
 	public class QKeyEvent : QInputEvent, IDisposable {
  		protected QKeyEvent(Type dummy) : base((Type) null) {}
 		interface IQKeyEventProxy {
 		}
 
-		protected void CreateQKeyEventProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QKeyEvent), this);
 			_interceptor = (QKeyEvent) realProxy.GetTransparentProxy();
 		}
@@ -25,54 +26,66 @@ namespace Qt {
 			return (IQKeyEventProxy) _staticInterceptor;
 		}
 
-		public QKeyEvent(int type, int key, int modifiers, string text, bool autorep, ushort count) : this((Type) null) {
-			CreateQKeyEventProxy();
+		public QKeyEvent(QEvent.E_Type type, int key, int modifiers, string text, bool autorep, ushort count) : this((Type) null) {
+			CreateProxy();
 			NewQKeyEvent(type,key,modifiers,text,autorep,count);
 		}
-		private void NewQKeyEvent(int type, int key, int modifiers, string text, bool autorep, ushort count) {
+		[SmokeMethod("QKeyEvent(QEvent::Type, int, Qt::KeyboardModifiers, const QString&, bool, ushort)")]
+		private void NewQKeyEvent(QEvent.E_Type type, int key, int modifiers, string text, bool autorep, ushort count) {
 			ProxyQKeyEvent().NewQKeyEvent(type,key,modifiers,text,autorep,count);
 		}
-		public QKeyEvent(int type, int key, int modifiers, string text, bool autorep) : this((Type) null) {
-			CreateQKeyEventProxy();
+		public QKeyEvent(QEvent.E_Type type, int key, int modifiers, string text, bool autorep) : this((Type) null) {
+			CreateProxy();
 			NewQKeyEvent(type,key,modifiers,text,autorep);
 		}
-		private void NewQKeyEvent(int type, int key, int modifiers, string text, bool autorep) {
+		[SmokeMethod("QKeyEvent(QEvent::Type, int, Qt::KeyboardModifiers, const QString&, bool)")]
+		private void NewQKeyEvent(QEvent.E_Type type, int key, int modifiers, string text, bool autorep) {
 			ProxyQKeyEvent().NewQKeyEvent(type,key,modifiers,text,autorep);
 		}
-		public QKeyEvent(int type, int key, int modifiers, string text) : this((Type) null) {
-			CreateQKeyEventProxy();
+		public QKeyEvent(QEvent.E_Type type, int key, int modifiers, string text) : this((Type) null) {
+			CreateProxy();
 			NewQKeyEvent(type,key,modifiers,text);
 		}
-		private void NewQKeyEvent(int type, int key, int modifiers, string text) {
+		[SmokeMethod("QKeyEvent(QEvent::Type, int, Qt::KeyboardModifiers, const QString&)")]
+		private void NewQKeyEvent(QEvent.E_Type type, int key, int modifiers, string text) {
 			ProxyQKeyEvent().NewQKeyEvent(type,key,modifiers,text);
 		}
-		public QKeyEvent(int type, int key, int modifiers) : this((Type) null) {
-			CreateQKeyEventProxy();
+		public QKeyEvent(QEvent.E_Type type, int key, int modifiers) : this((Type) null) {
+			CreateProxy();
 			NewQKeyEvent(type,key,modifiers);
 		}
-		private void NewQKeyEvent(int type, int key, int modifiers) {
+		[SmokeMethod("QKeyEvent(QEvent::Type, int, Qt::KeyboardModifiers)")]
+		private void NewQKeyEvent(QEvent.E_Type type, int key, int modifiers) {
 			ProxyQKeyEvent().NewQKeyEvent(type,key,modifiers);
 		}
+		[SmokeMethod("key() const")]
 		public int Key() {
 			return ProxyQKeyEvent().Key();
 		}
+		[SmokeMethod("modifiers() const")]
 		public new int Modifiers() {
 			return ProxyQKeyEvent().Modifiers();
 		}
+		[SmokeMethod("text() const")]
 		public string Text() {
 			return ProxyQKeyEvent().Text();
 		}
+		[SmokeMethod("isAutoRepeat() const")]
 		public bool IsAutoRepeat() {
 			return ProxyQKeyEvent().IsAutoRepeat();
 		}
+		[SmokeMethod("count() const")]
 		public int Count() {
 			return ProxyQKeyEvent().Count();
 		}
 		~QKeyEvent() {
-			ProxyQKeyEvent().Dispose();
+			DisposeQKeyEvent();
 		}
 		public new void Dispose() {
-			ProxyQKeyEvent().Dispose();
+			DisposeQKeyEvent();
+		}
+		private void DisposeQKeyEvent() {
+			ProxyQKeyEvent().DisposeQKeyEvent();
 		}
 	}
 }

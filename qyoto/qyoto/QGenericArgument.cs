@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QGenericArgument")]
 	public class QGenericArgument : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
@@ -11,7 +12,7 @@ namespace Qt {
 		interface IQGenericArgumentProxy {
 		}
 
-		protected void CreateQGenericArgumentProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGenericArgument), this);
 			_interceptor = (QGenericArgument) realProxy.GetTransparentProxy();
 		}
@@ -29,28 +30,34 @@ namespace Qt {
 
 		// QGenericArgument* QGenericArgument(const char* arg1,const void* arg2); >>>> NOT CONVERTED
 		public QGenericArgument(string aName) : this((Type) null) {
-			CreateQGenericArgumentProxy();
+			CreateProxy();
 			NewQGenericArgument(aName);
 		}
+		[SmokeMethod("QGenericArgument(const char*)")]
 		private void NewQGenericArgument(string aName) {
 			ProxyQGenericArgument().NewQGenericArgument(aName);
 		}
 		public QGenericArgument() : this((Type) null) {
-			CreateQGenericArgumentProxy();
+			CreateProxy();
 			NewQGenericArgument();
 		}
+		[SmokeMethod("QGenericArgument()")]
 		private void NewQGenericArgument() {
 			ProxyQGenericArgument().NewQGenericArgument();
 		}
 		// void* data(); >>>> NOT CONVERTED
+		[SmokeMethod("name() const")]
 		public string Name() {
 			return ProxyQGenericArgument().Name();
 		}
 		~QGenericArgument() {
-			ProxyQGenericArgument().Dispose();
+			DisposeQGenericArgument();
 		}
 		public void Dispose() {
-			ProxyQGenericArgument().Dispose();
+			DisposeQGenericArgument();
+		}
+		private void DisposeQGenericArgument() {
+			ProxyQGenericArgument().DisposeQGenericArgument();
 		}
 	}
 }

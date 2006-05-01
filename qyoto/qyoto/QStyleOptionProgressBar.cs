@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QStyleOptionProgressBar")]
 	public class QStyleOptionProgressBar : QStyleOption, IDisposable {
  		protected QStyleOptionProgressBar(Type dummy) : base((Type) null) {}
 		interface IQStyleOptionProgressBarProxy {
 		}
 
-		protected void CreateQStyleOptionProgressBarProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionProgressBar), this);
 			_interceptor = (QStyleOptionProgressBar) realProxy.GetTransparentProxy();
 		}
@@ -24,36 +25,42 @@ namespace Qt {
 			return (IQStyleOptionProgressBarProxy) _staticInterceptor;
 		}
 
-		public const int Type = (int) OptionType.SO_ProgressBar;
+		public const int Type = (int) QStyleOption.OptionType.SO_ProgressBar;
 
 		public const int Version = 1;
 
 		public QStyleOptionProgressBar() : this((Type) null) {
-			CreateQStyleOptionProgressBarProxy();
+			CreateProxy();
 			NewQStyleOptionProgressBar();
 		}
+		[SmokeMethod("QStyleOptionProgressBar()")]
 		private void NewQStyleOptionProgressBar() {
 			ProxyQStyleOptionProgressBar().NewQStyleOptionProgressBar();
 		}
 		public QStyleOptionProgressBar(QStyleOptionProgressBar other) : this((Type) null) {
-			CreateQStyleOptionProgressBarProxy();
+			CreateProxy();
 			NewQStyleOptionProgressBar(other);
 		}
+		[SmokeMethod("QStyleOptionProgressBar(const QStyleOptionProgressBar&)")]
 		private void NewQStyleOptionProgressBar(QStyleOptionProgressBar other) {
 			ProxyQStyleOptionProgressBar().NewQStyleOptionProgressBar(other);
 		}
 		public QStyleOptionProgressBar(int version) : this((Type) null) {
-			CreateQStyleOptionProgressBarProxy();
+			CreateProxy();
 			NewQStyleOptionProgressBar(version);
 		}
+		[SmokeMethod("QStyleOptionProgressBar(int)")]
 		private void NewQStyleOptionProgressBar(int version) {
 			ProxyQStyleOptionProgressBar().NewQStyleOptionProgressBar(version);
 		}
 		~QStyleOptionProgressBar() {
-			ProxyQStyleOptionProgressBar().Dispose();
+			DisposeQStyleOptionProgressBar();
 		}
 		public void Dispose() {
-			ProxyQStyleOptionProgressBar().Dispose();
+			DisposeQStyleOptionProgressBar();
+		}
+		private void DisposeQStyleOptionProgressBar() {
+			ProxyQStyleOptionProgressBar().DisposeQStyleOptionProgressBar();
 		}
 	}
 }

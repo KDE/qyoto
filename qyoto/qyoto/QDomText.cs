@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QDomText")]
 	public class QDomText : QDomCharacterData, IDisposable {
  		protected QDomText(Type dummy) : base((Type) null) {}
 		interface IQDomTextProxy {
 		}
 
-		protected void CreateQDomTextProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomText), this);
 			_interceptor = (QDomText) realProxy.GetTransparentProxy();
 		}
@@ -25,30 +26,37 @@ namespace Qt {
 		}
 
 		public QDomText() : this((Type) null) {
-			CreateQDomTextProxy();
+			CreateProxy();
 			NewQDomText();
 		}
+		[SmokeMethod("QDomText()")]
 		private void NewQDomText() {
 			ProxyQDomText().NewQDomText();
 		}
 		public QDomText(QDomText x) : this((Type) null) {
-			CreateQDomTextProxy();
+			CreateProxy();
 			NewQDomText(x);
 		}
+		[SmokeMethod("QDomText(const QDomText&)")]
 		private void NewQDomText(QDomText x) {
 			ProxyQDomText().NewQDomText(x);
 		}
+		[SmokeMethod("splitText(int)")]
 		public QDomText SplitText(int offset) {
 			return ProxyQDomText().SplitText(offset);
 		}
-		public new int NodeType() {
+		[SmokeMethod("nodeType() const")]
+		public new QDomNode.NodeType NodeType() {
 			return ProxyQDomText().NodeType();
 		}
 		~QDomText() {
-			ProxyQDomText().Dispose();
+			DisposeQDomText();
 		}
 		public void Dispose() {
-			ProxyQDomText().Dispose();
+			DisposeQDomText();
+		}
+		private void DisposeQDomText() {
+			ProxyQDomText().DisposeQDomText();
 		}
 	}
 }

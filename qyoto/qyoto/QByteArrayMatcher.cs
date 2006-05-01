@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QByteArrayMatcher")]
 	public class QByteArrayMatcher : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
@@ -11,7 +12,7 @@ namespace Qt {
 		interface IQByteArrayMatcherProxy {
 		}
 
-		protected void CreateQByteArrayMatcherProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QByteArrayMatcher), this);
 			_interceptor = (QByteArrayMatcher) realProxy.GetTransparentProxy();
 		}
@@ -28,43 +29,53 @@ namespace Qt {
 		}
 
 		public QByteArrayMatcher() : this((Type) null) {
-			CreateQByteArrayMatcherProxy();
+			CreateProxy();
 			NewQByteArrayMatcher();
 		}
+		[SmokeMethod("QByteArrayMatcher()")]
 		private void NewQByteArrayMatcher() {
 			ProxyQByteArrayMatcher().NewQByteArrayMatcher();
 		}
 		public QByteArrayMatcher(QByteArray pattern) : this((Type) null) {
-			CreateQByteArrayMatcherProxy();
+			CreateProxy();
 			NewQByteArrayMatcher(pattern);
 		}
+		[SmokeMethod("QByteArrayMatcher(const QByteArray&)")]
 		private void NewQByteArrayMatcher(QByteArray pattern) {
 			ProxyQByteArrayMatcher().NewQByteArrayMatcher(pattern);
 		}
 		public QByteArrayMatcher(QByteArrayMatcher other) : this((Type) null) {
-			CreateQByteArrayMatcherProxy();
+			CreateProxy();
 			NewQByteArrayMatcher(other);
 		}
+		[SmokeMethod("QByteArrayMatcher(const QByteArrayMatcher&)")]
 		private void NewQByteArrayMatcher(QByteArrayMatcher other) {
 			ProxyQByteArrayMatcher().NewQByteArrayMatcher(other);
 		}
+		[SmokeMethod("setPattern(const QByteArray&)")]
 		public void SetPattern(QByteArray pattern) {
 			ProxyQByteArrayMatcher().SetPattern(pattern);
 		}
+		[SmokeMethod("indexIn(const QByteArray&, int) const")]
 		public int IndexIn(QByteArray ba, int from) {
 			return ProxyQByteArrayMatcher().IndexIn(ba,from);
 		}
+		[SmokeMethod("indexIn(const QByteArray&) const")]
 		public int IndexIn(QByteArray ba) {
 			return ProxyQByteArrayMatcher().IndexIn(ba);
 		}
+		[SmokeMethod("pattern() const")]
 		public QByteArray Pattern() {
 			return ProxyQByteArrayMatcher().Pattern();
 		}
 		~QByteArrayMatcher() {
-			ProxyQByteArrayMatcher().Dispose();
+			DisposeQByteArrayMatcher();
 		}
 		public void Dispose() {
-			ProxyQByteArrayMatcher().Dispose();
+			DisposeQByteArrayMatcher();
+		}
+		private void DisposeQByteArrayMatcher() {
+			ProxyQByteArrayMatcher().DisposeQByteArrayMatcher();
 		}
 	}
 }

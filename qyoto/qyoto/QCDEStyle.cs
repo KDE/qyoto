@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QCDEStyle")]
 	public class QCDEStyle : QMotifStyle, IDisposable {
  		protected QCDEStyle(Type dummy) : base((Type) null) {}
 		interface IQCDEStyleProxy {
@@ -11,7 +12,7 @@ namespace Qt {
 			string Tr(string s);
 		}
 
-		protected void CreateQCDEStyleProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QCDEStyle), this);
 			_interceptor = (QCDEStyle) realProxy.GetTransparentProxy();
 		}
@@ -27,60 +28,81 @@ namespace Qt {
 			return (IQCDEStyleProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQCDEStyle().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QCDEStyle(bool useHighlightCols) : this((Type) null) {
-			CreateQCDEStyleProxy();
+			CreateProxy();
 			NewQCDEStyle(useHighlightCols);
 		}
+		[SmokeMethod("QCDEStyle(bool)")]
 		private void NewQCDEStyle(bool useHighlightCols) {
 			ProxyQCDEStyle().NewQCDEStyle(useHighlightCols);
 		}
 		public QCDEStyle() : this((Type) null) {
-			CreateQCDEStyleProxy();
+			CreateProxy();
 			NewQCDEStyle();
 		}
+		[SmokeMethod("QCDEStyle()")]
 		private void NewQCDEStyle() {
 			ProxyQCDEStyle().NewQCDEStyle();
 		}
-		public new int PixelMetric(int metric, out int option, QWidget widget) {
+		[SmokeMethod("pixelMetric(QStyle::PixelMetric, const QStyleOption*, const QWidget*) const")]
+		public new int PixelMetric(QStyle.PixelMetric metric, out int option, QWidget widget) {
 			return ProxyQCDEStyle().PixelMetric(metric,out option,widget);
 		}
-		public new int PixelMetric(int metric, out int option) {
+		[SmokeMethod("pixelMetric(QStyle::PixelMetric, const QStyleOption*) const")]
+		public new int PixelMetric(QStyle.PixelMetric metric, out int option) {
 			return ProxyQCDEStyle().PixelMetric(metric,out option);
 		}
-		public new int PixelMetric(int metric) {
+		[SmokeMethod("pixelMetric(QStyle::PixelMetric) const")]
+		public new int PixelMetric(QStyle.PixelMetric metric) {
 			return ProxyQCDEStyle().PixelMetric(metric);
 		}
-		public new void DrawControl(int element, out int opt, QPainter p, QWidget w) {
+		[SmokeMethod("drawControl(QStyle::ControlElement, const QStyleOption*, QPainter*, const QWidget*) const")]
+		public new void DrawControl(QStyle.ControlElement element, out int opt, QPainter p, QWidget w) {
 			ProxyQCDEStyle().DrawControl(element,out opt,p,w);
 		}
-		public new void DrawControl(int element, out int opt, QPainter p) {
+		[SmokeMethod("drawControl(QStyle::ControlElement, const QStyleOption*, QPainter*) const")]
+		public new void DrawControl(QStyle.ControlElement element, out int opt, QPainter p) {
 			ProxyQCDEStyle().DrawControl(element,out opt,p);
 		}
-		public new void DrawPrimitive(int pe, out int opt, QPainter p, QWidget w) {
+		[SmokeMethod("drawPrimitive(QStyle::PrimitiveElement, const QStyleOption*, QPainter*, const QWidget*) const")]
+		public new void DrawPrimitive(QStyle.PrimitiveElement pe, out int opt, QPainter p, QWidget w) {
 			ProxyQCDEStyle().DrawPrimitive(pe,out opt,p,w);
 		}
-		public new void DrawPrimitive(int pe, out int opt, QPainter p) {
+		[SmokeMethod("drawPrimitive(QStyle::PrimitiveElement, const QStyleOption*, QPainter*) const")]
+		public new void DrawPrimitive(QStyle.PrimitiveElement pe, out int opt, QPainter p) {
 			ProxyQCDEStyle().DrawPrimitive(pe,out opt,p);
 		}
+		[SmokeMethod("standardPalette() const")]
 		public new QPalette StandardPalette() {
 			return ProxyQCDEStyle().StandardPalette();
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQCDEStyle().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQCDEStyle().Tr(s);
 		}
 		~QCDEStyle() {
-			ProxyQCDEStyle().Dispose();
+			DisposeQCDEStyle();
 		}
 		public new void Dispose() {
-			ProxyQCDEStyle().Dispose();
+			DisposeQCDEStyle();
 		}
+		private void DisposeQCDEStyle() {
+			ProxyQCDEStyle().DisposeQCDEStyle();
+		}
+		protected new IQCDEStyleSignals Emit() {
+			return (IQCDEStyleSignals) Q_EMIT;
+		}
+	}
+
+	public interface IQCDEStyleSignals : IQMotifStyleSignals {
 	}
 }

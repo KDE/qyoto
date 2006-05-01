@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QResizeEvent")]
 	public class QResizeEvent : QEvent, IDisposable {
  		protected QResizeEvent(Type dummy) : base((Type) null) {}
 		interface IQResizeEventProxy {
 		}
 
-		protected void CreateQResizeEventProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QResizeEvent), this);
 			_interceptor = (QResizeEvent) realProxy.GetTransparentProxy();
 		}
@@ -25,23 +26,29 @@ namespace Qt {
 		}
 
 		public QResizeEvent(QSize size, QSize oldSize) : this((Type) null) {
-			CreateQResizeEventProxy();
+			CreateProxy();
 			NewQResizeEvent(size,oldSize);
 		}
+		[SmokeMethod("QResizeEvent(const QSize&, const QSize&)")]
 		private void NewQResizeEvent(QSize size, QSize oldSize) {
 			ProxyQResizeEvent().NewQResizeEvent(size,oldSize);
 		}
+		[SmokeMethod("size() const")]
 		public QSize Size() {
 			return ProxyQResizeEvent().Size();
 		}
+		[SmokeMethod("oldSize() const")]
 		public QSize OldSize() {
 			return ProxyQResizeEvent().OldSize();
 		}
 		~QResizeEvent() {
-			ProxyQResizeEvent().Dispose();
+			DisposeQResizeEvent();
 		}
 		public new void Dispose() {
-			ProxyQResizeEvent().Dispose();
+			DisposeQResizeEvent();
+		}
+		private void DisposeQResizeEvent() {
+			ProxyQResizeEvent().DisposeQResizeEvent();
 		}
 	}
 }

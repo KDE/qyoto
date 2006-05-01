@@ -4,12 +4,13 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QSqlIndex")]
 	public class QSqlIndex : QSqlRecord, IDisposable {
  		protected QSqlIndex(Type dummy) : base((Type) null) {}
 		interface IQSqlIndexProxy {
 		}
 
-		protected void CreateQSqlIndexProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSqlIndex), this);
 			_interceptor = (QSqlIndex) realProxy.GetTransparentProxy();
 		}
@@ -26,62 +27,77 @@ namespace Qt {
 		}
 
 		public QSqlIndex(string cursorName, string name) : this((Type) null) {
-			CreateQSqlIndexProxy();
+			CreateProxy();
 			NewQSqlIndex(cursorName,name);
 		}
+		[SmokeMethod("QSqlIndex(const QString&, const QString&)")]
 		private void NewQSqlIndex(string cursorName, string name) {
 			ProxyQSqlIndex().NewQSqlIndex(cursorName,name);
 		}
 		public QSqlIndex(string cursorName) : this((Type) null) {
-			CreateQSqlIndexProxy();
+			CreateProxy();
 			NewQSqlIndex(cursorName);
 		}
+		[SmokeMethod("QSqlIndex(const QString&)")]
 		private void NewQSqlIndex(string cursorName) {
 			ProxyQSqlIndex().NewQSqlIndex(cursorName);
 		}
 		public QSqlIndex() : this((Type) null) {
-			CreateQSqlIndexProxy();
+			CreateProxy();
 			NewQSqlIndex();
 		}
+		[SmokeMethod("QSqlIndex()")]
 		private void NewQSqlIndex() {
 			ProxyQSqlIndex().NewQSqlIndex();
 		}
 		public QSqlIndex(QSqlIndex other) : this((Type) null) {
-			CreateQSqlIndexProxy();
+			CreateProxy();
 			NewQSqlIndex(other);
 		}
+		[SmokeMethod("QSqlIndex(const QSqlIndex&)")]
 		private void NewQSqlIndex(QSqlIndex other) {
 			ProxyQSqlIndex().NewQSqlIndex(other);
 		}
+		[SmokeMethod("setCursorName(const QString&)")]
 		public void SetCursorName(string cursorName) {
 			ProxyQSqlIndex().SetCursorName(cursorName);
 		}
+		[SmokeMethod("cursorName() const")]
 		public string CursorName() {
 			return ProxyQSqlIndex().CursorName();
 		}
+		[SmokeMethod("setName(const QString&)")]
 		public void SetName(string name) {
 			ProxyQSqlIndex().SetName(name);
 		}
+		[SmokeMethod("name() const")]
 		public string Name() {
 			return ProxyQSqlIndex().Name();
 		}
+		[SmokeMethod("append(const QSqlField&)")]
 		public new void Append(QSqlField field) {
 			ProxyQSqlIndex().Append(field);
 		}
+		[SmokeMethod("append(const QSqlField&, bool)")]
 		public new void Append(QSqlField field, bool desc) {
 			ProxyQSqlIndex().Append(field,desc);
 		}
+		[SmokeMethod("isDescending(int) const")]
 		public bool IsDescending(int i) {
 			return ProxyQSqlIndex().IsDescending(i);
 		}
+		[SmokeMethod("setDescending(int, bool)")]
 		public void SetDescending(int i, bool desc) {
 			ProxyQSqlIndex().SetDescending(i,desc);
 		}
 		~QSqlIndex() {
-			ProxyQSqlIndex().Dispose();
+			DisposeQSqlIndex();
 		}
 		public void Dispose() {
-			ProxyQSqlIndex().Dispose();
+			DisposeQSqlIndex();
+		}
+		private void DisposeQSqlIndex() {
+			ProxyQSqlIndex().DisposeQSqlIndex();
 		}
 	}
 }

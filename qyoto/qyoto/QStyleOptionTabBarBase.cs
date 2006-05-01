@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QStyleOptionTabBarBase")]
 	public class QStyleOptionTabBarBase : QStyleOption, IDisposable {
  		protected QStyleOptionTabBarBase(Type dummy) : base((Type) null) {}
 		interface IQStyleOptionTabBarBaseProxy {
 		}
 
-		protected void CreateQStyleOptionTabBarBaseProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionTabBarBase), this);
 			_interceptor = (QStyleOptionTabBarBase) realProxy.GetTransparentProxy();
 		}
@@ -24,36 +25,42 @@ namespace Qt {
 			return (IQStyleOptionTabBarBaseProxy) _staticInterceptor;
 		}
 
-		public const int Type = (int) OptionType.SO_TabBarBase;
+		public const int Type = (int) QStyleOption.OptionType.SO_TabBarBase;
 
 		public const int Version = 1;
 
 		public QStyleOptionTabBarBase() : this((Type) null) {
-			CreateQStyleOptionTabBarBaseProxy();
+			CreateProxy();
 			NewQStyleOptionTabBarBase();
 		}
+		[SmokeMethod("QStyleOptionTabBarBase()")]
 		private void NewQStyleOptionTabBarBase() {
 			ProxyQStyleOptionTabBarBase().NewQStyleOptionTabBarBase();
 		}
 		public QStyleOptionTabBarBase(QStyleOptionTabBarBase other) : this((Type) null) {
-			CreateQStyleOptionTabBarBaseProxy();
+			CreateProxy();
 			NewQStyleOptionTabBarBase(other);
 		}
+		[SmokeMethod("QStyleOptionTabBarBase(const QStyleOptionTabBarBase&)")]
 		private void NewQStyleOptionTabBarBase(QStyleOptionTabBarBase other) {
 			ProxyQStyleOptionTabBarBase().NewQStyleOptionTabBarBase(other);
 		}
 		public QStyleOptionTabBarBase(int version) : this((Type) null) {
-			CreateQStyleOptionTabBarBaseProxy();
+			CreateProxy();
 			NewQStyleOptionTabBarBase(version);
 		}
+		[SmokeMethod("QStyleOptionTabBarBase(int)")]
 		private void NewQStyleOptionTabBarBase(int version) {
 			ProxyQStyleOptionTabBarBase().NewQStyleOptionTabBarBase(version);
 		}
 		~QStyleOptionTabBarBase() {
-			ProxyQStyleOptionTabBarBase().Dispose();
+			DisposeQStyleOptionTabBarBase();
 		}
 		public void Dispose() {
-			ProxyQStyleOptionTabBarBase().Dispose();
+			DisposeQStyleOptionTabBarBase();
+		}
+		private void DisposeQStyleOptionTabBarBase() {
+			ProxyQStyleOptionTabBarBase().DisposeQStyleOptionTabBarBase();
 		}
 	}
 }

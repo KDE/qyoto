@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QSlider")]
 	public class QSlider : QAbstractSlider, IDisposable {
  		protected QSlider(Type dummy) : base((Type) null) {}
 		interface IQSliderProxy {
@@ -11,7 +12,7 @@ namespace Qt {
 			string Tr(string s);
 		}
 
-		protected void CreateQSliderProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSlider), this);
 			_interceptor = (QSlider) realProxy.GetTransparentProxy();
 		}
@@ -27,7 +28,7 @@ namespace Qt {
 			return (IQSliderProxy) _staticInterceptor;
 		}
 
-		enum E_TickPosition {
+		public enum TickPosition {
 			NoTicks = 0,
 			TicksAbove = 1,
 			TicksLeft = TicksAbove,
@@ -35,83 +36,109 @@ namespace Qt {
 			TicksRight = TicksBelow,
 			TicksBothSides = 3,
 		}
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQSlider().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QSlider(QWidget parent) : this((Type) null) {
-			CreateQSliderProxy();
+			CreateProxy();
 			NewQSlider(parent);
 		}
+		[SmokeMethod("QSlider(QWidget*)")]
 		private void NewQSlider(QWidget parent) {
 			ProxyQSlider().NewQSlider(parent);
 		}
 		public QSlider() : this((Type) null) {
-			CreateQSliderProxy();
+			CreateProxy();
 			NewQSlider();
 		}
+		[SmokeMethod("QSlider()")]
 		private void NewQSlider() {
 			ProxyQSlider().NewQSlider();
 		}
-		public QSlider(int orientation, QWidget parent) : this((Type) null) {
-			CreateQSliderProxy();
+		public QSlider(Qt.Orientation orientation, QWidget parent) : this((Type) null) {
+			CreateProxy();
 			NewQSlider(orientation,parent);
 		}
-		private void NewQSlider(int orientation, QWidget parent) {
+		[SmokeMethod("QSlider(Qt::Orientation, QWidget*)")]
+		private void NewQSlider(Qt.Orientation orientation, QWidget parent) {
 			ProxyQSlider().NewQSlider(orientation,parent);
 		}
-		public QSlider(int orientation) : this((Type) null) {
-			CreateQSliderProxy();
+		public QSlider(Qt.Orientation orientation) : this((Type) null) {
+			CreateProxy();
 			NewQSlider(orientation);
 		}
-		private void NewQSlider(int orientation) {
+		[SmokeMethod("QSlider(Qt::Orientation)")]
+		private void NewQSlider(Qt.Orientation orientation) {
 			ProxyQSlider().NewQSlider(orientation);
 		}
+		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {
 			return ProxyQSlider().SizeHint();
 		}
+		[SmokeMethod("minimumSizeHint() const")]
 		public new QSize MinimumSizeHint() {
 			return ProxyQSlider().MinimumSizeHint();
 		}
-		public void SetTickPosition(int position) {
+		[SmokeMethod("setTickPosition(QSlider::TickPosition)")]
+		public void SetTickPosition(QSlider.TickPosition position) {
 			ProxyQSlider().SetTickPosition(position);
 		}
-		public int TickPosition() {
-			return ProxyQSlider().TickPosition();
+		[SmokeMethod("tickPosition() const")]
+		public QSlider.TickPosition tickPosition() {
+			return ProxyQSlider().tickPosition();
 		}
+		[SmokeMethod("setTickInterval(int)")]
 		public void SetTickInterval(int ti) {
 			ProxyQSlider().SetTickInterval(ti);
 		}
+		[SmokeMethod("tickInterval() const")]
 		public int TickInterval() {
 			return ProxyQSlider().TickInterval();
 		}
+		[SmokeMethod("event(QEvent*)")]
 		public new bool Event(QEvent arg1) {
 			return ProxyQSlider().Event(arg1);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQSlider().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQSlider().Tr(s);
 		}
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected new void PaintEvent(QPaintEvent ev) {
 			ProxyQSlider().PaintEvent(ev);
 		}
+		[SmokeMethod("mousePressEvent(QMouseEvent*)")]
 		protected new void MousePressEvent(QMouseEvent ev) {
 			ProxyQSlider().MousePressEvent(ev);
 		}
+		[SmokeMethod("mouseReleaseEvent(QMouseEvent*)")]
 		protected new void MouseReleaseEvent(QMouseEvent ev) {
 			ProxyQSlider().MouseReleaseEvent(ev);
 		}
+		[SmokeMethod("mouseMoveEvent(QMouseEvent*)")]
 		protected new void MouseMoveEvent(QMouseEvent ev) {
 			ProxyQSlider().MouseMoveEvent(ev);
 		}
 		~QSlider() {
-			ProxyQSlider().Dispose();
+			DisposeQSlider();
 		}
 		public new void Dispose() {
-			ProxyQSlider().Dispose();
+			DisposeQSlider();
 		}
+		private void DisposeQSlider() {
+			ProxyQSlider().DisposeQSlider();
+		}
+		protected new IQSliderSignals Emit() {
+			return (IQSliderSignals) Q_EMIT;
+		}
+	}
+
+	public interface IQSliderSignals : IQAbstractSliderSignals {
 	}
 }

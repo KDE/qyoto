@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQToolButtonSignals"></see> for signals emitted by QToolButton
+	[SmokeClass("QToolButton")]
 	public class QToolButton : QAbstractButton, IDisposable {
  		protected QToolButton(Type dummy) : base((Type) null) {}
 		interface IQToolButtonProxy {
@@ -12,7 +13,7 @@ namespace Qt {
 			string Tr(string s);
 		}
 
-		protected void CreateQToolButtonProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QToolButton), this);
 			_interceptor = (QToolButton) realProxy.GetTransparentProxy();
 		}
@@ -28,114 +29,152 @@ namespace Qt {
 			return (IQToolButtonProxy) _staticInterceptor;
 		}
 
-		enum ToolButtonPopupMode {
+		public enum ToolButtonPopupMode {
 			DelayedPopup = 0,
 			MenuButtonPopup = 1,
 			InstantPopup = 2,
 		}
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQToolButton().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QToolButton(QWidget parent) : this((Type) null) {
-			CreateQToolButtonProxy();
+			CreateProxy();
 			NewQToolButton(parent);
 		}
+		[SmokeMethod("QToolButton(QWidget*)")]
 		private void NewQToolButton(QWidget parent) {
 			ProxyQToolButton().NewQToolButton(parent);
 		}
 		public QToolButton() : this((Type) null) {
-			CreateQToolButtonProxy();
+			CreateProxy();
 			NewQToolButton();
 		}
+		[SmokeMethod("QToolButton()")]
 		private void NewQToolButton() {
 			ProxyQToolButton().NewQToolButton();
 		}
+		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {
 			return ProxyQToolButton().SizeHint();
 		}
+		[SmokeMethod("minimumSizeHint() const")]
 		public new QSize MinimumSizeHint() {
 			return ProxyQToolButton().MinimumSizeHint();
 		}
-		public int ToolButtonStyle() {
+		[SmokeMethod("toolButtonStyle() const")]
+		public Qt.ToolButtonStyle ToolButtonStyle() {
 			return ProxyQToolButton().ToolButtonStyle();
 		}
-		public int ArrowType() {
+		[SmokeMethod("arrowType() const")]
+		public Qt.ArrowType ArrowType() {
 			return ProxyQToolButton().ArrowType();
 		}
-		public void SetArrowType(int type) {
+		[SmokeMethod("setArrowType(Qt::ArrowType)")]
+		public void SetArrowType(Qt.ArrowType type) {
 			ProxyQToolButton().SetArrowType(type);
 		}
+		[SmokeMethod("setMenu(QMenu*)")]
 		public void SetMenu(QMenu menu) {
 			ProxyQToolButton().SetMenu(menu);
 		}
+		[SmokeMethod("menu() const")]
 		public QMenu Menu() {
 			return ProxyQToolButton().Menu();
 		}
-		public void SetPopupMode(int mode) {
+		[SmokeMethod("setPopupMode(QToolButton::ToolButtonPopupMode)")]
+		public void SetPopupMode(QToolButton.ToolButtonPopupMode mode) {
 			ProxyQToolButton().SetPopupMode(mode);
 		}
-		public int PopupMode() {
+		[SmokeMethod("popupMode() const")]
+		public QToolButton.ToolButtonPopupMode PopupMode() {
 			return ProxyQToolButton().PopupMode();
 		}
+		[SmokeMethod("defaultAction() const")]
 		public QAction DefaultAction() {
 			return ProxyQToolButton().DefaultAction();
 		}
+		[SmokeMethod("setAutoRaise(bool)")]
 		public void SetAutoRaise(bool enable) {
 			ProxyQToolButton().SetAutoRaise(enable);
 		}
+		[SmokeMethod("autoRaise() const")]
 		public bool AutoRaise() {
 			return ProxyQToolButton().AutoRaise();
 		}
+		[SmokeMethod("showMenu()")]
 		public void ShowMenu() {
 			ProxyQToolButton().ShowMenu();
 		}
-		public void SetToolButtonStyle(int style) {
+		[SmokeMethod("setToolButtonStyle(Qt::ToolButtonStyle)")]
+		public void SetToolButtonStyle(Qt.ToolButtonStyle style) {
 			ProxyQToolButton().SetToolButtonStyle(style);
 		}
+		[SmokeMethod("setDefaultAction(QAction*)")]
 		public void SetDefaultAction(QAction arg1) {
 			ProxyQToolButton().SetDefaultAction(arg1);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQToolButton().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQToolButton().Tr(s);
 		}
+		[SmokeMethod("event(QEvent*)")]
+		public new bool Event(QEvent e) {
+			return ProxyQToolButton().Event(e);
+		}
+		[SmokeMethod("mousePressEvent(QMouseEvent*)")]
 		protected new void MousePressEvent(QMouseEvent arg1) {
 			ProxyQToolButton().MousePressEvent(arg1);
 		}
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected new void PaintEvent(QPaintEvent arg1) {
 			ProxyQToolButton().PaintEvent(arg1);
 		}
+		[SmokeMethod("actionEvent(QActionEvent*)")]
 		protected new void ActionEvent(QActionEvent arg1) {
 			ProxyQToolButton().ActionEvent(arg1);
 		}
+		[SmokeMethod("enterEvent(QEvent*)")]
 		protected new void EnterEvent(QEvent arg1) {
 			ProxyQToolButton().EnterEvent(arg1);
 		}
+		[SmokeMethod("leaveEvent(QEvent*)")]
 		protected new void LeaveEvent(QEvent arg1) {
 			ProxyQToolButton().LeaveEvent(arg1);
 		}
+		[SmokeMethod("timerEvent(QTimerEvent*)")]
 		protected new void TimerEvent(QTimerEvent arg1) {
 			ProxyQToolButton().TimerEvent(arg1);
 		}
+		[SmokeMethod("changeEvent(QEvent*)")]
 		protected new void ChangeEvent(QEvent arg1) {
 			ProxyQToolButton().ChangeEvent(arg1);
 		}
+		[SmokeMethod("nextCheckState()")]
 		protected new void NextCheckState() {
 			ProxyQToolButton().NextCheckState();
 		}
 		~QToolButton() {
-			ProxyQToolButton().Dispose();
+			DisposeQToolButton();
 		}
 		public new void Dispose() {
-			ProxyQToolButton().Dispose();
+			DisposeQToolButton();
+		}
+		private void DisposeQToolButton() {
+			ProxyQToolButton().DisposeQToolButton();
+		}
+		protected new IQToolButtonSignals Emit() {
+			return (IQToolButtonSignals) Q_EMIT;
 		}
 	}
 
-	public interface IQToolButtonSignals {
+	public interface IQToolButtonSignals : IQAbstractButtonSignals {
+		[Q_SIGNAL("void triggered(QAction*)")]
 		void Triggered(QAction arg1);
 	}
 }

@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QWhatsThis")]
 	public class QWhatsThis : MarshalByRefObject {
 		protected Object _interceptor = null;
  
@@ -20,7 +21,7 @@ namespace Qt {
 			QAction CreateAction();
 		}
 
-		protected void CreateQWhatsThisProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QWhatsThis), this);
 			_interceptor = (QWhatsThis) realProxy.GetTransparentProxy();
 		}
@@ -36,29 +37,46 @@ namespace Qt {
 			return (IQWhatsThisProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("enterWhatsThisMode()")]
 		public static void EnterWhatsThisMode() {
 			StaticQWhatsThis().EnterWhatsThisMode();
 		}
+		[SmokeMethod("inWhatsThisMode()")]
 		public static bool InWhatsThisMode() {
 			return StaticQWhatsThis().InWhatsThisMode();
 		}
+		[SmokeMethod("leaveWhatsThisMode()")]
 		public static void LeaveWhatsThisMode() {
 			StaticQWhatsThis().LeaveWhatsThisMode();
 		}
+		[SmokeMethod("showText(const QPoint&, const QString&, QWidget*)")]
 		public static void ShowText(QPoint pos, string text, QWidget w) {
 			StaticQWhatsThis().ShowText(pos,text,w);
 		}
+		[SmokeMethod("showText(const QPoint&, const QString&)")]
 		public static void ShowText(QPoint pos, string text) {
 			StaticQWhatsThis().ShowText(pos,text);
 		}
+		[SmokeMethod("hideText()")]
 		public static void HideText() {
 			StaticQWhatsThis().HideText();
 		}
+		[SmokeMethod("createAction(QObject*)")]
 		public static QAction CreateAction(QObject parent) {
 			return StaticQWhatsThis().CreateAction(parent);
 		}
+		[SmokeMethod("createAction()")]
 		public static QAction CreateAction() {
 			return StaticQWhatsThis().CreateAction();
+		}
+		~QWhatsThis() {
+			DisposeQWhatsThis();
+		}
+		public void Dispose() {
+			DisposeQWhatsThis();
+		}
+		private void DisposeQWhatsThis() {
+			ProxyQWhatsThis().DisposeQWhatsThis();
 		}
 	}
 }

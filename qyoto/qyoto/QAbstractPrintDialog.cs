@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QAbstractPrintDialog")]
 	public class QAbstractPrintDialog : QDialog {
  		protected QAbstractPrintDialog(Type dummy) : base((Type) null) {}
 		interface IQAbstractPrintDialogProxy {
 		}
 
-		protected void CreateQAbstractPrintDialogProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAbstractPrintDialog), this);
 			_interceptor = (QAbstractPrintDialog) realProxy.GetTransparentProxy();
 		}
@@ -24,59 +25,104 @@ namespace Qt {
 			return (IQAbstractPrintDialogProxy) _staticInterceptor;
 		}
 
-		enum E_PrintRange {
+		public enum PrintRange {
 			AllPages = 0,
 			Selection = 1,
 			PageRange = 2,
 		}
-		enum PrintDialogOption {
+		public enum PrintDialogOption {
 			None = 0x0000,
 			PrintToFile = 0x0001,
 			PrintSelection = 0x0002,
 			PrintPageRange = 0x0004,
 			PrintCollateCopies = 0x0010,
 		}
+		public QAbstractPrintDialog(QPrinter printer, QWidget parent) : this((Type) null) {
+			CreateProxy();
+			NewQAbstractPrintDialog(printer,parent);
+		}
+		[SmokeMethod("QAbstractPrintDialog(QPrinter*, QWidget*)")]
+		private void NewQAbstractPrintDialog(QPrinter printer, QWidget parent) {
+			ProxyQAbstractPrintDialog().NewQAbstractPrintDialog(printer,parent);
+		}
+		public QAbstractPrintDialog(QPrinter printer) : this((Type) null) {
+			CreateProxy();
+			NewQAbstractPrintDialog(printer);
+		}
+		[SmokeMethod("QAbstractPrintDialog(QPrinter*)")]
+		private void NewQAbstractPrintDialog(QPrinter printer) {
+			ProxyQAbstractPrintDialog().NewQAbstractPrintDialog(printer);
+		}
+		[SmokeMethod("exec()")]
 		public new virtual int Exec() {
 			return ProxyQAbstractPrintDialog().Exec();
 		}
-		public void AddEnabledOption(int option) {
+		[SmokeMethod("addEnabledOption(QAbstractPrintDialog::PrintDialogOption)")]
+		public void AddEnabledOption(QAbstractPrintDialog.PrintDialogOption option) {
 			ProxyQAbstractPrintDialog().AddEnabledOption(option);
 		}
+		[SmokeMethod("setEnabledOptions(PrintDialogOptions)")]
 		public void SetEnabledOptions(int options) {
 			ProxyQAbstractPrintDialog().SetEnabledOptions(options);
 		}
+		[SmokeMethod("enabledOptions() const")]
 		public int EnabledOptions() {
 			return ProxyQAbstractPrintDialog().EnabledOptions();
 		}
-		public bool IsOptionEnabled(int option) {
+		[SmokeMethod("isOptionEnabled(QAbstractPrintDialog::PrintDialogOption) const")]
+		public bool IsOptionEnabled(QAbstractPrintDialog.PrintDialogOption option) {
 			return ProxyQAbstractPrintDialog().IsOptionEnabled(option);
 		}
-		public void SetPrintRange(int range) {
+		[SmokeMethod("setPrintRange(QAbstractPrintDialog::PrintRange)")]
+		public void SetPrintRange(QAbstractPrintDialog.PrintRange range) {
 			ProxyQAbstractPrintDialog().SetPrintRange(range);
 		}
-		public int PrintRange() {
-			return ProxyQAbstractPrintDialog().PrintRange();
+		[SmokeMethod("printRange() const")]
+		public QAbstractPrintDialog.PrintRange printRange() {
+			return ProxyQAbstractPrintDialog().printRange();
 		}
+		[SmokeMethod("setMinMax(int, int)")]
 		public void SetMinMax(int min, int max) {
 			ProxyQAbstractPrintDialog().SetMinMax(min,max);
 		}
+		[SmokeMethod("minPage() const")]
 		public int MinPage() {
 			return ProxyQAbstractPrintDialog().MinPage();
 		}
+		[SmokeMethod("maxPage() const")]
 		public int MaxPage() {
 			return ProxyQAbstractPrintDialog().MaxPage();
 		}
+		[SmokeMethod("setFromTo(int, int)")]
 		public void SetFromTo(int fromPage, int toPage) {
 			ProxyQAbstractPrintDialog().SetFromTo(fromPage,toPage);
 		}
+		[SmokeMethod("fromPage() const")]
 		public int FromPage() {
 			return ProxyQAbstractPrintDialog().FromPage();
 		}
+		[SmokeMethod("toPage() const")]
 		public int ToPage() {
 			return ProxyQAbstractPrintDialog().ToPage();
 		}
+		[SmokeMethod("printer() const")]
 		public QPrinter Printer() {
 			return ProxyQAbstractPrintDialog().Printer();
 		}
+		~QAbstractPrintDialog() {
+			DisposeQAbstractPrintDialog();
+		}
+		public new void Dispose() {
+			DisposeQAbstractPrintDialog();
+		}
+		private void DisposeQAbstractPrintDialog() {
+			ProxyQAbstractPrintDialog().DisposeQAbstractPrintDialog();
+		}
+		protected new IQAbstractPrintDialogSignals Emit() {
+			return (IQAbstractPrintDialogSignals) Q_EMIT;
+		}
+	}
+
+	public interface IQAbstractPrintDialogSignals : IQDialogSignals {
 	}
 }

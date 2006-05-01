@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQSpinBoxSignals"></see> for signals emitted by QSpinBox
+	[SmokeClass("QSpinBox")]
 	public class QSpinBox : QAbstractSpinBox, IDisposable {
  		protected QSpinBox(Type dummy) : base((Type) null) {}
 		interface IQSpinBoxProxy {
@@ -12,7 +13,7 @@ namespace Qt {
 			string Tr(string s);
 		}
 
-		protected void CreateQSpinBoxProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSpinBox), this);
 			_interceptor = (QSpinBox) realProxy.GetTransparentProxy();
 		}
@@ -28,95 +29,129 @@ namespace Qt {
 			return (IQSpinBoxProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQSpinBox().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QSpinBox(QWidget parent) : this((Type) null) {
-			CreateQSpinBoxProxy();
+			CreateProxy();
 			NewQSpinBox(parent);
 		}
+		[SmokeMethod("QSpinBox(QWidget*)")]
 		private void NewQSpinBox(QWidget parent) {
 			ProxyQSpinBox().NewQSpinBox(parent);
 		}
 		public QSpinBox() : this((Type) null) {
-			CreateQSpinBoxProxy();
+			CreateProxy();
 			NewQSpinBox();
 		}
+		[SmokeMethod("QSpinBox()")]
 		private void NewQSpinBox() {
 			ProxyQSpinBox().NewQSpinBox();
 		}
+		[SmokeMethod("value() const")]
 		public int Value() {
 			return ProxyQSpinBox().Value();
 		}
+		[SmokeMethod("prefix() const")]
 		public string Prefix() {
 			return ProxyQSpinBox().Prefix();
 		}
+		[SmokeMethod("setPrefix(const QString&)")]
 		public void SetPrefix(string p) {
 			ProxyQSpinBox().SetPrefix(p);
 		}
+		[SmokeMethod("suffix() const")]
 		public string Suffix() {
 			return ProxyQSpinBox().Suffix();
 		}
+		[SmokeMethod("setSuffix(const QString&)")]
 		public void SetSuffix(string s) {
 			ProxyQSpinBox().SetSuffix(s);
 		}
+		[SmokeMethod("cleanText() const")]
 		public string CleanText() {
 			return ProxyQSpinBox().CleanText();
 		}
+		[SmokeMethod("singleStep() const")]
 		public int SingleStep() {
 			return ProxyQSpinBox().SingleStep();
 		}
+		[SmokeMethod("setSingleStep(int)")]
 		public void SetSingleStep(int val) {
 			ProxyQSpinBox().SetSingleStep(val);
 		}
+		[SmokeMethod("minimum() const")]
 		public int Minimum() {
 			return ProxyQSpinBox().Minimum();
 		}
+		[SmokeMethod("setMinimum(int)")]
 		public void SetMinimum(int min) {
 			ProxyQSpinBox().SetMinimum(min);
 		}
+		[SmokeMethod("maximum() const")]
 		public int Maximum() {
 			return ProxyQSpinBox().Maximum();
 		}
+		[SmokeMethod("setMaximum(int)")]
 		public void SetMaximum(int max) {
 			ProxyQSpinBox().SetMaximum(max);
 		}
+		[SmokeMethod("setRange(int, int)")]
 		public void SetRange(int min, int max) {
 			ProxyQSpinBox().SetRange(min,max);
 		}
+		[SmokeMethod("setValue(int)")]
 		public void SetValue(int val) {
 			ProxyQSpinBox().SetValue(val);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQSpinBox().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQSpinBox().Tr(s);
 		}
+		[SmokeMethod("event(QEvent*)")]
+		public new bool Event(QEvent e) {
+			return ProxyQSpinBox().Event(e);
+		}
+		[SmokeMethod("validate(QString&, int&) const")]
 		protected new virtual int Validate(StringBuilder input, out int pos) {
 			return ProxyQSpinBox().Validate(input,out pos);
 		}
+		[SmokeMethod("valueFromText(const QString&) const")]
 		protected virtual int ValueFromText(string text) {
 			return ProxyQSpinBox().ValueFromText(text);
 		}
+		[SmokeMethod("textFromValue(int) const")]
 		protected virtual string TextFromValue(int v) {
 			return ProxyQSpinBox().TextFromValue(v);
 		}
+		[SmokeMethod("fixup(QString&) const")]
 		protected new virtual void Fixup(StringBuilder str) {
 			ProxyQSpinBox().Fixup(str);
 		}
 		~QSpinBox() {
-			ProxyQSpinBox().Dispose();
+			DisposeQSpinBox();
 		}
 		public new void Dispose() {
-			ProxyQSpinBox().Dispose();
+			DisposeQSpinBox();
+		}
+		private void DisposeQSpinBox() {
+			ProxyQSpinBox().DisposeQSpinBox();
+		}
+		protected new IQSpinBoxSignals Emit() {
+			return (IQSpinBoxSignals) Q_EMIT;
 		}
 	}
 
-	public interface IQSpinBoxSignals {
+	public interface IQSpinBoxSignals : IQAbstractSpinBoxSignals {
+		[Q_SIGNAL("void valueChanged(int)")]
 		void ValueChanged(int arg1);
+		[Q_SIGNAL("void valueChanged(const QString&)")]
 		void ValueChanged(string arg1);
 	}
 }

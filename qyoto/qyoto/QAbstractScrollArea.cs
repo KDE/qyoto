@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QAbstractScrollArea")]
 	public class QAbstractScrollArea : QFrame, IDisposable {
  		protected QAbstractScrollArea(Type dummy) : base((Type) null) {}
 		interface IQAbstractScrollAreaProxy {
@@ -11,7 +12,7 @@ namespace Qt {
 			string Tr(string s);
 		}
 
-		protected void CreateQAbstractScrollAreaProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAbstractScrollArea), this);
 			_interceptor = (QAbstractScrollArea) realProxy.GetTransparentProxy();
 		}
@@ -27,117 +28,157 @@ namespace Qt {
 			return (IQAbstractScrollAreaProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQAbstractScrollArea().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QAbstractScrollArea(QWidget parent) : this((Type) null) {
-			CreateQAbstractScrollAreaProxy();
+			CreateProxy();
 			NewQAbstractScrollArea(parent);
 		}
+		[SmokeMethod("QAbstractScrollArea(QWidget*)")]
 		private void NewQAbstractScrollArea(QWidget parent) {
 			ProxyQAbstractScrollArea().NewQAbstractScrollArea(parent);
 		}
 		public QAbstractScrollArea() : this((Type) null) {
-			CreateQAbstractScrollAreaProxy();
+			CreateProxy();
 			NewQAbstractScrollArea();
 		}
+		[SmokeMethod("QAbstractScrollArea()")]
 		private void NewQAbstractScrollArea() {
 			ProxyQAbstractScrollArea().NewQAbstractScrollArea();
 		}
-		public int VerticalScrollBarPolicy() {
+		[SmokeMethod("verticalScrollBarPolicy() const")]
+		public Qt.ScrollBarPolicy VerticalScrollBarPolicy() {
 			return ProxyQAbstractScrollArea().VerticalScrollBarPolicy();
 		}
-		public void SetVerticalScrollBarPolicy(int arg1) {
+		[SmokeMethod("setVerticalScrollBarPolicy(Qt::ScrollBarPolicy)")]
+		public void SetVerticalScrollBarPolicy(Qt.ScrollBarPolicy arg1) {
 			ProxyQAbstractScrollArea().SetVerticalScrollBarPolicy(arg1);
 		}
+		[SmokeMethod("verticalScrollBar() const")]
 		public QScrollBar VerticalScrollBar() {
 			return ProxyQAbstractScrollArea().VerticalScrollBar();
 		}
-		public int HorizontalScrollBarPolicy() {
+		[SmokeMethod("horizontalScrollBarPolicy() const")]
+		public Qt.ScrollBarPolicy HorizontalScrollBarPolicy() {
 			return ProxyQAbstractScrollArea().HorizontalScrollBarPolicy();
 		}
-		public void SetHorizontalScrollBarPolicy(int arg1) {
+		[SmokeMethod("setHorizontalScrollBarPolicy(Qt::ScrollBarPolicy)")]
+		public void SetHorizontalScrollBarPolicy(Qt.ScrollBarPolicy arg1) {
 			ProxyQAbstractScrollArea().SetHorizontalScrollBarPolicy(arg1);
 		}
+		[SmokeMethod("horizontalScrollBar() const")]
 		public QScrollBar HorizontalScrollBar() {
 			return ProxyQAbstractScrollArea().HorizontalScrollBar();
 		}
+		[SmokeMethod("viewport() const")]
 		public QWidget Viewport() {
 			return ProxyQAbstractScrollArea().Viewport();
 		}
+		[SmokeMethod("maximumViewportSize() const")]
 		public QSize MaximumViewportSize() {
 			return ProxyQAbstractScrollArea().MaximumViewportSize();
 		}
+		[SmokeMethod("minimumSizeHint() const")]
 		public new QSize MinimumSizeHint() {
 			return ProxyQAbstractScrollArea().MinimumSizeHint();
 		}
+		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {
 			return ProxyQAbstractScrollArea().SizeHint();
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQAbstractScrollArea().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQAbstractScrollArea().Tr(s);
 		}
+		[SmokeMethod("setViewportMargins(int, int, int, int)")]
 		protected void SetViewportMargins(int left, int top, int right, int bottom) {
 			ProxyQAbstractScrollArea().SetViewportMargins(left,top,right,bottom);
 		}
+		[SmokeMethod("event(QEvent*)")]
 		public new bool Event(QEvent arg1) {
 			return ProxyQAbstractScrollArea().Event(arg1);
 		}
+		[SmokeMethod("viewportEvent(QEvent*)")]
 		protected virtual bool ViewportEvent(QEvent arg1) {
 			return ProxyQAbstractScrollArea().ViewportEvent(arg1);
 		}
+		[SmokeMethod("resizeEvent(QResizeEvent*)")]
 		protected new void ResizeEvent(QResizeEvent arg1) {
 			ProxyQAbstractScrollArea().ResizeEvent(arg1);
 		}
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected new void PaintEvent(QPaintEvent arg1) {
 			ProxyQAbstractScrollArea().PaintEvent(arg1);
 		}
+		[SmokeMethod("mousePressEvent(QMouseEvent*)")]
 		protected new void MousePressEvent(QMouseEvent arg1) {
 			ProxyQAbstractScrollArea().MousePressEvent(arg1);
 		}
+		[SmokeMethod("mouseReleaseEvent(QMouseEvent*)")]
 		protected new void MouseReleaseEvent(QMouseEvent arg1) {
 			ProxyQAbstractScrollArea().MouseReleaseEvent(arg1);
 		}
+		[SmokeMethod("mouseDoubleClickEvent(QMouseEvent*)")]
 		protected new void MouseDoubleClickEvent(QMouseEvent arg1) {
 			ProxyQAbstractScrollArea().MouseDoubleClickEvent(arg1);
 		}
+		[SmokeMethod("mouseMoveEvent(QMouseEvent*)")]
 		protected new void MouseMoveEvent(QMouseEvent arg1) {
 			ProxyQAbstractScrollArea().MouseMoveEvent(arg1);
 		}
+		[SmokeMethod("wheelEvent(QWheelEvent*)")]
 		protected new void WheelEvent(QWheelEvent arg1) {
 			ProxyQAbstractScrollArea().WheelEvent(arg1);
 		}
+		[SmokeMethod("contextMenuEvent(QContextMenuEvent*)")]
 		protected new void ContextMenuEvent(QContextMenuEvent arg1) {
 			ProxyQAbstractScrollArea().ContextMenuEvent(arg1);
 		}
+		[SmokeMethod("dragEnterEvent(QDragEnterEvent*)")]
 		protected new void DragEnterEvent(QDragEnterEvent arg1) {
 			ProxyQAbstractScrollArea().DragEnterEvent(arg1);
 		}
+		[SmokeMethod("dragMoveEvent(QDragMoveEvent*)")]
 		protected new void DragMoveEvent(QDragMoveEvent arg1) {
 			ProxyQAbstractScrollArea().DragMoveEvent(arg1);
 		}
+		[SmokeMethod("dragLeaveEvent(QDragLeaveEvent*)")]
 		protected new void DragLeaveEvent(QDragLeaveEvent arg1) {
 			ProxyQAbstractScrollArea().DragLeaveEvent(arg1);
 		}
+		[SmokeMethod("dropEvent(QDropEvent*)")]
 		protected new void DropEvent(QDropEvent arg1) {
 			ProxyQAbstractScrollArea().DropEvent(arg1);
 		}
+		[SmokeMethod("keyPressEvent(QKeyEvent*)")]
 		protected new void KeyPressEvent(QKeyEvent arg1) {
 			ProxyQAbstractScrollArea().KeyPressEvent(arg1);
 		}
+		[SmokeMethod("scrollContentsBy(int, int)")]
 		protected virtual void ScrollContentsBy(int dx, int dy) {
 			ProxyQAbstractScrollArea().ScrollContentsBy(dx,dy);
 		}
 		~QAbstractScrollArea() {
-			ProxyQAbstractScrollArea().Dispose();
+			DisposeQAbstractScrollArea();
 		}
 		public new void Dispose() {
-			ProxyQAbstractScrollArea().Dispose();
+			DisposeQAbstractScrollArea();
 		}
+		private void DisposeQAbstractScrollArea() {
+			ProxyQAbstractScrollArea().DisposeQAbstractScrollArea();
+		}
+		protected new IQAbstractScrollAreaSignals Emit() {
+			return (IQAbstractScrollAreaSignals) Q_EMIT;
+		}
+	}
+
+	public interface IQAbstractScrollAreaSignals : IQFrameSignals {
 	}
 }

@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QTimeEdit")]
 	public class QTimeEdit : QDateTimeEdit, IDisposable {
  		protected QTimeEdit(Type dummy) : base((Type) null) {}
 		interface IQTimeEditProxy {
@@ -11,7 +12,7 @@ namespace Qt {
 			string Tr(string s);
 		}
 
-		protected void CreateQTimeEditProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTimeEdit), this);
 			_interceptor = (QTimeEdit) realProxy.GetTransparentProxy();
 		}
@@ -27,50 +28,65 @@ namespace Qt {
 			return (IQTimeEditProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQTimeEdit().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QTimeEdit(QWidget parent) : this((Type) null) {
-			CreateQTimeEditProxy();
+			CreateProxy();
 			NewQTimeEdit(parent);
 		}
+		[SmokeMethod("QTimeEdit(QWidget*)")]
 		private void NewQTimeEdit(QWidget parent) {
 			ProxyQTimeEdit().NewQTimeEdit(parent);
 		}
 		public QTimeEdit() : this((Type) null) {
-			CreateQTimeEditProxy();
+			CreateProxy();
 			NewQTimeEdit();
 		}
+		[SmokeMethod("QTimeEdit()")]
 		private void NewQTimeEdit() {
 			ProxyQTimeEdit().NewQTimeEdit();
 		}
 		public QTimeEdit(DateTime t, QWidget parent) : this((Type) null) {
-			CreateQTimeEditProxy();
+			CreateProxy();
 			NewQTimeEdit(t,parent);
 		}
+		[SmokeMethod("QTimeEdit(const QTime&, QWidget*)")]
 		private void NewQTimeEdit(DateTime t, QWidget parent) {
 			ProxyQTimeEdit().NewQTimeEdit(t,parent);
 		}
 		public QTimeEdit(DateTime t) : this((Type) null) {
-			CreateQTimeEditProxy();
+			CreateProxy();
 			NewQTimeEdit(t);
 		}
+		[SmokeMethod("QTimeEdit(const QTime&)")]
 		private void NewQTimeEdit(DateTime t) {
 			ProxyQTimeEdit().NewQTimeEdit(t);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQTimeEdit().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQTimeEdit().Tr(s);
 		}
 		~QTimeEdit() {
-			ProxyQTimeEdit().Dispose();
+			DisposeQTimeEdit();
 		}
 		public new void Dispose() {
-			ProxyQTimeEdit().Dispose();
+			DisposeQTimeEdit();
 		}
+		private void DisposeQTimeEdit() {
+			ProxyQTimeEdit().DisposeQTimeEdit();
+		}
+		protected new IQTimeEditSignals Emit() {
+			return (IQTimeEditSignals) Q_EMIT;
+		}
+	}
+
+	public interface IQTimeEditSignals : IQDateTimeEditSignals {
 	}
 }

@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QInputEvent")]
 	public class QInputEvent : QEvent, IDisposable {
  		protected QInputEvent(Type dummy) : base((Type) null) {}
 		interface IQInputEventProxy {
 		}
 
-		protected void CreateQInputEventProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QInputEvent), this);
 			_interceptor = (QInputEvent) realProxy.GetTransparentProxy();
 		}
@@ -24,28 +25,34 @@ namespace Qt {
 			return (IQInputEventProxy) _staticInterceptor;
 		}
 
-		public QInputEvent(int type, int modifiers) : this((Type) null) {
-			CreateQInputEventProxy();
+		public QInputEvent(QEvent.E_Type type, int modifiers) : this((Type) null) {
+			CreateProxy();
 			NewQInputEvent(type,modifiers);
 		}
-		private void NewQInputEvent(int type, int modifiers) {
+		[SmokeMethod("QInputEvent(QEvent::Type, Qt::KeyboardModifiers)")]
+		private void NewQInputEvent(QEvent.E_Type type, int modifiers) {
 			ProxyQInputEvent().NewQInputEvent(type,modifiers);
 		}
-		public QInputEvent(int type) : this((Type) null) {
-			CreateQInputEventProxy();
+		public QInputEvent(QEvent.E_Type type) : this((Type) null) {
+			CreateProxy();
 			NewQInputEvent(type);
 		}
-		private void NewQInputEvent(int type) {
+		[SmokeMethod("QInputEvent(QEvent::Type)")]
+		private void NewQInputEvent(QEvent.E_Type type) {
 			ProxyQInputEvent().NewQInputEvent(type);
 		}
+		[SmokeMethod("modifiers() const")]
 		public int Modifiers() {
 			return ProxyQInputEvent().Modifiers();
 		}
 		~QInputEvent() {
-			ProxyQInputEvent().Dispose();
+			DisposeQInputEvent();
 		}
 		public new void Dispose() {
-			ProxyQInputEvent().Dispose();
+			DisposeQInputEvent();
+		}
+		private void DisposeQInputEvent() {
+			ProxyQInputEvent().DisposeQInputEvent();
 		}
 	}
 }

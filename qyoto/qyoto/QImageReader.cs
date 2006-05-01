@@ -2,8 +2,10 @@
 namespace Qt {
 
 	using System;
+	using System.Collections;
 	using System.Text;
 
+	[SmokeClass("QImageReader")]
 	public class QImageReader : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
@@ -14,7 +16,7 @@ namespace Qt {
 			QByteArray ImageFormat(IQIODevice device);
 		}
 
-		protected void CreateQImageReaderProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QImageReader), this);
 			_interceptor = (QImageReader) realProxy.GetTransparentProxy();
 		}
@@ -30,7 +32,7 @@ namespace Qt {
 			return (IQImageReaderProxy) _staticInterceptor;
 		}
 
-		enum ImageReaderError {
+		public enum ImageReaderError {
 			UnknownError = 0,
 			FileNotFoundError = 1,
 			DeviceError = 2,
@@ -38,124 +40,178 @@ namespace Qt {
 			InvalidDataError = 4,
 		}
 		public QImageReader() : this((Type) null) {
-			CreateQImageReaderProxy();
+			CreateProxy();
 			NewQImageReader();
 		}
+		[SmokeMethod("QImageReader()")]
 		private void NewQImageReader() {
 			ProxyQImageReader().NewQImageReader();
 		}
 		public QImageReader(IQIODevice device, QByteArray format) : this((Type) null) {
-			CreateQImageReaderProxy();
+			CreateProxy();
 			NewQImageReader(device,format);
 		}
+		[SmokeMethod("QImageReader(QIODevice*, const QByteArray&)")]
 		private void NewQImageReader(IQIODevice device, QByteArray format) {
 			ProxyQImageReader().NewQImageReader(device,format);
 		}
 		public QImageReader(IQIODevice device) : this((Type) null) {
-			CreateQImageReaderProxy();
+			CreateProxy();
 			NewQImageReader(device);
 		}
+		[SmokeMethod("QImageReader(QIODevice*)")]
 		private void NewQImageReader(IQIODevice device) {
 			ProxyQImageReader().NewQImageReader(device);
 		}
 		public QImageReader(string fileName, QByteArray format) : this((Type) null) {
-			CreateQImageReaderProxy();
+			CreateProxy();
 			NewQImageReader(fileName,format);
 		}
+		[SmokeMethod("QImageReader(const QString&, const QByteArray&)")]
 		private void NewQImageReader(string fileName, QByteArray format) {
 			ProxyQImageReader().NewQImageReader(fileName,format);
 		}
 		public QImageReader(string fileName) : this((Type) null) {
-			CreateQImageReaderProxy();
+			CreateProxy();
 			NewQImageReader(fileName);
 		}
+		[SmokeMethod("QImageReader(const QString&)")]
 		private void NewQImageReader(string fileName) {
 			ProxyQImageReader().NewQImageReader(fileName);
 		}
+		[SmokeMethod("setFormat(const QByteArray&)")]
 		public void SetFormat(QByteArray format) {
 			ProxyQImageReader().SetFormat(format);
 		}
+		[SmokeMethod("format() const")]
 		public QByteArray Format() {
 			return ProxyQImageReader().Format();
 		}
+		[SmokeMethod("setDevice(QIODevice*)")]
 		public void SetDevice(IQIODevice device) {
 			ProxyQImageReader().SetDevice(device);
 		}
+		[SmokeMethod("device() const")]
 		public IQIODevice Device() {
 			return ProxyQImageReader().Device();
 		}
+		[SmokeMethod("setFileName(const QString&)")]
 		public void SetFileName(string fileName) {
 			ProxyQImageReader().SetFileName(fileName);
 		}
+		[SmokeMethod("fileName() const")]
 		public string FileName() {
 			return ProxyQImageReader().FileName();
 		}
+		[SmokeMethod("size() const")]
 		public QSize Size() {
 			return ProxyQImageReader().Size();
 		}
+		[SmokeMethod("textKeys() const")]
+		public ArrayList TextKeys() {
+			return ProxyQImageReader().TextKeys();
+		}
+		[SmokeMethod("text(const QString&) const")]
+		public string Text(string key) {
+			return ProxyQImageReader().Text(key);
+		}
+		[SmokeMethod("setClipRect(const QRect&)")]
 		public void SetClipRect(QRect rect) {
 			ProxyQImageReader().SetClipRect(rect);
 		}
+		[SmokeMethod("clipRect() const")]
 		public QRect ClipRect() {
 			return ProxyQImageReader().ClipRect();
 		}
+		[SmokeMethod("setScaledSize(const QSize&)")]
 		public void SetScaledSize(QSize size) {
 			ProxyQImageReader().SetScaledSize(size);
 		}
+		[SmokeMethod("scaledSize() const")]
 		public QSize ScaledSize() {
 			return ProxyQImageReader().ScaledSize();
 		}
+		[SmokeMethod("setScaledClipRect(const QRect&)")]
 		public void SetScaledClipRect(QRect rect) {
 			ProxyQImageReader().SetScaledClipRect(rect);
 		}
+		[SmokeMethod("scaledClipRect() const")]
 		public QRect ScaledClipRect() {
 			return ProxyQImageReader().ScaledClipRect();
 		}
+		[SmokeMethod("setBackgroundColor(const QColor&)")]
+		public void SetBackgroundColor(QColor color) {
+			ProxyQImageReader().SetBackgroundColor(color);
+		}
+		[SmokeMethod("backgroundColor() const")]
+		public QColor BackgroundColor() {
+			return ProxyQImageReader().BackgroundColor();
+		}
+		[SmokeMethod("supportsAnimation() const")]
+		public bool SupportsAnimation() {
+			return ProxyQImageReader().SupportsAnimation();
+		}
+		[SmokeMethod("canRead() const")]
 		public bool CanRead() {
 			return ProxyQImageReader().CanRead();
 		}
+		[SmokeMethod("read()")]
 		public QImage Read() {
 			return ProxyQImageReader().Read();
 		}
+		[SmokeMethod("jumpToNextImage()")]
 		public bool JumpToNextImage() {
 			return ProxyQImageReader().JumpToNextImage();
 		}
+		[SmokeMethod("jumpToImage(int)")]
 		public bool JumpToImage(int imageNumber) {
 			return ProxyQImageReader().JumpToImage(imageNumber);
 		}
+		[SmokeMethod("loopCount() const")]
 		public int LoopCount() {
 			return ProxyQImageReader().LoopCount();
 		}
+		[SmokeMethod("imageCount() const")]
 		public int ImageCount() {
 			return ProxyQImageReader().ImageCount();
 		}
+		[SmokeMethod("nextImageDelay() const")]
 		public int NextImageDelay() {
 			return ProxyQImageReader().NextImageDelay();
 		}
+		[SmokeMethod("currentImageNumber() const")]
 		public int CurrentImageNumber() {
 			return ProxyQImageReader().CurrentImageNumber();
 		}
+		[SmokeMethod("currentImageRect() const")]
 		public QRect CurrentImageRect() {
 			return ProxyQImageReader().CurrentImageRect();
 		}
+		[SmokeMethod("error() const")]
 		public int Error() {
 			return ProxyQImageReader().Error();
 		}
+		[SmokeMethod("errorString() const")]
 		public string ErrorString() {
 			return ProxyQImageReader().ErrorString();
 		}
+		[SmokeMethod("imageFormat(const QString&)")]
 		public static QByteArray ImageFormat(string fileName) {
 			return StaticQImageReader().ImageFormat(fileName);
 		}
+		[SmokeMethod("imageFormat(QIODevice*)")]
 		public static QByteArray ImageFormat(IQIODevice device) {
 			return StaticQImageReader().ImageFormat(device);
 		}
 		// QList<QByteArray> supportedImageFormats(); >>>> NOT CONVERTED
 		~QImageReader() {
-			ProxyQImageReader().Dispose();
+			DisposeQImageReader();
 		}
 		public void Dispose() {
-			ProxyQImageReader().Dispose();
+			DisposeQImageReader();
+		}
+		private void DisposeQImageReader() {
+			ProxyQImageReader().DisposeQImageReader();
 		}
 	}
 }

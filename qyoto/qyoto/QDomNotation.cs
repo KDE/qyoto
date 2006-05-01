@@ -4,12 +4,13 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QDomNotation")]
 	public class QDomNotation : QDomNode, IDisposable {
  		protected QDomNotation(Type dummy) : base((Type) null) {}
 		interface IQDomNotationProxy {
 		}
 
-		protected void CreateQDomNotationProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomNotation), this);
 			_interceptor = (QDomNotation) realProxy.GetTransparentProxy();
 		}
@@ -26,33 +27,41 @@ namespace Qt {
 		}
 
 		public QDomNotation() : this((Type) null) {
-			CreateQDomNotationProxy();
+			CreateProxy();
 			NewQDomNotation();
 		}
+		[SmokeMethod("QDomNotation()")]
 		private void NewQDomNotation() {
 			ProxyQDomNotation().NewQDomNotation();
 		}
 		public QDomNotation(QDomNotation x) : this((Type) null) {
-			CreateQDomNotationProxy();
+			CreateProxy();
 			NewQDomNotation(x);
 		}
+		[SmokeMethod("QDomNotation(const QDomNotation&)")]
 		private void NewQDomNotation(QDomNotation x) {
 			ProxyQDomNotation().NewQDomNotation(x);
 		}
+		[SmokeMethod("publicId() const")]
 		public string PublicId() {
 			return ProxyQDomNotation().PublicId();
 		}
+		[SmokeMethod("systemId() const")]
 		public string SystemId() {
 			return ProxyQDomNotation().SystemId();
 		}
-		public new int NodeType() {
+		[SmokeMethod("nodeType() const")]
+		public new QDomNode.NodeType NodeType() {
 			return ProxyQDomNotation().NodeType();
 		}
 		~QDomNotation() {
-			ProxyQDomNotation().Dispose();
+			DisposeQDomNotation();
 		}
 		public void Dispose() {
-			ProxyQDomNotation().Dispose();
+			DisposeQDomNotation();
+		}
+		private void DisposeQDomNotation() {
+			ProxyQDomNotation().DisposeQDomNotation();
 		}
 	}
 }

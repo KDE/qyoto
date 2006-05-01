@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQItemSelectionModelSignals"></see> for signals emitted by QItemSelectionModel
+	[SmokeClass("QItemSelectionModel")]
 	public class QItemSelectionModel : QObject, IDisposable {
  		protected QItemSelectionModel(Type dummy) : base((Type) null) {}
 		interface IQItemSelectionModelProxy {
@@ -12,7 +13,7 @@ namespace Qt {
 			string Tr(string s);
 		}
 
-		protected void CreateQItemSelectionModelProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QItemSelectionModel), this);
 			_interceptor = (QItemSelectionModel) realProxy.GetTransparentProxy();
 		}
@@ -28,7 +29,7 @@ namespace Qt {
 			return (IQItemSelectionModelProxy) _staticInterceptor;
 		}
 
-		enum SelectionFlag {
+		public enum SelectionFlag {
 			NoUpdate = 0x0000,
 			Clear = 0x0001,
 			Select = 0x0002,
@@ -41,79 +42,114 @@ namespace Qt {
 			ToggleCurrent = Toggle|Current,
 			ClearAndSelect = Clear|Select,
 		}
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQItemSelectionModel().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QItemSelectionModel(QAbstractItemModel model) : this((Type) null) {
-			CreateQItemSelectionModelProxy();
+			CreateProxy();
 			NewQItemSelectionModel(model);
 		}
+		[SmokeMethod("QItemSelectionModel(QAbstractItemModel*)")]
 		private void NewQItemSelectionModel(QAbstractItemModel model) {
 			ProxyQItemSelectionModel().NewQItemSelectionModel(model);
 		}
+		public QItemSelectionModel(QAbstractItemModel model, QObject parent) : this((Type) null) {
+			CreateProxy();
+			NewQItemSelectionModel(model,parent);
+		}
+		[SmokeMethod("QItemSelectionModel(QAbstractItemModel*, QObject*)")]
+		private void NewQItemSelectionModel(QAbstractItemModel model, QObject parent) {
+			ProxyQItemSelectionModel().NewQItemSelectionModel(model,parent);
+		}
+		[SmokeMethod("currentIndex() const")]
 		public QModelIndex CurrentIndex() {
 			return ProxyQItemSelectionModel().CurrentIndex();
 		}
+		[SmokeMethod("isSelected(const QModelIndex&) const")]
 		public bool IsSelected(QModelIndex index) {
 			return ProxyQItemSelectionModel().IsSelected(index);
 		}
+		[SmokeMethod("isRowSelected(int, const QModelIndex&) const")]
 		public bool IsRowSelected(int row, QModelIndex parent) {
 			return ProxyQItemSelectionModel().IsRowSelected(row,parent);
 		}
+		[SmokeMethod("isColumnSelected(int, const QModelIndex&) const")]
 		public bool IsColumnSelected(int column, QModelIndex parent) {
 			return ProxyQItemSelectionModel().IsColumnSelected(column,parent);
 		}
+		[SmokeMethod("rowIntersectsSelection(int, const QModelIndex&) const")]
 		public bool RowIntersectsSelection(int row, QModelIndex parent) {
 			return ProxyQItemSelectionModel().RowIntersectsSelection(row,parent);
 		}
+		[SmokeMethod("columnIntersectsSelection(int, const QModelIndex&) const")]
 		public bool ColumnIntersectsSelection(int column, QModelIndex parent) {
 			return ProxyQItemSelectionModel().ColumnIntersectsSelection(column,parent);
 		}
 		// QModelIndexList selectedIndexes(); >>>> NOT CONVERTED
+		[SmokeMethod("selection() const")]
 		public QItemSelection Selection() {
 			return ProxyQItemSelectionModel().Selection();
 		}
+		[SmokeMethod("model() const")]
 		public QAbstractItemModel Model() {
 			return ProxyQItemSelectionModel().Model();
 		}
+		[SmokeMethod("setCurrentIndex(const QModelIndex&, QItemSelectionModel::SelectionFlags)")]
 		public void SetCurrentIndex(QModelIndex index, int command) {
 			ProxyQItemSelectionModel().SetCurrentIndex(index,command);
 		}
+		[SmokeMethod("select(const QModelIndex&, QItemSelectionModel::SelectionFlags)")]
 		public virtual void Select(QModelIndex index, int command) {
 			ProxyQItemSelectionModel().Select(index,command);
 		}
+		[SmokeMethod("select(const QItemSelection&, QItemSelectionModel::SelectionFlags)")]
 		public virtual void Select(QItemSelection selection, int command) {
 			ProxyQItemSelectionModel().Select(selection,command);
 		}
+		[SmokeMethod("clear()")]
 		public virtual void Clear() {
 			ProxyQItemSelectionModel().Clear();
 		}
+		[SmokeMethod("reset()")]
 		public virtual void Reset() {
 			ProxyQItemSelectionModel().Reset();
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQItemSelectionModel().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQItemSelectionModel().Tr(s);
 		}
+		[SmokeMethod("emitSelectionChanged(const QItemSelection&, const QItemSelection&)")]
 		protected void EmitSelectionChanged(QItemSelection newSelection, QItemSelection oldSelection) {
 			ProxyQItemSelectionModel().EmitSelectionChanged(newSelection,oldSelection);
 		}
 		~QItemSelectionModel() {
-			ProxyQItemSelectionModel().Dispose();
+			DisposeQItemSelectionModel();
 		}
 		public new void Dispose() {
-			ProxyQItemSelectionModel().Dispose();
+			DisposeQItemSelectionModel();
+		}
+		private void DisposeQItemSelectionModel() {
+			ProxyQItemSelectionModel().DisposeQItemSelectionModel();
+		}
+		protected new IQItemSelectionModelSignals Emit() {
+			return (IQItemSelectionModelSignals) Q_EMIT;
 		}
 	}
 
-	public interface IQItemSelectionModelSignals {
+	public interface IQItemSelectionModelSignals : IQObjectSignals {
+		[Q_SIGNAL("void selectionChanged(const QItemSelection&, const QItemSelection&)")]
 		void SelectionChanged(QItemSelection selected, QItemSelection deselected);
+		[Q_SIGNAL("void currentChanged(const QModelIndex&, const QModelIndex&)")]
 		void CurrentChanged(QModelIndex current, QModelIndex previous);
+		[Q_SIGNAL("void currentRowChanged(const QModelIndex&, const QModelIndex&)")]
 		void CurrentRowChanged(QModelIndex current, QModelIndex previous);
+		[Q_SIGNAL("void currentColumnChanged(const QModelIndex&, const QModelIndex&)")]
 		void CurrentColumnChanged(QModelIndex current, QModelIndex previous);
 	}
 }

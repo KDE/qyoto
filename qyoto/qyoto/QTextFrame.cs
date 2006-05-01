@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QTextFrame")]
 	public class QTextFrame : QTextObject, IDisposable {
  		protected QTextFrame(Type dummy) : base((Type) null) {}
 		interface IQTextFrameProxy {
@@ -11,7 +12,7 @@ namespace Qt {
 			string Tr(string s);
 		}
 
-		protected void CreateQTextFrameProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextFrame), this);
 			_interceptor = (QTextFrame) realProxy.GetTransparentProxy();
 		}
@@ -27,47 +28,65 @@ namespace Qt {
 			return (IQTextFrameProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQTextFrame().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		// QTextFrame* QTextFrame(QTextDocument* arg1); >>>> NOT CONVERTED
+		[SmokeMethod("setFrameFormat(const QTextFrameFormat&)")]
 		public void SetFrameFormat(QTextFrameFormat format) {
 			ProxyQTextFrame().SetFrameFormat(format);
 		}
+		[SmokeMethod("frameFormat() const")]
 		public QTextFrameFormat FrameFormat() {
 			return ProxyQTextFrame().FrameFormat();
 		}
 		// QTextCursor firstCursorPosition(); >>>> NOT CONVERTED
 		// QTextCursor lastCursorPosition(); >>>> NOT CONVERTED
+		[SmokeMethod("firstPosition() const")]
 		public int FirstPosition() {
 			return ProxyQTextFrame().FirstPosition();
 		}
+		[SmokeMethod("lastPosition() const")]
 		public int LastPosition() {
 			return ProxyQTextFrame().LastPosition();
 		}
+		[SmokeMethod("layoutData() const")]
 		public QTextFrameLayoutData LayoutData() {
 			return ProxyQTextFrame().LayoutData();
 		}
+		[SmokeMethod("setLayoutData(QTextFrameLayoutData*)")]
 		public void SetLayoutData(QTextFrameLayoutData data) {
 			ProxyQTextFrame().SetLayoutData(data);
 		}
 		// QList<QTextFrame*> childFrames(); >>>> NOT CONVERTED
+		[SmokeMethod("parentFrame() const")]
 		public QTextFrame ParentFrame() {
 			return ProxyQTextFrame().ParentFrame();
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQTextFrame().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQTextFrame().Tr(s);
 		}
 		~QTextFrame() {
-			ProxyQTextFrame().Dispose();
+			DisposeQTextFrame();
 		}
 		public new void Dispose() {
-			ProxyQTextFrame().Dispose();
+			DisposeQTextFrame();
 		}
+		private void DisposeQTextFrame() {
+			ProxyQTextFrame().DisposeQTextFrame();
+		}
+		protected new IQTextFrameSignals Emit() {
+			return (IQTextFrameSignals) Q_EMIT;
+		}
+	}
+
+	public interface IQTextFrameSignals : IQTextObjectSignals {
 	}
 }

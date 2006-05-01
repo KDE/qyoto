@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QLatin1Char")]
 	public class QLatin1Char : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
@@ -11,7 +12,7 @@ namespace Qt {
 		interface IQLatin1CharProxy {
 		}
 
-		protected void CreateQLatin1CharProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QLatin1Char), this);
 			_interceptor = (QLatin1Char) realProxy.GetTransparentProxy();
 		}
@@ -28,23 +29,29 @@ namespace Qt {
 		}
 
 		public QLatin1Char(char c) : this((Type) null) {
-			CreateQLatin1CharProxy();
+			CreateProxy();
 			NewQLatin1Char(c);
 		}
+		[SmokeMethod("QLatin1Char(char)")]
 		private void NewQLatin1Char(char c) {
 			ProxyQLatin1Char().NewQLatin1Char(c);
 		}
+		[SmokeMethod("toLatin1() const")]
 		public char ToLatin1() {
 			return ProxyQLatin1Char().ToLatin1();
 		}
+		[SmokeMethod("unicode() const")]
 		public ushort Unicode() {
 			return ProxyQLatin1Char().Unicode();
 		}
 		~QLatin1Char() {
-			ProxyQLatin1Char().Dispose();
+			DisposeQLatin1Char();
 		}
 		public void Dispose() {
-			ProxyQLatin1Char().Dispose();
+			DisposeQLatin1Char();
+		}
+		private void DisposeQLatin1Char() {
+			ProxyQLatin1Char().DisposeQLatin1Char();
 		}
 	}
 }

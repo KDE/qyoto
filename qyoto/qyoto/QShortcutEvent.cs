@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QShortcutEvent")]
 	public class QShortcutEvent : QEvent, IDisposable {
  		protected QShortcutEvent(Type dummy) : base((Type) null) {}
 		interface IQShortcutEventProxy {
 		}
 
-		protected void CreateQShortcutEventProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QShortcutEvent), this);
 			_interceptor = (QShortcutEvent) realProxy.GetTransparentProxy();
 		}
@@ -25,33 +26,41 @@ namespace Qt {
 		}
 
 		public QShortcutEvent(QKeySequence key, int id, bool ambiguous) : this((Type) null) {
-			CreateQShortcutEventProxy();
+			CreateProxy();
 			NewQShortcutEvent(key,id,ambiguous);
 		}
+		[SmokeMethod("QShortcutEvent(const QKeySequence&, int, bool)")]
 		private void NewQShortcutEvent(QKeySequence key, int id, bool ambiguous) {
 			ProxyQShortcutEvent().NewQShortcutEvent(key,id,ambiguous);
 		}
 		public QShortcutEvent(QKeySequence key, int id) : this((Type) null) {
-			CreateQShortcutEventProxy();
+			CreateProxy();
 			NewQShortcutEvent(key,id);
 		}
+		[SmokeMethod("QShortcutEvent(const QKeySequence&, int)")]
 		private void NewQShortcutEvent(QKeySequence key, int id) {
 			ProxyQShortcutEvent().NewQShortcutEvent(key,id);
 		}
+		[SmokeMethod("key()")]
 		public QKeySequence Key() {
 			return ProxyQShortcutEvent().Key();
 		}
+		[SmokeMethod("shortcutId()")]
 		public int ShortcutId() {
 			return ProxyQShortcutEvent().ShortcutId();
 		}
+		[SmokeMethod("isAmbiguous()")]
 		public bool IsAmbiguous() {
 			return ProxyQShortcutEvent().IsAmbiguous();
 		}
 		~QShortcutEvent() {
-			ProxyQShortcutEvent().Dispose();
+			DisposeQShortcutEvent();
 		}
 		public new void Dispose() {
-			ProxyQShortcutEvent().Dispose();
+			DisposeQShortcutEvent();
+		}
+		private void DisposeQShortcutEvent() {
+			ProxyQShortcutEvent().DisposeQShortcutEvent();
 		}
 	}
 }

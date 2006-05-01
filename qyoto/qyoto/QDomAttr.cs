@@ -4,12 +4,13 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QDomAttr")]
 	public class QDomAttr : QDomNode, IDisposable {
  		protected QDomAttr(Type dummy) : base((Type) null) {}
 		interface IQDomAttrProxy {
 		}
 
-		protected void CreateQDomAttrProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomAttr), this);
 			_interceptor = (QDomAttr) realProxy.GetTransparentProxy();
 		}
@@ -26,42 +27,53 @@ namespace Qt {
 		}
 
 		public QDomAttr() : this((Type) null) {
-			CreateQDomAttrProxy();
+			CreateProxy();
 			NewQDomAttr();
 		}
+		[SmokeMethod("QDomAttr()")]
 		private void NewQDomAttr() {
 			ProxyQDomAttr().NewQDomAttr();
 		}
 		public QDomAttr(QDomAttr x) : this((Type) null) {
-			CreateQDomAttrProxy();
+			CreateProxy();
 			NewQDomAttr(x);
 		}
+		[SmokeMethod("QDomAttr(const QDomAttr&)")]
 		private void NewQDomAttr(QDomAttr x) {
 			ProxyQDomAttr().NewQDomAttr(x);
 		}
+		[SmokeMethod("name() const")]
 		public string Name() {
 			return ProxyQDomAttr().Name();
 		}
+		[SmokeMethod("specified() const")]
 		public bool Specified() {
 			return ProxyQDomAttr().Specified();
 		}
+		[SmokeMethod("ownerElement() const")]
 		public QDomElement OwnerElement() {
 			return ProxyQDomAttr().OwnerElement();
 		}
+		[SmokeMethod("value() const")]
 		public string Value() {
 			return ProxyQDomAttr().Value();
 		}
+		[SmokeMethod("setValue(const QString&)")]
 		public void SetValue(string arg1) {
 			ProxyQDomAttr().SetValue(arg1);
 		}
-		public new int NodeType() {
+		[SmokeMethod("nodeType() const")]
+		public new QDomNode.NodeType NodeType() {
 			return ProxyQDomAttr().NodeType();
 		}
 		~QDomAttr() {
-			ProxyQDomAttr().Dispose();
+			DisposeQDomAttr();
 		}
 		public void Dispose() {
-			ProxyQDomAttr().Dispose();
+			DisposeQDomAttr();
+		}
+		private void DisposeQDomAttr() {
+			ProxyQDomAttr().DisposeQDomAttr();
 		}
 	}
 }

@@ -8,7 +8,7 @@ namespace Qt {
 		interface IQGLProxy {
 		}
 
-		protected void CreateQGLProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGL), this);
 			_interceptor = (QGL) realProxy.GetTransparentProxy();
 		}
@@ -24,7 +24,7 @@ namespace Qt {
 			return (IQGLProxy) _staticInterceptor;
 		}
 
-		enum FormatOption {
+		public enum FormatOption {
 			DoubleBuffer = 0x0001,
 			DepthBuffer = 0x0002,
 			Rgba = 0x0004,
@@ -45,6 +45,15 @@ namespace Qt {
 			IndirectRendering = DirectRendering<<16,
 			NoOverlay = HasOverlay<<16,
 			NoSampleBuffers = SampleBuffers<<16,
+		}
+		~QGL() {
+			DisposeQGL();
+		}
+		public void Dispose() {
+			DisposeQGL();
+		}
+		private void DisposeQGL() {
+			ProxyQGL().DisposeQGL();
 		}
 	}
 }

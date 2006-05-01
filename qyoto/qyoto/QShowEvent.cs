@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QShowEvent")]
 	public class QShowEvent : QEvent, IDisposable {
  		protected QShowEvent(Type dummy) : base((Type) null) {}
 		interface IQShowEventProxy {
 		}
 
-		protected void CreateQShowEventProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QShowEvent), this);
 			_interceptor = (QShowEvent) realProxy.GetTransparentProxy();
 		}
@@ -25,17 +26,21 @@ namespace Qt {
 		}
 
 		public QShowEvent() : this((Type) null) {
-			CreateQShowEventProxy();
+			CreateProxy();
 			NewQShowEvent();
 		}
+		[SmokeMethod("QShowEvent()")]
 		private void NewQShowEvent() {
 			ProxyQShowEvent().NewQShowEvent();
 		}
 		~QShowEvent() {
-			ProxyQShowEvent().Dispose();
+			DisposeQShowEvent();
 		}
 		public new void Dispose() {
-			ProxyQShowEvent().Dispose();
+			DisposeQShowEvent();
+		}
+		private void DisposeQShowEvent() {
+			ProxyQShowEvent().DisposeQShowEvent();
 		}
 	}
 }

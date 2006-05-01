@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQLCDNumberSignals"></see> for signals emitted by QLCDNumber
+	[SmokeClass("QLCDNumber")]
 	public class QLCDNumber : QFrame, IDisposable {
  		protected QLCDNumber(Type dummy) : base((Type) null) {}
 		interface IQLCDNumberProxy {
@@ -12,7 +13,7 @@ namespace Qt {
 			string Tr(string s);
 		}
 
-		protected void CreateQLCDNumberProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QLCDNumber), this);
 			_interceptor = (QLCDNumber) realProxy.GetTransparentProxy();
 		}
@@ -28,128 +29,166 @@ namespace Qt {
 			return (IQLCDNumberProxy) _staticInterceptor;
 		}
 
-		enum E_Mode {
+		public enum Mode {
 			Hex = 0,
 			Dec = 1,
 			Oct = 2,
 			Bin = 3,
 		}
-		enum E_SegmentStyle {
+		public enum SegmentStyle {
 			Outline = 0,
 			Filled = 1,
 			Flat = 2,
 		}
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQLCDNumber().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QLCDNumber(QWidget parent) : this((Type) null) {
-			CreateQLCDNumberProxy();
+			CreateProxy();
 			NewQLCDNumber(parent);
 		}
+		[SmokeMethod("QLCDNumber(QWidget*)")]
 		private void NewQLCDNumber(QWidget parent) {
 			ProxyQLCDNumber().NewQLCDNumber(parent);
 		}
 		public QLCDNumber() : this((Type) null) {
-			CreateQLCDNumberProxy();
+			CreateProxy();
 			NewQLCDNumber();
 		}
+		[SmokeMethod("QLCDNumber()")]
 		private void NewQLCDNumber() {
 			ProxyQLCDNumber().NewQLCDNumber();
 		}
 		public QLCDNumber(uint numDigits, QWidget parent) : this((Type) null) {
-			CreateQLCDNumberProxy();
+			CreateProxy();
 			NewQLCDNumber(numDigits,parent);
 		}
+		[SmokeMethod("QLCDNumber(uint, QWidget*)")]
 		private void NewQLCDNumber(uint numDigits, QWidget parent) {
 			ProxyQLCDNumber().NewQLCDNumber(numDigits,parent);
 		}
 		public QLCDNumber(uint numDigits) : this((Type) null) {
-			CreateQLCDNumberProxy();
+			CreateProxy();
 			NewQLCDNumber(numDigits);
 		}
+		[SmokeMethod("QLCDNumber(uint)")]
 		private void NewQLCDNumber(uint numDigits) {
 			ProxyQLCDNumber().NewQLCDNumber(numDigits);
 		}
+		[SmokeMethod("smallDecimalPoint() const")]
 		public bool SmallDecimalPoint() {
 			return ProxyQLCDNumber().SmallDecimalPoint();
 		}
+		[SmokeMethod("numDigits() const")]
 		public int NumDigits() {
 			return ProxyQLCDNumber().NumDigits();
 		}
+		[SmokeMethod("setNumDigits(int)")]
 		public void SetNumDigits(int nDigits) {
 			ProxyQLCDNumber().SetNumDigits(nDigits);
 		}
+		[SmokeMethod("checkOverflow(double) const")]
 		public bool CheckOverflow(double num) {
 			return ProxyQLCDNumber().CheckOverflow(num);
 		}
+		[SmokeMethod("checkOverflow(int) const")]
 		public bool CheckOverflow(int num) {
 			return ProxyQLCDNumber().CheckOverflow(num);
 		}
-		public int Mode() {
-			return ProxyQLCDNumber().Mode();
+		[SmokeMethod("mode() const")]
+		public QLCDNumber.Mode mode() {
+			return ProxyQLCDNumber().mode();
 		}
-		public void SetMode(int arg1) {
+		[SmokeMethod("setMode(QLCDNumber::Mode)")]
+		public void SetMode(QLCDNumber.Mode arg1) {
 			ProxyQLCDNumber().SetMode(arg1);
 		}
-		public int SegmentStyle() {
-			return ProxyQLCDNumber().SegmentStyle();
+		[SmokeMethod("segmentStyle() const")]
+		public QLCDNumber.SegmentStyle segmentStyle() {
+			return ProxyQLCDNumber().segmentStyle();
 		}
-		public void SetSegmentStyle(int arg1) {
+		[SmokeMethod("setSegmentStyle(QLCDNumber::SegmentStyle)")]
+		public void SetSegmentStyle(QLCDNumber.SegmentStyle arg1) {
 			ProxyQLCDNumber().SetSegmentStyle(arg1);
 		}
+		[SmokeMethod("value() const")]
 		public double Value() {
 			return ProxyQLCDNumber().Value();
 		}
+		[SmokeMethod("intValue() const")]
 		public int IntValue() {
 			return ProxyQLCDNumber().IntValue();
 		}
+		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {
 			return ProxyQLCDNumber().SizeHint();
 		}
+		[SmokeMethod("display(const QString&)")]
 		public void Display(string str) {
 			ProxyQLCDNumber().Display(str);
 		}
+		[SmokeMethod("display(int)")]
 		public void Display(int num) {
 			ProxyQLCDNumber().Display(num);
 		}
+		[SmokeMethod("display(double)")]
 		public void Display(double num) {
 			ProxyQLCDNumber().Display(num);
 		}
+		[SmokeMethod("setHexMode()")]
 		public void SetHexMode() {
 			ProxyQLCDNumber().SetHexMode();
 		}
+		[SmokeMethod("setDecMode()")]
 		public void SetDecMode() {
 			ProxyQLCDNumber().SetDecMode();
 		}
+		[SmokeMethod("setOctMode()")]
 		public void SetOctMode() {
 			ProxyQLCDNumber().SetOctMode();
 		}
+		[SmokeMethod("setBinMode()")]
 		public void SetBinMode() {
 			ProxyQLCDNumber().SetBinMode();
 		}
+		[SmokeMethod("setSmallDecimalPoint(bool)")]
 		public void SetSmallDecimalPoint(bool arg1) {
 			ProxyQLCDNumber().SetSmallDecimalPoint(arg1);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQLCDNumber().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQLCDNumber().Tr(s);
 		}
+		[SmokeMethod("event(QEvent*)")]
+		public new bool Event(QEvent e) {
+			return ProxyQLCDNumber().Event(e);
+		}
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected new void PaintEvent(QPaintEvent arg1) {
 			ProxyQLCDNumber().PaintEvent(arg1);
 		}
 		~QLCDNumber() {
-			ProxyQLCDNumber().Dispose();
+			DisposeQLCDNumber();
 		}
 		public new void Dispose() {
-			ProxyQLCDNumber().Dispose();
+			DisposeQLCDNumber();
+		}
+		private void DisposeQLCDNumber() {
+			ProxyQLCDNumber().DisposeQLCDNumber();
+		}
+		protected new IQLCDNumberSignals Emit() {
+			return (IQLCDNumberSignals) Q_EMIT;
 		}
 	}
 
-	public interface IQLCDNumberSignals {
+	public interface IQLCDNumberSignals : IQFrameSignals {
+		[Q_SIGNAL("void overflow()")]
 		void Overflow();
 	}
 }

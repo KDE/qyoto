@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QSizeF")]
 	public class QSizeF : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
@@ -13,7 +14,7 @@ namespace Qt {
 			QSizeF op_div(QSizeF lhs, double c);
 		}
 
-		protected void CreateQSizeFProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSizeF), this);
 			_interceptor = (QSizeF) realProxy.GetTransparentProxy();
 		}
@@ -30,78 +31,99 @@ namespace Qt {
 		}
 
 		public QSizeF() : this((Type) null) {
-			CreateQSizeFProxy();
+			CreateProxy();
 			NewQSizeF();
 		}
+		[SmokeMethod("QSizeF()")]
 		private void NewQSizeF() {
 			ProxyQSizeF().NewQSizeF();
 		}
 		public QSizeF(QSize sz) : this((Type) null) {
-			CreateQSizeFProxy();
+			CreateProxy();
 			NewQSizeF(sz);
 		}
+		[SmokeMethod("QSizeF(const QSize&)")]
 		private void NewQSizeF(QSize sz) {
 			ProxyQSizeF().NewQSizeF(sz);
 		}
 		public QSizeF(double w, double h) : this((Type) null) {
-			CreateQSizeFProxy();
+			CreateProxy();
 			NewQSizeF(w,h);
 		}
+		[SmokeMethod("QSizeF(qreal, qreal)")]
 		private void NewQSizeF(double w, double h) {
 			ProxyQSizeF().NewQSizeF(w,h);
 		}
+		[SmokeMethod("isNull() const")]
 		public bool IsNull() {
 			return ProxyQSizeF().IsNull();
 		}
+		[SmokeMethod("isEmpty() const")]
 		public bool IsEmpty() {
 			return ProxyQSizeF().IsEmpty();
 		}
+		[SmokeMethod("isValid() const")]
 		public bool IsValid() {
 			return ProxyQSizeF().IsValid();
 		}
+		[SmokeMethod("width() const")]
 		public double Width() {
 			return ProxyQSizeF().Width();
 		}
+		[SmokeMethod("height() const")]
 		public double Height() {
 			return ProxyQSizeF().Height();
 		}
+		[SmokeMethod("setWidth(qreal)")]
 		public void SetWidth(double w) {
 			ProxyQSizeF().SetWidth(w);
 		}
+		[SmokeMethod("setHeight(qreal)")]
 		public void SetHeight(double h) {
 			ProxyQSizeF().SetHeight(h);
 		}
+		[SmokeMethod("transpose()")]
 		public void Transpose() {
 			ProxyQSizeF().Transpose();
 		}
-		public void Scale(double w, double h, int mode) {
+		[SmokeMethod("scale(qreal, qreal, Qt::AspectRatioMode)")]
+		public void Scale(double w, double h, Qt.AspectRatioMode mode) {
 			ProxyQSizeF().Scale(w,h,mode);
 		}
-		public void Scale(QSizeF s, int mode) {
+		[SmokeMethod("scale(const QSizeF&, Qt::AspectRatioMode)")]
+		public void Scale(QSizeF s, Qt.AspectRatioMode mode) {
 			ProxyQSizeF().Scale(s,mode);
 		}
+		[SmokeMethod("expandedTo(const QSizeF&) const")]
 		public QSizeF ExpandedTo(QSizeF arg1) {
 			return ProxyQSizeF().ExpandedTo(arg1);
 		}
+		[SmokeMethod("boundedTo(const QSizeF&) const")]
 		public QSizeF BoundedTo(QSizeF arg1) {
 			return ProxyQSizeF().BoundedTo(arg1);
 		}
 		// qreal& rwidth(); >>>> NOT CONVERTED
 		// qreal& rheight(); >>>> NOT CONVERTED
+		[SmokeMethod("operator*=(qreal)")]
 		public static QSizeF operator*(QSizeF lhs, double c) {
 			return StaticQSizeF().op_mult(lhs,c);
 		}
+		[SmokeMethod("operator/=(qreal)")]
 		public static QSizeF operator/(QSizeF lhs, double c) {
 			return StaticQSizeF().op_div(lhs,c);
 		}
+		[SmokeMethod("toSize() const")]
 		public QSize ToSize() {
 			return ProxyQSizeF().ToSize();
 		}
 		~QSizeF() {
-			ProxyQSizeF().Dispose();
+			DisposeQSizeF();
 		}
 		public void Dispose() {
-			ProxyQSizeF().Dispose();
+			DisposeQSizeF();
+		}
+		private void DisposeQSizeF() {
+			ProxyQSizeF().DisposeQSizeF();
 		}
 	}
 }

@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QTextObjectInterface")]
 	public class QTextObjectInterface : MarshalByRefObject {
 		protected Object _interceptor = null;
  
@@ -11,7 +12,7 @@ namespace Qt {
 		interface IQTextObjectInterfaceProxy {
 		}
 
-		protected void CreateQTextObjectInterfaceProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextObjectInterface), this);
 			_interceptor = (QTextObjectInterface) realProxy.GetTransparentProxy();
 		}
@@ -29,5 +30,22 @@ namespace Qt {
 
 		// QSizeF intrinsicSize(QTextDocument* arg1,int arg2,const QTextFormat& arg3); >>>> NOT CONVERTED
 		// void drawObject(QPainter* arg1,const QRectF& arg2,QTextDocument* arg3,int arg4,const QTextFormat& arg5); >>>> NOT CONVERTED
+		public QTextObjectInterface() : this((Type) null) {
+			CreateProxy();
+			NewQTextObjectInterface();
+		}
+		[SmokeMethod("QTextObjectInterface()")]
+		private void NewQTextObjectInterface() {
+			ProxyQTextObjectInterface().NewQTextObjectInterface();
+		}
+		~QTextObjectInterface() {
+			DisposeQTextObjectInterface();
+		}
+		public void Dispose() {
+			DisposeQTextObjectInterface();
+		}
+		private void DisposeQTextObjectInterface() {
+			ProxyQTextObjectInterface().DisposeQTextObjectInterface();
+		}
 	}
 }

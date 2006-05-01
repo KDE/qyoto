@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QGLColormap")]
 	public class QGLColormap : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
@@ -11,7 +12,7 @@ namespace Qt {
 		interface IQGLColormapProxy {
 		}
 
-		protected void CreateQGLColormapProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGLColormap), this);
 			_interceptor = (QGLColormap) realProxy.GetTransparentProxy();
 		}
@@ -28,63 +29,77 @@ namespace Qt {
 		}
 
 		public QGLColormap() : this((Type) null) {
-			CreateQGLColormapProxy();
+			CreateProxy();
 			NewQGLColormap();
 		}
+		[SmokeMethod("QGLColormap()")]
 		private void NewQGLColormap() {
 			ProxyQGLColormap().NewQGLColormap();
 		}
 		public QGLColormap(QGLColormap arg1) : this((Type) null) {
-			CreateQGLColormapProxy();
+			CreateProxy();
 			NewQGLColormap(arg1);
 		}
+		[SmokeMethod("QGLColormap(const QGLColormap&)")]
 		private void NewQGLColormap(QGLColormap arg1) {
 			ProxyQGLColormap().NewQGLColormap(arg1);
 		}
+		[SmokeMethod("isEmpty() const")]
 		public bool IsEmpty() {
 			return ProxyQGLColormap().IsEmpty();
 		}
+		[SmokeMethod("size() const")]
 		public int Size() {
 			return ProxyQGLColormap().Size();
 		}
+		[SmokeMethod("detach()")]
 		public void Detach() {
 			ProxyQGLColormap().Detach();
 		}
+		[SmokeMethod("setEntries(int, const QRgb*, int)")]
 		public void SetEntries(int count, out int colors, int arg3) {
 			ProxyQGLColormap().SetEntries(count,out colors,arg3);
 		}
+		[SmokeMethod("setEntries(int, const QRgb*)")]
 		public void SetEntries(int count, out int colors) {
 			ProxyQGLColormap().SetEntries(count,out colors);
 		}
+		[SmokeMethod("setEntry(int, QRgb)")]
 		public void SetEntry(int idx, uint color) {
 			ProxyQGLColormap().SetEntry(idx,color);
 		}
+		[SmokeMethod("setEntry(int, const QColor&)")]
 		public void SetEntry(int idx, QColor color) {
 			ProxyQGLColormap().SetEntry(idx,color);
 		}
+		[SmokeMethod("entryRgb(int) const")]
 		public uint EntryRgb(int idx) {
 			return ProxyQGLColormap().EntryRgb(idx);
 		}
+		[SmokeMethod("entryColor(int) const")]
 		public QColor EntryColor(int idx) {
 			return ProxyQGLColormap().EntryColor(idx);
 		}
+		[SmokeMethod("find(QRgb) const")]
 		public int Find(uint color) {
 			return ProxyQGLColormap().Find(color);
 		}
+		[SmokeMethod("findNearest(QRgb) const")]
 		public int FindNearest(uint color) {
 			return ProxyQGLColormap().FindNearest(color);
 		}
-		protected uint Handle() {
-			return ProxyQGLColormap().Handle();
-		}
+		[SmokeMethod("setHandle(Qt::HANDLE)")]
 		protected void SetHandle(uint ahandle) {
 			ProxyQGLColormap().SetHandle(ahandle);
 		}
 		~QGLColormap() {
-			ProxyQGLColormap().Dispose();
+			DisposeQGLColormap();
 		}
 		public void Dispose() {
-			ProxyQGLColormap().Dispose();
+			DisposeQGLColormap();
+		}
+		private void DisposeQGLColormap() {
+			ProxyQGLColormap().DisposeQGLColormap();
 		}
 	}
 }

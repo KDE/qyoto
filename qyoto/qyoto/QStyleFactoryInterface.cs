@@ -4,12 +4,13 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QStyleFactoryInterface")]
 	public class QStyleFactoryInterface : QFactoryInterface {
  		protected QStyleFactoryInterface(Type dummy) : base((Type) null) {}
 		interface IQStyleFactoryInterfaceProxy {
 		}
 
-		protected void CreateQStyleFactoryInterfaceProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleFactoryInterface), this);
 			_interceptor = (QStyleFactoryInterface) realProxy.GetTransparentProxy();
 		}
@@ -25,8 +26,26 @@ namespace Qt {
 			return (IQStyleFactoryInterfaceProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("create(const QString&)")]
 		public virtual QStyle Create(string key) {
 			return ProxyQStyleFactoryInterface().Create(key);
+		}
+		public QStyleFactoryInterface() : this((Type) null) {
+			CreateProxy();
+			NewQStyleFactoryInterface();
+		}
+		[SmokeMethod("QStyleFactoryInterface()")]
+		private void NewQStyleFactoryInterface() {
+			ProxyQStyleFactoryInterface().NewQStyleFactoryInterface();
+		}
+		~QStyleFactoryInterface() {
+			DisposeQStyleFactoryInterface();
+		}
+		public new void Dispose() {
+			DisposeQStyleFactoryInterface();
+		}
+		private void DisposeQStyleFactoryInterface() {
+			ProxyQStyleFactoryInterface().DisposeQStyleFactoryInterface();
 		}
 	}
 }

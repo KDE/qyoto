@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QPaintEvent")]
 	public class QPaintEvent : QEvent, IDisposable {
  		protected QPaintEvent(Type dummy) : base((Type) null) {}
 		interface IQPaintEventProxy {
 		}
 
-		protected void CreateQPaintEventProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPaintEvent), this);
 			_interceptor = (QPaintEvent) realProxy.GetTransparentProxy();
 		}
@@ -25,30 +26,37 @@ namespace Qt {
 		}
 
 		public QPaintEvent(QRegion paintRegion) : this((Type) null) {
-			CreateQPaintEventProxy();
+			CreateProxy();
 			NewQPaintEvent(paintRegion);
 		}
+		[SmokeMethod("QPaintEvent(const QRegion&)")]
 		private void NewQPaintEvent(QRegion paintRegion) {
 			ProxyQPaintEvent().NewQPaintEvent(paintRegion);
 		}
 		public QPaintEvent(QRect paintRect) : this((Type) null) {
-			CreateQPaintEventProxy();
+			CreateProxy();
 			NewQPaintEvent(paintRect);
 		}
+		[SmokeMethod("QPaintEvent(const QRect&)")]
 		private void NewQPaintEvent(QRect paintRect) {
 			ProxyQPaintEvent().NewQPaintEvent(paintRect);
 		}
+		[SmokeMethod("rect() const")]
 		public QRect Rect() {
 			return ProxyQPaintEvent().Rect();
 		}
+		[SmokeMethod("region() const")]
 		public QRegion Region() {
 			return ProxyQPaintEvent().Region();
 		}
 		~QPaintEvent() {
-			ProxyQPaintEvent().Dispose();
+			DisposeQPaintEvent();
 		}
 		public new void Dispose() {
-			ProxyQPaintEvent().Dispose();
+			DisposeQPaintEvent();
+		}
+		private void DisposeQPaintEvent() {
+			ProxyQPaintEvent().DisposeQPaintEvent();
 		}
 	}
 }

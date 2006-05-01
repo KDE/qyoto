@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QMetaEnum")]
 	public class QMetaEnum : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
@@ -11,7 +12,7 @@ namespace Qt {
 		interface IQMetaEnumProxy {
 		}
 
-		protected void CreateQMetaEnumProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMetaEnum), this);
 			_interceptor = (QMetaEnum) realProxy.GetTransparentProxy();
 		}
@@ -28,50 +29,65 @@ namespace Qt {
 		}
 
 		public QMetaEnum() : this((Type) null) {
-			CreateQMetaEnumProxy();
+			CreateProxy();
 			NewQMetaEnum();
 		}
+		[SmokeMethod("QMetaEnum()")]
 		private void NewQMetaEnum() {
 			ProxyQMetaEnum().NewQMetaEnum();
 		}
+		[SmokeMethod("name() const")]
 		public string Name() {
 			return ProxyQMetaEnum().Name();
 		}
+		[SmokeMethod("isFlag() const")]
 		public bool IsFlag() {
 			return ProxyQMetaEnum().IsFlag();
 		}
+		[SmokeMethod("keyCount() const")]
 		public int KeyCount() {
 			return ProxyQMetaEnum().KeyCount();
 		}
+		[SmokeMethod("key(int) const")]
 		public string Key(int index) {
 			return ProxyQMetaEnum().Key(index);
 		}
+		[SmokeMethod("value(int) const")]
 		public int Value(int index) {
 			return ProxyQMetaEnum().Value(index);
 		}
+		[SmokeMethod("scope() const")]
 		public string Scope() {
 			return ProxyQMetaEnum().Scope();
 		}
+		[SmokeMethod("keyToValue(const char*) const")]
 		public int KeyToValue(string key) {
 			return ProxyQMetaEnum().KeyToValue(key);
 		}
+		[SmokeMethod("valueToKey(int) const")]
 		public string ValueToKey(int value) {
 			return ProxyQMetaEnum().ValueToKey(value);
 		}
+		[SmokeMethod("keysToValue(const char*) const")]
 		public int KeysToValue(string keys) {
 			return ProxyQMetaEnum().KeysToValue(keys);
 		}
+		[SmokeMethod("valueToKeys(int) const")]
 		public QByteArray ValueToKeys(int value) {
 			return ProxyQMetaEnum().ValueToKeys(value);
 		}
+		[SmokeMethod("isValid() const")]
 		public bool IsValid() {
 			return ProxyQMetaEnum().IsValid();
 		}
 		~QMetaEnum() {
-			ProxyQMetaEnum().Dispose();
+			DisposeQMetaEnum();
 		}
 		public void Dispose() {
-			ProxyQMetaEnum().Dispose();
+			DisposeQMetaEnum();
+		}
+		private void DisposeQMetaEnum() {
+			ProxyQMetaEnum().DisposeQMetaEnum();
 		}
 	}
 }

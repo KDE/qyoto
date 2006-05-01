@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QTextListFormat")]
 	public class QTextListFormat : QTextFormat, IDisposable {
  		protected QTextListFormat(Type dummy) : base((Type) null) {}
 		interface IQTextListFormatProxy {
 		}
 
-		protected void CreateQTextListFormatProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextListFormat), this);
 			_interceptor = (QTextListFormat) realProxy.GetTransparentProxy();
 		}
@@ -24,7 +25,7 @@ namespace Qt {
 			return (IQTextListFormatProxy) _staticInterceptor;
 		}
 
-		enum E_Style {
+		public enum Style {
 			ListDisc = -1,
 			ListCircle = -2,
 			ListSquare = -3,
@@ -34,32 +35,41 @@ namespace Qt {
 			ListStyleUndefined = 0,
 		}
 		public QTextListFormat() : this((Type) null) {
-			CreateQTextListFormatProxy();
+			CreateProxy();
 			NewQTextListFormat();
 		}
+		[SmokeMethod("QTextListFormat()")]
 		private void NewQTextListFormat() {
 			ProxyQTextListFormat().NewQTextListFormat();
 		}
+		[SmokeMethod("isValid() const")]
 		public new bool IsValid() {
 			return ProxyQTextListFormat().IsValid();
 		}
-		public void SetStyle(int style) {
+		[SmokeMethod("setStyle(QTextListFormat::Style)")]
+		public void SetStyle(QTextListFormat.Style style) {
 			ProxyQTextListFormat().SetStyle(style);
 		}
-		public int Style() {
-			return ProxyQTextListFormat().Style();
+		[SmokeMethod("style() const")]
+		public QTextListFormat.Style style() {
+			return ProxyQTextListFormat().style();
 		}
+		[SmokeMethod("setIndent(int)")]
 		public void SetIndent(int indent) {
 			ProxyQTextListFormat().SetIndent(indent);
 		}
+		[SmokeMethod("indent() const")]
 		public int Indent() {
 			return ProxyQTextListFormat().Indent();
 		}
 		~QTextListFormat() {
-			ProxyQTextListFormat().Dispose();
+			DisposeQTextListFormat();
 		}
 		public void Dispose() {
-			ProxyQTextListFormat().Dispose();
+			DisposeQTextListFormat();
+		}
+		private void DisposeQTextListFormat() {
+			ProxyQTextListFormat().DisposeQTextListFormat();
 		}
 	}
 }

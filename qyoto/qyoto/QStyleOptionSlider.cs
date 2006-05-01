@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QStyleOptionSlider")]
 	public class QStyleOptionSlider : QStyleOptionComplex, IDisposable {
  		protected QStyleOptionSlider(Type dummy) : base((Type) null) {}
 		interface IQStyleOptionSliderProxy {
 		}
 
-		protected void CreateQStyleOptionSliderProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionSlider), this);
 			_interceptor = (QStyleOptionSlider) realProxy.GetTransparentProxy();
 		}
@@ -24,36 +25,42 @@ namespace Qt {
 			return (IQStyleOptionSliderProxy) _staticInterceptor;
 		}
 
-		public const int Type = (int) OptionType.SO_Slider;
+		public const int Type = (int) QStyleOption.OptionType.SO_Slider;
 
 		public const int Version = 1;
 
 		public QStyleOptionSlider() : this((Type) null) {
-			CreateQStyleOptionSliderProxy();
+			CreateProxy();
 			NewQStyleOptionSlider();
 		}
+		[SmokeMethod("QStyleOptionSlider()")]
 		private void NewQStyleOptionSlider() {
 			ProxyQStyleOptionSlider().NewQStyleOptionSlider();
 		}
 		public QStyleOptionSlider(QStyleOptionSlider other) : this((Type) null) {
-			CreateQStyleOptionSliderProxy();
+			CreateProxy();
 			NewQStyleOptionSlider(other);
 		}
+		[SmokeMethod("QStyleOptionSlider(const QStyleOptionSlider&)")]
 		private void NewQStyleOptionSlider(QStyleOptionSlider other) {
 			ProxyQStyleOptionSlider().NewQStyleOptionSlider(other);
 		}
 		public QStyleOptionSlider(int version) : this((Type) null) {
-			CreateQStyleOptionSliderProxy();
+			CreateProxy();
 			NewQStyleOptionSlider(version);
 		}
+		[SmokeMethod("QStyleOptionSlider(int)")]
 		private void NewQStyleOptionSlider(int version) {
 			ProxyQStyleOptionSlider().NewQStyleOptionSlider(version);
 		}
 		~QStyleOptionSlider() {
-			ProxyQStyleOptionSlider().Dispose();
+			DisposeQStyleOptionSlider();
 		}
 		public void Dispose() {
-			ProxyQStyleOptionSlider().Dispose();
+			DisposeQStyleOptionSlider();
+		}
+		private void DisposeQStyleOptionSlider() {
+			ProxyQStyleOptionSlider().DisposeQStyleOptionSlider();
 		}
 	}
 }

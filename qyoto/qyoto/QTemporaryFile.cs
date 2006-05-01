@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QTemporaryFile")]
 	public class QTemporaryFile : QFile, IDisposable {
  		protected QTemporaryFile(Type dummy) : base((Type) null) {}
 		interface IQTemporaryFileProxy {
@@ -13,7 +14,7 @@ namespace Qt {
 			QTemporaryFile CreateLocalFile(QFile file);
 		}
 
-		protected void CreateQTemporaryFileProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTemporaryFile), this);
 			_interceptor = (QTemporaryFile) realProxy.GetTransparentProxy();
 		}
@@ -29,78 +30,102 @@ namespace Qt {
 			return (IQTemporaryFileProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQTemporaryFile().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QTemporaryFile() : this((Type) null) {
-			CreateQTemporaryFileProxy();
+			CreateProxy();
 			NewQTemporaryFile();
 		}
+		[SmokeMethod("QTemporaryFile()")]
 		private void NewQTemporaryFile() {
 			ProxyQTemporaryFile().NewQTemporaryFile();
 		}
 		public QTemporaryFile(string templateName) : this((Type) null) {
-			CreateQTemporaryFileProxy();
+			CreateProxy();
 			NewQTemporaryFile(templateName);
 		}
+		[SmokeMethod("QTemporaryFile(const QString&)")]
 		private void NewQTemporaryFile(string templateName) {
 			ProxyQTemporaryFile().NewQTemporaryFile(templateName);
 		}
 		public QTemporaryFile(QObject parent) : this((Type) null) {
-			CreateQTemporaryFileProxy();
+			CreateProxy();
 			NewQTemporaryFile(parent);
 		}
+		[SmokeMethod("QTemporaryFile(QObject*)")]
 		private void NewQTemporaryFile(QObject parent) {
 			ProxyQTemporaryFile().NewQTemporaryFile(parent);
 		}
 		public QTemporaryFile(string templateName, QObject parent) : this((Type) null) {
-			CreateQTemporaryFileProxy();
+			CreateProxy();
 			NewQTemporaryFile(templateName,parent);
 		}
+		[SmokeMethod("QTemporaryFile(const QString&, QObject*)")]
 		private void NewQTemporaryFile(string templateName, QObject parent) {
 			ProxyQTemporaryFile().NewQTemporaryFile(templateName,parent);
 		}
+		[SmokeMethod("autoRemove() const")]
 		public bool AutoRemove() {
 			return ProxyQTemporaryFile().AutoRemove();
 		}
+		[SmokeMethod("setAutoRemove(bool)")]
 		public void SetAutoRemove(bool b) {
 			ProxyQTemporaryFile().SetAutoRemove(b);
 		}
+		[SmokeMethod("open()")]
 		public new bool Open() {
 			return ProxyQTemporaryFile().Open();
 		}
+		[SmokeMethod("fileName() const")]
 		public new string FileName() {
 			return ProxyQTemporaryFile().FileName();
 		}
+		[SmokeMethod("fileTemplate() const")]
 		public string FileTemplate() {
 			return ProxyQTemporaryFile().FileTemplate();
 		}
+		[SmokeMethod("setFileTemplate(const QString&)")]
 		public void SetFileTemplate(string name) {
 			ProxyQTemporaryFile().SetFileTemplate(name);
 		}
-		// QFileEngine* fileEngine(); >>>> NOT CONVERTED
+		// QAbstractFileEngine* fileEngine(); >>>> NOT CONVERTED
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQTemporaryFile().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQTemporaryFile().Tr(s);
 		}
+		[SmokeMethod("createLocalFile(const QString&)")]
 		public static QTemporaryFile CreateLocalFile(string fileName) {
 			return StaticQTemporaryFile().CreateLocalFile(fileName);
 		}
+		[SmokeMethod("createLocalFile(QFile&)")]
 		public static QTemporaryFile CreateLocalFile(QFile file) {
 			return StaticQTemporaryFile().CreateLocalFile(file);
 		}
+		[SmokeMethod("open(OpenMode)")]
 		protected new bool Open(int flags) {
 			return ProxyQTemporaryFile().Open(flags);
 		}
 		~QTemporaryFile() {
-			ProxyQTemporaryFile().Dispose();
+			DisposeQTemporaryFile();
 		}
 		public void Dispose() {
-			ProxyQTemporaryFile().Dispose();
+			DisposeQTemporaryFile();
 		}
+		private void DisposeQTemporaryFile() {
+			ProxyQTemporaryFile().DisposeQTemporaryFile();
+		}
+		protected new IQTemporaryFileSignals Emit() {
+			return (IQTemporaryFileSignals) Q_EMIT;
+		}
+	}
+
+	public interface IQTemporaryFileSignals : IQFileSignals {
 	}
 }

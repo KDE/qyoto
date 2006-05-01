@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QColormap")]
 	public class QColormap : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
@@ -15,7 +16,7 @@ namespace Qt {
 			QColormap Instance();
 		}
 
-		protected void CreateQColormapProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QColormap), this);
 			_interceptor = (QColormap) realProxy.GetTransparentProxy();
 		}
@@ -31,51 +32,64 @@ namespace Qt {
 			return (IQColormapProxy) _staticInterceptor;
 		}
 
-		enum E_Mode {
+		public enum Mode {
 			Direct = 0,
 			Indexed = 1,
 			Gray = 2,
 		}
 		public QColormap(QColormap colormap) : this((Type) null) {
-			CreateQColormapProxy();
+			CreateProxy();
 			NewQColormap(colormap);
 		}
+		[SmokeMethod("QColormap(const QColormap&)")]
 		private void NewQColormap(QColormap colormap) {
 			ProxyQColormap().NewQColormap(colormap);
 		}
-		public int Mode() {
-			return ProxyQColormap().Mode();
+		[SmokeMethod("mode() const")]
+		public QColormap.Mode mode() {
+			return ProxyQColormap().mode();
 		}
+		[SmokeMethod("depth() const")]
 		public int Depth() {
 			return ProxyQColormap().Depth();
 		}
+		[SmokeMethod("size() const")]
 		public int Size() {
 			return ProxyQColormap().Size();
 		}
+		[SmokeMethod("pixel(const QColor&) const")]
 		public uint Pixel(QColor color) {
 			return ProxyQColormap().Pixel(color);
 		}
+		[SmokeMethod("colorAt(uint) const")]
 		public QColor ColorAt(uint pixel) {
 			return ProxyQColormap().ColorAt(pixel);
 		}
 		// const QVector<QColor> colormap(); >>>> NOT CONVERTED
+		[SmokeMethod("initialize()")]
 		public static void Initialize() {
 			StaticQColormap().Initialize();
 		}
+		[SmokeMethod("cleanup()")]
 		public static void Cleanup() {
 			StaticQColormap().Cleanup();
 		}
+		[SmokeMethod("instance(int)")]
 		public static QColormap Instance(int screen) {
 			return StaticQColormap().Instance(screen);
 		}
+		[SmokeMethod("instance()")]
 		public static QColormap Instance() {
 			return StaticQColormap().Instance();
 		}
 		~QColormap() {
-			ProxyQColormap().Dispose();
+			DisposeQColormap();
 		}
 		public void Dispose() {
-			ProxyQColormap().Dispose();
+			DisposeQColormap();
+		}
+		private void DisposeQColormap() {
+			ProxyQColormap().DisposeQColormap();
 		}
 	}
 }

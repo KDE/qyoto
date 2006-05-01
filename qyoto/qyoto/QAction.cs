@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQActionSignals"></see> for signals emitted by QAction
+	[SmokeClass("QAction")]
 	public class QAction : QObject, IDisposable {
  		protected QAction(Type dummy) : base((Type) null) {}
 		interface IQActionProxy {
@@ -12,7 +13,7 @@ namespace Qt {
 			string Tr(string s);
 		}
 
-		protected void CreateQActionProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAction), this);
 			_interceptor = (QAction) realProxy.GetTransparentProxy();
 		}
@@ -28,184 +29,254 @@ namespace Qt {
 			return (IQActionProxy) _staticInterceptor;
 		}
 
-		enum ActionEvent {
+		public enum ActionEvent {
 			Trigger = 0,
 			Hover = 1,
 		}
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQAction().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QAction(QObject parent) : this((Type) null) {
-			CreateQActionProxy();
+			CreateProxy();
 			NewQAction(parent);
 		}
+		[SmokeMethod("QAction(QObject*)")]
 		private void NewQAction(QObject parent) {
 			ProxyQAction().NewQAction(parent);
 		}
 		public QAction(string text, QObject parent) : this((Type) null) {
-			CreateQActionProxy();
+			CreateProxy();
 			NewQAction(text,parent);
 		}
+		[SmokeMethod("QAction(const QString&, QObject*)")]
 		private void NewQAction(string text, QObject parent) {
 			ProxyQAction().NewQAction(text,parent);
 		}
 		public QAction(QIcon icon, string text, QObject parent) : this((Type) null) {
-			CreateQActionProxy();
+			CreateProxy();
 			NewQAction(icon,text,parent);
 		}
+		[SmokeMethod("QAction(const QIcon&, const QString&, QObject*)")]
 		private void NewQAction(QIcon icon, string text, QObject parent) {
 			ProxyQAction().NewQAction(icon,text,parent);
 		}
+		[SmokeMethod("setActionGroup(QActionGroup*)")]
 		public void SetActionGroup(QActionGroup group) {
 			ProxyQAction().SetActionGroup(group);
 		}
+		[SmokeMethod("actionGroup() const")]
 		public QActionGroup ActionGroup() {
 			return ProxyQAction().ActionGroup();
 		}
+		[SmokeMethod("setIcon(const QIcon&)")]
 		public void SetIcon(QIcon icon) {
 			ProxyQAction().SetIcon(icon);
 		}
+		[SmokeMethod("icon() const")]
 		public QIcon Icon() {
 			return ProxyQAction().Icon();
 		}
+		[SmokeMethod("setText(const QString&)")]
 		public void SetText(string text) {
 			ProxyQAction().SetText(text);
 		}
+		[SmokeMethod("text() const")]
 		public string Text() {
 			return ProxyQAction().Text();
 		}
+		[SmokeMethod("setIconText(const QString&)")]
 		public void SetIconText(string text) {
 			ProxyQAction().SetIconText(text);
 		}
+		[SmokeMethod("iconText() const")]
 		public string IconText() {
 			return ProxyQAction().IconText();
 		}
+		[SmokeMethod("setToolTip(const QString&)")]
 		public void SetToolTip(string tip) {
 			ProxyQAction().SetToolTip(tip);
 		}
+		[SmokeMethod("toolTip() const")]
 		public string ToolTip() {
 			return ProxyQAction().ToolTip();
 		}
+		[SmokeMethod("setStatusTip(const QString&)")]
 		public void SetStatusTip(string statusTip) {
 			ProxyQAction().SetStatusTip(statusTip);
 		}
+		[SmokeMethod("statusTip() const")]
 		public string StatusTip() {
 			return ProxyQAction().StatusTip();
 		}
+		[SmokeMethod("setWhatsThis(const QString&)")]
 		public void SetWhatsThis(string what) {
 			ProxyQAction().SetWhatsThis(what);
 		}
+		[SmokeMethod("whatsThis() const")]
 		public string WhatsThis() {
 			return ProxyQAction().WhatsThis();
 		}
+		[SmokeMethod("menu() const")]
 		public QMenu Menu() {
 			return ProxyQAction().Menu();
 		}
+		[SmokeMethod("setMenu(QMenu*)")]
 		public void SetMenu(QMenu menu) {
 			ProxyQAction().SetMenu(menu);
 		}
+		[SmokeMethod("setSeparator(bool)")]
 		public void SetSeparator(bool b) {
 			ProxyQAction().SetSeparator(b);
 		}
+		[SmokeMethod("isSeparator() const")]
 		public bool IsSeparator() {
 			return ProxyQAction().IsSeparator();
 		}
+		[SmokeMethod("setShortcut(const QKeySequence&)")]
 		public void SetShortcut(QKeySequence shortcut) {
 			ProxyQAction().SetShortcut(shortcut);
 		}
+		[SmokeMethod("shortcut() const")]
 		public QKeySequence Shortcut() {
 			return ProxyQAction().Shortcut();
 		}
-		public void SetShortcutContext(int context) {
+		// void setAlternateShortcuts(const QList<QKeySequence>& arg1); >>>> NOT CONVERTED
+		// QList<QKeySequence> alternateShortcuts(); >>>> NOT CONVERTED
+		[SmokeMethod("setShortcutContext(Qt::ShortcutContext)")]
+		public void SetShortcutContext(Qt.ShortcutContext context) {
 			ProxyQAction().SetShortcutContext(context);
 		}
-		public int ShortcutContext() {
+		[SmokeMethod("shortcutContext() const")]
+		public Qt.ShortcutContext ShortcutContext() {
 			return ProxyQAction().ShortcutContext();
 		}
+		[SmokeMethod("setFont(const QFont&)")]
 		public void SetFont(QFont font) {
 			ProxyQAction().SetFont(font);
 		}
+		[SmokeMethod("font() const")]
 		public QFont Font() {
 			return ProxyQAction().Font();
 		}
+		[SmokeMethod("setCheckable(bool)")]
 		public void SetCheckable(bool arg1) {
 			ProxyQAction().SetCheckable(arg1);
 		}
+		[SmokeMethod("isCheckable() const")]
 		public bool IsCheckable() {
 			return ProxyQAction().IsCheckable();
 		}
+		[SmokeMethod("data() const")]
 		public QVariant Data() {
 			return ProxyQAction().Data();
 		}
+		[SmokeMethod("setData(const QVariant&)")]
 		public void SetData(QVariant var) {
 			ProxyQAction().SetData(var);
 		}
+		[SmokeMethod("isChecked() const")]
 		public bool IsChecked() {
 			return ProxyQAction().IsChecked();
 		}
+		[SmokeMethod("isEnabled() const")]
 		public bool IsEnabled() {
 			return ProxyQAction().IsEnabled();
 		}
+		[SmokeMethod("isVisible() const")]
 		public bool IsVisible() {
 			return ProxyQAction().IsVisible();
 		}
-		public void Activate(int arg1) {
+		[SmokeMethod("activate(QAction::ActionEvent)")]
+		public void Activate(QAction.ActionEvent arg1) {
 			ProxyQAction().Activate(arg1);
 		}
+		[SmokeMethod("showStatusText(QWidget*)")]
 		public bool ShowStatusText(QWidget widget) {
 			return ProxyQAction().ShowStatusText(widget);
 		}
+		[SmokeMethod("showStatusText()")]
 		public bool ShowStatusText() {
 			return ProxyQAction().ShowStatusText();
 		}
+		[SmokeMethod("parentWidget() const")]
 		public QWidget ParentWidget() {
 			return ProxyQAction().ParentWidget();
 		}
+		// QList<QWidget*> associatedWidgets(); >>>> NOT CONVERTED
+		[SmokeMethod("toolBarWidgetFactory() const")]
+		public QActionWidgetFactory ToolBarWidgetFactory() {
+			return ProxyQAction().ToolBarWidgetFactory();
+		}
+		[SmokeMethod("setToolBarWidgetFactory(QActionWidgetFactory*)")]
+		public void SetToolBarWidgetFactory(QActionWidgetFactory factory) {
+			ProxyQAction().SetToolBarWidgetFactory(factory);
+		}
+		[SmokeMethod("trigger()")]
 		public void Trigger() {
 			ProxyQAction().Trigger();
 		}
+		[SmokeMethod("hover()")]
 		public void Hover() {
 			ProxyQAction().Hover();
 		}
+		[SmokeMethod("setChecked(bool)")]
 		public void SetChecked(bool arg1) {
 			ProxyQAction().SetChecked(arg1);
 		}
+		[SmokeMethod("toggle()")]
 		public void Toggle() {
 			ProxyQAction().Toggle();
 		}
+		[SmokeMethod("setEnabled(bool)")]
 		public void SetEnabled(bool arg1) {
 			ProxyQAction().SetEnabled(arg1);
 		}
+		[SmokeMethod("setDisabled(bool)")]
 		public void SetDisabled(bool b) {
 			ProxyQAction().SetDisabled(b);
 		}
+		[SmokeMethod("setVisible(bool)")]
 		public void SetVisible(bool arg1) {
 			ProxyQAction().SetVisible(arg1);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQAction().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQAction().Tr(s);
 		}
+		[SmokeMethod("event(QEvent*)")]
 		public new bool Event(QEvent arg1) {
 			return ProxyQAction().Event(arg1);
 		}
 		~QAction() {
-			ProxyQAction().Dispose();
+			DisposeQAction();
 		}
 		public new void Dispose() {
-			ProxyQAction().Dispose();
+			DisposeQAction();
+		}
+		private void DisposeQAction() {
+			ProxyQAction().DisposeQAction();
+		}
+		protected new IQActionSignals Emit() {
+			return (IQActionSignals) Q_EMIT;
 		}
 	}
 
-	public interface IQActionSignals {
+	public interface IQActionSignals : IQObjectSignals {
+		[Q_SIGNAL("void changed()")]
 		void Changed();
+		[Q_SIGNAL("void triggered(bool)")]
 		void Triggered(bool arg1);
+		[Q_SIGNAL("void triggered()")]
 		void Triggered();
+		[Q_SIGNAL("void hovered()")]
 		void Hovered();
+		[Q_SIGNAL("void toggled(bool)")]
 		void Toggled(bool arg1);
 	}
 }

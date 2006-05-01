@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QUuid")]
 	public class QUuid : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
  
@@ -16,7 +17,7 @@ namespace Qt {
 			QUuid CreateUuid();
 		}
 
-		protected void CreateQUuidProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QUuid), this);
 			_interceptor = (QUuid) realProxy.GetTransparentProxy();
 		}
@@ -32,14 +33,14 @@ namespace Qt {
 			return (IQUuidProxy) _staticInterceptor;
 		}
 
-		enum E_Variant {
+		public enum Variant {
 			VarUnknown = -1,
 			NCS = 0,
 			DCE = 2,
 			Microsoft = 6,
 			Reserved = 7,
 		}
-		enum E_Version {
+		public enum Version {
 			VerUnknown = -1,
 			Time = 1,
 			EmbeddedPOSIX = 2,
@@ -47,33 +48,39 @@ namespace Qt {
 			Random = 4,
 		}
 		public QUuid() : this((Type) null) {
-			CreateQUuidProxy();
+			CreateProxy();
 			NewQUuid();
 		}
+		[SmokeMethod("QUuid()")]
 		private void NewQUuid() {
 			ProxyQUuid().NewQUuid();
 		}
 		public QUuid(uint l, ushort w1, ushort w2, ushort b1, ushort b2, ushort b3, ushort b4, ushort b5, ushort b6, ushort b7, ushort b8) : this((Type) null) {
-			CreateQUuidProxy();
+			CreateProxy();
 			NewQUuid(l,w1,w2,b1,b2,b3,b4,b5,b6,b7,b8);
 		}
+		[SmokeMethod("QUuid(uint, ushort, ushort, uchar, uchar, uchar, uchar, uchar, uchar, uchar, uchar)")]
 		private void NewQUuid(uint l, ushort w1, ushort w2, ushort b1, ushort b2, ushort b3, ushort b4, ushort b5, ushort b6, ushort b7, ushort b8) {
 			ProxyQUuid().NewQUuid(l,w1,w2,b1,b2,b3,b4,b5,b6,b7,b8);
 		}
 		public QUuid(string arg1) : this((Type) null) {
-			CreateQUuidProxy();
+			CreateProxy();
 			NewQUuid(arg1);
 		}
+		[SmokeMethod("QUuid(const QString&)")]
 		private void NewQUuid(string arg1) {
 			ProxyQUuid().NewQUuid(arg1);
 		}
+		[SmokeMethod("toString() const")]
 		public new string ToString() {
 			return ProxyQUuid().ToString();
 		}
 		//  operator QString(); >>>> NOT CONVERTED
+		[SmokeMethod("isNull() const")]
 		public bool IsNull() {
 			return ProxyQUuid().IsNull();
 		}
+		[SmokeMethod("operator==(const QUuid&) const")]
 		public static bool operator==(QUuid lhs, QUuid orig) {
 			return StaticQUuid().op_equals(lhs,orig);
 		}
@@ -87,26 +94,34 @@ namespace Qt {
 		public override int GetHashCode() {
 			return ProxyQUuid().GetHashCode();
 		}
+		[SmokeMethod("operator<(const QUuid&) const")]
 		public static bool operator<(QUuid lhs, QUuid other) {
 			return StaticQUuid().op_lt(lhs,other);
 		}
+		[SmokeMethod("operator>(const QUuid&) const")]
 		public static bool operator>(QUuid lhs, QUuid other) {
 			return StaticQUuid().op_gt(lhs,other);
 		}
-		public int Variant() {
-			return ProxyQUuid().Variant();
+		[SmokeMethod("variant() const")]
+		public QUuid.Variant variant() {
+			return ProxyQUuid().variant();
 		}
-		public int Version() {
-			return ProxyQUuid().Version();
+		[SmokeMethod("version() const")]
+		public QUuid.Version version() {
+			return ProxyQUuid().version();
 		}
+		[SmokeMethod("createUuid()")]
 		public static QUuid CreateUuid() {
 			return StaticQUuid().CreateUuid();
 		}
 		~QUuid() {
-			ProxyQUuid().Dispose();
+			DisposeQUuid();
 		}
 		public void Dispose() {
-			ProxyQUuid().Dispose();
+			DisposeQUuid();
+		}
+		private void DisposeQUuid() {
+			ProxyQUuid().DisposeQUuid();
 		}
 	}
 }

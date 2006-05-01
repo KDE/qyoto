@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQGroupBoxSignals"></see> for signals emitted by QGroupBox
+	[SmokeClass("QGroupBox")]
 	public class QGroupBox : QWidget, IDisposable {
  		protected QGroupBox(Type dummy) : base((Type) null) {}
 		interface IQGroupBoxProxy {
@@ -12,7 +13,7 @@ namespace Qt {
 			string Tr(string s);
 		}
 
-		protected void CreateQGroupBoxProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGroupBox), this);
 			_interceptor = (QGroupBox) realProxy.GetTransparentProxy();
 		}
@@ -28,105 +29,147 @@ namespace Qt {
 			return (IQGroupBoxProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQGroupBox().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QGroupBox(QWidget parent) : this((Type) null) {
-			CreateQGroupBoxProxy();
+			CreateProxy();
 			NewQGroupBox(parent);
 		}
+		[SmokeMethod("QGroupBox(QWidget*)")]
 		private void NewQGroupBox(QWidget parent) {
 			ProxyQGroupBox().NewQGroupBox(parent);
 		}
 		public QGroupBox() : this((Type) null) {
-			CreateQGroupBoxProxy();
+			CreateProxy();
 			NewQGroupBox();
 		}
+		[SmokeMethod("QGroupBox()")]
 		private void NewQGroupBox() {
 			ProxyQGroupBox().NewQGroupBox();
 		}
 		public QGroupBox(string title, QWidget parent) : this((Type) null) {
-			CreateQGroupBoxProxy();
+			CreateProxy();
 			NewQGroupBox(title,parent);
 		}
+		[SmokeMethod("QGroupBox(const QString&, QWidget*)")]
 		private void NewQGroupBox(string title, QWidget parent) {
 			ProxyQGroupBox().NewQGroupBox(title,parent);
 		}
 		public QGroupBox(string title) : this((Type) null) {
-			CreateQGroupBoxProxy();
+			CreateProxy();
 			NewQGroupBox(title);
 		}
+		[SmokeMethod("QGroupBox(const QString&)")]
 		private void NewQGroupBox(string title) {
 			ProxyQGroupBox().NewQGroupBox(title);
 		}
+		[SmokeMethod("title() const")]
 		public string Title() {
 			return ProxyQGroupBox().Title();
 		}
-		public void SetTitle(string arg1) {
-			ProxyQGroupBox().SetTitle(arg1);
+		[SmokeMethod("setTitle(const QString&)")]
+		public void SetTitle(string title) {
+			ProxyQGroupBox().SetTitle(title);
 		}
+		[SmokeMethod("alignment() const")]
 		public int Alignment() {
 			return ProxyQGroupBox().Alignment();
 		}
-		public void SetAlignment(int arg1) {
-			ProxyQGroupBox().SetAlignment(arg1);
+		[SmokeMethod("setAlignment(int)")]
+		public void SetAlignment(int alignment) {
+			ProxyQGroupBox().SetAlignment(alignment);
 		}
+		[SmokeMethod("minimumSizeHint() const")]
 		public new QSize MinimumSizeHint() {
 			return ProxyQGroupBox().MinimumSizeHint();
 		}
+		[SmokeMethod("isFlat() const")]
 		public bool IsFlat() {
 			return ProxyQGroupBox().IsFlat();
 		}
-		public void SetFlat(bool b) {
-			ProxyQGroupBox().SetFlat(b);
+		[SmokeMethod("setFlat(bool)")]
+		public void SetFlat(bool flat) {
+			ProxyQGroupBox().SetFlat(flat);
 		}
+		[SmokeMethod("isCheckable() const")]
 		public bool IsCheckable() {
 			return ProxyQGroupBox().IsCheckable();
 		}
-		public void SetCheckable(bool b) {
-			ProxyQGroupBox().SetCheckable(b);
+		[SmokeMethod("setCheckable(bool)")]
+		public void SetCheckable(bool checkable) {
+			ProxyQGroupBox().SetCheckable(checkable);
 		}
+		[SmokeMethod("isChecked() const")]
 		public bool IsChecked() {
 			return ProxyQGroupBox().IsChecked();
 		}
-		public void SetChecked(bool b) {
-			ProxyQGroupBox().SetChecked(b);
+		[SmokeMethod("setChecked(bool)")]
+		public void SetChecked(bool arg1) {
+			ProxyQGroupBox().SetChecked(arg1);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQGroupBox().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQGroupBox().Tr(s);
 		}
+		[SmokeMethod("event(QEvent*)")]
 		public new bool Event(QEvent arg1) {
 			return ProxyQGroupBox().Event(arg1);
 		}
+		[SmokeMethod("childEvent(QChildEvent*)")]
 		protected new void ChildEvent(QChildEvent arg1) {
 			ProxyQGroupBox().ChildEvent(arg1);
 		}
+		[SmokeMethod("resizeEvent(QResizeEvent*)")]
 		protected new void ResizeEvent(QResizeEvent arg1) {
 			ProxyQGroupBox().ResizeEvent(arg1);
 		}
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected new void PaintEvent(QPaintEvent arg1) {
 			ProxyQGroupBox().PaintEvent(arg1);
 		}
+		[SmokeMethod("focusInEvent(QFocusEvent*)")]
 		protected new void FocusInEvent(QFocusEvent arg1) {
 			ProxyQGroupBox().FocusInEvent(arg1);
 		}
+		[SmokeMethod("changeEvent(QEvent*)")]
 		protected new void ChangeEvent(QEvent arg1) {
 			ProxyQGroupBox().ChangeEvent(arg1);
 		}
+		[SmokeMethod("mousePressEvent(QMouseEvent*)")]
+		protected new void MousePressEvent(QMouseEvent arg1) {
+			ProxyQGroupBox().MousePressEvent(arg1);
+		}
+		[SmokeMethod("mouseMoveEvent(QMouseEvent*)")]
+		protected new void MouseMoveEvent(QMouseEvent arg1) {
+			ProxyQGroupBox().MouseMoveEvent(arg1);
+		}
+		[SmokeMethod("mouseReleaseEvent(QMouseEvent*)")]
+		protected new void MouseReleaseEvent(QMouseEvent arg1) {
+			ProxyQGroupBox().MouseReleaseEvent(arg1);
+		}
 		~QGroupBox() {
-			ProxyQGroupBox().Dispose();
+			DisposeQGroupBox();
 		}
 		public new void Dispose() {
-			ProxyQGroupBox().Dispose();
+			DisposeQGroupBox();
+		}
+		private void DisposeQGroupBox() {
+			ProxyQGroupBox().DisposeQGroupBox();
+		}
+		protected new IQGroupBoxSignals Emit() {
+			return (IQGroupBoxSignals) Q_EMIT;
 		}
 	}
 
-	public interface IQGroupBoxSignals {
+	public interface IQGroupBoxSignals : IQWidgetSignals {
+		[Q_SIGNAL("void toggled(bool)")]
 		void Toggled(bool arg1);
 	}
 }

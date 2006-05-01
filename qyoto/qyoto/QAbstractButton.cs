@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQAbstractButtonSignals"></see> for signals emitted by QAbstractButton
+	[SmokeClass("QAbstractButton")]
 	public class QAbstractButton : QWidget {
  		protected QAbstractButton(Type dummy) : base((Type) null) {}
 		interface IQAbstractButtonProxy {
@@ -12,7 +13,7 @@ namespace Qt {
 			string Tr(string s);
 		}
 
-		protected void CreateQAbstractButtonProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAbstractButton), this);
 			_interceptor = (QAbstractButton) realProxy.GetTransparentProxy();
 		}
@@ -28,93 +29,151 @@ namespace Qt {
 			return (IQAbstractButtonProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQAbstractButton().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
+		public QAbstractButton(QWidget parent) : this((Type) null) {
+			CreateProxy();
+			NewQAbstractButton(parent);
+		}
+		[SmokeMethod("QAbstractButton(QWidget*)")]
+		private void NewQAbstractButton(QWidget parent) {
+			ProxyQAbstractButton().NewQAbstractButton(parent);
+		}
+		public QAbstractButton() : this((Type) null) {
+			CreateProxy();
+			NewQAbstractButton();
+		}
+		[SmokeMethod("QAbstractButton()")]
+		private void NewQAbstractButton() {
+			ProxyQAbstractButton().NewQAbstractButton();
+		}
+		[SmokeMethod("setText(const QString&)")]
 		public void SetText(string text) {
 			ProxyQAbstractButton().SetText(text);
 		}
+		[SmokeMethod("text() const")]
 		public string Text() {
 			return ProxyQAbstractButton().Text();
 		}
+		[SmokeMethod("setIcon(const QIcon&)")]
 		public void SetIcon(QIcon icon) {
 			ProxyQAbstractButton().SetIcon(icon);
 		}
+		[SmokeMethod("icon() const")]
 		public QIcon Icon() {
 			return ProxyQAbstractButton().Icon();
 		}
+		[SmokeMethod("iconSize() const")]
 		public QSize IconSize() {
 			return ProxyQAbstractButton().IconSize();
 		}
+		[SmokeMethod("setShortcut(const QKeySequence&)")]
 		public void SetShortcut(QKeySequence key) {
 			ProxyQAbstractButton().SetShortcut(key);
 		}
+		[SmokeMethod("shortcut() const")]
 		public QKeySequence Shortcut() {
 			return ProxyQAbstractButton().Shortcut();
 		}
+		[SmokeMethod("setCheckable(bool)")]
 		public void SetCheckable(bool arg1) {
 			ProxyQAbstractButton().SetCheckable(arg1);
 		}
+		[SmokeMethod("isCheckable() const")]
 		public bool IsCheckable() {
 			return ProxyQAbstractButton().IsCheckable();
 		}
+		[SmokeMethod("isChecked() const")]
 		public bool IsChecked() {
 			return ProxyQAbstractButton().IsChecked();
 		}
+		[SmokeMethod("setDown(bool)")]
 		public void SetDown(bool arg1) {
 			ProxyQAbstractButton().SetDown(arg1);
 		}
+		[SmokeMethod("isDown() const")]
 		public bool IsDown() {
 			return ProxyQAbstractButton().IsDown();
 		}
+		[SmokeMethod("setAutoRepeat(bool)")]
 		public void SetAutoRepeat(bool arg1) {
 			ProxyQAbstractButton().SetAutoRepeat(arg1);
 		}
+		[SmokeMethod("autoRepeat() const")]
 		public bool AutoRepeat() {
 			return ProxyQAbstractButton().AutoRepeat();
 		}
+		[SmokeMethod("setAutoExclusive(bool)")]
 		public void SetAutoExclusive(bool arg1) {
 			ProxyQAbstractButton().SetAutoExclusive(arg1);
 		}
+		[SmokeMethod("autoExclusive() const")]
 		public bool AutoExclusive() {
 			return ProxyQAbstractButton().AutoExclusive();
 		}
+		[SmokeMethod("group() const")]
 		public QButtonGroup Group() {
 			return ProxyQAbstractButton().Group();
 		}
+		[SmokeMethod("setIconSize(const QSize&)")]
 		public void SetIconSize(QSize size) {
 			ProxyQAbstractButton().SetIconSize(size);
 		}
+		[SmokeMethod("animateClick(int)")]
 		public void AnimateClick(int msec) {
 			ProxyQAbstractButton().AnimateClick(msec);
 		}
+		[SmokeMethod("animateClick()")]
 		public void AnimateClick() {
 			ProxyQAbstractButton().AnimateClick();
 		}
+		[SmokeMethod("click()")]
 		public void Click() {
 			ProxyQAbstractButton().Click();
 		}
+		[SmokeMethod("toggle()")]
 		public void Toggle() {
 			ProxyQAbstractButton().Toggle();
 		}
+		[SmokeMethod("setChecked(bool)")]
 		public void SetChecked(bool arg1) {
 			ProxyQAbstractButton().SetChecked(arg1);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQAbstractButton().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQAbstractButton().Tr(s);
 		}
+		~QAbstractButton() {
+			DisposeQAbstractButton();
+		}
+		public new void Dispose() {
+			DisposeQAbstractButton();
+		}
+		private void DisposeQAbstractButton() {
+			ProxyQAbstractButton().DisposeQAbstractButton();
+		}
+		protected new IQAbstractButtonSignals Emit() {
+			return (IQAbstractButtonSignals) Q_EMIT;
+		}
 	}
 
-	public interface IQAbstractButtonSignals {
+	public interface IQAbstractButtonSignals : IQWidgetSignals {
+		[Q_SIGNAL("void pressed()")]
 		void Pressed();
+		[Q_SIGNAL("void released()")]
 		void Released();
+		[Q_SIGNAL("void clicked(bool)")]
 		void Clicked(bool arg1);
+		[Q_SIGNAL("void clicked()")]
 		void Clicked();
+		[Q_SIGNAL("void toggled(bool)")]
 		void Toggled(bool arg1);
 	}
 }

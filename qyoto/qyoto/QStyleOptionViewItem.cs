@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QStyleOptionViewItem")]
 	public class QStyleOptionViewItem : QStyleOption, IDisposable {
  		protected QStyleOptionViewItem(Type dummy) : base((Type) null) {}
 		interface IQStyleOptionViewItemProxy {
 		}
 
-		protected void CreateQStyleOptionViewItemProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionViewItem), this);
 			_interceptor = (QStyleOptionViewItem) realProxy.GetTransparentProxy();
 		}
@@ -24,42 +25,48 @@ namespace Qt {
 			return (IQStyleOptionViewItemProxy) _staticInterceptor;
 		}
 
-		public const int Type = (int) OptionType.SO_ViewItem;
-
-		public const int Version = 1;
-
-		enum Position {
+		public enum Position {
 			Left = 0,
 			Right = 1,
 			Top = 2,
 			Bottom = 3,
 		}
+		public const int Type = (int) QStyleOption.OptionType.SO_ViewItem;
+
+		public const int Version = 1;
+
 		public QStyleOptionViewItem() : this((Type) null) {
-			CreateQStyleOptionViewItemProxy();
+			CreateProxy();
 			NewQStyleOptionViewItem();
 		}
+		[SmokeMethod("QStyleOptionViewItem()")]
 		private void NewQStyleOptionViewItem() {
 			ProxyQStyleOptionViewItem().NewQStyleOptionViewItem();
 		}
 		public QStyleOptionViewItem(QStyleOptionViewItem other) : this((Type) null) {
-			CreateQStyleOptionViewItemProxy();
+			CreateProxy();
 			NewQStyleOptionViewItem(other);
 		}
+		[SmokeMethod("QStyleOptionViewItem(const QStyleOptionViewItem&)")]
 		private void NewQStyleOptionViewItem(QStyleOptionViewItem other) {
 			ProxyQStyleOptionViewItem().NewQStyleOptionViewItem(other);
 		}
 		public QStyleOptionViewItem(int version) : this((Type) null) {
-			CreateQStyleOptionViewItemProxy();
+			CreateProxy();
 			NewQStyleOptionViewItem(version);
 		}
+		[SmokeMethod("QStyleOptionViewItem(int)")]
 		private void NewQStyleOptionViewItem(int version) {
 			ProxyQStyleOptionViewItem().NewQStyleOptionViewItem(version);
 		}
 		~QStyleOptionViewItem() {
-			ProxyQStyleOptionViewItem().Dispose();
+			DisposeQStyleOptionViewItem();
 		}
 		public void Dispose() {
-			ProxyQStyleOptionViewItem().Dispose();
+			DisposeQStyleOptionViewItem();
+		}
+		private void DisposeQStyleOptionViewItem() {
+			ProxyQStyleOptionViewItem().DisposeQStyleOptionViewItem();
 		}
 	}
 }

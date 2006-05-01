@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QDragResponseEvent")]
 	public class QDragResponseEvent : QEvent, IDisposable {
  		protected QDragResponseEvent(Type dummy) : base((Type) null) {}
 		interface IQDragResponseEventProxy {
 		}
 
-		protected void CreateQDragResponseEventProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDragResponseEvent), this);
 			_interceptor = (QDragResponseEvent) realProxy.GetTransparentProxy();
 		}
@@ -25,20 +26,25 @@ namespace Qt {
 		}
 
 		public QDragResponseEvent(bool accepted) : this((Type) null) {
-			CreateQDragResponseEventProxy();
+			CreateProxy();
 			NewQDragResponseEvent(accepted);
 		}
+		[SmokeMethod("QDragResponseEvent(bool)")]
 		private void NewQDragResponseEvent(bool accepted) {
 			ProxyQDragResponseEvent().NewQDragResponseEvent(accepted);
 		}
+		[SmokeMethod("dragAccepted() const")]
 		public bool DragAccepted() {
 			return ProxyQDragResponseEvent().DragAccepted();
 		}
 		~QDragResponseEvent() {
-			ProxyQDragResponseEvent().Dispose();
+			DisposeQDragResponseEvent();
 		}
 		public new void Dispose() {
-			ProxyQDragResponseEvent().Dispose();
+			DisposeQDragResponseEvent();
+		}
+		private void DisposeQDragResponseEvent() {
+			ProxyQDragResponseEvent().DisposeQDragResponseEvent();
 		}
 	}
 }

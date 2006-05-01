@@ -3,6 +3,7 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QSqlResult")]
 	public class QSqlResult : MarshalByRefObject {
 		protected Object _interceptor = null;
  
@@ -11,7 +12,7 @@ namespace Qt {
 		interface IQSqlResultProxy {
 		}
 
-		protected void CreateQSqlResultProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSqlResult), this);
 			_interceptor = (QSqlResult) realProxy.GetTransparentProxy();
 		}
@@ -27,12 +28,21 @@ namespace Qt {
 			return (IQSqlResultProxy) _staticInterceptor;
 		}
 
-		enum E_BindingSyntax {
+		public enum BindingSyntax {
 			PositionalBinding = 0,
 			NamedBinding = 1,
 		}
-		public virtual QVariant Handle() {
-			return ProxyQSqlResult().Handle();
+		public enum VirtualHookOperation {
+			BatchOperation = 0,
+		}
+		~QSqlResult() {
+			DisposeQSqlResult();
+		}
+		public void Dispose() {
+			DisposeQSqlResult();
+		}
+		private void DisposeQSqlResult() {
+			ProxyQSqlResult().DisposeQSqlResult();
 		}
 	}
 }

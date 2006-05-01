@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QValidator")]
 	public class QValidator : QObject, IDisposable {
  		protected QValidator(Type dummy) : base((Type) null) {}
 		interface IQValidatorProxy {
@@ -11,7 +12,7 @@ namespace Qt {
 			string Tr(string s);
 		}
 
-		protected void CreateQValidatorProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QValidator), this);
 			_interceptor = (QValidator) realProxy.GetTransparentProxy();
 		}
@@ -27,40 +28,54 @@ namespace Qt {
 			return (IQValidatorProxy) _staticInterceptor;
 		}
 
-		enum State {
+		public enum State {
 			Invalid = 0,
 			Intermediate = 1,
 			Acceptable = 2,
 		}
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQValidator().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QValidator(QObject parent) : this((Type) null) {
-			CreateQValidatorProxy();
+			CreateProxy();
 			NewQValidator(parent);
 		}
+		[SmokeMethod("QValidator(QObject*)")]
 		private void NewQValidator(QObject parent) {
 			ProxyQValidator().NewQValidator(parent);
 		}
+		[SmokeMethod("validate(QString&, int&) const")]
 		public virtual int Validate(StringBuilder arg1, out int arg2) {
 			return ProxyQValidator().Validate(arg1,out arg2);
 		}
+		[SmokeMethod("fixup(QString&) const")]
 		public virtual void Fixup(StringBuilder arg1) {
 			ProxyQValidator().Fixup(arg1);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQValidator().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQValidator().Tr(s);
 		}
 		~QValidator() {
-			ProxyQValidator().Dispose();
+			DisposeQValidator();
 		}
 		public new void Dispose() {
-			ProxyQValidator().Dispose();
+			DisposeQValidator();
 		}
+		private void DisposeQValidator() {
+			ProxyQValidator().DisposeQValidator();
+		}
+		protected new IQValidatorSignals Emit() {
+			return (IQValidatorSignals) Q_EMIT;
+		}
+	}
+
+	public interface IQValidatorSignals : IQObjectSignals {
 	}
 }

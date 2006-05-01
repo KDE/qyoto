@@ -5,6 +5,7 @@ namespace Qt {
 	using System.Text;
 
 	/// See <see cref="IQAbstractSocketSignals"></see> for signals emitted by QAbstractSocket
+	[SmokeClass("QAbstractSocket")]
 	public class QAbstractSocket : QIODevice, IDisposable {
  		protected QAbstractSocket(Type dummy) : base((Type) null) {}
 		interface IQAbstractSocketProxy {
@@ -12,7 +13,7 @@ namespace Qt {
 			string Tr(string s);
 		}
 
-		protected void CreateQAbstractSocketProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAbstractSocket), this);
 			_interceptor = (QAbstractSocket) realProxy.GetTransparentProxy();
 		}
@@ -28,17 +29,17 @@ namespace Qt {
 			return (IQAbstractSocketProxy) _staticInterceptor;
 		}
 
-		enum E_SocketType {
+		public enum SocketType {
 			TcpSocket = 0,
 			UdpSocket = 1,
 			UnknownSocketType = -1,
 		}
-		enum NetworkLayerProtocol {
+		public enum NetworkLayerProtocol {
 			IPv4Protocol = 0,
 			IPv6Protocol = 1,
 			UnknownNetworkLayerProtocol = -1,
 		}
-		enum SocketError {
+		public enum SocketError {
 			ConnectionRefusedError = 0,
 			RemoteHostClosedError = 1,
 			HostNotFoundError = 2,
@@ -52,7 +53,7 @@ namespace Qt {
 			UnsupportedSocketOperationError = 10,
 			UnknownSocketError = -1,
 		}
-		enum SocketState {
+		public enum SocketState {
 			UnconnectedState = 0,
 			HostLookupState = 1,
 			ConnectingState = 2,
@@ -61,148 +62,236 @@ namespace Qt {
 			ListeningState = 5,
 			ClosingState = 6,
 		}
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQAbstractSocket().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
-		public QAbstractSocket(int socketType, QObject parent) : this((Type) null) {
-			CreateQAbstractSocketProxy();
+		public QAbstractSocket(QAbstractSocket.SocketType socketType, QObject parent) : this((Type) null) {
+			CreateProxy();
 			NewQAbstractSocket(socketType,parent);
 		}
-		private void NewQAbstractSocket(int socketType, QObject parent) {
+		[SmokeMethod("QAbstractSocket(QAbstractSocket::SocketType, QObject*)")]
+		private void NewQAbstractSocket(QAbstractSocket.SocketType socketType, QObject parent) {
 			ProxyQAbstractSocket().NewQAbstractSocket(socketType,parent);
 		}
+		[SmokeMethod("connectToHost(const QString&, quint16, OpenMode)")]
 		public void ConnectToHost(string hostName, ushort port, int mode) {
 			ProxyQAbstractSocket().ConnectToHost(hostName,port,mode);
 		}
+		[SmokeMethod("connectToHost(const QString&, quint16)")]
 		public void ConnectToHost(string hostName, ushort port) {
 			ProxyQAbstractSocket().ConnectToHost(hostName,port);
 		}
+		[SmokeMethod("connectToHost(const QHostAddress&, quint16, OpenMode)")]
 		public void ConnectToHost(QHostAddress address, ushort port, int mode) {
 			ProxyQAbstractSocket().ConnectToHost(address,port,mode);
 		}
+		[SmokeMethod("connectToHost(const QHostAddress&, quint16)")]
 		public void ConnectToHost(QHostAddress address, ushort port) {
 			ProxyQAbstractSocket().ConnectToHost(address,port);
 		}
+		[SmokeMethod("disconnectFromHost()")]
 		public void DisconnectFromHost() {
 			ProxyQAbstractSocket().DisconnectFromHost();
 		}
+		[SmokeMethod("isValid() const")]
 		public bool IsValid() {
 			return ProxyQAbstractSocket().IsValid();
 		}
 		// qint64 bytesAvailable(); >>>> NOT CONVERTED
 		// qint64 bytesToWrite(); >>>> NOT CONVERTED
+		[SmokeMethod("canReadLine() const")]
 		public new bool CanReadLine() {
 			return ProxyQAbstractSocket().CanReadLine();
 		}
+		[SmokeMethod("localPort() const")]
 		public ushort LocalPort() {
 			return ProxyQAbstractSocket().LocalPort();
 		}
+		[SmokeMethod("localAddress() const")]
 		public QHostAddress LocalAddress() {
 			return ProxyQAbstractSocket().LocalAddress();
 		}
+		[SmokeMethod("peerPort() const")]
 		public ushort PeerPort() {
 			return ProxyQAbstractSocket().PeerPort();
 		}
+		[SmokeMethod("peerAddress() const")]
 		public QHostAddress PeerAddress() {
 			return ProxyQAbstractSocket().PeerAddress();
 		}
+		[SmokeMethod("peerName() const")]
 		public string PeerName() {
 			return ProxyQAbstractSocket().PeerName();
 		}
 		// qint64 readBufferSize(); >>>> NOT CONVERTED
 		// void setReadBufferSize(qint64 arg1); >>>> NOT CONVERTED
+		[SmokeMethod("abort()")]
 		public void Abort() {
 			ProxyQAbstractSocket().Abort();
 		}
+		[SmokeMethod("socketDescriptor() const")]
 		public int SocketDescriptor() {
 			return ProxyQAbstractSocket().SocketDescriptor();
 		}
-		public bool SetSocketDescriptor(int socketDescriptor, int state, int openMode) {
+		[SmokeMethod("setSocketDescriptor(int, QAbstractSocket::SocketState, OpenMode)")]
+		public bool SetSocketDescriptor(int socketDescriptor, QAbstractSocket.SocketState state, int openMode) {
 			return ProxyQAbstractSocket().SetSocketDescriptor(socketDescriptor,state,openMode);
 		}
-		public bool SetSocketDescriptor(int socketDescriptor, int state) {
+		[SmokeMethod("setSocketDescriptor(int, QAbstractSocket::SocketState)")]
+		public bool SetSocketDescriptor(int socketDescriptor, QAbstractSocket.SocketState state) {
 			return ProxyQAbstractSocket().SetSocketDescriptor(socketDescriptor,state);
 		}
+		[SmokeMethod("setSocketDescriptor(int)")]
 		public bool SetSocketDescriptor(int socketDescriptor) {
 			return ProxyQAbstractSocket().SetSocketDescriptor(socketDescriptor);
 		}
-		public int SocketType() {
-			return ProxyQAbstractSocket().SocketType();
+		[SmokeMethod("socketType() const")]
+		public QAbstractSocket.SocketType socketType() {
+			return ProxyQAbstractSocket().socketType();
 		}
-		public int State() {
+		[SmokeMethod("state() const")]
+		public QAbstractSocket.SocketState State() {
 			return ProxyQAbstractSocket().State();
 		}
-		public int Error() {
+		[SmokeMethod("error() const")]
+		public QAbstractSocket.SocketError Error() {
 			return ProxyQAbstractSocket().Error();
 		}
+		[SmokeMethod("close()")]
 		public new void Close() {
 			ProxyQAbstractSocket().Close();
 		}
+		[SmokeMethod("isSequential() const")]
 		public new bool IsSequential() {
 			return ProxyQAbstractSocket().IsSequential();
 		}
+		[SmokeMethod("atEnd() const")]
 		public new bool AtEnd() {
 			return ProxyQAbstractSocket().AtEnd();
 		}
+		[SmokeMethod("flush()")]
 		public bool Flush() {
 			return ProxyQAbstractSocket().Flush();
 		}
+		[SmokeMethod("waitForConnected(int)")]
 		public bool WaitForConnected(int msecs) {
 			return ProxyQAbstractSocket().WaitForConnected(msecs);
 		}
+		[SmokeMethod("waitForConnected()")]
 		public bool WaitForConnected() {
 			return ProxyQAbstractSocket().WaitForConnected();
 		}
+		[SmokeMethod("waitForReadyRead(int)")]
 		public new bool WaitForReadyRead(int msecs) {
 			return ProxyQAbstractSocket().WaitForReadyRead(msecs);
 		}
+		[SmokeMethod("waitForReadyRead()")]
 		public new bool WaitForReadyRead() {
 			return ProxyQAbstractSocket().WaitForReadyRead();
 		}
+		[SmokeMethod("waitForBytesWritten(int)")]
 		public new bool WaitForBytesWritten(int msecs) {
 			return ProxyQAbstractSocket().WaitForBytesWritten(msecs);
 		}
+		[SmokeMethod("waitForBytesWritten()")]
 		public new bool WaitForBytesWritten() {
 			return ProxyQAbstractSocket().WaitForBytesWritten();
 		}
+		[SmokeMethod("waitForDisconnected(int)")]
 		public bool WaitForDisconnected(int msecs) {
 			return ProxyQAbstractSocket().WaitForDisconnected(msecs);
 		}
+		[SmokeMethod("waitForDisconnected()")]
 		public bool WaitForDisconnected() {
 			return ProxyQAbstractSocket().WaitForDisconnected();
 		}
+		[SmokeMethod("setProxy(const QNetworkProxy&)")]
+		public void SetProxy(QNetworkProxy networkProxy) {
+			ProxyQAbstractSocket().SetProxy(networkProxy);
+		}
+		[SmokeMethod("proxy() const")]
+		public QNetworkProxy Proxy() {
+			return ProxyQAbstractSocket().Proxy();
+		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQAbstractSocket().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQAbstractSocket().Tr(s);
+		}
+		[SmokeMethod("connectToHostImplementation(const QString&, quint16, OpenMode)")]
+		protected void ConnectToHostImplementation(string hostName, ushort port, int mode) {
+			ProxyQAbstractSocket().ConnectToHostImplementation(hostName,port,mode);
+		}
+		[SmokeMethod("connectToHostImplementation(const QString&, quint16)")]
+		protected void ConnectToHostImplementation(string hostName, ushort port) {
+			ProxyQAbstractSocket().ConnectToHostImplementation(hostName,port);
+		}
+		[SmokeMethod("disconnectFromHostImplementation()")]
+		protected void DisconnectFromHostImplementation() {
+			ProxyQAbstractSocket().DisconnectFromHostImplementation();
 		}
 		// qint64 readData(char* arg1,qint64 arg2); >>>> NOT CONVERTED
 		// qint64 readLineData(char* arg1,qint64 arg2); >>>> NOT CONVERTED
 		// qint64 writeData(const char* arg1,qint64 arg2); >>>> NOT CONVERTED
-		protected void SetSocketState(int state) {
+		[SmokeMethod("setSocketState(QAbstractSocket::SocketState)")]
+		protected void SetSocketState(QAbstractSocket.SocketState state) {
 			ProxyQAbstractSocket().SetSocketState(state);
 		}
-		protected void SetSocketError(int socketError) {
+		[SmokeMethod("setSocketError(QAbstractSocket::SocketError)")]
+		protected void SetSocketError(QAbstractSocket.SocketError socketError) {
 			ProxyQAbstractSocket().SetSocketError(socketError);
+		}
+		[SmokeMethod("setLocalPort(quint16)")]
+		protected void SetLocalPort(ushort port) {
+			ProxyQAbstractSocket().SetLocalPort(port);
+		}
+		[SmokeMethod("setLocalAddress(const QHostAddress&)")]
+		protected void SetLocalAddress(QHostAddress address) {
+			ProxyQAbstractSocket().SetLocalAddress(address);
+		}
+		[SmokeMethod("setPeerPort(quint16)")]
+		protected void SetPeerPort(ushort port) {
+			ProxyQAbstractSocket().SetPeerPort(port);
+		}
+		[SmokeMethod("setPeerAddress(const QHostAddress&)")]
+		protected void SetPeerAddress(QHostAddress address) {
+			ProxyQAbstractSocket().SetPeerAddress(address);
+		}
+		[SmokeMethod("setPeerName(const QString&)")]
+		protected void SetPeerName(string name) {
+			ProxyQAbstractSocket().SetPeerName(name);
 		}
 		// QAbstractSocket* QAbstractSocket(QAbstractSocket::SocketType arg1,QAbstractSocketPrivate& arg2,QObject* arg3); >>>> NOT CONVERTED
 		// QAbstractSocket* QAbstractSocket(QAbstractSocket::SocketType arg1,QAbstractSocketPrivate& arg2); >>>> NOT CONVERTED
 		~QAbstractSocket() {
-			ProxyQAbstractSocket().Dispose();
+			DisposeQAbstractSocket();
 		}
 		public void Dispose() {
-			ProxyQAbstractSocket().Dispose();
+			DisposeQAbstractSocket();
+		}
+		private void DisposeQAbstractSocket() {
+			ProxyQAbstractSocket().DisposeQAbstractSocket();
+		}
+		protected new IQAbstractSocketSignals Emit() {
+			return (IQAbstractSocketSignals) Q_EMIT;
 		}
 	}
 
-	public interface IQAbstractSocketSignals {
+	public interface IQAbstractSocketSignals : IQIODeviceSignals {
+		[Q_SIGNAL("void hostFound()")]
 		void HostFound();
+		[Q_SIGNAL("void connected()")]
 		void Connected();
+		[Q_SIGNAL("void disconnected()")]
 		void Disconnected();
-		void StateChanged(int arg1);
-		void Error(int arg1);
+		[Q_SIGNAL("void stateChanged(QAbstractSocket::SocketState)")]
+		void StateChanged(QAbstractSocket.SocketState arg1);
+		[Q_SIGNAL("void error(QAbstractSocket::SocketError)")]
+		void Error(QAbstractSocket.SocketError arg1);
 	}
 }

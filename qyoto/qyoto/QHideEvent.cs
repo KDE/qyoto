@@ -3,12 +3,13 @@ namespace Qt {
 
 	using System;
 
+	[SmokeClass("QHideEvent")]
 	public class QHideEvent : QEvent, IDisposable {
  		protected QHideEvent(Type dummy) : base((Type) null) {}
 		interface IQHideEventProxy {
 		}
 
-		protected void CreateQHideEventProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QHideEvent), this);
 			_interceptor = (QHideEvent) realProxy.GetTransparentProxy();
 		}
@@ -25,17 +26,21 @@ namespace Qt {
 		}
 
 		public QHideEvent() : this((Type) null) {
-			CreateQHideEventProxy();
+			CreateProxy();
 			NewQHideEvent();
 		}
+		[SmokeMethod("QHideEvent()")]
 		private void NewQHideEvent() {
 			ProxyQHideEvent().NewQHideEvent();
 		}
 		~QHideEvent() {
-			ProxyQHideEvent().Dispose();
+			DisposeQHideEvent();
 		}
 		public new void Dispose() {
-			ProxyQHideEvent().Dispose();
+			DisposeQHideEvent();
+		}
+		private void DisposeQHideEvent() {
+			ProxyQHideEvent().DisposeQHideEvent();
 		}
 	}
 }

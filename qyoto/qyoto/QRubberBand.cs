@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QRubberBand")]
 	public class QRubberBand : QWidget, IDisposable {
  		protected QRubberBand(Type dummy) : base((Type) null) {}
 		interface IQRubberBandProxy {
@@ -11,7 +12,7 @@ namespace Qt {
 			string Tr(string s);
 		}
 
-		protected void CreateQRubberBandProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QRubberBand), this);
 			_interceptor = (QRubberBand) realProxy.GetTransparentProxy();
 		}
@@ -27,67 +28,105 @@ namespace Qt {
 			return (IQRubberBandProxy) _staticInterceptor;
 		}
 
-		enum E_Shape {
+		public enum Shape {
 			Line = 0,
 			Rectangle = 1,
 		}
+		[SmokeMethod("metaObject() const")]
 		public new virtual QMetaObject MetaObject() {
 			return ProxyQRubberBand().MetaObject();
 		}
-		// void* qt_metacast(const char* arg1); >>>> NOT CONVERTED
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
-		public QRubberBand(int arg1, QWidget arg2) : this((Type) null) {
-			CreateQRubberBandProxy();
+		public QRubberBand(QRubberBand.Shape arg1, QWidget arg2) : this((Type) null) {
+			CreateProxy();
 			NewQRubberBand(arg1,arg2);
 		}
-		private void NewQRubberBand(int arg1, QWidget arg2) {
+		[SmokeMethod("QRubberBand(QRubberBand::Shape, QWidget*)")]
+		private void NewQRubberBand(QRubberBand.Shape arg1, QWidget arg2) {
 			ProxyQRubberBand().NewQRubberBand(arg1,arg2);
 		}
-		public QRubberBand(int arg1) : this((Type) null) {
-			CreateQRubberBandProxy();
+		public QRubberBand(QRubberBand.Shape arg1) : this((Type) null) {
+			CreateProxy();
 			NewQRubberBand(arg1);
 		}
-		private void NewQRubberBand(int arg1) {
+		[SmokeMethod("QRubberBand(QRubberBand::Shape)")]
+		private void NewQRubberBand(QRubberBand.Shape arg1) {
 			ProxyQRubberBand().NewQRubberBand(arg1);
 		}
-		public int Shape() {
-			return ProxyQRubberBand().Shape();
+		[SmokeMethod("shape() const")]
+		public QRubberBand.Shape shape() {
+			return ProxyQRubberBand().shape();
 		}
+		[SmokeMethod("setGeometry(const QRect&)")]
 		public new void SetGeometry(QRect r) {
 			ProxyQRubberBand().SetGeometry(r);
 		}
+		[SmokeMethod("setGeometry(int, int, int, int)")]
 		public new void SetGeometry(int x, int y, int w, int h) {
 			ProxyQRubberBand().SetGeometry(x,y,w,h);
 		}
+		[SmokeMethod("move(int, int)")]
 		public new void Move(int x, int y) {
 			ProxyQRubberBand().Move(x,y);
 		}
+		[SmokeMethod("move(const QPoint&)")]
 		public new void Move(QPoint p) {
 			ProxyQRubberBand().Move(p);
 		}
+		[SmokeMethod("resize(int, int)")]
 		public new void Resize(int w, int h) {
 			ProxyQRubberBand().Resize(w,h);
 		}
+		[SmokeMethod("resize(const QSize&)")]
 		public new void Resize(QSize s) {
 			ProxyQRubberBand().Resize(s);
 		}
+		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQRubberBand().Tr(s,c);
 		}
+		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQRubberBand().Tr(s);
 		}
+		[SmokeMethod("event(QEvent*)")]
+		public new bool Event(QEvent e) {
+			return ProxyQRubberBand().Event(e);
+		}
+		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected new void PaintEvent(QPaintEvent arg1) {
 			ProxyQRubberBand().PaintEvent(arg1);
 		}
+		[SmokeMethod("changeEvent(QEvent*)")]
 		protected new void ChangeEvent(QEvent arg1) {
 			ProxyQRubberBand().ChangeEvent(arg1);
 		}
+		[SmokeMethod("showEvent(QShowEvent*)")]
+		public new void ShowEvent(QShowEvent arg1) {
+			ProxyQRubberBand().ShowEvent(arg1);
+		}
+		[SmokeMethod("resizeEvent(QResizeEvent*)")]
+		protected new void ResizeEvent(QResizeEvent arg1) {
+			ProxyQRubberBand().ResizeEvent(arg1);
+		}
+		[SmokeMethod("moveEvent(QMoveEvent*)")]
+		protected new void MoveEvent(QMoveEvent arg1) {
+			ProxyQRubberBand().MoveEvent(arg1);
+		}
 		~QRubberBand() {
-			ProxyQRubberBand().Dispose();
+			DisposeQRubberBand();
 		}
 		public new void Dispose() {
-			ProxyQRubberBand().Dispose();
+			DisposeQRubberBand();
 		}
+		private void DisposeQRubberBand() {
+			ProxyQRubberBand().DisposeQRubberBand();
+		}
+		protected new IQRubberBandSignals Emit() {
+			return (IQRubberBandSignals) Q_EMIT;
+		}
+	}
+
+	public interface IQRubberBandSignals : IQWidgetSignals {
 	}
 }

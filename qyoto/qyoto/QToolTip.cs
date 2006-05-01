@@ -4,6 +4,7 @@ namespace Qt {
 	using System;
 	using System.Text;
 
+	[SmokeClass("QToolTip")]
 	public class QToolTip : MarshalByRefObject {
 		protected Object _interceptor = null;
  
@@ -15,7 +16,7 @@ namespace Qt {
 			QPalette Palette();
 		}
 
-		protected void CreateQToolTipProxy() {
+		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QToolTip), this);
 			_interceptor = (QToolTip) realProxy.GetTransparentProxy();
 		}
@@ -31,14 +32,26 @@ namespace Qt {
 			return (IQToolTipProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("showText(const QPoint&, const QString&, QWidget*)")]
 		public static void ShowText(QPoint pos, string text, QWidget w) {
 			StaticQToolTip().ShowText(pos,text,w);
 		}
+		[SmokeMethod("showText(const QPoint&, const QString&)")]
 		public static void ShowText(QPoint pos, string text) {
 			StaticQToolTip().ShowText(pos,text);
 		}
+		[SmokeMethod("palette()")]
 		public static QPalette Palette() {
 			return StaticQToolTip().Palette();
+		}
+		~QToolTip() {
+			DisposeQToolTip();
+		}
+		public void Dispose() {
+			DisposeQToolTip();
+		}
+		private void DisposeQToolTip() {
+			ProxyQToolTip().DisposeQToolTip();
 		}
 	}
 }
