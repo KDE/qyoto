@@ -764,7 +764,7 @@ TypeHandler Qt_handlers[] = {
     { 0, 0 }
 };
 
-QHash<const char *,TypeHandler *> type_handlers;
+QHash<QString,TypeHandler *> type_handlers;
 
 void install_handlers(TypeHandler *h) {
     while(h->name) {
