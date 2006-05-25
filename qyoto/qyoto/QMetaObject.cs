@@ -9,7 +9,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QMetaObject(Type dummy) {}
+		protected QMetaObject(Type dummy) {}
 		interface IQMetaObjectProxy {
 			bool CheckConnectArgs(string signal, string method);
 			QByteArray NormalizedSignature(string method);

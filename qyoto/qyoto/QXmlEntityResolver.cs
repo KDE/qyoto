@@ -14,7 +14,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QXmlEntityResolver(Type dummy) {}
+		protected QXmlEntityResolver(Type dummy) {}
 		interface IQXmlEntityResolverProxy {
 		}
 

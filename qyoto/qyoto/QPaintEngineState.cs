@@ -8,7 +8,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QPaintEngineState(Type dummy) {}
+		protected QPaintEngineState(Type dummy) {}
 		interface IQPaintEngineStateProxy {
 		}
 

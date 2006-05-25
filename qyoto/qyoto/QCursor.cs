@@ -8,7 +8,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QCursor(Type dummy) {}
+		protected QCursor(Type dummy) {}
 		interface IQCursorProxy {
 			QPoint Pos();
 			void SetPos(int x, int y);

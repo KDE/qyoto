@@ -8,7 +8,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QTextFrameLayoutData(Type dummy) {}
+		protected QTextFrameLayoutData(Type dummy) {}
 		interface IQTextFrameLayoutDataProxy {
 		}
 

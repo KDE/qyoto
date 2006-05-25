@@ -9,7 +9,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QTextStream(Type dummy) {}
+		protected QTextStream(Type dummy) {}
 		interface IQTextStreamProxy {
 			QTextStream op_read(QTextStream lhs, char ch);
 			QTextStream op_read(QTextStream lhs, ushort i);

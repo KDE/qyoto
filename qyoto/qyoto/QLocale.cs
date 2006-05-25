@@ -9,7 +9,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QLocale(Type dummy) {}
+		protected QLocale(Type dummy) {}
 		interface IQLocaleProxy {
 			bool op_equals(QLocale lhs, QLocale other);
 			string LanguageToString(QLocale.Language language);

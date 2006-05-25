@@ -10,7 +10,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QVariant(Type dummy) {}
+		protected QVariant(Type dummy) {}
 		interface IQVariantProxy {
 			bool op_equals(QVariant lhs, QVariant v);
 			string TypeToName(QVariant.E_Type type);

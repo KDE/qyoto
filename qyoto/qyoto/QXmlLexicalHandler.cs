@@ -20,7 +20,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QXmlLexicalHandler(Type dummy) {}
+		protected QXmlLexicalHandler(Type dummy) {}
 		interface IQXmlLexicalHandlerProxy {
 		}
 

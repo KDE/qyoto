@@ -8,7 +8,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QRegion(Type dummy) {}
+		protected QRegion(Type dummy) {}
 		interface IQRegionProxy {
 			QRegion op_or(QRegion lhs, QRegion r);
 			QRegion op_plus(QRegion lhs, QRegion r);

@@ -10,7 +10,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QRegExp(Type dummy) {}
+		protected QRegExp(Type dummy) {}
 		interface IQRegExpProxy {
 			bool op_equals(QRegExp lhs, QRegExp rx);
 			string Escape(string str);

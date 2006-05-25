@@ -8,7 +8,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QSqlDriverCreatorBase(Type dummy) {}
+		protected QSqlDriverCreatorBase(Type dummy) {}
 		interface IQSqlDriverCreatorBaseProxy {
 		}
 

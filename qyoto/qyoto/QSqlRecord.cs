@@ -9,7 +9,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QSqlRecord(Type dummy) {}
+		protected QSqlRecord(Type dummy) {}
 		interface IQSqlRecordProxy {
 			bool op_equals(QSqlRecord lhs, QSqlRecord other);
 		}

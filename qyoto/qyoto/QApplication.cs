@@ -438,17 +438,19 @@ namespace Qt {
 			Qyoto.Init_qyoto();
 			CreateProxy();
 			Qt.qApp = this;
-			
+      
 			string[] args = new string[argv.Length + 1];
 			args[0] = System.Reflection.Assembly.GetExecutingAssembly().Location;
 			argv.CopyTo(args, 1);
 
-			NewQApplication(argv);
+			NewQApplication(args.Length, args);
 		}
+
 		[SmokeMethod("QApplication(int&, char**)")]
-		private void NewQApplication(string[] argv) {
-			ProxyQApplication().NewQApplication(argv);
+		private void NewQApplication(int argc, string[] argv) {
+			ProxyQApplication().NewQApplication(argc, argv);
 		}
+
 		public QApplication(string[] argv, bool GUIenabled) : this((Type) null) {
 			Qyoto.Init_qyoto();
 			CreateProxy();
@@ -458,12 +460,14 @@ namespace Qt {
 			args[0] = System.Reflection.Assembly.GetExecutingAssembly().Location;
 			argv.CopyTo(args, 1);
 
-			NewQApplication(argv,GUIenabled);
+			NewQApplication(argv.Length, argv,GUIenabled);
 		}
+		
 		[SmokeMethod("QApplication(int&, char**, bool)")]
-		private void NewQApplication(string[] argv, bool GUIenabled) {
-			ProxyQApplication().NewQApplication(argv,GUIenabled);
+		private void NewQApplication(int argc, string[] argv, bool GUIenabled) {
+			ProxyQApplication().NewQApplication(argc, argv,GUIenabled);
 		}
+    
 		public QApplication(string[] argv, QApplication.E_Type arg3) : this((Type) null) {
 			Qyoto.Init_qyoto();
 			CreateProxy();
@@ -473,11 +477,11 @@ namespace Qt {
 			args[0] = System.Reflection.Assembly.GetExecutingAssembly().Location;
 			argv.CopyTo(args, 1);
 
-			NewQApplication(argv,arg3);
-		}
+			NewQApplication(argv.Length, argv,arg3);
+		}   
 		[SmokeMethod("QApplication(int&, char**, QApplication::Type)")]
-		private void NewQApplication(string[] argv, QApplication.E_Type arg3) {
-			ProxyQApplication().NewQApplication(argv,arg3);
+		private void NewQApplication(int argc, string[] argv, QApplication.E_Type arg3) {
+			ProxyQApplication().NewQApplication(argc, argv,arg3);
 		}
 		protected new IQApplicationSignals Emit() {
 			return (IQApplicationSignals) Q_EMIT;
@@ -489,5 +493,9 @@ namespace Qt {
 		void LastWindowClosed();
 		[Q_SIGNAL("void focusChanged(QWidget*, QWidget*)")]
 		void FocusChanged(QWidget old, QWidget now);
+		[Q_SIGNAL("void commitDataRequest(QSessionManager&)")]
+		void CommitDataRequest(QSessionManager sessionManager);
+		[Q_SIGNAL("void saveStateRequest(QSessionManager&)")]
+		void SaveStateRequest(QSessionManager sessionManager);
 	}
 }

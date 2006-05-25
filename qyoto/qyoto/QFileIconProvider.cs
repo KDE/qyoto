@@ -9,7 +9,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QFileIconProvider(Type dummy) {}
+		protected QFileIconProvider(Type dummy) {}
 		interface IQFileIconProviderProxy {
 		}
 

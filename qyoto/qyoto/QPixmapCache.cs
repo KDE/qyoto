@@ -9,7 +9,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QPixmapCache(Type dummy) {}
+		protected QPixmapCache(Type dummy) {}
 		interface IQPixmapCacheProxy {
 			int CacheLimit();
 			void SetCacheLimit(int arg1);

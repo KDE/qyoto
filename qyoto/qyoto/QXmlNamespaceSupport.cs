@@ -10,7 +10,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QXmlNamespaceSupport(Type dummy) {}
+		protected QXmlNamespaceSupport(Type dummy) {}
 		interface IQXmlNamespaceSupportProxy {
 		}
 

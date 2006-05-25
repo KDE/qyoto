@@ -9,7 +9,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QTime(Type dummy) {}
+		protected QTime(Type dummy) {}
 		interface IQTimeProxy {
 			bool op_equals(QTime lhs, DateTime other);
 			bool op_lt(QTime lhs, DateTime other);

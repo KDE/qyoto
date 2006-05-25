@@ -10,7 +10,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QFontDatabase(Type dummy) {}
+		protected QFontDatabase(Type dummy) {}
 		interface IQFontDatabaseProxy {
 			string WritingSystemName(QFontDatabase.WritingSystem writingSystem);
 			string WritingSystemSample(QFontDatabase.WritingSystem writingSystem);

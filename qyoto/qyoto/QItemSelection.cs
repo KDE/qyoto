@@ -8,7 +8,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QItemSelection(Type dummy) {}
+		protected QItemSelection(Type dummy) {}
 		interface IQItemSelectionProxy {
 			void Split(QItemSelectionRange range, QItemSelectionRange other, QItemSelection result);
 		}

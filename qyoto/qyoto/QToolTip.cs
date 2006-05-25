@@ -9,7 +9,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QToolTip(Type dummy) {}
+		protected QToolTip(Type dummy) {}
 		interface IQToolTipProxy {
 			void ShowText(QPoint pos, string text, QWidget w);
 			void ShowText(QPoint pos, string text);

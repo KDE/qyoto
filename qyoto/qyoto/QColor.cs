@@ -10,7 +10,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QColor(Type dummy) {}
+		protected QColor(Type dummy) {}
 		interface IQColorProxy {
 			bool op_equals(QColor lhs, QColor c);
 			ArrayList ColorNames();

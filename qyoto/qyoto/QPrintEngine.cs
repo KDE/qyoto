@@ -8,7 +8,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QPrintEngine(Type dummy) {}
+		protected QPrintEngine(Type dummy) {}
 		interface IQPrintEngineProxy {
 		}
 

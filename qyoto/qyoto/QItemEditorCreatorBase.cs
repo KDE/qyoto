@@ -8,7 +8,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QItemEditorCreatorBase(Type dummy) {}
+		protected QItemEditorCreatorBase(Type dummy) {}
 		interface IQItemEditorCreatorBaseProxy {
 		}
 

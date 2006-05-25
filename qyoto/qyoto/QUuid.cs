@@ -9,7 +9,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QUuid(Type dummy) {}
+		protected QUuid(Type dummy) {}
 		interface IQUuidProxy {
 			bool op_equals(QUuid lhs, QUuid orig);
 			bool op_lt(QUuid lhs, QUuid other);

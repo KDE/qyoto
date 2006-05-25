@@ -8,7 +8,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QMetaClassInfo(Type dummy) {}
+		protected QMetaClassInfo(Type dummy) {}
 		interface IQMetaClassInfoProxy {
 		}
 

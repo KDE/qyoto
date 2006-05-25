@@ -8,7 +8,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QPolygon(Type dummy) {}
+		protected QPolygon(Type dummy) {}
 		interface IQPolygonProxy {
 		}
 

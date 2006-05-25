@@ -8,7 +8,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QItemEditorFactory(Type dummy) {}
+		protected QItemEditorFactory(Type dummy) {}
 		interface IQItemEditorFactoryProxy {
 			QItemEditorFactory DefaultFactory();
 			void SetDefaultFactory(QItemEditorFactory factory);

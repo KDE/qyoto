@@ -15,7 +15,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QXmlDTDHandler(Type dummy) {}
+		protected QXmlDTDHandler(Type dummy) {}
 		interface IQXmlDTDHandlerProxy {
 		}
 

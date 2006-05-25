@@ -8,7 +8,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QPoint(Type dummy) {}
+		protected QPoint(Type dummy) {}
 		interface IQPointProxy {
 			QPoint op_mult(QPoint lhs, double c);
 			QPoint op_div(QPoint lhs, double c);

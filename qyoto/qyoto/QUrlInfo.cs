@@ -9,7 +9,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QUrlInfo(Type dummy) {}
+		protected QUrlInfo(Type dummy) {}
 		interface IQUrlInfoProxy {
 			bool GreaterThan(QUrlInfo i1, QUrlInfo i2, int sortBy);
 			bool LessThan(QUrlInfo i1, QUrlInfo i2, int sortBy);

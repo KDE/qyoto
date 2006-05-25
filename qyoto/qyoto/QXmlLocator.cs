@@ -8,7 +8,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QXmlLocator(Type dummy) {}
+		protected QXmlLocator(Type dummy) {}
 		interface IQXmlLocatorProxy {
 		}
 

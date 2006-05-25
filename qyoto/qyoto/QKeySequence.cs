@@ -9,7 +9,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QKeySequence(Type dummy) {}
+		protected QKeySequence(Type dummy) {}
 		interface IQKeySequenceProxy {
 			bool op_equals(QKeySequence lhs, QKeySequence other);
 			bool op_lt(QKeySequence lhs, QKeySequence ks);

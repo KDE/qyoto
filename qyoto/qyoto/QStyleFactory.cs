@@ -10,7 +10,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QStyleFactory(Type dummy) {}
+		protected QStyleFactory(Type dummy) {}
 		interface IQStyleFactoryProxy {
 			ArrayList Keys();
 			QStyle Create(string arg1);

@@ -8,7 +8,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QTextLength(Type dummy) {}
+		protected QTextLength(Type dummy) {}
 		interface IQTextLengthProxy {
 			bool op_equals(QTextLength lhs, QTextLength other);
 		}

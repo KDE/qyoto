@@ -10,7 +10,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QDomNode(Type dummy) {}
+		protected QDomNode(Type dummy) {}
 		interface IQDomNodeProxy {
 			bool op_equals(QDomNode lhs, QDomNode arg1);
 		}

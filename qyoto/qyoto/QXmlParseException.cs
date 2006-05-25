@@ -9,7 +9,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QXmlParseException(Type dummy) {}
+		protected QXmlParseException(Type dummy) {}
 		interface IQXmlParseExceptionProxy {
 		}
 

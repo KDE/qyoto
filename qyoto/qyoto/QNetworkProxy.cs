@@ -9,7 +9,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QNetworkProxy(Type dummy) {}
+		protected QNetworkProxy(Type dummy) {}
 		interface IQNetworkProxyProxy {
 			void SetApplicationProxy(QNetworkProxy proxy);
 			QNetworkProxy ApplicationProxy();

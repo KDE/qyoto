@@ -9,7 +9,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QTextDocumentFragment(Type dummy) {}
+		protected QTextDocumentFragment(Type dummy) {}
 		interface IQTextDocumentFragmentProxy {
 		}
 

@@ -27,7 +27,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QLayoutItem(Type dummy) {}
+		protected QLayoutItem(Type dummy) {}
 		interface IQLayoutItemProxy {
 		}
 

@@ -8,7 +8,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QByteArrayMatcher(Type dummy) {}
+		protected QByteArrayMatcher(Type dummy) {}
 		interface IQByteArrayMatcherProxy {
 		}
 

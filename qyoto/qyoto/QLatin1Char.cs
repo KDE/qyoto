@@ -8,7 +8,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QLatin1Char(Type dummy) {}
+		protected QLatin1Char(Type dummy) {}
 		interface IQLatin1CharProxy {
 		}
 

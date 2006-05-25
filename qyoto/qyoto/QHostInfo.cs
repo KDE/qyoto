@@ -9,7 +9,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QHostInfo(Type dummy) {}
+		protected QHostInfo(Type dummy) {}
 		interface IQHostInfoProxy {
 			int LookupHost(string name, QObject receiver, string member);
 			void AbortHostLookup(int lookupId);

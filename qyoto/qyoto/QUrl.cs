@@ -64,7 +64,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QUrl(Type dummy) {}
+		protected QUrl(Type dummy) {}
 		interface IQUrlProxy {
 			IQUrl FromLocalFile(string localfile);
 			IQUrl FromEncoded(QByteArray url);

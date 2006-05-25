@@ -8,7 +8,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QGLColormap(Type dummy) {}
+		protected QGLColormap(Type dummy) {}
 		interface IQGLColormapProxy {
 		}
 

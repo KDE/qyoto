@@ -8,7 +8,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QByteRef(Type dummy) {}
+		protected QByteRef(Type dummy) {}
 		interface IQByteRefProxy {
 			bool op_equals(QByteRef lhs, char c);
 			bool op_gt(QByteRef lhs, char c);

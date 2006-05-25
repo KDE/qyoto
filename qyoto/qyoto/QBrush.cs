@@ -8,7 +8,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QBrush(Type dummy) {}
+		protected QBrush(Type dummy) {}
 		interface IQBrushProxy {
 			bool op_equals(QBrush lhs, QBrush b);
 		}

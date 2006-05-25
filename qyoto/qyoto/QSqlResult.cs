@@ -8,7 +8,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QSqlResult(Type dummy) {}
+		protected QSqlResult(Type dummy) {}
 		interface IQSqlResultProxy {
 		}
 

@@ -8,7 +8,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QTableWidgetSelectionRange(Type dummy) {}
+		protected QTableWidgetSelectionRange(Type dummy) {}
 		interface IQTableWidgetSelectionRangeProxy {
 		}
 

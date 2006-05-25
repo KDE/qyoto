@@ -9,7 +9,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QPainter(Type dummy) {}
+		protected QPainter(Type dummy) {}
 		interface IQPainterProxy {
 			void SetRedirected(IQPaintDevice device, IQPaintDevice replacement, QPoint offset);
 			void SetRedirected(IQPaintDevice device, IQPaintDevice replacement);

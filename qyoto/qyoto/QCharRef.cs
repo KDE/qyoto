@@ -9,7 +9,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QCharRef(Type dummy) {}
+		protected QCharRef(Type dummy) {}
 		interface IQCharRefProxy {
 		}
 

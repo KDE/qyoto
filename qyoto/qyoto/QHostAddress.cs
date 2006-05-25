@@ -9,7 +9,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QHostAddress(Type dummy) {}
+		protected QHostAddress(Type dummy) {}
 		interface IQHostAddressProxy {
 			bool op_equals(QHostAddress lhs, QHostAddress address);
 			bool op_equals(QHostAddress lhs, QHostAddress.SpecialAddress address);

@@ -8,7 +8,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QGradient(Type dummy) {}
+		protected QGradient(Type dummy) {}
 		interface IQGradientProxy {
 			bool op_equals(QGradient lhs, QGradient gradient);
 		}

@@ -9,7 +9,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QGLContext(Type dummy) {}
+		protected QGLContext(Type dummy) {}
 		interface IQGLContextProxy {
 			void SetTextureCacheLimit(int size);
 			int TextureCacheLimit();

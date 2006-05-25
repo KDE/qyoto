@@ -9,7 +9,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QWhatsThis(Type dummy) {}
+		protected QWhatsThis(Type dummy) {}
 		interface IQWhatsThisProxy {
 			void EnterWhatsThisMode();
 			bool InWhatsThisMode();

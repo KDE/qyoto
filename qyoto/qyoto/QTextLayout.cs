@@ -9,7 +9,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QTextLayout(Type dummy) {}
+		protected QTextLayout(Type dummy) {}
 		interface IQTextLayoutProxy {
 		}
 

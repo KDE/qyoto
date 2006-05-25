@@ -9,7 +9,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QListWidgetItem(Type dummy) {}
+		protected QListWidgetItem(Type dummy) {}
 		interface IQListWidgetItemProxy {
 		}
 

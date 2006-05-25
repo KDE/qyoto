@@ -261,11 +261,11 @@ namespace Qt {
 			args[0] = System.Reflection.Assembly.GetExecutingAssembly().Location;
 			argv.CopyTo(args, 1);
 
-			NewQCoreApplication(argv);
+			NewQCoreApplication(argv.Length, argv);
 		}
 		[SmokeMethod("QCoreApplication(int&, char**)")]
-		private void NewQCoreApplication(string[] argv) {
-			ProxyQCoreApplication().NewQCoreApplication(argv);
+		private void NewQCoreApplication(int argc, string[] argv) {
+			ProxyQCoreApplication().NewQCoreApplication(argc, argv);
 		}
 		protected new IQCoreApplicationSignals Emit() {
 			return (IQCoreApplicationSignals) Q_EMIT;

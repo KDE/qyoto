@@ -8,7 +8,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QSizeF(Type dummy) {}
+		protected QSizeF(Type dummy) {}
 		interface IQSizeFProxy {
 			QSizeF op_mult(QSizeF lhs, double c);
 			QSizeF op_div(QSizeF lhs, double c);

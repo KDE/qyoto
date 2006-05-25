@@ -9,7 +9,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QDomImplementation(Type dummy) {}
+		protected QDomImplementation(Type dummy) {}
 		interface IQDomImplementationProxy {
 			bool op_equals(QDomImplementation lhs, QDomImplementation arg1);
 			QDomImplementation.InvalidDataPolicy invalidDataPolicy();

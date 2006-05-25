@@ -9,7 +9,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QTextBlock(Type dummy) {}
+		protected QTextBlock(Type dummy) {}
 		interface IQTextBlockProxy {
 			bool op_equals(QTextBlock lhs, QTextBlock o);
 			bool op_lt(QTextBlock lhs, QTextBlock o);

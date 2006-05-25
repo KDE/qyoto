@@ -8,7 +8,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QPainterPathStroker(Type dummy) {}
+		protected QPainterPathStroker(Type dummy) {}
 		interface IQPainterPathStrokerProxy {
 		}
 

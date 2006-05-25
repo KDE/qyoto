@@ -2,6 +2,7 @@
 namespace Qt {
 
 	using System;
+using System.Reflection;
 	using System.Collections;
 	using System.Text;
 
@@ -11,7 +12,13 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QObject(Type dummy) {}
+		protected QObject(Type dummy) {
+			Type t = GetType();
+			MethodInfo m = t.GetMethod("Emit", new Type[] { });
+			Type proxyInterface = m.ReturnType;
+			SignalInvocation realProxy = new SignalInvocation(proxyInterface, this);
+			Q_EMIT = realProxy.GetTransparentProxy();
+		}
 		interface IQObjectProxy {
 			string Tr(string s, string c);
 			string Tr(string s);

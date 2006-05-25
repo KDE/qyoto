@@ -9,7 +9,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QFileInfo(Type dummy) {}
+		protected QFileInfo(Type dummy) {}
 		interface IQFileInfoProxy {
 			bool op_equals(QFileInfo lhs, QFileInfo fileinfo);
 		}

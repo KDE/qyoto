@@ -8,7 +8,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QStyleHintReturn(Type dummy) {}
+		protected QStyleHintReturn(Type dummy) {}
 		interface IQStyleHintReturnProxy {
 		}
 

@@ -9,7 +9,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QByteArray(Type dummy) {}
+		protected QByteArray(Type dummy) {}
 		interface IQByteArrayProxy {
 			bool op_equals(QByteArray lhs, string s2);
 			bool op_lt(QByteArray lhs, string s2);

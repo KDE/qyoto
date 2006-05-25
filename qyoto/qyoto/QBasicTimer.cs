@@ -8,7 +8,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QBasicTimer(Type dummy) {}
+		protected QBasicTimer(Type dummy) {}
 		interface IQBasicTimerProxy {
 		}
 

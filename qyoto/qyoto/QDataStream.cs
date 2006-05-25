@@ -8,7 +8,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QDataStream(Type dummy) {}
+		protected QDataStream(Type dummy) {}
 		interface IQDataStreamProxy {
 			QDataStream op_read(QDataStream lhs, int i);
 			QDataStream op_read(QDataStream lhs, bool i);

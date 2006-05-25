@@ -10,7 +10,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QImageReader(Type dummy) {}
+		protected QImageReader(Type dummy) {}
 		interface IQImageReaderProxy {
 			QByteArray ImageFormat(string fileName);
 			QByteArray ImageFormat(IQIODevice device);

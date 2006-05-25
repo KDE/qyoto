@@ -9,7 +9,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QGlobalSpace(Type dummy) {}
+		protected QGlobalSpace(Type dummy) {}
 		interface IQGlobalSpaceProxy {
 			bool op_equals(QGLFormat arg1, QGLFormat arg2);
 			bool op_equals(QHostAddress.SpecialAddress address1, QHostAddress address2);

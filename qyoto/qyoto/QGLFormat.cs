@@ -8,7 +8,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QGLFormat(Type dummy) {}
+		protected QGLFormat(Type dummy) {}
 		interface IQGLFormatProxy {
 			QGLFormat DefaultFormat();
 			void SetDefaultFormat(QGLFormat f);

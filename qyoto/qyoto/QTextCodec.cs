@@ -9,7 +9,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QTextCodec(Type dummy) {}
+		protected QTextCodec(Type dummy) {}
 		interface IQTextCodecProxy {
 			QTextCodec CodecForName(QByteArray name);
 			QTextCodec CodecForName(string name);

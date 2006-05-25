@@ -10,7 +10,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QSqlDatabase(Type dummy) {}
+		protected QSqlDatabase(Type dummy) {}
 		interface IQSqlDatabaseProxy {
 			QSqlDatabase AddDatabase(string type, string connectionName);
 			QSqlDatabase AddDatabase(string type);

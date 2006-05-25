@@ -24,7 +24,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QPaintDevice(Type dummy) {}
+		protected QPaintDevice(Type dummy) {}
 		interface IQPaintDeviceProxy {
 		}
 

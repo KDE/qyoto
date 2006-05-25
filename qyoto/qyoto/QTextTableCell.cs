@@ -8,7 +8,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QTextTableCell(Type dummy) {}
+		protected QTextTableCell(Type dummy) {}
 		interface IQTextTableCellProxy {
 			bool op_equals(QTextTableCell lhs, QTextTableCell other);
 		}

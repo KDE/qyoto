@@ -9,7 +9,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QFontMetricsF(Type dummy) {}
+		protected QFontMetricsF(Type dummy) {}
 		interface IQFontMetricsFProxy {
 			bool op_equals(QFontMetricsF lhs, QFontMetricsF other);
 		}

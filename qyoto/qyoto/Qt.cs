@@ -480,7 +480,8 @@ namespace Qt {
 			WA_WindowPropagation = 80,
 			WA_NoX11EventCompression = 81,
 			WA_TintedBackground = 82,
-			WA_AttributeCount = 83,
+			WA_X11OpenGLOverlay = 83,
+			WA_AttributeCount = 84,
 		}
 		public enum ImageConversionFlag {
 			ColorMode_Mask = 0x00000003,
@@ -897,6 +898,7 @@ namespace Qt {
 			BusyCursor = 16,
 			LastCursor = BusyCursor,
 			BitmapCursor = 24,
+			CustomCursor = 25,
 		}
 		public enum TextFormat {
 			PlainText = 0,

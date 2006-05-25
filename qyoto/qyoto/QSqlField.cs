@@ -9,7 +9,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QSqlField(Type dummy) {}
+		protected QSqlField(Type dummy) {}
 		interface IQSqlFieldProxy {
 			bool op_equals(QSqlField lhs, QSqlField other);
 		}

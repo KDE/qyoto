@@ -9,7 +9,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QStringMatcher(Type dummy) {}
+		protected QStringMatcher(Type dummy) {}
 		interface IQStringMatcherProxy {
 		}
 

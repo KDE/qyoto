@@ -10,7 +10,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QHttpHeader(Type dummy) {}
+		protected QHttpHeader(Type dummy) {}
 		interface IQHttpHeaderProxy {
 		}
 

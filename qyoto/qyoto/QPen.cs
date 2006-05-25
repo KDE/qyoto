@@ -8,7 +8,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QPen(Type dummy) {}
+		protected QPen(Type dummy) {}
 		interface IQPenProxy {
 			bool op_equals(QPen lhs, QPen p);
 		}

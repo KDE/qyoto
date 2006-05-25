@@ -10,7 +10,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QDir(Type dummy) {}
+		protected QDir(Type dummy) {}
 		interface IQDirProxy {
 			bool op_equals(QDir lhs, QDir dir);
 			void AddResourceSearchPath(string path);

@@ -8,7 +8,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QSizePolicy(Type dummy) {}
+		protected QSizePolicy(Type dummy) {}
 		interface IQSizePolicyProxy {
 			bool op_equals(QSizePolicy lhs, QSizePolicy s);
 		}

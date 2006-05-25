@@ -8,7 +8,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QPalette(Type dummy) {}
+		protected QPalette(Type dummy) {}
 		interface IQPaletteProxy {
 			bool op_equals(QPalette lhs, QPalette p);
 		}

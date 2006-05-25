@@ -15,7 +15,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QMimeSource(Type dummy) {}
+		protected QMimeSource(Type dummy) {}
 		interface IQMimeSourceProxy {
 		}
 

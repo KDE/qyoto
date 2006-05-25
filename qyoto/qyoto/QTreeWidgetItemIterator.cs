@@ -8,7 +8,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QTreeWidgetItemIterator(Type dummy) {}
+		protected QTreeWidgetItemIterator(Type dummy) {}
 		interface IQTreeWidgetItemIteratorProxy {
 			QTreeWidgetItemIterator op_incr(QTreeWidgetItemIterator lhs);
 			QTreeWidgetItemIterator op_decr(QTreeWidgetItemIterator lhs);

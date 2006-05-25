@@ -45,6 +45,7 @@ namespace Qt {
 			Format_RGB32 = 4,
 			Format_ARGB32 = 5,
 			Format_ARGB32_Premultiplied = 6,
+			NImageFormats = 7,
 		}
 		public QImage() : this((Type) null) {
 			CreateProxy();

@@ -9,7 +9,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QXmlReader(Type dummy) {}
+		protected QXmlReader(Type dummy) {}
 		interface IQXmlReaderProxy {
 		}
 

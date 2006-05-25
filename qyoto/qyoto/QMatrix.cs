@@ -8,7 +8,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QMatrix(Type dummy) {}
+		protected QMatrix(Type dummy) {}
 		interface IQMatrixProxy {
 			bool op_equals(QMatrix lhs, QMatrix arg1);
 			QMatrix op_mult(QMatrix lhs, QMatrix o);

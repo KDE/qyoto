@@ -8,7 +8,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QModelIndex(Type dummy) {}
+		protected QModelIndex(Type dummy) {}
 		interface IQModelIndexProxy {
 			bool op_equals(QModelIndex lhs, QModelIndex other);
 			bool op_lt(QModelIndex lhs, QModelIndex other);

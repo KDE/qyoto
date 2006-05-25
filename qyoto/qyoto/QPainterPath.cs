@@ -9,7 +9,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QPainterPath(Type dummy) {}
+		protected QPainterPath(Type dummy) {}
 		interface IQPainterPathProxy {
 			bool op_equals(QPainterPath lhs, QPainterPath other);
 		}

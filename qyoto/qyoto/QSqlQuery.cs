@@ -47,7 +47,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QSqlQuery(Type dummy) {}
+		protected QSqlQuery(Type dummy) {}
 		interface IQSqlQueryProxy {
 		}
 

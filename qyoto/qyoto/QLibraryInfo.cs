@@ -9,7 +9,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QLibraryInfo(Type dummy) {}
+		protected QLibraryInfo(Type dummy) {}
 		interface IQLibraryInfoProxy {
 			string Licensee();
 			string LicensedProducts();

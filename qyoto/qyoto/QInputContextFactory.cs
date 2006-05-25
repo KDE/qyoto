@@ -10,7 +10,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QInputContextFactory(Type dummy) {}
+		protected QInputContextFactory(Type dummy) {}
 		interface IQInputContextFactoryProxy {
 			ArrayList Keys();
 			QInputContext Create(string key, QObject parent);

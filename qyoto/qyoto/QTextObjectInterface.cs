@@ -8,7 +8,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QTextObjectInterface(Type dummy) {}
+		protected QTextObjectInterface(Type dummy) {}
 		interface IQTextObjectInterfaceProxy {
 		}
 

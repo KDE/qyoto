@@ -9,7 +9,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QDomNamedNodeMap(Type dummy) {}
+		protected QDomNamedNodeMap(Type dummy) {}
 		interface IQDomNamedNodeMapProxy {
 			bool op_equals(QDomNamedNodeMap lhs, QDomNamedNodeMap arg1);
 		}

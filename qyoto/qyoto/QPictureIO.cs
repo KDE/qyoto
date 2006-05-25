@@ -9,7 +9,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QPictureIO(Type dummy) {}
+		protected QPictureIO(Type dummy) {}
 		interface IQPictureIOProxy {
 			QByteArray PictureFormat(string fileName);
 			QByteArray PictureFormat(IQIODevice arg1);

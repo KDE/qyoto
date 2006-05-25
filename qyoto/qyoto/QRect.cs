@@ -8,7 +8,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QRect(Type dummy) {}
+		protected QRect(Type dummy) {}
 		interface IQRectProxy {
 			QRect op_or(QRect lhs, QRect r);
 			QRect op_and(QRect lhs, QRect r);

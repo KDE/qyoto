@@ -8,7 +8,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QImageIOHandler(Type dummy) {}
+		protected QImageIOHandler(Type dummy) {}
 		interface IQImageIOHandlerProxy {
 		}
 

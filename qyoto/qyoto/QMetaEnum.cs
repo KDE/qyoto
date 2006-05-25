@@ -8,7 +8,7 @@ namespace Qt {
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
- 		protected QMetaEnum(Type dummy) {}
+		protected QMetaEnum(Type dummy) {}
 		interface IQMetaEnumProxy {
 		}
 
