@@ -1,11 +1,17 @@
 2006-05-26  Richard Dale  <rdale@foton.es>
 
+	* Added code from Arno Rehn to access obtain the return value of
+	  a classes Emit() method as an interface and obtain the C++ signal 
+	  type signatures and set them up in HashTables with a top level
+	  table with the classes as keys, containing sub tables with the
+	  C++ signatures as keys which map onto the correponding C# 
+	  MethodInfo as a value
 	* Some fixes from Paolo Capriotti:
-	* Added fix for a crash in SmokeInvocation.cs when a class with
-	  virtual methods wasn't a subclass of Qt
-	* The code for emitting signals now works with Qt4
-	* The code in QObject.cs to set up the transparent proxy Q_EMIT 
-	  for an instance's signal interfaces now works.
+		* Added fix for a crash in SmokeInvocation.cs when a class with
+		  virtual methods wasn't a subclass of Qt
+		* The code for emitting signals now works with Qt4
+		* The code in QObject.cs to set up the transparent proxy Q_EMIT 
+		  for an instance's signal interfaces now works.
 
 2006-05-26  Richard Dale  <rdale@foton.es>
 
