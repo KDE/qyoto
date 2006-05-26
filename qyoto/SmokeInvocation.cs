@@ -15,7 +15,7 @@
  *                                                                         *
  ***************************************************************************/
 
-// #define DEBUG
+//#define DEBUG
 
 namespace Qt {
 
@@ -277,7 +277,7 @@ namespace Qt {
 				foreach (MemberInfo method in methods) {
 					Type parent = klass.BaseType;
 					string signature = null;
-					while (signature == null && parent != typeof(Qt)) {
+					while (signature == null && parent != null && parent != typeof(Qt)) {
 						MemberInfo[] parentMethods = parent.FindMembers(	MemberTypes.Method,
 																			BindingFlags.Public 
 																			| BindingFlags.NonPublic 

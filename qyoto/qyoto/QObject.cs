@@ -14,10 +14,17 @@ using System.Reflection;
 		private IntPtr _smokeObject;
 		protected QObject(Type dummy) {
 			Type t = GetType();
-			MethodInfo m = t.GetMethod("Emit", new Type[] { });
-			Type proxyInterface = m.ReturnType;
-			SignalInvocation realProxy = new SignalInvocation(proxyInterface, this);
-			Q_EMIT = realProxy.GetTransparentProxy();
+#if DEBUG
+			Console.WriteLine("ENTER: dummy constructor for {0}", t);
+#endif
+			MethodInfo m = t.GetMethod("Emit", BindingFlags.NonPublic | BindingFlags.Instance);
+			if (m != null) {
+				Type proxyInterface = m.ReturnType;
+				SignalInvocation realProxy = new SignalInvocation(proxyInterface, this);
+				Q_EMIT = realProxy.GetTransparentProxy();
+			} else {
+				Console.WriteLine("Could not find Emit");
+			}
 		}
 		interface IQObjectProxy {
 			string Tr(string s, string c);

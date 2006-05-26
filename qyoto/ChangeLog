@@ -1,3 +1,21 @@
+2006-05-26  Richard Dale  <rdale@foton.es>
+
+	* Some fixes from Paolo Capriotti:
+	* Added fix for a crash in SmokeInvocation.cs when a class with
+	  virtual methods wasn't a subclass of Qt
+	* The code for emitting signals now works with Qt4
+	* The code in QObject.cs to set up the transparent proxy Q_EMIT 
+	  for an instance's signal interfaces now works.
+
+2006-05-26  Richard Dale  <rdale@foton.es>
+
+	* The Hash table to get a marshaller given a type name wasn't working.
+	  Thanks to Paolo Capriotti for the fix.
+
+2006-04-21  sedwards
+
+	* C# bindings roughly converted from Qt3 to Qt4. (doesn't work yet).
+
 2006-05-01  Richard Dale  <Richard_Dale@tipitina.demon.co.uk>
 
 	* Regenerated the Qt4 *.cs sources
