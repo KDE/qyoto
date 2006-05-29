@@ -21,7 +21,7 @@ namespace Qt
 		/// This hashtable has classe names as keys, and QMetaObjects as values
 		static Hashtable metaObjects = new Hashtable();
 		
-		public static void GetSlotSignatures(Type t) {
+		public static Hashtable GetSlotSignatures(Type t) {
 			
 			/// Remove the old object if it already exists
 			classes.Remove(t.Name);
@@ -40,6 +40,7 @@ namespace Qt
 			}
 			
 			classes.Add(t.Name, slots);
+			return slots;
 		}
 		
 		public static string[] GetSignalSignatures(Type t) {
@@ -174,61 +175,62 @@ namespace Qt
 			}
 		}
     
-		public static QMetaObject MakeMetaObject(Type t) {
-#if DEBUG
-			Console.WriteLine("ENTER: MakeMetaObject.  t => {0}", t);
-#endif
-		
-			if (t == null || typeof(QObject).IsAssignableFrom(t)) return null;
+		public static QMetaObject MakeMetaObject(Type t, QObject o) {
+			if (t == null) return null;
 		
 			string className = t.ToString();
 			Hashtable slotTable = (Hashtable)classes[className];
+			
 		
 			ICollection slots;
 			if (slotTable != null)
 				slots = slotTable.Values;
 			else {
 				// build slot table
-				GetSlotSignatures(t);
-				slotTable = (Hashtable)classes[className];
-				slots = slotTable.Values;
+				slots = GetSlotSignatures(t).Values;
 			}
-		
+
 			string[] signals = GetSignalSignatures(t);
 			QyotoMetaData metaData = new QyotoMetaData(className, signals, slots);
-			GCHandle parentMetaObject = GCHandle.Alloc(GetMetaObject(t.BaseType));
-			IntPtr metaSmokeObject;
-		
+			
+			GCHandle objHandle = GCHandle.Alloc(o);
+			IntPtr metaObject;
+			
 			unsafe {
 				fixed (byte* stringdata = metaData.StringData)
 				fixed (int* data = metaData.Data) {
-					metaSmokeObject = make_metaObject((IntPtr)parentMetaObject, (IntPtr)stringdata, (IntPtr)data);
+					metaObject = make_metaObject((IntPtr)objHandle, (IntPtr)stringdata, (IntPtr)data);
 				}
 			}
       
-			// create a new C# QMetaObject and replace its
-			// inner _smokeObject with that returned from make_metaObject
-			QMetaObject res = new QMetaObject();
-			FieldInfo fieldInfo = typeof(QMetaObject).GetField(  "_smokeObject", 
-																BindingFlags.NonPublic 
-																| BindingFlags.GetField
-																| BindingFlags.Instance );
-			((GCHandle)fieldInfo.GetValue(res)).Free();
-			fieldInfo.SetValue(res, metaSmokeObject);
-		
-#if DEBUG
-			Console.WriteLine("LEAVE MakeMetaObject");
-#endif
+			QMetaObject res = (QMetaObject)((GCHandle) metaObject).Target;
 			return res;
 		}
     
-		public static QMetaObject GetMetaObject(Type t) {
-			QMetaObject res = (QMetaObject)metaObjects[t.ToString()];
-			if (res == null) {
-				res = MakeMetaObject(t);
-				metaObjects[t.ToString()] = res;
+		public static QMetaObject GetMetaObject(Type t, QObject o) {
+			object[] attr = t.GetCustomAttributes(typeof(SmokeClass), false);
+			if (attr.Length > 0) {
+				// qt class: simply call the MetaObject method
+				MethodInfo metaObjectMethod = t.GetMethod("MetaObject", BindingFlags.Public | BindingFlags.Instance);
+				if (metaObjectMethod == null) {
+					// this should never happen
+					Console.WriteLine("** Cannot find MetaObject method **");
+					return null;
+				}
+				else {
+					return (QMetaObject)metaObjectMethod.Invoke(o, new object[] {});
+				}
 			}
-			return res;
+			else {
+				// user defined class: retrieve QMetaObject from the hashtable
+				QMetaObject res = (QMetaObject)metaObjects[t.ToString()];
+				if (res == null) {
+					// create QMetaObject
+					res = MakeMetaObject(t, o);
+					metaObjects[t.ToString()] = res;
+				}
+				return res;
+			}
 		}
 	}
 	

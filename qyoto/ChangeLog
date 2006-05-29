@@ -1,5 +1,14 @@
 2006-05-29  Richard Dale  <rdale@foton.es>
 
+	* More fixes from Paulo:
+	* To avoid virtual method dispatch resulting in infinite loop, the
+	  meta object instance is now created in c++ code using smoke (just as
+	  in qtruby).
+	* Qyoto.GetMetaObject now works for Qt types as well
+	* Decommented code in set_obj_info. This function is used by the
+	  return value marshaller for non-primitive types and by
+	  make_metaObject.
+
 	* Added patch from Paulo Capriotti to create a QMetaObject at runtime
 	  for a Qyoto class with custom slots and/or signals
 

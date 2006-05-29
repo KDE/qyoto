@@ -49,7 +49,7 @@
 #include "smoke.h"
 
 #define QYOTO_VERSION "0.0.1"
-// #define DEBUG
+#define DEBUG
 
 extern Smoke *qt_Smoke;
 extern void init_qt_Smoke();
@@ -164,10 +164,9 @@ void mapPointer(void * obj, smokeqyoto_object *o, Smoke::Index classId, void *la
 void *
 set_obj_info(const char * className, smokeqyoto_object * o)
 {
-//	void * obj = (*CreateInstance)(className);
-//	(*SetSmokeObject)(obj, o);
-//	return obj;
-	return 0;
+	void * obj = (*CreateInstance)(className);
+	(*SetSmokeObject)(obj, o);
+	return obj;
 }
 
 Marshall::HandlerFn getMarshallFn(const SmokeType &type);
@@ -942,11 +941,8 @@ SignalEmit(char * signature, void * obj, Smoke::StackItem * sp, int items)
 			strcmp(m.signature(), signatureStr) == 0)
 			break;
 	}
-
-#ifdef DEBUG  
+	
 	printf("emitting signal %d\n", i);
-#endif
-
 	EmitSignal signal(qobj, i, items, args, sp);
 	signal.next();
 
@@ -958,32 +954,45 @@ SignalEmit(char * signature, void * obj, Smoke::StackItem * sp, int items)
 }
 
 
-void * 
-make_metaObject(QMetaObject* parent, const char* stringdata, const uint* data) {
-#ifdef DEBUG
-	printf("parent = %x\n", parent);
+void* make_metaObject(void* obj, const char* stringdata, const uint* data) {
 	printf("stringdata = %s\n", stringdata);
 	printf("data = %x\n", data);
-#endif
-  // create a QMetaObject on the stack
-  QMetaObject tmp = {{
-    parent,
-    stringdata,
-    data,
-    0
-  }};
-  
-  // copy it to the heap
-  QMetaObject* meta = new QMetaObject;
-  *meta = tmp;
-  
-  // create smoke object
-  smokeqyoto_object* m = (smokeqyoto_object*)malloc(sizeof(smokeqyoto_object));
-  m->smoke = qt_Smoke;
-  m->classId = qt_Smoke->idClass("QMetaObject");
-  m->ptr = meta;
-  
-  return m;
+	
+	smokeqyoto_object* o = value_obj_info(obj);
+	Smoke::Index nameId = o->smoke->idMethodName("metaObject");
+	Smoke::Index meth = o->smoke->findMethod(o->classId, nameId);
+	if (meth <= 0) {
+		// Should never happen..
+		return 0;
+	}
+	
+	Smoke::Method &methodId = o->smoke->methods[o->smoke->methodMaps[meth].method];
+	Smoke::ClassFn fn = o->smoke->classes[methodId.classId].classFn;
+	Smoke::StackItem i[1];
+	(*fn)(methodId.method, o->ptr, i);
+	
+	QMetaObject* parent = (QMetaObject*) i[0].s_voidp;
+	
+	// create a QMetaObject on the stack
+	QMetaObject tmp = {{
+		parent,
+		stringdata,
+		data,
+		0
+	}};
+	
+	// copy it to the heap
+	QMetaObject* meta = new QMetaObject;
+	*meta = tmp;
+	
+	// create smoke object
+	smokeqyoto_object* m = (smokeqyoto_object*)malloc(sizeof(smokeqyoto_object));
+	m->smoke = qt_Smoke;
+	m->classId = qt_Smoke->idClass("QMetaObject");
+	m->ptr = meta;
+	
+	// create wrapper C# instance
+	return set_obj_info("Qt.QMetaObject", m);
 }
 
 void

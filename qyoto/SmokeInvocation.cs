@@ -200,7 +200,7 @@ namespace Qt {
 			Type klass = Type.GetType(className);
 
 			Type[] constructorParamTypes = new Type[1];
-			constructorParamTypes[0] = Type.GetType("System.Type");
+			constructorParamTypes[0] = typeof(Type);
 			ConstructorInfo constructorInfo = klass.GetConstructor(BindingFlags.NonPublic 
 					| BindingFlags.Instance, null, new Type[ ] { typeof( Type ) } , null);
 			if (constructorInfo == null) {
