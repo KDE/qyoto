@@ -208,8 +208,9 @@ namespace Qt {
 				return (IntPtr) 0;
 			}
 			object result = constructorInfo.Invoke(new object [] { constructorParamTypes[0] });
+#if DEBUG
 			Console.WriteLine("CreateInstance(\"{0}\") constructed {1}", className, result);
-
+#endif
 			Type[] paramTypes = new Type[0];
 			MethodInfo proxyCreator = klass.GetMethod("CreateProxy", BindingFlags.NonPublic 
 																	| BindingFlags.Instance

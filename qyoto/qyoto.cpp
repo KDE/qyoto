@@ -49,7 +49,7 @@
 #include "smoke.h"
 
 #define QYOTO_VERSION "0.0.1"
-#define DEBUG
+// #define DEBUG
 
 extern Smoke *qt_Smoke;
 extern void init_qt_Smoke();
@@ -414,15 +414,6 @@ public:
     	return true;
     }
 };
-
-// class UnencapsulatedQObject : public QObject {
-// public:
-//     int public_receivers(int signal) const { return receivers(signal); }
-// //    void public_activate_signal(QConnectionList *clist, QUObject *o) { activate_signal(clist, o); }
-//     void public_activate_signal(void* one, void* two) {
-//       QMetaObject::activate(1,23,4,5);
-//     }
-// };
 
 class EmitSignal : public Marshall {
     QObject *_qobj;
@@ -915,8 +906,8 @@ GetMocArguments(QString member)
 		a.replace(QRegExp("^const\\s+"), "");
 		a = (rx2.indexIn(a) == -1) ? "ptr" : rx2.cap(1);
 //		printf("arg: %s a: %s\n", (*it).latin1(), a.latin1());
-                QByteArray name = (*it).toLatin1();
-                QByteArray static_type = a.toLatin1();
+		QByteArray name = (*it).toLatin1();
+		QByteArray static_type = a.toLatin1();
 		bool valid = setMocType(mocargs, i, name.constData(), static_type.constData());
 		i++;
     }
@@ -942,19 +933,22 @@ SignalEmit(char * signature, void * obj, Smoke::StackItem * sp, int items)
 	sig.replace(QRegExp("^void "), "");
 	MocArgument * args = GetMocArguments(sig);
 
-  const QMetaObject* meta = qobj->metaObject();
-  const char* signatureStr = sig.toLatin1();
-  int i;
-  for (i = 0; i < meta->methodCount(); i++) {
-    QMetaMethod m = meta->method(i);
-    if (m.methodType() == QMetaMethod::Signal &&
-        strcmp(m.signature(), signatureStr) == 0)
-      break;
-  }
-  
-  printf("emitting signal %d\n", i);
-   EmitSignal signal(qobj, i, items, args, sp);
-   signal.next();
+	const QMetaObject* meta = qobj->metaObject();
+	const char* signatureStr = sig.toLatin1();
+	int i;
+	for (i = 0; i < meta->methodCount(); i++) {
+		QMetaMethod m = meta->method(i);
+		if (m.methodType() == QMetaMethod::Signal &&
+			strcmp(m.signature(), signatureStr) == 0)
+			break;
+	}
+
+#ifdef DEBUG  
+	printf("emitting signal %d\n", i);
+#endif
+
+	EmitSignal signal(qobj, i, items, args, sp);
+	signal.next();
 
 #ifdef DEBUG
 	printf("LEAVE SignalEmit()\n");
@@ -962,109 +956,35 @@ SignalEmit(char * signature, void * obj, Smoke::StackItem * sp, int items)
 
 	return true;
 }
-/*
-static QUParameter *
-make_QUParameter(char * name, char * type, int inout)
-{
-    QUParameter *p = new QUParameter;
-    p->name = new char[strlen(name) + 1];
-    strcpy((char*)p->name, name);
-    if(strcmp(type, "bool") == 0)
-	p->type = &static_QUType_bool;
-    else if(strcmp(type, "int") == 0)
-	p->type = &static_QUType_int;
-    else if(strcmp(type, "double") == 0)
-	p->type = &static_QUType_double;
-    else if(strcmp(type, "char*") == 0 || strcmp(type, "const char*") == 0)
-	p->type = &static_QUType_charstar;
-    else if(strcmp(type, "QString") == 0 || strcmp(type, "QString&") == 0 ||
-	    strcmp(type, "const QString") == 0 || strcmp(type, "const QString&") == 0)
-	p->type = &static_QUType_QString;
-    else
-	p->type = &static_QUType_ptr;
-    // Lacking support for several types. Evil.
-    p->inOut = inout;
-    p->typeExtra = 0;
-//    return Data_Wrap_Struct(rb_cObject, 0, 0, p);
-    return p;
+
+
+void * 
+make_metaObject(QMetaObject* parent, const char* stringdata, const uint* data) {
+#ifdef DEBUG
+	printf("parent = %x\n", parent);
+	printf("stringdata = %s\n", stringdata);
+	printf("data = %x\n", data);
+#endif
+  // create a QMetaObject on the stack
+  QMetaObject tmp = {{
+    parent,
+    stringdata,
+    data,
+    0
+  }};
+  
+  // copy it to the heap
+  QMetaObject* meta = new QMetaObject;
+  *meta = tmp;
+  
+  // create smoke object
+  smokeqyoto_object* m = (smokeqyoto_object*)malloc(sizeof(smokeqyoto_object));
+  m->smoke = qt_Smoke;
+  m->classId = qt_Smoke->idClass("QMetaObject");
+  m->ptr = meta;
+  
+  return m;
 }
-
-static QMetaData *
-make_QMetaData(char * name, void * method)
-{
-    QMetaData *m = new QMetaData;		// will be deleted
-    m->name = new char[strlen(name) + 1];
-    strcpy((char*)m->name, name);
-//    Data_Get_Struct(method, QUMethod, m->method);
-    m->access = QMetaData::Public;
-//    return Data_Wrap_Struct(rb_cObject, 0, 0, m);
-    return m;
-}
-
-static QUMethod *
-make_QUMethod(char * name, int count, QUParameter * p)
-{
-	QUMethod *m = new QUMethod;			// permanent memory allocation
-	m->name = new char[strlen(name) + 1];	// this too
-	strcpy((char*)m->name, name);
-	m->parameters = 0;
-	m->count = count;
-
-	if (m->count > 0) {
-		m->parameters = new QUParameter[m->count];
-		for (long i = 0; i < m->count; i++) {
-//	    VALUE param = rb_ary_entry(params, i);
-//	    QUParameter *p = 0;
-//	    Data_Get_Struct(param, QUParameter, p);
-			((QUParameter *) m->parameters)[i] = *p;
-			delete p;
-			p++;
-		}
-	}
-//    return Data_Wrap_Struct(rb_cObject, 0, 0, m);
-	return m;
-}
-
-static QMetaData *
-make_QMetaData_tbl(long count, QMetaData * old)
-{
-//    long count = RARRAY(list)->len;
-	QMetaData *m = new QMetaData[count];
-
-	for (long i = 0; i < count; i++) {
-//	VALUE item = rb_ary_entry(list, i);
-
-//	QMetaData *old = 0;
-//	Data_Get_Struct(item, QMetaData, old);
-		m[i] = *old;
-		delete old;
-		old++;
-	}
-
-//    return Data_Wrap_Struct(rb_cObject, 0, 0, m);
-    return m;
-}
-
-static void *
-make_metaObject(char * className, QMetaObject* parent, QMetaData * slot_tbl, int slot_count, QMetaData * signal_tbl, int signal_count)
-{
-	QMetaObject *meta = QMetaObject::new_metaobject(
-	className, parent,
-	(const QMetaData*)slot_tbl, slot_count,	// slots
-	(const QMetaData*)signal_tbl, signal_count,	// signals
-	0, 0,	// properties
-	0, 0,	// enums
-	0, 0);
-
-    smokeqyoto_object * o = (smokeqyoto_object *) malloc(sizeof(smokeqyoto_object));
-    o->smoke = qt_Smoke;
-    o->classId = qt_Smoke->idClass("QMetaObject");
-    o->ptr = meta;
-    o->allocated = true;
-
-//    return Data_Wrap_Struct(qt_qmetaobject_class, smokeruby_mark, smokeruby_free, o);
-	return set_obj_info("QMetaObject", o);
-}*/
 
 void
 Init_qyoto()

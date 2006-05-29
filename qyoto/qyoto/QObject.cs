@@ -2,7 +2,7 @@
 namespace Qt {
 
 	using System;
-using System.Reflection;
+	using System.Reflection;
 	using System.Collections;
 	using System.Text;
 
@@ -12,20 +12,18 @@ using System.Reflection;
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;
+
 		protected QObject(Type dummy) {
-			Type t = GetType();
-#if DEBUG
-			Console.WriteLine("ENTER: dummy constructor for {0}", t);
-#endif
-			MethodInfo m = t.GetMethod("Emit", BindingFlags.NonPublic | BindingFlags.Instance);
-			if (m != null) {
-				Type proxyInterface = m.ReturnType;
+			try {
+				Type proxyInterface = Qyoto.GetSignalsInterface(GetType());
 				SignalInvocation realProxy = new SignalInvocation(proxyInterface, this);
 				Q_EMIT = realProxy.GetTransparentProxy();
-			} else {
-				Console.WriteLine("Could not find Emit");
+			}
+			catch {
+				Console.WriteLine("Could not retrieve signal interface");
 			}
 		}
+    
 		interface IQObjectProxy {
 			string Tr(string s, string c);
 			string Tr(string s);
@@ -207,7 +205,7 @@ using System.Reflection;
 		}
 		[SmokeMethod("connect(const QObject*, const char*, const QObject*, const char*)")]
 		public static bool Connect(QObject sender, string signal, QObject receiver, string member) {
-			return StaticQObject().Connect(sender,signal,receiver,member);
+			 return StaticQObject().Connect(sender,signal,receiver,member);
 		}
 		[SmokeMethod("disconnect(const QObject*, const char*, const QObject*, const char*)")]
 		public static bool Disconnect(QObject sender, string signal, QObject receiver, string member) {

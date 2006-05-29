@@ -1,3 +1,8 @@
+2006-05-29  Richard Dale  <rdale@foton.es>
+
+	* Added patch from Paulo Capriotti to create a QMetaObject at runtime
+	  for a Qyoto class with custom slots and/or signals
+
 2006-05-26  Richard Dale  <rdale@foton.es>
 
 	* Added code from Arno Rehn to access obtain the return value of
