@@ -194,10 +194,6 @@ namespace Qt {
 		public static string GetItem(string caption, string label, string[] list) {
 			return StaticQInputDialog().GetItem(caption,label,list);
 		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQInputDialogSignals), this);
-			Q_EMIT = (IQInputDialogSignals) realProxy.GetTransparentProxy();
-		}
 		protected new IQInputDialogSignals Emit() {
 			return (IQInputDialogSignals) Q_EMIT;
 		}

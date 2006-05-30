@@ -40,7 +40,6 @@ namespace Qt {
 		}
 		public QLocalFs() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQLocalFs();
 		}
 		[SmokeMethod("QLocalFs()")]
@@ -99,10 +98,6 @@ namespace Qt {
 		}
 		private void DisposeQLocalFs() {
 			ProxyQLocalFs().DisposeQLocalFs();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQLocalFsSignals), this);
-			Q_EMIT = (IQLocalFsSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQLocalFsSignals Emit() {
 			return (IQLocalFsSignals) Q_EMIT;

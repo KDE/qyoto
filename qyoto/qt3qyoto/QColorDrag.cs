@@ -42,7 +42,6 @@ namespace Qt {
 		}
 		public QColorDrag(QColor col, QWidget dragsource, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQColorDrag(col,dragsource,name);
 		}
 		[SmokeMethod("QColorDrag(const QColor&, QWidget*, const char*)")]
@@ -51,7 +50,6 @@ namespace Qt {
 		}
 		public QColorDrag(QColor col, QWidget dragsource) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQColorDrag(col,dragsource);
 		}
 		[SmokeMethod("QColorDrag(const QColor&, QWidget*)")]
@@ -60,7 +58,6 @@ namespace Qt {
 		}
 		public QColorDrag(QColor col) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQColorDrag(col);
 		}
 		[SmokeMethod("QColorDrag(const QColor&)")]
@@ -69,7 +66,6 @@ namespace Qt {
 		}
 		public QColorDrag(QWidget dragSource, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQColorDrag(dragSource,name);
 		}
 		[SmokeMethod("QColorDrag(QWidget*, const char*)")]
@@ -78,7 +74,6 @@ namespace Qt {
 		}
 		public QColorDrag(QWidget dragSource) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQColorDrag(dragSource);
 		}
 		[SmokeMethod("QColorDrag(QWidget*)")]
@@ -87,7 +82,6 @@ namespace Qt {
 		}
 		public QColorDrag() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQColorDrag();
 		}
 		[SmokeMethod("QColorDrag()")]
@@ -130,10 +124,6 @@ namespace Qt {
 		}
 		private void DisposeQColorDrag() {
 			ProxyQColorDrag().DisposeQColorDrag();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQColorDragSignals), this);
-			Q_EMIT = (IQColorDragSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQColorDragSignals Emit() {
 			return (IQColorDragSignals) Q_EMIT;

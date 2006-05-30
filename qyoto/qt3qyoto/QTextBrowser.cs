@@ -41,7 +41,6 @@ namespace Qt {
 		}
 		public QTextBrowser(QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQTextBrowser(parent,name);
 		}
 		[SmokeMethod("QTextBrowser(QWidget*, const char*)")]
@@ -50,7 +49,6 @@ namespace Qt {
 		}
 		public QTextBrowser(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQTextBrowser(parent);
 		}
 		[SmokeMethod("QTextBrowser(QWidget*)")]
@@ -59,7 +57,6 @@ namespace Qt {
 		}
 		public QTextBrowser() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQTextBrowser();
 		}
 		[SmokeMethod("QTextBrowser()")]
@@ -133,10 +130,6 @@ namespace Qt {
 		}
 		private void DisposeQTextBrowser() {
 			ProxyQTextBrowser().DisposeQTextBrowser();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQTextBrowserSignals), this);
-			Q_EMIT = (IQTextBrowserSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQTextBrowserSignals Emit() {
 			return (IQTextBrowserSignals) Q_EMIT;

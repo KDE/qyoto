@@ -78,7 +78,6 @@ namespace Qt {
 		}
 		public QSignal(QObject parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSignal(parent,name);
 		}
 		[SmokeMethod("QSignal(QObject*, const char*)")]
@@ -87,7 +86,6 @@ namespace Qt {
 		}
 		public QSignal(QObject parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSignal(parent);
 		}
 		[SmokeMethod("QSignal(QObject*)")]
@@ -96,7 +94,6 @@ namespace Qt {
 		}
 		public QSignal() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSignal();
 		}
 		[SmokeMethod("QSignal()")]
@@ -167,10 +164,6 @@ namespace Qt {
 		}
 		private void DisposeQSignal() {
 			ProxyQSignal().DisposeQSignal();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQSignalSignals), this);
-			Q_EMIT = (IQSignalSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQSignalSignals Emit() {
 			return (IQSignalSignals) Q_EMIT;

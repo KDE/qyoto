@@ -592,7 +592,6 @@ namespace Qt {
 		public QApplication(string[] argv) : this((Type) null) {
 			Qyoto.Init_qyoto();
 			CreateProxy();
-			CreateSignalProxy();
 			Qt.qApp = this;
 			
 			string[] args = new string[argv.Length + 1];
@@ -614,7 +613,6 @@ namespace Qt {
 		public QApplication(string[] argv, bool GUIenabled) : this((Type) null) {
 			Qyoto.Init_qyoto();
 			CreateProxy();
-			CreateSignalProxy();
 			Qt.qApp = this;
 
 			string[] args = new string[argv.Length + 1];
@@ -636,7 +634,6 @@ namespace Qt {
 		public QApplication(string[] argv, int arg3) : this((Type) null) {
 			Qyoto.Init_qyoto();
 			CreateProxy();
-			CreateSignalProxy();
 			Qt.qApp = this;
 			
 			string[] args = new string[argv.Length + 1];
@@ -656,10 +653,6 @@ namespace Qt {
 
 //		public string[] args(return Argv());
 
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQApplicationSignals), this);
-			Q_EMIT = (IQApplicationSignals) realProxy.GetTransparentProxy();
-		}
 		protected new IQApplicationSignals Emit() {
 			return (IQApplicationSignals) Q_EMIT;
 		}

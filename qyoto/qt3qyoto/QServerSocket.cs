@@ -40,7 +40,6 @@ namespace Qt {
 		}
 		public QServerSocket(ushort port, int backlog, QObject parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQServerSocket(port,backlog,parent,name);
 		}
 		[SmokeMethod("QServerSocket(Q_UINT16, int, QObject*, const char*)")]
@@ -49,7 +48,6 @@ namespace Qt {
 		}
 		public QServerSocket(ushort port, int backlog, QObject parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQServerSocket(port,backlog,parent);
 		}
 		[SmokeMethod("QServerSocket(Q_UINT16, int, QObject*)")]
@@ -58,7 +56,6 @@ namespace Qt {
 		}
 		public QServerSocket(ushort port, int backlog) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQServerSocket(port,backlog);
 		}
 		[SmokeMethod("QServerSocket(Q_UINT16, int)")]
@@ -67,7 +64,6 @@ namespace Qt {
 		}
 		public QServerSocket(ushort port) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQServerSocket(port);
 		}
 		[SmokeMethod("QServerSocket(Q_UINT16)")]
@@ -76,7 +72,6 @@ namespace Qt {
 		}
 		public QServerSocket(QHostAddress address, ushort port, int backlog, QObject parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQServerSocket(address,port,backlog,parent,name);
 		}
 		[SmokeMethod("QServerSocket(const QHostAddress&, Q_UINT16, int, QObject*, const char*)")]
@@ -85,7 +80,6 @@ namespace Qt {
 		}
 		public QServerSocket(QHostAddress address, ushort port, int backlog, QObject parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQServerSocket(address,port,backlog,parent);
 		}
 		[SmokeMethod("QServerSocket(const QHostAddress&, Q_UINT16, int, QObject*)")]
@@ -94,7 +88,6 @@ namespace Qt {
 		}
 		public QServerSocket(QHostAddress address, ushort port, int backlog) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQServerSocket(address,port,backlog);
 		}
 		[SmokeMethod("QServerSocket(const QHostAddress&, Q_UINT16, int)")]
@@ -103,7 +96,6 @@ namespace Qt {
 		}
 		public QServerSocket(QHostAddress address, ushort port) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQServerSocket(address,port);
 		}
 		[SmokeMethod("QServerSocket(const QHostAddress&, Q_UINT16)")]
@@ -112,7 +104,6 @@ namespace Qt {
 		}
 		public QServerSocket(QObject parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQServerSocket(parent,name);
 		}
 		[SmokeMethod("QServerSocket(QObject*, const char*)")]
@@ -121,7 +112,6 @@ namespace Qt {
 		}
 		public QServerSocket(QObject parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQServerSocket(parent);
 		}
 		[SmokeMethod("QServerSocket(QObject*)")]
@@ -130,7 +120,6 @@ namespace Qt {
 		}
 		public QServerSocket() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQServerSocket();
 		}
 		[SmokeMethod("QServerSocket()")]
@@ -185,10 +174,6 @@ namespace Qt {
 		}
 		private void DisposeQServerSocket() {
 			ProxyQServerSocket().DisposeQServerSocket();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQServerSocketSignals), this);
-			Q_EMIT = (IQServerSocketSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQServerSocketSignals Emit() {
 			return (IQServerSocketSignals) Q_EMIT;

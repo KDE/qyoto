@@ -110,7 +110,6 @@ namespace Qt {
 		}
 		public QMessageBox(QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQMessageBox(parent,name);
 		}
 		[SmokeMethod("QMessageBox(QWidget*, const char*)")]
@@ -119,7 +118,6 @@ namespace Qt {
 		}
 		public QMessageBox(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQMessageBox(parent);
 		}
 		[SmokeMethod("QMessageBox(QWidget*)")]
@@ -128,7 +126,6 @@ namespace Qt {
 		}
 		public QMessageBox() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQMessageBox();
 		}
 		[SmokeMethod("QMessageBox()")]
@@ -137,7 +134,6 @@ namespace Qt {
 		}
 		public QMessageBox(string caption, string text, QMessageBox.Icon icon, int button0, int button1, int button2, QWidget parent, string name, bool modal, int f) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQMessageBox(caption,text,icon,button0,button1,button2,parent,name,modal,f);
 		}
 		[SmokeMethod("QMessageBox(const QString&, const QString&, QMessageBox::Icon, int, int, int, QWidget*, const char*, bool, Qt::WFlags)")]
@@ -146,7 +142,6 @@ namespace Qt {
 		}
 		public QMessageBox(string caption, string text, QMessageBox.Icon icon, int button0, int button1, int button2, QWidget parent, string name, bool modal) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQMessageBox(caption,text,icon,button0,button1,button2,parent,name,modal);
 		}
 		[SmokeMethod("QMessageBox(const QString&, const QString&, QMessageBox::Icon, int, int, int, QWidget*, const char*, bool)")]
@@ -155,7 +150,6 @@ namespace Qt {
 		}
 		public QMessageBox(string caption, string text, QMessageBox.Icon icon, int button0, int button1, int button2, QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQMessageBox(caption,text,icon,button0,button1,button2,parent,name);
 		}
 		[SmokeMethod("QMessageBox(const QString&, const QString&, QMessageBox::Icon, int, int, int, QWidget*, const char*)")]
@@ -164,7 +158,6 @@ namespace Qt {
 		}
 		public QMessageBox(string caption, string text, QMessageBox.Icon icon, int button0, int button1, int button2, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQMessageBox(caption,text,icon,button0,button1,button2,parent);
 		}
 		[SmokeMethod("QMessageBox(const QString&, const QString&, QMessageBox::Icon, int, int, int, QWidget*)")]
@@ -173,7 +166,6 @@ namespace Qt {
 		}
 		public QMessageBox(string caption, string text, QMessageBox.Icon icon, int button0, int button1, int button2) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQMessageBox(caption,text,icon,button0,button1,button2);
 		}
 		[SmokeMethod("QMessageBox(const QString&, const QString&, QMessageBox::Icon, int, int, int)")]
@@ -464,10 +456,6 @@ namespace Qt {
 		}
 		private void DisposeQMessageBox() {
 			ProxyQMessageBox().DisposeQMessageBox();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQMessageBoxSignals), this);
-			Q_EMIT = (IQMessageBoxSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQMessageBoxSignals Emit() {
 			return (IQMessageBoxSignals) Q_EMIT;

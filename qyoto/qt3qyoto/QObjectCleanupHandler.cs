@@ -40,7 +40,6 @@ namespace Qt {
 		}
 		public QObjectCleanupHandler() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQObjectCleanupHandler();
 		}
 		[SmokeMethod("QObjectCleanupHandler()")]
@@ -87,10 +86,6 @@ namespace Qt {
 		}
 		private void DisposeQObjectCleanupHandler() {
 			ProxyQObjectCleanupHandler().DisposeQObjectCleanupHandler();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQObjectCleanupHandlerSignals), this);
-			Q_EMIT = (IQObjectCleanupHandlerSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQObjectCleanupHandlerSignals Emit() {
 			return (IQObjectCleanupHandlerSignals) Q_EMIT;

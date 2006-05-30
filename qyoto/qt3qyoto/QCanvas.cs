@@ -42,7 +42,6 @@ namespace Qt {
 		}
 		public QCanvas(QObject parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQCanvas(parent,name);
 		}
 		[SmokeMethod("QCanvas(QObject*, const char*)")]
@@ -51,7 +50,6 @@ namespace Qt {
 		}
 		public QCanvas(QObject parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQCanvas(parent);
 		}
 		[SmokeMethod("QCanvas(QObject*)")]
@@ -60,7 +58,6 @@ namespace Qt {
 		}
 		public QCanvas() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQCanvas();
 		}
 		[SmokeMethod("QCanvas()")]
@@ -69,7 +66,6 @@ namespace Qt {
 		}
 		public QCanvas(int w, int h) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQCanvas(w,h);
 		}
 		[SmokeMethod("QCanvas(int, int)")]
@@ -78,7 +74,6 @@ namespace Qt {
 		}
 		public QCanvas(QPixmap p, int h, int v, int tilewidth, int tileheight) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQCanvas(p,h,v,tilewidth,tileheight);
 		}
 		[SmokeMethod("QCanvas(QPixmap, int, int, int, int)")]
@@ -335,10 +330,6 @@ namespace Qt {
 		}
 		private void DisposeQCanvas() {
 			ProxyQCanvas().DisposeQCanvas();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQCanvasSignals), this);
-			Q_EMIT = (IQCanvasSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQCanvasSignals Emit() {
 			return (IQCanvasSignals) Q_EMIT;

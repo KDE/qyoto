@@ -40,7 +40,6 @@ namespace Qt {
 		}
 		public QVBoxLayout(QWidget parent, int border, int spacing, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQVBoxLayout(parent,border,spacing,name);
 		}
 		[SmokeMethod("QVBoxLayout(QWidget*, int, int, const char*)")]
@@ -49,7 +48,6 @@ namespace Qt {
 		}
 		public QVBoxLayout(QWidget parent, int border, int spacing) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQVBoxLayout(parent,border,spacing);
 		}
 		[SmokeMethod("QVBoxLayout(QWidget*, int, int)")]
@@ -58,7 +56,6 @@ namespace Qt {
 		}
 		public QVBoxLayout(QWidget parent, int border) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQVBoxLayout(parent,border);
 		}
 		[SmokeMethod("QVBoxLayout(QWidget*, int)")]
@@ -67,7 +64,6 @@ namespace Qt {
 		}
 		public QVBoxLayout(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQVBoxLayout(parent);
 		}
 		[SmokeMethod("QVBoxLayout(QWidget*)")]
@@ -76,7 +72,6 @@ namespace Qt {
 		}
 		public QVBoxLayout(QLayout parentLayout, int spacing, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQVBoxLayout(parentLayout,spacing,name);
 		}
 		[SmokeMethod("QVBoxLayout(QLayout*, int, const char*)")]
@@ -85,7 +80,6 @@ namespace Qt {
 		}
 		public QVBoxLayout(QLayout parentLayout, int spacing) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQVBoxLayout(parentLayout,spacing);
 		}
 		[SmokeMethod("QVBoxLayout(QLayout*, int)")]
@@ -94,7 +88,6 @@ namespace Qt {
 		}
 		public QVBoxLayout(QLayout parentLayout) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQVBoxLayout(parentLayout);
 		}
 		[SmokeMethod("QVBoxLayout(QLayout*)")]
@@ -103,7 +96,6 @@ namespace Qt {
 		}
 		public QVBoxLayout(int spacing, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQVBoxLayout(spacing,name);
 		}
 		[SmokeMethod("QVBoxLayout(int, const char*)")]
@@ -112,7 +104,6 @@ namespace Qt {
 		}
 		public QVBoxLayout(int spacing) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQVBoxLayout(spacing);
 		}
 		[SmokeMethod("QVBoxLayout(int)")]
@@ -121,7 +112,6 @@ namespace Qt {
 		}
 		public QVBoxLayout() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQVBoxLayout();
 		}
 		[SmokeMethod("QVBoxLayout()")]
@@ -152,10 +142,6 @@ namespace Qt {
 		}
 		private void DisposeQVBoxLayout() {
 			ProxyQVBoxLayout().DisposeQVBoxLayout();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQVBoxLayoutSignals), this);
-			Q_EMIT = (IQVBoxLayoutSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQVBoxLayoutSignals Emit() {
 			return (IQVBoxLayoutSignals) Q_EMIT;

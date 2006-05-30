@@ -49,7 +49,6 @@ namespace Qt {
 		}
 		public QComboBox(QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQComboBox(parent,name);
 		}
 		[SmokeMethod("QComboBox(QWidget*, const char*)")]
@@ -58,7 +57,6 @@ namespace Qt {
 		}
 		public QComboBox(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQComboBox(parent);
 		}
 		[SmokeMethod("QComboBox(QWidget*)")]
@@ -67,7 +65,6 @@ namespace Qt {
 		}
 		public QComboBox() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQComboBox();
 		}
 		[SmokeMethod("QComboBox()")]
@@ -76,7 +73,6 @@ namespace Qt {
 		}
 		public QComboBox(bool rw, QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQComboBox(rw,parent,name);
 		}
 		[SmokeMethod("QComboBox(bool, QWidget*, const char*)")]
@@ -85,7 +81,6 @@ namespace Qt {
 		}
 		public QComboBox(bool rw, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQComboBox(rw,parent);
 		}
 		[SmokeMethod("QComboBox(bool, QWidget*)")]
@@ -94,7 +89,6 @@ namespace Qt {
 		}
 		public QComboBox(bool rw) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQComboBox(rw);
 		}
 		[SmokeMethod("QComboBox(bool)")]
@@ -389,10 +383,6 @@ namespace Qt {
 		}
 		private void DisposeQComboBox() {
 			ProxyQComboBox().DisposeQComboBox();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQComboBoxSignals), this);
-			Q_EMIT = (IQComboBoxSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQComboBoxSignals Emit() {
 			return (IQComboBoxSignals) Q_EMIT;

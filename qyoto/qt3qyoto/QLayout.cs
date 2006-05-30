@@ -46,7 +46,6 @@ namespace Qt {
 		}
 		public QLayout(QWidget parent, int margin, int spacing, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQLayout(parent,margin,spacing,name);
 		}
 		[SmokeMethod("QLayout(QWidget*, int, int, const char*)")]
@@ -55,7 +54,6 @@ namespace Qt {
 		}
 		public QLayout(QWidget parent, int margin, int spacing) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQLayout(parent,margin,spacing);
 		}
 		[SmokeMethod("QLayout(QWidget*, int, int)")]
@@ -64,7 +62,6 @@ namespace Qt {
 		}
 		public QLayout(QWidget parent, int margin) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQLayout(parent,margin);
 		}
 		[SmokeMethod("QLayout(QWidget*, int)")]
@@ -73,7 +70,6 @@ namespace Qt {
 		}
 		public QLayout(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQLayout(parent);
 		}
 		[SmokeMethod("QLayout(QWidget*)")]
@@ -82,7 +78,6 @@ namespace Qt {
 		}
 		public QLayout(QLayout parentLayout, int spacing, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQLayout(parentLayout,spacing,name);
 		}
 		[SmokeMethod("QLayout(QLayout*, int, const char*)")]
@@ -91,7 +86,6 @@ namespace Qt {
 		}
 		public QLayout(QLayout parentLayout, int spacing) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQLayout(parentLayout,spacing);
 		}
 		[SmokeMethod("QLayout(QLayout*, int)")]
@@ -100,7 +94,6 @@ namespace Qt {
 		}
 		public QLayout(QLayout parentLayout) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQLayout(parentLayout);
 		}
 		[SmokeMethod("QLayout(QLayout*)")]
@@ -109,7 +102,6 @@ namespace Qt {
 		}
 		public QLayout(int spacing, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQLayout(spacing,name);
 		}
 		[SmokeMethod("QLayout(int, const char*)")]
@@ -118,7 +110,6 @@ namespace Qt {
 		}
 		public QLayout(int spacing) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQLayout(spacing);
 		}
 		[SmokeMethod("QLayout(int)")]
@@ -127,7 +118,6 @@ namespace Qt {
 		}
 		public QLayout() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQLayout();
 		}
 		[SmokeMethod("QLayout()")]
@@ -328,10 +318,6 @@ namespace Qt {
 		[SmokeMethod("setAlignment(int)")]
 		public virtual void SetAlignment(int a) {
 			ProxyQLayout().SetAlignment(a);
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQLayoutSignals), this);
-			Q_EMIT = (IQLayoutSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQLayoutSignals Emit() {
 			return (IQLayoutSignals) Q_EMIT;

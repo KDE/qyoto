@@ -40,7 +40,6 @@ namespace Qt {
 		}
 		public QMultiLineEdit(QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQMultiLineEdit(parent,name);
 		}
 		[SmokeMethod("QMultiLineEdit(QWidget*, const char*)")]
@@ -49,7 +48,6 @@ namespace Qt {
 		}
 		public QMultiLineEdit(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQMultiLineEdit(parent);
 		}
 		[SmokeMethod("QMultiLineEdit(QWidget*)")]
@@ -58,7 +56,6 @@ namespace Qt {
 		}
 		public QMultiLineEdit() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQMultiLineEdit();
 		}
 		[SmokeMethod("QMultiLineEdit()")]
@@ -294,10 +291,6 @@ namespace Qt {
 		}
 		private void DisposeQMultiLineEdit() {
 			ProxyQMultiLineEdit().DisposeQMultiLineEdit();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQMultiLineEditSignals), this);
-			Q_EMIT = (IQMultiLineEditSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQMultiLineEditSignals Emit() {
 			return (IQMultiLineEditSignals) Q_EMIT;

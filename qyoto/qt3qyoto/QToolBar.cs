@@ -40,7 +40,6 @@ namespace Qt {
 		}
 		public QToolBar(string label, QMainWindow arg2, int arg3, bool newLine, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQToolBar(label,arg2,arg3,newLine,name);
 		}
 		[SmokeMethod("QToolBar(const QString&, QMainWindow*, Qt::ToolBarDock, bool, const char*)")]
@@ -49,7 +48,6 @@ namespace Qt {
 		}
 		public QToolBar(string label, QMainWindow arg2, int arg3, bool newLine) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQToolBar(label,arg2,arg3,newLine);
 		}
 		[SmokeMethod("QToolBar(const QString&, QMainWindow*, Qt::ToolBarDock, bool)")]
@@ -58,7 +56,6 @@ namespace Qt {
 		}
 		public QToolBar(string label, QMainWindow arg2, int arg3) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQToolBar(label,arg2,arg3);
 		}
 		[SmokeMethod("QToolBar(const QString&, QMainWindow*, Qt::ToolBarDock)")]
@@ -67,7 +64,6 @@ namespace Qt {
 		}
 		public QToolBar(string label, QMainWindow arg2) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQToolBar(label,arg2);
 		}
 		[SmokeMethod("QToolBar(const QString&, QMainWindow*)")]
@@ -76,7 +72,6 @@ namespace Qt {
 		}
 		public QToolBar(string label, QMainWindow arg2, QWidget arg3, bool newLine, string name, int f) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQToolBar(label,arg2,arg3,newLine,name,f);
 		}
 		[SmokeMethod("QToolBar(const QString&, QMainWindow*, QWidget*, bool, const char*, Qt::WFlags)")]
@@ -85,7 +80,6 @@ namespace Qt {
 		}
 		public QToolBar(string label, QMainWindow arg2, QWidget arg3, bool newLine, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQToolBar(label,arg2,arg3,newLine,name);
 		}
 		[SmokeMethod("QToolBar(const QString&, QMainWindow*, QWidget*, bool, const char*)")]
@@ -94,7 +88,6 @@ namespace Qt {
 		}
 		public QToolBar(string label, QMainWindow arg2, QWidget arg3, bool newLine) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQToolBar(label,arg2,arg3,newLine);
 		}
 		[SmokeMethod("QToolBar(const QString&, QMainWindow*, QWidget*, bool)")]
@@ -103,7 +96,6 @@ namespace Qt {
 		}
 		public QToolBar(string label, QMainWindow arg2, QWidget arg3) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQToolBar(label,arg2,arg3);
 		}
 		[SmokeMethod("QToolBar(const QString&, QMainWindow*, QWidget*)")]
@@ -112,7 +104,6 @@ namespace Qt {
 		}
 		public QToolBar(QMainWindow parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQToolBar(parent,name);
 		}
 		[SmokeMethod("QToolBar(QMainWindow*, const char*)")]
@@ -121,7 +112,6 @@ namespace Qt {
 		}
 		public QToolBar(QMainWindow parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQToolBar(parent);
 		}
 		[SmokeMethod("QToolBar(QMainWindow*)")]
@@ -130,7 +120,6 @@ namespace Qt {
 		}
 		public QToolBar() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQToolBar();
 		}
 		[SmokeMethod("QToolBar()")]
@@ -221,10 +210,6 @@ namespace Qt {
 		}
 		private void DisposeQToolBar() {
 			ProxyQToolBar().DisposeQToolBar();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQToolBarSignals), this);
-			Q_EMIT = (IQToolBarSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQToolBarSignals Emit() {
 			return (IQToolBarSignals) Q_EMIT;

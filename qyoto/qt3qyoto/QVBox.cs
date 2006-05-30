@@ -40,7 +40,6 @@ namespace Qt {
 		}
 		public QVBox(QWidget parent, string name, int f) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQVBox(parent,name,f);
 		}
 		[SmokeMethod("QVBox(QWidget*, const char*, Qt::WFlags)")]
@@ -49,7 +48,6 @@ namespace Qt {
 		}
 		public QVBox(QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQVBox(parent,name);
 		}
 		[SmokeMethod("QVBox(QWidget*, const char*)")]
@@ -58,7 +56,6 @@ namespace Qt {
 		}
 		public QVBox(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQVBox(parent);
 		}
 		[SmokeMethod("QVBox(QWidget*)")]
@@ -67,7 +64,6 @@ namespace Qt {
 		}
 		public QVBox() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQVBox();
 		}
 		[SmokeMethod("QVBox()")]
@@ -98,10 +94,6 @@ namespace Qt {
 		}
 		private void DisposeQVBox() {
 			ProxyQVBox().DisposeQVBox();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQVBoxSignals), this);
-			Q_EMIT = (IQVBoxSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQVBoxSignals Emit() {
 			return (IQVBoxSignals) Q_EMIT;

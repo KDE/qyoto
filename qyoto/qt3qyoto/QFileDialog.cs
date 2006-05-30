@@ -91,7 +91,6 @@ namespace Qt {
 		}
 		public QFileDialog(string dirName, string filter, QWidget parent, string name, bool modal) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQFileDialog(dirName,filter,parent,name,modal);
 		}
 		[SmokeMethod("QFileDialog(const QString&, const QString&, QWidget*, const char*, bool)")]
@@ -100,7 +99,6 @@ namespace Qt {
 		}
 		public QFileDialog(string dirName, string filter, QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQFileDialog(dirName,filter,parent,name);
 		}
 		[SmokeMethod("QFileDialog(const QString&, const QString&, QWidget*, const char*)")]
@@ -109,7 +107,6 @@ namespace Qt {
 		}
 		public QFileDialog(string dirName, string filter, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQFileDialog(dirName,filter,parent);
 		}
 		[SmokeMethod("QFileDialog(const QString&, const QString&, QWidget*)")]
@@ -118,7 +115,6 @@ namespace Qt {
 		}
 		public QFileDialog(string dirName, string filter) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQFileDialog(dirName,filter);
 		}
 		[SmokeMethod("QFileDialog(const QString&, const QString&)")]
@@ -127,7 +123,6 @@ namespace Qt {
 		}
 		public QFileDialog(string dirName) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQFileDialog(dirName);
 		}
 		[SmokeMethod("QFileDialog(const QString&)")]
@@ -136,7 +131,6 @@ namespace Qt {
 		}
 		public QFileDialog(QWidget parent, string name, bool modal) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQFileDialog(parent,name,modal);
 		}
 		[SmokeMethod("QFileDialog(QWidget*, const char*, bool)")]
@@ -145,7 +139,6 @@ namespace Qt {
 		}
 		public QFileDialog(QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQFileDialog(parent,name);
 		}
 		[SmokeMethod("QFileDialog(QWidget*, const char*)")]
@@ -154,7 +147,6 @@ namespace Qt {
 		}
 		public QFileDialog(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQFileDialog(parent);
 		}
 		[SmokeMethod("QFileDialog(QWidget*)")]
@@ -163,7 +155,6 @@ namespace Qt {
 		}
 		public QFileDialog() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQFileDialog();
 		}
 		[SmokeMethod("QFileDialog()")]
@@ -500,10 +491,6 @@ namespace Qt {
 		}
 		private void DisposeQFileDialog() {
 			ProxyQFileDialog().DisposeQFileDialog();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQFileDialogSignals), this);
-			Q_EMIT = (IQFileDialogSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQFileDialogSignals Emit() {
 			return (IQFileDialogSignals) Q_EMIT;

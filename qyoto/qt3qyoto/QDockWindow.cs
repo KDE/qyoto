@@ -51,7 +51,6 @@ namespace Qt {
 		}
 		public QDockWindow(QDockWindow.Place p, QWidget parent, string name, int f) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQDockWindow(p,parent,name,f);
 		}
 		[SmokeMethod("QDockWindow(QDockWindow::Place, QWidget*, const char*, Qt::WFlags)")]
@@ -60,7 +59,6 @@ namespace Qt {
 		}
 		public QDockWindow(QDockWindow.Place p, QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQDockWindow(p,parent,name);
 		}
 		[SmokeMethod("QDockWindow(QDockWindow::Place, QWidget*, const char*)")]
@@ -69,7 +67,6 @@ namespace Qt {
 		}
 		public QDockWindow(QDockWindow.Place p, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQDockWindow(p,parent);
 		}
 		[SmokeMethod("QDockWindow(QDockWindow::Place, QWidget*)")]
@@ -78,7 +75,6 @@ namespace Qt {
 		}
 		public QDockWindow(QDockWindow.Place p) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQDockWindow(p);
 		}
 		[SmokeMethod("QDockWindow(QDockWindow::Place)")]
@@ -87,7 +83,6 @@ namespace Qt {
 		}
 		public QDockWindow() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQDockWindow();
 		}
 		[SmokeMethod("QDockWindow()")]
@@ -96,7 +91,6 @@ namespace Qt {
 		}
 		public QDockWindow(QWidget parent, string name, int f) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQDockWindow(parent,name,f);
 		}
 		[SmokeMethod("QDockWindow(QWidget*, const char*, Qt::WFlags)")]
@@ -105,7 +99,6 @@ namespace Qt {
 		}
 		public QDockWindow(QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQDockWindow(parent,name);
 		}
 		[SmokeMethod("QDockWindow(QWidget*, const char*)")]
@@ -114,7 +107,6 @@ namespace Qt {
 		}
 		public QDockWindow(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQDockWindow(parent);
 		}
 		[SmokeMethod("QDockWindow(QWidget*)")]
@@ -338,10 +330,6 @@ namespace Qt {
 		}
 		private void DisposeQDockWindow() {
 			ProxyQDockWindow().DisposeQDockWindow();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQDockWindowSignals), this);
-			Q_EMIT = (IQDockWindowSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQDockWindowSignals Emit() {
 			return (IQDockWindowSignals) Q_EMIT;

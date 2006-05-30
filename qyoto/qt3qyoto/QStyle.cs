@@ -349,7 +349,6 @@ namespace Qt {
 		}
 		public QStyle() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQStyle();
 		}
 		[SmokeMethod("QStyle()")]
@@ -565,10 +564,6 @@ namespace Qt {
 		}
 		private void DisposeQStyle() {
 			ProxyQStyle().DisposeQStyle();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQStyleSignals), this);
-			Q_EMIT = (IQStyleSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQStyleSignals Emit() {
 			return (IQStyleSignals) Q_EMIT;

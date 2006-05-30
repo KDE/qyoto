@@ -40,7 +40,6 @@ namespace Qt {
 		}
 		public QGridView(QWidget parent, string name, int f) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQGridView(parent,name,f);
 		}
 		[SmokeMethod("QGridView(QWidget*, const char*, Qt::WFlags)")]
@@ -49,7 +48,6 @@ namespace Qt {
 		}
 		public QGridView(QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQGridView(parent,name);
 		}
 		[SmokeMethod("QGridView(QWidget*, const char*)")]
@@ -58,7 +56,6 @@ namespace Qt {
 		}
 		public QGridView(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQGridView(parent);
 		}
 		[SmokeMethod("QGridView(QWidget*)")]
@@ -67,7 +64,6 @@ namespace Qt {
 		}
 		public QGridView() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQGridView();
 		}
 		[SmokeMethod("QGridView()")]
@@ -166,10 +162,6 @@ namespace Qt {
 		}
 		private void DisposeQGridView() {
 			ProxyQGridView().DisposeQGridView();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQGridViewSignals), this);
-			Q_EMIT = (IQGridViewSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQGridViewSignals Emit() {
 			return (IQGridViewSignals) Q_EMIT;

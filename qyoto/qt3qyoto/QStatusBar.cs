@@ -41,7 +41,6 @@ namespace Qt {
 		}
 		public QStatusBar(QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQStatusBar(parent,name);
 		}
 		[SmokeMethod("QStatusBar(QWidget*, const char*)")]
@@ -50,7 +49,6 @@ namespace Qt {
 		}
 		public QStatusBar(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQStatusBar(parent);
 		}
 		[SmokeMethod("QStatusBar(QWidget*)")]
@@ -59,7 +57,6 @@ namespace Qt {
 		}
 		public QStatusBar() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQStatusBar();
 		}
 		[SmokeMethod("QStatusBar()")]
@@ -149,10 +146,6 @@ namespace Qt {
 		}
 		private void DisposeQStatusBar() {
 			ProxyQStatusBar().DisposeQStatusBar();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQStatusBarSignals), this);
-			Q_EMIT = (IQStatusBarSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQStatusBarSignals Emit() {
 			return (IQStatusBarSignals) Q_EMIT;

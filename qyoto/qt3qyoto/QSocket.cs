@@ -54,7 +54,6 @@ namespace Qt {
 		}
 		public QSocket(QObject parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSocket(parent,name);
 		}
 		[SmokeMethod("QSocket(QObject*, const char*)")]
@@ -63,7 +62,6 @@ namespace Qt {
 		}
 		public QSocket(QObject parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSocket(parent);
 		}
 		[SmokeMethod("QSocket(QObject*)")]
@@ -72,7 +70,6 @@ namespace Qt {
 		}
 		public QSocket() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSocket();
 		}
 		[SmokeMethod("QSocket()")]
@@ -350,10 +347,6 @@ namespace Qt {
 		[SmokeMethod("setStatus(int)")]
 		public void SetStatus(int arg1) {
 			ProxyQSocket().SetStatus(arg1);
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQSocketSignals), this);
-			Q_EMIT = (IQSocketSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQSocketSignals Emit() {
 			return (IQSocketSignals) Q_EMIT;

@@ -40,7 +40,6 @@ namespace Qt {
 		}
 		public QPushButton(QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQPushButton(parent,name);
 		}
 		[SmokeMethod("QPushButton(QWidget*, const char*)")]
@@ -49,7 +48,6 @@ namespace Qt {
 		}
 		public QPushButton(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQPushButton(parent);
 		}
 		[SmokeMethod("QPushButton(QWidget*)")]
@@ -58,7 +56,6 @@ namespace Qt {
 		}
 		public QPushButton(string text, QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQPushButton(text,parent,name);
 		}
 		[SmokeMethod("QPushButton(const QString&, QWidget*, const char*)")]
@@ -67,7 +64,6 @@ namespace Qt {
 		}
 		public QPushButton(string text, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQPushButton(text,parent);
 		}
 		[SmokeMethod("QPushButton(const QString&, QWidget*)")]
@@ -76,7 +72,6 @@ namespace Qt {
 		}
 		public QPushButton(QIconSet icon, string text, QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQPushButton(icon,text,parent,name);
 		}
 		[SmokeMethod("QPushButton(const QIconSet&, const QString&, QWidget*, const char*)")]
@@ -85,7 +80,6 @@ namespace Qt {
 		}
 		public QPushButton(QIconSet icon, string text, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQPushButton(icon,text,parent);
 		}
 		[SmokeMethod("QPushButton(const QIconSet&, const QString&, QWidget*)")]
@@ -225,10 +219,6 @@ namespace Qt {
 		}
 		private void DisposeQPushButton() {
 			ProxyQPushButton().DisposeQPushButton();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQPushButtonSignals), this);
-			Q_EMIT = (IQPushButtonSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQPushButtonSignals Emit() {
 			return (IQPushButtonSignals) Q_EMIT;

@@ -47,7 +47,6 @@ namespace Qt {
 		}
 		public QDataTable(QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQDataTable(parent,name);
 		}
 		[SmokeMethod("QDataTable(QWidget*, const char*)")]
@@ -56,7 +55,6 @@ namespace Qt {
 		}
 		public QDataTable(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQDataTable(parent);
 		}
 		[SmokeMethod("QDataTable(QWidget*)")]
@@ -65,7 +63,6 @@ namespace Qt {
 		}
 		public QDataTable() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQDataTable();
 		}
 		[SmokeMethod("QDataTable()")]
@@ -74,7 +71,6 @@ namespace Qt {
 		}
 		public QDataTable(QSqlCursor cursor, bool autoPopulate, QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQDataTable(cursor,autoPopulate,parent,name);
 		}
 		[SmokeMethod("QDataTable(QSqlCursor*, bool, QWidget*, const char*)")]
@@ -83,7 +79,6 @@ namespace Qt {
 		}
 		public QDataTable(QSqlCursor cursor, bool autoPopulate, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQDataTable(cursor,autoPopulate,parent);
 		}
 		[SmokeMethod("QDataTable(QSqlCursor*, bool, QWidget*)")]
@@ -92,7 +87,6 @@ namespace Qt {
 		}
 		public QDataTable(QSqlCursor cursor, bool autoPopulate) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQDataTable(cursor,autoPopulate);
 		}
 		[SmokeMethod("QDataTable(QSqlCursor*, bool)")]
@@ -101,7 +95,6 @@ namespace Qt {
 		}
 		public QDataTable(QSqlCursor cursor) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQDataTable(cursor);
 		}
 		[SmokeMethod("QDataTable(QSqlCursor*)")]
@@ -533,10 +526,6 @@ namespace Qt {
 		}
 		private void DisposeQDataTable() {
 			ProxyQDataTable().DisposeQDataTable();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQDataTableSignals), this);
-			Q_EMIT = (IQDataTableSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQDataTableSignals Emit() {
 			return (IQDataTableSignals) Q_EMIT;

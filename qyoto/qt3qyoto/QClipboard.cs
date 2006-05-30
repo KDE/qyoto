@@ -158,10 +158,6 @@ namespace Qt {
 		public static new string TrUtf8(string arg1) {
 			return StaticQClipboard().TrUtf8(arg1);
 		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQClipboardSignals), this);
-			Q_EMIT = (IQClipboardSignals) realProxy.GetTransparentProxy();
-		}
 		protected new IQClipboardSignals Emit() {
 			return (IQClipboardSignals) Q_EMIT;
 		}

@@ -44,7 +44,6 @@ namespace Qt {
 		}
 		public QAccel(QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQAccel(parent,name);
 		}
 		[SmokeMethod("QAccel(QWidget*, const char*)")]
@@ -53,7 +52,6 @@ namespace Qt {
 		}
 		public QAccel(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQAccel(parent);
 		}
 		[SmokeMethod("QAccel(QWidget*)")]
@@ -62,7 +60,6 @@ namespace Qt {
 		}
 		public QAccel(QWidget watch, QObject parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQAccel(watch,parent,name);
 		}
 		[SmokeMethod("QAccel(QWidget*, QObject*, const char*)")]
@@ -71,7 +68,6 @@ namespace Qt {
 		}
 		public QAccel(QWidget watch, QObject parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQAccel(watch,parent);
 		}
 		[SmokeMethod("QAccel(QWidget*, QObject*)")]
@@ -190,10 +186,6 @@ namespace Qt {
 		}
 		private void DisposeQAccel() {
 			ProxyQAccel().DisposeQAccel();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQAccelSignals), this);
-			Q_EMIT = (IQAccelSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQAccelSignals Emit() {
 			return (IQAccelSignals) Q_EMIT;

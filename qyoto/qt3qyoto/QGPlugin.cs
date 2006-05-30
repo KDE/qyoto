@@ -66,10 +66,6 @@ namespace Qt {
 		private void DisposeQGPlugin() {
 			ProxyQGPlugin().DisposeQGPlugin();
 		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQGPluginSignals), this);
-			Q_EMIT = (IQGPluginSignals) realProxy.GetTransparentProxy();
-		}
 		protected new IQGPluginSignals Emit() {
 			return (IQGPluginSignals) Q_EMIT;
 		}

@@ -40,7 +40,6 @@ namespace Qt {
 		}
 		public QCommonStyle() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQCommonStyle();
 		}
 		[SmokeMethod("QCommonStyle()")]
@@ -180,10 +179,6 @@ namespace Qt {
 		}
 		private void DisposeQCommonStyle() {
 			ProxyQCommonStyle().DisposeQCommonStyle();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQCommonStyleSignals), this);
-			Q_EMIT = (IQCommonStyleSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQCommonStyleSignals Emit() {
 			return (IQCommonStyleSignals) Q_EMIT;

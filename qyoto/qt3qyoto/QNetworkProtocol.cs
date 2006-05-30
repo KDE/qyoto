@@ -83,7 +83,6 @@ namespace Qt {
 		}
 		public QNetworkProtocol() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQNetworkProtocol();
 		}
 		[SmokeMethod("QNetworkProtocol()")]
@@ -199,10 +198,6 @@ namespace Qt {
 		}
 		private void DisposeQNetworkProtocol() {
 			ProxyQNetworkProtocol().DisposeQNetworkProtocol();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQNetworkProtocolSignals), this);
-			Q_EMIT = (IQNetworkProtocolSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQNetworkProtocolSignals Emit() {
 			return (IQNetworkProtocolSignals) Q_EMIT;

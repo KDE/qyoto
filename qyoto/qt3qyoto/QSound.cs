@@ -43,7 +43,6 @@ namespace Qt {
 		}
 		public QSound(string filename, QObject parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSound(filename,parent,name);
 		}
 		[SmokeMethod("QSound(const QString&, QObject*, const char*)")]
@@ -52,7 +51,6 @@ namespace Qt {
 		}
 		public QSound(string filename, QObject parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSound(filename,parent);
 		}
 		[SmokeMethod("QSound(const QString&, QObject*)")]
@@ -61,7 +59,6 @@ namespace Qt {
 		}
 		public QSound(string filename) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSound(filename);
 		}
 		[SmokeMethod("QSound(const QString&)")]
@@ -134,10 +131,6 @@ namespace Qt {
 		}
 		private void DisposeQSound() {
 			ProxyQSound().DisposeQSound();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQSoundSignals), this);
-			Q_EMIT = (IQSoundSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQSoundSignals Emit() {
 			return (IQSoundSignals) Q_EMIT;

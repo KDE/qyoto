@@ -46,7 +46,6 @@ namespace Qt {
 		}
 		public QLineEdit(QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQLineEdit(parent,name);
 		}
 		[SmokeMethod("QLineEdit(QWidget*, const char*)")]
@@ -55,7 +54,6 @@ namespace Qt {
 		}
 		public QLineEdit(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQLineEdit(parent);
 		}
 		[SmokeMethod("QLineEdit(QWidget*)")]
@@ -64,7 +62,6 @@ namespace Qt {
 		}
 		public QLineEdit(string arg1, QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQLineEdit(arg1,parent,name);
 		}
 		[SmokeMethod("QLineEdit(const QString&, QWidget*, const char*)")]
@@ -73,7 +70,6 @@ namespace Qt {
 		}
 		public QLineEdit(string arg1, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQLineEdit(arg1,parent);
 		}
 		[SmokeMethod("QLineEdit(const QString&, QWidget*)")]
@@ -82,7 +78,6 @@ namespace Qt {
 		}
 		public QLineEdit(string arg1, string arg2, QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQLineEdit(arg1,arg2,parent,name);
 		}
 		[SmokeMethod("QLineEdit(const QString&, const QString&, QWidget*, const char*)")]
@@ -91,7 +86,6 @@ namespace Qt {
 		}
 		public QLineEdit(string arg1, string arg2, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQLineEdit(arg1,arg2,parent);
 		}
 		[SmokeMethod("QLineEdit(const QString&, const QString&, QWidget*)")]
@@ -488,10 +482,6 @@ namespace Qt {
 		}
 		private void DisposeQLineEdit() {
 			ProxyQLineEdit().DisposeQLineEdit();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQLineEditSignals), this);
-			Q_EMIT = (IQLineEditSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQLineEditSignals Emit() {
 			return (IQLineEditSignals) Q_EMIT;

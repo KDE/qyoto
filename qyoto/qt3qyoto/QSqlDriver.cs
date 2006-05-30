@@ -50,7 +50,6 @@ namespace Qt {
 		}
 		public QSqlDriver(QObject parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSqlDriver(parent,name);
 		}
 		[SmokeMethod("QSqlDriver(QObject*, const char*)")]
@@ -59,7 +58,6 @@ namespace Qt {
 		}
 		public QSqlDriver(QObject parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSqlDriver(parent);
 		}
 		[SmokeMethod("QSqlDriver(QObject*)")]
@@ -68,7 +66,6 @@ namespace Qt {
 		}
 		public QSqlDriver() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSqlDriver();
 		}
 		[SmokeMethod("QSqlDriver()")]
@@ -195,10 +192,6 @@ namespace Qt {
 		}
 		private void DisposeQSqlDriver() {
 			ProxyQSqlDriver().DisposeQSqlDriver();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQSqlDriverSignals), this);
-			Q_EMIT = (IQSqlDriverSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQSqlDriverSignals Emit() {
 			return (IQSqlDriverSignals) Q_EMIT;

@@ -41,7 +41,6 @@ namespace Qt {
 		}
 		public QSplashScreen(QPixmap pixmap, int f) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSplashScreen(pixmap,f);
 		}
 		[SmokeMethod("QSplashScreen(const QPixmap&, Qt::WFlags)")]
@@ -50,7 +49,6 @@ namespace Qt {
 		}
 		public QSplashScreen(QPixmap pixmap) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSplashScreen(pixmap);
 		}
 		[SmokeMethod("QSplashScreen(const QPixmap&)")]
@@ -59,7 +57,6 @@ namespace Qt {
 		}
 		public QSplashScreen() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSplashScreen();
 		}
 		[SmokeMethod("QSplashScreen()")]
@@ -134,10 +131,6 @@ namespace Qt {
 		}
 		private void DisposeQSplashScreen() {
 			ProxyQSplashScreen().DisposeQSplashScreen();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQSplashScreenSignals), this);
-			Q_EMIT = (IQSplashScreenSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQSplashScreenSignals Emit() {
 			return (IQSplashScreenSignals) Q_EMIT;

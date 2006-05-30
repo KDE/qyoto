@@ -41,7 +41,6 @@ namespace Qt {
 		}
 		public QWidgetStack(QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQWidgetStack(parent,name);
 		}
 		[SmokeMethod("QWidgetStack(QWidget*, const char*)")]
@@ -50,7 +49,6 @@ namespace Qt {
 		}
 		public QWidgetStack(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQWidgetStack(parent);
 		}
 		[SmokeMethod("QWidgetStack(QWidget*)")]
@@ -59,7 +57,6 @@ namespace Qt {
 		}
 		public QWidgetStack() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQWidgetStack();
 		}
 		[SmokeMethod("QWidgetStack()")]
@@ -68,7 +65,6 @@ namespace Qt {
 		}
 		public QWidgetStack(QWidget parent, string name, int f) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQWidgetStack(parent,name,f);
 		}
 		[SmokeMethod("QWidgetStack(QWidget*, const char*, Qt::WFlags)")]
@@ -165,10 +161,6 @@ namespace Qt {
 		}
 		private void DisposeQWidgetStack() {
 			ProxyQWidgetStack().DisposeQWidgetStack();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQWidgetStackSignals), this);
-			Q_EMIT = (IQWidgetStackSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQWidgetStackSignals Emit() {
 			return (IQWidgetStackSignals) Q_EMIT;

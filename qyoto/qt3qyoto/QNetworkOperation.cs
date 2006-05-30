@@ -40,7 +40,6 @@ namespace Qt {
 		}
 		public QNetworkOperation(QNetworkProtocol.Operation operation, string arg0, string arg1, string arg2) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQNetworkOperation(operation,arg0,arg1,arg2);
 		}
 		[SmokeMethod("QNetworkOperation(QNetworkProtocol::Operation, const QString&, const QString&, const QString&)")]
@@ -49,7 +48,6 @@ namespace Qt {
 		}
 		public QNetworkOperation(QNetworkProtocol.Operation operation, QByteArray arg0, QByteArray arg1, QByteArray arg2) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQNetworkOperation(operation,arg0,arg1,arg2);
 		}
 		[SmokeMethod("QNetworkOperation(QNetworkProtocol::Operation, const QByteArray&, const QByteArray&, const QByteArray&)")]
@@ -128,10 +126,6 @@ namespace Qt {
 		}
 		private void DisposeQNetworkOperation() {
 			ProxyQNetworkOperation().DisposeQNetworkOperation();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQNetworkOperationSignals), this);
-			Q_EMIT = (IQNetworkOperationSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQNetworkOperationSignals Emit() {
 			return (IQNetworkOperationSignals) Q_EMIT;

@@ -41,7 +41,6 @@ namespace Qt {
 		}
 		public QPopupMenu(QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQPopupMenu(parent,name);
 		}
 		[SmokeMethod("QPopupMenu(QWidget*, const char*)")]
@@ -50,7 +49,6 @@ namespace Qt {
 		}
 		public QPopupMenu(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQPopupMenu(parent);
 		}
 		[SmokeMethod("QPopupMenu(QWidget*)")]
@@ -59,7 +57,6 @@ namespace Qt {
 		}
 		public QPopupMenu() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQPopupMenu();
 		}
 		[SmokeMethod("QPopupMenu()")]
@@ -611,10 +608,6 @@ namespace Qt {
 		[SmokeMethod("menuDelPopup(QPopupMenu*)")]
 		protected virtual void MenuDelPopup(QPopupMenu arg1) {
 			ProxyQPopupMenu().MenuDelPopup(arg1);
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQPopupMenuSignals), this);
-			Q_EMIT = (IQPopupMenuSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQPopupMenuSignals Emit() {
 			return (IQPopupMenuSignals) Q_EMIT;

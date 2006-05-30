@@ -40,7 +40,6 @@ namespace Qt {
 		}
 		public QDataPump(QDataSource arg1, QDataSink arg2) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQDataPump(arg1,arg2);
 		}
 		[SmokeMethod("QDataPump(QDataSource*, QDataSink*)")]
@@ -71,10 +70,6 @@ namespace Qt {
 		}
 		private void DisposeQDataPump() {
 			ProxyQDataPump().DisposeQDataPump();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQDataPumpSignals), this);
-			Q_EMIT = (IQDataPumpSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQDataPumpSignals Emit() {
 			return (IQDataPumpSignals) Q_EMIT;

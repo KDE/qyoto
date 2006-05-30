@@ -71,7 +71,6 @@ namespace Qt {
 		}
 		public QFtp() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQFtp();
 		}
 		[SmokeMethod("QFtp()")]
@@ -80,7 +79,6 @@ namespace Qt {
 		}
 		public QFtp(QObject parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQFtp(parent,name);
 		}
 		[SmokeMethod("QFtp(QObject*, const char*)")]
@@ -89,7 +87,6 @@ namespace Qt {
 		}
 		public QFtp(QObject parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQFtp(parent);
 		}
 		[SmokeMethod("QFtp(QObject*)")]
@@ -318,10 +315,6 @@ namespace Qt {
 		}
 		private void DisposeQFtp() {
 			ProxyQFtp().DisposeQFtp();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQFtpSignals), this);
-			Q_EMIT = (IQFtpSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQFtpSignals Emit() {
 			return (IQFtpSignals) Q_EMIT;

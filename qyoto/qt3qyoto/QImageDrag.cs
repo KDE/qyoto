@@ -43,7 +43,6 @@ namespace Qt {
 		}
 		public QImageDrag(QImage image, QWidget dragSource, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQImageDrag(image,dragSource,name);
 		}
 		[SmokeMethod("QImageDrag(QImage, QWidget*, const char*)")]
@@ -52,7 +51,6 @@ namespace Qt {
 		}
 		public QImageDrag(QImage image, QWidget dragSource) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQImageDrag(image,dragSource);
 		}
 		[SmokeMethod("QImageDrag(QImage, QWidget*)")]
@@ -61,7 +59,6 @@ namespace Qt {
 		}
 		public QImageDrag(QImage image) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQImageDrag(image);
 		}
 		[SmokeMethod("QImageDrag(QImage)")]
@@ -70,7 +67,6 @@ namespace Qt {
 		}
 		public QImageDrag(QWidget dragSource, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQImageDrag(dragSource,name);
 		}
 		[SmokeMethod("QImageDrag(QWidget*, const char*)")]
@@ -79,7 +75,6 @@ namespace Qt {
 		}
 		public QImageDrag(QWidget dragSource) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQImageDrag(dragSource);
 		}
 		[SmokeMethod("QImageDrag(QWidget*)")]
@@ -88,7 +83,6 @@ namespace Qt {
 		}
 		public QImageDrag() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQImageDrag();
 		}
 		[SmokeMethod("QImageDrag()")]
@@ -143,10 +137,6 @@ namespace Qt {
 		}
 		private void DisposeQImageDrag() {
 			ProxyQImageDrag().DisposeQImageDrag();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQImageDragSignals), this);
-			Q_EMIT = (IQImageDragSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQImageDragSignals Emit() {
 			return (IQImageDragSignals) Q_EMIT;

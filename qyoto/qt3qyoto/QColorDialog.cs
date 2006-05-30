@@ -114,10 +114,6 @@ namespace Qt {
 		public static void SetStandardColor(int arg1, uint arg2) {
 			StaticQColorDialog().SetStandardColor(arg1,arg2);
 		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQColorDialogSignals), this);
-			Q_EMIT = (IQColorDialogSignals) realProxy.GetTransparentProxy();
-		}
 		protected new IQColorDialogSignals Emit() {
 			return (IQColorDialogSignals) Q_EMIT;
 		}

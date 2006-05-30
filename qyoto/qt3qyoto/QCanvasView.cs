@@ -40,7 +40,6 @@ namespace Qt {
 		}
 		public QCanvasView(QWidget parent, string name, int f) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQCanvasView(parent,name,f);
 		}
 		[SmokeMethod("QCanvasView(QWidget*, const char*, Qt::WFlags)")]
@@ -49,7 +48,6 @@ namespace Qt {
 		}
 		public QCanvasView(QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQCanvasView(parent,name);
 		}
 		[SmokeMethod("QCanvasView(QWidget*, const char*)")]
@@ -58,7 +56,6 @@ namespace Qt {
 		}
 		public QCanvasView(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQCanvasView(parent);
 		}
 		[SmokeMethod("QCanvasView(QWidget*)")]
@@ -67,7 +64,6 @@ namespace Qt {
 		}
 		public QCanvasView() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQCanvasView();
 		}
 		[SmokeMethod("QCanvasView()")]
@@ -76,7 +72,6 @@ namespace Qt {
 		}
 		public QCanvasView(QCanvas viewing, QWidget parent, string name, int f) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQCanvasView(viewing,parent,name,f);
 		}
 		[SmokeMethod("QCanvasView(QCanvas*, QWidget*, const char*, Qt::WFlags)")]
@@ -85,7 +80,6 @@ namespace Qt {
 		}
 		public QCanvasView(QCanvas viewing, QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQCanvasView(viewing,parent,name);
 		}
 		[SmokeMethod("QCanvasView(QCanvas*, QWidget*, const char*)")]
@@ -94,7 +88,6 @@ namespace Qt {
 		}
 		public QCanvasView(QCanvas viewing, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQCanvasView(viewing,parent);
 		}
 		[SmokeMethod("QCanvasView(QCanvas*, QWidget*)")]
@@ -103,7 +96,6 @@ namespace Qt {
 		}
 		public QCanvasView(QCanvas viewing) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQCanvasView(viewing);
 		}
 		[SmokeMethod("QCanvasView(QCanvas*)")]
@@ -162,10 +154,6 @@ namespace Qt {
 		}
 		private void DisposeQCanvasView() {
 			ProxyQCanvasView().DisposeQCanvasView();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQCanvasViewSignals), this);
-			Q_EMIT = (IQCanvasViewSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQCanvasViewSignals Emit() {
 			return (IQCanvasViewSignals) Q_EMIT;

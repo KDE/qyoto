@@ -79,7 +79,6 @@ namespace Qt {
 		}
 		public QTimer(QObject parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQTimer(parent,name);
 		}
 		[SmokeMethod("QTimer(QObject*, const char*)")]
@@ -88,7 +87,6 @@ namespace Qt {
 		}
 		public QTimer(QObject parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQTimer(parent);
 		}
 		[SmokeMethod("QTimer(QObject*)")]
@@ -97,7 +95,6 @@ namespace Qt {
 		}
 		public QTimer() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQTimer();
 		}
 		[SmokeMethod("QTimer()")]
@@ -160,10 +157,6 @@ namespace Qt {
 		}
 		private void DisposeQTimer() {
 			ProxyQTimer().DisposeQTimer();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQTimerSignals), this);
-			Q_EMIT = (IQTimerSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQTimerSignals Emit() {
 			return (IQTimerSignals) Q_EMIT;

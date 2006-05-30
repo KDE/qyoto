@@ -49,7 +49,6 @@ namespace Qt {
 		}
 		public QSlider(QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSlider(parent,name);
 		}
 		[SmokeMethod("QSlider(QWidget*, const char*)")]
@@ -58,7 +57,6 @@ namespace Qt {
 		}
 		public QSlider(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSlider(parent);
 		}
 		[SmokeMethod("QSlider(QWidget*)")]
@@ -67,7 +65,6 @@ namespace Qt {
 		}
 		public QSlider(Qt.Orientation arg1, QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSlider(arg1,parent,name);
 		}
 		[SmokeMethod("QSlider(Qt::Orientation, QWidget*, const char*)")]
@@ -76,7 +73,6 @@ namespace Qt {
 		}
 		public QSlider(Qt.Orientation arg1, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSlider(arg1,parent);
 		}
 		[SmokeMethod("QSlider(Qt::Orientation, QWidget*)")]
@@ -85,7 +81,6 @@ namespace Qt {
 		}
 		public QSlider(int minValue, int maxValue, int pageStep, int value, Qt.Orientation arg5, QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSlider(minValue,maxValue,pageStep,value,arg5,parent,name);
 		}
 		[SmokeMethod("QSlider(int, int, int, int, Qt::Orientation, QWidget*, const char*)")]
@@ -94,7 +89,6 @@ namespace Qt {
 		}
 		public QSlider(int minValue, int maxValue, int pageStep, int value, Qt.Orientation arg5, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSlider(minValue,maxValue,pageStep,value,arg5,parent);
 		}
 		[SmokeMethod("QSlider(int, int, int, int, Qt::Orientation, QWidget*)")]
@@ -342,10 +336,6 @@ namespace Qt {
 		[SmokeMethod("stepChange()")]
 		protected virtual void StepChange() {
 			ProxyQSlider().StepChange();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQSliderSignals), this);
-			Q_EMIT = (IQSliderSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQSliderSignals Emit() {
 			return (IQSliderSignals) Q_EMIT;

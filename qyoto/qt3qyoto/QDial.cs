@@ -41,7 +41,6 @@ namespace Qt {
 		}
 		public QDial(QWidget parent, string name, int f) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQDial(parent,name,f);
 		}
 		[SmokeMethod("QDial(QWidget*, const char*, Qt::WFlags)")]
@@ -50,7 +49,6 @@ namespace Qt {
 		}
 		public QDial(QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQDial(parent,name);
 		}
 		[SmokeMethod("QDial(QWidget*, const char*)")]
@@ -59,7 +57,6 @@ namespace Qt {
 		}
 		public QDial(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQDial(parent);
 		}
 		[SmokeMethod("QDial(QWidget*)")]
@@ -68,7 +65,6 @@ namespace Qt {
 		}
 		public QDial() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQDial();
 		}
 		[SmokeMethod("QDial()")]
@@ -77,7 +73,6 @@ namespace Qt {
 		}
 		public QDial(int minValue, int maxValue, int pageStep, int value, QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQDial(minValue,maxValue,pageStep,value,parent,name);
 		}
 		[SmokeMethod("QDial(int, int, int, int, QWidget*, const char*)")]
@@ -86,7 +81,6 @@ namespace Qt {
 		}
 		public QDial(int minValue, int maxValue, int pageStep, int value, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQDial(minValue,maxValue,pageStep,value,parent);
 		}
 		[SmokeMethod("QDial(int, int, int, int, QWidget*)")]
@@ -95,7 +89,6 @@ namespace Qt {
 		}
 		public QDial(int minValue, int maxValue, int pageStep, int value) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQDial(minValue,maxValue,pageStep,value);
 		}
 		[SmokeMethod("QDial(int, int, int, int)")]
@@ -318,10 +311,6 @@ namespace Qt {
 		[SmokeMethod("stepChange()")]
 		protected virtual void StepChange() {
 			ProxyQDial().StepChange();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQDialSignals), this);
-			Q_EMIT = (IQDialSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQDialSignals Emit() {
 			return (IQDialSignals) Q_EMIT;

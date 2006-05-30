@@ -44,7 +44,6 @@ namespace Qt {
 		}
 		public QTranslator(QObject parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQTranslator(parent,name);
 		}
 		[SmokeMethod("QTranslator(QObject*, const char*)")]
@@ -53,7 +52,6 @@ namespace Qt {
 		}
 		public QTranslator(QObject parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQTranslator(parent);
 		}
 		[SmokeMethod("QTranslator(QObject*)")]
@@ -62,7 +60,6 @@ namespace Qt {
 		}
 		public QTranslator() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQTranslator();
 		}
 		[SmokeMethod("QTranslator()")]
@@ -182,10 +179,6 @@ namespace Qt {
 		}
 		private void DisposeQTranslator() {
 			ProxyQTranslator().DisposeQTranslator();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQTranslatorSignals), this);
-			Q_EMIT = (IQTranslatorSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQTranslatorSignals Emit() {
 			return (IQTranslatorSignals) Q_EMIT;

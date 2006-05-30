@@ -46,7 +46,6 @@ namespace Qt {
 		}
 		public QGridLayout(QWidget parent, int nRows, int nCols, int border, int spacing, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQGridLayout(parent,nRows,nCols,border,spacing,name);
 		}
 		[SmokeMethod("QGridLayout(QWidget*, int, int, int, int, const char*)")]
@@ -55,7 +54,6 @@ namespace Qt {
 		}
 		public QGridLayout(QWidget parent, int nRows, int nCols, int border, int spacing) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQGridLayout(parent,nRows,nCols,border,spacing);
 		}
 		[SmokeMethod("QGridLayout(QWidget*, int, int, int, int)")]
@@ -64,7 +62,6 @@ namespace Qt {
 		}
 		public QGridLayout(QWidget parent, int nRows, int nCols, int border) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQGridLayout(parent,nRows,nCols,border);
 		}
 		[SmokeMethod("QGridLayout(QWidget*, int, int, int)")]
@@ -73,7 +70,6 @@ namespace Qt {
 		}
 		public QGridLayout(QWidget parent, int nRows, int nCols) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQGridLayout(parent,nRows,nCols);
 		}
 		[SmokeMethod("QGridLayout(QWidget*, int, int)")]
@@ -82,7 +78,6 @@ namespace Qt {
 		}
 		public QGridLayout(QWidget parent, int nRows) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQGridLayout(parent,nRows);
 		}
 		[SmokeMethod("QGridLayout(QWidget*, int)")]
@@ -91,7 +86,6 @@ namespace Qt {
 		}
 		public QGridLayout(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQGridLayout(parent);
 		}
 		[SmokeMethod("QGridLayout(QWidget*)")]
@@ -100,7 +94,6 @@ namespace Qt {
 		}
 		public QGridLayout(int nRows, int nCols, int spacing, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQGridLayout(nRows,nCols,spacing,name);
 		}
 		[SmokeMethod("QGridLayout(int, int, int, const char*)")]
@@ -109,7 +102,6 @@ namespace Qt {
 		}
 		public QGridLayout(int nRows, int nCols, int spacing) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQGridLayout(nRows,nCols,spacing);
 		}
 		[SmokeMethod("QGridLayout(int, int, int)")]
@@ -118,7 +110,6 @@ namespace Qt {
 		}
 		public QGridLayout(int nRows, int nCols) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQGridLayout(nRows,nCols);
 		}
 		[SmokeMethod("QGridLayout(int, int)")]
@@ -127,7 +118,6 @@ namespace Qt {
 		}
 		public QGridLayout(int nRows) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQGridLayout(nRows);
 		}
 		[SmokeMethod("QGridLayout(int)")]
@@ -136,7 +126,6 @@ namespace Qt {
 		}
 		public QGridLayout() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQGridLayout();
 		}
 		[SmokeMethod("QGridLayout()")]
@@ -145,7 +134,6 @@ namespace Qt {
 		}
 		public QGridLayout(QLayout parentLayout, int nRows, int nCols, int spacing, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQGridLayout(parentLayout,nRows,nCols,spacing,name);
 		}
 		[SmokeMethod("QGridLayout(QLayout*, int, int, int, const char*)")]
@@ -154,7 +142,6 @@ namespace Qt {
 		}
 		public QGridLayout(QLayout parentLayout, int nRows, int nCols, int spacing) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQGridLayout(parentLayout,nRows,nCols,spacing);
 		}
 		[SmokeMethod("QGridLayout(QLayout*, int, int, int)")]
@@ -163,7 +150,6 @@ namespace Qt {
 		}
 		public QGridLayout(QLayout parentLayout, int nRows, int nCols) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQGridLayout(parentLayout,nRows,nCols);
 		}
 		[SmokeMethod("QGridLayout(QLayout*, int, int)")]
@@ -172,7 +158,6 @@ namespace Qt {
 		}
 		public QGridLayout(QLayout parentLayout, int nRows) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQGridLayout(parentLayout,nRows);
 		}
 		[SmokeMethod("QGridLayout(QLayout*, int)")]
@@ -181,7 +166,6 @@ namespace Qt {
 		}
 		public QGridLayout(QLayout parentLayout) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQGridLayout(parentLayout);
 		}
 		[SmokeMethod("QGridLayout(QLayout*)")]
@@ -365,10 +349,6 @@ namespace Qt {
 		}
 		private void DisposeQGridLayout() {
 			ProxyQGridLayout().DisposeQGridLayout();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQGridLayoutSignals), this);
-			Q_EMIT = (IQGridLayoutSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQGridLayoutSignals Emit() {
 			return (IQGridLayoutSignals) Q_EMIT;

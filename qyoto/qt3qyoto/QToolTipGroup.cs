@@ -41,7 +41,6 @@ namespace Qt {
 		}
 		public QToolTipGroup(QObject parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQToolTipGroup(parent,name);
 		}
 		[SmokeMethod("QToolTipGroup(QObject*, const char*)")]
@@ -50,7 +49,6 @@ namespace Qt {
 		}
 		public QToolTipGroup(QObject parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQToolTipGroup(parent);
 		}
 		[SmokeMethod("QToolTipGroup(QObject*)")]
@@ -99,10 +97,6 @@ namespace Qt {
 		}
 		private void DisposeQToolTipGroup() {
 			ProxyQToolTipGroup().DisposeQToolTipGroup();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQToolTipGroupSignals), this);
-			Q_EMIT = (IQToolTipGroupSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQToolTipGroupSignals Emit() {
 			return (IQToolTipGroupSignals) Q_EMIT;

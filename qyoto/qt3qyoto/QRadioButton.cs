@@ -40,7 +40,6 @@ namespace Qt {
 		}
 		public QRadioButton(QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQRadioButton(parent,name);
 		}
 		[SmokeMethod("QRadioButton(QWidget*, const char*)")]
@@ -49,7 +48,6 @@ namespace Qt {
 		}
 		public QRadioButton(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQRadioButton(parent);
 		}
 		[SmokeMethod("QRadioButton(QWidget*)")]
@@ -58,7 +56,6 @@ namespace Qt {
 		}
 		public QRadioButton(string text, QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQRadioButton(text,parent,name);
 		}
 		[SmokeMethod("QRadioButton(const QString&, QWidget*, const char*)")]
@@ -67,7 +64,6 @@ namespace Qt {
 		}
 		public QRadioButton(string text, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQRadioButton(text,parent);
 		}
 		[SmokeMethod("QRadioButton(const QString&, QWidget*)")]
@@ -131,10 +127,6 @@ namespace Qt {
 		}
 		private void DisposeQRadioButton() {
 			ProxyQRadioButton().DisposeQRadioButton();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQRadioButtonSignals), this);
-			Q_EMIT = (IQRadioButtonSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQRadioButtonSignals Emit() {
 			return (IQRadioButtonSignals) Q_EMIT;

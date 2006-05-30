@@ -44,7 +44,6 @@ namespace Qt {
 		}
 		public QUrlOperator() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQUrlOperator();
 		}
 		[SmokeMethod("QUrlOperator()")]
@@ -53,7 +52,6 @@ namespace Qt {
 		}
 		public QUrlOperator(string urL) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQUrlOperator(urL);
 		}
 		[SmokeMethod("QUrlOperator(const QString&)")]
@@ -62,7 +60,6 @@ namespace Qt {
 		}
 		public QUrlOperator(QUrlOperator url) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQUrlOperator(url);
 		}
 		[SmokeMethod("QUrlOperator(const QUrlOperator&)")]
@@ -71,7 +68,6 @@ namespace Qt {
 		}
 		public QUrlOperator(QUrlOperator url, string relUrl, bool checkSlash) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQUrlOperator(url,relUrl,checkSlash);
 		}
 		[SmokeMethod("QUrlOperator(const QUrlOperator&, const QString&, bool)")]
@@ -80,7 +76,6 @@ namespace Qt {
 		}
 		public QUrlOperator(QUrlOperator url, string relUrl) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQUrlOperator(url,relUrl);
 		}
 		[SmokeMethod("QUrlOperator(const QUrlOperator&, const QString&)")]
@@ -355,10 +350,6 @@ namespace Qt {
 		[SmokeMethod("isRelativeUrl(const QString&)")]
 		public static bool IsRelativeUrl(string url) {
 			return StaticQUrlOperator().IsRelativeUrl(url);
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQUrlOperatorSignals), this);
-			Q_EMIT = (IQUrlOperatorSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQUrlOperatorSignals Emit() {
 			return (IQUrlOperatorSignals) Q_EMIT;

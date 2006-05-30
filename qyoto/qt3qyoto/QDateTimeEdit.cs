@@ -41,7 +41,6 @@ namespace Qt {
 		}
 		public QDateTimeEdit(QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQDateTimeEdit(parent,name);
 		}
 		[SmokeMethod("QDateTimeEdit(QWidget*, const char*)")]
@@ -50,7 +49,6 @@ namespace Qt {
 		}
 		public QDateTimeEdit(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQDateTimeEdit(parent);
 		}
 		[SmokeMethod("QDateTimeEdit(QWidget*)")]
@@ -59,7 +57,6 @@ namespace Qt {
 		}
 		public QDateTimeEdit() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQDateTimeEdit();
 		}
 		[SmokeMethod("QDateTimeEdit()")]
@@ -68,7 +65,6 @@ namespace Qt {
 		}
 		public QDateTimeEdit(DateTime datetime, QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQDateTimeEdit(datetime,parent,name);
 		}
 		[SmokeMethod("QDateTimeEdit(const QDateTime&, QWidget*, const char*)")]
@@ -77,7 +73,6 @@ namespace Qt {
 		}
 		public QDateTimeEdit(DateTime datetime, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQDateTimeEdit(datetime,parent);
 		}
 		[SmokeMethod("QDateTimeEdit(const QDateTime&, QWidget*)")]
@@ -86,7 +81,6 @@ namespace Qt {
 		}
 		public QDateTimeEdit(DateTime datetime) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQDateTimeEdit(datetime);
 		}
 		[SmokeMethod("QDateTimeEdit(const QDateTime&)")]
@@ -163,10 +157,6 @@ namespace Qt {
 		}
 		private void DisposeQDateTimeEdit() {
 			ProxyQDateTimeEdit().DisposeQDateTimeEdit();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQDateTimeEditSignals), this);
-			Q_EMIT = (IQDateTimeEditSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQDateTimeEditSignals Emit() {
 			return (IQDateTimeEditSignals) Q_EMIT;

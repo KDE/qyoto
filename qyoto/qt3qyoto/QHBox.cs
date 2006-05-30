@@ -40,7 +40,6 @@ namespace Qt {
 		}
 		public QHBox(QWidget parent, string name, int f) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQHBox(parent,name,f);
 		}
 		[SmokeMethod("QHBox(QWidget*, const char*, Qt::WFlags)")]
@@ -49,7 +48,6 @@ namespace Qt {
 		}
 		public QHBox(QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQHBox(parent,name);
 		}
 		[SmokeMethod("QHBox(QWidget*, const char*)")]
@@ -58,7 +56,6 @@ namespace Qt {
 		}
 		public QHBox(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQHBox(parent);
 		}
 		[SmokeMethod("QHBox(QWidget*)")]
@@ -67,7 +64,6 @@ namespace Qt {
 		}
 		public QHBox() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQHBox();
 		}
 		[SmokeMethod("QHBox()")]
@@ -104,7 +100,6 @@ namespace Qt {
 		}
 		public QHBox(bool horizontal, QWidget parent, string name, int f) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQHBox(horizontal,parent,name,f);
 		}
 		[SmokeMethod("QHBox(bool, QWidget*, const char*, Qt::WFlags)")]
@@ -113,7 +108,6 @@ namespace Qt {
 		}
 		public QHBox(bool horizontal, QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQHBox(horizontal,parent,name);
 		}
 		[SmokeMethod("QHBox(bool, QWidget*, const char*)")]
@@ -132,10 +126,6 @@ namespace Qt {
 		}
 		private void DisposeQHBox() {
 			ProxyQHBox().DisposeQHBox();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQHBoxSignals), this);
-			Q_EMIT = (IQHBoxSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQHBoxSignals Emit() {
 			return (IQHBoxSignals) Q_EMIT;

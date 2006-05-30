@@ -46,7 +46,6 @@ namespace Qt {
 		}
 		public QValidator(QObject parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQValidator(parent,name);
 		}
 		[SmokeMethod("QValidator(QObject*, const char*)")]
@@ -55,7 +54,6 @@ namespace Qt {
 		}
 		public QValidator(QObject parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQValidator(parent);
 		}
 		[SmokeMethod("QValidator(QObject*)")]
@@ -94,10 +92,6 @@ namespace Qt {
 		}
 		private void DisposeQValidator() {
 			ProxyQValidator().DisposeQValidator();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQValidatorSignals), this);
-			Q_EMIT = (IQValidatorSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQValidatorSignals Emit() {
 			return (IQValidatorSignals) Q_EMIT;

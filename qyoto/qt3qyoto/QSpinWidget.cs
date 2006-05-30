@@ -45,7 +45,6 @@ namespace Qt {
 		}
 		public QSpinWidget(QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSpinWidget(parent,name);
 		}
 		[SmokeMethod("QSpinWidget(QWidget*, const char*)")]
@@ -54,7 +53,6 @@ namespace Qt {
 		}
 		public QSpinWidget(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSpinWidget(parent);
 		}
 		[SmokeMethod("QSpinWidget(QWidget*)")]
@@ -63,7 +61,6 @@ namespace Qt {
 		}
 		public QSpinWidget() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSpinWidget();
 		}
 		[SmokeMethod("QSpinWidget()")]
@@ -184,10 +181,6 @@ namespace Qt {
 		}
 		private void DisposeQSpinWidget() {
 			ProxyQSpinWidget().DisposeQSpinWidget();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQSpinWidgetSignals), this);
-			Q_EMIT = (IQSpinWidgetSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQSpinWidgetSignals Emit() {
 			return (IQSpinWidgetSignals) Q_EMIT;

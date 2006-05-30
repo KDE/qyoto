@@ -40,7 +40,6 @@ namespace Qt {
 		}
 		public QVButtonGroup(QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQVButtonGroup(parent,name);
 		}
 		[SmokeMethod("QVButtonGroup(QWidget*, const char*)")]
@@ -49,7 +48,6 @@ namespace Qt {
 		}
 		public QVButtonGroup(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQVButtonGroup(parent);
 		}
 		[SmokeMethod("QVButtonGroup(QWidget*)")]
@@ -58,7 +56,6 @@ namespace Qt {
 		}
 		public QVButtonGroup() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQVButtonGroup();
 		}
 		[SmokeMethod("QVButtonGroup()")]
@@ -67,7 +64,6 @@ namespace Qt {
 		}
 		public QVButtonGroup(string title, QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQVButtonGroup(title,parent,name);
 		}
 		[SmokeMethod("QVButtonGroup(const QString&, QWidget*, const char*)")]
@@ -76,7 +72,6 @@ namespace Qt {
 		}
 		public QVButtonGroup(string title, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQVButtonGroup(title,parent);
 		}
 		[SmokeMethod("QVButtonGroup(const QString&, QWidget*)")]
@@ -85,7 +80,6 @@ namespace Qt {
 		}
 		public QVButtonGroup(string title) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQVButtonGroup(title);
 		}
 		[SmokeMethod("QVButtonGroup(const QString&)")]
@@ -116,10 +110,6 @@ namespace Qt {
 		}
 		private void DisposeQVButtonGroup() {
 			ProxyQVButtonGroup().DisposeQVButtonGroup();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQVButtonGroupSignals), this);
-			Q_EMIT = (IQVButtonGroupSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQVButtonGroupSignals Emit() {
 			return (IQVButtonGroupSignals) Q_EMIT;

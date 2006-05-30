@@ -125,10 +125,6 @@ namespace Qt {
 		public static new string TrUtf8(string arg1) {
 			return StaticQSessionManager().TrUtf8(arg1);
 		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQSessionManagerSignals), this);
-			Q_EMIT = (IQSessionManagerSignals) realProxy.GetTransparentProxy();
-		}
 		protected new IQSessionManagerSignals Emit() {
 			return (IQSessionManagerSignals) Q_EMIT;
 		}

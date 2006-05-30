@@ -60,7 +60,6 @@ namespace Qt {
 		}
 		public QHttp() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQHttp();
 		}
 		[SmokeMethod("QHttp()")]
@@ -69,7 +68,6 @@ namespace Qt {
 		}
 		public QHttp(QObject parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQHttp(parent,name);
 		}
 		[SmokeMethod("QHttp(QObject*, const char*)")]
@@ -78,7 +76,6 @@ namespace Qt {
 		}
 		public QHttp(QObject parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQHttp(parent);
 		}
 		[SmokeMethod("QHttp(QObject*)")]
@@ -87,7 +84,6 @@ namespace Qt {
 		}
 		public QHttp(string hostname, ushort port, QObject parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQHttp(hostname,port,parent,name);
 		}
 		[SmokeMethod("QHttp(const QString&, Q_UINT16, QObject*, const char*)")]
@@ -96,7 +92,6 @@ namespace Qt {
 		}
 		public QHttp(string hostname, ushort port, QObject parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQHttp(hostname,port,parent);
 		}
 		[SmokeMethod("QHttp(const QString&, Q_UINT16, QObject*)")]
@@ -105,7 +100,6 @@ namespace Qt {
 		}
 		public QHttp(string hostname, ushort port) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQHttp(hostname,port);
 		}
 		[SmokeMethod("QHttp(const QString&, Q_UINT16)")]
@@ -114,7 +108,6 @@ namespace Qt {
 		}
 		public QHttp(string hostname) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQHttp(hostname);
 		}
 		[SmokeMethod("QHttp(const QString&)")]
@@ -274,10 +267,6 @@ namespace Qt {
 		}
 		private void DisposeQHttp() {
 			ProxyQHttp().DisposeQHttp();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQHttpSignals), this);
-			Q_EMIT = (IQHttpSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQHttpSignals Emit() {
 			return (IQHttpSignals) Q_EMIT;

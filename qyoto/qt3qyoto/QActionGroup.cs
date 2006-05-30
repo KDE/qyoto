@@ -41,7 +41,6 @@ namespace Qt {
 		}
 		public QActionGroup(QObject parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQActionGroup(parent,name);
 		}
 		[SmokeMethod("QActionGroup(QObject*, const char*)")]
@@ -50,7 +49,6 @@ namespace Qt {
 		}
 		public QActionGroup(QObject parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQActionGroup(parent);
 		}
 		[SmokeMethod("QActionGroup(QObject*)")]
@@ -59,7 +57,6 @@ namespace Qt {
 		}
 		public QActionGroup(QObject parent, string name, bool exclusive) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQActionGroup(parent,name,exclusive);
 		}
 		[SmokeMethod("QActionGroup(QObject*, const char*, bool)")]
@@ -178,10 +175,6 @@ namespace Qt {
 		}
 		private void DisposeQActionGroup() {
 			ProxyQActionGroup().DisposeQActionGroup();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQActionGroupSignals), this);
-			Q_EMIT = (IQActionGroupSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQActionGroupSignals Emit() {
 			return (IQActionGroupSignals) Q_EMIT;

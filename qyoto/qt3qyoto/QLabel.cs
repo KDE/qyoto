@@ -40,7 +40,6 @@ namespace Qt {
 		}
 		public QLabel(QWidget parent, string name, int f) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQLabel(parent,name,f);
 		}
 		[SmokeMethod("QLabel(QWidget*, const char*, Qt::WFlags)")]
@@ -49,7 +48,6 @@ namespace Qt {
 		}
 		public QLabel(QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQLabel(parent,name);
 		}
 		[SmokeMethod("QLabel(QWidget*, const char*)")]
@@ -58,7 +56,6 @@ namespace Qt {
 		}
 		public QLabel(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQLabel(parent);
 		}
 		[SmokeMethod("QLabel(QWidget*)")]
@@ -67,7 +64,6 @@ namespace Qt {
 		}
 		public QLabel(string text, QWidget parent, string name, int f) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQLabel(text,parent,name,f);
 		}
 		[SmokeMethod("QLabel(const QString&, QWidget*, const char*, Qt::WFlags)")]
@@ -76,7 +72,6 @@ namespace Qt {
 		}
 		public QLabel(string text, QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQLabel(text,parent,name);
 		}
 		[SmokeMethod("QLabel(const QString&, QWidget*, const char*)")]
@@ -85,7 +80,6 @@ namespace Qt {
 		}
 		public QLabel(string text, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQLabel(text,parent);
 		}
 		[SmokeMethod("QLabel(const QString&, QWidget*)")]
@@ -94,7 +88,6 @@ namespace Qt {
 		}
 		public QLabel(QWidget buddy, string arg2, QWidget parent, string name, int f) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQLabel(buddy,arg2,parent,name,f);
 		}
 		[SmokeMethod("QLabel(QWidget*, const QString&, QWidget*, const char*, Qt::WFlags)")]
@@ -103,7 +96,6 @@ namespace Qt {
 		}
 		public QLabel(QWidget buddy, string arg2, QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQLabel(buddy,arg2,parent,name);
 		}
 		[SmokeMethod("QLabel(QWidget*, const QString&, QWidget*, const char*)")]
@@ -112,7 +104,6 @@ namespace Qt {
 		}
 		public QLabel(QWidget buddy, string arg2, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQLabel(buddy,arg2,parent);
 		}
 		[SmokeMethod("QLabel(QWidget*, const QString&, QWidget*)")]
@@ -270,10 +261,6 @@ namespace Qt {
 		}
 		private void DisposeQLabel() {
 			ProxyQLabel().DisposeQLabel();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQLabelSignals), this);
-			Q_EMIT = (IQLabelSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQLabelSignals Emit() {
 			return (IQLabelSignals) Q_EMIT;

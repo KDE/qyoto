@@ -255,7 +255,6 @@ namespace Qt {
 		}
 		public QSqlDatabase(string type, string name, QObject parent, string objname) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSqlDatabase(type,name,parent,objname);
 		}
 		[SmokeMethod("QSqlDatabase(const QString&, const QString&, QObject*, const char*)")]
@@ -264,7 +263,6 @@ namespace Qt {
 		}
 		public QSqlDatabase(string type, string name, QObject parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSqlDatabase(type,name,parent);
 		}
 		[SmokeMethod("QSqlDatabase(const QString&, const QString&, QObject*)")]
@@ -273,7 +271,6 @@ namespace Qt {
 		}
 		public QSqlDatabase(string type, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSqlDatabase(type,name);
 		}
 		[SmokeMethod("QSqlDatabase(const QString&, const QString&)")]
@@ -282,7 +279,6 @@ namespace Qt {
 		}
 		public QSqlDatabase(QSqlDriver driver, QObject parent, string objname) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSqlDatabase(driver,parent,objname);
 		}
 		[SmokeMethod("QSqlDatabase(QSqlDriver*, QObject*, const char*)")]
@@ -291,7 +287,6 @@ namespace Qt {
 		}
 		public QSqlDatabase(QSqlDriver driver, QObject parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSqlDatabase(driver,parent);
 		}
 		[SmokeMethod("QSqlDatabase(QSqlDriver*, QObject*)")]
@@ -300,7 +295,6 @@ namespace Qt {
 		}
 		public QSqlDatabase(QSqlDriver driver) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSqlDatabase(driver);
 		}
 		[SmokeMethod("QSqlDatabase(QSqlDriver*)")]
@@ -315,10 +309,6 @@ namespace Qt {
 		}
 		private void DisposeQSqlDatabase() {
 			ProxyQSqlDatabase().DisposeQSqlDatabase();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQSqlDatabaseSignals), this);
-			Q_EMIT = (IQSqlDatabaseSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQSqlDatabaseSignals Emit() {
 			return (IQSqlDatabaseSignals) Q_EMIT;

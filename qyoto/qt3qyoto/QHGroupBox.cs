@@ -40,7 +40,6 @@ namespace Qt {
 		}
 		public QHGroupBox(QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQHGroupBox(parent,name);
 		}
 		[SmokeMethod("QHGroupBox(QWidget*, const char*)")]
@@ -49,7 +48,6 @@ namespace Qt {
 		}
 		public QHGroupBox(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQHGroupBox(parent);
 		}
 		[SmokeMethod("QHGroupBox(QWidget*)")]
@@ -58,7 +56,6 @@ namespace Qt {
 		}
 		public QHGroupBox() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQHGroupBox();
 		}
 		[SmokeMethod("QHGroupBox()")]
@@ -67,7 +64,6 @@ namespace Qt {
 		}
 		public QHGroupBox(string title, QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQHGroupBox(title,parent,name);
 		}
 		[SmokeMethod("QHGroupBox(const QString&, QWidget*, const char*)")]
@@ -76,7 +72,6 @@ namespace Qt {
 		}
 		public QHGroupBox(string title, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQHGroupBox(title,parent);
 		}
 		[SmokeMethod("QHGroupBox(const QString&, QWidget*)")]
@@ -85,7 +80,6 @@ namespace Qt {
 		}
 		public QHGroupBox(string title) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQHGroupBox(title);
 		}
 		[SmokeMethod("QHGroupBox(const QString&)")]
@@ -116,10 +110,6 @@ namespace Qt {
 		}
 		private void DisposeQHGroupBox() {
 			ProxyQHGroupBox().DisposeQHGroupBox();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQHGroupBoxSignals), this);
-			Q_EMIT = (IQHGroupBoxSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQHGroupBoxSignals Emit() {
 			return (IQHGroupBoxSignals) Q_EMIT;

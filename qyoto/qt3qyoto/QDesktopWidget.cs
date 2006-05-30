@@ -41,7 +41,6 @@ namespace Qt {
 		}
 		public QDesktopWidget() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQDesktopWidget();
 		}
 		[SmokeMethod("QDesktopWidget()")]
@@ -144,10 +143,6 @@ namespace Qt {
 		}
 		private void DisposeQDesktopWidget() {
 			ProxyQDesktopWidget().DisposeQDesktopWidget();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQDesktopWidgetSignals), this);
-			Q_EMIT = (IQDesktopWidgetSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQDesktopWidgetSignals Emit() {
 			return (IQDesktopWidgetSignals) Q_EMIT;

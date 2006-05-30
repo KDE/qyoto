@@ -52,7 +52,6 @@ namespace Qt {
 		}
 		public QScrollView(QWidget parent, string name, int f) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQScrollView(parent,name,f);
 		}
 		[SmokeMethod("QScrollView(QWidget*, const char*, Qt::WFlags)")]
@@ -61,7 +60,6 @@ namespace Qt {
 		}
 		public QScrollView(QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQScrollView(parent,name);
 		}
 		[SmokeMethod("QScrollView(QWidget*, const char*)")]
@@ -70,7 +68,6 @@ namespace Qt {
 		}
 		public QScrollView(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQScrollView(parent);
 		}
 		[SmokeMethod("QScrollView(QWidget*)")]
@@ -79,7 +76,6 @@ namespace Qt {
 		}
 		public QScrollView() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQScrollView();
 		}
 		[SmokeMethod("QScrollView()")]
@@ -559,10 +555,6 @@ namespace Qt {
 		}
 		private void DisposeQScrollView() {
 			ProxyQScrollView().DisposeQScrollView();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQScrollViewSignals), this);
-			Q_EMIT = (IQScrollViewSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQScrollViewSignals Emit() {
 			return (IQScrollViewSignals) Q_EMIT;

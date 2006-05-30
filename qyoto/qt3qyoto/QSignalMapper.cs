@@ -41,7 +41,6 @@ namespace Qt {
 		}
 		public QSignalMapper(QObject parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSignalMapper(parent,name);
 		}
 		[SmokeMethod("QSignalMapper(QObject*, const char*)")]
@@ -50,7 +49,6 @@ namespace Qt {
 		}
 		public QSignalMapper(QObject parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSignalMapper(parent);
 		}
 		[SmokeMethod("QSignalMapper(QObject*)")]
@@ -98,10 +96,6 @@ namespace Qt {
 		}
 		private void DisposeQSignalMapper() {
 			ProxyQSignalMapper().DisposeQSignalMapper();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQSignalMapperSignals), this);
-			Q_EMIT = (IQSignalMapperSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQSignalMapperSignals Emit() {
 			return (IQSignalMapperSignals) Q_EMIT;

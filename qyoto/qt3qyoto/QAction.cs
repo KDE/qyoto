@@ -41,7 +41,6 @@ namespace Qt {
 		}
 		public QAction(QObject parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQAction(parent,name);
 		}
 		[SmokeMethod("QAction(QObject*, const char*)")]
@@ -50,7 +49,6 @@ namespace Qt {
 		}
 		public QAction(QObject parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQAction(parent);
 		}
 		[SmokeMethod("QAction(QObject*)")]
@@ -59,7 +57,6 @@ namespace Qt {
 		}
 		public QAction(string menuText, QKeySequence accel, QObject parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQAction(menuText,accel,parent,name);
 		}
 		[SmokeMethod("QAction(const QString&, QKeySequence, QObject*, const char*)")]
@@ -68,7 +65,6 @@ namespace Qt {
 		}
 		public QAction(string menuText, QKeySequence accel, QObject parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQAction(menuText,accel,parent);
 		}
 		[SmokeMethod("QAction(const QString&, QKeySequence, QObject*)")]
@@ -77,7 +73,6 @@ namespace Qt {
 		}
 		public QAction(QIconSet icon, string menuText, QKeySequence accel, QObject parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQAction(icon,menuText,accel,parent,name);
 		}
 		[SmokeMethod("QAction(const QIconSet&, const QString&, QKeySequence, QObject*, const char*)")]
@@ -86,7 +81,6 @@ namespace Qt {
 		}
 		public QAction(QIconSet icon, string menuText, QKeySequence accel, QObject parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQAction(icon,menuText,accel,parent);
 		}
 		[SmokeMethod("QAction(const QIconSet&, const QString&, QKeySequence, QObject*)")]
@@ -95,7 +89,6 @@ namespace Qt {
 		}
 		public QAction(string text, QIconSet icon, string menuText, QKeySequence accel, QObject parent, string name, bool toggle) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQAction(text,icon,menuText,accel,parent,name,toggle);
 		}
 		[SmokeMethod("QAction(const QString&, const QIconSet&, const QString&, QKeySequence, QObject*, const char*, bool)")]
@@ -104,7 +97,6 @@ namespace Qt {
 		}
 		public QAction(string text, QIconSet icon, string menuText, QKeySequence accel, QObject parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQAction(text,icon,menuText,accel,parent,name);
 		}
 		[SmokeMethod("QAction(const QString&, const QIconSet&, const QString&, QKeySequence, QObject*, const char*)")]
@@ -113,7 +105,6 @@ namespace Qt {
 		}
 		public QAction(string text, QIconSet icon, string menuText, QKeySequence accel, QObject parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQAction(text,icon,menuText,accel,parent);
 		}
 		[SmokeMethod("QAction(const QString&, const QIconSet&, const QString&, QKeySequence, QObject*)")]
@@ -122,7 +113,6 @@ namespace Qt {
 		}
 		public QAction(string text, string menuText, QKeySequence accel, QObject parent, string name, bool toggle) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQAction(text,menuText,accel,parent,name,toggle);
 		}
 		[SmokeMethod("QAction(const QString&, const QString&, QKeySequence, QObject*, const char*, bool)")]
@@ -131,7 +121,6 @@ namespace Qt {
 		}
 		public QAction(string text, string menuText, QKeySequence accel, QObject parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQAction(text,menuText,accel,parent,name);
 		}
 		[SmokeMethod("QAction(const QString&, const QString&, QKeySequence, QObject*, const char*)")]
@@ -140,7 +129,6 @@ namespace Qt {
 		}
 		public QAction(string text, string menuText, QKeySequence accel, QObject parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQAction(text,menuText,accel,parent);
 		}
 		[SmokeMethod("QAction(const QString&, const QString&, QKeySequence, QObject*)")]
@@ -149,7 +137,6 @@ namespace Qt {
 		}
 		public QAction(QObject parent, string name, bool toggle) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQAction(parent,name,toggle);
 		}
 		[SmokeMethod("QAction(QObject*, const char*, bool)")]
@@ -302,10 +289,6 @@ namespace Qt {
 		}
 		private void DisposeQAction() {
 			ProxyQAction().DisposeQAction();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQActionSignals), this);
-			Q_EMIT = (IQActionSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQActionSignals Emit() {
 			return (IQActionSignals) Q_EMIT;

@@ -62,7 +62,6 @@ namespace Qt {
 		}
 		public QFrame(QWidget parent, string name, int f) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQFrame(parent,name,f);
 		}
 		[SmokeMethod("QFrame(QWidget*, const char*, Qt::WFlags)")]
@@ -71,7 +70,6 @@ namespace Qt {
 		}
 		public QFrame(QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQFrame(parent,name);
 		}
 		[SmokeMethod("QFrame(QWidget*, const char*)")]
@@ -80,7 +78,6 @@ namespace Qt {
 		}
 		public QFrame(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQFrame(parent);
 		}
 		[SmokeMethod("QFrame(QWidget*)")]
@@ -89,7 +86,6 @@ namespace Qt {
 		}
 		public QFrame() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQFrame();
 		}
 		[SmokeMethod("QFrame()")]
@@ -216,10 +212,6 @@ namespace Qt {
 		}
 		private void DisposeQFrame() {
 			ProxyQFrame().DisposeQFrame();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQFrameSignals), this);
-			Q_EMIT = (IQFrameSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQFrameSignals Emit() {
 			return (IQFrameSignals) Q_EMIT;

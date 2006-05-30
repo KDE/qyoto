@@ -41,7 +41,6 @@ namespace Qt {
 		}
 		public QImageFormatPlugin() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQImageFormatPlugin();
 		}
 		[SmokeMethod("QImageFormatPlugin()")]
@@ -88,10 +87,6 @@ namespace Qt {
 		}
 		private void DisposeQImageFormatPlugin() {
 			ProxyQImageFormatPlugin().DisposeQImageFormatPlugin();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQImageFormatPluginSignals), this);
-			Q_EMIT = (IQImageFormatPluginSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQImageFormatPluginSignals Emit() {
 			return (IQImageFormatPluginSignals) Q_EMIT;

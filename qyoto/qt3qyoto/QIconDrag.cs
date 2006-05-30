@@ -41,7 +41,6 @@ namespace Qt {
 		}
 		public QIconDrag(QWidget dragSource, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQIconDrag(dragSource,name);
 		}
 		[SmokeMethod("QIconDrag(QWidget*, const char*)")]
@@ -50,7 +49,6 @@ namespace Qt {
 		}
 		public QIconDrag(QWidget dragSource) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQIconDrag(dragSource);
 		}
 		[SmokeMethod("QIconDrag(QWidget*)")]
@@ -97,10 +95,6 @@ namespace Qt {
 		}
 		private void DisposeQIconDrag() {
 			ProxyQIconDrag().DisposeQIconDrag();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQIconDragSignals), this);
-			Q_EMIT = (IQIconDragSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQIconDragSignals Emit() {
 			return (IQIconDragSignals) Q_EMIT;

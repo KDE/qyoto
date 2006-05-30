@@ -41,7 +41,6 @@ namespace Qt {
 		}
 		public QTextCodecPlugin() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQTextCodecPlugin();
 		}
 		[SmokeMethod("QTextCodecPlugin()")]
@@ -88,10 +87,6 @@ namespace Qt {
 		}
 		private void DisposeQTextCodecPlugin() {
 			ProxyQTextCodecPlugin().DisposeQTextCodecPlugin();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQTextCodecPluginSignals), this);
-			Q_EMIT = (IQTextCodecPluginSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQTextCodecPluginSignals Emit() {
 			return (IQTextCodecPluginSignals) Q_EMIT;

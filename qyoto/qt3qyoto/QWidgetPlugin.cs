@@ -41,7 +41,6 @@ namespace Qt {
 		}
 		public QWidgetPlugin() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQWidgetPlugin();
 		}
 		[SmokeMethod("QWidgetPlugin()")]
@@ -112,10 +111,6 @@ namespace Qt {
 		}
 		private void DisposeQWidgetPlugin() {
 			ProxyQWidgetPlugin().DisposeQWidgetPlugin();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQWidgetPluginSignals), this);
-			Q_EMIT = (IQWidgetPluginSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQWidgetPluginSignals Emit() {
 			return (IQWidgetPluginSignals) Q_EMIT;

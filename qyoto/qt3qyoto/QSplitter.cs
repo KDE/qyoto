@@ -48,7 +48,6 @@ namespace Qt {
 		}
 		public QSplitter(QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSplitter(parent,name);
 		}
 		[SmokeMethod("QSplitter(QWidget*, const char*)")]
@@ -57,7 +56,6 @@ namespace Qt {
 		}
 		public QSplitter(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSplitter(parent);
 		}
 		[SmokeMethod("QSplitter(QWidget*)")]
@@ -66,7 +64,6 @@ namespace Qt {
 		}
 		public QSplitter() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSplitter();
 		}
 		[SmokeMethod("QSplitter()")]
@@ -75,7 +72,6 @@ namespace Qt {
 		}
 		public QSplitter(Qt.Orientation arg1, QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSplitter(arg1,parent,name);
 		}
 		[SmokeMethod("QSplitter(Qt::Orientation, QWidget*, const char*)")]
@@ -84,7 +80,6 @@ namespace Qt {
 		}
 		public QSplitter(Qt.Orientation arg1, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSplitter(arg1,parent);
 		}
 		[SmokeMethod("QSplitter(Qt::Orientation, QWidget*)")]
@@ -93,7 +88,6 @@ namespace Qt {
 		}
 		public QSplitter(Qt.Orientation arg1) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSplitter(arg1);
 		}
 		[SmokeMethod("QSplitter(Qt::Orientation)")]
@@ -236,10 +230,6 @@ namespace Qt {
 		}
 		private void DisposeQSplitter() {
 			ProxyQSplitter().DisposeQSplitter();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQSplitterSignals), this);
-			Q_EMIT = (IQSplitterSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQSplitterSignals Emit() {
 			return (IQSplitterSignals) Q_EMIT;

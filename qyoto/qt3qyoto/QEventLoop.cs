@@ -47,7 +47,6 @@ namespace Qt {
 		}
 		public QEventLoop(QObject parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQEventLoop(parent,name);
 		}
 		[SmokeMethod("QEventLoop(QObject*, const char*)")]
@@ -56,7 +55,6 @@ namespace Qt {
 		}
 		public QEventLoop(QObject parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQEventLoop(parent);
 		}
 		[SmokeMethod("QEventLoop(QObject*)")]
@@ -65,7 +63,6 @@ namespace Qt {
 		}
 		public QEventLoop() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQEventLoop();
 		}
 		[SmokeMethod("QEventLoop()")]
@@ -160,10 +157,6 @@ namespace Qt {
 		}
 		private void DisposeQEventLoop() {
 			ProxyQEventLoop().DisposeQEventLoop();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQEventLoopSignals), this);
-			Q_EMIT = (IQEventLoopSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQEventLoopSignals Emit() {
 			return (IQEventLoopSignals) Q_EMIT;

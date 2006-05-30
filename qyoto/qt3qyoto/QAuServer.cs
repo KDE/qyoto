@@ -40,7 +40,6 @@ namespace Qt {
 		}
 		public QAuServer(QObject parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQAuServer(parent,name);
 		}
 		[SmokeMethod("QAuServer(QObject*, const char*)")]
@@ -91,10 +90,6 @@ namespace Qt {
 		}
 		private void DisposeQAuServer() {
 			ProxyQAuServer().DisposeQAuServer();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQAuServerSignals), this);
-			Q_EMIT = (IQAuServerSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQAuServerSignals Emit() {
 			return (IQAuServerSignals) Q_EMIT;

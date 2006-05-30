@@ -57,7 +57,6 @@ namespace Qt {
 		}
 		public QTable(QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQTable(parent,name);
 		}
 		[SmokeMethod("QTable(QWidget*, const char*)")]
@@ -66,7 +65,6 @@ namespace Qt {
 		}
 		public QTable(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQTable(parent);
 		}
 		[SmokeMethod("QTable(QWidget*)")]
@@ -75,7 +73,6 @@ namespace Qt {
 		}
 		public QTable() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQTable();
 		}
 		[SmokeMethod("QTable()")]
@@ -84,7 +81,6 @@ namespace Qt {
 		}
 		public QTable(int numRows, int numCols, QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQTable(numRows,numCols,parent,name);
 		}
 		[SmokeMethod("QTable(int, int, QWidget*, const char*)")]
@@ -93,7 +89,6 @@ namespace Qt {
 		}
 		public QTable(int numRows, int numCols, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQTable(numRows,numCols,parent);
 		}
 		[SmokeMethod("QTable(int, int, QWidget*)")]
@@ -102,7 +97,6 @@ namespace Qt {
 		}
 		public QTable(int numRows, int numCols) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQTable(numRows,numCols);
 		}
 		[SmokeMethod("QTable(int, int)")]
@@ -763,10 +757,6 @@ namespace Qt {
 		}
 		private void DisposeQTable() {
 			ProxyQTable().DisposeQTable();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQTableSignals), this);
-			Q_EMIT = (IQTableSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQTableSignals Emit() {
 			return (IQTableSignals) Q_EMIT;

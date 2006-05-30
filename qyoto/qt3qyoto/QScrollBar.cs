@@ -41,7 +41,6 @@ namespace Qt {
 		}
 		public QScrollBar(QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQScrollBar(parent,name);
 		}
 		[SmokeMethod("QScrollBar(QWidget*, const char*)")]
@@ -50,7 +49,6 @@ namespace Qt {
 		}
 		public QScrollBar(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQScrollBar(parent);
 		}
 		[SmokeMethod("QScrollBar(QWidget*)")]
@@ -59,7 +57,6 @@ namespace Qt {
 		}
 		public QScrollBar(Qt.Orientation arg1, QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQScrollBar(arg1,parent,name);
 		}
 		[SmokeMethod("QScrollBar(Qt::Orientation, QWidget*, const char*)")]
@@ -68,7 +65,6 @@ namespace Qt {
 		}
 		public QScrollBar(Qt.Orientation arg1, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQScrollBar(arg1,parent);
 		}
 		[SmokeMethod("QScrollBar(Qt::Orientation, QWidget*)")]
@@ -77,7 +73,6 @@ namespace Qt {
 		}
 		public QScrollBar(int minValue, int maxValue, int lineStep, int pageStep, int value, Qt.Orientation arg6, QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQScrollBar(minValue,maxValue,lineStep,pageStep,value,arg6,parent,name);
 		}
 		[SmokeMethod("QScrollBar(int, int, int, int, int, Qt::Orientation, QWidget*, const char*)")]
@@ -86,7 +81,6 @@ namespace Qt {
 		}
 		public QScrollBar(int minValue, int maxValue, int lineStep, int pageStep, int value, Qt.Orientation arg6, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQScrollBar(minValue,maxValue,lineStep,pageStep,value,arg6,parent);
 		}
 		[SmokeMethod("QScrollBar(int, int, int, int, int, Qt::Orientation, QWidget*)")]
@@ -302,10 +296,6 @@ namespace Qt {
 		[SmokeMethod("prevValue() const")]
 		protected int PrevValue() {
 			return ProxyQScrollBar().PrevValue();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQScrollBarSignals), this);
-			Q_EMIT = (IQScrollBarSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQScrollBarSignals Emit() {
 			return (IQScrollBarSignals) Q_EMIT;

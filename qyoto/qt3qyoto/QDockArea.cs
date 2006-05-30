@@ -44,7 +44,6 @@ namespace Qt {
 		}
 		public QDockArea(Qt.Orientation o, QDockArea.HandlePosition h, QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQDockArea(o,h,parent,name);
 		}
 		[SmokeMethod("QDockArea(Qt::Orientation, QDockArea::HandlePosition, QWidget*, const char*)")]
@@ -53,7 +52,6 @@ namespace Qt {
 		}
 		public QDockArea(Qt.Orientation o, QDockArea.HandlePosition h, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQDockArea(o,h,parent);
 		}
 		[SmokeMethod("QDockArea(Qt::Orientation, QDockArea::HandlePosition, QWidget*)")]
@@ -62,7 +60,6 @@ namespace Qt {
 		}
 		public QDockArea(Qt.Orientation o, QDockArea.HandlePosition h) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQDockArea(o,h);
 		}
 		[SmokeMethod("QDockArea(Qt::Orientation, QDockArea::HandlePosition)")]
@@ -71,7 +68,6 @@ namespace Qt {
 		}
 		public QDockArea(Qt.Orientation o) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQDockArea(o);
 		}
 		[SmokeMethod("QDockArea(Qt::Orientation)")]
@@ -168,10 +164,6 @@ namespace Qt {
 		}
 		private void DisposeQDockArea() {
 			ProxyQDockArea().DisposeQDockArea();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQDockAreaSignals), this);
-			Q_EMIT = (IQDockAreaSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQDockAreaSignals Emit() {
 			return (IQDockAreaSignals) Q_EMIT;

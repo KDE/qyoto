@@ -8,7 +8,7 @@ namespace Qt {
 	/// See <see cref="IQObjectSignals"></see> for signals emitted by QObject
 	[SmokeClass("QObject")]
 	public class QObject : Qt, IDisposable {
- 		protected QObject(Type dummy) : base((Type) null) {}
+		
 		interface IQObjectProxy {
 			string Tr(string arg1, string arg2);
 			string Tr(string arg1);
@@ -22,7 +22,20 @@ namespace Qt {
 			uint RegisterUserData();
 			string NormalizeSignalSlot(string signalSlot);
 		}
-
+		
+		
+ 		protected QObject(Type dummy) : base((Type) null) {
+ 			try {
+				Type proxyInterface = Qyoto.GetSignalsInterface(GetType());
+				SignalInvocation realProxy = new SignalInvocation(proxyInterface, this);
+				Q_EMIT = realProxy.GetTransparentProxy();
+			}
+			catch {
+				Console.WriteLine("Could not retrieve signal interface");
+			}
+		}
+		
+		
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QObject), this);
 			_interceptor = (QObject) realProxy.GetTransparentProxy();
@@ -49,7 +62,6 @@ namespace Qt {
 		}
 		public QObject(QObject parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQObject(parent,name);
 		}
 		[SmokeMethod("QObject(QObject*, const char*)")]
@@ -58,7 +70,6 @@ namespace Qt {
 		}
 		public QObject(QObject parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQObject(parent);
 		}
 		[SmokeMethod("QObject(QObject*)")]
@@ -67,7 +78,6 @@ namespace Qt {
 		}
 		public QObject() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQObject();
 		}
 		[SmokeMethod("QObject()")]
@@ -347,10 +357,6 @@ namespace Qt {
 		}
 
 		protected Object Q_EMIT = null;
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQObjectSignals), this);
-			Q_EMIT = (IQObjectSignals) realProxy.GetTransparentProxy();
-		}
 		protected new IQObjectSignals Emit() {
 			return (IQObjectSignals) Q_EMIT;
 		}

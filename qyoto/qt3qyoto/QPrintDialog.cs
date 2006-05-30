@@ -43,7 +43,6 @@ namespace Qt {
 		}
 		public QPrintDialog(QPrinter arg1, QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQPrintDialog(arg1,parent,name);
 		}
 		[SmokeMethod("QPrintDialog(QPrinter*, QWidget*, const char*)")]
@@ -52,7 +51,6 @@ namespace Qt {
 		}
 		public QPrintDialog(QPrinter arg1, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQPrintDialog(arg1,parent);
 		}
 		[SmokeMethod("QPrintDialog(QPrinter*, QWidget*)")]
@@ -61,7 +59,6 @@ namespace Qt {
 		}
 		public QPrintDialog(QPrinter arg1) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQPrintDialog(arg1);
 		}
 		[SmokeMethod("QPrintDialog(QPrinter*)")]
@@ -120,10 +117,6 @@ namespace Qt {
 		}
 		private void DisposeQPrintDialog() {
 			ProxyQPrintDialog().DisposeQPrintDialog();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQPrintDialogSignals), this);
-			Q_EMIT = (IQPrintDialogSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQPrintDialogSignals Emit() {
 			return (IQPrintDialogSignals) Q_EMIT;

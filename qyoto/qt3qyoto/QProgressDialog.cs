@@ -41,7 +41,6 @@ namespace Qt {
 		}
 		public QProgressDialog(QWidget parent, string name, bool modal, int f) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQProgressDialog(parent,name,modal,f);
 		}
 		[SmokeMethod("QProgressDialog(QWidget*, const char*, bool, Qt::WFlags)")]
@@ -50,7 +49,6 @@ namespace Qt {
 		}
 		public QProgressDialog(QWidget parent, string name, bool modal) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQProgressDialog(parent,name,modal);
 		}
 		[SmokeMethod("QProgressDialog(QWidget*, const char*, bool)")]
@@ -59,7 +57,6 @@ namespace Qt {
 		}
 		public QProgressDialog(QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQProgressDialog(parent,name);
 		}
 		[SmokeMethod("QProgressDialog(QWidget*, const char*)")]
@@ -68,7 +65,6 @@ namespace Qt {
 		}
 		public QProgressDialog(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQProgressDialog(parent);
 		}
 		[SmokeMethod("QProgressDialog(QWidget*)")]
@@ -77,7 +73,6 @@ namespace Qt {
 		}
 		public QProgressDialog() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQProgressDialog();
 		}
 		[SmokeMethod("QProgressDialog()")]
@@ -86,7 +81,6 @@ namespace Qt {
 		}
 		public QProgressDialog(string labelText, string cancelButtonText, int totalSteps, QWidget parent, string name, bool modal, int f) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQProgressDialog(labelText,cancelButtonText,totalSteps,parent,name,modal,f);
 		}
 		[SmokeMethod("QProgressDialog(const QString&, const QString&, int, QWidget*, const char*, bool, Qt::WFlags)")]
@@ -95,7 +89,6 @@ namespace Qt {
 		}
 		public QProgressDialog(string labelText, string cancelButtonText, int totalSteps, QWidget parent, string name, bool modal) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQProgressDialog(labelText,cancelButtonText,totalSteps,parent,name,modal);
 		}
 		[SmokeMethod("QProgressDialog(const QString&, const QString&, int, QWidget*, const char*, bool)")]
@@ -104,7 +97,6 @@ namespace Qt {
 		}
 		public QProgressDialog(string labelText, string cancelButtonText, int totalSteps, QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQProgressDialog(labelText,cancelButtonText,totalSteps,parent,name);
 		}
 		[SmokeMethod("QProgressDialog(const QString&, const QString&, int, QWidget*, const char*)")]
@@ -113,7 +105,6 @@ namespace Qt {
 		}
 		public QProgressDialog(string labelText, string cancelButtonText, int totalSteps, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQProgressDialog(labelText,cancelButtonText,totalSteps,parent);
 		}
 		[SmokeMethod("QProgressDialog(const QString&, const QString&, int, QWidget*)")]
@@ -122,7 +113,6 @@ namespace Qt {
 		}
 		public QProgressDialog(string labelText, string cancelButtonText, int totalSteps) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQProgressDialog(labelText,cancelButtonText,totalSteps);
 		}
 		[SmokeMethod("QProgressDialog(const QString&, const QString&, int)")]
@@ -270,10 +260,6 @@ namespace Qt {
 		}
 		private void DisposeQProgressDialog() {
 			ProxyQProgressDialog().DisposeQProgressDialog();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQProgressDialogSignals), this);
-			Q_EMIT = (IQProgressDialogSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQProgressDialogSignals Emit() {
 			return (IQProgressDialogSignals) Q_EMIT;

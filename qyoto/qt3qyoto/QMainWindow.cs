@@ -46,7 +46,6 @@ namespace Qt {
 		}
 		public QMainWindow(QWidget parent, string name, int f) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQMainWindow(parent,name,f);
 		}
 		[SmokeMethod("QMainWindow(QWidget*, const char*, Qt::WFlags)")]
@@ -55,7 +54,6 @@ namespace Qt {
 		}
 		public QMainWindow(QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQMainWindow(parent,name);
 		}
 		[SmokeMethod("QMainWindow(QWidget*, const char*)")]
@@ -64,7 +62,6 @@ namespace Qt {
 		}
 		public QMainWindow(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQMainWindow(parent);
 		}
 		[SmokeMethod("QMainWindow(QWidget*)")]
@@ -73,7 +70,6 @@ namespace Qt {
 		}
 		public QMainWindow() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQMainWindow();
 		}
 		[SmokeMethod("QMainWindow()")]
@@ -428,10 +424,6 @@ namespace Qt {
 		}
 		private void DisposeQMainWindow() {
 			ProxyQMainWindow().DisposeQMainWindow();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQMainWindowSignals), this);
-			Q_EMIT = (IQMainWindowSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQMainWindowSignals Emit() {
 			return (IQMainWindowSignals) Q_EMIT;

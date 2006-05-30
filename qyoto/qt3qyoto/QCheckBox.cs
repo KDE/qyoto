@@ -40,7 +40,6 @@ namespace Qt {
 		}
 		public QCheckBox(QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQCheckBox(parent,name);
 		}
 		[SmokeMethod("QCheckBox(QWidget*, const char*)")]
@@ -49,7 +48,6 @@ namespace Qt {
 		}
 		public QCheckBox(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQCheckBox(parent);
 		}
 		[SmokeMethod("QCheckBox(QWidget*)")]
@@ -58,7 +56,6 @@ namespace Qt {
 		}
 		public QCheckBox(string text, QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQCheckBox(text,parent,name);
 		}
 		[SmokeMethod("QCheckBox(const QString&, QWidget*, const char*)")]
@@ -67,7 +64,6 @@ namespace Qt {
 		}
 		public QCheckBox(string text, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQCheckBox(text,parent);
 		}
 		[SmokeMethod("QCheckBox(const QString&, QWidget*)")]
@@ -147,10 +143,6 @@ namespace Qt {
 		}
 		private void DisposeQCheckBox() {
 			ProxyQCheckBox().DisposeQCheckBox();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQCheckBoxSignals), this);
-			Q_EMIT = (IQCheckBoxSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQCheckBoxSignals Emit() {
 			return (IQCheckBoxSignals) Q_EMIT;

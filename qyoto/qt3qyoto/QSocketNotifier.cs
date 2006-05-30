@@ -83,7 +83,6 @@ namespace Qt {
 		}
 		public QSocketNotifier(int socket, QSocketNotifier.E_Type arg2, QObject parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSocketNotifier(socket,arg2,parent,name);
 		}
 		[SmokeMethod("QSocketNotifier(int, QSocketNotifier::Type, QObject*, const char*)")]
@@ -92,7 +91,6 @@ namespace Qt {
 		}
 		public QSocketNotifier(int socket, QSocketNotifier.E_Type arg2, QObject parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSocketNotifier(socket,arg2,parent);
 		}
 		[SmokeMethod("QSocketNotifier(int, QSocketNotifier::Type, QObject*)")]
@@ -101,7 +99,6 @@ namespace Qt {
 		}
 		public QSocketNotifier(int socket, QSocketNotifier.E_Type arg2) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSocketNotifier(socket,arg2);
 		}
 		[SmokeMethod("QSocketNotifier(int, QSocketNotifier::Type)")]
@@ -148,10 +145,6 @@ namespace Qt {
 		}
 		private void DisposeQSocketNotifier() {
 			ProxyQSocketNotifier().DisposeQSocketNotifier();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQSocketNotifierSignals), this);
-			Q_EMIT = (IQSocketNotifierSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQSocketNotifierSignals Emit() {
 			return (IQSocketNotifierSignals) Q_EMIT;

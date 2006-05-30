@@ -40,7 +40,6 @@ namespace Qt {
 		}
 		public QDataView(QWidget parent, string name, int fl) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQDataView(parent,name,fl);
 		}
 		[SmokeMethod("QDataView(QWidget*, const char*, Qt::WFlags)")]
@@ -49,7 +48,6 @@ namespace Qt {
 		}
 		public QDataView(QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQDataView(parent,name);
 		}
 		[SmokeMethod("QDataView(QWidget*, const char*)")]
@@ -58,7 +56,6 @@ namespace Qt {
 		}
 		public QDataView(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQDataView(parent);
 		}
 		[SmokeMethod("QDataView(QWidget*)")]
@@ -67,7 +64,6 @@ namespace Qt {
 		}
 		public QDataView() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQDataView();
 		}
 		[SmokeMethod("QDataView()")]
@@ -134,10 +130,6 @@ namespace Qt {
 		}
 		private void DisposeQDataView() {
 			ProxyQDataView().DisposeQDataView();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQDataViewSignals), this);
-			Q_EMIT = (IQDataViewSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQDataViewSignals Emit() {
 			return (IQDataViewSignals) Q_EMIT;

@@ -1,3 +1,8 @@
+2006-05-30  Richard Dale  <rdale@foton.es>
+
+	* Applied patch from Arno Rehn for bringing the Qt3 version of Qyoto
+	  up to date with the Qt4 one wrt Paulo's changes
+
 2006-05-29  Richard Dale  <rdale@foton.es>
 
 	* More fixes from Paulo:

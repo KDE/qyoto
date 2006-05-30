@@ -45,7 +45,6 @@ namespace Qt {
 		}
 		public QSpinBox(QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSpinBox(parent,name);
 		}
 		[SmokeMethod("QSpinBox(QWidget*, const char*)")]
@@ -54,7 +53,6 @@ namespace Qt {
 		}
 		public QSpinBox(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSpinBox(parent);
 		}
 		[SmokeMethod("QSpinBox(QWidget*)")]
@@ -63,7 +61,6 @@ namespace Qt {
 		}
 		public QSpinBox() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSpinBox();
 		}
 		[SmokeMethod("QSpinBox()")]
@@ -72,7 +69,6 @@ namespace Qt {
 		}
 		public QSpinBox(int minValue, int maxValue, int step, QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSpinBox(minValue,maxValue,step,parent,name);
 		}
 		[SmokeMethod("QSpinBox(int, int, int, QWidget*, const char*)")]
@@ -81,7 +77,6 @@ namespace Qt {
 		}
 		public QSpinBox(int minValue, int maxValue, int step, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSpinBox(minValue,maxValue,step,parent);
 		}
 		[SmokeMethod("QSpinBox(int, int, int, QWidget*)")]
@@ -90,7 +85,6 @@ namespace Qt {
 		}
 		public QSpinBox(int minValue, int maxValue, int step) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSpinBox(minValue,maxValue,step);
 		}
 		[SmokeMethod("QSpinBox(int, int, int)")]
@@ -99,7 +93,6 @@ namespace Qt {
 		}
 		public QSpinBox(int minValue, int maxValue) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSpinBox(minValue,maxValue);
 		}
 		[SmokeMethod("QSpinBox(int, int)")]
@@ -366,10 +359,6 @@ namespace Qt {
 		[SmokeMethod("stepChange()")]
 		protected virtual void StepChange() {
 			ProxyQSpinBox().StepChange();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQSpinBoxSignals), this);
-			Q_EMIT = (IQSpinBoxSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQSpinBoxSignals Emit() {
 			return (IQSpinBoxSignals) Q_EMIT;

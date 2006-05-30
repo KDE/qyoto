@@ -49,7 +49,6 @@ namespace Qt {
 		}
 		public QDragObject(QWidget dragSource, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQDragObject(dragSource,name);
 		}
 		[SmokeMethod("QDragObject(QWidget*, const char*)")]
@@ -58,7 +57,6 @@ namespace Qt {
 		}
 		public QDragObject(QWidget dragSource) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQDragObject(dragSource);
 		}
 		[SmokeMethod("QDragObject(QWidget*)")]
@@ -67,7 +65,6 @@ namespace Qt {
 		}
 		public QDragObject() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQDragObject();
 		}
 		[SmokeMethod("QDragObject()")]
@@ -164,10 +161,6 @@ namespace Qt {
 			return ProxyQDragObject().SerialNumber();
 		}
 
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQDragObjectSignals), this);
-			Q_EMIT = (IQDragObjectSignals) realProxy.GetTransparentProxy();
-		}
 		protected new IQDragObjectSignals Emit() {
 			return (IQDragObjectSignals) Q_EMIT;
 		}

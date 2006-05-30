@@ -54,10 +54,6 @@ namespace Qt {
 		public static new string TrUtf8(string arg1) {
 			return StaticQDragManager().TrUtf8(arg1);
 		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQDragManagerSignals), this);
-			Q_EMIT = (IQDragManagerSignals) realProxy.GetTransparentProxy();
-		}
 		protected new IQDragManagerSignals Emit() {
 			return (IQDragManagerSignals) Q_EMIT;
 		}

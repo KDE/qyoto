@@ -164,10 +164,9 @@ void mapPointer(void * obj, smokeqyoto_object *o, Smoke::Index classId, void *la
 void *
 set_obj_info(const char * className, smokeqyoto_object * o)
 {
-//	void * obj = (*CreateInstance)(className);
-//	(*SetSmokeObject)(obj, o);
-//	return obj;
-	return 0;
+	void * obj = (*CreateInstance)(className);
+	(*SetSmokeObject)(obj, o);
+	return obj;
 }
 
 Marshall::HandlerFn getMarshallFn(const SmokeType &type);

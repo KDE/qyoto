@@ -40,7 +40,6 @@ namespace Qt {
 		}
 		public QTextView(string text, string context, QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQTextView(text,context,parent,name);
 		}
 		[SmokeMethod("QTextView(const QString&, const QString&, QWidget*, const char*)")]
@@ -49,7 +48,6 @@ namespace Qt {
 		}
 		public QTextView(string text, string context, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQTextView(text,context,parent);
 		}
 		[SmokeMethod("QTextView(const QString&, const QString&, QWidget*)")]
@@ -58,7 +56,6 @@ namespace Qt {
 		}
 		public QTextView(string text, string context) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQTextView(text,context);
 		}
 		[SmokeMethod("QTextView(const QString&, const QString&)")]
@@ -67,7 +64,6 @@ namespace Qt {
 		}
 		public QTextView(string text) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQTextView(text);
 		}
 		[SmokeMethod("QTextView(const QString&)")]
@@ -76,7 +72,6 @@ namespace Qt {
 		}
 		public QTextView(QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQTextView(parent,name);
 		}
 		[SmokeMethod("QTextView(QWidget*, const char*)")]
@@ -85,7 +80,6 @@ namespace Qt {
 		}
 		public QTextView(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQTextView(parent);
 		}
 		[SmokeMethod("QTextView(QWidget*)")]
@@ -94,7 +88,6 @@ namespace Qt {
 		}
 		public QTextView() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQTextView();
 		}
 		[SmokeMethod("QTextView()")]
@@ -125,10 +118,6 @@ namespace Qt {
 		}
 		private void DisposeQTextView() {
 			ProxyQTextView().DisposeQTextView();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQTextViewSignals), this);
-			Q_EMIT = (IQTextViewSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQTextViewSignals Emit() {
 			return (IQTextViewSignals) Q_EMIT;

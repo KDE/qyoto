@@ -46,7 +46,6 @@ namespace Qt {
 		}
 		public QToolButton(QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQToolButton(parent,name);
 		}
 		[SmokeMethod("QToolButton(QWidget*, const char*)")]
@@ -55,7 +54,6 @@ namespace Qt {
 		}
 		public QToolButton(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQToolButton(parent);
 		}
 		[SmokeMethod("QToolButton(QWidget*)")]
@@ -64,7 +62,6 @@ namespace Qt {
 		}
 		public QToolButton(QIconSet s, string textLabel, string grouptext, QObject receiver, string slot, QToolBar parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQToolButton(s,textLabel,grouptext,receiver,slot,parent,name);
 		}
 		[SmokeMethod("QToolButton(const QIconSet&, const QString&, const QString&, QObject*, const char*, QToolBar*, const char*)")]
@@ -73,7 +70,6 @@ namespace Qt {
 		}
 		public QToolButton(QIconSet s, string textLabel, string grouptext, QObject receiver, string slot, QToolBar parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQToolButton(s,textLabel,grouptext,receiver,slot,parent);
 		}
 		[SmokeMethod("QToolButton(const QIconSet&, const QString&, const QString&, QObject*, const char*, QToolBar*)")]
@@ -82,7 +78,6 @@ namespace Qt {
 		}
 		public QToolButton(Qt.ArrowType type, QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQToolButton(type,parent,name);
 		}
 		[SmokeMethod("QToolButton(Qt::ArrowType, QWidget*, const char*)")]
@@ -91,7 +86,6 @@ namespace Qt {
 		}
 		public QToolButton(Qt.ArrowType type, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQToolButton(type,parent);
 		}
 		[SmokeMethod("QToolButton(Qt::ArrowType, QWidget*)")]
@@ -286,10 +280,6 @@ namespace Qt {
 		}
 		private void DisposeQToolButton() {
 			ProxyQToolButton().DisposeQToolButton();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQToolButtonSignals), this);
-			Q_EMIT = (IQToolButtonSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQToolButtonSignals Emit() {
 			return (IQToolButtonSignals) Q_EMIT;

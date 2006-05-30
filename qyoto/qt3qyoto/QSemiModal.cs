@@ -40,7 +40,6 @@ namespace Qt {
 		}
 		public QSemiModal(QWidget parent, string name, bool modal, int f) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSemiModal(parent,name,modal,f);
 		}
 		[SmokeMethod("QSemiModal(QWidget*, const char*, bool, Qt::WFlags)")]
@@ -49,7 +48,6 @@ namespace Qt {
 		}
 		public QSemiModal(QWidget parent, string name, bool modal) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSemiModal(parent,name,modal);
 		}
 		[SmokeMethod("QSemiModal(QWidget*, const char*, bool)")]
@@ -58,7 +56,6 @@ namespace Qt {
 		}
 		public QSemiModal(QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSemiModal(parent,name);
 		}
 		[SmokeMethod("QSemiModal(QWidget*, const char*)")]
@@ -67,7 +64,6 @@ namespace Qt {
 		}
 		public QSemiModal(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSemiModal(parent);
 		}
 		[SmokeMethod("QSemiModal(QWidget*)")]
@@ -76,7 +72,6 @@ namespace Qt {
 		}
 		public QSemiModal() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSemiModal();
 		}
 		[SmokeMethod("QSemiModal()")]
@@ -107,10 +102,6 @@ namespace Qt {
 		}
 		private void DisposeQSemiModal() {
 			ProxyQSemiModal().DisposeQSemiModal();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQSemiModalSignals), this);
-			Q_EMIT = (IQSemiModalSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQSemiModalSignals Emit() {
 			return (IQSemiModalSignals) Q_EMIT;

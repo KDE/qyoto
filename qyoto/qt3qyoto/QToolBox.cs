@@ -41,7 +41,6 @@ namespace Qt {
 		}
 		public QToolBox(QWidget parent, string name, int f) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQToolBox(parent,name,f);
 		}
 		[SmokeMethod("QToolBox(QWidget*, const char*, Qt::WFlags)")]
@@ -50,7 +49,6 @@ namespace Qt {
 		}
 		public QToolBox(QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQToolBox(parent,name);
 		}
 		[SmokeMethod("QToolBox(QWidget*, const char*)")]
@@ -59,7 +57,6 @@ namespace Qt {
 		}
 		public QToolBox(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQToolBox(parent);
 		}
 		[SmokeMethod("QToolBox(QWidget*)")]
@@ -68,7 +65,6 @@ namespace Qt {
 		}
 		public QToolBox() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQToolBox();
 		}
 		[SmokeMethod("QToolBox()")]
@@ -200,10 +196,6 @@ namespace Qt {
 		}
 		private void DisposeQToolBox() {
 			ProxyQToolBox().DisposeQToolBox();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQToolBoxSignals), this);
-			Q_EMIT = (IQToolBoxSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQToolBoxSignals Emit() {
 			return (IQToolBoxSignals) Q_EMIT;

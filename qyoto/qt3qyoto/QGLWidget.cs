@@ -41,7 +41,6 @@ namespace Qt {
 		}
 		public QGLWidget(QWidget parent, string name, QGLWidget shareWidget, int f) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQGLWidget(parent,name,shareWidget,f);
 		}
 		[SmokeMethod("QGLWidget(QWidget*, const char*, const QGLWidget*, Qt::WFlags)")]
@@ -50,7 +49,6 @@ namespace Qt {
 		}
 		public QGLWidget(QWidget parent, string name, QGLWidget shareWidget) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQGLWidget(parent,name,shareWidget);
 		}
 		[SmokeMethod("QGLWidget(QWidget*, const char*, const QGLWidget*)")]
@@ -59,7 +57,6 @@ namespace Qt {
 		}
 		public QGLWidget(QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQGLWidget(parent,name);
 		}
 		[SmokeMethod("QGLWidget(QWidget*, const char*)")]
@@ -68,7 +65,6 @@ namespace Qt {
 		}
 		public QGLWidget(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQGLWidget(parent);
 		}
 		[SmokeMethod("QGLWidget(QWidget*)")]
@@ -77,7 +73,6 @@ namespace Qt {
 		}
 		public QGLWidget() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQGLWidget();
 		}
 		[SmokeMethod("QGLWidget()")]
@@ -86,7 +81,6 @@ namespace Qt {
 		}
 		public QGLWidget(QGLContext context, QWidget parent, string name, QGLWidget shareWidget, int f) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQGLWidget(context,parent,name,shareWidget,f);
 		}
 		[SmokeMethod("QGLWidget(QGLContext*, QWidget*, const char*, const QGLWidget*, Qt::WFlags)")]
@@ -95,7 +89,6 @@ namespace Qt {
 		}
 		public QGLWidget(QGLContext context, QWidget parent, string name, QGLWidget shareWidget) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQGLWidget(context,parent,name,shareWidget);
 		}
 		[SmokeMethod("QGLWidget(QGLContext*, QWidget*, const char*, const QGLWidget*)")]
@@ -104,7 +97,6 @@ namespace Qt {
 		}
 		public QGLWidget(QGLContext context, QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQGLWidget(context,parent,name);
 		}
 		[SmokeMethod("QGLWidget(QGLContext*, QWidget*, const char*)")]
@@ -113,7 +105,6 @@ namespace Qt {
 		}
 		public QGLWidget(QGLContext context, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQGLWidget(context,parent);
 		}
 		[SmokeMethod("QGLWidget(QGLContext*, QWidget*)")]
@@ -122,7 +113,6 @@ namespace Qt {
 		}
 		public QGLWidget(QGLFormat format, QWidget parent, string name, QGLWidget shareWidget, int f) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQGLWidget(format,parent,name,shareWidget,f);
 		}
 		[SmokeMethod("QGLWidget(const QGLFormat&, QWidget*, const char*, const QGLWidget*, Qt::WFlags)")]
@@ -131,7 +121,6 @@ namespace Qt {
 		}
 		public QGLWidget(QGLFormat format, QWidget parent, string name, QGLWidget shareWidget) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQGLWidget(format,parent,name,shareWidget);
 		}
 		[SmokeMethod("QGLWidget(const QGLFormat&, QWidget*, const char*, const QGLWidget*)")]
@@ -140,7 +129,6 @@ namespace Qt {
 		}
 		public QGLWidget(QGLFormat format, QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQGLWidget(format,parent,name);
 		}
 		[SmokeMethod("QGLWidget(const QGLFormat&, QWidget*, const char*)")]
@@ -149,7 +137,6 @@ namespace Qt {
 		}
 		public QGLWidget(QGLFormat format, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQGLWidget(format,parent);
 		}
 		[SmokeMethod("QGLWidget(const QGLFormat&, QWidget*)")]
@@ -158,7 +145,6 @@ namespace Qt {
 		}
 		public QGLWidget(QGLFormat format) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQGLWidget(format);
 		}
 		[SmokeMethod("QGLWidget(const QGLFormat&)")]
@@ -383,10 +369,6 @@ namespace Qt {
 		}
 		private void DisposeQGLWidget() {
 			ProxyQGLWidget().DisposeQGLWidget();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQGLWidgetSignals), this);
-			Q_EMIT = (IQGLWidgetSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQGLWidgetSignals Emit() {
 			return (IQGLWidgetSignals) Q_EMIT;

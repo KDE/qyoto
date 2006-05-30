@@ -41,7 +41,6 @@ namespace Qt {
 		}
 		public QHeader(QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQHeader(parent,name);
 		}
 		[SmokeMethod("QHeader(QWidget*, const char*)")]
@@ -50,7 +49,6 @@ namespace Qt {
 		}
 		public QHeader(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQHeader(parent);
 		}
 		[SmokeMethod("QHeader(QWidget*)")]
@@ -59,7 +57,6 @@ namespace Qt {
 		}
 		public QHeader() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQHeader();
 		}
 		[SmokeMethod("QHeader()")]
@@ -68,7 +65,6 @@ namespace Qt {
 		}
 		public QHeader(int arg1, QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQHeader(arg1,parent,name);
 		}
 		[SmokeMethod("QHeader(int, QWidget*, const char*)")]
@@ -77,7 +73,6 @@ namespace Qt {
 		}
 		public QHeader(int arg1, QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQHeader(arg1,parent);
 		}
 		[SmokeMethod("QHeader(int, QWidget*)")]
@@ -86,7 +81,6 @@ namespace Qt {
 		}
 		public QHeader(int arg1) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQHeader(arg1);
 		}
 		[SmokeMethod("QHeader(int)")]
@@ -395,10 +389,6 @@ namespace Qt {
 		}
 		private void DisposeQHeader() {
 			ProxyQHeader().DisposeQHeader();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQHeaderSignals), this);
-			Q_EMIT = (IQHeaderSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQHeaderSignals Emit() {
 			return (IQHeaderSignals) Q_EMIT;

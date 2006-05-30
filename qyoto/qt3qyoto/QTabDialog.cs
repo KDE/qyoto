@@ -41,7 +41,6 @@ namespace Qt {
 		}
 		public QTabDialog(QWidget parent, string name, bool modal, int f) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQTabDialog(parent,name,modal,f);
 		}
 		[SmokeMethod("QTabDialog(QWidget*, const char*, bool, Qt::WFlags)")]
@@ -50,7 +49,6 @@ namespace Qt {
 		}
 		public QTabDialog(QWidget parent, string name, bool modal) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQTabDialog(parent,name,modal);
 		}
 		[SmokeMethod("QTabDialog(QWidget*, const char*, bool)")]
@@ -59,7 +57,6 @@ namespace Qt {
 		}
 		public QTabDialog(QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQTabDialog(parent,name);
 		}
 		[SmokeMethod("QTabDialog(QWidget*, const char*)")]
@@ -68,7 +65,6 @@ namespace Qt {
 		}
 		public QTabDialog(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQTabDialog(parent);
 		}
 		[SmokeMethod("QTabDialog(QWidget*)")]
@@ -77,7 +73,6 @@ namespace Qt {
 		}
 		public QTabDialog() : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQTabDialog();
 		}
 		[SmokeMethod("QTabDialog()")]
@@ -280,10 +275,6 @@ namespace Qt {
 		}
 		private void DisposeQTabDialog() {
 			ProxyQTabDialog().DisposeQTabDialog();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQTabDialogSignals), this);
-			Q_EMIT = (IQTabDialogSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQTabDialogSignals Emit() {
 			return (IQTabDialogSignals) Q_EMIT;

@@ -40,7 +40,6 @@ namespace Qt {
 		}
 		public QSizeGrip(QWidget parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSizeGrip(parent,name);
 		}
 		[SmokeMethod("QSizeGrip(QWidget*, const char*)")]
@@ -49,7 +48,6 @@ namespace Qt {
 		}
 		public QSizeGrip(QWidget parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQSizeGrip(parent);
 		}
 		[SmokeMethod("QSizeGrip(QWidget*)")]
@@ -100,10 +98,6 @@ namespace Qt {
 		}
 		private void DisposeQSizeGrip() {
 			ProxyQSizeGrip().DisposeQSizeGrip();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQSizeGripSignals), this);
-			Q_EMIT = (IQSizeGripSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQSizeGripSignals Emit() {
 			return (IQSizeGripSignals) Q_EMIT;

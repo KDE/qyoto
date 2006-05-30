@@ -40,7 +40,6 @@ namespace Qt {
 		}
 		public QRegExpValidator(QObject parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQRegExpValidator(parent,name);
 		}
 		[SmokeMethod("QRegExpValidator(QObject*, const char*)")]
@@ -49,7 +48,6 @@ namespace Qt {
 		}
 		public QRegExpValidator(QObject parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQRegExpValidator(parent);
 		}
 		[SmokeMethod("QRegExpValidator(QObject*)")]
@@ -58,7 +56,6 @@ namespace Qt {
 		}
 		public QRegExpValidator(QRegExp rx, QObject parent, string name) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQRegExpValidator(rx,parent,name);
 		}
 		[SmokeMethod("QRegExpValidator(const QRegExp&, QObject*, const char*)")]
@@ -67,7 +64,6 @@ namespace Qt {
 		}
 		public QRegExpValidator(QRegExp rx, QObject parent) : this((Type) null) {
 			CreateProxy();
-			CreateSignalProxy();
 			NewQRegExpValidator(rx,parent);
 		}
 		[SmokeMethod("QRegExpValidator(const QRegExp&, QObject*)")]
@@ -110,10 +106,6 @@ namespace Qt {
 		}
 		private void DisposeQRegExpValidator() {
 			ProxyQRegExpValidator().DisposeQRegExpValidator();
-		}
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQRegExpValidatorSignals), this);
-			Q_EMIT = (IQRegExpValidatorSignals) realProxy.GetTransparentProxy();
 		}
 		protected new IQRegExpValidatorSignals Emit() {
 			return (IQRegExpValidatorSignals) Q_EMIT;
