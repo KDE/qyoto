@@ -1,3 +1,7 @@
+2006-05-31  Richard Dale  <rdale@foton.es>
+
+	* Moved the tutorial examples to examples/tutorial
+
 2006-05-31  Paolo Capriotti  <paolo.capriotti@gmail.com>
 
 	* Added a void** marshaller in handler.cpp (needed for qt_metacall).
