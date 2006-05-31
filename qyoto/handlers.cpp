@@ -361,6 +361,8 @@ void
 marshall_basetype(Marshall *m)
 {
     switch(m->type().elem()) {
+	
+    
       case Smoke::t_bool:
 	switch(m->action()) {
 	  case Marshall::FromObject:
@@ -601,6 +603,7 @@ marshall_basetype(Marshall *m)
 	m->unsupported();
 	break;
     }
+
 }
 
 static void marshall_void(Marshall * /*m*/) {}
@@ -751,6 +754,20 @@ static void marshall_charP_array(Marshall *m) {
 
 }
 
+static void marshall_voidP_array(Marshall* m) {
+	switch(m->action()) {
+	case Marshall::FromObject:
+		m->item().s_voidp = m->var().s_voidp;
+		break;
+	case Marshall::ToObject:
+		m->var().s_voidp = m->item().s_voidp;
+		break;
+	default:
+		m->unsupported();
+		break;
+	}
+}
+
 
 TypeHandler Qt_handlers[] = {
     { "QString", marshall_QString },
@@ -760,6 +777,7 @@ TypeHandler Qt_handlers[] = {
     { "int*", marshall_intR },
     { "char*", marshall_charP },
     { "char**", marshall_charP_array },
+    { "void**", marshall_voidP_array },
 
     { 0, 0 }
 };

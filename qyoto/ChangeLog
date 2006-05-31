@@ -1,3 +1,10 @@
+2006-05-31  Paolo Capriotti  <paolo.capriotti@gmail.com>
+
+	* Added a void** marshaller in handler.cpp (needed for qt_metacall).
+	* Decommented InvokeSlot and ported to qt4 (invokeSlot() method still empty).
+	* Added some code to intercept a qt_metacall and invoke the corresponding slot (doesn't work yet).
+	* Rewritten Hello.cs to test custom slot invocation.
+
 2006-05-30  Richard Dale  <rdale@foton.es>
 
 	* Applied patch from Arno Rehn for bringing the Qt3 version of Qyoto

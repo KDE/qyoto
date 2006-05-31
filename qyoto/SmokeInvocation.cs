@@ -69,6 +69,7 @@ namespace Qt {
 		delegate IntPtr GetIntPtrFromString(string str);
 		delegate string GetStringFromIntPtr(IntPtr ptr);
 		delegate IntPtr OverridenMethodFn(IntPtr instance, string method);
+		delegate bool InvokeMetaCallMethodFn(IntPtr instance, IntPtr stack);
 		delegate void InvokeMethodFn(IntPtr instance, IntPtr method, IntPtr args);
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
@@ -118,6 +119,9 @@ namespace Qt {
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern void AddOverridenMethod(OverridenMethodFn callback);
+
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		static extern void AddInvokeMetaCallMethod(InvokeMetaCallMethodFn callback);
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern void AddInvokeMethod(InvokeMethodFn callback);
@@ -251,6 +255,8 @@ namespace Qt {
 		// signatures as keys retrieving a suitable MethodInfo to invoke via 
 		// reflection.
 		static private Hashtable overridenMethods = new Hashtable();
+		static private MethodInfo metacallMethod = typeof(Qyoto).GetMethod("QyotoMetaCall", BindingFlags.Static | BindingFlags.NonPublic);
+		static private MethodInfo metaObjectMethod = typeof(QObject).GetMethod("MetaCall", BindingFlags.Instance | BindingFlags.Public);
 		
 		static void AddOverridenMethods(Type klass) {
 			object[] attributes = klass.GetCustomAttributes(typeof(SmokeClass), false);
@@ -267,6 +273,9 @@ namespace Qt {
 			methodsHash = new Hashtable();
 			overridenMethods[instanceType] = methodsHash;
 
+			// add MetaObject to the hashtable
+			methodsHash["metaObject() const"] = metaObjectMethod;
+			
 			do {
 				MemberInfo[] methods = klass.FindMembers(	MemberTypes.Method,
 															BindingFlags.Public 
@@ -313,7 +322,7 @@ namespace Qt {
 		static IntPtr OverridenMethod(IntPtr instance, string method) {
 			object temp = ((GCHandle) instance).Target;
 			string instanceType = temp.ToString();
-//			Console.WriteLine("OverridenMethod() instanceType: {0} method: {1}", instanceType, method);
+
 			Hashtable methods = (Hashtable) overridenMethods[instanceType];
 			if (methods == null) {
 				return (IntPtr) 0;
@@ -406,6 +415,19 @@ namespace Qt {
 			return;
 		}
 
+		static bool InvokeMetaCallMethod(IntPtr instance, IntPtr stack) {
+			object target = ((GCHandle) instance).Target;
+			unsafe {
+				StackItem * stackPtr = (StackItem *) stack;
+				object call = (QMetaObject.Call)stackPtr[1].s_int;
+				object id = stackPtr[2].s_int;
+				object args = (IntPtr)stackPtr[3].s_voidp;
+				
+				
+				return (bool)metacallMethod.Invoke(null, new object[] { target, call, id, args });
+			}
+		}
+
 		static private FromIntPtr freeGCHandle = new FromIntPtr(FreeGCHandle);
 
 		static private GetIntPtr getSmokeObject = new GetIntPtr(GetSmokeObject);
@@ -422,6 +444,7 @@ namespace Qt {
 		static private GetIntPtr intPtrFromQString = new GetIntPtr(IntPtrFromQString);
 		
 		static private OverridenMethodFn overridenMethod = new OverridenMethodFn(OverridenMethod);
+		static private InvokeMetaCallMethodFn invokeMetaCallMethod = new InvokeMetaCallMethodFn(InvokeMetaCallMethod);
 		static private InvokeMethodFn invokeMethod = new InvokeMethodFn(InvokeMethod);
 
 		static private CreateInstanceFn createInstance = new CreateInstanceFn(CreateInstance);
@@ -443,6 +466,7 @@ namespace Qt {
 			AddIntPtrFromQString(intPtrFromQString);
 
 			AddOverridenMethod(overridenMethod);
+			AddInvokeMetaCallMethod(invokeMetaCallMethod);
 			AddInvokeMethod(invokeMethod);
 
 			AddCreateInstance(createInstance);

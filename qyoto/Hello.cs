@@ -1,25 +1,37 @@
-using System;
 using Qt;
-using System.Runtime.InteropServices;
+using System;
 
-class MainForm : QDialog
-{
-	static void Main(String[] args) {
-                Qt.QApplication qa = new Qt.QApplication(args);
-                MainForm mf = new MainForm();
-                mf.Show();
-                qa.SetMainWidget(mf);
-                qa.Exec();
-        }
-        
-        public MainForm() : base() {
-                this.Show();
-                QVBoxLayout qgrid = new QVBoxLayout(this);
-                //qgrid.SetAutoAdd(true);
-                QTextEdit te = new QTextEdit(this);
-                te.Show();
-                //SetCaption("Qyoto C# bindings test");
-                QPushButton button = new QPushButton("Hello World! Are you getting warmer?", this);
-                button.Show();
-        }
+class Test : Qt.Qt {
+	class MyWidget : QWidget {
+		public MyWidget() : base((QWidget)null) {
+			QPushButton quit = new QPushButton("quit", this);
+			Connect(quit, SIGNAL("clicked()"), qApp, SLOT("quit()"));
+			
+			QPushButton test = new QPushButton("test", this);
+			Connect(test, SIGNAL("clicked()"), this, SLOT("test()"));
+			
+			QVBoxLayout layout = new QVBoxLayout();
+			layout.AddWidget(quit);
+			layout.AddWidget(test);
+			SetLayout(layout);
+		}
+		
+		public override QMetaObject MetaObject() {
+			Console.WriteLine("inside MyWidget.MetaObject");
+			return Qyoto.GetMetaObject(this);
+		}
+		
+		[Q_SLOT("test()")]
+		public void test() {
+			Console.WriteLine("************ IT WORKS **************");
+		}
+
+	}
+
+	public static void Main(string[] args) {
+		QApplication app = new QApplication(args);
+		MyWidget main = new MyWidget();
+		main.Show();
+		QApplication.Exec();
+	}
 }

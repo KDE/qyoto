@@ -52,7 +52,7 @@ namespace Qt {
 
 		[SmokeMethod("metaObject() const")]
 		public virtual QMetaObject MetaObject() {
-			return ProxyQObject().MetaObject();
+			return Qyoto.GetMetaObject(this);
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QObject(QObject parent) : this((Type) null) {

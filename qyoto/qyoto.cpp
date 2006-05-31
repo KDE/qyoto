@@ -70,6 +70,7 @@ static FromIntPtr UnmapPointer;
 static GetIntPtr GetPointerObject;
 
 static OverridenMethodFn OverridenMethod;
+static InvokeMetaCallMethodFn InvokeMetaCallMethod;
 static InvokeMethodFn InvokeMethod;
 static CreateInstanceFn CreateInstance;
 
@@ -556,139 +557,143 @@ public:
     bool cleanup() { return true; }
 };
 
-// class InvokeSlot : public Marshall {
-//     void * _obj;
-//     char * _slotname;
-//     int _items;
-//     MocArgument *_args;
-//     QUObject *_o;
-//     int _cur;
-//     bool _called;
-//     Smoke::StackItem *_sp;
-//     Smoke::Stack _stack;
-// public:
-//     const MocArgument &arg() { return _args[_cur]; }
-//     SmokeType type() { return arg().st; }
-//     Marshall::Action action() { return Marshall::ToObject; }
-//     Smoke::StackItem &item() { return _stack[_cur]; }
-//     Smoke::StackItem & var() { return _sp[_cur]; }
-//     Smoke *smoke() { return type().smoke(); }
-//     bool cleanup() { return false; }
-// 	void unsupported() {
-// 		qFatal("Cannot handle '%s' as slot argument\n", type().name());
-// 	}
-// 	void copyArguments() {
-// 	for (int i = 0; i < _items; i++) {
-// 		QUObject *o = _o + i + 1;
-// 		switch(_args[i].argType) {
-// 		case xmoc_bool:
-// 			_stack[i].s_bool = static_QUType_bool.get(o);
-// 			break;
-// 		case xmoc_int:
-// 			_stack[i].s_int = static_QUType_int.get(o);
-// 			break;
-// 		case xmoc_double:
-// 			_stack[i].s_double = static_QUType_double.get(o);
-// 			break;
-// 		case xmoc_charstar:
-// 			_stack[i].s_voidp = static_QUType_charstar.get(o);
-// 			break;
-// 		case xmoc_QString:
-// 			_stack[i].s_voidp = &static_QUType_QString.get(o);
-// 			break;
-// 		default:	// case xmoc_ptr:
-// 		{
-// 			const SmokeType &t = _args[i].st;
-// 			void *p = static_QUType_ptr.get(o);
-// 			switch(t.elem()) {
-// 			case Smoke::t_bool:
-// 				_stack[i].s_bool = *(bool*)p;
-// 				break;
-// 			case Smoke::t_char:
-// 				_stack[i].s_char = *(char*)p;
-// 				break;
-// 			case Smoke::t_uchar:
-// 				_stack[i].s_uchar = *(unsigned char*)p;
-// 				break;
-// 			case Smoke::t_short:
-// 				_stack[i].s_short = *(short*)p;
-// 				break;
-// 			case Smoke::t_ushort:
-// 				_stack[i].s_ushort = *(unsigned short*)p;
-// 				break;
-// 			case Smoke::t_int:
-// 				_stack[i].s_int = *(int*)p;
-// 				break;
-// 			case Smoke::t_uint:
-// 				_stack[i].s_uint = *(unsigned int*)p;
-// 				break;
-// 			case Smoke::t_long:
-// 				_stack[i].s_long = *(long*)p;
-// 				break;
-// 			case Smoke::t_ulong:
-// 				_stack[i].s_ulong = *(unsigned long*)p;
-// 				break;
-// 			case Smoke::t_float:
-// 				_stack[i].s_float = *(float*)p;
-// 				break;
-// 			case Smoke::t_double:
-// 				_stack[i].s_double = *(double*)p;
-// 				break;
-// 			case Smoke::t_enum:
-// 			{
-// 				Smoke::EnumFn fn = SmokeClass(t).enumFn();
-// 			    if (!fn) {
-// 					qFatal("Unknown enumeration %s\n", t.name());
-// 					_stack[i].s_enum = *(int*)p;
-// 					break;
-// 			    }
-// 			    Smoke::Index id = t.typeId();
-// 			    (*fn)(Smoke::EnumToLong, id, p, _stack[i].s_enum);
-// 			}
-// 			break;
-// 			case Smoke::t_class:
-// 			case Smoke::t_voidp:
-// 				_stack[i].s_voidp = p;
-// 				break;
-// 		    }
-// 		}
-// 	}
-// 	}
-// 	}
-// 	void invokeSlot() {
-// 		if (_called) return;
-// 		_called = true;
-// //		(void) rb_funcall2(_obj, _slotname, _items, _sp);
-// 	}
-// 
-// 	void next() {
-// 		int oldcur = _cur;
-// 		_cur++;
-// 
-// 		while (!_called && _cur < _items) {
-// 			Marshall::HandlerFn fn = getMarshallFn(type());
-// 			(*fn)(this);
-// 			_cur++;
-// 		}
-// 
-// 		invokeSlot();
-// 		_cur = oldcur;
-// 	}
-// 
-//     InvokeSlot(void * obj, char * slotname, int items, MocArgument * args, QUObject *o) :
-//     _obj(obj), _slotname(slotname), _items(items), _args(args), _o(o), _cur(-1), _called(false)
-//     {
-// 		_sp = new Smoke::StackItem[_items];
-// 		_stack = new Smoke::StackItem[_items];
-// 		copyArguments();
-//     }
-// 
-// 	~InvokeSlot() {
-// 		delete[] _stack;
-// 		delete[] _sp;
-// 		(*FreeGCHandle)(_obj);
-// 	}
-// };
+class InvokeSlot : public Marshall {
+    void * _obj;
+    const char * _slotname;
+    int _items;
+    MocArgument *_args;
+    void **_o;
+    int _cur;
+    bool _called;
+    Smoke::StackItem *_sp;
+    Smoke::Stack _stack;
+public:
+    const MocArgument &arg() { return _args[_cur]; }
+    SmokeType type() { return arg().st; }
+    Marshall::Action action() { return Marshall::ToObject; }
+    Smoke::StackItem &item() { return _stack[_cur]; }
+    Smoke::StackItem & var() { return _sp[_cur]; }
+    Smoke *smoke() { return type().smoke(); }
+    bool cleanup() { return false; }
+	void unsupported() {
+		qFatal("Cannot handle '%s' as slot argument\n", type().name());
+	}
+	void copyArguments() {
+	for (int i = 0; i < _items; i++) {
+		void *o = _o[i + 1];
+		switch(_args[i].argType) {
+		case xmoc_bool:
+		_stack[i].s_bool = *(bool*)o;
+		break;
+		case xmoc_int:
+		_stack[i].s_int = *(int*)o;
+		break;
+		case xmoc_double:
+		_stack[i].s_double = *(double*)o;
+		break;
+		case xmoc_charstar:
+		_stack[i].s_voidp = o;
+		break;
+		case xmoc_QString:
+		_stack[i].s_voidp = o;
+		break;
+		default:	// case xmoc_ptr:
+		{
+			const SmokeType &t = _args[i].st;
+			void *p = o;
+			switch(t.elem()) {
+			case Smoke::t_bool:
+			_stack[i].s_bool = **(bool**)o;
+			break;
+			case Smoke::t_char:
+			_stack[i].s_char = **(char**)o;
+			break;
+			case Smoke::t_uchar:
+			_stack[i].s_uchar = **(unsigned char**)o;
+			break;
+			case Smoke::t_short:
+			_stack[i].s_short = **(short**)p;
+			break;
+			case Smoke::t_ushort:
+			_stack[i].s_ushort = **(unsigned short**)p;
+			break;
+			case Smoke::t_int:
+			_stack[i].s_int = **(int**)p;
+			break;
+			case Smoke::t_uint:
+			_stack[i].s_uint = **(unsigned int**)p;
+			break;
+			case Smoke::t_long:
+			_stack[i].s_long = **(long**)p;
+			break;
+			case Smoke::t_ulong:
+			_stack[i].s_ulong = **(unsigned long**)p;
+			break;
+			case Smoke::t_float:
+			_stack[i].s_float = **(float**)p;
+			break;
+			case Smoke::t_double:
+			_stack[i].s_double = **(double**)p;
+			break;
+			case Smoke::t_enum:
+			{
+				Smoke::EnumFn fn = SmokeClass(t).enumFn();
+				if (!fn) {
+					qWarning("Unknown enumeration %s\n", t.name());
+					_stack[i].s_enum = **(int**)p;
+					break;
+				}
+				Smoke::Index id = t.typeId();
+				(*fn)(Smoke::EnumToLong, id, p, _stack[i].s_enum);
+			}
+			break;
+			case Smoke::t_class:
+			case Smoke::t_voidp:
+				if (strchr(t.name(), '*') != 0) {
+					_stack[i].s_voidp = *(void **)p;
+				} else {
+					_stack[i].s_voidp = p;
+				}
+			break;
+			}
+		}
+		}
+	}
+	}
+	void invokeSlot() {
+		if (_called) return;
+		_called = true;
+		printf("invoking slot");
+	}
+
+	void next() {
+		int oldcur = _cur;
+		_cur++;
+
+		while (!_called && _cur < _items) {
+			Marshall::HandlerFn fn = getMarshallFn(type());
+			(*fn)(this);
+			_cur++;
+		}
+
+		invokeSlot();
+		_cur = oldcur;
+	}
+
+    InvokeSlot(void * obj, const char * slotname, int items, MocArgument * args, void** o) :
+    _obj(obj), _slotname(slotname), _items(items), _args(args), _o(o), _cur(-1), _called(false)
+    {
+		_sp = new Smoke::StackItem[_items];
+		_stack = new Smoke::StackItem[_items];
+		copyArguments();
+    }
+
+	~InvokeSlot() {
+		delete[] _stack;
+		delete[] _sp;
+		(*FreeGCHandle)(_obj);
+	}
+};
 
 class QyotoSmokeBinding : public SmokeBinding {
 public:
@@ -741,7 +746,12 @@ public:
 
 			return false;
 		}
-
+		
+		if (strcmp(signature, "qt_metacall(QMetaObject::Call, int, void**)") == 0) {
+			printf("obj = %d, args = %d\n", obj, args);
+			return (*InvokeMetaCallMethod)(obj, args);
+		}
+		
 		void * overridenMethod = (*OverridenMethod)(obj, (const char *) signature);
 		if (overridenMethod == 0) {
 			return false;
@@ -835,6 +845,12 @@ AddOverridenMethod(OverridenMethodFn callback)
 	OverridenMethod = callback;
 }
 
+void
+AddInvokeMetaCallMethod(InvokeMetaCallMethodFn callback)
+{
+	InvokeMetaCallMethod = callback;
+}
+
 void 
 AddInvokeMethod(InvokeMethodFn callback)
 {
@@ -886,7 +902,7 @@ setMocType(MocArgument *arg, int idx, const char * name, const char * static_typ
 }
 
 MocArgument *
-GetMocArguments(QString member) 
+GetMocArgumentsNumber(QString member, int& number) 
 {
 	QRegExp rx1("^.*\\((.*)\\)$");
 	QRegExp rx2("^(bool|int|double|char\\*|QString)&?$");
@@ -898,7 +914,8 @@ GetMocArguments(QString member)
 	QString argStr = rx1.cap(1);
 //	printf("argStr: %s\n", argStr.latin1());
 	QStringList args = argStr.split(",");
-	MocArgument * mocargs = new MocArgument[args.size() + 1];
+	number = args.size();
+	MocArgument * mocargs = new MocArgument[number + 1];
 	int i = 0;
 	for (QStringList::Iterator it = args.begin(); it != args.end(); ++it) {
 		QString a = (*it);
@@ -912,6 +929,12 @@ GetMocArguments(QString member)
     }
 
 	return mocargs;
+}
+
+MocArgument *
+GetMocArguments(QString member) {
+	int tmp;
+	return GetMocArgumentsNumber(member, tmp);
 }
 
 bool
@@ -954,10 +977,7 @@ SignalEmit(char * signature, void * obj, Smoke::StackItem * sp, int items)
 }
 
 
-void* make_metaObject(void* obj, const char* stringdata, const uint* data) {
-	printf("stringdata = %s\n", stringdata);
-	printf("data = %x\n", data);
-	
+void* make_metaObject(void* obj, const char* stringdata, const uint* data) {	
 	smokeqyoto_object* o = value_obj_info(obj);
 	Smoke::Index nameId = o->smoke->idMethodName("metaObject");
 	Smoke::Index meth = o->smoke->findMethod(o->classId, nameId);
@@ -993,6 +1013,59 @@ void* make_metaObject(void* obj, const char* stringdata, const uint* data) {
 	
 	// create wrapper C# instance
 	return set_obj_info("Qt.QMetaObject", m);
+}
+
+int qt_metacall(void* obj, int _c, int _id, void* _o) {
+	// get obj metaobject with a virtual call
+	smokeqyoto_object *o = value_obj_info(obj);
+    QObject *qobj = (QObject*)o->ptr;
+	const QMetaObject *metaobject = qobj->metaObject();
+	
+	// get method count and offset
+	int count = metaobject->methodCount();
+	int offset = metaobject->methodOffset();
+
+//	printf("_id = %d, count = %d, offset = %d\n", _id, count, offset);
+
+	// if id < offset call base version
+	if (_id < offset) {
+		// Assume the target slot is a C++ one
+		Smoke::Index nameId = o->smoke->idMethodName("qt_metacall$$?");
+		Smoke::Index meth = o->smoke->findMethod(o->classId, nameId);
+		if(meth > 0) {
+			Smoke::Method &m = o->smoke->methods[o->smoke->methodMaps[meth].method];
+			Smoke::ClassFn fn = o->smoke->classes[m.classId].classFn;
+			Smoke::StackItem i[4];
+			i[1].s_enum = _c;
+			i[2].s_int = _id;
+			i[3].s_voidp = _o;
+			(*fn)(m.method, o->ptr, i);
+			return i[0].s_int;
+		}
+
+		// Should never happen..
+		qFatal("Cannot find %s::qt_metacall() method\n", 
+			o->smoke->classes[o->classId].className );
+	}
+
+	// return immediately if _c != QMetaObject::InvokeMetaMethod
+    if (_c != QMetaObject::InvokeMetaMethod) {
+		return _id;
+	}
+
+	// retrieve method signature from id
+	QMetaMethod method = metaobject->method(_id);
+	QString name(method.signature());
+	name.replace(QRegExp("\\(.*"), "");
+		
+	int items;
+	MocArgument* mocArgs = GetMocArgumentsNumber(method.signature(), items);
+	
+	// invoke slot
+	InvokeSlot slot(obj, (const char*)name.toLatin1(), items, mocArgs, (void**)_o);
+	slot.next();
+	
+	return _id - (count - offset);
 }
 
 void

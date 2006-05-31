@@ -14,6 +14,9 @@ namespace Qt
     
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern IntPtr make_metaObject(IntPtr parent, IntPtr stringdata, IntPtr data);
+		
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		static extern int qt_metacall(IntPtr obj, int _c, int _id, IntPtr a);
       
 		/// This Hashtable contains a list of classes with their Hashtables for slots. The class name is the key, the slot-hashtable the value.
 		public static Hashtable classes = new Hashtable();
@@ -22,9 +25,9 @@ namespace Qt
 		static Hashtable metaObjects = new Hashtable();
 		
 		public static Hashtable GetSlotSignatures(Type t) {
-			
+			Console.WriteLine("creating slots for {0}", t);
 			/// Remove the old object if it already exists
-			classes.Remove(t.Name);
+			classes.Remove(t.ToString());
 			
 			/// This Hashtable contains the slots of a class. The C++ type signature is the key, the appropriate C# MethodInfo the value.
 			Hashtable slots = new Hashtable();
@@ -39,7 +42,7 @@ namespace Qt
 				}
 			}
 			
-			classes.Add(t.Name, slots);
+			classes.Add(t.ToString(), slots);
 			return slots;
 		}
 		
@@ -156,7 +159,7 @@ namespace Qt
 				foreach (string entry in signals)
 					AddMethod(tmp, entry, MethodFlags.MethodSignal | MethodFlags.AccessProtected);
 				
-				foreach (string entry in signals)
+				foreach (string entry in slots)
 					AddMethod(tmp, entry, MethodFlags.MethodSlot | MethodFlags.AccessPublic);
 				
 				tmp.Add(0);
@@ -184,10 +187,10 @@ namespace Qt
 		
 			ICollection slots;
 			if (slotTable != null)
-				slots = slotTable.Values;
+				slots = slotTable.Keys;
 			else {
 				// build slot table
-				slots = GetSlotSignatures(t).Values;
+				slots = GetSlotSignatures(t).Keys;
 			}
 
 			string[] signals = GetSignalSignatures(t);
@@ -207,7 +210,8 @@ namespace Qt
 			return res;
 		}
     
-		public static QMetaObject GetMetaObject(Type t, QObject o) {
+		public static QMetaObject GetMetaObject(QObject o) {
+			Type t = o.GetType();
 			object[] attr = t.GetCustomAttributes(typeof(SmokeClass), false);
 			if (attr.Length > 0) {
 				// qt class: simply call the MetaObject method
@@ -229,8 +233,18 @@ namespace Qt
 					res = MakeMetaObject(t, o);
 					metaObjects[t.ToString()] = res;
 				}
+				IntPtr resPtr = (IntPtr) GCHandle.Alloc(res);
 				return res;
 			}
+		}
+		
+		private static bool QyotoMetaCall(QObject target, QMetaObject.Call _c, int _id, IntPtr _o) {
+#if DEBUG
+			Console.WriteLine("QyotoMetaCall: target => {0}, call => {1}, id => {2}", target, _c, _id);
+#endif
+			IntPtr targetPtr = (IntPtr) GCHandle.Alloc(target);
+			qt_metacall(targetPtr, (int)_c, _id, _o);
+			return true;
 		}
 	}
 	
