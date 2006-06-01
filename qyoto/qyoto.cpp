@@ -49,7 +49,7 @@
 #include "smoke.h"
 
 #define QYOTO_VERSION "0.0.1"
-#define DEBUG
+// #define DEBUG
 
 extern Smoke *qt_Smoke;
 extern void init_qt_Smoke();
@@ -1015,6 +1015,25 @@ void* make_metaObject(void* obj, const char* stringdata, int stringdata_count, c
 	// copy it to the heap
 	QMetaObject* meta = new QMetaObject;
 	*meta = tmp;
+
+#ifdef DEBUG
+	printf("make_metaObject() superdata: %p\n", meta->d.superdata);
+	printf("stringdata: ");
+	for (int j = 0; j < stringdata_count; j++) {
+		if (meta->d.stringdata[j] == 0) {
+			printf("\\0");
+		} else {
+			printf("%c", meta->d.stringdata[j]);
+		}
+	}
+	printf("\n");
+	
+	printf("data: ");
+	for (long i = 0; i < data_count; i++) {
+		printf("%d, ", my_data[i]);
+	}
+	printf("\n");
+#endif
 	
 	// create smoke object
 	smokeqyoto_object* m = (smokeqyoto_object*)malloc(sizeof(smokeqyoto_object));
@@ -1036,7 +1055,7 @@ int qt_metacall(void* obj, int _c, int _id, void* _o) {
 	// get method count and offset
 	int count = metaobject->methodCount();
 	int offset = metaobject->methodOffset();
-	
+
 	// if id < offset call base version
 	if (_id < offset) {
 		// Assume the target slot is a C++ one
