@@ -13,10 +13,8 @@ namespace Qt
 		public static extern void Init_qyoto();
     
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		static extern IntPtr make_metaObject(IntPtr parent, IntPtr stringdata, IntPtr data);
-		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		static extern int qt_metacall(IntPtr obj, int _c, int _id, IntPtr a);
+		static extern IntPtr make_metaObject(IntPtr parent, IntPtr stringdata, int stringdataCount, 
+											 IntPtr data, int dataCount);
       
 		/// This Hashtable contains a list of classes with their Hashtables for slots. The class name is the key, the slot-hashtable the value.
 		public static Hashtable classes = new Hashtable();
@@ -85,7 +83,7 @@ namespace Qt
 			// strings.
 			class StringTableHandler {
 				Hashtable hash;
-				int offset;
+				uint offset;
 				ArrayList data;
 			
 				public StringTableHandler() {
@@ -94,7 +92,7 @@ namespace Qt
 					data = new ArrayList();
 				}
 	
-				public int this[string str] {
+				public uint this[string str] {
 					get {
 						if (!hash.ContainsKey(str)) {
 #if DEBUG
@@ -102,9 +100,9 @@ namespace Qt
 #endif
 							hash[str] = offset;
 							data.Add(str);
-							offset += str.Length + 1;
+							offset += (uint)str.Length + 1;
 						}
-						return (int)hash[str];
+						return (uint)hash[str];
 					}
 				}
 			
@@ -121,7 +119,7 @@ namespace Qt
 			}
 		
 			byte[] stringdata;
-			int[] data;
+			uint[] data;
 			StringTableHandler handler;
 		
 			// from qt-copy/src/tools/moc/generator.cpp
@@ -142,16 +140,17 @@ namespace Qt
 				array.Add(handler[Regex.Replace(method, "[^,]", "")]); // parameters
 				array.Add(handler[""]);                                // type
 				array.Add(handler[""]);                                // tag
-				array.Add((int)flags);                                 // flags
+				array.Add((uint)flags);                                 // flags
 			}
 		
 			public QyotoMetaData(string className, ICollection signals, ICollection slots) {
 				handler = new StringTableHandler();
-				ArrayList tmp = new ArrayList(new int[] { 
+				Console.WriteLine("methodCount should be {0}", signals.Count + slots.Count);
+				ArrayList tmp = new ArrayList(new uint[] { 
 					1,                                  // revision
 					handler[className],                 // classname
 					0, 0,                               // classinfo
-					signals.Count + slots.Count, 10,  // methods
+					(uint)(signals.Count + slots.Count), 10,  // methods
 					0, 0,                               // properties
 					0, 0
 				});
@@ -162,18 +161,22 @@ namespace Qt
 				foreach (string entry in slots)
 					AddMethod(tmp, entry, MethodFlags.MethodSlot | MethodFlags.AccessPublic);
 				
-				tmp.Add(0);
+				tmp.Add((uint)0);
 				
 				stringdata = handler.GetStringData();
-				data = new int[tmp.Count];
+				data = new uint[tmp.Count];
 				tmp.CopyTo(data);
+/*				for (int i = 0; i < tmp.Count; i++) {
+					Console.WriteLine("copying {0} => {1}", i, tmp[i]);
+					data[i] = (uint)tmp[i];
+				}*/
 			}
 		
 			public byte[] StringData {
 				get { return stringdata; }
 			}
 			
-			public int[] Data {
+			public uint[] Data {
 				get { return data; }
 			}
 		}
@@ -201,8 +204,10 @@ namespace Qt
 			
 			unsafe {
 				fixed (byte* stringdata = metaData.StringData)
-				fixed (int* data = metaData.Data) {
-					metaObject = make_metaObject((IntPtr)objHandle, (IntPtr)stringdata, (IntPtr)data);
+				fixed (uint* data = metaData.Data) {
+					metaObject = make_metaObject((IntPtr)objHandle, 
+												 (IntPtr)stringdata, metaData.StringData.Length,
+												 (IntPtr)data, metaData.Data.Length);
 				}
 			}
       
@@ -233,18 +238,8 @@ namespace Qt
 					res = MakeMetaObject(t, o);
 					metaObjects[t.ToString()] = res;
 				}
-				IntPtr resPtr = (IntPtr) GCHandle.Alloc(res);
 				return res;
 			}
-		}
-		
-		private static bool QyotoMetaCall(QObject target, QMetaObject.Call _c, int _id, IntPtr _o) {
-#if DEBUG
-			Console.WriteLine("QyotoMetaCall: target => {0}, call => {1}, id => {2}", target, _c, _id);
-#endif
-			IntPtr targetPtr = (IntPtr) GCHandle.Alloc(target);
-			qt_metacall(targetPtr, (int)_c, _id, _o);
-			return true;
 		}
 	}
 	

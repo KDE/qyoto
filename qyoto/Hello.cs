@@ -17,7 +17,6 @@ class Test : Qt.Qt {
 		}
 		
 		public override QMetaObject MetaObject() {
-			Console.WriteLine("inside MyWidget.MetaObject");
 			return Qyoto.GetMetaObject(this);
 		}
 		

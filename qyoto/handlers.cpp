@@ -777,7 +777,7 @@ TypeHandler Qt_handlers[] = {
     { "int*", marshall_intR },
     { "char*", marshall_charP },
     { "char**", marshall_charP_array },
-    { "void**", marshall_voidP_array },
+//    { "void**", marshall_voidP_array },
 
     { 0, 0 }
 };

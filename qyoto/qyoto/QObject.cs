@@ -9,6 +9,14 @@ namespace Qt {
 	/// See <see cref="IQObjectSignals"></see> for signals emitted by QObject
 	[SmokeClass("QObject")]
 	public class QObject : MarshalByRefObject, IDisposable {
+		public string SIGNAL(string sig) {
+			return Qt.SIGNAL(sig);
+		}
+		
+		public string SLOT(string sig) {
+			return Qt.SLOT(sig);
+		}
+	
 		protected Object _interceptor = null;
  
 		private IntPtr _smokeObject;

@@ -1,3 +1,15 @@
+2006-05-31  Paolo Capriotti  <paolo.capriotti@gmail.com>
+
+	* Avoided some useless method calls to handle qt_metacall
+	  (removed InvokeMetaCallMethod and QyotoMetaCall)
+	* Fixed QMetaObject creation
+		* data and stringdata are now copied in C++ code to prevent 
+		  garbage collection.
+		* Changed data in QMetaObject to an array of uint instead of int.
+	* Removed the void** marshaller since it was unneeded.
+	* Partially implemented custom slot invocation.
+	* Added tutorial 7 (doesn't work yet).
+
 2006-05-31  Richard Dale  <rdale@foton.es>
 
 	* Moved the tutorial examples to examples/tutorial

@@ -70,9 +70,9 @@ static FromIntPtr UnmapPointer;
 static GetIntPtr GetPointerObject;
 
 static OverridenMethodFn OverridenMethod;
-static InvokeMetaCallMethodFn InvokeMetaCallMethod;
 static InvokeMethodFn InvokeMethod;
 static CreateInstanceFn CreateInstance;
+static InvokeCustomSlotFn InvokeCustomSlot;
 
 // Maps from a classname in the form Qt::Widget to an int id
 QHash<int,char *> classname;
@@ -83,6 +83,7 @@ extern void * set_obj_info(const char * className, smokeqyoto_object * o);
 
 extern bool isDerivedFromByName(Smoke *smoke, const char *className, const char *baseClassName);
 extern void mapPointer(void * obj, smokeqyoto_object *o, Smoke::Index classId, void *lastptr);
+extern "C" int qt_metacall(void* obj, int _c, int _id, void* _o);
 
 extern TypeHandler Qt_handlers[];
 void install_handlers(TypeHandler *);
@@ -663,7 +664,8 @@ public:
 	void invokeSlot() {
 		if (_called) return;
 		_called = true;
-		printf("invoking slot");
+		printf("invoking slot %s\n", _slotname);
+		(*InvokeCustomSlot)(_obj, _slotname, _stack);
 	}
 
 	void next() {
@@ -691,7 +693,7 @@ public:
 	~InvokeSlot() {
 		delete[] _stack;
 		delete[] _sp;
-		(*FreeGCHandle)(_obj);
+// 		(*FreeGCHandle)(_obj);
 	}
 };
 
@@ -748,8 +750,12 @@ public:
 		}
 		
 		if (strcmp(signature, "qt_metacall(QMetaObject::Call, int, void**)") == 0) {
-			printf("obj = %d, args = %d\n", obj, args);
-			return (*InvokeMetaCallMethod)(obj, args);
+			QMetaObject::Call _c = (QMetaObject::Call)args[1].s_int;
+			int _id = args[2].s_int;
+			void** _o = (void**)args[3].s_voidp;
+			
+			args[0].s_int = qt_metacall(obj, _c, _id, _o);
+			return true;
 		}
 		
 		void * overridenMethod = (*OverridenMethod)(obj, (const char *) signature);
@@ -845,12 +851,6 @@ AddOverridenMethod(OverridenMethodFn callback)
 	OverridenMethod = callback;
 }
 
-void
-AddInvokeMetaCallMethod(InvokeMetaCallMethodFn callback)
-{
-	InvokeMetaCallMethod = callback;
-}
-
 void 
 AddInvokeMethod(InvokeMethodFn callback)
 {
@@ -861,6 +861,12 @@ void
 AddCreateInstance(CreateInstanceFn callback)
 {
 	CreateInstance = callback;
+}
+
+void
+AddInvokeCustomSlot(InvokeCustomSlotFn callback)
+{
+	InvokeCustomSlot = callback;
 }
 
 void
@@ -912,16 +918,16 @@ GetMocArgumentsNumber(QString member, int& number)
 	}
 
 	QString argStr = rx1.cap(1);
-//	printf("argStr: %s\n", argStr.latin1());
+//	printf("argStr: %s\n", (const char*)argStr.toLatin1());
 	QStringList args = argStr.split(",");
-	number = args.size();
+	number = args.size() - 1;
 	MocArgument * mocargs = new MocArgument[number + 1];
 	int i = 0;
 	for (QStringList::Iterator it = args.begin(); it != args.end(); ++it) {
 		QString a = (*it);
 		a.replace(QRegExp("^const\\s+"), "");
 		a = (rx2.indexIn(a) == -1) ? "ptr" : rx2.cap(1);
-//		printf("arg: %s a: %s\n", (*it).latin1(), a.latin1());
+//		printf("arg: %s a: %s\n", (const char*)(*it).toLatin1(), (const char*)a.toLatin1());
 		QByteArray name = (*it).toLatin1();
 		QByteArray static_type = a.toLatin1();
 		bool valid = setMocType(mocargs, i, name.constData(), static_type.constData());
@@ -965,7 +971,6 @@ SignalEmit(char * signature, void * obj, Smoke::StackItem * sp, int items)
 			break;
 	}
 	
-	printf("emitting signal %d\n", i);
 	EmitSignal signal(qobj, i, items, args, sp);
 	signal.next();
 
@@ -977,7 +982,7 @@ SignalEmit(char * signature, void * obj, Smoke::StackItem * sp, int items)
 }
 
 
-void* make_metaObject(void* obj, const char* stringdata, const uint* data) {	
+void* make_metaObject(void* obj, const char* stringdata, int stringdata_count, const uint* data, int data_count) {
 	smokeqyoto_object* o = value_obj_info(obj);
 	Smoke::Index nameId = o->smoke->idMethodName("metaObject");
 	Smoke::Index meth = o->smoke->findMethod(o->classId, nameId);
@@ -993,11 +998,17 @@ void* make_metaObject(void* obj, const char* stringdata, const uint* data) {
 	
 	QMetaObject* parent = (QMetaObject*) i[0].s_voidp;
 	
+	char* my_stringdata = new char[stringdata_count];
+	memcpy(my_stringdata, stringdata, stringdata_count * sizeof(char));
+	
+	uint* my_data = new uint[data_count];
+	memcpy(my_data, data, data_count * sizeof(uint));
+	
 	// create a QMetaObject on the stack
 	QMetaObject tmp = {{
 		parent,
-		stringdata,
-		data,
+		my_stringdata,
+		my_data,
 		0
 	}};
 	
@@ -1015,18 +1026,17 @@ void* make_metaObject(void* obj, const char* stringdata, const uint* data) {
 	return set_obj_info("Qt.QMetaObject", m);
 }
 
+
 int qt_metacall(void* obj, int _c, int _id, void* _o) {
 	// get obj metaobject with a virtual call
-	smokeqyoto_object *o = value_obj_info(obj);
+	smokeqyoto_object* o = value_obj_info(obj);
     QObject *qobj = (QObject*)o->ptr;
 	const QMetaObject *metaobject = qobj->metaObject();
 	
 	// get method count and offset
 	int count = metaobject->methodCount();
 	int offset = metaobject->methodOffset();
-
-//	printf("_id = %d, count = %d, offset = %d\n", _id, count, offset);
-
+	
 	// if id < offset call base version
 	if (_id < offset) {
 		// Assume the target slot is a C++ one
@@ -1056,15 +1066,15 @@ int qt_metacall(void* obj, int _c, int _id, void* _o) {
 	// retrieve method signature from id
 	QMetaMethod method = metaobject->method(_id);
 	QString name(method.signature());
-	name.replace(QRegExp("\\(.*"), "");
 		
 	int items;
-	MocArgument* mocArgs = GetMocArgumentsNumber(method.signature(), items);
+	MocArgument* mocArgs = GetMocArgumentsNumber(name, items);
 	
 	// invoke slot
 	InvokeSlot slot(obj, (const char*)name.toLatin1(), items, mocArgs, (void**)_o);
 	slot.next();
 	
+	delete mocArgs;
 	return _id - (count - offset);
 }
 

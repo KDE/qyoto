@@ -58,9 +58,9 @@ typedef void (*FromIntPtr)(void *);
 typedef void* (*GetIntPtrFromCharStar)(char *);
 typedef char* (*GetCharStarFromIntPtr)(void *);
 typedef void* (*OverridenMethodFn)(void *, const char *);
-typedef void* (*InvokeMetaCallMethodFn)(void*, void*);
 typedef void (*InvokeMethodFn)(void *, void *, void *);
 typedef void* (*CreateInstanceFn)(const char *);
+typedef void (*InvokeCustomSlotFn)(void*, const char*, void*);
 
 extern FromIntPtr FreeGCHandle;
 

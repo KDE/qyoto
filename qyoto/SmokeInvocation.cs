@@ -66,10 +66,10 @@ namespace Qt {
 		delegate void SetIntPtr(IntPtr instance, IntPtr ptr);
 		delegate void FromIntPtr(IntPtr ptr);
 		delegate IntPtr CreateInstanceFn(string className);
+		delegate void InvokeCustomSlotFn(IntPtr obj, string slot, IntPtr stack);
 		delegate IntPtr GetIntPtrFromString(string str);
 		delegate string GetStringFromIntPtr(IntPtr ptr);
 		delegate IntPtr OverridenMethodFn(IntPtr instance, string method);
-		delegate bool InvokeMetaCallMethodFn(IntPtr instance, IntPtr stack);
 		delegate void InvokeMethodFn(IntPtr instance, IntPtr method, IntPtr args);
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
@@ -101,7 +101,10 @@ namespace Qt {
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern void AddCreateInstance(CreateInstanceFn callback);
-
+		
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		static extern void AddInvokeCustomSlot(InvokeCustomSlotFn callback);
+		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern void AddIntPtrToCharStarStar(GetIntPtr callback);
 		
@@ -121,10 +124,10 @@ namespace Qt {
 		static extern void AddOverridenMethod(OverridenMethodFn callback);
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		static extern void AddInvokeMetaCallMethod(InvokeMetaCallMethodFn callback);
-
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern void AddInvokeMethod(InvokeMethodFn callback);
+		
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		static extern int qt_metacall(IntPtr obj, int _c, int _id, IntPtr a);
 		
 		static void FreeGCHandle(IntPtr handle) {
 			((GCHandle) handle).Free();
@@ -415,17 +418,21 @@ namespace Qt {
 			return;
 		}
 
-		static bool InvokeMetaCallMethod(IntPtr instance, IntPtr stack) {
-			object target = ((GCHandle) instance).Target;
-			unsafe {
-				StackItem * stackPtr = (StackItem *) stack;
-				object call = (QMetaObject.Call)stackPtr[1].s_int;
-				object id = stackPtr[2].s_int;
-				object args = (IntPtr)stackPtr[3].s_voidp;
-				
-				
-				return (bool)metacallMethod.Invoke(null, new object[] { target, call, id, args });
+		static public void InvokeCustomSlot(IntPtr obj, string slotname, IntPtr stack) {
+			QObject qobj = (QObject) ((GCHandle)obj).Target;
+			string className = qobj.GetType().ToString();
+			Console.WriteLine("handling slot {0} for class {1}", slotname, qobj.GetType());
+			Hashtable slotTable = (Hashtable)Qyoto.classes[className];
+			if (slotTable == null) {
+				slotTable = Qyoto.GetSlotSignatures(qobj.GetType());
 			}
+			MethodInfo slot = (MethodInfo)slotTable[slotname];
+			if (slot == null) {
+				// should not happen
+				Console.WriteLine("** Could not retrieve slot {0}::{1} info **", className, slotname);
+			}
+			
+			slot.Invoke(qobj, new object[] { });
 		}
 
 		static private FromIntPtr freeGCHandle = new FromIntPtr(FreeGCHandle);
@@ -444,10 +451,10 @@ namespace Qt {
 		static private GetIntPtr intPtrFromQString = new GetIntPtr(IntPtrFromQString);
 		
 		static private OverridenMethodFn overridenMethod = new OverridenMethodFn(OverridenMethod);
-		static private InvokeMetaCallMethodFn invokeMetaCallMethod = new InvokeMetaCallMethodFn(InvokeMetaCallMethod);
 		static private InvokeMethodFn invokeMethod = new InvokeMethodFn(InvokeMethod);
 
 		static private CreateInstanceFn createInstance = new CreateInstanceFn(CreateInstance);
+		static private InvokeCustomSlotFn invokeCustomSlot = new InvokeCustomSlotFn(InvokeCustomSlot);
 		
 		static SmokeInvocation() {
 			AddFreeGCHandle(freeGCHandle);
@@ -466,10 +473,10 @@ namespace Qt {
 			AddIntPtrFromQString(intPtrFromQString);
 
 			AddOverridenMethod(overridenMethod);
-			AddInvokeMetaCallMethod(invokeMetaCallMethod);
 			AddInvokeMethod(invokeMethod);
 
 			AddCreateInstance(createInstance);
+			AddInvokeCustomSlot(invokeCustomSlot);
 		}
 		
 		private Type	_classToProxy;
