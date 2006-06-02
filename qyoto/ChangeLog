@@ -1,3 +1,7 @@
+2006-06-02  Richard Dale  <rdale@foton.es>
+
+	* Fixed bug when emitting signals for pointer arg types
+
 2006-05-31  Paolo Capriotti  <paolo.capriotti@gmail.com>
 
 	* Avoided some useless method calls to handle qt_metacall

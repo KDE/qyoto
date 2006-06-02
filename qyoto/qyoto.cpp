@@ -527,7 +527,11 @@ public:
 			break;
 		      case Smoke::t_class:
 		      case Smoke::t_voidp:
-			p = si->s_voidp;
+				if (strchr(t.name(), '*') != 0) {
+					p = &si->s_voidp;
+				} else {
+					p = si->s_voidp;
+				}
 			break;
 		      default:
 			p = 0;
