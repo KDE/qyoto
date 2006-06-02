@@ -891,24 +891,42 @@ CallSmokeMethod(int methodId, void * obj, Smoke::StackItem * sp, int items)
 }
 
 static bool
-setMocType(MocArgument *arg, int idx, const char * name, const char * static_type)
+setMocType(MocArgument *arg, int idx, const char * name_value, const char * static_type)
 {
-    Smoke::Index typeId = qt_Smoke->idType(name);
-    if(!typeId) return false;
-    arg[idx].st.set(qt_Smoke, typeId);
-    if(strcmp(static_type, "ptr") == 0)
-	arg[idx].argType = xmoc_ptr;
-    else if(strcmp(static_type, "bool") == 0)
-	arg[idx].argType = xmoc_bool;
-    else if(strcmp(static_type, "int") == 0)
-	arg[idx].argType = xmoc_int;
-    else if(strcmp(static_type, "double") == 0)
-	arg[idx].argType = xmoc_double;
-    else if(strcmp(static_type, "char*") == 0)
-	arg[idx].argType = xmoc_charstar;
-    else if(strcmp(static_type, "QString") == 0)
-	arg[idx].argType = xmoc_QString;
-    return true;
+	QByteArray name(name_value);
+	Smoke::Index typeId = 0;
+
+	if (strcmp(static_type, "ptr") == 0) {
+		arg[idx].argType = xmoc_ptr;
+		typeId = qt_Smoke->idType((const char *) name);
+		if (typeId == 0 && !name.contains('*')) {
+			name += "&";
+			typeId = qt_Smoke->idType((const char *) name);
+		}
+	} else if (strcmp(static_type, "bool") == 0) {
+		arg[idx].argType = xmoc_bool;
+		typeId = qt_Smoke->idType((const char *) name);
+	} else if (strcmp(static_type, "int") == 0) {
+		arg[idx].argType = xmoc_int;
+		typeId = qt_Smoke->idType((const char *) name);
+	} else if (strcmp(static_type, "double") == 0) {
+		arg[idx].argType = xmoc_double;
+		typeId = qt_Smoke->idType((const char *) name);
+	} else if (strcmp(static_type, "char*") == 0) {
+		arg[idx].argType = xmoc_charstar;
+		typeId = qt_Smoke->idType((const char *) name);
+	} else if (strcmp(static_type, "QString") == 0) {
+		arg[idx].argType = xmoc_QString;
+		name += "*";
+		typeId = qt_Smoke->idType((const char *) name);
+	}
+
+	if (typeId == 0) {
+		return false;
+	}
+
+	arg[idx].st.set(qt_Smoke, typeId);
+	return true;
 }
 
 MocArgument *
