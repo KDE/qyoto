@@ -1,5 +1,9 @@
 2006-06-02  Richard Dale  <rdale@foton.es>
 
+	* Invocations of signals via the qt_metacall() C function
+	  are now special cased, and QMetaObject::activate() is used
+	  to call them. C# slots are still invoked via the InvokeSlot
+	  class.
 	* Fixed bug when emitting signals for pointer arg types
 	* setMocType() now works with reference types when there
 	  in no corresponding value type in the Smoke lib.

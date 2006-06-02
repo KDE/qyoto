@@ -1108,6 +1108,11 @@ int qt_metacall(void* obj, int _c, int _id, void* _o) {
 	QMetaMethod method = metaobject->method(_id);
 	QString name(method.signature());
 		
+	if (method.methodType() == QMetaMethod::Signal) {
+		metaobject->activate(qobj, _id, (void**) _o);
+		return _id - (count - offset);
+	}
+
 	int items;
 	MocArgument* mocArgs = GetMocArgumentsNumber(name, items);
 	
