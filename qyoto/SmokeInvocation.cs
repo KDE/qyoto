@@ -17,9 +17,9 @@
 
 //#define DEBUG
 
-namespace Qt {
+namespace Qyoto {
 
-	using Qt;
+	using Qyoto;
 	
 	using System;
 	using System.Collections;

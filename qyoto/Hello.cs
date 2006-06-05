@@ -1,34 +1,29 @@
-using Qt;
+using Qyoto;
 using System;
 
-class Test : Qt.Qt {
+class Test {
 	class MyWidget : QWidget {
 		public MyWidget() : base((QWidget)null) {
 			QPushButton quit = new QPushButton("quit", this);
-			Connect(quit, SIGNAL("clicked()"), qApp, SLOT("quit()"));
+			Connect(quit, Qt.SIGNAL("clicked()"), Qt.qApp, Qt.SLOT("quit()"));
 			
-			QPushButton test = new QPushButton("test", this);
-			Connect(test, SIGNAL("clicked()"), this, SLOT("test()"));
+			QPushButton mytest = new QPushButton("test", this);
+			Connect(mytest, Qt.SIGNAL("clicked()"), this, Qt.SLOT("test()"));
 			
 			QVBoxLayout layout = new QVBoxLayout();
 			layout.AddWidget(quit);
-			layout.AddWidget(test);
+			layout.AddWidget(mytest);
 			SetLayout(layout);
-		}
-		
-		public override QMetaObject MetaObject() {
-			return Qyoto.GetMetaObject(this);
 		}
 		
 		[Q_SLOT("test()")]
 		public void test() {
 			Console.WriteLine("************ IT WORKS **************");
 		}
-
 	}
 
 	public static void Main(string[] args) {
-		QApplication app = new QApplication(args);
+		new QApplication(args);
 		MyWidget main = new MyWidget();
 		main.Show();
 		QApplication.Exec();

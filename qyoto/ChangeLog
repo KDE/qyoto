@@ -1,3 +1,13 @@
+2006-06-05  Richard Dale  <rdale@foton.es>
+
+	* The Qyoto classes are now in a namespace called 'Qyoto' rather
+	  than 'Qt'. It would probably be best to make QObject.cs a sub
+	  class of Qt, to avoid needed to prefix SLOT() and SIGNAL() with
+	  'Qt.' in QObject subclasses.
+	* Added QObject.MetaObject() as specified by Paolo for custom slots
+	  and signals.
+	* Fixed the 'Hello.cs' example to work with the new namespace
+
 2006-06-02  Richard Dale  <rdale@foton.es>
 
 	* Invocations of signals via the qt_metacall() C function

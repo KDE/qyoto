@@ -1,4 +1,4 @@
-namespace Qt
+namespace Qyoto
 {
 	using System;
 	using System.Collections;
