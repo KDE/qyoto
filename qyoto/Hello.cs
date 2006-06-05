@@ -5,10 +5,10 @@ class Test {
 	class MyWidget : QWidget {
 		public MyWidget() : base((QWidget)null) {
 			QPushButton quit = new QPushButton("quit", this);
-			Connect(quit, Qt.SIGNAL("clicked()"), Qt.qApp, Qt.SLOT("quit()"));
+			Connect(quit, SIGNAL("clicked()"), qApp, SLOT("quit()"));
 			
 			QPushButton mytest = new QPushButton("test", this);
-			Connect(mytest, Qt.SIGNAL("clicked()"), this, Qt.SLOT("test()"));
+			Connect(mytest, SIGNAL("clicked()"), this, SLOT("test()"));
 			
 			QVBoxLayout layout = new QVBoxLayout();
 			layout.AddWidget(quit);

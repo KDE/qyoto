@@ -1,5 +1,7 @@
 2006-06-05  Richard Dale  <rdale@foton.es>
 
+	* QObject is now a subclass of Qt, as suggested in the previous
+	  commit.
 	* The Qyoto classes are now in a namespace called 'Qyoto' rather
 	  than 'Qt'. It would probably be best to make QObject.cs a sub
 	  class of Qt, to avoid needed to prefix SLOT() and SIGNAL() with
