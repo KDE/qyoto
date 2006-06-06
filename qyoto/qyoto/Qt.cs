@@ -4,7 +4,7 @@ namespace Qyoto {
 	using System;
 	using System.Text;
 
-	public class Qt {
+	public class Qt : MarshalByRefObject {
 		protected Object _interceptor = null;
 		interface IQtProxy {
 			bool MightBeRichText(string arg1);

@@ -1,3 +1,9 @@
+2006-06-06  Richard Dale  <rdale@foton.es>
+
+	* The Qt class needs to be a MarshallByRefObject instance for
+	  transparent proxies to work with its subclasses
+	* Added a Q_CLASSINFO attribute
+
 2006-06-05  Richard Dale  <rdale@foton.es>
 
 	* QObject is now a subclass of Qt, as suggested in the previous
