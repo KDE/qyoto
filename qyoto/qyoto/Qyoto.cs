@@ -280,6 +280,36 @@ namespace Qyoto
 			this.signature = signature;
 		}
 	}
+	
+	[AttributeUsage( AttributeTargets.Class )]
+	class Q_CLASSINFO : Attribute
+	{
+		public string name;
+	
+		public string Name
+		{
+			get
+			{
+				return name;
+			}
+		}
+
+		public string value;
+	
+		public string Value
+		{
+			get
+			{
+				return value;
+			}
+		}
+	
+		public Q_CLASSINFO(string name, string value)
+		{
+			this.name = name;
+			this.value = value;
+		}
+	}
 
 	[AttributeUsage( AttributeTargets.Method )]
 	public class Q_SIGNAL : Attribute
@@ -316,6 +346,14 @@ namespace Qyoto
 		public Q_SLOT(string signature)
 		{
 			this.signature = signature;
+		}
+	}
+
+	[AttributeUsage( AttributeTargets.Method )]
+	public class Q_SCRIPTABLE : Attribute
+	{
+		public Q_SCRIPTABLE()
+		{
 		}
 	}
 }

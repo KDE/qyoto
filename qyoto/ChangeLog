@@ -1,8 +1,9 @@
 2006-06-06  Richard Dale  <rdale@foton.es>
 
+	* Added a Q_SCRIPTABLE attribute for dbus support
 	* The Qt class needs to be a MarshallByRefObject instance for
 	  transparent proxies to work with its subclasses
-	* Added a Q_CLASSINFO attribute
+	* Added a Q_CLASSINFO attribute for dbus support
 
 2006-06-05  Richard Dale  <rdale@foton.es>
 
