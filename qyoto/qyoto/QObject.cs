@@ -9,6 +9,8 @@ namespace Qyoto {
 	/// See <see cref="IQObjectSignals"></see> for signals emitted by QObject
 	[SmokeClass("QObject")]
 	public class QObject : Qt {
+		private IntPtr _smokeObject;
+		
 		protected QObject(Type dummy) {
 			try {
 				Type proxyInterface = Qyoto.GetSignalsInterface(GetType());

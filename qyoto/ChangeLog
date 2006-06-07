@@ -1,3 +1,8 @@
+2006-06-07  Paolo Capriotti  <paolo.capriotti@gmail.com>
+
+	* Changed all occurences of Qt namespace to Qyoto in qyoto.cpp
+	* Restored the _smokeObject field in QObject.
+
 2006-06-06  Richard Dale  <rdale@foton.es>
 
 	* Added a Q_SCRIPTABLE attribute for dbus support

@@ -1064,7 +1064,7 @@ void* make_metaObject(void* obj, const char* stringdata, int stringdata_count, c
 	m->ptr = meta;
 	
 	// create wrapper C# instance
-	return set_obj_info("Qt.QMetaObject", m);
+	return set_obj_info("Qyoto.QMetaObject", m);
 }
 
 
@@ -1130,7 +1130,7 @@ Init_qyoto()
     init_qt_Smoke();
     qt_Smoke->binding = new QyotoSmokeBinding(qt_Smoke);
     install_handlers(Qt_handlers);
-    QString classPrefix("Qt.");
+    QString classPrefix("Qyoto.");
     QString className;
     QByteArray classStringName;
 
