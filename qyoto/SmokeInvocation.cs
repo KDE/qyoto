@@ -259,7 +259,7 @@ namespace Qyoto {
 		// reflection.
 		static private Hashtable overridenMethods = new Hashtable();
 		static private MethodInfo metacallMethod = typeof(Qyoto).GetMethod("QyotoMetaCall", BindingFlags.Static | BindingFlags.NonPublic);
-		static private MethodInfo metaObjectMethod = typeof(QObject).GetMethod("MetaCall", BindingFlags.Instance | BindingFlags.Public);
+		static private MethodInfo metaObjectMethod = typeof(QObject).GetMethod("MetaObject", BindingFlags.Instance | BindingFlags.Public);
 		
 		static void AddOverridenMethods(Type klass) {
 			object[] attributes = klass.GetCustomAttributes(typeof(SmokeClass), false);
