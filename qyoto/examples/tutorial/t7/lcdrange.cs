@@ -1,7 +1,9 @@
-using Qt;
+using Qyoto;
 
 class LCDRange : QWidget {
 	private QSlider slider;
+
+	public LCDRange() : this((QWidget) null) {}
 
 	public LCDRange(QWidget parent) : base(parent) {
 		QLCDNumber lcd = new QLCDNumber(2);
@@ -27,15 +29,19 @@ class LCDRange : QWidget {
 		return slider.Value();
 	}
 	
-	[Q_SLOT("void setValue(int)")]
+	[Q_SLOT("setValue(int)")]
 	public void SetValue(int value) {
 		slider.SetValue(value);
 	}
 	
-	[Q_SIGNAL("void valueChanged(int)")]
-	public void ValueChanged(int newValue) { }
-	
-	
+	protected new ILCDRangeSignals Emit() {
+		return (ILCDRangeSignals) Q_EMIT;
+	}
+}
+
+public interface ILCDRangeSignals : IQWidgetSignals {
+	[Q_SIGNAL("valueChanged(int)")]
+	void ValueChanged(int newValue);
 }
 
 class MyWidget : QWidget {
@@ -69,4 +75,10 @@ class MyWidget : QWidget {
 		main.Show();
 		QApplication.Exec();
 	}
+	protected new IMyWidgetSignals Emit() {
+		return (IMyWidgetSignals) Q_EMIT;
+	}
+}
+
+public interface IMyWidgetSignals : IQWidgetSignals {
 }

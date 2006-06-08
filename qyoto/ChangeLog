@@ -1,3 +1,13 @@
+2006-06-08  Richard Dale  <rdale@foton.es>
+
+	* Example t7 now works, which means that both custom slots
+	  slots and signals work.
+	* At present an Emit() method and signals interface is
+	  needed for classes which don't have any custom signals
+	* The example wasn't working because the slots and signals
+	  had return types of 'void', and slot/signal return values
+	  haven't been implemented yet.
+
 2006-06-08  Paolo Capriotti  <paolo.capriotti@gmail.com>
 
 	* The overriden MetaObject is now called in place

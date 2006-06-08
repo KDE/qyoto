@@ -58,18 +58,22 @@ namespace Qyoto
 		}
 		
 		public static string[] GetSignalSignatures(Type t) {
+			if (IsSmokeClass(t)) {
+				return new string[0];
+			}
+
 			Type iface;
 			try {
 				iface = GetSignalsInterface(t);
 			}
 			catch {
-				return null;
+				return new string[0];
 			}
 			MethodInfo[] mis = iface.GetMethods();
 			
 			/// the interface has no signals...
 			if (mis.Length == 0)
-				return null;
+				return new string[0];
 				
 			string[] signatures = new string[mis.Length];
 			int i = 0;
