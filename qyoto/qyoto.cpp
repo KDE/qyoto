@@ -1121,7 +1121,7 @@ int qt_metacall(void* obj, int _c, int _id, void* _o) {
 	slot.next();
 	
 	delete mocArgs;
-	return _id - (count - offset);
+	return _id - count;
 }
 
 void
