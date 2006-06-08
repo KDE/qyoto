@@ -1,3 +1,13 @@
+2006-06-08  Paolo Capriotti  <paolo.capriotti@gmail.com>
+
+	* The overriden MetaObject is now called in place
+	  of the qt version.
+	* make_metaObject didn't create the parent meta object
+	  correctly. Modified it so that it calls the parent version
+	  of metaObject().
+	* Slot arguments are now handled correctly.
+	* Added static IsSmokeClass method to Qyoto.
+
 2006-06-08  Richard Dale  <rdale@foton.es>
 
 	* Added the QtDBus classes

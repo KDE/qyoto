@@ -1,3 +1,5 @@
+// #define DEBUG
+
 namespace Qyoto
 {
 	using System;
@@ -15,12 +17,23 @@ namespace Qyoto
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern IntPtr make_metaObject(IntPtr parent, IntPtr stringdata, int stringdataCount, 
 											 IntPtr data, int dataCount);
+											 
       
 		/// This Hashtable contains a list of classes with their Hashtables for slots. The class name is the key, the slot-hashtable the value.
 		public static Hashtable classes = new Hashtable();
     
 		/// This hashtable has classe names as keys, and QMetaObjects as values
 		static Hashtable metaObjects = new Hashtable();
+		
+		public static bool IsSmokeClass(Type t) {
+			object[] attr = t.GetCustomAttributes(typeof(SmokeClass), false);
+			return attr.Length > 0;
+		}
+		
+		public static bool IsSmokeClass(IntPtr obj) {
+			object qobj = ((GCHandle) obj).Target;
+			return IsSmokeClass(qobj.GetType());
+		}
 		
 		public static Hashtable GetSlotSignatures(Type t) {
 			Console.WriteLine("creating slots for {0}", t);
@@ -217,36 +230,29 @@ namespace Qyoto
     
 		public static QMetaObject GetMetaObject(QObject o) {
 			Type t = o.GetType();
-			object[] attr = t.GetCustomAttributes(typeof(SmokeClass), false);
-			if (attr.Length > 0) {
-				// qt class: simply call the MetaObject method
-				MethodInfo metaObjectMethod = t.GetMethod("MetaObject", BindingFlags.Public | BindingFlags.Instance);
-				if (metaObjectMethod == null) {
-					// this should never happen
-					Console.WriteLine("** Cannot find MetaObject method **");
-					return null;
-				}
-				else {
-					return (QMetaObject)metaObjectMethod.Invoke(o, new object[] {});
-				}
+#if DEBUG
+			Console.WriteLine("ENTER GetMetaObject t => {0}", t);
+#endif
+			
+			QMetaObject res = (QMetaObject)metaObjects[t.ToString()];
+			if (res == null) {
+				// create QMetaObject
+				res = MakeMetaObject(t, o);
+				metaObjects[t.ToString()] = res;
 			}
-			else {
-				// user defined class: retrieve QMetaObject from the hashtable
-				QMetaObject res = (QMetaObject)metaObjects[t.ToString()];
-				if (res == null) {
-					// create QMetaObject
-					res = MakeMetaObject(t, o);
-					metaObjects[t.ToString()] = res;
-				}
-				return res;
-			}
+	
+#if DEBUG
+			Console.WriteLine("LEAVE GetMetaObject");
+#endif
+
+			return res;
 		}
 	}
 	
 	[AttributeUsage( AttributeTargets.Class )]
 	class SmokeClass : Attribute
 	{
-		public string signature;
+		public string signature;	
 	
 		public string Signature
 		{

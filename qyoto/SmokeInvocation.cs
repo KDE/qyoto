@@ -15,7 +15,7 @@
  *                                                                         *
  ***************************************************************************/
 
-//#define DEBUG
+// #define DEBUG
 
 namespace Qyoto {
 
@@ -67,6 +67,7 @@ namespace Qyoto {
 		delegate void FromIntPtr(IntPtr ptr);
 		delegate IntPtr CreateInstanceFn(string className);
 		delegate void InvokeCustomSlotFn(IntPtr obj, string slot, IntPtr stack);
+		delegate bool IsSmokeClassFn(IntPtr obj);
 		delegate IntPtr GetIntPtrFromString(string str);
 		delegate string GetStringFromIntPtr(IntPtr ptr);
 		delegate IntPtr OverridenMethodFn(IntPtr instance, string method);
@@ -104,6 +105,9 @@ namespace Qyoto {
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern void AddInvokeCustomSlot(InvokeCustomSlotFn callback);
+		
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		static extern bool AddIsSmokeClass(IsSmokeClassFn callback);
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern void AddIntPtrToCharStarStar(GetIntPtr callback);
@@ -275,9 +279,6 @@ namespace Qyoto {
 
 			methodsHash = new Hashtable();
 			overridenMethods[instanceType] = methodsHash;
-
-			// add MetaObject to the hashtable
-			methodsHash["metaObject() const"] = metaObjectMethod;
 			
 			do {
 				MemberInfo[] methods = klass.FindMembers(	MemberTypes.Method,
@@ -325,6 +326,9 @@ namespace Qyoto {
 		static IntPtr OverridenMethod(IntPtr instance, string method) {
 			object temp = ((GCHandle) instance).Target;
 			string instanceType = temp.ToString();
+
+			if (method == "metaObject() const")
+				return (IntPtr)GCHandle.Alloc(metaObjectMethod);
 
 			Hashtable methods = (Hashtable) overridenMethods[instanceType];
 			if (methods == null) {
@@ -421,7 +425,9 @@ namespace Qyoto {
 		static public void InvokeCustomSlot(IntPtr obj, string slotname, IntPtr stack) {
 			QObject qobj = (QObject) ((GCHandle)obj).Target;
 			string className = qobj.GetType().ToString();
+#if DEBUG
 			Console.WriteLine("handling slot {0} for class {1}", slotname, qobj.GetType());
+#endif
 			Hashtable slotTable = (Hashtable)Qyoto.classes[className];
 			if (slotTable == null) {
 				slotTable = Qyoto.GetSlotSignatures(qobj.GetType());
@@ -431,8 +437,45 @@ namespace Qyoto {
 				// should not happen
 				Console.WriteLine("** Could not retrieve slot {0}::{1} info **", className, slotname);
 			}
+		
+			ParameterInfo[] parameters = slot.GetParameters();
+			object[] args = new object[parameters.Length];
+			unsafe {
+				StackItem* stackPtr = (StackItem*) stack;
+				for (int i = 0; i < args.Length; i++) {
+					if (parameters[i].ParameterType == typeof(bool)) {
+						args[i] = stackPtr[i].s_bool;
+					} else if (parameters[i].ParameterType == typeof(sbyte)) {
+						args[i] = stackPtr[i].s_char;
+					} else if (parameters[i].ParameterType == typeof(byte)) {
+						args[i] = stackPtr[i].s_uchar;
+					} else if (parameters[i].ParameterType == typeof(short)) {
+						args[i] = stackPtr[i].s_short;
+					} else if (parameters[i].ParameterType == typeof(ushort)) {
+						args[i] = stackPtr[i].s_ushort;
+					} else if (	parameters[i].ParameterType == typeof(int) 
+								|| parameters[i].ParameterType.IsEnum ) 
+					{
+						args[i] = stackPtr[i].s_int;
+					} else if (parameters[i].ParameterType == typeof(uint)) {
+						args[i] = stackPtr[i].s_uint;
+					} else if (parameters[i].ParameterType == typeof(long)) {
+						args[i] = stackPtr[i].s_long;
+					} else if (parameters[i].ParameterType == typeof(ulong)) {
+						args[i] = stackPtr[i].s_ulong;
+					} else if (parameters[i].ParameterType == typeof(float)) {
+						args[i] = stackPtr[i].s_float;
+					} else if (parameters[i].ParameterType == typeof(double)) {
+						args[i] = stackPtr[i].s_double;
+					} else if (parameters[i].ParameterType == typeof(string)) {
+						args[i] = (string) ((GCHandle) stackPtr[i].s_class).Target;
+					} else {
+						args[i] = ((GCHandle) stackPtr[i].s_class).Target;
+					}
+				}
+			}
 			
-			slot.Invoke(qobj, new object[] { });
+			slot.Invoke(qobj, args);
 		}
 
 		static private FromIntPtr freeGCHandle = new FromIntPtr(FreeGCHandle);
@@ -455,6 +498,7 @@ namespace Qyoto {
 
 		static private CreateInstanceFn createInstance = new CreateInstanceFn(CreateInstance);
 		static private InvokeCustomSlotFn invokeCustomSlot = new InvokeCustomSlotFn(InvokeCustomSlot);
+		static private IsSmokeClassFn isSmokeClass = new IsSmokeClassFn(Qyoto.IsSmokeClass);
 		
 		static SmokeInvocation() {
 			AddFreeGCHandle(freeGCHandle);
@@ -477,6 +521,7 @@ namespace Qyoto {
 
 			AddCreateInstance(createInstance);
 			AddInvokeCustomSlot(invokeCustomSlot);
+			AddIsSmokeClass(isSmokeClass);
 		}
 		
 		private Type	_classToProxy;

@@ -22,7 +22,10 @@ namespace Qyoto {
 			}
 		}
 		public virtual QMetaObject MetaObject() {
-			return Qyoto.GetMetaObject(this);
+			if (Qyoto.IsSmokeClass(GetType()))
+				return ProxyQObject().MetaObject();
+			else
+				return Qyoto.GetMetaObject(this);
 		}
 		interface IQObjectProxy {
 			string Tr(string s, string c);

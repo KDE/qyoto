@@ -73,6 +73,7 @@ static OverridenMethodFn OverridenMethod;
 static InvokeMethodFn InvokeMethod;
 static CreateInstanceFn CreateInstance;
 static InvokeCustomSlotFn InvokeCustomSlot;
+static IsSmokeClassFn IsSmokeClass;
 
 // Maps from a classname in the form Qt::Widget to an int id
 QHash<int,char *> classname;
@@ -668,8 +669,7 @@ public:
 	void invokeSlot() {
 		if (_called) return;
 		_called = true;
-		printf("invoking slot %s\n", _slotname);
-		(*InvokeCustomSlot)(_obj, _slotname, _stack);
+		(*InvokeCustomSlot)(_obj, _slotname, _sp);
 	}
 
 	void next() {
@@ -874,6 +874,12 @@ AddInvokeCustomSlot(InvokeCustomSlotFn callback)
 }
 
 void
+AddIsSmokeClass(IsSmokeClassFn callback)
+{
+	IsSmokeClass = callback;
+}
+
+void
 CallSmokeMethod(int methodId, void * obj, Smoke::StackItem * sp, int items)
 {
 #ifdef DEBUG
@@ -942,8 +948,10 @@ GetMocArgumentsNumber(QString member, int& number)
 	QString argStr = rx1.cap(1);
 //	printf("argStr: %s\n", (const char*)argStr.toLatin1());
 	QStringList args = argStr.split(",");
-	number = args.size() - 1;
-	MocArgument * mocargs = new MocArgument[number + 1];
+	number = args.size();
+	if (number == 1 && args[0] == "")
+		number = 0;
+	MocArgument * mocargs = new MocArgument[number];
 	int i = 0;
 	for (QStringList::Iterator it = args.begin(); it != args.end(); ++it) {
 		QString a = (*it);
@@ -1003,23 +1011,29 @@ SignalEmit(char * signature, void * obj, Smoke::StackItem * sp, int items)
 	return true;
 }
 
-
-void* make_metaObject(void* obj, const char* stringdata, int stringdata_count, const uint* data, int data_count) {
+QMetaObject* parent_meta_object(void* obj) {
 	smokeqyoto_object* o = value_obj_info(obj);
 	Smoke::Index nameId = o->smoke->idMethodName("metaObject");
-	Smoke::Index meth = o->smoke->findMethod(o->classId, nameId);
-	if (meth <= 0) {
-		// Should never happen..
+	Smoke::Index parent_index = o->smoke->classes[o->classId].parents;
+	if (!parent_index)
 		return 0;
-	}
-	
+
+	Smoke::Index parentId = o->smoke->inheritanceList[parent_index];
+	Smoke::Index meth = o->smoke->findMethod(parentId, nameId);
+	if (meth <= 0)
+		return 0;
+		
 	Smoke::Method &methodId = o->smoke->methods[o->smoke->methodMaps[meth].method];
 	Smoke::ClassFn fn = o->smoke->classes[methodId.classId].classFn;
 	Smoke::StackItem i[1];
 	(*fn)(methodId.method, o->ptr, i);
 	
-	QMetaObject* parent = (QMetaObject*) i[0].s_voidp;
-	
+	return (QMetaObject*) i[0].s_voidp;
+}
+
+void* make_metaObject(void* obj, const char* stringdata, int stringdata_count, const uint* data, int data_count) {
+	QMetaObject* parent = parent_meta_object(obj);
+
 	char* my_stringdata = new char[stringdata_count];
 	memcpy(my_stringdata, stringdata, stringdata_count * sizeof(char));
 	
@@ -1079,7 +1093,7 @@ int qt_metacall(void* obj, int _c, int _id, void* _o) {
 	int offset = metaobject->methodOffset();
 
 	// if id < offset call base version
-	if (_id < offset) {
+	if (_id < offset || (*IsSmokeClass)(obj)) {
 		// Assume the target slot is a C++ one
 		Smoke::Index nameId = o->smoke->idMethodName("qt_metacall$$?");
 		Smoke::Index meth = o->smoke->findMethod(o->classId, nameId);

@@ -61,6 +61,7 @@ typedef void* (*OverridenMethodFn)(void *, const char *);
 typedef void (*InvokeMethodFn)(void *, void *, void *);
 typedef void* (*CreateInstanceFn)(const char *);
 typedef void (*InvokeCustomSlotFn)(void*, const char*, void*);
+typedef bool (*IsSmokeClassFn)(void*);
 
 extern FromIntPtr FreeGCHandle;
 
