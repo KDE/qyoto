@@ -1,3 +1,7 @@
+2006-06-08  Richard Dale  <rdale@foton.es>
+
+	* Added the QtDBus classes
+
 2006-06-07  Paolo Capriotti  <paolo.capriotti@gmail.com>
 
 	* Changed all occurences of Qt namespace to Qyoto in qyoto.cpp
