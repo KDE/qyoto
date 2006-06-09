@@ -190,7 +190,14 @@ namespace Qyoto {
 		private void NewQVariant(DateTime date) {
 			ProxyQVariant().NewQVariant(date);
 		}
-		// QVariant* QVariant(const QList<QVariant>& arg1); >>>> NOT CONVERTED
+		public QVariant(ArrayList list) : this((Type) null) {
+			CreateProxy();
+			NewQVariant(list);
+		}
+		[SmokeMethod("QVariant(const QList<QVariant>&)")]
+		private void NewQVariant(ArrayList list) {
+			ProxyQVariant().NewQVariant(list);
+		}
 		// QVariant* QVariant(const QMap<QString, QVariant>& arg1); >>>> NOT CONVERTED
 		public QVariant(QSize size) : this((Type) null) {
 			CreateProxy();
@@ -381,7 +388,10 @@ namespace Qyoto {
 		public DateTime ToDateTime() {
 			return ProxyQVariant().ToDateTime();
 		}
-		// QList<QVariant> toList(); >>>> NOT CONVERTED
+		[SmokeMethod("toList() const")]
+		public ArrayList ToList() {
+			return ProxyQVariant().ToList();
+		}
 		// QMap<QString, QVariant> toMap(); >>>> NOT CONVERTED
 		[SmokeMethod("toPoint() const")]
 		public QPoint ToPoint() {
