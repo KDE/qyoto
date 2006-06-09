@@ -75,37 +75,37 @@ resolve_classname(Smoke* smoke, int classId, void * ptr)
 
 
                 case QEvent::Timer:
-                        return "Qt::TimerEvent";
+                        return "Qyoto.QTimerEvent";
                 case QEvent::MouseButtonPress:
                 case QEvent::MouseButtonRelease:
                 case QEvent::MouseButtonDblClick:
                 case QEvent::MouseMove:
-                        return "Qt::MouseEvent";
+                        return "Qyoto.QMouseEvent";
                 case QEvent::KeyPress:
                 case QEvent::KeyRelease:
                 case QEvent::ShortcutOverride:
-                        return "Qt::KeyEvent";
+                        return "Qyoto.QKeyEvent";
                 case QEvent::FocusIn:
                 case QEvent::FocusOut:
-                        return "Qt::FocusEvent";
+                        return "Qyoto.QFocusEvent";
                 case QEvent::Enter:
                 case QEvent::Leave:
-                        return "Qt::Event";
+                        return "Qyoto.QEvent";
                 case QEvent::Paint:
-                        return "Qt::PaintEvent";
+                        return "Qyoto.QPaintEvent";
                 case QEvent::Move:
-                        return "Qt::MoveEvent";
+                        return "Qyoto.QMoveEvent";
                 case QEvent::Resize:
-                        return "Qt::ResizeEvent";
+                        return "Qyoto.QResizeEvent";
                 case QEvent::Create:
                 case QEvent::Destroy:
-                        return "Qt::Event";
+                        return "Qyoto.QEvent";
                 case QEvent::Show:
-                        return "Qt::ShowEvent";
+                        return "Qyoto.QShowEvent";
                 case QEvent::Hide:
-                        return "Qt::HideEvent";
+                        return "Qyoto.QHideEvent";
                 case QEvent::Close:
-                        return "Qt::CloseEvent";
+                        return "Qyoto.QCloseEvent";
                 case QEvent::Quit:
                 case QEvent::ParentChange:
                 case QEvent::ParentAboutToChange:
@@ -114,9 +114,9 @@ resolve_classname(Smoke* smoke, int classId, void * ptr)
                 case QEvent::WindowDeactivate:
                 case QEvent::ShowToParent:
                 case QEvent::HideToParent:
-                        return "Qt::Event";
+                        return "Qyoto.QEvent";
                 case QEvent::Wheel:
-                        return "Qt::WheelEvent";
+                        return "Qyoto.QWheelEvent";
                 case QEvent::WindowTitleChange:
                 case QEvent::WindowIconChange:
                 case QEvent::ApplicationWindowIconChange:
@@ -124,29 +124,29 @@ resolve_classname(Smoke* smoke, int classId, void * ptr)
                 case QEvent::ApplicationLayoutDirectionChange:
                 case QEvent::ApplicationPaletteChange:
                 case QEvent::PaletteChange:
-                        return "Qt::Event";
+                        return "Qyoto.QEvent";
                 case QEvent::Clipboard:
-                        return "Qt::ClipboardEvent";
+                        return "Qyoto.QClipboardEvent";
                 case QEvent::Speech:
                 case QEvent::MetaCall:
                 case QEvent::SockAct:
                 case QEvent::WinEventAct:
                 case QEvent::DeferredDelete:
-                        return "Qt::Event";
+                        return "Qyoto.QEvent";
                 case QEvent::DragEnter:
-                        return "Qt::DragEnterEvent";
+                        return "Qyoto.QDragEnterEvent";
                 case QEvent::DragLeave:
-                        return "Qt::DragLeaveEvent";
+                        return "Qyoto.QDragLeaveEvent";
                 case QEvent::DragMove:
-                        return "Qt::DragMoveEvent";
+                        return "Qyoto.QDragMoveEvent";
                 case QEvent::Drop:
-                        return "Qt::DropEvent";
+                        return "Qyoto.QDropEvent";
                 case QEvent::DragResponse:
-                        return "Qt::DragResponseEvent";
+                        return "Qyoto.QDragResponseEvent";
                 case QEvent::ChildAdded:
                 case QEvent::ChildRemoved:
                 case QEvent::ChildPolished:
-                        return "Qt::ChildEvent";
+                        return "Qyoto.QChildEvent";
                 case QEvent::ShowWindowRequest:
                 case QEvent::PolishRequest:
                 case QEvent::Polish:
@@ -155,26 +155,26 @@ resolve_classname(Smoke* smoke, int classId, void * ptr)
                 case QEvent::EmbeddingControl:
                 case QEvent::ActivateControl:
                 case QEvent::DeactivateControl:
-                        return "Qt::Event";
+                        return "Qyoto.QEvent";
                 case QEvent::ContextMenu:
-                        return "Qt::ContextMenuEvent";
+                        return "Qyoto.QContextMenuEvent";
                 case QEvent::InputMethod:
-                        return "Qt::InputMethodEvent";
+                        return "Qyoto.QInputMethodEvent";
                 case QEvent::AccessibilityPrepare:
-                        return "Qt::Event";
+                        return "Qyoto.QEvent";
                 case QEvent::TabletMove:
                 case QEvent::TabletPress:
                 case QEvent::TabletRelease:
-                        return "Qt::TabletEvent";
+                        return "Qyoto.QTabletEvent";
                 case QEvent::LocaleChange:
                 case QEvent::LanguageChange:
                 case QEvent::LayoutDirectionChange:
                 case QEvent::Style:
                 case QEvent::OkRequest:
                 case QEvent::HelpRequest:
-                        return "Qt::Event";
+                        return "Qyoto.QEvent";
                 case QEvent::IconDrag:
-                        return "Qt::IconDragEvent";
+                        return "Qyoto.QIconDragEvent";
                 case QEvent::FontChange:
                 case QEvent::EnabledChange:
                 case QEvent::ActivationChange:
@@ -182,42 +182,42 @@ resolve_classname(Smoke* smoke, int classId, void * ptr)
                 case QEvent::IconTextChange:
                 case QEvent::ModifiedChange:
                 case QEvent::MouseTrackingChange:
-                        return "Qt::Event";
+                        return "Qyoto.QEvent";
                 case QEvent::WindowBlocked:
                 case QEvent::WindowUnblocked:
                 case QEvent::WindowStateChange:
-                        return "Qt::WindowStateChangeEvent";
+                        return "Qyoto.QWindowStateChangeEvent";
                 case QEvent::ToolTip:
                 case QEvent::WhatsThis:
-                        return "Qt::HelpEvent";
+                        return "Qyoto.QHelpEvent";
                 case QEvent::StatusTip:
-                        return "Qt::Event";
+                        return "Qyoto.QEvent";
                 case QEvent::ActionChanged:
                 case QEvent::ActionAdded:
                 case QEvent::ActionRemoved:
-                        return "Qt::ActionEvent";
+                        return "Qyoto.QActionEvent";
                 case QEvent::FileOpen:
-                        return "Qt::FileOpenEvent";
+                        return "Qyoto.QFileOpenEvent";
                 case QEvent::Shortcut:
-                        return "Qt::ShortcutEvent";
+                        return "Qyoto.QShortcutEvent";
                 case QEvent::WhatsThisClicked:
-                        return "Qt::WhatsThisClickedEvent";
+                        return "Qyoto.QWhatsThisClickedEvent";
                 case QEvent::ToolBarChange:
-                        return "Qt::ToolBarChangeEvent";
+                        return "Qyoto.QToolBarChangeEvent";
                 case QEvent::ApplicationActivated:
                 case QEvent::ApplicationDeactivated:
                 case QEvent::QueryWhatsThis:
                 case QEvent::EnterWhatsThisMode:
                 case QEvent::LeaveWhatsThisMode:
                 case QEvent::ZOrderChange:
-                        return "Qt::Event";
+                        return "Qyoto.QEvent";
                 case QEvent::HoverEnter:
                 case QEvent::HoverLeave:
                 case QEvent::HoverMove:
-                        return "Qt::HoverEvent";
+                        return "Qyoto.QHoverEvent";
                 case QEvent::AccessibilityHelp:
                 case QEvent::AccessibilityDescription:
-                        return "Qt::Event";
+                        return "Qyoto.QEvent";
 		default:
 			break;
 		}

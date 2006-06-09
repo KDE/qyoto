@@ -17,8 +17,7 @@ namespace Qyoto
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern IntPtr make_metaObject(IntPtr parent, IntPtr stringdata, int stringdataCount, 
 											 IntPtr data, int dataCount);
-											 
-      
+
 		/// This Hashtable contains a list of classes with their Hashtables for slots. The class name is the key, the slot-hashtable the value.
 		public static Hashtable classes = new Hashtable();
     
@@ -36,7 +35,6 @@ namespace Qyoto
 		}
 		
 		public static Hashtable GetSlotSignatures(Type t) {
-			Console.WriteLine("creating slots for {0}", t);
 			/// Remove the old object if it already exists
 			classes.Remove(t.ToString());
 			
@@ -162,7 +160,6 @@ namespace Qyoto
 		
 			public QyotoMetaData(string className, ICollection signals, ICollection slots) {
 				handler = new StringTableHandler();
-				Console.WriteLine("methodCount should be {0}", signals.Count + slots.Count);
 				ArrayList tmp = new ArrayList(new uint[] { 
 					1,                                  // revision
 					handler[className],                 // classname

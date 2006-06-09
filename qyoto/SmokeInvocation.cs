@@ -209,6 +209,9 @@ namespace Qyoto {
 		// calls to SmokeInvocation.Invoke() is called.
 		static IntPtr CreateInstance(string className) {
 			Type klass = Type.GetType(className);
+#if DEBUG
+			Console.WriteLine("ENTER CreateInstance className => {0}, {1}", className, klass);
+#endif
 
 			Type[] constructorParamTypes = new Type[1];
 			constructorParamTypes[0] = typeof(Type);
@@ -344,6 +347,9 @@ namespace Qyoto {
 		}
 
 		static void InvokeMethod(IntPtr instanceHandle, IntPtr methodHandle, IntPtr stack) {
+#if DEBUG
+			Console.WriteLine("ENTER: InvokeMethod");
+#endif
 			object instance = ((GCHandle) instanceHandle).Target;
 			MethodInfo method = (MethodInfo) ((GCHandle) methodHandle).Target;
 //			Console.WriteLine("InvokeMethod() {0}.{1}", instance, method.Name);
@@ -355,33 +361,33 @@ namespace Qyoto {
 
 				for (int i = 0; i < args.Length; i++) {
 					if (parameters[i].ParameterType == typeof(bool)) {
-						args[i] = stackPtr[i+1].s_bool;
+						args[i] = stackPtr[i].s_bool;
 					} else if (parameters[i].ParameterType == typeof(sbyte)) {
-						args[i] = stackPtr[i+1].s_char;
+						args[i] = stackPtr[i].s_char;
 					} else if (parameters[i].ParameterType == typeof(byte)) {
-						args[i] = stackPtr[i+1].s_uchar;
+						args[i] = stackPtr[i].s_uchar;
 					} else if (parameters[i].ParameterType == typeof(short)) {
-						args[i] = stackPtr[i+1].s_short;
+						args[i] = stackPtr[i].s_short;
 					} else if (parameters[i].ParameterType == typeof(ushort)) {
-						args[i] = stackPtr[i+1].s_ushort;
+						args[i] = stackPtr[i].s_ushort;
 					} else if (	parameters[i].ParameterType == typeof(int) 
 								|| parameters[i].ParameterType.IsEnum ) 
 					{
-						args[i] = stackPtr[i+1].s_int;
+						args[i] = stackPtr[i].s_int;
 					} else if (parameters[i].ParameterType == typeof(uint)) {
-						args[i] = stackPtr[i+1].s_uint;
+						args[i] = stackPtr[i].s_uint;
 					} else if (parameters[i].ParameterType == typeof(long)) {
-						args[i] = stackPtr[i+1].s_long;
+						args[i] = stackPtr[i].s_long;
 					} else if (parameters[i].ParameterType == typeof(ulong)) {
-						args[i] = stackPtr[i+1].s_ulong;
+						args[i] = stackPtr[i].s_ulong;
 					} else if (parameters[i].ParameterType == typeof(float)) {
-						args[i] = stackPtr[i+1].s_float;
+						args[i] = stackPtr[i].s_float;
 					} else if (parameters[i].ParameterType == typeof(double)) {
-						args[i] = stackPtr[i+1].s_double;
+						args[i] = stackPtr[i].s_double;
 					} else if (parameters[i].ParameterType == typeof(string)) {
-						args[i] = (string) ((GCHandle) stackPtr[i+1].s_class).Target;
+						args[i] = (string) ((GCHandle) stackPtr[i].s_class).Target;
 					} else {
-						args[i] = ((GCHandle) stackPtr[i+1].s_class).Target;
+						args[i] = ((GCHandle) stackPtr[i].s_class).Target;
 					}
 				}
 

@@ -8,7 +8,7 @@ namespace Qyoto {
 
 	/// See <see cref="IQObjectSignals"></see> for signals emitted by QObject
 	[SmokeClass("QObject")]
-	public class QObject : Qt {
+	public class QObject : Qt, IDisposable {
 		private IntPtr _smokeObject;
 		
 		protected QObject(Type dummy) {
