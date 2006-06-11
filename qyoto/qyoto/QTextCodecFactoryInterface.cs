@@ -44,6 +44,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQTextCodecFactoryInterface();
 		}
+		[SmokeMethod("~QTextCodecFactoryInterface()")]
 		private void DisposeQTextCodecFactoryInterface() {
 			ProxyQTextCodecFactoryInterface().DisposeQTextCodecFactoryInterface();
 		}

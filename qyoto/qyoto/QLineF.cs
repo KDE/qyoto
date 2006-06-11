@@ -162,6 +162,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQLineF();
 		}
+		[SmokeMethod("~QLineF()")]
 		private void DisposeQLineF() {
 			ProxyQLineF().DisposeQLineF();
 		}

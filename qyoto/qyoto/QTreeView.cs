@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Collections;
 	using System.Text;
 
 	/// See <see cref="IQTreeViewSignals"></see> for signals emitted by QTreeView
@@ -262,7 +263,10 @@ namespace Qyoto {
 		protected new QRegion VisualRegionForSelection(QItemSelection selection) {
 			return ProxyQTreeView().VisualRegionForSelection(selection);
 		}
-		// QModelIndexList selectedIndexes(); >>>> NOT CONVERTED
+		[SmokeMethod("selectedIndexes() const")]
+		protected new ArrayList SelectedIndexes() {
+			return ProxyQTreeView().SelectedIndexes();
+		}
 		[SmokeMethod("timerEvent(QTimerEvent*)")]
 		protected new void TimerEvent(QTimerEvent arg1) {
 			ProxyQTreeView().TimerEvent(arg1);
@@ -317,6 +321,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQTreeView();
 		}
+		[SmokeMethod("~QTreeView()")]
 		private void DisposeQTreeView() {
 			ProxyQTreeView().DisposeQTreeView();
 		}

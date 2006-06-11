@@ -100,6 +100,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQAbstractItemDelegate();
 		}
+		[SmokeMethod("~QAbstractItemDelegate()")]
 		private void DisposeQAbstractItemDelegate() {
 			ProxyQAbstractItemDelegate().DisposeQAbstractItemDelegate();
 		}

@@ -108,6 +108,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQSocketNotifier();
 		}
+		[SmokeMethod("~QSocketNotifier()")]
 		private void DisposeQSocketNotifier() {
 			ProxyQSocketNotifier().DisposeQSocketNotifier();
 		}

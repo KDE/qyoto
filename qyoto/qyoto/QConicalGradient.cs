@@ -55,6 +55,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQConicalGradient();
 		}
+		[SmokeMethod("~QConicalGradient()")]
 		private void DisposeQConicalGradient() {
 			ProxyQConicalGradient().DisposeQConicalGradient();
 		}

@@ -242,6 +242,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQListWidgetItem();
 		}
+		[SmokeMethod("~QListWidgetItem()")]
 		private void DisposeQListWidgetItem() {
 			ProxyQListWidgetItem().DisposeQListWidgetItem();
 		}

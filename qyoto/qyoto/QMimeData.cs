@@ -38,8 +38,14 @@ namespace Qyoto {
 		private void NewQMimeData() {
 			ProxyQMimeData().NewQMimeData();
 		}
-		// QList<QUrl> urls(); >>>> NOT CONVERTED
-		// void setUrls(const QList<QUrl>& arg1); >>>> NOT CONVERTED
+		[SmokeMethod("urls() const")]
+		public ArrayList Urls() {
+			return ProxyQMimeData().Urls();
+		}
+		[SmokeMethod("setUrls(const QList<QUrl>&)")]
+		public void SetUrls(ArrayList urls) {
+			ProxyQMimeData().SetUrls(urls);
+		}
 		[SmokeMethod("hasUrls() const")]
 		public bool HasUrls() {
 			return ProxyQMimeData().HasUrls();
@@ -130,6 +136,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQMimeData();
 		}
+		[SmokeMethod("~QMimeData()")]
 		private void DisposeQMimeData() {
 			ProxyQMimeData().DisposeQMimeData();
 		}

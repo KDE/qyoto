@@ -242,6 +242,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQPaintEngine();
 		}
+		[SmokeMethod("~QPaintEngine()")]
 		private void DisposeQPaintEngine() {
 			ProxyQPaintEngine().DisposeQPaintEngine();
 		}

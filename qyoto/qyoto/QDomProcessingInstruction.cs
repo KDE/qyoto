@@ -64,6 +64,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQDomProcessingInstruction();
 		}
+		[SmokeMethod("~QDomProcessingInstruction()")]
 		private void DisposeQDomProcessingInstruction() {
 			ProxyQDomProcessingInstruction().DisposeQDomProcessingInstruction();
 		}

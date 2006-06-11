@@ -175,6 +175,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQLCDNumber();
 		}
+		[SmokeMethod("~QLCDNumber()")]
 		private void DisposeQLCDNumber() {
 			ProxyQLCDNumber().DisposeQLCDNumber();
 		}

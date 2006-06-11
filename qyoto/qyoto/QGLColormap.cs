@@ -98,6 +98,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQGLColormap();
 		}
+		[SmokeMethod("~QGLColormap()")]
 		private void DisposeQGLColormap() {
 			ProxyQGLColormap().DisposeQGLColormap();
 		}

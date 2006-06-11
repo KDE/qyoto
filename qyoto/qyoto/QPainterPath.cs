@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Collections;
 	using System.Text;
 
 	[SmokeClass("QPainterPath")]
@@ -184,10 +185,22 @@ namespace Qyoto {
 		public QPainterPath ToReversed() {
 			return ProxyQPainterPath().ToReversed();
 		}
-		// QList<QPolygonF> toSubpathPolygons(const QMatrix& arg1); >>>> NOT CONVERTED
-		// QList<QPolygonF> toSubpathPolygons(); >>>> NOT CONVERTED
-		// QList<QPolygonF> toFillPolygons(const QMatrix& arg1); >>>> NOT CONVERTED
-		// QList<QPolygonF> toFillPolygons(); >>>> NOT CONVERTED
+		[SmokeMethod("toSubpathPolygons(const QMatrix&) const")]
+		public ArrayList ToSubpathPolygons(QMatrix matrix) {
+			return ProxyQPainterPath().ToSubpathPolygons(matrix);
+		}
+		[SmokeMethod("toSubpathPolygons() const")]
+		public ArrayList ToSubpathPolygons() {
+			return ProxyQPainterPath().ToSubpathPolygons();
+		}
+		[SmokeMethod("toFillPolygons(const QMatrix&) const")]
+		public ArrayList ToFillPolygons(QMatrix matrix) {
+			return ProxyQPainterPath().ToFillPolygons(matrix);
+		}
+		[SmokeMethod("toFillPolygons() const")]
+		public ArrayList ToFillPolygons() {
+			return ProxyQPainterPath().ToFillPolygons();
+		}
 		[SmokeMethod("toFillPolygon(const QMatrix&) const")]
 		public QPolygonF ToFillPolygon(QMatrix matrix) {
 			return ProxyQPainterPath().ToFillPolygon(matrix);
@@ -221,6 +234,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQPainterPath();
 		}
+		[SmokeMethod("~QPainterPath()")]
 		private void DisposeQPainterPath() {
 			ProxyQPainterPath().DisposeQPainterPath();
 		}

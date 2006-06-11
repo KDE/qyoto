@@ -200,6 +200,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQMenuBar();
 		}
+		[SmokeMethod("~QMenuBar()")]
 		private void DisposeQMenuBar() {
 			ProxyQMenuBar().DisposeQMenuBar();
 		}

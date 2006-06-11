@@ -11,6 +11,17 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QGlobalSpace(Type dummy) {}
 		interface IQGlobalSpaceProxy {
+			uint QHash(QVariant arg1);
+			bool op_equals(QDBusError.KnownErrors p1, QDBusError p2);
+			int QDBusMetaTypeId(out bool arg1);
+			int QDBusMetaTypeId(char[] arg1);
+			int QDBusMetaTypeId(out short arg1);
+			int QDBusMetaTypeId(out int arg1);
+			int QDBusMetaTypeId(out double arg1);
+			int QDBusMetaTypeId(StringBuilder arg1);
+			int QDBusMetaTypeId(QVariant arg1);
+			int QDBusMetaTypeId(QByteArray arg1);
+			int QDBusMetaTypeId(string[] arg1);
 			bool op_equals(QGLFormat arg1, QGLFormat arg2);
 			bool op_equals(QHostAddress.SpecialAddress address1, QHostAddress address2);
 			QDataStream op_write(QDataStream arg1, QImage arg2);
@@ -284,6 +295,63 @@ namespace Qyoto {
 			return (IQGlobalSpaceProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("qHash(const QVariant&)")]
+		public static uint QHash(QVariant arg1) {
+			return StaticQGlobalSpace().QHash(arg1);
+		}
+		// uint qHash(const QDBusType& arg1); >>>> NOT CONVERTED
+		[SmokeMethod("operator==(QDBusError::KnownErrors, const QDBusError&)")]
+		public static bool op_equals(QDBusError.KnownErrors p1, QDBusError p2) {
+			return StaticQGlobalSpace().op_equals(p1,p2);
+		}
+		[SmokeMethod("qDBusMetaTypeId(bool*)")]
+		public static int QDBusMetaTypeId(out bool arg1) {
+			return StaticQGlobalSpace().QDBusMetaTypeId(out arg1);
+		}
+		[SmokeMethod("qDBusMetaTypeId(uchar*)")]
+		public static int QDBusMetaTypeId(char[] arg1) {
+			return StaticQGlobalSpace().QDBusMetaTypeId(arg1);
+		}
+		[SmokeMethod("qDBusMetaTypeId(short*)")]
+		public static int QDBusMetaTypeId(out short arg1) {
+			return StaticQGlobalSpace().QDBusMetaTypeId(out arg1);
+		}
+		[SmokeMethod("qDBusMetaTypeId(int*)")]
+		public static int QDBusMetaTypeId(out int arg1) {
+			return StaticQGlobalSpace().QDBusMetaTypeId(out arg1);
+		}
+		// int qDBusMetaTypeId(qlonglong* arg1); >>>> NOT CONVERTED
+		// int qDBusMetaTypeId(qulonglong* arg1); >>>> NOT CONVERTED
+		[SmokeMethod("qDBusMetaTypeId(double*)")]
+		public static int QDBusMetaTypeId(out double arg1) {
+			return StaticQGlobalSpace().QDBusMetaTypeId(out arg1);
+		}
+		[SmokeMethod("qDBusMetaTypeId(QString*)")]
+		public static int QDBusMetaTypeId(StringBuilder arg1) {
+			return StaticQGlobalSpace().QDBusMetaTypeId(arg1);
+		}
+		[SmokeMethod("qDBusMetaTypeId(QVariant*)")]
+		public static int QDBusMetaTypeId(QVariant arg1) {
+			return StaticQGlobalSpace().QDBusMetaTypeId(arg1);
+		}
+		// int qDBusMetaTypeId(QList<bool>* arg1); >>>> NOT CONVERTED
+		[SmokeMethod("qDBusMetaTypeId(QByteArray*)")]
+		public static int QDBusMetaTypeId(QByteArray arg1) {
+			return StaticQGlobalSpace().QDBusMetaTypeId(arg1);
+		}
+		// int qDBusMetaTypeId(QList<short>* arg1); >>>> NOT CONVERTED
+		// int qDBusMetaTypeId(QList<ushort>* arg1); >>>> NOT CONVERTED
+		// int qDBusMetaTypeId(QList<int>* arg1); >>>> NOT CONVERTED
+		// int qDBusMetaTypeId(QList<uint>* arg1); >>>> NOT CONVERTED
+		// int qDBusMetaTypeId(QList<qlonglong>* arg1); >>>> NOT CONVERTED
+		// int qDBusMetaTypeId(QList<qulonglong>* arg1); >>>> NOT CONVERTED
+		// int qDBusMetaTypeId(QList<double>* arg1); >>>> NOT CONVERTED
+		[SmokeMethod("qDBusMetaTypeId(QStringList*)")]
+		public static int QDBusMetaTypeId(string[] arg1) {
+			return StaticQGlobalSpace().QDBusMetaTypeId(arg1);
+		}
+		// int qDBusMetaTypeId(QVariantList* arg1); >>>> NOT CONVERTED
+		// int qDBusMetaTypeId(QVariantMap* arg1); >>>> NOT CONVERTED
 		[SmokeMethod("operator==(const QGLFormat&, const QGLFormat&)")]
 		public static bool op_equals(QGLFormat arg1, QGLFormat arg2) {
 			return StaticQGlobalSpace().op_equals(arg1,arg2);
@@ -1397,6 +1465,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQGlobalSpace();
 		}
+		[SmokeMethod("~QGlobalSpace()")]
 		private void DisposeQGlobalSpace() {
 			ProxyQGlobalSpace().DisposeQGlobalSpace();
 		}

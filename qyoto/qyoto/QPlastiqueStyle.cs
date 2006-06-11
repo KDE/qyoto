@@ -147,6 +147,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQPlastiqueStyle();
 		}
+		[SmokeMethod("~QPlastiqueStyle()")]
 		private void DisposeQPlastiqueStyle() {
 			ProxyQPlastiqueStyle().DisposeQPlastiqueStyle();
 		}

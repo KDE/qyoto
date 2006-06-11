@@ -128,6 +128,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQShortcut();
 		}
+		[SmokeMethod("~QShortcut()")]
 		private void DisposeQShortcut() {
 			ProxyQShortcut().DisposeQShortcut();
 		}

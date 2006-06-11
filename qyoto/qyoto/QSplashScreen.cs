@@ -136,6 +136,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQSplashScreen();
 		}
+		[SmokeMethod("~QSplashScreen()")]
 		private void DisposeQSplashScreen() {
 			ProxyQSplashScreen().DisposeQSplashScreen();
 		}

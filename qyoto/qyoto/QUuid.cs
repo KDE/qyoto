@@ -120,6 +120,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQUuid();
 		}
+		[SmokeMethod("~QUuid()")]
 		private void DisposeQUuid() {
 			ProxyQUuid().DisposeQUuid();
 		}

@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Collections;
 
 	[SmokeClass("QItemSelectionRange")]
 	public class QItemSelectionRange : MarshalByRefObject, IDisposable {
@@ -131,13 +132,17 @@ namespace Qyoto {
 		public bool IsValid() {
 			return ProxyQItemSelectionRange().IsValid();
 		}
-		// QModelIndexList indexes(); >>>> NOT CONVERTED
+		[SmokeMethod("indexes() const")]
+		public ArrayList Indexes() {
+			return ProxyQItemSelectionRange().Indexes();
+		}
 		~QItemSelectionRange() {
 			DisposeQItemSelectionRange();
 		}
 		public void Dispose() {
 			DisposeQItemSelectionRange();
 		}
+		[SmokeMethod("~QItemSelectionRange()")]
 		private void DisposeQItemSelectionRange() {
 			ProxyQItemSelectionRange().DisposeQItemSelectionRange();
 		}

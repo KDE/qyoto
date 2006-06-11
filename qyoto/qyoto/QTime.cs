@@ -206,6 +206,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQTime();
 		}
+		[SmokeMethod("~QTime()")]
 		private void DisposeQTime() {
 			ProxyQTime().DisposeQTime();
 		}

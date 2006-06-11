@@ -12,6 +12,7 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QFontDatabase(Type dummy) {}
 		interface IQFontDatabaseProxy {
+			ArrayList StandardSizes();
 			string WritingSystemName(QFontDatabase.WritingSystem writingSystem);
 			string WritingSystemSample(QFontDatabase.WritingSystem writingSystem);
 		}
@@ -87,9 +88,18 @@ namespace Qyoto {
 		public ArrayList Styles(string family) {
 			return ProxyQFontDatabase().Styles(family);
 		}
-		// QList<int> pointSizes(const QString& arg1,const QString& arg2); >>>> NOT CONVERTED
-		// QList<int> pointSizes(const QString& arg1); >>>> NOT CONVERTED
-		// QList<int> smoothSizes(const QString& arg1,const QString& arg2); >>>> NOT CONVERTED
+		[SmokeMethod("pointSizes(const QString&, const QString&)")]
+		public ArrayList PointSizes(string family, string style) {
+			return ProxyQFontDatabase().PointSizes(family,style);
+		}
+		[SmokeMethod("pointSizes(const QString&)")]
+		public ArrayList PointSizes(string family) {
+			return ProxyQFontDatabase().PointSizes(family);
+		}
+		[SmokeMethod("smoothSizes(const QString&, const QString&)")]
+		public ArrayList SmoothSizes(string family, string style) {
+			return ProxyQFontDatabase().SmoothSizes(family,style);
+		}
 		[SmokeMethod("styleString(const QFont&)")]
 		public string StyleString(QFont font) {
 			return ProxyQFontDatabase().StyleString(font);
@@ -146,7 +156,10 @@ namespace Qyoto {
 		public int Weight(string family, string style) {
 			return ProxyQFontDatabase().Weight(family,style);
 		}
-		// QList<int> standardSizes(); >>>> NOT CONVERTED
+		[SmokeMethod("standardSizes()")]
+		public static ArrayList StandardSizes() {
+			return StaticQFontDatabase().StandardSizes();
+		}
 		[SmokeMethod("writingSystemName(QFontDatabase::WritingSystem)")]
 		public static string WritingSystemName(QFontDatabase.WritingSystem writingSystem) {
 			return StaticQFontDatabase().WritingSystemName(writingSystem);
@@ -161,6 +174,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQFontDatabase();
 		}
+		[SmokeMethod("~QFontDatabase()")]
 		private void DisposeQFontDatabase() {
 			ProxyQFontDatabase().DisposeQFontDatabase();
 		}

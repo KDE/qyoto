@@ -51,6 +51,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQTextEncoder();
 		}
+		[SmokeMethod("~QTextEncoder()")]
 		private void DisposeQTextEncoder() {
 			ProxyQTextEncoder().DisposeQTextEncoder();
 		}

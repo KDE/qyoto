@@ -114,6 +114,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQTemporaryFile();
 		}
+		[SmokeMethod("~QTemporaryFile()")]
 		private void DisposeQTemporaryFile() {
 			ProxyQTemporaryFile().DisposeQTemporaryFile();
 		}

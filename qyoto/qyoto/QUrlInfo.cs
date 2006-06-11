@@ -173,6 +173,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQUrlInfo();
 		}
+		[SmokeMethod("~QUrlInfo()")]
 		private void DisposeQUrlInfo() {
 			ProxyQUrlInfo().DisposeQUrlInfo();
 		}

@@ -51,6 +51,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQDomComment();
 		}
+		[SmokeMethod("~QDomComment()")]
 		private void DisposeQDomComment() {
 			ProxyQDomComment().DisposeQDomComment();
 		}

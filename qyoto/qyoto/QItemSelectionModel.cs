@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Collections;
 	using System.Text;
 
 	/// See <see cref="IQItemSelectionModelSignals"></see> for signals emitted by QItemSelectionModel
@@ -83,7 +84,10 @@ namespace Qyoto {
 		public bool ColumnIntersectsSelection(int column, QModelIndex parent) {
 			return ProxyQItemSelectionModel().ColumnIntersectsSelection(column,parent);
 		}
-		// QModelIndexList selectedIndexes(); >>>> NOT CONVERTED
+		[SmokeMethod("selectedIndexes() const")]
+		public ArrayList SelectedIndexes() {
+			return ProxyQItemSelectionModel().SelectedIndexes();
+		}
 		[SmokeMethod("selection() const")]
 		public QItemSelection Selection() {
 			return ProxyQItemSelectionModel().Selection();
@@ -130,6 +134,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQItemSelectionModel();
 		}
+		[SmokeMethod("~QItemSelectionModel()")]
 		private void DisposeQItemSelectionModel() {
 			ProxyQItemSelectionModel().DisposeQItemSelectionModel();
 		}

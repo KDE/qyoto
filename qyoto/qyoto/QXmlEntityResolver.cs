@@ -56,6 +56,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQXmlEntityResolver();
 		}
+		[SmokeMethod("~QXmlEntityResolver()")]
 		private void DisposeQXmlEntityResolver() {
 			ProxyQXmlEntityResolver().DisposeQXmlEntityResolver();
 		}

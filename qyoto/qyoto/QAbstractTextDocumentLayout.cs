@@ -87,6 +87,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQAbstractTextDocumentLayout();
 		}
+		[SmokeMethod("~QAbstractTextDocumentLayout()")]
 		private void DisposeQAbstractTextDocumentLayout() {
 			ProxyQAbstractTextDocumentLayout().DisposeQAbstractTextDocumentLayout();
 		}

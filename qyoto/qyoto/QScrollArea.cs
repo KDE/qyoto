@@ -115,6 +115,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQScrollArea();
 		}
+		[SmokeMethod("~QScrollArea()")]
 		private void DisposeQScrollArea() {
 			ProxyQScrollArea().DisposeQScrollArea();
 		}

@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Collections;
 	using System.Text;
 
 	[SmokeClass("QTextFrame")]
@@ -56,7 +57,10 @@ namespace Qyoto {
 		public void SetLayoutData(QTextFrameLayoutData data) {
 			ProxyQTextFrame().SetLayoutData(data);
 		}
-		// QList<QTextFrame*> childFrames(); >>>> NOT CONVERTED
+		[SmokeMethod("childFrames() const")]
+		public ArrayList ChildFrames() {
+			return ProxyQTextFrame().ChildFrames();
+		}
 		[SmokeMethod("parentFrame() const")]
 		public QTextFrame ParentFrame() {
 			return ProxyQTextFrame().ParentFrame();
@@ -75,6 +79,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQTextFrame();
 		}
+		[SmokeMethod("~QTextFrame()")]
 		private void DisposeQTextFrame() {
 			ProxyQTextFrame().DisposeQTextFrame();
 		}

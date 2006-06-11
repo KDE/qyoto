@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Collections;
 	using System.Text;
 
 	[SmokeClass("QSortFilterProxyModel")]
@@ -165,7 +166,10 @@ namespace Qyoto {
 		public new bool SetHeaderData(int section, Qt.Orientation orientation, QVariant value, int role) {
 			return ProxyQSortFilterProxyModel().SetHeaderData(section,orientation,value,role);
 		}
-		// QMimeData* mimeData(const QModelIndexList& arg1); >>>> NOT CONVERTED
+		[SmokeMethod("mimeData(const QModelIndexList&) const")]
+		public new QMimeData MimeData(ArrayList indexes) {
+			return ProxyQSortFilterProxyModel().MimeData(indexes);
+		}
 		[SmokeMethod("dropMimeData(const QMimeData*, Qt::DropAction, int, int, const QModelIndex&)")]
 		public new bool DropMimeData(QMimeData data, Qt.DropAction action, int row, int column, QModelIndex parent) {
 			return ProxyQSortFilterProxyModel().DropMimeData(data,action,row,column,parent);
@@ -218,7 +222,10 @@ namespace Qyoto {
 		public new QModelIndex Buddy(QModelIndex index) {
 			return ProxyQSortFilterProxyModel().Buddy(index);
 		}
-		// QModelIndexList match(const QModelIndex& arg1,int arg2,const QVariant& arg3,int arg4,Qt::MatchFlags arg5); >>>> NOT CONVERTED
+		[SmokeMethod("match(const QModelIndex&, int, const QVariant&, int, Qt::MatchFlags) const")]
+		public new ArrayList Match(QModelIndex start, int role, QVariant value, int hits, int flags) {
+			return ProxyQSortFilterProxyModel().Match(start,role,value,hits,flags);
+		}
 		[SmokeMethod("span(const QModelIndex&) const")]
 		public new QSize Span(QModelIndex index) {
 			return ProxyQSortFilterProxyModel().Span(index);
@@ -257,6 +264,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQSortFilterProxyModel();
 		}
+		[SmokeMethod("~QSortFilterProxyModel()")]
 		private void DisposeQSortFilterProxyModel() {
 			ProxyQSortFilterProxyModel().DisposeQSortFilterProxyModel();
 		}

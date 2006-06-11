@@ -140,6 +140,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQDoubleSpinBox();
 		}
+		[SmokeMethod("~QDoubleSpinBox()")]
 		private void DisposeQDoubleSpinBox() {
 			ProxyQDoubleSpinBox().DisposeQDoubleSpinBox();
 		}

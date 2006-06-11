@@ -151,8 +151,14 @@ namespace Qyoto {
 		public void SetItemSelected(QListWidgetItem item, bool select) {
 			ProxyQListWidget().SetItemSelected(item,select);
 		}
-		// QList<QListWidgetItem*> selectedItems(); >>>> NOT CONVERTED
-		// QList<QListWidgetItem*> findItems(const QString& arg1,Qt::MatchFlags arg2); >>>> NOT CONVERTED
+		[SmokeMethod("selectedItems() const")]
+		public ArrayList SelectedItems() {
+			return ProxyQListWidget().SelectedItems();
+		}
+		[SmokeMethod("findItems(const QString&, Qt::MatchFlags) const")]
+		public ArrayList FindItems(string text, int flags) {
+			return ProxyQListWidget().FindItems(text,flags);
+		}
 		[SmokeMethod("isItemHidden(const QListWidgetItem*) const")]
 		public bool IsItemHidden(QListWidgetItem item) {
 			return ProxyQListWidget().IsItemHidden(item);
@@ -189,7 +195,10 @@ namespace Qyoto {
 		protected virtual ArrayList MimeTypes() {
 			return ProxyQListWidget().MimeTypes();
 		}
-		// QMimeData* mimeData(const QList<QListWidgetItem*> arg1); >>>> NOT CONVERTED
+		[SmokeMethod("mimeData(const QList<QListWidgetItem*>) const")]
+		protected virtual QMimeData MimeData(ArrayList items) {
+			return ProxyQListWidget().MimeData(items);
+		}
 		[SmokeMethod("dropMimeData(int, const QMimeData*, Qt::DropAction)")]
 		protected virtual bool DropMimeData(int index, QMimeData data, Qt.DropAction action) {
 			return ProxyQListWidget().DropMimeData(index,data,action);
@@ -198,7 +207,10 @@ namespace Qyoto {
 		protected virtual int SupportedDropActions() {
 			return ProxyQListWidget().SupportedDropActions();
 		}
-		// QList<QListWidgetItem*> items(const QMimeData* arg1); >>>> NOT CONVERTED
+		[SmokeMethod("items(const QMimeData*) const")]
+		protected ArrayList Items(QMimeData data) {
+			return ProxyQListWidget().Items(data);
+		}
 		[SmokeMethod("indexFromItem(QListWidgetItem*) const")]
 		protected QModelIndex IndexFromItem(QListWidgetItem item) {
 			return ProxyQListWidget().IndexFromItem(item);
@@ -213,6 +225,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQListWidget();
 		}
+		[SmokeMethod("~QListWidget()")]
 		private void DisposeQListWidget() {
 			ProxyQListWidget().DisposeQListWidget();
 		}

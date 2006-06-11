@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Collections;
 	using System.Text;
 
 	/// See <see cref="IQWidgetSignals"></see> for signals emitted by QWidget
@@ -814,17 +815,26 @@ namespace Qyoto {
 		public void AddAction(QAction action) {
 			ProxyQWidget().AddAction(action);
 		}
-		// void addActions(QList<QAction*> arg1); >>>> NOT CONVERTED
+		[SmokeMethod("addActions(QList<QAction*>)")]
+		public void AddActions(ArrayList actions) {
+			ProxyQWidget().AddActions(actions);
+		}
 		[SmokeMethod("insertAction(QAction*, QAction*)")]
 		public void InsertAction(QAction before, QAction action) {
 			ProxyQWidget().InsertAction(before,action);
 		}
-		// void insertActions(QAction* arg1,QList<QAction*> arg2); >>>> NOT CONVERTED
+		[SmokeMethod("insertActions(QAction*, QList<QAction*>)")]
+		public void InsertActions(QAction before, ArrayList actions) {
+			ProxyQWidget().InsertActions(before,actions);
+		}
 		[SmokeMethod("removeAction(QAction*)")]
 		public void RemoveAction(QAction action) {
 			ProxyQWidget().RemoveAction(action);
 		}
-		// QList<QAction*> actions(); >>>> NOT CONVERTED
+		[SmokeMethod("actions() const")]
+		public ArrayList Actions() {
+			return ProxyQWidget().Actions();
+		}
 		[SmokeMethod("parentWidget() const")]
 		public QWidget ParentWidget() {
 			return ProxyQWidget().ParentWidget();
@@ -1111,6 +1121,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQWidget();
 		}
+		[SmokeMethod("~QWidget()")]
 		private void DisposeQWidget() {
 			ProxyQWidget().DisposeQWidget();
 		}

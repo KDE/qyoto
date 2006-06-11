@@ -44,6 +44,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQFileOpenEvent();
 		}
+		[SmokeMethod("~QFileOpenEvent()")]
 		private void DisposeQFileOpenEvent() {
 			ProxyQFileOpenEvent().DisposeQFileOpenEvent();
 		}

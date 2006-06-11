@@ -59,6 +59,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQStyleOptionRubberBand();
 		}
+		[SmokeMethod("~QStyleOptionRubberBand()")]
 		private void DisposeQStyleOptionRubberBand() {
 			ProxyQStyleOptionRubberBand().DisposeQStyleOptionRubberBand();
 		}

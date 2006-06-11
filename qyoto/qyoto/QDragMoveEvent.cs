@@ -67,6 +67,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQDragMoveEvent();
 		}
+		[SmokeMethod("~QDragMoveEvent()")]
 		private void DisposeQDragMoveEvent() {
 			ProxyQDragMoveEvent().DisposeQDragMoveEvent();
 		}

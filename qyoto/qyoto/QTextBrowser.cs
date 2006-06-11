@@ -129,6 +129,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQTextBrowser();
 		}
+		[SmokeMethod("~QTextBrowser()")]
 		private void DisposeQTextBrowser() {
 			ProxyQTextBrowser().DisposeQTextBrowser();
 		}

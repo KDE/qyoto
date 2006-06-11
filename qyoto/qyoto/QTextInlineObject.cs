@@ -92,6 +92,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQTextInlineObject();
 		}
+		[SmokeMethod("~QTextInlineObject()")]
 		private void DisposeQTextInlineObject() {
 			ProxyQTextInlineObject().DisposeQTextInlineObject();
 		}

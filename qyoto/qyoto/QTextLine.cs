@@ -143,6 +143,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQTextLine();
 		}
+		[SmokeMethod("~QTextLine()")]
 		private void DisposeQTextLine() {
 			ProxyQTextLine().DisposeQTextLine();
 		}

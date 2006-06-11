@@ -136,6 +136,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQSpinBox();
 		}
+		[SmokeMethod("~QSpinBox()")]
 		private void DisposeQSpinBox() {
 			ProxyQSpinBox().DisposeQSpinBox();
 		}

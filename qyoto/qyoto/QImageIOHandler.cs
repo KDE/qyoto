@@ -130,6 +130,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQImageIOHandler();
 		}
+		[SmokeMethod("~QImageIOHandler()")]
 		private void DisposeQImageIOHandler() {
 			ProxyQImageIOHandler().DisposeQImageIOHandler();
 		}

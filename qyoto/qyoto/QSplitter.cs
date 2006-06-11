@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Collections;
 	using System.Text;
 
 	/// See <see cref="IQSplitterSignals"></see> for signals emitted by QSplitter
@@ -118,8 +119,14 @@ namespace Qyoto {
 		public new QSize MinimumSizeHint() {
 			return ProxyQSplitter().MinimumSizeHint();
 		}
-		// QList<int> sizes(); >>>> NOT CONVERTED
-		// void setSizes(const QList<int>& arg1); >>>> NOT CONVERTED
+		[SmokeMethod("sizes() const")]
+		public ArrayList Sizes() {
+			return ProxyQSplitter().Sizes();
+		}
+		[SmokeMethod("setSizes(const QList<int>&)")]
+		public void SetSizes(ArrayList list) {
+			ProxyQSplitter().SetSizes(list);
+		}
 		[SmokeMethod("saveState() const")]
 		public QByteArray SaveState() {
 			return ProxyQSplitter().SaveState();
@@ -202,6 +209,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQSplitter();
 		}
+		[SmokeMethod("~QSplitter()")]
 		private void DisposeQSplitter() {
 			ProxyQSplitter().DisposeQSplitter();
 		}

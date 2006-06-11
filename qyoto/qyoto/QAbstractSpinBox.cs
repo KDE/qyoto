@@ -241,6 +241,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQAbstractSpinBox();
 		}
+		[SmokeMethod("~QAbstractSpinBox()")]
 		private void DisposeQAbstractSpinBox() {
 			ProxyQAbstractSpinBox().DisposeQAbstractSpinBox();
 		}

@@ -103,6 +103,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQXmlParseException();
 		}
+		[SmokeMethod("~QXmlParseException()")]
 		private void DisposeQXmlParseException() {
 			ProxyQXmlParseException().DisposeQXmlParseException();
 		}

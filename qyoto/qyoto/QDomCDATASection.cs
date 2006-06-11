@@ -51,6 +51,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQDomCDATASection();
 		}
+		[SmokeMethod("~QDomCDATASection()")]
 		private void DisposeQDomCDATASection() {
 			ProxyQDomCDATASection().DisposeQDomCDATASection();
 		}

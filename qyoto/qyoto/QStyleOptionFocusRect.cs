@@ -59,6 +59,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQStyleOptionFocusRect();
 		}
+		[SmokeMethod("~QStyleOptionFocusRect()")]
 		private void DisposeQStyleOptionFocusRect() {
 			ProxyQStyleOptionFocusRect().DisposeQStyleOptionFocusRect();
 		}

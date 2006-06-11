@@ -245,6 +245,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQCoreApplication();
 		}
+		[SmokeMethod("~QCoreApplication()")]
 		private void DisposeQCoreApplication() {
 			ProxyQCoreApplication().DisposeQCoreApplication();
 		}

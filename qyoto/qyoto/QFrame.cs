@@ -156,6 +156,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQFrame();
 		}
+		[SmokeMethod("~QFrame()")]
 		private void DisposeQFrame() {
 			ProxyQFrame().DisposeQFrame();
 		}

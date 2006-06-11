@@ -92,6 +92,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQPainterPathStroker();
 		}
+		[SmokeMethod("~QPainterPathStroker()")]
 		private void DisposeQPainterPathStroker() {
 			ProxyQPainterPathStroker().DisposeQPainterPathStroker();
 		}

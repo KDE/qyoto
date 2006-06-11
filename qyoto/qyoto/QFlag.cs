@@ -43,6 +43,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQFlag();
 		}
+		[SmokeMethod("~QFlag()")]
 		private void DisposeQFlag() {
 			ProxyQFlag().DisposeQFlag();
 		}

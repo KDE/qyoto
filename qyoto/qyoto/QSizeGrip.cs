@@ -79,6 +79,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQSizeGrip();
 		}
+		[SmokeMethod("~QSizeGrip()")]
 		private void DisposeQSizeGrip() {
 			ProxyQSizeGrip().DisposeQSizeGrip();
 		}

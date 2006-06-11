@@ -387,6 +387,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQUrl();
 		}
+		[SmokeMethod("~QUrl()")]
 		private void DisposeQUrl() {
 			ProxyQUrl().DisposeQUrl();
 		}

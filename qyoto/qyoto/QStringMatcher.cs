@@ -83,6 +83,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQStringMatcher();
 		}
+		[SmokeMethod("~QStringMatcher()")]
 		private void DisposeQStringMatcher() {
 			ProxyQStringMatcher().DisposeQStringMatcher();
 		}

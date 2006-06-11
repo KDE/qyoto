@@ -144,6 +144,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQTcpServer();
 		}
+		[SmokeMethod("~QTcpServer()")]
 		private void DisposeQTcpServer() {
 			ProxyQTcpServer().DisposeQTcpServer();
 		}

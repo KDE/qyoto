@@ -44,6 +44,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQStatusTipEvent();
 		}
+		[SmokeMethod("~QStatusTipEvent()")]
 		private void DisposeQStatusTipEvent() {
 			ProxyQStatusTipEvent().DisposeQStatusTipEvent();
 		}

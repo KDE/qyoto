@@ -82,6 +82,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQTableWidgetSelectionRange();
 		}
+		[SmokeMethod("~QTableWidgetSelectionRange()")]
 		private void DisposeQTableWidgetSelectionRange() {
 			ProxyQTableWidgetSelectionRange().DisposeQTableWidgetSelectionRange();
 		}

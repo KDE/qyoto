@@ -95,6 +95,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQRadioButton();
 		}
+		[SmokeMethod("~QRadioButton()")]
 		private void DisposeQRadioButton() {
 			ProxyQRadioButton().DisposeQRadioButton();
 		}

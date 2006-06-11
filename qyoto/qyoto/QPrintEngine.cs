@@ -90,6 +90,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQPrintEngine();
 		}
+		[SmokeMethod("~QPrintEngine()")]
 		private void DisposeQPrintEngine() {
 			ProxyQPrintEngine().DisposeQPrintEngine();
 		}

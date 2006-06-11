@@ -255,6 +255,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQAction();
 		}
+		[SmokeMethod("~QAction()")]
 		private void DisposeQAction() {
 			ProxyQAction().DisposeQAction();
 		}

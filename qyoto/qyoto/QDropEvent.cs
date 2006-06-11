@@ -103,6 +103,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQDropEvent();
 		}
+		[SmokeMethod("~QDropEvent()")]
 		private void DisposeQDropEvent() {
 			ProxyQDropEvent().DisposeQDropEvent();
 		}

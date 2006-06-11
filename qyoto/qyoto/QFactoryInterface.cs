@@ -47,6 +47,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQFactoryInterface();
 		}
+		[SmokeMethod("~QFactoryInterface()")]
 		private void DisposeQFactoryInterface() {
 			ProxyQFactoryInterface().DisposeQFactoryInterface();
 		}

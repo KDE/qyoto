@@ -102,6 +102,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQPaintEngineState();
 		}
+		[SmokeMethod("~QPaintEngineState()")]
 		private void DisposeQPaintEngineState() {
 			ProxyQPaintEngineState().DisposeQPaintEngineState();
 		}

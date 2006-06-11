@@ -59,6 +59,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQStyleOptionSpinBox();
 		}
+		[SmokeMethod("~QStyleOptionSpinBox()")]
 		private void DisposeQStyleOptionSpinBox() {
 			ProxyQStyleOptionSpinBox().DisposeQStyleOptionSpinBox();
 		}

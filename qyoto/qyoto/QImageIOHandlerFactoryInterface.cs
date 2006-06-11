@@ -47,6 +47,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQImageIOHandlerFactoryInterface();
 		}
+		[SmokeMethod("~QImageIOHandlerFactoryInterface()")]
 		private void DisposeQImageIOHandlerFactoryInterface() {
 			ProxyQImageIOHandlerFactoryInterface().DisposeQImageIOHandlerFactoryInterface();
 		}

@@ -148,6 +148,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQCharRef();
 		}
+		[SmokeMethod("~QCharRef()")]
 		private void DisposeQCharRef() {
 			ProxyQCharRef().DisposeQCharRef();
 		}

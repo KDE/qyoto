@@ -204,6 +204,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQProgressDialog();
 		}
+		[SmokeMethod("~QProgressDialog()")]
 		private void DisposeQProgressDialog() {
 			ProxyQProgressDialog().DisposeQProgressDialog();
 		}

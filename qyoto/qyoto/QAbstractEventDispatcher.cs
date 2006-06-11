@@ -121,6 +121,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQAbstractEventDispatcher();
 		}
+		[SmokeMethod("~QAbstractEventDispatcher()")]
 		private void DisposeQAbstractEventDispatcher() {
 			ProxyQAbstractEventDispatcher().DisposeQAbstractEventDispatcher();
 		}

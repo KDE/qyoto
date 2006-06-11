@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Collections;
 	using System.Text;
 
 	[SmokeClass("QPainter")]
@@ -385,22 +386,22 @@ namespace Qyoto {
 		public void DrawLines(QLineF lines, int lineCount) {
 			ProxyQPainter().DrawLines(lines,lineCount);
 		}
-		// void drawLines(const QVector<QLineF>& arg1); >>>> NOT CONVERTED
+		[SmokeMethod("drawLines(const QVector<QLineF>&)")]
+		public void DrawLines(ArrayList lines) {
+			ProxyQPainter().DrawLines(lines);
+		}
 		[SmokeMethod("drawLines(const QPointF*, int)")]
 		public void DrawLines(QPointF pointPairs, int lineCount) {
 			ProxyQPainter().DrawLines(pointPairs,lineCount);
 		}
-		// void drawLines(const QVector<QPointF>& arg1); >>>> NOT CONVERTED
 		[SmokeMethod("drawLines(const QLine*, int)")]
 		public void DrawLines(QLine lines, int lineCount) {
 			ProxyQPainter().DrawLines(lines,lineCount);
 		}
-		// void drawLines(const QVector<QLine>& arg1); >>>> NOT CONVERTED
 		[SmokeMethod("drawLines(const QPoint*, int)")]
 		public void DrawLines(QPoint pointPairs, int lineCount) {
 			ProxyQPainter().DrawLines(pointPairs,lineCount);
 		}
-		// void drawLines(const QVector<QPoint>& arg1); >>>> NOT CONVERTED
 		[SmokeMethod("drawRect(const QRectF&)")]
 		public void DrawRect(QRectF rect) {
 			ProxyQPainter().DrawRect(rect);
@@ -417,12 +418,14 @@ namespace Qyoto {
 		public void DrawRects(QRectF rects, int rectCount) {
 			ProxyQPainter().DrawRects(rects,rectCount);
 		}
-		// void drawRects(const QVector<QRectF>& arg1); >>>> NOT CONVERTED
+		[SmokeMethod("drawRects(const QVector<QRectF>&)")]
+		public void DrawRects(ArrayList rectangles) {
+			ProxyQPainter().DrawRects(rectangles);
+		}
 		[SmokeMethod("drawRects(const QRect*, int)")]
 		public void DrawRects(QRect rects, int rectCount) {
 			ProxyQPainter().DrawRects(rects,rectCount);
 		}
-		// void drawRects(const QVector<QRect>& arg1); >>>> NOT CONVERTED
 		[SmokeMethod("drawEllipse(const QRectF&)")]
 		public void DrawEllipse(QRectF r) {
 			ProxyQPainter().DrawEllipse(r);
@@ -865,6 +868,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQPainter();
 		}
+		[SmokeMethod("~QPainter()")]
 		private void DisposeQPainter() {
 			ProxyQPainter().DisposeQPainter();
 		}

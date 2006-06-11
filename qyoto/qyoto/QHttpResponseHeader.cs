@@ -128,6 +128,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQHttpResponseHeader();
 		}
+		[SmokeMethod("~QHttpResponseHeader()")]
 		private void DisposeQHttpResponseHeader() {
 			ProxyQHttpResponseHeader().DisposeQHttpResponseHeader();
 		}

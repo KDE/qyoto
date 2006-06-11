@@ -59,6 +59,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQStyleOptionComboBox();
 		}
+		[SmokeMethod("~QStyleOptionComboBox()")]
 		private void DisposeQStyleOptionComboBox() {
 			ProxyQStyleOptionComboBox().DisposeQStyleOptionComboBox();
 		}

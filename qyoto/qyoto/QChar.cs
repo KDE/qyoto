@@ -356,6 +356,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQChar();
 		}
+		[SmokeMethod("~QChar()")]
 		private void DisposeQChar() {
 			ProxyQChar().DisposeQChar();
 		}

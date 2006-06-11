@@ -39,6 +39,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQIconDragEvent();
 		}
+		[SmokeMethod("~QIconDragEvent()")]
 		private void DisposeQIconDragEvent() {
 			ProxyQIconDragEvent().DisposeQIconDragEvent();
 		}

@@ -390,6 +390,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQPixmap();
 		}
+		[SmokeMethod("~QPixmap()")]
 		private void DisposeQPixmap() {
 			ProxyQPixmap().DisposeQPixmap();
 		}

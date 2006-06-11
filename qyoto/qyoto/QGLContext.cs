@@ -195,6 +195,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQGLContext();
 		}
+		[SmokeMethod("~QGLContext()")]
 		private void DisposeQGLContext() {
 			ProxyQGLContext().DisposeQGLContext();
 		}

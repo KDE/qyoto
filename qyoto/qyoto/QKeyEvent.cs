@@ -84,6 +84,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQKeyEvent();
 		}
+		[SmokeMethod("~QKeyEvent()")]
 		private void DisposeQKeyEvent() {
 			ProxyQKeyEvent().DisposeQKeyEvent();
 		}

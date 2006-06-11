@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Collections;
 	using System.Text;
 
 	/// See <see cref="IQMenuSignals"></see> for signals emitted by QMenu
@@ -11,6 +12,8 @@ namespace Qyoto {
 		interface IQMenuProxy {
 			string Tr(string s, string c);
 			string Tr(string s);
+			QAction Exec(ArrayList actions, QPoint pos, QAction at);
+			QAction Exec(ArrayList actions, QPoint pos);
 		}
 
 		protected new void CreateProxy() {
@@ -214,8 +217,14 @@ namespace Qyoto {
 		public static new string Tr(string s) {
 			return StaticQMenu().Tr(s);
 		}
-		// QAction* exec(QList<QAction*> arg1,const QPoint& arg2,QAction* arg3); >>>> NOT CONVERTED
-		// QAction* exec(QList<QAction*> arg1,const QPoint& arg2); >>>> NOT CONVERTED
+		[SmokeMethod("exec(QList<QAction*>, const QPoint&, QAction*)")]
+		public static QAction Exec(ArrayList actions, QPoint pos, QAction at) {
+			return StaticQMenu().Exec(actions,pos,at);
+		}
+		[SmokeMethod("exec(QList<QAction*>, const QPoint&)")]
+		public static QAction Exec(ArrayList actions, QPoint pos) {
+			return StaticQMenu().Exec(actions,pos);
+		}
 		[SmokeMethod("columnCount() const")]
 		protected int ColumnCount() {
 			return ProxyQMenu().ColumnCount();
@@ -278,6 +287,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQMenu();
 		}
+		[SmokeMethod("~QMenu()")]
 		private void DisposeQMenu() {
 			ProxyQMenu().DisposeQMenu();
 		}

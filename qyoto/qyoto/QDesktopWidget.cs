@@ -120,6 +120,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQDesktopWidget();
 		}
+		[SmokeMethod("~QDesktopWidget()")]
 		private void DisposeQDesktopWidget() {
 			ProxyQDesktopWidget().DisposeQDesktopWidget();
 		}

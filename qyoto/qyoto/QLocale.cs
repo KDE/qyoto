@@ -688,6 +688,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQLocale();
 		}
+		[SmokeMethod("~QLocale()")]
 		private void DisposeQLocale() {
 			ProxyQLocale().DisposeQLocale();
 		}

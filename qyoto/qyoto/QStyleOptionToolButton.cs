@@ -65,6 +65,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQStyleOptionToolButton();
 		}
+		[SmokeMethod("~QStyleOptionToolButton()")]
 		private void DisposeQStyleOptionToolButton() {
 			ProxyQStyleOptionToolButton().DisposeQStyleOptionToolButton();
 		}

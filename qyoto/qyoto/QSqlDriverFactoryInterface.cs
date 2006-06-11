@@ -44,6 +44,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQSqlDriverFactoryInterface();
 		}
+		[SmokeMethod("~QSqlDriverFactoryInterface()")]
 		private void DisposeQSqlDriverFactoryInterface() {
 			ProxyQSqlDriverFactoryInterface().DisposeQSqlDriverFactoryInterface();
 		}

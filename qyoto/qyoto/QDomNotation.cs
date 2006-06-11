@@ -60,6 +60,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQDomNotation();
 		}
+		[SmokeMethod("~QDomNotation()")]
 		private void DisposeQDomNotation() {
 			ProxyQDomNotation().DisposeQDomNotation();
 		}

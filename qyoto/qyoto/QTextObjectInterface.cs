@@ -44,6 +44,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQTextObjectInterface();
 		}
+		[SmokeMethod("~QTextObjectInterface()")]
 		private void DisposeQTextObjectInterface() {
 			ProxyQTextObjectInterface().DisposeQTextObjectInterface();
 		}

@@ -159,8 +159,14 @@ namespace Qyoto {
 		public QImage ConvertToFormat(QImage.Format f) {
 			return ProxyQImage().ConvertToFormat(f);
 		}
-		// QImage convertToFormat(QImage::Format arg1,const QVector<QRgb>& arg2,Qt::ImageConversionFlags arg3); >>>> NOT CONVERTED
-		// QImage convertToFormat(QImage::Format arg1,const QVector<QRgb>& arg2); >>>> NOT CONVERTED
+		[SmokeMethod("convertToFormat(QImage::Format, const QVector<QRgb>&, Qt::ImageConversionFlags) const")]
+		public QImage ConvertToFormat(QImage.Format f, ArrayList colorTable, int flags) {
+			return ProxyQImage().ConvertToFormat(f,colorTable,flags);
+		}
+		[SmokeMethod("convertToFormat(QImage::Format, const QVector<QRgb>&) const")]
+		public QImage ConvertToFormat(QImage.Format f, ArrayList colorTable) {
+			return ProxyQImage().ConvertToFormat(f,colorTable);
+		}
 		[SmokeMethod("width() const")]
 		public new int Width() {
 			return ProxyQImage().Width();
@@ -237,8 +243,14 @@ namespace Qyoto {
 		public void SetPixel(int x, int y, uint index_or_rgb) {
 			ProxyQImage().SetPixel(x,y,index_or_rgb);
 		}
-		// QVector<QRgb> colorTable(); >>>> NOT CONVERTED
-		// void setColorTable(const QVector<QRgb> arg1); >>>> NOT CONVERTED
+		[SmokeMethod("colorTable() const")]
+		public ArrayList ColorTable() {
+			return ProxyQImage().ColorTable();
+		}
+		[SmokeMethod("setColorTable(const QVector<QRgb>)")]
+		public void SetColorTable(ArrayList colors) {
+			ProxyQImage().SetColorTable(colors);
+		}
 		[SmokeMethod("fill(uint)")]
 		public void Fill(uint pixel) {
 			ProxyQImage().Fill(pixel);
@@ -439,7 +451,10 @@ namespace Qyoto {
 		public string Text(string key, string lang) {
 			return ProxyQImage().Text(key,lang);
 		}
-		// QList<QImageTextKeyLang> textList(); >>>> NOT CONVERTED
+		[SmokeMethod("textList() const")]
+		public ArrayList TextList() {
+			return ProxyQImage().TextList();
+		}
 		[SmokeMethod("textLanguages() const")]
 		public ArrayList TextLanguages() {
 			return ProxyQImage().TextLanguages();
@@ -479,6 +494,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQImage();
 		}
+		[SmokeMethod("~QImage()")]
 		private void DisposeQImage() {
 			ProxyQImage().DisposeQImage();
 		}

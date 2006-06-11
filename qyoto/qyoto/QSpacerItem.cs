@@ -99,6 +99,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQSpacerItem();
 		}
+		[SmokeMethod("~QSpacerItem()")]
 		private void DisposeQSpacerItem() {
 			ProxyQSpacerItem().DisposeQSpacerItem();
 		}

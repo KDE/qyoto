@@ -51,6 +51,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQTextDecoder();
 		}
+		[SmokeMethod("~QTextDecoder()")]
 		private void DisposeQTextDecoder() {
 			ProxyQTextDecoder().DisposeQTextDecoder();
 		}

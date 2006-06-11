@@ -320,6 +320,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQRect();
 		}
+		[SmokeMethod("~QRect()")]
 		private void DisposeQRect() {
 			ProxyQRect().DisposeQRect();
 		}

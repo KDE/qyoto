@@ -65,6 +65,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQMimeSource();
 		}
+		[SmokeMethod("~QMimeSource()")]
 		private void DisposeQMimeSource() {
 			ProxyQMimeSource().DisposeQMimeSource();
 		}

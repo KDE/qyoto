@@ -481,6 +481,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQVariant();
 		}
+		[SmokeMethod("~QVariant()")]
 		private void DisposeQVariant() {
 			ProxyQVariant().DisposeQVariant();
 		}

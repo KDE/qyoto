@@ -106,6 +106,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQXmlContentHandler();
 		}
+		[SmokeMethod("~QXmlContentHandler()")]
 		private void DisposeQXmlContentHandler() {
 			ProxyQXmlContentHandler().DisposeQXmlContentHandler();
 		}

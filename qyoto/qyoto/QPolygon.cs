@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Collections;
 
 	[SmokeClass("QPolygon")]
 	public class QPolygon : MarshalByRefObject, IDisposable {
@@ -52,7 +53,14 @@ namespace Qyoto {
 		private void NewQPolygon(QPolygon a) {
 			ProxyQPolygon().NewQPolygon(a);
 		}
-		// QPolygon* QPolygon(const QVector<QPoint>& arg1); >>>> NOT CONVERTED
+		public QPolygon(ArrayList v) : this((Type) null) {
+			CreateProxy();
+			NewQPolygon(v);
+		}
+		[SmokeMethod("QPolygon(const QVector<QPoint>&)")]
+		private void NewQPolygon(ArrayList v) {
+			ProxyQPolygon().NewQPolygon(v);
+		}
 		public QPolygon(QRect r, bool closed) : this((Type) null) {
 			CreateProxy();
 			NewQPolygon(r,closed);
@@ -128,6 +136,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQPolygon();
 		}
+		[SmokeMethod("~QPolygon()")]
 		private void DisposeQPolygon() {
 			ProxyQPolygon().DisposeQPolygon();
 		}

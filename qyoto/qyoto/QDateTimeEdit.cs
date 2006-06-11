@@ -245,6 +245,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQDateTimeEdit();
 		}
+		[SmokeMethod("~QDateTimeEdit()")]
 		private void DisposeQDateTimeEdit() {
 			ProxyQDateTimeEdit().DisposeQDateTimeEdit();
 		}

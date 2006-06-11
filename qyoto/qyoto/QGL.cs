@@ -3,7 +3,7 @@ namespace Qyoto {
 
 	using System;
 
-	public class QGL {
+	public class QGL : MarshalByRefObject {
 		protected Object _interceptor = null;
 		interface IQGLProxy {
 		}
@@ -52,6 +52,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQGL();
 		}
+		[SmokeMethod("~QGL()")]
 		private void DisposeQGL() {
 			ProxyQGL().DisposeQGL();
 		}

@@ -116,6 +116,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQTabletEvent();
 		}
+		[SmokeMethod("~QTabletEvent()")]
 		private void DisposeQTabletEvent() {
 			ProxyQTabletEvent().DisposeQTabletEvent();
 		}

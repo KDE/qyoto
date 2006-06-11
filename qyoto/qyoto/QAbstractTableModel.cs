@@ -71,6 +71,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQAbstractTableModel();
 		}
+		[SmokeMethod("~QAbstractTableModel()")]
 		private void DisposeQAbstractTableModel() {
 			ProxyQAbstractTableModel().DisposeQAbstractTableModel();
 		}

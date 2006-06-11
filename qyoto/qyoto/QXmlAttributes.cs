@@ -103,6 +103,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQXmlAttributes();
 		}
+		[SmokeMethod("~QXmlAttributes()")]
 		private void DisposeQXmlAttributes() {
 			ProxyQXmlAttributes().DisposeQXmlAttributes();
 		}

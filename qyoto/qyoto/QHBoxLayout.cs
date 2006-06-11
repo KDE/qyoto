@@ -59,6 +59,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQHBoxLayout();
 		}
+		[SmokeMethod("~QHBoxLayout()")]
 		private void DisposeQHBoxLayout() {
 			ProxyQHBoxLayout().DisposeQHBoxLayout();
 		}

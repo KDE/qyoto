@@ -378,6 +378,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQDir();
 		}
+		[SmokeMethod("~QDir()")]
 		private void DisposeQDir() {
 			ProxyQDir().DisposeQDir();
 		}

@@ -232,6 +232,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQGLFormat();
 		}
+		[SmokeMethod("~QGLFormat()")]
 		private void DisposeQGLFormat() {
 			ProxyQGLFormat().DisposeQGLFormat();
 		}

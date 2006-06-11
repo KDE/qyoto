@@ -92,6 +92,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQStylePainter();
 		}
+		[SmokeMethod("~QStylePainter()")]
 		private void DisposeQStylePainter() {
 			ProxyQStylePainter().DisposeQStylePainter();
 		}

@@ -114,6 +114,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQDomNamedNodeMap();
 		}
+		[SmokeMethod("~QDomNamedNodeMap()")]
 		private void DisposeQDomNamedNodeMap() {
 			ProxyQDomNamedNodeMap().DisposeQDomNamedNodeMap();
 		}

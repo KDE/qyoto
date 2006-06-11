@@ -54,6 +54,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQStyleFactory();
 		}
+		[SmokeMethod("~QStyleFactory()")]
 		private void DisposeQStyleFactory() {
 			ProxyQStyleFactory().DisposeQStyleFactory();
 		}

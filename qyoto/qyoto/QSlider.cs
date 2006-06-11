@@ -127,6 +127,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQSlider();
 		}
+		[SmokeMethod("~QSlider()")]
 		private void DisposeQSlider() {
 			ProxyQSlider().DisposeQSlider();
 		}

@@ -72,6 +72,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQDomAttr();
 		}
+		[SmokeMethod("~QDomAttr()")]
 		private void DisposeQDomAttr() {
 			ProxyQDomAttr().DisposeQDomAttr();
 		}

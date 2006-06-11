@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Collections;
 	using System.Text;
 
 	[SmokeClass("QByteArray")]
@@ -377,7 +378,10 @@ namespace Qyoto {
 		public QByteArray Replace(char before, char after) {
 			return ProxyQByteArray().Replace(before,after);
 		}
-		// QList<QByteArray> split(char arg1); >>>> NOT CONVERTED
+		[SmokeMethod("split(char) const")]
+		public ArrayList Split(char sep) {
+			return ProxyQByteArray().Split(sep);
+		}
 		[SmokeMethod("operator==(const QString&) const")]
 		public static bool operator==(QByteArray lhs, string s2) {
 			return StaticQByteArray().op_equals(lhs,s2);
@@ -641,6 +645,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQByteArray();
 		}
+		[SmokeMethod("~QByteArray()")]
 		private void DisposeQByteArray() {
 			ProxyQByteArray().DisposeQByteArray();
 		}

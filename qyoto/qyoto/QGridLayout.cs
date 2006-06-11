@@ -223,6 +223,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQGridLayout();
 		}
+		[SmokeMethod("~QGridLayout()")]
 		private void DisposeQGridLayout() {
 			ProxyQGridLayout().DisposeQGridLayout();
 		}

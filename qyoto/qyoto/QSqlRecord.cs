@@ -166,6 +166,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQSqlRecord();
 		}
+		[SmokeMethod("~QSqlRecord()")]
 		private void DisposeQSqlRecord() {
 			ProxyQSqlRecord().DisposeQSqlRecord();
 		}

@@ -43,6 +43,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQToolBarChangeEvent();
 		}
+		[SmokeMethod("~QToolBarChangeEvent()")]
 		private void DisposeQToolBarChangeEvent() {
 			ProxyQToolBarChangeEvent().DisposeQToolBarChangeEvent();
 		}

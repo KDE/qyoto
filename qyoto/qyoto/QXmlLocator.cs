@@ -50,6 +50,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQXmlLocator();
 		}
+		[SmokeMethod("~QXmlLocator()")]
 		private void DisposeQXmlLocator() {
 			ProxyQXmlLocator().DisposeQXmlLocator();
 		}

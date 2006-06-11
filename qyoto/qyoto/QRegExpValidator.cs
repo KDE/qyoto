@@ -71,6 +71,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQRegExpValidator();
 		}
+		[SmokeMethod("~QRegExpValidator()")]
 		private void DisposeQRegExpValidator() {
 			ProxyQRegExpValidator().DisposeQRegExpValidator();
 		}

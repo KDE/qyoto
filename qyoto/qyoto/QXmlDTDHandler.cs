@@ -61,6 +61,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQXmlDTDHandler();
 		}
+		[SmokeMethod("~QXmlDTDHandler()")]
 		private void DisposeQXmlDTDHandler() {
 			ProxyQXmlDTDHandler().DisposeQXmlDTDHandler();
 		}

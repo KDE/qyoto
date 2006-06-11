@@ -63,6 +63,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQByteRef();
 		}
+		[SmokeMethod("~QByteRef()")]
 		private void DisposeQByteRef() {
 			ProxyQByteRef().DisposeQByteRef();
 		}

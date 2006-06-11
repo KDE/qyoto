@@ -63,6 +63,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQIconEngine();
 		}
+		[SmokeMethod("~QIconEngine()")]
 		private void DisposeQIconEngine() {
 			ProxyQIconEngine().DisposeQIconEngine();
 		}

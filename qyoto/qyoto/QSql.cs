@@ -3,7 +3,7 @@ namespace Qyoto {
 
 	using System;
 
-	public class QSql {
+	public class QSql : MarshalByRefObject {
 		protected Object _interceptor = null;
 		interface IQSqlProxy {
 		}
@@ -46,6 +46,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQSql();
 		}
+		[SmokeMethod("~QSql()")]
 		private void DisposeQSql() {
 			ProxyQSql().DisposeQSql();
 		}

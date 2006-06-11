@@ -76,6 +76,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQStyleOptionHeader();
 		}
+		[SmokeMethod("~QStyleOptionHeader()")]
 		private void DisposeQStyleOptionHeader() {
 			ProxyQStyleOptionHeader().DisposeQStyleOptionHeader();
 		}

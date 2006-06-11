@@ -115,6 +115,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQRubberBand();
 		}
+		[SmokeMethod("~QRubberBand()")]
 		private void DisposeQRubberBand() {
 			ProxyQRubberBand().DisposeQRubberBand();
 		}

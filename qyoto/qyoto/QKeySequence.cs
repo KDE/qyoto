@@ -177,6 +177,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQKeySequence();
 		}
+		[SmokeMethod("~QKeySequence()")]
 		private void DisposeQKeySequence() {
 			ProxyQKeySequence().DisposeQKeySequence();
 		}

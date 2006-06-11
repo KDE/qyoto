@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Collections;
 	using System.Text;
 
 	[SmokeClass("QTextFormat")]
@@ -165,7 +166,10 @@ namespace Qyoto {
 			return ProxyQTextFormat().LengthProperty(propertyId);
 		}
 		// QVector<QTextLength> lengthVectorProperty(int arg1); >>>> NOT CONVERTED
-		// void setProperty(int arg1,const QVector<QTextLength>& arg2); >>>> NOT CONVERTED
+		[SmokeMethod("setProperty(int, const QVector<QTextLength>&)")]
+		public void SetProperty(int propertyId, ArrayList lengths) {
+			ProxyQTextFormat().SetProperty(propertyId,lengths);
+		}
 		// QMap<int, QVariant> properties(); >>>> NOT CONVERTED
 		[SmokeMethod("setObjectType(int)")]
 		public void SetObjectType(int type) {
@@ -263,6 +267,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQTextFormat();
 		}
+		[SmokeMethod("~QTextFormat()")]
 		private void DisposeQTextFormat() {
 			ProxyQTextFormat().DisposeQTextFormat();
 		}

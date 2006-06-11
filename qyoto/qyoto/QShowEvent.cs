@@ -39,6 +39,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQShowEvent();
 		}
+		[SmokeMethod("~QShowEvent()")]
 		private void DisposeQShowEvent() {
 			ProxyQShowEvent().DisposeQShowEvent();
 		}

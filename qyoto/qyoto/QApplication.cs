@@ -427,6 +427,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQApplication();
 		}
+		[SmokeMethod("~QApplication()")]
 		private void DisposeQApplication() {
 			ProxyQApplication().DisposeQApplication();
 		}

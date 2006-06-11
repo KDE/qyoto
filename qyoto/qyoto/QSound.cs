@@ -97,6 +97,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQSound();
 		}
+		[SmokeMethod("~QSound()")]
 		private void DisposeQSound() {
 			ProxyQSound().DisposeQSound();
 		}

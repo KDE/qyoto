@@ -64,6 +64,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQItemEditorFactory();
 		}
+		[SmokeMethod("~QItemEditorFactory()")]
 		private void DisposeQItemEditorFactory() {
 			ProxyQItemEditorFactory().DisposeQItemEditorFactory();
 		}

@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Collections;
 
 	[SmokeClass("QItemSelection")]
 	public class QItemSelection : MarshalByRefObject, IDisposable {
@@ -53,7 +54,10 @@ namespace Qyoto {
 		public bool Contains(QModelIndex index) {
 			return ProxyQItemSelection().Contains(index);
 		}
-		// QModelIndexList indexes(); >>>> NOT CONVERTED
+		[SmokeMethod("indexes() const")]
+		public ArrayList Indexes() {
+			return ProxyQItemSelection().Indexes();
+		}
 		[SmokeMethod("merge(const QItemSelection&, QItemSelectionModel::SelectionFlags)")]
 		public void Merge(QItemSelection other, int command) {
 			ProxyQItemSelection().Merge(other,command);
@@ -68,6 +72,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQItemSelection();
 		}
+		[SmokeMethod("~QItemSelection()")]
 		private void DisposeQItemSelection() {
 			ProxyQItemSelection().DisposeQItemSelection();
 		}

@@ -42,6 +42,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQTextBlockUserData();
 		}
+		[SmokeMethod("~QTextBlockUserData()")]
 		private void DisposeQTextBlockUserData() {
 			ProxyQTextBlockUserData().DisposeQTextBlockUserData();
 		}

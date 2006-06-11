@@ -47,6 +47,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQResizeEvent();
 		}
+		[SmokeMethod("~QResizeEvent()")]
 		private void DisposeQResizeEvent() {
 			ProxyQResizeEvent().DisposeQResizeEvent();
 		}

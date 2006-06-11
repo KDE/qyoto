@@ -51,6 +51,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQDomEntityReference();
 		}
+		[SmokeMethod("~QDomEntityReference()")]
 		private void DisposeQDomEntityReference() {
 			ProxyQDomEntityReference().DisposeQDomEntityReference();
 		}

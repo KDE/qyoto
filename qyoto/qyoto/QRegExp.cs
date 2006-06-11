@@ -206,6 +206,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQRegExp();
 		}
+		[SmokeMethod("~QRegExp()")]
 		private void DisposeQRegExp() {
 			ProxyQRegExp().DisposeQRegExp();
 		}

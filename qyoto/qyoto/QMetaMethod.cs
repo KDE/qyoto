@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Collections;
 
 	[SmokeClass("QMetaMethod")]
 	public class QMetaMethod : MarshalByRefObject, IDisposable {
@@ -59,8 +60,14 @@ namespace Qyoto {
 		public string TypeName() {
 			return ProxyQMetaMethod().TypeName();
 		}
-		// QList<QByteArray> parameterTypes(); >>>> NOT CONVERTED
-		// QList<QByteArray> parameterNames(); >>>> NOT CONVERTED
+		[SmokeMethod("parameterTypes() const")]
+		public ArrayList ParameterTypes() {
+			return ProxyQMetaMethod().ParameterTypes();
+		}
+		[SmokeMethod("parameterNames() const")]
+		public ArrayList ParameterNames() {
+			return ProxyQMetaMethod().ParameterNames();
+		}
 		[SmokeMethod("tag() const")]
 		public string Tag() {
 			return ProxyQMetaMethod().Tag();
@@ -83,6 +90,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQMetaMethod();
 		}
+		[SmokeMethod("~QMetaMethod()")]
 		private void DisposeQMetaMethod() {
 			ProxyQMetaMethod().DisposeQMetaMethod();
 		}

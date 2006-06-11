@@ -68,6 +68,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQTextImageFormat();
 		}
+		[SmokeMethod("~QTextImageFormat()")]
 		private void DisposeQTextImageFormat() {
 			ProxyQTextImageFormat().DisposeQTextImageFormat();
 		}

@@ -111,6 +111,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQFontInfo();
 		}
+		[SmokeMethod("~QFontInfo()")]
 		private void DisposeQFontInfo() {
 			ProxyQFontInfo().DisposeQFontInfo();
 		}

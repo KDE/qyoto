@@ -119,7 +119,10 @@ namespace Qyoto {
 		public new ArrayList MimeTypes() {
 			return ProxyQDirModel().MimeTypes();
 		}
-		// QMimeData* mimeData(const QModelIndexList& arg1); >>>> NOT CONVERTED
+		[SmokeMethod("mimeData(const QModelIndexList&) const")]
+		public new QMimeData MimeData(ArrayList indexes) {
+			return ProxyQDirModel().MimeData(indexes);
+		}
 		[SmokeMethod("dropMimeData(const QMimeData*, Qt::DropAction, int, int, const QModelIndex&)")]
 		public new bool DropMimeData(QMimeData data, Qt.DropAction action, int row, int column, QModelIndex parent) {
 			return ProxyQDirModel().DropMimeData(data,action,row,column,parent);
@@ -250,6 +253,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQDirModel();
 		}
+		[SmokeMethod("~QDirModel()")]
 		private void DisposeQDirModel() {
 			ProxyQDirModel().DisposeQDirModel();
 		}

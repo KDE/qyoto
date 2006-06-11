@@ -468,6 +468,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQTextEdit();
 		}
+		[SmokeMethod("~QTextEdit()")]
 		private void DisposeQTextEdit() {
 			ProxyQTextEdit().DisposeQTextEdit();
 		}

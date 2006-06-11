@@ -408,6 +408,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQMetaObject();
 		}
+		[SmokeMethod("~QMetaObject()")]
 		private void DisposeQMetaObject() {
 			ProxyQMetaObject().DisposeQMetaObject();
 		}

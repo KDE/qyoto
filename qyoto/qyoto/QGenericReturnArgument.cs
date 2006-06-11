@@ -48,6 +48,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQGenericReturnArgument();
 		}
+		[SmokeMethod("~QGenericReturnArgument()")]
 		private void DisposeQGenericReturnArgument() {
 			ProxyQGenericReturnArgument().DisposeQGenericReturnArgument();
 		}

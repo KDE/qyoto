@@ -50,6 +50,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQItemEditorCreatorBase();
 		}
+		[SmokeMethod("~QItemEditorCreatorBase()")]
 		private void DisposeQItemEditorCreatorBase() {
 			ProxyQItemEditorCreatorBase().DisposeQItemEditorCreatorBase();
 		}

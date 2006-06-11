@@ -59,6 +59,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQStyleOptionSlider();
 		}
+		[SmokeMethod("~QStyleOptionSlider()")]
 		private void DisposeQStyleOptionSlider() {
 			ProxyQStyleOptionSlider().DisposeQStyleOptionSlider();
 		}

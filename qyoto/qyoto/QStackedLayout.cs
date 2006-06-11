@@ -128,6 +128,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQStackedLayout();
 		}
+		[SmokeMethod("~QStackedLayout()")]
 		private void DisposeQStackedLayout() {
 			ProxyQStackedLayout().DisposeQStackedLayout();
 		}

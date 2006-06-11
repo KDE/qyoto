@@ -178,6 +178,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQFontMetricsF();
 		}
+		[SmokeMethod("~QFontMetricsF()")]
 		private void DisposeQFontMetricsF() {
 			ProxyQFontMetricsF().DisposeQFontMetricsF();
 		}

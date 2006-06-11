@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Collections;
 	using System.Text;
 
 	[SmokeClass("QTableView")]
@@ -265,7 +266,10 @@ namespace Qyoto {
 		protected new QRegion VisualRegionForSelection(QItemSelection selection) {
 			return ProxyQTableView().VisualRegionForSelection(selection);
 		}
-		// QModelIndexList selectedIndexes(); >>>> NOT CONVERTED
+		[SmokeMethod("selectedIndexes() const")]
+		protected new ArrayList SelectedIndexes() {
+			return ProxyQTableView().SelectedIndexes();
+		}
 		[SmokeMethod("updateGeometries()")]
 		protected new void UpdateGeometries() {
 			ProxyQTableView().UpdateGeometries();
@@ -296,6 +300,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQTableView();
 		}
+		[SmokeMethod("~QTableView()")]
 		private void DisposeQTableView() {
 			ProxyQTableView().DisposeQTableView();
 		}

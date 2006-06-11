@@ -123,6 +123,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQLibrary();
 		}
+		[SmokeMethod("~QLibrary()")]
 		private void DisposeQLibrary() {
 			ProxyQLibrary().DisposeQLibrary();
 		}

@@ -156,6 +156,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQGroupBox();
 		}
+		[SmokeMethod("~QGroupBox()")]
 		private void DisposeQGroupBox() {
 			ProxyQGroupBox().DisposeQGroupBox();
 		}

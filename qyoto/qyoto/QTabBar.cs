@@ -246,6 +246,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQTabBar();
 		}
+		[SmokeMethod("~QTabBar()")]
 		private void DisposeQTabBar() {
 			ProxyQTabBar().DisposeQTabBar();
 		}

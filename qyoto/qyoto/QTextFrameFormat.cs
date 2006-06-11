@@ -104,6 +104,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQTextFrameFormat();
 		}
+		[SmokeMethod("~QTextFrameFormat()")]
 		private void DisposeQTextFrameFormat() {
 			ProxyQTextFrameFormat().DisposeQTextFrameFormat();
 		}

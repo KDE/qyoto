@@ -96,6 +96,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQSqlIndex();
 		}
+		[SmokeMethod("~QSqlIndex()")]
 		private void DisposeQSqlIndex() {
 			ProxyQSqlIndex().DisposeQSqlIndex();
 		}

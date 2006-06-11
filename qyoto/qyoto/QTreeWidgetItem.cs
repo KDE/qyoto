@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Collections;
 	using System.Text;
 
 	[SmokeClass("QTreeWidgetItem")]
@@ -312,9 +313,18 @@ namespace Qyoto {
 		public QTreeWidgetItem TakeChild(int index) {
 			return ProxyQTreeWidgetItem().TakeChild(index);
 		}
-		// void addChildren(const QList<QTreeWidgetItem*>& arg1); >>>> NOT CONVERTED
-		// void insertChildren(int arg1,const QList<QTreeWidgetItem*>& arg2); >>>> NOT CONVERTED
-		// QList<QTreeWidgetItem*> takeChildren(); >>>> NOT CONVERTED
+		[SmokeMethod("addChildren(const QList<QTreeWidgetItem*>&)")]
+		public void AddChildren(ArrayList children) {
+			ProxyQTreeWidgetItem().AddChildren(children);
+		}
+		[SmokeMethod("insertChildren(int, const QList<QTreeWidgetItem*>&)")]
+		public void InsertChildren(int index, ArrayList children) {
+			ProxyQTreeWidgetItem().InsertChildren(index,children);
+		}
+		[SmokeMethod("takeChildren()")]
+		public ArrayList TakeChildren() {
+			return ProxyQTreeWidgetItem().TakeChildren();
+		}
 		[SmokeMethod("type() const")]
 		public int type() {
 			return ProxyQTreeWidgetItem().type();
@@ -325,6 +335,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQTreeWidgetItem();
 		}
+		[SmokeMethod("~QTreeWidgetItem()")]
 		private void DisposeQTreeWidgetItem() {
 			ProxyQTreeWidgetItem().DisposeQTreeWidgetItem();
 		}

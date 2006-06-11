@@ -360,6 +360,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQMessageBox();
 		}
+		[SmokeMethod("~QMessageBox()")]
 		private void DisposeQMessageBox() {
 			ProxyQMessageBox().DisposeQMessageBox();
 		}

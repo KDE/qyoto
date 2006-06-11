@@ -264,6 +264,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQProcess();
 		}
+		[SmokeMethod("~QProcess()")]
 		private void DisposeQProcess() {
 			ProxyQProcess().DisposeQProcess();
 		}

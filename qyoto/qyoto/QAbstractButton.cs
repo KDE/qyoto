@@ -152,6 +152,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQAbstractButton();
 		}
+		[SmokeMethod("~QAbstractButton()")]
 		private void DisposeQAbstractButton() {
 			ProxyQAbstractButton().DisposeQAbstractButton();
 		}

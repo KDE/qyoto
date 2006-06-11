@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Collections;
 	using System.Text;
 
 	[SmokeClass("QTextLayout")]
@@ -109,8 +110,14 @@ namespace Qyoto {
 		public string PreeditAreaText() {
 			return ProxyQTextLayout().PreeditAreaText();
 		}
-		// void setAdditionalFormats(const QList<QTextLayout::FormatRange>& arg1); >>>> NOT CONVERTED
-		// QList<QTextLayout::FormatRange> additionalFormats(); >>>> NOT CONVERTED
+		[SmokeMethod("setAdditionalFormats(const QList<QTextLayout::FormatRange>&)")]
+		public void SetAdditionalFormats(ArrayList overrides) {
+			ProxyQTextLayout().SetAdditionalFormats(overrides);
+		}
+		[SmokeMethod("additionalFormats() const")]
+		public ArrayList AdditionalFormats() {
+			return ProxyQTextLayout().AdditionalFormats();
+		}
 		[SmokeMethod("clearAdditionalFormats()")]
 		public void ClearAdditionalFormats() {
 			ProxyQTextLayout().ClearAdditionalFormats();
@@ -204,6 +211,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQTextLayout();
 		}
+		[SmokeMethod("~QTextLayout()")]
 		private void DisposeQTextLayout() {
 			ProxyQTextLayout().DisposeQTextLayout();
 		}

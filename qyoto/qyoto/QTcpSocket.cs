@@ -59,6 +59,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQTcpSocket();
 		}
+		[SmokeMethod("~QTcpSocket()")]
 		private void DisposeQTcpSocket() {
 			ProxyQTcpSocket().DisposeQTcpSocket();
 		}

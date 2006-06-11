@@ -152,6 +152,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQCommonStyle();
 		}
+		[SmokeMethod("~QCommonStyle()")]
 		private void DisposeQCommonStyle() {
 			ProxyQCommonStyle().DisposeQCommonStyle();
 		}

@@ -91,6 +91,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQTranslator();
 		}
+		[SmokeMethod("~QTranslator()")]
 		private void DisposeQTranslator() {
 			ProxyQTranslator().DisposeQTranslator();
 		}

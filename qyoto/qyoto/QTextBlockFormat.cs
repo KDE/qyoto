@@ -107,6 +107,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQTextBlockFormat();
 		}
+		[SmokeMethod("~QTextBlockFormat()")]
 		private void DisposeQTextBlockFormat() {
 			ProxyQTextBlockFormat().DisposeQTextBlockFormat();
 		}

@@ -262,6 +262,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQSqlQuery();
 		}
+		[SmokeMethod("~QSqlQuery()")]
 		private void DisposeQSqlQuery() {
 			ProxyQSqlQuery().DisposeQSqlQuery();
 		}

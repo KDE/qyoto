@@ -59,6 +59,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQFocusEvent();
 		}
+		[SmokeMethod("~QFocusEvent()")]
 		private void DisposeQFocusEvent() {
 			ProxyQFocusEvent().DisposeQFocusEvent();
 		}

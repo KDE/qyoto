@@ -86,6 +86,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQGradient();
 		}
+		[SmokeMethod("~QGradient()")]
 		private void DisposeQGradient() {
 			ProxyQGradient().DisposeQGradient();
 		}

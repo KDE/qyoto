@@ -124,6 +124,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQStatusBar();
 		}
+		[SmokeMethod("~QStatusBar()")]
 		private void DisposeQStatusBar() {
 			ProxyQStatusBar().DisposeQStatusBar();
 		}

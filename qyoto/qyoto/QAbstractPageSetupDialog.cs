@@ -55,6 +55,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQAbstractPageSetupDialog();
 		}
+		[SmokeMethod("~QAbstractPageSetupDialog()")]
 		private void DisposeQAbstractPageSetupDialog() {
 			ProxyQAbstractPageSetupDialog().DisposeQAbstractPageSetupDialog();
 		}

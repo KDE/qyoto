@@ -79,6 +79,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQFocusFrame();
 		}
+		[SmokeMethod("~QFocusFrame()")]
 		private void DisposeQFocusFrame() {
 			ProxyQFocusFrame().DisposeQFocusFrame();
 		}

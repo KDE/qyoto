@@ -95,6 +95,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQDoubleValidator();
 		}
+		[SmokeMethod("~QDoubleValidator()")]
 		private void DisposeQDoubleValidator() {
 			ProxyQDoubleValidator().DisposeQDoubleValidator();
 		}

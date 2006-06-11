@@ -107,6 +107,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQStyleOption();
 		}
+		[SmokeMethod("~QStyleOption()")]
 		private void DisposeQStyleOption() {
 			ProxyQStyleOption().DisposeQStyleOption();
 		}

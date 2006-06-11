@@ -241,6 +241,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQHttp();
 		}
+		[SmokeMethod("~QHttp()")]
 		private void DisposeQHttp() {
 			ProxyQHttp().DisposeQHttp();
 		}

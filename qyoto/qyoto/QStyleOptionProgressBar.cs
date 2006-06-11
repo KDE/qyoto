@@ -59,6 +59,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQStyleOptionProgressBar();
 		}
+		[SmokeMethod("~QStyleOptionProgressBar()")]
 		private void DisposeQStyleOptionProgressBar() {
 			ProxyQStyleOptionProgressBar().DisposeQStyleOptionProgressBar();
 		}

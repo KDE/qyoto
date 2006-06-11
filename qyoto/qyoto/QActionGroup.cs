@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Collections;
 	using System.Text;
 
 	/// See <see cref="IQActionGroupSignals"></see> for signals emitted by QActionGroup
@@ -54,7 +55,10 @@ namespace Qyoto {
 		public void RemoveAction(QAction a) {
 			ProxyQActionGroup().RemoveAction(a);
 		}
-		// QList<QAction*> actions(); >>>> NOT CONVERTED
+		[SmokeMethod("actions() const")]
+		public ArrayList Actions() {
+			return ProxyQActionGroup().Actions();
+		}
 		[SmokeMethod("checkedAction() const")]
 		public QAction CheckedAction() {
 			return ProxyQActionGroup().CheckedAction();
@@ -101,6 +105,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQActionGroup();
 		}
+		[SmokeMethod("~QActionGroup()")]
 		private void DisposeQActionGroup() {
 			ProxyQActionGroup().DisposeQActionGroup();
 		}

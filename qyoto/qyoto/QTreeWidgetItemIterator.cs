@@ -92,6 +92,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQTreeWidgetItemIterator();
 		}
+		[SmokeMethod("~QTreeWidgetItemIterator()")]
 		private void DisposeQTreeWidgetItemIterator() {
 			ProxyQTreeWidgetItemIterator().DisposeQTreeWidgetItemIterator();
 		}

@@ -84,6 +84,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQXmlNamespaceSupport();
 		}
+		[SmokeMethod("~QXmlNamespaceSupport()")]
 		private void DisposeQXmlNamespaceSupport() {
 			ProxyQXmlNamespaceSupport().DisposeQXmlNamespaceSupport();
 		}

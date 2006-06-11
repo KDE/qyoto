@@ -99,6 +99,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQSplitterHandle();
 		}
+		[SmokeMethod("~QSplitterHandle()")]
 		private void DisposeQSplitterHandle() {
 			ProxyQSplitterHandle().DisposeQSplitterHandle();
 		}

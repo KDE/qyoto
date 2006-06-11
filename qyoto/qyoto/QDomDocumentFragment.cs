@@ -51,6 +51,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQDomDocumentFragment();
 		}
+		[SmokeMethod("~QDomDocumentFragment()")]
 		private void DisposeQDomDocumentFragment() {
 			ProxyQDomDocumentFragment().DisposeQDomDocumentFragment();
 		}

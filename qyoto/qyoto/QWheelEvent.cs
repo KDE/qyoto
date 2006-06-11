@@ -99,6 +99,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQWheelEvent();
 		}
+		[SmokeMethod("~QWheelEvent()")]
 		private void DisposeQWheelEvent() {
 			ProxyQWheelEvent().DisposeQWheelEvent();
 		}

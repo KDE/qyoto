@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Collections;
 	using System.Text;
 
 	[SmokeClass("QPictureIO")]
@@ -13,6 +14,8 @@ namespace Qyoto {
 		interface IQPictureIOProxy {
 			QByteArray PictureFormat(string fileName);
 			QByteArray PictureFormat(IQIODevice arg1);
+			ArrayList InputFormats();
+			ArrayList OutputFormats();
 		}
 
 		protected new void CreateProxy() {
@@ -143,8 +146,14 @@ namespace Qyoto {
 		public static QByteArray PictureFormat(IQIODevice arg1) {
 			return StaticQPictureIO().PictureFormat(arg1);
 		}
-		// QList<QByteArray> inputFormats(); >>>> NOT CONVERTED
-		// QList<QByteArray> outputFormats(); >>>> NOT CONVERTED
+		[SmokeMethod("inputFormats()")]
+		public static ArrayList InputFormats() {
+			return StaticQPictureIO().InputFormats();
+		}
+		[SmokeMethod("outputFormats()")]
+		public static ArrayList OutputFormats() {
+			return StaticQPictureIO().OutputFormats();
+		}
 		// void defineIOHandler(const char* arg1,const char* arg2,const char* arg3,picture_io_handler arg4,picture_io_handler arg5); >>>> NOT CONVERTED
 		~QPictureIO() {
 			DisposeQPictureIO();
@@ -152,6 +161,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQPictureIO();
 		}
+		[SmokeMethod("~QPictureIO()")]
 		private void DisposeQPictureIO() {
 			ProxyQPictureIO().DisposeQPictureIO();
 		}

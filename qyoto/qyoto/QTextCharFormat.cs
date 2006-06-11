@@ -185,6 +185,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQTextCharFormat();
 		}
+		[SmokeMethod("~QTextCharFormat()")]
 		private void DisposeQTextCharFormat() {
 			ProxyQTextCharFormat().DisposeQTextCharFormat();
 		}

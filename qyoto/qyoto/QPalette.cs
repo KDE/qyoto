@@ -282,6 +282,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQPalette();
 		}
+		[SmokeMethod("~QPalette()")]
 		private void DisposeQPalette() {
 			ProxyQPalette().DisposeQPalette();
 		}

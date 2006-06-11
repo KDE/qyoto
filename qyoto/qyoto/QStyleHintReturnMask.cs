@@ -43,6 +43,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQStyleHintReturnMask();
 		}
+		[SmokeMethod("~QStyleHintReturnMask()")]
 		private void DisposeQStyleHintReturnMask() {
 			ProxyQStyleHintReturnMask().DisposeQStyleHintReturnMask();
 		}

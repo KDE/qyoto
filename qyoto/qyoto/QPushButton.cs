@@ -151,6 +151,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQPushButton();
 		}
+		[SmokeMethod("~QPushButton()")]
 		private void DisposeQPushButton() {
 			ProxyQPushButton().DisposeQPushButton();
 		}

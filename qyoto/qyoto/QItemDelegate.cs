@@ -131,6 +131,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQItemDelegate();
 		}
+		[SmokeMethod("~QItemDelegate()")]
 		private void DisposeQItemDelegate() {
 			ProxyQItemDelegate().DisposeQItemDelegate();
 		}

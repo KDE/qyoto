@@ -259,6 +259,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQFileInfo();
 		}
+		[SmokeMethod("~QFileInfo()")]
 		private void DisposeQFileInfo() {
 			ProxyQFileInfo().DisposeQFileInfo();
 		}

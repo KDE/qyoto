@@ -97,6 +97,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQDomImplementation();
 		}
+		[SmokeMethod("~QDomImplementation()")]
 		private void DisposeQDomImplementation() {
 			ProxyQDomImplementation().DisposeQDomImplementation();
 		}

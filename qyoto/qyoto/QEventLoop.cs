@@ -107,6 +107,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQEventLoop();
 		}
+		[SmokeMethod("~QEventLoop()")]
 		private void DisposeQEventLoop() {
 			ProxyQEventLoop().DisposeQEventLoop();
 		}

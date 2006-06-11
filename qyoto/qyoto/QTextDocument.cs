@@ -219,6 +219,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQTextDocument();
 		}
+		[SmokeMethod("~QTextDocument()")]
 		private void DisposeQTextDocument() {
 			ProxyQTextDocument().DisposeQTextDocument();
 		}

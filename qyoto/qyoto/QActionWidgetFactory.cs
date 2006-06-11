@@ -50,6 +50,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQActionWidgetFactory();
 		}
+		[SmokeMethod("~QActionWidgetFactory()")]
 		private void DisposeQActionWidgetFactory() {
 			ProxyQActionWidgetFactory().DisposeQActionWidgetFactory();
 		}

@@ -200,6 +200,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQMainWindow();
 		}
+		[SmokeMethod("~QMainWindow()")]
 		private void DisposeQMainWindow() {
 			ProxyQMainWindow().DisposeQMainWindow();
 		}

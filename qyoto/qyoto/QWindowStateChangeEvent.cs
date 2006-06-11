@@ -55,6 +55,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQWindowStateChangeEvent();
 		}
+		[SmokeMethod("~QWindowStateChangeEvent()")]
 		private void DisposeQWindowStateChangeEvent() {
 			ProxyQWindowStateChangeEvent().DisposeQWindowStateChangeEvent();
 		}

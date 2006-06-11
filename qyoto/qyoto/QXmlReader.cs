@@ -118,6 +118,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQXmlReader();
 		}
+		[SmokeMethod("~QXmlReader()")]
 		private void DisposeQXmlReader() {
 			ProxyQXmlReader().DisposeQXmlReader();
 		}

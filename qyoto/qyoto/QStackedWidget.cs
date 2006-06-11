@@ -104,6 +104,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQStackedWidget();
 		}
+		[SmokeMethod("~QStackedWidget()")]
 		private void DisposeQStackedWidget() {
 			ProxyQStackedWidget().DisposeQStackedWidget();
 		}

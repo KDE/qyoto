@@ -50,6 +50,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQToolTip();
 		}
+		[SmokeMethod("~QToolTip()")]
 		private void DisposeQToolTip() {
 			ProxyQToolTip().DisposeQToolTip();
 		}

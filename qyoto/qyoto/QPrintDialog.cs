@@ -63,6 +63,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQPrintDialog();
 		}
+		[SmokeMethod("~QPrintDialog()")]
 		private void DisposeQPrintDialog() {
 			ProxyQPrintDialog().DisposeQPrintDialog();
 		}

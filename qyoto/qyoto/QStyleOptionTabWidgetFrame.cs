@@ -59,6 +59,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQStyleOptionTabWidgetFrame();
 		}
+		[SmokeMethod("~QStyleOptionTabWidgetFrame()")]
 		private void DisposeQStyleOptionTabWidgetFrame() {
 			ProxyQStyleOptionTabWidgetFrame().DisposeQStyleOptionTabWidgetFrame();
 		}

@@ -372,6 +372,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQGLWidget();
 		}
+		[SmokeMethod("~QGLWidget()")]
 		private void DisposeQGLWidget() {
 			ProxyQGLWidget().DisposeQGLWidget();
 		}

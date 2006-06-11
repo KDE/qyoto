@@ -65,6 +65,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQStyleOptionViewItem();
 		}
+		[SmokeMethod("~QStyleOptionViewItem()")]
 		private void DisposeQStyleOptionViewItem() {
 			ProxyQStyleOptionViewItem().DisposeQStyleOptionViewItem();
 		}

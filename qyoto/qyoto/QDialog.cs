@@ -172,6 +172,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQDialog();
 		}
+		[SmokeMethod("~QDialog()")]
 		private void DisposeQDialog() {
 			ProxyQDialog().DisposeQDialog();
 		}

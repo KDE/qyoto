@@ -89,6 +89,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQUdpSocket();
 		}
+		[SmokeMethod("~QUdpSocket()")]
 		private void DisposeQUdpSocket() {
 			ProxyQUdpSocket().DisposeQUdpSocket();
 		}

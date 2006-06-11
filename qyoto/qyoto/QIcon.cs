@@ -205,6 +205,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQIcon();
 		}
+		[SmokeMethod("~QIcon()")]
 		private void DisposeQIcon() {
 			ProxyQIcon().DisposeQIcon();
 		}

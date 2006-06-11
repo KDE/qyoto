@@ -66,6 +66,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQXmlErrorHandler();
 		}
+		[SmokeMethod("~QXmlErrorHandler()")]
 		private void DisposeQXmlErrorHandler() {
 			ProxyQXmlErrorHandler().DisposeQXmlErrorHandler();
 		}

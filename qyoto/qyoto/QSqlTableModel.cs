@@ -249,6 +249,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQSqlTableModel();
 		}
+		[SmokeMethod("~QSqlTableModel()")]
 		private void DisposeQSqlTableModel() {
 			ProxyQSqlTableModel().DisposeQSqlTableModel();
 		}

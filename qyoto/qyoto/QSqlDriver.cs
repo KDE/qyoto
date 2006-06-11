@@ -170,6 +170,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQSqlDriver();
 		}
+		[SmokeMethod("~QSqlDriver()")]
 		private void DisposeQSqlDriver() {
 			ProxyQSqlDriver().DisposeQSqlDriver();
 		}

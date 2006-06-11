@@ -129,6 +129,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQPersistentModelIndex();
 		}
+		[SmokeMethod("~QPersistentModelIndex()")]
 		private void DisposeQPersistentModelIndex() {
 			ProxyQPersistentModelIndex().DisposeQPersistentModelIndex();
 		}

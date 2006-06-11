@@ -112,6 +112,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQModelIndex();
 		}
+		[SmokeMethod("~QModelIndex()")]
 		private void DisposeQModelIndex() {
 			ProxyQModelIndex().DisposeQModelIndex();
 		}

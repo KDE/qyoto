@@ -385,6 +385,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQHeaderView();
 		}
+		[SmokeMethod("~QHeaderView()")]
 		private void DisposeQHeaderView() {
 			ProxyQHeaderView().DisposeQHeaderView();
 		}

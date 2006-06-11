@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Collections;
 	using System.Text;
 
 	[SmokeClass("QPrinter")]
@@ -247,7 +248,10 @@ namespace Qyoto {
 		public QPrinter.PaperSource paperSource() {
 			return ProxyQPrinter().paperSource();
 		}
-		// QList<int> supportedResolutions(); >>>> NOT CONVERTED
+		[SmokeMethod("supportedResolutions() const")]
+		public ArrayList SupportedResolutions() {
+			return ProxyQPrinter().SupportedResolutions();
+		}
 		[SmokeMethod("setFontEmbeddingEnabled(bool)")]
 		public void SetFontEmbeddingEnabled(bool enable) {
 			ProxyQPrinter().SetFontEmbeddingEnabled(enable);
@@ -318,6 +322,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQPrinter();
 		}
+		[SmokeMethod("~QPrinter()")]
 		private void DisposeQPrinter() {
 			ProxyQPrinter().DisposeQPrinter();
 		}

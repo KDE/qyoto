@@ -64,6 +64,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQFileIconProvider();
 		}
+		[SmokeMethod("~QFileIconProvider()")]
 		private void DisposeQFileIconProvider() {
 			ProxyQFileIconProvider().DisposeQFileIconProvider();
 		}

@@ -215,6 +215,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQLabel();
 		}
+		[SmokeMethod("~QLabel()")]
 		private void DisposeQLabel() {
 			ProxyQLabel().DisposeQLabel();
 		}

@@ -123,6 +123,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQDial();
 		}
+		[SmokeMethod("~QDial()")]
 		private void DisposeQDial() {
 			ProxyQDial().DisposeQDial();
 		}

@@ -186,6 +186,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQIODevice();
 		}
+		[SmokeMethod("~QIODevice()")]
 		private void DisposeQIODevice() {
 			ProxyQIODevice().DisposeQIODevice();
 		}

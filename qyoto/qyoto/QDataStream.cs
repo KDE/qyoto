@@ -213,6 +213,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQDataStream();
 		}
+		[SmokeMethod("~QDataStream()")]
 		private void DisposeQDataStream() {
 			ProxyQDataStream().DisposeQDataStream();
 		}

@@ -156,6 +156,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQProgressBar();
 		}
+		[SmokeMethod("~QProgressBar()")]
 		private void DisposeQProgressBar() {
 			ProxyQProgressBar().DisposeQProgressBar();
 		}

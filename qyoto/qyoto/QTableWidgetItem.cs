@@ -202,6 +202,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQTableWidgetItem();
 		}
+		[SmokeMethod("~QTableWidgetItem()")]
 		private void DisposeQTableWidgetItem() {
 			ProxyQTableWidgetItem().DisposeQTableWidgetItem();
 		}

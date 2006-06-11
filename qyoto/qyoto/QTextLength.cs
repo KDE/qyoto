@@ -83,6 +83,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQTextLength();
 		}
+		[SmokeMethod("~QTextLength()")]
 		private void DisposeQTextLength() {
 			ProxyQTextLength().DisposeQTextLength();
 		}

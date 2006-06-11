@@ -83,6 +83,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQXmlInputSource();
 		}
+		[SmokeMethod("~QXmlInputSource()")]
 		private void DisposeQXmlInputSource() {
 			ProxyQXmlInputSource().DisposeQXmlInputSource();
 		}

@@ -74,6 +74,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQByteArrayMatcher();
 		}
+		[SmokeMethod("~QByteArrayMatcher()")]
 		private void DisposeQByteArrayMatcher() {
 			ProxyQByteArrayMatcher().DisposeQByteArrayMatcher();
 		}

@@ -116,6 +116,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQBuffer();
 		}
+		[SmokeMethod("~QBuffer()")]
 		private void DisposeQBuffer() {
 			ProxyQBuffer().DisposeQBuffer();
 		}

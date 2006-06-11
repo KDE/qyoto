@@ -191,6 +191,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQSqlField();
 		}
+		[SmokeMethod("~QSqlField()")]
 		private void DisposeQSqlField() {
 			ProxyQSqlField().DisposeQSqlField();
 		}

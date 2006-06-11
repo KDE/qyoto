@@ -173,6 +173,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQWorkspace();
 		}
+		[SmokeMethod("~QWorkspace()")]
 		private void DisposeQWorkspace() {
 			ProxyQWorkspace().DisposeQWorkspace();
 		}

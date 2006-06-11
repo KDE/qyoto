@@ -152,6 +152,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQXmlDefaultHandler();
 		}
+		[SmokeMethod("~QXmlDefaultHandler()")]
 		private void DisposeQXmlDefaultHandler() {
 			ProxyQXmlDefaultHandler().DisposeQXmlDefaultHandler();
 		}

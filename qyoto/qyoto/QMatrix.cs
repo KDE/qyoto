@@ -195,6 +195,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQMatrix();
 		}
+		[SmokeMethod("~QMatrix()")]
 		private void DisposeQMatrix() {
 			ProxyQMatrix().DisposeQMatrix();
 		}

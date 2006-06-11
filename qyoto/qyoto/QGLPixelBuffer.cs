@@ -137,6 +137,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQGLPixelBuffer();
 		}
+		[SmokeMethod("~QGLPixelBuffer()")]
 		private void DisposeQGLPixelBuffer() {
 			ProxyQGLPixelBuffer().DisposeQGLPixelBuffer();
 		}

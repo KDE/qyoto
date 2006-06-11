@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Collections;
 	using System.Text;
 
 	[SmokeClass("QPluginLoader")]
@@ -10,6 +11,7 @@ namespace Qyoto {
 		interface IQPluginLoaderProxy {
 			string Tr(string s, string c);
 			string Tr(string s);
+			ArrayList StaticInstances();
 		}
 
 		protected new void CreateProxy() {
@@ -93,13 +95,17 @@ namespace Qyoto {
 		public static new string Tr(string s) {
 			return StaticQPluginLoader().Tr(s);
 		}
-		// QObjectList staticInstances(); >>>> NOT CONVERTED
+		[SmokeMethod("staticInstances()")]
+		public static ArrayList StaticInstances() {
+			return StaticQPluginLoader().StaticInstances();
+		}
 		~QPluginLoader() {
 			DisposeQPluginLoader();
 		}
 		public new void Dispose() {
 			DisposeQPluginLoader();
 		}
+		[SmokeMethod("~QPluginLoader()")]
 		private void DisposeQPluginLoader() {
 			ProxyQPluginLoader().DisposeQPluginLoader();
 		}

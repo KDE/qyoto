@@ -675,6 +675,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQStyle();
 		}
+		[SmokeMethod("~QStyle()")]
 		private void DisposeQStyle() {
 			ProxyQStyle().DisposeQStyle();
 		}

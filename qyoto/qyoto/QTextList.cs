@@ -84,6 +84,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQTextList();
 		}
+		[SmokeMethod("~QTextList()")]
 		private void DisposeQTextList() {
 			ProxyQTextList().DisposeQTextList();
 		}

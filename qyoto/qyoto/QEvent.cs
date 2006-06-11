@@ -177,6 +177,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQEvent();
 		}
+		[SmokeMethod("~QEvent()")]
 		private void DisposeQEvent() {
 			ProxyQEvent().DisposeQEvent();
 		}

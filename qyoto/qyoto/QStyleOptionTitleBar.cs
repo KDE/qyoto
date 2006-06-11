@@ -59,6 +59,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQStyleOptionTitleBar();
 		}
+		[SmokeMethod("~QStyleOptionTitleBar()")]
 		private void DisposeQStyleOptionTitleBar() {
 			ProxyQStyleOptionTitleBar().DisposeQStyleOptionTitleBar();
 		}

@@ -234,6 +234,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQFtp();
 		}
+		[SmokeMethod("~QFtp()")]
 		private void DisposeQFtp() {
 			ProxyQFtp().DisposeQFtp();
 		}

@@ -72,6 +72,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQErrorMessage();
 		}
+		[SmokeMethod("~QErrorMessage()")]
 		private void DisposeQErrorMessage() {
 			ProxyQErrorMessage().DisposeQErrorMessage();
 		}

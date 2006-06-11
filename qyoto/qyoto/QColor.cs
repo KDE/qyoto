@@ -451,6 +451,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQColor();
 		}
+		[SmokeMethod("~QColor()")]
 		private void DisposeQColor() {
 			ProxyQColor().DisposeQColor();
 		}

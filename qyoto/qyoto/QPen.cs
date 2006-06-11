@@ -188,6 +188,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQPen();
 		}
+		[SmokeMethod("~QPen()")]
 		private void DisposeQPen() {
 			ProxyQPen().DisposeQPen();
 		}

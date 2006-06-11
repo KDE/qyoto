@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Collections;
 	using System.Text;
 
 	/// See <see cref="IQMovieSignals"></see> for signals emitted by QMovie
@@ -11,6 +12,7 @@ namespace Qyoto {
 		interface IQMovieProxy {
 			string Tr(string s, string c);
 			string Tr(string s);
+			ArrayList SupportedFormats();
 		}
 
 		protected new void CreateProxy() {
@@ -223,13 +225,17 @@ namespace Qyoto {
 		public static new string Tr(string s) {
 			return StaticQMovie().Tr(s);
 		}
-		// QList<QByteArray> supportedFormats(); >>>> NOT CONVERTED
+		[SmokeMethod("supportedFormats()")]
+		public static ArrayList SupportedFormats() {
+			return StaticQMovie().SupportedFormats();
+		}
 		~QMovie() {
 			DisposeQMovie();
 		}
 		public new void Dispose() {
 			DisposeQMovie();
 		}
+		[SmokeMethod("~QMovie()")]
 		private void DisposeQMovie() {
 			ProxyQMovie().DisposeQMovie();
 		}

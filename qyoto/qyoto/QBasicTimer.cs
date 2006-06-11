@@ -58,6 +58,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQBasicTimer();
 		}
+		[SmokeMethod("~QBasicTimer()")]
 		private void DisposeQBasicTimer() {
 			ProxyQBasicTimer().DisposeQBasicTimer();
 		}

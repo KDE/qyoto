@@ -80,6 +80,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQContextMenuEvent();
 		}
+		[SmokeMethod("~QContextMenuEvent()")]
 		private void DisposeQContextMenuEvent() {
 			ProxyQContextMenuEvent().DisposeQContextMenuEvent();
 		}

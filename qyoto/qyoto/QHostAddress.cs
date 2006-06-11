@@ -149,6 +149,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQHostAddress();
 		}
+		[SmokeMethod("~QHostAddress()")]
 		private void DisposeQHostAddress() {
 			ProxyQHostAddress().DisposeQHostAddress();
 		}

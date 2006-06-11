@@ -169,6 +169,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQDomElement();
 		}
+		[SmokeMethod("~QDomElement()")]
 		private void DisposeQDomElement() {
 			ProxyQDomElement().DisposeQDomElement();
 		}

@@ -66,6 +66,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQSyntaxHighlighter();
 		}
+		[SmokeMethod("~QSyntaxHighlighter()")]
 		private void DisposeQSyntaxHighlighter() {
 			ProxyQSyntaxHighlighter().DisposeQSyntaxHighlighter();
 		}

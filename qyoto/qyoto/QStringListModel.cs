@@ -132,6 +132,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQStringListModel();
 		}
+		[SmokeMethod("~QStringListModel()")]
 		private void DisposeQStringListModel() {
 			ProxyQStringListModel().DisposeQStringListModel();
 		}

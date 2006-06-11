@@ -43,6 +43,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQDragResponseEvent();
 		}
+		[SmokeMethod("~QDragResponseEvent()")]
 		private void DisposeQDragResponseEvent() {
 			ProxyQDragResponseEvent().DisposeQDragResponseEvent();
 		}

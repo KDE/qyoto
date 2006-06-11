@@ -75,6 +75,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQWhatsThis();
 		}
+		[SmokeMethod("~QWhatsThis()")]
 		private void DisposeQWhatsThis() {
 			ProxyQWhatsThis().DisposeQWhatsThis();
 		}

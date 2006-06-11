@@ -401,6 +401,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQFont();
 		}
+		[SmokeMethod("~QFont()")]
 		private void DisposeQFont() {
 			ProxyQFont().DisposeQFont();
 		}

@@ -76,6 +76,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQDomDocumentType();
 		}
+		[SmokeMethod("~QDomDocumentType()")]
 		private void DisposeQDomDocumentType() {
 			ProxyQDomDocumentType().DisposeQDomDocumentType();
 		}

@@ -211,6 +211,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQDateTime();
 		}
+		[SmokeMethod("~QDateTime()")]
 		private void DisposeQDateTime() {
 			ProxyQDateTime().DisposeQDateTime();
 		}

@@ -42,6 +42,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQTextFrameLayoutData();
 		}
+		[SmokeMethod("~QTextFrameLayoutData()")]
 		private void DisposeQTextFrameLayoutData() {
 			ProxyQTextFrameLayoutData().DisposeQTextFrameLayoutData();
 		}

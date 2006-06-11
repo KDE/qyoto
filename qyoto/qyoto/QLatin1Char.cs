@@ -50,6 +50,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQLatin1Char();
 		}
+		[SmokeMethod("~QLatin1Char()")]
 		private void DisposeQLatin1Char() {
 			ProxyQLatin1Char().DisposeQLatin1Char();
 		}

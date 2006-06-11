@@ -278,6 +278,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQTextCursor();
 		}
+		[SmokeMethod("~QTextCursor()")]
 		private void DisposeQTextCursor() {
 			ProxyQTextCursor().DisposeQTextCursor();
 		}

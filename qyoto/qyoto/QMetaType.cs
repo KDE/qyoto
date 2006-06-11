@@ -84,6 +84,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQMetaType();
 		}
+		[SmokeMethod("~QMetaType()")]
 		private void DisposeQMetaType() {
 			ProxyQMetaType().DisposeQMetaType();
 		}

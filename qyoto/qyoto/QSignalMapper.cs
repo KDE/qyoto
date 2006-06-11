@@ -104,6 +104,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQSignalMapper();
 		}
+		[SmokeMethod("~QSignalMapper()")]
 		private void DisposeQSignalMapper() {
 			ProxyQSignalMapper().DisposeQSignalMapper();
 		}

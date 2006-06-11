@@ -199,9 +199,18 @@ namespace Qyoto {
 		public void SetRangeSelected(QTableWidgetSelectionRange range, bool select) {
 			ProxyQTableWidget().SetRangeSelected(range,select);
 		}
-		// QList<QTableWidgetSelectionRange> selectedRanges(); >>>> NOT CONVERTED
-		// QList<QTableWidgetItem*> selectedItems(); >>>> NOT CONVERTED
-		// QList<QTableWidgetItem*> findItems(const QString& arg1,Qt::MatchFlags arg2); >>>> NOT CONVERTED
+		[SmokeMethod("selectedRanges() const")]
+		public ArrayList SelectedRanges() {
+			return ProxyQTableWidget().SelectedRanges();
+		}
+		[SmokeMethod("selectedItems()")]
+		public ArrayList SelectedItems() {
+			return ProxyQTableWidget().SelectedItems();
+		}
+		[SmokeMethod("findItems(const QString&, Qt::MatchFlags) const")]
+		public ArrayList FindItems(string text, int flags) {
+			return ProxyQTableWidget().FindItems(text,flags);
+		}
 		[SmokeMethod("visualRow(int) const")]
 		public int VisualRow(int logicalRow) {
 			return ProxyQTableWidget().VisualRow(logicalRow);
@@ -274,7 +283,10 @@ namespace Qyoto {
 		protected virtual ArrayList MimeTypes() {
 			return ProxyQTableWidget().MimeTypes();
 		}
-		// QMimeData* mimeData(const QList<QTableWidgetItem*> arg1); >>>> NOT CONVERTED
+		[SmokeMethod("mimeData(const QList<QTableWidgetItem*>) const")]
+		protected virtual QMimeData MimeData(ArrayList items) {
+			return ProxyQTableWidget().MimeData(items);
+		}
 		[SmokeMethod("dropMimeData(int, int, const QMimeData*, Qt::DropAction)")]
 		protected virtual bool DropMimeData(int row, int column, QMimeData data, Qt.DropAction action) {
 			return ProxyQTableWidget().DropMimeData(row,column,data,action);
@@ -283,7 +295,10 @@ namespace Qyoto {
 		protected virtual int SupportedDropActions() {
 			return ProxyQTableWidget().SupportedDropActions();
 		}
-		// QList<QTableWidgetItem*> items(const QMimeData* arg1); >>>> NOT CONVERTED
+		[SmokeMethod("items(const QMimeData*) const")]
+		protected ArrayList Items(QMimeData data) {
+			return ProxyQTableWidget().Items(data);
+		}
 		[SmokeMethod("indexFromItem(QTableWidgetItem*) const")]
 		protected QModelIndex IndexFromItem(QTableWidgetItem item) {
 			return ProxyQTableWidget().IndexFromItem(item);
@@ -298,6 +313,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQTableWidget();
 		}
+		[SmokeMethod("~QTableWidget()")]
 		private void DisposeQTableWidget() {
 			ProxyQTableWidget().DisposeQTableWidget();
 		}

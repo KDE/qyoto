@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Collections;
 
 	[SmokeClass("QTextTableFormat")]
 	public class QTextTableFormat : QTextFrameFormat, IDisposable {
@@ -45,7 +46,10 @@ namespace Qyoto {
 		public void SetColumns(int columns) {
 			ProxyQTextTableFormat().SetColumns(columns);
 		}
-		// void setColumnWidthConstraints(const QVector<QTextLength>& arg1); >>>> NOT CONVERTED
+		[SmokeMethod("setColumnWidthConstraints(const QVector<QTextLength>&)")]
+		public void SetColumnWidthConstraints(ArrayList constraints) {
+			ProxyQTextTableFormat().SetColumnWidthConstraints(constraints);
+		}
 		// QVector<QTextLength> columnWidthConstraints(); >>>> NOT CONVERTED
 		[SmokeMethod("clearColumnWidthConstraints()")]
 		public void ClearColumnWidthConstraints() {
@@ -81,6 +85,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQTextTableFormat();
 		}
+		[SmokeMethod("~QTextTableFormat()")]
 		private void DisposeQTextTableFormat() {
 			ProxyQTextTableFormat().DisposeQTextTableFormat();
 		}

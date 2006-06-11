@@ -133,7 +133,10 @@ namespace Qyoto {
 		public virtual ArrayList MimeTypes() {
 			return ProxyQAbstractItemModel().MimeTypes();
 		}
-		// QMimeData* mimeData(const QModelIndexList& arg1); >>>> NOT CONVERTED
+		[SmokeMethod("mimeData(const QModelIndexList&) const")]
+		public virtual QMimeData MimeData(ArrayList indexes) {
+			return ProxyQAbstractItemModel().MimeData(indexes);
+		}
 		[SmokeMethod("dropMimeData(const QMimeData*, Qt::DropAction, int, int, const QModelIndex&)")]
 		public virtual bool DropMimeData(QMimeData data, Qt.DropAction action, int row, int column, QModelIndex parent) {
 			return ProxyQAbstractItemModel().DropMimeData(data,action,row,column,parent);
@@ -230,9 +233,18 @@ namespace Qyoto {
 		public virtual QModelIndex Buddy(QModelIndex index) {
 			return ProxyQAbstractItemModel().Buddy(index);
 		}
-		// QModelIndexList match(const QModelIndex& arg1,int arg2,const QVariant& arg3,int arg4,Qt::MatchFlags arg5); >>>> NOT CONVERTED
-		// QModelIndexList match(const QModelIndex& arg1,int arg2,const QVariant& arg3,int arg4); >>>> NOT CONVERTED
-		// QModelIndexList match(const QModelIndex& arg1,int arg2,const QVariant& arg3); >>>> NOT CONVERTED
+		[SmokeMethod("match(const QModelIndex&, int, const QVariant&, int, Qt::MatchFlags) const")]
+		public virtual ArrayList Match(QModelIndex start, int role, QVariant value, int hits, int flags) {
+			return ProxyQAbstractItemModel().Match(start,role,value,hits,flags);
+		}
+		[SmokeMethod("match(const QModelIndex&, int, const QVariant&, int) const")]
+		public virtual ArrayList Match(QModelIndex start, int role, QVariant value, int hits) {
+			return ProxyQAbstractItemModel().Match(start,role,value,hits);
+		}
+		[SmokeMethod("match(const QModelIndex&, int, const QVariant&) const")]
+		public virtual ArrayList Match(QModelIndex start, int role, QVariant value) {
+			return ProxyQAbstractItemModel().Match(start,role,value);
+		}
 		[SmokeMethod("span(const QModelIndex&) const")]
 		public virtual QSize Span(QModelIndex index) {
 			return ProxyQAbstractItemModel().Span(index);
@@ -263,6 +275,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQAbstractItemModel();
 		}
+		[SmokeMethod("~QAbstractItemModel()")]
 		private void DisposeQAbstractItemModel() {
 			ProxyQAbstractItemModel().DisposeQAbstractItemModel();
 		}

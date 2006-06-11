@@ -124,6 +124,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQCheckBox();
 		}
+		[SmokeMethod("~QCheckBox()")]
 		private void DisposeQCheckBox() {
 			ProxyQCheckBox().DisposeQCheckBox();
 		}

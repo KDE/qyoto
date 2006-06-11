@@ -91,6 +91,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQAbstractProxyModel();
 		}
+		[SmokeMethod("~QAbstractProxyModel()")]
 		private void DisposeQAbstractProxyModel() {
 			ProxyQAbstractProxyModel().DisposeQAbstractProxyModel();
 		}

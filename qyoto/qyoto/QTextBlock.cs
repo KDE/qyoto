@@ -145,6 +145,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQTextBlock();
 		}
+		[SmokeMethod("~QTextBlock()")]
 		private void DisposeQTextBlock() {
 			ProxyQTextBlock().DisposeQTextBlock();
 		}

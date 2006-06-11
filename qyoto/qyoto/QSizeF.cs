@@ -122,6 +122,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQSizeF();
 		}
+		[SmokeMethod("~QSizeF()")]
 		private void DisposeQSizeF() {
 			ProxyQSizeF().DisposeQSizeF();
 		}

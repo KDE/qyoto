@@ -68,6 +68,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQLibraryInfo();
 		}
+		[SmokeMethod("~QLibraryInfo()")]
 		private void DisposeQLibraryInfo() {
 			ProxyQLibraryInfo().DisposeQLibraryInfo();
 		}

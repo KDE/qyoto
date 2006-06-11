@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Collections;
 	using System.Text;
 
 	[SmokeClass("QTextCodec")]
@@ -14,6 +15,8 @@ namespace Qyoto {
 			QTextCodec CodecForName(QByteArray name);
 			QTextCodec CodecForName(string name);
 			QTextCodec CodecForMib(int mib);
+			ArrayList AvailableCodecs();
+			ArrayList AvailableMibs();
 			QTextCodec CodecForLocale();
 			void SetCodecForLocale(QTextCodec c);
 			QTextCodec CodecForTr();
@@ -86,7 +89,10 @@ namespace Qyoto {
 		public virtual QByteArray Name() {
 			return ProxyQTextCodec().Name();
 		}
-		// QList<QByteArray> aliases(); >>>> NOT CONVERTED
+		[SmokeMethod("aliases() const")]
+		public virtual ArrayList Aliases() {
+			return ProxyQTextCodec().Aliases();
+		}
 		[SmokeMethod("mibEnum() const")]
 		public virtual int MibEnum() {
 			return ProxyQTextCodec().MibEnum();
@@ -103,8 +109,14 @@ namespace Qyoto {
 		public static QTextCodec CodecForMib(int mib) {
 			return StaticQTextCodec().CodecForMib(mib);
 		}
-		// QList<QByteArray> availableCodecs(); >>>> NOT CONVERTED
-		// QList<int> availableMibs(); >>>> NOT CONVERTED
+		[SmokeMethod("availableCodecs()")]
+		public static ArrayList AvailableCodecs() {
+			return StaticQTextCodec().AvailableCodecs();
+		}
+		[SmokeMethod("availableMibs()")]
+		public static ArrayList AvailableMibs() {
+			return StaticQTextCodec().AvailableMibs();
+		}
 		[SmokeMethod("codecForLocale()")]
 		public static QTextCodec CodecForLocale() {
 			return StaticQTextCodec().CodecForLocale();

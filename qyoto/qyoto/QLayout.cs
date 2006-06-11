@@ -216,6 +216,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQLayout();
 		}
+		[SmokeMethod("~QLayout()")]
 		private void DisposeQLayout() {
 			ProxyQLayout().DisposeQLayout();
 		}

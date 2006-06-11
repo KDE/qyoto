@@ -291,6 +291,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQSettings();
 		}
+		[SmokeMethod("~QSettings()")]
 		private void DisposeQSettings() {
 			ProxyQSettings().DisposeQSettings();
 		}

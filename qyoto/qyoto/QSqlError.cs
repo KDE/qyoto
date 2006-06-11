@@ -130,6 +130,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQSqlError();
 		}
+		[SmokeMethod("~QSqlError()")]
 		private void DisposeQSqlError() {
 			ProxyQSqlError().DisposeQSqlError();
 		}

@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Collections;
 	using System.Text;
 
 	[SmokeClass("QImageWriter")]
@@ -11,6 +12,7 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QImageWriter(Type dummy) {}
 		interface IQImageWriterProxy {
+			ArrayList SupportedImageFormats();
 		}
 
 		protected new void CreateProxy() {
@@ -134,13 +136,17 @@ namespace Qyoto {
 		public string ErrorString() {
 			return ProxyQImageWriter().ErrorString();
 		}
-		// QList<QByteArray> supportedImageFormats(); >>>> NOT CONVERTED
+		[SmokeMethod("supportedImageFormats()")]
+		public static ArrayList SupportedImageFormats() {
+			return StaticQImageWriter().SupportedImageFormats();
+		}
 		~QImageWriter() {
 			DisposeQImageWriter();
 		}
 		public void Dispose() {
 			DisposeQImageWriter();
 		}
+		[SmokeMethod("~QImageWriter()")]
 		private void DisposeQImageWriter() {
 			ProxyQImageWriter().DisposeQImageWriter();
 		}

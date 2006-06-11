@@ -69,6 +69,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQStyleOptionFrameV2();
 		}
+		[SmokeMethod("~QStyleOptionFrameV2()")]
 		private void DisposeQStyleOptionFrameV2() {
 			ProxyQStyleOptionFrameV2().DisposeQStyleOptionFrameV2();
 		}

@@ -39,6 +39,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQSqlDriverCreatorBase();
 		}
+		[SmokeMethod("~QSqlDriverCreatorBase()")]
 		private void DisposeQSqlDriverCreatorBase() {
 			ProxyQSqlDriverCreatorBase().DisposeQSqlDriverCreatorBase();
 		}

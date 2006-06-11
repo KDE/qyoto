@@ -156,6 +156,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQWindowsStyle();
 		}
+		[SmokeMethod("~QWindowsStyle()")]
 		private void DisposeQWindowsStyle() {
 			ProxyQWindowsStyle().DisposeQWindowsStyle();
 		}

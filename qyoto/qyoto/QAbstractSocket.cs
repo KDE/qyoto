@@ -270,6 +270,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQAbstractSocket();
 		}
+		[SmokeMethod("~QAbstractSocket()")]
 		private void DisposeQAbstractSocket() {
 			ProxyQAbstractSocket().DisposeQAbstractSocket();
 		}

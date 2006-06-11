@@ -40,6 +40,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQBitRef();
 		}
+		[SmokeMethod("~QBitRef()")]
 		private void DisposeQBitRef() {
 			ProxyQBitRef().DisposeQBitRef();
 		}

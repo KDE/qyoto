@@ -114,6 +114,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQPaintDevice();
 		}
+		[SmokeMethod("~QPaintDevice()")]
 		private void DisposeQPaintDevice() {
 			ProxyQPaintDevice().DisposeQPaintDevice();
 		}

@@ -350,6 +350,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQTextStream();
 		}
+		[SmokeMethod("~QTextStream()")]
 		private void DisposeQTextStream() {
 			ProxyQTextStream().DisposeQTextStream();
 		}

@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Collections;
 	using System.Text;
 
 	[SmokeClass("QTextBlockGroup")]
@@ -50,7 +51,10 @@ namespace Qyoto {
 		protected virtual void BlockFormatChanged(QTextBlock block) {
 			ProxyQTextBlockGroup().BlockFormatChanged(block);
 		}
-		// QList<QTextBlock> blockList(); >>>> NOT CONVERTED
+		[SmokeMethod("blockList() const")]
+		protected ArrayList BlockList() {
+			return ProxyQTextBlockGroup().BlockList();
+		}
 		protected new IQTextBlockGroupSignals Emit() {
 			return (IQTextBlockGroupSignals) Q_EMIT;
 		}

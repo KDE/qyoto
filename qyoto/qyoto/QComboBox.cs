@@ -421,6 +421,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQComboBox();
 		}
+		[SmokeMethod("~QComboBox()")]
 		private void DisposeQComboBox() {
 			ProxyQComboBox().DisposeQComboBox();
 		}

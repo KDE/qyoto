@@ -64,6 +64,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQValidator();
 		}
+		[SmokeMethod("~QValidator()")]
 		private void DisposeQValidator() {
 			ProxyQValidator().DisposeQValidator();
 		}

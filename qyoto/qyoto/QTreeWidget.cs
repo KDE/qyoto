@@ -79,8 +79,14 @@ namespace Qyoto {
 		public int IndexOfTopLevelItem(QTreeWidgetItem item) {
 			return ProxyQTreeWidget().IndexOfTopLevelItem(item);
 		}
-		// void insertTopLevelItems(int arg1,const QList<QTreeWidgetItem*>& arg2); >>>> NOT CONVERTED
-		// void addTopLevelItems(const QList<QTreeWidgetItem*>& arg1); >>>> NOT CONVERTED
+		[SmokeMethod("insertTopLevelItems(int, const QList<QTreeWidgetItem*>&)")]
+		public void InsertTopLevelItems(int index, ArrayList items) {
+			ProxyQTreeWidget().InsertTopLevelItems(index,items);
+		}
+		[SmokeMethod("addTopLevelItems(const QList<QTreeWidgetItem*>&)")]
+		public void AddTopLevelItems(ArrayList items) {
+			ProxyQTreeWidget().AddTopLevelItems(items);
+		}
 		[SmokeMethod("headerItem() const")]
 		public QTreeWidgetItem HeaderItem() {
 			return ProxyQTreeWidget().HeaderItem();
@@ -177,9 +183,18 @@ namespace Qyoto {
 		public void SetItemSelected(QTreeWidgetItem item, bool select) {
 			ProxyQTreeWidget().SetItemSelected(item,select);
 		}
-		// QList<QTreeWidgetItem*> selectedItems(); >>>> NOT CONVERTED
-		// QList<QTreeWidgetItem*> findItems(const QString& arg1,Qt::MatchFlags arg2,int arg3); >>>> NOT CONVERTED
-		// QList<QTreeWidgetItem*> findItems(const QString& arg1,Qt::MatchFlags arg2); >>>> NOT CONVERTED
+		[SmokeMethod("selectedItems() const")]
+		public ArrayList SelectedItems() {
+			return ProxyQTreeWidget().SelectedItems();
+		}
+		[SmokeMethod("findItems(const QString&, Qt::MatchFlags, int) const")]
+		public ArrayList FindItems(string text, int flags, int column) {
+			return ProxyQTreeWidget().FindItems(text,flags,column);
+		}
+		[SmokeMethod("findItems(const QString&, Qt::MatchFlags) const")]
+		public ArrayList FindItems(string text, int flags) {
+			return ProxyQTreeWidget().FindItems(text,flags);
+		}
 		[SmokeMethod("isItemHidden(const QTreeWidgetItem*) const")]
 		public bool IsItemHidden(QTreeWidgetItem item) {
 			return ProxyQTreeWidget().IsItemHidden(item);
@@ -232,7 +247,10 @@ namespace Qyoto {
 		protected virtual ArrayList MimeTypes() {
 			return ProxyQTreeWidget().MimeTypes();
 		}
-		// QMimeData* mimeData(const QList<QTreeWidgetItem*> arg1); >>>> NOT CONVERTED
+		[SmokeMethod("mimeData(const QList<QTreeWidgetItem*>) const")]
+		protected virtual QMimeData MimeData(ArrayList items) {
+			return ProxyQTreeWidget().MimeData(items);
+		}
 		[SmokeMethod("dropMimeData(QTreeWidgetItem*, int, const QMimeData*, Qt::DropAction)")]
 		protected virtual bool DropMimeData(QTreeWidgetItem parent, int index, QMimeData data, Qt.DropAction action) {
 			return ProxyQTreeWidget().DropMimeData(parent,index,data,action);
@@ -241,7 +259,10 @@ namespace Qyoto {
 		protected virtual int SupportedDropActions() {
 			return ProxyQTreeWidget().SupportedDropActions();
 		}
-		// QList<QTreeWidgetItem*> items(const QMimeData* arg1); >>>> NOT CONVERTED
+		[SmokeMethod("items(const QMimeData*) const")]
+		protected ArrayList Items(QMimeData data) {
+			return ProxyQTreeWidget().Items(data);
+		}
 		[SmokeMethod("indexFromItem(QTreeWidgetItem*, int) const")]
 		protected QModelIndex IndexFromItem(QTreeWidgetItem item, int column) {
 			return ProxyQTreeWidget().IndexFromItem(item,column);
@@ -260,6 +281,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQTreeWidget();
 		}
+		[SmokeMethod("~QTreeWidget()")]
 		private void DisposeQTreeWidget() {
 			ProxyQTreeWidget().DisposeQTreeWidget();
 		}

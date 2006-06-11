@@ -84,6 +84,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQDomCharacterData();
 		}
+		[SmokeMethod("~QDomCharacterData()")]
 		private void DisposeQDomCharacterData() {
 			ProxyQDomCharacterData().DisposeQDomCharacterData();
 		}

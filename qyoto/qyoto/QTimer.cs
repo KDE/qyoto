@@ -128,6 +128,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQTimer();
 		}
+		[SmokeMethod("~QTimer()")]
 		private void DisposeQTimer() {
 			ProxyQTimer().DisposeQTimer();
 		}

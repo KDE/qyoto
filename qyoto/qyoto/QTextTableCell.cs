@@ -99,6 +99,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQTextTableCell();
 		}
+		[SmokeMethod("~QTextTableCell()")]
 		private void DisposeQTextTableCell() {
 			ProxyQTextTableCell().DisposeQTextTableCell();
 		}

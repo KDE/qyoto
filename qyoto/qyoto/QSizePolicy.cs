@@ -129,6 +129,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQSizePolicy();
 		}
+		[SmokeMethod("~QSizePolicy()")]
 		private void DisposeQSizePolicy() {
 			ProxyQSizePolicy().DisposeQSizePolicy();
 		}

@@ -47,6 +47,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQHoverEvent();
 		}
+		[SmokeMethod("~QHoverEvent()")]
 		private void DisposeQHoverEvent() {
 			ProxyQHoverEvent().DisposeQHoverEvent();
 		}

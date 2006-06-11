@@ -10,6 +10,8 @@ namespace Qyoto {
  		protected QPicture(Type dummy) : base((Type) null) {}
 		interface IQPictureProxy {
 			string PictureFormat(string fileName);
+			ArrayList InputFormats();
+			ArrayList OutputFormats();
 			ArrayList InputFormatList();
 			ArrayList OutputFormatList();
 		}
@@ -134,8 +136,14 @@ namespace Qyoto {
 		public static string PictureFormat(string fileName) {
 			return StaticQPicture().PictureFormat(fileName);
 		}
-		// QList<QByteArray> inputFormats(); >>>> NOT CONVERTED
-		// QList<QByteArray> outputFormats(); >>>> NOT CONVERTED
+		[SmokeMethod("inputFormats()")]
+		public static ArrayList InputFormats() {
+			return StaticQPicture().InputFormats();
+		}
+		[SmokeMethod("outputFormats()")]
+		public static ArrayList OutputFormats() {
+			return StaticQPicture().OutputFormats();
+		}
 		[SmokeMethod("inputFormatList()")]
 		public static ArrayList InputFormatList() {
 			return StaticQPicture().InputFormatList();
@@ -155,6 +163,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQPicture();
 		}
+		[SmokeMethod("~QPicture()")]
 		private void DisposeQPicture() {
 			ProxyQPicture().DisposeQPicture();
 		}

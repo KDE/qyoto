@@ -86,6 +86,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQMetaEnum();
 		}
+		[SmokeMethod("~QMetaEnum()")]
 		private void DisposeQMetaEnum() {
 			ProxyQMetaEnum().DisposeQMetaEnum();
 		}

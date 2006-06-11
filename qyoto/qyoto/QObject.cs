@@ -9,8 +9,8 @@ namespace Qyoto {
 	/// See <see cref="IQObjectSignals"></see> for signals emitted by QObject
 	[SmokeClass("QObject")]
 	public class QObject : Qt, IDisposable {
+ 
 		private IntPtr _smokeObject;
-		
 		protected QObject(Type dummy) {
 			try {
 				Type proxyInterface = Qyoto.GetSignalsInterface(GetType());
@@ -248,6 +248,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQObject();
 		}
+		[SmokeMethod("~QObject()")]
 		private void DisposeQObject() {
 			ProxyQObject().DisposeQObject();
 		}

@@ -175,6 +175,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQSqlQueryModel();
 		}
+		[SmokeMethod("~QSqlQueryModel()")]
 		private void DisposeQSqlQueryModel() {
 			ProxyQSqlQueryModel().DisposeQSqlQueryModel();
 		}

@@ -50,6 +50,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQMetaClassInfo();
 		}
+		[SmokeMethod("~QMetaClassInfo()")]
 		private void DisposeQMetaClassInfo() {
 			ProxyQMetaClassInfo().DisposeQMetaClassInfo();
 		}

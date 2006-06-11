@@ -94,6 +94,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQPointF();
 		}
+		[SmokeMethod("~QPointF()")]
 		private void DisposeQPointF() {
 			ProxyQPointF().DisposeQPointF();
 		}

@@ -187,6 +187,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQStandardItemModel();
 		}
+		[SmokeMethod("~QStandardItemModel()")]
 		private void DisposeQStandardItemModel() {
 			ProxyQStandardItemModel().DisposeQStandardItemModel();
 		}

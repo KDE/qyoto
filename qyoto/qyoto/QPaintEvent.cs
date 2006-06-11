@@ -55,6 +55,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQPaintEvent();
 		}
+		[SmokeMethod("~QPaintEvent()")]
 		private void DisposeQPaintEvent() {
 			ProxyQPaintEvent().DisposeQPaintEvent();
 		}

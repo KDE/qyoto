@@ -44,6 +44,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQWhatsThisClickedEvent();
 		}
+		[SmokeMethod("~QWhatsThisClickedEvent()")]
 		private void DisposeQWhatsThisClickedEvent() {
 			ProxyQWhatsThisClickedEvent().DisposeQWhatsThisClickedEvent();
 		}

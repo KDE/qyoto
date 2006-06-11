@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Collections;
 	using System.Text;
 
 	/// See <see cref="IQButtonGroupSignals"></see> for signals emitted by QButtonGroup
@@ -66,7 +67,10 @@ namespace Qyoto {
 		public void RemoveButton(QAbstractButton arg1) {
 			ProxyQButtonGroup().RemoveButton(arg1);
 		}
-		// QList<QAbstractButton*> buttons(); >>>> NOT CONVERTED
+		[SmokeMethod("buttons() const")]
+		public ArrayList Buttons() {
+			return ProxyQButtonGroup().Buttons();
+		}
 		[SmokeMethod("checkedButton() const")]
 		public QAbstractButton CheckedButton() {
 			return ProxyQButtonGroup().CheckedButton();
@@ -101,6 +105,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQButtonGroup();
 		}
+		[SmokeMethod("~QButtonGroup()")]
 		private void DisposeQButtonGroup() {
 			ProxyQButtonGroup().DisposeQButtonGroup();
 		}

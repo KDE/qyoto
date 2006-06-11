@@ -56,6 +56,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQGenericArgument();
 		}
+		[SmokeMethod("~QGenericArgument()")]
 		private void DisposeQGenericArgument() {
 			ProxyQGenericArgument().DisposeQGenericArgument();
 		}

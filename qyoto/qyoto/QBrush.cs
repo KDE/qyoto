@@ -174,6 +174,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQBrush();
 		}
+		[SmokeMethod("~QBrush()")]
 		private void DisposeQBrush() {
 			ProxyQBrush().DisposeQBrush();
 		}

@@ -67,6 +67,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQObjectCleanupHandler();
 		}
+		[SmokeMethod("~QObjectCleanupHandler()")]
 		private void DisposeQObjectCleanupHandler() {
 			ProxyQObjectCleanupHandler().DisposeQObjectCleanupHandler();
 		}

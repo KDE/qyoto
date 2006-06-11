@@ -63,6 +63,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQHelpEvent();
 		}
+		[SmokeMethod("~QHelpEvent()")]
 		private void DisposeQHelpEvent() {
 			ProxyQHelpEvent().DisposeQHelpEvent();
 		}

@@ -55,6 +55,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQLinearGradient();
 		}
+		[SmokeMethod("~QLinearGradient()")]
 		private void DisposeQLinearGradient() {
 			ProxyQLinearGradient().DisposeQLinearGradient();
 		}

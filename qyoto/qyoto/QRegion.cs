@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Collections;
 
 	[SmokeClass("QRegion")]
 	public class QRegion : MarshalByRefObject, IDisposable {
@@ -158,7 +159,10 @@ namespace Qyoto {
 		public QRect BoundingRect() {
 			return ProxyQRegion().BoundingRect();
 		}
-		// QVector<QRect> rects(); >>>> NOT CONVERTED
+		[SmokeMethod("rects() const")]
+		public ArrayList Rects() {
+			return ProxyQRegion().Rects();
+		}
 		[SmokeMethod("setRects(const QRect*, int)")]
 		public void SetRects(QRect rect, int num) {
 			ProxyQRegion().SetRects(rect,num);
@@ -204,6 +208,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQRegion();
 		}
+		[SmokeMethod("~QRegion()")]
 		private void DisposeQRegion() {
 			ProxyQRegion().DisposeQRegion();
 		}

@@ -78,6 +78,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQPixmapCache();
 		}
+		[SmokeMethod("~QPixmapCache()")]
 		private void DisposeQPixmapCache() {
 			ProxyQPixmapCache().DisposeQPixmapCache();
 		}

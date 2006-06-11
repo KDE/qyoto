@@ -146,6 +146,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQNetworkProxy();
 		}
+		[SmokeMethod("~QNetworkProxy()")]
 		private void DisposeQNetworkProxy() {
 			ProxyQNetworkProxy().DisposeQNetworkProxy();
 		}

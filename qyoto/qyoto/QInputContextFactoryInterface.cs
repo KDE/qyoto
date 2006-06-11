@@ -57,6 +57,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQInputContextFactoryInterface();
 		}
+		[SmokeMethod("~QInputContextFactoryInterface()")]
 		private void DisposeQInputContextFactoryInterface() {
 			ProxyQInputContextFactoryInterface().DisposeQInputContextFactoryInterface();
 		}

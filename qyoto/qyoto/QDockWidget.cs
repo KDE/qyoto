@@ -127,6 +127,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQDockWidget();
 		}
+		[SmokeMethod("~QDockWidget()")]
 		private void DisposeQDockWidget() {
 			ProxyQDockWidget().DisposeQDockWidget();
 		}

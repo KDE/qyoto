@@ -79,6 +79,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQMouseEvent();
 		}
+		[SmokeMethod("~QMouseEvent()")]
 		private void DisposeQMouseEvent() {
 			ProxyQMouseEvent().DisposeQMouseEvent();
 		}

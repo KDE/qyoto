@@ -308,6 +308,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQAbstractItemView();
 		}
+		[SmokeMethod("~QAbstractItemView()")]
 		private void DisposeQAbstractItemView() {
 			ProxyQAbstractItemView().DisposeQAbstractItemView();
 		}

@@ -14,6 +14,7 @@ namespace Qyoto {
 		interface IQImageReaderProxy {
 			QByteArray ImageFormat(string fileName);
 			QByteArray ImageFormat(IQIODevice device);
+			ArrayList SupportedImageFormats();
 		}
 
 		protected new void CreateProxy() {
@@ -203,13 +204,17 @@ namespace Qyoto {
 		public static QByteArray ImageFormat(IQIODevice device) {
 			return StaticQImageReader().ImageFormat(device);
 		}
-		// QList<QByteArray> supportedImageFormats(); >>>> NOT CONVERTED
+		[SmokeMethod("supportedImageFormats()")]
+		public static ArrayList SupportedImageFormats() {
+			return StaticQImageReader().SupportedImageFormats();
+		}
 		~QImageReader() {
 			DisposeQImageReader();
 		}
 		public void Dispose() {
 			DisposeQImageReader();
 		}
+		[SmokeMethod("~QImageReader()")]
 		private void DisposeQImageReader() {
 			ProxyQImageReader().DisposeQImageReader();
 		}
