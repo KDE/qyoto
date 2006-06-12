@@ -1,3 +1,8 @@
+2006-06-08  Richard Dale  <rdale@foton.es>
+
+	* Add SmokeMethod() attribute to destructors
+	* More list arguments are now C# ArrayLists
+
 2006-06-09  Paolo Capriotti  <paolo.capriotti@gmail.com>
 
 	* Added example t10.
