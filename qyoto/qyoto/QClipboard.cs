@@ -31,6 +31,8 @@ namespace Qyoto {
 		public enum Mode {
 			Clipboard = 0,
 			Selection = 1,
+			FindBuffer = 2,
+			LastMode = FindBuffer,
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		[SmokeMethod("clear(QClipboard::Mode)")]
@@ -45,6 +47,10 @@ namespace Qyoto {
 		public bool SupportsSelection() {
 			return ProxyQClipboard().SupportsSelection();
 		}
+		[SmokeMethod("supportsFindBuffer() const")]
+		public bool SupportsFindBuffer() {
+			return ProxyQClipboard().SupportsFindBuffer();
+		}
 		[SmokeMethod("ownsSelection() const")]
 		public bool OwnsSelection() {
 			return ProxyQClipboard().OwnsSelection();
@@ -52,6 +58,10 @@ namespace Qyoto {
 		[SmokeMethod("ownsClipboard() const")]
 		public bool OwnsClipboard() {
 			return ProxyQClipboard().OwnsClipboard();
+		}
+		[SmokeMethod("ownsFindBuffer() const")]
+		public bool OwnsFindBuffer() {
+			return ProxyQClipboard().OwnsFindBuffer();
 		}
 		[SmokeMethod("text(QClipboard::Mode) const")]
 		public string Text(QClipboard.Mode mode) {

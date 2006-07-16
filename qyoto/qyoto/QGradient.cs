@@ -40,6 +40,10 @@ namespace Qyoto {
 			ReflectSpread = 1,
 			RepeatSpread = 2,
 		}
+		public enum CoordinateMode {
+			LogicalMode = 0,
+			StretchToDeviceMode = 1,
+		}
 		public QGradient() : this((Type) null) {
 			CreateProxy();
 			NewQGradient();
@@ -66,6 +70,14 @@ namespace Qyoto {
 		}
 		// void setStops(const QGradientStops& arg1); >>>> NOT CONVERTED
 		// QGradientStops stops(); >>>> NOT CONVERTED
+		[SmokeMethod("coordinateMode() const")]
+		public QGradient.CoordinateMode coordinateMode() {
+			return ProxyQGradient().coordinateMode();
+		}
+		[SmokeMethod("setCoordinateMode(QGradient::CoordinateMode)")]
+		public void SetCoordinateMode(QGradient.CoordinateMode mode) {
+			ProxyQGradient().SetCoordinateMode(mode);
+		}
 		[SmokeMethod("operator==(const QGradient&)")]
 		public static bool operator==(QGradient lhs, QGradient gradient) {
 			return StaticQGradient().op_equals(lhs,gradient);

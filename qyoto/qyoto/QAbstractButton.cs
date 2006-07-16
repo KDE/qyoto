@@ -102,6 +102,22 @@ namespace Qyoto {
 		public bool AutoRepeat() {
 			return ProxyQAbstractButton().AutoRepeat();
 		}
+		[SmokeMethod("setAutoRepeatDelay(int)")]
+		public void SetAutoRepeatDelay(int arg1) {
+			ProxyQAbstractButton().SetAutoRepeatDelay(arg1);
+		}
+		[SmokeMethod("autoRepeatDelay() const")]
+		public int AutoRepeatDelay() {
+			return ProxyQAbstractButton().AutoRepeatDelay();
+		}
+		[SmokeMethod("setAutoRepeatInterval(int)")]
+		public void SetAutoRepeatInterval(int arg1) {
+			ProxyQAbstractButton().SetAutoRepeatInterval(arg1);
+		}
+		[SmokeMethod("autoRepeatInterval() const")]
+		public int AutoRepeatInterval() {
+			return ProxyQAbstractButton().AutoRepeatInterval();
+		}
 		[SmokeMethod("setAutoExclusive(bool)")]
 		public void SetAutoExclusive(bool arg1) {
 			ProxyQAbstractButton().SetAutoExclusive(arg1);

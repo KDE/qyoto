@@ -127,6 +127,10 @@ namespace Qyoto {
 		protected new void MousePressEvent(QMouseEvent arg1) {
 			ProxyQToolButton().MousePressEvent(arg1);
 		}
+		[SmokeMethod("mouseReleaseEvent(QMouseEvent*)")]
+		protected new void MouseReleaseEvent(QMouseEvent arg1) {
+			ProxyQToolButton().MouseReleaseEvent(arg1);
+		}
 		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected new void PaintEvent(QPaintEvent arg1) {
 			ProxyQToolButton().PaintEvent(arg1);
@@ -150,6 +154,10 @@ namespace Qyoto {
 		[SmokeMethod("changeEvent(QEvent*)")]
 		protected new void ChangeEvent(QEvent arg1) {
 			ProxyQToolButton().ChangeEvent(arg1);
+		}
+		[SmokeMethod("hitButton(const QPoint&) const")]
+		protected new bool HitButton(QPoint pos) {
+			return ProxyQToolButton().HitButton(pos);
 		}
 		[SmokeMethod("nextCheckState()")]
 		protected new void NextCheckState() {

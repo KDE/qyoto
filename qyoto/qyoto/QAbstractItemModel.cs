@@ -291,5 +291,7 @@ namespace Qyoto {
 		void HeaderDataChanged(Qt.Orientation orientation, int first, int last);
 		[Q_SIGNAL("void layoutChanged()")]
 		void LayoutChanged();
+		[Q_SIGNAL("void layoutAboutToBeChanged()")]
+		void LayoutAboutToBeChanged();
 	}
 }

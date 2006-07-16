@@ -34,7 +34,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGLWidget(parent,shareWidget,f);
 		}
-		[SmokeMethod("QGLWidget(QWidget*, const QGLWidget*, Qt::WFlags)")]
+		[SmokeMethod("QGLWidget(QWidget*, const QGLWidget*, Qt::WindowFlags)")]
 		private void NewQGLWidget(QWidget parent, QGLWidget shareWidget, int f) {
 			ProxyQGLWidget().NewQGLWidget(parent,shareWidget,f);
 		}
@@ -66,7 +66,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGLWidget(context,parent,shareWidget,f);
 		}
-		[SmokeMethod("QGLWidget(QGLContext*, QWidget*, const QGLWidget*, Qt::WFlags)")]
+		[SmokeMethod("QGLWidget(QGLContext*, QWidget*, const QGLWidget*, Qt::WindowFlags)")]
 		private void NewQGLWidget(QGLContext context, QWidget parent, QGLWidget shareWidget, int f) {
 			ProxyQGLWidget().NewQGLWidget(context,parent,shareWidget,f);
 		}
@@ -98,7 +98,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGLWidget(format,parent,shareWidget,f);
 		}
-		[SmokeMethod("QGLWidget(const QGLFormat&, QWidget*, const QGLWidget*, Qt::WFlags)")]
+		[SmokeMethod("QGLWidget(const QGLFormat&, QWidget*, const QGLWidget*, Qt::WindowFlags)")]
 		private void NewQGLWidget(QGLFormat format, QWidget parent, QGLWidget shareWidget, int f) {
 			ProxyQGLWidget().NewQGLWidget(format,parent,shareWidget,f);
 		}

@@ -81,6 +81,14 @@ namespace Qyoto {
 		public void LineTo(double x, double y) {
 			ProxyQPainterPath().LineTo(x,y);
 		}
+		[SmokeMethod("arcMoveTo(const QRectF&, qreal)")]
+		public void ArcMoveTo(QRectF rect, double angle) {
+			ProxyQPainterPath().ArcMoveTo(rect,angle);
+		}
+		[SmokeMethod("arcMoveTo(qreal, qreal, qreal, qreal, qreal)")]
+		public void ArcMoveTo(double x, double y, double w, double h, double angle) {
+			ProxyQPainterPath().ArcMoveTo(x,y,w,h,angle);
+		}
 		[SmokeMethod("arcTo(const QRectF&, qreal, qreal)")]
 		public void ArcTo(QRectF rect, double startAngle, double arcLength) {
 			ProxyQPainterPath().ArcTo(rect,startAngle,arcLength);
@@ -214,6 +222,10 @@ namespace Qyoto {
 			return ProxyQPainterPath().ElementCount();
 		}
 		// const QPainterPath::Element& elementAt(int arg1); >>>> NOT CONVERTED
+		[SmokeMethod("setElementPositionAt(int, qreal, qreal)")]
+		public void SetElementPositionAt(int i, double x, double y) {
+			ProxyQPainterPath().SetElementPositionAt(i,x,y);
+		}
 		[SmokeMethod("operator==(const QPainterPath&) const")]
 		public static bool operator==(QPainterPath lhs, QPainterPath other) {
 			return StaticQPainterPath().op_equals(lhs,other);

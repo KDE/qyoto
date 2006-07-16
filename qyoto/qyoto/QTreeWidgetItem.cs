@@ -30,9 +30,10 @@ namespace Qyoto {
 			return (IQTreeWidgetItemProxy) _staticInterceptor;
 		}
 
-		public const int Type = 0;
-		public const int UserType = 1000;
-
+		public enum ItemType {
+			Type = 0,
+			UserType = 1000,
+		}
 		public QTreeWidgetItem(int type) : this((Type) null) {
 			CreateProxy();
 			NewQTreeWidgetItem(type);
@@ -168,6 +169,30 @@ namespace Qyoto {
 		[SmokeMethod("treeWidget() const")]
 		public QTreeWidget TreeWidget() {
 			return ProxyQTreeWidgetItem().TreeWidget();
+		}
+		[SmokeMethod("setSelected(bool)")]
+		public void SetSelected(bool select) {
+			ProxyQTreeWidgetItem().SetSelected(select);
+		}
+		[SmokeMethod("isSelected() const")]
+		public bool IsSelected() {
+			return ProxyQTreeWidgetItem().IsSelected();
+		}
+		[SmokeMethod("setHidden(bool)")]
+		public void SetHidden(bool hide) {
+			ProxyQTreeWidgetItem().SetHidden(hide);
+		}
+		[SmokeMethod("isHidden() const")]
+		public bool IsHidden() {
+			return ProxyQTreeWidgetItem().IsHidden();
+		}
+		[SmokeMethod("setExpanded(bool)")]
+		public void SetExpanded(bool expand) {
+			ProxyQTreeWidgetItem().SetExpanded(expand);
+		}
+		[SmokeMethod("isExpanded() const")]
+		public bool IsExpanded() {
+			return ProxyQTreeWidgetItem().IsExpanded();
 		}
 		[SmokeMethod("flags() const")]
 		public int Flags() {
@@ -328,6 +353,10 @@ namespace Qyoto {
 		[SmokeMethod("type() const")]
 		public int type() {
 			return ProxyQTreeWidgetItem().type();
+		}
+		[SmokeMethod("sortChildren(int, Qt::SortOrder)")]
+		public void SortChildren(int column, Qt.SortOrder order) {
+			ProxyQTreeWidgetItem().SortChildren(column,order);
 		}
 		~QTreeWidgetItem() {
 			DisposeQTreeWidgetItem();

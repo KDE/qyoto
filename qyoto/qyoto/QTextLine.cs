@@ -120,6 +120,10 @@ namespace Qyoto {
 		public void SetPosition(QPointF pos) {
 			ProxyQTextLine().SetPosition(pos);
 		}
+		[SmokeMethod("position() const")]
+		public QPointF Position() {
+			return ProxyQTextLine().Position();
+		}
 		[SmokeMethod("textStart() const")]
 		public int TextStart() {
 			return ProxyQTextLine().TextStart();

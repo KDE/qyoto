@@ -29,12 +29,6 @@ namespace Qyoto {
 			return (IQDBusAbstractInterfaceProxy) _staticInterceptor;
 		}
 
-		public enum CallMode {
-			NoWaitForReply = 0,
-			UseEventLoop = 1,
-			NoUseEventLoop = 2,
-			AutoDetect = 3,
-		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		[SmokeMethod("isValid() const")]
 		public bool IsValid() {
@@ -60,25 +54,85 @@ namespace Qyoto {
 		public QDBusError LastError() {
 			return ProxyQDBusAbstractInterface().LastError();
 		}
-		[SmokeMethod("callWithArgs(const QString&, const QList<QVariant>&, QDBusAbstractInterface::CallMode)")]
-		public QDBusMessage CallWithArgs(string method, ArrayList args, QDBusAbstractInterface.CallMode mode) {
-			return ProxyQDBusAbstractInterface().CallWithArgs(method,args,mode);
+		[SmokeMethod("call(const QString&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&)")]
+		public QDBusMessage Call(string method, QVariant arg1, QVariant arg2, QVariant arg3, QVariant arg4, QVariant arg5, QVariant arg6, QVariant arg7, QVariant arg8) {
+			return ProxyQDBusAbstractInterface().Call(method,arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8);
 		}
-		[SmokeMethod("callWithArgs(const QString&, const QList<QVariant>&)")]
-		public QDBusMessage CallWithArgs(string method, ArrayList args) {
-			return ProxyQDBusAbstractInterface().CallWithArgs(method,args);
+		[SmokeMethod("call(const QString&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&)")]
+		public QDBusMessage Call(string method, QVariant arg1, QVariant arg2, QVariant arg3, QVariant arg4, QVariant arg5, QVariant arg6, QVariant arg7) {
+			return ProxyQDBusAbstractInterface().Call(method,arg1,arg2,arg3,arg4,arg5,arg6,arg7);
 		}
-		[SmokeMethod("callWithArgs(const QString&)")]
-		public QDBusMessage CallWithArgs(string method) {
-			return ProxyQDBusAbstractInterface().CallWithArgs(method);
+		[SmokeMethod("call(const QString&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&)")]
+		public QDBusMessage Call(string method, QVariant arg1, QVariant arg2, QVariant arg3, QVariant arg4, QVariant arg5, QVariant arg6) {
+			return ProxyQDBusAbstractInterface().Call(method,arg1,arg2,arg3,arg4,arg5,arg6);
 		}
-		[SmokeMethod("callWithArgs(const QString&, QObject*, const char*, const QList<QVariant>&)")]
-		public bool CallWithArgs(string method, QObject receiver, string slot, ArrayList args) {
-			return ProxyQDBusAbstractInterface().CallWithArgs(method,receiver,slot,args);
+		[SmokeMethod("call(const QString&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&)")]
+		public QDBusMessage Call(string method, QVariant arg1, QVariant arg2, QVariant arg3, QVariant arg4, QVariant arg5) {
+			return ProxyQDBusAbstractInterface().Call(method,arg1,arg2,arg3,arg4,arg5);
 		}
-		[SmokeMethod("callWithArgs(const QString&, QObject*, const char*)")]
-		public bool CallWithArgs(string method, QObject receiver, string slot) {
-			return ProxyQDBusAbstractInterface().CallWithArgs(method,receiver,slot);
+		[SmokeMethod("call(const QString&, const QVariant&, const QVariant&, const QVariant&, const QVariant&)")]
+		public QDBusMessage Call(string method, QVariant arg1, QVariant arg2, QVariant arg3, QVariant arg4) {
+			return ProxyQDBusAbstractInterface().Call(method,arg1,arg2,arg3,arg4);
+		}
+		[SmokeMethod("call(const QString&, const QVariant&, const QVariant&, const QVariant&)")]
+		public QDBusMessage Call(string method, QVariant arg1, QVariant arg2, QVariant arg3) {
+			return ProxyQDBusAbstractInterface().Call(method,arg1,arg2,arg3);
+		}
+		[SmokeMethod("call(const QString&, const QVariant&, const QVariant&)")]
+		public QDBusMessage Call(string method, QVariant arg1, QVariant arg2) {
+			return ProxyQDBusAbstractInterface().Call(method,arg1,arg2);
+		}
+		[SmokeMethod("call(const QString&, const QVariant&)")]
+		public QDBusMessage Call(string method, QVariant arg1) {
+			return ProxyQDBusAbstractInterface().Call(method,arg1);
+		}
+		[SmokeMethod("call(const QString&)")]
+		public QDBusMessage Call(string method) {
+			return ProxyQDBusAbstractInterface().Call(method);
+		}
+		[SmokeMethod("call(QDBus::CallMode, const QString&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&)")]
+		public QDBusMessage Call(QDBus.CallMode mode, string method, QVariant arg1, QVariant arg2, QVariant arg3, QVariant arg4, QVariant arg5, QVariant arg6, QVariant arg7, QVariant arg8) {
+			return ProxyQDBusAbstractInterface().Call(mode,method,arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8);
+		}
+		[SmokeMethod("call(QDBus::CallMode, const QString&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&)")]
+		public QDBusMessage Call(QDBus.CallMode mode, string method, QVariant arg1, QVariant arg2, QVariant arg3, QVariant arg4, QVariant arg5, QVariant arg6, QVariant arg7) {
+			return ProxyQDBusAbstractInterface().Call(mode,method,arg1,arg2,arg3,arg4,arg5,arg6,arg7);
+		}
+		[SmokeMethod("call(QDBus::CallMode, const QString&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&)")]
+		public QDBusMessage Call(QDBus.CallMode mode, string method, QVariant arg1, QVariant arg2, QVariant arg3, QVariant arg4, QVariant arg5, QVariant arg6) {
+			return ProxyQDBusAbstractInterface().Call(mode,method,arg1,arg2,arg3,arg4,arg5,arg6);
+		}
+		[SmokeMethod("call(QDBus::CallMode, const QString&, const QVariant&, const QVariant&, const QVariant&, const QVariant&, const QVariant&)")]
+		public QDBusMessage Call(QDBus.CallMode mode, string method, QVariant arg1, QVariant arg2, QVariant arg3, QVariant arg4, QVariant arg5) {
+			return ProxyQDBusAbstractInterface().Call(mode,method,arg1,arg2,arg3,arg4,arg5);
+		}
+		[SmokeMethod("call(QDBus::CallMode, const QString&, const QVariant&, const QVariant&, const QVariant&, const QVariant&)")]
+		public QDBusMessage Call(QDBus.CallMode mode, string method, QVariant arg1, QVariant arg2, QVariant arg3, QVariant arg4) {
+			return ProxyQDBusAbstractInterface().Call(mode,method,arg1,arg2,arg3,arg4);
+		}
+		[SmokeMethod("call(QDBus::CallMode, const QString&, const QVariant&, const QVariant&, const QVariant&)")]
+		public QDBusMessage Call(QDBus.CallMode mode, string method, QVariant arg1, QVariant arg2, QVariant arg3) {
+			return ProxyQDBusAbstractInterface().Call(mode,method,arg1,arg2,arg3);
+		}
+		[SmokeMethod("call(QDBus::CallMode, const QString&, const QVariant&, const QVariant&)")]
+		public QDBusMessage Call(QDBus.CallMode mode, string method, QVariant arg1, QVariant arg2) {
+			return ProxyQDBusAbstractInterface().Call(mode,method,arg1,arg2);
+		}
+		[SmokeMethod("call(QDBus::CallMode, const QString&, const QVariant&)")]
+		public QDBusMessage Call(QDBus.CallMode mode, string method, QVariant arg1) {
+			return ProxyQDBusAbstractInterface().Call(mode,method,arg1);
+		}
+		[SmokeMethod("call(QDBus::CallMode, const QString&)")]
+		public QDBusMessage Call(QDBus.CallMode mode, string method) {
+			return ProxyQDBusAbstractInterface().Call(mode,method);
+		}
+		[SmokeMethod("callWithArgumentList(QDBus::CallMode, const QString&, const QList<QVariant>&)")]
+		public QDBusMessage CallWithArgumentList(QDBus.CallMode mode, string method, ArrayList args) {
+			return ProxyQDBusAbstractInterface().CallWithArgumentList(mode,method,args);
+		}
+		[SmokeMethod("callWithArgumentList(const QString&, const QList<QVariant>&, QObject*, const char*)")]
+		public bool CallWithArgumentList(string method, ArrayList args, QObject receiver, string member) {
+			return ProxyQDBusAbstractInterface().CallWithArgumentList(method,args,receiver,member);
 		}
 		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
@@ -88,7 +142,14 @@ namespace Qyoto {
 		public static new string Tr(string s) {
 			return StaticQDBusAbstractInterface().Tr(s);
 		}
-		// QDBusAbstractInterface* QDBusAbstractInterface(QDBusAbstractInterfacePrivate* arg1); >>>> NOT CONVERTED
+		public QDBusAbstractInterface(string service, string path, string arg3, QDBusConnection connection, QObject parent) : this((Type) null) {
+			CreateProxy();
+			NewQDBusAbstractInterface(service,path,arg3,connection,parent);
+		}
+		[SmokeMethod("QDBusAbstractInterface(const QString&, const QString&, const char*, const QDBusConnection&, QObject*)")]
+		private void NewQDBusAbstractInterface(string service, string path, string arg3, QDBusConnection connection, QObject parent) {
+			ProxyQDBusAbstractInterface().NewQDBusAbstractInterface(service,path,arg3,connection,parent);
+		}
 		[SmokeMethod("connectNotify(const char*)")]
 		protected new void ConnectNotify(string signal) {
 			ProxyQDBusAbstractInterface().ConnectNotify(signal);
@@ -111,6 +172,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQDBusAbstractInterface();
 		}
+		[SmokeMethod("~QDBusAbstractInterface()")]
 		private void DisposeQDBusAbstractInterface() {
 			ProxyQDBusAbstractInterface().DisposeQDBusAbstractInterface();
 		}

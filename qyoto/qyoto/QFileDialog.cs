@@ -90,7 +90,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQFileDialog(parent,f);
 		}
-		[SmokeMethod("QFileDialog(QWidget*, Qt::WFlags)")]
+		[SmokeMethod("QFileDialog(QWidget*, Qt::WindowFlags)")]
 		private void NewQFileDialog(QWidget parent, int f) {
 			ProxyQFileDialog().NewQFileDialog(parent,f);
 		}

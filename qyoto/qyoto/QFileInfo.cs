@@ -204,6 +204,10 @@ namespace Qyoto {
 		public string ReadLink() {
 			return ProxyQFileInfo().ReadLink();
 		}
+		[SmokeMethod("symLinkTarget() const")]
+		public string SymLinkTarget() {
+			return ProxyQFileInfo().SymLinkTarget();
+		}
 		[SmokeMethod("owner() const")]
 		public string Owner() {
 			return ProxyQFileInfo().Owner();

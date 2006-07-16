@@ -187,6 +187,14 @@ namespace Qyoto {
 		public QValidator Validator() {
 			return ProxyQComboBox().Validator();
 		}
+		[SmokeMethod("setCompleter(QCompleter*)")]
+		public void SetCompleter(QCompleter c) {
+			ProxyQComboBox().SetCompleter(c);
+		}
+		[SmokeMethod("completer() const")]
+		public QCompleter Completer() {
+			return ProxyQComboBox().Completer();
+		}
 		[SmokeMethod("itemDelegate() const")]
 		public QAbstractItemDelegate ItemDelegate() {
 			return ProxyQComboBox().ItemDelegate();

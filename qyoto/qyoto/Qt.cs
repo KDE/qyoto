@@ -12,19 +12,14 @@ namespace Qyoto {
 			string ConvertFromPlainText(string plain, Qt.WhiteSpaceMode mode);
 			string ConvertFromPlainText(string plain);
 			QTextCodec CodecForHtml(QByteArray ba);
-			uint QHash(QVariant arg1);
+			void QDBusReplyFill(QDBusMessage reply, QDBusError error, QVariant data);
 			bool op_equals(QDBusError.KnownErrors p1, QDBusError p2);
-			int QDBusMetaTypeId(out bool arg1);
-			int QDBusMetaTypeId(char[] arg1);
-			int QDBusMetaTypeId(out short arg1);
-			int QDBusMetaTypeId(out int arg1);
-			int QDBusMetaTypeId(out double arg1);
-			int QDBusMetaTypeId(StringBuilder arg1);
-			int QDBusMetaTypeId(QVariant arg1);
-			int QDBusMetaTypeId(QByteArray arg1);
-			int QDBusMetaTypeId(string[] arg1);
+			uint QHash(QVariant arg1);
 			bool op_equals(QGLFormat arg1, QGLFormat arg2);
 			bool op_equals(QHostAddress.SpecialAddress address1, QHostAddress address2);
+			uint QHash(QHostAddress key);
+			QDataStream op_write(QDataStream arg1, QHostAddress arg2);
+			QDataStream op_read(QDataStream arg1, QHostAddress arg2);
 			QDataStream op_write(QDataStream arg1, QImage arg2);
 			QDataStream op_read(QDataStream arg1, QImage arg2);
 			QDataStream op_write(QDataStream arg1, QPicture arg2);
@@ -40,6 +35,8 @@ namespace Qyoto {
 			QDataStream op_read(QDataStream arg1, QTreeWidgetItem item);
 			QDataStream op_write(QDataStream outS, QCursor cursor);
 			QDataStream op_read(QDataStream inS, QCursor cursor);
+			bool op_equals(QKeyEvent e, QKeySequence.StandardKey key);
+			bool op_equals(QKeySequence.StandardKey key, QKeyEvent e);
 			QDataStream op_write(QDataStream arg1, QKeySequence ks);
 			QDataStream op_read(QDataStream arg1, QKeySequence ks);
 			QDataStream op_write(QDataStream ds, QPalette p);
@@ -325,6 +322,7 @@ namespace Qyoto {
 			AltModifier = 0x08000000,
 			MetaModifier = 0x10000000,
 			KeypadModifier = 0x20000000,
+			GroupSwitchModifier = 0x40000000,
 			KeyboardModifierMask = 0xfe000000,
 		}
 		public enum Modifier : long {
@@ -389,6 +387,7 @@ namespace Qyoto {
 			ElideLeft = 0,
 			ElideRight = 1,
 			ElideMiddle = 2,
+			ElideNone = 3,
 		}
 		public enum WindowType {
 			Widget = 0x00000000,
@@ -415,6 +414,7 @@ namespace Qyoto {
 			WindowContextHelpButtonHint = 0x00010000,
 			WindowShadeButtonHint = 0x00020000,
 			WindowStaysOnTopHint = 0x00040000,
+			CustomizeWindowHint = 0x02000000,
 		}
 		public enum WindowState {
 			WindowNoState = 0x00000000,
@@ -492,7 +492,10 @@ namespace Qyoto {
 			WA_NoX11EventCompression = 81,
 			WA_TintedBackground = 82,
 			WA_X11OpenGLOverlay = 83,
-			WA_AttributeCount = 84,
+			WA_AlwaysShowToolTips = 84,
+			WA_MacOpaqueSizeGrip = 85,
+			WA_SetStyle = 86,
+			WA_AttributeCount = 87,
 		}
 		public enum ImageConversionFlag {
 			ColorMode_Mask = 0x00000003,
@@ -821,6 +824,12 @@ namespace Qyoto {
 			Key_Select = 0x01010000,
 			Key_Yes = 0x01010001,
 			Key_No = 0x01010002,
+			Key_Cancel = 0x01020001,
+			Key_Printer = 0x01020002,
+			Key_Execute = 0x01020003,
+			Key_Sleep = 0x01020004,
+			Key_Play = 0x01020005,
+			Key_Zoom = 0x01020006,
 			Key_Context1 = 0x01100000,
 			Key_Context2 = 0x01100001,
 			Key_Context3 = 0x01100002,
@@ -857,7 +866,8 @@ namespace Qyoto {
 			MiterJoin = 0x00,
 			BevelJoin = 0x40,
 			RoundJoin = 0x80,
-			MPenJoinStyle = 0xc0,
+			SvgMiterJoin = 0x100,
+			MPenJoinStyle = 0x1c0,
 		}
 		public enum BrushStyle {
 			NoBrush = 0,
@@ -907,7 +917,9 @@ namespace Qyoto {
 			ForbiddenCursor = 14,
 			WhatsThisCursor = 15,
 			BusyCursor = 16,
-			LastCursor = BusyCursor,
+			OpenHandCursor = 17,
+			ClosedHandCursor = 18,
+			LastCursor = ClosedHandCursor,
 			BitmapCursor = 24,
 			CustomCursor = 25,
 		}
@@ -933,6 +945,10 @@ namespace Qyoto {
 			BottomDockWidgetArea = 0x8,
 			DockWidgetArea_Mask = 0xf,
 			AllDockWidgetAreas = DockWidgetArea_Mask,
+			NoDockWidgetArea = 0,
+		}
+		public enum DockWidgetAreaSizes {
+			NDockWidgetAreas = 4,
 		}
 		public enum ToolBarArea {
 			LeftToolBarArea = 0x1,
@@ -941,6 +957,10 @@ namespace Qyoto {
 			BottomToolBarArea = 0x8,
 			ToolBarArea_Mask = 0xf,
 			AllToolBarAreas = ToolBarArea_Mask,
+			NoToolBarArea = 0,
+		}
+		public enum ToolBarAreaSizes {
+			NToolBarAreas = 4,
 		}
 		public enum DateFormat {
 			TextDate = 0,
@@ -1016,6 +1036,7 @@ namespace Qyoto {
 			DefaultContextMenu = 1,
 			ActionsContextMenu = 2,
 			CustomContextMenu = 3,
+			PreventContextMenu = 4,
 		}
 		public enum InputMethodQuery {
 			ImMicroFocus = 0,
@@ -1080,6 +1101,7 @@ namespace Qyoto {
 			MatchEndsWith = 3,
 			MatchRegExp = 4,
 			MatchWildcard = 5,
+			MatchFixedString = 8,
 			MatchCaseSensitive = 16,
 			MatchWrap = 32,
 			MatchRecursive = 64,
@@ -1089,10 +1111,16 @@ namespace Qyoto {
 			WindowModal = 1,
 			ApplicationModal = 2,
 		}
-		public const int NDockWidgetAreas = 4;
-
-		public const int NToolBarAreas = 4;
-
+		public enum TextInteractionFlag {
+			NoTextInteraction = 0,
+			TextSelectableByMouse = 1,
+			TextSelectableByKeyboard = 2,
+			LinksAccessibleByMouse = 4,
+			LinksAccessibleByKeyboard = 8,
+			TextEditable = 16,
+			TextEditorInteraction = TextSelectableByMouse|TextSelectableByKeyboard|TextEditable,
+			TextBrowserInteraction = TextSelectableByMouse|LinksAccessibleByMouse|LinksAccessibleByKeyboard,
+		}
 		[SmokeMethod("mightBeRichText(const QString&)")]
 		public static bool MightBeRichText(string arg1) {
 			return StaticQt().MightBeRichText(arg1);
@@ -1123,63 +1151,41 @@ namespace Qyoto {
 		private void DisposeQt() {
 			ProxyQt().DisposeQt();
 		}
+		///<remarks>*************************************************
+		///
+		///* Copyright (C) 1992-2006 Trolltech ASA. All rights reserved.
+		///
+		///* This file is part of the tools applications of the Qt Toolkit.
+		///
+		///* This file may be used under the terms of the GNU General Public
+		/// License version 2.0 as published by the Free Software Foundation
+		/// and appearing in the file LICENSE.GPL included in the packaging of
+		/// this file.  Please review the following information to ensure GNU
+		/// General Public Licensing requirements will be met:
+		/// http://www.trolltech.com/products/qt/opensource.html
+		///
+		///* If you are unsure which license is appropriate for your use, please
+		/// review the following information:
+		/// http://www.trolltech.com/products/qt/licensing.html or contact the
+		/// sales department at sales@trolltech.com.
+		///
+		///* This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
+		/// WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+		///
+		///**************************************************</remarks>		<short>                                                                                 Copyright (C) 1992-2006 Trolltech ASA.</short>
+		[SmokeMethod("qDBusReplyFill(const QDBusMessage&, QDBusError&, QVariant&)")]
+		public static void QDBusReplyFill(QDBusMessage reply, QDBusError error, QVariant data) {
+			StaticQt().QDBusReplyFill(reply,error,data);
+		}
+		[SmokeMethod("operator==(QDBusError::KnownErrors, const QDBusError&)")]
+		public static bool op_equals(QDBusError.KnownErrors p1, QDBusError p2) {
+			return StaticQt().op_equals(p1,p2);
+		}
 		[SmokeMethod("qHash(const QVariant&)")]
 		public static uint QHash(QVariant arg1) {
 			return StaticQt().QHash(arg1);
 		}
 		// uint qHash(const QDBusType& arg1); >>>> NOT CONVERTED
-		[SmokeMethod("operator==(QDBusError::KnownErrors, const QDBusError&)")]
-		public static bool op_equals(QDBusError.KnownErrors p1, QDBusError p2) {
-			return StaticQt().op_equals(p1,p2);
-		}
-		[SmokeMethod("qDBusMetaTypeId(bool*)")]
-		public static int QDBusMetaTypeId(out bool arg1) {
-			return StaticQt().QDBusMetaTypeId(out arg1);
-		}
-		[SmokeMethod("qDBusMetaTypeId(uchar*)")]
-		public static int QDBusMetaTypeId(char[] arg1) {
-			return StaticQt().QDBusMetaTypeId(arg1);
-		}
-		[SmokeMethod("qDBusMetaTypeId(short*)")]
-		public static int QDBusMetaTypeId(out short arg1) {
-			return StaticQt().QDBusMetaTypeId(out arg1);
-		}
-		[SmokeMethod("qDBusMetaTypeId(int*)")]
-		public static int QDBusMetaTypeId(out int arg1) {
-			return StaticQt().QDBusMetaTypeId(out arg1);
-		}
-		// int qDBusMetaTypeId(qlonglong* arg1); >>>> NOT CONVERTED
-		// int qDBusMetaTypeId(qulonglong* arg1); >>>> NOT CONVERTED
-		[SmokeMethod("qDBusMetaTypeId(double*)")]
-		public static int QDBusMetaTypeId(out double arg1) {
-			return StaticQt().QDBusMetaTypeId(out arg1);
-		}
-		[SmokeMethod("qDBusMetaTypeId(QString*)")]
-		public static int QDBusMetaTypeId(StringBuilder arg1) {
-			return StaticQt().QDBusMetaTypeId(arg1);
-		}
-		[SmokeMethod("qDBusMetaTypeId(QVariant*)")]
-		public static int QDBusMetaTypeId(QVariant arg1) {
-			return StaticQt().QDBusMetaTypeId(arg1);
-		}
-		// int qDBusMetaTypeId(QList<bool>* arg1); >>>> NOT CONVERTED
-		[SmokeMethod("qDBusMetaTypeId(QByteArray*)")]
-		public static int QDBusMetaTypeId(QByteArray arg1) {
-			return StaticQt().QDBusMetaTypeId(arg1);
-		}
-		// int qDBusMetaTypeId(QList<short>* arg1); >>>> NOT CONVERTED
-		// int qDBusMetaTypeId(QList<ushort>* arg1); >>>> NOT CONVERTED
-		// int qDBusMetaTypeId(QList<int>* arg1); >>>> NOT CONVERTED
-		// int qDBusMetaTypeId(QList<uint>* arg1); >>>> NOT CONVERTED
-		// int qDBusMetaTypeId(QList<qlonglong>* arg1); >>>> NOT CONVERTED
-		// int qDBusMetaTypeId(QList<qulonglong>* arg1); >>>> NOT CONVERTED
-		// int qDBusMetaTypeId(QList<double>* arg1); >>>> NOT CONVERTED
-		[SmokeMethod("qDBusMetaTypeId(QStringList*)")]
-		public static int QDBusMetaTypeId(string[] arg1) {
-			return StaticQt().QDBusMetaTypeId(arg1);
-		}
-		// int qDBusMetaTypeId(QVariantList* arg1); >>>> NOT CONVERTED
-		// int qDBusMetaTypeId(QVariantMap* arg1); >>>> NOT CONVERTED
 		[SmokeMethod("operator==(const QGLFormat&, const QGLFormat&)")]
 		public static bool op_equals(QGLFormat arg1, QGLFormat arg2) {
 			return StaticQt().op_equals(arg1,arg2);
@@ -1187,6 +1193,18 @@ namespace Qyoto {
 		[SmokeMethod("operator==(QHostAddress::SpecialAddress, const QHostAddress&)")]
 		public static bool op_equals(QHostAddress.SpecialAddress address1, QHostAddress address2) {
 			return StaticQt().op_equals(address1,address2);
+		}
+		[SmokeMethod("qHash(const QHostAddress&)")]
+		public static uint QHash(QHostAddress key) {
+			return StaticQt().QHash(key);
+		}
+		[SmokeMethod("operator<<(QDataStream&, const QHostAddress&)")]
+		public static QDataStream op_write(QDataStream arg1, QHostAddress arg2) {
+			return StaticQt().op_write(arg1,arg2);
+		}
+		[SmokeMethod("operator>>(QDataStream&, QHostAddress&)")]
+		public static QDataStream op_read(QDataStream arg1, QHostAddress arg2) {
+			return StaticQt().op_read(arg1,arg2);
 		}
 		[SmokeMethod("operator<<(QDataStream&, const QImage&)")]
 		public static QDataStream op_write(QDataStream arg1, QImage arg2) {
@@ -1256,6 +1274,14 @@ namespace Qyoto {
 		[SmokeMethod("operator>>(QDataStream&, QCursor&)")]
 		public static QDataStream op_read(QDataStream inS, QCursor cursor) {
 			return StaticQt().op_read(inS,cursor);
+		}
+		[SmokeMethod("operator==(QKeyEvent*, QKeySequence::StandardKey)")]
+		public static bool op_equals(QKeyEvent e, QKeySequence.StandardKey key) {
+			return StaticQt().op_equals(e,key);
+		}
+		[SmokeMethod("operator==(QKeySequence::StandardKey, QKeyEvent*)")]
+		public static bool op_equals(QKeySequence.StandardKey key, QKeyEvent e) {
+			return StaticQt().op_equals(key,e);
 		}
 		[SmokeMethod("operator<<(QDataStream&, const QKeySequence&)")]
 		public static QDataStream op_write(QDataStream arg1, QKeySequence ks) {

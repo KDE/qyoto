@@ -183,6 +183,10 @@ namespace Qyoto {
 		public QMetaClassInfo ClassInfo(int index) {
 			return ProxyQMetaObject().ClassInfo(index);
 		}
+		[SmokeMethod("userProperty() const")]
+		public QMetaProperty UserProperty() {
+			return ProxyQMetaObject().UserProperty();
+		}
 		public QMetaObject() : this((Type) null) {
 			CreateProxy();
 			NewQMetaObject();

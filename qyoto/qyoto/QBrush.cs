@@ -126,6 +126,14 @@ namespace Qyoto {
 		public void SetStyle(Qt.BrushStyle arg1) {
 			ProxyQBrush().SetStyle(arg1);
 		}
+		[SmokeMethod("matrix() const")]
+		public QMatrix Matrix() {
+			return ProxyQBrush().Matrix();
+		}
+		[SmokeMethod("setMatrix(const QMatrix&)")]
+		public void SetMatrix(QMatrix mat) {
+			ProxyQBrush().SetMatrix(mat);
+		}
 		[SmokeMethod("texture() const")]
 		public QPixmap Texture() {
 			return ProxyQBrush().Texture();

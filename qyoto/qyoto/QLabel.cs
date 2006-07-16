@@ -4,6 +4,7 @@ namespace Qyoto {
 	using System;
 	using System.Text;
 
+	/// See <see cref="IQLabelSignals"></see> for signals emitted by QLabel
 	[SmokeClass("QLabel")]
 	public class QLabel : QFrame, IDisposable {
  		protected QLabel(Type dummy) : base((Type) null) {}
@@ -33,7 +34,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQLabel(parent,f);
 		}
-		[SmokeMethod("QLabel(QWidget*, Qt::WFlags)")]
+		[SmokeMethod("QLabel(QWidget*, Qt::WindowFlags)")]
 		private void NewQLabel(QWidget parent, int f) {
 			ProxyQLabel().NewQLabel(parent,f);
 		}
@@ -57,7 +58,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQLabel(text,parent,f);
 		}
-		[SmokeMethod("QLabel(const QString&, QWidget*, Qt::WFlags)")]
+		[SmokeMethod("QLabel(const QString&, QWidget*, Qt::WindowFlags)")]
 		private void NewQLabel(string text, QWidget parent, int f) {
 			ProxyQLabel().NewQLabel(text,parent,f);
 		}
@@ -161,6 +162,16 @@ namespace Qyoto {
 		public new int HeightForWidth(int arg1) {
 			return ProxyQLabel().HeightForWidth(arg1);
 		}
+		[SmokeMethod("openExternalLinks() const")]
+		public bool OpenExternalLinks() {
+			return ProxyQLabel().OpenExternalLinks();
+		}
+		[SmokeMethod("setOpenExternalLinks(bool)")]
+		public void SetOpenExternalLinks(bool open) {
+			ProxyQLabel().SetOpenExternalLinks(open);
+		}
+		// void setTextInteractionFlags(Qt::TextInteractionFlags arg1); >>>> NOT CONVERTED
+		// Qt::TextInteractionFlags textInteractionFlags(); >>>> NOT CONVERTED
 		[SmokeMethod("setText(const QString&)")]
 		public void SetText(string arg1) {
 			ProxyQLabel().SetText(arg1);
@@ -201,6 +212,10 @@ namespace Qyoto {
 		public new bool Event(QEvent e) {
 			return ProxyQLabel().Event(e);
 		}
+		[SmokeMethod("keyPressEvent(QKeyEvent*)")]
+		protected new void KeyPressEvent(QKeyEvent ev) {
+			ProxyQLabel().KeyPressEvent(ev);
+		}
 		[SmokeMethod("paintEvent(QPaintEvent*)")]
 		protected new void PaintEvent(QPaintEvent arg1) {
 			ProxyQLabel().PaintEvent(arg1);
@@ -208,6 +223,30 @@ namespace Qyoto {
 		[SmokeMethod("changeEvent(QEvent*)")]
 		protected new void ChangeEvent(QEvent arg1) {
 			ProxyQLabel().ChangeEvent(arg1);
+		}
+		[SmokeMethod("mousePressEvent(QMouseEvent*)")]
+		protected new void MousePressEvent(QMouseEvent ev) {
+			ProxyQLabel().MousePressEvent(ev);
+		}
+		[SmokeMethod("mouseMoveEvent(QMouseEvent*)")]
+		protected new void MouseMoveEvent(QMouseEvent ev) {
+			ProxyQLabel().MouseMoveEvent(ev);
+		}
+		[SmokeMethod("mouseReleaseEvent(QMouseEvent*)")]
+		protected new void MouseReleaseEvent(QMouseEvent ev) {
+			ProxyQLabel().MouseReleaseEvent(ev);
+		}
+		[SmokeMethod("contextMenuEvent(QContextMenuEvent*)")]
+		protected new void ContextMenuEvent(QContextMenuEvent ev) {
+			ProxyQLabel().ContextMenuEvent(ev);
+		}
+		[SmokeMethod("focusInEvent(QFocusEvent*)")]
+		protected new void FocusInEvent(QFocusEvent ev) {
+			ProxyQLabel().FocusInEvent(ev);
+		}
+		[SmokeMethod("focusOutEvent(QFocusEvent*)")]
+		protected new void FocusOutEvent(QFocusEvent ev) {
+			ProxyQLabel().FocusOutEvent(ev);
 		}
 		~QLabel() {
 			DisposeQLabel();
@@ -225,5 +264,9 @@ namespace Qyoto {
 	}
 
 	public interface IQLabelSignals : IQFrameSignals {
+		[Q_SIGNAL("void linkActivated(const QString&)")]
+		void LinkActivated(string link);
+		[Q_SIGNAL("void linkHovered(const QString&)")]
+		void LinkHovered(string link);
 	}
 }

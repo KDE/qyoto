@@ -25,10 +25,12 @@ namespace Qyoto {
 			return (IQStyleOptionProgressBarV2Proxy) _staticInterceptor;
 		}
 
-		public const int Type = (int) QStyleOption.OptionType.SO_ProgressBar;
-
-		public const int Version = 2;
-
+		public enum StyleOptionType {
+			Type = QStyleOption.OptionType.SO_ProgressBar,
+		}
+		public enum StyleOptionVersion {
+			Version = 2,
+		}
 		public QStyleOptionProgressBarV2() : this((Type) null) {
 			CreateProxy();
 			NewQStyleOptionProgressBarV2();

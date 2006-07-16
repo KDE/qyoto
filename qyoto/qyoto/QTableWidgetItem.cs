@@ -29,9 +29,10 @@ namespace Qyoto {
 			return (IQTableWidgetItemProxy) _staticInterceptor;
 		}
 
-		public const int Type = 0;
-		public const int UserType = 1000;
-
+		public enum ItemType {
+			Type = 0,
+			UserType = 1000,
+		}
 		public QTableWidgetItem(int type) : this((Type) null) {
 			CreateProxy();
 			NewQTableWidgetItem(type);
@@ -64,6 +65,22 @@ namespace Qyoto {
 		private void NewQTableWidgetItem(string text) {
 			ProxyQTableWidgetItem().NewQTableWidgetItem(text);
 		}
+		public QTableWidgetItem(QIcon icon, string text, int type) : this((Type) null) {
+			CreateProxy();
+			NewQTableWidgetItem(icon,text,type);
+		}
+		[SmokeMethod("QTableWidgetItem(const QIcon&, const QString&, int)")]
+		private void NewQTableWidgetItem(QIcon icon, string text, int type) {
+			ProxyQTableWidgetItem().NewQTableWidgetItem(icon,text,type);
+		}
+		public QTableWidgetItem(QIcon icon, string text) : this((Type) null) {
+			CreateProxy();
+			NewQTableWidgetItem(icon,text);
+		}
+		[SmokeMethod("QTableWidgetItem(const QIcon&, const QString&)")]
+		private void NewQTableWidgetItem(QIcon icon, string text) {
+			ProxyQTableWidgetItem().NewQTableWidgetItem(icon,text);
+		}
 		public QTableWidgetItem(QTableWidgetItem other) : this((Type) null) {
 			CreateProxy();
 			NewQTableWidgetItem(other);
@@ -79,6 +96,22 @@ namespace Qyoto {
 		[SmokeMethod("tableWidget() const")]
 		public QTableWidget TableWidget() {
 			return ProxyQTableWidgetItem().TableWidget();
+		}
+		[SmokeMethod("row() const")]
+		public int Row() {
+			return ProxyQTableWidgetItem().Row();
+		}
+		[SmokeMethod("column() const")]
+		public int Column() {
+			return ProxyQTableWidgetItem().Column();
+		}
+		[SmokeMethod("setSelected(bool)")]
+		public void SetSelected(bool select) {
+			ProxyQTableWidgetItem().SetSelected(select);
+		}
+		[SmokeMethod("isSelected() const")]
+		public bool IsSelected() {
+			return ProxyQTableWidgetItem().IsSelected();
 		}
 		[SmokeMethod("flags() const")]
 		public int Flags() {

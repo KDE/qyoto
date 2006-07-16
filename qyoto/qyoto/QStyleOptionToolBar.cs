@@ -25,6 +25,12 @@ namespace Qyoto {
 			return (IQStyleOptionToolBarProxy) _staticInterceptor;
 		}
 
+		public enum StyleOptionType {
+			Type = QStyleOption.OptionType.SO_ToolBar,
+		}
+		public enum StyleOptionVersion {
+			Version = 1,
+		}
 		public enum ToolBarPosition {
 			Beginning = 0,
 			Middle = 1,
@@ -35,10 +41,6 @@ namespace Qyoto {
 			None = 0x0,
 			Movable = 0x1,
 		}
-		public const int Type = (int) QStyleOption.OptionType.SO_ToolBar;
-
-		public const int Version = 1;
-
 		public QStyleOptionToolBar() : this((Type) null) {
 			CreateProxy();
 			NewQStyleOptionToolBar();

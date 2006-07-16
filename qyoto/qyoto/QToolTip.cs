@@ -13,6 +13,7 @@ namespace Qyoto {
 		interface IQToolTipProxy {
 			void ShowText(QPoint pos, string text, QWidget w);
 			void ShowText(QPoint pos, string text);
+			void HideText();
 			QPalette Palette();
 		}
 
@@ -39,6 +40,10 @@ namespace Qyoto {
 		[SmokeMethod("showText(const QPoint&, const QString&)")]
 		public static void ShowText(QPoint pos, string text) {
 			StaticQToolTip().ShowText(pos,text);
+		}
+		[SmokeMethod("hideText()")]
+		public static void HideText() {
+			StaticQToolTip().HideText();
 		}
 		[SmokeMethod("palette()")]
 		public static QPalette Palette() {

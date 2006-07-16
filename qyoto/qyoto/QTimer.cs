@@ -6,7 +6,7 @@ namespace Qyoto {
 
 	///<remarks>*************************************************
 	///
-	///* Copyright (C) 1992-2006 Trolltech AS. All rights reserved.
+	///* Copyright (C) 1992-2006 Trolltech ASA. All rights reserved.
 	///
 	///* This file is part of the QtCore module of the Qt Toolkit.
 	///
@@ -26,7 +26,7 @@ namespace Qyoto {
 	/// WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 	///
 	///************************************************** See <see cref="IQTimerSignals"></see> for signals emitted by QTimer
-	///</remarks>		<short>                                                                                 Copyright (C) 1992-2006 Trolltech AS.</short>
+	///</remarks>		<short>                                                                                 Copyright (C) 1992-2006 Trolltech ASA.</short>
 
 	[SmokeClass("QTimer")]
 	public class QTimer : QObject, IDisposable {

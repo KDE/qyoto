@@ -25,10 +25,12 @@ namespace Qyoto {
 			return (IQStyleOptionRubberBandProxy) _staticInterceptor;
 		}
 
-		public const int Type = (int) QStyleOption.OptionType.SO_RubberBand;
-
-		public const int Version = 1;
-
+		public enum StyleOptionType {
+			Type = QStyleOption.OptionType.SO_RubberBand,
+		}
+		public enum StyleOptionVersion {
+			Version = 1,
+		}
 		public QStyleOptionRubberBand() : this((Type) null) {
 			CreateProxy();
 			NewQStyleOptionRubberBand();

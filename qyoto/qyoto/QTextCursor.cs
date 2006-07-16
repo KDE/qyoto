@@ -60,6 +60,7 @@ namespace Qyoto {
 			WordUnderCursor = 0,
 			LineUnderCursor = 1,
 			BlockUnderCursor = 2,
+			Document = 3,
 		}
 		// QTextCursor* QTextCursor(); >>>> NOT CONVERTED
 		// QTextCursor* QTextCursor(QTextDocument* arg1); >>>> NOT CONVERTED
@@ -246,6 +247,14 @@ namespace Qyoto {
 			return ProxyQTextCursor().CurrentFrame();
 		}
 		// void insertFragment(const QTextDocumentFragment& arg1); >>>> NOT CONVERTED
+		[SmokeMethod("insertHtml(const QString&)")]
+		public void InsertHtml(string html) {
+			ProxyQTextCursor().InsertHtml(html);
+		}
+		[SmokeMethod("insertImage(const QTextImageFormat&, QTextFrameFormat::Position)")]
+		public void InsertImage(QTextImageFormat format, QTextFrameFormat.Position alignment) {
+			ProxyQTextCursor().InsertImage(format,alignment);
+		}
 		[SmokeMethod("insertImage(const QTextImageFormat&)")]
 		public void InsertImage(QTextImageFormat format) {
 			ProxyQTextCursor().InsertImage(format);

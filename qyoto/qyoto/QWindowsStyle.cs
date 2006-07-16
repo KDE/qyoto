@@ -141,6 +141,14 @@ namespace Qyoto {
 		public static new string Tr(string s) {
 			return StaticQWindowsStyle().Tr(s);
 		}
+		[SmokeMethod("standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const")]
+		protected new QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon, out int option, QWidget widget) {
+			return ProxyQWindowsStyle().StandardIconImplementation(standardIcon,out option,widget);
+		}
+		[SmokeMethod("standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*) const")]
+		protected new QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon, out int option) {
+			return ProxyQWindowsStyle().StandardIconImplementation(standardIcon,out option);
+		}
 		[SmokeMethod("eventFilter(QObject*, QEvent*)")]
 		public new bool EventFilter(QObject o, QEvent e) {
 			return ProxyQWindowsStyle().EventFilter(o,e);

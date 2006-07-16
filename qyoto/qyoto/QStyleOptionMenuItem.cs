@@ -25,6 +25,12 @@ namespace Qyoto {
 			return (IQStyleOptionMenuItemProxy) _staticInterceptor;
 		}
 
+		public enum StyleOptionType {
+			Type = QStyleOption.OptionType.SO_MenuItem,
+		}
+		public enum StyleOptionVersion {
+			Version = 1,
+		}
 		public enum MenuItemType {
 			Normal = 0,
 			DefaultItem = 1,
@@ -40,10 +46,6 @@ namespace Qyoto {
 			Exclusive = 1,
 			NonExclusive = 2,
 		}
-		public const int Type = (int) QStyleOption.OptionType.SO_MenuItem;
-
-		public const int Version = 1;
-
 		public QStyleOptionMenuItem() : this((Type) null) {
 			CreateProxy();
 			NewQStyleOptionMenuItem();

@@ -155,6 +155,10 @@ namespace Qyoto {
 		public void SetCurrentSection(QDateTimeEdit.Section section) {
 			ProxyQDateTimeEdit().SetCurrentSection(section);
 		}
+		[SmokeMethod("setSelectedSection(QDateTimeEdit::Section)")]
+		public void SetSelectedSection(QDateTimeEdit.Section section) {
+			ProxyQDateTimeEdit().SetSelectedSection(section);
+		}
 		[SmokeMethod("sectionText(QDateTimeEdit::Section) const")]
 		public string SectionText(QDateTimeEdit.Section s) {
 			return ProxyQDateTimeEdit().SectionText(s);

@@ -64,6 +64,7 @@ namespace Qyoto {
 			PreferAntialias = 0x0080,
 			NoAntialias = 0x0100,
 			OpenGLCompatible = 0x0200,
+			NoFontMerging = 0x8000,
 		}
 		public enum Weight {
 			Light = 25,

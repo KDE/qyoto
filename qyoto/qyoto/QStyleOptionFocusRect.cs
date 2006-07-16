@@ -25,10 +25,12 @@ namespace Qyoto {
 			return (IQStyleOptionFocusRectProxy) _staticInterceptor;
 		}
 
-		public const int Type = (int) QStyleOption.OptionType.SO_FocusRect;
-
-		public const int Version = 1;
-
+		public enum StyleOptionType {
+			Type = QStyleOption.OptionType.SO_FocusRect,
+		}
+		public enum StyleOptionVersion {
+			Version = 1,
+		}
 		public QStyleOptionFocusRect() : this((Type) null) {
 			CreateProxy();
 			NewQStyleOptionFocusRect();

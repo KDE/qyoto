@@ -38,7 +38,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDialog(parent,f);
 		}
-		[SmokeMethod("QDialog(QWidget*, Qt::WFlags)")]
+		[SmokeMethod("QDialog(QWidget*, Qt::WindowFlags)")]
 		private void NewQDialog(QWidget parent, int f) {
 			ProxyQDialog().NewQDialog(parent,f);
 		}

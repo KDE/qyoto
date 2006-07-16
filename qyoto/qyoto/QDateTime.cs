@@ -20,6 +20,7 @@ namespace Qyoto {
 			DateTime FromString(string s, Qt.DateFormat f);
 			DateTime FromString(string s);
 			DateTime FromString(string s, string format);
+			DateTime FromTime_t(uint secsSince1Jan1970UTC);
 		}
 
 		protected new void CreateProxy() {
@@ -204,6 +205,10 @@ namespace Qyoto {
 		[SmokeMethod("fromString(const QString&, const QString&)")]
 		public static DateTime FromString(string s, string format) {
 			return StaticQDateTime().FromString(s,format);
+		}
+		[SmokeMethod("fromTime_t(uint)")]
+		public static DateTime FromTime_t(uint secsSince1Jan1970UTC) {
+			return StaticQDateTime().FromTime_t(secsSince1Jan1970UTC);
 		}
 		~QDateTime() {
 			DisposeQDateTime();

@@ -25,10 +25,12 @@ namespace Qyoto {
 			return (IQStyleOptionComplexProxy) _staticInterceptor;
 		}
 
-		public const int Type = (int) QStyleOption.OptionType.SO_Complex;
-
-		public const int Version = 1;
-
+		public enum StyleOptionType {
+			Type = QStyleOption.OptionType.SO_Complex,
+		}
+		public enum StyleOptionVersion {
+			Version = 1,
+		}
 		public QStyleOptionComplex(int version, int type) : this((Type) null) {
 			CreateProxy();
 			NewQStyleOptionComplex(version,type);

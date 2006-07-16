@@ -136,6 +136,10 @@ namespace Qyoto {
 		public string ErrorString() {
 			return ProxyQImageWriter().ErrorString();
 		}
+		[SmokeMethod("supportsOption(QImageIOHandler::ImageOption) const")]
+		public bool SupportsOption(QImageIOHandler.ImageOption option) {
+			return ProxyQImageWriter().SupportsOption(option);
+		}
 		[SmokeMethod("supportedImageFormats()")]
 		public static ArrayList SupportedImageFormats() {
 			return StaticQImageWriter().SupportedImageFormats();

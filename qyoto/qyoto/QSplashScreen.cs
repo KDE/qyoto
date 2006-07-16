@@ -34,7 +34,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSplashScreen(pixmap,f);
 		}
-		[SmokeMethod("QSplashScreen(const QPixmap&, Qt::WFlags)")]
+		[SmokeMethod("QSplashScreen(const QPixmap&, Qt::WindowFlags)")]
 		private void NewQSplashScreen(QPixmap pixmap, int f) {
 			ProxyQSplashScreen().NewQSplashScreen(pixmap,f);
 		}
@@ -58,7 +58,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSplashScreen(parent,pixmap,f);
 		}
-		[SmokeMethod("QSplashScreen(QWidget*, const QPixmap&, Qt::WFlags)")]
+		[SmokeMethod("QSplashScreen(QWidget*, const QPixmap&, Qt::WindowFlags)")]
 		private void NewQSplashScreen(QWidget parent, QPixmap pixmap, int f) {
 			ProxyQSplashScreen().NewQSplashScreen(parent,pixmap,f);
 		}

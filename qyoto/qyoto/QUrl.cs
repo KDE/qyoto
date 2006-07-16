@@ -75,6 +75,10 @@ namespace Qyoto {
 			QByteArray ToPercentEncoding(string arg1);
 			string FromPunycode(QByteArray arg1);
 			QByteArray ToPunycode(string arg1);
+			string FromAce(QByteArray arg1);
+			QByteArray ToAce(string arg1);
+			ArrayList IdnWhitelist();
+			void SetIdnWhitelist(string[] arg1);
 		}
 
 		protected new void CreateProxy() {
@@ -380,6 +384,22 @@ namespace Qyoto {
 		[SmokeMethod("toPunycode(const QString&)")]
 		public static QByteArray ToPunycode(string arg1) {
 			return StaticQUrl().ToPunycode(arg1);
+		}
+		[SmokeMethod("fromAce(const QByteArray&)")]
+		public static string FromAce(QByteArray arg1) {
+			return StaticQUrl().FromAce(arg1);
+		}
+		[SmokeMethod("toAce(const QString&)")]
+		public static QByteArray ToAce(string arg1) {
+			return StaticQUrl().ToAce(arg1);
+		}
+		[SmokeMethod("idnWhitelist()")]
+		public static ArrayList IdnWhitelist() {
+			return StaticQUrl().IdnWhitelist();
+		}
+		[SmokeMethod("setIdnWhitelist(const QStringList&)")]
+		public static void SetIdnWhitelist(string[] arg1) {
+			StaticQUrl().SetIdnWhitelist(arg1);
 		}
 		~QUrl() {
 			DisposeQUrl();

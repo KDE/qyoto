@@ -3,7 +3,7 @@ namespace Qyoto {
 
 	using System;
 
-	public class QDBus {
+	public class QDBus : MarshalByRefObject {
 		protected Object _interceptor = null;
 		interface IQDBusProxy {
 			QDBusConnection SessionBus();
@@ -26,6 +26,12 @@ namespace Qyoto {
 			return (IQDBusProxy) _staticInterceptor;
 		}
 
+		public enum CallMode {
+			NoBlock = 0,
+			Block = 1,
+			BlockWithGui = 2,
+			AutoDetect = 3,
+		}
 		[SmokeMethod("sessionBus()")]
 		public static QDBusConnection SessionBus() {
 			return StaticQDBus().SessionBus();
@@ -40,6 +46,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQDBus();
 		}
+		[SmokeMethod("~QDBus()")]
 		private void DisposeQDBus() {
 			ProxyQDBus().DisposeQDBus();
 		}

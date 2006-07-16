@@ -69,6 +69,7 @@ namespace Qyoto {
 			TextUnderlineColor = 0x2010,
 			TextVerticalAlignment = 0x2021,
 			TextOutline = 0x2022,
+			TextUnderlineStyle = 0x2023,
 			IsAnchor = 0x2030,
 			AnchorHref = 0x2031,
 			AnchorName = 0x2032,
@@ -84,11 +85,13 @@ namespace Qyoto {
 			TableColumnWidthConstraints = 0x4101,
 			TableCellSpacing = 0x4102,
 			TableCellPadding = 0x4103,
+			TableHeaderRowCount = 0x4104,
 			TableCellRowSpan = 0x4810,
 			TableCellColumnSpan = 0x4811,
 			ImageName = 0x5000,
 			ImageWidth = 0x5010,
 			ImageHeight = 0x5011,
+			FullWidthSelection = 0x06000,
 			UserProperty = 0x100000,
 		}
 		public enum ObjectTypes {

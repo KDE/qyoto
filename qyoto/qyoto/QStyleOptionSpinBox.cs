@@ -25,10 +25,12 @@ namespace Qyoto {
 			return (IQStyleOptionSpinBoxProxy) _staticInterceptor;
 		}
 
-		public const int Type = (int) QStyleOption.OptionType.SO_SpinBox;
-
-		public const int Version = 1;
-
+		public enum StyleOptionType {
+			Type = QStyleOption.OptionType.SO_SpinBox,
+		}
+		public enum StyleOptionVersion {
+			Version = 1,
+		}
 		public QStyleOptionSpinBox() : this((Type) null) {
 			CreateProxy();
 			NewQStyleOptionSpinBox();

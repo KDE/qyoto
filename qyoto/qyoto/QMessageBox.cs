@@ -110,7 +110,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQMessageBox(caption,text,icon,button0,button1,button2,parent,f);
 		}
-		[SmokeMethod("QMessageBox(const QString&, const QString&, QMessageBox::Icon, int, int, int, QWidget*, Qt::WFlags)")]
+		[SmokeMethod("QMessageBox(const QString&, const QString&, QMessageBox::Icon, int, int, int, QWidget*, Qt::WindowFlags)")]
 		private void NewQMessageBox(string caption, string text, QMessageBox.Icon icon, int button0, int button1, int button2, QWidget parent, int f) {
 			ProxyQMessageBox().NewQMessageBox(caption,text,icon,button0,button1,button2,parent,f);
 		}

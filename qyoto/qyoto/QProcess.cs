@@ -102,6 +102,14 @@ namespace Qyoto {
 		public void SetReadChannelMode(QProcess.ProcessChannelMode mode) {
 			ProxyQProcess().SetReadChannelMode(mode);
 		}
+		[SmokeMethod("processChannelMode() const")]
+		public QProcess.ProcessChannelMode processChannelMode() {
+			return ProxyQProcess().processChannelMode();
+		}
+		[SmokeMethod("setProcessChannelMode(QProcess::ProcessChannelMode)")]
+		public void SetProcessChannelMode(QProcess.ProcessChannelMode mode) {
+			ProxyQProcess().SetProcessChannelMode(mode);
+		}
 		[SmokeMethod("readChannel() const")]
 		public QProcess.ProcessChannel ReadChannel() {
 			return ProxyQProcess().ReadChannel();
@@ -117,6 +125,30 @@ namespace Qyoto {
 		[SmokeMethod("closeWriteChannel()")]
 		public void CloseWriteChannel() {
 			ProxyQProcess().CloseWriteChannel();
+		}
+		[SmokeMethod("setStandardInputFile(const QString&)")]
+		public void SetStandardInputFile(string fileName) {
+			ProxyQProcess().SetStandardInputFile(fileName);
+		}
+		[SmokeMethod("setStandardOutputFile(const QString&, OpenMode)")]
+		public void SetStandardOutputFile(string fileName, int mode) {
+			ProxyQProcess().SetStandardOutputFile(fileName,mode);
+		}
+		[SmokeMethod("setStandardOutputFile(const QString&)")]
+		public void SetStandardOutputFile(string fileName) {
+			ProxyQProcess().SetStandardOutputFile(fileName);
+		}
+		[SmokeMethod("setStandardErrorFile(const QString&, OpenMode)")]
+		public void SetStandardErrorFile(string fileName, int mode) {
+			ProxyQProcess().SetStandardErrorFile(fileName,mode);
+		}
+		[SmokeMethod("setStandardErrorFile(const QString&)")]
+		public void SetStandardErrorFile(string fileName) {
+			ProxyQProcess().SetStandardErrorFile(fileName);
+		}
+		[SmokeMethod("setStandardOutputProcess(QProcess*)")]
+		public void SetStandardOutputProcess(QProcess destination) {
+			ProxyQProcess().SetStandardOutputProcess(destination);
 		}
 		[SmokeMethod("workingDirectory() const")]
 		public string WorkingDirectory() {

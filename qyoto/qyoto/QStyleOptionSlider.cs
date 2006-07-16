@@ -25,10 +25,12 @@ namespace Qyoto {
 			return (IQStyleOptionSliderProxy) _staticInterceptor;
 		}
 
-		public const int Type = (int) QStyleOption.OptionType.SO_Slider;
-
-		public const int Version = 1;
-
+		public enum StyleOptionType {
+			Type = QStyleOption.OptionType.SO_Slider,
+		}
+		public enum StyleOptionVersion {
+			Version = 1,
+		}
 		public QStyleOptionSlider() : this((Type) null) {
 			CreateProxy();
 			NewQStyleOptionSlider();

@@ -2,8 +2,10 @@
 namespace Qyoto {
 
 	using System;
+	using System.Collections;
 	using System.Text;
 
+	/// See <see cref="IQStandardItemModelSignals"></see> for signals emitted by QStandardItemModel
 	[SmokeClass("QStandardItemModel")]
 	public class QStandardItemModel : QAbstractItemModel, IDisposable {
  		protected QStandardItemModel(Type dummy) : base((Type) null) {}
@@ -165,6 +167,12 @@ namespace Qyoto {
 		public new int Flags(QModelIndex index) {
 			return ProxyQStandardItemModel().Flags(index);
 		}
+		[SmokeMethod("supportedDropActions() const")]
+		public new int SupportedDropActions() {
+			return ProxyQStandardItemModel().SupportedDropActions();
+		}
+		// QMap<int, QVariant> itemData(const QModelIndex& arg1); >>>> NOT CONVERTED
+		// bool setItemData(const QModelIndex& arg1,const QMap<int, QVariant>& arg2); >>>> NOT CONVERTED
 		[SmokeMethod("clear()")]
 		public void Clear() {
 			ProxyQStandardItemModel().Clear();
@@ -173,6 +181,142 @@ namespace Qyoto {
 		public new QObject Parent() {
 			return ProxyQStandardItemModel().Parent();
 		}
+		[SmokeMethod("sort(int, Qt::SortOrder)")]
+		public new void Sort(int column, Qt.SortOrder order) {
+			ProxyQStandardItemModel().Sort(column,order);
+		}
+		[SmokeMethod("sort(int)")]
+		public new void Sort(int column) {
+			ProxyQStandardItemModel().Sort(column);
+		}
+		[SmokeMethod("itemFromIndex(const QModelIndex&) const")]
+		public QStandardItem ItemFromIndex(QModelIndex index) {
+			return ProxyQStandardItemModel().ItemFromIndex(index);
+		}
+		[SmokeMethod("indexFromItem(const QStandardItem*) const")]
+		public QModelIndex IndexFromItem(QStandardItem item) {
+			return ProxyQStandardItemModel().IndexFromItem(item);
+		}
+		[SmokeMethod("item(int, int) const")]
+		public QStandardItem Item(int row, int column) {
+			return ProxyQStandardItemModel().Item(row,column);
+		}
+		[SmokeMethod("item(int) const")]
+		public QStandardItem Item(int row) {
+			return ProxyQStandardItemModel().Item(row);
+		}
+		[SmokeMethod("setItem(int, int, QStandardItem*)")]
+		public void SetItem(int row, int column, QStandardItem item) {
+			ProxyQStandardItemModel().SetItem(row,column,item);
+		}
+		[SmokeMethod("setItem(int, QStandardItem*)")]
+		public void SetItem(int row, QStandardItem item) {
+			ProxyQStandardItemModel().SetItem(row,item);
+		}
+		[SmokeMethod("topLevelParent() const")]
+		public QStandardItem TopLevelParent() {
+			return ProxyQStandardItemModel().TopLevelParent();
+		}
+		[SmokeMethod("horizontalHeaderItem(int) const")]
+		public QStandardItem HorizontalHeaderItem(int column) {
+			return ProxyQStandardItemModel().HorizontalHeaderItem(column);
+		}
+		[SmokeMethod("setHorizontalHeaderItem(int, QStandardItem*)")]
+		public void SetHorizontalHeaderItem(int column, QStandardItem item) {
+			ProxyQStandardItemModel().SetHorizontalHeaderItem(column,item);
+		}
+		[SmokeMethod("verticalHeaderItem(int) const")]
+		public QStandardItem VerticalHeaderItem(int row) {
+			return ProxyQStandardItemModel().VerticalHeaderItem(row);
+		}
+		[SmokeMethod("setVerticalHeaderItem(int, QStandardItem*)")]
+		public void SetVerticalHeaderItem(int row, QStandardItem item) {
+			ProxyQStandardItemModel().SetVerticalHeaderItem(row,item);
+		}
+		[SmokeMethod("setHorizontalHeaderLabels(const QStringList&)")]
+		public void SetHorizontalHeaderLabels(string[] labels) {
+			ProxyQStandardItemModel().SetHorizontalHeaderLabels(labels);
+		}
+		[SmokeMethod("setVerticalHeaderLabels(const QStringList&)")]
+		public void SetVerticalHeaderLabels(string[] labels) {
+			ProxyQStandardItemModel().SetVerticalHeaderLabels(labels);
+		}
+		[SmokeMethod("setRowCount(int)")]
+		public void SetRowCount(int rows) {
+			ProxyQStandardItemModel().SetRowCount(rows);
+		}
+		[SmokeMethod("setColumnCount(int)")]
+		public void SetColumnCount(int columns) {
+			ProxyQStandardItemModel().SetColumnCount(columns);
+		}
+		[SmokeMethod("appendRow(const QList<QStandardItem*>&)")]
+		public void AppendRow(ArrayList items) {
+			ProxyQStandardItemModel().AppendRow(items);
+		}
+		[SmokeMethod("appendColumn(const QList<QStandardItem*>&)")]
+		public void AppendColumn(ArrayList items) {
+			ProxyQStandardItemModel().AppendColumn(items);
+		}
+		[SmokeMethod("appendRow(QStandardItem*)")]
+		public void AppendRow(QStandardItem item) {
+			ProxyQStandardItemModel().AppendRow(item);
+		}
+		[SmokeMethod("insertRow(int, const QList<QStandardItem*>&)")]
+		public new void InsertRow(int row, ArrayList items) {
+			ProxyQStandardItemModel().InsertRow(row,items);
+		}
+		[SmokeMethod("insertColumn(int, const QList<QStandardItem*>&)")]
+		public new void InsertColumn(int column, ArrayList items) {
+			ProxyQStandardItemModel().InsertColumn(column,items);
+		}
+		[SmokeMethod("insertRow(int, QStandardItem*)")]
+		public new void InsertRow(int row, QStandardItem item) {
+			ProxyQStandardItemModel().InsertRow(row,item);
+		}
+		[SmokeMethod("insertRow(int, const QModelIndex&)")]
+		public new void InsertRow(int row, QModelIndex parent) {
+			ProxyQStandardItemModel().InsertRow(row,parent);
+		}
+		[SmokeMethod("insertRow(int)")]
+		public new void InsertRow(int row) {
+			ProxyQStandardItemModel().InsertRow(row);
+		}
+		[SmokeMethod("insertColumn(int, const QModelIndex&)")]
+		public new void InsertColumn(int column, QModelIndex parent) {
+			ProxyQStandardItemModel().InsertColumn(column,parent);
+		}
+		[SmokeMethod("insertColumn(int)")]
+		public new void InsertColumn(int column) {
+			ProxyQStandardItemModel().InsertColumn(column);
+		}
+		[SmokeMethod("takeItem(int, int)")]
+		public QStandardItem TakeItem(int row, int column) {
+			return ProxyQStandardItemModel().TakeItem(row,column);
+		}
+		[SmokeMethod("takeItem(int)")]
+		public QStandardItem TakeItem(int row) {
+			return ProxyQStandardItemModel().TakeItem(row);
+		}
+		// QList<QStandardItem*> takeRow(int arg1); >>>> NOT CONVERTED
+		// QList<QStandardItem*> takeColumn(int arg1); >>>> NOT CONVERTED
+		[SmokeMethod("takeHorizontalHeaderItem(int)")]
+		public QStandardItem TakeHorizontalHeaderItem(int column) {
+			return ProxyQStandardItemModel().TakeHorizontalHeaderItem(column);
+		}
+		[SmokeMethod("takeVerticalHeaderItem(int)")]
+		public QStandardItem TakeVerticalHeaderItem(int row) {
+			return ProxyQStandardItemModel().TakeVerticalHeaderItem(row);
+		}
+		[SmokeMethod("itemPrototype() const")]
+		public QStandardItem ItemPrototype() {
+			return ProxyQStandardItemModel().ItemPrototype();
+		}
+		[SmokeMethod("setItemPrototype(const QStandardItem*)")]
+		public void SetItemPrototype(QStandardItem item) {
+			ProxyQStandardItemModel().SetItemPrototype(item);
+		}
+		// QList<QStandardItem*> findItems(const QString& arg1,Qt::MatchFlags arg2,int arg3); >>>> NOT CONVERTED
+		// QList<QStandardItem*> findItems(const QString& arg1,Qt::MatchFlags arg2); >>>> NOT CONVERTED
 		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQStandardItemModel().Tr(s,c);
@@ -197,5 +341,7 @@ namespace Qyoto {
 	}
 
 	public interface IQStandardItemModelSignals : IQAbstractItemModelSignals {
+		[Q_SIGNAL("void itemChanged(QStandardItem*)")]
+		void ItemChanged(QStandardItem item);
 	}
 }

@@ -123,6 +123,14 @@ namespace Qyoto {
 		public void SortItems() {
 			ProxyQListWidget().SortItems();
 		}
+		[SmokeMethod("setSortingEnabled(bool)")]
+		public void SetSortingEnabled(bool enable) {
+			ProxyQListWidget().SetSortingEnabled(enable);
+		}
+		[SmokeMethod("isSortingEnabled() const")]
+		public bool IsSortingEnabled() {
+			return ProxyQListWidget().IsSortingEnabled();
+		}
 		[SmokeMethod("editItem(QListWidgetItem*)")]
 		public void EditItem(QListWidgetItem item) {
 			ProxyQListWidget().EditItem(item);
@@ -166,6 +174,10 @@ namespace Qyoto {
 		[SmokeMethod("setItemHidden(const QListWidgetItem*, bool)")]
 		public void SetItemHidden(QListWidgetItem item, bool hide) {
 			ProxyQListWidget().SetItemHidden(item,hide);
+		}
+		[SmokeMethod("dropEvent(QDropEvent*)")]
+		public new void DropEvent(QDropEvent arg1) {
+			ProxyQListWidget().DropEvent(arg1);
 		}
 		[SmokeMethod("scrollToItem(const QListWidgetItem*, QAbstractItemView::ScrollHint)")]
 		public void ScrollToItem(QListWidgetItem item, QAbstractItemView.ScrollHint hint) {

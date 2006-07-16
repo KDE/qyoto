@@ -146,6 +146,10 @@ namespace Qyoto {
 		public void SetBrush(QPalette.ColorRole cr, QBrush brush) {
 			ProxyQPalette().SetBrush(cr,brush);
 		}
+		[SmokeMethod("isBrushSet(QPalette::ColorGroup, QPalette::ColorRole) const")]
+		public bool IsBrushSet(QPalette.ColorGroup cg, QPalette.ColorRole cr) {
+			return ProxyQPalette().IsBrushSet(cg,cr);
+		}
 		[SmokeMethod("setBrush(QPalette::ColorGroup, QPalette::ColorRole, const QBrush&)")]
 		public void SetBrush(QPalette.ColorGroup cg, QPalette.ColorRole cr, QBrush brush) {
 			ProxyQPalette().SetBrush(cg,cr,brush);

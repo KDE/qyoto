@@ -25,10 +25,12 @@ namespace Qyoto {
 			return (IQStyleOptionComboBoxProxy) _staticInterceptor;
 		}
 
-		public const int Type = (int) QStyleOption.OptionType.SO_ComboBox;
-
-		public const int Version = 1;
-
+		public enum StyleOptionType {
+			Type = QStyleOption.OptionType.SO_ComboBox,
+		}
+		public enum StyleOptionVersion {
+			Version = 1,
+		}
 		public QStyleOptionComboBox() : this((Type) null) {
 			CreateProxy();
 			NewQStyleOptionComboBox();

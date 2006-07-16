@@ -42,15 +42,16 @@ namespace Qyoto {
 			Raised = 0x0020,
 			Sunken = 0x0030,
 		}
-		public const int Shadow_Mask = 0x00f0;
-		public const int Shape_Mask = 0x000f;
-
+		public enum StyleMask {
+			Shadow_Mask = 0x00f0,
+			Shape_Mask = 0x000f,
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QFrame(QWidget parent, int f) : this((Type) null) {
 			CreateProxy();
 			NewQFrame(parent,f);
 		}
-		[SmokeMethod("QFrame(QWidget*, Qt::WFlags)")]
+		[SmokeMethod("QFrame(QWidget*, Qt::WindowFlags)")]
 		private void NewQFrame(QWidget parent, int f) {
 			ProxyQFrame().NewQFrame(parent,f);
 		}

@@ -45,8 +45,13 @@ namespace Qyoto {
 		public string ToHtml() {
 			return ProxyQTextDocumentFragment().ToHtml();
 		}
+		[SmokeMethod("toHtml(const QByteArray&) const")]
+		public string ToHtml(QByteArray encoding) {
+			return ProxyQTextDocumentFragment().ToHtml(encoding);
+		}
 		// QTextDocumentFragment fromPlainText(const QString& arg1); >>>> NOT CONVERTED
 		// QTextDocumentFragment fromHtml(const QString& arg1); >>>> NOT CONVERTED
+		// QTextDocumentFragment fromHtml(const QString& arg1,const QTextDocument* arg2); >>>> NOT CONVERTED
 		~QTextDocumentFragment() {
 			DisposeQTextDocumentFragment();
 		}

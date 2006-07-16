@@ -29,6 +29,8 @@ namespace Qyoto {
 			bool Last();
 			void Clear();
 			bool Exec();
+			bool ExecBatch(QSqlQuery.BatchExecutionMode mode);
+			bool ExecBatch();
 			bool Prepare(string query);
 			void BindValue(string placeholder, QVariant val, int type);
 			void BindValue(string placeholder, QVariant val);
@@ -67,6 +69,10 @@ namespace Qyoto {
 			return (IQSqlQueryProxy) _staticInterceptor;
 		}
 
+		public enum BatchExecutionMode {
+			ValuesAsRows = 0,
+			ValuesAsColumns = 1,
+		}
 		public QSqlQuery(QSqlResult r) : this((Type) null) {
 			CreateProxy();
 			NewQSqlQuery(r);
@@ -210,6 +216,14 @@ namespace Qyoto {
 		[SmokeMethod("exec()")]
 		public bool Exec() {
 			return ProxyQSqlQuery().Exec();
+		}
+		[SmokeMethod("execBatch(QSqlQuery::BatchExecutionMode)")]
+		public bool ExecBatch(QSqlQuery.BatchExecutionMode mode) {
+			return ProxyQSqlQuery().ExecBatch(mode);
+		}
+		[SmokeMethod("execBatch()")]
+		public bool ExecBatch() {
+			return ProxyQSqlQuery().ExecBatch();
 		}
 		[SmokeMethod("prepare(const QString&)")]
 		public bool Prepare(string query) {

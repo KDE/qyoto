@@ -116,6 +116,14 @@ namespace Qyoto {
 		public void SetTabIcon(int index, QIcon icon) {
 			ProxyQTabBar().SetTabIcon(index,icon);
 		}
+		[SmokeMethod("elideMode() const")]
+		public Qt.TextElideMode ElideMode() {
+			return ProxyQTabBar().ElideMode();
+		}
+		[SmokeMethod("setElideMode(Qt::TextElideMode)")]
+		public void SetElideMode(Qt.TextElideMode arg1) {
+			ProxyQTabBar().SetElideMode(arg1);
+		}
 		[SmokeMethod("setTabToolTip(int, const QString&)")]
 		public void SetTabToolTip(int index, string tip) {
 			ProxyQTabBar().SetTabToolTip(index,tip);
@@ -175,6 +183,14 @@ namespace Qyoto {
 		[SmokeMethod("setIconSize(const QSize&)")]
 		public void SetIconSize(QSize size) {
 			ProxyQTabBar().SetIconSize(size);
+		}
+		[SmokeMethod("usesScrollButtons() const")]
+		public bool UsesScrollButtons() {
+			return ProxyQTabBar().UsesScrollButtons();
+		}
+		[SmokeMethod("setUsesScrollButtons(bool)")]
+		public void SetUsesScrollButtons(bool useButtons) {
+			ProxyQTabBar().SetUsesScrollButtons(useButtons);
 		}
 		[SmokeMethod("setCurrentIndex(int)")]
 		public void SetCurrentIndex(int index) {

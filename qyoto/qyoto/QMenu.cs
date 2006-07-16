@@ -117,6 +117,10 @@ namespace Qyoto {
 		public QAction InsertSeparator(QAction before) {
 			return ProxyQMenu().InsertSeparator(before);
 		}
+		[SmokeMethod("isEmpty() const")]
+		public bool IsEmpty() {
+			return ProxyQMenu().IsEmpty();
+		}
 		[SmokeMethod("clear()")]
 		public void Clear() {
 			ProxyQMenu().Clear();
@@ -209,6 +213,14 @@ namespace Qyoto {
 		public void SetNoReplayFor(QWidget widget) {
 			ProxyQMenu().SetNoReplayFor(widget);
 		}
+		[SmokeMethod("separatorsCollapsible() const")]
+		public bool SeparatorsCollapsible() {
+			return ProxyQMenu().SeparatorsCollapsible();
+		}
+		[SmokeMethod("setSeparatorsCollapsible(bool)")]
+		public void SetSeparatorsCollapsible(bool collapse) {
+			ProxyQMenu().SetSeparatorsCollapsible(collapse);
+		}
 		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQMenu().Tr(s,c);
@@ -281,6 +293,10 @@ namespace Qyoto {
 		public new bool Event(QEvent arg1) {
 			return ProxyQMenu().Event(arg1);
 		}
+		[SmokeMethod("focusNextPrevChild(bool)")]
+		protected new bool FocusNextPrevChild(bool next) {
+			return ProxyQMenu().FocusNextPrevChild(next);
+		}
 		~QMenu() {
 			DisposeQMenu();
 		}
@@ -299,6 +315,8 @@ namespace Qyoto {
 	public interface IQMenuSignals : IQWidgetSignals {
 		[Q_SIGNAL("void aboutToShow()")]
 		void AboutToShow();
+		[Q_SIGNAL("void aboutToHide()")]
+		void AboutToHide();
 		[Q_SIGNAL("void triggered(QAction*)")]
 		void Triggered(QAction action);
 		[Q_SIGNAL("void hovered(QAction*)")]

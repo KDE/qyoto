@@ -25,6 +25,14 @@ namespace Qyoto {
 			return (IQConicalGradientProxy) _staticInterceptor;
 		}
 
+		public QConicalGradient() : this((Type) null) {
+			CreateProxy();
+			NewQConicalGradient();
+		}
+		[SmokeMethod("QConicalGradient()")]
+		private void NewQConicalGradient() {
+			ProxyQConicalGradient().NewQConicalGradient();
+		}
 		public QConicalGradient(QPointF center, double startAngle) : this((Type) null) {
 			CreateProxy();
 			NewQConicalGradient(center,startAngle);
@@ -45,9 +53,21 @@ namespace Qyoto {
 		public QPointF Center() {
 			return ProxyQConicalGradient().Center();
 		}
+		[SmokeMethod("setCenter(const QPointF&)")]
+		public void SetCenter(QPointF center) {
+			ProxyQConicalGradient().SetCenter(center);
+		}
+		[SmokeMethod("setCenter(qreal, qreal)")]
+		public void SetCenter(double x, double y) {
+			ProxyQConicalGradient().SetCenter(x,y);
+		}
 		[SmokeMethod("angle() const")]
 		public double Angle() {
 			return ProxyQConicalGradient().Angle();
+		}
+		[SmokeMethod("setAngle(qreal)")]
+		public void SetAngle(double angle) {
+			ProxyQConicalGradient().SetAngle(angle);
 		}
 		~QConicalGradient() {
 			DisposeQConicalGradient();

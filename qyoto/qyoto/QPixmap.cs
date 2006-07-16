@@ -276,6 +276,10 @@ namespace Qyoto {
 		public bool Save(string fileName, string format) {
 			return ProxyQPixmap().Save(fileName,format);
 		}
+		[SmokeMethod("save(const QString&) const")]
+		public bool Save(string fileName) {
+			return ProxyQPixmap().Save(fileName);
+		}
 		[SmokeMethod("save(QIODevice*, const char*, int) const")]
 		public bool Save(IQIODevice device, string format, int quality) {
 			return ProxyQPixmap().Save(device,format,quality);
@@ -283,6 +287,10 @@ namespace Qyoto {
 		[SmokeMethod("save(QIODevice*, const char*) const")]
 		public bool Save(IQIODevice device, string format) {
 			return ProxyQPixmap().Save(device,format);
+		}
+		[SmokeMethod("save(QIODevice*) const")]
+		public bool Save(IQIODevice device) {
+			return ProxyQPixmap().Save(device);
 		}
 		[SmokeMethod("copy(int, int, int, int) const")]
 		public QPixmap Copy(int x, int y, int width, int height) {

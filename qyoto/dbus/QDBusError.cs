@@ -104,6 +104,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQDBusError();
 		}
+		[SmokeMethod("~QDBusError()")]
 		private void DisposeQDBusError() {
 			ProxyQDBusError().DisposeQDBusError();
 		}

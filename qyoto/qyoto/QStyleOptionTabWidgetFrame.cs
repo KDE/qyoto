@@ -25,10 +25,12 @@ namespace Qyoto {
 			return (IQStyleOptionTabWidgetFrameProxy) _staticInterceptor;
 		}
 
-		public const int Type = (int) QStyleOption.OptionType.SO_TabWidgetFrame;
-
-		public const int Version = 1;
-
+		public enum StyleOptionType {
+			Type = QStyleOption.OptionType.SO_TabWidgetFrame,
+		}
+		public enum StyleOptionVersion {
+			Version = 1,
+		}
 		public QStyleOptionTabWidgetFrame() : this((Type) null) {
 			CreateProxy();
 			NewQStyleOptionTabWidgetFrame();

@@ -114,6 +114,14 @@ namespace Qyoto {
 		public int Samples() {
 			return ProxyQGLFormat().Samples();
 		}
+		[SmokeMethod("setSwapInterval(int)")]
+		public void SetSwapInterval(int interval) {
+			ProxyQGLFormat().SetSwapInterval(interval);
+		}
+		[SmokeMethod("swapInterval() const")]
+		public int SwapInterval() {
+			return ProxyQGLFormat().SwapInterval();
+		}
 		[SmokeMethod("doubleBuffer() const")]
 		public bool DoubleBuffer() {
 			return ProxyQGLFormat().DoubleBuffer();

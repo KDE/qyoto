@@ -43,7 +43,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDockWidget(parent,flags);
 		}
-		[SmokeMethod("QDockWidget(QWidget*, Qt::WFlags)")]
+		[SmokeMethod("QDockWidget(QWidget*, Qt::WindowFlags)")]
 		private void NewQDockWidget(QWidget parent, int flags) {
 			ProxyQDockWidget().NewQDockWidget(parent,flags);
 		}

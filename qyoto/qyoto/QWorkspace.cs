@@ -63,7 +63,7 @@ namespace Qyoto {
 		public ArrayList WindowList() {
 			return ProxyQWorkspace().WindowList();
 		}
-		[SmokeMethod("addWindow(QWidget*, Qt::WFlags)")]
+		[SmokeMethod("addWindow(QWidget*, Qt::WindowFlags)")]
 		public QWidget AddWindow(QWidget w, int flags) {
 			return ProxyQWorkspace().AddWindow(w,flags);
 		}

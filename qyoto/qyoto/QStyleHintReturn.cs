@@ -32,10 +32,12 @@ namespace Qyoto {
 			SH_Default = 0xf000,
 			SH_Mask = 0,
 		}
-		public const int Type = (int) QStyleHintReturn.HintReturnType.SH_Default;
-
-		public const int Version = 1;
-
+		public enum StyleOptionType {
+			Type = QStyleHintReturn.HintReturnType.SH_Default,
+		}
+		public enum StyleOptionVersion {
+			Version = 1,
+		}
 		public QStyleHintReturn(int version, int type) : this((Type) null) {
 			CreateProxy();
 			NewQStyleHintReturn(version,type);

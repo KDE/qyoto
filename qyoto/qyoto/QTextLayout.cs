@@ -184,6 +184,10 @@ namespace Qyoto {
 		public void DrawCursor(QPainter p, QPointF pos, int cursorPosition) {
 			ProxyQTextLayout().DrawCursor(p,pos,cursorPosition);
 		}
+		[SmokeMethod("drawCursor(QPainter*, const QPointF&, int, int) const")]
+		public void DrawCursor(QPainter p, QPointF pos, int cursorPosition, int width) {
+			ProxyQTextLayout().DrawCursor(p,pos,cursorPosition,width);
+		}
 		[SmokeMethod("position() const")]
 		public QPointF Position() {
 			return ProxyQTextLayout().Position();

@@ -166,6 +166,10 @@ namespace Qyoto {
 	}
 
 	public interface IQGroupBoxSignals : IQWidgetSignals {
+		[Q_SIGNAL("void clicked(bool)")]
+		void Clicked(bool arg1);
+		[Q_SIGNAL("void clicked()")]
+		void Clicked();
 		[Q_SIGNAL("void toggled(bool)")]
 		void Toggled(bool arg1);
 	}

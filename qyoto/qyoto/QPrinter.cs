@@ -260,6 +260,14 @@ namespace Qyoto {
 		public bool FontEmbeddingEnabled() {
 			return ProxyQPrinter().FontEmbeddingEnabled();
 		}
+		[SmokeMethod("setDoubleSidePrinting(bool)")]
+		public void SetDoubleSidePrinting(bool enable) {
+			ProxyQPrinter().SetDoubleSidePrinting(enable);
+		}
+		[SmokeMethod("doubleSidePrinting()")]
+		public bool DoubleSidePrinting() {
+			return ProxyQPrinter().DoubleSidePrinting();
+		}
 		[SmokeMethod("paperRect() const")]
 		public QRect PaperRect() {
 			return ProxyQPrinter().PaperRect();

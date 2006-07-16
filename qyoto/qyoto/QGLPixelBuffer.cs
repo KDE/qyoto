@@ -51,6 +51,30 @@ namespace Qyoto {
 		private void NewQGLPixelBuffer(QSize size) {
 			ProxyQGLPixelBuffer().NewQGLPixelBuffer(size);
 		}
+		public QGLPixelBuffer(int width, int height, QGLFormat format, QGLWidget shareWidget) : this((Type) null) {
+			CreateProxy();
+			NewQGLPixelBuffer(width,height,format,shareWidget);
+		}
+		[SmokeMethod("QGLPixelBuffer(int, int, const QGLFormat&, QGLWidget*)")]
+		private void NewQGLPixelBuffer(int width, int height, QGLFormat format, QGLWidget shareWidget) {
+			ProxyQGLPixelBuffer().NewQGLPixelBuffer(width,height,format,shareWidget);
+		}
+		public QGLPixelBuffer(int width, int height, QGLFormat format) : this((Type) null) {
+			CreateProxy();
+			NewQGLPixelBuffer(width,height,format);
+		}
+		[SmokeMethod("QGLPixelBuffer(int, int, const QGLFormat&)")]
+		private void NewQGLPixelBuffer(int width, int height, QGLFormat format) {
+			ProxyQGLPixelBuffer().NewQGLPixelBuffer(width,height,format);
+		}
+		public QGLPixelBuffer(int width, int height) : this((Type) null) {
+			CreateProxy();
+			NewQGLPixelBuffer(width,height);
+		}
+		[SmokeMethod("QGLPixelBuffer(int, int)")]
+		private void NewQGLPixelBuffer(int width, int height) {
+			ProxyQGLPixelBuffer().NewQGLPixelBuffer(width,height);
+		}
 		[SmokeMethod("isValid() const")]
 		public bool IsValid() {
 			return ProxyQGLPixelBuffer().IsValid();

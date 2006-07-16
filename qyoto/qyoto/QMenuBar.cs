@@ -74,6 +74,10 @@ namespace Qyoto {
 		public QAction AddSeparator() {
 			return ProxyQMenuBar().AddSeparator();
 		}
+		[SmokeMethod("insertSeparator(QAction*)")]
+		public QAction InsertSeparator(QAction before) {
+			return ProxyQMenuBar().InsertSeparator(before);
+		}
 		[SmokeMethod("insertMenu(QAction*, QMenu*)")]
 		public QAction InsertMenu(QAction before, QMenu menu) {
 			return ProxyQMenuBar().InsertMenu(before,menu);

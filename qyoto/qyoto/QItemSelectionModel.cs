@@ -84,6 +84,10 @@ namespace Qyoto {
 		public bool ColumnIntersectsSelection(int column, QModelIndex parent) {
 			return ProxyQItemSelectionModel().ColumnIntersectsSelection(column,parent);
 		}
+		[SmokeMethod("hasSelection() const")]
+		public bool HasSelection() {
+			return ProxyQItemSelectionModel().HasSelection();
+		}
 		[SmokeMethod("selectedIndexes() const")]
 		public ArrayList SelectedIndexes() {
 			return ProxyQItemSelectionModel().SelectedIndexes();
@@ -115,6 +119,10 @@ namespace Qyoto {
 		[SmokeMethod("reset()")]
 		public virtual void Reset() {
 			ProxyQItemSelectionModel().Reset();
+		}
+		[SmokeMethod("clearSelection()")]
+		public void ClearSelection() {
+			ProxyQItemSelectionModel().ClearSelection();
 		}
 		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {

@@ -8,6 +8,10 @@ namespace Qyoto {
 	public class QKeyEvent : QInputEvent, IDisposable {
  		protected QKeyEvent(Type dummy) : base((Type) null) {}
 		interface IQKeyEventProxy {
+			QKeyEvent CreateExtendedKeyEvent(QEvent.E_Type type, int key, int modifiers, uint nativeScanCode, uint nativeVirtualKey, uint nativeModifiers, string text, bool autorep, ushort count);
+			QKeyEvent CreateExtendedKeyEvent(QEvent.E_Type type, int key, int modifiers, uint nativeScanCode, uint nativeVirtualKey, uint nativeModifiers, string text, bool autorep);
+			QKeyEvent CreateExtendedKeyEvent(QEvent.E_Type type, int key, int modifiers, uint nativeScanCode, uint nativeVirtualKey, uint nativeModifiers, string text);
+			QKeyEvent CreateExtendedKeyEvent(QEvent.E_Type type, int key, int modifiers, uint nativeScanCode, uint nativeVirtualKey, uint nativeModifiers);
 		}
 
 		protected new void CreateProxy() {
@@ -62,6 +66,10 @@ namespace Qyoto {
 		public int Key() {
 			return ProxyQKeyEvent().Key();
 		}
+		[SmokeMethod("matches(QKeySequence::StandardKey) const")]
+		public bool Matches(QKeySequence.StandardKey key) {
+			return ProxyQKeyEvent().Matches(key);
+		}
 		[SmokeMethod("modifiers() const")]
 		public new int Modifiers() {
 			return ProxyQKeyEvent().Modifiers();
@@ -77,6 +85,38 @@ namespace Qyoto {
 		[SmokeMethod("count() const")]
 		public int Count() {
 			return ProxyQKeyEvent().Count();
+		}
+		[SmokeMethod("hasExtendedInfo() const")]
+		public bool HasExtendedInfo() {
+			return ProxyQKeyEvent().HasExtendedInfo();
+		}
+		[SmokeMethod("nativeScanCode() const")]
+		public uint NativeScanCode() {
+			return ProxyQKeyEvent().NativeScanCode();
+		}
+		[SmokeMethod("nativeVirtualKey() const")]
+		public uint NativeVirtualKey() {
+			return ProxyQKeyEvent().NativeVirtualKey();
+		}
+		[SmokeMethod("nativeModifiers() const")]
+		public uint NativeModifiers() {
+			return ProxyQKeyEvent().NativeModifiers();
+		}
+		[SmokeMethod("createExtendedKeyEvent(QEvent::Type, int, Qt::KeyboardModifiers, quint32, quint32, quint32, const QString&, bool, ushort)")]
+		public static QKeyEvent CreateExtendedKeyEvent(QEvent.E_Type type, int key, int modifiers, uint nativeScanCode, uint nativeVirtualKey, uint nativeModifiers, string text, bool autorep, ushort count) {
+			return StaticQKeyEvent().CreateExtendedKeyEvent(type,key,modifiers,nativeScanCode,nativeVirtualKey,nativeModifiers,text,autorep,count);
+		}
+		[SmokeMethod("createExtendedKeyEvent(QEvent::Type, int, Qt::KeyboardModifiers, quint32, quint32, quint32, const QString&, bool)")]
+		public static QKeyEvent CreateExtendedKeyEvent(QEvent.E_Type type, int key, int modifiers, uint nativeScanCode, uint nativeVirtualKey, uint nativeModifiers, string text, bool autorep) {
+			return StaticQKeyEvent().CreateExtendedKeyEvent(type,key,modifiers,nativeScanCode,nativeVirtualKey,nativeModifiers,text,autorep);
+		}
+		[SmokeMethod("createExtendedKeyEvent(QEvent::Type, int, Qt::KeyboardModifiers, quint32, quint32, quint32, const QString&)")]
+		public static QKeyEvent CreateExtendedKeyEvent(QEvent.E_Type type, int key, int modifiers, uint nativeScanCode, uint nativeVirtualKey, uint nativeModifiers, string text) {
+			return StaticQKeyEvent().CreateExtendedKeyEvent(type,key,modifiers,nativeScanCode,nativeVirtualKey,nativeModifiers,text);
+		}
+		[SmokeMethod("createExtendedKeyEvent(QEvent::Type, int, Qt::KeyboardModifiers, quint32, quint32, quint32)")]
+		public static QKeyEvent CreateExtendedKeyEvent(QEvent.E_Type type, int key, int modifiers, uint nativeScanCode, uint nativeVirtualKey, uint nativeModifiers) {
+			return StaticQKeyEvent().CreateExtendedKeyEvent(type,key,modifiers,nativeScanCode,nativeVirtualKey,nativeModifiers);
 		}
 		~QKeyEvent() {
 			DisposeQKeyEvent();

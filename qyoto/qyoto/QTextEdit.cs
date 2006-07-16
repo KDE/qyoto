@@ -99,6 +99,8 @@ namespace Qyoto {
 		public void SetReadOnly(bool ro) {
 			ProxyQTextEdit().SetReadOnly(ro);
 		}
+		// void setTextInteractionFlags(Qt::TextInteractionFlags arg1); >>>> NOT CONVERTED
+		// Qt::TextInteractionFlags textInteractionFlags(); >>>> NOT CONVERTED
 		[SmokeMethod("fontPointSize() const")]
 		public double FontPointSize() {
 			return ProxyQTextEdit().FontPointSize();
@@ -250,6 +252,14 @@ namespace Qyoto {
 		public void SetTabStopWidth(int width) {
 			ProxyQTextEdit().SetTabStopWidth(width);
 		}
+		[SmokeMethod("cursorWidth() const")]
+		public int CursorWidth() {
+			return ProxyQTextEdit().CursorWidth();
+		}
+		[SmokeMethod("setCursorWidth(int)")]
+		public void SetCursorWidth(int width) {
+			ProxyQTextEdit().SetCursorWidth(width);
+		}
 		[SmokeMethod("acceptRichText() const")]
 		public bool AcceptRichText() {
 			return ProxyQTextEdit().AcceptRichText();
@@ -258,6 +268,8 @@ namespace Qyoto {
 		public void SetAcceptRichText(bool accept) {
 			ProxyQTextEdit().SetAcceptRichText(accept);
 		}
+		// void setExtraSelections(const QList<QTextEdit::ExtraSelection>& arg1); >>>> NOT CONVERTED
+		// QList<QTextEdit::ExtraSelection> extraSelections(); >>>> NOT CONVERTED
 		[SmokeMethod("setFontPointSize(qreal)")]
 		public void SetFontPointSize(double s) {
 			ProxyQTextEdit().SetFontPointSize(s);
@@ -310,6 +322,14 @@ namespace Qyoto {
 		public void Paste() {
 			ProxyQTextEdit().Paste();
 		}
+		[SmokeMethod("undo()")]
+		public void Undo() {
+			ProxyQTextEdit().Undo();
+		}
+		[SmokeMethod("redo()")]
+		public void Redo() {
+			ProxyQTextEdit().Redo();
+		}
 		[SmokeMethod("clear()")]
 		public void Clear() {
 			ProxyQTextEdit().Clear();
@@ -350,6 +370,8 @@ namespace Qyoto {
 		public void ZoomOut() {
 			ProxyQTextEdit().ZoomOut();
 		}
+		// void moveCursor(QTextCursor::MoveOperation arg1,QTextCursor::MoveMode arg2); >>>> NOT CONVERTED
+		// void moveCursor(QTextCursor::MoveOperation arg1); >>>> NOT CONVERTED
 		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQTextEdit().Tr(s,c);
@@ -369,6 +391,10 @@ namespace Qyoto {
 		[SmokeMethod("keyPressEvent(QKeyEvent*)")]
 		protected new virtual void KeyPressEvent(QKeyEvent e) {
 			ProxyQTextEdit().KeyPressEvent(e);
+		}
+		[SmokeMethod("keyReleaseEvent(QKeyEvent*)")]
+		protected new virtual void KeyReleaseEvent(QKeyEvent e) {
+			ProxyQTextEdit().KeyReleaseEvent(e);
 		}
 		[SmokeMethod("resizeEvent(QResizeEvent*)")]
 		protected new virtual void ResizeEvent(QResizeEvent e) {

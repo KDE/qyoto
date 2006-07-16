@@ -39,7 +39,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQWidget(parent,f);
 		}
-		[SmokeMethod("QWidget(QWidget*, Qt::WFlags)")]
+		[SmokeMethod("QWidget(QWidget*, Qt::WindowFlags)")]
 		private void NewQWidget(QWidget parent, int f) {
 			ProxyQWidget().NewQWidget(parent,f);
 		}
@@ -66,6 +66,14 @@ namespace Qyoto {
 		[SmokeMethod("winId() const")]
 		public ulong WinId() {
 			return ProxyQWidget().WinId();
+		}
+		[SmokeMethod("createWinId()")]
+		public void CreateWinId() {
+			ProxyQWidget().CreateWinId();
+		}
+		[SmokeMethod("internalWinId() const")]
+		public ulong InternalWinId() {
+			return ProxyQWidget().InternalWinId();
 		}
 		[SmokeMethod("style() const")]
 		public QStyle Style() {
@@ -383,6 +391,14 @@ namespace Qyoto {
 		public void SetWindowTitle(string arg1) {
 			ProxyQWidget().SetWindowTitle(arg1);
 		}
+		[SmokeMethod("setStyleSheet(const QString&)")]
+		public void SetStyleSheet(string styleSheet) {
+			ProxyQWidget().SetStyleSheet(styleSheet);
+		}
+		[SmokeMethod("styleSheet() const")]
+		public string StyleSheet() {
+			return ProxyQWidget().StyleSheet();
+		}
 		[SmokeMethod("windowTitle() const")]
 		public string WindowTitle() {
 			return ProxyQWidget().WindowTitle();
@@ -687,6 +703,14 @@ namespace Qyoto {
 		public void SetGeometry(QRect arg1) {
 			ProxyQWidget().SetGeometry(arg1);
 		}
+		[SmokeMethod("saveGeometry() const")]
+		public QByteArray SaveGeometry() {
+			return ProxyQWidget().SaveGeometry();
+		}
+		[SmokeMethod("restoreGeometry(const QByteArray&)")]
+		public bool RestoreGeometry(QByteArray geometry) {
+			return ProxyQWidget().RestoreGeometry(geometry);
+		}
 		[SmokeMethod("adjustSize()")]
 		public void AdjustSize() {
 			ProxyQWidget().AdjustSize();
@@ -783,7 +807,7 @@ namespace Qyoto {
 		public new void SetParent(QWidget parent) {
 			ProxyQWidget().SetParent(parent);
 		}
-		[SmokeMethod("setParent(QWidget*, Qt::WFlags)")]
+		[SmokeMethod("setParent(QWidget*, Qt::WindowFlags)")]
 		public new void SetParent(QWidget parent, int f) {
 			ProxyQWidget().SetParent(parent,f);
 		}
@@ -903,6 +927,8 @@ namespace Qyoto {
 		public void SetAutoFillBackground(bool enabled) {
 			ProxyQWidget().SetAutoFillBackground(enabled);
 		}
+		// void setWindowSurface(QWindowSurface* arg1); >>>> NOT CONVERTED
+		// QWindowSurface* windowSurface(); >>>> NOT CONVERTED
 		[SmokeMethod("inputMethodQuery(Qt::InputMethodQuery) const")]
 		public virtual QVariant InputMethodQuery(Qt.InputMethodQuery arg1) {
 			return ProxyQWidget().InputMethodQuery(arg1);

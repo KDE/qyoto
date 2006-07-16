@@ -34,7 +34,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQProgressDialog(parent,f);
 		}
-		[SmokeMethod("QProgressDialog(QWidget*, Qt::WFlags)")]
+		[SmokeMethod("QProgressDialog(QWidget*, Qt::WindowFlags)")]
 		private void NewQProgressDialog(QWidget parent, int f) {
 			ProxyQProgressDialog().NewQProgressDialog(parent,f);
 		}
@@ -58,7 +58,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQProgressDialog(labelText,cancelButtonText,minimum,maximum,parent,f);
 		}
-		[SmokeMethod("QProgressDialog(const QString&, const QString&, int, int, QWidget*, Qt::WFlags)")]
+		[SmokeMethod("QProgressDialog(const QString&, const QString&, int, int, QWidget*, Qt::WindowFlags)")]
 		private void NewQProgressDialog(string labelText, string cancelButtonText, int minimum, int maximum, QWidget parent, int f) {
 			ProxyQProgressDialog().NewQProgressDialog(labelText,cancelButtonText,minimum,maximum,parent,f);
 		}

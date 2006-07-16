@@ -33,6 +33,7 @@ namespace Qyoto {
 			Normal = 0,
 			NoEcho = 1,
 			Password = 2,
+			PasswordEchoOnEdit = 3,
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QLineEdit(QWidget parent) : this((Type) null) {
@@ -114,6 +115,14 @@ namespace Qyoto {
 		[SmokeMethod("validator() const")]
 		public QValidator Validator() {
 			return ProxyQLineEdit().Validator();
+		}
+		[SmokeMethod("setCompleter(QCompleter*)")]
+		public void SetCompleter(QCompleter completer) {
+			ProxyQLineEdit().SetCompleter(completer);
+		}
+		[SmokeMethod("completer() const")]
+		public QCompleter Completer() {
+			return ProxyQLineEdit().Completer();
 		}
 		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {

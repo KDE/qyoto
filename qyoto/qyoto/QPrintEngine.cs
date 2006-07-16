@@ -50,6 +50,7 @@ namespace Qyoto {
 			PPK_WindowsPageSize = 18,
 			PPK_FontEmbedding = 19,
 			PPK_SuppressSystemPrintStatus = 20,
+			PPK_Duplex = 21,
 			PPK_CustomBase = 0xff00,
 		}
 		[SmokeMethod("setProperty(QPrintEngine::PrintEnginePropertyKey, const QVariant&)")]

@@ -25,10 +25,12 @@ namespace Qyoto {
 			return (IQStyleOptionTitleBarProxy) _staticInterceptor;
 		}
 
-		public const int Type = (int) QStyleOption.OptionType.SO_TitleBar;
-
-		public const int Version = 1;
-
+		public enum StyleOptionType {
+			Type = QStyleOption.OptionType.SO_TitleBar,
+		}
+		public enum StyleOptionVersion {
+			Version = 1,
+		}
 		public QStyleOptionTitleBar() : this((Type) null) {
 			CreateProxy();
 			NewQStyleOptionTitleBar();

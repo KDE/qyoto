@@ -25,10 +25,12 @@ namespace Qyoto {
 			return (IQStyleOptionTabBarBaseProxy) _staticInterceptor;
 		}
 
-		public const int Type = (int) QStyleOption.OptionType.SO_TabBarBase;
-
-		public const int Version = 1;
-
+		public enum StyleOptionType {
+			Type = QStyleOption.OptionType.SO_TabBarBase,
+		}
+		public enum StyleOptionVersion {
+			Version = 1,
+		}
 		public QStyleOptionTabBarBase() : this((Type) null) {
 			CreateProxy();
 			NewQStyleOptionTabBarBase();

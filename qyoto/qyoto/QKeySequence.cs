@@ -37,6 +37,69 @@ namespace Qyoto {
 			return (IQKeySequenceProxy) _staticInterceptor;
 		}
 
+		public enum StandardKey {
+			UnknownKey = 0,
+			HelpContents = 1,
+			WhatsThis = 2,
+			Open = 3,
+			Close = 4,
+			Save = 5,
+			New = 6,
+			Delete = 7,
+			Cut = 8,
+			Copy = 9,
+			Paste = 10,
+			Undo = 11,
+			Redo = 12,
+			Back = 13,
+			Forward = 14,
+			Refresh = 15,
+			ZoomIn = 16,
+			ZoomOut = 17,
+			Print = 18,
+			AddTab = 19,
+			NextChild = 20,
+			PreviousChild = 21,
+			Find = 22,
+			FindNext = 23,
+			FindPrevious = 24,
+			Replace = 25,
+			SelectAll = 26,
+			Bold = 27,
+			Italic = 28,
+			Underline = 29,
+			MoveToNextChar = 30,
+			MoveToPreviousChar = 31,
+			MoveToNextWord = 32,
+			MoveToPreviousWord = 33,
+			MoveToNextLine = 34,
+			MoveToPreviousLine = 35,
+			MoveToNextPage = 36,
+			MoveToPreviousPage = 37,
+			MoveToStartOfLine = 38,
+			MoveToEndOfLine = 39,
+			MoveToStartOfBlock = 40,
+			MoveToEndOfBlock = 41,
+			MoveToStartOfDocument = 42,
+			MoveToEndOfDocument = 43,
+			SelectNextChar = 44,
+			SelectPreviousChar = 45,
+			SelectNextWord = 46,
+			SelectPreviousWord = 47,
+			SelectNextLine = 48,
+			SelectPreviousLine = 49,
+			SelectNextPage = 50,
+			SelectPreviousPage = 51,
+			SelectStartOfLine = 52,
+			SelectEndOfLine = 53,
+			SelectStartOfBlock = 54,
+			SelectEndOfBlock = 55,
+			SelectStartOfDocument = 56,
+			SelectEndOfDocument = 57,
+			DeleteStartOfWord = 58,
+			DeleteEndOfWord = 59,
+			DeleteEndOfLine = 60,
+		}
 		public enum SequenceMatch {
 			NoMatch = 0,
 			PartialMatch = 1,
@@ -101,6 +164,14 @@ namespace Qyoto {
 		[SmokeMethod("QKeySequence(const QKeySequence&)")]
 		private void NewQKeySequence(QKeySequence ks) {
 			ProxyQKeySequence().NewQKeySequence(ks);
+		}
+		public QKeySequence(QKeySequence.StandardKey key) : this((Type) null) {
+			CreateProxy();
+			NewQKeySequence(key);
+		}
+		[SmokeMethod("QKeySequence(QKeySequence::StandardKey)")]
+		private void NewQKeySequence(QKeySequence.StandardKey key) {
+			ProxyQKeySequence().NewQKeySequence(key);
 		}
 		[SmokeMethod("count() const")]
 		public uint Count() {
@@ -171,6 +242,7 @@ namespace Qyoto {
 		public static QKeySequence Mnemonic(string text) {
 			return StaticQKeySequence().Mnemonic(text);
 		}
+		// QList<QKeySequence> keyBindings(QKeySequence::StandardKey arg1); >>>> NOT CONVERTED
 		~QKeySequence() {
 			DisposeQKeySequence();
 		}

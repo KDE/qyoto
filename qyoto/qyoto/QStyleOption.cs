@@ -46,21 +46,25 @@ namespace Qyoto {
 			SO_TabBarBase = 14,
 			SO_RubberBand = 15,
 			SO_ToolBar = 16,
+			SO_GraphicsItem = 17,
 			SO_Complex = 0xf0000,
-			SO_Slider = 17,
-			SO_SpinBox = 18,
-			SO_ToolButton = 19,
-			SO_ComboBox = 20,
-			SO_Q3ListView = 21,
-			SO_TitleBar = 22,
-			SO_GroupBox = 23,
+			SO_Slider = 18,
+			SO_SpinBox = 19,
+			SO_ToolButton = 20,
+			SO_ComboBox = 21,
+			SO_Q3ListView = 22,
+			SO_TitleBar = 23,
+			SO_GroupBox = 24,
+			SO_SizeGrip = 25,
 			SO_CustomBase = 0xf00,
 			SO_ComplexCustomBase = 0xf000000,
 		}
-		public const int Type = (int) QStyleOption.OptionType.SO_Default;
-
-		public const int Version = 1;
-
+		public enum StyleOptionType {
+			Type = QStyleOption.OptionType.SO_Default,
+		}
+		public enum StyleOptionVersion {
+			Version = 1,
+		}
 		public QStyleOption(int version, int type) : this((Type) null) {
 			CreateProxy();
 			NewQStyleOption(version,type);

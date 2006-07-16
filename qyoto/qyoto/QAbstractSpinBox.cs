@@ -38,6 +38,10 @@ namespace Qyoto {
 			UpDownArrows = 0,
 			PlusMinus = 1,
 		}
+		public enum CorrectionMode {
+			CorrectToPreviousValue = 0,
+			CorrectToNearestValue = 1,
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QAbstractSpinBox(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -62,6 +66,18 @@ namespace Qyoto {
 		[SmokeMethod("setButtonSymbols(QAbstractSpinBox::ButtonSymbols)")]
 		public void SetButtonSymbols(QAbstractSpinBox.ButtonSymbols bs) {
 			ProxyQAbstractSpinBox().SetButtonSymbols(bs);
+		}
+		[SmokeMethod("setCorrectionMode(QAbstractSpinBox::CorrectionMode)")]
+		public void SetCorrectionMode(QAbstractSpinBox.CorrectionMode cm) {
+			ProxyQAbstractSpinBox().SetCorrectionMode(cm);
+		}
+		[SmokeMethod("correctionMode() const")]
+		public QAbstractSpinBox.CorrectionMode correctionMode() {
+			return ProxyQAbstractSpinBox().correctionMode();
+		}
+		[SmokeMethod("hasAcceptableInput() const")]
+		public bool HasAcceptableInput() {
+			return ProxyQAbstractSpinBox().HasAcceptableInput();
 		}
 		[SmokeMethod("text() const")]
 		public string Text() {
@@ -106,6 +122,14 @@ namespace Qyoto {
 		[SmokeMethod("hasFrame() const")]
 		public bool HasFrame() {
 			return ProxyQAbstractSpinBox().HasFrame();
+		}
+		[SmokeMethod("setAccelerate(bool)")]
+		public void SetAccelerate(bool on) {
+			ProxyQAbstractSpinBox().SetAccelerate(on);
+		}
+		[SmokeMethod("accelerate() const")]
+		public bool Accelerate() {
+			return ProxyQAbstractSpinBox().Accelerate();
 		}
 		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {

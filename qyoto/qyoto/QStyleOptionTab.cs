@@ -25,6 +25,12 @@ namespace Qyoto {
 			return (IQStyleOptionTabProxy) _staticInterceptor;
 		}
 
+		public enum StyleOptionType {
+			Type = QStyleOption.OptionType.SO_Tab,
+		}
+		public enum StyleOptionVersion {
+			Version = 1,
+		}
 		public enum TabPosition {
 			Beginning = 0,
 			Middle = 1,
@@ -41,10 +47,6 @@ namespace Qyoto {
 			LeftCornerWidget = 0x01,
 			RightCornerWidget = 0x02,
 		}
-		public const int Type = (int) QStyleOption.OptionType.SO_Tab;
-
-		public const int Version = 1;
-
 		public QStyleOptionTab() : this((Type) null) {
 			CreateProxy();
 			NewQStyleOptionTab();

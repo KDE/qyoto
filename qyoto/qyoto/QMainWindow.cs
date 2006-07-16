@@ -34,7 +34,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQMainWindow(parent,flags);
 		}
-		[SmokeMethod("QMainWindow(QWidget*, Qt::WFlags)")]
+		[SmokeMethod("QMainWindow(QWidget*, Qt::WindowFlags)")]
 		private void NewQMainWindow(QWidget parent, int flags) {
 			ProxyQMainWindow().NewQMainWindow(parent,flags);
 		}
@@ -70,6 +70,18 @@ namespace Qyoto {
 		public void SetToolButtonStyle(Qt.ToolButtonStyle toolButtonStyle) {
 			ProxyQMainWindow().SetToolButtonStyle(toolButtonStyle);
 		}
+		[SmokeMethod("isAnimationEnabled() const")]
+		public bool IsAnimationEnabled() {
+			return ProxyQMainWindow().IsAnimationEnabled();
+		}
+		[SmokeMethod("isDockNestingEnabled() const")]
+		public bool IsDockNestingEnabled() {
+			return ProxyQMainWindow().IsDockNestingEnabled();
+		}
+		[SmokeMethod("isSeparator(const QPoint&) const")]
+		public bool IsSeparator(QPoint pos) {
+			return ProxyQMainWindow().IsSeparator(pos);
+		}
 		[SmokeMethod("menuBar() const")]
 		public QMenuBar MenuBar() {
 			return ProxyQMainWindow().MenuBar();
@@ -77,6 +89,14 @@ namespace Qyoto {
 		[SmokeMethod("setMenuBar(QMenuBar*)")]
 		public void SetMenuBar(QMenuBar menubar) {
 			ProxyQMainWindow().SetMenuBar(menubar);
+		}
+		[SmokeMethod("menuWidget() const")]
+		public QWidget MenuWidget() {
+			return ProxyQMainWindow().MenuWidget();
+		}
+		[SmokeMethod("setMenuWidget(QWidget*)")]
+		public void SetMenuWidget(QWidget menubar) {
+			ProxyQMainWindow().SetMenuWidget(menubar);
 		}
 		[SmokeMethod("statusBar() const")]
 		public QStatusBar StatusBar() {
@@ -177,6 +197,14 @@ namespace Qyoto {
 		[SmokeMethod("createPopupMenu()")]
 		public virtual QMenu CreatePopupMenu() {
 			return ProxyQMainWindow().CreatePopupMenu();
+		}
+		[SmokeMethod("setAnimationEnabled(bool)")]
+		public void SetAnimationEnabled(bool enabled) {
+			ProxyQMainWindow().SetAnimationEnabled(enabled);
+		}
+		[SmokeMethod("setDockNestingEnabled(bool)")]
+		public void SetDockNestingEnabled(bool enabled) {
+			ProxyQMainWindow().SetDockNestingEnabled(enabled);
 		}
 		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {

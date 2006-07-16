@@ -40,6 +40,7 @@ namespace Qyoto {
 		public enum ResourceType {
 			HtmlResource = 1,
 			ImageResource = 2,
+			StyleSheetResource = 3,
 			UserResource = 100,
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
@@ -181,6 +182,42 @@ namespace Qyoto {
 		[SmokeMethod("useDesignMetrics() const")]
 		public bool UseDesignMetrics() {
 			return ProxyQTextDocument().UseDesignMetrics();
+		}
+		[SmokeMethod("drawContents(QPainter*, const QRectF&)")]
+		public void DrawContents(QPainter painter, QRectF rect) {
+			ProxyQTextDocument().DrawContents(painter,rect);
+		}
+		[SmokeMethod("drawContents(QPainter*)")]
+		public void DrawContents(QPainter painter) {
+			ProxyQTextDocument().DrawContents(painter);
+		}
+		[SmokeMethod("setTextWidth(qreal)")]
+		public void SetTextWidth(double width) {
+			ProxyQTextDocument().SetTextWidth(width);
+		}
+		[SmokeMethod("textWidth() const")]
+		public double TextWidth() {
+			return ProxyQTextDocument().TextWidth();
+		}
+		[SmokeMethod("adjustSize()")]
+		public void AdjustSize() {
+			ProxyQTextDocument().AdjustSize();
+		}
+		[SmokeMethod("size() const")]
+		public QSizeF Size() {
+			return ProxyQTextDocument().Size();
+		}
+		[SmokeMethod("blockCount() const")]
+		public int BlockCount() {
+			return ProxyQTextDocument().BlockCount();
+		}
+		[SmokeMethod("setDefaultStyleSheet(const QString&)")]
+		public void SetDefaultStyleSheet(string sheet) {
+			ProxyQTextDocument().SetDefaultStyleSheet(sheet);
+		}
+		[SmokeMethod("defaultStyleSheet() const")]
+		public string DefaultStyleSheet() {
+			return ProxyQTextDocument().DefaultStyleSheet();
 		}
 		[SmokeMethod("undo()")]
 		public void Undo() {

@@ -25,16 +25,18 @@ namespace Qyoto {
 			return (IQStyleOptionViewItemProxy) _staticInterceptor;
 		}
 
+		public enum StyleOptionType {
+			Type = QStyleOption.OptionType.SO_ViewItem,
+		}
+		public enum StyleOptionVersion {
+			Version = 1,
+		}
 		public enum Position {
 			Left = 0,
 			Right = 1,
 			Top = 2,
 			Bottom = 3,
 		}
-		public const int Type = (int) QStyleOption.OptionType.SO_ViewItem;
-
-		public const int Version = 1;
-
 		public QStyleOptionViewItem() : this((Type) null) {
 			CreateProxy();
 			NewQStyleOptionViewItem();

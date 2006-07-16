@@ -79,6 +79,14 @@ namespace Qyoto {
 		public int Alignment() {
 			return ProxyQTextTableFormat().Alignment();
 		}
+		[SmokeMethod("setHeaderRowCount(int)")]
+		public void SetHeaderRowCount(int count) {
+			ProxyQTextTableFormat().SetHeaderRowCount(count);
+		}
+		[SmokeMethod("headerRowCount() const")]
+		public int HeaderRowCount() {
+			return ProxyQTextTableFormat().HeaderRowCount();
+		}
 		~QTextTableFormat() {
 			DisposeQTextTableFormat();
 		}

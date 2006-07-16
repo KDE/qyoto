@@ -25,10 +25,12 @@ namespace Qyoto {
 			return (IQStyleOptionGroupBoxProxy) _staticInterceptor;
 		}
 
-		public const int Type = (int) QStyleOption.OptionType.SO_GroupBox;
-
-		public const int Version = 1;
-
+		public enum StyleOptionType {
+			Type = QStyleOption.OptionType.SO_GroupBox,
+		}
+		public enum StyleOptionVersion {
+			Version = 1,
+		}
 		public QStyleOptionGroupBox() : this((Type) null) {
 			CreateProxy();
 			NewQStyleOptionGroupBox();

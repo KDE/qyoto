@@ -63,6 +63,26 @@ namespace Qyoto {
 		public new virtual QVariant LoadResource(int type, IQUrl name) {
 			return ProxyQTextBrowser().LoadResource(type,name);
 		}
+		[SmokeMethod("isBackwardAvailable() const")]
+		public bool IsBackwardAvailable() {
+			return ProxyQTextBrowser().IsBackwardAvailable();
+		}
+		[SmokeMethod("isForwardAvailable() const")]
+		public bool IsForwardAvailable() {
+			return ProxyQTextBrowser().IsForwardAvailable();
+		}
+		[SmokeMethod("clearHistory()")]
+		public void ClearHistory() {
+			ProxyQTextBrowser().ClearHistory();
+		}
+		[SmokeMethod("openExternalLinks() const")]
+		public bool OpenExternalLinks() {
+			return ProxyQTextBrowser().OpenExternalLinks();
+		}
+		[SmokeMethod("setOpenExternalLinks(bool)")]
+		public void SetOpenExternalLinks(bool open) {
+			ProxyQTextBrowser().SetOpenExternalLinks(open);
+		}
 		[SmokeMethod("setSource(const QUrl&)")]
 		public virtual void SetSource(IQUrl name) {
 			ProxyQTextBrowser().SetSource(name);

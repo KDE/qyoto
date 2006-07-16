@@ -74,6 +74,8 @@ namespace Qyoto {
 			bool IsEffectEnabled(Qt.UIEffect arg1);
 			void SetEffectEnabled(Qt.UIEffect arg1, bool enable);
 			void SetEffectEnabled(Qt.UIEffect arg1);
+			QLocale KeyboardInputLocale();
+			Qt.LayoutDirection KeyboardInputDirection();
 			int Exec();
 			void SetQuitOnLastWindowClosed(bool quit);
 			bool QuitOnLastWindowClosed();
@@ -139,6 +141,14 @@ namespace Qyoto {
 		[SmokeMethod("notify(QObject*, QEvent*)")]
 		public new bool Notify(QObject arg1, QEvent arg2) {
 			return ProxyQApplication().Notify(arg1,arg2);
+		}
+		[SmokeMethod("styleSheet() const")]
+		public string StyleSheet() {
+			return ProxyQApplication().StyleSheet();
+		}
+		[SmokeMethod("setStyleSheet(const QString&)")]
+		public void SetStyleSheet(string sheet) {
+			ProxyQApplication().SetStyleSheet(sheet);
 		}
 		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
@@ -395,6 +405,14 @@ namespace Qyoto {
 		[SmokeMethod("setEffectEnabled(Qt::UIEffect)")]
 		public static void SetEffectEnabled(Qt.UIEffect arg1) {
 			StaticQApplication().SetEffectEnabled(arg1);
+		}
+		[SmokeMethod("keyboardInputLocale()")]
+		public static QLocale KeyboardInputLocale() {
+			return StaticQApplication().KeyboardInputLocale();
+		}
+		[SmokeMethod("keyboardInputDirection()")]
+		public static Qt.LayoutDirection KeyboardInputDirection() {
+			return StaticQApplication().KeyboardInputDirection();
 		}
 		[SmokeMethod("exec()")]
 		public static new int Exec() {

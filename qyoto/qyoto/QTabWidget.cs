@@ -176,6 +176,30 @@ namespace Qyoto {
 		public QWidget CornerWidget() {
 			return ProxyQTabWidget().CornerWidget();
 		}
+		[SmokeMethod("elideMode() const")]
+		public Qt.TextElideMode ElideMode() {
+			return ProxyQTabWidget().ElideMode();
+		}
+		[SmokeMethod("setElideMode(Qt::TextElideMode)")]
+		public void SetElideMode(Qt.TextElideMode arg1) {
+			ProxyQTabWidget().SetElideMode(arg1);
+		}
+		[SmokeMethod("iconSize() const")]
+		public QSize IconSize() {
+			return ProxyQTabWidget().IconSize();
+		}
+		[SmokeMethod("setIconSize(const QSize&)")]
+		public void SetIconSize(QSize size) {
+			ProxyQTabWidget().SetIconSize(size);
+		}
+		[SmokeMethod("usesScrollButtons() const")]
+		public bool UsesScrollButtons() {
+			return ProxyQTabWidget().UsesScrollButtons();
+		}
+		[SmokeMethod("setUsesScrollButtons(bool)")]
+		public void SetUsesScrollButtons(bool useButtons) {
+			ProxyQTabWidget().SetUsesScrollButtons(useButtons);
+		}
 		[SmokeMethod("setCurrentIndex(int)")]
 		public void SetCurrentIndex(int index) {
 			ProxyQTabWidget().SetCurrentIndex(index);

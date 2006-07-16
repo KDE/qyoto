@@ -45,7 +45,8 @@ namespace Qyoto {
 			Format_RGB32 = 4,
 			Format_ARGB32 = 5,
 			Format_ARGB32_Premultiplied = 6,
-			NImageFormats = 7,
+			Format_RGB16 = 7,
+			NImageFormats = 8,
 		}
 		public QImage() : this((Type) null) {
 			CreateProxy();
@@ -391,6 +392,10 @@ namespace Qyoto {
 		public bool Save(string fileName, string format) {
 			return ProxyQImage().Save(fileName,format);
 		}
+		[SmokeMethod("save(const QString&) const")]
+		public bool Save(string fileName) {
+			return ProxyQImage().Save(fileName);
+		}
 		[SmokeMethod("save(QIODevice*, const char*, int) const")]
 		public bool Save(IQIODevice device, string format, int quality) {
 			return ProxyQImage().Save(device,format,quality);
@@ -398,6 +403,10 @@ namespace Qyoto {
 		[SmokeMethod("save(QIODevice*, const char*) const")]
 		public bool Save(IQIODevice device, string format) {
 			return ProxyQImage().Save(device,format);
+		}
+		[SmokeMethod("save(QIODevice*) const")]
+		public bool Save(IQIODevice device) {
+			return ProxyQImage().Save(device);
 		}
 		[SmokeMethod("serialNumber() const")]
 		public int SerialNumber() {

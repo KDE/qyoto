@@ -25,12 +25,13 @@ namespace Qyoto {
 			return (IQStyleOptionFrameV2Proxy) _staticInterceptor;
 		}
 
+		public enum StyleOptionVersion {
+			Version = 2,
+		}
 		public enum FrameFeature {
 			None = 0x00,
 			Flat = 0x01,
 		}
-		public const int Version = 2;
-
 		public QStyleOptionFrameV2() : this((Type) null) {
 			CreateProxy();
 			NewQStyleOptionFrameV2();

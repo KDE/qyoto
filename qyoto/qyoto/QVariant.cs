@@ -287,6 +287,14 @@ namespace Qyoto {
 		private void NewQVariant(QRegExp regExp) {
 			ProxyQVariant().NewQVariant(regExp);
 		}
+		public QVariant(Qt.GlobalColor color) : this((Type) null) {
+			CreateProxy();
+			NewQVariant(color);
+		}
+		[SmokeMethod("QVariant(Qt::GlobalColor)")]
+		private void NewQVariant(Qt.GlobalColor color) {
+			ProxyQVariant().NewQVariant(color);
+		}
 		[SmokeMethod("type() const")]
 		public QVariant.E_Type type() {
 			return ProxyQVariant().type();

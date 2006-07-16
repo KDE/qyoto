@@ -90,6 +90,38 @@ namespace Qyoto {
 		public void SetFilterCaseSensitivity(Qt.CaseSensitivity cs) {
 			ProxyQSortFilterProxyModel().SetFilterCaseSensitivity(cs);
 		}
+		[SmokeMethod("sortCaseSensitivity() const")]
+		public Qt.CaseSensitivity SortCaseSensitivity() {
+			return ProxyQSortFilterProxyModel().SortCaseSensitivity();
+		}
+		[SmokeMethod("setSortCaseSensitivity(Qt::CaseSensitivity)")]
+		public void SetSortCaseSensitivity(Qt.CaseSensitivity cs) {
+			ProxyQSortFilterProxyModel().SetSortCaseSensitivity(cs);
+		}
+		[SmokeMethod("dynamicSortFilter() const")]
+		public bool DynamicSortFilter() {
+			return ProxyQSortFilterProxyModel().DynamicSortFilter();
+		}
+		[SmokeMethod("setDynamicSortFilter(bool)")]
+		public void SetDynamicSortFilter(bool enable) {
+			ProxyQSortFilterProxyModel().SetDynamicSortFilter(enable);
+		}
+		[SmokeMethod("sortRole() const")]
+		public int SortRole() {
+			return ProxyQSortFilterProxyModel().SortRole();
+		}
+		[SmokeMethod("setSortRole(int)")]
+		public void SetSortRole(int role) {
+			ProxyQSortFilterProxyModel().SetSortRole(role);
+		}
+		[SmokeMethod("filterRole() const")]
+		public int FilterRole() {
+			return ProxyQSortFilterProxyModel().FilterRole();
+		}
+		[SmokeMethod("setFilterRole(int)")]
+		public void SetFilterRole(int role) {
+			ProxyQSortFilterProxyModel().SetFilterRole(role);
+		}
 		[SmokeMethod("setFilterRegExp(const QString&)")]
 		public void SetFilterRegExp(string pattern) {
 			ProxyQSortFilterProxyModel().SetFilterRegExp(pattern);
@@ -238,6 +270,14 @@ namespace Qyoto {
 		public new void Sort(int column) {
 			ProxyQSortFilterProxyModel().Sort(column);
 		}
+		[SmokeMethod("mimeTypes() const")]
+		public new ArrayList MimeTypes() {
+			return ProxyQSortFilterProxyModel().MimeTypes();
+		}
+		[SmokeMethod("supportedDropActions() const")]
+		public new int SupportedDropActions() {
+			return ProxyQSortFilterProxyModel().SupportedDropActions();
+		}
 		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQSortFilterProxyModel().Tr(s,c);
@@ -257,6 +297,10 @@ namespace Qyoto {
 		[SmokeMethod("lessThan(const QModelIndex&, const QModelIndex&) const")]
 		protected virtual bool LessThan(QModelIndex left, QModelIndex right) {
 			return ProxyQSortFilterProxyModel().LessThan(left,right);
+		}
+		[SmokeMethod("filterChanged()")]
+		protected void FilterChanged() {
+			ProxyQSortFilterProxyModel().FilterChanged();
 		}
 		~QSortFilterProxyModel() {
 			DisposeQSortFilterProxyModel();

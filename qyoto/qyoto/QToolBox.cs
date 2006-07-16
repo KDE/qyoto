@@ -34,7 +34,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQToolBox(parent,f);
 		}
-		[SmokeMethod("QToolBox(QWidget*, Qt::WFlags)")]
+		[SmokeMethod("QToolBox(QWidget*, Qt::WindowFlags)")]
 		private void NewQToolBox(QWidget parent, int f) {
 			ProxyQToolBox().NewQToolBox(parent,f);
 		}

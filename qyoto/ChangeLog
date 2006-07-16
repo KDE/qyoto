@@ -1,3 +1,7 @@
+2006-07-16  Richard Dale  <rdale@foton.es>
+
+	* Regenerated the C# sources from the Qt 4.2 headers
+
 2006-06-08  Richard Dale  <rdale@foton.es>
 
 	* Add SmokeMethod() attribute to destructors

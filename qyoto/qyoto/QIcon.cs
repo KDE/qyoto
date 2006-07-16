@@ -33,6 +33,7 @@ namespace Qyoto {
 			Normal = 0,
 			Disabled = 1,
 			Active = 2,
+			Selected = 3,
 		}
 		public enum State {
 			On = 0,

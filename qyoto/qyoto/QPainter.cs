@@ -174,6 +174,14 @@ namespace Qyoto {
 		public QBrush Background() {
 			return ProxyQPainter().Background();
 		}
+		[SmokeMethod("opacity() const")]
+		public double Opacity() {
+			return ProxyQPainter().Opacity();
+		}
+		[SmokeMethod("setOpacity(qreal)")]
+		public void SetOpacity(double opacity) {
+			ProxyQPainter().SetOpacity(opacity);
+		}
 		[SmokeMethod("clipRegion() const")]
 		public QRegion ClipRegion() {
 			return ProxyQPainter().ClipRegion();

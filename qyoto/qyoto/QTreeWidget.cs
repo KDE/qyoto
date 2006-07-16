@@ -136,11 +136,11 @@ namespace Qyoto {
 			ProxyQTreeWidget().SortItems(column,order);
 		}
 		[SmokeMethod("setSortingEnabled(bool)")]
-		public void SetSortingEnabled(bool enable) {
+		public new void SetSortingEnabled(bool enable) {
 			ProxyQTreeWidget().SetSortingEnabled(enable);
 		}
 		[SmokeMethod("isSortingEnabled() const")]
-		public bool IsSortingEnabled() {
+		public new bool IsSortingEnabled() {
 			return ProxyQTreeWidget().IsSortingEnabled();
 		}
 		[SmokeMethod("editItem(QTreeWidgetItem*, int)")]
@@ -274,6 +274,10 @@ namespace Qyoto {
 		[SmokeMethod("itemFromIndex(const QModelIndex&) const")]
 		protected QTreeWidgetItem ItemFromIndex(QModelIndex index) {
 			return ProxyQTreeWidget().ItemFromIndex(index);
+		}
+		[SmokeMethod("dropEvent(QDropEvent*)")]
+		protected new void DropEvent(QDropEvent arg1) {
+			ProxyQTreeWidget().DropEvent(arg1);
 		}
 		~QTreeWidget() {
 			DisposeQTreeWidget();

@@ -29,6 +29,15 @@ namespace Qyoto {
 			return (IQActionProxy) _staticInterceptor;
 		}
 
+		public enum MenuRole {
+			NoRole = 0,
+			TextHeuristicRole = 1,
+			ApplicationSpecificRole = 2,
+			AboutQtRole = 3,
+			AboutRole = 4,
+			PreferencesRole = 5,
+			QuitRole = 6,
+		}
 		public enum ActionEvent {
 			Trigger = 0,
 			Hover = 1,
@@ -138,8 +147,12 @@ namespace Qyoto {
 		public QKeySequence Shortcut() {
 			return ProxyQAction().Shortcut();
 		}
-		// void setAlternateShortcuts(const QList<QKeySequence>& arg1); >>>> NOT CONVERTED
-		// QList<QKeySequence> alternateShortcuts(); >>>> NOT CONVERTED
+		// void setShortcuts(const QList<QKeySequence>& arg1); >>>> NOT CONVERTED
+		[SmokeMethod("setShortcuts(QKeySequence::StandardKey)")]
+		public void SetShortcuts(QKeySequence.StandardKey arg1) {
+			ProxyQAction().SetShortcuts(arg1);
+		}
+		// QList<QKeySequence> shortcuts(); >>>> NOT CONVERTED
 		[SmokeMethod("setShortcutContext(Qt::ShortcutContext)")]
 		public void SetShortcutContext(Qt.ShortcutContext context) {
 			ProxyQAction().SetShortcutContext(context);
@@ -196,19 +209,19 @@ namespace Qyoto {
 		public bool ShowStatusText() {
 			return ProxyQAction().ShowStatusText();
 		}
+		[SmokeMethod("setMenuRole(QAction::MenuRole)")]
+		public void SetMenuRole(QAction.MenuRole menuRole) {
+			ProxyQAction().SetMenuRole(menuRole);
+		}
+		[SmokeMethod("menuRole() const")]
+		public QAction.MenuRole menuRole() {
+			return ProxyQAction().menuRole();
+		}
 		[SmokeMethod("parentWidget() const")]
 		public QWidget ParentWidget() {
 			return ProxyQAction().ParentWidget();
 		}
 		// QList<QWidget*> associatedWidgets(); >>>> NOT CONVERTED
-		[SmokeMethod("toolBarWidgetFactory() const")]
-		public QActionWidgetFactory ToolBarWidgetFactory() {
-			return ProxyQAction().ToolBarWidgetFactory();
-		}
-		[SmokeMethod("setToolBarWidgetFactory(QActionWidgetFactory*)")]
-		public void SetToolBarWidgetFactory(QActionWidgetFactory factory) {
-			ProxyQAction().SetToolBarWidgetFactory(factory);
-		}
 		[SmokeMethod("trigger()")]
 		public void Trigger() {
 			ProxyQAction().Trigger();

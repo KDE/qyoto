@@ -106,6 +106,10 @@ namespace Qyoto {
 		public bool Contains(QModelIndex index) {
 			return ProxyQItemSelectionRange().Contains(index);
 		}
+		[SmokeMethod("contains(int, int, const QModelIndex&) const")]
+		public bool Contains(int row, int column, QModelIndex parentIndex) {
+			return ProxyQItemSelectionRange().Contains(row,column,parentIndex);
+		}
 		[SmokeMethod("intersects(const QItemSelectionRange&) const")]
 		public bool Intersects(QItemSelectionRange other) {
 			return ProxyQItemSelectionRange().Intersects(other);

@@ -25,10 +25,12 @@ namespace Qyoto {
 			return (IQStyleHintReturnMaskProxy) _staticInterceptor;
 		}
 
-		public const int Type = (int) QStyleHintReturn.HintReturnType.SH_Mask;
-
-		public const int Version = 1;
-
+		public enum StyleOptionType {
+			Type = QStyleHintReturn.HintReturnType.SH_Mask,
+		}
+		public enum StyleOptionVersion {
+			Version = 1,
+		}
 		public QStyleHintReturnMask() : this((Type) null) {
 			CreateProxy();
 			NewQStyleHintReturnMask();

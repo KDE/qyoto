@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Collections;
 	using System.Text;
 
 	[SmokeClass("QAbstractScrollArea")]
@@ -57,6 +58,10 @@ namespace Qyoto {
 		public QScrollBar VerticalScrollBar() {
 			return ProxyQAbstractScrollArea().VerticalScrollBar();
 		}
+		[SmokeMethod("setVerticalScrollBar(QScrollBar*)")]
+		public void SetVerticalScrollBar(QScrollBar scrollbar) {
+			ProxyQAbstractScrollArea().SetVerticalScrollBar(scrollbar);
+		}
 		[SmokeMethod("horizontalScrollBarPolicy() const")]
 		public Qt.ScrollBarPolicy HorizontalScrollBarPolicy() {
 			return ProxyQAbstractScrollArea().HorizontalScrollBarPolicy();
@@ -69,9 +74,33 @@ namespace Qyoto {
 		public QScrollBar HorizontalScrollBar() {
 			return ProxyQAbstractScrollArea().HorizontalScrollBar();
 		}
+		[SmokeMethod("setHorizontalScrollBar(QScrollBar*)")]
+		public void SetHorizontalScrollBar(QScrollBar scrollbar) {
+			ProxyQAbstractScrollArea().SetHorizontalScrollBar(scrollbar);
+		}
+		[SmokeMethod("cornerWidget() const")]
+		public QWidget CornerWidget() {
+			return ProxyQAbstractScrollArea().CornerWidget();
+		}
+		[SmokeMethod("setCornerWidget(QWidget*)")]
+		public void SetCornerWidget(QWidget widget) {
+			ProxyQAbstractScrollArea().SetCornerWidget(widget);
+		}
+		[SmokeMethod("addScrollBarWidget(QWidget*, Qt::Alignment)")]
+		public void AddScrollBarWidget(QWidget widget, int alignment) {
+			ProxyQAbstractScrollArea().AddScrollBarWidget(widget,alignment);
+		}
+		[SmokeMethod("scrollBarWidgets(Qt::Alignment)")]
+		public ArrayList ScrollBarWidgets(int alignment) {
+			return ProxyQAbstractScrollArea().ScrollBarWidgets(alignment);
+		}
 		[SmokeMethod("viewport() const")]
 		public QWidget Viewport() {
 			return ProxyQAbstractScrollArea().Viewport();
+		}
+		[SmokeMethod("setViewport(QWidget*)")]
+		public void SetViewport(QWidget widget) {
+			ProxyQAbstractScrollArea().SetViewport(widget);
 		}
 		[SmokeMethod("maximumViewportSize() const")]
 		public QSize MaximumViewportSize() {
@@ -92,6 +121,10 @@ namespace Qyoto {
 		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQAbstractScrollArea().Tr(s);
+		}
+		[SmokeMethod("setupViewport(QWidget*)")]
+		protected void SetupViewport(QWidget viewport) {
+			ProxyQAbstractScrollArea().SetupViewport(viewport);
 		}
 		[SmokeMethod("setViewportMargins(int, int, int, int)")]
 		protected void SetViewportMargins(int left, int top, int right, int bottom) {

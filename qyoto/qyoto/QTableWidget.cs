@@ -160,11 +160,11 @@ namespace Qyoto {
 			ProxyQTableWidget().SortItems(column);
 		}
 		[SmokeMethod("setSortingEnabled(bool)")]
-		public void SetSortingEnabled(bool enable) {
+		public new void SetSortingEnabled(bool enable) {
 			ProxyQTableWidget().SetSortingEnabled(enable);
 		}
 		[SmokeMethod("isSortingEnabled() const")]
-		public bool IsSortingEnabled() {
+		public new bool IsSortingEnabled() {
 			return ProxyQTableWidget().IsSortingEnabled();
 		}
 		[SmokeMethod("editItem(QTableWidgetItem*)")]
@@ -267,6 +267,10 @@ namespace Qyoto {
 		public void Clear() {
 			ProxyQTableWidget().Clear();
 		}
+		[SmokeMethod("clearContents()")]
+		public void ClearContents() {
+			ProxyQTableWidget().ClearContents();
+		}
 		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQTableWidget().Tr(s,c);
@@ -306,6 +310,10 @@ namespace Qyoto {
 		[SmokeMethod("itemFromIndex(const QModelIndex&) const")]
 		protected QTableWidgetItem ItemFromIndex(QModelIndex index) {
 			return ProxyQTableWidget().ItemFromIndex(index);
+		}
+		[SmokeMethod("dropEvent(QDropEvent*)")]
+		protected new void DropEvent(QDropEvent arg1) {
+			ProxyQTableWidget().DropEvent(arg1);
 		}
 		~QTableWidget() {
 			DisposeQTableWidget();

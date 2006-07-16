@@ -25,8 +25,9 @@ namespace Qyoto {
 			return (IQStyleOptionTabV2Proxy) _staticInterceptor;
 		}
 
-		public const int Version = 2;
-
+		public enum StyleOptionVersion {
+			Version = 2,
+		}
 		public QStyleOptionTabV2() : this((Type) null) {
 			CreateProxy();
 			NewQStyleOptionTabV2();

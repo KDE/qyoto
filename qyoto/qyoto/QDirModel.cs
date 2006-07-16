@@ -83,9 +83,17 @@ namespace Qyoto {
 		public new int RowCount(QModelIndex parent) {
 			return ProxyQDirModel().RowCount(parent);
 		}
+		[SmokeMethod("rowCount() const")]
+		public new int RowCount() {
+			return ProxyQDirModel().RowCount();
+		}
 		[SmokeMethod("columnCount(const QModelIndex&) const")]
 		public new int ColumnCount(QModelIndex parent) {
 			return ProxyQDirModel().ColumnCount(parent);
+		}
+		[SmokeMethod("columnCount() const")]
+		public new int ColumnCount() {
+			return ProxyQDirModel().ColumnCount();
 		}
 		[SmokeMethod("data(const QModelIndex&, int) const")]
 		public new QVariant Data(QModelIndex index, int role) {
@@ -99,13 +107,25 @@ namespace Qyoto {
 		public new bool SetData(QModelIndex index, QVariant value, int role) {
 			return ProxyQDirModel().SetData(index,value,role);
 		}
+		[SmokeMethod("setData(const QModelIndex&, const QVariant&)")]
+		public new bool SetData(QModelIndex index, QVariant value) {
+			return ProxyQDirModel().SetData(index,value);
+		}
 		[SmokeMethod("headerData(int, Qt::Orientation, int) const")]
 		public new QVariant HeaderData(int section, Qt.Orientation orientation, int role) {
 			return ProxyQDirModel().HeaderData(section,orientation,role);
 		}
+		[SmokeMethod("headerData(int, Qt::Orientation) const")]
+		public new QVariant HeaderData(int section, Qt.Orientation orientation) {
+			return ProxyQDirModel().HeaderData(section,orientation);
+		}
 		[SmokeMethod("hasChildren(const QModelIndex&) const")]
 		public new bool HasChildren(QModelIndex index) {
 			return ProxyQDirModel().HasChildren(index);
+		}
+		[SmokeMethod("hasChildren() const")]
+		public new bool HasChildren() {
+			return ProxyQDirModel().HasChildren();
 		}
 		[SmokeMethod("flags(const QModelIndex&) const")]
 		public new int Flags(QModelIndex index) {
@@ -114,6 +134,10 @@ namespace Qyoto {
 		[SmokeMethod("sort(int, Qt::SortOrder)")]
 		public new void Sort(int column, Qt.SortOrder order) {
 			ProxyQDirModel().Sort(column,order);
+		}
+		[SmokeMethod("sort(int)")]
+		public new void Sort(int column) {
+			ProxyQDirModel().Sort(column);
 		}
 		[SmokeMethod("mimeTypes() const")]
 		public new ArrayList MimeTypes() {

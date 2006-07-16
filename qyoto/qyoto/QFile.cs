@@ -15,6 +15,7 @@ namespace Qyoto {
 			string DecodeName(string localFileName);
 			bool Exists(string fileName);
 			string ReadLink(string fileName);
+			string SymLinkTarget(string fileName);
 			bool Remove(string fileName);
 			bool Rename(string oldName, string newName);
 			bool Link(string oldname, string newName);
@@ -127,6 +128,10 @@ namespace Qyoto {
 		public string ReadLink() {
 			return ProxyQFile().ReadLink();
 		}
+		[SmokeMethod("symLinkTarget() const")]
+		public string SymLinkTarget() {
+			return ProxyQFile().SymLinkTarget();
+		}
 		[SmokeMethod("remove()")]
 		public bool Remove() {
 			return ProxyQFile().Remove();
@@ -179,7 +184,10 @@ namespace Qyoto {
 		public bool SetPermissions(int permissionSpec) {
 			return ProxyQFile().SetPermissions(permissionSpec);
 		}
-		// QAbstractFileEngine* fileEngine(); >>>> NOT CONVERTED
+		[SmokeMethod("fileEngine() const")]
+		public virtual QAbstractFileEngine FileEngine() {
+			return ProxyQFile().FileEngine();
+		}
 		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQFile().Tr(s,c);
@@ -207,6 +215,10 @@ namespace Qyoto {
 		[SmokeMethod("readLink(const QString&)")]
 		public static string ReadLink(string fileName) {
 			return StaticQFile().ReadLink(fileName);
+		}
+		[SmokeMethod("symLinkTarget(const QString&)")]
+		public static string SymLinkTarget(string fileName) {
+			return StaticQFile().SymLinkTarget(fileName);
 		}
 		[SmokeMethod("remove(const QString&)")]
 		public static bool Remove(string fileName) {

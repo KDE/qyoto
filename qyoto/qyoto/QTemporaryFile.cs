@@ -87,7 +87,10 @@ namespace Qyoto {
 		public void SetFileTemplate(string name) {
 			ProxyQTemporaryFile().SetFileTemplate(name);
 		}
-		// QAbstractFileEngine* fileEngine(); >>>> NOT CONVERTED
+		[SmokeMethod("fileEngine() const")]
+		public new virtual QAbstractFileEngine FileEngine() {
+			return ProxyQTemporaryFile().FileEngine();
+		}
 		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQTemporaryFile().Tr(s,c);

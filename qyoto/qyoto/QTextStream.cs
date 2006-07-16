@@ -191,6 +191,7 @@ namespace Qyoto {
 			ProxyQTextStream().Flush();
 		}
 		// bool seek(qint64 arg1); >>>> NOT CONVERTED
+		// qint64 pos(); >>>> NOT CONVERTED
 		[SmokeMethod("skipWhiteSpace()")]
 		public void SkipWhiteSpace() {
 			ProxyQTextStream().SkipWhiteSpace();

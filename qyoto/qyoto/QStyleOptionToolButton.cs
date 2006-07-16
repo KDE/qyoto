@@ -25,16 +25,18 @@ namespace Qyoto {
 			return (IQStyleOptionToolButtonProxy) _staticInterceptor;
 		}
 
+		public enum StyleOptionType {
+			Type = QStyleOption.OptionType.SO_ToolButton,
+		}
+		public enum StyleOptionVersion {
+			Version = 1,
+		}
 		public enum ToolButtonFeature {
 			None = 0x00,
 			Arrow = 0x01,
 			Menu = 0x04,
 			PopupDelay = 0x08,
 		}
-		public const int Type = (int) QStyleOption.OptionType.SO_ToolButton;
-
-		public const int Version = 1;
-
 		public QStyleOptionToolButton() : this((Type) null) {
 			CreateProxy();
 			NewQStyleOptionToolButton();

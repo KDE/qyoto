@@ -45,6 +45,7 @@ namespace Qyoto {
 			EnsureVisible = 0,
 			PositionAtTop = 1,
 			PositionAtBottom = 2,
+			PositionAtCenter = 3,
 		}
 		public enum EditTrigger {
 			NoEditTriggers = 0,
@@ -54,6 +55,17 @@ namespace Qyoto {
 			EditKeyPressed = 8,
 			AnyKeyPressed = 16,
 			AllEditTriggers = 31,
+		}
+		public enum ScrollMode {
+			ScrollPerItem = 0,
+			ScrollPerPixel = 1,
+		}
+		public enum DragDropMode {
+			NoDragDrop = 0,
+			DragOnly = 1,
+			DropOnly = 2,
+			DragDrop = 3,
+			InternalMove = 4,
 		}
 		public enum CursorAction {
 			MoveUp = 0,
@@ -74,6 +86,7 @@ namespace Qyoto {
 			EditingState = 3,
 			ExpandingState = 4,
 			CollapsingState = 5,
+			AnimatingState = 6,
 		}
 		public enum DropIndicatorPosition {
 			OnItem = 0,
@@ -154,6 +167,22 @@ namespace Qyoto {
 		public int EditTriggers() {
 			return ProxyQAbstractItemView().EditTriggers();
 		}
+		[SmokeMethod("setVerticalScrollMode(QAbstractItemView::ScrollMode)")]
+		public void SetVerticalScrollMode(QAbstractItemView.ScrollMode mode) {
+			ProxyQAbstractItemView().SetVerticalScrollMode(mode);
+		}
+		[SmokeMethod("verticalScrollMode() const")]
+		public QAbstractItemView.ScrollMode VerticalScrollMode() {
+			return ProxyQAbstractItemView().VerticalScrollMode();
+		}
+		[SmokeMethod("setHorizontalScrollMode(QAbstractItemView::ScrollMode)")]
+		public void SetHorizontalScrollMode(QAbstractItemView.ScrollMode mode) {
+			ProxyQAbstractItemView().SetHorizontalScrollMode(mode);
+		}
+		[SmokeMethod("horizontalScrollMode() const")]
+		public QAbstractItemView.ScrollMode HorizontalScrollMode() {
+			return ProxyQAbstractItemView().HorizontalScrollMode();
+		}
 		[SmokeMethod("setAutoScroll(bool)")]
 		public void SetAutoScroll(bool enable) {
 			ProxyQAbstractItemView().SetAutoScroll(enable);
@@ -185,6 +214,22 @@ namespace Qyoto {
 		[SmokeMethod("dragEnabled() const")]
 		public bool DragEnabled() {
 			return ProxyQAbstractItemView().DragEnabled();
+		}
+		[SmokeMethod("setDragDropOverwriteMode(bool)")]
+		public void SetDragDropOverwriteMode(bool overwrite) {
+			ProxyQAbstractItemView().SetDragDropOverwriteMode(overwrite);
+		}
+		[SmokeMethod("dragDropOverwriteMode() const")]
+		public bool DragDropOverwriteMode() {
+			return ProxyQAbstractItemView().DragDropOverwriteMode();
+		}
+		[SmokeMethod("setDragDropMode(QAbstractItemView::DragDropMode)")]
+		public void SetDragDropMode(QAbstractItemView.DragDropMode behavior) {
+			ProxyQAbstractItemView().SetDragDropMode(behavior);
+		}
+		[SmokeMethod("dragDropMode() const")]
+		public QAbstractItemView.DragDropMode dragDropMode() {
+			return ProxyQAbstractItemView().dragDropMode();
 		}
 		[SmokeMethod("setAlternatingRowColors(bool)")]
 		public void SetAlternatingRowColors(bool enable) {
@@ -257,6 +302,30 @@ namespace Qyoto {
 		[SmokeMethod("indexWidget(const QModelIndex&) const")]
 		public QWidget IndexWidget(QModelIndex index) {
 			return ProxyQAbstractItemView().IndexWidget(index);
+		}
+		[SmokeMethod("setItemDelegateForRow(int, QAbstractItemDelegate*)")]
+		public void SetItemDelegateForRow(int row, QAbstractItemDelegate arg2) {
+			ProxyQAbstractItemView().SetItemDelegateForRow(row,arg2);
+		}
+		[SmokeMethod("itemDelegateForRow(int) const")]
+		public QAbstractItemDelegate ItemDelegateForRow(int row) {
+			return ProxyQAbstractItemView().ItemDelegateForRow(row);
+		}
+		[SmokeMethod("setItemDelegateForColumn(int, QAbstractItemDelegate*)")]
+		public void SetItemDelegateForColumn(int column, QAbstractItemDelegate arg2) {
+			ProxyQAbstractItemView().SetItemDelegateForColumn(column,arg2);
+		}
+		[SmokeMethod("itemDelegateForColumn(int) const")]
+		public QAbstractItemDelegate ItemDelegateForColumn(int column) {
+			return ProxyQAbstractItemView().ItemDelegateForColumn(column);
+		}
+		[SmokeMethod("itemDelegate(const QModelIndex&) const")]
+		public QAbstractItemDelegate ItemDelegate(QModelIndex index) {
+			return ProxyQAbstractItemView().ItemDelegate(index);
+		}
+		[SmokeMethod("inputMethodQuery(Qt::InputMethodQuery) const")]
+		public new virtual QVariant InputMethodQuery(Qt.InputMethodQuery query) {
+			return ProxyQAbstractItemView().InputMethodQuery(query);
 		}
 		[SmokeMethod("reset()")]
 		public virtual void Reset() {

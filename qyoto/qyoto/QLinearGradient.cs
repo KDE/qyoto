@@ -25,6 +25,14 @@ namespace Qyoto {
 			return (IQLinearGradientProxy) _staticInterceptor;
 		}
 
+		public QLinearGradient() : this((Type) null) {
+			CreateProxy();
+			NewQLinearGradient();
+		}
+		[SmokeMethod("QLinearGradient()")]
+		private void NewQLinearGradient() {
+			ProxyQLinearGradient().NewQLinearGradient();
+		}
 		public QLinearGradient(QPointF start, QPointF finalStop) : this((Type) null) {
 			CreateProxy();
 			NewQLinearGradient(start,finalStop);
@@ -45,9 +53,25 @@ namespace Qyoto {
 		public QPointF Start() {
 			return ProxyQLinearGradient().Start();
 		}
+		[SmokeMethod("setStart(const QPointF&)")]
+		public void SetStart(QPointF start) {
+			ProxyQLinearGradient().SetStart(start);
+		}
+		[SmokeMethod("setStart(qreal, qreal)")]
+		public void SetStart(double x, double y) {
+			ProxyQLinearGradient().SetStart(x,y);
+		}
 		[SmokeMethod("finalStop() const")]
 		public QPointF FinalStop() {
 			return ProxyQLinearGradient().FinalStop();
+		}
+		[SmokeMethod("setFinalStop(const QPointF&)")]
+		public void SetFinalStop(QPointF stop) {
+			ProxyQLinearGradient().SetFinalStop(stop);
+		}
+		[SmokeMethod("setFinalStop(qreal, qreal)")]
+		public void SetFinalStop(double x, double y) {
+			ProxyQLinearGradient().SetFinalStop(x,y);
 		}
 		~QLinearGradient() {
 			DisposeQLinearGradient();

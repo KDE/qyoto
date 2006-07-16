@@ -29,9 +29,10 @@ namespace Qyoto {
 			return (IQListWidgetItemProxy) _staticInterceptor;
 		}
 
-		public const int Type = 0;
-		public const int UserType = 1000;
-
+		public enum ItemType {
+			Type = 0,
+			UserType = 1000,
+		}
 		public QListWidgetItem(QListWidget view, int type) : this((Type) null) {
 			CreateProxy();
 			NewQListWidgetItem(view,type);
@@ -119,6 +120,22 @@ namespace Qyoto {
 		[SmokeMethod("listWidget() const")]
 		public QListWidget ListWidget() {
 			return ProxyQListWidgetItem().ListWidget();
+		}
+		[SmokeMethod("setSelected(bool)")]
+		public void SetSelected(bool select) {
+			ProxyQListWidgetItem().SetSelected(select);
+		}
+		[SmokeMethod("isSelected() const")]
+		public bool IsSelected() {
+			return ProxyQListWidgetItem().IsSelected();
+		}
+		[SmokeMethod("setHidden(bool)")]
+		public void SetHidden(bool hide) {
+			ProxyQListWidgetItem().SetHidden(hide);
+		}
+		[SmokeMethod("isHidden() const")]
+		public bool IsHidden() {
+			return ProxyQListWidgetItem().IsHidden();
 		}
 		[SmokeMethod("flags() const")]
 		public int Flags() {

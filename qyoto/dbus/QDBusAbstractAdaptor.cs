@@ -29,7 +29,6 @@ namespace Qyoto {
 		}
 
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
-		// Q_DECL_DEPRECATED QObject* object(); >>>> NOT CONVERTED
 		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQDBusAbstractAdaptor().Tr(s,c);
@@ -56,6 +55,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQDBusAbstractAdaptor();
 		}
+		[SmokeMethod("~QDBusAbstractAdaptor()")]
 		private void DisposeQDBusAbstractAdaptor() {
 			ProxyQDBusAbstractAdaptor().DisposeQDBusAbstractAdaptor();
 		}

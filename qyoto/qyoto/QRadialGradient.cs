@@ -25,6 +25,14 @@ namespace Qyoto {
 			return (IQRadialGradientProxy) _staticInterceptor;
 		}
 
+		public QRadialGradient() : this((Type) null) {
+			CreateProxy();
+			NewQRadialGradient();
+		}
+		[SmokeMethod("QRadialGradient()")]
+		private void NewQRadialGradient() {
+			ProxyQRadialGradient().NewQRadialGradient();
+		}
 		public QRadialGradient(QPointF center, double radius, QPointF focalPoint) : this((Type) null) {
 			CreateProxy();
 			NewQRadialGradient(center,radius,focalPoint);
@@ -32,14 +40,6 @@ namespace Qyoto {
 		[SmokeMethod("QRadialGradient(const QPointF&, qreal, const QPointF&)")]
 		private void NewQRadialGradient(QPointF center, double radius, QPointF focalPoint) {
 			ProxyQRadialGradient().NewQRadialGradient(center,radius,focalPoint);
-		}
-		public QRadialGradient(QPointF center, double radius) : this((Type) null) {
-			CreateProxy();
-			NewQRadialGradient(center,radius);
-		}
-		[SmokeMethod("QRadialGradient(const QPointF&, qreal)")]
-		private void NewQRadialGradient(QPointF center, double radius) {
-			ProxyQRadialGradient().NewQRadialGradient(center,radius);
 		}
 		public QRadialGradient(double cx, double cy, double radius, double fx, double fy) : this((Type) null) {
 			CreateProxy();
@@ -49,13 +49,13 @@ namespace Qyoto {
 		private void NewQRadialGradient(double cx, double cy, double radius, double fx, double fy) {
 			ProxyQRadialGradient().NewQRadialGradient(cx,cy,radius,fx,fy);
 		}
-		public QRadialGradient(double cx, double cy, double radius, double fx) : this((Type) null) {
+		public QRadialGradient(QPointF center, double radius) : this((Type) null) {
 			CreateProxy();
-			NewQRadialGradient(cx,cy,radius,fx);
+			NewQRadialGradient(center,radius);
 		}
-		[SmokeMethod("QRadialGradient(qreal, qreal, qreal, qreal)")]
-		private void NewQRadialGradient(double cx, double cy, double radius, double fx) {
-			ProxyQRadialGradient().NewQRadialGradient(cx,cy,radius,fx);
+		[SmokeMethod("QRadialGradient(const QPointF&, qreal)")]
+		private void NewQRadialGradient(QPointF center, double radius) {
+			ProxyQRadialGradient().NewQRadialGradient(center,radius);
 		}
 		public QRadialGradient(double cx, double cy, double radius) : this((Type) null) {
 			CreateProxy();
@@ -69,13 +69,33 @@ namespace Qyoto {
 		public QPointF Center() {
 			return ProxyQRadialGradient().Center();
 		}
+		[SmokeMethod("setCenter(const QPointF&)")]
+		public void SetCenter(QPointF center) {
+			ProxyQRadialGradient().SetCenter(center);
+		}
+		[SmokeMethod("setCenter(qreal, qreal)")]
+		public void SetCenter(double x, double y) {
+			ProxyQRadialGradient().SetCenter(x,y);
+		}
 		[SmokeMethod("focalPoint() const")]
 		public QPointF FocalPoint() {
 			return ProxyQRadialGradient().FocalPoint();
 		}
+		[SmokeMethod("setFocalPoint(const QPointF&)")]
+		public void SetFocalPoint(QPointF focalPoint) {
+			ProxyQRadialGradient().SetFocalPoint(focalPoint);
+		}
+		[SmokeMethod("setFocalPoint(qreal, qreal)")]
+		public void SetFocalPoint(double x, double y) {
+			ProxyQRadialGradient().SetFocalPoint(x,y);
+		}
 		[SmokeMethod("radius() const")]
 		public double Radius() {
 			return ProxyQRadialGradient().Radius();
+		}
+		[SmokeMethod("setRadius(qreal)")]
+		public void SetRadius(double radius) {
+			ProxyQRadialGradient().SetRadius(radius);
 		}
 		~QRadialGradient() {
 			DisposeQRadialGradient();

@@ -25,10 +25,12 @@ namespace Qyoto {
 			return (IQStyleOptionFrameProxy) _staticInterceptor;
 		}
 
-		public const int Type = (int) QStyleOption.OptionType.SO_Frame;
-
-		public const int Version = 1;
-
+		public enum StyleOptionType {
+			Type = QStyleOption.OptionType.SO_Frame,
+		}
+		public enum StyleOptionVersion {
+			Version = 1,
+		}
 		public QStyleOptionFrame() : this((Type) null) {
 			CreateProxy();
 			NewQStyleOptionFrame();

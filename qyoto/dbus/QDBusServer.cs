@@ -71,6 +71,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQDBusServer();
 		}
+		[SmokeMethod("~QDBusServer()")]
 		private void DisposeQDBusServer() {
 			ProxyQDBusServer().DisposeQDBusServer();
 		}

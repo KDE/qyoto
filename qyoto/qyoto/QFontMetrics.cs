@@ -162,6 +162,14 @@ namespace Qyoto {
 		public QSize Size(int flags, string str) {
 			return ProxyQFontMetrics().Size(flags,str);
 		}
+		[SmokeMethod("elidedText(const QString&, Qt::TextElideMode, int, int) const")]
+		public string ElidedText(string text, Qt.TextElideMode mode, int width, int flags) {
+			return ProxyQFontMetrics().ElidedText(text,mode,width,flags);
+		}
+		[SmokeMethod("elidedText(const QString&, Qt::TextElideMode, int) const")]
+		public string ElidedText(string text, Qt.TextElideMode mode, int width) {
+			return ProxyQFontMetrics().ElidedText(text,mode,width);
+		}
 		[SmokeMethod("underlinePos() const")]
 		public int UnderlinePos() {
 			return ProxyQFontMetrics().UnderlinePos();

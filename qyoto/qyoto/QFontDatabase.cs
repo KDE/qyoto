@@ -15,6 +15,11 @@ namespace Qyoto {
 			ArrayList StandardSizes();
 			string WritingSystemName(QFontDatabase.WritingSystem writingSystem);
 			string WritingSystemSample(QFontDatabase.WritingSystem writingSystem);
+			int AddApplicationFont(string fileName);
+			int AddApplicationFontFromData(QByteArray fontData);
+			ArrayList ApplicationFontFamilies(int id);
+			bool RemoveApplicationFont(int id);
+			bool RemoveAllApplicationFonts();
 		}
 
 		protected new void CreateProxy() {
@@ -64,7 +69,8 @@ namespace Qyoto {
 			Japanese = 27,
 			Korean = 28,
 			Vietnamese = 29,
-			Other = 30,
+			Symbol = 30,
+			Other = Symbol,
 			WritingSystemsCount = 31,
 		}
 		public QFontDatabase() : this((Type) null) {
@@ -76,6 +82,7 @@ namespace Qyoto {
 			ProxyQFontDatabase().NewQFontDatabase();
 		}
 		// QList<QFontDatabase::WritingSystem> writingSystems(); >>>> NOT CONVERTED
+		// QList<QFontDatabase::WritingSystem> writingSystems(const QString& arg1); >>>> NOT CONVERTED
 		[SmokeMethod("families(QFontDatabase::WritingSystem) const")]
 		public ArrayList Families(QFontDatabase.WritingSystem writingSystem) {
 			return ProxyQFontDatabase().Families(writingSystem);
@@ -167,6 +174,26 @@ namespace Qyoto {
 		[SmokeMethod("writingSystemSample(QFontDatabase::WritingSystem)")]
 		public static string WritingSystemSample(QFontDatabase.WritingSystem writingSystem) {
 			return StaticQFontDatabase().WritingSystemSample(writingSystem);
+		}
+		[SmokeMethod("addApplicationFont(const QString&)")]
+		public static int AddApplicationFont(string fileName) {
+			return StaticQFontDatabase().AddApplicationFont(fileName);
+		}
+		[SmokeMethod("addApplicationFontFromData(const QByteArray&)")]
+		public static int AddApplicationFontFromData(QByteArray fontData) {
+			return StaticQFontDatabase().AddApplicationFontFromData(fontData);
+		}
+		[SmokeMethod("applicationFontFamilies(int)")]
+		public static ArrayList ApplicationFontFamilies(int id) {
+			return StaticQFontDatabase().ApplicationFontFamilies(id);
+		}
+		[SmokeMethod("removeApplicationFont(int)")]
+		public static bool RemoveApplicationFont(int id) {
+			return StaticQFontDatabase().RemoveApplicationFont(id);
+		}
+		[SmokeMethod("removeAllApplicationFonts()")]
+		public static bool RemoveAllApplicationFonts() {
+			return StaticQFontDatabase().RemoveAllApplicationFonts();
 		}
 		~QFontDatabase() {
 			DisposeQFontDatabase();

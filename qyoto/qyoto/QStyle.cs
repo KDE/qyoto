@@ -62,6 +62,7 @@ namespace Qyoto {
 			State_Editing = 0x00400000,
 			State_KeyboardFocusChange = 0x00800000,
 			State_ReadOnly = 0x02000000,
+			State_Alternate = 0x04000000,
 		}
 		public enum PrimitiveElement {
 			PE_Q3CheckListController = 0,
@@ -109,6 +110,7 @@ namespace Qyoto {
 			PE_IndicatorToolBarSeparator = 42,
 			PE_PanelTipLabel = 43,
 			PE_IndicatorTabTear = 44,
+			PE_PanelScrollAreaCorner = 45,
 			PE_CustomBase = 0xf000000,
 		}
 		public enum ControlElement : uint {
@@ -193,6 +195,8 @@ namespace Qyoto {
 			SE_ViewItemCheckIndicator = 33,
 			SE_TabBarTearIndicator = 34,
 			SE_TreeViewDisclosureItem = 35,
+			SE_LineEditContents = 36,
+			SE_FrameContents = 37,
 			SE_CustomBase = 0xf0000000,
 		}
 		public enum ComplexControl : uint {
@@ -328,6 +332,7 @@ namespace Qyoto {
 			PM_TabBarIconSize = 73,
 			PM_SizeGripSize = 74,
 			PM_DockWidgetTitleMargin = 75,
+			PM_MessageBoxIconSize = 76,
 			PM_CustomBase = 0xf0000000,
 		}
 		public enum ContentsType : uint {
@@ -422,6 +427,15 @@ namespace Qyoto {
 			SH_ItemView_ActivateItemOnSingleClick = 62,
 			SH_ScrollBar_ContextMenu = 63,
 			SH_ScrollBar_RollBetweenButtons = 64,
+			SH_Slider_AbsoluteSetButtons = 65,
+			SH_Slider_PageSetButtons = 66,
+			SH_Menu_KeyboardSearch = 67,
+			SH_TabBar_ElideMode = 68,
+			SH_DialogButtonLayout = 69,
+			SH_ComboBox_PopupFrameStyle = 70,
+			SH_MessageBox_TextInteractionFlags = 71,
+			SH_DialogButtonBox_ButtonsHaveIcons = 72,
+			SH_SpellCheckUnderlineStyle = 73,
 			SH_CustomBase = 0xf0000000,
 		}
 		public enum StandardPixmap : uint {
@@ -462,6 +476,18 @@ namespace Qyoto {
 			SP_FileDialogContentsView = 34,
 			SP_FileDialogListView = 35,
 			SP_FileDialogBack = 36,
+			SP_DirIcon = 37,
+			SP_StandardButtonOk = 38,
+			SP_StandardButtonCancel = 39,
+			SP_StandardButtonHelp = 40,
+			SP_StandardButtonOpen = 41,
+			SP_StandardButtonSave = 42,
+			SP_StandardButtonClose = 43,
+			SP_StandardButtonApply = 44,
+			SP_StandardButtonReset = 45,
+			SP_StandardButtonDiscard = 46,
+			SP_StandardButtonYes = 47,
+			SP_StandardButtonNo = 48,
 			SP_CustomBase = 0xf0000000,
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

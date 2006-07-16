@@ -37,20 +37,16 @@ namespace Qyoto {
 			SystemBus = 1,
 			ActivationBus = 2,
 		}
-		public enum WaitMode {
-			UseEventLoop = 0,
-			NoUseEventLoop = 1,
-		}
 		public enum RegisterOption {
 			ExportAdaptors = 0x01,
 			ExportSlots = 0x10,
 			ExportSignals = 0x20,
 			ExportProperties = 0x40,
 			ExportContents = 0xf0,
-			ExportAllSlots = 0x110,
-			ExportAllSignals = 0x220,
-			ExportAllProperties = 0x440,
-			ExportAllContents = 0xff0,
+			ExportNonScriptableSlots = 0x100,
+			ExportNonScriptableSignals = 0x200,
+			ExportNonScriptableProperties = 0x400,
+			ExportNonScriptableContents = 0xf00,
 			ExportChildObjects = 0x1000,
 		}
 		public enum UnregisterMode {
@@ -89,17 +85,25 @@ namespace Qyoto {
 		public bool Send(QDBusMessage message) {
 			return ProxyQDBusConnection().Send(message);
 		}
-		[SmokeMethod("sendWithReply(const QDBusMessage&, QDBusConnection::WaitMode) const")]
-		public QDBusMessage SendWithReply(QDBusMessage message, QDBusConnection.WaitMode mode) {
-			return ProxyQDBusConnection().SendWithReply(message,mode);
+		[SmokeMethod("call(const QDBusMessage&, QDBus::CallMode, int) const")]
+		public QDBusMessage Call(QDBusMessage message, QDBus.CallMode mode, int timeout) {
+			return ProxyQDBusConnection().Call(message,mode,timeout);
 		}
-		[SmokeMethod("sendWithReply(const QDBusMessage&) const")]
-		public QDBusMessage SendWithReply(QDBusMessage message) {
-			return ProxyQDBusConnection().SendWithReply(message);
+		[SmokeMethod("call(const QDBusMessage&, QDBus::CallMode) const")]
+		public QDBusMessage Call(QDBusMessage message, QDBus.CallMode mode) {
+			return ProxyQDBusConnection().Call(message,mode);
 		}
-		[SmokeMethod("sendWithReplyAsync(const QDBusMessage&, QObject*, const char*) const")]
-		public int SendWithReplyAsync(QDBusMessage message, QObject receiver, string slot) {
-			return ProxyQDBusConnection().SendWithReplyAsync(message,receiver,slot);
+		[SmokeMethod("call(const QDBusMessage&) const")]
+		public QDBusMessage Call(QDBusMessage message) {
+			return ProxyQDBusConnection().Call(message);
+		}
+		[SmokeMethod("call(const QDBusMessage&, QObject*, const char*, int) const")]
+		public bool Call(QDBusMessage message, QObject receiver, string slot, int timeout) {
+			return ProxyQDBusConnection().Call(message,receiver,slot,timeout);
+		}
+		[SmokeMethod("call(const QDBusMessage&, QObject*, const char*) const")]
+		public bool Call(QDBusMessage message, QObject receiver, string slot) {
+			return ProxyQDBusConnection().Call(message,receiver,slot);
 		}
 		[SmokeMethod("connect(const QString&, const QString&, const QString&, const QString&, QObject*, const char*)")]
 		public bool Connect(string service, string path, string arg3, string name, QObject receiver, string slot) {
@@ -125,17 +129,17 @@ namespace Qyoto {
 		public void UnregisterObject(string path) {
 			ProxyQDBusConnection().UnregisterObject(path);
 		}
-		[SmokeMethod("findInterface(const QString&, const QString&, const QString&)")]
-		public QDBusInterface FindInterface(string service, string path, string arg3) {
-			return ProxyQDBusConnection().FindInterface(service,path,arg3);
+		[SmokeMethod("registerService(const QString&)")]
+		public bool RegisterService(string serviceName) {
+			return ProxyQDBusConnection().RegisterService(serviceName);
 		}
-		[SmokeMethod("findInterface(const QString&, const QString&)")]
-		public QDBusInterface FindInterface(string service, string path) {
-			return ProxyQDBusConnection().FindInterface(service,path);
+		[SmokeMethod("unregisterService(const QString&)")]
+		public bool UnregisterService(string serviceName) {
+			return ProxyQDBusConnection().UnregisterService(serviceName);
 		}
-		[SmokeMethod("busService() const")]
-		public QDBusBusService BusService() {
-			return ProxyQDBusConnection().BusService();
+		[SmokeMethod("interface() const")]
+		public QDBusConnectionInterface Interface() {
+			return ProxyQDBusConnection().Interface();
 		}
 		[SmokeMethod("addConnection(QDBusConnection::BusType, const QString&)")]
 		public static QDBusConnection AddConnection(QDBusConnection.BusType type, string name) {
@@ -155,6 +159,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQDBusConnection();
 		}
+		[SmokeMethod("~QDBusConnection()")]
 		private void DisposeQDBusConnection() {
 			ProxyQDBusConnection().DisposeQDBusConnection();
 		}

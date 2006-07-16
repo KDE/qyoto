@@ -122,6 +122,14 @@ namespace Qyoto {
 		public void SetColumnHidden(int column, bool hide) {
 			ProxyQTableView().SetColumnHidden(column,hide);
 		}
+		[SmokeMethod("setSortingEnabled(bool)")]
+		public void SetSortingEnabled(bool enable) {
+			ProxyQTableView().SetSortingEnabled(enable);
+		}
+		[SmokeMethod("isSortingEnabled() const")]
+		public bool IsSortingEnabled() {
+			return ProxyQTableView().IsSortingEnabled();
+		}
 		[SmokeMethod("showGrid() const")]
 		public bool ShowGrid() {
 			return ProxyQTableView().ShowGrid();
@@ -149,6 +157,18 @@ namespace Qyoto {
 		[SmokeMethod("indexAt(const QPoint&) const")]
 		public new QModelIndex IndexAt(QPoint p) {
 			return ProxyQTableView().IndexAt(p);
+		}
+		[SmokeMethod("setSpan(int, int, int, int)")]
+		public void SetSpan(int row, int column, int rowSpan, int columnSpan) {
+			ProxyQTableView().SetSpan(row,column,rowSpan,columnSpan);
+		}
+		[SmokeMethod("rowSpan(int, int) const")]
+		public int RowSpan(int row, int column) {
+			return ProxyQTableView().RowSpan(row,column);
+		}
+		[SmokeMethod("columnSpan(int, int) const")]
+		public int ColumnSpan(int row, int column) {
+			return ProxyQTableView().ColumnSpan(row,column);
 		}
 		[SmokeMethod("selectRow(int)")]
 		public void SelectRow(int row) {

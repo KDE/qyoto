@@ -76,6 +76,10 @@ namespace Qyoto {
 		public QVariant Data() {
 			return ProxyQModelIndex().Data();
 		}
+		[SmokeMethod("flags() const")]
+		public int Flags() {
+			return ProxyQModelIndex().Flags();
+		}
 		[SmokeMethod("model() const")]
 		public QAbstractItemModel Model() {
 			return ProxyQModelIndex().Model();

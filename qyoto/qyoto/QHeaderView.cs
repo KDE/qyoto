@@ -32,7 +32,9 @@ namespace Qyoto {
 		public enum ResizeMode {
 			Interactive = 0,
 			Stretch = 1,
-			Custom = 2,
+			Fixed = 2,
+			Custom = Fixed,
+			ResizeToContents = 3,
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QHeaderView(Qt.Orientation orientation, QWidget parent) : this((Type) null) {
@@ -106,6 +108,10 @@ namespace Qyoto {
 		[SmokeMethod("moveSection(int, int)")]
 		public void MoveSection(int from, int to) {
 			ProxyQHeaderView().MoveSection(from,to);
+		}
+		[SmokeMethod("swapSections(int, int)")]
+		public void SwapSections(int first, int second) {
+			ProxyQHeaderView().SwapSections(first,second);
 		}
 		[SmokeMethod("resizeSection(int, int)")]
 		public void ResizeSection(int logicalIndex, int size) {
@@ -215,6 +221,14 @@ namespace Qyoto {
 		public void SetStretchLastSection(bool stretch) {
 			ProxyQHeaderView().SetStretchLastSection(stretch);
 		}
+		[SmokeMethod("cascadingSectionResizes() const")]
+		public bool CascadingSectionResizes() {
+			return ProxyQHeaderView().CascadingSectionResizes();
+		}
+		[SmokeMethod("setCascadingSectionResizes(bool)")]
+		public void SetCascadingSectionResizes(bool enable) {
+			ProxyQHeaderView().SetCascadingSectionResizes(enable);
+		}
 		[SmokeMethod("defaultSectionSize() const")]
 		public int DefaultSectionSize() {
 			return ProxyQHeaderView().DefaultSectionSize();
@@ -222,6 +236,14 @@ namespace Qyoto {
 		[SmokeMethod("setDefaultSectionSize(int)")]
 		public void SetDefaultSectionSize(int size) {
 			ProxyQHeaderView().SetDefaultSectionSize(size);
+		}
+		[SmokeMethod("minimumSectionSize() const")]
+		public int MinimumSectionSize() {
+			return ProxyQHeaderView().MinimumSectionSize();
+		}
+		[SmokeMethod("setMinimumSectionSize(int)")]
+		public void SetMinimumSectionSize(int size) {
+			ProxyQHeaderView().SetMinimumSectionSize(size);
 		}
 		[SmokeMethod("defaultAlignment() const")]
 		public int DefaultAlignment() {
@@ -246,6 +268,10 @@ namespace Qyoto {
 		[SmokeMethod("setOffset(int)")]
 		public void SetOffset(int offset) {
 			ProxyQHeaderView().SetOffset(offset);
+		}
+		[SmokeMethod("setOffsetToSectionPosition(int)")]
+		public void SetOffsetToSectionPosition(int visualIndex) {
+			ProxyQHeaderView().SetOffsetToSectionPosition(visualIndex);
 		}
 		[SmokeMethod("headerDataChanged(Qt::Orientation, int, int)")]
 		public void HeaderDataChanged(Qt.Orientation orientation, int logicalFirst, int logicalLast) {
@@ -411,5 +437,7 @@ namespace Qyoto {
 		void SectionHandleDoubleClicked(int logicalIndex);
 		[Q_SIGNAL("void sectionAutoResize(int, QHeaderView::ResizeMode)")]
 		void SectionAutoResize(int logicalIndex, QHeaderView.ResizeMode mode);
+		[Q_SIGNAL("void geometriesChanged()")]
+		void GeometriesChanged();
 	}
 }

@@ -107,6 +107,10 @@ namespace Qyoto {
 		public int ColumnWidth(int column) {
 			return ProxyQTreeView().ColumnWidth(column);
 		}
+		[SmokeMethod("setColumnWidth(int, int)")]
+		public void SetColumnWidth(int column, int width) {
+			ProxyQTreeView().SetColumnWidth(column,width);
+		}
 		[SmokeMethod("columnAt(int) const")]
 		public int ColumnAt(int x) {
 			return ProxyQTreeView().ColumnAt(x);
@@ -134,6 +138,22 @@ namespace Qyoto {
 		[SmokeMethod("setExpanded(const QModelIndex&, bool)")]
 		public void SetExpanded(QModelIndex index, bool expand) {
 			ProxyQTreeView().SetExpanded(index,expand);
+		}
+		[SmokeMethod("setSortingEnabled(bool)")]
+		public void SetSortingEnabled(bool enable) {
+			ProxyQTreeView().SetSortingEnabled(enable);
+		}
+		[SmokeMethod("isSortingEnabled() const")]
+		public bool IsSortingEnabled() {
+			return ProxyQTreeView().IsSortingEnabled();
+		}
+		[SmokeMethod("setAnimationsEnabled(bool)")]
+		public void SetAnimationsEnabled(bool enable) {
+			ProxyQTreeView().SetAnimationsEnabled(enable);
+		}
+		[SmokeMethod("isAnimationsEnabled() const")]
+		public bool IsAnimationsEnabled() {
+			return ProxyQTreeView().IsAnimationsEnabled();
 		}
 		[SmokeMethod("keyboardSearch(const QString&)")]
 		public new void KeyboardSearch(string search) {
@@ -202,6 +222,14 @@ namespace Qyoto {
 		[SmokeMethod("selectAll()")]
 		public new void SelectAll() {
 			ProxyQTreeView().SelectAll();
+		}
+		[SmokeMethod("expandAll()")]
+		public void ExpandAll() {
+			ProxyQTreeView().ExpandAll();
+		}
+		[SmokeMethod("collapseAll()")]
+		public void CollapseAll() {
+			ProxyQTreeView().CollapseAll();
 		}
 		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
@@ -275,6 +303,10 @@ namespace Qyoto {
 		protected new void PaintEvent(QPaintEvent arg1) {
 			ProxyQTreeView().PaintEvent(arg1);
 		}
+		[SmokeMethod("drawTree(QPainter*, const QRegion&) const")]
+		protected void DrawTree(QPainter painter, QRegion region) {
+			ProxyQTreeView().DrawTree(painter,region);
+		}
 		[SmokeMethod("drawRow(QPainter*, const QStyleOptionViewItem&, const QModelIndex&) const")]
 		protected virtual void DrawRow(QPainter painter, QStyleOptionViewItem options, QModelIndex index) {
 			ProxyQTreeView().DrawRow(painter,options,index);
@@ -294,6 +326,14 @@ namespace Qyoto {
 		[SmokeMethod("mouseDoubleClickEvent(QMouseEvent*)")]
 		protected new void MouseDoubleClickEvent(QMouseEvent arg1) {
 			ProxyQTreeView().MouseDoubleClickEvent(arg1);
+		}
+		[SmokeMethod("mouseMoveEvent(QMouseEvent*)")]
+		protected new void MouseMoveEvent(QMouseEvent arg1) {
+			ProxyQTreeView().MouseMoveEvent(arg1);
+		}
+		[SmokeMethod("keyPressEvent(QKeyEvent*)")]
+		protected new void KeyPressEvent(QKeyEvent arg1) {
+			ProxyQTreeView().KeyPressEvent(arg1);
 		}
 		[SmokeMethod("updateGeometries()")]
 		protected new void UpdateGeometries() {

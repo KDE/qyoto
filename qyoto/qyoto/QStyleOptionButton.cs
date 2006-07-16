@@ -25,6 +25,12 @@ namespace Qyoto {
 			return (IQStyleOptionButtonProxy) _staticInterceptor;
 		}
 
+		public enum StyleOptionType {
+			Type = QStyleOption.OptionType.SO_Button,
+		}
+		public enum StyleOptionVersion {
+			Version = 1,
+		}
 		public enum ButtonFeature {
 			None = 0x00,
 			Flat = 0x01,
@@ -32,10 +38,6 @@ namespace Qyoto {
 			DefaultButton = 0x04,
 			AutoDefaultButton = 0x08,
 		}
-		public const int Type = (int) QStyleOption.OptionType.SO_Button;
-
-		public const int Version = 1;
-
 		public QStyleOptionButton() : this((Type) null) {
 			CreateProxy();
 			NewQStyleOptionButton();

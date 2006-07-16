@@ -40,8 +40,6 @@ namespace Qyoto {
 			return (IQTimeProxy) _staticInterceptor;
 		}
 
-		public const int NullTime = -1;
-
 		public QTime() : this((Type) null) {
 			CreateProxy();
 			NewQTime();

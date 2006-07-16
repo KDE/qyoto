@@ -25,6 +25,12 @@ namespace Qyoto {
 			return (IQStyleOptionHeaderProxy) _staticInterceptor;
 		}
 
+		public enum StyleOptionType {
+			Type = QStyleOption.OptionType.SO_Header,
+		}
+		public enum StyleOptionVersion {
+			Version = 1,
+		}
 		public enum SectionPosition {
 			Beginning = 0,
 			Middle = 1,
@@ -42,10 +48,6 @@ namespace Qyoto {
 			SortUp = 1,
 			SortDown = 2,
 		}
-		public const int Type = (int) QStyleOption.OptionType.SO_Header;
-
-		public const int Version = 1;
-
 		public QStyleOptionHeader() : this((Type) null) {
 			CreateProxy();
 			NewQStyleOptionHeader();

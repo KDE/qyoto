@@ -648,6 +648,22 @@ namespace Qyoto {
 		public char Exponential() {
 			return ProxyQLocale().Exponential();
 		}
+		[SmokeMethod("monthName(int, QLocale::FormatType) const")]
+		public string MonthName(int arg1, QLocale.FormatType format) {
+			return ProxyQLocale().MonthName(arg1,format);
+		}
+		[SmokeMethod("monthName(int) const")]
+		public string MonthName(int arg1) {
+			return ProxyQLocale().MonthName(arg1);
+		}
+		[SmokeMethod("dayName(int, QLocale::FormatType) const")]
+		public string DayName(int arg1, QLocale.FormatType format) {
+			return ProxyQLocale().DayName(arg1,format);
+		}
+		[SmokeMethod("dayName(int) const")]
+		public string DayName(int arg1) {
+			return ProxyQLocale().DayName(arg1);
+		}
 		[SmokeMethod("operator==(const QLocale&) const")]
 		public static bool operator==(QLocale lhs, QLocale other) {
 			return StaticQLocale().op_equals(lhs,other);

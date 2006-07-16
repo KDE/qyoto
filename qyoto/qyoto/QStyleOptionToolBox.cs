@@ -25,10 +25,12 @@ namespace Qyoto {
 			return (IQStyleOptionToolBoxProxy) _staticInterceptor;
 		}
 
-		public const int Type = (int) QStyleOption.OptionType.SO_ToolBox;
-
-		public const int Version = 1;
-
+		public enum StyleOptionType {
+			Type = QStyleOption.OptionType.SO_ToolBox,
+		}
+		public enum StyleOptionVersion {
+			Version = 1,
+		}
 		public QStyleOptionToolBox() : this((Type) null) {
 			CreateProxy();
 			NewQStyleOptionToolBox();

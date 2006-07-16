@@ -132,6 +132,14 @@ namespace Qyoto {
 		public QSize ScaledSize() {
 			return ProxyQImageReader().ScaledSize();
 		}
+		[SmokeMethod("setQuality(int)")]
+		public void SetQuality(int quality) {
+			ProxyQImageReader().SetQuality(quality);
+		}
+		[SmokeMethod("quality() const")]
+		public int Quality() {
+			return ProxyQImageReader().Quality();
+		}
 		[SmokeMethod("setScaledClipRect(const QRect&)")]
 		public void SetScaledClipRect(QRect rect) {
 			ProxyQImageReader().SetScaledClipRect(rect);
@@ -195,6 +203,10 @@ namespace Qyoto {
 		[SmokeMethod("errorString() const")]
 		public string ErrorString() {
 			return ProxyQImageReader().ErrorString();
+		}
+		[SmokeMethod("supportsOption(QImageIOHandler::ImageOption) const")]
+		public bool SupportsOption(QImageIOHandler.ImageOption option) {
+			return ProxyQImageReader().SupportsOption(option);
 		}
 		[SmokeMethod("imageFormat(const QString&)")]
 		public static QByteArray ImageFormat(string fileName) {

@@ -41,6 +41,7 @@ namespace Qyoto {
 			PainterPaths = 0x00000200,
 			Antialiasing = 0x00000400,
 			BrushStroke = 0x00000800,
+			ConstantOpacity = 0x00001000,
 			PaintOutsidePaintEvent = 0x20000000,
 			AllFeatures = 0xffffffff,
 		}
@@ -57,6 +58,7 @@ namespace Qyoto {
 			DirtyHints = 0x0200,
 			DirtyCompositionMode = 0x0400,
 			DirtyClipEnabled = 0x0800,
+			DirtyOpacity = 0x1000,
 			AllDirty = 0xffff,
 		}
 		public enum PolygonDrawMode {

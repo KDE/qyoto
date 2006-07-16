@@ -31,6 +31,16 @@ namespace Qyoto {
 			AlignSuperScript = 1,
 			AlignSubScript = 2,
 		}
+		public enum UnderlineStyle {
+			NoUnderline = 0,
+			SingleUnderline = 1,
+			DashUnderline = 2,
+			DotLine = 3,
+			DashDotLine = 4,
+			DashDotDotLine = 5,
+			WaveUnderline = 6,
+			SpellCheckUnderline = 7,
+		}
 		public QTextCharFormat() : this((Type) null) {
 			CreateProxy();
 			NewQTextCharFormat();
@@ -122,6 +132,14 @@ namespace Qyoto {
 		[SmokeMethod("fontFixedPitch() const")]
 		public bool FontFixedPitch() {
 			return ProxyQTextCharFormat().FontFixedPitch();
+		}
+		[SmokeMethod("setUnderlineStyle(QTextCharFormat::UnderlineStyle)")]
+		public void SetUnderlineStyle(QTextCharFormat.UnderlineStyle style) {
+			ProxyQTextCharFormat().SetUnderlineStyle(style);
+		}
+		[SmokeMethod("underlineStyle() const")]
+		public QTextCharFormat.UnderlineStyle underlineStyle() {
+			return ProxyQTextCharFormat().underlineStyle();
 		}
 		[SmokeMethod("setVerticalAlignment(QTextCharFormat::VerticalAlignment)")]
 		public void SetVerticalAlignment(QTextCharFormat.VerticalAlignment alignment) {

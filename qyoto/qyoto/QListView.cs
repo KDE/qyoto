@@ -116,6 +116,14 @@ namespace Qyoto {
 		public int Spacing() {
 			return ProxyQListView().Spacing();
 		}
+		[SmokeMethod("setBatchSize(int)")]
+		public void SetBatchSize(int batchSize) {
+			ProxyQListView().SetBatchSize(batchSize);
+		}
+		[SmokeMethod("batchSize() const")]
+		public int BatchSize() {
+			return ProxyQListView().BatchSize();
+		}
 		[SmokeMethod("setGridSize(const QSize&)")]
 		public void SetGridSize(QSize size) {
 			ProxyQListView().SetGridSize(size);

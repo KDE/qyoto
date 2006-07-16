@@ -84,6 +84,10 @@ namespace Qyoto {
 		public QPainter.CompositionMode CompositionMode() {
 			return ProxyQPaintEngineState().CompositionMode();
 		}
+		[SmokeMethod("opacity() const")]
+		public double Opacity() {
+			return ProxyQPaintEngineState().Opacity();
+		}
 		[SmokeMethod("painter() const")]
 		public QPainter Painter() {
 			return ProxyQPaintEngineState().Painter();

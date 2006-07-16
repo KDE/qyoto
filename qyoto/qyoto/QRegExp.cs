@@ -36,6 +36,7 @@ namespace Qyoto {
 			RegExp = 0,
 			Wildcard = 1,
 			FixedString = 2,
+			RegExp2 = 3,
 		}
 		public enum CaretMode {
 			CaretAtZero = 0,

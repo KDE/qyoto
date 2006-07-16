@@ -25,10 +25,12 @@ namespace Qyoto {
 			return (IQStyleOptionDockWidgetProxy) _staticInterceptor;
 		}
 
-		public const int Type = (int) QStyleOption.OptionType.SO_DockWidget;
-
-		public const int Version = 1;
-
+		public enum StyleOptionType {
+			Type = QStyleOption.OptionType.SO_DockWidget,
+		}
+		public enum StyleOptionVersion {
+			Version = 1,
+		}
 		public QStyleOptionDockWidget() : this((Type) null) {
 			CreateProxy();
 			NewQStyleOptionDockWidget();
