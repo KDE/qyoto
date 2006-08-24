@@ -20,6 +20,7 @@
 #endif
 #include <stdio.h>
 
+#include <QtGui/qapplication.h>
 #include <QtCore/qstring.h>
 #include <QtCore/qhash.h>
 #include <QtCore/qobject.h>
@@ -949,8 +950,10 @@ GetMocArgumentsNumber(QString member, int& number)
 //	printf("argStr: %s\n", (const char*)argStr.toLatin1());
 	QStringList args = argStr.split(",");
 	number = args.size();
-	if (number == 1 && args[0] == "")
+	if (number == 1 && args[0] == "") {
 		number = 0;
+		return 0;
+	}
 	MocArgument * mocargs = new MocArgument[number];
 	int i = 0;
 	for (QStringList::Iterator it = args.begin(); it != args.end(); ++it) {
@@ -1012,6 +1015,7 @@ SignalEmit(char * signature, void * obj, Smoke::StackItem * sp, int items)
 }
 
 QMetaObject* parent_meta_object(void* obj) {
+printf("In make_metaObject()\n");
 	smokeqyoto_object* o = value_obj_info(obj);
 	Smoke::Index nameId = o->smoke->idMethodName("metaObject");
 	Smoke::Index parent_index = o->smoke->classes[o->classId].parents;
@@ -1052,7 +1056,7 @@ void* make_metaObject(void* obj, const char* stringdata, int stringdata_count, c
 	QMetaObject* meta = new QMetaObject;
 	*meta = tmp;
 
-#ifdef DEBUG
+// #ifdef DEBUG
 	printf("make_metaObject() superdata: %p\n", meta->d.superdata);
 	printf("stringdata: ");
 	for (int j = 0; j < stringdata_count; j++) {
@@ -1069,7 +1073,7 @@ void* make_metaObject(void* obj, const char* stringdata, int stringdata_count, c
 		printf("%d, ", my_data[i]);
 	}
 	printf("\n");
-#endif
+// #endif
 	
 	// create smoke object
 	smokeqyoto_object* m = (smokeqyoto_object*)malloc(sizeof(smokeqyoto_object));
@@ -1154,6 +1158,11 @@ Init_qyoto()
         classStringName = className.toLatin1();
         classname.insert(i, strdup(classStringName.constData()));
     }
+}
+
+void
+DeleteQApp() {
+	delete qApp;
 }
 
 }

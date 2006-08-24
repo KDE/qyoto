@@ -1,3 +1,10 @@
+2006-08-24  Richard Dale  <rdale@foton.es>
+
+	* Applied patches from Arno Rehn:
+		* Prevent crash when a custom slot was defined with no arguments
+		* Fix crash when on application exit by deleting the qApp
+		  QApplication instance
+
 2006-07-16  Richard Dale  <rdale@foton.es>
 
 	* Regenerated the C# sources from the Qt 4.2 headers
