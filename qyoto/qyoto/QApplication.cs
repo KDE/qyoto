@@ -416,7 +416,9 @@ namespace Qyoto {
 		}
 		[SmokeMethod("exec()")]
 		public static new int Exec() {
-			return StaticQApplication().Exec();
+			int ret = StaticQApplication().Exec();
+			Qyoto.DeleteQApp();
+			return ret;
 		}
 		[SmokeMethod("setQuitOnLastWindowClosed(bool)")]
 		public static void SetQuitOnLastWindowClosed(bool quit) {
