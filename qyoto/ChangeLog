@@ -1,3 +1,12 @@
+2006-09-11  Richard Dale  <rdale@foton.es>
+
+	* Applied patches from Arno Rehn:
+		* Fixed a bug in emitting signals where the arguments were being
+		  wrongly copied from the C# argument array to the smoke stack
+		  with an 'off by one' error.
+		* A Qt.dll is now built by the makefile instead of all the sources
+		  always all being compiled.
+
 2006-08-24  Richard Dale  <rdale@foton.es>
 
 	* Applied patches from Arno Rehn:

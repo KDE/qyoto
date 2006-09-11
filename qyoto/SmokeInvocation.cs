@@ -735,34 +735,34 @@ namespace Qyoto {
 				for (int i = 0; i < callMessage.ArgCount; i++) {
 					if (callMessage.Args[i] == null) {
 						unsafe {
-							stack[i+1].s_class = (IntPtr) 0;
+							stack[i].s_class = (IntPtr) 0;
 						}
 					} else if (types[i] == typeof(bool)) {
-						stack[i+1].s_bool = (bool) callMessage.Args[i];
+						stack[i].s_bool = (bool) callMessage.Args[i];
 					} else if (types[i] == typeof(sbyte)) {
-						stack[i+1].s_char = (sbyte) callMessage.Args[i];
+						stack[i].s_char = (sbyte) callMessage.Args[i];
 					} else if (types[i] == typeof(byte)) {
-						stack[i+1].s_uchar = (byte) callMessage.Args[i];
+						stack[i].s_uchar = (byte) callMessage.Args[i];
 					} else if (types[i] == typeof(short)) {
-						stack[i+1].s_short = (short) callMessage.Args[i];
+						stack[i].s_short = (short) callMessage.Args[i];
 					} else if (types[i] == typeof(ushort)) {
-						stack[i+1].s_ushort = (ushort) callMessage.Args[i];
+						stack[i].s_ushort = (ushort) callMessage.Args[i];
 					} else if (types[i] == typeof(int) || types[i].IsEnum) {
-						stack[i+1].s_int = (int) callMessage.Args[i];
+						stack[i].s_int = (int) callMessage.Args[i];
 					} else if (types[i] == typeof(uint)) {
-						stack[i+1].s_uint = (uint) callMessage.Args[i];
+						stack[i].s_uint = (uint) callMessage.Args[i];
 					} else if (types[i] == typeof(long)) {
-						stack[i+1].s_long = (long) callMessage.Args[i];
+						stack[i].s_long = (long) callMessage.Args[i];
 					} else if (types[i] == typeof(ulong)) {
-						stack[i+1].s_ulong = (ulong) callMessage.Args[i];
+						stack[i].s_ulong = (ulong) callMessage.Args[i];
 					} else if (types[i] == typeof(float)) {
-						stack[i+1].s_float = (float) callMessage.Args[i];
+						stack[i].s_float = (float) callMessage.Args[i];
 					} else if (types[i] == typeof(double)) {
-						stack[i+1].s_double = (double) callMessage.Args[i];
+						stack[i].s_double = (double) callMessage.Args[i];
 					} else if (types[i] == typeof(string)) {
-						stack[i+1].s_class = (IntPtr) GCHandle.Alloc(callMessage.Args[i]);
+						stack[i].s_class = (IntPtr) GCHandle.Alloc(callMessage.Args[i]);
 					} else {
-						stack[i+1].s_class = (IntPtr) GCHandle.Alloc(callMessage.Args[i]);
+						stack[i].s_class = (IntPtr) GCHandle.Alloc(callMessage.Args[i]);
 					}
 				}
 			}

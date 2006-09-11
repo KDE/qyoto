@@ -4,13 +4,16 @@ doit.exe:	doit.cs qyoto/QFont.cs SmokeInvocation.cs
 	mcs -unsafe -debug -o doit.exe doit.cs qyoto/QFont.cs SmokeInvocation.cs
 
 hello.exe: Hello.cs SmokeInvocation.cs
-	mcs -unsafe -debug -out:hello.exe Hello.cs SmokeInvocation.cs qyoto/*.cs
+	mcs -unsafe -debug -out:hello.exe Hello.cs SmokeInvocation.cs qyoto/*.cs dbus/*.cs
 
 qstringtest.exe: QStringTest.cs SmokeInvocation.cs
 	mcs -unsafe -debug -out:qstringtest.exe QStringTest.cs SmokeInvocation.cs qyoto/*.cs
 
 t1.exe: t1.cs SmokeInvocation.cs
 	mcs -unsafe -debug -out:t1.exe t1.cs SmokeInvocation.cs qyoto/*.cs
+
+qyoto.dll: SmokeInvocation.cs
+	mcs -unsafe -debug -out:qyoto.dll -target:library SmokeInvocation.cs qyoto/*.cs dbus/*.cs
 
 libqyoto.so:	qyoto.cpp handlers.cpp
 	gcc -shared -o libqyoto.so \
