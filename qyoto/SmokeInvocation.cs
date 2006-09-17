@@ -66,7 +66,7 @@ namespace Qyoto {
 		delegate void SetIntPtr(IntPtr instance, IntPtr ptr);
 		delegate void FromIntPtr(IntPtr ptr);
 		delegate IntPtr CreateInstanceFn(string className);
-		delegate void InvokeCustomSlotFn(IntPtr obj, string slot, IntPtr stack);
+		delegate void InvokeCustomSlotFn(IntPtr obj, string slot, IntPtr stack, IntPtr ret);
 		delegate bool IsSmokeClassFn(IntPtr obj);
 		delegate IntPtr GetIntPtrFromString(string str);
 		delegate string GetStringFromIntPtr(IntPtr ptr);
@@ -428,7 +428,7 @@ namespace Qyoto {
 			return;
 		}
 
-		static public void InvokeCustomSlot(IntPtr obj, string slotname, IntPtr stack) {
+		static public void InvokeCustomSlot(IntPtr obj, string slotname, IntPtr stack, IntPtr ret) {
 			QObject qobj = (QObject) ((GCHandle)obj).Target;
 			string className = qobj.GetType().ToString();
 #if DEBUG
@@ -481,7 +481,41 @@ namespace Qyoto {
 				}
 			}
 			
-			slot.Invoke(qobj, args);
+			object returnValue = slot.Invoke(qobj, args);
+			Type returnType = slot.ReturnType;
+			
+			unsafe {
+				StackItem* retval = (StackItem*) ret;
+				if (returnType == typeof(void)) {
+					;
+				} else if (returnType == typeof(bool)) {
+					retval->s_bool = (bool) returnValue;
+				} else if (returnType == typeof(sbyte)) {
+					retval->s_char = (sbyte) returnValue;
+				} else if (returnType == typeof(byte)) {
+					retval->s_uchar = (byte) returnValue;
+				} else if (returnType == typeof(short)) {
+					retval->s_short = (short) returnValue;
+				} else if (returnType == typeof(ushort)) {
+					retval->s_ushort = (ushort) returnValue;
+				} else if (returnType == typeof(int) || returnType.IsEnum) {
+					retval->s_int = (int) returnValue;
+				} else if (returnType == typeof(uint)) {
+					retval->s_uint = (uint) returnValue;
+				} else if (returnType == typeof(long)) {
+					retval->s_long = (long) returnValue;
+				} else if (returnType == typeof(ulong)) {
+					retval->s_ulong = (ulong) returnValue;
+				} else if (returnType == typeof(float)) {
+					retval->s_float = (float) returnValue;
+				} else if (returnType == typeof(double)) {
+					retval->s_double = (double) returnValue;
+				} else if (returnType == typeof(string)) {
+					retval->s_class = (IntPtr) GCHandle.Alloc(returnValue);
+				} else {
+					retval->s_class = (IntPtr) GCHandle.Alloc(returnValue);
+				}
+			}
 		}
 
 		static private FromIntPtr freeGCHandle = new FromIntPtr(FreeGCHandle);

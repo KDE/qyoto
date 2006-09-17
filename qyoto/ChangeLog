@@ -1,3 +1,10 @@
+2006-09-17  Richard Dale  <rdale@foton.es>
+
+	* Applied patches from Arno Rehn:
+		* Added the code from QtRuby to marshall slot return types
+		* TODO: add code to parse the return type in a Q_SLOT() attribute, and add it
+		  to the slot's definition in the QMetaObject
+
 2006-09-11  Richard Dale  <rdale@foton.es>
 
 	* Applied patches from Arno Rehn:

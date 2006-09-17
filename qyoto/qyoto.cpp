@@ -83,12 +83,193 @@ extern "C" {
 extern void * set_obj_info(const char * className, smokeqyoto_object * o);
 };
 
+extern void smokeStackToQtStack(Smoke::Stack stack, void ** o, int items, MocArgument* args);
+extern void smokeStackFromQtStack(Smoke::Stack stack, void ** _o, int items, MocArgument* args);
+
 extern bool isDerivedFromByName(Smoke *smoke, const char *className, const char *baseClassName);
 extern void mapPointer(void * obj, smokeqyoto_object *o, Smoke::Index classId, void *lastptr);
 extern "C" int qt_metacall(void* obj, int _c, int _id, void* _o);
 
 extern TypeHandler Qt_handlers[];
 void install_handlers(TypeHandler *);
+
+void
+smokeStackToQtStack(Smoke::Stack stack, void ** o, int items, MocArgument* args)
+{
+	for (int i = 0; i < items; i++) {
+		Smoke::StackItem *si = stack + i;
+		//printf("si->s_int: %d, i: %d\n", si->s_int, i);
+		switch(args[i].argType) {
+		case xmoc_bool:
+			o[i] = &si->s_bool;
+			break;
+		case xmoc_int:
+			o[i] = &si->s_int;
+			break;
+		case xmoc_double:
+			o[i] = &si->s_double;
+			break;
+		case xmoc_charstar:
+			o[i] = &si->s_voidp;
+			break;
+		case xmoc_QString:
+			o[i] = si->s_voidp;
+			break;
+		default:
+		{
+			const SmokeType &t = args[i].st;
+			void *p;
+			switch(t.elem()) {
+			case Smoke::t_bool:
+				p = &si->s_bool;
+				break;
+			case Smoke::t_char:
+				p = &si->s_char;
+				break;
+			case Smoke::t_uchar:
+				p = &si->s_uchar;
+				break;
+			case Smoke::t_short:
+				p = &si->s_short;
+				break;
+			case Smoke::t_ushort:
+				p = &si->s_ushort;
+				break;
+			case Smoke::t_int:
+				p = &si->s_int;
+				break;
+			case Smoke::t_uint:
+				p = &si->s_uint;
+				break;
+			case Smoke::t_long:
+				p = &si->s_long;
+				break;
+			case Smoke::t_ulong:
+				p = &si->s_ulong;
+				break;
+			case Smoke::t_float:
+				p = &si->s_float;
+				break;
+			case Smoke::t_double:
+				p = &si->s_double;
+				break;
+			case Smoke::t_enum:
+			{
+				// allocate a new enum value
+				Smoke::EnumFn fn = SmokeClass(t).enumFn();
+				if (!fn) {
+					printf("Unknown enumeration %s\n", t.name());
+					p = new int((int)si->s_enum);
+					break;
+				}
+				Smoke::Index id = t.typeId();
+				(*fn)(Smoke::EnumNew, id, p, si->s_enum);
+				(*fn)(Smoke::EnumFromLong, id, p, si->s_enum);
+				// FIXME: MEMORY LEAK
+				break;
+			}
+			case Smoke::t_class:
+			case Smoke::t_voidp:
+				if (strchr(t.name(), '*') != 0) {
+					p = &si->s_voidp;
+				} else {
+					p = si->s_voidp;
+				}
+				break;
+			default:
+				p = 0;
+				break;
+			}
+			o[i] = p;
+		}
+		}
+	}
+}
+
+void
+smokeStackFromQtStack(Smoke::Stack stack, void ** _o, int items, MocArgument* args)
+{
+	for (int i = 0; i < items; i++) {
+		void *o = _o[i];
+		switch(args[i].argType) {
+		case xmoc_bool:
+		stack[i].s_bool = *(bool*)o;
+		break;
+		case xmoc_int:
+		stack[i].s_int = *(int*)o;
+		break;
+		case xmoc_double:
+		stack[i].s_double = *(double*)o;
+		break;
+		case xmoc_charstar:
+		stack[i].s_voidp = o;
+		break;
+		case xmoc_QString:
+		stack[i].s_voidp = o;
+		break;
+		default:	// case xmoc_ptr:
+		{
+			const SmokeType &t = args[i].st;
+			void *p = o;
+			switch(t.elem()) {
+			case Smoke::t_bool:
+			stack[i].s_bool = **(bool**)o;
+			break;
+			case Smoke::t_char:
+			stack[i].s_char = **(char**)o;
+			break;
+			case Smoke::t_uchar:
+			stack[i].s_uchar = **(unsigned char**)o;
+			break;
+			case Smoke::t_short:
+			stack[i].s_short = **(short**)p;
+			break;
+			case Smoke::t_ushort:
+			stack[i].s_ushort = **(unsigned short**)p;
+			break;
+			case Smoke::t_int:
+			stack[i].s_int = **(int**)p;
+			break;
+			case Smoke::t_uint:
+			stack[i].s_uint = **(unsigned int**)p;
+			break;
+			case Smoke::t_long:
+			stack[i].s_long = **(long**)p;
+			break;
+			case Smoke::t_ulong:
+			stack[i].s_ulong = **(unsigned long**)p;
+			break;
+			case Smoke::t_float:
+			stack[i].s_float = **(float**)p;
+			break;
+			case Smoke::t_double:
+			stack[i].s_double = **(double**)p;
+			break;
+			case Smoke::t_enum:
+			{
+				Smoke::EnumFn fn = SmokeClass(t).enumFn();
+				if (!fn) {
+					printf("Unknown enumeration %s\n", t.name());
+					stack[i].s_enum = **(int**)p;
+					break;
+				}
+				Smoke::Index id = t.typeId();
+				(*fn)(Smoke::EnumToLong, id, p, stack[i].s_enum);
+			}
+			break;
+			case Smoke::t_class:
+			case Smoke::t_voidp:
+				if (strchr(t.name(), '*') != 0) {
+					stack[i].s_voidp = *(void **)p;
+				} else {
+					stack[i].s_voidp = p;
+				}
+			break;
+			}
+		}
+		}
+	}
+}
 
 smokeqyoto_object *value_obj_info(void * qyoto_value) {  // ptr on success, null on fail
     smokeqyoto_object * o = (smokeqyoto_object*) (*GetSmokeObject)(qyoto_value);
@@ -454,99 +635,9 @@ public:
 	_called = true;
 
 	void** o = new void*[_items + 1];
-    
-	for(int i = 0; i < _items; i++) {
-	    
-    Smoke::StackItem *si = _stack + i;
-    switch(_args[i].argType) {
-    case xmoc_bool:
-      o[i + 1] = &si->s_bool;
-      break;
-    case xmoc_int:
-      o[i + 1] = &si->s_int;
-      break;
-    case xmoc_double:
-      o[i + 1] = &si->s_double;
-      break;
-    case xmoc_charstar:
-      o[i + 1] = &si->s_voidp;
-      break;
-    case xmoc_QString:
-      o[i + 1] = si->s_voidp;
-      break;
-    default:
-		{
-		    const SmokeType &t = _args[i].st;
-		    void *p;
-		    switch(t.elem()) {
-		      case Smoke::t_bool:
-			p = &si->s_bool;
-			break;
-		      case Smoke::t_char:
-			p = &si->s_char;
-			break;
-		      case Smoke::t_uchar:
-			p = &si->s_uchar;
-			break;
-		      case Smoke::t_short:
-			p = &si->s_short;
-			break;
-		      case Smoke::t_ushort:
-			p = &si->s_ushort;
-			break;
-		      case Smoke::t_int:
-			p = &si->s_int;
-			break;
-		      case Smoke::t_uint:
-			p = &si->s_uint;
-			break;
-		      case Smoke::t_long:
-			p = &si->s_long;
-			break;
-		      case Smoke::t_ulong:
-			p = &si->s_ulong;
-			break;
-		      case Smoke::t_float:
-			p = &si->s_float;
-			break;
-		      case Smoke::t_double:
-			p = &si->s_double;
-			break;
-		      case Smoke::t_enum:
-			{
-			    // allocate a new enum value
-			    Smoke::EnumFn fn = SmokeClass(t).enumFn();
-			    if(!fn) {
-//				rb_warning("Unknown enumeration %s\n", t.name());
-				p = new int((int)si->s_enum);
-				break;
-			    }
-			    Smoke::Index id = t.typeId();
-			    (*fn)(Smoke::EnumNew, id, p, si->s_enum);
-			    (*fn)(Smoke::EnumFromLong, id, p, si->s_enum);
-			    // FIXME: MEMORY LEAK
-			}
-			break;
-		      case Smoke::t_class:
-		      case Smoke::t_voidp:
-				if (strchr(t.name(), '*') != 0) {
-					p = &si->s_voidp;
-				} else {
-					p = si->s_voidp;
-				}
-			break;
-		      default:
-			p = 0;
-			break;
-		    }
-//		    static_QUType_ptr.set(po, p);
-		}
-	    }
-	}
-
-
-  _qobj->metaObject()->activate(_qobj, _id, o);
-  delete[] o;
+	smokeStackToQtStack(_stack, o + 1, _items, _args);
+  	_qobj->metaObject()->activate(_qobj, _id, o);
+  	delete[] o;
     }
     void next() {
 	int oldcur = _cur;
@@ -562,6 +653,46 @@ public:
 	_cur = oldcur;
     }
     bool cleanup() { return true; }
+};
+
+class SlotReturnValue : public Marshall {
+    MocArgument *	_replyType;
+    Smoke::Stack _stack;
+	Smoke::StackItem * _result;
+public:
+	SlotReturnValue(void ** o, Smoke::StackItem * result, MocArgument * replyType) 
+	{
+		_result = result;
+		_replyType = replyType;
+		_stack = new Smoke::StackItem[1];
+		Marshall::HandlerFn fn = getMarshallFn(type());
+		(*fn)(this);
+		smokeStackToQtStack(_stack, o, 1, _replyType);
+    }
+
+    SmokeType type() { 
+		return _replyType[0].st; 
+	}
+    Marshall::Action action() { return Marshall::FromObject; }
+    Smoke::StackItem &item() { return _stack[0]; }
+    Smoke::StackItem &var() {
+    	return *_result;
+    }
+	
+	void unsupported() 
+	{
+		printf("Cannot handle '%s' as slot reply-type", type().name());
+    }
+	Smoke *smoke() { return type().smoke(); }
+    
+	void next() {}
+    
+	bool cleanup() { return false; }
+	
+	~SlotReturnValue() {
+		// Memory leak for now..
+//		delete[] _stack;
+	}
 };
 
 class InvokeSlot : public Marshall {
@@ -586,91 +717,17 @@ public:
 		qFatal("Cannot handle '%s' as slot argument\n", type().name());
 	}
 	void copyArguments() {
-	for (int i = 0; i < _items; i++) {
-		void *o = _o[i + 1];
-		switch(_args[i].argType) {
-		case xmoc_bool:
-		_stack[i].s_bool = *(bool*)o;
-		break;
-		case xmoc_int:
-		_stack[i].s_int = *(int*)o;
-		break;
-		case xmoc_double:
-		_stack[i].s_double = *(double*)o;
-		break;
-		case xmoc_charstar:
-		_stack[i].s_voidp = o;
-		break;
-		case xmoc_QString:
-		_stack[i].s_voidp = o;
-		break;
-		default:	// case xmoc_ptr:
-		{
-			const SmokeType &t = _args[i].st;
-			void *p = o;
-			switch(t.elem()) {
-			case Smoke::t_bool:
-			_stack[i].s_bool = **(bool**)o;
-			break;
-			case Smoke::t_char:
-			_stack[i].s_char = **(char**)o;
-			break;
-			case Smoke::t_uchar:
-			_stack[i].s_uchar = **(unsigned char**)o;
-			break;
-			case Smoke::t_short:
-			_stack[i].s_short = **(short**)p;
-			break;
-			case Smoke::t_ushort:
-			_stack[i].s_ushort = **(unsigned short**)p;
-			break;
-			case Smoke::t_int:
-			_stack[i].s_int = **(int**)p;
-			break;
-			case Smoke::t_uint:
-			_stack[i].s_uint = **(unsigned int**)p;
-			break;
-			case Smoke::t_long:
-			_stack[i].s_long = **(long**)p;
-			break;
-			case Smoke::t_ulong:
-			_stack[i].s_ulong = **(unsigned long**)p;
-			break;
-			case Smoke::t_float:
-			_stack[i].s_float = **(float**)p;
-			break;
-			case Smoke::t_double:
-			_stack[i].s_double = **(double**)p;
-			break;
-			case Smoke::t_enum:
-			{
-				Smoke::EnumFn fn = SmokeClass(t).enumFn();
-				if (!fn) {
-					qWarning("Unknown enumeration %s\n", t.name());
-					_stack[i].s_enum = **(int**)p;
-					break;
-				}
-				Smoke::Index id = t.typeId();
-				(*fn)(Smoke::EnumToLong, id, p, _stack[i].s_enum);
-			}
-			break;
-			case Smoke::t_class:
-			case Smoke::t_voidp:
-				if (strchr(t.name(), '*') != 0) {
-					_stack[i].s_voidp = *(void **)p;
-				} else {
-					_stack[i].s_voidp = p;
-				}
-			break;
-			}
-		}
-		}
-	}
+		smokeStackFromQtStack(_stack, _o + 1, _items, _args);
 	}
 	void invokeSlot() {
 		if (_called) return;
 		_called = true;
-		(*InvokeCustomSlot)(_obj, _slotname, _sp);
+		Smoke::StackItem* ret = new Smoke::StackItem();
+		(*InvokeCustomSlot)(_obj, _slotname, _sp, ret);
+		
+		if (_args[0].argType != xmoc_void) {
+			SlotReturnValue r(_o, ret, _args);
+		}
 	}
 
 	void next() {
