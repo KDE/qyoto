@@ -20,7 +20,13 @@ namespace Qyoto
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern IntPtr make_metaObject(IntPtr parent, IntPtr stringdata, int stringdataCount, 
 											 IntPtr data, int dataCount);
-
+		
+		public struct CPPMethod {
+			public string signature;
+			public string type;
+			public MethodInfo mi;
+		}
+		
 		/// This Hashtable contains a list of classes with their Hashtables for slots. The class name is the key, the slot-hashtable the value.
 		public static Hashtable classes = new Hashtable();
     
@@ -37,11 +43,27 @@ namespace Qyoto
 			return IsSmokeClass(qobj.GetType());
 		}
 		
+		public static void GetCPPMethodInfo(string method, out string signature, out string type) {
+				/// now we need to get the return type, therfore we search first for the first space before the method name and everything before this is the return type
+				//Console.WriteLine(method);
+				int ix = method.IndexOf('(');
+				int ix_space = method.LastIndexOf(' ', ix);
+				
+				string return_type = "";
+				if (ix_space != -1) 
+					return_type = method.Substring(0, ix_space).Trim();
+				
+				string sig = method.Substring(return_type.Length).Trim();
+				//Console.WriteLine("Signature: {0}", sig);
+				signature = sig;
+				type = return_type;
+		}
+		
 		public static Hashtable GetSlotSignatures(Type t) {
 			/// Remove the old object if it already exists
 			classes.Remove(t.ToString());
 			
-			/// This Hashtable contains the slots of a class. The C++ type signature is the key, the appropriate C# MethodInfo the value.
+			/// This Hashtable contains the slots of a class. The C++ type signature is the key, the appropriate array with the MethodInfo, signature and return type the value.
 			Hashtable slots = new Hashtable();
 			
 			MethodInfo[] mis = t.GetMethods( BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic);
@@ -49,7 +71,10 @@ namespace Qyoto
 			foreach (MethodInfo mi in mis) {
 				object[] attributes = mi.GetCustomAttributes(typeof(Q_SLOT), false);
 				foreach (Q_SLOT attr in attributes) {
-					slots.Add(attr.Signature, mi);
+					CPPMethod cppinfo = new CPPMethod();
+					GetCPPMethodInfo(attr.signature, out cppinfo.signature, out cppinfo.type);
+					cppinfo.mi = mi;
+					slots.Add(cppinfo.signature, cppinfo);
 					break;
 				}
 			}
@@ -153,10 +178,10 @@ namespace Qyoto
 				MethodScriptable = 0x40
 			}
 		
-			void AddMethod(ArrayList array, string method, MethodFlags flags) {
+			void AddMethod(ArrayList array, string method, string type, MethodFlags flags) {
 				array.Add(handler[method]);                            // signature
 				array.Add(handler[Regex.Replace(method, "[^,]", "")]); // parameters
-				array.Add(handler[""]);                                // type
+				array.Add(handler[type]);				// type
 				array.Add(handler[""]);                                // tag
 				array.Add((uint)flags);                                 // flags
 			}
@@ -173,10 +198,10 @@ namespace Qyoto
 				});
 			
 				foreach (string entry in signals)
-					AddMethod(tmp, entry, MethodFlags.MethodSignal | MethodFlags.AccessProtected);
+					AddMethod(tmp, entry, "", MethodFlags.MethodSignal | MethodFlags.AccessProtected);
 				
-				foreach (string entry in slots)
-					AddMethod(tmp, entry, MethodFlags.MethodSlot | MethodFlags.AccessPublic);
+				foreach (CPPMethod entry in slots)
+					AddMethod(tmp, entry.signature, entry.type, MethodFlags.MethodSlot | MethodFlags.AccessPublic);
 				
 				tmp.Add((uint)0);
 				
@@ -207,10 +232,10 @@ namespace Qyoto
 		
 			ICollection slots;
 			if (slotTable != null)
-				slots = slotTable.Keys;
+				slots = slotTable.Values;
 			else {
 				// build slot table
-				slots = GetSlotSignatures(t).Keys;
+				slots = GetSlotSignatures(t).Values;
 			}
 
 			string[] signals = GetSignalSignatures(t);

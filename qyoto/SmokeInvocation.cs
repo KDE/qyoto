@@ -438,7 +438,7 @@ namespace Qyoto {
 			if (slotTable == null) {
 				slotTable = Qyoto.GetSlotSignatures(qobj.GetType());
 			}
-			MethodInfo slot = (MethodInfo)slotTable[slotname];
+			MethodInfo slot = ((Qyoto.CPPMethod)slotTable[slotname]).mi;
 			if (slot == null) {
 				// should not happen
 				Console.WriteLine("** Could not retrieve slot {0}::{1} info **", className, slotname);
