@@ -1,3 +1,9 @@
+2006-09-22  Arno Rehn  <arno@arnorehn.de>
+
+	* The return type of a slot is now being added to the definition in the QMetaObject
+	* Added a struct which holds the MethodInfo, the signature and the return type of a slot.
+	  This struct is now the 'Value' in the Slot-Hashtable
+
 2006-09-17  Richard Dale  <rdale@foton.es>
 
 	* Applied patches from Arno Rehn:
