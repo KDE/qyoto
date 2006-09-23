@@ -163,7 +163,7 @@ namespace Qyoto
 		public static Hashtable GetSignalSignatures(Type t) {
 			Hashtable signals = new Hashtable();
 			if (IsSmokeClass(t)) {
-				return null;
+				return signals;
 			}
 			
 			Type iface;
@@ -171,13 +171,13 @@ namespace Qyoto
 				iface = GetSignalsInterface(t);
 			}
 			catch {
-				return null;
+				return signals;
 			}
 			MethodInfo[] mis = iface.GetMethods();
 			
 			/// the interface has no signals...
 			if (mis.Length == 0)
-				return null;
+				return signals;
 			
 			foreach (MethodInfo mi in mis) {
 				object[] attributes = mi.GetCustomAttributes(typeof(Q_SIGNAL), false);
@@ -308,7 +308,6 @@ namespace Qyoto
 		
 			string className = t.ToString();
 			Hashtable slotTable = (Hashtable)classes[className];
-			
 		
 			ICollection slots;
 			if (slotTable != null)
