@@ -43,8 +43,77 @@ namespace Qyoto
 			return IsSmokeClass(qobj.GetType());
 		}
 		
+		public static string GetPrimitiveString(string type) {
+			string ret = type;
+			
+			switch (type) {
+				case "System.Void":
+					ret = "void";
+					break;
+				case "System.Boolean":
+					ret = "bool";
+					break;
+				case "System.Int32":
+					ret = "int";
+					break;
+				case "System.Int64":
+					ret = "long";
+					break;
+				case "System.UInt32":
+					ret = "uint";
+					break;
+				case "System.UInt64":
+					ret = "ulong";
+					break;
+				case "System.Int16":
+					ret = "short";
+					break;
+				case "System.UInt16":
+					ret = "ushort";
+					break;
+				case "System.Byte":
+					ret = "byte";
+					break;
+				case "System.SByte":
+					ret = "sbyte";
+					break;
+				case "System.String":
+					ret = "string";
+					break;
+				case "System.Double":
+					ret = "double";
+					break;
+				case "System.Single":
+					ret = "float";
+					break;
+				case "System.Char":
+					ret = "char";
+					break;
+			}
+			
+			return ret;
+		}
+		
+		public static string SignatureFromMethodInfo(MethodInfo mi) {
+			string name = mi.Name;
+			string returnType = GetPrimitiveString(mi.ReturnType.ToString());
+			string parameters = "";
+			
+			ParameterInfo[] ps = mi.GetParameters();
+			
+			foreach (ParameterInfo pi in ps) {
+				parameters += GetPrimitiveString(pi.ParameterType.ToString()) + ",";
+			}
+			
+			/// remove the last comma
+			if (parameters.Length != 0) 
+				parameters = parameters.Remove(parameters.Length - 1, 1);
+			
+			return returnType + " " + name + "(" + parameters + ")";
+		}
+		
 		public static void GetCPPMethodInfo(string method, out string signature, out string type) {
-				/// now we need to get the return type, therfore we search first for the first space before the method name and everything before this is the return type
+				/// we need to get the return type, therfore we search first for the first space before the method name and everything before this is the return type
 				//Console.WriteLine(method);
 				int ix = method.IndexOf('(');
 				int ix_space = method.LastIndexOf(' ', ix);
@@ -72,7 +141,13 @@ namespace Qyoto
 				object[] attributes = mi.GetCustomAttributes(typeof(Q_SLOT), false);
 				foreach (Q_SLOT attr in attributes) {
 					CPPMethod cppinfo = new CPPMethod();
-					GetCPPMethodInfo(attr.signature, out cppinfo.signature, out cppinfo.type);
+					
+					string sig = attr.Signature;
+					if (sig == "")
+						sig = SignatureFromMethodInfo(mi);
+					
+					GetCPPMethodInfo(sig, out cppinfo.signature, out cppinfo.type);
+					
 					cppinfo.mi = mi;
 					slots.Add(cppinfo.signature, cppinfo);
 					break;
@@ -83,36 +158,41 @@ namespace Qyoto
 			return slots;
 		}
 		
-		public static string[] GetSignalSignatures(Type t) {
+		
+		/// returns a Hastable with the MethodInfo as a key and the array with the MethodInfo, signature and return type the value.
+		public static Hashtable GetSignalSignatures(Type t) {
+			Hashtable signals = new Hashtable();
 			if (IsSmokeClass(t)) {
-				return new string[0];
+				return null;
 			}
-
+			
 			Type iface;
 			try {
 				iface = GetSignalsInterface(t);
 			}
 			catch {
-				return new string[0];
+				return null;
 			}
 			MethodInfo[] mis = iface.GetMethods();
 			
 			/// the interface has no signals...
 			if (mis.Length == 0)
-				return new string[0];
-				
-			string[] signatures = new string[mis.Length];
-			int i = 0;
+				return null;
 			
 			foreach (MethodInfo mi in mis) {
 				object[] attributes = mi.GetCustomAttributes(typeof(Q_SIGNAL), false);
 				foreach (Q_SIGNAL attr in attributes) {
-					signatures[i] = attr.Signature;
+					CPPMethod cppinfo = new CPPMethod();
+					string sig = attr.Signature;
+					if (sig == "")
+						sig = SignatureFromMethodInfo(mi).Trim();
+					GetCPPMethodInfo(sig, out cppinfo.signature, out cppinfo.type);
+					cppinfo.mi = mi;
+					signals.Add(cppinfo.mi, cppinfo);
 				}
-				i++;
 			}
 			
-			return signatures;
+			return signals;
 		}
 		
 		public static Type GetSignalsInterface(Type t) {
@@ -197,8 +277,8 @@ namespace Qyoto
 					0, 0
 				});
 			
-				foreach (string entry in signals)
-					AddMethod(tmp, entry, "", MethodFlags.MethodSignal | MethodFlags.AccessProtected);
+				foreach (CPPMethod entry in signals)
+					AddMethod(tmp, entry.signature, entry.type, MethodFlags.MethodSignal | MethodFlags.AccessProtected);
 				
 				foreach (CPPMethod entry in slots)
 					AddMethod(tmp, entry.signature, entry.type, MethodFlags.MethodSlot | MethodFlags.AccessPublic);
@@ -238,8 +318,8 @@ namespace Qyoto
 				slots = GetSlotSignatures(t).Values;
 			}
 
-			string[] signals = GetSignalSignatures(t);
-			QyotoMetaData metaData = new QyotoMetaData(className, signals, slots);
+			Hashtable signals = GetSignalSignatures(t);
+			QyotoMetaData metaData = new QyotoMetaData(className, signals.Values, slots);
 			
 			GCHandle objHandle = GCHandle.Alloc(o);
 			IntPtr metaObject;
@@ -363,6 +443,10 @@ namespace Qyoto
 		{
 			this.signature = signature;
 		}
+		
+		public Q_SIGNAL() {
+			this.signature = "";
+		}
 	}
 
 	[AttributeUsage( AttributeTargets.Method )]
@@ -381,6 +465,10 @@ namespace Qyoto
 		public Q_SLOT(string signature)
 		{
 			this.signature = signature;
+		}
+		
+		public Q_SLOT() {
+			this.signature = "";
 		}
 	}
 

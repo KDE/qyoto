@@ -803,16 +803,19 @@ namespace Qyoto {
 
 			IMethodReturnMessage returnMessage = (IMethodReturnMessage) message;
 			GCHandle instanceHandle = GCHandle.Alloc(_instance);
-
 			string signature = "";
-			object[] attributes = ((MethodInfo) callMessage.MethodBase).GetCustomAttributes(typeof(Q_SIGNAL), false);
-			if (attributes.Length > 0) {
-				signature = ((Q_SIGNAL) attributes[0]).Signature;
-#if DEBUG
-				Console.WriteLine( "Q_SIGNAL signature: {0}", signature );
-#endif
+			Hashtable signals = Qyoto.GetSignalSignatures(_instance.GetType());
+			
+			/// should not happen
+			if (signals == null) {
+				Console.WriteLine("** FATAL: error while retirieving signal signatures **");
+				return null;
 			}
-
+			signature = ((Qyoto.CPPMethod) signals[(MethodInfo) callMessage.MethodBase]).signature;
+#if DEBUG
+			Console.WriteLine( "Q_SIGNAL signature: {0}", signature );
+#endif
+			
 			unsafe {
 				fixed(StackItem * stackPtr = stack) {
 					SignalEmit(signature, (IntPtr) instanceHandle, (IntPtr) stackPtr, callMessage.ArgCount);
