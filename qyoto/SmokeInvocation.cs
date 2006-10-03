@@ -138,6 +138,9 @@ namespace Qyoto {
 		}
 
 		static IntPtr GetSmokeObject(IntPtr instancePtr) {
+			if (((int) instancePtr) == 0)
+				return (IntPtr) 0;
+			
 			Object instance = ((GCHandle) instancePtr).Target;
 			if (instance == null) {
 				return (IntPtr) 0;
@@ -208,6 +211,10 @@ namespace Qyoto {
 		// 'CreateProxy()' to create the transparent proxy to forward the method
 		// calls to SmokeInvocation.Invoke() is called.
 		static IntPtr CreateInstance(string className) {
+			if (className == "Qt::SpacerItem") {
+				className = "Qyoto.QSpacerItem";
+			}
+			
 			Type klass = Type.GetType(className);
 #if DEBUG
 			Console.WriteLine("ENTER CreateInstance className => {0}, {1}", className, klass);

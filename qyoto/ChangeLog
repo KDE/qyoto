@@ -1,3 +1,8 @@
+2006-10-03  Arno Rehn  <arno@arnorehn.de>
+
+	* Fixed crash when constructing a QSpacerItem (may need improvement)
+	* Fixed crash when GetSmokeObject() was called without a proper InstanceHandle
+
 2006-09-23  Richard Dale  <rdale@foton.es>
 
 	* Fixed crash when a class didn't have any signals defined
