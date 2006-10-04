@@ -496,31 +496,31 @@ namespace Qyoto {
 				if (returnType == typeof(void)) {
 					;
 				} else if (returnType == typeof(bool)) {
-					retval->s_bool = (bool) returnValue;
+					retval[0].s_bool = (bool) returnValue;
 				} else if (returnType == typeof(sbyte)) {
-					retval->s_char = (sbyte) returnValue;
+					retval[0].s_char = (sbyte) returnValue;
 				} else if (returnType == typeof(byte)) {
-					retval->s_uchar = (byte) returnValue;
+					retval[0].s_uchar = (byte) returnValue;
 				} else if (returnType == typeof(short)) {
-					retval->s_short = (short) returnValue;
+					retval[0].s_short = (short) returnValue;
 				} else if (returnType == typeof(ushort)) {
-					retval->s_ushort = (ushort) returnValue;
+					retval[0].s_ushort = (ushort) returnValue;
 				} else if (returnType == typeof(int) || returnType.IsEnum) {
-					retval->s_int = (int) returnValue;
+					retval[0].s_int = (int) returnValue;
 				} else if (returnType == typeof(uint)) {
-					retval->s_uint = (uint) returnValue;
+					retval[0].s_uint = (uint) returnValue;
 				} else if (returnType == typeof(long)) {
-					retval->s_long = (long) returnValue;
+					retval[0].s_long = (long) returnValue;
 				} else if (returnType == typeof(ulong)) {
-					retval->s_ulong = (ulong) returnValue;
+					retval[0].s_ulong = (ulong) returnValue;
 				} else if (returnType == typeof(float)) {
-					retval->s_float = (float) returnValue;
+					retval[0].s_float = (float) returnValue;
 				} else if (returnType == typeof(double)) {
-					retval->s_double = (double) returnValue;
+					retval[0].s_double = (double) returnValue;
 				} else if (returnType == typeof(string)) {
-					retval->s_class = (IntPtr) GCHandle.Alloc(returnValue);
+					retval[0].s_class = (IntPtr) GCHandle.Alloc(returnValue);
 				} else {
-					retval->s_class = (IntPtr) GCHandle.Alloc(returnValue);
+					retval[0].s_class = (IntPtr) GCHandle.Alloc(returnValue);
 				}
 			}
 		}

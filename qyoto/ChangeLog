@@ -1,3 +1,7 @@
+2006-10-04  Arno Rehn  <arno@arnorehn.de>
+
+	* Now slot return values should work, but didn't test it.
+
 2006-10-03  Arno Rehn  <arno@arnorehn.de>
 
 	* Fixed crash when constructing a QSpacerItem (may need improvement)

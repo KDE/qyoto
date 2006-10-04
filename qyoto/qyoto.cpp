@@ -700,6 +700,7 @@ class InvokeSlot : public Marshall {
     const char * _slotname;
     int _items;
     MocArgument *_args;
+    MocArgument * _mocret;
     void **_o;
     int _cur;
     bool _called;
@@ -722,11 +723,14 @@ public:
 	void invokeSlot() {
 		if (_called) return;
 		_called = true;
-		Smoke::StackItem* ret = new Smoke::StackItem();
+		Smoke::StackItem* ret = new Smoke::StackItem[1];
 		(*InvokeCustomSlot)(_obj, _slotname, _sp, ret);
 		
-		if (_args[0].argType != xmoc_void) {
-			SlotReturnValue r(_o, ret, _args);
+		if (_mocret[0].argType != xmoc_void) {
+#ifdef DEBUG
+			printf("CREATE SlotReturnValue()\n");
+#endif
+			SlotReturnValue r(_o, ret, _mocret);
 		}
 	}
 
@@ -744,11 +748,12 @@ public:
 		_cur = oldcur;
 	}
 
-    InvokeSlot(void * obj, const char * slotname, int items, MocArgument * args, void** o) :
+    InvokeSlot(void * obj, const char * slotname, int items, MocArgument * args, void** o, MocArgument * mocReturn) :
     _obj(obj), _slotname(slotname), _items(items), _args(args), _o(o), _cur(-1), _called(false)
     {
 		_sp = new Smoke::StackItem[_items];
 		_stack = new Smoke::StackItem[_items];
+		_mocret = mocReturn;
 		copyArguments();
     }
 
@@ -984,8 +989,11 @@ setMocType(MocArgument *arg, int idx, const char * name_value, const char * stat
 		name += "*";
 		typeId = qt_Smoke->idType((const char *) name);
 	}
-
+	
 	if (typeId == 0) {
+//#ifdef DEBUG
+		printf("In setMocType(): no typeId\n");
+//#endif
 		return false;
 	}
 
@@ -1033,6 +1041,28 @@ GetMocArguments(QString member) {
 	return GetMocArgumentsNumber(member, tmp);
 }
 
+MocArgument *
+GetMocReturnType(QString type) {
+	QRegExp rx1("^(bool|int|double|char\\*|QString)&?$");
+	
+	MocArgument * mocargs = new MocArgument[1];
+	
+	if (type != "void" && type != "" && type != " ") {
+		QString t = type;
+		t.replace(QRegExp("^const\\s+"), "");
+		t = (rx1.indexIn(t) == -1) ? "ptr" : rx1.cap(1);
+		//printf("arg: %s t: %s\n", (const char*)type.toLatin1(), (const char*)t.toLatin1());
+		QByteArray t_name = type.toLatin1();
+		QByteArray t_static_type = t.toLatin1();
+		setMocType(mocargs, 0, t_name.constData(), t_static_type.constData());
+	}
+	else {
+		mocargs[0].argType = xmoc_void;
+	}
+	
+	return mocargs;
+}
+
 bool
 SignalEmit(char * signature, void * obj, Smoke::StackItem * sp, int items)
 {
@@ -1072,7 +1102,9 @@ SignalEmit(char * signature, void * obj, Smoke::StackItem * sp, int items)
 }
 
 QMetaObject* parent_meta_object(void* obj) {
+#ifdef DEBUG
 printf("In make_metaObject()\n");
+#endif
 	smokeqyoto_object* o = value_obj_info(obj);
 	Smoke::Index nameId = o->smoke->idMethodName("metaObject");
 	Smoke::Index parent_index = o->smoke->classes[o->classId].parents;
@@ -1113,7 +1145,7 @@ void* make_metaObject(void* obj, const char* stringdata, int stringdata_count, c
 	QMetaObject* meta = new QMetaObject;
 	*meta = tmp;
 
-// #ifdef DEBUG
+#ifdef DEBUG
 	printf("make_metaObject() superdata: %p\n", meta->d.superdata);
 	printf("stringdata: ");
 	for (int j = 0; j < stringdata_count; j++) {
@@ -1130,7 +1162,7 @@ void* make_metaObject(void* obj, const char* stringdata, int stringdata_count, c
 		printf("%d, ", my_data[i]);
 	}
 	printf("\n");
-// #endif
+#endif
 	
 	// create smoke object
 	smokeqyoto_object* m = (smokeqyoto_object*)malloc(sizeof(smokeqyoto_object));
@@ -1182,7 +1214,8 @@ int qt_metacall(void* obj, int _c, int _id, void* _o) {
 	// retrieve method signature from id
 	QMetaMethod method = metaobject->method(_id);
 	QString name(method.signature());
-		
+	QString type(method.typeName());
+	
 	if (method.methodType() == QMetaMethod::Signal) {
 		metaobject->activate(qobj, _id, (void**) _o);
 		return _id - (count - offset);
@@ -1190,9 +1223,10 @@ int qt_metacall(void* obj, int _c, int _id, void* _o) {
 
 	int items;
 	MocArgument* mocArgs = GetMocArgumentsNumber(name, items);
+	MocArgument* mocReturn = GetMocReturnType(type);
 	
 	// invoke slot
-	InvokeSlot slot(obj, (const char*)name.toLatin1(), items, mocArgs, (void**)_o);
+	InvokeSlot slot(obj, (const char*)name.toLatin1(), items, mocArgs, (void**)_o, mocReturn);
 	slot.next();
 	
 	delete mocArgs;
