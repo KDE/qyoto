@@ -1,0 +1,7 @@
+This is uics, a modified version of Trolltech's uic, which creates C#-code out of *.ui files.
+To compile uics, simply type
+
+qmake
+make
+
+in this directory. This should create a Makefile and compile the code.
