@@ -1,5 +1,16 @@
 2006-10-06  Arno Rehn  <arno@arnorehn.de>
 
+	* Copied over some fixes from QtRuby:
+		* Fixed a bug in slot return values where they were only
+		  working when a signal was emitted in Ruby, and not when
+		  a C++ signal was emitted. The zeroth element in the array
+		  of 'void*'s passed to qt_metacall() was being overwritten
+		  by a pointer to the result of the slot invocation. Instead
+		  the pointer in the zeroth element is now correctly deref'd,
+		  and the result put where it points to.
+
+2006-10-06  Arno Rehn  <arno@arnorehn.de>
+
 	* Implemented Q_CLASSINFO and Q_SCRIPTABLE attributes.
 	* Fixed an error in the automatic signature generation when return type was
 	  void.
