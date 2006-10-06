@@ -25,6 +25,7 @@ namespace Qyoto
 			public string signature;
 			public string type;
 			public MethodInfo mi;
+			public bool scriptable;
 		}
 		
 		/// This Hashtable contains a list of classes with their Hashtables for slots. The class name is the key, the slot-hashtable the value.
@@ -48,7 +49,7 @@ namespace Qyoto
 			
 			switch (type) {
 				case "System.Void":
-					ret = "void";
+					ret = "";
 					break;
 				case "System.Boolean":
 					ret = "bool";
@@ -149,6 +150,10 @@ namespace Qyoto
 					GetCPPMethodInfo(sig, out cppinfo.signature, out cppinfo.type);
 					
 					cppinfo.mi = mi;
+					
+					if (mi.GetCustomAttributes(typeof(Q_SCRIPTABLE), false).Length > 0)
+						cppinfo.scriptable = true;
+					
 					slots.Add(cppinfo.signature, cppinfo);
 					break;
 				}
@@ -188,6 +193,10 @@ namespace Qyoto
 						sig = SignatureFromMethodInfo(mi).Trim();
 					GetCPPMethodInfo(sig, out cppinfo.signature, out cppinfo.type);
 					cppinfo.mi = mi;
+					
+					if (mi.GetCustomAttributes(typeof(Q_SCRIPTABLE), false).Length > 0)
+						cppinfo.scriptable = true;
+
 					signals.Add(cppinfo.mi, cppinfo);
 				}
 			}
@@ -199,7 +208,16 @@ namespace Qyoto
 			MethodInfo mi = t.GetMethod("Emit", BindingFlags.Instance | BindingFlags.NonPublic);
 			return mi.ReturnType;
 		}
-    
+		
+		public static Hashtable GetClassInfos(Type t) {
+			Hashtable classinfos = new Hashtable();
+			object[] attributes = t.GetCustomAttributes(typeof(Q_CLASSINFO), false);
+			foreach (Q_CLASSINFO attr in attributes) {
+				classinfos.Add(attr.Name, attr.Value);
+			}
+			return classinfos;
+		}
+		
 		class QyotoMetaData {
 			// Keeps a hash of strings against their corresponding offsets
 			// within the qt_meta_stringdata sequence of null terminated
@@ -257,7 +275,12 @@ namespace Qyoto
 				MethodCloned = 0x20,
 				MethodScriptable = 0x40
 			}
-		
+			
+			void AddClassInfo(ArrayList array, string key, string value) {
+				array.Add(handler[key]);
+				array.Add(handler[value]);
+			}
+			
 			void AddMethod(ArrayList array, string method, string type, MethodFlags flags) {
 				array.Add(handler[method]);                            // signature
 				array.Add(handler[Regex.Replace(method, "[^,]", "")]); // parameters
@@ -266,22 +289,44 @@ namespace Qyoto
 				array.Add((uint)flags);                                 // flags
 			}
 		
-			public QyotoMetaData(string className, ICollection signals, ICollection slots) {
+			public QyotoMetaData(string className, ICollection signals, ICollection slots, Hashtable classinfos) {
 				handler = new StringTableHandler();
-				ArrayList tmp = new ArrayList(new uint[] { 
+				ArrayList tmp = new ArrayList(new uint[] {
 					1,                                  // revision
 					handler[className],                 // classname
-					0, 0,                               // classinfo
-					(uint)(signals.Count + slots.Count), 10,  // methods
+					(uint)classinfos.Count, classinfos.Count > 0 ? (uint)10 : (uint)0,  // classinfo
+					(uint)(signals.Count + slots.Count),
+					(uint)(10 + (2 * classinfos.Count)),        // methods
 					0, 0,                               // properties
 					0, 0
 				});
-			
-				foreach (CPPMethod entry in signals)
-					AddMethod(tmp, entry.signature, entry.type, MethodFlags.MethodSignal | MethodFlags.AccessProtected);
 				
-				foreach (CPPMethod entry in slots)
-					AddMethod(tmp, entry.signature, entry.type, MethodFlags.MethodSlot | MethodFlags.AccessPublic);
+				foreach (string key in classinfos.Keys)
+					AddClassInfo(tmp, key, (string) classinfos[key]);
+				
+				foreach (CPPMethod entry in signals) {
+					MethodFlags flags = MethodFlags.MethodSignal | MethodFlags.AccessProtected;
+					
+					if (entry.scriptable)
+						flags = MethodFlags.MethodScriptable | MethodFlags.MethodSignal | MethodFlags.AccessPublic;
+					
+					AddMethod(tmp,
+						entry.signature,						// signature
+						entry.type,							// return type, "" for void
+						flags);
+				}
+				
+				foreach (CPPMethod entry in slots) {
+					MethodFlags flags = MethodFlags.MethodSlot | MethodFlags.AccessPublic;
+					
+					if (entry.scriptable)
+						flags = MethodFlags.MethodScriptable | MethodFlags.MethodSlot | MethodFlags.AccessPublic;
+					
+					AddMethod(tmp,
+						entry.signature,						// signature
+						entry.type,							// return type, "" for void
+						MethodFlags.MethodSlot | MethodFlags.AccessPublic);
+				}
 				
 				tmp.Add((uint)0);
 				
@@ -318,7 +363,7 @@ namespace Qyoto
 			}
 
 			Hashtable signals = GetSignalSignatures(t);
-			QyotoMetaData metaData = new QyotoMetaData(className, signals.Values, slots);
+			QyotoMetaData metaData = new QyotoMetaData(className, signals.Values, slots, GetClassInfos(t));
 			
 			GCHandle objHandle = GCHandle.Alloc(o);
 			IntPtr metaObject;
@@ -396,7 +441,7 @@ namespace Qyoto
 	}
 	
 	[AttributeUsage( AttributeTargets.Class )]
-	class Q_CLASSINFO : Attribute
+	public class Q_CLASSINFO : Attribute
 	{
 		public string name;
 	

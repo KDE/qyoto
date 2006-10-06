@@ -1,3 +1,9 @@
+2006-10-06  Arno Rehn  <arno@arnorehn.de>
+
+	* Implemented Q_CLASSINFO and Q_SCRIPTABLE attributes.
+	* Fixed an error in the automatic signature generation when return type was
+	  void.
+
 2006-10-04  Arno Rehn  <arno@arnorehn.de>
 
 	* Now slot return values should work, but didn't test it.
