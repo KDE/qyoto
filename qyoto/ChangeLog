@@ -1,5 +1,11 @@
 2006-10-06  Arno Rehn  <arno@arnorehn.de>
 
+	* Fixed some problems with enums in uics.
+	* Fixed problem where SetupUi() and RetranslateUi() weren't accessible
+	  due to a missing 'public'
+
+2006-10-06  Arno Rehn  <arno@arnorehn.de>
+
 	* Copied over some fixes from QtRuby:
 		* Fixed a bug in slot return values where they were only
 		  working when a signal was emitted in Ruby, and not when

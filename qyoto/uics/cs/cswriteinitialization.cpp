@@ -76,7 +76,7 @@ void WriteInitialization::acceptUI(DomUI *node)
 
     QString widgetClassName = node->elementWidget()->attributeClass();
 
-    output << option.indent << "void " << "SetupUi(" << widgetClassName << " " << varName << ")\n"
+    output << option.indent << "public void " << "SetupUi(" << widgetClassName << " " << varName << ")\n"
            << option.indent << "{\n";
 
     QStringList connections = uic->databaseInfo()->connections();
@@ -132,7 +132,7 @@ void WriteInitialization::acceptUI(DomUI *node)
         m_refreshInitialization += option.indent + QLatin1String("Q_UNUSED(") + varName + QLatin1String(");\n");
     }*/
 
-    output << option.indent << "void " << "RetranslateUi(" << widgetClassName << " " << varName << ")\n"
+    output << option.indent << "public void " << "RetranslateUi(" << widgetClassName << " " << varName << ")\n"
            << option.indent << "{\n"
            << m_refreshInitialization
            << option.indent << "} // RetranslateUi\n\n";
@@ -345,7 +345,7 @@ void WriteInitialization::acceptLayout(DomLayout *node)
             if (properties.contains(QLatin1String("spacing")))
                 spacing = properties.value(QLatin1String("spacing"))->elementNumber();
 
-            output << option.indent << parent << ".SetColumnLayout(0, Qt.Vertical);\n";
+            output << option.indent << parent << ".SetColumnLayout(0, Qt.Orientation.Vertical);\n";
 
             if (spacing != INT_MIN) {
                 QString value = QString::number(spacing);
@@ -438,7 +438,7 @@ void WriteInitialization::acceptSpacer(DomSpacer *node)
     QString orientation = properties.contains(QLatin1String("orientation"))
         ? properties.value(QLatin1String("orientation"))->elementEnum() : QString();
 
-    bool isVspacer = orientation == QLatin1String("Qt.Vertical")
+    bool isVspacer = orientation == QLatin1String("Qt::Vertical")
         || orientation == QLatin1String("Vertical");
 
     output << option.indent << varName << " = new QSpacerItem(";
@@ -646,7 +646,16 @@ void WriteInitialization::writeProperties(const QString &varName,
             output << option.indent << varName << ".SetFrameShape(" << shape << ");\n";
             output << option.indent << varName << ".SetFrameShadow(QFrame.Shadow.Sunken);\n";
             continue;
-        }
+        } /*else if (propertyName == QLatin1String("orientation")) {
+            // orientation hack for C#
+            QString orientation = QLatin1String("");
+            if (p->elementEnum() == QLatin1String("Qt::Vertical"))
+                orientation = QLatin1String("Qt.Orientation.Vertical");
+            if (p->elementEnum() == QLatin1String("Qt::Horizontal"))
+                orientation = QLatin1String("Qt.Orientation.Horizontal");
+            output << option.indent << varName << ".SetOrientation(" << orientation << ");\n";
+            continue;
+        }*/
 
         bool stdset = m_stdsetdef;
         if (p->hasAttributeStdset())
@@ -693,11 +702,20 @@ void WriteInitialization::writeProperties(const QString &varName,
             break;
         case DomProperty::Enum:
             propertyValue = p->elementEnum();
-            if (!propertyValue.contains(QLatin1String("::")))
+            if (propertyValue.contains(QLatin1String("::"))) {
+                QStringList parts = propertyValue.split("::");
+                propertyValue = parts[0] + QLatin1String(".") + propertyName.left(1).toUpper() + propertyName.mid(1) + QLatin1String(".") + parts[1];
+            }
+            if (!p->elementEnum().contains(QLatin1String("::")))
                 propertyValue.prepend(className + QLatin1String(QLatin1String(".")));
             break;
         case DomProperty::Set:
+            // this need special treatment because in C++ the enums aren't specified
             propertyValue = p->elementSet();
+            if (propertyValue.contains(QLatin1String("::"))) {
+                QStringList parts = propertyValue.split("::");
+                propertyValue = QLatin1String("Qyoto.Qyoto.GetCPPEnumValue(\"") + parts[0] + "\", \"" + parts[1] + QLatin1String("\")");
+            }
             break;
         case DomProperty::Font: {
             DomFont *f = p->elementFont();
@@ -893,6 +911,7 @@ void WriteInitialization::writeProperties(const QString &varName,
                     }
                 }
             }
+            propertyValue += QLatin1String("]");
             break;
 
         case DomProperty::Url: {

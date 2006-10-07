@@ -92,7 +92,7 @@ void WriteDeclaration::acceptUI(DomUI *node)
     if (node->elementImages()) {
         output << "\n"
             // << "protected:\n"
-            << option.indent << "enum IconID\n"
+            << option.indent << "protected enum IconID\n"
             << option.indent << "{\n";
         WriteIconDeclaration(uic).acceptUI(node);
 

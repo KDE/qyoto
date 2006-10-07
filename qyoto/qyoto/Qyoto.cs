@@ -34,6 +34,32 @@ namespace Qyoto
 		/// This hashtable has classe names as keys, and QMetaObjects as values
 		static Hashtable metaObjects = new Hashtable();
 		
+		public static int GetCPPEnumValue(string c, string value) {
+			Type t = Type.GetType("Qyoto." + c, false);
+			if (t == null) {
+#if DEBUG
+				Console.WriteLine("NULL");
+#endif
+				return 0;
+			}
+			foreach (Type nt in t.GetNestedTypes()) {
+				if (nt.IsEnum) {
+#if DEBUG
+					Console.WriteLine("ENUM: {0}", nt.ToString());
+#endif
+					foreach (int i in Enum.GetValues(nt)) {
+#if DEBUG
+						Console.WriteLine("MEMBER: {0}", Enum.Format(nt, i, "f"));
+#endif
+						if (Enum.Format(nt, i, "f") == value) {
+							return i;
+						}
+					}
+				}
+			}
+			return 0;
+		}
+		
 		public static bool IsSmokeClass(Type t) {
 			object[] attr = t.GetCustomAttributes(typeof(SmokeClass), false);
 			return attr.Length > 0;
