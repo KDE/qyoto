@@ -1,3 +1,10 @@
+2006-10-15  Richard Dale  <rdale@foton.es>
+
+	* When there was more than one possible candidate for a method in the
+	  Smoke library, the SmokeInvocation code was just choosing the first one
+	  it found. Added some code to select the one that matched the SmokeMethod()
+	  type signature annotation. Fixes problem reported by Arno Rehn.
+
 2006-10-06  Arno Rehn  <arno@arnorehn.de>
 
 	* Fixed some problems with enums in uics.

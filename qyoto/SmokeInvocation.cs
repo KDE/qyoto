@@ -57,7 +57,7 @@ namespace Qyoto {
 		static extern int MethodFromMap(int methodId);
 			
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		static extern int FindAmbiguousMethodId(int ambigousId);
+		static extern int FindAmbiguousMethodId(int ambigousId, string signature);
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern void CallSmokeMethod(int methodId, IntPtr target, IntPtr sp, int items);
@@ -585,9 +585,7 @@ namespace Qyoto {
 			}
 		}
 
-		public ArrayList FindMethod(string name) {
-			ArrayList result = new ArrayList();
-			
+		public int FindMethod(string name, MethodInfo methodInfo) {
 //			Console.WriteLine("FindMethod() className: {0} MethodName: {1}", _className, name);
 			int meth = FindMethodId(_className, name);
 			if (meth == 0) {
@@ -595,33 +593,31 @@ namespace Qyoto {
 			}
 			
 			if (meth == 0) {
-				return result;
+				return -1;
 			} else if (meth > 0) {
 				int i = MethodFromMap(meth);
 //				Console.WriteLine("FindMethod() MethodName: {0} result: {1}", name, i);
 				if (i == 0) {		// shouldn't happen
-					;
+					return -1;
 				} else if (i > 0) {	// single match
-					result.Add(i);
+					return i;
 //					Console.WriteLine("FindMethod() single match {0}", i);
 				} else {		// multiple match
 					i = -i;		// turn into ambiguousMethodList index
 					int	methodId;
-					while ((methodId = FindAmbiguousMethodId(i)) != 0) {
-						if (methodId > 0) {
-							result.Add(methodId);
-						}
-						i++;
+					string signature = "";
+					object[] smokeMethod = methodInfo.GetCustomAttributes(typeof(SmokeMethod), false);
+					if (smokeMethod.Length > 0) {
+						signature = ((SmokeMethod) smokeMethod[0]).Signature;
 					}
-//					Console.WriteLine("FindMethod() multiple match {0}", result[0]);
+
+					return FindAmbiguousMethodId(i, signature);
 				}
 			}
-			return result;
+			return -1;
 		}
 		
 		public override IMessage Invoke(IMessage message) {
-			ArrayList	methods = null;
-			
 			IMethodCallMessage callMessage = (IMethodCallMessage) message;
 #if DEBUG
 			Console.WriteLine(	"ENTER Invoke() MethodName: {0} Type: {1} ArgCount: {2}", 
@@ -654,15 +650,7 @@ namespace Qyoto {
 						mungedName += "#";
 					}
 				}
-
-				methods = FindMethod(mungedName);
-				if (methods.Count == 0) {
-#if DEBUG
-					Console.WriteLine("LEAVE Invoke() ** Missing method ** {0}", mungedName);
-#endif
-					return returnMessage;
-				}
-
+				
 				for (int i = 0; i < callMessage.ArgCount; i++) {
 					if (callMessage.Args[i] == null) {
 						unsafe {
@@ -697,13 +685,21 @@ namespace Qyoto {
 					}
 				}
 			}
+
+			int methodId = FindMethod(mungedName, (MethodInfo) callMessage.MethodBase);
+			if (methodId == -1) {
+#if DEBUG
+				Console.WriteLine("LEAVE Invoke() ** Missing method ** {0}", mungedName);
+#endif
+				return returnMessage;
+			}
 			
 			GCHandle instanceHandle = GCHandle.Alloc(_instance);
 			MethodReturnMessageWrapper returnValue = new MethodReturnMessageWrapper((IMethodReturnMessage) returnMessage); 
 			
 			unsafe {
 				fixed(StackItem * stackPtr = stack) {
-					CallSmokeMethod((int) methods[0], (IntPtr) instanceHandle, (IntPtr) stackPtr, callMessage.ArgCount);
+					CallSmokeMethod((int) methodId, (IntPtr) instanceHandle, (IntPtr) stackPtr, callMessage.ArgCount);
 					Type returnType = ((MethodInfo) returnMessage.MethodBase).ReturnType;
 					
 					if (returnType == typeof(void)) {

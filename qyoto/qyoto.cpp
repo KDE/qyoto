@@ -866,18 +866,43 @@ MethodFromMap(int meth)
 }
 
 int 
-FindAmbiguousMethodId(int ambiguousId) 
+FindAmbiguousMethodId(int ambiguousId, char * signature) 
 {
-	if (qt_Smoke->ambiguousMethodList[ambiguousId] == 0) {
-		return 0;
-	}
-	
-	Smoke::Method &methodRef = qt_Smoke->methods[qt_Smoke->ambiguousMethodList[ambiguousId]];
-	if ((methodRef.flags & Smoke::mf_internal) == 0) {
+	while (qt_Smoke->ambiguousMethodList[ambiguousId] != 0) {
+		Smoke::Method &methodRef = qt_Smoke->methods[qt_Smoke->ambiguousMethodList[ambiguousId]];
+		if ((methodRef.flags & Smoke::mf_internal) == 0) {
+static QByteArray * currentSignature = 0;
+			if (currentSignature == 0) {
+				currentSignature = new QByteArray("");
+			}
+
+			*currentSignature = qt_Smoke->methodNames[methodRef.name];
+			*currentSignature += "(";
+
+			for (int i = 0; i < methodRef.numArgs; i++) {
+				if (i != 0) *currentSignature += ", ";
+				*currentSignature += qt_Smoke->types[qt_Smoke->argumentList[methodRef.args + i]].name;
+			}
+
+			*currentSignature += ")";
+			if (methodRef.flags & Smoke::mf_const) {
+				*currentSignature += " const";
+			}
+
 #ifdef DEBUG
-		printf("\t\tIn FindAmbiguousMethodId(%d) => %d\n", ambiguousId, qt_Smoke->ambiguousMethodList[ambiguousId]);
+			printf(	"\t\tIn FindAmbiguousMethodId(%d, %s) => %d (%s)\n", 
+					ambiguousId,
+					signature,
+					qt_Smoke->ambiguousMethodList[ambiguousId],
+					(const char *) *currentSignature );
 #endif
-		return qt_Smoke->ambiguousMethodList[ambiguousId];
+
+			if (*currentSignature == signature) {
+				return qt_Smoke->ambiguousMethodList[ambiguousId];
+			}
+		}
+
+		ambiguousId++;
 	}
 	
 	return -1;
