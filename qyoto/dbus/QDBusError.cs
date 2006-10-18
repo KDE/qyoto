@@ -11,7 +11,6 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QDBusError(Type dummy) {}
 		interface IQDBusErrorProxy {
-			bool op_equals(QDBusError lhs, QDBusError.KnownErrors error);
 		}
 
 		protected new void CreateProxy() {
@@ -30,7 +29,7 @@ namespace Qyoto {
 			return (IQDBusErrorProxy) _staticInterceptor;
 		}
 
-		public enum KnownErrors {
+		public enum ErrorType {
 			NoError = 0,
 			Other = 1,
 			Failed = 2,
@@ -52,7 +51,7 @@ namespace Qyoto {
 			InvalidSignature = 18,
 			UnknownInterface = 19,
 			InternalError = 20,
-			qKnownErrorsMax = InternalError,
+			LastErrorType = InternalError,
 		}
 		// QDBusError* QDBusError(const DBusError* arg1); >>>> NOT CONVERTED
 		public QDBusError() : this((Type) null) {
@@ -71,13 +70,25 @@ namespace Qyoto {
 		private void NewQDBusError(QDBusMessage msg) {
 			ProxyQDBusError().NewQDBusError(msg);
 		}
-		public QDBusError(QDBusError.KnownErrors error, string message) : this((Type) null) {
+		public QDBusError(QDBusError.ErrorType error, string message) : this((Type) null) {
 			CreateProxy();
 			NewQDBusError(error,message);
 		}
-		[SmokeMethod("QDBusError(QDBusError::KnownErrors, const QString&)")]
-		private void NewQDBusError(QDBusError.KnownErrors error, string message) {
+		[SmokeMethod("QDBusError(QDBusError::ErrorType, const QString&)")]
+		private void NewQDBusError(QDBusError.ErrorType error, string message) {
 			ProxyQDBusError().NewQDBusError(error,message);
+		}
+		public QDBusError(QDBusError other) : this((Type) null) {
+			CreateProxy();
+			NewQDBusError(other);
+		}
+		[SmokeMethod("QDBusError(const QDBusError&)")]
+		private void NewQDBusError(QDBusError other) {
+			ProxyQDBusError().NewQDBusError(other);
+		}
+		[SmokeMethod("type() const")]
+		public QDBusError.ErrorType type() {
+			return ProxyQDBusError().type();
 		}
 		[SmokeMethod("name() const")]
 		public string Name() {
@@ -90,13 +101,6 @@ namespace Qyoto {
 		[SmokeMethod("isValid() const")]
 		public bool IsValid() {
 			return ProxyQDBusError().IsValid();
-		}
-		[SmokeMethod("operator==(QDBusError::KnownErrors) const")]
-		public static bool operator==(QDBusError lhs, QDBusError.KnownErrors error) {
-			return StaticQDBusError().op_equals(lhs,error);
-		}
-		public static bool operator!=(QDBusError lhs, QDBusError.KnownErrors error) {
-			return !StaticQDBusError().op_equals(lhs,error);
 		}
 		~QDBusError() {
 			DisposeQDBusError();

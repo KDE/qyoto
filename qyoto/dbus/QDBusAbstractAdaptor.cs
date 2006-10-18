@@ -49,6 +49,10 @@ namespace Qyoto {
 		protected void SetAutoRelaySignals(bool enable) {
 			ProxyQDBusAbstractAdaptor().SetAutoRelaySignals(enable);
 		}
+		[SmokeMethod("autoRelaySignals() const")]
+		protected bool AutoRelaySignals() {
+			return ProxyQDBusAbstractAdaptor().AutoRelaySignals();
+		}
 		~QDBusAbstractAdaptor() {
 			DisposeQDBusAbstractAdaptor();
 		}

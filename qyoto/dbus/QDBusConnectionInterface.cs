@@ -44,12 +44,12 @@ namespace Qyoto {
 			ServiceQueued = 2,
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
-		[SmokeMethod("registeredServiceNames()")]
+		[SmokeMethod("registeredServiceNames() const")]
 		public ArrayList RegisteredServiceNames() {
 			return ProxyQDBusConnectionInterface().RegisteredServiceNames();
 		}
 		// QDBusReply<bool> isServiceRegistered(const QString& arg1); >>>> NOT CONVERTED
-		[SmokeMethod("serviceOwner(const QString&)")]
+		[SmokeMethod("serviceOwner(const QString&) const")]
 		public string ServiceOwner(string name) {
 			return ProxyQDBusConnectionInterface().ServiceOwner(name);
 		}

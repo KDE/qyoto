@@ -11,9 +11,12 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QDBusConnection(Type dummy) {}
 		interface IQDBusConnectionProxy {
-			QDBusConnection AddConnection(QDBusConnection.BusType type, string name);
-			QDBusConnection AddConnection(string address, string name);
-			void CloseConnection(string name);
+			QDBusConnection ConnectToBus(QDBusConnection.BusType type, string name);
+			QDBusConnection ConnectToBus(string address, string name);
+			void DisconnectFromBus(string name);
+			QDBusConnection SessionBus();
+			QDBusConnection SystemBus();
+			QDBusConnection Sender();
 		}
 
 		protected new void CreateProxy() {
@@ -39,14 +42,18 @@ namespace Qyoto {
 		}
 		public enum RegisterOption {
 			ExportAdaptors = 0x01,
-			ExportSlots = 0x10,
-			ExportSignals = 0x20,
-			ExportProperties = 0x40,
-			ExportContents = 0xf0,
+			ExportScriptableSlots = 0x10,
+			ExportScriptableSignals = 0x20,
+			ExportScriptableProperties = 0x40,
+			ExportScriptableContents = 0xf0,
 			ExportNonScriptableSlots = 0x100,
 			ExportNonScriptableSignals = 0x200,
 			ExportNonScriptableProperties = 0x400,
 			ExportNonScriptableContents = 0xf00,
+			ExportAllSlots = ExportScriptableSlots|ExportNonScriptableSlots,
+			ExportAllSignal = ExportScriptableSignals|ExportNonScriptableSignals,
+			ExportAllProperties = ExportScriptableProperties|ExportNonScriptableProperties,
+			ExportAllContents = ExportScriptableContents|ExportNonScriptableContents,
 			ExportChildObjects = 0x1000,
 		}
 		public enum UnregisterMode {
@@ -85,6 +92,14 @@ namespace Qyoto {
 		public bool Send(QDBusMessage message) {
 			return ProxyQDBusConnection().Send(message);
 		}
+		[SmokeMethod("callWithCallback(const QDBusMessage&, QObject*, const char*, int) const")]
+		public bool CallWithCallback(QDBusMessage message, QObject receiver, string slot, int timeout) {
+			return ProxyQDBusConnection().CallWithCallback(message,receiver,slot,timeout);
+		}
+		[SmokeMethod("callWithCallback(const QDBusMessage&, QObject*, const char*) const")]
+		public bool CallWithCallback(QDBusMessage message, QObject receiver, string slot) {
+			return ProxyQDBusConnection().CallWithCallback(message,receiver,slot);
+		}
 		[SmokeMethod("call(const QDBusMessage&, QDBus::CallMode, int) const")]
 		public QDBusMessage Call(QDBusMessage message, QDBus.CallMode mode, int timeout) {
 			return ProxyQDBusConnection().Call(message,mode,timeout);
@@ -97,21 +112,21 @@ namespace Qyoto {
 		public QDBusMessage Call(QDBusMessage message) {
 			return ProxyQDBusConnection().Call(message);
 		}
-		[SmokeMethod("call(const QDBusMessage&, QObject*, const char*, int) const")]
-		public bool Call(QDBusMessage message, QObject receiver, string slot, int timeout) {
-			return ProxyQDBusConnection().Call(message,receiver,slot,timeout);
-		}
-		[SmokeMethod("call(const QDBusMessage&, QObject*, const char*) const")]
-		public bool Call(QDBusMessage message, QObject receiver, string slot) {
-			return ProxyQDBusConnection().Call(message,receiver,slot);
-		}
 		[SmokeMethod("connect(const QString&, const QString&, const QString&, const QString&, QObject*, const char*)")]
 		public bool Connect(string service, string path, string arg3, string name, QObject receiver, string slot) {
 			return ProxyQDBusConnection().Connect(service,path,arg3,name,receiver,slot);
 		}
+		[SmokeMethod("disconnect(const QString&, const QString&, const QString&, const QString&, QObject*, const char*)")]
+		public bool Disconnect(string service, string path, string arg3, string name, QObject receiver, string slot) {
+			return ProxyQDBusConnection().Disconnect(service,path,arg3,name,receiver,slot);
+		}
 		[SmokeMethod("connect(const QString&, const QString&, const QString&, const QString&, const QString&, QObject*, const char*)")]
 		public bool Connect(string service, string path, string arg3, string name, string signature, QObject receiver, string slot) {
 			return ProxyQDBusConnection().Connect(service,path,arg3,name,signature,receiver,slot);
+		}
+		[SmokeMethod("disconnect(const QString&, const QString&, const QString&, const QString&, const QString&, QObject*, const char*)")]
+		public bool Disconnect(string service, string path, string arg3, string name, string signature, QObject receiver, string slot) {
+			return ProxyQDBusConnection().Disconnect(service,path,arg3,name,signature,receiver,slot);
 		}
 		[SmokeMethod("registerObject(const QString&, QObject*, RegisterOptions)")]
 		public bool RegisterObject(string path, QObject arg2, int options) {
@@ -129,6 +144,10 @@ namespace Qyoto {
 		public void UnregisterObject(string path) {
 			ProxyQDBusConnection().UnregisterObject(path);
 		}
+		[SmokeMethod("objectRegisteredAt(const QString&) const")]
+		public QObject ObjectRegisteredAt(string path) {
+			return ProxyQDBusConnection().ObjectRegisteredAt(path);
+		}
 		[SmokeMethod("registerService(const QString&)")]
 		public bool RegisterService(string serviceName) {
 			return ProxyQDBusConnection().RegisterService(serviceName);
@@ -141,18 +160,31 @@ namespace Qyoto {
 		public QDBusConnectionInterface Interface() {
 			return ProxyQDBusConnection().Interface();
 		}
-		[SmokeMethod("addConnection(QDBusConnection::BusType, const QString&)")]
-		public static QDBusConnection AddConnection(QDBusConnection.BusType type, string name) {
-			return StaticQDBusConnection().AddConnection(type,name);
+		[SmokeMethod("connectToBus(QDBusConnection::BusType, const QString&)")]
+		public static QDBusConnection ConnectToBus(QDBusConnection.BusType type, string name) {
+			return StaticQDBusConnection().ConnectToBus(type,name);
 		}
-		[SmokeMethod("addConnection(const QString&, const QString&)")]
-		public static QDBusConnection AddConnection(string address, string name) {
-			return StaticQDBusConnection().AddConnection(address,name);
+		[SmokeMethod("connectToBus(const QString&, const QString&)")]
+		public static QDBusConnection ConnectToBus(string address, string name) {
+			return StaticQDBusConnection().ConnectToBus(address,name);
 		}
-		[SmokeMethod("closeConnection(const QString&)")]
-		public static void CloseConnection(string name) {
-			StaticQDBusConnection().CloseConnection(name);
+		[SmokeMethod("disconnectFromBus(const QString&)")]
+		public static void DisconnectFromBus(string name) {
+			StaticQDBusConnection().DisconnectFromBus(name);
 		}
+		[SmokeMethod("sessionBus()")]
+		public static QDBusConnection SessionBus() {
+			return StaticQDBusConnection().SessionBus();
+		}
+		[SmokeMethod("systemBus()")]
+		public static QDBusConnection SystemBus() {
+			return StaticQDBusConnection().SystemBus();
+		}
+		[SmokeMethod("sender()")]
+		public static QDBusConnection Sender() {
+			return StaticQDBusConnection().Sender();
+		}
+		// QDBusConnection* QDBusConnection(QDBusConnectionPrivate* arg1); >>>> NOT CONVERTED
 		~QDBusConnection() {
 			DisposeQDBusConnection();
 		}

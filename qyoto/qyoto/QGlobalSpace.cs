@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Collections;
 	using System.Text;
 
 	[SmokeClass("QGlobalSpace")]
@@ -11,14 +12,34 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QGlobalSpace(Type dummy) {}
 		interface IQGlobalSpaceProxy {
+			QDBusArgument op_read(QDBusArgument a, QVariant v);
+			QDBusArgument op_read(QDBusArgument a, DateTime date);
+			QDBusArgument op_write(QDBusArgument a, DateTime date);
+			QDBusArgument op_read(QDBusArgument a, QRect rect);
+			QDBusArgument op_write(QDBusArgument a, QRect rect);
+			QDBusArgument op_read(QDBusArgument a, QRectF rect);
+			QDBusArgument op_write(QDBusArgument a, QRectF rect);
+			QDBusArgument op_read(QDBusArgument a, QSize size);
+			QDBusArgument op_write(QDBusArgument a, QSize size);
+			QDBusArgument op_read(QDBusArgument a, QSizeF size);
+			QDBusArgument op_write(QDBusArgument a, QSizeF size);
+			QDBusArgument op_read(QDBusArgument a, QPoint pt);
+			QDBusArgument op_write(QDBusArgument a, QPoint pt);
+			QDBusArgument op_read(QDBusArgument a, QPointF pt);
+			QDBusArgument op_write(QDBusArgument a, QPointF pt);
+			QDBusArgument op_read(QDBusArgument a, QLine line);
+			QDBusArgument op_write(QDBusArgument a, QLine line);
+			QDBusArgument op_read(QDBusArgument a, QLineF line);
+			QDBusArgument op_write(QDBusArgument a, QLineF line);
+			QDBusArgument op_write(QDBusArgument arg, ArrayList list);
 			void QDBusReplyFill(QDBusMessage reply, QDBusError error, QVariant data);
-			bool op_equals(QDBusError.KnownErrors p1, QDBusError p2);
-			uint QHash(QVariant arg1);
 			bool op_equals(QGLFormat arg1, QGLFormat arg2);
 			bool op_equals(QHostAddress.SpecialAddress address1, QHostAddress address2);
 			uint QHash(QHostAddress key);
 			QDataStream op_write(QDataStream arg1, QHostAddress arg2);
 			QDataStream op_read(QDataStream arg1, QHostAddress arg2);
+			QDataStream op_write(QDataStream arg1, QIcon arg2);
+			QDataStream op_read(QDataStream arg1, QIcon arg2);
 			QDataStream op_write(QDataStream arg1, QImage arg2);
 			QDataStream op_read(QDataStream arg1, QImage arg2);
 			QDataStream op_write(QDataStream arg1, QPicture arg2);
@@ -40,6 +61,8 @@ namespace Qyoto {
 			QDataStream op_read(QDataStream arg1, QKeySequence ks);
 			QDataStream op_write(QDataStream ds, QPalette p);
 			QDataStream op_read(QDataStream ds, QPalette p);
+			QDataStream op_write(QDataStream arg1, QSizePolicy arg2);
+			QDataStream op_read(QDataStream arg1, QSizePolicy arg2);
 			QDataStream op_write(QDataStream arg1, QBrush arg2);
 			QDataStream op_read(QDataStream arg1, QBrush arg2);
 			QDataStream op_write(QDataStream arg1, QColor arg2);
@@ -135,6 +158,8 @@ namespace Qyoto {
 			QByteArray Qgetenv(string varName);
 			int QIntCast(double f);
 			int QIntCast(float f);
+			void Qsrand(uint seed);
+			int Qrand();
 			QTextStream Bin(QTextStream s);
 			QTextStream Oct(QTextStream s);
 			QTextStream Dec(QTextStream s);
@@ -165,11 +190,11 @@ namespace Qyoto {
 			string QAppName();
 			QDataStream op_read(QDataStream s, QVariant p);
 			QDataStream op_write(QDataStream s, QVariant p);
-			bool op_equals(QVariant v1, QVariant v2);
 			QDataStream op_write(QDataStream arg1, QUuid arg2);
 			QDataStream op_read(QDataStream arg1, QUuid arg2);
 			string Qstrdup(string arg1);
 			uint Qstrlen(string str);
+			uint Qstrnlen(string str, uint maxlen);
 			string Qstrcpy(string dst, string src);
 			string Qstrncpy(string dst, string src, uint len);
 			int Qstrcmp(string str1, string str2);
@@ -293,6 +318,87 @@ namespace Qyoto {
 			return (IQGlobalSpaceProxy) _staticInterceptor;
 		}
 
+		[SmokeMethod("operator>>(const QDBusArgument&, QVariant&)")]
+		public static QDBusArgument op_read(QDBusArgument a, QVariant v) {
+			return StaticQGlobalSpace().op_read(a,v);
+		}
+		[SmokeMethod("operator>>(const QDBusArgument&, QDate&)")]
+		public static QDBusArgument op_read(QDBusArgument a, DateTime date) {
+			return StaticQGlobalSpace().op_read(a,date);
+		}
+		[SmokeMethod("operator<<(QDBusArgument&, const QDate&)")]
+		public static QDBusArgument op_write(QDBusArgument a, DateTime date) {
+			return StaticQGlobalSpace().op_write(a,date);
+		}
+		[SmokeMethod("operator>>(const QDBusArgument&, QRect&)")]
+		public static QDBusArgument op_read(QDBusArgument a, QRect rect) {
+			return StaticQGlobalSpace().op_read(a,rect);
+		}
+		[SmokeMethod("operator<<(QDBusArgument&, const QRect&)")]
+		public static QDBusArgument op_write(QDBusArgument a, QRect rect) {
+			return StaticQGlobalSpace().op_write(a,rect);
+		}
+		[SmokeMethod("operator>>(const QDBusArgument&, QRectF&)")]
+		public static QDBusArgument op_read(QDBusArgument a, QRectF rect) {
+			return StaticQGlobalSpace().op_read(a,rect);
+		}
+		[SmokeMethod("operator<<(QDBusArgument&, const QRectF&)")]
+		public static QDBusArgument op_write(QDBusArgument a, QRectF rect) {
+			return StaticQGlobalSpace().op_write(a,rect);
+		}
+		[SmokeMethod("operator>>(const QDBusArgument&, QSize&)")]
+		public static QDBusArgument op_read(QDBusArgument a, QSize size) {
+			return StaticQGlobalSpace().op_read(a,size);
+		}
+		[SmokeMethod("operator<<(QDBusArgument&, const QSize&)")]
+		public static QDBusArgument op_write(QDBusArgument a, QSize size) {
+			return StaticQGlobalSpace().op_write(a,size);
+		}
+		[SmokeMethod("operator>>(const QDBusArgument&, QSizeF&)")]
+		public static QDBusArgument op_read(QDBusArgument a, QSizeF size) {
+			return StaticQGlobalSpace().op_read(a,size);
+		}
+		[SmokeMethod("operator<<(QDBusArgument&, const QSizeF&)")]
+		public static QDBusArgument op_write(QDBusArgument a, QSizeF size) {
+			return StaticQGlobalSpace().op_write(a,size);
+		}
+		[SmokeMethod("operator>>(const QDBusArgument&, QPoint&)")]
+		public static QDBusArgument op_read(QDBusArgument a, QPoint pt) {
+			return StaticQGlobalSpace().op_read(a,pt);
+		}
+		[SmokeMethod("operator<<(QDBusArgument&, const QPoint&)")]
+		public static QDBusArgument op_write(QDBusArgument a, QPoint pt) {
+			return StaticQGlobalSpace().op_write(a,pt);
+		}
+		[SmokeMethod("operator>>(const QDBusArgument&, QPointF&)")]
+		public static QDBusArgument op_read(QDBusArgument a, QPointF pt) {
+			return StaticQGlobalSpace().op_read(a,pt);
+		}
+		[SmokeMethod("operator<<(QDBusArgument&, const QPointF&)")]
+		public static QDBusArgument op_write(QDBusArgument a, QPointF pt) {
+			return StaticQGlobalSpace().op_write(a,pt);
+		}
+		[SmokeMethod("operator>>(const QDBusArgument&, QLine&)")]
+		public static QDBusArgument op_read(QDBusArgument a, QLine line) {
+			return StaticQGlobalSpace().op_read(a,line);
+		}
+		[SmokeMethod("operator<<(QDBusArgument&, const QLine&)")]
+		public static QDBusArgument op_write(QDBusArgument a, QLine line) {
+			return StaticQGlobalSpace().op_write(a,line);
+		}
+		[SmokeMethod("operator>>(const QDBusArgument&, QLineF&)")]
+		public static QDBusArgument op_read(QDBusArgument a, QLineF line) {
+			return StaticQGlobalSpace().op_read(a,line);
+		}
+		[SmokeMethod("operator<<(QDBusArgument&, const QLineF&)")]
+		public static QDBusArgument op_write(QDBusArgument a, QLineF line) {
+			return StaticQGlobalSpace().op_write(a,line);
+		}
+		[SmokeMethod("operator<<(QDBusArgument&, const QVariantList&)")]
+		public static QDBusArgument op_write(QDBusArgument arg, ArrayList list) {
+			return StaticQGlobalSpace().op_write(arg,list);
+		}
+		// QDBusArgument& operator<<(QDBusArgument& arg1,const QVariantMap& arg2); >>>> NOT CONVERTED
 		///<remarks>*************************************************
 		///
 		///* Copyright (C) 1992-2006 Trolltech ASA. All rights reserved.
@@ -319,15 +425,6 @@ namespace Qyoto {
 		public static void QDBusReplyFill(QDBusMessage reply, QDBusError error, QVariant data) {
 			StaticQGlobalSpace().QDBusReplyFill(reply,error,data);
 		}
-		[SmokeMethod("operator==(QDBusError::KnownErrors, const QDBusError&)")]
-		public static bool op_equals(QDBusError.KnownErrors p1, QDBusError p2) {
-			return StaticQGlobalSpace().op_equals(p1,p2);
-		}
-		[SmokeMethod("qHash(const QVariant&)")]
-		public static uint QHash(QVariant arg1) {
-			return StaticQGlobalSpace().QHash(arg1);
-		}
-		// uint qHash(const QDBusType& arg1); >>>> NOT CONVERTED
 		[SmokeMethod("operator==(const QGLFormat&, const QGLFormat&)")]
 		public static bool op_equals(QGLFormat arg1, QGLFormat arg2) {
 			return StaticQGlobalSpace().op_equals(arg1,arg2);
@@ -346,6 +443,14 @@ namespace Qyoto {
 		}
 		[SmokeMethod("operator>>(QDataStream&, QHostAddress&)")]
 		public static QDataStream op_read(QDataStream arg1, QHostAddress arg2) {
+			return StaticQGlobalSpace().op_read(arg1,arg2);
+		}
+		[SmokeMethod("operator<<(QDataStream&, const QIcon&)")]
+		public static QDataStream op_write(QDataStream arg1, QIcon arg2) {
+			return StaticQGlobalSpace().op_write(arg1,arg2);
+		}
+		[SmokeMethod("operator>>(QDataStream&, QIcon&)")]
+		public static QDataStream op_read(QDataStream arg1, QIcon arg2) {
 			return StaticQGlobalSpace().op_read(arg1,arg2);
 		}
 		[SmokeMethod("operator<<(QDataStream&, const QImage&)")]
@@ -443,6 +548,14 @@ namespace Qyoto {
 		[SmokeMethod("operator>>(QDataStream&, QPalette&)")]
 		public static QDataStream op_read(QDataStream ds, QPalette p) {
 			return StaticQGlobalSpace().op_read(ds,p);
+		}
+		[SmokeMethod("operator<<(QDataStream&, const QSizePolicy&)")]
+		public static QDataStream op_write(QDataStream arg1, QSizePolicy arg2) {
+			return StaticQGlobalSpace().op_write(arg1,arg2);
+		}
+		[SmokeMethod("operator>>(QDataStream&, QSizePolicy&)")]
+		public static QDataStream op_read(QDataStream arg1, QSizePolicy arg2) {
+			return StaticQGlobalSpace().op_read(arg1,arg2);
 		}
 		///<remarks>**************************************************
 		///  QBrush stream functions
@@ -802,6 +915,9 @@ namespace Qyoto {
 		public static bool QSharedBuild() {
 			return StaticQGlobalSpace().QSharedBuild();
 		}
+		// QDebug qDebug(); >>>> NOT CONVERTED
+		// QDebug qWarning(); >>>> NOT CONVERTED
+		// QDebug qCritical(); >>>> NOT CONVERTED
 		// QtMsgHandler qInstallMsgHandler(QtMsgHandler arg1); >>>> NOT CONVERTED
 		[SmokeMethod("operator==(QBool, bool)")]
 		public static bool op_equals(QBool b1, bool b2) {
@@ -847,6 +963,14 @@ namespace Qyoto {
 		[SmokeMethod("qIntCast(float)")]
 		public static int QIntCast(float f) {
 			return StaticQGlobalSpace().QIntCast(f);
+		}
+		[SmokeMethod("qsrand(uint)")]
+		public static void Qsrand(uint seed) {
+			StaticQGlobalSpace().Qsrand(seed);
+		}
+		[SmokeMethod("qrand()")]
+		public static int Qrand() {
+			return StaticQGlobalSpace().Qrand();
 		}
 		// QDebug qDebug(); >>>> NOT CONVERTED
 		// QDebug qWarning(); >>>> NOT CONVERTED
@@ -980,10 +1104,7 @@ namespace Qyoto {
 		public static QDataStream op_write(QDataStream s, QVariant p) {
 			return StaticQGlobalSpace().op_write(s,p);
 		}
-		[SmokeMethod("operator==(const QVariant&, const QVariant&)")]
-		public static bool op_equals(QVariant v1, QVariant v2) {
-			return StaticQGlobalSpace().op_equals(v1,v2);
-		}
+		// bool operator==(const QVariant& arg1,const QVariantComparisonHelper& arg2); >>>> NOT CONVERTED
 		[SmokeMethod("operator<<(QDataStream&, const QUuid&)")]
 		public static QDataStream op_write(QDataStream arg1, QUuid arg2) {
 			return StaticQGlobalSpace().op_write(arg1,arg2);
@@ -1007,6 +1128,10 @@ namespace Qyoto {
 		[SmokeMethod("qstrlen(const char*)")]
 		public static uint Qstrlen(string str) {
 			return StaticQGlobalSpace().Qstrlen(str);
+		}
+		[SmokeMethod("qstrnlen(const char*, uint)")]
+		public static uint Qstrnlen(string str, uint maxlen) {
+			return StaticQGlobalSpace().Qstrnlen(str,maxlen);
 		}
 		[SmokeMethod("qstrcpy(char*, const char*)")]
 		public static string Qstrcpy(string dst, string src) {

@@ -13,8 +13,10 @@ namespace Qyoto {
 		protected QDBusMessage(Type dummy) {}
 		interface IQDBusMessageProxy {
 			QDBusMessage op_write(QDBusMessage lhs, QVariant arg);
-			QDBusMessage Signal(string path, string arg2, string name, QDBusConnection connection);
-			QDBusMessage MethodCall(string destination, string path, string arg3, string method, QDBusConnection connection);
+			QDBusMessage CreateSignal(string path, string arg2, string name);
+			QDBusMessage CreateMethodCall(string destination, string path, string arg3, string method);
+			QDBusMessage CreateError(string name, string msg);
+			QDBusMessage CreateError(QDBusError err);
 		}
 
 		protected new void CreateProxy() {
@@ -56,9 +58,25 @@ namespace Qyoto {
 		private void NewQDBusMessage(QDBusMessage other) {
 			ProxyQDBusMessage().NewQDBusMessage(other);
 		}
-		[SmokeMethod("connection() const")]
-		public QDBusConnection Connection() {
-			return ProxyQDBusMessage().Connection();
+		[SmokeMethod("createReply(const QList<QVariant>&) const")]
+		public QDBusMessage CreateReply(ArrayList arguments) {
+			return ProxyQDBusMessage().CreateReply(arguments);
+		}
+		[SmokeMethod("createReply() const")]
+		public QDBusMessage CreateReply() {
+			return ProxyQDBusMessage().CreateReply();
+		}
+		[SmokeMethod("createReply(const QVariant&) const")]
+		public QDBusMessage CreateReply(QVariant argument) {
+			return ProxyQDBusMessage().CreateReply(argument);
+		}
+		[SmokeMethod("createErrorReply(const QString, const QString&) const")]
+		public QDBusMessage CreateErrorReply(string name, string msg) {
+			return ProxyQDBusMessage().CreateErrorReply(name,msg);
+		}
+		[SmokeMethod("createErrorReply(const QDBusError&) const")]
+		public QDBusMessage CreateErrorReply(QDBusError err) {
+			return ProxyQDBusMessage().CreateErrorReply(err);
 		}
 		[SmokeMethod("service() const")]
 		public string Service() {
@@ -76,17 +94,21 @@ namespace Qyoto {
 		public string Member() {
 			return ProxyQDBusMessage().Member();
 		}
+		[SmokeMethod("errorName() const")]
+		public string ErrorName() {
+			return ProxyQDBusMessage().ErrorName();
+		}
 		[SmokeMethod("type() const")]
 		public QDBusMessage.MessageType type() {
 			return ProxyQDBusMessage().type();
 		}
-		[SmokeMethod("isReplyRequired() const")]
-		public bool IsReplyRequired() {
-			return ProxyQDBusMessage().IsReplyRequired();
-		}
 		[SmokeMethod("signature() const")]
 		public string Signature() {
 			return ProxyQDBusMessage().Signature();
+		}
+		[SmokeMethod("isReplyRequired() const")]
+		public bool IsReplyRequired() {
+			return ProxyQDBusMessage().IsReplyRequired();
 		}
 		[SmokeMethod("setDelayedReply(bool) const")]
 		public void SetDelayedReply(bool enable) {
@@ -104,61 +126,25 @@ namespace Qyoto {
 		public ArrayList Arguments() {
 			return ProxyQDBusMessage().Arguments();
 		}
-		[SmokeMethod("count() const")]
-		public int Count() {
-			return ProxyQDBusMessage().Count();
-		}
-		[SmokeMethod("isEmpty() const")]
-		public bool IsEmpty() {
-			return ProxyQDBusMessage().IsEmpty();
-		}
-		[SmokeMethod("at(int) const")]
-		public QVariant At(int index) {
-			return ProxyQDBusMessage().At(index);
-		}
 		[SmokeMethod("operator<<(const QVariant&)")]
 		public static QDBusMessage op_write(QDBusMessage lhs, QVariant arg) {
 			return StaticQDBusMessage().op_write(lhs,arg);
 		}
-		[SmokeMethod("append(const QVariant&)")]
-		public void Append(QVariant arg) {
-			ProxyQDBusMessage().Append(arg);
+		[SmokeMethod("createSignal(const QString&, const QString&, const QString&)")]
+		public static QDBusMessage CreateSignal(string path, string arg2, string name) {
+			return StaticQDBusMessage().CreateSignal(path,arg2,name);
 		}
-		[SmokeMethod("send()")]
-		public bool Send() {
-			return ProxyQDBusMessage().Send();
+		[SmokeMethod("createMethodCall(const QString&, const QString&, const QString&, const QString&)")]
+		public static QDBusMessage CreateMethodCall(string destination, string path, string arg3, string method) {
+			return StaticQDBusMessage().CreateMethodCall(destination,path,arg3,method);
 		}
-		[SmokeMethod("sendError(const QString&, const QString&) const")]
-		public bool SendError(string name, string message) {
-			return ProxyQDBusMessage().SendError(name,message);
+		[SmokeMethod("createError(const QString&, const QString&)")]
+		public static QDBusMessage CreateError(string name, string msg) {
+			return StaticQDBusMessage().CreateError(name,msg);
 		}
-		[SmokeMethod("sendError(const QString&) const")]
-		public bool SendError(string name) {
-			return ProxyQDBusMessage().SendError(name);
-		}
-		[SmokeMethod("sendError(const QDBusError&) const")]
-		public bool SendError(QDBusError error) {
-			return ProxyQDBusMessage().SendError(error);
-		}
-		[SmokeMethod("sendReply(const QVariantList&) const")]
-		public bool SendReply(ArrayList arguments) {
-			return ProxyQDBusMessage().SendReply(arguments);
-		}
-		[SmokeMethod("sendReply() const")]
-		public bool SendReply() {
-			return ProxyQDBusMessage().SendReply();
-		}
-		[SmokeMethod("sendReply(const QVariant&) const")]
-		public bool SendReply(QVariant returnValue) {
-			return ProxyQDBusMessage().SendReply(returnValue);
-		}
-		[SmokeMethod("signal(const QString&, const QString&, const QString&, const QDBusConnection&)")]
-		public static QDBusMessage Signal(string path, string arg2, string name, QDBusConnection connection) {
-			return StaticQDBusMessage().Signal(path,arg2,name,connection);
-		}
-		[SmokeMethod("methodCall(const QString&, const QString&, const QString&, const QString&, const QDBusConnection&)")]
-		public static QDBusMessage MethodCall(string destination, string path, string arg3, string method, QDBusConnection connection) {
-			return StaticQDBusMessage().MethodCall(destination,path,arg3,method,connection);
+		[SmokeMethod("createError(const QDBusError&)")]
+		public static QDBusMessage CreateError(QDBusError err) {
+			return StaticQDBusMessage().CreateError(err);
 		}
 		~QDBusMessage() {
 			DisposeQDBusMessage();
