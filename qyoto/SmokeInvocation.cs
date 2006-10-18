@@ -574,6 +574,7 @@ namespace Qyoto {
 		private Type	_classToProxy;
 		private Object	_instance;
 		private string	_className;
+		private Hashtable methodCache = new Hashtable();
 		
 		public SmokeInvocation(Type classToProxy, Object instance) : base(classToProxy) 
 		{
@@ -686,7 +687,16 @@ namespace Qyoto {
 				}
 			}
 
-			int methodId = FindMethod(mungedName, (MethodInfo) callMessage.MethodBase);
+			int methodId;
+			if (!methodCache.ContainsKey(callMessage.MethodBase)) {
+// 				Console.WriteLine("Creating entry in methodCache");
+				methodId = FindMethod(mungedName, (MethodInfo) callMessage.MethodBase);
+				methodCache.Add(callMessage.MethodBase, (object) methodId);
+			} else {
+// 				Console.WriteLine("Found entry in methodCache");
+				methodId = (int) methodCache[callMessage.MethodBase];
+			}
+			
 			if (methodId == -1) {
 #if DEBUG
 				Console.WriteLine("LEAVE Invoke() ** Missing method ** {0}", mungedName);

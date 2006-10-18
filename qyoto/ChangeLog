@@ -1,3 +1,8 @@
+2006-10-18  Arno Rehn  <arno@arnorehn.de>
+
+	* Added a methodCache, so if a methodId has already been looked up it can
+	  be retrieved from the methodCache.
+
 2006-10-15  Richard Dale  <rdale@foton.es>
 
 	* When there was more than one possible candidate for a method in the
