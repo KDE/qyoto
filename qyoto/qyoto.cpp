@@ -29,6 +29,8 @@
 #include <QtCore/qstringlist.h>
 #include <QMetaMethod>
 
+#include <QtGui/qmainwindow.h>
+
 #undef DEBUG
 #ifndef __USE_POSIX
 #define __USE_POSIX
@@ -1286,6 +1288,36 @@ Init_qyoto()
 void
 DeleteQApp() {
 	delete qApp;
+}
+
+smokeqyoto_object*
+NewQMainWindow()
+{
+	smokeqyoto_object * o = (smokeqyoto_object*)malloc(sizeof(smokeqyoto_object));
+	o->smoke = qt_Smoke;
+	o->classId = qt_Smoke->idClass("QMainWindow");
+	o->ptr = (void*) new QMainWindow();
+	return o;
+}
+
+smokeqyoto_object*
+NewQMainWindow2(smokeqyoto_object* parent)
+{
+	smokeqyoto_object * o = (smokeqyoto_object*)malloc(sizeof(smokeqyoto_object));
+	o->smoke = qt_Smoke;
+	o->classId = qt_Smoke->idClass("QMainWindow");
+	o->ptr = (void*) new QMainWindow((QWidget*) parent->ptr);
+	return o;
+}
+
+smokeqyoto_object*
+NewQMainWindow3(smokeqyoto_object* parent, Qt::WindowFlags flags)
+{
+	smokeqyoto_object * o = (smokeqyoto_object*)malloc(sizeof(smokeqyoto_object));
+	o->smoke = qt_Smoke;
+	o->classId = qt_Smoke->idClass("QMainWindow");
+	o->ptr = (void*) new QMainWindow((QWidget*) parent->ptr, flags);
+	return o;
 }
 
 }

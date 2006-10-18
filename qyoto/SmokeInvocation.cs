@@ -133,15 +133,21 @@ namespace Qyoto {
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern int qt_metacall(IntPtr obj, int _c, int _id, IntPtr a);
 		
+		/// Extra functions for QMainWindow
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		static extern IntPtr NewQMainWindow();
+		
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		static extern IntPtr NewQMainWindow2(IntPtr parent);
+		
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		static extern IntPtr NewQMainWindow3(IntPtr parent, int flags);
+		
 		static void FreeGCHandle(IntPtr handle) {
 			((GCHandle) handle).Free();
 		}
-
-		static IntPtr GetSmokeObject(IntPtr instancePtr) {
-			if (((int) instancePtr) == 0)
-				return (IntPtr) 0;
-			
-			Object instance = ((GCHandle) instancePtr).Target;
+		
+		static IntPtr GetSmokeObject(object instance) {
 			if (instance == null) {
 				return (IntPtr) 0;
 			}
@@ -152,16 +158,29 @@ namespace Qyoto {
 			return (IntPtr) fieldInfo.GetValue(instance);
 		}
 		
-		static void SetSmokeObject(IntPtr instancePtr, IntPtr smokeObjectPtr) {
+		static IntPtr GetSmokeObject(IntPtr instancePtr) {
+			if (((int) instancePtr) == 0)
+				return (IntPtr) 0;
+			
 			Object instance = ((GCHandle) instancePtr).Target;
-			if (instance == null) {
-				return;
-			}
+			return GetSmokeObject(instance);
+		}
+		
+		static void SetSmokeObject(object instance, IntPtr smokeObjectPtr) {
 			FieldInfo fieldInfo = instance.GetType().GetField(	"_smokeObject", 
 															BindingFlags.NonPublic 
 															| BindingFlags.GetField
 															| BindingFlags.Instance );
 			fieldInfo.SetValue(instance, smokeObjectPtr);
+			return;
+		}
+		
+		static void SetSmokeObject(IntPtr instancePtr, IntPtr smokeObjectPtr) {
+			Object instance = ((GCHandle) instancePtr).Target;
+			if (instance == null) {
+				return;
+			}
+			SetSmokeObject(instance, smokeObjectPtr);
 			return;
 		}
 
@@ -627,6 +646,31 @@ namespace Qyoto {
 								callMessage.ArgCount.ToString() );
 #endif
 
+			/// Handle special case
+			if (callMessage.MethodBase.Name == "NewQMainWindow") {
+				int ps = callMessage.ArgCount;
+				if (ps == 0) {
+// 					Console.WriteLine("Constructing QMainWindow in C++");
+					IntPtr o = NewQMainWindow();
+// 					Console.WriteLine("Setting _smokeobject");
+					SetSmokeObject(_instance, o);
+					return (IMethodReturnMessage) message;
+				} else if (ps == 1) {
+// 					Console.WriteLine("Constructing QMainWindow in C++");
+					IntPtr o = NewQMainWindow2(GetSmokeObject(callMessage.Args[0]));
+// 					Console.WriteLine("Setting _smokeobject");
+					SetSmokeObject(_instance, o);
+					return (IMethodReturnMessage) message;
+				} else if (ps == 2) {
+// 					Console.WriteLine("Constructing QMainWindow in C++");
+					IntPtr o = NewQMainWindow3(GetSmokeObject(callMessage.Args[0]), (int) callMessage.Args[1]);
+// 					Console.WriteLine("Setting _smokeobject");
+					SetSmokeObject(_instance, o);
+					return (IMethodReturnMessage) message;
+				}
+				/// If none of the above cases matches, just go on.
+			}
+			
 			StackItem[] stack = new StackItem[callMessage.ArgCount+1];
 			
 			string mungedName = callMessage.MethodName;
