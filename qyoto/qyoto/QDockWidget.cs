@@ -39,6 +39,30 @@ namespace Qyoto {
 			Reserved = 0xff,
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
+		public QDockWidget(string title, QWidget parent, int flags) : this((Type) null) {
+			CreateProxy();
+			NewQDockWidget(title,parent,flags);
+		}
+		[SmokeMethod("QDockWidget(const QString&, QWidget*, Qt::WindowFlags)")]
+		private void NewQDockWidget(string title, QWidget parent, int flags) {
+			ProxyQDockWidget().NewQDockWidget(title,parent,flags);
+		}
+		public QDockWidget(string title, QWidget parent) : this((Type) null) {
+			CreateProxy();
+			NewQDockWidget(title,parent);
+		}
+		[SmokeMethod("QDockWidget(const QString&, QWidget*)")]
+		private void NewQDockWidget(string title, QWidget parent) {
+			ProxyQDockWidget().NewQDockWidget(title,parent);
+		}
+		public QDockWidget(string title) : this((Type) null) {
+			CreateProxy();
+			NewQDockWidget(title);
+		}
+		[SmokeMethod("QDockWidget(const QString&)")]
+		private void NewQDockWidget(string title) {
+			ProxyQDockWidget().NewQDockWidget(title);
+		}
 		public QDockWidget(QWidget parent, int flags) : this((Type) null) {
 			CreateProxy();
 			NewQDockWidget(parent,flags);
@@ -71,8 +95,14 @@ namespace Qyoto {
 		public void SetWidget(QWidget widget) {
 			ProxyQDockWidget().SetWidget(widget);
 		}
-		// void setFeatures(DockWidgetFeatures arg1); >>>> NOT CONVERTED
-		// DockWidgetFeatures features(); >>>> NOT CONVERTED
+		[SmokeMethod("setFeatures(DockWidgetFeatures)")]
+		public void SetFeatures(int features) {
+			ProxyQDockWidget().SetFeatures(features);
+		}
+		[SmokeMethod("features() const")]
+		public int Features() {
+			return ProxyQDockWidget().Features();
+		}
 		[SmokeMethod("setFloating(bool)")]
 		public void SetFloating(bool floating) {
 			ProxyQDockWidget().SetFloating(floating);
