@@ -29,6 +29,8 @@ static GetCharStarFromIntPtr IntPtrToCharStar;
 static GetIntPtrFromCharStar IntPtrFromCharStar;
 static GetIntPtr IntPtrToQString;
 static GetIntPtr IntPtrFromQString;
+static GetIntPtr ArrayListToQStringList;
+static GetIntPtr QStringListToArrayList;
 
 void AddIntPtrToCharStarStar(GetIntPtr callback)
 {
@@ -53,6 +55,16 @@ void AddIntPtrToQString(GetIntPtr callback)
 void AddIntPtrFromQString(GetIntPtr callback)
 {
 	IntPtrFromQString = callback;
+}
+
+void AddArrayListToQStringList(GetIntPtr callback)
+{
+	ArrayListToQStringList = callback;
+}
+
+void AddQStringListToArrayList(GetIntPtr callback)
+{
+	QStringListToArrayList = callback;
 }
 
 extern void * set_obj_info(const char * className, smokeqyoto_object * o);
@@ -353,6 +365,30 @@ StringFromQString(void *ptr)
 {
     QByteArray ba = ((QString *) ptr)->toLatin1();
     return strdup(ba.constData());
+}
+
+void *
+StringArrayToQStringList(int length, char ** strArray)
+{
+	QStringList * result = new QStringList();
+	char ** ca = (char**) StringArrayToCharStarStar(length, strArray);
+	
+	for (int i = 0; i < length; i++) {
+		(*result) << ca[i];
+	}
+	return (void*) result;
+}
+
+char **
+QStringListToStringArray(void* ptr)
+{
+	QStringList * s = (QStringList*) ptr;
+	char ** result = (char **) calloc(s->count(), sizeof(char *));
+	
+	for (int i = 0; i < s->count(); i++) {
+		result[i] = strdup((*s)[i].toLatin1().constData());
+	}
+	return result;
 }
 
 }
@@ -779,27 +815,29 @@ void marshall_QStringList(Marshall *m) {
 //			}
 
 //			int count = RARRAY(list)->len;
-			int count = 0;
-			QStringList *stringlist = new QStringList;
+// 			int count = 0;
+// 			QStringList *stringlist = new QStringList;
 
-			for (long i = 0; i < count; i++) {
+// 			for (long i = 0; i < count; i++) {
 //				VALUE item = rb_ary_entry(list, i);
 //					if(TYPE(item) != T_STRING) {
-						stringlist->append(QString());
+// 						stringlist->append(QString());
 //						continue;
 //					}
 //				stringlist->append(*(qstringFromRString(item)));
-			}
-
-			m->item().s_voidp = stringlist;
+// 			}
+			
+			QStringList *stringlist = (QStringList*) (*ArrayListToQStringList)(m->var().s_voidp);
+			
+			m->item().s_voidp = (void*) stringlist;
 			m->next();
 
-			if (stringlist != 0 && !m->type().isConst()) {
+// 			if (stringlist != 0 && !m->type().isConst()) {
 //				rb_ary_clear(list);
-				for (QStringList::Iterator it = stringlist->begin(); it != stringlist->end(); ++it) {
+// 				for (QStringList::Iterator it = stringlist->begin(); it != stringlist->end(); ++it) {
 //					rb_ary_push(list, rstringFromQString(&(*it)));
-				}
-			}
+// 				}
+// 			}
 			
 			if (m->cleanup()) {
 				delete stringlist;
@@ -812,17 +850,18 @@ void marshall_QStringList(Marshall *m) {
 	{
 		QStringList *stringlist = static_cast<QStringList *>(m->item().s_voidp);
 		if (!stringlist) {
-//			*(m->var()) = Qnil;
+// 			m->var().s_voidp = 0;
 			break;
 		}
 
 //		VALUE av = rb_ary_new();
-		for (QStringList::Iterator it = stringlist->begin(); it != stringlist->end(); ++it) {
+// 		for (QStringList::Iterator it = stringlist->begin(); it != stringlist->end(); ++it) {
 //			VALUE rv = rstringFromQString(&(*it));
 //			rb_ary_push(av, rv);
-		}
+// 		}
 
 //		*(m->var()) = av;
+		m->var().s_voidp = (*QStringListToArrayList)(stringlist);
 
 		if (m->cleanup()) {
 			delete stringlist;

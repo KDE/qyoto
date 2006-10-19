@@ -73,6 +73,7 @@ namespace Qyoto {
 		delegate IntPtr OverridenMethodFn(IntPtr instance, string method);
 		delegate void InvokeMethodFn(IntPtr instance, IntPtr method, IntPtr args);
 		
+		/** Marshalling functions begin **/
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern IntPtr StringArrayToCharStarStar(int length, string[] strArray);
 		
@@ -81,7 +82,14 @@ namespace Qyoto {
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern string StringFromQString(IntPtr ptr);
-
+		
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		static extern IntPtr StringArrayToQStringList(int length, string[] strArray);
+		
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		static extern string[] QStringListToStringArray(IntPtr ptr);
+		/** Marshalling functions end **/
+		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern void AddFreeGCHandle(FromIntPtr callback);
 		
@@ -130,6 +138,12 @@ namespace Qyoto {
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern void AddInvokeMethod(InvokeMethodFn callback);
 		
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		static extern IntPtr AddQStringListToArrayList(GetIntPtr callback);
+
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		static extern IntPtr AddArrayListToQStringList(GetIntPtr callback);
+
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern int qt_metacall(IntPtr obj, int _c, int _id, IntPtr a);
 		
@@ -284,6 +298,18 @@ namespace Qyoto {
 
 		static IntPtr IntPtrFromQString(IntPtr ptr) {
 			return (IntPtr) GCHandle.Alloc(StringFromQString(ptr));
+		}
+
+		static IntPtr ArrayListToQStringList(IntPtr ptr) {
+			ArrayList al = (ArrayList) ((GCHandle) ptr).Target;
+			string[] s = (string[]) al.ToArray();
+			return StringArrayToQStringList(s.Length, s);
+		}
+
+		static IntPtr QStringListToArrayList(IntPtr ptr) {
+			string[] s = QStringListToStringArray(ptr);
+			ArrayList al = new ArrayList(s);
+			return (IntPtr) GCHandle.Alloc(al);
 		}
 
 		// The key is a type name of a class which has overriden one or more
@@ -558,6 +584,8 @@ namespace Qyoto {
 		static private GetIntPtrFromString intPtrFromString = new GetIntPtrFromString(IntPtrFromString);
 		static private GetIntPtr intPtrToQString = new GetIntPtr(IntPtrToQString);
 		static private GetIntPtr intPtrFromQString = new GetIntPtr(IntPtrFromQString);
+		static private GetIntPtr arrayListToQStringList = new GetIntPtr(ArrayListToQStringList);
+		static private GetIntPtr qstringListToArrayList = new GetIntPtr(QStringListToArrayList);
 		
 		static private OverridenMethodFn overridenMethod = new OverridenMethodFn(OverridenMethod);
 		static private InvokeMethodFn invokeMethod = new InvokeMethodFn(InvokeMethod);
@@ -581,6 +609,8 @@ namespace Qyoto {
 			AddIntPtrFromCharStar(intPtrFromString);
 			AddIntPtrToQString(intPtrToQString);
 			AddIntPtrFromQString(intPtrFromQString);
+			AddQStringListToArrayList(qstringListToArrayList);
+			AddArrayListToQStringList(arrayListToQStringList);
 
 			AddOverridenMethod(overridenMethod);
 			AddInvokeMethod(invokeMethod);
