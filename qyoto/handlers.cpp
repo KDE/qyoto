@@ -768,6 +768,175 @@ static void marshall_voidP_array(Marshall* m) {
 	}
 }
 
+void marshall_QStringList(Marshall *m) {
+	switch(m->action()) {
+		case Marshall::FromObject: 
+		{
+//			VALUE list = *(m->var());
+//			if (TYPE(list) != T_ARRAY) {
+//				m->item().s_voidp = 0;
+//				break;
+//			}
+
+//			int count = RARRAY(list)->len;
+			int count = 0;
+			QStringList *stringlist = new QStringList;
+
+			for (long i = 0; i < count; i++) {
+//				VALUE item = rb_ary_entry(list, i);
+//					if(TYPE(item) != T_STRING) {
+						stringlist->append(QString());
+//						continue;
+//					}
+//				stringlist->append(*(qstringFromRString(item)));
+			}
+
+			m->item().s_voidp = stringlist;
+			m->next();
+
+			if (stringlist != 0 && !m->type().isConst()) {
+//				rb_ary_clear(list);
+				for (QStringList::Iterator it = stringlist->begin(); it != stringlist->end(); ++it) {
+//					rb_ary_push(list, rstringFromQString(&(*it)));
+				}
+			}
+			
+			if (m->cleanup()) {
+				delete stringlist;
+			}
+	   
+			break;
+		}
+
+      case Marshall::ToObject: 
+	{
+		QStringList *stringlist = static_cast<QStringList *>(m->item().s_voidp);
+		if (!stringlist) {
+//			*(m->var()) = Qnil;
+			break;
+		}
+
+//		VALUE av = rb_ary_new();
+		for (QStringList::Iterator it = stringlist->begin(); it != stringlist->end(); ++it) {
+//			VALUE rv = rstringFromQString(&(*it));
+//			rb_ary_push(av, rv);
+		}
+
+//		*(m->var()) = av;
+
+		if (m->cleanup()) {
+			delete stringlist;
+		}
+
+	}
+	break;
+      default:
+	m->unsupported();
+	break;
+    }
+}
+
+template <class Item, class ItemList, const char *ItemSTR >
+void marshall_ValueListItem(Marshall *m) {
+	switch(m->action()) {
+		case Marshall::FromObject:
+		{
+//			VALUE list = *(m->var());
+//			if (TYPE(list) != T_ARRAY) {
+				m->item().s_voidp = 0;
+//				break;
+//			}
+//			int count = RARRAY(list)->len;
+			int count = 0;
+			ItemList *cpplist = new ItemList;
+			long i;
+			for(i = 0; i < count; i++) {
+//				VALUE item = rb_ary_entry(list, i);
+				// TODO do type checking!
+				smokeqyoto_object *o = value_obj_info(0);
+				if(!o || !o->ptr)
+					continue;
+				
+				void *ptr = o->ptr;
+				ptr = o->smoke->cast(
+					ptr,				// pointer
+					o->classId,				// from
+					o->smoke->idClass(ItemSTR)	        // to
+				);
+				cpplist->append(*(Item*)ptr);
+			}
+
+			m->item().s_voidp = cpplist;
+			m->next();
+
+			if (!m->type().isConst()) {
+//				rb_ary_clear(list);
+				for(int i=0; i < cpplist->size(); ++i) {
+//					VALUE obj = getPointerObject((void*)&(cpplist->at(i)));
+//					rb_ary_push(list, obj);
+				}
+			}
+
+			if (m->cleanup()) {
+				delete cpplist;
+			}
+		}
+		break;
+      
+		case Marshall::ToObject:
+		{
+			ItemList *valuelist = (ItemList*)m->item().s_voidp;
+			if (valuelist == 0) {
+//				*(m->var()) = Qnil;
+				break;
+			}
+
+//			VALUE av = rb_ary_new();
+
+			int ix = m->smoke()->idClass(ItemSTR);
+			const char * className = m->smoke()->binding->className(ix);
+
+			for (int i=0; i < valuelist->size() ; ++i) {
+				void *p = (void *) &(valuelist->at(i));
+
+				if (m->item().s_voidp == 0) {
+//					*(m->var()) = Qnil;
+					break;
+				}
+
+//				VALUE obj = getPointerObject(p);
+//				if(obj == Qnil) {
+					smokeqyoto_object  * o = (smokeqyoto_object *) malloc(sizeof(smokeqyoto_object));
+					o->smoke = m->smoke();
+					o->classId = o->smoke->idClass(ItemSTR);
+					o->ptr = p;
+					o->allocated = false;
+//					obj = set_obj_info(className, o);
+//				}
+		
+//				rb_ary_push(av, obj);
+			}
+
+//			*(m->var()) = av;
+			m->next();
+
+			if (m->cleanup()) {
+				delete valuelist;
+			}
+
+		}
+		break;
+      
+		default:
+			m->unsupported();
+		break;
+	}
+}
+
+#define DEF_VALUELIST_MARSHALLER(ListIdent,ItemList,Item) namespace { char ListIdent##STR[] = #Item; };  \
+        Marshall::HandlerFn marshall_##ListIdent = marshall_ValueListItem<Item,ItemList,ListIdent##STR>;
+
+DEF_VALUELIST_MARSHALLER( QVariantList, QList<QVariant>, QVariant )
 
 TypeHandler Qt_handlers[] = {
     { "QString", marshall_QString },
@@ -777,7 +946,13 @@ TypeHandler Qt_handlers[] = {
     { "int*", marshall_intR },
     { "char*", marshall_charP },
     { "char**", marshall_charP_array },
+    { "QStringList", marshall_QStringList },
+    { "QStringList&", marshall_QStringList },
+    { "QStringList*", marshall_QStringList },
 //    { "void**", marshall_voidP_array },
+    { "QList<QVariant>", marshall_QVariantList },
+    { "QList<QVariant>&", marshall_QVariantList },
+    { "QVariantList&", marshall_QVariantList },
 
     { 0, 0 }
 };

@@ -252,7 +252,7 @@ namespace Qyoto {
 		public QCoreApplication(string[] argv) : this((Type) null) {
 			Qyoto.Init_qyoto();
 			CreateProxy();
-			Qt.qApp = (QApplication) this;
+//			Qt.qApp = (QApplication) this;
 			
 			string[] args = new string[argv.Length + 1];
 			args[0] = System.Reflection.Assembly.GetExecutingAssembly().Location;
