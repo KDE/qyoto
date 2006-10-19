@@ -1,5 +1,9 @@
 2006-10-19  Arno Rehn  <arno@arnorehn.de>
 
+	* Fixed marshalling of QStringLists
+
+2006-10-19  Arno Rehn  <arno@arnorehn.de>
+
 	* Added support for marshalling C++-QStringLists to C#-ArrayLists
 	  (not tested yet)
 

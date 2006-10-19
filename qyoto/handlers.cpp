@@ -30,7 +30,8 @@ static GetIntPtrFromCharStar IntPtrFromCharStar;
 static GetIntPtr IntPtrToQString;
 static GetIntPtr IntPtrFromQString;
 static GetIntPtr ArrayListToQStringList;
-static GetIntPtr QStringListToArrayList;
+static NoArgs ConstructArrayList;
+static AddStringToArrayListFn AddStringToArrayList;
 
 void AddIntPtrToCharStarStar(GetIntPtr callback)
 {
@@ -62,9 +63,14 @@ void AddArrayListToQStringList(GetIntPtr callback)
 	ArrayListToQStringList = callback;
 }
 
-void AddQStringListToArrayList(GetIntPtr callback)
+void AddConstructArrayList(NoArgs callback)
 {
-	QStringListToArrayList = callback;
+	ConstructArrayList = callback;
+}
+
+void AddAddStringToArrayList(AddStringToArrayListFn callback)
+{
+	AddStringToArrayList = callback;
 }
 
 extern void * set_obj_info(const char * className, smokeqyoto_object * o);
@@ -374,21 +380,9 @@ StringArrayToQStringList(int length, char ** strArray)
 	char ** ca = (char**) StringArrayToCharStarStar(length, strArray);
 	
 	for (int i = 0; i < length; i++) {
-		(*result) << ca[i];
+		(*result) << QString(ca[i]);
 	}
 	return (void*) result;
-}
-
-char **
-QStringListToStringArray(void* ptr)
-{
-	QStringList * s = (QStringList*) ptr;
-	char ** result = (char **) calloc(s->count(), sizeof(char *));
-	
-	for (int i = 0; i < s->count(); i++) {
-		result[i] = strdup((*s)[i].toLatin1().constData());
-	}
-	return result;
 }
 
 }
@@ -861,7 +855,11 @@ void marshall_QStringList(Marshall *m) {
 // 		}
 
 //		*(m->var()) = av;
-		m->var().s_voidp = (*QStringListToArrayList)(stringlist);
+		void* al = (*ConstructArrayList)();
+		for (int i = 0; i < stringlist->count(); i++) {
+			(*AddStringToArrayList)(al, (*stringlist)[i].toLatin1().constData());
+		}
+		m->var().s_voidp = al;
 
 		if (m->cleanup()) {
 			delete stringlist;
