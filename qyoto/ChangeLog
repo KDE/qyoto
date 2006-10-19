@@ -1,3 +1,9 @@
+2006-10-18  Richard Dale  <rdale@foton.es>
+
+	* Enum return types were failing with an invalid cast error.
+	  They are now created correctly with a Enum.ToObject() call.
+	* Regenerated the QDBus* classes from the Qt 4.2 headers
+
 2006-10-18  Arno Rehn  <arno@arnorehn.de>
 
 	* Implemented a very ugly hack to construct a QMainWindow in C++ and set
