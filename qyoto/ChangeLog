@@ -1,3 +1,7 @@
+2006-10-20  Richard Dale  <rdale@foton.es>
+
+	* Added alloc_smokeqyoto_object() and free_smokeqyoto_object() f'ns
+
 2006-10-19  Arno Rehn  <arno@arnorehn.de>
 
 	* Fixed marshalling of QStringLists

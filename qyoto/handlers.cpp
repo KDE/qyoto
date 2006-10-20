@@ -594,11 +594,7 @@ marshall_basetype(Marshall *m)
                     m->var().s_voidp = obj;
 		    break;
 		}
-		smokeqyoto_object  * o = (smokeqyoto_object *) malloc(sizeof(smokeqyoto_object));
-		o->smoke = m->smoke();
-		o->classId = m->type().classId();
-		o->ptr = p;
-		o->allocated = false;
+		smokeqyoto_object  * o = alloc_smokeqyoto_object(false, m->smoke(), m->type().classId(), p);
 
 		const char * classname = resolve_classname(o->smoke, o->classId, o->ptr);
 		
@@ -943,11 +939,7 @@ void marshall_ValueListItem(Marshall *m) {
 
 //				VALUE obj = getPointerObject(p);
 //				if(obj == Qnil) {
-					smokeqyoto_object  * o = (smokeqyoto_object *) malloc(sizeof(smokeqyoto_object));
-					o->smoke = m->smoke();
-					o->classId = o->smoke->idClass(ItemSTR);
-					o->ptr = p;
-					o->allocated = false;
+					smokeqyoto_object * o = alloc_smokeqyoto_object(false, m->smoke(),o->smoke->idClass(ItemSTR), p);
 //					obj = set_obj_info(className, o);
 //				}
 		

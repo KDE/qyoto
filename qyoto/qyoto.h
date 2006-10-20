@@ -27,6 +27,13 @@ struct smokeqyoto_object {
     void *ptr;
 };
 
+extern smokeqyoto_object * alloc_smokeqyoto_object(	bool allocated, 
+													Smoke * smoke, 
+													int classId, 
+													void * ptr );
+
+extern void free_smokeqyoto_object(smokeqyoto_object * o);
+
 struct TypeHandler {
     const char *name;
     Marshall::HandlerFn fn;

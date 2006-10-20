@@ -273,6 +273,24 @@ smokeStackFromQtStack(Smoke::Stack stack, void ** _o, int items, MocArgument* ar
 	}
 }
 
+smokeqyoto_object * 
+alloc_smokeqyoto_object(bool allocated, Smoke * smoke, int classId, void * ptr)
+{
+	smokeqyoto_object  * o = (smokeqyoto_object *) malloc(sizeof(smokeqyoto_object));
+	o->classId = classId;
+	o->smoke = smoke;
+	o->ptr = ptr;
+	o->allocated = allocated;
+	return o;
+}
+
+void
+free_smokeqyoto_object(smokeqyoto_object * o)
+{
+	free(o);
+	return;
+}
+
 smokeqyoto_object *value_obj_info(void * qyoto_value) {  // ptr on success, null on fail
     smokeqyoto_object * o = (smokeqyoto_object*) (*GetSmokeObject)(qyoto_value);
     return o;
@@ -572,11 +590,7 @@ public:
 
 		// A constructor
 		if (strcmp(_smoke->methodNames[method().name], _smoke->className(method().classId)) == 0) {
-			smokeqyoto_object  * o = (smokeqyoto_object *) malloc(sizeof(smokeqyoto_object));
-			o->smoke = _smoke;
-			o->classId = method().classId;
-			o->ptr = _stack[0].s_voidp;
-			o->allocated = true;
+			smokeqyoto_object  * o = alloc_smokeqyoto_object(true, _smoke, method().classId, _stack[0].s_voidp);
 			(*SetSmokeObject)(_target, o);
 		    mapPointer(_target, o, o->classId, 0);
 		}
@@ -1199,10 +1213,10 @@ void* make_metaObject(void* obj, const char* stringdata, int stringdata_count, c
 #endif
 	
 	// create smoke object
-	smokeqyoto_object* m = (smokeqyoto_object*)malloc(sizeof(smokeqyoto_object));
-	m->smoke = qt_Smoke;
-	m->classId = qt_Smoke->idClass("QMetaObject");
-	m->ptr = meta;
+	smokeqyoto_object  * m = alloc_smokeqyoto_object(	true, 
+														qt_Smoke, 
+														qt_Smoke->idClass("QMetaObject"), 
+														meta );
 	
 	// create wrapper C# instance
 	return set_obj_info("Qyoto.QMetaObject", m);
@@ -1293,30 +1307,30 @@ DeleteQApp() {
 smokeqyoto_object*
 NewQMainWindow()
 {
-	smokeqyoto_object * o = (smokeqyoto_object*)malloc(sizeof(smokeqyoto_object));
-	o->smoke = qt_Smoke;
-	o->classId = qt_Smoke->idClass("QMainWindow");
-	o->ptr = (void*) new QMainWindow();
+	smokeqyoto_object  * o = alloc_smokeqyoto_object(	true, 
+														qt_Smoke, 
+														qt_Smoke->idClass("QMainWindow"), 
+														(void*) new QMainWindow() );
 	return o;
 }
 
 smokeqyoto_object*
 NewQMainWindow2(smokeqyoto_object* parent)
 {
-	smokeqyoto_object * o = (smokeqyoto_object*)malloc(sizeof(smokeqyoto_object));
-	o->smoke = qt_Smoke;
-	o->classId = qt_Smoke->idClass("QMainWindow");
-	o->ptr = (void*) new QMainWindow((QWidget*) parent->ptr);
+	smokeqyoto_object  * o = alloc_smokeqyoto_object(	true, 
+														qt_Smoke, 
+														qt_Smoke->idClass("QMainWindow"), 
+														new QMainWindow((QWidget*) parent->ptr) );
 	return o;
 }
 
 smokeqyoto_object*
 NewQMainWindow3(smokeqyoto_object* parent, Qt::WindowFlags flags)
 {
-	smokeqyoto_object * o = (smokeqyoto_object*)malloc(sizeof(smokeqyoto_object));
-	o->smoke = qt_Smoke;
-	o->classId = qt_Smoke->idClass("QMainWindow");
-	o->ptr = (void*) new QMainWindow((QWidget*) parent->ptr, flags);
+	smokeqyoto_object  * o = alloc_smokeqyoto_object(	true, 
+														qt_Smoke, 
+														qt_Smoke->idClass("QMainWindow"), 
+														(void*) new QMainWindow((QWidget*) parent->ptr, flags) );
 	return o;
 }
 
