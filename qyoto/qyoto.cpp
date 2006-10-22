@@ -849,7 +849,7 @@ public:
 		}
 		
 		void * overridenMethod = (*OverridenMethod)(obj, (const char *) signature);
-		if (overridenMethod == 0 || signature == "metaObject() const") {
+		if (overridenMethod == 0) {
 			return false;
 		}
 
@@ -1155,20 +1155,16 @@ printf("In make_metaObject()\n");
 #endif
 	smokeqyoto_object* o = value_obj_info(obj);
 	Smoke::Index nameId = o->smoke->idMethodName("metaObject");
-	Smoke::Index parent_index = o->smoke->classes[o->classId].parents;
-	if (!parent_index)
+	Smoke::Index meth = o->smoke->findMethod(o->classId, nameId);
+	if (meth <= 0) {
+		// Should never happen..
 		return 0;
+	}
 
-	Smoke::Index parentId = o->smoke->inheritanceList[parent_index];
-	Smoke::Index meth = o->smoke->findMethod(parentId, nameId);
-	if (meth <= 0)
-		return 0;
-		
 	Smoke::Method &methodId = o->smoke->methods[o->smoke->methodMaps[meth].method];
 	Smoke::ClassFn fn = o->smoke->classes[methodId.classId].classFn;
 	Smoke::StackItem i[1];
 	(*fn)(methodId.method, o->ptr, i);
-	
 	return (QMetaObject*) i[0].s_voidp;
 }
 
@@ -1194,7 +1190,7 @@ void* make_metaObject(void* obj, const char* stringdata, int stringdata_count, c
 	*meta = tmp;
 
 #ifdef DEBUG
-	printf("make_metaObject() superdata: %p\n", meta->d.superdata);
+	printf("make_metaObject() superdata: %p %s\n", meta->d.superdata, parent->className());
 	printf("stringdata: ");
 	for (int j = 0; j < stringdata_count; j++) {
 		if (meta->d.stringdata[j] == 0) {
