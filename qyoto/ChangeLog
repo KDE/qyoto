@@ -1,3 +1,10 @@
+2006-10-22  Arno Rehn  <arno@arnorehn.de>
+
+	* Currect return value for QyotoSmokeBinding::callMethod() where
+	  it would return 'true' if metaObject() was overriden
+	  (fixes QDockWidget bug)
+	* Fixed some internal class names
+
 2006-10-20  Richard Dale  <rdale@foton.es>
 
 	* Added alloc_smokeqyoto_object() and free_smokeqyoto_object() f'ns

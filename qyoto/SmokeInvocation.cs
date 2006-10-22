@@ -149,18 +149,6 @@ namespace Qyoto {
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern int qt_metacall(IntPtr obj, int _c, int _id, IntPtr a);
 
-#if QMAINWINDOW_HACK		
-		/// Extra functions for QMainWindow
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		static extern IntPtr NewQMainWindow();
-		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		static extern IntPtr NewQMainWindow2(IntPtr parent);
-		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		static extern IntPtr NewQMainWindow3(IntPtr parent, int flags);
-#endif
-		
 		static void FreeGCHandle(IntPtr handle) {
 			((GCHandle) handle).Free();
 		}
@@ -248,10 +236,6 @@ namespace Qyoto {
 		// 'CreateProxy()' to create the transparent proxy to forward the method
 		// calls to SmokeInvocation.Invoke() is called.
 		static IntPtr CreateInstance(string className) {
-			if (className == "Qt::SpacerItem") {
-				className = "Qyoto.QSpacerItem";
-			}
-			
 			Type klass = Type.GetType(className);
 #if DEBUG
 			Console.WriteLine("ENTER CreateInstance className => {0}, {1}", className, klass);
@@ -686,33 +670,6 @@ namespace Qyoto {
 								callMessage.ArgCount.ToString() );
 #endif
 
-#if QMAINWINDOW_HACK
-			/// Handle special case
-			if (callMessage.MethodBase.Name == "NewQMainWindow") {
-				int ps = callMessage.ArgCount;
-				if (ps == 0) {
-// 					Console.WriteLine("Constructing QMainWindow in C++");
-					IntPtr o = NewQMainWindow();
-// 					Console.WriteLine("Setting _smokeobject");
-					SetSmokeObject(_instance, o);
-					return (IMethodReturnMessage) message;
-				} else if (ps == 1) {
-// 					Console.WriteLine("Constructing QMainWindow in C++");
-					IntPtr o = NewQMainWindow2(GetSmokeObject(callMessage.Args[0]));
-// 					Console.WriteLine("Setting _smokeobject");
-					SetSmokeObject(_instance, o);
-					return (IMethodReturnMessage) message;
-				} else if (ps == 2) {
-// 					Console.WriteLine("Constructing QMainWindow in C++");
-					IntPtr o = NewQMainWindow3(GetSmokeObject(callMessage.Args[0]), (int) callMessage.Args[1]);
-// 					Console.WriteLine("Setting _smokeobject");
-					SetSmokeObject(_instance, o);
-					return (IMethodReturnMessage) message;
-				}
-				/// If none of the above cases matches, just go on.
-			}
-#endif
-			
 			StackItem[] stack = new StackItem[callMessage.ArgCount+1];
 			
 			string mungedName = callMessage.MethodName;

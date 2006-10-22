@@ -256,28 +256,28 @@ resolve_classname(Smoke* smoke, int classId, void * ptr)
 	} else if (isDerivedFromByName(smoke, smoke->classes[classId].className, "QLayoutItem")) {
 		QLayoutItem * item = (QLayoutItem *) smoke->cast(ptr, classId, smoke->idClass("QLayoutItem"));
 		if (item->widget() != 0) {
-			return "Qt::WidgetItem";
+			return "Qyoto.QWidgetItem";
 		} else if (item->spacerItem() != 0) {
-			return "Qt::SpacerItem";
+			return "Qyoto.QSpacerItem";
 		} else {
-			return "Qt::Layout";
+			return "Qyoto.QLayout";
 		}
 	} else if (isDerivedFromByName(smoke, smoke->classes[classId].className, "QListWidgetItem")) {
 		QListWidgetItem * item = (QListWidgetItem *) smoke->cast(ptr, classId, smoke->idClass("QListWidgetItem"));
 		switch (item->type()) {
 		case 0:
-			return "Qt::ListWidgetItem";
+			return "Qyoto.QListWidgetItem";
 		default:
-			return "Qt::ListWidgetItem";
+			return "Qyoto.QListWidgetItem";
 			break;
 		}
 	} else if (isDerivedFromByName(smoke, smoke->classes[classId].className, "QTableWidgetItem")) {
 		QTableWidgetItem * item = (QTableWidgetItem *) smoke->cast(ptr, classId, smoke->idClass("QTableWidgetItem"));
 		switch (item->type()) {
 		case 0:
-			return "Qt::TableWidgetItem";
+			return "Qyoto.QTableWidgetItem";
 		default:
-			return "Qt::TableWidgetItem";
+			return "Qyoto.QTableWidgetItem";
 			break;
 		}
 	}

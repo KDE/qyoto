@@ -849,7 +849,7 @@ public:
 		}
 		
 		void * overridenMethod = (*OverridenMethod)(obj, (const char *) signature);
-		if (overridenMethod == 0) {
+		if (overridenMethod == 0 || signature == "metaObject() const") {
 			return false;
 		}
 
@@ -1303,40 +1303,6 @@ void
 DeleteQApp() {
 	delete qApp;
 }
-
-#ifdef QMAINWINDOW_HACK
-
-smokeqyoto_object*
-NewQMainWindow()
-{
-	smokeqyoto_object  * o = alloc_smokeqyoto_object(	true, 
-														qt_Smoke, 
-														qt_Smoke->idClass("QMainWindow"), 
-														(void*) new QMainWindow() );
-	return o;
-}
-
-smokeqyoto_object*
-NewQMainWindow2(smokeqyoto_object* parent)
-{
-	smokeqyoto_object  * o = alloc_smokeqyoto_object(	true, 
-														qt_Smoke, 
-														qt_Smoke->idClass("QMainWindow"), 
-														new QMainWindow((QWidget*) parent->ptr) );
-	return o;
-}
-
-smokeqyoto_object*
-NewQMainWindow3(smokeqyoto_object* parent, Qt::WindowFlags flags)
-{
-	smokeqyoto_object  * o = alloc_smokeqyoto_object(	true, 
-														qt_Smoke, 
-														qt_Smoke->idClass("QMainWindow"), 
-														(void*) new QMainWindow((QWidget*) parent->ptr, flags) );
-	return o;
-}
-
-#endif
 
 }
 
