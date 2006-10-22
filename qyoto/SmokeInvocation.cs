@@ -148,7 +148,8 @@ namespace Qyoto {
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern int qt_metacall(IntPtr obj, int _c, int _id, IntPtr a);
-		
+
+#if QMAINWINDOW_HACK		
 		/// Extra functions for QMainWindow
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern IntPtr NewQMainWindow();
@@ -158,6 +159,7 @@ namespace Qyoto {
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern IntPtr NewQMainWindow3(IntPtr parent, int flags);
+#endif
 		
 		static void FreeGCHandle(IntPtr handle) {
 			((GCHandle) handle).Free();
@@ -684,6 +686,7 @@ namespace Qyoto {
 								callMessage.ArgCount.ToString() );
 #endif
 
+#if QMAINWINDOW_HACK
 			/// Handle special case
 			if (callMessage.MethodBase.Name == "NewQMainWindow") {
 				int ps = callMessage.ArgCount;
@@ -708,6 +711,7 @@ namespace Qyoto {
 				}
 				/// If none of the above cases matches, just go on.
 			}
+#endif
 			
 			StackItem[] stack = new StackItem[callMessage.ArgCount+1];
 			

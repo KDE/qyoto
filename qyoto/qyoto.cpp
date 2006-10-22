@@ -1304,6 +1304,8 @@ DeleteQApp() {
 	delete qApp;
 }
 
+#ifdef QMAINWINDOW_HACK
+
 smokeqyoto_object*
 NewQMainWindow()
 {
@@ -1333,6 +1335,8 @@ NewQMainWindow3(smokeqyoto_object* parent, Qt::WindowFlags flags)
 														(void*) new QMainWindow((QWidget*) parent->ptr, flags) );
 	return o;
 }
+
+#endif
 
 }
 
