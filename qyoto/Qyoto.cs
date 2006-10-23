@@ -162,7 +162,11 @@ namespace Qyoto
 			/// This Hashtable contains the slots of a class. The C++ type signature is the key, the appropriate array with the MethodInfo, signature and return type the value.
 			Hashtable slots = new Hashtable();
 			
-			MethodInfo[] mis = t.GetMethods( BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic);
+			MethodInfo[] mis = t.GetMethods(	BindingFlags.Instance 
+												| BindingFlags.Static 
+												| BindingFlags.Public 
+												| BindingFlags.NonPublic
+												| BindingFlags.DeclaredOnly );
 			
 			foreach (MethodInfo mi in mis) {
 				object[] attributes = mi.GetCustomAttributes(typeof(Q_SLOT), false);
@@ -197,13 +201,15 @@ namespace Qyoto
 				return signals;
 			}
 			
-			Type iface;
-			try {
-				iface = GetSignalsInterface(t);
-			}
-			catch {
+			MethodInfo methodInfo = t.GetMethod(	"Emit", 
+													BindingFlags.Instance 
+													| BindingFlags.NonPublic 
+													| BindingFlags.DeclaredOnly );
+			if (methodInfo == null) {
 				return signals;
 			}
+
+			Type iface = methodInfo.ReturnType;
 			MethodInfo[] mis = iface.GetMethods();
 			
 			/// the interface has no signals...

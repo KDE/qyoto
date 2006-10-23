@@ -3,6 +3,10 @@
 	* When a QMetaObject was constructed, the parent was wrongly being
 	  set to the superclass of the superclass, rather than just the
 	  superclass
+	* If no Emit() method is found for a class, assume it doesn't have
+	  any signals and don't include any in the QMetaObject for it.
+	* Only look for methods marked Q_SLOT in the current class, and not
+	  the superclasses when constructing a QMetaObject.
 
 2006-10-22  Arno Rehn  <arno@arnorehn.de>
 
