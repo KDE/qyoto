@@ -73,7 +73,6 @@ namespace Qyoto {
 		delegate string GetStringFromIntPtr(IntPtr ptr);
 		delegate IntPtr OverridenMethodFn(IntPtr instance, string method);
 		delegate void InvokeMethodFn(IntPtr instance, IntPtr method, IntPtr args);
-		delegate void AddStringToArrayListFn (IntPtr ptr, string str);
 		
 		/** Marshalling functions begin **/
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
@@ -144,7 +143,7 @@ namespace Qyoto {
 		static extern IntPtr AddArrayListToQStringList(GetIntPtr callback);
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		static extern void AddAddStringToArrayList(AddStringToArrayListFn callback);
+		static extern void AddAddIntPtrToArrayList(SetIntPtr callback);
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern int qt_metacall(IntPtr obj, int _c, int _id, IntPtr a);
@@ -299,9 +298,10 @@ namespace Qyoto {
 			return (IntPtr) GCHandle.Alloc(al);
 		}
 
-		static void AddStringToArrayList(IntPtr ptr, string str) {
-			ArrayList al = (ArrayList) ((GCHandle) ptr).Target;
-			al.Add(str);
+		static void AddIntPtrToArrayList(IntPtr obj, IntPtr ptr) {
+			object o = ((GCHandle) ptr).Target;
+			ArrayList al = (ArrayList) ((GCHandle) obj).Target;
+			al.Add(o);
 		}
 
 		// The key is a type name of a class which has overriden one or more
@@ -578,7 +578,7 @@ namespace Qyoto {
 		static private GetIntPtr intPtrFromQString = new GetIntPtr(IntPtrFromQString);
 		static private GetIntPtr arrayListToQStringList = new GetIntPtr(ArrayListToQStringList);
 		static private NoArgs constructArrayList = new NoArgs(ConstructArrayList);
-		static private AddStringToArrayListFn addStringToArrayList = new AddStringToArrayListFn(AddStringToArrayList);
+		static private SetIntPtr addIntPtrToArrayList = new SetIntPtr(AddIntPtrToArrayList);
 		
 		static private OverridenMethodFn overridenMethod = new OverridenMethodFn(OverridenMethod);
 		static private InvokeMethodFn invokeMethod = new InvokeMethodFn(InvokeMethod);
@@ -604,7 +604,7 @@ namespace Qyoto {
 			AddIntPtrFromQString(intPtrFromQString);
 			AddConstructArrayList(constructArrayList);
 			AddArrayListToQStringList(arrayListToQStringList);
-			AddAddStringToArrayList(addStringToArrayList);
+			AddAddIntPtrToArrayList(addIntPtrToArrayList);
 
 			AddOverridenMethod(overridenMethod);
 			AddInvokeMethod(invokeMethod);

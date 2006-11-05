@@ -31,7 +31,7 @@ static GetIntPtr IntPtrToQString;
 static GetIntPtr IntPtrFromQString;
 static GetIntPtr ArrayListToQStringList;
 static NoArgs ConstructArrayList;
-static AddStringToArrayListFn AddStringToArrayList;
+static SetIntPtr AddIntPtrToArrayList;
 
 void AddIntPtrToCharStarStar(GetIntPtr callback)
 {
@@ -68,9 +68,9 @@ void AddConstructArrayList(NoArgs callback)
 	ConstructArrayList = callback;
 }
 
-void AddAddStringToArrayList(AddStringToArrayListFn callback)
+void AddAddIntPtrToArrayList(SetIntPtr callback)
 {
-	AddStringToArrayList = callback;
+	AddIntPtrToArrayList = callback;
 }
 
 extern void * set_obj_info(const char * className, smokeqyoto_object * o);
@@ -853,7 +853,7 @@ void marshall_QStringList(Marshall *m) {
 //		*(m->var()) = av;
 		void* al = (*ConstructArrayList)();
 		for (int i = 0; i < stringlist->count(); i++) {
-			(*AddStringToArrayList)(al, (*stringlist)[i].toLatin1().constData());
+			(*AddIntPtrToArrayList)(al, (*IntPtrFromCharStar)((char*) (*stringlist)[i].toLatin1().constData()));
 		}
 		m->var().s_voidp = al;
 
@@ -920,38 +920,34 @@ void marshall_ValueListItem(Marshall *m) {
 		{
 			ItemList *valuelist = (ItemList*)m->item().s_voidp;
 			if (valuelist == 0) {
-//				*(m->var()) = Qnil;
 				break;
 			}
 
-//			VALUE av = rb_ary_new();
-
 			int ix = m->smoke()->idClass(ItemSTR);
 			const char * className = m->smoke()->binding->className(ix);
-
+			bool isPrimitive = false; // we need a method for checking if T is a primitive
+			
+			void * al = (*ConstructArrayList)();
+			
 			for (int i=0; i < valuelist->size() ; ++i) {
 				void *p = (void *) &(valuelist->at(i));
 
-				if (m->item().s_voidp == 0) {
-//					*(m->var()) = Qnil;
-					break;
+				if (isPrimitive == false) { // No primitive, so we have a Qt object
+					smokeqyoto_object * o = alloc_smokeqyoto_object(false, m->smoke(), ix, p);
+					void * obj = set_obj_info(className, o);
+					(*AddIntPtrToArrayList)(al, obj);
+				} else { // We have a primitive, so add the pointer directly. Not tested, does this work?
+					(*AddIntPtrToArrayList)(al, p);
 				}
-
-//				VALUE obj = getPointerObject(p);
-//				if(obj == Qnil) {
-					smokeqyoto_object * o = alloc_smokeqyoto_object(false, m->smoke(),o->smoke->idClass(ItemSTR), p);
-//					obj = set_obj_info(className, o);
-//				}
-		
-//				rb_ary_push(av, obj);
 			}
 
-//			*(m->var()) = av;
+			m->var().s_voidp = al;
 			m->next();
 
 			if (m->cleanup()) {
 				delete valuelist;
 			}
+			
 
 		}
 		break;
@@ -961,6 +957,7 @@ void marshall_ValueListItem(Marshall *m) {
 		break;
 	}
 }
+
 
 #define DEF_VALUELIST_MARSHALLER(ListIdent,ItemList,Item) namespace { char ListIdent##STR[] = #Item; };  \
         Marshall::HandlerFn marshall_##ListIdent = marshall_ValueListItem<Item,ItemList,ListIdent##STR>;

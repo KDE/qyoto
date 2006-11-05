@@ -70,7 +70,6 @@ typedef void (*InvokeMethodFn)(void *, void *, void *);
 typedef void* (*CreateInstanceFn)(const char *);
 typedef void (*InvokeCustomSlotFn)(void*, const char*, void*, void*);
 typedef bool (*IsSmokeClassFn)(void*);
-typedef void (*AddStringToArrayListFn)(void *, const char *);
 
 extern FromIntPtr FreeGCHandle;
 
