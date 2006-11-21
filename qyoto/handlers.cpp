@@ -30,6 +30,7 @@ static GetIntPtrFromCharStar IntPtrFromCharStar;
 static GetIntPtr IntPtrToQString;
 static GetIntPtr IntPtrFromQString;
 static GetIntPtr ArrayListToQStringList;
+static GetIntPtr ArrayListToPointerList;
 static NoArgs ConstructArrayList;
 static SetIntPtr AddIntPtrToArrayList;
 
@@ -63,6 +64,11 @@ void AddArrayListToQStringList(GetIntPtr callback)
 	ArrayListToQStringList = callback;
 }
 
+void AddArrayListToPointerList(GetIntPtr callback)
+{
+	ArrayListToPointerList = callback;
+}
+
 void AddConstructArrayList(NoArgs callback)
 {
 	ConstructArrayList = callback;
@@ -71,6 +77,18 @@ void AddConstructArrayList(NoArgs callback)
 void AddAddIntPtrToArrayList(SetIntPtr callback)
 {
 	AddIntPtrToArrayList = callback;
+}
+
+void* ConstructPointerList()
+{
+	void * list = (void*) new QList<void*>;
+	return list;
+}
+
+void AddObjectToPointerList(void* ptr, void* obj)
+{
+	QList<void*> * list = (QList<void*>*) ptr;
+	list->append(obj);
 }
 
 extern void * set_obj_info(const char * className, smokeqyoto_object * o);
@@ -284,6 +302,39 @@ resolve_classname(Smoke* smoke, int classId, void * ptr)
 	
 	return smoke->binding->className(classId);
 }
+
+/*static bool
+isPrimitive(const char* type) {
+	if (type == "void") {
+		return true;
+	} else if (type == "bool") {
+		return true;
+	} else if (type == "int") {
+		return true;
+	} else if (type == "long") {
+		return true;
+	} else if (type == "uint") {
+		return true;
+	} else if (type == "ulong") {
+		return true;
+	} else if (type == "short") {
+		return true;
+	} else if (type == "ushort") {
+		return true;
+	} else if (type == "byte") {
+		return true;
+	} else if (type == "sbyte") {
+		return true;
+	} else if (type == "double") {
+		return true;
+	} else if (type == "float") {
+		return true;
+	} else if (type == "char") {
+		return true;
+	}
+	
+	return false;
+}*/
 
 bool
 matches_arg(Smoke *smoke, Smoke::Index meth, Smoke::Index argidx, const char *argtype)
@@ -874,42 +925,24 @@ void marshall_ValueListItem(Marshall *m) {
 	switch(m->action()) {
 		case Marshall::FromObject:
 		{
-//			VALUE list = *(m->var());
-//			if (TYPE(list) != T_ARRAY) {
-				m->item().s_voidp = 0;
-//				break;
-//			}
-//			int count = RARRAY(list)->len;
-			int count = 0;
 			ItemList *cpplist = new ItemList;
-			long i;
-			for(i = 0; i < count; i++) {
-//				VALUE item = rb_ary_entry(list, i);
-				// TODO do type checking!
-				smokeqyoto_object *o = value_obj_info(0);
-				if(!o || !o->ptr)
-					continue;
+			QList<void*>* list = (QList<void*>*) (*ArrayListToPointerList)(m->var().s_voidp);
+			
+			for (int i; i < list->size(); ++i) {
+				smokeqyoto_object * o = value_obj_info(list->at(i));
 				
-				void *ptr = o->ptr;
+				void* ptr = o->ptr;
 				ptr = o->smoke->cast(
-					ptr,				// pointer
-					o->classId,				// from
-					o->smoke->idClass(ItemSTR)	        // to
+					ptr,                            // pointer
+					o->classId,                             // from
+					o->smoke->idClass(ItemSTR)              // to
 				);
-				cpplist->append(*(Item*)ptr);
+				
+				cpplist->append((Item*) ptr);
 			}
-
+			
 			m->item().s_voidp = cpplist;
-			m->next();
-
-			if (!m->type().isConst()) {
-//				rb_ary_clear(list);
-				for(int i=0; i < cpplist->size(); ++i) {
-//					VALUE obj = getPointerObject((void*)&(cpplist->at(i)));
-//					rb_ary_push(list, obj);
-				}
-			}
-
+			
 			if (m->cleanup()) {
 				delete cpplist;
 			}
@@ -925,20 +958,25 @@ void marshall_ValueListItem(Marshall *m) {
 
 			int ix = m->smoke()->idClass(ItemSTR);
 			const char * className = m->smoke()->binding->className(ix);
-			bool isPrimitive = false; // we need a method for checking if T is a primitive
+			//qDebug("original: %s\nmodified: %s", ItemSTR, className);
+			
+			///
+			/// Do we have a case where there is a QList with a primitve list type? I think not, so commented out.
+			///
+// 			bool primitive = isPrimitive(ItemSTR);
 			
 			void * al = (*ConstructArrayList)();
 			
 			for (int i=0; i < valuelist->size() ; ++i) {
 				void *p = (void *) &(valuelist->at(i));
 
-				if (isPrimitive == false) { // No primitive, so we have a Qt object
+// 				if (primitive == false) { // No primitive, so we have a Qt object
 					smokeqyoto_object * o = alloc_smokeqyoto_object(false, m->smoke(), ix, p);
 					void * obj = set_obj_info(className, o);
 					(*AddIntPtrToArrayList)(al, obj);
-				} else { // We have a primitive, so add the pointer directly. Not tested, does this work?
-					(*AddIntPtrToArrayList)(al, p);
-				}
+// 				} else { // We have a primitive, so add the pointer directly. Not tested, does this work?
+// 					(*AddIntPtrToArrayList)(al, p);
+// 				}
 			}
 
 			m->var().s_voidp = al;

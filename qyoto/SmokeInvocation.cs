@@ -88,6 +88,15 @@ namespace Qyoto {
 		static extern IntPtr StringArrayToQStringList(int length, string[] strArray);
 		/** Marshalling functions end **/
 		
+		/** Other functions **/
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		static extern IntPtr ConstructPointerList();
+		
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		static extern void AddObjectToPointerList(IntPtr ptr, IntPtr obj);
+		/** Other functions end **/
+		
+		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern void AddFreeGCHandle(FromIntPtr callback);
 		
@@ -141,6 +150,9 @@ namespace Qyoto {
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern IntPtr AddArrayListToQStringList(GetIntPtr callback);
+
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		static extern IntPtr AddArrayListToPointerList(GetIntPtr callback);
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern void AddAddIntPtrToArrayList(SetIntPtr callback);
@@ -291,6 +303,15 @@ namespace Qyoto {
 			ArrayList al = (ArrayList) ((GCHandle) ptr).Target;
 			string[] s = (string[]) al.ToArray();
 			return StringArrayToQStringList(s.Length, s);
+		}
+
+		static IntPtr ArrayListToPointerList(IntPtr ptr) {
+			ArrayList al = (ArrayList) ((GCHandle) ptr).Target;
+			IntPtr list = ConstructPointerList();
+			foreach (object o in al) {
+				AddObjectToPointerList(list, (IntPtr) GCHandle.Alloc(o));
+			}
+			return list;
 		}
 
 		static IntPtr ConstructArrayList() {
@@ -577,6 +598,7 @@ namespace Qyoto {
 		static private GetIntPtr intPtrToQString = new GetIntPtr(IntPtrToQString);
 		static private GetIntPtr intPtrFromQString = new GetIntPtr(IntPtrFromQString);
 		static private GetIntPtr arrayListToQStringList = new GetIntPtr(ArrayListToQStringList);
+		static private GetIntPtr arrayListToPointerList = new GetIntPtr(ArrayListToPointerList);
 		static private NoArgs constructArrayList = new NoArgs(ConstructArrayList);
 		static private SetIntPtr addIntPtrToArrayList = new SetIntPtr(AddIntPtrToArrayList);
 		
@@ -604,6 +626,7 @@ namespace Qyoto {
 			AddIntPtrFromQString(intPtrFromQString);
 			AddConstructArrayList(constructArrayList);
 			AddArrayListToQStringList(arrayListToQStringList);
+			AddArrayListToPointerList(arrayListToPointerList);
 			AddAddIntPtrToArrayList(addIntPtrToArrayList);
 
 			AddOverridenMethod(overridenMethod);

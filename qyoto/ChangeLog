@@ -1,5 +1,10 @@
 2006-10-23  Arno Rehn  <arno@arnorehn.de>
 
+	* Marshalling ItemLists should now fully work. But we still need
+	  many of the DEF_VALUELIST_MARSHALLER things.
+
+2006-10-23  Arno Rehn  <arno@arnorehn.de>
+
 	* Added more code for marshalling QLists. QList<T> return types
 	  should now work for all QLists where T is not a primitive type.
 
