@@ -2,6 +2,8 @@
 
 	* Added marshall_ItemList and all DEF_LIST_MARSHALLER and
 	  DEF_VALUELIST_MARSHALLER from qtruby.
+	* Added a CMake file for compilation with CMake. Still keeping
+	  the old makefile in case for some reason we need it again.
 
 2006-10-23  Arno Rehn  <arno@arnorehn.de>
 
