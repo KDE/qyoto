@@ -6,6 +6,41 @@
 #include <QtCore/qmetaobject.h>
 #include <QtGui/qtablewidget.h>
 
+#include <QtGui/qpainter.h>
+#include <QtGui/qpalette.h>
+#include <QtGui/qtablewidget.h>
+#include <QtGui/qtoolbar.h>
+#include <QtGui/qdockwidget.h>
+#include <QtNetwork/qurlinfo.h>
+#include <QtCore/qlinkedlist.h>
+#include <QtCore/qobject.h>
+#include <QtCore/qtextcodec.h>
+#include <QtCore/qprocess.h>
+#include <QtNetwork/qhostaddress.h>
+#include <QtCore/qpair.h>
+#include <QtGui/qevent.h>
+#include <QtGui/qpixmap.h>
+#include <QtGui/qaction.h>
+#include <QtGui/qtreewidget.h>
+#include <QtGui/qtextobject.h>
+#include <QtGui/qtextlayout.h>
+#include <QtGui/qabstractbutton.h>
+#include <QtGui/qlistwidget.h>
+#include <QtGui/qpolygon.h>
+#include <QtCore/qurl.h>
+#include <QtCore/qdir.h>
+#include <QtCore/qobject.h>
+#include <QtGui/qwidget.h>
+#include <QtGui/qtabbar.h>
+#include <QtCore/qhash.h>
+
+#if QT_VERSION >= 0x40200
+#include <QtGui/qgraphicsscene.h>
+#include <QtGui/qgraphicsitem.h>
+#include <QtGui/qstandarditemmodel.h>
+#include <QtGui/qundostack.h>
+#endif
+
 #include "smoke.h"
 
 #undef DEBUG
@@ -921,7 +956,7 @@ void marshall_QStringList(Marshall *m) {
 }
 
 template <class Item, class ItemList, const char *ItemSTR >
-void marshall_ValueListItem(Marshall *m) {
+void marshall_ItemList(Marshall *m) {
 	switch(m->action()) {
 		case Marshall::FromObject:
 		{
@@ -939,6 +974,91 @@ void marshall_ValueListItem(Marshall *m) {
 				);
 				
 				cpplist->append((Item*) ptr);
+			}
+			
+			m->item().s_voidp = cpplist;
+			
+			if (m->cleanup()) {
+				delete cpplist;
+			}
+		}
+		break;
+      
+		case Marshall::ToObject:
+		{
+			ItemList *valuelist = (ItemList*)m->item().s_voidp;
+			if (valuelist == 0) {
+				break;
+			}
+
+			int ix = m->smoke()->idClass(ItemSTR);
+			const char * className = m->smoke()->binding->className(ix);
+			
+			void * al = (*ConstructArrayList)();
+			
+			for (int i=0; i < valuelist->size() ; ++i) {
+				void *p = (void *) valuelist->at(i);
+
+				smokeqyoto_object * o = alloc_smokeqyoto_object(false, m->smoke(), ix, p);
+				void * obj = set_obj_info(className, o);
+				(*AddIntPtrToArrayList)(al, obj);
+			}
+
+			m->var().s_voidp = al;
+			m->next();
+
+			if (m->cleanup()) {
+				delete valuelist;
+			}
+			
+
+		}
+		break;
+      
+		default:
+			m->unsupported();
+		break;
+	}
+}
+
+#define DEF_LIST_MARSHALLER(ListIdent,ItemList,Item) namespace { char ListIdent##STR[] = #Item; };  \
+        Marshall::HandlerFn marshall_##ListIdent = marshall_ItemList<Item,ItemList,ListIdent##STR>;
+
+DEF_LIST_MARSHALLER( QAbstractButtonList, QList<QAbstractButton*>, QAbstractButton )
+DEF_LIST_MARSHALLER( QListWidgetItemList, QList<QListWidgetItem*>, QListWidgetItem )
+DEF_LIST_MARSHALLER( QTableWidgetItemList, QList<QTableWidgetItem*>, QTableWidgetItem )
+DEF_LIST_MARSHALLER( QObjectList, QList<QObject*>, QObject )
+DEF_LIST_MARSHALLER( QWidgetList, QList<QWidget*>, QWidget )
+DEF_LIST_MARSHALLER( QActionList, QList<QAction*>, QAction )
+DEF_LIST_MARSHALLER( QWidgetPtrList, QList<QWidget*>, QWidget )
+DEF_LIST_MARSHALLER( QTextFrameList, QList<QTextFrame*>, QTextFrame )
+DEF_LIST_MARSHALLER( QTreeWidgetItemList, QList<QTreeWidgetItem*>, QTreeWidgetItem )
+
+#if QT_VERSION >= 0x40200
+DEF_LIST_MARSHALLER( QGraphicsItemList, QList<QGraphicsItem*>, QGraphicsItem )
+DEF_LIST_MARSHALLER( QStandardItemList, QList<QStandardItem*>, QStandardItem )
+DEF_LIST_MARSHALLER( QUndoStackList, QList<QUndoStack*>, QUndoStack )
+#endif
+
+template <class Item, class ItemList, const char *ItemSTR >
+void marshall_ValueListItem(Marshall *m) {
+	switch(m->action()) {
+		case Marshall::FromObject:
+		{
+			ItemList *cpplist = new ItemList;
+			QList<void*>* list = (QList<void*>*) (*ArrayListToPointerList)(m->var().s_voidp);
+			
+			for (int i; i < list->size(); ++i) {
+				smokeqyoto_object * o = value_obj_info(list->at(i));
+				
+				void* ptr = o->ptr;
+				ptr = o->smoke->cast(
+					ptr,                            // pointer
+					o->classId,                             // from
+					o->smoke->idClass(ItemSTR)              // to
+				);
+				
+				cpplist->append(*(Item*) ptr);
 			}
 			
 			m->item().s_voidp = cpplist;
@@ -1000,7 +1120,30 @@ void marshall_ValueListItem(Marshall *m) {
 #define DEF_VALUELIST_MARSHALLER(ListIdent,ItemList,Item) namespace { char ListIdent##STR[] = #Item; };  \
         Marshall::HandlerFn marshall_##ListIdent = marshall_ValueListItem<Item,ItemList,ListIdent##STR>;
 
+DEF_VALUELIST_MARSHALLER( QTableWidgetSelectionRangeList, QList<QTableWidgetSelectionRange>, QTableWidgetSelectionRange )
+DEF_VALUELIST_MARSHALLER( QTextLayoutFormatRangeList, QList<QTextLayout::FormatRange>, QTextLayout::FormatRange)
 DEF_VALUELIST_MARSHALLER( QVariantList, QList<QVariant>, QVariant )
+DEF_VALUELIST_MARSHALLER( QPixmapList, QList<QPixmap>, QPixmap )
+DEF_VALUELIST_MARSHALLER( QModelIndexList, QList<QModelIndex>, QModelIndex )
+DEF_VALUELIST_MARSHALLER( QHostAddressList, QList<QHostAddress>, QHostAddress )
+DEF_VALUELIST_MARSHALLER( QPolygonFList, QList<QPolygonF>, QPolygonF )
+DEF_VALUELIST_MARSHALLER( QImageTextKeyLangList, QList<QImageTextKeyLang>, QImageTextKeyLang )
+DEF_VALUELIST_MARSHALLER( QUrlList, QList<QUrl>, QUrl )
+DEF_VALUELIST_MARSHALLER( QFileInfoList, QFileInfoList, QFileInfo )
+DEF_VALUELIST_MARSHALLER( QTextBlockList, QList<QTextBlock>, QTextBlock )
+
+DEF_VALUELIST_MARSHALLER( QColorVector, QVector<QColor>, QColor )
+DEF_VALUELIST_MARSHALLER( QRgbVector, QVector<QRgb>, QRgb )
+DEF_VALUELIST_MARSHALLER( QVariantVector, QVector<QVariant>, QVariant )
+DEF_VALUELIST_MARSHALLER( QTextFormatVector, QVector<QTextFormat>, QTextFormat )
+DEF_VALUELIST_MARSHALLER( QTextLengthVector, QVector<QTextLength>, QTextLength )
+DEF_VALUELIST_MARSHALLER( QPointFVector, QVector<QPointF>, QPointF )
+DEF_VALUELIST_MARSHALLER( QPointVector, QVector<QPoint>, QPoint )
+DEF_VALUELIST_MARSHALLER( QLineVector, QVector<QLine>, QLine )
+DEF_VALUELIST_MARSHALLER( QLineFVector, QVector<QLineF>, QLineF )
+DEF_VALUELIST_MARSHALLER( QRectVector, QVector<QRect>, QRect )
+DEF_VALUELIST_MARSHALLER( QRectFVector, QVector<QRectF>, QRectF )
+
 
 TypeHandler Qt_handlers[] = {
     { "QString", marshall_QString },
@@ -1014,10 +1157,69 @@ TypeHandler Qt_handlers[] = {
     { "QStringList&", marshall_QStringList },
     { "QStringList*", marshall_QStringList },
 //    { "void**", marshall_voidP_array },
+    { "QList<QTableWidgetSelectionRange>", marshall_QTableWidgetSelectionRangeList },
+    { "QList<QTextLayout::FormatRange>", marshall_QTextLayoutFormatRangeList },
+    { "QList<QTextLayout::FormatRange>&", marshall_QTextLayoutFormatRangeList },
+    { "QList<QTextBlock>", marshall_QTextBlockList },
+    { "QList<QPolygonF>", marshall_QPolygonFList },
+    { "QList<QHostAddress>", marshall_QHostAddressList },
+    { "QList<QHostAddress>&", marshall_QHostAddressList },
     { "QList<QVariant>", marshall_QVariantList },
     { "QList<QVariant>&", marshall_QVariantList },
     { "QVariantList&", marshall_QVariantList },
-
+    { "QList<QPixmap>", marshall_QPixmapList },
+    { "QList<QModelIndex>", marshall_QModelIndexList },
+    { "QList<QModelIndex>&", marshall_QModelIndexList },
+    { "QModelIndexList&", marshall_QModelIndexList },
+    { "QModelIndexList", marshall_QModelIndexList },
+    { "QList<QImageTextKeyLang>", marshall_QImageTextKeyLangList },
+    { "QList<QUrl>", marshall_QUrlList },
+    { "QList<QUrl>&", marshall_QUrlList },
+    { "QVector<QPointF>", marshall_QPointFVector },
+    { "QVector<QPointF>&", marshall_QPointFVector },
+    { "QVector<QPoint>", marshall_QPointVector },
+    { "QVector<QPoint>&", marshall_QPointVector },
+    { "QVector<QLine>", marshall_QLineVector },
+    { "QVector<QLine>&", marshall_QLineVector },
+    { "QVector<QLineF>", marshall_QLineFVector },
+    { "QVector<QLineF>&", marshall_QLineFVector },
+    { "QVector<QRect>", marshall_QRectVector },
+    { "QVector<QRect>&", marshall_QRectVector },
+    { "QVector<QRectF>", marshall_QRectFVector },
+    { "QVector<QRectF>&", marshall_QRectFVector },
+    { "QVector<QColor>", marshall_QColorVector },
+    { "QVector<QColor>&", marshall_QColorVector },
+    { "QVector<QRgb>", marshall_QRgbVector },
+    { "QVector<QRgb>&", marshall_QRgbVector },
+    { "QVector<QVariant>", marshall_QVariantVector },
+    { "QVector<QVariant>&", marshall_QVariantVector },
+    { "QVector<QTextFormat>", marshall_QTextFormatVector },
+    { "QVector<QTextFormat>&", marshall_QTextFormatVector },
+    { "QVector<QTextLength>", marshall_QTextLengthVector },
+    { "QVector<QTextLength>&", marshall_QTextLengthVector },
+    { "QList<QTextFrame*>", marshall_QTextFrameList },
+    { "QList<QAction*>", marshall_QActionList },
+    { "QList<QWidget*>", marshall_QWidgetPtrList },
+    { "QList<QTreeWidgetItem*>", marshall_QTreeWidgetItemList },
+    { "QList<QTreeWidgetItem*>&", marshall_QTreeWidgetItemList },
+    { "QList<QAbstractButton*>", marshall_QAbstractButtonList },
+    { "QList<QListWidgetItem*>", marshall_QListWidgetItemList },
+    { "QList<QListWidgetItem*>&", marshall_QListWidgetItemList },
+    { "QList<QTableWidgetItem*>", marshall_QTableWidgetItemList },
+    { "QList<QTableWidgetItem*>&", marshall_QTableWidgetItemList },
+    { "QWidgetList", marshall_QWidgetList },
+    { "QWidgetList&", marshall_QWidgetList },
+    { "QObjectList", marshall_QObjectList },
+    { "QObjectList&", marshall_QObjectList },
+    { "QFileInfoList", marshall_QFileInfoList },
+#if QT_VERSION >= 0x40200
+    { "QList<QGraphicsItem*>", marshall_QGraphicsItemList },
+    { "QList<QGraphicsItem*>&", marshall_QGraphicsItemList },
+    { "QList<QStandardItem*>", marshall_QStandardItemList },
+    { "QList<QStandardItem*>&", marshall_QStandardItemList },
+    { "QList<QUndoStack*>", marshall_QUndoStackList },
+    { "QList<QUndoStack*>&", marshall_QUndoStackList },
+#endif
     { 0, 0 }
 };
 
