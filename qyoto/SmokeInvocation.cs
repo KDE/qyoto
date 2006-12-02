@@ -73,6 +73,7 @@ namespace Qyoto {
 		delegate string GetStringFromIntPtr(IntPtr ptr);
 		delegate IntPtr OverridenMethodFn(IntPtr instance, string method);
 		delegate void InvokeMethodFn(IntPtr instance, IntPtr method, IntPtr args);
+		delegate void AddInt(IntPtr obj, int i);
 		
 		/** Marshalling functions begin **/
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
@@ -94,6 +95,12 @@ namespace Qyoto {
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern void AddObjectToPointerList(IntPtr ptr, IntPtr obj);
+		
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		static extern IntPtr ConstructQListInt();
+		
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		static extern void AddIntToQList(IntPtr ptr, int i);
 		/** Other functions end **/
 		
 		
@@ -155,7 +162,13 @@ namespace Qyoto {
 		static extern IntPtr AddArrayListToPointerList(GetIntPtr callback);
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		static extern IntPtr AddArrayListToQListInt(GetIntPtr callback);
+
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern void AddAddIntPtrToArrayList(SetIntPtr callback);
+
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		static extern void AddAddIntToArrayList(AddInt callback);
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern int qt_metacall(IntPtr obj, int _c, int _id, IntPtr a);
@@ -305,6 +318,15 @@ namespace Qyoto {
 			return StringArrayToQStringList(s.Length, s);
 		}
 
+		static IntPtr ArrayListToQListInt(IntPtr ptr) {
+			ArrayList al = (ArrayList) ((GCHandle) ptr).Target;
+			IntPtr QList = ConstructQListInt();
+			foreach (int i in al) {
+				AddIntToQList(QList, i);
+			}
+			return QList;
+		}
+
 		static IntPtr ArrayListToPointerList(IntPtr ptr) {
 			ArrayList al = (ArrayList) ((GCHandle) ptr).Target;
 			IntPtr list = ConstructPointerList();
@@ -323,6 +345,11 @@ namespace Qyoto {
 			object o = ((GCHandle) ptr).Target;
 			ArrayList al = (ArrayList) ((GCHandle) obj).Target;
 			al.Add(o);
+		}
+
+		static void AddIntToArrayList(IntPtr obj, int i) {
+			ArrayList al = (ArrayList) ((GCHandle) obj).Target;
+			al.Add(i);
 		}
 
 		// The key is a type name of a class which has overriden one or more
@@ -599,8 +626,10 @@ namespace Qyoto {
 		static private GetIntPtr intPtrFromQString = new GetIntPtr(IntPtrFromQString);
 		static private GetIntPtr arrayListToQStringList = new GetIntPtr(ArrayListToQStringList);
 		static private GetIntPtr arrayListToPointerList = new GetIntPtr(ArrayListToPointerList);
+		static private GetIntPtr arrayListToQListInt = new GetIntPtr(ArrayListToQListInt);
 		static private NoArgs constructArrayList = new NoArgs(ConstructArrayList);
 		static private SetIntPtr addIntPtrToArrayList = new SetIntPtr(AddIntPtrToArrayList);
+		static private AddInt addIntToArrayList = new AddInt(AddIntToArrayList);
 		
 		static private OverridenMethodFn overridenMethod = new OverridenMethodFn(OverridenMethod);
 		static private InvokeMethodFn invokeMethod = new InvokeMethodFn(InvokeMethod);
@@ -627,7 +656,9 @@ namespace Qyoto {
 			AddConstructArrayList(constructArrayList);
 			AddArrayListToQStringList(arrayListToQStringList);
 			AddArrayListToPointerList(arrayListToPointerList);
+			AddArrayListToQListInt(arrayListToQListInt);
 			AddAddIntPtrToArrayList(addIntPtrToArrayList);
+			AddAddIntToArrayList(addIntToArrayList);
 
 			AddOverridenMethod(overridenMethod);
 			AddInvokeMethod(invokeMethod);

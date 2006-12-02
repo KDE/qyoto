@@ -66,8 +66,10 @@ static GetIntPtr IntPtrToQString;
 static GetIntPtr IntPtrFromQString;
 static GetIntPtr ArrayListToQStringList;
 static GetIntPtr ArrayListToPointerList;
+static GetIntPtr ArrayListToQListInt;
 static NoArgs ConstructArrayList;
 static SetIntPtr AddIntPtrToArrayList;
+static AddInt AddIntToArrayList;
 
 void AddIntPtrToCharStarStar(GetIntPtr callback)
 {
@@ -104,6 +106,11 @@ void AddArrayListToPointerList(GetIntPtr callback)
 	ArrayListToPointerList = callback;
 }
 
+void AddArrayListToQListInt(GetIntPtr callback)
+{
+	ArrayListToQListInt = callback;
+}
+
 void AddConstructArrayList(NoArgs callback)
 {
 	ConstructArrayList = callback;
@@ -112,6 +119,11 @@ void AddConstructArrayList(NoArgs callback)
 void AddAddIntPtrToArrayList(SetIntPtr callback)
 {
 	AddIntPtrToArrayList = callback;
+}
+
+void AddAddIntToArrayList(AddInt callback)
+{
+	AddIntToArrayList = callback;
 }
 
 void* ConstructPointerList()
@@ -124,6 +136,18 @@ void AddObjectToPointerList(void* ptr, void* obj)
 {
 	QList<void*> * list = (QList<void*>*) ptr;
 	list->append(obj);
+}
+
+void* ConstructQListInt()
+{
+	void* list = (void*) new QList<int>;
+	return list;
+}
+
+void AddIntToQList(void* ptr, int i)
+{
+	QList<int>* list = (QList<int>*) ptr;
+	list->append(i);
 }
 
 extern void * set_obj_info(const char * className, smokeqyoto_object * o);
@@ -1021,6 +1045,49 @@ void marshall_ItemList(Marshall *m) {
 	}
 }
 
+void marshall_QListInt(Marshall *m) {
+    switch(m->action()) {
+      case Marshall::FromObject:
+	{
+	    void* list = m->var().s_voidp;
+	    void* valuelist = (*ArrayListToQListInt)(list);
+	    m->item().s_voidp = valuelist;
+	    m->next();
+
+		/*if (m->cleanup()) {
+			delete valuelist;
+	    }*/
+	}
+	break;
+      case Marshall::ToObject:
+	{
+	    QList<int> *valuelist = (QList<int>*)m->item().s_voidp;
+	    if(!valuelist) {
+		m->var().s_voidp = 0;
+		break;
+	    }
+
+	    void* av = (*ConstructArrayList)();
+
+		for (QList<int>::iterator i = valuelist->begin(); i != valuelist->end(); ++i )
+		{
+		    (*AddIntToArrayList)(av, (int) *i);
+		}
+		
+	    m->var().s_voidp = av;
+		m->next();
+
+		if (m->cleanup()) {
+			delete valuelist;
+		}
+	}
+	break;
+      default:
+	m->unsupported();
+	break;
+    }
+}
+
 #define DEF_LIST_MARSHALLER(ListIdent,ItemList,Item) namespace { char ListIdent##STR[] = #Item; };  \
         Marshall::HandlerFn marshall_##ListIdent = marshall_ItemList<Item,ItemList,ListIdent##STR>;
 
@@ -1078,25 +1145,14 @@ void marshall_ValueListItem(Marshall *m) {
 
 			int ix = m->smoke()->idClass(ItemSTR);
 			const char * className = m->smoke()->binding->className(ix);
-			//qDebug("original: %s\nmodified: %s", ItemSTR, className);
-			
-			///
-			/// Do we have a case where there is a QList with a primitve list type? I think not, so commented out.
-			///
-// 			bool primitive = isPrimitive(ItemSTR);
 			
 			void * al = (*ConstructArrayList)();
 			
 			for (int i=0; i < valuelist->size() ; ++i) {
 				void *p = (void *) &(valuelist->at(i));
-
-// 				if (primitive == false) { // No primitive, so we have a Qt object
-					smokeqyoto_object * o = alloc_smokeqyoto_object(false, m->smoke(), ix, p);
-					void * obj = set_obj_info(className, o);
-					(*AddIntPtrToArrayList)(al, obj);
-// 				} else { // We have a primitive, so add the pointer directly. Not tested, does this work?
-// 					(*AddIntPtrToArrayList)(al, p);
-// 				}
+				smokeqyoto_object * o = alloc_smokeqyoto_object(false, m->smoke(), ix, p);
+				void * obj = set_obj_info(className, o);
+				(*AddIntPtrToArrayList)(al, obj);
 			}
 
 			m->var().s_voidp = al;
@@ -1157,6 +1213,8 @@ TypeHandler Qt_handlers[] = {
     { "QStringList&", marshall_QStringList },
     { "QStringList*", marshall_QStringList },
 //    { "void**", marshall_voidP_array },
+    { "QList<int>", marshall_QListInt },
+    { "QList<int>&", marshall_QListInt },
     { "QList<QTableWidgetSelectionRange>", marshall_QTableWidgetSelectionRangeList },
     { "QList<QTextLayout::FormatRange>", marshall_QTextLayoutFormatRangeList },
     { "QList<QTextLayout::FormatRange>&", marshall_QTextLayoutFormatRangeList },
