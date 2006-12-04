@@ -71,6 +71,8 @@ typedef void* (*CreateInstanceFn)(const char *);
 typedef void (*InvokeCustomSlotFn)(void*, const char*, void*, void*);
 typedef bool (*IsSmokeClassFn)(void*);
 typedef void (*AddInt)(void*, int);
+typedef void (*AddIntObject)(void*, int, void*);
+typedef void* (*HashToMap)(void*, int);
 
 extern FromIntPtr FreeGCHandle;
 

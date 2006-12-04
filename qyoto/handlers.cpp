@@ -70,6 +70,10 @@ static GetIntPtr ArrayListToQListInt;
 static NoArgs ConstructArrayList;
 static SetIntPtr AddIntPtrToArrayList;
 static AddInt AddIntToArrayList;
+static NoArgs ConstructHashtable;
+static InvokeMethodFn AddObjectObjectToHashtable;
+static AddIntObject AddIntObjectToHashtable;
+static HashToMap HashtableToQMap;
 
 void AddIntPtrToCharStarStar(GetIntPtr callback)
 {
@@ -126,6 +130,26 @@ void AddAddIntToArrayList(AddInt callback)
 	AddIntToArrayList = callback;
 }
 
+void AddConstructHashtable(NoArgs callback)
+{
+	ConstructHashtable = callback;
+}
+
+void AddAddObjectObjectToHashtable(InvokeMethodFn callback)
+{
+	AddObjectObjectToHashtable = callback;
+}
+
+void AddAddIntObjectToHashtable(AddIntObject callback)
+{
+	AddIntObjectToHashtable = callback;
+}
+
+void AddHashtableToQMap(HashToMap callback)
+{
+	HashtableToQMap = callback;
+}
+
 void* ConstructPointerList()
 {
 	void * list = (void*) new QList<void*>;
@@ -148,6 +172,38 @@ void AddIntToQList(void* ptr, int i)
 {
 	QList<int>* list = (QList<int>*) ptr;
 	list->append(i);
+}
+
+void* ConstructQMap(int type)
+{
+	if (type == 0) {
+		return (void*) new QMap<int, QVariant>();
+	} else if (type == 1) {
+		return (void*) new QMap<QString, QString>();
+	} else if (type == 2) {
+		return (void*) new QMap<QString, QVariant>();
+	}
+	return 0;
+}
+
+void AddIntQVariantToQMap(void* ptr, int i, void* qv)
+{
+	QMap<int, QVariant>* map = (QMap<int, QVariant>*) ptr;
+	QVariant* variant = (QVariant*) value_obj_info(qv)->ptr;
+	map->insert(i, *variant);
+}
+
+void AddQStringQStringToQMap(void* ptr, char* str1, char* str2)
+{
+	QMap<QString, QString>* map = (QMap<QString, QString>*) ptr;
+	map->insert(QString(str1), QString(str2));
+}
+
+void AddQStringQVariantToQMap(void* ptr, char* str, void* qv)
+{
+	QMap<QString, QVariant>* map = (QMap<QString, QVariant>*) ptr;
+	QVariant* variant = (QVariant*) value_obj_info(qv)->ptr;
+	map->insert(QString(str), *variant);
 }
 
 extern void * set_obj_info(const char * className, smokeqyoto_object * o);
@@ -904,6 +960,125 @@ static void marshall_voidP_array(Marshall* m) {
 	}
 }
 
+void marshall_QMapintQVariant(Marshall *m) {
+	switch(m->action()) {
+		case Marshall::FromObject: 
+		{
+			QMap<int, QVariant>* map = (QMap<int, QVariant>*) (*HashtableToQMap)(m->var().s_voidp, 0);
+			m->item().s_voidp = (void*) map;
+			m->next();
+			
+			if (m->cleanup()) {
+				delete map;
+			}
+			break;
+		}
+
+		case Marshall::ToObject: 
+		{
+			QMap<int, QVariant>* map = (QMap<int, QVariant>*) m->item().s_voidp;
+			void* hash = (*ConstructHashtable)();
+			
+			int id = m->smoke()->idClass("QVariant");
+			
+			for (QMap<int, QVariant>::iterator i = map->begin(); i != map->end(); ++i) {
+				void* v = (void*) &(i.value());
+				smokeqyoto_object * vo = alloc_smokeqyoto_object(false, m->smoke(), id, v);
+				void* value = set_obj_info("Qyoto.QVariant", vo);
+				(*AddIntObjectToHashtable)(hash, i.key(), value);
+			}
+			
+			m->var().s_voidp = hash;
+			m->next();
+			
+			break;
+		}
+	
+		default:
+			m->unsupported();
+			break;
+    }
+}
+
+void marshall_QMapQStringQString(Marshall *m) {
+	switch(m->action()) {
+		case Marshall::FromObject: 
+		{
+			QMap<QString, QString>* map = (QMap<QString, QString>*) (*HashtableToQMap)(m->var().s_voidp, 1);
+			m->item().s_voidp = (void*) map;
+			m->next();
+			
+			if (m->cleanup()) {
+				delete map;
+			}
+			break;
+		}
+
+		case Marshall::ToObject: 
+		{
+			QMap<QString, QString>* map = (QMap<QString, QString>*) m->item().s_voidp;
+			void* hash = (*ConstructHashtable)();
+			
+			for (QMap<QString, QString>::iterator i = map->begin(); i != map->end(); ++i) {
+				(*AddObjectObjectToHashtable)(	hash,
+								(void*) StringFromQString((void*) &(i.key())),
+								(void*) StringFromQString((void*) &(i.value())));
+			}
+			
+			m->var().s_voidp = hash;
+			m->next();
+			
+			break;
+		}
+	
+		default:
+			m->unsupported();
+			break;
+    }
+}
+
+void marshall_QMapQStringQVariant(Marshall *m) {
+	switch(m->action()) {
+		case Marshall::FromObject: 
+		{
+			QMap<QString, QVariant>* map = (QMap<QString, QVariant>*) (*HashtableToQMap)(m->var().s_voidp, 2);
+			m->item().s_voidp = (void*) map;
+			m->next();
+			
+			if (m->cleanup()) {
+				delete map;
+			}
+			break;
+		}
+
+		case Marshall::ToObject: 
+		{
+			QMap<QString, QVariant>* map = (QMap<QString, QVariant>*) m->item().s_voidp;
+			void* hash = (*ConstructHashtable)();
+			
+			int id = m->smoke()->idClass("QVariant");
+			
+			for (QMap<QString, QVariant>::iterator i = map->begin(); i != map->end(); ++i) {
+				void* v = (void*) &(i.value());
+				smokeqyoto_object * vo = alloc_smokeqyoto_object(false, m->smoke(), id, v);
+				void* value = set_obj_info("Qyoto.QVariant", vo);
+				(*AddObjectObjectToHashtable)(	hash,
+								(void*) StringFromQString((void*) &(i.key())),
+								value);
+			}
+			
+			m->var().s_voidp = hash;
+			m->next();
+			
+			break;
+		}
+	
+		default:
+			m->unsupported();
+			break;
+    }
+}
+
 void marshall_QStringList(Marshall *m) {
 	switch(m->action()) {
 		case Marshall::FromObject: 
@@ -966,6 +1141,7 @@ void marshall_QStringList(Marshall *m) {
 			(*AddIntPtrToArrayList)(al, (*IntPtrFromCharStar)((char*) (*stringlist)[i].toLatin1().constData()));
 		}
 		m->var().s_voidp = al;
+		m->next();
 
 		if (m->cleanup()) {
 			delete stringlist;
@@ -1001,6 +1177,7 @@ void marshall_ItemList(Marshall *m) {
 			}
 			
 			m->item().s_voidp = cpplist;
+			m->next();
 			
 			if (m->cleanup()) {
 				delete cpplist;
@@ -1129,6 +1306,7 @@ void marshall_ValueListItem(Marshall *m) {
 			}
 			
 			m->item().s_voidp = cpplist;
+			m->next();
 			
 			if (m->cleanup()) {
 				delete cpplist;
@@ -1255,6 +1433,11 @@ TypeHandler Qt_handlers[] = {
     { "QVector<QTextFormat>&", marshall_QTextFormatVector },
     { "QVector<QTextLength>", marshall_QTextLengthVector },
     { "QVector<QTextLength>&", marshall_QTextLengthVector },
+    { "QMap<int,QVariant>", marshall_QMapintQVariant },
+    { "QMap<QString,QString>", marshall_QMapQStringQString },
+    { "QMap<QString,QString>&", marshall_QMapQStringQString },
+    { "QMap<QString,QVariant>", marshall_QMapQStringQVariant },
+    { "QMap<QString,QVariant>&", marshall_QMapQStringQVariant },
     { "QList<QTextFrame*>", marshall_QTextFrameList },
     { "QList<QAction*>", marshall_QActionList },
     { "QList<QWidget*>", marshall_QWidgetPtrList },

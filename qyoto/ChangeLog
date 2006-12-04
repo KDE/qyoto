@@ -1,3 +1,7 @@
+2006-12-04  Arno Rehn  <arno@arnorehn.de>
+
+	* Added marshallers for QMaps
+
 2006-12-02  Arno Rehn  <arno@arnorehn.de>
 
 	* Added marshalling function for QList<int>

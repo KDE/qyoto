@@ -74,6 +74,8 @@ namespace Qyoto {
 		delegate IntPtr OverridenMethodFn(IntPtr instance, string method);
 		delegate void InvokeMethodFn(IntPtr instance, IntPtr method, IntPtr args);
 		delegate void AddInt(IntPtr obj, int i);
+		delegate void AddIntObject(IntPtr hash, int key, IntPtr val);
+		delegate IntPtr HashToMap(IntPtr ptr, int type);
 		
 		/** Marshalling functions begin **/
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
@@ -101,6 +103,19 @@ namespace Qyoto {
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern void AddIntToQList(IntPtr ptr, int i);
+		
+		
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		static extern IntPtr ConstructQMap(int type);
+		
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		static extern void AddIntQVariantToQMap(IntPtr ptr, int i, IntPtr qv);
+		
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		static extern void AddQStringQStringToQMap(IntPtr ptr, string str1, string str2);
+		
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		static extern void AddQStringQVariantToQMap(IntPtr ptr, string str, IntPtr qv);
 		/** Other functions end **/
 		
 		
@@ -169,6 +184,18 @@ namespace Qyoto {
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern void AddAddIntToArrayList(AddInt callback);
+
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		static extern IntPtr AddConstructHashtable(NoArgs callback);
+
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		static extern void AddAddObjectObjectToHashtable(InvokeMethodFn callback);
+
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		static extern void AddAddIntObjectToHashtable(AddIntObject callback);
+
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		static extern void AddHashtableToQMap(HashToMap callback);
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern int qt_metacall(IntPtr obj, int _c, int _id, IntPtr a);
@@ -352,6 +379,43 @@ namespace Qyoto {
 			al.Add(i);
 		}
 
+		static IntPtr ConstructHashtable() {
+			Hashtable hash = new Hashtable();
+			return (IntPtr) GCHandle.Alloc(hash);
+		}
+
+		static void AddObjectObjectToHashtable(IntPtr hash, IntPtr key, IntPtr val) {
+			Hashtable h = (Hashtable) ((GCHandle) hash).Target;
+			object k = ((GCHandle) key).Target;
+			object v = ((GCHandle) val).Target;
+			h.Add(k, v);
+		}
+
+		static void AddIntObjectToHashtable(IntPtr hash, int key, IntPtr val) {
+			Hashtable h = (Hashtable) ((GCHandle) hash).Target;
+			object v = ((GCHandle) val).Target;
+			h.Add(key, v);
+		}
+
+		static IntPtr HashtableToQMap(IntPtr hash, int type) {
+			Hashtable h = (Hashtable) ((GCHandle) hash).Target;
+			IntPtr map = ConstructQMap(type);
+			
+			if (type == 0) {
+				foreach (DictionaryEntry de in h) {
+					AddIntQVariantToQMap(map, (int) de.Key, (IntPtr) GCHandle.Alloc(de.Value));
+				}
+			} else if (type == 1) {
+				foreach (DictionaryEntry de in h) {
+					AddQStringQStringToQMap(map, (string) de.Key, (string) de.Value);
+				}
+			} else if (type == 2) {
+				foreach (DictionaryEntry de in h) {
+					AddQStringQVariantToQMap(map, (string) de.Key, (IntPtr) GCHandle.Alloc(de.Value));
+				}
+			}
+			return map;
+		}
 		// The key is a type name of a class which has overriden one or more
 		// virtual methods, and the value is a Hashtable of the smoke type
 		// signatures as keys retrieving a suitable MethodInfo to invoke via 
@@ -624,12 +688,19 @@ namespace Qyoto {
 		static private GetIntPtrFromString intPtrFromString = new GetIntPtrFromString(IntPtrFromString);
 		static private GetIntPtr intPtrToQString = new GetIntPtr(IntPtrToQString);
 		static private GetIntPtr intPtrFromQString = new GetIntPtr(IntPtrFromQString);
+		
 		static private GetIntPtr arrayListToQStringList = new GetIntPtr(ArrayListToQStringList);
 		static private GetIntPtr arrayListToPointerList = new GetIntPtr(ArrayListToPointerList);
 		static private GetIntPtr arrayListToQListInt = new GetIntPtr(ArrayListToQListInt);
+		static private HashToMap hashtableToQMap = new HashToMap(HashtableToQMap);
+		
 		static private NoArgs constructArrayList = new NoArgs(ConstructArrayList);
 		static private SetIntPtr addIntPtrToArrayList = new SetIntPtr(AddIntPtrToArrayList);
 		static private AddInt addIntToArrayList = new AddInt(AddIntToArrayList);
+		
+		static private NoArgs constructHashtable = new NoArgs(ConstructHashtable);
+		static private InvokeMethodFn addObjectObjectToHashtable = new InvokeMethodFn(AddObjectObjectToHashtable);
+		static private AddIntObject addIntObjectToHashtable = new AddIntObject(AddIntObjectToHashtable);
 		
 		static private OverridenMethodFn overridenMethod = new OverridenMethodFn(OverridenMethod);
 		static private InvokeMethodFn invokeMethod = new InvokeMethodFn(InvokeMethod);
@@ -659,6 +730,11 @@ namespace Qyoto {
 			AddArrayListToQListInt(arrayListToQListInt);
 			AddAddIntPtrToArrayList(addIntPtrToArrayList);
 			AddAddIntToArrayList(addIntToArrayList);
+
+			AddConstructHashtable(constructHashtable);
+			AddAddObjectObjectToHashtable(addObjectObjectToHashtable);
+			AddAddIntObjectToHashtable(addIntObjectToHashtable);
+			AddHashtableToQMap(hashtableToQMap);
 
 			AddOverridenMethod(overridenMethod);
 			AddInvokeMethod(invokeMethod);
