@@ -26,6 +26,6 @@ INCLUDE_DIRECTORIES (${QT_INCLUDES})
 ADD_LIBRARY (qyoto SHARED qyoto.cpp handlers.cpp)
 TARGET_LINK_LIBRARIES (qyoto smokeqt ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY})
 
-ADD_CUSTOM_TARGET (qt-dotnet ALL ${MCS_PATH} -unsafe -warn:0 -out:qt-dotnet.dll -target:library SmokeInvocation.cs Qyoto.cs qyoto/*.cs qdbus/*.cs)
+ADD_CUSTOM_TARGET (qt-dotnet ALL ${MCS_PATH} -unsafe -warn:0 -out:qt-dotnet.dll -target:library SmokeInvocation.cs Qyoto.cs core/*.cs gui/*.cs network/*.cs sql/*.cs xml/*.cs svg/*.cs opengl/*.cs qdbus/*.cs)
 
 ADD_DEPENDENCIES (qt-dotnet qyoto)
