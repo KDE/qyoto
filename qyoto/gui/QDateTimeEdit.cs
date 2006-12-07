@@ -59,40 +59,72 @@ namespace Qyoto {
 		private void NewQDateTimeEdit() {
 			ProxyQDateTimeEdit().NewQDateTimeEdit();
 		}
-		public QDateTimeEdit(DateTime dt, QWidget parent) : this((Type) null) {
+		public QDateTimeEdit(QDateTime dt, QWidget parent) : this((Type) null) {
 			CreateProxy();
 			NewQDateTimeEdit(dt,parent);
 		}
 		[SmokeMethod("QDateTimeEdit(const QDateTime&, QWidget*)")]
-		private void NewQDateTimeEdit(DateTime dt, QWidget parent) {
+		private void NewQDateTimeEdit(QDateTime dt, QWidget parent) {
 			ProxyQDateTimeEdit().NewQDateTimeEdit(dt,parent);
 		}
-		public QDateTimeEdit(DateTime dt) : this((Type) null) {
+		public QDateTimeEdit(QDateTime dt) : this((Type) null) {
 			CreateProxy();
 			NewQDateTimeEdit(dt);
 		}
 		[SmokeMethod("QDateTimeEdit(const QDateTime&)")]
-		private void NewQDateTimeEdit(DateTime dt) {
+		private void NewQDateTimeEdit(QDateTime dt) {
 			ProxyQDateTimeEdit().NewQDateTimeEdit(dt);
 		}
+		public QDateTimeEdit(QDate d, QWidget parent) : this((Type) null) {
+			CreateProxy();
+			NewQDateTimeEdit(d,parent);
+		}
+		[SmokeMethod("QDateTimeEdit(const QDate&, QWidget*)")]
+		private void NewQDateTimeEdit(QDate d, QWidget parent) {
+			ProxyQDateTimeEdit().NewQDateTimeEdit(d,parent);
+		}
+		public QDateTimeEdit(QDate d) : this((Type) null) {
+			CreateProxy();
+			NewQDateTimeEdit(d);
+		}
+		[SmokeMethod("QDateTimeEdit(const QDate&)")]
+		private void NewQDateTimeEdit(QDate d) {
+			ProxyQDateTimeEdit().NewQDateTimeEdit(d);
+		}
+		public QDateTimeEdit(QTime t, QWidget parent) : this((Type) null) {
+			CreateProxy();
+			NewQDateTimeEdit(t,parent);
+		}
+		[SmokeMethod("QDateTimeEdit(const QTime&, QWidget*)")]
+		private void NewQDateTimeEdit(QTime t, QWidget parent) {
+			ProxyQDateTimeEdit().NewQDateTimeEdit(t,parent);
+		}
+		public QDateTimeEdit(QTime t) : this((Type) null) {
+			CreateProxy();
+			NewQDateTimeEdit(t);
+		}
+		[SmokeMethod("QDateTimeEdit(const QTime&)")]
+		private void NewQDateTimeEdit(QTime t) {
+			ProxyQDateTimeEdit().NewQDateTimeEdit(t);
+		}
 		[SmokeMethod("dateTime() const")]
-		public DateTime DateTime() {
+		public QDateTime DateTime() {
 			return ProxyQDateTimeEdit().DateTime();
 		}
 		[SmokeMethod("date() const")]
-		public DateTime Date() {
+		public QDate Date() {
 			return ProxyQDateTimeEdit().Date();
 		}
 		[SmokeMethod("time() const")]
-		public DateTime Time() {
+		public QTime Time() {
 			return ProxyQDateTimeEdit().Time();
 		}
 		[SmokeMethod("minimumDate() const")]
-		public DateTime MinimumDate() {
+		public QDate MinimumDate() {
 			return ProxyQDateTimeEdit().MinimumDate();
 		}
 		[SmokeMethod("setMinimumDate(const QDate&)")]
-		public void SetMinimumDate(DateTime min) {
+		public void SetMinimumDate(QDate min) {
 			ProxyQDateTimeEdit().SetMinimumDate(min);
 		}
 		[SmokeMethod("clearMinimumDate()")]
@@ -100,11 +132,11 @@ namespace Qyoto {
 			ProxyQDateTimeEdit().ClearMinimumDate();
 		}
 		[SmokeMethod("maximumDate() const")]
-		public DateTime MaximumDate() {
+		public QDate MaximumDate() {
 			return ProxyQDateTimeEdit().MaximumDate();
 		}
 		[SmokeMethod("setMaximumDate(const QDate&)")]
-		public void SetMaximumDate(DateTime max) {
+		public void SetMaximumDate(QDate max) {
 			ProxyQDateTimeEdit().SetMaximumDate(max);
 		}
 		[SmokeMethod("clearMaximumDate()")]
@@ -112,15 +144,15 @@ namespace Qyoto {
 			ProxyQDateTimeEdit().ClearMaximumDate();
 		}
 		[SmokeMethod("setDateRange(const QDate&, const QDate&)")]
-		public void SetDateRange(DateTime min, DateTime max) {
+		public void SetDateRange(QDate min, QDate max) {
 			ProxyQDateTimeEdit().SetDateRange(min,max);
 		}
 		[SmokeMethod("minimumTime() const")]
-		public DateTime MinimumTime() {
+		public QTime MinimumTime() {
 			return ProxyQDateTimeEdit().MinimumTime();
 		}
 		[SmokeMethod("setMinimumTime(const QTime&)")]
-		public void SetMinimumTime(DateTime min) {
+		public void SetMinimumTime(QTime min) {
 			ProxyQDateTimeEdit().SetMinimumTime(min);
 		}
 		[SmokeMethod("clearMinimumTime()")]
@@ -128,11 +160,11 @@ namespace Qyoto {
 			ProxyQDateTimeEdit().ClearMinimumTime();
 		}
 		[SmokeMethod("maximumTime() const")]
-		public DateTime MaximumTime() {
+		public QTime MaximumTime() {
 			return ProxyQDateTimeEdit().MaximumTime();
 		}
 		[SmokeMethod("setMaximumTime(const QTime&)")]
-		public void SetMaximumTime(DateTime max) {
+		public void SetMaximumTime(QTime max) {
 			ProxyQDateTimeEdit().SetMaximumTime(max);
 		}
 		[SmokeMethod("clearMaximumTime()")]
@@ -140,7 +172,7 @@ namespace Qyoto {
 			ProxyQDateTimeEdit().ClearMaximumTime();
 		}
 		[SmokeMethod("setTimeRange(const QTime&, const QTime&)")]
-		public void SetTimeRange(DateTime min, DateTime max) {
+		public void SetTimeRange(QTime min, QTime max) {
 			ProxyQDateTimeEdit().SetTimeRange(min,max);
 		}
 		[SmokeMethod("displayedSections() const")]
@@ -196,15 +228,15 @@ namespace Qyoto {
 			return ProxyQDateTimeEdit().Event(arg1);
 		}
 		[SmokeMethod("setDateTime(const QDateTime&)")]
-		public void SetDateTime(DateTime dateTime) {
+		public void SetDateTime(QDateTime dateTime) {
 			ProxyQDateTimeEdit().SetDateTime(dateTime);
 		}
 		[SmokeMethod("setDate(const QDate&)")]
-		public void SetDate(DateTime date) {
+		public void SetDate(QDate date) {
 			ProxyQDateTimeEdit().SetDate(date);
 		}
 		[SmokeMethod("setTime(const QTime&)")]
-		public void SetTime(DateTime time) {
+		public void SetTime(QTime time) {
 			ProxyQDateTimeEdit().SetTime(time);
 		}
 		[SmokeMethod("tr(const char*, const char*)")]
@@ -240,11 +272,11 @@ namespace Qyoto {
 			ProxyQDateTimeEdit().Fixup(input);
 		}
 		[SmokeMethod("dateTimeFromText(const QString&) const")]
-		protected virtual DateTime DateTimeFromText(string text) {
+		protected virtual QDateTime DateTimeFromText(string text) {
 			return ProxyQDateTimeEdit().DateTimeFromText(text);
 		}
 		[SmokeMethod("textFromDateTime(const QDateTime&) const")]
-		protected virtual string TextFromDateTime(DateTime dt) {
+		protected virtual string TextFromDateTime(QDateTime dt) {
 			return ProxyQDateTimeEdit().TextFromDateTime(dt);
 		}
 		[SmokeMethod("stepEnabled() const")]
@@ -276,10 +308,10 @@ namespace Qyoto {
 
 	public interface IQDateTimeEditSignals : IQAbstractSpinBoxSignals {
 		[Q_SIGNAL("void dateTimeChanged(const QDateTime&)")]
-		void DateTimeChanged(DateTime date);
+		void DateTimeChanged(QDateTime date);
 		[Q_SIGNAL("void timeChanged(const QTime&)")]
-		void TimeChanged(DateTime date);
+		void TimeChanged(QTime date);
 		[Q_SIGNAL("void dateChanged(const QDate&)")]
-		void DateChanged(DateTime date);
+		void DateChanged(QDate date);
 	}
 }

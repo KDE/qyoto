@@ -69,7 +69,7 @@ namespace Qyoto {
 			return ProxyQCalendarWidget().MinimumSizeHint();
 		}
 		[SmokeMethod("selectedDate() const")]
-		public DateTime SelectedDate() {
+		public QDate SelectedDate() {
 			return ProxyQCalendarWidget().SelectedDate();
 		}
 		[SmokeMethod("yearShown() const")]
@@ -81,19 +81,19 @@ namespace Qyoto {
 			return ProxyQCalendarWidget().MonthShown();
 		}
 		[SmokeMethod("minimumDate() const")]
-		public DateTime MinimumDate() {
+		public QDate MinimumDate() {
 			return ProxyQCalendarWidget().MinimumDate();
 		}
 		[SmokeMethod("setMinimumDate(const QDate&)")]
-		public void SetMinimumDate(DateTime date) {
+		public void SetMinimumDate(QDate date) {
 			ProxyQCalendarWidget().SetMinimumDate(date);
 		}
 		[SmokeMethod("maximumDate() const")]
-		public DateTime MaximumDate() {
+		public QDate MaximumDate() {
 			return ProxyQCalendarWidget().MaximumDate();
 		}
 		[SmokeMethod("setMaximumDate(const QDate&)")]
-		public void SetMaximumDate(DateTime date) {
+		public void SetMaximumDate(QDate date) {
 			ProxyQCalendarWidget().SetMaximumDate(date);
 		}
 		[SmokeMethod("firstDayOfWeek() const")]
@@ -162,19 +162,19 @@ namespace Qyoto {
 		}
 		// QMap<QDate, QTextCharFormat> dateTextFormat(); >>>> NOT CONVERTED
 		[SmokeMethod("dateTextFormat(const QDate&) const")]
-		public QTextCharFormat DateTextFormat(DateTime date) {
+		public QTextCharFormat DateTextFormat(QDate date) {
 			return ProxyQCalendarWidget().DateTextFormat(date);
 		}
 		[SmokeMethod("setDateTextFormat(const QDate&, const QTextCharFormat&)")]
-		public void SetDateTextFormat(DateTime date, QTextCharFormat color) {
+		public void SetDateTextFormat(QDate date, QTextCharFormat color) {
 			ProxyQCalendarWidget().SetDateTextFormat(date,color);
 		}
 		[SmokeMethod("setSelectedDate(const QDate&)")]
-		public void SetSelectedDate(DateTime date) {
+		public void SetSelectedDate(QDate date) {
 			ProxyQCalendarWidget().SetSelectedDate(date);
 		}
 		[SmokeMethod("setDateRange(const QDate&, const QDate&)")]
-		public void SetDateRange(DateTime min, DateTime max) {
+		public void SetDateRange(QDate min, QDate max) {
 			ProxyQCalendarWidget().SetDateRange(min,max);
 		}
 		[SmokeMethod("setCurrentPage(int, int)")]
@@ -230,7 +230,7 @@ namespace Qyoto {
 			ProxyQCalendarWidget().KeyPressEvent(arg1);
 		}
 		[SmokeMethod("paintCell(QPainter*, const QRect&, const QDate&) const")]
-		public virtual void PaintCell(QPainter painter, QRect rect, DateTime date) {
+		public virtual void PaintCell(QPainter painter, QRect rect, QDate date) {
 			ProxyQCalendarWidget().PaintCell(painter,rect,date);
 		}
 		~QCalendarWidget() {
@@ -252,9 +252,9 @@ namespace Qyoto {
 		[Q_SIGNAL("void selectionChanged()")]
 		void SelectionChanged();
 		[Q_SIGNAL("void clicked(const QDate&)")]
-		void Clicked(DateTime date);
+		void Clicked(QDate date);
 		[Q_SIGNAL("void activated(const QDate&)")]
-		void Activated(DateTime date);
+		void Activated(QDate date);
 		[Q_SIGNAL("void currentPageChanged(int, int)")]
 		void CurrentPageChanged(int year, int month);
 	}

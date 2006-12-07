@@ -76,7 +76,7 @@ namespace Qyoto {
 		~QAbstractGraphicsShapeItem() {
 			DisposeQAbstractGraphicsShapeItem();
 		}
-		public new void Dispose() {
+		public void Dispose() {
 			DisposeQAbstractGraphicsShapeItem();
 		}
 		[SmokeMethod("~QAbstractGraphicsShapeItem()")]

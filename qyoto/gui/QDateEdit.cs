@@ -45,20 +45,20 @@ namespace Qyoto {
 		private void NewQDateEdit() {
 			ProxyQDateEdit().NewQDateEdit();
 		}
-		public QDateEdit(DateTime date, QWidget parent) : this((Type) null) {
+		public QDateEdit(QDate date, QWidget parent) : this((Type) null) {
 			CreateProxy();
 			NewQDateEdit(date,parent);
 		}
 		[SmokeMethod("QDateEdit(const QDate&, QWidget*)")]
-		private void NewQDateEdit(DateTime date, QWidget parent) {
+		private void NewQDateEdit(QDate date, QWidget parent) {
 			ProxyQDateEdit().NewQDateEdit(date,parent);
 		}
-		public QDateEdit(DateTime date) : this((Type) null) {
+		public QDateEdit(QDate date) : this((Type) null) {
 			CreateProxy();
 			NewQDateEdit(date);
 		}
 		[SmokeMethod("QDateEdit(const QDate&)")]
-		private void NewQDateEdit(DateTime date) {
+		private void NewQDateEdit(QDate date) {
 			ProxyQDateEdit().NewQDateEdit(date);
 		}
 		[SmokeMethod("tr(const char*, const char*)")]

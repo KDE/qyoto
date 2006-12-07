@@ -185,13 +185,29 @@ namespace Qyoto {
 		private void NewQVariant(char qchar) {
 			ProxyQVariant().NewQVariant(qchar);
 		}
-		public QVariant(DateTime date) : this((Type) null) {
+		public QVariant(QDate date) : this((Type) null) {
 			CreateProxy();
 			NewQVariant(date);
 		}
 		[SmokeMethod("QVariant(const QDate&)")]
-		private void NewQVariant(DateTime date) {
+		private void NewQVariant(QDate date) {
 			ProxyQVariant().NewQVariant(date);
+		}
+		public QVariant(QTime time) : this((Type) null) {
+			CreateProxy();
+			NewQVariant(time);
+		}
+		[SmokeMethod("QVariant(const QTime&)")]
+		private void NewQVariant(QTime time) {
+			ProxyQVariant().NewQVariant(time);
+		}
+		public QVariant(QDateTime datetime) : this((Type) null) {
+			CreateProxy();
+			NewQVariant(datetime);
+		}
+		[SmokeMethod("QVariant(const QDateTime&)")]
+		private void NewQVariant(QDateTime datetime) {
+			ProxyQVariant().NewQVariant(datetime);
 		}
 		public QVariant(ArrayList list) : this((Type) null) {
 			CreateProxy();
@@ -388,15 +404,15 @@ namespace Qyoto {
 			return ProxyQVariant().ToChar();
 		}
 		[SmokeMethod("toDate() const")]
-		public DateTime ToDate() {
+		public QDate ToDate() {
 			return ProxyQVariant().ToDate();
 		}
 		[SmokeMethod("toTime() const")]
-		public DateTime ToTime() {
+		public QTime ToTime() {
 			return ProxyQVariant().ToTime();
 		}
 		[SmokeMethod("toDateTime() const")]
-		public DateTime ToDateTime() {
+		public QDateTime ToDateTime() {
 			return ProxyQVariant().ToDateTime();
 		}
 		[SmokeMethod("toList() const")]

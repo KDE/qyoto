@@ -126,7 +126,7 @@ namespace Qyoto {
 			return ProxyQFSFileEngine().Owner(arg1);
 		}
 		[SmokeMethod("fileTime(QAbstractFileEngine::FileTime) const")]
-		public new DateTime FileTime(QAbstractFileEngine.FileTime time) {
+		public new QDateTime FileTime(QAbstractFileEngine.FileTime time) {
 			return ProxyQFSFileEngine().FileTime(time);
 		}
 		[SmokeMethod("setFileName(const QString&)")]

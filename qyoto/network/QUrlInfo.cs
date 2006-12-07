@@ -99,7 +99,7 @@ namespace Qyoto {
 			ProxyQUrlInfo().SetPermissions(p);
 		}
 		[SmokeMethod("setLastModified(const QDateTime&)")]
-		public virtual void SetLastModified(DateTime dt) {
+		public virtual void SetLastModified(QDateTime dt) {
 			ProxyQUrlInfo().SetLastModified(dt);
 		}
 		[SmokeMethod("isValid() const")]
@@ -124,11 +124,11 @@ namespace Qyoto {
 		}
 		// qint64 size(); >>>> NOT CONVERTED
 		[SmokeMethod("lastModified() const")]
-		public DateTime LastModified() {
+		public QDateTime LastModified() {
 			return ProxyQUrlInfo().LastModified();
 		}
 		[SmokeMethod("lastRead() const")]
-		public DateTime LastRead() {
+		public QDateTime LastRead() {
 			return ProxyQUrlInfo().LastRead();
 		}
 		[SmokeMethod("isDir() const")]

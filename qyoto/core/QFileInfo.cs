@@ -234,15 +234,15 @@ namespace Qyoto {
 		}
 		// qint64 size(); >>>> NOT CONVERTED
 		[SmokeMethod("created() const")]
-		public DateTime Created() {
+		public QDateTime Created() {
 			return ProxyQFileInfo().Created();
 		}
 		[SmokeMethod("lastModified() const")]
-		public DateTime LastModified() {
+		public QDateTime LastModified() {
 			return ProxyQFileInfo().LastModified();
 		}
 		[SmokeMethod("lastRead() const")]
-		public DateTime LastRead() {
+		public QDateTime LastRead() {
 			return ProxyQFileInfo().LastRead();
 		}
 		[SmokeMethod("detach()")]

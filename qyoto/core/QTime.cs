@@ -11,15 +11,15 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QTime(Type dummy) {}
 		interface IQTimeProxy {
-			bool op_equals(QTime lhs, DateTime other);
-			bool op_lt(QTime lhs, DateTime other);
-			bool op_lte(QTime lhs, DateTime other);
-			bool op_gt(QTime lhs, DateTime other);
-			bool op_gte(QTime lhs, DateTime other);
-			DateTime CurrentTime();
-			DateTime FromString(string s, Qt.DateFormat f);
-			DateTime FromString(string s);
-			DateTime FromString(string s, string format);
+			bool op_equals(QTime lhs, QTime other);
+			bool op_lt(QTime lhs, QTime other);
+			bool op_lte(QTime lhs, QTime other);
+			bool op_gt(QTime lhs, QTime other);
+			bool op_gte(QTime lhs, QTime other);
+			QTime CurrentTime();
+			QTime FromString(string s, Qt.DateFormat f);
+			QTime FromString(string s);
+			QTime FromString(string s, string format);
 			bool IsValid(int h, int m, int s, int ms);
 			bool IsValid(int h, int m, int s);
 		}
@@ -117,26 +117,26 @@ namespace Qyoto {
 			return ProxyQTime().SetHMS(h,m,s);
 		}
 		[SmokeMethod("addSecs(int) const")]
-		public DateTime AddSecs(int secs) {
+		public QTime AddSecs(int secs) {
 			return ProxyQTime().AddSecs(secs);
 		}
 		[SmokeMethod("secsTo(const QTime&) const")]
-		public int SecsTo(DateTime arg1) {
+		public int SecsTo(QTime arg1) {
 			return ProxyQTime().SecsTo(arg1);
 		}
 		[SmokeMethod("addMSecs(int) const")]
-		public DateTime AddMSecs(int ms) {
+		public QTime AddMSecs(int ms) {
 			return ProxyQTime().AddMSecs(ms);
 		}
 		[SmokeMethod("msecsTo(const QTime&) const")]
-		public int MsecsTo(DateTime arg1) {
+		public int MsecsTo(QTime arg1) {
 			return ProxyQTime().MsecsTo(arg1);
 		}
 		[SmokeMethod("operator==(const QTime&) const")]
-		public static bool operator==(QTime lhs, DateTime other) {
+		public static bool operator==(QTime lhs, QTime other) {
 			return StaticQTime().op_equals(lhs,other);
 		}
-		public static bool operator!=(QTime lhs, DateTime other) {
+		public static bool operator!=(QTime lhs, QTime other) {
 			return !StaticQTime().op_equals(lhs,other);
 		}
 		public override bool Equals(object o) {
@@ -147,19 +147,19 @@ namespace Qyoto {
 			return ProxyQTime().GetHashCode();
 		}
 		[SmokeMethod("operator<(const QTime&) const")]
-		public static bool operator<(QTime lhs, DateTime other) {
+		public static bool operator<(QTime lhs, QTime other) {
 			return StaticQTime().op_lt(lhs,other);
 		}
 		[SmokeMethod("operator<=(const QTime&) const")]
-		public static bool operator<=(QTime lhs, DateTime other) {
+		public static bool operator<=(QTime lhs, QTime other) {
 			return StaticQTime().op_lte(lhs,other);
 		}
 		[SmokeMethod("operator>(const QTime&) const")]
-		public static bool operator>(QTime lhs, DateTime other) {
+		public static bool operator>(QTime lhs, QTime other) {
 			return StaticQTime().op_gt(lhs,other);
 		}
 		[SmokeMethod("operator>=(const QTime&) const")]
-		public static bool operator>=(QTime lhs, DateTime other) {
+		public static bool operator>=(QTime lhs, QTime other) {
 			return StaticQTime().op_gte(lhs,other);
 		}
 		[SmokeMethod("start()")]
@@ -175,19 +175,19 @@ namespace Qyoto {
 			return ProxyQTime().Elapsed();
 		}
 		[SmokeMethod("currentTime()")]
-		public static DateTime CurrentTime() {
+		public static QTime CurrentTime() {
 			return StaticQTime().CurrentTime();
 		}
 		[SmokeMethod("fromString(const QString&, Qt::DateFormat)")]
-		public static DateTime FromString(string s, Qt.DateFormat f) {
+		public static QTime FromString(string s, Qt.DateFormat f) {
 			return StaticQTime().FromString(s,f);
 		}
 		[SmokeMethod("fromString(const QString&)")]
-		public static DateTime FromString(string s) {
+		public static QTime FromString(string s) {
 			return StaticQTime().FromString(s);
 		}
 		[SmokeMethod("fromString(const QString&, const QString&)")]
-		public static DateTime FromString(string s, string format) {
+		public static QTime FromString(string s, string format) {
 			return StaticQTime().FromString(s,format);
 		}
 		[SmokeMethod("isValid(int, int, int, int)")]

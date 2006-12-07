@@ -11,24 +11,24 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QDate(Type dummy) {}
 		interface IQDateProxy {
-			bool op_equals(QDate lhs, DateTime other);
-			bool op_lt(QDate lhs, DateTime other);
-			bool op_lte(QDate lhs, DateTime other);
-			bool op_gt(QDate lhs, DateTime other);
-			bool op_gte(QDate lhs, DateTime other);
+			bool op_equals(QDate lhs, QDate other);
+			bool op_lt(QDate lhs, QDate other);
+			bool op_lte(QDate lhs, QDate other);
+			bool op_gt(QDate lhs, QDate other);
+			bool op_gte(QDate lhs, QDate other);
 			string ShortMonthName(int month);
 			string ShortDayName(int weekday);
 			string LongMonthName(int month);
 			string LongDayName(int weekday);
-			DateTime CurrentDate();
-			DateTime FromString(string s, Qt.DateFormat f);
-			DateTime FromString(string s);
-			DateTime FromString(string s, string format);
+			QDate CurrentDate();
+			QDate FromString(string s, Qt.DateFormat f);
+			QDate FromString(string s);
+			QDate FromString(string s, string format);
 			bool IsValid(int y, int m, int d);
 			bool IsLeapYear(int year);
 			uint GregorianToJulian(int y, int m, int d);
 			void JulianToGregorian(uint jd, out int y, out int m, out int d);
-			DateTime FromJulianDay(int jd);
+			QDate FromJulianDay(int jd);
 		}
 
 		protected new void CreateProxy() {
@@ -128,26 +128,26 @@ namespace Qyoto {
 			return ProxyQDate().SetDate(year,month,date);
 		}
 		[SmokeMethod("addDays(int) const")]
-		public DateTime AddDays(int days) {
+		public QDate AddDays(int days) {
 			return ProxyQDate().AddDays(days);
 		}
 		[SmokeMethod("addMonths(int) const")]
-		public DateTime AddMonths(int months) {
+		public QDate AddMonths(int months) {
 			return ProxyQDate().AddMonths(months);
 		}
 		[SmokeMethod("addYears(int) const")]
-		public DateTime AddYears(int years) {
+		public QDate AddYears(int years) {
 			return ProxyQDate().AddYears(years);
 		}
 		[SmokeMethod("daysTo(const QDate&) const")]
-		public int DaysTo(DateTime arg1) {
+		public int DaysTo(QDate arg1) {
 			return ProxyQDate().DaysTo(arg1);
 		}
 		[SmokeMethod("operator==(const QDate&) const")]
-		public static bool operator==(QDate lhs, DateTime other) {
+		public static bool operator==(QDate lhs, QDate other) {
 			return StaticQDate().op_equals(lhs,other);
 		}
-		public static bool operator!=(QDate lhs, DateTime other) {
+		public static bool operator!=(QDate lhs, QDate other) {
 			return !StaticQDate().op_equals(lhs,other);
 		}
 		public override bool Equals(object o) {
@@ -158,19 +158,19 @@ namespace Qyoto {
 			return ProxyQDate().GetHashCode();
 		}
 		[SmokeMethod("operator<(const QDate&) const")]
-		public static bool operator<(QDate lhs, DateTime other) {
+		public static bool operator<(QDate lhs, QDate other) {
 			return StaticQDate().op_lt(lhs,other);
 		}
 		[SmokeMethod("operator<=(const QDate&) const")]
-		public static bool operator<=(QDate lhs, DateTime other) {
+		public static bool operator<=(QDate lhs, QDate other) {
 			return StaticQDate().op_lte(lhs,other);
 		}
 		[SmokeMethod("operator>(const QDate&) const")]
-		public static bool operator>(QDate lhs, DateTime other) {
+		public static bool operator>(QDate lhs, QDate other) {
 			return StaticQDate().op_gt(lhs,other);
 		}
 		[SmokeMethod("operator>=(const QDate&) const")]
-		public static bool operator>=(QDate lhs, DateTime other) {
+		public static bool operator>=(QDate lhs, QDate other) {
 			return StaticQDate().op_gte(lhs,other);
 		}
 		[SmokeMethod("toJulianDay() const")]
@@ -194,19 +194,19 @@ namespace Qyoto {
 			return StaticQDate().LongDayName(weekday);
 		}
 		[SmokeMethod("currentDate()")]
-		public static DateTime CurrentDate() {
+		public static QDate CurrentDate() {
 			return StaticQDate().CurrentDate();
 		}
 		[SmokeMethod("fromString(const QString&, Qt::DateFormat)")]
-		public static DateTime FromString(string s, Qt.DateFormat f) {
+		public static QDate FromString(string s, Qt.DateFormat f) {
 			return StaticQDate().FromString(s,f);
 		}
 		[SmokeMethod("fromString(const QString&)")]
-		public static DateTime FromString(string s) {
+		public static QDate FromString(string s) {
 			return StaticQDate().FromString(s);
 		}
 		[SmokeMethod("fromString(const QString&, const QString&)")]
-		public static DateTime FromString(string s, string format) {
+		public static QDate FromString(string s, string format) {
 			return StaticQDate().FromString(s,format);
 		}
 		[SmokeMethod("isValid(int, int, int)")]
@@ -226,7 +226,7 @@ namespace Qyoto {
 			StaticQDate().JulianToGregorian(jd,out y,out m,out d);
 		}
 		[SmokeMethod("fromJulianDay(int)")]
-		public static DateTime FromJulianDay(int jd) {
+		public static QDate FromJulianDay(int jd) {
 			return StaticQDate().FromJulianDay(jd);
 		}
 		~QDate() {

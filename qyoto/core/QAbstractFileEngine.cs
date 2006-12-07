@@ -162,7 +162,7 @@ namespace Qyoto {
 			return ProxyQAbstractFileEngine().Owner(arg1);
 		}
 		[SmokeMethod("fileTime(QAbstractFileEngine::FileTime) const")]
-		public virtual DateTime fileTime(QAbstractFileEngine.FileTime time) {
+		public virtual QDateTime fileTime(QAbstractFileEngine.FileTime time) {
 			return ProxyQAbstractFileEngine().fileTime(time);
 		}
 		[SmokeMethod("setFileName(const QString&)")]

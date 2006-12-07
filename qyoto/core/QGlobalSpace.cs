@@ -13,8 +13,12 @@ namespace Qyoto {
 		protected QGlobalSpace(Type dummy) {}
 		interface IQGlobalSpaceProxy {
 			QDBusArgument op_read(QDBusArgument a, QVariant v);
-			QDBusArgument op_read(QDBusArgument a, DateTime date);
-			QDBusArgument op_write(QDBusArgument a, DateTime date);
+			QDBusArgument op_read(QDBusArgument a, QDate date);
+			QDBusArgument op_write(QDBusArgument a, QDate date);
+			QDBusArgument op_read(QDBusArgument a, QTime time);
+			QDBusArgument op_write(QDBusArgument a, QTime time);
+			QDBusArgument op_read(QDBusArgument a, QDateTime dt);
+			QDBusArgument op_write(QDBusArgument a, QDateTime dt);
 			QDBusArgument op_read(QDBusArgument a, QRect rect);
 			QDBusArgument op_write(QDBusArgument a, QRect rect);
 			QDBusArgument op_read(QDBusArgument a, QRectF rect);
@@ -237,8 +241,12 @@ namespace Qyoto {
 			bool op_gt(char c1, char c2);
 			QDataStream op_write(QDataStream arg1, char arg2);
 			QDataStream op_read(QDataStream arg1, char arg2);
-			QDataStream op_write(QDataStream arg1, DateTime arg2);
-			QDataStream op_read(QDataStream arg1, DateTime arg2);
+			QDataStream op_write(QDataStream arg1, QDate arg2);
+			QDataStream op_read(QDataStream arg1, QDate arg2);
+			QDataStream op_write(QDataStream arg1, QTime arg2);
+			QDataStream op_read(QDataStream arg1, QTime arg2);
+			QDataStream op_write(QDataStream arg1, QDateTime arg2);
+			QDataStream op_read(QDataStream arg1, QDateTime arg2);
 			QDataStream op_write(QDataStream arg1, QLine arg2);
 			QDataStream op_read(QDataStream arg1, QLine arg2);
 			QDataStream op_write(QDataStream arg1, QLineF arg2);
@@ -323,12 +331,28 @@ namespace Qyoto {
 			return StaticQGlobalSpace().op_read(a,v);
 		}
 		[SmokeMethod("operator>>(const QDBusArgument&, QDate&)")]
-		public static QDBusArgument op_read(QDBusArgument a, DateTime date) {
+		public static QDBusArgument op_read(QDBusArgument a, QDate date) {
 			return StaticQGlobalSpace().op_read(a,date);
 		}
 		[SmokeMethod("operator<<(QDBusArgument&, const QDate&)")]
-		public static QDBusArgument op_write(QDBusArgument a, DateTime date) {
+		public static QDBusArgument op_write(QDBusArgument a, QDate date) {
 			return StaticQGlobalSpace().op_write(a,date);
+		}
+		[SmokeMethod("operator>>(const QDBusArgument&, QTime&)")]
+		public static QDBusArgument op_read(QDBusArgument a, QTime time) {
+			return StaticQGlobalSpace().op_read(a,time);
+		}
+		[SmokeMethod("operator<<(QDBusArgument&, const QTime&)")]
+		public static QDBusArgument op_write(QDBusArgument a, QTime time) {
+			return StaticQGlobalSpace().op_write(a,time);
+		}
+		[SmokeMethod("operator>>(const QDBusArgument&, QDateTime&)")]
+		public static QDBusArgument op_read(QDBusArgument a, QDateTime dt) {
+			return StaticQGlobalSpace().op_read(a,dt);
+		}
+		[SmokeMethod("operator<<(QDBusArgument&, const QDateTime&)")]
+		public static QDBusArgument op_write(QDBusArgument a, QDateTime dt) {
+			return StaticQGlobalSpace().op_write(a,dt);
 		}
 		[SmokeMethod("operator>>(const QDBusArgument&, QRect&)")]
 		public static QDBusArgument op_read(QDBusArgument a, QRect rect) {
@@ -1303,11 +1327,27 @@ namespace Qyoto {
 			return StaticQGlobalSpace().op_read(arg1,arg2);
 		}
 		[SmokeMethod("operator<<(QDataStream&, const QDate&)")]
-		public static QDataStream op_write(QDataStream arg1, DateTime arg2) {
+		public static QDataStream op_write(QDataStream arg1, QDate arg2) {
 			return StaticQGlobalSpace().op_write(arg1,arg2);
 		}
 		[SmokeMethod("operator>>(QDataStream&, QDate&)")]
-		public static QDataStream op_read(QDataStream arg1, DateTime arg2) {
+		public static QDataStream op_read(QDataStream arg1, QDate arg2) {
+			return StaticQGlobalSpace().op_read(arg1,arg2);
+		}
+		[SmokeMethod("operator<<(QDataStream&, const QTime&)")]
+		public static QDataStream op_write(QDataStream arg1, QTime arg2) {
+			return StaticQGlobalSpace().op_write(arg1,arg2);
+		}
+		[SmokeMethod("operator>>(QDataStream&, QTime&)")]
+		public static QDataStream op_read(QDataStream arg1, QTime arg2) {
+			return StaticQGlobalSpace().op_read(arg1,arg2);
+		}
+		[SmokeMethod("operator<<(QDataStream&, const QDateTime&)")]
+		public static QDataStream op_write(QDataStream arg1, QDateTime arg2) {
+			return StaticQGlobalSpace().op_write(arg1,arg2);
+		}
+		[SmokeMethod("operator>>(QDataStream&, QDateTime&)")]
+		public static QDataStream op_read(QDataStream arg1, QDateTime arg2) {
 			return StaticQGlobalSpace().op_read(arg1,arg2);
 		}
 		[SmokeMethod("operator<<(QDataStream&, const QLine&)")]
