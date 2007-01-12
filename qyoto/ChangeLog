@@ -2,6 +2,7 @@
 
 	* Change the cmake build to use gmcs rather than mcs
 	* Added a QDBusReply class using a generic type
+	* Added some missing methods to QDBusConnectionInterface
 
 2006-12-07  Richard Dale  <rdale@foton.es>
 
