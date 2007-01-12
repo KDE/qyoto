@@ -61,25 +61,25 @@ namespace Qyoto {
 		// QDBusReply<uint> serviceUid(const QString& arg1); >>>> NOT CONVERTED
 		// QDBusReply<void> startService(const QString& arg1); >>>> NOT CONVERTED
 
-		public QDBusReply<bool> isServiceRegistered(string serviceName) {
-            ArrayList serviceArg = new ArrayList();
+		public QDBusReply<bool> IsServiceRegistered(string serviceName) {
+			ArrayList serviceArg = new ArrayList();
 			serviceArg.Add(new QVariant(serviceName));
 			return new QDBusReply<bool>(InternalConstCall(QDBus.CallMode.AutoDetect,"NameHasOwner", serviceArg));
 		}
 
-		public QDBusReply<uint> servicePid(string serviceName) {
-            ArrayList serviceArg = new ArrayList();
+		public QDBusReply<uint> ServicePid(string serviceName) {
+			ArrayList serviceArg = new ArrayList();
 			serviceArg.Add(new QVariant(serviceName));
 			return new QDBusReply<uint>(InternalConstCall(QDBus.CallMode.AutoDetect, "GetConnectionUnixProcessID", serviceArg));
 		}
 
-		public QDBusReply<uint> serviceUid(string serviceName) {
-            ArrayList serviceArg = new ArrayList();
+		public QDBusReply<uint> ServiceUid(string serviceName) {
+			ArrayList serviceArg = new ArrayList();
 			serviceArg.Add(new QVariant(serviceName));
 			return new QDBusReply<uint>(InternalConstCall(QDBus.CallMode.AutoDetect, "GetConnectionUnixUser", serviceArg));
 		}
 
-		public QDBusReply<int> startService(string name) {
+		public QDBusReply<int> StartService(string name) {
 			return new QDBusReply<int>(Call("StartServiceByName", new QVariant(name), new QVariant(0)));
 		}
 
