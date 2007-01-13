@@ -3,6 +3,7 @@ namespace Qyoto {
 
 	using System;
 	using System.Collections;
+	using System.Collections.Generic; 
 	using System.Text;
 
 	[SmokeClass("QDBusConnectionInterface")]
@@ -44,22 +45,20 @@ namespace Qyoto {
 			ServiceQueued = 2,
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
-		[SmokeMethod("registeredServiceNames() const")]
-		public ArrayList RegisteredServiceNames() {
-			return ProxyQDBusConnectionInterface().RegisteredServiceNames();
+
+		public QDBusReply<List<string>> RegisteredServiceNames() {
+			return new QDBusReply<List<string>>(InternalConstCall(QDBus.CallMode.AutoDetect,"ListNames"));
 		}
-		// QDBusReply<bool> isServiceRegistered(const QString& arg1); >>>> NOT CONVERTED
-		[SmokeMethod("serviceOwner(const QString&) const")]
-		public string ServiceOwner(string name) {
-			return ProxyQDBusConnectionInterface().ServiceOwner(name);
+
+		public QDBusReply<string> ServiceOwner(string name) {
+			ArrayList nameArg = new ArrayList();
+			nameArg.Add(new QVariant(name));
+			return new QDBusReply<string>(InternalConstCall(QDBus.CallMode.AutoDetect,"GetNameOwner", nameArg));
 		}
 		// QDBusReply<bool> unregisterService(const QString& arg1); >>>> NOT CONVERTED
 		// QDBusReply<QDBusConnectionInterface::RegisterServiceReply> registerService(const QString& arg1,QDBusConnectionInterface::ServiceQueueOptions arg2,QDBusConnectionInterface::ServiceReplacementOptions arg3); >>>> NOT CONVERTED
 		// QDBusReply<QDBusConnectionInterface::RegisterServiceReply> registerService(const QString& arg1,QDBusConnectionInterface::ServiceQueueOptions arg2); >>>> NOT CONVERTED
 		// QDBusReply<QDBusConnectionInterface::RegisterServiceReply> registerService(const QString& arg1); >>>> NOT CONVERTED
-		// QDBusReply<uint> servicePid(const QString& arg1); >>>> NOT CONVERTED
-		// QDBusReply<uint> serviceUid(const QString& arg1); >>>> NOT CONVERTED
-		// QDBusReply<void> startService(const QString& arg1); >>>> NOT CONVERTED
 
 		public QDBusReply<bool> IsServiceRegistered(string serviceName) {
 			ArrayList serviceArg = new ArrayList();

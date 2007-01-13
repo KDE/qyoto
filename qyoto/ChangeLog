@@ -1,3 +1,9 @@
+2007-13-01  Richard Dale  <rdale@foton.es>
+
+	* Added a generically typed QVariant.Value() method
+	* QDBusReply uses QVariant.Value()
+	* Added a couple of methods using QDBusReply to QDBusConnectionInterface
+
 2007-12-01  Richard Dale  <rdale@foton.es>
 
 	* Change the cmake build to use gmcs rather than mcs
