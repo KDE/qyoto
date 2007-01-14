@@ -23,6 +23,7 @@ namespace Qyoto {
 	
 	using System;
 	using System.Collections;
+	using System.Collections.Generic;
 	using System.Text;
 	using System.Text.RegularExpressions;
 	using System.Reflection;
@@ -243,7 +244,7 @@ namespace Qyoto {
 
 		// The key is an IntPtr corresponding to the address of the C++ instance,
 		// and the value is a WeakReference to the C# instance.
-		static private Hashtable pointerMap = new Hashtable();
+		static private Dictionary<IntPtr, WeakReference> pointerMap = new Dictionary<IntPtr, WeakReference>();
 
 		static void MapPointer(IntPtr ptr, IntPtr instancePtr) {
 			Object instance = ((GCHandle) instancePtr).Target;
@@ -257,12 +258,12 @@ namespace Qyoto {
 		
 		static IntPtr GetPointerObject(IntPtr ptr) {
 //			Console.WriteLine("ENTER GetPointerObject() ptr: {0}", ptr);
-			if (pointerMap[ptr] == null) {
+			WeakReference weakRef;
+			if (!pointerMap.TryGetValue(ptr, out weakRef)) {
 //				Console.WriteLine("GetPointerObject() pointerMap[ptr] == null");
 				return (IntPtr) 0;
 			}
 
-			WeakReference weakRef = (WeakReference) pointerMap[ptr];
 			if (weakRef == null) {
 //				Console.WriteLine("GetPointerObject() weakRef zero");
 				return (IntPtr) 0;
@@ -420,7 +421,8 @@ namespace Qyoto {
 		// virtual methods, and the value is a Hashtable of the smoke type
 		// signatures as keys retrieving a suitable MethodInfo to invoke via 
 		// reflection.
-		static private Hashtable overridenMethods = new Hashtable();
+		static private Dictionary<string, Dictionary<string, MemberInfo>>
+			overridenMethods = new Dictionary<string, Dictionary<string, MemberInfo>>();
 		static private MethodInfo metacallMethod = typeof(Qyoto).GetMethod("QyotoMetaCall", BindingFlags.Static | BindingFlags.NonPublic);
 		static private MethodInfo metaObjectMethod = typeof(QObject).GetMethod("MetaObject", BindingFlags.Instance | BindingFlags.Public);
 		
@@ -431,13 +433,11 @@ namespace Qyoto {
 			}
 
 			string instanceType = klass.ToString();
-			Hashtable methodsHash = (Hashtable) overridenMethods[instanceType];
-			if (methodsHash != null) {
+			if (overridenMethods.ContainsKey(instanceType))
 				return;
-			}
 
-			methodsHash = new Hashtable();
-			overridenMethods[instanceType] = methodsHash;
+			Dictionary<string, MemberInfo> methodsHash = new Dictionary<string, MemberInfo>();
+			overridenMethods.Add(instanceType, methodsHash);
 			
 			do {
 				MemberInfo[] methods = klass.FindMembers(	MemberTypes.Method,
@@ -472,8 +472,8 @@ namespace Qyoto {
 						parent = parent.BaseType;
 					}
 	
-					if (signature != null && methodsHash[signature] == null) {
-						methodsHash[signature] = method;
+					if (signature != null && !methodsHash.ContainsKey(signature)) {
+						methodsHash.Add(signature, method);
 					}
 				}
 
@@ -489,13 +489,13 @@ namespace Qyoto {
 			if (method == "metaObject() const")
 				return (IntPtr)GCHandle.Alloc(metaObjectMethod);
 
-			Hashtable methods = (Hashtable) overridenMethods[instanceType];
-			if (methods == null) {
+			Dictionary<string, MemberInfo> methods;
+			if (!overridenMethods.TryGetValue(instanceType, out methods)) {
 				return (IntPtr) 0;
 			}
 
-			MethodInfo methodInfo = (MethodInfo) methods[method];
-			if (methodInfo == null) {
+			MemberInfo methodInfo;
+			if (!methods.TryGetValue(method, out methodInfo)) {
 				return (IntPtr) 0;
 			}
 
@@ -590,14 +590,18 @@ namespace Qyoto {
 #if DEBUG
 			Console.WriteLine("handling slot {0} for class {1}", slotname, qobj.GetType());
 #endif
-			Hashtable slotTable = (Hashtable)Qyoto.classes[className];
-			if (slotTable == null) {
+			Dictionary<string, Qyoto.CPPMethod> slotTable;
+			if (!Qyoto.classes.TryGetValue(className, out slotTable)) {
 				slotTable = Qyoto.GetSlotSignatures(qobj.GetType());
 			}
-			MethodInfo slot = ((Qyoto.CPPMethod)slotTable[slotname]).mi;
-			if (slot == null) {
+			MethodInfo slot;
+			try {
+				slot = (slotTable[slotname]).mi;
+			}
+			catch (KeyNotFoundException) {
 				// should not happen
 				Console.WriteLine("** Could not retrieve slot {0}::{1} info **", className, slotname);
+				return;
 			}
 		
 			ParameterInfo[] parameters = slot.GetParameters();
@@ -992,14 +996,14 @@ namespace Qyoto {
 			IMethodReturnMessage returnMessage = (IMethodReturnMessage) message;
 			GCHandle instanceHandle = GCHandle.Alloc(_instance);
 			string signature = "";
-			Hashtable signals = Qyoto.GetSignalSignatures(_instance.GetType());
+			Dictionary<MethodInfo, Qyoto.CPPMethod> signals = Qyoto.GetSignalSignatures(_instance.GetType());
 			
 			/// should not happen
 			if (signals == null) {
 				Console.WriteLine("** FATAL: error while retirieving signal signatures **");
 				return null;
 			}
-			signature = ((Qyoto.CPPMethod) signals[(MethodInfo) callMessage.MethodBase]).signature;
+			signature = signals[(MethodInfo) callMessage.MethodBase].signature;
 #if DEBUG
 			Console.WriteLine( "Q_SIGNAL signature: {0}", signature );
 #endif

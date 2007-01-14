@@ -4,6 +4,7 @@ namespace Qyoto
 {
 	using System;
 	using System.Collections;
+	using System.Collections.Generic;
 	using System.Reflection;
 	using System.Text;
 	using System.Text.RegularExpressions;
@@ -29,10 +30,11 @@ namespace Qyoto
 		}
 		
 		/// This Hashtable contains a list of classes with their Hashtables for slots. The class name is the key, the slot-hashtable the value.
-		public static Hashtable classes = new Hashtable();
+		public static Dictionary<string, Dictionary<string, CPPMethod>> classes = 
+			new Dictionary<string, Dictionary<string, CPPMethod>>();
     
 		/// This hashtable has classe names as keys, and QMetaObjects as values
-		static Hashtable metaObjects = new Hashtable();
+		static Dictionary<string, QMetaObject> metaObjects = new Dictionary<string, QMetaObject> ();
 		
 		public static int GetCPPEnumValue(string c, string value) {
 			Type t = Type.GetType("Qyoto." + c, false);
@@ -155,12 +157,12 @@ namespace Qyoto
 				type = return_type;
 		}
 		
-		public static Hashtable GetSlotSignatures(Type t) {
+		public static Dictionary<string, CPPMethod> GetSlotSignatures(Type t) {
 			/// Remove the old object if it already exists
 			classes.Remove(t.ToString());
 			
 			/// This Hashtable contains the slots of a class. The C++ type signature is the key, the appropriate array with the MethodInfo, signature and return type the value.
-			Hashtable slots = new Hashtable();
+			Dictionary<string, CPPMethod> slots = new Dictionary<string, CPPMethod>();
 			
 			MethodInfo[] mis = t.GetMethods(	BindingFlags.Instance 
 												| BindingFlags.Static 
@@ -195,8 +197,8 @@ namespace Qyoto
 		
 		
 		/// returns a Hastable with the MethodInfo as a key and the array with the MethodInfo, signature and return type the value.
-		public static Hashtable GetSignalSignatures(Type t) {
-			Hashtable signals = new Hashtable();
+		public static Dictionary<MethodInfo, CPPMethod> GetSignalSignatures(Type t) {
+			Dictionary<MethodInfo, CPPMethod> signals = new Dictionary<MethodInfo, CPPMethod>();
 			if (IsSmokeClass(t)) {
 				return signals;
 			}
@@ -241,8 +243,8 @@ namespace Qyoto
 			return mi.ReturnType;
 		}
 		
-		public static Hashtable GetClassInfos(Type t) {
-			Hashtable classinfos = new Hashtable();
+		public static Dictionary<string, string> GetClassInfos(Type t) {
+			Dictionary<string, string> classinfos = new Dictionary<string, string>();
 			object[] attributes = t.GetCustomAttributes(typeof(Q_CLASSINFO), false);
 			foreach (Q_CLASSINFO attr in attributes) {
 				classinfos.Add(attr.Name, attr.Value);
@@ -251,49 +253,10 @@ namespace Qyoto
 		}
 		
 		class QyotoMetaData {
-			// Keeps a hash of strings against their corresponding offsets
-			// within the qt_meta_stringdata sequence of null terminated
-			// strings.
-			class StringTableHandler {
-				Hashtable hash;
-				uint offset;
-				ArrayList data;
-			
-				public StringTableHandler() {
-					hash = new Hashtable();
-					offset = 0;
-					data = new ArrayList();
-				}
-	
-				public uint this[string str] {
-					get {
-						if (!hash.ContainsKey(str)) {
-#if DEBUG
-							Console.WriteLine("adding {0} in hash at offset {1}", str, offset);
-#endif
-							hash[str] = offset;
-							data.Add(str);
-							offset += (uint)str.Length + 1;
-						}
-						return (uint)hash[str];
-					}
-				}
-			
-				public byte[] GetStringData() {
-					ArrayList result = new ArrayList();
-					foreach(string x in data) {
-						result.AddRange(Encoding.ASCII.GetBytes(x));
-						result.Add((byte)0);
-					}
-					byte[] res = new byte[result.Count];
-					result.CopyTo(res);
-					return res;
-				}
-			}
-		
 			byte[] stringdata;
 			uint[] data;
-			StringTableHandler handler;
+			private delegate uint Handler(string str);
+			Handler handler;
 		
 			// from qt-copy/src/tools/moc/generator.cpp
 			enum MethodFlags {
@@ -308,24 +271,51 @@ namespace Qyoto
 				MethodScriptable = 0x40
 			}
 			
-			void AddClassInfo(ArrayList array, string key, string value) {
-				array.Add(handler[key]);
-				array.Add(handler[value]);
+			void AddClassInfo(List<uint> array, string key, string value) {
+				array.Add(handler(key));
+				array.Add(handler(value));
 			}
 			
-			void AddMethod(ArrayList array, string method, string type, MethodFlags flags) {
-				array.Add(handler[method]);                            // signature
-				array.Add(handler[Regex.Replace(method, "[^,]", "")]); // parameters
-				array.Add(handler[type]);				// type
-				array.Add(handler[""]);                                // tag
+			void AddMethod(List<uint> array, string method, string type, MethodFlags flags) {
+				array.Add(handler(method));                            // signature
+				array.Add(handler(Regex.Replace(method, "[^,]", ""))); // parameters
+				array.Add(handler(type));				// type
+				array.Add(handler(""));                                // tag
 				array.Add((uint)flags);                                 // flags
 			}
+			
+			byte[] ComputeStringData(List<string> array) {
+				List<byte> result = new List<byte>();
+				foreach(string x in array) {
+					result.AddRange(Encoding.ASCII.GetBytes(x));
+					result.Add(0);
+				}
+				return result.ToArray();
+			}
 		
-			public QyotoMetaData(string className, ICollection signals, ICollection slots, Hashtable classinfos) {
-				handler = new StringTableHandler();
-				ArrayList tmp = new ArrayList(new uint[] {
+			public QyotoMetaData(string className, ICollection<CPPMethod> signals, 
+								ICollection<CPPMethod> slots, Dictionary<string, string> classinfos) {
+				Dictionary<string, uint> hash = new Dictionary<string, uint>();
+				uint offset = 0;
+				List<string> stringdata_tmp = new List<string>();
+
+				handler = delegate(string str) {
+						uint res;
+						if (!hash.TryGetValue(str, out res)) {
+#if DEBUG
+							Console.WriteLine("adding {0} in hash at offset {1}", str, offset);
+#endif
+							hash.Add(str, offset);
+							stringdata_tmp.Add(str);
+							res = offset;
+							offset += (uint)str.Length + 1;
+						}
+						return res;
+				};
+				
+				List<uint> tmp = new List<uint>(new uint[] {
 					1,                                  // revision
-					handler[className],                 // classname
+					handler(className),                 // classname
 					(uint)classinfos.Count, classinfos.Count > 0 ? (uint)10 : (uint)0,  // classinfo
 					(uint)(signals.Count + slots.Count),
 					(uint)(10 + (2 * classinfos.Count)),        // methods
@@ -333,8 +323,8 @@ namespace Qyoto
 					0, 0
 				});
 				
-				foreach (string key in classinfos.Keys)
-					AddClassInfo(tmp, key, (string) classinfos[key]);
+				foreach (KeyValuePair<string, string> p in classinfos)
+					AddClassInfo(tmp, p.Key, p.Value);
 				
 				foreach (CPPMethod entry in signals) {
 					MethodFlags flags = MethodFlags.MethodSignal | MethodFlags.AccessProtected;
@@ -360,15 +350,10 @@ namespace Qyoto
 						MethodFlags.MethodSlot | MethodFlags.AccessPublic);
 				}
 				
-				tmp.Add((uint)0);
+				tmp.Add(0);
 				
-				stringdata = handler.GetStringData();
-				data = new uint[tmp.Count];
-				tmp.CopyTo(data);
-/*				for (int i = 0; i < tmp.Count; i++) {
-					Console.WriteLine("copying {0} => {1}", i, tmp[i]);
-					data[i] = (uint)tmp[i];
-				}*/
+				stringdata = ComputeStringData(stringdata_tmp);
+				data = tmp.ToArray();
 			}
 		
 			public byte[] StringData {
@@ -384,17 +369,17 @@ namespace Qyoto
 			if (t == null) return null;
 		
 			string className = t.ToString();
-			Hashtable slotTable = (Hashtable)classes[className];
-		
-			ICollection slots;
-			if (slotTable != null)
+			Dictionary<string, CPPMethod> slotTable;
+			ICollection<CPPMethod> slots;
+			
+			if (classes.TryGetValue(className, out slotTable))
 				slots = slotTable.Values;
 			else {
 				// build slot table
 				slots = GetSlotSignatures(t).Values;
 			}
 
-			Hashtable signals = GetSignalSignatures(t);
+			Dictionary<MethodInfo, CPPMethod> signals = GetSignalSignatures(t);
 			QyotoMetaData metaData = new QyotoMetaData(className, signals.Values, slots, GetClassInfos(t));
 			
 			GCHandle objHandle = GCHandle.Alloc(o);
@@ -419,11 +404,11 @@ namespace Qyoto
 			Console.WriteLine("ENTER GetMetaObject t => {0}", t);
 #endif
 			
-			QMetaObject res = (QMetaObject)metaObjects[t.ToString()];
-			if (res == null) {
+			QMetaObject res;
+			if (!metaObjects.TryGetValue(t.ToString(), out res)) {
 				// create QMetaObject
 				res = MakeMetaObject(t, o);
-				metaObjects[t.ToString()] = res;
+				metaObjects.Add(t.ToString(), res);
 			}
 	
 #if DEBUG
