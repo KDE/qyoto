@@ -925,67 +925,67 @@ static QByteArray * currentSignature = 0;
 }
 
 void 
-AddFreeGCHandle(FromIntPtr callback)
+InstallFreeGCHandle(FromIntPtr callback)
 {
 	FreeGCHandle = callback;
 }
 
 void 
-AddGetSmokeObject(GetIntPtr callback)
+InstallGetSmokeObject(GetIntPtr callback)
 {
 	GetSmokeObject = callback;
 }
 
 void 
-AddSetSmokeObject(SetIntPtr callback)
+InstallSetSmokeObject(SetIntPtr callback)
 {
 	SetSmokeObject = callback;
 }
 
 void 
-AddMapPointer(SetIntPtr callback)
+InstallMapPointer(SetIntPtr callback)
 {
 	MapPointer = callback;
 }
 
 void 
-AddUnmapPointer(FromIntPtr callback)
+InstallUnmapPointer(FromIntPtr callback)
 {
 	UnmapPointer = callback;
 }
 
 void 
-AddGetPointerObject(GetIntPtr callback)
+InstallGetPointerObject(GetIntPtr callback)
 {
 	GetPointerObject = callback;
 }
 
 void 
-AddOverridenMethod(OverridenMethodFn callback)
+InstallOverridenMethod(OverridenMethodFn callback)
 {
 	OverridenMethod = callback;
 }
 
 void 
-AddInvokeMethod(InvokeMethodFn callback)
+InstallInvokeMethod(InvokeMethodFn callback)
 {
 	InvokeMethod = callback;
 }
 
 void 
-AddCreateInstance(CreateInstanceFn callback)
+InstallCreateInstance(CreateInstanceFn callback)
 {
 	CreateInstance = callback;
 }
 
 void
-AddInvokeCustomSlot(InvokeCustomSlotFn callback)
+InstallInvokeCustomSlot(InvokeCustomSlotFn callback)
 {
 	InvokeCustomSlot = callback;
 }
 
 void
-AddIsSmokeClass(IsSmokeClassFn callback)
+InstallIsSmokeClass(IsSmokeClassFn callback)
 {
 	IsSmokeClass = callback;
 }

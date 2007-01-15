@@ -121,82 +121,82 @@ namespace Qyoto {
 		
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		static extern void AddFreeGCHandle(FromIntPtr callback);
+		static extern void InstallFreeGCHandle(FromIntPtr callback);
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		static extern void AddGetSmokeObject(GetIntPtr callback);
+		static extern void InstallGetSmokeObject(GetIntPtr callback);
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		static extern void AddSetSmokeObject(SetIntPtr callback);
+		static extern void InstallSetSmokeObject(SetIntPtr callback);
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		static extern void AddMapPointer(SetIntPtr callback);
+		static extern void InstallMapPointer(SetIntPtr callback);
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		static extern void AddUnmapPointer(FromIntPtr callback);
+		static extern void InstallUnmapPointer(FromIntPtr callback);
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		static extern void AddGetPointerObject(GetIntPtr callback);
+		static extern void InstallGetPointerObject(GetIntPtr callback);
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		static extern void AddCreateInstance(CreateInstanceFn callback);
+		static extern void InstallCreateInstance(CreateInstanceFn callback);
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		static extern void AddInvokeCustomSlot(InvokeCustomSlotFn callback);
+		static extern void InstallInvokeCustomSlot(InvokeCustomSlotFn callback);
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		static extern bool AddIsSmokeClass(IsSmokeClassFn callback);
+		static extern bool InstallIsSmokeClass(IsSmokeClassFn callback);
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		static extern void AddIntPtrToCharStarStar(GetIntPtr callback);
+		static extern void InstallIntPtrToCharStarStar(GetIntPtr callback);
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		static extern void AddIntPtrToCharStar(GetStringFromIntPtr callback);
+		static extern void InstallIntPtrToCharStar(GetStringFromIntPtr callback);
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		static extern void AddIntPtrFromCharStar(GetIntPtrFromString callback);
+		static extern void InstallIntPtrFromCharStar(GetIntPtrFromString callback);
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		static extern void AddIntPtrToQString(GetIntPtr callback);
+		static extern void InstallIntPtrToQString(GetIntPtr callback);
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		static extern void AddIntPtrFromQString(GetIntPtr callback);
+		static extern void InstallIntPtrFromQString(GetIntPtr callback);
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		static extern void AddOverridenMethod(OverridenMethodFn callback);
+		static extern void InstallOverridenMethod(OverridenMethodFn callback);
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		static extern void AddInvokeMethod(InvokeMethodFn callback);
+		static extern void InstallInvokeMethod(InvokeMethodFn callback);
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		static extern IntPtr AddConstructArrayList(NoArgs callback);
+		static extern IntPtr InstallConstructArrayList(NoArgs callback);
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		static extern IntPtr AddArrayListToQStringList(GetIntPtr callback);
+		static extern IntPtr InstallArrayListToQStringList(GetIntPtr callback);
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		static extern IntPtr AddArrayListToPointerList(GetIntPtr callback);
+		static extern IntPtr InstallArrayListToPointerList(GetIntPtr callback);
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		static extern IntPtr AddArrayListToQListInt(GetIntPtr callback);
+		static extern IntPtr InstallArrayListToQListInt(GetIntPtr callback);
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		static extern void AddAddIntPtrToArrayList(SetIntPtr callback);
+		static extern void InstallAddIntPtrToArrayList(SetIntPtr callback);
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		static extern void AddAddIntToArrayList(AddInt callback);
+		static extern void InstallAddIntToArrayList(AddInt callback);
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		static extern IntPtr AddConstructHashtable(NoArgs callback);
+		static extern IntPtr InstallConstructHashtable(NoArgs callback);
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		static extern void AddAddObjectObjectToHashtable(InvokeMethodFn callback);
+		static extern void InstallAddObjectObjectToHashtable(InvokeMethodFn callback);
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		static extern void AddAddIntObjectToHashtable(AddIntObject callback);
+		static extern void InstallAddIntObjectToHashtable(AddIntObject callback);
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		static extern void AddHashtableToQMap(HashToMap callback);
+		static extern void InstallHashtableToQMap(HashToMap callback);
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern int qt_metacall(IntPtr obj, int _c, int _id, IntPtr a);
@@ -714,38 +714,38 @@ namespace Qyoto {
 		static private IsSmokeClassFn isSmokeClass = new IsSmokeClassFn(Qyoto.IsSmokeClass);
 		
 		static SmokeInvocation() {
-			AddFreeGCHandle(freeGCHandle);
+			InstallFreeGCHandle(freeGCHandle);
 
-			AddGetSmokeObject(getSmokeObject);
-			AddSetSmokeObject(setSmokeObject);
+			InstallGetSmokeObject(getSmokeObject);
+			InstallSetSmokeObject(setSmokeObject);
 			
-			AddMapPointer(mapPointer);
-			AddUnmapPointer(unmapPointer);
-			AddGetPointerObject(getPointerObject);
+			InstallMapPointer(mapPointer);
+			InstallUnmapPointer(unmapPointer);
+			InstallGetPointerObject(getPointerObject);
 
-			AddIntPtrToCharStarStar(intPtrToCharStarStar);
-			AddIntPtrToCharStar(intPtrToString);
-			AddIntPtrFromCharStar(intPtrFromString);
-			AddIntPtrToQString(intPtrToQString);
-			AddIntPtrFromQString(intPtrFromQString);
-			AddConstructArrayList(constructArrayList);
-			AddArrayListToQStringList(arrayListToQStringList);
-			AddArrayListToPointerList(arrayListToPointerList);
-			AddArrayListToQListInt(arrayListToQListInt);
-			AddAddIntPtrToArrayList(addIntPtrToArrayList);
-			AddAddIntToArrayList(addIntToArrayList);
+			InstallIntPtrToCharStarStar(intPtrToCharStarStar);
+			InstallIntPtrToCharStar(intPtrToString);
+			InstallIntPtrFromCharStar(intPtrFromString);
+			InstallIntPtrToQString(intPtrToQString);
+			InstallIntPtrFromQString(intPtrFromQString);
+			InstallConstructArrayList(constructArrayList);
+			InstallArrayListToQStringList(arrayListToQStringList);
+			InstallArrayListToPointerList(arrayListToPointerList);
+			InstallArrayListToQListInt(arrayListToQListInt);
+			InstallAddIntPtrToArrayList(addIntPtrToArrayList);
+			InstallAddIntToArrayList(addIntToArrayList);
 
-			AddConstructHashtable(constructHashtable);
-			AddAddObjectObjectToHashtable(addObjectObjectToHashtable);
-			AddAddIntObjectToHashtable(addIntObjectToHashtable);
-			AddHashtableToQMap(hashtableToQMap);
+			InstallConstructHashtable(constructHashtable);
+			InstallAddObjectObjectToHashtable(addObjectObjectToHashtable);
+			InstallAddIntObjectToHashtable(addIntObjectToHashtable);
+			InstallHashtableToQMap(hashtableToQMap);
 
-			AddOverridenMethod(overridenMethod);
-			AddInvokeMethod(invokeMethod);
+			InstallOverridenMethod(overridenMethod);
+			InstallInvokeMethod(invokeMethod);
 
-			AddCreateInstance(createInstance);
-			AddInvokeCustomSlot(invokeCustomSlot);
-			AddIsSmokeClass(isSmokeClass);
+			InstallCreateInstance(createInstance);
+			InstallInvokeCustomSlot(invokeCustomSlot);
+			InstallIsSmokeClass(isSmokeClass);
 		}
 		
 		private Type	_classToProxy;

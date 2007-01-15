@@ -1,3 +1,9 @@
+2007-15-01  Richard Dale  <rdale@foton.es>
+
+	* Change the names of the methods that setup callbacks from
+	  AddFoobar() to InstallFoobar(), where Foobar() is the callback
+	  being setup.
+
 2007-14-01  Paolo Capriotti  <paolo.capriotti@gmail.com>
 
 	* Ported most of the .NET 1.1 code to .NET 2.0

@@ -75,77 +75,77 @@ static InvokeMethodFn AddObjectObjectToHashtable;
 static AddIntObject AddIntObjectToHashtable;
 static HashToMap HashtableToQMap;
 
-void AddIntPtrToCharStarStar(GetIntPtr callback)
+void InstallIntPtrToCharStarStar(GetIntPtr callback)
 {
 	IntPtrToCharStarStar = callback;
 }
 
-void AddIntPtrToCharStar(GetCharStarFromIntPtr callback)
+void InstallIntPtrToCharStar(GetCharStarFromIntPtr callback)
 {
 	IntPtrToCharStar = callback;
 }
 
-void AddIntPtrFromCharStar(GetIntPtrFromCharStar callback)
+void InstallIntPtrFromCharStar(GetIntPtrFromCharStar callback)
 {
 	IntPtrFromCharStar = callback;
 }
 
-void AddIntPtrToQString(GetIntPtr callback)
+void InstallIntPtrToQString(GetIntPtr callback)
 {
 	IntPtrToQString = callback;
 }
 
-void AddIntPtrFromQString(GetIntPtr callback)
+void InstallIntPtrFromQString(GetIntPtr callback)
 {
 	IntPtrFromQString = callback;
 }
 
-void AddArrayListToQStringList(GetIntPtr callback)
+void InstallArrayListToQStringList(GetIntPtr callback)
 {
 	ArrayListToQStringList = callback;
 }
 
-void AddArrayListToPointerList(GetIntPtr callback)
+void InstallArrayListToPointerList(GetIntPtr callback)
 {
 	ArrayListToPointerList = callback;
 }
 
-void AddArrayListToQListInt(GetIntPtr callback)
+void InstallArrayListToQListInt(GetIntPtr callback)
 {
 	ArrayListToQListInt = callback;
 }
 
-void AddConstructArrayList(NoArgs callback)
+void InstallConstructArrayList(NoArgs callback)
 {
 	ConstructArrayList = callback;
 }
 
-void AddAddIntPtrToArrayList(SetIntPtr callback)
+void InstallAddIntPtrToArrayList(SetIntPtr callback)
 {
 	AddIntPtrToArrayList = callback;
 }
 
-void AddAddIntToArrayList(AddInt callback)
+void InstallAddIntToArrayList(AddInt callback)
 {
 	AddIntToArrayList = callback;
 }
 
-void AddConstructHashtable(NoArgs callback)
+void InstallConstructHashtable(NoArgs callback)
 {
 	ConstructHashtable = callback;
 }
 
-void AddAddObjectObjectToHashtable(InvokeMethodFn callback)
+void InstallAddObjectObjectToHashtable(InvokeMethodFn callback)
 {
 	AddObjectObjectToHashtable = callback;
 }
 
-void AddAddIntObjectToHashtable(AddIntObject callback)
+void InstallAddIntObjectToHashtable(AddIntObject callback)
 {
 	AddIntObjectToHashtable = callback;
 }
 
-void AddHashtableToQMap(HashToMap callback)
+void InstallHashtableToQMap(HashToMap callback)
 {
 	HashtableToQMap = callback;
 }
