@@ -1,3 +1,7 @@
+2007-16-01  Richard Dale  <rdale@foton.es>
+
+	* Added missing QX11EmbedContainer and QX11EmbedWidget classes
+
 2007-15-01  Richard Dale  <rdale@foton.es>
 
 	* Change the names of the methods that setup callbacks from
