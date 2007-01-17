@@ -1,3 +1,8 @@
+2007-17-01  Arno Rehn  <arno@arnorehn.de>
+
+	* Split SmokeInvocation.cs into SmokeInvocation.cs and SmokeMarshallers.cs
+	* Updated CMakeLists.txt to work with more variables
+
 2007-16-01  Richard Dale  <rdale@foton.es>
 
 	* Added missing QX11EmbedContainer and QX11EmbedWidget classes
