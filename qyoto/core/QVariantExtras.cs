@@ -57,8 +57,54 @@ namespace Qyoto {
 			}
 		}
 
-		static public QVariant FromValue<T>() {
-			return new QVariant();
+		static public QVariant FromValue<T>(object value) {
+			if (typeof(T) == typeof(bool)) {
+				return new QVariant((bool) value);
+			} else if (typeof(T) == typeof(double)) {
+				return new QVariant((double) value);
+			} else if (typeof(T) == typeof(QByteArray)) {
+				return new QVariant((QByteArray) value);
+			} else if (typeof(T) == typeof(char)) {
+				return new QVariant((char) value);
+			} else if (typeof(T) == typeof(QDate)) {
+				return new QVariant((QDate) value);
+			} else if (typeof(T) == typeof(QDateTime)) {
+				return new QVariant((QDateTime) value);
+			} else if (typeof(T) == typeof(int)) {
+				return new QVariant((int) value);
+			} else if (typeof(T) == typeof(QLine)) {
+				return new QVariant((QLine) value);
+			} else if (typeof(T) == typeof(QLineF)) {
+				return new QVariant((QLineF) value);
+			} else if (typeof(T) == typeof(QLocale)) {
+				return new QVariant((QLocale) value);
+			} else if (typeof(T) == typeof(QPoint)) {
+				return new QVariant((QPoint) value);
+			} else if (typeof(T) == typeof(QPointF)) {
+				return new QVariant((QPointF) value);
+			} else if (typeof(T) == typeof(QRect)) {
+				return new QVariant((QRect) value);
+			} else if (typeof(T) == typeof(QRectF)) {
+				return new QVariant((QRectF) value);
+			} else if (typeof(T) == typeof(QRegExp)) {
+				return new QVariant((QRegExp) value);
+			} else if (typeof(T) == typeof(QSize)) {
+				return new QVariant((QSize) value);
+			} else if (typeof(T) == typeof(QSizeF)) {
+				return new QVariant((QSizeF) value);
+			} else if (typeof(T) == typeof(string)) {
+				return new QVariant((string) value);
+			} else if (typeof(T) == typeof(List<string>)) {
+				return new QVariant((ArrayList) value);
+			} else if (typeof(T) == typeof(QTime)) {
+				return new QVariant((QTime) value);
+			} else if (typeof(T) == typeof(uint)) {
+				return new QVariant((uint) value);
+			} else if (typeof(T) == typeof(QUrl)) {
+				return new QVariant((QUrl) value);
+			} else {
+				return new QVariant();
+			}
 		}
 	}
 }

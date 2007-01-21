@@ -10,6 +10,9 @@
 	  methods.
 	* Fixed parsing in for Q_PROPERTY which meant that some methods in 
 	  QToolBar.cs were lost.
+	* Added a QVariant.FromValue() method
+	* Removed QTextCodecPlugin.cs
+	* Fixed build error in QSysInfo.cs
 
 2007-17-01  Arno Rehn  <arno@arnorehn.de>
 
