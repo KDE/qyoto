@@ -12,7 +12,6 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QDBusMessage(Type dummy) {}
 		interface IQDBusMessageProxy {
-			QDBusMessage op_write(QDBusMessage lhs, QVariant arg);
 			QDBusMessage CreateSignal(string path, string arg2, string name);
 			QDBusMessage CreateMethodCall(string destination, string path, string arg3, string method);
 			QDBusMessage CreateError(string name, string msg);
@@ -127,8 +126,8 @@ namespace Qyoto {
 			return ProxyQDBusMessage().Arguments();
 		}
 		[SmokeMethod("operator<<(const QVariant&)")]
-		public static QDBusMessage op_write(QDBusMessage lhs, QVariant arg) {
-			return StaticQDBusMessage().op_write(lhs,arg);
+		public QDBusMessage op_write(QVariant arg) {
+			return ProxyQDBusMessage().op_write(arg);
 		}
 		[SmokeMethod("createSignal(const QString&, const QString&, const QString&)")]
 		public static QDBusMessage CreateSignal(string path, string arg2, string name) {

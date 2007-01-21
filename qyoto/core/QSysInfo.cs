@@ -29,7 +29,7 @@ namespace Qyoto {
 		}
 
 		public enum Sizes {
-			WordSize = (4<<3),
+			WordSize = (sizeof(void*)<<3),
 		}
 		public enum Endian {
 			BigEndian = 0,

@@ -2,12 +2,10 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
-	using System.Collections.Generic; 
 	using System.Text;
 
 	[SmokeClass("QDBusConnectionInterface")]
-	public class QDBusConnectionInterface : QDBusAbstractInterface {
+	public partial class QDBusConnectionInterface : QDBusAbstractInterface {
  		protected QDBusConnectionInterface(Type dummy) : base((Type) null) {}
 		interface IQDBusConnectionInterfaceProxy {
 			string Tr(string s, string c);
@@ -45,43 +43,16 @@ namespace Qyoto {
 			ServiceQueued = 2,
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
-
-		public QDBusReply<List<string>> RegisteredServiceNames() {
-			return new QDBusReply<List<string>>(InternalConstCall(QDBus.CallMode.AutoDetect,"ListNames"));
-		}
-
-		public QDBusReply<string> ServiceOwner(string name) {
-			ArrayList nameArg = new ArrayList();
-			nameArg.Add(new QVariant(name));
-			return new QDBusReply<string>(InternalConstCall(QDBus.CallMode.AutoDetect,"GetNameOwner", nameArg));
-		}
+		// QDBusReply<QStringList> registeredServiceNames(); >>>> NOT CONVERTED
+		// QDBusReply<bool> isServiceRegistered(const QString& arg1); >>>> NOT CONVERTED
+		// QDBusReply<QString> serviceOwner(const QString& arg1); >>>> NOT CONVERTED
 		// QDBusReply<bool> unregisterService(const QString& arg1); >>>> NOT CONVERTED
 		// QDBusReply<QDBusConnectionInterface::RegisterServiceReply> registerService(const QString& arg1,QDBusConnectionInterface::ServiceQueueOptions arg2,QDBusConnectionInterface::ServiceReplacementOptions arg3); >>>> NOT CONVERTED
 		// QDBusReply<QDBusConnectionInterface::RegisterServiceReply> registerService(const QString& arg1,QDBusConnectionInterface::ServiceQueueOptions arg2); >>>> NOT CONVERTED
 		// QDBusReply<QDBusConnectionInterface::RegisterServiceReply> registerService(const QString& arg1); >>>> NOT CONVERTED
-
-		public QDBusReply<bool> IsServiceRegistered(string serviceName) {
-			ArrayList serviceArg = new ArrayList();
-			serviceArg.Add(new QVariant(serviceName));
-			return new QDBusReply<bool>(InternalConstCall(QDBus.CallMode.AutoDetect,"NameHasOwner", serviceArg));
-		}
-
-		public QDBusReply<uint> ServicePid(string serviceName) {
-			ArrayList serviceArg = new ArrayList();
-			serviceArg.Add(new QVariant(serviceName));
-			return new QDBusReply<uint>(InternalConstCall(QDBus.CallMode.AutoDetect, "GetConnectionUnixProcessID", serviceArg));
-		}
-
-		public QDBusReply<uint> ServiceUid(string serviceName) {
-			ArrayList serviceArg = new ArrayList();
-			serviceArg.Add(new QVariant(serviceName));
-			return new QDBusReply<uint>(InternalConstCall(QDBus.CallMode.AutoDetect, "GetConnectionUnixUser", serviceArg));
-		}
-
-		public QDBusReply<int> StartService(string name) {
-			return new QDBusReply<int>(Call("StartServiceByName", new QVariant(name), new QVariant(0)));
-		}
-
+		// QDBusReply<uint> servicePid(const QString& arg1); >>>> NOT CONVERTED
+		// QDBusReply<uint> serviceUid(const QString& arg1); >>>> NOT CONVERTED
+		// QDBusReply<void> startService(const QString& arg1); >>>> NOT CONVERTED
 		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQDBusConnectionInterface().Tr(s,c);

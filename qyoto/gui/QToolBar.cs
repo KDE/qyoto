@@ -30,6 +30,22 @@ namespace Qyoto {
 		}
 
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
+		public QToolBar(string title, QWidget parent) : this((Type) null) {
+			CreateProxy();
+			NewQToolBar(title,parent);
+		}
+		[SmokeMethod("QToolBar(const QString&, QWidget*)")]
+		private void NewQToolBar(string title, QWidget parent) {
+			ProxyQToolBar().NewQToolBar(title,parent);
+		}
+		public QToolBar(string title) : this((Type) null) {
+			CreateProxy();
+			NewQToolBar(title);
+		}
+		[SmokeMethod("QToolBar(const QString&)")]
+		private void NewQToolBar(string title) {
+			ProxyQToolBar().NewQToolBar(title);
+		}
 		public QToolBar(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			NewQToolBar(parent);

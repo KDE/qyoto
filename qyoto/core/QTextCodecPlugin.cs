@@ -5,7 +5,7 @@ namespace Qyoto {
 	using System.Text;
 
 	[SmokeClass("QTextCodecPlugin")]
-	public class QTextCodecPlugin : QObject {
+	public class QTextCodecPlugin : QObject,  {
  		protected QTextCodecPlugin(Type dummy) : base((Type) null) {}
 		interface IQTextCodecPluginProxy {
 			string Tr(string s, string c);

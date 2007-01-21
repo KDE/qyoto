@@ -11,24 +11,6 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QTextStream(Type dummy) {}
 		interface IQTextStreamProxy {
-			QTextStream op_read(QTextStream lhs, char ch);
-			QTextStream op_read(QTextStream lhs, ushort i);
-			QTextStream op_read(QTextStream lhs, uint i);
-			QTextStream op_read(QTextStream lhs, ulong i);
-			QTextStream op_read(QTextStream lhs, float f);
-			QTextStream op_read(QTextStream lhs, double f);
-			QTextStream op_read(QTextStream lhs, StringBuilder s);
-			QTextStream op_read(QTextStream lhs, QByteArray array);
-			QTextStream op_read(QTextStream lhs, string c);
-			QTextStream op_write(QTextStream lhs, QBool b);
-			QTextStream op_write(QTextStream lhs, char ch);
-			QTextStream op_write(QTextStream lhs, ushort i);
-			QTextStream op_write(QTextStream lhs, uint i);
-			QTextStream op_write(QTextStream lhs, ulong i);
-			QTextStream op_write(QTextStream lhs, float f);
-			QTextStream op_write(QTextStream lhs, double f);
-			QTextStream op_write(QTextStream lhs, string s);
-			QTextStream op_write(QTextStream lhs, QByteArray array);
 		}
 
 		protected new void CreateProxy() {
@@ -263,86 +245,86 @@ namespace Qyoto {
 			return ProxyQTextStream().RealNumberPrecision();
 		}
 		[SmokeMethod("operator>>(QChar&)")]
-		public static QTextStream op_read(QTextStream lhs, char ch) {
-			return StaticQTextStream().op_read(lhs,ch);
+		public QTextStream op_read(char ch) {
+			return ProxyQTextStream().op_read(ch);
 		}
 		// QTextStream& operator>>(signed short& arg1); >>>> NOT CONVERTED
 		[SmokeMethod("operator>>(unsigned short&)")]
-		public static QTextStream op_read(QTextStream lhs, ushort i) {
-			return StaticQTextStream().op_read(lhs,i);
+		public QTextStream op_read(ushort i) {
+			return ProxyQTextStream().op_read(i);
 		}
 		// QTextStream& operator>>(signed int& arg1); >>>> NOT CONVERTED
 		[SmokeMethod("operator>>(unsigned int&)")]
-		public static QTextStream op_read(QTextStream lhs, uint i) {
-			return StaticQTextStream().op_read(lhs,i);
+		public QTextStream op_read(uint i) {
+			return ProxyQTextStream().op_read(i);
 		}
 		// QTextStream& operator>>(signed long& arg1); >>>> NOT CONVERTED
 		[SmokeMethod("operator>>(unsigned long&)")]
-		public static QTextStream op_read(QTextStream lhs, ulong i) {
-			return StaticQTextStream().op_read(lhs,i);
+		public QTextStream op_read(ulong i) {
+			return ProxyQTextStream().op_read(i);
 		}
 		// QTextStream& operator>>(qlonglong& arg1); >>>> NOT CONVERTED
 		// QTextStream& operator>>(qulonglong& arg1); >>>> NOT CONVERTED
 		[SmokeMethod("operator>>(float&)")]
-		public static QTextStream op_read(QTextStream lhs, float f) {
-			return StaticQTextStream().op_read(lhs,f);
+		public QTextStream op_read(float f) {
+			return ProxyQTextStream().op_read(f);
 		}
 		[SmokeMethod("operator>>(double&)")]
-		public static QTextStream op_read(QTextStream lhs, double f) {
-			return StaticQTextStream().op_read(lhs,f);
+		public QTextStream op_read(double f) {
+			return ProxyQTextStream().op_read(f);
 		}
 		[SmokeMethod("operator>>(QString&)")]
-		public static QTextStream op_read(QTextStream lhs, StringBuilder s) {
-			return StaticQTextStream().op_read(lhs,s);
+		public QTextStream op_read(StringBuilder s) {
+			return ProxyQTextStream().op_read(s);
 		}
 		[SmokeMethod("operator>>(QByteArray&)")]
-		public static QTextStream op_read(QTextStream lhs, QByteArray array) {
-			return StaticQTextStream().op_read(lhs,array);
+		public QTextStream op_read(QByteArray array) {
+			return ProxyQTextStream().op_read(array);
 		}
 		[SmokeMethod("operator>>(char*)")]
-		public static QTextStream op_read(QTextStream lhs, string c) {
-			return StaticQTextStream().op_read(lhs,c);
+		public QTextStream op_read(string c) {
+			return ProxyQTextStream().op_read(c);
 		}
 		[SmokeMethod("operator<<(QBool)")]
-		public static QTextStream op_write(QTextStream lhs, QBool b) {
-			return StaticQTextStream().op_write(lhs,b);
+		public QTextStream op_write(QBool b) {
+			return ProxyQTextStream().op_write(b);
 		}
 		[SmokeMethod("operator<<(QChar)")]
-		public static QTextStream op_write(QTextStream lhs, char ch) {
-			return StaticQTextStream().op_write(lhs,ch);
+		public QTextStream op_write(char ch) {
+			return ProxyQTextStream().op_write(ch);
 		}
 		// QTextStream& operator<<(signed short arg1); >>>> NOT CONVERTED
 		[SmokeMethod("operator<<(unsigned short)")]
-		public static QTextStream op_write(QTextStream lhs, ushort i) {
-			return StaticQTextStream().op_write(lhs,i);
+		public QTextStream op_write(ushort i) {
+			return ProxyQTextStream().op_write(i);
 		}
 		// QTextStream& operator<<(signed int arg1); >>>> NOT CONVERTED
 		[SmokeMethod("operator<<(unsigned int)")]
-		public static QTextStream op_write(QTextStream lhs, uint i) {
-			return StaticQTextStream().op_write(lhs,i);
+		public QTextStream op_write(uint i) {
+			return ProxyQTextStream().op_write(i);
 		}
 		// QTextStream& operator<<(signed long arg1); >>>> NOT CONVERTED
 		[SmokeMethod("operator<<(unsigned long)")]
-		public static QTextStream op_write(QTextStream lhs, ulong i) {
-			return StaticQTextStream().op_write(lhs,i);
+		public QTextStream op_write(ulong i) {
+			return ProxyQTextStream().op_write(i);
 		}
 		// QTextStream& operator<<(qlonglong arg1); >>>> NOT CONVERTED
 		// QTextStream& operator<<(qulonglong arg1); >>>> NOT CONVERTED
 		[SmokeMethod("operator<<(float)")]
-		public static QTextStream op_write(QTextStream lhs, float f) {
-			return StaticQTextStream().op_write(lhs,f);
+		public QTextStream op_write(float f) {
+			return ProxyQTextStream().op_write(f);
 		}
 		[SmokeMethod("operator<<(double)")]
-		public static QTextStream op_write(QTextStream lhs, double f) {
-			return StaticQTextStream().op_write(lhs,f);
+		public QTextStream op_write(double f) {
+			return ProxyQTextStream().op_write(f);
 		}
 		[SmokeMethod("operator<<(const QString&)")]
-		public static QTextStream op_write(QTextStream lhs, string s) {
-			return StaticQTextStream().op_write(lhs,s);
+		public QTextStream op_write(string s) {
+			return ProxyQTextStream().op_write(s);
 		}
 		[SmokeMethod("operator<<(const QByteArray&)")]
-		public static QTextStream op_write(QTextStream lhs, QByteArray array) {
-			return StaticQTextStream().op_write(lhs,array);
+		public QTextStream op_write(QByteArray array) {
+			return ProxyQTextStream().op_write(array);
 		}
 		// QTextStream& operator<<(const void* arg1); >>>> NOT CONVERTED
 		~QTextStream() {
