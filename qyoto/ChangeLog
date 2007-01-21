@@ -1,3 +1,16 @@
+2007-21-01  Richard Dale  <rdale@foton.es>
+
+	* Split QVariant.cs and QDBusConnectionInterface in two files with partial
+	  classes to make customisation easier to maintain.
+	* Fixed bugs in the code generation for args with QStrings or QStringLists
+	  inside template type.
+	* operator methods '<<' and '>>' were being converted to static methods even
+	  when the methods couldn't be operator methods in C# and should have been
+	  either 'op_read()' or 'op_write()' in which case they should be instance
+	  methods.
+	* Fixed parsing in for Q_PROPERTY which meant that some methods in 
+	  QToolBar.cs were lost.
+
 2007-17-01  Arno Rehn  <arno@arnorehn.de>
 
 	* Split SmokeInvocation.cs into SmokeInvocation.cs and SmokeMarshallers.cs
