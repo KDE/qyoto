@@ -252,7 +252,6 @@ namespace Qyoto {
 		private void DisposeQObject() {
 			ProxyQObject().DisposeQObject();
 		}
-
 		protected Object Q_EMIT = null;
 		protected new IQObjectSignals Emit() {
 			return (IQObjectSignals) Q_EMIT;

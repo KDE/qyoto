@@ -1,3 +1,9 @@
+2007-22-01  Richard Dale  <rdale@foton.es>
+
+	* Add QApplicationExtras.cs, QCoreApplicationExtras.cs and QtExtras.cs
+	* Fix bug in setting up argv array passed to QApplication constructor
+	  pointed out by Arno.
+
 2007-21-01  Richard Dale  <rdale@foton.es>
 
 	* Split QVariant.cs and QDBusConnectionInterface in two files with partial

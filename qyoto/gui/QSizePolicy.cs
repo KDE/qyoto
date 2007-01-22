@@ -133,12 +133,5 @@ namespace Qyoto {
 		private void DisposeQSizePolicy() {
 			ProxyQSizePolicy().DisposeQSizePolicy();
 		}
-
-		public const int HSize = 6;
-		public const int HMask = 0x3f;
-		public const int VMask = HMask<<HSize;
-		public const int MayGrow = 1;
-		public const int ExpMask = 2;
-		public const int MayShrink = 4;
 	}
 }

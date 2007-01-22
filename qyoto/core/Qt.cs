@@ -5,7 +5,7 @@ namespace Qyoto {
 	using System.Collections;
 	using System.Text;
 
-	public class Qt : MarshalByRefObject {
+	public partial class Qt : MarshalByRefObject {
 		protected Object _interceptor = null;
 		interface IQtProxy {
 			bool MightBeRichText(string arg1);
@@ -2452,14 +2452,5 @@ namespace Qyoto {
 		public static QDataStream op_write(QDataStream arg1, string[] list) {
 			return StaticQt().op_write(arg1,list);
 		}
-		public static QApplication qApp = null;
-
-		public static string SIGNAL(string signal) {
-			return "2"+ signal;
-		}
-
-		public static string SLOT(string slot) {
-			return "1" + slot;
-		}	
 	}
 }

@@ -7,7 +7,7 @@ namespace Qyoto {
 
 	/// See <see cref="IQCoreApplicationSignals"></see> for signals emitted by QCoreApplication
 	[SmokeClass("QCoreApplication")]
-	public class QCoreApplication : QObject, IDisposable {
+	public partial class QCoreApplication : QObject, IDisposable {
  		protected QCoreApplication(Type dummy) : base((Type) null) {}
 		interface IQCoreApplicationProxy {
 			string Tr(string s, string c);
@@ -259,20 +259,6 @@ namespace Qyoto {
 		[SmokeMethod("~QCoreApplication()")]
 		private void DisposeQCoreApplication() {
 			ProxyQCoreApplication().DisposeQCoreApplication();
-		}
-		public QCoreApplication(string[] argv) : this((Type) null) {
-			Qyoto.Init_qyoto();
-			CreateProxy();
-			
-			string[] args = new string[argv.Length + 1];
-			args[0] = System.Reflection.Assembly.GetExecutingAssembly().Location;
-			argv.CopyTo(args, 1);
-
-			NewQCoreApplication(argv.Length, argv);
-		}
-		[SmokeMethod("QCoreApplication(int&, char**)")]
-		private void NewQCoreApplication(int argc, string[] argv) {
-			ProxyQCoreApplication().NewQCoreApplication(argc, argv);
 		}
 		protected new IQCoreApplicationSignals Emit() {
 			return (IQCoreApplicationSignals) Q_EMIT;
