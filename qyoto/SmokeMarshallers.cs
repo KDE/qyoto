@@ -100,34 +100,34 @@ namespace Qyoto {
 		public static extern void InstallInvokeMethod(InvokeMethodFn callback);
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		public static extern IntPtr InstallConstructArrayList(NoArgs callback);
+		public static extern IntPtr InstallConstructList(CreateInstanceFn callback);
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		public static extern IntPtr InstallArrayListToQStringList(GetIntPtr callback);
+		public static extern IntPtr InstallStringListToQStringList(GetIntPtr callback);
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		public static extern IntPtr InstallArrayListToPointerList(GetIntPtr callback);
+		public static extern IntPtr InstallListToPointerList(GetIntPtr callback);
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		public static extern IntPtr InstallArrayListToQListInt(GetIntPtr callback);
+		public static extern IntPtr InstallListIntToQListInt(GetIntPtr callback);
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		public static extern void InstallAddIntPtrToArrayList(SetIntPtr callback);
+		public static extern void InstallAddIntPtrToList(SetIntPtr callback);
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		public static extern void InstallAddIntToArrayList(AddInt callback);
+		public static extern void InstallAddIntToListInt(AddInt callback);
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		public static extern IntPtr InstallConstructHashtable(NoArgs callback);
+		public static extern IntPtr InstallConstructDictionary(ConstructDict callback);
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		public static extern void InstallAddObjectObjectToHashtable(InvokeMethodFn callback);
+		public static extern void InstallAddObjectObjectToDictionary(InvokeMethodFn callback);
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		public static extern void InstallAddIntObjectToHashtable(AddIntObject callback);
+		public static extern void InstallAddIntObjectToDictionary(AddIntObject callback);
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		public static extern void InstallHashtableToQMap(HashToMap callback);
+		public static extern void InstallDictionaryToQMap(DictToMap callback);
 #endregion
 		
 #region delegates
@@ -144,7 +144,8 @@ namespace Qyoto {
 		public delegate void InvokeMethodFn(IntPtr instance, IntPtr method, IntPtr args);
 		public delegate void AddInt(IntPtr obj, int i);
 		public delegate void AddIntObject(IntPtr hash, int key, IntPtr val);
-		public delegate IntPtr HashToMap(IntPtr ptr, int type);
+		public delegate IntPtr DictToMap(IntPtr ptr, int type);
+		public delegate IntPtr ConstructDict(string type1, string type2);
 #endregion
 		
 #region marshallung functions
@@ -287,79 +288,98 @@ namespace Qyoto {
 			return (IntPtr) GCHandle.Alloc(StringFromQString(ptr));
 		}
 
-		public static IntPtr ArrayListToQStringList(IntPtr ptr) {
-			ArrayList al = (ArrayList) ((GCHandle) ptr).Target;
-			string[] s = (string[]) al.ToArray();
+		public static IntPtr StringListToQStringList(IntPtr ptr) {
+			List<string> sl = (List<string>) ((GCHandle) ptr).Target;
+			string[] s = (string[]) sl.ToArray();
 			return StringArrayToQStringList(s.Length, s);
 		}
 
-		public static IntPtr ArrayListToQListInt(IntPtr ptr) {
-			ArrayList al = (ArrayList) ((GCHandle) ptr).Target;
+		public static IntPtr ListIntToQListInt(IntPtr ptr) {
+			List<int> il = (List<int>) ((GCHandle) ptr).Target;
 			IntPtr QList = ConstructQListInt();
-			foreach (int i in al) {
+			foreach (int i in il) {
 				AddIntToQList(QList, i);
 			}
 			return QList;
 		}
 
-		public static IntPtr ArrayListToPointerList(IntPtr ptr) {
-			ArrayList al = (ArrayList) ((GCHandle) ptr).Target;
+		public static IntPtr ListToPointerList(IntPtr ptr) {
+			object l = ((GCHandle) ptr).Target;
+			// convert the list to an array via reflection. this is probably the easiest way
+			object[] oa = (object[]) l.GetType().GetMethod("ToArray").Invoke(l, null);
+			
 			IntPtr list = ConstructPointerList();
-			foreach (object o in al) {
+			foreach (object o in oa) {
 				AddObjectToPointerList(list, (IntPtr) GCHandle.Alloc(o));
 			}
 			return list;
 		}
 
-		public static IntPtr ConstructArrayList() {
-			ArrayList al = new ArrayList();
-			return (IntPtr) GCHandle.Alloc(al);
+		public static IntPtr ConstructList(string type) {
+			Type basetype = typeof(List<>);
+			Type[] generic = { Type.GetType(type) };
+			Type merged = basetype.MakeGenericType(generic);
+			
+			object o = Activator.CreateInstance(merged);
+			
+			return (IntPtr) GCHandle.Alloc(o);
 		}
 
-		public static void AddIntPtrToArrayList(IntPtr obj, IntPtr ptr) {
+		public static void AddIntPtrToList(IntPtr obj, IntPtr ptr) {
+			object list = ((GCHandle) obj).Target;
 			object o = ((GCHandle) ptr).Target;
-			ArrayList al = (ArrayList) ((GCHandle) obj).Target;
-			al.Add(o);
+			object[] args = { o };
+			list.GetType().GetMethod("Add").Invoke(list, args);
 		}
 
-		public static void AddIntToArrayList(IntPtr obj, int i) {
-			ArrayList al = (ArrayList) ((GCHandle) obj).Target;
-			al.Add(i);
+		public static void AddIntToListInt(IntPtr obj, int i) {
+			List<int> il = (List<int>) ((GCHandle) obj).Target;
+			il.Add(i);
 		}
 
-		public static IntPtr ConstructHashtable() {
-			Hashtable hash = new Hashtable();
-			return (IntPtr) GCHandle.Alloc(hash);
+		public static IntPtr ConstructDictionary(string type1, string type2) {
+			Type basetype = typeof(Dictionary<,>);
+			Type[] generic = { Type.GetType(type1), Type.GetType(type2) };
+			Type merged = basetype.MakeGenericType(generic);
+			
+			object o = Activator.CreateInstance(merged);
+			
+			return (IntPtr) GCHandle.Alloc(o);
 		}
 
-		public static void AddObjectObjectToHashtable(IntPtr hash, IntPtr key, IntPtr val) {
-			Hashtable h = (Hashtable) ((GCHandle) hash).Target;
+		public static void AddObjectObjectToDictionary(IntPtr dic, IntPtr key, IntPtr val) {
+			object d = ((GCHandle) dic).Target;
 			object k = ((GCHandle) key).Target;
 			object v = ((GCHandle) val).Target;
-			h.Add(k, v);
+			object[] args = { k, v };
+			d.GetType().GetMethod("Add").Invoke(d, args);
 		}
 
-		public static void AddIntObjectToHashtable(IntPtr hash, int key, IntPtr val) {
-			Hashtable h = (Hashtable) ((GCHandle) hash).Target;
+		public static void AddIntObjectToDictionary(IntPtr dict, int key, IntPtr val) {
+			object d = ((GCHandle) dict).Target;
 			object v = ((GCHandle) val).Target;
-			h.Add(key, v);
+			object[] args = { key, v };
+			d.GetType().GetMethod("Add").Invoke(d, args);
 		}
 
-		public static IntPtr HashtableToQMap(IntPtr hash, int type) {
-			Hashtable h = (Hashtable) ((GCHandle) hash).Target;
+		public static IntPtr DictionaryToQMap(IntPtr dict, int type) {
+			object d = ((GCHandle) dict).Target;
 			IntPtr map = ConstructQMap(type);
 			
 			if (type == 0) {
-				foreach (DictionaryEntry de in h) {
-					AddIntQVariantToQMap(map, (int) de.Key, (IntPtr) GCHandle.Alloc(de.Value));
+				Dictionary<int, QVariant> d1 = (Dictionary<int, QVariant>) d;
+				foreach (KeyValuePair<int, QVariant> kvp in d1) {
+					AddIntQVariantToQMap(map, kvp.Key, (IntPtr) GCHandle.Alloc(kvp.Value));
 				}
 			} else if (type == 1) {
-				foreach (DictionaryEntry de in h) {
-					AddQStringQStringToQMap(map, (string) de.Key, (string) de.Value);
+				Dictionary<string, string> d1 = (Dictionary<string, string>) d;
+				foreach (KeyValuePair<string, string> kvp in d1) {
+					AddQStringQStringToQMap(map, kvp.Key, kvp.Value);
 				}
 			} else if (type == 2) {
-				foreach (DictionaryEntry de in h) {
-					AddQStringQVariantToQMap(map, (string) de.Key, (IntPtr) GCHandle.Alloc(de.Value));
+				Dictionary<string, QVariant> d1 = (Dictionary<string, QVariant>) d;
+				foreach (KeyValuePair<string, QVariant> kvp in d1) {
+					AddQStringQVariantToQMap(map, kvp.Key, (IntPtr) GCHandle.Alloc(kvp.Value));
 				}
 			}
 			return map;
@@ -382,18 +402,19 @@ namespace Qyoto {
 		static private GetIntPtr intPtrToQString = new GetIntPtr(IntPtrToQString);
 		static private GetIntPtr intPtrFromQString = new GetIntPtr(IntPtrFromQString);
 		
-		static private GetIntPtr arrayListToQStringList = new GetIntPtr(ArrayListToQStringList);
-		static private GetIntPtr arrayListToPointerList = new GetIntPtr(ArrayListToPointerList);
-		static private GetIntPtr arrayListToQListInt = new GetIntPtr(ArrayListToQListInt);
-		static private HashToMap hashtableToQMap = new HashToMap(HashtableToQMap);
+		static private GetIntPtr stringListToQStringList = new GetIntPtr(StringListToQStringList);
+		static private GetIntPtr listToPointerList = new GetIntPtr(ListToPointerList);
+		static private GetIntPtr listIntToQListInt = new GetIntPtr(ListIntToQListInt);
 		
-		static private NoArgs constructArrayList = new NoArgs(ConstructArrayList);
-		static private SetIntPtr addIntPtrToArrayList = new SetIntPtr(AddIntPtrToArrayList);
-		static private AddInt addIntToArrayList = new AddInt(AddIntToArrayList);
+		static private DictToMap dictionaryToQMap = new DictToMap(DictionaryToQMap);
 		
-		static private NoArgs constructHashtable = new NoArgs(ConstructHashtable);
-		static private InvokeMethodFn addObjectObjectToHashtable = new InvokeMethodFn(AddObjectObjectToHashtable);
-		static private AddIntObject addIntObjectToHashtable = new AddIntObject(AddIntObjectToHashtable);
+		static private CreateInstanceFn constructList = new CreateInstanceFn(ConstructList);
+		static private SetIntPtr addIntPtrToList = new SetIntPtr(AddIntPtrToList);
+		static private AddInt addIntToListInt = new AddInt(AddIntToListInt);
+		
+		static private ConstructDict constructDictionary = new ConstructDict(ConstructDictionary);
+		static private InvokeMethodFn addObjectObjectToDictionary = new InvokeMethodFn(AddObjectObjectToDictionary);
+		static private AddIntObject addIntObjectToDictionary = new AddIntObject(AddIntObjectToDictionary);
 		
 		static private OverridenMethodFn overridenMethod = new OverridenMethodFn(SmokeInvocation.OverridenMethod);
 		static private InvokeMethodFn invokeMethod = new InvokeMethodFn(SmokeInvocation.InvokeMethod);
@@ -417,17 +438,18 @@ namespace Qyoto {
 			InstallIntPtrFromCharStar(intPtrFromString);
 			InstallIntPtrToQString(intPtrToQString);
 			InstallIntPtrFromQString(intPtrFromQString);
-			InstallConstructArrayList(constructArrayList);
-			InstallArrayListToQStringList(arrayListToQStringList);
-			InstallArrayListToPointerList(arrayListToPointerList);
-			InstallArrayListToQListInt(arrayListToQListInt);
-			InstallAddIntPtrToArrayList(addIntPtrToArrayList);
-			InstallAddIntToArrayList(addIntToArrayList);
+			InstallConstructList(constructList);
+			InstallStringListToQStringList(stringListToQStringList);
+			InstallListToPointerList(listToPointerList);
+			InstallListIntToQListInt(listIntToQListInt);
+			InstallAddIntPtrToList(addIntPtrToList);
+			InstallAddIntToListInt(addIntToListInt);
 
-			InstallConstructHashtable(constructHashtable);
-			InstallAddObjectObjectToHashtable(addObjectObjectToHashtable);
-			InstallAddIntObjectToHashtable(addIntObjectToHashtable);
-			InstallHashtableToQMap(hashtableToQMap);
+			InstallConstructDictionary(constructDictionary);
+			InstallAddObjectObjectToDictionary(addObjectObjectToDictionary);
+			InstallAddIntObjectToDictionary(addIntObjectToDictionary);
+			
+			InstallDictionaryToQMap(dictionaryToQMap);
 
 			InstallOverridenMethod(overridenMethod);
 			InstallInvokeMethod(invokeMethod);

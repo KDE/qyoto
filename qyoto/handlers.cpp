@@ -64,16 +64,16 @@ static GetCharStarFromIntPtr IntPtrToCharStar;
 static GetIntPtrFromCharStar IntPtrFromCharStar;
 static GetIntPtr IntPtrToQString;
 static GetIntPtr IntPtrFromQString;
-static GetIntPtr ArrayListToQStringList;
-static GetIntPtr ArrayListToPointerList;
-static GetIntPtr ArrayListToQListInt;
-static NoArgs ConstructArrayList;
-static SetIntPtr AddIntPtrToArrayList;
-static AddInt AddIntToArrayList;
-static NoArgs ConstructHashtable;
-static InvokeMethodFn AddObjectObjectToHashtable;
-static AddIntObject AddIntObjectToHashtable;
-static HashToMap HashtableToQMap;
+static GetIntPtr StringListToQStringList;
+static GetIntPtr ListToPointerList;
+static GetIntPtr ListIntToQListInt;
+static CreateInstanceFn ConstructList;
+static SetIntPtr AddIntPtrToList;
+static AddInt AddIntToListInt;
+static ConstructDict ConstructDictionary;
+static InvokeMethodFn AddObjectObjectToDictionary;
+static AddIntObject AddIntObjectToDictionary;
+static DictToMap DictionaryToQMap;
 
 void InstallIntPtrToCharStarStar(GetIntPtr callback)
 {
@@ -100,54 +100,54 @@ void InstallIntPtrFromQString(GetIntPtr callback)
 	IntPtrFromQString = callback;
 }
 
-void InstallArrayListToQStringList(GetIntPtr callback)
+void InstallStringListToQStringList(GetIntPtr callback)
 {
-	ArrayListToQStringList = callback;
+	StringListToQStringList = callback;
 }
 
-void InstallArrayListToPointerList(GetIntPtr callback)
+void InstallListToPointerList(GetIntPtr callback)
 {
-	ArrayListToPointerList = callback;
+	ListToPointerList = callback;
 }
 
-void InstallArrayListToQListInt(GetIntPtr callback)
+void InstallListIntToQListInt(GetIntPtr callback)
 {
-	ArrayListToQListInt = callback;
+	ListIntToQListInt = callback;
 }
 
-void InstallConstructArrayList(NoArgs callback)
+void InstallConstructList(CreateInstanceFn callback)
 {
-	ConstructArrayList = callback;
+	ConstructList = callback;
 }
 
-void InstallAddIntPtrToArrayList(SetIntPtr callback)
+void InstallAddIntPtrToList(SetIntPtr callback)
 {
-	AddIntPtrToArrayList = callback;
+	AddIntPtrToList = callback;
 }
 
-void InstallAddIntToArrayList(AddInt callback)
+void InstallAddIntToListInt(AddInt callback)
 {
-	AddIntToArrayList = callback;
+	AddIntToListInt = callback;
 }
 
-void InstallConstructHashtable(NoArgs callback)
+void InstallConstructDictionary(ConstructDict callback)
 {
-	ConstructHashtable = callback;
+	ConstructDictionary = callback;
 }
 
-void InstallAddObjectObjectToHashtable(InvokeMethodFn callback)
+void InstallAddObjectObjectToDictionary(InvokeMethodFn callback)
 {
-	AddObjectObjectToHashtable = callback;
+	AddObjectObjectToDictionary = callback;
 }
 
-void InstallAddIntObjectToHashtable(AddIntObject callback)
+void InstallAddIntObjectToDictionary(AddIntObject callback)
 {
-	AddIntObjectToHashtable = callback;
+	AddIntObjectToDictionary = callback;
 }
 
-void InstallHashtableToQMap(HashToMap callback)
+void InstallDictionaryToQMap(DictToMap callback)
 {
-	HashtableToQMap = callback;
+	DictionaryToQMap = callback;
 }
 
 void* ConstructPointerList()
@@ -964,7 +964,7 @@ void marshall_QMapintQVariant(Marshall *m) {
 	switch(m->action()) {
 		case Marshall::FromObject: 
 		{
-			QMap<int, QVariant>* map = (QMap<int, QVariant>*) (*HashtableToQMap)(m->var().s_voidp, 0);
+			QMap<int, QVariant>* map = (QMap<int, QVariant>*) (*DictionaryToQMap)(m->var().s_voidp, 0);
 			m->item().s_voidp = (void*) map;
 			m->next();
 			
@@ -977,7 +977,7 @@ void marshall_QMapintQVariant(Marshall *m) {
 		case Marshall::ToObject: 
 		{
 			QMap<int, QVariant>* map = (QMap<int, QVariant>*) m->item().s_voidp;
-			void* hash = (*ConstructHashtable)();
+			void* dict = (*ConstructDictionary)("System.Int32", "Qyoto.QVariant");
 			
 			int id = m->smoke()->idClass("QVariant");
 			
@@ -985,10 +985,10 @@ void marshall_QMapintQVariant(Marshall *m) {
 				void* v = (void*) &(i.value());
 				smokeqyoto_object * vo = alloc_smokeqyoto_object(false, m->smoke(), id, v);
 				void* value = set_obj_info("Qyoto.QVariant", vo);
-				(*AddIntObjectToHashtable)(hash, i.key(), value);
+				(*AddIntObjectToDictionary)(dict, i.key(), value);
 			}
 			
-			m->var().s_voidp = hash;
+			m->var().s_voidp = dict;
 			m->next();
 			
 			break;
@@ -1004,7 +1004,7 @@ void marshall_QMapQStringQString(Marshall *m) {
 	switch(m->action()) {
 		case Marshall::FromObject: 
 		{
-			QMap<QString, QString>* map = (QMap<QString, QString>*) (*HashtableToQMap)(m->var().s_voidp, 1);
+			QMap<QString, QString>* map = (QMap<QString, QString>*) (*DictionaryToQMap)(m->var().s_voidp, 1);
 			m->item().s_voidp = (void*) map;
 			m->next();
 			
@@ -1017,15 +1017,15 @@ void marshall_QMapQStringQString(Marshall *m) {
 		case Marshall::ToObject: 
 		{
 			QMap<QString, QString>* map = (QMap<QString, QString>*) m->item().s_voidp;
-			void* hash = (*ConstructHashtable)();
+			void* dict = (*ConstructDictionary)("System.String", "System.String");
 			
 			for (QMap<QString, QString>::iterator i = map->begin(); i != map->end(); ++i) {
-				(*AddObjectObjectToHashtable)(	hash,
+				(*AddObjectObjectToDictionary)(	dict,
 								(void*) StringFromQString((void*) &(i.key())),
 								(void*) StringFromQString((void*) &(i.value())));
 			}
 			
-			m->var().s_voidp = hash;
+			m->var().s_voidp = dict;
 			m->next();
 			
 			break;
@@ -1041,7 +1041,7 @@ void marshall_QMapQStringQVariant(Marshall *m) {
 	switch(m->action()) {
 		case Marshall::FromObject: 
 		{
-			QMap<QString, QVariant>* map = (QMap<QString, QVariant>*) (*HashtableToQMap)(m->var().s_voidp, 2);
+			QMap<QString, QVariant>* map = (QMap<QString, QVariant>*) (*DictionaryToQMap)(m->var().s_voidp, 2);
 			m->item().s_voidp = (void*) map;
 			m->next();
 			
@@ -1054,7 +1054,7 @@ void marshall_QMapQStringQVariant(Marshall *m) {
 		case Marshall::ToObject: 
 		{
 			QMap<QString, QVariant>* map = (QMap<QString, QVariant>*) m->item().s_voidp;
-			void* hash = (*ConstructHashtable)();
+			void* dict = (*ConstructDictionary)("System.String", "Qyoto.QVariant");
 			
 			int id = m->smoke()->idClass("QVariant");
 			
@@ -1062,12 +1062,12 @@ void marshall_QMapQStringQVariant(Marshall *m) {
 				void* v = (void*) &(i.value());
 				smokeqyoto_object * vo = alloc_smokeqyoto_object(false, m->smoke(), id, v);
 				void* value = set_obj_info("Qyoto.QVariant", vo);
-				(*AddObjectObjectToHashtable)(	hash,
+				(*AddObjectObjectToDictionary)(	dict,
 								(void*) StringFromQString((void*) &(i.key())),
 								value);
 			}
 			
-			m->var().s_voidp = hash;
+			m->var().s_voidp = dict;
 			m->next();
 			
 			break;
@@ -1102,7 +1102,7 @@ void marshall_QStringList(Marshall *m) {
 //				stringlist->append(*(qstringFromRString(item)));
 // 			}
 			
-			QStringList *stringlist = (QStringList*) (*ArrayListToQStringList)(m->var().s_voidp);
+			QStringList *stringlist = (QStringList*) (*StringListToQStringList)(m->var().s_voidp);
 			
 			m->item().s_voidp = (void*) stringlist;
 			m->next();
@@ -1136,9 +1136,9 @@ void marshall_QStringList(Marshall *m) {
 // 		}
 
 //		*(m->var()) = av;
-		void* al = (*ConstructArrayList)();
+		void* al = (*ConstructList)("System.String");
 		for (int i = 0; i < stringlist->count(); i++) {
-			(*AddIntPtrToArrayList)(al, (*IntPtrFromCharStar)((char*) (*stringlist)[i].toLatin1().constData()));
+			(*AddIntPtrToList)(al, (*IntPtrFromCharStar)((char*) (*stringlist)[i].toLatin1().constData()));
 		}
 		m->var().s_voidp = al;
 		m->next();
@@ -1161,7 +1161,7 @@ void marshall_ItemList(Marshall *m) {
 		case Marshall::FromObject:
 		{
 			ItemList *cpplist = new ItemList;
-			QList<void*>* list = (QList<void*>*) (*ArrayListToPointerList)(m->var().s_voidp);
+			QList<void*>* list = (QList<void*>*) (*ListToPointerList)(m->var().s_voidp);
 			
 			for (int i; i < list->size(); ++i) {
 				smokeqyoto_object * o = value_obj_info(list->at(i));
@@ -1195,14 +1195,14 @@ void marshall_ItemList(Marshall *m) {
 			int ix = m->smoke()->idClass(ItemSTR);
 			const char * className = m->smoke()->binding->className(ix);
 			
-			void * al = (*ConstructArrayList)();
+			void * al = (*ConstructList)(className);
 			
 			for (int i=0; i < valuelist->size() ; ++i) {
 				void *p = (void *) valuelist->at(i);
 
 				smokeqyoto_object * o = alloc_smokeqyoto_object(false, m->smoke(), ix, p);
 				void * obj = set_obj_info(className, o);
-				(*AddIntPtrToArrayList)(al, obj);
+				(*AddIntPtrToList)(al, obj);
 			}
 
 			m->var().s_voidp = al;
@@ -1227,7 +1227,7 @@ void marshall_QListInt(Marshall *m) {
       case Marshall::FromObject:
 	{
 	    void* list = m->var().s_voidp;
-	    void* valuelist = (*ArrayListToQListInt)(list);
+	    void* valuelist = (*ListIntToQListInt)(list);
 	    m->item().s_voidp = valuelist;
 	    m->next();
 
@@ -1244,11 +1244,11 @@ void marshall_QListInt(Marshall *m) {
 		break;
 	    }
 
-	    void* av = (*ConstructArrayList)();
+	    void* av = (*ConstructList)("System.Int32");
 
 		for (QList<int>::iterator i = valuelist->begin(); i != valuelist->end(); ++i )
 		{
-		    (*AddIntToArrayList)(av, (int) *i);
+		    (*AddIntToListInt)(av, (int) *i);
 		}
 		
 	    m->var().s_voidp = av;
@@ -1290,7 +1290,7 @@ void marshall_ValueListItem(Marshall *m) {
 		case Marshall::FromObject:
 		{
 			ItemList *cpplist = new ItemList;
-			QList<void*>* list = (QList<void*>*) (*ArrayListToPointerList)(m->var().s_voidp);
+			QList<void*>* list = (QList<void*>*) (*ListToPointerList)(m->var().s_voidp);
 			
 			for (int i; i < list->size(); ++i) {
 				smokeqyoto_object * o = value_obj_info(list->at(i));
@@ -1324,13 +1324,13 @@ void marshall_ValueListItem(Marshall *m) {
 			int ix = m->smoke()->idClass(ItemSTR);
 			const char * className = m->smoke()->binding->className(ix);
 			
-			void * al = (*ConstructArrayList)();
+			void * al = (*ConstructList)(className);
 			
 			for (int i=0; i < valuelist->size() ; ++i) {
 				void *p = (void *) &(valuelist->at(i));
 				smokeqyoto_object * o = alloc_smokeqyoto_object(false, m->smoke(), ix, p);
 				void * obj = set_obj_info(className, o);
-				(*AddIntPtrToArrayList)(al, obj);
+				(*AddIntPtrToList)(al, obj);
 			}
 
 			m->var().s_voidp = al;

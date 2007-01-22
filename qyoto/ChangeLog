@@ -1,3 +1,7 @@
+2007-22-01  Arno Rehn  <arno@arnorehn.de>
+
+	* Updated marshallers to work with generic types
+
 2007-22-01  Richard Dale  <rdale@foton.es>
 
 	* Add QApplicationExtras.cs, QCoreApplicationExtras.cs and QtExtras.cs
