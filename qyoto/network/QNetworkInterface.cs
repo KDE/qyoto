@@ -14,6 +14,7 @@ namespace Qyoto {
 		interface IQNetworkInterfaceProxy {
 			QNetworkInterface InterfaceFromName(string name);
 			QNetworkInterface InterfaceFromIndex(int index);
+			List<QNetworkInterface> AllInterfaces();
 			List<QHostAddress> AllAddresses();
 		}
 
@@ -73,7 +74,10 @@ namespace Qyoto {
 		public string HardwareAddress() {
 			return ProxyQNetworkInterface().HardwareAddress();
 		}
-		// QList<QNetworkAddressEntry> addressEntries(); >>>> NOT CONVERTED
+		[SmokeMethod("addressEntries() const")]
+		public List<QNetworkAddressEntry> AddressEntries() {
+			return ProxyQNetworkInterface().AddressEntries();
+		}
 		[SmokeMethod("interfaceFromName(const QString&)")]
 		public static QNetworkInterface InterfaceFromName(string name) {
 			return StaticQNetworkInterface().InterfaceFromName(name);
@@ -82,7 +86,10 @@ namespace Qyoto {
 		public static QNetworkInterface InterfaceFromIndex(int index) {
 			return StaticQNetworkInterface().InterfaceFromIndex(index);
 		}
-		// QList<QNetworkInterface> allInterfaces(); >>>> NOT CONVERTED
+		[SmokeMethod("allInterfaces()")]
+		public static List<QNetworkInterface> AllInterfaces() {
+			return StaticQNetworkInterface().AllInterfaces();
+		}
 		[SmokeMethod("allAddresses()")]
 		public static List<QHostAddress> AllAddresses() {
 			return StaticQNetworkInterface().AllAddresses();

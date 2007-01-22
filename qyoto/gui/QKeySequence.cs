@@ -3,6 +3,7 @@ namespace Qyoto {
 
 	using System;
 	using System.Text;
+	using System.Collections.Generic;
 
 	[SmokeClass("QKeySequence")]
 	public class QKeySequence : MarshalByRefObject, IDisposable {
@@ -19,6 +20,7 @@ namespace Qyoto {
 			QKeySequence FromString(string str, QKeySequence.SequenceFormat format);
 			QKeySequence FromString(string str);
 			QKeySequence Mnemonic(string text);
+			List<QKeySequence> KeyBindings(QKeySequence.StandardKey key);
 		}
 
 		protected new void CreateProxy() {
@@ -242,7 +244,10 @@ namespace Qyoto {
 		public static QKeySequence Mnemonic(string text) {
 			return StaticQKeySequence().Mnemonic(text);
 		}
-		// QList<QKeySequence> keyBindings(QKeySequence::StandardKey arg1); >>>> NOT CONVERTED
+		[SmokeMethod("keyBindings(QKeySequence::StandardKey)")]
+		public static List<QKeySequence> KeyBindings(QKeySequence.StandardKey key) {
+			return StaticQKeySequence().KeyBindings(key);
+		}
 		~QKeySequence() {
 			DisposeQKeySequence();
 		}

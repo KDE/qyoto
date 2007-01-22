@@ -3,6 +3,7 @@ namespace Qyoto {
 
 	using System;
 	using System.Text;
+	using System.Collections.Generic;
 
 	/// See <see cref="IQActionSignals"></see> for signals emitted by QAction
 	[SmokeClass("QAction")]
@@ -147,12 +148,18 @@ namespace Qyoto {
 		public QKeySequence Shortcut() {
 			return ProxyQAction().Shortcut();
 		}
-		// void setShortcuts(const QList<QKeySequence>& arg1); >>>> NOT CONVERTED
+		[SmokeMethod("setShortcuts(const QList<QKeySequence>&)")]
+		public void SetShortcuts(List<QKeySequence> shortcuts) {
+			ProxyQAction().SetShortcuts(shortcuts);
+		}
 		[SmokeMethod("setShortcuts(QKeySequence::StandardKey)")]
 		public void SetShortcuts(QKeySequence.StandardKey arg1) {
 			ProxyQAction().SetShortcuts(arg1);
 		}
-		// QList<QKeySequence> shortcuts(); >>>> NOT CONVERTED
+		[SmokeMethod("shortcuts() const")]
+		public List<QKeySequence> Shortcuts() {
+			return ProxyQAction().Shortcuts();
+		}
 		[SmokeMethod("setShortcutContext(Qt::ShortcutContext)")]
 		public void SetShortcutContext(Qt.ShortcutContext context) {
 			ProxyQAction().SetShortcutContext(context);
@@ -229,7 +236,10 @@ namespace Qyoto {
 		public QWidget ParentWidget() {
 			return ProxyQAction().ParentWidget();
 		}
-		// QList<QWidget*> associatedWidgets(); >>>> NOT CONVERTED
+		[SmokeMethod("associatedWidgets() const")]
+		public List<QWidget> AssociatedWidgets() {
+			return ProxyQAction().AssociatedWidgets();
+		}
 		[SmokeMethod("trigger()")]
 		public void Trigger() {
 			ProxyQAction().Trigger();

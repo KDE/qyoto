@@ -3,6 +3,7 @@ namespace Qyoto {
 
 	using System;
 	using System.Text;
+	using System.Collections.Generic;
 
 	[SmokeClass("QWidgetAction")]
 	public class QWidgetAction : QAction, IDisposable {
@@ -73,7 +74,10 @@ namespace Qyoto {
 		protected virtual void DeleteWidget(QWidget widget) {
 			ProxyQWidgetAction().DeleteWidget(widget);
 		}
-		// QList<QWidget*> createdWidgets(); >>>> NOT CONVERTED
+		[SmokeMethod("createdWidgets() const")]
+		protected List<QWidget> CreatedWidgets() {
+			return ProxyQWidgetAction().CreatedWidgets();
+		}
 		~QWidgetAction() {
 			DisposeQWidgetAction();
 		}

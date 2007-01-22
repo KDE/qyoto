@@ -327,7 +327,10 @@ namespace Qyoto {
 		public virtual QVariant InputMethodQuery(Qt.InputMethodQuery query) {
 			return ProxyQGraphicsScene().InputMethodQuery(query);
 		}
-		// QList <QGraphicsView*> views(); >>>> NOT CONVERTED
+		[SmokeMethod("views() const")]
+		public List<QGraphicsView> Views() {
+			return ProxyQGraphicsScene().Views();
+		}
 		[SmokeMethod("update(const QRectF&)")]
 		public void Update(QRectF rect) {
 			ProxyQGraphicsScene().Update(rect);
