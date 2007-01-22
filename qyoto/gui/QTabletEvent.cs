@@ -40,7 +40,14 @@ namespace Qyoto {
 			Cursor = 2,
 			Eraser = 3,
 		}
-		// QTabletEvent* QTabletEvent(QEvent::Type arg1,const QPoint& arg2,const QPoint& arg3,const QPointF& arg4,int arg5,int arg6,qreal arg7,int arg8,int arg9,qreal arg10,qreal arg11,int arg12,Qt::KeyboardModifiers arg13,qint64 arg14); >>>> NOT CONVERTED
+		public QTabletEvent(QEvent.E_Type t, QPoint pos, QPoint globalPos, QPointF hiResGlobalPos, int device, int pointerType, double pressure, int xTilt, int yTilt, double tangentialPressure, double rotation, int z, int keyState, long uniqueID) : this((Type) null) {
+			CreateProxy();
+			NewQTabletEvent(t,pos,globalPos,hiResGlobalPos,device,pointerType,pressure,xTilt,yTilt,tangentialPressure,rotation,z,keyState,uniqueID);
+		}
+		[SmokeMethod("QTabletEvent(QEvent::Type, const QPoint&, const QPoint&, const QPointF&, int, int, qreal, int, int, qreal, qreal, int, Qt::KeyboardModifiers, qint64)")]
+		private void NewQTabletEvent(QEvent.E_Type t, QPoint pos, QPoint globalPos, QPointF hiResGlobalPos, int device, int pointerType, double pressure, int xTilt, int yTilt, double tangentialPressure, double rotation, int z, int keyState, long uniqueID) {
+			ProxyQTabletEvent().NewQTabletEvent(t,pos,globalPos,hiResGlobalPos,device,pointerType,pressure,xTilt,yTilt,tangentialPressure,rotation,z,keyState,uniqueID);
+		}
 		[SmokeMethod("pos() const")]
 		public QPoint Pos() {
 			return ProxyQTabletEvent().Pos();
@@ -85,7 +92,10 @@ namespace Qyoto {
 		public QTabletEvent.PointerType pointerType() {
 			return ProxyQTabletEvent().pointerType();
 		}
-		// qint64 uniqueId(); >>>> NOT CONVERTED
+		[SmokeMethod("uniqueId() const")]
+		public long UniqueId() {
+			return ProxyQTabletEvent().UniqueId();
+		}
 		[SmokeMethod("pressure() const")]
 		public double Pressure() {
 			return ProxyQTabletEvent().Pressure();

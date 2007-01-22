@@ -5,6 +5,8 @@
 	  pointed out by Arno.
 	* Convert to generic types for marshalling QLists, QVectors and QMaps,
 	  and use C# List<>s and Dictionary<>s.
+	* Convert qint64 and qlonglong to C# longs, and quint64 and qulonglong to
+	  C# ulongs.
 
 2007-21-01  Richard Dale  <rdale@foton.es>
 

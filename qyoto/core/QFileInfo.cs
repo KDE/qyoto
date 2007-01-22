@@ -232,7 +232,10 @@ namespace Qyoto {
 		public int Permissions() {
 			return ProxyQFileInfo().Permissions();
 		}
-		// qint64 size(); >>>> NOT CONVERTED
+		[SmokeMethod("size() const")]
+		public long Size() {
+			return ProxyQFileInfo().Size();
+		}
 		[SmokeMethod("created() const")]
 		public QDateTime Created() {
 			return ProxyQFileInfo().Created();

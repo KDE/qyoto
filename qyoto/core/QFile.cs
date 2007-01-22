@@ -20,6 +20,7 @@ namespace Qyoto {
 			bool Rename(string oldName, string newName);
 			bool Link(string oldname, string newName);
 			bool Copy(string fileName, string newName);
+			bool Resize(string filename, long sz);
 			int Permissions(string filename);
 			bool SetPermissions(string filename, int permissionSpec);
 		}
@@ -164,9 +165,18 @@ namespace Qyoto {
 		public new virtual void Close() {
 			ProxyQFile().Close();
 		}
-		// qint64 size(); >>>> NOT CONVERTED
-		// qint64 pos(); >>>> NOT CONVERTED
-		// bool seek(qint64 arg1); >>>> NOT CONVERTED
+		[SmokeMethod("size() const")]
+		public new long Size() {
+			return ProxyQFile().Size();
+		}
+		[SmokeMethod("pos() const")]
+		public new long Pos() {
+			return ProxyQFile().Pos();
+		}
+		[SmokeMethod("seek(qint64)")]
+		public new bool Seek(long offset) {
+			return ProxyQFile().Seek(offset);
+		}
 		[SmokeMethod("atEnd() const")]
 		public new bool AtEnd() {
 			return ProxyQFile().AtEnd();
@@ -175,7 +185,10 @@ namespace Qyoto {
 		public bool Flush() {
 			return ProxyQFile().Flush();
 		}
-		// bool resize(qint64 arg1); >>>> NOT CONVERTED
+		[SmokeMethod("resize(qint64)")]
+		public bool Resize(long sz) {
+			return ProxyQFile().Resize(sz);
+		}
 		[SmokeMethod("permissions() const")]
 		public int Permissions() {
 			return ProxyQFile().Permissions();
@@ -236,7 +249,10 @@ namespace Qyoto {
 		public static bool Copy(string fileName, string newName) {
 			return StaticQFile().Copy(fileName,newName);
 		}
-		// bool resize(const QString& arg1,qint64 arg2); >>>> NOT CONVERTED
+		[SmokeMethod("resize(const QString&, qint64)")]
+		public static bool Resize(string filename, long sz) {
+			return StaticQFile().Resize(filename,sz);
+		}
 		[SmokeMethod("permissions(const QString&)")]
 		public static int Permissions(string filename) {
 			return StaticQFile().Permissions(filename);
@@ -245,9 +261,18 @@ namespace Qyoto {
 		public static bool SetPermissions(string filename, int permissionSpec) {
 			return StaticQFile().SetPermissions(filename,permissionSpec);
 		}
-		// qint64 readData(char* arg1,qint64 arg2); >>>> NOT CONVERTED
-		// qint64 writeData(const char* arg1,qint64 arg2); >>>> NOT CONVERTED
-		// qint64 readLineData(char* arg1,qint64 arg2); >>>> NOT CONVERTED
+		[SmokeMethod("readData(char*, qint64)")]
+		protected new long ReadData(string data, long maxlen) {
+			return ProxyQFile().ReadData(data,maxlen);
+		}
+		[SmokeMethod("writeData(const char*, qint64)")]
+		protected new long WriteData(string data, long len) {
+			return ProxyQFile().WriteData(data,len);
+		}
+		[SmokeMethod("readLineData(char*, qint64)")]
+		protected new long ReadLineData(string data, long maxlen) {
+			return ProxyQFile().ReadLineData(data,maxlen);
+		}
 		~QFile() {
 			DisposeQFile();
 		}

@@ -55,7 +55,10 @@ namespace Qyoto {
 			return ProxyQModelIndex().Column();
 		}
 		// void* internalPointer(); >>>> NOT CONVERTED
-		// qint64 internalId(); >>>> NOT CONVERTED
+		[SmokeMethod("internalId() const")]
+		public long InternalId() {
+			return ProxyQModelIndex().InternalId();
+		}
 		[SmokeMethod("parent() const")]
 		public QModelIndex Parent() {
 			return ProxyQModelIndex().Parent();

@@ -172,13 +172,22 @@ namespace Qyoto {
 		public void Flush() {
 			ProxyQTextStream().Flush();
 		}
-		// bool seek(qint64 arg1); >>>> NOT CONVERTED
-		// qint64 pos(); >>>> NOT CONVERTED
+		[SmokeMethod("seek(qint64)")]
+		public bool Seek(long pos) {
+			return ProxyQTextStream().Seek(pos);
+		}
+		[SmokeMethod("pos() const")]
+		public long Pos() {
+			return ProxyQTextStream().Pos();
+		}
 		[SmokeMethod("skipWhiteSpace()")]
 		public void SkipWhiteSpace() {
 			ProxyQTextStream().SkipWhiteSpace();
 		}
-		// QString readLine(qint64 arg1); >>>> NOT CONVERTED
+		[SmokeMethod("readLine(qint64)")]
+		public string ReadLine(long maxlen) {
+			return ProxyQTextStream().ReadLine(maxlen);
+		}
 		[SmokeMethod("readLine()")]
 		public string ReadLine() {
 			return ProxyQTextStream().ReadLine();
@@ -187,7 +196,10 @@ namespace Qyoto {
 		public string ReadAll() {
 			return ProxyQTextStream().ReadAll();
 		}
-		// QString read(qint64 arg1); >>>> NOT CONVERTED
+		[SmokeMethod("read(qint64)")]
+		public string Read(long maxlen) {
+			return ProxyQTextStream().Read(maxlen);
+		}
 		[SmokeMethod("setFieldAlignment(QTextStream::FieldAlignment)")]
 		public void SetFieldAlignment(QTextStream.FieldAlignment alignment) {
 			ProxyQTextStream().SetFieldAlignment(alignment);
@@ -308,8 +320,10 @@ namespace Qyoto {
 		public QTextStream op_write(ulong i) {
 			return ProxyQTextStream().op_write(i);
 		}
-		// QTextStream& operator<<(qlonglong arg1); >>>> NOT CONVERTED
-		// QTextStream& operator<<(qulonglong arg1); >>>> NOT CONVERTED
+		[SmokeMethod("operator<<(qlonglong)")]
+		public QTextStream op_write(long i) {
+			return ProxyQTextStream().op_write(i);
+		}
 		[SmokeMethod("operator<<(float)")]
 		public QTextStream op_write(float f) {
 			return ProxyQTextStream().op_write(f);

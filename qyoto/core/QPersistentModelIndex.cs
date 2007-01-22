@@ -94,7 +94,10 @@ namespace Qyoto {
 			return ProxyQPersistentModelIndex().Column();
 		}
 		// void* internalPointer(); >>>> NOT CONVERTED
-		// qint64 internalId(); >>>> NOT CONVERTED
+		[SmokeMethod("internalId() const")]
+		public long InternalId() {
+			return ProxyQPersistentModelIndex().InternalId();
+		}
 		[SmokeMethod("parent() const")]
 		public QModelIndex Parent() {
 			return ProxyQPersistentModelIndex().Parent();

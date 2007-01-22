@@ -55,8 +55,14 @@ namespace Qyoto {
 		public void SetAttribute(string name, string value) {
 			ProxyQDomElement().SetAttribute(name,value);
 		}
-		// void setAttribute(const QString& arg1,qlonglong arg2); >>>> NOT CONVERTED
-		// void setAttribute(const QString& arg1,qulonglong arg2); >>>> NOT CONVERTED
+		[SmokeMethod("setAttribute(const QString&, qlonglong)")]
+		public void SetAttribute(string name, long value) {
+			ProxyQDomElement().SetAttribute(name,value);
+		}
+		[SmokeMethod("setAttribute(const QString&, qulonglong)")]
+		public void SetAttribute(string name, ulong value) {
+			ProxyQDomElement().SetAttribute(name,value);
+		}
 		[SmokeMethod("setAttribute(const QString&, int)")]
 		public void SetAttribute(string name, int value) {
 			ProxyQDomElement().SetAttribute(name,value);
@@ -117,8 +123,14 @@ namespace Qyoto {
 		public void SetAttributeNS(string nsURI, string qName, uint value) {
 			ProxyQDomElement().SetAttributeNS(nsURI,qName,value);
 		}
-		// void setAttributeNS(const QString arg1,const QString& arg2,qlonglong arg3); >>>> NOT CONVERTED
-		// void setAttributeNS(const QString arg1,const QString& arg2,qulonglong arg3); >>>> NOT CONVERTED
+		[SmokeMethod("setAttributeNS(const QString, const QString&, qlonglong)")]
+		public void SetAttributeNS(string nsURI, string qName, long value) {
+			ProxyQDomElement().SetAttributeNS(nsURI,qName,value);
+		}
+		[SmokeMethod("setAttributeNS(const QString, const QString&, qulonglong)")]
+		public void SetAttributeNS(string nsURI, string qName, ulong value) {
+			ProxyQDomElement().SetAttributeNS(nsURI,qName,value);
+		}
 		[SmokeMethod("setAttributeNS(const QString, const QString&, double)")]
 		public void SetAttributeNS(string nsURI, string qName, double value) {
 			ProxyQDomElement().SetAttributeNS(nsURI,qName,value);

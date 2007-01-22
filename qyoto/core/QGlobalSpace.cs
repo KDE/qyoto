@@ -150,6 +150,7 @@ namespace Qyoto {
 			QTextStream op_read(QTextStream arg1, QSplitter arg2);
 			QTextStream op_write(QTextStream arg1, QDomNode arg2);
 			int QRound(double d);
+			long QRound64(double d);
 			string QVersion();
 			bool QSharedBuild();
 			bool op_equals(QBool b1, bool b2);
@@ -930,7 +931,10 @@ namespace Qyoto {
 		public static int QRound(double d) {
 			return StaticQGlobalSpace().QRound(d);
 		}
-		// qint64 qRound64(qreal arg1); >>>> NOT CONVERTED
+		[SmokeMethod("qRound64(qreal)")]
+		public static long QRound64(double d) {
+			return StaticQGlobalSpace().QRound64(d);
+		}
 		[SmokeMethod("qVersion()")]
 		public static string QVersion() {
 			return StaticQGlobalSpace().QVersion();

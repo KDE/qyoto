@@ -89,9 +89,18 @@ namespace Qyoto {
 		public virtual bool Flush() {
 			return ProxyQAbstractFileEngine().Flush();
 		}
-		// qint64 size(); >>>> NOT CONVERTED
-		// qint64 pos(); >>>> NOT CONVERTED
-		// bool seek(qint64 arg1); >>>> NOT CONVERTED
+		[SmokeMethod("size() const")]
+		public virtual long Size() {
+			return ProxyQAbstractFileEngine().Size();
+		}
+		[SmokeMethod("pos() const")]
+		public virtual long Pos() {
+			return ProxyQAbstractFileEngine().Pos();
+		}
+		[SmokeMethod("seek(qint64)")]
+		public virtual bool Seek(long pos) {
+			return ProxyQAbstractFileEngine().Seek(pos);
+		}
 		[SmokeMethod("isSequential() const")]
 		public virtual bool IsSequential() {
 			return ProxyQAbstractFileEngine().IsSequential();
@@ -120,7 +129,10 @@ namespace Qyoto {
 		public virtual bool Rmdir(string dirName, bool recurseParentDirectories) {
 			return ProxyQAbstractFileEngine().Rmdir(dirName,recurseParentDirectories);
 		}
-		// bool setSize(qint64 arg1); >>>> NOT CONVERTED
+		[SmokeMethod("setSize(qint64)")]
+		public virtual bool SetSize(long size) {
+			return ProxyQAbstractFileEngine().SetSize(size);
+		}
 		[SmokeMethod("caseSensitive() const")]
 		public virtual bool CaseSensitive() {
 			return ProxyQAbstractFileEngine().CaseSensitive();
@@ -171,9 +183,18 @@ namespace Qyoto {
 		}
 		// QAbstractFileEngine::Iterator* beginEntryList(QDir::Filters arg1,const QStringList& arg2); >>>> NOT CONVERTED
 		// QAbstractFileEngine::Iterator* endEntryList(); >>>> NOT CONVERTED
-		// qint64 read(char* arg1,qint64 arg2); >>>> NOT CONVERTED
-		// qint64 readLine(char* arg1,qint64 arg2); >>>> NOT CONVERTED
-		// qint64 write(const char* arg1,qint64 arg2); >>>> NOT CONVERTED
+		[SmokeMethod("read(char*, qint64)")]
+		public virtual long Read(string data, long maxlen) {
+			return ProxyQAbstractFileEngine().Read(data,maxlen);
+		}
+		[SmokeMethod("readLine(char*, qint64)")]
+		public virtual long ReadLine(string data, long maxlen) {
+			return ProxyQAbstractFileEngine().ReadLine(data,maxlen);
+		}
+		[SmokeMethod("write(const char*, qint64)")]
+		public virtual long Write(string data, long len) {
+			return ProxyQAbstractFileEngine().Write(data,len);
+		}
 		[SmokeMethod("error() const")]
 		public QFile.FileError Error() {
 			return ProxyQAbstractFileEngine().Error();

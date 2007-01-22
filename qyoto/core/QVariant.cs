@@ -133,8 +133,22 @@ namespace Qyoto {
 		private void NewQVariant(uint ui) {
 			ProxyQVariant().NewQVariant(ui);
 		}
-		// QVariant* QVariant(qlonglong arg1); >>>> NOT CONVERTED
-		// QVariant* QVariant(qulonglong arg1); >>>> NOT CONVERTED
+		public QVariant(long ll) : this((Type) null) {
+			CreateProxy();
+			NewQVariant(ll);
+		}
+		[SmokeMethod("QVariant(qlonglong)")]
+		private void NewQVariant(long ll) {
+			ProxyQVariant().NewQVariant(ll);
+		}
+		public QVariant(ulong ull) : this((Type) null) {
+			CreateProxy();
+			NewQVariant(ull);
+		}
+		[SmokeMethod("QVariant(qulonglong)")]
+		private void NewQVariant(ulong ull) {
+			ProxyQVariant().NewQVariant(ull);
+		}
 		public QVariant(bool b) : this((Type) null) {
 			CreateProxy();
 			NewQVariant(b);
@@ -377,10 +391,22 @@ namespace Qyoto {
 		public uint ToUInt() {
 			return ProxyQVariant().ToUInt();
 		}
-		// qlonglong toLongLong(bool* arg1); >>>> NOT CONVERTED
-		// qlonglong toLongLong(); >>>> NOT CONVERTED
-		// qulonglong toULongLong(bool* arg1); >>>> NOT CONVERTED
-		// qulonglong toULongLong(); >>>> NOT CONVERTED
+		[SmokeMethod("toLongLong(bool*) const")]
+		public long ToLongLong(out bool ok) {
+			return ProxyQVariant().ToLongLong(out ok);
+		}
+		[SmokeMethod("toLongLong() const")]
+		public long ToLongLong() {
+			return ProxyQVariant().ToLongLong();
+		}
+		[SmokeMethod("toULongLong(bool*) const")]
+		public ulong ToULongLong(out bool ok) {
+			return ProxyQVariant().ToULongLong(out ok);
+		}
+		[SmokeMethod("toULongLong() const")]
+		public ulong ToULongLong() {
+			return ProxyQVariant().ToULongLong();
+		}
 		[SmokeMethod("toBool() const")]
 		public bool ToBool() {
 			return ProxyQVariant().ToBool();

@@ -178,8 +178,14 @@ namespace Qyoto {
 		public int RawCommand(string command) {
 			return ProxyQFtp().RawCommand(command);
 		}
-		// qint64 bytesAvailable(); >>>> NOT CONVERTED
-		// qint64 read(char* arg1,qint64 arg2); >>>> NOT CONVERTED
+		[SmokeMethod("bytesAvailable() const")]
+		public long BytesAvailable() {
+			return ProxyQFtp().BytesAvailable();
+		}
+		[SmokeMethod("read(char*, qint64)")]
+		public long Read(string data, long maxlen) {
+			return ProxyQFtp().Read(data,maxlen);
+		}
 		[SmokeMethod("readAll()")]
 		public QByteArray ReadAll() {
 			return ProxyQFtp().ReadAll();
@@ -250,7 +256,8 @@ namespace Qyoto {
 		void ListInfo(QUrlInfo arg1);
 		[Q_SIGNAL("void readyRead()")]
 		void ReadyRead();
-		// void dataTransferProgress(qint64 arg1,qint64 arg2); >>>> NOT CONVERTED
+		[Q_SIGNAL("void dataTransferProgress(qint64, qint64)")]
+		void DataTransferProgress(long arg1, long arg2);
 		[Q_SIGNAL("void rawCommandReply(int, const QString&)")]
 		void RawCommandReply(int arg1, string arg2);
 		[Q_SIGNAL("void commandStarted(int)")]

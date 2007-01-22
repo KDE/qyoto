@@ -21,6 +21,10 @@ namespace Qyoto {
 			QByteArray Number(int arg1);
 			QByteArray Number(uint arg1, int arg2);
 			QByteArray Number(uint arg1);
+			QByteArray Number(long arg1, int arg2);
+			QByteArray Number(long arg1);
+			QByteArray Number(ulong arg1, int arg2);
+			QByteArray Number(ulong arg1);
 			QByteArray Number(double arg1, char f, int prec);
 			QByteArray Number(double arg1, char f);
 			QByteArray Number(double arg1);
@@ -477,12 +481,30 @@ namespace Qyoto {
 		public ulong ToULong() {
 			return ProxyQByteArray().ToULong();
 		}
-		// qlonglong toLongLong(bool* arg1,int arg2); >>>> NOT CONVERTED
-		// qlonglong toLongLong(bool* arg1); >>>> NOT CONVERTED
-		// qlonglong toLongLong(); >>>> NOT CONVERTED
-		// qulonglong toULongLong(bool* arg1,int arg2); >>>> NOT CONVERTED
-		// qulonglong toULongLong(bool* arg1); >>>> NOT CONVERTED
-		// qulonglong toULongLong(); >>>> NOT CONVERTED
+		[SmokeMethod("toLongLong(bool*, int) const")]
+		public long ToLongLong(out bool ok, int arg2) {
+			return ProxyQByteArray().ToLongLong(out ok,arg2);
+		}
+		[SmokeMethod("toLongLong(bool*) const")]
+		public long ToLongLong(out bool ok) {
+			return ProxyQByteArray().ToLongLong(out ok);
+		}
+		[SmokeMethod("toLongLong() const")]
+		public long ToLongLong() {
+			return ProxyQByteArray().ToLongLong();
+		}
+		[SmokeMethod("toULongLong(bool*, int) const")]
+		public ulong ToULongLong(out bool ok, int arg2) {
+			return ProxyQByteArray().ToULongLong(out ok,arg2);
+		}
+		[SmokeMethod("toULongLong(bool*) const")]
+		public ulong ToULongLong(out bool ok) {
+			return ProxyQByteArray().ToULongLong(out ok);
+		}
+		[SmokeMethod("toULongLong() const")]
+		public ulong ToULongLong() {
+			return ProxyQByteArray().ToULongLong();
+		}
 		[SmokeMethod("toFloat(bool*) const")]
 		public float ToFloat(out bool ok) {
 			return ProxyQByteArray().ToFloat(out ok);
@@ -535,10 +557,22 @@ namespace Qyoto {
 		public QByteArray SetNum(uint arg1) {
 			return ProxyQByteArray().SetNum(arg1);
 		}
-		// QByteArray& setNum(qlonglong arg1,int arg2); >>>> NOT CONVERTED
-		// QByteArray& setNum(qlonglong arg1); >>>> NOT CONVERTED
-		// QByteArray& setNum(qulonglong arg1,int arg2); >>>> NOT CONVERTED
-		// QByteArray& setNum(qulonglong arg1); >>>> NOT CONVERTED
+		[SmokeMethod("setNum(qlonglong, int)")]
+		public QByteArray SetNum(long arg1, int arg2) {
+			return ProxyQByteArray().SetNum(arg1,arg2);
+		}
+		[SmokeMethod("setNum(qlonglong)")]
+		public QByteArray SetNum(long arg1) {
+			return ProxyQByteArray().SetNum(arg1);
+		}
+		[SmokeMethod("setNum(qulonglong, int)")]
+		public QByteArray SetNum(ulong arg1, int arg2) {
+			return ProxyQByteArray().SetNum(arg1,arg2);
+		}
+		[SmokeMethod("setNum(qulonglong)")]
+		public QByteArray SetNum(ulong arg1) {
+			return ProxyQByteArray().SetNum(arg1);
+		}
 		[SmokeMethod("setNum(float, char, int)")]
 		public QByteArray SetNum(float arg1, char f, int prec) {
 			return ProxyQByteArray().SetNum(arg1,f,prec);
@@ -615,10 +649,22 @@ namespace Qyoto {
 		public static QByteArray Number(uint arg1) {
 			return StaticQByteArray().Number(arg1);
 		}
-		// QByteArray number(qlonglong arg1,int arg2); >>>> NOT CONVERTED
-		// QByteArray number(qlonglong arg1); >>>> NOT CONVERTED
-		// QByteArray number(qulonglong arg1,int arg2); >>>> NOT CONVERTED
-		// QByteArray number(qulonglong arg1); >>>> NOT CONVERTED
+		[SmokeMethod("number(qlonglong, int)")]
+		public static QByteArray Number(long arg1, int arg2) {
+			return StaticQByteArray().Number(arg1,arg2);
+		}
+		[SmokeMethod("number(qlonglong)")]
+		public static QByteArray Number(long arg1) {
+			return StaticQByteArray().Number(arg1);
+		}
+		[SmokeMethod("number(qulonglong, int)")]
+		public static QByteArray Number(ulong arg1, int arg2) {
+			return StaticQByteArray().Number(arg1,arg2);
+		}
+		[SmokeMethod("number(qulonglong)")]
+		public static QByteArray Number(ulong arg1) {
+			return StaticQByteArray().Number(arg1);
+		}
 		[SmokeMethod("number(double, char, int)")]
 		public static QByteArray Number(double arg1, char f, int prec) {
 			return StaticQByteArray().Number(arg1,f,prec);

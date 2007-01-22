@@ -61,9 +61,18 @@ namespace Qyoto {
 		public new bool Flush() {
 			return ProxyQFSFileEngine().Flush();
 		}
-		// qint64 size(); >>>> NOT CONVERTED
-		// qint64 pos(); >>>> NOT CONVERTED
-		// bool seek(qint64 arg1); >>>> NOT CONVERTED
+		[SmokeMethod("size() const")]
+		public new long Size() {
+			return ProxyQFSFileEngine().Size();
+		}
+		[SmokeMethod("pos() const")]
+		public new long Pos() {
+			return ProxyQFSFileEngine().Pos();
+		}
+		[SmokeMethod("seek(qint64)")]
+		public new bool Seek(long arg1) {
+			return ProxyQFSFileEngine().Seek(arg1);
+		}
 		[SmokeMethod("isSequential() const")]
 		public new bool IsSequential() {
 			return ProxyQFSFileEngine().IsSequential();
@@ -92,7 +101,10 @@ namespace Qyoto {
 		public new bool Rmdir(string dirName, bool recurseParentDirectories) {
 			return ProxyQFSFileEngine().Rmdir(dirName,recurseParentDirectories);
 		}
-		// bool setSize(qint64 arg1); >>>> NOT CONVERTED
+		[SmokeMethod("setSize(qint64)")]
+		public new bool SetSize(long size) {
+			return ProxyQFSFileEngine().SetSize(size);
+		}
 		[SmokeMethod("caseSensitive() const")]
 		public new bool CaseSensitive() {
 			return ProxyQFSFileEngine().CaseSensitive();
@@ -135,9 +147,18 @@ namespace Qyoto {
 		}
 		// QAbstractFileEngine::Iterator* beginEntryList(QDir::Filters arg1,const QStringList& arg2); >>>> NOT CONVERTED
 		// QAbstractFileEngine::Iterator* endEntryList(); >>>> NOT CONVERTED
-		// qint64 read(char* arg1,qint64 arg2); >>>> NOT CONVERTED
-		// qint64 readLine(char* arg1,qint64 arg2); >>>> NOT CONVERTED
-		// qint64 write(const char* arg1,qint64 arg2); >>>> NOT CONVERTED
+		[SmokeMethod("read(char*, qint64)")]
+		public new long Read(string data, long maxlen) {
+			return ProxyQFSFileEngine().Read(data,maxlen);
+		}
+		[SmokeMethod("readLine(char*, qint64)")]
+		public new long ReadLine(string data, long maxlen) {
+			return ProxyQFSFileEngine().ReadLine(data,maxlen);
+		}
+		[SmokeMethod("write(const char*, qint64)")]
+		public new long Write(string data, long len) {
+			return ProxyQFSFileEngine().Write(data,len);
+		}
 		// bool extension(QAbstractFileEngine::Extension arg1,const QAbstractFileEngine::ExtensionOption* arg2,QAbstractFileEngine::ExtensionReturn* arg3); >>>> NOT CONVERTED
 		// bool extension(QAbstractFileEngine::Extension arg1,const QAbstractFileEngine::ExtensionOption* arg2); >>>> NOT CONVERTED
 		[SmokeMethod("extension(QAbstractFileEngine::Extension)")]

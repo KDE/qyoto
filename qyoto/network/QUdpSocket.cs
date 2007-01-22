@@ -75,12 +75,27 @@ namespace Qyoto {
 		public bool HasPendingDatagrams() {
 			return ProxyQUdpSocket().HasPendingDatagrams();
 		}
-		// qint64 pendingDatagramSize(); >>>> NOT CONVERTED
+		[SmokeMethod("pendingDatagramSize() const")]
+		public long PendingDatagramSize() {
+			return ProxyQUdpSocket().PendingDatagramSize();
+		}
 		// qint64 readDatagram(char* arg1,qint64 arg2,QHostAddress* arg3,quint16* arg4); >>>> NOT CONVERTED
-		// qint64 readDatagram(char* arg1,qint64 arg2,QHostAddress* arg3); >>>> NOT CONVERTED
-		// qint64 readDatagram(char* arg1,qint64 arg2); >>>> NOT CONVERTED
-		// qint64 writeDatagram(const char* arg1,qint64 arg2,const QHostAddress& arg3,quint16 arg4); >>>> NOT CONVERTED
-		// qint64 writeDatagram(const QByteArray& arg1,const QHostAddress& arg2,quint16 arg3); >>>> NOT CONVERTED
+		[SmokeMethod("readDatagram(char*, qint64, QHostAddress*)")]
+		public long ReadDatagram(string data, long maxlen, QHostAddress host) {
+			return ProxyQUdpSocket().ReadDatagram(data,maxlen,host);
+		}
+		[SmokeMethod("readDatagram(char*, qint64)")]
+		public long ReadDatagram(string data, long maxlen) {
+			return ProxyQUdpSocket().ReadDatagram(data,maxlen);
+		}
+		[SmokeMethod("writeDatagram(const char*, qint64, const QHostAddress&, quint16)")]
+		public long WriteDatagram(string data, long len, QHostAddress host, ushort port) {
+			return ProxyQUdpSocket().WriteDatagram(data,len,host,port);
+		}
+		[SmokeMethod("writeDatagram(const QByteArray&, const QHostAddress&, quint16)")]
+		public long WriteDatagram(QByteArray datagram, QHostAddress host, ushort port) {
+			return ProxyQUdpSocket().WriteDatagram(datagram,host,port);
+		}
 		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQUdpSocket().Tr(s,c);

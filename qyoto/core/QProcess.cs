@@ -223,8 +223,14 @@ namespace Qyoto {
 		public QProcess.ExitStatus exitStatus() {
 			return ProxyQProcess().exitStatus();
 		}
-		// qint64 bytesAvailable(); >>>> NOT CONVERTED
-		// qint64 bytesToWrite(); >>>> NOT CONVERTED
+		[SmokeMethod("bytesAvailable() const")]
+		public new long BytesAvailable() {
+			return ProxyQProcess().BytesAvailable();
+		}
+		[SmokeMethod("bytesToWrite() const")]
+		public new long BytesToWrite() {
+			return ProxyQProcess().BytesToWrite();
+		}
 		[SmokeMethod("isSequential() const")]
 		public new bool IsSequential() {
 			return ProxyQProcess().IsSequential();
@@ -285,8 +291,14 @@ namespace Qyoto {
 		protected virtual void SetupChildProcess() {
 			ProxyQProcess().SetupChildProcess();
 		}
-		// qint64 readData(char* arg1,qint64 arg2); >>>> NOT CONVERTED
-		// qint64 writeData(const char* arg1,qint64 arg2); >>>> NOT CONVERTED
+		[SmokeMethod("readData(char*, qint64)")]
+		protected new long ReadData(string data, long maxlen) {
+			return ProxyQProcess().ReadData(data,maxlen);
+		}
+		[SmokeMethod("writeData(const char*, qint64)")]
+		protected new long WriteData(string data, long len) {
+			return ProxyQProcess().WriteData(data,len);
+		}
 		~QProcess() {
 			DisposeQProcess();
 		}

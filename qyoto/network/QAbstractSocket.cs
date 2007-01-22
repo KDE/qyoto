@@ -95,8 +95,14 @@ namespace Qyoto {
 		public bool IsValid() {
 			return ProxyQAbstractSocket().IsValid();
 		}
-		// qint64 bytesAvailable(); >>>> NOT CONVERTED
-		// qint64 bytesToWrite(); >>>> NOT CONVERTED
+		[SmokeMethod("bytesAvailable() const")]
+		public new long BytesAvailable() {
+			return ProxyQAbstractSocket().BytesAvailable();
+		}
+		[SmokeMethod("bytesToWrite() const")]
+		public new long BytesToWrite() {
+			return ProxyQAbstractSocket().BytesToWrite();
+		}
 		[SmokeMethod("canReadLine() const")]
 		public new bool CanReadLine() {
 			return ProxyQAbstractSocket().CanReadLine();
@@ -121,8 +127,14 @@ namespace Qyoto {
 		public string PeerName() {
 			return ProxyQAbstractSocket().PeerName();
 		}
-		// qint64 readBufferSize(); >>>> NOT CONVERTED
-		// void setReadBufferSize(qint64 arg1); >>>> NOT CONVERTED
+		[SmokeMethod("readBufferSize() const")]
+		public long ReadBufferSize() {
+			return ProxyQAbstractSocket().ReadBufferSize();
+		}
+		[SmokeMethod("setReadBufferSize(qint64)")]
+		public void SetReadBufferSize(long size) {
+			ProxyQAbstractSocket().SetReadBufferSize(size);
+		}
 		[SmokeMethod("abort()")]
 		public void Abort() {
 			ProxyQAbstractSocket().Abort();
@@ -231,9 +243,18 @@ namespace Qyoto {
 		protected void DisconnectFromHostImplementation() {
 			ProxyQAbstractSocket().DisconnectFromHostImplementation();
 		}
-		// qint64 readData(char* arg1,qint64 arg2); >>>> NOT CONVERTED
-		// qint64 readLineData(char* arg1,qint64 arg2); >>>> NOT CONVERTED
-		// qint64 writeData(const char* arg1,qint64 arg2); >>>> NOT CONVERTED
+		[SmokeMethod("readData(char*, qint64)")]
+		protected new long ReadData(string data, long maxlen) {
+			return ProxyQAbstractSocket().ReadData(data,maxlen);
+		}
+		[SmokeMethod("readLineData(char*, qint64)")]
+		protected new long ReadLineData(string data, long maxlen) {
+			return ProxyQAbstractSocket().ReadLineData(data,maxlen);
+		}
+		[SmokeMethod("writeData(const char*, qint64)")]
+		protected new long WriteData(string data, long len) {
+			return ProxyQAbstractSocket().WriteData(data,len);
+		}
 		[SmokeMethod("setSocketState(QAbstractSocket::SocketState)")]
 		protected void SetSocketState(QAbstractSocket.SocketState state) {
 			ProxyQAbstractSocket().SetSocketState(state);

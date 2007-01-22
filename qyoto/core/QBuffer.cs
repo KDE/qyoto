@@ -89,9 +89,18 @@ namespace Qyoto {
 		public new void Close() {
 			ProxyQBuffer().Close();
 		}
-		// qint64 size(); >>>> NOT CONVERTED
-		// qint64 pos(); >>>> NOT CONVERTED
-		// bool seek(qint64 arg1); >>>> NOT CONVERTED
+		[SmokeMethod("size() const")]
+		public new long Size() {
+			return ProxyQBuffer().Size();
+		}
+		[SmokeMethod("pos() const")]
+		public new long Pos() {
+			return ProxyQBuffer().Pos();
+		}
+		[SmokeMethod("seek(qint64)")]
+		public new bool Seek(long off) {
+			return ProxyQBuffer().Seek(off);
+		}
 		[SmokeMethod("atEnd() const")]
 		public new bool AtEnd() {
 			return ProxyQBuffer().AtEnd();
@@ -108,8 +117,14 @@ namespace Qyoto {
 		public static new string Tr(string s) {
 			return StaticQBuffer().Tr(s);
 		}
-		// qint64 readData(char* arg1,qint64 arg2); >>>> NOT CONVERTED
-		// qint64 writeData(const char* arg1,qint64 arg2); >>>> NOT CONVERTED
+		[SmokeMethod("readData(char*, qint64)")]
+		protected new long ReadData(string data, long maxlen) {
+			return ProxyQBuffer().ReadData(data,maxlen);
+		}
+		[SmokeMethod("writeData(const char*, qint64)")]
+		protected new long WriteData(string data, long len) {
+			return ProxyQBuffer().WriteData(data,len);
+		}
 		~QBuffer() {
 			DisposeQBuffer();
 		}

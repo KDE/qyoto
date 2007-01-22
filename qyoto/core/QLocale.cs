@@ -536,12 +536,30 @@ namespace Qyoto {
 		public uint ToUInt(string s) {
 			return ProxyQLocale().ToUInt(s);
 		}
-		// qlonglong toLongLong(const QString& arg1,bool* arg2,int arg3); >>>> NOT CONVERTED
-		// qlonglong toLongLong(const QString& arg1,bool* arg2); >>>> NOT CONVERTED
-		// qlonglong toLongLong(const QString& arg1); >>>> NOT CONVERTED
-		// qlonglong toULongLong(const QString& arg1,bool* arg2,int arg3); >>>> NOT CONVERTED
-		// qlonglong toULongLong(const QString& arg1,bool* arg2); >>>> NOT CONVERTED
-		// qlonglong toULongLong(const QString& arg1); >>>> NOT CONVERTED
+		[SmokeMethod("toLongLong(const QString&, bool*, int) const")]
+		public long ToLongLong(string s, out bool ok, int arg3) {
+			return ProxyQLocale().ToLongLong(s,out ok,arg3);
+		}
+		[SmokeMethod("toLongLong(const QString&, bool*) const")]
+		public long ToLongLong(string s, out bool ok) {
+			return ProxyQLocale().ToLongLong(s,out ok);
+		}
+		[SmokeMethod("toLongLong(const QString&) const")]
+		public long ToLongLong(string s) {
+			return ProxyQLocale().ToLongLong(s);
+		}
+		[SmokeMethod("toULongLong(const QString&, bool*, int) const")]
+		public long ToULongLong(string s, out bool ok, int arg3) {
+			return ProxyQLocale().ToULongLong(s,out ok,arg3);
+		}
+		[SmokeMethod("toULongLong(const QString&, bool*) const")]
+		public long ToULongLong(string s, out bool ok) {
+			return ProxyQLocale().ToULongLong(s,out ok);
+		}
+		[SmokeMethod("toULongLong(const QString&) const")]
+		public long ToULongLong(string s) {
+			return ProxyQLocale().ToULongLong(s);
+		}
 		[SmokeMethod("toFloat(const QString&, bool*) const")]
 		public float ToFloat(string s, out bool ok) {
 			return ProxyQLocale().ToFloat(s,out ok);
@@ -558,8 +576,14 @@ namespace Qyoto {
 		public double ToDouble(string s) {
 			return ProxyQLocale().ToDouble(s);
 		}
-		// QString toString(qlonglong arg1); >>>> NOT CONVERTED
-		// QString toString(qulonglong arg1); >>>> NOT CONVERTED
+		[SmokeMethod("toString(qlonglong) const")]
+		public new string ToString(long i) {
+			return ProxyQLocale().ToString(i);
+		}
+		[SmokeMethod("toString(qulonglong) const")]
+		public new string ToString(ulong i) {
+			return ProxyQLocale().ToString(i);
+		}
 		[SmokeMethod("toString(short) const")]
 		public new string ToString(short i) {
 			return ProxyQLocale().ToString(i);

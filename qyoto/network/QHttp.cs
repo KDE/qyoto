@@ -177,8 +177,14 @@ namespace Qyoto {
 		public int Close() {
 			return ProxyQHttp().Close();
 		}
-		// qint64 bytesAvailable(); >>>> NOT CONVERTED
-		// qint64 read(char* arg1,qint64 arg2); >>>> NOT CONVERTED
+		[SmokeMethod("bytesAvailable() const")]
+		public long BytesAvailable() {
+			return ProxyQHttp().BytesAvailable();
+		}
+		[SmokeMethod("read(char*, qint64)")]
+		public long Read(string data, long maxlen) {
+			return ProxyQHttp().Read(data,maxlen);
+		}
 		[SmokeMethod("readAll()")]
 		public QByteArray ReadAll() {
 			return ProxyQHttp().ReadAll();

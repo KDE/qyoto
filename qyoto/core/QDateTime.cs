@@ -147,7 +147,10 @@ namespace Qyoto {
 		public QDateTime AddSecs(int secs) {
 			return ProxyQDateTime().AddSecs(secs);
 		}
-		// QDateTime addMSecs(qint64 arg1); >>>> NOT CONVERTED
+		[SmokeMethod("addMSecs(qint64) const")]
+		public QDateTime AddMSecs(long msecs) {
+			return ProxyQDateTime().AddMSecs(msecs);
+		}
 		[SmokeMethod("toTimeSpec(Qt::TimeSpec) const")]
 		public QDateTime ToTimeSpec(Qt.TimeSpec spec) {
 			return ProxyQDateTime().ToTimeSpec(spec);

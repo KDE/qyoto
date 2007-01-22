@@ -14,11 +14,24 @@ namespace Qyoto {
 			bool IsSequential();
 			bool Open(int mode);
 			void Close();
+			long Pos();
+			long Size();
+			bool Seek(long pos);
 			bool AtEnd();
 			bool Reset();
+			long BytesAvailable();
+			long BytesToWrite();
+			long Read(string data, long maxlen);
+			QByteArray Read(long maxlen);
 			QByteArray ReadAll();
+			long ReadLine(string data, long maxlen);
+			QByteArray ReadLine(long maxlen);
 			QByteArray ReadLine();
 			bool CanReadLine();
+			long Write(string data, long len);
+			long Write(QByteArray data);
+			long Peek(string data, long maxlen);
+			QByteArray Peek(long maxlen);
 			bool WaitForReadyRead(int msecs);
 			bool WaitForBytesWritten(int msecs);
 			void UngetChar(char c);
@@ -115,9 +128,18 @@ namespace Qyoto {
 		public virtual void Close() {
 			ProxyQIODevice().Close();
 		}
-		// qint64 pos(); >>>> NOT CONVERTED
-		// qint64 size(); >>>> NOT CONVERTED
-		// bool seek(qint64 arg1); >>>> NOT CONVERTED
+		[SmokeMethod("pos() const")]
+		public virtual long Pos() {
+			return ProxyQIODevice().Pos();
+		}
+		[SmokeMethod("size() const")]
+		public virtual long Size() {
+			return ProxyQIODevice().Size();
+		}
+		[SmokeMethod("seek(qint64)")]
+		public virtual bool Seek(long pos) {
+			return ProxyQIODevice().Seek(pos);
+		}
 		[SmokeMethod("atEnd() const")]
 		public virtual bool AtEnd() {
 			return ProxyQIODevice().AtEnd();
@@ -126,16 +148,34 @@ namespace Qyoto {
 		public virtual bool Reset() {
 			return ProxyQIODevice().Reset();
 		}
-		// qint64 bytesAvailable(); >>>> NOT CONVERTED
-		// qint64 bytesToWrite(); >>>> NOT CONVERTED
-		// qint64 read(char* arg1,qint64 arg2); >>>> NOT CONVERTED
-		// QByteArray read(qint64 arg1); >>>> NOT CONVERTED
+		[SmokeMethod("bytesAvailable() const")]
+		public virtual long BytesAvailable() {
+			return ProxyQIODevice().BytesAvailable();
+		}
+		[SmokeMethod("bytesToWrite() const")]
+		public virtual long BytesToWrite() {
+			return ProxyQIODevice().BytesToWrite();
+		}
+		[SmokeMethod("read(char*, qint64)")]
+		public long Read(string data, long maxlen) {
+			return ProxyQIODevice().Read(data,maxlen);
+		}
+		[SmokeMethod("read(qint64)")]
+		public QByteArray Read(long maxlen) {
+			return ProxyQIODevice().Read(maxlen);
+		}
 		[SmokeMethod("readAll()")]
 		public QByteArray ReadAll() {
 			return ProxyQIODevice().ReadAll();
 		}
-		// qint64 readLine(char* arg1,qint64 arg2); >>>> NOT CONVERTED
-		// QByteArray readLine(qint64 arg1); >>>> NOT CONVERTED
+		[SmokeMethod("readLine(char*, qint64)")]
+		public long ReadLine(string data, long maxlen) {
+			return ProxyQIODevice().ReadLine(data,maxlen);
+		}
+		[SmokeMethod("readLine(qint64)")]
+		public QByteArray ReadLine(long maxlen) {
+			return ProxyQIODevice().ReadLine(maxlen);
+		}
 		[SmokeMethod("readLine()")]
 		public QByteArray ReadLine() {
 			return ProxyQIODevice().ReadLine();
@@ -144,10 +184,22 @@ namespace Qyoto {
 		public virtual bool CanReadLine() {
 			return ProxyQIODevice().CanReadLine();
 		}
-		// qint64 write(const char* arg1,qint64 arg2); >>>> NOT CONVERTED
-		// qint64 write(const QByteArray& arg1); >>>> NOT CONVERTED
-		// qint64 peek(char* arg1,qint64 arg2); >>>> NOT CONVERTED
-		// QByteArray peek(qint64 arg1); >>>> NOT CONVERTED
+		[SmokeMethod("write(const char*, qint64)")]
+		public long Write(string data, long len) {
+			return ProxyQIODevice().Write(data,len);
+		}
+		[SmokeMethod("write(const QByteArray&)")]
+		public long Write(QByteArray data) {
+			return ProxyQIODevice().Write(data);
+		}
+		[SmokeMethod("peek(char*, qint64)")]
+		public long Peek(string data, long maxlen) {
+			return ProxyQIODevice().Peek(data,maxlen);
+		}
+		[SmokeMethod("peek(qint64)")]
+		public QByteArray Peek(long maxlen) {
+			return ProxyQIODevice().Peek(maxlen);
+		}
 		[SmokeMethod("waitForReadyRead(int)")]
 		public virtual bool WaitForReadyRead(int msecs) {
 			return ProxyQIODevice().WaitForReadyRead(msecs);
@@ -198,7 +250,8 @@ namespace Qyoto {
 	public interface IQIODeviceSignals : IQObjectSignals {
 		[Q_SIGNAL("void readyRead()")]
 		void ReadyRead();
-		// void bytesWritten(qint64 arg1); >>>> NOT CONVERTED
+		[Q_SIGNAL("void bytesWritten(qint64)")]
+		void BytesWritten(long bytes);
 		[Q_SIGNAL("void aboutToClose()")]
 		void AboutToClose();
 	}

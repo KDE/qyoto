@@ -66,8 +66,14 @@ namespace Qyoto {
 		public QDBusArgument op_write(uint arg) {
 			return ProxyQDBusArgument().op_write(arg);
 		}
-		// QDBusArgument& operator<<(qlonglong arg1); >>>> NOT CONVERTED
-		// QDBusArgument& operator<<(qulonglong arg1); >>>> NOT CONVERTED
+		[SmokeMethod("operator<<(qlonglong)")]
+		public QDBusArgument op_write(long arg) {
+			return ProxyQDBusArgument().op_write(arg);
+		}
+		[SmokeMethod("operator<<(qulonglong)")]
+		public QDBusArgument op_write(ulong arg) {
+			return ProxyQDBusArgument().op_write(arg);
+		}
 		[SmokeMethod("operator<<(double)")]
 		public QDBusArgument op_write(double arg) {
 			return ProxyQDBusArgument().op_write(arg);

@@ -157,8 +157,14 @@ namespace Qyoto {
 		public QDataStream op_write(uint i) {
 			return ProxyQDataStream().op_write(i);
 		}
-		// QDataStream& operator<<(qint64 arg1); >>>> NOT CONVERTED
-		// QDataStream& operator<<(quint64 arg1); >>>> NOT CONVERTED
+		[SmokeMethod("operator<<(qint64)")]
+		public QDataStream op_write(long i) {
+			return ProxyQDataStream().op_write(i);
+		}
+		[SmokeMethod("operator<<(quint64)")]
+		public QDataStream op_write(ulong i) {
+			return ProxyQDataStream().op_write(i);
+		}
 		[SmokeMethod("operator<<(bool)")]
 		public QDataStream op_write(bool i) {
 			return ProxyQDataStream().op_write(i);
