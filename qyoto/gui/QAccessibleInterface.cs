@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	[SmokeClass("QAccessibleInterface")]
 	public class QAccessibleInterface : QAccessible {
@@ -84,7 +84,7 @@ namespace Qyoto {
 			return ProxyQAccessibleInterface().ActionText(action,t,child);
 		}
 		[SmokeMethod("doAction(int, int, const QVariantList&)")]
-		public virtual bool DoAction(int action, int child, ArrayList arg3) {
+		public virtual bool DoAction(int action, int child, List<QVariant> arg3) {
 			return ProxyQAccessibleInterface().DoAction(action,child,arg3);
 		}
 		[SmokeMethod("doAction(int, int)")]
@@ -92,7 +92,7 @@ namespace Qyoto {
 			return ProxyQAccessibleInterface().DoAction(action,child);
 		}
 		[SmokeMethod("invokeMethod(QAccessible::Method, int, const QVariantList&)")]
-		public QVariant InvokeMethod(QAccessible.Method method, int child, ArrayList arg3) {
+		public QVariant InvokeMethod(QAccessible.Method method, int child, List<QVariant> arg3) {
 			return ProxyQAccessibleInterface().InvokeMethod(method,child,arg3);
 		}
 		[SmokeMethod("invokeMethod(QAccessible::Method, int)")]

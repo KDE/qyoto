@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	[SmokeClass("QVariant")]
 	public partial class QVariant : MarshalByRefObject, IDisposable {
@@ -169,12 +169,12 @@ namespace Qyoto {
 		}
 		// QVariant* QVariant(const QBitArray& arg1); >>>> NOT CONVERTED
 		// QVariant* QVariant(const QLatin1String& arg1); >>>> NOT CONVERTED
-		public QVariant(string[] stringlist) : this((Type) null) {
+		public QVariant(List<string> stringlist) : this((Type) null) {
 			CreateProxy();
 			NewQVariant(stringlist);
 		}
 		[SmokeMethod("QVariant(const QStringList&)")]
-		private void NewQVariant(string[] stringlist) {
+		private void NewQVariant(List<string> stringlist) {
 			ProxyQVariant().NewQVariant(stringlist);
 		}
 		public QVariant(char qchar) : this((Type) null) {
@@ -209,15 +209,22 @@ namespace Qyoto {
 		private void NewQVariant(QDateTime datetime) {
 			ProxyQVariant().NewQVariant(datetime);
 		}
-		public QVariant(ArrayList list) : this((Type) null) {
+		public QVariant(List<QVariant> list) : this((Type) null) {
 			CreateProxy();
 			NewQVariant(list);
 		}
 		[SmokeMethod("QVariant(const QList<QVariant>&)")]
-		private void NewQVariant(ArrayList list) {
+		private void NewQVariant(List<QVariant> list) {
 			ProxyQVariant().NewQVariant(list);
 		}
-		// QVariant* QVariant(const QMap<QString, QVariant>& arg1); >>>> NOT CONVERTED
+		public QVariant(Dictionary<string, QVariant> map) : this((Type) null) {
+			CreateProxy();
+			NewQVariant(map);
+		}
+		[SmokeMethod("QVariant(const QMap<QString, QVariant>&)")]
+		private void NewQVariant(Dictionary<string, QVariant> map) {
+			ProxyQVariant().NewQVariant(map);
+		}
 		public QVariant(QSize size) : this((Type) null) {
 			CreateProxy();
 			NewQVariant(size);
@@ -396,7 +403,7 @@ namespace Qyoto {
 			return ProxyQVariant().ToString();
 		}
 		[SmokeMethod("toStringList() const")]
-		public ArrayList ToStringList() {
+		public List<string> ToStringList() {
 			return ProxyQVariant().ToStringList();
 		}
 		[SmokeMethod("toChar() const")]
@@ -416,10 +423,13 @@ namespace Qyoto {
 			return ProxyQVariant().ToDateTime();
 		}
 		[SmokeMethod("toList() const")]
-		public ArrayList ToList() {
+		public List<QVariant> ToList() {
 			return ProxyQVariant().ToList();
 		}
-		// QMap<QString, QVariant> toMap(); >>>> NOT CONVERTED
+		[SmokeMethod("toMap() const")]
+		public Dictionary<string, QVariant> ToMap() {
+			return ProxyQVariant().ToMap();
+		}
 		[SmokeMethod("toPoint() const")]
 		public QPoint ToPoint() {
 			return ProxyQVariant().ToPoint();

@@ -2,7 +2,7 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
+	using System.Collections.Generic;
 
 	[SmokeClass("QTextOption")]
 	public class QTextOption : MarshalByRefObject, IDisposable {
@@ -104,11 +104,11 @@ namespace Qyoto {
 			return ProxyQTextOption().TabStop();
 		}
 		[SmokeMethod("setTabArray(QList<qreal>)")]
-		public void SetTabArray(ArrayList tabStops) {
+		public void SetTabArray(List<double> tabStops) {
 			ProxyQTextOption().SetTabArray(tabStops);
 		}
 		[SmokeMethod("tabArray() const")]
-		public ArrayList TabArray() {
+		public List<double> TabArray() {
 			return ProxyQTextOption().TabArray();
 		}
 		[SmokeMethod("setUseDesignMetrics(bool)")]

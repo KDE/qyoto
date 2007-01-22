@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	[SmokeClass("QAccessibleWidgetEx")]
 	public class QAccessibleWidgetEx : QAccessibleObjectEx {
@@ -92,7 +92,7 @@ namespace Qyoto {
 			return ProxyQAccessibleWidgetEx().ActionText(action,t,child);
 		}
 		[SmokeMethod("doAction(int, int, const QVariantList&)")]
-		public new bool DoAction(int action, int child, ArrayList arg3) {
+		public new bool DoAction(int action, int child, List<QVariant> arg3) {
 			return ProxyQAccessibleWidgetEx().DoAction(action,child,arg3);
 		}
 		[SmokeMethod("widget() const")]

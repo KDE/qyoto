@@ -3,14 +3,15 @@ namespace Qyoto {
 
 	using System;
 	using System.Reflection;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	/// See <see cref="IQObjectSignals"></see> for signals emitted by QObject
 	[SmokeClass("QObject")]
 	public class QObject : Qt, IDisposable {
  
 		private IntPtr _smokeObject;
+		protected Object Q_EMIT = null;
 		protected QObject(Type dummy) {
 			try {
 				Type proxyInterface = Qyoto.GetSignalsInterface(GetType());
@@ -109,7 +110,7 @@ namespace Qyoto {
 			ProxyQObject().KillTimer(id);
 		}
 		[SmokeMethod("children() const")]
-		public ArrayList Children() {
+		public List<QObject> Children() {
 			return ProxyQObject().Children();
 		}
 		[SmokeMethod("setParent(QObject*)")]
@@ -173,7 +174,7 @@ namespace Qyoto {
 			return ProxyQObject().Property(name);
 		}
 		[SmokeMethod("dynamicPropertyNames() const")]
-		public ArrayList DynamicPropertyNames() {
+		public List<QByteArray> DynamicPropertyNames() {
 			return ProxyQObject().DynamicPropertyNames();
 		}
 		// void setUserData(uint arg1,QObjectUserData* arg2); >>>> NOT CONVERTED
@@ -252,7 +253,6 @@ namespace Qyoto {
 		private void DisposeQObject() {
 			ProxyQObject().DisposeQObject();
 		}
-		protected Object Q_EMIT = null;
 		protected new IQObjectSignals Emit() {
 			return (IQObjectSignals) Q_EMIT;
 		}

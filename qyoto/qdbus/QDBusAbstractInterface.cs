@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	[SmokeClass("QDBusAbstractInterface")]
 	public class QDBusAbstractInterface : QObject, IDisposable {
@@ -127,11 +127,11 @@ namespace Qyoto {
 			return ProxyQDBusAbstractInterface().Call(mode,method);
 		}
 		[SmokeMethod("callWithArgumentList(QDBus::CallMode, const QString&, const QList<QVariant>&)")]
-		public QDBusMessage CallWithArgumentList(QDBus.CallMode mode, string method, ArrayList args) {
+		public QDBusMessage CallWithArgumentList(QDBus.CallMode mode, string method, List<QVariant> args) {
 			return ProxyQDBusAbstractInterface().CallWithArgumentList(mode,method,args);
 		}
 		[SmokeMethod("callWithCallback(const QString&, const QList<QVariant>&, QObject*, const char*)")]
-		public bool CallWithCallback(string method, ArrayList args, QObject receiver, string member) {
+		public bool CallWithCallback(string method, List<QVariant> args, QObject receiver, string member) {
 			return ProxyQDBusAbstractInterface().CallWithCallback(method,args,receiver,member);
 		}
 		[SmokeMethod("tr(const char*, const char*)")]
@@ -167,7 +167,7 @@ namespace Qyoto {
 			ProxyQDBusAbstractInterface().InternalPropSet(propname,value);
 		}
 		[SmokeMethod("internalConstCall(QDBus::CallMode, const QString&, const QList<QVariant>&) const")]
-		protected QDBusMessage InternalConstCall(QDBus.CallMode mode, string method, ArrayList args) {
+		protected QDBusMessage InternalConstCall(QDBus.CallMode mode, string method, List<QVariant> args) {
 			return ProxyQDBusAbstractInterface().InternalConstCall(mode,method,args);
 		}
 		[SmokeMethod("internalConstCall(QDBus::CallMode, const QString&) const")]

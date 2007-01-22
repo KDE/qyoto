@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	[SmokeClass("QTreeWidgetItem")]
 	public class QTreeWidgetItem : MarshalByRefObject, IDisposable {
@@ -50,20 +50,20 @@ namespace Qyoto {
 		private void NewQTreeWidgetItem() {
 			ProxyQTreeWidgetItem().NewQTreeWidgetItem();
 		}
-		public QTreeWidgetItem(string[] strings, int type) : this((Type) null) {
+		public QTreeWidgetItem(List<string> strings, int type) : this((Type) null) {
 			CreateProxy();
 			NewQTreeWidgetItem(strings,type);
 		}
 		[SmokeMethod("QTreeWidgetItem(const QStringList&, int)")]
-		private void NewQTreeWidgetItem(string[] strings, int type) {
+		private void NewQTreeWidgetItem(List<string> strings, int type) {
 			ProxyQTreeWidgetItem().NewQTreeWidgetItem(strings,type);
 		}
-		public QTreeWidgetItem(string[] strings) : this((Type) null) {
+		public QTreeWidgetItem(List<string> strings) : this((Type) null) {
 			CreateProxy();
 			NewQTreeWidgetItem(strings);
 		}
 		[SmokeMethod("QTreeWidgetItem(const QStringList&)")]
-		private void NewQTreeWidgetItem(string[] strings) {
+		private void NewQTreeWidgetItem(List<string> strings) {
 			ProxyQTreeWidgetItem().NewQTreeWidgetItem(strings);
 		}
 		public QTreeWidgetItem(QTreeWidget view, int type) : this((Type) null) {
@@ -82,20 +82,20 @@ namespace Qyoto {
 		private void NewQTreeWidgetItem(QTreeWidget view) {
 			ProxyQTreeWidgetItem().NewQTreeWidgetItem(view);
 		}
-		public QTreeWidgetItem(QTreeWidget view, string[] strings, int type) : this((Type) null) {
+		public QTreeWidgetItem(QTreeWidget view, List<string> strings, int type) : this((Type) null) {
 			CreateProxy();
 			NewQTreeWidgetItem(view,strings,type);
 		}
 		[SmokeMethod("QTreeWidgetItem(QTreeWidget*, const QStringList&, int)")]
-		private void NewQTreeWidgetItem(QTreeWidget view, string[] strings, int type) {
+		private void NewQTreeWidgetItem(QTreeWidget view, List<string> strings, int type) {
 			ProxyQTreeWidgetItem().NewQTreeWidgetItem(view,strings,type);
 		}
-		public QTreeWidgetItem(QTreeWidget view, string[] strings) : this((Type) null) {
+		public QTreeWidgetItem(QTreeWidget view, List<string> strings) : this((Type) null) {
 			CreateProxy();
 			NewQTreeWidgetItem(view,strings);
 		}
 		[SmokeMethod("QTreeWidgetItem(QTreeWidget*, const QStringList&)")]
-		private void NewQTreeWidgetItem(QTreeWidget view, string[] strings) {
+		private void NewQTreeWidgetItem(QTreeWidget view, List<string> strings) {
 			ProxyQTreeWidgetItem().NewQTreeWidgetItem(view,strings);
 		}
 		public QTreeWidgetItem(QTreeWidget view, QTreeWidgetItem after, int type) : this((Type) null) {
@@ -130,20 +130,20 @@ namespace Qyoto {
 		private void NewQTreeWidgetItem(QTreeWidgetItem parent) {
 			ProxyQTreeWidgetItem().NewQTreeWidgetItem(parent);
 		}
-		public QTreeWidgetItem(QTreeWidgetItem parent, string[] strings, int type) : this((Type) null) {
+		public QTreeWidgetItem(QTreeWidgetItem parent, List<string> strings, int type) : this((Type) null) {
 			CreateProxy();
 			NewQTreeWidgetItem(parent,strings,type);
 		}
 		[SmokeMethod("QTreeWidgetItem(QTreeWidgetItem*, const QStringList&, int)")]
-		private void NewQTreeWidgetItem(QTreeWidgetItem parent, string[] strings, int type) {
+		private void NewQTreeWidgetItem(QTreeWidgetItem parent, List<string> strings, int type) {
 			ProxyQTreeWidgetItem().NewQTreeWidgetItem(parent,strings,type);
 		}
-		public QTreeWidgetItem(QTreeWidgetItem parent, string[] strings) : this((Type) null) {
+		public QTreeWidgetItem(QTreeWidgetItem parent, List<string> strings) : this((Type) null) {
 			CreateProxy();
 			NewQTreeWidgetItem(parent,strings);
 		}
 		[SmokeMethod("QTreeWidgetItem(QTreeWidgetItem*, const QStringList&)")]
-		private void NewQTreeWidgetItem(QTreeWidgetItem parent, string[] strings) {
+		private void NewQTreeWidgetItem(QTreeWidgetItem parent, List<string> strings) {
 			ProxyQTreeWidgetItem().NewQTreeWidgetItem(parent,strings);
 		}
 		public QTreeWidgetItem(QTreeWidgetItem parent, QTreeWidgetItem after, int type) : this((Type) null) {
@@ -355,15 +355,15 @@ namespace Qyoto {
 			return ProxyQTreeWidgetItem().TakeChild(index);
 		}
 		[SmokeMethod("addChildren(const QList<QTreeWidgetItem*>&)")]
-		public void AddChildren(ArrayList children) {
+		public void AddChildren(List<QTreeWidgetItem> children) {
 			ProxyQTreeWidgetItem().AddChildren(children);
 		}
 		[SmokeMethod("insertChildren(int, const QList<QTreeWidgetItem*>&)")]
-		public void InsertChildren(int index, ArrayList children) {
+		public void InsertChildren(int index, List<QTreeWidgetItem> children) {
 			ProxyQTreeWidgetItem().InsertChildren(index,children);
 		}
 		[SmokeMethod("takeChildren()")]
-		public ArrayList TakeChildren() {
+		public List<QTreeWidgetItem> TakeChildren() {
 			return ProxyQTreeWidgetItem().TakeChildren();
 		}
 		[SmokeMethod("type() const")]

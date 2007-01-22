@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	[SmokeClass("QDir")]
 	public class QDir : MarshalByRefObject, IDisposable {
@@ -17,7 +17,7 @@ namespace Qyoto {
 			string ConvertSeparators(string pathName);
 			string ToNativeSeparators(string pathName);
 			string FromNativeSeparators(string pathName);
-			ArrayList NameFiltersFromString(string nameFilter);
+			List<string> NameFiltersFromString(string nameFilter);
 			bool IsRelativePath(string path);
 			bool IsAbsolutePath(string path);
 			char Separator();
@@ -30,7 +30,7 @@ namespace Qyoto {
 			string RootPath();
 			QDir Temp();
 			string TempPath();
-			bool Match(string[] filters, string fileName);
+			bool Match(List<string> filters, string fileName);
 			bool Match(string filter, string fileName);
 			string CleanPath(string path);
 		}
@@ -174,11 +174,11 @@ namespace Qyoto {
 			return ProxyQDir().CdUp();
 		}
 		[SmokeMethod("nameFilters() const")]
-		public ArrayList NameFilters() {
+		public List<string> NameFilters() {
 			return ProxyQDir().NameFilters();
 		}
 		[SmokeMethod("setNameFilters(const QStringList&)")]
-		public void SetNameFilters(string[] nameFilters) {
+		public void SetNameFilters(List<string> nameFilters) {
 			ProxyQDir().SetNameFilters(nameFilters);
 		}
 		[SmokeMethod("filter() const")]
@@ -202,27 +202,27 @@ namespace Qyoto {
 			return ProxyQDir().Count();
 		}
 		[SmokeMethod("entryList(Filters, SortFlags) const")]
-		public ArrayList EntryList(int filters, int sort) {
+		public List<string> EntryList(int filters, int sort) {
 			return ProxyQDir().EntryList(filters,sort);
 		}
 		[SmokeMethod("entryList(Filters) const")]
-		public ArrayList EntryList(int filters) {
+		public List<string> EntryList(int filters) {
 			return ProxyQDir().EntryList(filters);
 		}
 		[SmokeMethod("entryList() const")]
-		public ArrayList EntryList() {
+		public List<string> EntryList() {
 			return ProxyQDir().EntryList();
 		}
 		[SmokeMethod("entryList(const QStringList&, Filters, SortFlags) const")]
-		public ArrayList EntryList(string[] nameFilters, int filters, int sort) {
+		public List<string> EntryList(List<string> nameFilters, int filters, int sort) {
 			return ProxyQDir().EntryList(nameFilters,filters,sort);
 		}
 		[SmokeMethod("entryList(const QStringList&, Filters) const")]
-		public ArrayList EntryList(string[] nameFilters, int filters) {
+		public List<string> EntryList(List<string> nameFilters, int filters) {
 			return ProxyQDir().EntryList(nameFilters,filters);
 		}
 		[SmokeMethod("entryList(const QStringList&) const")]
-		public ArrayList EntryList(string[] nameFilters) {
+		public List<string> EntryList(List<string> nameFilters) {
 			return ProxyQDir().EntryList(nameFilters);
 		}
 		// QFileInfoList entryInfoList(Filters arg1,SortFlags arg2); >>>> NOT CONVERTED
@@ -318,7 +318,7 @@ namespace Qyoto {
 			return StaticQDir().FromNativeSeparators(pathName);
 		}
 		[SmokeMethod("nameFiltersFromString(const QString&)")]
-		public static ArrayList NameFiltersFromString(string nameFilter) {
+		public static List<string> NameFiltersFromString(string nameFilter) {
 			return StaticQDir().NameFiltersFromString(nameFilter);
 		}
 		[SmokeMethod("isRelativePath(const QString&)")]
@@ -371,7 +371,7 @@ namespace Qyoto {
 			return StaticQDir().TempPath();
 		}
 		[SmokeMethod("match(const QStringList&, const QString&)")]
-		public static bool Match(string[] filters, string fileName) {
+		public static bool Match(List<string> filters, string fileName) {
 			return StaticQDir().Match(filters,fileName);
 		}
 		[SmokeMethod("match(const QString&, const QString&)")]

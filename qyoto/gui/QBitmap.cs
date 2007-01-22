@@ -113,16 +113,5 @@ namespace Qyoto {
 		private void DisposeQBitmap() {
 			ProxyQBitmap().DisposeQBitmap();
 		}
-//	public QBitmap(QPixmap arg1) {
-//		super((Class) null);
-//		newQBitmap(arg1);
-//	}
-//	private native void newQBitmap(QPixmap arg1);
-//	public QBitmap(QImage arg1) {
-//		super((Class) null);
-//		newQBitmap(arg1);
-//	}
-//	private native void newQBitmap(QImage arg1);
-	
 	}
 }

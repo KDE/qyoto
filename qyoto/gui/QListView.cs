@@ -3,8 +3,8 @@ namespace Qyoto {
 
 	using System;
 	using System.Collections.Generic;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	/// See <see cref="IQListViewSignals"></see> for signals emitted by QListView
 	[SmokeClass("QListView")]
@@ -318,7 +318,7 @@ namespace Qyoto {
 			return ProxyQListView().VisualRegionForSelection(selection);
 		}
 		[SmokeMethod("selectedIndexes() const")]
-		protected new ArrayList SelectedIndexes() {
+		protected new List<QModelIndex> SelectedIndexes() {
 			return ProxyQListView().SelectedIndexes();
 		}
 		[SmokeMethod("updateGeometries()")]
@@ -339,7 +339,6 @@ namespace Qyoto {
 		private void DisposeQListView() {
 			ProxyQListView().DisposeQListView();
 		}
-
 		protected new IQListViewSignals Emit() {
 			return (IQListViewSignals) Q_EMIT;
 		}
@@ -347,6 +346,6 @@ namespace Qyoto {
 
 	public interface IQListViewSignals : IQAbstractItemViewSignals {
 		[Q_SIGNAL("void indexesMoved(const QModelIndexList&)")]
-		void IndexesMoved(ArrayList indexes);
+		void IndexesMoved(List<QModelIndex> indexes);
 	}
 }

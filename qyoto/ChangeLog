@@ -3,6 +3,8 @@
 	* Add QApplicationExtras.cs, QCoreApplicationExtras.cs and QtExtras.cs
 	* Fix bug in setting up argv array passed to QApplication constructor
 	  pointed out by Arno.
+	* Convert to generic types for marshalling QLists, QVectors and QMaps,
+	  and use C# List<>s and Dictionary<>s.
 
 2007-21-01  Richard Dale  <rdale@foton.es>
 

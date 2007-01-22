@@ -2,7 +2,7 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
+	using System.Collections.Generic;
 
 	[SmokeClass("QFactoryInterface")]
 	public class QFactoryInterface : MarshalByRefObject {
@@ -30,7 +30,7 @@ namespace Qyoto {
 		}
 
 		[SmokeMethod("keys() const")]
-		public virtual ArrayList Keys() {
+		public virtual List<string> Keys() {
 			return ProxyQFactoryInterface().Keys();
 		}
 		public QFactoryInterface() : this((Type) null) {

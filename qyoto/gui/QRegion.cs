@@ -2,7 +2,7 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
+	using System.Collections.Generic;
 
 	[SmokeClass("QRegion")]
 	public class QRegion : MarshalByRefObject, IDisposable {
@@ -184,7 +184,7 @@ namespace Qyoto {
 			return ProxyQRegion().BoundingRect();
 		}
 		[SmokeMethod("rects() const")]
-		public ArrayList Rects() {
+		public List<QRect> Rects() {
 			return ProxyQRegion().Rects();
 		}
 		[SmokeMethod("setRects(const QRect*, int)")]

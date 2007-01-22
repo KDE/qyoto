@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	/// See <see cref="IQSplitterSignals"></see> for signals emitted by QSplitter
 	[SmokeClass("QSplitter")]
@@ -120,11 +120,11 @@ namespace Qyoto {
 			return ProxyQSplitter().MinimumSizeHint();
 		}
 		[SmokeMethod("sizes() const")]
-		public ArrayList Sizes() {
+		public List<int> Sizes() {
 			return ProxyQSplitter().Sizes();
 		}
 		[SmokeMethod("setSizes(const QList<int>&)")]
-		public void SetSizes(ArrayList list) {
+		public void SetSizes(List<int> list) {
 			ProxyQSplitter().SetSizes(list);
 		}
 		[SmokeMethod("saveState() const")]

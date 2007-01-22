@@ -402,7 +402,5 @@ namespace Qyoto {
 		private void DisposeQPixmap() {
 			ProxyQPixmap().DisposeQPixmap();
 		}
-//	public native bool loadFromData(char[] data);
-
 	}
 }

@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	/// See <see cref="IQWidgetSignals"></see> for signals emitted by QWidget
 	[SmokeClass("QWidget")]
@@ -848,7 +848,7 @@ namespace Qyoto {
 			ProxyQWidget().AddAction(action);
 		}
 		[SmokeMethod("addActions(QList<QAction*>)")]
-		public void AddActions(ArrayList actions) {
+		public void AddActions(List<QAction> actions) {
 			ProxyQWidget().AddActions(actions);
 		}
 		[SmokeMethod("insertAction(QAction*, QAction*)")]
@@ -856,7 +856,7 @@ namespace Qyoto {
 			ProxyQWidget().InsertAction(before,action);
 		}
 		[SmokeMethod("insertActions(QAction*, QList<QAction*>)")]
-		public void InsertActions(QAction before, ArrayList actions) {
+		public void InsertActions(QAction before, List<QAction> actions) {
 			ProxyQWidget().InsertActions(before,actions);
 		}
 		[SmokeMethod("removeAction(QAction*)")]
@@ -864,7 +864,7 @@ namespace Qyoto {
 			ProxyQWidget().RemoveAction(action);
 		}
 		[SmokeMethod("actions() const")]
-		public ArrayList Actions() {
+		public List<QAction> Actions() {
 			return ProxyQWidget().Actions();
 		}
 		[SmokeMethod("parentWidget() const")]
@@ -1195,7 +1195,6 @@ namespace Qyoto {
 		public int Depth() {
 			return ProxyQWidget().Depth();
 		}
-
 		protected new IQWidgetSignals Emit() {
 			return (IQWidgetSignals) Q_EMIT;
 		}

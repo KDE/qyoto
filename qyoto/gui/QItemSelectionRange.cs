@@ -2,7 +2,7 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
+	using System.Collections.Generic;
 
 	[SmokeClass("QItemSelectionRange")]
 	public class QItemSelectionRange : MarshalByRefObject, IDisposable {
@@ -141,7 +141,7 @@ namespace Qyoto {
 			return ProxyQItemSelectionRange().IsValid();
 		}
 		[SmokeMethod("indexes() const")]
-		public ArrayList Indexes() {
+		public List<QModelIndex> Indexes() {
 			return ProxyQItemSelectionRange().Indexes();
 		}
 		~QItemSelectionRange() {

@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	[SmokeClass("QXmlNamespaceSupport")]
 	public class QXmlNamespaceSupport : MarshalByRefObject, IDisposable {
@@ -59,11 +59,11 @@ namespace Qyoto {
 			ProxyQXmlNamespaceSupport().ProcessName(arg1,arg2,arg3,arg4);
 		}
 		[SmokeMethod("prefixes() const")]
-		public ArrayList Prefixes() {
+		public List<string> Prefixes() {
 			return ProxyQXmlNamespaceSupport().Prefixes();
 		}
 		[SmokeMethod("prefixes(const QString&) const")]
-		public ArrayList Prefixes(string arg1) {
+		public List<string> Prefixes(string arg1) {
 			return ProxyQXmlNamespaceSupport().Prefixes(arg1);
 		}
 		[SmokeMethod("pushContext()")]

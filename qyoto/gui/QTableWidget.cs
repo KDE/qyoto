@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	/// See <see cref="IQTableWidgetSignals"></see> for signals emitted by QTableWidget
 	[SmokeClass("QTableWidget")]
@@ -124,11 +124,11 @@ namespace Qyoto {
 			return ProxyQTableWidget().TakeHorizontalHeaderItem(column);
 		}
 		[SmokeMethod("setVerticalHeaderLabels(const QStringList&)")]
-		public void SetVerticalHeaderLabels(string[] labels) {
+		public void SetVerticalHeaderLabels(List<string> labels) {
 			ProxyQTableWidget().SetVerticalHeaderLabels(labels);
 		}
 		[SmokeMethod("setHorizontalHeaderLabels(const QStringList&)")]
-		public void SetHorizontalHeaderLabels(string[] labels) {
+		public void SetHorizontalHeaderLabels(List<string> labels) {
 			ProxyQTableWidget().SetHorizontalHeaderLabels(labels);
 		}
 		[SmokeMethod("currentRow() const")]
@@ -200,15 +200,15 @@ namespace Qyoto {
 			ProxyQTableWidget().SetRangeSelected(range,select);
 		}
 		[SmokeMethod("selectedRanges() const")]
-		public ArrayList SelectedRanges() {
+		public List<QTableWidgetSelectionRange> SelectedRanges() {
 			return ProxyQTableWidget().SelectedRanges();
 		}
 		[SmokeMethod("selectedItems()")]
-		public ArrayList SelectedItems() {
+		public List<QTableWidgetItem> SelectedItems() {
 			return ProxyQTableWidget().SelectedItems();
 		}
 		[SmokeMethod("findItems(const QString&, Qt::MatchFlags) const")]
-		public ArrayList FindItems(string text, int flags) {
+		public List<QTableWidgetItem> FindItems(string text, int flags) {
 			return ProxyQTableWidget().FindItems(text,flags);
 		}
 		[SmokeMethod("visualRow(int) const")]
@@ -284,11 +284,11 @@ namespace Qyoto {
 			return ProxyQTableWidget().Event(e);
 		}
 		[SmokeMethod("mimeTypes() const")]
-		protected virtual ArrayList MimeTypes() {
+		protected virtual List<string> MimeTypes() {
 			return ProxyQTableWidget().MimeTypes();
 		}
 		[SmokeMethod("mimeData(const QList<QTableWidgetItem*>) const")]
-		protected virtual QMimeData MimeData(ArrayList items) {
+		protected virtual QMimeData MimeData(List<QTableWidgetItem> items) {
 			return ProxyQTableWidget().MimeData(items);
 		}
 		[SmokeMethod("dropMimeData(int, int, const QMimeData*, Qt::DropAction)")]
@@ -300,7 +300,7 @@ namespace Qyoto {
 			return ProxyQTableWidget().SupportedDropActions();
 		}
 		[SmokeMethod("items(const QMimeData*) const")]
-		protected ArrayList Items(QMimeData data) {
+		protected List<QTableWidgetItem> Items(QMimeData data) {
 			return ProxyQTableWidget().Items(data);
 		}
 		[SmokeMethod("indexFromItem(QTableWidgetItem*) const")]

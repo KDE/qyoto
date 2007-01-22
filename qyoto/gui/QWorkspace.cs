@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	/// See <see cref="IQWorkspaceSignals"></see> for signals emitted by QWorkspace
 	[SmokeClass("QWorkspace")]
@@ -56,11 +56,11 @@ namespace Qyoto {
 			return ProxyQWorkspace().ActiveWindow();
 		}
 		[SmokeMethod("windowList(QWorkspace::WindowOrder) const")]
-		public ArrayList WindowList(QWorkspace.WindowOrder order) {
+		public List<QWidget> WindowList(QWorkspace.WindowOrder order) {
 			return ProxyQWorkspace().WindowList(order);
 		}
 		[SmokeMethod("windowList() const")]
-		public ArrayList WindowList() {
+		public List<QWidget> WindowList() {
 			return ProxyQWorkspace().WindowList();
 		}
 		[SmokeMethod("addWindow(QWidget*, Qt::WindowFlags)")]

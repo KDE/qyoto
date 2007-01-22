@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	[SmokeClass("QPainter")]
 	public class QPainter : MarshalByRefObject, IDisposable {
@@ -419,20 +419,32 @@ namespace Qyoto {
 			ProxyQPainter().DrawLines(lines,lineCount);
 		}
 		[SmokeMethod("drawLines(const QVector<QLineF>&)")]
-		public void DrawLines(ArrayList lines) {
+		public void DrawLines(List<QLineF> lines) {
 			ProxyQPainter().DrawLines(lines);
 		}
 		[SmokeMethod("drawLines(const QPointF*, int)")]
 		public void DrawLines(QPointF pointPairs, int lineCount) {
 			ProxyQPainter().DrawLines(pointPairs,lineCount);
 		}
+		[SmokeMethod("drawLines(const QVector<QPointF>&)")]
+		public void DrawLines(List<QPointF> pointPairs) {
+			ProxyQPainter().DrawLines(pointPairs);
+		}
 		[SmokeMethod("drawLines(const QLine*, int)")]
 		public void DrawLines(QLine lines, int lineCount) {
 			ProxyQPainter().DrawLines(lines,lineCount);
 		}
+		[SmokeMethod("drawLines(const QVector<QLine>&)")]
+		public void DrawLines(List<QLine> lines) {
+			ProxyQPainter().DrawLines(lines);
+		}
 		[SmokeMethod("drawLines(const QPoint*, int)")]
 		public void DrawLines(QPoint pointPairs, int lineCount) {
 			ProxyQPainter().DrawLines(pointPairs,lineCount);
+		}
+		[SmokeMethod("drawLines(const QVector<QPoint>&)")]
+		public void DrawLines(List<QPoint> pointPairs) {
+			ProxyQPainter().DrawLines(pointPairs);
 		}
 		[SmokeMethod("drawRect(const QRectF&)")]
 		public void DrawRect(QRectF rect) {
@@ -451,12 +463,16 @@ namespace Qyoto {
 			ProxyQPainter().DrawRects(rects,rectCount);
 		}
 		[SmokeMethod("drawRects(const QVector<QRectF>&)")]
-		public void DrawRects(ArrayList rectangles) {
+		public void DrawRects(List<QRectF> rectangles) {
 			ProxyQPainter().DrawRects(rectangles);
 		}
 		[SmokeMethod("drawRects(const QRect*, int)")]
 		public void DrawRects(QRect rects, int rectCount) {
 			ProxyQPainter().DrawRects(rects,rectCount);
+		}
+		[SmokeMethod("drawRects(const QVector<QRect>&)")]
+		public void DrawRects(List<QRect> rectangles) {
+			ProxyQPainter().DrawRects(rectangles);
 		}
 		[SmokeMethod("drawEllipse(const QRectF&)")]
 		public void DrawEllipse(QRectF r) {

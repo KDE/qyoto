@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	[SmokeClass("QMimeData")]
 	public class QMimeData : QObject, IDisposable {
@@ -39,11 +39,11 @@ namespace Qyoto {
 			ProxyQMimeData().NewQMimeData();
 		}
 		[SmokeMethod("urls() const")]
-		public ArrayList Urls() {
+		public List<QUrl> Urls() {
 			return ProxyQMimeData().Urls();
 		}
 		[SmokeMethod("setUrls(const QList<QUrl>&)")]
-		public void SetUrls(ArrayList urls) {
+		public void SetUrls(List<QUrl> urls) {
 			ProxyQMimeData().SetUrls(urls);
 		}
 		[SmokeMethod("hasUrls() const")]
@@ -111,7 +111,7 @@ namespace Qyoto {
 			return ProxyQMimeData().HasFormat(mimetype);
 		}
 		[SmokeMethod("formats() const")]
-		public virtual ArrayList Formats() {
+		public virtual List<string> Formats() {
 			return ProxyQMimeData().Formats();
 		}
 		[SmokeMethod("clear()")]

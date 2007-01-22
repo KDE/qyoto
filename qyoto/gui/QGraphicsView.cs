@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	[SmokeClass("QGraphicsView")]
 	public class QGraphicsView : QAbstractScrollArea, IDisposable {
@@ -289,39 +289,39 @@ namespace Qyoto {
 			ProxyQGraphicsView().Render(painter);
 		}
 		[SmokeMethod("items() const")]
-		public ArrayList Items() {
+		public List<QGraphicsItem> Items() {
 			return ProxyQGraphicsView().Items();
 		}
 		[SmokeMethod("items(const QPoint&) const")]
-		public ArrayList Items(QPoint pos) {
+		public List<QGraphicsItem> Items(QPoint pos) {
 			return ProxyQGraphicsView().Items(pos);
 		}
 		[SmokeMethod("items(int, int) const")]
-		public ArrayList Items(int x, int y) {
+		public List<QGraphicsItem> Items(int x, int y) {
 			return ProxyQGraphicsView().Items(x,y);
 		}
 		[SmokeMethod("items(const QRect&, Qt::ItemSelectionMode) const")]
-		public ArrayList Items(QRect rect, Qt.ItemSelectionMode mode) {
+		public List<QGraphicsItem> Items(QRect rect, Qt.ItemSelectionMode mode) {
 			return ProxyQGraphicsView().Items(rect,mode);
 		}
 		[SmokeMethod("items(const QRect&) const")]
-		public ArrayList Items(QRect rect) {
+		public List<QGraphicsItem> Items(QRect rect) {
 			return ProxyQGraphicsView().Items(rect);
 		}
 		[SmokeMethod("items(const QPolygon&, Qt::ItemSelectionMode) const")]
-		public ArrayList Items(QPolygon polygon, Qt.ItemSelectionMode mode) {
+		public List<QGraphicsItem> Items(QPolygon polygon, Qt.ItemSelectionMode mode) {
 			return ProxyQGraphicsView().Items(polygon,mode);
 		}
 		[SmokeMethod("items(const QPolygon&) const")]
-		public ArrayList Items(QPolygon polygon) {
+		public List<QGraphicsItem> Items(QPolygon polygon) {
 			return ProxyQGraphicsView().Items(polygon);
 		}
 		[SmokeMethod("items(const QPainterPath&, Qt::ItemSelectionMode) const")]
-		public ArrayList Items(QPainterPath path, Qt.ItemSelectionMode mode) {
+		public List<QGraphicsItem> Items(QPainterPath path, Qt.ItemSelectionMode mode) {
 			return ProxyQGraphicsView().Items(path,mode);
 		}
 		[SmokeMethod("items(const QPainterPath&) const")]
-		public ArrayList Items(QPainterPath path) {
+		public List<QGraphicsItem> Items(QPainterPath path) {
 			return ProxyQGraphicsView().Items(path);
 		}
 		[SmokeMethod("itemAt(const QPoint&) const")]
@@ -401,7 +401,7 @@ namespace Qyoto {
 			ProxyQGraphicsView().SetForegroundBrush(brush);
 		}
 		[SmokeMethod("updateScene(const QList<QRectF>&)")]
-		public void UpdateScene(ArrayList rects) {
+		public void UpdateScene(List<QRectF> rects) {
 			ProxyQGraphicsView().UpdateScene(rects);
 		}
 		[SmokeMethod("updateSceneRect(const QRectF&)")]

@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	/// See <see cref="IQTreeViewSignals"></see> for signals emitted by QTreeView
 	[SmokeClass("QTreeView")]
@@ -304,7 +304,7 @@ namespace Qyoto {
 			return ProxyQTreeView().VisualRegionForSelection(selection);
 		}
 		[SmokeMethod("selectedIndexes() const")]
-		protected new ArrayList SelectedIndexes() {
+		protected new List<QModelIndex> SelectedIndexes() {
 			return ProxyQTreeView().SelectedIndexes();
 		}
 		[SmokeMethod("timerEvent(QTimerEvent*)")]

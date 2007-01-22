@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	/// See <see cref="IQApplicationSignals"></see> for signals emitted by QApplication
 	[SmokeClass("QApplication")]
@@ -35,8 +35,8 @@ namespace Qyoto {
 			QFontMetrics FontMetrics();
 			void SetWindowIcon(QIcon icon);
 			QIcon WindowIcon();
-			ArrayList AllWidgets();
-			ArrayList TopLevelWidgets();
+			List<QWidget> AllWidgets();
+			List<QWidget> TopLevelWidgets();
 			QDesktopWidget Desktop();
 			QWidget ActivePopupWidget();
 			QWidget ActiveModalWidget();
@@ -252,11 +252,11 @@ namespace Qyoto {
 			return StaticQApplication().WindowIcon();
 		}
 		[SmokeMethod("allWidgets()")]
-		public static ArrayList AllWidgets() {
+		public static List<QWidget> AllWidgets() {
 			return StaticQApplication().AllWidgets();
 		}
 		[SmokeMethod("topLevelWidgets()")]
-		public static ArrayList TopLevelWidgets() {
+		public static List<QWidget> TopLevelWidgets() {
 			return StaticQApplication().TopLevelWidgets();
 		}
 		[SmokeMethod("desktop()")]

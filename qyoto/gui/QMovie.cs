@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	/// See <see cref="IQMovieSignals"></see> for signals emitted by QMovie
 	[SmokeClass("QMovie")]
@@ -12,7 +12,7 @@ namespace Qyoto {
 		interface IQMovieProxy {
 			string Tr(string s, string c);
 			string Tr(string s);
-			ArrayList SupportedFormats();
+			List<QByteArray> SupportedFormats();
 		}
 
 		protected new void CreateProxy() {
@@ -226,7 +226,7 @@ namespace Qyoto {
 			return StaticQMovie().Tr(s);
 		}
 		[SmokeMethod("supportedFormats()")]
-		public static ArrayList SupportedFormats() {
+		public static List<QByteArray> SupportedFormats() {
 			return StaticQMovie().SupportedFormats();
 		}
 		~QMovie() {

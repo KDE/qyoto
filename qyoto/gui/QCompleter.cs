@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	/// See <see cref="IQCompleterSignals"></see> for signals emitted by QCompleter
 	[SmokeClass("QCompleter")]
@@ -73,20 +73,20 @@ namespace Qyoto {
 		private void NewQCompleter(QAbstractItemModel model) {
 			ProxyQCompleter().NewQCompleter(model);
 		}
-		public QCompleter(string[] completions, QObject parent) : this((Type) null) {
+		public QCompleter(List<string> completions, QObject parent) : this((Type) null) {
 			CreateProxy();
 			NewQCompleter(completions,parent);
 		}
 		[SmokeMethod("QCompleter(const QStringList&, QObject*)")]
-		private void NewQCompleter(string[] completions, QObject parent) {
+		private void NewQCompleter(List<string> completions, QObject parent) {
 			ProxyQCompleter().NewQCompleter(completions,parent);
 		}
-		public QCompleter(string[] completions) : this((Type) null) {
+		public QCompleter(List<string> completions) : this((Type) null) {
 			CreateProxy();
 			NewQCompleter(completions);
 		}
 		[SmokeMethod("QCompleter(const QStringList&)")]
-		private void NewQCompleter(string[] completions) {
+		private void NewQCompleter(List<string> completions) {
 			ProxyQCompleter().NewQCompleter(completions);
 		}
 		[SmokeMethod("setWidget(QWidget*)")]
@@ -198,7 +198,7 @@ namespace Qyoto {
 			return ProxyQCompleter().PathFromIndex(index);
 		}
 		[SmokeMethod("splitPath(const QString&) const")]
-		public virtual ArrayList SplitPath(string path) {
+		public virtual List<string> SplitPath(string path) {
 			return ProxyQCompleter().SplitPath(path);
 		}
 		[SmokeMethod("tr(const char*, const char*)")]

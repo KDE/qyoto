@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	[SmokeClass("QStringListModel")]
 	public class QStringListModel : QAbstractListModel, IDisposable {
@@ -46,20 +46,20 @@ namespace Qyoto {
 		private void NewQStringListModel() {
 			ProxyQStringListModel().NewQStringListModel();
 		}
-		public QStringListModel(string[] strings, QObject parent) : this((Type) null) {
+		public QStringListModel(List<string> strings, QObject parent) : this((Type) null) {
 			CreateProxy();
 			NewQStringListModel(strings,parent);
 		}
 		[SmokeMethod("QStringListModel(const QStringList&, QObject*)")]
-		private void NewQStringListModel(string[] strings, QObject parent) {
+		private void NewQStringListModel(List<string> strings, QObject parent) {
 			ProxyQStringListModel().NewQStringListModel(strings,parent);
 		}
-		public QStringListModel(string[] strings) : this((Type) null) {
+		public QStringListModel(List<string> strings) : this((Type) null) {
 			CreateProxy();
 			NewQStringListModel(strings);
 		}
 		[SmokeMethod("QStringListModel(const QStringList&)")]
-		private void NewQStringListModel(string[] strings) {
+		private void NewQStringListModel(List<string> strings) {
 			ProxyQStringListModel().NewQStringListModel(strings);
 		}
 		[SmokeMethod("rowCount(const QModelIndex&) const")]
@@ -111,11 +111,11 @@ namespace Qyoto {
 			ProxyQStringListModel().Sort(column);
 		}
 		[SmokeMethod("stringList() const")]
-		public ArrayList StringList() {
+		public List<string> StringList() {
 			return ProxyQStringListModel().StringList();
 		}
 		[SmokeMethod("setStringList(const QStringList&)")]
-		public void SetStringList(string[] strings) {
+		public void SetStringList(List<string> strings) {
 			ProxyQStringListModel().SetStringList(strings);
 		}
 		[SmokeMethod("tr(const char*, const char*)")]

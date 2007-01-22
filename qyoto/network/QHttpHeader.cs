@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	[SmokeClass("QHttpHeader")]
 	public class QHttpHeader : MarshalByRefObject {
@@ -69,7 +69,7 @@ namespace Qyoto {
 			return ProxyQHttpHeader().HasKey(key);
 		}
 		[SmokeMethod("keys() const")]
-		public ArrayList Keys() {
+		public List<string> Keys() {
 			return ProxyQHttpHeader().Keys();
 		}
 		[SmokeMethod("value(const QString&) const")]
@@ -77,7 +77,7 @@ namespace Qyoto {
 			return ProxyQHttpHeader().Value(key);
 		}
 		[SmokeMethod("allValues(const QString&) const")]
-		public ArrayList AllValues(string key) {
+		public List<string> AllValues(string key) {
 			return ProxyQHttpHeader().AllValues(key);
 		}
 		[SmokeMethod("removeValue(const QString&)")]

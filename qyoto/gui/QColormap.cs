@@ -2,7 +2,7 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
+	using System.Collections.Generic;
 
 	[SmokeClass("QColormap")]
 	public class QColormap : MarshalByRefObject, IDisposable {
@@ -67,7 +67,7 @@ namespace Qyoto {
 			return ProxyQColormap().ColorAt(pixel);
 		}
 		[SmokeMethod("colormap() const")]
-		public ArrayList Colormap() {
+		public List<QColor> Colormap() {
 			return ProxyQColormap().Colormap();
 		}
 		[SmokeMethod("initialize()")]

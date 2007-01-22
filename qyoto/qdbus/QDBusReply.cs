@@ -11,7 +11,7 @@ namespace Qyoto {
 			}
 
 			if (reply.Arguments().Count >= 1) {
-				m_data = ((QVariant) reply.Arguments()[0]).Value<T>();
+				m_data = (reply.Arguments()[0]).Value<T>();
 				return;
 			}
 

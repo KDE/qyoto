@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	[SmokeClass("QSettings")]
 	public class QSettings : QObject, IDisposable {
@@ -212,15 +212,15 @@ namespace Qyoto {
 			ProxyQSettings().SetArrayIndex(i);
 		}
 		[SmokeMethod("allKeys() const")]
-		public ArrayList AllKeys() {
+		public List<string> AllKeys() {
 			return ProxyQSettings().AllKeys();
 		}
 		[SmokeMethod("childKeys() const")]
-		public ArrayList ChildKeys() {
+		public List<string> ChildKeys() {
 			return ProxyQSettings().ChildKeys();
 		}
 		[SmokeMethod("childGroups() const")]
-		public ArrayList ChildGroups() {
+		public List<string> ChildGroups() {
 			return ProxyQSettings().ChildGroups();
 		}
 		[SmokeMethod("isWritable() const")]

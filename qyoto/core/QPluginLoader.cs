@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	[SmokeClass("QPluginLoader")]
 	public class QPluginLoader : QObject, IDisposable {
@@ -11,7 +11,7 @@ namespace Qyoto {
 		interface IQPluginLoaderProxy {
 			string Tr(string s, string c);
 			string Tr(string s);
-			ArrayList StaticInstances();
+			List<QObject> StaticInstances();
 		}
 
 		protected new void CreateProxy() {
@@ -100,7 +100,7 @@ namespace Qyoto {
 			return StaticQPluginLoader().Tr(s);
 		}
 		[SmokeMethod("staticInstances()")]
-		public static ArrayList StaticInstances() {
+		public static List<QObject> StaticInstances() {
 			return StaticQPluginLoader().StaticInstances();
 		}
 		~QPluginLoader() {

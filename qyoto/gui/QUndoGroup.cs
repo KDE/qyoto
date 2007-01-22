@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	/// See <see cref="IQUndoGroupSignals"></see> for signals emitted by QUndoGroup
 	[SmokeClass("QUndoGroup")]
@@ -56,7 +56,7 @@ namespace Qyoto {
 			ProxyQUndoGroup().RemoveStack(stack);
 		}
 		[SmokeMethod("stacks() const")]
-		public ArrayList Stacks() {
+		public List<QUndoStack> Stacks() {
 			return ProxyQUndoGroup().Stacks();
 		}
 		[SmokeMethod("activeStack() const")]

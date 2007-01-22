@@ -2,7 +2,7 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
+	using System.Collections.Generic;
 
 	[SmokeClass("QAccessibleInterfaceEx")]
 	public class QAccessibleInterfaceEx : QAccessibleInterface {
@@ -27,7 +27,7 @@ namespace Qyoto {
 		}
 
 		[SmokeMethod("invokeMethodEx(QAccessible::Method, int, const QVariantList&)")]
-		public virtual QVariant InvokeMethodEx(QAccessible.Method method, int child, ArrayList arg3) {
+		public virtual QVariant InvokeMethodEx(QAccessible.Method method, int child, List<QVariant> arg3) {
 			return ProxyQAccessibleInterfaceEx().InvokeMethodEx(method,child,arg3);
 		}
 		public QAccessibleInterfaceEx() : this((Type) null) {

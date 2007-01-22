@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	[SmokeClass("QFontDatabase")]
 	public class QFontDatabase : MarshalByRefObject, IDisposable {
@@ -12,12 +12,12 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QFontDatabase(Type dummy) {}
 		interface IQFontDatabaseProxy {
-			ArrayList StandardSizes();
+			List<int> StandardSizes();
 			string WritingSystemName(QFontDatabase.WritingSystem writingSystem);
 			string WritingSystemSample(QFontDatabase.WritingSystem writingSystem);
 			int AddApplicationFont(string fileName);
 			int AddApplicationFontFromData(QByteArray fontData);
-			ArrayList ApplicationFontFamilies(int id);
+			List<string> ApplicationFontFamilies(int id);
 			bool RemoveApplicationFont(int id);
 			bool RemoveAllApplicationFonts();
 		}
@@ -86,27 +86,27 @@ namespace Qyoto {
 		// QList<QFontDatabase::WritingSystem> writingSystems(); >>>> NOT CONVERTED
 		// QList<QFontDatabase::WritingSystem> writingSystems(const QString& arg1); >>>> NOT CONVERTED
 		[SmokeMethod("families(QFontDatabase::WritingSystem) const")]
-		public ArrayList Families(QFontDatabase.WritingSystem writingSystem) {
+		public List<string> Families(QFontDatabase.WritingSystem writingSystem) {
 			return ProxyQFontDatabase().Families(writingSystem);
 		}
 		[SmokeMethod("families() const")]
-		public ArrayList Families() {
+		public List<string> Families() {
 			return ProxyQFontDatabase().Families();
 		}
 		[SmokeMethod("styles(const QString&) const")]
-		public ArrayList Styles(string family) {
+		public List<string> Styles(string family) {
 			return ProxyQFontDatabase().Styles(family);
 		}
 		[SmokeMethod("pointSizes(const QString&, const QString&)")]
-		public ArrayList PointSizes(string family, string style) {
+		public List<int> PointSizes(string family, string style) {
 			return ProxyQFontDatabase().PointSizes(family,style);
 		}
 		[SmokeMethod("pointSizes(const QString&)")]
-		public ArrayList PointSizes(string family) {
+		public List<int> PointSizes(string family) {
 			return ProxyQFontDatabase().PointSizes(family);
 		}
 		[SmokeMethod("smoothSizes(const QString&, const QString&)")]
-		public ArrayList SmoothSizes(string family, string style) {
+		public List<int> SmoothSizes(string family, string style) {
 			return ProxyQFontDatabase().SmoothSizes(family,style);
 		}
 		[SmokeMethod("styleString(const QFont&)")]
@@ -166,7 +166,7 @@ namespace Qyoto {
 			return ProxyQFontDatabase().Weight(family,style);
 		}
 		[SmokeMethod("standardSizes()")]
-		public static ArrayList StandardSizes() {
+		public static List<int> StandardSizes() {
 			return StaticQFontDatabase().StandardSizes();
 		}
 		[SmokeMethod("writingSystemName(QFontDatabase::WritingSystem)")]
@@ -186,7 +186,7 @@ namespace Qyoto {
 			return StaticQFontDatabase().AddApplicationFontFromData(fontData);
 		}
 		[SmokeMethod("applicationFontFamilies(int)")]
-		public static ArrayList ApplicationFontFamilies(int id) {
+		public static List<string> ApplicationFontFamilies(int id) {
 			return StaticQFontDatabase().ApplicationFontFamilies(id);
 		}
 		[SmokeMethod("removeApplicationFont(int)")]

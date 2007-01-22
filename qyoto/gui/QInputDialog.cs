@@ -3,6 +3,7 @@ namespace Qyoto {
 
 	using System;
 	using System.Text;
+	using System.Collections.Generic;
 
 	[SmokeClass("QInputDialog")]
 	public class QInputDialog : QDialog {
@@ -29,11 +30,11 @@ namespace Qyoto {
 			double GetDouble(QWidget parent, string title, string label, double value, double minValue);
 			double GetDouble(QWidget parent, string title, string label, double value);
 			double GetDouble(QWidget parent, string title, string label);
-			string GetItem(QWidget parent, string title, string label, string[] list, int current, bool editable, out bool ok, int f);
-			string GetItem(QWidget parent, string title, string label, string[] list, int current, bool editable, out bool ok);
-			string GetItem(QWidget parent, string title, string label, string[] list, int current, bool editable);
-			string GetItem(QWidget parent, string title, string label, string[] list, int current);
-			string GetItem(QWidget parent, string title, string label, string[] list);
+			string GetItem(QWidget parent, string title, string label, List<string> list, int current, bool editable, out bool ok, int f);
+			string GetItem(QWidget parent, string title, string label, List<string> list, int current, bool editable, out bool ok);
+			string GetItem(QWidget parent, string title, string label, List<string> list, int current, bool editable);
+			string GetItem(QWidget parent, string title, string label, List<string> list, int current);
+			string GetItem(QWidget parent, string title, string label, List<string> list);
 		}
 
 		protected new void CreateProxy() {
@@ -138,23 +139,23 @@ namespace Qyoto {
 			return StaticQInputDialog().GetDouble(parent,title,label);
 		}
 		[SmokeMethod("getItem(QWidget*, const QString&, const QString&, const QStringList&, int, bool, bool*, Qt::WindowFlags)")]
-		public static string GetItem(QWidget parent, string title, string label, string[] list, int current, bool editable, out bool ok, int f) {
+		public static string GetItem(QWidget parent, string title, string label, List<string> list, int current, bool editable, out bool ok, int f) {
 			return StaticQInputDialog().GetItem(parent,title,label,list,current,editable,out ok,f);
 		}
 		[SmokeMethod("getItem(QWidget*, const QString&, const QString&, const QStringList&, int, bool, bool*)")]
-		public static string GetItem(QWidget parent, string title, string label, string[] list, int current, bool editable, out bool ok) {
+		public static string GetItem(QWidget parent, string title, string label, List<string> list, int current, bool editable, out bool ok) {
 			return StaticQInputDialog().GetItem(parent,title,label,list,current,editable,out ok);
 		}
 		[SmokeMethod("getItem(QWidget*, const QString&, const QString&, const QStringList&, int, bool)")]
-		public static string GetItem(QWidget parent, string title, string label, string[] list, int current, bool editable) {
+		public static string GetItem(QWidget parent, string title, string label, List<string> list, int current, bool editable) {
 			return StaticQInputDialog().GetItem(parent,title,label,list,current,editable);
 		}
 		[SmokeMethod("getItem(QWidget*, const QString&, const QString&, const QStringList&, int)")]
-		public static string GetItem(QWidget parent, string title, string label, string[] list, int current) {
+		public static string GetItem(QWidget parent, string title, string label, List<string> list, int current) {
 			return StaticQInputDialog().GetItem(parent,title,label,list,current);
 		}
 		[SmokeMethod("getItem(QWidget*, const QString&, const QString&, const QStringList&)")]
-		public static string GetItem(QWidget parent, string title, string label, string[] list) {
+		public static string GetItem(QWidget parent, string title, string label, List<string> list) {
 			return StaticQInputDialog().GetItem(parent,title,label,list);
 		}
 		protected new IQInputDialogSignals Emit() {

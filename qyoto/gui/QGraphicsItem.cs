@@ -2,15 +2,15 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	public interface IQGraphicsItem {
 			QGraphicsScene Scene();
 			QGraphicsItem ParentItem();
 			QGraphicsItem TopLevelItem();
 			void SetParentItem(QGraphicsItem parent);
-			ArrayList Children();
+			List<QGraphicsItem> Children();
 			QGraphicsItemGroup Group();
 			void SetGroup(QGraphicsItemGroup group);
 			int Flags();
@@ -78,8 +78,8 @@ namespace Qyoto {
 			bool CollidesWithItem(QGraphicsItem other);
 			bool CollidesWithPath(QPainterPath path, Qt.ItemSelectionMode mode);
 			bool CollidesWithPath(QPainterPath path);
-			ArrayList CollidingItems(Qt.ItemSelectionMode mode);
-			ArrayList CollidingItems();
+			List<QGraphicsItem> CollidingItems(Qt.ItemSelectionMode mode);
+			List<QGraphicsItem> CollidingItems();
 			bool IsObscured();
 			bool IsObscuredBy(QGraphicsItem item);
 			QPainterPath OpaqueArea();
@@ -213,7 +213,7 @@ namespace Qyoto {
 			ProxyQGraphicsItem().SetParentItem(parent);
 		}
 		[SmokeMethod("children() const")]
-		public ArrayList Children() {
+		public List<QGraphicsItem> Children() {
 			return ProxyQGraphicsItem().Children();
 		}
 		[SmokeMethod("group() const")]
@@ -485,11 +485,11 @@ namespace Qyoto {
 			return ProxyQGraphicsItem().CollidesWithPath(path);
 		}
 		[SmokeMethod("collidingItems(Qt::ItemSelectionMode) const")]
-		public ArrayList CollidingItems(Qt.ItemSelectionMode mode) {
+		public List<QGraphicsItem> CollidingItems(Qt.ItemSelectionMode mode) {
 			return ProxyQGraphicsItem().CollidingItems(mode);
 		}
 		[SmokeMethod("collidingItems() const")]
-		public ArrayList CollidingItems() {
+		public List<QGraphicsItem> CollidingItems() {
 			return ProxyQGraphicsItem().CollidingItems();
 		}
 		[SmokeMethod("isObscured() const")]

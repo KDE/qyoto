@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	/// See <see cref="IQCoreApplicationSignals"></see> for signals emitted by QCoreApplication
 	[SmokeClass("QCoreApplication")]
@@ -12,7 +12,7 @@ namespace Qyoto {
 		interface IQCoreApplicationProxy {
 			string Tr(string s, string c);
 			string Tr(string s);
-			ArrayList Arguments();
+			List<string> Arguments();
 			void SetAttribute(Qt.ApplicationAttribute attribute, bool on);
 			void SetAttribute(Qt.ApplicationAttribute attribute);
 			bool TestAttribute(Qt.ApplicationAttribute attribute);
@@ -39,8 +39,8 @@ namespace Qyoto {
 			bool ClosingDown();
 			string ApplicationDirPath();
 			string ApplicationFilePath();
-			void SetLibraryPaths(string[] arg1);
-			ArrayList LibraryPaths();
+			void SetLibraryPaths(List<string> arg1);
+			List<string> LibraryPaths();
 			void AddLibraryPath(string arg1);
 			void RemoveLibraryPath(string arg1);
 			void InstallTranslator(QTranslator messageFile);
@@ -90,7 +90,7 @@ namespace Qyoto {
 			return StaticQCoreApplication().Tr(s);
 		}
 		[SmokeMethod("arguments()")]
-		public static ArrayList Arguments() {
+		public static List<string> Arguments() {
 			return StaticQCoreApplication().Arguments();
 		}
 		[SmokeMethod("setAttribute(Qt::ApplicationAttribute, bool)")]
@@ -198,11 +198,11 @@ namespace Qyoto {
 			return StaticQCoreApplication().ApplicationFilePath();
 		}
 		[SmokeMethod("setLibraryPaths(const QStringList&)")]
-		public static void SetLibraryPaths(string[] arg1) {
+		public static void SetLibraryPaths(List<string> arg1) {
 			StaticQCoreApplication().SetLibraryPaths(arg1);
 		}
 		[SmokeMethod("libraryPaths()")]
-		public static ArrayList LibraryPaths() {
+		public static List<string> LibraryPaths() {
 			return StaticQCoreApplication().LibraryPaths();
 		}
 		[SmokeMethod("addLibraryPath(const QString&)")]

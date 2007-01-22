@@ -3,6 +3,7 @@ namespace Qyoto {
 
 	using System;
 	using System.Text;
+	using System.Collections.Generic;
 
 	/// See <see cref="IQComboBoxSignals"></see> for signals emitted by QComboBox
 	[SmokeClass("QComboBox")]
@@ -269,7 +270,7 @@ namespace Qyoto {
 			ProxyQComboBox().AddItem(icon,text);
 		}
 		[SmokeMethod("addItems(const QStringList&)")]
-		public void AddItems(string[] texts) {
+		public void AddItems(List<string> texts) {
 			ProxyQComboBox().AddItems(texts);
 		}
 		[SmokeMethod("insertItem(int, const QString&, const QVariant&)")]
@@ -289,7 +290,7 @@ namespace Qyoto {
 			ProxyQComboBox().InsertItem(index,icon,text);
 		}
 		[SmokeMethod("insertItems(int, const QStringList&)")]
-		public void InsertItems(int index, string[] texts) {
+		public void InsertItems(int index, List<string> texts) {
 			ProxyQComboBox().InsertItems(index,texts);
 		}
 		[SmokeMethod("removeItem(int)")]

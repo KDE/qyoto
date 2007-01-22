@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	[SmokeClass("QDBusMessage")]
 	public class QDBusMessage : MarshalByRefObject, IDisposable {
@@ -58,7 +58,7 @@ namespace Qyoto {
 			ProxyQDBusMessage().NewQDBusMessage(other);
 		}
 		[SmokeMethod("createReply(const QList<QVariant>&) const")]
-		public QDBusMessage CreateReply(ArrayList arguments) {
+		public QDBusMessage CreateReply(List<QVariant> arguments) {
 			return ProxyQDBusMessage().CreateReply(arguments);
 		}
 		[SmokeMethod("createReply() const")]
@@ -118,11 +118,11 @@ namespace Qyoto {
 			return ProxyQDBusMessage().IsDelayedReply();
 		}
 		[SmokeMethod("setArguments(const QList<QVariant>&)")]
-		public void SetArguments(ArrayList arguments) {
+		public void SetArguments(List<QVariant> arguments) {
 			ProxyQDBusMessage().SetArguments(arguments);
 		}
 		[SmokeMethod("arguments() const")]
-		public ArrayList Arguments() {
+		public List<QVariant> Arguments() {
 			return ProxyQDBusMessage().Arguments();
 		}
 		[SmokeMethod("operator<<(const QVariant&)")]

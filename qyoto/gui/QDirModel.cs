@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	[SmokeClass("QDirModel")]
 	public class QDirModel : QAbstractItemModel, IDisposable {
@@ -35,20 +35,20 @@ namespace Qyoto {
 			FileNameRole = 0,
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
-		public QDirModel(string[] nameFilters, int filters, int sort, QObject parent) : this((Type) null) {
+		public QDirModel(List<string> nameFilters, int filters, int sort, QObject parent) : this((Type) null) {
 			CreateProxy();
 			NewQDirModel(nameFilters,filters,sort,parent);
 		}
 		[SmokeMethod("QDirModel(const QStringList&, QDir::Filters, QDir::SortFlags, QObject*)")]
-		private void NewQDirModel(string[] nameFilters, int filters, int sort, QObject parent) {
+		private void NewQDirModel(List<string> nameFilters, int filters, int sort, QObject parent) {
 			ProxyQDirModel().NewQDirModel(nameFilters,filters,sort,parent);
 		}
-		public QDirModel(string[] nameFilters, int filters, int sort) : this((Type) null) {
+		public QDirModel(List<string> nameFilters, int filters, int sort) : this((Type) null) {
 			CreateProxy();
 			NewQDirModel(nameFilters,filters,sort);
 		}
 		[SmokeMethod("QDirModel(const QStringList&, QDir::Filters, QDir::SortFlags)")]
-		private void NewQDirModel(string[] nameFilters, int filters, int sort) {
+		private void NewQDirModel(List<string> nameFilters, int filters, int sort) {
 			ProxyQDirModel().NewQDirModel(nameFilters,filters,sort);
 		}
 		public QDirModel(QObject parent) : this((Type) null) {
@@ -140,11 +140,11 @@ namespace Qyoto {
 			ProxyQDirModel().Sort(column);
 		}
 		[SmokeMethod("mimeTypes() const")]
-		public new ArrayList MimeTypes() {
+		public new List<string> MimeTypes() {
 			return ProxyQDirModel().MimeTypes();
 		}
 		[SmokeMethod("mimeData(const QModelIndexList&) const")]
-		public new QMimeData MimeData(ArrayList indexes) {
+		public new QMimeData MimeData(List<QModelIndex> indexes) {
 			return ProxyQDirModel().MimeData(indexes);
 		}
 		[SmokeMethod("dropMimeData(const QMimeData*, Qt::DropAction, int, int, const QModelIndex&)")]
@@ -164,11 +164,11 @@ namespace Qyoto {
 			return ProxyQDirModel().IconProvider();
 		}
 		[SmokeMethod("setNameFilters(const QStringList&)")]
-		public void SetNameFilters(string[] filters) {
+		public void SetNameFilters(List<string> filters) {
 			ProxyQDirModel().SetNameFilters(filters);
 		}
 		[SmokeMethod("nameFilters() const")]
-		public ArrayList NameFilters() {
+		public List<string> NameFilters() {
 			return ProxyQDirModel().NameFilters();
 		}
 		[SmokeMethod("setFilter(QDir::Filters)")]

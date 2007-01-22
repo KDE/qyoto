@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	/// See <see cref="IQFileSystemWatcherSignals"></see> for signals emitted by QFileSystemWatcher
 	[SmokeClass("QFileSystemWatcher")]
@@ -47,20 +47,20 @@ namespace Qyoto {
 		private void NewQFileSystemWatcher() {
 			ProxyQFileSystemWatcher().NewQFileSystemWatcher();
 		}
-		public QFileSystemWatcher(string[] paths, QObject parent) : this((Type) null) {
+		public QFileSystemWatcher(List<string> paths, QObject parent) : this((Type) null) {
 			CreateProxy();
 			NewQFileSystemWatcher(paths,parent);
 		}
 		[SmokeMethod("QFileSystemWatcher(const QStringList&, QObject*)")]
-		private void NewQFileSystemWatcher(string[] paths, QObject parent) {
+		private void NewQFileSystemWatcher(List<string> paths, QObject parent) {
 			ProxyQFileSystemWatcher().NewQFileSystemWatcher(paths,parent);
 		}
-		public QFileSystemWatcher(string[] paths) : this((Type) null) {
+		public QFileSystemWatcher(List<string> paths) : this((Type) null) {
 			CreateProxy();
 			NewQFileSystemWatcher(paths);
 		}
 		[SmokeMethod("QFileSystemWatcher(const QStringList&)")]
-		private void NewQFileSystemWatcher(string[] paths) {
+		private void NewQFileSystemWatcher(List<string> paths) {
 			ProxyQFileSystemWatcher().NewQFileSystemWatcher(paths);
 		}
 		[SmokeMethod("addPath(const QString&)")]
@@ -68,7 +68,7 @@ namespace Qyoto {
 			ProxyQFileSystemWatcher().AddPath(file);
 		}
 		[SmokeMethod("addPaths(const QStringList&)")]
-		public void AddPaths(string[] files) {
+		public void AddPaths(List<string> files) {
 			ProxyQFileSystemWatcher().AddPaths(files);
 		}
 		[SmokeMethod("removePath(const QString&)")]
@@ -76,15 +76,15 @@ namespace Qyoto {
 			ProxyQFileSystemWatcher().RemovePath(file);
 		}
 		[SmokeMethod("removePaths(const QStringList&)")]
-		public void RemovePaths(string[] files) {
+		public void RemovePaths(List<string> files) {
 			ProxyQFileSystemWatcher().RemovePaths(files);
 		}
 		[SmokeMethod("files() const")]
-		public ArrayList Files() {
+		public List<string> Files() {
 			return ProxyQFileSystemWatcher().Files();
 		}
 		[SmokeMethod("directories() const")]
-		public ArrayList Directories() {
+		public List<string> Directories() {
 			return ProxyQFileSystemWatcher().Directories();
 		}
 		[SmokeMethod("tr(const char*, const char*)")]

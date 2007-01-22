@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	/// See <see cref="IQGraphicsSceneSignals"></see> for signals emitted by QGraphicsScene
 	[SmokeClass("QGraphicsScene")]
@@ -132,43 +132,43 @@ namespace Qyoto {
 			return ProxyQGraphicsScene().ItemsBoundingRect();
 		}
 		[SmokeMethod("items() const")]
-		public ArrayList Items() {
+		public List<QGraphicsItem> Items() {
 			return ProxyQGraphicsScene().Items();
 		}
 		[SmokeMethod("items(const QPointF&) const")]
-		public ArrayList Items(QPointF pos) {
+		public List<QGraphicsItem> Items(QPointF pos) {
 			return ProxyQGraphicsScene().Items(pos);
 		}
 		[SmokeMethod("items(const QRectF&, Qt::ItemSelectionMode) const")]
-		public ArrayList Items(QRectF rect, Qt.ItemSelectionMode mode) {
+		public List<QGraphicsItem> Items(QRectF rect, Qt.ItemSelectionMode mode) {
 			return ProxyQGraphicsScene().Items(rect,mode);
 		}
 		[SmokeMethod("items(const QRectF&) const")]
-		public ArrayList Items(QRectF rect) {
+		public List<QGraphicsItem> Items(QRectF rect) {
 			return ProxyQGraphicsScene().Items(rect);
 		}
 		[SmokeMethod("items(const QPolygonF&, Qt::ItemSelectionMode) const")]
-		public ArrayList Items(QPolygonF polygon, Qt.ItemSelectionMode mode) {
+		public List<QGraphicsItem> Items(QPolygonF polygon, Qt.ItemSelectionMode mode) {
 			return ProxyQGraphicsScene().Items(polygon,mode);
 		}
 		[SmokeMethod("items(const QPolygonF&) const")]
-		public ArrayList Items(QPolygonF polygon) {
+		public List<QGraphicsItem> Items(QPolygonF polygon) {
 			return ProxyQGraphicsScene().Items(polygon);
 		}
 		[SmokeMethod("items(const QPainterPath&, Qt::ItemSelectionMode) const")]
-		public ArrayList Items(QPainterPath path, Qt.ItemSelectionMode mode) {
+		public List<QGraphicsItem> Items(QPainterPath path, Qt.ItemSelectionMode mode) {
 			return ProxyQGraphicsScene().Items(path,mode);
 		}
 		[SmokeMethod("items(const QPainterPath&) const")]
-		public ArrayList Items(QPainterPath path) {
+		public List<QGraphicsItem> Items(QPainterPath path) {
 			return ProxyQGraphicsScene().Items(path);
 		}
 		[SmokeMethod("collidingItems(const QGraphicsItem*, Qt::ItemSelectionMode) const")]
-		public ArrayList CollidingItems(QGraphicsItem item, Qt.ItemSelectionMode mode) {
+		public List<QGraphicsItem> CollidingItems(QGraphicsItem item, Qt.ItemSelectionMode mode) {
 			return ProxyQGraphicsScene().CollidingItems(item,mode);
 		}
 		[SmokeMethod("collidingItems(const QGraphicsItem*) const")]
-		public ArrayList CollidingItems(QGraphicsItem item) {
+		public List<QGraphicsItem> CollidingItems(QGraphicsItem item) {
 			return ProxyQGraphicsScene().CollidingItems(item);
 		}
 		[SmokeMethod("itemAt(const QPointF&) const")]
@@ -180,7 +180,7 @@ namespace Qyoto {
 			return ProxyQGraphicsScene().ItemAt(x,y);
 		}
 		[SmokeMethod("selectedItems() const")]
-		public ArrayList SelectedItems() {
+		public List<QGraphicsItem> SelectedItems() {
 			return ProxyQGraphicsScene().SelectedItems();
 		}
 		[SmokeMethod("setSelectionArea(const QPainterPath&)")]
@@ -192,7 +192,7 @@ namespace Qyoto {
 			ProxyQGraphicsScene().ClearSelection();
 		}
 		[SmokeMethod("createItemGroup(const QList<QGraphicsItem*>&)")]
-		public QGraphicsItemGroup CreateItemGroup(ArrayList items) {
+		public QGraphicsItemGroup CreateItemGroup(List<QGraphicsItem> items) {
 			return ProxyQGraphicsScene().CreateItemGroup(items);
 		}
 		[SmokeMethod("destroyItemGroup(QGraphicsItemGroup*)")]
@@ -443,7 +443,7 @@ namespace Qyoto {
 
 	public interface IQGraphicsSceneSignals : IQObjectSignals {
 		[Q_SIGNAL("void changed(const QList<QRectF>&)")]
-		void Changed(ArrayList region);
+		void Changed(List<QRectF> region);
 		[Q_SIGNAL("void sceneRectChanged(const QRectF&)")]
 		void SceneRectChanged(QRectF rect);
 	}

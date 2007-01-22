@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	[SmokeClass("QStandardItem")]
 	public class QStandardItem : MarshalByRefObject, IDisposable {
@@ -315,11 +315,11 @@ namespace Qyoto {
 			ProxyQStandardItem().SetChild(row,item);
 		}
 		[SmokeMethod("insertRow(int, const QList<QStandardItem*>&)")]
-		public void InsertRow(int row, ArrayList items) {
+		public void InsertRow(int row, List<QStandardItem> items) {
 			ProxyQStandardItem().InsertRow(row,items);
 		}
 		[SmokeMethod("insertColumn(int, const QList<QStandardItem*>&)")]
-		public void InsertColumn(int column, ArrayList items) {
+		public void InsertColumn(int column, List<QStandardItem> items) {
 			ProxyQStandardItem().InsertColumn(column,items);
 		}
 		[SmokeMethod("insertRows(int, int)")]
@@ -347,11 +347,11 @@ namespace Qyoto {
 			ProxyQStandardItem().RemoveColumns(column,count);
 		}
 		[SmokeMethod("appendRow(const QList<QStandardItem*>&)")]
-		public void AppendRow(ArrayList items) {
+		public void AppendRow(List<QStandardItem> items) {
 			ProxyQStandardItem().AppendRow(items);
 		}
 		[SmokeMethod("appendColumn(const QList<QStandardItem*>&)")]
-		public void AppendColumn(ArrayList items) {
+		public void AppendColumn(List<QStandardItem> items) {
 			ProxyQStandardItem().AppendColumn(items);
 		}
 		[SmokeMethod("insertRow(int, QStandardItem*)")]
@@ -371,11 +371,11 @@ namespace Qyoto {
 			return ProxyQStandardItem().TakeChild(row);
 		}
 		[SmokeMethod("takeRow(int)")]
-		public ArrayList TakeRow(int row) {
+		public List<QStandardItem> TakeRow(int row) {
 			return ProxyQStandardItem().TakeRow(row);
 		}
 		[SmokeMethod("takeColumn(int)")]
-		public ArrayList TakeColumn(int column) {
+		public List<QStandardItem> TakeColumn(int column) {
 			return ProxyQStandardItem().TakeColumn(column);
 		}
 		[SmokeMethod("sortChildren(int, Qt::SortOrder)")]

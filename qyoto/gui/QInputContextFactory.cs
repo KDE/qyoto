@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	[SmokeClass("QInputContextFactory")]
 	public class QInputContextFactory : MarshalByRefObject, IDisposable {
@@ -12,9 +12,9 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QInputContextFactory(Type dummy) {}
 		interface IQInputContextFactoryProxy {
-			ArrayList Keys();
+			List<string> Keys();
 			QInputContext Create(string key, QObject parent);
-			ArrayList Languages(string key);
+			List<string> Languages(string key);
 			string DisplayName(string key);
 			string Description(string key);
 		}
@@ -44,7 +44,7 @@ namespace Qyoto {
 			ProxyQInputContextFactory().NewQInputContextFactory();
 		}
 		[SmokeMethod("keys()")]
-		public static ArrayList Keys() {
+		public static List<string> Keys() {
 			return StaticQInputContextFactory().Keys();
 		}
 		[SmokeMethod("create(const QString&, QObject*)")]
@@ -52,7 +52,7 @@ namespace Qyoto {
 			return StaticQInputContextFactory().Create(key,parent);
 		}
 		[SmokeMethod("languages(const QString&)")]
-		public static ArrayList Languages(string key) {
+		public static List<string> Languages(string key) {
 			return StaticQInputContextFactory().Languages(key);
 		}
 		[SmokeMethod("displayName(const QString&)")]

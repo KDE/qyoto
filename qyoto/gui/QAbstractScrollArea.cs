@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	[SmokeClass("QAbstractScrollArea")]
 	public class QAbstractScrollArea : QFrame, IDisposable {
@@ -91,7 +91,7 @@ namespace Qyoto {
 			ProxyQAbstractScrollArea().AddScrollBarWidget(widget,alignment);
 		}
 		[SmokeMethod("scrollBarWidgets(Qt::Alignment)")]
-		public ArrayList ScrollBarWidgets(int alignment) {
+		public List<QWidget> ScrollBarWidgets(int alignment) {
 			return ProxyQAbstractScrollArea().ScrollBarWidgets(alignment);
 		}
 		[SmokeMethod("viewport() const")]

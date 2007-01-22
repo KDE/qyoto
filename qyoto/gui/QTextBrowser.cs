@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	/// See <see cref="IQTextBrowserSignals"></see> for signals emitted by QTextBrowser
 	[SmokeClass("QTextBrowser")]
@@ -52,11 +52,11 @@ namespace Qyoto {
 			return ProxyQTextBrowser().Source();
 		}
 		[SmokeMethod("searchPaths() const")]
-		public ArrayList SearchPaths() {
+		public List<string> SearchPaths() {
 			return ProxyQTextBrowser().SearchPaths();
 		}
 		[SmokeMethod("setSearchPaths(const QStringList&)")]
-		public void SetSearchPaths(string[] paths) {
+		public void SetSearchPaths(List<string> paths) {
 			ProxyQTextBrowser().SetSearchPaths(paths);
 		}
 		[SmokeMethod("loadResource(int, const QUrl&)")]

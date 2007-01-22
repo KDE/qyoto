@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	[SmokeClass("QSortFilterProxyModel")]
 	public class QSortFilterProxyModel : QAbstractProxyModel, IDisposable {
@@ -199,7 +199,7 @@ namespace Qyoto {
 			return ProxyQSortFilterProxyModel().SetHeaderData(section,orientation,value,role);
 		}
 		[SmokeMethod("mimeData(const QModelIndexList&) const")]
-		public new QMimeData MimeData(ArrayList indexes) {
+		public new QMimeData MimeData(List<QModelIndex> indexes) {
 			return ProxyQSortFilterProxyModel().MimeData(indexes);
 		}
 		[SmokeMethod("dropMimeData(const QMimeData*, Qt::DropAction, int, int, const QModelIndex&)")]
@@ -255,7 +255,7 @@ namespace Qyoto {
 			return ProxyQSortFilterProxyModel().Buddy(index);
 		}
 		[SmokeMethod("match(const QModelIndex&, int, const QVariant&, int, Qt::MatchFlags) const")]
-		public new ArrayList Match(QModelIndex start, int role, QVariant value, int hits, int flags) {
+		public new List<QModelIndex> Match(QModelIndex start, int role, QVariant value, int hits, int flags) {
 			return ProxyQSortFilterProxyModel().Match(start,role,value,hits,flags);
 		}
 		[SmokeMethod("span(const QModelIndex&) const")]
@@ -271,7 +271,7 @@ namespace Qyoto {
 			ProxyQSortFilterProxyModel().Sort(column);
 		}
 		[SmokeMethod("mimeTypes() const")]
-		public new ArrayList MimeTypes() {
+		public new List<string> MimeTypes() {
 			return ProxyQSortFilterProxyModel().MimeTypes();
 		}
 		[SmokeMethod("supportedDropActions() const")]

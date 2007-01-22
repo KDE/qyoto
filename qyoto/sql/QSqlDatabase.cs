@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	[SmokeClass("QSqlDatabase")]
 	public class QSqlDatabase : MarshalByRefObject, IDisposable {
@@ -23,8 +23,8 @@ namespace Qyoto {
 			void RemoveDatabase(string connectionName);
 			bool Contains(string connectionName);
 			bool Contains();
-			ArrayList Drivers();
-			ArrayList ConnectionNames();
+			List<string> Drivers();
+			List<string> ConnectionNames();
 			bool IsDriverAvailable(string name);
 		}
 
@@ -81,11 +81,11 @@ namespace Qyoto {
 			return ProxyQSqlDatabase().IsOpenError();
 		}
 		[SmokeMethod("tables(QSql::TableType) const")]
-		public ArrayList Tables(QSql.TableType type) {
+		public List<string> Tables(QSql.TableType type) {
 			return ProxyQSqlDatabase().Tables(type);
 		}
 		[SmokeMethod("tables() const")]
-		public ArrayList Tables() {
+		public List<string> Tables() {
 			return ProxyQSqlDatabase().Tables();
 		}
 		[SmokeMethod("primaryIndex(const QString&) const")]
@@ -229,11 +229,11 @@ namespace Qyoto {
 			return StaticQSqlDatabase().Contains();
 		}
 		[SmokeMethod("drivers()")]
-		public static ArrayList Drivers() {
+		public static List<string> Drivers() {
 			return StaticQSqlDatabase().Drivers();
 		}
 		[SmokeMethod("connectionNames()")]
-		public static ArrayList ConnectionNames() {
+		public static List<string> ConnectionNames() {
 			return StaticQSqlDatabase().ConnectionNames();
 		}
 		// void registerSqlDriver(const QString& arg1,QSqlDriverCreatorBase* arg2); >>>> NOT CONVERTED

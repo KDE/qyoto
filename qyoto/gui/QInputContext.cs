@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	[SmokeClass("QInputContext")]
 	public class QInputContext : QObject {
@@ -91,7 +91,7 @@ namespace Qyoto {
 			ProxyQInputContext().WidgetDestroyed(w);
 		}
 		[SmokeMethod("actions()")]
-		public virtual ArrayList Actions() {
+		public virtual List<QAction> Actions() {
 			return ProxyQInputContext().Actions();
 		}
 		[SmokeMethod("filterEvent(const QEvent*)")]

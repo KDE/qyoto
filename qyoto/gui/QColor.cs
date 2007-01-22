@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	[SmokeClass("QColor")]
 	public class QColor : MarshalByRefObject, IDisposable {
@@ -13,7 +13,7 @@ namespace Qyoto {
 		protected QColor(Type dummy) {}
 		interface IQColorProxy {
 			bool op_equals(QColor lhs, QColor c);
-			ArrayList ColorNames();
+			List<string> ColorNames();
 			QColor FromRgb(uint rgb);
 			QColor FromRgba(uint rgba);
 			QColor FromRgb(int r, int g, int b, int a);
@@ -394,7 +394,7 @@ namespace Qyoto {
 		}
 		//  operator QVariant(); >>>> NOT CONVERTED
 		[SmokeMethod("colorNames()")]
-		public static ArrayList ColorNames() {
+		public static List<string> ColorNames() {
 			return StaticQColor().ColorNames();
 		}
 		[SmokeMethod("fromRgb(QRgb)")]

@@ -3,6 +3,7 @@ namespace Qyoto {
 
 	using System;
 	using System.Text;
+	using System.Collections.Generic;
 
 	[SmokeClass("QDBusArgument")]
 	public class QDBusArgument : MarshalByRefObject, IDisposable {
@@ -79,7 +80,7 @@ namespace Qyoto {
 		// QDBusArgument& operator<<(const QDBusObjectPath& arg1); >>>> NOT CONVERTED
 		// QDBusArgument& operator<<(const QDBusSignature& arg1); >>>> NOT CONVERTED
 		[SmokeMethod("operator<<(const QStringList&)")]
-		public QDBusArgument op_write(string[] arg) {
+		public QDBusArgument op_write(List<string> arg) {
 			return ProxyQDBusArgument().op_write(arg);
 		}
 		[SmokeMethod("operator<<(const QByteArray&)")]
@@ -154,7 +155,7 @@ namespace Qyoto {
 		// const QDBusArgument& operator>>(QDBusObjectPath& arg1); >>>> NOT CONVERTED
 		// const QDBusArgument& operator>>(QDBusSignature& arg1); >>>> NOT CONVERTED
 		[SmokeMethod("operator>>(QStringList&) const")]
-		public QDBusArgument op_read(string[] arg) {
+		public QDBusArgument op_read(List<string> arg) {
 			return ProxyQDBusArgument().op_read(arg);
 		}
 		[SmokeMethod("operator>>(QByteArray&) const")]

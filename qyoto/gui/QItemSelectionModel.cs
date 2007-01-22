@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	/// See <see cref="IQItemSelectionModelSignals"></see> for signals emitted by QItemSelectionModel
 	[SmokeClass("QItemSelectionModel")]
@@ -89,23 +89,23 @@ namespace Qyoto {
 			return ProxyQItemSelectionModel().HasSelection();
 		}
 		[SmokeMethod("selectedIndexes() const")]
-		public ArrayList SelectedIndexes() {
+		public List<QModelIndex> SelectedIndexes() {
 			return ProxyQItemSelectionModel().SelectedIndexes();
 		}
 		[SmokeMethod("selectedRows(int) const")]
-		public ArrayList SelectedRows(int column) {
+		public List<QModelIndex> SelectedRows(int column) {
 			return ProxyQItemSelectionModel().SelectedRows(column);
 		}
 		[SmokeMethod("selectedRows() const")]
-		public ArrayList SelectedRows() {
+		public List<QModelIndex> SelectedRows() {
 			return ProxyQItemSelectionModel().SelectedRows();
 		}
 		[SmokeMethod("selectedColumns(int) const")]
-		public ArrayList SelectedColumns(int row) {
+		public List<QModelIndex> SelectedColumns(int row) {
 			return ProxyQItemSelectionModel().SelectedColumns(row);
 		}
 		[SmokeMethod("selectedColumns() const")]
-		public ArrayList SelectedColumns() {
+		public List<QModelIndex> SelectedColumns() {
 			return ProxyQItemSelectionModel().SelectedColumns();
 		}
 		[SmokeMethod("selection() const")]

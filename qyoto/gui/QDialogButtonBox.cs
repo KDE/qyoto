@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	/// See <see cref="IQDialogButtonBoxSignals"></see> for signals emitted by QDialogButtonBox
 	[SmokeClass("QDialogButtonBox")]
@@ -158,7 +158,7 @@ namespace Qyoto {
 			ProxyQDialogButtonBox().Clear();
 		}
 		[SmokeMethod("buttons() const")]
-		public ArrayList Buttons() {
+		public List<QAbstractButton> Buttons() {
 			return ProxyQDialogButtonBox().Buttons();
 		}
 		[SmokeMethod("buttonRole(QAbstractButton*) const")]

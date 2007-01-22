@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	public partial class Qt : MarshalByRefObject {
 		protected Object _interceptor = null;
@@ -36,7 +36,7 @@ namespace Qyoto {
 			QDBusArgument op_write(QDBusArgument a, QLine line);
 			QDBusArgument op_read(QDBusArgument a, QLineF line);
 			QDBusArgument op_write(QDBusArgument a, QLineF line);
-			QDBusArgument op_write(QDBusArgument arg, ArrayList list);
+			QDBusArgument op_write(QDBusArgument arg, List<QVariant> list);
 			void QDBusReplyFill(QDBusMessage reply, QDBusError error, QVariant data);
 			bool op_equals(QGLFormat arg1, QGLFormat arg2);
 			bool op_equals(QHostAddress.SpecialAddress address1, QHostAddress address2);
@@ -296,8 +296,8 @@ namespace Qyoto {
 			QSizeF op_mult(QSizeF s, double c);
 			QSizeF op_mult(double c, QSizeF s);
 			QSizeF op_div(QSizeF s, double c);
-			QDataStream op_read(QDataStream arg1, string[] list);
-			QDataStream op_write(QDataStream arg1, string[] list);
+			QDataStream op_read(QDataStream arg1, List<string> list);
+			QDataStream op_write(QDataStream arg1, List<string> list);
 		}
 
 		protected new void CreateProxy() {
@@ -1291,7 +1291,7 @@ namespace Qyoto {
 			return StaticQt().op_write(a,line);
 		}
 		[SmokeMethod("operator<<(QDBusArgument&, const QVariantList&)")]
-		public static QDBusArgument op_write(QDBusArgument arg, ArrayList list) {
+		public static QDBusArgument op_write(QDBusArgument arg, List<QVariant> list) {
 			return StaticQt().op_write(arg,list);
 		}
 		// QDBusArgument& operator<<(QDBusArgument& arg1,const QVariantMap& arg2); >>>> NOT CONVERTED
@@ -2445,11 +2445,11 @@ namespace Qyoto {
 			return StaticQt().op_div(s,c);
 		}
 		[SmokeMethod("operator>>(QDataStream&, QStringList&)")]
-		public static QDataStream op_read(QDataStream arg1, string[] list) {
+		public static QDataStream op_read(QDataStream arg1, List<string> list) {
 			return StaticQt().op_read(arg1,list);
 		}
 		[SmokeMethod("operator<<(QDataStream&, const QStringList&)")]
-		public static QDataStream op_write(QDataStream arg1, string[] list) {
+		public static QDataStream op_write(QDataStream arg1, List<string> list) {
 			return StaticQt().op_write(arg1,list);
 		}
 	}

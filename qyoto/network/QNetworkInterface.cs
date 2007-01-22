@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	[SmokeClass("QNetworkInterface")]
 	public class QNetworkInterface : MarshalByRefObject, IDisposable {
@@ -14,7 +14,7 @@ namespace Qyoto {
 		interface IQNetworkInterfaceProxy {
 			QNetworkInterface InterfaceFromName(string name);
 			QNetworkInterface InterfaceFromIndex(int index);
-			ArrayList AllAddresses();
+			List<QHostAddress> AllAddresses();
 		}
 
 		protected new void CreateProxy() {
@@ -84,7 +84,7 @@ namespace Qyoto {
 		}
 		// QList<QNetworkInterface> allInterfaces(); >>>> NOT CONVERTED
 		[SmokeMethod("allAddresses()")]
-		public static ArrayList AllAddresses() {
+		public static List<QHostAddress> AllAddresses() {
 			return StaticQNetworkInterface().AllAddresses();
 		}
 		~QNetworkInterface() {

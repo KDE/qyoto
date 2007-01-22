@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	[SmokeClass("QSqlDriver")]
 	public class QSqlDriver : QObject {
@@ -89,7 +89,7 @@ namespace Qyoto {
 			return ProxyQSqlDriver().RollbackTransaction();
 		}
 		[SmokeMethod("tables(QSql::TableType) const")]
-		public virtual ArrayList Tables(QSql.TableType tableType) {
+		public virtual List<string> Tables(QSql.TableType tableType) {
 			return ProxyQSqlDriver().Tables(tableType);
 		}
 		[SmokeMethod("primaryIndex(const QString&) const")]

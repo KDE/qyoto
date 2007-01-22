@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	[SmokeClass("QSessionManager")]
 	public class QSessionManager : QObject {
@@ -69,19 +69,19 @@ namespace Qyoto {
 			return ProxyQSessionManager().restartHint();
 		}
 		[SmokeMethod("setRestartCommand(const QStringList&)")]
-		public void SetRestartCommand(string[] arg1) {
+		public void SetRestartCommand(List<string> arg1) {
 			ProxyQSessionManager().SetRestartCommand(arg1);
 		}
 		[SmokeMethod("restartCommand() const")]
-		public ArrayList RestartCommand() {
+		public List<string> RestartCommand() {
 			return ProxyQSessionManager().RestartCommand();
 		}
 		[SmokeMethod("setDiscardCommand(const QStringList&)")]
-		public void SetDiscardCommand(string[] arg1) {
+		public void SetDiscardCommand(List<string> arg1) {
 			ProxyQSessionManager().SetDiscardCommand(arg1);
 		}
 		[SmokeMethod("discardCommand() const")]
-		public ArrayList DiscardCommand() {
+		public List<string> DiscardCommand() {
 			return ProxyQSessionManager().DiscardCommand();
 		}
 		[SmokeMethod("setManagerProperty(const QString&, const QString&)")]
@@ -89,7 +89,7 @@ namespace Qyoto {
 			ProxyQSessionManager().SetManagerProperty(name,value);
 		}
 		[SmokeMethod("setManagerProperty(const QString&, const QStringList&)")]
-		public void SetManagerProperty(string name, string[] value) {
+		public void SetManagerProperty(string name, List<string> value) {
 			ProxyQSessionManager().SetManagerProperty(name,value);
 		}
 		[SmokeMethod("isPhase2() const")]

@@ -118,6 +118,5 @@ namespace Qyoto {
 		private void DisposeQPaintDevice() {
 			ProxyQPaintDevice().DisposeQPaintDevice();
 		}
-
 	}
 }

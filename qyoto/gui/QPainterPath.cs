@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	[SmokeClass("QPainterPath")]
 	public class QPainterPath : MarshalByRefObject, IDisposable {
@@ -194,19 +194,19 @@ namespace Qyoto {
 			return ProxyQPainterPath().ToReversed();
 		}
 		[SmokeMethod("toSubpathPolygons(const QMatrix&) const")]
-		public ArrayList ToSubpathPolygons(QMatrix matrix) {
+		public List<QPolygonF> ToSubpathPolygons(QMatrix matrix) {
 			return ProxyQPainterPath().ToSubpathPolygons(matrix);
 		}
 		[SmokeMethod("toSubpathPolygons() const")]
-		public ArrayList ToSubpathPolygons() {
+		public List<QPolygonF> ToSubpathPolygons() {
 			return ProxyQPainterPath().ToSubpathPolygons();
 		}
 		[SmokeMethod("toFillPolygons(const QMatrix&) const")]
-		public ArrayList ToFillPolygons(QMatrix matrix) {
+		public List<QPolygonF> ToFillPolygons(QMatrix matrix) {
 			return ProxyQPainterPath().ToFillPolygons(matrix);
 		}
 		[SmokeMethod("toFillPolygons() const")]
-		public ArrayList ToFillPolygons() {
+		public List<QPolygonF> ToFillPolygons() {
 			return ProxyQPainterPath().ToFillPolygons();
 		}
 		[SmokeMethod("toFillPolygon(const QMatrix&) const")]

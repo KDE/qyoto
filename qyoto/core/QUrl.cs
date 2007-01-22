@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	public interface IQUrl {
 			void SetUrl(string url);
@@ -39,7 +39,7 @@ namespace Qyoto {
 			void AddQueryItem(string key, string value);
 			bool HasQueryItem(string key);
 			string QueryItemValue(string key);
-			ArrayList AllQueryItemValues(string key);
+			List<string> AllQueryItemValues(string key);
 			void RemoveQueryItem(string key);
 			void RemoveAllQueryItems(string key);
 			void SetFragment(string fragment);
@@ -76,8 +76,8 @@ namespace Qyoto {
 			QByteArray ToPunycode(string arg1);
 			string FromAce(QByteArray arg1);
 			QByteArray ToAce(string arg1);
-			ArrayList IdnWhitelist();
-			void SetIdnWhitelist(string[] arg1);
+			List<string> IdnWhitelist();
+			void SetIdnWhitelist(List<string> arg1);
 		}
 
 		protected new void CreateProxy() {
@@ -279,7 +279,7 @@ namespace Qyoto {
 			return ProxyQUrl().QueryItemValue(key);
 		}
 		[SmokeMethod("allQueryItemValues(const QString&) const")]
-		public ArrayList AllQueryItemValues(string key) {
+		public List<string> AllQueryItemValues(string key) {
 			return ProxyQUrl().AllQueryItemValues(key);
 		}
 		[SmokeMethod("removeQueryItem(const QString&)")]
@@ -391,11 +391,11 @@ namespace Qyoto {
 			return StaticQUrl().ToAce(arg1);
 		}
 		[SmokeMethod("idnWhitelist()")]
-		public static ArrayList IdnWhitelist() {
+		public static List<string> IdnWhitelist() {
 			return StaticQUrl().IdnWhitelist();
 		}
 		[SmokeMethod("setIdnWhitelist(const QStringList&)")]
-		public static void SetIdnWhitelist(string[] arg1) {
+		public static void SetIdnWhitelist(List<string> arg1) {
 			StaticQUrl().SetIdnWhitelist(arg1);
 		}
 		~QUrl() {

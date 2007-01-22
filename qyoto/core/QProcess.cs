@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	/// See <see cref="IQProcessSignals"></see> for signals emitted by QProcess
 	[SmokeClass("QProcess")]
@@ -12,11 +12,11 @@ namespace Qyoto {
 		interface IQProcessProxy {
 			string Tr(string s, string c);
 			string Tr(string s);
-			int Execute(string program, string[] arguments);
+			int Execute(string program, List<string> arguments);
 			int Execute(string program);
-			bool StartDetached(string program, string[] arguments);
+			bool StartDetached(string program, List<string> arguments);
 			bool StartDetached(string program);
-			ArrayList SystemEnvironment();
+			List<string> SystemEnvironment();
 		}
 
 		protected new void CreateProxy() {
@@ -79,11 +79,11 @@ namespace Qyoto {
 			ProxyQProcess().NewQProcess();
 		}
 		[SmokeMethod("start(const QString&, const QStringList&, OpenMode)")]
-		public void Start(string program, string[] arguments, int mode) {
+		public void Start(string program, List<string> arguments, int mode) {
 			ProxyQProcess().Start(program,arguments,mode);
 		}
 		[SmokeMethod("start(const QString&, const QStringList&)")]
-		public void Start(string program, string[] arguments) {
+		public void Start(string program, List<string> arguments) {
 			ProxyQProcess().Start(program,arguments);
 		}
 		[SmokeMethod("start(const QString&, OpenMode)")]
@@ -159,11 +159,11 @@ namespace Qyoto {
 			ProxyQProcess().SetWorkingDirectory(dir);
 		}
 		[SmokeMethod("setEnvironment(const QStringList&)")]
-		public void SetEnvironment(string[] environment) {
+		public void SetEnvironment(List<string> environment) {
 			ProxyQProcess().SetEnvironment(environment);
 		}
 		[SmokeMethod("environment() const")]
-		public ArrayList Environment() {
+		public List<string> Environment() {
 			return ProxyQProcess().Environment();
 		}
 		[SmokeMethod("error() const")]
@@ -258,7 +258,7 @@ namespace Qyoto {
 			return StaticQProcess().Tr(s);
 		}
 		[SmokeMethod("execute(const QString&, const QStringList&)")]
-		public static int Execute(string program, string[] arguments) {
+		public static int Execute(string program, List<string> arguments) {
 			return StaticQProcess().Execute(program,arguments);
 		}
 		[SmokeMethod("execute(const QString&)")]
@@ -266,7 +266,7 @@ namespace Qyoto {
 			return StaticQProcess().Execute(program);
 		}
 		[SmokeMethod("startDetached(const QString&, const QStringList&)")]
-		public static bool StartDetached(string program, string[] arguments) {
+		public static bool StartDetached(string program, List<string> arguments) {
 			return StaticQProcess().StartDetached(program,arguments);
 		}
 		[SmokeMethod("startDetached(const QString&)")]
@@ -274,7 +274,7 @@ namespace Qyoto {
 			return StaticQProcess().StartDetached(program);
 		}
 		[SmokeMethod("systemEnvironment()")]
-		public static ArrayList SystemEnvironment() {
+		public static List<string> SystemEnvironment() {
 			return StaticQProcess().SystemEnvironment();
 		}
 		[SmokeMethod("setProcessState(QProcess::ProcessState)")]

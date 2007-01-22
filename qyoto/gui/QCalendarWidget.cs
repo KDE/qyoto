@@ -3,6 +3,7 @@ namespace Qyoto {
 
 	using System;
 	using System.Text;
+	using System.Collections.Generic;
 
 	/// See <see cref="IQCalendarWidgetSignals"></see> for signals emitted by QCalendarWidget
 	[SmokeClass("QCalendarWidget")]
@@ -160,7 +161,10 @@ namespace Qyoto {
 		public void SetWeekdayTextFormat(Qt.DayOfWeek dayOfWeek, QTextCharFormat format) {
 			ProxyQCalendarWidget().SetWeekdayTextFormat(dayOfWeek,format);
 		}
-		// QMap<QDate, QTextCharFormat> dateTextFormat(); >>>> NOT CONVERTED
+		[SmokeMethod("dateTextFormat() const")]
+		public Dictionary<QDate, QTextCharFormat> DateTextFormat() {
+			return ProxyQCalendarWidget().DateTextFormat();
+		}
 		[SmokeMethod("dateTextFormat(const QDate&) const")]
 		public QTextCharFormat DateTextFormat(QDate date) {
 			return ProxyQCalendarWidget().DateTextFormat(date);

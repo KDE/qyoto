@@ -95,7 +95,7 @@ namespace Qyoto {
 			} else if (typeof(T) == typeof(string)) {
 				return new QVariant((string) value);
 			} else if (typeof(T) == typeof(List<string>)) {
-				return new QVariant((ArrayList) value);
+				return new QVariant((List<string>) value);
 			} else if (typeof(T) == typeof(QTime)) {
 				return new QVariant((QTime) value);
 			} else if (typeof(T) == typeof(uint)) {

@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	[SmokeClass("QTableView")]
 	public class QTableView : QAbstractItemView, IDisposable {
@@ -291,7 +291,7 @@ namespace Qyoto {
 			return ProxyQTableView().VisualRegionForSelection(selection);
 		}
 		[SmokeMethod("selectedIndexes() const")]
-		protected new ArrayList SelectedIndexes() {
+		protected new List<QModelIndex> SelectedIndexes() {
 			return ProxyQTableView().SelectedIndexes();
 		}
 		[SmokeMethod("updateGeometries()")]

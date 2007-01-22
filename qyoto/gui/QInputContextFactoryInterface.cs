@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	[SmokeClass("QInputContextFactoryInterface")]
 	public class QInputContextFactoryInterface : QFactoryInterface {
@@ -32,7 +32,7 @@ namespace Qyoto {
 			return ProxyQInputContextFactoryInterface().Create(key);
 		}
 		[SmokeMethod("languages(const QString&)")]
-		public virtual ArrayList Languages(string key) {
+		public virtual List<string> Languages(string key) {
 			return ProxyQInputContextFactoryInterface().Languages(key);
 		}
 		[SmokeMethod("displayName(const QString&)")]

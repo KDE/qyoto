@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	[SmokeClass("QAbstractFileEngine")]
 	public class QAbstractFileEngine : MarshalByRefObject, IDisposable {
@@ -130,7 +130,7 @@ namespace Qyoto {
 			return ProxyQAbstractFileEngine().IsRelativePath();
 		}
 		[SmokeMethod("entryList(QDir::Filters, const QStringList&) const")]
-		public virtual ArrayList EntryList(int filters, string[] filterNames) {
+		public virtual List<string> EntryList(int filters, List<string> filterNames) {
 			return ProxyQAbstractFileEngine().EntryList(filters,filterNames);
 		}
 		[SmokeMethod("fileFlags(FileFlags) const")]

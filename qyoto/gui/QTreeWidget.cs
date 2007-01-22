@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	/// See <see cref="IQTreeWidgetSignals"></see> for signals emitted by QTreeWidget
 	[SmokeClass("QTreeWidget")]
@@ -84,11 +84,11 @@ namespace Qyoto {
 			return ProxyQTreeWidget().IndexOfTopLevelItem(item);
 		}
 		[SmokeMethod("insertTopLevelItems(int, const QList<QTreeWidgetItem*>&)")]
-		public void InsertTopLevelItems(int index, ArrayList items) {
+		public void InsertTopLevelItems(int index, List<QTreeWidgetItem> items) {
 			ProxyQTreeWidget().InsertTopLevelItems(index,items);
 		}
 		[SmokeMethod("addTopLevelItems(const QList<QTreeWidgetItem*>&)")]
-		public void AddTopLevelItems(ArrayList items) {
+		public void AddTopLevelItems(List<QTreeWidgetItem> items) {
 			ProxyQTreeWidget().AddTopLevelItems(items);
 		}
 		[SmokeMethod("headerItem() const")]
@@ -100,7 +100,7 @@ namespace Qyoto {
 			ProxyQTreeWidget().SetHeaderItem(item);
 		}
 		[SmokeMethod("setHeaderLabels(const QStringList&)")]
-		public void SetHeaderLabels(string[] labels) {
+		public void SetHeaderLabels(List<string> labels) {
 			ProxyQTreeWidget().SetHeaderLabels(labels);
 		}
 		[SmokeMethod("setHeaderLabel(const QString&)")]
@@ -192,15 +192,15 @@ namespace Qyoto {
 			ProxyQTreeWidget().SetItemSelected(item,select);
 		}
 		[SmokeMethod("selectedItems() const")]
-		public ArrayList SelectedItems() {
+		public List<QTreeWidgetItem> SelectedItems() {
 			return ProxyQTreeWidget().SelectedItems();
 		}
 		[SmokeMethod("findItems(const QString&, Qt::MatchFlags, int) const")]
-		public ArrayList FindItems(string text, int flags, int column) {
+		public List<QTreeWidgetItem> FindItems(string text, int flags, int column) {
 			return ProxyQTreeWidget().FindItems(text,flags,column);
 		}
 		[SmokeMethod("findItems(const QString&, Qt::MatchFlags) const")]
-		public ArrayList FindItems(string text, int flags) {
+		public List<QTreeWidgetItem> FindItems(string text, int flags) {
 			return ProxyQTreeWidget().FindItems(text,flags);
 		}
 		[SmokeMethod("isItemHidden(const QTreeWidgetItem*) const")]
@@ -252,11 +252,11 @@ namespace Qyoto {
 			return ProxyQTreeWidget().Event(e);
 		}
 		[SmokeMethod("mimeTypes() const")]
-		protected virtual ArrayList MimeTypes() {
+		protected virtual List<string> MimeTypes() {
 			return ProxyQTreeWidget().MimeTypes();
 		}
 		[SmokeMethod("mimeData(const QList<QTreeWidgetItem*>) const")]
-		protected virtual QMimeData MimeData(ArrayList items) {
+		protected virtual QMimeData MimeData(List<QTreeWidgetItem> items) {
 			return ProxyQTreeWidget().MimeData(items);
 		}
 		[SmokeMethod("dropMimeData(QTreeWidgetItem*, int, const QMimeData*, Qt::DropAction)")]
@@ -268,7 +268,7 @@ namespace Qyoto {
 			return ProxyQTreeWidget().SupportedDropActions();
 		}
 		[SmokeMethod("items(const QMimeData*) const")]
-		protected ArrayList Items(QMimeData data) {
+		protected List<QTreeWidgetItem> Items(QMimeData data) {
 			return ProxyQTreeWidget().Items(data);
 		}
 		[SmokeMethod("indexFromItem(QTreeWidgetItem*, int) const")]

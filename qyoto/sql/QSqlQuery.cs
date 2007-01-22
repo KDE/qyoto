@@ -3,6 +3,7 @@ namespace Qyoto {
 
 	using System;
 	using System.Text;
+	using System.Collections.Generic;
 
 	public interface IQSqlQuery {
 			bool IsValid();
@@ -40,6 +41,7 @@ namespace Qyoto {
 			void AddBindValue(QVariant val);
 			QVariant BoundValue(string placeholder);
 			QVariant BoundValue(int pos);
+			Dictionary<string, QVariant> BoundValues();
 			string ExecutedQuery();
 			QVariant LastInsertId();
 	}
@@ -261,7 +263,10 @@ namespace Qyoto {
 		public QVariant BoundValue(int pos) {
 			return ProxyQSqlQuery().BoundValue(pos);
 		}
-		// QMap<QString, QVariant> boundValues(); >>>> NOT CONVERTED
+		[SmokeMethod("boundValues() const")]
+		public Dictionary<string, QVariant> BoundValues() {
+			return ProxyQSqlQuery().BoundValues();
+		}
 		[SmokeMethod("executedQuery() const")]
 		public string ExecutedQuery() {
 			return ProxyQSqlQuery().ExecutedQuery();

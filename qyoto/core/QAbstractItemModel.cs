@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	/// See <see cref="IQAbstractItemModelSignals"></see> for signals emitted by QAbstractItemModel
 	[SmokeClass("QAbstractItemModel")]
@@ -127,14 +127,20 @@ namespace Qyoto {
 		public virtual bool SetHeaderData(int section, Qt.Orientation orientation, QVariant value) {
 			return ProxyQAbstractItemModel().SetHeaderData(section,orientation,value);
 		}
-		// QMap<int, QVariant> itemData(const QModelIndex& arg1); >>>> NOT CONVERTED
-		// bool setItemData(const QModelIndex& arg1,const QMap<int, QVariant>& arg2); >>>> NOT CONVERTED
+		[SmokeMethod("itemData(const QModelIndex&) const")]
+		public virtual Dictionary<int, QVariant> ItemData(QModelIndex index) {
+			return ProxyQAbstractItemModel().ItemData(index);
+		}
+		[SmokeMethod("setItemData(const QModelIndex&, const QMap<int, QVariant>&)")]
+		public virtual bool SetItemData(QModelIndex index, Dictionary<int, QVariant> roles) {
+			return ProxyQAbstractItemModel().SetItemData(index,roles);
+		}
 		[SmokeMethod("mimeTypes() const")]
-		public virtual ArrayList MimeTypes() {
+		public virtual List<string> MimeTypes() {
 			return ProxyQAbstractItemModel().MimeTypes();
 		}
 		[SmokeMethod("mimeData(const QModelIndexList&) const")]
-		public virtual QMimeData MimeData(ArrayList indexes) {
+		public virtual QMimeData MimeData(List<QModelIndex> indexes) {
 			return ProxyQAbstractItemModel().MimeData(indexes);
 		}
 		[SmokeMethod("dropMimeData(const QMimeData*, Qt::DropAction, int, int, const QModelIndex&)")]
@@ -242,15 +248,15 @@ namespace Qyoto {
 			return ProxyQAbstractItemModel().Buddy(index);
 		}
 		[SmokeMethod("match(const QModelIndex&, int, const QVariant&, int, Qt::MatchFlags) const")]
-		public virtual ArrayList Match(QModelIndex start, int role, QVariant value, int hits, int flags) {
+		public virtual List<QModelIndex> Match(QModelIndex start, int role, QVariant value, int hits, int flags) {
 			return ProxyQAbstractItemModel().Match(start,role,value,hits,flags);
 		}
 		[SmokeMethod("match(const QModelIndex&, int, const QVariant&, int) const")]
-		public virtual ArrayList Match(QModelIndex start, int role, QVariant value, int hits) {
+		public virtual List<QModelIndex> Match(QModelIndex start, int role, QVariant value, int hits) {
 			return ProxyQAbstractItemModel().Match(start,role,value,hits);
 		}
 		[SmokeMethod("match(const QModelIndex&, int, const QVariant&) const")]
-		public virtual ArrayList Match(QModelIndex start, int role, QVariant value) {
+		public virtual List<QModelIndex> Match(QModelIndex start, int role, QVariant value) {
 			return ProxyQAbstractItemModel().Match(start,role,value);
 		}
 		[SmokeMethod("span(const QModelIndex&) const")]

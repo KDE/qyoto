@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	/// See <see cref="IQListWidgetSignals"></see> for signals emitted by QListWidget
 	[SmokeClass("QListWidget")]
@@ -64,7 +64,7 @@ namespace Qyoto {
 			ProxyQListWidget().InsertItem(row,label);
 		}
 		[SmokeMethod("insertItems(int, const QStringList&)")]
-		public void InsertItems(int row, string[] labels) {
+		public void InsertItems(int row, List<string> labels) {
 			ProxyQListWidget().InsertItems(row,labels);
 		}
 		[SmokeMethod("addItem(const QString&)")]
@@ -76,7 +76,7 @@ namespace Qyoto {
 			ProxyQListWidget().AddItem(item);
 		}
 		[SmokeMethod("addItems(const QStringList&)")]
-		public void AddItems(string[] labels) {
+		public void AddItems(List<string> labels) {
 			ProxyQListWidget().AddItems(labels);
 		}
 		[SmokeMethod("takeItem(int)")]
@@ -160,11 +160,11 @@ namespace Qyoto {
 			ProxyQListWidget().SetItemSelected(item,select);
 		}
 		[SmokeMethod("selectedItems() const")]
-		public ArrayList SelectedItems() {
+		public List<QListWidgetItem> SelectedItems() {
 			return ProxyQListWidget().SelectedItems();
 		}
 		[SmokeMethod("findItems(const QString&, Qt::MatchFlags) const")]
-		public ArrayList FindItems(string text, int flags) {
+		public List<QListWidgetItem> FindItems(string text, int flags) {
 			return ProxyQListWidget().FindItems(text,flags);
 		}
 		[SmokeMethod("isItemHidden(const QListWidgetItem*) const")]
@@ -204,11 +204,11 @@ namespace Qyoto {
 			return ProxyQListWidget().Event(e);
 		}
 		[SmokeMethod("mimeTypes() const")]
-		protected virtual ArrayList MimeTypes() {
+		protected virtual List<string> MimeTypes() {
 			return ProxyQListWidget().MimeTypes();
 		}
 		[SmokeMethod("mimeData(const QList<QListWidgetItem*>) const")]
-		protected virtual QMimeData MimeData(ArrayList items) {
+		protected virtual QMimeData MimeData(List<QListWidgetItem> items) {
 			return ProxyQListWidget().MimeData(items);
 		}
 		[SmokeMethod("dropMimeData(int, const QMimeData*, Qt::DropAction)")]
@@ -220,7 +220,7 @@ namespace Qyoto {
 			return ProxyQListWidget().SupportedDropActions();
 		}
 		[SmokeMethod("items(const QMimeData*) const")]
-		protected ArrayList Items(QMimeData data) {
+		protected List<QListWidgetItem> Items(QMimeData data) {
 			return ProxyQListWidget().Items(data);
 		}
 		[SmokeMethod("indexFromItem(QListWidgetItem*) const")]

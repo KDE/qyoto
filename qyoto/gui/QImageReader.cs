@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	[SmokeClass("QImageReader")]
 	public class QImageReader : MarshalByRefObject, IDisposable {
@@ -14,7 +14,7 @@ namespace Qyoto {
 		interface IQImageReaderProxy {
 			QByteArray ImageFormat(string fileName);
 			QByteArray ImageFormat(IQIODevice device);
-			ArrayList SupportedImageFormats();
+			List<QByteArray> SupportedImageFormats();
 		}
 
 		protected new void CreateProxy() {
@@ -109,7 +109,7 @@ namespace Qyoto {
 			return ProxyQImageReader().Size();
 		}
 		[SmokeMethod("textKeys() const")]
-		public ArrayList TextKeys() {
+		public List<string> TextKeys() {
 			return ProxyQImageReader().TextKeys();
 		}
 		[SmokeMethod("text(const QString&) const")]
@@ -221,7 +221,7 @@ namespace Qyoto {
 			return StaticQImageReader().ImageFormat(device);
 		}
 		[SmokeMethod("supportedImageFormats()")]
-		public static ArrayList SupportedImageFormats() {
+		public static List<QByteArray> SupportedImageFormats() {
 			return StaticQImageReader().SupportedImageFormats();
 		}
 		~QImageReader() {

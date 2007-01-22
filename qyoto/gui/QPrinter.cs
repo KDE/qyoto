@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	[SmokeClass("QPrinter")]
 	public class QPrinter : QPaintDevice, IDisposable {
@@ -250,7 +250,7 @@ namespace Qyoto {
 			return ProxyQPrinter().paperSource();
 		}
 		[SmokeMethod("supportedResolutions() const")]
-		public ArrayList SupportedResolutions() {
+		public List<int> SupportedResolutions() {
 			return ProxyQPrinter().SupportedResolutions();
 		}
 		[SmokeMethod("setFontEmbeddingEnabled(bool)")]

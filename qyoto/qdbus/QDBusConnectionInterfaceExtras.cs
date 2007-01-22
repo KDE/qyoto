@@ -12,25 +12,25 @@ namespace Qyoto {
 		}
 
 		public QDBusReply<string> ServiceOwner(string name) {
-			ArrayList nameArg = new ArrayList();
+			List<QVariant> nameArg = new List<QVariant>();
 			nameArg.Add(new QVariant(name));
 			return new QDBusReply<string>(InternalConstCall(QDBus.CallMode.AutoDetect,"GetNameOwner", nameArg));
 		}
 
 		public QDBusReply<bool> IsServiceRegistered(string serviceName) {
-			ArrayList serviceArg = new ArrayList();
+			List<QVariant> serviceArg = new List<QVariant>();
 			serviceArg.Add(new QVariant(serviceName));
 			return new QDBusReply<bool>(InternalConstCall(QDBus.CallMode.AutoDetect,"NameHasOwner", serviceArg));
 		}
 
 		public QDBusReply<uint> ServicePid(string serviceName) {
-			ArrayList serviceArg = new ArrayList();
+			List<QVariant> serviceArg = new List<QVariant>();
 			serviceArg.Add(new QVariant(serviceName));
 			return new QDBusReply<uint>(InternalConstCall(QDBus.CallMode.AutoDetect, "GetConnectionUnixProcessID", serviceArg));
 		}
 
 		public QDBusReply<uint> ServiceUid(string serviceName) {
-			ArrayList serviceArg = new ArrayList();
+			List<QVariant> serviceArg = new List<QVariant>();
 			serviceArg.Add(new QVariant(serviceName));
 			return new QDBusReply<uint>(InternalConstCall(QDBus.CallMode.AutoDetect, "GetConnectionUnixUser", serviceArg));
 		}

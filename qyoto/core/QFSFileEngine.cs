@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	[SmokeClass("QFSFileEngine")]
 	public class QFSFileEngine : QAbstractFileEngine, IDisposable {
@@ -102,7 +102,7 @@ namespace Qyoto {
 			return ProxyQFSFileEngine().IsRelativePath();
 		}
 		[SmokeMethod("entryList(QDir::Filters, const QStringList&) const")]
-		public new ArrayList EntryList(int filters, string[] filterNames) {
+		public new List<string> EntryList(int filters, List<string> filterNames) {
 			return ProxyQFSFileEngine().EntryList(filters,filterNames);
 		}
 		[SmokeMethod("fileFlags(FileFlags) const")]

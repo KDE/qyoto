@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	[SmokeClass("QFont")]
 	public class QFont : MarshalByRefObject, IDisposable {
@@ -15,10 +15,10 @@ namespace Qyoto {
 			bool op_equals(QFont lhs, QFont arg1);
 			bool op_lt(QFont lhs, QFont arg1);
 			string Substitute(string arg1);
-			ArrayList Substitutes(string arg1);
-			ArrayList Substitutions();
+			List<string> Substitutes(string arg1);
+			List<string> Substitutions();
 			void InsertSubstitution(string arg1, string arg2);
-			void InsertSubstitutions(string arg1, string[] arg2);
+			void InsertSubstitutions(string arg1, List<string> arg2);
 			void RemoveSubstitution(string arg1);
 			void Initialize();
 			void Cleanup();
@@ -365,11 +365,11 @@ namespace Qyoto {
 			return StaticQFont().Substitute(arg1);
 		}
 		[SmokeMethod("substitutes(const QString&)")]
-		public static ArrayList Substitutes(string arg1) {
+		public static List<string> Substitutes(string arg1) {
 			return StaticQFont().Substitutes(arg1);
 		}
 		[SmokeMethod("substitutions()")]
-		public static ArrayList Substitutions() {
+		public static List<string> Substitutions() {
 			return StaticQFont().Substitutions();
 		}
 		[SmokeMethod("insertSubstitution(const QString&, const QString&)")]
@@ -377,7 +377,7 @@ namespace Qyoto {
 			StaticQFont().InsertSubstitution(arg1,arg2);
 		}
 		[SmokeMethod("insertSubstitutions(const QString&, const QStringList&)")]
-		public static void InsertSubstitutions(string arg1, string[] arg2) {
+		public static void InsertSubstitutions(string arg1, List<string> arg2) {
 			StaticQFont().InsertSubstitutions(arg1,arg2);
 		}
 		[SmokeMethod("removeSubstitution(const QString&)")]

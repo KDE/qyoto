@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	[SmokeClass("QHostInfo")]
 	public class QHostInfo : MarshalByRefObject, IDisposable {
@@ -72,11 +72,11 @@ namespace Qyoto {
 			ProxyQHostInfo().SetHostName(name);
 		}
 		[SmokeMethod("addresses() const")]
-		public ArrayList Addresses() {
+		public List<QHostAddress> Addresses() {
 			return ProxyQHostInfo().Addresses();
 		}
 		[SmokeMethod("setAddresses(const QList<QHostAddress>&)")]
-		public void SetAddresses(ArrayList addresses) {
+		public void SetAddresses(List<QHostAddress> addresses) {
 			ProxyQHostInfo().SetAddresses(addresses);
 		}
 		[SmokeMethod("error() const")]

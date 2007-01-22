@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	[SmokeClass("QAccessibleApplication")]
 	public class QAccessibleApplication : QAccessibleObject, IDisposable {
@@ -72,7 +72,7 @@ namespace Qyoto {
 			return ProxyQAccessibleApplication().UserActionCount(child);
 		}
 		[SmokeMethod("doAction(int, int, const QVariantList&)")]
-		public new bool DoAction(int action, int child, ArrayList arg3) {
+		public new bool DoAction(int action, int child, List<QVariant> arg3) {
 			return ProxyQAccessibleApplication().DoAction(action,child,arg3);
 		}
 		[SmokeMethod("actionText(int, QAccessible::Text, int) const")]

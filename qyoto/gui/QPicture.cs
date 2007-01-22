@@ -2,18 +2,18 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	[SmokeClass("QPicture")]
 	public class QPicture : QPaintDevice, IDisposable {
  		protected QPicture(Type dummy) : base((Type) null) {}
 		interface IQPictureProxy {
 			string PictureFormat(string fileName);
-			ArrayList InputFormats();
-			ArrayList OutputFormats();
-			ArrayList InputFormatList();
-			ArrayList OutputFormatList();
+			List<QByteArray> InputFormats();
+			List<QByteArray> OutputFormats();
+			List<string> InputFormatList();
+			List<string> OutputFormatList();
 		}
 
 		protected new void CreateProxy() {
@@ -137,19 +137,19 @@ namespace Qyoto {
 			return StaticQPicture().PictureFormat(fileName);
 		}
 		[SmokeMethod("inputFormats()")]
-		public static ArrayList InputFormats() {
+		public static List<QByteArray> InputFormats() {
 			return StaticQPicture().InputFormats();
 		}
 		[SmokeMethod("outputFormats()")]
-		public static ArrayList OutputFormats() {
+		public static List<QByteArray> OutputFormats() {
 			return StaticQPicture().OutputFormats();
 		}
 		[SmokeMethod("inputFormatList()")]
-		public static ArrayList InputFormatList() {
+		public static List<string> InputFormatList() {
 			return StaticQPicture().InputFormatList();
 		}
 		[SmokeMethod("outputFormatList()")]
-		public static ArrayList OutputFormatList() {
+		public static List<string> OutputFormatList() {
 			return StaticQPicture().OutputFormatList();
 		}
 		// QPicture* QPicture(QPicturePrivate& arg1); >>>> NOT CONVERTED

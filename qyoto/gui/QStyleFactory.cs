@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	[SmokeClass("QStyleFactory")]
 	public class QStyleFactory : MarshalByRefObject, IDisposable {
@@ -12,7 +12,7 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QStyleFactory(Type dummy) {}
 		interface IQStyleFactoryProxy {
-			ArrayList Keys();
+			List<string> Keys();
 			QStyle Create(string arg1);
 		}
 
@@ -41,7 +41,7 @@ namespace Qyoto {
 			ProxyQStyleFactory().NewQStyleFactory();
 		}
 		[SmokeMethod("keys()")]
-		public static ArrayList Keys() {
+		public static List<string> Keys() {
 			return StaticQStyleFactory().Keys();
 		}
 		[SmokeMethod("create(const QString&)")]

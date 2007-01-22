@@ -2,7 +2,7 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
+	using System.Collections.Generic;
 
 	[SmokeClass("QTextTableFormat")]
 	public class QTextTableFormat : QTextFrameFormat, IDisposable {
@@ -47,7 +47,7 @@ namespace Qyoto {
 			ProxyQTextTableFormat().SetColumns(columns);
 		}
 		[SmokeMethod("setColumnWidthConstraints(const QVector<QTextLength>&)")]
-		public void SetColumnWidthConstraints(ArrayList constraints) {
+		public void SetColumnWidthConstraints(List<QTextFormat> constraints) {
 			ProxyQTextTableFormat().SetColumnWidthConstraints(constraints);
 		}
 		// QVector<QTextLength> columnWidthConstraints(); >>>> NOT CONVERTED

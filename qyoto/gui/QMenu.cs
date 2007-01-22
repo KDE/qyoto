@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	/// See <see cref="IQMenuSignals"></see> for signals emitted by QMenu
 	[SmokeClass("QMenu")]
@@ -12,8 +12,8 @@ namespace Qyoto {
 		interface IQMenuProxy {
 			string Tr(string s, string c);
 			string Tr(string s);
-			QAction Exec(ArrayList actions, QPoint pos, QAction at);
-			QAction Exec(ArrayList actions, QPoint pos);
+			QAction Exec(List<QAction> actions, QPoint pos, QAction at);
+			QAction Exec(List<QAction> actions, QPoint pos);
 		}
 
 		protected new void CreateProxy() {
@@ -230,11 +230,11 @@ namespace Qyoto {
 			return StaticQMenu().Tr(s);
 		}
 		[SmokeMethod("exec(QList<QAction*>, const QPoint&, QAction*)")]
-		public static QAction Exec(ArrayList actions, QPoint pos, QAction at) {
+		public static QAction Exec(List<QAction> actions, QPoint pos, QAction at) {
 			return StaticQMenu().Exec(actions,pos,at);
 		}
 		[SmokeMethod("exec(QList<QAction*>, const QPoint&)")]
-		public static QAction Exec(ArrayList actions, QPoint pos) {
+		public static QAction Exec(List<QAction> actions, QPoint pos) {
 			return StaticQMenu().Exec(actions,pos);
 		}
 		[SmokeMethod("columnCount() const")]

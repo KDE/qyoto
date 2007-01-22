@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	/// See <see cref="IQStandardItemModelSignals"></see> for signals emitted by QStandardItemModel
 	[SmokeClass("QStandardItemModel")]
@@ -171,8 +171,14 @@ namespace Qyoto {
 		public new int SupportedDropActions() {
 			return ProxyQStandardItemModel().SupportedDropActions();
 		}
-		// QMap<int, QVariant> itemData(const QModelIndex& arg1); >>>> NOT CONVERTED
-		// bool setItemData(const QModelIndex& arg1,const QMap<int, QVariant>& arg2); >>>> NOT CONVERTED
+		[SmokeMethod("itemData(const QModelIndex&) const")]
+		public new Dictionary<int, QVariant> ItemData(QModelIndex index) {
+			return ProxyQStandardItemModel().ItemData(index);
+		}
+		[SmokeMethod("setItemData(const QModelIndex&, const QMap<int, QVariant>&)")]
+		public new bool SetItemData(QModelIndex index, Dictionary<int, QVariant> roles) {
+			return ProxyQStandardItemModel().SetItemData(index,roles);
+		}
 		[SmokeMethod("clear()")]
 		public void Clear() {
 			ProxyQStandardItemModel().Clear();
@@ -234,11 +240,11 @@ namespace Qyoto {
 			ProxyQStandardItemModel().SetVerticalHeaderItem(row,item);
 		}
 		[SmokeMethod("setHorizontalHeaderLabels(const QStringList&)")]
-		public void SetHorizontalHeaderLabels(string[] labels) {
+		public void SetHorizontalHeaderLabels(List<string> labels) {
 			ProxyQStandardItemModel().SetHorizontalHeaderLabels(labels);
 		}
 		[SmokeMethod("setVerticalHeaderLabels(const QStringList&)")]
-		public void SetVerticalHeaderLabels(string[] labels) {
+		public void SetVerticalHeaderLabels(List<string> labels) {
 			ProxyQStandardItemModel().SetVerticalHeaderLabels(labels);
 		}
 		[SmokeMethod("setRowCount(int)")]
@@ -250,11 +256,11 @@ namespace Qyoto {
 			ProxyQStandardItemModel().SetColumnCount(columns);
 		}
 		[SmokeMethod("appendRow(const QList<QStandardItem*>&)")]
-		public void AppendRow(ArrayList items) {
+		public void AppendRow(List<QStandardItem> items) {
 			ProxyQStandardItemModel().AppendRow(items);
 		}
 		[SmokeMethod("appendColumn(const QList<QStandardItem*>&)")]
-		public void AppendColumn(ArrayList items) {
+		public void AppendColumn(List<QStandardItem> items) {
 			ProxyQStandardItemModel().AppendColumn(items);
 		}
 		[SmokeMethod("appendRow(QStandardItem*)")]
@@ -262,11 +268,11 @@ namespace Qyoto {
 			ProxyQStandardItemModel().AppendRow(item);
 		}
 		[SmokeMethod("insertRow(int, const QList<QStandardItem*>&)")]
-		public new void InsertRow(int row, ArrayList items) {
+		public new void InsertRow(int row, List<QStandardItem> items) {
 			ProxyQStandardItemModel().InsertRow(row,items);
 		}
 		[SmokeMethod("insertColumn(int, const QList<QStandardItem*>&)")]
-		public new void InsertColumn(int column, ArrayList items) {
+		public new void InsertColumn(int column, List<QStandardItem> items) {
 			ProxyQStandardItemModel().InsertColumn(column,items);
 		}
 		[SmokeMethod("insertRow(int, QStandardItem*)")]
@@ -298,11 +304,11 @@ namespace Qyoto {
 			return ProxyQStandardItemModel().TakeItem(row);
 		}
 		[SmokeMethod("takeRow(int)")]
-		public ArrayList TakeRow(int row) {
+		public List<QStandardItem> TakeRow(int row) {
 			return ProxyQStandardItemModel().TakeRow(row);
 		}
 		[SmokeMethod("takeColumn(int)")]
-		public ArrayList TakeColumn(int column) {
+		public List<QStandardItem> TakeColumn(int column) {
 			return ProxyQStandardItemModel().TakeColumn(column);
 		}
 		[SmokeMethod("takeHorizontalHeaderItem(int)")]
@@ -322,15 +328,15 @@ namespace Qyoto {
 			ProxyQStandardItemModel().SetItemPrototype(item);
 		}
 		[SmokeMethod("findItems(const QString&, Qt::MatchFlags, int) const")]
-		public ArrayList FindItems(string text, int flags, int column) {
+		public List<QStandardItem> FindItems(string text, int flags, int column) {
 			return ProxyQStandardItemModel().FindItems(text,flags,column);
 		}
 		[SmokeMethod("findItems(const QString&, Qt::MatchFlags) const")]
-		public ArrayList FindItems(string text, int flags) {
+		public List<QStandardItem> FindItems(string text, int flags) {
 			return ProxyQStandardItemModel().FindItems(text,flags);
 		}
 		[SmokeMethod("findItems(const QString&) const")]
-		public ArrayList FindItems(string text) {
+		public List<QStandardItem> FindItems(string text) {
 			return ProxyQStandardItemModel().FindItems(text);
 		}
 		[SmokeMethod("sortRole() const")]

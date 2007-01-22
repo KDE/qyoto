@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	/// See <see cref="IQGraphicsTextItemSignals"></see> for signals emitted by QGraphicsTextItem
 	[SmokeClass("QGraphicsTextItem")]
@@ -296,7 +296,7 @@ namespace Qyoto {
 			ProxyQGraphicsTextItem().SetParentItem(parent);
 		}
 		[SmokeMethod("children() const")]
-		public ArrayList Children() {
+		public List<QGraphicsItem> Children() {
 			return ProxyQGraphicsTextItem().Children();
 		}
 		[SmokeMethod("group() const")]
@@ -556,11 +556,11 @@ namespace Qyoto {
 			return ProxyQGraphicsTextItem().CollidesWithPath(path);
 		}
 		[SmokeMethod("collidingItems(Qt::ItemSelectionMode) const")]
-		public ArrayList CollidingItems(Qt.ItemSelectionMode mode) {
+		public List<QGraphicsItem> CollidingItems(Qt.ItemSelectionMode mode) {
 			return ProxyQGraphicsTextItem().CollidingItems(mode);
 		}
 		[SmokeMethod("collidingItems() const")]
-		public ArrayList CollidingItems() {
+		public List<QGraphicsItem> CollidingItems() {
 			return ProxyQGraphicsTextItem().CollidingItems();
 		}
 		[SmokeMethod("isObscured() const")]

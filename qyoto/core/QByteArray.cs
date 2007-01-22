@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	[SmokeClass("QByteArray")]
 	public class QByteArray : MarshalByRefObject, IDisposable {
@@ -379,7 +379,7 @@ namespace Qyoto {
 			return ProxyQByteArray().Replace(before,after);
 		}
 		[SmokeMethod("split(char) const")]
-		public ArrayList Split(char sep) {
+		public List<QByteArray> Split(char sep) {
 			return ProxyQByteArray().Split(sep);
 		}
 		[SmokeMethod("operator==(const QString&) const")]

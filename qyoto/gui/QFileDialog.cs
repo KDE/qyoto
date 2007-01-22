@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	/// See <see cref="IQFileDialogSignals"></see> for signals emitted by QFileDialog
 	[SmokeClass("QFileDialog")]
@@ -31,13 +31,13 @@ namespace Qyoto {
 			string GetExistingDirectory(QWidget parent, string caption);
 			string GetExistingDirectory(QWidget parent);
 			string GetExistingDirectory();
-			ArrayList GetOpenFileNames(QWidget parent, string caption, string dir, string filter, StringBuilder selectedFilter, int options);
-			ArrayList GetOpenFileNames(QWidget parent, string caption, string dir, string filter, StringBuilder selectedFilter);
-			ArrayList GetOpenFileNames(QWidget parent, string caption, string dir, string filter);
-			ArrayList GetOpenFileNames(QWidget parent, string caption, string dir);
-			ArrayList GetOpenFileNames(QWidget parent, string caption);
-			ArrayList GetOpenFileNames(QWidget parent);
-			ArrayList GetOpenFileNames();
+			List<string> GetOpenFileNames(QWidget parent, string caption, string dir, string filter, StringBuilder selectedFilter, int options);
+			List<string> GetOpenFileNames(QWidget parent, string caption, string dir, string filter, StringBuilder selectedFilter);
+			List<string> GetOpenFileNames(QWidget parent, string caption, string dir, string filter);
+			List<string> GetOpenFileNames(QWidget parent, string caption, string dir);
+			List<string> GetOpenFileNames(QWidget parent, string caption);
+			List<string> GetOpenFileNames(QWidget parent);
+			List<string> GetOpenFileNames();
 		}
 
 		protected new void CreateProxy() {
@@ -151,7 +151,7 @@ namespace Qyoto {
 			ProxyQFileDialog().SelectFile(filename);
 		}
 		[SmokeMethod("selectedFiles() const")]
-		public ArrayList SelectedFiles() {
+		public List<string> SelectedFiles() {
 			return ProxyQFileDialog().SelectedFiles();
 		}
 		[SmokeMethod("setFilter(const QString&)")]
@@ -159,11 +159,11 @@ namespace Qyoto {
 			ProxyQFileDialog().SetFilter(filter);
 		}
 		[SmokeMethod("setFilters(const QStringList&)")]
-		public void SetFilters(string[] filters) {
+		public void SetFilters(List<string> filters) {
 			ProxyQFileDialog().SetFilters(filters);
 		}
 		[SmokeMethod("filters() const")]
-		public ArrayList Filters() {
+		public List<string> Filters() {
 			return ProxyQFileDialog().Filters();
 		}
 		[SmokeMethod("selectFilter(const QString&)")]
@@ -231,11 +231,11 @@ namespace Qyoto {
 			return ProxyQFileDialog().DefaultSuffix();
 		}
 		[SmokeMethod("setHistory(const QStringList&)")]
-		public void SetHistory(string[] paths) {
+		public void SetHistory(List<string> paths) {
 			ProxyQFileDialog().SetHistory(paths);
 		}
 		[SmokeMethod("history() const")]
-		public ArrayList History() {
+		public List<string> History() {
 			return ProxyQFileDialog().History();
 		}
 		[SmokeMethod("setItemDelegate(QAbstractItemDelegate*)")]
@@ -347,31 +347,31 @@ namespace Qyoto {
 			return StaticQFileDialog().GetExistingDirectory();
 		}
 		[SmokeMethod("getOpenFileNames(QWidget*, const QString&, const QString&, const QString&, QString*, Options)")]
-		public static ArrayList GetOpenFileNames(QWidget parent, string caption, string dir, string filter, StringBuilder selectedFilter, int options) {
+		public static List<string> GetOpenFileNames(QWidget parent, string caption, string dir, string filter, StringBuilder selectedFilter, int options) {
 			return StaticQFileDialog().GetOpenFileNames(parent,caption,dir,filter,selectedFilter,options);
 		}
 		[SmokeMethod("getOpenFileNames(QWidget*, const QString&, const QString&, const QString&, QString*)")]
-		public static ArrayList GetOpenFileNames(QWidget parent, string caption, string dir, string filter, StringBuilder selectedFilter) {
+		public static List<string> GetOpenFileNames(QWidget parent, string caption, string dir, string filter, StringBuilder selectedFilter) {
 			return StaticQFileDialog().GetOpenFileNames(parent,caption,dir,filter,selectedFilter);
 		}
 		[SmokeMethod("getOpenFileNames(QWidget*, const QString&, const QString&, const QString&)")]
-		public static ArrayList GetOpenFileNames(QWidget parent, string caption, string dir, string filter) {
+		public static List<string> GetOpenFileNames(QWidget parent, string caption, string dir, string filter) {
 			return StaticQFileDialog().GetOpenFileNames(parent,caption,dir,filter);
 		}
 		[SmokeMethod("getOpenFileNames(QWidget*, const QString&, const QString&)")]
-		public static ArrayList GetOpenFileNames(QWidget parent, string caption, string dir) {
+		public static List<string> GetOpenFileNames(QWidget parent, string caption, string dir) {
 			return StaticQFileDialog().GetOpenFileNames(parent,caption,dir);
 		}
 		[SmokeMethod("getOpenFileNames(QWidget*, const QString&)")]
-		public static ArrayList GetOpenFileNames(QWidget parent, string caption) {
+		public static List<string> GetOpenFileNames(QWidget parent, string caption) {
 			return StaticQFileDialog().GetOpenFileNames(parent,caption);
 		}
 		[SmokeMethod("getOpenFileNames(QWidget*)")]
-		public static ArrayList GetOpenFileNames(QWidget parent) {
+		public static List<string> GetOpenFileNames(QWidget parent) {
 			return StaticQFileDialog().GetOpenFileNames(parent);
 		}
 		[SmokeMethod("getOpenFileNames()")]
-		public static ArrayList GetOpenFileNames() {
+		public static List<string> GetOpenFileNames() {
 			return StaticQFileDialog().GetOpenFileNames();
 		}
 		// QFileDialog* QFileDialog(const QFileDialogArgs& arg1); >>>> NOT CONVERTED
@@ -400,7 +400,7 @@ namespace Qyoto {
 
 	public interface IQFileDialogSignals : IQDialogSignals {
 		[Q_SIGNAL("void filesSelected(const QStringList&)")]
-		void FilesSelected(string[] files);
+		void FilesSelected(List<string> files);
 		[Q_SIGNAL("void currentChanged(const QString&)")]
 		void CurrentChanged(string path);
 	}

@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	[SmokeClass("QImage")]
 	public class QImage : QPaintDevice, IDisposable {
@@ -160,14 +160,8 @@ namespace Qyoto {
 		public QImage ConvertToFormat(QImage.Format f) {
 			return ProxyQImage().ConvertToFormat(f);
 		}
-		[SmokeMethod("convertToFormat(QImage::Format, const QVector<QRgb>&, Qt::ImageConversionFlags) const")]
-		public QImage ConvertToFormat(QImage.Format f, ArrayList colorTable, int flags) {
-			return ProxyQImage().ConvertToFormat(f,colorTable,flags);
-		}
-		[SmokeMethod("convertToFormat(QImage::Format, const QVector<QRgb>&) const")]
-		public QImage ConvertToFormat(QImage.Format f, ArrayList colorTable) {
-			return ProxyQImage().ConvertToFormat(f,colorTable);
-		}
+		// QImage convertToFormat(QImage::Format arg1,const QVector<QRgb>& arg2,Qt::ImageConversionFlags arg3); >>>> NOT CONVERTED
+		// QImage convertToFormat(QImage::Format arg1,const QVector<QRgb>& arg2); >>>> NOT CONVERTED
 		[SmokeMethod("width() const")]
 		public new int Width() {
 			return ProxyQImage().Width();
@@ -260,14 +254,8 @@ namespace Qyoto {
 		public void SetPixel(QPoint pt, uint index_or_rgb) {
 			ProxyQImage().SetPixel(pt,index_or_rgb);
 		}
-		[SmokeMethod("colorTable() const")]
-		public ArrayList ColorTable() {
-			return ProxyQImage().ColorTable();
-		}
-		[SmokeMethod("setColorTable(const QVector<QRgb>)")]
-		public void SetColorTable(ArrayList colors) {
-			ProxyQImage().SetColorTable(colors);
-		}
+		// QVector<QRgb> colorTable(); >>>> NOT CONVERTED
+		// void setColorTable(const QVector<QRgb> arg1); >>>> NOT CONVERTED
 		[SmokeMethod("fill(uint)")]
 		public void Fill(uint pixel) {
 			ProxyQImage().Fill(pixel);
@@ -457,7 +445,7 @@ namespace Qyoto {
 			ProxyQImage().SetOffset(arg1);
 		}
 		[SmokeMethod("textKeys() const")]
-		public ArrayList TextKeys() {
+		public List<string> TextKeys() {
 			return ProxyQImage().TextKeys();
 		}
 		[SmokeMethod("text(const QString&) const")]
@@ -476,12 +464,9 @@ namespace Qyoto {
 		public string Text(string key, string lang) {
 			return ProxyQImage().Text(key,lang);
 		}
-		[SmokeMethod("textList() const")]
-		public ArrayList TextList() {
-			return ProxyQImage().TextList();
-		}
+		// QList<QImageTextKeyLang> textList(); >>>> NOT CONVERTED
 		[SmokeMethod("textLanguages() const")]
-		public ArrayList TextLanguages() {
+		public List<string> TextLanguages() {
 			return ProxyQImage().TextLanguages();
 		}
 		// QString text(const QImageTextKeyLang& arg1); >>>> NOT CONVERTED

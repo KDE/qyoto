@@ -190,8 +190,6 @@ namespace Qyoto {
 		private void DisposeQIODevice() {
 			ProxyQIODevice().DisposeQIODevice();
 		}
-
-
 		protected new IQIODeviceSignals Emit() {
 			return (IQIODeviceSignals) Q_EMIT;
 		}

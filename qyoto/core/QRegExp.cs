@@ -2,8 +2,8 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
+	using System.Collections.Generic;
 
 	[SmokeClass("QRegExp")]
 	public class QRegExp : MarshalByRefObject, IDisposable {
@@ -174,7 +174,7 @@ namespace Qyoto {
 			return ProxyQRegExp().NumCaptures();
 		}
 		[SmokeMethod("capturedTexts()")]
-		public ArrayList CapturedTexts() {
+		public List<string> CapturedTexts() {
 			return ProxyQRegExp().CapturedTexts();
 		}
 		[SmokeMethod("cap(int)")]
