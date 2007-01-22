@@ -174,9 +174,12 @@ namespace Qyoto {
 		public QTextLength LengthProperty(int propertyId) {
 			return ProxyQTextFormat().LengthProperty(propertyId);
 		}
-		// QVector<QTextLength> lengthVectorProperty(int arg1); >>>> NOT CONVERTED
+		[SmokeMethod("lengthVectorProperty(int) const")]
+		public List<QTextLength> LengthVectorProperty(int propertyId) {
+			return ProxyQTextFormat().LengthVectorProperty(propertyId);
+		}
 		[SmokeMethod("setProperty(int, const QVector<QTextLength>&)")]
-		public void SetProperty(int propertyId, List<QTextFormat> lengths) {
+		public void SetProperty(int propertyId, List<QTextLength> lengths) {
 			ProxyQTextFormat().SetProperty(propertyId,lengths);
 		}
 		[SmokeMethod("properties() const")]

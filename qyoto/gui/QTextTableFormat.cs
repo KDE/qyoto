@@ -47,10 +47,13 @@ namespace Qyoto {
 			ProxyQTextTableFormat().SetColumns(columns);
 		}
 		[SmokeMethod("setColumnWidthConstraints(const QVector<QTextLength>&)")]
-		public void SetColumnWidthConstraints(List<QTextFormat> constraints) {
+		public void SetColumnWidthConstraints(List<QTextLength> constraints) {
 			ProxyQTextTableFormat().SetColumnWidthConstraints(constraints);
 		}
-		// QVector<QTextLength> columnWidthConstraints(); >>>> NOT CONVERTED
+		[SmokeMethod("columnWidthConstraints() const")]
+		public List<QTextLength> ColumnWidthConstraints() {
+			return ProxyQTextTableFormat().ColumnWidthConstraints();
+		}
 		[SmokeMethod("clearColumnWidthConstraints()")]
 		public void ClearColumnWidthConstraints() {
 			ProxyQTextTableFormat().ClearColumnWidthConstraints();

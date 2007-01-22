@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Collections.Generic;
 
 	[SmokeClass("QPainterPathStroker")]
 	public class QPainterPathStroker : MarshalByRefObject, IDisposable {
@@ -80,8 +81,14 @@ namespace Qyoto {
 		public void SetDashPattern(Qt.PenStyle arg1) {
 			ProxyQPainterPathStroker().SetDashPattern(arg1);
 		}
-		// void setDashPattern(const QVector<qreal>& arg1); >>>> NOT CONVERTED
-		// QVector<qreal> dashPattern(); >>>> NOT CONVERTED
+		[SmokeMethod("setDashPattern(const QVector<qreal>&)")]
+		public void SetDashPattern(List<double> dashPattern) {
+			ProxyQPainterPathStroker().SetDashPattern(dashPattern);
+		}
+		[SmokeMethod("dashPattern() const")]
+		public List<double> DashPattern() {
+			return ProxyQPainterPathStroker().DashPattern();
+		}
 		[SmokeMethod("createStroke(const QPainterPath&) const")]
 		public QPainterPath CreateStroke(QPainterPath path) {
 			return ProxyQPainterPathStroker().CreateStroke(path);

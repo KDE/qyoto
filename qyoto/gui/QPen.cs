@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Collections.Generic;
 
 	[SmokeClass("QPen")]
 	public class QPen : MarshalByRefObject, IDisposable {
@@ -101,8 +102,14 @@ namespace Qyoto {
 		public void SetStyle(Qt.PenStyle arg1) {
 			ProxyQPen().SetStyle(arg1);
 		}
-		// QVector<qreal> dashPattern(); >>>> NOT CONVERTED
-		// void setDashPattern(const QVector<qreal>& arg1); >>>> NOT CONVERTED
+		[SmokeMethod("dashPattern() const")]
+		public List<double> DashPattern() {
+			return ProxyQPen().DashPattern();
+		}
+		[SmokeMethod("setDashPattern(const QVector<qreal>&)")]
+		public void SetDashPattern(List<double> pattern) {
+			ProxyQPen().SetDashPattern(pattern);
+		}
 		[SmokeMethod("miterLimit() const")]
 		public double MiterLimit() {
 			return ProxyQPen().MiterLimit();
