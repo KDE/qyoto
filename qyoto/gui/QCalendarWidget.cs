@@ -84,6 +84,30 @@ namespace Qyoto {
 				SetProperty("gridVisible", QVariant.FromValue<bool>(value));
 			}
 		}
+		public QCalendarWidget.SelectionMode selectionMode {
+			get {
+				return Property("selectionMode").Value<QCalendarWidget.SelectionMode>();
+			}
+			set {
+				SetProperty("selectionMode", QVariant.FromValue<QCalendarWidget.SelectionMode>(value));
+			}
+		}
+		public QCalendarWidget.HorizontalHeaderFormat horizontalHeaderFormat {
+			get {
+				return Property("horizontalHeaderFormat").Value<QCalendarWidget.HorizontalHeaderFormat>();
+			}
+			set {
+				SetProperty("horizontalHeaderFormat", QVariant.FromValue<QCalendarWidget.HorizontalHeaderFormat>(value));
+			}
+		}
+		public QCalendarWidget.VerticalHeaderFormat verticalHeaderFormat {
+			get {
+				return Property("verticalHeaderFormat").Value<QCalendarWidget.VerticalHeaderFormat>();
+			}
+			set {
+				SetProperty("verticalHeaderFormat", QVariant.FromValue<QCalendarWidget.VerticalHeaderFormat>(value));
+			}
+		}
 		public bool HeaderVisible {
 			get {
 				return Property("headerVisible").Value<bool>();

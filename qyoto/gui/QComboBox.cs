@@ -92,6 +92,22 @@ namespace Qyoto {
 				SetProperty("maxCount", QVariant.FromValue<int>(value));
 			}
 		}
+		public QComboBox.InsertPolicy insertPolicy {
+			get {
+				return Property("insertPolicy").Value<QComboBox.InsertPolicy>();
+			}
+			set {
+				SetProperty("insertPolicy", QVariant.FromValue<QComboBox.InsertPolicy>(value));
+			}
+		}
+		public QComboBox.SizeAdjustPolicy sizeAdjustPolicy {
+			get {
+				return Property("sizeAdjustPolicy").Value<QComboBox.SizeAdjustPolicy>();
+			}
+			set {
+				SetProperty("sizeAdjustPolicy", QVariant.FromValue<QComboBox.SizeAdjustPolicy>(value));
+			}
+		}
 		public int MinimumContentsLength {
 			get {
 				return Property("minimumContentsLength").Value<int>();

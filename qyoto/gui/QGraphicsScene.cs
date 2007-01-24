@@ -50,6 +50,14 @@ namespace Qyoto {
 				SetProperty("foregroundBrush", QVariant.FromValue<QBrush>(value));
 			}
 		}
+		public QGraphicsScene.ItemIndexMethod itemIndexMethod {
+			get {
+				return Property("itemIndexMethod").Value<QGraphicsScene.ItemIndexMethod>();
+			}
+			set {
+				SetProperty("itemIndexMethod", QVariant.FromValue<QGraphicsScene.ItemIndexMethod>(value));
+			}
+		}
 		public QRectF SceneRect {
 			get {
 				return Property("sceneRect").Value<QRectF>();

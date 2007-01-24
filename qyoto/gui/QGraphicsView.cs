@@ -91,12 +91,36 @@ namespace Qyoto {
 				SetProperty("renderHints", QVariant.FromValue<int>(value));
 			}
 		}
+		public QGraphicsView.DragMode dragMode {
+			get {
+				return Property("dragMode").Value<QGraphicsView.DragMode>();
+			}
+			set {
+				SetProperty("dragMode", QVariant.FromValue<QGraphicsView.DragMode>(value));
+			}
+		}
 		public int CacheMode {
 			get {
 				return Property("cacheMode").Value<int>();
 			}
 			set {
 				SetProperty("cacheMode", QVariant.FromValue<int>(value));
+			}
+		}
+		public QGraphicsView.ViewportAnchor TransformationAnchor {
+			get {
+				return Property("transformationAnchor").Value<QGraphicsView.ViewportAnchor>();
+			}
+			set {
+				SetProperty("transformationAnchor", QVariant.FromValue<QGraphicsView.ViewportAnchor>(value));
+			}
+		}
+		public QGraphicsView.ViewportAnchor ResizeAnchor {
+			get {
+				return Property("resizeAnchor").Value<QGraphicsView.ViewportAnchor>();
+			}
+			set {
+				SetProperty("resizeAnchor", QVariant.FromValue<QGraphicsView.ViewportAnchor>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

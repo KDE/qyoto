@@ -134,12 +134,12 @@ namespace Qyoto {
 				SetProperty("text", QVariant.FromValue<string>(value));
 			}
 		}
-		public int icon {
+		public QMessageBox.Icon icon {
 			get {
-				return Property("icon").Value<int>();
+				return Property("icon").Value<QMessageBox.Icon>();
 			}
 			set {
-				SetProperty("icon", QVariant.FromValue<int>(value));
+				SetProperty("icon", QVariant.FromValue<QMessageBox.Icon>(value));
 			}
 		}
 		public QPixmap IconPixmap {

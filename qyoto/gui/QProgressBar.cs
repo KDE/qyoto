@@ -97,12 +97,12 @@ namespace Qyoto {
 				SetProperty("invertedAppearance", QVariant.FromValue<bool>(value));
 			}
 		}
-		public int TextDirection {
+		public QProgressBar.Direction TextDirection {
 			get {
-				return Property("textDirection").Value<int>();
+				return Property("textDirection").Value<QProgressBar.Direction>();
 			}
 			set {
-				SetProperty("textDirection", QVariant.FromValue<int>(value));
+				SetProperty("textDirection", QVariant.FromValue<QProgressBar.Direction>(value));
 			}
 		}
 		public string Format {

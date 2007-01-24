@@ -5,6 +5,9 @@
 	* QDomNodeList is no longer an ArrayList type
 	* Added QList<QRgb> as a C# List<uint> type
 	* QVariant.Value() and QVariant.FromValue() now work correctly with enums
+	* The Enums in properties are now fully qualified with the classname
+	* Fixed up the code for the t11 example
+	* Added some more CMakeLists.txt files
 
 2007-22-01  Arno Rehn  <arno@arnorehn.de>
 

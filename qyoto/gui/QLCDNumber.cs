@@ -56,20 +56,20 @@ namespace Qyoto {
 				SetProperty("numDigits", QVariant.FromValue<int>(value));
 			}
 		}
-		public int mode {
+		public QLCDNumber.Mode mode {
 			get {
-				return Property("mode").Value<int>();
+				return Property("mode").Value<QLCDNumber.Mode>();
 			}
 			set {
-				SetProperty("mode", QVariant.FromValue<int>(value));
+				SetProperty("mode", QVariant.FromValue<QLCDNumber.Mode>(value));
 			}
 		}
-		public int segmentStyle {
+		public QLCDNumber.SegmentStyle segmentStyle {
 			get {
-				return Property("segmentStyle").Value<int>();
+				return Property("segmentStyle").Value<QLCDNumber.SegmentStyle>();
 			}
 			set {
-				SetProperty("segmentStyle", QVariant.FromValue<int>(value));
+				SetProperty("segmentStyle", QVariant.FromValue<QLCDNumber.SegmentStyle>(value));
 			}
 		}
 		public double Value {

@@ -1,6 +1,6 @@
 using System;
 using System.Runtime.InteropServices;
-using Qt;
+using Qyoto;
 
 public class T1 
 {

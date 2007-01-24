@@ -142,12 +142,36 @@ namespace Qyoto {
 				SetProperty("dragDropOverwriteMode", QVariant.FromValue<bool>(value));
 			}
 		}
+		public QAbstractItemView.DragDropMode dragDropMode {
+			get {
+				return Property("dragDropMode").Value<QAbstractItemView.DragDropMode>();
+			}
+			set {
+				SetProperty("dragDropMode", QVariant.FromValue<QAbstractItemView.DragDropMode>(value));
+			}
+		}
 		public bool AlternatingRowColors {
 			get {
 				return Property("alternatingRowColors").Value<bool>();
 			}
 			set {
 				SetProperty("alternatingRowColors", QVariant.FromValue<bool>(value));
+			}
+		}
+		public QAbstractItemView.SelectionMode selectionMode {
+			get {
+				return Property("selectionMode").Value<QAbstractItemView.SelectionMode>();
+			}
+			set {
+				SetProperty("selectionMode", QVariant.FromValue<QAbstractItemView.SelectionMode>(value));
+			}
+		}
+		public QAbstractItemView.SelectionBehavior selectionBehavior {
+			get {
+				return Property("selectionBehavior").Value<QAbstractItemView.SelectionBehavior>();
+			}
+			set {
+				SetProperty("selectionBehavior", QVariant.FromValue<QAbstractItemView.SelectionBehavior>(value));
 			}
 		}
 		public QSize IconSize {
@@ -164,6 +188,22 @@ namespace Qyoto {
 			}
 			set {
 				SetProperty("textElideMode", QVariant.FromValue<Qt.TextElideMode>(value));
+			}
+		}
+		public QAbstractItemView.ScrollMode VerticalScrollMode {
+			get {
+				return Property("verticalScrollMode").Value<QAbstractItemView.ScrollMode>();
+			}
+			set {
+				SetProperty("verticalScrollMode", QVariant.FromValue<QAbstractItemView.ScrollMode>(value));
+			}
+		}
+		public QAbstractItemView.ScrollMode HorizontalScrollMode {
+			get {
+				return Property("horizontalScrollMode").Value<QAbstractItemView.ScrollMode>();
+			}
+			set {
+				SetProperty("horizontalScrollMode", QVariant.FromValue<QAbstractItemView.ScrollMode>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

@@ -46,6 +46,22 @@ namespace Qyoto {
 			Shadow_Mask = 0x00f0,
 			Shape_Mask = 0x000f,
 		}
+		public QFrame.Shape FrameShape {
+			get {
+				return Property("frameShape").Value<QFrame.Shape>();
+			}
+			set {
+				SetProperty("frameShape", QVariant.FromValue<QFrame.Shape>(value));
+			}
+		}
+		public QFrame.Shadow FrameShadow {
+			get {
+				return Property("frameShadow").Value<QFrame.Shadow>();
+			}
+			set {
+				SetProperty("frameShadow", QVariant.FromValue<QFrame.Shadow>(value));
+			}
+		}
 		public int LineWidth {
 			get {
 				return Property("lineWidth").Value<int>();

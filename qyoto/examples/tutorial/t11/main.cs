@@ -24,7 +24,7 @@ using Qyoto;
 class MyWidget : QWidget {
 	public MyWidget(QWidget parent) : base(parent) {
 		QPushButton quit = new QPushButton("&Quit");
-		quit.SetFont(new QFont("Times", 18, (int) QFont.Weight.Bold));
+		quit.Font = new QFont("Times", 18, (int) QFont.Weight.Bold);
 		
 		Connect(quit, SIGNAL("clicked()"), qApp, SLOT("quit()"));
 		
@@ -47,7 +47,7 @@ class MyWidget : QWidget {
 			force, SLOT("setValue(int)"));
 		
 		QPushButton shoot = new QPushButton("&Shoot");
-		shoot.SetFont(new QFont("Times", 18, (int) QFont.Weight.Bold));
+		shoot.Font = new QFont("Times", 18, (int) QFont.Weight.Bold);
 		
 		Connect(shoot, SIGNAL("clicked()"), cannonField, SLOT("shoot()"));
 		

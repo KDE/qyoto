@@ -48,6 +48,22 @@ namespace Qyoto {
 				SetProperty("completionPrefix", QVariant.FromValue<string>(value));
 			}
 		}
+		public QCompleter.ModelSorting modelSorting {
+			get {
+				return Property("modelSorting").Value<QCompleter.ModelSorting>();
+			}
+			set {
+				SetProperty("modelSorting", QVariant.FromValue<QCompleter.ModelSorting>(value));
+			}
+		}
+		public QCompleter.CompletionMode completionMode {
+			get {
+				return Property("completionMode").Value<QCompleter.CompletionMode>();
+			}
+			set {
+				SetProperty("completionMode", QVariant.FromValue<QCompleter.CompletionMode>(value));
+			}
+		}
 		public int CompletionColumn {
 			get {
 				return Property("completionColumn").Value<int>();

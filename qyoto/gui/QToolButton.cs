@@ -34,6 +34,14 @@ namespace Qyoto {
 			MenuButtonPopup = 1,
 			InstantPopup = 2,
 		}
+		public QToolButton.ToolButtonPopupMode PopupMode {
+			get {
+				return Property("popupMode").Value<QToolButton.ToolButtonPopupMode>();
+			}
+			set {
+				SetProperty("popupMode", QVariant.FromValue<QToolButton.ToolButtonPopupMode>(value));
+			}
+		}
 		public Qt.ToolButtonStyle ToolButtonStyle {
 			get {
 				return Property("toolButtonStyle").Value<Qt.ToolButtonStyle>();

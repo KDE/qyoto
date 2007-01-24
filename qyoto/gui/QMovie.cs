@@ -48,12 +48,12 @@ namespace Qyoto {
 				SetProperty("speed", QVariant.FromValue<int>(value));
 			}
 		}
-		public int cacheMode {
+		public QMovie.CacheMode cacheMode {
 			get {
-				return Property("cacheMode").Value<int>();
+				return Property("cacheMode").Value<QMovie.CacheMode>();
 			}
 			set {
-				SetProperty("cacheMode", QVariant.FromValue<int>(value));
+				SetProperty("cacheMode", QVariant.FromValue<QMovie.CacheMode>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

@@ -72,6 +72,14 @@ namespace Qyoto {
 				SetProperty("undoRedoEnabled", QVariant.FromValue<bool>(value));
 			}
 		}
+		public QTextEdit.LineWrapMode lineWrapMode {
+			get {
+				return Property("lineWrapMode").Value<QTextEdit.LineWrapMode>();
+			}
+			set {
+				SetProperty("lineWrapMode", QVariant.FromValue<QTextEdit.LineWrapMode>(value));
+			}
+		}
 		public int LineWrapColumnOrWidth {
 			get {
 				return Property("lineWrapColumnOrWidth").Value<int>();

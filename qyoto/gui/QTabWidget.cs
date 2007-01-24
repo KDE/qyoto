@@ -39,12 +39,20 @@ namespace Qyoto {
 			Rounded = 0,
 			Triangular = 1,
 		}
-		public int tabPosition {
+		public QTabWidget.TabPosition tabPosition {
 			get {
-				return Property("tabPosition").Value<int>();
+				return Property("tabPosition").Value<QTabWidget.TabPosition>();
 			}
 			set {
-				SetProperty("tabPosition", QVariant.FromValue<int>(value));
+				SetProperty("tabPosition", QVariant.FromValue<QTabWidget.TabPosition>(value));
+			}
+		}
+		public QTabWidget.TabShape tabShape {
+			get {
+				return Property("tabShape").Value<QTabWidget.TabShape>();
+			}
+			set {
+				SetProperty("tabShape", QVariant.FromValue<QTabWidget.TabShape>(value));
 			}
 		}
 		public int CurrentIndex {

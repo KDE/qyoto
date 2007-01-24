@@ -98,6 +98,14 @@ namespace Qyoto {
 				SetProperty("minimumTime", QVariant.FromValue<QTime>(value));
 			}
 		}
+		public QDateTimeEdit.Section CurrentSection {
+			get {
+				return Property("currentSection").Value<QDateTimeEdit.Section>();
+			}
+			set {
+				SetProperty("currentSection", QVariant.FromValue<QDateTimeEdit.Section>(value));
+			}
+		}
 		public int DisplayedSections {
 			get {
 				return Property("displayedSections").Value<int>();

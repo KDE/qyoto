@@ -39,6 +39,14 @@ namespace Qyoto {
 			TriangularWest = 6,
 			TriangularEast = 7,
 		}
+		public QTabBar.Shape shape {
+			get {
+				return Property("shape").Value<QTabBar.Shape>();
+			}
+			set {
+				SetProperty("shape", QVariant.FromValue<QTabBar.Shape>(value));
+			}
+		}
 		public int CurrentIndex {
 			get {
 				return Property("currentIndex").Value<int>();

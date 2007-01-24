@@ -52,12 +52,44 @@ namespace Qyoto {
 			ListMode = 0,
 			IconMode = 1,
 		}
+		public QListView.Movement movement {
+			get {
+				return Property("movement").Value<QListView.Movement>();
+			}
+			set {
+				SetProperty("movement", QVariant.FromValue<QListView.Movement>(value));
+			}
+		}
+		public QListView.Flow flow {
+			get {
+				return Property("flow").Value<QListView.Flow>();
+			}
+			set {
+				SetProperty("flow", QVariant.FromValue<QListView.Flow>(value));
+			}
+		}
 		public bool IsWrapping {
 			get {
 				return Property("isWrapping").Value<bool>();
 			}
 			set {
 				SetProperty("isWrapping", QVariant.FromValue<bool>(value));
+			}
+		}
+		public QListView.ResizeMode resizeMode {
+			get {
+				return Property("resizeMode").Value<QListView.ResizeMode>();
+			}
+			set {
+				SetProperty("resizeMode", QVariant.FromValue<QListView.ResizeMode>(value));
+			}
+		}
+		public QListView.LayoutMode layoutMode {
+			get {
+				return Property("layoutMode").Value<QListView.LayoutMode>();
+			}
+			set {
+				SetProperty("layoutMode", QVariant.FromValue<QListView.LayoutMode>(value));
 			}
 		}
 		public int Spacing {
@@ -74,6 +106,14 @@ namespace Qyoto {
 			}
 			set {
 				SetProperty("gridSize", QVariant.FromValue<QSize>(value));
+			}
+		}
+		public QListView.ViewMode viewMode {
+			get {
+				return Property("viewMode").Value<QListView.ViewMode>();
+			}
+			set {
+				SetProperty("viewMode", QVariant.FromValue<QListView.ViewMode>(value));
 			}
 		}
 		public int ModelColumn {

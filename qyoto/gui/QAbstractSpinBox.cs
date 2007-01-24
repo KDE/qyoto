@@ -74,6 +74,14 @@ namespace Qyoto {
 				SetProperty("readOnly", QVariant.FromValue<bool>(value));
 			}
 		}
+		public QAbstractSpinBox.ButtonSymbols buttonSymbols {
+			get {
+				return Property("buttonSymbols").Value<QAbstractSpinBox.ButtonSymbols>();
+			}
+			set {
+				SetProperty("buttonSymbols", QVariant.FromValue<QAbstractSpinBox.ButtonSymbols>(value));
+			}
+		}
 		public string SpecialValueText {
 			get {
 				return Property("specialValueText").Value<string>();
@@ -96,6 +104,14 @@ namespace Qyoto {
 			}
 			set {
 				SetProperty("accelerated", QVariant.FromValue<bool>(value));
+			}
+		}
+		public QAbstractSpinBox.CorrectionMode correctionMode {
+			get {
+				return Property("correctionMode").Value<QAbstractSpinBox.CorrectionMode>();
+			}
+			set {
+				SetProperty("correctionMode", QVariant.FromValue<QAbstractSpinBox.CorrectionMode>(value));
 			}
 		}
 		public bool AcceptableInput {

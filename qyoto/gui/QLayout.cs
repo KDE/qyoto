@@ -53,6 +53,14 @@ namespace Qyoto {
 				SetProperty("spacing", QVariant.FromValue<int>(value));
 			}
 		}
+		public QLayout.SizeConstraint sizeConstraint {
+			get {
+				return Property("sizeConstraint").Value<QLayout.SizeConstraint>();
+			}
+			set {
+				SetProperty("sizeConstraint", QVariant.FromValue<QLayout.SizeConstraint>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QLayout(QWidget parent) : this((Type) null) {
 			CreateProxy();

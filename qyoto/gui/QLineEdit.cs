@@ -67,12 +67,12 @@ namespace Qyoto {
 				SetProperty("frame", QVariant.FromValue<bool>(value));
 			}
 		}
-		public int echoMode {
+		public QLineEdit.EchoMode echoMode {
 			get {
-				return Property("echoMode").Value<int>();
+				return Property("echoMode").Value<QLineEdit.EchoMode>();
 			}
 			set {
-				SetProperty("echoMode", QVariant.FromValue<int>(value));
+				SetProperty("echoMode", QVariant.FromValue<QLineEdit.EchoMode>(value));
 			}
 		}
 		public string DisplayText {

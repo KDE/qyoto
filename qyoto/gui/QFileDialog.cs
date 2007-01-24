@@ -85,6 +85,30 @@ namespace Qyoto {
 			DontUseSheet = 0x08,
 			DontUseNativeDialog = 0x10,
 		}
+		public QFileDialog.ViewMode viewMode {
+			get {
+				return Property("viewMode").Value<QFileDialog.ViewMode>();
+			}
+			set {
+				SetProperty("viewMode", QVariant.FromValue<QFileDialog.ViewMode>(value));
+			}
+		}
+		public QFileDialog.FileMode fileMode {
+			get {
+				return Property("fileMode").Value<QFileDialog.FileMode>();
+			}
+			set {
+				SetProperty("fileMode", QVariant.FromValue<QFileDialog.FileMode>(value));
+			}
+		}
+		public QFileDialog.AcceptMode acceptMode {
+			get {
+				return Property("acceptMode").Value<QFileDialog.AcceptMode>();
+			}
+			set {
+				SetProperty("acceptMode", QVariant.FromValue<QFileDialog.AcceptMode>(value));
+			}
+		}
 		public bool ReadOnly {
 			get {
 				return Property("readOnly").Value<bool>();

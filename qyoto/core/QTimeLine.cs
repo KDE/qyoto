@@ -69,12 +69,12 @@ namespace Qyoto {
 				SetProperty("currentTime", QVariant.FromValue<int>(value));
 			}
 		}
-		public int direction {
+		public QTimeLine.Direction direction {
 			get {
-				return Property("direction").Value<int>();
+				return Property("direction").Value<QTimeLine.Direction>();
 			}
 			set {
-				SetProperty("direction", QVariant.FromValue<int>(value));
+				SetProperty("direction", QVariant.FromValue<QTimeLine.Direction>(value));
 			}
 		}
 		public int LoopCount {
@@ -83,6 +83,14 @@ namespace Qyoto {
 			}
 			set {
 				SetProperty("loopCount", QVariant.FromValue<int>(value));
+			}
+		}
+		public QTimeLine.CurveShape curveShape {
+			get {
+				return Property("curveShape").Value<QTimeLine.CurveShape>();
+			}
+			set {
+				SetProperty("curveShape", QVariant.FromValue<QTimeLine.CurveShape>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
