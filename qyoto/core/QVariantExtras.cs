@@ -4,8 +4,15 @@ namespace Qyoto {
 	using System.Collections;
 	using System.Collections.Generic; 
 	using System.Text;
+	using System.Runtime.InteropServices;
 
 	public partial class QVariant : MarshalByRefObject, IDisposable {
+
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		static extern IntPtr QVariantValue(string typeName, IntPtr variant);
+
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		static extern IntPtr QVariantFromValue(int type, IntPtr value);
 
 		public T Value<T>() {
 			if (typeof(T) == typeof(bool)) {
@@ -55,6 +62,12 @@ namespace Qyoto {
 			} else if (typeof(T).IsEnum) {
 				return (T) (object) ToInt();
 			} else {
+				string typeName = typeof(T).ToString().Replace("Qyoto.", "");
+				if (NameToType(typeName) > E_Type.LastCoreType) {
+					IntPtr instancePtr = QVariantValue(typeName, (IntPtr) GCHandle.Alloc(this));
+					return (T) ((GCHandle) instancePtr).Target;
+				}
+
 				return (T) (object) default(T);
 			}
 		}
@@ -107,6 +120,12 @@ namespace Qyoto {
 			} else if (typeof(T).IsEnum) {
 				return new QVariant((int) value);
 			} else {
+				string typeName = typeof(T).ToString().Replace("Qyoto.", "");
+				if (NameToType(typeName) > E_Type.LastCoreType) {
+					IntPtr instancePtr =  QVariantFromValue((int) NameToType(typeName), (IntPtr) GCHandle.Alloc(value));
+					return (QVariant) ((GCHandle) instancePtr).Target;
+				}
+
 				return new QVariant();
 			}
 		}

@@ -924,6 +924,31 @@ static QByteArray * currentSignature = 0;
 	return -1;
 }
 
+void *
+QVariantValue(char * typeName, void * variant)
+{
+	printf("ENTER QVariantValue(typeName: %s variant: 0x%8.8x)\n", typeName, variant);
+	smokeqyoto_object *o = value_obj_info(variant);
+	void * value = QMetaType::construct(	QMetaType::type(typeName), 
+											(void *) ((QVariant *)o->ptr)->constData() );
+	int id = o->smoke->idClass(typeName);
+	smokeqyoto_object  * vo = alloc_smokeqyoto_object(true, o->smoke, id, (void *) value);
+	(*FreeGCHandle)(variant);
+	return set_obj_info((QString("Qyoto.") + typeName).toLatin1(), vo);
+}
+
+void *
+QVariantFromValue(int type, void * value)
+{
+	printf("ENTER QVariantFromValue(type: %d value: 0x%8.8x)\n", type, value);
+	smokeqyoto_object *o = value_obj_info(value);
+	QVariant * v = new QVariant(type, o->ptr);
+	int id = o->smoke->idClass("QVariant");
+	smokeqyoto_object  * vo = alloc_smokeqyoto_object(true, o->smoke, id, (void *) v);
+	(*FreeGCHandle)(value);
+	return set_obj_info("Qyoto.QVariant", vo);
+}
+
 void 
 InstallFreeGCHandle(FromIntPtr callback)
 {

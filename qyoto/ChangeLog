@@ -8,6 +8,9 @@
 	* The Enums in properties are now fully qualified with the classname
 	* Fixed up the code for the t11 example
 	* Added some more CMakeLists.txt files
+	* Implemented callbacks to construct QVariants and to get values via
+	  QVariant.FromValue() and QVariant.Value() when the type is greater
+	  than QVariant::LastCoreType
 
 2007-22-01  Arno Rehn  <arno@arnorehn.de>
 
