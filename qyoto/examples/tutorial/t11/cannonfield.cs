@@ -41,8 +41,8 @@ class CannonField : QWidget {
 		Connect(autoShootTimer, SIGNAL("timeout()"), this, SLOT("moveShot()"));
 		shootAngle = 0;
 		shootForce = 0;
-		this.Palette = new QPalette(new QColor(250, 250, 200));
-		this.AutoFillBackground = true;
+		Palette = new QPalette(new QColor(250, 250, 200));
+		AutoFillBackground = true;
 	}
 
 	[Q_SLOT]
@@ -125,7 +125,7 @@ class CannonField : QWidget {
 
 	private QRect cannonRect() {
 		QRect result = new QRect(0, 0, 50, 50);
-		result.MoveBottomLeft(this.Rect.BottomLeft());
+		result.MoveBottomLeft(Rect.BottomLeft());
 		return result;
 	}
 
