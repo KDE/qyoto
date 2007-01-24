@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
 
 	[SmokeClass("QDomDocument")]
@@ -92,7 +91,7 @@ namespace Qyoto {
 			return ProxyQDomDocument().CreateEntityReference(name);
 		}
 		[SmokeMethod("elementsByTagName(const QString&) const")]
-		public ArrayList ElementsByTagName(string tagname) {
+		public QDomNodeList ElementsByTagName(string tagname) {
 			return ProxyQDomDocument().ElementsByTagName(tagname);
 		}
 		[SmokeMethod("importNode(const QDomNode&, bool)")]
@@ -108,7 +107,7 @@ namespace Qyoto {
 			return ProxyQDomDocument().CreateAttributeNS(nsURI,qName);
 		}
 		[SmokeMethod("elementsByTagNameNS(const QString&, const QString&)")]
-		public ArrayList ElementsByTagNameNS(string nsURI, string localName) {
+		public QDomNodeList ElementsByTagNameNS(string nsURI, string localName) {
 			return ProxyQDomDocument().ElementsByTagNameNS(nsURI,localName);
 		}
 		[SmokeMethod("elementById(const QString&)")]

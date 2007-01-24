@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
 
 	[SmokeClass("QDomElement")]
@@ -96,7 +95,7 @@ namespace Qyoto {
 			return ProxyQDomElement().RemoveAttributeNode(oldAttr);
 		}
 		[SmokeMethod("elementsByTagName(const QString&) const")]
-		public ArrayList ElementsByTagName(string tagname) {
+		public QDomNodeList ElementsByTagName(string tagname) {
 			return ProxyQDomElement().ElementsByTagName(tagname);
 		}
 		[SmokeMethod("hasAttribute(const QString&) const")]
@@ -148,7 +147,7 @@ namespace Qyoto {
 			return ProxyQDomElement().SetAttributeNodeNS(newAttr);
 		}
 		[SmokeMethod("elementsByTagNameNS(const QString&, const QString&) const")]
-		public ArrayList ElementsByTagNameNS(string nsURI, string localName) {
+		public QDomNodeList ElementsByTagNameNS(string nsURI, string localName) {
 			return ProxyQDomElement().ElementsByTagNameNS(nsURI,localName);
 		}
 		[SmokeMethod("hasAttributeNS(const QString&, const QString&) const")]

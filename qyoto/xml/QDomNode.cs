@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 	using System.Text;
 
 	[SmokeClass("QDomNode")]
@@ -130,7 +129,7 @@ namespace Qyoto {
 			return ProxyQDomNode().ParentNode();
 		}
 		[SmokeMethod("childNodes() const")]
-		public ArrayList ChildNodes() {
+		public QDomNodeList ChildNodes() {
 			return ProxyQDomNode().ChildNodes();
 		}
 		[SmokeMethod("firstChild() const")]

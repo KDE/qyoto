@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Collections;
 
 	[SmokeClass("QDomNodeList")]
 	public class QDomNodeList : MarshalByRefObject, IDisposable {
@@ -11,7 +10,7 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QDomNodeList(Type dummy) {}
 		interface IQDomNodeListProxy {
-			bool op_equals(QDomNodeList lhs, ArrayList arg1);
+			bool op_equals(QDomNodeList lhs, QDomNodeList arg1);
 		}
 
 		protected new void CreateProxy() {
@@ -38,19 +37,19 @@ namespace Qyoto {
 		private void NewQDomNodeList() {
 			ProxyQDomNodeList().NewQDomNodeList();
 		}
-		public QDomNodeList(ArrayList arg1) : this((Type) null) {
+		public QDomNodeList(QDomNodeList arg1) : this((Type) null) {
 			CreateProxy();
 			NewQDomNodeList(arg1);
 		}
 		[SmokeMethod("QDomNodeList(const QDomNodeList&)")]
-		private void NewQDomNodeList(ArrayList arg1) {
+		private void NewQDomNodeList(QDomNodeList arg1) {
 			ProxyQDomNodeList().NewQDomNodeList(arg1);
 		}
 		[SmokeMethod("operator==(const QDomNodeList&) const")]
-		public static bool operator==(QDomNodeList lhs, ArrayList arg1) {
+		public static bool operator==(QDomNodeList lhs, QDomNodeList arg1) {
 			return StaticQDomNodeList().op_equals(lhs,arg1);
 		}
-		public static bool operator!=(QDomNodeList lhs, ArrayList arg1) {
+		public static bool operator!=(QDomNodeList lhs, QDomNodeList arg1) {
 			return !StaticQDomNodeList().op_equals(lhs,arg1);
 		}
 		public override bool Equals(object o) {
