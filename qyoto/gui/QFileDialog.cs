@@ -85,6 +85,38 @@ namespace Qyoto {
 			DontUseSheet = 0x08,
 			DontUseNativeDialog = 0x10,
 		}
+		public bool ReadOnly {
+			get {
+				return Property("ReadOnly").Value<bool>();
+			}
+			set {
+				SetProperty("ReadOnly", QVariant.FromValue<bool>(value));
+			}
+		}
+		public bool ResolveSymlinks {
+			get {
+				return Property("ResolveSymlinks").Value<bool>();
+			}
+			set {
+				SetProperty("ResolveSymlinks", QVariant.FromValue<bool>(value));
+			}
+		}
+		public bool ConfirmOverwrite {
+			get {
+				return Property("ConfirmOverwrite").Value<bool>();
+			}
+			set {
+				SetProperty("ConfirmOverwrite", QVariant.FromValue<bool>(value));
+			}
+		}
+		public string DefaultSuffix {
+			get {
+				return Property("DefaultSuffix").Value<string>();
+			}
+			set {
+				SetProperty("DefaultSuffix", QVariant.FromValue<string>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QFileDialog(QWidget parent, int f) : this((Type) null) {
 			CreateProxy();
@@ -174,61 +206,9 @@ namespace Qyoto {
 		public string SelectedFilter() {
 			return ProxyQFileDialog().SelectedFilter();
 		}
-		[SmokeMethod("setViewMode(QFileDialog::ViewMode)")]
-		public void SetViewMode(QFileDialog.ViewMode mode) {
-			ProxyQFileDialog().SetViewMode(mode);
-		}
-		[SmokeMethod("viewMode() const")]
-		public QFileDialog.ViewMode viewMode() {
-			return ProxyQFileDialog().viewMode();
-		}
-		[SmokeMethod("setFileMode(QFileDialog::FileMode)")]
-		public void SetFileMode(QFileDialog.FileMode mode) {
-			ProxyQFileDialog().SetFileMode(mode);
-		}
-		[SmokeMethod("fileMode() const")]
-		public QFileDialog.FileMode fileMode() {
-			return ProxyQFileDialog().fileMode();
-		}
-		[SmokeMethod("setAcceptMode(QFileDialog::AcceptMode)")]
-		public void SetAcceptMode(QFileDialog.AcceptMode mode) {
-			ProxyQFileDialog().SetAcceptMode(mode);
-		}
-		[SmokeMethod("acceptMode() const")]
-		public QFileDialog.AcceptMode acceptMode() {
-			return ProxyQFileDialog().acceptMode();
-		}
-		[SmokeMethod("setReadOnly(bool)")]
-		public void SetReadOnly(bool enabled) {
-			ProxyQFileDialog().SetReadOnly(enabled);
-		}
 		[SmokeMethod("isReadOnly() const")]
 		public bool IsReadOnly() {
 			return ProxyQFileDialog().IsReadOnly();
-		}
-		[SmokeMethod("setResolveSymlinks(bool)")]
-		public void SetResolveSymlinks(bool enabled) {
-			ProxyQFileDialog().SetResolveSymlinks(enabled);
-		}
-		[SmokeMethod("resolveSymlinks() const")]
-		public bool ResolveSymlinks() {
-			return ProxyQFileDialog().ResolveSymlinks();
-		}
-		[SmokeMethod("setConfirmOverwrite(bool)")]
-		public void SetConfirmOverwrite(bool enabled) {
-			ProxyQFileDialog().SetConfirmOverwrite(enabled);
-		}
-		[SmokeMethod("confirmOverwrite() const")]
-		public bool ConfirmOverwrite() {
-			return ProxyQFileDialog().ConfirmOverwrite();
-		}
-		[SmokeMethod("setDefaultSuffix(const QString&)")]
-		public void SetDefaultSuffix(string suffix) {
-			ProxyQFileDialog().SetDefaultSuffix(suffix);
-		}
-		[SmokeMethod("defaultSuffix() const")]
-		public string DefaultSuffix() {
-			return ProxyQFileDialog().DefaultSuffix();
 		}
 		[SmokeMethod("setHistory(const QStringList&)")]
 		public void SetHistory(List<string> paths) {

@@ -28,6 +28,14 @@ namespace Qyoto {
 			return (IQItemDelegateProxy) _staticInterceptor;
 		}
 
+		public bool Clipping {
+			get {
+				return Property("Clipping").Value<bool>();
+			}
+			set {
+				SetProperty("Clipping", QVariant.FromValue<bool>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QItemDelegate(QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -48,10 +56,6 @@ namespace Qyoto {
 		[SmokeMethod("hasClipping() const")]
 		public bool HasClipping() {
 			return ProxyQItemDelegate().HasClipping();
-		}
-		[SmokeMethod("setClipping(bool)")]
-		public void SetClipping(bool clip) {
-			ProxyQItemDelegate().SetClipping(clip);
 		}
 		[SmokeMethod("paint(QPainter*, const QStyleOptionViewItem&, const QModelIndex&) const")]
 		public new void Paint(QPainter painter, QStyleOptionViewItem option, QModelIndex index) {

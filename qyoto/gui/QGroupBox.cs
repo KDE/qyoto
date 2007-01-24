@@ -29,6 +29,46 @@ namespace Qyoto {
 			return (IQGroupBoxProxy) _staticInterceptor;
 		}
 
+		public string Title {
+			get {
+				return Property("Title").Value<string>();
+			}
+			set {
+				SetProperty("Title", QVariant.FromValue<string>(value));
+			}
+		}
+		public int Alignment {
+			get {
+				return Property("Alignment").Value<int>();
+			}
+			set {
+				SetProperty("Alignment", QVariant.FromValue<int>(value));
+			}
+		}
+		public bool Flat {
+			get {
+				return Property("Flat").Value<bool>();
+			}
+			set {
+				SetProperty("Flat", QVariant.FromValue<bool>(value));
+			}
+		}
+		public bool Checkable {
+			get {
+				return Property("Checkable").Value<bool>();
+			}
+			set {
+				SetProperty("Checkable", QVariant.FromValue<bool>(value));
+			}
+		}
+		public bool Checked {
+			get {
+				return Property("Checked").Value<bool>();
+			}
+			set {
+				SetProperty("Checked", QVariant.FromValue<bool>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QGroupBox(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -62,22 +102,6 @@ namespace Qyoto {
 		private void NewQGroupBox(string title) {
 			ProxyQGroupBox().NewQGroupBox(title);
 		}
-		[SmokeMethod("title() const")]
-		public string Title() {
-			return ProxyQGroupBox().Title();
-		}
-		[SmokeMethod("setTitle(const QString&)")]
-		public void SetTitle(string title) {
-			ProxyQGroupBox().SetTitle(title);
-		}
-		[SmokeMethod("alignment() const")]
-		public int Alignment() {
-			return ProxyQGroupBox().Alignment();
-		}
-		[SmokeMethod("setAlignment(int)")]
-		public void SetAlignment(int alignment) {
-			ProxyQGroupBox().SetAlignment(alignment);
-		}
 		[SmokeMethod("minimumSizeHint() const")]
 		public new QSize MinimumSizeHint() {
 			return ProxyQGroupBox().MinimumSizeHint();
@@ -86,25 +110,13 @@ namespace Qyoto {
 		public bool IsFlat() {
 			return ProxyQGroupBox().IsFlat();
 		}
-		[SmokeMethod("setFlat(bool)")]
-		public void SetFlat(bool flat) {
-			ProxyQGroupBox().SetFlat(flat);
-		}
 		[SmokeMethod("isCheckable() const")]
 		public bool IsCheckable() {
 			return ProxyQGroupBox().IsCheckable();
 		}
-		[SmokeMethod("setCheckable(bool)")]
-		public void SetCheckable(bool checkable) {
-			ProxyQGroupBox().SetCheckable(checkable);
-		}
 		[SmokeMethod("isChecked() const")]
 		public bool IsChecked() {
 			return ProxyQGroupBox().IsChecked();
-		}
-		[SmokeMethod("setChecked(bool)")]
-		public void SetChecked(bool arg1) {
-			ProxyQGroupBox().SetChecked(arg1);
 		}
 		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {

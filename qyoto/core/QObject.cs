@@ -54,6 +54,14 @@ namespace Qyoto {
 			return (IQObjectProxy) _staticInterceptor;
 		}
 
+		public string ObjectName {
+			get {
+				return Property("ObjectName").Value<string>();
+			}
+			set {
+				SetProperty("ObjectName", QVariant.FromValue<string>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QObject(QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -78,14 +86,6 @@ namespace Qyoto {
 		[SmokeMethod("eventFilter(QObject*, QEvent*)")]
 		public virtual bool EventFilter(QObject arg1, QEvent arg2) {
 			return ProxyQObject().EventFilter(arg1,arg2);
-		}
-		[SmokeMethod("objectName() const")]
-		public string ObjectName() {
-			return ProxyQObject().ObjectName();
-		}
-		[SmokeMethod("setObjectName(const QString&)")]
-		public void SetObjectName(string name) {
-			ProxyQObject().SetObjectName(name);
 		}
 		[SmokeMethod("isWidgetType() const")]
 		public bool IsWidgetType() {

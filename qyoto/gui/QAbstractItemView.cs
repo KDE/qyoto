@@ -94,6 +94,78 @@ namespace Qyoto {
 			BelowItem = 2,
 			OnViewport = 3,
 		}
+		public bool AutoScroll {
+			get {
+				return Property("AutoScroll").Value<bool>();
+			}
+			set {
+				SetProperty("AutoScroll", QVariant.FromValue<bool>(value));
+			}
+		}
+		public int EditTriggers {
+			get {
+				return Property("EditTriggers").Value<int>();
+			}
+			set {
+				SetProperty("EditTriggers", QVariant.FromValue<int>(value));
+			}
+		}
+		public bool TabKeyNavigation {
+			get {
+				return Property("TabKeyNavigation").Value<bool>();
+			}
+			set {
+				SetProperty("TabKeyNavigation", QVariant.FromValue<bool>(value));
+			}
+		}
+		public bool ShowDropIndicator {
+			get {
+				return Property("ShowDropIndicator").Value<bool>();
+			}
+			set {
+				SetProperty("ShowDropIndicator", QVariant.FromValue<bool>(value));
+			}
+		}
+		public bool DragEnabled {
+			get {
+				return Property("DragEnabled").Value<bool>();
+			}
+			set {
+				SetProperty("DragEnabled", QVariant.FromValue<bool>(value));
+			}
+		}
+		public bool DragDropOverwriteMode {
+			get {
+				return Property("DragDropOverwriteMode").Value<bool>();
+			}
+			set {
+				SetProperty("DragDropOverwriteMode", QVariant.FromValue<bool>(value));
+			}
+		}
+		public bool AlternatingRowColors {
+			get {
+				return Property("AlternatingRowColors").Value<bool>();
+			}
+			set {
+				SetProperty("AlternatingRowColors", QVariant.FromValue<bool>(value));
+			}
+		}
+		public QSize IconSize {
+			get {
+				return Property("IconSize").Value<QSize>();
+			}
+			set {
+				SetProperty("IconSize", QVariant.FromValue<QSize>(value));
+			}
+		}
+		public Qt.TextElideMode TextElideMode {
+			get {
+				return Property("TextElideMode").Value<Qt.TextElideMode>();
+			}
+			set {
+				SetProperty("TextElideMode", QVariant.FromValue<Qt.TextElideMode>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QAbstractItemView(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -135,22 +207,6 @@ namespace Qyoto {
 		public QAbstractItemDelegate ItemDelegate() {
 			return ProxyQAbstractItemView().ItemDelegate();
 		}
-		[SmokeMethod("setSelectionMode(QAbstractItemView::SelectionMode)")]
-		public void SetSelectionMode(QAbstractItemView.SelectionMode mode) {
-			ProxyQAbstractItemView().SetSelectionMode(mode);
-		}
-		[SmokeMethod("selectionMode() const")]
-		public QAbstractItemView.SelectionMode selectionMode() {
-			return ProxyQAbstractItemView().selectionMode();
-		}
-		[SmokeMethod("setSelectionBehavior(QAbstractItemView::SelectionBehavior)")]
-		public void SetSelectionBehavior(QAbstractItemView.SelectionBehavior behavior) {
-			ProxyQAbstractItemView().SetSelectionBehavior(behavior);
-		}
-		[SmokeMethod("selectionBehavior() const")]
-		public QAbstractItemView.SelectionBehavior selectionBehavior() {
-			return ProxyQAbstractItemView().selectionBehavior();
-		}
 		[SmokeMethod("currentIndex() const")]
 		public QModelIndex CurrentIndex() {
 			return ProxyQAbstractItemView().CurrentIndex();
@@ -159,101 +215,13 @@ namespace Qyoto {
 		public QModelIndex RootIndex() {
 			return ProxyQAbstractItemView().RootIndex();
 		}
-		[SmokeMethod("setEditTriggers(EditTriggers)")]
-		public void SetEditTriggers(int triggers) {
-			ProxyQAbstractItemView().SetEditTriggers(triggers);
-		}
-		[SmokeMethod("editTriggers() const")]
-		public int EditTriggers() {
-			return ProxyQAbstractItemView().EditTriggers();
-		}
-		[SmokeMethod("setVerticalScrollMode(QAbstractItemView::ScrollMode)")]
-		public void SetVerticalScrollMode(QAbstractItemView.ScrollMode mode) {
-			ProxyQAbstractItemView().SetVerticalScrollMode(mode);
-		}
-		[SmokeMethod("verticalScrollMode() const")]
-		public QAbstractItemView.ScrollMode VerticalScrollMode() {
-			return ProxyQAbstractItemView().VerticalScrollMode();
-		}
-		[SmokeMethod("setHorizontalScrollMode(QAbstractItemView::ScrollMode)")]
-		public void SetHorizontalScrollMode(QAbstractItemView.ScrollMode mode) {
-			ProxyQAbstractItemView().SetHorizontalScrollMode(mode);
-		}
-		[SmokeMethod("horizontalScrollMode() const")]
-		public QAbstractItemView.ScrollMode HorizontalScrollMode() {
-			return ProxyQAbstractItemView().HorizontalScrollMode();
-		}
-		[SmokeMethod("setAutoScroll(bool)")]
-		public void SetAutoScroll(bool enable) {
-			ProxyQAbstractItemView().SetAutoScroll(enable);
-		}
 		[SmokeMethod("hasAutoScroll() const")]
 		public bool HasAutoScroll() {
 			return ProxyQAbstractItemView().HasAutoScroll();
 		}
-		[SmokeMethod("setTabKeyNavigation(bool)")]
-		public void SetTabKeyNavigation(bool enable) {
-			ProxyQAbstractItemView().SetTabKeyNavigation(enable);
-		}
-		[SmokeMethod("tabKeyNavigation() const")]
-		public bool TabKeyNavigation() {
-			return ProxyQAbstractItemView().TabKeyNavigation();
-		}
 		[SmokeMethod("setDropIndicatorShown(bool)")]
 		public void SetDropIndicatorShown(bool enable) {
 			ProxyQAbstractItemView().SetDropIndicatorShown(enable);
-		}
-		[SmokeMethod("showDropIndicator() const")]
-		public bool ShowDropIndicator() {
-			return ProxyQAbstractItemView().ShowDropIndicator();
-		}
-		[SmokeMethod("setDragEnabled(bool)")]
-		public void SetDragEnabled(bool enable) {
-			ProxyQAbstractItemView().SetDragEnabled(enable);
-		}
-		[SmokeMethod("dragEnabled() const")]
-		public bool DragEnabled() {
-			return ProxyQAbstractItemView().DragEnabled();
-		}
-		[SmokeMethod("setDragDropOverwriteMode(bool)")]
-		public void SetDragDropOverwriteMode(bool overwrite) {
-			ProxyQAbstractItemView().SetDragDropOverwriteMode(overwrite);
-		}
-		[SmokeMethod("dragDropOverwriteMode() const")]
-		public bool DragDropOverwriteMode() {
-			return ProxyQAbstractItemView().DragDropOverwriteMode();
-		}
-		[SmokeMethod("setDragDropMode(QAbstractItemView::DragDropMode)")]
-		public void SetDragDropMode(QAbstractItemView.DragDropMode behavior) {
-			ProxyQAbstractItemView().SetDragDropMode(behavior);
-		}
-		[SmokeMethod("dragDropMode() const")]
-		public QAbstractItemView.DragDropMode dragDropMode() {
-			return ProxyQAbstractItemView().dragDropMode();
-		}
-		[SmokeMethod("setAlternatingRowColors(bool)")]
-		public void SetAlternatingRowColors(bool enable) {
-			ProxyQAbstractItemView().SetAlternatingRowColors(enable);
-		}
-		[SmokeMethod("alternatingRowColors() const")]
-		public bool AlternatingRowColors() {
-			return ProxyQAbstractItemView().AlternatingRowColors();
-		}
-		[SmokeMethod("setIconSize(const QSize&)")]
-		public void SetIconSize(QSize size) {
-			ProxyQAbstractItemView().SetIconSize(size);
-		}
-		[SmokeMethod("iconSize() const")]
-		public QSize IconSize() {
-			return ProxyQAbstractItemView().IconSize();
-		}
-		[SmokeMethod("setTextElideMode(Qt::TextElideMode)")]
-		public void SetTextElideMode(Qt.TextElideMode mode) {
-			ProxyQAbstractItemView().SetTextElideMode(mode);
-		}
-		[SmokeMethod("textElideMode() const")]
-		public Qt.TextElideMode TextElideMode() {
-			return ProxyQAbstractItemView().TextElideMode();
 		}
 		[SmokeMethod("keyboardSearch(const QString&)")]
 		public virtual void KeyboardSearch(string search) {

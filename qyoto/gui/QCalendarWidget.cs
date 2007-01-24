@@ -44,6 +44,54 @@ namespace Qyoto {
 			NoSelection = 0,
 			SingleSelection = 1,
 		}
+		public QDate SelectedDate {
+			get {
+				return Property("SelectedDate").Value<QDate>();
+			}
+			set {
+				SetProperty("SelectedDate", QVariant.FromValue<QDate>(value));
+			}
+		}
+		public QDate MinimumDate {
+			get {
+				return Property("MinimumDate").Value<QDate>();
+			}
+			set {
+				SetProperty("MinimumDate", QVariant.FromValue<QDate>(value));
+			}
+		}
+		public QDate MaximumDate {
+			get {
+				return Property("MaximumDate").Value<QDate>();
+			}
+			set {
+				SetProperty("MaximumDate", QVariant.FromValue<QDate>(value));
+			}
+		}
+		public Qt.DayOfWeek FirstDayOfWeek {
+			get {
+				return Property("FirstDayOfWeek").Value<Qt.DayOfWeek>();
+			}
+			set {
+				SetProperty("FirstDayOfWeek", QVariant.FromValue<Qt.DayOfWeek>(value));
+			}
+		}
+		public bool GridVisible {
+			get {
+				return Property("GridVisible").Value<bool>();
+			}
+			set {
+				SetProperty("GridVisible", QVariant.FromValue<bool>(value));
+			}
+		}
+		public bool HeaderVisible {
+			get {
+				return Property("HeaderVisible").Value<bool>();
+			}
+			set {
+				SetProperty("HeaderVisible", QVariant.FromValue<bool>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QCalendarWidget(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -69,10 +117,6 @@ namespace Qyoto {
 		public new virtual QSize MinimumSizeHint() {
 			return ProxyQCalendarWidget().MinimumSizeHint();
 		}
-		[SmokeMethod("selectedDate() const")]
-		public QDate SelectedDate() {
-			return ProxyQCalendarWidget().SelectedDate();
-		}
 		[SmokeMethod("yearShown() const")]
 		public int YearShown() {
 			return ProxyQCalendarWidget().YearShown();
@@ -81,69 +125,13 @@ namespace Qyoto {
 		public int MonthShown() {
 			return ProxyQCalendarWidget().MonthShown();
 		}
-		[SmokeMethod("minimumDate() const")]
-		public QDate MinimumDate() {
-			return ProxyQCalendarWidget().MinimumDate();
-		}
-		[SmokeMethod("setMinimumDate(const QDate&)")]
-		public void SetMinimumDate(QDate date) {
-			ProxyQCalendarWidget().SetMinimumDate(date);
-		}
-		[SmokeMethod("maximumDate() const")]
-		public QDate MaximumDate() {
-			return ProxyQCalendarWidget().MaximumDate();
-		}
-		[SmokeMethod("setMaximumDate(const QDate&)")]
-		public void SetMaximumDate(QDate date) {
-			ProxyQCalendarWidget().SetMaximumDate(date);
-		}
-		[SmokeMethod("firstDayOfWeek() const")]
-		public Qt.DayOfWeek FirstDayOfWeek() {
-			return ProxyQCalendarWidget().FirstDayOfWeek();
-		}
-		[SmokeMethod("setFirstDayOfWeek(Qt::DayOfWeek)")]
-		public void SetFirstDayOfWeek(Qt.DayOfWeek dayOfWeek) {
-			ProxyQCalendarWidget().SetFirstDayOfWeek(dayOfWeek);
-		}
 		[SmokeMethod("isHeaderVisible() const")]
 		public bool IsHeaderVisible() {
 			return ProxyQCalendarWidget().IsHeaderVisible();
 		}
-		[SmokeMethod("setHeaderVisible(bool)")]
-		public void SetHeaderVisible(bool show) {
-			ProxyQCalendarWidget().SetHeaderVisible(show);
-		}
 		[SmokeMethod("isGridVisible() const")]
 		public bool IsGridVisible() {
 			return ProxyQCalendarWidget().IsGridVisible();
-		}
-		[SmokeMethod("setGridVisible(bool)")]
-		public void SetGridVisible(bool show) {
-			ProxyQCalendarWidget().SetGridVisible(show);
-		}
-		[SmokeMethod("selectionMode() const")]
-		public QCalendarWidget.SelectionMode selectionMode() {
-			return ProxyQCalendarWidget().selectionMode();
-		}
-		[SmokeMethod("setSelectionMode(QCalendarWidget::SelectionMode)")]
-		public void SetSelectionMode(QCalendarWidget.SelectionMode mode) {
-			ProxyQCalendarWidget().SetSelectionMode(mode);
-		}
-		[SmokeMethod("horizontalHeaderFormat() const")]
-		public QCalendarWidget.HorizontalHeaderFormat horizontalHeaderFormat() {
-			return ProxyQCalendarWidget().horizontalHeaderFormat();
-		}
-		[SmokeMethod("setHorizontalHeaderFormat(QCalendarWidget::HorizontalHeaderFormat)")]
-		public void SetHorizontalHeaderFormat(QCalendarWidget.HorizontalHeaderFormat format) {
-			ProxyQCalendarWidget().SetHorizontalHeaderFormat(format);
-		}
-		[SmokeMethod("verticalHeaderFormat() const")]
-		public QCalendarWidget.VerticalHeaderFormat verticalHeaderFormat() {
-			return ProxyQCalendarWidget().verticalHeaderFormat();
-		}
-		[SmokeMethod("setVerticalHeaderFormat(QCalendarWidget::VerticalHeaderFormat)")]
-		public void SetVerticalHeaderFormat(QCalendarWidget.VerticalHeaderFormat format) {
-			ProxyQCalendarWidget().SetVerticalHeaderFormat(format);
 		}
 		[SmokeMethod("headerTextFormat() const")]
 		public QTextCharFormat HeaderTextFormat() {
@@ -172,10 +160,6 @@ namespace Qyoto {
 		[SmokeMethod("setDateTextFormat(const QDate&, const QTextCharFormat&)")]
 		public void SetDateTextFormat(QDate date, QTextCharFormat color) {
 			ProxyQCalendarWidget().SetDateTextFormat(date,color);
-		}
-		[SmokeMethod("setSelectedDate(const QDate&)")]
-		public void SetSelectedDate(QDate date) {
-			ProxyQCalendarWidget().SetSelectedDate(date);
 		}
 		[SmokeMethod("setDateRange(const QDate&, const QDate&)")]
 		public void SetDateRange(QDate min, QDate max) {

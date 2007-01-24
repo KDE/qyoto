@@ -29,6 +29,70 @@ namespace Qyoto {
 			return (IQProgressDialogProxy) _staticInterceptor;
 		}
 
+		public bool WasCanceled {
+			get {
+				return Property("WasCanceled").Value<bool>();
+			}
+			set {
+				SetProperty("WasCanceled", QVariant.FromValue<bool>(value));
+			}
+		}
+		public int Minimum {
+			get {
+				return Property("Minimum").Value<int>();
+			}
+			set {
+				SetProperty("Minimum", QVariant.FromValue<int>(value));
+			}
+		}
+		public int Maximum {
+			get {
+				return Property("Maximum").Value<int>();
+			}
+			set {
+				SetProperty("Maximum", QVariant.FromValue<int>(value));
+			}
+		}
+		public int Value {
+			get {
+				return Property("Value").Value<int>();
+			}
+			set {
+				SetProperty("Value", QVariant.FromValue<int>(value));
+			}
+		}
+		public bool AutoReset {
+			get {
+				return Property("AutoReset").Value<bool>();
+			}
+			set {
+				SetProperty("AutoReset", QVariant.FromValue<bool>(value));
+			}
+		}
+		public bool AutoClose {
+			get {
+				return Property("AutoClose").Value<bool>();
+			}
+			set {
+				SetProperty("AutoClose", QVariant.FromValue<bool>(value));
+			}
+		}
+		public int MinimumDuration {
+			get {
+				return Property("MinimumDuration").Value<int>();
+			}
+			set {
+				SetProperty("MinimumDuration", QVariant.FromValue<int>(value));
+			}
+		}
+		public string LabelText {
+			get {
+				return Property("LabelText").Value<string>();
+			}
+			set {
+				SetProperty("LabelText", QVariant.FromValue<string>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QProgressDialog(QWidget parent, int f) : this((Type) null) {
 			CreateProxy();
@@ -90,53 +154,13 @@ namespace Qyoto {
 		public void SetBar(QProgressBar bar) {
 			ProxyQProgressDialog().SetBar(bar);
 		}
-		[SmokeMethod("wasCanceled() const")]
-		public bool WasCanceled() {
-			return ProxyQProgressDialog().WasCanceled();
-		}
-		[SmokeMethod("minimum() const")]
-		public int Minimum() {
-			return ProxyQProgressDialog().Minimum();
-		}
-		[SmokeMethod("maximum() const")]
-		public int Maximum() {
-			return ProxyQProgressDialog().Maximum();
-		}
 		[SmokeMethod("setRange(int, int)")]
 		public void SetRange(int minimum, int maximum) {
 			ProxyQProgressDialog().SetRange(minimum,maximum);
 		}
-		[SmokeMethod("value() const")]
-		public int Value() {
-			return ProxyQProgressDialog().Value();
-		}
 		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {
 			return ProxyQProgressDialog().SizeHint();
-		}
-		[SmokeMethod("labelText() const")]
-		public string LabelText() {
-			return ProxyQProgressDialog().LabelText();
-		}
-		[SmokeMethod("minimumDuration() const")]
-		public int MinimumDuration() {
-			return ProxyQProgressDialog().MinimumDuration();
-		}
-		[SmokeMethod("setAutoReset(bool)")]
-		public void SetAutoReset(bool b) {
-			ProxyQProgressDialog().SetAutoReset(b);
-		}
-		[SmokeMethod("autoReset() const")]
-		public bool AutoReset() {
-			return ProxyQProgressDialog().AutoReset();
-		}
-		[SmokeMethod("setAutoClose(bool)")]
-		public void SetAutoClose(bool b) {
-			ProxyQProgressDialog().SetAutoClose(b);
-		}
-		[SmokeMethod("autoClose() const")]
-		public bool AutoClose() {
-			return ProxyQProgressDialog().AutoClose();
 		}
 		[SmokeMethod("cancel()")]
 		public void Cancel() {
@@ -146,29 +170,9 @@ namespace Qyoto {
 		public void Reset() {
 			ProxyQProgressDialog().Reset();
 		}
-		[SmokeMethod("setMaximum(int)")]
-		public void SetMaximum(int maximum) {
-			ProxyQProgressDialog().SetMaximum(maximum);
-		}
-		[SmokeMethod("setMinimum(int)")]
-		public void SetMinimum(int minimum) {
-			ProxyQProgressDialog().SetMinimum(minimum);
-		}
-		[SmokeMethod("setValue(int)")]
-		public void SetValue(int progress) {
-			ProxyQProgressDialog().SetValue(progress);
-		}
-		[SmokeMethod("setLabelText(const QString&)")]
-		public void SetLabelText(string arg1) {
-			ProxyQProgressDialog().SetLabelText(arg1);
-		}
 		[SmokeMethod("setCancelButtonText(const QString&)")]
 		public void SetCancelButtonText(string arg1) {
 			ProxyQProgressDialog().SetCancelButtonText(arg1);
-		}
-		[SmokeMethod("setMinimumDuration(int)")]
-		public void SetMinimumDuration(int ms) {
-			ProxyQProgressDialog().SetMinimumDuration(ms);
 		}
 		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {

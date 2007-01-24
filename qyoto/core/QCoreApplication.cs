@@ -16,12 +16,6 @@ namespace Qyoto {
 			void SetAttribute(Qt.ApplicationAttribute attribute, bool on);
 			void SetAttribute(Qt.ApplicationAttribute attribute);
 			bool TestAttribute(Qt.ApplicationAttribute attribute);
-			void SetOrganizationDomain(string orgDomain);
-			string OrganizationDomain();
-			void SetOrganizationName(string orgName);
-			string OrganizationName();
-			void SetApplicationName(string application);
-			string ApplicationName();
 			QCoreApplication Instance();
 			int Exec();
 			void ProcessEvents(uint flags);
@@ -74,6 +68,30 @@ namespace Qyoto {
 			UnicodeUTF8 = 1,
 			DefaultCodec = CodecForTr,
 		}
+		public string ApplicationName {
+			get {
+				return Property("ApplicationName").Value<string>();
+			}
+			set {
+				SetProperty("ApplicationName", QVariant.FromValue<string>(value));
+			}
+		}
+		public string OrganizationName {
+			get {
+				return Property("OrganizationName").Value<string>();
+			}
+			set {
+				SetProperty("OrganizationName", QVariant.FromValue<string>(value));
+			}
+		}
+		public string OrganizationDomain {
+			get {
+				return Property("OrganizationDomain").Value<string>();
+			}
+			set {
+				SetProperty("OrganizationDomain", QVariant.FromValue<string>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		[SmokeMethod("notify(QObject*, QEvent*)")]
 		public virtual bool Notify(QObject arg1, QEvent arg2) {
@@ -104,30 +122,6 @@ namespace Qyoto {
 		[SmokeMethod("testAttribute(Qt::ApplicationAttribute)")]
 		public static bool TestAttribute(Qt.ApplicationAttribute attribute) {
 			return StaticQCoreApplication().TestAttribute(attribute);
-		}
-		[SmokeMethod("setOrganizationDomain(const QString&)")]
-		public static void SetOrganizationDomain(string orgDomain) {
-			StaticQCoreApplication().SetOrganizationDomain(orgDomain);
-		}
-		[SmokeMethod("organizationDomain()")]
-		public static string OrganizationDomain() {
-			return StaticQCoreApplication().OrganizationDomain();
-		}
-		[SmokeMethod("setOrganizationName(const QString&)")]
-		public static void SetOrganizationName(string orgName) {
-			StaticQCoreApplication().SetOrganizationName(orgName);
-		}
-		[SmokeMethod("organizationName()")]
-		public static string OrganizationName() {
-			return StaticQCoreApplication().OrganizationName();
-		}
-		[SmokeMethod("setApplicationName(const QString&)")]
-		public static void SetApplicationName(string application) {
-			StaticQCoreApplication().SetApplicationName(application);
-		}
-		[SmokeMethod("applicationName()")]
-		public static string ApplicationName() {
-			return StaticQCoreApplication().ApplicationName();
 		}
 		[SmokeMethod("instance()")]
 		public static QCoreApplication Instance() {

@@ -28,6 +28,22 @@ namespace Qyoto {
 			return (IQScrollAreaProxy) _staticInterceptor;
 		}
 
+		public bool WidgetResizable {
+			get {
+				return Property("WidgetResizable").Value<bool>();
+			}
+			set {
+				SetProperty("WidgetResizable", QVariant.FromValue<bool>(value));
+			}
+		}
+		public int Alignment {
+			get {
+				return Property("Alignment").Value<int>();
+			}
+			set {
+				SetProperty("Alignment", QVariant.FromValue<int>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QScrollArea(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -56,14 +72,6 @@ namespace Qyoto {
 		[SmokeMethod("takeWidget()")]
 		public QWidget TakeWidget() {
 			return ProxyQScrollArea().TakeWidget();
-		}
-		[SmokeMethod("widgetResizable() const")]
-		public bool WidgetResizable() {
-			return ProxyQScrollArea().WidgetResizable();
-		}
-		[SmokeMethod("setWidgetResizable(bool)")]
-		public void SetWidgetResizable(bool resizable) {
-			ProxyQScrollArea().SetWidgetResizable(resizable);
 		}
 		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {

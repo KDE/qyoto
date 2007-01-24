@@ -126,6 +126,62 @@ namespace Qyoto {
 			FlagMask = 0x00000300,
 			ButtonMask = ~FlagMask,
 		}
+		public string Text {
+			get {
+				return Property("Text").Value<string>();
+			}
+			set {
+				SetProperty("Text", QVariant.FromValue<string>(value));
+			}
+		}
+		public int icon {
+			get {
+				return Property("icon").Value<int>();
+			}
+			set {
+				SetProperty("icon", QVariant.FromValue<int>(value));
+			}
+		}
+		public QPixmap IconPixmap {
+			get {
+				return Property("IconPixmap").Value<QPixmap>();
+			}
+			set {
+				SetProperty("IconPixmap", QVariant.FromValue<QPixmap>(value));
+			}
+		}
+		public Qt.TextFormat TextFormat {
+			get {
+				return Property("TextFormat").Value<Qt.TextFormat>();
+			}
+			set {
+				SetProperty("TextFormat", QVariant.FromValue<Qt.TextFormat>(value));
+			}
+		}
+		public int StandardButtons {
+			get {
+				return Property("StandardButtons").Value<int>();
+			}
+			set {
+				SetProperty("StandardButtons", QVariant.FromValue<int>(value));
+			}
+		}
+		public string DetailedText {
+			get {
+				return Property("DetailedText").Value<string>();
+			}
+			set {
+				SetProperty("DetailedText", QVariant.FromValue<string>(value));
+			}
+		}
+		public string InformativeText {
+			get {
+				return Property("InformativeText").Value<string>();
+			}
+			set {
+				SetProperty("InformativeText", QVariant.FromValue<string>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QMessageBox(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -191,14 +247,6 @@ namespace Qyoto {
 		public void RemoveButton(QAbstractButton button) {
 			ProxyQMessageBox().RemoveButton(button);
 		}
-		[SmokeMethod("setStandardButtons(StandardButtons)")]
-		public void SetStandardButtons(int buttons) {
-			ProxyQMessageBox().SetStandardButtons(buttons);
-		}
-		[SmokeMethod("standardButtons() const")]
-		public int StandardButtons() {
-			return ProxyQMessageBox().StandardButtons();
-		}
 		[SmokeMethod("standardButton(QAbstractButton*) const")]
 		public QMessageBox.StandardButton standardButton(QAbstractButton button) {
 			return ProxyQMessageBox().standardButton(button);
@@ -226,38 +274,6 @@ namespace Qyoto {
 		[SmokeMethod("clickedButton() const")]
 		public QAbstractButton ClickedButton() {
 			return ProxyQMessageBox().ClickedButton();
-		}
-		[SmokeMethod("text() const")]
-		public string Text() {
-			return ProxyQMessageBox().Text();
-		}
-		[SmokeMethod("setText(const QString&)")]
-		public void SetText(string text) {
-			ProxyQMessageBox().SetText(text);
-		}
-		[SmokeMethod("icon() const")]
-		public QMessageBox.Icon IconId() {
-			return ProxyQMessageBox().IconId();
-		}
-		[SmokeMethod("setIcon(QMessageBox::Icon)")]
-		public void SetIcon(QMessageBox.Icon arg1) {
-			ProxyQMessageBox().SetIcon(arg1);
-		}
-		[SmokeMethod("iconPixmap() const")]
-		public QPixmap IconPixmap() {
-			return ProxyQMessageBox().IconPixmap();
-		}
-		[SmokeMethod("setIconPixmap(const QPixmap&)")]
-		public void SetIconPixmap(QPixmap pixmap) {
-			ProxyQMessageBox().SetIconPixmap(pixmap);
-		}
-		[SmokeMethod("textFormat() const")]
-		public Qt.TextFormat TextFormat() {
-			return ProxyQMessageBox().TextFormat();
-		}
-		[SmokeMethod("setTextFormat(Qt::TextFormat)")]
-		public void SetTextFormat(Qt.TextFormat format) {
-			ProxyQMessageBox().SetTextFormat(format);
 		}
 		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {
@@ -294,22 +310,6 @@ namespace Qyoto {
 		[SmokeMethod("setButtonText(int, const QString&)")]
 		public void SetButtonText(int button, string text) {
 			ProxyQMessageBox().SetButtonText(button,text);
-		}
-		[SmokeMethod("informativeText() const")]
-		public string InformativeText() {
-			return ProxyQMessageBox().InformativeText();
-		}
-		[SmokeMethod("setInformativeText(const QString&)")]
-		public void SetInformativeText(string text) {
-			ProxyQMessageBox().SetInformativeText(text);
-		}
-		[SmokeMethod("detailedText() const")]
-		public string DetailedText() {
-			return ProxyQMessageBox().DetailedText();
-		}
-		[SmokeMethod("setDetailedText(const QString&)")]
-		public void SetDetailedText(string text) {
-			ProxyQMessageBox().SetDetailedText(text);
 		}
 		[SmokeMethod("setWindowTitle(const QString&)")]
 		public new void SetWindowTitle(string title) {

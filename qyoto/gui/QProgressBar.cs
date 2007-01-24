@@ -33,6 +33,86 @@ namespace Qyoto {
 			TopToBottom = 0,
 			BottomToTop = 1,
 		}
+		public int Minimum {
+			get {
+				return Property("Minimum").Value<int>();
+			}
+			set {
+				SetProperty("Minimum", QVariant.FromValue<int>(value));
+			}
+		}
+		public int Maximum {
+			get {
+				return Property("Maximum").Value<int>();
+			}
+			set {
+				SetProperty("Maximum", QVariant.FromValue<int>(value));
+			}
+		}
+		public string Text {
+			get {
+				return Property("Text").Value<string>();
+			}
+			set {
+				SetProperty("Text", QVariant.FromValue<string>(value));
+			}
+		}
+		public int Value {
+			get {
+				return Property("Value").Value<int>();
+			}
+			set {
+				SetProperty("Value", QVariant.FromValue<int>(value));
+			}
+		}
+		public int Alignment {
+			get {
+				return Property("Alignment").Value<int>();
+			}
+			set {
+				SetProperty("Alignment", QVariant.FromValue<int>(value));
+			}
+		}
+		public bool TextVisible {
+			get {
+				return Property("TextVisible").Value<bool>();
+			}
+			set {
+				SetProperty("TextVisible", QVariant.FromValue<bool>(value));
+			}
+		}
+		public Qt.Orientation Orientation {
+			get {
+				return Property("Orientation").Value<Qt.Orientation>();
+			}
+			set {
+				SetProperty("Orientation", QVariant.FromValue<Qt.Orientation>(value));
+			}
+		}
+		public bool InvertedAppearance {
+			get {
+				return Property("InvertedAppearance").Value<bool>();
+			}
+			set {
+				SetProperty("InvertedAppearance", QVariant.FromValue<bool>(value));
+			}
+		}
+		public int TextDirection {
+			get {
+				return Property("TextDirection").Value<int>();
+			}
+			set {
+				SetProperty("TextDirection", QVariant.FromValue<int>(value));
+			}
+		}
+		public string Format {
+			get {
+				return Property("Format").Value<string>();
+			}
+			set {
+				SetProperty("Format", QVariant.FromValue<string>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QProgressBar(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -50,41 +130,13 @@ namespace Qyoto {
 		private void NewQProgressBar() {
 			ProxyQProgressBar().NewQProgressBar();
 		}
-		[SmokeMethod("minimum() const")]
-		public int Minimum() {
-			return ProxyQProgressBar().Minimum();
-		}
-		[SmokeMethod("maximum() const")]
-		public int Maximum() {
-			return ProxyQProgressBar().Maximum();
-		}
 		[SmokeMethod("setRange(int, int)")]
 		public void SetRange(int minimum, int maximum) {
 			ProxyQProgressBar().SetRange(minimum,maximum);
 		}
-		[SmokeMethod("value() const")]
-		public int Value() {
-			return ProxyQProgressBar().Value();
-		}
-		[SmokeMethod("text() const")]
-		public virtual string Text() {
-			return ProxyQProgressBar().Text();
-		}
-		[SmokeMethod("setTextVisible(bool)")]
-		public void SetTextVisible(bool visible) {
-			ProxyQProgressBar().SetTextVisible(visible);
-		}
 		[SmokeMethod("isTextVisible() const")]
 		public bool IsTextVisible() {
 			return ProxyQProgressBar().IsTextVisible();
-		}
-		[SmokeMethod("alignment() const")]
-		public int Alignment() {
-			return ProxyQProgressBar().Alignment();
-		}
-		[SmokeMethod("setAlignment(Qt::Alignment)")]
-		public void SetAlignment(int alignment) {
-			ProxyQProgressBar().SetAlignment(alignment);
 		}
 		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {
@@ -94,53 +146,9 @@ namespace Qyoto {
 		public new QSize MinimumSizeHint() {
 			return ProxyQProgressBar().MinimumSizeHint();
 		}
-		[SmokeMethod("orientation() const")]
-		public Qt.Orientation Orientation() {
-			return ProxyQProgressBar().Orientation();
-		}
-		[SmokeMethod("setInvertedAppearance(bool)")]
-		public void SetInvertedAppearance(bool invert) {
-			ProxyQProgressBar().SetInvertedAppearance(invert);
-		}
-		[SmokeMethod("invertedAppearance()")]
-		public bool InvertedAppearance() {
-			return ProxyQProgressBar().InvertedAppearance();
-		}
-		[SmokeMethod("setTextDirection(QProgressBar::Direction)")]
-		public void SetTextDirection(QProgressBar.Direction textDirection) {
-			ProxyQProgressBar().SetTextDirection(textDirection);
-		}
-		[SmokeMethod("textDirection()")]
-		public QProgressBar.Direction TextDirection() {
-			return ProxyQProgressBar().TextDirection();
-		}
-		[SmokeMethod("setFormat(const QString&)")]
-		public void SetFormat(string format) {
-			ProxyQProgressBar().SetFormat(format);
-		}
-		[SmokeMethod("format() const")]
-		public string Format() {
-			return ProxyQProgressBar().Format();
-		}
 		[SmokeMethod("reset()")]
 		public void Reset() {
 			ProxyQProgressBar().Reset();
-		}
-		[SmokeMethod("setMinimum(int)")]
-		public void SetMinimum(int minimum) {
-			ProxyQProgressBar().SetMinimum(minimum);
-		}
-		[SmokeMethod("setMaximum(int)")]
-		public void SetMaximum(int maximum) {
-			ProxyQProgressBar().SetMaximum(maximum);
-		}
-		[SmokeMethod("setValue(int)")]
-		public void SetValue(int value) {
-			ProxyQProgressBar().SetValue(value);
-		}
-		[SmokeMethod("setOrientation(Qt::Orientation)")]
-		public void SetOrientation(Qt.Orientation arg1) {
-			ProxyQProgressBar().SetOrientation(arg1);
 		}
 		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {

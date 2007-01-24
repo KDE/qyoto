@@ -29,6 +29,14 @@ namespace Qyoto {
 			return (IQStatusBarProxy) _staticInterceptor;
 		}
 
+		public bool SizeGripEnabled {
+			get {
+				return Property("SizeGripEnabled").Value<bool>();
+			}
+			set {
+				SetProperty("SizeGripEnabled", QVariant.FromValue<bool>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QStatusBar(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -81,10 +89,6 @@ namespace Qyoto {
 		[SmokeMethod("removeWidget(QWidget*)")]
 		public void RemoveWidget(QWidget widget) {
 			ProxyQStatusBar().RemoveWidget(widget);
-		}
-		[SmokeMethod("setSizeGripEnabled(bool)")]
-		public void SetSizeGripEnabled(bool arg1) {
-			ProxyQStatusBar().SetSizeGripEnabled(arg1);
 		}
 		[SmokeMethod("isSizeGripEnabled() const")]
 		public bool IsSizeGripEnabled() {

@@ -28,6 +28,14 @@ namespace Qyoto {
 			return (IQRegExpValidatorProxy) _staticInterceptor;
 		}
 
+		public QRegExp RegExp {
+			get {
+				return Property("RegExp").Value<QRegExp>();
+			}
+			set {
+				SetProperty("RegExp", QVariant.FromValue<QRegExp>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QRegExpValidator(QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -48,14 +56,6 @@ namespace Qyoto {
 		[SmokeMethod("validate(QString&, int&) const")]
 		public new virtual int Validate(StringBuilder input, out int pos) {
 			return ProxyQRegExpValidator().Validate(input,out pos);
-		}
-		[SmokeMethod("setRegExp(const QRegExp&)")]
-		public void SetRegExp(QRegExp rx) {
-			ProxyQRegExpValidator().SetRegExp(rx);
-		}
-		[SmokeMethod("regExp() const")]
-		public QRegExp RegExp() {
-			return ProxyQRegExpValidator().RegExp();
 		}
 		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {

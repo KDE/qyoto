@@ -28,6 +28,30 @@ namespace Qyoto {
 			return (IQDoubleValidatorProxy) _staticInterceptor;
 		}
 
+		public double Bottom {
+			get {
+				return Property("Bottom").Value<double>();
+			}
+			set {
+				SetProperty("Bottom", QVariant.FromValue<double>(value));
+			}
+		}
+		public double Top {
+			get {
+				return Property("Top").Value<double>();
+			}
+			set {
+				SetProperty("Top", QVariant.FromValue<double>(value));
+			}
+		}
+		public int Decimals {
+			get {
+				return Property("Decimals").Value<int>();
+			}
+			set {
+				SetProperty("Decimals", QVariant.FromValue<int>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QDoubleValidator(QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -56,30 +80,6 @@ namespace Qyoto {
 		[SmokeMethod("setRange(double, double)")]
 		public virtual void SetRange(double bottom, double top) {
 			ProxyQDoubleValidator().SetRange(bottom,top);
-		}
-		[SmokeMethod("setBottom(double)")]
-		public void SetBottom(double arg1) {
-			ProxyQDoubleValidator().SetBottom(arg1);
-		}
-		[SmokeMethod("setTop(double)")]
-		public void SetTop(double arg1) {
-			ProxyQDoubleValidator().SetTop(arg1);
-		}
-		[SmokeMethod("setDecimals(int)")]
-		public void SetDecimals(int arg1) {
-			ProxyQDoubleValidator().SetDecimals(arg1);
-		}
-		[SmokeMethod("bottom() const")]
-		public double Bottom() {
-			return ProxyQDoubleValidator().Bottom();
-		}
-		[SmokeMethod("top() const")]
-		public double Top() {
-			return ProxyQDoubleValidator().Top();
-		}
-		[SmokeMethod("decimals() const")]
-		public int Decimals() {
-			return ProxyQDoubleValidator().Decimals();
 		}
 		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {

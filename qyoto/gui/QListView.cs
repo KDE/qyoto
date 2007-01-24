@@ -52,6 +52,62 @@ namespace Qyoto {
 			ListMode = 0,
 			IconMode = 1,
 		}
+		public bool IsWrapping {
+			get {
+				return Property("IsWrapping").Value<bool>();
+			}
+			set {
+				SetProperty("IsWrapping", QVariant.FromValue<bool>(value));
+			}
+		}
+		public int Spacing {
+			get {
+				return Property("Spacing").Value<int>();
+			}
+			set {
+				SetProperty("Spacing", QVariant.FromValue<int>(value));
+			}
+		}
+		public QSize GridSize {
+			get {
+				return Property("GridSize").Value<QSize>();
+			}
+			set {
+				SetProperty("GridSize", QVariant.FromValue<QSize>(value));
+			}
+		}
+		public int ModelColumn {
+			get {
+				return Property("ModelColumn").Value<int>();
+			}
+			set {
+				SetProperty("ModelColumn", QVariant.FromValue<int>(value));
+			}
+		}
+		public bool UniformItemSizes {
+			get {
+				return Property("UniformItemSizes").Value<bool>();
+			}
+			set {
+				SetProperty("UniformItemSizes", QVariant.FromValue<bool>(value));
+			}
+		}
+		public int BatchSize {
+			get {
+				return Property("BatchSize").Value<int>();
+			}
+			set {
+				SetProperty("BatchSize", QVariant.FromValue<int>(value));
+			}
+		}
+		public bool WordWrap {
+			get {
+				return Property("WordWrap").Value<bool>();
+			}
+			set {
+				SetProperty("WordWrap", QVariant.FromValue<bool>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QListView(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -69,77 +125,9 @@ namespace Qyoto {
 		private void NewQListView() {
 			ProxyQListView().NewQListView();
 		}
-		[SmokeMethod("setMovement(QListView::Movement)")]
-		public void SetMovement(QListView.Movement movement) {
-			ProxyQListView().SetMovement(movement);
-		}
-		[SmokeMethod("movement() const")]
-		public QListView.Movement movement() {
-			return ProxyQListView().movement();
-		}
-		[SmokeMethod("setFlow(QListView::Flow)")]
-		public void SetFlow(QListView.Flow flow) {
-			ProxyQListView().SetFlow(flow);
-		}
-		[SmokeMethod("flow() const")]
-		public QListView.Flow flow() {
-			return ProxyQListView().flow();
-		}
 		[SmokeMethod("setWrapping(bool)")]
 		public void SetWrapping(bool enable) {
 			ProxyQListView().SetWrapping(enable);
-		}
-		[SmokeMethod("isWrapping() const")]
-		public bool IsWrapping() {
-			return ProxyQListView().IsWrapping();
-		}
-		[SmokeMethod("setResizeMode(QListView::ResizeMode)")]
-		public void SetResizeMode(QListView.ResizeMode mode) {
-			ProxyQListView().SetResizeMode(mode);
-		}
-		[SmokeMethod("resizeMode() const")]
-		public QListView.ResizeMode resizeMode() {
-			return ProxyQListView().resizeMode();
-		}
-		[SmokeMethod("setLayoutMode(QListView::LayoutMode)")]
-		public void SetLayoutMode(QListView.LayoutMode mode) {
-			ProxyQListView().SetLayoutMode(mode);
-		}
-		[SmokeMethod("layoutMode() const")]
-		public QListView.LayoutMode layoutMode() {
-			return ProxyQListView().layoutMode();
-		}
-		[SmokeMethod("setSpacing(int)")]
-		public void SetSpacing(int space) {
-			ProxyQListView().SetSpacing(space);
-		}
-		[SmokeMethod("spacing() const")]
-		public int Spacing() {
-			return ProxyQListView().Spacing();
-		}
-		[SmokeMethod("setBatchSize(int)")]
-		public void SetBatchSize(int batchSize) {
-			ProxyQListView().SetBatchSize(batchSize);
-		}
-		[SmokeMethod("batchSize() const")]
-		public int BatchSize() {
-			return ProxyQListView().BatchSize();
-		}
-		[SmokeMethod("setGridSize(const QSize&)")]
-		public void SetGridSize(QSize size) {
-			ProxyQListView().SetGridSize(size);
-		}
-		[SmokeMethod("gridSize() const")]
-		public QSize GridSize() {
-			return ProxyQListView().GridSize();
-		}
-		[SmokeMethod("setViewMode(QListView::ViewMode)")]
-		public void SetViewMode(QListView.ViewMode mode) {
-			ProxyQListView().SetViewMode(mode);
-		}
-		[SmokeMethod("viewMode() const")]
-		public QListView.ViewMode viewMode() {
-			return ProxyQListView().viewMode();
 		}
 		[SmokeMethod("clearPropertyFlags()")]
 		public void ClearPropertyFlags() {
@@ -152,30 +140,6 @@ namespace Qyoto {
 		[SmokeMethod("setRowHidden(int, bool)")]
 		public void SetRowHidden(int row, bool hide) {
 			ProxyQListView().SetRowHidden(row,hide);
-		}
-		[SmokeMethod("setModelColumn(int)")]
-		public void SetModelColumn(int column) {
-			ProxyQListView().SetModelColumn(column);
-		}
-		[SmokeMethod("modelColumn() const")]
-		public int ModelColumn() {
-			return ProxyQListView().ModelColumn();
-		}
-		[SmokeMethod("setUniformItemSizes(bool)")]
-		public void SetUniformItemSizes(bool enable) {
-			ProxyQListView().SetUniformItemSizes(enable);
-		}
-		[SmokeMethod("uniformItemSizes() const")]
-		public bool UniformItemSizes() {
-			return ProxyQListView().UniformItemSizes();
-		}
-		[SmokeMethod("setWordWrap(bool)")]
-		public void SetWordWrap(bool on) {
-			ProxyQListView().SetWordWrap(on);
-		}
-		[SmokeMethod("wordWrap() const")]
-		public bool WordWrap() {
-			return ProxyQListView().WordWrap();
 		}
 		[SmokeMethod("visualRect(const QModelIndex&) const")]
 		public new QRect VisualRect(QModelIndex index) {

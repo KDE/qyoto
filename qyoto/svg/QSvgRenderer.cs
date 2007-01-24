@@ -29,6 +29,30 @@ namespace Qyoto {
 			return (IQSvgRendererProxy) _staticInterceptor;
 		}
 
+		public QRectF ViewBox {
+			get {
+				return Property("ViewBox").Value<QRectF>();
+			}
+			set {
+				SetProperty("ViewBox", QVariant.FromValue<QRectF>(value));
+			}
+		}
+		public int FramesPerSecond {
+			get {
+				return Property("FramesPerSecond").Value<int>();
+			}
+			set {
+				SetProperty("FramesPerSecond", QVariant.FromValue<int>(value));
+			}
+		}
+		public int CurrentFrame {
+			get {
+				return Property("CurrentFrame").Value<int>();
+			}
+			set {
+				SetProperty("CurrentFrame", QVariant.FromValue<int>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QSvgRenderer(QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -86,41 +110,13 @@ namespace Qyoto {
 		public QSize DefaultSize() {
 			return ProxyQSvgRenderer().DefaultSize();
 		}
-		[SmokeMethod("viewBox() const")]
-		public QRect ViewBox() {
-			return ProxyQSvgRenderer().ViewBox();
-		}
 		[SmokeMethod("viewBoxF() const")]
 		public QRectF ViewBoxF() {
 			return ProxyQSvgRenderer().ViewBoxF();
 		}
-		[SmokeMethod("setViewBox(const QRect&)")]
-		public void SetViewBox(QRect viewbox) {
-			ProxyQSvgRenderer().SetViewBox(viewbox);
-		}
-		[SmokeMethod("setViewBox(const QRectF&)")]
-		public void SetViewBox(QRectF viewbox) {
-			ProxyQSvgRenderer().SetViewBox(viewbox);
-		}
 		[SmokeMethod("animated() const")]
 		public bool Animated() {
 			return ProxyQSvgRenderer().Animated();
-		}
-		[SmokeMethod("framesPerSecond() const")]
-		public int FramesPerSecond() {
-			return ProxyQSvgRenderer().FramesPerSecond();
-		}
-		[SmokeMethod("setFramesPerSecond(int)")]
-		public void SetFramesPerSecond(int num) {
-			ProxyQSvgRenderer().SetFramesPerSecond(num);
-		}
-		[SmokeMethod("currentFrame() const")]
-		public int CurrentFrame() {
-			return ProxyQSvgRenderer().CurrentFrame();
-		}
-		[SmokeMethod("setCurrentFrame(int)")]
-		public void SetCurrentFrame(int arg1) {
-			ProxyQSvgRenderer().SetCurrentFrame(arg1);
 		}
 		[SmokeMethod("animationDuration() const")]
 		public int AnimationDuration() {

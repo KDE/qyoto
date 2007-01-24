@@ -28,6 +28,38 @@ namespace Qyoto {
 			return (IQDialProxy) _staticInterceptor;
 		}
 
+		public bool Wrapping {
+			get {
+				return Property("Wrapping").Value<bool>();
+			}
+			set {
+				SetProperty("Wrapping", QVariant.FromValue<bool>(value));
+			}
+		}
+		public int NotchSize {
+			get {
+				return Property("NotchSize").Value<int>();
+			}
+			set {
+				SetProperty("NotchSize", QVariant.FromValue<int>(value));
+			}
+		}
+		public double NotchTarget {
+			get {
+				return Property("NotchTarget").Value<double>();
+			}
+			set {
+				SetProperty("NotchTarget", QVariant.FromValue<double>(value));
+			}
+		}
+		public bool NotchesVisible {
+			get {
+				return Property("NotchesVisible").Value<bool>();
+			}
+			set {
+				SetProperty("NotchesVisible", QVariant.FromValue<bool>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QDial(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -45,26 +77,6 @@ namespace Qyoto {
 		private void NewQDial() {
 			ProxyQDial().NewQDial();
 		}
-		[SmokeMethod("wrapping() const")]
-		public bool Wrapping() {
-			return ProxyQDial().Wrapping();
-		}
-		[SmokeMethod("notchSize() const")]
-		public int NotchSize() {
-			return ProxyQDial().NotchSize();
-		}
-		[SmokeMethod("setNotchTarget(double)")]
-		public void SetNotchTarget(double target) {
-			ProxyQDial().SetNotchTarget(target);
-		}
-		[SmokeMethod("notchTarget() const")]
-		public double NotchTarget() {
-			return ProxyQDial().NotchTarget();
-		}
-		[SmokeMethod("notchesVisible() const")]
-		public bool NotchesVisible() {
-			return ProxyQDial().NotchesVisible();
-		}
 		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {
 			return ProxyQDial().SizeHint();
@@ -72,14 +84,6 @@ namespace Qyoto {
 		[SmokeMethod("minimumSizeHint() const")]
 		public new QSize MinimumSizeHint() {
 			return ProxyQDial().MinimumSizeHint();
-		}
-		[SmokeMethod("setNotchesVisible(bool)")]
-		public void SetNotchesVisible(bool visible) {
-			ProxyQDial().SetNotchesVisible(visible);
-		}
-		[SmokeMethod("setWrapping(bool)")]
-		public void SetWrapping(bool on) {
-			ProxyQDial().SetWrapping(on);
 		}
 		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {

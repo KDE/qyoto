@@ -40,6 +40,54 @@ namespace Qyoto {
 			Filled = 1,
 			Flat = 2,
 		}
+		public bool SmallDecimalPoint {
+			get {
+				return Property("SmallDecimalPoint").Value<bool>();
+			}
+			set {
+				SetProperty("SmallDecimalPoint", QVariant.FromValue<bool>(value));
+			}
+		}
+		public int NumDigits {
+			get {
+				return Property("NumDigits").Value<int>();
+			}
+			set {
+				SetProperty("NumDigits", QVariant.FromValue<int>(value));
+			}
+		}
+		public int mode {
+			get {
+				return Property("mode").Value<int>();
+			}
+			set {
+				SetProperty("mode", QVariant.FromValue<int>(value));
+			}
+		}
+		public int segmentStyle {
+			get {
+				return Property("segmentStyle").Value<int>();
+			}
+			set {
+				SetProperty("segmentStyle", QVariant.FromValue<int>(value));
+			}
+		}
+		public double Value {
+			get {
+				return Property("Value").Value<double>();
+			}
+			set {
+				SetProperty("Value", QVariant.FromValue<double>(value));
+			}
+		}
+		public int IntValue {
+			get {
+				return Property("IntValue").Value<int>();
+			}
+			set {
+				SetProperty("IntValue", QVariant.FromValue<int>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QLCDNumber(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -73,18 +121,6 @@ namespace Qyoto {
 		private void NewQLCDNumber(uint numDigits) {
 			ProxyQLCDNumber().NewQLCDNumber(numDigits);
 		}
-		[SmokeMethod("smallDecimalPoint() const")]
-		public bool SmallDecimalPoint() {
-			return ProxyQLCDNumber().SmallDecimalPoint();
-		}
-		[SmokeMethod("numDigits() const")]
-		public int NumDigits() {
-			return ProxyQLCDNumber().NumDigits();
-		}
-		[SmokeMethod("setNumDigits(int)")]
-		public void SetNumDigits(int nDigits) {
-			ProxyQLCDNumber().SetNumDigits(nDigits);
-		}
 		[SmokeMethod("checkOverflow(double) const")]
 		public bool CheckOverflow(double num) {
 			return ProxyQLCDNumber().CheckOverflow(num);
@@ -92,30 +128,6 @@ namespace Qyoto {
 		[SmokeMethod("checkOverflow(int) const")]
 		public bool CheckOverflow(int num) {
 			return ProxyQLCDNumber().CheckOverflow(num);
-		}
-		[SmokeMethod("mode() const")]
-		public QLCDNumber.Mode mode() {
-			return ProxyQLCDNumber().mode();
-		}
-		[SmokeMethod("setMode(QLCDNumber::Mode)")]
-		public void SetMode(QLCDNumber.Mode arg1) {
-			ProxyQLCDNumber().SetMode(arg1);
-		}
-		[SmokeMethod("segmentStyle() const")]
-		public QLCDNumber.SegmentStyle segmentStyle() {
-			return ProxyQLCDNumber().segmentStyle();
-		}
-		[SmokeMethod("setSegmentStyle(QLCDNumber::SegmentStyle)")]
-		public void SetSegmentStyle(QLCDNumber.SegmentStyle arg1) {
-			ProxyQLCDNumber().SetSegmentStyle(arg1);
-		}
-		[SmokeMethod("value() const")]
-		public double Value() {
-			return ProxyQLCDNumber().Value();
-		}
-		[SmokeMethod("intValue() const")]
-		public int IntValue() {
-			return ProxyQLCDNumber().IntValue();
 		}
 		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {
@@ -148,10 +160,6 @@ namespace Qyoto {
 		[SmokeMethod("setBinMode()")]
 		public void SetBinMode() {
 			ProxyQLCDNumber().SetBinMode();
-		}
-		[SmokeMethod("setSmallDecimalPoint(bool)")]
-		public void SetSmallDecimalPoint(bool arg1) {
-			ProxyQLCDNumber().SetSmallDecimalPoint(arg1);
 		}
 		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {

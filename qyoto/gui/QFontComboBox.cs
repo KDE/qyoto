@@ -36,6 +36,30 @@ namespace Qyoto {
 			MonospacedFonts = 0x4,
 			ProportionalFonts = 0x8,
 		}
+		public QFontDatabase.WritingSystem WritingSystem {
+			get {
+				return Property("WritingSystem").Value<QFontDatabase.WritingSystem>();
+			}
+			set {
+				SetProperty("WritingSystem", QVariant.FromValue<QFontDatabase.WritingSystem>(value));
+			}
+		}
+		public int FontFilters {
+			get {
+				return Property("FontFilters").Value<int>();
+			}
+			set {
+				SetProperty("FontFilters", QVariant.FromValue<int>(value));
+			}
+		}
+		public QFont CurrentFont {
+			get {
+				return Property("CurrentFont").Value<QFont>();
+			}
+			set {
+				SetProperty("CurrentFont", QVariant.FromValue<QFont>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QFontComboBox(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -53,33 +77,9 @@ namespace Qyoto {
 		private void NewQFontComboBox() {
 			ProxyQFontComboBox().NewQFontComboBox();
 		}
-		[SmokeMethod("setWritingSystem(QFontDatabase::WritingSystem)")]
-		public void SetWritingSystem(QFontDatabase.WritingSystem arg1) {
-			ProxyQFontComboBox().SetWritingSystem(arg1);
-		}
-		[SmokeMethod("writingSystem() const")]
-		public QFontDatabase.WritingSystem WritingSystem() {
-			return ProxyQFontComboBox().WritingSystem();
-		}
-		[SmokeMethod("setFontFilters(FontFilters)")]
-		public void SetFontFilters(int filters) {
-			ProxyQFontComboBox().SetFontFilters(filters);
-		}
-		[SmokeMethod("fontFilters() const")]
-		public int FontFilters() {
-			return ProxyQFontComboBox().FontFilters();
-		}
-		[SmokeMethod("currentFont() const")]
-		public QFont CurrentFont() {
-			return ProxyQFontComboBox().CurrentFont();
-		}
 		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {
 			return ProxyQFontComboBox().SizeHint();
-		}
-		[SmokeMethod("setCurrentFont(const QFont&)")]
-		public void SetCurrentFont(QFont f) {
-			ProxyQFontComboBox().SetCurrentFont(f);
 		}
 		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {

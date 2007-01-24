@@ -34,6 +34,30 @@ namespace Qyoto {
 			MenuButtonPopup = 1,
 			InstantPopup = 2,
 		}
+		public Qt.ToolButtonStyle ToolButtonStyle {
+			get {
+				return Property("ToolButtonStyle").Value<Qt.ToolButtonStyle>();
+			}
+			set {
+				SetProperty("ToolButtonStyle", QVariant.FromValue<Qt.ToolButtonStyle>(value));
+			}
+		}
+		public bool AutoRaise {
+			get {
+				return Property("AutoRaise").Value<bool>();
+			}
+			set {
+				SetProperty("AutoRaise", QVariant.FromValue<bool>(value));
+			}
+		}
+		public Qt.ArrowType ArrowType {
+			get {
+				return Property("ArrowType").Value<Qt.ArrowType>();
+			}
+			set {
+				SetProperty("ArrowType", QVariant.FromValue<Qt.ArrowType>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QToolButton(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -59,18 +83,6 @@ namespace Qyoto {
 		public new QSize MinimumSizeHint() {
 			return ProxyQToolButton().MinimumSizeHint();
 		}
-		[SmokeMethod("toolButtonStyle() const")]
-		public Qt.ToolButtonStyle ToolButtonStyle() {
-			return ProxyQToolButton().ToolButtonStyle();
-		}
-		[SmokeMethod("arrowType() const")]
-		public Qt.ArrowType ArrowType() {
-			return ProxyQToolButton().ArrowType();
-		}
-		[SmokeMethod("setArrowType(Qt::ArrowType)")]
-		public void SetArrowType(Qt.ArrowType type) {
-			ProxyQToolButton().SetArrowType(type);
-		}
 		[SmokeMethod("setMenu(QMenu*)")]
 		public void SetMenu(QMenu menu) {
 			ProxyQToolButton().SetMenu(menu);
@@ -79,33 +91,13 @@ namespace Qyoto {
 		public QMenu Menu() {
 			return ProxyQToolButton().Menu();
 		}
-		[SmokeMethod("setPopupMode(QToolButton::ToolButtonPopupMode)")]
-		public void SetPopupMode(QToolButton.ToolButtonPopupMode mode) {
-			ProxyQToolButton().SetPopupMode(mode);
-		}
-		[SmokeMethod("popupMode() const")]
-		public QToolButton.ToolButtonPopupMode PopupMode() {
-			return ProxyQToolButton().PopupMode();
-		}
 		[SmokeMethod("defaultAction() const")]
 		public QAction DefaultAction() {
 			return ProxyQToolButton().DefaultAction();
 		}
-		[SmokeMethod("setAutoRaise(bool)")]
-		public void SetAutoRaise(bool enable) {
-			ProxyQToolButton().SetAutoRaise(enable);
-		}
-		[SmokeMethod("autoRaise() const")]
-		public bool AutoRaise() {
-			return ProxyQToolButton().AutoRaise();
-		}
 		[SmokeMethod("showMenu()")]
 		public void ShowMenu() {
 			ProxyQToolButton().ShowMenu();
-		}
-		[SmokeMethod("setToolButtonStyle(Qt::ToolButtonStyle)")]
-		public void SetToolButtonStyle(Qt.ToolButtonStyle style) {
-			ProxyQToolButton().SetToolButtonStyle(style);
 		}
 		[SmokeMethod("setDefaultAction(QAction*)")]
 		public void SetDefaultAction(QAction arg1) {

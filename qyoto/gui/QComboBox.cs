@@ -44,6 +44,110 @@ namespace Qyoto {
 			AdjustToContentsOnFirstShow = 1,
 			AdjustToMinimumContentsLength = 2,
 		}
+		public bool Editable {
+			get {
+				return Property("Editable").Value<bool>();
+			}
+			set {
+				SetProperty("Editable", QVariant.FromValue<bool>(value));
+			}
+		}
+		public int Count {
+			get {
+				return Property("Count").Value<int>();
+			}
+			set {
+				SetProperty("Count", QVariant.FromValue<int>(value));
+			}
+		}
+		public string CurrentText {
+			get {
+				return Property("CurrentText").Value<string>();
+			}
+			set {
+				SetProperty("CurrentText", QVariant.FromValue<string>(value));
+			}
+		}
+		public int CurrentIndex {
+			get {
+				return Property("CurrentIndex").Value<int>();
+			}
+			set {
+				SetProperty("CurrentIndex", QVariant.FromValue<int>(value));
+			}
+		}
+		public int MaxVisibleItems {
+			get {
+				return Property("MaxVisibleItems").Value<int>();
+			}
+			set {
+				SetProperty("MaxVisibleItems", QVariant.FromValue<int>(value));
+			}
+		}
+		public int MaxCount {
+			get {
+				return Property("MaxCount").Value<int>();
+			}
+			set {
+				SetProperty("MaxCount", QVariant.FromValue<int>(value));
+			}
+		}
+		public int MinimumContentsLength {
+			get {
+				return Property("MinimumContentsLength").Value<int>();
+			}
+			set {
+				SetProperty("MinimumContentsLength", QVariant.FromValue<int>(value));
+			}
+		}
+		public QSize IconSize {
+			get {
+				return Property("IconSize").Value<QSize>();
+			}
+			set {
+				SetProperty("IconSize", QVariant.FromValue<QSize>(value));
+			}
+		}
+		public bool AutoCompletion {
+			get {
+				return Property("AutoCompletion").Value<bool>();
+			}
+			set {
+				SetProperty("AutoCompletion", QVariant.FromValue<bool>(value));
+			}
+		}
+		public Qt.CaseSensitivity AutoCompletionCaseSensitivity {
+			get {
+				return Property("AutoCompletionCaseSensitivity").Value<Qt.CaseSensitivity>();
+			}
+			set {
+				SetProperty("AutoCompletionCaseSensitivity", QVariant.FromValue<Qt.CaseSensitivity>(value));
+			}
+		}
+		public bool DuplicatesEnabled {
+			get {
+				return Property("DuplicatesEnabled").Value<bool>();
+			}
+			set {
+				SetProperty("DuplicatesEnabled", QVariant.FromValue<bool>(value));
+			}
+		}
+		public bool Frame {
+			get {
+				return Property("Frame").Value<bool>();
+			}
+			set {
+				SetProperty("Frame", QVariant.FromValue<bool>(value));
+			}
+		}
+		public int ModelColumn {
+			get {
+				return Property("ModelColumn").Value<int>();
+			}
+			set {
+				SetProperty("ModelColumn", QVariant.FromValue<int>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QComboBox(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -60,54 +164,6 @@ namespace Qyoto {
 		[SmokeMethod("QComboBox()")]
 		private void NewQComboBox() {
 			ProxyQComboBox().NewQComboBox();
-		}
-		[SmokeMethod("maxVisibleItems() const")]
-		public int MaxVisibleItems() {
-			return ProxyQComboBox().MaxVisibleItems();
-		}
-		[SmokeMethod("setMaxVisibleItems(int)")]
-		public void SetMaxVisibleItems(int maxItems) {
-			ProxyQComboBox().SetMaxVisibleItems(maxItems);
-		}
-		[SmokeMethod("count() const")]
-		public int Count() {
-			return ProxyQComboBox().Count();
-		}
-		[SmokeMethod("setMaxCount(int)")]
-		public void SetMaxCount(int max) {
-			ProxyQComboBox().SetMaxCount(max);
-		}
-		[SmokeMethod("maxCount() const")]
-		public int MaxCount() {
-			return ProxyQComboBox().MaxCount();
-		}
-		[SmokeMethod("autoCompletion() const")]
-		public bool AutoCompletion() {
-			return ProxyQComboBox().AutoCompletion();
-		}
-		[SmokeMethod("setAutoCompletion(bool)")]
-		public void SetAutoCompletion(bool enable) {
-			ProxyQComboBox().SetAutoCompletion(enable);
-		}
-		[SmokeMethod("autoCompletionCaseSensitivity() const")]
-		public Qt.CaseSensitivity AutoCompletionCaseSensitivity() {
-			return ProxyQComboBox().AutoCompletionCaseSensitivity();
-		}
-		[SmokeMethod("setAutoCompletionCaseSensitivity(Qt::CaseSensitivity)")]
-		public void SetAutoCompletionCaseSensitivity(Qt.CaseSensitivity sensitivity) {
-			ProxyQComboBox().SetAutoCompletionCaseSensitivity(sensitivity);
-		}
-		[SmokeMethod("duplicatesEnabled() const")]
-		public bool DuplicatesEnabled() {
-			return ProxyQComboBox().DuplicatesEnabled();
-		}
-		[SmokeMethod("setDuplicatesEnabled(bool)")]
-		public void SetDuplicatesEnabled(bool enable) {
-			ProxyQComboBox().SetDuplicatesEnabled(enable);
-		}
-		[SmokeMethod("setFrame(bool)")]
-		public void SetFrame(bool arg1) {
-			ProxyQComboBox().SetFrame(arg1);
 		}
 		[SmokeMethod("hasFrame() const")]
 		public bool HasFrame() {
@@ -133,45 +189,9 @@ namespace Qyoto {
 		public int FindData(QVariant data) {
 			return ProxyQComboBox().FindData(data);
 		}
-		[SmokeMethod("insertPolicy() const")]
-		public QComboBox.InsertPolicy insertPolicy() {
-			return ProxyQComboBox().insertPolicy();
-		}
-		[SmokeMethod("setInsertPolicy(QComboBox::InsertPolicy)")]
-		public void SetInsertPolicy(QComboBox.InsertPolicy policy) {
-			ProxyQComboBox().SetInsertPolicy(policy);
-		}
-		[SmokeMethod("sizeAdjustPolicy() const")]
-		public QComboBox.SizeAdjustPolicy sizeAdjustPolicy() {
-			return ProxyQComboBox().sizeAdjustPolicy();
-		}
-		[SmokeMethod("setSizeAdjustPolicy(QComboBox::SizeAdjustPolicy)")]
-		public void SetSizeAdjustPolicy(QComboBox.SizeAdjustPolicy policy) {
-			ProxyQComboBox().SetSizeAdjustPolicy(policy);
-		}
-		[SmokeMethod("minimumContentsLength() const")]
-		public int MinimumContentsLength() {
-			return ProxyQComboBox().MinimumContentsLength();
-		}
-		[SmokeMethod("setMinimumContentsLength(int)")]
-		public void SetMinimumContentsLength(int characters) {
-			ProxyQComboBox().SetMinimumContentsLength(characters);
-		}
-		[SmokeMethod("iconSize() const")]
-		public QSize IconSize() {
-			return ProxyQComboBox().IconSize();
-		}
-		[SmokeMethod("setIconSize(const QSize&)")]
-		public void SetIconSize(QSize size) {
-			ProxyQComboBox().SetIconSize(size);
-		}
 		[SmokeMethod("isEditable() const")]
 		public bool IsEditable() {
 			return ProxyQComboBox().IsEditable();
-		}
-		[SmokeMethod("setEditable(bool)")]
-		public void SetEditable(bool editable) {
-			ProxyQComboBox().SetEditable(editable);
 		}
 		[SmokeMethod("setLineEdit(QLineEdit*)")]
 		public void SetLineEdit(QLineEdit edit) {
@@ -220,22 +240,6 @@ namespace Qyoto {
 		[SmokeMethod("setRootModelIndex(const QModelIndex&)")]
 		public void SetRootModelIndex(QModelIndex index) {
 			ProxyQComboBox().SetRootModelIndex(index);
-		}
-		[SmokeMethod("modelColumn() const")]
-		public int ModelColumn() {
-			return ProxyQComboBox().ModelColumn();
-		}
-		[SmokeMethod("setModelColumn(int)")]
-		public void SetModelColumn(int visibleColumn) {
-			ProxyQComboBox().SetModelColumn(visibleColumn);
-		}
-		[SmokeMethod("currentIndex() const")]
-		public int CurrentIndex() {
-			return ProxyQComboBox().CurrentIndex();
-		}
-		[SmokeMethod("currentText() const")]
-		public string CurrentText() {
-			return ProxyQComboBox().CurrentText();
 		}
 		[SmokeMethod("itemText(int) const")]
 		public string ItemText(int index) {
@@ -352,10 +356,6 @@ namespace Qyoto {
 		[SmokeMethod("setEditText(const QString&)")]
 		public void SetEditText(string text) {
 			ProxyQComboBox().SetEditText(text);
-		}
-		[SmokeMethod("setCurrentIndex(int)")]
-		public void SetCurrentIndex(int index) {
-			ProxyQComboBox().SetCurrentIndex(index);
 		}
 		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {

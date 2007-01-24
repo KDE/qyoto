@@ -29,6 +29,14 @@ namespace Qyoto {
 			return (IQUndoStackProxy) _staticInterceptor;
 		}
 
+		public bool Active {
+			get {
+				return Property("Active").Value<bool>();
+			}
+			set {
+				SetProperty("Active", QVariant.FromValue<bool>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QUndoStack(QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -133,14 +141,6 @@ namespace Qyoto {
 		[SmokeMethod("redo()")]
 		public void Redo() {
 			ProxyQUndoStack().Redo();
-		}
-		[SmokeMethod("setActive(bool)")]
-		public void SetActive(bool active) {
-			ProxyQUndoStack().SetActive(active);
-		}
-		[SmokeMethod("setActive()")]
-		public void SetActive() {
-			ProxyQUndoStack().SetActive();
 		}
 		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {

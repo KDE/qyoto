@@ -29,6 +29,46 @@ namespace Qyoto {
 			return (IQShortcutProxy) _staticInterceptor;
 		}
 
+		public QKeySequence Key {
+			get {
+				return Property("Key").Value<QKeySequence>();
+			}
+			set {
+				SetProperty("Key", QVariant.FromValue<QKeySequence>(value));
+			}
+		}
+		public string WhatsThis {
+			get {
+				return Property("WhatsThis").Value<string>();
+			}
+			set {
+				SetProperty("WhatsThis", QVariant.FromValue<string>(value));
+			}
+		}
+		public bool Enabled {
+			get {
+				return Property("Enabled").Value<bool>();
+			}
+			set {
+				SetProperty("Enabled", QVariant.FromValue<bool>(value));
+			}
+		}
+		public bool AutoRepeat {
+			get {
+				return Property("AutoRepeat").Value<bool>();
+			}
+			set {
+				SetProperty("AutoRepeat", QVariant.FromValue<bool>(value));
+			}
+		}
+		public Qt.ShortcutContext Context {
+			get {
+				return Property("Context").Value<Qt.ShortcutContext>();
+			}
+			set {
+				SetProperty("Context", QVariant.FromValue<Qt.ShortcutContext>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QShortcut(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -70,45 +110,9 @@ namespace Qyoto {
 		private void NewQShortcut(QKeySequence key, QWidget parent) {
 			ProxyQShortcut().NewQShortcut(key,parent);
 		}
-		[SmokeMethod("setKey(const QKeySequence&)")]
-		public void SetKey(QKeySequence key) {
-			ProxyQShortcut().SetKey(key);
-		}
-		[SmokeMethod("key() const")]
-		public QKeySequence Key() {
-			return ProxyQShortcut().Key();
-		}
-		[SmokeMethod("setEnabled(bool)")]
-		public void SetEnabled(bool enable) {
-			ProxyQShortcut().SetEnabled(enable);
-		}
 		[SmokeMethod("isEnabled() const")]
 		public bool IsEnabled() {
 			return ProxyQShortcut().IsEnabled();
-		}
-		[SmokeMethod("setContext(Qt::ShortcutContext)")]
-		public void SetContext(Qt.ShortcutContext context) {
-			ProxyQShortcut().SetContext(context);
-		}
-		[SmokeMethod("context()")]
-		public Qt.ShortcutContext Context() {
-			return ProxyQShortcut().Context();
-		}
-		[SmokeMethod("setWhatsThis(const QString&)")]
-		public void SetWhatsThis(string text) {
-			ProxyQShortcut().SetWhatsThis(text);
-		}
-		[SmokeMethod("whatsThis() const")]
-		public string WhatsThis() {
-			return ProxyQShortcut().WhatsThis();
-		}
-		[SmokeMethod("setAutoRepeat(bool)")]
-		public void SetAutoRepeat(bool on) {
-			ProxyQShortcut().SetAutoRepeat(on);
-		}
-		[SmokeMethod("autoRepeat() const")]
-		public bool AutoRepeat() {
-			return ProxyQShortcut().AutoRepeat();
 		}
 		[SmokeMethod("id() const")]
 		public int Id() {

@@ -36,6 +36,14 @@ namespace Qyoto {
 			TicksRight = TicksBelow,
 			TicksBothSides = 3,
 		}
+		public int TickInterval {
+			get {
+				return Property("TickInterval").Value<int>();
+			}
+			set {
+				SetProperty("TickInterval", QVariant.FromValue<int>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QSlider(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -76,22 +84,6 @@ namespace Qyoto {
 		[SmokeMethod("minimumSizeHint() const")]
 		public new QSize MinimumSizeHint() {
 			return ProxyQSlider().MinimumSizeHint();
-		}
-		[SmokeMethod("setTickPosition(QSlider::TickPosition)")]
-		public void SetTickPosition(QSlider.TickPosition position) {
-			ProxyQSlider().SetTickPosition(position);
-		}
-		[SmokeMethod("tickPosition() const")]
-		public QSlider.TickPosition tickPosition() {
-			return ProxyQSlider().tickPosition();
-		}
-		[SmokeMethod("setTickInterval(int)")]
-		public void SetTickInterval(int ti) {
-			ProxyQSlider().SetTickInterval(ti);
-		}
-		[SmokeMethod("tickInterval() const")]
-		public int TickInterval() {
-			return ProxyQSlider().TickInterval();
 		}
 		[SmokeMethod("event(QEvent*)")]
 		public new bool Event(QEvent arg1) {

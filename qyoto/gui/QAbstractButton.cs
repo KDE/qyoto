@@ -29,6 +29,94 @@ namespace Qyoto {
 			return (IQAbstractButtonProxy) _staticInterceptor;
 		}
 
+		public string Text {
+			get {
+				return Property("Text").Value<string>();
+			}
+			set {
+				SetProperty("Text", QVariant.FromValue<string>(value));
+			}
+		}
+		public QIcon Icon {
+			get {
+				return Property("Icon").Value<QIcon>();
+			}
+			set {
+				SetProperty("Icon", QVariant.FromValue<QIcon>(value));
+			}
+		}
+		public QSize IconSize {
+			get {
+				return Property("IconSize").Value<QSize>();
+			}
+			set {
+				SetProperty("IconSize", QVariant.FromValue<QSize>(value));
+			}
+		}
+		public QKeySequence Shortcut {
+			get {
+				return Property("Shortcut").Value<QKeySequence>();
+			}
+			set {
+				SetProperty("Shortcut", QVariant.FromValue<QKeySequence>(value));
+			}
+		}
+		public bool Checkable {
+			get {
+				return Property("Checkable").Value<bool>();
+			}
+			set {
+				SetProperty("Checkable", QVariant.FromValue<bool>(value));
+			}
+		}
+		public bool Checked {
+			get {
+				return Property("Checked").Value<bool>();
+			}
+			set {
+				SetProperty("Checked", QVariant.FromValue<bool>(value));
+			}
+		}
+		public bool AutoRepeat {
+			get {
+				return Property("AutoRepeat").Value<bool>();
+			}
+			set {
+				SetProperty("AutoRepeat", QVariant.FromValue<bool>(value));
+			}
+		}
+		public bool AutoExclusive {
+			get {
+				return Property("AutoExclusive").Value<bool>();
+			}
+			set {
+				SetProperty("AutoExclusive", QVariant.FromValue<bool>(value));
+			}
+		}
+		public int AutoRepeatDelay {
+			get {
+				return Property("AutoRepeatDelay").Value<int>();
+			}
+			set {
+				SetProperty("AutoRepeatDelay", QVariant.FromValue<int>(value));
+			}
+		}
+		public int AutoRepeatInterval {
+			get {
+				return Property("AutoRepeatInterval").Value<int>();
+			}
+			set {
+				SetProperty("AutoRepeatInterval", QVariant.FromValue<int>(value));
+			}
+		}
+		public bool Down {
+			get {
+				return Property("Down").Value<bool>();
+			}
+			set {
+				SetProperty("Down", QVariant.FromValue<bool>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QAbstractButton(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -46,38 +134,6 @@ namespace Qyoto {
 		private void NewQAbstractButton() {
 			ProxyQAbstractButton().NewQAbstractButton();
 		}
-		[SmokeMethod("setText(const QString&)")]
-		public void SetText(string text) {
-			ProxyQAbstractButton().SetText(text);
-		}
-		[SmokeMethod("text() const")]
-		public string Text() {
-			return ProxyQAbstractButton().Text();
-		}
-		[SmokeMethod("setIcon(const QIcon&)")]
-		public void SetIcon(QIcon icon) {
-			ProxyQAbstractButton().SetIcon(icon);
-		}
-		[SmokeMethod("icon() const")]
-		public QIcon Icon() {
-			return ProxyQAbstractButton().Icon();
-		}
-		[SmokeMethod("iconSize() const")]
-		public QSize IconSize() {
-			return ProxyQAbstractButton().IconSize();
-		}
-		[SmokeMethod("setShortcut(const QKeySequence&)")]
-		public void SetShortcut(QKeySequence key) {
-			ProxyQAbstractButton().SetShortcut(key);
-		}
-		[SmokeMethod("shortcut() const")]
-		public QKeySequence Shortcut() {
-			return ProxyQAbstractButton().Shortcut();
-		}
-		[SmokeMethod("setCheckable(bool)")]
-		public void SetCheckable(bool arg1) {
-			ProxyQAbstractButton().SetCheckable(arg1);
-		}
 		[SmokeMethod("isCheckable() const")]
 		public bool IsCheckable() {
 			return ProxyQAbstractButton().IsCheckable();
@@ -86,53 +142,13 @@ namespace Qyoto {
 		public bool IsChecked() {
 			return ProxyQAbstractButton().IsChecked();
 		}
-		[SmokeMethod("setDown(bool)")]
-		public void SetDown(bool arg1) {
-			ProxyQAbstractButton().SetDown(arg1);
-		}
 		[SmokeMethod("isDown() const")]
 		public bool IsDown() {
 			return ProxyQAbstractButton().IsDown();
 		}
-		[SmokeMethod("setAutoRepeat(bool)")]
-		public void SetAutoRepeat(bool arg1) {
-			ProxyQAbstractButton().SetAutoRepeat(arg1);
-		}
-		[SmokeMethod("autoRepeat() const")]
-		public bool AutoRepeat() {
-			return ProxyQAbstractButton().AutoRepeat();
-		}
-		[SmokeMethod("setAutoRepeatDelay(int)")]
-		public void SetAutoRepeatDelay(int arg1) {
-			ProxyQAbstractButton().SetAutoRepeatDelay(arg1);
-		}
-		[SmokeMethod("autoRepeatDelay() const")]
-		public int AutoRepeatDelay() {
-			return ProxyQAbstractButton().AutoRepeatDelay();
-		}
-		[SmokeMethod("setAutoRepeatInterval(int)")]
-		public void SetAutoRepeatInterval(int arg1) {
-			ProxyQAbstractButton().SetAutoRepeatInterval(arg1);
-		}
-		[SmokeMethod("autoRepeatInterval() const")]
-		public int AutoRepeatInterval() {
-			return ProxyQAbstractButton().AutoRepeatInterval();
-		}
-		[SmokeMethod("setAutoExclusive(bool)")]
-		public void SetAutoExclusive(bool arg1) {
-			ProxyQAbstractButton().SetAutoExclusive(arg1);
-		}
-		[SmokeMethod("autoExclusive() const")]
-		public bool AutoExclusive() {
-			return ProxyQAbstractButton().AutoExclusive();
-		}
 		[SmokeMethod("group() const")]
 		public QButtonGroup Group() {
 			return ProxyQAbstractButton().Group();
-		}
-		[SmokeMethod("setIconSize(const QSize&)")]
-		public void SetIconSize(QSize size) {
-			ProxyQAbstractButton().SetIconSize(size);
 		}
 		[SmokeMethod("animateClick(int)")]
 		public void AnimateClick(int msec) {
@@ -149,10 +165,6 @@ namespace Qyoto {
 		[SmokeMethod("toggle()")]
 		public void Toggle() {
 			ProxyQAbstractButton().Toggle();
-		}
-		[SmokeMethod("setChecked(bool)")]
-		public void SetChecked(bool arg1) {
-			ProxyQAbstractButton().SetChecked(arg1);
 		}
 		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {

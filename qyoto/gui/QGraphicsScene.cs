@@ -34,6 +34,30 @@ namespace Qyoto {
 			BspTreeIndex = 0,
 			NoIndex = -1,
 		}
+		public QBrush BackgroundBrush {
+			get {
+				return Property("BackgroundBrush").Value<QBrush>();
+			}
+			set {
+				SetProperty("BackgroundBrush", QVariant.FromValue<QBrush>(value));
+			}
+		}
+		public QBrush ForegroundBrush {
+			get {
+				return Property("ForegroundBrush").Value<QBrush>();
+			}
+			set {
+				SetProperty("ForegroundBrush", QVariant.FromValue<QBrush>(value));
+			}
+		}
+		public QRectF SceneRect {
+			get {
+				return Property("SceneRect").Value<QRectF>();
+			}
+			set {
+				SetProperty("SceneRect", QVariant.FromValue<QRectF>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QGraphicsScene(QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -83,10 +107,6 @@ namespace Qyoto {
 		private void NewQGraphicsScene(double x, double y, double width, double height) {
 			ProxyQGraphicsScene().NewQGraphicsScene(x,y,width,height);
 		}
-		[SmokeMethod("sceneRect() const")]
-		public QRectF SceneRect() {
-			return ProxyQGraphicsScene().SceneRect();
-		}
 		[SmokeMethod("width() const")]
 		public double Width() {
 			return ProxyQGraphicsScene().Width();
@@ -94,10 +114,6 @@ namespace Qyoto {
 		[SmokeMethod("height() const")]
 		public double Height() {
 			return ProxyQGraphicsScene().Height();
-		}
-		[SmokeMethod("setSceneRect(const QRectF&)")]
-		public void SetSceneRect(QRectF rect) {
-			ProxyQGraphicsScene().SetSceneRect(rect);
 		}
 		[SmokeMethod("setSceneRect(qreal, qreal, qreal, qreal)")]
 		public void SetSceneRect(double x, double y, double w, double h) {
@@ -118,14 +134,6 @@ namespace Qyoto {
 		[SmokeMethod("render(QPainter*)")]
 		public void Render(QPainter painter) {
 			ProxyQGraphicsScene().Render(painter);
-		}
-		[SmokeMethod("itemIndexMethod() const")]
-		public QGraphicsScene.ItemIndexMethod itemIndexMethod() {
-			return ProxyQGraphicsScene().itemIndexMethod();
-		}
-		[SmokeMethod("setItemIndexMethod(QGraphicsScene::ItemIndexMethod)")]
-		public void SetItemIndexMethod(QGraphicsScene.ItemIndexMethod method) {
-			ProxyQGraphicsScene().SetItemIndexMethod(method);
 		}
 		[SmokeMethod("itemsBoundingRect() const")]
 		public QRectF ItemsBoundingRect() {
@@ -306,22 +314,6 @@ namespace Qyoto {
 		[SmokeMethod("mouseGrabberItem() const")]
 		public QGraphicsItem MouseGrabberItem() {
 			return ProxyQGraphicsScene().MouseGrabberItem();
-		}
-		[SmokeMethod("backgroundBrush() const")]
-		public QBrush BackgroundBrush() {
-			return ProxyQGraphicsScene().BackgroundBrush();
-		}
-		[SmokeMethod("setBackgroundBrush(const QBrush&)")]
-		public void SetBackgroundBrush(QBrush brush) {
-			ProxyQGraphicsScene().SetBackgroundBrush(brush);
-		}
-		[SmokeMethod("foregroundBrush() const")]
-		public QBrush ForegroundBrush() {
-			return ProxyQGraphicsScene().ForegroundBrush();
-		}
-		[SmokeMethod("setForegroundBrush(const QBrush&)")]
-		public void SetForegroundBrush(QBrush brush) {
-			ProxyQGraphicsScene().SetForegroundBrush(brush);
 		}
 		[SmokeMethod("inputMethodQuery(Qt::InputMethodQuery) const")]
 		public virtual QVariant InputMethodQuery(Qt.InputMethodQuery query) {

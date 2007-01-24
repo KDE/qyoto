@@ -32,6 +32,38 @@ namespace Qyoto {
 			return (IQMenuProxy) _staticInterceptor;
 		}
 
+		public bool TearOffEnabled {
+			get {
+				return Property("TearOffEnabled").Value<bool>();
+			}
+			set {
+				SetProperty("TearOffEnabled", QVariant.FromValue<bool>(value));
+			}
+		}
+		public string Title {
+			get {
+				return Property("Title").Value<string>();
+			}
+			set {
+				SetProperty("Title", QVariant.FromValue<string>(value));
+			}
+		}
+		public QIcon Icon {
+			get {
+				return Property("Icon").Value<QIcon>();
+			}
+			set {
+				SetProperty("Icon", QVariant.FromValue<QIcon>(value));
+			}
+		}
+		public bool SeparatorsCollapsible {
+			get {
+				return Property("SeparatorsCollapsible").Value<bool>();
+			}
+			set {
+				SetProperty("SeparatorsCollapsible", QVariant.FromValue<bool>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QMenu(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -125,10 +157,6 @@ namespace Qyoto {
 		public void Clear() {
 			ProxyQMenu().Clear();
 		}
-		[SmokeMethod("setTearOffEnabled(bool)")]
-		public void SetTearOffEnabled(bool arg1) {
-			ProxyQMenu().SetTearOffEnabled(arg1);
-		}
 		[SmokeMethod("isTearOffEnabled() const")]
 		public bool IsTearOffEnabled() {
 			return ProxyQMenu().IsTearOffEnabled();
@@ -193,33 +221,9 @@ namespace Qyoto {
 		public QAction MenuAction() {
 			return ProxyQMenu().MenuAction();
 		}
-		[SmokeMethod("title() const")]
-		public string Title() {
-			return ProxyQMenu().Title();
-		}
-		[SmokeMethod("setTitle(const QString&)")]
-		public void SetTitle(string title) {
-			ProxyQMenu().SetTitle(title);
-		}
-		[SmokeMethod("icon() const")]
-		public QIcon Icon() {
-			return ProxyQMenu().Icon();
-		}
-		[SmokeMethod("setIcon(const QIcon&)")]
-		public void SetIcon(QIcon icon) {
-			ProxyQMenu().SetIcon(icon);
-		}
 		[SmokeMethod("setNoReplayFor(QWidget*)")]
 		public void SetNoReplayFor(QWidget widget) {
 			ProxyQMenu().SetNoReplayFor(widget);
-		}
-		[SmokeMethod("separatorsCollapsible() const")]
-		public bool SeparatorsCollapsible() {
-			return ProxyQMenu().SeparatorsCollapsible();
-		}
-		[SmokeMethod("setSeparatorsCollapsible(bool)")]
-		public void SetSeparatorsCollapsible(bool collapse) {
-			ProxyQMenu().SetSeparatorsCollapsible(collapse);
 		}
 		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {

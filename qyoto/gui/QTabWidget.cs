@@ -39,6 +39,54 @@ namespace Qyoto {
 			Rounded = 0,
 			Triangular = 1,
 		}
+		public int tabPosition {
+			get {
+				return Property("tabPosition").Value<int>();
+			}
+			set {
+				SetProperty("tabPosition", QVariant.FromValue<int>(value));
+			}
+		}
+		public int CurrentIndex {
+			get {
+				return Property("CurrentIndex").Value<int>();
+			}
+			set {
+				SetProperty("CurrentIndex", QVariant.FromValue<int>(value));
+			}
+		}
+		public int Count {
+			get {
+				return Property("Count").Value<int>();
+			}
+			set {
+				SetProperty("Count", QVariant.FromValue<int>(value));
+			}
+		}
+		public QSize IconSize {
+			get {
+				return Property("IconSize").Value<QSize>();
+			}
+			set {
+				SetProperty("IconSize", QVariant.FromValue<QSize>(value));
+			}
+		}
+		public Qt.TextElideMode ElideMode {
+			get {
+				return Property("ElideMode").Value<Qt.TextElideMode>();
+			}
+			set {
+				SetProperty("ElideMode", QVariant.FromValue<Qt.TextElideMode>(value));
+			}
+		}
+		public bool UsesScrollButtons {
+			get {
+				return Property("UsesScrollButtons").Value<bool>();
+			}
+			set {
+				SetProperty("UsesScrollButtons", QVariant.FromValue<bool>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QTabWidget(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -116,10 +164,6 @@ namespace Qyoto {
 		public string TabWhatsThis(int index) {
 			return ProxyQTabWidget().TabWhatsThis(index);
 		}
-		[SmokeMethod("currentIndex() const")]
-		public int CurrentIndex() {
-			return ProxyQTabWidget().CurrentIndex();
-		}
 		[SmokeMethod("currentWidget() const")]
 		public QWidget CurrentWidget() {
 			return ProxyQTabWidget().CurrentWidget();
@@ -131,26 +175,6 @@ namespace Qyoto {
 		[SmokeMethod("indexOf(QWidget*) const")]
 		public int IndexOf(QWidget widget) {
 			return ProxyQTabWidget().IndexOf(widget);
-		}
-		[SmokeMethod("count() const")]
-		public int Count() {
-			return ProxyQTabWidget().Count();
-		}
-		[SmokeMethod("tabPosition() const")]
-		public QTabWidget.TabPosition tabPosition() {
-			return ProxyQTabWidget().tabPosition();
-		}
-		[SmokeMethod("setTabPosition(QTabWidget::TabPosition)")]
-		public void SetTabPosition(QTabWidget.TabPosition arg1) {
-			ProxyQTabWidget().SetTabPosition(arg1);
-		}
-		[SmokeMethod("tabShape() const")]
-		public QTabWidget.TabShape tabShape() {
-			return ProxyQTabWidget().tabShape();
-		}
-		[SmokeMethod("setTabShape(QTabWidget::TabShape)")]
-		public void SetTabShape(QTabWidget.TabShape s) {
-			ProxyQTabWidget().SetTabShape(s);
 		}
 		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {
@@ -175,34 +199,6 @@ namespace Qyoto {
 		[SmokeMethod("cornerWidget() const")]
 		public QWidget CornerWidget() {
 			return ProxyQTabWidget().CornerWidget();
-		}
-		[SmokeMethod("elideMode() const")]
-		public Qt.TextElideMode ElideMode() {
-			return ProxyQTabWidget().ElideMode();
-		}
-		[SmokeMethod("setElideMode(Qt::TextElideMode)")]
-		public void SetElideMode(Qt.TextElideMode arg1) {
-			ProxyQTabWidget().SetElideMode(arg1);
-		}
-		[SmokeMethod("iconSize() const")]
-		public QSize IconSize() {
-			return ProxyQTabWidget().IconSize();
-		}
-		[SmokeMethod("setIconSize(const QSize&)")]
-		public void SetIconSize(QSize size) {
-			ProxyQTabWidget().SetIconSize(size);
-		}
-		[SmokeMethod("usesScrollButtons() const")]
-		public bool UsesScrollButtons() {
-			return ProxyQTabWidget().UsesScrollButtons();
-		}
-		[SmokeMethod("setUsesScrollButtons(bool)")]
-		public void SetUsesScrollButtons(bool useButtons) {
-			ProxyQTabWidget().SetUsesScrollButtons(useButtons);
-		}
-		[SmokeMethod("setCurrentIndex(int)")]
-		public void SetCurrentIndex(int index) {
-			ProxyQTabWidget().SetCurrentIndex(index);
 		}
 		[SmokeMethod("setCurrentWidget(QWidget*)")]
 		public void SetCurrentWidget(QWidget widget) {

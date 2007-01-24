@@ -28,6 +28,30 @@ namespace Qyoto {
 			return (IQPushButtonProxy) _staticInterceptor;
 		}
 
+		public bool AutoDefault {
+			get {
+				return Property("AutoDefault").Value<bool>();
+			}
+			set {
+				SetProperty("AutoDefault", QVariant.FromValue<bool>(value));
+			}
+		}
+		public bool Default {
+			get {
+				return Property("Default").Value<bool>();
+			}
+			set {
+				SetProperty("Default", QVariant.FromValue<bool>(value));
+			}
+		}
+		public bool Flat {
+			get {
+				return Property("Flat").Value<bool>();
+			}
+			set {
+				SetProperty("Flat", QVariant.FromValue<bool>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QPushButton(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -81,21 +105,9 @@ namespace Qyoto {
 		public new QSize SizeHint() {
 			return ProxyQPushButton().SizeHint();
 		}
-		[SmokeMethod("autoDefault() const")]
-		public bool AutoDefault() {
-			return ProxyQPushButton().AutoDefault();
-		}
-		[SmokeMethod("setAutoDefault(bool)")]
-		public void SetAutoDefault(bool arg1) {
-			ProxyQPushButton().SetAutoDefault(arg1);
-		}
 		[SmokeMethod("isDefault() const")]
 		public bool IsDefault() {
 			return ProxyQPushButton().IsDefault();
-		}
-		[SmokeMethod("setDefault(bool)")]
-		public void SetDefault(bool arg1) {
-			ProxyQPushButton().SetDefault(arg1);
 		}
 		[SmokeMethod("setMenu(QMenu*)")]
 		public void SetMenu(QMenu menu) {
@@ -104,10 +116,6 @@ namespace Qyoto {
 		[SmokeMethod("menu() const")]
 		public QMenu Menu() {
 			return ProxyQPushButton().Menu();
-		}
-		[SmokeMethod("setFlat(bool)")]
-		public void SetFlat(bool arg1) {
-			ProxyQPushButton().SetFlat(arg1);
 		}
 		[SmokeMethod("isFlat() const")]
 		public bool IsFlat() {

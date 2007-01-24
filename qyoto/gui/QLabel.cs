@@ -29,6 +29,86 @@ namespace Qyoto {
 			return (IQLabelProxy) _staticInterceptor;
 		}
 
+		public string Text {
+			get {
+				return Property("Text").Value<string>();
+			}
+			set {
+				SetProperty("Text", QVariant.FromValue<string>(value));
+			}
+		}
+		public Qt.TextFormat TextFormat {
+			get {
+				return Property("TextFormat").Value<Qt.TextFormat>();
+			}
+			set {
+				SetProperty("TextFormat", QVariant.FromValue<Qt.TextFormat>(value));
+			}
+		}
+		public QPixmap Pixmap {
+			get {
+				return Property("Pixmap").Value<QPixmap>();
+			}
+			set {
+				SetProperty("Pixmap", QVariant.FromValue<QPixmap>(value));
+			}
+		}
+		public bool ScaledContents {
+			get {
+				return Property("ScaledContents").Value<bool>();
+			}
+			set {
+				SetProperty("ScaledContents", QVariant.FromValue<bool>(value));
+			}
+		}
+		public int Alignment {
+			get {
+				return Property("Alignment").Value<int>();
+			}
+			set {
+				SetProperty("Alignment", QVariant.FromValue<int>(value));
+			}
+		}
+		public bool WordWrap {
+			get {
+				return Property("WordWrap").Value<bool>();
+			}
+			set {
+				SetProperty("WordWrap", QVariant.FromValue<bool>(value));
+			}
+		}
+		public int Margin {
+			get {
+				return Property("Margin").Value<int>();
+			}
+			set {
+				SetProperty("Margin", QVariant.FromValue<int>(value));
+			}
+		}
+		public int Indent {
+			get {
+				return Property("Indent").Value<int>();
+			}
+			set {
+				SetProperty("Indent", QVariant.FromValue<int>(value));
+			}
+		}
+		public bool OpenExternalLinks {
+			get {
+				return Property("OpenExternalLinks").Value<bool>();
+			}
+			set {
+				SetProperty("OpenExternalLinks", QVariant.FromValue<bool>(value));
+			}
+		}
+		public int TextInteractionFlags {
+			get {
+				return Property("TextInteractionFlags").Value<int>();
+			}
+			set {
+				SetProperty("TextInteractionFlags", QVariant.FromValue<int>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QLabel(QWidget parent, int f) : this((Type) null) {
 			CreateProxy();
@@ -78,14 +158,6 @@ namespace Qyoto {
 		private void NewQLabel(string text) {
 			ProxyQLabel().NewQLabel(text);
 		}
-		[SmokeMethod("text() const")]
-		public string Text() {
-			return ProxyQLabel().Text();
-		}
-		[SmokeMethod("pixmap() const")]
-		public QPixmap Pixmap() {
-			return ProxyQLabel().Pixmap();
-		}
 		[SmokeMethod("picture() const")]
 		public QPicture Picture() {
 			return ProxyQLabel().Picture();
@@ -94,53 +166,9 @@ namespace Qyoto {
 		public QMovie Movie() {
 			return ProxyQLabel().Movie();
 		}
-		[SmokeMethod("textFormat() const")]
-		public Qt.TextFormat TextFormat() {
-			return ProxyQLabel().TextFormat();
-		}
-		[SmokeMethod("setTextFormat(Qt::TextFormat)")]
-		public void SetTextFormat(Qt.TextFormat arg1) {
-			ProxyQLabel().SetTextFormat(arg1);
-		}
-		[SmokeMethod("alignment() const")]
-		public int Alignment() {
-			return ProxyQLabel().Alignment();
-		}
-		[SmokeMethod("setAlignment(Qt::Alignment)")]
-		public void SetAlignment(int arg1) {
-			ProxyQLabel().SetAlignment(arg1);
-		}
-		[SmokeMethod("setWordWrap(bool)")]
-		public void SetWordWrap(bool on) {
-			ProxyQLabel().SetWordWrap(on);
-		}
-		[SmokeMethod("wordWrap() const")]
-		public bool WordWrap() {
-			return ProxyQLabel().WordWrap();
-		}
-		[SmokeMethod("indent() const")]
-		public int Indent() {
-			return ProxyQLabel().Indent();
-		}
-		[SmokeMethod("setIndent(int)")]
-		public void SetIndent(int arg1) {
-			ProxyQLabel().SetIndent(arg1);
-		}
-		[SmokeMethod("margin() const")]
-		public int Margin() {
-			return ProxyQLabel().Margin();
-		}
-		[SmokeMethod("setMargin(int)")]
-		public void SetMargin(int arg1) {
-			ProxyQLabel().SetMargin(arg1);
-		}
 		[SmokeMethod("hasScaledContents() const")]
 		public bool HasScaledContents() {
 			return ProxyQLabel().HasScaledContents();
-		}
-		[SmokeMethod("setScaledContents(bool)")]
-		public void SetScaledContents(bool arg1) {
-			ProxyQLabel().SetScaledContents(arg1);
 		}
 		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {
@@ -161,30 +189,6 @@ namespace Qyoto {
 		[SmokeMethod("heightForWidth(int) const")]
 		public new int HeightForWidth(int arg1) {
 			return ProxyQLabel().HeightForWidth(arg1);
-		}
-		[SmokeMethod("openExternalLinks() const")]
-		public bool OpenExternalLinks() {
-			return ProxyQLabel().OpenExternalLinks();
-		}
-		[SmokeMethod("setOpenExternalLinks(bool)")]
-		public void SetOpenExternalLinks(bool open) {
-			ProxyQLabel().SetOpenExternalLinks(open);
-		}
-		[SmokeMethod("setTextInteractionFlags(Qt::TextInteractionFlags)")]
-		public void SetTextInteractionFlags(int flags) {
-			ProxyQLabel().SetTextInteractionFlags(flags);
-		}
-		[SmokeMethod("textInteractionFlags() const")]
-		public int TextInteractionFlags() {
-			return ProxyQLabel().TextInteractionFlags();
-		}
-		[SmokeMethod("setText(const QString&)")]
-		public void SetText(string arg1) {
-			ProxyQLabel().SetText(arg1);
-		}
-		[SmokeMethod("setPixmap(const QPixmap&)")]
-		public void SetPixmap(QPixmap arg1) {
-			ProxyQLabel().SetPixmap(arg1);
 		}
 		[SmokeMethod("setPicture(const QPicture&)")]
 		public void SetPicture(QPicture arg1) {

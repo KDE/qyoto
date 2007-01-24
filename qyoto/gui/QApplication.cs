@@ -33,8 +33,6 @@ namespace Qyoto {
 			void SetFont(QFont arg1, string className);
 			void SetFont(QFont arg1);
 			QFontMetrics FontMetrics();
-			void SetWindowIcon(QIcon icon);
-			QIcon WindowIcon();
 			List<QWidget> AllWidgets();
 			List<QWidget> TopLevelWidgets();
 			QDesktopWidget Desktop();
@@ -54,22 +52,6 @@ namespace Qyoto {
 			int MouseButtons();
 			void SetDesktopSettingsAware(bool arg1);
 			bool DesktopSettingsAware();
-			void SetCursorFlashTime(int arg1);
-			int CursorFlashTime();
-			void SetDoubleClickInterval(int arg1);
-			int DoubleClickInterval();
-			void SetKeyboardInputInterval(int arg1);
-			int KeyboardInputInterval();
-			void SetWheelScrollLines(int arg1);
-			int WheelScrollLines();
-			void SetGlobalStrut(QSize arg1);
-			QSize GlobalStrut();
-			void SetStartDragTime(int ms);
-			int StartDragTime();
-			void SetStartDragDistance(int l);
-			int StartDragDistance();
-			void SetLayoutDirection(Qt.LayoutDirection direction);
-			Qt.LayoutDirection LayoutDirection();
 			bool IsRightToLeft();
 			bool IsLeftToRight();
 			bool IsEffectEnabled(Qt.UIEffect arg1);
@@ -78,8 +60,6 @@ namespace Qyoto {
 			QLocale KeyboardInputLocale();
 			Qt.LayoutDirection KeyboardInputDirection();
 			int Exec();
-			void SetQuitOnLastWindowClosed(bool quit);
-			bool QuitOnLastWindowClosed();
 			void CloseAllWindows();
 			void AboutQt();
 		}
@@ -109,6 +89,94 @@ namespace Qyoto {
 			NormalColor = 0,
 			CustomColor = 1,
 			ManyColor = 2,
+		}
+		public Qt.LayoutDirection LayoutDirection {
+			get {
+				return Property("LayoutDirection").Value<Qt.LayoutDirection>();
+			}
+			set {
+				SetProperty("LayoutDirection", QVariant.FromValue<Qt.LayoutDirection>(value));
+			}
+		}
+		public QIcon WindowIcon {
+			get {
+				return Property("WindowIcon").Value<QIcon>();
+			}
+			set {
+				SetProperty("WindowIcon", QVariant.FromValue<QIcon>(value));
+			}
+		}
+		public int CursorFlashTime {
+			get {
+				return Property("CursorFlashTime").Value<int>();
+			}
+			set {
+				SetProperty("CursorFlashTime", QVariant.FromValue<int>(value));
+			}
+		}
+		public int DoubleClickInterval {
+			get {
+				return Property("DoubleClickInterval").Value<int>();
+			}
+			set {
+				SetProperty("DoubleClickInterval", QVariant.FromValue<int>(value));
+			}
+		}
+		public int KeyboardInputInterval {
+			get {
+				return Property("KeyboardInputInterval").Value<int>();
+			}
+			set {
+				SetProperty("KeyboardInputInterval", QVariant.FromValue<int>(value));
+			}
+		}
+		public int WheelScrollLines {
+			get {
+				return Property("WheelScrollLines").Value<int>();
+			}
+			set {
+				SetProperty("WheelScrollLines", QVariant.FromValue<int>(value));
+			}
+		}
+		public QSize GlobalStrut {
+			get {
+				return Property("GlobalStrut").Value<QSize>();
+			}
+			set {
+				SetProperty("GlobalStrut", QVariant.FromValue<QSize>(value));
+			}
+		}
+		public int StartDragTime {
+			get {
+				return Property("StartDragTime").Value<int>();
+			}
+			set {
+				SetProperty("StartDragTime", QVariant.FromValue<int>(value));
+			}
+		}
+		public int StartDragDistance {
+			get {
+				return Property("StartDragDistance").Value<int>();
+			}
+			set {
+				SetProperty("StartDragDistance", QVariant.FromValue<int>(value));
+			}
+		}
+		public bool QuitOnLastWindowClosed {
+			get {
+				return Property("QuitOnLastWindowClosed").Value<bool>();
+			}
+			set {
+				SetProperty("QuitOnLastWindowClosed", QVariant.FromValue<bool>(value));
+			}
+		}
+		public string StyleSheet {
+			get {
+				return Property("StyleSheet").Value<string>();
+			}
+			set {
+				SetProperty("StyleSheet", QVariant.FromValue<string>(value));
+			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		[SmokeMethod("isSessionRestored() const")]
@@ -142,14 +210,6 @@ namespace Qyoto {
 		[SmokeMethod("notify(QObject*, QEvent*)")]
 		public new bool Notify(QObject arg1, QEvent arg2) {
 			return ProxyQApplication().Notify(arg1,arg2);
-		}
-		[SmokeMethod("styleSheet() const")]
-		public string StyleSheet() {
-			return ProxyQApplication().StyleSheet();
-		}
-		[SmokeMethod("setStyleSheet(const QString&)")]
-		public void SetStyleSheet(string sheet) {
-			ProxyQApplication().SetStyleSheet(sheet);
 		}
 		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
@@ -243,14 +303,6 @@ namespace Qyoto {
 		public static QFontMetrics FontMetrics() {
 			return StaticQApplication().FontMetrics();
 		}
-		[SmokeMethod("setWindowIcon(const QIcon&)")]
-		public static void SetWindowIcon(QIcon icon) {
-			StaticQApplication().SetWindowIcon(icon);
-		}
-		[SmokeMethod("windowIcon()")]
-		public static QIcon WindowIcon() {
-			return StaticQApplication().WindowIcon();
-		}
 		[SmokeMethod("allWidgets()")]
 		public static List<QWidget> AllWidgets() {
 			return StaticQApplication().AllWidgets();
@@ -327,70 +379,6 @@ namespace Qyoto {
 		public static bool DesktopSettingsAware() {
 			return StaticQApplication().DesktopSettingsAware();
 		}
-		[SmokeMethod("setCursorFlashTime(int)")]
-		public static void SetCursorFlashTime(int arg1) {
-			StaticQApplication().SetCursorFlashTime(arg1);
-		}
-		[SmokeMethod("cursorFlashTime()")]
-		public static int CursorFlashTime() {
-			return StaticQApplication().CursorFlashTime();
-		}
-		[SmokeMethod("setDoubleClickInterval(int)")]
-		public static void SetDoubleClickInterval(int arg1) {
-			StaticQApplication().SetDoubleClickInterval(arg1);
-		}
-		[SmokeMethod("doubleClickInterval()")]
-		public static int DoubleClickInterval() {
-			return StaticQApplication().DoubleClickInterval();
-		}
-		[SmokeMethod("setKeyboardInputInterval(int)")]
-		public static void SetKeyboardInputInterval(int arg1) {
-			StaticQApplication().SetKeyboardInputInterval(arg1);
-		}
-		[SmokeMethod("keyboardInputInterval()")]
-		public static int KeyboardInputInterval() {
-			return StaticQApplication().KeyboardInputInterval();
-		}
-		[SmokeMethod("setWheelScrollLines(int)")]
-		public static void SetWheelScrollLines(int arg1) {
-			StaticQApplication().SetWheelScrollLines(arg1);
-		}
-		[SmokeMethod("wheelScrollLines()")]
-		public static int WheelScrollLines() {
-			return StaticQApplication().WheelScrollLines();
-		}
-		[SmokeMethod("setGlobalStrut(const QSize&)")]
-		public static void SetGlobalStrut(QSize arg1) {
-			StaticQApplication().SetGlobalStrut(arg1);
-		}
-		[SmokeMethod("globalStrut()")]
-		public static QSize GlobalStrut() {
-			return StaticQApplication().GlobalStrut();
-		}
-		[SmokeMethod("setStartDragTime(int)")]
-		public static void SetStartDragTime(int ms) {
-			StaticQApplication().SetStartDragTime(ms);
-		}
-		[SmokeMethod("startDragTime()")]
-		public static int StartDragTime() {
-			return StaticQApplication().StartDragTime();
-		}
-		[SmokeMethod("setStartDragDistance(int)")]
-		public static void SetStartDragDistance(int l) {
-			StaticQApplication().SetStartDragDistance(l);
-		}
-		[SmokeMethod("startDragDistance()")]
-		public static int StartDragDistance() {
-			return StaticQApplication().StartDragDistance();
-		}
-		[SmokeMethod("setLayoutDirection(Qt::LayoutDirection)")]
-		public static void SetLayoutDirection(Qt.LayoutDirection direction) {
-			StaticQApplication().SetLayoutDirection(direction);
-		}
-		[SmokeMethod("layoutDirection()")]
-		public static Qt.LayoutDirection LayoutDirection() {
-			return StaticQApplication().LayoutDirection();
-		}
 		[SmokeMethod("isRightToLeft()")]
 		public static bool IsRightToLeft() {
 			return StaticQApplication().IsRightToLeft();
@@ -424,14 +412,6 @@ namespace Qyoto {
 			int ret = StaticQApplication().Exec();
 			Qyoto.DeleteQApp();
 			return ret;
-		}
-		[SmokeMethod("setQuitOnLastWindowClosed(bool)")]
-		public static void SetQuitOnLastWindowClosed(bool quit) {
-			StaticQApplication().SetQuitOnLastWindowClosed(quit);
-		}
-		[SmokeMethod("quitOnLastWindowClosed()")]
-		public static bool QuitOnLastWindowClosed() {
-			return StaticQApplication().QuitOnLastWindowClosed();
 		}
 		[SmokeMethod("closeAllWindows()")]
 		public static void CloseAllWindows() {

@@ -30,6 +30,30 @@ namespace Qyoto {
 			return (IQTextBrowserProxy) _staticInterceptor;
 		}
 
+		public IQUrl Source {
+			get {
+				return Property("Source").Value<IQUrl>();
+			}
+			set {
+				SetProperty("Source", QVariant.FromValue<IQUrl>(value));
+			}
+		}
+		public List<string> SearchPaths {
+			get {
+				return Property("SearchPaths").Value<List<string>>();
+			}
+			set {
+				SetProperty("SearchPaths", QVariant.FromValue<List<string>>(value));
+			}
+		}
+		public bool OpenExternalLinks {
+			get {
+				return Property("OpenExternalLinks").Value<bool>();
+			}
+			set {
+				SetProperty("OpenExternalLinks", QVariant.FromValue<bool>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QTextBrowser(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -47,18 +71,6 @@ namespace Qyoto {
 		private void NewQTextBrowser() {
 			ProxyQTextBrowser().NewQTextBrowser();
 		}
-		[SmokeMethod("source() const")]
-		public IQUrl Source() {
-			return ProxyQTextBrowser().Source();
-		}
-		[SmokeMethod("searchPaths() const")]
-		public List<string> SearchPaths() {
-			return ProxyQTextBrowser().SearchPaths();
-		}
-		[SmokeMethod("setSearchPaths(const QStringList&)")]
-		public void SetSearchPaths(List<string> paths) {
-			ProxyQTextBrowser().SetSearchPaths(paths);
-		}
 		[SmokeMethod("loadResource(int, const QUrl&)")]
 		public new virtual QVariant LoadResource(int type, IQUrl name) {
 			return ProxyQTextBrowser().LoadResource(type,name);
@@ -74,18 +86,6 @@ namespace Qyoto {
 		[SmokeMethod("clearHistory()")]
 		public void ClearHistory() {
 			ProxyQTextBrowser().ClearHistory();
-		}
-		[SmokeMethod("openExternalLinks() const")]
-		public bool OpenExternalLinks() {
-			return ProxyQTextBrowser().OpenExternalLinks();
-		}
-		[SmokeMethod("setOpenExternalLinks(bool)")]
-		public void SetOpenExternalLinks(bool open) {
-			ProxyQTextBrowser().SetOpenExternalLinks(open);
-		}
-		[SmokeMethod("setSource(const QUrl&)")]
-		public virtual void SetSource(IQUrl name) {
-			ProxyQTextBrowser().SetSource(name);
 		}
 		[SmokeMethod("backward()")]
 		public virtual void Backward() {

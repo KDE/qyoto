@@ -29,6 +29,62 @@ namespace Qyoto {
 			return (IQSortFilterProxyModelProxy) _staticInterceptor;
 		}
 
+		public QRegExp FilterRegExp {
+			get {
+				return Property("FilterRegExp").Value<QRegExp>();
+			}
+			set {
+				SetProperty("FilterRegExp", QVariant.FromValue<QRegExp>(value));
+			}
+		}
+		public int FilterKeyColumn {
+			get {
+				return Property("FilterKeyColumn").Value<int>();
+			}
+			set {
+				SetProperty("FilterKeyColumn", QVariant.FromValue<int>(value));
+			}
+		}
+		public bool DynamicSortFilter {
+			get {
+				return Property("DynamicSortFilter").Value<bool>();
+			}
+			set {
+				SetProperty("DynamicSortFilter", QVariant.FromValue<bool>(value));
+			}
+		}
+		public Qt.CaseSensitivity FilterCaseSensitivity {
+			get {
+				return Property("FilterCaseSensitivity").Value<Qt.CaseSensitivity>();
+			}
+			set {
+				SetProperty("FilterCaseSensitivity", QVariant.FromValue<Qt.CaseSensitivity>(value));
+			}
+		}
+		public Qt.CaseSensitivity SortCaseSensitivity {
+			get {
+				return Property("SortCaseSensitivity").Value<Qt.CaseSensitivity>();
+			}
+			set {
+				SetProperty("SortCaseSensitivity", QVariant.FromValue<Qt.CaseSensitivity>(value));
+			}
+		}
+		public int SortRole {
+			get {
+				return Property("SortRole").Value<int>();
+			}
+			set {
+				SetProperty("SortRole", QVariant.FromValue<int>(value));
+			}
+		}
+		public int FilterRole {
+			get {
+				return Property("FilterRole").Value<int>();
+			}
+			set {
+				SetProperty("FilterRole", QVariant.FromValue<int>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QSortFilterProxyModel(QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -65,66 +121,6 @@ namespace Qyoto {
 		[SmokeMethod("mapSelectionFromSource(const QItemSelection&) const")]
 		public new QItemSelection MapSelectionFromSource(QItemSelection sourceSelection) {
 			return ProxyQSortFilterProxyModel().MapSelectionFromSource(sourceSelection);
-		}
-		[SmokeMethod("filterRegExp() const")]
-		public QRegExp FilterRegExp() {
-			return ProxyQSortFilterProxyModel().FilterRegExp();
-		}
-		[SmokeMethod("setFilterRegExp(const QRegExp&)")]
-		public void SetFilterRegExp(QRegExp regExp) {
-			ProxyQSortFilterProxyModel().SetFilterRegExp(regExp);
-		}
-		[SmokeMethod("filterKeyColumn() const")]
-		public int FilterKeyColumn() {
-			return ProxyQSortFilterProxyModel().FilterKeyColumn();
-		}
-		[SmokeMethod("setFilterKeyColumn(int)")]
-		public void SetFilterKeyColumn(int column) {
-			ProxyQSortFilterProxyModel().SetFilterKeyColumn(column);
-		}
-		[SmokeMethod("filterCaseSensitivity() const")]
-		public Qt.CaseSensitivity FilterCaseSensitivity() {
-			return ProxyQSortFilterProxyModel().FilterCaseSensitivity();
-		}
-		[SmokeMethod("setFilterCaseSensitivity(Qt::CaseSensitivity)")]
-		public void SetFilterCaseSensitivity(Qt.CaseSensitivity cs) {
-			ProxyQSortFilterProxyModel().SetFilterCaseSensitivity(cs);
-		}
-		[SmokeMethod("sortCaseSensitivity() const")]
-		public Qt.CaseSensitivity SortCaseSensitivity() {
-			return ProxyQSortFilterProxyModel().SortCaseSensitivity();
-		}
-		[SmokeMethod("setSortCaseSensitivity(Qt::CaseSensitivity)")]
-		public void SetSortCaseSensitivity(Qt.CaseSensitivity cs) {
-			ProxyQSortFilterProxyModel().SetSortCaseSensitivity(cs);
-		}
-		[SmokeMethod("dynamicSortFilter() const")]
-		public bool DynamicSortFilter() {
-			return ProxyQSortFilterProxyModel().DynamicSortFilter();
-		}
-		[SmokeMethod("setDynamicSortFilter(bool)")]
-		public void SetDynamicSortFilter(bool enable) {
-			ProxyQSortFilterProxyModel().SetDynamicSortFilter(enable);
-		}
-		[SmokeMethod("sortRole() const")]
-		public int SortRole() {
-			return ProxyQSortFilterProxyModel().SortRole();
-		}
-		[SmokeMethod("setSortRole(int)")]
-		public void SetSortRole(int role) {
-			ProxyQSortFilterProxyModel().SetSortRole(role);
-		}
-		[SmokeMethod("filterRole() const")]
-		public int FilterRole() {
-			return ProxyQSortFilterProxyModel().FilterRole();
-		}
-		[SmokeMethod("setFilterRole(int)")]
-		public void SetFilterRole(int role) {
-			ProxyQSortFilterProxyModel().SetFilterRole(role);
-		}
-		[SmokeMethod("setFilterRegExp(const QString&)")]
-		public void SetFilterRegExp(string pattern) {
-			ProxyQSortFilterProxyModel().SetFilterRegExp(pattern);
 		}
 		[SmokeMethod("setFilterWildcard(const QString&)")]
 		public void SetFilterWildcard(string pattern) {

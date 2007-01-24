@@ -30,6 +30,30 @@ namespace Qyoto {
 			return (IQActionGroupProxy) _staticInterceptor;
 		}
 
+		public bool Exclusive {
+			get {
+				return Property("Exclusive").Value<bool>();
+			}
+			set {
+				SetProperty("Exclusive", QVariant.FromValue<bool>(value));
+			}
+		}
+		public bool Enabled {
+			get {
+				return Property("Enabled").Value<bool>();
+			}
+			set {
+				SetProperty("Enabled", QVariant.FromValue<bool>(value));
+			}
+		}
+		public bool Visible {
+			get {
+				return Property("Visible").Value<bool>();
+			}
+			set {
+				SetProperty("Visible", QVariant.FromValue<bool>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QActionGroup(QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -75,21 +99,9 @@ namespace Qyoto {
 		public bool IsVisible() {
 			return ProxyQActionGroup().IsVisible();
 		}
-		[SmokeMethod("setEnabled(bool)")]
-		public void SetEnabled(bool arg1) {
-			ProxyQActionGroup().SetEnabled(arg1);
-		}
 		[SmokeMethod("setDisabled(bool)")]
 		public void SetDisabled(bool b) {
 			ProxyQActionGroup().SetDisabled(b);
-		}
-		[SmokeMethod("setVisible(bool)")]
-		public void SetVisible(bool arg1) {
-			ProxyQActionGroup().SetVisible(arg1);
-		}
-		[SmokeMethod("setExclusive(bool)")]
-		public void SetExclusive(bool arg1) {
-			ProxyQActionGroup().SetExclusive(arg1);
 		}
 		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {

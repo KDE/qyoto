@@ -30,6 +30,14 @@ namespace Qyoto {
 			return (IQStandardItemModelProxy) _staticInterceptor;
 		}
 
+		public int SortRole {
+			get {
+				return Property("SortRole").Value<int>();
+			}
+			set {
+				SetProperty("SortRole", QVariant.FromValue<int>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QStandardItemModel(QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -338,14 +346,6 @@ namespace Qyoto {
 		[SmokeMethod("findItems(const QString&) const")]
 		public List<QStandardItem> FindItems(string text) {
 			return ProxyQStandardItemModel().FindItems(text);
-		}
-		[SmokeMethod("sortRole() const")]
-		public int SortRole() {
-			return ProxyQStandardItemModel().SortRole();
-		}
-		[SmokeMethod("setSortRole(int)")]
-		public void SetSortRole(int role) {
-			ProxyQStandardItemModel().SetSortRole(role);
 		}
 		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {

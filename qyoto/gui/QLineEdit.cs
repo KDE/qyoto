@@ -35,6 +35,134 @@ namespace Qyoto {
 			Password = 2,
 			PasswordEchoOnEdit = 3,
 		}
+		public string InputMask {
+			get {
+				return Property("InputMask").Value<string>();
+			}
+			set {
+				SetProperty("InputMask", QVariant.FromValue<string>(value));
+			}
+		}
+		public string Text {
+			get {
+				return Property("Text").Value<string>();
+			}
+			set {
+				SetProperty("Text", QVariant.FromValue<string>(value));
+			}
+		}
+		public int MaxLength {
+			get {
+				return Property("MaxLength").Value<int>();
+			}
+			set {
+				SetProperty("MaxLength", QVariant.FromValue<int>(value));
+			}
+		}
+		public bool Frame {
+			get {
+				return Property("Frame").Value<bool>();
+			}
+			set {
+				SetProperty("Frame", QVariant.FromValue<bool>(value));
+			}
+		}
+		public int echoMode {
+			get {
+				return Property("echoMode").Value<int>();
+			}
+			set {
+				SetProperty("echoMode", QVariant.FromValue<int>(value));
+			}
+		}
+		public string DisplayText {
+			get {
+				return Property("DisplayText").Value<string>();
+			}
+			set {
+				SetProperty("DisplayText", QVariant.FromValue<string>(value));
+			}
+		}
+		public int CursorPosition {
+			get {
+				return Property("CursorPosition").Value<int>();
+			}
+			set {
+				SetProperty("CursorPosition", QVariant.FromValue<int>(value));
+			}
+		}
+		public int Alignment {
+			get {
+				return Property("Alignment").Value<int>();
+			}
+			set {
+				SetProperty("Alignment", QVariant.FromValue<int>(value));
+			}
+		}
+		public bool Modified {
+			get {
+				return Property("Modified").Value<bool>();
+			}
+			set {
+				SetProperty("Modified", QVariant.FromValue<bool>(value));
+			}
+		}
+		public bool HasSelectedText {
+			get {
+				return Property("HasSelectedText").Value<bool>();
+			}
+			set {
+				SetProperty("HasSelectedText", QVariant.FromValue<bool>(value));
+			}
+		}
+		public string SelectedText {
+			get {
+				return Property("SelectedText").Value<string>();
+			}
+			set {
+				SetProperty("SelectedText", QVariant.FromValue<string>(value));
+			}
+		}
+		public bool DragEnabled {
+			get {
+				return Property("DragEnabled").Value<bool>();
+			}
+			set {
+				SetProperty("DragEnabled", QVariant.FromValue<bool>(value));
+			}
+		}
+		public bool ReadOnly {
+			get {
+				return Property("ReadOnly").Value<bool>();
+			}
+			set {
+				SetProperty("ReadOnly", QVariant.FromValue<bool>(value));
+			}
+		}
+		public bool UndoAvailable {
+			get {
+				return Property("UndoAvailable").Value<bool>();
+			}
+			set {
+				SetProperty("UndoAvailable", QVariant.FromValue<bool>(value));
+			}
+		}
+		public bool RedoAvailable {
+			get {
+				return Property("RedoAvailable").Value<bool>();
+			}
+			set {
+				SetProperty("RedoAvailable", QVariant.FromValue<bool>(value));
+			}
+		}
+		public bool AcceptableInput {
+			get {
+				return Property("AcceptableInput").Value<bool>();
+			}
+			set {
+				SetProperty("AcceptableInput", QVariant.FromValue<bool>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QLineEdit(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -68,45 +196,13 @@ namespace Qyoto {
 		private void NewQLineEdit(string arg1) {
 			ProxyQLineEdit().NewQLineEdit(arg1);
 		}
-		[SmokeMethod("text() const")]
-		public string Text() {
-			return ProxyQLineEdit().Text();
-		}
-		[SmokeMethod("displayText() const")]
-		public string DisplayText() {
-			return ProxyQLineEdit().DisplayText();
-		}
-		[SmokeMethod("maxLength() const")]
-		public int MaxLength() {
-			return ProxyQLineEdit().MaxLength();
-		}
-		[SmokeMethod("setMaxLength(int)")]
-		public void SetMaxLength(int arg1) {
-			ProxyQLineEdit().SetMaxLength(arg1);
-		}
-		[SmokeMethod("setFrame(bool)")]
-		public void SetFrame(bool arg1) {
-			ProxyQLineEdit().SetFrame(arg1);
-		}
 		[SmokeMethod("hasFrame() const")]
 		public bool HasFrame() {
 			return ProxyQLineEdit().HasFrame();
 		}
-		[SmokeMethod("echoMode() const")]
-		public QLineEdit.EchoMode echoMode() {
-			return ProxyQLineEdit().echoMode();
-		}
-		[SmokeMethod("setEchoMode(QLineEdit::EchoMode)")]
-		public void SetEchoMode(QLineEdit.EchoMode arg1) {
-			ProxyQLineEdit().SetEchoMode(arg1);
-		}
 		[SmokeMethod("isReadOnly() const")]
 		public bool IsReadOnly() {
 			return ProxyQLineEdit().IsReadOnly();
-		}
-		[SmokeMethod("setReadOnly(bool)")]
-		public void SetReadOnly(bool arg1) {
-			ProxyQLineEdit().SetReadOnly(arg1);
 		}
 		[SmokeMethod("setValidator(const QValidator*)")]
 		public void SetValidator(QValidator arg1) {
@@ -132,25 +228,9 @@ namespace Qyoto {
 		public new QSize MinimumSizeHint() {
 			return ProxyQLineEdit().MinimumSizeHint();
 		}
-		[SmokeMethod("cursorPosition() const")]
-		public int CursorPosition() {
-			return ProxyQLineEdit().CursorPosition();
-		}
-		[SmokeMethod("setCursorPosition(int)")]
-		public void SetCursorPosition(int arg1) {
-			ProxyQLineEdit().SetCursorPosition(arg1);
-		}
 		[SmokeMethod("cursorPositionAt(const QPoint&)")]
 		public int CursorPositionAt(QPoint pos) {
 			return ProxyQLineEdit().CursorPositionAt(pos);
-		}
-		[SmokeMethod("setAlignment(Qt::Alignment)")]
-		public void SetAlignment(int flag) {
-			ProxyQLineEdit().SetAlignment(flag);
-		}
-		[SmokeMethod("alignment() const")]
-		public int Alignment() {
-			return ProxyQLineEdit().Alignment();
 		}
 		[SmokeMethod("cursorForward(bool, int)")]
 		public void CursorForward(bool mark, int steps) {
@@ -196,21 +276,9 @@ namespace Qyoto {
 		public bool IsModified() {
 			return ProxyQLineEdit().IsModified();
 		}
-		[SmokeMethod("setModified(bool)")]
-		public void SetModified(bool arg1) {
-			ProxyQLineEdit().SetModified(arg1);
-		}
 		[SmokeMethod("setSelection(int, int)")]
 		public void SetSelection(int arg1, int arg2) {
 			ProxyQLineEdit().SetSelection(arg1,arg2);
-		}
-		[SmokeMethod("hasSelectedText() const")]
-		public bool HasSelectedText() {
-			return ProxyQLineEdit().HasSelectedText();
-		}
-		[SmokeMethod("selectedText() const")]
-		public string SelectedText() {
-			return ProxyQLineEdit().SelectedText();
 		}
 		[SmokeMethod("selectionStart() const")]
 		public int SelectionStart() {
@@ -224,29 +292,9 @@ namespace Qyoto {
 		public bool IsRedoAvailable() {
 			return ProxyQLineEdit().IsRedoAvailable();
 		}
-		[SmokeMethod("setDragEnabled(bool)")]
-		public void SetDragEnabled(bool b) {
-			ProxyQLineEdit().SetDragEnabled(b);
-		}
-		[SmokeMethod("dragEnabled() const")]
-		public bool DragEnabled() {
-			return ProxyQLineEdit().DragEnabled();
-		}
-		[SmokeMethod("inputMask() const")]
-		public string InputMask() {
-			return ProxyQLineEdit().InputMask();
-		}
-		[SmokeMethod("setInputMask(const QString&)")]
-		public void SetInputMask(string inputMask) {
-			ProxyQLineEdit().SetInputMask(inputMask);
-		}
 		[SmokeMethod("hasAcceptableInput() const")]
 		public bool HasAcceptableInput() {
 			return ProxyQLineEdit().HasAcceptableInput();
-		}
-		[SmokeMethod("setText(const QString&)")]
-		public void SetText(string arg1) {
-			ProxyQLineEdit().SetText(arg1);
 		}
 		[SmokeMethod("clear()")]
 		public void Clear() {

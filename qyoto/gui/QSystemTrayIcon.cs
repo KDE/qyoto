@@ -44,6 +44,30 @@ namespace Qyoto {
 			Warning = 2,
 			Critical = 3,
 		}
+		public string ToolTip {
+			get {
+				return Property("ToolTip").Value<string>();
+			}
+			set {
+				SetProperty("ToolTip", QVariant.FromValue<string>(value));
+			}
+		}
+		public QIcon Icon {
+			get {
+				return Property("Icon").Value<QIcon>();
+			}
+			set {
+				SetProperty("Icon", QVariant.FromValue<QIcon>(value));
+			}
+		}
+		public bool Visible {
+			get {
+				return Property("Visible").Value<bool>();
+			}
+			set {
+				SetProperty("Visible", QVariant.FromValue<bool>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QSystemTrayIcon(QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -85,22 +109,6 @@ namespace Qyoto {
 		public QMenu ContextMenu() {
 			return ProxyQSystemTrayIcon().ContextMenu();
 		}
-		[SmokeMethod("icon() const")]
-		public QIcon Icon() {
-			return ProxyQSystemTrayIcon().Icon();
-		}
-		[SmokeMethod("setIcon(const QIcon&)")]
-		public void SetIcon(QIcon icon) {
-			ProxyQSystemTrayIcon().SetIcon(icon);
-		}
-		[SmokeMethod("toolTip() const")]
-		public string ToolTip() {
-			return ProxyQSystemTrayIcon().ToolTip();
-		}
-		[SmokeMethod("setToolTip(const QString&)")]
-		public void SetToolTip(string tip) {
-			ProxyQSystemTrayIcon().SetToolTip(tip);
-		}
 		[SmokeMethod("showMessage(const QString&, const QString&, QSystemTrayIcon::MessageIcon, int)")]
 		public void ShowMessage(string title, string msg, QSystemTrayIcon.MessageIcon icon, int msecs) {
 			ProxyQSystemTrayIcon().ShowMessage(title,msg,icon,msecs);
@@ -116,10 +124,6 @@ namespace Qyoto {
 		[SmokeMethod("isVisible() const")]
 		public bool IsVisible() {
 			return ProxyQSystemTrayIcon().IsVisible();
-		}
-		[SmokeMethod("setVisible(bool)")]
-		public void SetVisible(bool visible) {
-			ProxyQSystemTrayIcon().SetVisible(visible);
 		}
 		[SmokeMethod("show()")]
 		public void Show() {

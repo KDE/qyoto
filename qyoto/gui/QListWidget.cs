@@ -30,6 +30,30 @@ namespace Qyoto {
 			return (IQListWidgetProxy) _staticInterceptor;
 		}
 
+		public int Count {
+			get {
+				return Property("Count").Value<int>();
+			}
+			set {
+				SetProperty("Count", QVariant.FromValue<int>(value));
+			}
+		}
+		public int CurrentRow {
+			get {
+				return Property("CurrentRow").Value<int>();
+			}
+			set {
+				SetProperty("CurrentRow", QVariant.FromValue<int>(value));
+			}
+		}
+		public bool SortingEnabled {
+			get {
+				return Property("SortingEnabled").Value<bool>();
+			}
+			set {
+				SetProperty("SortingEnabled", QVariant.FromValue<bool>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QListWidget(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -83,10 +107,6 @@ namespace Qyoto {
 		public QListWidgetItem TakeItem(int row) {
 			return ProxyQListWidget().TakeItem(row);
 		}
-		[SmokeMethod("count() const")]
-		public int Count() {
-			return ProxyQListWidget().Count();
-		}
 		[SmokeMethod("currentItem() const")]
 		public QListWidgetItem CurrentItem() {
 			return ProxyQListWidget().CurrentItem();
@@ -94,14 +114,6 @@ namespace Qyoto {
 		[SmokeMethod("setCurrentItem(QListWidgetItem*)")]
 		public void SetCurrentItem(QListWidgetItem item) {
 			ProxyQListWidget().SetCurrentItem(item);
-		}
-		[SmokeMethod("currentRow() const")]
-		public int CurrentRow() {
-			return ProxyQListWidget().CurrentRow();
-		}
-		[SmokeMethod("setCurrentRow(int)")]
-		public void SetCurrentRow(int row) {
-			ProxyQListWidget().SetCurrentRow(row);
 		}
 		[SmokeMethod("itemAt(const QPoint&) const")]
 		public QListWidgetItem ItemAt(QPoint p) {
@@ -122,10 +134,6 @@ namespace Qyoto {
 		[SmokeMethod("sortItems()")]
 		public void SortItems() {
 			ProxyQListWidget().SortItems();
-		}
-		[SmokeMethod("setSortingEnabled(bool)")]
-		public void SetSortingEnabled(bool enable) {
-			ProxyQListWidget().SetSortingEnabled(enable);
 		}
 		[SmokeMethod("isSortingEnabled() const")]
 		public bool IsSortingEnabled() {

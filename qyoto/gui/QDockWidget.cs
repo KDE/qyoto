@@ -38,6 +38,38 @@ namespace Qyoto {
 			NoDockWidgetFeatures = 0x00,
 			Reserved = 0xff,
 		}
+		public bool Floating {
+			get {
+				return Property("Floating").Value<bool>();
+			}
+			set {
+				SetProperty("Floating", QVariant.FromValue<bool>(value));
+			}
+		}
+		public int Features {
+			get {
+				return Property("Features").Value<int>();
+			}
+			set {
+				SetProperty("Features", QVariant.FromValue<int>(value));
+			}
+		}
+		public int AllowedAreas {
+			get {
+				return Property("AllowedAreas").Value<int>();
+			}
+			set {
+				SetProperty("AllowedAreas", QVariant.FromValue<int>(value));
+			}
+		}
+		public string WindowTitle {
+			get {
+				return Property("WindowTitle").Value<string>();
+			}
+			set {
+				SetProperty("WindowTitle", QVariant.FromValue<string>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QDockWidget(string title, QWidget parent, int flags) : this((Type) null) {
 			CreateProxy();
@@ -95,29 +127,9 @@ namespace Qyoto {
 		public void SetWidget(QWidget widget) {
 			ProxyQDockWidget().SetWidget(widget);
 		}
-		[SmokeMethod("setFeatures(DockWidgetFeatures)")]
-		public void SetFeatures(int features) {
-			ProxyQDockWidget().SetFeatures(features);
-		}
-		[SmokeMethod("features() const")]
-		public int Features() {
-			return ProxyQDockWidget().Features();
-		}
-		[SmokeMethod("setFloating(bool)")]
-		public void SetFloating(bool floating) {
-			ProxyQDockWidget().SetFloating(floating);
-		}
 		[SmokeMethod("isFloating() const")]
 		public bool IsFloating() {
 			return ProxyQDockWidget().IsFloating();
-		}
-		[SmokeMethod("setAllowedAreas(Qt::DockWidgetAreas)")]
-		public void SetAllowedAreas(int areas) {
-			ProxyQDockWidget().SetAllowedAreas(areas);
-		}
-		[SmokeMethod("allowedAreas() const")]
-		public int AllowedAreas() {
-			return ProxyQDockWidget().AllowedAreas();
 		}
 		[SmokeMethod("isAreaAllowed(Qt::DockWidgetArea) const")]
 		public bool IsAreaAllowed(Qt.DockWidgetArea area) {

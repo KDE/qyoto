@@ -28,6 +28,22 @@ namespace Qyoto {
 			return (IQUndoViewProxy) _staticInterceptor;
 		}
 
+		public string EmptyLabel {
+			get {
+				return Property("EmptyLabel").Value<string>();
+			}
+			set {
+				SetProperty("EmptyLabel", QVariant.FromValue<string>(value));
+			}
+		}
+		public QIcon CleanIcon {
+			get {
+				return Property("CleanIcon").Value<QIcon>();
+			}
+			set {
+				SetProperty("CleanIcon", QVariant.FromValue<QIcon>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QUndoView(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -84,22 +100,6 @@ namespace Qyoto {
 		[SmokeMethod("group() const")]
 		public QUndoGroup Group() {
 			return ProxyQUndoView().Group();
-		}
-		[SmokeMethod("setEmptyLabel(const QString&)")]
-		public void SetEmptyLabel(string label) {
-			ProxyQUndoView().SetEmptyLabel(label);
-		}
-		[SmokeMethod("emptyLabel() const")]
-		public string EmptyLabel() {
-			return ProxyQUndoView().EmptyLabel();
-		}
-		[SmokeMethod("setCleanIcon(const QIcon&)")]
-		public void SetCleanIcon(QIcon icon) {
-			ProxyQUndoView().SetCleanIcon(icon);
-		}
-		[SmokeMethod("cleanIcon() const")]
-		public QIcon CleanIcon() {
-			return ProxyQUndoView().CleanIcon();
 		}
 		[SmokeMethod("setStack(QUndoStack*)")]
 		public void SetStack(QUndoStack stack) {

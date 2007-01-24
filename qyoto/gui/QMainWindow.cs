@@ -29,6 +29,38 @@ namespace Qyoto {
 			return (IQMainWindowProxy) _staticInterceptor;
 		}
 
+		public QSize IconSize {
+			get {
+				return Property("IconSize").Value<QSize>();
+			}
+			set {
+				SetProperty("IconSize", QVariant.FromValue<QSize>(value));
+			}
+		}
+		public Qt.ToolButtonStyle ToolButtonStyle {
+			get {
+				return Property("ToolButtonStyle").Value<Qt.ToolButtonStyle>();
+			}
+			set {
+				SetProperty("ToolButtonStyle", QVariant.FromValue<Qt.ToolButtonStyle>(value));
+			}
+		}
+		public bool Animated {
+			get {
+				return Property("Animated").Value<bool>();
+			}
+			set {
+				SetProperty("Animated", QVariant.FromValue<bool>(value));
+			}
+		}
+		public bool DockNestingEnabled {
+			get {
+				return Property("DockNestingEnabled").Value<bool>();
+			}
+			set {
+				SetProperty("DockNestingEnabled", QVariant.FromValue<bool>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QMainWindow(QWidget parent, int flags) : this((Type) null) {
 			CreateProxy();
@@ -53,22 +85,6 @@ namespace Qyoto {
 		[SmokeMethod("QMainWindow()")]
 		private void NewQMainWindow() {
 			ProxyQMainWindow().NewQMainWindow();
-		}
-		[SmokeMethod("iconSize() const")]
-		public QSize IconSize() {
-			return ProxyQMainWindow().IconSize();
-		}
-		[SmokeMethod("setIconSize(const QSize&)")]
-		public void SetIconSize(QSize iconSize) {
-			ProxyQMainWindow().SetIconSize(iconSize);
-		}
-		[SmokeMethod("toolButtonStyle() const")]
-		public Qt.ToolButtonStyle ToolButtonStyle() {
-			return ProxyQMainWindow().ToolButtonStyle();
-		}
-		[SmokeMethod("setToolButtonStyle(Qt::ToolButtonStyle)")]
-		public void SetToolButtonStyle(Qt.ToolButtonStyle toolButtonStyle) {
-			ProxyQMainWindow().SetToolButtonStyle(toolButtonStyle);
 		}
 		[SmokeMethod("isAnimated() const")]
 		public bool IsAnimated() {
@@ -201,14 +217,6 @@ namespace Qyoto {
 		[SmokeMethod("createPopupMenu()")]
 		public virtual QMenu CreatePopupMenu() {
 			return ProxyQMainWindow().CreatePopupMenu();
-		}
-		[SmokeMethod("setAnimated(bool)")]
-		public void SetAnimated(bool enabled) {
-			ProxyQMainWindow().SetAnimated(enabled);
-		}
-		[SmokeMethod("setDockNestingEnabled(bool)")]
-		public void SetDockNestingEnabled(bool enabled) {
-			ProxyQMainWindow().SetDockNestingEnabled(enabled);
 		}
 		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {

@@ -34,6 +34,30 @@ namespace Qyoto {
 			FilePathRole = Qt.ItemDataRole.UserRole+1,
 			FileNameRole = 0,
 		}
+		public bool ResolveSymlinks {
+			get {
+				return Property("ResolveSymlinks").Value<bool>();
+			}
+			set {
+				SetProperty("ResolveSymlinks", QVariant.FromValue<bool>(value));
+			}
+		}
+		public bool ReadOnly {
+			get {
+				return Property("ReadOnly").Value<bool>();
+			}
+			set {
+				SetProperty("ReadOnly", QVariant.FromValue<bool>(value));
+			}
+		}
+		public bool LazyChildCount {
+			get {
+				return Property("LazyChildCount").Value<bool>();
+			}
+			set {
+				SetProperty("LazyChildCount", QVariant.FromValue<bool>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QDirModel(List<string> nameFilters, int filters, int sort, QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -187,29 +211,9 @@ namespace Qyoto {
 		public int Sorting() {
 			return ProxyQDirModel().Sorting();
 		}
-		[SmokeMethod("setResolveSymlinks(bool)")]
-		public void SetResolveSymlinks(bool enable) {
-			ProxyQDirModel().SetResolveSymlinks(enable);
-		}
-		[SmokeMethod("resolveSymlinks() const")]
-		public bool ResolveSymlinks() {
-			return ProxyQDirModel().ResolveSymlinks();
-		}
-		[SmokeMethod("setReadOnly(bool)")]
-		public void SetReadOnly(bool enable) {
-			ProxyQDirModel().SetReadOnly(enable);
-		}
 		[SmokeMethod("isReadOnly() const")]
 		public bool IsReadOnly() {
 			return ProxyQDirModel().IsReadOnly();
-		}
-		[SmokeMethod("setLazyChildCount(bool)")]
-		public void SetLazyChildCount(bool enable) {
-			ProxyQDirModel().SetLazyChildCount(enable);
-		}
-		[SmokeMethod("lazyChildCount() const")]
-		public bool LazyChildCount() {
-			return ProxyQDirModel().LazyChildCount();
 		}
 		[SmokeMethod("refresh(const QModelIndex&)")]
 		public void Refresh(QModelIndex parent) {

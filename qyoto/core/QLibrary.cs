@@ -34,6 +34,14 @@ namespace Qyoto {
 			ExportExternalSymbolsHint = 0x02,
 			LoadArchiveMemberHint = 0x04,
 		}
+		public string FileName {
+			get {
+				return Property("FileName").Value<string>();
+			}
+			set {
+				SetProperty("FileName", QVariant.FromValue<string>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QLibrary(QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -96,14 +104,6 @@ namespace Qyoto {
 		public bool IsLoaded() {
 			return ProxyQLibrary().IsLoaded();
 		}
-		[SmokeMethod("setFileName(const QString&)")]
-		public void SetFileName(string fileName) {
-			ProxyQLibrary().SetFileName(fileName);
-		}
-		[SmokeMethod("fileName() const")]
-		public string FileName() {
-			return ProxyQLibrary().FileName();
-		}
 		[SmokeMethod("setFileNameAndVersion(const QString&, int)")]
 		public void SetFileNameAndVersion(string fileName, int verNum) {
 			ProxyQLibrary().SetFileNameAndVersion(fileName,verNum);
@@ -112,8 +112,6 @@ namespace Qyoto {
 		public string ErrorString() {
 			return ProxyQLibrary().ErrorString();
 		}
-		// void setLoadHints(LoadHints arg1); >>>> NOT CONVERTED
-		// LoadHints loadHints(); >>>> NOT CONVERTED
 		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQLibrary().Tr(s,c);

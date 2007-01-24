@@ -43,6 +43,118 @@ namespace Qyoto {
 			Trigger = 0,
 			Hover = 1,
 		}
+		public bool Checkable {
+			get {
+				return Property("Checkable").Value<bool>();
+			}
+			set {
+				SetProperty("Checkable", QVariant.FromValue<bool>(value));
+			}
+		}
+		public bool Checked {
+			get {
+				return Property("Checked").Value<bool>();
+			}
+			set {
+				SetProperty("Checked", QVariant.FromValue<bool>(value));
+			}
+		}
+		public bool Enabled {
+			get {
+				return Property("Enabled").Value<bool>();
+			}
+			set {
+				SetProperty("Enabled", QVariant.FromValue<bool>(value));
+			}
+		}
+		public QIcon Icon {
+			get {
+				return Property("Icon").Value<QIcon>();
+			}
+			set {
+				SetProperty("Icon", QVariant.FromValue<QIcon>(value));
+			}
+		}
+		public string Text {
+			get {
+				return Property("Text").Value<string>();
+			}
+			set {
+				SetProperty("Text", QVariant.FromValue<string>(value));
+			}
+		}
+		public string IconText {
+			get {
+				return Property("IconText").Value<string>();
+			}
+			set {
+				SetProperty("IconText", QVariant.FromValue<string>(value));
+			}
+		}
+		public string ToolTip {
+			get {
+				return Property("ToolTip").Value<string>();
+			}
+			set {
+				SetProperty("ToolTip", QVariant.FromValue<string>(value));
+			}
+		}
+		public string StatusTip {
+			get {
+				return Property("StatusTip").Value<string>();
+			}
+			set {
+				SetProperty("StatusTip", QVariant.FromValue<string>(value));
+			}
+		}
+		public string WhatsThis {
+			get {
+				return Property("WhatsThis").Value<string>();
+			}
+			set {
+				SetProperty("WhatsThis", QVariant.FromValue<string>(value));
+			}
+		}
+		public QFont Font {
+			get {
+				return Property("Font").Value<QFont>();
+			}
+			set {
+				SetProperty("Font", QVariant.FromValue<QFont>(value));
+			}
+		}
+		public QKeySequence Shortcut {
+			get {
+				return Property("Shortcut").Value<QKeySequence>();
+			}
+			set {
+				SetProperty("Shortcut", QVariant.FromValue<QKeySequence>(value));
+			}
+		}
+		public Qt.ShortcutContext ShortcutContext {
+			get {
+				return Property("ShortcutContext").Value<Qt.ShortcutContext>();
+			}
+			set {
+				SetProperty("ShortcutContext", QVariant.FromValue<Qt.ShortcutContext>(value));
+			}
+		}
+		public bool AutoRepeat {
+			get {
+				return Property("AutoRepeat").Value<bool>();
+			}
+			set {
+				SetProperty("AutoRepeat", QVariant.FromValue<bool>(value));
+			}
+		}
+		public bool Visible {
+			get {
+				return Property("Visible").Value<bool>();
+			}
+			set {
+				SetProperty("Visible", QVariant.FromValue<bool>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QAction(QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -76,54 +188,6 @@ namespace Qyoto {
 		public QActionGroup ActionGroup() {
 			return ProxyQAction().ActionGroup();
 		}
-		[SmokeMethod("setIcon(const QIcon&)")]
-		public void SetIcon(QIcon icon) {
-			ProxyQAction().SetIcon(icon);
-		}
-		[SmokeMethod("icon() const")]
-		public QIcon Icon() {
-			return ProxyQAction().Icon();
-		}
-		[SmokeMethod("setText(const QString&)")]
-		public void SetText(string text) {
-			ProxyQAction().SetText(text);
-		}
-		[SmokeMethod("text() const")]
-		public string Text() {
-			return ProxyQAction().Text();
-		}
-		[SmokeMethod("setIconText(const QString&)")]
-		public void SetIconText(string text) {
-			ProxyQAction().SetIconText(text);
-		}
-		[SmokeMethod("iconText() const")]
-		public string IconText() {
-			return ProxyQAction().IconText();
-		}
-		[SmokeMethod("setToolTip(const QString&)")]
-		public void SetToolTip(string tip) {
-			ProxyQAction().SetToolTip(tip);
-		}
-		[SmokeMethod("toolTip() const")]
-		public string ToolTip() {
-			return ProxyQAction().ToolTip();
-		}
-		[SmokeMethod("setStatusTip(const QString&)")]
-		public void SetStatusTip(string statusTip) {
-			ProxyQAction().SetStatusTip(statusTip);
-		}
-		[SmokeMethod("statusTip() const")]
-		public string StatusTip() {
-			return ProxyQAction().StatusTip();
-		}
-		[SmokeMethod("setWhatsThis(const QString&)")]
-		public void SetWhatsThis(string what) {
-			ProxyQAction().SetWhatsThis(what);
-		}
-		[SmokeMethod("whatsThis() const")]
-		public string WhatsThis() {
-			return ProxyQAction().WhatsThis();
-		}
 		[SmokeMethod("menu() const")]
 		public QMenu Menu() {
 			return ProxyQAction().Menu();
@@ -140,14 +204,6 @@ namespace Qyoto {
 		public bool IsSeparator() {
 			return ProxyQAction().IsSeparator();
 		}
-		[SmokeMethod("setShortcut(const QKeySequence&)")]
-		public void SetShortcut(QKeySequence shortcut) {
-			ProxyQAction().SetShortcut(shortcut);
-		}
-		[SmokeMethod("shortcut() const")]
-		public QKeySequence Shortcut() {
-			return ProxyQAction().Shortcut();
-		}
 		[SmokeMethod("setShortcuts(const QList<QKeySequence>&)")]
 		public void SetShortcuts(List<QKeySequence> shortcuts) {
 			ProxyQAction().SetShortcuts(shortcuts);
@@ -159,34 +215,6 @@ namespace Qyoto {
 		[SmokeMethod("shortcuts() const")]
 		public List<QKeySequence> Shortcuts() {
 			return ProxyQAction().Shortcuts();
-		}
-		[SmokeMethod("setShortcutContext(Qt::ShortcutContext)")]
-		public void SetShortcutContext(Qt.ShortcutContext context) {
-			ProxyQAction().SetShortcutContext(context);
-		}
-		[SmokeMethod("shortcutContext() const")]
-		public Qt.ShortcutContext ShortcutContext() {
-			return ProxyQAction().ShortcutContext();
-		}
-		[SmokeMethod("setAutoRepeat(bool)")]
-		public void SetAutoRepeat(bool arg1) {
-			ProxyQAction().SetAutoRepeat(arg1);
-		}
-		[SmokeMethod("autoRepeat() const")]
-		public bool AutoRepeat() {
-			return ProxyQAction().AutoRepeat();
-		}
-		[SmokeMethod("setFont(const QFont&)")]
-		public void SetFont(QFont font) {
-			ProxyQAction().SetFont(font);
-		}
-		[SmokeMethod("font() const")]
-		public QFont Font() {
-			return ProxyQAction().Font();
-		}
-		[SmokeMethod("setCheckable(bool)")]
-		public void SetCheckable(bool arg1) {
-			ProxyQAction().SetCheckable(arg1);
 		}
 		[SmokeMethod("isCheckable() const")]
 		public bool IsCheckable() {
@@ -224,14 +252,6 @@ namespace Qyoto {
 		public bool ShowStatusText() {
 			return ProxyQAction().ShowStatusText();
 		}
-		[SmokeMethod("setMenuRole(QAction::MenuRole)")]
-		public void SetMenuRole(QAction.MenuRole menuRole) {
-			ProxyQAction().SetMenuRole(menuRole);
-		}
-		[SmokeMethod("menuRole() const")]
-		public QAction.MenuRole menuRole() {
-			return ProxyQAction().menuRole();
-		}
 		[SmokeMethod("parentWidget() const")]
 		public QWidget ParentWidget() {
 			return ProxyQAction().ParentWidget();
@@ -248,25 +268,13 @@ namespace Qyoto {
 		public void Hover() {
 			ProxyQAction().Hover();
 		}
-		[SmokeMethod("setChecked(bool)")]
-		public void SetChecked(bool arg1) {
-			ProxyQAction().SetChecked(arg1);
-		}
 		[SmokeMethod("toggle()")]
 		public void Toggle() {
 			ProxyQAction().Toggle();
 		}
-		[SmokeMethod("setEnabled(bool)")]
-		public void SetEnabled(bool arg1) {
-			ProxyQAction().SetEnabled(arg1);
-		}
 		[SmokeMethod("setDisabled(bool)")]
 		public void SetDisabled(bool b) {
 			ProxyQAction().SetDisabled(b);
-		}
-		[SmokeMethod("setVisible(bool)")]
-		public void SetVisible(bool arg1) {
-			ProxyQAction().SetVisible(arg1);
 		}
 		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {

@@ -42,6 +42,70 @@ namespace Qyoto {
 			CorrectToPreviousValue = 0,
 			CorrectToNearestValue = 1,
 		}
+		public bool Wrapping {
+			get {
+				return Property("Wrapping").Value<bool>();
+			}
+			set {
+				SetProperty("Wrapping", QVariant.FromValue<bool>(value));
+			}
+		}
+		public bool Frame {
+			get {
+				return Property("Frame").Value<bool>();
+			}
+			set {
+				SetProperty("Frame", QVariant.FromValue<bool>(value));
+			}
+		}
+		public int Alignment {
+			get {
+				return Property("Alignment").Value<int>();
+			}
+			set {
+				SetProperty("Alignment", QVariant.FromValue<int>(value));
+			}
+		}
+		public bool ReadOnly {
+			get {
+				return Property("ReadOnly").Value<bool>();
+			}
+			set {
+				SetProperty("ReadOnly", QVariant.FromValue<bool>(value));
+			}
+		}
+		public string SpecialValueText {
+			get {
+				return Property("SpecialValueText").Value<string>();
+			}
+			set {
+				SetProperty("SpecialValueText", QVariant.FromValue<string>(value));
+			}
+		}
+		public string Text {
+			get {
+				return Property("Text").Value<string>();
+			}
+			set {
+				SetProperty("Text", QVariant.FromValue<string>(value));
+			}
+		}
+		public bool Accelerated {
+			get {
+				return Property("Accelerated").Value<bool>();
+			}
+			set {
+				SetProperty("Accelerated", QVariant.FromValue<bool>(value));
+			}
+		}
+		public bool AcceptableInput {
+			get {
+				return Property("AcceptableInput").Value<bool>();
+			}
+			set {
+				SetProperty("AcceptableInput", QVariant.FromValue<bool>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QAbstractSpinBox(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -59,73 +123,17 @@ namespace Qyoto {
 		private void NewQAbstractSpinBox() {
 			ProxyQAbstractSpinBox().NewQAbstractSpinBox();
 		}
-		[SmokeMethod("buttonSymbols() const")]
-		public QAbstractSpinBox.ButtonSymbols buttonSymbols() {
-			return ProxyQAbstractSpinBox().buttonSymbols();
-		}
-		[SmokeMethod("setButtonSymbols(QAbstractSpinBox::ButtonSymbols)")]
-		public void SetButtonSymbols(QAbstractSpinBox.ButtonSymbols bs) {
-			ProxyQAbstractSpinBox().SetButtonSymbols(bs);
-		}
-		[SmokeMethod("setCorrectionMode(QAbstractSpinBox::CorrectionMode)")]
-		public void SetCorrectionMode(QAbstractSpinBox.CorrectionMode cm) {
-			ProxyQAbstractSpinBox().SetCorrectionMode(cm);
-		}
-		[SmokeMethod("correctionMode() const")]
-		public QAbstractSpinBox.CorrectionMode correctionMode() {
-			return ProxyQAbstractSpinBox().correctionMode();
-		}
 		[SmokeMethod("hasAcceptableInput() const")]
 		public bool HasAcceptableInput() {
 			return ProxyQAbstractSpinBox().HasAcceptableInput();
-		}
-		[SmokeMethod("text() const")]
-		public string Text() {
-			return ProxyQAbstractSpinBox().Text();
-		}
-		[SmokeMethod("specialValueText() const")]
-		public string SpecialValueText() {
-			return ProxyQAbstractSpinBox().SpecialValueText();
-		}
-		[SmokeMethod("setSpecialValueText(const QString&)")]
-		public void SetSpecialValueText(string txt) {
-			ProxyQAbstractSpinBox().SetSpecialValueText(txt);
-		}
-		[SmokeMethod("wrapping() const")]
-		public bool Wrapping() {
-			return ProxyQAbstractSpinBox().Wrapping();
-		}
-		[SmokeMethod("setWrapping(bool)")]
-		public void SetWrapping(bool w) {
-			ProxyQAbstractSpinBox().SetWrapping(w);
-		}
-		[SmokeMethod("setReadOnly(bool)")]
-		public void SetReadOnly(bool r) {
-			ProxyQAbstractSpinBox().SetReadOnly(r);
 		}
 		[SmokeMethod("isReadOnly() const")]
 		public bool IsReadOnly() {
 			return ProxyQAbstractSpinBox().IsReadOnly();
 		}
-		[SmokeMethod("setAlignment(Qt::Alignment)")]
-		public void SetAlignment(int flag) {
-			ProxyQAbstractSpinBox().SetAlignment(flag);
-		}
-		[SmokeMethod("alignment() const")]
-		public int Alignment() {
-			return ProxyQAbstractSpinBox().Alignment();
-		}
-		[SmokeMethod("setFrame(bool)")]
-		public void SetFrame(bool arg1) {
-			ProxyQAbstractSpinBox().SetFrame(arg1);
-		}
 		[SmokeMethod("hasFrame() const")]
 		public bool HasFrame() {
 			return ProxyQAbstractSpinBox().HasFrame();
-		}
-		[SmokeMethod("setAccelerated(bool)")]
-		public void SetAccelerated(bool on) {
-			ProxyQAbstractSpinBox().SetAccelerated(on);
 		}
 		[SmokeMethod("isAccelerated() const")]
 		public bool IsAccelerated() {

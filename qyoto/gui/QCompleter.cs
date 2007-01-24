@@ -40,6 +40,38 @@ namespace Qyoto {
 			CaseSensitivelySortedModel = 1,
 			CaseInsensitivelySortedModel = 2,
 		}
+		public string CompletionPrefix {
+			get {
+				return Property("CompletionPrefix").Value<string>();
+			}
+			set {
+				SetProperty("CompletionPrefix", QVariant.FromValue<string>(value));
+			}
+		}
+		public int CompletionColumn {
+			get {
+				return Property("CompletionColumn").Value<int>();
+			}
+			set {
+				SetProperty("CompletionColumn", QVariant.FromValue<int>(value));
+			}
+		}
+		public int CompletionRole {
+			get {
+				return Property("CompletionRole").Value<int>();
+			}
+			set {
+				SetProperty("CompletionRole", QVariant.FromValue<int>(value));
+			}
+		}
+		public Qt.CaseSensitivity CaseSensitivity {
+			get {
+				return Property("CaseSensitivity").Value<Qt.CaseSensitivity>();
+			}
+			set {
+				SetProperty("CaseSensitivity", QVariant.FromValue<Qt.CaseSensitivity>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QCompleter(QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -105,14 +137,6 @@ namespace Qyoto {
 		public QAbstractItemModel Model() {
 			return ProxyQCompleter().Model();
 		}
-		[SmokeMethod("setCompletionMode(QCompleter::CompletionMode)")]
-		public void SetCompletionMode(QCompleter.CompletionMode mode) {
-			ProxyQCompleter().SetCompletionMode(mode);
-		}
-		[SmokeMethod("completionMode() const")]
-		public QCompleter.CompletionMode completionMode() {
-			return ProxyQCompleter().completionMode();
-		}
 		[SmokeMethod("popup() const")]
 		public QAbstractItemView Popup() {
 			return ProxyQCompleter().Popup();
@@ -120,38 +144,6 @@ namespace Qyoto {
 		[SmokeMethod("setPopup(QAbstractItemView*)")]
 		public void SetPopup(QAbstractItemView popup) {
 			ProxyQCompleter().SetPopup(popup);
-		}
-		[SmokeMethod("setCaseSensitivity(Qt::CaseSensitivity)")]
-		public void SetCaseSensitivity(Qt.CaseSensitivity caseSensitivity) {
-			ProxyQCompleter().SetCaseSensitivity(caseSensitivity);
-		}
-		[SmokeMethod("caseSensitivity() const")]
-		public Qt.CaseSensitivity CaseSensitivity() {
-			return ProxyQCompleter().CaseSensitivity();
-		}
-		[SmokeMethod("setModelSorting(QCompleter::ModelSorting)")]
-		public void SetModelSorting(QCompleter.ModelSorting sorting) {
-			ProxyQCompleter().SetModelSorting(sorting);
-		}
-		[SmokeMethod("modelSorting() const")]
-		public QCompleter.ModelSorting modelSorting() {
-			return ProxyQCompleter().modelSorting();
-		}
-		[SmokeMethod("setCompletionColumn(int)")]
-		public void SetCompletionColumn(int column) {
-			ProxyQCompleter().SetCompletionColumn(column);
-		}
-		[SmokeMethod("completionColumn() const")]
-		public int CompletionColumn() {
-			return ProxyQCompleter().CompletionColumn();
-		}
-		[SmokeMethod("setCompletionRole(int)")]
-		public void SetCompletionRole(int role) {
-			ProxyQCompleter().SetCompletionRole(role);
-		}
-		[SmokeMethod("completionRole() const")]
-		public int CompletionRole() {
-			return ProxyQCompleter().CompletionRole();
 		}
 		[SmokeMethod("completionCount() const")]
 		public int CompletionCount() {
@@ -176,14 +168,6 @@ namespace Qyoto {
 		[SmokeMethod("completionModel() const")]
 		public QAbstractItemModel CompletionModel() {
 			return ProxyQCompleter().CompletionModel();
-		}
-		[SmokeMethod("completionPrefix() const")]
-		public string CompletionPrefix() {
-			return ProxyQCompleter().CompletionPrefix();
-		}
-		[SmokeMethod("setCompletionPrefix(const QString&)")]
-		public void SetCompletionPrefix(string prefix) {
-			ProxyQCompleter().SetCompletionPrefix(prefix);
 		}
 		[SmokeMethod("complete(const QRect&)")]
 		public void Complete(QRect rect) {

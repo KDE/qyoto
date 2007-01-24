@@ -34,6 +34,422 @@ namespace Qyoto {
 			return (IQWidgetProxy) _staticInterceptor;
 		}
 
+		public bool Modal {
+			get {
+				return Property("Modal").Value<bool>();
+			}
+			set {
+				SetProperty("Modal", QVariant.FromValue<bool>(value));
+			}
+		}
+		public Qt.WindowModality WindowModality {
+			get {
+				return Property("WindowModality").Value<Qt.WindowModality>();
+			}
+			set {
+				SetProperty("WindowModality", QVariant.FromValue<Qt.WindowModality>(value));
+			}
+		}
+		public bool Enabled {
+			get {
+				return Property("Enabled").Value<bool>();
+			}
+			set {
+				SetProperty("Enabled", QVariant.FromValue<bool>(value));
+			}
+		}
+		public QRect Geometry {
+			get {
+				return Property("Geometry").Value<QRect>();
+			}
+			set {
+				SetProperty("Geometry", QVariant.FromValue<QRect>(value));
+			}
+		}
+		public QRect FrameGeometry {
+			get {
+				return Property("FrameGeometry").Value<QRect>();
+			}
+			set {
+				SetProperty("FrameGeometry", QVariant.FromValue<QRect>(value));
+			}
+		}
+		public QRect NormalGeometry {
+			get {
+				return Property("NormalGeometry").Value<QRect>();
+			}
+			set {
+				SetProperty("NormalGeometry", QVariant.FromValue<QRect>(value));
+			}
+		}
+		public int X {
+			get {
+				return Property("X").Value<int>();
+			}
+			set {
+				SetProperty("X", QVariant.FromValue<int>(value));
+			}
+		}
+		public int Y {
+			get {
+				return Property("Y").Value<int>();
+			}
+			set {
+				SetProperty("Y", QVariant.FromValue<int>(value));
+			}
+		}
+		public QPoint Pos {
+			get {
+				return Property("Pos").Value<QPoint>();
+			}
+			set {
+				SetProperty("Pos", QVariant.FromValue<QPoint>(value));
+			}
+		}
+		public QSize FrameSize {
+			get {
+				return Property("FrameSize").Value<QSize>();
+			}
+			set {
+				SetProperty("FrameSize", QVariant.FromValue<QSize>(value));
+			}
+		}
+		public QSize Size {
+			get {
+				return Property("Size").Value<QSize>();
+			}
+			set {
+				SetProperty("Size", QVariant.FromValue<QSize>(value));
+			}
+		}
+		public QRect Rect {
+			get {
+				return Property("Rect").Value<QRect>();
+			}
+			set {
+				SetProperty("Rect", QVariant.FromValue<QRect>(value));
+			}
+		}
+		public QRect ChildrenRect {
+			get {
+				return Property("ChildrenRect").Value<QRect>();
+			}
+			set {
+				SetProperty("ChildrenRect", QVariant.FromValue<QRect>(value));
+			}
+		}
+		public QRegion ChildrenRegion {
+			get {
+				return Property("ChildrenRegion").Value<QRegion>();
+			}
+			set {
+				SetProperty("ChildrenRegion", QVariant.FromValue<QRegion>(value));
+			}
+		}
+		public QSizePolicy SizePolicy {
+			get {
+				return Property("SizePolicy").Value<QSizePolicy>();
+			}
+			set {
+				SetProperty("SizePolicy", QVariant.FromValue<QSizePolicy>(value));
+			}
+		}
+		public QSize MinimumSize {
+			get {
+				return Property("MinimumSize").Value<QSize>();
+			}
+			set {
+				SetProperty("MinimumSize", QVariant.FromValue<QSize>(value));
+			}
+		}
+		public QSize MaximumSize {
+			get {
+				return Property("MaximumSize").Value<QSize>();
+			}
+			set {
+				SetProperty("MaximumSize", QVariant.FromValue<QSize>(value));
+			}
+		}
+		public int MinimumWidth {
+			get {
+				return Property("MinimumWidth").Value<int>();
+			}
+			set {
+				SetProperty("MinimumWidth", QVariant.FromValue<int>(value));
+			}
+		}
+		public int MinimumHeight {
+			get {
+				return Property("MinimumHeight").Value<int>();
+			}
+			set {
+				SetProperty("MinimumHeight", QVariant.FromValue<int>(value));
+			}
+		}
+		public int MaximumWidth {
+			get {
+				return Property("MaximumWidth").Value<int>();
+			}
+			set {
+				SetProperty("MaximumWidth", QVariant.FromValue<int>(value));
+			}
+		}
+		public int MaximumHeight {
+			get {
+				return Property("MaximumHeight").Value<int>();
+			}
+			set {
+				SetProperty("MaximumHeight", QVariant.FromValue<int>(value));
+			}
+		}
+		public QSize SizeIncrement {
+			get {
+				return Property("SizeIncrement").Value<QSize>();
+			}
+			set {
+				SetProperty("SizeIncrement", QVariant.FromValue<QSize>(value));
+			}
+		}
+		public QSize BaseSize {
+			get {
+				return Property("BaseSize").Value<QSize>();
+			}
+			set {
+				SetProperty("BaseSize", QVariant.FromValue<QSize>(value));
+			}
+		}
+		public QPalette Palette {
+			get {
+				return Property("Palette").Value<QPalette>();
+			}
+			set {
+				SetProperty("Palette", QVariant.FromValue<QPalette>(value));
+			}
+		}
+		public QFont Font {
+			get {
+				return Property("Font").Value<QFont>();
+			}
+			set {
+				SetProperty("Font", QVariant.FromValue<QFont>(value));
+			}
+		}
+		public QCursor Cursor {
+			get {
+				return Property("Cursor").Value<QCursor>();
+			}
+			set {
+				SetProperty("Cursor", QVariant.FromValue<QCursor>(value));
+			}
+		}
+		public bool MouseTracking {
+			get {
+				return Property("MouseTracking").Value<bool>();
+			}
+			set {
+				SetProperty("MouseTracking", QVariant.FromValue<bool>(value));
+			}
+		}
+		public bool IsActiveWindow {
+			get {
+				return Property("IsActiveWindow").Value<bool>();
+			}
+			set {
+				SetProperty("IsActiveWindow", QVariant.FromValue<bool>(value));
+			}
+		}
+		public Qt.FocusPolicy FocusPolicy {
+			get {
+				return Property("FocusPolicy").Value<Qt.FocusPolicy>();
+			}
+			set {
+				SetProperty("FocusPolicy", QVariant.FromValue<Qt.FocusPolicy>(value));
+			}
+		}
+		public bool Focus {
+			get {
+				return Property("Focus").Value<bool>();
+			}
+			set {
+				SetProperty("Focus", QVariant.FromValue<bool>(value));
+			}
+		}
+		public Qt.ContextMenuPolicy ContextMenuPolicy {
+			get {
+				return Property("ContextMenuPolicy").Value<Qt.ContextMenuPolicy>();
+			}
+			set {
+				SetProperty("ContextMenuPolicy", QVariant.FromValue<Qt.ContextMenuPolicy>(value));
+			}
+		}
+		public bool UpdatesEnabled {
+			get {
+				return Property("UpdatesEnabled").Value<bool>();
+			}
+			set {
+				SetProperty("UpdatesEnabled", QVariant.FromValue<bool>(value));
+			}
+		}
+		public bool Visible {
+			get {
+				return Property("Visible").Value<bool>();
+			}
+			set {
+				SetProperty("Visible", QVariant.FromValue<bool>(value));
+			}
+		}
+		public bool Minimized {
+			get {
+				return Property("Minimized").Value<bool>();
+			}
+			set {
+				SetProperty("Minimized", QVariant.FromValue<bool>(value));
+			}
+		}
+		public bool Maximized {
+			get {
+				return Property("Maximized").Value<bool>();
+			}
+			set {
+				SetProperty("Maximized", QVariant.FromValue<bool>(value));
+			}
+		}
+		public bool FullScreen {
+			get {
+				return Property("FullScreen").Value<bool>();
+			}
+			set {
+				SetProperty("FullScreen", QVariant.FromValue<bool>(value));
+			}
+		}
+		public QSize SizeHint {
+			get {
+				return Property("SizeHint").Value<QSize>();
+			}
+			set {
+				SetProperty("SizeHint", QVariant.FromValue<QSize>(value));
+			}
+		}
+		public QSize MinimumSizeHint {
+			get {
+				return Property("MinimumSizeHint").Value<QSize>();
+			}
+			set {
+				SetProperty("MinimumSizeHint", QVariant.FromValue<QSize>(value));
+			}
+		}
+		public bool AcceptDrops {
+			get {
+				return Property("AcceptDrops").Value<bool>();
+			}
+			set {
+				SetProperty("AcceptDrops", QVariant.FromValue<bool>(value));
+			}
+		}
+		public string WindowTitle {
+			get {
+				return Property("WindowTitle").Value<string>();
+			}
+			set {
+				SetProperty("WindowTitle", QVariant.FromValue<string>(value));
+			}
+		}
+		public QIcon WindowIcon {
+			get {
+				return Property("WindowIcon").Value<QIcon>();
+			}
+			set {
+				SetProperty("WindowIcon", QVariant.FromValue<QIcon>(value));
+			}
+		}
+		public string WindowIconText {
+			get {
+				return Property("WindowIconText").Value<string>();
+			}
+			set {
+				SetProperty("WindowIconText", QVariant.FromValue<string>(value));
+			}
+		}
+		public double WindowOpacity {
+			get {
+				return Property("WindowOpacity").Value<double>();
+			}
+			set {
+				SetProperty("WindowOpacity", QVariant.FromValue<double>(value));
+			}
+		}
+		public bool WindowModified {
+			get {
+				return Property("WindowModified").Value<bool>();
+			}
+			set {
+				SetProperty("WindowModified", QVariant.FromValue<bool>(value));
+			}
+		}
+		public string ToolTip {
+			get {
+				return Property("ToolTip").Value<string>();
+			}
+			set {
+				SetProperty("ToolTip", QVariant.FromValue<string>(value));
+			}
+		}
+		public string StatusTip {
+			get {
+				return Property("StatusTip").Value<string>();
+			}
+			set {
+				SetProperty("StatusTip", QVariant.FromValue<string>(value));
+			}
+		}
+		public string WhatsThis {
+			get {
+				return Property("WhatsThis").Value<string>();
+			}
+			set {
+				SetProperty("WhatsThis", QVariant.FromValue<string>(value));
+			}
+		}
+		public string AccessibleName {
+			get {
+				return Property("AccessibleName").Value<string>();
+			}
+			set {
+				SetProperty("AccessibleName", QVariant.FromValue<string>(value));
+			}
+		}
+		public string AccessibleDescription {
+			get {
+				return Property("AccessibleDescription").Value<string>();
+			}
+			set {
+				SetProperty("AccessibleDescription", QVariant.FromValue<string>(value));
+			}
+		}
+		public Qt.LayoutDirection LayoutDirection {
+			get {
+				return Property("LayoutDirection").Value<Qt.LayoutDirection>();
+			}
+			set {
+				SetProperty("LayoutDirection", QVariant.FromValue<Qt.LayoutDirection>(value));
+			}
+		}
+		public bool AutoFillBackground {
+			get {
+				return Property("AutoFillBackground").Value<bool>();
+			}
+			set {
+				SetProperty("AutoFillBackground", QVariant.FromValue<bool>(value));
+			}
+		}
+		public string StyleSheet {
+			get {
+				return Property("StyleSheet").Value<string>();
+			}
+			set {
+				SetProperty("StyleSheet", QVariant.FromValue<string>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QWidget(QWidget parent, int f) : this((Type) null) {
 			CreateProxy();
@@ -95,14 +511,6 @@ namespace Qyoto {
 		public bool IsModal() {
 			return ProxyQWidget().IsModal();
 		}
-		[SmokeMethod("windowModality() const")]
-		public Qt.WindowModality WindowModality() {
-			return ProxyQWidget().WindowModality();
-		}
-		[SmokeMethod("setWindowModality(Qt::WindowModality)")]
-		public void SetWindowModality(Qt.WindowModality windowModality) {
-			ProxyQWidget().SetWindowModality(windowModality);
-		}
 		[SmokeMethod("isEnabled() const")]
 		public bool IsEnabled() {
 			return ProxyQWidget().IsEnabled();
@@ -115,49 +523,9 @@ namespace Qyoto {
 		public bool IsEnabledToTLW() {
 			return ProxyQWidget().IsEnabledToTLW();
 		}
-		[SmokeMethod("setEnabled(bool)")]
-		public void SetEnabled(bool arg1) {
-			ProxyQWidget().SetEnabled(arg1);
-		}
 		[SmokeMethod("setDisabled(bool)")]
 		public void SetDisabled(bool arg1) {
 			ProxyQWidget().SetDisabled(arg1);
-		}
-		[SmokeMethod("setWindowModified(bool)")]
-		public void SetWindowModified(bool arg1) {
-			ProxyQWidget().SetWindowModified(arg1);
-		}
-		[SmokeMethod("frameGeometry() const")]
-		public QRect FrameGeometry() {
-			return ProxyQWidget().FrameGeometry();
-		}
-		[SmokeMethod("geometry() const")]
-		public QRect Geometry() {
-			return ProxyQWidget().Geometry();
-		}
-		[SmokeMethod("normalGeometry() const")]
-		public QRect NormalGeometry() {
-			return ProxyQWidget().NormalGeometry();
-		}
-		[SmokeMethod("x() const")]
-		public int X() {
-			return ProxyQWidget().X();
-		}
-		[SmokeMethod("y() const")]
-		public int Y() {
-			return ProxyQWidget().Y();
-		}
-		[SmokeMethod("pos() const")]
-		public QPoint Pos() {
-			return ProxyQWidget().Pos();
-		}
-		[SmokeMethod("frameSize() const")]
-		public QSize FrameSize() {
-			return ProxyQWidget().FrameSize();
-		}
-		[SmokeMethod("size() const")]
-		public QSize Size() {
-			return ProxyQWidget().Size();
 		}
 		[SmokeMethod("width() const")]
 		public int Width() {
@@ -167,93 +535,17 @@ namespace Qyoto {
 		public int Height() {
 			return ProxyQWidget().Height();
 		}
-		[SmokeMethod("rect() const")]
-		public QRect Rect() {
-			return ProxyQWidget().Rect();
-		}
-		[SmokeMethod("childrenRect() const")]
-		public QRect ChildrenRect() {
-			return ProxyQWidget().ChildrenRect();
-		}
-		[SmokeMethod("childrenRegion() const")]
-		public QRegion ChildrenRegion() {
-			return ProxyQWidget().ChildrenRegion();
-		}
-		[SmokeMethod("minimumSize() const")]
-		public QSize MinimumSize() {
-			return ProxyQWidget().MinimumSize();
-		}
-		[SmokeMethod("maximumSize() const")]
-		public QSize MaximumSize() {
-			return ProxyQWidget().MaximumSize();
-		}
-		[SmokeMethod("minimumWidth() const")]
-		public int MinimumWidth() {
-			return ProxyQWidget().MinimumWidth();
-		}
-		[SmokeMethod("minimumHeight() const")]
-		public int MinimumHeight() {
-			return ProxyQWidget().MinimumHeight();
-		}
-		[SmokeMethod("maximumWidth() const")]
-		public int MaximumWidth() {
-			return ProxyQWidget().MaximumWidth();
-		}
-		[SmokeMethod("maximumHeight() const")]
-		public int MaximumHeight() {
-			return ProxyQWidget().MaximumHeight();
-		}
-		[SmokeMethod("setMinimumSize(const QSize&)")]
-		public void SetMinimumSize(QSize arg1) {
-			ProxyQWidget().SetMinimumSize(arg1);
-		}
 		[SmokeMethod("setMinimumSize(int, int)")]
 		public void SetMinimumSize(int minw, int minh) {
 			ProxyQWidget().SetMinimumSize(minw,minh);
-		}
-		[SmokeMethod("setMaximumSize(const QSize&)")]
-		public void SetMaximumSize(QSize arg1) {
-			ProxyQWidget().SetMaximumSize(arg1);
 		}
 		[SmokeMethod("setMaximumSize(int, int)")]
 		public void SetMaximumSize(int maxw, int maxh) {
 			ProxyQWidget().SetMaximumSize(maxw,maxh);
 		}
-		[SmokeMethod("setMinimumWidth(int)")]
-		public void SetMinimumWidth(int minw) {
-			ProxyQWidget().SetMinimumWidth(minw);
-		}
-		[SmokeMethod("setMinimumHeight(int)")]
-		public void SetMinimumHeight(int minh) {
-			ProxyQWidget().SetMinimumHeight(minh);
-		}
-		[SmokeMethod("setMaximumWidth(int)")]
-		public void SetMaximumWidth(int maxw) {
-			ProxyQWidget().SetMaximumWidth(maxw);
-		}
-		[SmokeMethod("setMaximumHeight(int)")]
-		public void SetMaximumHeight(int maxh) {
-			ProxyQWidget().SetMaximumHeight(maxh);
-		}
-		[SmokeMethod("sizeIncrement() const")]
-		public QSize SizeIncrement() {
-			return ProxyQWidget().SizeIncrement();
-		}
-		[SmokeMethod("setSizeIncrement(const QSize&)")]
-		public void SetSizeIncrement(QSize arg1) {
-			ProxyQWidget().SetSizeIncrement(arg1);
-		}
 		[SmokeMethod("setSizeIncrement(int, int)")]
 		public void SetSizeIncrement(int w, int h) {
 			ProxyQWidget().SetSizeIncrement(w,h);
-		}
-		[SmokeMethod("baseSize() const")]
-		public QSize BaseSize() {
-			return ProxyQWidget().BaseSize();
-		}
-		[SmokeMethod("setBaseSize(const QSize&)")]
-		public void SetBaseSize(QSize arg1) {
-			ProxyQWidget().SetBaseSize(arg1);
 		}
 		[SmokeMethod("setBaseSize(int, int)")]
 		public void SetBaseSize(int basew, int baseh) {
@@ -307,14 +599,6 @@ namespace Qyoto {
 		public QWidget TopLevelWidget() {
 			return ProxyQWidget().TopLevelWidget();
 		}
-		[SmokeMethod("palette() const")]
-		public QPalette Palette() {
-			return ProxyQWidget().Palette();
-		}
-		[SmokeMethod("setPalette(const QPalette&)")]
-		public void SetPalette(QPalette arg1) {
-			ProxyQWidget().SetPalette(arg1);
-		}
 		[SmokeMethod("setBackgroundRole(QPalette::ColorRole)")]
 		public void SetBackgroundRole(QPalette.ColorRole arg1) {
 			ProxyQWidget().SetBackgroundRole(arg1);
@@ -331,14 +615,6 @@ namespace Qyoto {
 		public QPalette.ColorRole ForegroundRole() {
 			return ProxyQWidget().ForegroundRole();
 		}
-		[SmokeMethod("font() const")]
-		public QFont Font() {
-			return ProxyQWidget().Font();
-		}
-		[SmokeMethod("setFont(const QFont&)")]
-		public void SetFont(QFont arg1) {
-			ProxyQWidget().SetFont(arg1);
-		}
 		[SmokeMethod("fontMetrics() const")]
 		public QFontMetrics FontMetrics() {
 			return ProxyQWidget().FontMetrics();
@@ -347,21 +623,9 @@ namespace Qyoto {
 		public QFontInfo FontInfo() {
 			return ProxyQWidget().FontInfo();
 		}
-		[SmokeMethod("cursor() const")]
-		public QCursor Cursor() {
-			return ProxyQWidget().Cursor();
-		}
-		[SmokeMethod("setCursor(const QCursor&)")]
-		public void SetCursor(QCursor arg1) {
-			ProxyQWidget().SetCursor(arg1);
-		}
 		[SmokeMethod("unsetCursor()")]
 		public void UnsetCursor() {
 			ProxyQWidget().UnsetCursor();
-		}
-		[SmokeMethod("setMouseTracking(bool)")]
-		public void SetMouseTracking(bool enable) {
-			ProxyQWidget().SetMouseTracking(enable);
 		}
 		[SmokeMethod("hasMouseTracking() const")]
 		public bool HasMouseTracking() {
@@ -387,38 +651,6 @@ namespace Qyoto {
 		public void ClearMask() {
 			ProxyQWidget().ClearMask();
 		}
-		[SmokeMethod("setWindowTitle(const QString&)")]
-		public void SetWindowTitle(string arg1) {
-			ProxyQWidget().SetWindowTitle(arg1);
-		}
-		[SmokeMethod("setStyleSheet(const QString&)")]
-		public void SetStyleSheet(string styleSheet) {
-			ProxyQWidget().SetStyleSheet(styleSheet);
-		}
-		[SmokeMethod("styleSheet() const")]
-		public string StyleSheet() {
-			return ProxyQWidget().StyleSheet();
-		}
-		[SmokeMethod("windowTitle() const")]
-		public string WindowTitle() {
-			return ProxyQWidget().WindowTitle();
-		}
-		[SmokeMethod("setWindowIcon(const QIcon&)")]
-		public void SetWindowIcon(QIcon icon) {
-			ProxyQWidget().SetWindowIcon(icon);
-		}
-		[SmokeMethod("windowIcon() const")]
-		public QIcon WindowIcon() {
-			return ProxyQWidget().WindowIcon();
-		}
-		[SmokeMethod("setWindowIconText(const QString&)")]
-		public void SetWindowIconText(string arg1) {
-			ProxyQWidget().SetWindowIconText(arg1);
-		}
-		[SmokeMethod("windowIconText() const")]
-		public string WindowIconText() {
-			return ProxyQWidget().WindowIconText();
-		}
 		[SmokeMethod("setWindowRole(const QString&)")]
 		public void SetWindowRole(string arg1) {
 			ProxyQWidget().SetWindowRole(arg1);
@@ -427,65 +659,9 @@ namespace Qyoto {
 		public string WindowRole() {
 			return ProxyQWidget().WindowRole();
 		}
-		[SmokeMethod("setWindowOpacity(qreal)")]
-		public void SetWindowOpacity(double level) {
-			ProxyQWidget().SetWindowOpacity(level);
-		}
-		[SmokeMethod("windowOpacity() const")]
-		public double WindowOpacity() {
-			return ProxyQWidget().WindowOpacity();
-		}
 		[SmokeMethod("isWindowModified() const")]
 		public bool IsWindowModified() {
 			return ProxyQWidget().IsWindowModified();
-		}
-		[SmokeMethod("setToolTip(const QString&)")]
-		public void SetToolTip(string arg1) {
-			ProxyQWidget().SetToolTip(arg1);
-		}
-		[SmokeMethod("toolTip() const")]
-		public string ToolTip() {
-			return ProxyQWidget().ToolTip();
-		}
-		[SmokeMethod("setStatusTip(const QString&)")]
-		public void SetStatusTip(string arg1) {
-			ProxyQWidget().SetStatusTip(arg1);
-		}
-		[SmokeMethod("statusTip() const")]
-		public string StatusTip() {
-			return ProxyQWidget().StatusTip();
-		}
-		[SmokeMethod("setWhatsThis(const QString&)")]
-		public void SetWhatsThis(string arg1) {
-			ProxyQWidget().SetWhatsThis(arg1);
-		}
-		[SmokeMethod("whatsThis() const")]
-		public string WhatsThis() {
-			return ProxyQWidget().WhatsThis();
-		}
-		[SmokeMethod("accessibleName() const")]
-		public string AccessibleName() {
-			return ProxyQWidget().AccessibleName();
-		}
-		[SmokeMethod("setAccessibleName(const QString&)")]
-		public void SetAccessibleName(string name) {
-			ProxyQWidget().SetAccessibleName(name);
-		}
-		[SmokeMethod("accessibleDescription() const")]
-		public string AccessibleDescription() {
-			return ProxyQWidget().AccessibleDescription();
-		}
-		[SmokeMethod("setAccessibleDescription(const QString&)")]
-		public void SetAccessibleDescription(string description) {
-			ProxyQWidget().SetAccessibleDescription(description);
-		}
-		[SmokeMethod("setLayoutDirection(Qt::LayoutDirection)")]
-		public void SetLayoutDirection(Qt.LayoutDirection direction) {
-			ProxyQWidget().SetLayoutDirection(direction);
-		}
-		[SmokeMethod("layoutDirection() const")]
-		public Qt.LayoutDirection LayoutDirection() {
-			return ProxyQWidget().LayoutDirection();
 		}
 		[SmokeMethod("unsetLayoutDirection()")]
 		public void UnsetLayoutDirection() {
@@ -503,10 +679,6 @@ namespace Qyoto {
 		public void SetFocus() {
 			ProxyQWidget().SetFocus();
 		}
-		[SmokeMethod("isActiveWindow() const")]
-		public bool IsActiveWindow() {
-			return ProxyQWidget().IsActiveWindow();
-		}
 		[SmokeMethod("activateWindow()")]
 		public void ActivateWindow() {
 			ProxyQWidget().ActivateWindow();
@@ -514,18 +686,6 @@ namespace Qyoto {
 		[SmokeMethod("clearFocus()")]
 		public void ClearFocus() {
 			ProxyQWidget().ClearFocus();
-		}
-		[SmokeMethod("setFocus(Qt::FocusReason)")]
-		public void SetFocus(Qt.FocusReason reason) {
-			ProxyQWidget().SetFocus(reason);
-		}
-		[SmokeMethod("focusPolicy() const")]
-		public Qt.FocusPolicy FocusPolicy() {
-			return ProxyQWidget().FocusPolicy();
-		}
-		[SmokeMethod("setFocusPolicy(Qt::FocusPolicy)")]
-		public void SetFocusPolicy(Qt.FocusPolicy policy) {
-			ProxyQWidget().SetFocusPolicy(policy);
 		}
 		[SmokeMethod("hasFocus() const")]
 		public bool HasFocus() {
@@ -538,14 +698,6 @@ namespace Qyoto {
 		[SmokeMethod("focusProxy() const")]
 		public QWidget FocusProxy() {
 			return ProxyQWidget().FocusProxy();
-		}
-		[SmokeMethod("contextMenuPolicy() const")]
-		public Qt.ContextMenuPolicy ContextMenuPolicy() {
-			return ProxyQWidget().ContextMenuPolicy();
-		}
-		[SmokeMethod("setContextMenuPolicy(Qt::ContextMenuPolicy)")]
-		public void SetContextMenuPolicy(Qt.ContextMenuPolicy policy) {
-			ProxyQWidget().SetContextMenuPolicy(policy);
 		}
 		[SmokeMethod("grabMouse()")]
 		public void GrabMouse() {
@@ -595,14 +747,6 @@ namespace Qyoto {
 		public void SetShortcutAutoRepeat(int id) {
 			ProxyQWidget().SetShortcutAutoRepeat(id);
 		}
-		[SmokeMethod("updatesEnabled() const")]
-		public bool UpdatesEnabled() {
-			return ProxyQWidget().UpdatesEnabled();
-		}
-		[SmokeMethod("setUpdatesEnabled(bool)")]
-		public void SetUpdatesEnabled(bool enable) {
-			ProxyQWidget().SetUpdatesEnabled(enable);
-		}
 		[SmokeMethod("update()")]
 		public void Update() {
 			ProxyQWidget().Update();
@@ -634,10 +778,6 @@ namespace Qyoto {
 		[SmokeMethod("repaint(const QRegion&)")]
 		public void Repaint(QRegion arg1) {
 			ProxyQWidget().Repaint(arg1);
-		}
-		[SmokeMethod("setVisible(bool)")]
-		public virtual void SetVisible(bool visible) {
-			ProxyQWidget().SetVisible(visible);
 		}
 		[SmokeMethod("setHidden(bool)")]
 		public void SetHidden(bool hidden) {
@@ -707,10 +847,6 @@ namespace Qyoto {
 		public void SetGeometry(int x, int y, int w, int h) {
 			ProxyQWidget().SetGeometry(x,y,w,h);
 		}
-		[SmokeMethod("setGeometry(const QRect&)")]
-		public void SetGeometry(QRect arg1) {
-			ProxyQWidget().SetGeometry(arg1);
-		}
 		[SmokeMethod("saveGeometry() const")]
 		public QByteArray SaveGeometry() {
 			return ProxyQWidget().SaveGeometry();
@@ -758,22 +894,6 @@ namespace Qyoto {
 		[SmokeMethod("overrideWindowState(Qt::WindowStates)")]
 		public void OverrideWindowState(int state) {
 			ProxyQWidget().OverrideWindowState(state);
-		}
-		[SmokeMethod("sizeHint() const")]
-		public virtual QSize SizeHint() {
-			return ProxyQWidget().SizeHint();
-		}
-		[SmokeMethod("minimumSizeHint() const")]
-		public virtual QSize MinimumSizeHint() {
-			return ProxyQWidget().MinimumSizeHint();
-		}
-		[SmokeMethod("sizePolicy() const")]
-		public QSizePolicy SizePolicy() {
-			return ProxyQWidget().SizePolicy();
-		}
-		[SmokeMethod("setSizePolicy(QSizePolicy)")]
-		public void SetSizePolicy(QSizePolicy arg1) {
-			ProxyQWidget().SetSizePolicy(arg1);
 		}
 		[SmokeMethod("setSizePolicy(QSizePolicy::Policy, QSizePolicy::Policy)")]
 		public void SetSizePolicy(QSizePolicy.Policy horizontal, QSizePolicy.Policy vertical) {
@@ -834,14 +954,6 @@ namespace Qyoto {
 		[SmokeMethod("nextInFocusChain() const")]
 		public QWidget NextInFocusChain() {
 			return ProxyQWidget().NextInFocusChain();
-		}
-		[SmokeMethod("acceptDrops() const")]
-		public bool AcceptDrops() {
-			return ProxyQWidget().AcceptDrops();
-		}
-		[SmokeMethod("setAcceptDrops(bool)")]
-		public void SetAcceptDrops(bool on) {
-			ProxyQWidget().SetAcceptDrops(on);
 		}
 		[SmokeMethod("addAction(QAction*)")]
 		public void AddAction(QAction action) {
@@ -926,14 +1038,6 @@ namespace Qyoto {
 		[SmokeMethod("isAncestorOf(const QWidget*) const")]
 		public bool IsAncestorOf(QWidget child) {
 			return ProxyQWidget().IsAncestorOf(child);
-		}
-		[SmokeMethod("autoFillBackground() const")]
-		public bool AutoFillBackground() {
-			return ProxyQWidget().AutoFillBackground();
-		}
-		[SmokeMethod("setAutoFillBackground(bool)")]
-		public void SetAutoFillBackground(bool enabled) {
-			ProxyQWidget().SetAutoFillBackground(enabled);
 		}
 		// void setWindowSurface(QWindowSurface* arg1); >>>> NOT CONVERTED
 		// QWindowSurface* windowSurface(); >>>> NOT CONVERTED

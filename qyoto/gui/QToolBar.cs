@@ -29,6 +29,46 @@ namespace Qyoto {
 			return (IQToolBarProxy) _staticInterceptor;
 		}
 
+		public bool Movable {
+			get {
+				return Property("Movable").Value<bool>();
+			}
+			set {
+				SetProperty("Movable", QVariant.FromValue<bool>(value));
+			}
+		}
+		public int AllowedAreas {
+			get {
+				return Property("AllowedAreas").Value<int>();
+			}
+			set {
+				SetProperty("AllowedAreas", QVariant.FromValue<int>(value));
+			}
+		}
+		public Qt.Orientation Orientation {
+			get {
+				return Property("Orientation").Value<Qt.Orientation>();
+			}
+			set {
+				SetProperty("Orientation", QVariant.FromValue<Qt.Orientation>(value));
+			}
+		}
+		public QSize IconSize {
+			get {
+				return Property("IconSize").Value<QSize>();
+			}
+			set {
+				SetProperty("IconSize", QVariant.FromValue<QSize>(value));
+			}
+		}
+		public Qt.ToolButtonStyle ToolButtonStyle {
+			get {
+				return Property("ToolButtonStyle").Value<Qt.ToolButtonStyle>();
+			}
+			set {
+				SetProperty("ToolButtonStyle", QVariant.FromValue<Qt.ToolButtonStyle>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QToolBar(string title, QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -62,33 +102,13 @@ namespace Qyoto {
 		private void NewQToolBar() {
 			ProxyQToolBar().NewQToolBar();
 		}
-		[SmokeMethod("setMovable(bool)")]
-		public void SetMovable(bool movable) {
-			ProxyQToolBar().SetMovable(movable);
-		}
 		[SmokeMethod("isMovable() const")]
 		public bool IsMovable() {
 			return ProxyQToolBar().IsMovable();
 		}
-		[SmokeMethod("setAllowedAreas(Qt::ToolBarAreas)")]
-		public void SetAllowedAreas(int areas) {
-			ProxyQToolBar().SetAllowedAreas(areas);
-		}
-		[SmokeMethod("allowedAreas() const")]
-		public int AllowedAreas() {
-			return ProxyQToolBar().AllowedAreas();
-		}
 		[SmokeMethod("isAreaAllowed(Qt::ToolBarArea) const")]
 		public bool IsAreaAllowed(Qt.ToolBarArea area) {
 			return ProxyQToolBar().IsAreaAllowed(area);
-		}
-		[SmokeMethod("setOrientation(Qt::Orientation)")]
-		public void SetOrientation(Qt.Orientation orientation) {
-			ProxyQToolBar().SetOrientation(orientation);
-		}
-		[SmokeMethod("orientation() const")]
-		public Qt.Orientation Orientation() {
-			return ProxyQToolBar().Orientation();
 		}
 		[SmokeMethod("clear()")]
 		public void Clear() {
@@ -146,25 +166,9 @@ namespace Qyoto {
 		public QAction ToggleViewAction() {
 			return ProxyQToolBar().ToggleViewAction();
 		}
-		[SmokeMethod("iconSize() const")]
-		public QSize IconSize() {
-			return ProxyQToolBar().IconSize();
-		}
-		[SmokeMethod("toolButtonStyle() const")]
-		public Qt.ToolButtonStyle ToolButtonStyle() {
-			return ProxyQToolBar().ToolButtonStyle();
-		}
 		[SmokeMethod("widgetForAction(QAction*) const")]
 		public QWidget WidgetForAction(QAction action) {
 			return ProxyQToolBar().WidgetForAction(action);
-		}
-		[SmokeMethod("setIconSize(const QSize&)")]
-		public void SetIconSize(QSize iconSize) {
-			ProxyQToolBar().SetIconSize(iconSize);
-		}
-		[SmokeMethod("setToolButtonStyle(Qt::ToolButtonStyle)")]
-		public void SetToolButtonStyle(Qt.ToolButtonStyle toolButtonStyle) {
-			ProxyQToolBar().SetToolButtonStyle(toolButtonStyle);
 		}
 		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {

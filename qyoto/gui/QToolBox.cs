@@ -29,6 +29,22 @@ namespace Qyoto {
 			return (IQToolBoxProxy) _staticInterceptor;
 		}
 
+		public int CurrentIndex {
+			get {
+				return Property("CurrentIndex").Value<int>();
+			}
+			set {
+				SetProperty("CurrentIndex", QVariant.FromValue<int>(value));
+			}
+		}
+		public int Count {
+			get {
+				return Property("Count").Value<int>();
+			}
+			set {
+				SetProperty("Count", QVariant.FromValue<int>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QToolBox(QWidget parent, int f) : this((Type) null) {
 			CreateProxy();
@@ -106,10 +122,6 @@ namespace Qyoto {
 		public string ItemToolTip(int index) {
 			return ProxyQToolBox().ItemToolTip(index);
 		}
-		[SmokeMethod("currentIndex() const")]
-		public int CurrentIndex() {
-			return ProxyQToolBox().CurrentIndex();
-		}
 		[SmokeMethod("currentWidget() const")]
 		public QWidget CurrentWidget() {
 			return ProxyQToolBox().CurrentWidget();
@@ -121,14 +133,6 @@ namespace Qyoto {
 		[SmokeMethod("indexOf(QWidget*) const")]
 		public int IndexOf(QWidget widget) {
 			return ProxyQToolBox().IndexOf(widget);
-		}
-		[SmokeMethod("count() const")]
-		public int Count() {
-			return ProxyQToolBox().Count();
-		}
-		[SmokeMethod("setCurrentIndex(int)")]
-		public void SetCurrentIndex(int index) {
-			ProxyQToolBox().SetCurrentIndex(index);
 		}
 		[SmokeMethod("setCurrentWidget(QWidget*)")]
 		public void SetCurrentWidget(QWidget widget) {

@@ -43,6 +43,62 @@ namespace Qyoto {
 			ScrollHandDrag = 1,
 			RubberBandDrag = 2,
 		}
+		public QBrush BackgroundBrush {
+			get {
+				return Property("BackgroundBrush").Value<QBrush>();
+			}
+			set {
+				SetProperty("BackgroundBrush", QVariant.FromValue<QBrush>(value));
+			}
+		}
+		public QBrush ForegroundBrush {
+			get {
+				return Property("ForegroundBrush").Value<QBrush>();
+			}
+			set {
+				SetProperty("ForegroundBrush", QVariant.FromValue<QBrush>(value));
+			}
+		}
+		public bool Interactive {
+			get {
+				return Property("Interactive").Value<bool>();
+			}
+			set {
+				SetProperty("Interactive", QVariant.FromValue<bool>(value));
+			}
+		}
+		public QRectF SceneRect {
+			get {
+				return Property("SceneRect").Value<QRectF>();
+			}
+			set {
+				SetProperty("SceneRect", QVariant.FromValue<QRectF>(value));
+			}
+		}
+		public int Alignment {
+			get {
+				return Property("Alignment").Value<int>();
+			}
+			set {
+				SetProperty("Alignment", QVariant.FromValue<int>(value));
+			}
+		}
+		public int RenderHints {
+			get {
+				return Property("RenderHints").Value<int>();
+			}
+			set {
+				SetProperty("RenderHints", QVariant.FromValue<int>(value));
+			}
+		}
+		public int CacheMode {
+			get {
+				return Property("CacheMode").Value<int>();
+			}
+			set {
+				SetProperty("CacheMode", QVariant.FromValue<int>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QGraphicsView(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -80,10 +136,6 @@ namespace Qyoto {
 		public new QSize SizeHint() {
 			return ProxyQGraphicsView().SizeHint();
 		}
-		[SmokeMethod("renderHints() const")]
-		public int RenderHints() {
-			return ProxyQGraphicsView().RenderHints();
-		}
 		[SmokeMethod("setRenderHint(QPainter::RenderHint, bool)")]
 		public void SetRenderHint(QPainter.RenderHint hint, bool enabled) {
 			ProxyQGraphicsView().SetRenderHint(hint,enabled);
@@ -91,50 +143,6 @@ namespace Qyoto {
 		[SmokeMethod("setRenderHint(QPainter::RenderHint)")]
 		public void SetRenderHint(QPainter.RenderHint hint) {
 			ProxyQGraphicsView().SetRenderHint(hint);
-		}
-		[SmokeMethod("setRenderHints(QPainter::RenderHints)")]
-		public void SetRenderHints(int hints) {
-			ProxyQGraphicsView().SetRenderHints(hints);
-		}
-		[SmokeMethod("alignment() const")]
-		public int Alignment() {
-			return ProxyQGraphicsView().Alignment();
-		}
-		[SmokeMethod("setAlignment(Qt::Alignment)")]
-		public void SetAlignment(int alignment) {
-			ProxyQGraphicsView().SetAlignment(alignment);
-		}
-		[SmokeMethod("transformationAnchor() const")]
-		public QGraphicsView.ViewportAnchor TransformationAnchor() {
-			return ProxyQGraphicsView().TransformationAnchor();
-		}
-		[SmokeMethod("setTransformationAnchor(QGraphicsView::ViewportAnchor)")]
-		public void SetTransformationAnchor(QGraphicsView.ViewportAnchor anchor) {
-			ProxyQGraphicsView().SetTransformationAnchor(anchor);
-		}
-		[SmokeMethod("resizeAnchor() const")]
-		public QGraphicsView.ViewportAnchor ResizeAnchor() {
-			return ProxyQGraphicsView().ResizeAnchor();
-		}
-		[SmokeMethod("setResizeAnchor(QGraphicsView::ViewportAnchor)")]
-		public void SetResizeAnchor(QGraphicsView.ViewportAnchor anchor) {
-			ProxyQGraphicsView().SetResizeAnchor(anchor);
-		}
-		[SmokeMethod("dragMode() const")]
-		public QGraphicsView.DragMode dragMode() {
-			return ProxyQGraphicsView().dragMode();
-		}
-		[SmokeMethod("setDragMode(QGraphicsView::DragMode)")]
-		public void SetDragMode(QGraphicsView.DragMode mode) {
-			ProxyQGraphicsView().SetDragMode(mode);
-		}
-		[SmokeMethod("cacheMode() const")]
-		public int CacheMode() {
-			return ProxyQGraphicsView().CacheMode();
-		}
-		[SmokeMethod("setCacheMode(CacheMode)")]
-		public void SetCacheMode(int mode) {
-			ProxyQGraphicsView().SetCacheMode(mode);
 		}
 		[SmokeMethod("resetCachedContent()")]
 		public void ResetCachedContent() {
@@ -144,10 +152,6 @@ namespace Qyoto {
 		public bool IsInteractive() {
 			return ProxyQGraphicsView().IsInteractive();
 		}
-		[SmokeMethod("setInteractive(bool)")]
-		public void SetInteractive(bool allowed) {
-			ProxyQGraphicsView().SetInteractive(allowed);
-		}
 		[SmokeMethod("scene() const")]
 		public QGraphicsScene Scene() {
 			return ProxyQGraphicsView().Scene();
@@ -155,14 +159,6 @@ namespace Qyoto {
 		[SmokeMethod("setScene(QGraphicsScene*)")]
 		public void SetScene(QGraphicsScene scene) {
 			ProxyQGraphicsView().SetScene(scene);
-		}
-		[SmokeMethod("sceneRect() const")]
-		public QRectF SceneRect() {
-			return ProxyQGraphicsView().SceneRect();
-		}
-		[SmokeMethod("setSceneRect(const QRectF&)")]
-		public void SetSceneRect(QRectF rect) {
-			ProxyQGraphicsView().SetSceneRect(rect);
 		}
 		[SmokeMethod("setSceneRect(qreal, qreal, qreal, qreal)")]
 		public void SetSceneRect(double x, double y, double w, double h) {
@@ -383,22 +379,6 @@ namespace Qyoto {
 		[SmokeMethod("inputMethodQuery(Qt::InputMethodQuery) const")]
 		public new QVariant InputMethodQuery(Qt.InputMethodQuery query) {
 			return ProxyQGraphicsView().InputMethodQuery(query);
-		}
-		[SmokeMethod("backgroundBrush() const")]
-		public QBrush BackgroundBrush() {
-			return ProxyQGraphicsView().BackgroundBrush();
-		}
-		[SmokeMethod("setBackgroundBrush(const QBrush&)")]
-		public void SetBackgroundBrush(QBrush brush) {
-			ProxyQGraphicsView().SetBackgroundBrush(brush);
-		}
-		[SmokeMethod("foregroundBrush() const")]
-		public QBrush ForegroundBrush() {
-			return ProxyQGraphicsView().ForegroundBrush();
-		}
-		[SmokeMethod("setForegroundBrush(const QBrush&)")]
-		public void SetForegroundBrush(QBrush brush) {
-			ProxyQGraphicsView().SetForegroundBrush(brush);
 		}
 		[SmokeMethod("updateScene(const QList<QRectF>&)")]
 		public void UpdateScene(List<QRectF> rects) {

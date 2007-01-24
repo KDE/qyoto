@@ -46,6 +46,38 @@ namespace Qyoto {
 			Shadow_Mask = 0x00f0,
 			Shape_Mask = 0x000f,
 		}
+		public int LineWidth {
+			get {
+				return Property("LineWidth").Value<int>();
+			}
+			set {
+				SetProperty("LineWidth", QVariant.FromValue<int>(value));
+			}
+		}
+		public int MidLineWidth {
+			get {
+				return Property("MidLineWidth").Value<int>();
+			}
+			set {
+				SetProperty("MidLineWidth", QVariant.FromValue<int>(value));
+			}
+		}
+		public int FrameWidth {
+			get {
+				return Property("FrameWidth").Value<int>();
+			}
+			set {
+				SetProperty("FrameWidth", QVariant.FromValue<int>(value));
+			}
+		}
+		public QRect FrameRect {
+			get {
+				return Property("FrameRect").Value<QRect>();
+			}
+			set {
+				SetProperty("FrameRect", QVariant.FromValue<QRect>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QFrame(QWidget parent, int f) : this((Type) null) {
 			CreateProxy();
@@ -79,53 +111,9 @@ namespace Qyoto {
 		public void SetFrameStyle(int arg1) {
 			ProxyQFrame().SetFrameStyle(arg1);
 		}
-		[SmokeMethod("frameWidth() const")]
-		public int FrameWidth() {
-			return ProxyQFrame().FrameWidth();
-		}
 		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {
 			return ProxyQFrame().SizeHint();
-		}
-		[SmokeMethod("frameShape() const")]
-		public QFrame.Shape FrameShape() {
-			return ProxyQFrame().FrameShape();
-		}
-		[SmokeMethod("setFrameShape(QFrame::Shape)")]
-		public void SetFrameShape(QFrame.Shape arg1) {
-			ProxyQFrame().SetFrameShape(arg1);
-		}
-		[SmokeMethod("frameShadow() const")]
-		public QFrame.Shadow FrameShadow() {
-			return ProxyQFrame().FrameShadow();
-		}
-		[SmokeMethod("setFrameShadow(QFrame::Shadow)")]
-		public void SetFrameShadow(QFrame.Shadow arg1) {
-			ProxyQFrame().SetFrameShadow(arg1);
-		}
-		[SmokeMethod("lineWidth() const")]
-		public int LineWidth() {
-			return ProxyQFrame().LineWidth();
-		}
-		[SmokeMethod("setLineWidth(int)")]
-		public void SetLineWidth(int arg1) {
-			ProxyQFrame().SetLineWidth(arg1);
-		}
-		[SmokeMethod("midLineWidth() const")]
-		public int MidLineWidth() {
-			return ProxyQFrame().MidLineWidth();
-		}
-		[SmokeMethod("setMidLineWidth(int)")]
-		public void SetMidLineWidth(int arg1) {
-			ProxyQFrame().SetMidLineWidth(arg1);
-		}
-		[SmokeMethod("frameRect() const")]
-		public QRect FrameRect() {
-			return ProxyQFrame().FrameRect();
-		}
-		[SmokeMethod("setFrameRect(const QRect&)")]
-		public void SetFrameRect(QRect arg1) {
-			ProxyQFrame().SetFrameRect(arg1);
 		}
 		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {

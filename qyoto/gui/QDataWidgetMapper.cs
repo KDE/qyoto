@@ -33,6 +33,22 @@ namespace Qyoto {
 			AutoSubmit = 0,
 			ManualSubmit = 1,
 		}
+		public int CurrentIndex {
+			get {
+				return Property("CurrentIndex").Value<int>();
+			}
+			set {
+				SetProperty("CurrentIndex", QVariant.FromValue<int>(value));
+			}
+		}
+		public Qt.Orientation Orientation {
+			get {
+				return Property("Orientation").Value<Qt.Orientation>();
+			}
+			set {
+				SetProperty("Orientation", QVariant.FromValue<Qt.Orientation>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QDataWidgetMapper(QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -74,22 +90,6 @@ namespace Qyoto {
 		public QModelIndex RootIndex() {
 			return ProxyQDataWidgetMapper().RootIndex();
 		}
-		[SmokeMethod("setOrientation(Qt::Orientation)")]
-		public void SetOrientation(Qt.Orientation aOrientation) {
-			ProxyQDataWidgetMapper().SetOrientation(aOrientation);
-		}
-		[SmokeMethod("orientation() const")]
-		public Qt.Orientation Orientation() {
-			return ProxyQDataWidgetMapper().Orientation();
-		}
-		[SmokeMethod("setSubmitPolicy(QDataWidgetMapper::SubmitPolicy)")]
-		public void SetSubmitPolicy(QDataWidgetMapper.SubmitPolicy policy) {
-			ProxyQDataWidgetMapper().SetSubmitPolicy(policy);
-		}
-		[SmokeMethod("submitPolicy() const")]
-		public QDataWidgetMapper.SubmitPolicy submitPolicy() {
-			return ProxyQDataWidgetMapper().submitPolicy();
-		}
 		[SmokeMethod("addMapping(QWidget*, int)")]
 		public void AddMapping(QWidget widget, int section) {
 			ProxyQDataWidgetMapper().AddMapping(widget,section);
@@ -109,10 +109,6 @@ namespace Qyoto {
 		[SmokeMethod("clearMapping()")]
 		public void ClearMapping() {
 			ProxyQDataWidgetMapper().ClearMapping();
-		}
-		[SmokeMethod("currentIndex() const")]
-		public int CurrentIndex() {
-			return ProxyQDataWidgetMapper().CurrentIndex();
 		}
 		[SmokeMethod("revert()")]
 		public void Revert() {
@@ -137,10 +133,6 @@ namespace Qyoto {
 		[SmokeMethod("toPrevious()")]
 		public void ToPrevious() {
 			ProxyQDataWidgetMapper().ToPrevious();
-		}
-		[SmokeMethod("setCurrentIndex(int)")]
-		public virtual void SetCurrentIndex(int index) {
-			ProxyQDataWidgetMapper().SetCurrentIndex(index);
 		}
 		[SmokeMethod("setCurrentModelIndex(const QModelIndex&)")]
 		public void SetCurrentModelIndex(QModelIndex index) {

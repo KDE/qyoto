@@ -30,6 +30,22 @@ namespace Qyoto {
 			return (IQTreeWidgetProxy) _staticInterceptor;
 		}
 
+		public int ColumnCount {
+			get {
+				return Property("ColumnCount").Value<int>();
+			}
+			set {
+				SetProperty("ColumnCount", QVariant.FromValue<int>(value));
+			}
+		}
+		public int TopLevelItemCount {
+			get {
+				return Property("TopLevelItemCount").Value<int>();
+			}
+			set {
+				SetProperty("TopLevelItemCount", QVariant.FromValue<int>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QTreeWidget(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -47,14 +63,6 @@ namespace Qyoto {
 		private void NewQTreeWidget() {
 			ProxyQTreeWidget().NewQTreeWidget();
 		}
-		[SmokeMethod("columnCount() const")]
-		public int ColumnCount() {
-			return ProxyQTreeWidget().ColumnCount();
-		}
-		[SmokeMethod("setColumnCount(int)")]
-		public void SetColumnCount(int columns) {
-			ProxyQTreeWidget().SetColumnCount(columns);
-		}
 		[SmokeMethod("invisibleRootItem() const")]
 		public QTreeWidgetItem InvisibleRootItem() {
 			return ProxyQTreeWidget().InvisibleRootItem();
@@ -62,10 +70,6 @@ namespace Qyoto {
 		[SmokeMethod("topLevelItem(int) const")]
 		public QTreeWidgetItem TopLevelItem(int index) {
 			return ProxyQTreeWidget().TopLevelItem(index);
-		}
-		[SmokeMethod("topLevelItemCount() const")]
-		public int TopLevelItemCount() {
-			return ProxyQTreeWidget().TopLevelItemCount();
 		}
 		[SmokeMethod("insertTopLevelItem(int, QTreeWidgetItem*)")]
 		public void InsertTopLevelItem(int index, QTreeWidgetItem item) {

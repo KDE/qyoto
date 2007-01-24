@@ -30,6 +30,14 @@ namespace Qyoto {
 			return (IQButtonGroupProxy) _staticInterceptor;
 		}
 
+		public bool Exclusive {
+			get {
+				return Property("Exclusive").Value<bool>();
+			}
+			set {
+				SetProperty("Exclusive", QVariant.FromValue<bool>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QButtonGroup(QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -46,14 +54,6 @@ namespace Qyoto {
 		[SmokeMethod("QButtonGroup()")]
 		private void NewQButtonGroup() {
 			ProxyQButtonGroup().NewQButtonGroup();
-		}
-		[SmokeMethod("setExclusive(bool)")]
-		public void SetExclusive(bool arg1) {
-			ProxyQButtonGroup().SetExclusive(arg1);
-		}
-		[SmokeMethod("exclusive() const")]
-		public bool Exclusive() {
-			return ProxyQButtonGroup().Exclusive();
 		}
 		[SmokeMethod("addButton(QAbstractButton*)")]
 		public void AddButton(QAbstractButton arg1) {

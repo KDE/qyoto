@@ -28,6 +28,22 @@ namespace Qyoto {
 			return (IQIntValidatorProxy) _staticInterceptor;
 		}
 
+		public int Bottom {
+			get {
+				return Property("Bottom").Value<int>();
+			}
+			set {
+				SetProperty("Bottom", QVariant.FromValue<int>(value));
+			}
+		}
+		public int Top {
+			get {
+				return Property("Top").Value<int>();
+			}
+			set {
+				SetProperty("Top", QVariant.FromValue<int>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QIntValidator(QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -49,25 +65,9 @@ namespace Qyoto {
 		public new int Validate(StringBuilder arg1, out int arg2) {
 			return ProxyQIntValidator().Validate(arg1,out arg2);
 		}
-		[SmokeMethod("setBottom(int)")]
-		public void SetBottom(int arg1) {
-			ProxyQIntValidator().SetBottom(arg1);
-		}
-		[SmokeMethod("setTop(int)")]
-		public void SetTop(int arg1) {
-			ProxyQIntValidator().SetTop(arg1);
-		}
 		[SmokeMethod("setRange(int, int)")]
 		public virtual void SetRange(int bottom, int top) {
 			ProxyQIntValidator().SetRange(bottom,top);
-		}
-		[SmokeMethod("bottom() const")]
-		public int Bottom() {
-			return ProxyQIntValidator().Bottom();
-		}
-		[SmokeMethod("top() const")]
-		public int Top() {
-			return ProxyQIntValidator().Top();
 		}
 		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {

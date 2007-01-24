@@ -29,6 +29,14 @@ namespace Qyoto {
 			return (IQMenuBarProxy) _staticInterceptor;
 		}
 
+		public bool DefaultUp {
+			get {
+				return Property("DefaultUp").Value<bool>();
+			}
+			set {
+				SetProperty("DefaultUp", QVariant.FromValue<bool>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QMenuBar(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -93,10 +101,6 @@ namespace Qyoto {
 		[SmokeMethod("setActiveAction(QAction*)")]
 		public void SetActiveAction(QAction action) {
 			ProxyQMenuBar().SetActiveAction(action);
-		}
-		[SmokeMethod("setDefaultUp(bool)")]
-		public void SetDefaultUp(bool arg1) {
-			ProxyQMenuBar().SetDefaultUp(arg1);
 		}
 		[SmokeMethod("isDefaultUp() const")]
 		public bool IsDefaultUp() {

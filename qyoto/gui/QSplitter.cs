@@ -30,6 +30,38 @@ namespace Qyoto {
 			return (IQSplitterProxy) _staticInterceptor;
 		}
 
+		public Qt.Orientation Orientation {
+			get {
+				return Property("Orientation").Value<Qt.Orientation>();
+			}
+			set {
+				SetProperty("Orientation", QVariant.FromValue<Qt.Orientation>(value));
+			}
+		}
+		public bool OpaqueResize {
+			get {
+				return Property("OpaqueResize").Value<bool>();
+			}
+			set {
+				SetProperty("OpaqueResize", QVariant.FromValue<bool>(value));
+			}
+		}
+		public int HandleWidth {
+			get {
+				return Property("HandleWidth").Value<int>();
+			}
+			set {
+				SetProperty("HandleWidth", QVariant.FromValue<int>(value));
+			}
+		}
+		public bool ChildrenCollapsible {
+			get {
+				return Property("ChildrenCollapsible").Value<bool>();
+			}
+			set {
+				SetProperty("ChildrenCollapsible", QVariant.FromValue<bool>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QSplitter(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -71,22 +103,6 @@ namespace Qyoto {
 		public void InsertWidget(int index, QWidget widget) {
 			ProxyQSplitter().InsertWidget(index,widget);
 		}
-		[SmokeMethod("setOrientation(Qt::Orientation)")]
-		public void SetOrientation(Qt.Orientation arg1) {
-			ProxyQSplitter().SetOrientation(arg1);
-		}
-		[SmokeMethod("orientation() const")]
-		public Qt.Orientation Orientation() {
-			return ProxyQSplitter().Orientation();
-		}
-		[SmokeMethod("setChildrenCollapsible(bool)")]
-		public void SetChildrenCollapsible(bool arg1) {
-			ProxyQSplitter().SetChildrenCollapsible(arg1);
-		}
-		[SmokeMethod("childrenCollapsible() const")]
-		public bool ChildrenCollapsible() {
-			return ProxyQSplitter().ChildrenCollapsible();
-		}
 		[SmokeMethod("setCollapsible(int, bool)")]
 		public void SetCollapsible(int index, bool arg2) {
 			ProxyQSplitter().SetCollapsible(index,arg2);
@@ -94,18 +110,6 @@ namespace Qyoto {
 		[SmokeMethod("isCollapsible(int) const")]
 		public bool IsCollapsible(int index) {
 			return ProxyQSplitter().IsCollapsible(index);
-		}
-		[SmokeMethod("setOpaqueResize(bool)")]
-		public void SetOpaqueResize(bool opaque) {
-			ProxyQSplitter().SetOpaqueResize(opaque);
-		}
-		[SmokeMethod("setOpaqueResize()")]
-		public void SetOpaqueResize() {
-			ProxyQSplitter().SetOpaqueResize();
-		}
-		[SmokeMethod("opaqueResize() const")]
-		public bool OpaqueResize() {
-			return ProxyQSplitter().OpaqueResize();
 		}
 		[SmokeMethod("refresh()")]
 		public void Refresh() {
@@ -134,14 +138,6 @@ namespace Qyoto {
 		[SmokeMethod("restoreState(const QByteArray&)")]
 		public bool RestoreState(QByteArray state) {
 			return ProxyQSplitter().RestoreState(state);
-		}
-		[SmokeMethod("handleWidth() const")]
-		public int HandleWidth() {
-			return ProxyQSplitter().HandleWidth();
-		}
-		[SmokeMethod("setHandleWidth(int)")]
-		public void SetHandleWidth(int arg1) {
-			ProxyQSplitter().SetHandleWidth(arg1);
 		}
 		[SmokeMethod("indexOf(QWidget*) const")]
 		public int IndexOf(QWidget w) {

@@ -29,6 +29,22 @@ namespace Qyoto {
 			return (IQAbstractScrollAreaProxy) _staticInterceptor;
 		}
 
+		public Qt.ScrollBarPolicy VerticalScrollBarPolicy {
+			get {
+				return Property("VerticalScrollBarPolicy").Value<Qt.ScrollBarPolicy>();
+			}
+			set {
+				SetProperty("VerticalScrollBarPolicy", QVariant.FromValue<Qt.ScrollBarPolicy>(value));
+			}
+		}
+		public Qt.ScrollBarPolicy HorizontalScrollBarPolicy {
+			get {
+				return Property("HorizontalScrollBarPolicy").Value<Qt.ScrollBarPolicy>();
+			}
+			set {
+				SetProperty("HorizontalScrollBarPolicy", QVariant.FromValue<Qt.ScrollBarPolicy>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QAbstractScrollArea(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -46,14 +62,6 @@ namespace Qyoto {
 		private void NewQAbstractScrollArea() {
 			ProxyQAbstractScrollArea().NewQAbstractScrollArea();
 		}
-		[SmokeMethod("verticalScrollBarPolicy() const")]
-		public Qt.ScrollBarPolicy VerticalScrollBarPolicy() {
-			return ProxyQAbstractScrollArea().VerticalScrollBarPolicy();
-		}
-		[SmokeMethod("setVerticalScrollBarPolicy(Qt::ScrollBarPolicy)")]
-		public void SetVerticalScrollBarPolicy(Qt.ScrollBarPolicy arg1) {
-			ProxyQAbstractScrollArea().SetVerticalScrollBarPolicy(arg1);
-		}
 		[SmokeMethod("verticalScrollBar() const")]
 		public QScrollBar VerticalScrollBar() {
 			return ProxyQAbstractScrollArea().VerticalScrollBar();
@@ -61,14 +69,6 @@ namespace Qyoto {
 		[SmokeMethod("setVerticalScrollBar(QScrollBar*)")]
 		public void SetVerticalScrollBar(QScrollBar scrollbar) {
 			ProxyQAbstractScrollArea().SetVerticalScrollBar(scrollbar);
-		}
-		[SmokeMethod("horizontalScrollBarPolicy() const")]
-		public Qt.ScrollBarPolicy HorizontalScrollBarPolicy() {
-			return ProxyQAbstractScrollArea().HorizontalScrollBarPolicy();
-		}
-		[SmokeMethod("setHorizontalScrollBarPolicy(Qt::ScrollBarPolicy)")]
-		public void SetHorizontalScrollBarPolicy(Qt.ScrollBarPolicy arg1) {
-			ProxyQAbstractScrollArea().SetHorizontalScrollBarPolicy(arg1);
 		}
 		[SmokeMethod("horizontalScrollBar() const")]
 		public QScrollBar HorizontalScrollBar() {

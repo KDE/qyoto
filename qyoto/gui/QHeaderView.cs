@@ -36,6 +36,62 @@ namespace Qyoto {
 			Custom = Fixed,
 			ResizeToContents = 3,
 		}
+		public bool ShowSortIndicator {
+			get {
+				return Property("ShowSortIndicator").Value<bool>();
+			}
+			set {
+				SetProperty("ShowSortIndicator", QVariant.FromValue<bool>(value));
+			}
+		}
+		public bool HighlightSections {
+			get {
+				return Property("HighlightSections").Value<bool>();
+			}
+			set {
+				SetProperty("HighlightSections", QVariant.FromValue<bool>(value));
+			}
+		}
+		public bool StretchLastSection {
+			get {
+				return Property("StretchLastSection").Value<bool>();
+			}
+			set {
+				SetProperty("StretchLastSection", QVariant.FromValue<bool>(value));
+			}
+		}
+		public bool CascadingSectionResizes {
+			get {
+				return Property("CascadingSectionResizes").Value<bool>();
+			}
+			set {
+				SetProperty("CascadingSectionResizes", QVariant.FromValue<bool>(value));
+			}
+		}
+		public int DefaultSectionSize {
+			get {
+				return Property("DefaultSectionSize").Value<int>();
+			}
+			set {
+				SetProperty("DefaultSectionSize", QVariant.FromValue<int>(value));
+			}
+		}
+		public int MinimumSectionSize {
+			get {
+				return Property("MinimumSectionSize").Value<int>();
+			}
+			set {
+				SetProperty("MinimumSectionSize", QVariant.FromValue<int>(value));
+			}
+		}
+		public int DefaultAlignment {
+			get {
+				return Property("DefaultAlignment").Value<int>();
+			}
+			set {
+				SetProperty("DefaultAlignment", QVariant.FromValue<int>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QHeaderView(Qt.Orientation orientation, QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -169,14 +225,6 @@ namespace Qyoto {
 		public bool IsClickable() {
 			return ProxyQHeaderView().IsClickable();
 		}
-		[SmokeMethod("setHighlightSections(bool)")]
-		public void SetHighlightSections(bool highlight) {
-			ProxyQHeaderView().SetHighlightSections(highlight);
-		}
-		[SmokeMethod("highlightSections() const")]
-		public bool HighlightSections() {
-			return ProxyQHeaderView().HighlightSections();
-		}
 		[SmokeMethod("setResizeMode(QHeaderView::ResizeMode)")]
 		public void SetResizeMode(QHeaderView.ResizeMode mode) {
 			ProxyQHeaderView().SetResizeMode(mode);
@@ -212,46 +260,6 @@ namespace Qyoto {
 		[SmokeMethod("sortIndicatorOrder() const")]
 		public Qt.SortOrder SortIndicatorOrder() {
 			return ProxyQHeaderView().SortIndicatorOrder();
-		}
-		[SmokeMethod("stretchLastSection() const")]
-		public bool StretchLastSection() {
-			return ProxyQHeaderView().StretchLastSection();
-		}
-		[SmokeMethod("setStretchLastSection(bool)")]
-		public void SetStretchLastSection(bool stretch) {
-			ProxyQHeaderView().SetStretchLastSection(stretch);
-		}
-		[SmokeMethod("cascadingSectionResizes() const")]
-		public bool CascadingSectionResizes() {
-			return ProxyQHeaderView().CascadingSectionResizes();
-		}
-		[SmokeMethod("setCascadingSectionResizes(bool)")]
-		public void SetCascadingSectionResizes(bool enable) {
-			ProxyQHeaderView().SetCascadingSectionResizes(enable);
-		}
-		[SmokeMethod("defaultSectionSize() const")]
-		public int DefaultSectionSize() {
-			return ProxyQHeaderView().DefaultSectionSize();
-		}
-		[SmokeMethod("setDefaultSectionSize(int)")]
-		public void SetDefaultSectionSize(int size) {
-			ProxyQHeaderView().SetDefaultSectionSize(size);
-		}
-		[SmokeMethod("minimumSectionSize() const")]
-		public int MinimumSectionSize() {
-			return ProxyQHeaderView().MinimumSectionSize();
-		}
-		[SmokeMethod("setMinimumSectionSize(int)")]
-		public void SetMinimumSectionSize(int size) {
-			ProxyQHeaderView().SetMinimumSectionSize(size);
-		}
-		[SmokeMethod("defaultAlignment() const")]
-		public int DefaultAlignment() {
-			return ProxyQHeaderView().DefaultAlignment();
-		}
-		[SmokeMethod("setDefaultAlignment(Qt::Alignment)")]
-		public void SetDefaultAlignment(int alignment) {
-			ProxyQHeaderView().SetDefaultAlignment(alignment);
 		}
 		[SmokeMethod("doItemsLayout()")]
 		public new void DoItemsLayout() {

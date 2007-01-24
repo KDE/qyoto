@@ -40,6 +40,22 @@ namespace Qyoto {
 			CacheNone = 0,
 			CacheAll = 1,
 		}
+		public int Speed {
+			get {
+				return Property("Speed").Value<int>();
+			}
+			set {
+				SetProperty("Speed", QVariant.FromValue<int>(value));
+			}
+		}
+		public int cacheMode {
+			get {
+				return Property("cacheMode").Value<int>();
+			}
+			set {
+				SetProperty("cacheMode", QVariant.FromValue<int>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QMovie(QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -177,10 +193,6 @@ namespace Qyoto {
 		public int CurrentFrameNumber() {
 			return ProxyQMovie().CurrentFrameNumber();
 		}
-		[SmokeMethod("speed() const")]
-		public int Speed() {
-			return ProxyQMovie().Speed();
-		}
 		[SmokeMethod("scaledSize()")]
 		public QSize ScaledSize() {
 			return ProxyQMovie().ScaledSize();
@@ -188,14 +200,6 @@ namespace Qyoto {
 		[SmokeMethod("setScaledSize(const QSize&)")]
 		public void SetScaledSize(QSize size) {
 			ProxyQMovie().SetScaledSize(size);
-		}
-		[SmokeMethod("cacheMode() const")]
-		public QMovie.CacheMode cacheMode() {
-			return ProxyQMovie().cacheMode();
-		}
-		[SmokeMethod("setCacheMode(QMovie::CacheMode)")]
-		public void SetCacheMode(QMovie.CacheMode mode) {
-			ProxyQMovie().SetCacheMode(mode);
 		}
 		[SmokeMethod("start()")]
 		public void Start() {
@@ -212,10 +216,6 @@ namespace Qyoto {
 		[SmokeMethod("stop()")]
 		public void Stop() {
 			ProxyQMovie().Stop();
-		}
-		[SmokeMethod("setSpeed(int)")]
-		public void SetSpeed(int percentSpeed) {
-			ProxyQMovie().SetSpeed(percentSpeed);
 		}
 		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {

@@ -29,6 +29,14 @@ namespace Qyoto {
 			return (IQCheckBoxProxy) _staticInterceptor;
 		}
 
+		public bool Tristate {
+			get {
+				return Property("Tristate").Value<bool>();
+			}
+			set {
+				SetProperty("Tristate", QVariant.FromValue<bool>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QCheckBox(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -65,14 +73,6 @@ namespace Qyoto {
 		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {
 			return ProxyQCheckBox().SizeHint();
-		}
-		[SmokeMethod("setTristate(bool)")]
-		public void SetTristate(bool y) {
-			ProxyQCheckBox().SetTristate(y);
-		}
-		[SmokeMethod("setTristate()")]
-		public void SetTristate() {
-			ProxyQCheckBox().SetTristate();
 		}
 		[SmokeMethod("isTristate() const")]
 		public bool IsTristate() {

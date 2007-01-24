@@ -29,6 +29,70 @@ namespace Qyoto {
 			return (IQDoubleSpinBoxProxy) _staticInterceptor;
 		}
 
+		public string Prefix {
+			get {
+				return Property("Prefix").Value<string>();
+			}
+			set {
+				SetProperty("Prefix", QVariant.FromValue<string>(value));
+			}
+		}
+		public string Suffix {
+			get {
+				return Property("Suffix").Value<string>();
+			}
+			set {
+				SetProperty("Suffix", QVariant.FromValue<string>(value));
+			}
+		}
+		public string CleanText {
+			get {
+				return Property("CleanText").Value<string>();
+			}
+			set {
+				SetProperty("CleanText", QVariant.FromValue<string>(value));
+			}
+		}
+		public int Decimals {
+			get {
+				return Property("Decimals").Value<int>();
+			}
+			set {
+				SetProperty("Decimals", QVariant.FromValue<int>(value));
+			}
+		}
+		public double Maximum {
+			get {
+				return Property("Maximum").Value<double>();
+			}
+			set {
+				SetProperty("Maximum", QVariant.FromValue<double>(value));
+			}
+		}
+		public double Minimum {
+			get {
+				return Property("Minimum").Value<double>();
+			}
+			set {
+				SetProperty("Minimum", QVariant.FromValue<double>(value));
+			}
+		}
+		public double SingleStep {
+			get {
+				return Property("SingleStep").Value<double>();
+			}
+			set {
+				SetProperty("SingleStep", QVariant.FromValue<double>(value));
+			}
+		}
+		public double Value {
+			get {
+				return Property("Value").Value<double>();
+			}
+			set {
+				SetProperty("Value", QVariant.FromValue<double>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QDoubleSpinBox(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -46,65 +110,9 @@ namespace Qyoto {
 		private void NewQDoubleSpinBox() {
 			ProxyQDoubleSpinBox().NewQDoubleSpinBox();
 		}
-		[SmokeMethod("value() const")]
-		public double Value() {
-			return ProxyQDoubleSpinBox().Value();
-		}
-		[SmokeMethod("prefix() const")]
-		public string Prefix() {
-			return ProxyQDoubleSpinBox().Prefix();
-		}
-		[SmokeMethod("setPrefix(const QString&)")]
-		public void SetPrefix(string prefix) {
-			ProxyQDoubleSpinBox().SetPrefix(prefix);
-		}
-		[SmokeMethod("suffix() const")]
-		public string Suffix() {
-			return ProxyQDoubleSpinBox().Suffix();
-		}
-		[SmokeMethod("setSuffix(const QString&)")]
-		public void SetSuffix(string suffix) {
-			ProxyQDoubleSpinBox().SetSuffix(suffix);
-		}
-		[SmokeMethod("cleanText() const")]
-		public string CleanText() {
-			return ProxyQDoubleSpinBox().CleanText();
-		}
-		[SmokeMethod("singleStep() const")]
-		public double SingleStep() {
-			return ProxyQDoubleSpinBox().SingleStep();
-		}
-		[SmokeMethod("setSingleStep(double)")]
-		public void SetSingleStep(double val) {
-			ProxyQDoubleSpinBox().SetSingleStep(val);
-		}
-		[SmokeMethod("minimum() const")]
-		public double Minimum() {
-			return ProxyQDoubleSpinBox().Minimum();
-		}
-		[SmokeMethod("setMinimum(double)")]
-		public void SetMinimum(double min) {
-			ProxyQDoubleSpinBox().SetMinimum(min);
-		}
-		[SmokeMethod("maximum() const")]
-		public double Maximum() {
-			return ProxyQDoubleSpinBox().Maximum();
-		}
-		[SmokeMethod("setMaximum(double)")]
-		public void SetMaximum(double max) {
-			ProxyQDoubleSpinBox().SetMaximum(max);
-		}
 		[SmokeMethod("setRange(double, double)")]
 		public void SetRange(double min, double max) {
 			ProxyQDoubleSpinBox().SetRange(min,max);
-		}
-		[SmokeMethod("decimals() const")]
-		public int Decimals() {
-			return ProxyQDoubleSpinBox().Decimals();
-		}
-		[SmokeMethod("setDecimals(int)")]
-		public void SetDecimals(int prec) {
-			ProxyQDoubleSpinBox().SetDecimals(prec);
 		}
 		[SmokeMethod("validate(QString&, int&) const")]
 		public new virtual int Validate(StringBuilder input, out int pos) {
@@ -121,10 +129,6 @@ namespace Qyoto {
 		[SmokeMethod("fixup(QString&) const")]
 		public new virtual void Fixup(StringBuilder str) {
 			ProxyQDoubleSpinBox().Fixup(str);
-		}
-		[SmokeMethod("setValue(double)")]
-		public void SetValue(double val) {
-			ProxyQDoubleSpinBox().SetValue(val);
 		}
 		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {

@@ -72,6 +72,30 @@ namespace Qyoto {
 			KdeLayout = 2,
 			GnomeLayout = 3,
 		}
+		public Qt.Orientation Orientation {
+			get {
+				return Property("Orientation").Value<Qt.Orientation>();
+			}
+			set {
+				SetProperty("Orientation", QVariant.FromValue<Qt.Orientation>(value));
+			}
+		}
+		public int StandardButtons {
+			get {
+				return Property("StandardButtons").Value<int>();
+			}
+			set {
+				SetProperty("StandardButtons", QVariant.FromValue<int>(value));
+			}
+		}
+		public bool CenterButtons {
+			get {
+				return Property("CenterButtons").Value<bool>();
+			}
+			set {
+				SetProperty("CenterButtons", QVariant.FromValue<bool>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QDialogButtonBox(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -129,14 +153,6 @@ namespace Qyoto {
 		private void NewQDialogButtonBox(int buttons) {
 			ProxyQDialogButtonBox().NewQDialogButtonBox(buttons);
 		}
-		[SmokeMethod("setOrientation(Qt::Orientation)")]
-		public void SetOrientation(Qt.Orientation orientation) {
-			ProxyQDialogButtonBox().SetOrientation(orientation);
-		}
-		[SmokeMethod("orientation() const")]
-		public Qt.Orientation Orientation() {
-			return ProxyQDialogButtonBox().Orientation();
-		}
 		[SmokeMethod("addButton(QAbstractButton*, QDialogButtonBox::ButtonRole)")]
 		public void AddButton(QAbstractButton button, QDialogButtonBox.ButtonRole role) {
 			ProxyQDialogButtonBox().AddButton(button,role);
@@ -165,14 +181,6 @@ namespace Qyoto {
 		public QDialogButtonBox.ButtonRole buttonRole(QAbstractButton button) {
 			return ProxyQDialogButtonBox().buttonRole(button);
 		}
-		[SmokeMethod("setStandardButtons(StandardButtons)")]
-		public void SetStandardButtons(int buttons) {
-			ProxyQDialogButtonBox().SetStandardButtons(buttons);
-		}
-		[SmokeMethod("standardButtons() const")]
-		public int StandardButtons() {
-			return ProxyQDialogButtonBox().StandardButtons();
-		}
 		[SmokeMethod("standardButton(QAbstractButton*) const")]
 		public QDialogButtonBox.StandardButton standardButton(QAbstractButton button) {
 			return ProxyQDialogButtonBox().standardButton(button);
@@ -180,14 +188,6 @@ namespace Qyoto {
 		[SmokeMethod("button(QDialogButtonBox::StandardButton) const")]
 		public QPushButton Button(QDialogButtonBox.StandardButton which) {
 			return ProxyQDialogButtonBox().Button(which);
-		}
-		[SmokeMethod("setCenterButtons(bool)")]
-		public void SetCenterButtons(bool center) {
-			ProxyQDialogButtonBox().SetCenterButtons(center);
-		}
-		[SmokeMethod("centerButtons() const")]
-		public bool CenterButtons() {
-			return ProxyQDialogButtonBox().CenterButtons();
 		}
 		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {

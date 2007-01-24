@@ -29,6 +29,30 @@ namespace Qyoto {
 			return (IQTableViewProxy) _staticInterceptor;
 		}
 
+		public bool ShowGrid {
+			get {
+				return Property("ShowGrid").Value<bool>();
+			}
+			set {
+				SetProperty("ShowGrid", QVariant.FromValue<bool>(value));
+			}
+		}
+		public Qt.PenStyle GridStyle {
+			get {
+				return Property("GridStyle").Value<Qt.PenStyle>();
+			}
+			set {
+				SetProperty("GridStyle", QVariant.FromValue<Qt.PenStyle>(value));
+			}
+		}
+		public bool SortingEnabled {
+			get {
+				return Property("SortingEnabled").Value<bool>();
+			}
+			set {
+				SetProperty("SortingEnabled", QVariant.FromValue<bool>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QTableView(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -122,25 +146,9 @@ namespace Qyoto {
 		public void SetColumnHidden(int column, bool hide) {
 			ProxyQTableView().SetColumnHidden(column,hide);
 		}
-		[SmokeMethod("setSortingEnabled(bool)")]
-		public void SetSortingEnabled(bool enable) {
-			ProxyQTableView().SetSortingEnabled(enable);
-		}
 		[SmokeMethod("isSortingEnabled() const")]
 		public bool IsSortingEnabled() {
 			return ProxyQTableView().IsSortingEnabled();
-		}
-		[SmokeMethod("showGrid() const")]
-		public bool ShowGrid() {
-			return ProxyQTableView().ShowGrid();
-		}
-		[SmokeMethod("gridStyle() const")]
-		public Qt.PenStyle GridStyle() {
-			return ProxyQTableView().GridStyle();
-		}
-		[SmokeMethod("setGridStyle(Qt::PenStyle)")]
-		public void SetGridStyle(Qt.PenStyle style) {
-			ProxyQTableView().SetGridStyle(style);
 		}
 		[SmokeMethod("visualRect(const QModelIndex&) const")]
 		public new QRect VisualRect(QModelIndex index) {
@@ -217,10 +225,6 @@ namespace Qyoto {
 		[SmokeMethod("sortByColumn(int)")]
 		public void SortByColumn(int column) {
 			ProxyQTableView().SortByColumn(column);
-		}
-		[SmokeMethod("setShowGrid(bool)")]
-		public void SetShowGrid(bool show) {
-			ProxyQTableView().SetShowGrid(show);
 		}
 		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {

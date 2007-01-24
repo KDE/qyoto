@@ -29,6 +29,14 @@ namespace Qyoto {
 			return (IQStackedLayoutProxy) _staticInterceptor;
 		}
 
+		public int CurrentIndex {
+			get {
+				return Property("CurrentIndex").Value<int>();
+			}
+			set {
+				SetProperty("CurrentIndex", QVariant.FromValue<int>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QStackedLayout() : this((Type) null) {
 			CreateProxy();
@@ -66,10 +74,6 @@ namespace Qyoto {
 		public QWidget CurrentWidget() {
 			return ProxyQStackedLayout().CurrentWidget();
 		}
-		[SmokeMethod("currentIndex() const")]
-		public int CurrentIndex() {
-			return ProxyQStackedLayout().CurrentIndex();
-		}
 		[SmokeMethod("widget()")]
 		public new QWidget Widget() {
 			return ProxyQStackedLayout().Widget();
@@ -105,10 +109,6 @@ namespace Qyoto {
 		[SmokeMethod("setGeometry(const QRect&)")]
 		public new void SetGeometry(QRect rect) {
 			ProxyQStackedLayout().SetGeometry(rect);
-		}
-		[SmokeMethod("setCurrentIndex(int)")]
-		public void SetCurrentIndex(int index) {
-			ProxyQStackedLayout().SetCurrentIndex(index);
 		}
 		[SmokeMethod("setCurrentWidget(QWidget*)")]
 		public void SetCurrentWidget(QWidget w) {

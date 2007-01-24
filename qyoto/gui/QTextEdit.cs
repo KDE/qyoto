@@ -40,6 +40,102 @@ namespace Qyoto {
 			AutoBulletList = 0x00000001,
 			AutoAll = 0xffffffff,
 		}
+		public int AutoFormatting {
+			get {
+				return Property("AutoFormatting").Value<int>();
+			}
+			set {
+				SetProperty("AutoFormatting", QVariant.FromValue<int>(value));
+			}
+		}
+		public bool TabChangesFocus {
+			get {
+				return Property("TabChangesFocus").Value<bool>();
+			}
+			set {
+				SetProperty("TabChangesFocus", QVariant.FromValue<bool>(value));
+			}
+		}
+		public string DocumentTitle {
+			get {
+				return Property("DocumentTitle").Value<string>();
+			}
+			set {
+				SetProperty("DocumentTitle", QVariant.FromValue<string>(value));
+			}
+		}
+		public bool UndoRedoEnabled {
+			get {
+				return Property("UndoRedoEnabled").Value<bool>();
+			}
+			set {
+				SetProperty("UndoRedoEnabled", QVariant.FromValue<bool>(value));
+			}
+		}
+		public int LineWrapColumnOrWidth {
+			get {
+				return Property("LineWrapColumnOrWidth").Value<int>();
+			}
+			set {
+				SetProperty("LineWrapColumnOrWidth", QVariant.FromValue<int>(value));
+			}
+		}
+		public bool ReadOnly {
+			get {
+				return Property("ReadOnly").Value<bool>();
+			}
+			set {
+				SetProperty("ReadOnly", QVariant.FromValue<bool>(value));
+			}
+		}
+		public string Html {
+			get {
+				return Property("Html").Value<string>();
+			}
+			set {
+				SetProperty("Html", QVariant.FromValue<string>(value));
+			}
+		}
+		public bool OverwriteMode {
+			get {
+				return Property("OverwriteMode").Value<bool>();
+			}
+			set {
+				SetProperty("OverwriteMode", QVariant.FromValue<bool>(value));
+			}
+		}
+		public int TabStopWidth {
+			get {
+				return Property("TabStopWidth").Value<int>();
+			}
+			set {
+				SetProperty("TabStopWidth", QVariant.FromValue<int>(value));
+			}
+		}
+		public bool AcceptRichText {
+			get {
+				return Property("AcceptRichText").Value<bool>();
+			}
+			set {
+				SetProperty("AcceptRichText", QVariant.FromValue<bool>(value));
+			}
+		}
+		public int CursorWidth {
+			get {
+				return Property("CursorWidth").Value<int>();
+			}
+			set {
+				SetProperty("CursorWidth", QVariant.FromValue<int>(value));
+			}
+		}
+		public int TextInteractionFlags {
+			get {
+				return Property("TextInteractionFlags").Value<int>();
+			}
+			set {
+				SetProperty("TextInteractionFlags", QVariant.FromValue<int>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QTextEdit(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -80,18 +176,6 @@ namespace Qyoto {
 		[SmokeMethod("isReadOnly() const")]
 		public bool IsReadOnly() {
 			return ProxyQTextEdit().IsReadOnly();
-		}
-		[SmokeMethod("setReadOnly(bool)")]
-		public void SetReadOnly(bool ro) {
-			ProxyQTextEdit().SetReadOnly(ro);
-		}
-		[SmokeMethod("setTextInteractionFlags(Qt::TextInteractionFlags)")]
-		public void SetTextInteractionFlags(int flags) {
-			ProxyQTextEdit().SetTextInteractionFlags(flags);
-		}
-		[SmokeMethod("textInteractionFlags() const")]
-		public int TextInteractionFlags() {
-			return ProxyQTextEdit().TextInteractionFlags();
 		}
 		[SmokeMethod("fontPointSize() const")]
 		public double FontPointSize() {
@@ -137,53 +221,9 @@ namespace Qyoto {
 		public QTextCharFormat CurrentCharFormat() {
 			return ProxyQTextEdit().CurrentCharFormat();
 		}
-		[SmokeMethod("autoFormatting() const")]
-		public int AutoFormatting() {
-			return ProxyQTextEdit().AutoFormatting();
-		}
-		[SmokeMethod("setAutoFormatting(AutoFormatting)")]
-		public void SetAutoFormatting(int features) {
-			ProxyQTextEdit().SetAutoFormatting(features);
-		}
-		[SmokeMethod("tabChangesFocus() const")]
-		public bool TabChangesFocus() {
-			return ProxyQTextEdit().TabChangesFocus();
-		}
-		[SmokeMethod("setTabChangesFocus(bool)")]
-		public void SetTabChangesFocus(bool b) {
-			ProxyQTextEdit().SetTabChangesFocus(b);
-		}
-		[SmokeMethod("setDocumentTitle(const QString&)")]
-		public void SetDocumentTitle(string title) {
-			ProxyQTextEdit().SetDocumentTitle(title);
-		}
-		[SmokeMethod("documentTitle() const")]
-		public string DocumentTitle() {
-			return ProxyQTextEdit().DocumentTitle();
-		}
 		[SmokeMethod("isUndoRedoEnabled() const")]
 		public bool IsUndoRedoEnabled() {
 			return ProxyQTextEdit().IsUndoRedoEnabled();
-		}
-		[SmokeMethod("setUndoRedoEnabled(bool)")]
-		public void SetUndoRedoEnabled(bool enable) {
-			ProxyQTextEdit().SetUndoRedoEnabled(enable);
-		}
-		[SmokeMethod("lineWrapMode() const")]
-		public QTextEdit.LineWrapMode lineWrapMode() {
-			return ProxyQTextEdit().lineWrapMode();
-		}
-		[SmokeMethod("setLineWrapMode(QTextEdit::LineWrapMode)")]
-		public void SetLineWrapMode(QTextEdit.LineWrapMode mode) {
-			ProxyQTextEdit().SetLineWrapMode(mode);
-		}
-		[SmokeMethod("lineWrapColumnOrWidth() const")]
-		public int LineWrapColumnOrWidth() {
-			return ProxyQTextEdit().LineWrapColumnOrWidth();
-		}
-		[SmokeMethod("setLineWrapColumnOrWidth(int)")]
-		public void SetLineWrapColumnOrWidth(int w) {
-			ProxyQTextEdit().SetLineWrapColumnOrWidth(w);
 		}
 		[SmokeMethod("wordWrapMode() const")]
 		public QTextOption.WrapMode WordWrapMode() {
@@ -228,38 +268,6 @@ namespace Qyoto {
 		public string AnchorAt(QPoint pos) {
 			return ProxyQTextEdit().AnchorAt(pos);
 		}
-		[SmokeMethod("overwriteMode() const")]
-		public bool OverwriteMode() {
-			return ProxyQTextEdit().OverwriteMode();
-		}
-		[SmokeMethod("setOverwriteMode(bool)")]
-		public void SetOverwriteMode(bool overwrite) {
-			ProxyQTextEdit().SetOverwriteMode(overwrite);
-		}
-		[SmokeMethod("tabStopWidth() const")]
-		public int TabStopWidth() {
-			return ProxyQTextEdit().TabStopWidth();
-		}
-		[SmokeMethod("setTabStopWidth(int)")]
-		public void SetTabStopWidth(int width) {
-			ProxyQTextEdit().SetTabStopWidth(width);
-		}
-		[SmokeMethod("cursorWidth() const")]
-		public int CursorWidth() {
-			return ProxyQTextEdit().CursorWidth();
-		}
-		[SmokeMethod("setCursorWidth(int)")]
-		public void SetCursorWidth(int width) {
-			ProxyQTextEdit().SetCursorWidth(width);
-		}
-		[SmokeMethod("acceptRichText() const")]
-		public bool AcceptRichText() {
-			return ProxyQTextEdit().AcceptRichText();
-		}
-		[SmokeMethod("setAcceptRichText(bool)")]
-		public void SetAcceptRichText(bool accept) {
-			ProxyQTextEdit().SetAcceptRichText(accept);
-		}
 		// void setExtraSelections(const QList<QTextEdit::ExtraSelection>& arg1); >>>> NOT CONVERTED
 		// QList<QTextEdit::ExtraSelection> extraSelections(); >>>> NOT CONVERTED
 		// void moveCursor(QTextCursor::MoveOperation arg1,QTextCursor::MoveMode arg2); >>>> NOT CONVERTED
@@ -303,10 +311,6 @@ namespace Qyoto {
 		[SmokeMethod("setPlainText(const QString&)")]
 		public void SetPlainText(string text) {
 			ProxyQTextEdit().SetPlainText(text);
-		}
-		[SmokeMethod("setHtml(const QString&)")]
-		public void SetHtml(string text) {
-			ProxyQTextEdit().SetHtml(text);
 		}
 		[SmokeMethod("setText(const QString&)")]
 		public void SetText(string text) {

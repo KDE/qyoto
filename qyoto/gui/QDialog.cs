@@ -33,6 +33,22 @@ namespace Qyoto {
 			Rejected = 0,
 			Accepted = 1,
 		}
+		public bool SizeGripEnabled {
+			get {
+				return Property("SizeGripEnabled").Value<bool>();
+			}
+			set {
+				SetProperty("SizeGripEnabled", QVariant.FromValue<bool>(value));
+			}
+		}
+		public bool Modal {
+			get {
+				return Property("Modal").Value<bool>();
+			}
+			set {
+				SetProperty("Modal", QVariant.FromValue<bool>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QDialog(QWidget parent, int f) : this((Type) null) {
 			CreateProxy();
@@ -90,17 +106,9 @@ namespace Qyoto {
 		public new QSize MinimumSizeHint() {
 			return ProxyQDialog().MinimumSizeHint();
 		}
-		[SmokeMethod("setSizeGripEnabled(bool)")]
-		public void SetSizeGripEnabled(bool arg1) {
-			ProxyQDialog().SetSizeGripEnabled(arg1);
-		}
 		[SmokeMethod("isSizeGripEnabled() const")]
 		public bool IsSizeGripEnabled() {
 			return ProxyQDialog().IsSizeGripEnabled();
-		}
-		[SmokeMethod("setModal(bool)")]
-		public void SetModal(bool modal) {
-			ProxyQDialog().SetModal(modal);
 		}
 		[SmokeMethod("event(QEvent*)")]
 		public new bool Event(QEvent arg1) {

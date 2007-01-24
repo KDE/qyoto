@@ -45,6 +45,46 @@ namespace Qyoto {
 			LinearCurve = 3,
 			SineCurve = 4,
 		}
+		public int Duration {
+			get {
+				return Property("Duration").Value<int>();
+			}
+			set {
+				SetProperty("Duration", QVariant.FromValue<int>(value));
+			}
+		}
+		public int UpdateInterval {
+			get {
+				return Property("UpdateInterval").Value<int>();
+			}
+			set {
+				SetProperty("UpdateInterval", QVariant.FromValue<int>(value));
+			}
+		}
+		public int CurrentTime {
+			get {
+				return Property("CurrentTime").Value<int>();
+			}
+			set {
+				SetProperty("CurrentTime", QVariant.FromValue<int>(value));
+			}
+		}
+		public int direction {
+			get {
+				return Property("direction").Value<int>();
+			}
+			set {
+				SetProperty("direction", QVariant.FromValue<int>(value));
+			}
+		}
+		public int LoopCount {
+			get {
+				return Property("LoopCount").Value<int>();
+			}
+			set {
+				SetProperty("LoopCount", QVariant.FromValue<int>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QTimeLine(int duration, QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -74,30 +114,6 @@ namespace Qyoto {
 		public QTimeLine.State state() {
 			return ProxyQTimeLine().state();
 		}
-		[SmokeMethod("loopCount() const")]
-		public int LoopCount() {
-			return ProxyQTimeLine().LoopCount();
-		}
-		[SmokeMethod("setLoopCount(int)")]
-		public void SetLoopCount(int count) {
-			ProxyQTimeLine().SetLoopCount(count);
-		}
-		[SmokeMethod("direction() const")]
-		public QTimeLine.Direction direction() {
-			return ProxyQTimeLine().direction();
-		}
-		[SmokeMethod("setDirection(QTimeLine::Direction)")]
-		public void SetDirection(QTimeLine.Direction direction) {
-			ProxyQTimeLine().SetDirection(direction);
-		}
-		[SmokeMethod("duration() const")]
-		public int Duration() {
-			return ProxyQTimeLine().Duration();
-		}
-		[SmokeMethod("setDuration(int)")]
-		public void SetDuration(int duration) {
-			ProxyQTimeLine().SetDuration(duration);
-		}
 		[SmokeMethod("startFrame() const")]
 		public int StartFrame() {
 			return ProxyQTimeLine().StartFrame();
@@ -117,26 +133,6 @@ namespace Qyoto {
 		[SmokeMethod("setFrameRange(int, int)")]
 		public void SetFrameRange(int startFrame, int endFrame) {
 			ProxyQTimeLine().SetFrameRange(startFrame,endFrame);
-		}
-		[SmokeMethod("updateInterval() const")]
-		public int UpdateInterval() {
-			return ProxyQTimeLine().UpdateInterval();
-		}
-		[SmokeMethod("setUpdateInterval(int)")]
-		public void SetUpdateInterval(int interval) {
-			ProxyQTimeLine().SetUpdateInterval(interval);
-		}
-		[SmokeMethod("curveShape() const")]
-		public QTimeLine.CurveShape curveShape() {
-			return ProxyQTimeLine().curveShape();
-		}
-		[SmokeMethod("setCurveShape(QTimeLine::CurveShape)")]
-		public void SetCurveShape(QTimeLine.CurveShape shape) {
-			ProxyQTimeLine().SetCurveShape(shape);
-		}
-		[SmokeMethod("currentTime() const")]
-		public int CurrentTime() {
-			return ProxyQTimeLine().CurrentTime();
 		}
 		[SmokeMethod("currentFrame() const")]
 		public int CurrentFrame() {
@@ -165,10 +161,6 @@ namespace Qyoto {
 		[SmokeMethod("setPaused(bool)")]
 		public void SetPaused(bool paused) {
 			ProxyQTimeLine().SetPaused(paused);
-		}
-		[SmokeMethod("setCurrentTime(int)")]
-		public void SetCurrentTime(int msec) {
-			ProxyQTimeLine().SetCurrentTime(msec);
 		}
 		[SmokeMethod("toggleDirection()")]
 		public void ToggleDirection() {

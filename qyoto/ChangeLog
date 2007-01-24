@@ -1,3 +1,10 @@
+2007-24-01  Richard Dale  <rdale@foton.es>
+
+	* Q_PROPERTYs are now mapped onto C# properties, and the correponding set
+	  and get methods removed from the api
+	* QDomNodeList is no longer an ArrayList type
+	* Added QList<QRgb> as a C# List<uint> type
+
 2007-22-01  Arno Rehn  <arno@arnorehn.de>
 
 	* Updated marshallers to work with generic types

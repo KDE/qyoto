@@ -30,6 +30,14 @@ namespace Qyoto {
 			return (IQPluginLoaderProxy) _staticInterceptor;
 		}
 
+		public string FileName {
+			get {
+				return Property("FileName").Value<string>();
+			}
+			set {
+				SetProperty("FileName", QVariant.FromValue<string>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QPluginLoader(QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -78,14 +86,6 @@ namespace Qyoto {
 		[SmokeMethod("isLoaded() const")]
 		public bool IsLoaded() {
 			return ProxyQPluginLoader().IsLoaded();
-		}
-		[SmokeMethod("setFileName(const QString&)")]
-		public void SetFileName(string fileName) {
-			ProxyQPluginLoader().SetFileName(fileName);
-		}
-		[SmokeMethod("fileName() const")]
-		public string FileName() {
-			return ProxyQPluginLoader().FileName();
 		}
 		[SmokeMethod("errorString() const")]
 		public string ErrorString() {

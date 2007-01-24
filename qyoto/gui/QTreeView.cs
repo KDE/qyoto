@@ -30,6 +30,62 @@ namespace Qyoto {
 			return (IQTreeViewProxy) _staticInterceptor;
 		}
 
+		public int Indentation {
+			get {
+				return Property("Indentation").Value<int>();
+			}
+			set {
+				SetProperty("Indentation", QVariant.FromValue<int>(value));
+			}
+		}
+		public bool RootIsDecorated {
+			get {
+				return Property("RootIsDecorated").Value<bool>();
+			}
+			set {
+				SetProperty("RootIsDecorated", QVariant.FromValue<bool>(value));
+			}
+		}
+		public bool UniformRowHeights {
+			get {
+				return Property("UniformRowHeights").Value<bool>();
+			}
+			set {
+				SetProperty("UniformRowHeights", QVariant.FromValue<bool>(value));
+			}
+		}
+		public bool ItemsExpandable {
+			get {
+				return Property("ItemsExpandable").Value<bool>();
+			}
+			set {
+				SetProperty("ItemsExpandable", QVariant.FromValue<bool>(value));
+			}
+		}
+		public bool SortingEnabled {
+			get {
+				return Property("SortingEnabled").Value<bool>();
+			}
+			set {
+				SetProperty("SortingEnabled", QVariant.FromValue<bool>(value));
+			}
+		}
+		public bool Animated {
+			get {
+				return Property("Animated").Value<bool>();
+			}
+			set {
+				SetProperty("Animated", QVariant.FromValue<bool>(value));
+			}
+		}
+		public bool AllColumnsShowFocus {
+			get {
+				return Property("AllColumnsShowFocus").Value<bool>();
+			}
+			set {
+				SetProperty("AllColumnsShowFocus", QVariant.FromValue<bool>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QTreeView(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -66,38 +122,6 @@ namespace Qyoto {
 		[SmokeMethod("setHeader(QHeaderView*)")]
 		public void SetHeader(QHeaderView header) {
 			ProxyQTreeView().SetHeader(header);
-		}
-		[SmokeMethod("indentation() const")]
-		public int Indentation() {
-			return ProxyQTreeView().Indentation();
-		}
-		[SmokeMethod("setIndentation(int)")]
-		public void SetIndentation(int i) {
-			ProxyQTreeView().SetIndentation(i);
-		}
-		[SmokeMethod("rootIsDecorated() const")]
-		public bool RootIsDecorated() {
-			return ProxyQTreeView().RootIsDecorated();
-		}
-		[SmokeMethod("setRootIsDecorated(bool)")]
-		public void SetRootIsDecorated(bool show) {
-			ProxyQTreeView().SetRootIsDecorated(show);
-		}
-		[SmokeMethod("uniformRowHeights() const")]
-		public bool UniformRowHeights() {
-			return ProxyQTreeView().UniformRowHeights();
-		}
-		[SmokeMethod("setUniformRowHeights(bool)")]
-		public void SetUniformRowHeights(bool uniform) {
-			ProxyQTreeView().SetUniformRowHeights(uniform);
-		}
-		[SmokeMethod("itemsExpandable() const")]
-		public bool ItemsExpandable() {
-			return ProxyQTreeView().ItemsExpandable();
-		}
-		[SmokeMethod("setItemsExpandable(bool)")]
-		public void SetItemsExpandable(bool enable) {
-			ProxyQTreeView().SetItemsExpandable(enable);
 		}
 		[SmokeMethod("columnViewportPosition(int) const")]
 		public int ColumnViewportPosition(int column) {
@@ -139,29 +163,13 @@ namespace Qyoto {
 		public void SetExpanded(QModelIndex index, bool expand) {
 			ProxyQTreeView().SetExpanded(index,expand);
 		}
-		[SmokeMethod("setSortingEnabled(bool)")]
-		public void SetSortingEnabled(bool enable) {
-			ProxyQTreeView().SetSortingEnabled(enable);
-		}
 		[SmokeMethod("isSortingEnabled() const")]
 		public bool IsSortingEnabled() {
 			return ProxyQTreeView().IsSortingEnabled();
 		}
-		[SmokeMethod("setAnimated(bool)")]
-		public void SetAnimated(bool enable) {
-			ProxyQTreeView().SetAnimated(enable);
-		}
 		[SmokeMethod("isAnimated() const")]
 		public bool IsAnimated() {
 			return ProxyQTreeView().IsAnimated();
-		}
-		[SmokeMethod("setAllColumnsShowFocus(bool)")]
-		public void SetAllColumnsShowFocus(bool enable) {
-			ProxyQTreeView().SetAllColumnsShowFocus(enable);
-		}
-		[SmokeMethod("allColumnsShowFocus() const")]
-		public bool AllColumnsShowFocus() {
-			return ProxyQTreeView().AllColumnsShowFocus();
 		}
 		[SmokeMethod("keyboardSearch(const QString&)")]
 		public new void KeyboardSearch(string search) {

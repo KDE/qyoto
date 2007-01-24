@@ -45,6 +45,94 @@ namespace Qyoto {
 			SliderStepsChange = 2,
 			SliderValueChange = 3,
 		}
+		public int Minimum {
+			get {
+				return Property("Minimum").Value<int>();
+			}
+			set {
+				SetProperty("Minimum", QVariant.FromValue<int>(value));
+			}
+		}
+		public int Maximum {
+			get {
+				return Property("Maximum").Value<int>();
+			}
+			set {
+				SetProperty("Maximum", QVariant.FromValue<int>(value));
+			}
+		}
+		public int SingleStep {
+			get {
+				return Property("SingleStep").Value<int>();
+			}
+			set {
+				SetProperty("SingleStep", QVariant.FromValue<int>(value));
+			}
+		}
+		public int PageStep {
+			get {
+				return Property("PageStep").Value<int>();
+			}
+			set {
+				SetProperty("PageStep", QVariant.FromValue<int>(value));
+			}
+		}
+		public int Value {
+			get {
+				return Property("Value").Value<int>();
+			}
+			set {
+				SetProperty("Value", QVariant.FromValue<int>(value));
+			}
+		}
+		public int SliderPosition {
+			get {
+				return Property("SliderPosition").Value<int>();
+			}
+			set {
+				SetProperty("SliderPosition", QVariant.FromValue<int>(value));
+			}
+		}
+		public bool Tracking {
+			get {
+				return Property("Tracking").Value<bool>();
+			}
+			set {
+				SetProperty("Tracking", QVariant.FromValue<bool>(value));
+			}
+		}
+		public Qt.Orientation Orientation {
+			get {
+				return Property("Orientation").Value<Qt.Orientation>();
+			}
+			set {
+				SetProperty("Orientation", QVariant.FromValue<Qt.Orientation>(value));
+			}
+		}
+		public bool InvertedAppearance {
+			get {
+				return Property("InvertedAppearance").Value<bool>();
+			}
+			set {
+				SetProperty("InvertedAppearance", QVariant.FromValue<bool>(value));
+			}
+		}
+		public bool InvertedControls {
+			get {
+				return Property("InvertedControls").Value<bool>();
+			}
+			set {
+				SetProperty("InvertedControls", QVariant.FromValue<bool>(value));
+			}
+		}
+		public bool SliderDown {
+			get {
+				return Property("SliderDown").Value<bool>();
+			}
+			set {
+				SetProperty("SliderDown", QVariant.FromValue<bool>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QAbstractSlider(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -62,101 +150,21 @@ namespace Qyoto {
 		private void NewQAbstractSlider() {
 			ProxyQAbstractSlider().NewQAbstractSlider();
 		}
-		[SmokeMethod("orientation() const")]
-		public Qt.Orientation Orientation() {
-			return ProxyQAbstractSlider().Orientation();
-		}
-		[SmokeMethod("setMinimum(int)")]
-		public void SetMinimum(int arg1) {
-			ProxyQAbstractSlider().SetMinimum(arg1);
-		}
-		[SmokeMethod("minimum() const")]
-		public int Minimum() {
-			return ProxyQAbstractSlider().Minimum();
-		}
-		[SmokeMethod("setMaximum(int)")]
-		public void SetMaximum(int arg1) {
-			ProxyQAbstractSlider().SetMaximum(arg1);
-		}
-		[SmokeMethod("maximum() const")]
-		public int Maximum() {
-			return ProxyQAbstractSlider().Maximum();
-		}
 		[SmokeMethod("setRange(int, int)")]
 		public void SetRange(int min, int max) {
 			ProxyQAbstractSlider().SetRange(min,max);
-		}
-		[SmokeMethod("setSingleStep(int)")]
-		public void SetSingleStep(int arg1) {
-			ProxyQAbstractSlider().SetSingleStep(arg1);
-		}
-		[SmokeMethod("singleStep() const")]
-		public int SingleStep() {
-			return ProxyQAbstractSlider().SingleStep();
-		}
-		[SmokeMethod("setPageStep(int)")]
-		public void SetPageStep(int arg1) {
-			ProxyQAbstractSlider().SetPageStep(arg1);
-		}
-		[SmokeMethod("pageStep() const")]
-		public int PageStep() {
-			return ProxyQAbstractSlider().PageStep();
-		}
-		[SmokeMethod("setTracking(bool)")]
-		public void SetTracking(bool enable) {
-			ProxyQAbstractSlider().SetTracking(enable);
 		}
 		[SmokeMethod("hasTracking() const")]
 		public bool HasTracking() {
 			return ProxyQAbstractSlider().HasTracking();
 		}
-		[SmokeMethod("setSliderDown(bool)")]
-		public void SetSliderDown(bool arg1) {
-			ProxyQAbstractSlider().SetSliderDown(arg1);
-		}
 		[SmokeMethod("isSliderDown() const")]
 		public bool IsSliderDown() {
 			return ProxyQAbstractSlider().IsSliderDown();
 		}
-		[SmokeMethod("setSliderPosition(int)")]
-		public void SetSliderPosition(int arg1) {
-			ProxyQAbstractSlider().SetSliderPosition(arg1);
-		}
-		[SmokeMethod("sliderPosition() const")]
-		public int SliderPosition() {
-			return ProxyQAbstractSlider().SliderPosition();
-		}
-		[SmokeMethod("setInvertedAppearance(bool)")]
-		public void SetInvertedAppearance(bool arg1) {
-			ProxyQAbstractSlider().SetInvertedAppearance(arg1);
-		}
-		[SmokeMethod("invertedAppearance() const")]
-		public bool InvertedAppearance() {
-			return ProxyQAbstractSlider().InvertedAppearance();
-		}
-		[SmokeMethod("setInvertedControls(bool)")]
-		public void SetInvertedControls(bool arg1) {
-			ProxyQAbstractSlider().SetInvertedControls(arg1);
-		}
-		[SmokeMethod("invertedControls() const")]
-		public bool InvertedControls() {
-			return ProxyQAbstractSlider().InvertedControls();
-		}
-		[SmokeMethod("value() const")]
-		public int Value() {
-			return ProxyQAbstractSlider().Value();
-		}
 		[SmokeMethod("triggerAction(QAbstractSlider::SliderAction)")]
 		public void TriggerAction(QAbstractSlider.SliderAction action) {
 			ProxyQAbstractSlider().TriggerAction(action);
-		}
-		[SmokeMethod("setValue(int)")]
-		public void SetValue(int arg1) {
-			ProxyQAbstractSlider().SetValue(arg1);
-		}
-		[SmokeMethod("setOrientation(Qt::Orientation)")]
-		public void SetOrientation(Qt.Orientation arg1) {
-			ProxyQAbstractSlider().SetOrientation(arg1);
 		}
 		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {

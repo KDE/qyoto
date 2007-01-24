@@ -42,6 +42,86 @@ namespace Qyoto {
 			TimeSections_Mask = AmPmSection|MSecSection|SecondSection|MinuteSection|HourSection,
 			DateSections_Mask = DaySection|MonthSection|YearSection,
 		}
+		public QDateTime DateTime {
+			get {
+				return Property("DateTime").Value<QDateTime>();
+			}
+			set {
+				SetProperty("DateTime", QVariant.FromValue<QDateTime>(value));
+			}
+		}
+		public QDate Date {
+			get {
+				return Property("Date").Value<QDate>();
+			}
+			set {
+				SetProperty("Date", QVariant.FromValue<QDate>(value));
+			}
+		}
+		public QTime Time {
+			get {
+				return Property("Time").Value<QTime>();
+			}
+			set {
+				SetProperty("Time", QVariant.FromValue<QTime>(value));
+			}
+		}
+		public QDate MaximumDate {
+			get {
+				return Property("MaximumDate").Value<QDate>();
+			}
+			set {
+				SetProperty("MaximumDate", QVariant.FromValue<QDate>(value));
+			}
+		}
+		public QDate MinimumDate {
+			get {
+				return Property("MinimumDate").Value<QDate>();
+			}
+			set {
+				SetProperty("MinimumDate", QVariant.FromValue<QDate>(value));
+			}
+		}
+		public QTime MaximumTime {
+			get {
+				return Property("MaximumTime").Value<QTime>();
+			}
+			set {
+				SetProperty("MaximumTime", QVariant.FromValue<QTime>(value));
+			}
+		}
+		public QTime MinimumTime {
+			get {
+				return Property("MinimumTime").Value<QTime>();
+			}
+			set {
+				SetProperty("MinimumTime", QVariant.FromValue<QTime>(value));
+			}
+		}
+		public int DisplayedSections {
+			get {
+				return Property("DisplayedSections").Value<int>();
+			}
+			set {
+				SetProperty("DisplayedSections", QVariant.FromValue<int>(value));
+			}
+		}
+		public string DisplayFormat {
+			get {
+				return Property("DisplayFormat").Value<string>();
+			}
+			set {
+				SetProperty("DisplayFormat", QVariant.FromValue<string>(value));
+			}
+		}
+		public bool CalendarPopup {
+			get {
+				return Property("CalendarPopup").Value<bool>();
+			}
+			set {
+				SetProperty("CalendarPopup", QVariant.FromValue<bool>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QDateTimeEdit(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -107,37 +187,9 @@ namespace Qyoto {
 		private void NewQDateTimeEdit(QTime t) {
 			ProxyQDateTimeEdit().NewQDateTimeEdit(t);
 		}
-		[SmokeMethod("dateTime() const")]
-		public QDateTime DateTime() {
-			return ProxyQDateTimeEdit().DateTime();
-		}
-		[SmokeMethod("date() const")]
-		public QDate Date() {
-			return ProxyQDateTimeEdit().Date();
-		}
-		[SmokeMethod("time() const")]
-		public QTime Time() {
-			return ProxyQDateTimeEdit().Time();
-		}
-		[SmokeMethod("minimumDate() const")]
-		public QDate MinimumDate() {
-			return ProxyQDateTimeEdit().MinimumDate();
-		}
-		[SmokeMethod("setMinimumDate(const QDate&)")]
-		public void SetMinimumDate(QDate min) {
-			ProxyQDateTimeEdit().SetMinimumDate(min);
-		}
 		[SmokeMethod("clearMinimumDate()")]
 		public void ClearMinimumDate() {
 			ProxyQDateTimeEdit().ClearMinimumDate();
-		}
-		[SmokeMethod("maximumDate() const")]
-		public QDate MaximumDate() {
-			return ProxyQDateTimeEdit().MaximumDate();
-		}
-		[SmokeMethod("setMaximumDate(const QDate&)")]
-		public void SetMaximumDate(QDate max) {
-			ProxyQDateTimeEdit().SetMaximumDate(max);
 		}
 		[SmokeMethod("clearMaximumDate()")]
 		public void ClearMaximumDate() {
@@ -147,25 +199,9 @@ namespace Qyoto {
 		public void SetDateRange(QDate min, QDate max) {
 			ProxyQDateTimeEdit().SetDateRange(min,max);
 		}
-		[SmokeMethod("minimumTime() const")]
-		public QTime MinimumTime() {
-			return ProxyQDateTimeEdit().MinimumTime();
-		}
-		[SmokeMethod("setMinimumTime(const QTime&)")]
-		public void SetMinimumTime(QTime min) {
-			ProxyQDateTimeEdit().SetMinimumTime(min);
-		}
 		[SmokeMethod("clearMinimumTime()")]
 		public void ClearMinimumTime() {
 			ProxyQDateTimeEdit().ClearMinimumTime();
-		}
-		[SmokeMethod("maximumTime() const")]
-		public QTime MaximumTime() {
-			return ProxyQDateTimeEdit().MaximumTime();
-		}
-		[SmokeMethod("setMaximumTime(const QTime&)")]
-		public void SetMaximumTime(QTime max) {
-			ProxyQDateTimeEdit().SetMaximumTime(max);
 		}
 		[SmokeMethod("clearMaximumTime()")]
 		public void ClearMaximumTime() {
@@ -175,18 +211,6 @@ namespace Qyoto {
 		public void SetTimeRange(QTime min, QTime max) {
 			ProxyQDateTimeEdit().SetTimeRange(min,max);
 		}
-		[SmokeMethod("displayedSections() const")]
-		public int DisplayedSections() {
-			return ProxyQDateTimeEdit().DisplayedSections();
-		}
-		[SmokeMethod("currentSection() const")]
-		public QDateTimeEdit.Section CurrentSection() {
-			return ProxyQDateTimeEdit().CurrentSection();
-		}
-		[SmokeMethod("setCurrentSection(QDateTimeEdit::Section)")]
-		public void SetCurrentSection(QDateTimeEdit.Section section) {
-			ProxyQDateTimeEdit().SetCurrentSection(section);
-		}
 		[SmokeMethod("setSelectedSection(QDateTimeEdit::Section)")]
 		public void SetSelectedSection(QDateTimeEdit.Section section) {
 			ProxyQDateTimeEdit().SetSelectedSection(section);
@@ -194,22 +218,6 @@ namespace Qyoto {
 		[SmokeMethod("sectionText(QDateTimeEdit::Section) const")]
 		public string SectionText(QDateTimeEdit.Section section) {
 			return ProxyQDateTimeEdit().SectionText(section);
-		}
-		[SmokeMethod("displayFormat() const")]
-		public string DisplayFormat() {
-			return ProxyQDateTimeEdit().DisplayFormat();
-		}
-		[SmokeMethod("setDisplayFormat(const QString&)")]
-		public void SetDisplayFormat(string format) {
-			ProxyQDateTimeEdit().SetDisplayFormat(format);
-		}
-		[SmokeMethod("calendarPopup() const")]
-		public bool CalendarPopup() {
-			return ProxyQDateTimeEdit().CalendarPopup();
-		}
-		[SmokeMethod("setCalendarPopup(bool)")]
-		public void SetCalendarPopup(bool enable) {
-			ProxyQDateTimeEdit().SetCalendarPopup(enable);
 		}
 		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {
@@ -226,18 +234,6 @@ namespace Qyoto {
 		[SmokeMethod("event(QEvent*)")]
 		public new bool Event(QEvent arg1) {
 			return ProxyQDateTimeEdit().Event(arg1);
-		}
-		[SmokeMethod("setDateTime(const QDateTime&)")]
-		public void SetDateTime(QDateTime dateTime) {
-			ProxyQDateTimeEdit().SetDateTime(dateTime);
-		}
-		[SmokeMethod("setDate(const QDate&)")]
-		public void SetDate(QDate date) {
-			ProxyQDateTimeEdit().SetDate(date);
-		}
-		[SmokeMethod("setTime(const QTime&)")]
-		public void SetTime(QTime time) {
-			ProxyQDateTimeEdit().SetTime(time);
 		}
 		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {

@@ -30,6 +30,22 @@ namespace Qyoto {
 			return (IQTableWidgetProxy) _staticInterceptor;
 		}
 
+		public int RowCount {
+			get {
+				return Property("RowCount").Value<int>();
+			}
+			set {
+				SetProperty("RowCount", QVariant.FromValue<int>(value));
+			}
+		}
+		public int ColumnCount {
+			get {
+				return Property("ColumnCount").Value<int>();
+			}
+			set {
+				SetProperty("ColumnCount", QVariant.FromValue<int>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QTableWidget(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -62,22 +78,6 @@ namespace Qyoto {
 		[SmokeMethod("QTableWidget(int, int)")]
 		private void NewQTableWidget(int rows, int columns) {
 			ProxyQTableWidget().NewQTableWidget(rows,columns);
-		}
-		[SmokeMethod("setRowCount(int)")]
-		public void SetRowCount(int rows) {
-			ProxyQTableWidget().SetRowCount(rows);
-		}
-		[SmokeMethod("rowCount() const")]
-		public int RowCount() {
-			return ProxyQTableWidget().RowCount();
-		}
-		[SmokeMethod("setColumnCount(int)")]
-		public void SetColumnCount(int columns) {
-			ProxyQTableWidget().SetColumnCount(columns);
-		}
-		[SmokeMethod("columnCount() const")]
-		public int ColumnCount() {
-			return ProxyQTableWidget().ColumnCount();
 		}
 		[SmokeMethod("row(const QTableWidgetItem*) const")]
 		public int Row(QTableWidgetItem item) {

@@ -34,7 +34,6 @@ namespace Qyoto {
 		interface IQTimerProxy {
 			string Tr(string s, string c);
 			string Tr(string s);
-			void SingleShot(int msec, QObject receiver, string member);
 		}
 
 		protected new void CreateProxy() {
@@ -53,6 +52,22 @@ namespace Qyoto {
 			return (IQTimerProxy) _staticInterceptor;
 		}
 
+		public bool SingleShot {
+			get {
+				return Property("SingleShot").Value<bool>();
+			}
+			set {
+				SetProperty("SingleShot", QVariant.FromValue<bool>(value));
+			}
+		}
+		public int Interval {
+			get {
+				return Property("Interval").Value<int>();
+			}
+			set {
+				SetProperty("Interval", QVariant.FromValue<int>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QTimer(QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -78,18 +93,6 @@ namespace Qyoto {
 		public int TimerId() {
 			return ProxyQTimer().TimerId();
 		}
-		[SmokeMethod("setInterval(int)")]
-		public void SetInterval(int msec) {
-			ProxyQTimer().SetInterval(msec);
-		}
-		[SmokeMethod("interval() const")]
-		public int Interval() {
-			return ProxyQTimer().Interval();
-		}
-		[SmokeMethod("setSingleShot(bool)")]
-		public void SetSingleShot(bool singleShot) {
-			ProxyQTimer().SetSingleShot(singleShot);
-		}
 		[SmokeMethod("isSingleShot() const")]
 		public bool IsSingleShot() {
 			return ProxyQTimer().IsSingleShot();
@@ -113,10 +116,6 @@ namespace Qyoto {
 		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQTimer().Tr(s);
-		}
-		[SmokeMethod("singleShot(int, QObject*, const char*)")]
-		public static void SingleShot(int msec, QObject receiver, string member) {
-			StaticQTimer().SingleShot(msec,receiver,member);
 		}
 		[SmokeMethod("timerEvent(QTimerEvent*)")]
 		protected new void TimerEvent(QTimerEvent arg1) {

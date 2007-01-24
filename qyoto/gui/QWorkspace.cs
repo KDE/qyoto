@@ -34,6 +34,22 @@ namespace Qyoto {
 			CreationOrder = 0,
 			StackingOrder = 1,
 		}
+		public bool ScrollBarsEnabled {
+			get {
+				return Property("ScrollBarsEnabled").Value<bool>();
+			}
+			set {
+				SetProperty("ScrollBarsEnabled", QVariant.FromValue<bool>(value));
+			}
+		}
+		public QBrush Background {
+			get {
+				return Property("Background").Value<QBrush>();
+			}
+			set {
+				SetProperty("Background", QVariant.FromValue<QBrush>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QWorkspace(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -74,22 +90,6 @@ namespace Qyoto {
 		[SmokeMethod("sizeHint() const")]
 		public new QSize SizeHint() {
 			return ProxyQWorkspace().SizeHint();
-		}
-		[SmokeMethod("scrollBarsEnabled() const")]
-		public bool ScrollBarsEnabled() {
-			return ProxyQWorkspace().ScrollBarsEnabled();
-		}
-		[SmokeMethod("setScrollBarsEnabled(bool)")]
-		public void SetScrollBarsEnabled(bool enable) {
-			ProxyQWorkspace().SetScrollBarsEnabled(enable);
-		}
-		[SmokeMethod("setBackground(const QBrush&)")]
-		public void SetBackground(QBrush background) {
-			ProxyQWorkspace().SetBackground(background);
-		}
-		[SmokeMethod("background() const")]
-		public QBrush Background() {
-			return ProxyQWorkspace().Background();
 		}
 		[SmokeMethod("setActiveWindow(QWidget*)")]
 		public void SetActiveWindow(QWidget w) {

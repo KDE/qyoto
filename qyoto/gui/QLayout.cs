@@ -37,6 +37,22 @@ namespace Qyoto {
 			SetMaximumSize = 4,
 			SetMinAndMaxSize = 5,
 		}
+		public int Margin {
+			get {
+				return Property("Margin").Value<int>();
+			}
+			set {
+				SetProperty("Margin", QVariant.FromValue<int>(value));
+			}
+		}
+		public int Spacing {
+			get {
+				return Property("Spacing").Value<int>();
+			}
+			set {
+				SetProperty("Spacing", QVariant.FromValue<int>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QLayout(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -54,22 +70,6 @@ namespace Qyoto {
 		private void NewQLayout() {
 			ProxyQLayout().NewQLayout();
 		}
-		[SmokeMethod("margin() const")]
-		public int Margin() {
-			return ProxyQLayout().Margin();
-		}
-		[SmokeMethod("spacing() const")]
-		public int Spacing() {
-			return ProxyQLayout().Spacing();
-		}
-		[SmokeMethod("setMargin(int)")]
-		public void SetMargin(int arg1) {
-			ProxyQLayout().SetMargin(arg1);
-		}
-		[SmokeMethod("setSpacing(int)")]
-		public void SetSpacing(int arg1) {
-			ProxyQLayout().SetSpacing(arg1);
-		}
 		[SmokeMethod("setAlignment(QWidget*, Qt::Alignment)")]
 		public bool SetAlignment(QWidget w, int alignment) {
 			return ProxyQLayout().SetAlignment(w,alignment);
@@ -81,14 +81,6 @@ namespace Qyoto {
 		[SmokeMethod("setAlignment(Qt::Alignment)")]
 		public void SetAlignment(int alignment) {
 			ProxyQLayout().SetAlignment(alignment);
-		}
-		[SmokeMethod("setSizeConstraint(QLayout::SizeConstraint)")]
-		public void SetSizeConstraint(QLayout.SizeConstraint arg1) {
-			ProxyQLayout().SetSizeConstraint(arg1);
-		}
-		[SmokeMethod("sizeConstraint() const")]
-		public QLayout.SizeConstraint sizeConstraint() {
-			return ProxyQLayout().sizeConstraint();
 		}
 		[SmokeMethod("setMenuBar(QWidget*)")]
 		public void SetMenuBar(QWidget w) {

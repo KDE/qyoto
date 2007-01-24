@@ -29,6 +29,62 @@ namespace Qyoto {
 			return (IQSpinBoxProxy) _staticInterceptor;
 		}
 
+		public string Suffix {
+			get {
+				return Property("Suffix").Value<string>();
+			}
+			set {
+				SetProperty("Suffix", QVariant.FromValue<string>(value));
+			}
+		}
+		public string Prefix {
+			get {
+				return Property("Prefix").Value<string>();
+			}
+			set {
+				SetProperty("Prefix", QVariant.FromValue<string>(value));
+			}
+		}
+		public string CleanText {
+			get {
+				return Property("CleanText").Value<string>();
+			}
+			set {
+				SetProperty("CleanText", QVariant.FromValue<string>(value));
+			}
+		}
+		public int Maximum {
+			get {
+				return Property("Maximum").Value<int>();
+			}
+			set {
+				SetProperty("Maximum", QVariant.FromValue<int>(value));
+			}
+		}
+		public int Minimum {
+			get {
+				return Property("Minimum").Value<int>();
+			}
+			set {
+				SetProperty("Minimum", QVariant.FromValue<int>(value));
+			}
+		}
+		public int SingleStep {
+			get {
+				return Property("SingleStep").Value<int>();
+			}
+			set {
+				SetProperty("SingleStep", QVariant.FromValue<int>(value));
+			}
+		}
+		public int Value {
+			get {
+				return Property("Value").Value<int>();
+			}
+			set {
+				SetProperty("Value", QVariant.FromValue<int>(value));
+			}
+		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QSpinBox(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -46,61 +102,9 @@ namespace Qyoto {
 		private void NewQSpinBox() {
 			ProxyQSpinBox().NewQSpinBox();
 		}
-		[SmokeMethod("value() const")]
-		public int Value() {
-			return ProxyQSpinBox().Value();
-		}
-		[SmokeMethod("prefix() const")]
-		public string Prefix() {
-			return ProxyQSpinBox().Prefix();
-		}
-		[SmokeMethod("setPrefix(const QString&)")]
-		public void SetPrefix(string prefix) {
-			ProxyQSpinBox().SetPrefix(prefix);
-		}
-		[SmokeMethod("suffix() const")]
-		public string Suffix() {
-			return ProxyQSpinBox().Suffix();
-		}
-		[SmokeMethod("setSuffix(const QString&)")]
-		public void SetSuffix(string suffix) {
-			ProxyQSpinBox().SetSuffix(suffix);
-		}
-		[SmokeMethod("cleanText() const")]
-		public string CleanText() {
-			return ProxyQSpinBox().CleanText();
-		}
-		[SmokeMethod("singleStep() const")]
-		public int SingleStep() {
-			return ProxyQSpinBox().SingleStep();
-		}
-		[SmokeMethod("setSingleStep(int)")]
-		public void SetSingleStep(int val) {
-			ProxyQSpinBox().SetSingleStep(val);
-		}
-		[SmokeMethod("minimum() const")]
-		public int Minimum() {
-			return ProxyQSpinBox().Minimum();
-		}
-		[SmokeMethod("setMinimum(int)")]
-		public void SetMinimum(int min) {
-			ProxyQSpinBox().SetMinimum(min);
-		}
-		[SmokeMethod("maximum() const")]
-		public int Maximum() {
-			return ProxyQSpinBox().Maximum();
-		}
-		[SmokeMethod("setMaximum(int)")]
-		public void SetMaximum(int max) {
-			ProxyQSpinBox().SetMaximum(max);
-		}
 		[SmokeMethod("setRange(int, int)")]
 		public void SetRange(int min, int max) {
 			ProxyQSpinBox().SetRange(min,max);
-		}
-		[SmokeMethod("setValue(int)")]
-		public void SetValue(int val) {
-			ProxyQSpinBox().SetValue(val);
 		}
 		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
