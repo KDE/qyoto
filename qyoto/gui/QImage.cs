@@ -160,8 +160,14 @@ namespace Qyoto {
 		public QImage ConvertToFormat(QImage.Format f) {
 			return ProxyQImage().ConvertToFormat(f);
 		}
-		// QImage convertToFormat(QImage::Format arg1,const QVector<QRgb>& arg2,Qt::ImageConversionFlags arg3); >>>> NOT CONVERTED
-		// QImage convertToFormat(QImage::Format arg1,const QVector<QRgb>& arg2); >>>> NOT CONVERTED
+		[SmokeMethod("convertToFormat(QImage::Format, const QVector<QRgb>&, Qt::ImageConversionFlags) const")]
+		public QImage ConvertToFormat(QImage.Format f, List<uint> colorTable, int flags) {
+			return ProxyQImage().ConvertToFormat(f,colorTable,flags);
+		}
+		[SmokeMethod("convertToFormat(QImage::Format, const QVector<QRgb>&) const")]
+		public QImage ConvertToFormat(QImage.Format f, List<uint> colorTable) {
+			return ProxyQImage().ConvertToFormat(f,colorTable);
+		}
 		[SmokeMethod("width() const")]
 		public new int Width() {
 			return ProxyQImage().Width();
@@ -254,8 +260,14 @@ namespace Qyoto {
 		public void SetPixel(QPoint pt, uint index_or_rgb) {
 			ProxyQImage().SetPixel(pt,index_or_rgb);
 		}
-		// QVector<QRgb> colorTable(); >>>> NOT CONVERTED
-		// void setColorTable(const QVector<QRgb> arg1); >>>> NOT CONVERTED
+		[SmokeMethod("colorTable() const")]
+		public List<uint> ColorTable() {
+			return ProxyQImage().ColorTable();
+		}
+		[SmokeMethod("setColorTable(const QVector<QRgb>)")]
+		public void SetColorTable(List<uint> colors) {
+			ProxyQImage().SetColorTable(colors);
+		}
 		[SmokeMethod("fill(uint)")]
 		public void Fill(uint pixel) {
 			ProxyQImage().Fill(pixel);
