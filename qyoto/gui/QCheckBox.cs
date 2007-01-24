@@ -31,10 +31,10 @@ namespace Qyoto {
 
 		public bool Tristate {
 			get {
-				return Property("Tristate").Value<bool>();
+				return Property("tristate").Value<bool>();
 			}
 			set {
-				SetProperty("Tristate", QVariant.FromValue<bool>(value));
+				SetProperty("tristate", QVariant.FromValue<bool>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

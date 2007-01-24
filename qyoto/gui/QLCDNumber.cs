@@ -42,18 +42,18 @@ namespace Qyoto {
 		}
 		public bool SmallDecimalPoint {
 			get {
-				return Property("SmallDecimalPoint").Value<bool>();
+				return Property("smallDecimalPoint").Value<bool>();
 			}
 			set {
-				SetProperty("SmallDecimalPoint", QVariant.FromValue<bool>(value));
+				SetProperty("smallDecimalPoint", QVariant.FromValue<bool>(value));
 			}
 		}
 		public int NumDigits {
 			get {
-				return Property("NumDigits").Value<int>();
+				return Property("numDigits").Value<int>();
 			}
 			set {
-				SetProperty("NumDigits", QVariant.FromValue<int>(value));
+				SetProperty("numDigits", QVariant.FromValue<int>(value));
 			}
 		}
 		public int mode {
@@ -74,18 +74,18 @@ namespace Qyoto {
 		}
 		public double Value {
 			get {
-				return Property("Value").Value<double>();
+				return Property("value").Value<double>();
 			}
 			set {
-				SetProperty("Value", QVariant.FromValue<double>(value));
+				SetProperty("value", QVariant.FromValue<double>(value));
 			}
 		}
 		public int IntValue {
 			get {
-				return Property("IntValue").Value<int>();
+				return Property("intValue").Value<int>();
 			}
 			set {
-				SetProperty("IntValue", QVariant.FromValue<int>(value));
+				SetProperty("intValue", QVariant.FromValue<int>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

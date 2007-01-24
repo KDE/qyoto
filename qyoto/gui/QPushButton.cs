@@ -30,26 +30,26 @@ namespace Qyoto {
 
 		public bool AutoDefault {
 			get {
-				return Property("AutoDefault").Value<bool>();
+				return Property("autoDefault").Value<bool>();
 			}
 			set {
-				SetProperty("AutoDefault", QVariant.FromValue<bool>(value));
+				SetProperty("autoDefault", QVariant.FromValue<bool>(value));
 			}
 		}
 		public bool Default {
 			get {
-				return Property("Default").Value<bool>();
+				return Property("default").Value<bool>();
 			}
 			set {
-				SetProperty("Default", QVariant.FromValue<bool>(value));
+				SetProperty("default", QVariant.FromValue<bool>(value));
 			}
 		}
 		public bool Flat {
 			get {
-				return Property("Flat").Value<bool>();
+				return Property("flat").Value<bool>();
 			}
 			set {
-				SetProperty("Flat", QVariant.FromValue<bool>(value));
+				SetProperty("flat", QVariant.FromValue<bool>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

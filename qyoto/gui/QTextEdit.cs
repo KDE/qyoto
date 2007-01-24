@@ -42,98 +42,98 @@ namespace Qyoto {
 		}
 		public int AutoFormatting {
 			get {
-				return Property("AutoFormatting").Value<int>();
+				return Property("autoFormatting").Value<int>();
 			}
 			set {
-				SetProperty("AutoFormatting", QVariant.FromValue<int>(value));
+				SetProperty("autoFormatting", QVariant.FromValue<int>(value));
 			}
 		}
 		public bool TabChangesFocus {
 			get {
-				return Property("TabChangesFocus").Value<bool>();
+				return Property("tabChangesFocus").Value<bool>();
 			}
 			set {
-				SetProperty("TabChangesFocus", QVariant.FromValue<bool>(value));
+				SetProperty("tabChangesFocus", QVariant.FromValue<bool>(value));
 			}
 		}
 		public string DocumentTitle {
 			get {
-				return Property("DocumentTitle").Value<string>();
+				return Property("documentTitle").Value<string>();
 			}
 			set {
-				SetProperty("DocumentTitle", QVariant.FromValue<string>(value));
+				SetProperty("documentTitle", QVariant.FromValue<string>(value));
 			}
 		}
 		public bool UndoRedoEnabled {
 			get {
-				return Property("UndoRedoEnabled").Value<bool>();
+				return Property("undoRedoEnabled").Value<bool>();
 			}
 			set {
-				SetProperty("UndoRedoEnabled", QVariant.FromValue<bool>(value));
+				SetProperty("undoRedoEnabled", QVariant.FromValue<bool>(value));
 			}
 		}
 		public int LineWrapColumnOrWidth {
 			get {
-				return Property("LineWrapColumnOrWidth").Value<int>();
+				return Property("lineWrapColumnOrWidth").Value<int>();
 			}
 			set {
-				SetProperty("LineWrapColumnOrWidth", QVariant.FromValue<int>(value));
+				SetProperty("lineWrapColumnOrWidth", QVariant.FromValue<int>(value));
 			}
 		}
 		public bool ReadOnly {
 			get {
-				return Property("ReadOnly").Value<bool>();
+				return Property("readOnly").Value<bool>();
 			}
 			set {
-				SetProperty("ReadOnly", QVariant.FromValue<bool>(value));
+				SetProperty("readOnly", QVariant.FromValue<bool>(value));
 			}
 		}
 		public string Html {
 			get {
-				return Property("Html").Value<string>();
+				return Property("html").Value<string>();
 			}
 			set {
-				SetProperty("Html", QVariant.FromValue<string>(value));
+				SetProperty("html", QVariant.FromValue<string>(value));
 			}
 		}
 		public bool OverwriteMode {
 			get {
-				return Property("OverwriteMode").Value<bool>();
+				return Property("overwriteMode").Value<bool>();
 			}
 			set {
-				SetProperty("OverwriteMode", QVariant.FromValue<bool>(value));
+				SetProperty("overwriteMode", QVariant.FromValue<bool>(value));
 			}
 		}
 		public int TabStopWidth {
 			get {
-				return Property("TabStopWidth").Value<int>();
+				return Property("tabStopWidth").Value<int>();
 			}
 			set {
-				SetProperty("TabStopWidth", QVariant.FromValue<int>(value));
+				SetProperty("tabStopWidth", QVariant.FromValue<int>(value));
 			}
 		}
 		public bool AcceptRichText {
 			get {
-				return Property("AcceptRichText").Value<bool>();
+				return Property("acceptRichText").Value<bool>();
 			}
 			set {
-				SetProperty("AcceptRichText", QVariant.FromValue<bool>(value));
+				SetProperty("acceptRichText", QVariant.FromValue<bool>(value));
 			}
 		}
 		public int CursorWidth {
 			get {
-				return Property("CursorWidth").Value<int>();
+				return Property("cursorWidth").Value<int>();
 			}
 			set {
-				SetProperty("CursorWidth", QVariant.FromValue<int>(value));
+				SetProperty("cursorWidth", QVariant.FromValue<int>(value));
 			}
 		}
 		public int TextInteractionFlags {
 			get {
-				return Property("TextInteractionFlags").Value<int>();
+				return Property("textInteractionFlags").Value<int>();
 			}
 			set {
-				SetProperty("TextInteractionFlags", QVariant.FromValue<int>(value));
+				SetProperty("textInteractionFlags", QVariant.FromValue<int>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

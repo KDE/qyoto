@@ -31,42 +31,42 @@ namespace Qyoto {
 
 		public bool Movable {
 			get {
-				return Property("Movable").Value<bool>();
+				return Property("movable").Value<bool>();
 			}
 			set {
-				SetProperty("Movable", QVariant.FromValue<bool>(value));
+				SetProperty("movable", QVariant.FromValue<bool>(value));
 			}
 		}
 		public int AllowedAreas {
 			get {
-				return Property("AllowedAreas").Value<int>();
+				return Property("allowedAreas").Value<int>();
 			}
 			set {
-				SetProperty("AllowedAreas", QVariant.FromValue<int>(value));
+				SetProperty("allowedAreas", QVariant.FromValue<int>(value));
 			}
 		}
 		public Qt.Orientation Orientation {
 			get {
-				return Property("Orientation").Value<Qt.Orientation>();
+				return Property("orientation").Value<Qt.Orientation>();
 			}
 			set {
-				SetProperty("Orientation", QVariant.FromValue<Qt.Orientation>(value));
+				SetProperty("orientation", QVariant.FromValue<Qt.Orientation>(value));
 			}
 		}
 		public QSize IconSize {
 			get {
-				return Property("IconSize").Value<QSize>();
+				return Property("iconSize").Value<QSize>();
 			}
 			set {
-				SetProperty("IconSize", QVariant.FromValue<QSize>(value));
+				SetProperty("iconSize", QVariant.FromValue<QSize>(value));
 			}
 		}
 		public Qt.ToolButtonStyle ToolButtonStyle {
 			get {
-				return Property("ToolButtonStyle").Value<Qt.ToolButtonStyle>();
+				return Property("toolButtonStyle").Value<Qt.ToolButtonStyle>();
 			}
 			set {
-				SetProperty("ToolButtonStyle", QVariant.FromValue<Qt.ToolButtonStyle>(value));
+				SetProperty("toolButtonStyle", QVariant.FromValue<Qt.ToolButtonStyle>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

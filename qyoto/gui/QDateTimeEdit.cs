@@ -44,82 +44,82 @@ namespace Qyoto {
 		}
 		public QDateTime DateTime {
 			get {
-				return Property("DateTime").Value<QDateTime>();
+				return Property("dateTime").Value<QDateTime>();
 			}
 			set {
-				SetProperty("DateTime", QVariant.FromValue<QDateTime>(value));
+				SetProperty("dateTime", QVariant.FromValue<QDateTime>(value));
 			}
 		}
 		public QDate Date {
 			get {
-				return Property("Date").Value<QDate>();
+				return Property("date").Value<QDate>();
 			}
 			set {
-				SetProperty("Date", QVariant.FromValue<QDate>(value));
+				SetProperty("date", QVariant.FromValue<QDate>(value));
 			}
 		}
 		public QTime Time {
 			get {
-				return Property("Time").Value<QTime>();
+				return Property("time").Value<QTime>();
 			}
 			set {
-				SetProperty("Time", QVariant.FromValue<QTime>(value));
+				SetProperty("time", QVariant.FromValue<QTime>(value));
 			}
 		}
 		public QDate MaximumDate {
 			get {
-				return Property("MaximumDate").Value<QDate>();
+				return Property("maximumDate").Value<QDate>();
 			}
 			set {
-				SetProperty("MaximumDate", QVariant.FromValue<QDate>(value));
+				SetProperty("maximumDate", QVariant.FromValue<QDate>(value));
 			}
 		}
 		public QDate MinimumDate {
 			get {
-				return Property("MinimumDate").Value<QDate>();
+				return Property("minimumDate").Value<QDate>();
 			}
 			set {
-				SetProperty("MinimumDate", QVariant.FromValue<QDate>(value));
+				SetProperty("minimumDate", QVariant.FromValue<QDate>(value));
 			}
 		}
 		public QTime MaximumTime {
 			get {
-				return Property("MaximumTime").Value<QTime>();
+				return Property("maximumTime").Value<QTime>();
 			}
 			set {
-				SetProperty("MaximumTime", QVariant.FromValue<QTime>(value));
+				SetProperty("maximumTime", QVariant.FromValue<QTime>(value));
 			}
 		}
 		public QTime MinimumTime {
 			get {
-				return Property("MinimumTime").Value<QTime>();
+				return Property("minimumTime").Value<QTime>();
 			}
 			set {
-				SetProperty("MinimumTime", QVariant.FromValue<QTime>(value));
+				SetProperty("minimumTime", QVariant.FromValue<QTime>(value));
 			}
 		}
 		public int DisplayedSections {
 			get {
-				return Property("DisplayedSections").Value<int>();
+				return Property("displayedSections").Value<int>();
 			}
 			set {
-				SetProperty("DisplayedSections", QVariant.FromValue<int>(value));
+				SetProperty("displayedSections", QVariant.FromValue<int>(value));
 			}
 		}
 		public string DisplayFormat {
 			get {
-				return Property("DisplayFormat").Value<string>();
+				return Property("displayFormat").Value<string>();
 			}
 			set {
-				SetProperty("DisplayFormat", QVariant.FromValue<string>(value));
+				SetProperty("displayFormat", QVariant.FromValue<string>(value));
 			}
 		}
 		public bool CalendarPopup {
 			get {
-				return Property("CalendarPopup").Value<bool>();
+				return Property("calendarPopup").Value<bool>();
 			}
 			set {
-				SetProperty("CalendarPopup", QVariant.FromValue<bool>(value));
+				SetProperty("calendarPopup", QVariant.FromValue<bool>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

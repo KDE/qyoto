@@ -31,66 +31,66 @@ namespace Qyoto {
 
 		public bool WasCanceled {
 			get {
-				return Property("WasCanceled").Value<bool>();
+				return Property("wasCanceled").Value<bool>();
 			}
 			set {
-				SetProperty("WasCanceled", QVariant.FromValue<bool>(value));
+				SetProperty("wasCanceled", QVariant.FromValue<bool>(value));
 			}
 		}
 		public int Minimum {
 			get {
-				return Property("Minimum").Value<int>();
+				return Property("minimum").Value<int>();
 			}
 			set {
-				SetProperty("Minimum", QVariant.FromValue<int>(value));
+				SetProperty("minimum", QVariant.FromValue<int>(value));
 			}
 		}
 		public int Maximum {
 			get {
-				return Property("Maximum").Value<int>();
+				return Property("maximum").Value<int>();
 			}
 			set {
-				SetProperty("Maximum", QVariant.FromValue<int>(value));
+				SetProperty("maximum", QVariant.FromValue<int>(value));
 			}
 		}
 		public int Value {
 			get {
-				return Property("Value").Value<int>();
+				return Property("value").Value<int>();
 			}
 			set {
-				SetProperty("Value", QVariant.FromValue<int>(value));
+				SetProperty("value", QVariant.FromValue<int>(value));
 			}
 		}
 		public bool AutoReset {
 			get {
-				return Property("AutoReset").Value<bool>();
+				return Property("autoReset").Value<bool>();
 			}
 			set {
-				SetProperty("AutoReset", QVariant.FromValue<bool>(value));
+				SetProperty("autoReset", QVariant.FromValue<bool>(value));
 			}
 		}
 		public bool AutoClose {
 			get {
-				return Property("AutoClose").Value<bool>();
+				return Property("autoClose").Value<bool>();
 			}
 			set {
-				SetProperty("AutoClose", QVariant.FromValue<bool>(value));
+				SetProperty("autoClose", QVariant.FromValue<bool>(value));
 			}
 		}
 		public int MinimumDuration {
 			get {
-				return Property("MinimumDuration").Value<int>();
+				return Property("minimumDuration").Value<int>();
 			}
 			set {
-				SetProperty("MinimumDuration", QVariant.FromValue<int>(value));
+				SetProperty("minimumDuration", QVariant.FromValue<int>(value));
 			}
 		}
 		public string LabelText {
 			get {
-				return Property("LabelText").Value<string>();
+				return Property("labelText").Value<string>();
 			}
 			set {
-				SetProperty("LabelText", QVariant.FromValue<string>(value));
+				SetProperty("labelText", QVariant.FromValue<string>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

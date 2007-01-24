@@ -74,26 +74,26 @@ namespace Qyoto {
 		}
 		public Qt.Orientation Orientation {
 			get {
-				return Property("Orientation").Value<Qt.Orientation>();
+				return Property("orientation").Value<Qt.Orientation>();
 			}
 			set {
-				SetProperty("Orientation", QVariant.FromValue<Qt.Orientation>(value));
+				SetProperty("orientation", QVariant.FromValue<Qt.Orientation>(value));
 			}
 		}
 		public int StandardButtons {
 			get {
-				return Property("StandardButtons").Value<int>();
+				return Property("standardButtons").Value<int>();
 			}
 			set {
-				SetProperty("StandardButtons", QVariant.FromValue<int>(value));
+				SetProperty("standardButtons", QVariant.FromValue<int>(value));
 			}
 		}
 		public bool CenterButtons {
 			get {
-				return Property("CenterButtons").Value<bool>();
+				return Property("centerButtons").Value<bool>();
 			}
 			set {
-				SetProperty("CenterButtons", QVariant.FromValue<bool>(value));
+				SetProperty("centerButtons", QVariant.FromValue<bool>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

@@ -32,10 +32,10 @@ namespace Qyoto {
 
 		public int SortRole {
 			get {
-				return Property("SortRole").Value<int>();
+				return Property("sortRole").Value<int>();
 			}
 			set {
-				SetProperty("SortRole", QVariant.FromValue<int>(value));
+				SetProperty("sortRole", QVariant.FromValue<int>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

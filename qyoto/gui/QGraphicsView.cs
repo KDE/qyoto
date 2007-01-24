@@ -45,58 +45,58 @@ namespace Qyoto {
 		}
 		public QBrush BackgroundBrush {
 			get {
-				return Property("BackgroundBrush").Value<QBrush>();
+				return Property("backgroundBrush").Value<QBrush>();
 			}
 			set {
-				SetProperty("BackgroundBrush", QVariant.FromValue<QBrush>(value));
+				SetProperty("backgroundBrush", QVariant.FromValue<QBrush>(value));
 			}
 		}
 		public QBrush ForegroundBrush {
 			get {
-				return Property("ForegroundBrush").Value<QBrush>();
+				return Property("foregroundBrush").Value<QBrush>();
 			}
 			set {
-				SetProperty("ForegroundBrush", QVariant.FromValue<QBrush>(value));
+				SetProperty("foregroundBrush", QVariant.FromValue<QBrush>(value));
 			}
 		}
 		public bool Interactive {
 			get {
-				return Property("Interactive").Value<bool>();
+				return Property("interactive").Value<bool>();
 			}
 			set {
-				SetProperty("Interactive", QVariant.FromValue<bool>(value));
+				SetProperty("interactive", QVariant.FromValue<bool>(value));
 			}
 		}
 		public QRectF SceneRect {
 			get {
-				return Property("SceneRect").Value<QRectF>();
+				return Property("sceneRect").Value<QRectF>();
 			}
 			set {
-				SetProperty("SceneRect", QVariant.FromValue<QRectF>(value));
+				SetProperty("sceneRect", QVariant.FromValue<QRectF>(value));
 			}
 		}
 		public int Alignment {
 			get {
-				return Property("Alignment").Value<int>();
+				return Property("alignment").Value<int>();
 			}
 			set {
-				SetProperty("Alignment", QVariant.FromValue<int>(value));
+				SetProperty("alignment", QVariant.FromValue<int>(value));
 			}
 		}
 		public int RenderHints {
 			get {
-				return Property("RenderHints").Value<int>();
+				return Property("renderHints").Value<int>();
 			}
 			set {
-				SetProperty("RenderHints", QVariant.FromValue<int>(value));
+				SetProperty("renderHints", QVariant.FromValue<int>(value));
 			}
 		}
 		public int CacheMode {
 			get {
-				return Property("CacheMode").Value<int>();
+				return Property("cacheMode").Value<int>();
 			}
 			set {
-				SetProperty("CacheMode", QVariant.FromValue<int>(value));
+				SetProperty("cacheMode", QVariant.FromValue<int>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

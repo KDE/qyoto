@@ -31,10 +31,10 @@ namespace Qyoto {
 
 		public bool DefaultUp {
 			get {
-				return Property("DefaultUp").Value<bool>();
+				return Property("defaultUp").Value<bool>();
 			}
 			set {
-				SetProperty("DefaultUp", QVariant.FromValue<bool>(value));
+				SetProperty("defaultUp", QVariant.FromValue<bool>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

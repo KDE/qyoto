@@ -30,26 +30,26 @@ namespace Qyoto {
 
 		public double Bottom {
 			get {
-				return Property("Bottom").Value<double>();
+				return Property("bottom").Value<double>();
 			}
 			set {
-				SetProperty("Bottom", QVariant.FromValue<double>(value));
+				SetProperty("bottom", QVariant.FromValue<double>(value));
 			}
 		}
 		public double Top {
 			get {
-				return Property("Top").Value<double>();
+				return Property("top").Value<double>();
 			}
 			set {
-				SetProperty("Top", QVariant.FromValue<double>(value));
+				SetProperty("top", QVariant.FromValue<double>(value));
 			}
 		}
 		public int Decimals {
 			get {
-				return Property("Decimals").Value<int>();
+				return Property("decimals").Value<int>();
 			}
 			set {
-				SetProperty("Decimals", QVariant.FromValue<int>(value));
+				SetProperty("decimals", QVariant.FromValue<int>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

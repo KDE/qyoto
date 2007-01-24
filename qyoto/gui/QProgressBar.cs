@@ -35,82 +35,82 @@ namespace Qyoto {
 		}
 		public int Minimum {
 			get {
-				return Property("Minimum").Value<int>();
+				return Property("minimum").Value<int>();
 			}
 			set {
-				SetProperty("Minimum", QVariant.FromValue<int>(value));
+				SetProperty("minimum", QVariant.FromValue<int>(value));
 			}
 		}
 		public int Maximum {
 			get {
-				return Property("Maximum").Value<int>();
+				return Property("maximum").Value<int>();
 			}
 			set {
-				SetProperty("Maximum", QVariant.FromValue<int>(value));
+				SetProperty("maximum", QVariant.FromValue<int>(value));
 			}
 		}
 		public string Text {
 			get {
-				return Property("Text").Value<string>();
+				return Property("text").Value<string>();
 			}
 			set {
-				SetProperty("Text", QVariant.FromValue<string>(value));
+				SetProperty("text", QVariant.FromValue<string>(value));
 			}
 		}
 		public int Value {
 			get {
-				return Property("Value").Value<int>();
+				return Property("value").Value<int>();
 			}
 			set {
-				SetProperty("Value", QVariant.FromValue<int>(value));
+				SetProperty("value", QVariant.FromValue<int>(value));
 			}
 		}
 		public int Alignment {
 			get {
-				return Property("Alignment").Value<int>();
+				return Property("alignment").Value<int>();
 			}
 			set {
-				SetProperty("Alignment", QVariant.FromValue<int>(value));
+				SetProperty("alignment", QVariant.FromValue<int>(value));
 			}
 		}
 		public bool TextVisible {
 			get {
-				return Property("TextVisible").Value<bool>();
+				return Property("textVisible").Value<bool>();
 			}
 			set {
-				SetProperty("TextVisible", QVariant.FromValue<bool>(value));
+				SetProperty("textVisible", QVariant.FromValue<bool>(value));
 			}
 		}
 		public Qt.Orientation Orientation {
 			get {
-				return Property("Orientation").Value<Qt.Orientation>();
+				return Property("orientation").Value<Qt.Orientation>();
 			}
 			set {
-				SetProperty("Orientation", QVariant.FromValue<Qt.Orientation>(value));
+				SetProperty("orientation", QVariant.FromValue<Qt.Orientation>(value));
 			}
 		}
 		public bool InvertedAppearance {
 			get {
-				return Property("InvertedAppearance").Value<bool>();
+				return Property("invertedAppearance").Value<bool>();
 			}
 			set {
-				SetProperty("InvertedAppearance", QVariant.FromValue<bool>(value));
+				SetProperty("invertedAppearance", QVariant.FromValue<bool>(value));
 			}
 		}
 		public int TextDirection {
 			get {
-				return Property("TextDirection").Value<int>();
+				return Property("textDirection").Value<int>();
 			}
 			set {
-				SetProperty("TextDirection", QVariant.FromValue<int>(value));
+				SetProperty("textDirection", QVariant.FromValue<int>(value));
 			}
 		}
 		public string Format {
 			get {
-				return Property("Format").Value<string>();
+				return Property("format").Value<string>();
 			}
 			set {
-				SetProperty("Format", QVariant.FromValue<string>(value));
+				SetProperty("format", QVariant.FromValue<string>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

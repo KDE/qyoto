@@ -31,42 +31,42 @@ namespace Qyoto {
 
 		public QKeySequence Key {
 			get {
-				return Property("Key").Value<QKeySequence>();
+				return Property("key").Value<QKeySequence>();
 			}
 			set {
-				SetProperty("Key", QVariant.FromValue<QKeySequence>(value));
+				SetProperty("key", QVariant.FromValue<QKeySequence>(value));
 			}
 		}
 		public string WhatsThis {
 			get {
-				return Property("WhatsThis").Value<string>();
+				return Property("whatsThis").Value<string>();
 			}
 			set {
-				SetProperty("WhatsThis", QVariant.FromValue<string>(value));
+				SetProperty("whatsThis", QVariant.FromValue<string>(value));
 			}
 		}
 		public bool Enabled {
 			get {
-				return Property("Enabled").Value<bool>();
+				return Property("enabled").Value<bool>();
 			}
 			set {
-				SetProperty("Enabled", QVariant.FromValue<bool>(value));
+				SetProperty("enabled", QVariant.FromValue<bool>(value));
 			}
 		}
 		public bool AutoRepeat {
 			get {
-				return Property("AutoRepeat").Value<bool>();
+				return Property("autoRepeat").Value<bool>();
 			}
 			set {
-				SetProperty("AutoRepeat", QVariant.FromValue<bool>(value));
+				SetProperty("autoRepeat", QVariant.FromValue<bool>(value));
 			}
 		}
 		public Qt.ShortcutContext Context {
 			get {
-				return Property("Context").Value<Qt.ShortcutContext>();
+				return Property("context").Value<Qt.ShortcutContext>();
 			}
 			set {
-				SetProperty("Context", QVariant.FromValue<Qt.ShortcutContext>(value));
+				SetProperty("context", QVariant.FromValue<Qt.ShortcutContext>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

@@ -42,34 +42,34 @@ namespace Qyoto {
 		}
 		public string CompletionPrefix {
 			get {
-				return Property("CompletionPrefix").Value<string>();
+				return Property("completionPrefix").Value<string>();
 			}
 			set {
-				SetProperty("CompletionPrefix", QVariant.FromValue<string>(value));
+				SetProperty("completionPrefix", QVariant.FromValue<string>(value));
 			}
 		}
 		public int CompletionColumn {
 			get {
-				return Property("CompletionColumn").Value<int>();
+				return Property("completionColumn").Value<int>();
 			}
 			set {
-				SetProperty("CompletionColumn", QVariant.FromValue<int>(value));
+				SetProperty("completionColumn", QVariant.FromValue<int>(value));
 			}
 		}
 		public int CompletionRole {
 			get {
-				return Property("CompletionRole").Value<int>();
+				return Property("completionRole").Value<int>();
 			}
 			set {
-				SetProperty("CompletionRole", QVariant.FromValue<int>(value));
+				SetProperty("completionRole", QVariant.FromValue<int>(value));
 			}
 		}
 		public Qt.CaseSensitivity CaseSensitivity {
 			get {
-				return Property("CaseSensitivity").Value<Qt.CaseSensitivity>();
+				return Property("caseSensitivity").Value<Qt.CaseSensitivity>();
 			}
 			set {
-				SetProperty("CaseSensitivity", QVariant.FromValue<Qt.CaseSensitivity>(value));
+				SetProperty("caseSensitivity", QVariant.FromValue<Qt.CaseSensitivity>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

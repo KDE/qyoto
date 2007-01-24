@@ -36,26 +36,26 @@ namespace Qyoto {
 		}
 		public QBrush BackgroundBrush {
 			get {
-				return Property("BackgroundBrush").Value<QBrush>();
+				return Property("backgroundBrush").Value<QBrush>();
 			}
 			set {
-				SetProperty("BackgroundBrush", QVariant.FromValue<QBrush>(value));
+				SetProperty("backgroundBrush", QVariant.FromValue<QBrush>(value));
 			}
 		}
 		public QBrush ForegroundBrush {
 			get {
-				return Property("ForegroundBrush").Value<QBrush>();
+				return Property("foregroundBrush").Value<QBrush>();
 			}
 			set {
-				SetProperty("ForegroundBrush", QVariant.FromValue<QBrush>(value));
+				SetProperty("foregroundBrush", QVariant.FromValue<QBrush>(value));
 			}
 		}
 		public QRectF SceneRect {
 			get {
-				return Property("SceneRect").Value<QRectF>();
+				return Property("sceneRect").Value<QRectF>();
 			}
 			set {
-				SetProperty("SceneRect", QVariant.FromValue<QRectF>(value));
+				SetProperty("sceneRect", QVariant.FromValue<QRectF>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

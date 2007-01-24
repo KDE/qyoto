@@ -31,82 +31,82 @@ namespace Qyoto {
 
 		public string Text {
 			get {
-				return Property("Text").Value<string>();
+				return Property("text").Value<string>();
 			}
 			set {
-				SetProperty("Text", QVariant.FromValue<string>(value));
+				SetProperty("text", QVariant.FromValue<string>(value));
 			}
 		}
 		public Qt.TextFormat TextFormat {
 			get {
-				return Property("TextFormat").Value<Qt.TextFormat>();
+				return Property("textFormat").Value<Qt.TextFormat>();
 			}
 			set {
-				SetProperty("TextFormat", QVariant.FromValue<Qt.TextFormat>(value));
+				SetProperty("textFormat", QVariant.FromValue<Qt.TextFormat>(value));
 			}
 		}
 		public QPixmap Pixmap {
 			get {
-				return Property("Pixmap").Value<QPixmap>();
+				return Property("pixmap").Value<QPixmap>();
 			}
 			set {
-				SetProperty("Pixmap", QVariant.FromValue<QPixmap>(value));
+				SetProperty("pixmap", QVariant.FromValue<QPixmap>(value));
 			}
 		}
 		public bool ScaledContents {
 			get {
-				return Property("ScaledContents").Value<bool>();
+				return Property("scaledContents").Value<bool>();
 			}
 			set {
-				SetProperty("ScaledContents", QVariant.FromValue<bool>(value));
+				SetProperty("scaledContents", QVariant.FromValue<bool>(value));
 			}
 		}
 		public int Alignment {
 			get {
-				return Property("Alignment").Value<int>();
+				return Property("alignment").Value<int>();
 			}
 			set {
-				SetProperty("Alignment", QVariant.FromValue<int>(value));
+				SetProperty("alignment", QVariant.FromValue<int>(value));
 			}
 		}
 		public bool WordWrap {
 			get {
-				return Property("WordWrap").Value<bool>();
+				return Property("wordWrap").Value<bool>();
 			}
 			set {
-				SetProperty("WordWrap", QVariant.FromValue<bool>(value));
+				SetProperty("wordWrap", QVariant.FromValue<bool>(value));
 			}
 		}
 		public int Margin {
 			get {
-				return Property("Margin").Value<int>();
+				return Property("margin").Value<int>();
 			}
 			set {
-				SetProperty("Margin", QVariant.FromValue<int>(value));
+				SetProperty("margin", QVariant.FromValue<int>(value));
 			}
 		}
 		public int Indent {
 			get {
-				return Property("Indent").Value<int>();
+				return Property("indent").Value<int>();
 			}
 			set {
-				SetProperty("Indent", QVariant.FromValue<int>(value));
+				SetProperty("indent", QVariant.FromValue<int>(value));
 			}
 		}
 		public bool OpenExternalLinks {
 			get {
-				return Property("OpenExternalLinks").Value<bool>();
+				return Property("openExternalLinks").Value<bool>();
 			}
 			set {
-				SetProperty("OpenExternalLinks", QVariant.FromValue<bool>(value));
+				SetProperty("openExternalLinks", QVariant.FromValue<bool>(value));
 			}
 		}
 		public int TextInteractionFlags {
 			get {
-				return Property("TextInteractionFlags").Value<int>();
+				return Property("textInteractionFlags").Value<int>();
 			}
 			set {
-				SetProperty("TextInteractionFlags", QVariant.FromValue<int>(value));
+				SetProperty("textInteractionFlags", QVariant.FromValue<int>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

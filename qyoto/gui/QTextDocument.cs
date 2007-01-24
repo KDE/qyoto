@@ -45,82 +45,82 @@ namespace Qyoto {
 		}
 		public bool UndoRedoEnabled {
 			get {
-				return Property("UndoRedoEnabled").Value<bool>();
+				return Property("undoRedoEnabled").Value<bool>();
 			}
 			set {
-				SetProperty("UndoRedoEnabled", QVariant.FromValue<bool>(value));
+				SetProperty("undoRedoEnabled", QVariant.FromValue<bool>(value));
 			}
 		}
 		public bool Modified {
 			get {
-				return Property("Modified").Value<bool>();
+				return Property("modified").Value<bool>();
 			}
 			set {
-				SetProperty("Modified", QVariant.FromValue<bool>(value));
+				SetProperty("modified", QVariant.FromValue<bool>(value));
 			}
 		}
 		public QSizeF PageSize {
 			get {
-				return Property("PageSize").Value<QSizeF>();
+				return Property("pageSize").Value<QSizeF>();
 			}
 			set {
-				SetProperty("PageSize", QVariant.FromValue<QSizeF>(value));
+				SetProperty("pageSize", QVariant.FromValue<QSizeF>(value));
 			}
 		}
 		public QFont DefaultFont {
 			get {
-				return Property("DefaultFont").Value<QFont>();
+				return Property("defaultFont").Value<QFont>();
 			}
 			set {
-				SetProperty("DefaultFont", QVariant.FromValue<QFont>(value));
+				SetProperty("defaultFont", QVariant.FromValue<QFont>(value));
 			}
 		}
 		public bool UseDesignMetrics {
 			get {
-				return Property("UseDesignMetrics").Value<bool>();
+				return Property("useDesignMetrics").Value<bool>();
 			}
 			set {
-				SetProperty("UseDesignMetrics", QVariant.FromValue<bool>(value));
+				SetProperty("useDesignMetrics", QVariant.FromValue<bool>(value));
 			}
 		}
 		public QSizeF Size {
 			get {
-				return Property("Size").Value<QSizeF>();
+				return Property("size").Value<QSizeF>();
 			}
 			set {
-				SetProperty("Size", QVariant.FromValue<QSizeF>(value));
+				SetProperty("size", QVariant.FromValue<QSizeF>(value));
 			}
 		}
 		public double TextWidth {
 			get {
-				return Property("TextWidth").Value<double>();
+				return Property("textWidth").Value<double>();
 			}
 			set {
-				SetProperty("TextWidth", QVariant.FromValue<double>(value));
+				SetProperty("textWidth", QVariant.FromValue<double>(value));
 			}
 		}
 		public int BlockCount {
 			get {
-				return Property("BlockCount").Value<int>();
+				return Property("blockCount").Value<int>();
 			}
 			set {
-				SetProperty("BlockCount", QVariant.FromValue<int>(value));
+				SetProperty("blockCount", QVariant.FromValue<int>(value));
 			}
 		}
 		public string DefaultStyleSheet {
 			get {
-				return Property("DefaultStyleSheet").Value<string>();
+				return Property("defaultStyleSheet").Value<string>();
 			}
 			set {
-				SetProperty("DefaultStyleSheet", QVariant.FromValue<string>(value));
+				SetProperty("defaultStyleSheet", QVariant.FromValue<string>(value));
 			}
 		}
 		public int MaximumBlockCount {
 			get {
-				return Property("MaximumBlockCount").Value<int>();
+				return Property("maximumBlockCount").Value<int>();
 			}
 			set {
-				SetProperty("MaximumBlockCount", QVariant.FromValue<int>(value));
+				SetProperty("maximumBlockCount", QVariant.FromValue<int>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

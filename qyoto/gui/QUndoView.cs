@@ -30,18 +30,18 @@ namespace Qyoto {
 
 		public string EmptyLabel {
 			get {
-				return Property("EmptyLabel").Value<string>();
+				return Property("emptyLabel").Value<string>();
 			}
 			set {
-				SetProperty("EmptyLabel", QVariant.FromValue<string>(value));
+				SetProperty("emptyLabel", QVariant.FromValue<string>(value));
 			}
 		}
 		public QIcon CleanIcon {
 			get {
-				return Property("CleanIcon").Value<QIcon>();
+				return Property("cleanIcon").Value<QIcon>();
 			}
 			set {
-				SetProperty("CleanIcon", QVariant.FromValue<QIcon>(value));
+				SetProperty("cleanIcon", QVariant.FromValue<QIcon>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

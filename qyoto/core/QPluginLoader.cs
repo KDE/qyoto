@@ -32,10 +32,10 @@ namespace Qyoto {
 
 		public string FileName {
 			get {
-				return Property("FileName").Value<string>();
+				return Property("fileName").Value<string>();
 			}
 			set {
-				SetProperty("FileName", QVariant.FromValue<string>(value));
+				SetProperty("fileName", QVariant.FromValue<string>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

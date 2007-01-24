@@ -54,18 +54,18 @@ namespace Qyoto {
 
 		public bool SingleShot {
 			get {
-				return Property("SingleShot").Value<bool>();
+				return Property("singleShot").Value<bool>();
 			}
 			set {
-				SetProperty("SingleShot", QVariant.FromValue<bool>(value));
+				SetProperty("singleShot", QVariant.FromValue<bool>(value));
 			}
 		}
 		public int Interval {
 			get {
-				return Property("Interval").Value<int>();
+				return Property("interval").Value<int>();
 			}
 			set {
-				SetProperty("Interval", QVariant.FromValue<int>(value));
+				SetProperty("interval", QVariant.FromValue<int>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

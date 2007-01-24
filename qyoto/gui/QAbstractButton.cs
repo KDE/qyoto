@@ -31,90 +31,90 @@ namespace Qyoto {
 
 		public string Text {
 			get {
-				return Property("Text").Value<string>();
+				return Property("text").Value<string>();
 			}
 			set {
-				SetProperty("Text", QVariant.FromValue<string>(value));
+				SetProperty("text", QVariant.FromValue<string>(value));
 			}
 		}
 		public QIcon Icon {
 			get {
-				return Property("Icon").Value<QIcon>();
+				return Property("icon").Value<QIcon>();
 			}
 			set {
-				SetProperty("Icon", QVariant.FromValue<QIcon>(value));
+				SetProperty("icon", QVariant.FromValue<QIcon>(value));
 			}
 		}
 		public QSize IconSize {
 			get {
-				return Property("IconSize").Value<QSize>();
+				return Property("iconSize").Value<QSize>();
 			}
 			set {
-				SetProperty("IconSize", QVariant.FromValue<QSize>(value));
+				SetProperty("iconSize", QVariant.FromValue<QSize>(value));
 			}
 		}
 		public QKeySequence Shortcut {
 			get {
-				return Property("Shortcut").Value<QKeySequence>();
+				return Property("shortcut").Value<QKeySequence>();
 			}
 			set {
-				SetProperty("Shortcut", QVariant.FromValue<QKeySequence>(value));
+				SetProperty("shortcut", QVariant.FromValue<QKeySequence>(value));
 			}
 		}
 		public bool Checkable {
 			get {
-				return Property("Checkable").Value<bool>();
+				return Property("checkable").Value<bool>();
 			}
 			set {
-				SetProperty("Checkable", QVariant.FromValue<bool>(value));
+				SetProperty("checkable", QVariant.FromValue<bool>(value));
 			}
 		}
 		public bool Checked {
 			get {
-				return Property("Checked").Value<bool>();
+				return Property("checked").Value<bool>();
 			}
 			set {
-				SetProperty("Checked", QVariant.FromValue<bool>(value));
+				SetProperty("checked", QVariant.FromValue<bool>(value));
 			}
 		}
 		public bool AutoRepeat {
 			get {
-				return Property("AutoRepeat").Value<bool>();
+				return Property("autoRepeat").Value<bool>();
 			}
 			set {
-				SetProperty("AutoRepeat", QVariant.FromValue<bool>(value));
+				SetProperty("autoRepeat", QVariant.FromValue<bool>(value));
 			}
 		}
 		public bool AutoExclusive {
 			get {
-				return Property("AutoExclusive").Value<bool>();
+				return Property("autoExclusive").Value<bool>();
 			}
 			set {
-				SetProperty("AutoExclusive", QVariant.FromValue<bool>(value));
+				SetProperty("autoExclusive", QVariant.FromValue<bool>(value));
 			}
 		}
 		public int AutoRepeatDelay {
 			get {
-				return Property("AutoRepeatDelay").Value<int>();
+				return Property("autoRepeatDelay").Value<int>();
 			}
 			set {
-				SetProperty("AutoRepeatDelay", QVariant.FromValue<int>(value));
+				SetProperty("autoRepeatDelay", QVariant.FromValue<int>(value));
 			}
 		}
 		public int AutoRepeatInterval {
 			get {
-				return Property("AutoRepeatInterval").Value<int>();
+				return Property("autoRepeatInterval").Value<int>();
 			}
 			set {
-				SetProperty("AutoRepeatInterval", QVariant.FromValue<int>(value));
+				SetProperty("autoRepeatInterval", QVariant.FromValue<int>(value));
 			}
 		}
 		public bool Down {
 			get {
-				return Property("Down").Value<bool>();
+				return Property("down").Value<bool>();
 			}
 			set {
-				SetProperty("Down", QVariant.FromValue<bool>(value));
+				SetProperty("down", QVariant.FromValue<bool>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

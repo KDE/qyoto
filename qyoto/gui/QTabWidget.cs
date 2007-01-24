@@ -49,42 +49,42 @@ namespace Qyoto {
 		}
 		public int CurrentIndex {
 			get {
-				return Property("CurrentIndex").Value<int>();
+				return Property("currentIndex").Value<int>();
 			}
 			set {
-				SetProperty("CurrentIndex", QVariant.FromValue<int>(value));
+				SetProperty("currentIndex", QVariant.FromValue<int>(value));
 			}
 		}
 		public int Count {
 			get {
-				return Property("Count").Value<int>();
+				return Property("count").Value<int>();
 			}
 			set {
-				SetProperty("Count", QVariant.FromValue<int>(value));
+				SetProperty("count", QVariant.FromValue<int>(value));
 			}
 		}
 		public QSize IconSize {
 			get {
-				return Property("IconSize").Value<QSize>();
+				return Property("iconSize").Value<QSize>();
 			}
 			set {
-				SetProperty("IconSize", QVariant.FromValue<QSize>(value));
+				SetProperty("iconSize", QVariant.FromValue<QSize>(value));
 			}
 		}
 		public Qt.TextElideMode ElideMode {
 			get {
-				return Property("ElideMode").Value<Qt.TextElideMode>();
+				return Property("elideMode").Value<Qt.TextElideMode>();
 			}
 			set {
-				SetProperty("ElideMode", QVariant.FromValue<Qt.TextElideMode>(value));
+				SetProperty("elideMode", QVariant.FromValue<Qt.TextElideMode>(value));
 			}
 		}
 		public bool UsesScrollButtons {
 			get {
-				return Property("UsesScrollButtons").Value<bool>();
+				return Property("usesScrollButtons").Value<bool>();
 			}
 			set {
-				SetProperty("UsesScrollButtons", QVariant.FromValue<bool>(value));
+				SetProperty("usesScrollButtons", QVariant.FromValue<bool>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

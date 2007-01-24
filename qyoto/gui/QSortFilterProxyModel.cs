@@ -31,58 +31,58 @@ namespace Qyoto {
 
 		public QRegExp FilterRegExp {
 			get {
-				return Property("FilterRegExp").Value<QRegExp>();
+				return Property("filterRegExp").Value<QRegExp>();
 			}
 			set {
-				SetProperty("FilterRegExp", QVariant.FromValue<QRegExp>(value));
+				SetProperty("filterRegExp", QVariant.FromValue<QRegExp>(value));
 			}
 		}
 		public int FilterKeyColumn {
 			get {
-				return Property("FilterKeyColumn").Value<int>();
+				return Property("filterKeyColumn").Value<int>();
 			}
 			set {
-				SetProperty("FilterKeyColumn", QVariant.FromValue<int>(value));
+				SetProperty("filterKeyColumn", QVariant.FromValue<int>(value));
 			}
 		}
 		public bool DynamicSortFilter {
 			get {
-				return Property("DynamicSortFilter").Value<bool>();
+				return Property("dynamicSortFilter").Value<bool>();
 			}
 			set {
-				SetProperty("DynamicSortFilter", QVariant.FromValue<bool>(value));
+				SetProperty("dynamicSortFilter", QVariant.FromValue<bool>(value));
 			}
 		}
 		public Qt.CaseSensitivity FilterCaseSensitivity {
 			get {
-				return Property("FilterCaseSensitivity").Value<Qt.CaseSensitivity>();
+				return Property("filterCaseSensitivity").Value<Qt.CaseSensitivity>();
 			}
 			set {
-				SetProperty("FilterCaseSensitivity", QVariant.FromValue<Qt.CaseSensitivity>(value));
+				SetProperty("filterCaseSensitivity", QVariant.FromValue<Qt.CaseSensitivity>(value));
 			}
 		}
 		public Qt.CaseSensitivity SortCaseSensitivity {
 			get {
-				return Property("SortCaseSensitivity").Value<Qt.CaseSensitivity>();
+				return Property("sortCaseSensitivity").Value<Qt.CaseSensitivity>();
 			}
 			set {
-				SetProperty("SortCaseSensitivity", QVariant.FromValue<Qt.CaseSensitivity>(value));
+				SetProperty("sortCaseSensitivity", QVariant.FromValue<Qt.CaseSensitivity>(value));
 			}
 		}
 		public int SortRole {
 			get {
-				return Property("SortRole").Value<int>();
+				return Property("sortRole").Value<int>();
 			}
 			set {
-				SetProperty("SortRole", QVariant.FromValue<int>(value));
+				SetProperty("sortRole", QVariant.FromValue<int>(value));
 			}
 		}
 		public int FilterRole {
 			get {
-				return Property("FilterRole").Value<int>();
+				return Property("filterRole").Value<int>();
 			}
 			set {
-				SetProperty("FilterRole", QVariant.FromValue<int>(value));
+				SetProperty("filterRole", QVariant.FromValue<int>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

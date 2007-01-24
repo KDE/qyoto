@@ -36,18 +36,18 @@ namespace Qyoto {
 		}
 		public bool ScrollBarsEnabled {
 			get {
-				return Property("ScrollBarsEnabled").Value<bool>();
+				return Property("scrollBarsEnabled").Value<bool>();
 			}
 			set {
-				SetProperty("ScrollBarsEnabled", QVariant.FromValue<bool>(value));
+				SetProperty("scrollBarsEnabled", QVariant.FromValue<bool>(value));
 			}
 		}
 		public QBrush Background {
 			get {
-				return Property("Background").Value<QBrush>();
+				return Property("background").Value<QBrush>();
 			}
 			set {
-				SetProperty("Background", QVariant.FromValue<QBrush>(value));
+				SetProperty("background", QVariant.FromValue<QBrush>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

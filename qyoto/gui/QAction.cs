@@ -45,114 +45,114 @@ namespace Qyoto {
 		}
 		public bool Checkable {
 			get {
-				return Property("Checkable").Value<bool>();
+				return Property("checkable").Value<bool>();
 			}
 			set {
-				SetProperty("Checkable", QVariant.FromValue<bool>(value));
+				SetProperty("checkable", QVariant.FromValue<bool>(value));
 			}
 		}
 		public bool Checked {
 			get {
-				return Property("Checked").Value<bool>();
+				return Property("checked").Value<bool>();
 			}
 			set {
-				SetProperty("Checked", QVariant.FromValue<bool>(value));
+				SetProperty("checked", QVariant.FromValue<bool>(value));
 			}
 		}
 		public bool Enabled {
 			get {
-				return Property("Enabled").Value<bool>();
+				return Property("enabled").Value<bool>();
 			}
 			set {
-				SetProperty("Enabled", QVariant.FromValue<bool>(value));
+				SetProperty("enabled", QVariant.FromValue<bool>(value));
 			}
 		}
 		public QIcon Icon {
 			get {
-				return Property("Icon").Value<QIcon>();
+				return Property("icon").Value<QIcon>();
 			}
 			set {
-				SetProperty("Icon", QVariant.FromValue<QIcon>(value));
+				SetProperty("icon", QVariant.FromValue<QIcon>(value));
 			}
 		}
 		public string Text {
 			get {
-				return Property("Text").Value<string>();
+				return Property("text").Value<string>();
 			}
 			set {
-				SetProperty("Text", QVariant.FromValue<string>(value));
+				SetProperty("text", QVariant.FromValue<string>(value));
 			}
 		}
 		public string IconText {
 			get {
-				return Property("IconText").Value<string>();
+				return Property("iconText").Value<string>();
 			}
 			set {
-				SetProperty("IconText", QVariant.FromValue<string>(value));
+				SetProperty("iconText", QVariant.FromValue<string>(value));
 			}
 		}
 		public string ToolTip {
 			get {
-				return Property("ToolTip").Value<string>();
+				return Property("toolTip").Value<string>();
 			}
 			set {
-				SetProperty("ToolTip", QVariant.FromValue<string>(value));
+				SetProperty("toolTip", QVariant.FromValue<string>(value));
 			}
 		}
 		public string StatusTip {
 			get {
-				return Property("StatusTip").Value<string>();
+				return Property("statusTip").Value<string>();
 			}
 			set {
-				SetProperty("StatusTip", QVariant.FromValue<string>(value));
+				SetProperty("statusTip", QVariant.FromValue<string>(value));
 			}
 		}
 		public string WhatsThis {
 			get {
-				return Property("WhatsThis").Value<string>();
+				return Property("whatsThis").Value<string>();
 			}
 			set {
-				SetProperty("WhatsThis", QVariant.FromValue<string>(value));
+				SetProperty("whatsThis", QVariant.FromValue<string>(value));
 			}
 		}
 		public QFont Font {
 			get {
-				return Property("Font").Value<QFont>();
+				return Property("font").Value<QFont>();
 			}
 			set {
-				SetProperty("Font", QVariant.FromValue<QFont>(value));
+				SetProperty("font", QVariant.FromValue<QFont>(value));
 			}
 		}
 		public QKeySequence Shortcut {
 			get {
-				return Property("Shortcut").Value<QKeySequence>();
+				return Property("shortcut").Value<QKeySequence>();
 			}
 			set {
-				SetProperty("Shortcut", QVariant.FromValue<QKeySequence>(value));
+				SetProperty("shortcut", QVariant.FromValue<QKeySequence>(value));
 			}
 		}
 		public Qt.ShortcutContext ShortcutContext {
 			get {
-				return Property("ShortcutContext").Value<Qt.ShortcutContext>();
+				return Property("shortcutContext").Value<Qt.ShortcutContext>();
 			}
 			set {
-				SetProperty("ShortcutContext", QVariant.FromValue<Qt.ShortcutContext>(value));
+				SetProperty("shortcutContext", QVariant.FromValue<Qt.ShortcutContext>(value));
 			}
 		}
 		public bool AutoRepeat {
 			get {
-				return Property("AutoRepeat").Value<bool>();
+				return Property("autoRepeat").Value<bool>();
 			}
 			set {
-				SetProperty("AutoRepeat", QVariant.FromValue<bool>(value));
+				SetProperty("autoRepeat", QVariant.FromValue<bool>(value));
 			}
 		}
 		public bool Visible {
 			get {
-				return Property("Visible").Value<bool>();
+				return Property("visible").Value<bool>();
 			}
 			set {
-				SetProperty("Visible", QVariant.FromValue<bool>(value));
+				SetProperty("visible", QVariant.FromValue<bool>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

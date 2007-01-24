@@ -31,26 +31,26 @@ namespace Qyoto {
 
 		public QRectF ViewBox {
 			get {
-				return Property("ViewBox").Value<QRectF>();
+				return Property("viewBox").Value<QRectF>();
 			}
 			set {
-				SetProperty("ViewBox", QVariant.FromValue<QRectF>(value));
+				SetProperty("viewBox", QVariant.FromValue<QRectF>(value));
 			}
 		}
 		public int FramesPerSecond {
 			get {
-				return Property("FramesPerSecond").Value<int>();
+				return Property("framesPerSecond").Value<int>();
 			}
 			set {
-				SetProperty("FramesPerSecond", QVariant.FromValue<int>(value));
+				SetProperty("framesPerSecond", QVariant.FromValue<int>(value));
 			}
 		}
 		public int CurrentFrame {
 			get {
-				return Property("CurrentFrame").Value<int>();
+				return Property("currentFrame").Value<int>();
 			}
 			set {
-				SetProperty("CurrentFrame", QVariant.FromValue<int>(value));
+				SetProperty("currentFrame", QVariant.FromValue<int>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

@@ -30,18 +30,18 @@ namespace Qyoto {
 
 		public int Bottom {
 			get {
-				return Property("Bottom").Value<int>();
+				return Property("bottom").Value<int>();
 			}
 			set {
-				SetProperty("Bottom", QVariant.FromValue<int>(value));
+				SetProperty("bottom", QVariant.FromValue<int>(value));
 			}
 		}
 		public int Top {
 			get {
-				return Property("Top").Value<int>();
+				return Property("top").Value<int>();
 			}
 			set {
-				SetProperty("Top", QVariant.FromValue<int>(value));
+				SetProperty("top", QVariant.FromValue<int>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

@@ -32,26 +32,26 @@ namespace Qyoto {
 
 		public IQUrl Source {
 			get {
-				return Property("Source").Value<IQUrl>();
+				return Property("source").Value<IQUrl>();
 			}
 			set {
-				SetProperty("Source", QVariant.FromValue<IQUrl>(value));
+				SetProperty("source", QVariant.FromValue<IQUrl>(value));
 			}
 		}
 		public List<string> SearchPaths {
 			get {
-				return Property("SearchPaths").Value<List<string>>();
+				return Property("searchPaths").Value<List<string>>();
 			}
 			set {
-				SetProperty("SearchPaths", QVariant.FromValue<List<string>>(value));
+				SetProperty("searchPaths", QVariant.FromValue<List<string>>(value));
 			}
 		}
 		public bool OpenExternalLinks {
 			get {
-				return Property("OpenExternalLinks").Value<bool>();
+				return Property("openExternalLinks").Value<bool>();
 			}
 			set {
-				SetProperty("OpenExternalLinks", QVariant.FromValue<bool>(value));
+				SetProperty("openExternalLinks", QVariant.FromValue<bool>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

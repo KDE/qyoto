@@ -92,90 +92,90 @@ namespace Qyoto {
 		}
 		public Qt.LayoutDirection LayoutDirection {
 			get {
-				return Property("LayoutDirection").Value<Qt.LayoutDirection>();
+				return Property("layoutDirection").Value<Qt.LayoutDirection>();
 			}
 			set {
-				SetProperty("LayoutDirection", QVariant.FromValue<Qt.LayoutDirection>(value));
+				SetProperty("layoutDirection", QVariant.FromValue<Qt.LayoutDirection>(value));
 			}
 		}
 		public QIcon WindowIcon {
 			get {
-				return Property("WindowIcon").Value<QIcon>();
+				return Property("windowIcon").Value<QIcon>();
 			}
 			set {
-				SetProperty("WindowIcon", QVariant.FromValue<QIcon>(value));
+				SetProperty("windowIcon", QVariant.FromValue<QIcon>(value));
 			}
 		}
 		public int CursorFlashTime {
 			get {
-				return Property("CursorFlashTime").Value<int>();
+				return Property("cursorFlashTime").Value<int>();
 			}
 			set {
-				SetProperty("CursorFlashTime", QVariant.FromValue<int>(value));
+				SetProperty("cursorFlashTime", QVariant.FromValue<int>(value));
 			}
 		}
 		public int DoubleClickInterval {
 			get {
-				return Property("DoubleClickInterval").Value<int>();
+				return Property("doubleClickInterval").Value<int>();
 			}
 			set {
-				SetProperty("DoubleClickInterval", QVariant.FromValue<int>(value));
+				SetProperty("doubleClickInterval", QVariant.FromValue<int>(value));
 			}
 		}
 		public int KeyboardInputInterval {
 			get {
-				return Property("KeyboardInputInterval").Value<int>();
+				return Property("keyboardInputInterval").Value<int>();
 			}
 			set {
-				SetProperty("KeyboardInputInterval", QVariant.FromValue<int>(value));
+				SetProperty("keyboardInputInterval", QVariant.FromValue<int>(value));
 			}
 		}
 		public int WheelScrollLines {
 			get {
-				return Property("WheelScrollLines").Value<int>();
+				return Property("wheelScrollLines").Value<int>();
 			}
 			set {
-				SetProperty("WheelScrollLines", QVariant.FromValue<int>(value));
+				SetProperty("wheelScrollLines", QVariant.FromValue<int>(value));
 			}
 		}
 		public QSize GlobalStrut {
 			get {
-				return Property("GlobalStrut").Value<QSize>();
+				return Property("globalStrut").Value<QSize>();
 			}
 			set {
-				SetProperty("GlobalStrut", QVariant.FromValue<QSize>(value));
+				SetProperty("globalStrut", QVariant.FromValue<QSize>(value));
 			}
 		}
 		public int StartDragTime {
 			get {
-				return Property("StartDragTime").Value<int>();
+				return Property("startDragTime").Value<int>();
 			}
 			set {
-				SetProperty("StartDragTime", QVariant.FromValue<int>(value));
+				SetProperty("startDragTime", QVariant.FromValue<int>(value));
 			}
 		}
 		public int StartDragDistance {
 			get {
-				return Property("StartDragDistance").Value<int>();
+				return Property("startDragDistance").Value<int>();
 			}
 			set {
-				SetProperty("StartDragDistance", QVariant.FromValue<int>(value));
+				SetProperty("startDragDistance", QVariant.FromValue<int>(value));
 			}
 		}
 		public bool QuitOnLastWindowClosed {
 			get {
-				return Property("QuitOnLastWindowClosed").Value<bool>();
+				return Property("quitOnLastWindowClosed").Value<bool>();
 			}
 			set {
-				SetProperty("QuitOnLastWindowClosed", QVariant.FromValue<bool>(value));
+				SetProperty("quitOnLastWindowClosed", QVariant.FromValue<bool>(value));
 			}
 		}
 		public string StyleSheet {
 			get {
-				return Property("StyleSheet").Value<string>();
+				return Property("styleSheet").Value<string>();
 			}
 			set {
-				SetProperty("StyleSheet", QVariant.FromValue<string>(value));
+				SetProperty("styleSheet", QVariant.FromValue<string>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

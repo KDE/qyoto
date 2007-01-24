@@ -46,50 +46,50 @@ namespace Qyoto {
 		}
 		public QDate SelectedDate {
 			get {
-				return Property("SelectedDate").Value<QDate>();
+				return Property("selectedDate").Value<QDate>();
 			}
 			set {
-				SetProperty("SelectedDate", QVariant.FromValue<QDate>(value));
+				SetProperty("selectedDate", QVariant.FromValue<QDate>(value));
 			}
 		}
 		public QDate MinimumDate {
 			get {
-				return Property("MinimumDate").Value<QDate>();
+				return Property("minimumDate").Value<QDate>();
 			}
 			set {
-				SetProperty("MinimumDate", QVariant.FromValue<QDate>(value));
+				SetProperty("minimumDate", QVariant.FromValue<QDate>(value));
 			}
 		}
 		public QDate MaximumDate {
 			get {
-				return Property("MaximumDate").Value<QDate>();
+				return Property("maximumDate").Value<QDate>();
 			}
 			set {
-				SetProperty("MaximumDate", QVariant.FromValue<QDate>(value));
+				SetProperty("maximumDate", QVariant.FromValue<QDate>(value));
 			}
 		}
 		public Qt.DayOfWeek FirstDayOfWeek {
 			get {
-				return Property("FirstDayOfWeek").Value<Qt.DayOfWeek>();
+				return Property("firstDayOfWeek").Value<Qt.DayOfWeek>();
 			}
 			set {
-				SetProperty("FirstDayOfWeek", QVariant.FromValue<Qt.DayOfWeek>(value));
+				SetProperty("firstDayOfWeek", QVariant.FromValue<Qt.DayOfWeek>(value));
 			}
 		}
 		public bool GridVisible {
 			get {
-				return Property("GridVisible").Value<bool>();
+				return Property("gridVisible").Value<bool>();
 			}
 			set {
-				SetProperty("GridVisible", QVariant.FromValue<bool>(value));
+				SetProperty("gridVisible", QVariant.FromValue<bool>(value));
 			}
 		}
 		public bool HeaderVisible {
 			get {
-				return Property("HeaderVisible").Value<bool>();
+				return Property("headerVisible").Value<bool>();
 			}
 			set {
-				SetProperty("HeaderVisible", QVariant.FromValue<bool>(value));
+				SetProperty("headerVisible", QVariant.FromValue<bool>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

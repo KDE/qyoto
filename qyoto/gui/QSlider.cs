@@ -38,10 +38,10 @@ namespace Qyoto {
 		}
 		public int TickInterval {
 			get {
-				return Property("TickInterval").Value<int>();
+				return Property("tickInterval").Value<int>();
 			}
 			set {
-				SetProperty("TickInterval", QVariant.FromValue<int>(value));
+				SetProperty("tickInterval", QVariant.FromValue<int>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

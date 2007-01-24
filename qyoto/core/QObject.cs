@@ -56,10 +56,10 @@ namespace Qyoto {
 
 		public string ObjectName {
 			get {
-				return Property("ObjectName").Value<string>();
+				return Property("objectName").Value<string>();
 			}
 			set {
-				SetProperty("ObjectName", QVariant.FromValue<string>(value));
+				SetProperty("objectName", QVariant.FromValue<string>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

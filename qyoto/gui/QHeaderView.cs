@@ -38,58 +38,58 @@ namespace Qyoto {
 		}
 		public bool ShowSortIndicator {
 			get {
-				return Property("ShowSortIndicator").Value<bool>();
+				return Property("showSortIndicator").Value<bool>();
 			}
 			set {
-				SetProperty("ShowSortIndicator", QVariant.FromValue<bool>(value));
+				SetProperty("showSortIndicator", QVariant.FromValue<bool>(value));
 			}
 		}
 		public bool HighlightSections {
 			get {
-				return Property("HighlightSections").Value<bool>();
+				return Property("highlightSections").Value<bool>();
 			}
 			set {
-				SetProperty("HighlightSections", QVariant.FromValue<bool>(value));
+				SetProperty("highlightSections", QVariant.FromValue<bool>(value));
 			}
 		}
 		public bool StretchLastSection {
 			get {
-				return Property("StretchLastSection").Value<bool>();
+				return Property("stretchLastSection").Value<bool>();
 			}
 			set {
-				SetProperty("StretchLastSection", QVariant.FromValue<bool>(value));
+				SetProperty("stretchLastSection", QVariant.FromValue<bool>(value));
 			}
 		}
 		public bool CascadingSectionResizes {
 			get {
-				return Property("CascadingSectionResizes").Value<bool>();
+				return Property("cascadingSectionResizes").Value<bool>();
 			}
 			set {
-				SetProperty("CascadingSectionResizes", QVariant.FromValue<bool>(value));
+				SetProperty("cascadingSectionResizes", QVariant.FromValue<bool>(value));
 			}
 		}
 		public int DefaultSectionSize {
 			get {
-				return Property("DefaultSectionSize").Value<int>();
+				return Property("defaultSectionSize").Value<int>();
 			}
 			set {
-				SetProperty("DefaultSectionSize", QVariant.FromValue<int>(value));
+				SetProperty("defaultSectionSize", QVariant.FromValue<int>(value));
 			}
 		}
 		public int MinimumSectionSize {
 			get {
-				return Property("MinimumSectionSize").Value<int>();
+				return Property("minimumSectionSize").Value<int>();
 			}
 			set {
-				SetProperty("MinimumSectionSize", QVariant.FromValue<int>(value));
+				SetProperty("minimumSectionSize", QVariant.FromValue<int>(value));
 			}
 		}
 		public int DefaultAlignment {
 			get {
-				return Property("DefaultAlignment").Value<int>();
+				return Property("defaultAlignment").Value<int>();
 			}
 			set {
-				SetProperty("DefaultAlignment", QVariant.FromValue<int>(value));
+				SetProperty("defaultAlignment", QVariant.FromValue<int>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

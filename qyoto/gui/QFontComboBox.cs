@@ -38,26 +38,26 @@ namespace Qyoto {
 		}
 		public QFontDatabase.WritingSystem WritingSystem {
 			get {
-				return Property("WritingSystem").Value<QFontDatabase.WritingSystem>();
+				return Property("writingSystem").Value<QFontDatabase.WritingSystem>();
 			}
 			set {
-				SetProperty("WritingSystem", QVariant.FromValue<QFontDatabase.WritingSystem>(value));
+				SetProperty("writingSystem", QVariant.FromValue<QFontDatabase.WritingSystem>(value));
 			}
 		}
 		public int FontFilters {
 			get {
-				return Property("FontFilters").Value<int>();
+				return Property("fontFilters").Value<int>();
 			}
 			set {
-				SetProperty("FontFilters", QVariant.FromValue<int>(value));
+				SetProperty("fontFilters", QVariant.FromValue<int>(value));
 			}
 		}
 		public QFont CurrentFont {
 			get {
-				return Property("CurrentFont").Value<QFont>();
+				return Property("currentFont").Value<QFont>();
 			}
 			set {
-				SetProperty("CurrentFont", QVariant.FromValue<QFont>(value));
+				SetProperty("currentFont", QVariant.FromValue<QFont>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

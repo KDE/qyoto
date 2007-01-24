@@ -48,34 +48,34 @@ namespace Qyoto {
 		}
 		public int LineWidth {
 			get {
-				return Property("LineWidth").Value<int>();
+				return Property("lineWidth").Value<int>();
 			}
 			set {
-				SetProperty("LineWidth", QVariant.FromValue<int>(value));
+				SetProperty("lineWidth", QVariant.FromValue<int>(value));
 			}
 		}
 		public int MidLineWidth {
 			get {
-				return Property("MidLineWidth").Value<int>();
+				return Property("midLineWidth").Value<int>();
 			}
 			set {
-				SetProperty("MidLineWidth", QVariant.FromValue<int>(value));
+				SetProperty("midLineWidth", QVariant.FromValue<int>(value));
 			}
 		}
 		public int FrameWidth {
 			get {
-				return Property("FrameWidth").Value<int>();
+				return Property("frameWidth").Value<int>();
 			}
 			set {
-				SetProperty("FrameWidth", QVariant.FromValue<int>(value));
+				SetProperty("frameWidth", QVariant.FromValue<int>(value));
 			}
 		}
 		public QRect FrameRect {
 			get {
-				return Property("FrameRect").Value<QRect>();
+				return Property("frameRect").Value<QRect>();
 			}
 			set {
-				SetProperty("FrameRect", QVariant.FromValue<QRect>(value));
+				SetProperty("frameRect", QVariant.FromValue<QRect>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

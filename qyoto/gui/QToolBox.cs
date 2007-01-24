@@ -31,18 +31,18 @@ namespace Qyoto {
 
 		public int CurrentIndex {
 			get {
-				return Property("CurrentIndex").Value<int>();
+				return Property("currentIndex").Value<int>();
 			}
 			set {
-				SetProperty("CurrentIndex", QVariant.FromValue<int>(value));
+				SetProperty("currentIndex", QVariant.FromValue<int>(value));
 			}
 		}
 		public int Count {
 			get {
-				return Property("Count").Value<int>();
+				return Property("count").Value<int>();
 			}
 			set {
-				SetProperty("Count", QVariant.FromValue<int>(value));
+				SetProperty("count", QVariant.FromValue<int>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

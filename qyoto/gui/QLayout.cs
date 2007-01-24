@@ -39,18 +39,18 @@ namespace Qyoto {
 		}
 		public int Margin {
 			get {
-				return Property("Margin").Value<int>();
+				return Property("margin").Value<int>();
 			}
 			set {
-				SetProperty("Margin", QVariant.FromValue<int>(value));
+				SetProperty("margin", QVariant.FromValue<int>(value));
 			}
 		}
 		public int Spacing {
 			get {
-				return Property("Spacing").Value<int>();
+				return Property("spacing").Value<int>();
 			}
 			set {
-				SetProperty("Spacing", QVariant.FromValue<int>(value));
+				SetProperty("spacing", QVariant.FromValue<int>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

@@ -87,34 +87,34 @@ namespace Qyoto {
 		}
 		public bool ReadOnly {
 			get {
-				return Property("ReadOnly").Value<bool>();
+				return Property("readOnly").Value<bool>();
 			}
 			set {
-				SetProperty("ReadOnly", QVariant.FromValue<bool>(value));
+				SetProperty("readOnly", QVariant.FromValue<bool>(value));
 			}
 		}
 		public bool ResolveSymlinks {
 			get {
-				return Property("ResolveSymlinks").Value<bool>();
+				return Property("resolveSymlinks").Value<bool>();
 			}
 			set {
-				SetProperty("ResolveSymlinks", QVariant.FromValue<bool>(value));
+				SetProperty("resolveSymlinks", QVariant.FromValue<bool>(value));
 			}
 		}
 		public bool ConfirmOverwrite {
 			get {
-				return Property("ConfirmOverwrite").Value<bool>();
+				return Property("confirmOverwrite").Value<bool>();
 			}
 			set {
-				SetProperty("ConfirmOverwrite", QVariant.FromValue<bool>(value));
+				SetProperty("confirmOverwrite", QVariant.FromValue<bool>(value));
 			}
 		}
 		public string DefaultSuffix {
 			get {
-				return Property("DefaultSuffix").Value<string>();
+				return Property("defaultSuffix").Value<string>();
 			}
 			set {
-				SetProperty("DefaultSuffix", QVariant.FromValue<string>(value));
+				SetProperty("defaultSuffix", QVariant.FromValue<string>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

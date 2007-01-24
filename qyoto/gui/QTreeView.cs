@@ -32,58 +32,58 @@ namespace Qyoto {
 
 		public int Indentation {
 			get {
-				return Property("Indentation").Value<int>();
+				return Property("indentation").Value<int>();
 			}
 			set {
-				SetProperty("Indentation", QVariant.FromValue<int>(value));
+				SetProperty("indentation", QVariant.FromValue<int>(value));
 			}
 		}
 		public bool RootIsDecorated {
 			get {
-				return Property("RootIsDecorated").Value<bool>();
+				return Property("rootIsDecorated").Value<bool>();
 			}
 			set {
-				SetProperty("RootIsDecorated", QVariant.FromValue<bool>(value));
+				SetProperty("rootIsDecorated", QVariant.FromValue<bool>(value));
 			}
 		}
 		public bool UniformRowHeights {
 			get {
-				return Property("UniformRowHeights").Value<bool>();
+				return Property("uniformRowHeights").Value<bool>();
 			}
 			set {
-				SetProperty("UniformRowHeights", QVariant.FromValue<bool>(value));
+				SetProperty("uniformRowHeights", QVariant.FromValue<bool>(value));
 			}
 		}
 		public bool ItemsExpandable {
 			get {
-				return Property("ItemsExpandable").Value<bool>();
+				return Property("itemsExpandable").Value<bool>();
 			}
 			set {
-				SetProperty("ItemsExpandable", QVariant.FromValue<bool>(value));
+				SetProperty("itemsExpandable", QVariant.FromValue<bool>(value));
 			}
 		}
 		public bool SortingEnabled {
 			get {
-				return Property("SortingEnabled").Value<bool>();
+				return Property("sortingEnabled").Value<bool>();
 			}
 			set {
-				SetProperty("SortingEnabled", QVariant.FromValue<bool>(value));
+				SetProperty("sortingEnabled", QVariant.FromValue<bool>(value));
 			}
 		}
 		public bool Animated {
 			get {
-				return Property("Animated").Value<bool>();
+				return Property("animated").Value<bool>();
 			}
 			set {
-				SetProperty("Animated", QVariant.FromValue<bool>(value));
+				SetProperty("animated", QVariant.FromValue<bool>(value));
 			}
 		}
 		public bool AllColumnsShowFocus {
 			get {
-				return Property("AllColumnsShowFocus").Value<bool>();
+				return Property("allColumnsShowFocus").Value<bool>();
 			}
 			set {
-				SetProperty("AllColumnsShowFocus", QVariant.FromValue<bool>(value));
+				SetProperty("allColumnsShowFocus", QVariant.FromValue<bool>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

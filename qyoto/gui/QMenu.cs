@@ -34,34 +34,34 @@ namespace Qyoto {
 
 		public bool TearOffEnabled {
 			get {
-				return Property("TearOffEnabled").Value<bool>();
+				return Property("tearOffEnabled").Value<bool>();
 			}
 			set {
-				SetProperty("TearOffEnabled", QVariant.FromValue<bool>(value));
+				SetProperty("tearOffEnabled", QVariant.FromValue<bool>(value));
 			}
 		}
 		public string Title {
 			get {
-				return Property("Title").Value<string>();
+				return Property("title").Value<string>();
 			}
 			set {
-				SetProperty("Title", QVariant.FromValue<string>(value));
+				SetProperty("title", QVariant.FromValue<string>(value));
 			}
 		}
 		public QIcon Icon {
 			get {
-				return Property("Icon").Value<QIcon>();
+				return Property("icon").Value<QIcon>();
 			}
 			set {
-				SetProperty("Icon", QVariant.FromValue<QIcon>(value));
+				SetProperty("icon", QVariant.FromValue<QIcon>(value));
 			}
 		}
 		public bool SeparatorsCollapsible {
 			get {
-				return Property("SeparatorsCollapsible").Value<bool>();
+				return Property("separatorsCollapsible").Value<bool>();
 			}
 			set {
-				SetProperty("SeparatorsCollapsible", QVariant.FromValue<bool>(value));
+				SetProperty("separatorsCollapsible", QVariant.FromValue<bool>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

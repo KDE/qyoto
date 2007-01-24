@@ -96,74 +96,74 @@ namespace Qyoto {
 		}
 		public bool AutoScroll {
 			get {
-				return Property("AutoScroll").Value<bool>();
+				return Property("autoScroll").Value<bool>();
 			}
 			set {
-				SetProperty("AutoScroll", QVariant.FromValue<bool>(value));
+				SetProperty("autoScroll", QVariant.FromValue<bool>(value));
 			}
 		}
 		public int EditTriggers {
 			get {
-				return Property("EditTriggers").Value<int>();
+				return Property("editTriggers").Value<int>();
 			}
 			set {
-				SetProperty("EditTriggers", QVariant.FromValue<int>(value));
+				SetProperty("editTriggers", QVariant.FromValue<int>(value));
 			}
 		}
 		public bool TabKeyNavigation {
 			get {
-				return Property("TabKeyNavigation").Value<bool>();
+				return Property("tabKeyNavigation").Value<bool>();
 			}
 			set {
-				SetProperty("TabKeyNavigation", QVariant.FromValue<bool>(value));
+				SetProperty("tabKeyNavigation", QVariant.FromValue<bool>(value));
 			}
 		}
 		public bool ShowDropIndicator {
 			get {
-				return Property("ShowDropIndicator").Value<bool>();
+				return Property("showDropIndicator").Value<bool>();
 			}
 			set {
-				SetProperty("ShowDropIndicator", QVariant.FromValue<bool>(value));
+				SetProperty("showDropIndicator", QVariant.FromValue<bool>(value));
 			}
 		}
 		public bool DragEnabled {
 			get {
-				return Property("DragEnabled").Value<bool>();
+				return Property("dragEnabled").Value<bool>();
 			}
 			set {
-				SetProperty("DragEnabled", QVariant.FromValue<bool>(value));
+				SetProperty("dragEnabled", QVariant.FromValue<bool>(value));
 			}
 		}
 		public bool DragDropOverwriteMode {
 			get {
-				return Property("DragDropOverwriteMode").Value<bool>();
+				return Property("dragDropOverwriteMode").Value<bool>();
 			}
 			set {
-				SetProperty("DragDropOverwriteMode", QVariant.FromValue<bool>(value));
+				SetProperty("dragDropOverwriteMode", QVariant.FromValue<bool>(value));
 			}
 		}
 		public bool AlternatingRowColors {
 			get {
-				return Property("AlternatingRowColors").Value<bool>();
+				return Property("alternatingRowColors").Value<bool>();
 			}
 			set {
-				SetProperty("AlternatingRowColors", QVariant.FromValue<bool>(value));
+				SetProperty("alternatingRowColors", QVariant.FromValue<bool>(value));
 			}
 		}
 		public QSize IconSize {
 			get {
-				return Property("IconSize").Value<QSize>();
+				return Property("iconSize").Value<QSize>();
 			}
 			set {
-				SetProperty("IconSize", QVariant.FromValue<QSize>(value));
+				SetProperty("iconSize", QVariant.FromValue<QSize>(value));
 			}
 		}
 		public Qt.TextElideMode TextElideMode {
 			get {
-				return Property("TextElideMode").Value<Qt.TextElideMode>();
+				return Property("textElideMode").Value<Qt.TextElideMode>();
 			}
 			set {
-				SetProperty("TextElideMode", QVariant.FromValue<Qt.TextElideMode>(value));
+				SetProperty("textElideMode", QVariant.FromValue<Qt.TextElideMode>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

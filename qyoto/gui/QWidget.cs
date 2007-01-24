@@ -36,418 +36,418 @@ namespace Qyoto {
 
 		public bool Modal {
 			get {
-				return Property("Modal").Value<bool>();
+				return Property("modal").Value<bool>();
 			}
 			set {
-				SetProperty("Modal", QVariant.FromValue<bool>(value));
+				SetProperty("modal", QVariant.FromValue<bool>(value));
 			}
 		}
 		public Qt.WindowModality WindowModality {
 			get {
-				return Property("WindowModality").Value<Qt.WindowModality>();
+				return Property("windowModality").Value<Qt.WindowModality>();
 			}
 			set {
-				SetProperty("WindowModality", QVariant.FromValue<Qt.WindowModality>(value));
+				SetProperty("windowModality", QVariant.FromValue<Qt.WindowModality>(value));
 			}
 		}
 		public bool Enabled {
 			get {
-				return Property("Enabled").Value<bool>();
+				return Property("enabled").Value<bool>();
 			}
 			set {
-				SetProperty("Enabled", QVariant.FromValue<bool>(value));
+				SetProperty("enabled", QVariant.FromValue<bool>(value));
 			}
 		}
 		public QRect Geometry {
 			get {
-				return Property("Geometry").Value<QRect>();
+				return Property("geometry").Value<QRect>();
 			}
 			set {
-				SetProperty("Geometry", QVariant.FromValue<QRect>(value));
+				SetProperty("geometry", QVariant.FromValue<QRect>(value));
 			}
 		}
 		public QRect FrameGeometry {
 			get {
-				return Property("FrameGeometry").Value<QRect>();
+				return Property("frameGeometry").Value<QRect>();
 			}
 			set {
-				SetProperty("FrameGeometry", QVariant.FromValue<QRect>(value));
+				SetProperty("frameGeometry", QVariant.FromValue<QRect>(value));
 			}
 		}
 		public QRect NormalGeometry {
 			get {
-				return Property("NormalGeometry").Value<QRect>();
+				return Property("normalGeometry").Value<QRect>();
 			}
 			set {
-				SetProperty("NormalGeometry", QVariant.FromValue<QRect>(value));
+				SetProperty("normalGeometry", QVariant.FromValue<QRect>(value));
 			}
 		}
 		public int X {
 			get {
-				return Property("X").Value<int>();
+				return Property("x").Value<int>();
 			}
 			set {
-				SetProperty("X", QVariant.FromValue<int>(value));
+				SetProperty("x", QVariant.FromValue<int>(value));
 			}
 		}
 		public int Y {
 			get {
-				return Property("Y").Value<int>();
+				return Property("y").Value<int>();
 			}
 			set {
-				SetProperty("Y", QVariant.FromValue<int>(value));
+				SetProperty("y", QVariant.FromValue<int>(value));
 			}
 		}
 		public QPoint Pos {
 			get {
-				return Property("Pos").Value<QPoint>();
+				return Property("pos").Value<QPoint>();
 			}
 			set {
-				SetProperty("Pos", QVariant.FromValue<QPoint>(value));
+				SetProperty("pos", QVariant.FromValue<QPoint>(value));
 			}
 		}
 		public QSize FrameSize {
 			get {
-				return Property("FrameSize").Value<QSize>();
+				return Property("frameSize").Value<QSize>();
 			}
 			set {
-				SetProperty("FrameSize", QVariant.FromValue<QSize>(value));
+				SetProperty("frameSize", QVariant.FromValue<QSize>(value));
 			}
 		}
 		public QSize Size {
 			get {
-				return Property("Size").Value<QSize>();
+				return Property("size").Value<QSize>();
 			}
 			set {
-				SetProperty("Size", QVariant.FromValue<QSize>(value));
+				SetProperty("size", QVariant.FromValue<QSize>(value));
 			}
 		}
 		public QRect Rect {
 			get {
-				return Property("Rect").Value<QRect>();
+				return Property("rect").Value<QRect>();
 			}
 			set {
-				SetProperty("Rect", QVariant.FromValue<QRect>(value));
+				SetProperty("rect", QVariant.FromValue<QRect>(value));
 			}
 		}
 		public QRect ChildrenRect {
 			get {
-				return Property("ChildrenRect").Value<QRect>();
+				return Property("childrenRect").Value<QRect>();
 			}
 			set {
-				SetProperty("ChildrenRect", QVariant.FromValue<QRect>(value));
+				SetProperty("childrenRect", QVariant.FromValue<QRect>(value));
 			}
 		}
 		public QRegion ChildrenRegion {
 			get {
-				return Property("ChildrenRegion").Value<QRegion>();
+				return Property("childrenRegion").Value<QRegion>();
 			}
 			set {
-				SetProperty("ChildrenRegion", QVariant.FromValue<QRegion>(value));
+				SetProperty("childrenRegion", QVariant.FromValue<QRegion>(value));
 			}
 		}
 		public QSizePolicy SizePolicy {
 			get {
-				return Property("SizePolicy").Value<QSizePolicy>();
+				return Property("sizePolicy").Value<QSizePolicy>();
 			}
 			set {
-				SetProperty("SizePolicy", QVariant.FromValue<QSizePolicy>(value));
+				SetProperty("sizePolicy", QVariant.FromValue<QSizePolicy>(value));
 			}
 		}
 		public QSize MinimumSize {
 			get {
-				return Property("MinimumSize").Value<QSize>();
+				return Property("minimumSize").Value<QSize>();
 			}
 			set {
-				SetProperty("MinimumSize", QVariant.FromValue<QSize>(value));
+				SetProperty("minimumSize", QVariant.FromValue<QSize>(value));
 			}
 		}
 		public QSize MaximumSize {
 			get {
-				return Property("MaximumSize").Value<QSize>();
+				return Property("maximumSize").Value<QSize>();
 			}
 			set {
-				SetProperty("MaximumSize", QVariant.FromValue<QSize>(value));
+				SetProperty("maximumSize", QVariant.FromValue<QSize>(value));
 			}
 		}
 		public int MinimumWidth {
 			get {
-				return Property("MinimumWidth").Value<int>();
+				return Property("minimumWidth").Value<int>();
 			}
 			set {
-				SetProperty("MinimumWidth", QVariant.FromValue<int>(value));
+				SetProperty("minimumWidth", QVariant.FromValue<int>(value));
 			}
 		}
 		public int MinimumHeight {
 			get {
-				return Property("MinimumHeight").Value<int>();
+				return Property("minimumHeight").Value<int>();
 			}
 			set {
-				SetProperty("MinimumHeight", QVariant.FromValue<int>(value));
+				SetProperty("minimumHeight", QVariant.FromValue<int>(value));
 			}
 		}
 		public int MaximumWidth {
 			get {
-				return Property("MaximumWidth").Value<int>();
+				return Property("maximumWidth").Value<int>();
 			}
 			set {
-				SetProperty("MaximumWidth", QVariant.FromValue<int>(value));
+				SetProperty("maximumWidth", QVariant.FromValue<int>(value));
 			}
 		}
 		public int MaximumHeight {
 			get {
-				return Property("MaximumHeight").Value<int>();
+				return Property("maximumHeight").Value<int>();
 			}
 			set {
-				SetProperty("MaximumHeight", QVariant.FromValue<int>(value));
+				SetProperty("maximumHeight", QVariant.FromValue<int>(value));
 			}
 		}
 		public QSize SizeIncrement {
 			get {
-				return Property("SizeIncrement").Value<QSize>();
+				return Property("sizeIncrement").Value<QSize>();
 			}
 			set {
-				SetProperty("SizeIncrement", QVariant.FromValue<QSize>(value));
+				SetProperty("sizeIncrement", QVariant.FromValue<QSize>(value));
 			}
 		}
 		public QSize BaseSize {
 			get {
-				return Property("BaseSize").Value<QSize>();
+				return Property("baseSize").Value<QSize>();
 			}
 			set {
-				SetProperty("BaseSize", QVariant.FromValue<QSize>(value));
+				SetProperty("baseSize", QVariant.FromValue<QSize>(value));
 			}
 		}
 		public QPalette Palette {
 			get {
-				return Property("Palette").Value<QPalette>();
+				return Property("palette").Value<QPalette>();
 			}
 			set {
-				SetProperty("Palette", QVariant.FromValue<QPalette>(value));
+				SetProperty("palette", QVariant.FromValue<QPalette>(value));
 			}
 		}
 		public QFont Font {
 			get {
-				return Property("Font").Value<QFont>();
+				return Property("font").Value<QFont>();
 			}
 			set {
-				SetProperty("Font", QVariant.FromValue<QFont>(value));
+				SetProperty("font", QVariant.FromValue<QFont>(value));
 			}
 		}
 		public QCursor Cursor {
 			get {
-				return Property("Cursor").Value<QCursor>();
+				return Property("cursor").Value<QCursor>();
 			}
 			set {
-				SetProperty("Cursor", QVariant.FromValue<QCursor>(value));
+				SetProperty("cursor", QVariant.FromValue<QCursor>(value));
 			}
 		}
 		public bool MouseTracking {
 			get {
-				return Property("MouseTracking").Value<bool>();
+				return Property("mouseTracking").Value<bool>();
 			}
 			set {
-				SetProperty("MouseTracking", QVariant.FromValue<bool>(value));
+				SetProperty("mouseTracking", QVariant.FromValue<bool>(value));
 			}
 		}
 		public bool IsActiveWindow {
 			get {
-				return Property("IsActiveWindow").Value<bool>();
+				return Property("isActiveWindow").Value<bool>();
 			}
 			set {
-				SetProperty("IsActiveWindow", QVariant.FromValue<bool>(value));
+				SetProperty("isActiveWindow", QVariant.FromValue<bool>(value));
 			}
 		}
 		public Qt.FocusPolicy FocusPolicy {
 			get {
-				return Property("FocusPolicy").Value<Qt.FocusPolicy>();
+				return Property("focusPolicy").Value<Qt.FocusPolicy>();
 			}
 			set {
-				SetProperty("FocusPolicy", QVariant.FromValue<Qt.FocusPolicy>(value));
+				SetProperty("focusPolicy", QVariant.FromValue<Qt.FocusPolicy>(value));
 			}
 		}
 		public bool Focus {
 			get {
-				return Property("Focus").Value<bool>();
+				return Property("focus").Value<bool>();
 			}
 			set {
-				SetProperty("Focus", QVariant.FromValue<bool>(value));
+				SetProperty("focus", QVariant.FromValue<bool>(value));
 			}
 		}
 		public Qt.ContextMenuPolicy ContextMenuPolicy {
 			get {
-				return Property("ContextMenuPolicy").Value<Qt.ContextMenuPolicy>();
+				return Property("contextMenuPolicy").Value<Qt.ContextMenuPolicy>();
 			}
 			set {
-				SetProperty("ContextMenuPolicy", QVariant.FromValue<Qt.ContextMenuPolicy>(value));
+				SetProperty("contextMenuPolicy", QVariant.FromValue<Qt.ContextMenuPolicy>(value));
 			}
 		}
 		public bool UpdatesEnabled {
 			get {
-				return Property("UpdatesEnabled").Value<bool>();
+				return Property("updatesEnabled").Value<bool>();
 			}
 			set {
-				SetProperty("UpdatesEnabled", QVariant.FromValue<bool>(value));
+				SetProperty("updatesEnabled", QVariant.FromValue<bool>(value));
 			}
 		}
 		public bool Visible {
 			get {
-				return Property("Visible").Value<bool>();
+				return Property("visible").Value<bool>();
 			}
 			set {
-				SetProperty("Visible", QVariant.FromValue<bool>(value));
+				SetProperty("visible", QVariant.FromValue<bool>(value));
 			}
 		}
 		public bool Minimized {
 			get {
-				return Property("Minimized").Value<bool>();
+				return Property("minimized").Value<bool>();
 			}
 			set {
-				SetProperty("Minimized", QVariant.FromValue<bool>(value));
+				SetProperty("minimized", QVariant.FromValue<bool>(value));
 			}
 		}
 		public bool Maximized {
 			get {
-				return Property("Maximized").Value<bool>();
+				return Property("maximized").Value<bool>();
 			}
 			set {
-				SetProperty("Maximized", QVariant.FromValue<bool>(value));
+				SetProperty("maximized", QVariant.FromValue<bool>(value));
 			}
 		}
 		public bool FullScreen {
 			get {
-				return Property("FullScreen").Value<bool>();
+				return Property("fullScreen").Value<bool>();
 			}
 			set {
-				SetProperty("FullScreen", QVariant.FromValue<bool>(value));
+				SetProperty("fullScreen", QVariant.FromValue<bool>(value));
 			}
 		}
 		public QSize SizeHint {
 			get {
-				return Property("SizeHint").Value<QSize>();
+				return Property("sizeHint").Value<QSize>();
 			}
 			set {
-				SetProperty("SizeHint", QVariant.FromValue<QSize>(value));
+				SetProperty("sizeHint", QVariant.FromValue<QSize>(value));
 			}
 		}
 		public QSize MinimumSizeHint {
 			get {
-				return Property("MinimumSizeHint").Value<QSize>();
+				return Property("minimumSizeHint").Value<QSize>();
 			}
 			set {
-				SetProperty("MinimumSizeHint", QVariant.FromValue<QSize>(value));
+				SetProperty("minimumSizeHint", QVariant.FromValue<QSize>(value));
 			}
 		}
 		public bool AcceptDrops {
 			get {
-				return Property("AcceptDrops").Value<bool>();
+				return Property("acceptDrops").Value<bool>();
 			}
 			set {
-				SetProperty("AcceptDrops", QVariant.FromValue<bool>(value));
+				SetProperty("acceptDrops", QVariant.FromValue<bool>(value));
 			}
 		}
 		public string WindowTitle {
 			get {
-				return Property("WindowTitle").Value<string>();
+				return Property("windowTitle").Value<string>();
 			}
 			set {
-				SetProperty("WindowTitle", QVariant.FromValue<string>(value));
+				SetProperty("windowTitle", QVariant.FromValue<string>(value));
 			}
 		}
 		public QIcon WindowIcon {
 			get {
-				return Property("WindowIcon").Value<QIcon>();
+				return Property("windowIcon").Value<QIcon>();
 			}
 			set {
-				SetProperty("WindowIcon", QVariant.FromValue<QIcon>(value));
+				SetProperty("windowIcon", QVariant.FromValue<QIcon>(value));
 			}
 		}
 		public string WindowIconText {
 			get {
-				return Property("WindowIconText").Value<string>();
+				return Property("windowIconText").Value<string>();
 			}
 			set {
-				SetProperty("WindowIconText", QVariant.FromValue<string>(value));
+				SetProperty("windowIconText", QVariant.FromValue<string>(value));
 			}
 		}
 		public double WindowOpacity {
 			get {
-				return Property("WindowOpacity").Value<double>();
+				return Property("windowOpacity").Value<double>();
 			}
 			set {
-				SetProperty("WindowOpacity", QVariant.FromValue<double>(value));
+				SetProperty("windowOpacity", QVariant.FromValue<double>(value));
 			}
 		}
 		public bool WindowModified {
 			get {
-				return Property("WindowModified").Value<bool>();
+				return Property("windowModified").Value<bool>();
 			}
 			set {
-				SetProperty("WindowModified", QVariant.FromValue<bool>(value));
+				SetProperty("windowModified", QVariant.FromValue<bool>(value));
 			}
 		}
 		public string ToolTip {
 			get {
-				return Property("ToolTip").Value<string>();
+				return Property("toolTip").Value<string>();
 			}
 			set {
-				SetProperty("ToolTip", QVariant.FromValue<string>(value));
+				SetProperty("toolTip", QVariant.FromValue<string>(value));
 			}
 		}
 		public string StatusTip {
 			get {
-				return Property("StatusTip").Value<string>();
+				return Property("statusTip").Value<string>();
 			}
 			set {
-				SetProperty("StatusTip", QVariant.FromValue<string>(value));
+				SetProperty("statusTip", QVariant.FromValue<string>(value));
 			}
 		}
 		public string WhatsThis {
 			get {
-				return Property("WhatsThis").Value<string>();
+				return Property("whatsThis").Value<string>();
 			}
 			set {
-				SetProperty("WhatsThis", QVariant.FromValue<string>(value));
+				SetProperty("whatsThis", QVariant.FromValue<string>(value));
 			}
 		}
 		public string AccessibleName {
 			get {
-				return Property("AccessibleName").Value<string>();
+				return Property("accessibleName").Value<string>();
 			}
 			set {
-				SetProperty("AccessibleName", QVariant.FromValue<string>(value));
+				SetProperty("accessibleName", QVariant.FromValue<string>(value));
 			}
 		}
 		public string AccessibleDescription {
 			get {
-				return Property("AccessibleDescription").Value<string>();
+				return Property("accessibleDescription").Value<string>();
 			}
 			set {
-				SetProperty("AccessibleDescription", QVariant.FromValue<string>(value));
+				SetProperty("accessibleDescription", QVariant.FromValue<string>(value));
 			}
 		}
 		public Qt.LayoutDirection LayoutDirection {
 			get {
-				return Property("LayoutDirection").Value<Qt.LayoutDirection>();
+				return Property("layoutDirection").Value<Qt.LayoutDirection>();
 			}
 			set {
-				SetProperty("LayoutDirection", QVariant.FromValue<Qt.LayoutDirection>(value));
+				SetProperty("layoutDirection", QVariant.FromValue<Qt.LayoutDirection>(value));
 			}
 		}
 		public bool AutoFillBackground {
 			get {
-				return Property("AutoFillBackground").Value<bool>();
+				return Property("autoFillBackground").Value<bool>();
 			}
 			set {
-				SetProperty("AutoFillBackground", QVariant.FromValue<bool>(value));
+				SetProperty("autoFillBackground", QVariant.FromValue<bool>(value));
 			}
 		}
 		public string StyleSheet {
 			get {
-				return Property("StyleSheet").Value<string>();
+				return Property("styleSheet").Value<string>();
 			}
 			set {
-				SetProperty("StyleSheet", QVariant.FromValue<string>(value));
+				SetProperty("styleSheet", QVariant.FromValue<string>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

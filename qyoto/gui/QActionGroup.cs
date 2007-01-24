@@ -32,26 +32,26 @@ namespace Qyoto {
 
 		public bool Exclusive {
 			get {
-				return Property("Exclusive").Value<bool>();
+				return Property("exclusive").Value<bool>();
 			}
 			set {
-				SetProperty("Exclusive", QVariant.FromValue<bool>(value));
+				SetProperty("exclusive", QVariant.FromValue<bool>(value));
 			}
 		}
 		public bool Enabled {
 			get {
-				return Property("Enabled").Value<bool>();
+				return Property("enabled").Value<bool>();
 			}
 			set {
-				SetProperty("Enabled", QVariant.FromValue<bool>(value));
+				SetProperty("enabled", QVariant.FromValue<bool>(value));
 			}
 		}
 		public bool Visible {
 			get {
-				return Property("Visible").Value<bool>();
+				return Property("visible").Value<bool>();
 			}
 			set {
-				SetProperty("Visible", QVariant.FromValue<bool>(value));
+				SetProperty("visible", QVariant.FromValue<bool>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

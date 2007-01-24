@@ -30,34 +30,34 @@ namespace Qyoto {
 
 		public bool Wrapping {
 			get {
-				return Property("Wrapping").Value<bool>();
+				return Property("wrapping").Value<bool>();
 			}
 			set {
-				SetProperty("Wrapping", QVariant.FromValue<bool>(value));
+				SetProperty("wrapping", QVariant.FromValue<bool>(value));
 			}
 		}
 		public int NotchSize {
 			get {
-				return Property("NotchSize").Value<int>();
+				return Property("notchSize").Value<int>();
 			}
 			set {
-				SetProperty("NotchSize", QVariant.FromValue<int>(value));
+				SetProperty("notchSize", QVariant.FromValue<int>(value));
 			}
 		}
 		public double NotchTarget {
 			get {
-				return Property("NotchTarget").Value<double>();
+				return Property("notchTarget").Value<double>();
 			}
 			set {
-				SetProperty("NotchTarget", QVariant.FromValue<double>(value));
+				SetProperty("notchTarget", QVariant.FromValue<double>(value));
 			}
 		}
 		public bool NotchesVisible {
 			get {
-				return Property("NotchesVisible").Value<bool>();
+				return Property("notchesVisible").Value<bool>();
 			}
 			set {
-				SetProperty("NotchesVisible", QVariant.FromValue<bool>(value));
+				SetProperty("notchesVisible", QVariant.FromValue<bool>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

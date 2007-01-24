@@ -31,58 +31,58 @@ namespace Qyoto {
 
 		public string Suffix {
 			get {
-				return Property("Suffix").Value<string>();
+				return Property("suffix").Value<string>();
 			}
 			set {
-				SetProperty("Suffix", QVariant.FromValue<string>(value));
+				SetProperty("suffix", QVariant.FromValue<string>(value));
 			}
 		}
 		public string Prefix {
 			get {
-				return Property("Prefix").Value<string>();
+				return Property("prefix").Value<string>();
 			}
 			set {
-				SetProperty("Prefix", QVariant.FromValue<string>(value));
+				SetProperty("prefix", QVariant.FromValue<string>(value));
 			}
 		}
 		public string CleanText {
 			get {
-				return Property("CleanText").Value<string>();
+				return Property("cleanText").Value<string>();
 			}
 			set {
-				SetProperty("CleanText", QVariant.FromValue<string>(value));
+				SetProperty("cleanText", QVariant.FromValue<string>(value));
 			}
 		}
 		public int Maximum {
 			get {
-				return Property("Maximum").Value<int>();
+				return Property("maximum").Value<int>();
 			}
 			set {
-				SetProperty("Maximum", QVariant.FromValue<int>(value));
+				SetProperty("maximum", QVariant.FromValue<int>(value));
 			}
 		}
 		public int Minimum {
 			get {
-				return Property("Minimum").Value<int>();
+				return Property("minimum").Value<int>();
 			}
 			set {
-				SetProperty("Minimum", QVariant.FromValue<int>(value));
+				SetProperty("minimum", QVariant.FromValue<int>(value));
 			}
 		}
 		public int SingleStep {
 			get {
-				return Property("SingleStep").Value<int>();
+				return Property("singleStep").Value<int>();
 			}
 			set {
-				SetProperty("SingleStep", QVariant.FromValue<int>(value));
+				SetProperty("singleStep", QVariant.FromValue<int>(value));
 			}
 		}
 		public int Value {
 			get {
-				return Property("Value").Value<int>();
+				return Property("value").Value<int>();
 			}
 			set {
-				SetProperty("Value", QVariant.FromValue<int>(value));
+				SetProperty("value", QVariant.FromValue<int>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

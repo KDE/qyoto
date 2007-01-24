@@ -35,18 +35,18 @@ namespace Qyoto {
 		}
 		public int CurrentIndex {
 			get {
-				return Property("CurrentIndex").Value<int>();
+				return Property("currentIndex").Value<int>();
 			}
 			set {
-				SetProperty("CurrentIndex", QVariant.FromValue<int>(value));
+				SetProperty("currentIndex", QVariant.FromValue<int>(value));
 			}
 		}
 		public Qt.Orientation Orientation {
 			get {
-				return Property("Orientation").Value<Qt.Orientation>();
+				return Property("orientation").Value<Qt.Orientation>();
 			}
 			set {
-				SetProperty("Orientation", QVariant.FromValue<Qt.Orientation>(value));
+				SetProperty("orientation", QVariant.FromValue<Qt.Orientation>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

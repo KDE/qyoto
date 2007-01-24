@@ -32,18 +32,18 @@ namespace Qyoto {
 
 		public int ColumnCount {
 			get {
-				return Property("ColumnCount").Value<int>();
+				return Property("columnCount").Value<int>();
 			}
 			set {
-				SetProperty("ColumnCount", QVariant.FromValue<int>(value));
+				SetProperty("columnCount", QVariant.FromValue<int>(value));
 			}
 		}
 		public int TopLevelItemCount {
 			get {
-				return Property("TopLevelItemCount").Value<int>();
+				return Property("topLevelItemCount").Value<int>();
 			}
 			set {
-				SetProperty("TopLevelItemCount", QVariant.FromValue<int>(value));
+				SetProperty("topLevelItemCount", QVariant.FromValue<int>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

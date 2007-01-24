@@ -31,66 +31,66 @@ namespace Qyoto {
 
 		public string Prefix {
 			get {
-				return Property("Prefix").Value<string>();
+				return Property("prefix").Value<string>();
 			}
 			set {
-				SetProperty("Prefix", QVariant.FromValue<string>(value));
+				SetProperty("prefix", QVariant.FromValue<string>(value));
 			}
 		}
 		public string Suffix {
 			get {
-				return Property("Suffix").Value<string>();
+				return Property("suffix").Value<string>();
 			}
 			set {
-				SetProperty("Suffix", QVariant.FromValue<string>(value));
+				SetProperty("suffix", QVariant.FromValue<string>(value));
 			}
 		}
 		public string CleanText {
 			get {
-				return Property("CleanText").Value<string>();
+				return Property("cleanText").Value<string>();
 			}
 			set {
-				SetProperty("CleanText", QVariant.FromValue<string>(value));
+				SetProperty("cleanText", QVariant.FromValue<string>(value));
 			}
 		}
 		public int Decimals {
 			get {
-				return Property("Decimals").Value<int>();
+				return Property("decimals").Value<int>();
 			}
 			set {
-				SetProperty("Decimals", QVariant.FromValue<int>(value));
+				SetProperty("decimals", QVariant.FromValue<int>(value));
 			}
 		}
 		public double Maximum {
 			get {
-				return Property("Maximum").Value<double>();
+				return Property("maximum").Value<double>();
 			}
 			set {
-				SetProperty("Maximum", QVariant.FromValue<double>(value));
+				SetProperty("maximum", QVariant.FromValue<double>(value));
 			}
 		}
 		public double Minimum {
 			get {
-				return Property("Minimum").Value<double>();
+				return Property("minimum").Value<double>();
 			}
 			set {
-				SetProperty("Minimum", QVariant.FromValue<double>(value));
+				SetProperty("minimum", QVariant.FromValue<double>(value));
 			}
 		}
 		public double SingleStep {
 			get {
-				return Property("SingleStep").Value<double>();
+				return Property("singleStep").Value<double>();
 			}
 			set {
-				SetProperty("SingleStep", QVariant.FromValue<double>(value));
+				SetProperty("singleStep", QVariant.FromValue<double>(value));
 			}
 		}
 		public double Value {
 			get {
-				return Property("Value").Value<double>();
+				return Property("value").Value<double>();
 			}
 			set {
-				SetProperty("Value", QVariant.FromValue<double>(value));
+				SetProperty("value", QVariant.FromValue<double>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

@@ -31,26 +31,26 @@ namespace Qyoto {
 
 		public bool ShowGrid {
 			get {
-				return Property("ShowGrid").Value<bool>();
+				return Property("showGrid").Value<bool>();
 			}
 			set {
-				SetProperty("ShowGrid", QVariant.FromValue<bool>(value));
+				SetProperty("showGrid", QVariant.FromValue<bool>(value));
 			}
 		}
 		public Qt.PenStyle GridStyle {
 			get {
-				return Property("GridStyle").Value<Qt.PenStyle>();
+				return Property("gridStyle").Value<Qt.PenStyle>();
 			}
 			set {
-				SetProperty("GridStyle", QVariant.FromValue<Qt.PenStyle>(value));
+				SetProperty("gridStyle", QVariant.FromValue<Qt.PenStyle>(value));
 			}
 		}
 		public bool SortingEnabled {
 			get {
-				return Property("SortingEnabled").Value<bool>();
+				return Property("sortingEnabled").Value<bool>();
 			}
 			set {
-				SetProperty("SortingEnabled", QVariant.FromValue<bool>(value));
+				SetProperty("sortingEnabled", QVariant.FromValue<bool>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

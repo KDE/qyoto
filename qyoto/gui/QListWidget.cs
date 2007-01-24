@@ -32,26 +32,26 @@ namespace Qyoto {
 
 		public int Count {
 			get {
-				return Property("Count").Value<int>();
+				return Property("count").Value<int>();
 			}
 			set {
-				SetProperty("Count", QVariant.FromValue<int>(value));
+				SetProperty("count", QVariant.FromValue<int>(value));
 			}
 		}
 		public int CurrentRow {
 			get {
-				return Property("CurrentRow").Value<int>();
+				return Property("currentRow").Value<int>();
 			}
 			set {
-				SetProperty("CurrentRow", QVariant.FromValue<int>(value));
+				SetProperty("currentRow", QVariant.FromValue<int>(value));
 			}
 		}
 		public bool SortingEnabled {
 			get {
-				return Property("SortingEnabled").Value<bool>();
+				return Property("sortingEnabled").Value<bool>();
 			}
 			set {
-				SetProperty("SortingEnabled", QVariant.FromValue<bool>(value));
+				SetProperty("sortingEnabled", QVariant.FromValue<bool>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

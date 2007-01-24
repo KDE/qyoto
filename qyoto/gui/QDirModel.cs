@@ -36,26 +36,26 @@ namespace Qyoto {
 		}
 		public bool ResolveSymlinks {
 			get {
-				return Property("ResolveSymlinks").Value<bool>();
+				return Property("resolveSymlinks").Value<bool>();
 			}
 			set {
-				SetProperty("ResolveSymlinks", QVariant.FromValue<bool>(value));
+				SetProperty("resolveSymlinks", QVariant.FromValue<bool>(value));
 			}
 		}
 		public bool ReadOnly {
 			get {
-				return Property("ReadOnly").Value<bool>();
+				return Property("readOnly").Value<bool>();
 			}
 			set {
-				SetProperty("ReadOnly", QVariant.FromValue<bool>(value));
+				SetProperty("readOnly", QVariant.FromValue<bool>(value));
 			}
 		}
 		public bool LazyChildCount {
 			get {
-				return Property("LazyChildCount").Value<bool>();
+				return Property("lazyChildCount").Value<bool>();
 			}
 			set {
-				SetProperty("LazyChildCount", QVariant.FromValue<bool>(value));
+				SetProperty("lazyChildCount", QVariant.FromValue<bool>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

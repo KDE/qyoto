@@ -31,42 +31,42 @@ namespace Qyoto {
 
 		public string Title {
 			get {
-				return Property("Title").Value<string>();
+				return Property("title").Value<string>();
 			}
 			set {
-				SetProperty("Title", QVariant.FromValue<string>(value));
+				SetProperty("title", QVariant.FromValue<string>(value));
 			}
 		}
 		public int Alignment {
 			get {
-				return Property("Alignment").Value<int>();
+				return Property("alignment").Value<int>();
 			}
 			set {
-				SetProperty("Alignment", QVariant.FromValue<int>(value));
+				SetProperty("alignment", QVariant.FromValue<int>(value));
 			}
 		}
 		public bool Flat {
 			get {
-				return Property("Flat").Value<bool>();
+				return Property("flat").Value<bool>();
 			}
 			set {
-				SetProperty("Flat", QVariant.FromValue<bool>(value));
+				SetProperty("flat", QVariant.FromValue<bool>(value));
 			}
 		}
 		public bool Checkable {
 			get {
-				return Property("Checkable").Value<bool>();
+				return Property("checkable").Value<bool>();
 			}
 			set {
-				SetProperty("Checkable", QVariant.FromValue<bool>(value));
+				SetProperty("checkable", QVariant.FromValue<bool>(value));
 			}
 		}
 		public bool Checked {
 			get {
-				return Property("Checked").Value<bool>();
+				return Property("checked").Value<bool>();
 			}
 			set {
-				SetProperty("Checked", QVariant.FromValue<bool>(value));
+				SetProperty("checked", QVariant.FromValue<bool>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

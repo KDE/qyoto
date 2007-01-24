@@ -30,10 +30,10 @@ namespace Qyoto {
 
 		public QRegExp RegExp {
 			get {
-				return Property("RegExp").Value<QRegExp>();
+				return Property("regExp").Value<QRegExp>();
 			}
 			set {
-				SetProperty("RegExp", QVariant.FromValue<QRegExp>(value));
+				SetProperty("regExp", QVariant.FromValue<QRegExp>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

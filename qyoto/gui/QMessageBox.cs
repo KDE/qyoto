@@ -128,10 +128,10 @@ namespace Qyoto {
 		}
 		public string Text {
 			get {
-				return Property("Text").Value<string>();
+				return Property("text").Value<string>();
 			}
 			set {
-				SetProperty("Text", QVariant.FromValue<string>(value));
+				SetProperty("text", QVariant.FromValue<string>(value));
 			}
 		}
 		public int icon {
@@ -144,42 +144,42 @@ namespace Qyoto {
 		}
 		public QPixmap IconPixmap {
 			get {
-				return Property("IconPixmap").Value<QPixmap>();
+				return Property("iconPixmap").Value<QPixmap>();
 			}
 			set {
-				SetProperty("IconPixmap", QVariant.FromValue<QPixmap>(value));
+				SetProperty("iconPixmap", QVariant.FromValue<QPixmap>(value));
 			}
 		}
 		public Qt.TextFormat TextFormat {
 			get {
-				return Property("TextFormat").Value<Qt.TextFormat>();
+				return Property("textFormat").Value<Qt.TextFormat>();
 			}
 			set {
-				SetProperty("TextFormat", QVariant.FromValue<Qt.TextFormat>(value));
+				SetProperty("textFormat", QVariant.FromValue<Qt.TextFormat>(value));
 			}
 		}
 		public int StandardButtons {
 			get {
-				return Property("StandardButtons").Value<int>();
+				return Property("standardButtons").Value<int>();
 			}
 			set {
-				SetProperty("StandardButtons", QVariant.FromValue<int>(value));
+				SetProperty("standardButtons", QVariant.FromValue<int>(value));
 			}
 		}
 		public string DetailedText {
 			get {
-				return Property("DetailedText").Value<string>();
+				return Property("detailedText").Value<string>();
 			}
 			set {
-				SetProperty("DetailedText", QVariant.FromValue<string>(value));
+				SetProperty("detailedText", QVariant.FromValue<string>(value));
 			}
 		}
 		public string InformativeText {
 			get {
-				return Property("InformativeText").Value<string>();
+				return Property("informativeText").Value<string>();
 			}
 			set {
-				SetProperty("InformativeText", QVariant.FromValue<string>(value));
+				SetProperty("informativeText", QVariant.FromValue<string>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

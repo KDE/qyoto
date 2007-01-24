@@ -40,34 +40,34 @@ namespace Qyoto {
 		}
 		public bool Floating {
 			get {
-				return Property("Floating").Value<bool>();
+				return Property("floating").Value<bool>();
 			}
 			set {
-				SetProperty("Floating", QVariant.FromValue<bool>(value));
+				SetProperty("floating", QVariant.FromValue<bool>(value));
 			}
 		}
 		public int Features {
 			get {
-				return Property("Features").Value<int>();
+				return Property("features").Value<int>();
 			}
 			set {
-				SetProperty("Features", QVariant.FromValue<int>(value));
+				SetProperty("features", QVariant.FromValue<int>(value));
 			}
 		}
 		public int AllowedAreas {
 			get {
-				return Property("AllowedAreas").Value<int>();
+				return Property("allowedAreas").Value<int>();
 			}
 			set {
-				SetProperty("AllowedAreas", QVariant.FromValue<int>(value));
+				SetProperty("allowedAreas", QVariant.FromValue<int>(value));
 			}
 		}
 		public string WindowTitle {
 			get {
-				return Property("WindowTitle").Value<string>();
+				return Property("windowTitle").Value<string>();
 			}
 			set {
-				SetProperty("WindowTitle", QVariant.FromValue<string>(value));
+				SetProperty("windowTitle", QVariant.FromValue<string>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

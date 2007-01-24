@@ -47,26 +47,26 @@ namespace Qyoto {
 		}
 		public int Duration {
 			get {
-				return Property("Duration").Value<int>();
+				return Property("duration").Value<int>();
 			}
 			set {
-				SetProperty("Duration", QVariant.FromValue<int>(value));
+				SetProperty("duration", QVariant.FromValue<int>(value));
 			}
 		}
 		public int UpdateInterval {
 			get {
-				return Property("UpdateInterval").Value<int>();
+				return Property("updateInterval").Value<int>();
 			}
 			set {
-				SetProperty("UpdateInterval", QVariant.FromValue<int>(value));
+				SetProperty("updateInterval", QVariant.FromValue<int>(value));
 			}
 		}
 		public int CurrentTime {
 			get {
-				return Property("CurrentTime").Value<int>();
+				return Property("currentTime").Value<int>();
 			}
 			set {
-				SetProperty("CurrentTime", QVariant.FromValue<int>(value));
+				SetProperty("currentTime", QVariant.FromValue<int>(value));
 			}
 		}
 		public int direction {
@@ -79,10 +79,10 @@ namespace Qyoto {
 		}
 		public int LoopCount {
 			get {
-				return Property("LoopCount").Value<int>();
+				return Property("loopCount").Value<int>();
 			}
 			set {
-				SetProperty("LoopCount", QVariant.FromValue<int>(value));
+				SetProperty("loopCount", QVariant.FromValue<int>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

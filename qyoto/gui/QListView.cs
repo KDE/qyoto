@@ -54,58 +54,58 @@ namespace Qyoto {
 		}
 		public bool IsWrapping {
 			get {
-				return Property("IsWrapping").Value<bool>();
+				return Property("isWrapping").Value<bool>();
 			}
 			set {
-				SetProperty("IsWrapping", QVariant.FromValue<bool>(value));
+				SetProperty("isWrapping", QVariant.FromValue<bool>(value));
 			}
 		}
 		public int Spacing {
 			get {
-				return Property("Spacing").Value<int>();
+				return Property("spacing").Value<int>();
 			}
 			set {
-				SetProperty("Spacing", QVariant.FromValue<int>(value));
+				SetProperty("spacing", QVariant.FromValue<int>(value));
 			}
 		}
 		public QSize GridSize {
 			get {
-				return Property("GridSize").Value<QSize>();
+				return Property("gridSize").Value<QSize>();
 			}
 			set {
-				SetProperty("GridSize", QVariant.FromValue<QSize>(value));
+				SetProperty("gridSize", QVariant.FromValue<QSize>(value));
 			}
 		}
 		public int ModelColumn {
 			get {
-				return Property("ModelColumn").Value<int>();
+				return Property("modelColumn").Value<int>();
 			}
 			set {
-				SetProperty("ModelColumn", QVariant.FromValue<int>(value));
+				SetProperty("modelColumn", QVariant.FromValue<int>(value));
 			}
 		}
 		public bool UniformItemSizes {
 			get {
-				return Property("UniformItemSizes").Value<bool>();
+				return Property("uniformItemSizes").Value<bool>();
 			}
 			set {
-				SetProperty("UniformItemSizes", QVariant.FromValue<bool>(value));
+				SetProperty("uniformItemSizes", QVariant.FromValue<bool>(value));
 			}
 		}
 		public int BatchSize {
 			get {
-				return Property("BatchSize").Value<int>();
+				return Property("batchSize").Value<int>();
 			}
 			set {
-				SetProperty("BatchSize", QVariant.FromValue<int>(value));
+				SetProperty("batchSize", QVariant.FromValue<int>(value));
 			}
 		}
 		public bool WordWrap {
 			get {
-				return Property("WordWrap").Value<bool>();
+				return Property("wordWrap").Value<bool>();
 			}
 			set {
-				SetProperty("WordWrap", QVariant.FromValue<bool>(value));
+				SetProperty("wordWrap", QVariant.FromValue<bool>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

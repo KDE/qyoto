@@ -46,26 +46,26 @@ namespace Qyoto {
 		}
 		public string ToolTip {
 			get {
-				return Property("ToolTip").Value<string>();
+				return Property("toolTip").Value<string>();
 			}
 			set {
-				SetProperty("ToolTip", QVariant.FromValue<string>(value));
+				SetProperty("toolTip", QVariant.FromValue<string>(value));
 			}
 		}
 		public QIcon Icon {
 			get {
-				return Property("Icon").Value<QIcon>();
+				return Property("icon").Value<QIcon>();
 			}
 			set {
-				SetProperty("Icon", QVariant.FromValue<QIcon>(value));
+				SetProperty("icon", QVariant.FromValue<QIcon>(value));
 			}
 		}
 		public bool Visible {
 			get {
-				return Property("Visible").Value<bool>();
+				return Property("visible").Value<bool>();
 			}
 			set {
-				SetProperty("Visible", QVariant.FromValue<bool>(value));
+				SetProperty("visible", QVariant.FromValue<bool>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

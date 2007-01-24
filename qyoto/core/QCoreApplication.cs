@@ -70,26 +70,26 @@ namespace Qyoto {
 		}
 		public string ApplicationName {
 			get {
-				return Property("ApplicationName").Value<string>();
+				return Property("applicationName").Value<string>();
 			}
 			set {
-				SetProperty("ApplicationName", QVariant.FromValue<string>(value));
+				SetProperty("applicationName", QVariant.FromValue<string>(value));
 			}
 		}
 		public string OrganizationName {
 			get {
-				return Property("OrganizationName").Value<string>();
+				return Property("organizationName").Value<string>();
 			}
 			set {
-				SetProperty("OrganizationName", QVariant.FromValue<string>(value));
+				SetProperty("organizationName", QVariant.FromValue<string>(value));
 			}
 		}
 		public string OrganizationDomain {
 			get {
-				return Property("OrganizationDomain").Value<string>();
+				return Property("organizationDomain").Value<string>();
 			}
 			set {
-				SetProperty("OrganizationDomain", QVariant.FromValue<string>(value));
+				SetProperty("organizationDomain", QVariant.FromValue<string>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

@@ -32,34 +32,34 @@ namespace Qyoto {
 
 		public Qt.Orientation Orientation {
 			get {
-				return Property("Orientation").Value<Qt.Orientation>();
+				return Property("orientation").Value<Qt.Orientation>();
 			}
 			set {
-				SetProperty("Orientation", QVariant.FromValue<Qt.Orientation>(value));
+				SetProperty("orientation", QVariant.FromValue<Qt.Orientation>(value));
 			}
 		}
 		public bool OpaqueResize {
 			get {
-				return Property("OpaqueResize").Value<bool>();
+				return Property("opaqueResize").Value<bool>();
 			}
 			set {
-				SetProperty("OpaqueResize", QVariant.FromValue<bool>(value));
+				SetProperty("opaqueResize", QVariant.FromValue<bool>(value));
 			}
 		}
 		public int HandleWidth {
 			get {
-				return Property("HandleWidth").Value<int>();
+				return Property("handleWidth").Value<int>();
 			}
 			set {
-				SetProperty("HandleWidth", QVariant.FromValue<int>(value));
+				SetProperty("handleWidth", QVariant.FromValue<int>(value));
 			}
 		}
 		public bool ChildrenCollapsible {
 			get {
-				return Property("ChildrenCollapsible").Value<bool>();
+				return Property("childrenCollapsible").Value<bool>();
 			}
 			set {
-				SetProperty("ChildrenCollapsible", QVariant.FromValue<bool>(value));
+				SetProperty("childrenCollapsible", QVariant.FromValue<bool>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

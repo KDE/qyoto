@@ -31,18 +31,18 @@ namespace Qyoto {
 
 		public Qt.ScrollBarPolicy VerticalScrollBarPolicy {
 			get {
-				return Property("VerticalScrollBarPolicy").Value<Qt.ScrollBarPolicy>();
+				return Property("verticalScrollBarPolicy").Value<Qt.ScrollBarPolicy>();
 			}
 			set {
-				SetProperty("VerticalScrollBarPolicy", QVariant.FromValue<Qt.ScrollBarPolicy>(value));
+				SetProperty("verticalScrollBarPolicy", QVariant.FromValue<Qt.ScrollBarPolicy>(value));
 			}
 		}
 		public Qt.ScrollBarPolicy HorizontalScrollBarPolicy {
 			get {
-				return Property("HorizontalScrollBarPolicy").Value<Qt.ScrollBarPolicy>();
+				return Property("horizontalScrollBarPolicy").Value<Qt.ScrollBarPolicy>();
 			}
 			set {
-				SetProperty("HorizontalScrollBarPolicy", QVariant.FromValue<Qt.ScrollBarPolicy>(value));
+				SetProperty("horizontalScrollBarPolicy", QVariant.FromValue<Qt.ScrollBarPolicy>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

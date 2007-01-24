@@ -30,10 +30,10 @@ namespace Qyoto {
 
 		public bool Clipping {
 			get {
-				return Property("Clipping").Value<bool>();
+				return Property("clipping").Value<bool>();
 			}
 			set {
-				SetProperty("Clipping", QVariant.FromValue<bool>(value));
+				SetProperty("clipping", QVariant.FromValue<bool>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

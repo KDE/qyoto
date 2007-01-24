@@ -47,90 +47,90 @@ namespace Qyoto {
 		}
 		public int Minimum {
 			get {
-				return Property("Minimum").Value<int>();
+				return Property("minimum").Value<int>();
 			}
 			set {
-				SetProperty("Minimum", QVariant.FromValue<int>(value));
+				SetProperty("minimum", QVariant.FromValue<int>(value));
 			}
 		}
 		public int Maximum {
 			get {
-				return Property("Maximum").Value<int>();
+				return Property("maximum").Value<int>();
 			}
 			set {
-				SetProperty("Maximum", QVariant.FromValue<int>(value));
+				SetProperty("maximum", QVariant.FromValue<int>(value));
 			}
 		}
 		public int SingleStep {
 			get {
-				return Property("SingleStep").Value<int>();
+				return Property("singleStep").Value<int>();
 			}
 			set {
-				SetProperty("SingleStep", QVariant.FromValue<int>(value));
+				SetProperty("singleStep", QVariant.FromValue<int>(value));
 			}
 		}
 		public int PageStep {
 			get {
-				return Property("PageStep").Value<int>();
+				return Property("pageStep").Value<int>();
 			}
 			set {
-				SetProperty("PageStep", QVariant.FromValue<int>(value));
+				SetProperty("pageStep", QVariant.FromValue<int>(value));
 			}
 		}
 		public int Value {
 			get {
-				return Property("Value").Value<int>();
+				return Property("value").Value<int>();
 			}
 			set {
-				SetProperty("Value", QVariant.FromValue<int>(value));
+				SetProperty("value", QVariant.FromValue<int>(value));
 			}
 		}
 		public int SliderPosition {
 			get {
-				return Property("SliderPosition").Value<int>();
+				return Property("sliderPosition").Value<int>();
 			}
 			set {
-				SetProperty("SliderPosition", QVariant.FromValue<int>(value));
+				SetProperty("sliderPosition", QVariant.FromValue<int>(value));
 			}
 		}
 		public bool Tracking {
 			get {
-				return Property("Tracking").Value<bool>();
+				return Property("tracking").Value<bool>();
 			}
 			set {
-				SetProperty("Tracking", QVariant.FromValue<bool>(value));
+				SetProperty("tracking", QVariant.FromValue<bool>(value));
 			}
 		}
 		public Qt.Orientation Orientation {
 			get {
-				return Property("Orientation").Value<Qt.Orientation>();
+				return Property("orientation").Value<Qt.Orientation>();
 			}
 			set {
-				SetProperty("Orientation", QVariant.FromValue<Qt.Orientation>(value));
+				SetProperty("orientation", QVariant.FromValue<Qt.Orientation>(value));
 			}
 		}
 		public bool InvertedAppearance {
 			get {
-				return Property("InvertedAppearance").Value<bool>();
+				return Property("invertedAppearance").Value<bool>();
 			}
 			set {
-				SetProperty("InvertedAppearance", QVariant.FromValue<bool>(value));
+				SetProperty("invertedAppearance", QVariant.FromValue<bool>(value));
 			}
 		}
 		public bool InvertedControls {
 			get {
-				return Property("InvertedControls").Value<bool>();
+				return Property("invertedControls").Value<bool>();
 			}
 			set {
-				SetProperty("InvertedControls", QVariant.FromValue<bool>(value));
+				SetProperty("invertedControls", QVariant.FromValue<bool>(value));
 			}
 		}
 		public bool SliderDown {
 			get {
-				return Property("SliderDown").Value<bool>();
+				return Property("sliderDown").Value<bool>();
 			}
 			set {
-				SetProperty("SliderDown", QVariant.FromValue<bool>(value));
+				SetProperty("sliderDown", QVariant.FromValue<bool>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

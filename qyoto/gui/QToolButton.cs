@@ -36,26 +36,26 @@ namespace Qyoto {
 		}
 		public Qt.ToolButtonStyle ToolButtonStyle {
 			get {
-				return Property("ToolButtonStyle").Value<Qt.ToolButtonStyle>();
+				return Property("toolButtonStyle").Value<Qt.ToolButtonStyle>();
 			}
 			set {
-				SetProperty("ToolButtonStyle", QVariant.FromValue<Qt.ToolButtonStyle>(value));
+				SetProperty("toolButtonStyle", QVariant.FromValue<Qt.ToolButtonStyle>(value));
 			}
 		}
 		public bool AutoRaise {
 			get {
-				return Property("AutoRaise").Value<bool>();
+				return Property("autoRaise").Value<bool>();
 			}
 			set {
-				SetProperty("AutoRaise", QVariant.FromValue<bool>(value));
+				SetProperty("autoRaise", QVariant.FromValue<bool>(value));
 			}
 		}
 		public Qt.ArrowType ArrowType {
 			get {
-				return Property("ArrowType").Value<Qt.ArrowType>();
+				return Property("arrowType").Value<Qt.ArrowType>();
 			}
 			set {
-				SetProperty("ArrowType", QVariant.FromValue<Qt.ArrowType>(value));
+				SetProperty("arrowType", QVariant.FromValue<Qt.ArrowType>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

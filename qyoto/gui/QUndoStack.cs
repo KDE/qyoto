@@ -31,10 +31,10 @@ namespace Qyoto {
 
 		public bool Active {
 			get {
-				return Property("Active").Value<bool>();
+				return Property("active").Value<bool>();
 			}
 			set {
-				SetProperty("Active", QVariant.FromValue<bool>(value));
+				SetProperty("active", QVariant.FromValue<bool>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

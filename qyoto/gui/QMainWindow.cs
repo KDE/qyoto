@@ -31,34 +31,34 @@ namespace Qyoto {
 
 		public QSize IconSize {
 			get {
-				return Property("IconSize").Value<QSize>();
+				return Property("iconSize").Value<QSize>();
 			}
 			set {
-				SetProperty("IconSize", QVariant.FromValue<QSize>(value));
+				SetProperty("iconSize", QVariant.FromValue<QSize>(value));
 			}
 		}
 		public Qt.ToolButtonStyle ToolButtonStyle {
 			get {
-				return Property("ToolButtonStyle").Value<Qt.ToolButtonStyle>();
+				return Property("toolButtonStyle").Value<Qt.ToolButtonStyle>();
 			}
 			set {
-				SetProperty("ToolButtonStyle", QVariant.FromValue<Qt.ToolButtonStyle>(value));
+				SetProperty("toolButtonStyle", QVariant.FromValue<Qt.ToolButtonStyle>(value));
 			}
 		}
 		public bool Animated {
 			get {
-				return Property("Animated").Value<bool>();
+				return Property("animated").Value<bool>();
 			}
 			set {
-				SetProperty("Animated", QVariant.FromValue<bool>(value));
+				SetProperty("animated", QVariant.FromValue<bool>(value));
 			}
 		}
 		public bool DockNestingEnabled {
 			get {
-				return Property("DockNestingEnabled").Value<bool>();
+				return Property("dockNestingEnabled").Value<bool>();
 			}
 			set {
-				SetProperty("DockNestingEnabled", QVariant.FromValue<bool>(value));
+				SetProperty("dockNestingEnabled", QVariant.FromValue<bool>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

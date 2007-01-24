@@ -46,106 +46,106 @@ namespace Qyoto {
 		}
 		public bool Editable {
 			get {
-				return Property("Editable").Value<bool>();
+				return Property("editable").Value<bool>();
 			}
 			set {
-				SetProperty("Editable", QVariant.FromValue<bool>(value));
+				SetProperty("editable", QVariant.FromValue<bool>(value));
 			}
 		}
 		public int Count {
 			get {
-				return Property("Count").Value<int>();
+				return Property("count").Value<int>();
 			}
 			set {
-				SetProperty("Count", QVariant.FromValue<int>(value));
+				SetProperty("count", QVariant.FromValue<int>(value));
 			}
 		}
 		public string CurrentText {
 			get {
-				return Property("CurrentText").Value<string>();
+				return Property("currentText").Value<string>();
 			}
 			set {
-				SetProperty("CurrentText", QVariant.FromValue<string>(value));
+				SetProperty("currentText", QVariant.FromValue<string>(value));
 			}
 		}
 		public int CurrentIndex {
 			get {
-				return Property("CurrentIndex").Value<int>();
+				return Property("currentIndex").Value<int>();
 			}
 			set {
-				SetProperty("CurrentIndex", QVariant.FromValue<int>(value));
+				SetProperty("currentIndex", QVariant.FromValue<int>(value));
 			}
 		}
 		public int MaxVisibleItems {
 			get {
-				return Property("MaxVisibleItems").Value<int>();
+				return Property("maxVisibleItems").Value<int>();
 			}
 			set {
-				SetProperty("MaxVisibleItems", QVariant.FromValue<int>(value));
+				SetProperty("maxVisibleItems", QVariant.FromValue<int>(value));
 			}
 		}
 		public int MaxCount {
 			get {
-				return Property("MaxCount").Value<int>();
+				return Property("maxCount").Value<int>();
 			}
 			set {
-				SetProperty("MaxCount", QVariant.FromValue<int>(value));
+				SetProperty("maxCount", QVariant.FromValue<int>(value));
 			}
 		}
 		public int MinimumContentsLength {
 			get {
-				return Property("MinimumContentsLength").Value<int>();
+				return Property("minimumContentsLength").Value<int>();
 			}
 			set {
-				SetProperty("MinimumContentsLength", QVariant.FromValue<int>(value));
+				SetProperty("minimumContentsLength", QVariant.FromValue<int>(value));
 			}
 		}
 		public QSize IconSize {
 			get {
-				return Property("IconSize").Value<QSize>();
+				return Property("iconSize").Value<QSize>();
 			}
 			set {
-				SetProperty("IconSize", QVariant.FromValue<QSize>(value));
+				SetProperty("iconSize", QVariant.FromValue<QSize>(value));
 			}
 		}
 		public bool AutoCompletion {
 			get {
-				return Property("AutoCompletion").Value<bool>();
+				return Property("autoCompletion").Value<bool>();
 			}
 			set {
-				SetProperty("AutoCompletion", QVariant.FromValue<bool>(value));
+				SetProperty("autoCompletion", QVariant.FromValue<bool>(value));
 			}
 		}
 		public Qt.CaseSensitivity AutoCompletionCaseSensitivity {
 			get {
-				return Property("AutoCompletionCaseSensitivity").Value<Qt.CaseSensitivity>();
+				return Property("autoCompletionCaseSensitivity").Value<Qt.CaseSensitivity>();
 			}
 			set {
-				SetProperty("AutoCompletionCaseSensitivity", QVariant.FromValue<Qt.CaseSensitivity>(value));
+				SetProperty("autoCompletionCaseSensitivity", QVariant.FromValue<Qt.CaseSensitivity>(value));
 			}
 		}
 		public bool DuplicatesEnabled {
 			get {
-				return Property("DuplicatesEnabled").Value<bool>();
+				return Property("duplicatesEnabled").Value<bool>();
 			}
 			set {
-				SetProperty("DuplicatesEnabled", QVariant.FromValue<bool>(value));
+				SetProperty("duplicatesEnabled", QVariant.FromValue<bool>(value));
 			}
 		}
 		public bool Frame {
 			get {
-				return Property("Frame").Value<bool>();
+				return Property("frame").Value<bool>();
 			}
 			set {
-				SetProperty("Frame", QVariant.FromValue<bool>(value));
+				SetProperty("frame", QVariant.FromValue<bool>(value));
 			}
 		}
 		public int ModelColumn {
 			get {
-				return Property("ModelColumn").Value<int>();
+				return Property("modelColumn").Value<int>();
 			}
 			set {
-				SetProperty("ModelColumn", QVariant.FromValue<int>(value));
+				SetProperty("modelColumn", QVariant.FromValue<int>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

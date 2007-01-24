@@ -30,18 +30,18 @@ namespace Qyoto {
 
 		public bool WidgetResizable {
 			get {
-				return Property("WidgetResizable").Value<bool>();
+				return Property("widgetResizable").Value<bool>();
 			}
 			set {
-				SetProperty("WidgetResizable", QVariant.FromValue<bool>(value));
+				SetProperty("widgetResizable", QVariant.FromValue<bool>(value));
 			}
 		}
 		public int Alignment {
 			get {
-				return Property("Alignment").Value<int>();
+				return Property("alignment").Value<int>();
 			}
 			set {
-				SetProperty("Alignment", QVariant.FromValue<int>(value));
+				SetProperty("alignment", QVariant.FromValue<int>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

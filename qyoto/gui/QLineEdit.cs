@@ -37,34 +37,34 @@ namespace Qyoto {
 		}
 		public string InputMask {
 			get {
-				return Property("InputMask").Value<string>();
+				return Property("inputMask").Value<string>();
 			}
 			set {
-				SetProperty("InputMask", QVariant.FromValue<string>(value));
+				SetProperty("inputMask", QVariant.FromValue<string>(value));
 			}
 		}
 		public string Text {
 			get {
-				return Property("Text").Value<string>();
+				return Property("text").Value<string>();
 			}
 			set {
-				SetProperty("Text", QVariant.FromValue<string>(value));
+				SetProperty("text", QVariant.FromValue<string>(value));
 			}
 		}
 		public int MaxLength {
 			get {
-				return Property("MaxLength").Value<int>();
+				return Property("maxLength").Value<int>();
 			}
 			set {
-				SetProperty("MaxLength", QVariant.FromValue<int>(value));
+				SetProperty("maxLength", QVariant.FromValue<int>(value));
 			}
 		}
 		public bool Frame {
 			get {
-				return Property("Frame").Value<bool>();
+				return Property("frame").Value<bool>();
 			}
 			set {
-				SetProperty("Frame", QVariant.FromValue<bool>(value));
+				SetProperty("frame", QVariant.FromValue<bool>(value));
 			}
 		}
 		public int echoMode {
@@ -77,90 +77,90 @@ namespace Qyoto {
 		}
 		public string DisplayText {
 			get {
-				return Property("DisplayText").Value<string>();
+				return Property("displayText").Value<string>();
 			}
 			set {
-				SetProperty("DisplayText", QVariant.FromValue<string>(value));
+				SetProperty("displayText", QVariant.FromValue<string>(value));
 			}
 		}
 		public int CursorPosition {
 			get {
-				return Property("CursorPosition").Value<int>();
+				return Property("cursorPosition").Value<int>();
 			}
 			set {
-				SetProperty("CursorPosition", QVariant.FromValue<int>(value));
+				SetProperty("cursorPosition", QVariant.FromValue<int>(value));
 			}
 		}
 		public int Alignment {
 			get {
-				return Property("Alignment").Value<int>();
+				return Property("alignment").Value<int>();
 			}
 			set {
-				SetProperty("Alignment", QVariant.FromValue<int>(value));
+				SetProperty("alignment", QVariant.FromValue<int>(value));
 			}
 		}
 		public bool Modified {
 			get {
-				return Property("Modified").Value<bool>();
+				return Property("modified").Value<bool>();
 			}
 			set {
-				SetProperty("Modified", QVariant.FromValue<bool>(value));
+				SetProperty("modified", QVariant.FromValue<bool>(value));
 			}
 		}
 		public bool HasSelectedText {
 			get {
-				return Property("HasSelectedText").Value<bool>();
+				return Property("hasSelectedText").Value<bool>();
 			}
 			set {
-				SetProperty("HasSelectedText", QVariant.FromValue<bool>(value));
+				SetProperty("hasSelectedText", QVariant.FromValue<bool>(value));
 			}
 		}
 		public string SelectedText {
 			get {
-				return Property("SelectedText").Value<string>();
+				return Property("selectedText").Value<string>();
 			}
 			set {
-				SetProperty("SelectedText", QVariant.FromValue<string>(value));
+				SetProperty("selectedText", QVariant.FromValue<string>(value));
 			}
 		}
 		public bool DragEnabled {
 			get {
-				return Property("DragEnabled").Value<bool>();
+				return Property("dragEnabled").Value<bool>();
 			}
 			set {
-				SetProperty("DragEnabled", QVariant.FromValue<bool>(value));
+				SetProperty("dragEnabled", QVariant.FromValue<bool>(value));
 			}
 		}
 		public bool ReadOnly {
 			get {
-				return Property("ReadOnly").Value<bool>();
+				return Property("readOnly").Value<bool>();
 			}
 			set {
-				SetProperty("ReadOnly", QVariant.FromValue<bool>(value));
+				SetProperty("readOnly", QVariant.FromValue<bool>(value));
 			}
 		}
 		public bool UndoAvailable {
 			get {
-				return Property("UndoAvailable").Value<bool>();
+				return Property("undoAvailable").Value<bool>();
 			}
 			set {
-				SetProperty("UndoAvailable", QVariant.FromValue<bool>(value));
+				SetProperty("undoAvailable", QVariant.FromValue<bool>(value));
 			}
 		}
 		public bool RedoAvailable {
 			get {
-				return Property("RedoAvailable").Value<bool>();
+				return Property("redoAvailable").Value<bool>();
 			}
 			set {
-				SetProperty("RedoAvailable", QVariant.FromValue<bool>(value));
+				SetProperty("redoAvailable", QVariant.FromValue<bool>(value));
 			}
 		}
 		public bool AcceptableInput {
 			get {
-				return Property("AcceptableInput").Value<bool>();
+				return Property("acceptableInput").Value<bool>();
 			}
 			set {
-				SetProperty("AcceptableInput", QVariant.FromValue<bool>(value));
+				SetProperty("acceptableInput", QVariant.FromValue<bool>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

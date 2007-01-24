@@ -42,10 +42,10 @@ namespace Qyoto {
 		}
 		public int Speed {
 			get {
-				return Property("Speed").Value<int>();
+				return Property("speed").Value<int>();
 			}
 			set {
-				SetProperty("Speed", QVariant.FromValue<int>(value));
+				SetProperty("speed", QVariant.FromValue<int>(value));
 			}
 		}
 		public int cacheMode {
