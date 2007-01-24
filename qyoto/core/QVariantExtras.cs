@@ -52,6 +52,8 @@ namespace Qyoto {
 				return (T) (object) ToUInt();
 			} else if (typeof(T) == typeof(QUrl)) {
 				return (T) (object) ToUrl();
+			} else if (typeof(T).IsEnum) {
+				return (T) (object) ToInt();
 			} else {
 				return (T) (object) default(T);
 			}
@@ -102,6 +104,8 @@ namespace Qyoto {
 				return new QVariant((uint) value);
 			} else if (typeof(T) == typeof(QUrl)) {
 				return new QVariant((QUrl) value);
+			} else if (typeof(T).IsEnum) {
+				return new QVariant((int) value);
 			} else {
 				return new QVariant();
 			}

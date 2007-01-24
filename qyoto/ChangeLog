@@ -4,6 +4,7 @@
 	  and get methods removed from the api
 	* QDomNodeList is no longer an ArrayList type
 	* Added QList<QRgb> as a C# List<uint> type
+	* QVariant.Value() and QVariant.FromValue() now work correctly with enums
 
 2007-22-01  Arno Rehn  <arno@arnorehn.de>
 
