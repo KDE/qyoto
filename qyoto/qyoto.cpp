@@ -927,7 +927,9 @@ static QByteArray * currentSignature = 0;
 void *
 QVariantValue(char * typeName, void * variant)
 {
+#ifdef DEBUG
 	printf("ENTER QVariantValue(typeName: %s variant: 0x%8.8x)\n", typeName, variant);
+#endif
 	smokeqyoto_object *o = value_obj_info(variant);
 	void * value = QMetaType::construct(	QMetaType::type(typeName), 
 											(void *) ((QVariant *)o->ptr)->constData() );
@@ -940,7 +942,9 @@ QVariantValue(char * typeName, void * variant)
 void *
 QVariantFromValue(int type, void * value)
 {
+#ifdef DEBUG
 	printf("ENTER QVariantFromValue(type: %d value: 0x%8.8x)\n", type, value);
+#endif
 	smokeqyoto_object *o = value_obj_info(value);
 	QVariant * v = new QVariant(type, o->ptr);
 	int id = o->smoke->idClass("QVariant");
