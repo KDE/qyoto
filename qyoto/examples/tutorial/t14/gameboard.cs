@@ -39,43 +39,43 @@ class GameBoard : QWidget {
 		Connect(quit, SIGNAL("clicked()"), qApp, SLOT("quit()"));
 		
 		LCDRange angle = new LCDRange(Tr("ANGLE"));
-		angle.setRange(5, 70);
+		angle.SetRange(5, 70);
 
 		LCDRange force = new LCDRange(Tr("FORCE"));
-		force.setRange(10, 50);
+		force.SetRange(10, 50);
 
 		QFrame cannonBox = new QFrame();
 		cannonBox.SetFrameStyle((int) (QFrame.Shape.WinPanel | QFrame.Shadow.Sunken));
 
 		cannonField = new CannonField();
 
-		Connect(angle, SIGNAL("valueChanged(int)"),
-			cannonField, SLOT("setAngle(int)"));
-		Connect(cannonField, SIGNAL("angleChanged(int)"),
-			angle, SLOT("setValue(int)"));
+		Connect(angle, SIGNAL("ValueChanged(int)"),
+			cannonField, SLOT("SetAngle(int)"));
+		Connect(cannonField, SIGNAL("AngleChanged(int)"),
+			angle, SLOT("SetValue(int)"));
 		
-		Connect(force, SIGNAL("valueChanged(int)"),
-			cannonField, SLOT("setForce(int)"));
-		Connect(cannonField, SIGNAL("forceChanged(int)"),
-			force, SLOT("setValue(int)"));
+		Connect(force, SIGNAL("ValueChanged(int)"),
+			cannonField, SLOT("SetForce(int)"));
+		Connect(cannonField, SIGNAL("ForceChanged(int)"),
+			force, SLOT("SetValue(int)"));
 
-		Connect(cannonField, SIGNAL("hit()"),
-			this, SLOT("hit()"));
-		Connect(cannonField, SIGNAL("missed()"),
-			this, SLOT("missed()"));
+		Connect(cannonField, SIGNAL("Hit()"),
+			this, SLOT("Hit()"));
+		Connect(cannonField, SIGNAL("Missed()"),
+			this, SLOT("Missed()"));
 
 		QPushButton shoot = new QPushButton("&Shoot");
 		shoot.Font = new QFont("Times", 18, (int) QFont.Weight.Bold);
 
 		Connect(shoot, SIGNAL("clicked()"),
-			this, SLOT("fire()"));
-		Connect(cannonField, SIGNAL("canShoot(bool)"),
+			this, SLOT("Fire()"));
+		Connect(cannonField, SIGNAL("CanShoot(bool)"),
 			shoot, SLOT("setEnabled(bool)"));
 
 		QPushButton restart = new QPushButton(Tr("&New Game"));
 		restart.Font = new QFont("Times", 18, (int) QFont.Weight.Bold);
 
-		Connect(restart, SIGNAL("clicked()"), this, SLOT("newGame()"));
+		Connect(restart, SIGNAL("clicked()"), this, SLOT("NewGame()"));
 
 		hits = new QLCDNumber(2);
 		hits.segmentStyle = QLCDNumber.SegmentStyle.Filled;
@@ -86,8 +86,8 @@ class GameBoard : QWidget {
 		QLabel hitsLabel = new QLabel(Tr("HITS"));
 		QLabel shotsLeftLabel = new QLabel(Tr("SHOTS LEFT"));
 
-		new QShortcut(new QKeySequence((int) Qt.Key.Key_Enter), this, SLOT("fire()"));
-		new QShortcut(new QKeySequence((int) Qt.Key.Key_Return), this, SLOT("fire()"));
+		new QShortcut(new QKeySequence((int) Qt.Key.Key_Enter), this, SLOT("Fire()"));
+		new QShortcut(new QKeySequence((int) Qt.Key.Key_Return), this, SLOT("Fire()"));
 		new QShortcut(new QKeySequence((int) Qt.Key.Key_Control + (int) Qt.Key.Key_Q), this, SLOT("close()"));
 
 		QHBoxLayout topLayout = new QHBoxLayout();
@@ -115,41 +115,41 @@ class GameBoard : QWidget {
 		gridLayout.SetColumnStretch(1, 10);
 		SetLayout(gridLayout);
 
-		angle.setValue(60);
-		force.setValue(25);
+		angle.SetValue(60);
+		force.SetValue(25);
 		angle.SetFocus();
 
-		newGame();
+		NewGame();
 	}
 
 	[Q_SLOT]
-	protected void fire() {
-		if (cannonField.gameOver() || cannonField.isShooting())
+	protected void Fire() {
+		if (cannonField.GameOver() || cannonField.IsShooting())
 			return;
 		shotsLeft.Display(shotsLeft.IntValue - 1);
-		cannonField.shoot();
+		cannonField.Shoot();
 	}
 
 	[Q_SLOT]
-	protected void hit() {
+	protected void Hit() {
 		hits.Display(hits.IntValue + 1);
 		if (shotsLeft.IntValue == 0)
-			cannonField.setGameOver();
+			cannonField.SetGameOver();
 		else
-			cannonField.newTarget();
+			cannonField.NewTarget();
 	}
 
 	[Q_SLOT]
-	protected void missed() {
+	protected void Missed() {
 		if (shotsLeft.IntValue == 0)
-			cannonField.setGameOver();
+			cannonField.SetGameOver();
 	}
 
 	[Q_SLOT]
-	protected void newGame() {
+	protected void NewGame() {
 		shotsLeft.Display(15);
 		hits.Display(0);
-		cannonField.restartGame();
-		cannonField.newTarget();
+		cannonField.RestartGame();
+		cannonField.NewTarget();
 	}
 }

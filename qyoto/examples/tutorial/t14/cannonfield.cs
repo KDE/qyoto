@@ -44,7 +44,7 @@ class CannonField : QWidget {
 		currentForce = 0;
 		timerCount = 0;
 		autoShootTimer = new QTimer(this);
-		Connect(autoShootTimer, SIGNAL("timeout()"), this, SLOT("moveShot()"));
+		Connect(autoShootTimer, SIGNAL("timeout()"), this, SLOT("MoveShot()"));
 		shootAngle = 0;
 		shootForce = 0;
 		target = new QPoint(0, 0);
@@ -52,11 +52,11 @@ class CannonField : QWidget {
 		barrelPressed = false;
 		Palette = new QPalette(new QColor(250, 250, 200));
 		AutoFillBackground = true;
-		newTarget();
+		NewTarget();
 	}
 
 	[Q_SLOT]
-	public void setAngle(int angle) {
+	public void SetAngle(int angle) {
 		if (angle < 5)
 			angle = 5;
 		if (angle > 70)
@@ -64,36 +64,36 @@ class CannonField : QWidget {
 		if (currentAngle == angle)
 			return;
 		currentAngle = angle;
-		Update(cannonRect());
-		Emit.angleChanged(currentAngle);
+		Update(CannonRect());
+		Emit.AngleChanged(currentAngle);
 	}
 
 	[Q_SLOT]
-	public void setForce(int force) {
+	public void SetForce(int force) {
 		if (force < 0)
 			force = 0;
 		if (currentForce == force)
 			return;
 		currentForce = force;
-		Emit.forceChanged(currentForce);
+		Emit.ForceChanged(currentForce);
 	}
 
 	[Q_SLOT]
-	public void shoot() {
-		if (isShooting())
+	public void Shoot() {
+		if (IsShooting())
 			return;
 		timerCount = 0;
 		shootAngle = currentAngle;
 		shootForce = currentForce;
 		autoShootTimer.Start(5);
-		Emit.canShoot(false);
+		Emit.CanShoot(false);
 	}
 
 	private static bool firstTime = true;
 	private Random RandomClass = null;
 
 	[Q_SLOT]
-	public void newTarget() {
+	public void NewTarget() {
 		if (firstTime) {
 			firstTime = false;
 			QTime midnight = new QTime(0, 0, 0);
@@ -105,40 +105,40 @@ class CannonField : QWidget {
 	}
 
 	[Q_SLOT]
-	public void setGameOver() {
+	public void SetGameOver() {
 		if (gameEnded)
 			return;
-		if (isShooting())
+		if (IsShooting())
 			autoShootTimer.Stop();
 		gameEnded = true;
 		Update();
 	}
 
 	[Q_SLOT]
-	public void restartGame() {
-		if (isShooting())
+	public void RestartGame() {
+		if (IsShooting())
         	autoShootTimer.Stop();
 		gameEnded = false;
 		Update();
-		Emit.canShoot(true);
+		Emit.CanShoot(true);
 	}
 
 	[Q_SLOT]
-	private void moveShot() {
-		QRegion region = new QRegion(shotRect());
+	private void MoveShot() {
+		QRegion region = new QRegion(ShotRect());
 		timerCount++;
 
-		QRect shotR = shotRect();
+		QRect shotR = ShotRect();
 
-		if (shotR.Intersects(targetRect())) {
+		if (shotR.Intersects(TargetRect())) {
 			autoShootTimer.Stop();
-			Emit.hit();
-			Emit.canShoot(true);
+			Emit.Hit();
+			Emit.CanShoot(true);
 		} else if (shotR.X() > Width() || shotR.Y() > Height()
-               || shotR.Intersects(barrierRect())) {
+               || shotR.Intersects(BarrierRect())) {
 			autoShootTimer.Stop();
-			Emit.missed();
-			Emit.canShoot(true);
+			Emit.Missed();
+			Emit.CanShoot(true);
 		} else {
 			region = region.Unite(new QRegion(shotR));
 		}
@@ -149,7 +149,7 @@ class CannonField : QWidget {
 	protected override void MousePressEvent(QMouseEvent e) {
 		if (e.Button() != Qt.MouseButton.LeftButton)
 			return;
-		if (barrelHit(e.Pos()))
+		if (BarrelHit(e.Pos()))
 			barrelPressed = true;
 	}
 
@@ -162,7 +162,7 @@ class CannonField : QWidget {
 		if (pos.Y() >= Height())
 			pos.SetY(Height() - 1);
 		double rad = Math.Atan(((double)Rect.Bottom() - pos.Y()) / pos.X());
-		setAngle((int) Math.Round(rad * 180 / 3.14159265));
+		SetAngle((int) Math.Round(rad * 180 / 3.14159265));
 	}
 
 
@@ -180,36 +180,36 @@ class CannonField : QWidget {
 			painter.DrawText(Rect, (int) Qt.AlignmentFlag.AlignCenter, Tr("Game Over"));
 		}
 
-		paintCannon(painter);
-		paintBarrier(painter);
-		if (isShooting())
-			paintShot(painter);
+		PaintCannon(painter);
+		PaintBarrier(painter);
+		if (IsShooting())
+			PaintShot(painter);
 		if (!gameEnded)
-			paintTarget(painter);
+			PaintTarget(painter);
 		painter.End();
 	}
 
-	private void paintShot(QPainter painter) {
+	private void PaintShot(QPainter painter) {
 		painter.SetPen(Qt.PenStyle.NoPen);
 		painter.SetBrush(new QBrush(Qt.GlobalColor.black));
-		painter.DrawRect(shotRect());
+		painter.DrawRect(ShotRect());
 	}
 
-	private void paintTarget(QPainter painter) {
+	private void PaintTarget(QPainter painter) {
 		painter.SetPen(new QColor(Qt.GlobalColor.black));
 		painter.SetBrush(new QBrush(Qt.GlobalColor.red));
-		painter.DrawRect(targetRect());
+		painter.DrawRect(TargetRect());
 	}
 
-	private void paintBarrier(QPainter painter) {
+	private void PaintBarrier(QPainter painter) {
 		painter.SetPen(new QColor(Qt.GlobalColor.black));
 		painter.SetBrush(new QBrush(Qt.GlobalColor.yellow));
-		painter.DrawRect(barrierRect());
+		painter.DrawRect(BarrierRect());
 	}
 
 	public QRect barrelRect = new QRect(30, -5, 20, 10);
 
-	private void paintCannon(QPainter painter) {
+	private void PaintCannon(QPainter painter) {
 		painter.SetPen(Qt.PenStyle.NoPen);
 		painter.SetBrush(new QBrush(Qt.GlobalColor.blue));
 		
@@ -221,13 +221,13 @@ class CannonField : QWidget {
 		painter.Restore();
 	}
 
-	private QRect cannonRect() {
+	private QRect CannonRect() {
 		QRect result = new QRect(0, 0, 50, 50);
 		result.MoveBottomLeft(Rect.BottomLeft());
 		return result;
 	}
 
-	private QRect shotRect() {
+	private QRect ShotRect() {
 		const double gravity = 4;
 		
 		double time = timerCount / 20.0;
@@ -247,18 +247,17 @@ class CannonField : QWidget {
 	}
 
 
-	private QRect targetRect() {
+	private QRect TargetRect() {
 		QRect result = new QRect(0, 0, 20, 10);
 		result.MoveCenter(new QPoint(target.X(), Height() - 1 - target.Y()));
 		return result;
 	}
 
-	private QRect barrierRect() {
+	private QRect BarrierRect() {
 		return new QRect(145, Height() - 100, 15, 99);
 	}
 
-	private bool barrelHit(QPoint pos) {
-
+	private bool BarrelHit(QPoint pos) {
 		QMatrix matrix = new QMatrix();
 		matrix.Translate(0, Height());
 		matrix.Rotate(-currentAngle);
@@ -271,7 +270,7 @@ class CannonField : QWidget {
 		return new QSize(400, 300);
 	}
 
-	public bool isShooting() {
+	public bool IsShooting() {
 		return autoShootTimer.IsActive();
 	}
 
@@ -281,20 +280,20 @@ class CannonField : QWidget {
 		}
 	}
 	
-	public int angle() { return currentAngle; }
-	public int force() { return currentForce; }
-	public bool gameOver() { return gameEnded; }
+	public int Angle() { return currentAngle; }
+	public int Force() { return currentForce; }
+	public bool GameOver() { return gameEnded; }
 }
 
 interface ICannonFieldSignals : IQWidgetSignals {
 	[Q_SIGNAL]
-	void hit();
+	void Hit();
 	[Q_SIGNAL]
-	void missed();
+	void Missed();
 	[Q_SIGNAL]
-	void angleChanged(int newAngle);
+	void AngleChanged(int newAngle);
 	[Q_SIGNAL]
-	void forceChanged(int newForce);
+	void ForceChanged(int newForce);
 	[Q_SIGNAL]
-	void canShoot(bool can);
+	void CanShoot(bool can);
 }

@@ -32,17 +32,17 @@ class LCDRange : QWidget {
 	public LCDRange() : this((QWidget) null) {}
 
 	public LCDRange(QWidget parent) : base(parent) {
-		init();
+		Init();
 	}
 
 	public LCDRange(string text) : this(text, (QWidget) null) {}
 
 	public LCDRange(string text, QWidget parent) : base(parent) {
-		init();
-		setText(text);
+		Init();
+		SetText(text);
 	}
 
-	private void init() {
+	private void Init() {
 		QLCDNumber lcd = new QLCDNumber(2);
 		lcd.segmentStyle = QLCDNumber.SegmentStyle.Filled;
 
@@ -56,7 +56,7 @@ class LCDRange : QWidget {
 		Connect(slider, SIGNAL("valueChanged(int)"),
 			lcd, SLOT("display(int)"));
 		Connect(slider, SIGNAL("valueChanged(int)"),
-			this, SIGNAL("valueChanged(int)"));
+			this, SIGNAL("ValueChanged(int)"));
 
 		QVBoxLayout layout = new QVBoxLayout();
 		layout.AddWidget(lcd);
@@ -67,22 +67,22 @@ class LCDRange : QWidget {
 		SetFocusProxy(slider);
 	}
 
-	public int value() {
+	public int Value() {
 		return slider.Value;
 	}
 
-	public string text() {
+	public string Text() {
 		return label.Text;
 	}
 
 	[Q_SLOT]
-	public void setValue(int value)
+	public void SetValue(int value)
 	{
 		slider.Value = value;
 	}
 
 	[Q_SLOT]
-	public void setRange(int minValue, int maxValue) {
+	public void SetRange(int minValue, int maxValue) {
 		if (minValue < 0 || maxValue > 99 || minValue > maxValue) {
 			Console.WriteLine("LCDRange.setRange({0}, {1})\n\tRange must be 0..99\n\tand minValue must not be greater than maxValue",
 				minValue, maxValue);
@@ -91,7 +91,7 @@ class LCDRange : QWidget {
 		slider.SetRange(minValue, maxValue);
 	}
 
-	public void setText(string text) {
+	public void SetText(string text) {
 		label.Text = text;
 	}
 
@@ -104,5 +104,5 @@ class LCDRange : QWidget {
 
 interface ILCDRangeSignals : IQWidgetSignals {
 	[Q_SIGNAL]
-	void valueChanged(int newValue);
+	void ValueChanged(int newValue);
 }
