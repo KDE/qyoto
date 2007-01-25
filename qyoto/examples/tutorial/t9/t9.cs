@@ -46,8 +46,10 @@ class LCDRange : QWidget {
         slider.SetRange(minValue, maxValue);
 	}
 	
-	protected new ILCDRangeSignals Emit() {
-		return (ILCDRangeSignals) Q_EMIT;
+	protected new ILCDRangeSignals Emit {
+		get {
+			return (ILCDRangeSignals) Q_EMIT;
+		}
 	}
 }
 
@@ -73,7 +75,7 @@ class CannonField : QWidget {
             return;
         currentAngle = angle;
         Update();
-        Emit().AngleChanged(currentAngle);
+        Emit.AngleChanged(currentAngle);
 	}
 	
 	public CannonField() : this ((QWidget) null) { }
@@ -96,8 +98,10 @@ class CannonField : QWidget {
 		}
 	}
 	
-	protected new ICannonFieldSignals Emit() {
-		return (ICannonFieldSignals) Q_EMIT;
+	protected new ICannonFieldSignals Emit {
+		get {
+			return (ICannonFieldSignals) Q_EMIT;
+		}
 	}
 }
 
@@ -140,8 +144,10 @@ class MyWidget : QWidget {
 		QApplication.Exec();
 	}
 	
-	protected new IMyWidgetSignals Emit() {
-		return (IMyWidgetSignals) Q_EMIT;
+	protected new IMyWidgetSignals Emit {
+		get {
+			return (IMyWidgetSignals) Q_EMIT;
+		}
 	}
 }
 

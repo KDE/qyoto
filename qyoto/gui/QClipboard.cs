@@ -143,8 +143,10 @@ namespace Qyoto {
 		public static new string Tr(string s) {
 			return StaticQClipboard().Tr(s);
 		}
-		protected new IQClipboardSignals Emit() {
-			return (IQClipboardSignals) Q_EMIT;
+		protected new IQClipboardSignals Emit {
+			get {
+				return (IQClipboardSignals) Q_EMIT;
+			}
 		}
 	}
 

@@ -239,8 +239,8 @@ namespace Qyoto
 		}
 		
 		public static Type GetSignalsInterface(Type t) {
-			MethodInfo mi = t.GetMethod("Emit", BindingFlags.Instance | BindingFlags.NonPublic);
-			return mi.ReturnType;
+			PropertyInfo pi = t.GetProperty("Emit", BindingFlags.Instance | BindingFlags.NonPublic);
+			return pi.PropertyType;
 		}
 		
 		public static Dictionary<string, string> GetClassInfos(Type t) {

@@ -46,8 +46,10 @@ class LCDRange : QWidget {
         slider.SetRange(minValue, maxValue);
 	}
 	
-	protected new ILCDRangeSignals Emit() {
-		return (ILCDRangeSignals) Q_EMIT;
+	protected new ILCDRangeSignals Emit {
+		get {
+			return (ILCDRangeSignals) Q_EMIT;
+		}
 	}
 }
 
@@ -79,7 +81,7 @@ class CannonField : QWidget {
         currentAngle = angle;
         QRect cr = CannonRect;
         Update(cr.X(), cr.Y(), cr.Width(), cr.Height());
-        Emit().AngleChanged(currentAngle);
+        Emit.AngleChanged(currentAngle);
 	}
 	
 	[Q_SLOT("setForce(int)")]
@@ -89,7 +91,7 @@ class CannonField : QWidget {
 		if (currentForce == force)
 			return;
 		currentForce = force;
-		Emit().ForceChanged(currentForce);
+		Emit.ForceChanged(currentForce);
 	}
 	
 	public CannonField() : this ((QWidget) null) { }
@@ -113,8 +115,10 @@ class CannonField : QWidget {
 		}
 	}
 	
-	protected new ICannonFieldSignals Emit() {
-		return (ICannonFieldSignals) Q_EMIT;
+	protected new ICannonFieldSignals Emit {
+		get {
+			return (ICannonFieldSignals) Q_EMIT;
+		}
 	}
 	
 	private QRect CannonRect {
@@ -180,8 +184,10 @@ class MyWidget : QWidget {
 		QApplication.Exec();
 	}
 	
-	protected new IMyWidgetSignals Emit() {
-		return (IMyWidgetSignals) Q_EMIT;
+	protected new IMyWidgetSignals Emit {
+		get {
+			return (IMyWidgetSignals) Q_EMIT;
+		}
 	}
 }
 

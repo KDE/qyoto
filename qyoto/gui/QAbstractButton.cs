@@ -184,8 +184,10 @@ namespace Qyoto {
 		private void DisposeQAbstractButton() {
 			ProxyQAbstractButton().DisposeQAbstractButton();
 		}
-		protected new IQAbstractButtonSignals Emit() {
-			return (IQAbstractButtonSignals) Q_EMIT;
+		protected new IQAbstractButtonSignals Emit {
+			get {
+				return (IQAbstractButtonSignals) Q_EMIT;
+			}
 		}
 	}
 

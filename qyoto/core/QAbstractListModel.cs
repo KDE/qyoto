@@ -79,8 +79,10 @@ namespace Qyoto {
 		private void DisposeQAbstractListModel() {
 			ProxyQAbstractListModel().DisposeQAbstractListModel();
 		}
-		protected new IQAbstractListModelSignals Emit() {
-			return (IQAbstractListModelSignals) Q_EMIT;
+		protected new IQAbstractListModelSignals Emit {
+			get {
+				return (IQAbstractListModelSignals) Q_EMIT;
+			}
 		}
 	}
 

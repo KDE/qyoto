@@ -67,8 +67,10 @@ namespace Qyoto {
 		private void DisposeQPageSetupDialog() {
 			ProxyQPageSetupDialog().DisposeQPageSetupDialog();
 		}
-		protected new IQPageSetupDialogSignals Emit() {
-			return (IQPageSetupDialogSignals) Q_EMIT;
+		protected new IQPageSetupDialogSignals Emit {
+			get {
+				return (IQPageSetupDialogSignals) Q_EMIT;
+			}
 		}
 	}
 

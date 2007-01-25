@@ -244,8 +244,10 @@ namespace Qyoto {
 		private void DisposeQMainWindow() {
 			ProxyQMainWindow().DisposeQMainWindow();
 		}
-		protected new IQMainWindowSignals Emit() {
-			return (IQMainWindowSignals) Q_EMIT;
+		protected new IQMainWindowSignals Emit {
+			get {
+				return (IQMainWindowSignals) Q_EMIT;
+			}
 		}
 	}
 

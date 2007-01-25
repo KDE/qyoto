@@ -179,8 +179,10 @@ namespace Qyoto {
 		private void DisposeQSqlQueryModel() {
 			ProxyQSqlQueryModel().DisposeQSqlQueryModel();
 		}
-		protected new IQSqlQueryModelSignals Emit() {
-			return (IQSqlQueryModelSignals) Q_EMIT;
+		protected new IQSqlQueryModelSignals Emit {
+			get {
+				return (IQSqlQueryModelSignals) Q_EMIT;
+			}
 		}
 	}
 

@@ -121,8 +121,10 @@ namespace Qyoto {
 		private void DisposeQTemporaryFile() {
 			ProxyQTemporaryFile().DisposeQTemporaryFile();
 		}
-		protected new IQTemporaryFileSignals Emit() {
-			return (IQTemporaryFileSignals) Q_EMIT;
+		protected new IQTemporaryFileSignals Emit {
+			get {
+				return (IQTemporaryFileSignals) Q_EMIT;
+			}
 		}
 	}
 

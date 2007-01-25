@@ -76,8 +76,10 @@ namespace Qyoto {
 		private void DisposeQErrorMessage() {
 			ProxyQErrorMessage().DisposeQErrorMessage();
 		}
-		protected new IQErrorMessageSignals Emit() {
-			return (IQErrorMessageSignals) Q_EMIT;
+		protected new IQErrorMessageSignals Emit {
+			get {
+				return (IQErrorMessageSignals) Q_EMIT;
+			}
 		}
 	}
 

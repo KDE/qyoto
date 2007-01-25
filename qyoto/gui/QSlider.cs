@@ -131,8 +131,10 @@ namespace Qyoto {
 		private void DisposeQSlider() {
 			ProxyQSlider().DisposeQSlider();
 		}
-		protected new IQSliderSignals Emit() {
-			return (IQSliderSignals) Q_EMIT;
+		protected new IQSliderSignals Emit {
+			get {
+				return (IQSliderSignals) Q_EMIT;
+			}
 		}
 	}
 

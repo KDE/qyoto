@@ -224,8 +224,10 @@ namespace Qyoto {
 		private void DisposeQAbstractSlider() {
 			ProxyQAbstractSlider().DisposeQAbstractSlider();
 		}
-		protected new IQAbstractSliderSignals Emit() {
-			return (IQAbstractSliderSignals) Q_EMIT;
+		protected new IQAbstractSliderSignals Emit {
+			get {
+				return (IQAbstractSliderSignals) Q_EMIT;
+			}
 		}
 	}
 

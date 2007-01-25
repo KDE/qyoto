@@ -187,8 +187,10 @@ namespace Qyoto {
 		private void DisposeQLCDNumber() {
 			ProxyQLCDNumber().DisposeQLCDNumber();
 		}
-		protected new IQLCDNumberSignals Emit() {
-			return (IQLCDNumberSignals) Q_EMIT;
+		protected new IQLCDNumberSignals Emit {
+			get {
+				return (IQLCDNumberSignals) Q_EMIT;
+			}
 		}
 	}
 

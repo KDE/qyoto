@@ -140,8 +140,10 @@ namespace Qyoto {
 		private void DisposeQMimeData() {
 			ProxyQMimeData().DisposeQMimeData();
 		}
-		protected new IQMimeDataSignals Emit() {
-			return (IQMimeDataSignals) Q_EMIT;
+		protected new IQMimeDataSignals Emit {
+			get {
+				return (IQMimeDataSignals) Q_EMIT;
+			}
 		}
 	}
 

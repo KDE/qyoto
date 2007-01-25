@@ -301,8 +301,10 @@ namespace Qyoto {
 		private void DisposeQTreeWidget() {
 			ProxyQTreeWidget().DisposeQTreeWidget();
 		}
-		protected new IQTreeWidgetSignals Emit() {
-			return (IQTreeWidgetSignals) Q_EMIT;
+		protected new IQTreeWidgetSignals Emit {
+			get {
+				return (IQTreeWidgetSignals) Q_EMIT;
+			}
 		}
 	}
 

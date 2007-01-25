@@ -239,8 +239,10 @@ namespace Qyoto {
 		private void DisposeQMovie() {
 			ProxyQMovie().DisposeQMovie();
 		}
-		protected new IQMovieSignals Emit() {
-			return (IQMovieSignals) Q_EMIT;
+		protected new IQMovieSignals Emit {
+			get {
+				return (IQMovieSignals) Q_EMIT;
+			}
 		}
 	}
 

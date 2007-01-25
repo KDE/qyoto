@@ -215,8 +215,10 @@ namespace Qyoto {
 		private void DisposeQDialogButtonBox() {
 			ProxyQDialogButtonBox().DisposeQDialogButtonBox();
 		}
-		protected new IQDialogButtonBoxSignals Emit() {
-			return (IQDialogButtonBoxSignals) Q_EMIT;
+		protected new IQDialogButtonBoxSignals Emit {
+			get {
+				return (IQDialogButtonBoxSignals) Q_EMIT;
+			}
 		}
 	}
 

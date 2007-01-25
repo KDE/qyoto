@@ -87,8 +87,10 @@ namespace Qyoto {
 		public static void SetStandardColor(int arg1, uint arg2) {
 			StaticQColorDialog().SetStandardColor(arg1,arg2);
 		}
-		protected new IQColorDialogSignals Emit() {
-			return (IQColorDialogSignals) Q_EMIT;
+		protected new IQColorDialogSignals Emit {
+			get {
+				return (IQColorDialogSignals) Q_EMIT;
+			}
 		}
 	}
 

@@ -131,8 +131,10 @@ namespace Qyoto {
 		private void DisposeQTimer() {
 			ProxyQTimer().DisposeQTimer();
 		}
-		protected new IQTimerSignals Emit() {
-			return (IQTimerSignals) Q_EMIT;
+		protected new IQTimerSignals Emit {
+			get {
+				return (IQTimerSignals) Q_EMIT;
+			}
 		}
 	}
 

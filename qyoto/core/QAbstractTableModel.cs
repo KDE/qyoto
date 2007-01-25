@@ -75,8 +75,10 @@ namespace Qyoto {
 		private void DisposeQAbstractTableModel() {
 			ProxyQAbstractTableModel().DisposeQAbstractTableModel();
 		}
-		protected new IQAbstractTableModelSignals Emit() {
-			return (IQAbstractTableModelSignals) Q_EMIT;
+		protected new IQAbstractTableModelSignals Emit {
+			get {
+				return (IQAbstractTableModelSignals) Q_EMIT;
+			}
 		}
 	}
 

@@ -293,8 +293,10 @@ namespace Qyoto {
 		private void DisposeQAbstractItemModel() {
 			ProxyQAbstractItemModel().DisposeQAbstractItemModel();
 		}
-		protected new IQAbstractItemModelSignals Emit() {
-			return (IQAbstractItemModelSignals) Q_EMIT;
+		protected new IQAbstractItemModelSignals Emit {
+			get {
+				return (IQAbstractItemModelSignals) Q_EMIT;
+			}
 		}
 	}
 

@@ -244,8 +244,10 @@ namespace Qyoto {
 		private void DisposeQFtp() {
 			ProxyQFtp().DisposeQFtp();
 		}
-		protected new IQFtpSignals Emit() {
-			return (IQFtpSignals) Q_EMIT;
+		protected new IQFtpSignals Emit {
+			get {
+				return (IQFtpSignals) Q_EMIT;
+			}
 		}
 	}
 

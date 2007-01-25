@@ -183,8 +183,10 @@ namespace Qyoto {
 		private void DisposeQCleanlooksStyle() {
 			ProxyQCleanlooksStyle().DisposeQCleanlooksStyle();
 		}
-		protected new IQCleanlooksStyleSignals Emit() {
-			return (IQCleanlooksStyleSignals) Q_EMIT;
+		protected new IQCleanlooksStyleSignals Emit {
+			get {
+				return (IQCleanlooksStyleSignals) Q_EMIT;
+			}
 		}
 	}
 

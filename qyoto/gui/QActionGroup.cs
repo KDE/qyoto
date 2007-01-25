@@ -121,8 +121,10 @@ namespace Qyoto {
 		private void DisposeQActionGroup() {
 			ProxyQActionGroup().DisposeQActionGroup();
 		}
-		protected new IQActionGroupSignals Emit() {
-			return (IQActionGroupSignals) Q_EMIT;
+		protected new IQActionGroupSignals Emit {
+			get {
+				return (IQActionGroupSignals) Q_EMIT;
+			}
 		}
 	}
 

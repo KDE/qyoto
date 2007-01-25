@@ -113,8 +113,10 @@ namespace Qyoto {
 		private void DisposeQPluginLoader() {
 			ProxyQPluginLoader().DisposeQPluginLoader();
 		}
-		protected new IQPluginLoaderSignals Emit() {
-			return (IQPluginLoaderSignals) Q_EMIT;
+		protected new IQPluginLoaderSignals Emit {
+			get {
+				return (IQPluginLoaderSignals) Q_EMIT;
+			}
 		}
 	}
 

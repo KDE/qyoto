@@ -108,8 +108,10 @@ namespace Qyoto {
 		private void DisposeQSignalMapper() {
 			ProxyQSignalMapper().DisposeQSignalMapper();
 		}
-		protected new IQSignalMapperSignals Emit() {
-			return (IQSignalMapperSignals) Q_EMIT;
+		protected new IQSignalMapperSignals Emit {
+			get {
+				return (IQSignalMapperSignals) Q_EMIT;
+			}
 		}
 	}
 

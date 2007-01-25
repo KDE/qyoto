@@ -343,8 +343,10 @@ namespace Qyoto {
 		private void DisposeQListView() {
 			ProxyQListView().DisposeQListView();
 		}
-		protected new IQListViewSignals Emit() {
-			return (IQListViewSignals) Q_EMIT;
+		protected new IQListViewSignals Emit {
+			get {
+				return (IQListViewSignals) Q_EMIT;
+			}
 		}
 	}
 

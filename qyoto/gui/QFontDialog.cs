@@ -62,8 +62,10 @@ namespace Qyoto {
 		public static QFont GetFont(out bool ok) {
 			return StaticQFontDialog().GetFont(out ok);
 		}
-		protected new IQFontDialogSignals Emit() {
-			return (IQFontDialogSignals) Q_EMIT;
+		protected new IQFontDialogSignals Emit {
+			get {
+				return (IQFontDialogSignals) Q_EMIT;
+			}
 		}
 	}
 

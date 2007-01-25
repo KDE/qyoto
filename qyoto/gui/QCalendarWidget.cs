@@ -255,8 +255,10 @@ namespace Qyoto {
 		private void DisposeQCalendarWidget() {
 			ProxyQCalendarWidget().DisposeQCalendarWidget();
 		}
-		protected new IQCalendarWidgetSignals Emit() {
-			return (IQCalendarWidgetSignals) Q_EMIT;
+		protected new IQCalendarWidgetSignals Emit {
+			get {
+				return (IQCalendarWidgetSignals) Q_EMIT;
+			}
 		}
 	}
 

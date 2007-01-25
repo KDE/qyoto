@@ -83,8 +83,10 @@ namespace Qyoto {
 		private void DisposeQFocusFrame() {
 			ProxyQFocusFrame().DisposeQFocusFrame();
 		}
-		protected new IQFocusFrameSignals Emit() {
-			return (IQFocusFrameSignals) Q_EMIT;
+		protected new IQFocusFrameSignals Emit {
+			get {
+				return (IQFocusFrameSignals) Q_EMIT;
+			}
 		}
 	}
 

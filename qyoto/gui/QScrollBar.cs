@@ -115,8 +115,10 @@ namespace Qyoto {
 		private void DisposeQScrollBar() {
 			ProxyQScrollBar().DisposeQScrollBar();
 		}
-		protected new IQScrollBarSignals Emit() {
-			return (IQScrollBarSignals) Q_EMIT;
+		protected new IQScrollBarSignals Emit {
+			get {
+				return (IQScrollBarSignals) Q_EMIT;
+			}
 		}
 	}
 

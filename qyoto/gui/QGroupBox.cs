@@ -172,8 +172,10 @@ namespace Qyoto {
 		private void DisposeQGroupBox() {
 			ProxyQGroupBox().DisposeQGroupBox();
 		}
-		protected new IQGroupBoxSignals Emit() {
-			return (IQGroupBoxSignals) Q_EMIT;
+		protected new IQGroupBoxSignals Emit {
+			get {
+				return (IQGroupBoxSignals) Q_EMIT;
+			}
 		}
 	}
 

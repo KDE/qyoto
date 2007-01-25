@@ -436,8 +436,10 @@ namespace Qyoto {
 		private void DisposeQApplication() {
 			ProxyQApplication().DisposeQApplication();
 		}
-		protected new IQApplicationSignals Emit() {
-			return (IQApplicationSignals) Q_EMIT;
+		protected new IQApplicationSignals Emit {
+			get {
+				return (IQApplicationSignals) Q_EMIT;
+			}
 		}
 	}
 

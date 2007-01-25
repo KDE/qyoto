@@ -165,8 +165,10 @@ namespace Qyoto {
 		private void DisposeQFrame() {
 			ProxyQFrame().DisposeQFrame();
 		}
-		protected new IQFrameSignals Emit() {
-			return (IQFrameSignals) Q_EMIT;
+		protected new IQFrameSignals Emit {
+			get {
+				return (IQFrameSignals) Q_EMIT;
+			}
 		}
 	}
 

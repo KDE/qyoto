@@ -306,8 +306,10 @@ namespace Qyoto {
 		private void DisposeQAction() {
 			ProxyQAction().DisposeQAction();
 		}
-		protected new IQActionSignals Emit() {
-			return (IQActionSignals) Q_EMIT;
+		protected new IQActionSignals Emit {
+			get {
+				return (IQActionSignals) Q_EMIT;
+			}
 		}
 	}
 

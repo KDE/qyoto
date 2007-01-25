@@ -100,8 +100,10 @@ namespace Qyoto {
 		private void DisposeQDrag() {
 			ProxyQDrag().DisposeQDrag();
 		}
-		protected new IQDragSignals Emit() {
-			return (IQDragSignals) Q_EMIT;
+		protected new IQDragSignals Emit {
+			get {
+				return (IQDragSignals) Q_EMIT;
+			}
 		}
 	}
 

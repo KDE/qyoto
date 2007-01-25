@@ -105,8 +105,10 @@ namespace Qyoto {
 		private void DisposeQFileSystemWatcher() {
 			ProxyQFileSystemWatcher().DisposeQFileSystemWatcher();
 		}
-		protected new IQFileSystemWatcherSignals Emit() {
-			return (IQFileSystemWatcherSignals) Q_EMIT;
+		protected new IQFileSystemWatcherSignals Emit {
+			get {
+				return (IQFileSystemWatcherSignals) Q_EMIT;
+			}
 		}
 	}
 

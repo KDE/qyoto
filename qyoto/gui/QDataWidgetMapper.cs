@@ -164,8 +164,10 @@ namespace Qyoto {
 		private void DisposeQDataWidgetMapper() {
 			ProxyQDataWidgetMapper().DisposeQDataWidgetMapper();
 		}
-		protected new IQDataWidgetMapperSignals Emit() {
-			return (IQDataWidgetMapperSignals) Q_EMIT;
+		protected new IQDataWidgetMapperSignals Emit {
+			get {
+				return (IQDataWidgetMapperSignals) Q_EMIT;
+			}
 		}
 	}
 

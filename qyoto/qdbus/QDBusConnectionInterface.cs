@@ -61,8 +61,10 @@ namespace Qyoto {
 		public static new string Tr(string s) {
 			return StaticQDBusConnectionInterface().Tr(s);
 		}
-		protected new IQDBusConnectionInterfaceSignals Emit() {
-			return (IQDBusConnectionInterfaceSignals) Q_EMIT;
+		protected new IQDBusConnectionInterfaceSignals Emit {
+			get {
+				return (IQDBusConnectionInterfaceSignals) Q_EMIT;
+			}
 		}
 	}
 

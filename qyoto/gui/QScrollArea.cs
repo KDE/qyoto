@@ -139,8 +139,10 @@ namespace Qyoto {
 		private void DisposeQScrollArea() {
 			ProxyQScrollArea().DisposeQScrollArea();
 		}
-		protected new IQScrollAreaSignals Emit() {
-			return (IQScrollAreaSignals) Q_EMIT;
+		protected new IQScrollAreaSignals Emit {
+			get {
+				return (IQScrollAreaSignals) Q_EMIT;
+			}
 		}
 	}
 

@@ -171,8 +171,10 @@ namespace Qyoto {
 		private void DisposeQPlastiqueStyle() {
 			ProxyQPlastiqueStyle().DisposeQPlastiqueStyle();
 		}
-		protected new IQPlastiqueStyleSignals Emit() {
-			return (IQPlastiqueStyleSignals) Q_EMIT;
+		protected new IQPlastiqueStyleSignals Emit {
+			get {
+				return (IQPlastiqueStyleSignals) Q_EMIT;
+			}
 		}
 	}
 

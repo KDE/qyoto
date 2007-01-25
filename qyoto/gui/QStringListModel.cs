@@ -136,8 +136,10 @@ namespace Qyoto {
 		private void DisposeQStringListModel() {
 			ProxyQStringListModel().DisposeQStringListModel();
 		}
-		protected new IQStringListModelSignals Emit() {
-			return (IQStringListModelSignals) Q_EMIT;
+		protected new IQStringListModelSignals Emit {
+			get {
+				return (IQStringListModelSignals) Q_EMIT;
+			}
 		}
 	}
 

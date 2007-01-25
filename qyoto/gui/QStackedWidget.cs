@@ -112,8 +112,10 @@ namespace Qyoto {
 		private void DisposeQStackedWidget() {
 			ProxyQStackedWidget().DisposeQStackedWidget();
 		}
-		protected new IQStackedWidgetSignals Emit() {
-			return (IQStackedWidgetSignals) Q_EMIT;
+		protected new IQStackedWidgetSignals Emit {
+			get {
+				return (IQStackedWidgetSignals) Q_EMIT;
+			}
 		}
 	}
 

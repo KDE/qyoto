@@ -55,7 +55,7 @@ class CannonField : QWidget {
 			return;
 		currentAngle = angle;
 		Update();
-		Emit().angleChanged(currentAngle);
+		Emit.angleChanged(currentAngle);
 	}
 
 	[Q_SLOT]
@@ -65,7 +65,7 @@ class CannonField : QWidget {
 		if (currentForce == force)
 			return;
 		currentForce = force;
-		Emit().forceChanged(currentForce);
+		Emit.forceChanged(currentForce);
 	}
 
 	[Q_SLOT]
@@ -148,8 +148,10 @@ class CannonField : QWidget {
 		return result;
 	}
 
-	protected new ICannonFieldSignals Emit() {
-		return (ICannonFieldSignals) Q_EMIT;
+	protected new ICannonFieldSignals Emit {
+		get {
+			return (ICannonFieldSignals) Q_EMIT;
+		}
 	}
 	
 	public int angle() { return currentAngle; }

@@ -114,8 +114,10 @@ namespace Qyoto {
 		private void DisposeQUdpSocket() {
 			ProxyQUdpSocket().DisposeQUdpSocket();
 		}
-		protected new IQUdpSocketSignals Emit() {
-			return (IQUdpSocketSignals) Q_EMIT;
+		protected new IQUdpSocketSignals Emit {
+			get {
+				return (IQUdpSocketSignals) Q_EMIT;
+			}
 		}
 	}
 

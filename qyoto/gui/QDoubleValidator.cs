@@ -99,8 +99,10 @@ namespace Qyoto {
 		private void DisposeQDoubleValidator() {
 			ProxyQDoubleValidator().DisposeQDoubleValidator();
 		}
-		protected new IQDoubleValidatorSignals Emit() {
-			return (IQDoubleValidatorSignals) Q_EMIT;
+		protected new IQDoubleValidatorSignals Emit {
+			get {
+				return (IQDoubleValidatorSignals) Q_EMIT;
+			}
 		}
 	}
 

@@ -227,8 +227,10 @@ namespace Qyoto {
 		private void DisposeQCompleter() {
 			ProxyQCompleter().DisposeQCompleter();
 		}
-		protected new IQCompleterSignals Emit() {
-			return (IQCompleterSignals) Q_EMIT;
+		protected new IQCompleterSignals Emit {
+			get {
+				return (IQCompleterSignals) Q_EMIT;
+			}
 		}
 	}
 

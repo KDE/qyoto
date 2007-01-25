@@ -155,8 +155,10 @@ namespace Qyoto {
 		private void DisposeQGraphicsItemAnimation() {
 			ProxyQGraphicsItemAnimation().DisposeQGraphicsItemAnimation();
 		}
-		protected new IQGraphicsItemAnimationSignals Emit() {
-			return (IQGraphicsItemAnimationSignals) Q_EMIT;
+		protected new IQGraphicsItemAnimationSignals Emit {
+			get {
+				return (IQGraphicsItemAnimationSignals) Q_EMIT;
+			}
 		}
 	}
 

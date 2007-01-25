@@ -389,8 +389,10 @@ namespace Qyoto {
 		private void DisposeQAbstractItemView() {
 			ProxyQAbstractItemView().DisposeQAbstractItemView();
 		}
-		protected new IQAbstractItemViewSignals Emit() {
-			return (IQAbstractItemViewSignals) Q_EMIT;
+		protected new IQAbstractItemViewSignals Emit {
+			get {
+				return (IQAbstractItemViewSignals) Q_EMIT;
+			}
 		}
 	}
 

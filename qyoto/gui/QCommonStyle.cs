@@ -168,8 +168,10 @@ namespace Qyoto {
 		private void DisposeQCommonStyle() {
 			ProxyQCommonStyle().DisposeQCommonStyle();
 		}
-		protected new IQCommonStyleSignals Emit() {
-			return (IQCommonStyleSignals) Q_EMIT;
+		protected new IQCommonStyleSignals Emit {
+			get {
+				return (IQCommonStyleSignals) Q_EMIT;
+			}
 		}
 	}
 

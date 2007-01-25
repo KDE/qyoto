@@ -212,8 +212,10 @@ namespace Qyoto {
 		private void DisposeQMenuBar() {
 			ProxyQMenuBar().DisposeQMenuBar();
 		}
-		protected new IQMenuBarSignals Emit() {
-			return (IQMenuBarSignals) Q_EMIT;
+		protected new IQMenuBarSignals Emit {
+			get {
+				return (IQMenuBarSignals) Q_EMIT;
+			}
 		}
 	}
 

@@ -144,8 +144,10 @@ namespace Qyoto {
 		private void DisposeQSpinBox() {
 			ProxyQSpinBox().DisposeQSpinBox();
 		}
-		protected new IQSpinBoxSignals Emit() {
-			return (IQSpinBoxSignals) Q_EMIT;
+		protected new IQSpinBoxSignals Emit {
+			get {
+				return (IQSpinBoxSignals) Q_EMIT;
+			}
 		}
 	}
 

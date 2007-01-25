@@ -127,8 +127,10 @@ namespace Qyoto {
 		private void DisposeQUndoView() {
 			ProxyQUndoView().DisposeQUndoView();
 		}
-		protected new IQUndoViewSignals Emit() {
-			return (IQUndoViewSignals) Q_EMIT;
+		protected new IQUndoViewSignals Emit {
+			get {
+				return (IQUndoViewSignals) Q_EMIT;
+			}
 		}
 	}
 

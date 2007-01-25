@@ -254,8 +254,10 @@ namespace Qyoto {
 		private void DisposeQCoreApplication() {
 			ProxyQCoreApplication().DisposeQCoreApplication();
 		}
-		protected new IQCoreApplicationSignals Emit() {
-			return (IQCoreApplicationSignals) Q_EMIT;
+		protected new IQCoreApplicationSignals Emit {
+			get {
+				return (IQCoreApplicationSignals) Q_EMIT;
+			}
 		}
 	}
 

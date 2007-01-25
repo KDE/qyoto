@@ -111,8 +111,10 @@ namespace Qyoto {
 		private void DisposeQEventLoop() {
 			ProxyQEventLoop().DisposeQEventLoop();
 		}
-		protected new IQEventLoopSignals Emit() {
-			return (IQEventLoopSignals) Q_EMIT;
+		protected new IQEventLoopSignals Emit {
+			get {
+				return (IQEventLoopSignals) Q_EMIT;
+			}
 		}
 	}
 

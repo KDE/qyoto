@@ -108,8 +108,10 @@ namespace Qyoto {
 		public static new string Tr(string s) {
 			return StaticQSessionManager().Tr(s);
 		}
-		protected new IQSessionManagerSignals Emit() {
-			return (IQSessionManagerSignals) Q_EMIT;
+		protected new IQSessionManagerSignals Emit {
+			get {
+				return (IQSessionManagerSignals) Q_EMIT;
+			}
 		}
 	}
 

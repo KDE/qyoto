@@ -112,8 +112,10 @@ namespace Qyoto {
 		private void DisposeQSocketNotifier() {
 			ProxyQSocketNotifier().DisposeQSocketNotifier();
 		}
-		protected new IQSocketNotifierSignals Emit() {
-			return (IQSocketNotifierSignals) Q_EMIT;
+		protected new IQSocketNotifierSignals Emit {
+			get {
+				return (IQSocketNotifierSignals) Q_EMIT;
+			}
 		}
 	}
 

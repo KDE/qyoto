@@ -272,8 +272,10 @@ namespace Qyoto {
 		private void DisposeQLabel() {
 			ProxyQLabel().DisposeQLabel();
 		}
-		protected new IQLabelSignals Emit() {
-			return (IQLabelSignals) Q_EMIT;
+		protected new IQLabelSignals Emit {
+			get {
+				return (IQLabelSignals) Q_EMIT;
+			}
 		}
 	}
 

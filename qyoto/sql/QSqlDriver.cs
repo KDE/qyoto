@@ -174,8 +174,10 @@ namespace Qyoto {
 		private void DisposeQSqlDriver() {
 			ProxyQSqlDriver().DisposeQSqlDriver();
 		}
-		protected new IQSqlDriverSignals Emit() {
-			return (IQSqlDriverSignals) Q_EMIT;
+		protected new IQSqlDriverSignals Emit {
+			get {
+				return (IQSqlDriverSignals) Q_EMIT;
+			}
 		}
 	}
 

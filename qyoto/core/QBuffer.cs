@@ -135,8 +135,10 @@ namespace Qyoto {
 		private void DisposeQBuffer() {
 			ProxyQBuffer().DisposeQBuffer();
 		}
-		protected new IQBufferSignals Emit() {
-			return (IQBufferSignals) Q_EMIT;
+		protected new IQBufferSignals Emit {
+			get {
+				return (IQBufferSignals) Q_EMIT;
+			}
 		}
 	}
 

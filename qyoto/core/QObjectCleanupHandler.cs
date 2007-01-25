@@ -71,8 +71,10 @@ namespace Qyoto {
 		private void DisposeQObjectCleanupHandler() {
 			ProxyQObjectCleanupHandler().DisposeQObjectCleanupHandler();
 		}
-		protected new IQObjectCleanupHandlerSignals Emit() {
-			return (IQObjectCleanupHandlerSignals) Q_EMIT;
+		protected new IQObjectCleanupHandlerSignals Emit {
+			get {
+				return (IQObjectCleanupHandlerSignals) Q_EMIT;
+			}
 		}
 	}
 

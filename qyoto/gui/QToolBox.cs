@@ -176,8 +176,10 @@ namespace Qyoto {
 		private void DisposeQToolBox() {
 			ProxyQToolBox().DisposeQToolBox();
 		}
-		protected new IQToolBoxSignals Emit() {
-			return (IQToolBoxSignals) Q_EMIT;
+		protected new IQToolBoxSignals Emit {
+			get {
+				return (IQToolBoxSignals) Q_EMIT;
+			}
 		}
 	}
 

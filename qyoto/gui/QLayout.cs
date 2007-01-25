@@ -248,8 +248,10 @@ namespace Qyoto {
 		public int Alignment() {
 			return ProxyQLayout().Alignment();
 		}
-		protected new IQLayoutSignals Emit() {
-			return (IQLayoutSignals) Q_EMIT;
+		protected new IQLayoutSignals Emit {
+			get {
+				return (IQLayoutSignals) Q_EMIT;
+			}
 		}
 	}
 

@@ -99,8 +99,10 @@ namespace Qyoto {
 		private void DisposeQSvgWidget() {
 			ProxyQSvgWidget().DisposeQSvgWidget();
 		}
-		protected new IQSvgWidgetSignals Emit() {
-			return (IQSvgWidgetSignals) Q_EMIT;
+		protected new IQSvgWidgetSignals Emit {
+			get {
+				return (IQSvgWidgetSignals) Q_EMIT;
+			}
 		}
 	}
 

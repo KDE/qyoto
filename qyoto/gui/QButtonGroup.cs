@@ -109,8 +109,10 @@ namespace Qyoto {
 		private void DisposeQButtonGroup() {
 			ProxyQButtonGroup().DisposeQButtonGroup();
 		}
-		protected new IQButtonGroupSignals Emit() {
-			return (IQButtonGroupSignals) Q_EMIT;
+		protected new IQButtonGroupSignals Emit {
+			get {
+				return (IQButtonGroupSignals) Q_EMIT;
+			}
 		}
 	}
 

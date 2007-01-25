@@ -553,8 +553,10 @@ namespace Qyoto {
 		private void DisposeQMessageBox() {
 			ProxyQMessageBox().DisposeQMessageBox();
 		}
-		protected new IQMessageBoxSignals Emit() {
-			return (IQMessageBoxSignals) Q_EMIT;
+		protected new IQMessageBoxSignals Emit {
+			get {
+				return (IQMessageBoxSignals) Q_EMIT;
+			}
 		}
 	}
 

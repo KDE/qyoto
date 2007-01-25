@@ -79,8 +79,10 @@ namespace Qyoto {
 		private void DisposeQDateEdit() {
 			ProxyQDateEdit().DisposeQDateEdit();
 		}
-		protected new IQDateEditSignals Emit() {
-			return (IQDateEditSignals) Q_EMIT;
+		protected new IQDateEditSignals Emit {
+			get {
+				return (IQDateEditSignals) Q_EMIT;
+			}
 		}
 	}
 

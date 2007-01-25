@@ -173,8 +173,10 @@ namespace Qyoto {
 		private void DisposeQToolButton() {
 			ProxyQToolButton().DisposeQToolButton();
 		}
-		protected new IQToolButtonSignals Emit() {
-			return (IQToolButtonSignals) Q_EMIT;
+		protected new IQToolButtonSignals Emit {
+			get {
+				return (IQToolButtonSignals) Q_EMIT;
+			}
 		}
 	}
 

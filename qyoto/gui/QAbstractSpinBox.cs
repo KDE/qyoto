@@ -293,8 +293,10 @@ namespace Qyoto {
 		private void DisposeQAbstractSpinBox() {
 			ProxyQAbstractSpinBox().DisposeQAbstractSpinBox();
 		}
-		protected new IQAbstractSpinBoxSignals Emit() {
-			return (IQAbstractSpinBoxSignals) Q_EMIT;
+		protected new IQAbstractSpinBoxSignals Emit {
+			get {
+				return (IQAbstractSpinBoxSignals) Q_EMIT;
+			}
 		}
 	}
 

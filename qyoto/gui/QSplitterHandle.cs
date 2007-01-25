@@ -103,8 +103,10 @@ namespace Qyoto {
 		private void DisposeQSplitterHandle() {
 			ProxyQSplitterHandle().DisposeQSplitterHandle();
 		}
-		protected new IQSplitterHandleSignals Emit() {
-			return (IQSplitterHandleSignals) Q_EMIT;
+		protected new IQSplitterHandleSignals Emit {
+			get {
+				return (IQSplitterHandleSignals) Q_EMIT;
+			}
 		}
 	}
 

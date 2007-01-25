@@ -124,8 +124,10 @@ namespace Qyoto {
 		private void DisposeQDesktopWidget() {
 			ProxyQDesktopWidget().DisposeQDesktopWidget();
 		}
-		protected new IQDesktopWidgetSignals Emit() {
-			return (IQDesktopWidgetSignals) Q_EMIT;
+		protected new IQDesktopWidgetSignals Emit {
+			get {
+				return (IQDesktopWidgetSignals) Q_EMIT;
+			}
 		}
 	}
 

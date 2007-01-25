@@ -83,8 +83,10 @@ namespace Qyoto {
 		private void DisposeQTextFrame() {
 			ProxyQTextFrame().DisposeQTextFrame();
 		}
-		protected new IQTextFrameSignals Emit() {
-			return (IQTextFrameSignals) Q_EMIT;
+		protected new IQTextFrameSignals Emit {
+			get {
+				return (IQTextFrameSignals) Q_EMIT;
+			}
 		}
 	}
 

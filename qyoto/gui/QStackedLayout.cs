@@ -132,8 +132,10 @@ namespace Qyoto {
 		private void DisposeQStackedLayout() {
 			ProxyQStackedLayout().DisposeQStackedLayout();
 		}
-		protected new IQStackedLayoutSignals Emit() {
-			return (IQStackedLayoutSignals) Q_EMIT;
+		protected new IQStackedLayoutSignals Emit {
+			get {
+				return (IQStackedLayoutSignals) Q_EMIT;
+			}
 		}
 	}
 

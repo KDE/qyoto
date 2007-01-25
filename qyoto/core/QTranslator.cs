@@ -99,8 +99,10 @@ namespace Qyoto {
 		private void DisposeQTranslator() {
 			ProxyQTranslator().DisposeQTranslator();
 		}
-		protected new IQTranslatorSignals Emit() {
-			return (IQTranslatorSignals) Q_EMIT;
+		protected new IQTranslatorSignals Emit {
+			get {
+				return (IQTranslatorSignals) Q_EMIT;
+			}
 		}
 	}
 

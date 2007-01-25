@@ -63,8 +63,10 @@ namespace Qyoto {
 		private void DisposeQVBoxLayout() {
 			ProxyQVBoxLayout().DisposeQVBoxLayout();
 		}
-		protected new IQVBoxLayoutSignals Emit() {
-			return (IQVBoxLayoutSignals) Q_EMIT;
+		protected new IQVBoxLayoutSignals Emit {
+			get {
+				return (IQVBoxLayoutSignals) Q_EMIT;
+			}
 		}
 	}
 

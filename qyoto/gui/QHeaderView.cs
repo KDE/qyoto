@@ -423,8 +423,10 @@ namespace Qyoto {
 		private void DisposeQHeaderView() {
 			ProxyQHeaderView().DisposeQHeaderView();
 		}
-		protected new IQHeaderViewSignals Emit() {
-			return (IQHeaderViewSignals) Q_EMIT;
+		protected new IQHeaderViewSignals Emit {
+			get {
+				return (IQHeaderViewSignals) Q_EMIT;
+			}
 		}
 	}
 

@@ -128,8 +128,10 @@ namespace Qyoto {
 		private void DisposeQCheckBox() {
 			ProxyQCheckBox().DisposeQCheckBox();
 		}
-		protected new IQCheckBoxSignals Emit() {
-			return (IQCheckBoxSignals) Q_EMIT;
+		protected new IQCheckBoxSignals Emit {
+			get {
+				return (IQCheckBoxSignals) Q_EMIT;
+			}
 		}
 	}
 

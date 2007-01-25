@@ -91,8 +91,10 @@ namespace Qyoto {
 		private void DisposeQAbstractTextDocumentLayout() {
 			ProxyQAbstractTextDocumentLayout().DisposeQAbstractTextDocumentLayout();
 		}
-		protected new IQAbstractTextDocumentLayoutSignals Emit() {
-			return (IQAbstractTextDocumentLayoutSignals) Q_EMIT;
+		protected new IQAbstractTextDocumentLayoutSignals Emit {
+			get {
+				return (IQAbstractTextDocumentLayoutSignals) Q_EMIT;
+			}
 		}
 	}
 

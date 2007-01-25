@@ -510,8 +510,10 @@ namespace Qyoto {
 		private void DisposeQTextEdit() {
 			ProxyQTextEdit().DisposeQTextEdit();
 		}
-		protected new IQTextEditSignals Emit() {
-			return (IQTextEditSignals) Q_EMIT;
+		protected new IQTextEditSignals Emit {
+			get {
+				return (IQTextEditSignals) Q_EMIT;
+			}
 		}
 	}
 

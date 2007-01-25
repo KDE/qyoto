@@ -168,8 +168,10 @@ namespace Qyoto {
 		private void DisposeQWindowsStyle() {
 			ProxyQWindowsStyle().DisposeQWindowsStyle();
 		}
-		protected new IQWindowsStyleSignals Emit() {
-			return (IQWindowsStyleSignals) Q_EMIT;
+		protected new IQWindowsStyleSignals Emit {
+			get {
+				return (IQWindowsStyleSignals) Q_EMIT;
+			}
 		}
 	}
 

@@ -50,8 +50,10 @@ namespace Qyoto {
 		}
 		// QTextObject* QTextObject(QTextDocument* arg1); >>>> NOT CONVERTED
 		// void setFormat(const QTextFormat& arg1); >>>> NOT CONVERTED
-		protected new IQTextObjectSignals Emit() {
-			return (IQTextObjectSignals) Q_EMIT;
+		protected new IQTextObjectSignals Emit {
+			get {
+				return (IQTextObjectSignals) Q_EMIT;
+			}
 		}
 	}
 

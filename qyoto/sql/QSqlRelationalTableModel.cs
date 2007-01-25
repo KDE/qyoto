@@ -139,8 +139,10 @@ namespace Qyoto {
 		private void DisposeQSqlRelationalTableModel() {
 			ProxyQSqlRelationalTableModel().DisposeQSqlRelationalTableModel();
 		}
-		protected new IQSqlRelationalTableModelSignals Emit() {
-			return (IQSqlRelationalTableModelSignals) Q_EMIT;
+		protected new IQSqlRelationalTableModelSignals Emit {
+			get {
+				return (IQSqlRelationalTableModelSignals) Q_EMIT;
+			}
 		}
 	}
 

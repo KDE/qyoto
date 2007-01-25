@@ -177,8 +177,10 @@ namespace Qyoto {
 		private void DisposeQWorkspace() {
 			ProxyQWorkspace().DisposeQWorkspace();
 		}
-		protected new IQWorkspaceSignals Emit() {
-			return (IQWorkspaceSignals) Q_EMIT;
+		protected new IQWorkspaceSignals Emit {
+			get {
+				return (IQWorkspaceSignals) Q_EMIT;
+			}
 		}
 	}
 

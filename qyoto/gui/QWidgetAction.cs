@@ -88,8 +88,10 @@ namespace Qyoto {
 		private void DisposeQWidgetAction() {
 			ProxyQWidgetAction().DisposeQWidgetAction();
 		}
-		protected new IQWidgetActionSignals Emit() {
-			return (IQWidgetActionSignals) Q_EMIT;
+		protected new IQWidgetActionSignals Emit {
+			get {
+				return (IQWidgetActionSignals) Q_EMIT;
+			}
 		}
 	}
 

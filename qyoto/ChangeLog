@@ -1,3 +1,17 @@
+2007-25-01  Richard Dale  <rdale@foton.es>
+
+	* QObject.Emit is now a property, rather than a method. For example:
+
+		protected new ICannonFieldSignals Emit {
+			get {
+				return (ICannonFieldSignals) Q_EMIT;
+			}
+		}
+
+		...
+
+		Emit.forceChanged(currentForce);
+
 2007-24-01  Richard Dale  <rdale@foton.es>
 
 	* Q_PROPERTYs are now mapped onto C# properties, and the correponding set

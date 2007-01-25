@@ -212,8 +212,10 @@ namespace Qyoto {
 		private void DisposeQToolBar() {
 			ProxyQToolBar().DisposeQToolBar();
 		}
-		protected new IQToolBarSignals Emit() {
-			return (IQToolBarSignals) Q_EMIT;
+		protected new IQToolBarSignals Emit {
+			get {
+				return (IQToolBarSignals) Q_EMIT;
+			}
 		}
 	}
 

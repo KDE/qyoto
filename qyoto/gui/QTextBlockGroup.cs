@@ -55,8 +55,10 @@ namespace Qyoto {
 		protected List<QTextBlock> BlockList() {
 			return ProxyQTextBlockGroup().BlockList();
 		}
-		protected new IQTextBlockGroupSignals Emit() {
-			return (IQTextBlockGroupSignals) Q_EMIT;
+		protected new IQTextBlockGroupSignals Emit {
+			get {
+				return (IQTextBlockGroupSignals) Q_EMIT;
+			}
 		}
 	}
 

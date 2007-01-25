@@ -144,8 +144,10 @@ namespace Qyoto {
 		private void DisposeQShortcut() {
 			ProxyQShortcut().DisposeQShortcut();
 		}
-		protected new IQShortcutSignals Emit() {
-			return (IQShortcutSignals) Q_EMIT;
+		protected new IQShortcutSignals Emit {
+			get {
+				return (IQShortcutSignals) Q_EMIT;
+			}
 		}
 	}
 

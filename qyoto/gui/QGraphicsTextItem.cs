@@ -747,8 +747,10 @@ namespace Qyoto {
 		protected void PrepareGeometryChange() {
 			ProxyQGraphicsTextItem().PrepareGeometryChange();
 		}
-		protected new IQGraphicsTextItemSignals Emit() {
-			return (IQGraphicsTextItemSignals) Q_EMIT;
+		protected new IQGraphicsTextItemSignals Emit {
+			get {
+				return (IQGraphicsTextItemSignals) Q_EMIT;
+			}
 		}
 	}
 

@@ -34,8 +34,10 @@ class LCDRange : QWidget {
 		slider.SetValue(value);
 	}
 	
-	protected new ILCDRangeSignals Emit() {
-		return (ILCDRangeSignals) Q_EMIT;
+	protected new ILCDRangeSignals Emit {
+		get {
+			return (ILCDRangeSignals) Q_EMIT;
+		}
 	}
 }
 
@@ -75,8 +77,10 @@ class MyWidget : QWidget {
 		main.Show();
 		QApplication.Exec();
 	}
-	protected new IMyWidgetSignals Emit() {
-		return (IMyWidgetSignals) Q_EMIT;
+	protected new IMyWidgetSignals Emit {
+		get {
+			return (IMyWidgetSignals) Q_EMIT;
+		}
 	}
 }
 

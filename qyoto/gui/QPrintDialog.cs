@@ -71,8 +71,10 @@ namespace Qyoto {
 		private void DisposeQPrintDialog() {
 			ProxyQPrintDialog().DisposeQPrintDialog();
 		}
-		protected new IQPrintDialogSignals Emit() {
-			return (IQPrintDialogSignals) Q_EMIT;
+		protected new IQPrintDialogSignals Emit {
+			get {
+				return (IQPrintDialogSignals) Q_EMIT;
+			}
 		}
 	}
 

@@ -162,8 +162,10 @@ namespace Qyoto {
 		private void DisposeQItemSelectionModel() {
 			ProxyQItemSelectionModel().DisposeQItemSelectionModel();
 		}
-		protected new IQItemSelectionModelSignals Emit() {
-			return (IQItemSelectionModelSignals) Q_EMIT;
+		protected new IQItemSelectionModelSignals Emit {
+			get {
+				return (IQItemSelectionModelSignals) Q_EMIT;
+			}
 		}
 	}
 

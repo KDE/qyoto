@@ -119,8 +119,10 @@ namespace Qyoto {
 		private void DisposeQRubberBand() {
 			ProxyQRubberBand().DisposeQRubberBand();
 		}
-		protected new IQRubberBandSignals Emit() {
-			return (IQRubberBandSignals) Q_EMIT;
+		protected new IQRubberBandSignals Emit {
+			get {
+				return (IQRubberBandSignals) Q_EMIT;
+			}
 		}
 	}
 

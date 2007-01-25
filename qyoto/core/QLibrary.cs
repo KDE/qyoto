@@ -136,8 +136,10 @@ namespace Qyoto {
 		private void DisposeQLibrary() {
 			ProxyQLibrary().DisposeQLibrary();
 		}
-		protected new IQLibrarySignals Emit() {
-			return (IQLibrarySignals) Q_EMIT;
+		protected new IQLibrarySignals Emit {
+			get {
+				return (IQLibrarySignals) Q_EMIT;
+			}
 		}
 	}
 

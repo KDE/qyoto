@@ -148,8 +148,10 @@ namespace Qyoto {
 		private void DisposeQStatusBar() {
 			ProxyQStatusBar().DisposeQStatusBar();
 		}
-		protected new IQStatusBarSignals Emit() {
-			return (IQStatusBarSignals) Q_EMIT;
+		protected new IQStatusBarSignals Emit {
+			get {
+				return (IQStatusBarSignals) Q_EMIT;
+			}
 		}
 	}
 

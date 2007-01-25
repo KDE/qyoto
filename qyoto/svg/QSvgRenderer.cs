@@ -176,8 +176,10 @@ namespace Qyoto {
 		private void DisposeQSvgRenderer() {
 			ProxyQSvgRenderer().DisposeQSvgRenderer();
 		}
-		protected new IQSvgRendererSignals Emit() {
-			return (IQSvgRendererSignals) Q_EMIT;
+		protected new IQSvgRendererSignals Emit {
+			get {
+				return (IQSvgRendererSignals) Q_EMIT;
+			}
 		}
 	}
 

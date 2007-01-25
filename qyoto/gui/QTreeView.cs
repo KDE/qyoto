@@ -385,8 +385,10 @@ namespace Qyoto {
 		private void DisposeQTreeView() {
 			ProxyQTreeView().DisposeQTreeView();
 		}
-		protected new IQTreeViewSignals Emit() {
-			return (IQTreeViewSignals) Q_EMIT;
+		protected new IQTreeViewSignals Emit {
+			get {
+				return (IQTreeViewSignals) Q_EMIT;
+			}
 		}
 	}
 

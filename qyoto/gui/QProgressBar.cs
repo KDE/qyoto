@@ -176,8 +176,10 @@ namespace Qyoto {
 		private void DisposeQProgressBar() {
 			ProxyQProgressBar().DisposeQProgressBar();
 		}
-		protected new IQProgressBarSignals Emit() {
-			return (IQProgressBarSignals) Q_EMIT;
+		protected new IQProgressBarSignals Emit {
+			get {
+				return (IQProgressBarSignals) Q_EMIT;
+			}
 		}
 	}
 

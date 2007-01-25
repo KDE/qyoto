@@ -121,8 +121,10 @@ namespace Qyoto {
 		private void DisposeQInputContext() {
 			ProxyQInputContext().DisposeQInputContext();
 		}
-		protected new IQInputContextSignals Emit() {
-			return (IQInputContextSignals) Q_EMIT;
+		protected new IQInputContextSignals Emit {
+			get {
+				return (IQInputContextSignals) Q_EMIT;
+			}
 		}
 	}
 

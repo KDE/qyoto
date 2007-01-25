@@ -325,8 +325,10 @@ namespace Qyoto {
 		private void DisposeQTableWidget() {
 			ProxyQTableWidget().DisposeQTableWidget();
 		}
-		protected new IQTableWidgetSignals Emit() {
-			return (IQTableWidgetSignals) Q_EMIT;
+		protected new IQTableWidgetSignals Emit {
+			get {
+				return (IQTableWidgetSignals) Q_EMIT;
+			}
 		}
 	}
 

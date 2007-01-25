@@ -70,8 +70,10 @@ namespace Qyoto {
 		private void DisposeQSyntaxHighlighter() {
 			ProxyQSyntaxHighlighter().DisposeQSyntaxHighlighter();
 		}
-		protected new IQSyntaxHighlighterSignals Emit() {
-			return (IQSyntaxHighlighterSignals) Q_EMIT;
+		protected new IQSyntaxHighlighterSignals Emit {
+			get {
+				return (IQSyntaxHighlighterSignals) Q_EMIT;
+			}
 		}
 	}
 

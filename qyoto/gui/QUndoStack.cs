@@ -160,8 +160,10 @@ namespace Qyoto {
 		private void DisposeQUndoStack() {
 			ProxyQUndoStack().DisposeQUndoStack();
 		}
-		protected new IQUndoStackSignals Emit() {
-			return (IQUndoStackSignals) Q_EMIT;
+		protected new IQUndoStackSignals Emit {
+			get {
+				return (IQUndoStackSignals) Q_EMIT;
+			}
 		}
 	}
 

@@ -79,8 +79,10 @@ namespace Qyoto {
 		private void DisposeQTimeEdit() {
 			ProxyQTimeEdit().DisposeQTimeEdit();
 		}
-		protected new IQTimeEditSignals Emit() {
-			return (IQTimeEditSignals) Q_EMIT;
+		protected new IQTimeEditSignals Emit {
+			get {
+				return (IQTimeEditSignals) Q_EMIT;
+			}
 		}
 	}
 

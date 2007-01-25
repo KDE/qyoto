@@ -451,8 +451,10 @@ namespace Qyoto {
 		private void DisposeQComboBox() {
 			ProxyQComboBox().DisposeQComboBox();
 		}
-		protected new IQComboBoxSignals Emit() {
-			return (IQComboBoxSignals) Q_EMIT;
+		protected new IQComboBoxSignals Emit {
+			get {
+				return (IQComboBoxSignals) Q_EMIT;
+			}
 		}
 	}
 

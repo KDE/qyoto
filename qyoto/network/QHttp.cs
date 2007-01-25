@@ -251,8 +251,10 @@ namespace Qyoto {
 		private void DisposeQHttp() {
 			ProxyQHttp().DisposeQHttp();
 		}
-		protected new IQHttpSignals Emit() {
-			return (IQHttpSignals) Q_EMIT;
+		protected new IQHttpSignals Emit {
+			get {
+				return (IQHttpSignals) Q_EMIT;
+			}
 		}
 	}
 

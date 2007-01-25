@@ -153,8 +153,10 @@ namespace Qyoto {
 		private void DisposeQTextBrowser() {
 			ProxyQTextBrowser().DisposeQTextBrowser();
 		}
-		protected new IQTextBrowserSignals Emit() {
-			return (IQTextBrowserSignals) Q_EMIT;
+		protected new IQTextBrowserSignals Emit {
+			get {
+				return (IQTextBrowserSignals) Q_EMIT;
+			}
 		}
 	}
 

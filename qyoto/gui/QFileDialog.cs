@@ -397,8 +397,10 @@ namespace Qyoto {
 		private void DisposeQFileDialog() {
 			ProxyQFileDialog().DisposeQFileDialog();
 		}
-		protected new IQFileDialogSignals Emit() {
-			return (IQFileDialogSignals) Q_EMIT;
+		protected new IQFileDialogSignals Emit {
+			get {
+				return (IQFileDialogSignals) Q_EMIT;
+			}
 		}
 	}
 

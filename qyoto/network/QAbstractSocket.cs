@@ -295,8 +295,10 @@ namespace Qyoto {
 		private void DisposeQAbstractSocket() {
 			ProxyQAbstractSocket().DisposeQAbstractSocket();
 		}
-		protected new IQAbstractSocketSignals Emit() {
-			return (IQAbstractSocketSignals) Q_EMIT;
+		protected new IQAbstractSocketSignals Emit {
+			get {
+				return (IQAbstractSocketSignals) Q_EMIT;
+			}
 		}
 	}
 

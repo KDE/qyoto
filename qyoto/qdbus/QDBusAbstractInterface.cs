@@ -184,8 +184,10 @@ namespace Qyoto {
 		private void DisposeQDBusAbstractInterface() {
 			ProxyQDBusAbstractInterface().DisposeQDBusAbstractInterface();
 		}
-		protected new IQDBusAbstractInterfaceSignals Emit() {
-			return (IQDBusAbstractInterfaceSignals) Q_EMIT;
+		protected new IQDBusAbstractInterfaceSignals Emit {
+			get {
+				return (IQDBusAbstractInterfaceSignals) Q_EMIT;
+			}
 		}
 	}
 

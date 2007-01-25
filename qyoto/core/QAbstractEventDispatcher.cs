@@ -125,8 +125,10 @@ namespace Qyoto {
 		private void DisposeQAbstractEventDispatcher() {
 			ProxyQAbstractEventDispatcher().DisposeQAbstractEventDispatcher();
 		}
-		protected new IQAbstractEventDispatcherSignals Emit() {
-			return (IQAbstractEventDispatcherSignals) Q_EMIT;
+		protected new IQAbstractEventDispatcherSignals Emit {
+			get {
+				return (IQAbstractEventDispatcherSignals) Q_EMIT;
+			}
 		}
 	}
 

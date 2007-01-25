@@ -285,8 +285,10 @@ namespace Qyoto {
 		private void DisposeQDirModel() {
 			ProxyQDirModel().DisposeQDirModel();
 		}
-		protected new IQDirModelSignals Emit() {
-			return (IQDirModelSignals) Q_EMIT;
+		protected new IQDirModelSignals Emit {
+			get {
+				return (IQDirModelSignals) Q_EMIT;
+			}
 		}
 	}
 

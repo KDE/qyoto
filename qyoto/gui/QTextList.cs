@@ -88,8 +88,10 @@ namespace Qyoto {
 		private void DisposeQTextList() {
 			ProxyQTextList().DisposeQTextList();
 		}
-		protected new IQTextListSignals Emit() {
-			return (IQTextListSignals) Q_EMIT;
+		protected new IQTextListSignals Emit {
+			get {
+				return (IQTextListSignals) Q_EMIT;
+			}
 		}
 	}
 

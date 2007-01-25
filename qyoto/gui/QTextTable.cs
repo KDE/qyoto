@@ -104,8 +104,10 @@ namespace Qyoto {
 		private void DisposeQTextTable() {
 			ProxyQTextTable().DisposeQTextTable();
 		}
-		protected new IQTextTableSignals Emit() {
-			return (IQTextTableSignals) Q_EMIT;
+		protected new IQTextTableSignals Emit {
+			get {
+				return (IQTextTableSignals) Q_EMIT;
+			}
 		}
 	}
 

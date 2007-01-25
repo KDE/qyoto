@@ -376,8 +376,10 @@ namespace Qyoto {
 		private void DisposeQGLWidget() {
 			ProxyQGLWidget().DisposeQGLWidget();
 		}
-		protected new IQGLWidgetSignals Emit() {
-			return (IQGLWidgetSignals) Q_EMIT;
+		protected new IQGLWidgetSignals Emit {
+			get {
+				return (IQGLWidgetSignals) Q_EMIT;
+			}
 		}
 	}
 

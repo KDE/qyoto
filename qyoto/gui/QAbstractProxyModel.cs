@@ -111,8 +111,10 @@ namespace Qyoto {
 		private void DisposeQAbstractProxyModel() {
 			ProxyQAbstractProxyModel().DisposeQAbstractProxyModel();
 		}
-		protected new IQAbstractProxyModelSignals Emit() {
-			return (IQAbstractProxyModelSignals) Q_EMIT;
+		protected new IQAbstractProxyModelSignals Emit {
+			get {
+				return (IQAbstractProxyModelSignals) Q_EMIT;
+			}
 		}
 	}
 

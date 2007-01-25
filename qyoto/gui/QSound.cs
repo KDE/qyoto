@@ -101,8 +101,10 @@ namespace Qyoto {
 		private void DisposeQSound() {
 			ProxyQSound().DisposeQSound();
 		}
-		protected new IQSoundSignals Emit() {
-			return (IQSoundSignals) Q_EMIT;
+		protected new IQSoundSignals Emit {
+			get {
+				return (IQSoundSignals) Q_EMIT;
+			}
 		}
 	}
 

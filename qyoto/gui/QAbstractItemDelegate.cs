@@ -104,8 +104,10 @@ namespace Qyoto {
 		private void DisposeQAbstractItemDelegate() {
 			ProxyQAbstractItemDelegate().DisposeQAbstractItemDelegate();
 		}
-		protected new IQAbstractItemDelegateSignals Emit() {
-			return (IQAbstractItemDelegateSignals) Q_EMIT;
+		protected new IQAbstractItemDelegateSignals Emit {
+			get {
+				return (IQAbstractItemDelegateSignals) Q_EMIT;
+			}
 		}
 	}
 

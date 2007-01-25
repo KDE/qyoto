@@ -163,8 +163,10 @@ namespace Qyoto {
 		private void DisposeQPushButton() {
 			ProxyQPushButton().DisposeQPushButton();
 		}
-		protected new IQPushButtonSignals Emit() {
-			return (IQPushButtonSignals) Q_EMIT;
+		protected new IQPushButtonSignals Emit {
+			get {
+				return (IQPushButtonSignals) Q_EMIT;
+			}
 		}
 	}
 

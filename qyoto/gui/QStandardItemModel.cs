@@ -365,8 +365,10 @@ namespace Qyoto {
 		private void DisposeQStandardItemModel() {
 			ProxyQStandardItemModel().DisposeQStandardItemModel();
 		}
-		protected new IQStandardItemModelSignals Emit() {
-			return (IQStandardItemModelSignals) Q_EMIT;
+		protected new IQStandardItemModelSignals Emit {
+			get {
+				return (IQStandardItemModelSignals) Q_EMIT;
+			}
 		}
 	}
 

@@ -158,8 +158,10 @@ namespace Qyoto {
 		public static string GetItem(QWidget parent, string title, string label, List<string> list) {
 			return StaticQInputDialog().GetItem(parent,title,label,list);
 		}
-		protected new IQInputDialogSignals Emit() {
-			return (IQInputDialogSignals) Q_EMIT;
+		protected new IQInputDialogSignals Emit {
+			get {
+				return (IQInputDialogSignals) Q_EMIT;
+			}
 		}
 	}
 

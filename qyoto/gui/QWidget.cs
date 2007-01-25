@@ -1299,8 +1299,10 @@ namespace Qyoto {
 		public int Depth() {
 			return ProxyQWidget().Depth();
 		}
-		protected new IQWidgetSignals Emit() {
-			return (IQWidgetSignals) Q_EMIT;
+		protected new IQWidgetSignals Emit {
+			get {
+				return (IQWidgetSignals) Q_EMIT;
+			}
 		}
 	}
 

@@ -163,8 +163,10 @@ namespace Qyoto {
 		private void DisposeQItemDelegate() {
 			ProxyQItemDelegate().DisposeQItemDelegate();
 		}
-		protected new IQItemDelegateSignals Emit() {
-			return (IQItemDelegateSignals) Q_EMIT;
+		protected new IQItemDelegateSignals Emit {
+			get {
+				return (IQItemDelegateSignals) Q_EMIT;
+			}
 		}
 	}
 

@@ -227,8 +227,10 @@ namespace Qyoto {
 		private void DisposeQGridLayout() {
 			ProxyQGridLayout().DisposeQGridLayout();
 		}
-		protected new IQGridLayoutSignals Emit() {
-			return (IQGridLayoutSignals) Q_EMIT;
+		protected new IQGridLayoutSignals Emit {
+			get {
+				return (IQGridLayoutSignals) Q_EMIT;
+			}
 		}
 	}
 

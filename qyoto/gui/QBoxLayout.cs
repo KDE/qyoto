@@ -211,8 +211,10 @@ namespace Qyoto {
 		private void DisposeQBoxLayout() {
 			ProxyQBoxLayout().DisposeQBoxLayout();
 		}
-		protected new IQBoxLayoutSignals Emit() {
-			return (IQBoxLayoutSignals) Q_EMIT;
+		protected new IQBoxLayoutSignals Emit {
+			get {
+				return (IQBoxLayoutSignals) Q_EMIT;
+			}
 		}
 	}
 

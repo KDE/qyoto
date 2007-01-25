@@ -99,8 +99,10 @@ namespace Qyoto {
 		private void DisposeQRadioButton() {
 			ProxyQRadioButton().DisposeQRadioButton();
 		}
-		protected new IQRadioButtonSignals Emit() {
-			return (IQRadioButtonSignals) Q_EMIT;
+		protected new IQRadioButtonSignals Emit {
+			get {
+				return (IQRadioButtonSignals) Q_EMIT;
+			}
 		}
 	}
 

@@ -148,8 +148,10 @@ namespace Qyoto {
 		private void DisposeQTcpServer() {
 			ProxyQTcpServer().DisposeQTcpServer();
 		}
-		protected new IQTcpServerSignals Emit() {
-			return (IQTcpServerSignals) Q_EMIT;
+		protected new IQTcpServerSignals Emit {
+			get {
+				return (IQTcpServerSignals) Q_EMIT;
+			}
 		}
 	}
 

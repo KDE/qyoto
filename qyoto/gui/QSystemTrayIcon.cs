@@ -163,8 +163,10 @@ namespace Qyoto {
 		private void DisposeQSystemTrayIcon() {
 			ProxyQSystemTrayIcon().DisposeQSystemTrayIcon();
 		}
-		protected new IQSystemTrayIconSignals Emit() {
-			return (IQSystemTrayIconSignals) Q_EMIT;
+		protected new IQSystemTrayIconSignals Emit {
+			get {
+				return (IQSystemTrayIconSignals) Q_EMIT;
+			}
 		}
 	}
 

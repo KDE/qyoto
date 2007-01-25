@@ -114,8 +114,10 @@ namespace Qyoto {
 		private void DisposeQX11EmbedContainer() {
 			ProxyQX11EmbedContainer().DisposeQX11EmbedContainer();
 		}
-		protected new IQX11EmbedContainerSignals Emit() {
-			return (IQX11EmbedContainerSignals) Q_EMIT;
+		protected new IQX11EmbedContainerSignals Emit {
+			get {
+				return (IQX11EmbedContainerSignals) Q_EMIT;
+			}
 		}
 	}
 

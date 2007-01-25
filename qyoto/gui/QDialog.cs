@@ -184,8 +184,10 @@ namespace Qyoto {
 		private void DisposeQDialog() {
 			ProxyQDialog().DisposeQDialog();
 		}
-		protected new IQDialogSignals Emit() {
-			return (IQDialogSignals) Q_EMIT;
+		protected new IQDialogSignals Emit {
+			get {
+				return (IQDialogSignals) Q_EMIT;
+			}
 		}
 	}
 

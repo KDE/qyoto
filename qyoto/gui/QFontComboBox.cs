@@ -103,8 +103,10 @@ namespace Qyoto {
 		private void DisposeQFontComboBox() {
 			ProxyQFontComboBox().DisposeQFontComboBox();
 		}
-		protected new IQFontComboBoxSignals Emit() {
-			return (IQFontComboBoxSignals) Q_EMIT;
+		protected new IQFontComboBoxSignals Emit {
+			get {
+				return (IQFontComboBoxSignals) Q_EMIT;
+			}
 		}
 	}
 

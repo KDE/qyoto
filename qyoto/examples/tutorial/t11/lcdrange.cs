@@ -67,8 +67,10 @@ class LCDRange : QWidget {
 		slider.SetRange(minValue, maxValue);
 	}
 
-	protected new ILCDRangeSignals Emit() {
-		return (ILCDRangeSignals) Q_EMIT;
+	protected new ILCDRangeSignals Emit {
+		get {
+			return (ILCDRangeSignals) Q_EMIT;
+		}
 	}
 }
 

@@ -129,8 +129,10 @@ namespace Qyoto {
 		private void DisposeQUndoGroup() {
 			ProxyQUndoGroup().DisposeQUndoGroup();
 		}
-		protected new IQUndoGroupSignals Emit() {
-			return (IQUndoGroupSignals) Q_EMIT;
+		protected new IQUndoGroupSignals Emit {
+			get {
+				return (IQUndoGroupSignals) Q_EMIT;
+			}
 		}
 	}
 

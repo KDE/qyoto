@@ -75,8 +75,10 @@ namespace Qyoto {
 		private void DisposeQDBusServer() {
 			ProxyQDBusServer().DisposeQDBusServer();
 		}
-		protected new IQDBusServerSignals Emit() {
-			return (IQDBusServerSignals) Q_EMIT;
+		protected new IQDBusServerSignals Emit {
+			get {
+				return (IQDBusServerSignals) Q_EMIT;
+			}
 		}
 	}
 

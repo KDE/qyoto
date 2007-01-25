@@ -68,8 +68,10 @@ namespace Qyoto {
 		private void DisposeQValidator() {
 			ProxyQValidator().DisposeQValidator();
 		}
-		protected new IQValidatorSignals Emit() {
-			return (IQValidatorSignals) Q_EMIT;
+		protected new IQValidatorSignals Emit {
+			get {
+				return (IQValidatorSignals) Q_EMIT;
+			}
 		}
 	}
 

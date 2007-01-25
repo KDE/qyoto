@@ -83,8 +83,10 @@ namespace Qyoto {
 		private void DisposeQSizeGrip() {
 			ProxyQSizeGrip().DisposeQSizeGrip();
 		}
-		protected new IQSizeGripSignals Emit() {
-			return (IQSizeGripSignals) Q_EMIT;
+		protected new IQSizeGripSignals Emit {
+			get {
+				return (IQSizeGripSignals) Q_EMIT;
+			}
 		}
 	}
 

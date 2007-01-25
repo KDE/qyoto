@@ -196,8 +196,10 @@ namespace Qyoto {
 		private void DisposeQTimeLine() {
 			ProxyQTimeLine().DisposeQTimeLine();
 		}
-		protected new IQTimeLineSignals Emit() {
-			return (IQTimeLineSignals) Q_EMIT;
+		protected new IQTimeLineSignals Emit {
+			get {
+				return (IQTimeLineSignals) Q_EMIT;
+			}
 		}
 	}
 

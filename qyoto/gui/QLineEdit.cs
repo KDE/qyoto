@@ -422,8 +422,10 @@ namespace Qyoto {
 		private void DisposeQLineEdit() {
 			ProxyQLineEdit().DisposeQLineEdit();
 		}
-		protected new IQLineEditSignals Emit() {
-			return (IQLineEditSignals) Q_EMIT;
+		protected new IQLineEditSignals Emit {
+			get {
+				return (IQLineEditSignals) Q_EMIT;
+			}
 		}
 	}
 

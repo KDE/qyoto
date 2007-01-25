@@ -308,8 +308,10 @@ namespace Qyoto {
 		private void DisposeQSortFilterProxyModel() {
 			ProxyQSortFilterProxyModel().DisposeQSortFilterProxyModel();
 		}
-		protected new IQSortFilterProxyModelSignals Emit() {
-			return (IQSortFilterProxyModelSignals) Q_EMIT;
+		protected new IQSortFilterProxyModelSignals Emit {
+			get {
+				return (IQSortFilterProxyModelSignals) Q_EMIT;
+			}
 		}
 	}
 

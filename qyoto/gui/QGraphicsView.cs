@@ -527,8 +527,10 @@ namespace Qyoto {
 		private void DisposeQGraphicsView() {
 			ProxyQGraphicsView().DisposeQGraphicsView();
 		}
-		protected new IQGraphicsViewSignals Emit() {
-			return (IQGraphicsViewSignals) Q_EMIT;
+		protected new IQGraphicsViewSignals Emit {
+			get {
+				return (IQGraphicsViewSignals) Q_EMIT;
+			}
 		}
 	}
 

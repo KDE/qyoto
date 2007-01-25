@@ -270,8 +270,10 @@ namespace Qyoto {
 		private void DisposeQTabWidget() {
 			ProxyQTabWidget().DisposeQTabWidget();
 		}
-		protected new IQTabWidgetSignals Emit() {
-			return (IQTabWidgetSignals) Q_EMIT;
+		protected new IQTabWidgetSignals Emit {
+			get {
+				return (IQTabWidgetSignals) Q_EMIT;
+			}
 		}
 	}
 

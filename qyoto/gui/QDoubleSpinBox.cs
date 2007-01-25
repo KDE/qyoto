@@ -148,8 +148,10 @@ namespace Qyoto {
 		private void DisposeQDoubleSpinBox() {
 			ProxyQDoubleSpinBox().DisposeQDoubleSpinBox();
 		}
-		protected new IQDoubleSpinBoxSignals Emit() {
-			return (IQDoubleSpinBoxSignals) Q_EMIT;
+		protected new IQDoubleSpinBoxSignals Emit {
+			get {
+				return (IQDoubleSpinBoxSignals) Q_EMIT;
+			}
 		}
 	}
 

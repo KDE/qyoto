@@ -249,8 +249,10 @@ namespace Qyoto {
 		private void DisposeQListWidget() {
 			ProxyQListWidget().DisposeQListWidget();
 		}
-		protected new IQListWidgetSignals Emit() {
-			return (IQListWidgetSignals) Q_EMIT;
+		protected new IQListWidgetSignals Emit {
+			get {
+				return (IQListWidgetSignals) Q_EMIT;
+			}
 		}
 	}
 

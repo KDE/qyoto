@@ -173,8 +173,10 @@ namespace Qyoto {
 		private void DisposeQDockWidget() {
 			ProxyQDockWidget().DisposeQDockWidget();
 		}
-		protected new IQDockWidgetSignals Emit() {
-			return (IQDockWidgetSignals) Q_EMIT;
+		protected new IQDockWidgetSignals Emit {
+			get {
+				return (IQDockWidgetSignals) Q_EMIT;
+			}
 		}
 	}
 

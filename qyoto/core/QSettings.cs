@@ -295,8 +295,10 @@ namespace Qyoto {
 		private void DisposeQSettings() {
 			ProxyQSettings().DisposeQSettings();
 		}
-		protected new IQSettingsSignals Emit() {
-			return (IQSettingsSignals) Q_EMIT;
+		protected new IQSettingsSignals Emit {
+			get {
+				return (IQSettingsSignals) Q_EMIT;
+			}
 		}
 	}
 

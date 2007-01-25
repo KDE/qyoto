@@ -75,8 +75,10 @@ namespace Qyoto {
 		private void DisposeQRegExpValidator() {
 			ProxyQRegExpValidator().DisposeQRegExpValidator();
 		}
-		protected new IQRegExpValidatorSignals Emit() {
-			return (IQRegExpValidatorSignals) Q_EMIT;
+		protected new IQRegExpValidatorSignals Emit {
+			get {
+				return (IQRegExpValidatorSignals) Q_EMIT;
+			}
 		}
 	}
 

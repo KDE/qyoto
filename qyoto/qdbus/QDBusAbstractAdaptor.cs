@@ -63,8 +63,10 @@ namespace Qyoto {
 		private void DisposeQDBusAbstractAdaptor() {
 			ProxyQDBusAbstractAdaptor().DisposeQDBusAbstractAdaptor();
 		}
-		protected new IQDBusAbstractAdaptorSignals Emit() {
-			return (IQDBusAbstractAdaptorSignals) Q_EMIT;
+		protected new IQDBusAbstractAdaptorSignals Emit {
+			get {
+				return (IQDBusAbstractAdaptorSignals) Q_EMIT;
+			}
 		}
 	}
 

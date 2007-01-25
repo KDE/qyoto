@@ -309,8 +309,10 @@ namespace Qyoto {
 		private void DisposeQProcess() {
 			ProxyQProcess().DisposeQProcess();
 		}
-		protected new IQProcessSignals Emit() {
-			return (IQProcessSignals) Q_EMIT;
+		protected new IQProcessSignals Emit {
+			get {
+				return (IQProcessSignals) Q_EMIT;
+			}
 		}
 	}
 

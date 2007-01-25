@@ -63,8 +63,10 @@ namespace Qyoto {
 		private void DisposeQTcpSocket() {
 			ProxyQTcpSocket().DisposeQTcpSocket();
 		}
-		protected new IQTcpSocketSignals Emit() {
-			return (IQTcpSocketSignals) Q_EMIT;
+		protected new IQTcpSocketSignals Emit {
+			get {
+				return (IQTcpSocketSignals) Q_EMIT;
+			}
 		}
 	}
 

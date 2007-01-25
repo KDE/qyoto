@@ -283,8 +283,10 @@ namespace Qyoto {
 		private void DisposeQFile() {
 			ProxyQFile().DisposeQFile();
 		}
-		protected new IQFileSignals Emit() {
-			return (IQFileSignals) Q_EMIT;
+		protected new IQFileSignals Emit {
+			get {
+				return (IQFileSignals) Q_EMIT;
+			}
 		}
 	}
 

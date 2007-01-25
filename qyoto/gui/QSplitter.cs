@@ -209,8 +209,10 @@ namespace Qyoto {
 		private void DisposeQSplitter() {
 			ProxyQSplitter().DisposeQSplitter();
 		}
-		protected new IQSplitterSignals Emit() {
-			return (IQSplitterSignals) Q_EMIT;
+		protected new IQSplitterSignals Emit {
+			get {
+				return (IQSplitterSignals) Q_EMIT;
+			}
 		}
 	}
 

@@ -131,8 +131,10 @@ namespace Qyoto {
 		private void DisposeQAbstractPrintDialog() {
 			ProxyQAbstractPrintDialog().DisposeQAbstractPrintDialog();
 		}
-		protected new IQAbstractPrintDialogSignals Emit() {
-			return (IQAbstractPrintDialogSignals) Q_EMIT;
+		protected new IQAbstractPrintDialogSignals Emit {
+			get {
+				return (IQAbstractPrintDialogSignals) Q_EMIT;
+			}
 		}
 	}
 

@@ -212,8 +212,10 @@ namespace Qyoto {
 		private void DisposeQProgressDialog() {
 			ProxyQProgressDialog().DisposeQProgressDialog();
 		}
-		protected new IQProgressDialogSignals Emit() {
-			return (IQProgressDialogSignals) Q_EMIT;
+		protected new IQProgressDialogSignals Emit {
+			get {
+				return (IQProgressDialogSignals) Q_EMIT;
+			}
 		}
 	}
 

@@ -716,8 +716,10 @@ namespace Qyoto {
 		private void DisposeQStyle() {
 			ProxyQStyle().DisposeQStyle();
 		}
-		protected new IQStyleSignals Emit() {
-			return (IQStyleSignals) Q_EMIT;
+		protected new IQStyleSignals Emit {
+			get {
+				return (IQStyleSignals) Q_EMIT;
+			}
 		}
 	}
 

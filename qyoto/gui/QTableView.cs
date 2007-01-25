@@ -332,8 +332,10 @@ namespace Qyoto {
 		private void DisposeQTableView() {
 			ProxyQTableView().DisposeQTableView();
 		}
-		protected new IQTableViewSignals Emit() {
-			return (IQTableViewSignals) Q_EMIT;
+		protected new IQTableViewSignals Emit {
+			get {
+				return (IQTableViewSignals) Q_EMIT;
+			}
 		}
 	}
 

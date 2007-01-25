@@ -439,8 +439,10 @@ namespace Qyoto {
 		private void DisposeQGraphicsScene() {
 			ProxyQGraphicsScene().DisposeQGraphicsScene();
 		}
-		protected new IQGraphicsSceneSignals Emit() {
-			return (IQGraphicsSceneSignals) Q_EMIT;
+		protected new IQGraphicsSceneSignals Emit {
+			get {
+				return (IQGraphicsSceneSignals) Q_EMIT;
+			}
 		}
 	}
 

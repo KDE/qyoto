@@ -291,8 +291,10 @@ namespace Qyoto {
 		private void DisposeQTextDocument() {
 			ProxyQTextDocument().DisposeQTextDocument();
 		}
-		protected new IQTextDocumentSignals Emit() {
-			return (IQTextDocumentSignals) Q_EMIT;
+		protected new IQTextDocumentSignals Emit {
+			get {
+				return (IQTextDocumentSignals) Q_EMIT;
+			}
 		}
 	}
 

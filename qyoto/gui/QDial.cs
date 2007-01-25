@@ -131,8 +131,10 @@ namespace Qyoto {
 		private void DisposeQDial() {
 			ProxyQDial().DisposeQDial();
 		}
-		protected new IQDialSignals Emit() {
-			return (IQDialSignals) Q_EMIT;
+		protected new IQDialSignals Emit {
+			get {
+				return (IQDialSignals) Q_EMIT;
+			}
 		}
 	}
 

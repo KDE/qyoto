@@ -140,8 +140,10 @@ namespace Qyoto {
 		private void DisposeQSplashScreen() {
 			ProxyQSplashScreen().DisposeQSplashScreen();
 		}
-		protected new IQSplashScreenSignals Emit() {
-			return (IQSplashScreenSignals) Q_EMIT;
+		protected new IQSplashScreenSignals Emit {
+			get {
+				return (IQSplashScreenSignals) Q_EMIT;
+			}
 		}
 	}
 
