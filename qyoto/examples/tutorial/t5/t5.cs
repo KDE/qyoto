@@ -1,32 +1,37 @@
 using System;
-using System.Runtime.InteropServices;
-using Qt;
+using Qyoto;
 
-public class MyWidget : QVBox
+public class MyWidget : QWidget
 {
-	public MyWidget() : this(null, null) {}
+	public MyWidget() : this(null) {}
 
-	public MyWidget(QWidget parent, string name) : base(parent, name) {
-		QPushButton quit = new QPushButton( "Quit", this, "quit" );
-		quit.SetFont( new QFont( "Times", 18, (int) QFont.Weight.Bold ) );
+	public MyWidget(QWidget parent) : base(parent) {
+		QPushButton quit = new QPushButton(Tr("Quit"));
+		quit.Font = new QFont("Times", 18, (int) QFont.Weight.Bold);
 
-		Connect( quit, SIGNAL("clicked()"), qApp, SLOT("quit()") );
+		QLCDNumber lcd = new QLCDNumber(2);
+		lcd.segmentStyle = QLCDNumber.SegmentStyle.Filled;
 
-		QLCDNumber lcd  = new QLCDNumber( 2, this, "lcd" );
+		QSlider slider = new QSlider(Qt.Orientation.Horizontal);
+		slider.SetRange(0, 99);
+		slider.Value = 0;
 
-		QSlider slider = new QSlider( Orientation.Horizontal, this, "slider" );
-		slider.SetRange( 0, 99 );
-		slider.SetValue( 0 );
+		Connect(quit, SIGNAL("clicked()"), qApp, SLOT("quit()"));
+		Connect(slider, SIGNAL("valueChanged(int)"),
+            lcd, SLOT("display(int)"));
 
-		Connect( slider, SIGNAL("valueChanged(int)"), lcd, SLOT("display(int)") );
+		QVBoxLayout layout = new QVBoxLayout();
+		layout.AddWidget(quit);
+		layout.AddWidget(lcd);
+		layout.AddWidget(slider);
+		SetLayout(layout);
 	}
 
 	public static int Main(String[] args) {
-		QApplication a = new QApplication(args);
+		new QApplication(args);
 
 		MyWidget w = new MyWidget();
-		a.SetMainWidget( w );
 		w.Show();
-		return a.Exec();
+		return QApplication.Exec();
 	}
 }

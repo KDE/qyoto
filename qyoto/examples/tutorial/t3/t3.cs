@@ -1,25 +1,22 @@
 using System;
-using System.Runtime.InteropServices;
-using Qt;
-namespace Qt {
+using Qyoto;
 
 public class T3 : Qt
 {
 	public static int Main(String[] args) {
-		QApplication a = new QApplication(args);
+		QApplication app = new QApplication(args);
 		
-		QVBox box = new QVBox();
-		box.Resize( 200, 120 );
+		QWidget window = new QWidget();
+		window.Resize(200, 120);
 
-		QPushButton quit = new QPushButton( "Quit", box );
-		quit.SetFont( new QFont( "Times", 18, (int) QFont.Weight.Bold ) );
+		QPushButton quit = new QPushButton( "Quit", window );
+		quit.Font = new QFont( "Times", 18, (int) QFont.Weight.Bold );
+		quit.SetGeometry(10, 40, 180, 40);
 
-		QObject.Connect( quit, SIGNAL("clicked()"), a, SLOT("quit()") );
+		QObject.Connect( quit, SIGNAL("clicked()"), app, SLOT("quit()") );
 		
-		a.SetMainWidget(box);
-		box.Show();
-		return a.Exec();
+		window.Show();
+		return QApplication.Exec();
 	}
 }
 
-}

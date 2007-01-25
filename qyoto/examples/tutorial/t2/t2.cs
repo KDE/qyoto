@@ -1,7 +1,5 @@
 using System;
-using System.Runtime.InteropServices;
-using Qt;
-namespace Qt {
+using Qyoto;
 
 public class T2 : Qt
 {
@@ -10,14 +8,11 @@ public class T2 : Qt
 		
 		QPushButton quit = new QPushButton( "Quit", null );
 		quit.Resize( 75, 30 );
-		quit.SetFont( new QFont( "Times", 18, (int) QFont.Weight.Bold ) );
+		quit.Font = new QFont( "Times", 18, (int) QFont.Weight.Bold );
 
 		QObject.Connect( quit, SIGNAL("clicked()"), a, SLOT("quit()") );
 		
-		a.SetMainWidget(quit);
 		quit.Show();
-		return a.Exec();
+		return QApplication.Exec();
 	}
-}
-
 }
