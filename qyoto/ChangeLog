@@ -14,6 +14,9 @@
 
 	* Only add C# set properties for Q_PROPERTYs with a WRITE option
 	* Added cannon game tutorial t12
+	* Added tutorials t13 and t14
+	* QWidget.SizeHint is no longer a property as it needs to be overriden in
+	  subclasses.
 
 2007-24-01  Richard Dale  <rdale@foton.es>
 

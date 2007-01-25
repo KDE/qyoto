@@ -1,0 +1,3 @@
+SET(SRC_CS cannonfield.cs gameboard.cs lcdrange.cs main.cs)
+ADD_CUSTOM_TARGET (t14.exe ${GMCS_PATH} -unsafe -warn:0 -out:t14.exe -addmodule:../../../qt-dotnet.dll ${SRC_CS})
+

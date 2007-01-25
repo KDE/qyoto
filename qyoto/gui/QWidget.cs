@@ -280,11 +280,6 @@ namespace Qyoto {
 				return Property("fullScreen").Value<bool>();
 			}
 		}
-		public QSize SizeHint {
-			get {
-				return Property("sizeHint").Value<QSize>();
-			}
-		}
 		public QSize MinimumSizeHint {
 			get {
 				return Property("minimumSizeHint").Value<QSize>();
@@ -846,6 +841,10 @@ namespace Qyoto {
 		[SmokeMethod("overrideWindowState(Qt::WindowStates)")]
 		public void OverrideWindowState(int state) {
 			ProxyQWidget().OverrideWindowState(state);
+		}
+		[SmokeMethod("sizeHint() const")]
+		public virtual QSize SizeHint() {
+			return ProxyQWidget().SizeHint();
 		}
 		[SmokeMethod("setSizePolicy(QSizePolicy::Policy, QSizePolicy::Policy)")]
 		public void SetSizePolicy(QSizePolicy.Policy horizontal, QSizePolicy.Policy vertical) {
