@@ -89,7 +89,7 @@ class CannonField : QWidget {
 	protected override void PaintEvent(QPaintEvent ev) {
         using (QPainter painter = new QPainter(this)) {
         	painter.DrawText(200, 200, string.Format("Angle = {0}",currentAngle));
-        	painter.End(); // this should not be needed
+        	painter.End();
 		}
 	}
 	

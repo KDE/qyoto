@@ -93,7 +93,7 @@ class CannonField : QWidget {
 			painter.DrawPie(new QRect(-35, -35, 70, 70), 0, 90 * 16);
 			painter.Rotate(-currentAngle);
 			painter.DrawRect(30, -5, 20, 10);
-        	painter.End(); // this should not be needed
+        	painter.End();
 		}
 	}
 	
