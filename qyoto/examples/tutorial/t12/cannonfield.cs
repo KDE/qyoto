@@ -90,7 +90,6 @@ class CannonField : QWidget {
 		if (firstTime) {
 			firstTime = false;
 			QTime midnight = new QTime(0, 0, 0);
-//			srand(midnight.SecsTo(QTime.CurrentTime()));
 			RandomClass = new Random();
 		}
 
@@ -125,28 +124,24 @@ class CannonField : QWidget {
 		if (autoShootTimer.IsActive())
 			paintShot(painter);
 		paintTarget(painter);
+		painter.End();
 	}
 
 	private void paintShot(QPainter painter) {
-		painter.Begin(this);
 		painter.SetPen(Qt.PenStyle.NoPen);
 		painter.SetBrush(new QBrush(Qt.GlobalColor.black));
 		painter.DrawRect(shotRect());
-		painter.End(); // should not be necessary
 	}
 
 	private void paintTarget(QPainter painter) {
-		painter.Begin(this);
 		painter.SetPen(new QColor(Qt.GlobalColor.black));
 		painter.SetBrush(new QBrush(Qt.GlobalColor.red));
 		painter.DrawRect(targetRect());
-		painter.End(); // should not be necessary
 	}
 
 	public QRect barrelRect = new QRect(30, -5, 20, 10);
 
 	private void paintCannon(QPainter painter) {
-		painter.Begin(this); // should not be necessary
 		painter.SetPen(Qt.PenStyle.NoPen);
 		painter.SetBrush(new QBrush(Qt.GlobalColor.blue));
 		
@@ -156,7 +151,6 @@ class CannonField : QWidget {
 		painter.Rotate(-currentAngle);
 		painter.DrawRect(barrelRect);
 		painter.Restore();
-		painter.End(); // should not be necessary
 	}
 
 	private QRect cannonRect() {

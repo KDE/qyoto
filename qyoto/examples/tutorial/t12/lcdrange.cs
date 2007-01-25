@@ -88,4 +88,15 @@ class LCDRange : QWidget {
 	public void setText(string text) {
 		label.Text = text;
 	}
+
+	protected new ILCDRangeSignals Emit {
+		get {
+			return (ILCDRangeSignals) Q_EMIT;
+		}
+	}
+}
+
+interface ILCDRangeSignals : IQWidgetSignals {
+	[Q_SIGNAL]
+	void valueChanged(int newValue);
 }

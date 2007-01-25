@@ -203,15 +203,15 @@ namespace Qyoto
 				return signals;
 			}
 			
-			MethodInfo methodInfo = t.GetMethod(	"Emit", 
+			PropertyInfo propertyInfo = t.GetProperty(	"Emit", 
 													BindingFlags.Instance 
 													| BindingFlags.NonPublic 
 													| BindingFlags.DeclaredOnly );
-			if (methodInfo == null) {
+			if (propertyInfo == null) {
 				return signals;
 			}
 
-			Type iface = methodInfo.ReturnType;
+			Type iface = propertyInfo.PropertyType;
 			MethodInfo[] mis = iface.GetMethods();
 			
 			/// the interface has no signals...
