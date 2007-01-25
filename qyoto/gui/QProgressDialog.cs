@@ -33,9 +33,6 @@ namespace Qyoto {
 			get {
 				return Property("wasCanceled").Value<bool>();
 			}
-			set {
-				SetProperty("wasCanceled", QVariant.FromValue<bool>(value));
-			}
 		}
 		public int Minimum {
 			get {

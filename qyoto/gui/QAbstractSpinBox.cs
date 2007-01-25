@@ -94,9 +94,6 @@ namespace Qyoto {
 			get {
 				return Property("text").Value<string>();
 			}
-			set {
-				SetProperty("text", QVariant.FromValue<string>(value));
-			}
 		}
 		public bool Accelerated {
 			get {
@@ -117,9 +114,6 @@ namespace Qyoto {
 		public bool AcceptableInput {
 			get {
 				return Property("acceptableInput").Value<bool>();
-			}
-			set {
-				SetProperty("acceptableInput", QVariant.FromValue<bool>(value));
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED

@@ -82,9 +82,6 @@ namespace Qyoto {
 			get {
 				return Property("frameWidth").Value<int>();
 			}
-			set {
-				SetProperty("frameWidth", QVariant.FromValue<int>(value));
-			}
 		}
 		public QRect FrameRect {
 			get {

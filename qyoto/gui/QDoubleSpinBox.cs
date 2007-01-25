@@ -49,9 +49,6 @@ namespace Qyoto {
 			get {
 				return Property("cleanText").Value<string>();
 			}
-			set {
-				SetProperty("cleanText", QVariant.FromValue<string>(value));
-			}
 		}
 		public int Decimals {
 			get {

@@ -53,9 +53,6 @@ namespace Qyoto {
 			get {
 				return Property("text").Value<string>();
 			}
-			set {
-				SetProperty("text", QVariant.FromValue<string>(value));
-			}
 		}
 		public int Value {
 			get {

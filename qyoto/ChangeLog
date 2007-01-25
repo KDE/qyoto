@@ -12,6 +12,9 @@
 
 		Emit.forceChanged(currentForce);
 
+	* Only add C# set properties for Q_PROPERTYs with a WRITE option
+	* Added cannon game tutorial t12
+
 2007-24-01  Richard Dale  <rdale@foton.es>
 
 	* Q_PROPERTYs are now mapped onto C# properties, and the correponding set

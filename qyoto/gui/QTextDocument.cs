@@ -87,9 +87,6 @@ namespace Qyoto {
 			get {
 				return Property("size").Value<QSizeF>();
 			}
-			set {
-				SetProperty("size", QVariant.FromValue<QSizeF>(value));
-			}
 		}
 		public double TextWidth {
 			get {
@@ -102,9 +99,6 @@ namespace Qyoto {
 		public int BlockCount {
 			get {
 				return Property("blockCount").Value<int>();
-			}
-			set {
-				SetProperty("blockCount", QVariant.FromValue<int>(value));
 			}
 		}
 		public string DefaultStyleSheet {

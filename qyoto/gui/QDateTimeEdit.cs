@@ -110,9 +110,6 @@ namespace Qyoto {
 			get {
 				return Property("displayedSections").Value<int>();
 			}
-			set {
-				SetProperty("displayedSections", QVariant.FromValue<int>(value));
-			}
 		}
 		public string DisplayFormat {
 			get {

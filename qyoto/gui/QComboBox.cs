@@ -56,16 +56,10 @@ namespace Qyoto {
 			get {
 				return Property("count").Value<int>();
 			}
-			set {
-				SetProperty("count", QVariant.FromValue<int>(value));
-			}
 		}
 		public string CurrentText {
 			get {
 				return Property("currentText").Value<string>();
-			}
-			set {
-				SetProperty("currentText", QVariant.FromValue<string>(value));
 			}
 		}
 		public int CurrentIndex {

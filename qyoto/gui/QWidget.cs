@@ -38,9 +38,6 @@ namespace Qyoto {
 			get {
 				return Property("modal").Value<bool>();
 			}
-			set {
-				SetProperty("modal", QVariant.FromValue<bool>(value));
-			}
 		}
 		public Qt.WindowModality WindowModality {
 			get {
@@ -70,32 +67,20 @@ namespace Qyoto {
 			get {
 				return Property("frameGeometry").Value<QRect>();
 			}
-			set {
-				SetProperty("frameGeometry", QVariant.FromValue<QRect>(value));
-			}
 		}
 		public QRect NormalGeometry {
 			get {
 				return Property("normalGeometry").Value<QRect>();
-			}
-			set {
-				SetProperty("normalGeometry", QVariant.FromValue<QRect>(value));
 			}
 		}
 		public int X {
 			get {
 				return Property("x").Value<int>();
 			}
-			set {
-				SetProperty("x", QVariant.FromValue<int>(value));
-			}
 		}
 		public int Y {
 			get {
 				return Property("y").Value<int>();
-			}
-			set {
-				SetProperty("y", QVariant.FromValue<int>(value));
 			}
 		}
 		public QPoint Pos {
@@ -110,9 +95,6 @@ namespace Qyoto {
 			get {
 				return Property("frameSize").Value<QSize>();
 			}
-			set {
-				SetProperty("frameSize", QVariant.FromValue<QSize>(value));
-			}
 		}
 		public QSize Size {
 			get {
@@ -126,24 +108,15 @@ namespace Qyoto {
 			get {
 				return Property("rect").Value<QRect>();
 			}
-			set {
-				SetProperty("rect", QVariant.FromValue<QRect>(value));
-			}
 		}
 		public QRect ChildrenRect {
 			get {
 				return Property("childrenRect").Value<QRect>();
 			}
-			set {
-				SetProperty("childrenRect", QVariant.FromValue<QRect>(value));
-			}
 		}
 		public QRegion ChildrenRegion {
 			get {
 				return Property("childrenRegion").Value<QRegion>();
-			}
-			set {
-				SetProperty("childrenRegion", QVariant.FromValue<QRegion>(value));
 			}
 		}
 		public QSizePolicy SizePolicy {
@@ -254,9 +227,6 @@ namespace Qyoto {
 			get {
 				return Property("isActiveWindow").Value<bool>();
 			}
-			set {
-				SetProperty("isActiveWindow", QVariant.FromValue<bool>(value));
-			}
 		}
 		public Qt.FocusPolicy FocusPolicy {
 			get {
@@ -269,9 +239,6 @@ namespace Qyoto {
 		public bool Focus {
 			get {
 				return Property("focus").Value<bool>();
-			}
-			set {
-				SetProperty("focus", QVariant.FromValue<bool>(value));
 			}
 		}
 		public Qt.ContextMenuPolicy ContextMenuPolicy {
@@ -302,40 +269,25 @@ namespace Qyoto {
 			get {
 				return Property("minimized").Value<bool>();
 			}
-			set {
-				SetProperty("minimized", QVariant.FromValue<bool>(value));
-			}
 		}
 		public bool Maximized {
 			get {
 				return Property("maximized").Value<bool>();
-			}
-			set {
-				SetProperty("maximized", QVariant.FromValue<bool>(value));
 			}
 		}
 		public bool FullScreen {
 			get {
 				return Property("fullScreen").Value<bool>();
 			}
-			set {
-				SetProperty("fullScreen", QVariant.FromValue<bool>(value));
-			}
 		}
 		public QSize SizeHint {
 			get {
 				return Property("sizeHint").Value<QSize>();
 			}
-			set {
-				SetProperty("sizeHint", QVariant.FromValue<QSize>(value));
-			}
 		}
 		public QSize MinimumSizeHint {
 			get {
 				return Property("minimumSizeHint").Value<QSize>();
-			}
-			set {
-				SetProperty("minimumSizeHint", QVariant.FromValue<QSize>(value));
 			}
 		}
 		public bool AcceptDrops {

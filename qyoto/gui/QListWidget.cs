@@ -34,9 +34,6 @@ namespace Qyoto {
 			get {
 				return Property("count").Value<int>();
 			}
-			set {
-				SetProperty("count", QVariant.FromValue<int>(value));
-			}
 		}
 		public int CurrentRow {
 			get {

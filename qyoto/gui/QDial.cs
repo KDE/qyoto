@@ -40,9 +40,6 @@ namespace Qyoto {
 			get {
 				return Property("notchSize").Value<int>();
 			}
-			set {
-				SetProperty("notchSize", QVariant.FromValue<int>(value));
-			}
 		}
 		public double NotchTarget {
 			get {
