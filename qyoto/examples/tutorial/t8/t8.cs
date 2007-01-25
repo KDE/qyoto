@@ -5,13 +5,14 @@ class LCDRange : QWidget {
 	private QSlider slider;
 
 	public LCDRange() : this((QWidget) null) {}
+
 	public LCDRange(QWidget parent) : base(parent) {
 		QLCDNumber lcd = new QLCDNumber(2);
-		lcd.SetSegmentStyle(QLCDNumber.SegmentStyle.Filled);
+		lcd.segmentStyle = QLCDNumber.SegmentStyle.Filled;
 		
 		slider = new QSlider(Qt.Orientation.Horizontal);
 		slider.SetRange(0,99);
-		slider.SetValue(0);
+		slider.Value = 0;
 		
 		Connect(slider, SIGNAL("valueChanged(int)"),
 				lcd, SLOT("display(int)"));
@@ -20,18 +21,18 @@ class LCDRange : QWidget {
 				
 		QVBoxLayout layout = new QVBoxLayout();
 		layout.AddWidget(lcd);
-		layout.AddWidget(slider);
-		
+		layout.AddWidget(slider);		
 		SetLayout(layout);
-		
+
+		SetFocusProxy(slider);
 	}
 	public int Value() {
-		return slider.Value();
+		return slider.Value;
 	}
 	
 	[Q_SLOT("setValue(int)")]
 	public void SetValue(int value) {
-		slider.SetValue(value);
+		slider.Value = value;
 	}
 	
 	[Q_SLOT("setRange(int,int)")]
@@ -81,9 +82,8 @@ class CannonField : QWidget {
 	public CannonField() : this ((QWidget) null) { }
 	public CannonField(QWidget parent) : base(parent) {
 		currentAngle = 45;
-		// this crashes. why?
-//        SetPalette(new QPalette(new QColor(250, 250, 200)));
-//        SetAutoFillBackground(true);
+        Palette = new QPalette(new QColor(250, 250, 200));
+        AutoFillBackground = true;
 	}
 	
 	protected override void PaintEvent(QPaintEvent ev) {
@@ -110,15 +110,17 @@ class MyWidget : QWidget {
 	public MyWidget() : this ((QWidget) null) { }
 	public MyWidget(QWidget parent) : base(parent) {
         QPushButton quit = new QPushButton("Quit");
+		quit.Font = new QFont( "Times", 18, (int) QFont.Weight.Bold );
 
         Connect(quit, SIGNAL("clicked()"), qApp, SLOT("quit()"));
 	
 		LCDRange angle = new LCDRange();
 		angle.SetRange(5,70);
+
 		CannonField field = new CannonField();
+
 		Connect(angle, SIGNAL("valueChanged(int)"), field, SLOT("setAngle(int)"));
-		// signal arguments don't work, yet
-//		Connect(field, SIGNAL("angleChanged(int)"), angle, SLOT("setValue(int)"));
+		Connect(field, SIGNAL("angleChanged(int)"), angle, SLOT("setValue(int)"));
 		
         QGridLayout gridLayout = new QGridLayout();
         gridLayout.AddWidget(quit, 0, 0);
@@ -133,9 +135,9 @@ class MyWidget : QWidget {
 	
 	public static void Main(string[] args) {
 		new QApplication(args);
-		MyWidget main = new MyWidget((QWidget)null);
-		main.SetGeometry(100, 100, 500, 355);
-		main.Show();
+		MyWidget widget = new MyWidget((QWidget)null);
+		widget.SetGeometry(100, 100, 500, 355);
+		widget.Show();
 		QApplication.Exec();
 	}
 	

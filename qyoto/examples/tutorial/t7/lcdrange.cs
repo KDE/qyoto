@@ -7,11 +7,11 @@ class LCDRange : QWidget {
 
 	public LCDRange(QWidget parent) : base(parent) {
 		QLCDNumber lcd = new QLCDNumber(2);
-		lcd.SetSegmentStyle(QLCDNumber.SegmentStyle.Filled);
+		lcd.segmentStyle = QLCDNumber.SegmentStyle.Filled;
 		
 		slider = new QSlider(Qt.Orientation.Horizontal);
 		slider.SetRange(0,99);
-		slider.SetValue(0);
+		slider.Value = 0;
 		
 		Connect(slider, SIGNAL("valueChanged(int)"),
 				lcd, SLOT("display(int)"));
@@ -26,12 +26,12 @@ class LCDRange : QWidget {
 		
 	}
 	public int Value() {
-		return slider.Value();
+		return slider.Value;
 	}
 	
 	[Q_SLOT("setValue(int)")]
 	public void SetValue(int value) {
-		slider.SetValue(value);
+		slider.Value = value;
 	}
 	
 	protected new ILCDRangeSignals Emit {
@@ -77,6 +77,7 @@ class MyWidget : QWidget {
 		main.Show();
 		QApplication.Exec();
 	}
+
 	protected new IMyWidgetSignals Emit {
 		get {
 			return (IMyWidgetSignals) Q_EMIT;

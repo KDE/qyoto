@@ -7,11 +7,11 @@ class LCDRange : QWidget {
 	public LCDRange() : this((QWidget) null) {}
 	public LCDRange(QWidget parent) : base(parent) {
 		QLCDNumber lcd = new QLCDNumber(2);
-		lcd.SetSegmentStyle(QLCDNumber.SegmentStyle.Filled);
+		lcd.segmentStyle = QLCDNumber.SegmentStyle.Filled;
 		
 		slider = new QSlider(Qt.Orientation.Horizontal);
 		slider.SetRange(0,99);
-		slider.SetValue(0);
+		slider.Value = 0;
 		
 		Connect(slider, SIGNAL("valueChanged(int)"),
 				lcd, SLOT("display(int)"));
@@ -26,12 +26,12 @@ class LCDRange : QWidget {
 		
 	}
 	public int Value() {
-		return slider.Value();
+		return slider.Value;
 	}
 	
 	[Q_SLOT("setValue(int)")]
 	public void SetValue(int value) {
-		slider.SetValue(value);
+		slider.Value = value;
 	}
 	
 	[Q_SLOT("setRange(int,int)")]
@@ -81,16 +81,15 @@ class CannonField : QWidget {
 	public CannonField() : this ((QWidget) null) { }
 	public CannonField(QWidget parent) : base(parent) {
 		currentAngle = 45;
-		// this crashes. why?
-//        SetPalette(new QPalette(new QColor(250, 250, 200)));
-        SetAutoFillBackground(true);
+        Palette = new QPalette(new QColor(250, 250, 200));
+        AutoFillBackground = true;
 	}
 	
 	protected override void PaintEvent(QPaintEvent ev) {
         using (QPainter painter = new QPainter(this)) {
         	painter.SetPen(Qt.PenStyle.NoPen);
         	painter.SetBrush(new QBrush(new QColor(0,0,255)));
-        	painter.Translate(0, Rect().Height());
+        	painter.Translate(0, Rect.Height());
 			painter.DrawPie(new QRect(-35, -35, 70, 70), 0, 90 * 16);
 			painter.Rotate(-currentAngle);
 			painter.DrawRect(30, -5, 20, 10);
@@ -122,8 +121,7 @@ class MyWidget : QWidget {
 		angle.SetRange(5,70);
 		CannonField field = new CannonField();
 		Connect(angle, SIGNAL("valueChanged(int)"), field, SLOT("setAngle(int)"));
-		// signal arguments don't work, yet
-//		Connect(field, SIGNAL("angleChanged(int)"), angle, SLOT("setValue(int)"));
+		Connect(field, SIGNAL("angleChanged(int)"), angle, SLOT("setValue(int)"));
 		
         QGridLayout gridLayout = new QGridLayout();
         gridLayout.AddWidget(quit, 0, 0);
