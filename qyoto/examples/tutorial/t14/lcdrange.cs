@@ -26,83 +26,83 @@ using System;
 
 class LCDRange : QWidget {
 
-	private QSlider slider;
-	private QLabel label;
+    private QSlider slider;
+    private QLabel label;
 
-	public LCDRange() : this((QWidget) null) {}
+    public LCDRange() : this((QWidget) null) {}
 
-	public LCDRange(QWidget parent) : base(parent) {
-		Init();
-	}
+    public LCDRange(QWidget parent) : base(parent) {
+        Init();
+    }
 
-	public LCDRange(string text) : this(text, (QWidget) null) {}
+    public LCDRange(string text) : this(text, (QWidget) null) {}
 
-	public LCDRange(string text, QWidget parent) : base(parent) {
-		Init();
-		SetText(text);
-	}
+    public LCDRange(string text, QWidget parent) : base(parent) {
+        Init();
+        SetText(text);
+    }
 
-	private void Init() {
-		QLCDNumber lcd = new QLCDNumber(2);
-		lcd.segmentStyle = QLCDNumber.SegmentStyle.Filled;
+    private void Init() {
+        QLCDNumber lcd = new QLCDNumber(2);
+        lcd.segmentStyle = QLCDNumber.SegmentStyle.Filled;
 
-		slider = new QSlider(Qt.Orientation.Horizontal);
-		slider.SetRange(0, 99);
-		slider.Value = 0;
-		label = new QLabel();
-		label.Alignment = (int) (Qt.AlignmentFlag.AlignHCenter | Qt.AlignmentFlag.AlignTop);
-		label.SetSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Fixed);
+        slider = new QSlider(Qt.Orientation.Horizontal);
+        slider.SetRange(0, 99);
+        slider.Value = 0;
+        label = new QLabel();
+        label.Alignment = (int) (Qt.AlignmentFlag.AlignHCenter | Qt.AlignmentFlag.AlignTop);
+        label.SetSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Fixed);
 
-		Connect(slider, SIGNAL("valueChanged(int)"),
-			lcd, SLOT("display(int)"));
-		Connect(slider, SIGNAL("valueChanged(int)"),
-			this, SIGNAL("ValueChanged(int)"));
+        Connect(slider, SIGNAL("valueChanged(int)"),
+            lcd, SLOT("display(int)"));
+        Connect(slider, SIGNAL("valueChanged(int)"),
+            this, SIGNAL("ValueChanged(int)"));
 
-		QVBoxLayout layout = new QVBoxLayout();
-		layout.AddWidget(lcd);
-		layout.AddWidget(slider);
-		layout.AddWidget(label);
-		SetLayout(layout);
-		
-		SetFocusProxy(slider);
-	}
+        QVBoxLayout layout = new QVBoxLayout();
+        layout.AddWidget(lcd);
+        layout.AddWidget(slider);
+        layout.AddWidget(label);
+        SetLayout(layout);
+        
+        SetFocusProxy(slider);
+    }
 
-	public int Value() {
-		return slider.Value;
-	}
+    public int Value() {
+        return slider.Value;
+    }
 
-	public string Text() {
-		return label.Text;
-	}
+    public string Text() {
+        return label.Text;
+    }
 
-	[Q_SLOT]
-	public void SetValue(int value)
-	{
-		slider.Value = value;
-	}
+    [Q_SLOT]
+    public void SetValue(int value)
+    {
+        slider.Value = value;
+    }
 
-	[Q_SLOT]
-	public void SetRange(int minValue, int maxValue) {
-		if (minValue < 0 || maxValue > 99 || minValue > maxValue) {
-			Console.WriteLine("LCDRange.setRange({0}, {1})\n\tRange must be 0..99\n\tand minValue must not be greater than maxValue",
-				minValue, maxValue);
-			return;
-		}
-		slider.SetRange(minValue, maxValue);
-	}
+    [Q_SLOT]
+    public void SetRange(int minValue, int maxValue) {
+        if (minValue < 0 || maxValue > 99 || minValue > maxValue) {
+            Console.WriteLine("LCDRange.setRange({0}, {1})\n\tRange must be 0..99\n\tand minValue must not be greater than maxValue",
+                minValue, maxValue);
+            return;
+        }
+        slider.SetRange(minValue, maxValue);
+    }
 
-	public void SetText(string text) {
-		label.Text = text;
-	}
+    public void SetText(string text) {
+        label.Text = text;
+    }
 
-	protected new ILCDRangeSignals Emit {
-		get {
-			return (ILCDRangeSignals) Q_EMIT;
-		}
-	}
+    protected new ILCDRangeSignals Emit {
+        get {
+            return (ILCDRangeSignals) Q_EMIT;
+        }
+    }
 }
 
 interface ILCDRangeSignals : IQWidgetSignals {
-	[Q_SIGNAL]
-	void ValueChanged(int newValue);
+    [Q_SIGNAL]
+    void ValueChanged(int newValue);
 }

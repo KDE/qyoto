@@ -23,12 +23,11 @@ using Qyoto;
 using System;
 
 class T13 {
-
-	public static void Main(string[] args) {
-		new QApplication(args);
-		GameBoard board = new GameBoard();
-		board.SetGeometry(100, 100, 500, 355);
-		board.Show();
-		QApplication.Exec();
-	}
+    public static void Main(string[] args) {
+        new QApplication(args);
+        GameBoard board = new GameBoard();
+        board.SetGeometry(100, 100, 500, 355);
+        board.Show();
+        QApplication.Exec();
+    }
 }
