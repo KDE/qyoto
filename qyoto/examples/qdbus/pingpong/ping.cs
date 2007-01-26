@@ -43,7 +43,7 @@ class Ping
 
         QDBusInterface iface = new QDBusInterface(SERVICE_NAME, "/", "", QDBusConnection.SessionBus());
         if (iface.IsValid()) {
-            QDBusReply<string> reply = new QDBusReply<string>(iface.Call("ping", new QVariant(args.Length > 0 ? args[0] : "")));
+            QDBusReply<string> reply = new QDBusReply<string>(iface.Call("Ping", new QVariant(args.Length > 0 ? args[0] : "")));
             if (reply.IsValid()) {
                 Console.WriteLine("Reply was: {0}", reply.Value());
                 Qyoto.Qyoto.DeleteQApp();

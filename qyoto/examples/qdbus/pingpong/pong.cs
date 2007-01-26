@@ -35,7 +35,7 @@ class Pong : QObject
 	public string Ping(string arg)
 	{
     	QMetaObject.InvokeMethod(QCoreApplication.Instance(), "quit");
-    	return "ping(\"" + arg + "\") got called";
+    	return "Ping(\"" + arg + "\") got called";
 	}
 
     public static int Main(string[] args) {
