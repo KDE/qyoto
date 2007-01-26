@@ -1,2 +1,3 @@
 ADD_SUBDIRECTORY(tutorial)
+ADD_SUBDIRECTORY(qdbus)
 

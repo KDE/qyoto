@@ -1,3 +1,7 @@
+2007-26-01  Richard Dale  <rdale@foton.es>
+
+	* Added the qdbus/listnames example
+
 2007-25-01  Richard Dale  <rdale@foton.es>
 
 	* QObject.Emit is now a property, rather than a method. For example:
