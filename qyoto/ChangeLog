@@ -2,6 +2,8 @@
 
 	* Added the qdbus/listnames example
 	* Added the qdbus/pingpong example
+	* When the type signature of a slot was being derived from the types of
+	  the C# arguments, a C# string should map onto 'QString' and not 'string'
 
 2007-25-01  Richard Dale  <rdale@foton.es>
 

@@ -107,7 +107,7 @@ namespace Qyoto
 					ret = "sbyte";
 					break;
 				case "System.String":
-					ret = "string";
+					ret = "QString";
 					break;
 				case "System.Double":
 					ret = "double";
