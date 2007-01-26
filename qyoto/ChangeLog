@@ -1,6 +1,7 @@
 2007-26-01  Richard Dale  <rdale@foton.es>
 
 	* Added the qdbus/listnames example
+	* Added the qdbus/pingpong example
 
 2007-25-01  Richard Dale  <rdale@foton.es>
 
