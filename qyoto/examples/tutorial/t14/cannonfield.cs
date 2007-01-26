@@ -85,7 +85,7 @@ class CannonField : QWidget {
         timerCount = 0;
         shootAngle = currentAngle;
         shootForce = currentForce;
-        autoShootTimer.Start(5);
+        autoShootTimer.Start(25);
         Emit.CanShoot(false);
     }
 
