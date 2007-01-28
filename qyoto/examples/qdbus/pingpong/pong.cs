@@ -19,9 +19,9 @@
  ** This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
  ** WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
  **
+ ** Translated to C#/Qyoto by Richard Dale
+ **
  ****************************************************************************/
-
-/* Converted to C#/Qyoto by Richard Dale */
 
 using Qyoto;
 using System;
@@ -31,12 +31,13 @@ class Pong : QObject
 {
     static private string SERVICE_NAME = "com.trolltech.QtDBus.PingExample";
 
-	[Q_SLOT]
-	public string Ping(string arg)
-	{
-    	QMetaObject.InvokeMethod(QCoreApplication.Instance(), "quit");
-    	return "Ping(\"" + arg + "\") got called";
-	}
+    [Q_SLOT]
+    public string ping(string arg)
+    {
+//        This call crashes mono for some reason, so comment it out for now..
+//        QMetaObject.InvokeMethod(QCoreApplication.Instance(), "quit");
+        return "ping(\"" + arg + "\") got called";
+    }
 
     public static int Main(string[] args) {
         new QCoreApplication(args);
@@ -48,13 +49,13 @@ class Pong : QObject
             return 1;
         }
 
-    	if (!QDBusConnection.SessionBus().RegisterService(SERVICE_NAME)) {
-        	Console.WriteLine(QDBusConnection.SessionBus().LastError().Message());        
-        	return 1;
-    	}
+        if (!QDBusConnection.SessionBus().RegisterService(SERVICE_NAME)) {
+            Console.WriteLine(QDBusConnection.SessionBus().LastError().Message());        
+            return 1;
+        }
 
-    	Pong pong = new Pong();
-    	QDBusConnection.SessionBus().RegisterObject("/", pong, (int) QDBusConnection.RegisterOption.ExportAllSlots);
+        Pong pong = new Pong();
+        QDBusConnection.SessionBus().RegisterObject("/", pong, (int) QDBusConnection.RegisterOption.ExportAllSlots);
 
         return QCoreApplication.Exec();
     }

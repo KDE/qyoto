@@ -16,12 +16,9 @@
  ** http://www.trolltech.com/products/qt/licensing.html or contact the
  ** sales department at sales@trolltech.com.
  **
- ** This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
- ** WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+ ** Translated to C#/Qyoto by Richard Dale
  **
  ****************************************************************************/
-
-/* Converted to C#/Qyoto by Richard Dale */
 
 using Qyoto;
 using System;
@@ -43,7 +40,7 @@ class Ping
 
         QDBusInterface iface = new QDBusInterface(SERVICE_NAME, "/", "", QDBusConnection.SessionBus());
         if (iface.IsValid()) {
-            QDBusReply<string> reply = new QDBusReply<string>(iface.Call("Ping", new QVariant(args.Length > 0 ? args[0] : "")));
+            QDBusReply<string> reply = new QDBusReply<string>(iface.Call("ping", new QVariant(args.Length > 0 ? args[0] : "")));
             if (reply.IsValid()) {
                 Console.WriteLine("Reply was: {0}", reply.Value());
                 Qyoto.Qyoto.DeleteQApp();
