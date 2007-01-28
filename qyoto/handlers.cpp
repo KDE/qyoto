@@ -1308,6 +1308,8 @@ void marshall_ValueListItem(Marshall *m) {
 			m->item().s_voidp = cpplist;
 			m->next();
 			
+			delete list;
+
 			if (m->cleanup()) {
 				delete cpplist;
 			}
@@ -1325,11 +1327,15 @@ void marshall_ValueListItem(Marshall *m) {
 			const char * className = m->smoke()->binding->className(ix);
 			
 			void * al = (*ConstructList)(className);
-			
+
 			for (int i=0; i < valuelist->size() ; ++i) {
 				void *p = (void *) &(valuelist->at(i));
-				smokeqyoto_object * o = alloc_smokeqyoto_object(false, m->smoke(), ix, p);
-				void * obj = set_obj_info(className, o);
+
+				void * obj = getPointerObject(p);
+				if (obj == 0) {
+					smokeqyoto_object * o = alloc_smokeqyoto_object(false, m->smoke(), ix, p);
+					void * obj = set_obj_info(className, o);
+				}
 				(*AddIntPtrToList)(al, obj);
 			}
 

@@ -1,3 +1,14 @@
+2007-28-01  Richard Dale  <rdale@foton.es>
+
+	* Commented out the QMetaObject.InvokeMethod() call in the pong.cs
+	  example as it causes a crash
+	* Fixed bug where the name of a slot was being lost when passed to
+	  Invoke slot as a temporary 'const char *' that was being deleted
+	  before it could be used.
+	* In the C# to C++ list marshaller the temporary list of 'void*'s
+	  was not being deleted. If a C++ list element instance aleady has
+	  a mapping onto a C# instance, then use that.
+
 2007-26-01  Richard Dale  <rdale@foton.es>
 
 	* Added the qdbus/listnames example

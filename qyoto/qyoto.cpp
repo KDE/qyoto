@@ -1299,7 +1299,7 @@ int qt_metacall(void* obj, int _c, int _id, void* _o) {
 	MocArgument* mocReturn = GetMocReturnType(type);
 	
 	// invoke slot
-	InvokeSlot slot(obj, (const char*)name.toLatin1(), items, mocArgs, (void**)_o, mocReturn);
+	InvokeSlot slot(obj, method.signature(), items, mocArgs, (void**)_o, mocReturn);
 	slot.next();
 	
 	delete mocArgs;

@@ -33,7 +33,7 @@ namespace Qyoto
 		public static Dictionary<string, Dictionary<string, CPPMethod>> classes = 
 			new Dictionary<string, Dictionary<string, CPPMethod>>();
     
-		/// This hashtable has classe names as keys, and QMetaObjects as values
+		/// This hashtable has class names as keys, and QMetaObjects as values
 		static Dictionary<string, QMetaObject> metaObjects = new Dictionary<string, QMetaObject> ();
 		
 		public static int GetCPPEnumValue(string c, string value) {

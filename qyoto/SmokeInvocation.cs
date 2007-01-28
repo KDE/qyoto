@@ -249,7 +249,7 @@ namespace Qyoto {
 			}
 			catch (KeyNotFoundException) {
 				// should not happen
-				Console.WriteLine("** Could not retrieve slot {0}::{1} info **", className, slotname);
+				Console.WriteLine("** Could not retrieve slot {0}.{1} info **", className, slotname);
 				return;
 			}
 		
