@@ -34,6 +34,7 @@ namespace Qyoto {
 			ExportExternalSymbolsHint = 0x02,
 			LoadArchiveMemberHint = 0x04,
 		}
+		[Q_PROPERTY("QString", "fileName")]
 		public string FileName {
 			get {
 				return Property("fileName").Value<string>();

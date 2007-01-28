@@ -94,18 +94,22 @@ namespace Qyoto {
 		public new void Repaint() {
 			ProxyQSplashScreen().Repaint();
 		}
+		[Q_SLOT("void showMessage(const QString&, int, const QColor&)")]
 		[SmokeMethod("showMessage(const QString&, int, const QColor&)")]
 		public void ShowMessage(string message, int alignment, QColor color) {
 			ProxyQSplashScreen().ShowMessage(message,alignment,color);
 		}
+		[Q_SLOT("void showMessage(const QString&, int)")]
 		[SmokeMethod("showMessage(const QString&, int)")]
 		public void ShowMessage(string message, int alignment) {
 			ProxyQSplashScreen().ShowMessage(message,alignment);
 		}
+		[Q_SLOT("void showMessage(const QString&)")]
 		[SmokeMethod("showMessage(const QString&)")]
 		public void ShowMessage(string message) {
 			ProxyQSplashScreen().ShowMessage(message);
 		}
+		[Q_SLOT("void clearMessage()")]
 		[SmokeMethod("clearMessage()")]
 		public void ClearMessage() {
 			ProxyQSplashScreen().ClearMessage();

@@ -29,6 +29,7 @@ namespace Qyoto {
 			return (IQStackedWidgetProxy) _staticInterceptor;
 		}
 
+		[Q_PROPERTY("int", "currentIndex")]
 		public int CurrentIndex {
 			get {
 				return Property("currentIndex").Value<int>();
@@ -37,6 +38,7 @@ namespace Qyoto {
 				SetProperty("currentIndex", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("int", "count")]
 		public int Count {
 			get {
 				return Property("count").Value<int>();
@@ -83,6 +85,7 @@ namespace Qyoto {
 		public QWidget Widget(int arg1) {
 			return ProxyQStackedWidget().Widget(arg1);
 		}
+		[Q_SLOT("void setCurrentWidget(QWidget*)")]
 		[SmokeMethod("setCurrentWidget(QWidget*)")]
 		public void SetCurrentWidget(QWidget w) {
 			ProxyQStackedWidget().SetCurrentWidget(w);

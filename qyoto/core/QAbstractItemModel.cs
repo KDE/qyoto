@@ -267,10 +267,12 @@ namespace Qyoto {
 		public new QObject Parent() {
 			return ProxyQAbstractItemModel().Parent();
 		}
+		[Q_SLOT("bool submit()")]
 		[SmokeMethod("submit()")]
 		public virtual bool Submit() {
 			return ProxyQAbstractItemModel().Submit();
 		}
+		[Q_SLOT("void revert()")]
 		[SmokeMethod("revert()")]
 		public virtual void Revert() {
 			ProxyQAbstractItemModel().Revert();

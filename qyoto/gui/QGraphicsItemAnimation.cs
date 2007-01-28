@@ -121,10 +121,12 @@ namespace Qyoto {
 		public void Clear() {
 			ProxyQGraphicsItemAnimation().Clear();
 		}
+		[Q_SLOT("void setStep(qreal)")]
 		[SmokeMethod("setStep(qreal)")]
 		public void SetStep(double x) {
 			ProxyQGraphicsItemAnimation().SetStep(x);
 		}
+		[Q_SLOT("void reset()")]
 		[SmokeMethod("reset()")]
 		public void Reset() {
 			ProxyQGraphicsItemAnimation().Reset();

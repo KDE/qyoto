@@ -13,6 +13,7 @@ namespace Qyoto {
 			string ConvertFromPlainText(string plain, Qt.WhiteSpaceMode mode);
 			string ConvertFromPlainText(string plain);
 			QTextCodec CodecForHtml(QByteArray ba);
+			void QDBusReplyFill(QDBusMessage reply, QDBusError error, QVariant data);
 			QDBusArgument op_read(QDBusArgument a, QVariant v);
 			QDBusArgument op_read(QDBusArgument a, QDate date);
 			QDBusArgument op_write(QDBusArgument a, QDate date);
@@ -37,41 +38,39 @@ namespace Qyoto {
 			QDBusArgument op_read(QDBusArgument a, QLineF line);
 			QDBusArgument op_write(QDBusArgument a, QLineF line);
 			QDBusArgument op_write(QDBusArgument arg, List<QVariant> list);
-			void QDBusReplyFill(QDBusMessage reply, QDBusError error, QVariant data);
 			bool op_equals(QGLFormat arg1, QGLFormat arg2);
 			bool op_equals(QHostAddress.SpecialAddress address1, QHostAddress address2);
 			uint QHash(QHostAddress key);
 			QDataStream op_write(QDataStream arg1, QHostAddress arg2);
 			QDataStream op_read(QDataStream arg1, QHostAddress arg2);
-			QDataStream op_write(QDataStream arg1, QIcon arg2);
-			QDataStream op_read(QDataStream arg1, QIcon arg2);
-			QDataStream op_write(QDataStream arg1, QImage arg2);
-			QDataStream op_read(QDataStream arg1, QImage arg2);
-			QDataStream op_write(QDataStream arg1, QPicture arg2);
-			QDataStream op_read(QDataStream arg1, QPicture arg2);
-			QDataStream op_write(QDataStream arg1, QPixmap arg2);
-			QDataStream op_read(QDataStream arg1, QPixmap arg2);
-			uint QHash(QItemSelectionRange arg1);
-			QDataStream op_write(QDataStream arg1, QListWidgetItem item);
-			QDataStream op_read(QDataStream arg1, QListWidgetItem item);
-			QDataStream op_read(QDataStream arg1, QTableWidgetItem item);
-			QDataStream op_write(QDataStream arg1, QTableWidgetItem item);
-			QDataStream op_write(QDataStream arg1, QTreeWidgetItem item);
-			QDataStream op_read(QDataStream arg1, QTreeWidgetItem item);
-			QDataStream op_write(QDataStream outS, QCursor cursor);
-			QDataStream op_read(QDataStream inS, QCursor cursor);
 			bool op_equals(QKeyEvent e, QKeySequence.StandardKey key);
 			bool op_equals(QKeySequence.StandardKey key, QKeyEvent e);
-			QDataStream op_write(QDataStream arg1, QKeySequence ks);
-			QDataStream op_read(QDataStream arg1, QKeySequence ks);
 			QDataStream op_write(QDataStream ds, QPalette p);
 			QDataStream op_read(QDataStream ds, QPalette p);
+			QDataStream op_write(QDataStream outS, QCursor cursor);
+			QDataStream op_read(QDataStream inS, QCursor cursor);
+			QDataStream op_write(QDataStream arg1, QKeySequence ks);
+			QDataStream op_read(QDataStream arg1, QKeySequence ks);
 			QDataStream op_write(QDataStream arg1, QSizePolicy arg2);
 			QDataStream op_read(QDataStream arg1, QSizePolicy arg2);
-			QDataStream op_write(QDataStream arg1, QBrush arg2);
-			QDataStream op_read(QDataStream arg1, QBrush arg2);
+			QDataStream op_write(QDataStream arg1, QPicture arg2);
+			QDataStream op_read(QDataStream arg1, QPicture arg2);
+			QDataStream op_write(QDataStream arg1, QImage arg2);
+			QDataStream op_read(QDataStream arg1, QImage arg2);
+			QDataStream op_write(QDataStream arg1, QIcon arg2);
+			QDataStream op_read(QDataStream arg1, QIcon arg2);
+			QDataStream op_write(QDataStream arg1, QPixmap arg2);
+			QDataStream op_read(QDataStream arg1, QPixmap arg2);
+			QDataStream op_write(QDataStream arg1, QFont arg2);
+			QDataStream op_read(QDataStream arg1, QFont arg2);
+			QDataStream op_write(QDataStream arg1, QTextLength arg2);
+			QDataStream op_read(QDataStream arg1, QTextLength arg2);
+			QTextStream op_write(QTextStream arg1, QSplitter arg2);
+			QTextStream op_read(QTextStream arg1, QSplitter arg2);
 			QDataStream op_write(QDataStream arg1, QColor arg2);
 			QDataStream op_read(QDataStream arg1, QColor arg2);
+			QDataStream op_write(QDataStream arg1, QPen arg2);
+			QDataStream op_read(QDataStream arg1, QPen arg2);
 			void QDrawShadeLine(QPainter p, int x1, int y1, int x2, int y2, QPalette pal, bool sunken, int lineWidth, int midLineWidth);
 			void QDrawShadeLine(QPainter p, int x1, int y1, int x2, int y2, QPalette pal, bool sunken, int lineWidth);
 			void QDrawShadeLine(QPainter p, int x1, int y1, int x2, int y2, QPalette pal, bool sunken);
@@ -116,6 +115,23 @@ namespace Qyoto {
 			void QDrawPlainRect(QPainter p, QRect r, QColor arg3, int lineWidth, QBrush fill);
 			void QDrawPlainRect(QPainter p, QRect r, QColor arg3, int lineWidth);
 			void QDrawPlainRect(QPainter p, QRect r, QColor arg3);
+			QDataStream op_write(QDataStream arg1, QBrush arg2);
+			QDataStream op_read(QDataStream arg1, QBrush arg2);
+			int QRed(uint rgb);
+			int QGreen(uint rgb);
+			int QBlue(uint rgb);
+			int QAlpha(uint rgb);
+			uint QRgb(int r, int g, int b);
+			uint QRgba(int r, int g, int b, int a);
+			int QGray(int r, int g, int b);
+			int QGray(uint rgb);
+			bool QIsGray(uint rgb);
+			QDataStream op_write(QDataStream arg1, QPainterPath arg2);
+			QDataStream op_read(QDataStream arg1, QPainterPath arg2);
+			QDataStream op_write(QDataStream arg1, QRegion arg2);
+			QDataStream op_read(QDataStream arg1, QRegion arg2);
+			QDataStream op_write(QDataStream stream, QPolygonF array);
+			QDataStream op_read(QDataStream stream, QPolygonF array);
 			QPoint op_mult(QPoint p, QMatrix m);
 			QPointF op_mult(QPointF p, QMatrix m);
 			QLineF op_mult(QLineF l, QMatrix m);
@@ -126,29 +142,13 @@ namespace Qyoto {
 			QPainterPath op_mult(QPainterPath p, QMatrix m);
 			QDataStream op_write(QDataStream arg1, QMatrix arg2);
 			QDataStream op_read(QDataStream arg1, QMatrix arg2);
-			QDataStream op_write(QDataStream arg1, QPainterPath arg2);
-			QDataStream op_read(QDataStream arg1, QPainterPath arg2);
-			QDataStream op_write(QDataStream arg1, QPen arg2);
-			QDataStream op_read(QDataStream arg1, QPen arg2);
-			QDataStream op_write(QDataStream stream, QPolygonF array);
-			QDataStream op_read(QDataStream stream, QPolygonF array);
-			QDataStream op_write(QDataStream arg1, QRegion arg2);
-			QDataStream op_read(QDataStream arg1, QRegion arg2);
-			int QRed(uint rgb);
-			int QGreen(uint rgb);
-			int QBlue(uint rgb);
-			int QAlpha(uint rgb);
-			uint QRgb(int r, int g, int b);
-			uint QRgba(int r, int g, int b, int a);
-			int QGray(int r, int g, int b);
-			int QGray(uint rgb);
-			bool QIsGray(uint rgb);
-			QDataStream op_write(QDataStream arg1, QFont arg2);
-			QDataStream op_read(QDataStream arg1, QFont arg2);
-			QDataStream op_write(QDataStream arg1, QTextLength arg2);
-			QDataStream op_read(QDataStream arg1, QTextLength arg2);
-			QTextStream op_write(QTextStream arg1, QSplitter arg2);
-			QTextStream op_read(QTextStream arg1, QSplitter arg2);
+			QDataStream op_read(QDataStream arg1, QTableWidgetItem item);
+			QDataStream op_write(QDataStream arg1, QTableWidgetItem item);
+			QDataStream op_write(QDataStream arg1, QTreeWidgetItem item);
+			QDataStream op_read(QDataStream arg1, QTreeWidgetItem item);
+			QDataStream op_write(QDataStream arg1, QListWidgetItem item);
+			QDataStream op_read(QDataStream arg1, QListWidgetItem item);
+			uint QHash(QItemSelectionRange arg1);
 			QTextStream op_write(QTextStream arg1, QDomNode arg2);
 			int QRound(double d);
 			long QRound64(double d);
@@ -166,38 +166,20 @@ namespace Qyoto {
 			int QIntCast(float f);
 			void Qsrand(uint seed);
 			int Qrand();
-			QTextStream Bin(QTextStream s);
-			QTextStream Oct(QTextStream s);
-			QTextStream Dec(QTextStream s);
-			QTextStream Hex(QTextStream s);
-			QTextStream Showbase(QTextStream s);
-			QTextStream Forcesign(QTextStream s);
-			QTextStream Forcepoint(QTextStream s);
-			QTextStream Noshowbase(QTextStream s);
-			QTextStream Noforcesign(QTextStream s);
-			QTextStream Noforcepoint(QTextStream s);
-			QTextStream Uppercasebase(QTextStream s);
-			QTextStream Uppercasedigits(QTextStream s);
-			QTextStream Lowercasebase(QTextStream s);
-			QTextStream Lowercasedigits(QTextStream s);
-			QTextStream Fixed(QTextStream s);
-			QTextStream Scientific(QTextStream s);
-			QTextStream Left(QTextStream s);
-			QTextStream Right(QTextStream s);
-			QTextStream Center(QTextStream s);
-			QTextStream Endl(QTextStream s);
-			QTextStream Flush(QTextStream s);
-			QTextStream Reset(QTextStream s);
-			QTextStream Bom(QTextStream s);
-			QTextStream Ws(QTextStream s);
-			QDataStream op_write(QDataStream arg1, IQUrl arg2);
-			QDataStream op_read(QDataStream arg1, IQUrl arg2);
-			uint QHash(QModelIndex index);
-			string QAppName();
 			QDataStream op_read(QDataStream s, QVariant p);
 			QDataStream op_write(QDataStream s, QVariant p);
-			QDataStream op_write(QDataStream arg1, QUuid arg2);
-			QDataStream op_read(QDataStream arg1, QUuid arg2);
+			string QAppName();
+			uint QHash(QModelIndex index);
+			bool op_equals(QRect arg1, QRect arg2);
+			QDataStream op_write(QDataStream arg1, QRect arg2);
+			QDataStream op_read(QDataStream arg1, QRect arg2);
+			bool op_equals(QRectF arg1, QRectF arg2);
+			QDataStream op_write(QDataStream arg1, QRectF arg2);
+			QDataStream op_read(QDataStream arg1, QRectF arg2);
+			QDataStream op_write(QDataStream arg1, QLocale arg2);
+			QDataStream op_read(QDataStream arg1, QLocale arg2);
+			QDataStream op_read(QDataStream arg1, List<string> list);
+			QDataStream op_write(QDataStream arg1, List<string> list);
 			string Qstrdup(string arg1);
 			uint Qstrlen(string str);
 			uint Qstrnlen(string str, uint maxlen);
@@ -236,6 +218,34 @@ namespace Qyoto {
 			QByteArray QCompress(QByteArray data, int compressionLevel);
 			QByteArray QCompress(QByteArray data);
 			QByteArray QUncompress(QByteArray data);
+			QDataStream op_write(QDataStream arg1, QSize arg2);
+			QDataStream op_read(QDataStream arg1, QSize arg2);
+			bool op_equals(QSize s1, QSize s2);
+			QSize op_plus(QSize s1, QSize s2);
+			QSize op_minus(QSize s1, QSize s2);
+			QSize op_mult(QSize s, double c);
+			QSize op_mult(double c, QSize s);
+			QSize op_div(QSize s, double c);
+			QDataStream op_write(QDataStream arg1, QSizeF arg2);
+			QDataStream op_read(QDataStream arg1, QSizeF arg2);
+			bool op_equals(QSizeF s1, QSizeF s2);
+			QSizeF op_plus(QSizeF s1, QSizeF s2);
+			QSizeF op_minus(QSizeF s1, QSizeF s2);
+			QSizeF op_mult(QSizeF s, double c);
+			QSizeF op_mult(double c, QSizeF s);
+			QSizeF op_div(QSizeF s, double c);
+			QDataStream op_write(QDataStream arg1, QLine arg2);
+			QDataStream op_read(QDataStream arg1, QLine arg2);
+			QDataStream op_write(QDataStream arg1, QLineF arg2);
+			QDataStream op_read(QDataStream arg1, QLineF arg2);
+			QDataStream op_write(QDataStream arg1, QRegExp regExp);
+			QDataStream op_read(QDataStream arg1, QRegExp regExp);
+			QDataStream op_write(QDataStream arg1, QDate arg2);
+			QDataStream op_read(QDataStream arg1, QDate arg2);
+			QDataStream op_write(QDataStream arg1, QTime arg2);
+			QDataStream op_read(QDataStream arg1, QTime arg2);
+			QDataStream op_write(QDataStream arg1, QDateTime arg2);
+			QDataStream op_read(QDataStream arg1, QDateTime arg2);
 			bool op_equals(char c1, char c2);
 			bool op_lte(char c1, char c2);
 			bool op_gte(char c1, char c2);
@@ -243,18 +253,6 @@ namespace Qyoto {
 			bool op_gt(char c1, char c2);
 			QDataStream op_write(QDataStream arg1, char arg2);
 			QDataStream op_read(QDataStream arg1, char arg2);
-			QDataStream op_write(QDataStream arg1, QDate arg2);
-			QDataStream op_read(QDataStream arg1, QDate arg2);
-			QDataStream op_write(QDataStream arg1, QTime arg2);
-			QDataStream op_read(QDataStream arg1, QTime arg2);
-			QDataStream op_write(QDataStream arg1, QDateTime arg2);
-			QDataStream op_read(QDataStream arg1, QDateTime arg2);
-			QDataStream op_write(QDataStream arg1, QLine arg2);
-			QDataStream op_read(QDataStream arg1, QLine arg2);
-			QDataStream op_write(QDataStream arg1, QLineF arg2);
-			QDataStream op_read(QDataStream arg1, QLineF arg2);
-			QDataStream op_write(QDataStream arg1, QLocale arg2);
-			QDataStream op_read(QDataStream arg1, QLocale arg2);
 			QDataStream op_write(QDataStream arg1, QPoint arg2);
 			QDataStream op_read(QDataStream arg1, QPoint arg2);
 			bool op_equals(QPoint p1, QPoint p2);
@@ -273,32 +271,34 @@ namespace Qyoto {
 			QPointF op_mult(double c, QPointF p);
 			QPointF op_minus(QPointF p);
 			QPointF op_div(QPointF p, double c);
-			bool op_equals(QRect arg1, QRect arg2);
-			QDataStream op_write(QDataStream arg1, QRect arg2);
-			QDataStream op_read(QDataStream arg1, QRect arg2);
-			bool op_equals(QRectF arg1, QRectF arg2);
-			QDataStream op_write(QDataStream arg1, QRectF arg2);
-			QDataStream op_read(QDataStream arg1, QRectF arg2);
-			QDataStream op_write(QDataStream arg1, QRegExp regExp);
-			QDataStream op_read(QDataStream arg1, QRegExp regExp);
-			QDataStream op_write(QDataStream arg1, QSize arg2);
-			QDataStream op_read(QDataStream arg1, QSize arg2);
-			bool op_equals(QSize s1, QSize s2);
-			QSize op_plus(QSize s1, QSize s2);
-			QSize op_minus(QSize s1, QSize s2);
-			QSize op_mult(QSize s, double c);
-			QSize op_mult(double c, QSize s);
-			QSize op_div(QSize s, double c);
-			QDataStream op_write(QDataStream arg1, QSizeF arg2);
-			QDataStream op_read(QDataStream arg1, QSizeF arg2);
-			bool op_equals(QSizeF s1, QSizeF s2);
-			QSizeF op_plus(QSizeF s1, QSizeF s2);
-			QSizeF op_minus(QSizeF s1, QSizeF s2);
-			QSizeF op_mult(QSizeF s, double c);
-			QSizeF op_mult(double c, QSizeF s);
-			QSizeF op_div(QSizeF s, double c);
-			QDataStream op_read(QDataStream arg1, List<string> list);
-			QDataStream op_write(QDataStream arg1, List<string> list);
+			QTextStream Bin(QTextStream s);
+			QTextStream Oct(QTextStream s);
+			QTextStream Dec(QTextStream s);
+			QTextStream Hex(QTextStream s);
+			QTextStream Showbase(QTextStream s);
+			QTextStream Forcesign(QTextStream s);
+			QTextStream Forcepoint(QTextStream s);
+			QTextStream Noshowbase(QTextStream s);
+			QTextStream Noforcesign(QTextStream s);
+			QTextStream Noforcepoint(QTextStream s);
+			QTextStream Uppercasebase(QTextStream s);
+			QTextStream Uppercasedigits(QTextStream s);
+			QTextStream Lowercasebase(QTextStream s);
+			QTextStream Lowercasedigits(QTextStream s);
+			QTextStream Fixed(QTextStream s);
+			QTextStream Scientific(QTextStream s);
+			QTextStream Left(QTextStream s);
+			QTextStream Right(QTextStream s);
+			QTextStream Center(QTextStream s);
+			QTextStream Endl(QTextStream s);
+			QTextStream Flush(QTextStream s);
+			QTextStream Reset(QTextStream s);
+			QTextStream Bom(QTextStream s);
+			QTextStream Ws(QTextStream s);
+			QDataStream op_write(QDataStream arg1, IQUrl arg2);
+			QDataStream op_read(QDataStream arg1, IQUrl arg2);
+			QDataStream op_write(QDataStream arg1, QUuid arg2);
+			QDataStream op_read(QDataStream arg1, QUuid arg2);
 		}
 
 		protected new void CreateProxy() {
@@ -1199,6 +1199,32 @@ namespace Qyoto {
 		private void DisposeQt() {
 			ProxyQt().DisposeQt();
 		}
+		///<remarks>*************************************************
+		///
+		///* Copyright (C) 1992-2006 Trolltech ASA. All rights reserved.
+		///
+		///* This file is part of the tools applications of the Qt Toolkit.
+		///
+		///* This file may be used under the terms of the GNU General Public
+		/// License version 2.0 as published by the Free Software Foundation
+		/// and appearing in the file LICENSE.GPL included in the packaging of
+		/// this file.  Please review the following information to ensure GNU
+		/// General Public Licensing requirements will be met:
+		/// http://www.trolltech.com/products/qt/opensource.html
+		///
+		///* If you are unsure which license is appropriate for your use, please
+		/// review the following information:
+		/// http://www.trolltech.com/products/qt/licensing.html or contact the
+		/// sales department at sales@trolltech.com.
+		///
+		///* This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
+		/// WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+		///
+		///**************************************************</remarks>		<short>                                                                                 Copyright (C) 1992-2006 Trolltech ASA.</short>
+		[SmokeMethod("qDBusReplyFill(const QDBusMessage&, QDBusError&, QVariant&)")]
+		public static void QDBusReplyFill(QDBusMessage reply, QDBusError error, QVariant data) {
+			StaticQt().QDBusReplyFill(reply,error,data);
+		}
 		[SmokeMethod("operator>>(const QDBusArgument&, QVariant&)")]
 		public static QDBusArgument op_read(QDBusArgument a, QVariant v) {
 			return StaticQt().op_read(a,v);
@@ -1296,32 +1322,6 @@ namespace Qyoto {
 			return StaticQt().op_write(arg,list);
 		}
 		// QDBusArgument& operator<<(QDBusArgument& arg1,const QVariantMap& arg2); >>>> NOT CONVERTED
-		///<remarks>*************************************************
-		///
-		///* Copyright (C) 1992-2006 Trolltech ASA. All rights reserved.
-		///
-		///* This file is part of the tools applications of the Qt Toolkit.
-		///
-		///* This file may be used under the terms of the GNU General Public
-		/// License version 2.0 as published by the Free Software Foundation
-		/// and appearing in the file LICENSE.GPL included in the packaging of
-		/// this file.  Please review the following information to ensure GNU
-		/// General Public Licensing requirements will be met:
-		/// http://www.trolltech.com/products/qt/opensource.html
-		///
-		///* If you are unsure which license is appropriate for your use, please
-		/// review the following information:
-		/// http://www.trolltech.com/products/qt/licensing.html or contact the
-		/// sales department at sales@trolltech.com.
-		///
-		///* This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
-		/// WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
-		///
-		///**************************************************</remarks>		<short>                                                                                 Copyright (C) 1992-2006 Trolltech ASA.</short>
-		[SmokeMethod("qDBusReplyFill(const QDBusMessage&, QDBusError&, QVariant&)")]
-		public static void QDBusReplyFill(QDBusMessage reply, QDBusError error, QVariant data) {
-			StaticQt().QDBusReplyFill(reply,error,data);
-		}
 		[SmokeMethod("operator==(const QGLFormat&, const QGLFormat&)")]
 		public static bool op_equals(QGLFormat arg1, QGLFormat arg2) {
 			return StaticQt().op_equals(arg1,arg2);
@@ -1342,20 +1342,50 @@ namespace Qyoto {
 		public static QDataStream op_read(QDataStream arg1, QHostAddress arg2) {
 			return StaticQt().op_read(arg1,arg2);
 		}
-		[SmokeMethod("operator<<(QDataStream&, const QIcon&)")]
-		public static QDataStream op_write(QDataStream arg1, QIcon arg2) {
+		[SmokeMethod("operator==(QKeyEvent*, QKeySequence::StandardKey)")]
+		public static bool op_equals(QKeyEvent e, QKeySequence.StandardKey key) {
+			return StaticQt().op_equals(e,key);
+		}
+		[SmokeMethod("operator==(QKeySequence::StandardKey, QKeyEvent*)")]
+		public static bool op_equals(QKeySequence.StandardKey key, QKeyEvent e) {
+			return StaticQt().op_equals(key,e);
+		}
+		///<remarks>**************************************************
+		///  QPalette stream functions
+		///**************************************************</remarks>		<short>                                                                                QPalette stream functions                                                                            </short>
+		[SmokeMethod("operator<<(QDataStream&, const QPalette&)")]
+		public static QDataStream op_write(QDataStream ds, QPalette p) {
+			return StaticQt().op_write(ds,p);
+		}
+		[SmokeMethod("operator>>(QDataStream&, QPalette&)")]
+		public static QDataStream op_read(QDataStream ds, QPalette p) {
+			return StaticQt().op_read(ds,p);
+		}
+		///<remarks>**************************************************
+		///  QCursor stream functions
+		///**************************************************</remarks>		<short>                                                                                QCursor stream functions                                                                            </short>
+		[SmokeMethod("operator<<(QDataStream&, const QCursor&)")]
+		public static QDataStream op_write(QDataStream outS, QCursor cursor) {
+			return StaticQt().op_write(outS,cursor);
+		}
+		[SmokeMethod("operator>>(QDataStream&, QCursor&)")]
+		public static QDataStream op_read(QDataStream inS, QCursor cursor) {
+			return StaticQt().op_read(inS,cursor);
+		}
+		[SmokeMethod("operator<<(QDataStream&, const QKeySequence&)")]
+		public static QDataStream op_write(QDataStream arg1, QKeySequence ks) {
+			return StaticQt().op_write(arg1,ks);
+		}
+		[SmokeMethod("operator>>(QDataStream&, QKeySequence&)")]
+		public static QDataStream op_read(QDataStream arg1, QKeySequence ks) {
+			return StaticQt().op_read(arg1,ks);
+		}
+		[SmokeMethod("operator<<(QDataStream&, const QSizePolicy&)")]
+		public static QDataStream op_write(QDataStream arg1, QSizePolicy arg2) {
 			return StaticQt().op_write(arg1,arg2);
 		}
-		[SmokeMethod("operator>>(QDataStream&, QIcon&)")]
-		public static QDataStream op_read(QDataStream arg1, QIcon arg2) {
-			return StaticQt().op_read(arg1,arg2);
-		}
-		[SmokeMethod("operator<<(QDataStream&, const QImage&)")]
-		public static QDataStream op_write(QDataStream arg1, QImage arg2) {
-			return StaticQt().op_write(arg1,arg2);
-		}
-		[SmokeMethod("operator>>(QDataStream&, QImage&)")]
-		public static QDataStream op_read(QDataStream arg1, QImage arg2) {
+		[SmokeMethod("operator>>(QDataStream&, QSizePolicy&)")]
+		public static QDataStream op_read(QDataStream arg1, QSizePolicy arg2) {
 			return StaticQt().op_read(arg1,arg2);
 		}
 		///<remarks>**************************************************
@@ -1369,6 +1399,22 @@ namespace Qyoto {
 		public static QDataStream op_read(QDataStream arg1, QPicture arg2) {
 			return StaticQt().op_read(arg1,arg2);
 		}
+		[SmokeMethod("operator<<(QDataStream&, const QImage&)")]
+		public static QDataStream op_write(QDataStream arg1, QImage arg2) {
+			return StaticQt().op_write(arg1,arg2);
+		}
+		[SmokeMethod("operator>>(QDataStream&, QImage&)")]
+		public static QDataStream op_read(QDataStream arg1, QImage arg2) {
+			return StaticQt().op_read(arg1,arg2);
+		}
+		[SmokeMethod("operator<<(QDataStream&, const QIcon&)")]
+		public static QDataStream op_write(QDataStream arg1, QIcon arg2) {
+			return StaticQt().op_write(arg1,arg2);
+		}
+		[SmokeMethod("operator>>(QDataStream&, QIcon&)")]
+		public static QDataStream op_read(QDataStream arg1, QIcon arg2) {
+			return StaticQt().op_read(arg1,arg2);
+		}
 		///<remarks>**************************************************
 		/// QPixmap stream functions
 		///**************************************************</remarks>		<short>                                                                               QPixmap stream functions                                                                            </short>
@@ -1380,89 +1426,33 @@ namespace Qyoto {
 		public static QDataStream op_read(QDataStream arg1, QPixmap arg2) {
 			return StaticQt().op_read(arg1,arg2);
 		}
-		[SmokeMethod("qHash(const QItemSelectionRange&)")]
-		public static uint QHash(QItemSelectionRange arg1) {
-			return StaticQt().QHash(arg1);
-		}
-		[SmokeMethod("operator<<(QDataStream&, const QListWidgetItem&)")]
-		public static QDataStream op_write(QDataStream arg1, QListWidgetItem item) {
-			return StaticQt().op_write(arg1,item);
-		}
-		[SmokeMethod("operator>>(QDataStream&, QListWidgetItem&)")]
-		public static QDataStream op_read(QDataStream arg1, QListWidgetItem item) {
-			return StaticQt().op_read(arg1,item);
-		}
-		[SmokeMethod("operator>>(QDataStream&, QTableWidgetItem&)")]
-		public static QDataStream op_read(QDataStream arg1, QTableWidgetItem item) {
-			return StaticQt().op_read(arg1,item);
-		}
-		[SmokeMethod("operator<<(QDataStream&, const QTableWidgetItem&)")]
-		public static QDataStream op_write(QDataStream arg1, QTableWidgetItem item) {
-			return StaticQt().op_write(arg1,item);
-		}
-		[SmokeMethod("operator<<(QDataStream&, const QTreeWidgetItem&)")]
-		public static QDataStream op_write(QDataStream arg1, QTreeWidgetItem item) {
-			return StaticQt().op_write(arg1,item);
-		}
-		[SmokeMethod("operator>>(QDataStream&, QTreeWidgetItem&)")]
-		public static QDataStream op_read(QDataStream arg1, QTreeWidgetItem item) {
-			return StaticQt().op_read(arg1,item);
-		}
 		///<remarks>**************************************************
-		///  QCursor stream functions
-		///**************************************************</remarks>		<short>                                                                                QCursor stream functions                                                                            </short>
-		[SmokeMethod("operator<<(QDataStream&, const QCursor&)")]
-		public static QDataStream op_write(QDataStream outS, QCursor cursor) {
-			return StaticQt().op_write(outS,cursor);
-		}
-		[SmokeMethod("operator>>(QDataStream&, QCursor&)")]
-		public static QDataStream op_read(QDataStream inS, QCursor cursor) {
-			return StaticQt().op_read(inS,cursor);
-		}
-		[SmokeMethod("operator==(QKeyEvent*, QKeySequence::StandardKey)")]
-		public static bool op_equals(QKeyEvent e, QKeySequence.StandardKey key) {
-			return StaticQt().op_equals(e,key);
-		}
-		[SmokeMethod("operator==(QKeySequence::StandardKey, QKeyEvent*)")]
-		public static bool op_equals(QKeySequence.StandardKey key, QKeyEvent e) {
-			return StaticQt().op_equals(key,e);
-		}
-		[SmokeMethod("operator<<(QDataStream&, const QKeySequence&)")]
-		public static QDataStream op_write(QDataStream arg1, QKeySequence ks) {
-			return StaticQt().op_write(arg1,ks);
-		}
-		[SmokeMethod("operator>>(QDataStream&, QKeySequence&)")]
-		public static QDataStream op_read(QDataStream arg1, QKeySequence ks) {
-			return StaticQt().op_read(arg1,ks);
-		}
-		///<remarks>**************************************************
-		///  QPalette stream functions
-		///**************************************************</remarks>		<short>                                                                                QPalette stream functions                                                                            </short>
-		[SmokeMethod("operator<<(QDataStream&, const QPalette&)")]
-		public static QDataStream op_write(QDataStream ds, QPalette p) {
-			return StaticQt().op_write(ds,p);
-		}
-		[SmokeMethod("operator>>(QDataStream&, QPalette&)")]
-		public static QDataStream op_read(QDataStream ds, QPalette p) {
-			return StaticQt().op_read(ds,p);
-		}
-		[SmokeMethod("operator<<(QDataStream&, const QSizePolicy&)")]
-		public static QDataStream op_write(QDataStream arg1, QSizePolicy arg2) {
+		///  QFont stream functions
+		///**************************************************</remarks>		<short>                                                                                QFont stream functions                                                                            </short>
+		[SmokeMethod("operator<<(QDataStream&, const QFont&)")]
+		public static QDataStream op_write(QDataStream arg1, QFont arg2) {
 			return StaticQt().op_write(arg1,arg2);
 		}
-		[SmokeMethod("operator>>(QDataStream&, QSizePolicy&)")]
-		public static QDataStream op_read(QDataStream arg1, QSizePolicy arg2) {
+		[SmokeMethod("operator>>(QDataStream&, QFont&)")]
+		public static QDataStream op_read(QDataStream arg1, QFont arg2) {
 			return StaticQt().op_read(arg1,arg2);
 		}
-		///<remarks>**************************************************
-		///  QBrush stream functions
-		///**************************************************</remarks>		<short>                                                                                QBrush stream functions                                                                            </short>
-		[SmokeMethod("operator<<(QDataStream&, const QBrush&)")]
-		public static QDataStream op_write(QDataStream arg1, QBrush arg2) {
+		[SmokeMethod("operator<<(QDataStream&, const QTextLength&)")]
+		public static QDataStream op_write(QDataStream arg1, QTextLength arg2) {
 			return StaticQt().op_write(arg1,arg2);
 		}
-		[SmokeMethod("operator>>(QDataStream&, QBrush&)")]
-		public static QDataStream op_read(QDataStream arg1, QBrush arg2) {
+		[SmokeMethod("operator>>(QDataStream&, QTextLength&)")]
+		public static QDataStream op_read(QDataStream arg1, QTextLength arg2) {
+			return StaticQt().op_read(arg1,arg2);
+		}
+		// QDataStream& operator<<(QDataStream& arg1,const QTextFormat& arg2); >>>> NOT CONVERTED
+		// QDataStream& operator>>(QDataStream& arg1,QTextFormat& arg2); >>>> NOT CONVERTED
+		[SmokeMethod("operator<<(QTextStream&, const QSplitter&)")]
+		public static QTextStream op_write(QTextStream arg1, QSplitter arg2) {
+			return StaticQt().op_write(arg1,arg2);
+		}
+		[SmokeMethod("operator>>(QTextStream&, QSplitter&)")]
+		public static QTextStream op_read(QTextStream arg1, QSplitter arg2) {
 			return StaticQt().op_read(arg1,arg2);
 		}
 		[SmokeMethod("operator<<(QDataStream&, const QColor&)")]
@@ -1471,6 +1461,14 @@ namespace Qyoto {
 		}
 		[SmokeMethod("operator>>(QDataStream&, QColor&)")]
 		public static QDataStream op_read(QDataStream arg1, QColor arg2) {
+			return StaticQt().op_read(arg1,arg2);
+		}
+		[SmokeMethod("operator<<(QDataStream&, const QPen&)")]
+		public static QDataStream op_write(QDataStream arg1, QPen arg2) {
+			return StaticQt().op_write(arg1,arg2);
+		}
+		[SmokeMethod("operator>>(QDataStream&, QPen&)")]
+		public static QDataStream op_read(QDataStream arg1, QPen arg2) {
 			return StaticQt().op_read(arg1,arg2);
 		}
 		[SmokeMethod("qDrawShadeLine(QPainter*, int, int, int, int, const QPalette&, bool, int, int)")]
@@ -1649,6 +1647,83 @@ namespace Qyoto {
 		public static void QDrawPlainRect(QPainter p, QRect r, QColor arg3) {
 			StaticQt().QDrawPlainRect(p,r,arg3);
 		}
+		///<remarks>**************************************************
+		///  QBrush stream functions
+		///**************************************************</remarks>		<short>                                                                                QBrush stream functions                                                                            </short>
+		[SmokeMethod("operator<<(QDataStream&, const QBrush&)")]
+		public static QDataStream op_write(QDataStream arg1, QBrush arg2) {
+			return StaticQt().op_write(arg1,arg2);
+		}
+		[SmokeMethod("operator>>(QDataStream&, QBrush&)")]
+		public static QDataStream op_read(QDataStream arg1, QBrush arg2) {
+			return StaticQt().op_read(arg1,arg2);
+		}
+		[SmokeMethod("qRed(QRgb)")]
+		public static int QRed(uint rgb) {
+			return StaticQt().QRed(rgb);
+		}
+		[SmokeMethod("qGreen(QRgb)")]
+		public static int QGreen(uint rgb) {
+			return StaticQt().QGreen(rgb);
+		}
+		[SmokeMethod("qBlue(QRgb)")]
+		public static int QBlue(uint rgb) {
+			return StaticQt().QBlue(rgb);
+		}
+		[SmokeMethod("qAlpha(QRgb)")]
+		public static int QAlpha(uint rgb) {
+			return StaticQt().QAlpha(rgb);
+		}
+		[SmokeMethod("qRgb(int, int, int)")]
+		public static uint QRgb(int r, int g, int b) {
+			return StaticQt().QRgb(r,g,b);
+		}
+		[SmokeMethod("qRgba(int, int, int, int)")]
+		public static uint QRgba(int r, int g, int b, int a) {
+			return StaticQt().QRgba(r,g,b,a);
+		}
+		[SmokeMethod("qGray(int, int, int)")]
+		public static int QGray(int r, int g, int b) {
+			return StaticQt().QGray(r,g,b);
+		}
+		[SmokeMethod("qGray(QRgb)")]
+		public static int QGray(uint rgb) {
+			return StaticQt().QGray(rgb);
+		}
+		[SmokeMethod("qIsGray(QRgb)")]
+		public static bool QIsGray(uint rgb) {
+			return StaticQt().QIsGray(rgb);
+		}
+		[SmokeMethod("operator<<(QDataStream&, const QPainterPath&)")]
+		public static QDataStream op_write(QDataStream arg1, QPainterPath arg2) {
+			return StaticQt().op_write(arg1,arg2);
+		}
+		[SmokeMethod("operator>>(QDataStream&, QPainterPath&)")]
+		public static QDataStream op_read(QDataStream arg1, QPainterPath arg2) {
+			return StaticQt().op_read(arg1,arg2);
+		}
+		///<remarks>**************************************************
+		///  QRegion stream functions
+		///**************************************************</remarks>		<short>                                                                                QRegion stream functions                                                                            </short>
+		[SmokeMethod("operator<<(QDataStream&, const QRegion&)")]
+		public static QDataStream op_write(QDataStream arg1, QRegion arg2) {
+			return StaticQt().op_write(arg1,arg2);
+		}
+		[SmokeMethod("operator>>(QDataStream&, QRegion&)")]
+		public static QDataStream op_read(QDataStream arg1, QRegion arg2) {
+			return StaticQt().op_read(arg1,arg2);
+		}
+		///<remarks>**************************************************
+		///  QPolygonF stream functions
+		///**************************************************</remarks>		<short>                                                                                QPolygonF stream functions                                                                            </short>
+		[SmokeMethod("operator<<(QDataStream&, const QPolygonF&)")]
+		public static QDataStream op_write(QDataStream stream, QPolygonF array) {
+			return StaticQt().op_write(stream,array);
+		}
+		[SmokeMethod("operator>>(QDataStream&, QPolygonF&)")]
+		public static QDataStream op_read(QDataStream stream, QPolygonF array) {
+			return StaticQt().op_read(stream,array);
+		}
 		[SmokeMethod("operator*(const QPoint&, const QMatrix&)")]
 		public static QPoint op_mult(QPoint p, QMatrix m) {
 			return StaticQt().op_mult(p,m);
@@ -1692,108 +1767,33 @@ namespace Qyoto {
 		public static QDataStream op_read(QDataStream arg1, QMatrix arg2) {
 			return StaticQt().op_read(arg1,arg2);
 		}
-		[SmokeMethod("operator<<(QDataStream&, const QPainterPath&)")]
-		public static QDataStream op_write(QDataStream arg1, QPainterPath arg2) {
-			return StaticQt().op_write(arg1,arg2);
+		[SmokeMethod("operator>>(QDataStream&, QTableWidgetItem&)")]
+		public static QDataStream op_read(QDataStream arg1, QTableWidgetItem item) {
+			return StaticQt().op_read(arg1,item);
 		}
-		[SmokeMethod("operator>>(QDataStream&, QPainterPath&)")]
-		public static QDataStream op_read(QDataStream arg1, QPainterPath arg2) {
-			return StaticQt().op_read(arg1,arg2);
+		[SmokeMethod("operator<<(QDataStream&, const QTableWidgetItem&)")]
+		public static QDataStream op_write(QDataStream arg1, QTableWidgetItem item) {
+			return StaticQt().op_write(arg1,item);
 		}
-		[SmokeMethod("operator<<(QDataStream&, const QPen&)")]
-		public static QDataStream op_write(QDataStream arg1, QPen arg2) {
-			return StaticQt().op_write(arg1,arg2);
+		[SmokeMethod("operator<<(QDataStream&, const QTreeWidgetItem&)")]
+		public static QDataStream op_write(QDataStream arg1, QTreeWidgetItem item) {
+			return StaticQt().op_write(arg1,item);
 		}
-		[SmokeMethod("operator>>(QDataStream&, QPen&)")]
-		public static QDataStream op_read(QDataStream arg1, QPen arg2) {
-			return StaticQt().op_read(arg1,arg2);
+		[SmokeMethod("operator>>(QDataStream&, QTreeWidgetItem&)")]
+		public static QDataStream op_read(QDataStream arg1, QTreeWidgetItem item) {
+			return StaticQt().op_read(arg1,item);
 		}
-		///<remarks>**************************************************
-		///  QPolygonF stream functions
-		///**************************************************</remarks>		<short>                                                                                QPolygonF stream functions                                                                            </short>
-		[SmokeMethod("operator<<(QDataStream&, const QPolygonF&)")]
-		public static QDataStream op_write(QDataStream stream, QPolygonF array) {
-			return StaticQt().op_write(stream,array);
+		[SmokeMethod("operator<<(QDataStream&, const QListWidgetItem&)")]
+		public static QDataStream op_write(QDataStream arg1, QListWidgetItem item) {
+			return StaticQt().op_write(arg1,item);
 		}
-		[SmokeMethod("operator>>(QDataStream&, QPolygonF&)")]
-		public static QDataStream op_read(QDataStream stream, QPolygonF array) {
-			return StaticQt().op_read(stream,array);
+		[SmokeMethod("operator>>(QDataStream&, QListWidgetItem&)")]
+		public static QDataStream op_read(QDataStream arg1, QListWidgetItem item) {
+			return StaticQt().op_read(arg1,item);
 		}
-		///<remarks>**************************************************
-		///  QRegion stream functions
-		///**************************************************</remarks>		<short>                                                                                QRegion stream functions                                                                            </short>
-		[SmokeMethod("operator<<(QDataStream&, const QRegion&)")]
-		public static QDataStream op_write(QDataStream arg1, QRegion arg2) {
-			return StaticQt().op_write(arg1,arg2);
-		}
-		[SmokeMethod("operator>>(QDataStream&, QRegion&)")]
-		public static QDataStream op_read(QDataStream arg1, QRegion arg2) {
-			return StaticQt().op_read(arg1,arg2);
-		}
-		[SmokeMethod("qRed(QRgb)")]
-		public static int QRed(uint rgb) {
-			return StaticQt().QRed(rgb);
-		}
-		[SmokeMethod("qGreen(QRgb)")]
-		public static int QGreen(uint rgb) {
-			return StaticQt().QGreen(rgb);
-		}
-		[SmokeMethod("qBlue(QRgb)")]
-		public static int QBlue(uint rgb) {
-			return StaticQt().QBlue(rgb);
-		}
-		[SmokeMethod("qAlpha(QRgb)")]
-		public static int QAlpha(uint rgb) {
-			return StaticQt().QAlpha(rgb);
-		}
-		[SmokeMethod("qRgb(int, int, int)")]
-		public static uint QRgb(int r, int g, int b) {
-			return StaticQt().QRgb(r,g,b);
-		}
-		[SmokeMethod("qRgba(int, int, int, int)")]
-		public static uint QRgba(int r, int g, int b, int a) {
-			return StaticQt().QRgba(r,g,b,a);
-		}
-		[SmokeMethod("qGray(int, int, int)")]
-		public static int QGray(int r, int g, int b) {
-			return StaticQt().QGray(r,g,b);
-		}
-		[SmokeMethod("qGray(QRgb)")]
-		public static int QGray(uint rgb) {
-			return StaticQt().QGray(rgb);
-		}
-		[SmokeMethod("qIsGray(QRgb)")]
-		public static bool QIsGray(uint rgb) {
-			return StaticQt().QIsGray(rgb);
-		}
-		///<remarks>**************************************************
-		///  QFont stream functions
-		///**************************************************</remarks>		<short>                                                                                QFont stream functions                                                                            </short>
-		[SmokeMethod("operator<<(QDataStream&, const QFont&)")]
-		public static QDataStream op_write(QDataStream arg1, QFont arg2) {
-			return StaticQt().op_write(arg1,arg2);
-		}
-		[SmokeMethod("operator>>(QDataStream&, QFont&)")]
-		public static QDataStream op_read(QDataStream arg1, QFont arg2) {
-			return StaticQt().op_read(arg1,arg2);
-		}
-		[SmokeMethod("operator<<(QDataStream&, const QTextLength&)")]
-		public static QDataStream op_write(QDataStream arg1, QTextLength arg2) {
-			return StaticQt().op_write(arg1,arg2);
-		}
-		[SmokeMethod("operator>>(QDataStream&, QTextLength&)")]
-		public static QDataStream op_read(QDataStream arg1, QTextLength arg2) {
-			return StaticQt().op_read(arg1,arg2);
-		}
-		// QDataStream& operator<<(QDataStream& arg1,const QTextFormat& arg2); >>>> NOT CONVERTED
-		// QDataStream& operator>>(QDataStream& arg1,QTextFormat& arg2); >>>> NOT CONVERTED
-		[SmokeMethod("operator<<(QTextStream&, const QSplitter&)")]
-		public static QTextStream op_write(QTextStream arg1, QSplitter arg2) {
-			return StaticQt().op_write(arg1,arg2);
-		}
-		[SmokeMethod("operator>>(QTextStream&, QSplitter&)")]
-		public static QTextStream op_read(QTextStream arg1, QSplitter arg2) {
-			return StaticQt().op_read(arg1,arg2);
+		[SmokeMethod("qHash(const QItemSelectionRange&)")]
+		public static uint QHash(QItemSelectionRange arg1) {
+			return StaticQt().QHash(arg1);
 		}
 		[SmokeMethod("operator<<(QTextStream&, const QDomNode&)")]
 		public static QTextStream op_write(QTextStream arg1, QDomNode arg2) {
@@ -1872,129 +1872,6 @@ namespace Qyoto {
 		public static int Qrand() {
 			return StaticQt().Qrand();
 		}
-		// QDebug qDebug(); >>>> NOT CONVERTED
-		// QDebug qWarning(); >>>> NOT CONVERTED
-		// QDebug qCritical(); >>>> NOT CONVERTED
-		// QTextStream& operator>>(QTextStream& arg1,QTextStreamFunction arg2); >>>> NOT CONVERTED
-		// QTextStream& operator<<(QTextStream& arg1,QTextStreamFunction arg2); >>>> NOT CONVERTED
-		// QTextStream& operator<<(QTextStream& arg1,QTextStreamManipulator arg2); >>>> NOT CONVERTED
-		[SmokeMethod("bin(QTextStream&)")]
-		public static QTextStream Bin(QTextStream s) {
-			return StaticQt().Bin(s);
-		}
-		[SmokeMethod("oct(QTextStream&)")]
-		public static QTextStream Oct(QTextStream s) {
-			return StaticQt().Oct(s);
-		}
-		[SmokeMethod("dec(QTextStream&)")]
-		public static QTextStream Dec(QTextStream s) {
-			return StaticQt().Dec(s);
-		}
-		[SmokeMethod("hex(QTextStream&)")]
-		public static QTextStream Hex(QTextStream s) {
-			return StaticQt().Hex(s);
-		}
-		[SmokeMethod("showbase(QTextStream&)")]
-		public static QTextStream Showbase(QTextStream s) {
-			return StaticQt().Showbase(s);
-		}
-		[SmokeMethod("forcesign(QTextStream&)")]
-		public static QTextStream Forcesign(QTextStream s) {
-			return StaticQt().Forcesign(s);
-		}
-		[SmokeMethod("forcepoint(QTextStream&)")]
-		public static QTextStream Forcepoint(QTextStream s) {
-			return StaticQt().Forcepoint(s);
-		}
-		[SmokeMethod("noshowbase(QTextStream&)")]
-		public static QTextStream Noshowbase(QTextStream s) {
-			return StaticQt().Noshowbase(s);
-		}
-		[SmokeMethod("noforcesign(QTextStream&)")]
-		public static QTextStream Noforcesign(QTextStream s) {
-			return StaticQt().Noforcesign(s);
-		}
-		[SmokeMethod("noforcepoint(QTextStream&)")]
-		public static QTextStream Noforcepoint(QTextStream s) {
-			return StaticQt().Noforcepoint(s);
-		}
-		[SmokeMethod("uppercasebase(QTextStream&)")]
-		public static QTextStream Uppercasebase(QTextStream s) {
-			return StaticQt().Uppercasebase(s);
-		}
-		[SmokeMethod("uppercasedigits(QTextStream&)")]
-		public static QTextStream Uppercasedigits(QTextStream s) {
-			return StaticQt().Uppercasedigits(s);
-		}
-		[SmokeMethod("lowercasebase(QTextStream&)")]
-		public static QTextStream Lowercasebase(QTextStream s) {
-			return StaticQt().Lowercasebase(s);
-		}
-		[SmokeMethod("lowercasedigits(QTextStream&)")]
-		public static QTextStream Lowercasedigits(QTextStream s) {
-			return StaticQt().Lowercasedigits(s);
-		}
-		[SmokeMethod("fixed(QTextStream&)")]
-		public static QTextStream Fixed(QTextStream s) {
-			return StaticQt().Fixed(s);
-		}
-		[SmokeMethod("scientific(QTextStream&)")]
-		public static QTextStream Scientific(QTextStream s) {
-			return StaticQt().Scientific(s);
-		}
-		[SmokeMethod("left(QTextStream&)")]
-		public static QTextStream Left(QTextStream s) {
-			return StaticQt().Left(s);
-		}
-		[SmokeMethod("right(QTextStream&)")]
-		public static QTextStream Right(QTextStream s) {
-			return StaticQt().Right(s);
-		}
-		[SmokeMethod("center(QTextStream&)")]
-		public static QTextStream Center(QTextStream s) {
-			return StaticQt().Center(s);
-		}
-		[SmokeMethod("endl(QTextStream&)")]
-		public static QTextStream Endl(QTextStream s) {
-			return StaticQt().Endl(s);
-		}
-		[SmokeMethod("flush(QTextStream&)")]
-		public static QTextStream Flush(QTextStream s) {
-			return StaticQt().Flush(s);
-		}
-		[SmokeMethod("reset(QTextStream&)")]
-		public static QTextStream Reset(QTextStream s) {
-			return StaticQt().Reset(s);
-		}
-		[SmokeMethod("bom(QTextStream&)")]
-		public static QTextStream Bom(QTextStream s) {
-			return StaticQt().Bom(s);
-		}
-		[SmokeMethod("ws(QTextStream&)")]
-		public static QTextStream Ws(QTextStream s) {
-			return StaticQt().Ws(s);
-		}
-		// QTextStreamManipulator qSetFieldWidth(int arg1); >>>> NOT CONVERTED
-		// QTextStreamManipulator qSetPadChar(QChar arg1); >>>> NOT CONVERTED
-		// QTextStreamManipulator qSetRealNumberPrecision(int arg1); >>>> NOT CONVERTED
-		[SmokeMethod("operator<<(QDataStream&, const QUrl&)")]
-		public static QDataStream op_write(QDataStream arg1, IQUrl arg2) {
-			return StaticQt().op_write(arg1,arg2);
-		}
-		[SmokeMethod("operator>>(QDataStream&, QUrl&)")]
-		public static QDataStream op_read(QDataStream arg1, IQUrl arg2) {
-			return StaticQt().op_read(arg1,arg2);
-		}
-		[SmokeMethod("qHash(const QModelIndex&)")]
-		public static uint QHash(QModelIndex index) {
-			return StaticQt().QHash(index);
-		}
-		// void qAddPostRoutine(QtCleanUpFunction arg1); >>>> NOT CONVERTED
-		// void qRemovePostRoutine(QtCleanUpFunction arg1); >>>> NOT CONVERTED
-		[SmokeMethod("qAppName()")]
-		public static string QAppName() {
-			return StaticQt().QAppName();
-		}
 		// bool qvariant_cast_helper(const QVariant& arg1,QVariant::Type arg2,void* arg3); >>>> NOT CONVERTED
 		[SmokeMethod("operator>>(QDataStream&, QVariant&)")]
 		public static QDataStream op_read(QDataStream s, QVariant p) {
@@ -2005,19 +1882,62 @@ namespace Qyoto {
 			return StaticQt().op_write(s,p);
 		}
 		// bool operator==(const QVariant& arg1,const QVariantComparisonHelper& arg2); >>>> NOT CONVERTED
-		[SmokeMethod("operator<<(QDataStream&, const QUuid&)")]
-		public static QDataStream op_write(QDataStream arg1, QUuid arg2) {
+		// void qAddPostRoutine(QtCleanUpFunction arg1); >>>> NOT CONVERTED
+		// void qRemovePostRoutine(QtCleanUpFunction arg1); >>>> NOT CONVERTED
+		[SmokeMethod("qAppName()")]
+		public static string QAppName() {
+			return StaticQt().QAppName();
+		}
+		[SmokeMethod("qHash(const QModelIndex&)")]
+		public static uint QHash(QModelIndex index) {
+			return StaticQt().QHash(index);
+		}
+		[SmokeMethod("operator==(const QRect&, const QRect&)")]
+		public static bool op_equals(QRect arg1, QRect arg2) {
+			return StaticQt().op_equals(arg1,arg2);
+		}
+		///<remarks>**************************************************
+		///  QRect stream functions
+		///**************************************************</remarks>		<short>                                                                                QRect stream functions                                                                            </short>
+		[SmokeMethod("operator<<(QDataStream&, const QRect&)")]
+		public static QDataStream op_write(QDataStream arg1, QRect arg2) {
 			return StaticQt().op_write(arg1,arg2);
 		}
-		[SmokeMethod("operator>>(QDataStream&, QUuid&)")]
-		public static QDataStream op_read(QDataStream arg1, QUuid arg2) {
+		[SmokeMethod("operator>>(QDataStream&, QRect&)")]
+		public static QDataStream op_read(QDataStream arg1, QRect arg2) {
 			return StaticQt().op_read(arg1,arg2);
 		}
-		// QBitArray operator&(const QBitArray& arg1,const QBitArray& arg2); >>>> NOT CONVERTED
-		// QBitArray operator|(const QBitArray& arg1,const QBitArray& arg2); >>>> NOT CONVERTED
-		// QBitArray operator^(const QBitArray& arg1,const QBitArray& arg2); >>>> NOT CONVERTED
-		// QDataStream& operator<<(QDataStream& arg1,const QBitArray& arg2); >>>> NOT CONVERTED
-		// QDataStream& operator>>(QDataStream& arg1,QBitArray& arg2); >>>> NOT CONVERTED
+		[SmokeMethod("operator==(const QRectF&, const QRectF&)")]
+		public static bool op_equals(QRectF arg1, QRectF arg2) {
+			return StaticQt().op_equals(arg1,arg2);
+		}
+		///<remarks>**************************************************
+		///  QRectF stream functions
+		///**************************************************</remarks>		<short>                                                                                QRectF stream functions                                                                            </short>
+		[SmokeMethod("operator<<(QDataStream&, const QRectF&)")]
+		public static QDataStream op_write(QDataStream arg1, QRectF arg2) {
+			return StaticQt().op_write(arg1,arg2);
+		}
+		[SmokeMethod("operator>>(QDataStream&, QRectF&)")]
+		public static QDataStream op_read(QDataStream arg1, QRectF arg2) {
+			return StaticQt().op_read(arg1,arg2);
+		}
+		[SmokeMethod("operator<<(QDataStream&, const QLocale&)")]
+		public static QDataStream op_write(QDataStream arg1, QLocale arg2) {
+			return StaticQt().op_write(arg1,arg2);
+		}
+		[SmokeMethod("operator>>(QDataStream&, QLocale&)")]
+		public static QDataStream op_read(QDataStream arg1, QLocale arg2) {
+			return StaticQt().op_read(arg1,arg2);
+		}
+		[SmokeMethod("operator>>(QDataStream&, QStringList&)")]
+		public static QDataStream op_read(QDataStream arg1, List<string> list) {
+			return StaticQt().op_read(arg1,list);
+		}
+		[SmokeMethod("operator<<(QDataStream&, const QStringList&)")]
+		public static QDataStream op_write(QDataStream arg1, List<string> list) {
+			return StaticQt().op_write(arg1,list);
+		}
 		///<remarks>**************************************************
 		///  Safe and portable C string functions; extensions to standard string.h
 		///**************************************************</remarks>		<short>                                                                                Safe and portable C string functions; extensions to standard string.</short>
@@ -2174,6 +2094,135 @@ namespace Qyoto {
 		public static QByteArray QUncompress(QByteArray data) {
 			return StaticQt().QUncompress(data);
 		}
+		///<remarks>**************************************************
+		///  QSize stream functions
+		///**************************************************</remarks>		<short>                                                                                QSize stream functions                                                                            </short>
+		[SmokeMethod("operator<<(QDataStream&, const QSize&)")]
+		public static QDataStream op_write(QDataStream arg1, QSize arg2) {
+			return StaticQt().op_write(arg1,arg2);
+		}
+		[SmokeMethod("operator>>(QDataStream&, QSize&)")]
+		public static QDataStream op_read(QDataStream arg1, QSize arg2) {
+			return StaticQt().op_read(arg1,arg2);
+		}
+		///<remarks>**************************************************
+		///  QSize inline functions
+		///**************************************************</remarks>		<short>                                                                                QSize inline functions                                                                            </short>
+		[SmokeMethod("operator==(const QSize&, const QSize&)")]
+		public static bool op_equals(QSize s1, QSize s2) {
+			return StaticQt().op_equals(s1,s2);
+		}
+		[SmokeMethod("operator+(const QSize&, const QSize&)")]
+		public static QSize op_plus(QSize s1, QSize s2) {
+			return StaticQt().op_plus(s1,s2);
+		}
+		[SmokeMethod("operator-(const QSize&, const QSize&)")]
+		public static QSize op_minus(QSize s1, QSize s2) {
+			return StaticQt().op_minus(s1,s2);
+		}
+		[SmokeMethod("operator*(const QSize&, qreal)")]
+		public static QSize op_mult(QSize s, double c) {
+			return StaticQt().op_mult(s,c);
+		}
+		[SmokeMethod("operator*(qreal, const QSize&)")]
+		public static QSize op_mult(double c, QSize s) {
+			return StaticQt().op_mult(c,s);
+		}
+		[SmokeMethod("operator/(const QSize&, qreal)")]
+		public static QSize op_div(QSize s, double c) {
+			return StaticQt().op_div(s,c);
+		}
+		///<remarks>**************************************************
+		///  QSizeF stream functions
+		///**************************************************</remarks>		<short>                                                                                QSizeF stream functions                                                                            </short>
+		[SmokeMethod("operator<<(QDataStream&, const QSizeF&)")]
+		public static QDataStream op_write(QDataStream arg1, QSizeF arg2) {
+			return StaticQt().op_write(arg1,arg2);
+		}
+		[SmokeMethod("operator>>(QDataStream&, QSizeF&)")]
+		public static QDataStream op_read(QDataStream arg1, QSizeF arg2) {
+			return StaticQt().op_read(arg1,arg2);
+		}
+		///<remarks>**************************************************
+		///  QSizeF inline functions
+		///**************************************************</remarks>		<short>                                                                                QSizeF inline functions                                                                            </short>
+		[SmokeMethod("operator==(const QSizeF&, const QSizeF&)")]
+		public static bool op_equals(QSizeF s1, QSizeF s2) {
+			return StaticQt().op_equals(s1,s2);
+		}
+		[SmokeMethod("operator+(const QSizeF&, const QSizeF&)")]
+		public static QSizeF op_plus(QSizeF s1, QSizeF s2) {
+			return StaticQt().op_plus(s1,s2);
+		}
+		[SmokeMethod("operator-(const QSizeF&, const QSizeF&)")]
+		public static QSizeF op_minus(QSizeF s1, QSizeF s2) {
+			return StaticQt().op_minus(s1,s2);
+		}
+		[SmokeMethod("operator*(const QSizeF&, qreal)")]
+		public static QSizeF op_mult(QSizeF s, double c) {
+			return StaticQt().op_mult(s,c);
+		}
+		[SmokeMethod("operator*(qreal, const QSizeF&)")]
+		public static QSizeF op_mult(double c, QSizeF s) {
+			return StaticQt().op_mult(c,s);
+		}
+		[SmokeMethod("operator/(const QSizeF&, qreal)")]
+		public static QSizeF op_div(QSizeF s, double c) {
+			return StaticQt().op_div(s,c);
+		}
+		[SmokeMethod("operator<<(QDataStream&, const QLine&)")]
+		public static QDataStream op_write(QDataStream arg1, QLine arg2) {
+			return StaticQt().op_write(arg1,arg2);
+		}
+		[SmokeMethod("operator>>(QDataStream&, QLine&)")]
+		public static QDataStream op_read(QDataStream arg1, QLine arg2) {
+			return StaticQt().op_read(arg1,arg2);
+		}
+		[SmokeMethod("operator<<(QDataStream&, const QLineF&)")]
+		public static QDataStream op_write(QDataStream arg1, QLineF arg2) {
+			return StaticQt().op_write(arg1,arg2);
+		}
+		[SmokeMethod("operator>>(QDataStream&, QLineF&)")]
+		public static QDataStream op_read(QDataStream arg1, QLineF arg2) {
+			return StaticQt().op_read(arg1,arg2);
+		}
+		[SmokeMethod("operator<<(QDataStream&, const QRegExp&)")]
+		public static QDataStream op_write(QDataStream arg1, QRegExp regExp) {
+			return StaticQt().op_write(arg1,regExp);
+		}
+		[SmokeMethod("operator>>(QDataStream&, QRegExp&)")]
+		public static QDataStream op_read(QDataStream arg1, QRegExp regExp) {
+			return StaticQt().op_read(arg1,regExp);
+		}
+		[SmokeMethod("operator<<(QDataStream&, const QDate&)")]
+		public static QDataStream op_write(QDataStream arg1, QDate arg2) {
+			return StaticQt().op_write(arg1,arg2);
+		}
+		[SmokeMethod("operator>>(QDataStream&, QDate&)")]
+		public static QDataStream op_read(QDataStream arg1, QDate arg2) {
+			return StaticQt().op_read(arg1,arg2);
+		}
+		[SmokeMethod("operator<<(QDataStream&, const QTime&)")]
+		public static QDataStream op_write(QDataStream arg1, QTime arg2) {
+			return StaticQt().op_write(arg1,arg2);
+		}
+		[SmokeMethod("operator>>(QDataStream&, QTime&)")]
+		public static QDataStream op_read(QDataStream arg1, QTime arg2) {
+			return StaticQt().op_read(arg1,arg2);
+		}
+		[SmokeMethod("operator<<(QDataStream&, const QDateTime&)")]
+		public static QDataStream op_write(QDataStream arg1, QDateTime arg2) {
+			return StaticQt().op_write(arg1,arg2);
+		}
+		[SmokeMethod("operator>>(QDataStream&, QDateTime&)")]
+		public static QDataStream op_read(QDataStream arg1, QDateTime arg2) {
+			return StaticQt().op_read(arg1,arg2);
+		}
+		// QBitArray operator&(const QBitArray& arg1,const QBitArray& arg2); >>>> NOT CONVERTED
+		// QBitArray operator|(const QBitArray& arg1,const QBitArray& arg2); >>>> NOT CONVERTED
+		// QBitArray operator^(const QBitArray& arg1,const QBitArray& arg2); >>>> NOT CONVERTED
+		// QDataStream& operator<<(QDataStream& arg1,const QBitArray& arg2); >>>> NOT CONVERTED
+		// QDataStream& operator>>(QDataStream& arg1,QBitArray& arg2); >>>> NOT CONVERTED
 		[SmokeMethod("operator==(QChar, QChar)")]
 		public static bool op_equals(char c1, char c2) {
 			return StaticQt().op_equals(c1,c2);
@@ -2200,54 +2249,6 @@ namespace Qyoto {
 		}
 		[SmokeMethod("operator>>(QDataStream&, QChar&)")]
 		public static QDataStream op_read(QDataStream arg1, char arg2) {
-			return StaticQt().op_read(arg1,arg2);
-		}
-		[SmokeMethod("operator<<(QDataStream&, const QDate&)")]
-		public static QDataStream op_write(QDataStream arg1, QDate arg2) {
-			return StaticQt().op_write(arg1,arg2);
-		}
-		[SmokeMethod("operator>>(QDataStream&, QDate&)")]
-		public static QDataStream op_read(QDataStream arg1, QDate arg2) {
-			return StaticQt().op_read(arg1,arg2);
-		}
-		[SmokeMethod("operator<<(QDataStream&, const QTime&)")]
-		public static QDataStream op_write(QDataStream arg1, QTime arg2) {
-			return StaticQt().op_write(arg1,arg2);
-		}
-		[SmokeMethod("operator>>(QDataStream&, QTime&)")]
-		public static QDataStream op_read(QDataStream arg1, QTime arg2) {
-			return StaticQt().op_read(arg1,arg2);
-		}
-		[SmokeMethod("operator<<(QDataStream&, const QDateTime&)")]
-		public static QDataStream op_write(QDataStream arg1, QDateTime arg2) {
-			return StaticQt().op_write(arg1,arg2);
-		}
-		[SmokeMethod("operator>>(QDataStream&, QDateTime&)")]
-		public static QDataStream op_read(QDataStream arg1, QDateTime arg2) {
-			return StaticQt().op_read(arg1,arg2);
-		}
-		[SmokeMethod("operator<<(QDataStream&, const QLine&)")]
-		public static QDataStream op_write(QDataStream arg1, QLine arg2) {
-			return StaticQt().op_write(arg1,arg2);
-		}
-		[SmokeMethod("operator>>(QDataStream&, QLine&)")]
-		public static QDataStream op_read(QDataStream arg1, QLine arg2) {
-			return StaticQt().op_read(arg1,arg2);
-		}
-		[SmokeMethod("operator<<(QDataStream&, const QLineF&)")]
-		public static QDataStream op_write(QDataStream arg1, QLineF arg2) {
-			return StaticQt().op_write(arg1,arg2);
-		}
-		[SmokeMethod("operator>>(QDataStream&, QLineF&)")]
-		public static QDataStream op_read(QDataStream arg1, QLineF arg2) {
-			return StaticQt().op_read(arg1,arg2);
-		}
-		[SmokeMethod("operator<<(QDataStream&, const QLocale&)")]
-		public static QDataStream op_write(QDataStream arg1, QLocale arg2) {
-			return StaticQt().op_write(arg1,arg2);
-		}
-		[SmokeMethod("operator>>(QDataStream&, QLocale&)")]
-		public static QDataStream op_read(QDataStream arg1, QLocale arg2) {
 			return StaticQt().op_read(arg1,arg2);
 		}
 		///<remarks>**************************************************
@@ -2334,127 +2335,126 @@ namespace Qyoto {
 		public static QPointF op_div(QPointF p, double c) {
 			return StaticQt().op_div(p,c);
 		}
-		[SmokeMethod("operator==(const QRect&, const QRect&)")]
-		public static bool op_equals(QRect arg1, QRect arg2) {
-			return StaticQt().op_equals(arg1,arg2);
+		// QTextStream& operator>>(QTextStream& arg1,QTextStreamFunction arg2); >>>> NOT CONVERTED
+		// QTextStream& operator<<(QTextStream& arg1,QTextStreamFunction arg2); >>>> NOT CONVERTED
+		// QTextStream& operator<<(QTextStream& arg1,QTextStreamManipulator arg2); >>>> NOT CONVERTED
+		[SmokeMethod("bin(QTextStream&)")]
+		public static QTextStream Bin(QTextStream s) {
+			return StaticQt().Bin(s);
 		}
-		///<remarks>**************************************************
-		///  QRect stream functions
-		///**************************************************</remarks>		<short>                                                                                QRect stream functions                                                                            </short>
-		[SmokeMethod("operator<<(QDataStream&, const QRect&)")]
-		public static QDataStream op_write(QDataStream arg1, QRect arg2) {
+		[SmokeMethod("oct(QTextStream&)")]
+		public static QTextStream Oct(QTextStream s) {
+			return StaticQt().Oct(s);
+		}
+		[SmokeMethod("dec(QTextStream&)")]
+		public static QTextStream Dec(QTextStream s) {
+			return StaticQt().Dec(s);
+		}
+		[SmokeMethod("hex(QTextStream&)")]
+		public static QTextStream Hex(QTextStream s) {
+			return StaticQt().Hex(s);
+		}
+		[SmokeMethod("showbase(QTextStream&)")]
+		public static QTextStream Showbase(QTextStream s) {
+			return StaticQt().Showbase(s);
+		}
+		[SmokeMethod("forcesign(QTextStream&)")]
+		public static QTextStream Forcesign(QTextStream s) {
+			return StaticQt().Forcesign(s);
+		}
+		[SmokeMethod("forcepoint(QTextStream&)")]
+		public static QTextStream Forcepoint(QTextStream s) {
+			return StaticQt().Forcepoint(s);
+		}
+		[SmokeMethod("noshowbase(QTextStream&)")]
+		public static QTextStream Noshowbase(QTextStream s) {
+			return StaticQt().Noshowbase(s);
+		}
+		[SmokeMethod("noforcesign(QTextStream&)")]
+		public static QTextStream Noforcesign(QTextStream s) {
+			return StaticQt().Noforcesign(s);
+		}
+		[SmokeMethod("noforcepoint(QTextStream&)")]
+		public static QTextStream Noforcepoint(QTextStream s) {
+			return StaticQt().Noforcepoint(s);
+		}
+		[SmokeMethod("uppercasebase(QTextStream&)")]
+		public static QTextStream Uppercasebase(QTextStream s) {
+			return StaticQt().Uppercasebase(s);
+		}
+		[SmokeMethod("uppercasedigits(QTextStream&)")]
+		public static QTextStream Uppercasedigits(QTextStream s) {
+			return StaticQt().Uppercasedigits(s);
+		}
+		[SmokeMethod("lowercasebase(QTextStream&)")]
+		public static QTextStream Lowercasebase(QTextStream s) {
+			return StaticQt().Lowercasebase(s);
+		}
+		[SmokeMethod("lowercasedigits(QTextStream&)")]
+		public static QTextStream Lowercasedigits(QTextStream s) {
+			return StaticQt().Lowercasedigits(s);
+		}
+		[SmokeMethod("fixed(QTextStream&)")]
+		public static QTextStream Fixed(QTextStream s) {
+			return StaticQt().Fixed(s);
+		}
+		[SmokeMethod("scientific(QTextStream&)")]
+		public static QTextStream Scientific(QTextStream s) {
+			return StaticQt().Scientific(s);
+		}
+		[SmokeMethod("left(QTextStream&)")]
+		public static QTextStream Left(QTextStream s) {
+			return StaticQt().Left(s);
+		}
+		[SmokeMethod("right(QTextStream&)")]
+		public static QTextStream Right(QTextStream s) {
+			return StaticQt().Right(s);
+		}
+		[SmokeMethod("center(QTextStream&)")]
+		public static QTextStream Center(QTextStream s) {
+			return StaticQt().Center(s);
+		}
+		[SmokeMethod("endl(QTextStream&)")]
+		public static QTextStream Endl(QTextStream s) {
+			return StaticQt().Endl(s);
+		}
+		[SmokeMethod("flush(QTextStream&)")]
+		public static QTextStream Flush(QTextStream s) {
+			return StaticQt().Flush(s);
+		}
+		[SmokeMethod("reset(QTextStream&)")]
+		public static QTextStream Reset(QTextStream s) {
+			return StaticQt().Reset(s);
+		}
+		[SmokeMethod("bom(QTextStream&)")]
+		public static QTextStream Bom(QTextStream s) {
+			return StaticQt().Bom(s);
+		}
+		[SmokeMethod("ws(QTextStream&)")]
+		public static QTextStream Ws(QTextStream s) {
+			return StaticQt().Ws(s);
+		}
+		// QTextStreamManipulator qSetFieldWidth(int arg1); >>>> NOT CONVERTED
+		// QTextStreamManipulator qSetPadChar(QChar arg1); >>>> NOT CONVERTED
+		// QTextStreamManipulator qSetRealNumberPrecision(int arg1); >>>> NOT CONVERTED
+		// QDebug qDebug(); >>>> NOT CONVERTED
+		// QDebug qWarning(); >>>> NOT CONVERTED
+		// QDebug qCritical(); >>>> NOT CONVERTED
+		[SmokeMethod("operator<<(QDataStream&, const QUrl&)")]
+		public static QDataStream op_write(QDataStream arg1, IQUrl arg2) {
 			return StaticQt().op_write(arg1,arg2);
 		}
-		[SmokeMethod("operator>>(QDataStream&, QRect&)")]
-		public static QDataStream op_read(QDataStream arg1, QRect arg2) {
+		[SmokeMethod("operator>>(QDataStream&, QUrl&)")]
+		public static QDataStream op_read(QDataStream arg1, IQUrl arg2) {
 			return StaticQt().op_read(arg1,arg2);
 		}
-		[SmokeMethod("operator==(const QRectF&, const QRectF&)")]
-		public static bool op_equals(QRectF arg1, QRectF arg2) {
-			return StaticQt().op_equals(arg1,arg2);
-		}
-		///<remarks>**************************************************
-		///  QRectF stream functions
-		///**************************************************</remarks>		<short>                                                                                QRectF stream functions                                                                            </short>
-		[SmokeMethod("operator<<(QDataStream&, const QRectF&)")]
-		public static QDataStream op_write(QDataStream arg1, QRectF arg2) {
+		[SmokeMethod("operator<<(QDataStream&, const QUuid&)")]
+		public static QDataStream op_write(QDataStream arg1, QUuid arg2) {
 			return StaticQt().op_write(arg1,arg2);
 		}
-		[SmokeMethod("operator>>(QDataStream&, QRectF&)")]
-		public static QDataStream op_read(QDataStream arg1, QRectF arg2) {
+		[SmokeMethod("operator>>(QDataStream&, QUuid&)")]
+		public static QDataStream op_read(QDataStream arg1, QUuid arg2) {
 			return StaticQt().op_read(arg1,arg2);
-		}
-		[SmokeMethod("operator<<(QDataStream&, const QRegExp&)")]
-		public static QDataStream op_write(QDataStream arg1, QRegExp regExp) {
-			return StaticQt().op_write(arg1,regExp);
-		}
-		[SmokeMethod("operator>>(QDataStream&, QRegExp&)")]
-		public static QDataStream op_read(QDataStream arg1, QRegExp regExp) {
-			return StaticQt().op_read(arg1,regExp);
-		}
-		///<remarks>**************************************************
-		///  QSize stream functions
-		///**************************************************</remarks>		<short>                                                                                QSize stream functions                                                                            </short>
-		[SmokeMethod("operator<<(QDataStream&, const QSize&)")]
-		public static QDataStream op_write(QDataStream arg1, QSize arg2) {
-			return StaticQt().op_write(arg1,arg2);
-		}
-		[SmokeMethod("operator>>(QDataStream&, QSize&)")]
-		public static QDataStream op_read(QDataStream arg1, QSize arg2) {
-			return StaticQt().op_read(arg1,arg2);
-		}
-		///<remarks>**************************************************
-		///  QSize inline functions
-		///**************************************************</remarks>		<short>                                                                                QSize inline functions                                                                            </short>
-		[SmokeMethod("operator==(const QSize&, const QSize&)")]
-		public static bool op_equals(QSize s1, QSize s2) {
-			return StaticQt().op_equals(s1,s2);
-		}
-		[SmokeMethod("operator+(const QSize&, const QSize&)")]
-		public static QSize op_plus(QSize s1, QSize s2) {
-			return StaticQt().op_plus(s1,s2);
-		}
-		[SmokeMethod("operator-(const QSize&, const QSize&)")]
-		public static QSize op_minus(QSize s1, QSize s2) {
-			return StaticQt().op_minus(s1,s2);
-		}
-		[SmokeMethod("operator*(const QSize&, qreal)")]
-		public static QSize op_mult(QSize s, double c) {
-			return StaticQt().op_mult(s,c);
-		}
-		[SmokeMethod("operator*(qreal, const QSize&)")]
-		public static QSize op_mult(double c, QSize s) {
-			return StaticQt().op_mult(c,s);
-		}
-		[SmokeMethod("operator/(const QSize&, qreal)")]
-		public static QSize op_div(QSize s, double c) {
-			return StaticQt().op_div(s,c);
-		}
-		///<remarks>**************************************************
-		///  QSizeF stream functions
-		///**************************************************</remarks>		<short>                                                                                QSizeF stream functions                                                                            </short>
-		[SmokeMethod("operator<<(QDataStream&, const QSizeF&)")]
-		public static QDataStream op_write(QDataStream arg1, QSizeF arg2) {
-			return StaticQt().op_write(arg1,arg2);
-		}
-		[SmokeMethod("operator>>(QDataStream&, QSizeF&)")]
-		public static QDataStream op_read(QDataStream arg1, QSizeF arg2) {
-			return StaticQt().op_read(arg1,arg2);
-		}
-		///<remarks>**************************************************
-		///  QSizeF inline functions
-		///**************************************************</remarks>		<short>                                                                                QSizeF inline functions                                                                            </short>
-		[SmokeMethod("operator==(const QSizeF&, const QSizeF&)")]
-		public static bool op_equals(QSizeF s1, QSizeF s2) {
-			return StaticQt().op_equals(s1,s2);
-		}
-		[SmokeMethod("operator+(const QSizeF&, const QSizeF&)")]
-		public static QSizeF op_plus(QSizeF s1, QSizeF s2) {
-			return StaticQt().op_plus(s1,s2);
-		}
-		[SmokeMethod("operator-(const QSizeF&, const QSizeF&)")]
-		public static QSizeF op_minus(QSizeF s1, QSizeF s2) {
-			return StaticQt().op_minus(s1,s2);
-		}
-		[SmokeMethod("operator*(const QSizeF&, qreal)")]
-		public static QSizeF op_mult(QSizeF s, double c) {
-			return StaticQt().op_mult(s,c);
-		}
-		[SmokeMethod("operator*(qreal, const QSizeF&)")]
-		public static QSizeF op_mult(double c, QSizeF s) {
-			return StaticQt().op_mult(c,s);
-		}
-		[SmokeMethod("operator/(const QSizeF&, qreal)")]
-		public static QSizeF op_div(QSizeF s, double c) {
-			return StaticQt().op_div(s,c);
-		}
-		[SmokeMethod("operator>>(QDataStream&, QStringList&)")]
-		public static QDataStream op_read(QDataStream arg1, List<string> list) {
-			return StaticQt().op_read(arg1,list);
-		}
-		[SmokeMethod("operator<<(QDataStream&, const QStringList&)")]
-		public static QDataStream op_write(QDataStream arg1, List<string> list) {
-			return StaticQt().op_write(arg1,list);
 		}
 	}
 }

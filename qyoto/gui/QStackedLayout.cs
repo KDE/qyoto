@@ -29,6 +29,7 @@ namespace Qyoto {
 			return (IQStackedLayoutProxy) _staticInterceptor;
 		}
 
+		[Q_PROPERTY("int", "currentIndex")]
 		public int CurrentIndex {
 			get {
 				return Property("currentIndex").Value<int>();
@@ -110,6 +111,7 @@ namespace Qyoto {
 		public new void SetGeometry(QRect rect) {
 			ProxyQStackedLayout().SetGeometry(rect);
 		}
+		[Q_SLOT("void setCurrentWidget(QWidget*)")]
 		[SmokeMethod("setCurrentWidget(QWidget*)")]
 		public void SetCurrentWidget(QWidget w) {
 			ProxyQStackedLayout().SetCurrentWidget(w);

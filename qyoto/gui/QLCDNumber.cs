@@ -40,6 +40,7 @@ namespace Qyoto {
 			Filled = 1,
 			Flat = 2,
 		}
+		[Q_PROPERTY("bool", "smallDecimalPoint")]
 		public bool SmallDecimalPoint {
 			get {
 				return Property("smallDecimalPoint").Value<bool>();
@@ -48,6 +49,7 @@ namespace Qyoto {
 				SetProperty("smallDecimalPoint", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("int", "numDigits")]
 		public int NumDigits {
 			get {
 				return Property("numDigits").Value<int>();
@@ -56,6 +58,7 @@ namespace Qyoto {
 				SetProperty("numDigits", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("QLCDNumber::Mode", "mode")]
 		public QLCDNumber.Mode mode {
 			get {
 				return Property("mode").Value<QLCDNumber.Mode>();
@@ -64,6 +67,7 @@ namespace Qyoto {
 				SetProperty("mode", QVariant.FromValue<QLCDNumber.Mode>(value));
 			}
 		}
+		[Q_PROPERTY("QLCDNumber::SegmentStyle", "segmentStyle")]
 		public QLCDNumber.SegmentStyle segmentStyle {
 			get {
 				return Property("segmentStyle").Value<QLCDNumber.SegmentStyle>();
@@ -72,6 +76,7 @@ namespace Qyoto {
 				SetProperty("segmentStyle", QVariant.FromValue<QLCDNumber.SegmentStyle>(value));
 			}
 		}
+		[Q_PROPERTY("double", "value")]
 		public double Value {
 			get {
 				return Property("value").Value<double>();
@@ -80,6 +85,7 @@ namespace Qyoto {
 				SetProperty("value", QVariant.FromValue<double>(value));
 			}
 		}
+		[Q_PROPERTY("int", "intValue")]
 		public int IntValue {
 			get {
 				return Property("intValue").Value<int>();
@@ -133,30 +139,37 @@ namespace Qyoto {
 		public new QSize SizeHint() {
 			return ProxyQLCDNumber().SizeHint();
 		}
+		[Q_SLOT("void display(const QString&)")]
 		[SmokeMethod("display(const QString&)")]
 		public void Display(string str) {
 			ProxyQLCDNumber().Display(str);
 		}
+		[Q_SLOT("void display(int)")]
 		[SmokeMethod("display(int)")]
 		public void Display(int num) {
 			ProxyQLCDNumber().Display(num);
 		}
+		[Q_SLOT("void display(double)")]
 		[SmokeMethod("display(double)")]
 		public void Display(double num) {
 			ProxyQLCDNumber().Display(num);
 		}
+		[Q_SLOT("void setHexMode()")]
 		[SmokeMethod("setHexMode()")]
 		public void SetHexMode() {
 			ProxyQLCDNumber().SetHexMode();
 		}
+		[Q_SLOT("void setDecMode()")]
 		[SmokeMethod("setDecMode()")]
 		public void SetDecMode() {
 			ProxyQLCDNumber().SetDecMode();
 		}
+		[Q_SLOT("void setOctMode()")]
 		[SmokeMethod("setOctMode()")]
 		public void SetOctMode() {
 			ProxyQLCDNumber().SetOctMode();
 		}
+		[Q_SLOT("void setBinMode()")]
 		[SmokeMethod("setBinMode()")]
 		public void SetBinMode() {
 			ProxyQLCDNumber().SetBinMode();

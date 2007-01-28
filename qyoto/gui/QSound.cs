@@ -67,10 +67,12 @@ namespace Qyoto {
 		public bool IsFinished() {
 			return ProxyQSound().IsFinished();
 		}
+		[Q_SLOT("void play()")]
 		[SmokeMethod("play()")]
 		public void Play() {
 			ProxyQSound().Play();
 		}
+		[Q_SLOT("void stop()")]
 		[SmokeMethod("stop()")]
 		public void Stop() {
 			ProxyQSound().Stop();

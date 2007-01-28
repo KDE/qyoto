@@ -46,6 +46,7 @@ namespace Qyoto {
 			Shadow_Mask = 0x00f0,
 			Shape_Mask = 0x000f,
 		}
+		[Q_PROPERTY("QFrame::Shape", "frameShape")]
 		public QFrame.Shape FrameShape {
 			get {
 				return Property("frameShape").Value<QFrame.Shape>();
@@ -54,6 +55,7 @@ namespace Qyoto {
 				SetProperty("frameShape", QVariant.FromValue<QFrame.Shape>(value));
 			}
 		}
+		[Q_PROPERTY("QFrame::Shadow", "frameShadow")]
 		public QFrame.Shadow FrameShadow {
 			get {
 				return Property("frameShadow").Value<QFrame.Shadow>();
@@ -62,6 +64,7 @@ namespace Qyoto {
 				SetProperty("frameShadow", QVariant.FromValue<QFrame.Shadow>(value));
 			}
 		}
+		[Q_PROPERTY("int", "lineWidth")]
 		public int LineWidth {
 			get {
 				return Property("lineWidth").Value<int>();
@@ -70,6 +73,7 @@ namespace Qyoto {
 				SetProperty("lineWidth", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("int", "midLineWidth")]
 		public int MidLineWidth {
 			get {
 				return Property("midLineWidth").Value<int>();
@@ -78,11 +82,13 @@ namespace Qyoto {
 				SetProperty("midLineWidth", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("int", "frameWidth")]
 		public int FrameWidth {
 			get {
 				return Property("frameWidth").Value<int>();
 			}
 		}
+		[Q_PROPERTY("QRect", "frameRect")]
 		public QRect FrameRect {
 			get {
 				return Property("frameRect").Value<QRect>();

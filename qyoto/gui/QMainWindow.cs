@@ -29,6 +29,7 @@ namespace Qyoto {
 			return (IQMainWindowProxy) _staticInterceptor;
 		}
 
+		[Q_PROPERTY("QSize", "iconSize")]
 		public QSize IconSize {
 			get {
 				return Property("iconSize").Value<QSize>();
@@ -37,6 +38,7 @@ namespace Qyoto {
 				SetProperty("iconSize", QVariant.FromValue<QSize>(value));
 			}
 		}
+		[Q_PROPERTY("Qt::ToolButtonStyle", "toolButtonStyle")]
 		public Qt.ToolButtonStyle ToolButtonStyle {
 			get {
 				return Property("toolButtonStyle").Value<Qt.ToolButtonStyle>();
@@ -45,6 +47,7 @@ namespace Qyoto {
 				SetProperty("toolButtonStyle", QVariant.FromValue<Qt.ToolButtonStyle>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "animated")]
 		public bool Animated {
 			get {
 				return Property("animated").Value<bool>();
@@ -53,6 +56,7 @@ namespace Qyoto {
 				SetProperty("animated", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "dockNestingEnabled")]
 		public bool DockNestingEnabled {
 			get {
 				return Property("dockNestingEnabled").Value<bool>();

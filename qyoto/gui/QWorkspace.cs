@@ -34,6 +34,7 @@ namespace Qyoto {
 			CreationOrder = 0,
 			StackingOrder = 1,
 		}
+		[Q_PROPERTY("bool", "scrollBarsEnabled")]
 		public bool ScrollBarsEnabled {
 			get {
 				return Property("scrollBarsEnabled").Value<bool>();
@@ -42,6 +43,7 @@ namespace Qyoto {
 				SetProperty("scrollBarsEnabled", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("QBrush", "background")]
 		public QBrush Background {
 			get {
 				return Property("background").Value<QBrush>();
@@ -91,34 +93,42 @@ namespace Qyoto {
 		public new QSize SizeHint() {
 			return ProxyQWorkspace().SizeHint();
 		}
+		[Q_SLOT("void setActiveWindow(QWidget*)")]
 		[SmokeMethod("setActiveWindow(QWidget*)")]
 		public void SetActiveWindow(QWidget w) {
 			ProxyQWorkspace().SetActiveWindow(w);
 		}
+		[Q_SLOT("void cascade()")]
 		[SmokeMethod("cascade()")]
 		public void Cascade() {
 			ProxyQWorkspace().Cascade();
 		}
+		[Q_SLOT("void tile()")]
 		[SmokeMethod("tile()")]
 		public void Tile() {
 			ProxyQWorkspace().Tile();
 		}
+		[Q_SLOT("void arrangeIcons()")]
 		[SmokeMethod("arrangeIcons()")]
 		public void ArrangeIcons() {
 			ProxyQWorkspace().ArrangeIcons();
 		}
+		[Q_SLOT("void closeActiveWindow()")]
 		[SmokeMethod("closeActiveWindow()")]
 		public void CloseActiveWindow() {
 			ProxyQWorkspace().CloseActiveWindow();
 		}
+		[Q_SLOT("void closeAllWindows()")]
 		[SmokeMethod("closeAllWindows()")]
 		public void CloseAllWindows() {
 			ProxyQWorkspace().CloseAllWindows();
 		}
+		[Q_SLOT("void activateNextWindow()")]
 		[SmokeMethod("activateNextWindow()")]
 		public void ActivateNextWindow() {
 			ProxyQWorkspace().ActivateNextWindow();
 		}
+		[Q_SLOT("void activatePreviousWindow()")]
 		[SmokeMethod("activatePreviousWindow()")]
 		public void ActivatePreviousWindow() {
 			ProxyQWorkspace().ActivatePreviousWindow();

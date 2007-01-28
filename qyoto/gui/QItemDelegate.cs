@@ -28,6 +28,7 @@ namespace Qyoto {
 			return (IQItemDelegateProxy) _staticInterceptor;
 		}
 
+		[Q_PROPERTY("bool", "clipping")]
 		public bool Clipping {
 			get {
 				return Property("clipping").Value<bool>();

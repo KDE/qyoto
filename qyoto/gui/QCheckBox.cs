@@ -29,6 +29,7 @@ namespace Qyoto {
 			return (IQCheckBoxProxy) _staticInterceptor;
 		}
 
+		[Q_PROPERTY("bool", "tristate")]
 		public bool Tristate {
 			get {
 				return Property("tristate").Value<bool>();

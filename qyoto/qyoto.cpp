@@ -1218,7 +1218,7 @@ void* make_metaObject(void* obj, const char* stringdata, int stringdata_count, c
 	QMetaObject* meta = new QMetaObject;
 	*meta = tmp;
 
-#ifdef DEBUG
+// #ifdef DEBUG
 	printf("make_metaObject() superdata: %p %s\n", meta->d.superdata, parent->className());
 	printf("stringdata: ");
 	for (int j = 0; j < stringdata_count; j++) {
@@ -1235,7 +1235,7 @@ void* make_metaObject(void* obj, const char* stringdata, int stringdata_count, c
 		printf("%d, ", my_data[i]);
 	}
 	printf("\n");
-#endif
+// #endif
 	
 	// create smoke object
 	smokeqyoto_object  * m = alloc_smokeqyoto_object(	true, 

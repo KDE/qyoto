@@ -43,6 +43,7 @@ namespace Qyoto {
 			Trigger = 0,
 			Hover = 1,
 		}
+		[Q_PROPERTY("bool", "checkable")]
 		public bool Checkable {
 			get {
 				return Property("checkable").Value<bool>();
@@ -51,6 +52,7 @@ namespace Qyoto {
 				SetProperty("checkable", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "checked")]
 		public bool Checked {
 			get {
 				return Property("checked").Value<bool>();
@@ -59,6 +61,7 @@ namespace Qyoto {
 				SetProperty("checked", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "enabled")]
 		public bool Enabled {
 			get {
 				return Property("enabled").Value<bool>();
@@ -67,6 +70,7 @@ namespace Qyoto {
 				SetProperty("enabled", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("QIcon", "icon")]
 		public QIcon Icon {
 			get {
 				return Property("icon").Value<QIcon>();
@@ -75,6 +79,7 @@ namespace Qyoto {
 				SetProperty("icon", QVariant.FromValue<QIcon>(value));
 			}
 		}
+		[Q_PROPERTY("QString", "text")]
 		public string Text {
 			get {
 				return Property("text").Value<string>();
@@ -83,6 +88,7 @@ namespace Qyoto {
 				SetProperty("text", QVariant.FromValue<string>(value));
 			}
 		}
+		[Q_PROPERTY("QString", "iconText")]
 		public string IconText {
 			get {
 				return Property("iconText").Value<string>();
@@ -91,6 +97,7 @@ namespace Qyoto {
 				SetProperty("iconText", QVariant.FromValue<string>(value));
 			}
 		}
+		[Q_PROPERTY("QString", "toolTip")]
 		public string ToolTip {
 			get {
 				return Property("toolTip").Value<string>();
@@ -99,6 +106,7 @@ namespace Qyoto {
 				SetProperty("toolTip", QVariant.FromValue<string>(value));
 			}
 		}
+		[Q_PROPERTY("QString", "statusTip")]
 		public string StatusTip {
 			get {
 				return Property("statusTip").Value<string>();
@@ -107,6 +115,7 @@ namespace Qyoto {
 				SetProperty("statusTip", QVariant.FromValue<string>(value));
 			}
 		}
+		[Q_PROPERTY("QString", "whatsThis")]
 		public string WhatsThis {
 			get {
 				return Property("whatsThis").Value<string>();
@@ -115,6 +124,7 @@ namespace Qyoto {
 				SetProperty("whatsThis", QVariant.FromValue<string>(value));
 			}
 		}
+		[Q_PROPERTY("QFont", "font")]
 		public QFont Font {
 			get {
 				return Property("font").Value<QFont>();
@@ -123,6 +133,7 @@ namespace Qyoto {
 				SetProperty("font", QVariant.FromValue<QFont>(value));
 			}
 		}
+		[Q_PROPERTY("QKeySequence", "shortcut")]
 		public QKeySequence Shortcut {
 			get {
 				return Property("shortcut").Value<QKeySequence>();
@@ -131,6 +142,7 @@ namespace Qyoto {
 				SetProperty("shortcut", QVariant.FromValue<QKeySequence>(value));
 			}
 		}
+		[Q_PROPERTY("Qt::ShortcutContext", "shortcutContext")]
 		public Qt.ShortcutContext ShortcutContext {
 			get {
 				return Property("shortcutContext").Value<Qt.ShortcutContext>();
@@ -139,6 +151,7 @@ namespace Qyoto {
 				SetProperty("shortcutContext", QVariant.FromValue<Qt.ShortcutContext>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "autoRepeat")]
 		public bool AutoRepeat {
 			get {
 				return Property("autoRepeat").Value<bool>();
@@ -147,6 +160,7 @@ namespace Qyoto {
 				SetProperty("autoRepeat", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "visible")]
 		public bool Visible {
 			get {
 				return Property("visible").Value<bool>();
@@ -155,6 +169,7 @@ namespace Qyoto {
 				SetProperty("visible", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("QAction::MenuRole", "menuRole")]
 		public QAction.MenuRole menuRole {
 			get {
 				return Property("menuRole").Value<QAction.MenuRole>();
@@ -268,18 +283,22 @@ namespace Qyoto {
 		public List<QWidget> AssociatedWidgets() {
 			return ProxyQAction().AssociatedWidgets();
 		}
+		[Q_SLOT("void trigger()")]
 		[SmokeMethod("trigger()")]
 		public void Trigger() {
 			ProxyQAction().Trigger();
 		}
+		[Q_SLOT("void hover()")]
 		[SmokeMethod("hover()")]
 		public void Hover() {
 			ProxyQAction().Hover();
 		}
+		[Q_SLOT("void toggle()")]
 		[SmokeMethod("toggle()")]
 		public void Toggle() {
 			ProxyQAction().Toggle();
 		}
+		[Q_SLOT("void setDisabled(bool)")]
 		[SmokeMethod("setDisabled(bool)")]
 		public void SetDisabled(bool b) {
 			ProxyQAction().SetDisabled(b);

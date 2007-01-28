@@ -247,10 +247,12 @@ namespace Qyoto {
 		public new bool AtEnd() {
 			return ProxyQProcess().AtEnd();
 		}
+		[Q_SLOT("void terminate()")]
 		[SmokeMethod("terminate()")]
 		public void Terminate() {
 			ProxyQProcess().Terminate();
 		}
+		[Q_SLOT("void kill()")]
 		[SmokeMethod("kill()")]
 		public void Kill() {
 			ProxyQProcess().Kill();

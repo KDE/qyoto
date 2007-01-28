@@ -29,6 +29,7 @@ namespace Qyoto {
 			return (IQToolBoxProxy) _staticInterceptor;
 		}
 
+		[Q_PROPERTY("int", "currentIndex")]
 		public int CurrentIndex {
 			get {
 				return Property("currentIndex").Value<int>();
@@ -37,6 +38,7 @@ namespace Qyoto {
 				SetProperty("currentIndex", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("int", "count")]
 		public int Count {
 			get {
 				return Property("count").Value<int>();
@@ -131,6 +133,7 @@ namespace Qyoto {
 		public int IndexOf(QWidget widget) {
 			return ProxyQToolBox().IndexOf(widget);
 		}
+		[Q_SLOT("void setCurrentWidget(QWidget*)")]
 		[SmokeMethod("setCurrentWidget(QWidget*)")]
 		public void SetCurrentWidget(QWidget widget) {
 			ProxyQToolBox().SetCurrentWidget(widget);

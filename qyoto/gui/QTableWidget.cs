@@ -30,6 +30,7 @@ namespace Qyoto {
 			return (IQTableWidgetProxy) _staticInterceptor;
 		}
 
+		[Q_PROPERTY("int", "rowCount")]
 		public int RowCount {
 			get {
 				return Property("rowCount").Value<int>();
@@ -38,6 +39,7 @@ namespace Qyoto {
 				SetProperty("rowCount", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("int", "columnCount")]
 		public int ColumnCount {
 			get {
 				return Property("columnCount").Value<int>();
@@ -239,34 +241,42 @@ namespace Qyoto {
 		public void SetItemPrototype(QTableWidgetItem item) {
 			ProxyQTableWidget().SetItemPrototype(item);
 		}
+		[Q_SLOT("void scrollToItem(const QTableWidgetItem*, QAbstractItemView::ScrollHint)")]
 		[SmokeMethod("scrollToItem(const QTableWidgetItem*, QAbstractItemView::ScrollHint)")]
 		public void ScrollToItem(QTableWidgetItem item, QAbstractItemView.ScrollHint hint) {
 			ProxyQTableWidget().ScrollToItem(item,hint);
 		}
+		[Q_SLOT("void scrollToItem(const QTableWidgetItem*)")]
 		[SmokeMethod("scrollToItem(const QTableWidgetItem*)")]
 		public void ScrollToItem(QTableWidgetItem item) {
 			ProxyQTableWidget().ScrollToItem(item);
 		}
+		[Q_SLOT("void insertRow(int)")]
 		[SmokeMethod("insertRow(int)")]
 		public void InsertRow(int row) {
 			ProxyQTableWidget().InsertRow(row);
 		}
+		[Q_SLOT("void insertColumn(int)")]
 		[SmokeMethod("insertColumn(int)")]
 		public void InsertColumn(int column) {
 			ProxyQTableWidget().InsertColumn(column);
 		}
+		[Q_SLOT("void removeRow(int)")]
 		[SmokeMethod("removeRow(int)")]
 		public void RemoveRow(int row) {
 			ProxyQTableWidget().RemoveRow(row);
 		}
+		[Q_SLOT("void removeColumn(int)")]
 		[SmokeMethod("removeColumn(int)")]
 		public void RemoveColumn(int column) {
 			ProxyQTableWidget().RemoveColumn(column);
 		}
+		[Q_SLOT("void clear()")]
 		[SmokeMethod("clear()")]
 		public void Clear() {
 			ProxyQTableWidget().Clear();
 		}
+		[Q_SLOT("void clearContents()")]
 		[SmokeMethod("clearContents()")]
 		public void ClearContents() {
 			ProxyQTableWidget().ClearContents();

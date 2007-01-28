@@ -46,6 +46,7 @@ namespace Qyoto {
 		private void NewQErrorMessage() {
 			ProxyQErrorMessage().NewQErrorMessage();
 		}
+		[Q_SLOT("void showMessage(const QString&)")]
 		[SmokeMethod("showMessage(const QString&)")]
 		public void ShowMessage(string message) {
 			ProxyQErrorMessage().ShowMessage(message);

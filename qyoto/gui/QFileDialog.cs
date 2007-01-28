@@ -85,6 +85,7 @@ namespace Qyoto {
 			DontUseSheet = 0x08,
 			DontUseNativeDialog = 0x10,
 		}
+		[Q_PROPERTY("QFileDialog::ViewMode", "viewMode")]
 		public QFileDialog.ViewMode viewMode {
 			get {
 				return Property("viewMode").Value<QFileDialog.ViewMode>();
@@ -93,6 +94,7 @@ namespace Qyoto {
 				SetProperty("viewMode", QVariant.FromValue<QFileDialog.ViewMode>(value));
 			}
 		}
+		[Q_PROPERTY("QFileDialog::FileMode", "fileMode")]
 		public QFileDialog.FileMode fileMode {
 			get {
 				return Property("fileMode").Value<QFileDialog.FileMode>();
@@ -101,6 +103,7 @@ namespace Qyoto {
 				SetProperty("fileMode", QVariant.FromValue<QFileDialog.FileMode>(value));
 			}
 		}
+		[Q_PROPERTY("QFileDialog::AcceptMode", "acceptMode")]
 		public QFileDialog.AcceptMode acceptMode {
 			get {
 				return Property("acceptMode").Value<QFileDialog.AcceptMode>();
@@ -109,6 +112,7 @@ namespace Qyoto {
 				SetProperty("acceptMode", QVariant.FromValue<QFileDialog.AcceptMode>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "readOnly")]
 		public bool ReadOnly {
 			get {
 				return Property("readOnly").Value<bool>();
@@ -117,6 +121,7 @@ namespace Qyoto {
 				SetProperty("readOnly", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "resolveSymlinks")]
 		public bool ResolveSymlinks {
 			get {
 				return Property("resolveSymlinks").Value<bool>();
@@ -125,6 +130,7 @@ namespace Qyoto {
 				SetProperty("resolveSymlinks", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "confirmOverwrite")]
 		public bool ConfirmOverwrite {
 			get {
 				return Property("confirmOverwrite").Value<bool>();
@@ -133,6 +139,7 @@ namespace Qyoto {
 				SetProperty("confirmOverwrite", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("QString", "defaultSuffix")]
 		public string DefaultSuffix {
 			get {
 				return Property("defaultSuffix").Value<string>();

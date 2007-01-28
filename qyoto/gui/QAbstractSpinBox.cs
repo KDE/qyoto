@@ -42,6 +42,7 @@ namespace Qyoto {
 			CorrectToPreviousValue = 0,
 			CorrectToNearestValue = 1,
 		}
+		[Q_PROPERTY("bool", "wrapping")]
 		public bool Wrapping {
 			get {
 				return Property("wrapping").Value<bool>();
@@ -50,6 +51,7 @@ namespace Qyoto {
 				SetProperty("wrapping", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "frame")]
 		public bool Frame {
 			get {
 				return Property("frame").Value<bool>();
@@ -58,6 +60,7 @@ namespace Qyoto {
 				SetProperty("frame", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("Qt::Alignment", "alignment")]
 		public int Alignment {
 			get {
 				return Property("alignment").Value<int>();
@@ -66,6 +69,7 @@ namespace Qyoto {
 				SetProperty("alignment", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "readOnly")]
 		public bool ReadOnly {
 			get {
 				return Property("readOnly").Value<bool>();
@@ -74,6 +78,7 @@ namespace Qyoto {
 				SetProperty("readOnly", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("QAbstractSpinBox::ButtonSymbols", "buttonSymbols")]
 		public QAbstractSpinBox.ButtonSymbols buttonSymbols {
 			get {
 				return Property("buttonSymbols").Value<QAbstractSpinBox.ButtonSymbols>();
@@ -82,6 +87,7 @@ namespace Qyoto {
 				SetProperty("buttonSymbols", QVariant.FromValue<QAbstractSpinBox.ButtonSymbols>(value));
 			}
 		}
+		[Q_PROPERTY("QString", "specialValueText")]
 		public string SpecialValueText {
 			get {
 				return Property("specialValueText").Value<string>();
@@ -90,11 +96,13 @@ namespace Qyoto {
 				SetProperty("specialValueText", QVariant.FromValue<string>(value));
 			}
 		}
+		[Q_PROPERTY("QString", "text")]
 		public string Text {
 			get {
 				return Property("text").Value<string>();
 			}
 		}
+		[Q_PROPERTY("bool", "accelerated")]
 		public bool Accelerated {
 			get {
 				return Property("accelerated").Value<bool>();
@@ -103,6 +111,7 @@ namespace Qyoto {
 				SetProperty("accelerated", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("QAbstractSpinBox::CorrectionMode", "correctionMode")]
 		public QAbstractSpinBox.CorrectionMode correctionMode {
 			get {
 				return Property("correctionMode").Value<QAbstractSpinBox.CorrectionMode>();
@@ -111,6 +120,7 @@ namespace Qyoto {
 				SetProperty("correctionMode", QVariant.FromValue<QAbstractSpinBox.CorrectionMode>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "acceptableInput")]
 		public bool AcceptableInput {
 			get {
 				return Property("acceptableInput").Value<bool>();
@@ -177,18 +187,22 @@ namespace Qyoto {
 		public virtual void StepBy(int steps) {
 			ProxyQAbstractSpinBox().StepBy(steps);
 		}
+		[Q_SLOT("void stepUp()")]
 		[SmokeMethod("stepUp()")]
 		public void StepUp() {
 			ProxyQAbstractSpinBox().StepUp();
 		}
+		[Q_SLOT("void stepDown()")]
 		[SmokeMethod("stepDown()")]
 		public void StepDown() {
 			ProxyQAbstractSpinBox().StepDown();
 		}
+		[Q_SLOT("void selectAll()")]
 		[SmokeMethod("selectAll()")]
 		public void SelectAll() {
 			ProxyQAbstractSpinBox().SelectAll();
 		}
+		[Q_SLOT("void clear()")]
 		[SmokeMethod("clear()")]
 		public virtual void Clear() {
 			ProxyQAbstractSpinBox().Clear();

@@ -33,6 +33,7 @@ namespace Qyoto {
 			AutoSubmit = 0,
 			ManualSubmit = 1,
 		}
+		[Q_PROPERTY("int", "currentIndex")]
 		public int CurrentIndex {
 			get {
 				return Property("currentIndex").Value<int>();
@@ -41,6 +42,7 @@ namespace Qyoto {
 				SetProperty("currentIndex", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("Qt::Orientation", "orientation")]
 		public Qt.Orientation Orientation {
 			get {
 				return Property("orientation").Value<Qt.Orientation>();
@@ -49,6 +51,7 @@ namespace Qyoto {
 				SetProperty("orientation", QVariant.FromValue<Qt.Orientation>(value));
 			}
 		}
+		[Q_PROPERTY("QDataWidgetMapper::SubmitPolicy", "submitPolicy")]
 		public QDataWidgetMapper.SubmitPolicy submitPolicy {
 			get {
 				return Property("submitPolicy").Value<QDataWidgetMapper.SubmitPolicy>();
@@ -118,30 +121,37 @@ namespace Qyoto {
 		public void ClearMapping() {
 			ProxyQDataWidgetMapper().ClearMapping();
 		}
+		[Q_SLOT("void revert()")]
 		[SmokeMethod("revert()")]
 		public void Revert() {
 			ProxyQDataWidgetMapper().Revert();
 		}
+		[Q_SLOT("bool submit()")]
 		[SmokeMethod("submit()")]
 		public bool Submit() {
 			return ProxyQDataWidgetMapper().Submit();
 		}
+		[Q_SLOT("void toFirst()")]
 		[SmokeMethod("toFirst()")]
 		public void ToFirst() {
 			ProxyQDataWidgetMapper().ToFirst();
 		}
+		[Q_SLOT("void toLast()")]
 		[SmokeMethod("toLast()")]
 		public void ToLast() {
 			ProxyQDataWidgetMapper().ToLast();
 		}
+		[Q_SLOT("void toNext()")]
 		[SmokeMethod("toNext()")]
 		public void ToNext() {
 			ProxyQDataWidgetMapper().ToNext();
 		}
+		[Q_SLOT("void toPrevious()")]
 		[SmokeMethod("toPrevious()")]
 		public void ToPrevious() {
 			ProxyQDataWidgetMapper().ToPrevious();
 		}
+		[Q_SLOT("void setCurrentModelIndex(const QModelIndex&)")]
 		[SmokeMethod("setCurrentModelIndex(const QModelIndex&)")]
 		public void SetCurrentModelIndex(QModelIndex index) {
 			ProxyQDataWidgetMapper().SetCurrentModelIndex(index);

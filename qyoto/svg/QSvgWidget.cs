@@ -69,10 +69,12 @@ namespace Qyoto {
 		public new QSize SizeHint() {
 			return ProxyQSvgWidget().SizeHint();
 		}
+		[Q_SLOT("void load(const QString&)")]
 		[SmokeMethod("load(const QString&)")]
 		public void Load(string file) {
 			ProxyQSvgWidget().Load(file);
 		}
+		[Q_SLOT("void load(const QByteArray&)")]
 		[SmokeMethod("load(const QByteArray&)")]
 		public void Load(QByteArray contents) {
 			ProxyQSvgWidget().Load(contents);

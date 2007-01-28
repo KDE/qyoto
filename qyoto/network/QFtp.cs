@@ -222,6 +222,7 @@ namespace Qyoto {
 		public string ErrorString() {
 			return ProxyQFtp().ErrorString();
 		}
+		[Q_SLOT("void abort()")]
 		[SmokeMethod("abort()")]
 		public void Abort() {
 			ProxyQFtp().Abort();

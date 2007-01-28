@@ -90,6 +90,7 @@ namespace Qyoto {
 			CustomColor = 1,
 			ManyColor = 2,
 		}
+		[Q_PROPERTY("Qt::LayoutDirection", "layoutDirection")]
 		public Qt.LayoutDirection LayoutDirection {
 			get {
 				return Property("layoutDirection").Value<Qt.LayoutDirection>();
@@ -98,6 +99,7 @@ namespace Qyoto {
 				SetProperty("layoutDirection", QVariant.FromValue<Qt.LayoutDirection>(value));
 			}
 		}
+		[Q_PROPERTY("QIcon", "windowIcon")]
 		public QIcon WindowIcon {
 			get {
 				return Property("windowIcon").Value<QIcon>();
@@ -106,6 +108,7 @@ namespace Qyoto {
 				SetProperty("windowIcon", QVariant.FromValue<QIcon>(value));
 			}
 		}
+		[Q_PROPERTY("int", "cursorFlashTime")]
 		public int CursorFlashTime {
 			get {
 				return Property("cursorFlashTime").Value<int>();
@@ -114,6 +117,7 @@ namespace Qyoto {
 				SetProperty("cursorFlashTime", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("int", "doubleClickInterval")]
 		public int DoubleClickInterval {
 			get {
 				return Property("doubleClickInterval").Value<int>();
@@ -122,6 +126,7 @@ namespace Qyoto {
 				SetProperty("doubleClickInterval", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("int", "keyboardInputInterval")]
 		public int KeyboardInputInterval {
 			get {
 				return Property("keyboardInputInterval").Value<int>();
@@ -130,6 +135,7 @@ namespace Qyoto {
 				SetProperty("keyboardInputInterval", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("int", "wheelScrollLines")]
 		public int WheelScrollLines {
 			get {
 				return Property("wheelScrollLines").Value<int>();
@@ -138,6 +144,7 @@ namespace Qyoto {
 				SetProperty("wheelScrollLines", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("QSize", "globalStrut")]
 		public QSize GlobalStrut {
 			get {
 				return Property("globalStrut").Value<QSize>();
@@ -146,6 +153,7 @@ namespace Qyoto {
 				SetProperty("globalStrut", QVariant.FromValue<QSize>(value));
 			}
 		}
+		[Q_PROPERTY("int", "startDragTime")]
 		public int StartDragTime {
 			get {
 				return Property("startDragTime").Value<int>();
@@ -154,6 +162,7 @@ namespace Qyoto {
 				SetProperty("startDragTime", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("int", "startDragDistance")]
 		public int StartDragDistance {
 			get {
 				return Property("startDragDistance").Value<int>();
@@ -162,6 +171,7 @@ namespace Qyoto {
 				SetProperty("startDragDistance", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "quitOnLastWindowClosed")]
 		public bool QuitOnLastWindowClosed {
 			get {
 				return Property("quitOnLastWindowClosed").Value<bool>();
@@ -170,6 +180,7 @@ namespace Qyoto {
 				SetProperty("quitOnLastWindowClosed", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("QString", "styleSheet")]
 		public string StyleSheet {
 			get {
 				return Property("styleSheet").Value<string>();
@@ -413,10 +424,12 @@ namespace Qyoto {
 			Qyoto.DeleteQApp();
 			return ret;
 		}
+		[Q_SLOT("void closeAllWindows()")]
 		[SmokeMethod("closeAllWindows()")]
 		public static void CloseAllWindows() {
 			StaticQApplication().CloseAllWindows();
 		}
+		[Q_SLOT("void aboutQt()")]
 		[SmokeMethod("aboutQt()")]
 		public static void AboutQt() {
 			StaticQApplication().AboutQt();

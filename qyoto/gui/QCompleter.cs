@@ -40,6 +40,7 @@ namespace Qyoto {
 			CaseSensitivelySortedModel = 1,
 			CaseInsensitivelySortedModel = 2,
 		}
+		[Q_PROPERTY("QString", "completionPrefix")]
 		public string CompletionPrefix {
 			get {
 				return Property("completionPrefix").Value<string>();
@@ -48,6 +49,7 @@ namespace Qyoto {
 				SetProperty("completionPrefix", QVariant.FromValue<string>(value));
 			}
 		}
+		[Q_PROPERTY("QCompleter::ModelSorting", "modelSorting")]
 		public QCompleter.ModelSorting modelSorting {
 			get {
 				return Property("modelSorting").Value<QCompleter.ModelSorting>();
@@ -56,6 +58,7 @@ namespace Qyoto {
 				SetProperty("modelSorting", QVariant.FromValue<QCompleter.ModelSorting>(value));
 			}
 		}
+		[Q_PROPERTY("QCompleter::CompletionMode", "completionMode")]
 		public QCompleter.CompletionMode completionMode {
 			get {
 				return Property("completionMode").Value<QCompleter.CompletionMode>();
@@ -64,6 +67,7 @@ namespace Qyoto {
 				SetProperty("completionMode", QVariant.FromValue<QCompleter.CompletionMode>(value));
 			}
 		}
+		[Q_PROPERTY("int", "completionColumn")]
 		public int CompletionColumn {
 			get {
 				return Property("completionColumn").Value<int>();
@@ -72,6 +76,7 @@ namespace Qyoto {
 				SetProperty("completionColumn", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("int", "completionRole")]
 		public int CompletionRole {
 			get {
 				return Property("completionRole").Value<int>();
@@ -80,6 +85,7 @@ namespace Qyoto {
 				SetProperty("completionRole", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("Qt::CaseSensitivity", "caseSensitivity")]
 		public Qt.CaseSensitivity CaseSensitivity {
 			get {
 				return Property("caseSensitivity").Value<Qt.CaseSensitivity>();
@@ -185,14 +191,6 @@ namespace Qyoto {
 		public QAbstractItemModel CompletionModel() {
 			return ProxyQCompleter().CompletionModel();
 		}
-		[SmokeMethod("complete(const QRect&)")]
-		public void Complete(QRect rect) {
-			ProxyQCompleter().Complete(rect);
-		}
-		[SmokeMethod("complete()")]
-		public void Complete() {
-			ProxyQCompleter().Complete();
-		}
 		[SmokeMethod("pathFromIndex(const QModelIndex&) const")]
 		public virtual string PathFromIndex(QModelIndex index) {
 			return ProxyQCompleter().PathFromIndex(index);
@@ -200,6 +198,16 @@ namespace Qyoto {
 		[SmokeMethod("splitPath(const QString&) const")]
 		public virtual List<string> SplitPath(string path) {
 			return ProxyQCompleter().SplitPath(path);
+		}
+		[Q_SLOT("void complete(const QRect&)")]
+		[SmokeMethod("complete(const QRect&)")]
+		public void Complete(QRect rect) {
+			ProxyQCompleter().Complete(rect);
+		}
+		[Q_SLOT("void complete()")]
+		[SmokeMethod("complete()")]
+		public void Complete() {
+			ProxyQCompleter().Complete();
 		}
 		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {

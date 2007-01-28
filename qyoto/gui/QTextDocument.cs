@@ -43,6 +43,7 @@ namespace Qyoto {
 			StyleSheetResource = 3,
 			UserResource = 100,
 		}
+		[Q_PROPERTY("bool", "undoRedoEnabled")]
 		public bool UndoRedoEnabled {
 			get {
 				return Property("undoRedoEnabled").Value<bool>();
@@ -51,6 +52,7 @@ namespace Qyoto {
 				SetProperty("undoRedoEnabled", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "modified")]
 		public bool Modified {
 			get {
 				return Property("modified").Value<bool>();
@@ -59,6 +61,7 @@ namespace Qyoto {
 				SetProperty("modified", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("QSizeF", "pageSize")]
 		public QSizeF PageSize {
 			get {
 				return Property("pageSize").Value<QSizeF>();
@@ -67,6 +70,7 @@ namespace Qyoto {
 				SetProperty("pageSize", QVariant.FromValue<QSizeF>(value));
 			}
 		}
+		[Q_PROPERTY("QFont", "defaultFont")]
 		public QFont DefaultFont {
 			get {
 				return Property("defaultFont").Value<QFont>();
@@ -75,6 +79,7 @@ namespace Qyoto {
 				SetProperty("defaultFont", QVariant.FromValue<QFont>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "useDesignMetrics")]
 		public bool UseDesignMetrics {
 			get {
 				return Property("useDesignMetrics").Value<bool>();
@@ -83,11 +88,13 @@ namespace Qyoto {
 				SetProperty("useDesignMetrics", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("QSizeF", "size")]
 		public QSizeF Size {
 			get {
 				return Property("size").Value<QSizeF>();
 			}
 		}
+		[Q_PROPERTY("qreal", "textWidth")]
 		public double TextWidth {
 			get {
 				return Property("textWidth").Value<double>();
@@ -96,11 +103,13 @@ namespace Qyoto {
 				SetProperty("textWidth", QVariant.FromValue<double>(value));
 			}
 		}
+		[Q_PROPERTY("int", "blockCount")]
 		public int BlockCount {
 			get {
 				return Property("blockCount").Value<int>();
 			}
 		}
+		[Q_PROPERTY("QString", "defaultStyleSheet")]
 		public string DefaultStyleSheet {
 			get {
 				return Property("defaultStyleSheet").Value<string>();
@@ -109,6 +118,7 @@ namespace Qyoto {
 				SetProperty("defaultStyleSheet", QVariant.FromValue<string>(value));
 			}
 		}
+		[Q_PROPERTY("int", "maximumBlockCount")]
 		public int MaximumBlockCount {
 			get {
 				return Property("maximumBlockCount").Value<int>();
@@ -252,16 +262,18 @@ namespace Qyoto {
 		}
 		// void undo(QTextCursor* arg1); >>>> NOT CONVERTED
 		// void redo(QTextCursor* arg1); >>>> NOT CONVERTED
+		// QTextDocumentPrivate* docHandle(); >>>> NOT CONVERTED
+		[Q_SLOT("void undo()")]
 		[SmokeMethod("undo()")]
 		public void Undo() {
 			ProxyQTextDocument().Undo();
 		}
+		[Q_SLOT("void redo()")]
 		[SmokeMethod("redo()")]
 		public void Redo() {
 			ProxyQTextDocument().Redo();
 		}
 		// void appendUndoItem(QAbstractUndoItem* arg1); >>>> NOT CONVERTED
-		// QTextDocumentPrivate* docHandle(); >>>> NOT CONVERTED
 		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQTextDocument().Tr(s,c);

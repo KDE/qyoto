@@ -28,6 +28,7 @@ namespace Qyoto {
 			return (IQUndoViewProxy) _staticInterceptor;
 		}
 
+		[Q_PROPERTY("QString", "emptyLabel")]
 		public string EmptyLabel {
 			get {
 				return Property("emptyLabel").Value<string>();
@@ -36,6 +37,7 @@ namespace Qyoto {
 				SetProperty("emptyLabel", QVariant.FromValue<string>(value));
 			}
 		}
+		[Q_PROPERTY("QIcon", "cleanIcon")]
 		public QIcon CleanIcon {
 			get {
 				return Property("cleanIcon").Value<QIcon>();
@@ -101,10 +103,12 @@ namespace Qyoto {
 		public QUndoGroup Group() {
 			return ProxyQUndoView().Group();
 		}
+		[Q_SLOT("void setStack(QUndoStack*)")]
 		[SmokeMethod("setStack(QUndoStack*)")]
 		public void SetStack(QUndoStack stack) {
 			ProxyQUndoView().SetStack(stack);
 		}
+		[Q_SLOT("void setGroup(QUndoGroup*)")]
 		[SmokeMethod("setGroup(QUndoGroup*)")]
 		public void SetGroup(QUndoGroup group) {
 			ProxyQUndoView().SetGroup(group);

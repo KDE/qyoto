@@ -30,6 +30,7 @@ namespace Qyoto {
 			return (IQStandardItemModelProxy) _staticInterceptor;
 		}
 
+		[Q_PROPERTY("int", "sortRole")]
 		public int SortRole {
 			get {
 				return Property("sortRole").Value<int>();

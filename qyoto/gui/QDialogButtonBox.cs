@@ -72,6 +72,7 @@ namespace Qyoto {
 			KdeLayout = 2,
 			GnomeLayout = 3,
 		}
+		[Q_PROPERTY("Qt::Orientation", "orientation")]
 		public Qt.Orientation Orientation {
 			get {
 				return Property("orientation").Value<Qt.Orientation>();
@@ -80,6 +81,7 @@ namespace Qyoto {
 				SetProperty("orientation", QVariant.FromValue<Qt.Orientation>(value));
 			}
 		}
+		[Q_PROPERTY("StandardButtons", "standardButtons")]
 		public int StandardButtons {
 			get {
 				return Property("standardButtons").Value<int>();
@@ -88,6 +90,7 @@ namespace Qyoto {
 				SetProperty("standardButtons", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "centerButtons")]
 		public bool CenterButtons {
 			get {
 				return Property("centerButtons").Value<bool>();

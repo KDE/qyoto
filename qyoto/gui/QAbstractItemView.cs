@@ -94,6 +94,7 @@ namespace Qyoto {
 			BelowItem = 2,
 			OnViewport = 3,
 		}
+		[Q_PROPERTY("bool", "autoScroll")]
 		public bool AutoScroll {
 			get {
 				return Property("autoScroll").Value<bool>();
@@ -102,6 +103,7 @@ namespace Qyoto {
 				SetProperty("autoScroll", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("EditTriggers", "editTriggers")]
 		public int EditTriggers {
 			get {
 				return Property("editTriggers").Value<int>();
@@ -110,6 +112,7 @@ namespace Qyoto {
 				SetProperty("editTriggers", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "tabKeyNavigation")]
 		public bool TabKeyNavigation {
 			get {
 				return Property("tabKeyNavigation").Value<bool>();
@@ -118,6 +121,7 @@ namespace Qyoto {
 				SetProperty("tabKeyNavigation", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "showDropIndicator")]
 		public bool ShowDropIndicator {
 			get {
 				return Property("showDropIndicator").Value<bool>();
@@ -126,6 +130,7 @@ namespace Qyoto {
 				SetProperty("showDropIndicator", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "dragEnabled")]
 		public bool DragEnabled {
 			get {
 				return Property("dragEnabled").Value<bool>();
@@ -134,6 +139,7 @@ namespace Qyoto {
 				SetProperty("dragEnabled", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "dragDropOverwriteMode")]
 		public bool DragDropOverwriteMode {
 			get {
 				return Property("dragDropOverwriteMode").Value<bool>();
@@ -142,6 +148,7 @@ namespace Qyoto {
 				SetProperty("dragDropOverwriteMode", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("QAbstractItemView::DragDropMode", "dragDropMode")]
 		public QAbstractItemView.DragDropMode dragDropMode {
 			get {
 				return Property("dragDropMode").Value<QAbstractItemView.DragDropMode>();
@@ -150,6 +157,7 @@ namespace Qyoto {
 				SetProperty("dragDropMode", QVariant.FromValue<QAbstractItemView.DragDropMode>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "alternatingRowColors")]
 		public bool AlternatingRowColors {
 			get {
 				return Property("alternatingRowColors").Value<bool>();
@@ -158,6 +166,7 @@ namespace Qyoto {
 				SetProperty("alternatingRowColors", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("QAbstractItemView::SelectionMode", "selectionMode")]
 		public QAbstractItemView.SelectionMode selectionMode {
 			get {
 				return Property("selectionMode").Value<QAbstractItemView.SelectionMode>();
@@ -166,6 +175,7 @@ namespace Qyoto {
 				SetProperty("selectionMode", QVariant.FromValue<QAbstractItemView.SelectionMode>(value));
 			}
 		}
+		[Q_PROPERTY("QAbstractItemView::SelectionBehavior", "selectionBehavior")]
 		public QAbstractItemView.SelectionBehavior selectionBehavior {
 			get {
 				return Property("selectionBehavior").Value<QAbstractItemView.SelectionBehavior>();
@@ -174,6 +184,7 @@ namespace Qyoto {
 				SetProperty("selectionBehavior", QVariant.FromValue<QAbstractItemView.SelectionBehavior>(value));
 			}
 		}
+		[Q_PROPERTY("QSize", "iconSize")]
 		public QSize IconSize {
 			get {
 				return Property("iconSize").Value<QSize>();
@@ -182,6 +193,7 @@ namespace Qyoto {
 				SetProperty("iconSize", QVariant.FromValue<QSize>(value));
 			}
 		}
+		[Q_PROPERTY("Qt::TextElideMode", "textElideMode")]
 		public Qt.TextElideMode TextElideMode {
 			get {
 				return Property("textElideMode").Value<Qt.TextElideMode>();
@@ -190,6 +202,7 @@ namespace Qyoto {
 				SetProperty("textElideMode", QVariant.FromValue<Qt.TextElideMode>(value));
 			}
 		}
+		[Q_PROPERTY("QAbstractItemView::ScrollMode", "verticalScrollMode")]
 		public QAbstractItemView.ScrollMode VerticalScrollMode {
 			get {
 				return Property("verticalScrollMode").Value<QAbstractItemView.ScrollMode>();
@@ -198,6 +211,7 @@ namespace Qyoto {
 				SetProperty("verticalScrollMode", QVariant.FromValue<QAbstractItemView.ScrollMode>(value));
 			}
 		}
+		[Q_PROPERTY("QAbstractItemView::ScrollMode", "horizontalScrollMode")]
 		public QAbstractItemView.ScrollMode HorizontalScrollMode {
 			get {
 				return Property("horizontalScrollMode").Value<QAbstractItemView.ScrollMode>();
@@ -335,38 +349,47 @@ namespace Qyoto {
 		public new virtual QVariant InputMethodQuery(Qt.InputMethodQuery query) {
 			return ProxyQAbstractItemView().InputMethodQuery(query);
 		}
+		[Q_SLOT("void reset()")]
 		[SmokeMethod("reset()")]
 		public virtual void Reset() {
 			ProxyQAbstractItemView().Reset();
 		}
+		[Q_SLOT("void setRootIndex(const QModelIndex&)")]
 		[SmokeMethod("setRootIndex(const QModelIndex&)")]
 		public virtual void SetRootIndex(QModelIndex index) {
 			ProxyQAbstractItemView().SetRootIndex(index);
 		}
+		[Q_SLOT("void doItemsLayout()")]
 		[SmokeMethod("doItemsLayout()")]
 		public virtual void DoItemsLayout() {
 			ProxyQAbstractItemView().DoItemsLayout();
 		}
+		[Q_SLOT("void selectAll()")]
 		[SmokeMethod("selectAll()")]
 		public virtual void SelectAll() {
 			ProxyQAbstractItemView().SelectAll();
 		}
+		[Q_SLOT("void edit(const QModelIndex&)")]
 		[SmokeMethod("edit(const QModelIndex&)")]
 		public void Edit(QModelIndex index) {
 			ProxyQAbstractItemView().Edit(index);
 		}
+		[Q_SLOT("void clearSelection()")]
 		[SmokeMethod("clearSelection()")]
 		public void ClearSelection() {
 			ProxyQAbstractItemView().ClearSelection();
 		}
+		[Q_SLOT("void setCurrentIndex(const QModelIndex&)")]
 		[SmokeMethod("setCurrentIndex(const QModelIndex&)")]
 		public void SetCurrentIndex(QModelIndex index) {
 			ProxyQAbstractItemView().SetCurrentIndex(index);
 		}
+		[Q_SLOT("void scrollToTop()")]
 		[SmokeMethod("scrollToTop()")]
 		public void ScrollToTop() {
 			ProxyQAbstractItemView().ScrollToTop();
 		}
+		[Q_SLOT("void scrollToBottom()")]
 		[SmokeMethod("scrollToBottom()")]
 		public void ScrollToBottom() {
 			ProxyQAbstractItemView().ScrollToBottom();

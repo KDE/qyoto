@@ -286,10 +286,12 @@ namespace Qyoto {
 		public void DeleteTexture(uint tx_id) {
 			ProxyQGLWidget().DeleteTexture(tx_id);
 		}
+		[Q_SLOT("void updateGL()")]
 		[SmokeMethod("updateGL()")]
 		public virtual void UpdateGL() {
 			ProxyQGLWidget().UpdateGL();
 		}
+		[Q_SLOT("void updateOverlayGL()")]
 		[SmokeMethod("updateOverlayGL()")]
 		public virtual void UpdateOverlayGL() {
 			ProxyQGLWidget().UpdateOverlayGL();

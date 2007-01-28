@@ -30,6 +30,7 @@ namespace Qyoto {
 			return (IQTextBrowserProxy) _staticInterceptor;
 		}
 
+		[Q_PROPERTY("QUrl", "source")]
 		public IQUrl Source {
 			get {
 				return Property("source").Value<IQUrl>();
@@ -38,6 +39,7 @@ namespace Qyoto {
 				SetProperty("source", QVariant.FromValue<IQUrl>(value));
 			}
 		}
+		[Q_PROPERTY("QStringList", "searchPaths")]
 		public List<string> SearchPaths {
 			get {
 				return Property("searchPaths").Value<List<string>>();
@@ -46,6 +48,7 @@ namespace Qyoto {
 				SetProperty("searchPaths", QVariant.FromValue<List<string>>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "openExternalLinks")]
 		public bool OpenExternalLinks {
 			get {
 				return Property("openExternalLinks").Value<bool>();
@@ -87,18 +90,22 @@ namespace Qyoto {
 		public void ClearHistory() {
 			ProxyQTextBrowser().ClearHistory();
 		}
+		[Q_SLOT("void backward()")]
 		[SmokeMethod("backward()")]
 		public virtual void Backward() {
 			ProxyQTextBrowser().Backward();
 		}
+		[Q_SLOT("void forward()")]
 		[SmokeMethod("forward()")]
 		public virtual void Forward() {
 			ProxyQTextBrowser().Forward();
 		}
+		[Q_SLOT("void home()")]
 		[SmokeMethod("home()")]
 		public virtual void Home() {
 			ProxyQTextBrowser().Home();
 		}
+		[Q_SLOT("void reload()")]
 		[SmokeMethod("reload()")]
 		public virtual void Reload() {
 			ProxyQTextBrowser().Reload();

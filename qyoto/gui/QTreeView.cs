@@ -30,6 +30,7 @@ namespace Qyoto {
 			return (IQTreeViewProxy) _staticInterceptor;
 		}
 
+		[Q_PROPERTY("int", "indentation")]
 		public int Indentation {
 			get {
 				return Property("indentation").Value<int>();
@@ -38,6 +39,7 @@ namespace Qyoto {
 				SetProperty("indentation", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "rootIsDecorated")]
 		public bool RootIsDecorated {
 			get {
 				return Property("rootIsDecorated").Value<bool>();
@@ -46,6 +48,7 @@ namespace Qyoto {
 				SetProperty("rootIsDecorated", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "uniformRowHeights")]
 		public bool UniformRowHeights {
 			get {
 				return Property("uniformRowHeights").Value<bool>();
@@ -54,6 +57,7 @@ namespace Qyoto {
 				SetProperty("uniformRowHeights", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "itemsExpandable")]
 		public bool ItemsExpandable {
 			get {
 				return Property("itemsExpandable").Value<bool>();
@@ -62,6 +66,7 @@ namespace Qyoto {
 				SetProperty("itemsExpandable", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "sortingEnabled")]
 		public bool SortingEnabled {
 			get {
 				return Property("sortingEnabled").Value<bool>();
@@ -70,6 +75,7 @@ namespace Qyoto {
 				SetProperty("sortingEnabled", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "animated")]
 		public bool Animated {
 			get {
 				return Property("animated").Value<bool>();
@@ -78,6 +84,7 @@ namespace Qyoto {
 				SetProperty("animated", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "allColumnsShowFocus")]
 		public bool AllColumnsShowFocus {
 			get {
 				return Property("allColumnsShowFocus").Value<bool>();
@@ -211,42 +218,52 @@ namespace Qyoto {
 		public void SortByColumn(int column, Qt.SortOrder order) {
 			ProxyQTreeView().SortByColumn(column,order);
 		}
+		[Q_SLOT("void dataChanged(const QModelIndex&, const QModelIndex&)")]
 		[SmokeMethod("dataChanged(const QModelIndex&, const QModelIndex&)")]
 		public new void DataChanged(QModelIndex topLeft, QModelIndex bottomRight) {
 			ProxyQTreeView().DataChanged(topLeft,bottomRight);
 		}
+		[Q_SLOT("void hideColumn(int)")]
 		[SmokeMethod("hideColumn(int)")]
 		public void HideColumn(int column) {
 			ProxyQTreeView().HideColumn(column);
 		}
+		[Q_SLOT("void showColumn(int)")]
 		[SmokeMethod("showColumn(int)")]
 		public void ShowColumn(int column) {
 			ProxyQTreeView().ShowColumn(column);
 		}
+		[Q_SLOT("void expand(const QModelIndex&)")]
 		[SmokeMethod("expand(const QModelIndex&)")]
 		public void Expand(QModelIndex index) {
 			ProxyQTreeView().Expand(index);
 		}
+		[Q_SLOT("void collapse(const QModelIndex&)")]
 		[SmokeMethod("collapse(const QModelIndex&)")]
 		public void Collapse(QModelIndex index) {
 			ProxyQTreeView().Collapse(index);
 		}
+		[Q_SLOT("void resizeColumnToContents(int)")]
 		[SmokeMethod("resizeColumnToContents(int)")]
 		public void ResizeColumnToContents(int column) {
 			ProxyQTreeView().ResizeColumnToContents(column);
 		}
+		[Q_SLOT("void sortByColumn(int)")]
 		[SmokeMethod("sortByColumn(int)")]
 		public void SortByColumn(int column) {
 			ProxyQTreeView().SortByColumn(column);
 		}
+		[Q_SLOT("void selectAll()")]
 		[SmokeMethod("selectAll()")]
 		public new void SelectAll() {
 			ProxyQTreeView().SelectAll();
 		}
+		[Q_SLOT("void expandAll()")]
 		[SmokeMethod("expandAll()")]
 		public void ExpandAll() {
 			ProxyQTreeView().ExpandAll();
 		}
+		[Q_SLOT("void collapseAll()")]
 		[SmokeMethod("collapseAll()")]
 		public void CollapseAll() {
 			ProxyQTreeView().CollapseAll();
@@ -258,26 +275,6 @@ namespace Qyoto {
 		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQTreeView().Tr(s);
-		}
-		[SmokeMethod("columnResized(int, int, int)")]
-		protected void ColumnResized(int column, int oldSize, int newSize) {
-			ProxyQTreeView().ColumnResized(column,oldSize,newSize);
-		}
-		[SmokeMethod("columnCountChanged(int, int)")]
-		protected void ColumnCountChanged(int oldCount, int newCount) {
-			ProxyQTreeView().ColumnCountChanged(oldCount,newCount);
-		}
-		[SmokeMethod("columnMoved()")]
-		protected void ColumnMoved() {
-			ProxyQTreeView().ColumnMoved();
-		}
-		[SmokeMethod("reexpand()")]
-		protected void Reexpand() {
-			ProxyQTreeView().Reexpand();
-		}
-		[SmokeMethod("rowsRemoved(const QModelIndex&, int, int)")]
-		protected void RowsRemoved(QModelIndex parent, int first, int last) {
-			ProxyQTreeView().RowsRemoved(parent,first,last);
 		}
 		[SmokeMethod("scrollContentsBy(int, int)")]
 		protected new void ScrollContentsBy(int dx, int dy) {
@@ -374,6 +371,31 @@ namespace Qyoto {
 		[SmokeMethod("isIndexHidden(const QModelIndex&) const")]
 		protected new bool IsIndexHidden(QModelIndex index) {
 			return ProxyQTreeView().IsIndexHidden(index);
+		}
+		[Q_SLOT("void columnResized(int, int, int)")]
+		[SmokeMethod("columnResized(int, int, int)")]
+		protected void ColumnResized(int column, int oldSize, int newSize) {
+			ProxyQTreeView().ColumnResized(column,oldSize,newSize);
+		}
+		[Q_SLOT("void columnCountChanged(int, int)")]
+		[SmokeMethod("columnCountChanged(int, int)")]
+		protected void ColumnCountChanged(int oldCount, int newCount) {
+			ProxyQTreeView().ColumnCountChanged(oldCount,newCount);
+		}
+		[Q_SLOT("void columnMoved()")]
+		[SmokeMethod("columnMoved()")]
+		protected void ColumnMoved() {
+			ProxyQTreeView().ColumnMoved();
+		}
+		[Q_SLOT("void reexpand()")]
+		[SmokeMethod("reexpand()")]
+		protected void Reexpand() {
+			ProxyQTreeView().Reexpand();
+		}
+		[Q_SLOT("void rowsRemoved(const QModelIndex&, int, int)")]
+		[SmokeMethod("rowsRemoved(const QModelIndex&, int, int)")]
+		protected void RowsRemoved(QModelIndex parent, int first, int last) {
+			ProxyQTreeView().RowsRemoved(parent,first,last);
 		}
 		~QTreeView() {
 			DisposeQTreeView();

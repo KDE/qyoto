@@ -39,6 +39,7 @@ namespace Qyoto {
 			TriangularWest = 6,
 			TriangularEast = 7,
 		}
+		[Q_PROPERTY("QTabBar::Shape", "shape")]
 		public QTabBar.Shape shape {
 			get {
 				return Property("shape").Value<QTabBar.Shape>();
@@ -47,6 +48,7 @@ namespace Qyoto {
 				SetProperty("shape", QVariant.FromValue<QTabBar.Shape>(value));
 			}
 		}
+		[Q_PROPERTY("int", "currentIndex")]
 		public int CurrentIndex {
 			get {
 				return Property("currentIndex").Value<int>();
@@ -55,11 +57,13 @@ namespace Qyoto {
 				SetProperty("currentIndex", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("int", "count")]
 		public int Count {
 			get {
 				return Property("count").Value<int>();
 			}
 		}
+		[Q_PROPERTY("bool", "drawBase")]
 		public bool DrawBase {
 			get {
 				return Property("drawBase").Value<bool>();
@@ -68,6 +72,7 @@ namespace Qyoto {
 				SetProperty("drawBase", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("QSize", "iconSize")]
 		public QSize IconSize {
 			get {
 				return Property("iconSize").Value<QSize>();
@@ -76,6 +81,7 @@ namespace Qyoto {
 				SetProperty("iconSize", QVariant.FromValue<QSize>(value));
 			}
 		}
+		[Q_PROPERTY("Qt::TextElideMode", "elideMode")]
 		public Qt.TextElideMode ElideMode {
 			get {
 				return Property("elideMode").Value<Qt.TextElideMode>();
@@ -84,6 +90,7 @@ namespace Qyoto {
 				SetProperty("elideMode", QVariant.FromValue<Qt.TextElideMode>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "usesScrollButtons")]
 		public bool UsesScrollButtons {
 			get {
 				return Property("usesScrollButtons").Value<bool>();

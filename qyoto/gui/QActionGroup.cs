@@ -30,6 +30,7 @@ namespace Qyoto {
 			return (IQActionGroupProxy) _staticInterceptor;
 		}
 
+		[Q_PROPERTY("bool", "exclusive")]
 		public bool Exclusive {
 			get {
 				return Property("exclusive").Value<bool>();
@@ -38,6 +39,7 @@ namespace Qyoto {
 				SetProperty("exclusive", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "enabled")]
 		public bool Enabled {
 			get {
 				return Property("enabled").Value<bool>();
@@ -46,6 +48,7 @@ namespace Qyoto {
 				SetProperty("enabled", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "visible")]
 		public bool Visible {
 			get {
 				return Property("visible").Value<bool>();
@@ -99,6 +102,7 @@ namespace Qyoto {
 		public bool IsVisible() {
 			return ProxyQActionGroup().IsVisible();
 		}
+		[Q_SLOT("void setDisabled(bool)")]
 		[SmokeMethod("setDisabled(bool)")]
 		public void SetDisabled(bool b) {
 			ProxyQActionGroup().SetDisabled(b);

@@ -45,6 +45,7 @@ namespace Qyoto {
 			LinearCurve = 3,
 			SineCurve = 4,
 		}
+		[Q_PROPERTY("int", "duration")]
 		public int Duration {
 			get {
 				return Property("duration").Value<int>();
@@ -53,6 +54,7 @@ namespace Qyoto {
 				SetProperty("duration", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("int", "updateInterval")]
 		public int UpdateInterval {
 			get {
 				return Property("updateInterval").Value<int>();
@@ -61,6 +63,7 @@ namespace Qyoto {
 				SetProperty("updateInterval", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("int", "currentTime")]
 		public int CurrentTime {
 			get {
 				return Property("currentTime").Value<int>();
@@ -69,6 +72,7 @@ namespace Qyoto {
 				SetProperty("currentTime", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("QTimeLine::Direction", "direction")]
 		public QTimeLine.Direction direction {
 			get {
 				return Property("direction").Value<QTimeLine.Direction>();
@@ -77,6 +81,7 @@ namespace Qyoto {
 				SetProperty("direction", QVariant.FromValue<QTimeLine.Direction>(value));
 			}
 		}
+		[Q_PROPERTY("int", "loopCount")]
 		public int LoopCount {
 			get {
 				return Property("loopCount").Value<int>();
@@ -85,6 +90,7 @@ namespace Qyoto {
 				SetProperty("loopCount", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("QTimeLine::CurveShape", "curveShape")]
 		public QTimeLine.CurveShape curveShape {
 			get {
 				return Property("curveShape").Value<QTimeLine.CurveShape>();
@@ -158,18 +164,22 @@ namespace Qyoto {
 		public virtual double ValueForTime(int msec) {
 			return ProxyQTimeLine().ValueForTime(msec);
 		}
+		[Q_SLOT("void start()")]
 		[SmokeMethod("start()")]
 		public void Start() {
 			ProxyQTimeLine().Start();
 		}
+		[Q_SLOT("void stop()")]
 		[SmokeMethod("stop()")]
 		public void Stop() {
 			ProxyQTimeLine().Stop();
 		}
+		[Q_SLOT("void setPaused(bool)")]
 		[SmokeMethod("setPaused(bool)")]
 		public void SetPaused(bool paused) {
 			ProxyQTimeLine().SetPaused(paused);
 		}
+		[Q_SLOT("void toggleDirection()")]
 		[SmokeMethod("toggleDirection()")]
 		public void ToggleDirection() {
 			ProxyQTimeLine().ToggleDirection();

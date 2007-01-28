@@ -101,6 +101,7 @@ namespace Qyoto {
 		public virtual QSqlTableModel RelationModel(int column) {
 			return ProxyQSqlRelationalTableModel().RelationModel(column);
 		}
+		[Q_SLOT("void revertRow(int)")]
 		[SmokeMethod("revertRow(int)")]
 		public new void RevertRow(int row) {
 			ProxyQSqlRelationalTableModel().RevertRow(row);

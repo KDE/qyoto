@@ -40,6 +40,7 @@ namespace Qyoto {
 			CacheNone = 0,
 			CacheAll = 1,
 		}
+		[Q_PROPERTY("int", "speed")]
 		public int Speed {
 			get {
 				return Property("speed").Value<int>();
@@ -48,6 +49,7 @@ namespace Qyoto {
 				SetProperty("speed", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("QMovie::CacheMode", "cacheMode")]
 		public QMovie.CacheMode cacheMode {
 			get {
 				return Property("cacheMode").Value<QMovie.CacheMode>();
@@ -201,18 +203,22 @@ namespace Qyoto {
 		public void SetScaledSize(QSize size) {
 			ProxyQMovie().SetScaledSize(size);
 		}
+		[Q_SLOT("void start()")]
 		[SmokeMethod("start()")]
 		public void Start() {
 			ProxyQMovie().Start();
 		}
+		[Q_SLOT("bool jumpToNextFrame()")]
 		[SmokeMethod("jumpToNextFrame()")]
 		public bool JumpToNextFrame() {
 			return ProxyQMovie().JumpToNextFrame();
 		}
+		[Q_SLOT("void setPaused(bool)")]
 		[SmokeMethod("setPaused(bool)")]
 		public void SetPaused(bool paused) {
 			ProxyQMovie().SetPaused(paused);
 		}
+		[Q_SLOT("void stop()")]
 		[SmokeMethod("stop()")]
 		public void Stop() {
 			ProxyQMovie().Stop();

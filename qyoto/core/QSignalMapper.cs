@@ -82,10 +82,12 @@ namespace Qyoto {
 		public QObject Mapping(QObject arg1) {
 			return ProxyQSignalMapper().Mapping(arg1);
 		}
+		[Q_SLOT("void map()")]
 		[SmokeMethod("map()")]
 		public void Map() {
 			ProxyQSignalMapper().Map();
 		}
+		[Q_SLOT("void map(QObject*)")]
 		[SmokeMethod("map(QObject*)")]
 		public void Map(QObject sender) {
 			ProxyQSignalMapper().Map(sender);

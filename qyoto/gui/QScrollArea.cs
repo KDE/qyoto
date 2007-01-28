@@ -28,6 +28,7 @@ namespace Qyoto {
 			return (IQScrollAreaProxy) _staticInterceptor;
 		}
 
+		[Q_PROPERTY("bool", "widgetResizable")]
 		public bool WidgetResizable {
 			get {
 				return Property("widgetResizable").Value<bool>();
@@ -36,6 +37,7 @@ namespace Qyoto {
 				SetProperty("widgetResizable", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("Qt::Alignment", "alignment")]
 		public int Alignment {
 			get {
 				return Property("alignment").Value<int>();

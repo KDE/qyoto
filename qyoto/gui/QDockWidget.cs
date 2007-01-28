@@ -38,6 +38,7 @@ namespace Qyoto {
 			NoDockWidgetFeatures = 0x00,
 			Reserved = 0xff,
 		}
+		[Q_PROPERTY("bool", "floating")]
 		public bool Floating {
 			get {
 				return Property("floating").Value<bool>();
@@ -46,6 +47,7 @@ namespace Qyoto {
 				SetProperty("floating", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("DockWidgetFeatures", "features")]
 		public int Features {
 			get {
 				return Property("features").Value<int>();
@@ -54,6 +56,7 @@ namespace Qyoto {
 				SetProperty("features", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("Qt::DockWidgetAreas", "allowedAreas")]
 		public int AllowedAreas {
 			get {
 				return Property("allowedAreas").Value<int>();
@@ -62,6 +65,7 @@ namespace Qyoto {
 				SetProperty("allowedAreas", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("QString", "windowTitle")]
 		public string WindowTitle {
 			get {
 				return Property("windowTitle").Value<string>();

@@ -28,6 +28,7 @@ namespace Qyoto {
 			return (IQRegExpValidatorProxy) _staticInterceptor;
 		}
 
+		[Q_PROPERTY("QRegExp", "regExp")]
 		public QRegExp RegExp {
 			get {
 				return Property("regExp").Value<QRegExp>();

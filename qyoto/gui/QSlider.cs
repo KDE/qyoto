@@ -36,6 +36,7 @@ namespace Qyoto {
 			TicksRight = TicksBelow,
 			TicksBothSides = 3,
 		}
+		[Q_PROPERTY("QSlider::TickPosition", "tickPosition")]
 		public QSlider.TickPosition tickPosition {
 			get {
 				return Property("tickPosition").Value<QSlider.TickPosition>();
@@ -44,6 +45,7 @@ namespace Qyoto {
 				SetProperty("tickPosition", QVariant.FromValue<QSlider.TickPosition>(value));
 			}
 		}
+		[Q_PROPERTY("int", "tickInterval")]
 		public int TickInterval {
 			get {
 				return Property("tickInterval").Value<int>();

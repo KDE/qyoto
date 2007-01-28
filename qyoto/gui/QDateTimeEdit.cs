@@ -42,6 +42,7 @@ namespace Qyoto {
 			TimeSections_Mask = AmPmSection|MSecSection|SecondSection|MinuteSection|HourSection,
 			DateSections_Mask = DaySection|MonthSection|YearSection,
 		}
+		[Q_PROPERTY("QDateTime", "dateTime")]
 		public QDateTime DateTime {
 			get {
 				return Property("dateTime").Value<QDateTime>();
@@ -50,6 +51,7 @@ namespace Qyoto {
 				SetProperty("dateTime", QVariant.FromValue<QDateTime>(value));
 			}
 		}
+		[Q_PROPERTY("QDate", "date")]
 		public QDate Date {
 			get {
 				return Property("date").Value<QDate>();
@@ -58,6 +60,7 @@ namespace Qyoto {
 				SetProperty("date", QVariant.FromValue<QDate>(value));
 			}
 		}
+		[Q_PROPERTY("QTime", "time")]
 		public QTime Time {
 			get {
 				return Property("time").Value<QTime>();
@@ -66,6 +69,7 @@ namespace Qyoto {
 				SetProperty("time", QVariant.FromValue<QTime>(value));
 			}
 		}
+		[Q_PROPERTY("QDate", "maximumDate")]
 		public QDate MaximumDate {
 			get {
 				return Property("maximumDate").Value<QDate>();
@@ -74,6 +78,7 @@ namespace Qyoto {
 				SetProperty("maximumDate", QVariant.FromValue<QDate>(value));
 			}
 		}
+		[Q_PROPERTY("QDate", "minimumDate")]
 		public QDate MinimumDate {
 			get {
 				return Property("minimumDate").Value<QDate>();
@@ -82,6 +87,7 @@ namespace Qyoto {
 				SetProperty("minimumDate", QVariant.FromValue<QDate>(value));
 			}
 		}
+		[Q_PROPERTY("QTime", "maximumTime")]
 		public QTime MaximumTime {
 			get {
 				return Property("maximumTime").Value<QTime>();
@@ -90,6 +96,7 @@ namespace Qyoto {
 				SetProperty("maximumTime", QVariant.FromValue<QTime>(value));
 			}
 		}
+		[Q_PROPERTY("QTime", "minimumTime")]
 		public QTime MinimumTime {
 			get {
 				return Property("minimumTime").Value<QTime>();
@@ -98,6 +105,7 @@ namespace Qyoto {
 				SetProperty("minimumTime", QVariant.FromValue<QTime>(value));
 			}
 		}
+		[Q_PROPERTY("QDateTimeEdit::Section", "currentSection")]
 		public QDateTimeEdit.Section CurrentSection {
 			get {
 				return Property("currentSection").Value<QDateTimeEdit.Section>();
@@ -106,11 +114,13 @@ namespace Qyoto {
 				SetProperty("currentSection", QVariant.FromValue<QDateTimeEdit.Section>(value));
 			}
 		}
+		[Q_PROPERTY("Sections", "displayedSections")]
 		public int DisplayedSections {
 			get {
 				return Property("displayedSections").Value<int>();
 			}
 		}
+		[Q_PROPERTY("QString", "displayFormat")]
 		public string DisplayFormat {
 			get {
 				return Property("displayFormat").Value<string>();
@@ -119,6 +129,7 @@ namespace Qyoto {
 				SetProperty("displayFormat", QVariant.FromValue<string>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "calendarPopup")]
 		public bool CalendarPopup {
 			get {
 				return Property("calendarPopup").Value<bool>();

@@ -34,6 +34,7 @@ namespace Qyoto {
 			FilePathRole = Qt.ItemDataRole.UserRole+1,
 			FileNameRole = 0,
 		}
+		[Q_PROPERTY("bool", "resolveSymlinks")]
 		public bool ResolveSymlinks {
 			get {
 				return Property("resolveSymlinks").Value<bool>();
@@ -42,6 +43,7 @@ namespace Qyoto {
 				SetProperty("resolveSymlinks", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "readOnly")]
 		public bool ReadOnly {
 			get {
 				return Property("readOnly").Value<bool>();
@@ -50,6 +52,7 @@ namespace Qyoto {
 				SetProperty("readOnly", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "lazyChildCount")]
 		public bool LazyChildCount {
 			get {
 				return Property("lazyChildCount").Value<bool>();

@@ -37,6 +37,7 @@ namespace Qyoto {
 			SetMaximumSize = 4,
 			SetMinAndMaxSize = 5,
 		}
+		[Q_PROPERTY("int", "margin")]
 		public int Margin {
 			get {
 				return Property("margin").Value<int>();
@@ -45,6 +46,7 @@ namespace Qyoto {
 				SetProperty("margin", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("int", "spacing")]
 		public int Spacing {
 			get {
 				return Property("spacing").Value<int>();
@@ -53,6 +55,7 @@ namespace Qyoto {
 				SetProperty("spacing", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("QLayout::SizeConstraint", "sizeConstraint")]
 		public QLayout.SizeConstraint sizeConstraint {
 			get {
 				return Property("sizeConstraint").Value<QLayout.SizeConstraint>();

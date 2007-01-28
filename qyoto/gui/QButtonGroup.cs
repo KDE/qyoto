@@ -30,6 +30,7 @@ namespace Qyoto {
 			return (IQButtonGroupProxy) _staticInterceptor;
 		}
 
+		[Q_PROPERTY("bool", "exclusive")]
 		public bool Exclusive {
 			get {
 				return Property("exclusive").Value<bool>();

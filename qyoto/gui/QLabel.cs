@@ -29,6 +29,7 @@ namespace Qyoto {
 			return (IQLabelProxy) _staticInterceptor;
 		}
 
+		[Q_PROPERTY("QString", "text")]
 		public string Text {
 			get {
 				return Property("text").Value<string>();
@@ -37,6 +38,7 @@ namespace Qyoto {
 				SetProperty("text", QVariant.FromValue<string>(value));
 			}
 		}
+		[Q_PROPERTY("Qt::TextFormat", "textFormat")]
 		public Qt.TextFormat TextFormat {
 			get {
 				return Property("textFormat").Value<Qt.TextFormat>();
@@ -45,6 +47,7 @@ namespace Qyoto {
 				SetProperty("textFormat", QVariant.FromValue<Qt.TextFormat>(value));
 			}
 		}
+		[Q_PROPERTY("QPixmap", "pixmap")]
 		public QPixmap Pixmap {
 			get {
 				return Property("pixmap").Value<QPixmap>();
@@ -53,6 +56,7 @@ namespace Qyoto {
 				SetProperty("pixmap", QVariant.FromValue<QPixmap>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "scaledContents")]
 		public bool ScaledContents {
 			get {
 				return Property("scaledContents").Value<bool>();
@@ -61,6 +65,7 @@ namespace Qyoto {
 				SetProperty("scaledContents", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("Qt::Alignment", "alignment")]
 		public int Alignment {
 			get {
 				return Property("alignment").Value<int>();
@@ -69,6 +74,7 @@ namespace Qyoto {
 				SetProperty("alignment", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "wordWrap")]
 		public bool WordWrap {
 			get {
 				return Property("wordWrap").Value<bool>();
@@ -77,6 +83,7 @@ namespace Qyoto {
 				SetProperty("wordWrap", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("int", "margin")]
 		public int Margin {
 			get {
 				return Property("margin").Value<int>();
@@ -85,6 +92,7 @@ namespace Qyoto {
 				SetProperty("margin", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("int", "indent")]
 		public int Indent {
 			get {
 				return Property("indent").Value<int>();
@@ -93,6 +101,7 @@ namespace Qyoto {
 				SetProperty("indent", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "openExternalLinks")]
 		public bool OpenExternalLinks {
 			get {
 				return Property("openExternalLinks").Value<bool>();
@@ -101,6 +110,7 @@ namespace Qyoto {
 				SetProperty("openExternalLinks", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("Qt::TextInteractionFlags", "textInteractionFlags")]
 		public int TextInteractionFlags {
 			get {
 				return Property("textInteractionFlags").Value<int>();
@@ -190,22 +200,27 @@ namespace Qyoto {
 		public new int HeightForWidth(int arg1) {
 			return ProxyQLabel().HeightForWidth(arg1);
 		}
+		[Q_SLOT("void setPicture(const QPicture&)")]
 		[SmokeMethod("setPicture(const QPicture&)")]
 		public void SetPicture(QPicture arg1) {
 			ProxyQLabel().SetPicture(arg1);
 		}
+		[Q_SLOT("void setMovie(QMovie*)")]
 		[SmokeMethod("setMovie(QMovie*)")]
 		public void SetMovie(QMovie movie) {
 			ProxyQLabel().SetMovie(movie);
 		}
+		[Q_SLOT("void setNum(int)")]
 		[SmokeMethod("setNum(int)")]
 		public void SetNum(int arg1) {
 			ProxyQLabel().SetNum(arg1);
 		}
+		[Q_SLOT("void setNum(double)")]
 		[SmokeMethod("setNum(double)")]
 		public void SetNum(double arg1) {
 			ProxyQLabel().SetNum(arg1);
 		}
+		[Q_SLOT("void clear()")]
 		[SmokeMethod("clear()")]
 		public void Clear() {
 			ProxyQLabel().Clear();

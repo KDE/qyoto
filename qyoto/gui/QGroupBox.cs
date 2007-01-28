@@ -29,6 +29,7 @@ namespace Qyoto {
 			return (IQGroupBoxProxy) _staticInterceptor;
 		}
 
+		[Q_PROPERTY("QString", "title")]
 		public string Title {
 			get {
 				return Property("title").Value<string>();
@@ -37,6 +38,7 @@ namespace Qyoto {
 				SetProperty("title", QVariant.FromValue<string>(value));
 			}
 		}
+		[Q_PROPERTY("Qt::Alignment", "alignment")]
 		public int Alignment {
 			get {
 				return Property("alignment").Value<int>();
@@ -45,6 +47,7 @@ namespace Qyoto {
 				SetProperty("alignment", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "flat")]
 		public bool Flat {
 			get {
 				return Property("flat").Value<bool>();
@@ -53,6 +56,7 @@ namespace Qyoto {
 				SetProperty("flat", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "checkable")]
 		public bool Checkable {
 			get {
 				return Property("checkable").Value<bool>();
@@ -61,6 +65,7 @@ namespace Qyoto {
 				SetProperty("checkable", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "checked")]
 		public bool Checked {
 			get {
 				return Property("checked").Value<bool>();

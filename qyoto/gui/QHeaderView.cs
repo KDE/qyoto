@@ -36,6 +36,7 @@ namespace Qyoto {
 			Custom = Fixed,
 			ResizeToContents = 3,
 		}
+		[Q_PROPERTY("bool", "showSortIndicator")]
 		public bool ShowSortIndicator {
 			get {
 				return Property("showSortIndicator").Value<bool>();
@@ -44,6 +45,7 @@ namespace Qyoto {
 				SetProperty("showSortIndicator", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "highlightSections")]
 		public bool HighlightSections {
 			get {
 				return Property("highlightSections").Value<bool>();
@@ -52,6 +54,7 @@ namespace Qyoto {
 				SetProperty("highlightSections", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "stretchLastSection")]
 		public bool StretchLastSection {
 			get {
 				return Property("stretchLastSection").Value<bool>();
@@ -60,6 +63,7 @@ namespace Qyoto {
 				SetProperty("stretchLastSection", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "cascadingSectionResizes")]
 		public bool CascadingSectionResizes {
 			get {
 				return Property("cascadingSectionResizes").Value<bool>();
@@ -68,6 +72,7 @@ namespace Qyoto {
 				SetProperty("cascadingSectionResizes", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("int", "defaultSectionSize")]
 		public int DefaultSectionSize {
 			get {
 				return Property("defaultSectionSize").Value<int>();
@@ -76,6 +81,7 @@ namespace Qyoto {
 				SetProperty("defaultSectionSize", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("int", "minimumSectionSize")]
 		public int MinimumSectionSize {
 			get {
 				return Property("minimumSectionSize").Value<int>();
@@ -84,6 +90,7 @@ namespace Qyoto {
 				SetProperty("minimumSectionSize", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("Qt::Alignment", "defaultAlignment")]
 		public int DefaultAlignment {
 			get {
 				return Property("defaultAlignment").Value<int>();
@@ -273,14 +280,17 @@ namespace Qyoto {
 		public bool SectionsHidden() {
 			return ProxyQHeaderView().SectionsHidden();
 		}
+		[Q_SLOT("void setOffset(int)")]
 		[SmokeMethod("setOffset(int)")]
 		public void SetOffset(int offset) {
 			ProxyQHeaderView().SetOffset(offset);
 		}
+		[Q_SLOT("void setOffsetToSectionPosition(int)")]
 		[SmokeMethod("setOffsetToSectionPosition(int)")]
 		public void SetOffsetToSectionPosition(int visualIndex) {
 			ProxyQHeaderView().SetOffsetToSectionPosition(visualIndex);
 		}
+		[Q_SLOT("void headerDataChanged(Qt::Orientation, int, int)")]
 		[SmokeMethod("headerDataChanged(Qt::Orientation, int, int)")]
 		public void HeaderDataChanged(Qt.Orientation orientation, int logicalFirst, int logicalLast) {
 			ProxyQHeaderView().HeaderDataChanged(orientation,logicalFirst,logicalLast);
@@ -292,22 +302,6 @@ namespace Qyoto {
 		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQHeaderView().Tr(s);
-		}
-		[SmokeMethod("updateSection(int)")]
-		protected void UpdateSection(int logicalIndex) {
-			ProxyQHeaderView().UpdateSection(logicalIndex);
-		}
-		[SmokeMethod("resizeSections()")]
-		protected void ResizeSections() {
-			ProxyQHeaderView().ResizeSections();
-		}
-		[SmokeMethod("sectionsInserted(const QModelIndex&, int, int)")]
-		protected void SectionsInserted(QModelIndex parent, int logicalFirst, int logicalLast) {
-			ProxyQHeaderView().SectionsInserted(parent,logicalFirst,logicalLast);
-		}
-		[SmokeMethod("sectionsAboutToBeRemoved(const QModelIndex&, int, int)")]
-		protected void SectionsAboutToBeRemoved(QModelIndex parent, int logicalFirst, int logicalLast) {
-			ProxyQHeaderView().SectionsAboutToBeRemoved(parent,logicalFirst,logicalLast);
 		}
 		[SmokeMethod("initialize()")]
 		protected void Initialize() {
@@ -412,6 +406,26 @@ namespace Qyoto {
 		[SmokeMethod("visualRegionForSelection(const QItemSelection&) const")]
 		protected new QRegion VisualRegionForSelection(QItemSelection selection) {
 			return ProxyQHeaderView().VisualRegionForSelection(selection);
+		}
+		[Q_SLOT("void updateSection(int)")]
+		[SmokeMethod("updateSection(int)")]
+		protected void UpdateSection(int logicalIndex) {
+			ProxyQHeaderView().UpdateSection(logicalIndex);
+		}
+		[Q_SLOT("void resizeSections()")]
+		[SmokeMethod("resizeSections()")]
+		protected void ResizeSections() {
+			ProxyQHeaderView().ResizeSections();
+		}
+		[Q_SLOT("void sectionsInserted(const QModelIndex&, int, int)")]
+		[SmokeMethod("sectionsInserted(const QModelIndex&, int, int)")]
+		protected void SectionsInserted(QModelIndex parent, int logicalFirst, int logicalLast) {
+			ProxyQHeaderView().SectionsInserted(parent,logicalFirst,logicalLast);
+		}
+		[Q_SLOT("void sectionsAboutToBeRemoved(const QModelIndex&, int, int)")]
+		[SmokeMethod("sectionsAboutToBeRemoved(const QModelIndex&, int, int)")]
+		protected void SectionsAboutToBeRemoved(QModelIndex parent, int logicalFirst, int logicalLast) {
+			ProxyQHeaderView().SectionsAboutToBeRemoved(parent,logicalFirst,logicalLast);
 		}
 		~QHeaderView() {
 			DisposeQHeaderView();

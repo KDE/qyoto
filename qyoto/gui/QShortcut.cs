@@ -29,6 +29,7 @@ namespace Qyoto {
 			return (IQShortcutProxy) _staticInterceptor;
 		}
 
+		[Q_PROPERTY("QKeySequence", "key")]
 		public QKeySequence Key {
 			get {
 				return Property("key").Value<QKeySequence>();
@@ -37,6 +38,7 @@ namespace Qyoto {
 				SetProperty("key", QVariant.FromValue<QKeySequence>(value));
 			}
 		}
+		[Q_PROPERTY("QString", "whatsThis")]
 		public string WhatsThis {
 			get {
 				return Property("whatsThis").Value<string>();
@@ -45,6 +47,7 @@ namespace Qyoto {
 				SetProperty("whatsThis", QVariant.FromValue<string>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "enabled")]
 		public bool Enabled {
 			get {
 				return Property("enabled").Value<bool>();
@@ -53,6 +56,7 @@ namespace Qyoto {
 				SetProperty("enabled", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "autoRepeat")]
 		public bool AutoRepeat {
 			get {
 				return Property("autoRepeat").Value<bool>();
@@ -61,6 +65,7 @@ namespace Qyoto {
 				SetProperty("autoRepeat", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("Qt::ShortcutContext", "context")]
 		public Qt.ShortcutContext Context {
 			get {
 				return Property("context").Value<Qt.ShortcutContext>();

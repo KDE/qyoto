@@ -28,6 +28,7 @@ namespace Qyoto {
 			return (IQDoubleValidatorProxy) _staticInterceptor;
 		}
 
+		[Q_PROPERTY("double", "bottom")]
 		public double Bottom {
 			get {
 				return Property("bottom").Value<double>();
@@ -36,6 +37,7 @@ namespace Qyoto {
 				SetProperty("bottom", QVariant.FromValue<double>(value));
 			}
 		}
+		[Q_PROPERTY("double", "top")]
 		public double Top {
 			get {
 				return Property("top").Value<double>();
@@ -44,6 +46,7 @@ namespace Qyoto {
 				SetProperty("top", QVariant.FromValue<double>(value));
 			}
 		}
+		[Q_PROPERTY("int", "decimals")]
 		public int Decimals {
 			get {
 				return Property("decimals").Value<int>();

@@ -34,6 +34,7 @@ namespace Qyoto {
 			MenuButtonPopup = 1,
 			InstantPopup = 2,
 		}
+		[Q_PROPERTY("QToolButton::ToolButtonPopupMode", "popupMode")]
 		public QToolButton.ToolButtonPopupMode PopupMode {
 			get {
 				return Property("popupMode").Value<QToolButton.ToolButtonPopupMode>();
@@ -42,6 +43,7 @@ namespace Qyoto {
 				SetProperty("popupMode", QVariant.FromValue<QToolButton.ToolButtonPopupMode>(value));
 			}
 		}
+		[Q_PROPERTY("Qt::ToolButtonStyle", "toolButtonStyle")]
 		public Qt.ToolButtonStyle ToolButtonStyle {
 			get {
 				return Property("toolButtonStyle").Value<Qt.ToolButtonStyle>();
@@ -50,6 +52,7 @@ namespace Qyoto {
 				SetProperty("toolButtonStyle", QVariant.FromValue<Qt.ToolButtonStyle>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "autoRaise")]
 		public bool AutoRaise {
 			get {
 				return Property("autoRaise").Value<bool>();
@@ -58,6 +61,7 @@ namespace Qyoto {
 				SetProperty("autoRaise", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("Qt::ArrowType", "arrowType")]
 		public Qt.ArrowType ArrowType {
 			get {
 				return Property("arrowType").Value<Qt.ArrowType>();
@@ -103,10 +107,12 @@ namespace Qyoto {
 		public QAction DefaultAction() {
 			return ProxyQToolButton().DefaultAction();
 		}
+		[Q_SLOT("void showMenu()")]
 		[SmokeMethod("showMenu()")]
 		public void ShowMenu() {
 			ProxyQToolButton().ShowMenu();
 		}
+		[Q_SLOT("void setDefaultAction(QAction*)")]
 		[SmokeMethod("setDefaultAction(QAction*)")]
 		public void SetDefaultAction(QAction arg1) {
 			ProxyQToolButton().SetDefaultAction(arg1);

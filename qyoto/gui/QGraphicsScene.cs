@@ -34,6 +34,7 @@ namespace Qyoto {
 			BspTreeIndex = 0,
 			NoIndex = -1,
 		}
+		[Q_PROPERTY("QBrush", "backgroundBrush")]
 		public QBrush BackgroundBrush {
 			get {
 				return Property("backgroundBrush").Value<QBrush>();
@@ -42,6 +43,7 @@ namespace Qyoto {
 				SetProperty("backgroundBrush", QVariant.FromValue<QBrush>(value));
 			}
 		}
+		[Q_PROPERTY("QBrush", "foregroundBrush")]
 		public QBrush ForegroundBrush {
 			get {
 				return Property("foregroundBrush").Value<QBrush>();
@@ -50,6 +52,7 @@ namespace Qyoto {
 				SetProperty("foregroundBrush", QVariant.FromValue<QBrush>(value));
 			}
 		}
+		[Q_PROPERTY("QGraphicsScene::ItemIndexMethod", "itemIndexMethod")]
 		public QGraphicsScene.ItemIndexMethod itemIndexMethod {
 			get {
 				return Property("itemIndexMethod").Value<QGraphicsScene.ItemIndexMethod>();
@@ -58,6 +61,7 @@ namespace Qyoto {
 				SetProperty("itemIndexMethod", QVariant.FromValue<QGraphicsScene.ItemIndexMethod>(value));
 			}
 		}
+		[Q_PROPERTY("QRectF", "sceneRect")]
 		public QRectF SceneRect {
 			get {
 				return Property("sceneRect").Value<QRectF>();
@@ -331,14 +335,17 @@ namespace Qyoto {
 		public List<QGraphicsView> Views() {
 			return ProxyQGraphicsScene().Views();
 		}
+		[Q_SLOT("void update(const QRectF&)")]
 		[SmokeMethod("update(const QRectF&)")]
 		public void Update(QRectF rect) {
 			ProxyQGraphicsScene().Update(rect);
 		}
+		[Q_SLOT("void update()")]
 		[SmokeMethod("update()")]
 		public void Update() {
 			ProxyQGraphicsScene().Update();
 		}
+		[Q_SLOT("void advance()")]
 		[SmokeMethod("advance()")]
 		public void Advance() {
 			ProxyQGraphicsScene().Advance();

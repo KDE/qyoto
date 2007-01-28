@@ -116,26 +116,32 @@ namespace Qyoto {
 		public QAbstractItemModel Model() {
 			return ProxyQItemSelectionModel().Model();
 		}
+		[Q_SLOT("void setCurrentIndex(const QModelIndex&, QItemSelectionModel::SelectionFlags)")]
 		[SmokeMethod("setCurrentIndex(const QModelIndex&, QItemSelectionModel::SelectionFlags)")]
 		public void SetCurrentIndex(QModelIndex index, int command) {
 			ProxyQItemSelectionModel().SetCurrentIndex(index,command);
 		}
+		[Q_SLOT("void select(const QModelIndex&, QItemSelectionModel::SelectionFlags)")]
 		[SmokeMethod("select(const QModelIndex&, QItemSelectionModel::SelectionFlags)")]
 		public virtual void Select(QModelIndex index, int command) {
 			ProxyQItemSelectionModel().Select(index,command);
 		}
+		[Q_SLOT("void select(const QItemSelection&, QItemSelectionModel::SelectionFlags)")]
 		[SmokeMethod("select(const QItemSelection&, QItemSelectionModel::SelectionFlags)")]
 		public virtual void Select(QItemSelection selection, int command) {
 			ProxyQItemSelectionModel().Select(selection,command);
 		}
+		[Q_SLOT("void clear()")]
 		[SmokeMethod("clear()")]
 		public virtual void Clear() {
 			ProxyQItemSelectionModel().Clear();
 		}
+		[Q_SLOT("void reset()")]
 		[SmokeMethod("reset()")]
 		public virtual void Reset() {
 			ProxyQItemSelectionModel().Reset();
 		}
+		[Q_SLOT("void clearSelection()")]
 		[SmokeMethod("clearSelection()")]
 		public void ClearSelection() {
 			ProxyQItemSelectionModel().ClearSelection();

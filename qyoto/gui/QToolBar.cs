@@ -29,6 +29,7 @@ namespace Qyoto {
 			return (IQToolBarProxy) _staticInterceptor;
 		}
 
+		[Q_PROPERTY("bool", "movable")]
 		public bool Movable {
 			get {
 				return Property("movable").Value<bool>();
@@ -37,6 +38,7 @@ namespace Qyoto {
 				SetProperty("movable", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("Qt::ToolBarAreas", "allowedAreas")]
 		public int AllowedAreas {
 			get {
 				return Property("allowedAreas").Value<int>();
@@ -45,6 +47,7 @@ namespace Qyoto {
 				SetProperty("allowedAreas", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("Qt::Orientation", "orientation")]
 		public Qt.Orientation Orientation {
 			get {
 				return Property("orientation").Value<Qt.Orientation>();
@@ -53,6 +56,7 @@ namespace Qyoto {
 				SetProperty("orientation", QVariant.FromValue<Qt.Orientation>(value));
 			}
 		}
+		[Q_PROPERTY("QSize", "iconSize")]
 		public QSize IconSize {
 			get {
 				return Property("iconSize").Value<QSize>();
@@ -61,6 +65,7 @@ namespace Qyoto {
 				SetProperty("iconSize", QVariant.FromValue<QSize>(value));
 			}
 		}
+		[Q_PROPERTY("Qt::ToolButtonStyle", "toolButtonStyle")]
 		public Qt.ToolButtonStyle ToolButtonStyle {
 			get {
 				return Property("toolButtonStyle").Value<Qt.ToolButtonStyle>();

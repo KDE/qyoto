@@ -99,14 +99,17 @@ namespace Qyoto {
 		public bool IsClean() {
 			return ProxyQUndoGroup().IsClean();
 		}
+		[Q_SLOT("void undo()")]
 		[SmokeMethod("undo()")]
 		public void Undo() {
 			ProxyQUndoGroup().Undo();
 		}
+		[Q_SLOT("void redo()")]
 		[SmokeMethod("redo()")]
 		public void Redo() {
 			ProxyQUndoGroup().Redo();
 		}
+		[Q_SLOT("void setActiveStack(QUndoStack*)")]
 		[SmokeMethod("setActiveStack(QUndoStack*)")]
 		public void SetActiveStack(QUndoStack stack) {
 			ProxyQUndoGroup().SetActiveStack(stack);

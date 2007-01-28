@@ -141,18 +141,6 @@ namespace Qyoto {
 		public static new string Tr(string s) {
 			return StaticQPlastiqueStyle().Tr(s);
 		}
-		[SmokeMethod("standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const")]
-		protected new QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon, out int opt, QWidget widget) {
-			return ProxyQPlastiqueStyle().StandardIconImplementation(standardIcon,out opt,widget);
-		}
-		[SmokeMethod("standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*) const")]
-		protected new QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon, out int opt) {
-			return ProxyQPlastiqueStyle().StandardIconImplementation(standardIcon,out opt);
-		}
-		[SmokeMethod("standardIconImplementation(QStyle::StandardPixmap) const")]
-		protected new QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon) {
-			return ProxyQPlastiqueStyle().StandardIconImplementation(standardIcon);
-		}
 		[SmokeMethod("eventFilter(QObject*, QEvent*)")]
 		public new bool EventFilter(QObject watched, QEvent arg2) {
 			return ProxyQPlastiqueStyle().EventFilter(watched,arg2);
@@ -160,6 +148,21 @@ namespace Qyoto {
 		[SmokeMethod("timerEvent(QTimerEvent*)")]
 		protected new void TimerEvent(QTimerEvent arg1) {
 			ProxyQPlastiqueStyle().TimerEvent(arg1);
+		}
+		[Q_SLOT("QIcon standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const")]
+		[SmokeMethod("standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const")]
+		protected new QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon, out int opt, QWidget widget) {
+			return ProxyQPlastiqueStyle().StandardIconImplementation(standardIcon,out opt,widget);
+		}
+		[Q_SLOT("QIcon standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*) const")]
+		[SmokeMethod("standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*) const")]
+		protected new QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon, out int opt) {
+			return ProxyQPlastiqueStyle().StandardIconImplementation(standardIcon,out opt);
+		}
+		[Q_SLOT("QIcon standardIconImplementation(QStyle::StandardPixmap) const")]
+		[SmokeMethod("standardIconImplementation(QStyle::StandardPixmap) const")]
+		protected new QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon) {
+			return ProxyQPlastiqueStyle().StandardIconImplementation(standardIcon);
 		}
 		~QPlastiqueStyle() {
 			DisposeQPlastiqueStyle();

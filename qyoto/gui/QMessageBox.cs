@@ -126,6 +126,7 @@ namespace Qyoto {
 			FlagMask = 0x00000300,
 			ButtonMask = ~FlagMask,
 		}
+		[Q_PROPERTY("QString", "text")]
 		public string Text {
 			get {
 				return Property("text").Value<string>();
@@ -134,6 +135,7 @@ namespace Qyoto {
 				SetProperty("text", QVariant.FromValue<string>(value));
 			}
 		}
+		[Q_PROPERTY("QMessageBox::Icon", "icon")]
 		public QMessageBox.Icon icon {
 			get {
 				return Property("icon").Value<QMessageBox.Icon>();
@@ -142,6 +144,7 @@ namespace Qyoto {
 				SetProperty("icon", QVariant.FromValue<QMessageBox.Icon>(value));
 			}
 		}
+		[Q_PROPERTY("QPixmap", "iconPixmap")]
 		public QPixmap IconPixmap {
 			get {
 				return Property("iconPixmap").Value<QPixmap>();
@@ -150,6 +153,7 @@ namespace Qyoto {
 				SetProperty("iconPixmap", QVariant.FromValue<QPixmap>(value));
 			}
 		}
+		[Q_PROPERTY("Qt::TextFormat", "textFormat")]
 		public Qt.TextFormat TextFormat {
 			get {
 				return Property("textFormat").Value<Qt.TextFormat>();
@@ -158,6 +162,7 @@ namespace Qyoto {
 				SetProperty("textFormat", QVariant.FromValue<Qt.TextFormat>(value));
 			}
 		}
+		[Q_PROPERTY("StandardButtons", "standardButtons")]
 		public int StandardButtons {
 			get {
 				return Property("standardButtons").Value<int>();
@@ -166,6 +171,7 @@ namespace Qyoto {
 				SetProperty("standardButtons", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("QString", "detailedText")]
 		public string DetailedText {
 			get {
 				return Property("detailedText").Value<string>();
@@ -174,6 +180,7 @@ namespace Qyoto {
 				SetProperty("detailedText", QVariant.FromValue<string>(value));
 			}
 		}
+		[Q_PROPERTY("QString", "informativeText")]
 		public string InformativeText {
 			get {
 				return Property("informativeText").Value<string>();

@@ -28,6 +28,7 @@ namespace Qyoto {
 			return (IQIntValidatorProxy) _staticInterceptor;
 		}
 
+		[Q_PROPERTY("int", "bottom")]
 		public int Bottom {
 			get {
 				return Property("bottom").Value<int>();
@@ -36,6 +37,7 @@ namespace Qyoto {
 				SetProperty("bottom", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("int", "top")]
 		public int Top {
 			get {
 				return Property("top").Value<int>();

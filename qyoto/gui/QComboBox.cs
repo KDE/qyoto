@@ -44,6 +44,7 @@ namespace Qyoto {
 			AdjustToContentsOnFirstShow = 1,
 			AdjustToMinimumContentsLength = 2,
 		}
+		[Q_PROPERTY("bool", "editable")]
 		public bool Editable {
 			get {
 				return Property("editable").Value<bool>();
@@ -52,16 +53,19 @@ namespace Qyoto {
 				SetProperty("editable", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("int", "count")]
 		public int Count {
 			get {
 				return Property("count").Value<int>();
 			}
 		}
+		[Q_PROPERTY("QString", "currentText")]
 		public string CurrentText {
 			get {
 				return Property("currentText").Value<string>();
 			}
 		}
+		[Q_PROPERTY("int", "currentIndex")]
 		public int CurrentIndex {
 			get {
 				return Property("currentIndex").Value<int>();
@@ -70,6 +74,7 @@ namespace Qyoto {
 				SetProperty("currentIndex", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("int", "maxVisibleItems")]
 		public int MaxVisibleItems {
 			get {
 				return Property("maxVisibleItems").Value<int>();
@@ -78,6 +83,7 @@ namespace Qyoto {
 				SetProperty("maxVisibleItems", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("int", "maxCount")]
 		public int MaxCount {
 			get {
 				return Property("maxCount").Value<int>();
@@ -86,6 +92,7 @@ namespace Qyoto {
 				SetProperty("maxCount", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("QComboBox::InsertPolicy", "insertPolicy")]
 		public QComboBox.InsertPolicy insertPolicy {
 			get {
 				return Property("insertPolicy").Value<QComboBox.InsertPolicy>();
@@ -94,6 +101,7 @@ namespace Qyoto {
 				SetProperty("insertPolicy", QVariant.FromValue<QComboBox.InsertPolicy>(value));
 			}
 		}
+		[Q_PROPERTY("QComboBox::SizeAdjustPolicy", "sizeAdjustPolicy")]
 		public QComboBox.SizeAdjustPolicy sizeAdjustPolicy {
 			get {
 				return Property("sizeAdjustPolicy").Value<QComboBox.SizeAdjustPolicy>();
@@ -102,6 +110,7 @@ namespace Qyoto {
 				SetProperty("sizeAdjustPolicy", QVariant.FromValue<QComboBox.SizeAdjustPolicy>(value));
 			}
 		}
+		[Q_PROPERTY("int", "minimumContentsLength")]
 		public int MinimumContentsLength {
 			get {
 				return Property("minimumContentsLength").Value<int>();
@@ -110,6 +119,7 @@ namespace Qyoto {
 				SetProperty("minimumContentsLength", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("QSize", "iconSize")]
 		public QSize IconSize {
 			get {
 				return Property("iconSize").Value<QSize>();
@@ -118,6 +128,7 @@ namespace Qyoto {
 				SetProperty("iconSize", QVariant.FromValue<QSize>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "autoCompletion")]
 		public bool AutoCompletion {
 			get {
 				return Property("autoCompletion").Value<bool>();
@@ -126,6 +137,7 @@ namespace Qyoto {
 				SetProperty("autoCompletion", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("Qt::CaseSensitivity", "autoCompletionCaseSensitivity")]
 		public Qt.CaseSensitivity AutoCompletionCaseSensitivity {
 			get {
 				return Property("autoCompletionCaseSensitivity").Value<Qt.CaseSensitivity>();
@@ -134,6 +146,7 @@ namespace Qyoto {
 				SetProperty("autoCompletionCaseSensitivity", QVariant.FromValue<Qt.CaseSensitivity>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "duplicatesEnabled")]
 		public bool DuplicatesEnabled {
 			get {
 				return Property("duplicatesEnabled").Value<bool>();
@@ -142,6 +155,7 @@ namespace Qyoto {
 				SetProperty("duplicatesEnabled", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "frame")]
 		public bool Frame {
 			get {
 				return Property("frame").Value<bool>();
@@ -150,6 +164,7 @@ namespace Qyoto {
 				SetProperty("frame", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("int", "modelColumn")]
 		public int ModelColumn {
 			get {
 				return Property("modelColumn").Value<int>();
@@ -355,14 +370,17 @@ namespace Qyoto {
 		public new bool Event(QEvent arg1) {
 			return ProxyQComboBox().Event(arg1);
 		}
+		[Q_SLOT("void clear()")]
 		[SmokeMethod("clear()")]
 		public void Clear() {
 			ProxyQComboBox().Clear();
 		}
+		[Q_SLOT("void clearEditText()")]
 		[SmokeMethod("clearEditText()")]
 		public void ClearEditText() {
 			ProxyQComboBox().ClearEditText();
 		}
+		[Q_SLOT("void setEditText(const QString&)")]
 		[SmokeMethod("setEditText(const QString&)")]
 		public void SetEditText(string text) {
 			ProxyQComboBox().SetEditText(text);

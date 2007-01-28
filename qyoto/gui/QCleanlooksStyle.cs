@@ -165,10 +165,12 @@ namespace Qyoto {
 		public static new string Tr(string s) {
 			return StaticQCleanlooksStyle().Tr(s);
 		}
+		[Q_SLOT("QIcon standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const")]
 		[SmokeMethod("standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const")]
 		protected new QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon, out int option, QWidget widget) {
 			return ProxyQCleanlooksStyle().StandardIconImplementation(standardIcon,out option,widget);
 		}
+		[Q_SLOT("QIcon standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*) const")]
 		[SmokeMethod("standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*) const")]
 		protected new QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon, out int option) {
 			return ProxyQCleanlooksStyle().StandardIconImplementation(standardIcon,out option);

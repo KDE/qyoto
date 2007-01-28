@@ -29,6 +29,7 @@ namespace Qyoto {
 			return (IQUndoStackProxy) _staticInterceptor;
 		}
 
+		[Q_PROPERTY("bool", "active")]
 		public bool Active {
 			get {
 				return Property("active").Value<bool>();
@@ -126,18 +127,22 @@ namespace Qyoto {
 		public void EndMacro() {
 			ProxyQUndoStack().EndMacro();
 		}
+		[Q_SLOT("void setClean()")]
 		[SmokeMethod("setClean()")]
 		public void SetClean() {
 			ProxyQUndoStack().SetClean();
 		}
+		[Q_SLOT("void setIndex(int)")]
 		[SmokeMethod("setIndex(int)")]
 		public void SetIndex(int idx) {
 			ProxyQUndoStack().SetIndex(idx);
 		}
+		[Q_SLOT("void undo()")]
 		[SmokeMethod("undo()")]
 		public void Undo() {
 			ProxyQUndoStack().Undo();
 		}
+		[Q_SLOT("void redo()")]
 		[SmokeMethod("redo()")]
 		public void Redo() {
 			ProxyQUndoStack().Redo();

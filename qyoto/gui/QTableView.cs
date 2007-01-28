@@ -29,6 +29,7 @@ namespace Qyoto {
 			return (IQTableViewProxy) _staticInterceptor;
 		}
 
+		[Q_PROPERTY("bool", "showGrid")]
 		public bool ShowGrid {
 			get {
 				return Property("showGrid").Value<bool>();
@@ -37,6 +38,7 @@ namespace Qyoto {
 				SetProperty("showGrid", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("Qt::PenStyle", "gridStyle")]
 		public Qt.PenStyle GridStyle {
 			get {
 				return Property("gridStyle").Value<Qt.PenStyle>();
@@ -45,6 +47,7 @@ namespace Qyoto {
 				SetProperty("gridStyle", QVariant.FromValue<Qt.PenStyle>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "sortingEnabled")]
 		public bool SortingEnabled {
 			get {
 				return Property("sortingEnabled").Value<bool>();
@@ -182,46 +185,57 @@ namespace Qyoto {
 		public void SortByColumn(int column, Qt.SortOrder order) {
 			ProxyQTableView().SortByColumn(column,order);
 		}
+		[Q_SLOT("void selectRow(int)")]
 		[SmokeMethod("selectRow(int)")]
 		public void SelectRow(int row) {
 			ProxyQTableView().SelectRow(row);
 		}
+		[Q_SLOT("void selectColumn(int)")]
 		[SmokeMethod("selectColumn(int)")]
 		public void SelectColumn(int column) {
 			ProxyQTableView().SelectColumn(column);
 		}
+		[Q_SLOT("void hideRow(int)")]
 		[SmokeMethod("hideRow(int)")]
 		public void HideRow(int row) {
 			ProxyQTableView().HideRow(row);
 		}
+		[Q_SLOT("void hideColumn(int)")]
 		[SmokeMethod("hideColumn(int)")]
 		public void HideColumn(int column) {
 			ProxyQTableView().HideColumn(column);
 		}
+		[Q_SLOT("void showRow(int)")]
 		[SmokeMethod("showRow(int)")]
 		public void ShowRow(int row) {
 			ProxyQTableView().ShowRow(row);
 		}
+		[Q_SLOT("void showColumn(int)")]
 		[SmokeMethod("showColumn(int)")]
 		public void ShowColumn(int column) {
 			ProxyQTableView().ShowColumn(column);
 		}
+		[Q_SLOT("void resizeRowToContents(int)")]
 		[SmokeMethod("resizeRowToContents(int)")]
 		public void ResizeRowToContents(int row) {
 			ProxyQTableView().ResizeRowToContents(row);
 		}
+		[Q_SLOT("void resizeRowsToContents()")]
 		[SmokeMethod("resizeRowsToContents()")]
 		public void ResizeRowsToContents() {
 			ProxyQTableView().ResizeRowsToContents();
 		}
+		[Q_SLOT("void resizeColumnToContents(int)")]
 		[SmokeMethod("resizeColumnToContents(int)")]
 		public void ResizeColumnToContents(int column) {
 			ProxyQTableView().ResizeColumnToContents(column);
 		}
+		[Q_SLOT("void resizeColumnsToContents()")]
 		[SmokeMethod("resizeColumnsToContents()")]
 		public void ResizeColumnsToContents() {
 			ProxyQTableView().ResizeColumnsToContents();
 		}
+		[Q_SLOT("void sortByColumn(int)")]
 		[SmokeMethod("sortByColumn(int)")]
 		public void SortByColumn(int column) {
 			ProxyQTableView().SortByColumn(column);
@@ -233,30 +247,6 @@ namespace Qyoto {
 		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQTableView().Tr(s);
-		}
-		[SmokeMethod("rowMoved(int, int, int)")]
-		protected void RowMoved(int row, int oldIndex, int newIndex) {
-			ProxyQTableView().RowMoved(row,oldIndex,newIndex);
-		}
-		[SmokeMethod("columnMoved(int, int, int)")]
-		protected void ColumnMoved(int column, int oldIndex, int newIndex) {
-			ProxyQTableView().ColumnMoved(column,oldIndex,newIndex);
-		}
-		[SmokeMethod("rowResized(int, int, int)")]
-		protected void RowResized(int row, int oldHeight, int newHeight) {
-			ProxyQTableView().RowResized(row,oldHeight,newHeight);
-		}
-		[SmokeMethod("columnResized(int, int, int)")]
-		protected void ColumnResized(int column, int oldWidth, int newWidth) {
-			ProxyQTableView().ColumnResized(column,oldWidth,newWidth);
-		}
-		[SmokeMethod("rowCountChanged(int, int)")]
-		protected void RowCountChanged(int oldCount, int newCount) {
-			ProxyQTableView().RowCountChanged(oldCount,newCount);
-		}
-		[SmokeMethod("columnCountChanged(int, int)")]
-		protected void ColumnCountChanged(int oldCount, int newCount) {
-			ProxyQTableView().ColumnCountChanged(oldCount,newCount);
 		}
 		[SmokeMethod("scrollContentsBy(int, int)")]
 		protected new void ScrollContentsBy(int dx, int dy) {
@@ -321,6 +311,36 @@ namespace Qyoto {
 		[SmokeMethod("isIndexHidden(const QModelIndex&) const")]
 		protected new bool IsIndexHidden(QModelIndex index) {
 			return ProxyQTableView().IsIndexHidden(index);
+		}
+		[Q_SLOT("void rowMoved(int, int, int)")]
+		[SmokeMethod("rowMoved(int, int, int)")]
+		protected void RowMoved(int row, int oldIndex, int newIndex) {
+			ProxyQTableView().RowMoved(row,oldIndex,newIndex);
+		}
+		[Q_SLOT("void columnMoved(int, int, int)")]
+		[SmokeMethod("columnMoved(int, int, int)")]
+		protected void ColumnMoved(int column, int oldIndex, int newIndex) {
+			ProxyQTableView().ColumnMoved(column,oldIndex,newIndex);
+		}
+		[Q_SLOT("void rowResized(int, int, int)")]
+		[SmokeMethod("rowResized(int, int, int)")]
+		protected void RowResized(int row, int oldHeight, int newHeight) {
+			ProxyQTableView().RowResized(row,oldHeight,newHeight);
+		}
+		[Q_SLOT("void columnResized(int, int, int)")]
+		[SmokeMethod("columnResized(int, int, int)")]
+		protected void ColumnResized(int column, int oldWidth, int newWidth) {
+			ProxyQTableView().ColumnResized(column,oldWidth,newWidth);
+		}
+		[Q_SLOT("void rowCountChanged(int, int)")]
+		[SmokeMethod("rowCountChanged(int, int)")]
+		protected void RowCountChanged(int oldCount, int newCount) {
+			ProxyQTableView().RowCountChanged(oldCount,newCount);
+		}
+		[Q_SLOT("void columnCountChanged(int, int)")]
+		[SmokeMethod("columnCountChanged(int, int)")]
+		protected void ColumnCountChanged(int oldCount, int newCount) {
+			ProxyQTableView().ColumnCountChanged(oldCount,newCount);
 		}
 		~QTableView() {
 			DisposeQTableView();

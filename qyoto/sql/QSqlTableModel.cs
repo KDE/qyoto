@@ -187,18 +187,22 @@ namespace Qyoto {
 		public virtual void RevertRow(int row) {
 			ProxyQSqlTableModel().RevertRow(row);
 		}
+		[Q_SLOT("bool submit()")]
 		[SmokeMethod("submit()")]
 		public new bool Submit() {
 			return ProxyQSqlTableModel().Submit();
 		}
+		[Q_SLOT("void revert()")]
 		[SmokeMethod("revert()")]
 		public new void Revert() {
 			ProxyQSqlTableModel().Revert();
 		}
+		[Q_SLOT("bool submitAll()")]
 		[SmokeMethod("submitAll()")]
 		public bool SubmitAll() {
 			return ProxyQSqlTableModel().SubmitAll();
 		}
+		[Q_SLOT("void revertAll()")]
 		[SmokeMethod("revertAll()")]
 		public void RevertAll() {
 			ProxyQSqlTableModel().RevertAll();

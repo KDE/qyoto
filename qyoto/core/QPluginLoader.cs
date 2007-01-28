@@ -30,6 +30,7 @@ namespace Qyoto {
 			return (IQPluginLoaderProxy) _staticInterceptor;
 		}
 
+		[Q_PROPERTY("QString", "fileName")]
 		public string FileName {
 			get {
 				return Property("fileName").Value<string>();

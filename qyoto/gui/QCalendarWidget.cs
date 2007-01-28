@@ -44,6 +44,7 @@ namespace Qyoto {
 			NoSelection = 0,
 			SingleSelection = 1,
 		}
+		[Q_PROPERTY("QDate", "selectedDate")]
 		public QDate SelectedDate {
 			get {
 				return Property("selectedDate").Value<QDate>();
@@ -52,6 +53,7 @@ namespace Qyoto {
 				SetProperty("selectedDate", QVariant.FromValue<QDate>(value));
 			}
 		}
+		[Q_PROPERTY("QDate", "minimumDate")]
 		public QDate MinimumDate {
 			get {
 				return Property("minimumDate").Value<QDate>();
@@ -60,6 +62,7 @@ namespace Qyoto {
 				SetProperty("minimumDate", QVariant.FromValue<QDate>(value));
 			}
 		}
+		[Q_PROPERTY("QDate", "maximumDate")]
 		public QDate MaximumDate {
 			get {
 				return Property("maximumDate").Value<QDate>();
@@ -68,6 +71,7 @@ namespace Qyoto {
 				SetProperty("maximumDate", QVariant.FromValue<QDate>(value));
 			}
 		}
+		[Q_PROPERTY("Qt::DayOfWeek", "firstDayOfWeek")]
 		public Qt.DayOfWeek FirstDayOfWeek {
 			get {
 				return Property("firstDayOfWeek").Value<Qt.DayOfWeek>();
@@ -76,6 +80,7 @@ namespace Qyoto {
 				SetProperty("firstDayOfWeek", QVariant.FromValue<Qt.DayOfWeek>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "gridVisible")]
 		public bool GridVisible {
 			get {
 				return Property("gridVisible").Value<bool>();
@@ -84,6 +89,7 @@ namespace Qyoto {
 				SetProperty("gridVisible", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("QCalendarWidget::SelectionMode", "selectionMode")]
 		public QCalendarWidget.SelectionMode selectionMode {
 			get {
 				return Property("selectionMode").Value<QCalendarWidget.SelectionMode>();
@@ -92,6 +98,7 @@ namespace Qyoto {
 				SetProperty("selectionMode", QVariant.FromValue<QCalendarWidget.SelectionMode>(value));
 			}
 		}
+		[Q_PROPERTY("QCalendarWidget::HorizontalHeaderFormat", "horizontalHeaderFormat")]
 		public QCalendarWidget.HorizontalHeaderFormat horizontalHeaderFormat {
 			get {
 				return Property("horizontalHeaderFormat").Value<QCalendarWidget.HorizontalHeaderFormat>();
@@ -100,6 +107,7 @@ namespace Qyoto {
 				SetProperty("horizontalHeaderFormat", QVariant.FromValue<QCalendarWidget.HorizontalHeaderFormat>(value));
 			}
 		}
+		[Q_PROPERTY("QCalendarWidget::VerticalHeaderFormat", "verticalHeaderFormat")]
 		public QCalendarWidget.VerticalHeaderFormat verticalHeaderFormat {
 			get {
 				return Property("verticalHeaderFormat").Value<QCalendarWidget.VerticalHeaderFormat>();
@@ -108,6 +116,7 @@ namespace Qyoto {
 				SetProperty("verticalHeaderFormat", QVariant.FromValue<QCalendarWidget.VerticalHeaderFormat>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "headerVisible")]
 		public bool HeaderVisible {
 			get {
 				return Property("headerVisible").Value<bool>();
@@ -185,34 +194,42 @@ namespace Qyoto {
 		public void SetDateTextFormat(QDate date, QTextCharFormat color) {
 			ProxyQCalendarWidget().SetDateTextFormat(date,color);
 		}
+		[Q_SLOT("void setDateRange(const QDate&, const QDate&)")]
 		[SmokeMethod("setDateRange(const QDate&, const QDate&)")]
 		public void SetDateRange(QDate min, QDate max) {
 			ProxyQCalendarWidget().SetDateRange(min,max);
 		}
+		[Q_SLOT("void setCurrentPage(int, int)")]
 		[SmokeMethod("setCurrentPage(int, int)")]
 		public void SetCurrentPage(int year, int month) {
 			ProxyQCalendarWidget().SetCurrentPage(year,month);
 		}
+		[Q_SLOT("void showNextMonth()")]
 		[SmokeMethod("showNextMonth()")]
 		public void ShowNextMonth() {
 			ProxyQCalendarWidget().ShowNextMonth();
 		}
+		[Q_SLOT("void showPreviousMonth()")]
 		[SmokeMethod("showPreviousMonth()")]
 		public void ShowPreviousMonth() {
 			ProxyQCalendarWidget().ShowPreviousMonth();
 		}
+		[Q_SLOT("void showNextYear()")]
 		[SmokeMethod("showNextYear()")]
 		public void ShowNextYear() {
 			ProxyQCalendarWidget().ShowNextYear();
 		}
+		[Q_SLOT("void showPreviousYear()")]
 		[SmokeMethod("showPreviousYear()")]
 		public void ShowPreviousYear() {
 			ProxyQCalendarWidget().ShowPreviousYear();
 		}
+		[Q_SLOT("void showSelectedDate()")]
 		[SmokeMethod("showSelectedDate()")]
 		public void ShowSelectedDate() {
 			ProxyQCalendarWidget().ShowSelectedDate();
 		}
+		[Q_SLOT("void showToday()")]
 		[SmokeMethod("showToday()")]
 		public void ShowToday() {
 			ProxyQCalendarWidget().ShowToday();

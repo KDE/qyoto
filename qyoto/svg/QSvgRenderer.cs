@@ -29,6 +29,7 @@ namespace Qyoto {
 			return (IQSvgRendererProxy) _staticInterceptor;
 		}
 
+		[Q_PROPERTY("QRectF", "viewBox")]
 		public QRectF ViewBox {
 			get {
 				return Property("viewBox").Value<QRectF>();
@@ -37,6 +38,7 @@ namespace Qyoto {
 				SetProperty("viewBox", QVariant.FromValue<QRectF>(value));
 			}
 		}
+		[Q_PROPERTY("int", "framesPerSecond")]
 		public int FramesPerSecond {
 			get {
 				return Property("framesPerSecond").Value<int>();
@@ -45,6 +47,7 @@ namespace Qyoto {
 				SetProperty("framesPerSecond", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("int", "currentFrame")]
 		public int CurrentFrame {
 			get {
 				return Property("currentFrame").Value<int>();
@@ -134,26 +137,32 @@ namespace Qyoto {
 		public QMatrix MatrixForElement(string id) {
 			return ProxyQSvgRenderer().MatrixForElement(id);
 		}
+		[Q_SLOT("bool load(const QString&)")]
 		[SmokeMethod("load(const QString&)")]
 		public bool Load(string filename) {
 			return ProxyQSvgRenderer().Load(filename);
 		}
+		[Q_SLOT("bool load(const QByteArray&)")]
 		[SmokeMethod("load(const QByteArray&)")]
 		public bool Load(QByteArray contents) {
 			return ProxyQSvgRenderer().Load(contents);
 		}
+		[Q_SLOT("void render(QPainter*)")]
 		[SmokeMethod("render(QPainter*)")]
 		public void Render(QPainter p) {
 			ProxyQSvgRenderer().Render(p);
 		}
+		[Q_SLOT("void render(QPainter*, const QRectF&)")]
 		[SmokeMethod("render(QPainter*, const QRectF&)")]
 		public void Render(QPainter p, QRectF bounds) {
 			ProxyQSvgRenderer().Render(p,bounds);
 		}
+		[Q_SLOT("void render(QPainter*, const QString&, const QRectF&)")]
 		[SmokeMethod("render(QPainter*, const QString&, const QRectF&)")]
 		public void Render(QPainter p, string elementId, QRectF bounds) {
 			ProxyQSvgRenderer().Render(p,elementId,bounds);
 		}
+		[Q_SLOT("void render(QPainter*, const QString&)")]
 		[SmokeMethod("render(QPainter*, const QString&)")]
 		public void Render(QPainter p, string elementId) {
 			ProxyQSvgRenderer().Render(p,elementId);

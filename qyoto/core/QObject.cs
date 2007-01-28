@@ -54,6 +54,7 @@ namespace Qyoto {
 			return (IQObjectProxy) _staticInterceptor;
 		}
 
+		[Q_PROPERTY("QString", "objectName")]
 		public string ObjectName {
 			get {
 				return Property("objectName").Value<string>();
@@ -187,6 +188,7 @@ namespace Qyoto {
 		public bool Inherits(string classname) {
 			return ProxyQObject().Inherits(classname);
 		}
+		[Q_SLOT("void deleteLater()")]
 		[SmokeMethod("deleteLater()")]
 		public void DeleteLater() {
 			ProxyQObject().DeleteLater();

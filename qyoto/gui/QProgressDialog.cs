@@ -29,11 +29,13 @@ namespace Qyoto {
 			return (IQProgressDialogProxy) _staticInterceptor;
 		}
 
+		[Q_PROPERTY("bool", "wasCanceled")]
 		public bool WasCanceled {
 			get {
 				return Property("wasCanceled").Value<bool>();
 			}
 		}
+		[Q_PROPERTY("int", "minimum")]
 		public int Minimum {
 			get {
 				return Property("minimum").Value<int>();
@@ -42,6 +44,7 @@ namespace Qyoto {
 				SetProperty("minimum", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("int", "maximum")]
 		public int Maximum {
 			get {
 				return Property("maximum").Value<int>();
@@ -50,6 +53,7 @@ namespace Qyoto {
 				SetProperty("maximum", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("int", "value")]
 		public int Value {
 			get {
 				return Property("value").Value<int>();
@@ -58,6 +62,7 @@ namespace Qyoto {
 				SetProperty("value", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "autoReset")]
 		public bool AutoReset {
 			get {
 				return Property("autoReset").Value<bool>();
@@ -66,6 +71,7 @@ namespace Qyoto {
 				SetProperty("autoReset", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "autoClose")]
 		public bool AutoClose {
 			get {
 				return Property("autoClose").Value<bool>();
@@ -74,6 +80,7 @@ namespace Qyoto {
 				SetProperty("autoClose", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("int", "minimumDuration")]
 		public int MinimumDuration {
 			get {
 				return Property("minimumDuration").Value<int>();
@@ -82,6 +89,7 @@ namespace Qyoto {
 				SetProperty("minimumDuration", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("QString", "labelText")]
 		public string LabelText {
 			get {
 				return Property("labelText").Value<string>();
@@ -159,14 +167,17 @@ namespace Qyoto {
 		public new QSize SizeHint() {
 			return ProxyQProgressDialog().SizeHint();
 		}
+		[Q_SLOT("void cancel()")]
 		[SmokeMethod("cancel()")]
 		public void Cancel() {
 			ProxyQProgressDialog().Cancel();
 		}
+		[Q_SLOT("void reset()")]
 		[SmokeMethod("reset()")]
 		public void Reset() {
 			ProxyQProgressDialog().Reset();
 		}
+		[Q_SLOT("void setCancelButtonText(const QString&)")]
 		[SmokeMethod("setCancelButtonText(const QString&)")]
 		public void SetCancelButtonText(string arg1) {
 			ProxyQProgressDialog().SetCancelButtonText(arg1);
@@ -195,6 +206,7 @@ namespace Qyoto {
 		public new void ShowEvent(QShowEvent e) {
 			ProxyQProgressDialog().ShowEvent(e);
 		}
+		[Q_SLOT("void forceShow()")]
 		[SmokeMethod("forceShow()")]
 		protected void ForceShow() {
 			ProxyQProgressDialog().ForceShow();

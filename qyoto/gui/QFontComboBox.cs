@@ -36,6 +36,7 @@ namespace Qyoto {
 			MonospacedFonts = 0x4,
 			ProportionalFonts = 0x8,
 		}
+		[Q_PROPERTY("QFontDatabase::WritingSystem", "writingSystem")]
 		public QFontDatabase.WritingSystem WritingSystem {
 			get {
 				return Property("writingSystem").Value<QFontDatabase.WritingSystem>();
@@ -44,6 +45,7 @@ namespace Qyoto {
 				SetProperty("writingSystem", QVariant.FromValue<QFontDatabase.WritingSystem>(value));
 			}
 		}
+		[Q_PROPERTY("FontFilters", "fontFilters")]
 		public int FontFilters {
 			get {
 				return Property("fontFilters").Value<int>();
@@ -52,6 +54,7 @@ namespace Qyoto {
 				SetProperty("fontFilters", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("QFont", "currentFont")]
 		public QFont CurrentFont {
 			get {
 				return Property("currentFont").Value<QFont>();

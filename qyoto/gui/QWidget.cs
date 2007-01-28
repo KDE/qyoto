@@ -34,11 +34,13 @@ namespace Qyoto {
 			return (IQWidgetProxy) _staticInterceptor;
 		}
 
+		[Q_PROPERTY("bool", "modal")]
 		public bool Modal {
 			get {
 				return Property("modal").Value<bool>();
 			}
 		}
+		[Q_PROPERTY("Qt::WindowModality", "windowModality")]
 		public Qt.WindowModality WindowModality {
 			get {
 				return Property("windowModality").Value<Qt.WindowModality>();
@@ -47,6 +49,7 @@ namespace Qyoto {
 				SetProperty("windowModality", QVariant.FromValue<Qt.WindowModality>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "enabled")]
 		public bool Enabled {
 			get {
 				return Property("enabled").Value<bool>();
@@ -55,6 +58,7 @@ namespace Qyoto {
 				SetProperty("enabled", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("QRect", "geometry")]
 		public QRect Geometry {
 			get {
 				return Property("geometry").Value<QRect>();
@@ -63,26 +67,31 @@ namespace Qyoto {
 				SetProperty("geometry", QVariant.FromValue<QRect>(value));
 			}
 		}
+		[Q_PROPERTY("QRect", "frameGeometry")]
 		public QRect FrameGeometry {
 			get {
 				return Property("frameGeometry").Value<QRect>();
 			}
 		}
+		[Q_PROPERTY("QRect", "normalGeometry")]
 		public QRect NormalGeometry {
 			get {
 				return Property("normalGeometry").Value<QRect>();
 			}
 		}
+		[Q_PROPERTY("int", "x")]
 		public int X {
 			get {
 				return Property("x").Value<int>();
 			}
 		}
+		[Q_PROPERTY("int", "y")]
 		public int Y {
 			get {
 				return Property("y").Value<int>();
 			}
 		}
+		[Q_PROPERTY("QPoint", "pos")]
 		public QPoint Pos {
 			get {
 				return Property("pos").Value<QPoint>();
@@ -91,11 +100,13 @@ namespace Qyoto {
 				SetProperty("pos", QVariant.FromValue<QPoint>(value));
 			}
 		}
+		[Q_PROPERTY("QSize", "frameSize")]
 		public QSize FrameSize {
 			get {
 				return Property("frameSize").Value<QSize>();
 			}
 		}
+		[Q_PROPERTY("QSize", "size")]
 		public QSize Size {
 			get {
 				return Property("size").Value<QSize>();
@@ -104,21 +115,25 @@ namespace Qyoto {
 				SetProperty("size", QVariant.FromValue<QSize>(value));
 			}
 		}
+		[Q_PROPERTY("QRect", "rect")]
 		public QRect Rect {
 			get {
 				return Property("rect").Value<QRect>();
 			}
 		}
+		[Q_PROPERTY("QRect", "childrenRect")]
 		public QRect ChildrenRect {
 			get {
 				return Property("childrenRect").Value<QRect>();
 			}
 		}
+		[Q_PROPERTY("QRegion", "childrenRegion")]
 		public QRegion ChildrenRegion {
 			get {
 				return Property("childrenRegion").Value<QRegion>();
 			}
 		}
+		[Q_PROPERTY("QSizePolicy", "sizePolicy")]
 		public QSizePolicy SizePolicy {
 			get {
 				return Property("sizePolicy").Value<QSizePolicy>();
@@ -127,6 +142,7 @@ namespace Qyoto {
 				SetProperty("sizePolicy", QVariant.FromValue<QSizePolicy>(value));
 			}
 		}
+		[Q_PROPERTY("QSize", "minimumSize")]
 		public QSize MinimumSize {
 			get {
 				return Property("minimumSize").Value<QSize>();
@@ -135,6 +151,7 @@ namespace Qyoto {
 				SetProperty("minimumSize", QVariant.FromValue<QSize>(value));
 			}
 		}
+		[Q_PROPERTY("QSize", "maximumSize")]
 		public QSize MaximumSize {
 			get {
 				return Property("maximumSize").Value<QSize>();
@@ -143,6 +160,7 @@ namespace Qyoto {
 				SetProperty("maximumSize", QVariant.FromValue<QSize>(value));
 			}
 		}
+		[Q_PROPERTY("int", "minimumWidth")]
 		public int MinimumWidth {
 			get {
 				return Property("minimumWidth").Value<int>();
@@ -151,6 +169,7 @@ namespace Qyoto {
 				SetProperty("minimumWidth", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("int", "minimumHeight")]
 		public int MinimumHeight {
 			get {
 				return Property("minimumHeight").Value<int>();
@@ -159,6 +178,7 @@ namespace Qyoto {
 				SetProperty("minimumHeight", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("int", "maximumWidth")]
 		public int MaximumWidth {
 			get {
 				return Property("maximumWidth").Value<int>();
@@ -167,6 +187,7 @@ namespace Qyoto {
 				SetProperty("maximumWidth", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("int", "maximumHeight")]
 		public int MaximumHeight {
 			get {
 				return Property("maximumHeight").Value<int>();
@@ -175,6 +196,7 @@ namespace Qyoto {
 				SetProperty("maximumHeight", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("QSize", "sizeIncrement")]
 		public QSize SizeIncrement {
 			get {
 				return Property("sizeIncrement").Value<QSize>();
@@ -183,6 +205,7 @@ namespace Qyoto {
 				SetProperty("sizeIncrement", QVariant.FromValue<QSize>(value));
 			}
 		}
+		[Q_PROPERTY("QSize", "baseSize")]
 		public QSize BaseSize {
 			get {
 				return Property("baseSize").Value<QSize>();
@@ -191,6 +214,7 @@ namespace Qyoto {
 				SetProperty("baseSize", QVariant.FromValue<QSize>(value));
 			}
 		}
+		[Q_PROPERTY("QPalette", "palette")]
 		public QPalette Palette {
 			get {
 				return Property("palette").Value<QPalette>();
@@ -199,6 +223,7 @@ namespace Qyoto {
 				SetProperty("palette", QVariant.FromValue<QPalette>(value));
 			}
 		}
+		[Q_PROPERTY("QFont", "font")]
 		public QFont Font {
 			get {
 				return Property("font").Value<QFont>();
@@ -207,6 +232,7 @@ namespace Qyoto {
 				SetProperty("font", QVariant.FromValue<QFont>(value));
 			}
 		}
+		[Q_PROPERTY("QCursor", "cursor")]
 		public QCursor Cursor {
 			get {
 				return Property("cursor").Value<QCursor>();
@@ -215,6 +241,7 @@ namespace Qyoto {
 				SetProperty("cursor", QVariant.FromValue<QCursor>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "mouseTracking")]
 		public bool MouseTracking {
 			get {
 				return Property("mouseTracking").Value<bool>();
@@ -223,11 +250,13 @@ namespace Qyoto {
 				SetProperty("mouseTracking", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "isActiveWindow")]
 		public bool IsActiveWindow {
 			get {
 				return Property("isActiveWindow").Value<bool>();
 			}
 		}
+		[Q_PROPERTY("Qt::FocusPolicy", "focusPolicy")]
 		public Qt.FocusPolicy FocusPolicy {
 			get {
 				return Property("focusPolicy").Value<Qt.FocusPolicy>();
@@ -236,11 +265,13 @@ namespace Qyoto {
 				SetProperty("focusPolicy", QVariant.FromValue<Qt.FocusPolicy>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "focus")]
 		public bool Focus {
 			get {
 				return Property("focus").Value<bool>();
 			}
 		}
+		[Q_PROPERTY("Qt::ContextMenuPolicy", "contextMenuPolicy")]
 		public Qt.ContextMenuPolicy ContextMenuPolicy {
 			get {
 				return Property("contextMenuPolicy").Value<Qt.ContextMenuPolicy>();
@@ -249,6 +280,7 @@ namespace Qyoto {
 				SetProperty("contextMenuPolicy", QVariant.FromValue<Qt.ContextMenuPolicy>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "updatesEnabled")]
 		public bool UpdatesEnabled {
 			get {
 				return Property("updatesEnabled").Value<bool>();
@@ -257,6 +289,7 @@ namespace Qyoto {
 				SetProperty("updatesEnabled", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "visible")]
 		public bool Visible {
 			get {
 				return Property("visible").Value<bool>();
@@ -265,26 +298,31 @@ namespace Qyoto {
 				SetProperty("visible", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "minimized")]
 		public bool Minimized {
 			get {
 				return Property("minimized").Value<bool>();
 			}
 		}
+		[Q_PROPERTY("bool", "maximized")]
 		public bool Maximized {
 			get {
 				return Property("maximized").Value<bool>();
 			}
 		}
+		[Q_PROPERTY("bool", "fullScreen")]
 		public bool FullScreen {
 			get {
 				return Property("fullScreen").Value<bool>();
 			}
 		}
+		[Q_PROPERTY("QSize", "minimumSizeHint")]
 		public QSize MinimumSizeHint {
 			get {
 				return Property("minimumSizeHint").Value<QSize>();
 			}
 		}
+		[Q_PROPERTY("bool", "acceptDrops")]
 		public bool AcceptDrops {
 			get {
 				return Property("acceptDrops").Value<bool>();
@@ -293,6 +331,7 @@ namespace Qyoto {
 				SetProperty("acceptDrops", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("QString", "windowTitle")]
 		public string WindowTitle {
 			get {
 				return Property("windowTitle").Value<string>();
@@ -301,6 +340,7 @@ namespace Qyoto {
 				SetProperty("windowTitle", QVariant.FromValue<string>(value));
 			}
 		}
+		[Q_PROPERTY("QIcon", "windowIcon")]
 		public QIcon WindowIcon {
 			get {
 				return Property("windowIcon").Value<QIcon>();
@@ -309,6 +349,7 @@ namespace Qyoto {
 				SetProperty("windowIcon", QVariant.FromValue<QIcon>(value));
 			}
 		}
+		[Q_PROPERTY("QString", "windowIconText")]
 		public string WindowIconText {
 			get {
 				return Property("windowIconText").Value<string>();
@@ -317,6 +358,7 @@ namespace Qyoto {
 				SetProperty("windowIconText", QVariant.FromValue<string>(value));
 			}
 		}
+		[Q_PROPERTY("double", "windowOpacity")]
 		public double WindowOpacity {
 			get {
 				return Property("windowOpacity").Value<double>();
@@ -325,6 +367,7 @@ namespace Qyoto {
 				SetProperty("windowOpacity", QVariant.FromValue<double>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "windowModified")]
 		public bool WindowModified {
 			get {
 				return Property("windowModified").Value<bool>();
@@ -333,6 +376,7 @@ namespace Qyoto {
 				SetProperty("windowModified", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("QString", "toolTip")]
 		public string ToolTip {
 			get {
 				return Property("toolTip").Value<string>();
@@ -341,6 +385,7 @@ namespace Qyoto {
 				SetProperty("toolTip", QVariant.FromValue<string>(value));
 			}
 		}
+		[Q_PROPERTY("QString", "statusTip")]
 		public string StatusTip {
 			get {
 				return Property("statusTip").Value<string>();
@@ -349,6 +394,7 @@ namespace Qyoto {
 				SetProperty("statusTip", QVariant.FromValue<string>(value));
 			}
 		}
+		[Q_PROPERTY("QString", "whatsThis")]
 		public string WhatsThis {
 			get {
 				return Property("whatsThis").Value<string>();
@@ -357,6 +403,7 @@ namespace Qyoto {
 				SetProperty("whatsThis", QVariant.FromValue<string>(value));
 			}
 		}
+		[Q_PROPERTY("QString", "accessibleName")]
 		public string AccessibleName {
 			get {
 				return Property("accessibleName").Value<string>();
@@ -365,6 +412,7 @@ namespace Qyoto {
 				SetProperty("accessibleName", QVariant.FromValue<string>(value));
 			}
 		}
+		[Q_PROPERTY("QString", "accessibleDescription")]
 		public string AccessibleDescription {
 			get {
 				return Property("accessibleDescription").Value<string>();
@@ -373,6 +421,7 @@ namespace Qyoto {
 				SetProperty("accessibleDescription", QVariant.FromValue<string>(value));
 			}
 		}
+		[Q_PROPERTY("Qt::LayoutDirection", "layoutDirection")]
 		public Qt.LayoutDirection LayoutDirection {
 			get {
 				return Property("layoutDirection").Value<Qt.LayoutDirection>();
@@ -381,6 +430,7 @@ namespace Qyoto {
 				SetProperty("layoutDirection", QVariant.FromValue<Qt.LayoutDirection>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "autoFillBackground")]
 		public bool AutoFillBackground {
 			get {
 				return Property("autoFillBackground").Value<bool>();
@@ -389,6 +439,7 @@ namespace Qyoto {
 				SetProperty("autoFillBackground", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("QString", "styleSheet")]
 		public string StyleSheet {
 			get {
 				return Property("styleSheet").Value<string>();
@@ -469,10 +520,6 @@ namespace Qyoto {
 		[SmokeMethod("isEnabledToTLW() const")]
 		public bool IsEnabledToTLW() {
 			return ProxyQWidget().IsEnabledToTLW();
-		}
-		[SmokeMethod("setDisabled(bool)")]
-		public void SetDisabled(bool arg1) {
-			ProxyQWidget().SetDisabled(arg1);
 		}
 		[SmokeMethod("width() const")]
 		public int Width() {
@@ -622,10 +669,6 @@ namespace Qyoto {
 		public bool IsLeftToRight() {
 			return ProxyQWidget().IsLeftToRight();
 		}
-		[SmokeMethod("setFocus()")]
-		public void SetFocus() {
-			ProxyQWidget().SetFocus();
-		}
 		[SmokeMethod("activateWindow()")]
 		public void ActivateWindow() {
 			ProxyQWidget().ActivateWindow();
@@ -694,14 +737,6 @@ namespace Qyoto {
 		public void SetShortcutAutoRepeat(int id) {
 			ProxyQWidget().SetShortcutAutoRepeat(id);
 		}
-		[SmokeMethod("update()")]
-		public void Update() {
-			ProxyQWidget().Update();
-		}
-		[SmokeMethod("repaint()")]
-		public void Repaint() {
-			ProxyQWidget().Repaint();
-		}
 		[SmokeMethod("update(int, int, int, int)")]
 		public void Update(int x, int y, int w, int h) {
 			ProxyQWidget().Update(x,y,w,h);
@@ -725,50 +760,6 @@ namespace Qyoto {
 		[SmokeMethod("repaint(const QRegion&)")]
 		public void Repaint(QRegion arg1) {
 			ProxyQWidget().Repaint(arg1);
-		}
-		[SmokeMethod("setHidden(bool)")]
-		public void SetHidden(bool hidden) {
-			ProxyQWidget().SetHidden(hidden);
-		}
-		[SmokeMethod("show()")]
-		public void Show() {
-			ProxyQWidget().Show();
-		}
-		[SmokeMethod("hide()")]
-		public void Hide() {
-			ProxyQWidget().Hide();
-		}
-		[SmokeMethod("setShown(bool)")]
-		public void SetShown(bool shown) {
-			ProxyQWidget().SetShown(shown);
-		}
-		[SmokeMethod("showMinimized()")]
-		public void ShowMinimized() {
-			ProxyQWidget().ShowMinimized();
-		}
-		[SmokeMethod("showMaximized()")]
-		public void ShowMaximized() {
-			ProxyQWidget().ShowMaximized();
-		}
-		[SmokeMethod("showFullScreen()")]
-		public void ShowFullScreen() {
-			ProxyQWidget().ShowFullScreen();
-		}
-		[SmokeMethod("showNormal()")]
-		public void ShowNormal() {
-			ProxyQWidget().ShowNormal();
-		}
-		[SmokeMethod("close()")]
-		public bool Close() {
-			return ProxyQWidget().Close();
-		}
-		[SmokeMethod("raise()")]
-		public void Raise() {
-			ProxyQWidget().Raise();
-		}
-		[SmokeMethod("lower()")]
-		public void Lower() {
-			ProxyQWidget().Lower();
 		}
 		[SmokeMethod("stackUnder(QWidget*)")]
 		public void StackUnder(QWidget arg1) {
@@ -996,6 +987,81 @@ namespace Qyoto {
 		public virtual QVariant InputMethodQuery(Qt.InputMethodQuery arg1) {
 			return ProxyQWidget().InputMethodQuery(arg1);
 		}
+		[Q_SLOT("void setDisabled(bool)")]
+		[SmokeMethod("setDisabled(bool)")]
+		public void SetDisabled(bool arg1) {
+			ProxyQWidget().SetDisabled(arg1);
+		}
+		[Q_SLOT("void setFocus()")]
+		[SmokeMethod("setFocus()")]
+		public void SetFocus() {
+			ProxyQWidget().SetFocus();
+		}
+		[Q_SLOT("void update()")]
+		[SmokeMethod("update()")]
+		public void Update() {
+			ProxyQWidget().Update();
+		}
+		[Q_SLOT("void repaint()")]
+		[SmokeMethod("repaint()")]
+		public void Repaint() {
+			ProxyQWidget().Repaint();
+		}
+		[Q_SLOT("void setHidden(bool)")]
+		[SmokeMethod("setHidden(bool)")]
+		public void SetHidden(bool hidden) {
+			ProxyQWidget().SetHidden(hidden);
+		}
+		[Q_SLOT("void show()")]
+		[SmokeMethod("show()")]
+		public void Show() {
+			ProxyQWidget().Show();
+		}
+		[Q_SLOT("void hide()")]
+		[SmokeMethod("hide()")]
+		public void Hide() {
+			ProxyQWidget().Hide();
+		}
+		[Q_SLOT("void setShown(bool)")]
+		[SmokeMethod("setShown(bool)")]
+		public void SetShown(bool shown) {
+			ProxyQWidget().SetShown(shown);
+		}
+		[Q_SLOT("void showMinimized()")]
+		[SmokeMethod("showMinimized()")]
+		public void ShowMinimized() {
+			ProxyQWidget().ShowMinimized();
+		}
+		[Q_SLOT("void showMaximized()")]
+		[SmokeMethod("showMaximized()")]
+		public void ShowMaximized() {
+			ProxyQWidget().ShowMaximized();
+		}
+		[Q_SLOT("void showFullScreen()")]
+		[SmokeMethod("showFullScreen()")]
+		public void ShowFullScreen() {
+			ProxyQWidget().ShowFullScreen();
+		}
+		[Q_SLOT("void showNormal()")]
+		[SmokeMethod("showNormal()")]
+		public void ShowNormal() {
+			ProxyQWidget().ShowNormal();
+		}
+		[Q_SLOT("bool close()")]
+		[SmokeMethod("close()")]
+		public bool Close() {
+			return ProxyQWidget().Close();
+		}
+		[Q_SLOT("void raise()")]
+		[SmokeMethod("raise()")]
+		public void Raise() {
+			ProxyQWidget().Raise();
+		}
+		[Q_SLOT("void lower()")]
+		[SmokeMethod("lower()")]
+		public void Lower() {
+			ProxyQWidget().Lower();
+		}
 		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQWidget().Tr(s,c);
@@ -1136,10 +1202,6 @@ namespace Qyoto {
 		protected void ResetInputContext() {
 			ProxyQWidget().ResetInputContext();
 		}
-		[SmokeMethod("updateMicroFocus()")]
-		protected void UpdateMicroFocus() {
-			ProxyQWidget().UpdateMicroFocus();
-		}
 		[SmokeMethod("create(WId, bool, bool)")]
 		protected void Create(ulong arg1, bool initializeWindow, bool destroyOldWindow) {
 			ProxyQWidget().Create(arg1,initializeWindow,destroyOldWindow);
@@ -1203,6 +1265,11 @@ namespace Qyoto {
 		[SmokeMethod("languageChange()")]
 		protected virtual void LanguageChange() {
 			ProxyQWidget().LanguageChange();
+		}
+		[Q_SLOT("void updateMicroFocus()")]
+		[SmokeMethod("updateMicroFocus()")]
+		protected void UpdateMicroFocus() {
+			ProxyQWidget().UpdateMicroFocus();
 		}
 		~QWidget() {
 			DisposeQWidget();

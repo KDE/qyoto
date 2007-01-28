@@ -28,6 +28,7 @@ namespace Qyoto {
 			return (IQPushButtonProxy) _staticInterceptor;
 		}
 
+		[Q_PROPERTY("bool", "autoDefault")]
 		public bool AutoDefault {
 			get {
 				return Property("autoDefault").Value<bool>();
@@ -36,6 +37,7 @@ namespace Qyoto {
 				SetProperty("autoDefault", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "default")]
 		public bool Default {
 			get {
 				return Property("default").Value<bool>();
@@ -44,6 +46,7 @@ namespace Qyoto {
 				SetProperty("default", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "flat")]
 		public bool Flat {
 			get {
 				return Property("flat").Value<bool>();
@@ -121,6 +124,7 @@ namespace Qyoto {
 		public bool IsFlat() {
 			return ProxyQPushButton().IsFlat();
 		}
+		[Q_SLOT("void showMenu()")]
 		[SmokeMethod("showMenu()")]
 		public void ShowMenu() {
 			ProxyQPushButton().ShowMenu();

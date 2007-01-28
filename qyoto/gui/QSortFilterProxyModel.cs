@@ -29,6 +29,7 @@ namespace Qyoto {
 			return (IQSortFilterProxyModelProxy) _staticInterceptor;
 		}
 
+		[Q_PROPERTY("QRegExp", "filterRegExp")]
 		public QRegExp FilterRegExp {
 			get {
 				return Property("filterRegExp").Value<QRegExp>();
@@ -37,6 +38,7 @@ namespace Qyoto {
 				SetProperty("filterRegExp", QVariant.FromValue<QRegExp>(value));
 			}
 		}
+		[Q_PROPERTY("int", "filterKeyColumn")]
 		public int FilterKeyColumn {
 			get {
 				return Property("filterKeyColumn").Value<int>();
@@ -45,6 +47,7 @@ namespace Qyoto {
 				SetProperty("filterKeyColumn", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "dynamicSortFilter")]
 		public bool DynamicSortFilter {
 			get {
 				return Property("dynamicSortFilter").Value<bool>();
@@ -53,6 +56,7 @@ namespace Qyoto {
 				SetProperty("dynamicSortFilter", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("Qt::CaseSensitivity", "filterCaseSensitivity")]
 		public Qt.CaseSensitivity FilterCaseSensitivity {
 			get {
 				return Property("filterCaseSensitivity").Value<Qt.CaseSensitivity>();
@@ -61,6 +65,7 @@ namespace Qyoto {
 				SetProperty("filterCaseSensitivity", QVariant.FromValue<Qt.CaseSensitivity>(value));
 			}
 		}
+		[Q_PROPERTY("Qt::CaseSensitivity", "sortCaseSensitivity")]
 		public Qt.CaseSensitivity SortCaseSensitivity {
 			get {
 				return Property("sortCaseSensitivity").Value<Qt.CaseSensitivity>();
@@ -69,6 +74,7 @@ namespace Qyoto {
 				SetProperty("sortCaseSensitivity", QVariant.FromValue<Qt.CaseSensitivity>(value));
 			}
 		}
+		[Q_PROPERTY("int", "sortRole")]
 		public int SortRole {
 			get {
 				return Property("sortRole").Value<int>();
@@ -77,6 +83,7 @@ namespace Qyoto {
 				SetProperty("sortRole", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("int", "filterRole")]
 		public int FilterRole {
 			get {
 				return Property("filterRole").Value<int>();
@@ -121,18 +128,6 @@ namespace Qyoto {
 		[SmokeMethod("mapSelectionFromSource(const QItemSelection&) const")]
 		public new QItemSelection MapSelectionFromSource(QItemSelection sourceSelection) {
 			return ProxyQSortFilterProxyModel().MapSelectionFromSource(sourceSelection);
-		}
-		[SmokeMethod("setFilterWildcard(const QString&)")]
-		public void SetFilterWildcard(string pattern) {
-			ProxyQSortFilterProxyModel().SetFilterWildcard(pattern);
-		}
-		[SmokeMethod("setFilterFixedString(const QString&)")]
-		public void SetFilterFixedString(string pattern) {
-			ProxyQSortFilterProxyModel().SetFilterFixedString(pattern);
-		}
-		[SmokeMethod("clear()")]
-		public void Clear() {
-			ProxyQSortFilterProxyModel().Clear();
 		}
 		[SmokeMethod("parent() const")]
 		public new QObject Parent() {
@@ -273,6 +268,21 @@ namespace Qyoto {
 		[SmokeMethod("supportedDropActions() const")]
 		public new int SupportedDropActions() {
 			return ProxyQSortFilterProxyModel().SupportedDropActions();
+		}
+		[Q_SLOT("void setFilterWildcard(const QString&)")]
+		[SmokeMethod("setFilterWildcard(const QString&)")]
+		public void SetFilterWildcard(string pattern) {
+			ProxyQSortFilterProxyModel().SetFilterWildcard(pattern);
+		}
+		[Q_SLOT("void setFilterFixedString(const QString&)")]
+		[SmokeMethod("setFilterFixedString(const QString&)")]
+		public void SetFilterFixedString(string pattern) {
+			ProxyQSortFilterProxyModel().SetFilterFixedString(pattern);
+		}
+		[Q_SLOT("void clear()")]
+		[SmokeMethod("clear()")]
+		public void Clear() {
+			ProxyQSortFilterProxyModel().Clear();
 		}
 		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {

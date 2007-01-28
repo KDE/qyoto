@@ -29,6 +29,7 @@ namespace Qyoto {
 			return (IQMenuBarProxy) _staticInterceptor;
 		}
 
+		[Q_PROPERTY("bool", "defaultUp")]
 		public bool DefaultUp {
 			get {
 				return Property("defaultUp").Value<bool>();

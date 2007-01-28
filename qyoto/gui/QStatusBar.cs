@@ -29,6 +29,7 @@ namespace Qyoto {
 			return (IQStatusBarProxy) _staticInterceptor;
 		}
 
+		[Q_PROPERTY("bool", "sizeGripEnabled")]
 		public bool SizeGripEnabled {
 			get {
 				return Property("sizeGripEnabled").Value<bool>();
@@ -98,14 +99,17 @@ namespace Qyoto {
 		public string CurrentMessage() {
 			return ProxyQStatusBar().CurrentMessage();
 		}
+		[Q_SLOT("void showMessage(const QString&, int)")]
 		[SmokeMethod("showMessage(const QString&, int)")]
 		public void ShowMessage(string text, int timeout) {
 			ProxyQStatusBar().ShowMessage(text,timeout);
 		}
+		[Q_SLOT("void showMessage(const QString&)")]
 		[SmokeMethod("showMessage(const QString&)")]
 		public void ShowMessage(string text) {
 			ProxyQStatusBar().ShowMessage(text);
 		}
+		[Q_SLOT("void clearMessage()")]
 		[SmokeMethod("clearMessage()")]
 		public void ClearMessage() {
 			ProxyQStatusBar().ClearMessage();

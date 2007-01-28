@@ -44,6 +44,7 @@ namespace Qyoto {
 			Warning = 2,
 			Critical = 3,
 		}
+		[Q_PROPERTY("QString", "toolTip")]
 		public string ToolTip {
 			get {
 				return Property("toolTip").Value<string>();
@@ -52,6 +53,7 @@ namespace Qyoto {
 				SetProperty("toolTip", QVariant.FromValue<string>(value));
 			}
 		}
+		[Q_PROPERTY("QIcon", "icon")]
 		public QIcon Icon {
 			get {
 				return Property("icon").Value<QIcon>();
@@ -60,6 +62,7 @@ namespace Qyoto {
 				SetProperty("icon", QVariant.FromValue<QIcon>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "visible")]
 		public bool Visible {
 			get {
 				return Property("visible").Value<bool>();
@@ -125,10 +128,12 @@ namespace Qyoto {
 		public bool IsVisible() {
 			return ProxyQSystemTrayIcon().IsVisible();
 		}
+		[Q_SLOT("void show()")]
 		[SmokeMethod("show()")]
 		public void Show() {
 			ProxyQSystemTrayIcon().Show();
 		}
+		[Q_SLOT("void hide()")]
 		[SmokeMethod("hide()")]
 		public void Hide() {
 			ProxyQSystemTrayIcon().Hide();

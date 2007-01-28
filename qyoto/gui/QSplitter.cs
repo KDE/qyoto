@@ -30,6 +30,7 @@ namespace Qyoto {
 			return (IQSplitterProxy) _staticInterceptor;
 		}
 
+		[Q_PROPERTY("Qt::Orientation", "orientation")]
 		public Qt.Orientation Orientation {
 			get {
 				return Property("orientation").Value<Qt.Orientation>();
@@ -38,6 +39,7 @@ namespace Qyoto {
 				SetProperty("orientation", QVariant.FromValue<Qt.Orientation>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "opaqueResize")]
 		public bool OpaqueResize {
 			get {
 				return Property("opaqueResize").Value<bool>();
@@ -46,6 +48,7 @@ namespace Qyoto {
 				SetProperty("opaqueResize", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("int", "handleWidth")]
 		public int HandleWidth {
 			get {
 				return Property("handleWidth").Value<int>();
@@ -54,6 +57,7 @@ namespace Qyoto {
 				SetProperty("handleWidth", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "childrenCollapsible")]
 		public bool ChildrenCollapsible {
 			get {
 				return Property("childrenCollapsible").Value<bool>();

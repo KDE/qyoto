@@ -48,6 +48,7 @@ namespace Qyoto {
 		}
 		// void setDocument(QTextDocument* arg1); >>>> NOT CONVERTED
 		// QTextDocument* document(); >>>> NOT CONVERTED
+		[Q_SLOT("void rehighlight()")]
 		[SmokeMethod("rehighlight()")]
 		public void Rehighlight() {
 			ProxyQSyntaxHighlighter().Rehighlight();

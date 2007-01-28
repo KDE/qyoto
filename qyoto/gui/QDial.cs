@@ -28,6 +28,7 @@ namespace Qyoto {
 			return (IQDialProxy) _staticInterceptor;
 		}
 
+		[Q_PROPERTY("bool", "wrapping")]
 		public bool Wrapping {
 			get {
 				return Property("wrapping").Value<bool>();
@@ -36,11 +37,13 @@ namespace Qyoto {
 				SetProperty("wrapping", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("int", "notchSize")]
 		public int NotchSize {
 			get {
 				return Property("notchSize").Value<int>();
 			}
 		}
+		[Q_PROPERTY("qreal", "notchTarget")]
 		public double NotchTarget {
 			get {
 				return Property("notchTarget").Value<double>();
@@ -49,6 +52,7 @@ namespace Qyoto {
 				SetProperty("notchTarget", QVariant.FromValue<double>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "notchesVisible")]
 		public bool NotchesVisible {
 			get {
 				return Property("notchesVisible").Value<bool>();

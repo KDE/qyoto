@@ -68,6 +68,7 @@ namespace Qyoto {
 			UnicodeUTF8 = 1,
 			DefaultCodec = CodecForTr,
 		}
+		[Q_PROPERTY("QString", "applicationName")]
 		public string ApplicationName {
 			get {
 				return Property("applicationName").Value<string>();
@@ -76,6 +77,7 @@ namespace Qyoto {
 				SetProperty("applicationName", QVariant.FromValue<string>(value));
 			}
 		}
+		[Q_PROPERTY("QString", "organizationName")]
 		public string OrganizationName {
 			get {
 				return Property("organizationName").Value<string>();
@@ -84,6 +86,7 @@ namespace Qyoto {
 				SetProperty("organizationName", QVariant.FromValue<string>(value));
 			}
 		}
+		[Q_PROPERTY("QString", "organizationDomain")]
 		public string OrganizationDomain {
 			get {
 				return Property("organizationDomain").Value<string>();
@@ -235,6 +238,7 @@ namespace Qyoto {
 		public static void Flush() {
 			StaticQCoreApplication().Flush();
 		}
+		[Q_SLOT("void quit()")]
 		[SmokeMethod("quit()")]
 		public static void Quit() {
 			StaticQCoreApplication().Quit();

@@ -52,6 +52,7 @@ namespace Qyoto {
 			return (IQTimerProxy) _staticInterceptor;
 		}
 
+		[Q_PROPERTY("bool", "singleShot")]
 		public bool SingleShot {
 			get {
 				return Property("singleShot").Value<bool>();
@@ -60,6 +61,7 @@ namespace Qyoto {
 				SetProperty("singleShot", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("int", "interval")]
 		public int Interval {
 			get {
 				return Property("interval").Value<int>();
@@ -97,14 +99,17 @@ namespace Qyoto {
 		public bool IsSingleShot() {
 			return ProxyQTimer().IsSingleShot();
 		}
+		[Q_SLOT("void start(int)")]
 		[SmokeMethod("start(int)")]
 		public void Start(int msec) {
 			ProxyQTimer().Start(msec);
 		}
+		[Q_SLOT("void start()")]
 		[SmokeMethod("start()")]
 		public void Start() {
 			ProxyQTimer().Start();
 		}
+		[Q_SLOT("void stop()")]
 		[SmokeMethod("stop()")]
 		public void Stop() {
 			ProxyQTimer().Stop();

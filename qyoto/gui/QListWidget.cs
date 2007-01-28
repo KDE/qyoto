@@ -30,11 +30,13 @@ namespace Qyoto {
 			return (IQListWidgetProxy) _staticInterceptor;
 		}
 
+		[Q_PROPERTY("int", "count")]
 		public int Count {
 			get {
 				return Property("count").Value<int>();
 			}
 		}
+		[Q_PROPERTY("int", "currentRow")]
 		public int CurrentRow {
 			get {
 				return Property("currentRow").Value<int>();
@@ -43,6 +45,7 @@ namespace Qyoto {
 				SetProperty("currentRow", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "sortingEnabled")]
 		public bool SortingEnabled {
 			get {
 				return Property("sortingEnabled").Value<bool>();
@@ -184,14 +187,17 @@ namespace Qyoto {
 		public new void DropEvent(QDropEvent arg1) {
 			ProxyQListWidget().DropEvent(arg1);
 		}
+		[Q_SLOT("void scrollToItem(const QListWidgetItem*, QAbstractItemView::ScrollHint)")]
 		[SmokeMethod("scrollToItem(const QListWidgetItem*, QAbstractItemView::ScrollHint)")]
 		public void ScrollToItem(QListWidgetItem item, QAbstractItemView.ScrollHint hint) {
 			ProxyQListWidget().ScrollToItem(item,hint);
 		}
+		[Q_SLOT("void scrollToItem(const QListWidgetItem*)")]
 		[SmokeMethod("scrollToItem(const QListWidgetItem*)")]
 		public void ScrollToItem(QListWidgetItem item) {
 			ProxyQListWidget().ScrollToItem(item);
 		}
+		[Q_SLOT("void clear()")]
 		[SmokeMethod("clear()")]
 		public void Clear() {
 			ProxyQListWidget().Clear();

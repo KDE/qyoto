@@ -72,10 +72,19 @@ namespace Qyoto
 			return IsSmokeClass(qobj.GetType());
 		}
 		
-		public static string GetPrimitiveString(string type) {
-			string ret = type;
-			
-			switch (type) {
+		public static string GetPrimitiveString(Type type) {
+			string typeString = type.ToString();
+			string ret = type.ToString();
+
+			if (type.IsGenericType) {
+				return "Generic";
+			}
+
+			if (typeString.StartsWith("Qyoto.")) {
+				return typeString.Replace("Qyoto.", "");
+			}
+
+			switch (type.ToString()) {
 				case "System.Void":
 					ret = "";
 					break;
@@ -101,7 +110,7 @@ namespace Qyoto
 					ret = "ushort";
 					break;
 				case "System.Byte":
-					ret = "byte";
+					ret = "uchar";
 					break;
 				case "System.SByte":
 					ret = "sbyte";
@@ -125,13 +134,13 @@ namespace Qyoto
 		
 		public static string SignatureFromMethodInfo(MethodInfo mi) {
 			string name = mi.Name;
-			string returnType = GetPrimitiveString(mi.ReturnType.ToString());
+			string returnType = GetPrimitiveString(mi.ReturnType);
 			string parameters = "";
 			
 			ParameterInfo[] ps = mi.GetParameters();
 			
 			foreach (ParameterInfo pi in ps) {
-				parameters += GetPrimitiveString(pi.ParameterType.ToString()) + ",";
+				parameters += GetPrimitiveString(pi.ParameterType) + ",";
 			}
 			
 			/// remove the last comma
@@ -537,6 +546,18 @@ namespace Qyoto
 	public class Q_SCRIPTABLE : Attribute
 	{
 		public Q_SCRIPTABLE()
+		{
+		}
+	}
+
+	[AttributeUsage( AttributeTargets.Property )]
+	public class Q_PROPERTY : Attribute
+	{
+		public Q_PROPERTY(string signature, string name)
+		{
+		}
+
+		public Q_PROPERTY()
 		{
 		}
 	}

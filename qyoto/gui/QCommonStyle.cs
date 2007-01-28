@@ -145,19 +145,22 @@ namespace Qyoto {
 		public static new string Tr(string s) {
 			return StaticQCommonStyle().Tr(s);
 		}
+		// QCommonStyle* QCommonStyle(QCommonStylePrivate& arg1); >>>> NOT CONVERTED
+		[Q_SLOT("QIcon standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const")]
 		[SmokeMethod("standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const")]
 		protected new QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon, out int opt, QWidget widget) {
 			return ProxyQCommonStyle().StandardIconImplementation(standardIcon,out opt,widget);
 		}
+		[Q_SLOT("QIcon standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*) const")]
 		[SmokeMethod("standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*) const")]
 		protected new QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon, out int opt) {
 			return ProxyQCommonStyle().StandardIconImplementation(standardIcon,out opt);
 		}
+		[Q_SLOT("QIcon standardIconImplementation(QStyle::StandardPixmap) const")]
 		[SmokeMethod("standardIconImplementation(QStyle::StandardPixmap) const")]
 		protected new QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon) {
 			return ProxyQCommonStyle().StandardIconImplementation(standardIcon);
 		}
-		// QCommonStyle* QCommonStyle(QCommonStylePrivate& arg1); >>>> NOT CONVERTED
 		~QCommonStyle() {
 			DisposeQCommonStyle();
 		}

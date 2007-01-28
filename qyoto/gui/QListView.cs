@@ -52,6 +52,7 @@ namespace Qyoto {
 			ListMode = 0,
 			IconMode = 1,
 		}
+		[Q_PROPERTY("QListView::Movement", "movement")]
 		public QListView.Movement movement {
 			get {
 				return Property("movement").Value<QListView.Movement>();
@@ -60,6 +61,7 @@ namespace Qyoto {
 				SetProperty("movement", QVariant.FromValue<QListView.Movement>(value));
 			}
 		}
+		[Q_PROPERTY("QListView::Flow", "flow")]
 		public QListView.Flow flow {
 			get {
 				return Property("flow").Value<QListView.Flow>();
@@ -68,6 +70,7 @@ namespace Qyoto {
 				SetProperty("flow", QVariant.FromValue<QListView.Flow>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "isWrapping")]
 		public bool IsWrapping {
 			get {
 				return Property("isWrapping").Value<bool>();
@@ -76,6 +79,7 @@ namespace Qyoto {
 				SetProperty("isWrapping", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("QListView::ResizeMode", "resizeMode")]
 		public QListView.ResizeMode resizeMode {
 			get {
 				return Property("resizeMode").Value<QListView.ResizeMode>();
@@ -84,6 +88,7 @@ namespace Qyoto {
 				SetProperty("resizeMode", QVariant.FromValue<QListView.ResizeMode>(value));
 			}
 		}
+		[Q_PROPERTY("QListView::LayoutMode", "layoutMode")]
 		public QListView.LayoutMode layoutMode {
 			get {
 				return Property("layoutMode").Value<QListView.LayoutMode>();
@@ -92,6 +97,7 @@ namespace Qyoto {
 				SetProperty("layoutMode", QVariant.FromValue<QListView.LayoutMode>(value));
 			}
 		}
+		[Q_PROPERTY("int", "spacing")]
 		public int Spacing {
 			get {
 				return Property("spacing").Value<int>();
@@ -100,6 +106,7 @@ namespace Qyoto {
 				SetProperty("spacing", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("QSize", "gridSize")]
 		public QSize GridSize {
 			get {
 				return Property("gridSize").Value<QSize>();
@@ -108,6 +115,7 @@ namespace Qyoto {
 				SetProperty("gridSize", QVariant.FromValue<QSize>(value));
 			}
 		}
+		[Q_PROPERTY("QListView::ViewMode", "viewMode")]
 		public QListView.ViewMode viewMode {
 			get {
 				return Property("viewMode").Value<QListView.ViewMode>();
@@ -116,6 +124,7 @@ namespace Qyoto {
 				SetProperty("viewMode", QVariant.FromValue<QListView.ViewMode>(value));
 			}
 		}
+		[Q_PROPERTY("int", "modelColumn")]
 		public int ModelColumn {
 			get {
 				return Property("modelColumn").Value<int>();
@@ -124,6 +133,7 @@ namespace Qyoto {
 				SetProperty("modelColumn", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "uniformItemSizes")]
 		public bool UniformItemSizes {
 			get {
 				return Property("uniformItemSizes").Value<bool>();
@@ -132,6 +142,7 @@ namespace Qyoto {
 				SetProperty("uniformItemSizes", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("int", "batchSize")]
 		public int BatchSize {
 			get {
 				return Property("batchSize").Value<int>();
@@ -140,6 +151,7 @@ namespace Qyoto {
 				SetProperty("batchSize", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "wordWrap")]
 		public bool WordWrap {
 			get {
 				return Property("wordWrap").Value<bool>();

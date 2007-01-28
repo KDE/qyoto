@@ -33,6 +33,7 @@ namespace Qyoto {
 			Rejected = 0,
 			Accepted = 1,
 		}
+		[Q_PROPERTY("bool", "sizeGripEnabled")]
 		public bool SizeGripEnabled {
 			get {
 				return Property("sizeGripEnabled").Value<bool>();
@@ -41,6 +42,7 @@ namespace Qyoto {
 				SetProperty("sizeGripEnabled", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "modal")]
 		public bool Modal {
 			get {
 				return Property("modal").Value<bool>();
@@ -118,22 +120,27 @@ namespace Qyoto {
 		public void SetResult(int r) {
 			ProxyQDialog().SetResult(r);
 		}
+		[Q_SLOT("int exec()")]
 		[SmokeMethod("exec()")]
 		public int Exec() {
 			return ProxyQDialog().Exec();
 		}
+		[Q_SLOT("void done(int)")]
 		[SmokeMethod("done(int)")]
 		public virtual void Done(int arg1) {
 			ProxyQDialog().Done(arg1);
 		}
+		[Q_SLOT("void accept()")]
 		[SmokeMethod("accept()")]
 		public virtual void Accept() {
 			ProxyQDialog().Accept();
 		}
+		[Q_SLOT("void reject()")]
 		[SmokeMethod("reject()")]
 		public virtual void Reject() {
 			ProxyQDialog().Reject();
 		}
+		[Q_SLOT("void showExtension(bool)")]
 		[SmokeMethod("showExtension(bool)")]
 		public void ShowExtension(bool arg1) {
 			ProxyQDialog().ShowExtension(arg1);

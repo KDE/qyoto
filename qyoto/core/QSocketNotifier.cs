@@ -86,6 +86,7 @@ namespace Qyoto {
 		public bool IsEnabled() {
 			return ProxyQSocketNotifier().IsEnabled();
 		}
+		[Q_SLOT("void setEnabled(bool)")]
 		[SmokeMethod("setEnabled(bool)")]
 		public void SetEnabled(bool arg1) {
 			ProxyQSocketNotifier().SetEnabled(arg1);

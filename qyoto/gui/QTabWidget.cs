@@ -39,6 +39,7 @@ namespace Qyoto {
 			Rounded = 0,
 			Triangular = 1,
 		}
+		[Q_PROPERTY("QTabWidget::TabPosition", "tabPosition")]
 		public QTabWidget.TabPosition tabPosition {
 			get {
 				return Property("tabPosition").Value<QTabWidget.TabPosition>();
@@ -47,6 +48,7 @@ namespace Qyoto {
 				SetProperty("tabPosition", QVariant.FromValue<QTabWidget.TabPosition>(value));
 			}
 		}
+		[Q_PROPERTY("QTabWidget::TabShape", "tabShape")]
 		public QTabWidget.TabShape tabShape {
 			get {
 				return Property("tabShape").Value<QTabWidget.TabShape>();
@@ -55,6 +57,7 @@ namespace Qyoto {
 				SetProperty("tabShape", QVariant.FromValue<QTabWidget.TabShape>(value));
 			}
 		}
+		[Q_PROPERTY("int", "currentIndex")]
 		public int CurrentIndex {
 			get {
 				return Property("currentIndex").Value<int>();
@@ -63,11 +66,13 @@ namespace Qyoto {
 				SetProperty("currentIndex", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("int", "count")]
 		public int Count {
 			get {
 				return Property("count").Value<int>();
 			}
 		}
+		[Q_PROPERTY("QSize", "iconSize")]
 		public QSize IconSize {
 			get {
 				return Property("iconSize").Value<QSize>();
@@ -76,6 +81,7 @@ namespace Qyoto {
 				SetProperty("iconSize", QVariant.FromValue<QSize>(value));
 			}
 		}
+		[Q_PROPERTY("Qt::TextElideMode", "elideMode")]
 		public Qt.TextElideMode ElideMode {
 			get {
 				return Property("elideMode").Value<Qt.TextElideMode>();
@@ -84,6 +90,7 @@ namespace Qyoto {
 				SetProperty("elideMode", QVariant.FromValue<Qt.TextElideMode>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "usesScrollButtons")]
 		public bool UsesScrollButtons {
 			get {
 				return Property("usesScrollButtons").Value<bool>();
@@ -205,6 +212,7 @@ namespace Qyoto {
 		public QWidget CornerWidget() {
 			return ProxyQTabWidget().CornerWidget();
 		}
+		[Q_SLOT("void setCurrentWidget(QWidget*)")]
 		[SmokeMethod("setCurrentWidget(QWidget*)")]
 		public void SetCurrentWidget(QWidget widget) {
 			ProxyQTabWidget().SetCurrentWidget(widget);

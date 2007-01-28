@@ -43,6 +43,7 @@ namespace Qyoto {
 			ScrollHandDrag = 1,
 			RubberBandDrag = 2,
 		}
+		[Q_PROPERTY("QBrush", "backgroundBrush")]
 		public QBrush BackgroundBrush {
 			get {
 				return Property("backgroundBrush").Value<QBrush>();
@@ -51,6 +52,7 @@ namespace Qyoto {
 				SetProperty("backgroundBrush", QVariant.FromValue<QBrush>(value));
 			}
 		}
+		[Q_PROPERTY("QBrush", "foregroundBrush")]
 		public QBrush ForegroundBrush {
 			get {
 				return Property("foregroundBrush").Value<QBrush>();
@@ -59,6 +61,7 @@ namespace Qyoto {
 				SetProperty("foregroundBrush", QVariant.FromValue<QBrush>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "interactive")]
 		public bool Interactive {
 			get {
 				return Property("interactive").Value<bool>();
@@ -67,6 +70,7 @@ namespace Qyoto {
 				SetProperty("interactive", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("QRectF", "sceneRect")]
 		public QRectF SceneRect {
 			get {
 				return Property("sceneRect").Value<QRectF>();
@@ -75,6 +79,7 @@ namespace Qyoto {
 				SetProperty("sceneRect", QVariant.FromValue<QRectF>(value));
 			}
 		}
+		[Q_PROPERTY("Qt::Alignment", "alignment")]
 		public int Alignment {
 			get {
 				return Property("alignment").Value<int>();
@@ -83,6 +88,7 @@ namespace Qyoto {
 				SetProperty("alignment", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("QPainter::RenderHints", "renderHints")]
 		public int RenderHints {
 			get {
 				return Property("renderHints").Value<int>();
@@ -91,6 +97,7 @@ namespace Qyoto {
 				SetProperty("renderHints", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("QGraphicsView::DragMode", "dragMode")]
 		public QGraphicsView.DragMode dragMode {
 			get {
 				return Property("dragMode").Value<QGraphicsView.DragMode>();
@@ -99,6 +106,7 @@ namespace Qyoto {
 				SetProperty("dragMode", QVariant.FromValue<QGraphicsView.DragMode>(value));
 			}
 		}
+		[Q_PROPERTY("CacheMode", "cacheMode")]
 		public int CacheMode {
 			get {
 				return Property("cacheMode").Value<int>();
@@ -107,6 +115,7 @@ namespace Qyoto {
 				SetProperty("cacheMode", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("QGraphicsView::ViewportAnchor", "transformationAnchor")]
 		public QGraphicsView.ViewportAnchor TransformationAnchor {
 			get {
 				return Property("transformationAnchor").Value<QGraphicsView.ViewportAnchor>();
@@ -115,6 +124,7 @@ namespace Qyoto {
 				SetProperty("transformationAnchor", QVariant.FromValue<QGraphicsView.ViewportAnchor>(value));
 			}
 		}
+		[Q_PROPERTY("QGraphicsView::ViewportAnchor", "resizeAnchor")]
 		public QGraphicsView.ViewportAnchor ResizeAnchor {
 			get {
 				return Property("resizeAnchor").Value<QGraphicsView.ViewportAnchor>();
@@ -404,10 +414,12 @@ namespace Qyoto {
 		public new QVariant InputMethodQuery(Qt.InputMethodQuery query) {
 			return ProxyQGraphicsView().InputMethodQuery(query);
 		}
+		[Q_SLOT("void updateScene(const QList<QRectF>&)")]
 		[SmokeMethod("updateScene(const QList<QRectF>&)")]
 		public void UpdateScene(List<QRectF> rects) {
 			ProxyQGraphicsView().UpdateScene(rects);
 		}
+		[Q_SLOT("void updateSceneRect(const QRectF&)")]
 		[SmokeMethod("updateSceneRect(const QRectF&)")]
 		public void UpdateSceneRect(QRectF rect) {
 			ProxyQGraphicsView().UpdateSceneRect(rect);
@@ -419,10 +431,6 @@ namespace Qyoto {
 		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQGraphicsView().Tr(s);
-		}
-		[SmokeMethod("setupViewport(QWidget*)")]
-		protected new void SetupViewport(QWidget widget) {
-			ProxyQGraphicsView().SetupViewport(widget);
 		}
 		[SmokeMethod("event(QEvent*)")]
 		public new bool Event(QEvent arg1) {
@@ -517,6 +525,11 @@ namespace Qyoto {
 			ProxyQGraphicsView().DrawForeground(painter,rect);
 		}
 		// void drawItems(QPainter* arg1,int arg2,QGraphicsItem** arg3,const QStyleOptionGraphicsItem* arg4); >>>> NOT CONVERTED
+		[Q_SLOT("void setupViewport(QWidget*)")]
+		[SmokeMethod("setupViewport(QWidget*)")]
+		protected new void SetupViewport(QWidget widget) {
+			ProxyQGraphicsView().SetupViewport(widget);
+		}
 		~QGraphicsView() {
 			DisposeQGraphicsView();
 		}

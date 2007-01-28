@@ -29,6 +29,7 @@ namespace Qyoto {
 			return (IQAbstractScrollAreaProxy) _staticInterceptor;
 		}
 
+		[Q_PROPERTY("Qt::ScrollBarPolicy", "verticalScrollBarPolicy")]
 		public Qt.ScrollBarPolicy VerticalScrollBarPolicy {
 			get {
 				return Property("verticalScrollBarPolicy").Value<Qt.ScrollBarPolicy>();
@@ -37,6 +38,7 @@ namespace Qyoto {
 				SetProperty("verticalScrollBarPolicy", QVariant.FromValue<Qt.ScrollBarPolicy>(value));
 			}
 		}
+		[Q_PROPERTY("Qt::ScrollBarPolicy", "horizontalScrollBarPolicy")]
 		public Qt.ScrollBarPolicy HorizontalScrollBarPolicy {
 			get {
 				return Property("horizontalScrollBarPolicy").Value<Qt.ScrollBarPolicy>();
@@ -122,10 +124,6 @@ namespace Qyoto {
 		public static new string Tr(string s) {
 			return StaticQAbstractScrollArea().Tr(s);
 		}
-		[SmokeMethod("setupViewport(QWidget*)")]
-		protected void SetupViewport(QWidget viewport) {
-			ProxyQAbstractScrollArea().SetupViewport(viewport);
-		}
 		[SmokeMethod("setViewportMargins(int, int, int, int)")]
 		protected void SetViewportMargins(int left, int top, int right, int bottom) {
 			ProxyQAbstractScrollArea().SetViewportMargins(left,top,right,bottom);
@@ -193,6 +191,11 @@ namespace Qyoto {
 		[SmokeMethod("scrollContentsBy(int, int)")]
 		protected virtual void ScrollContentsBy(int dx, int dy) {
 			ProxyQAbstractScrollArea().ScrollContentsBy(dx,dy);
+		}
+		[Q_SLOT("void setupViewport(QWidget*)")]
+		[SmokeMethod("setupViewport(QWidget*)")]
+		protected void SetupViewport(QWidget viewport) {
+			ProxyQAbstractScrollArea().SetupViewport(viewport);
 		}
 		~QAbstractScrollArea() {
 			DisposeQAbstractScrollArea();

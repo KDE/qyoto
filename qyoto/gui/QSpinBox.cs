@@ -29,6 +29,7 @@ namespace Qyoto {
 			return (IQSpinBoxProxy) _staticInterceptor;
 		}
 
+		[Q_PROPERTY("QString", "suffix")]
 		public string Suffix {
 			get {
 				return Property("suffix").Value<string>();
@@ -37,6 +38,7 @@ namespace Qyoto {
 				SetProperty("suffix", QVariant.FromValue<string>(value));
 			}
 		}
+		[Q_PROPERTY("QString", "prefix")]
 		public string Prefix {
 			get {
 				return Property("prefix").Value<string>();
@@ -45,11 +47,13 @@ namespace Qyoto {
 				SetProperty("prefix", QVariant.FromValue<string>(value));
 			}
 		}
+		[Q_PROPERTY("QString", "cleanText")]
 		public string CleanText {
 			get {
 				return Property("cleanText").Value<string>();
 			}
 		}
+		[Q_PROPERTY("int", "maximum")]
 		public int Maximum {
 			get {
 				return Property("maximum").Value<int>();
@@ -58,6 +62,7 @@ namespace Qyoto {
 				SetProperty("maximum", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("int", "minimum")]
 		public int Minimum {
 			get {
 				return Property("minimum").Value<int>();
@@ -66,6 +71,7 @@ namespace Qyoto {
 				SetProperty("minimum", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("int", "singleStep")]
 		public int SingleStep {
 			get {
 				return Property("singleStep").Value<int>();
@@ -74,6 +80,7 @@ namespace Qyoto {
 				SetProperty("singleStep", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("int", "value")]
 		public int Value {
 			get {
 				return Property("value").Value<int>();

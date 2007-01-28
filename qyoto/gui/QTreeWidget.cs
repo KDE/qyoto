@@ -30,6 +30,7 @@ namespace Qyoto {
 			return (IQTreeWidgetProxy) _staticInterceptor;
 		}
 
+		[Q_PROPERTY("int", "columnCount")]
 		public int ColumnCount {
 			get {
 				return Property("columnCount").Value<int>();
@@ -38,6 +39,7 @@ namespace Qyoto {
 				SetProperty("columnCount", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("int", "topLevelItemCount")]
 		public int TopLevelItemCount {
 			get {
 				return Property("topLevelItemCount").Value<int>();
@@ -220,22 +222,27 @@ namespace Qyoto {
 		public void SetItemExpanded(QTreeWidgetItem item, bool expand) {
 			ProxyQTreeWidget().SetItemExpanded(item,expand);
 		}
+		[Q_SLOT("void scrollToItem(const QTreeWidgetItem*, QAbstractItemView::ScrollHint)")]
 		[SmokeMethod("scrollToItem(const QTreeWidgetItem*, QAbstractItemView::ScrollHint)")]
 		public void ScrollToItem(QTreeWidgetItem item, QAbstractItemView.ScrollHint hint) {
 			ProxyQTreeWidget().ScrollToItem(item,hint);
 		}
+		[Q_SLOT("void scrollToItem(const QTreeWidgetItem*)")]
 		[SmokeMethod("scrollToItem(const QTreeWidgetItem*)")]
 		public void ScrollToItem(QTreeWidgetItem item) {
 			ProxyQTreeWidget().ScrollToItem(item);
 		}
+		[Q_SLOT("void expandItem(const QTreeWidgetItem*)")]
 		[SmokeMethod("expandItem(const QTreeWidgetItem*)")]
 		public void ExpandItem(QTreeWidgetItem item) {
 			ProxyQTreeWidget().ExpandItem(item);
 		}
+		[Q_SLOT("void collapseItem(const QTreeWidgetItem*)")]
 		[SmokeMethod("collapseItem(const QTreeWidgetItem*)")]
 		public void CollapseItem(QTreeWidgetItem item) {
 			ProxyQTreeWidget().CollapseItem(item);
 		}
+		[Q_SLOT("void clear()")]
 		[SmokeMethod("clear()")]
 		public void Clear() {
 			ProxyQTreeWidget().Clear();

@@ -231,18 +231,6 @@ namespace Qyoto {
 		public static new string Tr(string s) {
 			return StaticQAbstractSocket().Tr(s);
 		}
-		[SmokeMethod("connectToHostImplementation(const QString&, quint16, OpenMode)")]
-		protected void ConnectToHostImplementation(string hostName, ushort port, int mode) {
-			ProxyQAbstractSocket().ConnectToHostImplementation(hostName,port,mode);
-		}
-		[SmokeMethod("connectToHostImplementation(const QString&, quint16)")]
-		protected void ConnectToHostImplementation(string hostName, ushort port) {
-			ProxyQAbstractSocket().ConnectToHostImplementation(hostName,port);
-		}
-		[SmokeMethod("disconnectFromHostImplementation()")]
-		protected void DisconnectFromHostImplementation() {
-			ProxyQAbstractSocket().DisconnectFromHostImplementation();
-		}
 		[SmokeMethod("readData(char*, qint64)")]
 		protected new long ReadData(string data, long maxlen) {
 			return ProxyQAbstractSocket().ReadData(data,maxlen);
@@ -285,6 +273,21 @@ namespace Qyoto {
 		}
 		// QAbstractSocket* QAbstractSocket(QAbstractSocket::SocketType arg1,QAbstractSocketPrivate& arg2,QObject* arg3); >>>> NOT CONVERTED
 		// QAbstractSocket* QAbstractSocket(QAbstractSocket::SocketType arg1,QAbstractSocketPrivate& arg2); >>>> NOT CONVERTED
+		[Q_SLOT("void connectToHostImplementation(const QString&, quint16, OpenMode)")]
+		[SmokeMethod("connectToHostImplementation(const QString&, quint16, OpenMode)")]
+		protected void ConnectToHostImplementation(string hostName, ushort port, int mode) {
+			ProxyQAbstractSocket().ConnectToHostImplementation(hostName,port,mode);
+		}
+		[Q_SLOT("void connectToHostImplementation(const QString&, quint16)")]
+		[SmokeMethod("connectToHostImplementation(const QString&, quint16)")]
+		protected void ConnectToHostImplementation(string hostName, ushort port) {
+			ProxyQAbstractSocket().ConnectToHostImplementation(hostName,port);
+		}
+		[Q_SLOT("void disconnectFromHostImplementation()")]
+		[SmokeMethod("disconnectFromHostImplementation()")]
+		protected void DisconnectFromHostImplementation() {
+			ProxyQAbstractSocket().DisconnectFromHostImplementation();
+		}
 		~QAbstractSocket() {
 			DisposeQAbstractSocket();
 		}

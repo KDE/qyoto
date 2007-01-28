@@ -45,6 +45,7 @@ namespace Qyoto {
 			SliderStepsChange = 2,
 			SliderValueChange = 3,
 		}
+		[Q_PROPERTY("int", "minimum")]
 		public int Minimum {
 			get {
 				return Property("minimum").Value<int>();
@@ -53,6 +54,7 @@ namespace Qyoto {
 				SetProperty("minimum", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("int", "maximum")]
 		public int Maximum {
 			get {
 				return Property("maximum").Value<int>();
@@ -61,6 +63,7 @@ namespace Qyoto {
 				SetProperty("maximum", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("int", "singleStep")]
 		public int SingleStep {
 			get {
 				return Property("singleStep").Value<int>();
@@ -69,6 +72,7 @@ namespace Qyoto {
 				SetProperty("singleStep", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("int", "pageStep")]
 		public int PageStep {
 			get {
 				return Property("pageStep").Value<int>();
@@ -77,6 +81,7 @@ namespace Qyoto {
 				SetProperty("pageStep", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("int", "value")]
 		public int Value {
 			get {
 				return Property("value").Value<int>();
@@ -85,6 +90,7 @@ namespace Qyoto {
 				SetProperty("value", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("int", "sliderPosition")]
 		public int SliderPosition {
 			get {
 				return Property("sliderPosition").Value<int>();
@@ -93,6 +99,7 @@ namespace Qyoto {
 				SetProperty("sliderPosition", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "tracking")]
 		public bool Tracking {
 			get {
 				return Property("tracking").Value<bool>();
@@ -101,6 +108,7 @@ namespace Qyoto {
 				SetProperty("tracking", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("Qt::Orientation", "orientation")]
 		public Qt.Orientation Orientation {
 			get {
 				return Property("orientation").Value<Qt.Orientation>();
@@ -109,6 +117,7 @@ namespace Qyoto {
 				SetProperty("orientation", QVariant.FromValue<Qt.Orientation>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "invertedAppearance")]
 		public bool InvertedAppearance {
 			get {
 				return Property("invertedAppearance").Value<bool>();
@@ -117,6 +126,7 @@ namespace Qyoto {
 				SetProperty("invertedAppearance", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "invertedControls")]
 		public bool InvertedControls {
 			get {
 				return Property("invertedControls").Value<bool>();
@@ -125,6 +135,7 @@ namespace Qyoto {
 				SetProperty("invertedControls", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "sliderDown")]
 		public bool SliderDown {
 			get {
 				return Property("sliderDown").Value<bool>();

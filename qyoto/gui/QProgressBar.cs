@@ -33,6 +33,7 @@ namespace Qyoto {
 			TopToBottom = 0,
 			BottomToTop = 1,
 		}
+		[Q_PROPERTY("int", "minimum")]
 		public int Minimum {
 			get {
 				return Property("minimum").Value<int>();
@@ -41,6 +42,7 @@ namespace Qyoto {
 				SetProperty("minimum", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("int", "maximum")]
 		public int Maximum {
 			get {
 				return Property("maximum").Value<int>();
@@ -49,11 +51,13 @@ namespace Qyoto {
 				SetProperty("maximum", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("QString", "text")]
 		public string Text {
 			get {
 				return Property("text").Value<string>();
 			}
 		}
+		[Q_PROPERTY("int", "value")]
 		public int Value {
 			get {
 				return Property("value").Value<int>();
@@ -62,6 +66,7 @@ namespace Qyoto {
 				SetProperty("value", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("Qt::Alignment", "alignment")]
 		public int Alignment {
 			get {
 				return Property("alignment").Value<int>();
@@ -70,6 +75,7 @@ namespace Qyoto {
 				SetProperty("alignment", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "textVisible")]
 		public bool TextVisible {
 			get {
 				return Property("textVisible").Value<bool>();
@@ -78,6 +84,7 @@ namespace Qyoto {
 				SetProperty("textVisible", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("Qt::Orientation", "orientation")]
 		public Qt.Orientation Orientation {
 			get {
 				return Property("orientation").Value<Qt.Orientation>();
@@ -86,6 +93,7 @@ namespace Qyoto {
 				SetProperty("orientation", QVariant.FromValue<Qt.Orientation>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "invertedAppearance")]
 		public bool InvertedAppearance {
 			get {
 				return Property("invertedAppearance").Value<bool>();
@@ -94,6 +102,7 @@ namespace Qyoto {
 				SetProperty("invertedAppearance", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("QProgressBar::Direction", "textDirection")]
 		public QProgressBar.Direction TextDirection {
 			get {
 				return Property("textDirection").Value<QProgressBar.Direction>();
@@ -102,6 +111,7 @@ namespace Qyoto {
 				SetProperty("textDirection", QVariant.FromValue<QProgressBar.Direction>(value));
 			}
 		}
+		[Q_PROPERTY("QString", "format")]
 		public string Format {
 			get {
 				return Property("format").Value<string>();
@@ -143,6 +153,7 @@ namespace Qyoto {
 		public new QSize MinimumSizeHint() {
 			return ProxyQProgressBar().MinimumSizeHint();
 		}
+		[Q_SLOT("void reset()")]
 		[SmokeMethod("reset()")]
 		public void Reset() {
 			ProxyQProgressBar().Reset();

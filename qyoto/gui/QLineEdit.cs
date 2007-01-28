@@ -35,6 +35,7 @@ namespace Qyoto {
 			Password = 2,
 			PasswordEchoOnEdit = 3,
 		}
+		[Q_PROPERTY("QString", "inputMask")]
 		public string InputMask {
 			get {
 				return Property("inputMask").Value<string>();
@@ -43,6 +44,7 @@ namespace Qyoto {
 				SetProperty("inputMask", QVariant.FromValue<string>(value));
 			}
 		}
+		[Q_PROPERTY("QString", "text")]
 		public string Text {
 			get {
 				return Property("text").Value<string>();
@@ -51,6 +53,7 @@ namespace Qyoto {
 				SetProperty("text", QVariant.FromValue<string>(value));
 			}
 		}
+		[Q_PROPERTY("int", "maxLength")]
 		public int MaxLength {
 			get {
 				return Property("maxLength").Value<int>();
@@ -59,6 +62,7 @@ namespace Qyoto {
 				SetProperty("maxLength", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "frame")]
 		public bool Frame {
 			get {
 				return Property("frame").Value<bool>();
@@ -67,6 +71,7 @@ namespace Qyoto {
 				SetProperty("frame", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("QLineEdit::EchoMode", "echoMode")]
 		public QLineEdit.EchoMode echoMode {
 			get {
 				return Property("echoMode").Value<QLineEdit.EchoMode>();
@@ -75,11 +80,13 @@ namespace Qyoto {
 				SetProperty("echoMode", QVariant.FromValue<QLineEdit.EchoMode>(value));
 			}
 		}
+		[Q_PROPERTY("QString", "displayText")]
 		public string DisplayText {
 			get {
 				return Property("displayText").Value<string>();
 			}
 		}
+		[Q_PROPERTY("int", "cursorPosition")]
 		public int CursorPosition {
 			get {
 				return Property("cursorPosition").Value<int>();
@@ -88,6 +95,7 @@ namespace Qyoto {
 				SetProperty("cursorPosition", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("Qt::Alignment", "alignment")]
 		public int Alignment {
 			get {
 				return Property("alignment").Value<int>();
@@ -96,6 +104,7 @@ namespace Qyoto {
 				SetProperty("alignment", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "modified")]
 		public bool Modified {
 			get {
 				return Property("modified").Value<bool>();
@@ -104,16 +113,19 @@ namespace Qyoto {
 				SetProperty("modified", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "hasSelectedText")]
 		public bool HasSelectedText {
 			get {
 				return Property("hasSelectedText").Value<bool>();
 			}
 		}
+		[Q_PROPERTY("QString", "selectedText")]
 		public string SelectedText {
 			get {
 				return Property("selectedText").Value<string>();
 			}
 		}
+		[Q_PROPERTY("bool", "dragEnabled")]
 		public bool DragEnabled {
 			get {
 				return Property("dragEnabled").Value<bool>();
@@ -122,6 +134,7 @@ namespace Qyoto {
 				SetProperty("dragEnabled", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "readOnly")]
 		public bool ReadOnly {
 			get {
 				return Property("readOnly").Value<bool>();
@@ -130,16 +143,19 @@ namespace Qyoto {
 				SetProperty("readOnly", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "undoAvailable")]
 		public bool UndoAvailable {
 			get {
 				return Property("undoAvailable").Value<bool>();
 			}
 		}
+		[Q_PROPERTY("bool", "redoAvailable")]
 		public bool RedoAvailable {
 			get {
 				return Property("redoAvailable").Value<bool>();
 			}
 		}
+		[Q_PROPERTY("bool", "acceptableInput")]
 		public bool AcceptableInput {
 			get {
 				return Property("acceptableInput").Value<bool>();
@@ -278,34 +294,6 @@ namespace Qyoto {
 		public bool HasAcceptableInput() {
 			return ProxyQLineEdit().HasAcceptableInput();
 		}
-		[SmokeMethod("clear()")]
-		public void Clear() {
-			ProxyQLineEdit().Clear();
-		}
-		[SmokeMethod("selectAll()")]
-		public void SelectAll() {
-			ProxyQLineEdit().SelectAll();
-		}
-		[SmokeMethod("undo()")]
-		public void Undo() {
-			ProxyQLineEdit().Undo();
-		}
-		[SmokeMethod("redo()")]
-		public void Redo() {
-			ProxyQLineEdit().Redo();
-		}
-		[SmokeMethod("cut()")]
-		public void Cut() {
-			ProxyQLineEdit().Cut();
-		}
-		[SmokeMethod("copy() const")]
-		public void Copy() {
-			ProxyQLineEdit().Copy();
-		}
-		[SmokeMethod("paste()")]
-		public void Paste() {
-			ProxyQLineEdit().Paste();
-		}
 		[SmokeMethod("deselect()")]
 		public void Deselect() {
 			ProxyQLineEdit().Deselect();
@@ -325,6 +313,41 @@ namespace Qyoto {
 		[SmokeMethod("event(QEvent*)")]
 		public new bool Event(QEvent arg1) {
 			return ProxyQLineEdit().Event(arg1);
+		}
+		[Q_SLOT("void clear()")]
+		[SmokeMethod("clear()")]
+		public void Clear() {
+			ProxyQLineEdit().Clear();
+		}
+		[Q_SLOT("void selectAll()")]
+		[SmokeMethod("selectAll()")]
+		public void SelectAll() {
+			ProxyQLineEdit().SelectAll();
+		}
+		[Q_SLOT("void undo()")]
+		[SmokeMethod("undo()")]
+		public void Undo() {
+			ProxyQLineEdit().Undo();
+		}
+		[Q_SLOT("void redo()")]
+		[SmokeMethod("redo()")]
+		public void Redo() {
+			ProxyQLineEdit().Redo();
+		}
+		[Q_SLOT("void cut()")]
+		[SmokeMethod("cut()")]
+		public void Cut() {
+			ProxyQLineEdit().Cut();
+		}
+		[Q_SLOT("void copy() const")]
+		[SmokeMethod("copy() const")]
+		public void Copy() {
+			ProxyQLineEdit().Copy();
+		}
+		[Q_SLOT("void paste()")]
+		[SmokeMethod("paste()")]
+		public void Paste() {
+			ProxyQLineEdit().Paste();
 		}
 		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {

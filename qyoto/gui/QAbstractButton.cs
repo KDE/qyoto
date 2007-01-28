@@ -29,6 +29,7 @@ namespace Qyoto {
 			return (IQAbstractButtonProxy) _staticInterceptor;
 		}
 
+		[Q_PROPERTY("QString", "text")]
 		public string Text {
 			get {
 				return Property("text").Value<string>();
@@ -37,6 +38,7 @@ namespace Qyoto {
 				SetProperty("text", QVariant.FromValue<string>(value));
 			}
 		}
+		[Q_PROPERTY("QIcon", "icon")]
 		public QIcon Icon {
 			get {
 				return Property("icon").Value<QIcon>();
@@ -45,6 +47,7 @@ namespace Qyoto {
 				SetProperty("icon", QVariant.FromValue<QIcon>(value));
 			}
 		}
+		[Q_PROPERTY("QSize", "iconSize")]
 		public QSize IconSize {
 			get {
 				return Property("iconSize").Value<QSize>();
@@ -53,6 +56,7 @@ namespace Qyoto {
 				SetProperty("iconSize", QVariant.FromValue<QSize>(value));
 			}
 		}
+		[Q_PROPERTY("QKeySequence", "shortcut")]
 		public QKeySequence Shortcut {
 			get {
 				return Property("shortcut").Value<QKeySequence>();
@@ -61,6 +65,7 @@ namespace Qyoto {
 				SetProperty("shortcut", QVariant.FromValue<QKeySequence>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "checkable")]
 		public bool Checkable {
 			get {
 				return Property("checkable").Value<bool>();
@@ -69,6 +74,7 @@ namespace Qyoto {
 				SetProperty("checkable", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "checked")]
 		public bool Checked {
 			get {
 				return Property("checked").Value<bool>();
@@ -77,6 +83,7 @@ namespace Qyoto {
 				SetProperty("checked", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "autoRepeat")]
 		public bool AutoRepeat {
 			get {
 				return Property("autoRepeat").Value<bool>();
@@ -85,6 +92,7 @@ namespace Qyoto {
 				SetProperty("autoRepeat", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "autoExclusive")]
 		public bool AutoExclusive {
 			get {
 				return Property("autoExclusive").Value<bool>();
@@ -93,6 +101,7 @@ namespace Qyoto {
 				SetProperty("autoExclusive", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("int", "autoRepeatDelay")]
 		public int AutoRepeatDelay {
 			get {
 				return Property("autoRepeatDelay").Value<int>();
@@ -101,6 +110,7 @@ namespace Qyoto {
 				SetProperty("autoRepeatDelay", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("int", "autoRepeatInterval")]
 		public int AutoRepeatInterval {
 			get {
 				return Property("autoRepeatInterval").Value<int>();
@@ -109,6 +119,7 @@ namespace Qyoto {
 				SetProperty("autoRepeatInterval", QVariant.FromValue<int>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "down")]
 		public bool Down {
 			get {
 				return Property("down").Value<bool>();
@@ -150,18 +161,22 @@ namespace Qyoto {
 		public QButtonGroup Group() {
 			return ProxyQAbstractButton().Group();
 		}
+		[Q_SLOT("void animateClick(int)")]
 		[SmokeMethod("animateClick(int)")]
 		public void AnimateClick(int msec) {
 			ProxyQAbstractButton().AnimateClick(msec);
 		}
+		[Q_SLOT("void animateClick()")]
 		[SmokeMethod("animateClick()")]
 		public void AnimateClick() {
 			ProxyQAbstractButton().AnimateClick();
 		}
+		[Q_SLOT("void click()")]
 		[SmokeMethod("click()")]
 		public void Click() {
 			ProxyQAbstractButton().Click();
 		}
+		[Q_SLOT("void toggle()")]
 		[SmokeMethod("toggle()")]
 		public void Toggle() {
 			ProxyQAbstractButton().Toggle();

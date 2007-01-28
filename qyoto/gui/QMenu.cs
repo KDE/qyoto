@@ -32,6 +32,7 @@ namespace Qyoto {
 			return (IQMenuProxy) _staticInterceptor;
 		}
 
+		[Q_PROPERTY("bool", "tearOffEnabled")]
 		public bool TearOffEnabled {
 			get {
 				return Property("tearOffEnabled").Value<bool>();
@@ -40,6 +41,7 @@ namespace Qyoto {
 				SetProperty("tearOffEnabled", QVariant.FromValue<bool>(value));
 			}
 		}
+		[Q_PROPERTY("QString", "title")]
 		public string Title {
 			get {
 				return Property("title").Value<string>();
@@ -48,6 +50,7 @@ namespace Qyoto {
 				SetProperty("title", QVariant.FromValue<string>(value));
 			}
 		}
+		[Q_PROPERTY("QIcon", "icon")]
 		public QIcon Icon {
 			get {
 				return Property("icon").Value<QIcon>();
@@ -56,6 +59,7 @@ namespace Qyoto {
 				SetProperty("icon", QVariant.FromValue<QIcon>(value));
 			}
 		}
+		[Q_PROPERTY("bool", "separatorsCollapsible")]
 		public bool SeparatorsCollapsible {
 			get {
 				return Property("separatorsCollapsible").Value<bool>();
