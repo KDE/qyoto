@@ -1334,7 +1334,7 @@ void marshall_ValueListItem(Marshall *m) {
 				void * obj = getPointerObject(p);
 				if (obj == 0) {
 					smokeqyoto_object * o = alloc_smokeqyoto_object(false, m->smoke(), ix, p);
-					void * obj = set_obj_info(className, o);
+					obj = set_obj_info(className, o);
 				}
 				(*AddIntPtrToList)(al, obj);
 			}
