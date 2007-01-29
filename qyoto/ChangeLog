@@ -1,3 +1,7 @@
+2007-29-01  Arno Rehn  <arno@arnorehn.de>
+
+	* Fixed compiler options in examples to use -r instead of -addmodule
+
 2007-28-01  Richard Dale  <rdale@foton.es>
 
 	* Commented out the QMetaObject.InvokeMethod() call in the pong.cs
