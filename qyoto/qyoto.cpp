@@ -614,6 +614,48 @@ public:
     	return true;
     }
 };
+/*
+	Converts a C++ value returned by a signal invocation to a C# 
+	reply type
+*/
+class SignalReturnValue : public Marshall {
+    MocArgument *	_replyType;
+    Smoke::Stack _stack;
+	Smoke::StackItem * _result;
+public:
+	SignalReturnValue(void ** o, Smoke::StackItem * result, MocArgument * replyType) 
+	{
+		_result = result;
+		_replyType = replyType;
+		_stack = new Smoke::StackItem[1];
+		smokeStackFromQtStack(_stack, o, 1, _replyType);
+		Marshall::HandlerFn fn = getMarshallFn(type());
+		(*fn)(this);
+    }
+
+    SmokeType type() { 
+		return _replyType[0].st; 
+	}
+    Marshall::Action action() { return Marshall::ToObject; }
+    Smoke::StackItem &item() { return _stack[0]; }
+    Smoke::StackItem &var() {
+    	return *_result;
+    }
+	
+	void unsupported() 
+	{
+		qFatal("Cannot handle '%s' as signal reply-type", type().name());
+    }
+	Smoke *smoke() { return type().smoke(); }
+    
+	void next() {}
+    
+	bool cleanup() { return false; }
+	
+	~SignalReturnValue() {
+		delete[] _stack;
+	}
+};
 
 class EmitSignal : public Marshall {
     QObject *_qobj;
@@ -629,19 +671,17 @@ public:
     _qobj(qobj), _id(id), _sp(sp), _items(items), _args(args),
     _cur(-1), _called(false)
     {
-//	_items = NUM2INT(rb_ary_entry(args, 0));
-//	Data_Get_Struct(rb_ary_entry(args, 1), MocArgument, _args);
 	_stack = new Smoke::StackItem[_items];
     }
 	~EmitSignal() {
 		delete[] _stack;
 		delete[] _args;
 	}
-    const MocArgument &arg() { return _args[_cur]; }
+    const MocArgument &arg() { return _args[_cur + 1]; }
     SmokeType type() { return arg().st; }
     Marshall::Action action() { return Marshall::FromObject; }
     Smoke::StackItem &item() { return _stack[_cur]; }
-    Smoke::StackItem & var() { return _sp[_cur]; }
+    Smoke::StackItem & var() { return _sp[_cur + 1]; }
     void unsupported() {
 		qFatal("Cannot handle '%s' as signal argument", type().name());
     }
@@ -651,8 +691,13 @@ public:
 	_called = true;
 
 	void** o = new void*[_items + 1];
-	smokeStackToQtStack(_stack, o + 1, _items, _args);
+	smokeStackToQtStack(_stack, o + 1, _items - 1, _args + 1);
   	_qobj->metaObject()->activate(_qobj, _id, o);
+
+	if (_args[0].argType != xmoc_void) {
+		SignalReturnValue r(o, _sp, _args);
+	}
+
   	delete[] o;
     }
     void next() {
@@ -680,7 +725,7 @@ public:
 	{
 		_result = result;
 		_replyType = replyType;
-		_stack = new Smoke::StackItem[1];
+		_stack = new Smoke::StackItem[1]; 
 		Marshall::HandlerFn fn = getMarshallFn(type());
 		(*fn)(this);
 		// Save any address in zeroth element of the arrary of 'void*'s passed to 
@@ -771,12 +816,12 @@ public:
 		_cur = oldcur;
 	}
 
-    InvokeSlot(void * obj, const char * slotname, int items, MocArgument * args, void** o, MocArgument * mocReturn) :
-    _obj(obj), _slotname(slotname), _items(items), _args(args), _o(o), _cur(-1), _called(false)
+    InvokeSlot(void * obj, const char * slotname, int items, MocArgument * args, void** o) :
+    _obj(obj), _slotname(slotname), _items(items), _args(args + 1), _o(o), _cur(-1), _called(false)
     {
 		_sp = new Smoke::StackItem[_items];
 		_stack = new Smoke::StackItem[_items];
-		_mocret = mocReturn;
+		_mocret = args;
 		copyArguments();
     }
 
@@ -1068,9 +1113,9 @@ setMocType(MocArgument *arg, int idx, const char * name_value, const char * stat
 	}
 	
 	if (typeId == 0) {
-//#ifdef DEBUG
-		printf("In setMocType(): no typeId\n");
-//#endif
+#ifdef DEBUG
+		printf("In setMocType(): no typeId %s\n", name_value);
+#endif
 		return false;
 	}
 
@@ -1079,7 +1124,7 @@ setMocType(MocArgument *arg, int idx, const char * name_value, const char * stat
 }
 
 MocArgument *
-GetMocArgumentsNumber(QString member, int& number) 
+GetMocArgumentsNumber(QString replyType, QString member, int& number) 
 {
 	QRegExp rx1("^.*\\((.*)\\)$");
 	QRegExp rx2("^(bool|int|double|char\\*|QString)&?$");
@@ -1088,22 +1133,43 @@ GetMocArgumentsNumber(QString member, int& number)
 		return 0;
 	}
 
-	QString argStr = rx1.cap(1);
-//	printf("argStr: %s\n", (const char*)argStr.toLatin1());
-	QStringList args = argStr.split(",");
-	number = args.size();
-	if (number == 1 && args[0] == "") {
-		number = 0;
-		return 0;
+	if (replyType.isEmpty()) {
+		replyType = "void";
 	}
-	MocArgument * mocargs = new MocArgument[number];
+
+	QString argStr = rx1.cap(1);
+
+	QStringList args;
+	args << argStr.split(",");
+	if (args[0] == "") {
+       args[0] = replyType;
+	} else {
+		args.prepend(replyType);
+	}
+
+	number = args.size() - 1;
+
+	MocArgument * mocargs = new MocArgument[args.size()];
 	int i = 0;
 	for (QStringList::Iterator it = args.begin(); it != args.end(); ++it) {
 		QString a = (*it);
+
+		if (a == "QDBusVariant") {
+			a = "QVariant";
+		}
+
+		if (a == "void" || a == "" || a == " ") {
+			mocargs[i].argType = xmoc_void;
+			continue;
+		}
+
 		a.replace(QRegExp("^const\\s+"), "");
 		a = (rx2.indexIn(a) == -1) ? "ptr" : rx2.cap(1);
-//		printf("arg: %s a: %s\n", (const char*)(*it).toLatin1(), (const char*)a.toLatin1());
+
 		QByteArray name = (*it).toLatin1();
+		if (name == "QDBusVariant") {
+			name = "QVariant";
+		}
 		QByteArray static_type = a.toLatin1();
 		bool valid = setMocType(mocargs, i, name.constData(), static_type.constData());
 		i++;
@@ -1113,40 +1179,14 @@ GetMocArgumentsNumber(QString member, int& number)
 }
 
 MocArgument *
-GetMocArguments(QString member) {
+GetMocArguments(QString type, QString member) {
 	int tmp;
-	return GetMocArgumentsNumber(member, tmp);
-}
-
-MocArgument *
-GetMocReturnType(QString type) {
-	QRegExp rx1("^(bool|int|double|char\\*|QString)&?$");
-	
-	MocArgument * mocargs = new MocArgument[1];
-	
-	if (type != "void" && type != "" && type != " ") {
-		QString t = type;
-		t.replace(QRegExp("^const\\s+"), "");
-		t = (rx1.indexIn(t) == -1) ? "ptr" : rx1.cap(1);
-		//printf("arg: %s t: %s\n", (const char*)type.toLatin1(), (const char*)t.toLatin1());
-		QByteArray t_name = type.toLatin1();
-		QByteArray t_static_type = t.toLatin1();
-		setMocType(mocargs, 0, t_name.constData(), t_static_type.constData());
-	}
-	else {
-		mocargs[0].argType = xmoc_void;
-	}
-	
-	return mocargs;
+	return GetMocArgumentsNumber(type, member, tmp);
 }
 
 bool
-SignalEmit(char * signature, void * obj, Smoke::StackItem * sp, int items)
+SignalEmit(char * signature, char * type, void * obj, Smoke::StackItem * sp, int items)
 {
-#ifdef DEBUG
-	printf("ENTER SignalEmit(signature: %s target: 0x%8.8x items: %d)\n", signature, obj, items);
-#endif
-
 	smokeqyoto_object *o = value_obj_info(obj);
     QObject *qobj = (QObject*)o->smoke->cast(o->ptr, o->classId, o->smoke->idClass("QObject"));
     
@@ -1155,8 +1195,9 @@ SignalEmit(char * signature, void * obj, Smoke::StackItem * sp, int items)
 	}
 
 	QString sig(signature);
-	sig.replace(QRegExp("^void "), "");
-	MocArgument * args = GetMocArguments(sig);
+	QString replyType(type);
+
+	MocArgument * args = GetMocArguments(replyType, sig);
 
 	const QMetaObject* meta = qobj->metaObject();
 	const char* signatureStr = sig.toLatin1();
@@ -1168,12 +1209,9 @@ SignalEmit(char * signature, void * obj, Smoke::StackItem * sp, int items)
 			break;
 	}
 	
+    Smoke::StackItem * result;
 	EmitSignal signal(qobj, i, items, args, sp);
 	signal.next();
-
-#ifdef DEBUG
-	printf("LEAVE SignalEmit()\n");
-#endif
 
 	return true;
 }
@@ -1218,7 +1256,7 @@ void* make_metaObject(void* obj, const char* stringdata, int stringdata_count, c
 	QMetaObject* meta = new QMetaObject;
 	*meta = tmp;
 
-// #ifdef DEBUG
+#ifdef DEBUG
 	printf("make_metaObject() superdata: %p %s\n", meta->d.superdata, parent->className());
 	printf("stringdata: ");
 	for (int j = 0; j < stringdata_count; j++) {
@@ -1235,7 +1273,7 @@ void* make_metaObject(void* obj, const char* stringdata, int stringdata_count, c
 		printf("%d, ", my_data[i]);
 	}
 	printf("\n");
-// #endif
+#endif
 	
 	// create smoke object
 	smokeqyoto_object  * m = alloc_smokeqyoto_object(	true, 
@@ -1295,11 +1333,10 @@ int qt_metacall(void* obj, int _c, int _id, void* _o) {
 	}
 
 	int items;
-	MocArgument* mocArgs = GetMocArgumentsNumber(name, items);
-	MocArgument* mocReturn = GetMocReturnType(type);
+	MocArgument* mocArgs = GetMocArgumentsNumber(type, name, items);
 	
 	// invoke slot
-	InvokeSlot slot(obj, method.signature(), items, mocArgs, (void**)_o, mocReturn);
+	InvokeSlot slot(obj, method.signature(), items, mocArgs, (void**)_o);
 	slot.next();
 	
 	delete mocArgs;

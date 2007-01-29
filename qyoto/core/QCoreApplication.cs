@@ -16,6 +16,12 @@ namespace Qyoto {
 			void SetAttribute(Qt.ApplicationAttribute attribute, bool on);
 			void SetAttribute(Qt.ApplicationAttribute attribute);
 			bool TestAttribute(Qt.ApplicationAttribute attribute);
+			void SetOrganizationDomain(string orgDomain);
+			string organizationDomain();
+			void SetOrganizationName(string orgName);
+			string organizationName();
+			void SetApplicationName(string application);
+			string applicationName();
 			QCoreApplication Instance();
 			int Exec();
 			void ProcessEvents(uint flags);
@@ -125,6 +131,30 @@ namespace Qyoto {
 		[SmokeMethod("testAttribute(Qt::ApplicationAttribute)")]
 		public static bool TestAttribute(Qt.ApplicationAttribute attribute) {
 			return StaticQCoreApplication().TestAttribute(attribute);
+		}
+		[SmokeMethod("setOrganizationDomain(const QString&)")]
+		public static void SetOrganizationDomain(string orgDomain) {
+			StaticQCoreApplication().SetOrganizationDomain(orgDomain);
+		}
+		[SmokeMethod("organizationDomain()")]
+		public static string organizationDomain() {
+			return StaticQCoreApplication().organizationDomain();
+		}
+		[SmokeMethod("setOrganizationName(const QString&)")]
+		public static void SetOrganizationName(string orgName) {
+			StaticQCoreApplication().SetOrganizationName(orgName);
+		}
+		[SmokeMethod("organizationName()")]
+		public static string organizationName() {
+			return StaticQCoreApplication().organizationName();
+		}
+		[SmokeMethod("setApplicationName(const QString&)")]
+		public static void SetApplicationName(string application) {
+			StaticQCoreApplication().SetApplicationName(application);
+		}
+		[SmokeMethod("applicationName()")]
+		public static string applicationName() {
+			return StaticQCoreApplication().applicationName();
 		}
 		[SmokeMethod("instance()")]
 		public static QCoreApplication Instance() {

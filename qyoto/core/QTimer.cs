@@ -34,6 +34,7 @@ namespace Qyoto {
 		interface IQTimerProxy {
 			string Tr(string s, string c);
 			string Tr(string s);
+			void singleShot(int msec, QObject receiver, string member);
 		}
 
 		protected new void CreateProxy() {
@@ -121,6 +122,10 @@ namespace Qyoto {
 		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQTimer().Tr(s);
+		}
+		[SmokeMethod("singleShot(int, QObject*, const char*)")]
+		public static void singleShot(int msec, QObject receiver, string member) {
+			StaticQTimer().singleShot(msec,receiver,member);
 		}
 		[SmokeMethod("timerEvent(QTimerEvent*)")]
 		protected new void TimerEvent(QTimerEvent arg1) {

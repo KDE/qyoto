@@ -521,7 +521,7 @@ namespace Qyoto {
 
 	public class SignalInvocation : RealProxy {
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		static extern void SignalEmit(string signature, IntPtr target, IntPtr sp, int items);
+		static extern bool SignalEmit(string signature, string type, IntPtr target, IntPtr sp, int items);
 
 		private Type	_classToProxy;
 		private Object	_instance;
@@ -541,7 +541,7 @@ namespace Qyoto {
 			if (callMessage.MethodSignature != null) {
 				Type[] types = (Type[]) callMessage.MethodSignature;
 
-				for (int i = 0; i < callMessage.ArgCount; i++) {
+				for (int i = 1; i < callMessage.ArgCount; i++) {
 					if (callMessage.Args[i] == null) {
 						unsafe {
 							stack[i].s_class = (IntPtr) 0;
@@ -577,26 +577,61 @@ namespace Qyoto {
 			}
 
 			IMethodReturnMessage returnMessage = (IMethodReturnMessage) message;
+			MethodReturnMessageWrapper returnValue = new MethodReturnMessageWrapper((IMethodReturnMessage) returnMessage); 
 			GCHandle instanceHandle = GCHandle.Alloc(_instance);
-			string signature = "";
 			Dictionary<MethodInfo, Qyoto.CPPMethod> signals = Qyoto.GetSignalSignatures(_instance.GetType());
 			
 			/// should not happen
 			if (signals == null) {
-				Console.WriteLine("** FATAL: error while retirieving signal signatures **");
+				Console.WriteLine("** FATAL: error while retrieving signal signatures **");
 				return null;
 			}
-			signature = signals[(MethodInfo) callMessage.MethodBase].signature;
+
+			Qyoto.CPPMethod signalEntry = signals[(MethodInfo) callMessage.MethodBase];
 #if DEBUG
-			Console.WriteLine( "Q_SIGNAL signature: {0}", signature );
+			Console.WriteLine( "Q_SIGNAL signature: {0}", signalEntry.signature );
+			Console.WriteLine( "Q_SIGNAL type: {0}", signalEntry.type );
 #endif
-			
 			unsafe {
 				fixed(StackItem * stackPtr = stack) {
-					SignalEmit(signature, (IntPtr) instanceHandle, (IntPtr) stackPtr, callMessage.ArgCount);
+					Type returnType = ((MethodInfo) returnMessage.MethodBase).ReturnType;
+					SignalEmit(signalEntry.signature, signalEntry.type, (IntPtr) instanceHandle, (IntPtr) stackPtr, callMessage.ArgCount);
+
+					if (returnType == typeof(void)) {
+						;
+					} else if (returnType == typeof(bool)) {
+						returnValue.ReturnValue = stack[0].s_bool;
+					} else if (returnType == typeof(sbyte)) {
+						returnValue.ReturnValue = stack[0].s_char;
+					} else if (returnType == typeof(byte)) {
+						returnValue.ReturnValue = stack[0].s_uchar;
+					} else if (returnType == typeof(short)) {
+						returnValue.ReturnValue = stack[0].s_short;
+					} else if (returnType == typeof(ushort)) {
+						returnValue.ReturnValue = stack[0].s_ushort;
+					} else if (returnType.IsEnum) {
+						returnValue.ReturnValue = Enum.ToObject(returnType, stack[0].s_int);
+					} else if (returnType == typeof(int)) {
+						returnValue.ReturnValue = stack[0].s_int;
+					} else if (returnType == typeof(uint)) {
+						returnValue.ReturnValue = stack[0].s_uint;
+					} else if (returnType == typeof(long)) {
+						returnValue.ReturnValue = stack[0].s_long;
+					} else if (returnType == typeof(ulong)) {
+						returnValue.ReturnValue = stack[0].s_ulong;
+					} else if (returnType == typeof(float)) {
+						returnValue.ReturnValue = stack[0].s_float;
+					} else if (returnType == typeof(double)) {
+						returnValue.ReturnValue = stack[0].s_double;
+					} else if (returnType == typeof(string)) {
+						returnValue.ReturnValue = ((GCHandle) stack[0].s_class).Target;
+					} else {
+						returnValue.ReturnValue = ((GCHandle) stack[0].s_class).Target;
+					}
 				}
 			}
 
+			returnMessage = returnValue;
 			return returnMessage;
 		}
 
