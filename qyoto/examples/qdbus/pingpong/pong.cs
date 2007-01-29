@@ -31,10 +31,11 @@ class Pong : QObject
 {
     static private string SERVICE_NAME = "com.trolltech.QtDBus.PingExample";
 
-    [Q_SLOT]
-    public QPoint myslot(QWidget arg)
+    [Q_SLOT("QDBusVariant testSlot()")]
+    public QVariant testSlot()
     {
-        return new QPoint();
+        Console.WriteLine("In testSlot");
+		return new QVariant("hello");
     }
 
     [Q_SLOT]
@@ -61,9 +62,30 @@ class Pong : QObject
         }
 
         Pong pong = new Pong();
+//        Connect(pong, SIGNAL("QDBusVariant testSignal()"), pong, SLOT("QDBusVariant testSlot()"));
+        Connect(pong, SIGNAL("testSignal()"), pong, SLOT("testSlot()"));
+        Console.WriteLine(pong.Emit.testSignal().ToString());
+/*
+        if (res == null) {
+            Console.WriteLine("res: null");
+        } else {
+            Console.WriteLine("res: {0}", res);
+        }
+*/
         QDBusConnection.SessionBus().RegisterObject("/", pong, (int) QDBusConnection.RegisterOption.ExportAllSlots);
 
         return QCoreApplication.Exec();
     }
+
+    protected new IPongSignals Emit {
+        get {
+            return (IPongSignals) Q_EMIT;
+        }
+    }
+}
+
+interface IPongSignals : IQObjectSignals {
+    [Q_SIGNAL("QDBusVariant testSignal()")]
+    QVariant testSignal();
 }
 

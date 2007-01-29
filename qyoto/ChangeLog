@@ -4,6 +4,9 @@
 	* Some static methods were being dropped because they had the same
 	  name as property names. So make the static methods start with a
 	  lower case letter and keep them.
+	* When marshalling a QDBusVariant, special case as a QVariant as it
+	  doesn't exist in the Smoke library, but is needed for QtDBus support.
+	* Added a not quite working qdbus/complexpingpong example
 
 2007-29-01  Arno Rehn  <arno@arnorehn.de>
 
