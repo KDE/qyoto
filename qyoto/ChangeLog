@@ -1,3 +1,8 @@
+2007-30-01  Arno Rehn  <arno@arnorehn.de>
+
+	* Fixed off-by-one mistake when invoking signals in SmokeInvocation.cs
+	  and qyoto.cpp
+
 2007-30-01  Richard Dale  <rdale@foton.es>
 
 	* Fixed regressions caused by adding signal return values

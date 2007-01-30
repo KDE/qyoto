@@ -691,7 +691,7 @@ public:
 	_called = true;
 
 	void** o = new void*[_items + 1];
-	smokeStackToQtStack(_stack, o + 1, _items - 1, _args + 1);
+	smokeStackToQtStack(_stack, o + 1, _items, _args + 1);
   	_qobj->metaObject()->activate(_qobj, _id, o);
 
 	if (_args[0].argType != xmoc_void) {

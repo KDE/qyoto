@@ -541,37 +541,37 @@ namespace Qyoto {
 			if (callMessage.MethodSignature != null) {
 				Type[] types = (Type[]) callMessage.MethodSignature;
 
-				for (int i = 1; i < callMessage.ArgCount; i++) {
+				for (int i = 0; i < callMessage.ArgCount; i++) {
 					if (callMessage.Args[i] == null) {
 						unsafe {
-							stack[i].s_class = (IntPtr) 0;
+							stack[i + 1].s_class = (IntPtr) 0;
 						}
 					} else if (types[i] == typeof(bool)) {
-						stack[i].s_bool = (bool) callMessage.Args[i];
+						stack[i + 1].s_bool = (bool) callMessage.Args[i];
 					} else if (types[i] == typeof(sbyte)) {
-						stack[i].s_char = (sbyte) callMessage.Args[i];
+						stack[i + 1].s_char = (sbyte) callMessage.Args[i];
 					} else if (types[i] == typeof(byte)) {
-						stack[i].s_uchar = (byte) callMessage.Args[i];
+						stack[i + 1].s_uchar = (byte) callMessage.Args[i];
 					} else if (types[i] == typeof(short)) {
-						stack[i].s_short = (short) callMessage.Args[i];
+						stack[i + 1].s_short = (short) callMessage.Args[i];
 					} else if (types[i] == typeof(ushort)) {
-						stack[i].s_ushort = (ushort) callMessage.Args[i];
+						stack[i + 1].s_ushort = (ushort) callMessage.Args[i];
 					} else if (types[i] == typeof(int) || types[i].IsEnum) {
-						stack[i].s_int = (int) callMessage.Args[i];
+						stack[i + 1].s_int = (int) callMessage.Args[i];
 					} else if (types[i] == typeof(uint)) {
-						stack[i].s_uint = (uint) callMessage.Args[i];
+						stack[i + 1].s_uint = (uint) callMessage.Args[i];
 					} else if (types[i] == typeof(long)) {
-						stack[i].s_long = (long) callMessage.Args[i];
+						stack[i + 1].s_long = (long) callMessage.Args[i];
 					} else if (types[i] == typeof(ulong)) {
-						stack[i].s_ulong = (ulong) callMessage.Args[i];
+						stack[i + 1].s_ulong = (ulong) callMessage.Args[i];
 					} else if (types[i] == typeof(float)) {
-						stack[i].s_float = (float) callMessage.Args[i];
+						stack[i + 1].s_float = (float) callMessage.Args[i];
 					} else if (types[i] == typeof(double)) {
-						stack[i].s_double = (double) callMessage.Args[i];
+						stack[i + 1].s_double = (double) callMessage.Args[i];
 					} else if (types[i] == typeof(string)) {
-						stack[i].s_class = (IntPtr) GCHandle.Alloc(callMessage.Args[i]);
+						stack[i + 1].s_class = (IntPtr) GCHandle.Alloc(callMessage.Args[i]);
 					} else {
-						stack[i].s_class = (IntPtr) GCHandle.Alloc(callMessage.Args[i]);
+						stack[i + 1].s_class = (IntPtr) GCHandle.Alloc(callMessage.Args[i]);
 					}
 				}
 			}
