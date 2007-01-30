@@ -732,6 +732,8 @@ public:
 		// qt_metacall()
 		void * ptr = o[0];
 		smokeStackToQtStack(_stack, o, 1, _replyType);
+			printf("SlotReturnValue o[0]: %p\n", o[0]);
+
 		// Only if the zeroth element of the arrary of 'void*'s passed to qt_metacall()
 		// contains an address, is the return value of the slot needed.
 		if (ptr != 0) {
@@ -775,7 +777,7 @@ class InvokeSlot : public Marshall {
     Smoke::StackItem *_sp;
     Smoke::Stack _stack;
 public:
-    const MocArgument &arg() { return _args[_cur]; }
+    const MocArgument &arg() { return _args[_cur + 1]; }
     SmokeType type() { return arg().st; }
     Marshall::Action action() { return Marshall::ToObject; }
     Smoke::StackItem &item() { return _stack[_cur]; }
@@ -786,7 +788,7 @@ public:
 		qFatal("Cannot handle '%s' as slot argument\n", type().name());
 	}
 	void copyArguments() {
-		smokeStackFromQtStack(_stack, _o + 1, _items, _args);
+		smokeStackFromQtStack(_stack, _o + 1, _items, _args + 1);
 	}
 	void invokeSlot() {
 		if (_called) return;
@@ -795,9 +797,9 @@ public:
 		(*InvokeCustomSlot)(_obj, _slotname, _sp, ret);
 		
 		if (_mocret[0].argType != xmoc_void) {
-#ifdef DEBUG
+// #ifdef DEBUG
 			printf("CREATE SlotReturnValue()\n");
-#endif
+// #endif
 			SlotReturnValue r(_o, ret, _mocret);
 		}
 	}
@@ -817,7 +819,7 @@ public:
 	}
 
     InvokeSlot(void * obj, const char * slotname, int items, MocArgument * args, void** o) :
-    _obj(obj), _slotname(slotname), _items(items), _args(args + 1), _o(o), _cur(-1), _called(false)
+    _obj(obj), _slotname(slotname), _items(items), _args(args), _o(o), _cur(-1), _called(false)
     {
 		_sp = new Smoke::StackItem[_items];
 		_stack = new Smoke::StackItem[_items];
@@ -1136,43 +1138,34 @@ GetMocArgumentsNumber(QString replyType, QString member, int& number)
 	if (replyType.isEmpty()) {
 		replyType = "void";
 	}
+	QStringList args(replyType);
 
 	QString argStr = rx1.cap(1);
 
-	QStringList args;
-	args << argStr.split(",");
-	if (args[0] == "") {
-       args[0] = replyType;
-	} else {
-		args.prepend(replyType);
+    if (!argStr.isEmpty()) {
+		args << argStr.split(",");
 	}
 
 	number = args.size() - 1;
 
 	MocArgument * mocargs = new MocArgument[args.size()];
 	int i = 0;
-	for (QStringList::Iterator it = args.begin(); it != args.end(); ++it) {
+	for (	QStringList::Iterator it = args.begin(); 
+			it != args.end(); 
+			++it, i++ ) 
+	{
 		QString a = (*it);
-
-		if (a == "QDBusVariant") {
-			a = "QVariant";
-		}
 
 		if (a == "void" || a == "" || a == " ") {
 			mocargs[i].argType = xmoc_void;
-			continue;
-		}
+		} else {
+			a.replace(QRegExp("^const\\s+"), "");
+			a = (rx2.indexIn(a) == -1) ? "ptr" : rx2.cap(1);
 
-		a.replace(QRegExp("^const\\s+"), "");
-		a = (rx2.indexIn(a) == -1) ? "ptr" : rx2.cap(1);
-
-		QByteArray name = (*it).toLatin1();
-		if (name == "QDBusVariant") {
-			name = "QVariant";
+			QByteArray name = (*it).toLatin1();
+			QByteArray static_type = a.toLatin1();
+			bool valid = setMocType(mocargs, i, name.constData(), static_type.constData());
 		}
-		QByteArray static_type = a.toLatin1();
-		bool valid = setMocType(mocargs, i, name.constData(), static_type.constData());
-		i++;
     }
 
 	return mocargs;

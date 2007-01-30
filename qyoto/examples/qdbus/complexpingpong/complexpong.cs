@@ -52,25 +52,24 @@ class Pong : QDBusAbstractAdaptor
         QTimer.singleShot(0, QCoreApplication.Instance(), SLOT("quit()"));
     }
 
-    [Q_SLOT("QDBusVariant query(QString)")]
-    public QVariant query(string query)
+    [Q_SLOT]
+    public QDBusVariant query(string query)
     {
-        Console.WriteLine("Pong Received a query: {}", query);
-
         string q = query.ToLower();
+
         if (q == "hello")
-            return new QVariant("World");
+            return new QDBusVariant(new QVariant("World"));
         if (q == "ping")
-            return new QVariant("Pong");
+            return new QDBusVariant(new QVariant("Pong"));
         if (q == "the answer to life, the universe and everything")
-            return new QVariant(42);
+            return new QDBusVariant(new QVariant(42));
         if (q.IndexOf("unladen swallow") != -1) {
             if (q.IndexOf("european") != -1)
-                return new QVariant(11.0);
-            return new QVariant(new QByteArray("african or european?"));
+                return new QDBusVariant(new QVariant(11.0));
+            return new QDBusVariant(new QVariant(new QByteArray("african or european?")));
         }
 
-        return new QVariant("Sorry, I don't know the answer");
+        return new QDBusVariant(new QVariant("Sorry, I don't know the answer"));
     }
 
     public static int Main(string[] args) {
@@ -79,7 +78,6 @@ class Pong : QDBusAbstractAdaptor
         QObject obj = new QObject();
         Pong pong = new Pong(obj);
         pong.Connect(app, SIGNAL("aboutToQuit()"), SIGNAL("aboutToQuit()"));
-//        pong.SetProperty("value", "initial value");
         pong.value = "initial value";
         QDBusConnection.SessionBus().RegisterObject("/", obj);
 

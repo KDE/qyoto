@@ -418,39 +418,6 @@ resolve_classname(Smoke* smoke, int classId, void * ptr)
 	return smoke->binding->className(classId);
 }
 
-/*static bool
-isPrimitive(const char* type) {
-	if (type == "void") {
-		return true;
-	} else if (type == "bool") {
-		return true;
-	} else if (type == "int") {
-		return true;
-	} else if (type == "long") {
-		return true;
-	} else if (type == "uint") {
-		return true;
-	} else if (type == "ulong") {
-		return true;
-	} else if (type == "short") {
-		return true;
-	} else if (type == "ushort") {
-		return true;
-	} else if (type == "byte") {
-		return true;
-	} else if (type == "sbyte") {
-		return true;
-	} else if (type == "double") {
-		return true;
-	} else if (type == "float") {
-		return true;
-	} else if (type == "char") {
-		return true;
-	}
-	
-	return false;
-}*/
-
 bool
 matches_arg(Smoke *smoke, Smoke::Index meth, Smoke::Index argidx, const char *argtype)
 {
@@ -959,6 +926,63 @@ static void marshall_voidP_array(Marshall* m) {
 		break;
 	}
 }
+#include <QtDBus/qdbusextratypes.h>
+
+void marshall_QDBusVariant(Marshall *m) {
+	switch(m->action()) {
+	case Marshall::FromObject: 
+	{
+		if (m->var().s_class == 0) {
+			m->item().s_class = 0;
+			return;
+		}
+
+		smokeqyoto_object *o = value_obj_info(m->var().s_class);
+		if (!o || !o->ptr) {
+			if (m->type().isRef()) {
+				m->unsupported();
+			}
+		    m->item().s_class = 0;
+		    break;
+		}
+		m->item().s_class = o->ptr;
+		break;
+	}
+
+	case Marshall::ToObject: 
+	{
+		if (m->item().s_voidp == 0) {
+			m->var().s_voidp = 0;
+		    break;
+		}
+
+		void *p = m->item().s_voidp;
+		void * obj = getPointerObject(p);
+		if(obj != 0) {
+			m->var().s_voidp = obj;
+		    break;
+		}
+		smokeqyoto_object  * o = alloc_smokeqyoto_object(false, m->smoke(), m->smoke()->idClass("QVariant"), p);
+		
+		obj = set_obj_info("Qyoto.QDBusVariant", o);
+		if (do_debug & qtdb_calls) {
+			printf("allocating %s %p -> %p\n", "QDBusVariant", o->ptr, (void*)obj);
+		}
+
+		if (m->type().isStack()) {
+		    o->allocated = true;
+			// Keep a mapping of the pointer so that it is only wrapped once
+		    mapPointer(obj, o, o->classId, 0);
+		}
+		
+		m->var().s_class = obj;
+	}
+	
+	default:
+		m->unsupported();
+		break;
+    }
+}
 
 void marshall_QMapintQVariant(Marshall *m) {
 	switch(m->action()) {
@@ -1393,6 +1417,8 @@ TypeHandler Qt_handlers[] = {
     { "int*", marshall_intR },
     { "char*", marshall_charP },
     { "char**", marshall_charP_array },
+    { "QDBusVariant", marshall_QDBusVariant },
+    { "QDBusVariant&", marshall_QDBusVariant },
     { "QStringList", marshall_QStringList },
     { "QStringList&", marshall_QStringList },
     { "QStringList*", marshall_QStringList },

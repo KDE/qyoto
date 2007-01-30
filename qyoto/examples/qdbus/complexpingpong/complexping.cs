@@ -22,7 +22,6 @@
 
 using Qyoto;
 using System;
-using System.Collections.Generic;
 
 class Ping : QObject
 {
@@ -47,7 +46,7 @@ class Ping : QObject
         Connect(iface, SIGNAL("aboutToQuit()"), QCoreApplication.Instance(), SLOT("quit()"));
 
         while (true) {
-            Console.WriteLine("Ask your question: ");
+            Console.Write("Ask your question: ");
 
             string line = Console.ReadLine().Trim();
 
