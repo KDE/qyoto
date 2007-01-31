@@ -446,7 +446,9 @@ void WriteInitialization::acceptSpacer(DomSpacer *node)
     if (sizeHint)
         output << sizeHint->elementWidth() << ", " << sizeHint->elementHeight() << ", ";
 
-    if (sizeType.startsWith(QLatin1String("QSizePolicy.")) == false)
+    if (sizeType.startsWith(QLatin1String("QSizePolicy::")))
+        sizeType.replace(QLatin1String("::"), QLatin1String(".Policy."));
+    else
         sizeType.prepend(QLatin1String("QSizePolicy.Policy."));
 
     if (isVspacer)
@@ -578,6 +580,42 @@ void WriteInitialization::writeProperties(const QString &varName,
 {
     bool isTopLevel = m_widgetChain.count() == 1;
 
+	QStringList lowerCasePropertyNames;
+    lowerCasePropertyNames << "acceptMode";
+    lowerCasePropertyNames << "buttonSymbols";
+    lowerCasePropertyNames << "cacheMode";
+    lowerCasePropertyNames << "completionMode";
+    lowerCasePropertyNames << "correctionMode";
+    lowerCasePropertyNames << "curveShape";
+    lowerCasePropertyNames << "direction";
+    lowerCasePropertyNames << "dragDropMode";
+    lowerCasePropertyNames << "dragMode";
+    lowerCasePropertyNames << "echoMode";
+    lowerCasePropertyNames << "fileMode";
+    lowerCasePropertyNames << "flow";
+    lowerCasePropertyNames << "horizontalHeaderFormat";
+    lowerCasePropertyNames << "insertPolicy";
+    lowerCasePropertyNames << "itemIndexMethod";
+    lowerCasePropertyNames << "layoutMode";
+    lowerCasePropertyNames << "lineWrapMode";
+    lowerCasePropertyNames << "menuRole";
+    lowerCasePropertyNames << "mode";
+    lowerCasePropertyNames << "modelSorting";
+    lowerCasePropertyNames << "movement";
+    lowerCasePropertyNames << "resizeMode";
+    lowerCasePropertyNames << "segmentStyle";
+    lowerCasePropertyNames << "selectionBehavior";
+    lowerCasePropertyNames << "selectionMode";
+    lowerCasePropertyNames << "shape";
+    lowerCasePropertyNames << "sizeAdjustPolicy";
+    lowerCasePropertyNames << "sizeConstraint";
+    lowerCasePropertyNames << "submitPolicy";
+    lowerCasePropertyNames << "tabPosition";
+    lowerCasePropertyNames << "tabShape";
+    lowerCasePropertyNames << "tickPosition";
+    lowerCasePropertyNames << "verticalHeaderFormat";
+    lowerCasePropertyNames << "viewMode";
+
     if (uic->customWidgetsInfo()->extends(className, QLatin1String("QAxWidget"))) {
         QHash<QString, DomProperty*> properties = propertyMap(lst);
         if (properties.contains(QLatin1String("control"))) {
@@ -663,10 +701,9 @@ void WriteInitialization::writeProperties(const QString &varName,
 
         QString setFunction;
 
-        if (stdset) {
-            setFunction = QLatin1String(".")
-                + propertyName.left(1).toUpper()
-                + propertyName.mid(1)
+        if (lowerCasePropertyNames.contains(propertyName)) {
+             setFunction = QLatin1String(".")
+                + propertyName
                 + QLatin1String(" = ");
         } else {
             setFunction = QLatin1String(".")
@@ -1439,10 +1476,10 @@ void WriteInitialization::initializeListWidget(DomWidget *w)
             DomProperty *p = properties.at(i);
 
             if (p->attributeName() == QLatin1String("text"))
-                refreshOut << option.indent << itemName << ".Text = " << trCall(p->elementString()) << ";\n";
+                refreshOut << option.indent << itemName << ".SetText(" << trCall(p->elementString()) << ");\n";
 
             if (p->attributeName() == QLatin1String("icon"))
-                refreshOut << option.indent << itemName << ".Icon = " << pixCall(p) << ";\n";
+                refreshOut << option.indent << itemName << ".SetIcon(" << pixCall(p) << ");\n";
         }
     }
 }
