@@ -751,8 +751,17 @@ void WriteInitialization::writeProperties(const QString &varName,
             // this need special treatment because in C++ the enums aren't specified
             propertyValue = p->elementSet();
             if (propertyValue.contains(QLatin1String("::"))) {
-                QStringList parts = propertyValue.split("::");
-                propertyValue = QLatin1String("Qyoto.Qyoto.GetCPPEnumValue(\"") + parts[0] + "\", \"" + parts[1] + QLatin1String("\")");
+                QStringList enums = propertyValue.split("|");
+                QString qyotoValue;
+                for (int i = 0; i < enums.size(); ++i) {
+                    enums.at(i);
+                    QStringList parts = enums.at(i).split("::");
+                    if (i > 0) {
+                        qyotoValue += QLatin1String(" | ");
+                    }
+                    qyotoValue += QLatin1String("Qyoto.Qyoto.GetCPPEnumValue(\"") + parts[0] + "\", \"" + parts[1] + QLatin1String("\")");
+                }
+                propertyValue = qyotoValue;
             }
             break;
         case DomProperty::Font: {
