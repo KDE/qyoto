@@ -604,7 +604,7 @@ void WriteInitialization::writeProperties(const QString &varName,
 			QString tempName = driver->unique(QLatin1String("Size"));
 			resizeOut << option.indent << "QSize " << tempName << " = new QSize(" << w << ", " << h << ");\n"
                       << option.indent << tempName << " = " << tempName << ".ExpandedTo("
-                      << varName << ".MinimumSizeHint);\n"
+                      << varName << ".MinimumSizeHint());\n"
                       << option.indent << varName << ".Resize(" << tempName << ");\n";                
             continue;
         } else if (propertyName == QLatin1String("buttonGroupId") && buttonGroupWidget) { // Q3ButtonGroup support

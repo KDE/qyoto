@@ -926,7 +926,6 @@ static void marshall_voidP_array(Marshall* m) {
 		break;
 	}
 }
-#include <QtDBus/qdbusextratypes.h>
 
 void marshall_QDBusVariant(Marshall *m) {
 	switch(m->action()) {

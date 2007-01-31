@@ -316,12 +316,6 @@ namespace Qyoto {
 				return Property("fullScreen").Value<bool>();
 			}
 		}
-		[Q_PROPERTY("QSize", "minimumSizeHint")]
-		public QSize MinimumSizeHint {
-			get {
-				return Property("minimumSizeHint").Value<QSize>();
-			}
-		}
 		[Q_PROPERTY("bool", "acceptDrops")]
 		public bool AcceptDrops {
 			get {
@@ -836,6 +830,10 @@ namespace Qyoto {
 		[SmokeMethod("sizeHint() const")]
 		public virtual QSize SizeHint() {
 			return ProxyQWidget().SizeHint();
+		}
+		[SmokeMethod("minimumSizeHint() const")]
+		public virtual QSize MinimumSizeHint() {
+			return ProxyQWidget().MinimumSizeHint();
 		}
 		[SmokeMethod("setSizePolicy(QSizePolicy::Policy, QSizePolicy::Policy)")]
 		public void SetSizePolicy(QSizePolicy.Policy horizontal, QSizePolicy.Policy vertical) {
