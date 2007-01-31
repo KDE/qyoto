@@ -68,10 +68,13 @@ void WriteDeclaration::acceptUI(DomUI *node)
 
     if (nsList.count())
         output << "\n";
-
-    output << "class " << exportMacro << option.prefix << className << "\n"
-           << "{\n";
-           //<< "public:\n";
+    if (option.execCode) {
+        output << "partial class " << exportMacro << option.prefix << className << "\n"
+               << "{\n";
+    } else {
+        output << "class " << exportMacro << option.prefix << className << "\n"
+               << "{\n";
+    }
 
     QStringList connections = uic->databaseInfo()->connections();
     for (int i=0; i<connections.size(); ++i) {

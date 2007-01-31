@@ -2,6 +2,8 @@
 
 	* Changed the uics code generation to use C# properties
 	* Special case shortcut properties to create a QKeySequence
+	* Added an '-x' option to the uics tool to generate a Main method
+	  for testing purposes
 
 2007-30-01  Arno Rehn  <arno@arnorehn.de>
 

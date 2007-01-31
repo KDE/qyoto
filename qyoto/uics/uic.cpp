@@ -203,7 +203,25 @@ bool Uic::write(DomUI *ui)
     WriteIncludes(this).acceptUI(ui);
 
     Validator(this).acceptUI(ui);
+
     WriteDeclaration(this).acceptUI(ui);
+
+    if (option().execCode) {
+        QString qualifiedClassName = ui->elementClass() + option().postfix;
+        QString className = qualifiedClassName;
+        out << "partial class " << option().prefix << className << " {" << endl;
+        out << option().indent << "public static int Main(string[] args) {" << endl;
+        out << option().indent << option().indent << "new QApplication(args);" << endl;
+        out << option().indent << option().indent << option().prefix << className << " u = new " << option().prefix << className << "();" << endl;
+        DomWidget*  parentWidget = ui->elementWidget();
+        QString parentClass = parentWidget->attributeClass();
+        out << option().indent << option().indent << parentClass << " w = new " << parentClass << "();" << endl;
+        out << option().indent << option().indent << "u.SetupUi(w);" << endl;
+        out << option().indent << option().indent << "w.Show();" << endl;
+        out << option().indent << option().indent << "return QApplication.Exec();" << endl;
+        out << option().indent << "}" << endl;
+        out << "}" << endl;
+    }
 
     if (opt.headerProtection)
         writeHeaderProtectionEnd();

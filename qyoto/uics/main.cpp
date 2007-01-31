@@ -42,6 +42,7 @@ void showHelp(const char *appName)
             "  -tr <func>                use func() for i18n\n"
             "  -p, -no-protection        disable header protection\n"
             "  -g <name>                 change generator\n"
+            "  -x                        generate extra code to test the class\n"
             "\n", appName);
 }
 
@@ -69,6 +70,10 @@ int main(int argc, char *argv[])
                 return 1;
             }
             driver.option().outputFile = QFile::decodeName(argv[arg]);
+#ifdef QT_UIC_CS_GENERATOR
+        } else if (opt == QLatin1String("-x")) {
+            driver.option().execCode = 1;
+#endif
         } else if (opt == QLatin1String("-p") || opt == QLatin1String("-no-protection")) {
             driver.option().headerProtection = false;
         } else if (opt == QLatin1String("-postfix")) {
