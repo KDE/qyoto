@@ -118,7 +118,7 @@ void WriteIconData::acceptImage(DomImage *image)
 
         output << "\n\n";
     } else {
-        output << option.indent << "static const unsigned char " << img << "[] = { \n";
+        output << option.indent << "static uchar " << img << "[] = { \n";
         output << option.indent;
         int a ;
         for (a = 0; a < (int) (data.length()/2)-1; a++) {

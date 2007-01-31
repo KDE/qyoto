@@ -52,7 +52,7 @@ void WriteIconInitialization::acceptUI(DomUI *node)
 
     TreeWalker::acceptUI(node);
 
-    output << option.indent << option.indent << "default: return QPixmap();\n";
+    output << option.indent << option.indent << "default: return new QPixmap();\n";
 
     output << option.indent << "} // switch\n"
            << option.indent << "} // icon\n\n";
@@ -76,9 +76,9 @@ void WriteIconInitialization::acceptImage(DomImage *image)
     output << ind << "case " << imageId << ": ";
 
     if (fmt == QLatin1String("XPM.GZ")) {
-        output << "return " << "QPixmap((char[])" << imageData << ");\n";
+        output << "return " << "new QPixmap((char[])" << imageData << ");\n";
     } else {
-        output << " { QImage img; img.LoadFromData(" << imageData << ", sizeof(" << imageData << "), " << fixString(fmt, ind) << "); return QPixmap.FromImage(img); }\n";
+        output << " { QImage img = new QImage(); img.LoadFromData(" << imageData << ", sizeof(" << imageData << "), " << fixString(fmt, ind) << "); return new QPixmap.FromImage(img); }\n";
     }
 }
 
