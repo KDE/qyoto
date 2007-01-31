@@ -846,6 +846,18 @@ void WriteInitialization::writeProperties(const QString &varName,
                 // ### qWarning("Deprecated: the property `objectName' is different from the variable name");
             }
 
+            if (propertyName == QLatin1String("shortcut")) {
+                propertyValue = QString::fromLatin1("new QKeySequence(");
+                if (p->elementString()->hasAttributeNotr()
+                    && toBool(p->elementString()->attributeNotr())) {
+                    propertyValue += fixString(p->elementString()->text(), option.indent);
+                } else {
+                    propertyValue += trCall(p->elementString());
+                }
+                propertyValue += ")";
+                break;
+            }
+
             if (p->elementString()->hasAttributeNotr()
                     && toBool(p->elementString()->attributeNotr())) {
                 propertyValue = fixString(p->elementString()->text(), option.indent);

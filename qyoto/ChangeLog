@@ -1,6 +1,7 @@
 2007-31-01  Richard Dale  <rdale@foton.es>
 
 	* Changed the uics code generation to use C# properties
+	* Special case shortcut properties to create a QKeySequence
 
 2007-30-01  Arno Rehn  <arno@arnorehn.de>
 
