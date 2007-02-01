@@ -1251,21 +1251,71 @@ void* make_metaObject(void* obj, const char* stringdata, int stringdata_count, c
 
 #ifdef DEBUG
 	printf("make_metaObject() superdata: %p %s\n", meta->d.superdata, parent->className());
-	printf("stringdata: ");
+	
+	printf(
+	" // content:\n"
+	"       %d,       // revision\n"
+	"       %d,       // classname\n"
+	"       %d,   %d, // classinfo\n"
+	"       %d,   %d, // methods\n"
+	"       %d,   %d, // properties\n"
+	"       %d,   %d, // enums/sets\n",
+	data[0], data[1], data[2], data[3], 
+	data[4], data[5], data[6], data[7], data[8], data[9]);
+
+	printf(
+	"\n // classinfo: key, value\n"
+	"      %d,    %d\n",
+	data[10], data[11]);
+
+	int s = 12;
+	bool signal_headings = true;
+	bool slot_headings = true;
+
+	for (uint j = 0; j < data[4]; j++) {
+		if (signal_headings && (data[s + (j * 5) + 4] & 0x04)) {
+			printf("\n // signals: signature, parameters, type, tag, flags\n");
+			signal_headings = false;
+		} 
+
+		if (slot_headings && (data[s + (j * 5) + 4] & 0x08)) {
+			printf("\n // slots: signature, parameters, type, tag, flags\n");
+			slot_headings = false;
+		}
+
+		printf("      %d,   %d,   %d,   %d, 0x%2.2x\n", 
+			data[s + (j * 5)], data[s + (j * 5) + 1], data[s + (j * 5) + 2], 
+			data[s + (j * 5) + 3], data[s + (j * 5) + 4]);
+	}
+
+	s += (data[4] * 5);
+	for (uint j = 0; j < data[6]; j++) {
+		printf("\n // properties: name, type, flags\n");
+		printf("      %d,   %d,   0x%8.8x\n", 
+			data[s + (j * 3)], data[s + (j * 3) + 1], data[s + (j * 3) + 2]);
+	}
+
+	s += (data[6] * 3);
+	for (int i = s; i < data_count; i++) {
+		printf("\n       %d        // eod\n", data[i]);
+	}
+
+	printf("\nqt_meta_stringdata:\n    \"");
+
+    int strlength = 0;
 	for (int j = 0; j < stringdata_count; j++) {
+        strlength++;
 		if (meta->d.stringdata[j] == 0) {
 			printf("\\0");
+			if (strlength > 40) {
+				printf("\"\n    \"");
+				strlength = 0;
+			}
 		} else {
 			printf("%c", meta->d.stringdata[j]);
 		}
 	}
-	printf("\n");
-	
-	printf("data: ");
-	for (long i = 0; i < data_count; i++) {
-		printf("%d, ", my_data[i]);
-	}
-	printf("\n");
+	printf("\"\n");
 #endif
 	
 	// create smoke object

@@ -1,3 +1,7 @@
+2007-01-02  Richard Dale  <rdale@foton.es>
+
+	* Improved the debugging output for the content of a QMetaObject
+
 2007-31-01  Richard Dale  <rdale@foton.es>
 
 	* Changed the uics code generation to use C# properties
