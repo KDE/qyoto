@@ -39,6 +39,16 @@ ELSE (NOT GMCS_PATH)
 	MESSAGE (STATUS "Looking for gmcs - found - ${GMCS_PATH}")
 ENDIF (NOT GMCS_PATH)
 
+# find 'uics'
+MESSAGE (STATUS "Looking for uics")
+FIND_PROGRAM (UICS_PATH uics)
+IF (NOT UICS_PATH)
+	MESSAGE (STATUS "Looking for uics - not found")
+	MESSAGE (FATAL_ERROR "uics was not found on your system")
+ELSE (NOT UICS_PATH)
+	MESSAGE (STATUS "Looking for uics - found - ${UICS_PATH}")
+ENDIF (NOT UICS_PATH)
+
 INCLUDE_DIRECTORIES (${QT_INCLUDES})
 ADD_LIBRARY (qyoto SHARED ${SRC_CPP})
 TARGET_LINK_LIBRARIES (qyoto smokeqt ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY})

@@ -69,10 +69,10 @@ void WriteDeclaration::acceptUI(DomUI *node)
     if (nsList.count())
         output << "\n";
     if (option.execCode) {
-        output << "partial class " << exportMacro << option.prefix << className << "\n"
+        output << "public partial class " << exportMacro << option.prefix << className << "\n"
                << "{\n";
     } else {
-        output << "class " << exportMacro << option.prefix << className << "\n"
+        output << "public class " << exportMacro << option.prefix << className << "\n"
                << "{\n";
     }
 

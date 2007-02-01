@@ -209,7 +209,7 @@ bool Uic::write(DomUI *ui)
     if (option().execCode) {
         QString qualifiedClassName = ui->elementClass() + option().postfix;
         QString className = qualifiedClassName;
-        out << "partial class " << option().prefix << className << " {" << endl;
+        out << "public partial class " << option().prefix << className << " {" << endl;
         out << option().indent << "public static int Main(string[] args) {" << endl;
         out << option().indent << option().indent << "new QApplication(args);" << endl;
         out << option().indent << option().indent << option().prefix << className << " u = new " << option().prefix << className << "();" << endl;
