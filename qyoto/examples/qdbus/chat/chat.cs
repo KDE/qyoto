@@ -32,6 +32,7 @@ public class ChatMainWindow : QMainWindow {
 
     ChatMainWindow() : base()
     {
+        m_messages = new List<string>();
         m_ui = new Ui_ChatMainWindow();
         m_ui.SetupUi(this);
         m_ui.sendButton.Enabled = false;
@@ -50,7 +51,7 @@ public class ChatMainWindow : QMainWindow {
         com.trolltech.chat iface;
         iface = new com.trolltech.chat("", "", QDBusConnection.SessionBus(), this);
         //Connect(iface, SIGNAL("message(QString,QString)"), this, SLOT("messageSlot(QString,QString)"));
-        QDBusConnection.SessionBus().Connect("", "", "com.trolltech.chat", "message", this, SLOT("AessageSlot(QString,QString)"));
+        QDBusConnection.SessionBus().Connect("", "", "com.trolltech.chat", "message", this, SLOT("MessageSlot(QString,QString)"));
         Connect(iface, SIGNAL("Action(QString,QString)"), this, SLOT("ActionSlot(QString,QString)"));
     
         NicknameDialog dialog = new NicknameDialog();

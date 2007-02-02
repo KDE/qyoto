@@ -1,3 +1,7 @@
+2007-01-03  Richard Dale  <rdale@foton.es>
+
+	* Added qdbus/remotecontrolledcar example
+
 2007-01-02  Richard Dale  <rdale@foton.es>
 
 	* Improved the debugging output for the content of a QMetaObject
