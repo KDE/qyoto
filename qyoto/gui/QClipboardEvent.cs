@@ -33,7 +33,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQClipboardEvent();
 		}
-		[SmokeMethod("~QClipboardEvent()")]
+		[SmokeMethod("~QClipboardEvent", "()")]
 		private void DisposeQClipboardEvent() {
 			ProxyQClipboardEvent().DisposeQClipboardEvent();
 		}

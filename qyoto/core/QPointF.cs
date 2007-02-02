@@ -34,7 +34,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQPointF();
 		}
-		[SmokeMethod("QPointF()")]
+		[SmokeMethod("QPointF", "()")]
 		private void NewQPointF() {
 			ProxyQPointF().NewQPointF();
 		}
@@ -42,7 +42,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQPointF(p);
 		}
-		[SmokeMethod("QPointF(const QPoint&)")]
+		[SmokeMethod("QPointF#", "(const QPoint&)")]
 		private void NewQPointF(QPoint p) {
 			ProxyQPointF().NewQPointF(p);
 		}
@@ -50,41 +50,41 @@ namespace Qyoto {
 			CreateProxy();
 			NewQPointF(xpos,ypos);
 		}
-		[SmokeMethod("QPointF(qreal, qreal)")]
+		[SmokeMethod("QPointF$$", "(qreal, qreal)")]
 		private void NewQPointF(double xpos, double ypos) {
 			ProxyQPointF().NewQPointF(xpos,ypos);
 		}
-		[SmokeMethod("isNull() const")]
+		[SmokeMethod("isNull", "() const")]
 		public bool IsNull() {
 			return ProxyQPointF().IsNull();
 		}
-		[SmokeMethod("x() const")]
+		[SmokeMethod("x", "() const")]
 		public double X() {
 			return ProxyQPointF().X();
 		}
-		[SmokeMethod("y() const")]
+		[SmokeMethod("y", "() const")]
 		public double Y() {
 			return ProxyQPointF().Y();
 		}
-		[SmokeMethod("setX(qreal)")]
+		[SmokeMethod("setX$", "(qreal)")]
 		public void SetX(double x) {
 			ProxyQPointF().SetX(x);
 		}
-		[SmokeMethod("setY(qreal)")]
+		[SmokeMethod("setY$", "(qreal)")]
 		public void SetY(double y) {
 			ProxyQPointF().SetY(y);
 		}
 		// qreal& rx(); >>>> NOT CONVERTED
 		// qreal& ry(); >>>> NOT CONVERTED
-		[SmokeMethod("operator*=(qreal)")]
+		[SmokeMethod("operator*=$", "(qreal)")]
 		public static QPointF operator*(QPointF lhs, double c) {
 			return StaticQPointF().op_mult(lhs,c);
 		}
-		[SmokeMethod("operator/=(qreal)")]
+		[SmokeMethod("operator/=$", "(qreal)")]
 		public static QPointF operator/(QPointF lhs, double c) {
 			return StaticQPointF().op_div(lhs,c);
 		}
-		[SmokeMethod("toPoint() const")]
+		[SmokeMethod("toPoint", "() const")]
 		public QPoint ToPoint() {
 			return ProxyQPointF().ToPoint();
 		}
@@ -94,7 +94,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQPointF();
 		}
-		[SmokeMethod("~QPointF()")]
+		[SmokeMethod("~QPointF", "()")]
 		private void DisposeQPointF() {
 			ProxyQPointF().DisposeQPointF();
 		}

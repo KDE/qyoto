@@ -8,7 +8,9 @@ namespace Qyoto {
 	public class QAbstractPrintDialog : QDialog {
  		protected QAbstractPrintDialog(Type dummy) : base((Type) null) {}
 		interface IQAbstractPrintDialogProxy {
+			[SmokeMethod("tr$$", "(const char*, const char*)")]
 			string Tr(string s, string c);
+			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
 		}
 
@@ -45,7 +47,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQAbstractPrintDialog(printer,parent);
 		}
-		[SmokeMethod("QAbstractPrintDialog(QPrinter*, QWidget*)")]
+		[SmokeMethod("QAbstractPrintDialog##", "(QPrinter*, QWidget*)")]
 		private void NewQAbstractPrintDialog(QPrinter printer, QWidget parent) {
 			ProxyQAbstractPrintDialog().NewQAbstractPrintDialog(printer,parent);
 		}
@@ -53,71 +55,69 @@ namespace Qyoto {
 			CreateProxy();
 			NewQAbstractPrintDialog(printer);
 		}
-		[SmokeMethod("QAbstractPrintDialog(QPrinter*)")]
+		[SmokeMethod("QAbstractPrintDialog#", "(QPrinter*)")]
 		private void NewQAbstractPrintDialog(QPrinter printer) {
 			ProxyQAbstractPrintDialog().NewQAbstractPrintDialog(printer);
 		}
-		[SmokeMethod("exec()")]
+		[SmokeMethod("exec", "()")]
 		public new virtual int Exec() {
 			return ProxyQAbstractPrintDialog().Exec();
 		}
-		[SmokeMethod("addEnabledOption(QAbstractPrintDialog::PrintDialogOption)")]
+		[SmokeMethod("addEnabledOption$", "(QAbstractPrintDialog::PrintDialogOption)")]
 		public void AddEnabledOption(QAbstractPrintDialog.PrintDialogOption option) {
 			ProxyQAbstractPrintDialog().AddEnabledOption(option);
 		}
-		[SmokeMethod("setEnabledOptions(PrintDialogOptions)")]
+		[SmokeMethod("setEnabledOptions$", "(PrintDialogOptions)")]
 		public void SetEnabledOptions(int options) {
 			ProxyQAbstractPrintDialog().SetEnabledOptions(options);
 		}
-		[SmokeMethod("enabledOptions() const")]
+		[SmokeMethod("enabledOptions", "() const")]
 		public int EnabledOptions() {
 			return ProxyQAbstractPrintDialog().EnabledOptions();
 		}
-		[SmokeMethod("isOptionEnabled(QAbstractPrintDialog::PrintDialogOption) const")]
+		[SmokeMethod("isOptionEnabled$", "(QAbstractPrintDialog::PrintDialogOption) const")]
 		public bool IsOptionEnabled(QAbstractPrintDialog.PrintDialogOption option) {
 			return ProxyQAbstractPrintDialog().IsOptionEnabled(option);
 		}
-		[SmokeMethod("setPrintRange(QAbstractPrintDialog::PrintRange)")]
+		[SmokeMethod("setPrintRange$", "(QAbstractPrintDialog::PrintRange)")]
 		public void SetPrintRange(QAbstractPrintDialog.PrintRange range) {
 			ProxyQAbstractPrintDialog().SetPrintRange(range);
 		}
-		[SmokeMethod("printRange() const")]
+		[SmokeMethod("printRange", "() const")]
 		public QAbstractPrintDialog.PrintRange printRange() {
 			return ProxyQAbstractPrintDialog().printRange();
 		}
-		[SmokeMethod("setMinMax(int, int)")]
+		[SmokeMethod("setMinMax$$", "(int, int)")]
 		public void SetMinMax(int min, int max) {
 			ProxyQAbstractPrintDialog().SetMinMax(min,max);
 		}
-		[SmokeMethod("minPage() const")]
+		[SmokeMethod("minPage", "() const")]
 		public int MinPage() {
 			return ProxyQAbstractPrintDialog().MinPage();
 		}
-		[SmokeMethod("maxPage() const")]
+		[SmokeMethod("maxPage", "() const")]
 		public int MaxPage() {
 			return ProxyQAbstractPrintDialog().MaxPage();
 		}
-		[SmokeMethod("setFromTo(int, int)")]
+		[SmokeMethod("setFromTo$$", "(int, int)")]
 		public void SetFromTo(int fromPage, int toPage) {
 			ProxyQAbstractPrintDialog().SetFromTo(fromPage,toPage);
 		}
-		[SmokeMethod("fromPage() const")]
+		[SmokeMethod("fromPage", "() const")]
 		public int FromPage() {
 			return ProxyQAbstractPrintDialog().FromPage();
 		}
-		[SmokeMethod("toPage() const")]
+		[SmokeMethod("toPage", "() const")]
 		public int ToPage() {
 			return ProxyQAbstractPrintDialog().ToPage();
 		}
-		[SmokeMethod("printer() const")]
+		[SmokeMethod("printer", "() const")]
 		public QPrinter Printer() {
 			return ProxyQAbstractPrintDialog().Printer();
 		}
-		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQAbstractPrintDialog().Tr(s,c);
 		}
-		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQAbstractPrintDialog().Tr(s);
 		}
@@ -127,7 +127,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQAbstractPrintDialog();
 		}
-		[SmokeMethod("~QAbstractPrintDialog()")]
+		[SmokeMethod("~QAbstractPrintDialog", "()")]
 		private void DisposeQAbstractPrintDialog() {
 			ProxyQAbstractPrintDialog().DisposeQAbstractPrintDialog();
 		}

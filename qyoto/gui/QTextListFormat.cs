@@ -38,27 +38,27 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTextListFormat();
 		}
-		[SmokeMethod("QTextListFormat()")]
+		[SmokeMethod("QTextListFormat", "()")]
 		private void NewQTextListFormat() {
 			ProxyQTextListFormat().NewQTextListFormat();
 		}
-		[SmokeMethod("isValid() const")]
+		[SmokeMethod("isValid", "() const")]
 		public new bool IsValid() {
 			return ProxyQTextListFormat().IsValid();
 		}
-		[SmokeMethod("setStyle(QTextListFormat::Style)")]
+		[SmokeMethod("setStyle$", "(QTextListFormat::Style)")]
 		public void SetStyle(QTextListFormat.Style style) {
 			ProxyQTextListFormat().SetStyle(style);
 		}
-		[SmokeMethod("style() const")]
+		[SmokeMethod("style", "() const")]
 		public QTextListFormat.Style style() {
 			return ProxyQTextListFormat().style();
 		}
-		[SmokeMethod("setIndent(int)")]
+		[SmokeMethod("setIndent$", "(int)")]
 		public void SetIndent(int indent) {
 			ProxyQTextListFormat().SetIndent(indent);
 		}
-		[SmokeMethod("indent() const")]
+		[SmokeMethod("indent", "() const")]
 		public int Indent() {
 			return ProxyQTextListFormat().Indent();
 		}
@@ -68,7 +68,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQTextListFormat();
 		}
-		[SmokeMethod("~QTextListFormat()")]
+		[SmokeMethod("~QTextListFormat", "()")]
 		private void DisposeQTextListFormat() {
 			ProxyQTextListFormat().DisposeQTextListFormat();
 		}

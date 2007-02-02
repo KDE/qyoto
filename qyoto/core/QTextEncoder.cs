@@ -33,15 +33,15 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTextEncoder(codec);
 		}
-		[SmokeMethod("QTextEncoder(const QTextCodec*)")]
+		[SmokeMethod("QTextEncoder#", "(const QTextCodec*)")]
 		private void NewQTextEncoder(QTextCodec codec) {
 			ProxyQTextEncoder().NewQTextEncoder(codec);
 		}
-		[SmokeMethod("fromUnicode(const QString&)")]
+		[SmokeMethod("fromUnicode$", "(const QString&)")]
 		public QByteArray FromUnicode(string str) {
 			return ProxyQTextEncoder().FromUnicode(str);
 		}
-		[SmokeMethod("fromUnicode(const QChar*, int)")]
+		[SmokeMethod("fromUnicode##", "(const QChar*, int)")]
 		public QByteArray FromUnicode(char uc, int len) {
 			return ProxyQTextEncoder().FromUnicode(uc,len);
 		}
@@ -51,7 +51,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQTextEncoder();
 		}
-		[SmokeMethod("~QTextEncoder()")]
+		[SmokeMethod("~QTextEncoder", "()")]
 		private void DisposeQTextEncoder() {
 			ProxyQTextEncoder().DisposeQTextEncoder();
 		}

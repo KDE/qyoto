@@ -10,7 +10,9 @@ namespace Qyoto {
 	public class QCompleter : QObject, IDisposable {
  		protected QCompleter(Type dummy) : base((Type) null) {}
 		interface IQCompleterProxy {
+			[SmokeMethod("tr$$", "(const char*, const char*)")]
 			string Tr(string s, string c);
+			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
 		}
 
@@ -99,7 +101,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQCompleter(parent);
 		}
-		[SmokeMethod("QCompleter(QObject*)")]
+		[SmokeMethod("QCompleter#", "(QObject*)")]
 		private void NewQCompleter(QObject parent) {
 			ProxyQCompleter().NewQCompleter(parent);
 		}
@@ -107,7 +109,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQCompleter();
 		}
-		[SmokeMethod("QCompleter()")]
+		[SmokeMethod("QCompleter", "()")]
 		private void NewQCompleter() {
 			ProxyQCompleter().NewQCompleter();
 		}
@@ -115,7 +117,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQCompleter(model,parent);
 		}
-		[SmokeMethod("QCompleter(QAbstractItemModel*, QObject*)")]
+		[SmokeMethod("QCompleter##", "(QAbstractItemModel*, QObject*)")]
 		private void NewQCompleter(QAbstractItemModel model, QObject parent) {
 			ProxyQCompleter().NewQCompleter(model,parent);
 		}
@@ -123,7 +125,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQCompleter(model);
 		}
-		[SmokeMethod("QCompleter(QAbstractItemModel*)")]
+		[SmokeMethod("QCompleter#", "(QAbstractItemModel*)")]
 		private void NewQCompleter(QAbstractItemModel model) {
 			ProxyQCompleter().NewQCompleter(model);
 		}
@@ -131,7 +133,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQCompleter(completions,parent);
 		}
-		[SmokeMethod("QCompleter(const QStringList&, QObject*)")]
+		[SmokeMethod("QCompleter??", "(const QStringList&, QObject*)")]
 		private void NewQCompleter(List<string> completions, QObject parent) {
 			ProxyQCompleter().NewQCompleter(completions,parent);
 		}
@@ -139,89 +141,87 @@ namespace Qyoto {
 			CreateProxy();
 			NewQCompleter(completions);
 		}
-		[SmokeMethod("QCompleter(const QStringList&)")]
+		[SmokeMethod("QCompleter?", "(const QStringList&)")]
 		private void NewQCompleter(List<string> completions) {
 			ProxyQCompleter().NewQCompleter(completions);
 		}
-		[SmokeMethod("setWidget(QWidget*)")]
+		[SmokeMethod("setWidget#", "(QWidget*)")]
 		public void SetWidget(QWidget widget) {
 			ProxyQCompleter().SetWidget(widget);
 		}
-		[SmokeMethod("widget() const")]
+		[SmokeMethod("widget", "() const")]
 		public QWidget Widget() {
 			return ProxyQCompleter().Widget();
 		}
-		[SmokeMethod("setModel(QAbstractItemModel*)")]
+		[SmokeMethod("setModel#", "(QAbstractItemModel*)")]
 		public void SetModel(QAbstractItemModel c) {
 			ProxyQCompleter().SetModel(c);
 		}
-		[SmokeMethod("model() const")]
+		[SmokeMethod("model", "() const")]
 		public QAbstractItemModel Model() {
 			return ProxyQCompleter().Model();
 		}
-		[SmokeMethod("popup() const")]
+		[SmokeMethod("popup", "() const")]
 		public QAbstractItemView Popup() {
 			return ProxyQCompleter().Popup();
 		}
-		[SmokeMethod("setPopup(QAbstractItemView*)")]
+		[SmokeMethod("setPopup#", "(QAbstractItemView*)")]
 		public void SetPopup(QAbstractItemView popup) {
 			ProxyQCompleter().SetPopup(popup);
 		}
-		[SmokeMethod("completionCount() const")]
+		[SmokeMethod("completionCount", "() const")]
 		public int CompletionCount() {
 			return ProxyQCompleter().CompletionCount();
 		}
-		[SmokeMethod("setCurrentRow(int)")]
+		[SmokeMethod("setCurrentRow$", "(int)")]
 		public bool SetCurrentRow(int row) {
 			return ProxyQCompleter().SetCurrentRow(row);
 		}
-		[SmokeMethod("currentRow() const")]
+		[SmokeMethod("currentRow", "() const")]
 		public int CurrentRow() {
 			return ProxyQCompleter().CurrentRow();
 		}
-		[SmokeMethod("currentIndex() const")]
+		[SmokeMethod("currentIndex", "() const")]
 		public QModelIndex CurrentIndex() {
 			return ProxyQCompleter().CurrentIndex();
 		}
-		[SmokeMethod("currentCompletion() const")]
+		[SmokeMethod("currentCompletion", "() const")]
 		public string CurrentCompletion() {
 			return ProxyQCompleter().CurrentCompletion();
 		}
-		[SmokeMethod("completionModel() const")]
+		[SmokeMethod("completionModel", "() const")]
 		public QAbstractItemModel CompletionModel() {
 			return ProxyQCompleter().CompletionModel();
 		}
-		[SmokeMethod("pathFromIndex(const QModelIndex&) const")]
+		[SmokeMethod("pathFromIndex#", "(const QModelIndex&) const")]
 		public virtual string PathFromIndex(QModelIndex index) {
 			return ProxyQCompleter().PathFromIndex(index);
 		}
-		[SmokeMethod("splitPath(const QString&) const")]
+		[SmokeMethod("splitPath$", "(const QString&) const")]
 		public virtual List<string> SplitPath(string path) {
 			return ProxyQCompleter().SplitPath(path);
 		}
-		[Q_SLOT("void complete(const QRect&)")]
-		[SmokeMethod("complete(const QRect&)")]
+		[Q_SLOT("void (const QRect&)")]
+		[SmokeMethod("complete#", "(const QRect&)")]
 		public void Complete(QRect rect) {
 			ProxyQCompleter().Complete(rect);
 		}
-		[Q_SLOT("void complete()")]
-		[SmokeMethod("complete()")]
+		[Q_SLOT("void ()")]
+		[SmokeMethod("complete", "()")]
 		public void Complete() {
 			ProxyQCompleter().Complete();
 		}
-		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQCompleter().Tr(s,c);
 		}
-		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQCompleter().Tr(s);
 		}
-		[SmokeMethod("eventFilter(QObject*, QEvent*)")]
+		[SmokeMethod("eventFilter##", "(QObject*, QEvent*)")]
 		public new bool EventFilter(QObject o, QEvent e) {
 			return ProxyQCompleter().EventFilter(o,e);
 		}
-		[SmokeMethod("event(QEvent*)")]
+		[SmokeMethod("event#", "(QEvent*)")]
 		public new bool Event(QEvent arg1) {
 			return ProxyQCompleter().Event(arg1);
 		}
@@ -231,7 +231,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQCompleter();
 		}
-		[SmokeMethod("~QCompleter()")]
+		[SmokeMethod("~QCompleter", "()")]
 		private void DisposeQCompleter() {
 			ProxyQCompleter().DisposeQCompleter();
 		}
@@ -243,13 +243,13 @@ namespace Qyoto {
 	}
 
 	public interface IQCompleterSignals : IQObjectSignals {
-		[Q_SIGNAL("void activated(const QString&)")]
+		[Q_SIGNAL("void (const QString&)")]
 		void Activated(string text);
-		[Q_SIGNAL("void activated(const QModelIndex&)")]
+		[Q_SIGNAL("void (const QModelIndex&)")]
 		void Activated(QModelIndex index);
-		[Q_SIGNAL("void highlighted(const QString&)")]
+		[Q_SIGNAL("void (const QString&)")]
 		void Highlighted(string text);
-		[Q_SIGNAL("void highlighted(const QModelIndex&)")]
+		[Q_SIGNAL("void (const QModelIndex&)")]
 		void Highlighted(QModelIndex index);
 	}
 }

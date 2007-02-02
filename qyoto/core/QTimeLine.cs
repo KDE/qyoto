@@ -9,7 +9,9 @@ namespace Qyoto {
 	public class QTimeLine : QObject, IDisposable {
  		protected QTimeLine(Type dummy) : base((Type) null) {}
 		interface IQTimeLineProxy {
+			[SmokeMethod("tr$$", "(const char*, const char*)")]
 			string Tr(string s, string c);
+			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
 		}
 
@@ -104,7 +106,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTimeLine(duration,parent);
 		}
-		[SmokeMethod("QTimeLine(int, QObject*)")]
+		[SmokeMethod("QTimeLine$$", "(int, QObject*)")]
 		private void NewQTimeLine(int duration, QObject parent) {
 			ProxyQTimeLine().NewQTimeLine(duration,parent);
 		}
@@ -112,7 +114,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTimeLine(duration);
 		}
-		[SmokeMethod("QTimeLine(int)")]
+		[SmokeMethod("QTimeLine$", "(int)")]
 		private void NewQTimeLine(int duration) {
 			ProxyQTimeLine().NewQTimeLine(duration);
 		}
@@ -120,79 +122,77 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTimeLine();
 		}
-		[SmokeMethod("QTimeLine()")]
+		[SmokeMethod("QTimeLine", "()")]
 		private void NewQTimeLine() {
 			ProxyQTimeLine().NewQTimeLine();
 		}
-		[SmokeMethod("state() const")]
+		[SmokeMethod("state", "() const")]
 		public QTimeLine.State state() {
 			return ProxyQTimeLine().state();
 		}
-		[SmokeMethod("startFrame() const")]
+		[SmokeMethod("startFrame", "() const")]
 		public int StartFrame() {
 			return ProxyQTimeLine().StartFrame();
 		}
-		[SmokeMethod("setStartFrame(int)")]
+		[SmokeMethod("setStartFrame$", "(int)")]
 		public void SetStartFrame(int frame) {
 			ProxyQTimeLine().SetStartFrame(frame);
 		}
-		[SmokeMethod("endFrame() const")]
+		[SmokeMethod("endFrame", "() const")]
 		public int EndFrame() {
 			return ProxyQTimeLine().EndFrame();
 		}
-		[SmokeMethod("setEndFrame(int)")]
+		[SmokeMethod("setEndFrame$", "(int)")]
 		public void SetEndFrame(int frame) {
 			ProxyQTimeLine().SetEndFrame(frame);
 		}
-		[SmokeMethod("setFrameRange(int, int)")]
+		[SmokeMethod("setFrameRange$$", "(int, int)")]
 		public void SetFrameRange(int startFrame, int endFrame) {
 			ProxyQTimeLine().SetFrameRange(startFrame,endFrame);
 		}
-		[SmokeMethod("currentFrame() const")]
+		[SmokeMethod("currentFrame", "() const")]
 		public int CurrentFrame() {
 			return ProxyQTimeLine().CurrentFrame();
 		}
-		[SmokeMethod("currentValue() const")]
+		[SmokeMethod("currentValue", "() const")]
 		public double CurrentValue() {
 			return ProxyQTimeLine().CurrentValue();
 		}
-		[SmokeMethod("frameForTime(int) const")]
+		[SmokeMethod("frameForTime$", "(int) const")]
 		public int FrameForTime(int msec) {
 			return ProxyQTimeLine().FrameForTime(msec);
 		}
-		[SmokeMethod("valueForTime(int) const")]
+		[SmokeMethod("valueForTime$", "(int) const")]
 		public virtual double ValueForTime(int msec) {
 			return ProxyQTimeLine().ValueForTime(msec);
 		}
-		[Q_SLOT("void start()")]
-		[SmokeMethod("start()")]
+		[Q_SLOT("void ()")]
+		[SmokeMethod("start", "()")]
 		public void Start() {
 			ProxyQTimeLine().Start();
 		}
-		[Q_SLOT("void stop()")]
-		[SmokeMethod("stop()")]
+		[Q_SLOT("void ()")]
+		[SmokeMethod("stop", "()")]
 		public void Stop() {
 			ProxyQTimeLine().Stop();
 		}
-		[Q_SLOT("void setPaused(bool)")]
-		[SmokeMethod("setPaused(bool)")]
+		[Q_SLOT("void (bool)")]
+		[SmokeMethod("setPaused$", "(bool)")]
 		public void SetPaused(bool paused) {
 			ProxyQTimeLine().SetPaused(paused);
 		}
-		[Q_SLOT("void toggleDirection()")]
-		[SmokeMethod("toggleDirection()")]
+		[Q_SLOT("void ()")]
+		[SmokeMethod("toggleDirection", "()")]
 		public void ToggleDirection() {
 			ProxyQTimeLine().ToggleDirection();
 		}
-		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQTimeLine().Tr(s,c);
 		}
-		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQTimeLine().Tr(s);
 		}
-		[SmokeMethod("timerEvent(QTimerEvent*)")]
+		[SmokeMethod("timerEvent#", "(QTimerEvent*)")]
 		protected new void TimerEvent(QTimerEvent arg1) {
 			ProxyQTimeLine().TimerEvent(arg1);
 		}
@@ -202,7 +202,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQTimeLine();
 		}
-		[SmokeMethod("~QTimeLine()")]
+		[SmokeMethod("~QTimeLine", "()")]
 		private void DisposeQTimeLine() {
 			ProxyQTimeLine().DisposeQTimeLine();
 		}
@@ -214,13 +214,13 @@ namespace Qyoto {
 	}
 
 	public interface IQTimeLineSignals : IQObjectSignals {
-		[Q_SIGNAL("void valueChanged(qreal)")]
+		[Q_SIGNAL("void (qreal)")]
 		void ValueChanged(double x);
-		[Q_SIGNAL("void frameChanged(int)")]
+		[Q_SIGNAL("void (int)")]
 		void FrameChanged(int arg1);
-		[Q_SIGNAL("void stateChanged(QTimeLine::State)")]
+		[Q_SIGNAL("void (QTimeLine::State)")]
 		void StateChanged(QTimeLine.State newState);
-		[Q_SIGNAL("void finished()")]
+		[Q_SIGNAL("void ()")]
 		void Finished();
 	}
 }

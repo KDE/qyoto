@@ -41,7 +41,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionViewItem();
 		}
-		[SmokeMethod("QStyleOptionViewItem()")]
+		[SmokeMethod("QStyleOptionViewItem", "()")]
 		private void NewQStyleOptionViewItem() {
 			ProxyQStyleOptionViewItem().NewQStyleOptionViewItem();
 		}
@@ -49,7 +49,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionViewItem(other);
 		}
-		[SmokeMethod("QStyleOptionViewItem(const QStyleOptionViewItem&)")]
+		[SmokeMethod("QStyleOptionViewItem#", "(const QStyleOptionViewItem&)")]
 		private void NewQStyleOptionViewItem(QStyleOptionViewItem other) {
 			ProxyQStyleOptionViewItem().NewQStyleOptionViewItem(other);
 		}
@@ -57,7 +57,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionViewItem(version);
 		}
-		[SmokeMethod("QStyleOptionViewItem(int)")]
+		[SmokeMethod("QStyleOptionViewItem$", "(int)")]
 		private void NewQStyleOptionViewItem(int version) {
 			ProxyQStyleOptionViewItem().NewQStyleOptionViewItem(version);
 		}
@@ -67,7 +67,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQStyleOptionViewItem();
 		}
-		[SmokeMethod("~QStyleOptionViewItem()")]
+		[SmokeMethod("~QStyleOptionViewItem", "()")]
 		private void DisposeQStyleOptionViewItem() {
 			ProxyQStyleOptionViewItem().DisposeQStyleOptionViewItem();
 		}

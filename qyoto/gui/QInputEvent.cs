@@ -29,7 +29,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQInputEvent(type,modifiers);
 		}
-		[SmokeMethod("QInputEvent(QEvent::Type, Qt::KeyboardModifiers)")]
+		[SmokeMethod("QInputEvent$$", "(QEvent::Type, Qt::KeyboardModifiers)")]
 		private void NewQInputEvent(QEvent.TypeOf type, int modifiers) {
 			ProxyQInputEvent().NewQInputEvent(type,modifiers);
 		}
@@ -37,11 +37,11 @@ namespace Qyoto {
 			CreateProxy();
 			NewQInputEvent(type);
 		}
-		[SmokeMethod("QInputEvent(QEvent::Type)")]
+		[SmokeMethod("QInputEvent$", "(QEvent::Type)")]
 		private void NewQInputEvent(QEvent.TypeOf type) {
 			ProxyQInputEvent().NewQInputEvent(type);
 		}
-		[SmokeMethod("modifiers() const")]
+		[SmokeMethod("modifiers", "() const")]
 		public int Modifiers() {
 			return ProxyQInputEvent().Modifiers();
 		}
@@ -51,7 +51,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQInputEvent();
 		}
-		[SmokeMethod("~QInputEvent()")]
+		[SmokeMethod("~QInputEvent", "()")]
 		private void DisposeQInputEvent() {
 			ProxyQInputEvent().DisposeQInputEvent();
 		}

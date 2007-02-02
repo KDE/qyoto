@@ -9,7 +9,9 @@ namespace Qyoto {
 	public class QToolBox : QFrame, IDisposable {
  		protected QToolBox(Type dummy) : base((Type) null) {}
 		interface IQToolBoxProxy {
+			[SmokeMethod("tr$$", "(const char*, const char*)")]
 			string Tr(string s, string c);
+			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
 		}
 
@@ -49,7 +51,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQToolBox(parent,f);
 		}
-		[SmokeMethod("QToolBox(QWidget*, Qt::WindowFlags)")]
+		[SmokeMethod("QToolBox##", "(QWidget*, Qt::WindowFlags)")]
 		private void NewQToolBox(QWidget parent, int f) {
 			ProxyQToolBox().NewQToolBox(parent,f);
 		}
@@ -57,7 +59,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQToolBox(parent);
 		}
-		[SmokeMethod("QToolBox(QWidget*)")]
+		[SmokeMethod("QToolBox#", "(QWidget*)")]
 		private void NewQToolBox(QWidget parent) {
 			ProxyQToolBox().NewQToolBox(parent);
 		}
@@ -65,104 +67,102 @@ namespace Qyoto {
 			CreateProxy();
 			NewQToolBox();
 		}
-		[SmokeMethod("QToolBox()")]
+		[SmokeMethod("QToolBox", "()")]
 		private void NewQToolBox() {
 			ProxyQToolBox().NewQToolBox();
 		}
-		[SmokeMethod("addItem(QWidget*, const QString&)")]
+		[SmokeMethod("addItem##", "(QWidget*, const QString&)")]
 		public int AddItem(QWidget widget, string text) {
 			return ProxyQToolBox().AddItem(widget,text);
 		}
-		[SmokeMethod("addItem(QWidget*, const QIcon&, const QString&)")]
+		[SmokeMethod("addItem###", "(QWidget*, const QIcon&, const QString&)")]
 		public int AddItem(QWidget widget, QIcon icon, string text) {
 			return ProxyQToolBox().AddItem(widget,icon,text);
 		}
-		[SmokeMethod("insertItem(int, QWidget*, const QString&)")]
+		[SmokeMethod("insertItem$$$", "(int, QWidget*, const QString&)")]
 		public int InsertItem(int index, QWidget widget, string text) {
 			return ProxyQToolBox().InsertItem(index,widget,text);
 		}
-		[SmokeMethod("insertItem(int, QWidget*, const QIcon&, const QString&)")]
+		[SmokeMethod("insertItem$$$$", "(int, QWidget*, const QIcon&, const QString&)")]
 		public int InsertItem(int index, QWidget widget, QIcon icon, string text) {
 			return ProxyQToolBox().InsertItem(index,widget,icon,text);
 		}
-		[SmokeMethod("removeItem(int)")]
+		[SmokeMethod("removeItem$", "(int)")]
 		public void RemoveItem(int index) {
 			ProxyQToolBox().RemoveItem(index);
 		}
-		[SmokeMethod("setItemEnabled(int, bool)")]
+		[SmokeMethod("setItemEnabled$$", "(int, bool)")]
 		public void SetItemEnabled(int index, bool enabled) {
 			ProxyQToolBox().SetItemEnabled(index,enabled);
 		}
-		[SmokeMethod("isItemEnabled(int) const")]
+		[SmokeMethod("isItemEnabled$", "(int) const")]
 		public bool IsItemEnabled(int index) {
 			return ProxyQToolBox().IsItemEnabled(index);
 		}
-		[SmokeMethod("setItemText(int, const QString&)")]
+		[SmokeMethod("setItemText$$", "(int, const QString&)")]
 		public void SetItemText(int index, string text) {
 			ProxyQToolBox().SetItemText(index,text);
 		}
-		[SmokeMethod("itemText(int) const")]
+		[SmokeMethod("itemText$", "(int) const")]
 		public string ItemText(int index) {
 			return ProxyQToolBox().ItemText(index);
 		}
-		[SmokeMethod("setItemIcon(int, const QIcon&)")]
+		[SmokeMethod("setItemIcon$$", "(int, const QIcon&)")]
 		public void SetItemIcon(int index, QIcon icon) {
 			ProxyQToolBox().SetItemIcon(index,icon);
 		}
-		[SmokeMethod("itemIcon(int) const")]
+		[SmokeMethod("itemIcon$", "(int) const")]
 		public QIcon ItemIcon(int index) {
 			return ProxyQToolBox().ItemIcon(index);
 		}
-		[SmokeMethod("setItemToolTip(int, const QString&)")]
+		[SmokeMethod("setItemToolTip$$", "(int, const QString&)")]
 		public void SetItemToolTip(int index, string toolTip) {
 			ProxyQToolBox().SetItemToolTip(index,toolTip);
 		}
-		[SmokeMethod("itemToolTip(int) const")]
+		[SmokeMethod("itemToolTip$", "(int) const")]
 		public string ItemToolTip(int index) {
 			return ProxyQToolBox().ItemToolTip(index);
 		}
-		[SmokeMethod("currentWidget() const")]
+		[SmokeMethod("currentWidget", "() const")]
 		public QWidget CurrentWidget() {
 			return ProxyQToolBox().CurrentWidget();
 		}
-		[SmokeMethod("widget(int) const")]
+		[SmokeMethod("widget$", "(int) const")]
 		public QWidget Widget(int index) {
 			return ProxyQToolBox().Widget(index);
 		}
-		[SmokeMethod("indexOf(QWidget*) const")]
+		[SmokeMethod("indexOf#", "(QWidget*) const")]
 		public int IndexOf(QWidget widget) {
 			return ProxyQToolBox().IndexOf(widget);
 		}
-		[Q_SLOT("void setCurrentWidget(QWidget*)")]
-		[SmokeMethod("setCurrentWidget(QWidget*)")]
+		[Q_SLOT("void (QWidget*)")]
+		[SmokeMethod("setCurrentWidget#", "(QWidget*)")]
 		public void SetCurrentWidget(QWidget widget) {
 			ProxyQToolBox().SetCurrentWidget(widget);
 		}
-		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQToolBox().Tr(s,c);
 		}
-		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQToolBox().Tr(s);
 		}
-		[SmokeMethod("event(QEvent*)")]
+		[SmokeMethod("event#", "(QEvent*)")]
 		public new bool Event(QEvent e) {
 			return ProxyQToolBox().Event(e);
 		}
-		[SmokeMethod("itemInserted(int)")]
+		[SmokeMethod("itemInserted$", "(int)")]
 		protected virtual void ItemInserted(int index) {
 			ProxyQToolBox().ItemInserted(index);
 		}
-		[SmokeMethod("itemRemoved(int)")]
+		[SmokeMethod("itemRemoved$", "(int)")]
 		protected virtual void ItemRemoved(int index) {
 			ProxyQToolBox().ItemRemoved(index);
 		}
-		[SmokeMethod("showEvent(QShowEvent*)")]
+		[SmokeMethod("showEvent#", "(QShowEvent*)")]
 		public new void ShowEvent(QShowEvent e) {
 			ProxyQToolBox().ShowEvent(e);
 		}
-		[SmokeMethod("changeEvent(QEvent*)")]
+		[SmokeMethod("changeEvent#", "(QEvent*)")]
 		protected new void ChangeEvent(QEvent arg1) {
 			ProxyQToolBox().ChangeEvent(arg1);
 		}
@@ -172,7 +172,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQToolBox();
 		}
-		[SmokeMethod("~QToolBox()")]
+		[SmokeMethod("~QToolBox", "()")]
 		private void DisposeQToolBox() {
 			ProxyQToolBox().DisposeQToolBox();
 		}
@@ -184,7 +184,7 @@ namespace Qyoto {
 	}
 
 	public interface IQToolBoxSignals : IQFrameSignals {
-		[Q_SIGNAL("void currentChanged(int)")]
+		[Q_SIGNAL("void (int)")]
 		void CurrentChanged(int index);
 	}
 }

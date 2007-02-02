@@ -9,7 +9,9 @@ namespace Qyoto {
 	public class QAbstractButton : QWidget {
  		protected QAbstractButton(Type dummy) : base((Type) null) {}
 		interface IQAbstractButtonProxy {
+			[SmokeMethod("tr$$", "(const char*, const char*)")]
 			string Tr(string s, string c);
+			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
 		}
 
@@ -133,7 +135,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQAbstractButton(parent);
 		}
-		[SmokeMethod("QAbstractButton(QWidget*)")]
+		[SmokeMethod("QAbstractButton#", "(QWidget*)")]
 		private void NewQAbstractButton(QWidget parent) {
 			ProxyQAbstractButton().NewQAbstractButton(parent);
 		}
@@ -141,51 +143,49 @@ namespace Qyoto {
 			CreateProxy();
 			NewQAbstractButton();
 		}
-		[SmokeMethod("QAbstractButton()")]
+		[SmokeMethod("QAbstractButton", "()")]
 		private void NewQAbstractButton() {
 			ProxyQAbstractButton().NewQAbstractButton();
 		}
-		[SmokeMethod("isCheckable() const")]
+		[SmokeMethod("isCheckable", "() const")]
 		public bool IsCheckable() {
 			return ProxyQAbstractButton().IsCheckable();
 		}
-		[SmokeMethod("isChecked() const")]
+		[SmokeMethod("isChecked", "() const")]
 		public bool IsChecked() {
 			return ProxyQAbstractButton().IsChecked();
 		}
-		[SmokeMethod("isDown() const")]
+		[SmokeMethod("isDown", "() const")]
 		public bool IsDown() {
 			return ProxyQAbstractButton().IsDown();
 		}
-		[SmokeMethod("group() const")]
+		[SmokeMethod("group", "() const")]
 		public QButtonGroup Group() {
 			return ProxyQAbstractButton().Group();
 		}
-		[Q_SLOT("void animateClick(int)")]
-		[SmokeMethod("animateClick(int)")]
+		[Q_SLOT("void (int)")]
+		[SmokeMethod("animateClick$", "(int)")]
 		public void AnimateClick(int msec) {
 			ProxyQAbstractButton().AnimateClick(msec);
 		}
-		[Q_SLOT("void animateClick()")]
-		[SmokeMethod("animateClick()")]
+		[Q_SLOT("void ()")]
+		[SmokeMethod("animateClick", "()")]
 		public void AnimateClick() {
 			ProxyQAbstractButton().AnimateClick();
 		}
-		[Q_SLOT("void click()")]
-		[SmokeMethod("click()")]
+		[Q_SLOT("void ()")]
+		[SmokeMethod("click", "()")]
 		public void Click() {
 			ProxyQAbstractButton().Click();
 		}
-		[Q_SLOT("void toggle()")]
-		[SmokeMethod("toggle()")]
+		[Q_SLOT("void ()")]
+		[SmokeMethod("toggle", "()")]
 		public void Toggle() {
 			ProxyQAbstractButton().Toggle();
 		}
-		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQAbstractButton().Tr(s,c);
 		}
-		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQAbstractButton().Tr(s);
 		}
@@ -195,7 +195,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQAbstractButton();
 		}
-		[SmokeMethod("~QAbstractButton()")]
+		[SmokeMethod("~QAbstractButton", "()")]
 		private void DisposeQAbstractButton() {
 			ProxyQAbstractButton().DisposeQAbstractButton();
 		}
@@ -207,15 +207,15 @@ namespace Qyoto {
 	}
 
 	public interface IQAbstractButtonSignals : IQWidgetSignals {
-		[Q_SIGNAL("void pressed()")]
+		[Q_SIGNAL("void ()")]
 		void Pressed();
-		[Q_SIGNAL("void released()")]
+		[Q_SIGNAL("void ()")]
 		void Released();
-		[Q_SIGNAL("void clicked(bool)")]
+		[Q_SIGNAL("void (bool)")]
 		void Clicked(bool arg1);
-		[Q_SIGNAL("void clicked()")]
+		[Q_SIGNAL("void ()")]
 		void Clicked();
-		[Q_SIGNAL("void toggled(bool)")]
+		[Q_SIGNAL("void (bool)")]
 		void Toggled(bool arg1);
 	}
 }

@@ -35,7 +35,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionComboBox();
 		}
-		[SmokeMethod("QStyleOptionComboBox()")]
+		[SmokeMethod("QStyleOptionComboBox", "()")]
 		private void NewQStyleOptionComboBox() {
 			ProxyQStyleOptionComboBox().NewQStyleOptionComboBox();
 		}
@@ -43,7 +43,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionComboBox(other);
 		}
-		[SmokeMethod("QStyleOptionComboBox(const QStyleOptionComboBox&)")]
+		[SmokeMethod("QStyleOptionComboBox#", "(const QStyleOptionComboBox&)")]
 		private void NewQStyleOptionComboBox(QStyleOptionComboBox other) {
 			ProxyQStyleOptionComboBox().NewQStyleOptionComboBox(other);
 		}
@@ -51,7 +51,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionComboBox(version);
 		}
-		[SmokeMethod("QStyleOptionComboBox(int)")]
+		[SmokeMethod("QStyleOptionComboBox$", "(int)")]
 		private void NewQStyleOptionComboBox(int version) {
 			ProxyQStyleOptionComboBox().NewQStyleOptionComboBox(version);
 		}
@@ -61,7 +61,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQStyleOptionComboBox();
 		}
-		[SmokeMethod("~QStyleOptionComboBox()")]
+		[SmokeMethod("~QStyleOptionComboBox", "()")]
 		private void DisposeQStyleOptionComboBox() {
 			ProxyQStyleOptionComboBox().DisposeQStyleOptionComboBox();
 		}

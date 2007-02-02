@@ -9,7 +9,9 @@ namespace Qyoto {
 	public class QDataWidgetMapper : QObject, IDisposable {
  		protected QDataWidgetMapper(Type dummy) : base((Type) null) {}
 		interface IQDataWidgetMapperProxy {
+			[SmokeMethod("tr$$", "(const char*, const char*)")]
 			string Tr(string s, string c);
+			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
 		}
 
@@ -65,7 +67,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDataWidgetMapper(parent);
 		}
-		[SmokeMethod("QDataWidgetMapper(QObject*)")]
+		[SmokeMethod("QDataWidgetMapper#", "(QObject*)")]
 		private void NewQDataWidgetMapper(QObject parent) {
 			ProxyQDataWidgetMapper().NewQDataWidgetMapper(parent);
 		}
@@ -73,94 +75,92 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDataWidgetMapper();
 		}
-		[SmokeMethod("QDataWidgetMapper()")]
+		[SmokeMethod("QDataWidgetMapper", "()")]
 		private void NewQDataWidgetMapper() {
 			ProxyQDataWidgetMapper().NewQDataWidgetMapper();
 		}
-		[SmokeMethod("setModel(QAbstractItemModel*)")]
+		[SmokeMethod("setModel#", "(QAbstractItemModel*)")]
 		public void SetModel(QAbstractItemModel model) {
 			ProxyQDataWidgetMapper().SetModel(model);
 		}
-		[SmokeMethod("model() const")]
+		[SmokeMethod("model", "() const")]
 		public QAbstractItemModel Model() {
 			return ProxyQDataWidgetMapper().Model();
 		}
-		[SmokeMethod("setItemDelegate(QAbstractItemDelegate*)")]
+		[SmokeMethod("setItemDelegate#", "(QAbstractItemDelegate*)")]
 		public void SetItemDelegate(QAbstractItemDelegate arg1) {
 			ProxyQDataWidgetMapper().SetItemDelegate(arg1);
 		}
-		[SmokeMethod("itemDelegate() const")]
+		[SmokeMethod("itemDelegate", "() const")]
 		public QAbstractItemDelegate ItemDelegate() {
 			return ProxyQDataWidgetMapper().ItemDelegate();
 		}
-		[SmokeMethod("setRootIndex(const QModelIndex&)")]
+		[SmokeMethod("setRootIndex#", "(const QModelIndex&)")]
 		public void SetRootIndex(QModelIndex index) {
 			ProxyQDataWidgetMapper().SetRootIndex(index);
 		}
-		[SmokeMethod("rootIndex() const")]
+		[SmokeMethod("rootIndex", "() const")]
 		public QModelIndex RootIndex() {
 			return ProxyQDataWidgetMapper().RootIndex();
 		}
-		[SmokeMethod("addMapping(QWidget*, int)")]
+		[SmokeMethod("addMapping##", "(QWidget*, int)")]
 		public void AddMapping(QWidget widget, int section) {
 			ProxyQDataWidgetMapper().AddMapping(widget,section);
 		}
-		[SmokeMethod("removeMapping(QWidget*)")]
+		[SmokeMethod("removeMapping#", "(QWidget*)")]
 		public void RemoveMapping(QWidget widget) {
 			ProxyQDataWidgetMapper().RemoveMapping(widget);
 		}
-		[SmokeMethod("mappedSection(QWidget*) const")]
+		[SmokeMethod("mappedSection#", "(QWidget*) const")]
 		public int MappedSection(QWidget widget) {
 			return ProxyQDataWidgetMapper().MappedSection(widget);
 		}
-		[SmokeMethod("mappedWidgetAt(int) const")]
+		[SmokeMethod("mappedWidgetAt$", "(int) const")]
 		public QWidget MappedWidgetAt(int section) {
 			return ProxyQDataWidgetMapper().MappedWidgetAt(section);
 		}
-		[SmokeMethod("clearMapping()")]
+		[SmokeMethod("clearMapping", "()")]
 		public void ClearMapping() {
 			ProxyQDataWidgetMapper().ClearMapping();
 		}
-		[Q_SLOT("void revert()")]
-		[SmokeMethod("revert()")]
+		[Q_SLOT("void ()")]
+		[SmokeMethod("revert", "()")]
 		public void Revert() {
 			ProxyQDataWidgetMapper().Revert();
 		}
-		[Q_SLOT("bool submit()")]
-		[SmokeMethod("submit()")]
+		[Q_SLOT("bool ()")]
+		[SmokeMethod("submit", "()")]
 		public bool Submit() {
 			return ProxyQDataWidgetMapper().Submit();
 		}
-		[Q_SLOT("void toFirst()")]
-		[SmokeMethod("toFirst()")]
+		[Q_SLOT("void ()")]
+		[SmokeMethod("toFirst", "()")]
 		public void ToFirst() {
 			ProxyQDataWidgetMapper().ToFirst();
 		}
-		[Q_SLOT("void toLast()")]
-		[SmokeMethod("toLast()")]
+		[Q_SLOT("void ()")]
+		[SmokeMethod("toLast", "()")]
 		public void ToLast() {
 			ProxyQDataWidgetMapper().ToLast();
 		}
-		[Q_SLOT("void toNext()")]
-		[SmokeMethod("toNext()")]
+		[Q_SLOT("void ()")]
+		[SmokeMethod("toNext", "()")]
 		public void ToNext() {
 			ProxyQDataWidgetMapper().ToNext();
 		}
-		[Q_SLOT("void toPrevious()")]
-		[SmokeMethod("toPrevious()")]
+		[Q_SLOT("void ()")]
+		[SmokeMethod("toPrevious", "()")]
 		public void ToPrevious() {
 			ProxyQDataWidgetMapper().ToPrevious();
 		}
-		[Q_SLOT("void setCurrentModelIndex(const QModelIndex&)")]
-		[SmokeMethod("setCurrentModelIndex(const QModelIndex&)")]
+		[Q_SLOT("void (const QModelIndex&)")]
+		[SmokeMethod("setCurrentModelIndex#", "(const QModelIndex&)")]
 		public void SetCurrentModelIndex(QModelIndex index) {
 			ProxyQDataWidgetMapper().SetCurrentModelIndex(index);
 		}
-		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQDataWidgetMapper().Tr(s,c);
 		}
-		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQDataWidgetMapper().Tr(s);
 		}
@@ -170,7 +170,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQDataWidgetMapper();
 		}
-		[SmokeMethod("~QDataWidgetMapper()")]
+		[SmokeMethod("~QDataWidgetMapper", "()")]
 		private void DisposeQDataWidgetMapper() {
 			ProxyQDataWidgetMapper().DisposeQDataWidgetMapper();
 		}
@@ -182,7 +182,7 @@ namespace Qyoto {
 	}
 
 	public interface IQDataWidgetMapperSignals : IQObjectSignals {
-		[Q_SIGNAL("void currentIndexChanged(int)")]
+		[Q_SIGNAL("void (int)")]
 		void CurrentIndexChanged(int index);
 	}
 }

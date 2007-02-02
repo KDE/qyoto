@@ -42,7 +42,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionButton();
 		}
-		[SmokeMethod("QStyleOptionButton()")]
+		[SmokeMethod("QStyleOptionButton", "()")]
 		private void NewQStyleOptionButton() {
 			ProxyQStyleOptionButton().NewQStyleOptionButton();
 		}
@@ -50,7 +50,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionButton(other);
 		}
-		[SmokeMethod("QStyleOptionButton(const QStyleOptionButton&)")]
+		[SmokeMethod("QStyleOptionButton#", "(const QStyleOptionButton&)")]
 		private void NewQStyleOptionButton(QStyleOptionButton other) {
 			ProxyQStyleOptionButton().NewQStyleOptionButton(other);
 		}
@@ -58,7 +58,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionButton(version);
 		}
-		[SmokeMethod("QStyleOptionButton(int)")]
+		[SmokeMethod("QStyleOptionButton$", "(int)")]
 		private void NewQStyleOptionButton(int version) {
 			ProxyQStyleOptionButton().NewQStyleOptionButton(version);
 		}
@@ -68,7 +68,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQStyleOptionButton();
 		}
-		[SmokeMethod("~QStyleOptionButton()")]
+		[SmokeMethod("~QStyleOptionButton", "()")]
 		private void DisposeQStyleOptionButton() {
 			ProxyQStyleOptionButton().DisposeQStyleOptionButton();
 		}

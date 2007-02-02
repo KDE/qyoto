@@ -35,7 +35,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionFocusRect();
 		}
-		[SmokeMethod("QStyleOptionFocusRect()")]
+		[SmokeMethod("QStyleOptionFocusRect", "()")]
 		private void NewQStyleOptionFocusRect() {
 			ProxyQStyleOptionFocusRect().NewQStyleOptionFocusRect();
 		}
@@ -43,7 +43,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionFocusRect(other);
 		}
-		[SmokeMethod("QStyleOptionFocusRect(const QStyleOptionFocusRect&)")]
+		[SmokeMethod("QStyleOptionFocusRect#", "(const QStyleOptionFocusRect&)")]
 		private void NewQStyleOptionFocusRect(QStyleOptionFocusRect other) {
 			ProxyQStyleOptionFocusRect().NewQStyleOptionFocusRect(other);
 		}
@@ -51,7 +51,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionFocusRect(version);
 		}
-		[SmokeMethod("QStyleOptionFocusRect(int)")]
+		[SmokeMethod("QStyleOptionFocusRect$", "(int)")]
 		private void NewQStyleOptionFocusRect(int version) {
 			ProxyQStyleOptionFocusRect().NewQStyleOptionFocusRect(version);
 		}
@@ -61,7 +61,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQStyleOptionFocusRect();
 		}
-		[SmokeMethod("~QStyleOptionFocusRect()")]
+		[SmokeMethod("~QStyleOptionFocusRect", "()")]
 		private void DisposeQStyleOptionFocusRect() {
 			ProxyQStyleOptionFocusRect().DisposeQStyleOptionFocusRect();
 		}

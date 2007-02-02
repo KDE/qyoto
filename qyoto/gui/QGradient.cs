@@ -48,37 +48,37 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGradient();
 		}
-		[SmokeMethod("QGradient()")]
+		[SmokeMethod("QGradient", "()")]
 		private void NewQGradient() {
 			ProxyQGradient().NewQGradient();
 		}
-		[SmokeMethod("type() const")]
+		[SmokeMethod("type", "() const")]
 		public QGradient.TypeOf type() {
 			return ProxyQGradient().type();
 		}
-		[SmokeMethod("setSpread(QGradient::Spread)")]
+		[SmokeMethod("setSpread$", "(QGradient::Spread)")]
 		public void SetSpread(QGradient.Spread spread) {
 			ProxyQGradient().SetSpread(spread);
 		}
-		[SmokeMethod("spread() const")]
+		[SmokeMethod("spread", "() const")]
 		public QGradient.Spread spread() {
 			return ProxyQGradient().spread();
 		}
-		[SmokeMethod("setColorAt(qreal, const QColor&)")]
+		[SmokeMethod("setColorAt$$", "(qreal, const QColor&)")]
 		public void SetColorAt(double pos, QColor color) {
 			ProxyQGradient().SetColorAt(pos,color);
 		}
 		// void setStops(const QGradientStops& arg1); >>>> NOT CONVERTED
 		// QGradientStops stops(); >>>> NOT CONVERTED
-		[SmokeMethod("coordinateMode() const")]
+		[SmokeMethod("coordinateMode", "() const")]
 		public QGradient.CoordinateMode coordinateMode() {
 			return ProxyQGradient().coordinateMode();
 		}
-		[SmokeMethod("setCoordinateMode(QGradient::CoordinateMode)")]
+		[SmokeMethod("setCoordinateMode$", "(QGradient::CoordinateMode)")]
 		public void SetCoordinateMode(QGradient.CoordinateMode mode) {
 			ProxyQGradient().SetCoordinateMode(mode);
 		}
-		[SmokeMethod("operator==(const QGradient&) const")]
+		[SmokeMethod("operator==#", "(const QGradient&) const")]
 		public static bool operator==(QGradient lhs, QGradient gradient) {
 			return StaticQGradient().op_equals(lhs,gradient);
 		}
@@ -98,7 +98,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQGradient();
 		}
-		[SmokeMethod("~QGradient()")]
+		[SmokeMethod("~QGradient", "()")]
 		private void DisposeQGradient() {
 			ProxyQGradient().DisposeQGradient();
 		}

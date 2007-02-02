@@ -40,35 +40,35 @@ namespace Qyoto {
 			return (IQXmlLexicalHandlerProxy) _staticInterceptor;
 		}
 
-		[SmokeMethod("startDTD(const QString&, const QString&, const QString&)")]
+		[SmokeMethod("startDTD$$$", "(const QString&, const QString&, const QString&)")]
 		public virtual bool StartDTD(string name, string publicId, string systemId) {
 			return ProxyQXmlLexicalHandler().StartDTD(name,publicId,systemId);
 		}
-		[SmokeMethod("endDTD()")]
+		[SmokeMethod("endDTD", "()")]
 		public virtual bool EndDTD() {
 			return ProxyQXmlLexicalHandler().EndDTD();
 		}
-		[SmokeMethod("startEntity(const QString&)")]
+		[SmokeMethod("startEntity$", "(const QString&)")]
 		public virtual bool StartEntity(string name) {
 			return ProxyQXmlLexicalHandler().StartEntity(name);
 		}
-		[SmokeMethod("endEntity(const QString&)")]
+		[SmokeMethod("endEntity$", "(const QString&)")]
 		public virtual bool EndEntity(string name) {
 			return ProxyQXmlLexicalHandler().EndEntity(name);
 		}
-		[SmokeMethod("startCDATA()")]
+		[SmokeMethod("startCDATA", "()")]
 		public virtual bool StartCDATA() {
 			return ProxyQXmlLexicalHandler().StartCDATA();
 		}
-		[SmokeMethod("endCDATA()")]
+		[SmokeMethod("endCDATA", "()")]
 		public virtual bool EndCDATA() {
 			return ProxyQXmlLexicalHandler().EndCDATA();
 		}
-		[SmokeMethod("comment(const QString&)")]
+		[SmokeMethod("comment$", "(const QString&)")]
 		public virtual bool Comment(string ch) {
 			return ProxyQXmlLexicalHandler().Comment(ch);
 		}
-		[SmokeMethod("errorString() const")]
+		[SmokeMethod("errorString", "() const")]
 		public virtual string ErrorString() {
 			return ProxyQXmlLexicalHandler().ErrorString();
 		}
@@ -76,7 +76,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQXmlLexicalHandler();
 		}
-		[SmokeMethod("QXmlLexicalHandler()")]
+		[SmokeMethod("QXmlLexicalHandler", "()")]
 		private void NewQXmlLexicalHandler() {
 			ProxyQXmlLexicalHandler().NewQXmlLexicalHandler();
 		}
@@ -86,7 +86,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQXmlLexicalHandler();
 		}
-		[SmokeMethod("~QXmlLexicalHandler()")]
+		[SmokeMethod("~QXmlLexicalHandler", "()")]
 		private void DisposeQXmlLexicalHandler() {
 			ProxyQXmlLexicalHandler().DisposeQXmlLexicalHandler();
 		}

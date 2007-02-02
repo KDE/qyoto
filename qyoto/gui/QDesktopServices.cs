@@ -11,8 +11,11 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QDesktopServices(Type dummy) {}
 		interface IQDesktopServicesProxy {
+			[SmokeMethod("openUrl#", "(const QUrl&)")]
 			bool OpenUrl(IQUrl url);
+			[SmokeMethod("setUrlHandler$$$", "(const QString&, QObject*, const char*)")]
 			void SetUrlHandler(string scheme, QObject receiver, string method);
+			[SmokeMethod("unsetUrlHandler$", "(const QString&)")]
 			void UnsetUrlHandler(string scheme);
 		}
 
@@ -36,19 +39,16 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDesktopServices();
 		}
-		[SmokeMethod("QDesktopServices()")]
+		[SmokeMethod("QDesktopServices", "()")]
 		private void NewQDesktopServices() {
 			ProxyQDesktopServices().NewQDesktopServices();
 		}
-		[SmokeMethod("openUrl(const QUrl&)")]
 		public static bool OpenUrl(IQUrl url) {
 			return StaticQDesktopServices().OpenUrl(url);
 		}
-		[SmokeMethod("setUrlHandler(const QString&, QObject*, const char*)")]
 		public static void SetUrlHandler(string scheme, QObject receiver, string method) {
 			StaticQDesktopServices().SetUrlHandler(scheme,receiver,method);
 		}
-		[SmokeMethod("unsetUrlHandler(const QString&)")]
 		public static void UnsetUrlHandler(string scheme) {
 			StaticQDesktopServices().UnsetUrlHandler(scheme);
 		}
@@ -58,7 +58,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQDesktopServices();
 		}
-		[SmokeMethod("~QDesktopServices()")]
+		[SmokeMethod("~QDesktopServices", "()")]
 		private void DisposeQDesktopServices() {
 			ProxyQDesktopServices().DisposeQDesktopServices();
 		}

@@ -32,7 +32,9 @@ namespace Qyoto {
 	public class QSocketNotifier : QObject, IDisposable {
  		protected QSocketNotifier(Type dummy) : base((Type) null) {}
 		interface IQSocketNotifierProxy {
+			[SmokeMethod("tr$$", "(const char*, const char*)")]
 			string Tr(string s, string c);
+			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
 		}
 
@@ -62,7 +64,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSocketNotifier(socket,arg2,parent);
 		}
-		[SmokeMethod("QSocketNotifier(int, QSocketNotifier::Type, QObject*)")]
+		[SmokeMethod("QSocketNotifier$$$", "(int, QSocketNotifier::Type, QObject*)")]
 		private void NewQSocketNotifier(int socket, QSocketNotifier.TypeOf arg2, QObject parent) {
 			ProxyQSocketNotifier().NewQSocketNotifier(socket,arg2,parent);
 		}
@@ -70,36 +72,34 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSocketNotifier(socket,arg2);
 		}
-		[SmokeMethod("QSocketNotifier(int, QSocketNotifier::Type)")]
+		[SmokeMethod("QSocketNotifier$$", "(int, QSocketNotifier::Type)")]
 		private void NewQSocketNotifier(int socket, QSocketNotifier.TypeOf arg2) {
 			ProxyQSocketNotifier().NewQSocketNotifier(socket,arg2);
 		}
-		[SmokeMethod("socket() const")]
+		[SmokeMethod("socket", "() const")]
 		public int Socket() {
 			return ProxyQSocketNotifier().Socket();
 		}
-		[SmokeMethod("type() const")]
+		[SmokeMethod("type", "() const")]
 		public QSocketNotifier.TypeOf type() {
 			return ProxyQSocketNotifier().type();
 		}
-		[SmokeMethod("isEnabled() const")]
+		[SmokeMethod("isEnabled", "() const")]
 		public bool IsEnabled() {
 			return ProxyQSocketNotifier().IsEnabled();
 		}
-		[Q_SLOT("void setEnabled(bool)")]
-		[SmokeMethod("setEnabled(bool)")]
+		[Q_SLOT("void (bool)")]
+		[SmokeMethod("setEnabled$", "(bool)")]
 		public void SetEnabled(bool arg1) {
 			ProxyQSocketNotifier().SetEnabled(arg1);
 		}
-		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQSocketNotifier().Tr(s,c);
 		}
-		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQSocketNotifier().Tr(s);
 		}
-		[SmokeMethod("event(QEvent*)")]
+		[SmokeMethod("event#", "(QEvent*)")]
 		public new bool Event(QEvent arg1) {
 			return ProxyQSocketNotifier().Event(arg1);
 		}
@@ -109,7 +109,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQSocketNotifier();
 		}
-		[SmokeMethod("~QSocketNotifier()")]
+		[SmokeMethod("~QSocketNotifier", "()")]
 		private void DisposeQSocketNotifier() {
 			ProxyQSocketNotifier().DisposeQSocketNotifier();
 		}
@@ -121,7 +121,7 @@ namespace Qyoto {
 	}
 
 	public interface IQSocketNotifierSignals : IQObjectSignals {
-		[Q_SIGNAL("void activated(int)")]
+		[Q_SIGNAL("void (int)")]
 		void Activated(int socket);
 	}
 }

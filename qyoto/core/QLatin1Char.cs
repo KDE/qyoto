@@ -32,15 +32,15 @@ namespace Qyoto {
 			CreateProxy();
 			NewQLatin1Char(c);
 		}
-		[SmokeMethod("QLatin1Char(char)")]
+		[SmokeMethod("QLatin1Char$", "(char)")]
 		private void NewQLatin1Char(char c) {
 			ProxyQLatin1Char().NewQLatin1Char(c);
 		}
-		[SmokeMethod("toLatin1() const")]
+		[SmokeMethod("toLatin1", "() const")]
 		public char ToLatin1() {
 			return ProxyQLatin1Char().ToLatin1();
 		}
-		[SmokeMethod("unicode() const")]
+		[SmokeMethod("unicode", "() const")]
 		public ushort Unicode() {
 			return ProxyQLatin1Char().Unicode();
 		}
@@ -50,7 +50,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQLatin1Char();
 		}
-		[SmokeMethod("~QLatin1Char()")]
+		[SmokeMethod("~QLatin1Char", "()")]
 		private void DisposeQLatin1Char() {
 			ProxyQLatin1Char().DisposeQLatin1Char();
 		}

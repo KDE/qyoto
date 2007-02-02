@@ -9,7 +9,9 @@ namespace Qyoto {
 	public class QLCDNumber : QFrame, IDisposable {
  		protected QLCDNumber(Type dummy) : base((Type) null) {}
 		interface IQLCDNumberProxy {
+			[SmokeMethod("tr$$", "(const char*, const char*)")]
 			string Tr(string s, string c);
+			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
 		}
 
@@ -99,7 +101,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQLCDNumber(parent);
 		}
-		[SmokeMethod("QLCDNumber(QWidget*)")]
+		[SmokeMethod("QLCDNumber#", "(QWidget*)")]
 		private void NewQLCDNumber(QWidget parent) {
 			ProxyQLCDNumber().NewQLCDNumber(parent);
 		}
@@ -107,7 +109,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQLCDNumber();
 		}
-		[SmokeMethod("QLCDNumber()")]
+		[SmokeMethod("QLCDNumber", "()")]
 		private void NewQLCDNumber() {
 			ProxyQLCDNumber().NewQLCDNumber();
 		}
@@ -115,7 +117,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQLCDNumber(numDigits,parent);
 		}
-		[SmokeMethod("QLCDNumber(uint, QWidget*)")]
+		[SmokeMethod("QLCDNumber$$", "(uint, QWidget*)")]
 		private void NewQLCDNumber(uint numDigits, QWidget parent) {
 			ProxyQLCDNumber().NewQLCDNumber(numDigits,parent);
 		}
@@ -123,70 +125,68 @@ namespace Qyoto {
 			CreateProxy();
 			NewQLCDNumber(numDigits);
 		}
-		[SmokeMethod("QLCDNumber(uint)")]
+		[SmokeMethod("QLCDNumber$", "(uint)")]
 		private void NewQLCDNumber(uint numDigits) {
 			ProxyQLCDNumber().NewQLCDNumber(numDigits);
 		}
-		[SmokeMethod("checkOverflow(double) const")]
+		[SmokeMethod("checkOverflow$", "(double) const")]
 		public bool CheckOverflow(double num) {
 			return ProxyQLCDNumber().CheckOverflow(num);
 		}
-		[SmokeMethod("checkOverflow(int) const")]
+		[SmokeMethod("checkOverflow$", "(int) const")]
 		public bool CheckOverflow(int num) {
 			return ProxyQLCDNumber().CheckOverflow(num);
 		}
-		[SmokeMethod("sizeHint() const")]
+		[SmokeMethod("sizeHint", "() const")]
 		public new QSize SizeHint() {
 			return ProxyQLCDNumber().SizeHint();
 		}
-		[Q_SLOT("void display(const QString&)")]
-		[SmokeMethod("display(const QString&)")]
+		[Q_SLOT("void (const QString&)")]
+		[SmokeMethod("display$", "(const QString&)")]
 		public void Display(string str) {
 			ProxyQLCDNumber().Display(str);
 		}
-		[Q_SLOT("void display(int)")]
-		[SmokeMethod("display(int)")]
+		[Q_SLOT("void (int)")]
+		[SmokeMethod("display$", "(int)")]
 		public void Display(int num) {
 			ProxyQLCDNumber().Display(num);
 		}
-		[Q_SLOT("void display(double)")]
-		[SmokeMethod("display(double)")]
+		[Q_SLOT("void (double)")]
+		[SmokeMethod("display$", "(double)")]
 		public void Display(double num) {
 			ProxyQLCDNumber().Display(num);
 		}
-		[Q_SLOT("void setHexMode()")]
-		[SmokeMethod("setHexMode()")]
+		[Q_SLOT("void ()")]
+		[SmokeMethod("setHexMode", "()")]
 		public void SetHexMode() {
 			ProxyQLCDNumber().SetHexMode();
 		}
-		[Q_SLOT("void setDecMode()")]
-		[SmokeMethod("setDecMode()")]
+		[Q_SLOT("void ()")]
+		[SmokeMethod("setDecMode", "()")]
 		public void SetDecMode() {
 			ProxyQLCDNumber().SetDecMode();
 		}
-		[Q_SLOT("void setOctMode()")]
-		[SmokeMethod("setOctMode()")]
+		[Q_SLOT("void ()")]
+		[SmokeMethod("setOctMode", "()")]
 		public void SetOctMode() {
 			ProxyQLCDNumber().SetOctMode();
 		}
-		[Q_SLOT("void setBinMode()")]
-		[SmokeMethod("setBinMode()")]
+		[Q_SLOT("void ()")]
+		[SmokeMethod("setBinMode", "()")]
 		public void SetBinMode() {
 			ProxyQLCDNumber().SetBinMode();
 		}
-		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQLCDNumber().Tr(s,c);
 		}
-		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQLCDNumber().Tr(s);
 		}
-		[SmokeMethod("event(QEvent*)")]
+		[SmokeMethod("event#", "(QEvent*)")]
 		public new bool Event(QEvent e) {
 			return ProxyQLCDNumber().Event(e);
 		}
-		[SmokeMethod("paintEvent(QPaintEvent*)")]
+		[SmokeMethod("paintEvent#", "(QPaintEvent*)")]
 		protected new void PaintEvent(QPaintEvent arg1) {
 			ProxyQLCDNumber().PaintEvent(arg1);
 		}
@@ -196,7 +196,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQLCDNumber();
 		}
-		[SmokeMethod("~QLCDNumber()")]
+		[SmokeMethod("~QLCDNumber", "()")]
 		private void DisposeQLCDNumber() {
 			ProxyQLCDNumber().DisposeQLCDNumber();
 		}
@@ -208,7 +208,7 @@ namespace Qyoto {
 	}
 
 	public interface IQLCDNumberSignals : IQFrameSignals {
-		[Q_SIGNAL("void overflow()")]
+		[Q_SIGNAL("void ()")]
 		void Overflow();
 	}
 }

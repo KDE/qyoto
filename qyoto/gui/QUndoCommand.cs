@@ -33,7 +33,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQUndoCommand(parent);
 		}
-		[SmokeMethod("QUndoCommand(QUndoCommand*)")]
+		[SmokeMethod("QUndoCommand#", "(QUndoCommand*)")]
 		private void NewQUndoCommand(QUndoCommand parent) {
 			ProxyQUndoCommand().NewQUndoCommand(parent);
 		}
@@ -41,7 +41,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQUndoCommand();
 		}
-		[SmokeMethod("QUndoCommand()")]
+		[SmokeMethod("QUndoCommand", "()")]
 		private void NewQUndoCommand() {
 			ProxyQUndoCommand().NewQUndoCommand();
 		}
@@ -49,7 +49,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQUndoCommand(text,parent);
 		}
-		[SmokeMethod("QUndoCommand(const QString&, QUndoCommand*)")]
+		[SmokeMethod("QUndoCommand$$", "(const QString&, QUndoCommand*)")]
 		private void NewQUndoCommand(string text, QUndoCommand parent) {
 			ProxyQUndoCommand().NewQUndoCommand(text,parent);
 		}
@@ -57,31 +57,31 @@ namespace Qyoto {
 			CreateProxy();
 			NewQUndoCommand(text);
 		}
-		[SmokeMethod("QUndoCommand(const QString&)")]
+		[SmokeMethod("QUndoCommand$", "(const QString&)")]
 		private void NewQUndoCommand(string text) {
 			ProxyQUndoCommand().NewQUndoCommand(text);
 		}
-		[SmokeMethod("undo()")]
+		[SmokeMethod("undo", "()")]
 		public virtual void Undo() {
 			ProxyQUndoCommand().Undo();
 		}
-		[SmokeMethod("redo()")]
+		[SmokeMethod("redo", "()")]
 		public virtual void Redo() {
 			ProxyQUndoCommand().Redo();
 		}
-		[SmokeMethod("text() const")]
+		[SmokeMethod("text", "() const")]
 		public string Text() {
 			return ProxyQUndoCommand().Text();
 		}
-		[SmokeMethod("setText(const QString&)")]
+		[SmokeMethod("setText$", "(const QString&)")]
 		public void SetText(string text) {
 			ProxyQUndoCommand().SetText(text);
 		}
-		[SmokeMethod("id() const")]
+		[SmokeMethod("id", "() const")]
 		public virtual int Id() {
 			return ProxyQUndoCommand().Id();
 		}
-		[SmokeMethod("mergeWith(const QUndoCommand*)")]
+		[SmokeMethod("mergeWith#", "(const QUndoCommand*)")]
 		public virtual bool MergeWith(QUndoCommand other) {
 			return ProxyQUndoCommand().MergeWith(other);
 		}
@@ -91,7 +91,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQUndoCommand();
 		}
-		[SmokeMethod("~QUndoCommand()")]
+		[SmokeMethod("~QUndoCommand", "()")]
 		private void DisposeQUndoCommand() {
 			ProxyQUndoCommand().DisposeQUndoCommand();
 		}

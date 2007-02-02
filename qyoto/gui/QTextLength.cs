@@ -38,7 +38,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTextLength();
 		}
-		[SmokeMethod("QTextLength()")]
+		[SmokeMethod("QTextLength", "()")]
 		private void NewQTextLength() {
 			ProxyQTextLength().NewQTextLength();
 		}
@@ -46,23 +46,23 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTextLength(type,value);
 		}
-		[SmokeMethod("QTextLength(QTextLength::Type, qreal)")]
+		[SmokeMethod("QTextLength$$", "(QTextLength::Type, qreal)")]
 		private void NewQTextLength(QTextLength.TypeOf type, double value) {
 			ProxyQTextLength().NewQTextLength(type,value);
 		}
-		[SmokeMethod("type() const")]
+		[SmokeMethod("type", "() const")]
 		public QTextLength.TypeOf type() {
 			return ProxyQTextLength().type();
 		}
-		[SmokeMethod("value(qreal) const")]
+		[SmokeMethod("value$", "(qreal) const")]
 		public double Value(double maximumLength) {
 			return ProxyQTextLength().Value(maximumLength);
 		}
-		[SmokeMethod("rawValue() const")]
+		[SmokeMethod("rawValue", "() const")]
 		public double RawValue() {
 			return ProxyQTextLength().RawValue();
 		}
-		[SmokeMethod("operator==(const QTextLength&) const")]
+		[SmokeMethod("operator==#", "(const QTextLength&) const")]
 		public static bool operator==(QTextLength lhs, QTextLength other) {
 			return StaticQTextLength().op_equals(lhs,other);
 		}
@@ -83,7 +83,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQTextLength();
 		}
-		[SmokeMethod("~QTextLength()")]
+		[SmokeMethod("~QTextLength", "()")]
 		private void DisposeQTextLength() {
 			ProxyQTextLength().DisposeQTextLength();
 		}

@@ -10,33 +10,61 @@ namespace Qyoto {
 	public class QFileDialog : QDialog, IDisposable {
  		protected QFileDialog(Type dummy) : base((Type) null) {}
 		interface IQFileDialogProxy {
+			[SmokeMethod("tr$$", "(const char*, const char*)")]
 			string Tr(string s, string c);
+			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
+			[SmokeMethod("getOpenFileName######", "(QWidget*, const QString&, const QString&, const QString&, QString*, Options)")]
 			string GetOpenFileName(QWidget parent, string caption, string dir, string filter, StringBuilder selectedFilter, int options);
+			[SmokeMethod("getOpenFileName#####", "(QWidget*, const QString&, const QString&, const QString&, QString*)")]
 			string GetOpenFileName(QWidget parent, string caption, string dir, string filter, StringBuilder selectedFilter);
+			[SmokeMethod("getOpenFileName####", "(QWidget*, const QString&, const QString&, const QString&)")]
 			string GetOpenFileName(QWidget parent, string caption, string dir, string filter);
+			[SmokeMethod("getOpenFileName###", "(QWidget*, const QString&, const QString&)")]
 			string GetOpenFileName(QWidget parent, string caption, string dir);
+			[SmokeMethod("getOpenFileName##", "(QWidget*, const QString&)")]
 			string GetOpenFileName(QWidget parent, string caption);
+			[SmokeMethod("getOpenFileName#", "(QWidget*)")]
 			string GetOpenFileName(QWidget parent);
+			[SmokeMethod("getOpenFileName", "()")]
 			string GetOpenFileName();
+			[SmokeMethod("getSaveFileName######", "(QWidget*, const QString&, const QString&, const QString&, QString*, Options)")]
 			string GetSaveFileName(QWidget parent, string caption, string dir, string filter, StringBuilder selectedFilter, int options);
+			[SmokeMethod("getSaveFileName#####", "(QWidget*, const QString&, const QString&, const QString&, QString*)")]
 			string GetSaveFileName(QWidget parent, string caption, string dir, string filter, StringBuilder selectedFilter);
+			[SmokeMethod("getSaveFileName####", "(QWidget*, const QString&, const QString&, const QString&)")]
 			string GetSaveFileName(QWidget parent, string caption, string dir, string filter);
+			[SmokeMethod("getSaveFileName###", "(QWidget*, const QString&, const QString&)")]
 			string GetSaveFileName(QWidget parent, string caption, string dir);
+			[SmokeMethod("getSaveFileName##", "(QWidget*, const QString&)")]
 			string GetSaveFileName(QWidget parent, string caption);
+			[SmokeMethod("getSaveFileName#", "(QWidget*)")]
 			string GetSaveFileName(QWidget parent);
+			[SmokeMethod("getSaveFileName", "()")]
 			string GetSaveFileName();
+			[SmokeMethod("getExistingDirectory####", "(QWidget*, const QString&, const QString&, Options)")]
 			string GetExistingDirectory(QWidget parent, string caption, string dir, int options);
+			[SmokeMethod("getExistingDirectory###", "(QWidget*, const QString&, const QString&)")]
 			string GetExistingDirectory(QWidget parent, string caption, string dir);
+			[SmokeMethod("getExistingDirectory##", "(QWidget*, const QString&)")]
 			string GetExistingDirectory(QWidget parent, string caption);
+			[SmokeMethod("getExistingDirectory#", "(QWidget*)")]
 			string GetExistingDirectory(QWidget parent);
+			[SmokeMethod("getExistingDirectory", "()")]
 			string GetExistingDirectory();
+			[SmokeMethod("getOpenFileNames######", "(QWidget*, const QString&, const QString&, const QString&, QString*, Options)")]
 			List<string> GetOpenFileNames(QWidget parent, string caption, string dir, string filter, StringBuilder selectedFilter, int options);
+			[SmokeMethod("getOpenFileNames#####", "(QWidget*, const QString&, const QString&, const QString&, QString*)")]
 			List<string> GetOpenFileNames(QWidget parent, string caption, string dir, string filter, StringBuilder selectedFilter);
+			[SmokeMethod("getOpenFileNames####", "(QWidget*, const QString&, const QString&, const QString&)")]
 			List<string> GetOpenFileNames(QWidget parent, string caption, string dir, string filter);
+			[SmokeMethod("getOpenFileNames###", "(QWidget*, const QString&, const QString&)")]
 			List<string> GetOpenFileNames(QWidget parent, string caption, string dir);
+			[SmokeMethod("getOpenFileNames##", "(QWidget*, const QString&)")]
 			List<string> GetOpenFileNames(QWidget parent, string caption);
+			[SmokeMethod("getOpenFileNames#", "(QWidget*)")]
 			List<string> GetOpenFileNames(QWidget parent);
+			[SmokeMethod("getOpenFileNames", "()")]
 			List<string> GetOpenFileNames();
 		}
 
@@ -153,7 +181,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQFileDialog(parent,f);
 		}
-		[SmokeMethod("QFileDialog(QWidget*, Qt::WindowFlags)")]
+		[SmokeMethod("QFileDialog##", "(QWidget*, Qt::WindowFlags)")]
 		private void NewQFileDialog(QWidget parent, int f) {
 			ProxyQFileDialog().NewQFileDialog(parent,f);
 		}
@@ -161,7 +189,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQFileDialog(parent,caption,directory,filter);
 		}
-		[SmokeMethod("QFileDialog(QWidget*, const QString&, const QString&, const QString&)")]
+		[SmokeMethod("QFileDialog####", "(QWidget*, const QString&, const QString&, const QString&)")]
 		private void NewQFileDialog(QWidget parent, string caption, string directory, string filter) {
 			ProxyQFileDialog().NewQFileDialog(parent,caption,directory,filter);
 		}
@@ -169,7 +197,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQFileDialog(parent,caption,directory);
 		}
-		[SmokeMethod("QFileDialog(QWidget*, const QString&, const QString&)")]
+		[SmokeMethod("QFileDialog###", "(QWidget*, const QString&, const QString&)")]
 		private void NewQFileDialog(QWidget parent, string caption, string directory) {
 			ProxyQFileDialog().NewQFileDialog(parent,caption,directory);
 		}
@@ -177,7 +205,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQFileDialog(parent,caption);
 		}
-		[SmokeMethod("QFileDialog(QWidget*, const QString&)")]
+		[SmokeMethod("QFileDialog##", "(QWidget*, const QString&)")]
 		private void NewQFileDialog(QWidget parent, string caption) {
 			ProxyQFileDialog().NewQFileDialog(parent,caption);
 		}
@@ -185,7 +213,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQFileDialog(parent);
 		}
-		[SmokeMethod("QFileDialog(QWidget*)")]
+		[SmokeMethod("QFileDialog#", "(QWidget*)")]
 		private void NewQFileDialog(QWidget parent) {
 			ProxyQFileDialog().NewQFileDialog(parent);
 		}
@@ -193,204 +221,176 @@ namespace Qyoto {
 			CreateProxy();
 			NewQFileDialog();
 		}
-		[SmokeMethod("QFileDialog()")]
+		[SmokeMethod("QFileDialog", "()")]
 		private void NewQFileDialog() {
 			ProxyQFileDialog().NewQFileDialog();
 		}
-		[SmokeMethod("setDirectory(const QString&)")]
+		[SmokeMethod("setDirectory$", "(const QString&)")]
 		public void SetDirectory(string directory) {
 			ProxyQFileDialog().SetDirectory(directory);
 		}
-		[SmokeMethod("setDirectory(const QDir&)")]
+		[SmokeMethod("setDirectory#", "(const QDir&)")]
 		public void SetDirectory(QDir directory) {
 			ProxyQFileDialog().SetDirectory(directory);
 		}
-		[SmokeMethod("directory() const")]
+		[SmokeMethod("directory", "() const")]
 		public QDir Directory() {
 			return ProxyQFileDialog().Directory();
 		}
-		[SmokeMethod("selectFile(const QString&)")]
+		[SmokeMethod("selectFile$", "(const QString&)")]
 		public void SelectFile(string filename) {
 			ProxyQFileDialog().SelectFile(filename);
 		}
-		[SmokeMethod("selectedFiles() const")]
+		[SmokeMethod("selectedFiles", "() const")]
 		public List<string> SelectedFiles() {
 			return ProxyQFileDialog().SelectedFiles();
 		}
-		[SmokeMethod("setFilter(const QString&)")]
+		[SmokeMethod("setFilter$", "(const QString&)")]
 		public void SetFilter(string filter) {
 			ProxyQFileDialog().SetFilter(filter);
 		}
-		[SmokeMethod("setFilters(const QStringList&)")]
+		[SmokeMethod("setFilters?", "(const QStringList&)")]
 		public void SetFilters(List<string> filters) {
 			ProxyQFileDialog().SetFilters(filters);
 		}
-		[SmokeMethod("filters() const")]
+		[SmokeMethod("filters", "() const")]
 		public List<string> Filters() {
 			return ProxyQFileDialog().Filters();
 		}
-		[SmokeMethod("selectFilter(const QString&)")]
+		[SmokeMethod("selectFilter$", "(const QString&)")]
 		public void SelectFilter(string filter) {
 			ProxyQFileDialog().SelectFilter(filter);
 		}
-		[SmokeMethod("selectedFilter() const")]
+		[SmokeMethod("selectedFilter", "() const")]
 		public string SelectedFilter() {
 			return ProxyQFileDialog().SelectedFilter();
 		}
-		[SmokeMethod("isReadOnly() const")]
+		[SmokeMethod("isReadOnly", "() const")]
 		public bool IsReadOnly() {
 			return ProxyQFileDialog().IsReadOnly();
 		}
-		[SmokeMethod("setHistory(const QStringList&)")]
+		[SmokeMethod("setHistory?", "(const QStringList&)")]
 		public void SetHistory(List<string> paths) {
 			ProxyQFileDialog().SetHistory(paths);
 		}
-		[SmokeMethod("history() const")]
+		[SmokeMethod("history", "() const")]
 		public List<string> History() {
 			return ProxyQFileDialog().History();
 		}
-		[SmokeMethod("setItemDelegate(QAbstractItemDelegate*)")]
+		[SmokeMethod("setItemDelegate#", "(QAbstractItemDelegate*)")]
 		public void SetItemDelegate(QAbstractItemDelegate arg1) {
 			ProxyQFileDialog().SetItemDelegate(arg1);
 		}
-		[SmokeMethod("itemDelegate() const")]
+		[SmokeMethod("itemDelegate", "() const")]
 		public QAbstractItemDelegate ItemDelegate() {
 			return ProxyQFileDialog().ItemDelegate();
 		}
-		[SmokeMethod("setIconProvider(QFileIconProvider*)")]
+		[SmokeMethod("setIconProvider#", "(QFileIconProvider*)")]
 		public void SetIconProvider(QFileIconProvider provider) {
 			ProxyQFileDialog().SetIconProvider(provider);
 		}
-		[SmokeMethod("iconProvider() const")]
+		[SmokeMethod("iconProvider", "() const")]
 		public QFileIconProvider IconProvider() {
 			return ProxyQFileDialog().IconProvider();
 		}
-		[SmokeMethod("setLabelText(QFileDialog::DialogLabel, const QString&)")]
+		[SmokeMethod("setLabelText$$", "(QFileDialog::DialogLabel, const QString&)")]
 		public void SetLabelText(QFileDialog.DialogLabel label, string text) {
 			ProxyQFileDialog().SetLabelText(label,text);
 		}
-		[SmokeMethod("labelText(QFileDialog::DialogLabel) const")]
+		[SmokeMethod("labelText$", "(QFileDialog::DialogLabel) const")]
 		public string LabelText(QFileDialog.DialogLabel label) {
 			return ProxyQFileDialog().LabelText(label);
 		}
-		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQFileDialog().Tr(s,c);
 		}
-		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQFileDialog().Tr(s);
 		}
-		[SmokeMethod("getOpenFileName(QWidget*, const QString&, const QString&, const QString&, QString*, Options)")]
 		public static string GetOpenFileName(QWidget parent, string caption, string dir, string filter, StringBuilder selectedFilter, int options) {
 			return StaticQFileDialog().GetOpenFileName(parent,caption,dir,filter,selectedFilter,options);
 		}
-		[SmokeMethod("getOpenFileName(QWidget*, const QString&, const QString&, const QString&, QString*)")]
 		public static string GetOpenFileName(QWidget parent, string caption, string dir, string filter, StringBuilder selectedFilter) {
 			return StaticQFileDialog().GetOpenFileName(parent,caption,dir,filter,selectedFilter);
 		}
-		[SmokeMethod("getOpenFileName(QWidget*, const QString&, const QString&, const QString&)")]
 		public static string GetOpenFileName(QWidget parent, string caption, string dir, string filter) {
 			return StaticQFileDialog().GetOpenFileName(parent,caption,dir,filter);
 		}
-		[SmokeMethod("getOpenFileName(QWidget*, const QString&, const QString&)")]
 		public static string GetOpenFileName(QWidget parent, string caption, string dir) {
 			return StaticQFileDialog().GetOpenFileName(parent,caption,dir);
 		}
-		[SmokeMethod("getOpenFileName(QWidget*, const QString&)")]
 		public static string GetOpenFileName(QWidget parent, string caption) {
 			return StaticQFileDialog().GetOpenFileName(parent,caption);
 		}
-		[SmokeMethod("getOpenFileName(QWidget*)")]
 		public static string GetOpenFileName(QWidget parent) {
 			return StaticQFileDialog().GetOpenFileName(parent);
 		}
-		[SmokeMethod("getOpenFileName()")]
 		public static string GetOpenFileName() {
 			return StaticQFileDialog().GetOpenFileName();
 		}
-		[SmokeMethod("getSaveFileName(QWidget*, const QString&, const QString&, const QString&, QString*, Options)")]
 		public static string GetSaveFileName(QWidget parent, string caption, string dir, string filter, StringBuilder selectedFilter, int options) {
 			return StaticQFileDialog().GetSaveFileName(parent,caption,dir,filter,selectedFilter,options);
 		}
-		[SmokeMethod("getSaveFileName(QWidget*, const QString&, const QString&, const QString&, QString*)")]
 		public static string GetSaveFileName(QWidget parent, string caption, string dir, string filter, StringBuilder selectedFilter) {
 			return StaticQFileDialog().GetSaveFileName(parent,caption,dir,filter,selectedFilter);
 		}
-		[SmokeMethod("getSaveFileName(QWidget*, const QString&, const QString&, const QString&)")]
 		public static string GetSaveFileName(QWidget parent, string caption, string dir, string filter) {
 			return StaticQFileDialog().GetSaveFileName(parent,caption,dir,filter);
 		}
-		[SmokeMethod("getSaveFileName(QWidget*, const QString&, const QString&)")]
 		public static string GetSaveFileName(QWidget parent, string caption, string dir) {
 			return StaticQFileDialog().GetSaveFileName(parent,caption,dir);
 		}
-		[SmokeMethod("getSaveFileName(QWidget*, const QString&)")]
 		public static string GetSaveFileName(QWidget parent, string caption) {
 			return StaticQFileDialog().GetSaveFileName(parent,caption);
 		}
-		[SmokeMethod("getSaveFileName(QWidget*)")]
 		public static string GetSaveFileName(QWidget parent) {
 			return StaticQFileDialog().GetSaveFileName(parent);
 		}
-		[SmokeMethod("getSaveFileName()")]
 		public static string GetSaveFileName() {
 			return StaticQFileDialog().GetSaveFileName();
 		}
-		[SmokeMethod("getExistingDirectory(QWidget*, const QString&, const QString&, Options)")]
 		public static string GetExistingDirectory(QWidget parent, string caption, string dir, int options) {
 			return StaticQFileDialog().GetExistingDirectory(parent,caption,dir,options);
 		}
-		[SmokeMethod("getExistingDirectory(QWidget*, const QString&, const QString&)")]
 		public static string GetExistingDirectory(QWidget parent, string caption, string dir) {
 			return StaticQFileDialog().GetExistingDirectory(parent,caption,dir);
 		}
-		[SmokeMethod("getExistingDirectory(QWidget*, const QString&)")]
 		public static string GetExistingDirectory(QWidget parent, string caption) {
 			return StaticQFileDialog().GetExistingDirectory(parent,caption);
 		}
-		[SmokeMethod("getExistingDirectory(QWidget*)")]
 		public static string GetExistingDirectory(QWidget parent) {
 			return StaticQFileDialog().GetExistingDirectory(parent);
 		}
-		[SmokeMethod("getExistingDirectory()")]
 		public static string GetExistingDirectory() {
 			return StaticQFileDialog().GetExistingDirectory();
 		}
-		[SmokeMethod("getOpenFileNames(QWidget*, const QString&, const QString&, const QString&, QString*, Options)")]
 		public static List<string> GetOpenFileNames(QWidget parent, string caption, string dir, string filter, StringBuilder selectedFilter, int options) {
 			return StaticQFileDialog().GetOpenFileNames(parent,caption,dir,filter,selectedFilter,options);
 		}
-		[SmokeMethod("getOpenFileNames(QWidget*, const QString&, const QString&, const QString&, QString*)")]
 		public static List<string> GetOpenFileNames(QWidget parent, string caption, string dir, string filter, StringBuilder selectedFilter) {
 			return StaticQFileDialog().GetOpenFileNames(parent,caption,dir,filter,selectedFilter);
 		}
-		[SmokeMethod("getOpenFileNames(QWidget*, const QString&, const QString&, const QString&)")]
 		public static List<string> GetOpenFileNames(QWidget parent, string caption, string dir, string filter) {
 			return StaticQFileDialog().GetOpenFileNames(parent,caption,dir,filter);
 		}
-		[SmokeMethod("getOpenFileNames(QWidget*, const QString&, const QString&)")]
 		public static List<string> GetOpenFileNames(QWidget parent, string caption, string dir) {
 			return StaticQFileDialog().GetOpenFileNames(parent,caption,dir);
 		}
-		[SmokeMethod("getOpenFileNames(QWidget*, const QString&)")]
 		public static List<string> GetOpenFileNames(QWidget parent, string caption) {
 			return StaticQFileDialog().GetOpenFileNames(parent,caption);
 		}
-		[SmokeMethod("getOpenFileNames(QWidget*)")]
 		public static List<string> GetOpenFileNames(QWidget parent) {
 			return StaticQFileDialog().GetOpenFileNames(parent);
 		}
-		[SmokeMethod("getOpenFileNames()")]
 		public static List<string> GetOpenFileNames() {
 			return StaticQFileDialog().GetOpenFileNames();
 		}
 		// QFileDialog* QFileDialog(const QFileDialogArgs& arg1); >>>> NOT CONVERTED
-		[SmokeMethod("done(int)")]
+		[SmokeMethod("done$", "(int)")]
 		protected new void Done(int result) {
 			ProxyQFileDialog().Done(result);
 		}
-		[SmokeMethod("accept()")]
+		[SmokeMethod("accept", "()")]
 		protected new void Accept() {
 			ProxyQFileDialog().Accept();
 		}
@@ -400,7 +400,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQFileDialog();
 		}
-		[SmokeMethod("~QFileDialog()")]
+		[SmokeMethod("~QFileDialog", "()")]
 		private void DisposeQFileDialog() {
 			ProxyQFileDialog().DisposeQFileDialog();
 		}
@@ -412,9 +412,9 @@ namespace Qyoto {
 	}
 
 	public interface IQFileDialogSignals : IQDialogSignals {
-		[Q_SIGNAL("void filesSelected(const QStringList&)")]
+		[Q_SIGNAL("void (const QStringList&)")]
 		void FilesSelected(List<string> files);
-		[Q_SIGNAL("void currentChanged(const QString&)")]
+		[Q_SIGNAL("void (const QString&)")]
 		void CurrentChanged(string path);
 	}
 }

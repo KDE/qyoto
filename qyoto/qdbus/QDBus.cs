@@ -36,7 +36,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQDBus();
 		}
-		[SmokeMethod("~QDBus()")]
+		[SmokeMethod("~QDBus", "()")]
 		private void DisposeQDBus() {
 			ProxyQDBus().DisposeQDBus();
 		}

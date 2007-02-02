@@ -15,7 +15,7 @@ namespace Qyoto {
 
 			NewQCoreApplication(args.Length, args);
 		}
-		[SmokeMethod("QCoreApplication(int&, char**)")]
+		[SmokeMethod("QCoreApplication$?", "(int&, char**)")]
 		private void NewQCoreApplication(int argc, string[] argv) {
 			ProxyQCoreApplication().NewQCoreApplication(argc, argv);
 		}

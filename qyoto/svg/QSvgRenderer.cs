@@ -9,7 +9,9 @@ namespace Qyoto {
 	public class QSvgRenderer : QObject, IDisposable {
  		protected QSvgRenderer(Type dummy) : base((Type) null) {}
 		interface IQSvgRendererProxy {
+			[SmokeMethod("tr$$", "(const char*, const char*)")]
 			string Tr(string s, string c);
+			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
 		}
 
@@ -61,7 +63,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSvgRenderer(parent);
 		}
-		[SmokeMethod("QSvgRenderer(QObject*)")]
+		[SmokeMethod("QSvgRenderer#", "(QObject*)")]
 		private void NewQSvgRenderer(QObject parent) {
 			ProxyQSvgRenderer().NewQSvgRenderer(parent);
 		}
@@ -69,7 +71,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSvgRenderer();
 		}
-		[SmokeMethod("QSvgRenderer()")]
+		[SmokeMethod("QSvgRenderer", "()")]
 		private void NewQSvgRenderer() {
 			ProxyQSvgRenderer().NewQSvgRenderer();
 		}
@@ -77,7 +79,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSvgRenderer(filename,parent);
 		}
-		[SmokeMethod("QSvgRenderer(const QString&, QObject*)")]
+		[SmokeMethod("QSvgRenderer$$", "(const QString&, QObject*)")]
 		private void NewQSvgRenderer(string filename, QObject parent) {
 			ProxyQSvgRenderer().NewQSvgRenderer(filename,parent);
 		}
@@ -85,7 +87,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSvgRenderer(filename);
 		}
-		[SmokeMethod("QSvgRenderer(const QString&)")]
+		[SmokeMethod("QSvgRenderer$", "(const QString&)")]
 		private void NewQSvgRenderer(string filename) {
 			ProxyQSvgRenderer().NewQSvgRenderer(filename);
 		}
@@ -93,7 +95,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSvgRenderer(contents,parent);
 		}
-		[SmokeMethod("QSvgRenderer(const QByteArray&, QObject*)")]
+		[SmokeMethod("QSvgRenderer##", "(const QByteArray&, QObject*)")]
 		private void NewQSvgRenderer(QByteArray contents, QObject parent) {
 			ProxyQSvgRenderer().NewQSvgRenderer(contents,parent);
 		}
@@ -101,77 +103,75 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSvgRenderer(contents);
 		}
-		[SmokeMethod("QSvgRenderer(const QByteArray&)")]
+		[SmokeMethod("QSvgRenderer#", "(const QByteArray&)")]
 		private void NewQSvgRenderer(QByteArray contents) {
 			ProxyQSvgRenderer().NewQSvgRenderer(contents);
 		}
-		[SmokeMethod("isValid() const")]
+		[SmokeMethod("isValid", "() const")]
 		public bool IsValid() {
 			return ProxyQSvgRenderer().IsValid();
 		}
-		[SmokeMethod("defaultSize() const")]
+		[SmokeMethod("defaultSize", "() const")]
 		public QSize DefaultSize() {
 			return ProxyQSvgRenderer().DefaultSize();
 		}
-		[SmokeMethod("viewBoxF() const")]
+		[SmokeMethod("viewBoxF", "() const")]
 		public QRectF ViewBoxF() {
 			return ProxyQSvgRenderer().ViewBoxF();
 		}
-		[SmokeMethod("animated() const")]
+		[SmokeMethod("animated", "() const")]
 		public bool Animated() {
 			return ProxyQSvgRenderer().Animated();
 		}
-		[SmokeMethod("animationDuration() const")]
+		[SmokeMethod("animationDuration", "() const")]
 		public int AnimationDuration() {
 			return ProxyQSvgRenderer().AnimationDuration();
 		}
-		[SmokeMethod("boundsOnElement(const QString&) const")]
+		[SmokeMethod("boundsOnElement$", "(const QString&) const")]
 		public QRectF BoundsOnElement(string id) {
 			return ProxyQSvgRenderer().BoundsOnElement(id);
 		}
-		[SmokeMethod("elementExists(const QString&) const")]
+		[SmokeMethod("elementExists$", "(const QString&) const")]
 		public bool ElementExists(string id) {
 			return ProxyQSvgRenderer().ElementExists(id);
 		}
-		[SmokeMethod("matrixForElement(const QString&) const")]
+		[SmokeMethod("matrixForElement$", "(const QString&) const")]
 		public QMatrix MatrixForElement(string id) {
 			return ProxyQSvgRenderer().MatrixForElement(id);
 		}
-		[Q_SLOT("bool load(const QString&)")]
-		[SmokeMethod("load(const QString&)")]
+		[Q_SLOT("bool (const QString&)")]
+		[SmokeMethod("load$", "(const QString&)")]
 		public bool Load(string filename) {
 			return ProxyQSvgRenderer().Load(filename);
 		}
-		[Q_SLOT("bool load(const QByteArray&)")]
-		[SmokeMethod("load(const QByteArray&)")]
+		[Q_SLOT("bool (const QByteArray&)")]
+		[SmokeMethod("load#", "(const QByteArray&)")]
 		public bool Load(QByteArray contents) {
 			return ProxyQSvgRenderer().Load(contents);
 		}
-		[Q_SLOT("void render(QPainter*)")]
-		[SmokeMethod("render(QPainter*)")]
+		[Q_SLOT("void (QPainter*)")]
+		[SmokeMethod("render#", "(QPainter*)")]
 		public void Render(QPainter p) {
 			ProxyQSvgRenderer().Render(p);
 		}
-		[Q_SLOT("void render(QPainter*, const QRectF&)")]
-		[SmokeMethod("render(QPainter*, const QRectF&)")]
+		[Q_SLOT("void (QPainter*, const QRectF&)")]
+		[SmokeMethod("render##", "(QPainter*, const QRectF&)")]
 		public void Render(QPainter p, QRectF bounds) {
 			ProxyQSvgRenderer().Render(p,bounds);
 		}
-		[Q_SLOT("void render(QPainter*, const QString&, const QRectF&)")]
-		[SmokeMethod("render(QPainter*, const QString&, const QRectF&)")]
+		[Q_SLOT("void (QPainter*, const QString&, const QRectF&)")]
+		[SmokeMethod("render###", "(QPainter*, const QString&, const QRectF&)")]
 		public void Render(QPainter p, string elementId, QRectF bounds) {
 			ProxyQSvgRenderer().Render(p,elementId,bounds);
 		}
-		[Q_SLOT("void render(QPainter*, const QString&)")]
-		[SmokeMethod("render(QPainter*, const QString&)")]
+		[Q_SLOT("void (QPainter*, const QString&)")]
+		[SmokeMethod("render##", "(QPainter*, const QString&)")]
 		public void Render(QPainter p, string elementId) {
 			ProxyQSvgRenderer().Render(p,elementId);
 		}
-		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQSvgRenderer().Tr(s,c);
 		}
-		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQSvgRenderer().Tr(s);
 		}
@@ -181,7 +181,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQSvgRenderer();
 		}
-		[SmokeMethod("~QSvgRenderer()")]
+		[SmokeMethod("~QSvgRenderer", "()")]
 		private void DisposeQSvgRenderer() {
 			ProxyQSvgRenderer().DisposeQSvgRenderer();
 		}
@@ -193,7 +193,7 @@ namespace Qyoto {
 	}
 
 	public interface IQSvgRendererSignals : IQObjectSignals {
-		[Q_SIGNAL("void repaintNeeded()")]
+		[Q_SIGNAL("void ()")]
 		void RepaintNeeded();
 	}
 }

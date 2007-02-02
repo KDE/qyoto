@@ -8,6 +8,7 @@ namespace Qyoto {
 	public class QGLPixelBuffer : QPaintDevice, IDisposable {
  		protected QGLPixelBuffer(Type dummy) : base((Type) null) {}
 		interface IQGLPixelBufferProxy {
+			[SmokeMethod("hasOpenGLPbuffers", "()")]
 			bool HasOpenGLPbuffers();
 		}
 
@@ -31,7 +32,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGLPixelBuffer(size,format,shareWidget);
 		}
-		[SmokeMethod("QGLPixelBuffer(const QSize&, const QGLFormat&, QGLWidget*)")]
+		[SmokeMethod("QGLPixelBuffer###", "(const QSize&, const QGLFormat&, QGLWidget*)")]
 		private void NewQGLPixelBuffer(QSize size, QGLFormat format, QGLWidget shareWidget) {
 			ProxyQGLPixelBuffer().NewQGLPixelBuffer(size,format,shareWidget);
 		}
@@ -39,7 +40,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGLPixelBuffer(size,format);
 		}
-		[SmokeMethod("QGLPixelBuffer(const QSize&, const QGLFormat&)")]
+		[SmokeMethod("QGLPixelBuffer##", "(const QSize&, const QGLFormat&)")]
 		private void NewQGLPixelBuffer(QSize size, QGLFormat format) {
 			ProxyQGLPixelBuffer().NewQGLPixelBuffer(size,format);
 		}
@@ -47,7 +48,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGLPixelBuffer(size);
 		}
-		[SmokeMethod("QGLPixelBuffer(const QSize&)")]
+		[SmokeMethod("QGLPixelBuffer#", "(const QSize&)")]
 		private void NewQGLPixelBuffer(QSize size) {
 			ProxyQGLPixelBuffer().NewQGLPixelBuffer(size);
 		}
@@ -55,7 +56,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGLPixelBuffer(width,height,format,shareWidget);
 		}
-		[SmokeMethod("QGLPixelBuffer(int, int, const QGLFormat&, QGLWidget*)")]
+		[SmokeMethod("QGLPixelBuffer$$$$", "(int, int, const QGLFormat&, QGLWidget*)")]
 		private void NewQGLPixelBuffer(int width, int height, QGLFormat format, QGLWidget shareWidget) {
 			ProxyQGLPixelBuffer().NewQGLPixelBuffer(width,height,format,shareWidget);
 		}
@@ -63,7 +64,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGLPixelBuffer(width,height,format);
 		}
-		[SmokeMethod("QGLPixelBuffer(int, int, const QGLFormat&)")]
+		[SmokeMethod("QGLPixelBuffer$$$", "(int, int, const QGLFormat&)")]
 		private void NewQGLPixelBuffer(int width, int height, QGLFormat format) {
 			ProxyQGLPixelBuffer().NewQGLPixelBuffer(width,height,format);
 		}
@@ -71,87 +72,86 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGLPixelBuffer(width,height);
 		}
-		[SmokeMethod("QGLPixelBuffer(int, int)")]
+		[SmokeMethod("QGLPixelBuffer$$", "(int, int)")]
 		private void NewQGLPixelBuffer(int width, int height) {
 			ProxyQGLPixelBuffer().NewQGLPixelBuffer(width,height);
 		}
-		[SmokeMethod("isValid() const")]
+		[SmokeMethod("isValid", "() const")]
 		public bool IsValid() {
 			return ProxyQGLPixelBuffer().IsValid();
 		}
-		[SmokeMethod("makeCurrent()")]
+		[SmokeMethod("makeCurrent", "()")]
 		public bool MakeCurrent() {
 			return ProxyQGLPixelBuffer().MakeCurrent();
 		}
-		[SmokeMethod("doneCurrent()")]
+		[SmokeMethod("doneCurrent", "()")]
 		public bool DoneCurrent() {
 			return ProxyQGLPixelBuffer().DoneCurrent();
 		}
-		[SmokeMethod("generateDynamicTexture() const")]
+		[SmokeMethod("generateDynamicTexture", "() const")]
 		public uint GenerateDynamicTexture() {
 			return ProxyQGLPixelBuffer().GenerateDynamicTexture();
 		}
-		[SmokeMethod("bindToDynamicTexture(GLuint)")]
+		[SmokeMethod("bindToDynamicTexture$", "(GLuint)")]
 		public bool BindToDynamicTexture(uint texture) {
 			return ProxyQGLPixelBuffer().BindToDynamicTexture(texture);
 		}
-		[SmokeMethod("releaseFromDynamicTexture()")]
+		[SmokeMethod("releaseFromDynamicTexture", "()")]
 		public void ReleaseFromDynamicTexture() {
 			ProxyQGLPixelBuffer().ReleaseFromDynamicTexture();
 		}
-		[SmokeMethod("updateDynamicTexture(GLuint) const")]
+		[SmokeMethod("updateDynamicTexture$", "(GLuint) const")]
 		public void UpdateDynamicTexture(uint texture_id) {
 			ProxyQGLPixelBuffer().UpdateDynamicTexture(texture_id);
 		}
-		[SmokeMethod("bindTexture(const QImage&, GLenum)")]
+		[SmokeMethod("bindTexture##", "(const QImage&, GLenum)")]
 		public uint BindTexture(QImage image, int target) {
 			return ProxyQGLPixelBuffer().BindTexture(image,target);
 		}
-		[SmokeMethod("bindTexture(const QImage&)")]
+		[SmokeMethod("bindTexture#", "(const QImage&)")]
 		public uint BindTexture(QImage image) {
 			return ProxyQGLPixelBuffer().BindTexture(image);
 		}
-		[SmokeMethod("bindTexture(const QPixmap&, GLenum)")]
+		[SmokeMethod("bindTexture##", "(const QPixmap&, GLenum)")]
 		public uint BindTexture(QPixmap pixmap, int target) {
 			return ProxyQGLPixelBuffer().BindTexture(pixmap,target);
 		}
-		[SmokeMethod("bindTexture(const QPixmap&)")]
+		[SmokeMethod("bindTexture#", "(const QPixmap&)")]
 		public uint BindTexture(QPixmap pixmap) {
 			return ProxyQGLPixelBuffer().BindTexture(pixmap);
 		}
-		[SmokeMethod("bindTexture(const QString&)")]
+		[SmokeMethod("bindTexture$", "(const QString&)")]
 		public uint BindTexture(string fileName) {
 			return ProxyQGLPixelBuffer().BindTexture(fileName);
 		}
-		[SmokeMethod("deleteTexture(GLuint)")]
+		[SmokeMethod("deleteTexture$", "(GLuint)")]
 		public void DeleteTexture(uint texture_id) {
 			ProxyQGLPixelBuffer().DeleteTexture(texture_id);
 		}
-		[SmokeMethod("size() const")]
+		[SmokeMethod("size", "() const")]
 		public QSize Size() {
 			return ProxyQGLPixelBuffer().Size();
 		}
-		[SmokeMethod("toImage() const")]
+		[SmokeMethod("toImage", "() const")]
 		public QImage ToImage() {
 			return ProxyQGLPixelBuffer().ToImage();
 		}
-		[SmokeMethod("paintEngine() const")]
+		[SmokeMethod("paintEngine", "() const")]
 		public new QPaintEngine PaintEngine() {
 			return ProxyQGLPixelBuffer().PaintEngine();
 		}
-		[SmokeMethod("format() const")]
+		[SmokeMethod("format", "() const")]
 		public QGLFormat Format() {
 			return ProxyQGLPixelBuffer().Format();
 		}
-		[SmokeMethod("hasOpenGLPbuffers()")]
 		public static bool HasOpenGLPbuffers() {
 			return StaticQGLPixelBuffer().HasOpenGLPbuffers();
 		}
-		[SmokeMethod("metric(QPaintDevice::PaintDeviceMetric) const")]
+		[SmokeMethod("metric$", "(QPaintDevice::PaintDeviceMetric) const")]
 		protected new int Metric(IQPaintDevice metric) {
 			return ProxyQGLPixelBuffer().Metric(metric);
 		}
-		[SmokeMethod("devType() const")]
+		[SmokeMethod("devType", "() const")]
 		protected new int DevType() {
 			return ProxyQGLPixelBuffer().DevType();
 		}
@@ -161,7 +161,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQGLPixelBuffer();
 		}
-		[SmokeMethod("~QGLPixelBuffer()")]
+		[SmokeMethod("~QGLPixelBuffer", "()")]
 		private void DisposeQGLPixelBuffer() {
 			ProxyQGLPixelBuffer().DisposeQGLPixelBuffer();
 		}

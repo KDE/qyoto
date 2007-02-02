@@ -29,7 +29,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQIconDragEvent();
 		}
-		[SmokeMethod("QIconDragEvent()")]
+		[SmokeMethod("QIconDragEvent", "()")]
 		private void NewQIconDragEvent() {
 			ProxyQIconDragEvent().NewQIconDragEvent();
 		}
@@ -39,7 +39,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQIconDragEvent();
 		}
-		[SmokeMethod("~QIconDragEvent()")]
+		[SmokeMethod("~QIconDragEvent", "()")]
 		private void DisposeQIconDragEvent() {
 			ProxyQIconDragEvent().DisposeQIconDragEvent();
 		}

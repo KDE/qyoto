@@ -29,47 +29,47 @@ namespace Qyoto {
 			CreateProxy();
 			NewQWidgetItem(w);
 		}
-		[SmokeMethod("QWidgetItem(QWidget*)")]
+		[SmokeMethod("QWidgetItem#", "(QWidget*)")]
 		private void NewQWidgetItem(QWidget w) {
 			ProxyQWidgetItem().NewQWidgetItem(w);
 		}
-		[SmokeMethod("sizeHint() const")]
+		[SmokeMethod("sizeHint", "() const")]
 		public new QSize SizeHint() {
 			return ProxyQWidgetItem().SizeHint();
 		}
-		[SmokeMethod("minimumSize() const")]
+		[SmokeMethod("minimumSize", "() const")]
 		public new QSize MinimumSize() {
 			return ProxyQWidgetItem().MinimumSize();
 		}
-		[SmokeMethod("maximumSize() const")]
+		[SmokeMethod("maximumSize", "() const")]
 		public new QSize MaximumSize() {
 			return ProxyQWidgetItem().MaximumSize();
 		}
-		[SmokeMethod("expandingDirections() const")]
+		[SmokeMethod("expandingDirections", "() const")]
 		public new int ExpandingDirections() {
 			return ProxyQWidgetItem().ExpandingDirections();
 		}
-		[SmokeMethod("isEmpty() const")]
+		[SmokeMethod("isEmpty", "() const")]
 		public new bool IsEmpty() {
 			return ProxyQWidgetItem().IsEmpty();
 		}
-		[SmokeMethod("setGeometry(const QRect&)")]
+		[SmokeMethod("setGeometry#", "(const QRect&)")]
 		public new void SetGeometry(QRect arg1) {
 			ProxyQWidgetItem().SetGeometry(arg1);
 		}
-		[SmokeMethod("geometry() const")]
+		[SmokeMethod("geometry", "() const")]
 		public new QRect Geometry() {
 			return ProxyQWidgetItem().Geometry();
 		}
-		[SmokeMethod("widget()")]
+		[SmokeMethod("widget", "()")]
 		public new virtual QWidget Widget() {
 			return ProxyQWidgetItem().Widget();
 		}
-		[SmokeMethod("hasHeightForWidth() const")]
+		[SmokeMethod("hasHeightForWidth", "() const")]
 		public new bool HasHeightForWidth() {
 			return ProxyQWidgetItem().HasHeightForWidth();
 		}
-		[SmokeMethod("heightForWidth(int) const")]
+		[SmokeMethod("heightForWidth$", "(int) const")]
 		public new int HeightForWidth(int arg1) {
 			return ProxyQWidgetItem().HeightForWidth(arg1);
 		}
@@ -79,7 +79,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQWidgetItem();
 		}
-		[SmokeMethod("~QWidgetItem()")]
+		[SmokeMethod("~QWidgetItem", "()")]
 		private void DisposeQWidgetItem() {
 			ProxyQWidgetItem().DisposeQWidgetItem();
 		}

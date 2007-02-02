@@ -29,11 +29,11 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTimerEvent(timerId);
 		}
-		[SmokeMethod("QTimerEvent(int)")]
+		[SmokeMethod("QTimerEvent$", "(int)")]
 		private void NewQTimerEvent(int timerId) {
 			ProxyQTimerEvent().NewQTimerEvent(timerId);
 		}
-		[SmokeMethod("timerId() const")]
+		[SmokeMethod("timerId", "() const")]
 		public int TimerId() {
 			return ProxyQTimerEvent().TimerId();
 		}
@@ -43,7 +43,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQTimerEvent();
 		}
-		[SmokeMethod("~QTimerEvent()")]
+		[SmokeMethod("~QTimerEvent", "()")]
 		private void DisposeQTimerEvent() {
 			ProxyQTimerEvent().DisposeQTimerEvent();
 		}

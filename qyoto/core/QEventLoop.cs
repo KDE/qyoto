@@ -8,7 +8,9 @@ namespace Qyoto {
 	public class QEventLoop : QObject, IDisposable {
  		protected QEventLoop(Type dummy) : base((Type) null) {}
 		interface IQEventLoopProxy {
+			[SmokeMethod("tr$$", "(const char*, const char*)")]
 			string Tr(string s, string c);
+			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
 		}
 
@@ -41,7 +43,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQEventLoop(parent);
 		}
-		[SmokeMethod("QEventLoop(QObject*)")]
+		[SmokeMethod("QEventLoop#", "(QObject*)")]
 		private void NewQEventLoop(QObject parent) {
 			ProxyQEventLoop().NewQEventLoop(parent);
 		}
@@ -49,56 +51,54 @@ namespace Qyoto {
 			CreateProxy();
 			NewQEventLoop();
 		}
-		[SmokeMethod("QEventLoop()")]
+		[SmokeMethod("QEventLoop", "()")]
 		private void NewQEventLoop() {
 			ProxyQEventLoop().NewQEventLoop();
 		}
-		[SmokeMethod("processEvents(ProcessEventsFlags)")]
+		[SmokeMethod("processEvents$", "(ProcessEventsFlags)")]
 		public bool ProcessEvents(int flags) {
 			return ProxyQEventLoop().ProcessEvents(flags);
 		}
-		[SmokeMethod("processEvents()")]
+		[SmokeMethod("processEvents", "()")]
 		public bool ProcessEvents() {
 			return ProxyQEventLoop().ProcessEvents();
 		}
-		[SmokeMethod("processEvents(ProcessEventsFlags, int)")]
+		[SmokeMethod("processEvents$$", "(ProcessEventsFlags, int)")]
 		public void ProcessEvents(int flags, int maximumTime) {
 			ProxyQEventLoop().ProcessEvents(flags,maximumTime);
 		}
-		[SmokeMethod("exec(ProcessEventsFlags)")]
+		[SmokeMethod("exec$", "(ProcessEventsFlags)")]
 		public int Exec(int flags) {
 			return ProxyQEventLoop().Exec(flags);
 		}
-		[SmokeMethod("exec()")]
+		[SmokeMethod("exec", "()")]
 		public int Exec() {
 			return ProxyQEventLoop().Exec();
 		}
-		[SmokeMethod("exit(int)")]
+		[SmokeMethod("exit$", "(int)")]
 		public void Exit(int returnCode) {
 			ProxyQEventLoop().Exit(returnCode);
 		}
-		[SmokeMethod("exit()")]
+		[SmokeMethod("exit", "()")]
 		public void Exit() {
 			ProxyQEventLoop().Exit();
 		}
-		[SmokeMethod("isRunning() const")]
+		[SmokeMethod("isRunning", "() const")]
 		public bool IsRunning() {
 			return ProxyQEventLoop().IsRunning();
 		}
-		[SmokeMethod("wakeUp()")]
+		[SmokeMethod("wakeUp", "()")]
 		public void WakeUp() {
 			ProxyQEventLoop().WakeUp();
 		}
-		[Q_SLOT("void quit()")]
-		[SmokeMethod("quit()")]
+		[Q_SLOT("void ()")]
+		[SmokeMethod("quit", "()")]
 		public void Quit() {
 			ProxyQEventLoop().Quit();
 		}
-		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQEventLoop().Tr(s,c);
 		}
-		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQEventLoop().Tr(s);
 		}
@@ -108,7 +108,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQEventLoop();
 		}
-		[SmokeMethod("~QEventLoop()")]
+		[SmokeMethod("~QEventLoop", "()")]
 		private void DisposeQEventLoop() {
 			ProxyQEventLoop().DisposeQEventLoop();
 		}

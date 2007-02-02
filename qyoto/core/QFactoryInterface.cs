@@ -29,7 +29,7 @@ namespace Qyoto {
 			return (IQFactoryInterfaceProxy) _staticInterceptor;
 		}
 
-		[SmokeMethod("keys() const")]
+		[SmokeMethod("keys", "() const")]
 		public virtual List<string> Keys() {
 			return ProxyQFactoryInterface().Keys();
 		}
@@ -37,7 +37,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQFactoryInterface();
 		}
-		[SmokeMethod("QFactoryInterface()")]
+		[SmokeMethod("QFactoryInterface", "()")]
 		private void NewQFactoryInterface() {
 			ProxyQFactoryInterface().NewQFactoryInterface();
 		}
@@ -47,7 +47,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQFactoryInterface();
 		}
-		[SmokeMethod("~QFactoryInterface()")]
+		[SmokeMethod("~QFactoryInterface", "()")]
 		private void DisposeQFactoryInterface() {
 			ProxyQFactoryInterface().DisposeQFactoryInterface();
 		}

@@ -9,7 +9,9 @@ namespace Qyoto {
 	public class QSpinBox : QAbstractSpinBox, IDisposable {
  		protected QSpinBox(Type dummy) : base((Type) null) {}
 		interface IQSpinBoxProxy {
+			[SmokeMethod("tr$$", "(const char*, const char*)")]
 			string Tr(string s, string c);
+			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
 		}
 
@@ -94,7 +96,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSpinBox(parent);
 		}
-		[SmokeMethod("QSpinBox(QWidget*)")]
+		[SmokeMethod("QSpinBox#", "(QWidget*)")]
 		private void NewQSpinBox(QWidget parent) {
 			ProxyQSpinBox().NewQSpinBox(parent);
 		}
@@ -102,39 +104,37 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSpinBox();
 		}
-		[SmokeMethod("QSpinBox()")]
+		[SmokeMethod("QSpinBox", "()")]
 		private void NewQSpinBox() {
 			ProxyQSpinBox().NewQSpinBox();
 		}
-		[SmokeMethod("setRange(int, int)")]
+		[SmokeMethod("setRange$$", "(int, int)")]
 		public void SetRange(int min, int max) {
 			ProxyQSpinBox().SetRange(min,max);
 		}
-		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQSpinBox().Tr(s,c);
 		}
-		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQSpinBox().Tr(s);
 		}
-		[SmokeMethod("event(QEvent*)")]
+		[SmokeMethod("event#", "(QEvent*)")]
 		public new bool Event(QEvent arg1) {
 			return ProxyQSpinBox().Event(arg1);
 		}
-		[SmokeMethod("validate(QString&, int&) const")]
+		[SmokeMethod("validate$$", "(QString&, int&) const")]
 		protected new virtual int Validate(StringBuilder input, out int pos) {
 			return ProxyQSpinBox().Validate(input,out pos);
 		}
-		[SmokeMethod("valueFromText(const QString&) const")]
+		[SmokeMethod("valueFromText$", "(const QString&) const")]
 		protected virtual int ValueFromText(string text) {
 			return ProxyQSpinBox().ValueFromText(text);
 		}
-		[SmokeMethod("textFromValue(int) const")]
+		[SmokeMethod("textFromValue$", "(int) const")]
 		protected virtual string TextFromValue(int val) {
 			return ProxyQSpinBox().TextFromValue(val);
 		}
-		[SmokeMethod("fixup(QString&) const")]
+		[SmokeMethod("fixup$", "(QString&) const")]
 		protected new virtual void Fixup(StringBuilder str) {
 			ProxyQSpinBox().Fixup(str);
 		}
@@ -144,7 +144,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQSpinBox();
 		}
-		[SmokeMethod("~QSpinBox()")]
+		[SmokeMethod("~QSpinBox", "()")]
 		private void DisposeQSpinBox() {
 			ProxyQSpinBox().DisposeQSpinBox();
 		}
@@ -156,9 +156,9 @@ namespace Qyoto {
 	}
 
 	public interface IQSpinBoxSignals : IQAbstractSpinBoxSignals {
-		[Q_SIGNAL("void valueChanged(int)")]
+		[Q_SIGNAL("void (int)")]
 		void ValueChanged(int arg1);
-		[Q_SIGNAL("void valueChanged(const QString&)")]
+		[Q_SIGNAL("void (const QString&)")]
 		void ValueChanged(string arg1);
 	}
 }

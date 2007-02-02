@@ -29,23 +29,23 @@ namespace Qyoto {
 			CreateProxy();
 			NewQChildEvent(type,child);
 		}
-		[SmokeMethod("QChildEvent(QEvent::Type, QObject*)")]
+		[SmokeMethod("QChildEvent$$", "(QEvent::Type, QObject*)")]
 		private void NewQChildEvent(QEvent.TypeOf type, QObject child) {
 			ProxyQChildEvent().NewQChildEvent(type,child);
 		}
-		[SmokeMethod("child() const")]
+		[SmokeMethod("child", "() const")]
 		public QObject Child() {
 			return ProxyQChildEvent().Child();
 		}
-		[SmokeMethod("added() const")]
+		[SmokeMethod("added", "() const")]
 		public bool Added() {
 			return ProxyQChildEvent().Added();
 		}
-		[SmokeMethod("polished() const")]
+		[SmokeMethod("polished", "() const")]
 		public bool Polished() {
 			return ProxyQChildEvent().Polished();
 		}
-		[SmokeMethod("removed() const")]
+		[SmokeMethod("removed", "() const")]
 		public bool Removed() {
 			return ProxyQChildEvent().Removed();
 		}
@@ -55,7 +55,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQChildEvent();
 		}
-		[SmokeMethod("~QChildEvent()")]
+		[SmokeMethod("~QChildEvent", "()")]
 		private void DisposeQChildEvent() {
 			ProxyQChildEvent().DisposeQChildEvent();
 		}

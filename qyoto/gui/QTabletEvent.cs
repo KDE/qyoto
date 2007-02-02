@@ -44,79 +44,79 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTabletEvent(t,pos,globalPos,hiResGlobalPos,device,pointerType,pressure,xTilt,yTilt,tangentialPressure,rotation,z,keyState,uniqueID);
 		}
-		[SmokeMethod("QTabletEvent(QEvent::Type, const QPoint&, const QPoint&, const QPointF&, int, int, qreal, int, int, qreal, qreal, int, Qt::KeyboardModifiers, qint64)")]
+		[SmokeMethod("QTabletEvent$$$$$$$$$$$$$$", "(QEvent::Type, const QPoint&, const QPoint&, const QPointF&, int, int, qreal, int, int, qreal, qreal, int, Qt::KeyboardModifiers, qint64)")]
 		private void NewQTabletEvent(QEvent.TypeOf t, QPoint pos, QPoint globalPos, QPointF hiResGlobalPos, int device, int pointerType, double pressure, int xTilt, int yTilt, double tangentialPressure, double rotation, int z, int keyState, long uniqueID) {
 			ProxyQTabletEvent().NewQTabletEvent(t,pos,globalPos,hiResGlobalPos,device,pointerType,pressure,xTilt,yTilt,tangentialPressure,rotation,z,keyState,uniqueID);
 		}
-		[SmokeMethod("pos() const")]
+		[SmokeMethod("pos", "() const")]
 		public QPoint Pos() {
 			return ProxyQTabletEvent().Pos();
 		}
-		[SmokeMethod("globalPos() const")]
+		[SmokeMethod("globalPos", "() const")]
 		public QPoint GlobalPos() {
 			return ProxyQTabletEvent().GlobalPos();
 		}
-		[SmokeMethod("hiResGlobalPos() const")]
+		[SmokeMethod("hiResGlobalPos", "() const")]
 		public QPointF HiResGlobalPos() {
 			return ProxyQTabletEvent().HiResGlobalPos();
 		}
-		[SmokeMethod("x() const")]
+		[SmokeMethod("x", "() const")]
 		public int X() {
 			return ProxyQTabletEvent().X();
 		}
-		[SmokeMethod("y() const")]
+		[SmokeMethod("y", "() const")]
 		public int Y() {
 			return ProxyQTabletEvent().Y();
 		}
-		[SmokeMethod("globalX() const")]
+		[SmokeMethod("globalX", "() const")]
 		public int GlobalX() {
 			return ProxyQTabletEvent().GlobalX();
 		}
-		[SmokeMethod("globalY() const")]
+		[SmokeMethod("globalY", "() const")]
 		public int GlobalY() {
 			return ProxyQTabletEvent().GlobalY();
 		}
-		[SmokeMethod("hiResGlobalX() const")]
+		[SmokeMethod("hiResGlobalX", "() const")]
 		public double HiResGlobalX() {
 			return ProxyQTabletEvent().HiResGlobalX();
 		}
-		[SmokeMethod("hiResGlobalY() const")]
+		[SmokeMethod("hiResGlobalY", "() const")]
 		public double HiResGlobalY() {
 			return ProxyQTabletEvent().HiResGlobalY();
 		}
-		[SmokeMethod("device() const")]
+		[SmokeMethod("device", "() const")]
 		public QTabletEvent.TabletDevice Device() {
 			return ProxyQTabletEvent().Device();
 		}
-		[SmokeMethod("pointerType() const")]
+		[SmokeMethod("pointerType", "() const")]
 		public QTabletEvent.PointerType pointerType() {
 			return ProxyQTabletEvent().pointerType();
 		}
-		[SmokeMethod("uniqueId() const")]
+		[SmokeMethod("uniqueId", "() const")]
 		public long UniqueId() {
 			return ProxyQTabletEvent().UniqueId();
 		}
-		[SmokeMethod("pressure() const")]
+		[SmokeMethod("pressure", "() const")]
 		public double Pressure() {
 			return ProxyQTabletEvent().Pressure();
 		}
-		[SmokeMethod("z() const")]
+		[SmokeMethod("z", "() const")]
 		public int Z() {
 			return ProxyQTabletEvent().Z();
 		}
-		[SmokeMethod("tangentialPressure() const")]
+		[SmokeMethod("tangentialPressure", "() const")]
 		public double TangentialPressure() {
 			return ProxyQTabletEvent().TangentialPressure();
 		}
-		[SmokeMethod("rotation() const")]
+		[SmokeMethod("rotation", "() const")]
 		public double Rotation() {
 			return ProxyQTabletEvent().Rotation();
 		}
-		[SmokeMethod("xTilt() const")]
+		[SmokeMethod("xTilt", "() const")]
 		public int XTilt() {
 			return ProxyQTabletEvent().XTilt();
 		}
-		[SmokeMethod("yTilt() const")]
+		[SmokeMethod("yTilt", "() const")]
 		public int YTilt() {
 			return ProxyQTabletEvent().YTilt();
 		}
@@ -126,7 +126,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQTabletEvent();
 		}
-		[SmokeMethod("~QTabletEvent()")]
+		[SmokeMethod("~QTabletEvent", "()")]
 		private void DisposeQTabletEvent() {
 			ProxyQTabletEvent().DisposeQTabletEvent();
 		}

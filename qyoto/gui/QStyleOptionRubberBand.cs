@@ -35,7 +35,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionRubberBand();
 		}
-		[SmokeMethod("QStyleOptionRubberBand()")]
+		[SmokeMethod("QStyleOptionRubberBand", "()")]
 		private void NewQStyleOptionRubberBand() {
 			ProxyQStyleOptionRubberBand().NewQStyleOptionRubberBand();
 		}
@@ -43,7 +43,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionRubberBand(other);
 		}
-		[SmokeMethod("QStyleOptionRubberBand(const QStyleOptionRubberBand&)")]
+		[SmokeMethod("QStyleOptionRubberBand#", "(const QStyleOptionRubberBand&)")]
 		private void NewQStyleOptionRubberBand(QStyleOptionRubberBand other) {
 			ProxyQStyleOptionRubberBand().NewQStyleOptionRubberBand(other);
 		}
@@ -51,7 +51,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionRubberBand(version);
 		}
-		[SmokeMethod("QStyleOptionRubberBand(int)")]
+		[SmokeMethod("QStyleOptionRubberBand$", "(int)")]
 		private void NewQStyleOptionRubberBand(int version) {
 			ProxyQStyleOptionRubberBand().NewQStyleOptionRubberBand(version);
 		}
@@ -61,7 +61,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQStyleOptionRubberBand();
 		}
-		[SmokeMethod("~QStyleOptionRubberBand()")]
+		[SmokeMethod("~QStyleOptionRubberBand", "()")]
 		private void DisposeQStyleOptionRubberBand() {
 			ProxyQStyleOptionRubberBand().DisposeQStyleOptionRubberBand();
 		}

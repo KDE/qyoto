@@ -10,77 +10,149 @@ namespace Qyoto {
 	public partial class QApplication : QCoreApplication, IDisposable {
  		protected QApplication(Type dummy) : base((Type) null) {}
 		interface IQApplicationProxy {
+			[SmokeMethod("tr$$", "(const char*, const char*)")]
 			string Tr(string s, string c);
+			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
+			[SmokeMethod("type", "()")]
 			QApplication.TypeOf type();
+			[SmokeMethod("style", "()")]
 			QStyle Style();
+			[SmokeMethod("setStyle#", "(QStyle*)")]
 			void SetStyle(QStyle arg1);
+			[SmokeMethod("setStyle$", "(const QString&)")]
 			QStyle SetStyle(string arg1);
+			[SmokeMethod("colorSpec", "()")]
 			int colorSpec();
+			[SmokeMethod("setColorSpec$", "(int)")]
 			void SetColorSpec(int arg1);
+			[SmokeMethod("overrideCursor", "()")]
 			QCursor OverrideCursor();
+			[SmokeMethod("setOverrideCursor#", "(const QCursor&)")]
 			void SetOverrideCursor(QCursor arg1);
+			[SmokeMethod("changeOverrideCursor#", "(const QCursor&)")]
 			void ChangeOverrideCursor(QCursor arg1);
+			[SmokeMethod("restoreOverrideCursor", "()")]
 			void RestoreOverrideCursor();
+			[SmokeMethod("palette", "()")]
 			QPalette Palette();
+			[SmokeMethod("palette#", "(const QWidget*)")]
 			QPalette Palette(QWidget arg1);
+			[SmokeMethod("palette$", "(const char*)")]
 			QPalette Palette(string className);
+			[SmokeMethod("setPalette##", "(const QPalette&, const char*)")]
 			void SetPalette(QPalette arg1, string className);
+			[SmokeMethod("setPalette#", "(const QPalette&)")]
 			void SetPalette(QPalette arg1);
+			[SmokeMethod("font", "()")]
 			QFont Font();
+			[SmokeMethod("font#", "(const QWidget*)")]
 			QFont Font(QWidget arg1);
+			[SmokeMethod("font$", "(const char*)")]
 			QFont Font(string className);
+			[SmokeMethod("setFont##", "(const QFont&, const char*)")]
 			void SetFont(QFont arg1, string className);
+			[SmokeMethod("setFont#", "(const QFont&)")]
 			void SetFont(QFont arg1);
+			[SmokeMethod("fontMetrics", "()")]
 			QFontMetrics FontMetrics();
+			[SmokeMethod("setWindowIcon#", "(const QIcon&)")]
 			void SetWindowIcon(QIcon icon);
+			[SmokeMethod("windowIcon", "()")]
 			QIcon windowIcon();
+			[SmokeMethod("allWidgets", "()")]
 			List<QWidget> AllWidgets();
+			[SmokeMethod("topLevelWidgets", "()")]
 			List<QWidget> TopLevelWidgets();
+			[SmokeMethod("desktop", "()")]
 			QDesktopWidget Desktop();
+			[SmokeMethod("activePopupWidget", "()")]
 			QWidget ActivePopupWidget();
+			[SmokeMethod("activeModalWidget", "()")]
 			QWidget ActiveModalWidget();
+			[SmokeMethod("clipboard", "()")]
 			QClipboard Clipboard();
+			[SmokeMethod("focusWidget", "()")]
 			QWidget FocusWidget();
+			[SmokeMethod("activeWindow", "()")]
 			QWidget ActiveWindow();
+			[SmokeMethod("setActiveWindow#", "(QWidget*)")]
 			void SetActiveWindow(QWidget act);
+			[SmokeMethod("widgetAt#", "(const QPoint&)")]
 			QWidget WidgetAt(QPoint p);
+			[SmokeMethod("widgetAt$$", "(int, int)")]
 			QWidget WidgetAt(int x, int y);
+			[SmokeMethod("topLevelAt#", "(const QPoint&)")]
 			QWidget TopLevelAt(QPoint p);
+			[SmokeMethod("topLevelAt$$", "(int, int)")]
 			QWidget TopLevelAt(int x, int y);
+			[SmokeMethod("syncX", "()")]
 			void SyncX();
+			[SmokeMethod("beep", "()")]
 			void Beep();
+			[SmokeMethod("keyboardModifiers", "()")]
 			int KeyboardModifiers();
+			[SmokeMethod("mouseButtons", "()")]
 			int MouseButtons();
+			[SmokeMethod("setDesktopSettingsAware$", "(bool)")]
 			void SetDesktopSettingsAware(bool arg1);
+			[SmokeMethod("desktopSettingsAware", "()")]
 			bool DesktopSettingsAware();
+			[SmokeMethod("setCursorFlashTime$", "(int)")]
 			void SetCursorFlashTime(int arg1);
+			[SmokeMethod("cursorFlashTime", "()")]
 			int cursorFlashTime();
+			[SmokeMethod("setDoubleClickInterval$", "(int)")]
 			void SetDoubleClickInterval(int arg1);
+			[SmokeMethod("doubleClickInterval", "()")]
 			int doubleClickInterval();
+			[SmokeMethod("setKeyboardInputInterval$", "(int)")]
 			void SetKeyboardInputInterval(int arg1);
+			[SmokeMethod("keyboardInputInterval", "()")]
 			int keyboardInputInterval();
+			[SmokeMethod("setWheelScrollLines$", "(int)")]
 			void SetWheelScrollLines(int arg1);
+			[SmokeMethod("wheelScrollLines", "()")]
 			int wheelScrollLines();
+			[SmokeMethod("setGlobalStrut#", "(const QSize&)")]
 			void SetGlobalStrut(QSize arg1);
+			[SmokeMethod("globalStrut", "()")]
 			QSize globalStrut();
+			[SmokeMethod("setStartDragTime$", "(int)")]
 			void SetStartDragTime(int ms);
+			[SmokeMethod("startDragTime", "()")]
 			int startDragTime();
+			[SmokeMethod("setStartDragDistance$", "(int)")]
 			void SetStartDragDistance(int l);
+			[SmokeMethod("startDragDistance", "()")]
 			int startDragDistance();
+			[SmokeMethod("setLayoutDirection$", "(Qt::LayoutDirection)")]
 			void SetLayoutDirection(Qt.LayoutDirection direction);
+			[SmokeMethod("layoutDirection", "()")]
 			Qt.LayoutDirection layoutDirection();
+			[SmokeMethod("isRightToLeft", "()")]
 			bool IsRightToLeft();
+			[SmokeMethod("isLeftToRight", "()")]
 			bool IsLeftToRight();
+			[SmokeMethod("isEffectEnabled$", "(Qt::UIEffect)")]
 			bool IsEffectEnabled(Qt.UIEffect arg1);
+			[SmokeMethod("setEffectEnabled$$", "(Qt::UIEffect, bool)")]
 			void SetEffectEnabled(Qt.UIEffect arg1, bool enable);
+			[SmokeMethod("setEffectEnabled$", "(Qt::UIEffect)")]
 			void SetEffectEnabled(Qt.UIEffect arg1);
+			[SmokeMethod("keyboardInputLocale", "()")]
 			QLocale KeyboardInputLocale();
+			[SmokeMethod("keyboardInputDirection", "()")]
 			Qt.LayoutDirection KeyboardInputDirection();
+			[SmokeMethod("exec", "()")]
 			int Exec();
+			[SmokeMethod("setQuitOnLastWindowClosed$", "(bool)")]
 			void SetQuitOnLastWindowClosed(bool quit);
+			[SmokeMethod("quitOnLastWindowClosed", "()")]
 			bool quitOnLastWindowClosed();
+			[SmokeMethod("closeAllWindows", "()")]
 			void CloseAllWindows();
+			[SmokeMethod("aboutQt", "()")]
 			void AboutQt();
 		}
 
@@ -210,331 +282,259 @@ namespace Qyoto {
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
-		[SmokeMethod("isSessionRestored() const")]
+		[SmokeMethod("isSessionRestored", "() const")]
 		public bool IsSessionRestored() {
 			return ProxyQApplication().IsSessionRestored();
 		}
-		[SmokeMethod("sessionId() const")]
+		[SmokeMethod("sessionId", "() const")]
 		public string SessionId() {
 			return ProxyQApplication().SessionId();
 		}
-		[SmokeMethod("sessionKey() const")]
+		[SmokeMethod("sessionKey", "() const")]
 		public string SessionKey() {
 			return ProxyQApplication().SessionKey();
 		}
-		[SmokeMethod("commitData(QSessionManager&)")]
+		[SmokeMethod("commitData#", "(QSessionManager&)")]
 		public virtual void CommitData(QSessionManager sm) {
 			ProxyQApplication().CommitData(sm);
 		}
-		[SmokeMethod("saveState(QSessionManager&)")]
+		[SmokeMethod("saveState#", "(QSessionManager&)")]
 		public virtual void SaveState(QSessionManager sm) {
 			ProxyQApplication().SaveState(sm);
 		}
-		[SmokeMethod("setInputContext(QInputContext*)")]
+		[SmokeMethod("setInputContext#", "(QInputContext*)")]
 		public void SetInputContext(QInputContext arg1) {
 			ProxyQApplication().SetInputContext(arg1);
 		}
-		[SmokeMethod("inputContext() const")]
+		[SmokeMethod("inputContext", "() const")]
 		public QInputContext InputContext() {
 			return ProxyQApplication().InputContext();
 		}
-		[SmokeMethod("notify(QObject*, QEvent*)")]
+		[SmokeMethod("notify##", "(QObject*, QEvent*)")]
 		public new bool Notify(QObject arg1, QEvent arg2) {
 			return ProxyQApplication().Notify(arg1,arg2);
 		}
-		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQApplication().Tr(s,c);
 		}
-		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQApplication().Tr(s);
 		}
-		[SmokeMethod("type()")]
 		public static QApplication.TypeOf type() {
 			return StaticQApplication().type();
 		}
-		[SmokeMethod("style()")]
 		public static QStyle Style() {
 			return StaticQApplication().Style();
 		}
-		[SmokeMethod("setStyle(QStyle*)")]
 		public static void SetStyle(QStyle arg1) {
 			StaticQApplication().SetStyle(arg1);
 		}
-		[SmokeMethod("setStyle(const QString&)")]
 		public static QStyle SetStyle(string arg1) {
 			return StaticQApplication().SetStyle(arg1);
 		}
-		[SmokeMethod("colorSpec()")]
 		public static int colorSpec() {
 			return StaticQApplication().colorSpec();
 		}
-		[SmokeMethod("setColorSpec(int)")]
 		public static void SetColorSpec(int arg1) {
 			StaticQApplication().SetColorSpec(arg1);
 		}
-		[SmokeMethod("overrideCursor()")]
 		public static QCursor OverrideCursor() {
 			return StaticQApplication().OverrideCursor();
 		}
-		[SmokeMethod("setOverrideCursor(const QCursor&)")]
 		public static void SetOverrideCursor(QCursor arg1) {
 			StaticQApplication().SetOverrideCursor(arg1);
 		}
-		[SmokeMethod("changeOverrideCursor(const QCursor&)")]
 		public static void ChangeOverrideCursor(QCursor arg1) {
 			StaticQApplication().ChangeOverrideCursor(arg1);
 		}
-		[SmokeMethod("restoreOverrideCursor()")]
 		public static void RestoreOverrideCursor() {
 			StaticQApplication().RestoreOverrideCursor();
 		}
-		[SmokeMethod("palette()")]
 		public static QPalette Palette() {
 			return StaticQApplication().Palette();
 		}
-		[SmokeMethod("palette(const QWidget*)")]
 		public static QPalette Palette(QWidget arg1) {
 			return StaticQApplication().Palette(arg1);
 		}
-		[SmokeMethod("palette(const char*)")]
 		public static QPalette Palette(string className) {
 			return StaticQApplication().Palette(className);
 		}
-		[SmokeMethod("setPalette(const QPalette&, const char*)")]
 		public static void SetPalette(QPalette arg1, string className) {
 			StaticQApplication().SetPalette(arg1,className);
 		}
-		[SmokeMethod("setPalette(const QPalette&)")]
 		public static void SetPalette(QPalette arg1) {
 			StaticQApplication().SetPalette(arg1);
 		}
-		[SmokeMethod("font()")]
 		public static QFont Font() {
 			return StaticQApplication().Font();
 		}
-		[SmokeMethod("font(const QWidget*)")]
 		public static QFont Font(QWidget arg1) {
 			return StaticQApplication().Font(arg1);
 		}
-		[SmokeMethod("font(const char*)")]
 		public static QFont Font(string className) {
 			return StaticQApplication().Font(className);
 		}
-		[SmokeMethod("setFont(const QFont&, const char*)")]
 		public static void SetFont(QFont arg1, string className) {
 			StaticQApplication().SetFont(arg1,className);
 		}
-		[SmokeMethod("setFont(const QFont&)")]
 		public static void SetFont(QFont arg1) {
 			StaticQApplication().SetFont(arg1);
 		}
-		[SmokeMethod("fontMetrics()")]
 		public static QFontMetrics FontMetrics() {
 			return StaticQApplication().FontMetrics();
 		}
-		[SmokeMethod("setWindowIcon(const QIcon&)")]
 		public static void SetWindowIcon(QIcon icon) {
 			StaticQApplication().SetWindowIcon(icon);
 		}
-		[SmokeMethod("windowIcon()")]
 		public static QIcon windowIcon() {
 			return StaticQApplication().windowIcon();
 		}
-		[SmokeMethod("allWidgets()")]
 		public static List<QWidget> AllWidgets() {
 			return StaticQApplication().AllWidgets();
 		}
-		[SmokeMethod("topLevelWidgets()")]
 		public static List<QWidget> TopLevelWidgets() {
 			return StaticQApplication().TopLevelWidgets();
 		}
-		[SmokeMethod("desktop()")]
 		public static QDesktopWidget Desktop() {
 			return StaticQApplication().Desktop();
 		}
-		[SmokeMethod("activePopupWidget()")]
 		public static QWidget ActivePopupWidget() {
 			return StaticQApplication().ActivePopupWidget();
 		}
-		[SmokeMethod("activeModalWidget()")]
 		public static QWidget ActiveModalWidget() {
 			return StaticQApplication().ActiveModalWidget();
 		}
-		[SmokeMethod("clipboard()")]
 		public static QClipboard Clipboard() {
 			return StaticQApplication().Clipboard();
 		}
-		[SmokeMethod("focusWidget()")]
 		public static QWidget FocusWidget() {
 			return StaticQApplication().FocusWidget();
 		}
-		[SmokeMethod("activeWindow()")]
 		public static QWidget ActiveWindow() {
 			return StaticQApplication().ActiveWindow();
 		}
-		[SmokeMethod("setActiveWindow(QWidget*)")]
 		public static void SetActiveWindow(QWidget act) {
 			StaticQApplication().SetActiveWindow(act);
 		}
-		[SmokeMethod("widgetAt(const QPoint&)")]
 		public static QWidget WidgetAt(QPoint p) {
 			return StaticQApplication().WidgetAt(p);
 		}
-		[SmokeMethod("widgetAt(int, int)")]
 		public static QWidget WidgetAt(int x, int y) {
 			return StaticQApplication().WidgetAt(x,y);
 		}
-		[SmokeMethod("topLevelAt(const QPoint&)")]
 		public static QWidget TopLevelAt(QPoint p) {
 			return StaticQApplication().TopLevelAt(p);
 		}
-		[SmokeMethod("topLevelAt(int, int)")]
 		public static QWidget TopLevelAt(int x, int y) {
 			return StaticQApplication().TopLevelAt(x,y);
 		}
-		[SmokeMethod("syncX()")]
 		public static void SyncX() {
 			StaticQApplication().SyncX();
 		}
-		[SmokeMethod("beep()")]
 		public static void Beep() {
 			StaticQApplication().Beep();
 		}
-		[SmokeMethod("keyboardModifiers()")]
 		public static int KeyboardModifiers() {
 			return StaticQApplication().KeyboardModifiers();
 		}
-		[SmokeMethod("mouseButtons()")]
 		public static int MouseButtons() {
 			return StaticQApplication().MouseButtons();
 		}
-		[SmokeMethod("setDesktopSettingsAware(bool)")]
 		public static void SetDesktopSettingsAware(bool arg1) {
 			StaticQApplication().SetDesktopSettingsAware(arg1);
 		}
-		[SmokeMethod("desktopSettingsAware()")]
 		public static bool DesktopSettingsAware() {
 			return StaticQApplication().DesktopSettingsAware();
 		}
-		[SmokeMethod("setCursorFlashTime(int)")]
 		public static void SetCursorFlashTime(int arg1) {
 			StaticQApplication().SetCursorFlashTime(arg1);
 		}
-		[SmokeMethod("cursorFlashTime()")]
 		public static int cursorFlashTime() {
 			return StaticQApplication().cursorFlashTime();
 		}
-		[SmokeMethod("setDoubleClickInterval(int)")]
 		public static void SetDoubleClickInterval(int arg1) {
 			StaticQApplication().SetDoubleClickInterval(arg1);
 		}
-		[SmokeMethod("doubleClickInterval()")]
 		public static int doubleClickInterval() {
 			return StaticQApplication().doubleClickInterval();
 		}
-		[SmokeMethod("setKeyboardInputInterval(int)")]
 		public static void SetKeyboardInputInterval(int arg1) {
 			StaticQApplication().SetKeyboardInputInterval(arg1);
 		}
-		[SmokeMethod("keyboardInputInterval()")]
 		public static int keyboardInputInterval() {
 			return StaticQApplication().keyboardInputInterval();
 		}
-		[SmokeMethod("setWheelScrollLines(int)")]
 		public static void SetWheelScrollLines(int arg1) {
 			StaticQApplication().SetWheelScrollLines(arg1);
 		}
-		[SmokeMethod("wheelScrollLines()")]
 		public static int wheelScrollLines() {
 			return StaticQApplication().wheelScrollLines();
 		}
-		[SmokeMethod("setGlobalStrut(const QSize&)")]
 		public static void SetGlobalStrut(QSize arg1) {
 			StaticQApplication().SetGlobalStrut(arg1);
 		}
-		[SmokeMethod("globalStrut()")]
 		public static QSize globalStrut() {
 			return StaticQApplication().globalStrut();
 		}
-		[SmokeMethod("setStartDragTime(int)")]
 		public static void SetStartDragTime(int ms) {
 			StaticQApplication().SetStartDragTime(ms);
 		}
-		[SmokeMethod("startDragTime()")]
 		public static int startDragTime() {
 			return StaticQApplication().startDragTime();
 		}
-		[SmokeMethod("setStartDragDistance(int)")]
 		public static void SetStartDragDistance(int l) {
 			StaticQApplication().SetStartDragDistance(l);
 		}
-		[SmokeMethod("startDragDistance()")]
 		public static int startDragDistance() {
 			return StaticQApplication().startDragDistance();
 		}
-		[SmokeMethod("setLayoutDirection(Qt::LayoutDirection)")]
 		public static void SetLayoutDirection(Qt.LayoutDirection direction) {
 			StaticQApplication().SetLayoutDirection(direction);
 		}
-		[SmokeMethod("layoutDirection()")]
 		public static Qt.LayoutDirection layoutDirection() {
 			return StaticQApplication().layoutDirection();
 		}
-		[SmokeMethod("isRightToLeft()")]
 		public static bool IsRightToLeft() {
 			return StaticQApplication().IsRightToLeft();
 		}
-		[SmokeMethod("isLeftToRight()")]
 		public static bool IsLeftToRight() {
 			return StaticQApplication().IsLeftToRight();
 		}
-		[SmokeMethod("isEffectEnabled(Qt::UIEffect)")]
 		public static bool IsEffectEnabled(Qt.UIEffect arg1) {
 			return StaticQApplication().IsEffectEnabled(arg1);
 		}
-		[SmokeMethod("setEffectEnabled(Qt::UIEffect, bool)")]
 		public static void SetEffectEnabled(Qt.UIEffect arg1, bool enable) {
 			StaticQApplication().SetEffectEnabled(arg1,enable);
 		}
-		[SmokeMethod("setEffectEnabled(Qt::UIEffect)")]
 		public static void SetEffectEnabled(Qt.UIEffect arg1) {
 			StaticQApplication().SetEffectEnabled(arg1);
 		}
-		[SmokeMethod("keyboardInputLocale()")]
 		public static QLocale KeyboardInputLocale() {
 			return StaticQApplication().KeyboardInputLocale();
 		}
-		[SmokeMethod("keyboardInputDirection()")]
 		public static Qt.LayoutDirection KeyboardInputDirection() {
 			return StaticQApplication().KeyboardInputDirection();
 		}
-		[SmokeMethod("exec()")]
 		public static new int Exec() {
 			int ret = StaticQApplication().Exec();
 			Qyoto.DeleteQApp();
 			return ret;
 		}
-		[SmokeMethod("setQuitOnLastWindowClosed(bool)")]
 		public static void SetQuitOnLastWindowClosed(bool quit) {
 			StaticQApplication().SetQuitOnLastWindowClosed(quit);
 		}
-		[SmokeMethod("quitOnLastWindowClosed()")]
 		public static bool quitOnLastWindowClosed() {
 			return StaticQApplication().quitOnLastWindowClosed();
 		}
-		[Q_SLOT("void closeAllWindows()")]
-		[SmokeMethod("closeAllWindows()")]
+		[Q_SLOT("void ()")]
 		public static void CloseAllWindows() {
 			StaticQApplication().CloseAllWindows();
 		}
-		[Q_SLOT("void aboutQt()")]
-		[SmokeMethod("aboutQt()")]
+		[Q_SLOT("void ()")]
 		public static void AboutQt() {
 			StaticQApplication().AboutQt();
 		}
-		[SmokeMethod("event(QEvent*)")]
+		[SmokeMethod("event#", "(QEvent*)")]
 		public new bool Event(QEvent arg1) {
 			return ProxyQApplication().Event(arg1);
 		}
@@ -545,7 +545,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQApplication();
 		}
-		[SmokeMethod("~QApplication()")]
+		[SmokeMethod("~QApplication", "()")]
 		private void DisposeQApplication() {
 			ProxyQApplication().DisposeQApplication();
 		}
@@ -557,13 +557,13 @@ namespace Qyoto {
 	}
 
 	public interface IQApplicationSignals : IQCoreApplicationSignals {
-		[Q_SIGNAL("void lastWindowClosed()")]
+		[Q_SIGNAL("void ()")]
 		void LastWindowClosed();
-		[Q_SIGNAL("void focusChanged(QWidget*, QWidget*)")]
+		[Q_SIGNAL("void (QWidget*, QWidget*)")]
 		void FocusChanged(QWidget old, QWidget now);
-		[Q_SIGNAL("void commitDataRequest(QSessionManager&)")]
+		[Q_SIGNAL("void (QSessionManager&)")]
 		void CommitDataRequest(QSessionManager sessionManager);
-		[Q_SIGNAL("void saveStateRequest(QSessionManager&)")]
+		[Q_SIGNAL("void (QSessionManager&)")]
 		void SaveStateRequest(QSessionManager sessionManager);
 	}
 }

@@ -9,7 +9,9 @@ namespace Qyoto {
 	public class QAbstractSpinBox : QWidget, IDisposable {
  		protected QAbstractSpinBox(Type dummy) : base((Type) null) {}
 		interface IQAbstractSpinBoxProxy {
+			[SmokeMethod("tr$$", "(const char*, const char*)")]
 			string Tr(string s, string c);
+			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
 		}
 
@@ -131,7 +133,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQAbstractSpinBox(parent);
 		}
-		[SmokeMethod("QAbstractSpinBox(QWidget*)")]
+		[SmokeMethod("QAbstractSpinBox#", "(QWidget*)")]
 		private void NewQAbstractSpinBox(QWidget parent) {
 			ProxyQAbstractSpinBox().NewQAbstractSpinBox(parent);
 		}
@@ -139,155 +141,153 @@ namespace Qyoto {
 			CreateProxy();
 			NewQAbstractSpinBox();
 		}
-		[SmokeMethod("QAbstractSpinBox()")]
+		[SmokeMethod("QAbstractSpinBox", "()")]
 		private void NewQAbstractSpinBox() {
 			ProxyQAbstractSpinBox().NewQAbstractSpinBox();
 		}
-		[SmokeMethod("hasAcceptableInput() const")]
+		[SmokeMethod("hasAcceptableInput", "() const")]
 		public bool HasAcceptableInput() {
 			return ProxyQAbstractSpinBox().HasAcceptableInput();
 		}
-		[SmokeMethod("isReadOnly() const")]
+		[SmokeMethod("isReadOnly", "() const")]
 		public bool IsReadOnly() {
 			return ProxyQAbstractSpinBox().IsReadOnly();
 		}
-		[SmokeMethod("hasFrame() const")]
+		[SmokeMethod("hasFrame", "() const")]
 		public bool HasFrame() {
 			return ProxyQAbstractSpinBox().HasFrame();
 		}
-		[SmokeMethod("isAccelerated() const")]
+		[SmokeMethod("isAccelerated", "() const")]
 		public bool IsAccelerated() {
 			return ProxyQAbstractSpinBox().IsAccelerated();
 		}
-		[SmokeMethod("sizeHint() const")]
+		[SmokeMethod("sizeHint", "() const")]
 		public new QSize SizeHint() {
 			return ProxyQAbstractSpinBox().SizeHint();
 		}
-		[SmokeMethod("minimumSizeHint() const")]
+		[SmokeMethod("minimumSizeHint", "() const")]
 		public new QSize MinimumSizeHint() {
 			return ProxyQAbstractSpinBox().MinimumSizeHint();
 		}
-		[SmokeMethod("interpretText()")]
+		[SmokeMethod("interpretText", "()")]
 		public void InterpretText() {
 			ProxyQAbstractSpinBox().InterpretText();
 		}
-		[SmokeMethod("event(QEvent*)")]
+		[SmokeMethod("event#", "(QEvent*)")]
 		public new bool Event(QEvent arg1) {
 			return ProxyQAbstractSpinBox().Event(arg1);
 		}
-		[SmokeMethod("validate(QString&, int&) const")]
+		[SmokeMethod("validate$$", "(QString&, int&) const")]
 		public virtual int Validate(StringBuilder input, out int pos) {
 			return ProxyQAbstractSpinBox().Validate(input,out pos);
 		}
-		[SmokeMethod("fixup(QString&) const")]
+		[SmokeMethod("fixup$", "(QString&) const")]
 		public virtual void Fixup(StringBuilder input) {
 			ProxyQAbstractSpinBox().Fixup(input);
 		}
-		[SmokeMethod("stepBy(int)")]
+		[SmokeMethod("stepBy$", "(int)")]
 		public virtual void StepBy(int steps) {
 			ProxyQAbstractSpinBox().StepBy(steps);
 		}
-		[Q_SLOT("void stepUp()")]
-		[SmokeMethod("stepUp()")]
+		[Q_SLOT("void ()")]
+		[SmokeMethod("stepUp", "()")]
 		public void StepUp() {
 			ProxyQAbstractSpinBox().StepUp();
 		}
-		[Q_SLOT("void stepDown()")]
-		[SmokeMethod("stepDown()")]
+		[Q_SLOT("void ()")]
+		[SmokeMethod("stepDown", "()")]
 		public void StepDown() {
 			ProxyQAbstractSpinBox().StepDown();
 		}
-		[Q_SLOT("void selectAll()")]
-		[SmokeMethod("selectAll()")]
+		[Q_SLOT("void ()")]
+		[SmokeMethod("selectAll", "()")]
 		public void SelectAll() {
 			ProxyQAbstractSpinBox().SelectAll();
 		}
-		[Q_SLOT("void clear()")]
-		[SmokeMethod("clear()")]
+		[Q_SLOT("void ()")]
+		[SmokeMethod("clear", "()")]
 		public virtual void Clear() {
 			ProxyQAbstractSpinBox().Clear();
 		}
-		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQAbstractSpinBox().Tr(s,c);
 		}
-		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQAbstractSpinBox().Tr(s);
 		}
-		[SmokeMethod("resizeEvent(QResizeEvent*)")]
+		[SmokeMethod("resizeEvent#", "(QResizeEvent*)")]
 		protected new void ResizeEvent(QResizeEvent arg1) {
 			ProxyQAbstractSpinBox().ResizeEvent(arg1);
 		}
-		[SmokeMethod("keyPressEvent(QKeyEvent*)")]
+		[SmokeMethod("keyPressEvent#", "(QKeyEvent*)")]
 		protected new void KeyPressEvent(QKeyEvent arg1) {
 			ProxyQAbstractSpinBox().KeyPressEvent(arg1);
 		}
-		[SmokeMethod("keyReleaseEvent(QKeyEvent*)")]
+		[SmokeMethod("keyReleaseEvent#", "(QKeyEvent*)")]
 		protected new void KeyReleaseEvent(QKeyEvent arg1) {
 			ProxyQAbstractSpinBox().KeyReleaseEvent(arg1);
 		}
-		[SmokeMethod("wheelEvent(QWheelEvent*)")]
+		[SmokeMethod("wheelEvent#", "(QWheelEvent*)")]
 		protected new void WheelEvent(QWheelEvent arg1) {
 			ProxyQAbstractSpinBox().WheelEvent(arg1);
 		}
-		[SmokeMethod("focusInEvent(QFocusEvent*)")]
+		[SmokeMethod("focusInEvent#", "(QFocusEvent*)")]
 		protected new void FocusInEvent(QFocusEvent arg1) {
 			ProxyQAbstractSpinBox().FocusInEvent(arg1);
 		}
-		[SmokeMethod("focusOutEvent(QFocusEvent*)")]
+		[SmokeMethod("focusOutEvent#", "(QFocusEvent*)")]
 		protected new void FocusOutEvent(QFocusEvent arg1) {
 			ProxyQAbstractSpinBox().FocusOutEvent(arg1);
 		}
-		[SmokeMethod("contextMenuEvent(QContextMenuEvent*)")]
+		[SmokeMethod("contextMenuEvent#", "(QContextMenuEvent*)")]
 		protected new void ContextMenuEvent(QContextMenuEvent arg1) {
 			ProxyQAbstractSpinBox().ContextMenuEvent(arg1);
 		}
-		[SmokeMethod("changeEvent(QEvent*)")]
+		[SmokeMethod("changeEvent#", "(QEvent*)")]
 		protected new void ChangeEvent(QEvent arg1) {
 			ProxyQAbstractSpinBox().ChangeEvent(arg1);
 		}
-		[SmokeMethod("closeEvent(QCloseEvent*)")]
+		[SmokeMethod("closeEvent#", "(QCloseEvent*)")]
 		protected new void CloseEvent(QCloseEvent arg1) {
 			ProxyQAbstractSpinBox().CloseEvent(arg1);
 		}
-		[SmokeMethod("hideEvent(QHideEvent*)")]
+		[SmokeMethod("hideEvent#", "(QHideEvent*)")]
 		protected new void HideEvent(QHideEvent arg1) {
 			ProxyQAbstractSpinBox().HideEvent(arg1);
 		}
-		[SmokeMethod("mousePressEvent(QMouseEvent*)")]
+		[SmokeMethod("mousePressEvent#", "(QMouseEvent*)")]
 		protected new void MousePressEvent(QMouseEvent arg1) {
 			ProxyQAbstractSpinBox().MousePressEvent(arg1);
 		}
-		[SmokeMethod("mouseReleaseEvent(QMouseEvent*)")]
+		[SmokeMethod("mouseReleaseEvent#", "(QMouseEvent*)")]
 		protected new void MouseReleaseEvent(QMouseEvent arg1) {
 			ProxyQAbstractSpinBox().MouseReleaseEvent(arg1);
 		}
-		[SmokeMethod("mouseMoveEvent(QMouseEvent*)")]
+		[SmokeMethod("mouseMoveEvent#", "(QMouseEvent*)")]
 		protected new void MouseMoveEvent(QMouseEvent arg1) {
 			ProxyQAbstractSpinBox().MouseMoveEvent(arg1);
 		}
-		[SmokeMethod("timerEvent(QTimerEvent*)")]
+		[SmokeMethod("timerEvent#", "(QTimerEvent*)")]
 		protected new void TimerEvent(QTimerEvent arg1) {
 			ProxyQAbstractSpinBox().TimerEvent(arg1);
 		}
-		[SmokeMethod("paintEvent(QPaintEvent*)")]
+		[SmokeMethod("paintEvent#", "(QPaintEvent*)")]
 		protected new void PaintEvent(QPaintEvent arg1) {
 			ProxyQAbstractSpinBox().PaintEvent(arg1);
 		}
-		[SmokeMethod("showEvent(QShowEvent*)")]
+		[SmokeMethod("showEvent#", "(QShowEvent*)")]
 		public new void ShowEvent(QShowEvent arg1) {
 			ProxyQAbstractSpinBox().ShowEvent(arg1);
 		}
-		[SmokeMethod("lineEdit() const")]
+		[SmokeMethod("lineEdit", "() const")]
 		protected QLineEdit LineEdit() {
 			return ProxyQAbstractSpinBox().LineEdit();
 		}
-		[SmokeMethod("setLineEdit(QLineEdit*)")]
+		[SmokeMethod("setLineEdit#", "(QLineEdit*)")]
 		protected void SetLineEdit(QLineEdit edit) {
 			ProxyQAbstractSpinBox().SetLineEdit(edit);
 		}
-		[SmokeMethod("stepEnabled() const")]
+		[SmokeMethod("stepEnabled", "() const")]
 		protected virtual int StepEnabled() {
 			return ProxyQAbstractSpinBox().StepEnabled();
 		}
@@ -297,7 +297,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQAbstractSpinBox();
 		}
-		[SmokeMethod("~QAbstractSpinBox()")]
+		[SmokeMethod("~QAbstractSpinBox", "()")]
 		private void DisposeQAbstractSpinBox() {
 			ProxyQAbstractSpinBox().DisposeQAbstractSpinBox();
 		}
@@ -309,7 +309,7 @@ namespace Qyoto {
 	}
 
 	public interface IQAbstractSpinBoxSignals : IQWidgetSignals {
-		[Q_SIGNAL("void editingFinished()")]
+		[Q_SIGNAL("void ()")]
 		void EditingFinished();
 	}
 }

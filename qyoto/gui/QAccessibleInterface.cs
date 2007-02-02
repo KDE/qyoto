@@ -27,79 +27,79 @@ namespace Qyoto {
 			return (IQAccessibleInterfaceProxy) _staticInterceptor;
 		}
 
-		[SmokeMethod("isValid() const")]
+		[SmokeMethod("isValid", "() const")]
 		public virtual bool IsValid() {
 			return ProxyQAccessibleInterface().IsValid();
 		}
-		[SmokeMethod("object() const")]
+		[SmokeMethod("object", "() const")]
 		public virtual QObject Object() {
 			return ProxyQAccessibleInterface().Object();
 		}
-		[SmokeMethod("childCount() const")]
+		[SmokeMethod("childCount", "() const")]
 		public virtual int ChildCount() {
 			return ProxyQAccessibleInterface().ChildCount();
 		}
-		[SmokeMethod("indexOfChild(const QAccessibleInterface*) const")]
+		[SmokeMethod("indexOfChild#", "(const QAccessibleInterface*) const")]
 		public virtual int IndexOfChild(QAccessibleInterface arg1) {
 			return ProxyQAccessibleInterface().IndexOfChild(arg1);
 		}
-		[SmokeMethod("relationTo(int, const QAccessibleInterface*, int) const")]
+		[SmokeMethod("relationTo$$$", "(int, const QAccessibleInterface*, int) const")]
 		public virtual int RelationTo(int child, QAccessibleInterface other, int otherChild) {
 			return ProxyQAccessibleInterface().RelationTo(child,other,otherChild);
 		}
-		[SmokeMethod("childAt(int, int) const")]
+		[SmokeMethod("childAt$$", "(int, int) const")]
 		public virtual int ChildAt(int x, int y) {
 			return ProxyQAccessibleInterface().ChildAt(x,y);
 		}
-		[SmokeMethod("navigate(QAccessible::RelationFlag, int, QAccessibleInterface**) const")]
+		[SmokeMethod("navigate$$$", "(QAccessible::RelationFlag, int, QAccessibleInterface**) const")]
 		public virtual int Navigate(QAccessible.RelationFlag relation, int index, QAccessibleInterface iface) {
 			return ProxyQAccessibleInterface().Navigate(relation,index,iface);
 		}
-		[SmokeMethod("text(QAccessible::Text, int) const")]
+		[SmokeMethod("text$$", "(QAccessible::Text, int) const")]
 		public virtual string Text(QAccessible.Text t, int child) {
 			return ProxyQAccessibleInterface().Text(t,child);
 		}
-		[SmokeMethod("setText(QAccessible::Text, int, const QString&)")]
+		[SmokeMethod("setText$$$", "(QAccessible::Text, int, const QString&)")]
 		public virtual void SetText(QAccessible.Text t, int child, string text) {
 			ProxyQAccessibleInterface().SetText(t,child,text);
 		}
-		[SmokeMethod("rect(int) const")]
+		[SmokeMethod("rect$", "(int) const")]
 		public virtual QRect Rect(int child) {
 			return ProxyQAccessibleInterface().Rect(child);
 		}
-		[SmokeMethod("role(int) const")]
+		[SmokeMethod("role$", "(int) const")]
 		public virtual QAccessible.Role Role(int child) {
 			return ProxyQAccessibleInterface().Role(child);
 		}
-		[SmokeMethod("state(int) const")]
+		[SmokeMethod("state$", "(int) const")]
 		public virtual int State(int child) {
 			return ProxyQAccessibleInterface().State(child);
 		}
-		[SmokeMethod("userActionCount(int) const")]
+		[SmokeMethod("userActionCount$", "(int) const")]
 		public virtual int UserActionCount(int child) {
 			return ProxyQAccessibleInterface().UserActionCount(child);
 		}
-		[SmokeMethod("actionText(int, QAccessible::Text, int) const")]
+		[SmokeMethod("actionText$$$", "(int, QAccessible::Text, int) const")]
 		public virtual string ActionText(int action, QAccessible.Text t, int child) {
 			return ProxyQAccessibleInterface().ActionText(action,t,child);
 		}
-		[SmokeMethod("doAction(int, int, const QVariantList&)")]
+		[SmokeMethod("doAction$$$", "(int, int, const QVariantList&)")]
 		public virtual bool DoAction(int action, int child, List<QVariant> arg3) {
 			return ProxyQAccessibleInterface().DoAction(action,child,arg3);
 		}
-		[SmokeMethod("doAction(int, int)")]
+		[SmokeMethod("doAction$$", "(int, int)")]
 		public virtual bool DoAction(int action, int child) {
 			return ProxyQAccessibleInterface().DoAction(action,child);
 		}
-		[SmokeMethod("invokeMethod(QAccessible::Method, int, const QVariantList&)")]
+		[SmokeMethod("invokeMethod$$$", "(QAccessible::Method, int, const QVariantList&)")]
 		public QVariant InvokeMethod(QAccessible.Method method, int child, List<QVariant> arg3) {
 			return ProxyQAccessibleInterface().InvokeMethod(method,child,arg3);
 		}
-		[SmokeMethod("invokeMethod(QAccessible::Method, int)")]
+		[SmokeMethod("invokeMethod$$", "(QAccessible::Method, int)")]
 		public QVariant InvokeMethod(QAccessible.Method method, int child) {
 			return ProxyQAccessibleInterface().InvokeMethod(method,child);
 		}
-		[SmokeMethod("invokeMethod(QAccessible::Method)")]
+		[SmokeMethod("invokeMethod$", "(QAccessible::Method)")]
 		public QVariant InvokeMethod(QAccessible.Method method) {
 			return ProxyQAccessibleInterface().InvokeMethod(method);
 		}
@@ -107,7 +107,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQAccessibleInterface();
 		}
-		[SmokeMethod("QAccessibleInterface()")]
+		[SmokeMethod("QAccessibleInterface", "()")]
 		private void NewQAccessibleInterface() {
 			ProxyQAccessibleInterface().NewQAccessibleInterface();
 		}
@@ -117,7 +117,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQAccessibleInterface();
 		}
-		[SmokeMethod("~QAccessibleInterface()")]
+		[SmokeMethod("~QAccessibleInterface", "()")]
 		private void DisposeQAccessibleInterface() {
 			ProxyQAccessibleInterface().DisposeQAccessibleInterface();
 		}

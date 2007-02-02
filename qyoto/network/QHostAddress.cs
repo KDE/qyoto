@@ -43,7 +43,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQHostAddress();
 		}
-		[SmokeMethod("QHostAddress()")]
+		[SmokeMethod("QHostAddress", "()")]
 		private void NewQHostAddress() {
 			ProxyQHostAddress().NewQHostAddress();
 		}
@@ -51,7 +51,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQHostAddress(ip4Addr);
 		}
-		[SmokeMethod("QHostAddress(quint32)")]
+		[SmokeMethod("QHostAddress$", "(quint32)")]
 		private void NewQHostAddress(uint ip4Addr) {
 			ProxyQHostAddress().NewQHostAddress(ip4Addr);
 		}
@@ -62,7 +62,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQHostAddress(address);
 		}
-		[SmokeMethod("QHostAddress(const QString&)")]
+		[SmokeMethod("QHostAddress$", "(const QString&)")]
 		private void NewQHostAddress(string address) {
 			ProxyQHostAddress().NewQHostAddress(address);
 		}
@@ -70,7 +70,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQHostAddress(copy);
 		}
-		[SmokeMethod("QHostAddress(const QHostAddress&)")]
+		[SmokeMethod("QHostAddress#", "(const QHostAddress&)")]
 		private void NewQHostAddress(QHostAddress copy) {
 			ProxyQHostAddress().NewQHostAddress(copy);
 		}
@@ -78,43 +78,43 @@ namespace Qyoto {
 			CreateProxy();
 			NewQHostAddress(address);
 		}
-		[SmokeMethod("QHostAddress(QHostAddress::SpecialAddress)")]
+		[SmokeMethod("QHostAddress$", "(QHostAddress::SpecialAddress)")]
 		private void NewQHostAddress(QHostAddress.SpecialAddress address) {
 			ProxyQHostAddress().NewQHostAddress(address);
 		}
-		[SmokeMethod("setAddress(quint32)")]
+		[SmokeMethod("setAddress$", "(quint32)")]
 		public void SetAddress(uint ip4Addr) {
 			ProxyQHostAddress().SetAddress(ip4Addr);
 		}
 		// void setAddress(quint8* arg1); >>>> NOT CONVERTED
 		// void setAddress(const Q_IPV6ADDR& arg1); >>>> NOT CONVERTED
 		// void setAddress(const sockaddr* arg1); >>>> NOT CONVERTED
-		[SmokeMethod("setAddress(const QString&)")]
+		[SmokeMethod("setAddress$", "(const QString&)")]
 		public bool SetAddress(string address) {
 			return ProxyQHostAddress().SetAddress(address);
 		}
-		[SmokeMethod("protocol() const")]
+		[SmokeMethod("protocol", "() const")]
 		public QAbstractSocket.NetworkLayerProtocol Protocol() {
 			return ProxyQHostAddress().Protocol();
 		}
-		[SmokeMethod("toIPv4Address() const")]
+		[SmokeMethod("toIPv4Address", "() const")]
 		public uint ToIPv4Address() {
 			return ProxyQHostAddress().ToIPv4Address();
 		}
 		// Q_IPV6ADDR toIPv6Address(); >>>> NOT CONVERTED
-		[SmokeMethod("toString() const")]
+		[SmokeMethod("toString", "() const")]
 		public new string ToString() {
 			return ProxyQHostAddress().ToString();
 		}
-		[SmokeMethod("scopeId() const")]
+		[SmokeMethod("scopeId", "() const")]
 		public string ScopeId() {
 			return ProxyQHostAddress().ScopeId();
 		}
-		[SmokeMethod("setScopeId(const QString&)")]
+		[SmokeMethod("setScopeId$", "(const QString&)")]
 		public void SetScopeId(string id) {
 			ProxyQHostAddress().SetScopeId(id);
 		}
-		[SmokeMethod("operator==(const QHostAddress&) const")]
+		[SmokeMethod("operator==#", "(const QHostAddress&) const")]
 		public static bool operator==(QHostAddress lhs, QHostAddress address) {
 			return StaticQHostAddress().op_equals(lhs,address);
 		}
@@ -128,18 +128,18 @@ namespace Qyoto {
 		public override int GetHashCode() {
 			return ProxyQHostAddress().GetHashCode();
 		}
-		[SmokeMethod("operator==(QHostAddress::SpecialAddress) const")]
+		[SmokeMethod("operator==$", "(QHostAddress::SpecialAddress) const")]
 		public static bool operator==(QHostAddress lhs, QHostAddress.SpecialAddress address) {
 			return StaticQHostAddress().op_equals(lhs,address);
 		}
 		public static bool operator!=(QHostAddress lhs, QHostAddress.SpecialAddress address) {
 			return !StaticQHostAddress().op_equals(lhs,address);
 		}
-		[SmokeMethod("isNull() const")]
+		[SmokeMethod("isNull", "() const")]
 		public bool IsNull() {
 			return ProxyQHostAddress().IsNull();
 		}
-		[SmokeMethod("clear()")]
+		[SmokeMethod("clear", "()")]
 		public void Clear() {
 			ProxyQHostAddress().Clear();
 		}
@@ -149,7 +149,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQHostAddress();
 		}
-		[SmokeMethod("~QHostAddress()")]
+		[SmokeMethod("~QHostAddress", "()")]
 		private void DisposeQHostAddress() {
 			ProxyQHostAddress().DisposeQHostAddress();
 		}

@@ -30,11 +30,11 @@ namespace Qyoto {
 			CreateProxy();
 			NewQFileOpenEvent(file);
 		}
-		[SmokeMethod("QFileOpenEvent(const QString&)")]
+		[SmokeMethod("QFileOpenEvent$", "(const QString&)")]
 		private void NewQFileOpenEvent(string file) {
 			ProxyQFileOpenEvent().NewQFileOpenEvent(file);
 		}
-		[SmokeMethod("file() const")]
+		[SmokeMethod("file", "() const")]
 		public string File() {
 			return ProxyQFileOpenEvent().File();
 		}
@@ -44,7 +44,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQFileOpenEvent();
 		}
-		[SmokeMethod("~QFileOpenEvent()")]
+		[SmokeMethod("~QFileOpenEvent", "()")]
 		private void DisposeQFileOpenEvent() {
 			ProxyQFileOpenEvent().DisposeQFileOpenEvent();
 		}

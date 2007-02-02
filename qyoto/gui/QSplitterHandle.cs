@@ -8,7 +8,9 @@ namespace Qyoto {
 	public class QSplitterHandle : QWidget, IDisposable {
  		protected QSplitterHandle(Type dummy) : base((Type) null) {}
 		interface IQSplitterHandleProxy {
+			[SmokeMethod("tr$$", "(const char*, const char*)")]
 			string Tr(string s, string c);
+			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
 		}
 
@@ -33,63 +35,61 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSplitterHandle(o,parent);
 		}
-		[SmokeMethod("QSplitterHandle(Qt::Orientation, QSplitter*)")]
+		[SmokeMethod("QSplitterHandle$$", "(Qt::Orientation, QSplitter*)")]
 		private void NewQSplitterHandle(Qt.Orientation o, QSplitter parent) {
 			ProxyQSplitterHandle().NewQSplitterHandle(o,parent);
 		}
-		[SmokeMethod("setOrientation(Qt::Orientation)")]
+		[SmokeMethod("setOrientation$", "(Qt::Orientation)")]
 		public void SetOrientation(Qt.Orientation o) {
 			ProxyQSplitterHandle().SetOrientation(o);
 		}
-		[SmokeMethod("orientation() const")]
+		[SmokeMethod("orientation", "() const")]
 		public Qt.Orientation Orientation() {
 			return ProxyQSplitterHandle().Orientation();
 		}
-		[SmokeMethod("opaqueResize() const")]
+		[SmokeMethod("opaqueResize", "() const")]
 		public bool OpaqueResize() {
 			return ProxyQSplitterHandle().OpaqueResize();
 		}
-		[SmokeMethod("splitter() const")]
+		[SmokeMethod("splitter", "() const")]
 		public QSplitter Splitter() {
 			return ProxyQSplitterHandle().Splitter();
 		}
-		[SmokeMethod("sizeHint() const")]
+		[SmokeMethod("sizeHint", "() const")]
 		public new QSize SizeHint() {
 			return ProxyQSplitterHandle().SizeHint();
 		}
-		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQSplitterHandle().Tr(s,c);
 		}
-		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQSplitterHandle().Tr(s);
 		}
-		[SmokeMethod("paintEvent(QPaintEvent*)")]
+		[SmokeMethod("paintEvent#", "(QPaintEvent*)")]
 		protected new void PaintEvent(QPaintEvent arg1) {
 			ProxyQSplitterHandle().PaintEvent(arg1);
 		}
-		[SmokeMethod("mouseMoveEvent(QMouseEvent*)")]
+		[SmokeMethod("mouseMoveEvent#", "(QMouseEvent*)")]
 		protected new void MouseMoveEvent(QMouseEvent arg1) {
 			ProxyQSplitterHandle().MouseMoveEvent(arg1);
 		}
-		[SmokeMethod("mousePressEvent(QMouseEvent*)")]
+		[SmokeMethod("mousePressEvent#", "(QMouseEvent*)")]
 		protected new void MousePressEvent(QMouseEvent arg1) {
 			ProxyQSplitterHandle().MousePressEvent(arg1);
 		}
-		[SmokeMethod("mouseReleaseEvent(QMouseEvent*)")]
+		[SmokeMethod("mouseReleaseEvent#", "(QMouseEvent*)")]
 		protected new void MouseReleaseEvent(QMouseEvent arg1) {
 			ProxyQSplitterHandle().MouseReleaseEvent(arg1);
 		}
-		[SmokeMethod("event(QEvent*)")]
+		[SmokeMethod("event#", "(QEvent*)")]
 		public new bool Event(QEvent arg1) {
 			return ProxyQSplitterHandle().Event(arg1);
 		}
-		[SmokeMethod("moveSplitter(int)")]
+		[SmokeMethod("moveSplitter$", "(int)")]
 		protected void MoveSplitter(int p) {
 			ProxyQSplitterHandle().MoveSplitter(p);
 		}
-		[SmokeMethod("closestLegalPosition(int)")]
+		[SmokeMethod("closestLegalPosition$", "(int)")]
 		protected int ClosestLegalPosition(int p) {
 			return ProxyQSplitterHandle().ClosestLegalPosition(p);
 		}
@@ -99,7 +99,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQSplitterHandle();
 		}
-		[SmokeMethod("~QSplitterHandle()")]
+		[SmokeMethod("~QSplitterHandle", "()")]
 		private void DisposeQSplitterHandle() {
 			ProxyQSplitterHandle().DisposeQSplitterHandle();
 		}

@@ -10,7 +10,9 @@ namespace Qyoto {
 	public class QItemSelectionModel : QObject, IDisposable {
  		protected QItemSelectionModel(Type dummy) : base((Type) null) {}
 		interface IQItemSelectionModelProxy {
+			[SmokeMethod("tr$$", "(const char*, const char*)")]
 			string Tr(string s, string c);
+			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
 		}
 
@@ -48,7 +50,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQItemSelectionModel(model);
 		}
-		[SmokeMethod("QItemSelectionModel(QAbstractItemModel*)")]
+		[SmokeMethod("QItemSelectionModel#", "(QAbstractItemModel*)")]
 		private void NewQItemSelectionModel(QAbstractItemModel model) {
 			ProxyQItemSelectionModel().NewQItemSelectionModel(model);
 		}
@@ -56,105 +58,103 @@ namespace Qyoto {
 			CreateProxy();
 			NewQItemSelectionModel(model,parent);
 		}
-		[SmokeMethod("QItemSelectionModel(QAbstractItemModel*, QObject*)")]
+		[SmokeMethod("QItemSelectionModel##", "(QAbstractItemModel*, QObject*)")]
 		private void NewQItemSelectionModel(QAbstractItemModel model, QObject parent) {
 			ProxyQItemSelectionModel().NewQItemSelectionModel(model,parent);
 		}
-		[SmokeMethod("currentIndex() const")]
+		[SmokeMethod("currentIndex", "() const")]
 		public QModelIndex CurrentIndex() {
 			return ProxyQItemSelectionModel().CurrentIndex();
 		}
-		[SmokeMethod("isSelected(const QModelIndex&) const")]
+		[SmokeMethod("isSelected#", "(const QModelIndex&) const")]
 		public bool IsSelected(QModelIndex index) {
 			return ProxyQItemSelectionModel().IsSelected(index);
 		}
-		[SmokeMethod("isRowSelected(int, const QModelIndex&) const")]
+		[SmokeMethod("isRowSelected$$", "(int, const QModelIndex&) const")]
 		public bool IsRowSelected(int row, QModelIndex parent) {
 			return ProxyQItemSelectionModel().IsRowSelected(row,parent);
 		}
-		[SmokeMethod("isColumnSelected(int, const QModelIndex&) const")]
+		[SmokeMethod("isColumnSelected$$", "(int, const QModelIndex&) const")]
 		public bool IsColumnSelected(int column, QModelIndex parent) {
 			return ProxyQItemSelectionModel().IsColumnSelected(column,parent);
 		}
-		[SmokeMethod("rowIntersectsSelection(int, const QModelIndex&) const")]
+		[SmokeMethod("rowIntersectsSelection$$", "(int, const QModelIndex&) const")]
 		public bool RowIntersectsSelection(int row, QModelIndex parent) {
 			return ProxyQItemSelectionModel().RowIntersectsSelection(row,parent);
 		}
-		[SmokeMethod("columnIntersectsSelection(int, const QModelIndex&) const")]
+		[SmokeMethod("columnIntersectsSelection$$", "(int, const QModelIndex&) const")]
 		public bool ColumnIntersectsSelection(int column, QModelIndex parent) {
 			return ProxyQItemSelectionModel().ColumnIntersectsSelection(column,parent);
 		}
-		[SmokeMethod("hasSelection() const")]
+		[SmokeMethod("hasSelection", "() const")]
 		public bool HasSelection() {
 			return ProxyQItemSelectionModel().HasSelection();
 		}
-		[SmokeMethod("selectedIndexes() const")]
+		[SmokeMethod("selectedIndexes", "() const")]
 		public List<QModelIndex> SelectedIndexes() {
 			return ProxyQItemSelectionModel().SelectedIndexes();
 		}
-		[SmokeMethod("selectedRows(int) const")]
+		[SmokeMethod("selectedRows$", "(int) const")]
 		public List<QModelIndex> SelectedRows(int column) {
 			return ProxyQItemSelectionModel().SelectedRows(column);
 		}
-		[SmokeMethod("selectedRows() const")]
+		[SmokeMethod("selectedRows", "() const")]
 		public List<QModelIndex> SelectedRows() {
 			return ProxyQItemSelectionModel().SelectedRows();
 		}
-		[SmokeMethod("selectedColumns(int) const")]
+		[SmokeMethod("selectedColumns$", "(int) const")]
 		public List<QModelIndex> SelectedColumns(int row) {
 			return ProxyQItemSelectionModel().SelectedColumns(row);
 		}
-		[SmokeMethod("selectedColumns() const")]
+		[SmokeMethod("selectedColumns", "() const")]
 		public List<QModelIndex> SelectedColumns() {
 			return ProxyQItemSelectionModel().SelectedColumns();
 		}
-		[SmokeMethod("selection() const")]
+		[SmokeMethod("selection", "() const")]
 		public QItemSelection Selection() {
 			return ProxyQItemSelectionModel().Selection();
 		}
-		[SmokeMethod("model() const")]
+		[SmokeMethod("model", "() const")]
 		public QAbstractItemModel Model() {
 			return ProxyQItemSelectionModel().Model();
 		}
-		[Q_SLOT("void setCurrentIndex(const QModelIndex&, QItemSelectionModel::SelectionFlags)")]
-		[SmokeMethod("setCurrentIndex(const QModelIndex&, QItemSelectionModel::SelectionFlags)")]
+		[Q_SLOT("void (const QModelIndex&, QItemSelectionModel::SelectionFlags)")]
+		[SmokeMethod("setCurrentIndex##", "(const QModelIndex&, QItemSelectionModel::SelectionFlags)")]
 		public void SetCurrentIndex(QModelIndex index, int command) {
 			ProxyQItemSelectionModel().SetCurrentIndex(index,command);
 		}
-		[Q_SLOT("void select(const QModelIndex&, QItemSelectionModel::SelectionFlags)")]
-		[SmokeMethod("select(const QModelIndex&, QItemSelectionModel::SelectionFlags)")]
+		[Q_SLOT("void (const QModelIndex&, QItemSelectionModel::SelectionFlags)")]
+		[SmokeMethod("select##", "(const QModelIndex&, QItemSelectionModel::SelectionFlags)")]
 		public virtual void Select(QModelIndex index, int command) {
 			ProxyQItemSelectionModel().Select(index,command);
 		}
-		[Q_SLOT("void select(const QItemSelection&, QItemSelectionModel::SelectionFlags)")]
-		[SmokeMethod("select(const QItemSelection&, QItemSelectionModel::SelectionFlags)")]
+		[Q_SLOT("void (const QItemSelection&, QItemSelectionModel::SelectionFlags)")]
+		[SmokeMethod("select##", "(const QItemSelection&, QItemSelectionModel::SelectionFlags)")]
 		public virtual void Select(QItemSelection selection, int command) {
 			ProxyQItemSelectionModel().Select(selection,command);
 		}
-		[Q_SLOT("void clear()")]
-		[SmokeMethod("clear()")]
+		[Q_SLOT("void ()")]
+		[SmokeMethod("clear", "()")]
 		public virtual void Clear() {
 			ProxyQItemSelectionModel().Clear();
 		}
-		[Q_SLOT("void reset()")]
-		[SmokeMethod("reset()")]
+		[Q_SLOT("void ()")]
+		[SmokeMethod("reset", "()")]
 		public virtual void Reset() {
 			ProxyQItemSelectionModel().Reset();
 		}
-		[Q_SLOT("void clearSelection()")]
-		[SmokeMethod("clearSelection()")]
+		[Q_SLOT("void ()")]
+		[SmokeMethod("clearSelection", "()")]
 		public void ClearSelection() {
 			ProxyQItemSelectionModel().ClearSelection();
 		}
-		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQItemSelectionModel().Tr(s,c);
 		}
-		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQItemSelectionModel().Tr(s);
 		}
-		[SmokeMethod("emitSelectionChanged(const QItemSelection&, const QItemSelection&)")]
+		[SmokeMethod("emitSelectionChanged##", "(const QItemSelection&, const QItemSelection&)")]
 		protected void EmitSelectionChanged(QItemSelection newSelection, QItemSelection oldSelection) {
 			ProxyQItemSelectionModel().EmitSelectionChanged(newSelection,oldSelection);
 		}
@@ -164,7 +164,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQItemSelectionModel();
 		}
-		[SmokeMethod("~QItemSelectionModel()")]
+		[SmokeMethod("~QItemSelectionModel", "()")]
 		private void DisposeQItemSelectionModel() {
 			ProxyQItemSelectionModel().DisposeQItemSelectionModel();
 		}
@@ -176,13 +176,13 @@ namespace Qyoto {
 	}
 
 	public interface IQItemSelectionModelSignals : IQObjectSignals {
-		[Q_SIGNAL("void selectionChanged(const QItemSelection&, const QItemSelection&)")]
+		[Q_SIGNAL("void (const QItemSelection&, const QItemSelection&)")]
 		void SelectionChanged(QItemSelection selected, QItemSelection deselected);
-		[Q_SIGNAL("void currentChanged(const QModelIndex&, const QModelIndex&)")]
+		[Q_SIGNAL("void (const QModelIndex&, const QModelIndex&)")]
 		void CurrentChanged(QModelIndex current, QModelIndex previous);
-		[Q_SIGNAL("void currentRowChanged(const QModelIndex&, const QModelIndex&)")]
+		[Q_SIGNAL("void (const QModelIndex&, const QModelIndex&)")]
 		void CurrentRowChanged(QModelIndex current, QModelIndex previous);
-		[Q_SIGNAL("void currentColumnChanged(const QModelIndex&, const QModelIndex&)")]
+		[Q_SIGNAL("void (const QModelIndex&, const QModelIndex&)")]
 		void CurrentColumnChanged(QModelIndex current, QModelIndex previous);
 	}
 }

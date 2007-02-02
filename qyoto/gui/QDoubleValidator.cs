@@ -8,7 +8,9 @@ namespace Qyoto {
 	public class QDoubleValidator : QValidator, IDisposable {
  		protected QDoubleValidator(Type dummy) : base((Type) null) {}
 		interface IQDoubleValidatorProxy {
+			[SmokeMethod("tr$$", "(const char*, const char*)")]
 			string Tr(string s, string c);
+			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
 		}
 
@@ -60,7 +62,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDoubleValidator(parent);
 		}
-		[SmokeMethod("QDoubleValidator(QObject*)")]
+		[SmokeMethod("QDoubleValidator#", "(QObject*)")]
 		private void NewQDoubleValidator(QObject parent) {
 			ProxyQDoubleValidator().NewQDoubleValidator(parent);
 		}
@@ -68,27 +70,25 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDoubleValidator(bottom,top,decimals,parent);
 		}
-		[SmokeMethod("QDoubleValidator(double, double, int, QObject*)")]
+		[SmokeMethod("QDoubleValidator$$$$", "(double, double, int, QObject*)")]
 		private void NewQDoubleValidator(double bottom, double top, int decimals, QObject parent) {
 			ProxyQDoubleValidator().NewQDoubleValidator(bottom,top,decimals,parent);
 		}
-		[SmokeMethod("validate(QString&, int&) const")]
+		[SmokeMethod("validate$$", "(QString&, int&) const")]
 		public new int Validate(StringBuilder arg1, out int arg2) {
 			return ProxyQDoubleValidator().Validate(arg1,out arg2);
 		}
-		[SmokeMethod("setRange(double, double, int)")]
+		[SmokeMethod("setRange$$$", "(double, double, int)")]
 		public virtual void SetRange(double bottom, double top, int decimals) {
 			ProxyQDoubleValidator().SetRange(bottom,top,decimals);
 		}
-		[SmokeMethod("setRange(double, double)")]
+		[SmokeMethod("setRange$$", "(double, double)")]
 		public virtual void SetRange(double bottom, double top) {
 			ProxyQDoubleValidator().SetRange(bottom,top);
 		}
-		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQDoubleValidator().Tr(s,c);
 		}
-		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQDoubleValidator().Tr(s);
 		}
@@ -98,7 +98,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQDoubleValidator();
 		}
-		[SmokeMethod("~QDoubleValidator()")]
+		[SmokeMethod("~QDoubleValidator", "()")]
 		private void DisposeQDoubleValidator() {
 			ProxyQDoubleValidator().DisposeQDoubleValidator();
 		}

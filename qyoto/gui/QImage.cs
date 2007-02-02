@@ -10,10 +10,15 @@ namespace Qyoto {
  		protected QImage(Type dummy) : base((Type) null) {}
 		interface IQImageProxy {
 			bool op_equals(QImage lhs, QImage arg1);
+			[SmokeMethod("trueMatrix###", "(const QMatrix&, int, int)")]
 			QMatrix TrueMatrix(QMatrix arg1, int w, int h);
+			[SmokeMethod("fromData$$$", "(const uchar*, int, const char*)")]
 			QImage FromData(char[] data, int size, string format);
+			[SmokeMethod("fromData$$", "(const uchar*, int)")]
 			QImage FromData(char[] data, int size);
+			[SmokeMethod("fromData##", "(const QByteArray&, const char*)")]
 			QImage FromData(QByteArray data, string format);
+			[SmokeMethod("fromData#", "(const QByteArray&)")]
 			QImage FromData(QByteArray data);
 		}
 
@@ -52,7 +57,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQImage();
 		}
-		[SmokeMethod("QImage()")]
+		[SmokeMethod("QImage", "()")]
 		private void NewQImage() {
 			ProxyQImage().NewQImage();
 		}
@@ -60,7 +65,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQImage(size,format);
 		}
-		[SmokeMethod("QImage(const QSize&, QImage::Format)")]
+		[SmokeMethod("QImage##", "(const QSize&, QImage::Format)")]
 		private void NewQImage(QSize size, QImage.Format format) {
 			ProxyQImage().NewQImage(size,format);
 		}
@@ -68,7 +73,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQImage(width,height,format);
 		}
-		[SmokeMethod("QImage(int, int, QImage::Format)")]
+		[SmokeMethod("QImage$$$", "(int, int, QImage::Format)")]
 		private void NewQImage(int width, int height, QImage.Format format) {
 			ProxyQImage().NewQImage(width,height,format);
 		}
@@ -76,7 +81,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQImage(data,width,height,format);
 		}
-		[SmokeMethod("QImage(uchar*, int, int, QImage::Format)")]
+		[SmokeMethod("QImage$$$$", "(uchar*, int, int, QImage::Format)")]
 		private void NewQImage(char[] data, int width, int height, QImage.Format format) {
 			ProxyQImage().NewQImage(data,width,height,format);
 		}
@@ -85,7 +90,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQImage(fileName,format);
 		}
-		[SmokeMethod("QImage(const QString&, const char*)")]
+		[SmokeMethod("QImage$$", "(const QString&, const char*)")]
 		private void NewQImage(string fileName, string format) {
 			ProxyQImage().NewQImage(fileName,format);
 		}
@@ -93,7 +98,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQImage(fileName);
 		}
-		[SmokeMethod("QImage(const QString&)")]
+		[SmokeMethod("QImage$", "(const QString&)")]
 		private void NewQImage(string fileName) {
 			ProxyQImage().NewQImage(fileName);
 		}
@@ -101,19 +106,19 @@ namespace Qyoto {
 			CreateProxy();
 			NewQImage(arg1);
 		}
-		[SmokeMethod("QImage(const QImage&)")]
+		[SmokeMethod("QImage#", "(const QImage&)")]
 		private void NewQImage(QImage arg1) {
 			ProxyQImage().NewQImage(arg1);
 		}
-		[SmokeMethod("isNull() const")]
+		[SmokeMethod("isNull", "() const")]
 		public bool IsNull() {
 			return ProxyQImage().IsNull();
 		}
-		[SmokeMethod("devType() const")]
+		[SmokeMethod("devType", "() const")]
 		public new int DevType() {
 			return ProxyQImage().DevType();
 		}
-		[SmokeMethod("operator==(const QImage&) const")]
+		[SmokeMethod("operator==#", "(const QImage&) const")]
 		public static bool operator==(QImage lhs, QImage arg1) {
 			return StaticQImage().op_equals(lhs,arg1);
 		}
@@ -128,385 +133,380 @@ namespace Qyoto {
 			return ProxyQImage().GetHashCode();
 		}
 		//  operator QVariant(); >>>> NOT CONVERTED
-		[SmokeMethod("detach()")]
+		[SmokeMethod("detach", "()")]
 		public void Detach() {
 			ProxyQImage().Detach();
 		}
-		[SmokeMethod("isDetached() const")]
+		[SmokeMethod("isDetached", "() const")]
 		public bool IsDetached() {
 			return ProxyQImage().IsDetached();
 		}
-		[SmokeMethod("copy(const QRect&) const")]
+		[SmokeMethod("copy#", "(const QRect&) const")]
 		public QImage Copy(QRect rect) {
 			return ProxyQImage().Copy(rect);
 		}
-		[SmokeMethod("copy() const")]
+		[SmokeMethod("copy", "() const")]
 		public QImage Copy() {
 			return ProxyQImage().Copy();
 		}
-		[SmokeMethod("copy(int, int, int, int) const")]
+		[SmokeMethod("copy$$$$", "(int, int, int, int) const")]
 		public QImage Copy(int x, int y, int w, int h) {
 			return ProxyQImage().Copy(x,y,w,h);
 		}
-		[SmokeMethod("format() const")]
+		[SmokeMethod("format", "() const")]
 		public QImage.Format format() {
 			return ProxyQImage().format();
 		}
-		[SmokeMethod("convertToFormat(QImage::Format, Qt::ImageConversionFlags) const")]
+		[SmokeMethod("convertToFormat$$", "(QImage::Format, Qt::ImageConversionFlags) const")]
 		public QImage ConvertToFormat(QImage.Format f, int flags) {
 			return ProxyQImage().ConvertToFormat(f,flags);
 		}
-		[SmokeMethod("convertToFormat(QImage::Format) const")]
+		[SmokeMethod("convertToFormat$", "(QImage::Format) const")]
 		public QImage ConvertToFormat(QImage.Format f) {
 			return ProxyQImage().ConvertToFormat(f);
 		}
-		[SmokeMethod("convertToFormat(QImage::Format, const QVector<QRgb>&, Qt::ImageConversionFlags) const")]
+		[SmokeMethod("convertToFormat$$$", "(QImage::Format, const QVector<QRgb>&, Qt::ImageConversionFlags) const")]
 		public QImage ConvertToFormat(QImage.Format f, List<uint> colorTable, int flags) {
 			return ProxyQImage().ConvertToFormat(f,colorTable,flags);
 		}
-		[SmokeMethod("convertToFormat(QImage::Format, const QVector<QRgb>&) const")]
+		[SmokeMethod("convertToFormat$$", "(QImage::Format, const QVector<QRgb>&) const")]
 		public QImage ConvertToFormat(QImage.Format f, List<uint> colorTable) {
 			return ProxyQImage().ConvertToFormat(f,colorTable);
 		}
-		[SmokeMethod("width() const")]
+		[SmokeMethod("width", "() const")]
 		public new int Width() {
 			return ProxyQImage().Width();
 		}
-		[SmokeMethod("height() const")]
+		[SmokeMethod("height", "() const")]
 		public new int Height() {
 			return ProxyQImage().Height();
 		}
-		[SmokeMethod("size() const")]
+		[SmokeMethod("size", "() const")]
 		public QSize Size() {
 			return ProxyQImage().Size();
 		}
-		[SmokeMethod("rect() const")]
+		[SmokeMethod("rect", "() const")]
 		public QRect Rect() {
 			return ProxyQImage().Rect();
 		}
-		[SmokeMethod("depth() const")]
+		[SmokeMethod("depth", "() const")]
 		public new int Depth() {
 			return ProxyQImage().Depth();
 		}
-		[SmokeMethod("numColors() const")]
+		[SmokeMethod("numColors", "() const")]
 		public new int NumColors() {
 			return ProxyQImage().NumColors();
 		}
-		[SmokeMethod("color(int) const")]
+		[SmokeMethod("color$", "(int) const")]
 		public uint Color(int i) {
 			return ProxyQImage().Color(i);
 		}
-		[SmokeMethod("setColor(int, QRgb)")]
+		[SmokeMethod("setColor$$", "(int, QRgb)")]
 		public void SetColor(int i, uint c) {
 			ProxyQImage().SetColor(i,c);
 		}
-		[SmokeMethod("setNumColors(int)")]
+		[SmokeMethod("setNumColors$", "(int)")]
 		public void SetNumColors(int arg1) {
 			ProxyQImage().SetNumColors(arg1);
 		}
-		[SmokeMethod("allGray() const")]
+		[SmokeMethod("allGray", "() const")]
 		public bool AllGray() {
 			return ProxyQImage().AllGray();
 		}
-		[SmokeMethod("isGrayscale() const")]
+		[SmokeMethod("isGrayscale", "() const")]
 		public bool IsGrayscale() {
 			return ProxyQImage().IsGrayscale();
 		}
-		[SmokeMethod("bits()")]
+		[SmokeMethod("bits", "()")]
 		public byte[] Bits() {
 			return ProxyQImage().Bits();
 		}
-		[SmokeMethod("numBytes() const")]
+		[SmokeMethod("numBytes", "() const")]
 		public int NumBytes() {
 			return ProxyQImage().NumBytes();
 		}
-		[SmokeMethod("scanLine(int)")]
+		[SmokeMethod("scanLine$", "(int)")]
 		public byte[] ScanLine(int arg1) {
 			return ProxyQImage().ScanLine(arg1);
 		}
-		[SmokeMethod("bytesPerLine() const")]
+		[SmokeMethod("bytesPerLine", "() const")]
 		public int BytesPerLine() {
 			return ProxyQImage().BytesPerLine();
 		}
-		[SmokeMethod("valid(int, int) const")]
+		[SmokeMethod("valid$$", "(int, int) const")]
 		public bool Valid(int x, int y) {
 			return ProxyQImage().Valid(x,y);
 		}
-		[SmokeMethod("valid(const QPoint&) const")]
+		[SmokeMethod("valid#", "(const QPoint&) const")]
 		public bool Valid(QPoint pt) {
 			return ProxyQImage().Valid(pt);
 		}
-		[SmokeMethod("pixelIndex(int, int) const")]
+		[SmokeMethod("pixelIndex$$", "(int, int) const")]
 		public int PixelIndex(int x, int y) {
 			return ProxyQImage().PixelIndex(x,y);
 		}
-		[SmokeMethod("pixelIndex(const QPoint&) const")]
+		[SmokeMethod("pixelIndex#", "(const QPoint&) const")]
 		public int PixelIndex(QPoint pt) {
 			return ProxyQImage().PixelIndex(pt);
 		}
-		[SmokeMethod("pixel(int, int) const")]
+		[SmokeMethod("pixel$$", "(int, int) const")]
 		public uint Pixel(int x, int y) {
 			return ProxyQImage().Pixel(x,y);
 		}
-		[SmokeMethod("pixel(const QPoint&) const")]
+		[SmokeMethod("pixel#", "(const QPoint&) const")]
 		public uint Pixel(QPoint pt) {
 			return ProxyQImage().Pixel(pt);
 		}
-		[SmokeMethod("setPixel(int, int, uint)")]
+		[SmokeMethod("setPixel$$$", "(int, int, uint)")]
 		public void SetPixel(int x, int y, uint index_or_rgb) {
 			ProxyQImage().SetPixel(x,y,index_or_rgb);
 		}
-		[SmokeMethod("setPixel(const QPoint&, uint)")]
+		[SmokeMethod("setPixel##", "(const QPoint&, uint)")]
 		public void SetPixel(QPoint pt, uint index_or_rgb) {
 			ProxyQImage().SetPixel(pt,index_or_rgb);
 		}
-		[SmokeMethod("colorTable() const")]
+		[SmokeMethod("colorTable", "() const")]
 		public List<uint> ColorTable() {
 			return ProxyQImage().ColorTable();
 		}
-		[SmokeMethod("setColorTable(const QVector<QRgb>)")]
+		[SmokeMethod("setColorTable?", "(const QVector<QRgb>)")]
 		public void SetColorTable(List<uint> colors) {
 			ProxyQImage().SetColorTable(colors);
 		}
-		[SmokeMethod("fill(uint)")]
+		[SmokeMethod("fill$", "(uint)")]
 		public void Fill(uint pixel) {
 			ProxyQImage().Fill(pixel);
 		}
-		[SmokeMethod("hasAlphaChannel() const")]
+		[SmokeMethod("hasAlphaChannel", "() const")]
 		public bool HasAlphaChannel() {
 			return ProxyQImage().HasAlphaChannel();
 		}
-		[SmokeMethod("setAlphaChannel(const QImage&)")]
+		[SmokeMethod("setAlphaChannel#", "(const QImage&)")]
 		public void SetAlphaChannel(QImage alphaChannel) {
 			ProxyQImage().SetAlphaChannel(alphaChannel);
 		}
-		[SmokeMethod("alphaChannel() const")]
+		[SmokeMethod("alphaChannel", "() const")]
 		public QImage AlphaChannel() {
 			return ProxyQImage().AlphaChannel();
 		}
-		[SmokeMethod("createAlphaMask(Qt::ImageConversionFlags) const")]
+		[SmokeMethod("createAlphaMask$", "(Qt::ImageConversionFlags) const")]
 		public QImage CreateAlphaMask(int flags) {
 			return ProxyQImage().CreateAlphaMask(flags);
 		}
-		[SmokeMethod("createAlphaMask() const")]
+		[SmokeMethod("createAlphaMask", "() const")]
 		public QImage CreateAlphaMask() {
 			return ProxyQImage().CreateAlphaMask();
 		}
-		[SmokeMethod("createHeuristicMask(bool) const")]
+		[SmokeMethod("createHeuristicMask$", "(bool) const")]
 		public QImage CreateHeuristicMask(bool clipTight) {
 			return ProxyQImage().CreateHeuristicMask(clipTight);
 		}
-		[SmokeMethod("createHeuristicMask() const")]
+		[SmokeMethod("createHeuristicMask", "() const")]
 		public QImage CreateHeuristicMask() {
 			return ProxyQImage().CreateHeuristicMask();
 		}
-		[SmokeMethod("scaled(int, int, Qt::AspectRatioMode, Qt::TransformationMode) const")]
+		[SmokeMethod("scaled$$$$", "(int, int, Qt::AspectRatioMode, Qt::TransformationMode) const")]
 		public QImage Scaled(int w, int h, Qt.AspectRatioMode aspectMode, Qt.TransformationMode mode) {
 			return ProxyQImage().Scaled(w,h,aspectMode,mode);
 		}
-		[SmokeMethod("scaled(int, int, Qt::AspectRatioMode) const")]
+		[SmokeMethod("scaled$$$", "(int, int, Qt::AspectRatioMode) const")]
 		public QImage Scaled(int w, int h, Qt.AspectRatioMode aspectMode) {
 			return ProxyQImage().Scaled(w,h,aspectMode);
 		}
-		[SmokeMethod("scaled(int, int) const")]
+		[SmokeMethod("scaled$$", "(int, int) const")]
 		public QImage Scaled(int w, int h) {
 			return ProxyQImage().Scaled(w,h);
 		}
-		[SmokeMethod("scaled(const QSize&, Qt::AspectRatioMode, Qt::TransformationMode) const")]
+		[SmokeMethod("scaled###", "(const QSize&, Qt::AspectRatioMode, Qt::TransformationMode) const")]
 		public QImage Scaled(QSize s, Qt.AspectRatioMode aspectMode, Qt.TransformationMode mode) {
 			return ProxyQImage().Scaled(s,aspectMode,mode);
 		}
-		[SmokeMethod("scaled(const QSize&, Qt::AspectRatioMode) const")]
+		[SmokeMethod("scaled##", "(const QSize&, Qt::AspectRatioMode) const")]
 		public QImage Scaled(QSize s, Qt.AspectRatioMode aspectMode) {
 			return ProxyQImage().Scaled(s,aspectMode);
 		}
-		[SmokeMethod("scaled(const QSize&) const")]
+		[SmokeMethod("scaled#", "(const QSize&) const")]
 		public QImage Scaled(QSize s) {
 			return ProxyQImage().Scaled(s);
 		}
-		[SmokeMethod("scaledToWidth(int, Qt::TransformationMode) const")]
+		[SmokeMethod("scaledToWidth$$", "(int, Qt::TransformationMode) const")]
 		public QImage ScaledToWidth(int w, Qt.TransformationMode mode) {
 			return ProxyQImage().ScaledToWidth(w,mode);
 		}
-		[SmokeMethod("scaledToWidth(int) const")]
+		[SmokeMethod("scaledToWidth$", "(int) const")]
 		public QImage ScaledToWidth(int w) {
 			return ProxyQImage().ScaledToWidth(w);
 		}
-		[SmokeMethod("scaledToHeight(int, Qt::TransformationMode) const")]
+		[SmokeMethod("scaledToHeight$$", "(int, Qt::TransformationMode) const")]
 		public QImage ScaledToHeight(int h, Qt.TransformationMode mode) {
 			return ProxyQImage().ScaledToHeight(h,mode);
 		}
-		[SmokeMethod("scaledToHeight(int) const")]
+		[SmokeMethod("scaledToHeight$", "(int) const")]
 		public QImage ScaledToHeight(int h) {
 			return ProxyQImage().ScaledToHeight(h);
 		}
-		[SmokeMethod("transformed(const QMatrix&, Qt::TransformationMode) const")]
+		[SmokeMethod("transformed##", "(const QMatrix&, Qt::TransformationMode) const")]
 		public QImage Transformed(QMatrix matrix, Qt.TransformationMode mode) {
 			return ProxyQImage().Transformed(matrix,mode);
 		}
-		[SmokeMethod("transformed(const QMatrix&) const")]
+		[SmokeMethod("transformed#", "(const QMatrix&) const")]
 		public QImage Transformed(QMatrix matrix) {
 			return ProxyQImage().Transformed(matrix);
 		}
-		[SmokeMethod("mirrored(bool, bool) const")]
+		[SmokeMethod("mirrored$$", "(bool, bool) const")]
 		public QImage Mirrored(bool horizontally, bool vertically) {
 			return ProxyQImage().Mirrored(horizontally,vertically);
 		}
-		[SmokeMethod("mirrored(bool) const")]
+		[SmokeMethod("mirrored$", "(bool) const")]
 		public QImage Mirrored(bool horizontally) {
 			return ProxyQImage().Mirrored(horizontally);
 		}
-		[SmokeMethod("mirrored() const")]
+		[SmokeMethod("mirrored", "() const")]
 		public QImage Mirrored() {
 			return ProxyQImage().Mirrored();
 		}
-		[SmokeMethod("rgbSwapped() const")]
+		[SmokeMethod("rgbSwapped", "() const")]
 		public QImage RgbSwapped() {
 			return ProxyQImage().RgbSwapped();
 		}
-		[SmokeMethod("invertPixels(QImage::InvertMode)")]
+		[SmokeMethod("invertPixels$", "(QImage::InvertMode)")]
 		public void InvertPixels(QImage.InvertMode arg1) {
 			ProxyQImage().InvertPixels(arg1);
 		}
-		[SmokeMethod("invertPixels()")]
+		[SmokeMethod("invertPixels", "()")]
 		public void InvertPixels() {
 			ProxyQImage().InvertPixels();
 		}
-		[SmokeMethod("load(QIODevice*, const char*)")]
+		[SmokeMethod("load##", "(QIODevice*, const char*)")]
 		public bool Load(IQIODevice device, string format) {
 			return ProxyQImage().Load(device,format);
 		}
-		[SmokeMethod("load(const QString&, const char*)")]
+		[SmokeMethod("load$$", "(const QString&, const char*)")]
 		public bool Load(string fileName, string format) {
 			return ProxyQImage().Load(fileName,format);
 		}
-		[SmokeMethod("load(const QString&)")]
+		[SmokeMethod("load$", "(const QString&)")]
 		public bool Load(string fileName) {
 			return ProxyQImage().Load(fileName);
 		}
-		[SmokeMethod("loadFromData(const uchar*, int, const char*)")]
+		[SmokeMethod("loadFromData$$$", "(const uchar*, int, const char*)")]
 		public bool LoadFromData(char[] buf, int len, string format) {
 			return ProxyQImage().LoadFromData(buf,len,format);
 		}
-		[SmokeMethod("loadFromData(const uchar*, int)")]
+		[SmokeMethod("loadFromData$$", "(const uchar*, int)")]
 		public bool LoadFromData(char[] buf, int len) {
 			return ProxyQImage().LoadFromData(buf,len);
 		}
-		[SmokeMethod("loadFromData(const QByteArray&, const char*)")]
+		[SmokeMethod("loadFromData##", "(const QByteArray&, const char*)")]
 		public bool LoadFromData(QByteArray data, string aformat) {
 			return ProxyQImage().LoadFromData(data,aformat);
 		}
-		[SmokeMethod("loadFromData(const QByteArray&)")]
+		[SmokeMethod("loadFromData#", "(const QByteArray&)")]
 		public bool LoadFromData(QByteArray data) {
 			return ProxyQImage().LoadFromData(data);
 		}
-		[SmokeMethod("save(const QString&, const char*, int) const")]
+		[SmokeMethod("save$$$", "(const QString&, const char*, int) const")]
 		public bool Save(string fileName, string format, int quality) {
 			return ProxyQImage().Save(fileName,format,quality);
 		}
-		[SmokeMethod("save(const QString&, const char*) const")]
+		[SmokeMethod("save$$", "(const QString&, const char*) const")]
 		public bool Save(string fileName, string format) {
 			return ProxyQImage().Save(fileName,format);
 		}
-		[SmokeMethod("save(const QString&) const")]
+		[SmokeMethod("save$", "(const QString&) const")]
 		public bool Save(string fileName) {
 			return ProxyQImage().Save(fileName);
 		}
-		[SmokeMethod("save(QIODevice*, const char*, int) const")]
+		[SmokeMethod("save###", "(QIODevice*, const char*, int) const")]
 		public bool Save(IQIODevice device, string format, int quality) {
 			return ProxyQImage().Save(device,format,quality);
 		}
-		[SmokeMethod("save(QIODevice*, const char*) const")]
+		[SmokeMethod("save##", "(QIODevice*, const char*) const")]
 		public bool Save(IQIODevice device, string format) {
 			return ProxyQImage().Save(device,format);
 		}
-		[SmokeMethod("save(QIODevice*) const")]
+		[SmokeMethod("save#", "(QIODevice*) const")]
 		public bool Save(IQIODevice device) {
 			return ProxyQImage().Save(device);
 		}
-		[SmokeMethod("serialNumber() const")]
+		[SmokeMethod("serialNumber", "() const")]
 		public int SerialNumber() {
 			return ProxyQImage().SerialNumber();
 		}
-		[SmokeMethod("paintEngine() const")]
+		[SmokeMethod("paintEngine", "() const")]
 		public new QPaintEngine PaintEngine() {
 			return ProxyQImage().PaintEngine();
 		}
-		[SmokeMethod("dotsPerMeterX() const")]
+		[SmokeMethod("dotsPerMeterX", "() const")]
 		public int DotsPerMeterX() {
 			return ProxyQImage().DotsPerMeterX();
 		}
-		[SmokeMethod("dotsPerMeterY() const")]
+		[SmokeMethod("dotsPerMeterY", "() const")]
 		public int DotsPerMeterY() {
 			return ProxyQImage().DotsPerMeterY();
 		}
-		[SmokeMethod("setDotsPerMeterX(int)")]
+		[SmokeMethod("setDotsPerMeterX$", "(int)")]
 		public void SetDotsPerMeterX(int arg1) {
 			ProxyQImage().SetDotsPerMeterX(arg1);
 		}
-		[SmokeMethod("setDotsPerMeterY(int)")]
+		[SmokeMethod("setDotsPerMeterY$", "(int)")]
 		public void SetDotsPerMeterY(int arg1) {
 			ProxyQImage().SetDotsPerMeterY(arg1);
 		}
-		[SmokeMethod("offset() const")]
+		[SmokeMethod("offset", "() const")]
 		public QPoint Offset() {
 			return ProxyQImage().Offset();
 		}
-		[SmokeMethod("setOffset(const QPoint&)")]
+		[SmokeMethod("setOffset#", "(const QPoint&)")]
 		public void SetOffset(QPoint arg1) {
 			ProxyQImage().SetOffset(arg1);
 		}
-		[SmokeMethod("textKeys() const")]
+		[SmokeMethod("textKeys", "() const")]
 		public List<string> TextKeys() {
 			return ProxyQImage().TextKeys();
 		}
-		[SmokeMethod("text(const QString&) const")]
+		[SmokeMethod("text$", "(const QString&) const")]
 		public string Text(string key) {
 			return ProxyQImage().Text(key);
 		}
-		[SmokeMethod("text() const")]
+		[SmokeMethod("text", "() const")]
 		public string Text() {
 			return ProxyQImage().Text();
 		}
-		[SmokeMethod("setText(const QString&, const QString&)")]
+		[SmokeMethod("setText$$", "(const QString&, const QString&)")]
 		public void SetText(string key, string value) {
 			ProxyQImage().SetText(key,value);
 		}
-		[SmokeMethod("text(const char*, const char*) const")]
+		[SmokeMethod("text$$", "(const char*, const char*) const")]
 		public string Text(string key, string lang) {
 			return ProxyQImage().Text(key,lang);
 		}
 		// QList<QImageTextKeyLang> textList(); >>>> NOT CONVERTED
-		[SmokeMethod("textLanguages() const")]
+		[SmokeMethod("textLanguages", "() const")]
 		public List<string> TextLanguages() {
 			return ProxyQImage().TextLanguages();
 		}
 		// QString text(const QImageTextKeyLang& arg1); >>>> NOT CONVERTED
-		[SmokeMethod("setText(const char*, const char*, const QString&)")]
+		[SmokeMethod("setText$$$", "(const char*, const char*, const QString&)")]
 		public void SetText(string key, string lang, string arg3) {
 			ProxyQImage().SetText(key,lang,arg3);
 		}
-		[SmokeMethod("trueMatrix(const QMatrix&, int, int)")]
 		public static QMatrix TrueMatrix(QMatrix arg1, int w, int h) {
 			return StaticQImage().TrueMatrix(arg1,w,h);
 		}
-		[SmokeMethod("fromData(const uchar*, int, const char*)")]
 		public static QImage FromData(char[] data, int size, string format) {
 			return StaticQImage().FromData(data,size,format);
 		}
-		[SmokeMethod("fromData(const uchar*, int)")]
 		public static QImage FromData(char[] data, int size) {
 			return StaticQImage().FromData(data,size);
 		}
-		[SmokeMethod("fromData(const QByteArray&, const char*)")]
 		public static QImage FromData(QByteArray data, string format) {
 			return StaticQImage().FromData(data,format);
 		}
-		[SmokeMethod("fromData(const QByteArray&)")]
 		public static QImage FromData(QByteArray data) {
 			return StaticQImage().FromData(data);
 		}
-		[SmokeMethod("metric(QPaintDevice::PaintDeviceMetric) const")]
+		[SmokeMethod("metric$", "(QPaintDevice::PaintDeviceMetric) const")]
 		protected new virtual int Metric(IQPaintDevice metric) {
 			return ProxyQImage().Metric(metric);
 		}
@@ -516,7 +516,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQImage();
 		}
-		[SmokeMethod("~QImage()")]
+		[SmokeMethod("~QImage", "()")]
 		private void DisposeQImage() {
 			ProxyQImage().DisposeQImage();
 		}

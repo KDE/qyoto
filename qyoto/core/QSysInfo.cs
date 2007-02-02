@@ -39,7 +39,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSysInfo();
 		}
-		[SmokeMethod("QSysInfo()")]
+		[SmokeMethod("QSysInfo", "()")]
 		private void NewQSysInfo() {
 			ProxyQSysInfo().NewQSysInfo();
 		}
@@ -49,7 +49,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQSysInfo();
 		}
-		[SmokeMethod("~QSysInfo()")]
+		[SmokeMethod("~QSysInfo", "()")]
 		private void DisposeQSysInfo() {
 			ProxyQSysInfo().DisposeQSysInfo();
 		}

@@ -30,63 +30,63 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTextTableFormat();
 		}
-		[SmokeMethod("QTextTableFormat()")]
+		[SmokeMethod("QTextTableFormat", "()")]
 		private void NewQTextTableFormat() {
 			ProxyQTextTableFormat().NewQTextTableFormat();
 		}
-		[SmokeMethod("isValid() const")]
+		[SmokeMethod("isValid", "() const")]
 		public new bool IsValid() {
 			return ProxyQTextTableFormat().IsValid();
 		}
-		[SmokeMethod("columns() const")]
+		[SmokeMethod("columns", "() const")]
 		public int Columns() {
 			return ProxyQTextTableFormat().Columns();
 		}
-		[SmokeMethod("setColumns(int)")]
+		[SmokeMethod("setColumns$", "(int)")]
 		public void SetColumns(int columns) {
 			ProxyQTextTableFormat().SetColumns(columns);
 		}
-		[SmokeMethod("setColumnWidthConstraints(const QVector<QTextLength>&)")]
+		[SmokeMethod("setColumnWidthConstraints?", "(const QVector<QTextLength>&)")]
 		public void SetColumnWidthConstraints(List<QTextLength> constraints) {
 			ProxyQTextTableFormat().SetColumnWidthConstraints(constraints);
 		}
-		[SmokeMethod("columnWidthConstraints() const")]
+		[SmokeMethod("columnWidthConstraints", "() const")]
 		public List<QTextLength> ColumnWidthConstraints() {
 			return ProxyQTextTableFormat().ColumnWidthConstraints();
 		}
-		[SmokeMethod("clearColumnWidthConstraints()")]
+		[SmokeMethod("clearColumnWidthConstraints", "()")]
 		public void ClearColumnWidthConstraints() {
 			ProxyQTextTableFormat().ClearColumnWidthConstraints();
 		}
-		[SmokeMethod("cellSpacing() const")]
+		[SmokeMethod("cellSpacing", "() const")]
 		public double CellSpacing() {
 			return ProxyQTextTableFormat().CellSpacing();
 		}
-		[SmokeMethod("setCellSpacing(qreal)")]
+		[SmokeMethod("setCellSpacing$", "(qreal)")]
 		public void SetCellSpacing(double spacing) {
 			ProxyQTextTableFormat().SetCellSpacing(spacing);
 		}
-		[SmokeMethod("cellPadding() const")]
+		[SmokeMethod("cellPadding", "() const")]
 		public double CellPadding() {
 			return ProxyQTextTableFormat().CellPadding();
 		}
-		[SmokeMethod("setCellPadding(qreal)")]
+		[SmokeMethod("setCellPadding$", "(qreal)")]
 		public void SetCellPadding(double padding) {
 			ProxyQTextTableFormat().SetCellPadding(padding);
 		}
-		[SmokeMethod("setAlignment(Qt::Alignment)")]
+		[SmokeMethod("setAlignment$", "(Qt::Alignment)")]
 		public void SetAlignment(int alignment) {
 			ProxyQTextTableFormat().SetAlignment(alignment);
 		}
-		[SmokeMethod("alignment() const")]
+		[SmokeMethod("alignment", "() const")]
 		public int Alignment() {
 			return ProxyQTextTableFormat().Alignment();
 		}
-		[SmokeMethod("setHeaderRowCount(int)")]
+		[SmokeMethod("setHeaderRowCount$", "(int)")]
 		public void SetHeaderRowCount(int count) {
 			ProxyQTextTableFormat().SetHeaderRowCount(count);
 		}
-		[SmokeMethod("headerRowCount() const")]
+		[SmokeMethod("headerRowCount", "() const")]
 		public int HeaderRowCount() {
 			return ProxyQTextTableFormat().HeaderRowCount();
 		}
@@ -96,7 +96,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQTextTableFormat();
 		}
-		[SmokeMethod("~QTextTableFormat()")]
+		[SmokeMethod("~QTextTableFormat", "()")]
 		private void DisposeQTextTableFormat() {
 			ProxyQTextTableFormat().DisposeQTextTableFormat();
 		}

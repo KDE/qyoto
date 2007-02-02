@@ -48,39 +48,39 @@ namespace Qyoto {
 			CreateProxy();
 			NewQMetaMethod();
 		}
-		[SmokeMethod("QMetaMethod()")]
+		[SmokeMethod("QMetaMethod", "()")]
 		private void NewQMetaMethod() {
 			ProxyQMetaMethod().NewQMetaMethod();
 		}
-		[SmokeMethod("signature() const")]
+		[SmokeMethod("signature", "() const")]
 		public string Signature() {
 			return ProxyQMetaMethod().Signature();
 		}
-		[SmokeMethod("typeName() const")]
+		[SmokeMethod("typeName", "() const")]
 		public string TypeName() {
 			return ProxyQMetaMethod().TypeName();
 		}
-		[SmokeMethod("parameterTypes() const")]
+		[SmokeMethod("parameterTypes", "() const")]
 		public List<QByteArray> ParameterTypes() {
 			return ProxyQMetaMethod().ParameterTypes();
 		}
-		[SmokeMethod("parameterNames() const")]
+		[SmokeMethod("parameterNames", "() const")]
 		public List<QByteArray> ParameterNames() {
 			return ProxyQMetaMethod().ParameterNames();
 		}
-		[SmokeMethod("tag() const")]
+		[SmokeMethod("tag", "() const")]
 		public string Tag() {
 			return ProxyQMetaMethod().Tag();
 		}
-		[SmokeMethod("access() const")]
+		[SmokeMethod("access", "() const")]
 		public QMetaMethod.Access access() {
 			return ProxyQMetaMethod().access();
 		}
-		[SmokeMethod("methodType() const")]
+		[SmokeMethod("methodType", "() const")]
 		public QMetaMethod.MethodType methodType() {
 			return ProxyQMetaMethod().methodType();
 		}
-		[SmokeMethod("attributes() const")]
+		[SmokeMethod("attributes", "() const")]
 		public int attributes() {
 			return ProxyQMetaMethod().attributes();
 		}
@@ -90,7 +90,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQMetaMethod();
 		}
-		[SmokeMethod("~QMetaMethod()")]
+		[SmokeMethod("~QMetaMethod", "()")]
 		private void DisposeQMetaMethod() {
 			ProxyQMetaMethod().DisposeQMetaMethod();
 		}

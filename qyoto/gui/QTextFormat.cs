@@ -110,169 +110,169 @@ namespace Qyoto {
 		// QTextFormat* QTextFormat(int arg1); >>>> NOT CONVERTED
 		// QTextFormat* QTextFormat(const QTextFormat& arg1); >>>> NOT CONVERTED
 		// void merge(const QTextFormat& arg1); >>>> NOT CONVERTED
-		[SmokeMethod("isValid() const")]
+		[SmokeMethod("isValid", "() const")]
 		public bool IsValid() {
 			return ProxyQTextFormat().IsValid();
 		}
-		[SmokeMethod("type() const")]
+		[SmokeMethod("type", "() const")]
 		public int type() {
 			return ProxyQTextFormat().type();
 		}
-		[SmokeMethod("objectIndex() const")]
+		[SmokeMethod("objectIndex", "() const")]
 		public int ObjectIndex() {
 			return ProxyQTextFormat().ObjectIndex();
 		}
-		[SmokeMethod("setObjectIndex(int)")]
+		[SmokeMethod("setObjectIndex$", "(int)")]
 		public void SetObjectIndex(int arg1) {
 			ProxyQTextFormat().SetObjectIndex(arg1);
 		}
-		[SmokeMethod("property(int) const")]
+		[SmokeMethod("property$", "(int) const")]
 		public QVariant property(int propertyId) {
 			return ProxyQTextFormat().property(propertyId);
 		}
-		[SmokeMethod("setProperty(int, const QVariant&)")]
+		[SmokeMethod("setProperty$$", "(int, const QVariant&)")]
 		public void SetProperty(int propertyId, QVariant value) {
 			ProxyQTextFormat().SetProperty(propertyId,value);
 		}
-		[SmokeMethod("clearProperty(int)")]
+		[SmokeMethod("clearProperty$", "(int)")]
 		public void ClearProperty(int propertyId) {
 			ProxyQTextFormat().ClearProperty(propertyId);
 		}
-		[SmokeMethod("hasProperty(int) const")]
+		[SmokeMethod("hasProperty$", "(int) const")]
 		public bool HasProperty(int propertyId) {
 			return ProxyQTextFormat().HasProperty(propertyId);
 		}
-		[SmokeMethod("boolProperty(int) const")]
+		[SmokeMethod("boolProperty$", "(int) const")]
 		public bool BoolProperty(int propertyId) {
 			return ProxyQTextFormat().BoolProperty(propertyId);
 		}
-		[SmokeMethod("intProperty(int) const")]
+		[SmokeMethod("intProperty$", "(int) const")]
 		public int IntProperty(int propertyId) {
 			return ProxyQTextFormat().IntProperty(propertyId);
 		}
-		[SmokeMethod("doubleProperty(int) const")]
+		[SmokeMethod("doubleProperty$", "(int) const")]
 		public double DoubleProperty(int propertyId) {
 			return ProxyQTextFormat().DoubleProperty(propertyId);
 		}
-		[SmokeMethod("stringProperty(int) const")]
+		[SmokeMethod("stringProperty$", "(int) const")]
 		public string StringProperty(int propertyId) {
 			return ProxyQTextFormat().StringProperty(propertyId);
 		}
-		[SmokeMethod("colorProperty(int) const")]
+		[SmokeMethod("colorProperty$", "(int) const")]
 		public QColor ColorProperty(int propertyId) {
 			return ProxyQTextFormat().ColorProperty(propertyId);
 		}
-		[SmokeMethod("penProperty(int) const")]
+		[SmokeMethod("penProperty$", "(int) const")]
 		public QPen PenProperty(int propertyId) {
 			return ProxyQTextFormat().PenProperty(propertyId);
 		}
-		[SmokeMethod("brushProperty(int) const")]
+		[SmokeMethod("brushProperty$", "(int) const")]
 		public QBrush BrushProperty(int propertyId) {
 			return ProxyQTextFormat().BrushProperty(propertyId);
 		}
-		[SmokeMethod("lengthProperty(int) const")]
+		[SmokeMethod("lengthProperty$", "(int) const")]
 		public QTextLength LengthProperty(int propertyId) {
 			return ProxyQTextFormat().LengthProperty(propertyId);
 		}
-		[SmokeMethod("lengthVectorProperty(int) const")]
+		[SmokeMethod("lengthVectorProperty$", "(int) const")]
 		public List<QTextLength> LengthVectorProperty(int propertyId) {
 			return ProxyQTextFormat().LengthVectorProperty(propertyId);
 		}
-		[SmokeMethod("setProperty(int, const QVector<QTextLength>&)")]
+		[SmokeMethod("setProperty$$", "(int, const QVector<QTextLength>&)")]
 		public void SetProperty(int propertyId, List<QTextLength> lengths) {
 			ProxyQTextFormat().SetProperty(propertyId,lengths);
 		}
-		[SmokeMethod("properties() const")]
+		[SmokeMethod("properties", "() const")]
 		public Dictionary<int, QVariant> Properties() {
 			return ProxyQTextFormat().Properties();
 		}
-		[SmokeMethod("setObjectType(int)")]
+		[SmokeMethod("setObjectType$", "(int)")]
 		public void SetObjectType(int type) {
 			ProxyQTextFormat().SetObjectType(type);
 		}
-		[SmokeMethod("objectType() const")]
+		[SmokeMethod("objectType", "() const")]
 		public int ObjectType() {
 			return ProxyQTextFormat().ObjectType();
 		}
-		[SmokeMethod("isCharFormat() const")]
+		[SmokeMethod("isCharFormat", "() const")]
 		public bool IsCharFormat() {
 			return ProxyQTextFormat().IsCharFormat();
 		}
-		[SmokeMethod("isBlockFormat() const")]
+		[SmokeMethod("isBlockFormat", "() const")]
 		public bool IsBlockFormat() {
 			return ProxyQTextFormat().IsBlockFormat();
 		}
-		[SmokeMethod("isListFormat() const")]
+		[SmokeMethod("isListFormat", "() const")]
 		public bool IsListFormat() {
 			return ProxyQTextFormat().IsListFormat();
 		}
-		[SmokeMethod("isFrameFormat() const")]
+		[SmokeMethod("isFrameFormat", "() const")]
 		public bool IsFrameFormat() {
 			return ProxyQTextFormat().IsFrameFormat();
 		}
-		[SmokeMethod("isImageFormat() const")]
+		[SmokeMethod("isImageFormat", "() const")]
 		public bool IsImageFormat() {
 			return ProxyQTextFormat().IsImageFormat();
 		}
-		[SmokeMethod("isTableFormat() const")]
+		[SmokeMethod("isTableFormat", "() const")]
 		public bool IsTableFormat() {
 			return ProxyQTextFormat().IsTableFormat();
 		}
-		[SmokeMethod("toBlockFormat() const")]
+		[SmokeMethod("toBlockFormat", "() const")]
 		public QTextBlockFormat ToBlockFormat() {
 			return ProxyQTextFormat().ToBlockFormat();
 		}
-		[SmokeMethod("toCharFormat() const")]
+		[SmokeMethod("toCharFormat", "() const")]
 		public QTextCharFormat ToCharFormat() {
 			return ProxyQTextFormat().ToCharFormat();
 		}
-		[SmokeMethod("toListFormat() const")]
+		[SmokeMethod("toListFormat", "() const")]
 		public QTextListFormat ToListFormat() {
 			return ProxyQTextFormat().ToListFormat();
 		}
-		[SmokeMethod("toTableFormat() const")]
+		[SmokeMethod("toTableFormat", "() const")]
 		public QTextTableFormat ToTableFormat() {
 			return ProxyQTextFormat().ToTableFormat();
 		}
-		[SmokeMethod("toFrameFormat() const")]
+		[SmokeMethod("toFrameFormat", "() const")]
 		public QTextFrameFormat ToFrameFormat() {
 			return ProxyQTextFormat().ToFrameFormat();
 		}
-		[SmokeMethod("toImageFormat() const")]
+		[SmokeMethod("toImageFormat", "() const")]
 		public QTextImageFormat ToImageFormat() {
 			return ProxyQTextFormat().ToImageFormat();
 		}
 		// bool operator==(const QTextFormat& arg1); >>>> NOT CONVERTED
 		//  operator QVariant(); >>>> NOT CONVERTED
-		[SmokeMethod("setLayoutDirection(Qt::LayoutDirection)")]
+		[SmokeMethod("setLayoutDirection$", "(Qt::LayoutDirection)")]
 		public void SetLayoutDirection(Qt.LayoutDirection direction) {
 			ProxyQTextFormat().SetLayoutDirection(direction);
 		}
-		[SmokeMethod("layoutDirection() const")]
+		[SmokeMethod("layoutDirection", "() const")]
 		public Qt.LayoutDirection LayoutDirection() {
 			return ProxyQTextFormat().LayoutDirection();
 		}
-		[SmokeMethod("setBackground(const QBrush&)")]
+		[SmokeMethod("setBackground#", "(const QBrush&)")]
 		public void SetBackground(QBrush brush) {
 			ProxyQTextFormat().SetBackground(brush);
 		}
-		[SmokeMethod("background() const")]
+		[SmokeMethod("background", "() const")]
 		public QBrush Background() {
 			return ProxyQTextFormat().Background();
 		}
-		[SmokeMethod("clearBackground()")]
+		[SmokeMethod("clearBackground", "()")]
 		public void ClearBackground() {
 			ProxyQTextFormat().ClearBackground();
 		}
-		[SmokeMethod("setForeground(const QBrush&)")]
+		[SmokeMethod("setForeground#", "(const QBrush&)")]
 		public void SetForeground(QBrush brush) {
 			ProxyQTextFormat().SetForeground(brush);
 		}
-		[SmokeMethod("foreground() const")]
+		[SmokeMethod("foreground", "() const")]
 		public QBrush Foreground() {
 			return ProxyQTextFormat().Foreground();
 		}
-		[SmokeMethod("clearForeground()")]
+		[SmokeMethod("clearForeground", "()")]
 		public void ClearForeground() {
 			ProxyQTextFormat().ClearForeground();
 		}
@@ -282,7 +282,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQTextFormat();
 		}
-		[SmokeMethod("~QTextFormat()")]
+		[SmokeMethod("~QTextFormat", "()")]
 		private void DisposeQTextFormat() {
 			ProxyQTextFormat().DisposeQTextFormat();
 		}

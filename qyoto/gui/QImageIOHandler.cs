@@ -48,79 +48,79 @@ namespace Qyoto {
 			CreateProxy();
 			NewQImageIOHandler();
 		}
-		[SmokeMethod("QImageIOHandler()")]
+		[SmokeMethod("QImageIOHandler", "()")]
 		private void NewQImageIOHandler() {
 			ProxyQImageIOHandler().NewQImageIOHandler();
 		}
-		[SmokeMethod("setDevice(QIODevice*)")]
+		[SmokeMethod("setDevice#", "(QIODevice*)")]
 		public void SetDevice(IQIODevice device) {
 			ProxyQImageIOHandler().SetDevice(device);
 		}
-		[SmokeMethod("device() const")]
+		[SmokeMethod("device", "() const")]
 		public IQIODevice Device() {
 			return ProxyQImageIOHandler().Device();
 		}
-		[SmokeMethod("setFormat(const QByteArray&)")]
+		[SmokeMethod("setFormat#", "(const QByteArray&)")]
 		public void SetFormat(QByteArray format) {
 			ProxyQImageIOHandler().SetFormat(format);
 		}
-		[SmokeMethod("format() const")]
+		[SmokeMethod("format", "() const")]
 		public QByteArray Format() {
 			return ProxyQImageIOHandler().Format();
 		}
-		[SmokeMethod("name() const")]
+		[SmokeMethod("name", "() const")]
 		public virtual QByteArray Name() {
 			return ProxyQImageIOHandler().Name();
 		}
-		[SmokeMethod("canRead() const")]
+		[SmokeMethod("canRead", "() const")]
 		public virtual bool CanRead() {
 			return ProxyQImageIOHandler().CanRead();
 		}
-		[SmokeMethod("read(QImage*)")]
+		[SmokeMethod("read#", "(QImage*)")]
 		public virtual bool Read(QImage image) {
 			return ProxyQImageIOHandler().Read(image);
 		}
-		[SmokeMethod("write(const QImage&)")]
+		[SmokeMethod("write#", "(const QImage&)")]
 		public virtual bool Write(QImage image) {
 			return ProxyQImageIOHandler().Write(image);
 		}
-		[SmokeMethod("option(QImageIOHandler::ImageOption) const")]
+		[SmokeMethod("option$", "(QImageIOHandler::ImageOption) const")]
 		public virtual QVariant Option(QImageIOHandler.ImageOption option) {
 			return ProxyQImageIOHandler().Option(option);
 		}
-		[SmokeMethod("setOption(QImageIOHandler::ImageOption, const QVariant&)")]
+		[SmokeMethod("setOption$$", "(QImageIOHandler::ImageOption, const QVariant&)")]
 		public virtual void SetOption(QImageIOHandler.ImageOption option, QVariant value) {
 			ProxyQImageIOHandler().SetOption(option,value);
 		}
-		[SmokeMethod("supportsOption(QImageIOHandler::ImageOption) const")]
+		[SmokeMethod("supportsOption$", "(QImageIOHandler::ImageOption) const")]
 		public virtual bool SupportsOption(QImageIOHandler.ImageOption option) {
 			return ProxyQImageIOHandler().SupportsOption(option);
 		}
-		[SmokeMethod("jumpToNextImage()")]
+		[SmokeMethod("jumpToNextImage", "()")]
 		public virtual bool JumpToNextImage() {
 			return ProxyQImageIOHandler().JumpToNextImage();
 		}
-		[SmokeMethod("jumpToImage(int)")]
+		[SmokeMethod("jumpToImage$", "(int)")]
 		public virtual bool JumpToImage(int imageNumber) {
 			return ProxyQImageIOHandler().JumpToImage(imageNumber);
 		}
-		[SmokeMethod("loopCount() const")]
+		[SmokeMethod("loopCount", "() const")]
 		public virtual int LoopCount() {
 			return ProxyQImageIOHandler().LoopCount();
 		}
-		[SmokeMethod("imageCount() const")]
+		[SmokeMethod("imageCount", "() const")]
 		public virtual int ImageCount() {
 			return ProxyQImageIOHandler().ImageCount();
 		}
-		[SmokeMethod("nextImageDelay() const")]
+		[SmokeMethod("nextImageDelay", "() const")]
 		public virtual int NextImageDelay() {
 			return ProxyQImageIOHandler().NextImageDelay();
 		}
-		[SmokeMethod("currentImageNumber() const")]
+		[SmokeMethod("currentImageNumber", "() const")]
 		public virtual int CurrentImageNumber() {
 			return ProxyQImageIOHandler().CurrentImageNumber();
 		}
-		[SmokeMethod("currentImageRect() const")]
+		[SmokeMethod("currentImageRect", "() const")]
 		public virtual QRect CurrentImageRect() {
 			return ProxyQImageIOHandler().CurrentImageRect();
 		}
@@ -130,7 +130,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQImageIOHandler();
 		}
-		[SmokeMethod("~QImageIOHandler()")]
+		[SmokeMethod("~QImageIOHandler", "()")]
 		private void DisposeQImageIOHandler() {
 			ProxyQImageIOHandler().DisposeQImageIOHandler();
 		}

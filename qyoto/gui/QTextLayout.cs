@@ -37,7 +37,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTextLayout();
 		}
-		[SmokeMethod("QTextLayout()")]
+		[SmokeMethod("QTextLayout", "()")]
 		private void NewQTextLayout() {
 			ProxyQTextLayout().NewQTextLayout();
 		}
@@ -45,7 +45,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTextLayout(text);
 		}
-		[SmokeMethod("QTextLayout(const QString&)")]
+		[SmokeMethod("QTextLayout$", "(const QString&)")]
 		private void NewQTextLayout(string text) {
 			ProxyQTextLayout().NewQTextLayout(text);
 		}
@@ -53,7 +53,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTextLayout(text,font,paintdevice);
 		}
-		[SmokeMethod("QTextLayout(const QString&, const QFont&, QPaintDevice*)")]
+		[SmokeMethod("QTextLayout$$$", "(const QString&, const QFont&, QPaintDevice*)")]
 		private void NewQTextLayout(string text, QFont font, IQPaintDevice paintdevice) {
 			ProxyQTextLayout().NewQTextLayout(text,font,paintdevice);
 		}
@@ -61,7 +61,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTextLayout(text,font);
 		}
-		[SmokeMethod("QTextLayout(const QString&, const QFont&)")]
+		[SmokeMethod("QTextLayout$$", "(const QString&, const QFont&)")]
 		private void NewQTextLayout(string text, QFont font) {
 			ProxyQTextLayout().NewQTextLayout(text,font);
 		}
@@ -69,135 +69,135 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTextLayout(b);
 		}
-		[SmokeMethod("QTextLayout(const QTextBlock&)")]
+		[SmokeMethod("QTextLayout#", "(const QTextBlock&)")]
 		private void NewQTextLayout(QTextBlock b) {
 			ProxyQTextLayout().NewQTextLayout(b);
 		}
-		[SmokeMethod("setFont(const QFont&)")]
+		[SmokeMethod("setFont#", "(const QFont&)")]
 		public void SetFont(QFont f) {
 			ProxyQTextLayout().SetFont(f);
 		}
-		[SmokeMethod("font() const")]
+		[SmokeMethod("font", "() const")]
 		public QFont Font() {
 			return ProxyQTextLayout().Font();
 		}
-		[SmokeMethod("setText(const QString&)")]
+		[SmokeMethod("setText$", "(const QString&)")]
 		public void SetText(string arg1) {
 			ProxyQTextLayout().SetText(arg1);
 		}
-		[SmokeMethod("text() const")]
+		[SmokeMethod("text", "() const")]
 		public string Text() {
 			return ProxyQTextLayout().Text();
 		}
-		[SmokeMethod("setTextOption(const QTextOption&)")]
+		[SmokeMethod("setTextOption#", "(const QTextOption&)")]
 		public void SetTextOption(QTextOption option) {
 			ProxyQTextLayout().SetTextOption(option);
 		}
-		[SmokeMethod("textOption() const")]
+		[SmokeMethod("textOption", "() const")]
 		public QTextOption TextOption() {
 			return ProxyQTextLayout().TextOption();
 		}
-		[SmokeMethod("setPreeditArea(int, const QString&)")]
+		[SmokeMethod("setPreeditArea$$", "(int, const QString&)")]
 		public void SetPreeditArea(int position, string text) {
 			ProxyQTextLayout().SetPreeditArea(position,text);
 		}
-		[SmokeMethod("preeditAreaPosition() const")]
+		[SmokeMethod("preeditAreaPosition", "() const")]
 		public int PreeditAreaPosition() {
 			return ProxyQTextLayout().PreeditAreaPosition();
 		}
-		[SmokeMethod("preeditAreaText() const")]
+		[SmokeMethod("preeditAreaText", "() const")]
 		public string PreeditAreaText() {
 			return ProxyQTextLayout().PreeditAreaText();
 		}
 		// void setAdditionalFormats(const QList<QTextLayout::FormatRange>& arg1); >>>> NOT CONVERTED
 		// QList<QTextLayout::FormatRange> additionalFormats(); >>>> NOT CONVERTED
-		[SmokeMethod("clearAdditionalFormats()")]
+		[SmokeMethod("clearAdditionalFormats", "()")]
 		public void ClearAdditionalFormats() {
 			ProxyQTextLayout().ClearAdditionalFormats();
 		}
-		[SmokeMethod("setCacheEnabled(bool)")]
+		[SmokeMethod("setCacheEnabled$", "(bool)")]
 		public void SetCacheEnabled(bool enable) {
 			ProxyQTextLayout().SetCacheEnabled(enable);
 		}
-		[SmokeMethod("cacheEnabled() const")]
+		[SmokeMethod("cacheEnabled", "() const")]
 		public bool CacheEnabled() {
 			return ProxyQTextLayout().CacheEnabled();
 		}
-		[SmokeMethod("beginLayout()")]
+		[SmokeMethod("beginLayout", "()")]
 		public void BeginLayout() {
 			ProxyQTextLayout().BeginLayout();
 		}
-		[SmokeMethod("endLayout()")]
+		[SmokeMethod("endLayout", "()")]
 		public void EndLayout() {
 			ProxyQTextLayout().EndLayout();
 		}
-		[SmokeMethod("createLine()")]
+		[SmokeMethod("createLine", "()")]
 		public QTextLine CreateLine() {
 			return ProxyQTextLayout().CreateLine();
 		}
-		[SmokeMethod("lineCount() const")]
+		[SmokeMethod("lineCount", "() const")]
 		public int LineCount() {
 			return ProxyQTextLayout().LineCount();
 		}
-		[SmokeMethod("lineAt(int) const")]
+		[SmokeMethod("lineAt$", "(int) const")]
 		public QTextLine LineAt(int i) {
 			return ProxyQTextLayout().LineAt(i);
 		}
-		[SmokeMethod("lineForTextPosition(int) const")]
+		[SmokeMethod("lineForTextPosition$", "(int) const")]
 		public QTextLine LineForTextPosition(int pos) {
 			return ProxyQTextLayout().LineForTextPosition(pos);
 		}
-		[SmokeMethod("isValidCursorPosition(int) const")]
+		[SmokeMethod("isValidCursorPosition$", "(int) const")]
 		public bool IsValidCursorPosition(int pos) {
 			return ProxyQTextLayout().IsValidCursorPosition(pos);
 		}
-		[SmokeMethod("nextCursorPosition(int, QTextLayout::CursorMode) const")]
+		[SmokeMethod("nextCursorPosition$$", "(int, QTextLayout::CursorMode) const")]
 		public int NextCursorPosition(int oldPos, QTextLayout.CursorMode mode) {
 			return ProxyQTextLayout().NextCursorPosition(oldPos,mode);
 		}
-		[SmokeMethod("nextCursorPosition(int) const")]
+		[SmokeMethod("nextCursorPosition$", "(int) const")]
 		public int NextCursorPosition(int oldPos) {
 			return ProxyQTextLayout().NextCursorPosition(oldPos);
 		}
-		[SmokeMethod("previousCursorPosition(int, QTextLayout::CursorMode) const")]
+		[SmokeMethod("previousCursorPosition$$", "(int, QTextLayout::CursorMode) const")]
 		public int PreviousCursorPosition(int oldPos, QTextLayout.CursorMode mode) {
 			return ProxyQTextLayout().PreviousCursorPosition(oldPos,mode);
 		}
-		[SmokeMethod("previousCursorPosition(int) const")]
+		[SmokeMethod("previousCursorPosition$", "(int) const")]
 		public int PreviousCursorPosition(int oldPos) {
 			return ProxyQTextLayout().PreviousCursorPosition(oldPos);
 		}
 		// void draw(QPainter* arg1,const QPointF& arg2,const QVector<QTextLayout::FormatRange>& arg3,const QRectF& arg4); >>>> NOT CONVERTED
 		// void draw(QPainter* arg1,const QPointF& arg2,const QVector<QTextLayout::FormatRange>& arg3); >>>> NOT CONVERTED
-		[SmokeMethod("draw(QPainter*, const QPointF&) const")]
+		[SmokeMethod("draw##", "(QPainter*, const QPointF&) const")]
 		public void Draw(QPainter p, QPointF pos) {
 			ProxyQTextLayout().Draw(p,pos);
 		}
-		[SmokeMethod("drawCursor(QPainter*, const QPointF&, int) const")]
+		[SmokeMethod("drawCursor###", "(QPainter*, const QPointF&, int) const")]
 		public void DrawCursor(QPainter p, QPointF pos, int cursorPosition) {
 			ProxyQTextLayout().DrawCursor(p,pos,cursorPosition);
 		}
-		[SmokeMethod("drawCursor(QPainter*, const QPointF&, int, int) const")]
+		[SmokeMethod("drawCursor####", "(QPainter*, const QPointF&, int, int) const")]
 		public void DrawCursor(QPainter p, QPointF pos, int cursorPosition, int width) {
 			ProxyQTextLayout().DrawCursor(p,pos,cursorPosition,width);
 		}
-		[SmokeMethod("position() const")]
+		[SmokeMethod("position", "() const")]
 		public QPointF Position() {
 			return ProxyQTextLayout().Position();
 		}
-		[SmokeMethod("setPosition(const QPointF&)")]
+		[SmokeMethod("setPosition#", "(const QPointF&)")]
 		public void SetPosition(QPointF p) {
 			ProxyQTextLayout().SetPosition(p);
 		}
-		[SmokeMethod("boundingRect() const")]
+		[SmokeMethod("boundingRect", "() const")]
 		public QRectF BoundingRect() {
 			return ProxyQTextLayout().BoundingRect();
 		}
-		[SmokeMethod("minimumWidth() const")]
+		[SmokeMethod("minimumWidth", "() const")]
 		public double MinimumWidth() {
 			return ProxyQTextLayout().MinimumWidth();
 		}
-		[SmokeMethod("maximumWidth() const")]
+		[SmokeMethod("maximumWidth", "() const")]
 		public double MaximumWidth() {
 			return ProxyQTextLayout().MaximumWidth();
 		}
@@ -208,7 +208,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQTextLayout();
 		}
-		[SmokeMethod("~QTextLayout()")]
+		[SmokeMethod("~QTextLayout", "()")]
 		private void DisposeQTextLayout() {
 			ProxyQTextLayout().DisposeQTextLayout();
 		}

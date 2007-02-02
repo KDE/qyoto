@@ -36,37 +36,37 @@ namespace Qyoto {
 			CreateProxy();
 			NewQInputMethodEvent();
 		}
-		[SmokeMethod("QInputMethodEvent()")]
+		[SmokeMethod("QInputMethodEvent", "()")]
 		private void NewQInputMethodEvent() {
 			ProxyQInputMethodEvent().NewQInputMethodEvent();
 		}
 		// QInputMethodEvent* QInputMethodEvent(const QString& arg1,const QList<QInputMethodEvent::Attribute>& arg2); >>>> NOT CONVERTED
-		[SmokeMethod("setCommitString(const QString&, int, int)")]
+		[SmokeMethod("setCommitString$$$", "(const QString&, int, int)")]
 		public void SetCommitString(string commitString, int replaceFrom, int replaceLength) {
 			ProxyQInputMethodEvent().SetCommitString(commitString,replaceFrom,replaceLength);
 		}
-		[SmokeMethod("setCommitString(const QString&, int)")]
+		[SmokeMethod("setCommitString$$", "(const QString&, int)")]
 		public void SetCommitString(string commitString, int replaceFrom) {
 			ProxyQInputMethodEvent().SetCommitString(commitString,replaceFrom);
 		}
-		[SmokeMethod("setCommitString(const QString&)")]
+		[SmokeMethod("setCommitString$", "(const QString&)")]
 		public void SetCommitString(string commitString) {
 			ProxyQInputMethodEvent().SetCommitString(commitString);
 		}
 		// const QList<QInputMethodEvent::Attribute>& attributes(); >>>> NOT CONVERTED
-		[SmokeMethod("preeditString() const")]
+		[SmokeMethod("preeditString", "() const")]
 		public string PreeditString() {
 			return ProxyQInputMethodEvent().PreeditString();
 		}
-		[SmokeMethod("commitString() const")]
+		[SmokeMethod("commitString", "() const")]
 		public string CommitString() {
 			return ProxyQInputMethodEvent().CommitString();
 		}
-		[SmokeMethod("replacementStart() const")]
+		[SmokeMethod("replacementStart", "() const")]
 		public int ReplacementStart() {
 			return ProxyQInputMethodEvent().ReplacementStart();
 		}
-		[SmokeMethod("replacementLength() const")]
+		[SmokeMethod("replacementLength", "() const")]
 		public int ReplacementLength() {
 			return ProxyQInputMethodEvent().ReplacementLength();
 		}
@@ -74,7 +74,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQInputMethodEvent(other);
 		}
-		[SmokeMethod("QInputMethodEvent(const QInputMethodEvent&)")]
+		[SmokeMethod("QInputMethodEvent#", "(const QInputMethodEvent&)")]
 		private void NewQInputMethodEvent(QInputMethodEvent other) {
 			ProxyQInputMethodEvent().NewQInputMethodEvent(other);
 		}
@@ -84,7 +84,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQInputMethodEvent();
 		}
-		[SmokeMethod("~QInputMethodEvent()")]
+		[SmokeMethod("~QInputMethodEvent", "()")]
 		private void DisposeQInputMethodEvent() {
 			ProxyQInputMethodEvent().DisposeQInputMethodEvent();
 		}

@@ -9,7 +9,9 @@ namespace Qyoto {
 	public class QAbstractItemView : QAbstractScrollArea {
  		protected QAbstractItemView(Type dummy) : base((Type) null) {}
 		interface IQAbstractItemViewProxy {
+			[SmokeMethod("tr$$", "(const char*, const char*)")]
 			string Tr(string s, string c);
+			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
 		}
 
@@ -225,7 +227,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQAbstractItemView(parent);
 		}
-		[SmokeMethod("QAbstractItemView(QWidget*)")]
+		[SmokeMethod("QAbstractItemView#", "(QWidget*)")]
 		private void NewQAbstractItemView(QWidget parent) {
 			ProxyQAbstractItemView().NewQAbstractItemView(parent);
 		}
@@ -233,172 +235,170 @@ namespace Qyoto {
 			CreateProxy();
 			NewQAbstractItemView();
 		}
-		[SmokeMethod("QAbstractItemView()")]
+		[SmokeMethod("QAbstractItemView", "()")]
 		private void NewQAbstractItemView() {
 			ProxyQAbstractItemView().NewQAbstractItemView();
 		}
-		[SmokeMethod("setModel(QAbstractItemModel*)")]
+		[SmokeMethod("setModel#", "(QAbstractItemModel*)")]
 		public virtual void SetModel(QAbstractItemModel model) {
 			ProxyQAbstractItemView().SetModel(model);
 		}
-		[SmokeMethod("model() const")]
+		[SmokeMethod("model", "() const")]
 		public QAbstractItemModel Model() {
 			return ProxyQAbstractItemView().Model();
 		}
-		[SmokeMethod("setSelectionModel(QItemSelectionModel*)")]
+		[SmokeMethod("setSelectionModel#", "(QItemSelectionModel*)")]
 		public virtual void SetSelectionModel(QItemSelectionModel selectionModel) {
 			ProxyQAbstractItemView().SetSelectionModel(selectionModel);
 		}
-		[SmokeMethod("selectionModel() const")]
+		[SmokeMethod("selectionModel", "() const")]
 		public QItemSelectionModel SelectionModel() {
 			return ProxyQAbstractItemView().SelectionModel();
 		}
-		[SmokeMethod("setItemDelegate(QAbstractItemDelegate*)")]
+		[SmokeMethod("setItemDelegate#", "(QAbstractItemDelegate*)")]
 		public void SetItemDelegate(QAbstractItemDelegate arg1) {
 			ProxyQAbstractItemView().SetItemDelegate(arg1);
 		}
-		[SmokeMethod("itemDelegate() const")]
+		[SmokeMethod("itemDelegate", "() const")]
 		public QAbstractItemDelegate ItemDelegate() {
 			return ProxyQAbstractItemView().ItemDelegate();
 		}
-		[SmokeMethod("currentIndex() const")]
+		[SmokeMethod("currentIndex", "() const")]
 		public QModelIndex CurrentIndex() {
 			return ProxyQAbstractItemView().CurrentIndex();
 		}
-		[SmokeMethod("rootIndex() const")]
+		[SmokeMethod("rootIndex", "() const")]
 		public QModelIndex RootIndex() {
 			return ProxyQAbstractItemView().RootIndex();
 		}
-		[SmokeMethod("hasAutoScroll() const")]
+		[SmokeMethod("hasAutoScroll", "() const")]
 		public bool HasAutoScroll() {
 			return ProxyQAbstractItemView().HasAutoScroll();
 		}
-		[SmokeMethod("setDropIndicatorShown(bool)")]
+		[SmokeMethod("setDropIndicatorShown$", "(bool)")]
 		public void SetDropIndicatorShown(bool enable) {
 			ProxyQAbstractItemView().SetDropIndicatorShown(enable);
 		}
-		[SmokeMethod("keyboardSearch(const QString&)")]
+		[SmokeMethod("keyboardSearch$", "(const QString&)")]
 		public virtual void KeyboardSearch(string search) {
 			ProxyQAbstractItemView().KeyboardSearch(search);
 		}
-		[SmokeMethod("visualRect(const QModelIndex&) const")]
+		[SmokeMethod("visualRect#", "(const QModelIndex&) const")]
 		public virtual QRect VisualRect(QModelIndex index) {
 			return ProxyQAbstractItemView().VisualRect(index);
 		}
-		[SmokeMethod("scrollTo(const QModelIndex&, QAbstractItemView::ScrollHint)")]
+		[SmokeMethod("scrollTo##", "(const QModelIndex&, QAbstractItemView::ScrollHint)")]
 		public virtual void ScrollTo(QModelIndex index, QAbstractItemView.ScrollHint hint) {
 			ProxyQAbstractItemView().ScrollTo(index,hint);
 		}
-		[SmokeMethod("scrollTo(const QModelIndex&)")]
+		[SmokeMethod("scrollTo#", "(const QModelIndex&)")]
 		public virtual void ScrollTo(QModelIndex index) {
 			ProxyQAbstractItemView().ScrollTo(index);
 		}
-		[SmokeMethod("indexAt(const QPoint&) const")]
+		[SmokeMethod("indexAt#", "(const QPoint&) const")]
 		public virtual QModelIndex IndexAt(QPoint point) {
 			return ProxyQAbstractItemView().IndexAt(point);
 		}
-		[SmokeMethod("sizeHintForIndex(const QModelIndex&) const")]
+		[SmokeMethod("sizeHintForIndex#", "(const QModelIndex&) const")]
 		public QSize SizeHintForIndex(QModelIndex index) {
 			return ProxyQAbstractItemView().SizeHintForIndex(index);
 		}
-		[SmokeMethod("sizeHintForRow(int) const")]
+		[SmokeMethod("sizeHintForRow$", "(int) const")]
 		public virtual int SizeHintForRow(int row) {
 			return ProxyQAbstractItemView().SizeHintForRow(row);
 		}
-		[SmokeMethod("sizeHintForColumn(int) const")]
+		[SmokeMethod("sizeHintForColumn$", "(int) const")]
 		public virtual int SizeHintForColumn(int column) {
 			return ProxyQAbstractItemView().SizeHintForColumn(column);
 		}
-		[SmokeMethod("openPersistentEditor(const QModelIndex&)")]
+		[SmokeMethod("openPersistentEditor#", "(const QModelIndex&)")]
 		public void OpenPersistentEditor(QModelIndex index) {
 			ProxyQAbstractItemView().OpenPersistentEditor(index);
 		}
-		[SmokeMethod("closePersistentEditor(const QModelIndex&)")]
+		[SmokeMethod("closePersistentEditor#", "(const QModelIndex&)")]
 		public void ClosePersistentEditor(QModelIndex index) {
 			ProxyQAbstractItemView().ClosePersistentEditor(index);
 		}
-		[SmokeMethod("setIndexWidget(const QModelIndex&, QWidget*)")]
+		[SmokeMethod("setIndexWidget##", "(const QModelIndex&, QWidget*)")]
 		public void SetIndexWidget(QModelIndex index, QWidget widget) {
 			ProxyQAbstractItemView().SetIndexWidget(index,widget);
 		}
-		[SmokeMethod("indexWidget(const QModelIndex&) const")]
+		[SmokeMethod("indexWidget#", "(const QModelIndex&) const")]
 		public QWidget IndexWidget(QModelIndex index) {
 			return ProxyQAbstractItemView().IndexWidget(index);
 		}
-		[SmokeMethod("setItemDelegateForRow(int, QAbstractItemDelegate*)")]
+		[SmokeMethod("setItemDelegateForRow$$", "(int, QAbstractItemDelegate*)")]
 		public void SetItemDelegateForRow(int row, QAbstractItemDelegate arg2) {
 			ProxyQAbstractItemView().SetItemDelegateForRow(row,arg2);
 		}
-		[SmokeMethod("itemDelegateForRow(int) const")]
+		[SmokeMethod("itemDelegateForRow$", "(int) const")]
 		public QAbstractItemDelegate ItemDelegateForRow(int row) {
 			return ProxyQAbstractItemView().ItemDelegateForRow(row);
 		}
-		[SmokeMethod("setItemDelegateForColumn(int, QAbstractItemDelegate*)")]
+		[SmokeMethod("setItemDelegateForColumn$$", "(int, QAbstractItemDelegate*)")]
 		public void SetItemDelegateForColumn(int column, QAbstractItemDelegate arg2) {
 			ProxyQAbstractItemView().SetItemDelegateForColumn(column,arg2);
 		}
-		[SmokeMethod("itemDelegateForColumn(int) const")]
+		[SmokeMethod("itemDelegateForColumn$", "(int) const")]
 		public QAbstractItemDelegate ItemDelegateForColumn(int column) {
 			return ProxyQAbstractItemView().ItemDelegateForColumn(column);
 		}
-		[SmokeMethod("itemDelegate(const QModelIndex&) const")]
+		[SmokeMethod("itemDelegate#", "(const QModelIndex&) const")]
 		public QAbstractItemDelegate ItemDelegate(QModelIndex index) {
 			return ProxyQAbstractItemView().ItemDelegate(index);
 		}
-		[SmokeMethod("inputMethodQuery(Qt::InputMethodQuery) const")]
+		[SmokeMethod("inputMethodQuery$", "(Qt::InputMethodQuery) const")]
 		public new virtual QVariant InputMethodQuery(Qt.InputMethodQuery query) {
 			return ProxyQAbstractItemView().InputMethodQuery(query);
 		}
-		[Q_SLOT("void reset()")]
-		[SmokeMethod("reset()")]
+		[Q_SLOT("void ()")]
+		[SmokeMethod("reset", "()")]
 		public virtual void Reset() {
 			ProxyQAbstractItemView().Reset();
 		}
-		[Q_SLOT("void setRootIndex(const QModelIndex&)")]
-		[SmokeMethod("setRootIndex(const QModelIndex&)")]
+		[Q_SLOT("void (const QModelIndex&)")]
+		[SmokeMethod("setRootIndex#", "(const QModelIndex&)")]
 		public virtual void SetRootIndex(QModelIndex index) {
 			ProxyQAbstractItemView().SetRootIndex(index);
 		}
-		[Q_SLOT("void doItemsLayout()")]
-		[SmokeMethod("doItemsLayout()")]
+		[Q_SLOT("void ()")]
+		[SmokeMethod("doItemsLayout", "()")]
 		public virtual void DoItemsLayout() {
 			ProxyQAbstractItemView().DoItemsLayout();
 		}
-		[Q_SLOT("void selectAll()")]
-		[SmokeMethod("selectAll()")]
+		[Q_SLOT("void ()")]
+		[SmokeMethod("selectAll", "()")]
 		public virtual void SelectAll() {
 			ProxyQAbstractItemView().SelectAll();
 		}
-		[Q_SLOT("void edit(const QModelIndex&)")]
-		[SmokeMethod("edit(const QModelIndex&)")]
+		[Q_SLOT("void (const QModelIndex&)")]
+		[SmokeMethod("edit#", "(const QModelIndex&)")]
 		public void Edit(QModelIndex index) {
 			ProxyQAbstractItemView().Edit(index);
 		}
-		[Q_SLOT("void clearSelection()")]
-		[SmokeMethod("clearSelection()")]
+		[Q_SLOT("void ()")]
+		[SmokeMethod("clearSelection", "()")]
 		public void ClearSelection() {
 			ProxyQAbstractItemView().ClearSelection();
 		}
-		[Q_SLOT("void setCurrentIndex(const QModelIndex&)")]
-		[SmokeMethod("setCurrentIndex(const QModelIndex&)")]
+		[Q_SLOT("void (const QModelIndex&)")]
+		[SmokeMethod("setCurrentIndex#", "(const QModelIndex&)")]
 		public void SetCurrentIndex(QModelIndex index) {
 			ProxyQAbstractItemView().SetCurrentIndex(index);
 		}
-		[Q_SLOT("void scrollToTop()")]
-		[SmokeMethod("scrollToTop()")]
+		[Q_SLOT("void ()")]
+		[SmokeMethod("scrollToTop", "()")]
 		public void ScrollToTop() {
 			ProxyQAbstractItemView().ScrollToTop();
 		}
-		[Q_SLOT("void scrollToBottom()")]
-		[SmokeMethod("scrollToBottom()")]
+		[Q_SLOT("void ()")]
+		[SmokeMethod("scrollToBottom", "()")]
 		public void ScrollToBottom() {
 			ProxyQAbstractItemView().ScrollToBottom();
 		}
-		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQAbstractItemView().Tr(s,c);
 		}
-		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQAbstractItemView().Tr(s);
 		}
@@ -408,7 +408,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQAbstractItemView();
 		}
-		[SmokeMethod("~QAbstractItemView()")]
+		[SmokeMethod("~QAbstractItemView", "()")]
 		private void DisposeQAbstractItemView() {
 			ProxyQAbstractItemView().DisposeQAbstractItemView();
 		}
@@ -420,17 +420,17 @@ namespace Qyoto {
 	}
 
 	public interface IQAbstractItemViewSignals : IQAbstractScrollAreaSignals {
-		[Q_SIGNAL("void pressed(const QModelIndex&)")]
+		[Q_SIGNAL("void (const QModelIndex&)")]
 		void Pressed(QModelIndex index);
-		[Q_SIGNAL("void clicked(const QModelIndex&)")]
+		[Q_SIGNAL("void (const QModelIndex&)")]
 		void Clicked(QModelIndex index);
-		[Q_SIGNAL("void doubleClicked(const QModelIndex&)")]
+		[Q_SIGNAL("void (const QModelIndex&)")]
 		void DoubleClicked(QModelIndex index);
-		[Q_SIGNAL("void activated(const QModelIndex&)")]
+		[Q_SIGNAL("void (const QModelIndex&)")]
 		void Activated(QModelIndex index);
-		[Q_SIGNAL("void entered(const QModelIndex&)")]
+		[Q_SIGNAL("void (const QModelIndex&)")]
 		void Entered(QModelIndex index);
-		[Q_SIGNAL("void viewportEntered()")]
+		[Q_SIGNAL("void ()")]
 		void ViewportEntered();
 	}
 }

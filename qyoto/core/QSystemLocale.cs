@@ -52,15 +52,15 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSystemLocale();
 		}
-		[SmokeMethod("QSystemLocale()")]
+		[SmokeMethod("QSystemLocale", "()")]
 		private void NewQSystemLocale() {
 			ProxyQSystemLocale().NewQSystemLocale();
 		}
-		[SmokeMethod("query(QSystemLocale::QueryType, QVariant) const")]
+		[SmokeMethod("query$$", "(QSystemLocale::QueryType, QVariant) const")]
 		public virtual QVariant Query(QSystemLocale.QueryType type, QVariant arg2) {
 			return ProxyQSystemLocale().Query(type,arg2);
 		}
-		[SmokeMethod("fallbackLocale() const")]
+		[SmokeMethod("fallbackLocale", "() const")]
 		public virtual QLocale FallbackLocale() {
 			return ProxyQSystemLocale().FallbackLocale();
 		}
@@ -70,7 +70,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQSystemLocale();
 		}
-		[SmokeMethod("~QSystemLocale()")]
+		[SmokeMethod("~QSystemLocale", "()")]
 		private void DisposeQSystemLocale() {
 			ProxyQSystemLocale().DisposeQSystemLocale();
 		}

@@ -10,7 +10,9 @@ namespace Qyoto {
 	public class QAction : QObject, IDisposable {
  		protected QAction(Type dummy) : base((Type) null) {}
 		interface IQActionProxy {
+			[SmokeMethod("tr$$", "(const char*, const char*)")]
 			string Tr(string s, string c);
+			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
 		}
 
@@ -183,7 +185,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQAction(parent);
 		}
-		[SmokeMethod("QAction(QObject*)")]
+		[SmokeMethod("QAction#", "(QObject*)")]
 		private void NewQAction(QObject parent) {
 			ProxyQAction().NewQAction(parent);
 		}
@@ -191,7 +193,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQAction(text,parent);
 		}
-		[SmokeMethod("QAction(const QString&, QObject*)")]
+		[SmokeMethod("QAction$$", "(const QString&, QObject*)")]
 		private void NewQAction(string text, QObject parent) {
 			ProxyQAction().NewQAction(text,parent);
 		}
@@ -199,119 +201,117 @@ namespace Qyoto {
 			CreateProxy();
 			NewQAction(icon,text,parent);
 		}
-		[SmokeMethod("QAction(const QIcon&, const QString&, QObject*)")]
+		[SmokeMethod("QAction###", "(const QIcon&, const QString&, QObject*)")]
 		private void NewQAction(QIcon icon, string text, QObject parent) {
 			ProxyQAction().NewQAction(icon,text,parent);
 		}
-		[SmokeMethod("setActionGroup(QActionGroup*)")]
+		[SmokeMethod("setActionGroup#", "(QActionGroup*)")]
 		public void SetActionGroup(QActionGroup group) {
 			ProxyQAction().SetActionGroup(group);
 		}
-		[SmokeMethod("actionGroup() const")]
+		[SmokeMethod("actionGroup", "() const")]
 		public QActionGroup ActionGroup() {
 			return ProxyQAction().ActionGroup();
 		}
-		[SmokeMethod("menu() const")]
+		[SmokeMethod("menu", "() const")]
 		public QMenu Menu() {
 			return ProxyQAction().Menu();
 		}
-		[SmokeMethod("setMenu(QMenu*)")]
+		[SmokeMethod("setMenu#", "(QMenu*)")]
 		public void SetMenu(QMenu menu) {
 			ProxyQAction().SetMenu(menu);
 		}
-		[SmokeMethod("setSeparator(bool)")]
+		[SmokeMethod("setSeparator$", "(bool)")]
 		public void SetSeparator(bool b) {
 			ProxyQAction().SetSeparator(b);
 		}
-		[SmokeMethod("isSeparator() const")]
+		[SmokeMethod("isSeparator", "() const")]
 		public bool IsSeparator() {
 			return ProxyQAction().IsSeparator();
 		}
-		[SmokeMethod("setShortcuts(const QList<QKeySequence>&)")]
+		[SmokeMethod("setShortcuts?", "(const QList<QKeySequence>&)")]
 		public void SetShortcuts(List<QKeySequence> shortcuts) {
 			ProxyQAction().SetShortcuts(shortcuts);
 		}
-		[SmokeMethod("setShortcuts(QKeySequence::StandardKey)")]
+		[SmokeMethod("setShortcuts$", "(QKeySequence::StandardKey)")]
 		public void SetShortcuts(QKeySequence.StandardKey arg1) {
 			ProxyQAction().SetShortcuts(arg1);
 		}
-		[SmokeMethod("shortcuts() const")]
+		[SmokeMethod("shortcuts", "() const")]
 		public List<QKeySequence> Shortcuts() {
 			return ProxyQAction().Shortcuts();
 		}
-		[SmokeMethod("isCheckable() const")]
+		[SmokeMethod("isCheckable", "() const")]
 		public bool IsCheckable() {
 			return ProxyQAction().IsCheckable();
 		}
-		[SmokeMethod("data() const")]
+		[SmokeMethod("data", "() const")]
 		public QVariant Data() {
 			return ProxyQAction().Data();
 		}
-		[SmokeMethod("setData(const QVariant&)")]
+		[SmokeMethod("setData#", "(const QVariant&)")]
 		public void SetData(QVariant var) {
 			ProxyQAction().SetData(var);
 		}
-		[SmokeMethod("isChecked() const")]
+		[SmokeMethod("isChecked", "() const")]
 		public bool IsChecked() {
 			return ProxyQAction().IsChecked();
 		}
-		[SmokeMethod("isEnabled() const")]
+		[SmokeMethod("isEnabled", "() const")]
 		public bool IsEnabled() {
 			return ProxyQAction().IsEnabled();
 		}
-		[SmokeMethod("isVisible() const")]
+		[SmokeMethod("isVisible", "() const")]
 		public bool IsVisible() {
 			return ProxyQAction().IsVisible();
 		}
-		[SmokeMethod("activate(QAction::ActionEvent)")]
+		[SmokeMethod("activate$", "(QAction::ActionEvent)")]
 		public void Activate(QAction.ActionEvent arg1) {
 			ProxyQAction().Activate(arg1);
 		}
-		[SmokeMethod("showStatusText(QWidget*)")]
+		[SmokeMethod("showStatusText#", "(QWidget*)")]
 		public bool ShowStatusText(QWidget widget) {
 			return ProxyQAction().ShowStatusText(widget);
 		}
-		[SmokeMethod("showStatusText()")]
+		[SmokeMethod("showStatusText", "()")]
 		public bool ShowStatusText() {
 			return ProxyQAction().ShowStatusText();
 		}
-		[SmokeMethod("parentWidget() const")]
+		[SmokeMethod("parentWidget", "() const")]
 		public QWidget ParentWidget() {
 			return ProxyQAction().ParentWidget();
 		}
-		[SmokeMethod("associatedWidgets() const")]
+		[SmokeMethod("associatedWidgets", "() const")]
 		public List<QWidget> AssociatedWidgets() {
 			return ProxyQAction().AssociatedWidgets();
 		}
-		[Q_SLOT("void trigger()")]
-		[SmokeMethod("trigger()")]
+		[Q_SLOT("void ()")]
+		[SmokeMethod("trigger", "()")]
 		public void Trigger() {
 			ProxyQAction().Trigger();
 		}
-		[Q_SLOT("void hover()")]
-		[SmokeMethod("hover()")]
+		[Q_SLOT("void ()")]
+		[SmokeMethod("hover", "()")]
 		public void Hover() {
 			ProxyQAction().Hover();
 		}
-		[Q_SLOT("void toggle()")]
-		[SmokeMethod("toggle()")]
+		[Q_SLOT("void ()")]
+		[SmokeMethod("toggle", "()")]
 		public void Toggle() {
 			ProxyQAction().Toggle();
 		}
-		[Q_SLOT("void setDisabled(bool)")]
-		[SmokeMethod("setDisabled(bool)")]
+		[Q_SLOT("void (bool)")]
+		[SmokeMethod("setDisabled$", "(bool)")]
 		public void SetDisabled(bool b) {
 			ProxyQAction().SetDisabled(b);
 		}
-		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQAction().Tr(s,c);
 		}
-		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQAction().Tr(s);
 		}
-		[SmokeMethod("event(QEvent*)")]
+		[SmokeMethod("event#", "(QEvent*)")]
 		public new bool Event(QEvent arg1) {
 			return ProxyQAction().Event(arg1);
 		}
@@ -321,7 +321,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQAction();
 		}
-		[SmokeMethod("~QAction()")]
+		[SmokeMethod("~QAction", "()")]
 		private void DisposeQAction() {
 			ProxyQAction().DisposeQAction();
 		}
@@ -333,15 +333,15 @@ namespace Qyoto {
 	}
 
 	public interface IQActionSignals : IQObjectSignals {
-		[Q_SIGNAL("void changed()")]
+		[Q_SIGNAL("void ()")]
 		void Changed();
-		[Q_SIGNAL("void triggered(bool)")]
+		[Q_SIGNAL("void (bool)")]
 		void Triggered(bool arg1);
-		[Q_SIGNAL("void triggered()")]
+		[Q_SIGNAL("void ()")]
 		void Triggered();
-		[Q_SIGNAL("void hovered()")]
+		[Q_SIGNAL("void ()")]
 		void Hovered();
-		[Q_SIGNAL("void toggled(bool)")]
+		[Q_SIGNAL("void (bool)")]
 		void Toggled(bool arg1);
 	}
 }

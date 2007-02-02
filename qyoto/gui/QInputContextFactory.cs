@@ -12,10 +12,15 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QInputContextFactory(Type dummy) {}
 		interface IQInputContextFactoryProxy {
+			[SmokeMethod("keys", "()")]
 			List<string> Keys();
+			[SmokeMethod("create$$", "(const QString&, QObject*)")]
 			QInputContext Create(string key, QObject parent);
+			[SmokeMethod("languages$", "(const QString&)")]
 			List<string> Languages(string key);
+			[SmokeMethod("displayName$", "(const QString&)")]
 			string DisplayName(string key);
+			[SmokeMethod("description$", "(const QString&)")]
 			string Description(string key);
 		}
 
@@ -39,27 +44,22 @@ namespace Qyoto {
 			CreateProxy();
 			NewQInputContextFactory();
 		}
-		[SmokeMethod("QInputContextFactory()")]
+		[SmokeMethod("QInputContextFactory", "()")]
 		private void NewQInputContextFactory() {
 			ProxyQInputContextFactory().NewQInputContextFactory();
 		}
-		[SmokeMethod("keys()")]
 		public static List<string> Keys() {
 			return StaticQInputContextFactory().Keys();
 		}
-		[SmokeMethod("create(const QString&, QObject*)")]
 		public static QInputContext Create(string key, QObject parent) {
 			return StaticQInputContextFactory().Create(key,parent);
 		}
-		[SmokeMethod("languages(const QString&)")]
 		public static List<string> Languages(string key) {
 			return StaticQInputContextFactory().Languages(key);
 		}
-		[SmokeMethod("displayName(const QString&)")]
 		public static string DisplayName(string key) {
 			return StaticQInputContextFactory().DisplayName(key);
 		}
-		[SmokeMethod("description(const QString&)")]
 		public static string Description(string key) {
 			return StaticQInputContextFactory().Description(key);
 		}
@@ -69,7 +69,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQInputContextFactory();
 		}
-		[SmokeMethod("~QInputContextFactory()")]
+		[SmokeMethod("~QInputContextFactory", "()")]
 		private void DisposeQInputContextFactory() {
 			ProxyQInputContextFactory().DisposeQInputContextFactory();
 		}

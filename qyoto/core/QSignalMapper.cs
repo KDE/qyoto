@@ -9,7 +9,9 @@ namespace Qyoto {
 	public class QSignalMapper : QObject, IDisposable {
  		protected QSignalMapper(Type dummy) : base((Type) null) {}
 		interface IQSignalMapperProxy {
+			[SmokeMethod("tr$$", "(const char*, const char*)")]
 			string Tr(string s, string c);
+			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
 		}
 
@@ -34,7 +36,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSignalMapper(parent);
 		}
-		[SmokeMethod("QSignalMapper(QObject*)")]
+		[SmokeMethod("QSignalMapper#", "(QObject*)")]
 		private void NewQSignalMapper(QObject parent) {
 			ProxyQSignalMapper().NewQSignalMapper(parent);
 		}
@@ -42,61 +44,59 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSignalMapper();
 		}
-		[SmokeMethod("QSignalMapper()")]
+		[SmokeMethod("QSignalMapper", "()")]
 		private void NewQSignalMapper() {
 			ProxyQSignalMapper().NewQSignalMapper();
 		}
-		[SmokeMethod("setMapping(QObject*, int)")]
+		[SmokeMethod("setMapping##", "(QObject*, int)")]
 		public void SetMapping(QObject sender, int id) {
 			ProxyQSignalMapper().SetMapping(sender,id);
 		}
-		[SmokeMethod("setMapping(QObject*, const QString&)")]
+		[SmokeMethod("setMapping##", "(QObject*, const QString&)")]
 		public void SetMapping(QObject sender, string text) {
 			ProxyQSignalMapper().SetMapping(sender,text);
 		}
-		[SmokeMethod("setMapping(QObject*, QWidget*)")]
+		[SmokeMethod("setMapping##", "(QObject*, QWidget*)")]
 		public void SetMapping(QObject sender, QWidget widget) {
 			ProxyQSignalMapper().SetMapping(sender,widget);
 		}
-		[SmokeMethod("setMapping(QObject*, QObject*)")]
+		[SmokeMethod("setMapping##", "(QObject*, QObject*)")]
 		public void SetMapping(QObject sender, QObject arg2) {
 			ProxyQSignalMapper().SetMapping(sender,arg2);
 		}
-		[SmokeMethod("removeMappings(QObject*)")]
+		[SmokeMethod("removeMappings#", "(QObject*)")]
 		public void RemoveMappings(QObject sender) {
 			ProxyQSignalMapper().RemoveMappings(sender);
 		}
-		[SmokeMethod("mapping(int) const")]
+		[SmokeMethod("mapping$", "(int) const")]
 		public QObject Mapping(int id) {
 			return ProxyQSignalMapper().Mapping(id);
 		}
-		[SmokeMethod("mapping(const QString&) const")]
+		[SmokeMethod("mapping$", "(const QString&) const")]
 		public QObject Mapping(string text) {
 			return ProxyQSignalMapper().Mapping(text);
 		}
-		[SmokeMethod("mapping(QWidget*) const")]
+		[SmokeMethod("mapping#", "(QWidget*) const")]
 		public QObject Mapping(QWidget widget) {
 			return ProxyQSignalMapper().Mapping(widget);
 		}
-		[SmokeMethod("mapping(QObject*) const")]
+		[SmokeMethod("mapping#", "(QObject*) const")]
 		public QObject Mapping(QObject arg1) {
 			return ProxyQSignalMapper().Mapping(arg1);
 		}
-		[Q_SLOT("void map()")]
-		[SmokeMethod("map()")]
+		[Q_SLOT("void ()")]
+		[SmokeMethod("map", "()")]
 		public void Map() {
 			ProxyQSignalMapper().Map();
 		}
-		[Q_SLOT("void map(QObject*)")]
-		[SmokeMethod("map(QObject*)")]
+		[Q_SLOT("void (QObject*)")]
+		[SmokeMethod("map#", "(QObject*)")]
 		public void Map(QObject sender) {
 			ProxyQSignalMapper().Map(sender);
 		}
-		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQSignalMapper().Tr(s,c);
 		}
-		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQSignalMapper().Tr(s);
 		}
@@ -106,7 +106,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQSignalMapper();
 		}
-		[SmokeMethod("~QSignalMapper()")]
+		[SmokeMethod("~QSignalMapper", "()")]
 		private void DisposeQSignalMapper() {
 			ProxyQSignalMapper().DisposeQSignalMapper();
 		}
@@ -118,13 +118,13 @@ namespace Qyoto {
 	}
 
 	public interface IQSignalMapperSignals : IQObjectSignals {
-		[Q_SIGNAL("void mapped(int)")]
+		[Q_SIGNAL("void (int)")]
 		void Mapped(int arg1);
-		[Q_SIGNAL("void mapped(const QString&)")]
+		[Q_SIGNAL("void (const QString&)")]
 		void Mapped(string arg1);
-		[Q_SIGNAL("void mapped(QWidget*)")]
+		[Q_SIGNAL("void (QWidget*)")]
 		void Mapped(QWidget arg1);
-		[Q_SIGNAL("void mapped(QObject*)")]
+		[Q_SIGNAL("void (QObject*)")]
 		void Mapped(QObject arg1);
 	}
 }

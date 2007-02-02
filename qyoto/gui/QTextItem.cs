@@ -36,27 +36,27 @@ namespace Qyoto {
 			StrikeOut = 0x40,
 			Dummy = 0xffffffff,
 		}
-		[SmokeMethod("descent() const")]
+		[SmokeMethod("descent", "() const")]
 		public double Descent() {
 			return ProxyQTextItem().Descent();
 		}
-		[SmokeMethod("ascent() const")]
+		[SmokeMethod("ascent", "() const")]
 		public double Ascent() {
 			return ProxyQTextItem().Ascent();
 		}
-		[SmokeMethod("width() const")]
+		[SmokeMethod("width", "() const")]
 		public double Width() {
 			return ProxyQTextItem().Width();
 		}
-		[SmokeMethod("renderFlags() const")]
+		[SmokeMethod("renderFlags", "() const")]
 		public int RenderFlags() {
 			return ProxyQTextItem().RenderFlags();
 		}
-		[SmokeMethod("text() const")]
+		[SmokeMethod("text", "() const")]
 		public string Text() {
 			return ProxyQTextItem().Text();
 		}
-		[SmokeMethod("font() const")]
+		[SmokeMethod("font", "() const")]
 		public QFont Font() {
 			return ProxyQTextItem().Font();
 		}
@@ -64,7 +64,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTextItem();
 		}
-		[SmokeMethod("QTextItem()")]
+		[SmokeMethod("QTextItem", "()")]
 		private void NewQTextItem() {
 			ProxyQTextItem().NewQTextItem();
 		}
@@ -74,7 +74,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQTextItem();
 		}
-		[SmokeMethod("~QTextItem()")]
+		[SmokeMethod("~QTextItem", "()")]
 		private void DisposeQTextItem() {
 			ProxyQTextItem().DisposeQTextItem();
 		}

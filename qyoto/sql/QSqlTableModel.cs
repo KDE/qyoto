@@ -9,7 +9,9 @@ namespace Qyoto {
 	public class QSqlTableModel : QSqlQueryModel, IDisposable {
  		protected QSqlTableModel(Type dummy) : base((Type) null) {}
 		interface IQSqlTableModelProxy {
+			[SmokeMethod("tr$$", "(const char*, const char*)")]
 			string Tr(string s, string c);
+			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
 		}
 
@@ -39,7 +41,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSqlTableModel(parent,db);
 		}
-		[SmokeMethod("QSqlTableModel(QObject*, QSqlDatabase)")]
+		[SmokeMethod("QSqlTableModel##", "(QObject*, QSqlDatabase)")]
 		private void NewQSqlTableModel(QObject parent, QSqlDatabase db) {
 			ProxyQSqlTableModel().NewQSqlTableModel(parent,db);
 		}
@@ -47,7 +49,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSqlTableModel(parent);
 		}
-		[SmokeMethod("QSqlTableModel(QObject*)")]
+		[SmokeMethod("QSqlTableModel#", "(QObject*)")]
 		private void NewQSqlTableModel(QObject parent) {
 			ProxyQSqlTableModel().NewQSqlTableModel(parent);
 		}
@@ -55,195 +57,193 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSqlTableModel();
 		}
-		[SmokeMethod("QSqlTableModel()")]
+		[SmokeMethod("QSqlTableModel", "()")]
 		private void NewQSqlTableModel() {
 			ProxyQSqlTableModel().NewQSqlTableModel();
 		}
-		[SmokeMethod("select()")]
+		[SmokeMethod("select", "()")]
 		public virtual bool Select() {
 			return ProxyQSqlTableModel().Select();
 		}
-		[SmokeMethod("setTable(const QString&)")]
+		[SmokeMethod("setTable$", "(const QString&)")]
 		public virtual void SetTable(string tableName) {
 			ProxyQSqlTableModel().SetTable(tableName);
 		}
-		[SmokeMethod("tableName() const")]
+		[SmokeMethod("tableName", "() const")]
 		public string TableName() {
 			return ProxyQSqlTableModel().TableName();
 		}
-		[SmokeMethod("flags(const QModelIndex&) const")]
+		[SmokeMethod("flags#", "(const QModelIndex&) const")]
 		public new int Flags(QModelIndex index) {
 			return ProxyQSqlTableModel().Flags(index);
 		}
-		[SmokeMethod("data(const QModelIndex&, int) const")]
+		[SmokeMethod("data##", "(const QModelIndex&, int) const")]
 		public new QVariant Data(QModelIndex idx, int role) {
 			return ProxyQSqlTableModel().Data(idx,role);
 		}
-		[SmokeMethod("data(const QModelIndex&) const")]
+		[SmokeMethod("data#", "(const QModelIndex&) const")]
 		public new QVariant Data(QModelIndex idx) {
 			return ProxyQSqlTableModel().Data(idx);
 		}
-		[SmokeMethod("setData(const QModelIndex&, const QVariant&, int)")]
+		[SmokeMethod("setData###", "(const QModelIndex&, const QVariant&, int)")]
 		public new bool SetData(QModelIndex index, QVariant value, int role) {
 			return ProxyQSqlTableModel().SetData(index,value,role);
 		}
-		[SmokeMethod("setData(const QModelIndex&, const QVariant&)")]
+		[SmokeMethod("setData##", "(const QModelIndex&, const QVariant&)")]
 		public new bool SetData(QModelIndex index, QVariant value) {
 			return ProxyQSqlTableModel().SetData(index,value);
 		}
-		[SmokeMethod("headerData(int, Qt::Orientation, int) const")]
+		[SmokeMethod("headerData$$$", "(int, Qt::Orientation, int) const")]
 		public new QVariant HeaderData(int section, Qt.Orientation orientation, int role) {
 			return ProxyQSqlTableModel().HeaderData(section,orientation,role);
 		}
-		[SmokeMethod("headerData(int, Qt::Orientation) const")]
+		[SmokeMethod("headerData$$", "(int, Qt::Orientation) const")]
 		public new QVariant HeaderData(int section, Qt.Orientation orientation) {
 			return ProxyQSqlTableModel().HeaderData(section,orientation);
 		}
-		[SmokeMethod("isDirty(const QModelIndex&) const")]
+		[SmokeMethod("isDirty#", "(const QModelIndex&) const")]
 		public bool IsDirty(QModelIndex index) {
 			return ProxyQSqlTableModel().IsDirty(index);
 		}
-		[SmokeMethod("clear()")]
+		[SmokeMethod("clear", "()")]
 		public new void Clear() {
 			ProxyQSqlTableModel().Clear();
 		}
-		[SmokeMethod("setEditStrategy(QSqlTableModel::EditStrategy)")]
+		[SmokeMethod("setEditStrategy$", "(QSqlTableModel::EditStrategy)")]
 		public virtual void SetEditStrategy(QSqlTableModel.EditStrategy strategy) {
 			ProxyQSqlTableModel().SetEditStrategy(strategy);
 		}
-		[SmokeMethod("editStrategy() const")]
+		[SmokeMethod("editStrategy", "() const")]
 		public QSqlTableModel.EditStrategy editStrategy() {
 			return ProxyQSqlTableModel().editStrategy();
 		}
-		[SmokeMethod("primaryKey() const")]
+		[SmokeMethod("primaryKey", "() const")]
 		public QSqlIndex PrimaryKey() {
 			return ProxyQSqlTableModel().PrimaryKey();
 		}
-		[SmokeMethod("database() const")]
+		[SmokeMethod("database", "() const")]
 		public QSqlDatabase Database() {
 			return ProxyQSqlTableModel().Database();
 		}
-		[SmokeMethod("fieldIndex(const QString&) const")]
+		[SmokeMethod("fieldIndex$", "(const QString&) const")]
 		public int FieldIndex(string fieldName) {
 			return ProxyQSqlTableModel().FieldIndex(fieldName);
 		}
-		[SmokeMethod("sort(int, Qt::SortOrder)")]
+		[SmokeMethod("sort$$", "(int, Qt::SortOrder)")]
 		public new void Sort(int column, Qt.SortOrder order) {
 			ProxyQSqlTableModel().Sort(column,order);
 		}
-		[SmokeMethod("setSort(int, Qt::SortOrder)")]
+		[SmokeMethod("setSort$$", "(int, Qt::SortOrder)")]
 		public virtual void SetSort(int column, Qt.SortOrder order) {
 			ProxyQSqlTableModel().SetSort(column,order);
 		}
-		[SmokeMethod("filter() const")]
+		[SmokeMethod("filter", "() const")]
 		public string Filter() {
 			return ProxyQSqlTableModel().Filter();
 		}
-		[SmokeMethod("setFilter(const QString&)")]
+		[SmokeMethod("setFilter$", "(const QString&)")]
 		public virtual void SetFilter(string filter) {
 			ProxyQSqlTableModel().SetFilter(filter);
 		}
-		[SmokeMethod("rowCount(const QModelIndex&) const")]
+		[SmokeMethod("rowCount#", "(const QModelIndex&) const")]
 		public new int RowCount(QModelIndex parent) {
 			return ProxyQSqlTableModel().RowCount(parent);
 		}
-		[SmokeMethod("rowCount() const")]
+		[SmokeMethod("rowCount", "() const")]
 		public new int RowCount() {
 			return ProxyQSqlTableModel().RowCount();
 		}
-		[SmokeMethod("removeColumns(int, int, const QModelIndex&)")]
+		[SmokeMethod("removeColumns$$$", "(int, int, const QModelIndex&)")]
 		public new bool RemoveColumns(int column, int count, QModelIndex parent) {
 			return ProxyQSqlTableModel().RemoveColumns(column,count,parent);
 		}
-		[SmokeMethod("removeColumns(int, int)")]
+		[SmokeMethod("removeColumns$$", "(int, int)")]
 		public new bool RemoveColumns(int column, int count) {
 			return ProxyQSqlTableModel().RemoveColumns(column,count);
 		}
-		[SmokeMethod("removeRows(int, int, const QModelIndex&)")]
+		[SmokeMethod("removeRows$$$", "(int, int, const QModelIndex&)")]
 		public new bool RemoveRows(int row, int count, QModelIndex parent) {
 			return ProxyQSqlTableModel().RemoveRows(row,count,parent);
 		}
-		[SmokeMethod("removeRows(int, int)")]
+		[SmokeMethod("removeRows$$", "(int, int)")]
 		public new bool RemoveRows(int row, int count) {
 			return ProxyQSqlTableModel().RemoveRows(row,count);
 		}
-		[SmokeMethod("insertRows(int, int, const QModelIndex&)")]
+		[SmokeMethod("insertRows$$$", "(int, int, const QModelIndex&)")]
 		public new bool InsertRows(int row, int count, QModelIndex parent) {
 			return ProxyQSqlTableModel().InsertRows(row,count,parent);
 		}
-		[SmokeMethod("insertRows(int, int)")]
+		[SmokeMethod("insertRows$$", "(int, int)")]
 		public new bool InsertRows(int row, int count) {
 			return ProxyQSqlTableModel().InsertRows(row,count);
 		}
-		[SmokeMethod("insertRecord(int, const QSqlRecord&)")]
+		[SmokeMethod("insertRecord$$", "(int, const QSqlRecord&)")]
 		public bool InsertRecord(int row, QSqlRecord record) {
 			return ProxyQSqlTableModel().InsertRecord(row,record);
 		}
-		[SmokeMethod("setRecord(int, const QSqlRecord&)")]
+		[SmokeMethod("setRecord$$", "(int, const QSqlRecord&)")]
 		public bool SetRecord(int row, QSqlRecord record) {
 			return ProxyQSqlTableModel().SetRecord(row,record);
 		}
-		[SmokeMethod("revertRow(int)")]
+		[SmokeMethod("revertRow$", "(int)")]
 		public virtual void RevertRow(int row) {
 			ProxyQSqlTableModel().RevertRow(row);
 		}
-		[Q_SLOT("bool submit()")]
-		[SmokeMethod("submit()")]
+		[Q_SLOT("bool ()")]
+		[SmokeMethod("submit", "()")]
 		public new bool Submit() {
 			return ProxyQSqlTableModel().Submit();
 		}
-		[Q_SLOT("void revert()")]
-		[SmokeMethod("revert()")]
+		[Q_SLOT("void ()")]
+		[SmokeMethod("revert", "()")]
 		public new void Revert() {
 			ProxyQSqlTableModel().Revert();
 		}
-		[Q_SLOT("bool submitAll()")]
-		[SmokeMethod("submitAll()")]
+		[Q_SLOT("bool ()")]
+		[SmokeMethod("submitAll", "()")]
 		public bool SubmitAll() {
 			return ProxyQSqlTableModel().SubmitAll();
 		}
-		[Q_SLOT("void revertAll()")]
-		[SmokeMethod("revertAll()")]
+		[Q_SLOT("void ()")]
+		[SmokeMethod("revertAll", "()")]
 		public void RevertAll() {
 			ProxyQSqlTableModel().RevertAll();
 		}
-		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQSqlTableModel().Tr(s,c);
 		}
-		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQSqlTableModel().Tr(s);
 		}
-		[SmokeMethod("updateRowInTable(int, const QSqlRecord&)")]
+		[SmokeMethod("updateRowInTable$$", "(int, const QSqlRecord&)")]
 		protected virtual bool UpdateRowInTable(int row, QSqlRecord values) {
 			return ProxyQSqlTableModel().UpdateRowInTable(row,values);
 		}
-		[SmokeMethod("insertRowIntoTable(const QSqlRecord&)")]
+		[SmokeMethod("insertRowIntoTable#", "(const QSqlRecord&)")]
 		protected virtual bool InsertRowIntoTable(QSqlRecord values) {
 			return ProxyQSqlTableModel().InsertRowIntoTable(values);
 		}
-		[SmokeMethod("deleteRowFromTable(int)")]
+		[SmokeMethod("deleteRowFromTable$", "(int)")]
 		protected virtual bool DeleteRowFromTable(int row) {
 			return ProxyQSqlTableModel().DeleteRowFromTable(row);
 		}
-		[SmokeMethod("orderByClause() const")]
+		[SmokeMethod("orderByClause", "() const")]
 		protected virtual string OrderByClause() {
 			return ProxyQSqlTableModel().OrderByClause();
 		}
-		[SmokeMethod("selectStatement() const")]
+		[SmokeMethod("selectStatement", "() const")]
 		protected virtual string SelectStatement() {
 			return ProxyQSqlTableModel().SelectStatement();
 		}
-		[SmokeMethod("setPrimaryKey(const QSqlIndex&)")]
+		[SmokeMethod("setPrimaryKey#", "(const QSqlIndex&)")]
 		protected void SetPrimaryKey(QSqlIndex key) {
 			ProxyQSqlTableModel().SetPrimaryKey(key);
 		}
-		[SmokeMethod("setQuery(const QSqlQuery&)")]
+		[SmokeMethod("setQuery#", "(const QSqlQuery&)")]
 		protected new void SetQuery(IQSqlQuery query) {
 			ProxyQSqlTableModel().SetQuery(query);
 		}
-		[SmokeMethod("indexInQuery(const QModelIndex&) const")]
+		[SmokeMethod("indexInQuery#", "(const QModelIndex&) const")]
 		protected new QModelIndex IndexInQuery(QModelIndex item) {
 			return ProxyQSqlTableModel().IndexInQuery(item);
 		}
@@ -253,7 +253,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQSqlTableModel();
 		}
-		[SmokeMethod("~QSqlTableModel()")]
+		[SmokeMethod("~QSqlTableModel", "()")]
 		private void DisposeQSqlTableModel() {
 			ProxyQSqlTableModel().DisposeQSqlTableModel();
 		}
@@ -265,13 +265,13 @@ namespace Qyoto {
 	}
 
 	public interface IQSqlTableModelSignals : IQSqlQueryModelSignals {
-		[Q_SIGNAL("void primeInsert(int, QSqlRecord&)")]
+		[Q_SIGNAL("void (int, QSqlRecord&)")]
 		void PrimeInsert(int row, QSqlRecord record);
-		[Q_SIGNAL("void beforeInsert(QSqlRecord&)")]
+		[Q_SIGNAL("void (QSqlRecord&)")]
 		void BeforeInsert(QSqlRecord record);
-		[Q_SIGNAL("void beforeUpdate(int, QSqlRecord&)")]
+		[Q_SIGNAL("void (int, QSqlRecord&)")]
 		void BeforeUpdate(int row, QSqlRecord record);
-		[Q_SIGNAL("void beforeDelete(int)")]
+		[Q_SIGNAL("void (int)")]
 		void BeforeDelete(int row);
 	}
 }

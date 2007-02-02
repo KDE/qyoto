@@ -8,7 +8,9 @@ namespace Qyoto {
 	public class QSizeGrip : QWidget, IDisposable {
  		protected QSizeGrip(Type dummy) : base((Type) null) {}
 		interface IQSizeGripProxy {
+			[SmokeMethod("tr$$", "(const char*, const char*)")]
 			string Tr(string s, string c);
+			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
 		}
 
@@ -33,43 +35,41 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSizeGrip(parent);
 		}
-		[SmokeMethod("QSizeGrip(QWidget*)")]
+		[SmokeMethod("QSizeGrip#", "(QWidget*)")]
 		private void NewQSizeGrip(QWidget parent) {
 			ProxyQSizeGrip().NewQSizeGrip(parent);
 		}
-		[SmokeMethod("sizeHint() const")]
+		[SmokeMethod("sizeHint", "() const")]
 		public new QSize SizeHint() {
 			return ProxyQSizeGrip().SizeHint();
 		}
-		[SmokeMethod("setVisible(bool)")]
+		[SmokeMethod("setVisible$", "(bool)")]
 		public new void SetVisible(bool arg1) {
 			ProxyQSizeGrip().SetVisible(arg1);
 		}
-		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQSizeGrip().Tr(s,c);
 		}
-		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQSizeGrip().Tr(s);
 		}
-		[SmokeMethod("paintEvent(QPaintEvent*)")]
+		[SmokeMethod("paintEvent#", "(QPaintEvent*)")]
 		protected new void PaintEvent(QPaintEvent arg1) {
 			ProxyQSizeGrip().PaintEvent(arg1);
 		}
-		[SmokeMethod("mousePressEvent(QMouseEvent*)")]
+		[SmokeMethod("mousePressEvent#", "(QMouseEvent*)")]
 		protected new void MousePressEvent(QMouseEvent arg1) {
 			ProxyQSizeGrip().MousePressEvent(arg1);
 		}
-		[SmokeMethod("mouseMoveEvent(QMouseEvent*)")]
+		[SmokeMethod("mouseMoveEvent#", "(QMouseEvent*)")]
 		protected new void MouseMoveEvent(QMouseEvent arg1) {
 			ProxyQSizeGrip().MouseMoveEvent(arg1);
 		}
-		[SmokeMethod("eventFilter(QObject*, QEvent*)")]
+		[SmokeMethod("eventFilter##", "(QObject*, QEvent*)")]
 		public new bool EventFilter(QObject arg1, QEvent arg2) {
 			return ProxyQSizeGrip().EventFilter(arg1,arg2);
 		}
-		[SmokeMethod("event(QEvent*)")]
+		[SmokeMethod("event#", "(QEvent*)")]
 		public new bool Event(QEvent arg1) {
 			return ProxyQSizeGrip().Event(arg1);
 		}
@@ -79,7 +79,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQSizeGrip();
 		}
-		[SmokeMethod("~QSizeGrip()")]
+		[SmokeMethod("~QSizeGrip", "()")]
 		private void DisposeQSizeGrip() {
 			ProxyQSizeGrip().DisposeQSizeGrip();
 		}

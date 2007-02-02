@@ -28,11 +28,11 @@ namespace Qyoto {
 			return (IQAccessibleBridgeProxy) _staticInterceptor;
 		}
 
-		[SmokeMethod("setRootObject(QAccessibleInterface*)")]
+		[SmokeMethod("setRootObject#", "(QAccessibleInterface*)")]
 		public virtual void SetRootObject(QAccessibleInterface arg1) {
 			ProxyQAccessibleBridge().SetRootObject(arg1);
 		}
-		[SmokeMethod("notifyAccessibilityUpdate(int, QAccessibleInterface*, int)")]
+		[SmokeMethod("notifyAccessibilityUpdate$$$", "(int, QAccessibleInterface*, int)")]
 		public virtual void NotifyAccessibilityUpdate(int arg1, QAccessibleInterface arg2, int arg3) {
 			ProxyQAccessibleBridge().NotifyAccessibilityUpdate(arg1,arg2,arg3);
 		}
@@ -40,7 +40,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQAccessibleBridge();
 		}
-		[SmokeMethod("QAccessibleBridge()")]
+		[SmokeMethod("QAccessibleBridge", "()")]
 		private void NewQAccessibleBridge() {
 			ProxyQAccessibleBridge().NewQAccessibleBridge();
 		}
@@ -50,7 +50,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQAccessibleBridge();
 		}
-		[SmokeMethod("~QAccessibleBridge()")]
+		[SmokeMethod("~QAccessibleBridge", "()")]
 		private void DisposeQAccessibleBridge() {
 			ProxyQAccessibleBridge().DisposeQAccessibleBridge();
 		}

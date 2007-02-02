@@ -9,7 +9,9 @@ namespace Qyoto {
 	public class QInputContext : QObject {
  		protected QInputContext(Type dummy) : base((Type) null) {}
 		interface IQInputContextProxy {
+			[SmokeMethod("tr$$", "(const char*, const char*)")]
 			string Tr(string s, string c);
+			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
 		}
 
@@ -38,7 +40,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQInputContext(parent);
 		}
-		[SmokeMethod("QInputContext(QObject*)")]
+		[SmokeMethod("QInputContext#", "(QObject*)")]
 		private void NewQInputContext(QObject parent) {
 			ProxyQInputContext().NewQInputContext(parent);
 		}
@@ -46,68 +48,66 @@ namespace Qyoto {
 			CreateProxy();
 			NewQInputContext();
 		}
-		[SmokeMethod("QInputContext()")]
+		[SmokeMethod("QInputContext", "()")]
 		private void NewQInputContext() {
 			ProxyQInputContext().NewQInputContext();
 		}
-		[SmokeMethod("identifierName()")]
+		[SmokeMethod("identifierName", "()")]
 		public virtual string IdentifierName() {
 			return ProxyQInputContext().IdentifierName();
 		}
-		[SmokeMethod("language()")]
+		[SmokeMethod("language", "()")]
 		public virtual string Language() {
 			return ProxyQInputContext().Language();
 		}
-		[SmokeMethod("reset()")]
+		[SmokeMethod("reset", "()")]
 		public virtual void Reset() {
 			ProxyQInputContext().Reset();
 		}
-		[SmokeMethod("update()")]
+		[SmokeMethod("update", "()")]
 		public virtual void Update() {
 			ProxyQInputContext().Update();
 		}
-		[SmokeMethod("mouseHandler(int, QMouseEvent*)")]
+		[SmokeMethod("mouseHandler$$", "(int, QMouseEvent*)")]
 		public virtual void MouseHandler(int x, QMouseEvent arg2) {
 			ProxyQInputContext().MouseHandler(x,arg2);
 		}
-		[SmokeMethod("font() const")]
+		[SmokeMethod("font", "() const")]
 		public virtual QFont Font() {
 			return ProxyQInputContext().Font();
 		}
-		[SmokeMethod("isComposing() const")]
+		[SmokeMethod("isComposing", "() const")]
 		public virtual bool IsComposing() {
 			return ProxyQInputContext().IsComposing();
 		}
-		[SmokeMethod("focusWidget() const")]
+		[SmokeMethod("focusWidget", "() const")]
 		public QWidget FocusWidget() {
 			return ProxyQInputContext().FocusWidget();
 		}
-		[SmokeMethod("setFocusWidget(QWidget*)")]
+		[SmokeMethod("setFocusWidget#", "(QWidget*)")]
 		public virtual void SetFocusWidget(QWidget w) {
 			ProxyQInputContext().SetFocusWidget(w);
 		}
-		[SmokeMethod("widgetDestroyed(QWidget*)")]
+		[SmokeMethod("widgetDestroyed#", "(QWidget*)")]
 		public virtual void WidgetDestroyed(QWidget w) {
 			ProxyQInputContext().WidgetDestroyed(w);
 		}
-		[SmokeMethod("actions()")]
+		[SmokeMethod("actions", "()")]
 		public virtual List<QAction> Actions() {
 			return ProxyQInputContext().Actions();
 		}
-		[SmokeMethod("filterEvent(const QEvent*)")]
+		[SmokeMethod("filterEvent#", "(const QEvent*)")]
 		public virtual bool FilterEvent(QEvent arg1) {
 			return ProxyQInputContext().FilterEvent(arg1);
 		}
-		[SmokeMethod("sendEvent(const QInputMethodEvent&)")]
+		[SmokeMethod("sendEvent#", "(const QInputMethodEvent&)")]
 		public void SendEvent(QInputMethodEvent arg1) {
 			ProxyQInputContext().SendEvent(arg1);
 		}
 		// QTextFormat standardFormat(QInputContext::StandardFormat arg1); >>>> NOT CONVERTED
-		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQInputContext().Tr(s,c);
 		}
-		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQInputContext().Tr(s);
 		}
@@ -117,7 +117,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQInputContext();
 		}
-		[SmokeMethod("~QInputContext()")]
+		[SmokeMethod("~QInputContext", "()")]
 		private void DisposeQInputContext() {
 			ProxyQInputContext().DisposeQInputContext();
 		}

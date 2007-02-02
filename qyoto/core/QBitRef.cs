@@ -30,7 +30,7 @@ namespace Qyoto {
 		}
 
 		//  operator bool(); >>>> NOT CONVERTED
-		[SmokeMethod("operator!() const")]
+		[SmokeMethod("operator!", "() const")]
 		public static bool operator!(QBitRef lhs) {
 			return StaticQBitRef().op_not(lhs);
 		}
@@ -40,7 +40,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQBitRef();
 		}
-		[SmokeMethod("~QBitRef()")]
+		[SmokeMethod("~QBitRef", "()")]
 		private void DisposeQBitRef() {
 			ProxyQBitRef().DisposeQBitRef();
 		}

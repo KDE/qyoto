@@ -3,6 +3,33 @@
 	* Added qdbus/remotecontrolledcar example
 	* The enums named 'Type' clash with the C# method of the same name,
 	  instead of renaming them 'E_Type', use 'TypeOf' as it looks better.
+	* Changed the SmokeMethod Attribute to include the 'munged method name'
+	  as well as the C++ type signature of the method's arguments. This 
+	  make it easier and faster to look up the method in the Smoke library
+	  at runtime. The SmokeMethod attribute wasn't working with static
+	  methods as it needed to be on the interface where the static method
+	  was defined, and not on the method itself. For instance, an instance
+	  method is now defined like this:
+
+		[SmokeMethod("setParent#", "(QObject*)")]
+		public void SetParent(QObject arg1) {
+			ProxyQObject().SetParent(arg1);
+		}
+
+	  And a static method is defined like this:
+
+		[SmokeMethod("sessionBus", "()")]
+		QDBusConnection SessionBus();
+		...
+
+		public static QDBusConnection SessionBus() {
+			return StaticQDBusConnection().SessionBus();
+		}
+
+	  Once a methodId method selector has been looked up, it is cached inside
+	  the SmokeMethod Attribute.
+	* The generation of the 'munged method names' in the Attributes is currently
+	  wrong, and needs fixing.
 
 2007-01-02  Richard Dale  <rdale@foton.es>
 

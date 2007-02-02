@@ -9,7 +9,9 @@ namespace Qyoto {
 	public class QTextBlockGroup : QTextObject {
  		protected QTextBlockGroup(Type dummy) : base((Type) null) {}
 		interface IQTextBlockGroupProxy {
+			[SmokeMethod("tr$$", "(const char*, const char*)")]
 			string Tr(string s, string c);
+			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
 		}
 
@@ -30,28 +32,26 @@ namespace Qyoto {
 		}
 
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
-		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQTextBlockGroup().Tr(s,c);
 		}
-		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQTextBlockGroup().Tr(s);
 		}
 		// QTextBlockGroup* QTextBlockGroup(QTextDocument* arg1); >>>> NOT CONVERTED
-		[SmokeMethod("blockInserted(const QTextBlock&)")]
+		[SmokeMethod("blockInserted#", "(const QTextBlock&)")]
 		protected virtual void BlockInserted(QTextBlock block) {
 			ProxyQTextBlockGroup().BlockInserted(block);
 		}
-		[SmokeMethod("blockRemoved(const QTextBlock&)")]
+		[SmokeMethod("blockRemoved#", "(const QTextBlock&)")]
 		protected virtual void BlockRemoved(QTextBlock block) {
 			ProxyQTextBlockGroup().BlockRemoved(block);
 		}
-		[SmokeMethod("blockFormatChanged(const QTextBlock&)")]
+		[SmokeMethod("blockFormatChanged#", "(const QTextBlock&)")]
 		protected virtual void BlockFormatChanged(QTextBlock block) {
 			ProxyQTextBlockGroup().BlockFormatChanged(block);
 		}
-		[SmokeMethod("blockList() const")]
+		[SmokeMethod("blockList", "() const")]
 		protected List<QTextBlock> BlockList() {
 			return ProxyQTextBlockGroup().BlockList();
 		}

@@ -53,27 +53,27 @@ namespace Qyoto {
 			PPK_Duplex = 21,
 			PPK_CustomBase = 0xff00,
 		}
-		[SmokeMethod("setProperty(QPrintEngine::PrintEnginePropertyKey, const QVariant&)")]
+		[SmokeMethod("setProperty$$", "(QPrintEngine::PrintEnginePropertyKey, const QVariant&)")]
 		public virtual void SetProperty(QPrintEngine.PrintEnginePropertyKey key, QVariant value) {
 			ProxyQPrintEngine().SetProperty(key,value);
 		}
-		[SmokeMethod("property(QPrintEngine::PrintEnginePropertyKey) const")]
+		[SmokeMethod("property$", "(QPrintEngine::PrintEnginePropertyKey) const")]
 		public virtual QVariant Property(QPrintEngine.PrintEnginePropertyKey key) {
 			return ProxyQPrintEngine().Property(key);
 		}
-		[SmokeMethod("newPage()")]
+		[SmokeMethod("newPage", "()")]
 		public virtual bool NewPage() {
 			return ProxyQPrintEngine().NewPage();
 		}
-		[SmokeMethod("abort()")]
+		[SmokeMethod("abort", "()")]
 		public virtual bool Abort() {
 			return ProxyQPrintEngine().Abort();
 		}
-		[SmokeMethod("metric(QPaintDevice::PaintDeviceMetric) const")]
+		[SmokeMethod("metric$", "(QPaintDevice::PaintDeviceMetric) const")]
 		public virtual int Metric(IQPaintDevice arg1) {
 			return ProxyQPrintEngine().Metric(arg1);
 		}
-		[SmokeMethod("printerState() const")]
+		[SmokeMethod("printerState", "() const")]
 		public virtual QPrinter.PrinterState PrinterState() {
 			return ProxyQPrintEngine().PrinterState();
 		}
@@ -81,7 +81,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQPrintEngine();
 		}
-		[SmokeMethod("QPrintEngine()")]
+		[SmokeMethod("QPrintEngine", "()")]
 		private void NewQPrintEngine() {
 			ProxyQPrintEngine().NewQPrintEngine();
 		}
@@ -91,7 +91,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQPrintEngine();
 		}
-		[SmokeMethod("~QPrintEngine()")]
+		[SmokeMethod("~QPrintEngine", "()")]
 		private void DisposeQPrintEngine() {
 			ProxyQPrintEngine().DisposeQPrintEngine();
 		}

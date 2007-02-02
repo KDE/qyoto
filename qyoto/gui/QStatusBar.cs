@@ -9,7 +9,9 @@ namespace Qyoto {
 	public class QStatusBar : QWidget, IDisposable {
  		protected QStatusBar(Type dummy) : base((Type) null) {}
 		interface IQStatusBarProxy {
+			[SmokeMethod("tr$$", "(const char*, const char*)")]
 			string Tr(string s, string c);
+			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
 		}
 
@@ -43,7 +45,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStatusBar(parent);
 		}
-		[SmokeMethod("QStatusBar(QWidget*)")]
+		[SmokeMethod("QStatusBar#", "(QWidget*)")]
 		private void NewQStatusBar(QWidget parent) {
 			ProxyQStatusBar().NewQStatusBar(parent);
 		}
@@ -51,94 +53,92 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStatusBar();
 		}
-		[SmokeMethod("QStatusBar()")]
+		[SmokeMethod("QStatusBar", "()")]
 		private void NewQStatusBar() {
 			ProxyQStatusBar().NewQStatusBar();
 		}
-		[SmokeMethod("addWidget(QWidget*, int)")]
+		[SmokeMethod("addWidget##", "(QWidget*, int)")]
 		public void AddWidget(QWidget widget, int stretch) {
 			ProxyQStatusBar().AddWidget(widget,stretch);
 		}
-		[SmokeMethod("addWidget(QWidget*)")]
+		[SmokeMethod("addWidget#", "(QWidget*)")]
 		public void AddWidget(QWidget widget) {
 			ProxyQStatusBar().AddWidget(widget);
 		}
-		[SmokeMethod("insertWidget(int, QWidget*, int)")]
+		[SmokeMethod("insertWidget$$$", "(int, QWidget*, int)")]
 		public int InsertWidget(int index, QWidget widget, int stretch) {
 			return ProxyQStatusBar().InsertWidget(index,widget,stretch);
 		}
-		[SmokeMethod("insertWidget(int, QWidget*)")]
+		[SmokeMethod("insertWidget$$", "(int, QWidget*)")]
 		public int InsertWidget(int index, QWidget widget) {
 			return ProxyQStatusBar().InsertWidget(index,widget);
 		}
-		[SmokeMethod("addPermanentWidget(QWidget*, int)")]
+		[SmokeMethod("addPermanentWidget##", "(QWidget*, int)")]
 		public void AddPermanentWidget(QWidget widget, int stretch) {
 			ProxyQStatusBar().AddPermanentWidget(widget,stretch);
 		}
-		[SmokeMethod("addPermanentWidget(QWidget*)")]
+		[SmokeMethod("addPermanentWidget#", "(QWidget*)")]
 		public void AddPermanentWidget(QWidget widget) {
 			ProxyQStatusBar().AddPermanentWidget(widget);
 		}
-		[SmokeMethod("insertPermanentWidget(int, QWidget*, int)")]
+		[SmokeMethod("insertPermanentWidget$$$", "(int, QWidget*, int)")]
 		public int InsertPermanentWidget(int index, QWidget widget, int stretch) {
 			return ProxyQStatusBar().InsertPermanentWidget(index,widget,stretch);
 		}
-		[SmokeMethod("insertPermanentWidget(int, QWidget*)")]
+		[SmokeMethod("insertPermanentWidget$$", "(int, QWidget*)")]
 		public int InsertPermanentWidget(int index, QWidget widget) {
 			return ProxyQStatusBar().InsertPermanentWidget(index,widget);
 		}
-		[SmokeMethod("removeWidget(QWidget*)")]
+		[SmokeMethod("removeWidget#", "(QWidget*)")]
 		public void RemoveWidget(QWidget widget) {
 			ProxyQStatusBar().RemoveWidget(widget);
 		}
-		[SmokeMethod("isSizeGripEnabled() const")]
+		[SmokeMethod("isSizeGripEnabled", "() const")]
 		public bool IsSizeGripEnabled() {
 			return ProxyQStatusBar().IsSizeGripEnabled();
 		}
-		[SmokeMethod("currentMessage() const")]
+		[SmokeMethod("currentMessage", "() const")]
 		public string CurrentMessage() {
 			return ProxyQStatusBar().CurrentMessage();
 		}
-		[Q_SLOT("void showMessage(const QString&, int)")]
-		[SmokeMethod("showMessage(const QString&, int)")]
+		[Q_SLOT("void (const QString&, int)")]
+		[SmokeMethod("showMessage$$", "(const QString&, int)")]
 		public void ShowMessage(string text, int timeout) {
 			ProxyQStatusBar().ShowMessage(text,timeout);
 		}
-		[Q_SLOT("void showMessage(const QString&)")]
-		[SmokeMethod("showMessage(const QString&)")]
+		[Q_SLOT("void (const QString&)")]
+		[SmokeMethod("showMessage$", "(const QString&)")]
 		public void ShowMessage(string text) {
 			ProxyQStatusBar().ShowMessage(text);
 		}
-		[Q_SLOT("void clearMessage()")]
-		[SmokeMethod("clearMessage()")]
+		[Q_SLOT("void ()")]
+		[SmokeMethod("clearMessage", "()")]
 		public void ClearMessage() {
 			ProxyQStatusBar().ClearMessage();
 		}
-		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQStatusBar().Tr(s,c);
 		}
-		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQStatusBar().Tr(s);
 		}
-		[SmokeMethod("paintEvent(QPaintEvent*)")]
+		[SmokeMethod("paintEvent#", "(QPaintEvent*)")]
 		protected new void PaintEvent(QPaintEvent arg1) {
 			ProxyQStatusBar().PaintEvent(arg1);
 		}
-		[SmokeMethod("resizeEvent(QResizeEvent*)")]
+		[SmokeMethod("resizeEvent#", "(QResizeEvent*)")]
 		protected new void ResizeEvent(QResizeEvent arg1) {
 			ProxyQStatusBar().ResizeEvent(arg1);
 		}
-		[SmokeMethod("reformat()")]
+		[SmokeMethod("reformat", "()")]
 		protected void Reformat() {
 			ProxyQStatusBar().Reformat();
 		}
-		[SmokeMethod("hideOrShow()")]
+		[SmokeMethod("hideOrShow", "()")]
 		protected void HideOrShow() {
 			ProxyQStatusBar().HideOrShow();
 		}
-		[SmokeMethod("event(QEvent*)")]
+		[SmokeMethod("event#", "(QEvent*)")]
 		public new bool Event(QEvent arg1) {
 			return ProxyQStatusBar().Event(arg1);
 		}
@@ -148,7 +148,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQStatusBar();
 		}
-		[SmokeMethod("~QStatusBar()")]
+		[SmokeMethod("~QStatusBar", "()")]
 		private void DisposeQStatusBar() {
 			ProxyQStatusBar().DisposeQStatusBar();
 		}
@@ -160,7 +160,7 @@ namespace Qyoto {
 	}
 
 	public interface IQStatusBarSignals : IQWidgetSignals {
-		[Q_SIGNAL("void messageChanged(const QString&)")]
+		[Q_SIGNAL("void (const QString&)")]
 		void MessageChanged(string text);
 	}
 }

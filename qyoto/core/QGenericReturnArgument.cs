@@ -30,7 +30,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGenericReturnArgument(aName);
 		}
-		[SmokeMethod("QGenericReturnArgument(const char*)")]
+		[SmokeMethod("QGenericReturnArgument$", "(const char*)")]
 		private void NewQGenericReturnArgument(string aName) {
 			ProxyQGenericReturnArgument().NewQGenericReturnArgument(aName);
 		}
@@ -38,7 +38,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGenericReturnArgument();
 		}
-		[SmokeMethod("QGenericReturnArgument()")]
+		[SmokeMethod("QGenericReturnArgument", "()")]
 		private void NewQGenericReturnArgument() {
 			ProxyQGenericReturnArgument().NewQGenericReturnArgument();
 		}
@@ -48,7 +48,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQGenericReturnArgument();
 		}
-		[SmokeMethod("~QGenericReturnArgument()")]
+		[SmokeMethod("~QGenericReturnArgument", "()")]
 		private void DisposeQGenericReturnArgument() {
 			ProxyQGenericReturnArgument().DisposeQGenericReturnArgument();
 		}

@@ -26,7 +26,7 @@ namespace Qyoto {
 			return (IQAccessibleBridgeFactoryInterfaceProxy) _staticInterceptor;
 		}
 
-		[SmokeMethod("create(const QString&)")]
+		[SmokeMethod("create$", "(const QString&)")]
 		public virtual QAccessibleBridge Create(string name) {
 			return ProxyQAccessibleBridgeFactoryInterface().Create(name);
 		}
@@ -34,7 +34,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQAccessibleBridgeFactoryInterface();
 		}
-		[SmokeMethod("QAccessibleBridgeFactoryInterface()")]
+		[SmokeMethod("QAccessibleBridgeFactoryInterface", "()")]
 		private void NewQAccessibleBridgeFactoryInterface() {
 			ProxyQAccessibleBridgeFactoryInterface().NewQAccessibleBridgeFactoryInterface();
 		}
@@ -44,7 +44,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQAccessibleBridgeFactoryInterface();
 		}
-		[SmokeMethod("~QAccessibleBridgeFactoryInterface()")]
+		[SmokeMethod("~QAccessibleBridgeFactoryInterface", "()")]
 		private void DisposeQAccessibleBridgeFactoryInterface() {
 			ProxyQAccessibleBridgeFactoryInterface().DisposeQAccessibleBridgeFactoryInterface();
 		}

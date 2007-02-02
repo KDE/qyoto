@@ -10,46 +10,87 @@ namespace Qyoto {
 	public partial class QCoreApplication : QObject, IDisposable {
  		protected QCoreApplication(Type dummy) : base((Type) null) {}
 		interface IQCoreApplicationProxy {
+			[SmokeMethod("tr$$", "(const char*, const char*)")]
 			string Tr(string s, string c);
+			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
+			[SmokeMethod("arguments", "()")]
 			List<string> Arguments();
+			[SmokeMethod("setAttribute$$", "(Qt::ApplicationAttribute, bool)")]
 			void SetAttribute(Qt.ApplicationAttribute attribute, bool on);
+			[SmokeMethod("setAttribute$", "(Qt::ApplicationAttribute)")]
 			void SetAttribute(Qt.ApplicationAttribute attribute);
+			[SmokeMethod("testAttribute$", "(Qt::ApplicationAttribute)")]
 			bool TestAttribute(Qt.ApplicationAttribute attribute);
+			[SmokeMethod("setOrganizationDomain$", "(const QString&)")]
 			void SetOrganizationDomain(string orgDomain);
+			[SmokeMethod("organizationDomain", "()")]
 			string organizationDomain();
+			[SmokeMethod("setOrganizationName$", "(const QString&)")]
 			void SetOrganizationName(string orgName);
+			[SmokeMethod("organizationName", "()")]
 			string organizationName();
+			[SmokeMethod("setApplicationName$", "(const QString&)")]
 			void SetApplicationName(string application);
+			[SmokeMethod("applicationName", "()")]
 			string applicationName();
+			[SmokeMethod("instance", "()")]
 			QCoreApplication Instance();
+			[SmokeMethod("exec", "()")]
 			int Exec();
+			[SmokeMethod("processEvents$", "(QEventLoop::ProcessEventsFlags)")]
 			void ProcessEvents(uint flags);
+			[SmokeMethod("processEvents", "()")]
 			void ProcessEvents();
+			[SmokeMethod("processEvents$$", "(QEventLoop::ProcessEventsFlags, int)")]
 			void ProcessEvents(uint flags, int maxtime);
+			[SmokeMethod("exit$", "(int)")]
 			void Exit(int retcode);
+			[SmokeMethod("exit", "()")]
 			void Exit();
+			[SmokeMethod("sendEvent##", "(QObject*, QEvent*)")]
 			bool SendEvent(QObject receiver, QEvent arg2);
+			[SmokeMethod("postEvent##", "(QObject*, QEvent*)")]
 			void PostEvent(QObject receiver, QEvent arg2);
+			[SmokeMethod("sendPostedEvents##", "(QObject*, int)")]
 			void SendPostedEvents(QObject receiver, int event_type);
+			[SmokeMethod("sendPostedEvents", "()")]
 			void SendPostedEvents();
+			[SmokeMethod("removePostedEvents#", "(QObject*)")]
 			void RemovePostedEvents(QObject receiver);
+			[SmokeMethod("hasPendingEvents", "()")]
 			bool HasPendingEvents();
+			[SmokeMethod("startingUp", "()")]
 			bool StartingUp();
+			[SmokeMethod("closingDown", "()")]
 			bool ClosingDown();
+			[SmokeMethod("applicationDirPath", "()")]
 			string ApplicationDirPath();
+			[SmokeMethod("applicationFilePath", "()")]
 			string ApplicationFilePath();
+			[SmokeMethod("setLibraryPaths?", "(const QStringList&)")]
 			void SetLibraryPaths(List<string> arg1);
+			[SmokeMethod("libraryPaths", "()")]
 			List<string> LibraryPaths();
+			[SmokeMethod("addLibraryPath$", "(const QString&)")]
 			void AddLibraryPath(string arg1);
+			[SmokeMethod("removeLibraryPath$", "(const QString&)")]
 			void RemoveLibraryPath(string arg1);
+			[SmokeMethod("installTranslator#", "(QTranslator*)")]
 			void InstallTranslator(QTranslator messageFile);
+			[SmokeMethod("removeTranslator#", "(QTranslator*)")]
 			void RemoveTranslator(QTranslator messageFile);
+			[SmokeMethod("translate$$$$", "(const char*, const char*, const char*, QCoreApplication::Encoding)")]
 			string Translate(string context, string key, string comment, QCoreApplication.Encoding encoding);
+			[SmokeMethod("translate$$$", "(const char*, const char*, const char*)")]
 			string Translate(string context, string key, string comment);
+			[SmokeMethod("translate$$", "(const char*, const char*)")]
 			string Translate(string context, string key);
+			[SmokeMethod("translate$$$$$", "(const char*, const char*, const char*, QCoreApplication::Encoding, int)")]
 			string Translate(string context, string key, string comment, QCoreApplication.Encoding encoding, int n);
+			[SmokeMethod("flush", "()")]
 			void Flush();
+			[SmokeMethod("quit", "()")]
 			void Quit();
 		}
 
@@ -102,178 +143,137 @@ namespace Qyoto {
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
-		[SmokeMethod("notify(QObject*, QEvent*)")]
+		[SmokeMethod("notify##", "(QObject*, QEvent*)")]
 		public virtual bool Notify(QObject arg1, QEvent arg2) {
 			return ProxyQCoreApplication().Notify(arg1,arg2);
 		}
 		// EventFilter setEventFilter(EventFilter arg1); >>>> NOT CONVERTED
 		// bool filterEvent(void* arg1,long* arg2); >>>> NOT CONVERTED
-		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQCoreApplication().Tr(s,c);
 		}
-		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQCoreApplication().Tr(s);
 		}
-		[SmokeMethod("arguments()")]
 		public static List<string> Arguments() {
 			return StaticQCoreApplication().Arguments();
 		}
-		[SmokeMethod("setAttribute(Qt::ApplicationAttribute, bool)")]
 		public static void SetAttribute(Qt.ApplicationAttribute attribute, bool on) {
 			StaticQCoreApplication().SetAttribute(attribute,on);
 		}
-		[SmokeMethod("setAttribute(Qt::ApplicationAttribute)")]
 		public static void SetAttribute(Qt.ApplicationAttribute attribute) {
 			StaticQCoreApplication().SetAttribute(attribute);
 		}
-		[SmokeMethod("testAttribute(Qt::ApplicationAttribute)")]
 		public static bool TestAttribute(Qt.ApplicationAttribute attribute) {
 			return StaticQCoreApplication().TestAttribute(attribute);
 		}
-		[SmokeMethod("setOrganizationDomain(const QString&)")]
 		public static void SetOrganizationDomain(string orgDomain) {
 			StaticQCoreApplication().SetOrganizationDomain(orgDomain);
 		}
-		[SmokeMethod("organizationDomain()")]
 		public static string organizationDomain() {
 			return StaticQCoreApplication().organizationDomain();
 		}
-		[SmokeMethod("setOrganizationName(const QString&)")]
 		public static void SetOrganizationName(string orgName) {
 			StaticQCoreApplication().SetOrganizationName(orgName);
 		}
-		[SmokeMethod("organizationName()")]
 		public static string organizationName() {
 			return StaticQCoreApplication().organizationName();
 		}
-		[SmokeMethod("setApplicationName(const QString&)")]
 		public static void SetApplicationName(string application) {
 			StaticQCoreApplication().SetApplicationName(application);
 		}
-		[SmokeMethod("applicationName()")]
 		public static string applicationName() {
 			return StaticQCoreApplication().applicationName();
 		}
-		[SmokeMethod("instance()")]
 		public static QCoreApplication Instance() {
 			return StaticQCoreApplication().Instance();
 		}
-		[SmokeMethod("exec()")]
 		public static int Exec() {
 			return StaticQCoreApplication().Exec();
 		}
-		[SmokeMethod("processEvents(QEventLoop::ProcessEventsFlags)")]
 		public static void ProcessEvents(uint flags) {
 			StaticQCoreApplication().ProcessEvents(flags);
 		}
-		[SmokeMethod("processEvents()")]
 		public static void ProcessEvents() {
 			StaticQCoreApplication().ProcessEvents();
 		}
-		[SmokeMethod("processEvents(QEventLoop::ProcessEventsFlags, int)")]
 		public static void ProcessEvents(uint flags, int maxtime) {
 			StaticQCoreApplication().ProcessEvents(flags,maxtime);
 		}
-		[SmokeMethod("exit(int)")]
 		public static void Exit(int retcode) {
 			StaticQCoreApplication().Exit(retcode);
 		}
-		[SmokeMethod("exit()")]
 		public static void Exit() {
 			StaticQCoreApplication().Exit();
 		}
-		[SmokeMethod("sendEvent(QObject*, QEvent*)")]
 		public static bool SendEvent(QObject receiver, QEvent arg2) {
 			return StaticQCoreApplication().SendEvent(receiver,arg2);
 		}
-		[SmokeMethod("postEvent(QObject*, QEvent*)")]
 		public static void PostEvent(QObject receiver, QEvent arg2) {
 			StaticQCoreApplication().PostEvent(receiver,arg2);
 		}
-		[SmokeMethod("sendPostedEvents(QObject*, int)")]
 		public static void SendPostedEvents(QObject receiver, int event_type) {
 			StaticQCoreApplication().SendPostedEvents(receiver,event_type);
 		}
-		[SmokeMethod("sendPostedEvents()")]
 		public static void SendPostedEvents() {
 			StaticQCoreApplication().SendPostedEvents();
 		}
-		[SmokeMethod("removePostedEvents(QObject*)")]
 		public static void RemovePostedEvents(QObject receiver) {
 			StaticQCoreApplication().RemovePostedEvents(receiver);
 		}
-		[SmokeMethod("hasPendingEvents()")]
 		public static bool HasPendingEvents() {
 			return StaticQCoreApplication().HasPendingEvents();
 		}
-		[SmokeMethod("startingUp()")]
 		public static bool StartingUp() {
 			return StaticQCoreApplication().StartingUp();
 		}
-		[SmokeMethod("closingDown()")]
 		public static bool ClosingDown() {
 			return StaticQCoreApplication().ClosingDown();
 		}
-		[SmokeMethod("applicationDirPath()")]
 		public static string ApplicationDirPath() {
 			return StaticQCoreApplication().ApplicationDirPath();
 		}
-		[SmokeMethod("applicationFilePath()")]
 		public static string ApplicationFilePath() {
 			return StaticQCoreApplication().ApplicationFilePath();
 		}
-		[SmokeMethod("setLibraryPaths(const QStringList&)")]
 		public static void SetLibraryPaths(List<string> arg1) {
 			StaticQCoreApplication().SetLibraryPaths(arg1);
 		}
-		[SmokeMethod("libraryPaths()")]
 		public static List<string> LibraryPaths() {
 			return StaticQCoreApplication().LibraryPaths();
 		}
-		[SmokeMethod("addLibraryPath(const QString&)")]
 		public static void AddLibraryPath(string arg1) {
 			StaticQCoreApplication().AddLibraryPath(arg1);
 		}
-		[SmokeMethod("removeLibraryPath(const QString&)")]
 		public static void RemoveLibraryPath(string arg1) {
 			StaticQCoreApplication().RemoveLibraryPath(arg1);
 		}
-		[SmokeMethod("installTranslator(QTranslator*)")]
 		public static void InstallTranslator(QTranslator messageFile) {
 			StaticQCoreApplication().InstallTranslator(messageFile);
 		}
-		[SmokeMethod("removeTranslator(QTranslator*)")]
 		public static void RemoveTranslator(QTranslator messageFile) {
 			StaticQCoreApplication().RemoveTranslator(messageFile);
 		}
-		[SmokeMethod("translate(const char*, const char*, const char*, QCoreApplication::Encoding)")]
 		public static string Translate(string context, string key, string comment, QCoreApplication.Encoding encoding) {
 			return StaticQCoreApplication().Translate(context,key,comment,encoding);
 		}
-		[SmokeMethod("translate(const char*, const char*, const char*)")]
 		public static string Translate(string context, string key, string comment) {
 			return StaticQCoreApplication().Translate(context,key,comment);
 		}
-		[SmokeMethod("translate(const char*, const char*)")]
 		public static string Translate(string context, string key) {
 			return StaticQCoreApplication().Translate(context,key);
 		}
-		[SmokeMethod("translate(const char*, const char*, const char*, QCoreApplication::Encoding, int)")]
 		public static string Translate(string context, string key, string comment, QCoreApplication.Encoding encoding, int n) {
 			return StaticQCoreApplication().Translate(context,key,comment,encoding,n);
 		}
-		[SmokeMethod("flush()")]
 		public static void Flush() {
 			StaticQCoreApplication().Flush();
 		}
-		[Q_SLOT("void quit()")]
-		[SmokeMethod("quit()")]
+		[Q_SLOT("void ()")]
 		public static void Quit() {
 			StaticQCoreApplication().Quit();
 		}
-		[SmokeMethod("event(QEvent*)")]
+		[SmokeMethod("event#", "(QEvent*)")]
 		public new bool Event(QEvent arg1) {
 			return ProxyQCoreApplication().Event(arg1);
 		}
@@ -284,7 +284,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQCoreApplication();
 		}
-		[SmokeMethod("~QCoreApplication()")]
+		[SmokeMethod("~QCoreApplication", "()")]
 		private void DisposeQCoreApplication() {
 			ProxyQCoreApplication().DisposeQCoreApplication();
 		}
@@ -296,9 +296,9 @@ namespace Qyoto {
 	}
 
 	public interface IQCoreApplicationSignals : IQObjectSignals {
-		[Q_SIGNAL("void aboutToQuit()")]
+		[Q_SIGNAL("void ()")]
 		void AboutToQuit();
-		[Q_SIGNAL("void unixSignal(int)")]
+		[Q_SIGNAL("void (int)")]
 		void UnixSignal(int arg1);
 	}
 }

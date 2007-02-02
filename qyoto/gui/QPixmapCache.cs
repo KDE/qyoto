@@ -11,12 +11,19 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QPixmapCache(Type dummy) {}
 		interface IQPixmapCacheProxy {
+			[SmokeMethod("cacheLimit", "()")]
 			int CacheLimit();
+			[SmokeMethod("setCacheLimit$", "(int)")]
 			void SetCacheLimit(int arg1);
+			[SmokeMethod("find$", "(const QString&)")]
 			QPixmap Find(string key);
+			[SmokeMethod("find$$", "(const QString&, QPixmap&)")]
 			bool Find(string key, QPixmap arg2);
+			[SmokeMethod("insert$$", "(const QString&, const QPixmap&)")]
 			bool Insert(string key, QPixmap arg2);
+			[SmokeMethod("remove$", "(const QString&)")]
 			void Remove(string key);
+			[SmokeMethod("clear", "()")]
 			void Clear();
 		}
 
@@ -40,35 +47,28 @@ namespace Qyoto {
 			CreateProxy();
 			NewQPixmapCache();
 		}
-		[SmokeMethod("QPixmapCache()")]
+		[SmokeMethod("QPixmapCache", "()")]
 		private void NewQPixmapCache() {
 			ProxyQPixmapCache().NewQPixmapCache();
 		}
-		[SmokeMethod("cacheLimit()")]
 		public static int CacheLimit() {
 			return StaticQPixmapCache().CacheLimit();
 		}
-		[SmokeMethod("setCacheLimit(int)")]
 		public static void SetCacheLimit(int arg1) {
 			StaticQPixmapCache().SetCacheLimit(arg1);
 		}
-		[SmokeMethod("find(const QString&)")]
 		public static QPixmap Find(string key) {
 			return StaticQPixmapCache().Find(key);
 		}
-		[SmokeMethod("find(const QString&, QPixmap&)")]
 		public static bool Find(string key, QPixmap arg2) {
 			return StaticQPixmapCache().Find(key,arg2);
 		}
-		[SmokeMethod("insert(const QString&, const QPixmap&)")]
 		public static bool Insert(string key, QPixmap arg2) {
 			return StaticQPixmapCache().Insert(key,arg2);
 		}
-		[SmokeMethod("remove(const QString&)")]
 		public static void Remove(string key) {
 			StaticQPixmapCache().Remove(key);
 		}
-		[SmokeMethod("clear()")]
 		public static void Clear() {
 			StaticQPixmapCache().Clear();
 		}
@@ -78,7 +78,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQPixmapCache();
 		}
-		[SmokeMethod("~QPixmapCache()")]
+		[SmokeMethod("~QPixmapCache", "()")]
 		private void DisposeQPixmapCache() {
 			ProxyQPixmapCache().DisposeQPixmapCache();
 		}

@@ -10,7 +10,9 @@ namespace Qyoto {
 	public class QDialogButtonBox : QWidget, IDisposable {
  		protected QDialogButtonBox(Type dummy) : base((Type) null) {}
 		interface IQDialogButtonBoxProxy {
+			[SmokeMethod("tr$$", "(const char*, const char*)")]
 			string Tr(string s, string c);
+			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
 		}
 
@@ -104,7 +106,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDialogButtonBox(parent);
 		}
-		[SmokeMethod("QDialogButtonBox(QWidget*)")]
+		[SmokeMethod("QDialogButtonBox#", "(QWidget*)")]
 		private void NewQDialogButtonBox(QWidget parent) {
 			ProxyQDialogButtonBox().NewQDialogButtonBox(parent);
 		}
@@ -112,7 +114,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDialogButtonBox();
 		}
-		[SmokeMethod("QDialogButtonBox()")]
+		[SmokeMethod("QDialogButtonBox", "()")]
 		private void NewQDialogButtonBox() {
 			ProxyQDialogButtonBox().NewQDialogButtonBox();
 		}
@@ -120,7 +122,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDialogButtonBox(orientation,parent);
 		}
-		[SmokeMethod("QDialogButtonBox(Qt::Orientation, QWidget*)")]
+		[SmokeMethod("QDialogButtonBox$$", "(Qt::Orientation, QWidget*)")]
 		private void NewQDialogButtonBox(Qt.Orientation orientation, QWidget parent) {
 			ProxyQDialogButtonBox().NewQDialogButtonBox(orientation,parent);
 		}
@@ -128,7 +130,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDialogButtonBox(orientation);
 		}
-		[SmokeMethod("QDialogButtonBox(Qt::Orientation)")]
+		[SmokeMethod("QDialogButtonBox$", "(Qt::Orientation)")]
 		private void NewQDialogButtonBox(Qt.Orientation orientation) {
 			ProxyQDialogButtonBox().NewQDialogButtonBox(orientation);
 		}
@@ -136,7 +138,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDialogButtonBox(buttons,orientation,parent);
 		}
-		[SmokeMethod("QDialogButtonBox(StandardButtons, Qt::Orientation, QWidget*)")]
+		[SmokeMethod("QDialogButtonBox$$$", "(StandardButtons, Qt::Orientation, QWidget*)")]
 		private void NewQDialogButtonBox(int buttons, Qt.Orientation orientation, QWidget parent) {
 			ProxyQDialogButtonBox().NewQDialogButtonBox(buttons,orientation,parent);
 		}
@@ -144,7 +146,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDialogButtonBox(buttons,orientation);
 		}
-		[SmokeMethod("QDialogButtonBox(StandardButtons, Qt::Orientation)")]
+		[SmokeMethod("QDialogButtonBox$$", "(StandardButtons, Qt::Orientation)")]
 		private void NewQDialogButtonBox(int buttons, Qt.Orientation orientation) {
 			ProxyQDialogButtonBox().NewQDialogButtonBox(buttons,orientation);
 		}
@@ -152,59 +154,57 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDialogButtonBox(buttons);
 		}
-		[SmokeMethod("QDialogButtonBox(StandardButtons)")]
+		[SmokeMethod("QDialogButtonBox$", "(StandardButtons)")]
 		private void NewQDialogButtonBox(int buttons) {
 			ProxyQDialogButtonBox().NewQDialogButtonBox(buttons);
 		}
-		[SmokeMethod("addButton(QAbstractButton*, QDialogButtonBox::ButtonRole)")]
+		[SmokeMethod("addButton##", "(QAbstractButton*, QDialogButtonBox::ButtonRole)")]
 		public void AddButton(QAbstractButton button, QDialogButtonBox.ButtonRole role) {
 			ProxyQDialogButtonBox().AddButton(button,role);
 		}
-		[SmokeMethod("addButton(const QString&, QDialogButtonBox::ButtonRole)")]
+		[SmokeMethod("addButton$$", "(const QString&, QDialogButtonBox::ButtonRole)")]
 		public QPushButton AddButton(string text, QDialogButtonBox.ButtonRole role) {
 			return ProxyQDialogButtonBox().AddButton(text,role);
 		}
-		[SmokeMethod("addButton(QDialogButtonBox::StandardButton)")]
+		[SmokeMethod("addButton$", "(QDialogButtonBox::StandardButton)")]
 		public QPushButton AddButton(QDialogButtonBox.StandardButton button) {
 			return ProxyQDialogButtonBox().AddButton(button);
 		}
-		[SmokeMethod("removeButton(QAbstractButton*)")]
+		[SmokeMethod("removeButton#", "(QAbstractButton*)")]
 		public void RemoveButton(QAbstractButton button) {
 			ProxyQDialogButtonBox().RemoveButton(button);
 		}
-		[SmokeMethod("clear()")]
+		[SmokeMethod("clear", "()")]
 		public void Clear() {
 			ProxyQDialogButtonBox().Clear();
 		}
-		[SmokeMethod("buttons() const")]
+		[SmokeMethod("buttons", "() const")]
 		public List<QAbstractButton> Buttons() {
 			return ProxyQDialogButtonBox().Buttons();
 		}
-		[SmokeMethod("buttonRole(QAbstractButton*) const")]
+		[SmokeMethod("buttonRole#", "(QAbstractButton*) const")]
 		public QDialogButtonBox.ButtonRole buttonRole(QAbstractButton button) {
 			return ProxyQDialogButtonBox().buttonRole(button);
 		}
-		[SmokeMethod("standardButton(QAbstractButton*) const")]
+		[SmokeMethod("standardButton#", "(QAbstractButton*) const")]
 		public QDialogButtonBox.StandardButton standardButton(QAbstractButton button) {
 			return ProxyQDialogButtonBox().standardButton(button);
 		}
-		[SmokeMethod("button(QDialogButtonBox::StandardButton) const")]
+		[SmokeMethod("button$", "(QDialogButtonBox::StandardButton) const")]
 		public QPushButton Button(QDialogButtonBox.StandardButton which) {
 			return ProxyQDialogButtonBox().Button(which);
 		}
-		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQDialogButtonBox().Tr(s,c);
 		}
-		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQDialogButtonBox().Tr(s);
 		}
-		[SmokeMethod("changeEvent(QEvent*)")]
+		[SmokeMethod("changeEvent#", "(QEvent*)")]
 		protected new void ChangeEvent(QEvent arg1) {
 			ProxyQDialogButtonBox().ChangeEvent(arg1);
 		}
-		[SmokeMethod("event(QEvent*)")]
+		[SmokeMethod("event#", "(QEvent*)")]
 		public new bool Event(QEvent arg1) {
 			return ProxyQDialogButtonBox().Event(arg1);
 		}
@@ -214,7 +214,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQDialogButtonBox();
 		}
-		[SmokeMethod("~QDialogButtonBox()")]
+		[SmokeMethod("~QDialogButtonBox", "()")]
 		private void DisposeQDialogButtonBox() {
 			ProxyQDialogButtonBox().DisposeQDialogButtonBox();
 		}
@@ -226,13 +226,13 @@ namespace Qyoto {
 	}
 
 	public interface IQDialogButtonBoxSignals : IQWidgetSignals {
-		[Q_SIGNAL("void clicked(QAbstractButton*)")]
+		[Q_SIGNAL("void (QAbstractButton*)")]
 		void Clicked(QAbstractButton button);
-		[Q_SIGNAL("void accepted()")]
+		[Q_SIGNAL("void ()")]
 		void Accepted();
-		[Q_SIGNAL("void helpRequested()")]
+		[Q_SIGNAL("void ()")]
 		void HelpRequested();
-		[Q_SIGNAL("void rejected()")]
+		[Q_SIGNAL("void ()")]
 		void Rejected();
 	}
 }

@@ -8,7 +8,9 @@ namespace Qyoto {
 	public class QDial : QAbstractSlider, IDisposable {
  		protected QDial(Type dummy) : base((Type) null) {}
 		interface IQDialProxy {
+			[SmokeMethod("tr$$", "(const char*, const char*)")]
 			string Tr(string s, string c);
+			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
 		}
 
@@ -66,7 +68,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDial(parent);
 		}
-		[SmokeMethod("QDial(QWidget*)")]
+		[SmokeMethod("QDial#", "(QWidget*)")]
 		private void NewQDial(QWidget parent) {
 			ProxyQDial().NewQDial(parent);
 		}
@@ -74,51 +76,49 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDial();
 		}
-		[SmokeMethod("QDial()")]
+		[SmokeMethod("QDial", "()")]
 		private void NewQDial() {
 			ProxyQDial().NewQDial();
 		}
-		[SmokeMethod("sizeHint() const")]
+		[SmokeMethod("sizeHint", "() const")]
 		public new QSize SizeHint() {
 			return ProxyQDial().SizeHint();
 		}
-		[SmokeMethod("minimumSizeHint() const")]
+		[SmokeMethod("minimumSizeHint", "() const")]
 		public new QSize MinimumSizeHint() {
 			return ProxyQDial().MinimumSizeHint();
 		}
-		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQDial().Tr(s,c);
 		}
-		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQDial().Tr(s);
 		}
-		[SmokeMethod("event(QEvent*)")]
+		[SmokeMethod("event#", "(QEvent*)")]
 		public new bool Event(QEvent e) {
 			return ProxyQDial().Event(e);
 		}
-		[SmokeMethod("resizeEvent(QResizeEvent*)")]
+		[SmokeMethod("resizeEvent#", "(QResizeEvent*)")]
 		protected new void ResizeEvent(QResizeEvent re) {
 			ProxyQDial().ResizeEvent(re);
 		}
-		[SmokeMethod("paintEvent(QPaintEvent*)")]
+		[SmokeMethod("paintEvent#", "(QPaintEvent*)")]
 		protected new void PaintEvent(QPaintEvent pe) {
 			ProxyQDial().PaintEvent(pe);
 		}
-		[SmokeMethod("mousePressEvent(QMouseEvent*)")]
+		[SmokeMethod("mousePressEvent#", "(QMouseEvent*)")]
 		protected new void MousePressEvent(QMouseEvent me) {
 			ProxyQDial().MousePressEvent(me);
 		}
-		[SmokeMethod("mouseReleaseEvent(QMouseEvent*)")]
+		[SmokeMethod("mouseReleaseEvent#", "(QMouseEvent*)")]
 		protected new void MouseReleaseEvent(QMouseEvent me) {
 			ProxyQDial().MouseReleaseEvent(me);
 		}
-		[SmokeMethod("mouseMoveEvent(QMouseEvent*)")]
+		[SmokeMethod("mouseMoveEvent#", "(QMouseEvent*)")]
 		protected new void MouseMoveEvent(QMouseEvent me) {
 			ProxyQDial().MouseMoveEvent(me);
 		}
-		[SmokeMethod("sliderChange(QAbstractSlider::SliderChange)")]
+		[SmokeMethod("sliderChange$", "(QAbstractSlider::SliderChange)")]
 		protected new void SliderChange(QAbstractSlider.SliderChange change) {
 			ProxyQDial().SliderChange(change);
 		}
@@ -128,7 +128,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQDial();
 		}
-		[SmokeMethod("~QDial()")]
+		[SmokeMethod("~QDial", "()")]
 		private void DisposeQDial() {
 			ProxyQDial().DisposeQDial();
 		}

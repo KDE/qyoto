@@ -12,6 +12,7 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QAbstractFileEngine(Type dummy) {}
 		interface IQAbstractFileEngineProxy {
+			[SmokeMethod("create$", "(const QString&)")]
 			QAbstractFileEngine Create(string fileName);
 		}
 
@@ -77,147 +78,146 @@ namespace Qyoto {
 		}
 		public enum Extension {
 		}
-		[SmokeMethod("open(QIODevice::OpenMode)")]
+		[SmokeMethod("open$", "(QIODevice::OpenMode)")]
 		public virtual bool Open(int openMode) {
 			return ProxyQAbstractFileEngine().Open(openMode);
 		}
-		[SmokeMethod("close()")]
+		[SmokeMethod("close", "()")]
 		public virtual bool Close() {
 			return ProxyQAbstractFileEngine().Close();
 		}
-		[SmokeMethod("flush()")]
+		[SmokeMethod("flush", "()")]
 		public virtual bool Flush() {
 			return ProxyQAbstractFileEngine().Flush();
 		}
-		[SmokeMethod("size() const")]
+		[SmokeMethod("size", "() const")]
 		public virtual long Size() {
 			return ProxyQAbstractFileEngine().Size();
 		}
-		[SmokeMethod("pos() const")]
+		[SmokeMethod("pos", "() const")]
 		public virtual long Pos() {
 			return ProxyQAbstractFileEngine().Pos();
 		}
-		[SmokeMethod("seek(qint64)")]
+		[SmokeMethod("seek$", "(qint64)")]
 		public virtual bool Seek(long pos) {
 			return ProxyQAbstractFileEngine().Seek(pos);
 		}
-		[SmokeMethod("isSequential() const")]
+		[SmokeMethod("isSequential", "() const")]
 		public virtual bool IsSequential() {
 			return ProxyQAbstractFileEngine().IsSequential();
 		}
-		[SmokeMethod("remove()")]
+		[SmokeMethod("remove", "()")]
 		public virtual bool Remove() {
 			return ProxyQAbstractFileEngine().Remove();
 		}
-		[SmokeMethod("copy(const QString&)")]
+		[SmokeMethod("copy$", "(const QString&)")]
 		public virtual bool Copy(string newName) {
 			return ProxyQAbstractFileEngine().Copy(newName);
 		}
-		[SmokeMethod("rename(const QString&)")]
+		[SmokeMethod("rename$", "(const QString&)")]
 		public virtual bool Rename(string newName) {
 			return ProxyQAbstractFileEngine().Rename(newName);
 		}
-		[SmokeMethod("link(const QString&)")]
+		[SmokeMethod("link$", "(const QString&)")]
 		public virtual bool Link(string newName) {
 			return ProxyQAbstractFileEngine().Link(newName);
 		}
-		[SmokeMethod("mkdir(const QString&, bool) const")]
+		[SmokeMethod("mkdir$$", "(const QString&, bool) const")]
 		public virtual bool Mkdir(string dirName, bool createParentDirectories) {
 			return ProxyQAbstractFileEngine().Mkdir(dirName,createParentDirectories);
 		}
-		[SmokeMethod("rmdir(const QString&, bool) const")]
+		[SmokeMethod("rmdir$$", "(const QString&, bool) const")]
 		public virtual bool Rmdir(string dirName, bool recurseParentDirectories) {
 			return ProxyQAbstractFileEngine().Rmdir(dirName,recurseParentDirectories);
 		}
-		[SmokeMethod("setSize(qint64)")]
+		[SmokeMethod("setSize$", "(qint64)")]
 		public virtual bool SetSize(long size) {
 			return ProxyQAbstractFileEngine().SetSize(size);
 		}
-		[SmokeMethod("caseSensitive() const")]
+		[SmokeMethod("caseSensitive", "() const")]
 		public virtual bool CaseSensitive() {
 			return ProxyQAbstractFileEngine().CaseSensitive();
 		}
-		[SmokeMethod("isRelativePath() const")]
+		[SmokeMethod("isRelativePath", "() const")]
 		public virtual bool IsRelativePath() {
 			return ProxyQAbstractFileEngine().IsRelativePath();
 		}
-		[SmokeMethod("entryList(QDir::Filters, const QStringList&) const")]
+		[SmokeMethod("entryList$$", "(QDir::Filters, const QStringList&) const")]
 		public virtual List<string> EntryList(int filters, List<string> filterNames) {
 			return ProxyQAbstractFileEngine().EntryList(filters,filterNames);
 		}
-		[SmokeMethod("fileFlags(FileFlags) const")]
+		[SmokeMethod("fileFlags$", "(FileFlags) const")]
 		public virtual int FileFlags(int type) {
 			return ProxyQAbstractFileEngine().FileFlags(type);
 		}
-		[SmokeMethod("fileFlags() const")]
+		[SmokeMethod("fileFlags", "() const")]
 		public virtual int FileFlags() {
 			return ProxyQAbstractFileEngine().FileFlags();
 		}
-		[SmokeMethod("setPermissions(uint)")]
+		[SmokeMethod("setPermissions$", "(uint)")]
 		public virtual bool SetPermissions(uint perms) {
 			return ProxyQAbstractFileEngine().SetPermissions(perms);
 		}
-		[SmokeMethod("fileName(QAbstractFileEngine::FileName) const")]
+		[SmokeMethod("fileName$", "(QAbstractFileEngine::FileName) const")]
 		public virtual string fileName(QAbstractFileEngine.FileName file) {
 			return ProxyQAbstractFileEngine().fileName(file);
 		}
-		[SmokeMethod("fileName() const")]
+		[SmokeMethod("fileName", "() const")]
 		public virtual string fileName() {
 			return ProxyQAbstractFileEngine().fileName();
 		}
-		[SmokeMethod("ownerId(QAbstractFileEngine::FileOwner) const")]
+		[SmokeMethod("ownerId$", "(QAbstractFileEngine::FileOwner) const")]
 		public virtual uint OwnerId(QAbstractFileEngine.FileOwner arg1) {
 			return ProxyQAbstractFileEngine().OwnerId(arg1);
 		}
-		[SmokeMethod("owner(QAbstractFileEngine::FileOwner) const")]
+		[SmokeMethod("owner$", "(QAbstractFileEngine::FileOwner) const")]
 		public virtual string Owner(QAbstractFileEngine.FileOwner arg1) {
 			return ProxyQAbstractFileEngine().Owner(arg1);
 		}
-		[SmokeMethod("fileTime(QAbstractFileEngine::FileTime) const")]
+		[SmokeMethod("fileTime$", "(QAbstractFileEngine::FileTime) const")]
 		public virtual QDateTime fileTime(QAbstractFileEngine.FileTime time) {
 			return ProxyQAbstractFileEngine().fileTime(time);
 		}
-		[SmokeMethod("setFileName(const QString&)")]
+		[SmokeMethod("setFileName$", "(const QString&)")]
 		public virtual void SetFileName(string file) {
 			ProxyQAbstractFileEngine().SetFileName(file);
 		}
 		// QAbstractFileEngine::Iterator* beginEntryList(QDir::Filters arg1,const QStringList& arg2); >>>> NOT CONVERTED
 		// QAbstractFileEngine::Iterator* endEntryList(); >>>> NOT CONVERTED
-		[SmokeMethod("read(char*, qint64)")]
+		[SmokeMethod("read$$", "(char*, qint64)")]
 		public virtual long Read(string data, long maxlen) {
 			return ProxyQAbstractFileEngine().Read(data,maxlen);
 		}
-		[SmokeMethod("readLine(char*, qint64)")]
+		[SmokeMethod("readLine$$", "(char*, qint64)")]
 		public virtual long ReadLine(string data, long maxlen) {
 			return ProxyQAbstractFileEngine().ReadLine(data,maxlen);
 		}
-		[SmokeMethod("write(const char*, qint64)")]
+		[SmokeMethod("write$$", "(const char*, qint64)")]
 		public virtual long Write(string data, long len) {
 			return ProxyQAbstractFileEngine().Write(data,len);
 		}
-		[SmokeMethod("error() const")]
+		[SmokeMethod("error", "() const")]
 		public QFile.FileError Error() {
 			return ProxyQAbstractFileEngine().Error();
 		}
-		[SmokeMethod("errorString() const")]
+		[SmokeMethod("errorString", "() const")]
 		public string ErrorString() {
 			return ProxyQAbstractFileEngine().ErrorString();
 		}
 		// bool extension(QAbstractFileEngine::Extension arg1,const QAbstractFileEngine::ExtensionOption* arg2,QAbstractFileEngine::ExtensionReturn* arg3); >>>> NOT CONVERTED
 		// bool extension(QAbstractFileEngine::Extension arg1,const QAbstractFileEngine::ExtensionOption* arg2); >>>> NOT CONVERTED
-		[SmokeMethod("extension(QAbstractFileEngine::Extension)")]
+		[SmokeMethod("extension$", "(QAbstractFileEngine::Extension)")]
 		public virtual bool extension(QAbstractFileEngine.Extension extension) {
 			return ProxyQAbstractFileEngine().extension(extension);
 		}
-		[SmokeMethod("supportsExtension(QAbstractFileEngine::Extension) const")]
+		[SmokeMethod("supportsExtension$", "(QAbstractFileEngine::Extension) const")]
 		public virtual bool SupportsExtension(QAbstractFileEngine.Extension extension) {
 			return ProxyQAbstractFileEngine().SupportsExtension(extension);
 		}
-		[SmokeMethod("create(const QString&)")]
 		public static QAbstractFileEngine Create(string fileName) {
 			return StaticQAbstractFileEngine().Create(fileName);
 		}
-		[SmokeMethod("setError(QFile::FileError, const QString&)")]
+		[SmokeMethod("setError$$", "(QFile::FileError, const QString&)")]
 		protected void SetError(QFile.FileError error, string str) {
 			ProxyQAbstractFileEngine().SetError(error,str);
 		}
@@ -225,7 +225,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQAbstractFileEngine();
 		}
-		[SmokeMethod("QAbstractFileEngine()")]
+		[SmokeMethod("QAbstractFileEngine", "()")]
 		private void NewQAbstractFileEngine() {
 			ProxyQAbstractFileEngine().NewQAbstractFileEngine();
 		}
@@ -236,7 +236,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQAbstractFileEngine();
 		}
-		[SmokeMethod("~QAbstractFileEngine()")]
+		[SmokeMethod("~QAbstractFileEngine", "()")]
 		private void DisposeQAbstractFileEngine() {
 			ProxyQAbstractFileEngine().DisposeQAbstractFileEngine();
 		}

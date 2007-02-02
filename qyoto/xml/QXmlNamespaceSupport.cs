@@ -34,47 +34,47 @@ namespace Qyoto {
 			CreateProxy();
 			NewQXmlNamespaceSupport();
 		}
-		[SmokeMethod("QXmlNamespaceSupport()")]
+		[SmokeMethod("QXmlNamespaceSupport", "()")]
 		private void NewQXmlNamespaceSupport() {
 			ProxyQXmlNamespaceSupport().NewQXmlNamespaceSupport();
 		}
-		[SmokeMethod("setPrefix(const QString&, const QString&)")]
+		[SmokeMethod("setPrefix$$", "(const QString&, const QString&)")]
 		public void SetPrefix(string arg1, string arg2) {
 			ProxyQXmlNamespaceSupport().SetPrefix(arg1,arg2);
 		}
-		[SmokeMethod("prefix(const QString&) const")]
+		[SmokeMethod("prefix$", "(const QString&) const")]
 		public string Prefix(string arg1) {
 			return ProxyQXmlNamespaceSupport().Prefix(arg1);
 		}
-		[SmokeMethod("uri(const QString&) const")]
+		[SmokeMethod("uri$", "(const QString&) const")]
 		public string Uri(string arg1) {
 			return ProxyQXmlNamespaceSupport().Uri(arg1);
 		}
-		[SmokeMethod("splitName(const QString&, QString&, QString&) const")]
+		[SmokeMethod("splitName$$$", "(const QString&, QString&, QString&) const")]
 		public void SplitName(string arg1, StringBuilder arg2, StringBuilder arg3) {
 			ProxyQXmlNamespaceSupport().SplitName(arg1,arg2,arg3);
 		}
-		[SmokeMethod("processName(const QString&, bool, QString&, QString&) const")]
+		[SmokeMethod("processName$$$$", "(const QString&, bool, QString&, QString&) const")]
 		public void ProcessName(string arg1, bool arg2, StringBuilder arg3, StringBuilder arg4) {
 			ProxyQXmlNamespaceSupport().ProcessName(arg1,arg2,arg3,arg4);
 		}
-		[SmokeMethod("prefixes() const")]
+		[SmokeMethod("prefixes", "() const")]
 		public List<string> Prefixes() {
 			return ProxyQXmlNamespaceSupport().Prefixes();
 		}
-		[SmokeMethod("prefixes(const QString&) const")]
+		[SmokeMethod("prefixes$", "(const QString&) const")]
 		public List<string> Prefixes(string arg1) {
 			return ProxyQXmlNamespaceSupport().Prefixes(arg1);
 		}
-		[SmokeMethod("pushContext()")]
+		[SmokeMethod("pushContext", "()")]
 		public void PushContext() {
 			ProxyQXmlNamespaceSupport().PushContext();
 		}
-		[SmokeMethod("popContext()")]
+		[SmokeMethod("popContext", "()")]
 		public void PopContext() {
 			ProxyQXmlNamespaceSupport().PopContext();
 		}
-		[SmokeMethod("reset()")]
+		[SmokeMethod("reset", "()")]
 		public void Reset() {
 			ProxyQXmlNamespaceSupport().Reset();
 		}
@@ -84,7 +84,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQXmlNamespaceSupport();
 		}
-		[SmokeMethod("~QXmlNamespaceSupport()")]
+		[SmokeMethod("~QXmlNamespaceSupport", "()")]
 		private void DisposeQXmlNamespaceSupport() {
 			ProxyQXmlNamespaceSupport().DisposeQXmlNamespaceSupport();
 		}

@@ -9,7 +9,9 @@ namespace Qyoto {
 	public class QDoubleSpinBox : QAbstractSpinBox, IDisposable {
  		protected QDoubleSpinBox(Type dummy) : base((Type) null) {}
 		interface IQDoubleSpinBoxProxy {
+			[SmokeMethod("tr$$", "(const char*, const char*)")]
 			string Tr(string s, string c);
+			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
 		}
 
@@ -103,7 +105,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDoubleSpinBox(parent);
 		}
-		[SmokeMethod("QDoubleSpinBox(QWidget*)")]
+		[SmokeMethod("QDoubleSpinBox#", "(QWidget*)")]
 		private void NewQDoubleSpinBox(QWidget parent) {
 			ProxyQDoubleSpinBox().NewQDoubleSpinBox(parent);
 		}
@@ -111,35 +113,33 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDoubleSpinBox();
 		}
-		[SmokeMethod("QDoubleSpinBox()")]
+		[SmokeMethod("QDoubleSpinBox", "()")]
 		private void NewQDoubleSpinBox() {
 			ProxyQDoubleSpinBox().NewQDoubleSpinBox();
 		}
-		[SmokeMethod("setRange(double, double)")]
+		[SmokeMethod("setRange$$", "(double, double)")]
 		public void SetRange(double min, double max) {
 			ProxyQDoubleSpinBox().SetRange(min,max);
 		}
-		[SmokeMethod("validate(QString&, int&) const")]
+		[SmokeMethod("validate$$", "(QString&, int&) const")]
 		public new virtual int Validate(StringBuilder input, out int pos) {
 			return ProxyQDoubleSpinBox().Validate(input,out pos);
 		}
-		[SmokeMethod("valueFromText(const QString&) const")]
+		[SmokeMethod("valueFromText$", "(const QString&) const")]
 		public virtual double ValueFromText(string text) {
 			return ProxyQDoubleSpinBox().ValueFromText(text);
 		}
-		[SmokeMethod("textFromValue(double) const")]
+		[SmokeMethod("textFromValue$", "(double) const")]
 		public virtual string TextFromValue(double val) {
 			return ProxyQDoubleSpinBox().TextFromValue(val);
 		}
-		[SmokeMethod("fixup(QString&) const")]
+		[SmokeMethod("fixup$", "(QString&) const")]
 		public new virtual void Fixup(StringBuilder str) {
 			ProxyQDoubleSpinBox().Fixup(str);
 		}
-		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQDoubleSpinBox().Tr(s,c);
 		}
-		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQDoubleSpinBox().Tr(s);
 		}
@@ -149,7 +149,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQDoubleSpinBox();
 		}
-		[SmokeMethod("~QDoubleSpinBox()")]
+		[SmokeMethod("~QDoubleSpinBox", "()")]
 		private void DisposeQDoubleSpinBox() {
 			ProxyQDoubleSpinBox().DisposeQDoubleSpinBox();
 		}
@@ -161,9 +161,9 @@ namespace Qyoto {
 	}
 
 	public interface IQDoubleSpinBoxSignals : IQAbstractSpinBoxSignals {
-		[Q_SIGNAL("void valueChanged(double)")]
+		[Q_SIGNAL("void (double)")]
 		void ValueChanged(double arg1);
-		[Q_SIGNAL("void valueChanged(const QString&)")]
+		[Q_SIGNAL("void (const QString&)")]
 		void ValueChanged(string arg1);
 	}
 }

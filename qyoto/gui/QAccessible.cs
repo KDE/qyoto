@@ -10,11 +10,17 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QAccessible(Type dummy) {}
 		interface IQAccessibleProxy {
+			[SmokeMethod("queryAccessibleInterface#", "(QObject*)")]
 			QAccessibleInterface QueryAccessibleInterface(QObject arg1);
+			[SmokeMethod("updateAccessibility###", "(QObject*, int, QAccessible::Event)")]
 			void UpdateAccessibility(QObject arg1, int who, QAccessible.Event reason);
+			[SmokeMethod("isActive", "()")]
 			bool IsActive();
+			[SmokeMethod("setRootObject#", "(QObject*)")]
 			void SetRootObject(QObject arg1);
+			[SmokeMethod("initialize", "()")]
 			void Initialize();
+			[SmokeMethod("cleanup", "()")]
 			void Cleanup();
 		}
 
@@ -224,7 +230,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQAccessible();
 		}
-		[SmokeMethod("QAccessible()")]
+		[SmokeMethod("QAccessible", "()")]
 		private void NewQAccessible() {
 			ProxyQAccessible().NewQAccessible();
 		}
@@ -232,27 +238,21 @@ namespace Qyoto {
 		// void removeFactory(InterfaceFactory arg1); >>>> NOT CONVERTED
 		// UpdateHandler installUpdateHandler(UpdateHandler arg1); >>>> NOT CONVERTED
 		// RootObjectHandler installRootObjectHandler(RootObjectHandler arg1); >>>> NOT CONVERTED
-		[SmokeMethod("queryAccessibleInterface(QObject*)")]
 		public static QAccessibleInterface QueryAccessibleInterface(QObject arg1) {
 			return StaticQAccessible().QueryAccessibleInterface(arg1);
 		}
-		[SmokeMethod("updateAccessibility(QObject*, int, QAccessible::Event)")]
 		public static void UpdateAccessibility(QObject arg1, int who, QAccessible.Event reason) {
 			StaticQAccessible().UpdateAccessibility(arg1,who,reason);
 		}
-		[SmokeMethod("isActive()")]
 		public static bool IsActive() {
 			return StaticQAccessible().IsActive();
 		}
-		[SmokeMethod("setRootObject(QObject*)")]
 		public static void SetRootObject(QObject arg1) {
 			StaticQAccessible().SetRootObject(arg1);
 		}
-		[SmokeMethod("initialize()")]
 		public static void Initialize() {
 			StaticQAccessible().Initialize();
 		}
-		[SmokeMethod("cleanup()")]
 		public static void Cleanup() {
 			StaticQAccessible().Cleanup();
 		}
@@ -262,7 +262,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQAccessible();
 		}
-		[SmokeMethod("~QAccessible()")]
+		[SmokeMethod("~QAccessible", "()")]
 		private void DisposeQAccessible() {
 			ProxyQAccessible().DisposeQAccessible();
 		}

@@ -28,67 +28,67 @@ namespace Qyoto {
 			return (IQPaintEngineStateProxy) _staticInterceptor;
 		}
 
-		[SmokeMethod("state() const")]
+		[SmokeMethod("state", "() const")]
 		public int State() {
 			return ProxyQPaintEngineState().State();
 		}
-		[SmokeMethod("pen() const")]
+		[SmokeMethod("pen", "() const")]
 		public QPen Pen() {
 			return ProxyQPaintEngineState().Pen();
 		}
-		[SmokeMethod("brush() const")]
+		[SmokeMethod("brush", "() const")]
 		public QBrush Brush() {
 			return ProxyQPaintEngineState().Brush();
 		}
-		[SmokeMethod("brushOrigin() const")]
+		[SmokeMethod("brushOrigin", "() const")]
 		public QPointF BrushOrigin() {
 			return ProxyQPaintEngineState().BrushOrigin();
 		}
-		[SmokeMethod("backgroundBrush() const")]
+		[SmokeMethod("backgroundBrush", "() const")]
 		public QBrush BackgroundBrush() {
 			return ProxyQPaintEngineState().BackgroundBrush();
 		}
-		[SmokeMethod("backgroundMode() const")]
+		[SmokeMethod("backgroundMode", "() const")]
 		public Qt.BGMode BackgroundMode() {
 			return ProxyQPaintEngineState().BackgroundMode();
 		}
-		[SmokeMethod("font() const")]
+		[SmokeMethod("font", "() const")]
 		public QFont Font() {
 			return ProxyQPaintEngineState().Font();
 		}
-		[SmokeMethod("matrix() const")]
+		[SmokeMethod("matrix", "() const")]
 		public QMatrix Matrix() {
 			return ProxyQPaintEngineState().Matrix();
 		}
-		[SmokeMethod("clipOperation() const")]
+		[SmokeMethod("clipOperation", "() const")]
 		public Qt.ClipOperation ClipOperation() {
 			return ProxyQPaintEngineState().ClipOperation();
 		}
-		[SmokeMethod("clipRegion() const")]
+		[SmokeMethod("clipRegion", "() const")]
 		public QRegion ClipRegion() {
 			return ProxyQPaintEngineState().ClipRegion();
 		}
-		[SmokeMethod("clipPath() const")]
+		[SmokeMethod("clipPath", "() const")]
 		public QPainterPath ClipPath() {
 			return ProxyQPaintEngineState().ClipPath();
 		}
-		[SmokeMethod("isClipEnabled() const")]
+		[SmokeMethod("isClipEnabled", "() const")]
 		public bool IsClipEnabled() {
 			return ProxyQPaintEngineState().IsClipEnabled();
 		}
-		[SmokeMethod("renderHints() const")]
+		[SmokeMethod("renderHints", "() const")]
 		public int RenderHints() {
 			return ProxyQPaintEngineState().RenderHints();
 		}
-		[SmokeMethod("compositionMode() const")]
+		[SmokeMethod("compositionMode", "() const")]
 		public QPainter.CompositionMode CompositionMode() {
 			return ProxyQPaintEngineState().CompositionMode();
 		}
-		[SmokeMethod("opacity() const")]
+		[SmokeMethod("opacity", "() const")]
 		public double Opacity() {
 			return ProxyQPaintEngineState().Opacity();
 		}
-		[SmokeMethod("painter() const")]
+		[SmokeMethod("painter", "() const")]
 		public QPainter Painter() {
 			return ProxyQPaintEngineState().Painter();
 		}
@@ -96,7 +96,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQPaintEngineState();
 		}
-		[SmokeMethod("QPaintEngineState()")]
+		[SmokeMethod("QPaintEngineState", "()")]
 		private void NewQPaintEngineState() {
 			ProxyQPaintEngineState().NewQPaintEngineState();
 		}
@@ -106,7 +106,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQPaintEngineState();
 		}
-		[SmokeMethod("~QPaintEngineState()")]
+		[SmokeMethod("~QPaintEngineState", "()")]
 		private void DisposeQPaintEngineState() {
 			ProxyQPaintEngineState().DisposeQPaintEngineState();
 		}

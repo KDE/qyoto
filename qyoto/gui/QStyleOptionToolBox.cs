@@ -35,7 +35,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionToolBox();
 		}
-		[SmokeMethod("QStyleOptionToolBox()")]
+		[SmokeMethod("QStyleOptionToolBox", "()")]
 		private void NewQStyleOptionToolBox() {
 			ProxyQStyleOptionToolBox().NewQStyleOptionToolBox();
 		}
@@ -43,7 +43,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionToolBox(other);
 		}
-		[SmokeMethod("QStyleOptionToolBox(const QStyleOptionToolBox&)")]
+		[SmokeMethod("QStyleOptionToolBox#", "(const QStyleOptionToolBox&)")]
 		private void NewQStyleOptionToolBox(QStyleOptionToolBox other) {
 			ProxyQStyleOptionToolBox().NewQStyleOptionToolBox(other);
 		}
@@ -51,7 +51,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionToolBox(version);
 		}
-		[SmokeMethod("QStyleOptionToolBox(int)")]
+		[SmokeMethod("QStyleOptionToolBox$", "(int)")]
 		private void NewQStyleOptionToolBox(int version) {
 			ProxyQStyleOptionToolBox().NewQStyleOptionToolBox(version);
 		}
@@ -61,7 +61,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQStyleOptionToolBox();
 		}
-		[SmokeMethod("~QStyleOptionToolBox()")]
+		[SmokeMethod("~QStyleOptionToolBox", "()")]
 		private void DisposeQStyleOptionToolBox() {
 			ProxyQStyleOptionToolBox().DisposeQStyleOptionToolBox();
 		}

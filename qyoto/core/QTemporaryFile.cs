@@ -8,9 +8,13 @@ namespace Qyoto {
 	public class QTemporaryFile : QFile, IDisposable {
  		protected QTemporaryFile(Type dummy) : base((Type) null) {}
 		interface IQTemporaryFileProxy {
+			[SmokeMethod("tr$$", "(const char*, const char*)")]
 			string Tr(string s, string c);
+			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
+			[SmokeMethod("createLocalFile$", "(const QString&)")]
 			QTemporaryFile CreateLocalFile(string fileName);
+			[SmokeMethod("createLocalFile#", "(QFile&)")]
 			QTemporaryFile CreateLocalFile(QFile file);
 		}
 
@@ -35,7 +39,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTemporaryFile();
 		}
-		[SmokeMethod("QTemporaryFile()")]
+		[SmokeMethod("QTemporaryFile", "()")]
 		private void NewQTemporaryFile() {
 			ProxyQTemporaryFile().NewQTemporaryFile();
 		}
@@ -43,7 +47,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTemporaryFile(templateName);
 		}
-		[SmokeMethod("QTemporaryFile(const QString&)")]
+		[SmokeMethod("QTemporaryFile$", "(const QString&)")]
 		private void NewQTemporaryFile(string templateName) {
 			ProxyQTemporaryFile().NewQTemporaryFile(templateName);
 		}
@@ -51,7 +55,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTemporaryFile(parent);
 		}
-		[SmokeMethod("QTemporaryFile(QObject*)")]
+		[SmokeMethod("QTemporaryFile#", "(QObject*)")]
 		private void NewQTemporaryFile(QObject parent) {
 			ProxyQTemporaryFile().NewQTemporaryFile(parent);
 		}
@@ -59,55 +63,51 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTemporaryFile(templateName,parent);
 		}
-		[SmokeMethod("QTemporaryFile(const QString&, QObject*)")]
+		[SmokeMethod("QTemporaryFile$$", "(const QString&, QObject*)")]
 		private void NewQTemporaryFile(string templateName, QObject parent) {
 			ProxyQTemporaryFile().NewQTemporaryFile(templateName,parent);
 		}
-		[SmokeMethod("autoRemove() const")]
+		[SmokeMethod("autoRemove", "() const")]
 		public bool AutoRemove() {
 			return ProxyQTemporaryFile().AutoRemove();
 		}
-		[SmokeMethod("setAutoRemove(bool)")]
+		[SmokeMethod("setAutoRemove$", "(bool)")]
 		public void SetAutoRemove(bool b) {
 			ProxyQTemporaryFile().SetAutoRemove(b);
 		}
-		[SmokeMethod("open()")]
+		[SmokeMethod("open", "()")]
 		public new bool Open() {
 			return ProxyQTemporaryFile().Open();
 		}
-		[SmokeMethod("fileName() const")]
+		[SmokeMethod("fileName", "() const")]
 		public new string FileName() {
 			return ProxyQTemporaryFile().FileName();
 		}
-		[SmokeMethod("fileTemplate() const")]
+		[SmokeMethod("fileTemplate", "() const")]
 		public string FileTemplate() {
 			return ProxyQTemporaryFile().FileTemplate();
 		}
-		[SmokeMethod("setFileTemplate(const QString&)")]
+		[SmokeMethod("setFileTemplate$", "(const QString&)")]
 		public void SetFileTemplate(string name) {
 			ProxyQTemporaryFile().SetFileTemplate(name);
 		}
-		[SmokeMethod("fileEngine() const")]
+		[SmokeMethod("fileEngine", "() const")]
 		public new virtual QAbstractFileEngine FileEngine() {
 			return ProxyQTemporaryFile().FileEngine();
 		}
-		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQTemporaryFile().Tr(s,c);
 		}
-		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQTemporaryFile().Tr(s);
 		}
-		[SmokeMethod("createLocalFile(const QString&)")]
 		public static QTemporaryFile CreateLocalFile(string fileName) {
 			return StaticQTemporaryFile().CreateLocalFile(fileName);
 		}
-		[SmokeMethod("createLocalFile(QFile&)")]
 		public static QTemporaryFile CreateLocalFile(QFile file) {
 			return StaticQTemporaryFile().CreateLocalFile(file);
 		}
-		[SmokeMethod("open(OpenMode)")]
+		[SmokeMethod("open$", "(OpenMode)")]
 		protected new bool Open(int flags) {
 			return ProxyQTemporaryFile().Open(flags);
 		}
@@ -117,7 +117,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQTemporaryFile();
 		}
-		[SmokeMethod("~QTemporaryFile()")]
+		[SmokeMethod("~QTemporaryFile", "()")]
 		private void DisposeQTemporaryFile() {
 			ProxyQTemporaryFile().DisposeQTemporaryFile();
 		}

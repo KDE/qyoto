@@ -35,7 +35,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionProgressBar();
 		}
-		[SmokeMethod("QStyleOptionProgressBar()")]
+		[SmokeMethod("QStyleOptionProgressBar", "()")]
 		private void NewQStyleOptionProgressBar() {
 			ProxyQStyleOptionProgressBar().NewQStyleOptionProgressBar();
 		}
@@ -43,7 +43,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionProgressBar(other);
 		}
-		[SmokeMethod("QStyleOptionProgressBar(const QStyleOptionProgressBar&)")]
+		[SmokeMethod("QStyleOptionProgressBar#", "(const QStyleOptionProgressBar&)")]
 		private void NewQStyleOptionProgressBar(QStyleOptionProgressBar other) {
 			ProxyQStyleOptionProgressBar().NewQStyleOptionProgressBar(other);
 		}
@@ -51,7 +51,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionProgressBar(version);
 		}
-		[SmokeMethod("QStyleOptionProgressBar(int)")]
+		[SmokeMethod("QStyleOptionProgressBar$", "(int)")]
 		private void NewQStyleOptionProgressBar(int version) {
 			ProxyQStyleOptionProgressBar().NewQStyleOptionProgressBar(version);
 		}
@@ -61,7 +61,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQStyleOptionProgressBar();
 		}
-		[SmokeMethod("~QStyleOptionProgressBar()")]
+		[SmokeMethod("~QStyleOptionProgressBar", "()")]
 		private void DisposeQStyleOptionProgressBar() {
 			ProxyQStyleOptionProgressBar().DisposeQStyleOptionProgressBar();
 		}

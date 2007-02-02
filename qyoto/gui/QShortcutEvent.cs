@@ -29,7 +29,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQShortcutEvent(key,id,ambiguous);
 		}
-		[SmokeMethod("QShortcutEvent(const QKeySequence&, int, bool)")]
+		[SmokeMethod("QShortcutEvent###", "(const QKeySequence&, int, bool)")]
 		private void NewQShortcutEvent(QKeySequence key, int id, bool ambiguous) {
 			ProxyQShortcutEvent().NewQShortcutEvent(key,id,ambiguous);
 		}
@@ -37,19 +37,19 @@ namespace Qyoto {
 			CreateProxy();
 			NewQShortcutEvent(key,id);
 		}
-		[SmokeMethod("QShortcutEvent(const QKeySequence&, int)")]
+		[SmokeMethod("QShortcutEvent##", "(const QKeySequence&, int)")]
 		private void NewQShortcutEvent(QKeySequence key, int id) {
 			ProxyQShortcutEvent().NewQShortcutEvent(key,id);
 		}
-		[SmokeMethod("key()")]
+		[SmokeMethod("key", "()")]
 		public QKeySequence Key() {
 			return ProxyQShortcutEvent().Key();
 		}
-		[SmokeMethod("shortcutId()")]
+		[SmokeMethod("shortcutId", "()")]
 		public int ShortcutId() {
 			return ProxyQShortcutEvent().ShortcutId();
 		}
-		[SmokeMethod("isAmbiguous()")]
+		[SmokeMethod("isAmbiguous", "()")]
 		public bool IsAmbiguous() {
 			return ProxyQShortcutEvent().IsAmbiguous();
 		}
@@ -59,7 +59,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQShortcutEvent();
 		}
-		[SmokeMethod("~QShortcutEvent()")]
+		[SmokeMethod("~QShortcutEvent", "()")]
 		private void DisposeQShortcutEvent() {
 			ProxyQShortcutEvent().DisposeQShortcutEvent();
 		}

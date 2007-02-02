@@ -32,7 +32,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionTabV2();
 		}
-		[SmokeMethod("QStyleOptionTabV2()")]
+		[SmokeMethod("QStyleOptionTabV2", "()")]
 		private void NewQStyleOptionTabV2() {
 			ProxyQStyleOptionTabV2().NewQStyleOptionTabV2();
 		}
@@ -40,7 +40,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionTabV2(other);
 		}
-		[SmokeMethod("QStyleOptionTabV2(const QStyleOptionTabV2&)")]
+		[SmokeMethod("QStyleOptionTabV2#", "(const QStyleOptionTabV2&)")]
 		private void NewQStyleOptionTabV2(QStyleOptionTabV2 other) {
 			ProxyQStyleOptionTabV2().NewQStyleOptionTabV2(other);
 		}
@@ -48,7 +48,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionTabV2(other);
 		}
-		[SmokeMethod("QStyleOptionTabV2(const QStyleOptionTab&)")]
+		[SmokeMethod("QStyleOptionTabV2#", "(const QStyleOptionTab&)")]
 		private void NewQStyleOptionTabV2(QStyleOptionTab other) {
 			ProxyQStyleOptionTabV2().NewQStyleOptionTabV2(other);
 		}
@@ -56,7 +56,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionTabV2(version);
 		}
-		[SmokeMethod("QStyleOptionTabV2(int)")]
+		[SmokeMethod("QStyleOptionTabV2$", "(int)")]
 		private void NewQStyleOptionTabV2(int version) {
 			ProxyQStyleOptionTabV2().NewQStyleOptionTabV2(version);
 		}
@@ -66,7 +66,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQStyleOptionTabV2();
 		}
-		[SmokeMethod("~QStyleOptionTabV2()")]
+		[SmokeMethod("~QStyleOptionTabV2", "()")]
 		private void DisposeQStyleOptionTabV2() {
 			ProxyQStyleOptionTabV2().DisposeQStyleOptionTabV2();
 		}

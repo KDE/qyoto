@@ -33,7 +33,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDomNodeList();
 		}
-		[SmokeMethod("QDomNodeList()")]
+		[SmokeMethod("QDomNodeList", "()")]
 		private void NewQDomNodeList() {
 			ProxyQDomNodeList().NewQDomNodeList();
 		}
@@ -41,11 +41,11 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDomNodeList(arg1);
 		}
-		[SmokeMethod("QDomNodeList(const QDomNodeList&)")]
+		[SmokeMethod("QDomNodeList#", "(const QDomNodeList&)")]
 		private void NewQDomNodeList(QDomNodeList arg1) {
 			ProxyQDomNodeList().NewQDomNodeList(arg1);
 		}
-		[SmokeMethod("operator==(const QDomNodeList&) const")]
+		[SmokeMethod("operator==#", "(const QDomNodeList&) const")]
 		public static bool operator==(QDomNodeList lhs, QDomNodeList arg1) {
 			return StaticQDomNodeList().op_equals(lhs,arg1);
 		}
@@ -59,27 +59,27 @@ namespace Qyoto {
 		public override int GetHashCode() {
 			return ProxyQDomNodeList().GetHashCode();
 		}
-		[SmokeMethod("item(int) const")]
+		[SmokeMethod("item$", "(int) const")]
 		public QDomNode Item(int index) {
 			return ProxyQDomNodeList().Item(index);
 		}
-		[SmokeMethod("at(int) const")]
+		[SmokeMethod("at$", "(int) const")]
 		public QDomNode At(int index) {
 			return ProxyQDomNodeList().At(index);
 		}
-		[SmokeMethod("length() const")]
+		[SmokeMethod("length", "() const")]
 		public uint Length() {
 			return ProxyQDomNodeList().Length();
 		}
-		[SmokeMethod("count() const")]
+		[SmokeMethod("count", "() const")]
 		public int Count() {
 			return ProxyQDomNodeList().Count();
 		}
-		[SmokeMethod("size() const")]
+		[SmokeMethod("size", "() const")]
 		public int Size() {
 			return ProxyQDomNodeList().Size();
 		}
-		[SmokeMethod("isEmpty() const")]
+		[SmokeMethod("isEmpty", "() const")]
 		public bool IsEmpty() {
 			return ProxyQDomNodeList().IsEmpty();
 		}
@@ -89,7 +89,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQDomNodeList();
 		}
-		[SmokeMethod("~QDomNodeList()")]
+		[SmokeMethod("~QDomNodeList", "()")]
 		private void DisposeQDomNodeList() {
 			ProxyQDomNodeList().DisposeQDomNodeList();
 		}

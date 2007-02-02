@@ -26,7 +26,7 @@ namespace Qyoto {
 			return (IQStyleFactoryInterfaceProxy) _staticInterceptor;
 		}
 
-		[SmokeMethod("create(const QString&)")]
+		[SmokeMethod("create$", "(const QString&)")]
 		public virtual QStyle Create(string key) {
 			return ProxyQStyleFactoryInterface().Create(key);
 		}
@@ -34,7 +34,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleFactoryInterface();
 		}
-		[SmokeMethod("QStyleFactoryInterface()")]
+		[SmokeMethod("QStyleFactoryInterface", "()")]
 		private void NewQStyleFactoryInterface() {
 			ProxyQStyleFactoryInterface().NewQStyleFactoryInterface();
 		}
@@ -44,7 +44,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQStyleFactoryInterface();
 		}
-		[SmokeMethod("~QStyleFactoryInterface()")]
+		[SmokeMethod("~QStyleFactoryInterface", "()")]
 		private void DisposeQStyleFactoryInterface() {
 			ProxyQStyleFactoryInterface().DisposeQStyleFactoryInterface();
 		}

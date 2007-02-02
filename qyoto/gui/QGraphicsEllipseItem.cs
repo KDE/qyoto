@@ -31,7 +31,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGraphicsEllipseItem(parent,scene);
 		}
-		[SmokeMethod("QGraphicsEllipseItem(QGraphicsItem*, QGraphicsScene*)")]
+		[SmokeMethod("QGraphicsEllipseItem##", "(QGraphicsItem*, QGraphicsScene*)")]
 		private void NewQGraphicsEllipseItem(QGraphicsItem parent, QGraphicsScene scene) {
 			ProxyQGraphicsEllipseItem().NewQGraphicsEllipseItem(parent,scene);
 		}
@@ -39,7 +39,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGraphicsEllipseItem(parent);
 		}
-		[SmokeMethod("QGraphicsEllipseItem(QGraphicsItem*)")]
+		[SmokeMethod("QGraphicsEllipseItem#", "(QGraphicsItem*)")]
 		private void NewQGraphicsEllipseItem(QGraphicsItem parent) {
 			ProxyQGraphicsEllipseItem().NewQGraphicsEllipseItem(parent);
 		}
@@ -47,7 +47,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGraphicsEllipseItem();
 		}
-		[SmokeMethod("QGraphicsEllipseItem()")]
+		[SmokeMethod("QGraphicsEllipseItem", "()")]
 		private void NewQGraphicsEllipseItem() {
 			ProxyQGraphicsEllipseItem().NewQGraphicsEllipseItem();
 		}
@@ -55,7 +55,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGraphicsEllipseItem(rect,parent,scene);
 		}
-		[SmokeMethod("QGraphicsEllipseItem(const QRectF&, QGraphicsItem*, QGraphicsScene*)")]
+		[SmokeMethod("QGraphicsEllipseItem###", "(const QRectF&, QGraphicsItem*, QGraphicsScene*)")]
 		private void NewQGraphicsEllipseItem(QRectF rect, QGraphicsItem parent, QGraphicsScene scene) {
 			ProxyQGraphicsEllipseItem().NewQGraphicsEllipseItem(rect,parent,scene);
 		}
@@ -63,7 +63,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGraphicsEllipseItem(rect,parent);
 		}
-		[SmokeMethod("QGraphicsEllipseItem(const QRectF&, QGraphicsItem*)")]
+		[SmokeMethod("QGraphicsEllipseItem##", "(const QRectF&, QGraphicsItem*)")]
 		private void NewQGraphicsEllipseItem(QRectF rect, QGraphicsItem parent) {
 			ProxyQGraphicsEllipseItem().NewQGraphicsEllipseItem(rect,parent);
 		}
@@ -71,7 +71,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGraphicsEllipseItem(rect);
 		}
-		[SmokeMethod("QGraphicsEllipseItem(const QRectF&)")]
+		[SmokeMethod("QGraphicsEllipseItem#", "(const QRectF&)")]
 		private void NewQGraphicsEllipseItem(QRectF rect) {
 			ProxyQGraphicsEllipseItem().NewQGraphicsEllipseItem(rect);
 		}
@@ -79,7 +79,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGraphicsEllipseItem(x,y,w,h,parent,scene);
 		}
-		[SmokeMethod("QGraphicsEllipseItem(qreal, qreal, qreal, qreal, QGraphicsItem*, QGraphicsScene*)")]
+		[SmokeMethod("QGraphicsEllipseItem$$$$$$", "(qreal, qreal, qreal, qreal, QGraphicsItem*, QGraphicsScene*)")]
 		private void NewQGraphicsEllipseItem(double x, double y, double w, double h, QGraphicsItem parent, QGraphicsScene scene) {
 			ProxyQGraphicsEllipseItem().NewQGraphicsEllipseItem(x,y,w,h,parent,scene);
 		}
@@ -87,7 +87,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGraphicsEllipseItem(x,y,w,h,parent);
 		}
-		[SmokeMethod("QGraphicsEllipseItem(qreal, qreal, qreal, qreal, QGraphicsItem*)")]
+		[SmokeMethod("QGraphicsEllipseItem$$$$$", "(qreal, qreal, qreal, qreal, QGraphicsItem*)")]
 		private void NewQGraphicsEllipseItem(double x, double y, double w, double h, QGraphicsItem parent) {
 			ProxyQGraphicsEllipseItem().NewQGraphicsEllipseItem(x,y,w,h,parent);
 		}
@@ -95,79 +95,79 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGraphicsEllipseItem(x,y,w,h);
 		}
-		[SmokeMethod("QGraphicsEllipseItem(qreal, qreal, qreal, qreal)")]
+		[SmokeMethod("QGraphicsEllipseItem$$$$", "(qreal, qreal, qreal, qreal)")]
 		private void NewQGraphicsEllipseItem(double x, double y, double w, double h) {
 			ProxyQGraphicsEllipseItem().NewQGraphicsEllipseItem(x,y,w,h);
 		}
-		[SmokeMethod("rect() const")]
+		[SmokeMethod("rect", "() const")]
 		public QRectF Rect() {
 			return ProxyQGraphicsEllipseItem().Rect();
 		}
-		[SmokeMethod("setRect(const QRectF&)")]
+		[SmokeMethod("setRect#", "(const QRectF&)")]
 		public void SetRect(QRectF rect) {
 			ProxyQGraphicsEllipseItem().SetRect(rect);
 		}
-		[SmokeMethod("setRect(qreal, qreal, qreal, qreal)")]
+		[SmokeMethod("setRect$$$$", "(qreal, qreal, qreal, qreal)")]
 		public void SetRect(double x, double y, double w, double h) {
 			ProxyQGraphicsEllipseItem().SetRect(x,y,w,h);
 		}
-		[SmokeMethod("startAngle() const")]
+		[SmokeMethod("startAngle", "() const")]
 		public int StartAngle() {
 			return ProxyQGraphicsEllipseItem().StartAngle();
 		}
-		[SmokeMethod("setStartAngle(int)")]
+		[SmokeMethod("setStartAngle$", "(int)")]
 		public void SetStartAngle(int angle) {
 			ProxyQGraphicsEllipseItem().SetStartAngle(angle);
 		}
-		[SmokeMethod("spanAngle() const")]
+		[SmokeMethod("spanAngle", "() const")]
 		public int SpanAngle() {
 			return ProxyQGraphicsEllipseItem().SpanAngle();
 		}
-		[SmokeMethod("setSpanAngle(int)")]
+		[SmokeMethod("setSpanAngle$", "(int)")]
 		public void SetSpanAngle(int angle) {
 			ProxyQGraphicsEllipseItem().SetSpanAngle(angle);
 		}
-		[SmokeMethod("boundingRect() const")]
+		[SmokeMethod("boundingRect", "() const")]
 		public new QRectF BoundingRect() {
 			return ProxyQGraphicsEllipseItem().BoundingRect();
 		}
-		[SmokeMethod("shape() const")]
+		[SmokeMethod("shape", "() const")]
 		public new QPainterPath Shape() {
 			return ProxyQGraphicsEllipseItem().Shape();
 		}
-		[SmokeMethod("contains(const QPointF&) const")]
+		[SmokeMethod("contains#", "(const QPointF&) const")]
 		public new bool Contains(QPointF point) {
 			return ProxyQGraphicsEllipseItem().Contains(point);
 		}
-		[SmokeMethod("paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*)")]
+		[SmokeMethod("paint###", "(QPainter*, const QStyleOptionGraphicsItem*, QWidget*)")]
 		public new void Paint(QPainter painter, QStyleOptionGraphicsItem option, QWidget widget) {
 			ProxyQGraphicsEllipseItem().Paint(painter,option,widget);
 		}
-		[SmokeMethod("paint(QPainter*, const QStyleOptionGraphicsItem*)")]
+		[SmokeMethod("paint##", "(QPainter*, const QStyleOptionGraphicsItem*)")]
 		public new void Paint(QPainter painter, QStyleOptionGraphicsItem option) {
 			ProxyQGraphicsEllipseItem().Paint(painter,option);
 		}
-		[SmokeMethod("isObscuredBy(const QGraphicsItem*) const")]
+		[SmokeMethod("isObscuredBy#", "(const QGraphicsItem*) const")]
 		public new bool IsObscuredBy(QGraphicsItem item) {
 			return ProxyQGraphicsEllipseItem().IsObscuredBy(item);
 		}
-		[SmokeMethod("opaqueArea() const")]
+		[SmokeMethod("opaqueArea", "() const")]
 		public new QPainterPath OpaqueArea() {
 			return ProxyQGraphicsEllipseItem().OpaqueArea();
 		}
-		[SmokeMethod("type() const")]
+		[SmokeMethod("type", "() const")]
 		public new int type() {
 			return ProxyQGraphicsEllipseItem().type();
 		}
-		[SmokeMethod("supportsExtension(QGraphicsItem::Extension) const")]
+		[SmokeMethod("supportsExtension$", "(QGraphicsItem::Extension) const")]
 		protected new bool SupportsExtension(QGraphicsItem.Extension extension) {
 			return ProxyQGraphicsEllipseItem().SupportsExtension(extension);
 		}
-		[SmokeMethod("setExtension(QGraphicsItem::Extension, const QVariant&)")]
+		[SmokeMethod("setExtension$$", "(QGraphicsItem::Extension, const QVariant&)")]
 		protected new void SetExtension(QGraphicsItem.Extension extension, QVariant variant) {
 			ProxyQGraphicsEllipseItem().SetExtension(extension,variant);
 		}
-		[SmokeMethod("extension(const QVariant&) const")]
+		[SmokeMethod("extension#", "(const QVariant&) const")]
 		protected new QVariant Extension(QVariant variant) {
 			return ProxyQGraphicsEllipseItem().Extension(variant);
 		}
@@ -177,7 +177,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQGraphicsEllipseItem();
 		}
-		[SmokeMethod("~QGraphicsEllipseItem()")]
+		[SmokeMethod("~QGraphicsEllipseItem", "()")]
 		private void DisposeQGraphicsEllipseItem() {
 			ProxyQGraphicsEllipseItem().DisposeQGraphicsEllipseItem();
 		}

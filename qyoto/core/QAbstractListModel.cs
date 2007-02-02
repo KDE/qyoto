@@ -8,7 +8,9 @@ namespace Qyoto {
 	public class QAbstractListModel : QAbstractItemModel, IDisposable {
  		protected QAbstractListModel(Type dummy) : base((Type) null) {}
 		interface IQAbstractListModelProxy {
+			[SmokeMethod("tr$$", "(const char*, const char*)")]
 			string Tr(string s, string c);
+			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
 		}
 
@@ -33,7 +35,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQAbstractListModel(parent);
 		}
-		[SmokeMethod("QAbstractListModel(QObject*)")]
+		[SmokeMethod("QAbstractListModel#", "(QObject*)")]
 		private void NewQAbstractListModel(QObject parent) {
 			ProxyQAbstractListModel().NewQAbstractListModel(parent);
 		}
@@ -41,31 +43,29 @@ namespace Qyoto {
 			CreateProxy();
 			NewQAbstractListModel();
 		}
-		[SmokeMethod("QAbstractListModel()")]
+		[SmokeMethod("QAbstractListModel", "()")]
 		private void NewQAbstractListModel() {
 			ProxyQAbstractListModel().NewQAbstractListModel();
 		}
-		[SmokeMethod("index(int, int, const QModelIndex&) const")]
+		[SmokeMethod("index$$$", "(int, int, const QModelIndex&) const")]
 		public new QModelIndex Index(int row, int column, QModelIndex parent) {
 			return ProxyQAbstractListModel().Index(row,column,parent);
 		}
-		[SmokeMethod("index(int, int) const")]
+		[SmokeMethod("index$$", "(int, int) const")]
 		public new QModelIndex Index(int row, int column) {
 			return ProxyQAbstractListModel().Index(row,column);
 		}
-		[SmokeMethod("index(int) const")]
+		[SmokeMethod("index$", "(int) const")]
 		public new QModelIndex Index(int row) {
 			return ProxyQAbstractListModel().Index(row);
 		}
-		[SmokeMethod("dropMimeData(const QMimeData*, Qt::DropAction, int, int, const QModelIndex&)")]
+		[SmokeMethod("dropMimeData#####", "(const QMimeData*, Qt::DropAction, int, int, const QModelIndex&)")]
 		public new bool DropMimeData(QMimeData data, Qt.DropAction action, int row, int column, QModelIndex parent) {
 			return ProxyQAbstractListModel().DropMimeData(data,action,row,column,parent);
 		}
-		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQAbstractListModel().Tr(s,c);
 		}
-		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQAbstractListModel().Tr(s);
 		}
@@ -75,7 +75,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQAbstractListModel();
 		}
-		[SmokeMethod("~QAbstractListModel()")]
+		[SmokeMethod("~QAbstractListModel", "()")]
 		private void DisposeQAbstractListModel() {
 			ProxyQAbstractListModel().DisposeQAbstractListModel();
 		}

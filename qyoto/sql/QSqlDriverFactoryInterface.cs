@@ -26,7 +26,7 @@ namespace Qyoto {
 			return (IQSqlDriverFactoryInterfaceProxy) _staticInterceptor;
 		}
 
-		[SmokeMethod("create(const QString&)")]
+		[SmokeMethod("create$", "(const QString&)")]
 		public virtual QSqlDriver Create(string name) {
 			return ProxyQSqlDriverFactoryInterface().Create(name);
 		}
@@ -34,7 +34,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSqlDriverFactoryInterface();
 		}
-		[SmokeMethod("QSqlDriverFactoryInterface()")]
+		[SmokeMethod("QSqlDriverFactoryInterface", "()")]
 		private void NewQSqlDriverFactoryInterface() {
 			ProxyQSqlDriverFactoryInterface().NewQSqlDriverFactoryInterface();
 		}
@@ -44,7 +44,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQSqlDriverFactoryInterface();
 		}
-		[SmokeMethod("~QSqlDriverFactoryInterface()")]
+		[SmokeMethod("~QSqlDriverFactoryInterface", "()")]
 		private void DisposeQSqlDriverFactoryInterface() {
 			ProxyQSqlDriverFactoryInterface().DisposeQSqlDriverFactoryInterface();
 		}

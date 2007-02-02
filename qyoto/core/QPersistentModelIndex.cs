@@ -35,7 +35,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQPersistentModelIndex();
 		}
-		[SmokeMethod("QPersistentModelIndex()")]
+		[SmokeMethod("QPersistentModelIndex", "()")]
 		private void NewQPersistentModelIndex() {
 			ProxyQPersistentModelIndex().NewQPersistentModelIndex();
 		}
@@ -43,7 +43,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQPersistentModelIndex(index);
 		}
-		[SmokeMethod("QPersistentModelIndex(const QModelIndex&)")]
+		[SmokeMethod("QPersistentModelIndex#", "(const QModelIndex&)")]
 		private void NewQPersistentModelIndex(QModelIndex index) {
 			ProxyQPersistentModelIndex().NewQPersistentModelIndex(index);
 		}
@@ -51,11 +51,11 @@ namespace Qyoto {
 			CreateProxy();
 			NewQPersistentModelIndex(other);
 		}
-		[SmokeMethod("QPersistentModelIndex(const QPersistentModelIndex&)")]
+		[SmokeMethod("QPersistentModelIndex#", "(const QPersistentModelIndex&)")]
 		private void NewQPersistentModelIndex(QPersistentModelIndex other) {
 			ProxyQPersistentModelIndex().NewQPersistentModelIndex(other);
 		}
-		[SmokeMethod("operator<(const QPersistentModelIndex&) const")]
+		[SmokeMethod("operator<#", "(const QPersistentModelIndex&) const")]
 		public static bool operator<(QPersistentModelIndex lhs, QPersistentModelIndex other) {
 			return StaticQPersistentModelIndex().op_lt(lhs,other);
 		}
@@ -63,7 +63,7 @@ namespace Qyoto {
 			return !StaticQPersistentModelIndex().op_lt(lhs,other)
 						&& !StaticQPersistentModelIndex().op_equals(lhs,other);
 		}
-		[SmokeMethod("operator==(const QPersistentModelIndex&) const")]
+		[SmokeMethod("operator==#", "(const QPersistentModelIndex&) const")]
 		public static bool operator==(QPersistentModelIndex lhs, QPersistentModelIndex other) {
 			return StaticQPersistentModelIndex().op_equals(lhs,other);
 		}
@@ -77,7 +77,7 @@ namespace Qyoto {
 		public override int GetHashCode() {
 			return ProxyQPersistentModelIndex().GetHashCode();
 		}
-		[SmokeMethod("operator==(const QModelIndex&) const")]
+		[SmokeMethod("operator==#", "(const QModelIndex&) const")]
 		public static bool operator==(QPersistentModelIndex lhs, QModelIndex other) {
 			return StaticQPersistentModelIndex().op_equals(lhs,other);
 		}
@@ -85,48 +85,48 @@ namespace Qyoto {
 			return !StaticQPersistentModelIndex().op_equals(lhs,other);
 		}
 		//  operator const QModelIndex&(); >>>> NOT CONVERTED
-		[SmokeMethod("row() const")]
+		[SmokeMethod("row", "() const")]
 		public int Row() {
 			return ProxyQPersistentModelIndex().Row();
 		}
-		[SmokeMethod("column() const")]
+		[SmokeMethod("column", "() const")]
 		public int Column() {
 			return ProxyQPersistentModelIndex().Column();
 		}
 		// void* internalPointer(); >>>> NOT CONVERTED
-		[SmokeMethod("internalId() const")]
+		[SmokeMethod("internalId", "() const")]
 		public long InternalId() {
 			return ProxyQPersistentModelIndex().InternalId();
 		}
-		[SmokeMethod("parent() const")]
+		[SmokeMethod("parent", "() const")]
 		public QModelIndex Parent() {
 			return ProxyQPersistentModelIndex().Parent();
 		}
-		[SmokeMethod("sibling(int, int) const")]
+		[SmokeMethod("sibling$$", "(int, int) const")]
 		public QModelIndex Sibling(int row, int column) {
 			return ProxyQPersistentModelIndex().Sibling(row,column);
 		}
-		[SmokeMethod("child(int, int) const")]
+		[SmokeMethod("child$$", "(int, int) const")]
 		public QModelIndex Child(int row, int column) {
 			return ProxyQPersistentModelIndex().Child(row,column);
 		}
-		[SmokeMethod("data(int) const")]
+		[SmokeMethod("data$", "(int) const")]
 		public QVariant Data(int role) {
 			return ProxyQPersistentModelIndex().Data(role);
 		}
-		[SmokeMethod("data() const")]
+		[SmokeMethod("data", "() const")]
 		public QVariant Data() {
 			return ProxyQPersistentModelIndex().Data();
 		}
-		[SmokeMethod("flags() const")]
+		[SmokeMethod("flags", "() const")]
 		public int Flags() {
 			return ProxyQPersistentModelIndex().Flags();
 		}
-		[SmokeMethod("model() const")]
+		[SmokeMethod("model", "() const")]
 		public QAbstractItemModel Model() {
 			return ProxyQPersistentModelIndex().Model();
 		}
-		[SmokeMethod("isValid() const")]
+		[SmokeMethod("isValid", "() const")]
 		public bool IsValid() {
 			return ProxyQPersistentModelIndex().IsValid();
 		}
@@ -136,7 +136,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQPersistentModelIndex();
 		}
-		[SmokeMethod("~QPersistentModelIndex()")]
+		[SmokeMethod("~QPersistentModelIndex", "()")]
 		private void DisposeQPersistentModelIndex() {
 			ProxyQPersistentModelIndex().DisposeQPersistentModelIndex();
 		}

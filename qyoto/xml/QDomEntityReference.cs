@@ -29,7 +29,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDomEntityReference();
 		}
-		[SmokeMethod("QDomEntityReference()")]
+		[SmokeMethod("QDomEntityReference", "()")]
 		private void NewQDomEntityReference() {
 			ProxyQDomEntityReference().NewQDomEntityReference();
 		}
@@ -37,11 +37,11 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDomEntityReference(x);
 		}
-		[SmokeMethod("QDomEntityReference(const QDomEntityReference&)")]
+		[SmokeMethod("QDomEntityReference#", "(const QDomEntityReference&)")]
 		private void NewQDomEntityReference(QDomEntityReference x) {
 			ProxyQDomEntityReference().NewQDomEntityReference(x);
 		}
-		[SmokeMethod("nodeType() const")]
+		[SmokeMethod("nodeType", "() const")]
 		public new QDomNode.NodeType NodeType() {
 			return ProxyQDomEntityReference().NodeType();
 		}
@@ -51,7 +51,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQDomEntityReference();
 		}
-		[SmokeMethod("~QDomEntityReference()")]
+		[SmokeMethod("~QDomEntityReference", "()")]
 		private void DisposeQDomEntityReference() {
 			ProxyQDomEntityReference().DisposeQDomEntityReference();
 		}

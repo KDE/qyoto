@@ -447,10 +447,23 @@ namespace Qyoto
 		}
 	}
 
-	[AttributeUsage( AttributeTargets.Method )]
+	[AttributeUsage(	AttributeTargets.Constructor 
+						| AttributeTargets.Method
+						| AttributeTargets.Interface,
+					AllowMultiple=true )]
 	class SmokeMethod : Attribute
 	{
+		public string mungedName;
 		public string signature;
+		public int methodId = -1;
+
+		public string MungedName
+		{
+			get
+			{
+				return mungedName;
+			}
+		}
 	
 		public string Signature
 		{
@@ -460,13 +473,14 @@ namespace Qyoto
 			}
 		}
 	
-		public SmokeMethod(string signature)
+		public SmokeMethod(string mungedName, string signature)
 		{
+			this.mungedName = mungedName;
 			this.signature = signature;
 		}
 	}
 	
-	[AttributeUsage( AttributeTargets.Class )]
+	[AttributeUsage(AttributeTargets.Class, AllowMultiple=true)]
 	public class Q_CLASSINFO : Attribute
 	{
 		public string name;

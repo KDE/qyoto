@@ -24,7 +24,6 @@ using Qyoto;
 using System;
     
 [Q_CLASSINFO("D-Bus Interface", "com.trolltech.chat")]
-/*
 [Q_CLASSINFO("D-Bus Introspection", "" +
     "  <interface name=\"com.trolltech.chat\" >\n" +
     "    <signal name=\"message\" >\n" +
@@ -36,7 +35,6 @@ using System;
     "      <arg direction=\"out\" type=\"s\" name=\"text\" />\n" +
     "    </signal>\n" +
     "  </interface>\n")]
-*/
 public class ChatAdaptor : QDBusAbstractAdaptor {
     
     public ChatAdaptor(QObject parent) : base(parent)

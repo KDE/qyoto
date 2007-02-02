@@ -32,7 +32,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQFlag(i);
 		}
-		[SmokeMethod("QFlag(int)")]
+		[SmokeMethod("QFlag$", "(int)")]
 		private void NewQFlag(int i) {
 			ProxyQFlag().NewQFlag(i);
 		}
@@ -43,7 +43,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQFlag();
 		}
-		[SmokeMethod("~QFlag()")]
+		[SmokeMethod("~QFlag", "()")]
 		private void DisposeQFlag() {
 			ProxyQFlag().DisposeQFlag();
 		}

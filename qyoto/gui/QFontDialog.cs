@@ -8,12 +8,19 @@ namespace Qyoto {
 	public class QFontDialog : QDialog {
  		protected QFontDialog(Type dummy) : base((Type) null) {}
 		interface IQFontDialogProxy {
+			[SmokeMethod("tr$$", "(const char*, const char*)")]
 			string Tr(string s, string c);
+			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
+			[SmokeMethod("getFont$$$$", "(bool*, const QFont&, QWidget*, const QString&)")]
 			QFont GetFont(out bool ok, QFont def, QWidget parent, string caption);
+			[SmokeMethod("getFont$$$", "(bool*, const QFont&, QWidget*)")]
 			QFont GetFont(out bool ok, QFont def, QWidget parent);
+			[SmokeMethod("getFont$$", "(bool*, const QFont&)")]
 			QFont GetFont(out bool ok, QFont def);
+			[SmokeMethod("getFont$$", "(bool*, QWidget*)")]
 			QFont GetFont(out bool ok, QWidget parent);
+			[SmokeMethod("getFont$", "(bool*)")]
 			QFont GetFont(out bool ok);
 		}
 
@@ -34,31 +41,24 @@ namespace Qyoto {
 		}
 
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
-		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQFontDialog().Tr(s,c);
 		}
-		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQFontDialog().Tr(s);
 		}
-		[SmokeMethod("getFont(bool*, const QFont&, QWidget*, const QString&)")]
 		public static QFont GetFont(out bool ok, QFont def, QWidget parent, string caption) {
 			return StaticQFontDialog().GetFont(out ok,def,parent,caption);
 		}
-		[SmokeMethod("getFont(bool*, const QFont&, QWidget*)")]
 		public static QFont GetFont(out bool ok, QFont def, QWidget parent) {
 			return StaticQFontDialog().GetFont(out ok,def,parent);
 		}
-		[SmokeMethod("getFont(bool*, const QFont&)")]
 		public static QFont GetFont(out bool ok, QFont def) {
 			return StaticQFontDialog().GetFont(out ok,def);
 		}
-		[SmokeMethod("getFont(bool*, QWidget*)")]
 		public static QFont GetFont(out bool ok, QWidget parent) {
 			return StaticQFontDialog().GetFont(out ok,parent);
 		}
-		[SmokeMethod("getFont(bool*)")]
 		public static QFont GetFont(out bool ok) {
 			return StaticQFontDialog().GetFont(out ok);
 		}

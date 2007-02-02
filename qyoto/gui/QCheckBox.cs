@@ -9,7 +9,9 @@ namespace Qyoto {
 	public class QCheckBox : QAbstractButton, IDisposable {
  		protected QCheckBox(Type dummy) : base((Type) null) {}
 		interface IQCheckBoxProxy {
+			[SmokeMethod("tr$$", "(const char*, const char*)")]
 			string Tr(string s, string c);
+			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
 		}
 
@@ -43,7 +45,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQCheckBox(parent);
 		}
-		[SmokeMethod("QCheckBox(QWidget*)")]
+		[SmokeMethod("QCheckBox#", "(QWidget*)")]
 		private void NewQCheckBox(QWidget parent) {
 			ProxyQCheckBox().NewQCheckBox(parent);
 		}
@@ -51,7 +53,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQCheckBox();
 		}
-		[SmokeMethod("QCheckBox()")]
+		[SmokeMethod("QCheckBox", "()")]
 		private void NewQCheckBox() {
 			ProxyQCheckBox().NewQCheckBox();
 		}
@@ -59,7 +61,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQCheckBox(text,parent);
 		}
-		[SmokeMethod("QCheckBox(const QString&, QWidget*)")]
+		[SmokeMethod("QCheckBox$$", "(const QString&, QWidget*)")]
 		private void NewQCheckBox(string text, QWidget parent) {
 			ProxyQCheckBox().NewQCheckBox(text,parent);
 		}
@@ -67,55 +69,53 @@ namespace Qyoto {
 			CreateProxy();
 			NewQCheckBox(text);
 		}
-		[SmokeMethod("QCheckBox(const QString&)")]
+		[SmokeMethod("QCheckBox$", "(const QString&)")]
 		private void NewQCheckBox(string text) {
 			ProxyQCheckBox().NewQCheckBox(text);
 		}
-		[SmokeMethod("sizeHint() const")]
+		[SmokeMethod("sizeHint", "() const")]
 		public new QSize SizeHint() {
 			return ProxyQCheckBox().SizeHint();
 		}
-		[SmokeMethod("isTristate() const")]
+		[SmokeMethod("isTristate", "() const")]
 		public bool IsTristate() {
 			return ProxyQCheckBox().IsTristate();
 		}
-		[SmokeMethod("checkState() const")]
+		[SmokeMethod("checkState", "() const")]
 		public Qt.CheckState CheckState() {
 			return ProxyQCheckBox().CheckState();
 		}
-		[SmokeMethod("setCheckState(Qt::CheckState)")]
+		[SmokeMethod("setCheckState$", "(Qt::CheckState)")]
 		public void SetCheckState(Qt.CheckState state) {
 			ProxyQCheckBox().SetCheckState(state);
 		}
-		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQCheckBox().Tr(s,c);
 		}
-		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQCheckBox().Tr(s);
 		}
-		[SmokeMethod("event(QEvent*)")]
+		[SmokeMethod("event#", "(QEvent*)")]
 		public new bool Event(QEvent e) {
 			return ProxyQCheckBox().Event(e);
 		}
-		[SmokeMethod("hitButton(const QPoint&) const")]
+		[SmokeMethod("hitButton#", "(const QPoint&) const")]
 		protected new bool HitButton(QPoint pos) {
 			return ProxyQCheckBox().HitButton(pos);
 		}
-		[SmokeMethod("checkStateSet()")]
+		[SmokeMethod("checkStateSet", "()")]
 		protected new void CheckStateSet() {
 			ProxyQCheckBox().CheckStateSet();
 		}
-		[SmokeMethod("nextCheckState()")]
+		[SmokeMethod("nextCheckState", "()")]
 		protected new void NextCheckState() {
 			ProxyQCheckBox().NextCheckState();
 		}
-		[SmokeMethod("paintEvent(QPaintEvent*)")]
+		[SmokeMethod("paintEvent#", "(QPaintEvent*)")]
 		protected new void PaintEvent(QPaintEvent arg1) {
 			ProxyQCheckBox().PaintEvent(arg1);
 		}
-		[SmokeMethod("mouseMoveEvent(QMouseEvent*)")]
+		[SmokeMethod("mouseMoveEvent#", "(QMouseEvent*)")]
 		protected new void MouseMoveEvent(QMouseEvent arg1) {
 			ProxyQCheckBox().MouseMoveEvent(arg1);
 		}
@@ -125,7 +125,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQCheckBox();
 		}
-		[SmokeMethod("~QCheckBox()")]
+		[SmokeMethod("~QCheckBox", "()")]
 		private void DisposeQCheckBox() {
 			ProxyQCheckBox().DisposeQCheckBox();
 		}
@@ -137,7 +137,7 @@ namespace Qyoto {
 	}
 
 	public interface IQCheckBoxSignals : IQAbstractButtonSignals {
-		[Q_SIGNAL("void stateChanged(int)")]
+		[Q_SIGNAL("void (int)")]
 		void StateChanged(int arg1);
 	}
 }

@@ -29,7 +29,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGraphicsSceneHoverEvent(type);
 		}
-		[SmokeMethod("QGraphicsSceneHoverEvent(QEvent::Type)")]
+		[SmokeMethod("QGraphicsSceneHoverEvent$", "(QEvent::Type)")]
 		private void NewQGraphicsSceneHoverEvent(QEvent.TypeOf type) {
 			ProxyQGraphicsSceneHoverEvent().NewQGraphicsSceneHoverEvent(type);
 		}
@@ -37,31 +37,31 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGraphicsSceneHoverEvent();
 		}
-		[SmokeMethod("QGraphicsSceneHoverEvent()")]
+		[SmokeMethod("QGraphicsSceneHoverEvent", "()")]
 		private void NewQGraphicsSceneHoverEvent() {
 			ProxyQGraphicsSceneHoverEvent().NewQGraphicsSceneHoverEvent();
 		}
-		[SmokeMethod("pos() const")]
+		[SmokeMethod("pos", "() const")]
 		public QPointF Pos() {
 			return ProxyQGraphicsSceneHoverEvent().Pos();
 		}
-		[SmokeMethod("setPos(const QPointF&)")]
+		[SmokeMethod("setPos#", "(const QPointF&)")]
 		public void SetPos(QPointF pos) {
 			ProxyQGraphicsSceneHoverEvent().SetPos(pos);
 		}
-		[SmokeMethod("scenePos() const")]
+		[SmokeMethod("scenePos", "() const")]
 		public QPointF ScenePos() {
 			return ProxyQGraphicsSceneHoverEvent().ScenePos();
 		}
-		[SmokeMethod("setScenePos(const QPointF&)")]
+		[SmokeMethod("setScenePos#", "(const QPointF&)")]
 		public void SetScenePos(QPointF pos) {
 			ProxyQGraphicsSceneHoverEvent().SetScenePos(pos);
 		}
-		[SmokeMethod("screenPos() const")]
+		[SmokeMethod("screenPos", "() const")]
 		public QPoint ScreenPos() {
 			return ProxyQGraphicsSceneHoverEvent().ScreenPos();
 		}
-		[SmokeMethod("setScreenPos(const QPoint&)")]
+		[SmokeMethod("setScreenPos#", "(const QPoint&)")]
 		public void SetScreenPos(QPoint pos) {
 			ProxyQGraphicsSceneHoverEvent().SetScreenPos(pos);
 		}
@@ -71,7 +71,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQGraphicsSceneHoverEvent();
 		}
-		[SmokeMethod("~QGraphicsSceneHoverEvent()")]
+		[SmokeMethod("~QGraphicsSceneHoverEvent", "()")]
 		private void DisposeQGraphicsSceneHoverEvent() {
 			ProxyQGraphicsSceneHoverEvent().DisposeQGraphicsSceneHoverEvent();
 		}

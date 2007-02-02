@@ -32,23 +32,23 @@ namespace Qyoto {
 			CreateProxy();
 			NewQBasicTimer();
 		}
-		[SmokeMethod("QBasicTimer()")]
+		[SmokeMethod("QBasicTimer", "()")]
 		private void NewQBasicTimer() {
 			ProxyQBasicTimer().NewQBasicTimer();
 		}
-		[SmokeMethod("isActive() const")]
+		[SmokeMethod("isActive", "() const")]
 		public bool IsActive() {
 			return ProxyQBasicTimer().IsActive();
 		}
-		[SmokeMethod("timerId() const")]
+		[SmokeMethod("timerId", "() const")]
 		public int TimerId() {
 			return ProxyQBasicTimer().TimerId();
 		}
-		[SmokeMethod("start(int, QObject*)")]
+		[SmokeMethod("start$$", "(int, QObject*)")]
 		public void Start(int msec, QObject arg2) {
 			ProxyQBasicTimer().Start(msec,arg2);
 		}
-		[SmokeMethod("stop()")]
+		[SmokeMethod("stop", "()")]
 		public void Stop() {
 			ProxyQBasicTimer().Stop();
 		}
@@ -58,7 +58,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQBasicTimer();
 		}
-		[SmokeMethod("~QBasicTimer()")]
+		[SmokeMethod("~QBasicTimer", "()")]
 		private void DisposeQBasicTimer() {
 			ProxyQBasicTimer().DisposeQBasicTimer();
 		}

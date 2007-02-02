@@ -34,7 +34,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQPoint();
 		}
-		[SmokeMethod("QPoint()")]
+		[SmokeMethod("QPoint", "()")]
 		private void NewQPoint() {
 			ProxyQPoint().NewQPoint();
 		}
@@ -42,47 +42,47 @@ namespace Qyoto {
 			CreateProxy();
 			NewQPoint(xpos,ypos);
 		}
-		[SmokeMethod("QPoint(int, int)")]
+		[SmokeMethod("QPoint$$", "(int, int)")]
 		private void NewQPoint(int xpos, int ypos) {
 			ProxyQPoint().NewQPoint(xpos,ypos);
 		}
-		[SmokeMethod("isNull() const")]
+		[SmokeMethod("isNull", "() const")]
 		public bool IsNull() {
 			return ProxyQPoint().IsNull();
 		}
-		[SmokeMethod("x() const")]
+		[SmokeMethod("x", "() const")]
 		public int X() {
 			return ProxyQPoint().X();
 		}
-		[SmokeMethod("y() const")]
+		[SmokeMethod("y", "() const")]
 		public int Y() {
 			return ProxyQPoint().Y();
 		}
-		[SmokeMethod("setX(int)")]
+		[SmokeMethod("setX$", "(int)")]
 		public void SetX(int x) {
 			ProxyQPoint().SetX(x);
 		}
-		[SmokeMethod("setY(int)")]
+		[SmokeMethod("setY$", "(int)")]
 		public void SetY(int y) {
 			ProxyQPoint().SetY(y);
 		}
-		[SmokeMethod("manhattanLength() const")]
+		[SmokeMethod("manhattanLength", "() const")]
 		public int ManhattanLength() {
 			return ProxyQPoint().ManhattanLength();
 		}
-		[SmokeMethod("rx()")]
+		[SmokeMethod("rx", "()")]
 		public int Rx() {
 			return ProxyQPoint().Rx();
 		}
-		[SmokeMethod("ry()")]
+		[SmokeMethod("ry", "()")]
 		public int Ry() {
 			return ProxyQPoint().Ry();
 		}
-		[SmokeMethod("operator*=(qreal)")]
+		[SmokeMethod("operator*=$", "(qreal)")]
 		public static QPoint operator*(QPoint lhs, double c) {
 			return StaticQPoint().op_mult(lhs,c);
 		}
-		[SmokeMethod("operator/=(qreal)")]
+		[SmokeMethod("operator/=$", "(qreal)")]
 		public static QPoint operator/(QPoint lhs, double c) {
 			return StaticQPoint().op_div(lhs,c);
 		}
@@ -92,7 +92,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQPoint();
 		}
-		[SmokeMethod("~QPoint()")]
+		[SmokeMethod("~QPoint", "()")]
 		private void DisposeQPoint() {
 			ProxyQPoint().DisposeQPoint();
 		}

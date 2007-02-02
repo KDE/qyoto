@@ -8,7 +8,9 @@ namespace Qyoto {
 	public class QPageSetupDialog : QAbstractPageSetupDialog, IDisposable {
  		protected QPageSetupDialog(Type dummy) : base((Type) null) {}
 		interface IQPageSetupDialogProxy {
+			[SmokeMethod("tr$$", "(const char*, const char*)")]
 			string Tr(string s, string c);
+			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
 		}
 
@@ -33,7 +35,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQPageSetupDialog(printer,parent);
 		}
-		[SmokeMethod("QPageSetupDialog(QPrinter*, QWidget*)")]
+		[SmokeMethod("QPageSetupDialog##", "(QPrinter*, QWidget*)")]
 		private void NewQPageSetupDialog(QPrinter printer, QWidget parent) {
 			ProxyQPageSetupDialog().NewQPageSetupDialog(printer,parent);
 		}
@@ -41,19 +43,17 @@ namespace Qyoto {
 			CreateProxy();
 			NewQPageSetupDialog(printer);
 		}
-		[SmokeMethod("QPageSetupDialog(QPrinter*)")]
+		[SmokeMethod("QPageSetupDialog#", "(QPrinter*)")]
 		private void NewQPageSetupDialog(QPrinter printer) {
 			ProxyQPageSetupDialog().NewQPageSetupDialog(printer);
 		}
-		[SmokeMethod("exec()")]
+		[SmokeMethod("exec", "()")]
 		public new virtual int Exec() {
 			return ProxyQPageSetupDialog().Exec();
 		}
-		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQPageSetupDialog().Tr(s,c);
 		}
-		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQPageSetupDialog().Tr(s);
 		}
@@ -63,7 +63,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQPageSetupDialog();
 		}
-		[SmokeMethod("~QPageSetupDialog()")]
+		[SmokeMethod("~QPageSetupDialog", "()")]
 		private void DisposeQPageSetupDialog() {
 			ProxyQPageSetupDialog().DisposeQPageSetupDialog();
 		}

@@ -9,7 +9,9 @@ namespace Qyoto {
 	public class QTextFrame : QTextObject, IDisposable {
  		protected QTextFrame(Type dummy) : base((Type) null) {}
 		interface IQTextFrameProxy {
+			[SmokeMethod("tr$$", "(const char*, const char*)")]
 			string Tr(string s, string c);
+			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
 		}
 
@@ -31,45 +33,43 @@ namespace Qyoto {
 
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		// QTextFrame* QTextFrame(QTextDocument* arg1); >>>> NOT CONVERTED
-		[SmokeMethod("setFrameFormat(const QTextFrameFormat&)")]
+		[SmokeMethod("setFrameFormat#", "(const QTextFrameFormat&)")]
 		public void SetFrameFormat(QTextFrameFormat format) {
 			ProxyQTextFrame().SetFrameFormat(format);
 		}
-		[SmokeMethod("frameFormat() const")]
+		[SmokeMethod("frameFormat", "() const")]
 		public QTextFrameFormat FrameFormat() {
 			return ProxyQTextFrame().FrameFormat();
 		}
 		// QTextCursor firstCursorPosition(); >>>> NOT CONVERTED
 		// QTextCursor lastCursorPosition(); >>>> NOT CONVERTED
-		[SmokeMethod("firstPosition() const")]
+		[SmokeMethod("firstPosition", "() const")]
 		public int FirstPosition() {
 			return ProxyQTextFrame().FirstPosition();
 		}
-		[SmokeMethod("lastPosition() const")]
+		[SmokeMethod("lastPosition", "() const")]
 		public int LastPosition() {
 			return ProxyQTextFrame().LastPosition();
 		}
-		[SmokeMethod("layoutData() const")]
+		[SmokeMethod("layoutData", "() const")]
 		public QTextFrameLayoutData LayoutData() {
 			return ProxyQTextFrame().LayoutData();
 		}
-		[SmokeMethod("setLayoutData(QTextFrameLayoutData*)")]
+		[SmokeMethod("setLayoutData#", "(QTextFrameLayoutData*)")]
 		public void SetLayoutData(QTextFrameLayoutData data) {
 			ProxyQTextFrame().SetLayoutData(data);
 		}
-		[SmokeMethod("childFrames() const")]
+		[SmokeMethod("childFrames", "() const")]
 		public List<QTextFrame> ChildFrames() {
 			return ProxyQTextFrame().ChildFrames();
 		}
-		[SmokeMethod("parentFrame() const")]
+		[SmokeMethod("parentFrame", "() const")]
 		public QTextFrame ParentFrame() {
 			return ProxyQTextFrame().ParentFrame();
 		}
-		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQTextFrame().Tr(s,c);
 		}
-		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQTextFrame().Tr(s);
 		}
@@ -79,7 +79,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQTextFrame();
 		}
-		[SmokeMethod("~QTextFrame()")]
+		[SmokeMethod("~QTextFrame", "()")]
 		private void DisposeQTextFrame() {
 			ProxyQTextFrame().DisposeQTextFrame();
 		}

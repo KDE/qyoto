@@ -26,7 +26,7 @@ namespace Qyoto {
 			return (IQAccessibleInterfaceExProxy) _staticInterceptor;
 		}
 
-		[SmokeMethod("invokeMethodEx(QAccessible::Method, int, const QVariantList&)")]
+		[SmokeMethod("invokeMethodEx$$$", "(QAccessible::Method, int, const QVariantList&)")]
 		public virtual QVariant InvokeMethodEx(QAccessible.Method method, int child, List<QVariant> arg3) {
 			return ProxyQAccessibleInterfaceEx().InvokeMethodEx(method,child,arg3);
 		}
@@ -34,7 +34,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQAccessibleInterfaceEx();
 		}
-		[SmokeMethod("QAccessibleInterfaceEx()")]
+		[SmokeMethod("QAccessibleInterfaceEx", "()")]
 		private void NewQAccessibleInterfaceEx() {
 			ProxyQAccessibleInterfaceEx().NewQAccessibleInterfaceEx();
 		}
@@ -44,7 +44,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQAccessibleInterfaceEx();
 		}
-		[SmokeMethod("~QAccessibleInterfaceEx()")]
+		[SmokeMethod("~QAccessibleInterfaceEx", "()")]
 		private void DisposeQAccessibleInterfaceEx() {
 			ProxyQAccessibleInterfaceEx().DisposeQAccessibleInterfaceEx();
 		}

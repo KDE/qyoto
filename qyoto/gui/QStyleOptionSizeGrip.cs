@@ -35,7 +35,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionSizeGrip();
 		}
-		[SmokeMethod("QStyleOptionSizeGrip()")]
+		[SmokeMethod("QStyleOptionSizeGrip", "()")]
 		private void NewQStyleOptionSizeGrip() {
 			ProxyQStyleOptionSizeGrip().NewQStyleOptionSizeGrip();
 		}
@@ -43,7 +43,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionSizeGrip(other);
 		}
-		[SmokeMethod("QStyleOptionSizeGrip(const QStyleOptionSizeGrip&)")]
+		[SmokeMethod("QStyleOptionSizeGrip#", "(const QStyleOptionSizeGrip&)")]
 		private void NewQStyleOptionSizeGrip(QStyleOptionSizeGrip other) {
 			ProxyQStyleOptionSizeGrip().NewQStyleOptionSizeGrip(other);
 		}
@@ -51,7 +51,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionSizeGrip(version);
 		}
-		[SmokeMethod("QStyleOptionSizeGrip(int)")]
+		[SmokeMethod("QStyleOptionSizeGrip$", "(int)")]
 		private void NewQStyleOptionSizeGrip(int version) {
 			ProxyQStyleOptionSizeGrip().NewQStyleOptionSizeGrip(version);
 		}
@@ -61,7 +61,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQStyleOptionSizeGrip();
 		}
-		[SmokeMethod("~QStyleOptionSizeGrip()")]
+		[SmokeMethod("~QStyleOptionSizeGrip", "()")]
 		private void DisposeQStyleOptionSizeGrip() {
 			ProxyQStyleOptionSizeGrip().DisposeQStyleOptionSizeGrip();
 		}

@@ -9,7 +9,9 @@ namespace Qyoto {
 	public class QShortcut : QObject, IDisposable {
  		protected QShortcut(Type dummy) : base((Type) null) {}
 		interface IQShortcutProxy {
+			[SmokeMethod("tr$$", "(const char*, const char*)")]
 			string Tr(string s, string c);
+			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
 		}
 
@@ -79,7 +81,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQShortcut(parent);
 		}
-		[SmokeMethod("QShortcut(QWidget*)")]
+		[SmokeMethod("QShortcut#", "(QWidget*)")]
 		private void NewQShortcut(QWidget parent) {
 			ProxyQShortcut().NewQShortcut(parent);
 		}
@@ -87,7 +89,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQShortcut(key,parent,member,ambiguousMember,context);
 		}
-		[SmokeMethod("QShortcut(const QKeySequence&, QWidget*, const char*, const char*, Qt::ShortcutContext)")]
+		[SmokeMethod("QShortcut#####", "(const QKeySequence&, QWidget*, const char*, const char*, Qt::ShortcutContext)")]
 		private void NewQShortcut(QKeySequence key, QWidget parent, string member, string ambiguousMember, Qt.ShortcutContext context) {
 			ProxyQShortcut().NewQShortcut(key,parent,member,ambiguousMember,context);
 		}
@@ -95,7 +97,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQShortcut(key,parent,member,ambiguousMember);
 		}
-		[SmokeMethod("QShortcut(const QKeySequence&, QWidget*, const char*, const char*)")]
+		[SmokeMethod("QShortcut####", "(const QKeySequence&, QWidget*, const char*, const char*)")]
 		private void NewQShortcut(QKeySequence key, QWidget parent, string member, string ambiguousMember) {
 			ProxyQShortcut().NewQShortcut(key,parent,member,ambiguousMember);
 		}
@@ -103,7 +105,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQShortcut(key,parent,member);
 		}
-		[SmokeMethod("QShortcut(const QKeySequence&, QWidget*, const char*)")]
+		[SmokeMethod("QShortcut###", "(const QKeySequence&, QWidget*, const char*)")]
 		private void NewQShortcut(QKeySequence key, QWidget parent, string member) {
 			ProxyQShortcut().NewQShortcut(key,parent,member);
 		}
@@ -111,31 +113,29 @@ namespace Qyoto {
 			CreateProxy();
 			NewQShortcut(key,parent);
 		}
-		[SmokeMethod("QShortcut(const QKeySequence&, QWidget*)")]
+		[SmokeMethod("QShortcut##", "(const QKeySequence&, QWidget*)")]
 		private void NewQShortcut(QKeySequence key, QWidget parent) {
 			ProxyQShortcut().NewQShortcut(key,parent);
 		}
-		[SmokeMethod("isEnabled() const")]
+		[SmokeMethod("isEnabled", "() const")]
 		public bool IsEnabled() {
 			return ProxyQShortcut().IsEnabled();
 		}
-		[SmokeMethod("id() const")]
+		[SmokeMethod("id", "() const")]
 		public int Id() {
 			return ProxyQShortcut().Id();
 		}
-		[SmokeMethod("parentWidget() const")]
+		[SmokeMethod("parentWidget", "() const")]
 		public QWidget ParentWidget() {
 			return ProxyQShortcut().ParentWidget();
 		}
-		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQShortcut().Tr(s,c);
 		}
-		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQShortcut().Tr(s);
 		}
-		[SmokeMethod("event(QEvent*)")]
+		[SmokeMethod("event#", "(QEvent*)")]
 		public new bool Event(QEvent e) {
 			return ProxyQShortcut().Event(e);
 		}
@@ -145,7 +145,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQShortcut();
 		}
-		[SmokeMethod("~QShortcut()")]
+		[SmokeMethod("~QShortcut", "()")]
 		private void DisposeQShortcut() {
 			ProxyQShortcut().DisposeQShortcut();
 		}
@@ -157,9 +157,9 @@ namespace Qyoto {
 	}
 
 	public interface IQShortcutSignals : IQObjectSignals {
-		[Q_SIGNAL("void activated()")]
+		[Q_SIGNAL("void ()")]
 		void Activated();
-		[Q_SIGNAL("void activatedAmbiguously()")]
+		[Q_SIGNAL("void ()")]
 		void ActivatedAmbiguously();
 	}
 }

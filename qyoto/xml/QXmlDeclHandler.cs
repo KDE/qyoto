@@ -36,19 +36,19 @@ namespace Qyoto {
 			return (IQXmlDeclHandlerProxy) _staticInterceptor;
 		}
 
-		[SmokeMethod("attributeDecl(const QString&, const QString&, const QString&, const QString&, const QString&)")]
+		[SmokeMethod("attributeDecl$$$$$", "(const QString&, const QString&, const QString&, const QString&, const QString&)")]
 		public virtual bool AttributeDecl(string eName, string aName, string type, string valueDefault, string value) {
 			return ProxyQXmlDeclHandler().AttributeDecl(eName,aName,type,valueDefault,value);
 		}
-		[SmokeMethod("internalEntityDecl(const QString&, const QString&)")]
+		[SmokeMethod("internalEntityDecl$$", "(const QString&, const QString&)")]
 		public virtual bool InternalEntityDecl(string name, string value) {
 			return ProxyQXmlDeclHandler().InternalEntityDecl(name,value);
 		}
-		[SmokeMethod("externalEntityDecl(const QString&, const QString&, const QString&)")]
+		[SmokeMethod("externalEntityDecl$$$", "(const QString&, const QString&, const QString&)")]
 		public virtual bool ExternalEntityDecl(string name, string publicId, string systemId) {
 			return ProxyQXmlDeclHandler().ExternalEntityDecl(name,publicId,systemId);
 		}
-		[SmokeMethod("errorString() const")]
+		[SmokeMethod("errorString", "() const")]
 		public virtual string ErrorString() {
 			return ProxyQXmlDeclHandler().ErrorString();
 		}
@@ -56,7 +56,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQXmlDeclHandler();
 		}
-		[SmokeMethod("QXmlDeclHandler()")]
+		[SmokeMethod("QXmlDeclHandler", "()")]
 		private void NewQXmlDeclHandler() {
 			ProxyQXmlDeclHandler().NewQXmlDeclHandler();
 		}
@@ -66,7 +66,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQXmlDeclHandler();
 		}
-		[SmokeMethod("~QXmlDeclHandler()")]
+		[SmokeMethod("~QXmlDeclHandler", "()")]
 		private void DisposeQXmlDeclHandler() {
 			ProxyQXmlDeclHandler().DisposeQXmlDeclHandler();
 		}

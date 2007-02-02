@@ -32,7 +32,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTableWidgetSelectionRange();
 		}
-		[SmokeMethod("QTableWidgetSelectionRange()")]
+		[SmokeMethod("QTableWidgetSelectionRange", "()")]
 		private void NewQTableWidgetSelectionRange() {
 			ProxyQTableWidgetSelectionRange().NewQTableWidgetSelectionRange();
 		}
@@ -40,7 +40,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTableWidgetSelectionRange(top,left,bottom,right);
 		}
-		[SmokeMethod("QTableWidgetSelectionRange(int, int, int, int)")]
+		[SmokeMethod("QTableWidgetSelectionRange$$$$", "(int, int, int, int)")]
 		private void NewQTableWidgetSelectionRange(int top, int left, int bottom, int right) {
 			ProxyQTableWidgetSelectionRange().NewQTableWidgetSelectionRange(top,left,bottom,right);
 		}
@@ -48,31 +48,31 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTableWidgetSelectionRange(other);
 		}
-		[SmokeMethod("QTableWidgetSelectionRange(const QTableWidgetSelectionRange&)")]
+		[SmokeMethod("QTableWidgetSelectionRange#", "(const QTableWidgetSelectionRange&)")]
 		private void NewQTableWidgetSelectionRange(QTableWidgetSelectionRange other) {
 			ProxyQTableWidgetSelectionRange().NewQTableWidgetSelectionRange(other);
 		}
-		[SmokeMethod("topRow() const")]
+		[SmokeMethod("topRow", "() const")]
 		public int TopRow() {
 			return ProxyQTableWidgetSelectionRange().TopRow();
 		}
-		[SmokeMethod("bottomRow() const")]
+		[SmokeMethod("bottomRow", "() const")]
 		public int BottomRow() {
 			return ProxyQTableWidgetSelectionRange().BottomRow();
 		}
-		[SmokeMethod("leftColumn() const")]
+		[SmokeMethod("leftColumn", "() const")]
 		public int LeftColumn() {
 			return ProxyQTableWidgetSelectionRange().LeftColumn();
 		}
-		[SmokeMethod("rightColumn() const")]
+		[SmokeMethod("rightColumn", "() const")]
 		public int RightColumn() {
 			return ProxyQTableWidgetSelectionRange().RightColumn();
 		}
-		[SmokeMethod("rowCount() const")]
+		[SmokeMethod("rowCount", "() const")]
 		public int RowCount() {
 			return ProxyQTableWidgetSelectionRange().RowCount();
 		}
-		[SmokeMethod("columnCount() const")]
+		[SmokeMethod("columnCount", "() const")]
 		public int ColumnCount() {
 			return ProxyQTableWidgetSelectionRange().ColumnCount();
 		}
@@ -82,7 +82,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQTableWidgetSelectionRange();
 		}
-		[SmokeMethod("~QTableWidgetSelectionRange()")]
+		[SmokeMethod("~QTableWidgetSelectionRange", "()")]
 		private void DisposeQTableWidgetSelectionRange() {
 			ProxyQTableWidgetSelectionRange().DisposeQTableWidgetSelectionRange();
 		}

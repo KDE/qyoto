@@ -8,7 +8,9 @@ namespace Qyoto {
 	public class QAbstractPageSetupDialog : QDialog {
  		protected QAbstractPageSetupDialog(Type dummy) : base((Type) null) {}
 		interface IQAbstractPageSetupDialogProxy {
+			[SmokeMethod("tr$$", "(const char*, const char*)")]
 			string Tr(string s, string c);
+			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
 		}
 
@@ -33,7 +35,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQAbstractPageSetupDialog(printer,parent);
 		}
-		[SmokeMethod("QAbstractPageSetupDialog(QPrinter*, QWidget*)")]
+		[SmokeMethod("QAbstractPageSetupDialog##", "(QPrinter*, QWidget*)")]
 		private void NewQAbstractPageSetupDialog(QPrinter printer, QWidget parent) {
 			ProxyQAbstractPageSetupDialog().NewQAbstractPageSetupDialog(printer,parent);
 		}
@@ -41,23 +43,21 @@ namespace Qyoto {
 			CreateProxy();
 			NewQAbstractPageSetupDialog(printer);
 		}
-		[SmokeMethod("QAbstractPageSetupDialog(QPrinter*)")]
+		[SmokeMethod("QAbstractPageSetupDialog#", "(QPrinter*)")]
 		private void NewQAbstractPageSetupDialog(QPrinter printer) {
 			ProxyQAbstractPageSetupDialog().NewQAbstractPageSetupDialog(printer);
 		}
-		[SmokeMethod("exec()")]
+		[SmokeMethod("exec", "()")]
 		public new virtual int Exec() {
 			return ProxyQAbstractPageSetupDialog().Exec();
 		}
-		[SmokeMethod("printer()")]
+		[SmokeMethod("printer", "()")]
 		public QPrinter Printer() {
 			return ProxyQAbstractPageSetupDialog().Printer();
 		}
-		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQAbstractPageSetupDialog().Tr(s,c);
 		}
-		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQAbstractPageSetupDialog().Tr(s);
 		}
@@ -67,7 +67,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQAbstractPageSetupDialog();
 		}
-		[SmokeMethod("~QAbstractPageSetupDialog()")]
+		[SmokeMethod("~QAbstractPageSetupDialog", "()")]
 		private void DisposeQAbstractPageSetupDialog() {
 			ProxyQAbstractPageSetupDialog().DisposeQAbstractPageSetupDialog();
 		}

@@ -30,7 +30,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSqlIndex(cursorName,name);
 		}
-		[SmokeMethod("QSqlIndex(const QString&, const QString&)")]
+		[SmokeMethod("QSqlIndex$$", "(const QString&, const QString&)")]
 		private void NewQSqlIndex(string cursorName, string name) {
 			ProxyQSqlIndex().NewQSqlIndex(cursorName,name);
 		}
@@ -38,7 +38,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSqlIndex(cursorName);
 		}
-		[SmokeMethod("QSqlIndex(const QString&)")]
+		[SmokeMethod("QSqlIndex$", "(const QString&)")]
 		private void NewQSqlIndex(string cursorName) {
 			ProxyQSqlIndex().NewQSqlIndex(cursorName);
 		}
@@ -46,7 +46,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSqlIndex();
 		}
-		[SmokeMethod("QSqlIndex()")]
+		[SmokeMethod("QSqlIndex", "()")]
 		private void NewQSqlIndex() {
 			ProxyQSqlIndex().NewQSqlIndex();
 		}
@@ -54,39 +54,39 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSqlIndex(other);
 		}
-		[SmokeMethod("QSqlIndex(const QSqlIndex&)")]
+		[SmokeMethod("QSqlIndex#", "(const QSqlIndex&)")]
 		private void NewQSqlIndex(QSqlIndex other) {
 			ProxyQSqlIndex().NewQSqlIndex(other);
 		}
-		[SmokeMethod("setCursorName(const QString&)")]
+		[SmokeMethod("setCursorName$", "(const QString&)")]
 		public void SetCursorName(string cursorName) {
 			ProxyQSqlIndex().SetCursorName(cursorName);
 		}
-		[SmokeMethod("cursorName() const")]
+		[SmokeMethod("cursorName", "() const")]
 		public string CursorName() {
 			return ProxyQSqlIndex().CursorName();
 		}
-		[SmokeMethod("setName(const QString&)")]
+		[SmokeMethod("setName$", "(const QString&)")]
 		public void SetName(string name) {
 			ProxyQSqlIndex().SetName(name);
 		}
-		[SmokeMethod("name() const")]
+		[SmokeMethod("name", "() const")]
 		public string Name() {
 			return ProxyQSqlIndex().Name();
 		}
-		[SmokeMethod("append(const QSqlField&)")]
+		[SmokeMethod("append#", "(const QSqlField&)")]
 		public new void Append(QSqlField field) {
 			ProxyQSqlIndex().Append(field);
 		}
-		[SmokeMethod("append(const QSqlField&, bool)")]
+		[SmokeMethod("append##", "(const QSqlField&, bool)")]
 		public new void Append(QSqlField field, bool desc) {
 			ProxyQSqlIndex().Append(field,desc);
 		}
-		[SmokeMethod("isDescending(int) const")]
+		[SmokeMethod("isDescending$", "(int) const")]
 		public bool IsDescending(int i) {
 			return ProxyQSqlIndex().IsDescending(i);
 		}
-		[SmokeMethod("setDescending(int, bool)")]
+		[SmokeMethod("setDescending$$", "(int, bool)")]
 		public void SetDescending(int i, bool desc) {
 			ProxyQSqlIndex().SetDescending(i,desc);
 		}
@@ -96,7 +96,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQSqlIndex();
 		}
-		[SmokeMethod("~QSqlIndex()")]
+		[SmokeMethod("~QSqlIndex", "()")]
 		private void DisposeQSqlIndex() {
 			ProxyQSqlIndex().DisposeQSqlIndex();
 		}

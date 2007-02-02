@@ -10,7 +10,9 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QItemEditorFactory(Type dummy) {}
 		interface IQItemEditorFactoryProxy {
+			[SmokeMethod("defaultFactory", "()")]
 			QItemEditorFactory DefaultFactory();
+			[SmokeMethod("setDefaultFactory#", "(QItemEditorFactory*)")]
 			void SetDefaultFactory(QItemEditorFactory factory);
 		}
 
@@ -34,27 +36,25 @@ namespace Qyoto {
 			CreateProxy();
 			NewQItemEditorFactory();
 		}
-		[SmokeMethod("QItemEditorFactory()")]
+		[SmokeMethod("QItemEditorFactory", "()")]
 		private void NewQItemEditorFactory() {
 			ProxyQItemEditorFactory().NewQItemEditorFactory();
 		}
-		[SmokeMethod("createEditor(QVariant::Type, QWidget*) const")]
+		[SmokeMethod("createEditor$$", "(QVariant::Type, QWidget*) const")]
 		public virtual QWidget CreateEditor(QVariant.TypeOf type, QWidget parent) {
 			return ProxyQItemEditorFactory().CreateEditor(type,parent);
 		}
-		[SmokeMethod("valuePropertyName(QVariant::Type) const")]
+		[SmokeMethod("valuePropertyName$", "(QVariant::Type) const")]
 		public virtual QByteArray ValuePropertyName(QVariant.TypeOf type) {
 			return ProxyQItemEditorFactory().ValuePropertyName(type);
 		}
-		[SmokeMethod("registerEditor(QVariant::Type, QItemEditorCreatorBase*)")]
+		[SmokeMethod("registerEditor$$", "(QVariant::Type, QItemEditorCreatorBase*)")]
 		public void RegisterEditor(QVariant.TypeOf type, QItemEditorCreatorBase creator) {
 			ProxyQItemEditorFactory().RegisterEditor(type,creator);
 		}
-		[SmokeMethod("defaultFactory()")]
 		public static QItemEditorFactory DefaultFactory() {
 			return StaticQItemEditorFactory().DefaultFactory();
 		}
-		[SmokeMethod("setDefaultFactory(QItemEditorFactory*)")]
 		public static void SetDefaultFactory(QItemEditorFactory factory) {
 			StaticQItemEditorFactory().SetDefaultFactory(factory);
 		}
@@ -64,7 +64,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQItemEditorFactory();
 		}
-		[SmokeMethod("~QItemEditorFactory()")]
+		[SmokeMethod("~QItemEditorFactory", "()")]
 		private void DisposeQItemEditorFactory() {
 			ProxyQItemEditorFactory().DisposeQItemEditorFactory();
 		}

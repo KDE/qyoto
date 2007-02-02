@@ -9,7 +9,9 @@ namespace Qyoto {
 	public class QFtp : QObject, IDisposable {
  		protected QFtp(Type dummy) : base((Type) null) {}
 		interface IQFtpProxy {
+			[SmokeMethod("tr$$", "(const char*, const char*)")]
 			string Tr(string s, string c);
+			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
 		}
 
@@ -74,7 +76,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQFtp(parent);
 		}
-		[SmokeMethod("QFtp(QObject*)")]
+		[SmokeMethod("QFtp#", "(QObject*)")]
 		private void NewQFtp(QObject parent) {
 			ProxyQFtp().NewQFtp(parent);
 		}
@@ -82,156 +84,154 @@ namespace Qyoto {
 			CreateProxy();
 			NewQFtp();
 		}
-		[SmokeMethod("QFtp()")]
+		[SmokeMethod("QFtp", "()")]
 		private void NewQFtp() {
 			ProxyQFtp().NewQFtp();
 		}
-		[SmokeMethod("setProxy(const QString&, quint16)")]
+		[SmokeMethod("setProxy$$", "(const QString&, quint16)")]
 		public int SetProxy(string host, ushort port) {
 			return ProxyQFtp().SetProxy(host,port);
 		}
-		[SmokeMethod("connectToHost(const QString&, quint16)")]
+		[SmokeMethod("connectToHost$$", "(const QString&, quint16)")]
 		public int ConnectToHost(string host, ushort port) {
 			return ProxyQFtp().ConnectToHost(host,port);
 		}
-		[SmokeMethod("connectToHost(const QString&)")]
+		[SmokeMethod("connectToHost$", "(const QString&)")]
 		public int ConnectToHost(string host) {
 			return ProxyQFtp().ConnectToHost(host);
 		}
-		[SmokeMethod("login(const QString&, const QString&)")]
+		[SmokeMethod("login$$", "(const QString&, const QString&)")]
 		public int Login(string user, string password) {
 			return ProxyQFtp().Login(user,password);
 		}
-		[SmokeMethod("login(const QString&)")]
+		[SmokeMethod("login$", "(const QString&)")]
 		public int Login(string user) {
 			return ProxyQFtp().Login(user);
 		}
-		[SmokeMethod("login()")]
+		[SmokeMethod("login", "()")]
 		public int Login() {
 			return ProxyQFtp().Login();
 		}
-		[SmokeMethod("close()")]
+		[SmokeMethod("close", "()")]
 		public int Close() {
 			return ProxyQFtp().Close();
 		}
-		[SmokeMethod("setTransferMode(QFtp::TransferMode)")]
+		[SmokeMethod("setTransferMode$", "(QFtp::TransferMode)")]
 		public int SetTransferMode(QFtp.TransferMode mode) {
 			return ProxyQFtp().SetTransferMode(mode);
 		}
-		[SmokeMethod("list(const QString&)")]
+		[SmokeMethod("list$", "(const QString&)")]
 		public int List(string dir) {
 			return ProxyQFtp().List(dir);
 		}
-		[SmokeMethod("list()")]
+		[SmokeMethod("list", "()")]
 		public int List() {
 			return ProxyQFtp().List();
 		}
-		[SmokeMethod("cd(const QString&)")]
+		[SmokeMethod("cd$", "(const QString&)")]
 		public int Cd(string dir) {
 			return ProxyQFtp().Cd(dir);
 		}
-		[SmokeMethod("get(const QString&, QIODevice*, QFtp::TransferType)")]
+		[SmokeMethod("get$$$", "(const QString&, QIODevice*, QFtp::TransferType)")]
 		public int Get(string file, IQIODevice dev, QFtp.TransferType type) {
 			return ProxyQFtp().Get(file,dev,type);
 		}
-		[SmokeMethod("get(const QString&, QIODevice*)")]
+		[SmokeMethod("get$$", "(const QString&, QIODevice*)")]
 		public int Get(string file, IQIODevice dev) {
 			return ProxyQFtp().Get(file,dev);
 		}
-		[SmokeMethod("get(const QString&)")]
+		[SmokeMethod("get$", "(const QString&)")]
 		public int Get(string file) {
 			return ProxyQFtp().Get(file);
 		}
-		[SmokeMethod("put(const QByteArray&, const QString&, QFtp::TransferType)")]
+		[SmokeMethod("put###", "(const QByteArray&, const QString&, QFtp::TransferType)")]
 		public int Put(QByteArray data, string file, QFtp.TransferType type) {
 			return ProxyQFtp().Put(data,file,type);
 		}
-		[SmokeMethod("put(const QByteArray&, const QString&)")]
+		[SmokeMethod("put##", "(const QByteArray&, const QString&)")]
 		public int Put(QByteArray data, string file) {
 			return ProxyQFtp().Put(data,file);
 		}
-		[SmokeMethod("put(QIODevice*, const QString&, QFtp::TransferType)")]
+		[SmokeMethod("put###", "(QIODevice*, const QString&, QFtp::TransferType)")]
 		public int Put(IQIODevice dev, string file, QFtp.TransferType type) {
 			return ProxyQFtp().Put(dev,file,type);
 		}
-		[SmokeMethod("put(QIODevice*, const QString&)")]
+		[SmokeMethod("put##", "(QIODevice*, const QString&)")]
 		public int Put(IQIODevice dev, string file) {
 			return ProxyQFtp().Put(dev,file);
 		}
-		[SmokeMethod("remove(const QString&)")]
+		[SmokeMethod("remove$", "(const QString&)")]
 		public int Remove(string file) {
 			return ProxyQFtp().Remove(file);
 		}
-		[SmokeMethod("mkdir(const QString&)")]
+		[SmokeMethod("mkdir$", "(const QString&)")]
 		public int Mkdir(string dir) {
 			return ProxyQFtp().Mkdir(dir);
 		}
-		[SmokeMethod("rmdir(const QString&)")]
+		[SmokeMethod("rmdir$", "(const QString&)")]
 		public int Rmdir(string dir) {
 			return ProxyQFtp().Rmdir(dir);
 		}
-		[SmokeMethod("rename(const QString&, const QString&)")]
+		[SmokeMethod("rename$$", "(const QString&, const QString&)")]
 		public int Rename(string oldname, string newname) {
 			return ProxyQFtp().Rename(oldname,newname);
 		}
-		[SmokeMethod("rawCommand(const QString&)")]
+		[SmokeMethod("rawCommand$", "(const QString&)")]
 		public int RawCommand(string command) {
 			return ProxyQFtp().RawCommand(command);
 		}
-		[SmokeMethod("bytesAvailable() const")]
+		[SmokeMethod("bytesAvailable", "() const")]
 		public long BytesAvailable() {
 			return ProxyQFtp().BytesAvailable();
 		}
-		[SmokeMethod("read(char*, qint64)")]
+		[SmokeMethod("read$$", "(char*, qint64)")]
 		public long Read(string data, long maxlen) {
 			return ProxyQFtp().Read(data,maxlen);
 		}
-		[SmokeMethod("readAll()")]
+		[SmokeMethod("readAll", "()")]
 		public QByteArray ReadAll() {
 			return ProxyQFtp().ReadAll();
 		}
-		[SmokeMethod("currentId() const")]
+		[SmokeMethod("currentId", "() const")]
 		public int CurrentId() {
 			return ProxyQFtp().CurrentId();
 		}
-		[SmokeMethod("currentDevice() const")]
+		[SmokeMethod("currentDevice", "() const")]
 		public IQIODevice CurrentDevice() {
 			return ProxyQFtp().CurrentDevice();
 		}
-		[SmokeMethod("currentCommand() const")]
+		[SmokeMethod("currentCommand", "() const")]
 		public QFtp.Command CurrentCommand() {
 			return ProxyQFtp().CurrentCommand();
 		}
-		[SmokeMethod("hasPendingCommands() const")]
+		[SmokeMethod("hasPendingCommands", "() const")]
 		public bool HasPendingCommands() {
 			return ProxyQFtp().HasPendingCommands();
 		}
-		[SmokeMethod("clearPendingCommands()")]
+		[SmokeMethod("clearPendingCommands", "()")]
 		public void ClearPendingCommands() {
 			ProxyQFtp().ClearPendingCommands();
 		}
-		[SmokeMethod("state() const")]
+		[SmokeMethod("state", "() const")]
 		public QFtp.State state() {
 			return ProxyQFtp().state();
 		}
-		[SmokeMethod("error() const")]
+		[SmokeMethod("error", "() const")]
 		public QFtp.Error error() {
 			return ProxyQFtp().error();
 		}
-		[SmokeMethod("errorString() const")]
+		[SmokeMethod("errorString", "() const")]
 		public string ErrorString() {
 			return ProxyQFtp().ErrorString();
 		}
-		[Q_SLOT("void abort()")]
-		[SmokeMethod("abort()")]
+		[Q_SLOT("void ()")]
+		[SmokeMethod("abort", "()")]
 		public void Abort() {
 			ProxyQFtp().Abort();
 		}
-		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQFtp().Tr(s,c);
 		}
-		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQFtp().Tr(s);
 		}
@@ -241,7 +241,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQFtp();
 		}
-		[SmokeMethod("~QFtp()")]
+		[SmokeMethod("~QFtp", "()")]
 		private void DisposeQFtp() {
 			ProxyQFtp().DisposeQFtp();
 		}
@@ -253,21 +253,21 @@ namespace Qyoto {
 	}
 
 	public interface IQFtpSignals : IQObjectSignals {
-		[Q_SIGNAL("void stateChanged(int)")]
+		[Q_SIGNAL("void (int)")]
 		void StateChanged(int arg1);
-		[Q_SIGNAL("void listInfo(const QUrlInfo&)")]
+		[Q_SIGNAL("void (const QUrlInfo&)")]
 		void ListInfo(QUrlInfo arg1);
-		[Q_SIGNAL("void readyRead()")]
+		[Q_SIGNAL("void ()")]
 		void ReadyRead();
-		[Q_SIGNAL("void dataTransferProgress(qint64, qint64)")]
+		[Q_SIGNAL("void (qint64, qint64)")]
 		void DataTransferProgress(long arg1, long arg2);
-		[Q_SIGNAL("void rawCommandReply(int, const QString&)")]
+		[Q_SIGNAL("void (int, const QString&)")]
 		void RawCommandReply(int arg1, string arg2);
-		[Q_SIGNAL("void commandStarted(int)")]
+		[Q_SIGNAL("void (int)")]
 		void CommandStarted(int arg1);
-		[Q_SIGNAL("void commandFinished(int, bool)")]
+		[Q_SIGNAL("void (int, bool)")]
 		void CommandFinished(int arg1, bool arg2);
-		[Q_SIGNAL("void done(bool)")]
+		[Q_SIGNAL("void (bool)")]
 		void Done(bool arg1);
 	}
 }

@@ -161,31 +161,31 @@ namespace Qyoto {
 			CreateProxy();
 			NewQEvent(type);
 		}
-		[SmokeMethod("QEvent(QEvent::Type)")]
+		[SmokeMethod("QEvent$", "(QEvent::Type)")]
 		private void NewQEvent(QEvent.TypeOf type) {
 			ProxyQEvent().NewQEvent(type);
 		}
-		[SmokeMethod("type() const")]
+		[SmokeMethod("type", "() const")]
 		public QEvent.TypeOf type() {
 			return ProxyQEvent().type();
 		}
-		[SmokeMethod("spontaneous() const")]
+		[SmokeMethod("spontaneous", "() const")]
 		public bool Spontaneous() {
 			return ProxyQEvent().Spontaneous();
 		}
-		[SmokeMethod("setAccepted(bool)")]
+		[SmokeMethod("setAccepted$", "(bool)")]
 		public void SetAccepted(bool accepted) {
 			ProxyQEvent().SetAccepted(accepted);
 		}
-		[SmokeMethod("isAccepted() const")]
+		[SmokeMethod("isAccepted", "() const")]
 		public bool IsAccepted() {
 			return ProxyQEvent().IsAccepted();
 		}
-		[SmokeMethod("accept()")]
+		[SmokeMethod("accept", "()")]
 		public void Accept() {
 			ProxyQEvent().Accept();
 		}
-		[SmokeMethod("ignore()")]
+		[SmokeMethod("ignore", "()")]
 		public void Ignore() {
 			ProxyQEvent().Ignore();
 		}
@@ -195,7 +195,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQEvent();
 		}
-		[SmokeMethod("~QEvent()")]
+		[SmokeMethod("~QEvent", "()")]
 		private void DisposeQEvent() {
 			ProxyQEvent().DisposeQEvent();
 		}

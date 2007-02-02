@@ -9,7 +9,9 @@ namespace Qyoto {
 	public class QDateTimeEdit : QAbstractSpinBox, IDisposable {
  		protected QDateTimeEdit(Type dummy) : base((Type) null) {}
 		interface IQDateTimeEditProxy {
+			[SmokeMethod("tr$$", "(const char*, const char*)")]
 			string Tr(string s, string c);
+			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
 		}
 
@@ -143,7 +145,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDateTimeEdit(parent);
 		}
-		[SmokeMethod("QDateTimeEdit(QWidget*)")]
+		[SmokeMethod("QDateTimeEdit#", "(QWidget*)")]
 		private void NewQDateTimeEdit(QWidget parent) {
 			ProxyQDateTimeEdit().NewQDateTimeEdit(parent);
 		}
@@ -151,7 +153,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDateTimeEdit();
 		}
-		[SmokeMethod("QDateTimeEdit()")]
+		[SmokeMethod("QDateTimeEdit", "()")]
 		private void NewQDateTimeEdit() {
 			ProxyQDateTimeEdit().NewQDateTimeEdit();
 		}
@@ -159,7 +161,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDateTimeEdit(dt,parent);
 		}
-		[SmokeMethod("QDateTimeEdit(const QDateTime&, QWidget*)")]
+		[SmokeMethod("QDateTimeEdit##", "(const QDateTime&, QWidget*)")]
 		private void NewQDateTimeEdit(QDateTime dt, QWidget parent) {
 			ProxyQDateTimeEdit().NewQDateTimeEdit(dt,parent);
 		}
@@ -167,7 +169,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDateTimeEdit(dt);
 		}
-		[SmokeMethod("QDateTimeEdit(const QDateTime&)")]
+		[SmokeMethod("QDateTimeEdit#", "(const QDateTime&)")]
 		private void NewQDateTimeEdit(QDateTime dt) {
 			ProxyQDateTimeEdit().NewQDateTimeEdit(dt);
 		}
@@ -175,7 +177,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDateTimeEdit(d,parent);
 		}
-		[SmokeMethod("QDateTimeEdit(const QDate&, QWidget*)")]
+		[SmokeMethod("QDateTimeEdit##", "(const QDate&, QWidget*)")]
 		private void NewQDateTimeEdit(QDate d, QWidget parent) {
 			ProxyQDateTimeEdit().NewQDateTimeEdit(d,parent);
 		}
@@ -183,7 +185,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDateTimeEdit(d);
 		}
-		[SmokeMethod("QDateTimeEdit(const QDate&)")]
+		[SmokeMethod("QDateTimeEdit#", "(const QDate&)")]
 		private void NewQDateTimeEdit(QDate d) {
 			ProxyQDateTimeEdit().NewQDateTimeEdit(d);
 		}
@@ -191,7 +193,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDateTimeEdit(t,parent);
 		}
-		[SmokeMethod("QDateTimeEdit(const QTime&, QWidget*)")]
+		[SmokeMethod("QDateTimeEdit##", "(const QTime&, QWidget*)")]
 		private void NewQDateTimeEdit(QTime t, QWidget parent) {
 			ProxyQDateTimeEdit().NewQDateTimeEdit(t,parent);
 		}
@@ -199,107 +201,105 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDateTimeEdit(t);
 		}
-		[SmokeMethod("QDateTimeEdit(const QTime&)")]
+		[SmokeMethod("QDateTimeEdit#", "(const QTime&)")]
 		private void NewQDateTimeEdit(QTime t) {
 			ProxyQDateTimeEdit().NewQDateTimeEdit(t);
 		}
-		[SmokeMethod("clearMinimumDate()")]
+		[SmokeMethod("clearMinimumDate", "()")]
 		public void ClearMinimumDate() {
 			ProxyQDateTimeEdit().ClearMinimumDate();
 		}
-		[SmokeMethod("clearMaximumDate()")]
+		[SmokeMethod("clearMaximumDate", "()")]
 		public void ClearMaximumDate() {
 			ProxyQDateTimeEdit().ClearMaximumDate();
 		}
-		[SmokeMethod("setDateRange(const QDate&, const QDate&)")]
+		[SmokeMethod("setDateRange##", "(const QDate&, const QDate&)")]
 		public void SetDateRange(QDate min, QDate max) {
 			ProxyQDateTimeEdit().SetDateRange(min,max);
 		}
-		[SmokeMethod("clearMinimumTime()")]
+		[SmokeMethod("clearMinimumTime", "()")]
 		public void ClearMinimumTime() {
 			ProxyQDateTimeEdit().ClearMinimumTime();
 		}
-		[SmokeMethod("clearMaximumTime()")]
+		[SmokeMethod("clearMaximumTime", "()")]
 		public void ClearMaximumTime() {
 			ProxyQDateTimeEdit().ClearMaximumTime();
 		}
-		[SmokeMethod("setTimeRange(const QTime&, const QTime&)")]
+		[SmokeMethod("setTimeRange##", "(const QTime&, const QTime&)")]
 		public void SetTimeRange(QTime min, QTime max) {
 			ProxyQDateTimeEdit().SetTimeRange(min,max);
 		}
-		[SmokeMethod("setSelectedSection(QDateTimeEdit::Section)")]
+		[SmokeMethod("setSelectedSection$", "(QDateTimeEdit::Section)")]
 		public void SetSelectedSection(QDateTimeEdit.Section section) {
 			ProxyQDateTimeEdit().SetSelectedSection(section);
 		}
-		[SmokeMethod("sectionText(QDateTimeEdit::Section) const")]
+		[SmokeMethod("sectionText$", "(QDateTimeEdit::Section) const")]
 		public string SectionText(QDateTimeEdit.Section section) {
 			return ProxyQDateTimeEdit().SectionText(section);
 		}
-		[SmokeMethod("sizeHint() const")]
+		[SmokeMethod("sizeHint", "() const")]
 		public new QSize SizeHint() {
 			return ProxyQDateTimeEdit().SizeHint();
 		}
-		[SmokeMethod("clear()")]
+		[SmokeMethod("clear", "()")]
 		public new virtual void Clear() {
 			ProxyQDateTimeEdit().Clear();
 		}
-		[SmokeMethod("stepBy(int)")]
+		[SmokeMethod("stepBy$", "(int)")]
 		public new virtual void StepBy(int steps) {
 			ProxyQDateTimeEdit().StepBy(steps);
 		}
-		[SmokeMethod("event(QEvent*)")]
+		[SmokeMethod("event#", "(QEvent*)")]
 		public new bool Event(QEvent arg1) {
 			return ProxyQDateTimeEdit().Event(arg1);
 		}
-		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQDateTimeEdit().Tr(s,c);
 		}
-		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQDateTimeEdit().Tr(s);
 		}
-		[SmokeMethod("keyPressEvent(QKeyEvent*)")]
+		[SmokeMethod("keyPressEvent#", "(QKeyEvent*)")]
 		protected new virtual void KeyPressEvent(QKeyEvent arg1) {
 			ProxyQDateTimeEdit().KeyPressEvent(arg1);
 		}
-		[SmokeMethod("wheelEvent(QWheelEvent*)")]
+		[SmokeMethod("wheelEvent#", "(QWheelEvent*)")]
 		protected new virtual void WheelEvent(QWheelEvent arg1) {
 			ProxyQDateTimeEdit().WheelEvent(arg1);
 		}
-		[SmokeMethod("focusInEvent(QFocusEvent*)")]
+		[SmokeMethod("focusInEvent#", "(QFocusEvent*)")]
 		protected new virtual void FocusInEvent(QFocusEvent arg1) {
 			ProxyQDateTimeEdit().FocusInEvent(arg1);
 		}
-		[SmokeMethod("focusNextPrevChild(bool)")]
+		[SmokeMethod("focusNextPrevChild$", "(bool)")]
 		protected new virtual bool FocusNextPrevChild(bool next) {
 			return ProxyQDateTimeEdit().FocusNextPrevChild(next);
 		}
-		[SmokeMethod("validate(QString&, int&) const")]
+		[SmokeMethod("validate$$", "(QString&, int&) const")]
 		protected new virtual int Validate(StringBuilder input, out int pos) {
 			return ProxyQDateTimeEdit().Validate(input,out pos);
 		}
-		[SmokeMethod("fixup(QString&) const")]
+		[SmokeMethod("fixup$", "(QString&) const")]
 		protected new virtual void Fixup(StringBuilder input) {
 			ProxyQDateTimeEdit().Fixup(input);
 		}
-		[SmokeMethod("dateTimeFromText(const QString&) const")]
+		[SmokeMethod("dateTimeFromText$", "(const QString&) const")]
 		protected virtual QDateTime DateTimeFromText(string text) {
 			return ProxyQDateTimeEdit().DateTimeFromText(text);
 		}
-		[SmokeMethod("textFromDateTime(const QDateTime&) const")]
+		[SmokeMethod("textFromDateTime#", "(const QDateTime&) const")]
 		protected virtual string TextFromDateTime(QDateTime dt) {
 			return ProxyQDateTimeEdit().TextFromDateTime(dt);
 		}
-		[SmokeMethod("stepEnabled() const")]
+		[SmokeMethod("stepEnabled", "() const")]
 		protected new virtual int StepEnabled() {
 			return ProxyQDateTimeEdit().StepEnabled();
 		}
-		[SmokeMethod("mousePressEvent(QMouseEvent*)")]
+		[SmokeMethod("mousePressEvent#", "(QMouseEvent*)")]
 		protected new virtual void MousePressEvent(QMouseEvent arg1) {
 			ProxyQDateTimeEdit().MousePressEvent(arg1);
 		}
-		[SmokeMethod("paintEvent(QPaintEvent*)")]
+		[SmokeMethod("paintEvent#", "(QPaintEvent*)")]
 		protected new virtual void PaintEvent(QPaintEvent arg1) {
 			ProxyQDateTimeEdit().PaintEvent(arg1);
 		}
@@ -309,7 +309,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQDateTimeEdit();
 		}
-		[SmokeMethod("~QDateTimeEdit()")]
+		[SmokeMethod("~QDateTimeEdit", "()")]
 		private void DisposeQDateTimeEdit() {
 			ProxyQDateTimeEdit().DisposeQDateTimeEdit();
 		}
@@ -321,11 +321,11 @@ namespace Qyoto {
 	}
 
 	public interface IQDateTimeEditSignals : IQAbstractSpinBoxSignals {
-		[Q_SIGNAL("void dateTimeChanged(const QDateTime&)")]
+		[Q_SIGNAL("void (const QDateTime&)")]
 		void DateTimeChanged(QDateTime date);
-		[Q_SIGNAL("void timeChanged(const QTime&)")]
+		[Q_SIGNAL("void (const QTime&)")]
 		void TimeChanged(QTime date);
-		[Q_SIGNAL("void dateChanged(const QDate&)")]
+		[Q_SIGNAL("void (const QDate&)")]
 		void DateChanged(QDate date);
 	}
 }

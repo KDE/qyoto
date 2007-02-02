@@ -8,7 +8,9 @@ namespace Qyoto {
 	public class QIntValidator : QValidator, IDisposable {
  		protected QIntValidator(Type dummy) : base((Type) null) {}
 		interface IQIntValidatorProxy {
+			[SmokeMethod("tr$$", "(const char*, const char*)")]
 			string Tr(string s, string c);
+			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
 		}
 
@@ -51,7 +53,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQIntValidator(parent);
 		}
-		[SmokeMethod("QIntValidator(QObject*)")]
+		[SmokeMethod("QIntValidator#", "(QObject*)")]
 		private void NewQIntValidator(QObject parent) {
 			ProxyQIntValidator().NewQIntValidator(parent);
 		}
@@ -59,23 +61,21 @@ namespace Qyoto {
 			CreateProxy();
 			NewQIntValidator(bottom,top,parent);
 		}
-		[SmokeMethod("QIntValidator(int, int, QObject*)")]
+		[SmokeMethod("QIntValidator$$$", "(int, int, QObject*)")]
 		private void NewQIntValidator(int bottom, int top, QObject parent) {
 			ProxyQIntValidator().NewQIntValidator(bottom,top,parent);
 		}
-		[SmokeMethod("validate(QString&, int&) const")]
+		[SmokeMethod("validate$$", "(QString&, int&) const")]
 		public new int Validate(StringBuilder arg1, out int arg2) {
 			return ProxyQIntValidator().Validate(arg1,out arg2);
 		}
-		[SmokeMethod("setRange(int, int)")]
+		[SmokeMethod("setRange$$", "(int, int)")]
 		public virtual void SetRange(int bottom, int top) {
 			ProxyQIntValidator().SetRange(bottom,top);
 		}
-		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQIntValidator().Tr(s,c);
 		}
-		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQIntValidator().Tr(s);
 		}
@@ -85,7 +85,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQIntValidator();
 		}
-		[SmokeMethod("~QIntValidator()")]
+		[SmokeMethod("~QIntValidator", "()")]
 		private void DisposeQIntValidator() {
 			ProxyQIntValidator().DisposeQIntValidator();
 		}

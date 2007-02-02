@@ -8,7 +8,9 @@ namespace Qyoto {
 	public class QRegExpValidator : QValidator, IDisposable {
  		protected QRegExpValidator(Type dummy) : base((Type) null) {}
 		interface IQRegExpValidatorProxy {
+			[SmokeMethod("tr$$", "(const char*, const char*)")]
 			string Tr(string s, string c);
+			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
 		}
 
@@ -42,7 +44,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQRegExpValidator(parent);
 		}
-		[SmokeMethod("QRegExpValidator(QObject*)")]
+		[SmokeMethod("QRegExpValidator#", "(QObject*)")]
 		private void NewQRegExpValidator(QObject parent) {
 			ProxyQRegExpValidator().NewQRegExpValidator(parent);
 		}
@@ -50,19 +52,17 @@ namespace Qyoto {
 			CreateProxy();
 			NewQRegExpValidator(rx,parent);
 		}
-		[SmokeMethod("QRegExpValidator(const QRegExp&, QObject*)")]
+		[SmokeMethod("QRegExpValidator##", "(const QRegExp&, QObject*)")]
 		private void NewQRegExpValidator(QRegExp rx, QObject parent) {
 			ProxyQRegExpValidator().NewQRegExpValidator(rx,parent);
 		}
-		[SmokeMethod("validate(QString&, int&) const")]
+		[SmokeMethod("validate$$", "(QString&, int&) const")]
 		public new virtual int Validate(StringBuilder input, out int pos) {
 			return ProxyQRegExpValidator().Validate(input,out pos);
 		}
-		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQRegExpValidator().Tr(s,c);
 		}
-		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQRegExpValidator().Tr(s);
 		}
@@ -72,7 +72,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQRegExpValidator();
 		}
-		[SmokeMethod("~QRegExpValidator()")]
+		[SmokeMethod("~QRegExpValidator", "()")]
 		private void DisposeQRegExpValidator() {
 			ProxyQRegExpValidator().DisposeQRegExpValidator();
 		}

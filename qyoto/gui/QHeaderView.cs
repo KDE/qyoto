@@ -9,7 +9,9 @@ namespace Qyoto {
 	public class QHeaderView : QAbstractItemView, IDisposable {
  		protected QHeaderView(Type dummy) : base((Type) null) {}
 		interface IQHeaderViewProxy {
+			[SmokeMethod("tr$$", "(const char*, const char*)")]
 			string Tr(string s, string c);
+			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
 		}
 
@@ -104,7 +106,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQHeaderView(orientation,parent);
 		}
-		[SmokeMethod("QHeaderView(Qt::Orientation, QWidget*)")]
+		[SmokeMethod("QHeaderView$$", "(Qt::Orientation, QWidget*)")]
 		private void NewQHeaderView(Qt.Orientation orientation, QWidget parent) {
 			ProxyQHeaderView().NewQHeaderView(orientation,parent);
 		}
@@ -112,318 +114,316 @@ namespace Qyoto {
 			CreateProxy();
 			NewQHeaderView(orientation);
 		}
-		[SmokeMethod("QHeaderView(Qt::Orientation)")]
+		[SmokeMethod("QHeaderView$", "(Qt::Orientation)")]
 		private void NewQHeaderView(Qt.Orientation orientation) {
 			ProxyQHeaderView().NewQHeaderView(orientation);
 		}
-		[SmokeMethod("setModel(QAbstractItemModel*)")]
+		[SmokeMethod("setModel#", "(QAbstractItemModel*)")]
 		public new void SetModel(QAbstractItemModel model) {
 			ProxyQHeaderView().SetModel(model);
 		}
-		[SmokeMethod("orientation() const")]
+		[SmokeMethod("orientation", "() const")]
 		public Qt.Orientation Orientation() {
 			return ProxyQHeaderView().Orientation();
 		}
-		[SmokeMethod("offset() const")]
+		[SmokeMethod("offset", "() const")]
 		public int Offset() {
 			return ProxyQHeaderView().Offset();
 		}
-		[SmokeMethod("length() const")]
+		[SmokeMethod("length", "() const")]
 		public int Length() {
 			return ProxyQHeaderView().Length();
 		}
-		[SmokeMethod("sizeHint() const")]
+		[SmokeMethod("sizeHint", "() const")]
 		public new QSize SizeHint() {
 			return ProxyQHeaderView().SizeHint();
 		}
-		[SmokeMethod("sectionSizeHint(int) const")]
+		[SmokeMethod("sectionSizeHint$", "(int) const")]
 		public int SectionSizeHint(int logicalIndex) {
 			return ProxyQHeaderView().SectionSizeHint(logicalIndex);
 		}
-		[SmokeMethod("visualIndexAt(int) const")]
+		[SmokeMethod("visualIndexAt$", "(int) const")]
 		public int VisualIndexAt(int position) {
 			return ProxyQHeaderView().VisualIndexAt(position);
 		}
-		[SmokeMethod("logicalIndexAt(int) const")]
+		[SmokeMethod("logicalIndexAt$", "(int) const")]
 		public int LogicalIndexAt(int position) {
 			return ProxyQHeaderView().LogicalIndexAt(position);
 		}
-		[SmokeMethod("logicalIndexAt(int, int) const")]
+		[SmokeMethod("logicalIndexAt$$", "(int, int) const")]
 		public int LogicalIndexAt(int x, int y) {
 			return ProxyQHeaderView().LogicalIndexAt(x,y);
 		}
-		[SmokeMethod("logicalIndexAt(const QPoint&) const")]
+		[SmokeMethod("logicalIndexAt#", "(const QPoint&) const")]
 		public int LogicalIndexAt(QPoint pos) {
 			return ProxyQHeaderView().LogicalIndexAt(pos);
 		}
-		[SmokeMethod("sectionSize(int) const")]
+		[SmokeMethod("sectionSize$", "(int) const")]
 		public int SectionSize(int logicalIndex) {
 			return ProxyQHeaderView().SectionSize(logicalIndex);
 		}
-		[SmokeMethod("sectionPosition(int) const")]
+		[SmokeMethod("sectionPosition$", "(int) const")]
 		public int SectionPosition(int logicalIndex) {
 			return ProxyQHeaderView().SectionPosition(logicalIndex);
 		}
-		[SmokeMethod("sectionViewportPosition(int) const")]
+		[SmokeMethod("sectionViewportPosition$", "(int) const")]
 		public int SectionViewportPosition(int logicalIndex) {
 			return ProxyQHeaderView().SectionViewportPosition(logicalIndex);
 		}
-		[SmokeMethod("moveSection(int, int)")]
+		[SmokeMethod("moveSection$$", "(int, int)")]
 		public void MoveSection(int from, int to) {
 			ProxyQHeaderView().MoveSection(from,to);
 		}
-		[SmokeMethod("swapSections(int, int)")]
+		[SmokeMethod("swapSections$$", "(int, int)")]
 		public void SwapSections(int first, int second) {
 			ProxyQHeaderView().SwapSections(first,second);
 		}
-		[SmokeMethod("resizeSection(int, int)")]
+		[SmokeMethod("resizeSection$$", "(int, int)")]
 		public void ResizeSection(int logicalIndex, int size) {
 			ProxyQHeaderView().ResizeSection(logicalIndex,size);
 		}
-		[SmokeMethod("resizeSections(QHeaderView::ResizeMode)")]
+		[SmokeMethod("resizeSections$", "(QHeaderView::ResizeMode)")]
 		public void ResizeSections(QHeaderView.ResizeMode mode) {
 			ProxyQHeaderView().ResizeSections(mode);
 		}
-		[SmokeMethod("isSectionHidden(int) const")]
+		[SmokeMethod("isSectionHidden$", "(int) const")]
 		public bool IsSectionHidden(int logicalIndex) {
 			return ProxyQHeaderView().IsSectionHidden(logicalIndex);
 		}
-		[SmokeMethod("setSectionHidden(int, bool)")]
+		[SmokeMethod("setSectionHidden$$", "(int, bool)")]
 		public void SetSectionHidden(int logicalIndex, bool hide) {
 			ProxyQHeaderView().SetSectionHidden(logicalIndex,hide);
 		}
-		[SmokeMethod("hiddenSectionCount() const")]
+		[SmokeMethod("hiddenSectionCount", "() const")]
 		public int HiddenSectionCount() {
 			return ProxyQHeaderView().HiddenSectionCount();
 		}
-		[SmokeMethod("hideSection(int)")]
+		[SmokeMethod("hideSection$", "(int)")]
 		public void HideSection(int logicalIndex) {
 			ProxyQHeaderView().HideSection(logicalIndex);
 		}
-		[SmokeMethod("showSection(int)")]
+		[SmokeMethod("showSection$", "(int)")]
 		public void ShowSection(int logicalIndex) {
 			ProxyQHeaderView().ShowSection(logicalIndex);
 		}
-		[SmokeMethod("count() const")]
+		[SmokeMethod("count", "() const")]
 		public int Count() {
 			return ProxyQHeaderView().Count();
 		}
-		[SmokeMethod("visualIndex(int) const")]
+		[SmokeMethod("visualIndex$", "(int) const")]
 		public int VisualIndex(int logicalIndex) {
 			return ProxyQHeaderView().VisualIndex(logicalIndex);
 		}
-		[SmokeMethod("logicalIndex(int) const")]
+		[SmokeMethod("logicalIndex$", "(int) const")]
 		public int LogicalIndex(int visualIndex) {
 			return ProxyQHeaderView().LogicalIndex(visualIndex);
 		}
-		[SmokeMethod("setMovable(bool)")]
+		[SmokeMethod("setMovable$", "(bool)")]
 		public void SetMovable(bool movable) {
 			ProxyQHeaderView().SetMovable(movable);
 		}
-		[SmokeMethod("isMovable() const")]
+		[SmokeMethod("isMovable", "() const")]
 		public bool IsMovable() {
 			return ProxyQHeaderView().IsMovable();
 		}
-		[SmokeMethod("setClickable(bool)")]
+		[SmokeMethod("setClickable$", "(bool)")]
 		public void SetClickable(bool clickable) {
 			ProxyQHeaderView().SetClickable(clickable);
 		}
-		[SmokeMethod("isClickable() const")]
+		[SmokeMethod("isClickable", "() const")]
 		public bool IsClickable() {
 			return ProxyQHeaderView().IsClickable();
 		}
-		[SmokeMethod("setResizeMode(QHeaderView::ResizeMode)")]
+		[SmokeMethod("setResizeMode$", "(QHeaderView::ResizeMode)")]
 		public void SetResizeMode(QHeaderView.ResizeMode mode) {
 			ProxyQHeaderView().SetResizeMode(mode);
 		}
-		[SmokeMethod("setResizeMode(int, QHeaderView::ResizeMode)")]
+		[SmokeMethod("setResizeMode$$", "(int, QHeaderView::ResizeMode)")]
 		public void SetResizeMode(int logicalIndex, QHeaderView.ResizeMode mode) {
 			ProxyQHeaderView().SetResizeMode(logicalIndex,mode);
 		}
-		[SmokeMethod("resizeMode(int) const")]
+		[SmokeMethod("resizeMode$", "(int) const")]
 		public QHeaderView.ResizeMode resizeMode(int logicalIndex) {
 			return ProxyQHeaderView().resizeMode(logicalIndex);
 		}
-		[SmokeMethod("stretchSectionCount() const")]
+		[SmokeMethod("stretchSectionCount", "() const")]
 		public int StretchSectionCount() {
 			return ProxyQHeaderView().StretchSectionCount();
 		}
-		[SmokeMethod("setSortIndicatorShown(bool)")]
+		[SmokeMethod("setSortIndicatorShown$", "(bool)")]
 		public void SetSortIndicatorShown(bool show) {
 			ProxyQHeaderView().SetSortIndicatorShown(show);
 		}
-		[SmokeMethod("isSortIndicatorShown() const")]
+		[SmokeMethod("isSortIndicatorShown", "() const")]
 		public bool IsSortIndicatorShown() {
 			return ProxyQHeaderView().IsSortIndicatorShown();
 		}
-		[SmokeMethod("setSortIndicator(int, Qt::SortOrder)")]
+		[SmokeMethod("setSortIndicator$$", "(int, Qt::SortOrder)")]
 		public void SetSortIndicator(int logicalIndex, Qt.SortOrder order) {
 			ProxyQHeaderView().SetSortIndicator(logicalIndex,order);
 		}
-		[SmokeMethod("sortIndicatorSection() const")]
+		[SmokeMethod("sortIndicatorSection", "() const")]
 		public int SortIndicatorSection() {
 			return ProxyQHeaderView().SortIndicatorSection();
 		}
-		[SmokeMethod("sortIndicatorOrder() const")]
+		[SmokeMethod("sortIndicatorOrder", "() const")]
 		public Qt.SortOrder SortIndicatorOrder() {
 			return ProxyQHeaderView().SortIndicatorOrder();
 		}
-		[SmokeMethod("doItemsLayout()")]
+		[SmokeMethod("doItemsLayout", "()")]
 		public new void DoItemsLayout() {
 			ProxyQHeaderView().DoItemsLayout();
 		}
-		[SmokeMethod("sectionsMoved() const")]
+		[SmokeMethod("sectionsMoved", "() const")]
 		public bool SectionsMoved() {
 			return ProxyQHeaderView().SectionsMoved();
 		}
-		[SmokeMethod("sectionsHidden() const")]
+		[SmokeMethod("sectionsHidden", "() const")]
 		public bool SectionsHidden() {
 			return ProxyQHeaderView().SectionsHidden();
 		}
-		[Q_SLOT("void setOffset(int)")]
-		[SmokeMethod("setOffset(int)")]
+		[Q_SLOT("void (int)")]
+		[SmokeMethod("setOffset$", "(int)")]
 		public void SetOffset(int offset) {
 			ProxyQHeaderView().SetOffset(offset);
 		}
-		[Q_SLOT("void setOffsetToSectionPosition(int)")]
-		[SmokeMethod("setOffsetToSectionPosition(int)")]
+		[Q_SLOT("void (int)")]
+		[SmokeMethod("setOffsetToSectionPosition$", "(int)")]
 		public void SetOffsetToSectionPosition(int visualIndex) {
 			ProxyQHeaderView().SetOffsetToSectionPosition(visualIndex);
 		}
-		[Q_SLOT("void headerDataChanged(Qt::Orientation, int, int)")]
-		[SmokeMethod("headerDataChanged(Qt::Orientation, int, int)")]
+		[Q_SLOT("void (Qt::Orientation, int, int)")]
+		[SmokeMethod("headerDataChanged$$$", "(Qt::Orientation, int, int)")]
 		public void HeaderDataChanged(Qt.Orientation orientation, int logicalFirst, int logicalLast) {
 			ProxyQHeaderView().HeaderDataChanged(orientation,logicalFirst,logicalLast);
 		}
-		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQHeaderView().Tr(s,c);
 		}
-		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQHeaderView().Tr(s);
 		}
-		[SmokeMethod("initialize()")]
+		[SmokeMethod("initialize", "()")]
 		protected void Initialize() {
 			ProxyQHeaderView().Initialize();
 		}
-		[SmokeMethod("initializeSections()")]
+		[SmokeMethod("initializeSections", "()")]
 		protected void InitializeSections() {
 			ProxyQHeaderView().InitializeSections();
 		}
-		[SmokeMethod("initializeSections(int, int)")]
+		[SmokeMethod("initializeSections$$", "(int, int)")]
 		protected void InitializeSections(int start, int end) {
 			ProxyQHeaderView().InitializeSections(start,end);
 		}
-		[SmokeMethod("currentChanged(const QModelIndex&, const QModelIndex&)")]
+		[SmokeMethod("currentChanged##", "(const QModelIndex&, const QModelIndex&)")]
 		protected new void CurrentChanged(QModelIndex current, QModelIndex old) {
 			ProxyQHeaderView().CurrentChanged(current,old);
 		}
-		[SmokeMethod("event(QEvent*)")]
+		[SmokeMethod("event#", "(QEvent*)")]
 		public new bool Event(QEvent e) {
 			return ProxyQHeaderView().Event(e);
 		}
-		[SmokeMethod("paintEvent(QPaintEvent*)")]
+		[SmokeMethod("paintEvent#", "(QPaintEvent*)")]
 		protected new void PaintEvent(QPaintEvent e) {
 			ProxyQHeaderView().PaintEvent(e);
 		}
-		[SmokeMethod("mousePressEvent(QMouseEvent*)")]
+		[SmokeMethod("mousePressEvent#", "(QMouseEvent*)")]
 		protected new void MousePressEvent(QMouseEvent e) {
 			ProxyQHeaderView().MousePressEvent(e);
 		}
-		[SmokeMethod("mouseMoveEvent(QMouseEvent*)")]
+		[SmokeMethod("mouseMoveEvent#", "(QMouseEvent*)")]
 		protected new void MouseMoveEvent(QMouseEvent e) {
 			ProxyQHeaderView().MouseMoveEvent(e);
 		}
-		[SmokeMethod("mouseReleaseEvent(QMouseEvent*)")]
+		[SmokeMethod("mouseReleaseEvent#", "(QMouseEvent*)")]
 		protected new void MouseReleaseEvent(QMouseEvent e) {
 			ProxyQHeaderView().MouseReleaseEvent(e);
 		}
-		[SmokeMethod("mouseDoubleClickEvent(QMouseEvent*)")]
+		[SmokeMethod("mouseDoubleClickEvent#", "(QMouseEvent*)")]
 		protected new void MouseDoubleClickEvent(QMouseEvent e) {
 			ProxyQHeaderView().MouseDoubleClickEvent(e);
 		}
-		[SmokeMethod("viewportEvent(QEvent*)")]
+		[SmokeMethod("viewportEvent#", "(QEvent*)")]
 		protected new bool ViewportEvent(QEvent e) {
 			return ProxyQHeaderView().ViewportEvent(e);
 		}
-		[SmokeMethod("paintSection(QPainter*, const QRect&, int) const")]
+		[SmokeMethod("paintSection###", "(QPainter*, const QRect&, int) const")]
 		protected virtual void PaintSection(QPainter painter, QRect rect, int logicalIndex) {
 			ProxyQHeaderView().PaintSection(painter,rect,logicalIndex);
 		}
-		[SmokeMethod("sectionSizeFromContents(int) const")]
+		[SmokeMethod("sectionSizeFromContents$", "(int) const")]
 		protected virtual QSize SectionSizeFromContents(int logicalIndex) {
 			return ProxyQHeaderView().SectionSizeFromContents(logicalIndex);
 		}
-		[SmokeMethod("horizontalOffset() const")]
+		[SmokeMethod("horizontalOffset", "() const")]
 		protected new int HorizontalOffset() {
 			return ProxyQHeaderView().HorizontalOffset();
 		}
-		[SmokeMethod("verticalOffset() const")]
+		[SmokeMethod("verticalOffset", "() const")]
 		protected new int VerticalOffset() {
 			return ProxyQHeaderView().VerticalOffset();
 		}
-		[SmokeMethod("updateGeometries()")]
+		[SmokeMethod("updateGeometries", "()")]
 		protected new void UpdateGeometries() {
 			ProxyQHeaderView().UpdateGeometries();
 		}
-		[SmokeMethod("scrollContentsBy(int, int)")]
+		[SmokeMethod("scrollContentsBy$$", "(int, int)")]
 		protected new void ScrollContentsBy(int dx, int dy) {
 			ProxyQHeaderView().ScrollContentsBy(dx,dy);
 		}
-		[SmokeMethod("dataChanged(const QModelIndex&, const QModelIndex&)")]
+		[SmokeMethod("dataChanged##", "(const QModelIndex&, const QModelIndex&)")]
 		protected new void DataChanged(QModelIndex topLeft, QModelIndex bottomRight) {
 			ProxyQHeaderView().DataChanged(topLeft,bottomRight);
 		}
-		[SmokeMethod("rowsInserted(const QModelIndex&, int, int)")]
+		[SmokeMethod("rowsInserted###", "(const QModelIndex&, int, int)")]
 		protected new void RowsInserted(QModelIndex parent, int start, int end) {
 			ProxyQHeaderView().RowsInserted(parent,start,end);
 		}
-		[SmokeMethod("visualRect(const QModelIndex&) const")]
+		[SmokeMethod("visualRect#", "(const QModelIndex&) const")]
 		protected new QRect VisualRect(QModelIndex index) {
 			return ProxyQHeaderView().VisualRect(index);
 		}
-		[SmokeMethod("scrollTo(const QModelIndex&, QAbstractItemView::ScrollHint)")]
+		[SmokeMethod("scrollTo##", "(const QModelIndex&, QAbstractItemView::ScrollHint)")]
 		protected new void ScrollTo(QModelIndex index, QAbstractItemView.ScrollHint hint) {
 			ProxyQHeaderView().ScrollTo(index,hint);
 		}
-		[SmokeMethod("indexAt(const QPoint&) const")]
+		[SmokeMethod("indexAt#", "(const QPoint&) const")]
 		protected new QModelIndex IndexAt(QPoint p) {
 			return ProxyQHeaderView().IndexAt(p);
 		}
-		[SmokeMethod("isIndexHidden(const QModelIndex&) const")]
+		[SmokeMethod("isIndexHidden#", "(const QModelIndex&) const")]
 		protected new bool IsIndexHidden(QModelIndex index) {
 			return ProxyQHeaderView().IsIndexHidden(index);
 		}
-		[SmokeMethod("moveCursor(QAbstractItemView::CursorAction, Qt::KeyboardModifiers)")]
+		[SmokeMethod("moveCursor$$", "(QAbstractItemView::CursorAction, Qt::KeyboardModifiers)")]
 		protected new QModelIndex MoveCursor(QAbstractItemView.CursorAction arg1, int arg2) {
 			return ProxyQHeaderView().MoveCursor(arg1,arg2);
 		}
-		[SmokeMethod("setSelection(const QRect&, QItemSelectionModel::SelectionFlags)")]
+		[SmokeMethod("setSelection##", "(const QRect&, QItemSelectionModel::SelectionFlags)")]
 		protected new void SetSelection(QRect arg1, int arg2) {
 			ProxyQHeaderView().SetSelection(arg1,arg2);
 		}
-		[SmokeMethod("visualRegionForSelection(const QItemSelection&) const")]
+		[SmokeMethod("visualRegionForSelection#", "(const QItemSelection&) const")]
 		protected new QRegion VisualRegionForSelection(QItemSelection selection) {
 			return ProxyQHeaderView().VisualRegionForSelection(selection);
 		}
-		[Q_SLOT("void updateSection(int)")]
-		[SmokeMethod("updateSection(int)")]
+		[Q_SLOT("void (int)")]
+		[SmokeMethod("updateSection$", "(int)")]
 		protected void UpdateSection(int logicalIndex) {
 			ProxyQHeaderView().UpdateSection(logicalIndex);
 		}
-		[Q_SLOT("void resizeSections()")]
-		[SmokeMethod("resizeSections()")]
+		[Q_SLOT("void ()")]
+		[SmokeMethod("resizeSections", "()")]
 		protected void ResizeSections() {
 			ProxyQHeaderView().ResizeSections();
 		}
-		[Q_SLOT("void sectionsInserted(const QModelIndex&, int, int)")]
-		[SmokeMethod("sectionsInserted(const QModelIndex&, int, int)")]
+		[Q_SLOT("void (const QModelIndex&, int, int)")]
+		[SmokeMethod("sectionsInserted###", "(const QModelIndex&, int, int)")]
 		protected void SectionsInserted(QModelIndex parent, int logicalFirst, int logicalLast) {
 			ProxyQHeaderView().SectionsInserted(parent,logicalFirst,logicalLast);
 		}
-		[Q_SLOT("void sectionsAboutToBeRemoved(const QModelIndex&, int, int)")]
-		[SmokeMethod("sectionsAboutToBeRemoved(const QModelIndex&, int, int)")]
+		[Q_SLOT("void (const QModelIndex&, int, int)")]
+		[SmokeMethod("sectionsAboutToBeRemoved###", "(const QModelIndex&, int, int)")]
 		protected void SectionsAboutToBeRemoved(QModelIndex parent, int logicalFirst, int logicalLast) {
 			ProxyQHeaderView().SectionsAboutToBeRemoved(parent,logicalFirst,logicalLast);
 		}
@@ -433,7 +433,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQHeaderView();
 		}
-		[SmokeMethod("~QHeaderView()")]
+		[SmokeMethod("~QHeaderView", "()")]
 		private void DisposeQHeaderView() {
 			ProxyQHeaderView().DisposeQHeaderView();
 		}
@@ -445,23 +445,23 @@ namespace Qyoto {
 	}
 
 	public interface IQHeaderViewSignals : IQAbstractItemViewSignals {
-		[Q_SIGNAL("void sectionMoved(int, int, int)")]
+		[Q_SIGNAL("void (int, int, int)")]
 		void SectionMoved(int logicalIndex, int oldVisualIndex, int newVisualIndex);
-		[Q_SIGNAL("void sectionResized(int, int, int)")]
+		[Q_SIGNAL("void (int, int, int)")]
 		void SectionResized(int logicalIndex, int oldSize, int newSize);
-		[Q_SIGNAL("void sectionPressed(int)")]
+		[Q_SIGNAL("void (int)")]
 		void SectionPressed(int logicalIndex);
-		[Q_SIGNAL("void sectionClicked(int)")]
+		[Q_SIGNAL("void (int)")]
 		void SectionClicked(int logicalIndex);
-		[Q_SIGNAL("void sectionDoubleClicked(int)")]
+		[Q_SIGNAL("void (int)")]
 		void SectionDoubleClicked(int logicalIndex);
-		[Q_SIGNAL("void sectionCountChanged(int, int)")]
+		[Q_SIGNAL("void (int, int)")]
 		void SectionCountChanged(int oldCount, int newCount);
-		[Q_SIGNAL("void sectionHandleDoubleClicked(int)")]
+		[Q_SIGNAL("void (int)")]
 		void SectionHandleDoubleClicked(int logicalIndex);
-		[Q_SIGNAL("void sectionAutoResize(int, QHeaderView::ResizeMode)")]
+		[Q_SIGNAL("void (int, QHeaderView::ResizeMode)")]
 		void SectionAutoResize(int logicalIndex, QHeaderView.ResizeMode mode);
-		[Q_SIGNAL("void geometriesChanged()")]
+		[Q_SIGNAL("void ()")]
 		void GeometriesChanged();
 	}
 }

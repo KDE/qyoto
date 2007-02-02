@@ -8,7 +8,9 @@ namespace Qyoto {
 	public class QObjectCleanupHandler : QObject, IDisposable {
  		protected QObjectCleanupHandler(Type dummy) : base((Type) null) {}
 		interface IQObjectCleanupHandlerProxy {
+			[SmokeMethod("tr$$", "(const char*, const char*)")]
 			string Tr(string s, string c);
+			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
 		}
 
@@ -33,31 +35,29 @@ namespace Qyoto {
 			CreateProxy();
 			NewQObjectCleanupHandler();
 		}
-		[SmokeMethod("QObjectCleanupHandler()")]
+		[SmokeMethod("QObjectCleanupHandler", "()")]
 		private void NewQObjectCleanupHandler() {
 			ProxyQObjectCleanupHandler().NewQObjectCleanupHandler();
 		}
-		[SmokeMethod("add(QObject*)")]
+		[SmokeMethod("add#", "(QObject*)")]
 		public QObject Add(QObject arg1) {
 			return ProxyQObjectCleanupHandler().Add(arg1);
 		}
-		[SmokeMethod("remove(QObject*)")]
+		[SmokeMethod("remove#", "(QObject*)")]
 		public void Remove(QObject arg1) {
 			ProxyQObjectCleanupHandler().Remove(arg1);
 		}
-		[SmokeMethod("isEmpty() const")]
+		[SmokeMethod("isEmpty", "() const")]
 		public bool IsEmpty() {
 			return ProxyQObjectCleanupHandler().IsEmpty();
 		}
-		[SmokeMethod("clear()")]
+		[SmokeMethod("clear", "()")]
 		public void Clear() {
 			ProxyQObjectCleanupHandler().Clear();
 		}
-		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQObjectCleanupHandler().Tr(s,c);
 		}
-		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQObjectCleanupHandler().Tr(s);
 		}
@@ -67,7 +67,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQObjectCleanupHandler();
 		}
-		[SmokeMethod("~QObjectCleanupHandler()")]
+		[SmokeMethod("~QObjectCleanupHandler", "()")]
 		private void DisposeQObjectCleanupHandler() {
 			ProxyQObjectCleanupHandler().DisposeQObjectCleanupHandler();
 		}

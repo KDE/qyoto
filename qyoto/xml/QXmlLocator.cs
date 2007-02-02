@@ -32,15 +32,15 @@ namespace Qyoto {
 			CreateProxy();
 			NewQXmlLocator();
 		}
-		[SmokeMethod("QXmlLocator()")]
+		[SmokeMethod("QXmlLocator", "()")]
 		private void NewQXmlLocator() {
 			ProxyQXmlLocator().NewQXmlLocator();
 		}
-		[SmokeMethod("columnNumber() const")]
+		[SmokeMethod("columnNumber", "() const")]
 		public virtual int ColumnNumber() {
 			return ProxyQXmlLocator().ColumnNumber();
 		}
-		[SmokeMethod("lineNumber() const")]
+		[SmokeMethod("lineNumber", "() const")]
 		public virtual int LineNumber() {
 			return ProxyQXmlLocator().LineNumber();
 		}
@@ -50,7 +50,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQXmlLocator();
 		}
-		[SmokeMethod("~QXmlLocator()")]
+		[SmokeMethod("~QXmlLocator", "()")]
 		private void DisposeQXmlLocator() {
 			ProxyQXmlLocator().DisposeQXmlLocator();
 		}

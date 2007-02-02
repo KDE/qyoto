@@ -35,7 +35,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionGraphicsItem();
 		}
-		[SmokeMethod("QStyleOptionGraphicsItem()")]
+		[SmokeMethod("QStyleOptionGraphicsItem", "()")]
 		private void NewQStyleOptionGraphicsItem() {
 			ProxyQStyleOptionGraphicsItem().NewQStyleOptionGraphicsItem();
 		}
@@ -43,7 +43,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionGraphicsItem(other);
 		}
-		[SmokeMethod("QStyleOptionGraphicsItem(const QStyleOptionGraphicsItem&)")]
+		[SmokeMethod("QStyleOptionGraphicsItem#", "(const QStyleOptionGraphicsItem&)")]
 		private void NewQStyleOptionGraphicsItem(QStyleOptionGraphicsItem other) {
 			ProxyQStyleOptionGraphicsItem().NewQStyleOptionGraphicsItem(other);
 		}
@@ -51,7 +51,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionGraphicsItem(version);
 		}
-		[SmokeMethod("QStyleOptionGraphicsItem(int)")]
+		[SmokeMethod("QStyleOptionGraphicsItem$", "(int)")]
 		private void NewQStyleOptionGraphicsItem(int version) {
 			ProxyQStyleOptionGraphicsItem().NewQStyleOptionGraphicsItem(version);
 		}
@@ -61,7 +61,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQStyleOptionGraphicsItem();
 		}
-		[SmokeMethod("~QStyleOptionGraphicsItem()")]
+		[SmokeMethod("~QStyleOptionGraphicsItem", "()")]
 		private void DisposeQStyleOptionGraphicsItem() {
 			ProxyQStyleOptionGraphicsItem().DisposeQStyleOptionGraphicsItem();
 		}

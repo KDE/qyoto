@@ -65,18 +65,31 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QUrl(Type dummy) {}
 		interface IQUrlProxy {
+			[SmokeMethod("fromLocalFile$", "(const QString&)")]
 			IQUrl FromLocalFile(string localfile);
+			[SmokeMethod("fromEncoded#", "(const QByteArray&)")]
 			IQUrl FromEncoded(QByteArray url);
+			[SmokeMethod("fromEncoded##", "(const QByteArray&, QUrl::ParsingMode)")]
 			IQUrl FromEncoded(QByteArray url, QUrl.ParsingMode mode);
+			[SmokeMethod("fromPercentEncoding#", "(const QByteArray&)")]
 			string FromPercentEncoding(QByteArray arg1);
+			[SmokeMethod("toPercentEncoding$$$", "(const QString&, const QByteArray&, const QByteArray&)")]
 			QByteArray ToPercentEncoding(string arg1, QByteArray exclude, QByteArray include);
+			[SmokeMethod("toPercentEncoding$$", "(const QString&, const QByteArray&)")]
 			QByteArray ToPercentEncoding(string arg1, QByteArray exclude);
+			[SmokeMethod("toPercentEncoding$", "(const QString&)")]
 			QByteArray ToPercentEncoding(string arg1);
+			[SmokeMethod("fromPunycode#", "(const QByteArray&)")]
 			string FromPunycode(QByteArray arg1);
+			[SmokeMethod("toPunycode$", "(const QString&)")]
 			QByteArray ToPunycode(string arg1);
+			[SmokeMethod("fromAce#", "(const QByteArray&)")]
 			string FromAce(QByteArray arg1);
+			[SmokeMethod("toAce$", "(const QString&)")]
 			QByteArray ToAce(string arg1);
+			[SmokeMethod("idnWhitelist", "()")]
 			List<string> IdnWhitelist();
+			[SmokeMethod("setIdnWhitelist?", "(const QStringList&)")]
 			void SetIdnWhitelist(List<string> arg1);
 		}
 
@@ -116,7 +129,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQUrl();
 		}
-		[SmokeMethod("QUrl()")]
+		[SmokeMethod("QUrl", "()")]
 		private void NewQUrl() {
 			ProxyQUrl().NewQUrl();
 		}
@@ -124,7 +137,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQUrl(url);
 		}
-		[SmokeMethod("QUrl(const QString&)")]
+		[SmokeMethod("QUrl$", "(const QString&)")]
 		private void NewQUrl(string url) {
 			ProxyQUrl().NewQUrl(url);
 		}
@@ -132,7 +145,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQUrl(url,mode);
 		}
-		[SmokeMethod("QUrl(const QString&, QUrl::ParsingMode)")]
+		[SmokeMethod("QUrl$$", "(const QString&, QUrl::ParsingMode)")]
 		private void NewQUrl(string url, QUrl.ParsingMode mode) {
 			ProxyQUrl().NewQUrl(url,mode);
 		}
@@ -140,261 +153,248 @@ namespace Qyoto {
 			CreateProxy();
 			NewQUrl(copy);
 		}
-		[SmokeMethod("QUrl(const QUrl&)")]
+		[SmokeMethod("QUrl#", "(const QUrl&)")]
 		private void NewQUrl(IQUrl copy) {
 			ProxyQUrl().NewQUrl(copy);
 		}
-		[SmokeMethod("setUrl(const QString&)")]
+		[SmokeMethod("setUrl$", "(const QString&)")]
 		public void SetUrl(string url) {
 			ProxyQUrl().SetUrl(url);
 		}
-		[SmokeMethod("setUrl(const QString&, QUrl::ParsingMode)")]
+		[SmokeMethod("setUrl$$", "(const QString&, QUrl::ParsingMode)")]
 		public void SetUrl(string url, QUrl.ParsingMode mode) {
 			ProxyQUrl().SetUrl(url,mode);
 		}
-		[SmokeMethod("setEncodedUrl(const QByteArray&)")]
+		[SmokeMethod("setEncodedUrl#", "(const QByteArray&)")]
 		public void SetEncodedUrl(QByteArray url) {
 			ProxyQUrl().SetEncodedUrl(url);
 		}
-		[SmokeMethod("setEncodedUrl(const QByteArray&, QUrl::ParsingMode)")]
+		[SmokeMethod("setEncodedUrl##", "(const QByteArray&, QUrl::ParsingMode)")]
 		public void SetEncodedUrl(QByteArray url, QUrl.ParsingMode mode) {
 			ProxyQUrl().SetEncodedUrl(url,mode);
 		}
-		[SmokeMethod("isValid() const")]
+		[SmokeMethod("isValid", "() const")]
 		public bool IsValid() {
 			return ProxyQUrl().IsValid();
 		}
-		[SmokeMethod("isEmpty() const")]
+		[SmokeMethod("isEmpty", "() const")]
 		public bool IsEmpty() {
 			return ProxyQUrl().IsEmpty();
 		}
-		[SmokeMethod("clear()")]
+		[SmokeMethod("clear", "()")]
 		public void Clear() {
 			ProxyQUrl().Clear();
 		}
-		[SmokeMethod("setScheme(const QString&)")]
+		[SmokeMethod("setScheme$", "(const QString&)")]
 		public void SetScheme(string scheme) {
 			ProxyQUrl().SetScheme(scheme);
 		}
-		[SmokeMethod("scheme() const")]
+		[SmokeMethod("scheme", "() const")]
 		public string Scheme() {
 			return ProxyQUrl().Scheme();
 		}
-		[SmokeMethod("setAuthority(const QString&)")]
+		[SmokeMethod("setAuthority$", "(const QString&)")]
 		public void SetAuthority(string authority) {
 			ProxyQUrl().SetAuthority(authority);
 		}
-		[SmokeMethod("authority() const")]
+		[SmokeMethod("authority", "() const")]
 		public string Authority() {
 			return ProxyQUrl().Authority();
 		}
-		[SmokeMethod("setUserInfo(const QString&)")]
+		[SmokeMethod("setUserInfo$", "(const QString&)")]
 		public void SetUserInfo(string userInfo) {
 			ProxyQUrl().SetUserInfo(userInfo);
 		}
-		[SmokeMethod("userInfo() const")]
+		[SmokeMethod("userInfo", "() const")]
 		public string UserInfo() {
 			return ProxyQUrl().UserInfo();
 		}
-		[SmokeMethod("setUserName(const QString&)")]
+		[SmokeMethod("setUserName$", "(const QString&)")]
 		public void SetUserName(string userName) {
 			ProxyQUrl().SetUserName(userName);
 		}
-		[SmokeMethod("userName() const")]
+		[SmokeMethod("userName", "() const")]
 		public string UserName() {
 			return ProxyQUrl().UserName();
 		}
-		[SmokeMethod("setPassword(const QString&)")]
+		[SmokeMethod("setPassword$", "(const QString&)")]
 		public void SetPassword(string password) {
 			ProxyQUrl().SetPassword(password);
 		}
-		[SmokeMethod("password() const")]
+		[SmokeMethod("password", "() const")]
 		public string Password() {
 			return ProxyQUrl().Password();
 		}
-		[SmokeMethod("setHost(const QString&)")]
+		[SmokeMethod("setHost$", "(const QString&)")]
 		public void SetHost(string host) {
 			ProxyQUrl().SetHost(host);
 		}
-		[SmokeMethod("host() const")]
+		[SmokeMethod("host", "() const")]
 		public string Host() {
 			return ProxyQUrl().Host();
 		}
-		[SmokeMethod("setPort(int)")]
+		[SmokeMethod("setPort$", "(int)")]
 		public void SetPort(int port) {
 			ProxyQUrl().SetPort(port);
 		}
-		[SmokeMethod("port() const")]
+		[SmokeMethod("port", "() const")]
 		public int Port() {
 			return ProxyQUrl().Port();
 		}
-		[SmokeMethod("port(int) const")]
+		[SmokeMethod("port$", "(int) const")]
 		public int Port(int defaultPort) {
 			return ProxyQUrl().Port(defaultPort);
 		}
-		[SmokeMethod("setPath(const QString&)")]
+		[SmokeMethod("setPath$", "(const QString&)")]
 		public void SetPath(string path) {
 			ProxyQUrl().SetPath(path);
 		}
-		[SmokeMethod("path() const")]
+		[SmokeMethod("path", "() const")]
 		public string Path() {
 			return ProxyQUrl().Path();
 		}
-		[SmokeMethod("hasQuery() const")]
+		[SmokeMethod("hasQuery", "() const")]
 		public bool HasQuery() {
 			return ProxyQUrl().HasQuery();
 		}
-		[SmokeMethod("setEncodedQuery(const QByteArray&)")]
+		[SmokeMethod("setEncodedQuery#", "(const QByteArray&)")]
 		public void SetEncodedQuery(QByteArray query) {
 			ProxyQUrl().SetEncodedQuery(query);
 		}
-		[SmokeMethod("encodedQuery() const")]
+		[SmokeMethod("encodedQuery", "() const")]
 		public QByteArray EncodedQuery() {
 			return ProxyQUrl().EncodedQuery();
 		}
-		[SmokeMethod("setQueryDelimiters(char, char)")]
+		[SmokeMethod("setQueryDelimiters$$", "(char, char)")]
 		public void SetQueryDelimiters(char valueDelimiter, char pairDelimiter) {
 			ProxyQUrl().SetQueryDelimiters(valueDelimiter,pairDelimiter);
 		}
-		[SmokeMethod("queryValueDelimiter() const")]
+		[SmokeMethod("queryValueDelimiter", "() const")]
 		public char QueryValueDelimiter() {
 			return ProxyQUrl().QueryValueDelimiter();
 		}
-		[SmokeMethod("queryPairDelimiter() const")]
+		[SmokeMethod("queryPairDelimiter", "() const")]
 		public char QueryPairDelimiter() {
 			return ProxyQUrl().QueryPairDelimiter();
 		}
 		// void setQueryItems(const QList<QPair<QString, QString> >& arg1); >>>> NOT CONVERTED
-		[SmokeMethod("addQueryItem(const QString&, const QString&)")]
+		[SmokeMethod("addQueryItem$$", "(const QString&, const QString&)")]
 		public void AddQueryItem(string key, string value) {
 			ProxyQUrl().AddQueryItem(key,value);
 		}
 		// QList<QPair<QString, QString> > queryItems(); >>>> NOT CONVERTED
-		[SmokeMethod("hasQueryItem(const QString&) const")]
+		[SmokeMethod("hasQueryItem$", "(const QString&) const")]
 		public bool HasQueryItem(string key) {
 			return ProxyQUrl().HasQueryItem(key);
 		}
-		[SmokeMethod("queryItemValue(const QString&) const")]
+		[SmokeMethod("queryItemValue$", "(const QString&) const")]
 		public string QueryItemValue(string key) {
 			return ProxyQUrl().QueryItemValue(key);
 		}
-		[SmokeMethod("allQueryItemValues(const QString&) const")]
+		[SmokeMethod("allQueryItemValues$", "(const QString&) const")]
 		public List<string> AllQueryItemValues(string key) {
 			return ProxyQUrl().AllQueryItemValues(key);
 		}
-		[SmokeMethod("removeQueryItem(const QString&)")]
+		[SmokeMethod("removeQueryItem$", "(const QString&)")]
 		public void RemoveQueryItem(string key) {
 			ProxyQUrl().RemoveQueryItem(key);
 		}
-		[SmokeMethod("removeAllQueryItems(const QString&)")]
+		[SmokeMethod("removeAllQueryItems$", "(const QString&)")]
 		public void RemoveAllQueryItems(string key) {
 			ProxyQUrl().RemoveAllQueryItems(key);
 		}
-		[SmokeMethod("setFragment(const QString&)")]
+		[SmokeMethod("setFragment$", "(const QString&)")]
 		public void SetFragment(string fragment) {
 			ProxyQUrl().SetFragment(fragment);
 		}
-		[SmokeMethod("fragment() const")]
+		[SmokeMethod("fragment", "() const")]
 		public string Fragment() {
 			return ProxyQUrl().Fragment();
 		}
-		[SmokeMethod("hasFragment() const")]
+		[SmokeMethod("hasFragment", "() const")]
 		public bool HasFragment() {
 			return ProxyQUrl().HasFragment();
 		}
-		[SmokeMethod("resolved(const QUrl&) const")]
+		[SmokeMethod("resolved#", "(const QUrl&) const")]
 		public IQUrl Resolved(IQUrl relative) {
 			return ProxyQUrl().Resolved(relative);
 		}
-		[SmokeMethod("isRelative() const")]
+		[SmokeMethod("isRelative", "() const")]
 		public bool IsRelative() {
 			return ProxyQUrl().IsRelative();
 		}
-		[SmokeMethod("isParentOf(const QUrl&) const")]
+		[SmokeMethod("isParentOf#", "(const QUrl&) const")]
 		public bool IsParentOf(IQUrl url) {
 			return ProxyQUrl().IsParentOf(url);
 		}
-		[SmokeMethod("toLocalFile() const")]
+		[SmokeMethod("toLocalFile", "() const")]
 		public string ToLocalFile() {
 			return ProxyQUrl().ToLocalFile();
 		}
-		[SmokeMethod("toString(FormattingOptions) const")]
+		[SmokeMethod("toString$", "(FormattingOptions) const")]
 		public new string ToString(int options) {
 			return ProxyQUrl().ToString(options);
 		}
-		[SmokeMethod("toString() const")]
+		[SmokeMethod("toString", "() const")]
 		public new string ToString() {
 			return ProxyQUrl().ToString();
 		}
-		[SmokeMethod("toEncoded(FormattingOptions) const")]
+		[SmokeMethod("toEncoded$", "(FormattingOptions) const")]
 		public QByteArray ToEncoded(int options) {
 			return ProxyQUrl().ToEncoded(options);
 		}
-		[SmokeMethod("toEncoded() const")]
+		[SmokeMethod("toEncoded", "() const")]
 		public QByteArray ToEncoded() {
 			return ProxyQUrl().ToEncoded();
 		}
-		[SmokeMethod("detach()")]
+		[SmokeMethod("detach", "()")]
 		public void Detach() {
 			ProxyQUrl().Detach();
 		}
-		[SmokeMethod("isDetached() const")]
+		[SmokeMethod("isDetached", "() const")]
 		public bool IsDetached() {
 			return ProxyQUrl().IsDetached();
 		}
-		[SmokeMethod("errorString() const")]
+		[SmokeMethod("errorString", "() const")]
 		public string ErrorString() {
 			return ProxyQUrl().ErrorString();
 		}
-		[SmokeMethod("fromLocalFile(const QString&)")]
 		public static IQUrl FromLocalFile(string localfile) {
 			return StaticQUrl().FromLocalFile(localfile);
 		}
-		[SmokeMethod("fromEncoded(const QByteArray&)")]
 		public static IQUrl FromEncoded(QByteArray url) {
 			return StaticQUrl().FromEncoded(url);
 		}
-		[SmokeMethod("fromEncoded(const QByteArray&, QUrl::ParsingMode)")]
 		public static IQUrl FromEncoded(QByteArray url, QUrl.ParsingMode mode) {
 			return StaticQUrl().FromEncoded(url,mode);
 		}
-		[SmokeMethod("fromPercentEncoding(const QByteArray&)")]
 		public static string FromPercentEncoding(QByteArray arg1) {
 			return StaticQUrl().FromPercentEncoding(arg1);
 		}
-		[SmokeMethod("toPercentEncoding(const QString&, const QByteArray&, const QByteArray&)")]
 		public static QByteArray ToPercentEncoding(string arg1, QByteArray exclude, QByteArray include) {
 			return StaticQUrl().ToPercentEncoding(arg1,exclude,include);
 		}
-		[SmokeMethod("toPercentEncoding(const QString&, const QByteArray&)")]
 		public static QByteArray ToPercentEncoding(string arg1, QByteArray exclude) {
 			return StaticQUrl().ToPercentEncoding(arg1,exclude);
 		}
-		[SmokeMethod("toPercentEncoding(const QString&)")]
 		public static QByteArray ToPercentEncoding(string arg1) {
 			return StaticQUrl().ToPercentEncoding(arg1);
 		}
-		[SmokeMethod("fromPunycode(const QByteArray&)")]
 		public static string FromPunycode(QByteArray arg1) {
 			return StaticQUrl().FromPunycode(arg1);
 		}
-		[SmokeMethod("toPunycode(const QString&)")]
 		public static QByteArray ToPunycode(string arg1) {
 			return StaticQUrl().ToPunycode(arg1);
 		}
-		[SmokeMethod("fromAce(const QByteArray&)")]
 		public static string FromAce(QByteArray arg1) {
 			return StaticQUrl().FromAce(arg1);
 		}
-		[SmokeMethod("toAce(const QString&)")]
 		public static QByteArray ToAce(string arg1) {
 			return StaticQUrl().ToAce(arg1);
 		}
-		[SmokeMethod("idnWhitelist()")]
 		public static List<string> IdnWhitelist() {
 			return StaticQUrl().IdnWhitelist();
 		}
-		[SmokeMethod("setIdnWhitelist(const QStringList&)")]
 		public static void SetIdnWhitelist(List<string> arg1) {
 			StaticQUrl().SetIdnWhitelist(arg1);
 		}
@@ -404,7 +404,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQUrl();
 		}
-		[SmokeMethod("~QUrl()")]
+		[SmokeMethod("~QUrl", "()")]
 		private void DisposeQUrl() {
 			ProxyQUrl().DisposeQUrl();
 		}

@@ -11,13 +11,21 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QWhatsThis(Type dummy) {}
 		interface IQWhatsThisProxy {
+			[SmokeMethod("enterWhatsThisMode", "()")]
 			void EnterWhatsThisMode();
+			[SmokeMethod("inWhatsThisMode", "()")]
 			bool InWhatsThisMode();
+			[SmokeMethod("leaveWhatsThisMode", "()")]
 			void LeaveWhatsThisMode();
+			[SmokeMethod("showText###", "(const QPoint&, const QString&, QWidget*)")]
 			void ShowText(QPoint pos, string text, QWidget w);
+			[SmokeMethod("showText##", "(const QPoint&, const QString&)")]
 			void ShowText(QPoint pos, string text);
+			[SmokeMethod("hideText", "()")]
 			void HideText();
+			[SmokeMethod("createAction#", "(QObject*)")]
 			QAction CreateAction(QObject parent);
+			[SmokeMethod("createAction", "()")]
 			QAction CreateAction();
 		}
 
@@ -37,35 +45,27 @@ namespace Qyoto {
 			return (IQWhatsThisProxy) _staticInterceptor;
 		}
 
-		[SmokeMethod("enterWhatsThisMode()")]
 		public static void EnterWhatsThisMode() {
 			StaticQWhatsThis().EnterWhatsThisMode();
 		}
-		[SmokeMethod("inWhatsThisMode()")]
 		public static bool InWhatsThisMode() {
 			return StaticQWhatsThis().InWhatsThisMode();
 		}
-		[SmokeMethod("leaveWhatsThisMode()")]
 		public static void LeaveWhatsThisMode() {
 			StaticQWhatsThis().LeaveWhatsThisMode();
 		}
-		[SmokeMethod("showText(const QPoint&, const QString&, QWidget*)")]
 		public static void ShowText(QPoint pos, string text, QWidget w) {
 			StaticQWhatsThis().ShowText(pos,text,w);
 		}
-		[SmokeMethod("showText(const QPoint&, const QString&)")]
 		public static void ShowText(QPoint pos, string text) {
 			StaticQWhatsThis().ShowText(pos,text);
 		}
-		[SmokeMethod("hideText()")]
 		public static void HideText() {
 			StaticQWhatsThis().HideText();
 		}
-		[SmokeMethod("createAction(QObject*)")]
 		public static QAction CreateAction(QObject parent) {
 			return StaticQWhatsThis().CreateAction(parent);
 		}
-		[SmokeMethod("createAction()")]
 		public static QAction CreateAction() {
 			return StaticQWhatsThis().CreateAction();
 		}
@@ -75,7 +75,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQWhatsThis();
 		}
-		[SmokeMethod("~QWhatsThis()")]
+		[SmokeMethod("~QWhatsThis", "()")]
 		private void DisposeQWhatsThis() {
 			ProxyQWhatsThis().DisposeQWhatsThis();
 		}

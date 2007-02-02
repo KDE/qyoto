@@ -52,13 +52,10 @@ namespace Qyoto {
 	
 	public class SmokeInvocation : RealProxy {
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		static extern int FindMethodId(string className, string methodName);
+		static extern int FindMethodId(string className, string mungedName, string signature);
 			
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern int MethodFromMap(int methodId);
-			
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		static extern int FindAmbiguousMethodId(int ambigousId, string signature);
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern void CallSmokeMethod(int methodId, IntPtr target, IntPtr sp, int items);
@@ -334,7 +331,6 @@ namespace Qyoto {
 		private Type	_classToProxy;
 		private Object	_instance;
 		private string	_className;
-		private Hashtable methodCache = new Hashtable();
 		
 		public SmokeInvocation(Type classToProxy, Object instance) : base(classToProxy) 
 		{
@@ -346,38 +342,6 @@ namespace Qyoto {
 			}
 		}
 
-		public int FindMethod(string name, MethodInfo methodInfo) {
-//			Console.WriteLine("FindMethod() className: {0} MethodName: {1}", _className, name);
-			int meth = FindMethodId(_className, name);
-			if (meth == 0) {
-				meth = FindMethodId("QGlobalSpace", name);
-			}
-			
-			if (meth == 0) {
-				return -1;
-			} else if (meth > 0) {
-				int i = MethodFromMap(meth);
-//				Console.WriteLine("FindMethod() MethodName: {0} result: {1}", name, i);
-				if (i == 0) {		// shouldn't happen
-					return -1;
-				} else if (i > 0) {	// single match
-					return i;
-//					Console.WriteLine("FindMethod() single match {0}", i);
-				} else {		// multiple match
-					i = -i;		// turn into ambiguousMethodList index
-					int	methodId;
-					string signature = "";
-					object[] smokeMethod = methodInfo.GetCustomAttributes(typeof(SmokeMethod), false);
-					if (smokeMethod.Length > 0) {
-						signature = ((SmokeMethod) smokeMethod[0]).Signature;
-					}
-
-					return FindAmbiguousMethodId(i, signature);
-				}
-			}
-			return -1;
-		}
-		
 		public override IMessage Invoke(IMessage message) {
 			IMethodCallMessage callMessage = (IMethodCallMessage) message;
 #if DEBUG
@@ -389,29 +353,27 @@ namespace Qyoto {
 
 			StackItem[] stack = new StackItem[callMessage.ArgCount+1];
 			
-			string mungedName = callMessage.MethodName;
-			mungedName = char.ToLower(mungedName[0]) + mungedName.Substring(1, mungedName.Length-1);
-			mungedName = Regex.Replace(mungedName, @"^new", "");
+			int methodId = -1;
+			object[] smokeMethod = ((MethodInfo) callMessage.MethodBase).GetCustomAttributes(typeof(SmokeMethod), false);
+			if (smokeMethod.Length > 0) {
+				methodId = ((SmokeMethod) smokeMethod[0]).methodId;
+				if (methodId == -1) {
+					methodId = FindMethodId(	_className,
+												((SmokeMethod) smokeMethod[0]).MungedName, 
+												((SmokeMethod) smokeMethod[0]).Signature );
+					((SmokeMethod) smokeMethod[0]).methodId = methodId;
+				}
+			} else {
+				methodId = FindMethodId(	_className,
+											((MethodInfo) callMessage.MethodBase).Name, 
+											"()" );
+			}
+//			Console.WriteLine("Invoke() methodId: {0}", methodId);
+
 			IMethodReturnMessage returnMessage = (IMethodReturnMessage) message;
 
 			if (callMessage.MethodSignature != null) {
 				Type[] types = (Type[]) callMessage.MethodSignature;
-				for (int i = 0; i < callMessage.ArgCount; i++) {
-					if (	types[i].IsArray
-							|| types[i] == typeof(System.Collections.ArrayList) ) 
-					{
-						mungedName += "?";
-					} else if (	types[i].IsPrimitive 
-								|| types[i].IsEnum
-								|| types[i] == typeof(System.String) 
-								|| types[i] == typeof(System.Text.StringBuilder) ) 
-					{
-						mungedName += "$";
-					} else {
-						mungedName += "#";
-					}
-				}
-				
 				for (int i = 0; i < callMessage.ArgCount; i++) {
 					if (callMessage.Args[i] == null) {
 						unsafe {
@@ -447,20 +409,8 @@ namespace Qyoto {
 				}
 			}
 
-			int methodId;
-			if (!methodCache.ContainsKey(callMessage.MethodBase)) {
-// 				Console.WriteLine("Creating entry in methodCache");
-				methodId = FindMethod(mungedName, (MethodInfo) callMessage.MethodBase);
-				methodCache.Add(callMessage.MethodBase, (object) methodId);
-			} else {
-// 				Console.WriteLine("Found entry in methodCache");
-				methodId = (int) methodCache[callMessage.MethodBase];
-			}
-			
 			if (methodId == -1) {
-#if DEBUG
-				Console.WriteLine("LEAVE Invoke() ** Missing method ** {0}", mungedName);
-#endif
+				Console.Error.WriteLine("LEAVE Invoke() ** Missing method ** {0}", ((MethodInfo) callMessage.MethodBase).Name);
 				return returnMessage;
 			}
 			

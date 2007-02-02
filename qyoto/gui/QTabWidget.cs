@@ -9,7 +9,9 @@ namespace Qyoto {
 	public class QTabWidget : QWidget, IDisposable {
  		protected QTabWidget(Type dummy) : base((Type) null) {}
 		interface IQTabWidgetProxy {
+			[SmokeMethod("tr$$", "(const char*, const char*)")]
 			string Tr(string s, string c);
+			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
 		}
 
@@ -104,7 +106,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTabWidget(parent);
 		}
-		[SmokeMethod("QTabWidget(QWidget*)")]
+		[SmokeMethod("QTabWidget#", "(QWidget*)")]
 		private void NewQTabWidget(QWidget parent) {
 			ProxyQTabWidget().NewQTabWidget(parent);
 		}
@@ -112,156 +114,154 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTabWidget();
 		}
-		[SmokeMethod("QTabWidget()")]
+		[SmokeMethod("QTabWidget", "()")]
 		private void NewQTabWidget() {
 			ProxyQTabWidget().NewQTabWidget();
 		}
-		[SmokeMethod("addTab(QWidget*, const QString&)")]
+		[SmokeMethod("addTab##", "(QWidget*, const QString&)")]
 		public int AddTab(QWidget widget, string arg2) {
 			return ProxyQTabWidget().AddTab(widget,arg2);
 		}
-		[SmokeMethod("addTab(QWidget*, const QIcon&, const QString&)")]
+		[SmokeMethod("addTab###", "(QWidget*, const QIcon&, const QString&)")]
 		public int AddTab(QWidget widget, QIcon icon, string label) {
 			return ProxyQTabWidget().AddTab(widget,icon,label);
 		}
-		[SmokeMethod("insertTab(int, QWidget*, const QString&)")]
+		[SmokeMethod("insertTab$$$", "(int, QWidget*, const QString&)")]
 		public int InsertTab(int index, QWidget widget, string arg3) {
 			return ProxyQTabWidget().InsertTab(index,widget,arg3);
 		}
-		[SmokeMethod("insertTab(int, QWidget*, const QIcon&, const QString&)")]
+		[SmokeMethod("insertTab$$$$", "(int, QWidget*, const QIcon&, const QString&)")]
 		public int InsertTab(int index, QWidget widget, QIcon icon, string label) {
 			return ProxyQTabWidget().InsertTab(index,widget,icon,label);
 		}
-		[SmokeMethod("removeTab(int)")]
+		[SmokeMethod("removeTab$", "(int)")]
 		public void RemoveTab(int index) {
 			ProxyQTabWidget().RemoveTab(index);
 		}
-		[SmokeMethod("isTabEnabled(int) const")]
+		[SmokeMethod("isTabEnabled$", "(int) const")]
 		public bool IsTabEnabled(int index) {
 			return ProxyQTabWidget().IsTabEnabled(index);
 		}
-		[SmokeMethod("setTabEnabled(int, bool)")]
+		[SmokeMethod("setTabEnabled$$", "(int, bool)")]
 		public void SetTabEnabled(int index, bool arg2) {
 			ProxyQTabWidget().SetTabEnabled(index,arg2);
 		}
-		[SmokeMethod("tabText(int) const")]
+		[SmokeMethod("tabText$", "(int) const")]
 		public string TabText(int index) {
 			return ProxyQTabWidget().TabText(index);
 		}
-		[SmokeMethod("setTabText(int, const QString&)")]
+		[SmokeMethod("setTabText$$", "(int, const QString&)")]
 		public void SetTabText(int index, string arg2) {
 			ProxyQTabWidget().SetTabText(index,arg2);
 		}
-		[SmokeMethod("tabIcon(int) const")]
+		[SmokeMethod("tabIcon$", "(int) const")]
 		public QIcon TabIcon(int index) {
 			return ProxyQTabWidget().TabIcon(index);
 		}
-		[SmokeMethod("setTabIcon(int, const QIcon&)")]
+		[SmokeMethod("setTabIcon$$", "(int, const QIcon&)")]
 		public void SetTabIcon(int index, QIcon icon) {
 			ProxyQTabWidget().SetTabIcon(index,icon);
 		}
-		[SmokeMethod("setTabToolTip(int, const QString&)")]
+		[SmokeMethod("setTabToolTip$$", "(int, const QString&)")]
 		public void SetTabToolTip(int index, string tip) {
 			ProxyQTabWidget().SetTabToolTip(index,tip);
 		}
-		[SmokeMethod("tabToolTip(int) const")]
+		[SmokeMethod("tabToolTip$", "(int) const")]
 		public string TabToolTip(int index) {
 			return ProxyQTabWidget().TabToolTip(index);
 		}
-		[SmokeMethod("setTabWhatsThis(int, const QString&)")]
+		[SmokeMethod("setTabWhatsThis$$", "(int, const QString&)")]
 		public void SetTabWhatsThis(int index, string text) {
 			ProxyQTabWidget().SetTabWhatsThis(index,text);
 		}
-		[SmokeMethod("tabWhatsThis(int) const")]
+		[SmokeMethod("tabWhatsThis$", "(int) const")]
 		public string TabWhatsThis(int index) {
 			return ProxyQTabWidget().TabWhatsThis(index);
 		}
-		[SmokeMethod("currentWidget() const")]
+		[SmokeMethod("currentWidget", "() const")]
 		public QWidget CurrentWidget() {
 			return ProxyQTabWidget().CurrentWidget();
 		}
-		[SmokeMethod("widget(int) const")]
+		[SmokeMethod("widget$", "(int) const")]
 		public QWidget Widget(int index) {
 			return ProxyQTabWidget().Widget(index);
 		}
-		[SmokeMethod("indexOf(QWidget*) const")]
+		[SmokeMethod("indexOf#", "(QWidget*) const")]
 		public int IndexOf(QWidget widget) {
 			return ProxyQTabWidget().IndexOf(widget);
 		}
-		[SmokeMethod("sizeHint() const")]
+		[SmokeMethod("sizeHint", "() const")]
 		public new QSize SizeHint() {
 			return ProxyQTabWidget().SizeHint();
 		}
-		[SmokeMethod("minimumSizeHint() const")]
+		[SmokeMethod("minimumSizeHint", "() const")]
 		public new QSize MinimumSizeHint() {
 			return ProxyQTabWidget().MinimumSizeHint();
 		}
-		[SmokeMethod("setCornerWidget(QWidget*, Qt::Corner)")]
+		[SmokeMethod("setCornerWidget##", "(QWidget*, Qt::Corner)")]
 		public void SetCornerWidget(QWidget w, Qt.Corner corner) {
 			ProxyQTabWidget().SetCornerWidget(w,corner);
 		}
-		[SmokeMethod("setCornerWidget(QWidget*)")]
+		[SmokeMethod("setCornerWidget#", "(QWidget*)")]
 		public void SetCornerWidget(QWidget w) {
 			ProxyQTabWidget().SetCornerWidget(w);
 		}
-		[SmokeMethod("cornerWidget(Qt::Corner) const")]
+		[SmokeMethod("cornerWidget$", "(Qt::Corner) const")]
 		public QWidget CornerWidget(Qt.Corner corner) {
 			return ProxyQTabWidget().CornerWidget(corner);
 		}
-		[SmokeMethod("cornerWidget() const")]
+		[SmokeMethod("cornerWidget", "() const")]
 		public QWidget CornerWidget() {
 			return ProxyQTabWidget().CornerWidget();
 		}
-		[Q_SLOT("void setCurrentWidget(QWidget*)")]
-		[SmokeMethod("setCurrentWidget(QWidget*)")]
+		[Q_SLOT("void (QWidget*)")]
+		[SmokeMethod("setCurrentWidget#", "(QWidget*)")]
 		public void SetCurrentWidget(QWidget widget) {
 			ProxyQTabWidget().SetCurrentWidget(widget);
 		}
-		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQTabWidget().Tr(s,c);
 		}
-		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQTabWidget().Tr(s);
 		}
-		[SmokeMethod("tabInserted(int)")]
+		[SmokeMethod("tabInserted$", "(int)")]
 		protected virtual void TabInserted(int index) {
 			ProxyQTabWidget().TabInserted(index);
 		}
-		[SmokeMethod("tabRemoved(int)")]
+		[SmokeMethod("tabRemoved$", "(int)")]
 		protected virtual void TabRemoved(int index) {
 			ProxyQTabWidget().TabRemoved(index);
 		}
-		[SmokeMethod("showEvent(QShowEvent*)")]
+		[SmokeMethod("showEvent#", "(QShowEvent*)")]
 		public new void ShowEvent(QShowEvent arg1) {
 			ProxyQTabWidget().ShowEvent(arg1);
 		}
-		[SmokeMethod("resizeEvent(QResizeEvent*)")]
+		[SmokeMethod("resizeEvent#", "(QResizeEvent*)")]
 		protected new void ResizeEvent(QResizeEvent arg1) {
 			ProxyQTabWidget().ResizeEvent(arg1);
 		}
-		[SmokeMethod("keyPressEvent(QKeyEvent*)")]
+		[SmokeMethod("keyPressEvent#", "(QKeyEvent*)")]
 		protected new void KeyPressEvent(QKeyEvent arg1) {
 			ProxyQTabWidget().KeyPressEvent(arg1);
 		}
-		[SmokeMethod("paintEvent(QPaintEvent*)")]
+		[SmokeMethod("paintEvent#", "(QPaintEvent*)")]
 		protected new void PaintEvent(QPaintEvent arg1) {
 			ProxyQTabWidget().PaintEvent(arg1);
 		}
-		[SmokeMethod("setTabBar(QTabBar*)")]
+		[SmokeMethod("setTabBar#", "(QTabBar*)")]
 		protected void SetTabBar(QTabBar arg1) {
 			ProxyQTabWidget().SetTabBar(arg1);
 		}
-		[SmokeMethod("tabBar() const")]
+		[SmokeMethod("tabBar", "() const")]
 		protected QTabBar TabBar() {
 			return ProxyQTabWidget().TabBar();
 		}
-		[SmokeMethod("changeEvent(QEvent*)")]
+		[SmokeMethod("changeEvent#", "(QEvent*)")]
 		protected new void ChangeEvent(QEvent arg1) {
 			ProxyQTabWidget().ChangeEvent(arg1);
 		}
-		[SmokeMethod("event(QEvent*)")]
+		[SmokeMethod("event#", "(QEvent*)")]
 		public new bool Event(QEvent arg1) {
 			return ProxyQTabWidget().Event(arg1);
 		}
@@ -271,7 +271,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQTabWidget();
 		}
-		[SmokeMethod("~QTabWidget()")]
+		[SmokeMethod("~QTabWidget", "()")]
 		private void DisposeQTabWidget() {
 			ProxyQTabWidget().DisposeQTabWidget();
 		}
@@ -283,7 +283,7 @@ namespace Qyoto {
 	}
 
 	public interface IQTabWidgetSignals : IQWidgetSignals {
-		[Q_SIGNAL("void currentChanged(int)")]
+		[Q_SIGNAL("void (int)")]
 		void CurrentChanged(int index);
 	}
 }

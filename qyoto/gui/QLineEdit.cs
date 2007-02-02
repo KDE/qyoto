@@ -9,7 +9,9 @@ namespace Qyoto {
 	public class QLineEdit : QWidget, IDisposable {
  		protected QLineEdit(Type dummy) : base((Type) null) {}
 		interface IQLineEditProxy {
+			[SmokeMethod("tr$$", "(const char*, const char*)")]
 			string Tr(string s, string c);
+			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
 		}
 
@@ -166,7 +168,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQLineEdit(parent);
 		}
-		[SmokeMethod("QLineEdit(QWidget*)")]
+		[SmokeMethod("QLineEdit#", "(QWidget*)")]
 		private void NewQLineEdit(QWidget parent) {
 			ProxyQLineEdit().NewQLineEdit(parent);
 		}
@@ -174,7 +176,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQLineEdit();
 		}
-		[SmokeMethod("QLineEdit()")]
+		[SmokeMethod("QLineEdit", "()")]
 		private void NewQLineEdit() {
 			ProxyQLineEdit().NewQLineEdit();
 		}
@@ -182,7 +184,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQLineEdit(arg1,parent);
 		}
-		[SmokeMethod("QLineEdit(const QString&, QWidget*)")]
+		[SmokeMethod("QLineEdit$$", "(const QString&, QWidget*)")]
 		private void NewQLineEdit(string arg1, QWidget parent) {
 			ProxyQLineEdit().NewQLineEdit(arg1,parent);
 		}
@@ -190,230 +192,228 @@ namespace Qyoto {
 			CreateProxy();
 			NewQLineEdit(arg1);
 		}
-		[SmokeMethod("QLineEdit(const QString&)")]
+		[SmokeMethod("QLineEdit$", "(const QString&)")]
 		private void NewQLineEdit(string arg1) {
 			ProxyQLineEdit().NewQLineEdit(arg1);
 		}
-		[SmokeMethod("hasFrame() const")]
+		[SmokeMethod("hasFrame", "() const")]
 		public bool HasFrame() {
 			return ProxyQLineEdit().HasFrame();
 		}
-		[SmokeMethod("isReadOnly() const")]
+		[SmokeMethod("isReadOnly", "() const")]
 		public bool IsReadOnly() {
 			return ProxyQLineEdit().IsReadOnly();
 		}
-		[SmokeMethod("setValidator(const QValidator*)")]
+		[SmokeMethod("setValidator#", "(const QValidator*)")]
 		public void SetValidator(QValidator arg1) {
 			ProxyQLineEdit().SetValidator(arg1);
 		}
-		[SmokeMethod("validator() const")]
+		[SmokeMethod("validator", "() const")]
 		public QValidator Validator() {
 			return ProxyQLineEdit().Validator();
 		}
-		[SmokeMethod("setCompleter(QCompleter*)")]
+		[SmokeMethod("setCompleter#", "(QCompleter*)")]
 		public void SetCompleter(QCompleter completer) {
 			ProxyQLineEdit().SetCompleter(completer);
 		}
-		[SmokeMethod("completer() const")]
+		[SmokeMethod("completer", "() const")]
 		public QCompleter Completer() {
 			return ProxyQLineEdit().Completer();
 		}
-		[SmokeMethod("sizeHint() const")]
+		[SmokeMethod("sizeHint", "() const")]
 		public new QSize SizeHint() {
 			return ProxyQLineEdit().SizeHint();
 		}
-		[SmokeMethod("minimumSizeHint() const")]
+		[SmokeMethod("minimumSizeHint", "() const")]
 		public new QSize MinimumSizeHint() {
 			return ProxyQLineEdit().MinimumSizeHint();
 		}
-		[SmokeMethod("cursorPositionAt(const QPoint&)")]
+		[SmokeMethod("cursorPositionAt#", "(const QPoint&)")]
 		public int CursorPositionAt(QPoint pos) {
 			return ProxyQLineEdit().CursorPositionAt(pos);
 		}
-		[SmokeMethod("cursorForward(bool, int)")]
+		[SmokeMethod("cursorForward$$", "(bool, int)")]
 		public void CursorForward(bool mark, int steps) {
 			ProxyQLineEdit().CursorForward(mark,steps);
 		}
-		[SmokeMethod("cursorForward(bool)")]
+		[SmokeMethod("cursorForward$", "(bool)")]
 		public void CursorForward(bool mark) {
 			ProxyQLineEdit().CursorForward(mark);
 		}
-		[SmokeMethod("cursorBackward(bool, int)")]
+		[SmokeMethod("cursorBackward$$", "(bool, int)")]
 		public void CursorBackward(bool mark, int steps) {
 			ProxyQLineEdit().CursorBackward(mark,steps);
 		}
-		[SmokeMethod("cursorBackward(bool)")]
+		[SmokeMethod("cursorBackward$", "(bool)")]
 		public void CursorBackward(bool mark) {
 			ProxyQLineEdit().CursorBackward(mark);
 		}
-		[SmokeMethod("cursorWordForward(bool)")]
+		[SmokeMethod("cursorWordForward$", "(bool)")]
 		public void CursorWordForward(bool mark) {
 			ProxyQLineEdit().CursorWordForward(mark);
 		}
-		[SmokeMethod("cursorWordBackward(bool)")]
+		[SmokeMethod("cursorWordBackward$", "(bool)")]
 		public void CursorWordBackward(bool mark) {
 			ProxyQLineEdit().CursorWordBackward(mark);
 		}
-		[SmokeMethod("backspace()")]
+		[SmokeMethod("backspace", "()")]
 		public void Backspace() {
 			ProxyQLineEdit().Backspace();
 		}
-		[SmokeMethod("del()")]
+		[SmokeMethod("del", "()")]
 		public void Del() {
 			ProxyQLineEdit().Del();
 		}
-		[SmokeMethod("home(bool)")]
+		[SmokeMethod("home$", "(bool)")]
 		public void Home(bool mark) {
 			ProxyQLineEdit().Home(mark);
 		}
-		[SmokeMethod("end(bool)")]
+		[SmokeMethod("end$", "(bool)")]
 		public void End(bool mark) {
 			ProxyQLineEdit().End(mark);
 		}
-		[SmokeMethod("isModified() const")]
+		[SmokeMethod("isModified", "() const")]
 		public bool IsModified() {
 			return ProxyQLineEdit().IsModified();
 		}
-		[SmokeMethod("setSelection(int, int)")]
+		[SmokeMethod("setSelection$$", "(int, int)")]
 		public void SetSelection(int arg1, int arg2) {
 			ProxyQLineEdit().SetSelection(arg1,arg2);
 		}
-		[SmokeMethod("selectionStart() const")]
+		[SmokeMethod("selectionStart", "() const")]
 		public int SelectionStart() {
 			return ProxyQLineEdit().SelectionStart();
 		}
-		[SmokeMethod("isUndoAvailable() const")]
+		[SmokeMethod("isUndoAvailable", "() const")]
 		public bool IsUndoAvailable() {
 			return ProxyQLineEdit().IsUndoAvailable();
 		}
-		[SmokeMethod("isRedoAvailable() const")]
+		[SmokeMethod("isRedoAvailable", "() const")]
 		public bool IsRedoAvailable() {
 			return ProxyQLineEdit().IsRedoAvailable();
 		}
-		[SmokeMethod("hasAcceptableInput() const")]
+		[SmokeMethod("hasAcceptableInput", "() const")]
 		public bool HasAcceptableInput() {
 			return ProxyQLineEdit().HasAcceptableInput();
 		}
-		[SmokeMethod("deselect()")]
+		[SmokeMethod("deselect", "()")]
 		public void Deselect() {
 			ProxyQLineEdit().Deselect();
 		}
-		[SmokeMethod("insert(const QString&)")]
+		[SmokeMethod("insert$", "(const QString&)")]
 		public void Insert(string arg1) {
 			ProxyQLineEdit().Insert(arg1);
 		}
-		[SmokeMethod("createStandardContextMenu()")]
+		[SmokeMethod("createStandardContextMenu", "()")]
 		public QMenu CreateStandardContextMenu() {
 			return ProxyQLineEdit().CreateStandardContextMenu();
 		}
-		[SmokeMethod("inputMethodQuery(Qt::InputMethodQuery) const")]
+		[SmokeMethod("inputMethodQuery$", "(Qt::InputMethodQuery) const")]
 		public new QVariant InputMethodQuery(Qt.InputMethodQuery arg1) {
 			return ProxyQLineEdit().InputMethodQuery(arg1);
 		}
-		[SmokeMethod("event(QEvent*)")]
+		[SmokeMethod("event#", "(QEvent*)")]
 		public new bool Event(QEvent arg1) {
 			return ProxyQLineEdit().Event(arg1);
 		}
-		[Q_SLOT("void clear()")]
-		[SmokeMethod("clear()")]
+		[Q_SLOT("void ()")]
+		[SmokeMethod("clear", "()")]
 		public void Clear() {
 			ProxyQLineEdit().Clear();
 		}
-		[Q_SLOT("void selectAll()")]
-		[SmokeMethod("selectAll()")]
+		[Q_SLOT("void ()")]
+		[SmokeMethod("selectAll", "()")]
 		public void SelectAll() {
 			ProxyQLineEdit().SelectAll();
 		}
-		[Q_SLOT("void undo()")]
-		[SmokeMethod("undo()")]
+		[Q_SLOT("void ()")]
+		[SmokeMethod("undo", "()")]
 		public void Undo() {
 			ProxyQLineEdit().Undo();
 		}
-		[Q_SLOT("void redo()")]
-		[SmokeMethod("redo()")]
+		[Q_SLOT("void ()")]
+		[SmokeMethod("redo", "()")]
 		public void Redo() {
 			ProxyQLineEdit().Redo();
 		}
-		[Q_SLOT("void cut()")]
-		[SmokeMethod("cut()")]
+		[Q_SLOT("void ()")]
+		[SmokeMethod("cut", "()")]
 		public void Cut() {
 			ProxyQLineEdit().Cut();
 		}
-		[Q_SLOT("void copy() const")]
-		[SmokeMethod("copy() const")]
+		[Q_SLOT("void () const")]
+		[SmokeMethod("copy", "() const")]
 		public void Copy() {
 			ProxyQLineEdit().Copy();
 		}
-		[Q_SLOT("void paste()")]
-		[SmokeMethod("paste()")]
+		[Q_SLOT("void ()")]
+		[SmokeMethod("paste", "()")]
 		public void Paste() {
 			ProxyQLineEdit().Paste();
 		}
-		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQLineEdit().Tr(s,c);
 		}
-		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQLineEdit().Tr(s);
 		}
-		[SmokeMethod("mousePressEvent(QMouseEvent*)")]
+		[SmokeMethod("mousePressEvent#", "(QMouseEvent*)")]
 		protected new void MousePressEvent(QMouseEvent arg1) {
 			ProxyQLineEdit().MousePressEvent(arg1);
 		}
-		[SmokeMethod("mouseMoveEvent(QMouseEvent*)")]
+		[SmokeMethod("mouseMoveEvent#", "(QMouseEvent*)")]
 		protected new void MouseMoveEvent(QMouseEvent arg1) {
 			ProxyQLineEdit().MouseMoveEvent(arg1);
 		}
-		[SmokeMethod("mouseReleaseEvent(QMouseEvent*)")]
+		[SmokeMethod("mouseReleaseEvent#", "(QMouseEvent*)")]
 		protected new void MouseReleaseEvent(QMouseEvent arg1) {
 			ProxyQLineEdit().MouseReleaseEvent(arg1);
 		}
-		[SmokeMethod("mouseDoubleClickEvent(QMouseEvent*)")]
+		[SmokeMethod("mouseDoubleClickEvent#", "(QMouseEvent*)")]
 		protected new void MouseDoubleClickEvent(QMouseEvent arg1) {
 			ProxyQLineEdit().MouseDoubleClickEvent(arg1);
 		}
-		[SmokeMethod("keyPressEvent(QKeyEvent*)")]
+		[SmokeMethod("keyPressEvent#", "(QKeyEvent*)")]
 		protected new void KeyPressEvent(QKeyEvent arg1) {
 			ProxyQLineEdit().KeyPressEvent(arg1);
 		}
-		[SmokeMethod("focusInEvent(QFocusEvent*)")]
+		[SmokeMethod("focusInEvent#", "(QFocusEvent*)")]
 		protected new void FocusInEvent(QFocusEvent arg1) {
 			ProxyQLineEdit().FocusInEvent(arg1);
 		}
-		[SmokeMethod("focusOutEvent(QFocusEvent*)")]
+		[SmokeMethod("focusOutEvent#", "(QFocusEvent*)")]
 		protected new void FocusOutEvent(QFocusEvent arg1) {
 			ProxyQLineEdit().FocusOutEvent(arg1);
 		}
-		[SmokeMethod("paintEvent(QPaintEvent*)")]
+		[SmokeMethod("paintEvent#", "(QPaintEvent*)")]
 		protected new void PaintEvent(QPaintEvent arg1) {
 			ProxyQLineEdit().PaintEvent(arg1);
 		}
-		[SmokeMethod("dragEnterEvent(QDragEnterEvent*)")]
+		[SmokeMethod("dragEnterEvent#", "(QDragEnterEvent*)")]
 		protected new void DragEnterEvent(QDragEnterEvent arg1) {
 			ProxyQLineEdit().DragEnterEvent(arg1);
 		}
-		[SmokeMethod("dragMoveEvent(QDragMoveEvent*)")]
+		[SmokeMethod("dragMoveEvent#", "(QDragMoveEvent*)")]
 		protected new void DragMoveEvent(QDragMoveEvent e) {
 			ProxyQLineEdit().DragMoveEvent(e);
 		}
-		[SmokeMethod("dragLeaveEvent(QDragLeaveEvent*)")]
+		[SmokeMethod("dragLeaveEvent#", "(QDragLeaveEvent*)")]
 		protected new void DragLeaveEvent(QDragLeaveEvent e) {
 			ProxyQLineEdit().DragLeaveEvent(e);
 		}
-		[SmokeMethod("dropEvent(QDropEvent*)")]
+		[SmokeMethod("dropEvent#", "(QDropEvent*)")]
 		protected new void DropEvent(QDropEvent arg1) {
 			ProxyQLineEdit().DropEvent(arg1);
 		}
-		[SmokeMethod("changeEvent(QEvent*)")]
+		[SmokeMethod("changeEvent#", "(QEvent*)")]
 		protected new void ChangeEvent(QEvent arg1) {
 			ProxyQLineEdit().ChangeEvent(arg1);
 		}
-		[SmokeMethod("contextMenuEvent(QContextMenuEvent*)")]
+		[SmokeMethod("contextMenuEvent#", "(QContextMenuEvent*)")]
 		protected new void ContextMenuEvent(QContextMenuEvent arg1) {
 			ProxyQLineEdit().ContextMenuEvent(arg1);
 		}
-		[SmokeMethod("inputMethodEvent(QInputMethodEvent*)")]
+		[SmokeMethod("inputMethodEvent#", "(QInputMethodEvent*)")]
 		protected new void InputMethodEvent(QInputMethodEvent arg1) {
 			ProxyQLineEdit().InputMethodEvent(arg1);
 		}
@@ -423,7 +423,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQLineEdit();
 		}
-		[SmokeMethod("~QLineEdit()")]
+		[SmokeMethod("~QLineEdit", "()")]
 		private void DisposeQLineEdit() {
 			ProxyQLineEdit().DisposeQLineEdit();
 		}
@@ -435,17 +435,17 @@ namespace Qyoto {
 	}
 
 	public interface IQLineEditSignals : IQWidgetSignals {
-		[Q_SIGNAL("void textChanged(const QString&)")]
+		[Q_SIGNAL("void (const QString&)")]
 		void TextChanged(string arg1);
-		[Q_SIGNAL("void textEdited(const QString&)")]
+		[Q_SIGNAL("void (const QString&)")]
 		void TextEdited(string arg1);
-		[Q_SIGNAL("void cursorPositionChanged(int, int)")]
+		[Q_SIGNAL("void (int, int)")]
 		void CursorPositionChanged(int arg1, int arg2);
-		[Q_SIGNAL("void returnPressed()")]
+		[Q_SIGNAL("void ()")]
 		void ReturnPressed();
-		[Q_SIGNAL("void editingFinished()")]
+		[Q_SIGNAL("void ()")]
 		void EditingFinished();
-		[Q_SIGNAL("void selectionChanged()")]
+		[Q_SIGNAL("void ()")]
 		void SelectionChanged();
 	}
 }

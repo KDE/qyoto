@@ -56,55 +56,55 @@ namespace Qyoto {
 			PdmPhysicalDpiX = 9,
 			PdmPhysicalDpiY = 10,
 		}
-		[SmokeMethod("devType() const")]
+		[SmokeMethod("devType", "() const")]
 		public virtual int DevType() {
 			return ProxyQPaintDevice().DevType();
 		}
-		[SmokeMethod("paintingActive() const")]
+		[SmokeMethod("paintingActive", "() const")]
 		public bool PaintingActive() {
 			return ProxyQPaintDevice().PaintingActive();
 		}
-		[SmokeMethod("paintEngine() const")]
+		[SmokeMethod("paintEngine", "() const")]
 		public virtual QPaintEngine PaintEngine() {
 			return ProxyQPaintDevice().PaintEngine();
 		}
-		[SmokeMethod("width() const")]
+		[SmokeMethod("width", "() const")]
 		public int Width() {
 			return ProxyQPaintDevice().Width();
 		}
-		[SmokeMethod("height() const")]
+		[SmokeMethod("height", "() const")]
 		public int Height() {
 			return ProxyQPaintDevice().Height();
 		}
-		[SmokeMethod("widthMM() const")]
+		[SmokeMethod("widthMM", "() const")]
 		public int WidthMM() {
 			return ProxyQPaintDevice().WidthMM();
 		}
-		[SmokeMethod("heightMM() const")]
+		[SmokeMethod("heightMM", "() const")]
 		public int HeightMM() {
 			return ProxyQPaintDevice().HeightMM();
 		}
-		[SmokeMethod("logicalDpiX() const")]
+		[SmokeMethod("logicalDpiX", "() const")]
 		public int LogicalDpiX() {
 			return ProxyQPaintDevice().LogicalDpiX();
 		}
-		[SmokeMethod("logicalDpiY() const")]
+		[SmokeMethod("logicalDpiY", "() const")]
 		public int LogicalDpiY() {
 			return ProxyQPaintDevice().LogicalDpiY();
 		}
-		[SmokeMethod("physicalDpiX() const")]
+		[SmokeMethod("physicalDpiX", "() const")]
 		public int PhysicalDpiX() {
 			return ProxyQPaintDevice().PhysicalDpiX();
 		}
-		[SmokeMethod("physicalDpiY() const")]
+		[SmokeMethod("physicalDpiY", "() const")]
 		public int PhysicalDpiY() {
 			return ProxyQPaintDevice().PhysicalDpiY();
 		}
-		[SmokeMethod("numColors() const")]
+		[SmokeMethod("numColors", "() const")]
 		public int NumColors() {
 			return ProxyQPaintDevice().NumColors();
 		}
-		[SmokeMethod("depth() const")]
+		[SmokeMethod("depth", "() const")]
 		public int Depth() {
 			return ProxyQPaintDevice().Depth();
 		}
@@ -114,7 +114,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQPaintDevice();
 		}
-		[SmokeMethod("~QPaintDevice()")]
+		[SmokeMethod("~QPaintDevice", "()")]
 		private void DisposeQPaintDevice() {
 			ProxyQPaintDevice().DisposeQPaintDevice();
 		}

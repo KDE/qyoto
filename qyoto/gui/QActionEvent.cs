@@ -29,7 +29,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQActionEvent(type,action,before);
 		}
-		[SmokeMethod("QActionEvent(int, QAction*, QAction*)")]
+		[SmokeMethod("QActionEvent$$$", "(int, QAction*, QAction*)")]
 		private void NewQActionEvent(int type, QAction action, QAction before) {
 			ProxyQActionEvent().NewQActionEvent(type,action,before);
 		}
@@ -37,15 +37,15 @@ namespace Qyoto {
 			CreateProxy();
 			NewQActionEvent(type,action);
 		}
-		[SmokeMethod("QActionEvent(int, QAction*)")]
+		[SmokeMethod("QActionEvent$$", "(int, QAction*)")]
 		private void NewQActionEvent(int type, QAction action) {
 			ProxyQActionEvent().NewQActionEvent(type,action);
 		}
-		[SmokeMethod("action() const")]
+		[SmokeMethod("action", "() const")]
 		public QAction Action() {
 			return ProxyQActionEvent().Action();
 		}
-		[SmokeMethod("before() const")]
+		[SmokeMethod("before", "() const")]
 		public QAction Before() {
 			return ProxyQActionEvent().Before();
 		}
@@ -55,7 +55,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQActionEvent();
 		}
-		[SmokeMethod("~QActionEvent()")]
+		[SmokeMethod("~QActionEvent", "()")]
 		private void DisposeQActionEvent() {
 			ProxyQActionEvent().DisposeQActionEvent();
 		}

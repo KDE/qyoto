@@ -34,7 +34,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQModelIndex();
 		}
-		[SmokeMethod("QModelIndex()")]
+		[SmokeMethod("QModelIndex", "()")]
 		private void NewQModelIndex() {
 			ProxyQModelIndex().NewQModelIndex();
 		}
@@ -42,56 +42,56 @@ namespace Qyoto {
 			CreateProxy();
 			NewQModelIndex(other);
 		}
-		[SmokeMethod("QModelIndex(const QModelIndex&)")]
+		[SmokeMethod("QModelIndex#", "(const QModelIndex&)")]
 		private void NewQModelIndex(QModelIndex other) {
 			ProxyQModelIndex().NewQModelIndex(other);
 		}
-		[SmokeMethod("row() const")]
+		[SmokeMethod("row", "() const")]
 		public int Row() {
 			return ProxyQModelIndex().Row();
 		}
-		[SmokeMethod("column() const")]
+		[SmokeMethod("column", "() const")]
 		public int Column() {
 			return ProxyQModelIndex().Column();
 		}
 		// void* internalPointer(); >>>> NOT CONVERTED
-		[SmokeMethod("internalId() const")]
+		[SmokeMethod("internalId", "() const")]
 		public long InternalId() {
 			return ProxyQModelIndex().InternalId();
 		}
-		[SmokeMethod("parent() const")]
+		[SmokeMethod("parent", "() const")]
 		public QModelIndex Parent() {
 			return ProxyQModelIndex().Parent();
 		}
-		[SmokeMethod("sibling(int, int) const")]
+		[SmokeMethod("sibling$$", "(int, int) const")]
 		public QModelIndex Sibling(int row, int column) {
 			return ProxyQModelIndex().Sibling(row,column);
 		}
-		[SmokeMethod("child(int, int) const")]
+		[SmokeMethod("child$$", "(int, int) const")]
 		public QModelIndex Child(int row, int column) {
 			return ProxyQModelIndex().Child(row,column);
 		}
-		[SmokeMethod("data(int) const")]
+		[SmokeMethod("data$", "(int) const")]
 		public QVariant Data(int role) {
 			return ProxyQModelIndex().Data(role);
 		}
-		[SmokeMethod("data() const")]
+		[SmokeMethod("data", "() const")]
 		public QVariant Data() {
 			return ProxyQModelIndex().Data();
 		}
-		[SmokeMethod("flags() const")]
+		[SmokeMethod("flags", "() const")]
 		public int Flags() {
 			return ProxyQModelIndex().Flags();
 		}
-		[SmokeMethod("model() const")]
+		[SmokeMethod("model", "() const")]
 		public QAbstractItemModel Model() {
 			return ProxyQModelIndex().Model();
 		}
-		[SmokeMethod("isValid() const")]
+		[SmokeMethod("isValid", "() const")]
 		public bool IsValid() {
 			return ProxyQModelIndex().IsValid();
 		}
-		[SmokeMethod("operator==(const QModelIndex&) const")]
+		[SmokeMethod("operator==#", "(const QModelIndex&) const")]
 		public static bool operator==(QModelIndex lhs, QModelIndex other) {
 			return StaticQModelIndex().op_equals(lhs,other);
 		}
@@ -105,7 +105,7 @@ namespace Qyoto {
 		public override int GetHashCode() {
 			return ProxyQModelIndex().GetHashCode();
 		}
-		[SmokeMethod("operator<(const QModelIndex&) const")]
+		[SmokeMethod("operator<#", "(const QModelIndex&) const")]
 		public static bool operator<(QModelIndex lhs, QModelIndex other) {
 			return StaticQModelIndex().op_lt(lhs,other);
 		}
@@ -119,7 +119,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQModelIndex();
 		}
-		[SmokeMethod("~QModelIndex()")]
+		[SmokeMethod("~QModelIndex", "()")]
 		private void DisposeQModelIndex() {
 			ProxyQModelIndex().DisposeQModelIndex();
 		}

@@ -36,19 +36,19 @@ namespace Qyoto {
 			return (IQXmlErrorHandlerProxy) _staticInterceptor;
 		}
 
-		[SmokeMethod("warning(const QXmlParseException&)")]
+		[SmokeMethod("warning#", "(const QXmlParseException&)")]
 		public virtual bool Warning(QXmlParseException exception) {
 			return ProxyQXmlErrorHandler().Warning(exception);
 		}
-		[SmokeMethod("error(const QXmlParseException&)")]
+		[SmokeMethod("error#", "(const QXmlParseException&)")]
 		public virtual bool Error(QXmlParseException exception) {
 			return ProxyQXmlErrorHandler().Error(exception);
 		}
-		[SmokeMethod("fatalError(const QXmlParseException&)")]
+		[SmokeMethod("fatalError#", "(const QXmlParseException&)")]
 		public virtual bool FatalError(QXmlParseException exception) {
 			return ProxyQXmlErrorHandler().FatalError(exception);
 		}
-		[SmokeMethod("errorString() const")]
+		[SmokeMethod("errorString", "() const")]
 		public virtual string ErrorString() {
 			return ProxyQXmlErrorHandler().ErrorString();
 		}
@@ -56,7 +56,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQXmlErrorHandler();
 		}
-		[SmokeMethod("QXmlErrorHandler()")]
+		[SmokeMethod("QXmlErrorHandler", "()")]
 		private void NewQXmlErrorHandler() {
 			ProxyQXmlErrorHandler().NewQXmlErrorHandler();
 		}
@@ -66,7 +66,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQXmlErrorHandler();
 		}
-		[SmokeMethod("~QXmlErrorHandler()")]
+		[SmokeMethod("~QXmlErrorHandler", "()")]
 		private void DisposeQXmlErrorHandler() {
 			ProxyQXmlErrorHandler().DisposeQXmlErrorHandler();
 		}

@@ -8,7 +8,9 @@ namespace Qyoto {
 	public partial class QDBusConnectionInterface : QDBusAbstractInterface {
  		protected QDBusConnectionInterface(Type dummy) : base((Type) null) {}
 		interface IQDBusConnectionInterfaceProxy {
+			[SmokeMethod("tr$$", "(const char*, const char*)")]
 			string Tr(string s, string c);
+			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
 		}
 
@@ -53,11 +55,9 @@ namespace Qyoto {
 		// QDBusReply<uint> servicePid(const QString& arg1); >>>> NOT CONVERTED
 		// QDBusReply<uint> serviceUid(const QString& arg1); >>>> NOT CONVERTED
 		// QDBusReply<void> startService(const QString& arg1); >>>> NOT CONVERTED
-		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQDBusConnectionInterface().Tr(s,c);
 		}
-		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQDBusConnectionInterface().Tr(s);
 		}

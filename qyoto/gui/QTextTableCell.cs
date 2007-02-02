@@ -33,7 +33,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTextTableCell();
 		}
-		[SmokeMethod("QTextTableCell()")]
+		[SmokeMethod("QTextTableCell", "()")]
 		private void NewQTextTableCell() {
 			ProxyQTextTableCell().NewQTextTableCell();
 		}
@@ -41,49 +41,49 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTextTableCell(o);
 		}
-		[SmokeMethod("QTextTableCell(const QTextTableCell&)")]
+		[SmokeMethod("QTextTableCell#", "(const QTextTableCell&)")]
 		private void NewQTextTableCell(QTextTableCell o) {
 			ProxyQTextTableCell().NewQTextTableCell(o);
 		}
-		[SmokeMethod("setFormat(const QTextCharFormat&)")]
+		[SmokeMethod("setFormat#", "(const QTextCharFormat&)")]
 		public void SetFormat(QTextCharFormat format) {
 			ProxyQTextTableCell().SetFormat(format);
 		}
-		[SmokeMethod("format() const")]
+		[SmokeMethod("format", "() const")]
 		public QTextCharFormat Format() {
 			return ProxyQTextTableCell().Format();
 		}
-		[SmokeMethod("row() const")]
+		[SmokeMethod("row", "() const")]
 		public int Row() {
 			return ProxyQTextTableCell().Row();
 		}
-		[SmokeMethod("column() const")]
+		[SmokeMethod("column", "() const")]
 		public int Column() {
 			return ProxyQTextTableCell().Column();
 		}
-		[SmokeMethod("rowSpan() const")]
+		[SmokeMethod("rowSpan", "() const")]
 		public int RowSpan() {
 			return ProxyQTextTableCell().RowSpan();
 		}
-		[SmokeMethod("columnSpan() const")]
+		[SmokeMethod("columnSpan", "() const")]
 		public int ColumnSpan() {
 			return ProxyQTextTableCell().ColumnSpan();
 		}
-		[SmokeMethod("isValid() const")]
+		[SmokeMethod("isValid", "() const")]
 		public bool IsValid() {
 			return ProxyQTextTableCell().IsValid();
 		}
 		// QTextCursor firstCursorPosition(); >>>> NOT CONVERTED
 		// QTextCursor lastCursorPosition(); >>>> NOT CONVERTED
-		[SmokeMethod("firstPosition() const")]
+		[SmokeMethod("firstPosition", "() const")]
 		public int FirstPosition() {
 			return ProxyQTextTableCell().FirstPosition();
 		}
-		[SmokeMethod("lastPosition() const")]
+		[SmokeMethod("lastPosition", "() const")]
 		public int LastPosition() {
 			return ProxyQTextTableCell().LastPosition();
 		}
-		[SmokeMethod("operator==(const QTextTableCell&) const")]
+		[SmokeMethod("operator==#", "(const QTextTableCell&) const")]
 		public static bool operator==(QTextTableCell lhs, QTextTableCell other) {
 			return StaticQTextTableCell().op_equals(lhs,other);
 		}
@@ -103,7 +103,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQTextTableCell();
 		}
-		[SmokeMethod("~QTextTableCell()")]
+		[SmokeMethod("~QTextTableCell", "()")]
 		private void DisposeQTextTableCell() {
 			ProxyQTextTableCell().DisposeQTextTableCell();
 		}

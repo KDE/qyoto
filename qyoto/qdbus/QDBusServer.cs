@@ -8,7 +8,9 @@ namespace Qyoto {
 	public class QDBusServer : QObject, IDisposable {
  		protected QDBusServer(Type dummy) : base((Type) null) {}
 		interface IQDBusServerProxy {
+			[SmokeMethod("tr$$", "(const char*, const char*)")]
 			string Tr(string s, string c);
+			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
 		}
 
@@ -33,7 +35,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDBusServer(address,parent);
 		}
-		[SmokeMethod("QDBusServer(const QString&, QObject*)")]
+		[SmokeMethod("QDBusServer$$", "(const QString&, QObject*)")]
 		private void NewQDBusServer(string address, QObject parent) {
 			ProxyQDBusServer().NewQDBusServer(address,parent);
 		}
@@ -41,27 +43,25 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDBusServer(address);
 		}
-		[SmokeMethod("QDBusServer(const QString&)")]
+		[SmokeMethod("QDBusServer$", "(const QString&)")]
 		private void NewQDBusServer(string address) {
 			ProxyQDBusServer().NewQDBusServer(address);
 		}
-		[SmokeMethod("isConnected() const")]
+		[SmokeMethod("isConnected", "() const")]
 		public bool IsConnected() {
 			return ProxyQDBusServer().IsConnected();
 		}
-		[SmokeMethod("lastError() const")]
+		[SmokeMethod("lastError", "() const")]
 		public QDBusError LastError() {
 			return ProxyQDBusServer().LastError();
 		}
-		[SmokeMethod("address() const")]
+		[SmokeMethod("address", "() const")]
 		public string Address() {
 			return ProxyQDBusServer().Address();
 		}
-		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQDBusServer().Tr(s,c);
 		}
-		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQDBusServer().Tr(s);
 		}
@@ -71,7 +71,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQDBusServer();
 		}
-		[SmokeMethod("~QDBusServer()")]
+		[SmokeMethod("~QDBusServer", "()")]
 		private void DisposeQDBusServer() {
 			ProxyQDBusServer().DisposeQDBusServer();
 		}

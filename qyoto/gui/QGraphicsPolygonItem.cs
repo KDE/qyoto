@@ -31,7 +31,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGraphicsPolygonItem(parent,scene);
 		}
-		[SmokeMethod("QGraphicsPolygonItem(QGraphicsItem*, QGraphicsScene*)")]
+		[SmokeMethod("QGraphicsPolygonItem##", "(QGraphicsItem*, QGraphicsScene*)")]
 		private void NewQGraphicsPolygonItem(QGraphicsItem parent, QGraphicsScene scene) {
 			ProxyQGraphicsPolygonItem().NewQGraphicsPolygonItem(parent,scene);
 		}
@@ -39,7 +39,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGraphicsPolygonItem(parent);
 		}
-		[SmokeMethod("QGraphicsPolygonItem(QGraphicsItem*)")]
+		[SmokeMethod("QGraphicsPolygonItem#", "(QGraphicsItem*)")]
 		private void NewQGraphicsPolygonItem(QGraphicsItem parent) {
 			ProxyQGraphicsPolygonItem().NewQGraphicsPolygonItem(parent);
 		}
@@ -47,7 +47,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGraphicsPolygonItem();
 		}
-		[SmokeMethod("QGraphicsPolygonItem()")]
+		[SmokeMethod("QGraphicsPolygonItem", "()")]
 		private void NewQGraphicsPolygonItem() {
 			ProxyQGraphicsPolygonItem().NewQGraphicsPolygonItem();
 		}
@@ -55,7 +55,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGraphicsPolygonItem(polygon,parent,scene);
 		}
-		[SmokeMethod("QGraphicsPolygonItem(const QPolygonF&, QGraphicsItem*, QGraphicsScene*)")]
+		[SmokeMethod("QGraphicsPolygonItem###", "(const QPolygonF&, QGraphicsItem*, QGraphicsScene*)")]
 		private void NewQGraphicsPolygonItem(QPolygonF polygon, QGraphicsItem parent, QGraphicsScene scene) {
 			ProxyQGraphicsPolygonItem().NewQGraphicsPolygonItem(polygon,parent,scene);
 		}
@@ -63,7 +63,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGraphicsPolygonItem(polygon,parent);
 		}
-		[SmokeMethod("QGraphicsPolygonItem(const QPolygonF&, QGraphicsItem*)")]
+		[SmokeMethod("QGraphicsPolygonItem##", "(const QPolygonF&, QGraphicsItem*)")]
 		private void NewQGraphicsPolygonItem(QPolygonF polygon, QGraphicsItem parent) {
 			ProxyQGraphicsPolygonItem().NewQGraphicsPolygonItem(polygon,parent);
 		}
@@ -71,67 +71,67 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGraphicsPolygonItem(polygon);
 		}
-		[SmokeMethod("QGraphicsPolygonItem(const QPolygonF&)")]
+		[SmokeMethod("QGraphicsPolygonItem#", "(const QPolygonF&)")]
 		private void NewQGraphicsPolygonItem(QPolygonF polygon) {
 			ProxyQGraphicsPolygonItem().NewQGraphicsPolygonItem(polygon);
 		}
-		[SmokeMethod("polygon() const")]
+		[SmokeMethod("polygon", "() const")]
 		public QPolygonF Polygon() {
 			return ProxyQGraphicsPolygonItem().Polygon();
 		}
-		[SmokeMethod("setPolygon(const QPolygonF&)")]
+		[SmokeMethod("setPolygon#", "(const QPolygonF&)")]
 		public void SetPolygon(QPolygonF polygon) {
 			ProxyQGraphicsPolygonItem().SetPolygon(polygon);
 		}
-		[SmokeMethod("fillRule() const")]
+		[SmokeMethod("fillRule", "() const")]
 		public Qt.FillRule FillRule() {
 			return ProxyQGraphicsPolygonItem().FillRule();
 		}
-		[SmokeMethod("setFillRule(Qt::FillRule)")]
+		[SmokeMethod("setFillRule$", "(Qt::FillRule)")]
 		public void SetFillRule(Qt.FillRule rule) {
 			ProxyQGraphicsPolygonItem().SetFillRule(rule);
 		}
-		[SmokeMethod("boundingRect() const")]
+		[SmokeMethod("boundingRect", "() const")]
 		public new QRectF BoundingRect() {
 			return ProxyQGraphicsPolygonItem().BoundingRect();
 		}
-		[SmokeMethod("shape() const")]
+		[SmokeMethod("shape", "() const")]
 		public new QPainterPath Shape() {
 			return ProxyQGraphicsPolygonItem().Shape();
 		}
-		[SmokeMethod("contains(const QPointF&) const")]
+		[SmokeMethod("contains#", "(const QPointF&) const")]
 		public new bool Contains(QPointF point) {
 			return ProxyQGraphicsPolygonItem().Contains(point);
 		}
-		[SmokeMethod("paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*)")]
+		[SmokeMethod("paint###", "(QPainter*, const QStyleOptionGraphicsItem*, QWidget*)")]
 		public new void Paint(QPainter painter, QStyleOptionGraphicsItem option, QWidget widget) {
 			ProxyQGraphicsPolygonItem().Paint(painter,option,widget);
 		}
-		[SmokeMethod("paint(QPainter*, const QStyleOptionGraphicsItem*)")]
+		[SmokeMethod("paint##", "(QPainter*, const QStyleOptionGraphicsItem*)")]
 		public new void Paint(QPainter painter, QStyleOptionGraphicsItem option) {
 			ProxyQGraphicsPolygonItem().Paint(painter,option);
 		}
-		[SmokeMethod("isObscuredBy(const QGraphicsItem*) const")]
+		[SmokeMethod("isObscuredBy#", "(const QGraphicsItem*) const")]
 		public new bool IsObscuredBy(QGraphicsItem item) {
 			return ProxyQGraphicsPolygonItem().IsObscuredBy(item);
 		}
-		[SmokeMethod("opaqueArea() const")]
+		[SmokeMethod("opaqueArea", "() const")]
 		public new QPainterPath OpaqueArea() {
 			return ProxyQGraphicsPolygonItem().OpaqueArea();
 		}
-		[SmokeMethod("type() const")]
+		[SmokeMethod("type", "() const")]
 		public new int type() {
 			return ProxyQGraphicsPolygonItem().type();
 		}
-		[SmokeMethod("supportsExtension(QGraphicsItem::Extension) const")]
+		[SmokeMethod("supportsExtension$", "(QGraphicsItem::Extension) const")]
 		protected new bool SupportsExtension(QGraphicsItem.Extension extension) {
 			return ProxyQGraphicsPolygonItem().SupportsExtension(extension);
 		}
-		[SmokeMethod("setExtension(QGraphicsItem::Extension, const QVariant&)")]
+		[SmokeMethod("setExtension$$", "(QGraphicsItem::Extension, const QVariant&)")]
 		protected new void SetExtension(QGraphicsItem.Extension extension, QVariant variant) {
 			ProxyQGraphicsPolygonItem().SetExtension(extension,variant);
 		}
-		[SmokeMethod("extension(const QVariant&) const")]
+		[SmokeMethod("extension#", "(const QVariant&) const")]
 		protected new QVariant Extension(QVariant variant) {
 			return ProxyQGraphicsPolygonItem().Extension(variant);
 		}
@@ -141,7 +141,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQGraphicsPolygonItem();
 		}
-		[SmokeMethod("~QGraphicsPolygonItem()")]
+		[SmokeMethod("~QGraphicsPolygonItem", "()")]
 		private void DisposeQGraphicsPolygonItem() {
 			ProxyQGraphicsPolygonItem().DisposeQGraphicsPolygonItem();
 		}

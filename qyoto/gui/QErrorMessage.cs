@@ -8,8 +8,11 @@ namespace Qyoto {
 	public class QErrorMessage : QDialog, IDisposable {
  		protected QErrorMessage(Type dummy) : base((Type) null) {}
 		interface IQErrorMessageProxy {
+			[SmokeMethod("tr$$", "(const char*, const char*)")]
 			string Tr(string s, string c);
+			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
+			[SmokeMethod("qtHandler", "()")]
 			QErrorMessage QtHandler();
 		}
 
@@ -34,7 +37,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQErrorMessage(parent);
 		}
-		[SmokeMethod("QErrorMessage(QWidget*)")]
+		[SmokeMethod("QErrorMessage#", "(QWidget*)")]
 		private void NewQErrorMessage(QWidget parent) {
 			ProxyQErrorMessage().NewQErrorMessage(parent);
 		}
@@ -42,28 +45,25 @@ namespace Qyoto {
 			CreateProxy();
 			NewQErrorMessage();
 		}
-		[SmokeMethod("QErrorMessage()")]
+		[SmokeMethod("QErrorMessage", "()")]
 		private void NewQErrorMessage() {
 			ProxyQErrorMessage().NewQErrorMessage();
 		}
-		[Q_SLOT("void showMessage(const QString&)")]
-		[SmokeMethod("showMessage(const QString&)")]
+		[Q_SLOT("void (const QString&)")]
+		[SmokeMethod("showMessage$", "(const QString&)")]
 		public void ShowMessage(string message) {
 			ProxyQErrorMessage().ShowMessage(message);
 		}
-		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQErrorMessage().Tr(s,c);
 		}
-		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQErrorMessage().Tr(s);
 		}
-		[SmokeMethod("qtHandler()")]
 		public static QErrorMessage QtHandler() {
 			return StaticQErrorMessage().QtHandler();
 		}
-		[SmokeMethod("done(int)")]
+		[SmokeMethod("done$", "(int)")]
 		protected new void Done(int arg1) {
 			ProxyQErrorMessage().Done(arg1);
 		}
@@ -73,7 +73,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQErrorMessage();
 		}
-		[SmokeMethod("~QErrorMessage()")]
+		[SmokeMethod("~QErrorMessage", "()")]
 		private void DisposeQErrorMessage() {
 			ProxyQErrorMessage().DisposeQErrorMessage();
 		}

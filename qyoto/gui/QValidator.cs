@@ -8,7 +8,9 @@ namespace Qyoto {
 	public class QValidator : QObject, IDisposable {
  		protected QValidator(Type dummy) : base((Type) null) {}
 		interface IQValidatorProxy {
+			[SmokeMethod("tr$$", "(const char*, const char*)")]
 			string Tr(string s, string c);
+			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
 		}
 
@@ -38,23 +40,21 @@ namespace Qyoto {
 			CreateProxy();
 			NewQValidator(parent);
 		}
-		[SmokeMethod("QValidator(QObject*)")]
+		[SmokeMethod("QValidator#", "(QObject*)")]
 		private void NewQValidator(QObject parent) {
 			ProxyQValidator().NewQValidator(parent);
 		}
-		[SmokeMethod("validate(QString&, int&) const")]
+		[SmokeMethod("validate$$", "(QString&, int&) const")]
 		public virtual int Validate(StringBuilder arg1, out int arg2) {
 			return ProxyQValidator().Validate(arg1,out arg2);
 		}
-		[SmokeMethod("fixup(QString&) const")]
+		[SmokeMethod("fixup$", "(QString&) const")]
 		public virtual void Fixup(StringBuilder arg1) {
 			ProxyQValidator().Fixup(arg1);
 		}
-		[SmokeMethod("tr(const char*, const char*)")]
 		public static new string Tr(string s, string c) {
 			return StaticQValidator().Tr(s,c);
 		}
-		[SmokeMethod("tr(const char*)")]
 		public static new string Tr(string s) {
 			return StaticQValidator().Tr(s);
 		}
@@ -64,7 +64,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQValidator();
 		}
-		[SmokeMethod("~QValidator()")]
+		[SmokeMethod("~QValidator", "()")]
 		private void DisposeQValidator() {
 			ProxyQValidator().DisposeQValidator();
 		}
