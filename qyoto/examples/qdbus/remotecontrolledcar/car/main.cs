@@ -43,7 +43,7 @@ public class CarMain {
     
         CarAdaptor adaptor = new CarAdaptor(car);
         QDBusConnection connection = QDBusConnection.SessionBus();
-        connection.RegisterObject("/Car", adaptor);
+        connection.RegisterObject("/Car", adaptor, (int) QDBusConnection.RegisterOption.ExportAllSlots);
         connection.RegisterService("com.trolltech.CarExample");
     
         return QApplication.Exec();
