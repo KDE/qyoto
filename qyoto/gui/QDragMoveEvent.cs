@@ -25,12 +25,12 @@ namespace Qyoto {
 			return (IQDragMoveEventProxy) _staticInterceptor;
 		}
 
-		public QDragMoveEvent(QPoint pos, int actions, QMimeData data, int buttons, int modifiers, QEvent.E_Type type) : this((Type) null) {
+		public QDragMoveEvent(QPoint pos, int actions, QMimeData data, int buttons, int modifiers, QEvent.TypeOf type) : this((Type) null) {
 			CreateProxy();
 			NewQDragMoveEvent(pos,actions,data,buttons,modifiers,type);
 		}
 		[SmokeMethod("QDragMoveEvent(const QPoint&, Qt::DropActions, const QMimeData*, Qt::MouseButtons, Qt::KeyboardModifiers, QEvent::Type)")]
-		private void NewQDragMoveEvent(QPoint pos, int actions, QMimeData data, int buttons, int modifiers, QEvent.E_Type type) {
+		private void NewQDragMoveEvent(QPoint pos, int actions, QMimeData data, int buttons, int modifiers, QEvent.TypeOf type) {
 			ProxyQDragMoveEvent().NewQDragMoveEvent(pos,actions,data,buttons,modifiers,type);
 		}
 		public QDragMoveEvent(QPoint pos, int actions, QMimeData data, int buttons, int modifiers) : this((Type) null) {

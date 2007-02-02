@@ -25,12 +25,12 @@ namespace Qyoto {
 			return (IQHoverEventProxy) _staticInterceptor;
 		}
 
-		public QHoverEvent(QEvent.E_Type type, QPoint pos, QPoint oldPos) : this((Type) null) {
+		public QHoverEvent(QEvent.TypeOf type, QPoint pos, QPoint oldPos) : this((Type) null) {
 			CreateProxy();
 			NewQHoverEvent(type,pos,oldPos);
 		}
 		[SmokeMethod("QHoverEvent(QEvent::Type, const QPoint&, const QPoint&)")]
-		private void NewQHoverEvent(QEvent.E_Type type, QPoint pos, QPoint oldPos) {
+		private void NewQHoverEvent(QEvent.TypeOf type, QPoint pos, QPoint oldPos) {
 			ProxyQHoverEvent().NewQHoverEvent(type,pos,oldPos);
 		}
 		[SmokeMethod("pos() const")]

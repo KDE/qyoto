@@ -25,12 +25,12 @@ namespace Qyoto {
 			return (IQChildEventProxy) _staticInterceptor;
 		}
 
-		public QChildEvent(QEvent.E_Type type, QObject child) : this((Type) null) {
+		public QChildEvent(QEvent.TypeOf type, QObject child) : this((Type) null) {
 			CreateProxy();
 			NewQChildEvent(type,child);
 		}
 		[SmokeMethod("QChildEvent(QEvent::Type, QObject*)")]
-		private void NewQChildEvent(QEvent.E_Type type, QObject child) {
+		private void NewQChildEvent(QEvent.TypeOf type, QObject child) {
 			ProxyQChildEvent().NewQChildEvent(type,child);
 		}
 		[SmokeMethod("child() const")]

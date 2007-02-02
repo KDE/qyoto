@@ -39,15 +39,15 @@ namespace Qyoto {
 			ProxyQItemEditorFactory().NewQItemEditorFactory();
 		}
 		[SmokeMethod("createEditor(QVariant::Type, QWidget*) const")]
-		public virtual QWidget CreateEditor(QVariant.E_Type type, QWidget parent) {
+		public virtual QWidget CreateEditor(QVariant.TypeOf type, QWidget parent) {
 			return ProxyQItemEditorFactory().CreateEditor(type,parent);
 		}
 		[SmokeMethod("valuePropertyName(QVariant::Type) const")]
-		public virtual QByteArray ValuePropertyName(QVariant.E_Type type) {
+		public virtual QByteArray ValuePropertyName(QVariant.TypeOf type) {
 			return ProxyQItemEditorFactory().ValuePropertyName(type);
 		}
 		[SmokeMethod("registerEditor(QVariant::Type, QItemEditorCreatorBase*)")]
-		public void RegisterEditor(QVariant.E_Type type, QItemEditorCreatorBase creator) {
+		public void RegisterEditor(QVariant.TypeOf type, QItemEditorCreatorBase creator) {
 			ProxyQItemEditorFactory().RegisterEditor(type,creator);
 		}
 		[SmokeMethod("defaultFactory()")]

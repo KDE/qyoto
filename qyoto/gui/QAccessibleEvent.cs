@@ -26,12 +26,12 @@ namespace Qyoto {
 			return (IQAccessibleEventProxy) _staticInterceptor;
 		}
 
-		public QAccessibleEvent(QEvent.E_Type type, int child) : this((Type) null) {
+		public QAccessibleEvent(QEvent.TypeOf type, int child) : this((Type) null) {
 			CreateProxy();
 			NewQAccessibleEvent(type,child);
 		}
 		[SmokeMethod("QAccessibleEvent(QEvent::Type, int)")]
-		private void NewQAccessibleEvent(QEvent.E_Type type, int child) {
+		private void NewQAccessibleEvent(QEvent.TypeOf type, int child) {
 			ProxyQAccessibleEvent().NewQAccessibleEvent(type,child);
 		}
 		[SmokeMethod("child() const")]

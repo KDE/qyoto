@@ -68,7 +68,7 @@ namespace Qyoto {
 			ConvexMode = 2,
 			PolylineMode = 3,
 		}
-		public enum E_Type {
+		public enum TypeOf {
 			X11 = 0,
 			Windows = 1,
 			QuickDraw = 2,
@@ -208,7 +208,7 @@ namespace Qyoto {
 			return ProxyQPaintEngine().CoordinateOffset();
 		}
 		[SmokeMethod("type() const")]
-		public virtual QPaintEngine.E_Type type() {
+		public virtual QPaintEngine.TypeOf type() {
 			return ProxyQPaintEngine().type();
 		}
 		[SmokeMethod("fix_neg_rect(int*, int*, int*, int*)")]

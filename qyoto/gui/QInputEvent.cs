@@ -25,20 +25,20 @@ namespace Qyoto {
 			return (IQInputEventProxy) _staticInterceptor;
 		}
 
-		public QInputEvent(QEvent.E_Type type, int modifiers) : this((Type) null) {
+		public QInputEvent(QEvent.TypeOf type, int modifiers) : this((Type) null) {
 			CreateProxy();
 			NewQInputEvent(type,modifiers);
 		}
 		[SmokeMethod("QInputEvent(QEvent::Type, Qt::KeyboardModifiers)")]
-		private void NewQInputEvent(QEvent.E_Type type, int modifiers) {
+		private void NewQInputEvent(QEvent.TypeOf type, int modifiers) {
 			ProxyQInputEvent().NewQInputEvent(type,modifiers);
 		}
-		public QInputEvent(QEvent.E_Type type) : this((Type) null) {
+		public QInputEvent(QEvent.TypeOf type) : this((Type) null) {
 			CreateProxy();
 			NewQInputEvent(type);
 		}
 		[SmokeMethod("QInputEvent(QEvent::Type)")]
-		private void NewQInputEvent(QEvent.E_Type type) {
+		private void NewQInputEvent(QEvent.TypeOf type) {
 			ProxyQInputEvent().NewQInputEvent(type);
 		}
 		[SmokeMethod("modifiers() const")]

@@ -29,7 +29,7 @@ namespace Qyoto {
 			return (IQGradientProxy) _staticInterceptor;
 		}
 
-		public enum E_Type {
+		public enum TypeOf {
 			LinearGradient = 0,
 			RadialGradient = 1,
 			ConicalGradient = 2,
@@ -53,7 +53,7 @@ namespace Qyoto {
 			ProxyQGradient().NewQGradient();
 		}
 		[SmokeMethod("type() const")]
-		public QGradient.E_Type type() {
+		public QGradient.TypeOf type() {
 			return ProxyQGradient().type();
 		}
 		[SmokeMethod("setSpread(QGradient::Spread)")]

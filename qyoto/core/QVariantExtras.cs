@@ -65,7 +65,7 @@ namespace Qyoto {
 				return (T) (object) ToInt();
 			} else {
 				string typeName = typeof(T).ToString().Replace("Qyoto.", "");
-				if (NameToType(typeName) > E_Type.LastCoreType) {
+				if (NameToType(typeName) > TypeOf.LastCoreType) {
 					IntPtr instancePtr = QVariantValue(typeName, (IntPtr) GCHandle.Alloc(this));
 					return (T) ((GCHandle) instancePtr).Target;
 				}
@@ -125,7 +125,7 @@ namespace Qyoto {
 				return new QVariant((int) value);
 			} else {
 				string typeName = typeof(T).ToString().Replace("Qyoto.", "");
-				if (NameToType(typeName) > E_Type.LastCoreType) {
+				if (NameToType(typeName) > TypeOf.LastCoreType) {
 					IntPtr instancePtr =  QVariantFromValue((int) NameToType(typeName), (IntPtr) GCHandle.Alloc(value));
 					return (QVariant) ((GCHandle) instancePtr).Target;
 				}

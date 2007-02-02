@@ -35,12 +35,12 @@ namespace Qyoto {
 			Optional = 0,
 			Required = 1,
 		}
-		public QSqlField(string fieldName, QVariant.E_Type type) : this((Type) null) {
+		public QSqlField(string fieldName, QVariant.TypeOf type) : this((Type) null) {
 			CreateProxy();
 			NewQSqlField(fieldName,type);
 		}
 		[SmokeMethod("QSqlField(const QString&, QVariant::Type)")]
-		private void NewQSqlField(string fieldName, QVariant.E_Type type) {
+		private void NewQSqlField(string fieldName, QVariant.TypeOf type) {
 			ProxyQSqlField().NewQSqlField(fieldName,type);
 		}
 		public QSqlField(string fieldName) : this((Type) null) {
@@ -114,7 +114,7 @@ namespace Qyoto {
 			ProxyQSqlField().Clear();
 		}
 		[SmokeMethod("type() const")]
-		public QVariant.E_Type type() {
+		public QVariant.TypeOf type() {
 			return ProxyQSqlField().type();
 		}
 		[SmokeMethod("isAutoValue() const")]
@@ -122,7 +122,7 @@ namespace Qyoto {
 			return ProxyQSqlField().IsAutoValue();
 		}
 		[SmokeMethod("setType(QVariant::Type)")]
-		public void SetType(QVariant.E_Type type) {
+		public void SetType(QVariant.TypeOf type) {
 			ProxyQSqlField().SetType(type);
 		}
 		[SmokeMethod("setRequiredStatus(QSqlField::RequiredStatus)")]

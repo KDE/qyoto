@@ -40,12 +40,12 @@ namespace Qyoto {
 			Cursor = 2,
 			Eraser = 3,
 		}
-		public QTabletEvent(QEvent.E_Type t, QPoint pos, QPoint globalPos, QPointF hiResGlobalPos, int device, int pointerType, double pressure, int xTilt, int yTilt, double tangentialPressure, double rotation, int z, int keyState, long uniqueID) : this((Type) null) {
+		public QTabletEvent(QEvent.TypeOf t, QPoint pos, QPoint globalPos, QPointF hiResGlobalPos, int device, int pointerType, double pressure, int xTilt, int yTilt, double tangentialPressure, double rotation, int z, int keyState, long uniqueID) : this((Type) null) {
 			CreateProxy();
 			NewQTabletEvent(t,pos,globalPos,hiResGlobalPos,device,pointerType,pressure,xTilt,yTilt,tangentialPressure,rotation,z,keyState,uniqueID);
 		}
 		[SmokeMethod("QTabletEvent(QEvent::Type, const QPoint&, const QPoint&, const QPointF&, int, int, qreal, int, int, qreal, qreal, int, Qt::KeyboardModifiers, qint64)")]
-		private void NewQTabletEvent(QEvent.E_Type t, QPoint pos, QPoint globalPos, QPointF hiResGlobalPos, int device, int pointerType, double pressure, int xTilt, int yTilt, double tangentialPressure, double rotation, int z, int keyState, long uniqueID) {
+		private void NewQTabletEvent(QEvent.TypeOf t, QPoint pos, QPoint globalPos, QPointF hiResGlobalPos, int device, int pointerType, double pressure, int xTilt, int yTilt, double tangentialPressure, double rotation, int z, int keyState, long uniqueID) {
 			ProxyQTabletEvent().NewQTabletEvent(t,pos,globalPos,hiResGlobalPos,device,pointerType,pressure,xTilt,yTilt,tangentialPressure,rotation,z,keyState,uniqueID);
 		}
 		[SmokeMethod("pos() const")]

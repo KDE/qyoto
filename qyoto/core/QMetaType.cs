@@ -31,7 +31,7 @@ namespace Qyoto {
 			return (IQMetaTypeProxy) _staticInterceptor;
 		}
 
-		public enum E_Type {
+		public enum TypeOf {
 			Void = 0,
 			Bool = 1,
 			Int = 2,

@@ -25,12 +25,12 @@ namespace Qyoto {
 			return (IQGraphicsSceneDragDropEventProxy) _staticInterceptor;
 		}
 
-		public QGraphicsSceneDragDropEvent(QEvent.E_Type type) : this((Type) null) {
+		public QGraphicsSceneDragDropEvent(QEvent.TypeOf type) : this((Type) null) {
 			CreateProxy();
 			NewQGraphicsSceneDragDropEvent(type);
 		}
 		[SmokeMethod("QGraphicsSceneDragDropEvent(QEvent::Type)")]
-		private void NewQGraphicsSceneDragDropEvent(QEvent.E_Type type) {
+		private void NewQGraphicsSceneDragDropEvent(QEvent.TypeOf type) {
 			ProxyQGraphicsSceneDragDropEvent().NewQGraphicsSceneDragDropEvent(type);
 		}
 		public QGraphicsSceneDragDropEvent() : this((Type) null) {

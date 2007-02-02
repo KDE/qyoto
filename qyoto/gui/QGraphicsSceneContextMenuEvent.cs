@@ -30,12 +30,12 @@ namespace Qyoto {
 			Keyboard = 1,
 			Other = 2,
 		}
-		public QGraphicsSceneContextMenuEvent(QEvent.E_Type type) : this((Type) null) {
+		public QGraphicsSceneContextMenuEvent(QEvent.TypeOf type) : this((Type) null) {
 			CreateProxy();
 			NewQGraphicsSceneContextMenuEvent(type);
 		}
 		[SmokeMethod("QGraphicsSceneContextMenuEvent(QEvent::Type)")]
-		private void NewQGraphicsSceneContextMenuEvent(QEvent.E_Type type) {
+		private void NewQGraphicsSceneContextMenuEvent(QEvent.TypeOf type) {
 			ProxyQGraphicsSceneContextMenuEvent().NewQGraphicsSceneContextMenuEvent(type);
 		}
 		public QGraphicsSceneContextMenuEvent() : this((Type) null) {

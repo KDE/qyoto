@@ -25,12 +25,12 @@ namespace Qyoto {
 			return (IQGraphicsSceneHoverEventProxy) _staticInterceptor;
 		}
 
-		public QGraphicsSceneHoverEvent(QEvent.E_Type type) : this((Type) null) {
+		public QGraphicsSceneHoverEvent(QEvent.TypeOf type) : this((Type) null) {
 			CreateProxy();
 			NewQGraphicsSceneHoverEvent(type);
 		}
 		[SmokeMethod("QGraphicsSceneHoverEvent(QEvent::Type)")]
-		private void NewQGraphicsSceneHoverEvent(QEvent.E_Type type) {
+		private void NewQGraphicsSceneHoverEvent(QEvent.TypeOf type) {
 			ProxyQGraphicsSceneHoverEvent().NewQGraphicsSceneHoverEvent(type);
 		}
 		public QGraphicsSceneHoverEvent() : this((Type) null) {

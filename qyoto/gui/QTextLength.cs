@@ -29,7 +29,7 @@ namespace Qyoto {
 			return (IQTextLengthProxy) _staticInterceptor;
 		}
 
-		public enum E_Type {
+		public enum TypeOf {
 			VariableLength = 0,
 			FixedLength = 1,
 			PercentageLength = 2,
@@ -42,16 +42,16 @@ namespace Qyoto {
 		private void NewQTextLength() {
 			ProxyQTextLength().NewQTextLength();
 		}
-		public QTextLength(QTextLength.E_Type type, double value) : this((Type) null) {
+		public QTextLength(QTextLength.TypeOf type, double value) : this((Type) null) {
 			CreateProxy();
 			NewQTextLength(type,value);
 		}
 		[SmokeMethod("QTextLength(QTextLength::Type, qreal)")]
-		private void NewQTextLength(QTextLength.E_Type type, double value) {
+		private void NewQTextLength(QTextLength.TypeOf type, double value) {
 			ProxyQTextLength().NewQTextLength(type,value);
 		}
 		[SmokeMethod("type() const")]
-		public QTextLength.E_Type type() {
+		public QTextLength.TypeOf type() {
 			return ProxyQTextLength().type();
 		}
 		[SmokeMethod("value(qreal) const")]

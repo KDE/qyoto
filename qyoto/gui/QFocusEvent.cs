@@ -25,20 +25,20 @@ namespace Qyoto {
 			return (IQFocusEventProxy) _staticInterceptor;
 		}
 
-		public QFocusEvent(QEvent.E_Type type, Qt.FocusReason reason) : this((Type) null) {
+		public QFocusEvent(QEvent.TypeOf type, Qt.FocusReason reason) : this((Type) null) {
 			CreateProxy();
 			NewQFocusEvent(type,reason);
 		}
 		[SmokeMethod("QFocusEvent(QEvent::Type, Qt::FocusReason)")]
-		private void NewQFocusEvent(QEvent.E_Type type, Qt.FocusReason reason) {
+		private void NewQFocusEvent(QEvent.TypeOf type, Qt.FocusReason reason) {
 			ProxyQFocusEvent().NewQFocusEvent(type,reason);
 		}
-		public QFocusEvent(QEvent.E_Type type) : this((Type) null) {
+		public QFocusEvent(QEvent.TypeOf type) : this((Type) null) {
 			CreateProxy();
 			NewQFocusEvent(type);
 		}
 		[SmokeMethod("QFocusEvent(QEvent::Type)")]
-		private void NewQFocusEvent(QEvent.E_Type type) {
+		private void NewQFocusEvent(QEvent.TypeOf type) {
 			ProxyQFocusEvent().NewQFocusEvent(type);
 		}
 		[SmokeMethod("gotFocus() const")]

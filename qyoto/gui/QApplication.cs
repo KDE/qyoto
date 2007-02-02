@@ -12,7 +12,7 @@ namespace Qyoto {
 		interface IQApplicationProxy {
 			string Tr(string s, string c);
 			string Tr(string s);
-			QApplication.E_Type type();
+			QApplication.TypeOf type();
 			QStyle Style();
 			void SetStyle(QStyle arg1);
 			QStyle SetStyle(string arg1);
@@ -100,7 +100,7 @@ namespace Qyoto {
 			return (IQApplicationProxy) _staticInterceptor;
 		}
 
-		public enum E_Type {
+		public enum TypeOf {
 			Tty = 0,
 			GuiClient = 1,
 			GuiServer = 2,
@@ -251,7 +251,7 @@ namespace Qyoto {
 			return StaticQApplication().Tr(s);
 		}
 		[SmokeMethod("type()")]
-		public static QApplication.E_Type type() {
+		public static QApplication.TypeOf type() {
 			return StaticQApplication().type();
 		}
 		[SmokeMethod("style()")]

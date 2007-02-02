@@ -45,7 +45,7 @@ namespace Qyoto {
 			return ProxyQMetaProperty().TypeName();
 		}
 		[SmokeMethod("type() const")]
-		public QVariant.E_Type type() {
+		public QVariant.TypeOf type() {
 			return ProxyQMetaProperty().type();
 		}
 		[SmokeMethod("userType() const")]

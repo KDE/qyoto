@@ -25,20 +25,20 @@ namespace Qyoto {
 			return (IQMouseEventProxy) _staticInterceptor;
 		}
 
-		public QMouseEvent(QEvent.E_Type type, QPoint pos, Qt.MouseButton button, int buttons, int modifiers) : this((Type) null) {
+		public QMouseEvent(QEvent.TypeOf type, QPoint pos, Qt.MouseButton button, int buttons, int modifiers) : this((Type) null) {
 			CreateProxy();
 			NewQMouseEvent(type,pos,button,buttons,modifiers);
 		}
 		[SmokeMethod("QMouseEvent(QEvent::Type, const QPoint&, Qt::MouseButton, Qt::MouseButtons, Qt::KeyboardModifiers)")]
-		private void NewQMouseEvent(QEvent.E_Type type, QPoint pos, Qt.MouseButton button, int buttons, int modifiers) {
+		private void NewQMouseEvent(QEvent.TypeOf type, QPoint pos, Qt.MouseButton button, int buttons, int modifiers) {
 			ProxyQMouseEvent().NewQMouseEvent(type,pos,button,buttons,modifiers);
 		}
-		public QMouseEvent(QEvent.E_Type type, QPoint pos, QPoint globalPos, Qt.MouseButton button, int buttons, int modifiers) : this((Type) null) {
+		public QMouseEvent(QEvent.TypeOf type, QPoint pos, QPoint globalPos, Qt.MouseButton button, int buttons, int modifiers) : this((Type) null) {
 			CreateProxy();
 			NewQMouseEvent(type,pos,globalPos,button,buttons,modifiers);
 		}
 		[SmokeMethod("QMouseEvent(QEvent::Type, const QPoint&, const QPoint&, Qt::MouseButton, Qt::MouseButtons, Qt::KeyboardModifiers)")]
-		private void NewQMouseEvent(QEvent.E_Type type, QPoint pos, QPoint globalPos, Qt.MouseButton button, int buttons, int modifiers) {
+		private void NewQMouseEvent(QEvent.TypeOf type, QPoint pos, QPoint globalPos, Qt.MouseButton button, int buttons, int modifiers) {
 			ProxyQMouseEvent().NewQMouseEvent(type,pos,globalPos,button,buttons,modifiers);
 		}
 		[SmokeMethod("pos() const")]

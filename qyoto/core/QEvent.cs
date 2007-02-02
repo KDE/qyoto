@@ -28,7 +28,7 @@ namespace Qyoto {
 			return (IQEventProxy) _staticInterceptor;
 		}
 
-		public enum E_Type {
+		public enum TypeOf {
 			None = 0,
 			Timer = 1,
 			MouseButtonPress = 2,
@@ -157,16 +157,16 @@ namespace Qyoto {
 			User = 1000,
 			MaxUser = 65535,
 		}
-		public QEvent(QEvent.E_Type type) : this((Type) null) {
+		public QEvent(QEvent.TypeOf type) : this((Type) null) {
 			CreateProxy();
 			NewQEvent(type);
 		}
 		[SmokeMethod("QEvent(QEvent::Type)")]
-		private void NewQEvent(QEvent.E_Type type) {
+		private void NewQEvent(QEvent.TypeOf type) {
 			ProxyQEvent().NewQEvent(type);
 		}
 		[SmokeMethod("type() const")]
-		public QEvent.E_Type type() {
+		public QEvent.TypeOf type() {
 			return ProxyQEvent().type();
 		}
 		[SmokeMethod("spontaneous() const")]

@@ -127,7 +127,7 @@ namespace Qyoto {
 			return StaticQMimeData().Tr(s);
 		}
 		[SmokeMethod("retrieveData(const QString&, QVariant::Type) const")]
-		protected virtual QVariant RetrieveData(string mimetype, QVariant.E_Type preferredType) {
+		protected virtual QVariant RetrieveData(string mimetype, QVariant.TypeOf preferredType) {
 			return ProxyQMimeData().RetrieveData(mimetype,preferredType);
 		}
 		~QMimeData() {

@@ -25,12 +25,12 @@ namespace Qyoto {
 			return (IQDropEventProxy) _staticInterceptor;
 		}
 
-		public QDropEvent(QPoint pos, int actions, QMimeData data, int buttons, int modifiers, QEvent.E_Type type) : this((Type) null) {
+		public QDropEvent(QPoint pos, int actions, QMimeData data, int buttons, int modifiers, QEvent.TypeOf type) : this((Type) null) {
 			CreateProxy();
 			NewQDropEvent(pos,actions,data,buttons,modifiers,type);
 		}
 		[SmokeMethod("QDropEvent(const QPoint&, Qt::DropActions, const QMimeData*, Qt::MouseButtons, Qt::KeyboardModifiers, QEvent::Type)")]
-		private void NewQDropEvent(QPoint pos, int actions, QMimeData data, int buttons, int modifiers, QEvent.E_Type type) {
+		private void NewQDropEvent(QPoint pos, int actions, QMimeData data, int buttons, int modifiers, QEvent.TypeOf type) {
 			ProxyQDropEvent().NewQDropEvent(pos,actions,data,buttons,modifiers,type);
 		}
 		public QDropEvent(QPoint pos, int actions, QMimeData data, int buttons, int modifiers) : this((Type) null) {

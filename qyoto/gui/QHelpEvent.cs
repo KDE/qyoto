@@ -25,12 +25,12 @@ namespace Qyoto {
 			return (IQHelpEventProxy) _staticInterceptor;
 		}
 
-		public QHelpEvent(QEvent.E_Type type, QPoint pos, QPoint globalPos) : this((Type) null) {
+		public QHelpEvent(QEvent.TypeOf type, QPoint pos, QPoint globalPos) : this((Type) null) {
 			CreateProxy();
 			NewQHelpEvent(type,pos,globalPos);
 		}
 		[SmokeMethod("QHelpEvent(QEvent::Type, const QPoint&, const QPoint&)")]
-		private void NewQHelpEvent(QEvent.E_Type type, QPoint pos, QPoint globalPos) {
+		private void NewQHelpEvent(QEvent.TypeOf type, QPoint pos, QPoint globalPos) {
 			ProxyQHelpEvent().NewQHelpEvent(type,pos,globalPos);
 		}
 		[SmokeMethod("x() const")]

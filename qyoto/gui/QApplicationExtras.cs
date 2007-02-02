@@ -40,7 +40,7 @@ namespace Qyoto {
 			ProxyQApplication().NewQApplication(argc, argv,GUIenabled);
 		}
     
-		public QApplication(string[] argv, QApplication.E_Type arg3) : this((Type) null) {
+		public QApplication(string[] argv, QApplication.TypeOf arg3) : this((Type) null) {
 			Qyoto.Init_qyoto();
 			CreateProxy();
 			Qt.qApp = this;
@@ -52,7 +52,7 @@ namespace Qyoto {
 			NewQApplication(args.Length, args, arg3);
 		}   
 		[SmokeMethod("QApplication(int&, char**, QApplication::Type)")]
-		private void NewQApplication(int argc, string[] argv, QApplication.E_Type arg3) {
+		private void NewQApplication(int argc, string[] argv, QApplication.TypeOf arg3) {
 			ProxyQApplication().NewQApplication(argc, argv,arg3);
 		}
 	}

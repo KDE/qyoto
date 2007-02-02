@@ -131,7 +131,7 @@ void WriteDeclaration::acceptUI(DomUI *node)
             output << "namespace " << ns << " {\n";
         }
 
-        output << option.indent << "class " << exportMacro << className << " : " << option.prefix << className << " {}\n";
+        output << option.indent << "public class " << exportMacro << className << " : " << option.prefix << className << " {}\n";
 
         it.toBack();
         while (it.hasPrevious()) {

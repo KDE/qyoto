@@ -52,26 +52,26 @@ namespace Qyoto {
 			return (IQSocketNotifierProxy) _staticInterceptor;
 		}
 
-		public enum E_Type {
+		public enum TypeOf {
 			Read = 0,
 			Write = 1,
 			Exception = 2,
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
-		public QSocketNotifier(int socket, QSocketNotifier.E_Type arg2, QObject parent) : this((Type) null) {
+		public QSocketNotifier(int socket, QSocketNotifier.TypeOf arg2, QObject parent) : this((Type) null) {
 			CreateProxy();
 			NewQSocketNotifier(socket,arg2,parent);
 		}
 		[SmokeMethod("QSocketNotifier(int, QSocketNotifier::Type, QObject*)")]
-		private void NewQSocketNotifier(int socket, QSocketNotifier.E_Type arg2, QObject parent) {
+		private void NewQSocketNotifier(int socket, QSocketNotifier.TypeOf arg2, QObject parent) {
 			ProxyQSocketNotifier().NewQSocketNotifier(socket,arg2,parent);
 		}
-		public QSocketNotifier(int socket, QSocketNotifier.E_Type arg2) : this((Type) null) {
+		public QSocketNotifier(int socket, QSocketNotifier.TypeOf arg2) : this((Type) null) {
 			CreateProxy();
 			NewQSocketNotifier(socket,arg2);
 		}
 		[SmokeMethod("QSocketNotifier(int, QSocketNotifier::Type)")]
-		private void NewQSocketNotifier(int socket, QSocketNotifier.E_Type arg2) {
+		private void NewQSocketNotifier(int socket, QSocketNotifier.TypeOf arg2) {
 			ProxyQSocketNotifier().NewQSocketNotifier(socket,arg2);
 		}
 		[SmokeMethod("socket() const")]
@@ -79,7 +79,7 @@ namespace Qyoto {
 			return ProxyQSocketNotifier().Socket();
 		}
 		[SmokeMethod("type() const")]
-		public QSocketNotifier.E_Type type() {
+		public QSocketNotifier.TypeOf type() {
 			return ProxyQSocketNotifier().type();
 		}
 		[SmokeMethod("isEnabled() const")]

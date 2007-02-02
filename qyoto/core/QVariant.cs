@@ -13,8 +13,8 @@ namespace Qyoto {
 		protected QVariant(Type dummy) {}
 		interface IQVariantProxy {
 			bool op_equals(QVariant lhs, QVariant v);
-			string TypeToName(QVariant.E_Type type);
-			QVariant.E_Type NameToType(string name);
+			string TypeToName(QVariant.TypeOf type);
+			QVariant.TypeOf NameToType(string name);
 		}
 
 		protected new void CreateProxy() {
@@ -33,7 +33,7 @@ namespace Qyoto {
 			return (IQVariantProxy) _staticInterceptor;
 		}
 
-		public enum E_Type : uint {
+		public enum TypeOf : uint {
 			Invalid = 0,
 			Bool = 1,
 			Int = 2,
@@ -92,12 +92,12 @@ namespace Qyoto {
 		private void NewQVariant() {
 			ProxyQVariant().NewQVariant();
 		}
-		public QVariant(QVariant.E_Type type) : this((Type) null) {
+		public QVariant(QVariant.TypeOf type) : this((Type) null) {
 			CreateProxy();
 			NewQVariant(type);
 		}
 		[SmokeMethod("QVariant(QVariant::Type)")]
-		private void NewQVariant(QVariant.E_Type type) {
+		private void NewQVariant(QVariant.TypeOf type) {
 			ProxyQVariant().NewQVariant(type);
 		}
 		// QVariant* QVariant(int arg1,const void* arg2); >>>> NOT CONVERTED
@@ -336,7 +336,7 @@ namespace Qyoto {
 			ProxyQVariant().NewQVariant(color);
 		}
 		[SmokeMethod("type() const")]
-		public QVariant.E_Type type() {
+		public QVariant.TypeOf type() {
 			return ProxyQVariant().type();
 		}
 		[SmokeMethod("userType() const")]
@@ -348,11 +348,11 @@ namespace Qyoto {
 			return ProxyQVariant().TypeName();
 		}
 		[SmokeMethod("canConvert(QVariant::Type) const")]
-		public bool CanConvert(QVariant.E_Type t) {
+		public bool CanConvert(QVariant.TypeOf t) {
 			return ProxyQVariant().CanConvert(t);
 		}
 		[SmokeMethod("convert(QVariant::Type)")]
-		public bool Convert(QVariant.E_Type t) {
+		public bool Convert(QVariant.TypeOf t) {
 			return ProxyQVariant().Convert(t);
 		}
 		[SmokeMethod("isValid() const")]
@@ -526,11 +526,11 @@ namespace Qyoto {
 			return ProxyQVariant().GetHashCode();
 		}
 		[SmokeMethod("typeToName(QVariant::Type)")]
-		public static string TypeToName(QVariant.E_Type type) {
+		public static string TypeToName(QVariant.TypeOf type) {
 			return StaticQVariant().TypeToName(type);
 		}
 		[SmokeMethod("nameToType(const char*)")]
-		public static QVariant.E_Type NameToType(string name) {
+		public static QVariant.TypeOf NameToType(string name) {
 			return StaticQVariant().NameToType(name);
 		}
 		// void create(int arg1,const void* arg2); >>>> NOT CONVERTED
