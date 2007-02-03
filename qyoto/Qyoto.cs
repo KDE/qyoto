@@ -449,8 +449,7 @@ namespace Qyoto
 
 	[AttributeUsage(	AttributeTargets.Constructor 
 						| AttributeTargets.Method
-						| AttributeTargets.Interface,
-					AllowMultiple=true )]
+						| AttributeTargets.Interface)]
 	class SmokeMethod : Attribute
 	{
 		public string mungedName;
