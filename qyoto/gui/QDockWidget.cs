@@ -81,7 +81,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDockWidget(title,parent,flags);
 		}
-		[SmokeMethod("QDockWidget$$$", "(const QString&, QWidget*, Qt::WindowFlags)")]
+		[SmokeMethod("QDockWidget$#$", "(const QString&, QWidget*, Qt::WindowFlags)")]
 		private void NewQDockWidget(string title, QWidget parent, int flags) {
 			ProxyQDockWidget().NewQDockWidget(title,parent,flags);
 		}
@@ -89,7 +89,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDockWidget(title,parent);
 		}
-		[SmokeMethod("QDockWidget$$", "(const QString&, QWidget*)")]
+		[SmokeMethod("QDockWidget$#", "(const QString&, QWidget*)")]
 		private void NewQDockWidget(string title, QWidget parent) {
 			ProxyQDockWidget().NewQDockWidget(title,parent);
 		}
@@ -105,7 +105,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDockWidget(parent,flags);
 		}
-		[SmokeMethod("QDockWidget##", "(QWidget*, Qt::WindowFlags)")]
+		[SmokeMethod("QDockWidget#$", "(QWidget*, Qt::WindowFlags)")]
 		private void NewQDockWidget(QWidget parent, int flags) {
 			ProxyQDockWidget().NewQDockWidget(parent,flags);
 		}
@@ -185,11 +185,11 @@ namespace Qyoto {
 	}
 
 	public interface IQDockWidgetSignals : IQWidgetSignals {
-		[Q_SIGNAL("void (QDockWidget::DockWidgetFeatures)")]
+		[Q_SIGNAL("void featuresChanged(QDockWidget::DockWidgetFeatures)")]
 		void FeaturesChanged(int features);
-		[Q_SIGNAL("void (bool)")]
+		[Q_SIGNAL("void topLevelChanged(bool)")]
 		void TopLevelChanged(bool topLevel);
-		[Q_SIGNAL("void (Qt::DockWidgetAreas)")]
+		[Q_SIGNAL("void allowedAreasChanged(Qt::DockWidgetAreas)")]
 		void AllowedAreasChanged(int allowedAreas);
 	}
 }

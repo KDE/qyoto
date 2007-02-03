@@ -48,11 +48,11 @@ namespace Qyoto {
 		private void NewQSignalMapper() {
 			ProxyQSignalMapper().NewQSignalMapper();
 		}
-		[SmokeMethod("setMapping##", "(QObject*, int)")]
+		[SmokeMethod("setMapping#$", "(QObject*, int)")]
 		public void SetMapping(QObject sender, int id) {
 			ProxyQSignalMapper().SetMapping(sender,id);
 		}
-		[SmokeMethod("setMapping##", "(QObject*, const QString&)")]
+		[SmokeMethod("setMapping#$", "(QObject*, const QString&)")]
 		public void SetMapping(QObject sender, string text) {
 			ProxyQSignalMapper().SetMapping(sender,text);
 		}
@@ -84,12 +84,12 @@ namespace Qyoto {
 		public QObject Mapping(QObject arg1) {
 			return ProxyQSignalMapper().Mapping(arg1);
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void map()")]
 		[SmokeMethod("map", "()")]
 		public void Map() {
 			ProxyQSignalMapper().Map();
 		}
-		[Q_SLOT("void (QObject*)")]
+		[Q_SLOT("void map(QObject*)")]
 		[SmokeMethod("map#", "(QObject*)")]
 		public void Map(QObject sender) {
 			ProxyQSignalMapper().Map(sender);
@@ -118,13 +118,13 @@ namespace Qyoto {
 	}
 
 	public interface IQSignalMapperSignals : IQObjectSignals {
-		[Q_SIGNAL("void (int)")]
+		[Q_SIGNAL("void mapped(int)")]
 		void Mapped(int arg1);
-		[Q_SIGNAL("void (const QString&)")]
+		[Q_SIGNAL("void mapped(const QString&)")]
 		void Mapped(string arg1);
-		[Q_SIGNAL("void (QWidget*)")]
+		[Q_SIGNAL("void mapped(QWidget*)")]
 		void Mapped(QWidget arg1);
-		[Q_SIGNAL("void (QObject*)")]
+		[Q_SIGNAL("void mapped(QObject*)")]
 		void Mapped(QObject arg1);
 	}
 }

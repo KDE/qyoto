@@ -49,7 +49,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQBrush(color,bs);
 		}
-		[SmokeMethod("QBrush##", "(const QColor&, Qt::BrushStyle)")]
+		[SmokeMethod("QBrush#$", "(const QColor&, Qt::BrushStyle)")]
 		private void NewQBrush(QColor color, Qt.BrushStyle bs) {
 			ProxyQBrush().NewQBrush(color,bs);
 		}
@@ -89,7 +89,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQBrush(color,pixmap);
 		}
-		[SmokeMethod("QBrush$$", "(Qt::GlobalColor, const QPixmap&)")]
+		[SmokeMethod("QBrush$#", "(Qt::GlobalColor, const QPixmap&)")]
 		private void NewQBrush(Qt.GlobalColor color, QPixmap pixmap) {
 			ProxyQBrush().NewQBrush(color,pixmap);
 		}

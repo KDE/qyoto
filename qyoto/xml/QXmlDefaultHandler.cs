@@ -54,7 +54,7 @@ namespace Qyoto {
 		public bool EndPrefixMapping(string prefix) {
 			return ProxyQXmlDefaultHandler().EndPrefixMapping(prefix);
 		}
-		[SmokeMethod("startElement$$$$", "(const QString&, const QString&, const QString&, const QXmlAttributes&)")]
+		[SmokeMethod("startElement$$$#", "(const QString&, const QString&, const QString&, const QXmlAttributes&)")]
 		public bool StartElement(string namespaceURI, string localName, string qName, QXmlAttributes atts) {
 			return ProxyQXmlDefaultHandler().StartElement(namespaceURI,localName,qName,atts);
 		}
@@ -98,7 +98,7 @@ namespace Qyoto {
 		public bool UnparsedEntityDecl(string name, string publicId, string systemId, string notationName) {
 			return ProxyQXmlDefaultHandler().UnparsedEntityDecl(name,publicId,systemId,notationName);
 		}
-		[SmokeMethod("resolveEntity$$$", "(const QString&, const QString&, QXmlInputSource*&)")]
+		[SmokeMethod("resolveEntity$$?", "(const QString&, const QString&, QXmlInputSource*&)")]
 		public bool ResolveEntity(string publicId, string systemId, QXmlInputSource ret) {
 			return ProxyQXmlDefaultHandler().ResolveEntity(publicId,systemId,ret);
 		}

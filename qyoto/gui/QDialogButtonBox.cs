@@ -122,7 +122,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDialogButtonBox(orientation,parent);
 		}
-		[SmokeMethod("QDialogButtonBox$$", "(Qt::Orientation, QWidget*)")]
+		[SmokeMethod("QDialogButtonBox$#", "(Qt::Orientation, QWidget*)")]
 		private void NewQDialogButtonBox(Qt.Orientation orientation, QWidget parent) {
 			ProxyQDialogButtonBox().NewQDialogButtonBox(orientation,parent);
 		}
@@ -138,7 +138,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDialogButtonBox(buttons,orientation,parent);
 		}
-		[SmokeMethod("QDialogButtonBox$$$", "(StandardButtons, Qt::Orientation, QWidget*)")]
+		[SmokeMethod("QDialogButtonBox$$#", "(StandardButtons, Qt::Orientation, QWidget*)")]
 		private void NewQDialogButtonBox(int buttons, Qt.Orientation orientation, QWidget parent) {
 			ProxyQDialogButtonBox().NewQDialogButtonBox(buttons,orientation,parent);
 		}
@@ -158,7 +158,7 @@ namespace Qyoto {
 		private void NewQDialogButtonBox(int buttons) {
 			ProxyQDialogButtonBox().NewQDialogButtonBox(buttons);
 		}
-		[SmokeMethod("addButton##", "(QAbstractButton*, QDialogButtonBox::ButtonRole)")]
+		[SmokeMethod("addButton#$", "(QAbstractButton*, QDialogButtonBox::ButtonRole)")]
 		public void AddButton(QAbstractButton button, QDialogButtonBox.ButtonRole role) {
 			ProxyQDialogButtonBox().AddButton(button,role);
 		}
@@ -226,13 +226,13 @@ namespace Qyoto {
 	}
 
 	public interface IQDialogButtonBoxSignals : IQWidgetSignals {
-		[Q_SIGNAL("void (QAbstractButton*)")]
+		[Q_SIGNAL("void clicked(QAbstractButton*)")]
 		void Clicked(QAbstractButton button);
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void accepted()")]
 		void Accepted();
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void helpRequested()")]
 		void HelpRequested();
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void rejected()")]
 		void Rejected();
 	}
 }

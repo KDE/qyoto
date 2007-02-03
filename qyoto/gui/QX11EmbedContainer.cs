@@ -122,11 +122,11 @@ namespace Qyoto {
 	}
 
 	public interface IQX11EmbedContainerSignals : IQWidgetSignals {
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void clientIsEmbedded()")]
 		void ClientIsEmbedded();
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void clientClosed()")]
 		void ClientClosed();
-		[Q_SIGNAL("void (QX11EmbedContainer::Error)")]
+		[Q_SIGNAL("void error(QX11EmbedContainer::Error)")]
 		void Error(QX11EmbedContainer.Error arg1);
 	}
 }

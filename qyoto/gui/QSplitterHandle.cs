@@ -35,7 +35,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSplitterHandle(o,parent);
 		}
-		[SmokeMethod("QSplitterHandle$$", "(Qt::Orientation, QSplitter*)")]
+		[SmokeMethod("QSplitterHandle$#", "(Qt::Orientation, QSplitter*)")]
 		private void NewQSplitterHandle(Qt.Orientation o, QSplitter parent) {
 			ProxyQSplitterHandle().NewQSplitterHandle(o,parent);
 		}

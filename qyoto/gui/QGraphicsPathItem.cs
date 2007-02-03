@@ -119,7 +119,7 @@ namespace Qyoto {
 		protected new bool SupportsExtension(QGraphicsItem.Extension extension) {
 			return ProxyQGraphicsPathItem().SupportsExtension(extension);
 		}
-		[SmokeMethod("setExtension$$", "(QGraphicsItem::Extension, const QVariant&)")]
+		[SmokeMethod("setExtension$#", "(QGraphicsItem::Extension, const QVariant&)")]
 		protected new void SetExtension(QGraphicsItem.Extension extension, QVariant variant) {
 			ProxyQGraphicsPathItem().SetExtension(extension,variant);
 		}

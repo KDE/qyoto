@@ -66,11 +66,11 @@ namespace Qyoto {
 		public virtual void UnregisterSocketNotifier(QSocketNotifier notifier) {
 			ProxyQAbstractEventDispatcher().UnregisterSocketNotifier(notifier);
 		}
-		[SmokeMethod("registerTimer$$", "(int, QObject*)")]
+		[SmokeMethod("registerTimer$#", "(int, QObject*)")]
 		public int RegisterTimer(int interval, QObject arg2) {
 			return ProxyQAbstractEventDispatcher().RegisterTimer(interval,arg2);
 		}
-		[SmokeMethod("registerTimer$$$", "(int, int, QObject*)")]
+		[SmokeMethod("registerTimer$$#", "(int, int, QObject*)")]
 		public virtual void RegisterTimer(int timerId, int interval, QObject arg3) {
 			ProxyQAbstractEventDispatcher().RegisterTimer(timerId,interval,arg3);
 		}
@@ -133,9 +133,9 @@ namespace Qyoto {
 	}
 
 	public interface IQAbstractEventDispatcherSignals : IQObjectSignals {
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void aboutToBlock()")]
 		void AboutToBlock();
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void awake()")]
 		void Awake();
 	}
 }

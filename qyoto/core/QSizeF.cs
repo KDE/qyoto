@@ -90,7 +90,7 @@ namespace Qyoto {
 		public void Scale(double w, double h, Qt.AspectRatioMode mode) {
 			ProxyQSizeF().Scale(w,h,mode);
 		}
-		[SmokeMethod("scale##", "(const QSizeF&, Qt::AspectRatioMode)")]
+		[SmokeMethod("scale#$", "(const QSizeF&, Qt::AspectRatioMode)")]
 		public void Scale(QSizeF s, Qt.AspectRatioMode mode) {
 			ProxyQSizeF().Scale(s,mode);
 		}

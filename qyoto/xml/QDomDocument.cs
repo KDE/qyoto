@@ -94,7 +94,7 @@ namespace Qyoto {
 		public QDomNodeList ElementsByTagName(string tagname) {
 			return ProxyQDomDocument().ElementsByTagName(tagname);
 		}
-		[SmokeMethod("importNode##", "(const QDomNode&, bool)")]
+		[SmokeMethod("importNode#$", "(const QDomNode&, bool)")]
 		public QDomNode ImportNode(QDomNode importedNode, bool deep) {
 			return ProxyQDomDocument().ImportNode(importedNode,deep);
 		}
@@ -130,19 +130,19 @@ namespace Qyoto {
 		public new QDomNode.NodeType NodeType() {
 			return ProxyQDomDocument().NodeType();
 		}
-		[SmokeMethod("setContent#####", "(const QByteArray&, bool, QString*, int*, int*)")]
+		[SmokeMethod("setContent#$$$$", "(const QByteArray&, bool, QString*, int*, int*)")]
 		public bool SetContent(QByteArray text, bool namespaceProcessing, StringBuilder errorMsg, out int errorLine, out int errorColumn) {
 			return ProxyQDomDocument().SetContent(text,namespaceProcessing,errorMsg,out errorLine,out errorColumn);
 		}
-		[SmokeMethod("setContent####", "(const QByteArray&, bool, QString*, int*)")]
+		[SmokeMethod("setContent#$$$", "(const QByteArray&, bool, QString*, int*)")]
 		public bool SetContent(QByteArray text, bool namespaceProcessing, StringBuilder errorMsg, out int errorLine) {
 			return ProxyQDomDocument().SetContent(text,namespaceProcessing,errorMsg,out errorLine);
 		}
-		[SmokeMethod("setContent###", "(const QByteArray&, bool, QString*)")]
+		[SmokeMethod("setContent#$$", "(const QByteArray&, bool, QString*)")]
 		public bool SetContent(QByteArray text, bool namespaceProcessing, StringBuilder errorMsg) {
 			return ProxyQDomDocument().SetContent(text,namespaceProcessing,errorMsg);
 		}
-		[SmokeMethod("setContent##", "(const QByteArray&, bool)")]
+		[SmokeMethod("setContent#$", "(const QByteArray&, bool)")]
 		public bool SetContent(QByteArray text, bool namespaceProcessing) {
 			return ProxyQDomDocument().SetContent(text,namespaceProcessing);
 		}
@@ -162,31 +162,31 @@ namespace Qyoto {
 		public bool SetContent(string text, bool namespaceProcessing) {
 			return ProxyQDomDocument().SetContent(text,namespaceProcessing);
 		}
-		[SmokeMethod("setContent#####", "(QIODevice*, bool, QString*, int*, int*)")]
+		[SmokeMethod("setContent#$$$$", "(QIODevice*, bool, QString*, int*, int*)")]
 		public bool SetContent(IQIODevice dev, bool namespaceProcessing, StringBuilder errorMsg, out int errorLine, out int errorColumn) {
 			return ProxyQDomDocument().SetContent(dev,namespaceProcessing,errorMsg,out errorLine,out errorColumn);
 		}
-		[SmokeMethod("setContent####", "(QIODevice*, bool, QString*, int*)")]
+		[SmokeMethod("setContent#$$$", "(QIODevice*, bool, QString*, int*)")]
 		public bool SetContent(IQIODevice dev, bool namespaceProcessing, StringBuilder errorMsg, out int errorLine) {
 			return ProxyQDomDocument().SetContent(dev,namespaceProcessing,errorMsg,out errorLine);
 		}
-		[SmokeMethod("setContent###", "(QIODevice*, bool, QString*)")]
+		[SmokeMethod("setContent#$$", "(QIODevice*, bool, QString*)")]
 		public bool SetContent(IQIODevice dev, bool namespaceProcessing, StringBuilder errorMsg) {
 			return ProxyQDomDocument().SetContent(dev,namespaceProcessing,errorMsg);
 		}
-		[SmokeMethod("setContent##", "(QIODevice*, bool)")]
+		[SmokeMethod("setContent#$", "(QIODevice*, bool)")]
 		public bool SetContent(IQIODevice dev, bool namespaceProcessing) {
 			return ProxyQDomDocument().SetContent(dev,namespaceProcessing);
 		}
-		[SmokeMethod("setContent####", "(const QByteArray&, QString*, int*, int*)")]
+		[SmokeMethod("setContent#$$$", "(const QByteArray&, QString*, int*, int*)")]
 		public bool SetContent(QByteArray text, StringBuilder errorMsg, out int errorLine, out int errorColumn) {
 			return ProxyQDomDocument().SetContent(text,errorMsg,out errorLine,out errorColumn);
 		}
-		[SmokeMethod("setContent###", "(const QByteArray&, QString*, int*)")]
+		[SmokeMethod("setContent#$$", "(const QByteArray&, QString*, int*)")]
 		public bool SetContent(QByteArray text, StringBuilder errorMsg, out int errorLine) {
 			return ProxyQDomDocument().SetContent(text,errorMsg,out errorLine);
 		}
-		[SmokeMethod("setContent##", "(const QByteArray&, QString*)")]
+		[SmokeMethod("setContent#$", "(const QByteArray&, QString*)")]
 		public bool SetContent(QByteArray text, StringBuilder errorMsg) {
 			return ProxyQDomDocument().SetContent(text,errorMsg);
 		}
@@ -210,15 +210,15 @@ namespace Qyoto {
 		public bool SetContent(string text) {
 			return ProxyQDomDocument().SetContent(text);
 		}
-		[SmokeMethod("setContent####", "(QIODevice*, QString*, int*, int*)")]
+		[SmokeMethod("setContent#$$$", "(QIODevice*, QString*, int*, int*)")]
 		public bool SetContent(IQIODevice dev, StringBuilder errorMsg, out int errorLine, out int errorColumn) {
 			return ProxyQDomDocument().SetContent(dev,errorMsg,out errorLine,out errorColumn);
 		}
-		[SmokeMethod("setContent###", "(QIODevice*, QString*, int*)")]
+		[SmokeMethod("setContent#$$", "(QIODevice*, QString*, int*)")]
 		public bool SetContent(IQIODevice dev, StringBuilder errorMsg, out int errorLine) {
 			return ProxyQDomDocument().SetContent(dev,errorMsg,out errorLine);
 		}
-		[SmokeMethod("setContent##", "(QIODevice*, QString*)")]
+		[SmokeMethod("setContent#$", "(QIODevice*, QString*)")]
 		public bool SetContent(IQIODevice dev, StringBuilder errorMsg) {
 			return ProxyQDomDocument().SetContent(dev,errorMsg);
 		}
@@ -226,15 +226,15 @@ namespace Qyoto {
 		public bool SetContent(IQIODevice dev) {
 			return ProxyQDomDocument().SetContent(dev);
 		}
-		[SmokeMethod("setContent#####", "(QXmlInputSource*, QXmlReader*, QString*, int*, int*)")]
+		[SmokeMethod("setContent##$$$", "(QXmlInputSource*, QXmlReader*, QString*, int*, int*)")]
 		public bool SetContent(QXmlInputSource source, QXmlReader reader, StringBuilder errorMsg, out int errorLine, out int errorColumn) {
 			return ProxyQDomDocument().SetContent(source,reader,errorMsg,out errorLine,out errorColumn);
 		}
-		[SmokeMethod("setContent####", "(QXmlInputSource*, QXmlReader*, QString*, int*)")]
+		[SmokeMethod("setContent##$$", "(QXmlInputSource*, QXmlReader*, QString*, int*)")]
 		public bool SetContent(QXmlInputSource source, QXmlReader reader, StringBuilder errorMsg, out int errorLine) {
 			return ProxyQDomDocument().SetContent(source,reader,errorMsg,out errorLine);
 		}
-		[SmokeMethod("setContent###", "(QXmlInputSource*, QXmlReader*, QString*)")]
+		[SmokeMethod("setContent##$", "(QXmlInputSource*, QXmlReader*, QString*)")]
 		public bool SetContent(QXmlInputSource source, QXmlReader reader, StringBuilder errorMsg) {
 			return ProxyQDomDocument().SetContent(source,reader,errorMsg);
 		}

@@ -40,7 +40,7 @@ namespace Qyoto {
 		private void NewQItemEditorFactory() {
 			ProxyQItemEditorFactory().NewQItemEditorFactory();
 		}
-		[SmokeMethod("createEditor$$", "(QVariant::Type, QWidget*) const")]
+		[SmokeMethod("createEditor$#", "(QVariant::Type, QWidget*) const")]
 		public virtual QWidget CreateEditor(QVariant.TypeOf type, QWidget parent) {
 			return ProxyQItemEditorFactory().CreateEditor(type,parent);
 		}
@@ -48,7 +48,7 @@ namespace Qyoto {
 		public virtual QByteArray ValuePropertyName(QVariant.TypeOf type) {
 			return ProxyQItemEditorFactory().ValuePropertyName(type);
 		}
-		[SmokeMethod("registerEditor$$", "(QVariant::Type, QItemEditorCreatorBase*)")]
+		[SmokeMethod("registerEditor$#", "(QVariant::Type, QItemEditorCreatorBase*)")]
 		public void RegisterEditor(QVariant.TypeOf type, QItemEditorCreatorBase creator) {
 			ProxyQItemEditorFactory().RegisterEditor(type,creator);
 		}

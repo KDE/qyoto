@@ -35,11 +35,11 @@ namespace Qyoto {
 			string Tr(string s, string c);
 			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
-			[SmokeMethod("connect#####", "(const QObject*, const char*, const QObject*, const char*, Qt::ConnectionType)")]
+			[SmokeMethod("connect#$#$$", "(const QObject*, const char*, const QObject*, const char*, Qt::ConnectionType)")]
 			bool Connect(QObject sender, string signal, QObject receiver, string member, Qt.ConnectionType arg5);
-			[SmokeMethod("connect####", "(const QObject*, const char*, const QObject*, const char*)")]
+			[SmokeMethod("connect#$#$", "(const QObject*, const char*, const QObject*, const char*)")]
 			bool Connect(QObject sender, string signal, QObject receiver, string member);
-			[SmokeMethod("disconnect####", "(const QObject*, const char*, const QObject*, const char*)")]
+			[SmokeMethod("disconnect#$#$", "(const QObject*, const char*, const QObject*, const char*)")]
 			bool Disconnect(QObject sender, string signal, QObject receiver, string member);
 			[SmokeMethod("registerUserData", "()")]
 			uint RegisterUserData();
@@ -133,19 +133,19 @@ namespace Qyoto {
 		public void RemoveEventFilter(QObject arg1) {
 			ProxyQObject().RemoveEventFilter(arg1);
 		}
-		[SmokeMethod("connect####", "(const QObject*, const char*, const char*, Qt::ConnectionType) const")]
+		[SmokeMethod("connect#$$$", "(const QObject*, const char*, const char*, Qt::ConnectionType) const")]
 		public bool Connect(QObject sender, string signal, string member, Qt.ConnectionType type) {
 			return ProxyQObject().Connect(sender,signal,member,type);
 		}
-		[SmokeMethod("connect###", "(const QObject*, const char*, const char*) const")]
+		[SmokeMethod("connect#$$", "(const QObject*, const char*, const char*) const")]
 		public bool Connect(QObject sender, string signal, string member) {
 			return ProxyQObject().Connect(sender,signal,member);
 		}
-		[SmokeMethod("disconnect$$$", "(const char*, const QObject*, const char*)")]
+		[SmokeMethod("disconnect$#$", "(const char*, const QObject*, const char*)")]
 		public bool Disconnect(string signal, QObject receiver, string member) {
 			return ProxyQObject().Disconnect(signal,receiver,member);
 		}
-		[SmokeMethod("disconnect$$", "(const char*, const QObject*)")]
+		[SmokeMethod("disconnect$#", "(const char*, const QObject*)")]
 		public bool Disconnect(string signal, QObject receiver) {
 			return ProxyQObject().Disconnect(signal,receiver);
 		}
@@ -157,7 +157,7 @@ namespace Qyoto {
 		public bool Disconnect() {
 			return ProxyQObject().Disconnect();
 		}
-		[SmokeMethod("disconnect##", "(const QObject*, const char*)")]
+		[SmokeMethod("disconnect#$", "(const QObject*, const char*)")]
 		public bool Disconnect(QObject receiver, string member) {
 			return ProxyQObject().Disconnect(receiver,member);
 		}
@@ -195,7 +195,7 @@ namespace Qyoto {
 		public bool Inherits(string classname) {
 			return ProxyQObject().Inherits(classname);
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void deleteLater()")]
 		[SmokeMethod("deleteLater", "()")]
 		public void DeleteLater() {
 			ProxyQObject().DeleteLater();
@@ -264,9 +264,9 @@ namespace Qyoto {
 	}
 
 	public interface IQObjectSignals {
-		[Q_SIGNAL("void (QObject*)")]
+		[Q_SIGNAL("void destroyed(QObject*)")]
 		void Destroyed(QObject arg1);
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void destroyed()")]
 		void Destroyed();
 	}
 }

@@ -87,7 +87,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSqlQuery(query,db);
 		}
-		[SmokeMethod("QSqlQuery$$", "(const QString&, QSqlDatabase)")]
+		[SmokeMethod("QSqlQuery$#", "(const QString&, QSqlDatabase)")]
 		private void NewQSqlQuery(string query, QSqlDatabase db) {
 			ProxyQSqlQuery().NewQSqlQuery(query,db);
 		}
@@ -231,23 +231,23 @@ namespace Qyoto {
 		public bool Prepare(string query) {
 			return ProxyQSqlQuery().Prepare(query);
 		}
-		[SmokeMethod("bindValue$$$", "(const QString&, const QVariant&, QSql::ParamType)")]
+		[SmokeMethod("bindValue$#$", "(const QString&, const QVariant&, QSql::ParamType)")]
 		public void BindValue(string placeholder, QVariant val, int type) {
 			ProxyQSqlQuery().BindValue(placeholder,val,type);
 		}
-		[SmokeMethod("bindValue$$", "(const QString&, const QVariant&)")]
+		[SmokeMethod("bindValue$#", "(const QString&, const QVariant&)")]
 		public void BindValue(string placeholder, QVariant val) {
 			ProxyQSqlQuery().BindValue(placeholder,val);
 		}
-		[SmokeMethod("bindValue$$$", "(int, const QVariant&, QSql::ParamType)")]
+		[SmokeMethod("bindValue$#$", "(int, const QVariant&, QSql::ParamType)")]
 		public void BindValue(int pos, QVariant val, int type) {
 			ProxyQSqlQuery().BindValue(pos,val,type);
 		}
-		[SmokeMethod("bindValue$$", "(int, const QVariant&)")]
+		[SmokeMethod("bindValue$#", "(int, const QVariant&)")]
 		public void BindValue(int pos, QVariant val) {
 			ProxyQSqlQuery().BindValue(pos,val);
 		}
-		[SmokeMethod("addBindValue##", "(const QVariant&, QSql::ParamType)")]
+		[SmokeMethod("addBindValue#$", "(const QVariant&, QSql::ParamType)")]
 		public void AddBindValue(QVariant val, int type) {
 			ProxyQSqlQuery().AddBindValue(val,type);
 		}

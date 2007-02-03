@@ -77,7 +77,7 @@ namespace Qyoto {
 		public QDomDocumentType CreateDocumentType(string qName, string publicId, string systemId) {
 			return ProxyQDomImplementation().CreateDocumentType(qName,publicId,systemId);
 		}
-		[SmokeMethod("createDocument$$$", "(const QString&, const QString&, const QDomDocumentType&)")]
+		[SmokeMethod("createDocument$$#", "(const QString&, const QString&, const QDomDocumentType&)")]
 		public QDomDocument CreateDocument(string nsURI, string qName, QDomDocumentType doctype) {
 			return ProxyQDomImplementation().CreateDocument(nsURI,qName,doctype);
 		}

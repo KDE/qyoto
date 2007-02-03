@@ -36,7 +36,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSplashScreen(pixmap,f);
 		}
-		[SmokeMethod("QSplashScreen##", "(const QPixmap&, Qt::WindowFlags)")]
+		[SmokeMethod("QSplashScreen#$", "(const QPixmap&, Qt::WindowFlags)")]
 		private void NewQSplashScreen(QPixmap pixmap, int f) {
 			ProxyQSplashScreen().NewQSplashScreen(pixmap,f);
 		}
@@ -60,7 +60,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSplashScreen(parent,pixmap,f);
 		}
-		[SmokeMethod("QSplashScreen###", "(QWidget*, const QPixmap&, Qt::WindowFlags)")]
+		[SmokeMethod("QSplashScreen##$", "(QWidget*, const QPixmap&, Qt::WindowFlags)")]
 		private void NewQSplashScreen(QWidget parent, QPixmap pixmap, int f) {
 			ProxyQSplashScreen().NewQSplashScreen(parent,pixmap,f);
 		}
@@ -96,22 +96,22 @@ namespace Qyoto {
 		public new void Repaint() {
 			ProxyQSplashScreen().Repaint();
 		}
-		[Q_SLOT("void (const QString&, int, const QColor&)")]
-		[SmokeMethod("showMessage$$$", "(const QString&, int, const QColor&)")]
+		[Q_SLOT("void showMessage(const QString&, int, const QColor&)")]
+		[SmokeMethod("showMessage$$#", "(const QString&, int, const QColor&)")]
 		public void ShowMessage(string message, int alignment, QColor color) {
 			ProxyQSplashScreen().ShowMessage(message,alignment,color);
 		}
-		[Q_SLOT("void (const QString&, int)")]
+		[Q_SLOT("void showMessage(const QString&, int)")]
 		[SmokeMethod("showMessage$$", "(const QString&, int)")]
 		public void ShowMessage(string message, int alignment) {
 			ProxyQSplashScreen().ShowMessage(message,alignment);
 		}
-		[Q_SLOT("void (const QString&)")]
+		[Q_SLOT("void showMessage(const QString&)")]
 		[SmokeMethod("showMessage$", "(const QString&)")]
 		public void ShowMessage(string message) {
 			ProxyQSplashScreen().ShowMessage(message);
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void clearMessage()")]
 		[SmokeMethod("clearMessage", "()")]
 		public void ClearMessage() {
 			ProxyQSplashScreen().ClearMessage();
@@ -152,7 +152,7 @@ namespace Qyoto {
 	}
 
 	public interface IQSplashScreenSignals : IQWidgetSignals {
-		[Q_SIGNAL("void (const QString&)")]
+		[Q_SIGNAL("void messageChanged(const QString&)")]
 		void MessageChanged(string message);
 	}
 }

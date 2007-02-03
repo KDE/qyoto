@@ -39,7 +39,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQRubberBand(arg1,arg2);
 		}
-		[SmokeMethod("QRubberBand$$", "(QRubberBand::Shape, QWidget*)")]
+		[SmokeMethod("QRubberBand$#", "(QRubberBand::Shape, QWidget*)")]
 		private void NewQRubberBand(QRubberBand.Shape arg1, QWidget arg2) {
 			ProxyQRubberBand().NewQRubberBand(arg1,arg2);
 		}

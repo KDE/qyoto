@@ -104,7 +104,7 @@ namespace Qyoto {
 		public QByteArray Data(string mimetype) {
 			return ProxyQMimeData().Data(mimetype);
 		}
-		[SmokeMethod("setData$$", "(const QString&, const QByteArray&)")]
+		[SmokeMethod("setData$#", "(const QString&, const QByteArray&)")]
 		public void SetData(string mimetype, QByteArray data) {
 			ProxyQMimeData().SetData(mimetype,data);
 		}

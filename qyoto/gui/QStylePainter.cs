@@ -58,27 +58,27 @@ namespace Qyoto {
 		public new bool Begin(IQPaintDevice pd, QWidget w) {
 			return ProxyQStylePainter().Begin(pd,w);
 		}
-		[SmokeMethod("drawPrimitive$$", "(QStyle::PrimitiveElement, const QStyleOption&)")]
+		[SmokeMethod("drawPrimitive$#", "(QStyle::PrimitiveElement, const QStyleOption&)")]
 		public void DrawPrimitive(QStyle.PrimitiveElement pe, QStyleOption opt) {
 			ProxyQStylePainter().DrawPrimitive(pe,opt);
 		}
-		[SmokeMethod("drawControl$$", "(QStyle::ControlElement, const QStyleOption&)")]
+		[SmokeMethod("drawControl$#", "(QStyle::ControlElement, const QStyleOption&)")]
 		public void DrawControl(QStyle.ControlElement ce, QStyleOption opt) {
 			ProxyQStylePainter().DrawControl(ce,opt);
 		}
-		[SmokeMethod("drawComplexControl$$", "(QStyle::ComplexControl, const QStyleOptionComplex&)")]
+		[SmokeMethod("drawComplexControl$#", "(QStyle::ComplexControl, const QStyleOptionComplex&)")]
 		public void DrawComplexControl(QStyle.ComplexControl cc, QStyleOptionComplex opt) {
 			ProxyQStylePainter().DrawComplexControl(cc,opt);
 		}
-		[SmokeMethod("drawItemText######", "(const QRect&, int, const QPalette&, bool, const QString&, QPalette::ColorRole)")]
+		[SmokeMethod("drawItemText#$#$$$", "(const QRect&, int, const QPalette&, bool, const QString&, QPalette::ColorRole)")]
 		public void DrawItemText(QRect r, int flags, QPalette pal, bool enabled, string text, QPalette.ColorRole textRole) {
 			ProxyQStylePainter().DrawItemText(r,flags,pal,enabled,text,textRole);
 		}
-		[SmokeMethod("drawItemText#####", "(const QRect&, int, const QPalette&, bool, const QString&)")]
+		[SmokeMethod("drawItemText#$#$$", "(const QRect&, int, const QPalette&, bool, const QString&)")]
 		public void DrawItemText(QRect r, int flags, QPalette pal, bool enabled, string text) {
 			ProxyQStylePainter().DrawItemText(r,flags,pal,enabled,text);
 		}
-		[SmokeMethod("drawItemPixmap###", "(const QRect&, int, const QPixmap&)")]
+		[SmokeMethod("drawItemPixmap#$#", "(const QRect&, int, const QPixmap&)")]
 		public void DrawItemPixmap(QRect r, int flags, QPixmap pixmap) {
 			ProxyQStylePainter().DrawItemPixmap(r,flags,pixmap);
 		}

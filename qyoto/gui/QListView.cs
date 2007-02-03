@@ -199,7 +199,7 @@ namespace Qyoto {
 		public new QRect VisualRect(QModelIndex index) {
 			return ProxyQListView().VisualRect(index);
 		}
-		[SmokeMethod("scrollTo##", "(const QModelIndex&, QAbstractItemView::ScrollHint)")]
+		[SmokeMethod("scrollTo#$", "(const QModelIndex&, QAbstractItemView::ScrollHint)")]
 		public new void ScrollTo(QModelIndex index, QAbstractItemView.ScrollHint hint) {
 			ProxyQListView().ScrollTo(index,hint);
 		}
@@ -249,11 +249,11 @@ namespace Qyoto {
 		protected new void DataChanged(QModelIndex topLeft, QModelIndex bottomRight) {
 			ProxyQListView().DataChanged(topLeft,bottomRight);
 		}
-		[SmokeMethod("rowsInserted###", "(const QModelIndex&, int, int)")]
+		[SmokeMethod("rowsInserted#$$", "(const QModelIndex&, int, int)")]
 		protected new void RowsInserted(QModelIndex parent, int start, int end) {
 			ProxyQListView().RowsInserted(parent,start,end);
 		}
-		[SmokeMethod("rowsAboutToBeRemoved###", "(const QModelIndex&, int, int)")]
+		[SmokeMethod("rowsAboutToBeRemoved#$$", "(const QModelIndex&, int, int)")]
 		protected new void RowsAboutToBeRemoved(QModelIndex parent, int start, int end) {
 			ProxyQListView().RowsAboutToBeRemoved(parent,start,end);
 		}
@@ -325,7 +325,7 @@ namespace Qyoto {
 		protected void SetPositionForIndex(QPoint position, QModelIndex index) {
 			ProxyQListView().SetPositionForIndex(position,index);
 		}
-		[SmokeMethod("setSelection##", "(const QRect&, QItemSelectionModel::SelectionFlags)")]
+		[SmokeMethod("setSelection#$", "(const QRect&, QItemSelectionModel::SelectionFlags)")]
 		protected new void SetSelection(QRect rect, int command) {
 			ProxyQListView().SetSelection(rect,command);
 		}
@@ -363,7 +363,7 @@ namespace Qyoto {
 	}
 
 	public interface IQListViewSignals : IQAbstractItemViewSignals {
-		[Q_SIGNAL("void (const QModelIndexList&)")]
+		[Q_SIGNAL("void indexesMoved(const QModelIndexList&)")]
 		void IndexesMoved(List<QModelIndex> indexes);
 	}
 }

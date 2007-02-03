@@ -69,7 +69,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQAbstractSocket(socketType,parent);
 		}
-		[SmokeMethod("QAbstractSocket$$", "(QAbstractSocket::SocketType, QObject*)")]
+		[SmokeMethod("QAbstractSocket$#", "(QAbstractSocket::SocketType, QObject*)")]
 		private void NewQAbstractSocket(QAbstractSocket.SocketType socketType, QObject parent) {
 			ProxyQAbstractSocket().NewQAbstractSocket(socketType,parent);
 		}
@@ -81,11 +81,11 @@ namespace Qyoto {
 		public void ConnectToHost(string hostName, ushort port) {
 			ProxyQAbstractSocket().ConnectToHost(hostName,port);
 		}
-		[SmokeMethod("connectToHost###", "(const QHostAddress&, quint16, OpenMode)")]
+		[SmokeMethod("connectToHost#$$", "(const QHostAddress&, quint16, OpenMode)")]
 		public void ConnectToHost(QHostAddress address, ushort port, int mode) {
 			ProxyQAbstractSocket().ConnectToHost(address,port,mode);
 		}
-		[SmokeMethod("connectToHost##", "(const QHostAddress&, quint16)")]
+		[SmokeMethod("connectToHost#$", "(const QHostAddress&, quint16)")]
 		public void ConnectToHost(QHostAddress address, ushort port) {
 			ProxyQAbstractSocket().ConnectToHost(address,port);
 		}
@@ -273,17 +273,17 @@ namespace Qyoto {
 		}
 		// QAbstractSocket* QAbstractSocket(QAbstractSocket::SocketType arg1,QAbstractSocketPrivate& arg2,QObject* arg3); >>>> NOT CONVERTED
 		// QAbstractSocket* QAbstractSocket(QAbstractSocket::SocketType arg1,QAbstractSocketPrivate& arg2); >>>> NOT CONVERTED
-		[Q_SLOT("void (const QString&, quint16, OpenMode)")]
+		[Q_SLOT("void connectToHostImplementation(const QString&, quint16, OpenMode)")]
 		[SmokeMethod("connectToHostImplementation$$$", "(const QString&, quint16, OpenMode)")]
 		protected void ConnectToHostImplementation(string hostName, ushort port, int mode) {
 			ProxyQAbstractSocket().ConnectToHostImplementation(hostName,port,mode);
 		}
-		[Q_SLOT("void (const QString&, quint16)")]
+		[Q_SLOT("void connectToHostImplementation(const QString&, quint16)")]
 		[SmokeMethod("connectToHostImplementation$$", "(const QString&, quint16)")]
 		protected void ConnectToHostImplementation(string hostName, ushort port) {
 			ProxyQAbstractSocket().ConnectToHostImplementation(hostName,port);
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void disconnectFromHostImplementation()")]
 		[SmokeMethod("disconnectFromHostImplementation", "()")]
 		protected void DisconnectFromHostImplementation() {
 			ProxyQAbstractSocket().DisconnectFromHostImplementation();
@@ -306,15 +306,15 @@ namespace Qyoto {
 	}
 
 	public interface IQAbstractSocketSignals : IQIODeviceSignals {
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void hostFound()")]
 		void HostFound();
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void connected()")]
 		void Connected();
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void disconnected()")]
 		void Disconnected();
-		[Q_SIGNAL("void (QAbstractSocket::SocketState)")]
+		[Q_SIGNAL("void stateChanged(QAbstractSocket::SocketState)")]
 		void StateChanged(QAbstractSocket.SocketState arg1);
-		[Q_SIGNAL("void (QAbstractSocket::SocketError)")]
+		[Q_SIGNAL("void error(QAbstractSocket::SocketError)")]
 		void Error(QAbstractSocket.SocketError arg1);
 	}
 }

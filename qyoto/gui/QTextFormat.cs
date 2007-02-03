@@ -130,7 +130,7 @@ namespace Qyoto {
 		public QVariant property(int propertyId) {
 			return ProxyQTextFormat().property(propertyId);
 		}
-		[SmokeMethod("setProperty$$", "(int, const QVariant&)")]
+		[SmokeMethod("setProperty$#", "(int, const QVariant&)")]
 		public void SetProperty(int propertyId, QVariant value) {
 			ProxyQTextFormat().SetProperty(propertyId,value);
 		}
@@ -178,7 +178,7 @@ namespace Qyoto {
 		public List<QTextLength> LengthVectorProperty(int propertyId) {
 			return ProxyQTextFormat().LengthVectorProperty(propertyId);
 		}
-		[SmokeMethod("setProperty$$", "(int, const QVector<QTextLength>&)")]
+		[SmokeMethod("setProperty$?", "(int, const QVector<QTextLength>&)")]
 		public void SetProperty(int propertyId, List<QTextLength> lengths) {
 			ProxyQTextFormat().SetProperty(propertyId,lengths);
 		}

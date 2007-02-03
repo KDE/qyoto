@@ -59,7 +59,7 @@ namespace Qyoto {
 		public List<QModelIndex> Indexes() {
 			return ProxyQItemSelection().Indexes();
 		}
-		[SmokeMethod("merge##", "(const QItemSelection&, QItemSelectionModel::SelectionFlags)")]
+		[SmokeMethod("merge#$", "(const QItemSelection&, QItemSelectionModel::SelectionFlags)")]
 		public void Merge(QItemSelection other, int command) {
 			ProxyQItemSelection().Merge(other,command);
 		}

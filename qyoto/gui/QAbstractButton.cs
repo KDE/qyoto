@@ -163,22 +163,22 @@ namespace Qyoto {
 		public QButtonGroup Group() {
 			return ProxyQAbstractButton().Group();
 		}
-		[Q_SLOT("void (int)")]
+		[Q_SLOT("void animateClick(int)")]
 		[SmokeMethod("animateClick$", "(int)")]
 		public void AnimateClick(int msec) {
 			ProxyQAbstractButton().AnimateClick(msec);
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void animateClick()")]
 		[SmokeMethod("animateClick", "()")]
 		public void AnimateClick() {
 			ProxyQAbstractButton().AnimateClick();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void click()")]
 		[SmokeMethod("click", "()")]
 		public void Click() {
 			ProxyQAbstractButton().Click();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void toggle()")]
 		[SmokeMethod("toggle", "()")]
 		public void Toggle() {
 			ProxyQAbstractButton().Toggle();
@@ -207,15 +207,15 @@ namespace Qyoto {
 	}
 
 	public interface IQAbstractButtonSignals : IQWidgetSignals {
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void pressed()")]
 		void Pressed();
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void released()")]
 		void Released();
-		[Q_SIGNAL("void (bool)")]
+		[Q_SIGNAL("void clicked(bool)")]
 		void Clicked(bool arg1);
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void clicked()")]
 		void Clicked();
-		[Q_SIGNAL("void (bool)")]
+		[Q_SIGNAL("void toggled(bool)")]
 		void Toggled(bool arg1);
 	}
 }

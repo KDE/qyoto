@@ -109,7 +109,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGraphicsScene(x,y,width,height,parent);
 		}
-		[SmokeMethod("QGraphicsScene$$$$$", "(qreal, qreal, qreal, qreal, QObject*)")]
+		[SmokeMethod("QGraphicsScene$$$$#", "(qreal, qreal, qreal, qreal, QObject*)")]
 		private void NewQGraphicsScene(double x, double y, double width, double height, QObject parent) {
 			ProxyQGraphicsScene().NewQGraphicsScene(x,y,width,height,parent);
 		}
@@ -133,7 +133,7 @@ namespace Qyoto {
 		public void SetSceneRect(double x, double y, double w, double h) {
 			ProxyQGraphicsScene().SetSceneRect(x,y,w,h);
 		}
-		[SmokeMethod("render####", "(QPainter*, const QRectF&, const QRectF&, Qt::AspectRatioMode)")]
+		[SmokeMethod("render###$", "(QPainter*, const QRectF&, const QRectF&, Qt::AspectRatioMode)")]
 		public void Render(QPainter painter, QRectF target, QRectF source, Qt.AspectRatioMode aspectRatioMode) {
 			ProxyQGraphicsScene().Render(painter,target,source,aspectRatioMode);
 		}
@@ -161,7 +161,7 @@ namespace Qyoto {
 		public List<QGraphicsItem> Items(QPointF pos) {
 			return ProxyQGraphicsScene().Items(pos);
 		}
-		[SmokeMethod("items##", "(const QRectF&, Qt::ItemSelectionMode) const")]
+		[SmokeMethod("items#$", "(const QRectF&, Qt::ItemSelectionMode) const")]
 		public List<QGraphicsItem> Items(QRectF rect, Qt.ItemSelectionMode mode) {
 			return ProxyQGraphicsScene().Items(rect,mode);
 		}
@@ -169,7 +169,7 @@ namespace Qyoto {
 		public List<QGraphicsItem> Items(QRectF rect) {
 			return ProxyQGraphicsScene().Items(rect);
 		}
-		[SmokeMethod("items##", "(const QPolygonF&, Qt::ItemSelectionMode) const")]
+		[SmokeMethod("items#$", "(const QPolygonF&, Qt::ItemSelectionMode) const")]
 		public List<QGraphicsItem> Items(QPolygonF polygon, Qt.ItemSelectionMode mode) {
 			return ProxyQGraphicsScene().Items(polygon,mode);
 		}
@@ -177,7 +177,7 @@ namespace Qyoto {
 		public List<QGraphicsItem> Items(QPolygonF polygon) {
 			return ProxyQGraphicsScene().Items(polygon);
 		}
-		[SmokeMethod("items##", "(const QPainterPath&, Qt::ItemSelectionMode) const")]
+		[SmokeMethod("items#$", "(const QPainterPath&, Qt::ItemSelectionMode) const")]
 		public List<QGraphicsItem> Items(QPainterPath path, Qt.ItemSelectionMode mode) {
 			return ProxyQGraphicsScene().Items(path,mode);
 		}
@@ -185,7 +185,7 @@ namespace Qyoto {
 		public List<QGraphicsItem> Items(QPainterPath path) {
 			return ProxyQGraphicsScene().Items(path);
 		}
-		[SmokeMethod("collidingItems##", "(const QGraphicsItem*, Qt::ItemSelectionMode) const")]
+		[SmokeMethod("collidingItems#$", "(const QGraphicsItem*, Qt::ItemSelectionMode) const")]
 		public List<QGraphicsItem> CollidingItems(QGraphicsItem item, Qt.ItemSelectionMode mode) {
 			return ProxyQGraphicsScene().CollidingItems(item,mode);
 		}
@@ -285,7 +285,7 @@ namespace Qyoto {
 		public QGraphicsRectItem AddRect(QRectF rect) {
 			return ProxyQGraphicsScene().AddRect(rect);
 		}
-		[SmokeMethod("addText$$", "(const QString&, const QFont&)")]
+		[SmokeMethod("addText$#", "(const QString&, const QFont&)")]
 		public QGraphicsTextItem AddText(string text, QFont font) {
 			return ProxyQGraphicsScene().AddText(text,font);
 		}
@@ -301,7 +301,7 @@ namespace Qyoto {
 		public QGraphicsItem FocusItem() {
 			return ProxyQGraphicsScene().FocusItem();
 		}
-		[SmokeMethod("setFocusItem##", "(QGraphicsItem*, Qt::FocusReason)")]
+		[SmokeMethod("setFocusItem#$", "(QGraphicsItem*, Qt::FocusReason)")]
 		public void SetFocusItem(QGraphicsItem item, Qt.FocusReason focusReason) {
 			ProxyQGraphicsScene().SetFocusItem(item,focusReason);
 		}
@@ -337,17 +337,17 @@ namespace Qyoto {
 		public List<QGraphicsView> Views() {
 			return ProxyQGraphicsScene().Views();
 		}
-		[Q_SLOT("void (const QRectF&)")]
+		[Q_SLOT("void update(const QRectF&)")]
 		[SmokeMethod("update#", "(const QRectF&)")]
 		public void Update(QRectF rect) {
 			ProxyQGraphicsScene().Update(rect);
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void update()")]
 		[SmokeMethod("update", "()")]
 		public void Update() {
 			ProxyQGraphicsScene().Update();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void advance()")]
 		[SmokeMethod("advance", "()")]
 		public void Advance() {
 			ProxyQGraphicsScene().Advance();
@@ -454,9 +454,9 @@ namespace Qyoto {
 	}
 
 	public interface IQGraphicsSceneSignals : IQObjectSignals {
-		[Q_SIGNAL("void (const QList<QRectF>&)")]
+		[Q_SIGNAL("void changed(const QList<QRectF>&)")]
 		void Changed(List<QRectF> region);
-		[Q_SIGNAL("void (const QRectF&)")]
+		[Q_SIGNAL("void sceneRectChanged(const QRectF&)")]
 		void SceneRectChanged(QRectF rect);
 	}
 }

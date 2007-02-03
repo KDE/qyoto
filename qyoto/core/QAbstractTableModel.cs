@@ -47,7 +47,7 @@ namespace Qyoto {
 		private void NewQAbstractTableModel() {
 			ProxyQAbstractTableModel().NewQAbstractTableModel();
 		}
-		[SmokeMethod("index$$$", "(int, int, const QModelIndex&) const")]
+		[SmokeMethod("index$$#", "(int, int, const QModelIndex&) const")]
 		public new QModelIndex Index(int row, int column, QModelIndex parent) {
 			return ProxyQAbstractTableModel().Index(row,column,parent);
 		}
@@ -55,7 +55,7 @@ namespace Qyoto {
 		public new QModelIndex Index(int row, int column) {
 			return ProxyQAbstractTableModel().Index(row,column);
 		}
-		[SmokeMethod("dropMimeData#####", "(const QMimeData*, Qt::DropAction, int, int, const QModelIndex&)")]
+		[SmokeMethod("dropMimeData#$$$#", "(const QMimeData*, Qt::DropAction, int, int, const QModelIndex&)")]
 		public new bool DropMimeData(QMimeData data, Qt.DropAction action, int row, int column, QModelIndex parent) {
 			return ProxyQAbstractTableModel().DropMimeData(data,action,row,column,parent);
 		}

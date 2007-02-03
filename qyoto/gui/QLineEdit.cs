@@ -184,7 +184,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQLineEdit(arg1,parent);
 		}
-		[SmokeMethod("QLineEdit$$", "(const QString&, QWidget*)")]
+		[SmokeMethod("QLineEdit$#", "(const QString&, QWidget*)")]
 		private void NewQLineEdit(string arg1, QWidget parent) {
 			ProxyQLineEdit().NewQLineEdit(arg1,parent);
 		}
@@ -316,37 +316,37 @@ namespace Qyoto {
 		public new bool Event(QEvent arg1) {
 			return ProxyQLineEdit().Event(arg1);
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void clear()")]
 		[SmokeMethod("clear", "()")]
 		public void Clear() {
 			ProxyQLineEdit().Clear();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void selectAll()")]
 		[SmokeMethod("selectAll", "()")]
 		public void SelectAll() {
 			ProxyQLineEdit().SelectAll();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void undo()")]
 		[SmokeMethod("undo", "()")]
 		public void Undo() {
 			ProxyQLineEdit().Undo();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void redo()")]
 		[SmokeMethod("redo", "()")]
 		public void Redo() {
 			ProxyQLineEdit().Redo();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void cut()")]
 		[SmokeMethod("cut", "()")]
 		public void Cut() {
 			ProxyQLineEdit().Cut();
 		}
-		[Q_SLOT("void () const")]
+		[Q_SLOT("void copy() const")]
 		[SmokeMethod("copy", "() const")]
 		public void Copy() {
 			ProxyQLineEdit().Copy();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void paste()")]
 		[SmokeMethod("paste", "()")]
 		public void Paste() {
 			ProxyQLineEdit().Paste();
@@ -435,17 +435,17 @@ namespace Qyoto {
 	}
 
 	public interface IQLineEditSignals : IQWidgetSignals {
-		[Q_SIGNAL("void (const QString&)")]
+		[Q_SIGNAL("void textChanged(const QString&)")]
 		void TextChanged(string arg1);
-		[Q_SIGNAL("void (const QString&)")]
+		[Q_SIGNAL("void textEdited(const QString&)")]
 		void TextEdited(string arg1);
-		[Q_SIGNAL("void (int, int)")]
+		[Q_SIGNAL("void cursorPositionChanged(int, int)")]
 		void CursorPositionChanged(int arg1, int arg2);
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void returnPressed()")]
 		void ReturnPressed();
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void editingFinished()")]
 		void EditingFinished();
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void selectionChanged()")]
 		void SelectionChanged();
 	}
 }

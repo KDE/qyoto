@@ -89,7 +89,7 @@ namespace Qyoto {
 		public void InsertText(string text) {
 			ProxyQTextCursor().InsertText(text);
 		}
-		[SmokeMethod("insertText$$", "(const QString&, const QTextCharFormat&)")]
+		[SmokeMethod("insertText$#", "(const QString&, const QTextCharFormat&)")]
 		public void InsertText(string text, QTextCharFormat format) {
 			ProxyQTextCursor().InsertText(text,format);
 		}
@@ -226,7 +226,7 @@ namespace Qyoto {
 		public QTextList CurrentList() {
 			return ProxyQTextCursor().CurrentList();
 		}
-		[SmokeMethod("insertTable$$$", "(int, int, const QTextTableFormat&)")]
+		[SmokeMethod("insertTable$$#", "(int, int, const QTextTableFormat&)")]
 		public QTextTable InsertTable(int rows, int cols, QTextTableFormat format) {
 			return ProxyQTextCursor().InsertTable(rows,cols,format);
 		}
@@ -251,7 +251,7 @@ namespace Qyoto {
 		public void InsertHtml(string html) {
 			ProxyQTextCursor().InsertHtml(html);
 		}
-		[SmokeMethod("insertImage##", "(const QTextImageFormat&, QTextFrameFormat::Position)")]
+		[SmokeMethod("insertImage#$", "(const QTextImageFormat&, QTextFrameFormat::Position)")]
 		public void InsertImage(QTextImageFormat format, QTextFrameFormat.Position alignment) {
 			ProxyQTextCursor().InsertImage(format,alignment);
 		}

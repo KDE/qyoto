@@ -79,7 +79,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGraphicsEllipseItem(x,y,w,h,parent,scene);
 		}
-		[SmokeMethod("QGraphicsEllipseItem$$$$$$", "(qreal, qreal, qreal, qreal, QGraphicsItem*, QGraphicsScene*)")]
+		[SmokeMethod("QGraphicsEllipseItem$$$$##", "(qreal, qreal, qreal, qreal, QGraphicsItem*, QGraphicsScene*)")]
 		private void NewQGraphicsEllipseItem(double x, double y, double w, double h, QGraphicsItem parent, QGraphicsScene scene) {
 			ProxyQGraphicsEllipseItem().NewQGraphicsEllipseItem(x,y,w,h,parent,scene);
 		}
@@ -87,7 +87,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGraphicsEllipseItem(x,y,w,h,parent);
 		}
-		[SmokeMethod("QGraphicsEllipseItem$$$$$", "(qreal, qreal, qreal, qreal, QGraphicsItem*)")]
+		[SmokeMethod("QGraphicsEllipseItem$$$$#", "(qreal, qreal, qreal, qreal, QGraphicsItem*)")]
 		private void NewQGraphicsEllipseItem(double x, double y, double w, double h, QGraphicsItem parent) {
 			ProxyQGraphicsEllipseItem().NewQGraphicsEllipseItem(x,y,w,h,parent);
 		}
@@ -163,7 +163,7 @@ namespace Qyoto {
 		protected new bool SupportsExtension(QGraphicsItem.Extension extension) {
 			return ProxyQGraphicsEllipseItem().SupportsExtension(extension);
 		}
-		[SmokeMethod("setExtension$$", "(QGraphicsItem::Extension, const QVariant&)")]
+		[SmokeMethod("setExtension$#", "(QGraphicsItem::Extension, const QVariant&)")]
 		protected new void SetExtension(QGraphicsItem.Extension extension, QVariant variant) {
 			ProxyQGraphicsEllipseItem().SetExtension(extension,variant);
 		}

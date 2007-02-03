@@ -64,7 +64,7 @@ namespace Qyoto {
 		public QGradient.Spread spread() {
 			return ProxyQGradient().spread();
 		}
-		[SmokeMethod("setColorAt$$", "(qreal, const QColor&)")]
+		[SmokeMethod("setColorAt$#", "(qreal, const QColor&)")]
 		public void SetColorAt(double pos, QColor color) {
 			ProxyQGradient().SetColorAt(pos,color);
 		}

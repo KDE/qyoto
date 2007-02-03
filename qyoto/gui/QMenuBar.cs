@@ -65,7 +65,7 @@ namespace Qyoto {
 		public new QAction AddAction(string text) {
 			return ProxyQMenuBar().AddAction(text);
 		}
-		[SmokeMethod("addAction$$$", "(const QString&, const QObject*, const char*)")]
+		[SmokeMethod("addAction$#$", "(const QString&, const QObject*, const char*)")]
 		public new QAction AddAction(string text, QObject receiver, string member) {
 			return ProxyQMenuBar().AddAction(text,receiver,member);
 		}
@@ -77,7 +77,7 @@ namespace Qyoto {
 		public QMenu AddMenu(string title) {
 			return ProxyQMenuBar().AddMenu(title);
 		}
-		[SmokeMethod("addMenu##", "(const QIcon&, const QString&)")]
+		[SmokeMethod("addMenu#$", "(const QIcon&, const QString&)")]
 		public QMenu AddMenu(QIcon icon, string title) {
 			return ProxyQMenuBar().AddMenu(icon,title);
 		}
@@ -129,7 +129,7 @@ namespace Qyoto {
 		public QAction ActionAt(QPoint arg1) {
 			return ProxyQMenuBar().ActionAt(arg1);
 		}
-		[SmokeMethod("setCornerWidget##", "(QWidget*, Qt::Corner)")]
+		[SmokeMethod("setCornerWidget#$", "(QWidget*, Qt::Corner)")]
 		public void SetCornerWidget(QWidget w, Qt.Corner corner) {
 			ProxyQMenuBar().SetCornerWidget(w,corner);
 		}
@@ -221,9 +221,9 @@ namespace Qyoto {
 	}
 
 	public interface IQMenuBarSignals : IQWidgetSignals {
-		[Q_SIGNAL("void (QAction*)")]
+		[Q_SIGNAL("void triggered(QAction*)")]
 		void Triggered(QAction action);
-		[Q_SIGNAL("void (QAction*)")]
+		[Q_SIGNAL("void hovered(QAction*)")]
 		void Hovered(QAction action);
 	}
 }

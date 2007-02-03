@@ -56,7 +56,7 @@ namespace Qyoto {
 		private void NewQSystemLocale() {
 			ProxyQSystemLocale().NewQSystemLocale();
 		}
-		[SmokeMethod("query$$", "(QSystemLocale::QueryType, QVariant) const")]
+		[SmokeMethod("query$#", "(QSystemLocale::QueryType, QVariant) const")]
 		public virtual QVariant Query(QSystemLocale.QueryType type, QVariant arg2) {
 			return ProxyQSystemLocale().Query(type,arg2);
 		}

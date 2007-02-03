@@ -122,15 +122,15 @@ namespace Qyoto {
 		public QRectF BoundingRect(char arg1) {
 			return ProxyQFontMetricsF().BoundingRect(arg1);
 		}
-		[SmokeMethod("boundingRect#####", "(const QRectF&, int, const QString&, int, int*) const")]
+		[SmokeMethod("boundingRect#$$$$", "(const QRectF&, int, const QString&, int, int*) const")]
 		public QRectF BoundingRect(QRectF r, int flags, string arg3, int tabstops, out int tabarray) {
 			return ProxyQFontMetricsF().BoundingRect(r,flags,arg3,tabstops,out tabarray);
 		}
-		[SmokeMethod("boundingRect####", "(const QRectF&, int, const QString&, int) const")]
+		[SmokeMethod("boundingRect#$$$", "(const QRectF&, int, const QString&, int) const")]
 		public QRectF BoundingRect(QRectF r, int flags, string arg3, int tabstops) {
 			return ProxyQFontMetricsF().BoundingRect(r,flags,arg3,tabstops);
 		}
-		[SmokeMethod("boundingRect###", "(const QRectF&, int, const QString&) const")]
+		[SmokeMethod("boundingRect#$$", "(const QRectF&, int, const QString&) const")]
 		public QRectF BoundingRect(QRectF r, int flags, string arg3) {
 			return ProxyQFontMetricsF().BoundingRect(r,flags,arg3);
 		}

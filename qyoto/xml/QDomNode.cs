@@ -304,7 +304,7 @@ namespace Qyoto {
 		public QDomComment ToComment() {
 			return ProxyQDomNode().ToComment();
 		}
-		[SmokeMethod("save##", "(QTextStream&, int) const")]
+		[SmokeMethod("save#$", "(QTextStream&, int) const")]
 		public void Save(QTextStream arg1, int arg2) {
 			ProxyQDomNode().Save(arg1,arg2);
 		}

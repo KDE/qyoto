@@ -71,7 +71,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTableWidget(rows,columns,parent);
 		}
-		[SmokeMethod("QTableWidget$$$", "(int, int, QWidget*)")]
+		[SmokeMethod("QTableWidget$$#", "(int, int, QWidget*)")]
 		private void NewQTableWidget(int rows, int columns, QWidget parent) {
 			ProxyQTableWidget().NewQTableWidget(rows,columns,parent);
 		}
@@ -95,7 +95,7 @@ namespace Qyoto {
 		public QTableWidgetItem Item(int row, int column) {
 			return ProxyQTableWidget().Item(row,column);
 		}
-		[SmokeMethod("setItem$$$", "(int, int, QTableWidgetItem*)")]
+		[SmokeMethod("setItem$$#", "(int, int, QTableWidgetItem*)")]
 		public void SetItem(int row, int column, QTableWidgetItem item) {
 			ProxyQTableWidget().SetItem(row,column,item);
 		}
@@ -107,7 +107,7 @@ namespace Qyoto {
 		public QTableWidgetItem VerticalHeaderItem(int row) {
 			return ProxyQTableWidget().VerticalHeaderItem(row);
 		}
-		[SmokeMethod("setVerticalHeaderItem$$", "(int, QTableWidgetItem*)")]
+		[SmokeMethod("setVerticalHeaderItem$#", "(int, QTableWidgetItem*)")]
 		public void SetVerticalHeaderItem(int row, QTableWidgetItem item) {
 			ProxyQTableWidget().SetVerticalHeaderItem(row,item);
 		}
@@ -119,7 +119,7 @@ namespace Qyoto {
 		public QTableWidgetItem HorizontalHeaderItem(int column) {
 			return ProxyQTableWidget().HorizontalHeaderItem(column);
 		}
-		[SmokeMethod("setHorizontalHeaderItem$$", "(int, QTableWidgetItem*)")]
+		[SmokeMethod("setHorizontalHeaderItem$#", "(int, QTableWidgetItem*)")]
 		public void SetHorizontalHeaderItem(int column, QTableWidgetItem item) {
 			ProxyQTableWidget().SetHorizontalHeaderItem(column,item);
 		}
@@ -187,7 +187,7 @@ namespace Qyoto {
 		public QWidget CellWidget(int row, int column) {
 			return ProxyQTableWidget().CellWidget(row,column);
 		}
-		[SmokeMethod("setCellWidget$$$", "(int, int, QWidget*)")]
+		[SmokeMethod("setCellWidget$$#", "(int, int, QWidget*)")]
 		public void SetCellWidget(int row, int column, QWidget widget) {
 			ProxyQTableWidget().SetCellWidget(row,column,widget);
 		}
@@ -195,11 +195,11 @@ namespace Qyoto {
 		public bool IsItemSelected(QTableWidgetItem item) {
 			return ProxyQTableWidget().IsItemSelected(item);
 		}
-		[SmokeMethod("setItemSelected##", "(const QTableWidgetItem*, bool)")]
+		[SmokeMethod("setItemSelected#$", "(const QTableWidgetItem*, bool)")]
 		public void SetItemSelected(QTableWidgetItem item, bool select) {
 			ProxyQTableWidget().SetItemSelected(item,select);
 		}
-		[SmokeMethod("setRangeSelected##", "(const QTableWidgetSelectionRange&, bool)")]
+		[SmokeMethod("setRangeSelected#$", "(const QTableWidgetSelectionRange&, bool)")]
 		public void SetRangeSelected(QTableWidgetSelectionRange range, bool select) {
 			ProxyQTableWidget().SetRangeSelected(range,select);
 		}
@@ -243,42 +243,42 @@ namespace Qyoto {
 		public void SetItemPrototype(QTableWidgetItem item) {
 			ProxyQTableWidget().SetItemPrototype(item);
 		}
-		[Q_SLOT("void (const QTableWidgetItem*, QAbstractItemView::ScrollHint)")]
-		[SmokeMethod("scrollToItem##", "(const QTableWidgetItem*, QAbstractItemView::ScrollHint)")]
+		[Q_SLOT("void scrollToItem(const QTableWidgetItem*, QAbstractItemView::ScrollHint)")]
+		[SmokeMethod("scrollToItem#$", "(const QTableWidgetItem*, QAbstractItemView::ScrollHint)")]
 		public void ScrollToItem(QTableWidgetItem item, QAbstractItemView.ScrollHint hint) {
 			ProxyQTableWidget().ScrollToItem(item,hint);
 		}
-		[Q_SLOT("void (const QTableWidgetItem*)")]
+		[Q_SLOT("void scrollToItem(const QTableWidgetItem*)")]
 		[SmokeMethod("scrollToItem#", "(const QTableWidgetItem*)")]
 		public void ScrollToItem(QTableWidgetItem item) {
 			ProxyQTableWidget().ScrollToItem(item);
 		}
-		[Q_SLOT("void (int)")]
+		[Q_SLOT("void insertRow(int)")]
 		[SmokeMethod("insertRow$", "(int)")]
 		public void InsertRow(int row) {
 			ProxyQTableWidget().InsertRow(row);
 		}
-		[Q_SLOT("void (int)")]
+		[Q_SLOT("void insertColumn(int)")]
 		[SmokeMethod("insertColumn$", "(int)")]
 		public void InsertColumn(int column) {
 			ProxyQTableWidget().InsertColumn(column);
 		}
-		[Q_SLOT("void (int)")]
+		[Q_SLOT("void removeRow(int)")]
 		[SmokeMethod("removeRow$", "(int)")]
 		public void RemoveRow(int row) {
 			ProxyQTableWidget().RemoveRow(row);
 		}
-		[Q_SLOT("void (int)")]
+		[Q_SLOT("void removeColumn(int)")]
 		[SmokeMethod("removeColumn$", "(int)")]
 		public void RemoveColumn(int column) {
 			ProxyQTableWidget().RemoveColumn(column);
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void clear()")]
 		[SmokeMethod("clear", "()")]
 		public void Clear() {
 			ProxyQTableWidget().Clear();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void clearContents()")]
 		[SmokeMethod("clearContents", "()")]
 		public void ClearContents() {
 			ProxyQTableWidget().ClearContents();
@@ -301,7 +301,7 @@ namespace Qyoto {
 		protected virtual QMimeData MimeData(List<QTableWidgetItem> items) {
 			return ProxyQTableWidget().MimeData(items);
 		}
-		[SmokeMethod("dropMimeData$$$$", "(int, int, const QMimeData*, Qt::DropAction)")]
+		[SmokeMethod("dropMimeData$$#$", "(int, int, const QMimeData*, Qt::DropAction)")]
 		protected virtual bool DropMimeData(int row, int column, QMimeData data, Qt.DropAction action) {
 			return ProxyQTableWidget().DropMimeData(row,column,data,action);
 		}
@@ -343,35 +343,35 @@ namespace Qyoto {
 	}
 
 	public interface IQTableWidgetSignals : IQTableViewSignals {
-		[Q_SIGNAL("void (QTableWidgetItem*)")]
+		[Q_SIGNAL("void itemPressed(QTableWidgetItem*)")]
 		void ItemPressed(QTableWidgetItem item);
-		[Q_SIGNAL("void (QTableWidgetItem*)")]
+		[Q_SIGNAL("void itemClicked(QTableWidgetItem*)")]
 		void ItemClicked(QTableWidgetItem item);
-		[Q_SIGNAL("void (QTableWidgetItem*)")]
+		[Q_SIGNAL("void itemDoubleClicked(QTableWidgetItem*)")]
 		void ItemDoubleClicked(QTableWidgetItem item);
-		[Q_SIGNAL("void (QTableWidgetItem*)")]
+		[Q_SIGNAL("void itemActivated(QTableWidgetItem*)")]
 		void ItemActivated(QTableWidgetItem item);
-		[Q_SIGNAL("void (QTableWidgetItem*)")]
+		[Q_SIGNAL("void itemEntered(QTableWidgetItem*)")]
 		void ItemEntered(QTableWidgetItem item);
-		[Q_SIGNAL("void (QTableWidgetItem*)")]
+		[Q_SIGNAL("void itemChanged(QTableWidgetItem*)")]
 		void ItemChanged(QTableWidgetItem item);
-		[Q_SIGNAL("void (QTableWidgetItem*, QTableWidgetItem*)")]
+		[Q_SIGNAL("void currentItemChanged(QTableWidgetItem*, QTableWidgetItem*)")]
 		void CurrentItemChanged(QTableWidgetItem current, QTableWidgetItem previous);
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void itemSelectionChanged()")]
 		void ItemSelectionChanged();
-		[Q_SIGNAL("void (int, int)")]
+		[Q_SIGNAL("void cellPressed(int, int)")]
 		void CellPressed(int row, int column);
-		[Q_SIGNAL("void (int, int)")]
+		[Q_SIGNAL("void cellClicked(int, int)")]
 		void CellClicked(int row, int column);
-		[Q_SIGNAL("void (int, int)")]
+		[Q_SIGNAL("void cellDoubleClicked(int, int)")]
 		void CellDoubleClicked(int row, int column);
-		[Q_SIGNAL("void (int, int)")]
+		[Q_SIGNAL("void cellActivated(int, int)")]
 		void CellActivated(int row, int column);
-		[Q_SIGNAL("void (int, int)")]
+		[Q_SIGNAL("void cellEntered(int, int)")]
 		void CellEntered(int row, int column);
-		[Q_SIGNAL("void (int, int)")]
+		[Q_SIGNAL("void cellChanged(int, int)")]
 		void CellChanged(int row, int column);
-		[Q_SIGNAL("void (int, int, int, int)")]
+		[Q_SIGNAL("void currentCellChanged(int, int, int, int)")]
 		void CurrentCellChanged(int currentRow, int currentColumn, int previousRow, int previousColumn);
 	}
 }

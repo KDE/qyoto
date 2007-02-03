@@ -91,7 +91,7 @@ namespace Qyoto {
 		public void WakeUp() {
 			ProxyQEventLoop().WakeUp();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void quit()")]
 		[SmokeMethod("quit", "()")]
 		public void Quit() {
 			ProxyQEventLoop().Quit();

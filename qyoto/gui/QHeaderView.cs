@@ -106,7 +106,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQHeaderView(orientation,parent);
 		}
-		[SmokeMethod("QHeaderView$$", "(Qt::Orientation, QWidget*)")]
+		[SmokeMethod("QHeaderView$#", "(Qt::Orientation, QWidget*)")]
 		private void NewQHeaderView(Qt.Orientation orientation, QWidget parent) {
 			ProxyQHeaderView().NewQHeaderView(orientation,parent);
 		}
@@ -282,17 +282,17 @@ namespace Qyoto {
 		public bool SectionsHidden() {
 			return ProxyQHeaderView().SectionsHidden();
 		}
-		[Q_SLOT("void (int)")]
+		[Q_SLOT("void setOffset(int)")]
 		[SmokeMethod("setOffset$", "(int)")]
 		public void SetOffset(int offset) {
 			ProxyQHeaderView().SetOffset(offset);
 		}
-		[Q_SLOT("void (int)")]
+		[Q_SLOT("void setOffsetToSectionPosition(int)")]
 		[SmokeMethod("setOffsetToSectionPosition$", "(int)")]
 		public void SetOffsetToSectionPosition(int visualIndex) {
 			ProxyQHeaderView().SetOffsetToSectionPosition(visualIndex);
 		}
-		[Q_SLOT("void (Qt::Orientation, int, int)")]
+		[Q_SLOT("void headerDataChanged(Qt::Orientation, int, int)")]
 		[SmokeMethod("headerDataChanged$$$", "(Qt::Orientation, int, int)")]
 		public void HeaderDataChanged(Qt.Orientation orientation, int logicalFirst, int logicalLast) {
 			ProxyQHeaderView().HeaderDataChanged(orientation,logicalFirst,logicalLast);
@@ -347,7 +347,7 @@ namespace Qyoto {
 		protected new bool ViewportEvent(QEvent e) {
 			return ProxyQHeaderView().ViewportEvent(e);
 		}
-		[SmokeMethod("paintSection###", "(QPainter*, const QRect&, int) const")]
+		[SmokeMethod("paintSection##$", "(QPainter*, const QRect&, int) const")]
 		protected virtual void PaintSection(QPainter painter, QRect rect, int logicalIndex) {
 			ProxyQHeaderView().PaintSection(painter,rect,logicalIndex);
 		}
@@ -375,7 +375,7 @@ namespace Qyoto {
 		protected new void DataChanged(QModelIndex topLeft, QModelIndex bottomRight) {
 			ProxyQHeaderView().DataChanged(topLeft,bottomRight);
 		}
-		[SmokeMethod("rowsInserted###", "(const QModelIndex&, int, int)")]
+		[SmokeMethod("rowsInserted#$$", "(const QModelIndex&, int, int)")]
 		protected new void RowsInserted(QModelIndex parent, int start, int end) {
 			ProxyQHeaderView().RowsInserted(parent,start,end);
 		}
@@ -383,7 +383,7 @@ namespace Qyoto {
 		protected new QRect VisualRect(QModelIndex index) {
 			return ProxyQHeaderView().VisualRect(index);
 		}
-		[SmokeMethod("scrollTo##", "(const QModelIndex&, QAbstractItemView::ScrollHint)")]
+		[SmokeMethod("scrollTo#$", "(const QModelIndex&, QAbstractItemView::ScrollHint)")]
 		protected new void ScrollTo(QModelIndex index, QAbstractItemView.ScrollHint hint) {
 			ProxyQHeaderView().ScrollTo(index,hint);
 		}
@@ -399,7 +399,7 @@ namespace Qyoto {
 		protected new QModelIndex MoveCursor(QAbstractItemView.CursorAction arg1, int arg2) {
 			return ProxyQHeaderView().MoveCursor(arg1,arg2);
 		}
-		[SmokeMethod("setSelection##", "(const QRect&, QItemSelectionModel::SelectionFlags)")]
+		[SmokeMethod("setSelection#$", "(const QRect&, QItemSelectionModel::SelectionFlags)")]
 		protected new void SetSelection(QRect arg1, int arg2) {
 			ProxyQHeaderView().SetSelection(arg1,arg2);
 		}
@@ -407,23 +407,23 @@ namespace Qyoto {
 		protected new QRegion VisualRegionForSelection(QItemSelection selection) {
 			return ProxyQHeaderView().VisualRegionForSelection(selection);
 		}
-		[Q_SLOT("void (int)")]
+		[Q_SLOT("void updateSection(int)")]
 		[SmokeMethod("updateSection$", "(int)")]
 		protected void UpdateSection(int logicalIndex) {
 			ProxyQHeaderView().UpdateSection(logicalIndex);
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void resizeSections()")]
 		[SmokeMethod("resizeSections", "()")]
 		protected void ResizeSections() {
 			ProxyQHeaderView().ResizeSections();
 		}
-		[Q_SLOT("void (const QModelIndex&, int, int)")]
-		[SmokeMethod("sectionsInserted###", "(const QModelIndex&, int, int)")]
+		[Q_SLOT("void sectionsInserted(const QModelIndex&, int, int)")]
+		[SmokeMethod("sectionsInserted#$$", "(const QModelIndex&, int, int)")]
 		protected void SectionsInserted(QModelIndex parent, int logicalFirst, int logicalLast) {
 			ProxyQHeaderView().SectionsInserted(parent,logicalFirst,logicalLast);
 		}
-		[Q_SLOT("void (const QModelIndex&, int, int)")]
-		[SmokeMethod("sectionsAboutToBeRemoved###", "(const QModelIndex&, int, int)")]
+		[Q_SLOT("void sectionsAboutToBeRemoved(const QModelIndex&, int, int)")]
+		[SmokeMethod("sectionsAboutToBeRemoved#$$", "(const QModelIndex&, int, int)")]
 		protected void SectionsAboutToBeRemoved(QModelIndex parent, int logicalFirst, int logicalLast) {
 			ProxyQHeaderView().SectionsAboutToBeRemoved(parent,logicalFirst,logicalLast);
 		}
@@ -445,23 +445,23 @@ namespace Qyoto {
 	}
 
 	public interface IQHeaderViewSignals : IQAbstractItemViewSignals {
-		[Q_SIGNAL("void (int, int, int)")]
+		[Q_SIGNAL("void sectionMoved(int, int, int)")]
 		void SectionMoved(int logicalIndex, int oldVisualIndex, int newVisualIndex);
-		[Q_SIGNAL("void (int, int, int)")]
+		[Q_SIGNAL("void sectionResized(int, int, int)")]
 		void SectionResized(int logicalIndex, int oldSize, int newSize);
-		[Q_SIGNAL("void (int)")]
+		[Q_SIGNAL("void sectionPressed(int)")]
 		void SectionPressed(int logicalIndex);
-		[Q_SIGNAL("void (int)")]
+		[Q_SIGNAL("void sectionClicked(int)")]
 		void SectionClicked(int logicalIndex);
-		[Q_SIGNAL("void (int)")]
+		[Q_SIGNAL("void sectionDoubleClicked(int)")]
 		void SectionDoubleClicked(int logicalIndex);
-		[Q_SIGNAL("void (int, int)")]
+		[Q_SIGNAL("void sectionCountChanged(int, int)")]
 		void SectionCountChanged(int oldCount, int newCount);
-		[Q_SIGNAL("void (int)")]
+		[Q_SIGNAL("void sectionHandleDoubleClicked(int)")]
 		void SectionHandleDoubleClicked(int logicalIndex);
-		[Q_SIGNAL("void (int, QHeaderView::ResizeMode)")]
+		[Q_SIGNAL("void sectionAutoResize(int, QHeaderView::ResizeMode)")]
 		void SectionAutoResize(int logicalIndex, QHeaderView.ResizeMode mode);
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void geometriesChanged()")]
 		void GeometriesChanged();
 	}
 }

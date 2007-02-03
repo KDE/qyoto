@@ -63,7 +63,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQPluginLoader(fileName,parent);
 		}
-		[SmokeMethod("QPluginLoader$$", "(const QString&, QObject*)")]
+		[SmokeMethod("QPluginLoader$#", "(const QString&, QObject*)")]
 		private void NewQPluginLoader(string fileName, QObject parent) {
 			ProxyQPluginLoader().NewQPluginLoader(fileName,parent);
 		}

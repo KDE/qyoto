@@ -12,101 +12,101 @@ namespace Qyoto {
 			string Tr(string s, string c);
 			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
-			[SmokeMethod("information#####", "(QWidget*, const QString&, const QString&, StandardButtons, QMessageBox::StandardButton)")]
+			[SmokeMethod("information#$$$$", "(QWidget*, const QString&, const QString&, StandardButtons, QMessageBox::StandardButton)")]
 			QMessageBox.StandardButton Information(QWidget parent, string title, string text, int buttons, QMessageBox.StandardButton defaultButton);
-			[SmokeMethod("information####", "(QWidget*, const QString&, const QString&, StandardButtons)")]
+			[SmokeMethod("information#$$$", "(QWidget*, const QString&, const QString&, StandardButtons)")]
 			QMessageBox.StandardButton Information(QWidget parent, string title, string text, int buttons);
-			[SmokeMethod("information###", "(QWidget*, const QString&, const QString&)")]
+			[SmokeMethod("information#$$", "(QWidget*, const QString&, const QString&)")]
 			QMessageBox.StandardButton Information(QWidget parent, string title, string text);
-			[SmokeMethod("question#####", "(QWidget*, const QString&, const QString&, StandardButtons, QMessageBox::StandardButton)")]
+			[SmokeMethod("question#$$$$", "(QWidget*, const QString&, const QString&, StandardButtons, QMessageBox::StandardButton)")]
 			QMessageBox.StandardButton Question(QWidget parent, string title, string text, int buttons, QMessageBox.StandardButton defaultButton);
-			[SmokeMethod("question####", "(QWidget*, const QString&, const QString&, StandardButtons)")]
+			[SmokeMethod("question#$$$", "(QWidget*, const QString&, const QString&, StandardButtons)")]
 			QMessageBox.StandardButton Question(QWidget parent, string title, string text, int buttons);
-			[SmokeMethod("question###", "(QWidget*, const QString&, const QString&)")]
+			[SmokeMethod("question#$$", "(QWidget*, const QString&, const QString&)")]
 			QMessageBox.StandardButton Question(QWidget parent, string title, string text);
-			[SmokeMethod("warning#####", "(QWidget*, const QString&, const QString&, StandardButtons, QMessageBox::StandardButton)")]
+			[SmokeMethod("warning#$$$$", "(QWidget*, const QString&, const QString&, StandardButtons, QMessageBox::StandardButton)")]
 			QMessageBox.StandardButton Warning(QWidget parent, string title, string text, int buttons, QMessageBox.StandardButton defaultButton);
-			[SmokeMethod("warning####", "(QWidget*, const QString&, const QString&, StandardButtons)")]
+			[SmokeMethod("warning#$$$", "(QWidget*, const QString&, const QString&, StandardButtons)")]
 			QMessageBox.StandardButton Warning(QWidget parent, string title, string text, int buttons);
-			[SmokeMethod("warning###", "(QWidget*, const QString&, const QString&)")]
+			[SmokeMethod("warning#$$", "(QWidget*, const QString&, const QString&)")]
 			QMessageBox.StandardButton Warning(QWidget parent, string title, string text);
-			[SmokeMethod("critical#####", "(QWidget*, const QString&, const QString&, StandardButtons, QMessageBox::StandardButton)")]
+			[SmokeMethod("critical#$$$$", "(QWidget*, const QString&, const QString&, StandardButtons, QMessageBox::StandardButton)")]
 			QMessageBox.StandardButton Critical(QWidget parent, string title, string text, int buttons, QMessageBox.StandardButton defaultButton);
-			[SmokeMethod("critical####", "(QWidget*, const QString&, const QString&, StandardButtons)")]
+			[SmokeMethod("critical#$$$", "(QWidget*, const QString&, const QString&, StandardButtons)")]
 			QMessageBox.StandardButton Critical(QWidget parent, string title, string text, int buttons);
-			[SmokeMethod("critical###", "(QWidget*, const QString&, const QString&)")]
+			[SmokeMethod("critical#$$", "(QWidget*, const QString&, const QString&)")]
 			QMessageBox.StandardButton Critical(QWidget parent, string title, string text);
-			[SmokeMethod("about###", "(QWidget*, const QString&, const QString&)")]
+			[SmokeMethod("about#$$", "(QWidget*, const QString&, const QString&)")]
 			void About(QWidget parent, string title, string text);
-			[SmokeMethod("aboutQt##", "(QWidget*, const QString&)")]
+			[SmokeMethod("aboutQt#$", "(QWidget*, const QString&)")]
 			void AboutQt(QWidget parent, string title);
 			[SmokeMethod("aboutQt#", "(QWidget*)")]
 			void AboutQt(QWidget parent);
-			[SmokeMethod("information######", "(QWidget*, const QString&, const QString&, int, int, int)")]
+			[SmokeMethod("information#$$$$$", "(QWidget*, const QString&, const QString&, int, int, int)")]
 			int Information(QWidget parent, string title, string text, int button0, int button1, int button2);
-			[SmokeMethod("information#####", "(QWidget*, const QString&, const QString&, int, int)")]
+			[SmokeMethod("information#$$$$", "(QWidget*, const QString&, const QString&, int, int)")]
 			int Information(QWidget parent, string title, string text, int button0, int button1);
-			[SmokeMethod("information########", "(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&, int, int)")]
+			[SmokeMethod("information#$$$$$$$", "(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&, int, int)")]
 			int Information(QWidget parent, string title, string text, string button0Text, string button1Text, string button2Text, int defaultButtonNumber, int escapeButtonNumber);
-			[SmokeMethod("information#######", "(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&, int)")]
+			[SmokeMethod("information#$$$$$$", "(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&, int)")]
 			int Information(QWidget parent, string title, string text, string button0Text, string button1Text, string button2Text, int defaultButtonNumber);
-			[SmokeMethod("information######", "(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&)")]
+			[SmokeMethod("information#$$$$$", "(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&)")]
 			int Information(QWidget parent, string title, string text, string button0Text, string button1Text, string button2Text);
-			[SmokeMethod("information#####", "(QWidget*, const QString&, const QString&, const QString&, const QString&)")]
+			[SmokeMethod("information#$$$$", "(QWidget*, const QString&, const QString&, const QString&, const QString&)")]
 			int Information(QWidget parent, string title, string text, string button0Text, string button1Text);
-			[SmokeMethod("information####", "(QWidget*, const QString&, const QString&, const QString&)")]
+			[SmokeMethod("information#$$$", "(QWidget*, const QString&, const QString&, const QString&)")]
 			int Information(QWidget parent, string title, string text, string button0Text);
-			[SmokeMethod("information#####", "(QWidget*, const QString&, const QString&, QMessageBox::StandardButton, QMessageBox::StandardButton)")]
+			[SmokeMethod("information#$$$$", "(QWidget*, const QString&, const QString&, QMessageBox::StandardButton, QMessageBox::StandardButton)")]
 			QMessageBox.StandardButton Information(QWidget parent, string title, string text, QMessageBox.StandardButton button0, QMessageBox.StandardButton button1);
-			[SmokeMethod("information####", "(QWidget*, const QString&, const QString&, QMessageBox::StandardButton)")]
+			[SmokeMethod("information#$$$", "(QWidget*, const QString&, const QString&, QMessageBox::StandardButton)")]
 			QMessageBox.StandardButton Information(QWidget parent, string title, string text, QMessageBox.StandardButton button0);
-			[SmokeMethod("question######", "(QWidget*, const QString&, const QString&, int, int, int)")]
+			[SmokeMethod("question#$$$$$", "(QWidget*, const QString&, const QString&, int, int, int)")]
 			int Question(QWidget parent, string title, string text, int button0, int button1, int button2);
-			[SmokeMethod("question#####", "(QWidget*, const QString&, const QString&, int, int)")]
+			[SmokeMethod("question#$$$$", "(QWidget*, const QString&, const QString&, int, int)")]
 			int Question(QWidget parent, string title, string text, int button0, int button1);
-			[SmokeMethod("question########", "(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&, int, int)")]
+			[SmokeMethod("question#$$$$$$$", "(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&, int, int)")]
 			int Question(QWidget parent, string title, string text, string button0Text, string button1Text, string button2Text, int defaultButtonNumber, int escapeButtonNumber);
-			[SmokeMethod("question#######", "(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&, int)")]
+			[SmokeMethod("question#$$$$$$", "(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&, int)")]
 			int Question(QWidget parent, string title, string text, string button0Text, string button1Text, string button2Text, int defaultButtonNumber);
-			[SmokeMethod("question######", "(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&)")]
+			[SmokeMethod("question#$$$$$", "(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&)")]
 			int Question(QWidget parent, string title, string text, string button0Text, string button1Text, string button2Text);
-			[SmokeMethod("question#####", "(QWidget*, const QString&, const QString&, const QString&, const QString&)")]
+			[SmokeMethod("question#$$$$", "(QWidget*, const QString&, const QString&, const QString&, const QString&)")]
 			int Question(QWidget parent, string title, string text, string button0Text, string button1Text);
-			[SmokeMethod("question####", "(QWidget*, const QString&, const QString&, const QString&)")]
+			[SmokeMethod("question#$$$", "(QWidget*, const QString&, const QString&, const QString&)")]
 			int Question(QWidget parent, string title, string text, string button0Text);
-			[SmokeMethod("question#####", "(QWidget*, const QString&, const QString&, QMessageBox::StandardButton, QMessageBox::StandardButton)")]
+			[SmokeMethod("question#$$$$", "(QWidget*, const QString&, const QString&, QMessageBox::StandardButton, QMessageBox::StandardButton)")]
 			int Question(QWidget parent, string title, string text, QMessageBox.StandardButton button0, QMessageBox.StandardButton button1);
-			[SmokeMethod("warning######", "(QWidget*, const QString&, const QString&, int, int, int)")]
+			[SmokeMethod("warning#$$$$$", "(QWidget*, const QString&, const QString&, int, int, int)")]
 			int Warning(QWidget parent, string title, string text, int button0, int button1, int button2);
-			[SmokeMethod("warning#####", "(QWidget*, const QString&, const QString&, int, int)")]
+			[SmokeMethod("warning#$$$$", "(QWidget*, const QString&, const QString&, int, int)")]
 			int Warning(QWidget parent, string title, string text, int button0, int button1);
-			[SmokeMethod("warning########", "(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&, int, int)")]
+			[SmokeMethod("warning#$$$$$$$", "(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&, int, int)")]
 			int Warning(QWidget parent, string title, string text, string button0Text, string button1Text, string button2Text, int defaultButtonNumber, int escapeButtonNumber);
-			[SmokeMethod("warning#######", "(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&, int)")]
+			[SmokeMethod("warning#$$$$$$", "(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&, int)")]
 			int Warning(QWidget parent, string title, string text, string button0Text, string button1Text, string button2Text, int defaultButtonNumber);
-			[SmokeMethod("warning######", "(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&)")]
+			[SmokeMethod("warning#$$$$$", "(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&)")]
 			int Warning(QWidget parent, string title, string text, string button0Text, string button1Text, string button2Text);
-			[SmokeMethod("warning#####", "(QWidget*, const QString&, const QString&, const QString&, const QString&)")]
+			[SmokeMethod("warning#$$$$", "(QWidget*, const QString&, const QString&, const QString&, const QString&)")]
 			int Warning(QWidget parent, string title, string text, string button0Text, string button1Text);
-			[SmokeMethod("warning####", "(QWidget*, const QString&, const QString&, const QString&)")]
+			[SmokeMethod("warning#$$$", "(QWidget*, const QString&, const QString&, const QString&)")]
 			int Warning(QWidget parent, string title, string text, string button0Text);
-			[SmokeMethod("warning#####", "(QWidget*, const QString&, const QString&, QMessageBox::StandardButton, QMessageBox::StandardButton)")]
+			[SmokeMethod("warning#$$$$", "(QWidget*, const QString&, const QString&, QMessageBox::StandardButton, QMessageBox::StandardButton)")]
 			int Warning(QWidget parent, string title, string text, QMessageBox.StandardButton button0, QMessageBox.StandardButton button1);
-			[SmokeMethod("critical######", "(QWidget*, const QString&, const QString&, int, int, int)")]
+			[SmokeMethod("critical#$$$$$", "(QWidget*, const QString&, const QString&, int, int, int)")]
 			int Critical(QWidget parent, string title, string text, int button0, int button1, int button2);
-			[SmokeMethod("critical#####", "(QWidget*, const QString&, const QString&, int, int)")]
+			[SmokeMethod("critical#$$$$", "(QWidget*, const QString&, const QString&, int, int)")]
 			int Critical(QWidget parent, string title, string text, int button0, int button1);
-			[SmokeMethod("critical########", "(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&, int, int)")]
+			[SmokeMethod("critical#$$$$$$$", "(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&, int, int)")]
 			int Critical(QWidget parent, string title, string text, string button0Text, string button1Text, string button2Text, int defaultButtonNumber, int escapeButtonNumber);
-			[SmokeMethod("critical#######", "(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&, int)")]
+			[SmokeMethod("critical#$$$$$$", "(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&, int)")]
 			int Critical(QWidget parent, string title, string text, string button0Text, string button1Text, string button2Text, int defaultButtonNumber);
-			[SmokeMethod("critical######", "(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&)")]
+			[SmokeMethod("critical#$$$$$", "(QWidget*, const QString&, const QString&, const QString&, const QString&, const QString&)")]
 			int Critical(QWidget parent, string title, string text, string button0Text, string button1Text, string button2Text);
-			[SmokeMethod("critical#####", "(QWidget*, const QString&, const QString&, const QString&, const QString&)")]
+			[SmokeMethod("critical#$$$$", "(QWidget*, const QString&, const QString&, const QString&, const QString&)")]
 			int Critical(QWidget parent, string title, string text, string button0Text, string button1Text);
-			[SmokeMethod("critical####", "(QWidget*, const QString&, const QString&, const QString&)")]
+			[SmokeMethod("critical#$$$", "(QWidget*, const QString&, const QString&, const QString&)")]
 			int Critical(QWidget parent, string title, string text, string button0Text);
-			[SmokeMethod("critical#####", "(QWidget*, const QString&, const QString&, QMessageBox::StandardButton, QMessageBox::StandardButton)")]
+			[SmokeMethod("critical#$$$$", "(QWidget*, const QString&, const QString&, QMessageBox::StandardButton, QMessageBox::StandardButton)")]
 			int Critical(QWidget parent, string title, string text, QMessageBox.StandardButton button0, QMessageBox.StandardButton button1);
 			[SmokeMethod("standardIcon$", "(QMessageBox::Icon)")]
 			QPixmap StandardIcon(QMessageBox.Icon icon);
@@ -261,7 +261,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQMessageBox(icon,title,text,buttons,parent,f);
 		}
-		[SmokeMethod("QMessageBox$$$$$$", "(QMessageBox::Icon, const QString&, const QString&, StandardButtons, QWidget*, Qt::WindowFlags)")]
+		[SmokeMethod("QMessageBox$$$$#$", "(QMessageBox::Icon, const QString&, const QString&, StandardButtons, QWidget*, Qt::WindowFlags)")]
 		private void NewQMessageBox(QMessageBox.Icon icon, string title, string text, int buttons, QWidget parent, int f) {
 			ProxyQMessageBox().NewQMessageBox(icon,title,text,buttons,parent,f);
 		}
@@ -269,7 +269,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQMessageBox(icon,title,text,buttons,parent);
 		}
-		[SmokeMethod("QMessageBox$$$$$", "(QMessageBox::Icon, const QString&, const QString&, StandardButtons, QWidget*)")]
+		[SmokeMethod("QMessageBox$$$$#", "(QMessageBox::Icon, const QString&, const QString&, StandardButtons, QWidget*)")]
 		private void NewQMessageBox(QMessageBox.Icon icon, string title, string text, int buttons, QWidget parent) {
 			ProxyQMessageBox().NewQMessageBox(icon,title,text,buttons,parent);
 		}
@@ -289,7 +289,7 @@ namespace Qyoto {
 		private void NewQMessageBox(QMessageBox.Icon icon, string title, string text) {
 			ProxyQMessageBox().NewQMessageBox(icon,title,text);
 		}
-		[SmokeMethod("addButton##", "(QAbstractButton*, QMessageBox::ButtonRole)")]
+		[SmokeMethod("addButton#$", "(QAbstractButton*, QMessageBox::ButtonRole)")]
 		public void AddButton(QAbstractButton button, QMessageBox.ButtonRole role) {
 			ProxyQMessageBox().AddButton(button,role);
 		}
@@ -341,7 +341,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQMessageBox(title,text,icon,button0,button1,button2,parent,f);
 		}
-		[SmokeMethod("QMessageBox$$$$$$$$", "(const QString&, const QString&, QMessageBox::Icon, int, int, int, QWidget*, Qt::WindowFlags)")]
+		[SmokeMethod("QMessageBox$$$$$$#$", "(const QString&, const QString&, QMessageBox::Icon, int, int, int, QWidget*, Qt::WindowFlags)")]
 		private void NewQMessageBox(string title, string text, QMessageBox.Icon icon, int button0, int button1, int button2, QWidget parent, int f) {
 			ProxyQMessageBox().NewQMessageBox(title,text,icon,button0,button1,button2,parent,f);
 		}
@@ -349,7 +349,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQMessageBox(title,text,icon,button0,button1,button2,parent);
 		}
-		[SmokeMethod("QMessageBox$$$$$$$", "(const QString&, const QString&, QMessageBox::Icon, int, int, int, QWidget*)")]
+		[SmokeMethod("QMessageBox$$$$$$#", "(const QString&, const QString&, QMessageBox::Icon, int, int, int, QWidget*)")]
 		private void NewQMessageBox(string title, string text, QMessageBox.Icon icon, int button0, int button1, int button2, QWidget parent) {
 			ProxyQMessageBox().NewQMessageBox(title,text,icon,button0,button1,button2,parent);
 		}

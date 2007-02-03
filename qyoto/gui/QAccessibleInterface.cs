@@ -43,7 +43,7 @@ namespace Qyoto {
 		public virtual int IndexOfChild(QAccessibleInterface arg1) {
 			return ProxyQAccessibleInterface().IndexOfChild(arg1);
 		}
-		[SmokeMethod("relationTo$$$", "(int, const QAccessibleInterface*, int) const")]
+		[SmokeMethod("relationTo$#$", "(int, const QAccessibleInterface*, int) const")]
 		public virtual int RelationTo(int child, QAccessibleInterface other, int otherChild) {
 			return ProxyQAccessibleInterface().RelationTo(child,other,otherChild);
 		}
@@ -51,7 +51,7 @@ namespace Qyoto {
 		public virtual int ChildAt(int x, int y) {
 			return ProxyQAccessibleInterface().ChildAt(x,y);
 		}
-		[SmokeMethod("navigate$$$", "(QAccessible::RelationFlag, int, QAccessibleInterface**) const")]
+		[SmokeMethod("navigate$$?", "(QAccessible::RelationFlag, int, QAccessibleInterface**) const")]
 		public virtual int Navigate(QAccessible.RelationFlag relation, int index, QAccessibleInterface iface) {
 			return ProxyQAccessibleInterface().Navigate(relation,index,iface);
 		}
@@ -83,7 +83,7 @@ namespace Qyoto {
 		public virtual string ActionText(int action, QAccessible.Text t, int child) {
 			return ProxyQAccessibleInterface().ActionText(action,t,child);
 		}
-		[SmokeMethod("doAction$$$", "(int, int, const QVariantList&)")]
+		[SmokeMethod("doAction$$?", "(int, int, const QVariantList&)")]
 		public virtual bool DoAction(int action, int child, List<QVariant> arg3) {
 			return ProxyQAccessibleInterface().DoAction(action,child,arg3);
 		}
@@ -91,7 +91,7 @@ namespace Qyoto {
 		public virtual bool DoAction(int action, int child) {
 			return ProxyQAccessibleInterface().DoAction(action,child);
 		}
-		[SmokeMethod("invokeMethod$$$", "(QAccessible::Method, int, const QVariantList&)")]
+		[SmokeMethod("invokeMethod$$?", "(QAccessible::Method, int, const QVariantList&)")]
 		public QVariant InvokeMethod(QAccessible.Method method, int child, List<QVariant> arg3) {
 			return ProxyQAccessibleInterface().InvokeMethod(method,child,arg3);
 		}

@@ -122,7 +122,7 @@ namespace Qyoto {
 		public int AddTab(string text) {
 			return ProxyQTabBar().AddTab(text);
 		}
-		[SmokeMethod("addTab##", "(const QIcon&, const QString&)")]
+		[SmokeMethod("addTab#$", "(const QIcon&, const QString&)")]
 		public int AddTab(QIcon icon, string text) {
 			return ProxyQTabBar().AddTab(icon,text);
 		}
@@ -130,7 +130,7 @@ namespace Qyoto {
 		public int InsertTab(int index, string text) {
 			return ProxyQTabBar().InsertTab(index,text);
 		}
-		[SmokeMethod("insertTab$$$", "(int, const QIcon&, const QString&)")]
+		[SmokeMethod("insertTab$#$", "(int, const QIcon&, const QString&)")]
 		public int InsertTab(int index, QIcon icon, string text) {
 			return ProxyQTabBar().InsertTab(index,icon,text);
 		}
@@ -158,7 +158,7 @@ namespace Qyoto {
 		public QColor TabTextColor(int index) {
 			return ProxyQTabBar().TabTextColor(index);
 		}
-		[SmokeMethod("setTabTextColor$$", "(int, const QColor&)")]
+		[SmokeMethod("setTabTextColor$#", "(int, const QColor&)")]
 		public void SetTabTextColor(int index, QColor color) {
 			ProxyQTabBar().SetTabTextColor(index,color);
 		}
@@ -166,7 +166,7 @@ namespace Qyoto {
 		public QIcon TabIcon(int index) {
 			return ProxyQTabBar().TabIcon(index);
 		}
-		[SmokeMethod("setTabIcon$$", "(int, const QIcon&)")]
+		[SmokeMethod("setTabIcon$#", "(int, const QIcon&)")]
 		public void SetTabIcon(int index, QIcon icon) {
 			ProxyQTabBar().SetTabIcon(index,icon);
 		}
@@ -186,7 +186,7 @@ namespace Qyoto {
 		public string TabWhatsThis(int index) {
 			return ProxyQTabBar().TabWhatsThis(index);
 		}
-		[SmokeMethod("setTabData$$", "(int, const QVariant&)")]
+		[SmokeMethod("setTabData$#", "(int, const QVariant&)")]
 		public void SetTabData(int index, QVariant data) {
 			ProxyQTabBar().SetTabData(index,data);
 		}
@@ -282,7 +282,7 @@ namespace Qyoto {
 	}
 
 	public interface IQTabBarSignals : IQWidgetSignals {
-		[Q_SIGNAL("void (int)")]
+		[Q_SIGNAL("void currentChanged(int)")]
 		void CurrentChanged(int index);
 	}
 }

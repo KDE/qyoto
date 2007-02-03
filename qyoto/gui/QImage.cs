@@ -10,13 +10,13 @@ namespace Qyoto {
  		protected QImage(Type dummy) : base((Type) null) {}
 		interface IQImageProxy {
 			bool op_equals(QImage lhs, QImage arg1);
-			[SmokeMethod("trueMatrix###", "(const QMatrix&, int, int)")]
+			[SmokeMethod("trueMatrix#$$", "(const QMatrix&, int, int)")]
 			QMatrix TrueMatrix(QMatrix arg1, int w, int h);
 			[SmokeMethod("fromData$$$", "(const uchar*, int, const char*)")]
 			QImage FromData(char[] data, int size, string format);
 			[SmokeMethod("fromData$$", "(const uchar*, int)")]
 			QImage FromData(char[] data, int size);
-			[SmokeMethod("fromData##", "(const QByteArray&, const char*)")]
+			[SmokeMethod("fromData#$", "(const QByteArray&, const char*)")]
 			QImage FromData(QByteArray data, string format);
 			[SmokeMethod("fromData#", "(const QByteArray&)")]
 			QImage FromData(QByteArray data);
@@ -65,7 +65,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQImage(size,format);
 		}
-		[SmokeMethod("QImage##", "(const QSize&, QImage::Format)")]
+		[SmokeMethod("QImage#$", "(const QSize&, QImage::Format)")]
 		private void NewQImage(QSize size, QImage.Format format) {
 			ProxyQImage().NewQImage(size,format);
 		}
@@ -165,11 +165,11 @@ namespace Qyoto {
 		public QImage ConvertToFormat(QImage.Format f) {
 			return ProxyQImage().ConvertToFormat(f);
 		}
-		[SmokeMethod("convertToFormat$$$", "(QImage::Format, const QVector<QRgb>&, Qt::ImageConversionFlags) const")]
+		[SmokeMethod("convertToFormat$?$", "(QImage::Format, const QVector<QRgb>&, Qt::ImageConversionFlags) const")]
 		public QImage ConvertToFormat(QImage.Format f, List<uint> colorTable, int flags) {
 			return ProxyQImage().ConvertToFormat(f,colorTable,flags);
 		}
-		[SmokeMethod("convertToFormat$$", "(QImage::Format, const QVector<QRgb>&) const")]
+		[SmokeMethod("convertToFormat$?", "(QImage::Format, const QVector<QRgb>&) const")]
 		public QImage ConvertToFormat(QImage.Format f, List<uint> colorTable) {
 			return ProxyQImage().ConvertToFormat(f,colorTable);
 		}
@@ -261,7 +261,7 @@ namespace Qyoto {
 		public void SetPixel(int x, int y, uint index_or_rgb) {
 			ProxyQImage().SetPixel(x,y,index_or_rgb);
 		}
-		[SmokeMethod("setPixel##", "(const QPoint&, uint)")]
+		[SmokeMethod("setPixel#$", "(const QPoint&, uint)")]
 		public void SetPixel(QPoint pt, uint index_or_rgb) {
 			ProxyQImage().SetPixel(pt,index_or_rgb);
 		}
@@ -317,11 +317,11 @@ namespace Qyoto {
 		public QImage Scaled(int w, int h) {
 			return ProxyQImage().Scaled(w,h);
 		}
-		[SmokeMethod("scaled###", "(const QSize&, Qt::AspectRatioMode, Qt::TransformationMode) const")]
+		[SmokeMethod("scaled#$$", "(const QSize&, Qt::AspectRatioMode, Qt::TransformationMode) const")]
 		public QImage Scaled(QSize s, Qt.AspectRatioMode aspectMode, Qt.TransformationMode mode) {
 			return ProxyQImage().Scaled(s,aspectMode,mode);
 		}
-		[SmokeMethod("scaled##", "(const QSize&, Qt::AspectRatioMode) const")]
+		[SmokeMethod("scaled#$", "(const QSize&, Qt::AspectRatioMode) const")]
 		public QImage Scaled(QSize s, Qt.AspectRatioMode aspectMode) {
 			return ProxyQImage().Scaled(s,aspectMode);
 		}
@@ -345,7 +345,7 @@ namespace Qyoto {
 		public QImage ScaledToHeight(int h) {
 			return ProxyQImage().ScaledToHeight(h);
 		}
-		[SmokeMethod("transformed##", "(const QMatrix&, Qt::TransformationMode) const")]
+		[SmokeMethod("transformed#$", "(const QMatrix&, Qt::TransformationMode) const")]
 		public QImage Transformed(QMatrix matrix, Qt.TransformationMode mode) {
 			return ProxyQImage().Transformed(matrix,mode);
 		}
@@ -377,7 +377,7 @@ namespace Qyoto {
 		public void InvertPixels() {
 			ProxyQImage().InvertPixels();
 		}
-		[SmokeMethod("load##", "(QIODevice*, const char*)")]
+		[SmokeMethod("load#$", "(QIODevice*, const char*)")]
 		public bool Load(IQIODevice device, string format) {
 			return ProxyQImage().Load(device,format);
 		}
@@ -397,7 +397,7 @@ namespace Qyoto {
 		public bool LoadFromData(char[] buf, int len) {
 			return ProxyQImage().LoadFromData(buf,len);
 		}
-		[SmokeMethod("loadFromData##", "(const QByteArray&, const char*)")]
+		[SmokeMethod("loadFromData#$", "(const QByteArray&, const char*)")]
 		public bool LoadFromData(QByteArray data, string aformat) {
 			return ProxyQImage().LoadFromData(data,aformat);
 		}
@@ -417,11 +417,11 @@ namespace Qyoto {
 		public bool Save(string fileName) {
 			return ProxyQImage().Save(fileName);
 		}
-		[SmokeMethod("save###", "(QIODevice*, const char*, int) const")]
+		[SmokeMethod("save#$$", "(QIODevice*, const char*, int) const")]
 		public bool Save(IQIODevice device, string format, int quality) {
 			return ProxyQImage().Save(device,format,quality);
 		}
-		[SmokeMethod("save##", "(QIODevice*, const char*) const")]
+		[SmokeMethod("save#$", "(QIODevice*, const char*) const")]
 		public bool Save(IQIODevice device, string format) {
 			return ProxyQImage().Save(device,format);
 		}

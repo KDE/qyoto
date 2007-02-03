@@ -44,7 +44,7 @@ namespace Qyoto {
 		public int TimerId() {
 			return ProxyQBasicTimer().TimerId();
 		}
-		[SmokeMethod("start$$", "(int, QObject*)")]
+		[SmokeMethod("start$#", "(int, QObject*)")]
 		public void Start(int msec, QObject arg2) {
 			ProxyQBasicTimer().Start(msec,arg2);
 		}

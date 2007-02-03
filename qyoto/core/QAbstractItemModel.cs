@@ -49,7 +49,7 @@ namespace Qyoto {
 		private void NewQAbstractItemModel() {
 			ProxyQAbstractItemModel().NewQAbstractItemModel();
 		}
-		[SmokeMethod("hasIndex$$$", "(int, int, const QModelIndex&) const")]
+		[SmokeMethod("hasIndex$$#", "(int, int, const QModelIndex&) const")]
 		public bool HasIndex(int row, int column, QModelIndex parent) {
 			return ProxyQAbstractItemModel().HasIndex(row,column,parent);
 		}
@@ -57,7 +57,7 @@ namespace Qyoto {
 		public bool HasIndex(int row, int column) {
 			return ProxyQAbstractItemModel().HasIndex(row,column);
 		}
-		[SmokeMethod("index$$$", "(int, int, const QModelIndex&) const")]
+		[SmokeMethod("index$$#", "(int, int, const QModelIndex&) const")]
 		public virtual QModelIndex Index(int row, int column, QModelIndex parent) {
 			return ProxyQAbstractItemModel().Index(row,column,parent);
 		}
@@ -69,7 +69,7 @@ namespace Qyoto {
 		public new virtual QModelIndex Parent(QModelIndex child) {
 			return ProxyQAbstractItemModel().Parent(child);
 		}
-		[SmokeMethod("sibling$$$", "(int, int, const QModelIndex&) const")]
+		[SmokeMethod("sibling$$#", "(int, int, const QModelIndex&) const")]
 		public QModelIndex Sibling(int row, int column, QModelIndex idx) {
 			return ProxyQAbstractItemModel().Sibling(row,column,idx);
 		}
@@ -97,7 +97,7 @@ namespace Qyoto {
 		public virtual bool HasChildren() {
 			return ProxyQAbstractItemModel().HasChildren();
 		}
-		[SmokeMethod("data##", "(const QModelIndex&, int) const")]
+		[SmokeMethod("data#$", "(const QModelIndex&, int) const")]
 		public virtual QVariant Data(QModelIndex index, int role) {
 			return ProxyQAbstractItemModel().Data(index,role);
 		}
@@ -105,7 +105,7 @@ namespace Qyoto {
 		public virtual QVariant Data(QModelIndex index) {
 			return ProxyQAbstractItemModel().Data(index);
 		}
-		[SmokeMethod("setData###", "(const QModelIndex&, const QVariant&, int)")]
+		[SmokeMethod("setData##$", "(const QModelIndex&, const QVariant&, int)")]
 		public virtual bool SetData(QModelIndex index, QVariant value, int role) {
 			return ProxyQAbstractItemModel().SetData(index,value,role);
 		}
@@ -121,11 +121,11 @@ namespace Qyoto {
 		public virtual QVariant HeaderData(int section, Qt.Orientation orientation) {
 			return ProxyQAbstractItemModel().HeaderData(section,orientation);
 		}
-		[SmokeMethod("setHeaderData$$$$", "(int, Qt::Orientation, const QVariant&, int)")]
+		[SmokeMethod("setHeaderData$$#$", "(int, Qt::Orientation, const QVariant&, int)")]
 		public virtual bool SetHeaderData(int section, Qt.Orientation orientation, QVariant value, int role) {
 			return ProxyQAbstractItemModel().SetHeaderData(section,orientation,value,role);
 		}
-		[SmokeMethod("setHeaderData$$$", "(int, Qt::Orientation, const QVariant&)")]
+		[SmokeMethod("setHeaderData$$#", "(int, Qt::Orientation, const QVariant&)")]
 		public virtual bool SetHeaderData(int section, Qt.Orientation orientation, QVariant value) {
 			return ProxyQAbstractItemModel().SetHeaderData(section,orientation,value);
 		}
@@ -133,7 +133,7 @@ namespace Qyoto {
 		public virtual Dictionary<int, QVariant> ItemData(QModelIndex index) {
 			return ProxyQAbstractItemModel().ItemData(index);
 		}
-		[SmokeMethod("setItemData##", "(const QModelIndex&, const QMap<int, QVariant>&)")]
+		[SmokeMethod("setItemData#?", "(const QModelIndex&, const QMap<int, QVariant>&)")]
 		public virtual bool SetItemData(QModelIndex index, Dictionary<int, QVariant> roles) {
 			return ProxyQAbstractItemModel().SetItemData(index,roles);
 		}
@@ -145,7 +145,7 @@ namespace Qyoto {
 		public virtual QMimeData MimeData(List<QModelIndex> indexes) {
 			return ProxyQAbstractItemModel().MimeData(indexes);
 		}
-		[SmokeMethod("dropMimeData#####", "(const QMimeData*, Qt::DropAction, int, int, const QModelIndex&)")]
+		[SmokeMethod("dropMimeData#$$$#", "(const QMimeData*, Qt::DropAction, int, int, const QModelIndex&)")]
 		public virtual bool DropMimeData(QMimeData data, Qt.DropAction action, int row, int column, QModelIndex parent) {
 			return ProxyQAbstractItemModel().DropMimeData(data,action,row,column,parent);
 		}
@@ -161,7 +161,7 @@ namespace Qyoto {
 		public void SetSupportedDragActions(int arg1) {
 			ProxyQAbstractItemModel().SetSupportedDragActions(arg1);
 		}
-		[SmokeMethod("insertRows$$$", "(int, int, const QModelIndex&)")]
+		[SmokeMethod("insertRows$$#", "(int, int, const QModelIndex&)")]
 		public virtual bool InsertRows(int row, int count, QModelIndex parent) {
 			return ProxyQAbstractItemModel().InsertRows(row,count,parent);
 		}
@@ -169,7 +169,7 @@ namespace Qyoto {
 		public virtual bool InsertRows(int row, int count) {
 			return ProxyQAbstractItemModel().InsertRows(row,count);
 		}
-		[SmokeMethod("insertColumns$$$", "(int, int, const QModelIndex&)")]
+		[SmokeMethod("insertColumns$$#", "(int, int, const QModelIndex&)")]
 		public virtual bool InsertColumns(int column, int count, QModelIndex parent) {
 			return ProxyQAbstractItemModel().InsertColumns(column,count,parent);
 		}
@@ -177,7 +177,7 @@ namespace Qyoto {
 		public virtual bool InsertColumns(int column, int count) {
 			return ProxyQAbstractItemModel().InsertColumns(column,count);
 		}
-		[SmokeMethod("removeRows$$$", "(int, int, const QModelIndex&)")]
+		[SmokeMethod("removeRows$$#", "(int, int, const QModelIndex&)")]
 		public virtual bool RemoveRows(int row, int count, QModelIndex parent) {
 			return ProxyQAbstractItemModel().RemoveRows(row,count,parent);
 		}
@@ -185,7 +185,7 @@ namespace Qyoto {
 		public virtual bool RemoveRows(int row, int count) {
 			return ProxyQAbstractItemModel().RemoveRows(row,count);
 		}
-		[SmokeMethod("removeColumns$$$", "(int, int, const QModelIndex&)")]
+		[SmokeMethod("removeColumns$$#", "(int, int, const QModelIndex&)")]
 		public virtual bool RemoveColumns(int column, int count, QModelIndex parent) {
 			return ProxyQAbstractItemModel().RemoveColumns(column,count,parent);
 		}
@@ -193,7 +193,7 @@ namespace Qyoto {
 		public virtual bool RemoveColumns(int column, int count) {
 			return ProxyQAbstractItemModel().RemoveColumns(column,count);
 		}
-		[SmokeMethod("insertRow$$", "(int, const QModelIndex&)")]
+		[SmokeMethod("insertRow$#", "(int, const QModelIndex&)")]
 		public bool InsertRow(int row, QModelIndex parent) {
 			return ProxyQAbstractItemModel().InsertRow(row,parent);
 		}
@@ -201,7 +201,7 @@ namespace Qyoto {
 		public bool InsertRow(int row) {
 			return ProxyQAbstractItemModel().InsertRow(row);
 		}
-		[SmokeMethod("insertColumn$$", "(int, const QModelIndex&)")]
+		[SmokeMethod("insertColumn$#", "(int, const QModelIndex&)")]
 		public bool InsertColumn(int column, QModelIndex parent) {
 			return ProxyQAbstractItemModel().InsertColumn(column,parent);
 		}
@@ -209,7 +209,7 @@ namespace Qyoto {
 		public bool InsertColumn(int column) {
 			return ProxyQAbstractItemModel().InsertColumn(column);
 		}
-		[SmokeMethod("removeRow$$", "(int, const QModelIndex&)")]
+		[SmokeMethod("removeRow$#", "(int, const QModelIndex&)")]
 		public bool RemoveRow(int row, QModelIndex parent) {
 			return ProxyQAbstractItemModel().RemoveRow(row,parent);
 		}
@@ -217,7 +217,7 @@ namespace Qyoto {
 		public bool RemoveRow(int row) {
 			return ProxyQAbstractItemModel().RemoveRow(row);
 		}
-		[SmokeMethod("removeColumn$$", "(int, const QModelIndex&)")]
+		[SmokeMethod("removeColumn$#", "(int, const QModelIndex&)")]
 		public bool RemoveColumn(int column, QModelIndex parent) {
 			return ProxyQAbstractItemModel().RemoveColumn(column,parent);
 		}
@@ -249,15 +249,15 @@ namespace Qyoto {
 		public virtual QModelIndex Buddy(QModelIndex index) {
 			return ProxyQAbstractItemModel().Buddy(index);
 		}
-		[SmokeMethod("match#####", "(const QModelIndex&, int, const QVariant&, int, Qt::MatchFlags) const")]
+		[SmokeMethod("match#$#$$", "(const QModelIndex&, int, const QVariant&, int, Qt::MatchFlags) const")]
 		public virtual List<QModelIndex> Match(QModelIndex start, int role, QVariant value, int hits, int flags) {
 			return ProxyQAbstractItemModel().Match(start,role,value,hits,flags);
 		}
-		[SmokeMethod("match####", "(const QModelIndex&, int, const QVariant&, int) const")]
+		[SmokeMethod("match#$#$", "(const QModelIndex&, int, const QVariant&, int) const")]
 		public virtual List<QModelIndex> Match(QModelIndex start, int role, QVariant value, int hits) {
 			return ProxyQAbstractItemModel().Match(start,role,value,hits);
 		}
-		[SmokeMethod("match###", "(const QModelIndex&, int, const QVariant&) const")]
+		[SmokeMethod("match#$#", "(const QModelIndex&, int, const QVariant&) const")]
 		public virtual List<QModelIndex> Match(QModelIndex start, int role, QVariant value) {
 			return ProxyQAbstractItemModel().Match(start,role,value);
 		}
@@ -269,12 +269,12 @@ namespace Qyoto {
 		public new QObject Parent() {
 			return ProxyQAbstractItemModel().Parent();
 		}
-		[Q_SLOT("bool ()")]
+		[Q_SLOT("bool submit()")]
 		[SmokeMethod("submit", "()")]
 		public virtual bool Submit() {
 			return ProxyQAbstractItemModel().Submit();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void revert()")]
 		[SmokeMethod("revert", "()")]
 		public virtual void Revert() {
 			ProxyQAbstractItemModel().Revert();
@@ -303,13 +303,13 @@ namespace Qyoto {
 	}
 
 	public interface IQAbstractItemModelSignals : IQObjectSignals {
-		[Q_SIGNAL("void (const QModelIndex&, const QModelIndex&)")]
+		[Q_SIGNAL("void dataChanged(const QModelIndex&, const QModelIndex&)")]
 		void DataChanged(QModelIndex topLeft, QModelIndex bottomRight);
-		[Q_SIGNAL("void (Qt::Orientation, int, int)")]
+		[Q_SIGNAL("void headerDataChanged(Qt::Orientation, int, int)")]
 		void HeaderDataChanged(Qt.Orientation orientation, int first, int last);
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void layoutChanged()")]
 		void LayoutChanged();
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void layoutAboutToBeChanged()")]
 		void LayoutAboutToBeChanged();
 	}
 }

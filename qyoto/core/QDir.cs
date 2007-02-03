@@ -47,7 +47,7 @@ namespace Qyoto {
 			QDir Temp();
 			[SmokeMethod("tempPath", "()")]
 			string TempPath();
-			[SmokeMethod("match??", "(const QStringList&, const QString&)")]
+			[SmokeMethod("match?$", "(const QStringList&, const QString&)")]
 			bool Match(List<string> filters, string fileName);
 			[SmokeMethod("match$$", "(const QString&, const QString&)")]
 			bool Match(string filter, string fileName);
@@ -233,11 +233,11 @@ namespace Qyoto {
 		public List<string> EntryList() {
 			return ProxyQDir().EntryList();
 		}
-		[SmokeMethod("entryList???", "(const QStringList&, Filters, SortFlags) const")]
+		[SmokeMethod("entryList?$$", "(const QStringList&, Filters, SortFlags) const")]
 		public List<string> EntryList(List<string> nameFilters, int filters, int sort) {
 			return ProxyQDir().EntryList(nameFilters,filters,sort);
 		}
-		[SmokeMethod("entryList??", "(const QStringList&, Filters) const")]
+		[SmokeMethod("entryList?$", "(const QStringList&, Filters) const")]
 		public List<string> EntryList(List<string> nameFilters, int filters) {
 			return ProxyQDir().EntryList(nameFilters,filters);
 		}

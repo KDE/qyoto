@@ -189,22 +189,22 @@ namespace Qyoto {
 		public virtual void StepBy(int steps) {
 			ProxyQAbstractSpinBox().StepBy(steps);
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void stepUp()")]
 		[SmokeMethod("stepUp", "()")]
 		public void StepUp() {
 			ProxyQAbstractSpinBox().StepUp();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void stepDown()")]
 		[SmokeMethod("stepDown", "()")]
 		public void StepDown() {
 			ProxyQAbstractSpinBox().StepDown();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void selectAll()")]
 		[SmokeMethod("selectAll", "()")]
 		public void SelectAll() {
 			ProxyQAbstractSpinBox().SelectAll();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void clear()")]
 		[SmokeMethod("clear", "()")]
 		public virtual void Clear() {
 			ProxyQAbstractSpinBox().Clear();
@@ -309,7 +309,7 @@ namespace Qyoto {
 	}
 
 	public interface IQAbstractSpinBoxSignals : IQWidgetSignals {
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void editingFinished()")]
 		void EditingFinished();
 	}
 }

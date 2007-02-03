@@ -12,7 +12,7 @@ namespace Qyoto {
 		interface IQAccessibleProxy {
 			[SmokeMethod("queryAccessibleInterface#", "(QObject*)")]
 			QAccessibleInterface QueryAccessibleInterface(QObject arg1);
-			[SmokeMethod("updateAccessibility###", "(QObject*, int, QAccessible::Event)")]
+			[SmokeMethod("updateAccessibility#$$", "(QObject*, int, QAccessible::Event)")]
 			void UpdateAccessibility(QObject arg1, int who, QAccessible.Event reason);
 			[SmokeMethod("isActive", "()")]
 			bool IsActive();

@@ -54,7 +54,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQCursor(bitmap,mask,hotX,hotY);
 		}
-		[SmokeMethod("QCursor####", "(const QBitmap&, const QBitmap&, int, int)")]
+		[SmokeMethod("QCursor##$$", "(const QBitmap&, const QBitmap&, int, int)")]
 		private void NewQCursor(QBitmap bitmap, QBitmap mask, int hotX, int hotY) {
 			ProxyQCursor().NewQCursor(bitmap,mask,hotX,hotY);
 		}
@@ -62,7 +62,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQCursor(bitmap,mask,hotX);
 		}
-		[SmokeMethod("QCursor###", "(const QBitmap&, const QBitmap&, int)")]
+		[SmokeMethod("QCursor##$", "(const QBitmap&, const QBitmap&, int)")]
 		private void NewQCursor(QBitmap bitmap, QBitmap mask, int hotX) {
 			ProxyQCursor().NewQCursor(bitmap,mask,hotX);
 		}
@@ -78,7 +78,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQCursor(pixmap,hotX,hotY);
 		}
-		[SmokeMethod("QCursor###", "(const QPixmap&, int, int)")]
+		[SmokeMethod("QCursor#$$", "(const QPixmap&, int, int)")]
 		private void NewQCursor(QPixmap pixmap, int hotX, int hotY) {
 			ProxyQCursor().NewQCursor(pixmap,hotX,hotY);
 		}
@@ -86,7 +86,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQCursor(pixmap,hotX);
 		}
-		[SmokeMethod("QCursor##", "(const QPixmap&, int)")]
+		[SmokeMethod("QCursor#$", "(const QPixmap&, int)")]
 		private void NewQCursor(QPixmap pixmap, int hotX) {
 			ProxyQCursor().NewQCursor(pixmap,hotX);
 		}

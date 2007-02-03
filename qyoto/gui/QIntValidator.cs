@@ -61,7 +61,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQIntValidator(bottom,top,parent);
 		}
-		[SmokeMethod("QIntValidator$$$", "(int, int, QObject*)")]
+		[SmokeMethod("QIntValidator$$#", "(int, int, QObject*)")]
 		private void NewQIntValidator(int bottom, int top, QObject parent) {
 			ProxyQIntValidator().NewQIntValidator(bottom,top,parent);
 		}

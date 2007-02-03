@@ -117,7 +117,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQLCDNumber(numDigits,parent);
 		}
-		[SmokeMethod("QLCDNumber$$", "(uint, QWidget*)")]
+		[SmokeMethod("QLCDNumber$#", "(uint, QWidget*)")]
 		private void NewQLCDNumber(uint numDigits, QWidget parent) {
 			ProxyQLCDNumber().NewQLCDNumber(numDigits,parent);
 		}
@@ -141,37 +141,37 @@ namespace Qyoto {
 		public new QSize SizeHint() {
 			return ProxyQLCDNumber().SizeHint();
 		}
-		[Q_SLOT("void (const QString&)")]
+		[Q_SLOT("void display(const QString&)")]
 		[SmokeMethod("display$", "(const QString&)")]
 		public void Display(string str) {
 			ProxyQLCDNumber().Display(str);
 		}
-		[Q_SLOT("void (int)")]
+		[Q_SLOT("void display(int)")]
 		[SmokeMethod("display$", "(int)")]
 		public void Display(int num) {
 			ProxyQLCDNumber().Display(num);
 		}
-		[Q_SLOT("void (double)")]
+		[Q_SLOT("void display(double)")]
 		[SmokeMethod("display$", "(double)")]
 		public void Display(double num) {
 			ProxyQLCDNumber().Display(num);
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void setHexMode()")]
 		[SmokeMethod("setHexMode", "()")]
 		public void SetHexMode() {
 			ProxyQLCDNumber().SetHexMode();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void setDecMode()")]
 		[SmokeMethod("setDecMode", "()")]
 		public void SetDecMode() {
 			ProxyQLCDNumber().SetDecMode();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void setOctMode()")]
 		[SmokeMethod("setOctMode", "()")]
 		public void SetOctMode() {
 			ProxyQLCDNumber().SetOctMode();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void setBinMode()")]
 		[SmokeMethod("setBinMode", "()")]
 		public void SetBinMode() {
 			ProxyQLCDNumber().SetBinMode();
@@ -208,7 +208,7 @@ namespace Qyoto {
 	}
 
 	public interface IQLCDNumberSignals : IQFrameSignals {
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void overflow()")]
 		void Overflow();
 	}
 }

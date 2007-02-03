@@ -195,7 +195,7 @@ namespace Qyoto {
 		public QPainterPath ClipPath() {
 			return ProxyQPainter().ClipPath();
 		}
-		[SmokeMethod("setClipRect##", "(const QRectF&, Qt::ClipOperation)")]
+		[SmokeMethod("setClipRect#$", "(const QRectF&, Qt::ClipOperation)")]
 		public void SetClipRect(QRectF arg1, Qt.ClipOperation op) {
 			ProxyQPainter().SetClipRect(arg1,op);
 		}
@@ -203,7 +203,7 @@ namespace Qyoto {
 		public void SetClipRect(QRectF arg1) {
 			ProxyQPainter().SetClipRect(arg1);
 		}
-		[SmokeMethod("setClipRect##", "(const QRect&, Qt::ClipOperation)")]
+		[SmokeMethod("setClipRect#$", "(const QRect&, Qt::ClipOperation)")]
 		public void SetClipRect(QRect arg1, Qt.ClipOperation op) {
 			ProxyQPainter().SetClipRect(arg1,op);
 		}
@@ -219,7 +219,7 @@ namespace Qyoto {
 		public void SetClipRect(int x, int y, int w, int h) {
 			ProxyQPainter().SetClipRect(x,y,w,h);
 		}
-		[SmokeMethod("setClipRegion##", "(const QRegion&, Qt::ClipOperation)")]
+		[SmokeMethod("setClipRegion#$", "(const QRegion&, Qt::ClipOperation)")]
 		public void SetClipRegion(QRegion arg1, Qt.ClipOperation op) {
 			ProxyQPainter().SetClipRegion(arg1,op);
 		}
@@ -227,7 +227,7 @@ namespace Qyoto {
 		public void SetClipRegion(QRegion arg1) {
 			ProxyQPainter().SetClipRegion(arg1);
 		}
-		[SmokeMethod("setClipPath##", "(const QPainterPath&, Qt::ClipOperation)")]
+		[SmokeMethod("setClipPath#$", "(const QPainterPath&, Qt::ClipOperation)")]
 		public void SetClipPath(QPainterPath path, Qt.ClipOperation op) {
 			ProxyQPainter().SetClipPath(path,op);
 		}
@@ -251,7 +251,7 @@ namespace Qyoto {
 		public void Restore() {
 			ProxyQPainter().Restore();
 		}
-		[SmokeMethod("setMatrix##", "(const QMatrix&, bool)")]
+		[SmokeMethod("setMatrix#$", "(const QMatrix&, bool)")]
 		public void SetMatrix(QMatrix matrix, bool combine) {
 			ProxyQPainter().SetMatrix(matrix,combine);
 		}
@@ -271,7 +271,7 @@ namespace Qyoto {
 		public void ResetMatrix() {
 			ProxyQPainter().ResetMatrix();
 		}
-		[SmokeMethod("setWorldMatrix##", "(const QMatrix&, bool)")]
+		[SmokeMethod("setWorldMatrix#$", "(const QMatrix&, bool)")]
 		public void SetWorldMatrix(QMatrix matrix, bool combine) {
 			ProxyQPainter().SetWorldMatrix(matrix,combine);
 		}
@@ -383,7 +383,7 @@ namespace Qyoto {
 		public void DrawPoint(int x, int y) {
 			ProxyQPainter().DrawPoint(x,y);
 		}
-		[SmokeMethod("drawPoints##", "(const QPointF*, int)")]
+		[SmokeMethod("drawPoints#$", "(const QPointF*, int)")]
 		public void DrawPoints(QPointF points, int pointCount) {
 			ProxyQPainter().DrawPoints(points,pointCount);
 		}
@@ -391,7 +391,7 @@ namespace Qyoto {
 		public void DrawPoints(QPolygonF points) {
 			ProxyQPainter().DrawPoints(points);
 		}
-		[SmokeMethod("drawPoints##", "(const QPoint*, int)")]
+		[SmokeMethod("drawPoints#$", "(const QPoint*, int)")]
 		public void DrawPoints(QPoint points, int pointCount) {
 			ProxyQPainter().DrawPoints(points,pointCount);
 		}
@@ -419,7 +419,7 @@ namespace Qyoto {
 		public void DrawLine(QPointF p1, QPointF p2) {
 			ProxyQPainter().DrawLine(p1,p2);
 		}
-		[SmokeMethod("drawLines##", "(const QLineF*, int)")]
+		[SmokeMethod("drawLines#$", "(const QLineF*, int)")]
 		public void DrawLines(QLineF lines, int lineCount) {
 			ProxyQPainter().DrawLines(lines,lineCount);
 		}
@@ -427,7 +427,7 @@ namespace Qyoto {
 		public void DrawLines(List<QLineF> lines) {
 			ProxyQPainter().DrawLines(lines);
 		}
-		[SmokeMethod("drawLines##", "(const QPointF*, int)")]
+		[SmokeMethod("drawLines#$", "(const QPointF*, int)")]
 		public void DrawLines(QPointF pointPairs, int lineCount) {
 			ProxyQPainter().DrawLines(pointPairs,lineCount);
 		}
@@ -435,7 +435,7 @@ namespace Qyoto {
 		public void DrawLines(List<QPointF> pointPairs) {
 			ProxyQPainter().DrawLines(pointPairs);
 		}
-		[SmokeMethod("drawLines##", "(const QLine*, int)")]
+		[SmokeMethod("drawLines#$", "(const QLine*, int)")]
 		public void DrawLines(QLine lines, int lineCount) {
 			ProxyQPainter().DrawLines(lines,lineCount);
 		}
@@ -443,7 +443,7 @@ namespace Qyoto {
 		public void DrawLines(List<QLine> lines) {
 			ProxyQPainter().DrawLines(lines);
 		}
-		[SmokeMethod("drawLines##", "(const QPoint*, int)")]
+		[SmokeMethod("drawLines#$", "(const QPoint*, int)")]
 		public void DrawLines(QPoint pointPairs, int lineCount) {
 			ProxyQPainter().DrawLines(pointPairs,lineCount);
 		}
@@ -463,7 +463,7 @@ namespace Qyoto {
 		public void DrawRect(QRect rect) {
 			ProxyQPainter().DrawRect(rect);
 		}
-		[SmokeMethod("drawRects##", "(const QRectF*, int)")]
+		[SmokeMethod("drawRects#$", "(const QRectF*, int)")]
 		public void DrawRects(QRectF rects, int rectCount) {
 			ProxyQPainter().DrawRects(rects,rectCount);
 		}
@@ -471,7 +471,7 @@ namespace Qyoto {
 		public void DrawRects(List<QRectF> rectangles) {
 			ProxyQPainter().DrawRects(rectangles);
 		}
-		[SmokeMethod("drawRects##", "(const QRect*, int)")]
+		[SmokeMethod("drawRects#$", "(const QRect*, int)")]
 		public void DrawRects(QRect rects, int rectCount) {
 			ProxyQPainter().DrawRects(rects,rectCount);
 		}
@@ -491,7 +491,7 @@ namespace Qyoto {
 		public void DrawEllipse(int x, int y, int w, int h) {
 			ProxyQPainter().DrawEllipse(x,y,w,h);
 		}
-		[SmokeMethod("drawPolyline##", "(const QPointF*, int)")]
+		[SmokeMethod("drawPolyline#$", "(const QPointF*, int)")]
 		public void DrawPolyline(QPointF points, int pointCount) {
 			ProxyQPainter().DrawPolyline(points,pointCount);
 		}
@@ -499,7 +499,7 @@ namespace Qyoto {
 		public void DrawPolyline(QPolygonF polyline) {
 			ProxyQPainter().DrawPolyline(polyline);
 		}
-		[SmokeMethod("drawPolyline##", "(const QPoint*, int)")]
+		[SmokeMethod("drawPolyline#$", "(const QPoint*, int)")]
 		public void DrawPolyline(QPoint points, int pointCount) {
 			ProxyQPainter().DrawPolyline(points,pointCount);
 		}
@@ -507,15 +507,15 @@ namespace Qyoto {
 		public void DrawPolyline(QPolygon polygon) {
 			ProxyQPainter().DrawPolyline(polygon);
 		}
-		[SmokeMethod("drawPolygon###", "(const QPointF*, int, Qt::FillRule)")]
+		[SmokeMethod("drawPolygon#$$", "(const QPointF*, int, Qt::FillRule)")]
 		public void DrawPolygon(QPointF points, int pointCount, Qt.FillRule fillRule) {
 			ProxyQPainter().DrawPolygon(points,pointCount,fillRule);
 		}
-		[SmokeMethod("drawPolygon##", "(const QPointF*, int)")]
+		[SmokeMethod("drawPolygon#$", "(const QPointF*, int)")]
 		public void DrawPolygon(QPointF points, int pointCount) {
 			ProxyQPainter().DrawPolygon(points,pointCount);
 		}
-		[SmokeMethod("drawPolygon##", "(const QPolygonF&, Qt::FillRule)")]
+		[SmokeMethod("drawPolygon#$", "(const QPolygonF&, Qt::FillRule)")]
 		public void DrawPolygon(QPolygonF polygon, Qt.FillRule fillRule) {
 			ProxyQPainter().DrawPolygon(polygon,fillRule);
 		}
@@ -523,15 +523,15 @@ namespace Qyoto {
 		public void DrawPolygon(QPolygonF polygon) {
 			ProxyQPainter().DrawPolygon(polygon);
 		}
-		[SmokeMethod("drawPolygon###", "(const QPoint*, int, Qt::FillRule)")]
+		[SmokeMethod("drawPolygon#$$", "(const QPoint*, int, Qt::FillRule)")]
 		public void DrawPolygon(QPoint points, int pointCount, Qt.FillRule fillRule) {
 			ProxyQPainter().DrawPolygon(points,pointCount,fillRule);
 		}
-		[SmokeMethod("drawPolygon##", "(const QPoint*, int)")]
+		[SmokeMethod("drawPolygon#$", "(const QPoint*, int)")]
 		public void DrawPolygon(QPoint points, int pointCount) {
 			ProxyQPainter().DrawPolygon(points,pointCount);
 		}
-		[SmokeMethod("drawPolygon##", "(const QPolygon&, Qt::FillRule)")]
+		[SmokeMethod("drawPolygon#$", "(const QPolygon&, Qt::FillRule)")]
 		public void DrawPolygon(QPolygon polygon, Qt.FillRule fillRule) {
 			ProxyQPainter().DrawPolygon(polygon,fillRule);
 		}
@@ -539,7 +539,7 @@ namespace Qyoto {
 		public void DrawPolygon(QPolygon polygon) {
 			ProxyQPainter().DrawPolygon(polygon);
 		}
-		[SmokeMethod("drawConvexPolygon##", "(const QPointF*, int)")]
+		[SmokeMethod("drawConvexPolygon#$", "(const QPointF*, int)")]
 		public void DrawConvexPolygon(QPointF points, int pointCount) {
 			ProxyQPainter().DrawConvexPolygon(points,pointCount);
 		}
@@ -547,7 +547,7 @@ namespace Qyoto {
 		public void DrawConvexPolygon(QPolygonF polygon) {
 			ProxyQPainter().DrawConvexPolygon(polygon);
 		}
-		[SmokeMethod("drawConvexPolygon##", "(const QPoint*, int)")]
+		[SmokeMethod("drawConvexPolygon#$", "(const QPoint*, int)")]
 		public void DrawConvexPolygon(QPoint points, int pointCount) {
 			ProxyQPainter().DrawConvexPolygon(points,pointCount);
 		}
@@ -555,11 +555,11 @@ namespace Qyoto {
 		public void DrawConvexPolygon(QPolygon polygon) {
 			ProxyQPainter().DrawConvexPolygon(polygon);
 		}
-		[SmokeMethod("drawArc###", "(const QRectF&, int, int)")]
+		[SmokeMethod("drawArc#$$", "(const QRectF&, int, int)")]
 		public void DrawArc(QRectF rect, int a, int alen) {
 			ProxyQPainter().DrawArc(rect,a,alen);
 		}
-		[SmokeMethod("drawArc###", "(const QRect&, int, int)")]
+		[SmokeMethod("drawArc#$$", "(const QRect&, int, int)")]
 		public void DrawArc(QRect arg1, int a, int alen) {
 			ProxyQPainter().DrawArc(arg1,a,alen);
 		}
@@ -567,7 +567,7 @@ namespace Qyoto {
 		public void DrawArc(int x, int y, int w, int h, int a, int alen) {
 			ProxyQPainter().DrawArc(x,y,w,h,a,alen);
 		}
-		[SmokeMethod("drawPie###", "(const QRectF&, int, int)")]
+		[SmokeMethod("drawPie#$$", "(const QRectF&, int, int)")]
 		public void DrawPie(QRectF rect, int a, int alen) {
 			ProxyQPainter().DrawPie(rect,a,alen);
 		}
@@ -575,11 +575,11 @@ namespace Qyoto {
 		public void DrawPie(int x, int y, int w, int h, int a, int alen) {
 			ProxyQPainter().DrawPie(x,y,w,h,a,alen);
 		}
-		[SmokeMethod("drawPie###", "(const QRect&, int, int)")]
+		[SmokeMethod("drawPie#$$", "(const QRect&, int, int)")]
 		public void DrawPie(QRect arg1, int a, int alen) {
 			ProxyQPainter().DrawPie(arg1,a,alen);
 		}
-		[SmokeMethod("drawChord###", "(const QRectF&, int, int)")]
+		[SmokeMethod("drawChord#$$", "(const QRectF&, int, int)")]
 		public void DrawChord(QRectF rect, int a, int alen) {
 			ProxyQPainter().DrawChord(rect,a,alen);
 		}
@@ -587,15 +587,15 @@ namespace Qyoto {
 		public void DrawChord(int x, int y, int w, int h, int a, int alen) {
 			ProxyQPainter().DrawChord(x,y,w,h,a,alen);
 		}
-		[SmokeMethod("drawChord###", "(const QRect&, int, int)")]
+		[SmokeMethod("drawChord#$$", "(const QRect&, int, int)")]
 		public void DrawChord(QRect arg1, int a, int alen) {
 			ProxyQPainter().DrawChord(arg1,a,alen);
 		}
-		[SmokeMethod("drawRoundRect###", "(const QRectF&, int, int)")]
+		[SmokeMethod("drawRoundRect#$$", "(const QRectF&, int, int)")]
 		public void DrawRoundRect(QRectF r, int xround, int yround) {
 			ProxyQPainter().DrawRoundRect(r,xround,yround);
 		}
-		[SmokeMethod("drawRoundRect##", "(const QRectF&, int)")]
+		[SmokeMethod("drawRoundRect#$", "(const QRectF&, int)")]
 		public void DrawRoundRect(QRectF r, int xround) {
 			ProxyQPainter().DrawRoundRect(r,xround);
 		}
@@ -615,11 +615,11 @@ namespace Qyoto {
 		public void DrawRoundRect(int x, int y, int w, int h) {
 			ProxyQPainter().DrawRoundRect(x,y,w,h);
 		}
-		[SmokeMethod("drawRoundRect###", "(const QRect&, int, int)")]
+		[SmokeMethod("drawRoundRect#$$", "(const QRect&, int, int)")]
 		public void DrawRoundRect(QRect r, int xround, int yround) {
 			ProxyQPainter().DrawRoundRect(r,xround,yround);
 		}
-		[SmokeMethod("drawRoundRect##", "(const QRect&, int)")]
+		[SmokeMethod("drawRoundRect#$", "(const QRect&, int)")]
 		public void DrawRoundRect(QRect r, int xround) {
 			ProxyQPainter().DrawRoundRect(r,xround);
 		}
@@ -635,15 +635,15 @@ namespace Qyoto {
 		public void DrawTiledPixmap(QRectF rect, QPixmap pm) {
 			ProxyQPainter().DrawTiledPixmap(rect,pm);
 		}
-		[SmokeMethod("drawTiledPixmap$$$$$$$", "(int, int, int, int, const QPixmap&, int, int)")]
+		[SmokeMethod("drawTiledPixmap$$$$#$$", "(int, int, int, int, const QPixmap&, int, int)")]
 		public void DrawTiledPixmap(int x, int y, int w, int h, QPixmap arg5, int sx, int sy) {
 			ProxyQPainter().DrawTiledPixmap(x,y,w,h,arg5,sx,sy);
 		}
-		[SmokeMethod("drawTiledPixmap$$$$$$", "(int, int, int, int, const QPixmap&, int)")]
+		[SmokeMethod("drawTiledPixmap$$$$#$", "(int, int, int, int, const QPixmap&, int)")]
 		public void DrawTiledPixmap(int x, int y, int w, int h, QPixmap arg5, int sx) {
 			ProxyQPainter().DrawTiledPixmap(x,y,w,h,arg5,sx);
 		}
-		[SmokeMethod("drawTiledPixmap$$$$$", "(int, int, int, int, const QPixmap&)")]
+		[SmokeMethod("drawTiledPixmap$$$$#", "(int, int, int, int, const QPixmap&)")]
 		public void DrawTiledPixmap(int x, int y, int w, int h, QPixmap arg5) {
 			ProxyQPainter().DrawTiledPixmap(x,y,w,h,arg5);
 		}
@@ -659,7 +659,7 @@ namespace Qyoto {
 		public void DrawPicture(QPointF p, QPicture picture) {
 			ProxyQPainter().DrawPicture(p,picture);
 		}
-		[SmokeMethod("drawPicture$$$", "(int, int, const QPicture&)")]
+		[SmokeMethod("drawPicture$$#", "(int, int, const QPicture&)")]
 		public void DrawPicture(int x, int y, QPicture picture) {
 			ProxyQPainter().DrawPicture(x,y,picture);
 		}
@@ -675,11 +675,11 @@ namespace Qyoto {
 		public void DrawPixmap(QRect targetRect, QPixmap pixmap, QRect sourceRect) {
 			ProxyQPainter().DrawPixmap(targetRect,pixmap,sourceRect);
 		}
-		[SmokeMethod("drawPixmap$$$$$$$$$", "(int, int, int, int, const QPixmap&, int, int, int, int)")]
+		[SmokeMethod("drawPixmap$$$$#$$$$", "(int, int, int, int, const QPixmap&, int, int, int, int)")]
 		public void DrawPixmap(int x, int y, int w, int h, QPixmap pm, int sx, int sy, int sw, int sh) {
 			ProxyQPainter().DrawPixmap(x,y,w,h,pm,sx,sy,sw,sh);
 		}
-		[SmokeMethod("drawPixmap$$$$$$$", "(int, int, const QPixmap&, int, int, int, int)")]
+		[SmokeMethod("drawPixmap$$#$$$$", "(int, int, const QPixmap&, int, int, int, int)")]
 		public void DrawPixmap(int x, int y, QPixmap pm, int sx, int sy, int sw, int sh) {
 			ProxyQPainter().DrawPixmap(x,y,pm,sx,sy,sw,sh);
 		}
@@ -699,7 +699,7 @@ namespace Qyoto {
 		public void DrawPixmap(QPoint p, QPixmap pm) {
 			ProxyQPainter().DrawPixmap(p,pm);
 		}
-		[SmokeMethod("drawPixmap$$$", "(int, int, const QPixmap&)")]
+		[SmokeMethod("drawPixmap$$#", "(int, int, const QPixmap&)")]
 		public void DrawPixmap(int x, int y, QPixmap pm) {
 			ProxyQPainter().DrawPixmap(x,y,pm);
 		}
@@ -707,11 +707,11 @@ namespace Qyoto {
 		public void DrawPixmap(QRect r, QPixmap pm) {
 			ProxyQPainter().DrawPixmap(r,pm);
 		}
-		[SmokeMethod("drawPixmap$$$$$", "(int, int, int, int, const QPixmap&)")]
+		[SmokeMethod("drawPixmap$$$$#", "(int, int, int, int, const QPixmap&)")]
 		public void DrawPixmap(int x, int y, int w, int h, QPixmap pm) {
 			ProxyQPainter().DrawPixmap(x,y,w,h,pm);
 		}
-		[SmokeMethod("drawImage####", "(const QRectF&, const QImage&, const QRectF&, Qt::ImageConversionFlags)")]
+		[SmokeMethod("drawImage###$", "(const QRectF&, const QImage&, const QRectF&, Qt::ImageConversionFlags)")]
 		public void DrawImage(QRectF targetRect, QImage image, QRectF sourceRect, int flags) {
 			ProxyQPainter().DrawImage(targetRect,image,sourceRect,flags);
 		}
@@ -719,7 +719,7 @@ namespace Qyoto {
 		public void DrawImage(QRectF targetRect, QImage image, QRectF sourceRect) {
 			ProxyQPainter().DrawImage(targetRect,image,sourceRect);
 		}
-		[SmokeMethod("drawImage####", "(const QRect&, const QImage&, const QRect&, Qt::ImageConversionFlags)")]
+		[SmokeMethod("drawImage###$", "(const QRect&, const QImage&, const QRect&, Qt::ImageConversionFlags)")]
 		public void DrawImage(QRect targetRect, QImage image, QRect sourceRect, int flags) {
 			ProxyQPainter().DrawImage(targetRect,image,sourceRect,flags);
 		}
@@ -727,7 +727,7 @@ namespace Qyoto {
 		public void DrawImage(QRect targetRect, QImage image, QRect sourceRect) {
 			ProxyQPainter().DrawImage(targetRect,image,sourceRect);
 		}
-		[SmokeMethod("drawImage####", "(const QPointF&, const QImage&, const QRectF&, Qt::ImageConversionFlags)")]
+		[SmokeMethod("drawImage###$", "(const QPointF&, const QImage&, const QRectF&, Qt::ImageConversionFlags)")]
 		public void DrawImage(QPointF p, QImage image, QRectF sr, int flags) {
 			ProxyQPainter().DrawImage(p,image,sr,flags);
 		}
@@ -735,7 +735,7 @@ namespace Qyoto {
 		public void DrawImage(QPointF p, QImage image, QRectF sr) {
 			ProxyQPainter().DrawImage(p,image,sr);
 		}
-		[SmokeMethod("drawImage####", "(const QPoint&, const QImage&, const QRect&, Qt::ImageConversionFlags)")]
+		[SmokeMethod("drawImage###$", "(const QPoint&, const QImage&, const QRect&, Qt::ImageConversionFlags)")]
 		public void DrawImage(QPoint p, QImage image, QRect sr, int flags) {
 			ProxyQPainter().DrawImage(p,image,sr,flags);
 		}
@@ -759,27 +759,27 @@ namespace Qyoto {
 		public void DrawImage(QPoint p, QImage image) {
 			ProxyQPainter().DrawImage(p,image);
 		}
-		[SmokeMethod("drawImage$$$$$$$$", "(int, int, const QImage&, int, int, int, int, Qt::ImageConversionFlags)")]
+		[SmokeMethod("drawImage$$#$$$$$", "(int, int, const QImage&, int, int, int, int, Qt::ImageConversionFlags)")]
 		public void DrawImage(int x, int y, QImage image, int sx, int sy, int sw, int sh, int flags) {
 			ProxyQPainter().DrawImage(x,y,image,sx,sy,sw,sh,flags);
 		}
-		[SmokeMethod("drawImage$$$$$$$", "(int, int, const QImage&, int, int, int, int)")]
+		[SmokeMethod("drawImage$$#$$$$", "(int, int, const QImage&, int, int, int, int)")]
 		public void DrawImage(int x, int y, QImage image, int sx, int sy, int sw, int sh) {
 			ProxyQPainter().DrawImage(x,y,image,sx,sy,sw,sh);
 		}
-		[SmokeMethod("drawImage$$$$$$", "(int, int, const QImage&, int, int, int)")]
+		[SmokeMethod("drawImage$$#$$$", "(int, int, const QImage&, int, int, int)")]
 		public void DrawImage(int x, int y, QImage image, int sx, int sy, int sw) {
 			ProxyQPainter().DrawImage(x,y,image,sx,sy,sw);
 		}
-		[SmokeMethod("drawImage$$$$$", "(int, int, const QImage&, int, int)")]
+		[SmokeMethod("drawImage$$#$$", "(int, int, const QImage&, int, int)")]
 		public void DrawImage(int x, int y, QImage image, int sx, int sy) {
 			ProxyQPainter().DrawImage(x,y,image,sx,sy);
 		}
-		[SmokeMethod("drawImage$$$$", "(int, int, const QImage&, int)")]
+		[SmokeMethod("drawImage$$#$", "(int, int, const QImage&, int)")]
 		public void DrawImage(int x, int y, QImage image, int sx) {
 			ProxyQPainter().DrawImage(x,y,image,sx);
 		}
-		[SmokeMethod("drawImage$$$", "(int, int, const QImage&)")]
+		[SmokeMethod("drawImage$$#", "(int, int, const QImage&)")]
 		public void DrawImage(int x, int y, QImage image) {
 			ProxyQPainter().DrawImage(x,y,image);
 		}
@@ -791,11 +791,11 @@ namespace Qyoto {
 		public Qt.LayoutDirection LayoutDirection() {
 			return ProxyQPainter().LayoutDirection();
 		}
-		[SmokeMethod("drawText##", "(const QPointF&, const QString&)")]
+		[SmokeMethod("drawText#$", "(const QPointF&, const QString&)")]
 		public void DrawText(QPointF p, string s) {
 			ProxyQPainter().DrawText(p,s);
 		}
-		[SmokeMethod("drawText##", "(const QPoint&, const QString&)")]
+		[SmokeMethod("drawText#$", "(const QPoint&, const QString&)")]
 		public void DrawText(QPoint p, string s) {
 			ProxyQPainter().DrawText(p,s);
 		}
@@ -803,23 +803,23 @@ namespace Qyoto {
 		public void DrawText(int x, int y, string s) {
 			ProxyQPainter().DrawText(x,y,s);
 		}
-		[SmokeMethod("drawText####", "(const QRectF&, int, const QString&, QRectF*)")]
+		[SmokeMethod("drawText#$$#", "(const QRectF&, int, const QString&, QRectF*)")]
 		public void DrawText(QRectF r, int flags, string text, QRectF br) {
 			ProxyQPainter().DrawText(r,flags,text,br);
 		}
-		[SmokeMethod("drawText###", "(const QRectF&, int, const QString&)")]
+		[SmokeMethod("drawText#$$", "(const QRectF&, int, const QString&)")]
 		public void DrawText(QRectF r, int flags, string text) {
 			ProxyQPainter().DrawText(r,flags,text);
 		}
-		[SmokeMethod("drawText####", "(const QRect&, int, const QString&, QRect*)")]
+		[SmokeMethod("drawText#$$#", "(const QRect&, int, const QString&, QRect*)")]
 		public void DrawText(QRect r, int flags, string text, QRect br) {
 			ProxyQPainter().DrawText(r,flags,text,br);
 		}
-		[SmokeMethod("drawText###", "(const QRect&, int, const QString&)")]
+		[SmokeMethod("drawText#$$", "(const QRect&, int, const QString&)")]
 		public void DrawText(QRect r, int flags, string text) {
 			ProxyQPainter().DrawText(r,flags,text);
 		}
-		[SmokeMethod("drawText$$$$$$$", "(int, int, int, int, int, const QString&, QRect*)")]
+		[SmokeMethod("drawText$$$$$$#", "(int, int, int, int, int, const QString&, QRect*)")]
 		public void DrawText(int x, int y, int w, int h, int flags, string text, QRect br) {
 			ProxyQPainter().DrawText(x,y,w,h,flags,text,br);
 		}
@@ -827,19 +827,19 @@ namespace Qyoto {
 		public void DrawText(int x, int y, int w, int h, int flags, string text) {
 			ProxyQPainter().DrawText(x,y,w,h,flags,text);
 		}
-		[SmokeMethod("drawText###", "(const QRectF&, const QString&, const QTextOption&)")]
+		[SmokeMethod("drawText#$#", "(const QRectF&, const QString&, const QTextOption&)")]
 		public void DrawText(QRectF r, string text, QTextOption o) {
 			ProxyQPainter().DrawText(r,text,o);
 		}
-		[SmokeMethod("drawText##", "(const QRectF&, const QString&)")]
+		[SmokeMethod("drawText#$", "(const QRectF&, const QString&)")]
 		public void DrawText(QRectF r, string text) {
 			ProxyQPainter().DrawText(r,text);
 		}
-		[SmokeMethod("boundingRect###", "(const QRectF&, int, const QString&)")]
+		[SmokeMethod("boundingRect#$$", "(const QRectF&, int, const QString&)")]
 		public QRectF BoundingRect(QRectF rect, int flags, string text) {
 			return ProxyQPainter().BoundingRect(rect,flags,text);
 		}
-		[SmokeMethod("boundingRect###", "(const QRect&, int, const QString&)")]
+		[SmokeMethod("boundingRect#$$", "(const QRect&, int, const QString&)")]
 		public QRect BoundingRect(QRect rect, int flags, string text) {
 			return ProxyQPainter().BoundingRect(rect,flags,text);
 		}
@@ -847,11 +847,11 @@ namespace Qyoto {
 		public QRect BoundingRect(int x, int y, int w, int h, int flags, string text) {
 			return ProxyQPainter().BoundingRect(x,y,w,h,flags,text);
 		}
-		[SmokeMethod("boundingRect###", "(const QRectF&, const QString&, const QTextOption&)")]
+		[SmokeMethod("boundingRect#$#", "(const QRectF&, const QString&, const QTextOption&)")]
 		public QRectF BoundingRect(QRectF rect, string text, QTextOption o) {
 			return ProxyQPainter().BoundingRect(rect,text,o);
 		}
-		[SmokeMethod("boundingRect##", "(const QRectF&, const QString&)")]
+		[SmokeMethod("boundingRect#$", "(const QRectF&, const QString&)")]
 		public QRectF BoundingRect(QRectF rect, string text) {
 			return ProxyQPainter().BoundingRect(rect,text);
 		}
@@ -859,7 +859,7 @@ namespace Qyoto {
 		public void FillRect(QRectF arg1, QBrush arg2) {
 			ProxyQPainter().FillRect(arg1,arg2);
 		}
-		[SmokeMethod("fillRect$$$$$", "(int, int, int, int, const QBrush&)")]
+		[SmokeMethod("fillRect$$$$#", "(int, int, int, int, const QBrush&)")]
 		public void FillRect(int x, int y, int w, int h, QBrush arg5) {
 			ProxyQPainter().FillRect(x,y,w,h,arg5);
 		}

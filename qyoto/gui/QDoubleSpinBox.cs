@@ -161,9 +161,9 @@ namespace Qyoto {
 	}
 
 	public interface IQDoubleSpinBoxSignals : IQAbstractSpinBoxSignals {
-		[Q_SIGNAL("void (double)")]
+		[Q_SIGNAL("void valueChanged(double)")]
 		void ValueChanged(double arg1);
-		[Q_SIGNAL("void (const QString&)")]
+		[Q_SIGNAL("void valueChanged(const QString&)")]
 		void ValueChanged(string arg1);
 	}
 }

@@ -109,7 +109,7 @@ namespace Qyoto {
 		public new bool Parse(QXmlInputSource input) {
 			return ProxyQXmlSimpleReader().Parse(input);
 		}
-		[SmokeMethod("parse##", "(const QXmlInputSource*, bool)")]
+		[SmokeMethod("parse#$", "(const QXmlInputSource*, bool)")]
 		public new virtual bool Parse(QXmlInputSource input, bool incremental) {
 			return ProxyQXmlSimpleReader().Parse(input,incremental);
 		}

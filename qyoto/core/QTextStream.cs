@@ -88,7 +88,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTextStream(array,openMode);
 		}
-		[SmokeMethod("QTextStream##", "(QByteArray*, QIODevice::OpenMode)")]
+		[SmokeMethod("QTextStream#$", "(QByteArray*, QIODevice::OpenMode)")]
 		private void NewQTextStream(QByteArray array, int openMode) {
 			ProxyQTextStream().NewQTextStream(array,openMode);
 		}

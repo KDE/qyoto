@@ -63,7 +63,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTemporaryFile(templateName,parent);
 		}
-		[SmokeMethod("QTemporaryFile$$", "(const QString&, QObject*)")]
+		[SmokeMethod("QTemporaryFile$#", "(const QString&, QObject*)")]
 		private void NewQTemporaryFile(string templateName, QObject parent) {
 			ProxyQTemporaryFile().NewQTemporaryFile(templateName,parent);
 		}

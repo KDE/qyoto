@@ -11,11 +11,11 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QToolTip(Type dummy) {}
 		interface IQToolTipProxy {
-			[SmokeMethod("showText###", "(const QPoint&, const QString&, QWidget*)")]
+			[SmokeMethod("showText#$#", "(const QPoint&, const QString&, QWidget*)")]
 			void ShowText(QPoint pos, string text, QWidget w);
-			[SmokeMethod("showText##", "(const QPoint&, const QString&)")]
+			[SmokeMethod("showText#$", "(const QPoint&, const QString&)")]
 			void ShowText(QPoint pos, string text);
-			[SmokeMethod("showText####", "(const QPoint&, const QString&, QWidget*, const QRect&)")]
+			[SmokeMethod("showText#$##", "(const QPoint&, const QString&, QWidget*, const QRect&)")]
 			void ShowText(QPoint pos, string text, QWidget w, QRect rect);
 			[SmokeMethod("hideText", "()")]
 			void HideText();

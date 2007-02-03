@@ -72,7 +72,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSettings(organization,application,parent);
 		}
-		[SmokeMethod("QSettings$$$", "(const QString&, const QString&, QObject*)")]
+		[SmokeMethod("QSettings$$#", "(const QString&, const QString&, QObject*)")]
 		private void NewQSettings(string organization, string application, QObject parent) {
 			ProxyQSettings().NewQSettings(organization,application,parent);
 		}
@@ -96,7 +96,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSettings(scope,organization,application,parent);
 		}
-		[SmokeMethod("QSettings$$$$", "(QSettings::Scope, const QString&, const QString&, QObject*)")]
+		[SmokeMethod("QSettings$$$#", "(QSettings::Scope, const QString&, const QString&, QObject*)")]
 		private void NewQSettings(QSettings.Scope scope, string organization, string application, QObject parent) {
 			ProxyQSettings().NewQSettings(scope,organization,application,parent);
 		}
@@ -120,7 +120,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSettings(format,scope,organization,application,parent);
 		}
-		[SmokeMethod("QSettings$$$$$", "(QSettings::Format, QSettings::Scope, const QString&, const QString&, QObject*)")]
+		[SmokeMethod("QSettings$$$$#", "(QSettings::Format, QSettings::Scope, const QString&, const QString&, QObject*)")]
 		private void NewQSettings(QSettings.Format format, QSettings.Scope scope, string organization, string application, QObject parent) {
 			ProxyQSettings().NewQSettings(format,scope,organization,application,parent);
 		}
@@ -144,7 +144,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSettings(fileName,format,parent);
 		}
-		[SmokeMethod("QSettings$$$", "(const QString&, QSettings::Format, QObject*)")]
+		[SmokeMethod("QSettings$$#", "(const QString&, QSettings::Format, QObject*)")]
 		private void NewQSettings(string fileName, QSettings.Format format, QObject parent) {
 			ProxyQSettings().NewQSettings(fileName,format,parent);
 		}
@@ -232,11 +232,11 @@ namespace Qyoto {
 		public bool IsWritable() {
 			return ProxyQSettings().IsWritable();
 		}
-		[SmokeMethod("setValue$$", "(const QString&, const QVariant&)")]
+		[SmokeMethod("setValue$#", "(const QString&, const QVariant&)")]
 		public void SetValue(string key, QVariant value) {
 			ProxyQSettings().SetValue(key,value);
 		}
-		[SmokeMethod("value$$", "(const QString&, const QVariant&) const")]
+		[SmokeMethod("value$#", "(const QString&, const QVariant&) const")]
 		public QVariant Value(string key, QVariant defaultValue) {
 			return ProxyQSettings().Value(key,defaultValue);
 		}

@@ -98,19 +98,19 @@ namespace Qyoto {
 		public bool Send(QDBusMessage message) {
 			return ProxyQDBusConnection().Send(message);
 		}
-		[SmokeMethod("callWithCallback####", "(const QDBusMessage&, QObject*, const char*, int) const")]
+		[SmokeMethod("callWithCallback##$$", "(const QDBusMessage&, QObject*, const char*, int) const")]
 		public bool CallWithCallback(QDBusMessage message, QObject receiver, string slot, int timeout) {
 			return ProxyQDBusConnection().CallWithCallback(message,receiver,slot,timeout);
 		}
-		[SmokeMethod("callWithCallback###", "(const QDBusMessage&, QObject*, const char*) const")]
+		[SmokeMethod("callWithCallback##$", "(const QDBusMessage&, QObject*, const char*) const")]
 		public bool CallWithCallback(QDBusMessage message, QObject receiver, string slot) {
 			return ProxyQDBusConnection().CallWithCallback(message,receiver,slot);
 		}
-		[SmokeMethod("call###", "(const QDBusMessage&, QDBus::CallMode, int) const")]
+		[SmokeMethod("call#$$", "(const QDBusMessage&, QDBus::CallMode, int) const")]
 		public QDBusMessage Call(QDBusMessage message, QDBus.CallMode mode, int timeout) {
 			return ProxyQDBusConnection().Call(message,mode,timeout);
 		}
-		[SmokeMethod("call##", "(const QDBusMessage&, QDBus::CallMode) const")]
+		[SmokeMethod("call#$", "(const QDBusMessage&, QDBus::CallMode) const")]
 		public QDBusMessage Call(QDBusMessage message, QDBus.CallMode mode) {
 			return ProxyQDBusConnection().Call(message,mode);
 		}
@@ -118,27 +118,27 @@ namespace Qyoto {
 		public QDBusMessage Call(QDBusMessage message) {
 			return ProxyQDBusConnection().Call(message);
 		}
-		[SmokeMethod("connect$$$$$$", "(const QString&, const QString&, const QString&, const QString&, QObject*, const char*)")]
+		[SmokeMethod("connect$$$$#$", "(const QString&, const QString&, const QString&, const QString&, QObject*, const char*)")]
 		public bool Connect(string service, string path, string arg3, string name, QObject receiver, string slot) {
 			return ProxyQDBusConnection().Connect(service,path,arg3,name,receiver,slot);
 		}
-		[SmokeMethod("disconnect$$$$$$", "(const QString&, const QString&, const QString&, const QString&, QObject*, const char*)")]
+		[SmokeMethod("disconnect$$$$#$", "(const QString&, const QString&, const QString&, const QString&, QObject*, const char*)")]
 		public bool Disconnect(string service, string path, string arg3, string name, QObject receiver, string slot) {
 			return ProxyQDBusConnection().Disconnect(service,path,arg3,name,receiver,slot);
 		}
-		[SmokeMethod("connect$$$$$$$", "(const QString&, const QString&, const QString&, const QString&, const QString&, QObject*, const char*)")]
+		[SmokeMethod("connect$$$$$#$", "(const QString&, const QString&, const QString&, const QString&, const QString&, QObject*, const char*)")]
 		public bool Connect(string service, string path, string arg3, string name, string signature, QObject receiver, string slot) {
 			return ProxyQDBusConnection().Connect(service,path,arg3,name,signature,receiver,slot);
 		}
-		[SmokeMethod("disconnect$$$$$$$", "(const QString&, const QString&, const QString&, const QString&, const QString&, QObject*, const char*)")]
+		[SmokeMethod("disconnect$$$$$#$", "(const QString&, const QString&, const QString&, const QString&, const QString&, QObject*, const char*)")]
 		public bool Disconnect(string service, string path, string arg3, string name, string signature, QObject receiver, string slot) {
 			return ProxyQDBusConnection().Disconnect(service,path,arg3,name,signature,receiver,slot);
 		}
-		[SmokeMethod("registerObject$$$", "(const QString&, QObject*, RegisterOptions)")]
+		[SmokeMethod("registerObject$#$", "(const QString&, QObject*, RegisterOptions)")]
 		public bool RegisterObject(string path, QObject arg2, int options) {
 			return ProxyQDBusConnection().RegisterObject(path,arg2,options);
 		}
-		[SmokeMethod("registerObject$$", "(const QString&, QObject*)")]
+		[SmokeMethod("registerObject$#", "(const QString&, QObject*)")]
 		public bool RegisterObject(string path, QObject arg2) {
 			return ProxyQDBusConnection().RegisterObject(path,arg2);
 		}

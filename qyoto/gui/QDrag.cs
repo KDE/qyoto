@@ -80,7 +80,7 @@ namespace Qyoto {
 		public Qt.DropAction Start() {
 			return ProxyQDrag().Start();
 		}
-		[SmokeMethod("setDragCursor##", "(const QPixmap&, Qt::DropAction)")]
+		[SmokeMethod("setDragCursor#$", "(const QPixmap&, Qt::DropAction)")]
 		public void SetDragCursor(QPixmap cursor, Qt.DropAction action) {
 			ProxyQDrag().SetDragCursor(cursor,action);
 		}
@@ -108,9 +108,9 @@ namespace Qyoto {
 	}
 
 	public interface IQDragSignals : IQObjectSignals {
-		[Q_SIGNAL("void (Qt::DropAction)")]
+		[Q_SIGNAL("void actionChanged(Qt::DropAction)")]
 		void ActionChanged(Qt.DropAction action);
-		[Q_SIGNAL("void (QWidget*)")]
+		[Q_SIGNAL("void targetChanged(QWidget*)")]
 		void TargetChanged(QWidget newTarget);
 	}
 }

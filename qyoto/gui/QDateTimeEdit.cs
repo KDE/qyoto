@@ -321,11 +321,11 @@ namespace Qyoto {
 	}
 
 	public interface IQDateTimeEditSignals : IQAbstractSpinBoxSignals {
-		[Q_SIGNAL("void (const QDateTime&)")]
+		[Q_SIGNAL("void dateTimeChanged(const QDateTime&)")]
 		void DateTimeChanged(QDateTime date);
-		[Q_SIGNAL("void (const QTime&)")]
+		[Q_SIGNAL("void timeChanged(const QTime&)")]
 		void TimeChanged(QTime date);
-		[Q_SIGNAL("void (const QDate&)")]
+		[Q_SIGNAL("void dateChanged(const QDate&)")]
 		void DateChanged(QDate date);
 	}
 }

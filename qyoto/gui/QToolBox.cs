@@ -51,7 +51,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQToolBox(parent,f);
 		}
-		[SmokeMethod("QToolBox##", "(QWidget*, Qt::WindowFlags)")]
+		[SmokeMethod("QToolBox#$", "(QWidget*, Qt::WindowFlags)")]
 		private void NewQToolBox(QWidget parent, int f) {
 			ProxyQToolBox().NewQToolBox(parent,f);
 		}
@@ -71,19 +71,19 @@ namespace Qyoto {
 		private void NewQToolBox() {
 			ProxyQToolBox().NewQToolBox();
 		}
-		[SmokeMethod("addItem##", "(QWidget*, const QString&)")]
+		[SmokeMethod("addItem#$", "(QWidget*, const QString&)")]
 		public int AddItem(QWidget widget, string text) {
 			return ProxyQToolBox().AddItem(widget,text);
 		}
-		[SmokeMethod("addItem###", "(QWidget*, const QIcon&, const QString&)")]
+		[SmokeMethod("addItem##$", "(QWidget*, const QIcon&, const QString&)")]
 		public int AddItem(QWidget widget, QIcon icon, string text) {
 			return ProxyQToolBox().AddItem(widget,icon,text);
 		}
-		[SmokeMethod("insertItem$$$", "(int, QWidget*, const QString&)")]
+		[SmokeMethod("insertItem$#$", "(int, QWidget*, const QString&)")]
 		public int InsertItem(int index, QWidget widget, string text) {
 			return ProxyQToolBox().InsertItem(index,widget,text);
 		}
-		[SmokeMethod("insertItem$$$$", "(int, QWidget*, const QIcon&, const QString&)")]
+		[SmokeMethod("insertItem$##$", "(int, QWidget*, const QIcon&, const QString&)")]
 		public int InsertItem(int index, QWidget widget, QIcon icon, string text) {
 			return ProxyQToolBox().InsertItem(index,widget,icon,text);
 		}
@@ -107,7 +107,7 @@ namespace Qyoto {
 		public string ItemText(int index) {
 			return ProxyQToolBox().ItemText(index);
 		}
-		[SmokeMethod("setItemIcon$$", "(int, const QIcon&)")]
+		[SmokeMethod("setItemIcon$#", "(int, const QIcon&)")]
 		public void SetItemIcon(int index, QIcon icon) {
 			ProxyQToolBox().SetItemIcon(index,icon);
 		}
@@ -135,7 +135,7 @@ namespace Qyoto {
 		public int IndexOf(QWidget widget) {
 			return ProxyQToolBox().IndexOf(widget);
 		}
-		[Q_SLOT("void (QWidget*)")]
+		[Q_SLOT("void setCurrentWidget(QWidget*)")]
 		[SmokeMethod("setCurrentWidget#", "(QWidget*)")]
 		public void SetCurrentWidget(QWidget widget) {
 			ProxyQToolBox().SetCurrentWidget(widget);
@@ -184,7 +184,7 @@ namespace Qyoto {
 	}
 
 	public interface IQToolBoxSignals : IQFrameSignals {
-		[Q_SIGNAL("void (int)")]
+		[Q_SIGNAL("void currentChanged(int)")]
 		void CurrentChanged(int index);
 	}
 }

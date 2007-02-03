@@ -106,7 +106,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTimeLine(duration,parent);
 		}
-		[SmokeMethod("QTimeLine$$", "(int, QObject*)")]
+		[SmokeMethod("QTimeLine$#", "(int, QObject*)")]
 		private void NewQTimeLine(int duration, QObject parent) {
 			ProxyQTimeLine().NewQTimeLine(duration,parent);
 		}
@@ -166,22 +166,22 @@ namespace Qyoto {
 		public virtual double ValueForTime(int msec) {
 			return ProxyQTimeLine().ValueForTime(msec);
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void start()")]
 		[SmokeMethod("start", "()")]
 		public void Start() {
 			ProxyQTimeLine().Start();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void stop()")]
 		[SmokeMethod("stop", "()")]
 		public void Stop() {
 			ProxyQTimeLine().Stop();
 		}
-		[Q_SLOT("void (bool)")]
+		[Q_SLOT("void setPaused(bool)")]
 		[SmokeMethod("setPaused$", "(bool)")]
 		public void SetPaused(bool paused) {
 			ProxyQTimeLine().SetPaused(paused);
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void toggleDirection()")]
 		[SmokeMethod("toggleDirection", "()")]
 		public void ToggleDirection() {
 			ProxyQTimeLine().ToggleDirection();
@@ -214,13 +214,13 @@ namespace Qyoto {
 	}
 
 	public interface IQTimeLineSignals : IQObjectSignals {
-		[Q_SIGNAL("void (qreal)")]
+		[Q_SIGNAL("void valueChanged(qreal)")]
 		void ValueChanged(double x);
-		[Q_SIGNAL("void (int)")]
+		[Q_SIGNAL("void frameChanged(int)")]
 		void FrameChanged(int arg1);
-		[Q_SIGNAL("void (QTimeLine::State)")]
+		[Q_SIGNAL("void stateChanged(QTimeLine::State)")]
 		void StateChanged(QTimeLine.State newState);
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void finished()")]
 		void Finished();
 	}
 }

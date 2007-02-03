@@ -68,11 +68,11 @@ namespace Qyoto {
 		public QVariant Value(string name) {
 			return ProxyQSqlRecord().Value(name);
 		}
-		[SmokeMethod("setValue$$", "(int, const QVariant&)")]
+		[SmokeMethod("setValue$#", "(int, const QVariant&)")]
 		public void SetValue(int i, QVariant val) {
 			ProxyQSqlRecord().SetValue(i,val);
 		}
-		[SmokeMethod("setValue$$", "(const QString&, const QVariant&)")]
+		[SmokeMethod("setValue$#", "(const QString&, const QVariant&)")]
 		public void SetValue(string name, QVariant val) {
 			ProxyQSqlRecord().SetValue(name,val);
 		}
@@ -128,11 +128,11 @@ namespace Qyoto {
 		public void Append(QSqlField field) {
 			ProxyQSqlRecord().Append(field);
 		}
-		[SmokeMethod("replace$$", "(int, const QSqlField&)")]
+		[SmokeMethod("replace$#", "(int, const QSqlField&)")]
 		public void Replace(int pos, QSqlField field) {
 			ProxyQSqlRecord().Replace(pos,field);
 		}
-		[SmokeMethod("insert$$", "(int, const QSqlField&)")]
+		[SmokeMethod("insert$#", "(int, const QSqlField&)")]
 		public void Insert(int pos, QSqlField field) {
 			ProxyQSqlRecord().Insert(pos,field);
 		}

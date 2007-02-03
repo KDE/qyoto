@@ -83,7 +83,7 @@ namespace Qyoto {
 		public List<QWidget> WindowList() {
 			return ProxyQWorkspace().WindowList();
 		}
-		[SmokeMethod("addWindow##", "(QWidget*, Qt::WindowFlags)")]
+		[SmokeMethod("addWindow#$", "(QWidget*, Qt::WindowFlags)")]
 		public QWidget AddWindow(QWidget w, int flags) {
 			return ProxyQWorkspace().AddWindow(w,flags);
 		}
@@ -95,42 +95,42 @@ namespace Qyoto {
 		public new QSize SizeHint() {
 			return ProxyQWorkspace().SizeHint();
 		}
-		[Q_SLOT("void (QWidget*)")]
+		[Q_SLOT("void setActiveWindow(QWidget*)")]
 		[SmokeMethod("setActiveWindow#", "(QWidget*)")]
 		public void SetActiveWindow(QWidget w) {
 			ProxyQWorkspace().SetActiveWindow(w);
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void cascade()")]
 		[SmokeMethod("cascade", "()")]
 		public void Cascade() {
 			ProxyQWorkspace().Cascade();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void tile()")]
 		[SmokeMethod("tile", "()")]
 		public void Tile() {
 			ProxyQWorkspace().Tile();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void arrangeIcons()")]
 		[SmokeMethod("arrangeIcons", "()")]
 		public void ArrangeIcons() {
 			ProxyQWorkspace().ArrangeIcons();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void closeActiveWindow()")]
 		[SmokeMethod("closeActiveWindow", "()")]
 		public void CloseActiveWindow() {
 			ProxyQWorkspace().CloseActiveWindow();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void closeAllWindows()")]
 		[SmokeMethod("closeAllWindows", "()")]
 		public void CloseAllWindows() {
 			ProxyQWorkspace().CloseAllWindows();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void activateNextWindow()")]
 		[SmokeMethod("activateNextWindow", "()")]
 		public void ActivateNextWindow() {
 			ProxyQWorkspace().ActivateNextWindow();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void activatePreviousWindow()")]
 		[SmokeMethod("activatePreviousWindow", "()")]
 		public void ActivatePreviousWindow() {
 			ProxyQWorkspace().ActivatePreviousWindow();
@@ -195,7 +195,7 @@ namespace Qyoto {
 	}
 
 	public interface IQWorkspaceSignals : IQWidgetSignals {
-		[Q_SIGNAL("void (QWidget*)")]
+		[Q_SIGNAL("void windowActivated(QWidget*)")]
 		void WindowActivated(QWidget w);
 	}
 }

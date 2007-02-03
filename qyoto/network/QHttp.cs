@@ -71,7 +71,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQHttp(hostname,port,parent);
 		}
-		[SmokeMethod("QHttp$$$", "(const QString&, quint16, QObject*)")]
+		[SmokeMethod("QHttp$$#", "(const QString&, quint16, QObject*)")]
 		private void NewQHttp(string hostname, ushort port, QObject parent) {
 			ProxyQHttp().NewQHttp(hostname,port,parent);
 		}
@@ -123,7 +123,7 @@ namespace Qyoto {
 		public int SetProxy(string host, int port) {
 			return ProxyQHttp().SetProxy(host,port);
 		}
-		[SmokeMethod("get$$", "(const QString&, QIODevice*)")]
+		[SmokeMethod("get$#", "(const QString&, QIODevice*)")]
 		public int Get(string path, IQIODevice to) {
 			return ProxyQHttp().Get(path,to);
 		}
@@ -131,19 +131,19 @@ namespace Qyoto {
 		public int Get(string path) {
 			return ProxyQHttp().Get(path);
 		}
-		[SmokeMethod("post$$$", "(const QString&, QIODevice*, QIODevice*)")]
+		[SmokeMethod("post$##", "(const QString&, QIODevice*, QIODevice*)")]
 		public int Post(string path, IQIODevice data, IQIODevice to) {
 			return ProxyQHttp().Post(path,data,to);
 		}
-		[SmokeMethod("post$$", "(const QString&, QIODevice*)")]
+		[SmokeMethod("post$#", "(const QString&, QIODevice*)")]
 		public int Post(string path, IQIODevice data) {
 			return ProxyQHttp().Post(path,data);
 		}
-		[SmokeMethod("post$$$", "(const QString&, const QByteArray&, QIODevice*)")]
+		[SmokeMethod("post$##", "(const QString&, const QByteArray&, QIODevice*)")]
 		public int Post(string path, QByteArray data, IQIODevice to) {
 			return ProxyQHttp().Post(path,data,to);
 		}
-		[SmokeMethod("post$$", "(const QString&, const QByteArray&)")]
+		[SmokeMethod("post$#", "(const QString&, const QByteArray&)")]
 		public int Post(string path, QByteArray data) {
 			return ProxyQHttp().Post(path,data);
 		}
@@ -231,7 +231,7 @@ namespace Qyoto {
 		public string ErrorString() {
 			return ProxyQHttp().ErrorString();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void abort()")]
 		[SmokeMethod("abort", "()")]
 		public void Abort() {
 			ProxyQHttp().Abort();
@@ -260,21 +260,21 @@ namespace Qyoto {
 	}
 
 	public interface IQHttpSignals : IQObjectSignals {
-		[Q_SIGNAL("void (int)")]
+		[Q_SIGNAL("void stateChanged(int)")]
 		void StateChanged(int arg1);
-		[Q_SIGNAL("void (const QHttpResponseHeader&)")]
+		[Q_SIGNAL("void responseHeaderReceived(const QHttpResponseHeader&)")]
 		void ResponseHeaderReceived(QHttpResponseHeader resp);
-		[Q_SIGNAL("void (const QHttpResponseHeader&)")]
+		[Q_SIGNAL("void readyRead(const QHttpResponseHeader&)")]
 		void ReadyRead(QHttpResponseHeader resp);
-		[Q_SIGNAL("void (int, int)")]
+		[Q_SIGNAL("void dataSendProgress(int, int)")]
 		void DataSendProgress(int arg1, int arg2);
-		[Q_SIGNAL("void (int, int)")]
+		[Q_SIGNAL("void dataReadProgress(int, int)")]
 		void DataReadProgress(int arg1, int arg2);
-		[Q_SIGNAL("void (int)")]
+		[Q_SIGNAL("void requestStarted(int)")]
 		void RequestStarted(int arg1);
-		[Q_SIGNAL("void (int, bool)")]
+		[Q_SIGNAL("void requestFinished(int, bool)")]
 		void RequestFinished(int arg1, bool arg2);
-		[Q_SIGNAL("void (bool)")]
+		[Q_SIGNAL("void done(bool)")]
 		void Done(bool arg1);
 	}
 }

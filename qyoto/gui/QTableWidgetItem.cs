@@ -69,7 +69,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTableWidgetItem(icon,text,type);
 		}
-		[SmokeMethod("QTableWidgetItem###", "(const QIcon&, const QString&, int)")]
+		[SmokeMethod("QTableWidgetItem#$$", "(const QIcon&, const QString&, int)")]
 		private void NewQTableWidgetItem(QIcon icon, string text, int type) {
 			ProxyQTableWidgetItem().NewQTableWidgetItem(icon,text,type);
 		}
@@ -77,7 +77,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTableWidgetItem(icon,text);
 		}
-		[SmokeMethod("QTableWidgetItem##", "(const QIcon&, const QString&)")]
+		[SmokeMethod("QTableWidgetItem#$", "(const QIcon&, const QString&)")]
 		private void NewQTableWidgetItem(QIcon icon, string text) {
 			ProxyQTableWidgetItem().NewQTableWidgetItem(icon,text);
 		}
@@ -229,7 +229,7 @@ namespace Qyoto {
 		public virtual QVariant Data(int role) {
 			return ProxyQTableWidgetItem().Data(role);
 		}
-		[SmokeMethod("setData$$", "(int, const QVariant&)")]
+		[SmokeMethod("setData$#", "(int, const QVariant&)")]
 		public virtual void SetData(int role, QVariant value) {
 			ProxyQTableWidgetItem().SetData(role,value);
 		}

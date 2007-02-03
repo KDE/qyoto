@@ -105,12 +105,12 @@ namespace Qyoto {
 		public QUndoGroup Group() {
 			return ProxyQUndoView().Group();
 		}
-		[Q_SLOT("void (QUndoStack*)")]
+		[Q_SLOT("void setStack(QUndoStack*)")]
 		[SmokeMethod("setStack#", "(QUndoStack*)")]
 		public void SetStack(QUndoStack stack) {
 			ProxyQUndoView().SetStack(stack);
 		}
-		[Q_SLOT("void (QUndoGroup*)")]
+		[Q_SLOT("void setGroup(QUndoGroup*)")]
 		[SmokeMethod("setGroup#", "(QUndoGroup*)")]
 		public void SetGroup(QUndoGroup group) {
 			ProxyQUndoView().SetGroup(group);

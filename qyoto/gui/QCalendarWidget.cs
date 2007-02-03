@@ -180,7 +180,7 @@ namespace Qyoto {
 		public QTextCharFormat WeekdayTextFormat(Qt.DayOfWeek dayOfWeek) {
 			return ProxyQCalendarWidget().WeekdayTextFormat(dayOfWeek);
 		}
-		[SmokeMethod("setWeekdayTextFormat$$", "(Qt::DayOfWeek, const QTextCharFormat&)")]
+		[SmokeMethod("setWeekdayTextFormat$#", "(Qt::DayOfWeek, const QTextCharFormat&)")]
 		public void SetWeekdayTextFormat(Qt.DayOfWeek dayOfWeek, QTextCharFormat format) {
 			ProxyQCalendarWidget().SetWeekdayTextFormat(dayOfWeek,format);
 		}
@@ -196,42 +196,42 @@ namespace Qyoto {
 		public void SetDateTextFormat(QDate date, QTextCharFormat color) {
 			ProxyQCalendarWidget().SetDateTextFormat(date,color);
 		}
-		[Q_SLOT("void (const QDate&, const QDate&)")]
+		[Q_SLOT("void setDateRange(const QDate&, const QDate&)")]
 		[SmokeMethod("setDateRange##", "(const QDate&, const QDate&)")]
 		public void SetDateRange(QDate min, QDate max) {
 			ProxyQCalendarWidget().SetDateRange(min,max);
 		}
-		[Q_SLOT("void (int, int)")]
+		[Q_SLOT("void setCurrentPage(int, int)")]
 		[SmokeMethod("setCurrentPage$$", "(int, int)")]
 		public void SetCurrentPage(int year, int month) {
 			ProxyQCalendarWidget().SetCurrentPage(year,month);
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void showNextMonth()")]
 		[SmokeMethod("showNextMonth", "()")]
 		public void ShowNextMonth() {
 			ProxyQCalendarWidget().ShowNextMonth();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void showPreviousMonth()")]
 		[SmokeMethod("showPreviousMonth", "()")]
 		public void ShowPreviousMonth() {
 			ProxyQCalendarWidget().ShowPreviousMonth();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void showNextYear()")]
 		[SmokeMethod("showNextYear", "()")]
 		public void ShowNextYear() {
 			ProxyQCalendarWidget().ShowNextYear();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void showPreviousYear()")]
 		[SmokeMethod("showPreviousYear", "()")]
 		public void ShowPreviousYear() {
 			ProxyQCalendarWidget().ShowPreviousYear();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void showSelectedDate()")]
 		[SmokeMethod("showSelectedDate", "()")]
 		public void ShowSelectedDate() {
 			ProxyQCalendarWidget().ShowSelectedDate();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void showToday()")]
 		[SmokeMethod("showToday", "()")]
 		public void ShowToday() {
 			ProxyQCalendarWidget().ShowToday();
@@ -280,13 +280,13 @@ namespace Qyoto {
 	}
 
 	public interface IQCalendarWidgetSignals : IQWidgetSignals {
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void selectionChanged()")]
 		void SelectionChanged();
-		[Q_SIGNAL("void (const QDate&)")]
+		[Q_SIGNAL("void clicked(const QDate&)")]
 		void Clicked(QDate date);
-		[Q_SIGNAL("void (const QDate&)")]
+		[Q_SIGNAL("void activated(const QDate&)")]
 		void Activated(QDate date);
-		[Q_SIGNAL("void (int, int)")]
+		[Q_SIGNAL("void currentPageChanged(int, int)")]
 		void CurrentPageChanged(int year, int month);
 	}
 }

@@ -29,7 +29,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQActionEvent(type,action,before);
 		}
-		[SmokeMethod("QActionEvent$$$", "(int, QAction*, QAction*)")]
+		[SmokeMethod("QActionEvent$##", "(int, QAction*, QAction*)")]
 		private void NewQActionEvent(int type, QAction action, QAction before) {
 			ProxyQActionEvent().NewQActionEvent(type,action,before);
 		}
@@ -37,7 +37,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQActionEvent(type,action);
 		}
-		[SmokeMethod("QActionEvent$$", "(int, QAction*)")]
+		[SmokeMethod("QActionEvent$#", "(int, QAction*)")]
 		private void NewQActionEvent(int type, QAction action) {
 			ProxyQActionEvent().NewQActionEvent(type,action);
 		}

@@ -98,7 +98,7 @@ namespace Qyoto {
 		public static new string Tr(string s) {
 			return StaticQItemDelegate().Tr(s);
 		}
-		[SmokeMethod("drawDisplay####", "(QPainter*, const QStyleOptionViewItem&, const QRect&, const QString&) const")]
+		[SmokeMethod("drawDisplay###$", "(QPainter*, const QStyleOptionViewItem&, const QRect&, const QString&) const")]
 		protected virtual void DrawDisplay(QPainter painter, QStyleOptionViewItem option, QRect rect, string text) {
 			ProxyQItemDelegate().DrawDisplay(painter,option,rect,text);
 		}
@@ -110,7 +110,7 @@ namespace Qyoto {
 		protected virtual void DrawFocus(QPainter painter, QStyleOptionViewItem option, QRect rect) {
 			ProxyQItemDelegate().DrawFocus(painter,option,rect);
 		}
-		[SmokeMethod("drawCheck####", "(QPainter*, const QStyleOptionViewItem&, const QRect&, Qt::CheckState) const")]
+		[SmokeMethod("drawCheck###$", "(QPainter*, const QStyleOptionViewItem&, const QRect&, Qt::CheckState) const")]
 		protected virtual void DrawCheck(QPainter painter, QStyleOptionViewItem option, QRect rect, Qt.CheckState state) {
 			ProxyQItemDelegate().DrawCheck(painter,option,rect,state);
 		}
@@ -118,11 +118,11 @@ namespace Qyoto {
 		protected void DrawBackground(QPainter painter, QStyleOptionViewItem option, QModelIndex index) {
 			ProxyQItemDelegate().DrawBackground(painter,option,index);
 		}
-		[SmokeMethod("doLayout#####", "(const QStyleOptionViewItem&, QRect*, QRect*, QRect*, bool) const")]
+		[SmokeMethod("doLayout####$", "(const QStyleOptionViewItem&, QRect*, QRect*, QRect*, bool) const")]
 		protected void DoLayout(QStyleOptionViewItem option, QRect checkRect, QRect iconRect, QRect textRect, bool hint) {
 			ProxyQItemDelegate().DoLayout(option,checkRect,iconRect,textRect,hint);
 		}
-		[SmokeMethod("rect###", "(const QStyleOptionViewItem&, const QModelIndex&, int) const")]
+		[SmokeMethod("rect##$", "(const QStyleOptionViewItem&, const QModelIndex&, int) const")]
 		protected QRect Rect(QStyleOptionViewItem option, QModelIndex index, int role) {
 			return ProxyQItemDelegate().Rect(option,index,role);
 		}
@@ -142,7 +142,7 @@ namespace Qyoto {
 		protected QPixmap Decoration(QStyleOptionViewItem option, QVariant variant) {
 			return ProxyQItemDelegate().Decoration(option,variant);
 		}
-		[SmokeMethod("selected###", "(const QPixmap&, const QPalette&, bool) const")]
+		[SmokeMethod("selected##$", "(const QPixmap&, const QPalette&, bool) const")]
 		protected QPixmap Selected(QPixmap pixmap, QPalette palette, bool enabled) {
 			return ProxyQItemDelegate().Selected(pixmap,palette,enabled);
 		}
@@ -150,7 +150,7 @@ namespace Qyoto {
 		protected QRect Check(QStyleOptionViewItem option, QRect bounding, QVariant variant) {
 			return ProxyQItemDelegate().Check(option,bounding,variant);
 		}
-		[SmokeMethod("textRectangle####", "(QPainter*, const QRect&, const QFont&, const QString&) const")]
+		[SmokeMethod("textRectangle###$", "(QPainter*, const QRect&, const QFont&, const QString&) const")]
 		protected QRect TextRectangle(QPainter painter, QRect rect, QFont font, string text) {
 			return ProxyQItemDelegate().TextRectangle(painter,rect,font,text);
 		}

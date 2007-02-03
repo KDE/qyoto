@@ -29,7 +29,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQShortcutEvent(key,id,ambiguous);
 		}
-		[SmokeMethod("QShortcutEvent###", "(const QKeySequence&, int, bool)")]
+		[SmokeMethod("QShortcutEvent#$$", "(const QKeySequence&, int, bool)")]
 		private void NewQShortcutEvent(QKeySequence key, int id, bool ambiguous) {
 			ProxyQShortcutEvent().NewQShortcutEvent(key,id,ambiguous);
 		}
@@ -37,7 +37,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQShortcutEvent(key,id);
 		}
-		[SmokeMethod("QShortcutEvent##", "(const QKeySequence&, int)")]
+		[SmokeMethod("QShortcutEvent#$", "(const QKeySequence&, int)")]
 		private void NewQShortcutEvent(QKeySequence key, int id) {
 			ProxyQShortcutEvent().NewQShortcutEvent(key,id);
 		}

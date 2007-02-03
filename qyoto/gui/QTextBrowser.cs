@@ -76,7 +76,7 @@ namespace Qyoto {
 		private void NewQTextBrowser() {
 			ProxyQTextBrowser().NewQTextBrowser();
 		}
-		[SmokeMethod("loadResource$$", "(int, const QUrl&)")]
+		[SmokeMethod("loadResource$#", "(int, const QUrl&)")]
 		public new virtual QVariant LoadResource(int type, IQUrl name) {
 			return ProxyQTextBrowser().LoadResource(type,name);
 		}
@@ -92,22 +92,22 @@ namespace Qyoto {
 		public void ClearHistory() {
 			ProxyQTextBrowser().ClearHistory();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void backward()")]
 		[SmokeMethod("backward", "()")]
 		public virtual void Backward() {
 			ProxyQTextBrowser().Backward();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void forward()")]
 		[SmokeMethod("forward", "()")]
 		public virtual void Forward() {
 			ProxyQTextBrowser().Forward();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void home()")]
 		[SmokeMethod("home", "()")]
 		public virtual void Home() {
 			ProxyQTextBrowser().Home();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void reload()")]
 		[SmokeMethod("reload", "()")]
 		public virtual void Reload() {
 			ProxyQTextBrowser().Reload();
@@ -168,17 +168,17 @@ namespace Qyoto {
 	}
 
 	public interface IQTextBrowserSignals : IQTextEditSignals {
-		[Q_SIGNAL("void (bool)")]
+		[Q_SIGNAL("void backwardAvailable(bool)")]
 		void BackwardAvailable(bool arg1);
-		[Q_SIGNAL("void (bool)")]
+		[Q_SIGNAL("void forwardAvailable(bool)")]
 		void ForwardAvailable(bool arg1);
-		[Q_SIGNAL("void (const QUrl&)")]
+		[Q_SIGNAL("void sourceChanged(const QUrl&)")]
 		void SourceChanged(IQUrl arg1);
-		[Q_SIGNAL("void (const QUrl&)")]
+		[Q_SIGNAL("void highlighted(const QUrl&)")]
 		void Highlighted(IQUrl arg1);
-		[Q_SIGNAL("void (const QString&)")]
+		[Q_SIGNAL("void highlighted(const QString&)")]
 		void Highlighted(string arg1);
-		[Q_SIGNAL("void (const QUrl&)")]
+		[Q_SIGNAL("void anchorClicked(const QUrl&)")]
 		void AnchorClicked(IQUrl arg1);
 	}
 }

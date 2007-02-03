@@ -23,19 +23,19 @@ namespace Qyoto {
 			QPixmap GrabWindow(ulong arg1);
 			[SmokeMethod("grabWidget##", "(QWidget*, const QRect&)")]
 			QPixmap GrabWidget(QWidget widget, QRect rect);
-			[SmokeMethod("grabWidget#####", "(QWidget*, int, int, int, int)")]
+			[SmokeMethod("grabWidget#$$$$", "(QWidget*, int, int, int, int)")]
 			QPixmap GrabWidget(QWidget widget, int x, int y, int w, int h);
-			[SmokeMethod("grabWidget####", "(QWidget*, int, int, int)")]
+			[SmokeMethod("grabWidget#$$$", "(QWidget*, int, int, int)")]
 			QPixmap GrabWidget(QWidget widget, int x, int y, int w);
-			[SmokeMethod("grabWidget###", "(QWidget*, int, int)")]
+			[SmokeMethod("grabWidget#$$", "(QWidget*, int, int)")]
 			QPixmap GrabWidget(QWidget widget, int x, int y);
-			[SmokeMethod("grabWidget##", "(QWidget*, int)")]
+			[SmokeMethod("grabWidget#$", "(QWidget*, int)")]
 			QPixmap GrabWidget(QWidget widget, int x);
 			[SmokeMethod("grabWidget#", "(QWidget*)")]
 			QPixmap GrabWidget(QWidget widget);
-			[SmokeMethod("trueMatrix###", "(const QMatrix&, int, int)")]
+			[SmokeMethod("trueMatrix#$$", "(const QMatrix&, int, int)")]
 			QMatrix TrueMatrix(QMatrix m, int w, int h);
-			[SmokeMethod("fromImage##", "(const QImage&, Qt::ImageConversionFlags)")]
+			[SmokeMethod("fromImage#$", "(const QImage&, Qt::ImageConversionFlags)")]
 			QPixmap FromImage(QImage image, int flags);
 			[SmokeMethod("fromImage#", "(const QImage&)")]
 			QPixmap FromImage(QImage image);
@@ -155,7 +155,7 @@ namespace Qyoto {
 		public void Fill(QWidget widget, QPoint ofs) {
 			ProxyQPixmap().Fill(widget,ofs);
 		}
-		[SmokeMethod("fill###", "(const QWidget*, int, int)")]
+		[SmokeMethod("fill#$$", "(const QWidget*, int, int)")]
 		public void Fill(QWidget widget, int xofs, int yofs) {
 			ProxyQPixmap().Fill(widget,xofs,yofs);
 		}
@@ -207,11 +207,11 @@ namespace Qyoto {
 		public QPixmap Scaled(int w, int h) {
 			return ProxyQPixmap().Scaled(w,h);
 		}
-		[SmokeMethod("scaled###", "(const QSize&, Qt::AspectRatioMode, Qt::TransformationMode) const")]
+		[SmokeMethod("scaled#$$", "(const QSize&, Qt::AspectRatioMode, Qt::TransformationMode) const")]
 		public QPixmap Scaled(QSize s, Qt.AspectRatioMode aspectMode, Qt.TransformationMode mode) {
 			return ProxyQPixmap().Scaled(s,aspectMode,mode);
 		}
-		[SmokeMethod("scaled##", "(const QSize&, Qt::AspectRatioMode) const")]
+		[SmokeMethod("scaled#$", "(const QSize&, Qt::AspectRatioMode) const")]
 		public QPixmap Scaled(QSize s, Qt.AspectRatioMode aspectMode) {
 			return ProxyQPixmap().Scaled(s,aspectMode);
 		}
@@ -235,7 +235,7 @@ namespace Qyoto {
 		public QPixmap ScaledToHeight(int h) {
 			return ProxyQPixmap().ScaledToHeight(h);
 		}
-		[SmokeMethod("transformed##", "(const QMatrix&, Qt::TransformationMode) const")]
+		[SmokeMethod("transformed#$", "(const QMatrix&, Qt::TransformationMode) const")]
 		public QPixmap Transformed(QMatrix arg1, Qt.TransformationMode mode) {
 			return ProxyQPixmap().Transformed(arg1,mode);
 		}
@@ -271,11 +271,11 @@ namespace Qyoto {
 		public bool LoadFromData(char[] buf, uint len) {
 			return ProxyQPixmap().LoadFromData(buf,len);
 		}
-		[SmokeMethod("loadFromData###", "(const QByteArray&, const char*, Qt::ImageConversionFlags)")]
+		[SmokeMethod("loadFromData#$$", "(const QByteArray&, const char*, Qt::ImageConversionFlags)")]
 		public bool LoadFromData(QByteArray data, string format, int flags) {
 			return ProxyQPixmap().LoadFromData(data,format,flags);
 		}
-		[SmokeMethod("loadFromData##", "(const QByteArray&, const char*)")]
+		[SmokeMethod("loadFromData#$", "(const QByteArray&, const char*)")]
 		public bool LoadFromData(QByteArray data, string format) {
 			return ProxyQPixmap().LoadFromData(data,format);
 		}
@@ -295,11 +295,11 @@ namespace Qyoto {
 		public bool Save(string fileName) {
 			return ProxyQPixmap().Save(fileName);
 		}
-		[SmokeMethod("save###", "(QIODevice*, const char*, int) const")]
+		[SmokeMethod("save#$$", "(QIODevice*, const char*, int) const")]
 		public bool Save(IQIODevice device, string format, int quality) {
 			return ProxyQPixmap().Save(device,format,quality);
 		}
-		[SmokeMethod("save##", "(QIODevice*, const char*) const")]
+		[SmokeMethod("save#$", "(QIODevice*, const char*) const")]
 		public bool Save(IQIODevice device, string format) {
 			return ProxyQPixmap().Save(device,format);
 		}

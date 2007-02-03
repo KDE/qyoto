@@ -17,103 +17,103 @@ namespace Qyoto {
 			QByteArray NormalizedSignature(string method);
 			[SmokeMethod("normalizedType$", "(const char*)")]
 			QByteArray NormalizedType(string type);
-			[SmokeMethod("connect######", "(const QObject*, int, const QObject*, int, int, int*)")]
+			[SmokeMethod("connect#$#$$$", "(const QObject*, int, const QObject*, int, int, int*)")]
 			bool Connect(QObject sender, int signal_index, QObject receiver, int method_index, int type, out int types);
-			[SmokeMethod("connect#####", "(const QObject*, int, const QObject*, int, int)")]
+			[SmokeMethod("connect#$#$$", "(const QObject*, int, const QObject*, int, int)")]
 			bool Connect(QObject sender, int signal_index, QObject receiver, int method_index, int type);
-			[SmokeMethod("connect####", "(const QObject*, int, const QObject*, int)")]
+			[SmokeMethod("connect#$#$", "(const QObject*, int, const QObject*, int)")]
 			bool Connect(QObject sender, int signal_index, QObject receiver, int method_index);
-			[SmokeMethod("disconnect####", "(const QObject*, int, const QObject*, int)")]
+			[SmokeMethod("disconnect#$#$", "(const QObject*, int, const QObject*, int)")]
 			bool Disconnect(QObject sender, int signal_index, QObject receiver, int method_index);
 			[SmokeMethod("connectSlotsByName#", "(QObject*)")]
 			void ConnectSlotsByName(QObject o);
-			[SmokeMethod("invokeMethod##############", "(QObject*, const char*, Qt::ConnectionType, QGenericReturnArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
+			[SmokeMethod("invokeMethod#$$###########", "(QObject*, const char*, Qt::ConnectionType, QGenericReturnArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
 			bool InvokeMethod(QObject arg1, string member, Qt.ConnectionType arg3, QGenericReturnArgument ret, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6, QGenericArgument val7, QGenericArgument val8, QGenericArgument val9);
-			[SmokeMethod("invokeMethod#############", "(QObject*, const char*, Qt::ConnectionType, QGenericReturnArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
+			[SmokeMethod("invokeMethod#$$##########", "(QObject*, const char*, Qt::ConnectionType, QGenericReturnArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
 			bool InvokeMethod(QObject arg1, string member, Qt.ConnectionType arg3, QGenericReturnArgument ret, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6, QGenericArgument val7, QGenericArgument val8);
-			[SmokeMethod("invokeMethod############", "(QObject*, const char*, Qt::ConnectionType, QGenericReturnArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
+			[SmokeMethod("invokeMethod#$$#########", "(QObject*, const char*, Qt::ConnectionType, QGenericReturnArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
 			bool InvokeMethod(QObject arg1, string member, Qt.ConnectionType arg3, QGenericReturnArgument ret, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6, QGenericArgument val7);
-			[SmokeMethod("invokeMethod###########", "(QObject*, const char*, Qt::ConnectionType, QGenericReturnArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
+			[SmokeMethod("invokeMethod#$$########", "(QObject*, const char*, Qt::ConnectionType, QGenericReturnArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
 			bool InvokeMethod(QObject arg1, string member, Qt.ConnectionType arg3, QGenericReturnArgument ret, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6);
-			[SmokeMethod("invokeMethod##########", "(QObject*, const char*, Qt::ConnectionType, QGenericReturnArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
+			[SmokeMethod("invokeMethod#$$#######", "(QObject*, const char*, Qt::ConnectionType, QGenericReturnArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
 			bool InvokeMethod(QObject arg1, string member, Qt.ConnectionType arg3, QGenericReturnArgument ret, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5);
-			[SmokeMethod("invokeMethod#########", "(QObject*, const char*, Qt::ConnectionType, QGenericReturnArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
+			[SmokeMethod("invokeMethod#$$######", "(QObject*, const char*, Qt::ConnectionType, QGenericReturnArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
 			bool InvokeMethod(QObject arg1, string member, Qt.ConnectionType arg3, QGenericReturnArgument ret, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4);
-			[SmokeMethod("invokeMethod########", "(QObject*, const char*, Qt::ConnectionType, QGenericReturnArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
+			[SmokeMethod("invokeMethod#$$#####", "(QObject*, const char*, Qt::ConnectionType, QGenericReturnArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
 			bool InvokeMethod(QObject arg1, string member, Qt.ConnectionType arg3, QGenericReturnArgument ret, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3);
-			[SmokeMethod("invokeMethod#######", "(QObject*, const char*, Qt::ConnectionType, QGenericReturnArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
+			[SmokeMethod("invokeMethod#$$####", "(QObject*, const char*, Qt::ConnectionType, QGenericReturnArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
 			bool InvokeMethod(QObject arg1, string member, Qt.ConnectionType arg3, QGenericReturnArgument ret, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2);
-			[SmokeMethod("invokeMethod######", "(QObject*, const char*, Qt::ConnectionType, QGenericReturnArgument, QGenericArgument, QGenericArgument)")]
+			[SmokeMethod("invokeMethod#$$###", "(QObject*, const char*, Qt::ConnectionType, QGenericReturnArgument, QGenericArgument, QGenericArgument)")]
 			bool InvokeMethod(QObject arg1, string member, Qt.ConnectionType arg3, QGenericReturnArgument ret, QGenericArgument val0, QGenericArgument val1);
-			[SmokeMethod("invokeMethod#####", "(QObject*, const char*, Qt::ConnectionType, QGenericReturnArgument, QGenericArgument)")]
+			[SmokeMethod("invokeMethod#$$##", "(QObject*, const char*, Qt::ConnectionType, QGenericReturnArgument, QGenericArgument)")]
 			bool InvokeMethod(QObject arg1, string member, Qt.ConnectionType arg3, QGenericReturnArgument ret, QGenericArgument val0);
-			[SmokeMethod("invokeMethod####", "(QObject*, const char*, Qt::ConnectionType, QGenericReturnArgument)")]
+			[SmokeMethod("invokeMethod#$$#", "(QObject*, const char*, Qt::ConnectionType, QGenericReturnArgument)")]
 			bool InvokeMethod(QObject arg1, string member, Qt.ConnectionType arg3, QGenericReturnArgument ret);
-			[SmokeMethod("invokeMethod#############", "(QObject*, const char*, QGenericReturnArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
+			[SmokeMethod("invokeMethod#$###########", "(QObject*, const char*, QGenericReturnArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
 			bool InvokeMethod(QObject arg1, string member, QGenericReturnArgument ret, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6, QGenericArgument val7, QGenericArgument val8, QGenericArgument val9);
-			[SmokeMethod("invokeMethod############", "(QObject*, const char*, QGenericReturnArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
+			[SmokeMethod("invokeMethod#$##########", "(QObject*, const char*, QGenericReturnArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
 			bool InvokeMethod(QObject arg1, string member, QGenericReturnArgument ret, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6, QGenericArgument val7, QGenericArgument val8);
-			[SmokeMethod("invokeMethod###########", "(QObject*, const char*, QGenericReturnArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
+			[SmokeMethod("invokeMethod#$#########", "(QObject*, const char*, QGenericReturnArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
 			bool InvokeMethod(QObject arg1, string member, QGenericReturnArgument ret, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6, QGenericArgument val7);
-			[SmokeMethod("invokeMethod##########", "(QObject*, const char*, QGenericReturnArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
+			[SmokeMethod("invokeMethod#$########", "(QObject*, const char*, QGenericReturnArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
 			bool InvokeMethod(QObject arg1, string member, QGenericReturnArgument ret, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6);
-			[SmokeMethod("invokeMethod#########", "(QObject*, const char*, QGenericReturnArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
+			[SmokeMethod("invokeMethod#$#######", "(QObject*, const char*, QGenericReturnArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
 			bool InvokeMethod(QObject arg1, string member, QGenericReturnArgument ret, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5);
-			[SmokeMethod("invokeMethod########", "(QObject*, const char*, QGenericReturnArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
+			[SmokeMethod("invokeMethod#$######", "(QObject*, const char*, QGenericReturnArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
 			bool InvokeMethod(QObject arg1, string member, QGenericReturnArgument ret, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4);
-			[SmokeMethod("invokeMethod#######", "(QObject*, const char*, QGenericReturnArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
+			[SmokeMethod("invokeMethod#$#####", "(QObject*, const char*, QGenericReturnArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
 			bool InvokeMethod(QObject arg1, string member, QGenericReturnArgument ret, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3);
-			[SmokeMethod("invokeMethod######", "(QObject*, const char*, QGenericReturnArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
+			[SmokeMethod("invokeMethod#$####", "(QObject*, const char*, QGenericReturnArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
 			bool InvokeMethod(QObject arg1, string member, QGenericReturnArgument ret, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2);
-			[SmokeMethod("invokeMethod#####", "(QObject*, const char*, QGenericReturnArgument, QGenericArgument, QGenericArgument)")]
+			[SmokeMethod("invokeMethod#$###", "(QObject*, const char*, QGenericReturnArgument, QGenericArgument, QGenericArgument)")]
 			bool InvokeMethod(QObject arg1, string member, QGenericReturnArgument ret, QGenericArgument val0, QGenericArgument val1);
-			[SmokeMethod("invokeMethod####", "(QObject*, const char*, QGenericReturnArgument, QGenericArgument)")]
+			[SmokeMethod("invokeMethod#$##", "(QObject*, const char*, QGenericReturnArgument, QGenericArgument)")]
 			bool InvokeMethod(QObject arg1, string member, QGenericReturnArgument ret, QGenericArgument val0);
-			[SmokeMethod("invokeMethod###", "(QObject*, const char*, QGenericReturnArgument)")]
+			[SmokeMethod("invokeMethod#$#", "(QObject*, const char*, QGenericReturnArgument)")]
 			bool InvokeMethod(QObject arg1, string member, QGenericReturnArgument ret);
-			[SmokeMethod("invokeMethod#############", "(QObject*, const char*, Qt::ConnectionType, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
+			[SmokeMethod("invokeMethod#$$##########", "(QObject*, const char*, Qt::ConnectionType, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
 			bool InvokeMethod(QObject arg1, string member, Qt.ConnectionType type, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6, QGenericArgument val7, QGenericArgument val8, QGenericArgument val9);
-			[SmokeMethod("invokeMethod############", "(QObject*, const char*, Qt::ConnectionType, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
+			[SmokeMethod("invokeMethod#$$#########", "(QObject*, const char*, Qt::ConnectionType, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
 			bool InvokeMethod(QObject arg1, string member, Qt.ConnectionType type, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6, QGenericArgument val7, QGenericArgument val8);
-			[SmokeMethod("invokeMethod###########", "(QObject*, const char*, Qt::ConnectionType, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
+			[SmokeMethod("invokeMethod#$$########", "(QObject*, const char*, Qt::ConnectionType, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
 			bool InvokeMethod(QObject arg1, string member, Qt.ConnectionType type, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6, QGenericArgument val7);
-			[SmokeMethod("invokeMethod##########", "(QObject*, const char*, Qt::ConnectionType, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
+			[SmokeMethod("invokeMethod#$$#######", "(QObject*, const char*, Qt::ConnectionType, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
 			bool InvokeMethod(QObject arg1, string member, Qt.ConnectionType type, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6);
-			[SmokeMethod("invokeMethod#########", "(QObject*, const char*, Qt::ConnectionType, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
+			[SmokeMethod("invokeMethod#$$######", "(QObject*, const char*, Qt::ConnectionType, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
 			bool InvokeMethod(QObject arg1, string member, Qt.ConnectionType type, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5);
-			[SmokeMethod("invokeMethod########", "(QObject*, const char*, Qt::ConnectionType, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
+			[SmokeMethod("invokeMethod#$$#####", "(QObject*, const char*, Qt::ConnectionType, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
 			bool InvokeMethod(QObject arg1, string member, Qt.ConnectionType type, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4);
-			[SmokeMethod("invokeMethod#######", "(QObject*, const char*, Qt::ConnectionType, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
+			[SmokeMethod("invokeMethod#$$####", "(QObject*, const char*, Qt::ConnectionType, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
 			bool InvokeMethod(QObject arg1, string member, Qt.ConnectionType type, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3);
-			[SmokeMethod("invokeMethod######", "(QObject*, const char*, Qt::ConnectionType, QGenericArgument, QGenericArgument, QGenericArgument)")]
+			[SmokeMethod("invokeMethod#$$###", "(QObject*, const char*, Qt::ConnectionType, QGenericArgument, QGenericArgument, QGenericArgument)")]
 			bool InvokeMethod(QObject arg1, string member, Qt.ConnectionType type, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2);
-			[SmokeMethod("invokeMethod#####", "(QObject*, const char*, Qt::ConnectionType, QGenericArgument, QGenericArgument)")]
+			[SmokeMethod("invokeMethod#$$##", "(QObject*, const char*, Qt::ConnectionType, QGenericArgument, QGenericArgument)")]
 			bool InvokeMethod(QObject arg1, string member, Qt.ConnectionType type, QGenericArgument val0, QGenericArgument val1);
-			[SmokeMethod("invokeMethod####", "(QObject*, const char*, Qt::ConnectionType, QGenericArgument)")]
+			[SmokeMethod("invokeMethod#$$#", "(QObject*, const char*, Qt::ConnectionType, QGenericArgument)")]
 			bool InvokeMethod(QObject arg1, string member, Qt.ConnectionType type, QGenericArgument val0);
-			[SmokeMethod("invokeMethod###", "(QObject*, const char*, Qt::ConnectionType)")]
+			[SmokeMethod("invokeMethod#$$", "(QObject*, const char*, Qt::ConnectionType)")]
 			bool InvokeMethod(QObject arg1, string member, Qt.ConnectionType type);
-			[SmokeMethod("invokeMethod############", "(QObject*, const char*, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
+			[SmokeMethod("invokeMethod#$##########", "(QObject*, const char*, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
 			bool InvokeMethod(QObject arg1, string member, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6, QGenericArgument val7, QGenericArgument val8, QGenericArgument val9);
-			[SmokeMethod("invokeMethod###########", "(QObject*, const char*, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
+			[SmokeMethod("invokeMethod#$#########", "(QObject*, const char*, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
 			bool InvokeMethod(QObject arg1, string member, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6, QGenericArgument val7, QGenericArgument val8);
-			[SmokeMethod("invokeMethod##########", "(QObject*, const char*, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
+			[SmokeMethod("invokeMethod#$########", "(QObject*, const char*, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
 			bool InvokeMethod(QObject arg1, string member, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6, QGenericArgument val7);
-			[SmokeMethod("invokeMethod#########", "(QObject*, const char*, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
+			[SmokeMethod("invokeMethod#$#######", "(QObject*, const char*, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
 			bool InvokeMethod(QObject arg1, string member, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6);
-			[SmokeMethod("invokeMethod########", "(QObject*, const char*, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
+			[SmokeMethod("invokeMethod#$######", "(QObject*, const char*, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
 			bool InvokeMethod(QObject arg1, string member, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5);
-			[SmokeMethod("invokeMethod#######", "(QObject*, const char*, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
+			[SmokeMethod("invokeMethod#$#####", "(QObject*, const char*, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
 			bool InvokeMethod(QObject arg1, string member, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4);
-			[SmokeMethod("invokeMethod######", "(QObject*, const char*, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
+			[SmokeMethod("invokeMethod#$####", "(QObject*, const char*, QGenericArgument, QGenericArgument, QGenericArgument, QGenericArgument)")]
 			bool InvokeMethod(QObject arg1, string member, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3);
-			[SmokeMethod("invokeMethod#####", "(QObject*, const char*, QGenericArgument, QGenericArgument, QGenericArgument)")]
+			[SmokeMethod("invokeMethod#$###", "(QObject*, const char*, QGenericArgument, QGenericArgument, QGenericArgument)")]
 			bool InvokeMethod(QObject arg1, string member, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2);
-			[SmokeMethod("invokeMethod####", "(QObject*, const char*, QGenericArgument, QGenericArgument)")]
+			[SmokeMethod("invokeMethod#$##", "(QObject*, const char*, QGenericArgument, QGenericArgument)")]
 			bool InvokeMethod(QObject arg1, string member, QGenericArgument val0, QGenericArgument val1);
-			[SmokeMethod("invokeMethod###", "(QObject*, const char*, QGenericArgument)")]
+			[SmokeMethod("invokeMethod#$#", "(QObject*, const char*, QGenericArgument)")]
 			bool InvokeMethod(QObject arg1, string member, QGenericArgument val0);
-			[SmokeMethod("invokeMethod##", "(QObject*, const char*)")]
+			[SmokeMethod("invokeMethod#$", "(QObject*, const char*)")]
 			bool InvokeMethod(QObject arg1, string member);
 		}
 

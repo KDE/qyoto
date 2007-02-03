@@ -204,11 +204,11 @@ namespace Qyoto {
 		public int FindText(string text) {
 			return ProxyQComboBox().FindText(text);
 		}
-		[SmokeMethod("findData###", "(const QVariant&, int, Qt::MatchFlags) const")]
+		[SmokeMethod("findData#$$", "(const QVariant&, int, Qt::MatchFlags) const")]
 		public int FindData(QVariant data, int role, int flags) {
 			return ProxyQComboBox().FindData(data,role,flags);
 		}
-		[SmokeMethod("findData##", "(const QVariant&, int) const")]
+		[SmokeMethod("findData#$", "(const QVariant&, int) const")]
 		public int FindData(QVariant data, int role) {
 			return ProxyQComboBox().FindData(data,role);
 		}
@@ -284,7 +284,7 @@ namespace Qyoto {
 		public QVariant ItemData(int index) {
 			return ProxyQComboBox().ItemData(index);
 		}
-		[SmokeMethod("addItem$$", "(const QString&, const QVariant&)")]
+		[SmokeMethod("addItem$#", "(const QString&, const QVariant&)")]
 		public void AddItem(string text, QVariant userData) {
 			ProxyQComboBox().AddItem(text,userData);
 		}
@@ -292,11 +292,11 @@ namespace Qyoto {
 		public void AddItem(string text) {
 			ProxyQComboBox().AddItem(text);
 		}
-		[SmokeMethod("addItem###", "(const QIcon&, const QString&, const QVariant&)")]
+		[SmokeMethod("addItem#$#", "(const QIcon&, const QString&, const QVariant&)")]
 		public void AddItem(QIcon icon, string text, QVariant userData) {
 			ProxyQComboBox().AddItem(icon,text,userData);
 		}
-		[SmokeMethod("addItem##", "(const QIcon&, const QString&)")]
+		[SmokeMethod("addItem#$", "(const QIcon&, const QString&)")]
 		public void AddItem(QIcon icon, string text) {
 			ProxyQComboBox().AddItem(icon,text);
 		}
@@ -304,7 +304,7 @@ namespace Qyoto {
 		public void AddItems(List<string> texts) {
 			ProxyQComboBox().AddItems(texts);
 		}
-		[SmokeMethod("insertItem$$$", "(int, const QString&, const QVariant&)")]
+		[SmokeMethod("insertItem$$#", "(int, const QString&, const QVariant&)")]
 		public void InsertItem(int index, string text, QVariant userData) {
 			ProxyQComboBox().InsertItem(index,text,userData);
 		}
@@ -312,15 +312,15 @@ namespace Qyoto {
 		public void InsertItem(int index, string text) {
 			ProxyQComboBox().InsertItem(index,text);
 		}
-		[SmokeMethod("insertItem$$$$", "(int, const QIcon&, const QString&, const QVariant&)")]
+		[SmokeMethod("insertItem$#$#", "(int, const QIcon&, const QString&, const QVariant&)")]
 		public void InsertItem(int index, QIcon icon, string text, QVariant userData) {
 			ProxyQComboBox().InsertItem(index,icon,text,userData);
 		}
-		[SmokeMethod("insertItem$$$", "(int, const QIcon&, const QString&)")]
+		[SmokeMethod("insertItem$#$", "(int, const QIcon&, const QString&)")]
 		public void InsertItem(int index, QIcon icon, string text) {
 			ProxyQComboBox().InsertItem(index,icon,text);
 		}
-		[SmokeMethod("insertItems$$", "(int, const QStringList&)")]
+		[SmokeMethod("insertItems$?", "(int, const QStringList&)")]
 		public void InsertItems(int index, List<string> texts) {
 			ProxyQComboBox().InsertItems(index,texts);
 		}
@@ -332,15 +332,15 @@ namespace Qyoto {
 		public void SetItemText(int index, string text) {
 			ProxyQComboBox().SetItemText(index,text);
 		}
-		[SmokeMethod("setItemIcon$$", "(int, const QIcon&)")]
+		[SmokeMethod("setItemIcon$#", "(int, const QIcon&)")]
 		public void SetItemIcon(int index, QIcon icon) {
 			ProxyQComboBox().SetItemIcon(index,icon);
 		}
-		[SmokeMethod("setItemData$$$", "(int, const QVariant&, int)")]
+		[SmokeMethod("setItemData$#$", "(int, const QVariant&, int)")]
 		public void SetItemData(int index, QVariant value, int role) {
 			ProxyQComboBox().SetItemData(index,value,role);
 		}
-		[SmokeMethod("setItemData$$", "(int, const QVariant&)")]
+		[SmokeMethod("setItemData$#", "(int, const QVariant&)")]
 		public void SetItemData(int index, QVariant value) {
 			ProxyQComboBox().SetItemData(index,value);
 		}
@@ -372,17 +372,17 @@ namespace Qyoto {
 		public new bool Event(QEvent arg1) {
 			return ProxyQComboBox().Event(arg1);
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void clear()")]
 		[SmokeMethod("clear", "()")]
 		public void Clear() {
 			ProxyQComboBox().Clear();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void clearEditText()")]
 		[SmokeMethod("clearEditText", "()")]
 		public void ClearEditText() {
 			ProxyQComboBox().ClearEditText();
 		}
-		[Q_SLOT("void (const QString&)")]
+		[Q_SLOT("void setEditText(const QString&)")]
 		[SmokeMethod("setEditText$", "(const QString&)")]
 		public void SetEditText(string text) {
 			ProxyQComboBox().SetEditText(text);
@@ -471,19 +471,19 @@ namespace Qyoto {
 	}
 
 	public interface IQComboBoxSignals : IQWidgetSignals {
-		[Q_SIGNAL("void (const QString&)")]
+		[Q_SIGNAL("void editTextChanged(const QString&)")]
 		void EditTextChanged(string arg1);
-		[Q_SIGNAL("void (int)")]
+		[Q_SIGNAL("void activated(int)")]
 		void Activated(int index);
-		[Q_SIGNAL("void (const QString&)")]
+		[Q_SIGNAL("void activated(const QString&)")]
 		void Activated(string arg1);
-		[Q_SIGNAL("void (int)")]
+		[Q_SIGNAL("void highlighted(int)")]
 		void Highlighted(int index);
-		[Q_SIGNAL("void (const QString&)")]
+		[Q_SIGNAL("void highlighted(const QString&)")]
 		void Highlighted(string arg1);
-		[Q_SIGNAL("void (int)")]
+		[Q_SIGNAL("void currentIndexChanged(int)")]
 		void CurrentIndexChanged(int index);
-		[Q_SIGNAL("void (const QString&)")]
+		[Q_SIGNAL("void currentIndexChanged(const QString&)")]
 		void CurrentIndexChanged(string arg1);
 	}
 }

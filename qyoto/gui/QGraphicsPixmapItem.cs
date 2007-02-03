@@ -144,7 +144,7 @@ namespace Qyoto {
 		protected new bool SupportsExtension(QGraphicsItem.Extension extension) {
 			return ProxyQGraphicsPixmapItem().SupportsExtension(extension);
 		}
-		[SmokeMethod("setExtension$$", "(QGraphicsItem::Extension, const QVariant&)")]
+		[SmokeMethod("setExtension$#", "(QGraphicsItem::Extension, const QVariant&)")]
 		protected new void SetExtension(QGraphicsItem.Extension extension, QVariant variant) {
 			ProxyQGraphicsPixmapItem().SetExtension(extension,variant);
 		}

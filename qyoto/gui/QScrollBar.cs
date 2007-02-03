@@ -51,7 +51,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQScrollBar(arg1,parent);
 		}
-		[SmokeMethod("QScrollBar$$", "(Qt::Orientation, QWidget*)")]
+		[SmokeMethod("QScrollBar$#", "(Qt::Orientation, QWidget*)")]
 		private void NewQScrollBar(Qt.Orientation arg1, QWidget parent) {
 			ProxyQScrollBar().NewQScrollBar(arg1,parent);
 		}

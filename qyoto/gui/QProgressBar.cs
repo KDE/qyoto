@@ -155,7 +155,7 @@ namespace Qyoto {
 		public new QSize MinimumSizeHint() {
 			return ProxyQProgressBar().MinimumSizeHint();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void reset()")]
 		[SmokeMethod("reset", "()")]
 		public void Reset() {
 			ProxyQProgressBar().Reset();
@@ -192,7 +192,7 @@ namespace Qyoto {
 	}
 
 	public interface IQProgressBarSignals : IQWidgetSignals {
-		[Q_SIGNAL("void (int)")]
+		[Q_SIGNAL("void valueChanged(int)")]
 		void ValueChanged(int value);
 	}
 }

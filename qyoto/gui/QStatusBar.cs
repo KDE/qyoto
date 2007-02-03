@@ -57,7 +57,7 @@ namespace Qyoto {
 		private void NewQStatusBar() {
 			ProxyQStatusBar().NewQStatusBar();
 		}
-		[SmokeMethod("addWidget##", "(QWidget*, int)")]
+		[SmokeMethod("addWidget#$", "(QWidget*, int)")]
 		public void AddWidget(QWidget widget, int stretch) {
 			ProxyQStatusBar().AddWidget(widget,stretch);
 		}
@@ -65,15 +65,15 @@ namespace Qyoto {
 		public void AddWidget(QWidget widget) {
 			ProxyQStatusBar().AddWidget(widget);
 		}
-		[SmokeMethod("insertWidget$$$", "(int, QWidget*, int)")]
+		[SmokeMethod("insertWidget$#$", "(int, QWidget*, int)")]
 		public int InsertWidget(int index, QWidget widget, int stretch) {
 			return ProxyQStatusBar().InsertWidget(index,widget,stretch);
 		}
-		[SmokeMethod("insertWidget$$", "(int, QWidget*)")]
+		[SmokeMethod("insertWidget$#", "(int, QWidget*)")]
 		public int InsertWidget(int index, QWidget widget) {
 			return ProxyQStatusBar().InsertWidget(index,widget);
 		}
-		[SmokeMethod("addPermanentWidget##", "(QWidget*, int)")]
+		[SmokeMethod("addPermanentWidget#$", "(QWidget*, int)")]
 		public void AddPermanentWidget(QWidget widget, int stretch) {
 			ProxyQStatusBar().AddPermanentWidget(widget,stretch);
 		}
@@ -81,11 +81,11 @@ namespace Qyoto {
 		public void AddPermanentWidget(QWidget widget) {
 			ProxyQStatusBar().AddPermanentWidget(widget);
 		}
-		[SmokeMethod("insertPermanentWidget$$$", "(int, QWidget*, int)")]
+		[SmokeMethod("insertPermanentWidget$#$", "(int, QWidget*, int)")]
 		public int InsertPermanentWidget(int index, QWidget widget, int stretch) {
 			return ProxyQStatusBar().InsertPermanentWidget(index,widget,stretch);
 		}
-		[SmokeMethod("insertPermanentWidget$$", "(int, QWidget*)")]
+		[SmokeMethod("insertPermanentWidget$#", "(int, QWidget*)")]
 		public int InsertPermanentWidget(int index, QWidget widget) {
 			return ProxyQStatusBar().InsertPermanentWidget(index,widget);
 		}
@@ -101,17 +101,17 @@ namespace Qyoto {
 		public string CurrentMessage() {
 			return ProxyQStatusBar().CurrentMessage();
 		}
-		[Q_SLOT("void (const QString&, int)")]
+		[Q_SLOT("void showMessage(const QString&, int)")]
 		[SmokeMethod("showMessage$$", "(const QString&, int)")]
 		public void ShowMessage(string text, int timeout) {
 			ProxyQStatusBar().ShowMessage(text,timeout);
 		}
-		[Q_SLOT("void (const QString&)")]
+		[Q_SLOT("void showMessage(const QString&)")]
 		[SmokeMethod("showMessage$", "(const QString&)")]
 		public void ShowMessage(string text) {
 			ProxyQStatusBar().ShowMessage(text);
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void clearMessage()")]
 		[SmokeMethod("clearMessage", "()")]
 		public void ClearMessage() {
 			ProxyQStatusBar().ClearMessage();
@@ -160,7 +160,7 @@ namespace Qyoto {
 	}
 
 	public interface IQStatusBarSignals : IQWidgetSignals {
-		[Q_SIGNAL("void (const QString&)")]
+		[Q_SIGNAL("void messageChanged(const QString&)")]
 		void MessageChanged(string text);
 	}
 }

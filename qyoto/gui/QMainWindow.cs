@@ -72,7 +72,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQMainWindow(parent,flags);
 		}
-		[SmokeMethod("QMainWindow##", "(QWidget*, Qt::WindowFlags)")]
+		[SmokeMethod("QMainWindow#$", "(QWidget*, Qt::WindowFlags)")]
 		private void NewQMainWindow(QWidget parent, int flags) {
 			ProxyQMainWindow().NewQMainWindow(parent,flags);
 		}
@@ -156,7 +156,7 @@ namespace Qyoto {
 		public void InsertToolBarBreak(QToolBar before) {
 			ProxyQMainWindow().InsertToolBarBreak(before);
 		}
-		[SmokeMethod("addToolBar$$", "(Qt::ToolBarArea, QToolBar*)")]
+		[SmokeMethod("addToolBar$#", "(Qt::ToolBarArea, QToolBar*)")]
 		public void AddToolBar(Qt.ToolBarArea area, QToolBar toolbar) {
 			ProxyQMainWindow().AddToolBar(area,toolbar);
 		}
@@ -180,15 +180,15 @@ namespace Qyoto {
 		public Qt.ToolBarArea ToolBarArea(QToolBar toolbar) {
 			return ProxyQMainWindow().ToolBarArea(toolbar);
 		}
-		[SmokeMethod("addDockWidget$$", "(Qt::DockWidgetArea, QDockWidget*)")]
+		[SmokeMethod("addDockWidget$#", "(Qt::DockWidgetArea, QDockWidget*)")]
 		public void AddDockWidget(Qt.DockWidgetArea area, QDockWidget dockwidget) {
 			ProxyQMainWindow().AddDockWidget(area,dockwidget);
 		}
-		[SmokeMethod("addDockWidget$$$", "(Qt::DockWidgetArea, QDockWidget*, Qt::Orientation)")]
+		[SmokeMethod("addDockWidget$#$", "(Qt::DockWidgetArea, QDockWidget*, Qt::Orientation)")]
 		public void AddDockWidget(Qt.DockWidgetArea area, QDockWidget dockwidget, Qt.Orientation orientation) {
 			ProxyQMainWindow().AddDockWidget(area,dockwidget,orientation);
 		}
-		[SmokeMethod("splitDockWidget###", "(QDockWidget*, QDockWidget*, Qt::Orientation)")]
+		[SmokeMethod("splitDockWidget##$", "(QDockWidget*, QDockWidget*, Qt::Orientation)")]
 		public void SplitDockWidget(QDockWidget after, QDockWidget dockwidget, Qt.Orientation orientation) {
 			ProxyQMainWindow().SplitDockWidget(after,dockwidget,orientation);
 		}
@@ -212,7 +212,7 @@ namespace Qyoto {
 		public QByteArray SaveState() {
 			return ProxyQMainWindow().SaveState();
 		}
-		[SmokeMethod("restoreState##", "(const QByteArray&, int)")]
+		[SmokeMethod("restoreState#$", "(const QByteArray&, int)")]
 		public bool RestoreState(QByteArray state, int version) {
 			return ProxyQMainWindow().RestoreState(state,version);
 		}
@@ -256,9 +256,9 @@ namespace Qyoto {
 	}
 
 	public interface IQMainWindowSignals : IQWidgetSignals {
-		[Q_SIGNAL("void (const QSize&)")]
+		[Q_SIGNAL("void iconSizeChanged(const QSize&)")]
 		void IconSizeChanged(QSize iconSize);
-		[Q_SIGNAL("void (Qt::ToolButtonStyle)")]
+		[Q_SIGNAL("void toolButtonStyleChanged(Qt::ToolButtonStyle)")]
 		void ToolButtonStyleChanged(Qt.ToolButtonStyle toolButtonStyle);
 	}
 }

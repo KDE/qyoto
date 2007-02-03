@@ -56,7 +56,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGLPixelBuffer(width,height,format,shareWidget);
 		}
-		[SmokeMethod("QGLPixelBuffer$$$$", "(int, int, const QGLFormat&, QGLWidget*)")]
+		[SmokeMethod("QGLPixelBuffer$$##", "(int, int, const QGLFormat&, QGLWidget*)")]
 		private void NewQGLPixelBuffer(int width, int height, QGLFormat format, QGLWidget shareWidget) {
 			ProxyQGLPixelBuffer().NewQGLPixelBuffer(width,height,format,shareWidget);
 		}
@@ -64,7 +64,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGLPixelBuffer(width,height,format);
 		}
-		[SmokeMethod("QGLPixelBuffer$$$", "(int, int, const QGLFormat&)")]
+		[SmokeMethod("QGLPixelBuffer$$#", "(int, int, const QGLFormat&)")]
 		private void NewQGLPixelBuffer(int width, int height, QGLFormat format) {
 			ProxyQGLPixelBuffer().NewQGLPixelBuffer(width,height,format);
 		}
@@ -104,7 +104,7 @@ namespace Qyoto {
 		public void UpdateDynamicTexture(uint texture_id) {
 			ProxyQGLPixelBuffer().UpdateDynamicTexture(texture_id);
 		}
-		[SmokeMethod("bindTexture##", "(const QImage&, GLenum)")]
+		[SmokeMethod("bindTexture#$", "(const QImage&, GLenum)")]
 		public uint BindTexture(QImage image, int target) {
 			return ProxyQGLPixelBuffer().BindTexture(image,target);
 		}
@@ -112,7 +112,7 @@ namespace Qyoto {
 		public uint BindTexture(QImage image) {
 			return ProxyQGLPixelBuffer().BindTexture(image);
 		}
-		[SmokeMethod("bindTexture##", "(const QPixmap&, GLenum)")]
+		[SmokeMethod("bindTexture#$", "(const QPixmap&, GLenum)")]
 		public uint BindTexture(QPixmap pixmap, int target) {
 			return ProxyQGLPixelBuffer().BindTexture(pixmap,target);
 		}

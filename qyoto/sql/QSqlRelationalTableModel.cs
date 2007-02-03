@@ -55,7 +55,7 @@ namespace Qyoto {
 		private void NewQSqlRelationalTableModel() {
 			ProxyQSqlRelationalTableModel().NewQSqlRelationalTableModel();
 		}
-		[SmokeMethod("data##", "(const QModelIndex&, int) const")]
+		[SmokeMethod("data#$", "(const QModelIndex&, int) const")]
 		public new QVariant Data(QModelIndex item, int role) {
 			return ProxyQSqlRelationalTableModel().Data(item,role);
 		}
@@ -63,7 +63,7 @@ namespace Qyoto {
 		public new QVariant Data(QModelIndex item) {
 			return ProxyQSqlRelationalTableModel().Data(item);
 		}
-		[SmokeMethod("setData###", "(const QModelIndex&, const QVariant&, int)")]
+		[SmokeMethod("setData##$", "(const QModelIndex&, const QVariant&, int)")]
 		public new bool SetData(QModelIndex item, QVariant value, int role) {
 			return ProxyQSqlRelationalTableModel().SetData(item,value,role);
 		}
@@ -71,7 +71,7 @@ namespace Qyoto {
 		public new bool SetData(QModelIndex item, QVariant value) {
 			return ProxyQSqlRelationalTableModel().SetData(item,value);
 		}
-		[SmokeMethod("removeColumns$$$", "(int, int, const QModelIndex&)")]
+		[SmokeMethod("removeColumns$$#", "(int, int, const QModelIndex&)")]
 		public new bool RemoveColumns(int column, int count, QModelIndex parent) {
 			return ProxyQSqlRelationalTableModel().RemoveColumns(column,count,parent);
 		}
@@ -91,7 +91,7 @@ namespace Qyoto {
 		public new void SetTable(string tableName) {
 			ProxyQSqlRelationalTableModel().SetTable(tableName);
 		}
-		[SmokeMethod("setRelation$$", "(int, const QSqlRelation&)")]
+		[SmokeMethod("setRelation$#", "(int, const QSqlRelation&)")]
 		public virtual void SetRelation(int column, QSqlRelation relation) {
 			ProxyQSqlRelationalTableModel().SetRelation(column,relation);
 		}
@@ -103,7 +103,7 @@ namespace Qyoto {
 		public virtual QSqlTableModel RelationModel(int column) {
 			return ProxyQSqlRelationalTableModel().RelationModel(column);
 		}
-		[Q_SLOT("void (int)")]
+		[Q_SLOT("void revertRow(int)")]
 		[SmokeMethod("revertRow$", "(int)")]
 		public new void RevertRow(int row) {
 			ProxyQSqlRelationalTableModel().RevertRow(row);
@@ -118,7 +118,7 @@ namespace Qyoto {
 		protected new string SelectStatement() {
 			return ProxyQSqlRelationalTableModel().SelectStatement();
 		}
-		[SmokeMethod("updateRowInTable$$", "(int, const QSqlRecord&)")]
+		[SmokeMethod("updateRowInTable$#", "(int, const QSqlRecord&)")]
 		protected new bool UpdateRowInTable(int row, QSqlRecord values) {
 			return ProxyQSqlRelationalTableModel().UpdateRowInTable(row,values);
 		}

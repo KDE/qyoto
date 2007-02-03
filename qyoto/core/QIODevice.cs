@@ -250,11 +250,11 @@ namespace Qyoto {
 	}
 
 	public interface IQIODeviceSignals : IQObjectSignals {
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void readyRead()")]
 		void ReadyRead();
-		[Q_SIGNAL("void (qint64)")]
+		[Q_SIGNAL("void bytesWritten(qint64)")]
 		void BytesWritten(long bytes);
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void aboutToClose()")]
 		void AboutToClose();
 	}
 }

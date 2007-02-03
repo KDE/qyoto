@@ -51,7 +51,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQRadioButton(text,parent);
 		}
-		[SmokeMethod("QRadioButton$$", "(const QString&, QWidget*)")]
+		[SmokeMethod("QRadioButton$#", "(const QString&, QWidget*)")]
 		private void NewQRadioButton(string text, QWidget parent) {
 			ProxyQRadioButton().NewQRadioButton(text,parent);
 		}

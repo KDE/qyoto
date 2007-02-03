@@ -629,11 +629,11 @@ namespace Qyoto {
 		public new string ToString(float i) {
 			return ProxyQLocale().ToString(i);
 		}
-		[SmokeMethod("toString##", "(const QDate&, const QString&) const")]
+		[SmokeMethod("toString#$", "(const QDate&, const QString&) const")]
 		public new string ToString(QDate date, string formatStr) {
 			return ProxyQLocale().ToString(date,formatStr);
 		}
-		[SmokeMethod("toString##", "(const QDate&, QLocale::FormatType) const")]
+		[SmokeMethod("toString#$", "(const QDate&, QLocale::FormatType) const")]
 		public new string ToString(QDate date, QLocale.FormatType format) {
 			return ProxyQLocale().ToString(date,format);
 		}
@@ -641,11 +641,11 @@ namespace Qyoto {
 		public new string ToString(QDate date) {
 			return ProxyQLocale().ToString(date);
 		}
-		[SmokeMethod("toString##", "(const QTime&, const QString&) const")]
+		[SmokeMethod("toString#$", "(const QTime&, const QString&) const")]
 		public new string ToString(QTime time, string formatStr) {
 			return ProxyQLocale().ToString(time,formatStr);
 		}
-		[SmokeMethod("toString##", "(const QTime&, QLocale::FormatType) const")]
+		[SmokeMethod("toString#$", "(const QTime&, QLocale::FormatType) const")]
 		public new string ToString(QTime time, QLocale.FormatType format) {
 			return ProxyQLocale().ToString(time,format);
 		}

@@ -67,7 +67,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQLibrary(fileName,parent);
 		}
-		[SmokeMethod("QLibrary$$", "(const QString&, QObject*)")]
+		[SmokeMethod("QLibrary$#", "(const QString&, QObject*)")]
 		private void NewQLibrary(string fileName, QObject parent) {
 			ProxyQLibrary().NewQLibrary(fileName,parent);
 		}
@@ -83,7 +83,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQLibrary(fileName,verNum,parent);
 		}
-		[SmokeMethod("QLibrary$$$", "(const QString&, int, QObject*)")]
+		[SmokeMethod("QLibrary$$#", "(const QString&, int, QObject*)")]
 		private void NewQLibrary(string fileName, int verNum, QObject parent) {
 			ProxyQLibrary().NewQLibrary(fileName,verNum,parent);
 		}

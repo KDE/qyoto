@@ -119,7 +119,7 @@ namespace Qyoto {
 		public new bool IsRelativePath() {
 			return ProxyQFSFileEngine().IsRelativePath();
 		}
-		[SmokeMethod("entryList$$", "(QDir::Filters, const QStringList&) const")]
+		[SmokeMethod("entryList$?", "(QDir::Filters, const QStringList&) const")]
 		public new List<string> EntryList(int filters, List<string> filterNames) {
 			return ProxyQFSFileEngine().EntryList(filters,filterNames);
 		}

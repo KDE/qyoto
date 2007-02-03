@@ -132,11 +132,11 @@ namespace Qyoto {
 		public int Cd(string dir) {
 			return ProxyQFtp().Cd(dir);
 		}
-		[SmokeMethod("get$$$", "(const QString&, QIODevice*, QFtp::TransferType)")]
+		[SmokeMethod("get$#$", "(const QString&, QIODevice*, QFtp::TransferType)")]
 		public int Get(string file, IQIODevice dev, QFtp.TransferType type) {
 			return ProxyQFtp().Get(file,dev,type);
 		}
-		[SmokeMethod("get$$", "(const QString&, QIODevice*)")]
+		[SmokeMethod("get$#", "(const QString&, QIODevice*)")]
 		public int Get(string file, IQIODevice dev) {
 			return ProxyQFtp().Get(file,dev);
 		}
@@ -144,19 +144,19 @@ namespace Qyoto {
 		public int Get(string file) {
 			return ProxyQFtp().Get(file);
 		}
-		[SmokeMethod("put###", "(const QByteArray&, const QString&, QFtp::TransferType)")]
+		[SmokeMethod("put#$$", "(const QByteArray&, const QString&, QFtp::TransferType)")]
 		public int Put(QByteArray data, string file, QFtp.TransferType type) {
 			return ProxyQFtp().Put(data,file,type);
 		}
-		[SmokeMethod("put##", "(const QByteArray&, const QString&)")]
+		[SmokeMethod("put#$", "(const QByteArray&, const QString&)")]
 		public int Put(QByteArray data, string file) {
 			return ProxyQFtp().Put(data,file);
 		}
-		[SmokeMethod("put###", "(QIODevice*, const QString&, QFtp::TransferType)")]
+		[SmokeMethod("put#$$", "(QIODevice*, const QString&, QFtp::TransferType)")]
 		public int Put(IQIODevice dev, string file, QFtp.TransferType type) {
 			return ProxyQFtp().Put(dev,file,type);
 		}
-		[SmokeMethod("put##", "(QIODevice*, const QString&)")]
+		[SmokeMethod("put#$", "(QIODevice*, const QString&)")]
 		public int Put(IQIODevice dev, string file) {
 			return ProxyQFtp().Put(dev,file);
 		}
@@ -224,7 +224,7 @@ namespace Qyoto {
 		public string ErrorString() {
 			return ProxyQFtp().ErrorString();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void abort()")]
 		[SmokeMethod("abort", "()")]
 		public void Abort() {
 			ProxyQFtp().Abort();
@@ -253,21 +253,21 @@ namespace Qyoto {
 	}
 
 	public interface IQFtpSignals : IQObjectSignals {
-		[Q_SIGNAL("void (int)")]
+		[Q_SIGNAL("void stateChanged(int)")]
 		void StateChanged(int arg1);
-		[Q_SIGNAL("void (const QUrlInfo&)")]
+		[Q_SIGNAL("void listInfo(const QUrlInfo&)")]
 		void ListInfo(QUrlInfo arg1);
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void readyRead()")]
 		void ReadyRead();
-		[Q_SIGNAL("void (qint64, qint64)")]
+		[Q_SIGNAL("void dataTransferProgress(qint64, qint64)")]
 		void DataTransferProgress(long arg1, long arg2);
-		[Q_SIGNAL("void (int, const QString&)")]
+		[Q_SIGNAL("void rawCommandReply(int, const QString&)")]
 		void RawCommandReply(int arg1, string arg2);
-		[Q_SIGNAL("void (int)")]
+		[Q_SIGNAL("void commandStarted(int)")]
 		void CommandStarted(int arg1);
-		[Q_SIGNAL("void (int, bool)")]
+		[Q_SIGNAL("void commandFinished(int, bool)")]
 		void CommandFinished(int arg1, bool arg2);
-		[Q_SIGNAL("void (bool)")]
+		[Q_SIGNAL("void done(bool)")]
 		void Done(bool arg1);
 	}
 }

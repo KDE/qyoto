@@ -31,7 +31,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQAccessibleWidgetEx(o,r,name);
 		}
-		[SmokeMethod("QAccessibleWidgetEx###", "(QWidget*, QAccessible::Role, const QString&)")]
+		[SmokeMethod("QAccessibleWidgetEx#$$", "(QWidget*, QAccessible::Role, const QString&)")]
 		private void NewQAccessibleWidgetEx(QWidget o, QAccessible.Role r, string name) {
 			ProxyQAccessibleWidgetEx().NewQAccessibleWidgetEx(o,r,name);
 		}
@@ -39,7 +39,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQAccessibleWidgetEx(o,r);
 		}
-		[SmokeMethod("QAccessibleWidgetEx##", "(QWidget*, QAccessible::Role)")]
+		[SmokeMethod("QAccessibleWidgetEx#$", "(QWidget*, QAccessible::Role)")]
 		private void NewQAccessibleWidgetEx(QWidget o, QAccessible.Role r) {
 			ProxyQAccessibleWidgetEx().NewQAccessibleWidgetEx(o,r);
 		}
@@ -59,7 +59,7 @@ namespace Qyoto {
 		public new int IndexOfChild(QAccessibleInterface child) {
 			return ProxyQAccessibleWidgetEx().IndexOfChild(child);
 		}
-		[SmokeMethod("relationTo$$$", "(int, const QAccessibleInterface*, int) const")]
+		[SmokeMethod("relationTo$#$", "(int, const QAccessibleInterface*, int) const")]
 		public new int RelationTo(int child, QAccessibleInterface other, int otherChild) {
 			return ProxyQAccessibleWidgetEx().RelationTo(child,other,otherChild);
 		}
@@ -71,7 +71,7 @@ namespace Qyoto {
 		public new QRect Rect(int child) {
 			return ProxyQAccessibleWidgetEx().Rect(child);
 		}
-		[SmokeMethod("navigate$$$", "(QAccessible::RelationFlag, int, QAccessibleInterface**) const")]
+		[SmokeMethod("navigate$$?", "(QAccessible::RelationFlag, int, QAccessibleInterface**) const")]
 		public new int Navigate(QAccessible.RelationFlag rel, int entry, QAccessibleInterface target) {
 			return ProxyQAccessibleWidgetEx().Navigate(rel,entry,target);
 		}
@@ -91,7 +91,7 @@ namespace Qyoto {
 		public new string ActionText(int action, QAccessible.Text t, int child) {
 			return ProxyQAccessibleWidgetEx().ActionText(action,t,child);
 		}
-		[SmokeMethod("doAction$$$", "(int, int, const QVariantList&)")]
+		[SmokeMethod("doAction$$?", "(int, int, const QVariantList&)")]
 		public new bool DoAction(int action, int child, List<QVariant> arg3) {
 			return ProxyQAccessibleWidgetEx().DoAction(action,child,arg3);
 		}

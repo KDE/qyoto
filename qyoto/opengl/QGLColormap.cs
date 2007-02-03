@@ -56,11 +56,11 @@ namespace Qyoto {
 		public void Detach() {
 			ProxyQGLColormap().Detach();
 		}
-		[SmokeMethod("setEntries$$$", "(int, const QRgb*, int)")]
+		[SmokeMethod("setEntries$?$", "(int, const QRgb*, int)")]
 		public void SetEntries(int count, out int colors, int arg3) {
 			ProxyQGLColormap().SetEntries(count,out colors,arg3);
 		}
-		[SmokeMethod("setEntries$$", "(int, const QRgb*)")]
+		[SmokeMethod("setEntries$?", "(int, const QRgb*)")]
 		public void SetEntries(int count, out int colors) {
 			ProxyQGLColormap().SetEntries(count,out colors);
 		}
@@ -68,7 +68,7 @@ namespace Qyoto {
 		public void SetEntry(int idx, uint color) {
 			ProxyQGLColormap().SetEntry(idx,color);
 		}
-		[SmokeMethod("setEntry$$", "(int, const QColor&)")]
+		[SmokeMethod("setEntry$#", "(int, const QColor&)")]
 		public void SetEntry(int idx, QColor color) {
 			ProxyQGLColormap().SetEntry(idx,color);
 		}

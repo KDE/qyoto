@@ -29,7 +29,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQMouseEvent(type,pos,button,buttons,modifiers);
 		}
-		[SmokeMethod("QMouseEvent$$$$$", "(QEvent::Type, const QPoint&, Qt::MouseButton, Qt::MouseButtons, Qt::KeyboardModifiers)")]
+		[SmokeMethod("QMouseEvent$#$$$", "(QEvent::Type, const QPoint&, Qt::MouseButton, Qt::MouseButtons, Qt::KeyboardModifiers)")]
 		private void NewQMouseEvent(QEvent.TypeOf type, QPoint pos, Qt.MouseButton button, int buttons, int modifiers) {
 			ProxyQMouseEvent().NewQMouseEvent(type,pos,button,buttons,modifiers);
 		}
@@ -37,7 +37,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQMouseEvent(type,pos,globalPos,button,buttons,modifiers);
 		}
-		[SmokeMethod("QMouseEvent$$$$$$", "(QEvent::Type, const QPoint&, const QPoint&, Qt::MouseButton, Qt::MouseButtons, Qt::KeyboardModifiers)")]
+		[SmokeMethod("QMouseEvent$##$$$", "(QEvent::Type, const QPoint&, const QPoint&, Qt::MouseButton, Qt::MouseButtons, Qt::KeyboardModifiers)")]
 		private void NewQMouseEvent(QEvent.TypeOf type, QPoint pos, QPoint globalPos, Qt.MouseButton button, int buttons, int modifiers) {
 			ProxyQMouseEvent().NewQMouseEvent(type,pos,globalPos,button,buttons,modifiers);
 		}

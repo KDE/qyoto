@@ -52,7 +52,7 @@ namespace Qyoto {
 			bool SendEvent(QObject receiver, QEvent arg2);
 			[SmokeMethod("postEvent##", "(QObject*, QEvent*)")]
 			void PostEvent(QObject receiver, QEvent arg2);
-			[SmokeMethod("sendPostedEvents##", "(QObject*, int)")]
+			[SmokeMethod("sendPostedEvents#$", "(QObject*, int)")]
 			void SendPostedEvents(QObject receiver, int event_type);
 			[SmokeMethod("sendPostedEvents", "()")]
 			void SendPostedEvents();
@@ -269,7 +269,7 @@ namespace Qyoto {
 		public static void Flush() {
 			StaticQCoreApplication().Flush();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void quit()")]
 		public static void Quit() {
 			StaticQCoreApplication().Quit();
 		}
@@ -296,9 +296,9 @@ namespace Qyoto {
 	}
 
 	public interface IQCoreApplicationSignals : IQObjectSignals {
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void aboutToQuit()")]
 		void AboutToQuit();
-		[Q_SIGNAL("void (int)")]
+		[Q_SIGNAL("void unixSignal(int)")]
 		void UnixSignal(int arg1);
 	}
 }

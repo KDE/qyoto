@@ -14,11 +14,11 @@ namespace Qyoto {
 			string Tr(string s, string c);
 			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
-			[SmokeMethod("execute$$", "(const QString&, const QStringList&)")]
+			[SmokeMethod("execute$?", "(const QString&, const QStringList&)")]
 			int Execute(string program, List<string> arguments);
 			[SmokeMethod("execute$", "(const QString&)")]
 			int Execute(string program);
-			[SmokeMethod("startDetached$$", "(const QString&, const QStringList&)")]
+			[SmokeMethod("startDetached$?", "(const QString&, const QStringList&)")]
 			bool StartDetached(string program, List<string> arguments);
 			[SmokeMethod("startDetached$", "(const QString&)")]
 			bool StartDetached(string program);
@@ -85,11 +85,11 @@ namespace Qyoto {
 		private void NewQProcess() {
 			ProxyQProcess().NewQProcess();
 		}
-		[SmokeMethod("start$$$", "(const QString&, const QStringList&, OpenMode)")]
+		[SmokeMethod("start$?$", "(const QString&, const QStringList&, OpenMode)")]
 		public void Start(string program, List<string> arguments, int mode) {
 			ProxyQProcess().Start(program,arguments,mode);
 		}
-		[SmokeMethod("start$$", "(const QString&, const QStringList&)")]
+		[SmokeMethod("start$?", "(const QString&, const QStringList&)")]
 		public void Start(string program, List<string> arguments) {
 			ProxyQProcess().Start(program,arguments);
 		}
@@ -254,12 +254,12 @@ namespace Qyoto {
 		public new bool AtEnd() {
 			return ProxyQProcess().AtEnd();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void terminate()")]
 		[SmokeMethod("terminate", "()")]
 		public void Terminate() {
 			ProxyQProcess().Terminate();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void kill()")]
 		[SmokeMethod("kill", "()")]
 		public void Kill() {
 			ProxyQProcess().Kill();
@@ -319,19 +319,19 @@ namespace Qyoto {
 	}
 
 	public interface IQProcessSignals : IQIODeviceSignals {
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void started()")]
 		void Started();
-		[Q_SIGNAL("void (int)")]
+		[Q_SIGNAL("void finished(int)")]
 		void Finished(int exitCode);
-		[Q_SIGNAL("void (int, QProcess::ExitStatus)")]
+		[Q_SIGNAL("void finished(int, QProcess::ExitStatus)")]
 		void Finished(int exitCode, QProcess.ExitStatus exitStatus);
-		[Q_SIGNAL("void (QProcess::ProcessError)")]
+		[Q_SIGNAL("void error(QProcess::ProcessError)")]
 		void Error(QProcess.ProcessError error);
-		[Q_SIGNAL("void (QProcess::ProcessState)")]
+		[Q_SIGNAL("void stateChanged(QProcess::ProcessState)")]
 		void StateChanged(QProcess.ProcessState state);
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void readyReadStandardOutput()")]
 		void ReadyReadStandardOutput();
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void readyReadStandardError()")]
 		void ReadyReadStandardError();
 	}
 }

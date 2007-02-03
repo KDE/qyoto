@@ -78,7 +78,7 @@ namespace Qyoto {
 		public new void Append(QSqlField field) {
 			ProxyQSqlIndex().Append(field);
 		}
-		[SmokeMethod("append##", "(const QSqlField&, bool)")]
+		[SmokeMethod("append#$", "(const QSqlField&, bool)")]
 		public new void Append(QSqlField field, bool desc) {
 			ProxyQSqlIndex().Append(field,desc);
 		}

@@ -67,7 +67,7 @@ namespace Qyoto {
 		public QPointF PosAt(double step) {
 			return ProxyQGraphicsItemAnimation().PosAt(step);
 		}
-		[SmokeMethod("setPosAt$$", "(qreal, const QPointF&)")]
+		[SmokeMethod("setPosAt$#", "(qreal, const QPointF&)")]
 		public void SetPosAt(double step, QPointF pos) {
 			ProxyQGraphicsItemAnimation().SetPosAt(step,pos);
 		}
@@ -123,12 +123,12 @@ namespace Qyoto {
 		public void Clear() {
 			ProxyQGraphicsItemAnimation().Clear();
 		}
-		[Q_SLOT("void (qreal)")]
+		[Q_SLOT("void setStep(qreal)")]
 		[SmokeMethod("setStep$", "(qreal)")]
 		public void SetStep(double x) {
 			ProxyQGraphicsItemAnimation().SetStep(x);
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void reset()")]
 		[SmokeMethod("reset", "()")]
 		public void Reset() {
 			ProxyQGraphicsItemAnimation().Reset();

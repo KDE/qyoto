@@ -93,7 +93,7 @@ namespace Qyoto {
 			return ProxyQTextCodec().ToUnicode(arg1,length);
 		}
 		// QByteArray fromUnicode(const QChar* arg1,int arg2,QTextCodec::ConverterState* arg3); >>>> NOT CONVERTED
-		[SmokeMethod("fromUnicode##", "(const QChar*, int) const")]
+		[SmokeMethod("fromUnicode#$", "(const QChar*, int) const")]
 		public QByteArray FromUnicode(char arg1, int length) {
 			return ProxyQTextCodec().FromUnicode(arg1,length);
 		}

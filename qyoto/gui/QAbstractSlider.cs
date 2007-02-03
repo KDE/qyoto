@@ -243,17 +243,17 @@ namespace Qyoto {
 	}
 
 	public interface IQAbstractSliderSignals : IQWidgetSignals {
-		[Q_SIGNAL("void (int)")]
+		[Q_SIGNAL("void valueChanged(int)")]
 		void ValueChanged(int value);
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void sliderPressed()")]
 		void SliderPressed();
-		[Q_SIGNAL("void (int)")]
+		[Q_SIGNAL("void sliderMoved(int)")]
 		void SliderMoved(int position);
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void sliderReleased()")]
 		void SliderReleased();
-		[Q_SIGNAL("void (int, int)")]
+		[Q_SIGNAL("void rangeChanged(int, int)")]
 		void RangeChanged(int min, int max);
-		[Q_SIGNAL("void (int)")]
+		[Q_SIGNAL("void actionTriggered(int)")]
 		void ActionTriggered(int action);
 	}
 }

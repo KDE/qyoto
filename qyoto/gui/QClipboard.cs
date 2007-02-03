@@ -97,7 +97,7 @@ namespace Qyoto {
 		public QMimeData MimeData() {
 			return ProxyQClipboard().MimeData();
 		}
-		[SmokeMethod("setMimeData##", "(QMimeData*, QClipboard::Mode)")]
+		[SmokeMethod("setMimeData#$", "(QMimeData*, QClipboard::Mode)")]
 		public void SetMimeData(QMimeData data, QClipboard.Mode mode) {
 			ProxyQClipboard().SetMimeData(data,mode);
 		}
@@ -121,7 +121,7 @@ namespace Qyoto {
 		public QPixmap Pixmap() {
 			return ProxyQClipboard().Pixmap();
 		}
-		[SmokeMethod("setImage##", "(const QImage&, QClipboard::Mode)")]
+		[SmokeMethod("setImage#$", "(const QImage&, QClipboard::Mode)")]
 		public void SetImage(QImage arg1, QClipboard.Mode mode) {
 			ProxyQClipboard().SetImage(arg1,mode);
 		}
@@ -129,7 +129,7 @@ namespace Qyoto {
 		public void SetImage(QImage arg1) {
 			ProxyQClipboard().SetImage(arg1);
 		}
-		[SmokeMethod("setPixmap##", "(const QPixmap&, QClipboard::Mode)")]
+		[SmokeMethod("setPixmap#$", "(const QPixmap&, QClipboard::Mode)")]
 		public void SetPixmap(QPixmap arg1, QClipboard.Mode mode) {
 			ProxyQClipboard().SetPixmap(arg1,mode);
 		}

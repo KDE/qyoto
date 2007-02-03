@@ -156,11 +156,11 @@ namespace Qyoto {
 		public void SetColumnHidden(int column, bool hide) {
 			ProxyQTreeView().SetColumnHidden(column,hide);
 		}
-		[SmokeMethod("isRowHidden$$", "(int, const QModelIndex&) const")]
+		[SmokeMethod("isRowHidden$#", "(int, const QModelIndex&) const")]
 		public bool IsRowHidden(int row, QModelIndex parent) {
 			return ProxyQTreeView().IsRowHidden(row,parent);
 		}
-		[SmokeMethod("setRowHidden$$$", "(int, const QModelIndex&, bool)")]
+		[SmokeMethod("setRowHidden$#$", "(int, const QModelIndex&, bool)")]
 		public void SetRowHidden(int row, QModelIndex parent, bool hide) {
 			ProxyQTreeView().SetRowHidden(row,parent,hide);
 		}
@@ -168,7 +168,7 @@ namespace Qyoto {
 		public bool IsExpanded(QModelIndex index) {
 			return ProxyQTreeView().IsExpanded(index);
 		}
-		[SmokeMethod("setExpanded##", "(const QModelIndex&, bool)")]
+		[SmokeMethod("setExpanded#$", "(const QModelIndex&, bool)")]
 		public void SetExpanded(QModelIndex index, bool expand) {
 			ProxyQTreeView().SetExpanded(index,expand);
 		}
@@ -188,7 +188,7 @@ namespace Qyoto {
 		public new QRect VisualRect(QModelIndex index) {
 			return ProxyQTreeView().VisualRect(index);
 		}
-		[SmokeMethod("scrollTo##", "(const QModelIndex&, QAbstractItemView::ScrollHint)")]
+		[SmokeMethod("scrollTo#$", "(const QModelIndex&, QAbstractItemView::ScrollHint)")]
 		public new void ScrollTo(QModelIndex index, QAbstractItemView.ScrollHint hint) {
 			ProxyQTreeView().ScrollTo(index,hint);
 		}
@@ -220,52 +220,52 @@ namespace Qyoto {
 		public void SortByColumn(int column, Qt.SortOrder order) {
 			ProxyQTreeView().SortByColumn(column,order);
 		}
-		[Q_SLOT("void (const QModelIndex&, const QModelIndex&)")]
+		[Q_SLOT("void dataChanged(const QModelIndex&, const QModelIndex&)")]
 		[SmokeMethod("dataChanged##", "(const QModelIndex&, const QModelIndex&)")]
 		public new void DataChanged(QModelIndex topLeft, QModelIndex bottomRight) {
 			ProxyQTreeView().DataChanged(topLeft,bottomRight);
 		}
-		[Q_SLOT("void (int)")]
+		[Q_SLOT("void hideColumn(int)")]
 		[SmokeMethod("hideColumn$", "(int)")]
 		public void HideColumn(int column) {
 			ProxyQTreeView().HideColumn(column);
 		}
-		[Q_SLOT("void (int)")]
+		[Q_SLOT("void showColumn(int)")]
 		[SmokeMethod("showColumn$", "(int)")]
 		public void ShowColumn(int column) {
 			ProxyQTreeView().ShowColumn(column);
 		}
-		[Q_SLOT("void (const QModelIndex&)")]
+		[Q_SLOT("void expand(const QModelIndex&)")]
 		[SmokeMethod("expand#", "(const QModelIndex&)")]
 		public void Expand(QModelIndex index) {
 			ProxyQTreeView().Expand(index);
 		}
-		[Q_SLOT("void (const QModelIndex&)")]
+		[Q_SLOT("void collapse(const QModelIndex&)")]
 		[SmokeMethod("collapse#", "(const QModelIndex&)")]
 		public void Collapse(QModelIndex index) {
 			ProxyQTreeView().Collapse(index);
 		}
-		[Q_SLOT("void (int)")]
+		[Q_SLOT("void resizeColumnToContents(int)")]
 		[SmokeMethod("resizeColumnToContents$", "(int)")]
 		public void ResizeColumnToContents(int column) {
 			ProxyQTreeView().ResizeColumnToContents(column);
 		}
-		[Q_SLOT("void (int)")]
+		[Q_SLOT("void sortByColumn(int)")]
 		[SmokeMethod("sortByColumn$", "(int)")]
 		public void SortByColumn(int column) {
 			ProxyQTreeView().SortByColumn(column);
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void selectAll()")]
 		[SmokeMethod("selectAll", "()")]
 		public new void SelectAll() {
 			ProxyQTreeView().SelectAll();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void expandAll()")]
 		[SmokeMethod("expandAll", "()")]
 		public void ExpandAll() {
 			ProxyQTreeView().ExpandAll();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void collapseAll()")]
 		[SmokeMethod("collapseAll", "()")]
 		public void CollapseAll() {
 			ProxyQTreeView().CollapseAll();
@@ -280,11 +280,11 @@ namespace Qyoto {
 		protected new void ScrollContentsBy(int dx, int dy) {
 			ProxyQTreeView().ScrollContentsBy(dx,dy);
 		}
-		[SmokeMethod("rowsInserted###", "(const QModelIndex&, int, int)")]
+		[SmokeMethod("rowsInserted#$$", "(const QModelIndex&, int, int)")]
 		protected new void RowsInserted(QModelIndex parent, int start, int end) {
 			ProxyQTreeView().RowsInserted(parent,start,end);
 		}
-		[SmokeMethod("rowsAboutToBeRemoved###", "(const QModelIndex&, int, int)")]
+		[SmokeMethod("rowsAboutToBeRemoved#$$", "(const QModelIndex&, int, int)")]
 		protected new void RowsAboutToBeRemoved(QModelIndex parent, int start, int end) {
 			ProxyQTreeView().RowsAboutToBeRemoved(parent,start,end);
 		}
@@ -300,7 +300,7 @@ namespace Qyoto {
 		protected new int VerticalOffset() {
 			return ProxyQTreeView().VerticalOffset();
 		}
-		[SmokeMethod("setSelection##", "(const QRect&, QItemSelectionModel::SelectionFlags)")]
+		[SmokeMethod("setSelection#$", "(const QRect&, QItemSelectionModel::SelectionFlags)")]
 		protected new void SetSelection(QRect rect, int command) {
 			ProxyQTreeView().SetSelection(rect,command);
 		}
@@ -372,28 +372,28 @@ namespace Qyoto {
 		protected new bool IsIndexHidden(QModelIndex index) {
 			return ProxyQTreeView().IsIndexHidden(index);
 		}
-		[Q_SLOT("void (int, int, int)")]
+		[Q_SLOT("void columnResized(int, int, int)")]
 		[SmokeMethod("columnResized$$$", "(int, int, int)")]
 		protected void ColumnResized(int column, int oldSize, int newSize) {
 			ProxyQTreeView().ColumnResized(column,oldSize,newSize);
 		}
-		[Q_SLOT("void (int, int)")]
+		[Q_SLOT("void columnCountChanged(int, int)")]
 		[SmokeMethod("columnCountChanged$$", "(int, int)")]
 		protected void ColumnCountChanged(int oldCount, int newCount) {
 			ProxyQTreeView().ColumnCountChanged(oldCount,newCount);
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void columnMoved()")]
 		[SmokeMethod("columnMoved", "()")]
 		protected void ColumnMoved() {
 			ProxyQTreeView().ColumnMoved();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void reexpand()")]
 		[SmokeMethod("reexpand", "()")]
 		protected void Reexpand() {
 			ProxyQTreeView().Reexpand();
 		}
-		[Q_SLOT("void (const QModelIndex&, int, int)")]
-		[SmokeMethod("rowsRemoved###", "(const QModelIndex&, int, int)")]
+		[Q_SLOT("void rowsRemoved(const QModelIndex&, int, int)")]
+		[SmokeMethod("rowsRemoved#$$", "(const QModelIndex&, int, int)")]
 		protected void RowsRemoved(QModelIndex parent, int first, int last) {
 			ProxyQTreeView().RowsRemoved(parent,first,last);
 		}
@@ -415,9 +415,9 @@ namespace Qyoto {
 	}
 
 	public interface IQTreeViewSignals : IQAbstractItemViewSignals {
-		[Q_SIGNAL("void (const QModelIndex&)")]
+		[Q_SIGNAL("void expanded(const QModelIndex&)")]
 		void Expanded(QModelIndex index);
-		[Q_SIGNAL("void (const QModelIndex&)")]
+		[Q_SIGNAL("void collapsed(const QModelIndex&)")]
 		void Collapsed(QModelIndex index);
 	}
 }

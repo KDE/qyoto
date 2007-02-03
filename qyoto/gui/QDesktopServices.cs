@@ -13,7 +13,7 @@ namespace Qyoto {
 		interface IQDesktopServicesProxy {
 			[SmokeMethod("openUrl#", "(const QUrl&)")]
 			bool OpenUrl(IQUrl url);
-			[SmokeMethod("setUrlHandler$$$", "(const QString&, QObject*, const char*)")]
+			[SmokeMethod("setUrlHandler$#$", "(const QString&, QObject*, const char*)")]
 			void SetUrlHandler(string scheme, QObject receiver, string method);
 			[SmokeMethod("unsetUrlHandler$", "(const QString&)")]
 			void UnsetUrlHandler(string scheme);

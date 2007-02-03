@@ -79,7 +79,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSvgRenderer(filename,parent);
 		}
-		[SmokeMethod("QSvgRenderer$$", "(const QString&, QObject*)")]
+		[SmokeMethod("QSvgRenderer$#", "(const QString&, QObject*)")]
 		private void NewQSvgRenderer(string filename, QObject parent) {
 			ProxyQSvgRenderer().NewQSvgRenderer(filename,parent);
 		}
@@ -139,33 +139,33 @@ namespace Qyoto {
 		public QMatrix MatrixForElement(string id) {
 			return ProxyQSvgRenderer().MatrixForElement(id);
 		}
-		[Q_SLOT("bool (const QString&)")]
+		[Q_SLOT("bool load(const QString&)")]
 		[SmokeMethod("load$", "(const QString&)")]
 		public bool Load(string filename) {
 			return ProxyQSvgRenderer().Load(filename);
 		}
-		[Q_SLOT("bool (const QByteArray&)")]
+		[Q_SLOT("bool load(const QByteArray&)")]
 		[SmokeMethod("load#", "(const QByteArray&)")]
 		public bool Load(QByteArray contents) {
 			return ProxyQSvgRenderer().Load(contents);
 		}
-		[Q_SLOT("void (QPainter*)")]
+		[Q_SLOT("void render(QPainter*)")]
 		[SmokeMethod("render#", "(QPainter*)")]
 		public void Render(QPainter p) {
 			ProxyQSvgRenderer().Render(p);
 		}
-		[Q_SLOT("void (QPainter*, const QRectF&)")]
+		[Q_SLOT("void render(QPainter*, const QRectF&)")]
 		[SmokeMethod("render##", "(QPainter*, const QRectF&)")]
 		public void Render(QPainter p, QRectF bounds) {
 			ProxyQSvgRenderer().Render(p,bounds);
 		}
-		[Q_SLOT("void (QPainter*, const QString&, const QRectF&)")]
-		[SmokeMethod("render###", "(QPainter*, const QString&, const QRectF&)")]
+		[Q_SLOT("void render(QPainter*, const QString&, const QRectF&)")]
+		[SmokeMethod("render#$#", "(QPainter*, const QString&, const QRectF&)")]
 		public void Render(QPainter p, string elementId, QRectF bounds) {
 			ProxyQSvgRenderer().Render(p,elementId,bounds);
 		}
-		[Q_SLOT("void (QPainter*, const QString&)")]
-		[SmokeMethod("render##", "(QPainter*, const QString&)")]
+		[Q_SLOT("void render(QPainter*, const QString&)")]
+		[SmokeMethod("render#$", "(QPainter*, const QString&)")]
 		public void Render(QPainter p, string elementId) {
 			ProxyQSvgRenderer().Render(p,elementId);
 		}
@@ -193,7 +193,7 @@ namespace Qyoto {
 	}
 
 	public interface IQSvgRendererSignals : IQObjectSignals {
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void repaintNeeded()")]
 		void RepaintNeeded();
 	}
 }

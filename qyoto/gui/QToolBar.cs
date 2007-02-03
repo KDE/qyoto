@@ -81,7 +81,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQToolBar(title,parent);
 		}
-		[SmokeMethod("QToolBar$$", "(const QString&, QWidget*)")]
+		[SmokeMethod("QToolBar$#", "(const QString&, QWidget*)")]
 		private void NewQToolBar(string title, QWidget parent) {
 			ProxyQToolBar().NewQToolBar(title,parent);
 		}
@@ -129,15 +129,15 @@ namespace Qyoto {
 		public new QAction AddAction(string text) {
 			return ProxyQToolBar().AddAction(text);
 		}
-		[SmokeMethod("addAction##", "(const QIcon&, const QString&)")]
+		[SmokeMethod("addAction#$", "(const QIcon&, const QString&)")]
 		public new QAction AddAction(QIcon icon, string text) {
 			return ProxyQToolBar().AddAction(icon,text);
 		}
-		[SmokeMethod("addAction$$$", "(const QString&, const QObject*, const char*)")]
+		[SmokeMethod("addAction$#$", "(const QString&, const QObject*, const char*)")]
 		public new QAction AddAction(string text, QObject receiver, string member) {
 			return ProxyQToolBar().AddAction(text,receiver,member);
 		}
-		[SmokeMethod("addAction####", "(const QIcon&, const QString&, const QObject*, const char*)")]
+		[SmokeMethod("addAction#$#$", "(const QIcon&, const QString&, const QObject*, const char*)")]
 		public new QAction AddAction(QIcon icon, string text, QObject receiver, string member) {
 			return ProxyQToolBar().AddAction(icon,text,receiver,member);
 		}
@@ -225,17 +225,17 @@ namespace Qyoto {
 	}
 
 	public interface IQToolBarSignals : IQWidgetSignals {
-		[Q_SIGNAL("void (QAction*)")]
+		[Q_SIGNAL("void actionTriggered(QAction*)")]
 		void ActionTriggered(QAction action);
-		[Q_SIGNAL("void (bool)")]
+		[Q_SIGNAL("void movableChanged(bool)")]
 		void MovableChanged(bool movable);
-		[Q_SIGNAL("void (Qt::ToolBarAreas)")]
+		[Q_SIGNAL("void allowedAreasChanged(Qt::ToolBarAreas)")]
 		void AllowedAreasChanged(int allowedAreas);
-		[Q_SIGNAL("void (Qt::Orientation)")]
+		[Q_SIGNAL("void orientationChanged(Qt::Orientation)")]
 		void OrientationChanged(Qt.Orientation orientation);
-		[Q_SIGNAL("void (const QSize&)")]
+		[Q_SIGNAL("void iconSizeChanged(const QSize&)")]
 		void IconSizeChanged(QSize iconSize);
-		[Q_SIGNAL("void (Qt::ToolButtonStyle)")]
+		[Q_SIGNAL("void toolButtonStyleChanged(Qt::ToolButtonStyle)")]
 		void ToolButtonStyleChanged(Qt.ToolButtonStyle toolButtonStyle);
 	}
 }

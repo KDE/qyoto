@@ -278,7 +278,7 @@ namespace Qyoto {
 		public static QRect operator&(QRect lhs, QRect r) {
 			return StaticQRect().op_and(lhs,r);
 		}
-		[SmokeMethod("contains##", "(const QPoint&, bool) const")]
+		[SmokeMethod("contains#$", "(const QPoint&, bool) const")]
 		public bool Contains(QPoint p, bool proper) {
 			return ProxyQRect().Contains(p,proper);
 		}
@@ -294,7 +294,7 @@ namespace Qyoto {
 		public bool Contains(int x, int y, bool proper) {
 			return ProxyQRect().Contains(x,y,proper);
 		}
-		[SmokeMethod("contains##", "(const QRect&, bool) const")]
+		[SmokeMethod("contains#$", "(const QRect&, bool) const")]
 		public bool Contains(QRect r, bool proper) {
 			return ProxyQRect().Contains(r,proper);
 		}

@@ -37,7 +37,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQRadialGradient(center,radius,focalPoint);
 		}
-		[SmokeMethod("QRadialGradient###", "(const QPointF&, qreal, const QPointF&)")]
+		[SmokeMethod("QRadialGradient#$#", "(const QPointF&, qreal, const QPointF&)")]
 		private void NewQRadialGradient(QPointF center, double radius, QPointF focalPoint) {
 			ProxyQRadialGradient().NewQRadialGradient(center,radius,focalPoint);
 		}
@@ -53,7 +53,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQRadialGradient(center,radius);
 		}
-		[SmokeMethod("QRadialGradient##", "(const QPointF&, qreal)")]
+		[SmokeMethod("QRadialGradient#$", "(const QPointF&, qreal)")]
 		private void NewQRadialGradient(QPointF center, double radius) {
 			ProxyQRadialGradient().NewQRadialGradient(center,radius);
 		}

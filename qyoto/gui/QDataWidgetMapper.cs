@@ -103,7 +103,7 @@ namespace Qyoto {
 		public QModelIndex RootIndex() {
 			return ProxyQDataWidgetMapper().RootIndex();
 		}
-		[SmokeMethod("addMapping##", "(QWidget*, int)")]
+		[SmokeMethod("addMapping#$", "(QWidget*, int)")]
 		public void AddMapping(QWidget widget, int section) {
 			ProxyQDataWidgetMapper().AddMapping(widget,section);
 		}
@@ -123,37 +123,37 @@ namespace Qyoto {
 		public void ClearMapping() {
 			ProxyQDataWidgetMapper().ClearMapping();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void revert()")]
 		[SmokeMethod("revert", "()")]
 		public void Revert() {
 			ProxyQDataWidgetMapper().Revert();
 		}
-		[Q_SLOT("bool ()")]
+		[Q_SLOT("bool submit()")]
 		[SmokeMethod("submit", "()")]
 		public bool Submit() {
 			return ProxyQDataWidgetMapper().Submit();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void toFirst()")]
 		[SmokeMethod("toFirst", "()")]
 		public void ToFirst() {
 			ProxyQDataWidgetMapper().ToFirst();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void toLast()")]
 		[SmokeMethod("toLast", "()")]
 		public void ToLast() {
 			ProxyQDataWidgetMapper().ToLast();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void toNext()")]
 		[SmokeMethod("toNext", "()")]
 		public void ToNext() {
 			ProxyQDataWidgetMapper().ToNext();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void toPrevious()")]
 		[SmokeMethod("toPrevious", "()")]
 		public void ToPrevious() {
 			ProxyQDataWidgetMapper().ToPrevious();
 		}
-		[Q_SLOT("void (const QModelIndex&)")]
+		[Q_SLOT("void setCurrentModelIndex(const QModelIndex&)")]
 		[SmokeMethod("setCurrentModelIndex#", "(const QModelIndex&)")]
 		public void SetCurrentModelIndex(QModelIndex index) {
 			ProxyQDataWidgetMapper().SetCurrentModelIndex(index);
@@ -182,7 +182,7 @@ namespace Qyoto {
 	}
 
 	public interface IQDataWidgetMapperSignals : IQObjectSignals {
-		[Q_SIGNAL("void (int)")]
+		[Q_SIGNAL("void currentIndexChanged(int)")]
 		void CurrentIndexChanged(int index);
 	}
 }

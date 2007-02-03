@@ -29,7 +29,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQChildEvent(type,child);
 		}
-		[SmokeMethod("QChildEvent$$", "(QEvent::Type, QObject*)")]
+		[SmokeMethod("QChildEvent$#", "(QEvent::Type, QObject*)")]
 		private void NewQChildEvent(QEvent.TypeOf type, QObject child) {
 			ProxyQChildEvent().NewQChildEvent(type,child);
 		}

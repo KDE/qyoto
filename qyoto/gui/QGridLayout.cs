@@ -127,35 +127,35 @@ namespace Qyoto {
 		public new void AddWidget(QWidget w) {
 			ProxyQGridLayout().AddWidget(w);
 		}
-		[SmokeMethod("addWidget####", "(QWidget*, int, int, Qt::Alignment)")]
+		[SmokeMethod("addWidget#$$$", "(QWidget*, int, int, Qt::Alignment)")]
 		public new void AddWidget(QWidget arg1, int row, int column, int arg4) {
 			ProxyQGridLayout().AddWidget(arg1,row,column,arg4);
 		}
-		[SmokeMethod("addWidget###", "(QWidget*, int, int)")]
+		[SmokeMethod("addWidget#$$", "(QWidget*, int, int)")]
 		public new void AddWidget(QWidget arg1, int row, int column) {
 			ProxyQGridLayout().AddWidget(arg1,row,column);
 		}
-		[SmokeMethod("addWidget######", "(QWidget*, int, int, int, int, Qt::Alignment)")]
+		[SmokeMethod("addWidget#$$$$$", "(QWidget*, int, int, int, int, Qt::Alignment)")]
 		public new void AddWidget(QWidget arg1, int row, int column, int rowSpan, int columnSpan, int arg6) {
 			ProxyQGridLayout().AddWidget(arg1,row,column,rowSpan,columnSpan,arg6);
 		}
-		[SmokeMethod("addWidget#####", "(QWidget*, int, int, int, int)")]
+		[SmokeMethod("addWidget#$$$$", "(QWidget*, int, int, int, int)")]
 		public new void AddWidget(QWidget arg1, int row, int column, int rowSpan, int columnSpan) {
 			ProxyQGridLayout().AddWidget(arg1,row,column,rowSpan,columnSpan);
 		}
-		[SmokeMethod("addLayout####", "(QLayout*, int, int, Qt::Alignment)")]
+		[SmokeMethod("addLayout#$$$", "(QLayout*, int, int, Qt::Alignment)")]
 		public void AddLayout(QLayout arg1, int row, int column, int arg4) {
 			ProxyQGridLayout().AddLayout(arg1,row,column,arg4);
 		}
-		[SmokeMethod("addLayout###", "(QLayout*, int, int)")]
+		[SmokeMethod("addLayout#$$", "(QLayout*, int, int)")]
 		public void AddLayout(QLayout arg1, int row, int column) {
 			ProxyQGridLayout().AddLayout(arg1,row,column);
 		}
-		[SmokeMethod("addLayout######", "(QLayout*, int, int, int, int, Qt::Alignment)")]
+		[SmokeMethod("addLayout#$$$$$", "(QLayout*, int, int, int, int, Qt::Alignment)")]
 		public void AddLayout(QLayout arg1, int row, int column, int rowSpan, int columnSpan, int arg6) {
 			ProxyQGridLayout().AddLayout(arg1,row,column,rowSpan,columnSpan,arg6);
 		}
-		[SmokeMethod("addLayout#####", "(QLayout*, int, int, int, int)")]
+		[SmokeMethod("addLayout#$$$$", "(QLayout*, int, int, int, int)")]
 		public void AddLayout(QLayout arg1, int row, int column, int rowSpan, int columnSpan) {
 			ProxyQGridLayout().AddLayout(arg1,row,column,rowSpan,columnSpan);
 		}
@@ -183,19 +183,19 @@ namespace Qyoto {
 		public new void SetGeometry(QRect arg1) {
 			ProxyQGridLayout().SetGeometry(arg1);
 		}
-		[SmokeMethod("addItem######", "(QLayoutItem*, int, int, int, int, Qt::Alignment)")]
+		[SmokeMethod("addItem#$$$$$", "(QLayoutItem*, int, int, int, int, Qt::Alignment)")]
 		public new void AddItem(IQLayoutItem item, int row, int column, int rowSpan, int columnSpan, int arg6) {
 			ProxyQGridLayout().AddItem(item,row,column,rowSpan,columnSpan,arg6);
 		}
-		[SmokeMethod("addItem#####", "(QLayoutItem*, int, int, int, int)")]
+		[SmokeMethod("addItem#$$$$", "(QLayoutItem*, int, int, int, int)")]
 		public new void AddItem(IQLayoutItem item, int row, int column, int rowSpan, int columnSpan) {
 			ProxyQGridLayout().AddItem(item,row,column,rowSpan,columnSpan);
 		}
-		[SmokeMethod("addItem####", "(QLayoutItem*, int, int, int)")]
+		[SmokeMethod("addItem#$$$", "(QLayoutItem*, int, int, int)")]
 		public new void AddItem(IQLayoutItem item, int row, int column, int rowSpan) {
 			ProxyQGridLayout().AddItem(item,row,column,rowSpan);
 		}
-		[SmokeMethod("addItem###", "(QLayoutItem*, int, int)")]
+		[SmokeMethod("addItem#$$", "(QLayoutItem*, int, int)")]
 		public new void AddItem(IQLayoutItem item, int row, int column) {
 			ProxyQGridLayout().AddItem(item,row,column);
 		}

@@ -30,7 +30,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDBusInterface(service,path,arg3,connection,parent);
 		}
-		[SmokeMethod("QDBusInterface$$$$$", "(const QString&, const QString&, const QString&, const QDBusConnection&, QObject*)")]
+		[SmokeMethod("QDBusInterface$$$##", "(const QString&, const QString&, const QString&, const QDBusConnection&, QObject*)")]
 		private void NewQDBusInterface(string service, string path, string arg3, QDBusConnection connection, QObject parent) {
 			ProxyQDBusInterface().NewQDBusInterface(service,path,arg3,connection,parent);
 		}
@@ -38,7 +38,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDBusInterface(service,path,arg3,connection);
 		}
-		[SmokeMethod("QDBusInterface$$$$", "(const QString&, const QString&, const QString&, const QDBusConnection&)")]
+		[SmokeMethod("QDBusInterface$$$#", "(const QString&, const QString&, const QString&, const QDBusConnection&)")]
 		private void NewQDBusInterface(string service, string path, string arg3, QDBusConnection connection) {
 			ProxyQDBusInterface().NewQDBusInterface(service,path,arg3,connection);
 		}

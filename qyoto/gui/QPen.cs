@@ -58,7 +58,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQPen(brush,width,s,c,j);
 		}
-		[SmokeMethod("QPen#####", "(const QBrush&, qreal, Qt::PenStyle, Qt::PenCapStyle, Qt::PenJoinStyle)")]
+		[SmokeMethod("QPen#$$$$", "(const QBrush&, qreal, Qt::PenStyle, Qt::PenCapStyle, Qt::PenJoinStyle)")]
 		private void NewQPen(QBrush brush, double width, Qt.PenStyle s, Qt.PenCapStyle c, Qt.PenJoinStyle j) {
 			ProxyQPen().NewQPen(brush,width,s,c,j);
 		}
@@ -66,7 +66,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQPen(brush,width,s,c);
 		}
-		[SmokeMethod("QPen####", "(const QBrush&, qreal, Qt::PenStyle, Qt::PenCapStyle)")]
+		[SmokeMethod("QPen#$$$", "(const QBrush&, qreal, Qt::PenStyle, Qt::PenCapStyle)")]
 		private void NewQPen(QBrush brush, double width, Qt.PenStyle s, Qt.PenCapStyle c) {
 			ProxyQPen().NewQPen(brush,width,s,c);
 		}
@@ -74,7 +74,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQPen(brush,width,s);
 		}
-		[SmokeMethod("QPen###", "(const QBrush&, qreal, Qt::PenStyle)")]
+		[SmokeMethod("QPen#$$", "(const QBrush&, qreal, Qt::PenStyle)")]
 		private void NewQPen(QBrush brush, double width, Qt.PenStyle s) {
 			ProxyQPen().NewQPen(brush,width,s);
 		}
@@ -82,7 +82,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQPen(brush,width);
 		}
-		[SmokeMethod("QPen##", "(const QBrush&, qreal)")]
+		[SmokeMethod("QPen#$", "(const QBrush&, qreal)")]
 		private void NewQPen(QBrush brush, double width) {
 			ProxyQPen().NewQPen(brush,width);
 		}

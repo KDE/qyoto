@@ -204,7 +204,7 @@ namespace Qyoto {
 		public QMatrix Matrix() {
 			return ProxyQGraphicsView().Matrix();
 		}
-		[SmokeMethod("setMatrix##", "(const QMatrix&, bool)")]
+		[SmokeMethod("setMatrix#$", "(const QMatrix&, bool)")]
 		public void SetMatrix(QMatrix matrix, bool combine) {
 			ProxyQGraphicsView().SetMatrix(matrix,combine);
 		}
@@ -244,11 +244,11 @@ namespace Qyoto {
 		public void CenterOn(QGraphicsItem item) {
 			ProxyQGraphicsView().CenterOn(item);
 		}
-		[SmokeMethod("ensureVisible###", "(const QRectF&, int, int)")]
+		[SmokeMethod("ensureVisible#$$", "(const QRectF&, int, int)")]
 		public void EnsureVisible(QRectF rect, int xmargin, int ymargin) {
 			ProxyQGraphicsView().EnsureVisible(rect,xmargin,ymargin);
 		}
-		[SmokeMethod("ensureVisible##", "(const QRectF&, int)")]
+		[SmokeMethod("ensureVisible#$", "(const QRectF&, int)")]
 		public void EnsureVisible(QRectF rect, int xmargin) {
 			ProxyQGraphicsView().EnsureVisible(rect,xmargin);
 		}
@@ -268,11 +268,11 @@ namespace Qyoto {
 		public void EnsureVisible(double x, double y, double w, double h) {
 			ProxyQGraphicsView().EnsureVisible(x,y,w,h);
 		}
-		[SmokeMethod("ensureVisible###", "(const QGraphicsItem*, int, int)")]
+		[SmokeMethod("ensureVisible#$$", "(const QGraphicsItem*, int, int)")]
 		public void EnsureVisible(QGraphicsItem item, int xmargin, int ymargin) {
 			ProxyQGraphicsView().EnsureVisible(item,xmargin,ymargin);
 		}
-		[SmokeMethod("ensureVisible##", "(const QGraphicsItem*, int)")]
+		[SmokeMethod("ensureVisible#$", "(const QGraphicsItem*, int)")]
 		public void EnsureVisible(QGraphicsItem item, int xmargin) {
 			ProxyQGraphicsView().EnsureVisible(item,xmargin);
 		}
@@ -280,7 +280,7 @@ namespace Qyoto {
 		public void EnsureVisible(QGraphicsItem item) {
 			ProxyQGraphicsView().EnsureVisible(item);
 		}
-		[SmokeMethod("fitInView##", "(const QRectF&, Qt::AspectRatioMode)")]
+		[SmokeMethod("fitInView#$", "(const QRectF&, Qt::AspectRatioMode)")]
 		public void FitInView(QRectF rect, Qt.AspectRatioMode aspectRadioMode) {
 			ProxyQGraphicsView().FitInView(rect,aspectRadioMode);
 		}
@@ -296,7 +296,7 @@ namespace Qyoto {
 		public void FitInView(double x, double y, double w, double h) {
 			ProxyQGraphicsView().FitInView(x,y,w,h);
 		}
-		[SmokeMethod("fitInView##", "(const QGraphicsItem*, Qt::AspectRatioMode)")]
+		[SmokeMethod("fitInView#$", "(const QGraphicsItem*, Qt::AspectRatioMode)")]
 		public void FitInView(QGraphicsItem item, Qt.AspectRatioMode aspectRadioMode) {
 			ProxyQGraphicsView().FitInView(item,aspectRadioMode);
 		}
@@ -304,7 +304,7 @@ namespace Qyoto {
 		public void FitInView(QGraphicsItem item) {
 			ProxyQGraphicsView().FitInView(item);
 		}
-		[SmokeMethod("render####", "(QPainter*, const QRectF&, const QRect&, Qt::AspectRatioMode)")]
+		[SmokeMethod("render###$", "(QPainter*, const QRectF&, const QRect&, Qt::AspectRatioMode)")]
 		public void Render(QPainter painter, QRectF target, QRect source, Qt.AspectRatioMode aspectRatioMode) {
 			ProxyQGraphicsView().Render(painter,target,source,aspectRatioMode);
 		}
@@ -332,7 +332,7 @@ namespace Qyoto {
 		public List<QGraphicsItem> Items(int x, int y) {
 			return ProxyQGraphicsView().Items(x,y);
 		}
-		[SmokeMethod("items##", "(const QRect&, Qt::ItemSelectionMode) const")]
+		[SmokeMethod("items#$", "(const QRect&, Qt::ItemSelectionMode) const")]
 		public List<QGraphicsItem> Items(QRect rect, Qt.ItemSelectionMode mode) {
 			return ProxyQGraphicsView().Items(rect,mode);
 		}
@@ -340,7 +340,7 @@ namespace Qyoto {
 		public List<QGraphicsItem> Items(QRect rect) {
 			return ProxyQGraphicsView().Items(rect);
 		}
-		[SmokeMethod("items##", "(const QPolygon&, Qt::ItemSelectionMode) const")]
+		[SmokeMethod("items#$", "(const QPolygon&, Qt::ItemSelectionMode) const")]
 		public List<QGraphicsItem> Items(QPolygon polygon, Qt.ItemSelectionMode mode) {
 			return ProxyQGraphicsView().Items(polygon,mode);
 		}
@@ -348,7 +348,7 @@ namespace Qyoto {
 		public List<QGraphicsItem> Items(QPolygon polygon) {
 			return ProxyQGraphicsView().Items(polygon);
 		}
-		[SmokeMethod("items##", "(const QPainterPath&, Qt::ItemSelectionMode) const")]
+		[SmokeMethod("items#$", "(const QPainterPath&, Qt::ItemSelectionMode) const")]
 		public List<QGraphicsItem> Items(QPainterPath path, Qt.ItemSelectionMode mode) {
 			return ProxyQGraphicsView().Items(path,mode);
 		}
@@ -416,12 +416,12 @@ namespace Qyoto {
 		public new QVariant InputMethodQuery(Qt.InputMethodQuery query) {
 			return ProxyQGraphicsView().InputMethodQuery(query);
 		}
-		[Q_SLOT("void (const QList<QRectF>&)")]
+		[Q_SLOT("void updateScene(const QList<QRectF>&)")]
 		[SmokeMethod("updateScene?", "(const QList<QRectF>&)")]
 		public void UpdateScene(List<QRectF> rects) {
 			ProxyQGraphicsView().UpdateScene(rects);
 		}
-		[Q_SLOT("void (const QRectF&)")]
+		[Q_SLOT("void updateSceneRect(const QRectF&)")]
 		[SmokeMethod("updateSceneRect#", "(const QRectF&)")]
 		public void UpdateSceneRect(QRectF rect) {
 			ProxyQGraphicsView().UpdateSceneRect(rect);
@@ -525,7 +525,7 @@ namespace Qyoto {
 			ProxyQGraphicsView().DrawForeground(painter,rect);
 		}
 		// void drawItems(QPainter* arg1,int arg2,QGraphicsItem** arg3,const QStyleOptionGraphicsItem* arg4); >>>> NOT CONVERTED
-		[Q_SLOT("void (QWidget*)")]
+		[Q_SLOT("void setupViewport(QWidget*)")]
 		[SmokeMethod("setupViewport#", "(QWidget*)")]
 		protected new void SetupViewport(QWidget widget) {
 			ProxyQGraphicsView().SetupViewport(widget);

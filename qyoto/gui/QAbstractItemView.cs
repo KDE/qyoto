@@ -287,7 +287,7 @@ namespace Qyoto {
 		public virtual QRect VisualRect(QModelIndex index) {
 			return ProxyQAbstractItemView().VisualRect(index);
 		}
-		[SmokeMethod("scrollTo##", "(const QModelIndex&, QAbstractItemView::ScrollHint)")]
+		[SmokeMethod("scrollTo#$", "(const QModelIndex&, QAbstractItemView::ScrollHint)")]
 		public virtual void ScrollTo(QModelIndex index, QAbstractItemView.ScrollHint hint) {
 			ProxyQAbstractItemView().ScrollTo(index,hint);
 		}
@@ -327,7 +327,7 @@ namespace Qyoto {
 		public QWidget IndexWidget(QModelIndex index) {
 			return ProxyQAbstractItemView().IndexWidget(index);
 		}
-		[SmokeMethod("setItemDelegateForRow$$", "(int, QAbstractItemDelegate*)")]
+		[SmokeMethod("setItemDelegateForRow$#", "(int, QAbstractItemDelegate*)")]
 		public void SetItemDelegateForRow(int row, QAbstractItemDelegate arg2) {
 			ProxyQAbstractItemView().SetItemDelegateForRow(row,arg2);
 		}
@@ -335,7 +335,7 @@ namespace Qyoto {
 		public QAbstractItemDelegate ItemDelegateForRow(int row) {
 			return ProxyQAbstractItemView().ItemDelegateForRow(row);
 		}
-		[SmokeMethod("setItemDelegateForColumn$$", "(int, QAbstractItemDelegate*)")]
+		[SmokeMethod("setItemDelegateForColumn$#", "(int, QAbstractItemDelegate*)")]
 		public void SetItemDelegateForColumn(int column, QAbstractItemDelegate arg2) {
 			ProxyQAbstractItemView().SetItemDelegateForColumn(column,arg2);
 		}
@@ -351,47 +351,47 @@ namespace Qyoto {
 		public new virtual QVariant InputMethodQuery(Qt.InputMethodQuery query) {
 			return ProxyQAbstractItemView().InputMethodQuery(query);
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void reset()")]
 		[SmokeMethod("reset", "()")]
 		public virtual void Reset() {
 			ProxyQAbstractItemView().Reset();
 		}
-		[Q_SLOT("void (const QModelIndex&)")]
+		[Q_SLOT("void setRootIndex(const QModelIndex&)")]
 		[SmokeMethod("setRootIndex#", "(const QModelIndex&)")]
 		public virtual void SetRootIndex(QModelIndex index) {
 			ProxyQAbstractItemView().SetRootIndex(index);
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void doItemsLayout()")]
 		[SmokeMethod("doItemsLayout", "()")]
 		public virtual void DoItemsLayout() {
 			ProxyQAbstractItemView().DoItemsLayout();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void selectAll()")]
 		[SmokeMethod("selectAll", "()")]
 		public virtual void SelectAll() {
 			ProxyQAbstractItemView().SelectAll();
 		}
-		[Q_SLOT("void (const QModelIndex&)")]
+		[Q_SLOT("void edit(const QModelIndex&)")]
 		[SmokeMethod("edit#", "(const QModelIndex&)")]
 		public void Edit(QModelIndex index) {
 			ProxyQAbstractItemView().Edit(index);
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void clearSelection()")]
 		[SmokeMethod("clearSelection", "()")]
 		public void ClearSelection() {
 			ProxyQAbstractItemView().ClearSelection();
 		}
-		[Q_SLOT("void (const QModelIndex&)")]
+		[Q_SLOT("void setCurrentIndex(const QModelIndex&)")]
 		[SmokeMethod("setCurrentIndex#", "(const QModelIndex&)")]
 		public void SetCurrentIndex(QModelIndex index) {
 			ProxyQAbstractItemView().SetCurrentIndex(index);
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void scrollToTop()")]
 		[SmokeMethod("scrollToTop", "()")]
 		public void ScrollToTop() {
 			ProxyQAbstractItemView().ScrollToTop();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void scrollToBottom()")]
 		[SmokeMethod("scrollToBottom", "()")]
 		public void ScrollToBottom() {
 			ProxyQAbstractItemView().ScrollToBottom();
@@ -420,17 +420,17 @@ namespace Qyoto {
 	}
 
 	public interface IQAbstractItemViewSignals : IQAbstractScrollAreaSignals {
-		[Q_SIGNAL("void (const QModelIndex&)")]
+		[Q_SIGNAL("void pressed(const QModelIndex&)")]
 		void Pressed(QModelIndex index);
-		[Q_SIGNAL("void (const QModelIndex&)")]
+		[Q_SIGNAL("void clicked(const QModelIndex&)")]
 		void Clicked(QModelIndex index);
-		[Q_SIGNAL("void (const QModelIndex&)")]
+		[Q_SIGNAL("void doubleClicked(const QModelIndex&)")]
 		void DoubleClicked(QModelIndex index);
-		[Q_SIGNAL("void (const QModelIndex&)")]
+		[Q_SIGNAL("void activated(const QModelIndex&)")]
 		void Activated(QModelIndex index);
-		[Q_SIGNAL("void (const QModelIndex&)")]
+		[Q_SIGNAL("void entered(const QModelIndex&)")]
 		void Entered(QModelIndex index);
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void viewportEntered()")]
 		void ViewportEntered();
 	}
 }

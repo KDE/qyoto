@@ -132,12 +132,12 @@ namespace Qyoto {
 		public bool IsVisible() {
 			return ProxyQSystemTrayIcon().IsVisible();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void show()")]
 		[SmokeMethod("show", "()")]
 		public void Show() {
 			ProxyQSystemTrayIcon().Show();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void hide()")]
 		[SmokeMethod("hide", "()")]
 		public void Hide() {
 			ProxyQSystemTrayIcon().Hide();
@@ -176,9 +176,9 @@ namespace Qyoto {
 	}
 
 	public interface IQSystemTrayIconSignals : IQObjectSignals {
-		[Q_SIGNAL("void (QSystemTrayIcon::ActivationReason)")]
+		[Q_SIGNAL("void activated(QSystemTrayIcon::ActivationReason)")]
 		void Activated(QSystemTrayIcon.ActivationReason reason);
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void messageClicked()")]
 		void MessageClicked();
 	}
 }

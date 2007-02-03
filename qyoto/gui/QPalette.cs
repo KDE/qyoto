@@ -134,15 +134,15 @@ namespace Qyoto {
 		public QBrush Brush(QPalette.ColorGroup cg, QPalette.ColorRole cr) {
 			return ProxyQPalette().Brush(cg,cr);
 		}
-		[SmokeMethod("setColor$$$", "(QPalette::ColorGroup, QPalette::ColorRole, const QColor&)")]
+		[SmokeMethod("setColor$$#", "(QPalette::ColorGroup, QPalette::ColorRole, const QColor&)")]
 		public void SetColor(QPalette.ColorGroup cg, QPalette.ColorRole cr, QColor color) {
 			ProxyQPalette().SetColor(cg,cr,color);
 		}
-		[SmokeMethod("setColor$$", "(QPalette::ColorRole, const QColor&)")]
+		[SmokeMethod("setColor$#", "(QPalette::ColorRole, const QColor&)")]
 		public void SetColor(QPalette.ColorRole cr, QColor color) {
 			ProxyQPalette().SetColor(cr,color);
 		}
-		[SmokeMethod("setBrush$$", "(QPalette::ColorRole, const QBrush&)")]
+		[SmokeMethod("setBrush$#", "(QPalette::ColorRole, const QBrush&)")]
 		public void SetBrush(QPalette.ColorRole cr, QBrush brush) {
 			ProxyQPalette().SetBrush(cr,brush);
 		}
@@ -150,11 +150,11 @@ namespace Qyoto {
 		public bool IsBrushSet(QPalette.ColorGroup cg, QPalette.ColorRole cr) {
 			return ProxyQPalette().IsBrushSet(cg,cr);
 		}
-		[SmokeMethod("setBrush$$$", "(QPalette::ColorGroup, QPalette::ColorRole, const QBrush&)")]
+		[SmokeMethod("setBrush$$#", "(QPalette::ColorGroup, QPalette::ColorRole, const QBrush&)")]
 		public void SetBrush(QPalette.ColorGroup cg, QPalette.ColorRole cr, QBrush brush) {
 			ProxyQPalette().SetBrush(cg,cr,brush);
 		}
-		[SmokeMethod("setColorGroup$$$$$$$$$$", "(QPalette::ColorGroup, const QBrush&, const QBrush&, const QBrush&, const QBrush&, const QBrush&, const QBrush&, const QBrush&, const QBrush&, const QBrush&)")]
+		[SmokeMethod("setColorGroup$#########", "(QPalette::ColorGroup, const QBrush&, const QBrush&, const QBrush&, const QBrush&, const QBrush&, const QBrush&, const QBrush&, const QBrush&, const QBrush&)")]
 		public void SetColorGroup(QPalette.ColorGroup cr, QBrush windowText, QBrush button, QBrush light, QBrush dark, QBrush mid, QBrush text, QBrush bright_text, QBrush arg9, QBrush window) {
 			ProxyQPalette().SetColorGroup(cr,windowText,button,light,dark,mid,text,bright_text,arg9,window);
 		}

@@ -29,7 +29,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDragEnterEvent(pos,actions,data,buttons,modifiers);
 		}
-		[SmokeMethod("QDragEnterEvent#####", "(const QPoint&, Qt::DropActions, const QMimeData*, Qt::MouseButtons, Qt::KeyboardModifiers)")]
+		[SmokeMethod("QDragEnterEvent#$#$$", "(const QPoint&, Qt::DropActions, const QMimeData*, Qt::MouseButtons, Qt::KeyboardModifiers)")]
 		private void NewQDragEnterEvent(QPoint pos, int actions, QMimeData data, int buttons, int modifiers) {
 			ProxyQDragEnterEvent().NewQDragEnterEvent(pos,actions,data,buttons,modifiers);
 		}

@@ -17,9 +17,9 @@ namespace Qyoto {
 			bool InWhatsThisMode();
 			[SmokeMethod("leaveWhatsThisMode", "()")]
 			void LeaveWhatsThisMode();
-			[SmokeMethod("showText###", "(const QPoint&, const QString&, QWidget*)")]
+			[SmokeMethod("showText#$#", "(const QPoint&, const QString&, QWidget*)")]
 			void ShowText(QPoint pos, string text, QWidget w);
-			[SmokeMethod("showText##", "(const QPoint&, const QString&)")]
+			[SmokeMethod("showText#$", "(const QPoint&, const QString&)")]
 			void ShowText(QPoint pos, string text);
 			[SmokeMethod("hideText", "()")]
 			void HideText();

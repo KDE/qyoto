@@ -29,7 +29,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQWheelEvent(pos,delta,buttons,modifiers,orient);
 		}
-		[SmokeMethod("QWheelEvent#####", "(const QPoint&, int, Qt::MouseButtons, Qt::KeyboardModifiers, Qt::Orientation)")]
+		[SmokeMethod("QWheelEvent#$$$$", "(const QPoint&, int, Qt::MouseButtons, Qt::KeyboardModifiers, Qt::Orientation)")]
 		private void NewQWheelEvent(QPoint pos, int delta, int buttons, int modifiers, Qt.Orientation orient) {
 			ProxyQWheelEvent().NewQWheelEvent(pos,delta,buttons,modifiers,orient);
 		}
@@ -37,7 +37,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQWheelEvent(pos,delta,buttons,modifiers);
 		}
-		[SmokeMethod("QWheelEvent####", "(const QPoint&, int, Qt::MouseButtons, Qt::KeyboardModifiers)")]
+		[SmokeMethod("QWheelEvent#$$$", "(const QPoint&, int, Qt::MouseButtons, Qt::KeyboardModifiers)")]
 		private void NewQWheelEvent(QPoint pos, int delta, int buttons, int modifiers) {
 			ProxyQWheelEvent().NewQWheelEvent(pos,delta,buttons,modifiers);
 		}
@@ -45,7 +45,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQWheelEvent(pos,globalPos,delta,buttons,modifiers,orient);
 		}
-		[SmokeMethod("QWheelEvent######", "(const QPoint&, const QPoint&, int, Qt::MouseButtons, Qt::KeyboardModifiers, Qt::Orientation)")]
+		[SmokeMethod("QWheelEvent##$$$$", "(const QPoint&, const QPoint&, int, Qt::MouseButtons, Qt::KeyboardModifiers, Qt::Orientation)")]
 		private void NewQWheelEvent(QPoint pos, QPoint globalPos, int delta, int buttons, int modifiers, Qt.Orientation orient) {
 			ProxyQWheelEvent().NewQWheelEvent(pos,globalPos,delta,buttons,modifiers,orient);
 		}
@@ -53,7 +53,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQWheelEvent(pos,globalPos,delta,buttons,modifiers);
 		}
-		[SmokeMethod("QWheelEvent#####", "(const QPoint&, const QPoint&, int, Qt::MouseButtons, Qt::KeyboardModifiers)")]
+		[SmokeMethod("QWheelEvent##$$$", "(const QPoint&, const QPoint&, int, Qt::MouseButtons, Qt::KeyboardModifiers)")]
 		private void NewQWheelEvent(QPoint pos, QPoint globalPos, int delta, int buttons, int modifiers) {
 			ProxyQWheelEvent().NewQWheelEvent(pos,globalPos,delta,buttons,modifiers);
 		}

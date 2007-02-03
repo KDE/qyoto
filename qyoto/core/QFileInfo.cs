@@ -58,7 +58,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQFileInfo(dir,file);
 		}
-		[SmokeMethod("QFileInfo##", "(const QDir&, const QString&)")]
+		[SmokeMethod("QFileInfo#$", "(const QDir&, const QString&)")]
 		private void NewQFileInfo(QDir dir, string file) {
 			ProxyQFileInfo().NewQFileInfo(dir,file);
 		}
@@ -92,7 +92,7 @@ namespace Qyoto {
 		public void SetFile(QFile file) {
 			ProxyQFileInfo().SetFile(file);
 		}
-		[SmokeMethod("setFile##", "(const QDir&, const QString&)")]
+		[SmokeMethod("setFile#$", "(const QDir&, const QString&)")]
 		public void SetFile(QDir dir, string file) {
 			ProxyQFileInfo().SetFile(dir,file);
 		}

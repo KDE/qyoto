@@ -53,7 +53,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTextLayout(text,font,paintdevice);
 		}
-		[SmokeMethod("QTextLayout$$$", "(const QString&, const QFont&, QPaintDevice*)")]
+		[SmokeMethod("QTextLayout$##", "(const QString&, const QFont&, QPaintDevice*)")]
 		private void NewQTextLayout(string text, QFont font, IQPaintDevice paintdevice) {
 			ProxyQTextLayout().NewQTextLayout(text,font,paintdevice);
 		}
@@ -61,7 +61,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTextLayout(text,font);
 		}
-		[SmokeMethod("QTextLayout$$", "(const QString&, const QFont&)")]
+		[SmokeMethod("QTextLayout$#", "(const QString&, const QFont&)")]
 		private void NewQTextLayout(string text, QFont font) {
 			ProxyQTextLayout().NewQTextLayout(text,font);
 		}
@@ -173,11 +173,11 @@ namespace Qyoto {
 		public void Draw(QPainter p, QPointF pos) {
 			ProxyQTextLayout().Draw(p,pos);
 		}
-		[SmokeMethod("drawCursor###", "(QPainter*, const QPointF&, int) const")]
+		[SmokeMethod("drawCursor##$", "(QPainter*, const QPointF&, int) const")]
 		public void DrawCursor(QPainter p, QPointF pos, int cursorPosition) {
 			ProxyQTextLayout().DrawCursor(p,pos,cursorPosition);
 		}
-		[SmokeMethod("drawCursor####", "(QPainter*, const QPointF&, int, int) const")]
+		[SmokeMethod("drawCursor##$$", "(QPainter*, const QPointF&, int, int) const")]
 		public void DrawCursor(QPainter p, QPointF pos, int cursorPosition, int width) {
 			ProxyQTextLayout().DrawCursor(p,pos,cursorPosition,width);
 		}

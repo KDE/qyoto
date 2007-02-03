@@ -77,7 +77,7 @@ namespace Qyoto {
 		public new int Flags(QModelIndex index) {
 			return ProxyQSqlTableModel().Flags(index);
 		}
-		[SmokeMethod("data##", "(const QModelIndex&, int) const")]
+		[SmokeMethod("data#$", "(const QModelIndex&, int) const")]
 		public new QVariant Data(QModelIndex idx, int role) {
 			return ProxyQSqlTableModel().Data(idx,role);
 		}
@@ -85,7 +85,7 @@ namespace Qyoto {
 		public new QVariant Data(QModelIndex idx) {
 			return ProxyQSqlTableModel().Data(idx);
 		}
-		[SmokeMethod("setData###", "(const QModelIndex&, const QVariant&, int)")]
+		[SmokeMethod("setData##$", "(const QModelIndex&, const QVariant&, int)")]
 		public new bool SetData(QModelIndex index, QVariant value, int role) {
 			return ProxyQSqlTableModel().SetData(index,value,role);
 		}
@@ -153,7 +153,7 @@ namespace Qyoto {
 		public new int RowCount() {
 			return ProxyQSqlTableModel().RowCount();
 		}
-		[SmokeMethod("removeColumns$$$", "(int, int, const QModelIndex&)")]
+		[SmokeMethod("removeColumns$$#", "(int, int, const QModelIndex&)")]
 		public new bool RemoveColumns(int column, int count, QModelIndex parent) {
 			return ProxyQSqlTableModel().RemoveColumns(column,count,parent);
 		}
@@ -161,7 +161,7 @@ namespace Qyoto {
 		public new bool RemoveColumns(int column, int count) {
 			return ProxyQSqlTableModel().RemoveColumns(column,count);
 		}
-		[SmokeMethod("removeRows$$$", "(int, int, const QModelIndex&)")]
+		[SmokeMethod("removeRows$$#", "(int, int, const QModelIndex&)")]
 		public new bool RemoveRows(int row, int count, QModelIndex parent) {
 			return ProxyQSqlTableModel().RemoveRows(row,count,parent);
 		}
@@ -169,7 +169,7 @@ namespace Qyoto {
 		public new bool RemoveRows(int row, int count) {
 			return ProxyQSqlTableModel().RemoveRows(row,count);
 		}
-		[SmokeMethod("insertRows$$$", "(int, int, const QModelIndex&)")]
+		[SmokeMethod("insertRows$$#", "(int, int, const QModelIndex&)")]
 		public new bool InsertRows(int row, int count, QModelIndex parent) {
 			return ProxyQSqlTableModel().InsertRows(row,count,parent);
 		}
@@ -177,11 +177,11 @@ namespace Qyoto {
 		public new bool InsertRows(int row, int count) {
 			return ProxyQSqlTableModel().InsertRows(row,count);
 		}
-		[SmokeMethod("insertRecord$$", "(int, const QSqlRecord&)")]
+		[SmokeMethod("insertRecord$#", "(int, const QSqlRecord&)")]
 		public bool InsertRecord(int row, QSqlRecord record) {
 			return ProxyQSqlTableModel().InsertRecord(row,record);
 		}
-		[SmokeMethod("setRecord$$", "(int, const QSqlRecord&)")]
+		[SmokeMethod("setRecord$#", "(int, const QSqlRecord&)")]
 		public bool SetRecord(int row, QSqlRecord record) {
 			return ProxyQSqlTableModel().SetRecord(row,record);
 		}
@@ -189,22 +189,22 @@ namespace Qyoto {
 		public virtual void RevertRow(int row) {
 			ProxyQSqlTableModel().RevertRow(row);
 		}
-		[Q_SLOT("bool ()")]
+		[Q_SLOT("bool submit()")]
 		[SmokeMethod("submit", "()")]
 		public new bool Submit() {
 			return ProxyQSqlTableModel().Submit();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void revert()")]
 		[SmokeMethod("revert", "()")]
 		public new void Revert() {
 			ProxyQSqlTableModel().Revert();
 		}
-		[Q_SLOT("bool ()")]
+		[Q_SLOT("bool submitAll()")]
 		[SmokeMethod("submitAll", "()")]
 		public bool SubmitAll() {
 			return ProxyQSqlTableModel().SubmitAll();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void revertAll()")]
 		[SmokeMethod("revertAll", "()")]
 		public void RevertAll() {
 			ProxyQSqlTableModel().RevertAll();
@@ -215,7 +215,7 @@ namespace Qyoto {
 		public static new string Tr(string s) {
 			return StaticQSqlTableModel().Tr(s);
 		}
-		[SmokeMethod("updateRowInTable$$", "(int, const QSqlRecord&)")]
+		[SmokeMethod("updateRowInTable$#", "(int, const QSqlRecord&)")]
 		protected virtual bool UpdateRowInTable(int row, QSqlRecord values) {
 			return ProxyQSqlTableModel().UpdateRowInTable(row,values);
 		}
@@ -265,13 +265,13 @@ namespace Qyoto {
 	}
 
 	public interface IQSqlTableModelSignals : IQSqlQueryModelSignals {
-		[Q_SIGNAL("void (int, QSqlRecord&)")]
+		[Q_SIGNAL("void primeInsert(int, QSqlRecord&)")]
 		void PrimeInsert(int row, QSqlRecord record);
-		[Q_SIGNAL("void (QSqlRecord&)")]
+		[Q_SIGNAL("void beforeInsert(QSqlRecord&)")]
 		void BeforeInsert(QSqlRecord record);
-		[Q_SIGNAL("void (int, QSqlRecord&)")]
+		[Q_SIGNAL("void beforeUpdate(int, QSqlRecord&)")]
 		void BeforeUpdate(int row, QSqlRecord record);
-		[Q_SIGNAL("void (int)")]
+		[Q_SIGNAL("void beforeDelete(int)")]
 		void BeforeDelete(int row);
 	}
 }

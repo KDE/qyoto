@@ -80,11 +80,11 @@ namespace Qyoto {
 			ProxyQIcon().NewQIcon(engine);
 		}
 		//  operator QVariant(); >>>> NOT CONVERTED
-		[SmokeMethod("pixmap###", "(const QSize&, QIcon::Mode, QIcon::State) const")]
+		[SmokeMethod("pixmap#$$", "(const QSize&, QIcon::Mode, QIcon::State) const")]
 		public QPixmap Pixmap(QSize size, QIcon.Mode mode, QIcon.State state) {
 			return ProxyQIcon().Pixmap(size,mode,state);
 		}
-		[SmokeMethod("pixmap##", "(const QSize&, QIcon::Mode) const")]
+		[SmokeMethod("pixmap#$", "(const QSize&, QIcon::Mode) const")]
 		public QPixmap Pixmap(QSize size, QIcon.Mode mode) {
 			return ProxyQIcon().Pixmap(size,mode);
 		}
@@ -116,11 +116,11 @@ namespace Qyoto {
 		public QPixmap Pixmap(int extent) {
 			return ProxyQIcon().Pixmap(extent);
 		}
-		[SmokeMethod("actualSize###", "(const QSize&, QIcon::Mode, QIcon::State) const")]
+		[SmokeMethod("actualSize#$$", "(const QSize&, QIcon::Mode, QIcon::State) const")]
 		public QSize ActualSize(QSize size, QIcon.Mode mode, QIcon.State state) {
 			return ProxyQIcon().ActualSize(size,mode,state);
 		}
-		[SmokeMethod("actualSize##", "(const QSize&, QIcon::Mode) const")]
+		[SmokeMethod("actualSize#$", "(const QSize&, QIcon::Mode) const")]
 		public QSize ActualSize(QSize size, QIcon.Mode mode) {
 			return ProxyQIcon().ActualSize(size,mode);
 		}
@@ -128,15 +128,15 @@ namespace Qyoto {
 		public QSize ActualSize(QSize size) {
 			return ProxyQIcon().ActualSize(size);
 		}
-		[SmokeMethod("paint#####", "(QPainter*, const QRect&, Qt::Alignment, QIcon::Mode, QIcon::State) const")]
+		[SmokeMethod("paint##$$$", "(QPainter*, const QRect&, Qt::Alignment, QIcon::Mode, QIcon::State) const")]
 		public void Paint(QPainter painter, QRect rect, int alignment, QIcon.Mode mode, QIcon.State state) {
 			ProxyQIcon().Paint(painter,rect,alignment,mode,state);
 		}
-		[SmokeMethod("paint####", "(QPainter*, const QRect&, Qt::Alignment, QIcon::Mode) const")]
+		[SmokeMethod("paint##$$", "(QPainter*, const QRect&, Qt::Alignment, QIcon::Mode) const")]
 		public void Paint(QPainter painter, QRect rect, int alignment, QIcon.Mode mode) {
 			ProxyQIcon().Paint(painter,rect,alignment,mode);
 		}
-		[SmokeMethod("paint###", "(QPainter*, const QRect&, Qt::Alignment) const")]
+		[SmokeMethod("paint##$", "(QPainter*, const QRect&, Qt::Alignment) const")]
 		public void Paint(QPainter painter, QRect rect, int alignment) {
 			ProxyQIcon().Paint(painter,rect,alignment);
 		}
@@ -144,19 +144,19 @@ namespace Qyoto {
 		public void Paint(QPainter painter, QRect rect) {
 			ProxyQIcon().Paint(painter,rect);
 		}
-		[SmokeMethod("paint########", "(QPainter*, int, int, int, int, Qt::Alignment, QIcon::Mode, QIcon::State) const")]
+		[SmokeMethod("paint#$$$$$$$", "(QPainter*, int, int, int, int, Qt::Alignment, QIcon::Mode, QIcon::State) const")]
 		public void Paint(QPainter painter, int x, int y, int w, int h, int alignment, QIcon.Mode mode, QIcon.State state) {
 			ProxyQIcon().Paint(painter,x,y,w,h,alignment,mode,state);
 		}
-		[SmokeMethod("paint#######", "(QPainter*, int, int, int, int, Qt::Alignment, QIcon::Mode) const")]
+		[SmokeMethod("paint#$$$$$$", "(QPainter*, int, int, int, int, Qt::Alignment, QIcon::Mode) const")]
 		public void Paint(QPainter painter, int x, int y, int w, int h, int alignment, QIcon.Mode mode) {
 			ProxyQIcon().Paint(painter,x,y,w,h,alignment,mode);
 		}
-		[SmokeMethod("paint######", "(QPainter*, int, int, int, int, Qt::Alignment) const")]
+		[SmokeMethod("paint#$$$$$", "(QPainter*, int, int, int, int, Qt::Alignment) const")]
 		public void Paint(QPainter painter, int x, int y, int w, int h, int alignment) {
 			ProxyQIcon().Paint(painter,x,y,w,h,alignment);
 		}
-		[SmokeMethod("paint#####", "(QPainter*, int, int, int, int) const")]
+		[SmokeMethod("paint#$$$$", "(QPainter*, int, int, int, int) const")]
 		public void Paint(QPainter painter, int x, int y, int w, int h) {
 			ProxyQIcon().Paint(painter,x,y,w,h);
 		}
@@ -172,11 +172,11 @@ namespace Qyoto {
 		public int SerialNumber() {
 			return ProxyQIcon().SerialNumber();
 		}
-		[SmokeMethod("addPixmap###", "(const QPixmap&, QIcon::Mode, QIcon::State)")]
+		[SmokeMethod("addPixmap#$$", "(const QPixmap&, QIcon::Mode, QIcon::State)")]
 		public void AddPixmap(QPixmap pixmap, QIcon.Mode mode, QIcon.State state) {
 			ProxyQIcon().AddPixmap(pixmap,mode,state);
 		}
-		[SmokeMethod("addPixmap##", "(const QPixmap&, QIcon::Mode)")]
+		[SmokeMethod("addPixmap#$", "(const QPixmap&, QIcon::Mode)")]
 		public void AddPixmap(QPixmap pixmap, QIcon.Mode mode) {
 			ProxyQIcon().AddPixmap(pixmap,mode);
 		}
@@ -184,15 +184,15 @@ namespace Qyoto {
 		public void AddPixmap(QPixmap pixmap) {
 			ProxyQIcon().AddPixmap(pixmap);
 		}
-		[SmokeMethod("addFile$$$$", "(const QString&, const QSize&, QIcon::Mode, QIcon::State)")]
+		[SmokeMethod("addFile$#$$", "(const QString&, const QSize&, QIcon::Mode, QIcon::State)")]
 		public void AddFile(string fileName, QSize size, QIcon.Mode mode, QIcon.State state) {
 			ProxyQIcon().AddFile(fileName,size,mode,state);
 		}
-		[SmokeMethod("addFile$$$", "(const QString&, const QSize&, QIcon::Mode)")]
+		[SmokeMethod("addFile$#$", "(const QString&, const QSize&, QIcon::Mode)")]
 		public void AddFile(string fileName, QSize size, QIcon.Mode mode) {
 			ProxyQIcon().AddFile(fileName,size,mode);
 		}
-		[SmokeMethod("addFile$$", "(const QString&, const QSize&)")]
+		[SmokeMethod("addFile$#", "(const QString&, const QSize&)")]
 		public void AddFile(string fileName, QSize size) {
 			ProxyQIcon().AddFile(fileName,size);
 		}

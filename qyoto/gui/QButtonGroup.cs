@@ -62,7 +62,7 @@ namespace Qyoto {
 		public void AddButton(QAbstractButton arg1) {
 			ProxyQButtonGroup().AddButton(arg1);
 		}
-		[SmokeMethod("addButton##", "(QAbstractButton*, int)")]
+		[SmokeMethod("addButton#$", "(QAbstractButton*, int)")]
 		public void AddButton(QAbstractButton arg1, int id) {
 			ProxyQButtonGroup().AddButton(arg1,id);
 		}
@@ -82,7 +82,7 @@ namespace Qyoto {
 		public QAbstractButton Button(int id) {
 			return ProxyQButtonGroup().Button(id);
 		}
-		[SmokeMethod("setId##", "(QAbstractButton*, int)")]
+		[SmokeMethod("setId#$", "(QAbstractButton*, int)")]
 		public void SetId(QAbstractButton button, int id) {
 			ProxyQButtonGroup().SetId(button,id);
 		}
@@ -118,17 +118,17 @@ namespace Qyoto {
 	}
 
 	public interface IQButtonGroupSignals : IQObjectSignals {
-		[Q_SIGNAL("void (QAbstractButton*)")]
+		[Q_SIGNAL("void buttonClicked(QAbstractButton*)")]
 		void ButtonClicked(QAbstractButton arg1);
-		[Q_SIGNAL("void (int)")]
+		[Q_SIGNAL("void buttonClicked(int)")]
 		void ButtonClicked(int arg1);
-		[Q_SIGNAL("void (QAbstractButton*)")]
+		[Q_SIGNAL("void buttonPressed(QAbstractButton*)")]
 		void ButtonPressed(QAbstractButton arg1);
-		[Q_SIGNAL("void (int)")]
+		[Q_SIGNAL("void buttonPressed(int)")]
 		void ButtonPressed(int arg1);
-		[Q_SIGNAL("void (QAbstractButton*)")]
+		[Q_SIGNAL("void buttonReleased(QAbstractButton*)")]
 		void ButtonReleased(QAbstractButton arg1);
-		[Q_SIGNAL("void (int)")]
+		[Q_SIGNAL("void buttonReleased(int)")]
 		void ButtonReleased(int arg1);
 	}
 }

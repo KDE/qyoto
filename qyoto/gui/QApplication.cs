@@ -40,7 +40,7 @@ namespace Qyoto {
 			QPalette Palette(QWidget arg1);
 			[SmokeMethod("palette$", "(const char*)")]
 			QPalette Palette(string className);
-			[SmokeMethod("setPalette##", "(const QPalette&, const char*)")]
+			[SmokeMethod("setPalette#$", "(const QPalette&, const char*)")]
 			void SetPalette(QPalette arg1, string className);
 			[SmokeMethod("setPalette#", "(const QPalette&)")]
 			void SetPalette(QPalette arg1);
@@ -50,7 +50,7 @@ namespace Qyoto {
 			QFont Font(QWidget arg1);
 			[SmokeMethod("font$", "(const char*)")]
 			QFont Font(string className);
-			[SmokeMethod("setFont##", "(const QFont&, const char*)")]
+			[SmokeMethod("setFont#$", "(const QFont&, const char*)")]
 			void SetFont(QFont arg1, string className);
 			[SmokeMethod("setFont#", "(const QFont&)")]
 			void SetFont(QFont arg1);
@@ -526,11 +526,11 @@ namespace Qyoto {
 		public static bool quitOnLastWindowClosed() {
 			return StaticQApplication().quitOnLastWindowClosed();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void closeAllWindows()")]
 		public static void CloseAllWindows() {
 			StaticQApplication().CloseAllWindows();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void aboutQt()")]
 		public static void AboutQt() {
 			StaticQApplication().AboutQt();
 		}
@@ -557,13 +557,13 @@ namespace Qyoto {
 	}
 
 	public interface IQApplicationSignals : IQCoreApplicationSignals {
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void lastWindowClosed()")]
 		void LastWindowClosed();
-		[Q_SIGNAL("void (QWidget*, QWidget*)")]
+		[Q_SIGNAL("void focusChanged(QWidget*, QWidget*)")]
 		void FocusChanged(QWidget old, QWidget now);
-		[Q_SIGNAL("void (QSessionManager&)")]
+		[Q_SIGNAL("void commitDataRequest(QSessionManager&)")]
 		void CommitDataRequest(QSessionManager sessionManager);
-		[Q_SIGNAL("void (QSessionManager&)")]
+		[Q_SIGNAL("void saveStateRequest(QSessionManager&)")]
 		void SaveStateRequest(QSessionManager sessionManager);
 	}
 }

@@ -57,7 +57,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQImageWriter(fileName,format);
 		}
-		[SmokeMethod("QImageWriter$$", "(const QString&, const QByteArray&)")]
+		[SmokeMethod("QImageWriter$#", "(const QString&, const QByteArray&)")]
 		private void NewQImageWriter(string fileName, QByteArray format) {
 			ProxyQImageWriter().NewQImageWriter(fileName,format);
 		}

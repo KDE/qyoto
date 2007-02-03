@@ -64,7 +64,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDataStream(arg1,flags);
 		}
-		[SmokeMethod("QDataStream##", "(QByteArray*, QIODevice::OpenMode)")]
+		[SmokeMethod("QDataStream#$", "(QByteArray*, QIODevice::OpenMode)")]
 		private void NewQDataStream(QByteArray arg1, int flags) {
 			ProxyQDataStream().NewQDataStream(arg1,flags);
 		}
@@ -181,7 +181,7 @@ namespace Qyoto {
 		public QDataStream op_write(string str) {
 			return ProxyQDataStream().op_write(str);
 		}
-		[SmokeMethod("readBytes??", "(char*&, uint&)")]
+		[SmokeMethod("readBytes?$", "(char*&, uint&)")]
 		public QDataStream ReadBytes(string arg1, uint len) {
 			return ProxyQDataStream().ReadBytes(arg1,len);
 		}

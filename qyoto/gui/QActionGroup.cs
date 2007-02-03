@@ -76,7 +76,7 @@ namespace Qyoto {
 		public QAction AddAction(string text) {
 			return ProxyQActionGroup().AddAction(text);
 		}
-		[SmokeMethod("addAction##", "(const QIcon&, const QString&)")]
+		[SmokeMethod("addAction#$", "(const QIcon&, const QString&)")]
 		public QAction AddAction(QIcon icon, string text) {
 			return ProxyQActionGroup().AddAction(icon,text);
 		}
@@ -104,7 +104,7 @@ namespace Qyoto {
 		public bool IsVisible() {
 			return ProxyQActionGroup().IsVisible();
 		}
-		[Q_SLOT("void (bool)")]
+		[Q_SLOT("void setDisabled(bool)")]
 		[SmokeMethod("setDisabled$", "(bool)")]
 		public void SetDisabled(bool b) {
 			ProxyQActionGroup().SetDisabled(b);
@@ -133,11 +133,11 @@ namespace Qyoto {
 	}
 
 	public interface IQActionGroupSignals : IQObjectSignals {
-		[Q_SIGNAL("void (QAction*)")]
+		[Q_SIGNAL("void triggered(QAction*)")]
 		void Triggered(QAction arg1);
-		[Q_SIGNAL("void (QAction*)")]
+		[Q_SIGNAL("void selected(QAction*)")]
 		void Selected(QAction arg1);
-		[Q_SIGNAL("void (QAction*)")]
+		[Q_SIGNAL("void hovered(QAction*)")]
 		void Hovered(QAction arg1);
 	}
 }

@@ -49,7 +49,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQUndoCommand(text,parent);
 		}
-		[SmokeMethod("QUndoCommand$$", "(const QString&, QUndoCommand*)")]
+		[SmokeMethod("QUndoCommand$#", "(const QString&, QUndoCommand*)")]
 		private void NewQUndoCommand(string text, QUndoCommand parent) {
 			ProxyQUndoCommand().NewQUndoCommand(text,parent);
 		}

@@ -105,7 +105,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQProgressDialog(parent,f);
 		}
-		[SmokeMethod("QProgressDialog##", "(QWidget*, Qt::WindowFlags)")]
+		[SmokeMethod("QProgressDialog#$", "(QWidget*, Qt::WindowFlags)")]
 		private void NewQProgressDialog(QWidget parent, int f) {
 			ProxyQProgressDialog().NewQProgressDialog(parent,f);
 		}
@@ -129,7 +129,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQProgressDialog(labelText,cancelButtonText,minimum,maximum,parent,f);
 		}
-		[SmokeMethod("QProgressDialog$$$$$$", "(const QString&, const QString&, int, int, QWidget*, Qt::WindowFlags)")]
+		[SmokeMethod("QProgressDialog$$$$#$", "(const QString&, const QString&, int, int, QWidget*, Qt::WindowFlags)")]
 		private void NewQProgressDialog(string labelText, string cancelButtonText, int minimum, int maximum, QWidget parent, int f) {
 			ProxyQProgressDialog().NewQProgressDialog(labelText,cancelButtonText,minimum,maximum,parent,f);
 		}
@@ -137,7 +137,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQProgressDialog(labelText,cancelButtonText,minimum,maximum,parent);
 		}
-		[SmokeMethod("QProgressDialog$$$$$", "(const QString&, const QString&, int, int, QWidget*)")]
+		[SmokeMethod("QProgressDialog$$$$#", "(const QString&, const QString&, int, int, QWidget*)")]
 		private void NewQProgressDialog(string labelText, string cancelButtonText, int minimum, int maximum, QWidget parent) {
 			ProxyQProgressDialog().NewQProgressDialog(labelText,cancelButtonText,minimum,maximum,parent);
 		}
@@ -169,17 +169,17 @@ namespace Qyoto {
 		public new QSize SizeHint() {
 			return ProxyQProgressDialog().SizeHint();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void cancel()")]
 		[SmokeMethod("cancel", "()")]
 		public void Cancel() {
 			ProxyQProgressDialog().Cancel();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void reset()")]
 		[SmokeMethod("reset", "()")]
 		public void Reset() {
 			ProxyQProgressDialog().Reset();
 		}
-		[Q_SLOT("void (const QString&)")]
+		[Q_SLOT("void setCancelButtonText(const QString&)")]
 		[SmokeMethod("setCancelButtonText$", "(const QString&)")]
 		public void SetCancelButtonText(string arg1) {
 			ProxyQProgressDialog().SetCancelButtonText(arg1);
@@ -206,7 +206,7 @@ namespace Qyoto {
 		public new void ShowEvent(QShowEvent e) {
 			ProxyQProgressDialog().ShowEvent(e);
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void forceShow()")]
 		[SmokeMethod("forceShow", "()")]
 		protected void ForceShow() {
 			ProxyQProgressDialog().ForceShow();
@@ -229,7 +229,7 @@ namespace Qyoto {
 	}
 
 	public interface IQProgressDialogSignals : IQDialogSignals {
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void canceled()")]
 		void Canceled();
 	}
 }

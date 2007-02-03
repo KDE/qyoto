@@ -54,7 +54,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStandardItem(icon,text);
 		}
-		[SmokeMethod("QStandardItem##", "(const QIcon&, const QString&)")]
+		[SmokeMethod("QStandardItem#$", "(const QIcon&, const QString&)")]
 		private void NewQStandardItem(QIcon icon, string text) {
 			ProxyQStandardItem().NewQStandardItem(icon,text);
 		}
@@ -82,7 +82,7 @@ namespace Qyoto {
 		public virtual QVariant Data() {
 			return ProxyQStandardItem().Data();
 		}
-		[SmokeMethod("setData##", "(const QVariant&, int)")]
+		[SmokeMethod("setData#$", "(const QVariant&, int)")]
 		public virtual void SetData(QVariant value, int role) {
 			ProxyQStandardItem().SetData(value,role);
 		}
@@ -306,19 +306,19 @@ namespace Qyoto {
 		public QStandardItem Child(int row) {
 			return ProxyQStandardItem().Child(row);
 		}
-		[SmokeMethod("setChild$$$", "(int, int, QStandardItem*)")]
+		[SmokeMethod("setChild$$#", "(int, int, QStandardItem*)")]
 		public void SetChild(int row, int column, QStandardItem item) {
 			ProxyQStandardItem().SetChild(row,column,item);
 		}
-		[SmokeMethod("setChild$$", "(int, QStandardItem*)")]
+		[SmokeMethod("setChild$#", "(int, QStandardItem*)")]
 		public void SetChild(int row, QStandardItem item) {
 			ProxyQStandardItem().SetChild(row,item);
 		}
-		[SmokeMethod("insertRow$$", "(int, const QList<QStandardItem*>&)")]
+		[SmokeMethod("insertRow$?", "(int, const QList<QStandardItem*>&)")]
 		public void InsertRow(int row, List<QStandardItem> items) {
 			ProxyQStandardItem().InsertRow(row,items);
 		}
-		[SmokeMethod("insertColumn$$", "(int, const QList<QStandardItem*>&)")]
+		[SmokeMethod("insertColumn$?", "(int, const QList<QStandardItem*>&)")]
 		public void InsertColumn(int column, List<QStandardItem> items) {
 			ProxyQStandardItem().InsertColumn(column,items);
 		}
@@ -354,7 +354,7 @@ namespace Qyoto {
 		public void AppendColumn(List<QStandardItem> items) {
 			ProxyQStandardItem().AppendColumn(items);
 		}
-		[SmokeMethod("insertRow$$", "(int, QStandardItem*)")]
+		[SmokeMethod("insertRow$#", "(int, QStandardItem*)")]
 		public void InsertRow(int row, QStandardItem item) {
 			ProxyQStandardItem().InsertRow(row,item);
 		}

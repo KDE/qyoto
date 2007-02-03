@@ -90,7 +90,7 @@ namespace Qyoto {
 		public void SetManagerProperty(string name, string value) {
 			ProxyQSessionManager().SetManagerProperty(name,value);
 		}
-		[SmokeMethod("setManagerProperty$$", "(const QString&, const QStringList&)")]
+		[SmokeMethod("setManagerProperty$?", "(const QString&, const QStringList&)")]
 		public void SetManagerProperty(string name, List<string> value) {
 			ProxyQSessionManager().SetManagerProperty(name,value);
 		}

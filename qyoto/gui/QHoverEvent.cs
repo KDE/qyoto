@@ -29,7 +29,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQHoverEvent(type,pos,oldPos);
 		}
-		[SmokeMethod("QHoverEvent$$$", "(QEvent::Type, const QPoint&, const QPoint&)")]
+		[SmokeMethod("QHoverEvent$##", "(QEvent::Type, const QPoint&, const QPoint&)")]
 		private void NewQHoverEvent(QEvent.TypeOf type, QPoint pos, QPoint oldPos) {
 			ProxyQHoverEvent().NewQHoverEvent(type,pos,oldPos);
 		}

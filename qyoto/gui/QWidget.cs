@@ -453,7 +453,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQWidget(parent,f);
 		}
-		[SmokeMethod("QWidget##", "(QWidget*, Qt::WindowFlags)")]
+		[SmokeMethod("QWidget#$", "(QWidget*, Qt::WindowFlags)")]
 		private void NewQWidget(QWidget parent, int f) {
 			ProxyQWidget().NewQWidget(parent,f);
 		}
@@ -709,7 +709,7 @@ namespace Qyoto {
 		public void ReleaseKeyboard() {
 			ProxyQWidget().ReleaseKeyboard();
 		}
-		[SmokeMethod("grabShortcut##", "(const QKeySequence&, Qt::ShortcutContext)")]
+		[SmokeMethod("grabShortcut#$", "(const QKeySequence&, Qt::ShortcutContext)")]
 		public int GrabShortcut(QKeySequence key, Qt.ShortcutContext context) {
 			return ProxyQWidget().GrabShortcut(key,context);
 		}
@@ -881,7 +881,7 @@ namespace Qyoto {
 		public new void SetParent(QWidget parent) {
 			ProxyQWidget().SetParent(parent);
 		}
-		[SmokeMethod("setParent##", "(QWidget*, Qt::WindowFlags)")]
+		[SmokeMethod("setParent#$", "(QWidget*, Qt::WindowFlags)")]
 		public new void SetParent(QWidget parent, int f) {
 			ProxyQWidget().SetParent(parent,f);
 		}
@@ -889,7 +889,7 @@ namespace Qyoto {
 		public void Scroll(int dx, int dy) {
 			ProxyQWidget().Scroll(dx,dy);
 		}
-		[SmokeMethod("scroll$$$", "(int, int, const QRect&)")]
+		[SmokeMethod("scroll$$#", "(int, int, const QRect&)")]
 		public void Scroll(int dx, int dy, QRect arg3) {
 			ProxyQWidget().Scroll(dx,dy,arg3);
 		}
@@ -913,7 +913,7 @@ namespace Qyoto {
 		public void InsertAction(QAction before, QAction action) {
 			ProxyQWidget().InsertAction(before,action);
 		}
-		[SmokeMethod("insertActions##", "(QAction*, QList<QAction*>)")]
+		[SmokeMethod("insertActions#?", "(QAction*, QList<QAction*>)")]
 		public void InsertActions(QAction before, List<QAction> actions) {
 			ProxyQWidget().InsertActions(before,actions);
 		}
@@ -991,77 +991,77 @@ namespace Qyoto {
 		public virtual QVariant InputMethodQuery(Qt.InputMethodQuery arg1) {
 			return ProxyQWidget().InputMethodQuery(arg1);
 		}
-		[Q_SLOT("void (bool)")]
+		[Q_SLOT("void setDisabled(bool)")]
 		[SmokeMethod("setDisabled$", "(bool)")]
 		public void SetDisabled(bool arg1) {
 			ProxyQWidget().SetDisabled(arg1);
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void setFocus()")]
 		[SmokeMethod("setFocus", "()")]
 		public void SetFocus() {
 			ProxyQWidget().SetFocus();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void update()")]
 		[SmokeMethod("update", "()")]
 		public void Update() {
 			ProxyQWidget().Update();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void repaint()")]
 		[SmokeMethod("repaint", "()")]
 		public void Repaint() {
 			ProxyQWidget().Repaint();
 		}
-		[Q_SLOT("void (bool)")]
+		[Q_SLOT("void setHidden(bool)")]
 		[SmokeMethod("setHidden$", "(bool)")]
 		public void SetHidden(bool hidden) {
 			ProxyQWidget().SetHidden(hidden);
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void show()")]
 		[SmokeMethod("show", "()")]
 		public void Show() {
 			ProxyQWidget().Show();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void hide()")]
 		[SmokeMethod("hide", "()")]
 		public void Hide() {
 			ProxyQWidget().Hide();
 		}
-		[Q_SLOT("void (bool)")]
+		[Q_SLOT("void setShown(bool)")]
 		[SmokeMethod("setShown$", "(bool)")]
 		public void SetShown(bool shown) {
 			ProxyQWidget().SetShown(shown);
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void showMinimized()")]
 		[SmokeMethod("showMinimized", "()")]
 		public void ShowMinimized() {
 			ProxyQWidget().ShowMinimized();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void showMaximized()")]
 		[SmokeMethod("showMaximized", "()")]
 		public void ShowMaximized() {
 			ProxyQWidget().ShowMaximized();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void showFullScreen()")]
 		[SmokeMethod("showFullScreen", "()")]
 		public void ShowFullScreen() {
 			ProxyQWidget().ShowFullScreen();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void showNormal()")]
 		[SmokeMethod("showNormal", "()")]
 		public void ShowNormal() {
 			ProxyQWidget().ShowNormal();
 		}
-		[Q_SLOT("bool ()")]
+		[Q_SLOT("bool close()")]
 		[SmokeMethod("close", "()")]
 		public bool Close() {
 			return ProxyQWidget().Close();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void raise()")]
 		[SmokeMethod("raise", "()")]
 		public void Raise() {
 			ProxyQWidget().Raise();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void lower()")]
 		[SmokeMethod("lower", "()")]
 		public void Lower() {
 			ProxyQWidget().Lower();
@@ -1264,7 +1264,7 @@ namespace Qyoto {
 		protected virtual void LanguageChange() {
 			ProxyQWidget().LanguageChange();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void updateMicroFocus()")]
 		[SmokeMethod("updateMicroFocus", "()")]
 		protected void UpdateMicroFocus() {
 			ProxyQWidget().UpdateMicroFocus();
@@ -1323,7 +1323,7 @@ namespace Qyoto {
 	}
 
 	public interface IQWidgetSignals : IQObjectSignals {
-		[Q_SIGNAL("void (const QPoint&)")]
+		[Q_SIGNAL("void customContextMenuRequested(const QPoint&)")]
 		void CustomContextMenuRequested(QPoint pos);
 	}
 }

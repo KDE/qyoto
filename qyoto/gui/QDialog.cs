@@ -58,7 +58,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDialog(parent,f);
 		}
-		[SmokeMethod("QDialog##", "(QWidget*, Qt::WindowFlags)")]
+		[SmokeMethod("QDialog#$", "(QWidget*, Qt::WindowFlags)")]
 		private void NewQDialog(QWidget parent, int f) {
 			ProxyQDialog().NewQDialog(parent,f);
 		}
@@ -122,27 +122,27 @@ namespace Qyoto {
 		public void SetResult(int r) {
 			ProxyQDialog().SetResult(r);
 		}
-		[Q_SLOT("int ()")]
+		[Q_SLOT("int exec()")]
 		[SmokeMethod("exec", "()")]
 		public int Exec() {
 			return ProxyQDialog().Exec();
 		}
-		[Q_SLOT("void (int)")]
+		[Q_SLOT("void done(int)")]
 		[SmokeMethod("done$", "(int)")]
 		public virtual void Done(int arg1) {
 			ProxyQDialog().Done(arg1);
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void accept()")]
 		[SmokeMethod("accept", "()")]
 		public virtual void Accept() {
 			ProxyQDialog().Accept();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void reject()")]
 		[SmokeMethod("reject", "()")]
 		public virtual void Reject() {
 			ProxyQDialog().Reject();
 		}
-		[Q_SLOT("void (bool)")]
+		[Q_SLOT("void showExtension(bool)")]
 		[SmokeMethod("showExtension$", "(bool)")]
 		public void ShowExtension(bool arg1) {
 			ProxyQDialog().ShowExtension(arg1);
@@ -199,11 +199,11 @@ namespace Qyoto {
 	}
 
 	public interface IQDialogSignals : IQWidgetSignals {
-		[Q_SIGNAL("void (int)")]
+		[Q_SIGNAL("void finished(int)")]
 		void Finished(int result);
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void accepted()")]
 		void Accepted();
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void rejected()")]
 		void Rejected();
 	}
 }

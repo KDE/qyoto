@@ -84,11 +84,11 @@ namespace Qyoto {
 		private void NewQLayout() {
 			ProxyQLayout().NewQLayout();
 		}
-		[SmokeMethod("setAlignment##", "(QWidget*, Qt::Alignment)")]
+		[SmokeMethod("setAlignment#$", "(QWidget*, Qt::Alignment)")]
 		public bool SetAlignment(QWidget w, int alignment) {
 			return ProxyQLayout().SetAlignment(w,alignment);
 		}
-		[SmokeMethod("setAlignment##", "(QLayout*, Qt::Alignment)")]
+		[SmokeMethod("setAlignment#$", "(QLayout*, Qt::Alignment)")]
 		public bool SetAlignment(QLayout l, int alignment) {
 			return ProxyQLayout().SetAlignment(l,alignment);
 		}

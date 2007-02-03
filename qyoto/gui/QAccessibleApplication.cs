@@ -43,7 +43,7 @@ namespace Qyoto {
 		public new int IndexOfChild(QAccessibleInterface arg1) {
 			return ProxyQAccessibleApplication().IndexOfChild(arg1);
 		}
-		[SmokeMethod("relationTo$$$", "(int, const QAccessibleInterface*, int) const")]
+		[SmokeMethod("relationTo$#$", "(int, const QAccessibleInterface*, int) const")]
 		public new int RelationTo(int arg1, QAccessibleInterface arg2, int arg3) {
 			return ProxyQAccessibleApplication().RelationTo(arg1,arg2,arg3);
 		}
@@ -51,7 +51,7 @@ namespace Qyoto {
 		public new int ChildAt(int x, int y) {
 			return ProxyQAccessibleApplication().ChildAt(x,y);
 		}
-		[SmokeMethod("navigate$$$", "(QAccessible::RelationFlag, int, QAccessibleInterface**) const")]
+		[SmokeMethod("navigate$$?", "(QAccessible::RelationFlag, int, QAccessibleInterface**) const")]
 		public new int Navigate(QAccessible.RelationFlag arg1, int arg2, QAccessibleInterface arg3) {
 			return ProxyQAccessibleApplication().Navigate(arg1,arg2,arg3);
 		}
@@ -71,7 +71,7 @@ namespace Qyoto {
 		public new int UserActionCount(int child) {
 			return ProxyQAccessibleApplication().UserActionCount(child);
 		}
-		[SmokeMethod("doAction$$$", "(int, int, const QVariantList&)")]
+		[SmokeMethod("doAction$$?", "(int, int, const QVariantList&)")]
 		public new bool DoAction(int action, int child, List<QVariant> arg3) {
 			return ProxyQAccessibleApplication().DoAction(action,child,arg3);
 		}

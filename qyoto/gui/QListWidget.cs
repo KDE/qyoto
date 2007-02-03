@@ -81,7 +81,7 @@ namespace Qyoto {
 		public int Row(QListWidgetItem item) {
 			return ProxyQListWidget().Row(item);
 		}
-		[SmokeMethod("insertItem$$", "(int, QListWidgetItem*)")]
+		[SmokeMethod("insertItem$#", "(int, QListWidgetItem*)")]
 		public void InsertItem(int row, QListWidgetItem item) {
 			ProxyQListWidget().InsertItem(row,item);
 		}
@@ -89,7 +89,7 @@ namespace Qyoto {
 		public void InsertItem(int row, string label) {
 			ProxyQListWidget().InsertItem(row,label);
 		}
-		[SmokeMethod("insertItems$$", "(int, const QStringList&)")]
+		[SmokeMethod("insertItems$?", "(int, const QStringList&)")]
 		public void InsertItems(int row, List<string> labels) {
 			ProxyQListWidget().InsertItems(row,labels);
 		}
@@ -165,7 +165,7 @@ namespace Qyoto {
 		public bool IsItemSelected(QListWidgetItem item) {
 			return ProxyQListWidget().IsItemSelected(item);
 		}
-		[SmokeMethod("setItemSelected##", "(const QListWidgetItem*, bool)")]
+		[SmokeMethod("setItemSelected#$", "(const QListWidgetItem*, bool)")]
 		public void SetItemSelected(QListWidgetItem item, bool select) {
 			ProxyQListWidget().SetItemSelected(item,select);
 		}
@@ -181,7 +181,7 @@ namespace Qyoto {
 		public bool IsItemHidden(QListWidgetItem item) {
 			return ProxyQListWidget().IsItemHidden(item);
 		}
-		[SmokeMethod("setItemHidden##", "(const QListWidgetItem*, bool)")]
+		[SmokeMethod("setItemHidden#$", "(const QListWidgetItem*, bool)")]
 		public void SetItemHidden(QListWidgetItem item, bool hide) {
 			ProxyQListWidget().SetItemHidden(item,hide);
 		}
@@ -189,17 +189,17 @@ namespace Qyoto {
 		public new void DropEvent(QDropEvent arg1) {
 			ProxyQListWidget().DropEvent(arg1);
 		}
-		[Q_SLOT("void (const QListWidgetItem*, QAbstractItemView::ScrollHint)")]
-		[SmokeMethod("scrollToItem##", "(const QListWidgetItem*, QAbstractItemView::ScrollHint)")]
+		[Q_SLOT("void scrollToItem(const QListWidgetItem*, QAbstractItemView::ScrollHint)")]
+		[SmokeMethod("scrollToItem#$", "(const QListWidgetItem*, QAbstractItemView::ScrollHint)")]
 		public void ScrollToItem(QListWidgetItem item, QAbstractItemView.ScrollHint hint) {
 			ProxyQListWidget().ScrollToItem(item,hint);
 		}
-		[Q_SLOT("void (const QListWidgetItem*)")]
+		[Q_SLOT("void scrollToItem(const QListWidgetItem*)")]
 		[SmokeMethod("scrollToItem#", "(const QListWidgetItem*)")]
 		public void ScrollToItem(QListWidgetItem item) {
 			ProxyQListWidget().ScrollToItem(item);
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void clear()")]
 		[SmokeMethod("clear", "()")]
 		public void Clear() {
 			ProxyQListWidget().Clear();
@@ -222,7 +222,7 @@ namespace Qyoto {
 		protected virtual QMimeData MimeData(List<QListWidgetItem> items) {
 			return ProxyQListWidget().MimeData(items);
 		}
-		[SmokeMethod("dropMimeData$$$", "(int, const QMimeData*, Qt::DropAction)")]
+		[SmokeMethod("dropMimeData$#$", "(int, const QMimeData*, Qt::DropAction)")]
 		protected virtual bool DropMimeData(int index, QMimeData data, Qt.DropAction action) {
 			return ProxyQListWidget().DropMimeData(index,data,action);
 		}
@@ -260,25 +260,25 @@ namespace Qyoto {
 	}
 
 	public interface IQListWidgetSignals : IQListViewSignals {
-		[Q_SIGNAL("void (QListWidgetItem*)")]
+		[Q_SIGNAL("void itemPressed(QListWidgetItem*)")]
 		void ItemPressed(QListWidgetItem item);
-		[Q_SIGNAL("void (QListWidgetItem*)")]
+		[Q_SIGNAL("void itemClicked(QListWidgetItem*)")]
 		void ItemClicked(QListWidgetItem item);
-		[Q_SIGNAL("void (QListWidgetItem*)")]
+		[Q_SIGNAL("void itemDoubleClicked(QListWidgetItem*)")]
 		void ItemDoubleClicked(QListWidgetItem item);
-		[Q_SIGNAL("void (QListWidgetItem*)")]
+		[Q_SIGNAL("void itemActivated(QListWidgetItem*)")]
 		void ItemActivated(QListWidgetItem item);
-		[Q_SIGNAL("void (QListWidgetItem*)")]
+		[Q_SIGNAL("void itemEntered(QListWidgetItem*)")]
 		void ItemEntered(QListWidgetItem item);
-		[Q_SIGNAL("void (QListWidgetItem*)")]
+		[Q_SIGNAL("void itemChanged(QListWidgetItem*)")]
 		void ItemChanged(QListWidgetItem item);
-		[Q_SIGNAL("void (QListWidgetItem*, QListWidgetItem*)")]
+		[Q_SIGNAL("void currentItemChanged(QListWidgetItem*, QListWidgetItem*)")]
 		void CurrentItemChanged(QListWidgetItem current, QListWidgetItem previous);
-		[Q_SIGNAL("void (const QString&)")]
+		[Q_SIGNAL("void currentTextChanged(const QString&)")]
 		void CurrentTextChanged(string currentText);
-		[Q_SIGNAL("void (int)")]
+		[Q_SIGNAL("void currentRowChanged(int)")]
 		void CurrentRowChanged(int currentRow);
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void itemSelectionChanged()")]
 		void ItemSelectionChanged();
 	}
 }

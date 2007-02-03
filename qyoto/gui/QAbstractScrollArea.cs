@@ -90,7 +90,7 @@ namespace Qyoto {
 		public void SetCornerWidget(QWidget widget) {
 			ProxyQAbstractScrollArea().SetCornerWidget(widget);
 		}
-		[SmokeMethod("addScrollBarWidget##", "(QWidget*, Qt::Alignment)")]
+		[SmokeMethod("addScrollBarWidget#$", "(QWidget*, Qt::Alignment)")]
 		public void AddScrollBarWidget(QWidget widget, int alignment) {
 			ProxyQAbstractScrollArea().AddScrollBarWidget(widget,alignment);
 		}
@@ -192,7 +192,7 @@ namespace Qyoto {
 		protected virtual void ScrollContentsBy(int dx, int dy) {
 			ProxyQAbstractScrollArea().ScrollContentsBy(dx,dy);
 		}
-		[Q_SLOT("void (QWidget*)")]
+		[Q_SLOT("void setupViewport(QWidget*)")]
 		[SmokeMethod("setupViewport#", "(QWidget*)")]
 		protected void SetupViewport(QWidget viewport) {
 			ProxyQAbstractScrollArea().SetupViewport(viewport);

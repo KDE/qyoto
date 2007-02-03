@@ -64,7 +64,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSocketNotifier(socket,arg2,parent);
 		}
-		[SmokeMethod("QSocketNotifier$$$", "(int, QSocketNotifier::Type, QObject*)")]
+		[SmokeMethod("QSocketNotifier$$#", "(int, QSocketNotifier::Type, QObject*)")]
 		private void NewQSocketNotifier(int socket, QSocketNotifier.TypeOf arg2, QObject parent) {
 			ProxyQSocketNotifier().NewQSocketNotifier(socket,arg2,parent);
 		}
@@ -88,7 +88,7 @@ namespace Qyoto {
 		public bool IsEnabled() {
 			return ProxyQSocketNotifier().IsEnabled();
 		}
-		[Q_SLOT("void (bool)")]
+		[Q_SLOT("void setEnabled(bool)")]
 		[SmokeMethod("setEnabled$", "(bool)")]
 		public void SetEnabled(bool arg1) {
 			ProxyQSocketNotifier().SetEnabled(arg1);
@@ -121,7 +121,7 @@ namespace Qyoto {
 	}
 
 	public interface IQSocketNotifierSignals : IQObjectSignals {
-		[Q_SIGNAL("void (int)")]
+		[Q_SIGNAL("void activated(int)")]
 		void Activated(int socket);
 	}
 }

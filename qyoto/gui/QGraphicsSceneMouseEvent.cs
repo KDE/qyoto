@@ -69,7 +69,7 @@ namespace Qyoto {
 		public QPointF ButtonDownPos(Qt.MouseButton button) {
 			return ProxyQGraphicsSceneMouseEvent().ButtonDownPos(button);
 		}
-		[SmokeMethod("setButtonDownPos$$", "(Qt::MouseButton, const QPointF&)")]
+		[SmokeMethod("setButtonDownPos$#", "(Qt::MouseButton, const QPointF&)")]
 		public void SetButtonDownPos(Qt.MouseButton button, QPointF pos) {
 			ProxyQGraphicsSceneMouseEvent().SetButtonDownPos(button,pos);
 		}
@@ -77,7 +77,7 @@ namespace Qyoto {
 		public QPointF ButtonDownScenePos(Qt.MouseButton button) {
 			return ProxyQGraphicsSceneMouseEvent().ButtonDownScenePos(button);
 		}
-		[SmokeMethod("setButtonDownScenePos$$", "(Qt::MouseButton, const QPointF&)")]
+		[SmokeMethod("setButtonDownScenePos$#", "(Qt::MouseButton, const QPointF&)")]
 		public void SetButtonDownScenePos(Qt.MouseButton button, QPointF pos) {
 			ProxyQGraphicsSceneMouseEvent().SetButtonDownScenePos(button,pos);
 		}
@@ -85,7 +85,7 @@ namespace Qyoto {
 		public QPoint ButtonDownScreenPos(Qt.MouseButton button) {
 			return ProxyQGraphicsSceneMouseEvent().ButtonDownScreenPos(button);
 		}
-		[SmokeMethod("setButtonDownScreenPos$$", "(Qt::MouseButton, const QPoint&)")]
+		[SmokeMethod("setButtonDownScreenPos$#", "(Qt::MouseButton, const QPoint&)")]
 		public void SetButtonDownScreenPos(Qt.MouseButton button, QPoint pos) {
 			ProxyQGraphicsSceneMouseEvent().SetButtonDownScreenPos(button,pos);
 		}

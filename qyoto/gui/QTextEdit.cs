@@ -180,7 +180,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTextEdit(text,parent);
 		}
-		[SmokeMethod("QTextEdit$$", "(const QString&, QWidget*)")]
+		[SmokeMethod("QTextEdit$#", "(const QString&, QWidget*)")]
 		private void NewQTextEdit(string text, QWidget parent) {
 			ProxyQTextEdit().NewQTextEdit(text,parent);
 		}
@@ -273,7 +273,7 @@ namespace Qyoto {
 		public void EnsureCursorVisible() {
 			ProxyQTextEdit().EnsureCursorVisible();
 		}
-		[SmokeMethod("loadResource$$", "(int, const QUrl&)")]
+		[SmokeMethod("loadResource$#", "(int, const QUrl&)")]
 		public virtual QVariant LoadResource(int type, IQUrl name) {
 			return ProxyQTextEdit().LoadResource(type,name);
 		}
@@ -299,127 +299,127 @@ namespace Qyoto {
 		public bool CanPaste() {
 			return ProxyQTextEdit().CanPaste();
 		}
-		[Q_SLOT("void (qreal)")]
+		[Q_SLOT("void setFontPointSize(qreal)")]
 		[SmokeMethod("setFontPointSize$", "(qreal)")]
 		public void SetFontPointSize(double s) {
 			ProxyQTextEdit().SetFontPointSize(s);
 		}
-		[Q_SLOT("void (const QString&)")]
+		[Q_SLOT("void setFontFamily(const QString&)")]
 		[SmokeMethod("setFontFamily$", "(const QString&)")]
 		public void SetFontFamily(string fontFamily) {
 			ProxyQTextEdit().SetFontFamily(fontFamily);
 		}
-		[Q_SLOT("void (int)")]
+		[Q_SLOT("void setFontWeight(int)")]
 		[SmokeMethod("setFontWeight$", "(int)")]
 		public void SetFontWeight(int w) {
 			ProxyQTextEdit().SetFontWeight(w);
 		}
-		[Q_SLOT("void (bool)")]
+		[Q_SLOT("void setFontUnderline(bool)")]
 		[SmokeMethod("setFontUnderline$", "(bool)")]
 		public void SetFontUnderline(bool b) {
 			ProxyQTextEdit().SetFontUnderline(b);
 		}
-		[Q_SLOT("void (bool)")]
+		[Q_SLOT("void setFontItalic(bool)")]
 		[SmokeMethod("setFontItalic$", "(bool)")]
 		public void SetFontItalic(bool b) {
 			ProxyQTextEdit().SetFontItalic(b);
 		}
-		[Q_SLOT("void (const QColor&)")]
+		[Q_SLOT("void setTextColor(const QColor&)")]
 		[SmokeMethod("setTextColor#", "(const QColor&)")]
 		public void SetTextColor(QColor c) {
 			ProxyQTextEdit().SetTextColor(c);
 		}
-		[Q_SLOT("void (const QFont&)")]
+		[Q_SLOT("void setCurrentFont(const QFont&)")]
 		[SmokeMethod("setCurrentFont#", "(const QFont&)")]
 		public void SetCurrentFont(QFont f) {
 			ProxyQTextEdit().SetCurrentFont(f);
 		}
-		[Q_SLOT("void (Qt::Alignment)")]
+		[Q_SLOT("void setAlignment(Qt::Alignment)")]
 		[SmokeMethod("setAlignment$", "(Qt::Alignment)")]
 		public void SetAlignment(int a) {
 			ProxyQTextEdit().SetAlignment(a);
 		}
-		[Q_SLOT("void (const QString&)")]
+		[Q_SLOT("void setPlainText(const QString&)")]
 		[SmokeMethod("setPlainText$", "(const QString&)")]
 		public void SetPlainText(string text) {
 			ProxyQTextEdit().SetPlainText(text);
 		}
-		[Q_SLOT("void (const QString&)")]
+		[Q_SLOT("void setText(const QString&)")]
 		[SmokeMethod("setText$", "(const QString&)")]
 		public void SetText(string text) {
 			ProxyQTextEdit().SetText(text);
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void cut()")]
 		[SmokeMethod("cut", "()")]
 		public void Cut() {
 			ProxyQTextEdit().Cut();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void copy()")]
 		[SmokeMethod("copy", "()")]
 		public void Copy() {
 			ProxyQTextEdit().Copy();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void paste()")]
 		[SmokeMethod("paste", "()")]
 		public void Paste() {
 			ProxyQTextEdit().Paste();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void undo()")]
 		[SmokeMethod("undo", "()")]
 		public void Undo() {
 			ProxyQTextEdit().Undo();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void redo()")]
 		[SmokeMethod("redo", "()")]
 		public void Redo() {
 			ProxyQTextEdit().Redo();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void clear()")]
 		[SmokeMethod("clear", "()")]
 		public void Clear() {
 			ProxyQTextEdit().Clear();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void selectAll()")]
 		[SmokeMethod("selectAll", "()")]
 		public void SelectAll() {
 			ProxyQTextEdit().SelectAll();
 		}
-		[Q_SLOT("void (const QString&)")]
+		[Q_SLOT("void insertPlainText(const QString&)")]
 		[SmokeMethod("insertPlainText$", "(const QString&)")]
 		public void InsertPlainText(string text) {
 			ProxyQTextEdit().InsertPlainText(text);
 		}
-		[Q_SLOT("void (const QString&)")]
+		[Q_SLOT("void insertHtml(const QString&)")]
 		[SmokeMethod("insertHtml$", "(const QString&)")]
 		public void InsertHtml(string text) {
 			ProxyQTextEdit().InsertHtml(text);
 		}
-		[Q_SLOT("void (const QString&)")]
+		[Q_SLOT("void append(const QString&)")]
 		[SmokeMethod("append$", "(const QString&)")]
 		public void Append(string text) {
 			ProxyQTextEdit().Append(text);
 		}
-		[Q_SLOT("void (const QString&)")]
+		[Q_SLOT("void scrollToAnchor(const QString&)")]
 		[SmokeMethod("scrollToAnchor$", "(const QString&)")]
 		public void ScrollToAnchor(string name) {
 			ProxyQTextEdit().ScrollToAnchor(name);
 		}
-		[Q_SLOT("void (int)")]
+		[Q_SLOT("void zoomIn(int)")]
 		[SmokeMethod("zoomIn$", "(int)")]
 		public void ZoomIn(int range) {
 			ProxyQTextEdit().ZoomIn(range);
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void zoomIn()")]
 		[SmokeMethod("zoomIn", "()")]
 		public void ZoomIn() {
 			ProxyQTextEdit().ZoomIn();
 		}
-		[Q_SLOT("void (int)")]
+		[Q_SLOT("void zoomOut(int)")]
 		[SmokeMethod("zoomOut$", "(int)")]
 		public void ZoomOut(int range) {
 			ProxyQTextEdit().ZoomOut(range);
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void zoomOut()")]
 		[SmokeMethod("zoomOut", "()")]
 		public void ZoomOut() {
 			ProxyQTextEdit().ZoomOut();
@@ -556,19 +556,19 @@ namespace Qyoto {
 	}
 
 	public interface IQTextEditSignals : IQAbstractScrollAreaSignals {
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void textChanged()")]
 		void TextChanged();
-		[Q_SIGNAL("void (bool)")]
+		[Q_SIGNAL("void undoAvailable(bool)")]
 		void UndoAvailable(bool b);
-		[Q_SIGNAL("void (bool)")]
+		[Q_SIGNAL("void redoAvailable(bool)")]
 		void RedoAvailable(bool b);
-		[Q_SIGNAL("void (const QTextCharFormat&)")]
+		[Q_SIGNAL("void currentCharFormatChanged(const QTextCharFormat&)")]
 		void CurrentCharFormatChanged(QTextCharFormat format);
-		[Q_SIGNAL("void (bool)")]
+		[Q_SIGNAL("void copyAvailable(bool)")]
 		void CopyAvailable(bool b);
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void selectionChanged()")]
 		void SelectionChanged();
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void cursorPositionChanged()")]
 		void CursorPositionChanged();
 	}
 }

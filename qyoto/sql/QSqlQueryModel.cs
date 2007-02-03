@@ -71,7 +71,7 @@ namespace Qyoto {
 		public QSqlRecord Record() {
 			return ProxyQSqlQueryModel().Record();
 		}
-		[SmokeMethod("data##", "(const QModelIndex&, int) const")]
+		[SmokeMethod("data#$", "(const QModelIndex&, int) const")]
 		public new QVariant Data(QModelIndex item, int role) {
 			return ProxyQSqlQueryModel().Data(item,role);
 		}
@@ -87,15 +87,15 @@ namespace Qyoto {
 		public new QVariant HeaderData(int section, Qt.Orientation orientation) {
 			return ProxyQSqlQueryModel().HeaderData(section,orientation);
 		}
-		[SmokeMethod("setHeaderData$$$$", "(int, Qt::Orientation, const QVariant&, int)")]
+		[SmokeMethod("setHeaderData$$#$", "(int, Qt::Orientation, const QVariant&, int)")]
 		public new bool SetHeaderData(int section, Qt.Orientation orientation, QVariant value, int role) {
 			return ProxyQSqlQueryModel().SetHeaderData(section,orientation,value,role);
 		}
-		[SmokeMethod("setHeaderData$$$", "(int, Qt::Orientation, const QVariant&)")]
+		[SmokeMethod("setHeaderData$$#", "(int, Qt::Orientation, const QVariant&)")]
 		public new bool SetHeaderData(int section, Qt.Orientation orientation, QVariant value) {
 			return ProxyQSqlQueryModel().SetHeaderData(section,orientation,value);
 		}
-		[SmokeMethod("insertColumns$$$", "(int, int, const QModelIndex&)")]
+		[SmokeMethod("insertColumns$$#", "(int, int, const QModelIndex&)")]
 		public new bool InsertColumns(int column, int count, QModelIndex parent) {
 			return ProxyQSqlQueryModel().InsertColumns(column,count,parent);
 		}
@@ -103,7 +103,7 @@ namespace Qyoto {
 		public new bool InsertColumns(int column, int count) {
 			return ProxyQSqlQueryModel().InsertColumns(column,count);
 		}
-		[SmokeMethod("removeColumns$$$", "(int, int, const QModelIndex&)")]
+		[SmokeMethod("removeColumns$$#", "(int, int, const QModelIndex&)")]
 		public new bool RemoveColumns(int column, int count, QModelIndex parent) {
 			return ProxyQSqlQueryModel().RemoveColumns(column,count,parent);
 		}
@@ -115,7 +115,7 @@ namespace Qyoto {
 		public void SetQuery(IQSqlQuery query) {
 			ProxyQSqlQueryModel().SetQuery(query);
 		}
-		[SmokeMethod("setQuery$$", "(const QString&, const QSqlDatabase&)")]
+		[SmokeMethod("setQuery$#", "(const QString&, const QSqlDatabase&)")]
 		public void SetQuery(string query, QSqlDatabase db) {
 			ProxyQSqlQueryModel().SetQuery(query,db);
 		}

@@ -56,7 +56,7 @@ namespace Qyoto {
 		public void SetPattern(QByteArray pattern) {
 			ProxyQByteArrayMatcher().SetPattern(pattern);
 		}
-		[SmokeMethod("indexIn##", "(const QByteArray&, int) const")]
+		[SmokeMethod("indexIn#$", "(const QByteArray&, int) const")]
 		public int IndexIn(QByteArray ba, int from) {
 			return ProxyQByteArrayMatcher().IndexIn(ba,from);
 		}

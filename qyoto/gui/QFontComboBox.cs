@@ -114,7 +114,7 @@ namespace Qyoto {
 	}
 
 	public interface IQFontComboBoxSignals : IQComboBoxSignals {
-		[Q_SIGNAL("void (const QFont&)")]
+		[Q_SIGNAL("void currentFontChanged(const QFont&)")]
 		void CurrentFontChanged(QFont f);
 	}
 }

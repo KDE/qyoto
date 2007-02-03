@@ -34,7 +34,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQContextMenuEvent(reason,pos,globalPos);
 		}
-		[SmokeMethod("QContextMenuEvent$$$", "(QContextMenuEvent::Reason, const QPoint&, const QPoint&)")]
+		[SmokeMethod("QContextMenuEvent$##", "(QContextMenuEvent::Reason, const QPoint&, const QPoint&)")]
 		private void NewQContextMenuEvent(QContextMenuEvent.Reason reason, QPoint pos, QPoint globalPos) {
 			ProxyQContextMenuEvent().NewQContextMenuEvent(reason,pos,globalPos);
 		}
@@ -42,7 +42,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQContextMenuEvent(reason,pos);
 		}
-		[SmokeMethod("QContextMenuEvent$$", "(QContextMenuEvent::Reason, const QPoint&)")]
+		[SmokeMethod("QContextMenuEvent$#", "(QContextMenuEvent::Reason, const QPoint&)")]
 		private void NewQContextMenuEvent(QContextMenuEvent.Reason reason, QPoint pos) {
 			ProxyQContextMenuEvent().NewQContextMenuEvent(reason,pos);
 		}

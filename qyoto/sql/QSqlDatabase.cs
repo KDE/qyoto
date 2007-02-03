@@ -16,11 +16,11 @@ namespace Qyoto {
 			QSqlDatabase AddDatabase(string type, string connectionName);
 			[SmokeMethod("addDatabase$", "(const QString&)")]
 			QSqlDatabase AddDatabase(string type);
-			[SmokeMethod("addDatabase##", "(QSqlDriver*, const QString&)")]
+			[SmokeMethod("addDatabase#$", "(QSqlDriver*, const QString&)")]
 			QSqlDatabase AddDatabase(QSqlDriver driver, string connectionName);
 			[SmokeMethod("addDatabase#", "(QSqlDriver*)")]
 			QSqlDatabase AddDatabase(QSqlDriver driver);
-			[SmokeMethod("cloneDatabase##", "(const QSqlDatabase&, const QString&)")]
+			[SmokeMethod("cloneDatabase#$", "(const QSqlDatabase&, const QString&)")]
 			QSqlDatabase CloneDatabase(QSqlDatabase other, string connectionName);
 			[SmokeMethod("database$$", "(const QString&, bool)")]
 			QSqlDatabase Database(string connectionName, bool open);

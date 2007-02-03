@@ -116,7 +116,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQFile(name,parent);
 		}
-		[SmokeMethod("QFile$$", "(const QString&, QObject*)")]
+		[SmokeMethod("QFile$#", "(const QString&, QObject*)")]
 		private void NewQFile(string name, QObject parent) {
 			ProxyQFile().NewQFile(name,parent);
 		}

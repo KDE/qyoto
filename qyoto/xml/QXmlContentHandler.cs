@@ -64,7 +64,7 @@ namespace Qyoto {
 		public virtual bool EndPrefixMapping(string prefix) {
 			return ProxyQXmlContentHandler().EndPrefixMapping(prefix);
 		}
-		[SmokeMethod("startElement$$$$", "(const QString&, const QString&, const QString&, const QXmlAttributes&)")]
+		[SmokeMethod("startElement$$$#", "(const QString&, const QString&, const QString&, const QXmlAttributes&)")]
 		public virtual bool StartElement(string namespaceURI, string localName, string qName, QXmlAttributes atts) {
 			return ProxyQXmlContentHandler().StartElement(namespaceURI,localName,qName,atts);
 		}

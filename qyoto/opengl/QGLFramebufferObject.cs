@@ -31,7 +31,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGLFramebufferObject(size,target);
 		}
-		[SmokeMethod("QGLFramebufferObject##", "(const QSize&, GLenum)")]
+		[SmokeMethod("QGLFramebufferObject#$", "(const QSize&, GLenum)")]
 		private void NewQGLFramebufferObject(QSize size, int target) {
 			ProxyQGLFramebufferObject().NewQGLFramebufferObject(size,target);
 		}

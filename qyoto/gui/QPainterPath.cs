@@ -81,7 +81,7 @@ namespace Qyoto {
 		public void LineTo(double x, double y) {
 			ProxyQPainterPath().LineTo(x,y);
 		}
-		[SmokeMethod("arcMoveTo##", "(const QRectF&, qreal)")]
+		[SmokeMethod("arcMoveTo#$", "(const QRectF&, qreal)")]
 		public void ArcMoveTo(QRectF rect, double angle) {
 			ProxyQPainterPath().ArcMoveTo(rect,angle);
 		}
@@ -89,7 +89,7 @@ namespace Qyoto {
 		public void ArcMoveTo(double x, double y, double w, double h, double angle) {
 			ProxyQPainterPath().ArcMoveTo(x,y,w,h,angle);
 		}
-		[SmokeMethod("arcTo###", "(const QRectF&, qreal, qreal)")]
+		[SmokeMethod("arcTo#$$", "(const QRectF&, qreal, qreal)")]
 		public void ArcTo(QRectF rect, double startAngle, double arcLength) {
 			ProxyQPainterPath().ArcTo(rect,startAngle,arcLength);
 		}
@@ -137,11 +137,11 @@ namespace Qyoto {
 		public void AddPolygon(QPolygonF polygon) {
 			ProxyQPainterPath().AddPolygon(polygon);
 		}
-		[SmokeMethod("addText###", "(const QPointF&, const QFont&, const QString&)")]
+		[SmokeMethod("addText##$", "(const QPointF&, const QFont&, const QString&)")]
 		public void AddText(QPointF point, QFont f, string text) {
 			ProxyQPainterPath().AddText(point,f,text);
 		}
-		[SmokeMethod("addText$$$$", "(qreal, qreal, const QFont&, const QString&)")]
+		[SmokeMethod("addText$$#$", "(qreal, qreal, const QFont&, const QString&)")]
 		public void AddText(double x, double y, QFont f, string text) {
 			ProxyQPainterPath().AddText(x,y,f,text);
 		}

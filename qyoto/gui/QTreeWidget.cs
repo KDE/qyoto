@@ -72,7 +72,7 @@ namespace Qyoto {
 		public QTreeWidgetItem TopLevelItem(int index) {
 			return ProxyQTreeWidget().TopLevelItem(index);
 		}
-		[SmokeMethod("insertTopLevelItem$$", "(int, QTreeWidgetItem*)")]
+		[SmokeMethod("insertTopLevelItem$#", "(int, QTreeWidgetItem*)")]
 		public void InsertTopLevelItem(int index, QTreeWidgetItem item) {
 			ProxyQTreeWidget().InsertTopLevelItem(index,item);
 		}
@@ -88,7 +88,7 @@ namespace Qyoto {
 		public int IndexOfTopLevelItem(QTreeWidgetItem item) {
 			return ProxyQTreeWidget().IndexOfTopLevelItem(item);
 		}
-		[SmokeMethod("insertTopLevelItems$$", "(int, const QList<QTreeWidgetItem*>&)")]
+		[SmokeMethod("insertTopLevelItems$?", "(int, const QList<QTreeWidgetItem*>&)")]
 		public void InsertTopLevelItems(int index, List<QTreeWidgetItem> items) {
 			ProxyQTreeWidget().InsertTopLevelItems(index,items);
 		}
@@ -124,7 +124,7 @@ namespace Qyoto {
 		public void SetCurrentItem(QTreeWidgetItem item) {
 			ProxyQTreeWidget().SetCurrentItem(item);
 		}
-		[SmokeMethod("setCurrentItem##", "(QTreeWidgetItem*, int)")]
+		[SmokeMethod("setCurrentItem#$", "(QTreeWidgetItem*, int)")]
 		public void SetCurrentItem(QTreeWidgetItem item, int column) {
 			ProxyQTreeWidget().SetCurrentItem(item,column);
 		}
@@ -156,7 +156,7 @@ namespace Qyoto {
 		public new bool IsSortingEnabled() {
 			return ProxyQTreeWidget().IsSortingEnabled();
 		}
-		[SmokeMethod("editItem##", "(QTreeWidgetItem*, int)")]
+		[SmokeMethod("editItem#$", "(QTreeWidgetItem*, int)")]
 		public void EditItem(QTreeWidgetItem item, int column) {
 			ProxyQTreeWidget().EditItem(item,column);
 		}
@@ -164,7 +164,7 @@ namespace Qyoto {
 		public void EditItem(QTreeWidgetItem item) {
 			ProxyQTreeWidget().EditItem(item);
 		}
-		[SmokeMethod("openPersistentEditor##", "(QTreeWidgetItem*, int)")]
+		[SmokeMethod("openPersistentEditor#$", "(QTreeWidgetItem*, int)")]
 		public new void OpenPersistentEditor(QTreeWidgetItem item, int column) {
 			ProxyQTreeWidget().OpenPersistentEditor(item,column);
 		}
@@ -172,7 +172,7 @@ namespace Qyoto {
 		public new void OpenPersistentEditor(QTreeWidgetItem item) {
 			ProxyQTreeWidget().OpenPersistentEditor(item);
 		}
-		[SmokeMethod("closePersistentEditor##", "(QTreeWidgetItem*, int)")]
+		[SmokeMethod("closePersistentEditor#$", "(QTreeWidgetItem*, int)")]
 		public new void ClosePersistentEditor(QTreeWidgetItem item, int column) {
 			ProxyQTreeWidget().ClosePersistentEditor(item,column);
 		}
@@ -180,11 +180,11 @@ namespace Qyoto {
 		public new void ClosePersistentEditor(QTreeWidgetItem item) {
 			ProxyQTreeWidget().ClosePersistentEditor(item);
 		}
-		[SmokeMethod("itemWidget##", "(QTreeWidgetItem*, int) const")]
+		[SmokeMethod("itemWidget#$", "(QTreeWidgetItem*, int) const")]
 		public QWidget ItemWidget(QTreeWidgetItem item, int column) {
 			return ProxyQTreeWidget().ItemWidget(item,column);
 		}
-		[SmokeMethod("setItemWidget###", "(QTreeWidgetItem*, int, QWidget*)")]
+		[SmokeMethod("setItemWidget#$#", "(QTreeWidgetItem*, int, QWidget*)")]
 		public void SetItemWidget(QTreeWidgetItem item, int column, QWidget widget) {
 			ProxyQTreeWidget().SetItemWidget(item,column,widget);
 		}
@@ -192,7 +192,7 @@ namespace Qyoto {
 		public bool IsItemSelected(QTreeWidgetItem item) {
 			return ProxyQTreeWidget().IsItemSelected(item);
 		}
-		[SmokeMethod("setItemSelected##", "(const QTreeWidgetItem*, bool)")]
+		[SmokeMethod("setItemSelected#$", "(const QTreeWidgetItem*, bool)")]
 		public void SetItemSelected(QTreeWidgetItem item, bool select) {
 			ProxyQTreeWidget().SetItemSelected(item,select);
 		}
@@ -212,7 +212,7 @@ namespace Qyoto {
 		public bool IsItemHidden(QTreeWidgetItem item) {
 			return ProxyQTreeWidget().IsItemHidden(item);
 		}
-		[SmokeMethod("setItemHidden##", "(const QTreeWidgetItem*, bool)")]
+		[SmokeMethod("setItemHidden#$", "(const QTreeWidgetItem*, bool)")]
 		public void SetItemHidden(QTreeWidgetItem item, bool hide) {
 			ProxyQTreeWidget().SetItemHidden(item,hide);
 		}
@@ -220,31 +220,31 @@ namespace Qyoto {
 		public bool IsItemExpanded(QTreeWidgetItem item) {
 			return ProxyQTreeWidget().IsItemExpanded(item);
 		}
-		[SmokeMethod("setItemExpanded##", "(const QTreeWidgetItem*, bool)")]
+		[SmokeMethod("setItemExpanded#$", "(const QTreeWidgetItem*, bool)")]
 		public void SetItemExpanded(QTreeWidgetItem item, bool expand) {
 			ProxyQTreeWidget().SetItemExpanded(item,expand);
 		}
-		[Q_SLOT("void (const QTreeWidgetItem*, QAbstractItemView::ScrollHint)")]
-		[SmokeMethod("scrollToItem##", "(const QTreeWidgetItem*, QAbstractItemView::ScrollHint)")]
+		[Q_SLOT("void scrollToItem(const QTreeWidgetItem*, QAbstractItemView::ScrollHint)")]
+		[SmokeMethod("scrollToItem#$", "(const QTreeWidgetItem*, QAbstractItemView::ScrollHint)")]
 		public void ScrollToItem(QTreeWidgetItem item, QAbstractItemView.ScrollHint hint) {
 			ProxyQTreeWidget().ScrollToItem(item,hint);
 		}
-		[Q_SLOT("void (const QTreeWidgetItem*)")]
+		[Q_SLOT("void scrollToItem(const QTreeWidgetItem*)")]
 		[SmokeMethod("scrollToItem#", "(const QTreeWidgetItem*)")]
 		public void ScrollToItem(QTreeWidgetItem item) {
 			ProxyQTreeWidget().ScrollToItem(item);
 		}
-		[Q_SLOT("void (const QTreeWidgetItem*)")]
+		[Q_SLOT("void expandItem(const QTreeWidgetItem*)")]
 		[SmokeMethod("expandItem#", "(const QTreeWidgetItem*)")]
 		public void ExpandItem(QTreeWidgetItem item) {
 			ProxyQTreeWidget().ExpandItem(item);
 		}
-		[Q_SLOT("void (const QTreeWidgetItem*)")]
+		[Q_SLOT("void collapseItem(const QTreeWidgetItem*)")]
 		[SmokeMethod("collapseItem#", "(const QTreeWidgetItem*)")]
 		public void CollapseItem(QTreeWidgetItem item) {
 			ProxyQTreeWidget().CollapseItem(item);
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void clear()")]
 		[SmokeMethod("clear", "()")]
 		public void Clear() {
 			ProxyQTreeWidget().Clear();
@@ -267,7 +267,7 @@ namespace Qyoto {
 		protected virtual QMimeData MimeData(List<QTreeWidgetItem> items) {
 			return ProxyQTreeWidget().MimeData(items);
 		}
-		[SmokeMethod("dropMimeData####", "(QTreeWidgetItem*, int, const QMimeData*, Qt::DropAction)")]
+		[SmokeMethod("dropMimeData#$#$", "(QTreeWidgetItem*, int, const QMimeData*, Qt::DropAction)")]
 		protected virtual bool DropMimeData(QTreeWidgetItem parent, int index, QMimeData data, Qt.DropAction action) {
 			return ProxyQTreeWidget().DropMimeData(parent,index,data,action);
 		}
@@ -279,7 +279,7 @@ namespace Qyoto {
 		protected List<QTreeWidgetItem> Items(QMimeData data) {
 			return ProxyQTreeWidget().Items(data);
 		}
-		[SmokeMethod("indexFromItem##", "(QTreeWidgetItem*, int) const")]
+		[SmokeMethod("indexFromItem#$", "(QTreeWidgetItem*, int) const")]
 		protected QModelIndex IndexFromItem(QTreeWidgetItem item, int column) {
 			return ProxyQTreeWidget().IndexFromItem(item,column);
 		}
@@ -313,25 +313,25 @@ namespace Qyoto {
 	}
 
 	public interface IQTreeWidgetSignals : IQTreeViewSignals {
-		[Q_SIGNAL("void (QTreeWidgetItem*, int)")]
+		[Q_SIGNAL("void itemPressed(QTreeWidgetItem*, int)")]
 		void ItemPressed(QTreeWidgetItem item, int column);
-		[Q_SIGNAL("void (QTreeWidgetItem*, int)")]
+		[Q_SIGNAL("void itemClicked(QTreeWidgetItem*, int)")]
 		void ItemClicked(QTreeWidgetItem item, int column);
-		[Q_SIGNAL("void (QTreeWidgetItem*, int)")]
+		[Q_SIGNAL("void itemDoubleClicked(QTreeWidgetItem*, int)")]
 		void ItemDoubleClicked(QTreeWidgetItem item, int column);
-		[Q_SIGNAL("void (QTreeWidgetItem*, int)")]
+		[Q_SIGNAL("void itemActivated(QTreeWidgetItem*, int)")]
 		void ItemActivated(QTreeWidgetItem item, int column);
-		[Q_SIGNAL("void (QTreeWidgetItem*, int)")]
+		[Q_SIGNAL("void itemEntered(QTreeWidgetItem*, int)")]
 		void ItemEntered(QTreeWidgetItem item, int column);
-		[Q_SIGNAL("void (QTreeWidgetItem*, int)")]
+		[Q_SIGNAL("void itemChanged(QTreeWidgetItem*, int)")]
 		void ItemChanged(QTreeWidgetItem item, int column);
-		[Q_SIGNAL("void (QTreeWidgetItem*)")]
+		[Q_SIGNAL("void itemExpanded(QTreeWidgetItem*)")]
 		void ItemExpanded(QTreeWidgetItem item);
-		[Q_SIGNAL("void (QTreeWidgetItem*)")]
+		[Q_SIGNAL("void itemCollapsed(QTreeWidgetItem*)")]
 		void ItemCollapsed(QTreeWidgetItem item);
-		[Q_SIGNAL("void (QTreeWidgetItem*, QTreeWidgetItem*)")]
+		[Q_SIGNAL("void currentItemChanged(QTreeWidgetItem*, QTreeWidgetItem*)")]
 		void CurrentItemChanged(QTreeWidgetItem current, QTreeWidgetItem previous);
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void itemSelectionChanged()")]
 		void ItemSelectionChanged();
 	}
 }

@@ -48,7 +48,7 @@ namespace Qyoto {
 		private void NewQTcpServer() {
 			ProxyQTcpServer().NewQTcpServer();
 		}
-		[SmokeMethod("listen##", "(const QHostAddress&, quint16)")]
+		[SmokeMethod("listen#$", "(const QHostAddress&, quint16)")]
 		public bool Listen(QHostAddress address, ushort port) {
 			return ProxyQTcpServer().Listen(address,port);
 		}
@@ -156,7 +156,7 @@ namespace Qyoto {
 	}
 
 	public interface IQTcpServerSignals : IQObjectSignals {
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void newConnection()")]
 		void NewConnection();
 	}
 }

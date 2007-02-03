@@ -102,11 +102,11 @@ namespace Qyoto {
 	}
 
 	public interface IQX11EmbedWidgetSignals : IQWidgetSignals {
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void embedded()")]
 		void Embedded();
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void containerClosed()")]
 		void ContainerClosed();
-		[Q_SIGNAL("void (QX11EmbedWidget::Error)")]
+		[Q_SIGNAL("void error(QX11EmbedWidget::Error)")]
 		void Error(QX11EmbedWidget.Error error);
 	}
 }

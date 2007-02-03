@@ -61,7 +61,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQCheckBox(text,parent);
 		}
-		[SmokeMethod("QCheckBox$$", "(const QString&, QWidget*)")]
+		[SmokeMethod("QCheckBox$#", "(const QString&, QWidget*)")]
 		private void NewQCheckBox(string text, QWidget parent) {
 			ProxyQCheckBox().NewQCheckBox(text,parent);
 		}
@@ -137,7 +137,7 @@ namespace Qyoto {
 	}
 
 	public interface IQCheckBoxSignals : IQAbstractButtonSignals {
-		[Q_SIGNAL("void (int)")]
+		[Q_SIGNAL("void stateChanged(int)")]
 		void StateChanged(int arg1);
 	}
 }

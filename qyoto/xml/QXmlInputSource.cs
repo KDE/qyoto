@@ -69,7 +69,7 @@ namespace Qyoto {
 		public virtual void Reset() {
 			ProxyQXmlInputSource().Reset();
 		}
-		[SmokeMethod("fromRawData##", "(const QByteArray&, bool)")]
+		[SmokeMethod("fromRawData#$", "(const QByteArray&, bool)")]
 		protected virtual string FromRawData(QByteArray data, bool beginning) {
 			return ProxyQXmlInputSource().FromRawData(data,beginning);
 		}

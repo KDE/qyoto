@@ -132,9 +132,9 @@ namespace Qyoto {
 	}
 
 	public interface IQDesktopWidgetSignals : IQWidgetSignals {
-		[Q_SIGNAL("void (int)")]
+		[Q_SIGNAL("void resized(int)")]
 		void Resized(int arg1);
-		[Q_SIGNAL("void (int)")]
+		[Q_SIGNAL("void workAreaResized(int)")]
 		void WorkAreaResized(int arg1);
 	}
 }

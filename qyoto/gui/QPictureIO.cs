@@ -50,7 +50,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQPictureIO(ioDevice,format);
 		}
-		[SmokeMethod("QPictureIO##", "(QIODevice*, const char*)")]
+		[SmokeMethod("QPictureIO#$", "(QIODevice*, const char*)")]
 		private void NewQPictureIO(IQIODevice ioDevice, string format) {
 			ProxyQPictureIO().NewQPictureIO(ioDevice,format);
 		}

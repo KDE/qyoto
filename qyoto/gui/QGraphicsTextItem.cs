@@ -63,7 +63,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGraphicsTextItem(text,parent,scene);
 		}
-		[SmokeMethod("QGraphicsTextItem$$$", "(const QString&, QGraphicsItem*, QGraphicsScene*)")]
+		[SmokeMethod("QGraphicsTextItem$##", "(const QString&, QGraphicsItem*, QGraphicsScene*)")]
 		private void NewQGraphicsTextItem(string text, QGraphicsItem parent, QGraphicsScene scene) {
 			ProxyQGraphicsTextItem().NewQGraphicsTextItem(text,parent,scene);
 		}
@@ -71,7 +71,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGraphicsTextItem(text,parent);
 		}
-		[SmokeMethod("QGraphicsTextItem$$", "(const QString&, QGraphicsItem*)")]
+		[SmokeMethod("QGraphicsTextItem$#", "(const QString&, QGraphicsItem*)")]
 		private void NewQGraphicsTextItem(string text, QGraphicsItem parent) {
 			ProxyQGraphicsTextItem().NewQGraphicsTextItem(text,parent);
 		}
@@ -261,7 +261,7 @@ namespace Qyoto {
 		protected bool SupportsExtension(QGraphicsItem.Extension extension) {
 			return ProxyQGraphicsTextItem().SupportsExtension(extension);
 		}
-		[SmokeMethod("setExtension$$", "(QGraphicsItem::Extension, const QVariant&)")]
+		[SmokeMethod("setExtension$#", "(QGraphicsItem::Extension, const QVariant&)")]
 		protected void SetExtension(QGraphicsItem.Extension extension, QVariant variant) {
 			ProxyQGraphicsTextItem().SetExtension(extension,variant);
 		}
@@ -455,11 +455,11 @@ namespace Qyoto {
 		public void MoveBy(double dx, double dy) {
 			ProxyQGraphicsTextItem().MoveBy(dx,dy);
 		}
-		[SmokeMethod("ensureVisible###", "(const QRectF&, int, int)")]
+		[SmokeMethod("ensureVisible#$$", "(const QRectF&, int, int)")]
 		public void EnsureVisible(QRectF rect, int xmargin, int ymargin) {
 			ProxyQGraphicsTextItem().EnsureVisible(rect,xmargin,ymargin);
 		}
-		[SmokeMethod("ensureVisible##", "(const QRectF&, int)")]
+		[SmokeMethod("ensureVisible#$", "(const QRectF&, int)")]
 		public void EnsureVisible(QRectF rect, int xmargin) {
 			ProxyQGraphicsTextItem().EnsureVisible(rect,xmargin);
 		}
@@ -491,7 +491,7 @@ namespace Qyoto {
 		public QMatrix SceneMatrix() {
 			return ProxyQGraphicsTextItem().SceneMatrix();
 		}
-		[SmokeMethod("setMatrix##", "(const QMatrix&, bool)")]
+		[SmokeMethod("setMatrix#$", "(const QMatrix&, bool)")]
 		public void SetMatrix(QMatrix matrix, bool combine) {
 			ProxyQGraphicsTextItem().SetMatrix(matrix,combine);
 		}
@@ -539,7 +539,7 @@ namespace Qyoto {
 		public QRectF SceneBoundingRect() {
 			return ProxyQGraphicsTextItem().SceneBoundingRect();
 		}
-		[SmokeMethod("collidesWithItem##", "(const QGraphicsItem*, Qt::ItemSelectionMode) const")]
+		[SmokeMethod("collidesWithItem#$", "(const QGraphicsItem*, Qt::ItemSelectionMode) const")]
 		public virtual bool CollidesWithItem(QGraphicsItem other, Qt.ItemSelectionMode mode) {
 			return ProxyQGraphicsTextItem().CollidesWithItem(other,mode);
 		}
@@ -547,7 +547,7 @@ namespace Qyoto {
 		public virtual bool CollidesWithItem(QGraphicsItem other) {
 			return ProxyQGraphicsTextItem().CollidesWithItem(other);
 		}
-		[SmokeMethod("collidesWithPath##", "(const QPainterPath&, Qt::ItemSelectionMode) const")]
+		[SmokeMethod("collidesWithPath#$", "(const QPainterPath&, Qt::ItemSelectionMode) const")]
 		public virtual bool CollidesWithPath(QPainterPath path, Qt.ItemSelectionMode mode) {
 			return ProxyQGraphicsTextItem().CollidesWithPath(path,mode);
 		}
@@ -679,7 +679,7 @@ namespace Qyoto {
 		public QPainterPath MapFromScene(QPainterPath path) {
 			return ProxyQGraphicsTextItem().MapFromScene(path);
 		}
-		[SmokeMethod("mapToItem###", "(const QGraphicsItem*, qreal, qreal) const")]
+		[SmokeMethod("mapToItem#$$", "(const QGraphicsItem*, qreal, qreal) const")]
 		public QPointF MapToItem(QGraphicsItem item, double x, double y) {
 			return ProxyQGraphicsTextItem().MapToItem(item,x,y);
 		}
@@ -691,7 +691,7 @@ namespace Qyoto {
 		public QPointF MapToScene(double x, double y) {
 			return ProxyQGraphicsTextItem().MapToScene(x,y);
 		}
-		[SmokeMethod("mapFromItem###", "(const QGraphicsItem*, qreal, qreal) const")]
+		[SmokeMethod("mapFromItem#$$", "(const QGraphicsItem*, qreal, qreal) const")]
 		public QPointF MapFromItem(QGraphicsItem item, double x, double y) {
 			return ProxyQGraphicsTextItem().MapFromItem(item,x,y);
 		}
@@ -711,7 +711,7 @@ namespace Qyoto {
 		public QVariant Data(int key) {
 			return ProxyQGraphicsTextItem().Data(key);
 		}
-		[SmokeMethod("setData$$", "(int, const QVariant&)")]
+		[SmokeMethod("setData$#", "(int, const QVariant&)")]
 		public void SetData(int key, QVariant value) {
 			ProxyQGraphicsTextItem().SetData(key,value);
 		}
@@ -731,7 +731,7 @@ namespace Qyoto {
 		protected virtual void WheelEvent(QGraphicsSceneWheelEvent arg1) {
 			ProxyQGraphicsTextItem().WheelEvent(arg1);
 		}
-		[SmokeMethod("itemChange$$", "(QGraphicsItem::GraphicsItemChange, const QVariant&)")]
+		[SmokeMethod("itemChange$#", "(QGraphicsItem::GraphicsItemChange, const QVariant&)")]
 		protected virtual QVariant ItemChange(QGraphicsItem.GraphicsItemChange change, QVariant value) {
 			return ProxyQGraphicsTextItem().ItemChange(change,value);
 		}
@@ -755,9 +755,9 @@ namespace Qyoto {
 	}
 
 	public interface IQGraphicsTextItemSignals : IQObjectSignals {
-		[Q_SIGNAL("void (const QString&)")]
+		[Q_SIGNAL("void linkActivated(const QString&)")]
 		void LinkActivated(string arg1);
-		[Q_SIGNAL("void (const QString&)")]
+		[Q_SIGNAL("void linkHovered(const QString&)")]
 		void LinkHovered(string arg1);
 	}
 }

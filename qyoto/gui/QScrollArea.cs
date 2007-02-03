@@ -97,11 +97,11 @@ namespace Qyoto {
 		public void EnsureVisible(int x, int y) {
 			ProxyQScrollArea().EnsureVisible(x,y);
 		}
-		[SmokeMethod("ensureWidgetVisible###", "(QWidget*, int, int)")]
+		[SmokeMethod("ensureWidgetVisible#$$", "(QWidget*, int, int)")]
 		public void EnsureWidgetVisible(QWidget childWidget, int xmargin, int ymargin) {
 			ProxyQScrollArea().EnsureWidgetVisible(childWidget,xmargin,ymargin);
 		}
-		[SmokeMethod("ensureWidgetVisible##", "(QWidget*, int)")]
+		[SmokeMethod("ensureWidgetVisible#$", "(QWidget*, int)")]
 		public void EnsureWidgetVisible(QWidget childWidget, int xmargin) {
 			ProxyQScrollArea().EnsureWidgetVisible(childWidget,xmargin);
 		}

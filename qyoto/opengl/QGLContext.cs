@@ -95,11 +95,11 @@ namespace Qyoto {
 		public virtual void SwapBuffers() {
 			ProxyQGLContext().SwapBuffers();
 		}
-		[SmokeMethod("bindTexture###", "(const QImage&, GLenum, GLint)")]
+		[SmokeMethod("bindTexture#$$", "(const QImage&, GLenum, GLint)")]
 		public uint BindTexture(QImage image, int target, int format) {
 			return ProxyQGLContext().BindTexture(image,target,format);
 		}
-		[SmokeMethod("bindTexture##", "(const QImage&, GLenum)")]
+		[SmokeMethod("bindTexture#$", "(const QImage&, GLenum)")]
 		public uint BindTexture(QImage image, int target) {
 			return ProxyQGLContext().BindTexture(image,target);
 		}
@@ -107,11 +107,11 @@ namespace Qyoto {
 		public uint BindTexture(QImage image) {
 			return ProxyQGLContext().BindTexture(image);
 		}
-		[SmokeMethod("bindTexture###", "(const QPixmap&, GLenum, GLint)")]
+		[SmokeMethod("bindTexture#$$", "(const QPixmap&, GLenum, GLint)")]
 		public uint BindTexture(QPixmap pixmap, int target, int format) {
 			return ProxyQGLContext().BindTexture(pixmap,target,format);
 		}
-		[SmokeMethod("bindTexture##", "(const QPixmap&, GLenum)")]
+		[SmokeMethod("bindTexture#$", "(const QPixmap&, GLenum)")]
 		public uint BindTexture(QPixmap pixmap, int target) {
 			return ProxyQGLContext().BindTexture(pixmap,target);
 		}
@@ -173,7 +173,7 @@ namespace Qyoto {
 		protected void SetInitialized(bool on) {
 			ProxyQGLContext().SetInitialized(on);
 		}
-		[SmokeMethod("generateFontDisplayLists##", "(const QFont&, int)")]
+		[SmokeMethod("generateFontDisplayLists#$", "(const QFont&, int)")]
 		protected void GenerateFontDisplayLists(QFont fnt, int listBase) {
 			ProxyQGLContext().GenerateFontDisplayLists(fnt,listBase);
 		}

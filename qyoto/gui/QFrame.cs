@@ -104,7 +104,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQFrame(parent,f);
 		}
-		[SmokeMethod("QFrame##", "(QWidget*, Qt::WindowFlags)")]
+		[SmokeMethod("QFrame#$", "(QWidget*, Qt::WindowFlags)")]
 		private void NewQFrame(QWidget parent, int f) {
 			ProxyQFrame().NewQFrame(parent,f);
 		}

@@ -18,7 +18,7 @@ namespace Qyoto {
 			QColor GetColor(QColor init);
 			[SmokeMethod("getColor", "()")]
 			QColor GetColor();
-			[SmokeMethod("getRgba$$$", "(QRgb, bool*, QWidget*)")]
+			[SmokeMethod("getRgba$$#", "(QRgb, bool*, QWidget*)")]
 			uint GetRgba(uint arg1, out bool ok, QWidget parent);
 			[SmokeMethod("getRgba$$", "(QRgb, bool*)")]
 			uint GetRgba(uint arg1, out bool ok);

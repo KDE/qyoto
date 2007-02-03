@@ -69,13 +69,13 @@ namespace Qyoto {
 			IQUrl FromLocalFile(string localfile);
 			[SmokeMethod("fromEncoded#", "(const QByteArray&)")]
 			IQUrl FromEncoded(QByteArray url);
-			[SmokeMethod("fromEncoded##", "(const QByteArray&, QUrl::ParsingMode)")]
+			[SmokeMethod("fromEncoded#$", "(const QByteArray&, QUrl::ParsingMode)")]
 			IQUrl FromEncoded(QByteArray url, QUrl.ParsingMode mode);
 			[SmokeMethod("fromPercentEncoding#", "(const QByteArray&)")]
 			string FromPercentEncoding(QByteArray arg1);
-			[SmokeMethod("toPercentEncoding$$$", "(const QString&, const QByteArray&, const QByteArray&)")]
+			[SmokeMethod("toPercentEncoding$##", "(const QString&, const QByteArray&, const QByteArray&)")]
 			QByteArray ToPercentEncoding(string arg1, QByteArray exclude, QByteArray include);
-			[SmokeMethod("toPercentEncoding$$", "(const QString&, const QByteArray&)")]
+			[SmokeMethod("toPercentEncoding$#", "(const QString&, const QByteArray&)")]
 			QByteArray ToPercentEncoding(string arg1, QByteArray exclude);
 			[SmokeMethod("toPercentEncoding$", "(const QString&)")]
 			QByteArray ToPercentEncoding(string arg1);
@@ -169,7 +169,7 @@ namespace Qyoto {
 		public void SetEncodedUrl(QByteArray url) {
 			ProxyQUrl().SetEncodedUrl(url);
 		}
-		[SmokeMethod("setEncodedUrl##", "(const QByteArray&, QUrl::ParsingMode)")]
+		[SmokeMethod("setEncodedUrl#$", "(const QByteArray&, QUrl::ParsingMode)")]
 		public void SetEncodedUrl(QByteArray url, QUrl.ParsingMode mode) {
 			ProxyQUrl().SetEncodedUrl(url,mode);
 		}

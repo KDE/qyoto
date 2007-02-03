@@ -65,7 +65,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQPolygon(r,closed);
 		}
-		[SmokeMethod("QPolygon##", "(const QRect&, bool)")]
+		[SmokeMethod("QPolygon#$", "(const QRect&, bool)")]
 		private void NewQPolygon(QRect r, bool closed) {
 			ProxyQPolygon().NewQPolygon(r,closed);
 		}
@@ -110,7 +110,7 @@ namespace Qyoto {
 		public void SetPoint(int index, int x, int y) {
 			ProxyQPolygon().SetPoint(index,x,y);
 		}
-		[SmokeMethod("setPoint$$", "(int, const QPoint&)")]
+		[SmokeMethod("setPoint$#", "(int, const QPoint&)")]
 		public void SetPoint(int index, QPoint p) {
 			ProxyQPolygon().SetPoint(index,p);
 		}
@@ -122,11 +122,11 @@ namespace Qyoto {
 		public void PutPoints(int index, int nPoints, out int points) {
 			ProxyQPolygon().PutPoints(index,nPoints,out points);
 		}
-		[SmokeMethod("putPoints$$$$", "(int, int, const QPolygon&, int)")]
+		[SmokeMethod("putPoints$$#$", "(int, int, const QPolygon&, int)")]
 		public void PutPoints(int index, int nPoints, QPolygon from, int fromIndex) {
 			ProxyQPolygon().PutPoints(index,nPoints,from,fromIndex);
 		}
-		[SmokeMethod("putPoints$$$", "(int, int, const QPolygon&)")]
+		[SmokeMethod("putPoints$$#", "(int, int, const QPolygon&)")]
 		public void PutPoints(int index, int nPoints, QPolygon from) {
 			ProxyQPolygon().PutPoints(index,nPoints,from);
 		}

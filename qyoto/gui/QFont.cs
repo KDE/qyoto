@@ -22,7 +22,7 @@ namespace Qyoto {
 			List<string> Substitutions();
 			[SmokeMethod("insertSubstitution$$", "(const QString&, const QString&)")]
 			void InsertSubstitution(string arg1, string arg2);
-			[SmokeMethod("insertSubstitutions$$", "(const QString&, const QStringList&)")]
+			[SmokeMethod("insertSubstitutions$?", "(const QString&, const QStringList&)")]
 			void InsertSubstitutions(string arg1, List<string> arg2);
 			[SmokeMethod("removeSubstitution$", "(const QString&)")]
 			void RemoveSubstitution(string arg1);

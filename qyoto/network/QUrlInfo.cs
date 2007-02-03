@@ -11,11 +11,11 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QUrlInfo(Type dummy) {}
 		interface IQUrlInfoProxy {
-			[SmokeMethod("greaterThan###", "(const QUrlInfo&, const QUrlInfo&, int)")]
+			[SmokeMethod("greaterThan##$", "(const QUrlInfo&, const QUrlInfo&, int)")]
 			bool GreaterThan(QUrlInfo i1, QUrlInfo i2, int sortBy);
-			[SmokeMethod("lessThan###", "(const QUrlInfo&, const QUrlInfo&, int)")]
+			[SmokeMethod("lessThan##$", "(const QUrlInfo&, const QUrlInfo&, int)")]
 			bool LessThan(QUrlInfo i1, QUrlInfo i2, int sortBy);
-			[SmokeMethod("equal###", "(const QUrlInfo&, const QUrlInfo&, int)")]
+			[SmokeMethod("equal##$", "(const QUrlInfo&, const QUrlInfo&, int)")]
 			bool Equal(QUrlInfo i1, QUrlInfo i2, int sortBy);
 		}
 
@@ -66,7 +66,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQUrlInfo(name,permissions,owner,group,size,lastModified,lastRead,isDir,isFile,isSymLink,isWritable,isReadable,isExecutable);
 		}
-		[SmokeMethod("QUrlInfo$$$$$$$$$$$$$", "(const QString&, int, const QString&, const QString&, qint64, const QDateTime&, const QDateTime&, bool, bool, bool, bool, bool, bool)")]
+		[SmokeMethod("QUrlInfo$$$$$##$$$$$$", "(const QString&, int, const QString&, const QString&, qint64, const QDateTime&, const QDateTime&, bool, bool, bool, bool, bool, bool)")]
 		private void NewQUrlInfo(string name, int permissions, string owner, string group, long size, QDateTime lastModified, QDateTime lastRead, bool isDir, bool isFile, bool isSymLink, bool isWritable, bool isReadable, bool isExecutable) {
 			ProxyQUrlInfo().NewQUrlInfo(name,permissions,owner,group,size,lastModified,lastRead,isDir,isFile,isSymLink,isWritable,isReadable,isExecutable);
 		}
@@ -74,7 +74,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQUrlInfo(url,permissions,owner,group,size,lastModified,lastRead,isDir,isFile,isSymLink,isWritable,isReadable,isExecutable);
 		}
-		[SmokeMethod("QUrlInfo#############", "(const QUrl&, int, const QString&, const QString&, qint64, const QDateTime&, const QDateTime&, bool, bool, bool, bool, bool, bool)")]
+		[SmokeMethod("QUrlInfo#$$$$##$$$$$$", "(const QUrl&, int, const QString&, const QString&, qint64, const QDateTime&, const QDateTime&, bool, bool, bool, bool, bool, bool)")]
 		private void NewQUrlInfo(IQUrl url, int permissions, string owner, string group, long size, QDateTime lastModified, QDateTime lastRead, bool isDir, bool isFile, bool isSymLink, bool isWritable, bool isReadable, bool isExecutable) {
 			ProxyQUrlInfo().NewQUrlInfo(url,permissions,owner,group,size,lastModified,lastRead,isDir,isFile,isSymLink,isWritable,isReadable,isExecutable);
 		}

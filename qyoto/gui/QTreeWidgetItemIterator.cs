@@ -64,7 +64,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTreeWidgetItemIterator(widget,flags);
 		}
-		[SmokeMethod("QTreeWidgetItemIterator##", "(QTreeWidget*, IteratorFlags)")]
+		[SmokeMethod("QTreeWidgetItemIterator#$", "(QTreeWidget*, IteratorFlags)")]
 		private void NewQTreeWidgetItemIterator(QTreeWidget widget, int flags) {
 			ProxyQTreeWidgetItemIterator().NewQTreeWidgetItemIterator(widget,flags);
 		}
@@ -80,7 +80,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTreeWidgetItemIterator(item,flags);
 		}
-		[SmokeMethod("QTreeWidgetItemIterator##", "(QTreeWidgetItem*, IteratorFlags)")]
+		[SmokeMethod("QTreeWidgetItemIterator#$", "(QTreeWidgetItem*, IteratorFlags)")]
 		private void NewQTreeWidgetItemIterator(QTreeWidgetItem item, int flags) {
 			ProxyQTreeWidgetItemIterator().NewQTreeWidgetItemIterator(item,flags);
 		}

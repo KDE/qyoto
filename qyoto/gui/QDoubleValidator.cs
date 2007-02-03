@@ -70,7 +70,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDoubleValidator(bottom,top,decimals,parent);
 		}
-		[SmokeMethod("QDoubleValidator$$$$", "(double, double, int, QObject*)")]
+		[SmokeMethod("QDoubleValidator$$$#", "(double, double, int, QObject*)")]
 		private void NewQDoubleValidator(double bottom, double top, int decimals, QObject parent) {
 			ProxyQDoubleValidator().NewQDoubleValidator(bottom,top,decimals,parent);
 		}

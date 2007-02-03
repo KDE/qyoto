@@ -34,7 +34,7 @@ namespace Qyoto {
 			return (IQXmlEntityResolverProxy) _staticInterceptor;
 		}
 
-		[SmokeMethod("resolveEntity$$$", "(const QString&, const QString&, QXmlInputSource*&)")]
+		[SmokeMethod("resolveEntity$$?", "(const QString&, const QString&, QXmlInputSource*&)")]
 		public virtual bool ResolveEntity(string publicId, string systemId, QXmlInputSource ret) {
 			return ProxyQXmlEntityResolver().ResolveEntity(publicId,systemId,ret);
 		}

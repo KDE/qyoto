@@ -53,7 +53,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQFileSystemWatcher(paths,parent);
 		}
-		[SmokeMethod("QFileSystemWatcher??", "(const QStringList&, QObject*)")]
+		[SmokeMethod("QFileSystemWatcher?#", "(const QStringList&, QObject*)")]
 		private void NewQFileSystemWatcher(List<string> paths, QObject parent) {
 			ProxyQFileSystemWatcher().NewQFileSystemWatcher(paths,parent);
 		}
@@ -113,9 +113,9 @@ namespace Qyoto {
 	}
 
 	public interface IQFileSystemWatcherSignals : IQObjectSignals {
-		[Q_SIGNAL("void (const QString&)")]
+		[Q_SIGNAL("void fileChanged(const QString&)")]
 		void FileChanged(string path);
-		[Q_SIGNAL("void (const QString&)")]
+		[Q_SIGNAL("void directoryChanged(const QString&)")]
 		void DirectoryChanged(string path);
 	}
 }

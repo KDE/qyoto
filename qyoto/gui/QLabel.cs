@@ -126,7 +126,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQLabel(parent,f);
 		}
-		[SmokeMethod("QLabel##", "(QWidget*, Qt::WindowFlags)")]
+		[SmokeMethod("QLabel#$", "(QWidget*, Qt::WindowFlags)")]
 		private void NewQLabel(QWidget parent, int f) {
 			ProxyQLabel().NewQLabel(parent,f);
 		}
@@ -150,7 +150,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQLabel(text,parent,f);
 		}
-		[SmokeMethod("QLabel$$$", "(const QString&, QWidget*, Qt::WindowFlags)")]
+		[SmokeMethod("QLabel$#$", "(const QString&, QWidget*, Qt::WindowFlags)")]
 		private void NewQLabel(string text, QWidget parent, int f) {
 			ProxyQLabel().NewQLabel(text,parent,f);
 		}
@@ -158,7 +158,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQLabel(text,parent);
 		}
-		[SmokeMethod("QLabel$$", "(const QString&, QWidget*)")]
+		[SmokeMethod("QLabel$#", "(const QString&, QWidget*)")]
 		private void NewQLabel(string text, QWidget parent) {
 			ProxyQLabel().NewQLabel(text,parent);
 		}
@@ -202,27 +202,27 @@ namespace Qyoto {
 		public new int HeightForWidth(int arg1) {
 			return ProxyQLabel().HeightForWidth(arg1);
 		}
-		[Q_SLOT("void (const QPicture&)")]
+		[Q_SLOT("void setPicture(const QPicture&)")]
 		[SmokeMethod("setPicture#", "(const QPicture&)")]
 		public void SetPicture(QPicture arg1) {
 			ProxyQLabel().SetPicture(arg1);
 		}
-		[Q_SLOT("void (QMovie*)")]
+		[Q_SLOT("void setMovie(QMovie*)")]
 		[SmokeMethod("setMovie#", "(QMovie*)")]
 		public void SetMovie(QMovie movie) {
 			ProxyQLabel().SetMovie(movie);
 		}
-		[Q_SLOT("void (int)")]
+		[Q_SLOT("void setNum(int)")]
 		[SmokeMethod("setNum$", "(int)")]
 		public void SetNum(int arg1) {
 			ProxyQLabel().SetNum(arg1);
 		}
-		[Q_SLOT("void (double)")]
+		[Q_SLOT("void setNum(double)")]
 		[SmokeMethod("setNum$", "(double)")]
 		public void SetNum(double arg1) {
 			ProxyQLabel().SetNum(arg1);
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void clear()")]
 		[SmokeMethod("clear", "()")]
 		public void Clear() {
 			ProxyQLabel().Clear();
@@ -295,9 +295,9 @@ namespace Qyoto {
 	}
 
 	public interface IQLabelSignals : IQFrameSignals {
-		[Q_SIGNAL("void (const QString&)")]
+		[Q_SIGNAL("void linkActivated(const QString&)")]
 		void LinkActivated(string link);
-		[Q_SIGNAL("void (const QString&)")]
+		[Q_SIGNAL("void linkHovered(const QString&)")]
 		void LinkHovered(string link);
 	}
 }

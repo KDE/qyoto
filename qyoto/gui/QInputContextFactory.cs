@@ -14,7 +14,7 @@ namespace Qyoto {
 		interface IQInputContextFactoryProxy {
 			[SmokeMethod("keys", "()")]
 			List<string> Keys();
-			[SmokeMethod("create$$", "(const QString&, QObject*)")]
+			[SmokeMethod("create$#", "(const QString&, QObject*)")]
 			QInputContext Create(string key, QObject parent);
 			[SmokeMethod("languages$", "(const QString&)")]
 			List<string> Languages(string key);

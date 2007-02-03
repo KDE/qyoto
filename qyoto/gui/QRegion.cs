@@ -67,7 +67,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQRegion(r,t);
 		}
-		[SmokeMethod("QRegion##", "(const QRect&, QRegion::RegionType)")]
+		[SmokeMethod("QRegion#$", "(const QRect&, QRegion::RegionType)")]
 		private void NewQRegion(QRect r, QRegion.RegionType t) {
 			ProxyQRegion().NewQRegion(r,t);
 		}
@@ -83,7 +83,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQRegion(pa,fillRule);
 		}
-		[SmokeMethod("QRegion##", "(const QPolygon&, Qt::FillRule)")]
+		[SmokeMethod("QRegion#$", "(const QPolygon&, Qt::FillRule)")]
 		private void NewQRegion(QPolygon pa, Qt.FillRule fillRule) {
 			ProxyQRegion().NewQRegion(pa,fillRule);
 		}
@@ -187,7 +187,7 @@ namespace Qyoto {
 		public List<QRect> Rects() {
 			return ProxyQRegion().Rects();
 		}
-		[SmokeMethod("setRects##", "(const QRect*, int)")]
+		[SmokeMethod("setRects#$", "(const QRect*, int)")]
 		public void SetRects(QRect rect, int num) {
 			ProxyQRegion().SetRects(rect,num);
 		}

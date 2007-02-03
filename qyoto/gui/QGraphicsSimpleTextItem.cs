@@ -56,7 +56,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGraphicsSimpleTextItem(text,parent,scene);
 		}
-		[SmokeMethod("QGraphicsSimpleTextItem$$$", "(const QString&, QGraphicsItem*, QGraphicsScene*)")]
+		[SmokeMethod("QGraphicsSimpleTextItem$##", "(const QString&, QGraphicsItem*, QGraphicsScene*)")]
 		private void NewQGraphicsSimpleTextItem(string text, QGraphicsItem parent, QGraphicsScene scene) {
 			ProxyQGraphicsSimpleTextItem().NewQGraphicsSimpleTextItem(text,parent,scene);
 		}
@@ -64,7 +64,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGraphicsSimpleTextItem(text,parent);
 		}
-		[SmokeMethod("QGraphicsSimpleTextItem$$", "(const QString&, QGraphicsItem*)")]
+		[SmokeMethod("QGraphicsSimpleTextItem$#", "(const QString&, QGraphicsItem*)")]
 		private void NewQGraphicsSimpleTextItem(string text, QGraphicsItem parent) {
 			ProxyQGraphicsSimpleTextItem().NewQGraphicsSimpleTextItem(text,parent);
 		}
@@ -124,7 +124,7 @@ namespace Qyoto {
 		protected new bool SupportsExtension(QGraphicsItem.Extension extension) {
 			return ProxyQGraphicsSimpleTextItem().SupportsExtension(extension);
 		}
-		[SmokeMethod("setExtension$$", "(QGraphicsItem::Extension, const QVariant&)")]
+		[SmokeMethod("setExtension$#", "(QGraphicsItem::Extension, const QVariant&)")]
 		protected new void SetExtension(QGraphicsItem.Extension extension, QVariant variant) {
 			ProxyQGraphicsSimpleTextItem().SetExtension(extension,variant);
 		}

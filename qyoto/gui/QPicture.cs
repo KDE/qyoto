@@ -85,7 +85,7 @@ namespace Qyoto {
 		public bool Play(QPainter p) {
 			return ProxyQPicture().Play(p);
 		}
-		[SmokeMethod("load##", "(QIODevice*, const char*)")]
+		[SmokeMethod("load#$", "(QIODevice*, const char*)")]
 		public bool Load(IQIODevice dev, string format) {
 			return ProxyQPicture().Load(dev,format);
 		}
@@ -101,7 +101,7 @@ namespace Qyoto {
 		public bool Load(string fileName) {
 			return ProxyQPicture().Load(fileName);
 		}
-		[SmokeMethod("save##", "(QIODevice*, const char*)")]
+		[SmokeMethod("save#$", "(QIODevice*, const char*)")]
 		public bool Save(IQIODevice dev, string format) {
 			return ProxyQPicture().Save(dev,format);
 		}

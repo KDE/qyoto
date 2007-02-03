@@ -71,7 +71,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQImageReader(fileName,format);
 		}
-		[SmokeMethod("QImageReader$$", "(const QString&, const QByteArray&)")]
+		[SmokeMethod("QImageReader$#", "(const QString&, const QByteArray&)")]
 		private void NewQImageReader(string fileName, QByteArray format) {
 			ProxyQImageReader().NewQImageReader(fileName,format);
 		}

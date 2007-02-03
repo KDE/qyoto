@@ -37,7 +37,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGLWidget(parent,shareWidget,f);
 		}
-		[SmokeMethod("QGLWidget###", "(QWidget*, const QGLWidget*, Qt::WindowFlags)")]
+		[SmokeMethod("QGLWidget##$", "(QWidget*, const QGLWidget*, Qt::WindowFlags)")]
 		private void NewQGLWidget(QWidget parent, QGLWidget shareWidget, int f) {
 			ProxyQGLWidget().NewQGLWidget(parent,shareWidget,f);
 		}
@@ -69,7 +69,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGLWidget(context,parent,shareWidget,f);
 		}
-		[SmokeMethod("QGLWidget####", "(QGLContext*, QWidget*, const QGLWidget*, Qt::WindowFlags)")]
+		[SmokeMethod("QGLWidget###$", "(QGLContext*, QWidget*, const QGLWidget*, Qt::WindowFlags)")]
 		private void NewQGLWidget(QGLContext context, QWidget parent, QGLWidget shareWidget, int f) {
 			ProxyQGLWidget().NewQGLWidget(context,parent,shareWidget,f);
 		}
@@ -101,7 +101,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGLWidget(format,parent,shareWidget,f);
 		}
-		[SmokeMethod("QGLWidget####", "(const QGLFormat&, QWidget*, const QGLWidget*, Qt::WindowFlags)")]
+		[SmokeMethod("QGLWidget###$", "(const QGLFormat&, QWidget*, const QGLWidget*, Qt::WindowFlags)")]
 		private void NewQGLWidget(QGLFormat format, QWidget parent, QGLWidget shareWidget, int f) {
 			ProxyQGLWidget().NewQGLWidget(format,parent,shareWidget,f);
 		}
@@ -173,7 +173,7 @@ namespace Qyoto {
 		public QGLContext Context() {
 			return ProxyQGLWidget().Context();
 		}
-		[SmokeMethod("setContext###", "(QGLContext*, const QGLContext*, bool)")]
+		[SmokeMethod("setContext##$", "(QGLContext*, const QGLContext*, bool)")]
 		public void SetContext(QGLContext context, QGLContext shareContext, bool deleteOldContext) {
 			ProxyQGLWidget().SetContext(context,shareContext,deleteOldContext);
 		}
@@ -229,11 +229,11 @@ namespace Qyoto {
 		public void SetColormap(QGLColormap map) {
 			ProxyQGLWidget().SetColormap(map);
 		}
-		[SmokeMethod("renderText$$$$$", "(int, int, const QString&, const QFont&, int)")]
+		[SmokeMethod("renderText$$$#$", "(int, int, const QString&, const QFont&, int)")]
 		public void RenderText(int x, int y, string str, QFont fnt, int listBase) {
 			ProxyQGLWidget().RenderText(x,y,str,fnt,listBase);
 		}
-		[SmokeMethod("renderText$$$$", "(int, int, const QString&, const QFont&)")]
+		[SmokeMethod("renderText$$$#", "(int, int, const QString&, const QFont&)")]
 		public void RenderText(int x, int y, string str, QFont fnt) {
 			ProxyQGLWidget().RenderText(x,y,str,fnt);
 		}
@@ -241,11 +241,11 @@ namespace Qyoto {
 		public void RenderText(int x, int y, string str) {
 			ProxyQGLWidget().RenderText(x,y,str);
 		}
-		[SmokeMethod("renderText$$$$$$", "(double, double, double, const QString&, const QFont&, int)")]
+		[SmokeMethod("renderText$$$$#$", "(double, double, double, const QString&, const QFont&, int)")]
 		public void RenderText(double x, double y, double z, string str, QFont fnt, int listBase) {
 			ProxyQGLWidget().RenderText(x,y,z,str,fnt,listBase);
 		}
-		[SmokeMethod("renderText$$$$$", "(double, double, double, const QString&, const QFont&)")]
+		[SmokeMethod("renderText$$$$#", "(double, double, double, const QString&, const QFont&)")]
 		public void RenderText(double x, double y, double z, string str, QFont fnt) {
 			ProxyQGLWidget().RenderText(x,y,z,str,fnt);
 		}
@@ -257,11 +257,11 @@ namespace Qyoto {
 		public new QPaintEngine PaintEngine() {
 			return ProxyQGLWidget().PaintEngine();
 		}
-		[SmokeMethod("bindTexture###", "(const QImage&, GLenum, GLint)")]
+		[SmokeMethod("bindTexture#$$", "(const QImage&, GLenum, GLint)")]
 		public uint BindTexture(QImage image, int target, int format) {
 			return ProxyQGLWidget().BindTexture(image,target,format);
 		}
-		[SmokeMethod("bindTexture##", "(const QImage&, GLenum)")]
+		[SmokeMethod("bindTexture#$", "(const QImage&, GLenum)")]
 		public uint BindTexture(QImage image, int target) {
 			return ProxyQGLWidget().BindTexture(image,target);
 		}
@@ -269,11 +269,11 @@ namespace Qyoto {
 		public uint BindTexture(QImage image) {
 			return ProxyQGLWidget().BindTexture(image);
 		}
-		[SmokeMethod("bindTexture###", "(const QPixmap&, GLenum, GLint)")]
+		[SmokeMethod("bindTexture#$$", "(const QPixmap&, GLenum, GLint)")]
 		public uint BindTexture(QPixmap pixmap, int target, int format) {
 			return ProxyQGLWidget().BindTexture(pixmap,target,format);
 		}
-		[SmokeMethod("bindTexture##", "(const QPixmap&, GLenum)")]
+		[SmokeMethod("bindTexture#$", "(const QPixmap&, GLenum)")]
 		public uint BindTexture(QPixmap pixmap, int target) {
 			return ProxyQGLWidget().BindTexture(pixmap,target);
 		}
@@ -289,12 +289,12 @@ namespace Qyoto {
 		public void DeleteTexture(uint tx_id) {
 			ProxyQGLWidget().DeleteTexture(tx_id);
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void updateGL()")]
 		[SmokeMethod("updateGL", "()")]
 		public virtual void UpdateGL() {
 			ProxyQGLWidget().UpdateGL();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void updateOverlayGL()")]
 		[SmokeMethod("updateOverlayGL", "()")]
 		public virtual void UpdateOverlayGL() {
 			ProxyQGLWidget().UpdateOverlayGL();
@@ -360,7 +360,7 @@ namespace Qyoto {
 		protected virtual void GlDraw() {
 			ProxyQGLWidget().GlDraw();
 		}
-		[SmokeMethod("fontDisplayListBase##", "(const QFont&, int)")]
+		[SmokeMethod("fontDisplayListBase#$", "(const QFont&, int)")]
 		protected int FontDisplayListBase(QFont fnt, int listBase) {
 			return ProxyQGLWidget().FontDisplayListBase(fnt,listBase);
 		}

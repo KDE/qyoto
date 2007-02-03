@@ -79,7 +79,7 @@ namespace Qyoto {
 		public new void Revert() {
 			ProxyQAbstractProxyModel().Revert();
 		}
-		[SmokeMethod("data##", "(const QModelIndex&, int) const")]
+		[SmokeMethod("data#$", "(const QModelIndex&, int) const")]
 		public new QVariant Data(QModelIndex proxyIndex, int role) {
 			return ProxyQAbstractProxyModel().Data(proxyIndex,role);
 		}

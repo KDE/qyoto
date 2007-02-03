@@ -106,7 +106,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQMovie(fileName,format,parent);
 		}
-		[SmokeMethod("QMovie$$$", "(const QString&, const QByteArray&, QObject*)")]
+		[SmokeMethod("QMovie$##", "(const QString&, const QByteArray&, QObject*)")]
 		private void NewQMovie(string fileName, QByteArray format, QObject parent) {
 			ProxyQMovie().NewQMovie(fileName,format,parent);
 		}
@@ -114,7 +114,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQMovie(fileName,format);
 		}
-		[SmokeMethod("QMovie$$", "(const QString&, const QByteArray&)")]
+		[SmokeMethod("QMovie$#", "(const QString&, const QByteArray&)")]
 		private void NewQMovie(string fileName, QByteArray format) {
 			ProxyQMovie().NewQMovie(fileName,format);
 		}
@@ -206,22 +206,22 @@ namespace Qyoto {
 		public void SetScaledSize(QSize size) {
 			ProxyQMovie().SetScaledSize(size);
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void start()")]
 		[SmokeMethod("start", "()")]
 		public void Start() {
 			ProxyQMovie().Start();
 		}
-		[Q_SLOT("bool ()")]
+		[Q_SLOT("bool jumpToNextFrame()")]
 		[SmokeMethod("jumpToNextFrame", "()")]
 		public bool JumpToNextFrame() {
 			return ProxyQMovie().JumpToNextFrame();
 		}
-		[Q_SLOT("void (bool)")]
+		[Q_SLOT("void setPaused(bool)")]
 		[SmokeMethod("setPaused$", "(bool)")]
 		public void SetPaused(bool paused) {
 			ProxyQMovie().SetPaused(paused);
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void stop()")]
 		[SmokeMethod("stop", "()")]
 		public void Stop() {
 			ProxyQMovie().Stop();
@@ -253,19 +253,19 @@ namespace Qyoto {
 	}
 
 	public interface IQMovieSignals : IQObjectSignals {
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void started()")]
 		void Started();
-		[Q_SIGNAL("void (const QSize&)")]
+		[Q_SIGNAL("void resized(const QSize&)")]
 		void Resized(QSize size);
-		[Q_SIGNAL("void (const QRect&)")]
+		[Q_SIGNAL("void updated(const QRect&)")]
 		void Updated(QRect rect);
-		[Q_SIGNAL("void (QMovie::MovieState)")]
+		[Q_SIGNAL("void stateChanged(QMovie::MovieState)")]
 		void StateChanged(QMovie.MovieState state);
-		[Q_SIGNAL("void (QImageReader::ImageReaderError)")]
+		[Q_SIGNAL("void error(QImageReader::ImageReaderError)")]
 		void Error(int error);
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void finished()")]
 		void Finished();
-		[Q_SIGNAL("void (int)")]
+		[Q_SIGNAL("void frameChanged(int)")]
 		void FrameChanged(int frameNumber);
 	}
 }

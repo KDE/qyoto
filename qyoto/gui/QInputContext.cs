@@ -68,7 +68,7 @@ namespace Qyoto {
 		public virtual void Update() {
 			ProxyQInputContext().Update();
 		}
-		[SmokeMethod("mouseHandler$$", "(int, QMouseEvent*)")]
+		[SmokeMethod("mouseHandler$#", "(int, QMouseEvent*)")]
 		public virtual void MouseHandler(int x, QMouseEvent arg2) {
 			ProxyQInputContext().MouseHandler(x,arg2);
 		}

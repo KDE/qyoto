@@ -97,7 +97,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGroupBox(title,parent);
 		}
-		[SmokeMethod("QGroupBox$$", "(const QString&, QWidget*)")]
+		[SmokeMethod("QGroupBox$#", "(const QString&, QWidget*)")]
 		private void NewQGroupBox(string title, QWidget parent) {
 			ProxyQGroupBox().NewQGroupBox(title,parent);
 		}
@@ -185,11 +185,11 @@ namespace Qyoto {
 	}
 
 	public interface IQGroupBoxSignals : IQWidgetSignals {
-		[Q_SIGNAL("void (bool)")]
+		[Q_SIGNAL("void clicked(bool)")]
 		void Clicked(bool arg1);
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void clicked()")]
 		void Clicked();
-		[Q_SIGNAL("void (bool)")]
+		[Q_SIGNAL("void toggled(bool)")]
 		void Toggled(bool arg1);
 	}
 }

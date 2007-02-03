@@ -55,7 +55,7 @@ namespace Qyoto {
 		public new int UserActionCount(int child) {
 			return ProxyQAccessibleObject().UserActionCount(child);
 		}
-		[SmokeMethod("doAction$$$", "(int, int, const QVariantList&)")]
+		[SmokeMethod("doAction$$?", "(int, int, const QVariantList&)")]
 		public new bool DoAction(int action, int child, List<QVariant> arg3) {
 			return ProxyQAccessibleObject().DoAction(action,child,arg3);
 		}

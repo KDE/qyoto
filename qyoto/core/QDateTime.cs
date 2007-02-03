@@ -64,7 +64,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDateTime(arg1,arg2,spec);
 		}
-		[SmokeMethod("QDateTime###", "(const QDate&, const QTime&, Qt::TimeSpec)")]
+		[SmokeMethod("QDateTime##$", "(const QDate&, const QTime&, Qt::TimeSpec)")]
 		private void NewQDateTime(QDate arg1, QTime arg2, Qt.TimeSpec spec) {
 			ProxyQDateTime().NewQDateTime(arg1,arg2,spec);
 		}

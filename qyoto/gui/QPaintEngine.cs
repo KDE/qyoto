@@ -119,19 +119,19 @@ namespace Qyoto {
 		public virtual void UpdateState(QPaintEngineState state) {
 			ProxyQPaintEngine().UpdateState(state);
 		}
-		[SmokeMethod("drawRects##", "(const QRect*, int)")]
+		[SmokeMethod("drawRects#$", "(const QRect*, int)")]
 		public virtual void DrawRects(QRect rects, int rectCount) {
 			ProxyQPaintEngine().DrawRects(rects,rectCount);
 		}
-		[SmokeMethod("drawRects##", "(const QRectF*, int)")]
+		[SmokeMethod("drawRects#$", "(const QRectF*, int)")]
 		public virtual void DrawRects(QRectF rects, int rectCount) {
 			ProxyQPaintEngine().DrawRects(rects,rectCount);
 		}
-		[SmokeMethod("drawLines##", "(const QLine*, int)")]
+		[SmokeMethod("drawLines#$", "(const QLine*, int)")]
 		public virtual void DrawLines(QLine lines, int lineCount) {
 			ProxyQPaintEngine().DrawLines(lines,lineCount);
 		}
-		[SmokeMethod("drawLines##", "(const QLineF*, int)")]
+		[SmokeMethod("drawLines#$", "(const QLineF*, int)")]
 		public virtual void DrawLines(QLineF lines, int lineCount) {
 			ProxyQPaintEngine().DrawLines(lines,lineCount);
 		}
@@ -147,19 +147,19 @@ namespace Qyoto {
 		public virtual void DrawPath(QPainterPath path) {
 			ProxyQPaintEngine().DrawPath(path);
 		}
-		[SmokeMethod("drawPoints##", "(const QPointF*, int)")]
+		[SmokeMethod("drawPoints#$", "(const QPointF*, int)")]
 		public virtual void DrawPoints(QPointF points, int pointCount) {
 			ProxyQPaintEngine().DrawPoints(points,pointCount);
 		}
-		[SmokeMethod("drawPoints##", "(const QPoint*, int)")]
+		[SmokeMethod("drawPoints#$", "(const QPoint*, int)")]
 		public virtual void DrawPoints(QPoint points, int pointCount) {
 			ProxyQPaintEngine().DrawPoints(points,pointCount);
 		}
-		[SmokeMethod("drawPolygon###", "(const QPointF*, int, QPaintEngine::PolygonDrawMode)")]
+		[SmokeMethod("drawPolygon#$$", "(const QPointF*, int, QPaintEngine::PolygonDrawMode)")]
 		public virtual void DrawPolygon(QPointF points, int pointCount, QPaintEngine.PolygonDrawMode mode) {
 			ProxyQPaintEngine().DrawPolygon(points,pointCount,mode);
 		}
-		[SmokeMethod("drawPolygon###", "(const QPoint*, int, QPaintEngine::PolygonDrawMode)")]
+		[SmokeMethod("drawPolygon#$$", "(const QPoint*, int, QPaintEngine::PolygonDrawMode)")]
 		public virtual void DrawPolygon(QPoint points, int pointCount, QPaintEngine.PolygonDrawMode mode) {
 			ProxyQPaintEngine().DrawPolygon(points,pointCount,mode);
 		}
@@ -171,7 +171,7 @@ namespace Qyoto {
 		public virtual void DrawTiledPixmap(QRectF r, QPixmap pixmap, QPointF s) {
 			ProxyQPaintEngine().DrawTiledPixmap(r,pixmap,s);
 		}
-		[SmokeMethod("drawImage####", "(const QRectF&, const QImage&, const QRectF&, Qt::ImageConversionFlags)")]
+		[SmokeMethod("drawImage###$", "(const QRectF&, const QImage&, const QRectF&, Qt::ImageConversionFlags)")]
 		public virtual void DrawImage(QRectF r, QImage pm, QRectF sr, int flags) {
 			ProxyQPaintEngine().DrawImage(r,pm,sr,flags);
 		}

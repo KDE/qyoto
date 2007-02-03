@@ -78,7 +78,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQPushButton(text,parent);
 		}
-		[SmokeMethod("QPushButton$$", "(const QString&, QWidget*)")]
+		[SmokeMethod("QPushButton$#", "(const QString&, QWidget*)")]
 		private void NewQPushButton(string text, QWidget parent) {
 			ProxyQPushButton().NewQPushButton(text,parent);
 		}
@@ -94,7 +94,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQPushButton(icon,text,parent);
 		}
-		[SmokeMethod("QPushButton###", "(const QIcon&, const QString&, QWidget*)")]
+		[SmokeMethod("QPushButton#$#", "(const QIcon&, const QString&, QWidget*)")]
 		private void NewQPushButton(QIcon icon, string text, QWidget parent) {
 			ProxyQPushButton().NewQPushButton(icon,text,parent);
 		}
@@ -102,7 +102,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQPushButton(icon,text);
 		}
-		[SmokeMethod("QPushButton##", "(const QIcon&, const QString&)")]
+		[SmokeMethod("QPushButton#$", "(const QIcon&, const QString&)")]
 		private void NewQPushButton(QIcon icon, string text) {
 			ProxyQPushButton().NewQPushButton(icon,text);
 		}
@@ -126,7 +126,7 @@ namespace Qyoto {
 		public bool IsFlat() {
 			return ProxyQPushButton().IsFlat();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void showMenu()")]
 		[SmokeMethod("showMenu", "()")]
 		public void ShowMenu() {
 			ProxyQPushButton().ShowMenu();

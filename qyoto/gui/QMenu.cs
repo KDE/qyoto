@@ -14,9 +14,9 @@ namespace Qyoto {
 			string Tr(string s, string c);
 			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
-			[SmokeMethod("exec???", "(QList<QAction*>, const QPoint&, QAction*)")]
+			[SmokeMethod("exec?##", "(QList<QAction*>, const QPoint&, QAction*)")]
 			QAction Exec(List<QAction> actions, QPoint pos, QAction at);
-			[SmokeMethod("exec??", "(QList<QAction*>, const QPoint&)")]
+			[SmokeMethod("exec?#", "(QList<QAction*>, const QPoint&)")]
 			QAction Exec(List<QAction> actions, QPoint pos);
 		}
 
@@ -93,7 +93,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQMenu(title,parent);
 		}
-		[SmokeMethod("QMenu$$", "(const QString&, QWidget*)")]
+		[SmokeMethod("QMenu$#", "(const QString&, QWidget*)")]
 		private void NewQMenu(string title, QWidget parent) {
 			ProxyQMenu().NewQMenu(title,parent);
 		}
@@ -113,23 +113,23 @@ namespace Qyoto {
 		public new QAction AddAction(string text) {
 			return ProxyQMenu().AddAction(text);
 		}
-		[SmokeMethod("addAction##", "(const QIcon&, const QString&)")]
+		[SmokeMethod("addAction#$", "(const QIcon&, const QString&)")]
 		public new QAction AddAction(QIcon icon, string text) {
 			return ProxyQMenu().AddAction(icon,text);
 		}
-		[SmokeMethod("addAction$$$$", "(const QString&, const QObject*, const char*, const QKeySequence&)")]
+		[SmokeMethod("addAction$#$#", "(const QString&, const QObject*, const char*, const QKeySequence&)")]
 		public new QAction AddAction(string text, QObject receiver, string member, QKeySequence shortcut) {
 			return ProxyQMenu().AddAction(text,receiver,member,shortcut);
 		}
-		[SmokeMethod("addAction$$$", "(const QString&, const QObject*, const char*)")]
+		[SmokeMethod("addAction$#$", "(const QString&, const QObject*, const char*)")]
 		public new QAction AddAction(string text, QObject receiver, string member) {
 			return ProxyQMenu().AddAction(text,receiver,member);
 		}
-		[SmokeMethod("addAction#####", "(const QIcon&, const QString&, const QObject*, const char*, const QKeySequence&)")]
+		[SmokeMethod("addAction#$#$#", "(const QIcon&, const QString&, const QObject*, const char*, const QKeySequence&)")]
 		public new QAction AddAction(QIcon icon, string text, QObject receiver, string member, QKeySequence shortcut) {
 			return ProxyQMenu().AddAction(icon,text,receiver,member,shortcut);
 		}
-		[SmokeMethod("addAction####", "(const QIcon&, const QString&, const QObject*, const char*)")]
+		[SmokeMethod("addAction#$#$", "(const QIcon&, const QString&, const QObject*, const char*)")]
 		public new QAction AddAction(QIcon icon, string text, QObject receiver, string member) {
 			return ProxyQMenu().AddAction(icon,text,receiver,member);
 		}
@@ -141,7 +141,7 @@ namespace Qyoto {
 		public QMenu AddMenu(string title) {
 			return ProxyQMenu().AddMenu(title);
 		}
-		[SmokeMethod("addMenu##", "(const QIcon&, const QString&)")]
+		[SmokeMethod("addMenu#$", "(const QIcon&, const QString&)")]
 		public QMenu AddMenu(QIcon icon, string title) {
 			return ProxyQMenu().AddMenu(icon,title);
 		}
@@ -323,13 +323,13 @@ namespace Qyoto {
 	}
 
 	public interface IQMenuSignals : IQWidgetSignals {
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void aboutToShow()")]
 		void AboutToShow();
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void aboutToHide()")]
 		void AboutToHide();
-		[Q_SIGNAL("void (QAction*)")]
+		[Q_SIGNAL("void triggered(QAction*)")]
 		void Triggered(QAction action);
-		[Q_SIGNAL("void (QAction*)")]
+		[Q_SIGNAL("void hovered(QAction*)")]
 		void Hovered(QAction action);
 	}
 }

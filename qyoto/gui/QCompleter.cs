@@ -133,7 +133,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQCompleter(completions,parent);
 		}
-		[SmokeMethod("QCompleter??", "(const QStringList&, QObject*)")]
+		[SmokeMethod("QCompleter?#", "(const QStringList&, QObject*)")]
 		private void NewQCompleter(List<string> completions, QObject parent) {
 			ProxyQCompleter().NewQCompleter(completions,parent);
 		}
@@ -201,12 +201,12 @@ namespace Qyoto {
 		public virtual List<string> SplitPath(string path) {
 			return ProxyQCompleter().SplitPath(path);
 		}
-		[Q_SLOT("void (const QRect&)")]
+		[Q_SLOT("void complete(const QRect&)")]
 		[SmokeMethod("complete#", "(const QRect&)")]
 		public void Complete(QRect rect) {
 			ProxyQCompleter().Complete(rect);
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void complete()")]
 		[SmokeMethod("complete", "()")]
 		public void Complete() {
 			ProxyQCompleter().Complete();
@@ -243,13 +243,13 @@ namespace Qyoto {
 	}
 
 	public interface IQCompleterSignals : IQObjectSignals {
-		[Q_SIGNAL("void (const QString&)")]
+		[Q_SIGNAL("void activated(const QString&)")]
 		void Activated(string text);
-		[Q_SIGNAL("void (const QModelIndex&)")]
+		[Q_SIGNAL("void activated(const QModelIndex&)")]
 		void Activated(QModelIndex index);
-		[Q_SIGNAL("void (const QString&)")]
+		[Q_SIGNAL("void highlighted(const QString&)")]
 		void Highlighted(string text);
-		[Q_SIGNAL("void (const QModelIndex&)")]
+		[Q_SIGNAL("void highlighted(const QModelIndex&)")]
 		void Highlighted(QModelIndex index);
 	}
 }

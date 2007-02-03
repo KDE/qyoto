@@ -35,7 +35,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDBusServer(address,parent);
 		}
-		[SmokeMethod("QDBusServer$$", "(const QString&, QObject*)")]
+		[SmokeMethod("QDBusServer$#", "(const QString&, QObject*)")]
 		private void NewQDBusServer(string address, QObject parent) {
 			ProxyQDBusServer().NewQDBusServer(address,parent);
 		}

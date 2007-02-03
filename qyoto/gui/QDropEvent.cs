@@ -29,7 +29,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDropEvent(pos,actions,data,buttons,modifiers,type);
 		}
-		[SmokeMethod("QDropEvent######", "(const QPoint&, Qt::DropActions, const QMimeData*, Qt::MouseButtons, Qt::KeyboardModifiers, QEvent::Type)")]
+		[SmokeMethod("QDropEvent#$#$$$", "(const QPoint&, Qt::DropActions, const QMimeData*, Qt::MouseButtons, Qt::KeyboardModifiers, QEvent::Type)")]
 		private void NewQDropEvent(QPoint pos, int actions, QMimeData data, int buttons, int modifiers, QEvent.TypeOf type) {
 			ProxyQDropEvent().NewQDropEvent(pos,actions,data,buttons,modifiers,type);
 		}
@@ -37,7 +37,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDropEvent(pos,actions,data,buttons,modifiers);
 		}
-		[SmokeMethod("QDropEvent#####", "(const QPoint&, Qt::DropActions, const QMimeData*, Qt::MouseButtons, Qt::KeyboardModifiers)")]
+		[SmokeMethod("QDropEvent#$#$$", "(const QPoint&, Qt::DropActions, const QMimeData*, Qt::MouseButtons, Qt::KeyboardModifiers)")]
 		private void NewQDropEvent(QPoint pos, int actions, QMimeData data, int buttons, int modifiers) {
 			ProxyQDropEvent().NewQDropEvent(pos,actions,data,buttons,modifiers);
 		}

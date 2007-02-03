@@ -25,7 +25,7 @@ namespace Qyoto {
 			QByteArray Number(uint arg1, int arg2);
 			[SmokeMethod("number$", "(uint)")]
 			QByteArray Number(uint arg1);
-			[SmokeMethod("number??", "(qlonglong, int)")]
+			[SmokeMethod("number?$", "(qlonglong, int)")]
 			QByteArray Number(long arg1, int arg2);
 			[SmokeMethod("number?", "(qlonglong)")]
 			QByteArray Number(long arg1);
@@ -175,7 +175,7 @@ namespace Qyoto {
 		public int IndexOf(string c) {
 			return ProxyQByteArray().IndexOf(c);
 		}
-		[SmokeMethod("indexOf##", "(const QByteArray&, int) const")]
+		[SmokeMethod("indexOf#$", "(const QByteArray&, int) const")]
 		public int IndexOf(QByteArray a, int from) {
 			return ProxyQByteArray().IndexOf(a,from);
 		}
@@ -199,7 +199,7 @@ namespace Qyoto {
 		public int LastIndexOf(string c) {
 			return ProxyQByteArray().LastIndexOf(c);
 		}
-		[SmokeMethod("lastIndexOf##", "(const QByteArray&, int) const")]
+		[SmokeMethod("lastIndexOf#$", "(const QByteArray&, int) const")]
 		public int LastIndexOf(QByteArray a, int from) {
 			return ProxyQByteArray().LastIndexOf(a,from);
 		}
@@ -351,7 +351,7 @@ namespace Qyoto {
 		public QByteArray Insert(int i, string s) {
 			return ProxyQByteArray().Insert(i,s);
 		}
-		[SmokeMethod("insert$$", "(int, const QByteArray&)")]
+		[SmokeMethod("insert$#", "(int, const QByteArray&)")]
 		public QByteArray Insert(int i, QByteArray a) {
 			return ProxyQByteArray().Insert(i,a);
 		}
@@ -363,7 +363,7 @@ namespace Qyoto {
 		public QByteArray Replace(int index, int len, string s) {
 			return ProxyQByteArray().Replace(index,len,s);
 		}
-		[SmokeMethod("replace$$$", "(int, int, const QByteArray&)")]
+		[SmokeMethod("replace$$#", "(int, int, const QByteArray&)")]
 		public QByteArray Replace(int index, int len, QByteArray s) {
 			return ProxyQByteArray().Replace(index,len,s);
 		}
@@ -371,7 +371,7 @@ namespace Qyoto {
 		public QByteArray Replace(char before, string after) {
 			return ProxyQByteArray().Replace(before,after);
 		}
-		[SmokeMethod("replace$$", "(char, const QByteArray&)")]
+		[SmokeMethod("replace$#", "(char, const QByteArray&)")]
 		public QByteArray Replace(char before, QByteArray after) {
 			return ProxyQByteArray().Replace(before,after);
 		}
@@ -383,11 +383,11 @@ namespace Qyoto {
 		public QByteArray Replace(QByteArray before, QByteArray after) {
 			return ProxyQByteArray().Replace(before,after);
 		}
-		[SmokeMethod("replace##", "(const QByteArray&, const char*)")]
+		[SmokeMethod("replace#$", "(const QByteArray&, const char*)")]
 		public QByteArray Replace(QByteArray before, string after) {
 			return ProxyQByteArray().Replace(before,after);
 		}
-		[SmokeMethod("replace$$", "(const char*, const QByteArray&)")]
+		[SmokeMethod("replace$#", "(const char*, const QByteArray&)")]
 		public QByteArray Replace(string before, QByteArray after) {
 			return ProxyQByteArray().Replace(before,after);
 		}
@@ -570,7 +570,7 @@ namespace Qyoto {
 		public QByteArray SetNum(uint arg1) {
 			return ProxyQByteArray().SetNum(arg1);
 		}
-		[SmokeMethod("setNum??", "(qlonglong, int)")]
+		[SmokeMethod("setNum?$", "(qlonglong, int)")]
 		public QByteArray SetNum(long arg1, int arg2) {
 			return ProxyQByteArray().SetNum(arg1,arg2);
 		}

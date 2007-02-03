@@ -89,7 +89,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSplitter(arg1,parent);
 		}
-		[SmokeMethod("QSplitter$$", "(Qt::Orientation, QWidget*)")]
+		[SmokeMethod("QSplitter$#", "(Qt::Orientation, QWidget*)")]
 		private void NewQSplitter(Qt.Orientation arg1, QWidget parent) {
 			ProxyQSplitter().NewQSplitter(arg1,parent);
 		}
@@ -105,7 +105,7 @@ namespace Qyoto {
 		public void AddWidget(QWidget widget) {
 			ProxyQSplitter().AddWidget(widget);
 		}
-		[SmokeMethod("insertWidget$$", "(int, QWidget*)")]
+		[SmokeMethod("insertWidget$#", "(int, QWidget*)")]
 		public void InsertWidget(int index, QWidget widget) {
 			ProxyQSplitter().InsertWidget(index,widget);
 		}
@@ -221,7 +221,7 @@ namespace Qyoto {
 	}
 
 	public interface IQSplitterSignals : IQFrameSignals {
-		[Q_SIGNAL("void (int, int)")]
+		[Q_SIGNAL("void splitterMoved(int, int)")]
 		void SplitterMoved(int pos, int index);
 	}
 }

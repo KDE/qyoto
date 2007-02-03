@@ -36,7 +36,7 @@ namespace Qyoto {
 			string Tr(string s, string c);
 			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
-			[SmokeMethod("singleShot$$$", "(int, QObject*, const char*)")]
+			[SmokeMethod("singleShot$#$", "(int, QObject*, const char*)")]
 			void singleShot(int msec, QObject receiver, string member);
 		}
 
@@ -103,17 +103,17 @@ namespace Qyoto {
 		public bool IsSingleShot() {
 			return ProxyQTimer().IsSingleShot();
 		}
-		[Q_SLOT("void (int)")]
+		[Q_SLOT("void start(int)")]
 		[SmokeMethod("start$", "(int)")]
 		public void Start(int msec) {
 			ProxyQTimer().Start(msec);
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void start()")]
 		[SmokeMethod("start", "()")]
 		public void Start() {
 			ProxyQTimer().Start();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void stop()")]
 		[SmokeMethod("stop", "()")]
 		public void Stop() {
 			ProxyQTimer().Stop();
@@ -149,7 +149,7 @@ namespace Qyoto {
 	}
 
 	public interface IQTimerSignals : IQObjectSignals {
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void timeout()")]
 		void Timeout();
 	}
 }

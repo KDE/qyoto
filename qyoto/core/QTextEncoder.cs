@@ -41,7 +41,7 @@ namespace Qyoto {
 		public QByteArray FromUnicode(string str) {
 			return ProxyQTextEncoder().FromUnicode(str);
 		}
-		[SmokeMethod("fromUnicode##", "(const QChar*, int)")]
+		[SmokeMethod("fromUnicode#$", "(const QChar*, int)")]
 		public QByteArray FromUnicode(char uc, int len) {
 			return ProxyQTextEncoder().FromUnicode(uc,len);
 		}

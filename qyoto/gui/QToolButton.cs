@@ -109,12 +109,12 @@ namespace Qyoto {
 		public QAction DefaultAction() {
 			return ProxyQToolButton().DefaultAction();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void showMenu()")]
 		[SmokeMethod("showMenu", "()")]
 		public void ShowMenu() {
 			ProxyQToolButton().ShowMenu();
 		}
-		[Q_SLOT("void (QAction*)")]
+		[Q_SLOT("void setDefaultAction(QAction*)")]
 		[SmokeMethod("setDefaultAction#", "(QAction*)")]
 		public void SetDefaultAction(QAction arg1) {
 			ProxyQToolButton().SetDefaultAction(arg1);
@@ -187,7 +187,7 @@ namespace Qyoto {
 	}
 
 	public interface IQToolButtonSignals : IQAbstractButtonSignals {
-		[Q_SIGNAL("void (QAction*)")]
+		[Q_SIGNAL("void triggered(QAction*)")]
 		void Triggered(QAction arg1);
 	}
 }

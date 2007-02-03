@@ -54,7 +54,7 @@ namespace Qyoto {
 		public void SetAttribute(string name, string value) {
 			ProxyQDomElement().SetAttribute(name,value);
 		}
-		[SmokeMethod("setAttribute$$", "(const QString&, qlonglong)")]
+		[SmokeMethod("setAttribute$?", "(const QString&, qlonglong)")]
 		public void SetAttribute(string name, long value) {
 			ProxyQDomElement().SetAttribute(name,value);
 		}
@@ -122,7 +122,7 @@ namespace Qyoto {
 		public void SetAttributeNS(string nsURI, string qName, uint value) {
 			ProxyQDomElement().SetAttributeNS(nsURI,qName,value);
 		}
-		[SmokeMethod("setAttributeNS$$$", "(const QString, const QString&, qlonglong)")]
+		[SmokeMethod("setAttributeNS$$?", "(const QString, const QString&, qlonglong)")]
 		public void SetAttributeNS(string nsURI, string qName, long value) {
 			ProxyQDomElement().SetAttributeNS(nsURI,qName,value);
 		}

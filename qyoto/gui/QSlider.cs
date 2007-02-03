@@ -77,7 +77,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSlider(orientation,parent);
 		}
-		[SmokeMethod("QSlider$$", "(Qt::Orientation, QWidget*)")]
+		[SmokeMethod("QSlider$#", "(Qt::Orientation, QWidget*)")]
 		private void NewQSlider(Qt.Orientation orientation, QWidget parent) {
 			ProxyQSlider().NewQSlider(orientation,parent);
 		}

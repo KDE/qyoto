@@ -37,7 +37,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQConicalGradient(center,startAngle);
 		}
-		[SmokeMethod("QConicalGradient##", "(const QPointF&, qreal)")]
+		[SmokeMethod("QConicalGradient#$", "(const QPointF&, qreal)")]
 		private void NewQConicalGradient(QPointF center, double startAngle) {
 			ProxyQConicalGradient().NewQConicalGradient(center,startAngle);
 		}

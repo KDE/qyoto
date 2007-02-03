@@ -17,9 +17,9 @@ namespace Qyoto {
 			void SetCacheLimit(int arg1);
 			[SmokeMethod("find$", "(const QString&)")]
 			QPixmap Find(string key);
-			[SmokeMethod("find$$", "(const QString&, QPixmap&)")]
+			[SmokeMethod("find$#", "(const QString&, QPixmap&)")]
 			bool Find(string key, QPixmap arg2);
-			[SmokeMethod("insert$$", "(const QString&, const QPixmap&)")]
+			[SmokeMethod("insert$#", "(const QString&, const QPixmap&)")]
 			bool Insert(string key, QPixmap arg2);
 			[SmokeMethod("remove$", "(const QString&)")]
 			void Remove(string key);

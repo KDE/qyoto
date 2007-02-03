@@ -39,7 +39,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSound(filename,parent);
 		}
-		[SmokeMethod("QSound$$", "(const QString&, QObject*)")]
+		[SmokeMethod("QSound$#", "(const QString&, QObject*)")]
 		private void NewQSound(string filename, QObject parent) {
 			ProxyQSound().NewQSound(filename,parent);
 		}
@@ -71,12 +71,12 @@ namespace Qyoto {
 		public bool IsFinished() {
 			return ProxyQSound().IsFinished();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void play()")]
 		[SmokeMethod("play", "()")]
 		public void Play() {
 			ProxyQSound().Play();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void stop()")]
 		[SmokeMethod("stop", "()")]
 		public void Stop() {
 			ProxyQSound().Stop();

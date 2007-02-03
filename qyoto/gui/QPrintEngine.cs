@@ -53,7 +53,7 @@ namespace Qyoto {
 			PPK_Duplex = 21,
 			PPK_CustomBase = 0xff00,
 		}
-		[SmokeMethod("setProperty$$", "(QPrintEngine::PrintEnginePropertyKey, const QVariant&)")]
+		[SmokeMethod("setProperty$#", "(QPrintEngine::PrintEnginePropertyKey, const QVariant&)")]
 		public virtual void SetProperty(QPrintEngine.PrintEnginePropertyKey key, QVariant value) {
 			ProxyQPrintEngine().SetProperty(key,value);
 		}

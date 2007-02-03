@@ -193,7 +193,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQAction(text,parent);
 		}
-		[SmokeMethod("QAction$$", "(const QString&, QObject*)")]
+		[SmokeMethod("QAction$#", "(const QString&, QObject*)")]
 		private void NewQAction(string text, QObject parent) {
 			ProxyQAction().NewQAction(text,parent);
 		}
@@ -201,7 +201,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQAction(icon,text,parent);
 		}
-		[SmokeMethod("QAction###", "(const QIcon&, const QString&, QObject*)")]
+		[SmokeMethod("QAction#$#", "(const QIcon&, const QString&, QObject*)")]
 		private void NewQAction(QIcon icon, string text, QObject parent) {
 			ProxyQAction().NewQAction(icon,text,parent);
 		}
@@ -285,22 +285,22 @@ namespace Qyoto {
 		public List<QWidget> AssociatedWidgets() {
 			return ProxyQAction().AssociatedWidgets();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void trigger()")]
 		[SmokeMethod("trigger", "()")]
 		public void Trigger() {
 			ProxyQAction().Trigger();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void hover()")]
 		[SmokeMethod("hover", "()")]
 		public void Hover() {
 			ProxyQAction().Hover();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void toggle()")]
 		[SmokeMethod("toggle", "()")]
 		public void Toggle() {
 			ProxyQAction().Toggle();
 		}
-		[Q_SLOT("void (bool)")]
+		[Q_SLOT("void setDisabled(bool)")]
 		[SmokeMethod("setDisabled$", "(bool)")]
 		public void SetDisabled(bool b) {
 			ProxyQAction().SetDisabled(b);
@@ -333,15 +333,15 @@ namespace Qyoto {
 	}
 
 	public interface IQActionSignals : IQObjectSignals {
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void changed()")]
 		void Changed();
-		[Q_SIGNAL("void (bool)")]
+		[Q_SIGNAL("void triggered(bool)")]
 		void Triggered(bool arg1);
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void triggered()")]
 		void Triggered();
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void hovered()")]
 		void Hovered();
-		[Q_SIGNAL("void (bool)")]
+		[Q_SIGNAL("void toggled(bool)")]
 		void Toggled(bool arg1);
 	}
 }

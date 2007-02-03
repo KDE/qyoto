@@ -68,7 +68,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDirModel(nameFilters,filters,sort,parent);
 		}
-		[SmokeMethod("QDirModel????", "(const QStringList&, QDir::Filters, QDir::SortFlags, QObject*)")]
+		[SmokeMethod("QDirModel?$$#", "(const QStringList&, QDir::Filters, QDir::SortFlags, QObject*)")]
 		private void NewQDirModel(List<string> nameFilters, int filters, int sort, QObject parent) {
 			ProxyQDirModel().NewQDirModel(nameFilters,filters,sort,parent);
 		}
@@ -76,7 +76,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDirModel(nameFilters,filters,sort);
 		}
-		[SmokeMethod("QDirModel???", "(const QStringList&, QDir::Filters, QDir::SortFlags)")]
+		[SmokeMethod("QDirModel?$$", "(const QStringList&, QDir::Filters, QDir::SortFlags)")]
 		private void NewQDirModel(List<string> nameFilters, int filters, int sort) {
 			ProxyQDirModel().NewQDirModel(nameFilters,filters,sort);
 		}
@@ -96,7 +96,7 @@ namespace Qyoto {
 		private void NewQDirModel() {
 			ProxyQDirModel().NewQDirModel();
 		}
-		[SmokeMethod("index$$$", "(int, int, const QModelIndex&) const")]
+		[SmokeMethod("index$$#", "(int, int, const QModelIndex&) const")]
 		public new QModelIndex Index(int row, int column, QModelIndex parent) {
 			return ProxyQDirModel().Index(row,column,parent);
 		}
@@ -124,7 +124,7 @@ namespace Qyoto {
 		public new int ColumnCount() {
 			return ProxyQDirModel().ColumnCount();
 		}
-		[SmokeMethod("data##", "(const QModelIndex&, int) const")]
+		[SmokeMethod("data#$", "(const QModelIndex&, int) const")]
 		public new QVariant Data(QModelIndex index, int role) {
 			return ProxyQDirModel().Data(index,role);
 		}
@@ -132,7 +132,7 @@ namespace Qyoto {
 		public new QVariant Data(QModelIndex index) {
 			return ProxyQDirModel().Data(index);
 		}
-		[SmokeMethod("setData###", "(const QModelIndex&, const QVariant&, int)")]
+		[SmokeMethod("setData##$", "(const QModelIndex&, const QVariant&, int)")]
 		public new bool SetData(QModelIndex index, QVariant value, int role) {
 			return ProxyQDirModel().SetData(index,value,role);
 		}
@@ -176,7 +176,7 @@ namespace Qyoto {
 		public new QMimeData MimeData(List<QModelIndex> indexes) {
 			return ProxyQDirModel().MimeData(indexes);
 		}
-		[SmokeMethod("dropMimeData#####", "(const QMimeData*, Qt::DropAction, int, int, const QModelIndex&)")]
+		[SmokeMethod("dropMimeData#$$$#", "(const QMimeData*, Qt::DropAction, int, int, const QModelIndex&)")]
 		public new bool DropMimeData(QMimeData data, Qt.DropAction action, int row, int column, QModelIndex parent) {
 			return ProxyQDirModel().DropMimeData(data,action,row,column,parent);
 		}
@@ -240,7 +240,7 @@ namespace Qyoto {
 		public bool IsDir(QModelIndex index) {
 			return ProxyQDirModel().IsDir(index);
 		}
-		[SmokeMethod("mkdir##", "(const QModelIndex&, const QString&)")]
+		[SmokeMethod("mkdir#$", "(const QModelIndex&, const QString&)")]
 		public QModelIndex Mkdir(QModelIndex parent, string name) {
 			return ProxyQDirModel().Mkdir(parent,name);
 		}

@@ -34,7 +34,7 @@ namespace Qyoto {
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		// QAbstractTextDocumentLayout* QAbstractTextDocumentLayout(QTextDocument* arg1); >>>> NOT CONVERTED
 		// void draw(QPainter* arg1,const QAbstractTextDocumentLayout::PaintContext& arg2); >>>> NOT CONVERTED
-		[SmokeMethod("hitTest##", "(const QPointF&, Qt::HitTestAccuracy) const")]
+		[SmokeMethod("hitTest#$", "(const QPointF&, Qt::HitTestAccuracy) const")]
 		public virtual int HitTest(QPointF point, Qt.HitTestAccuracy accuracy) {
 			return ProxyQAbstractTextDocumentLayout().HitTest(point,accuracy);
 		}
@@ -67,7 +67,7 @@ namespace Qyoto {
 			return ProxyQAbstractTextDocumentLayout().PaintDevice();
 		}
 		// QTextDocument* document(); >>>> NOT CONVERTED
-		[SmokeMethod("registerHandler$$", "(int, QObject*)")]
+		[SmokeMethod("registerHandler$#", "(int, QObject*)")]
 		public void RegisterHandler(int objectType, QObject component) {
 			ProxyQAbstractTextDocumentLayout().RegisterHandler(objectType,component);
 		}
@@ -99,13 +99,13 @@ namespace Qyoto {
 	}
 
 	public interface IQAbstractTextDocumentLayoutSignals : IQObjectSignals {
-		[Q_SIGNAL("void (const QRectF&)")]
+		[Q_SIGNAL("void update(const QRectF&)")]
 		void Update(QRectF arg1);
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void update()")]
 		void Update();
-		[Q_SIGNAL("void (const QSizeF&)")]
+		[Q_SIGNAL("void documentSizeChanged(const QSizeF&)")]
 		void DocumentSizeChanged(QSizeF newSize);
-		[Q_SIGNAL("void (int)")]
+		[Q_SIGNAL("void pageCountChanged(int)")]
 		void PageCountChanged(int newPages);
 	}
 }

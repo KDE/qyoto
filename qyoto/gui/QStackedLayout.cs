@@ -69,7 +69,7 @@ namespace Qyoto {
 		public new int AddWidget(QWidget w) {
 			return ProxyQStackedLayout().AddWidget(w);
 		}
-		[SmokeMethod("insertWidget$$", "(int, QWidget*)")]
+		[SmokeMethod("insertWidget$#", "(int, QWidget*)")]
 		public int InsertWidget(int index, QWidget w) {
 			return ProxyQStackedLayout().InsertWidget(index,w);
 		}
@@ -113,7 +113,7 @@ namespace Qyoto {
 		public new void SetGeometry(QRect rect) {
 			ProxyQStackedLayout().SetGeometry(rect);
 		}
-		[Q_SLOT("void (QWidget*)")]
+		[Q_SLOT("void setCurrentWidget(QWidget*)")]
 		[SmokeMethod("setCurrentWidget#", "(QWidget*)")]
 		public void SetCurrentWidget(QWidget w) {
 			ProxyQStackedLayout().SetCurrentWidget(w);
@@ -142,9 +142,9 @@ namespace Qyoto {
 	}
 
 	public interface IQStackedLayoutSignals : IQLayoutSignals {
-		[Q_SIGNAL("void (int)")]
+		[Q_SIGNAL("void widgetRemoved(int)")]
 		void WidgetRemoved(int index);
-		[Q_SIGNAL("void (int)")]
+		[Q_SIGNAL("void currentChanged(int)")]
 		void CurrentChanged(int index);
 	}
 }

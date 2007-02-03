@@ -88,7 +88,7 @@ namespace Qyoto {
 		public virtual QVariant Option(QImageIOHandler.ImageOption option) {
 			return ProxyQImageIOHandler().Option(option);
 		}
-		[SmokeMethod("setOption$$", "(QImageIOHandler::ImageOption, const QVariant&)")]
+		[SmokeMethod("setOption$#", "(QImageIOHandler::ImageOption, const QVariant&)")]
 		public virtual void SetOption(QImageIOHandler.ImageOption option, QVariant value) {
 			ProxyQImageIOHandler().SetOption(option,value);
 		}

@@ -13,7 +13,7 @@ namespace Qyoto {
 			string Tr(string s, string c);
 			[SmokeMethod("tr$", "(const char*)")]
 			string Tr(string s);
-			[SmokeMethod("elidedText####", "(const QFontMetrics&, int, Qt::TextElideMode, const QString&)")]
+			[SmokeMethod("elidedText#$$$", "(const QFontMetrics&, int, Qt::TextElideMode, const QString&)")]
 			string ElidedText(QFontMetrics fontMetrics, int width, Qt.TextElideMode mode, string text);
 		}
 
@@ -112,11 +112,11 @@ namespace Qyoto {
 	}
 
 	public interface IQAbstractItemDelegateSignals : IQObjectSignals {
-		[Q_SIGNAL("void (QWidget*)")]
+		[Q_SIGNAL("void commitData(QWidget*)")]
 		void CommitData(QWidget editor);
-		[Q_SIGNAL("void (QWidget*, QAbstractItemDelegate::EndEditHint)")]
+		[Q_SIGNAL("void closeEditor(QWidget*, QAbstractItemDelegate::EndEditHint)")]
 		void CloseEditor(QWidget editor, QAbstractItemDelegate.EndEditHint hint);
-		[Q_SIGNAL("void (QWidget*)")]
+		[Q_SIGNAL("void closeEditor(QWidget*)")]
 		void CloseEditor(QWidget editor);
 	}
 }

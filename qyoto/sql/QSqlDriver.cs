@@ -102,7 +102,7 @@ namespace Qyoto {
 		public virtual QSqlRecord Record(string tableName) {
 			return ProxyQSqlDriver().Record(tableName);
 		}
-		[SmokeMethod("formatValue##", "(const QSqlField&, bool) const")]
+		[SmokeMethod("formatValue#$", "(const QSqlField&, bool) const")]
 		public virtual string FormatValue(QSqlField field, bool trimStrings) {
 			return ProxyQSqlDriver().FormatValue(field,trimStrings);
 		}
@@ -114,7 +114,7 @@ namespace Qyoto {
 		public virtual string EscapeIdentifier(string identifier, QSqlDriver.IdentifierType type) {
 			return ProxyQSqlDriver().EscapeIdentifier(identifier,type);
 		}
-		[SmokeMethod("sqlStatement$$$$", "(QSqlDriver::StatementType, const QString&, const QSqlRecord&, bool) const")]
+		[SmokeMethod("sqlStatement$$#$", "(QSqlDriver::StatementType, const QString&, const QSqlRecord&, bool) const")]
 		public virtual string SqlStatement(QSqlDriver.StatementType type, string tableName, QSqlRecord rec, bool preparedStatement) {
 			return ProxyQSqlDriver().SqlStatement(type,tableName,rec,preparedStatement);
 		}

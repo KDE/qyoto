@@ -52,7 +52,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStringListModel(strings,parent);
 		}
-		[SmokeMethod("QStringListModel??", "(const QStringList&, QObject*)")]
+		[SmokeMethod("QStringListModel?#", "(const QStringList&, QObject*)")]
 		private void NewQStringListModel(List<string> strings, QObject parent) {
 			ProxyQStringListModel().NewQStringListModel(strings,parent);
 		}
@@ -72,11 +72,11 @@ namespace Qyoto {
 		public new int RowCount() {
 			return ProxyQStringListModel().RowCount();
 		}
-		[SmokeMethod("data##", "(const QModelIndex&, int) const")]
+		[SmokeMethod("data#$", "(const QModelIndex&, int) const")]
 		public new QVariant Data(QModelIndex index, int role) {
 			return ProxyQStringListModel().Data(index,role);
 		}
-		[SmokeMethod("setData###", "(const QModelIndex&, const QVariant&, int)")]
+		[SmokeMethod("setData##$", "(const QModelIndex&, const QVariant&, int)")]
 		public new bool SetData(QModelIndex index, QVariant value, int role) {
 			return ProxyQStringListModel().SetData(index,value,role);
 		}
@@ -88,7 +88,7 @@ namespace Qyoto {
 		public new int Flags(QModelIndex index) {
 			return ProxyQStringListModel().Flags(index);
 		}
-		[SmokeMethod("insertRows$$$", "(int, int, const QModelIndex&)")]
+		[SmokeMethod("insertRows$$#", "(int, int, const QModelIndex&)")]
 		public new bool InsertRows(int row, int count, QModelIndex parent) {
 			return ProxyQStringListModel().InsertRows(row,count,parent);
 		}
@@ -96,7 +96,7 @@ namespace Qyoto {
 		public new bool InsertRows(int row, int count) {
 			return ProxyQStringListModel().InsertRows(row,count);
 		}
-		[SmokeMethod("removeRows$$$", "(int, int, const QModelIndex&)")]
+		[SmokeMethod("removeRows$$#", "(int, int, const QModelIndex&)")]
 		public new bool RemoveRows(int row, int count, QModelIndex parent) {
 			return ProxyQStringListModel().RemoveRows(row,count,parent);
 		}

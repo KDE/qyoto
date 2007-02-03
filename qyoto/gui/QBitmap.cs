@@ -8,13 +8,13 @@ namespace Qyoto {
 	public class QBitmap : QPixmap, IDisposable {
  		protected QBitmap(Type dummy) : base((Type) null) {}
 		interface IQBitmapProxy {
-			[SmokeMethod("fromImage##", "(const QImage&, Qt::ImageConversionFlags)")]
+			[SmokeMethod("fromImage#$", "(const QImage&, Qt::ImageConversionFlags)")]
 			QBitmap FromImage(QImage image, int flags);
 			[SmokeMethod("fromImage#", "(const QImage&)")]
 			QBitmap FromImage(QImage image);
-			[SmokeMethod("fromData###", "(const QSize&, const uchar*, QImage::Format)")]
+			[SmokeMethod("fromData#$$", "(const QSize&, const uchar*, QImage::Format)")]
 			QBitmap FromData(QSize size, char[] bits, QImage.Format monoFormat);
-			[SmokeMethod("fromData##", "(const QSize&, const uchar*)")]
+			[SmokeMethod("fromData#$", "(const QSize&, const uchar*)")]
 			QBitmap FromData(QSize size, char[] bits);
 		}
 

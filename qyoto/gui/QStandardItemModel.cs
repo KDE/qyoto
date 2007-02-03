@@ -62,7 +62,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStandardItemModel(rows,columns,parent);
 		}
-		[SmokeMethod("QStandardItemModel$$$", "(int, int, QObject*)")]
+		[SmokeMethod("QStandardItemModel$$#", "(int, int, QObject*)")]
 		private void NewQStandardItemModel(int rows, int columns, QObject parent) {
 			ProxyQStandardItemModel().NewQStandardItemModel(rows,columns,parent);
 		}
@@ -74,7 +74,7 @@ namespace Qyoto {
 		private void NewQStandardItemModel(int rows, int columns) {
 			ProxyQStandardItemModel().NewQStandardItemModel(rows,columns);
 		}
-		[SmokeMethod("index$$$", "(int, int, const QModelIndex&) const")]
+		[SmokeMethod("index$$#", "(int, int, const QModelIndex&) const")]
 		public new QModelIndex Index(int row, int column, QModelIndex parent) {
 			return ProxyQStandardItemModel().Index(row,column,parent);
 		}
@@ -110,7 +110,7 @@ namespace Qyoto {
 		public new bool HasChildren() {
 			return ProxyQStandardItemModel().HasChildren();
 		}
-		[SmokeMethod("data##", "(const QModelIndex&, int) const")]
+		[SmokeMethod("data#$", "(const QModelIndex&, int) const")]
 		public new QVariant Data(QModelIndex index, int role) {
 			return ProxyQStandardItemModel().Data(index,role);
 		}
@@ -118,7 +118,7 @@ namespace Qyoto {
 		public new QVariant Data(QModelIndex index) {
 			return ProxyQStandardItemModel().Data(index);
 		}
-		[SmokeMethod("setData###", "(const QModelIndex&, const QVariant&, int)")]
+		[SmokeMethod("setData##$", "(const QModelIndex&, const QVariant&, int)")]
 		public new bool SetData(QModelIndex index, QVariant value, int role) {
 			return ProxyQStandardItemModel().SetData(index,value,role);
 		}
@@ -134,15 +134,15 @@ namespace Qyoto {
 		public new QVariant HeaderData(int section, Qt.Orientation orientation) {
 			return ProxyQStandardItemModel().HeaderData(section,orientation);
 		}
-		[SmokeMethod("setHeaderData$$$$", "(int, Qt::Orientation, const QVariant&, int)")]
+		[SmokeMethod("setHeaderData$$#$", "(int, Qt::Orientation, const QVariant&, int)")]
 		public new bool SetHeaderData(int section, Qt.Orientation orientation, QVariant value, int role) {
 			return ProxyQStandardItemModel().SetHeaderData(section,orientation,value,role);
 		}
-		[SmokeMethod("setHeaderData$$$", "(int, Qt::Orientation, const QVariant&)")]
+		[SmokeMethod("setHeaderData$$#", "(int, Qt::Orientation, const QVariant&)")]
 		public new bool SetHeaderData(int section, Qt.Orientation orientation, QVariant value) {
 			return ProxyQStandardItemModel().SetHeaderData(section,orientation,value);
 		}
-		[SmokeMethod("insertRows$$$", "(int, int, const QModelIndex&)")]
+		[SmokeMethod("insertRows$$#", "(int, int, const QModelIndex&)")]
 		public new bool InsertRows(int row, int count, QModelIndex parent) {
 			return ProxyQStandardItemModel().InsertRows(row,count,parent);
 		}
@@ -150,7 +150,7 @@ namespace Qyoto {
 		public new bool InsertRows(int row, int count) {
 			return ProxyQStandardItemModel().InsertRows(row,count);
 		}
-		[SmokeMethod("insertColumns$$$", "(int, int, const QModelIndex&)")]
+		[SmokeMethod("insertColumns$$#", "(int, int, const QModelIndex&)")]
 		public new bool InsertColumns(int column, int count, QModelIndex parent) {
 			return ProxyQStandardItemModel().InsertColumns(column,count,parent);
 		}
@@ -158,7 +158,7 @@ namespace Qyoto {
 		public new bool InsertColumns(int column, int count) {
 			return ProxyQStandardItemModel().InsertColumns(column,count);
 		}
-		[SmokeMethod("removeRows$$$", "(int, int, const QModelIndex&)")]
+		[SmokeMethod("removeRows$$#", "(int, int, const QModelIndex&)")]
 		public new bool RemoveRows(int row, int count, QModelIndex parent) {
 			return ProxyQStandardItemModel().RemoveRows(row,count,parent);
 		}
@@ -166,7 +166,7 @@ namespace Qyoto {
 		public new bool RemoveRows(int row, int count) {
 			return ProxyQStandardItemModel().RemoveRows(row,count);
 		}
-		[SmokeMethod("removeColumns$$$", "(int, int, const QModelIndex&)")]
+		[SmokeMethod("removeColumns$$#", "(int, int, const QModelIndex&)")]
 		public new bool RemoveColumns(int column, int count, QModelIndex parent) {
 			return ProxyQStandardItemModel().RemoveColumns(column,count,parent);
 		}
@@ -186,7 +186,7 @@ namespace Qyoto {
 		public new Dictionary<int, QVariant> ItemData(QModelIndex index) {
 			return ProxyQStandardItemModel().ItemData(index);
 		}
-		[SmokeMethod("setItemData##", "(const QModelIndex&, const QMap<int, QVariant>&)")]
+		[SmokeMethod("setItemData#?", "(const QModelIndex&, const QMap<int, QVariant>&)")]
 		public new bool SetItemData(QModelIndex index, Dictionary<int, QVariant> roles) {
 			return ProxyQStandardItemModel().SetItemData(index,roles);
 		}
@@ -222,11 +222,11 @@ namespace Qyoto {
 		public QStandardItem Item(int row) {
 			return ProxyQStandardItemModel().Item(row);
 		}
-		[SmokeMethod("setItem$$$", "(int, int, QStandardItem*)")]
+		[SmokeMethod("setItem$$#", "(int, int, QStandardItem*)")]
 		public void SetItem(int row, int column, QStandardItem item) {
 			ProxyQStandardItemModel().SetItem(row,column,item);
 		}
-		[SmokeMethod("setItem$$", "(int, QStandardItem*)")]
+		[SmokeMethod("setItem$#", "(int, QStandardItem*)")]
 		public void SetItem(int row, QStandardItem item) {
 			ProxyQStandardItemModel().SetItem(row,item);
 		}
@@ -238,7 +238,7 @@ namespace Qyoto {
 		public QStandardItem HorizontalHeaderItem(int column) {
 			return ProxyQStandardItemModel().HorizontalHeaderItem(column);
 		}
-		[SmokeMethod("setHorizontalHeaderItem$$", "(int, QStandardItem*)")]
+		[SmokeMethod("setHorizontalHeaderItem$#", "(int, QStandardItem*)")]
 		public void SetHorizontalHeaderItem(int column, QStandardItem item) {
 			ProxyQStandardItemModel().SetHorizontalHeaderItem(column,item);
 		}
@@ -246,7 +246,7 @@ namespace Qyoto {
 		public QStandardItem VerticalHeaderItem(int row) {
 			return ProxyQStandardItemModel().VerticalHeaderItem(row);
 		}
-		[SmokeMethod("setVerticalHeaderItem$$", "(int, QStandardItem*)")]
+		[SmokeMethod("setVerticalHeaderItem$#", "(int, QStandardItem*)")]
 		public void SetVerticalHeaderItem(int row, QStandardItem item) {
 			ProxyQStandardItemModel().SetVerticalHeaderItem(row,item);
 		}
@@ -278,19 +278,19 @@ namespace Qyoto {
 		public void AppendRow(QStandardItem item) {
 			ProxyQStandardItemModel().AppendRow(item);
 		}
-		[SmokeMethod("insertRow$$", "(int, const QList<QStandardItem*>&)")]
+		[SmokeMethod("insertRow$?", "(int, const QList<QStandardItem*>&)")]
 		public new void InsertRow(int row, List<QStandardItem> items) {
 			ProxyQStandardItemModel().InsertRow(row,items);
 		}
-		[SmokeMethod("insertColumn$$", "(int, const QList<QStandardItem*>&)")]
+		[SmokeMethod("insertColumn$?", "(int, const QList<QStandardItem*>&)")]
 		public new void InsertColumn(int column, List<QStandardItem> items) {
 			ProxyQStandardItemModel().InsertColumn(column,items);
 		}
-		[SmokeMethod("insertRow$$", "(int, QStandardItem*)")]
+		[SmokeMethod("insertRow$#", "(int, QStandardItem*)")]
 		public new void InsertRow(int row, QStandardItem item) {
 			ProxyQStandardItemModel().InsertRow(row,item);
 		}
-		[SmokeMethod("insertRow$$", "(int, const QModelIndex&)")]
+		[SmokeMethod("insertRow$#", "(int, const QModelIndex&)")]
 		public new bool InsertRow(int row, QModelIndex parent) {
 			return ProxyQStandardItemModel().InsertRow(row,parent);
 		}
@@ -298,7 +298,7 @@ namespace Qyoto {
 		public new bool InsertRow(int row) {
 			return ProxyQStandardItemModel().InsertRow(row);
 		}
-		[SmokeMethod("insertColumn$$", "(int, const QModelIndex&)")]
+		[SmokeMethod("insertColumn$#", "(int, const QModelIndex&)")]
 		public new bool InsertColumn(int column, QModelIndex parent) {
 			return ProxyQStandardItemModel().InsertColumn(column,parent);
 		}
@@ -374,7 +374,7 @@ namespace Qyoto {
 	}
 
 	public interface IQStandardItemModelSignals : IQAbstractItemModelSignals {
-		[Q_SIGNAL("void (QStandardItem*)")]
+		[Q_SIGNAL("void itemChanged(QStandardItem*)")]
 		void ItemChanged(QStandardItem item);
 	}
 }

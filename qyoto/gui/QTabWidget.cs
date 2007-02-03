@@ -118,19 +118,19 @@ namespace Qyoto {
 		private void NewQTabWidget() {
 			ProxyQTabWidget().NewQTabWidget();
 		}
-		[SmokeMethod("addTab##", "(QWidget*, const QString&)")]
+		[SmokeMethod("addTab#$", "(QWidget*, const QString&)")]
 		public int AddTab(QWidget widget, string arg2) {
 			return ProxyQTabWidget().AddTab(widget,arg2);
 		}
-		[SmokeMethod("addTab###", "(QWidget*, const QIcon&, const QString&)")]
+		[SmokeMethod("addTab##$", "(QWidget*, const QIcon&, const QString&)")]
 		public int AddTab(QWidget widget, QIcon icon, string label) {
 			return ProxyQTabWidget().AddTab(widget,icon,label);
 		}
-		[SmokeMethod("insertTab$$$", "(int, QWidget*, const QString&)")]
+		[SmokeMethod("insertTab$#$", "(int, QWidget*, const QString&)")]
 		public int InsertTab(int index, QWidget widget, string arg3) {
 			return ProxyQTabWidget().InsertTab(index,widget,arg3);
 		}
-		[SmokeMethod("insertTab$$$$", "(int, QWidget*, const QIcon&, const QString&)")]
+		[SmokeMethod("insertTab$##$", "(int, QWidget*, const QIcon&, const QString&)")]
 		public int InsertTab(int index, QWidget widget, QIcon icon, string label) {
 			return ProxyQTabWidget().InsertTab(index,widget,icon,label);
 		}
@@ -158,7 +158,7 @@ namespace Qyoto {
 		public QIcon TabIcon(int index) {
 			return ProxyQTabWidget().TabIcon(index);
 		}
-		[SmokeMethod("setTabIcon$$", "(int, const QIcon&)")]
+		[SmokeMethod("setTabIcon$#", "(int, const QIcon&)")]
 		public void SetTabIcon(int index, QIcon icon) {
 			ProxyQTabWidget().SetTabIcon(index,icon);
 		}
@@ -198,7 +198,7 @@ namespace Qyoto {
 		public new QSize MinimumSizeHint() {
 			return ProxyQTabWidget().MinimumSizeHint();
 		}
-		[SmokeMethod("setCornerWidget##", "(QWidget*, Qt::Corner)")]
+		[SmokeMethod("setCornerWidget#$", "(QWidget*, Qt::Corner)")]
 		public void SetCornerWidget(QWidget w, Qt.Corner corner) {
 			ProxyQTabWidget().SetCornerWidget(w,corner);
 		}
@@ -214,7 +214,7 @@ namespace Qyoto {
 		public QWidget CornerWidget() {
 			return ProxyQTabWidget().CornerWidget();
 		}
-		[Q_SLOT("void (QWidget*)")]
+		[Q_SLOT("void setCurrentWidget(QWidget*)")]
 		[SmokeMethod("setCurrentWidget#", "(QWidget*)")]
 		public void SetCurrentWidget(QWidget widget) {
 			ProxyQTabWidget().SetCurrentWidget(widget);
@@ -283,7 +283,7 @@ namespace Qyoto {
 	}
 
 	public interface IQTabWidgetSignals : IQWidgetSignals {
-		[Q_SIGNAL("void (int)")]
+		[Q_SIGNAL("void currentChanged(int)")]
 		void CurrentChanged(int index);
 	}
 }

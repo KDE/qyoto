@@ -65,7 +65,7 @@ namespace Qyoto {
 		public QUndoStack ActiveStack() {
 			return ProxyQUndoGroup().ActiveStack();
 		}
-		[SmokeMethod("createUndoAction##", "(QObject*, const QString&) const")]
+		[SmokeMethod("createUndoAction#$", "(QObject*, const QString&) const")]
 		public QAction CreateUndoAction(QObject parent, string prefix) {
 			return ProxyQUndoGroup().CreateUndoAction(parent,prefix);
 		}
@@ -73,7 +73,7 @@ namespace Qyoto {
 		public QAction CreateUndoAction(QObject parent) {
 			return ProxyQUndoGroup().CreateUndoAction(parent);
 		}
-		[SmokeMethod("createRedoAction##", "(QObject*, const QString&) const")]
+		[SmokeMethod("createRedoAction#$", "(QObject*, const QString&) const")]
 		public QAction CreateRedoAction(QObject parent, string prefix) {
 			return ProxyQUndoGroup().CreateRedoAction(parent,prefix);
 		}
@@ -101,17 +101,17 @@ namespace Qyoto {
 		public bool IsClean() {
 			return ProxyQUndoGroup().IsClean();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void undo()")]
 		[SmokeMethod("undo", "()")]
 		public void Undo() {
 			ProxyQUndoGroup().Undo();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void redo()")]
 		[SmokeMethod("redo", "()")]
 		public void Redo() {
 			ProxyQUndoGroup().Redo();
 		}
-		[Q_SLOT("void (QUndoStack*)")]
+		[Q_SLOT("void setActiveStack(QUndoStack*)")]
 		[SmokeMethod("setActiveStack#", "(QUndoStack*)")]
 		public void SetActiveStack(QUndoStack stack) {
 			ProxyQUndoGroup().SetActiveStack(stack);
@@ -140,19 +140,19 @@ namespace Qyoto {
 	}
 
 	public interface IQUndoGroupSignals : IQObjectSignals {
-		[Q_SIGNAL("void (QUndoStack*)")]
+		[Q_SIGNAL("void activeStackChanged(QUndoStack*)")]
 		void ActiveStackChanged(QUndoStack stack);
-		[Q_SIGNAL("void (int)")]
+		[Q_SIGNAL("void indexChanged(int)")]
 		void IndexChanged(int idx);
-		[Q_SIGNAL("void (bool)")]
+		[Q_SIGNAL("void cleanChanged(bool)")]
 		void CleanChanged(bool clean);
-		[Q_SIGNAL("void (bool)")]
+		[Q_SIGNAL("void canUndoChanged(bool)")]
 		void CanUndoChanged(bool canUndo);
-		[Q_SIGNAL("void (bool)")]
+		[Q_SIGNAL("void canRedoChanged(bool)")]
 		void CanRedoChanged(bool canRedo);
-		[Q_SIGNAL("void (const QString&)")]
+		[Q_SIGNAL("void undoTextChanged(const QString&)")]
 		void UndoTextChanged(string undoText);
-		[Q_SIGNAL("void (const QString&)")]
+		[Q_SIGNAL("void redoTextChanged(const QString&)")]
 		void RedoTextChanged(string redoText);
 	}
 }

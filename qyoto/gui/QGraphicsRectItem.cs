@@ -79,7 +79,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGraphicsRectItem(x,y,w,h,parent,scene);
 		}
-		[SmokeMethod("QGraphicsRectItem$$$$$$", "(qreal, qreal, qreal, qreal, QGraphicsItem*, QGraphicsScene*)")]
+		[SmokeMethod("QGraphicsRectItem$$$$##", "(qreal, qreal, qreal, qreal, QGraphicsItem*, QGraphicsScene*)")]
 		private void NewQGraphicsRectItem(double x, double y, double w, double h, QGraphicsItem parent, QGraphicsScene scene) {
 			ProxyQGraphicsRectItem().NewQGraphicsRectItem(x,y,w,h,parent,scene);
 		}
@@ -87,7 +87,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGraphicsRectItem(x,y,w,h,parent);
 		}
-		[SmokeMethod("QGraphicsRectItem$$$$$", "(qreal, qreal, qreal, qreal, QGraphicsItem*)")]
+		[SmokeMethod("QGraphicsRectItem$$$$#", "(qreal, qreal, qreal, qreal, QGraphicsItem*)")]
 		private void NewQGraphicsRectItem(double x, double y, double w, double h, QGraphicsItem parent) {
 			ProxyQGraphicsRectItem().NewQGraphicsRectItem(x,y,w,h,parent);
 		}
@@ -147,7 +147,7 @@ namespace Qyoto {
 		protected new bool SupportsExtension(QGraphicsItem.Extension extension) {
 			return ProxyQGraphicsRectItem().SupportsExtension(extension);
 		}
-		[SmokeMethod("setExtension$$", "(QGraphicsItem::Extension, const QVariant&)")]
+		[SmokeMethod("setExtension$#", "(QGraphicsItem::Extension, const QVariant&)")]
 		protected new void SetExtension(QGraphicsItem.Extension extension, QVariant variant) {
 			ProxyQGraphicsRectItem().SetExtension(extension,variant);
 		}

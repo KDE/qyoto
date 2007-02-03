@@ -233,11 +233,11 @@ namespace Qyoto {
 		public void Print(QPrinter printer) {
 			ProxyQTextDocument().Print(printer);
 		}
-		[SmokeMethod("resource$$", "(int, const QUrl&) const")]
+		[SmokeMethod("resource$#", "(int, const QUrl&) const")]
 		public QVariant Resource(int type, IQUrl name) {
 			return ProxyQTextDocument().Resource(type,name);
 		}
-		[SmokeMethod("addResource$$$", "(int, const QUrl&, const QVariant&)")]
+		[SmokeMethod("addResource$##", "(int, const QUrl&, const QVariant&)")]
 		public void AddResource(int type, IQUrl name, QVariant resource) {
 			ProxyQTextDocument().AddResource(type,name,resource);
 		}
@@ -265,12 +265,12 @@ namespace Qyoto {
 		// void undo(QTextCursor* arg1); >>>> NOT CONVERTED
 		// void redo(QTextCursor* arg1); >>>> NOT CONVERTED
 		// QTextDocumentPrivate* docHandle(); >>>> NOT CONVERTED
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void undo()")]
 		[SmokeMethod("undo", "()")]
 		public void Undo() {
 			ProxyQTextDocument().Undo();
 		}
-		[Q_SLOT("void ()")]
+		[Q_SLOT("void redo()")]
 		[SmokeMethod("redo", "()")]
 		public void Redo() {
 			ProxyQTextDocument().Redo();
@@ -283,7 +283,7 @@ namespace Qyoto {
 			return StaticQTextDocument().Tr(s);
 		}
 		// QTextObject* createObject(const QTextFormat& arg1); >>>> NOT CONVERTED
-		[SmokeMethod("loadResource$$", "(int, const QUrl&)")]
+		[SmokeMethod("loadResource$#", "(int, const QUrl&)")]
 		protected virtual QVariant LoadResource(int type, IQUrl name) {
 			return ProxyQTextDocument().LoadResource(type,name);
 		}
@@ -305,15 +305,15 @@ namespace Qyoto {
 	}
 
 	public interface IQTextDocumentSignals : IQObjectSignals {
-		[Q_SIGNAL("void (int, int, int)")]
+		[Q_SIGNAL("void contentsChange(int, int, int)")]
 		void ContentsChange(int from, int charsRemoves, int charsAdded);
-		[Q_SIGNAL("void ()")]
+		[Q_SIGNAL("void contentsChanged()")]
 		void ContentsChanged();
-		[Q_SIGNAL("void (bool)")]
+		[Q_SIGNAL("void undoAvailable(bool)")]
 		void UndoAvailable(bool arg1);
-		[Q_SIGNAL("void (bool)")]
+		[Q_SIGNAL("void redoAvailable(bool)")]
 		void RedoAvailable(bool arg1);
-		[Q_SIGNAL("void (bool)")]
+		[Q_SIGNAL("void modificationChanged(bool)")]
 		void ModificationChanged(bool m);
 		// void cursorPositionChanged(const QTextCursor& arg1); >>>> NOT CONVERTED
 	}
