@@ -34,26 +34,26 @@ namespace Qyoto {
 		}
 
 		//  operator const char(); >>>> NOT CONVERTED
-		[SmokeMethod("operator==$", "(char) const")]
+		[SmokeMethod("operator==", "(char) const", "$")]
 		public static bool operator==(QByteRef lhs, char c) {
 			return StaticQByteRef().op_equals(lhs,c);
 		}
 		public static bool operator!=(QByteRef lhs, char c) {
 			return !StaticQByteRef().op_equals(lhs,c);
 		}
-		[SmokeMethod("operator>$", "(char) const")]
+		[SmokeMethod("operator>", "(char) const", "$")]
 		public static bool operator>(QByteRef lhs, char c) {
 			return StaticQByteRef().op_gt(lhs,c);
 		}
-		[SmokeMethod("operator>=$", "(char) const")]
+		[SmokeMethod("operator>=", "(char) const", "$")]
 		public static bool operator>=(QByteRef lhs, char c) {
 			return StaticQByteRef().op_gte(lhs,c);
 		}
-		[SmokeMethod("operator<$", "(char) const")]
+		[SmokeMethod("operator<", "(char) const", "$")]
 		public static bool operator<(QByteRef lhs, char c) {
 			return StaticQByteRef().op_lt(lhs,c);
 		}
-		[SmokeMethod("operator<=$", "(char) const")]
+		[SmokeMethod("operator<=", "(char) const", "$")]
 		public static bool operator<=(QByteRef lhs, char c) {
 			return StaticQByteRef().op_lte(lhs,c);
 		}
@@ -63,7 +63,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQByteRef();
 		}
-		[SmokeMethod("~QByteRef", "()")]
+		[SmokeMethod("~QByteRef", "()", "")]
 		private void DisposeQByteRef() {
 			ProxyQByteRef().DisposeQByteRef();
 		}

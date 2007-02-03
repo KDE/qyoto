@@ -31,35 +31,35 @@ namespace Qyoto {
 			CreateProxy();
 			NewQAccessibleObject(arg1);
 		}
-		[SmokeMethod("QAccessibleObject#", "(QObject*)")]
+		[SmokeMethod("QAccessibleObject", "(QObject*)", "#")]
 		private void NewQAccessibleObject(QObject arg1) {
 			ProxyQAccessibleObject().NewQAccessibleObject(arg1);
 		}
-		[SmokeMethod("isValid", "() const")]
+		[SmokeMethod("isValid", "() const", "")]
 		public new bool IsValid() {
 			return ProxyQAccessibleObject().IsValid();
 		}
-		[SmokeMethod("object", "() const")]
+		[SmokeMethod("object", "() const", "")]
 		public new QObject Object() {
 			return ProxyQAccessibleObject().Object();
 		}
-		[SmokeMethod("rect$", "(int) const")]
+		[SmokeMethod("rect", "(int) const", "$")]
 		public new QRect Rect(int child) {
 			return ProxyQAccessibleObject().Rect(child);
 		}
-		[SmokeMethod("setText$$$", "(QAccessible::Text, int, const QString&)")]
+		[SmokeMethod("setText", "(QAccessible::Text, int, const QString&)", "$$$")]
 		public new void SetText(QAccessible.Text t, int child, string text) {
 			ProxyQAccessibleObject().SetText(t,child,text);
 		}
-		[SmokeMethod("userActionCount$", "(int) const")]
+		[SmokeMethod("userActionCount", "(int) const", "$")]
 		public new int UserActionCount(int child) {
 			return ProxyQAccessibleObject().UserActionCount(child);
 		}
-		[SmokeMethod("doAction$$?", "(int, int, const QVariantList&)")]
+		[SmokeMethod("doAction", "(int, int, const QVariantList&)", "$$?")]
 		public new bool DoAction(int action, int child, List<QVariant> arg3) {
 			return ProxyQAccessibleObject().DoAction(action,child,arg3);
 		}
-		[SmokeMethod("actionText$$$", "(int, QAccessible::Text, int) const")]
+		[SmokeMethod("actionText", "(int, QAccessible::Text, int) const", "$$$")]
 		public new string ActionText(int action, QAccessible.Text t, int child) {
 			return ProxyQAccessibleObject().ActionText(action,t,child);
 		}

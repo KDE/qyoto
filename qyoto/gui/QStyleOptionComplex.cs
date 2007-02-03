@@ -35,7 +35,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionComplex(version,type);
 		}
-		[SmokeMethod("QStyleOptionComplex$$", "(int, int)")]
+		[SmokeMethod("QStyleOptionComplex", "(int, int)", "$$")]
 		private void NewQStyleOptionComplex(int version, int type) {
 			ProxyQStyleOptionComplex().NewQStyleOptionComplex(version,type);
 		}
@@ -43,7 +43,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionComplex(version);
 		}
-		[SmokeMethod("QStyleOptionComplex$", "(int)")]
+		[SmokeMethod("QStyleOptionComplex", "(int)", "$")]
 		private void NewQStyleOptionComplex(int version) {
 			ProxyQStyleOptionComplex().NewQStyleOptionComplex(version);
 		}
@@ -51,7 +51,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionComplex();
 		}
-		[SmokeMethod("QStyleOptionComplex", "()")]
+		[SmokeMethod("QStyleOptionComplex", "()", "")]
 		private void NewQStyleOptionComplex() {
 			ProxyQStyleOptionComplex().NewQStyleOptionComplex();
 		}
@@ -59,7 +59,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionComplex(other);
 		}
-		[SmokeMethod("QStyleOptionComplex#", "(const QStyleOptionComplex&)")]
+		[SmokeMethod("QStyleOptionComplex", "(const QStyleOptionComplex&)", "#")]
 		private void NewQStyleOptionComplex(QStyleOptionComplex other) {
 			ProxyQStyleOptionComplex().NewQStyleOptionComplex(other);
 		}
@@ -69,7 +69,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQStyleOptionComplex();
 		}
-		[SmokeMethod("~QStyleOptionComplex", "()")]
+		[SmokeMethod("~QStyleOptionComplex", "()", "")]
 		private void DisposeQStyleOptionComplex() {
 			ProxyQStyleOptionComplex().DisposeQStyleOptionComplex();
 		}

@@ -11,13 +11,13 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QColormap(Type dummy) {}
 		interface IQColormapProxy {
-			[SmokeMethod("initialize", "()")]
+			[SmokeMethod("initialize", "()", "")]
 			void Initialize();
-			[SmokeMethod("cleanup", "()")]
+			[SmokeMethod("cleanup", "()", "")]
 			void Cleanup();
-			[SmokeMethod("instance$", "(int)")]
+			[SmokeMethod("instance", "(int)", "$")]
 			QColormap Instance(int screen);
-			[SmokeMethod("instance", "()")]
+			[SmokeMethod("instance", "()", "")]
 			QColormap Instance();
 		}
 
@@ -46,31 +46,31 @@ namespace Qyoto {
 			CreateProxy();
 			NewQColormap(colormap);
 		}
-		[SmokeMethod("QColormap#", "(const QColormap&)")]
+		[SmokeMethod("QColormap", "(const QColormap&)", "#")]
 		private void NewQColormap(QColormap colormap) {
 			ProxyQColormap().NewQColormap(colormap);
 		}
-		[SmokeMethod("mode", "() const")]
+		[SmokeMethod("mode", "() const", "")]
 		public QColormap.Mode mode() {
 			return ProxyQColormap().mode();
 		}
-		[SmokeMethod("depth", "() const")]
+		[SmokeMethod("depth", "() const", "")]
 		public int Depth() {
 			return ProxyQColormap().Depth();
 		}
-		[SmokeMethod("size", "() const")]
+		[SmokeMethod("size", "() const", "")]
 		public int Size() {
 			return ProxyQColormap().Size();
 		}
-		[SmokeMethod("pixel#", "(const QColor&) const")]
+		[SmokeMethod("pixel", "(const QColor&) const", "#")]
 		public uint Pixel(QColor color) {
 			return ProxyQColormap().Pixel(color);
 		}
-		[SmokeMethod("colorAt$", "(uint) const")]
+		[SmokeMethod("colorAt", "(uint) const", "$")]
 		public QColor ColorAt(uint pixel) {
 			return ProxyQColormap().ColorAt(pixel);
 		}
-		[SmokeMethod("colormap", "() const")]
+		[SmokeMethod("colormap", "() const", "")]
 		public List<QColor> Colormap() {
 			return ProxyQColormap().Colormap();
 		}
@@ -92,7 +92,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQColormap();
 		}
-		[SmokeMethod("~QColormap", "()")]
+		[SmokeMethod("~QColormap", "()", "")]
 		private void DisposeQColormap() {
 			ProxyQColormap().DisposeQColormap();
 		}

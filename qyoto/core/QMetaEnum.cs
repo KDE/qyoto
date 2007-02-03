@@ -32,51 +32,51 @@ namespace Qyoto {
 			CreateProxy();
 			NewQMetaEnum();
 		}
-		[SmokeMethod("QMetaEnum", "()")]
+		[SmokeMethod("QMetaEnum", "()", "")]
 		private void NewQMetaEnum() {
 			ProxyQMetaEnum().NewQMetaEnum();
 		}
-		[SmokeMethod("name", "() const")]
+		[SmokeMethod("name", "() const", "")]
 		public string Name() {
 			return ProxyQMetaEnum().Name();
 		}
-		[SmokeMethod("isFlag", "() const")]
+		[SmokeMethod("isFlag", "() const", "")]
 		public bool IsFlag() {
 			return ProxyQMetaEnum().IsFlag();
 		}
-		[SmokeMethod("keyCount", "() const")]
+		[SmokeMethod("keyCount", "() const", "")]
 		public int KeyCount() {
 			return ProxyQMetaEnum().KeyCount();
 		}
-		[SmokeMethod("key$", "(int) const")]
+		[SmokeMethod("key", "(int) const", "$")]
 		public string Key(int index) {
 			return ProxyQMetaEnum().Key(index);
 		}
-		[SmokeMethod("value$", "(int) const")]
+		[SmokeMethod("value", "(int) const", "$")]
 		public int Value(int index) {
 			return ProxyQMetaEnum().Value(index);
 		}
-		[SmokeMethod("scope", "() const")]
+		[SmokeMethod("scope", "() const", "")]
 		public string Scope() {
 			return ProxyQMetaEnum().Scope();
 		}
-		[SmokeMethod("keyToValue$", "(const char*) const")]
+		[SmokeMethod("keyToValue", "(const char*) const", "$")]
 		public int KeyToValue(string key) {
 			return ProxyQMetaEnum().KeyToValue(key);
 		}
-		[SmokeMethod("valueToKey$", "(int) const")]
+		[SmokeMethod("valueToKey", "(int) const", "$")]
 		public string ValueToKey(int value) {
 			return ProxyQMetaEnum().ValueToKey(value);
 		}
-		[SmokeMethod("keysToValue$", "(const char*) const")]
+		[SmokeMethod("keysToValue", "(const char*) const", "$")]
 		public int KeysToValue(string keys) {
 			return ProxyQMetaEnum().KeysToValue(keys);
 		}
-		[SmokeMethod("valueToKeys$", "(int) const")]
+		[SmokeMethod("valueToKeys", "(int) const", "$")]
 		public QByteArray ValueToKeys(int value) {
 			return ProxyQMetaEnum().ValueToKeys(value);
 		}
-		[SmokeMethod("isValid", "() const")]
+		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
 			return ProxyQMetaEnum().IsValid();
 		}
@@ -86,7 +86,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQMetaEnum();
 		}
-		[SmokeMethod("~QMetaEnum", "()")]
+		[SmokeMethod("~QMetaEnum", "()", "")]
 		private void DisposeQMetaEnum() {
 			ProxyQMetaEnum().DisposeQMetaEnum();
 		}

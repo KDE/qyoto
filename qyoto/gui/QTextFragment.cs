@@ -35,7 +35,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTextFragment();
 		}
-		[SmokeMethod("QTextFragment", "()")]
+		[SmokeMethod("QTextFragment", "()", "")]
 		private void NewQTextFragment() {
 			ProxyQTextFragment().NewQTextFragment();
 		}
@@ -43,15 +43,15 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTextFragment(o);
 		}
-		[SmokeMethod("QTextFragment#", "(const QTextFragment&)")]
+		[SmokeMethod("QTextFragment", "(const QTextFragment&)", "#")]
 		private void NewQTextFragment(QTextFragment o) {
 			ProxyQTextFragment().NewQTextFragment(o);
 		}
-		[SmokeMethod("isValid", "() const")]
+		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
 			return ProxyQTextFragment().IsValid();
 		}
-		[SmokeMethod("operator==#", "(const QTextFragment&) const")]
+		[SmokeMethod("operator==", "(const QTextFragment&) const", "#")]
 		public static bool operator==(QTextFragment lhs, QTextFragment o) {
 			return StaticQTextFragment().op_equals(lhs,o);
 		}
@@ -65,7 +65,7 @@ namespace Qyoto {
 		public override int GetHashCode() {
 			return ProxyQTextFragment().GetHashCode();
 		}
-		[SmokeMethod("operator<#", "(const QTextFragment&) const")]
+		[SmokeMethod("operator<", "(const QTextFragment&) const", "#")]
 		public static bool operator<(QTextFragment lhs, QTextFragment o) {
 			return StaticQTextFragment().op_lt(lhs,o);
 		}
@@ -73,27 +73,27 @@ namespace Qyoto {
 			return !StaticQTextFragment().op_lt(lhs,o)
 						&& !StaticQTextFragment().op_equals(lhs,o);
 		}
-		[SmokeMethod("position", "() const")]
+		[SmokeMethod("position", "() const", "")]
 		public int Position() {
 			return ProxyQTextFragment().Position();
 		}
-		[SmokeMethod("length", "() const")]
+		[SmokeMethod("length", "() const", "")]
 		public int Length() {
 			return ProxyQTextFragment().Length();
 		}
-		[SmokeMethod("contains$", "(int) const")]
+		[SmokeMethod("contains", "(int) const", "$")]
 		public bool Contains(int position) {
 			return ProxyQTextFragment().Contains(position);
 		}
-		[SmokeMethod("charFormat", "() const")]
+		[SmokeMethod("charFormat", "() const", "")]
 		public QTextCharFormat CharFormat() {
 			return ProxyQTextFragment().CharFormat();
 		}
-		[SmokeMethod("charFormatIndex", "() const")]
+		[SmokeMethod("charFormatIndex", "() const", "")]
 		public int CharFormatIndex() {
 			return ProxyQTextFragment().CharFormatIndex();
 		}
-		[SmokeMethod("text", "() const")]
+		[SmokeMethod("text", "() const", "")]
 		public string Text() {
 			return ProxyQTextFragment().Text();
 		}
@@ -103,7 +103,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQTextFragment();
 		}
-		[SmokeMethod("~QTextFragment", "()")]
+		[SmokeMethod("~QTextFragment", "()", "")]
 		private void DisposeQTextFragment() {
 			ProxyQTextFragment().DisposeQTextFragment();
 		}

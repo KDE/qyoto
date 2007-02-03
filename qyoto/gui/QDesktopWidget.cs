@@ -9,9 +9,9 @@ namespace Qyoto {
 	public class QDesktopWidget : QWidget, IDisposable {
  		protected QDesktopWidget(Type dummy) : base((Type) null) {}
 		interface IQDesktopWidgetProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
 
@@ -36,71 +36,71 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDesktopWidget();
 		}
-		[SmokeMethod("QDesktopWidget", "()")]
+		[SmokeMethod("QDesktopWidget", "()", "")]
 		private void NewQDesktopWidget() {
 			ProxyQDesktopWidget().NewQDesktopWidget();
 		}
-		[SmokeMethod("isVirtualDesktop", "() const")]
+		[SmokeMethod("isVirtualDesktop", "() const", "")]
 		public bool IsVirtualDesktop() {
 			return ProxyQDesktopWidget().IsVirtualDesktop();
 		}
-		[SmokeMethod("numScreens", "() const")]
+		[SmokeMethod("numScreens", "() const", "")]
 		public int NumScreens() {
 			return ProxyQDesktopWidget().NumScreens();
 		}
-		[SmokeMethod("primaryScreen", "() const")]
+		[SmokeMethod("primaryScreen", "() const", "")]
 		public int PrimaryScreen() {
 			return ProxyQDesktopWidget().PrimaryScreen();
 		}
-		[SmokeMethod("screenNumber#", "(const QWidget*) const")]
+		[SmokeMethod("screenNumber", "(const QWidget*) const", "#")]
 		public int ScreenNumber(QWidget widget) {
 			return ProxyQDesktopWidget().ScreenNumber(widget);
 		}
-		[SmokeMethod("screenNumber", "() const")]
+		[SmokeMethod("screenNumber", "() const", "")]
 		public int ScreenNumber() {
 			return ProxyQDesktopWidget().ScreenNumber();
 		}
-		[SmokeMethod("screenNumber#", "(const QPoint&) const")]
+		[SmokeMethod("screenNumber", "(const QPoint&) const", "#")]
 		public int ScreenNumber(QPoint arg1) {
 			return ProxyQDesktopWidget().ScreenNumber(arg1);
 		}
-		[SmokeMethod("screen$", "(int)")]
+		[SmokeMethod("screen", "(int)", "$")]
 		public QWidget Screen(int screen) {
 			return ProxyQDesktopWidget().Screen(screen);
 		}
-		[SmokeMethod("screen", "()")]
+		[SmokeMethod("screen", "()", "")]
 		public QWidget Screen() {
 			return ProxyQDesktopWidget().Screen();
 		}
-		[SmokeMethod("screenGeometry$", "(int) const")]
+		[SmokeMethod("screenGeometry", "(int) const", "$")]
 		public QRect ScreenGeometry(int screen) {
 			return ProxyQDesktopWidget().ScreenGeometry(screen);
 		}
-		[SmokeMethod("screenGeometry", "() const")]
+		[SmokeMethod("screenGeometry", "() const", "")]
 		public QRect ScreenGeometry() {
 			return ProxyQDesktopWidget().ScreenGeometry();
 		}
-		[SmokeMethod("screenGeometry#", "(const QWidget*) const")]
+		[SmokeMethod("screenGeometry", "(const QWidget*) const", "#")]
 		public QRect ScreenGeometry(QWidget widget) {
 			return ProxyQDesktopWidget().ScreenGeometry(widget);
 		}
-		[SmokeMethod("screenGeometry#", "(const QPoint&) const")]
+		[SmokeMethod("screenGeometry", "(const QPoint&) const", "#")]
 		public QRect ScreenGeometry(QPoint point) {
 			return ProxyQDesktopWidget().ScreenGeometry(point);
 		}
-		[SmokeMethod("availableGeometry$", "(int) const")]
+		[SmokeMethod("availableGeometry", "(int) const", "$")]
 		public QRect AvailableGeometry(int screen) {
 			return ProxyQDesktopWidget().AvailableGeometry(screen);
 		}
-		[SmokeMethod("availableGeometry", "() const")]
+		[SmokeMethod("availableGeometry", "() const", "")]
 		public QRect AvailableGeometry() {
 			return ProxyQDesktopWidget().AvailableGeometry();
 		}
-		[SmokeMethod("availableGeometry#", "(const QWidget*) const")]
+		[SmokeMethod("availableGeometry", "(const QWidget*) const", "#")]
 		public QRect AvailableGeometry(QWidget widget) {
 			return ProxyQDesktopWidget().AvailableGeometry(widget);
 		}
-		[SmokeMethod("availableGeometry#", "(const QPoint&) const")]
+		[SmokeMethod("availableGeometry", "(const QPoint&) const", "#")]
 		public QRect AvailableGeometry(QPoint point) {
 			return ProxyQDesktopWidget().AvailableGeometry(point);
 		}
@@ -110,7 +110,7 @@ namespace Qyoto {
 		public static new string Tr(string s) {
 			return StaticQDesktopWidget().Tr(s);
 		}
-		[SmokeMethod("resizeEvent#", "(QResizeEvent*)")]
+		[SmokeMethod("resizeEvent", "(QResizeEvent*)", "#")]
 		protected new void ResizeEvent(QResizeEvent e) {
 			ProxyQDesktopWidget().ResizeEvent(e);
 		}
@@ -120,7 +120,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQDesktopWidget();
 		}
-		[SmokeMethod("~QDesktopWidget", "()")]
+		[SmokeMethod("~QDesktopWidget", "()", "")]
 		private void DisposeQDesktopWidget() {
 			ProxyQDesktopWidget().DisposeQDesktopWidget();
 		}

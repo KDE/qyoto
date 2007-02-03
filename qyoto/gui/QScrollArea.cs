@@ -8,9 +8,9 @@ namespace Qyoto {
 	public class QScrollArea : QAbstractScrollArea, IDisposable {
  		protected QScrollArea(Type dummy) : base((Type) null) {}
 		interface IQScrollAreaProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
 
@@ -53,7 +53,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQScrollArea(parent);
 		}
-		[SmokeMethod("QScrollArea#", "(QWidget*)")]
+		[SmokeMethod("QScrollArea", "(QWidget*)", "#")]
 		private void NewQScrollArea(QWidget parent) {
 			ProxyQScrollArea().NewQScrollArea(parent);
 		}
@@ -61,51 +61,51 @@ namespace Qyoto {
 			CreateProxy();
 			NewQScrollArea();
 		}
-		[SmokeMethod("QScrollArea", "()")]
+		[SmokeMethod("QScrollArea", "()", "")]
 		private void NewQScrollArea() {
 			ProxyQScrollArea().NewQScrollArea();
 		}
-		[SmokeMethod("widget", "() const")]
+		[SmokeMethod("widget", "() const", "")]
 		public QWidget Widget() {
 			return ProxyQScrollArea().Widget();
 		}
-		[SmokeMethod("setWidget#", "(QWidget*)")]
+		[SmokeMethod("setWidget", "(QWidget*)", "#")]
 		public void SetWidget(QWidget widget) {
 			ProxyQScrollArea().SetWidget(widget);
 		}
-		[SmokeMethod("takeWidget", "()")]
+		[SmokeMethod("takeWidget", "()", "")]
 		public QWidget TakeWidget() {
 			return ProxyQScrollArea().TakeWidget();
 		}
-		[SmokeMethod("sizeHint", "() const")]
+		[SmokeMethod("sizeHint", "() const", "")]
 		public new QSize SizeHint() {
 			return ProxyQScrollArea().SizeHint();
 		}
-		[SmokeMethod("focusNextPrevChild$", "(bool)")]
+		[SmokeMethod("focusNextPrevChild", "(bool)", "$")]
 		public new bool FocusNextPrevChild(bool next) {
 			return ProxyQScrollArea().FocusNextPrevChild(next);
 		}
-		[SmokeMethod("ensureVisible$$$$", "(int, int, int, int)")]
+		[SmokeMethod("ensureVisible", "(int, int, int, int)", "$$$$")]
 		public void EnsureVisible(int x, int y, int xmargin, int ymargin) {
 			ProxyQScrollArea().EnsureVisible(x,y,xmargin,ymargin);
 		}
-		[SmokeMethod("ensureVisible$$$", "(int, int, int)")]
+		[SmokeMethod("ensureVisible", "(int, int, int)", "$$$")]
 		public void EnsureVisible(int x, int y, int xmargin) {
 			ProxyQScrollArea().EnsureVisible(x,y,xmargin);
 		}
-		[SmokeMethod("ensureVisible$$", "(int, int)")]
+		[SmokeMethod("ensureVisible", "(int, int)", "$$")]
 		public void EnsureVisible(int x, int y) {
 			ProxyQScrollArea().EnsureVisible(x,y);
 		}
-		[SmokeMethod("ensureWidgetVisible#$$", "(QWidget*, int, int)")]
+		[SmokeMethod("ensureWidgetVisible", "(QWidget*, int, int)", "#$$")]
 		public void EnsureWidgetVisible(QWidget childWidget, int xmargin, int ymargin) {
 			ProxyQScrollArea().EnsureWidgetVisible(childWidget,xmargin,ymargin);
 		}
-		[SmokeMethod("ensureWidgetVisible#$", "(QWidget*, int)")]
+		[SmokeMethod("ensureWidgetVisible", "(QWidget*, int)", "#$")]
 		public void EnsureWidgetVisible(QWidget childWidget, int xmargin) {
 			ProxyQScrollArea().EnsureWidgetVisible(childWidget,xmargin);
 		}
-		[SmokeMethod("ensureWidgetVisible#", "(QWidget*)")]
+		[SmokeMethod("ensureWidgetVisible", "(QWidget*)", "#")]
 		public void EnsureWidgetVisible(QWidget childWidget) {
 			ProxyQScrollArea().EnsureWidgetVisible(childWidget);
 		}
@@ -115,19 +115,19 @@ namespace Qyoto {
 		public static new string Tr(string s) {
 			return StaticQScrollArea().Tr(s);
 		}
-		[SmokeMethod("event#", "(QEvent*)")]
+		[SmokeMethod("event", "(QEvent*)", "#")]
 		public new bool Event(QEvent arg1) {
 			return ProxyQScrollArea().Event(arg1);
 		}
-		[SmokeMethod("eventFilter##", "(QObject*, QEvent*)")]
+		[SmokeMethod("eventFilter", "(QObject*, QEvent*)", "##")]
 		public new bool EventFilter(QObject arg1, QEvent arg2) {
 			return ProxyQScrollArea().EventFilter(arg1,arg2);
 		}
-		[SmokeMethod("resizeEvent#", "(QResizeEvent*)")]
+		[SmokeMethod("resizeEvent", "(QResizeEvent*)", "#")]
 		protected new void ResizeEvent(QResizeEvent arg1) {
 			ProxyQScrollArea().ResizeEvent(arg1);
 		}
-		[SmokeMethod("scrollContentsBy$$", "(int, int)")]
+		[SmokeMethod("scrollContentsBy", "(int, int)", "$$")]
 		protected new void ScrollContentsBy(int dx, int dy) {
 			ProxyQScrollArea().ScrollContentsBy(dx,dy);
 		}
@@ -137,7 +137,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQScrollArea();
 		}
-		[SmokeMethod("~QScrollArea", "()")]
+		[SmokeMethod("~QScrollArea", "()", "")]
 		private void DisposeQScrollArea() {
 			ProxyQScrollArea().DisposeQScrollArea();
 		}

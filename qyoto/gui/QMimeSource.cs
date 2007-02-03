@@ -35,19 +35,19 @@ namespace Qyoto {
 			return (IQMimeSourceProxy) _staticInterceptor;
 		}
 
-		[SmokeMethod("format$", "(int) const")]
+		[SmokeMethod("format", "(int) const", "$")]
 		public virtual string Format(int n) {
 			return ProxyQMimeSource().Format(n);
 		}
-		[SmokeMethod("format", "() const")]
+		[SmokeMethod("format", "() const", "")]
 		public virtual string Format() {
 			return ProxyQMimeSource().Format();
 		}
-		[SmokeMethod("provides$", "(const char*) const")]
+		[SmokeMethod("provides", "(const char*) const", "$")]
 		public virtual bool Provides(string arg1) {
 			return ProxyQMimeSource().Provides(arg1);
 		}
-		[SmokeMethod("encodedData$", "(const char*) const")]
+		[SmokeMethod("encodedData", "(const char*) const", "$")]
 		public virtual QByteArray EncodedData(string arg1) {
 			return ProxyQMimeSource().EncodedData(arg1);
 		}
@@ -55,7 +55,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQMimeSource();
 		}
-		[SmokeMethod("QMimeSource", "()")]
+		[SmokeMethod("QMimeSource", "()", "")]
 		private void NewQMimeSource() {
 			ProxyQMimeSource().NewQMimeSource();
 		}
@@ -65,7 +65,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQMimeSource();
 		}
-		[SmokeMethod("~QMimeSource", "()")]
+		[SmokeMethod("~QMimeSource", "()", "")]
 		private void DisposeQMimeSource() {
 			ProxyQMimeSource().DisposeQMimeSource();
 		}

@@ -10,13 +10,13 @@ namespace Qyoto {
 	public class QMenu : QWidget, IDisposable {
  		protected QMenu(Type dummy) : base((Type) null) {}
 		interface IQMenuProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
-			[SmokeMethod("exec?##", "(QList<QAction*>, const QPoint&, QAction*)")]
+			[SmokeMethod("exec", "(QList<QAction*>, const QPoint&, QAction*)", "?##")]
 			QAction Exec(List<QAction> actions, QPoint pos, QAction at);
-			[SmokeMethod("exec?#", "(QList<QAction*>, const QPoint&)")]
+			[SmokeMethod("exec", "(QList<QAction*>, const QPoint&)", "?#")]
 			QAction Exec(List<QAction> actions, QPoint pos);
 		}
 
@@ -77,7 +77,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQMenu(parent);
 		}
-		[SmokeMethod("QMenu#", "(QWidget*)")]
+		[SmokeMethod("QMenu", "(QWidget*)", "#")]
 		private void NewQMenu(QWidget parent) {
 			ProxyQMenu().NewQMenu(parent);
 		}
@@ -85,7 +85,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQMenu();
 		}
-		[SmokeMethod("QMenu", "()")]
+		[SmokeMethod("QMenu", "()", "")]
 		private void NewQMenu() {
 			ProxyQMenu().NewQMenu();
 		}
@@ -93,7 +93,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQMenu(title,parent);
 		}
-		[SmokeMethod("QMenu$#", "(const QString&, QWidget*)")]
+		[SmokeMethod("QMenu", "(const QString&, QWidget*)", "$#")]
 		private void NewQMenu(string title, QWidget parent) {
 			ProxyQMenu().NewQMenu(title,parent);
 		}
@@ -101,135 +101,135 @@ namespace Qyoto {
 			CreateProxy();
 			NewQMenu(title);
 		}
-		[SmokeMethod("QMenu$", "(const QString&)")]
+		[SmokeMethod("QMenu", "(const QString&)", "$")]
 		private void NewQMenu(string title) {
 			ProxyQMenu().NewQMenu(title);
 		}
-		[SmokeMethod("addAction#", "(QAction*)")]
+		[SmokeMethod("addAction", "(QAction*)", "#")]
 		public new void AddAction(QAction action) {
 			ProxyQMenu().AddAction(action);
 		}
-		[SmokeMethod("addAction$", "(const QString&)")]
+		[SmokeMethod("addAction", "(const QString&)", "$")]
 		public new QAction AddAction(string text) {
 			return ProxyQMenu().AddAction(text);
 		}
-		[SmokeMethod("addAction#$", "(const QIcon&, const QString&)")]
+		[SmokeMethod("addAction", "(const QIcon&, const QString&)", "#$")]
 		public new QAction AddAction(QIcon icon, string text) {
 			return ProxyQMenu().AddAction(icon,text);
 		}
-		[SmokeMethod("addAction$#$#", "(const QString&, const QObject*, const char*, const QKeySequence&)")]
+		[SmokeMethod("addAction", "(const QString&, const QObject*, const char*, const QKeySequence&)", "$#$#")]
 		public new QAction AddAction(string text, QObject receiver, string member, QKeySequence shortcut) {
 			return ProxyQMenu().AddAction(text,receiver,member,shortcut);
 		}
-		[SmokeMethod("addAction$#$", "(const QString&, const QObject*, const char*)")]
+		[SmokeMethod("addAction", "(const QString&, const QObject*, const char*)", "$#$")]
 		public new QAction AddAction(string text, QObject receiver, string member) {
 			return ProxyQMenu().AddAction(text,receiver,member);
 		}
-		[SmokeMethod("addAction#$#$#", "(const QIcon&, const QString&, const QObject*, const char*, const QKeySequence&)")]
+		[SmokeMethod("addAction", "(const QIcon&, const QString&, const QObject*, const char*, const QKeySequence&)", "#$#$#")]
 		public new QAction AddAction(QIcon icon, string text, QObject receiver, string member, QKeySequence shortcut) {
 			return ProxyQMenu().AddAction(icon,text,receiver,member,shortcut);
 		}
-		[SmokeMethod("addAction#$#$", "(const QIcon&, const QString&, const QObject*, const char*)")]
+		[SmokeMethod("addAction", "(const QIcon&, const QString&, const QObject*, const char*)", "#$#$")]
 		public new QAction AddAction(QIcon icon, string text, QObject receiver, string member) {
 			return ProxyQMenu().AddAction(icon,text,receiver,member);
 		}
-		[SmokeMethod("addMenu#", "(QMenu*)")]
+		[SmokeMethod("addMenu", "(QMenu*)", "#")]
 		public QAction AddMenu(QMenu menu) {
 			return ProxyQMenu().AddMenu(menu);
 		}
-		[SmokeMethod("addMenu$", "(const QString&)")]
+		[SmokeMethod("addMenu", "(const QString&)", "$")]
 		public QMenu AddMenu(string title) {
 			return ProxyQMenu().AddMenu(title);
 		}
-		[SmokeMethod("addMenu#$", "(const QIcon&, const QString&)")]
+		[SmokeMethod("addMenu", "(const QIcon&, const QString&)", "#$")]
 		public QMenu AddMenu(QIcon icon, string title) {
 			return ProxyQMenu().AddMenu(icon,title);
 		}
-		[SmokeMethod("addSeparator", "()")]
+		[SmokeMethod("addSeparator", "()", "")]
 		public QAction AddSeparator() {
 			return ProxyQMenu().AddSeparator();
 		}
-		[SmokeMethod("insertMenu##", "(QAction*, QMenu*)")]
+		[SmokeMethod("insertMenu", "(QAction*, QMenu*)", "##")]
 		public QAction InsertMenu(QAction before, QMenu menu) {
 			return ProxyQMenu().InsertMenu(before,menu);
 		}
-		[SmokeMethod("insertSeparator#", "(QAction*)")]
+		[SmokeMethod("insertSeparator", "(QAction*)", "#")]
 		public QAction InsertSeparator(QAction before) {
 			return ProxyQMenu().InsertSeparator(before);
 		}
-		[SmokeMethod("isEmpty", "() const")]
+		[SmokeMethod("isEmpty", "() const", "")]
 		public bool IsEmpty() {
 			return ProxyQMenu().IsEmpty();
 		}
-		[SmokeMethod("clear", "()")]
+		[SmokeMethod("clear", "()", "")]
 		public void Clear() {
 			ProxyQMenu().Clear();
 		}
-		[SmokeMethod("isTearOffEnabled", "() const")]
+		[SmokeMethod("isTearOffEnabled", "() const", "")]
 		public bool IsTearOffEnabled() {
 			return ProxyQMenu().IsTearOffEnabled();
 		}
-		[SmokeMethod("isTearOffMenuVisible", "() const")]
+		[SmokeMethod("isTearOffMenuVisible", "() const", "")]
 		public bool IsTearOffMenuVisible() {
 			return ProxyQMenu().IsTearOffMenuVisible();
 		}
-		[SmokeMethod("hideTearOffMenu", "()")]
+		[SmokeMethod("hideTearOffMenu", "()", "")]
 		public void HideTearOffMenu() {
 			ProxyQMenu().HideTearOffMenu();
 		}
-		[SmokeMethod("setDefaultAction#", "(QAction*)")]
+		[SmokeMethod("setDefaultAction", "(QAction*)", "#")]
 		public void SetDefaultAction(QAction arg1) {
 			ProxyQMenu().SetDefaultAction(arg1);
 		}
-		[SmokeMethod("defaultAction", "() const")]
+		[SmokeMethod("defaultAction", "() const", "")]
 		public QAction DefaultAction() {
 			return ProxyQMenu().DefaultAction();
 		}
-		[SmokeMethod("setActiveAction#", "(QAction*)")]
+		[SmokeMethod("setActiveAction", "(QAction*)", "#")]
 		public void SetActiveAction(QAction act) {
 			ProxyQMenu().SetActiveAction(act);
 		}
-		[SmokeMethod("activeAction", "() const")]
+		[SmokeMethod("activeAction", "() const", "")]
 		public QAction ActiveAction() {
 			return ProxyQMenu().ActiveAction();
 		}
-		[SmokeMethod("popup##", "(const QPoint&, QAction*)")]
+		[SmokeMethod("popup", "(const QPoint&, QAction*)", "##")]
 		public void Popup(QPoint pos, QAction at) {
 			ProxyQMenu().Popup(pos,at);
 		}
-		[SmokeMethod("popup#", "(const QPoint&)")]
+		[SmokeMethod("popup", "(const QPoint&)", "#")]
 		public void Popup(QPoint pos) {
 			ProxyQMenu().Popup(pos);
 		}
-		[SmokeMethod("exec", "()")]
+		[SmokeMethod("exec", "()", "")]
 		public QAction Exec() {
 			return ProxyQMenu().Exec();
 		}
-		[SmokeMethod("exec##", "(const QPoint&, QAction*)")]
+		[SmokeMethod("exec", "(const QPoint&, QAction*)", "##")]
 		public QAction Exec(QPoint pos, QAction at) {
 			return ProxyQMenu().Exec(pos,at);
 		}
-		[SmokeMethod("exec#", "(const QPoint&)")]
+		[SmokeMethod("exec", "(const QPoint&)", "#")]
 		public QAction Exec(QPoint pos) {
 			return ProxyQMenu().Exec(pos);
 		}
-		[SmokeMethod("sizeHint", "() const")]
+		[SmokeMethod("sizeHint", "() const", "")]
 		public new QSize SizeHint() {
 			return ProxyQMenu().SizeHint();
 		}
-		[SmokeMethod("actionGeometry#", "(QAction*) const")]
+		[SmokeMethod("actionGeometry", "(QAction*) const", "#")]
 		public QRect ActionGeometry(QAction arg1) {
 			return ProxyQMenu().ActionGeometry(arg1);
 		}
-		[SmokeMethod("actionAt#", "(const QPoint&) const")]
+		[SmokeMethod("actionAt", "(const QPoint&) const", "#")]
 		public QAction ActionAt(QPoint arg1) {
 			return ProxyQMenu().ActionAt(arg1);
 		}
-		[SmokeMethod("menuAction", "() const")]
+		[SmokeMethod("menuAction", "() const", "")]
 		public QAction MenuAction() {
 			return ProxyQMenu().MenuAction();
 		}
-		[SmokeMethod("setNoReplayFor#", "(QWidget*)")]
+		[SmokeMethod("setNoReplayFor", "(QWidget*)", "#")]
 		public void SetNoReplayFor(QWidget widget) {
 			ProxyQMenu().SetNoReplayFor(widget);
 		}
@@ -245,63 +245,63 @@ namespace Qyoto {
 		public static QAction Exec(List<QAction> actions, QPoint pos) {
 			return StaticQMenu().Exec(actions,pos);
 		}
-		[SmokeMethod("columnCount", "() const")]
+		[SmokeMethod("columnCount", "() const", "")]
 		protected int ColumnCount() {
 			return ProxyQMenu().ColumnCount();
 		}
-		[SmokeMethod("changeEvent#", "(QEvent*)")]
+		[SmokeMethod("changeEvent", "(QEvent*)", "#")]
 		protected new void ChangeEvent(QEvent arg1) {
 			ProxyQMenu().ChangeEvent(arg1);
 		}
-		[SmokeMethod("keyPressEvent#", "(QKeyEvent*)")]
+		[SmokeMethod("keyPressEvent", "(QKeyEvent*)", "#")]
 		protected new void KeyPressEvent(QKeyEvent arg1) {
 			ProxyQMenu().KeyPressEvent(arg1);
 		}
-		[SmokeMethod("mouseReleaseEvent#", "(QMouseEvent*)")]
+		[SmokeMethod("mouseReleaseEvent", "(QMouseEvent*)", "#")]
 		protected new void MouseReleaseEvent(QMouseEvent arg1) {
 			ProxyQMenu().MouseReleaseEvent(arg1);
 		}
-		[SmokeMethod("mousePressEvent#", "(QMouseEvent*)")]
+		[SmokeMethod("mousePressEvent", "(QMouseEvent*)", "#")]
 		protected new void MousePressEvent(QMouseEvent arg1) {
 			ProxyQMenu().MousePressEvent(arg1);
 		}
-		[SmokeMethod("mouseMoveEvent#", "(QMouseEvent*)")]
+		[SmokeMethod("mouseMoveEvent", "(QMouseEvent*)", "#")]
 		protected new void MouseMoveEvent(QMouseEvent arg1) {
 			ProxyQMenu().MouseMoveEvent(arg1);
 		}
-		[SmokeMethod("wheelEvent#", "(QWheelEvent*)")]
+		[SmokeMethod("wheelEvent", "(QWheelEvent*)", "#")]
 		protected new void WheelEvent(QWheelEvent arg1) {
 			ProxyQMenu().WheelEvent(arg1);
 		}
-		[SmokeMethod("enterEvent#", "(QEvent*)")]
+		[SmokeMethod("enterEvent", "(QEvent*)", "#")]
 		protected new void EnterEvent(QEvent arg1) {
 			ProxyQMenu().EnterEvent(arg1);
 		}
-		[SmokeMethod("leaveEvent#", "(QEvent*)")]
+		[SmokeMethod("leaveEvent", "(QEvent*)", "#")]
 		protected new void LeaveEvent(QEvent arg1) {
 			ProxyQMenu().LeaveEvent(arg1);
 		}
-		[SmokeMethod("hideEvent#", "(QHideEvent*)")]
+		[SmokeMethod("hideEvent", "(QHideEvent*)", "#")]
 		protected new void HideEvent(QHideEvent arg1) {
 			ProxyQMenu().HideEvent(arg1);
 		}
-		[SmokeMethod("paintEvent#", "(QPaintEvent*)")]
+		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
 		protected new void PaintEvent(QPaintEvent arg1) {
 			ProxyQMenu().PaintEvent(arg1);
 		}
-		[SmokeMethod("actionEvent#", "(QActionEvent*)")]
+		[SmokeMethod("actionEvent", "(QActionEvent*)", "#")]
 		protected new void ActionEvent(QActionEvent arg1) {
 			ProxyQMenu().ActionEvent(arg1);
 		}
-		[SmokeMethod("timerEvent#", "(QTimerEvent*)")]
+		[SmokeMethod("timerEvent", "(QTimerEvent*)", "#")]
 		protected new void TimerEvent(QTimerEvent arg1) {
 			ProxyQMenu().TimerEvent(arg1);
 		}
-		[SmokeMethod("event#", "(QEvent*)")]
+		[SmokeMethod("event", "(QEvent*)", "#")]
 		public new bool Event(QEvent arg1) {
 			return ProxyQMenu().Event(arg1);
 		}
-		[SmokeMethod("focusNextPrevChild$", "(bool)")]
+		[SmokeMethod("focusNextPrevChild", "(bool)", "$")]
 		protected new bool FocusNextPrevChild(bool next) {
 			return ProxyQMenu().FocusNextPrevChild(next);
 		}
@@ -311,7 +311,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQMenu();
 		}
-		[SmokeMethod("~QMenu", "()")]
+		[SmokeMethod("~QMenu", "()", "")]
 		private void DisposeQMenu() {
 			ProxyQMenu().DisposeQMenu();
 		}

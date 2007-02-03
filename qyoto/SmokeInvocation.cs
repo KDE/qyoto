@@ -360,18 +360,26 @@ namespace Qyoto {
 				if (methodId == -1) {
 					methodId = FindMethodId(	_className,
 												((SmokeMethod) smokeMethod[0]).MungedName, 
-												((SmokeMethod) smokeMethod[0]).Signature );
+												((SmokeMethod) smokeMethod[0]).ArgsSignature );
 					((SmokeMethod) smokeMethod[0]).methodId = methodId;
 				}
-			} else {
-				methodId = FindMethodId(	_className,
-											((MethodInfo) callMessage.MethodBase).Name, 
-											"()" );
 			}
+
 //			Console.WriteLine("Invoke() methodId: {0}", methodId);
 
 			IMethodReturnMessage returnMessage = (IMethodReturnMessage) message;
 
+			// Ignore destructors for now until a way of coordinating C# GC
+			// with C++ deletions has been implemented
+			if (((SmokeMethod) smokeMethod[0]).MungedName.StartsWith("~")) {
+				return returnMessage;
+			}
+
+			if (methodId == -1) {
+				Console.Error.WriteLine("LEAVE Invoke() ** Missing method ** {0}", ((MethodInfo) callMessage.MethodBase).Name);
+				return returnMessage;
+			}
+			
 			if (callMessage.MethodSignature != null) {
 				Type[] types = (Type[]) callMessage.MethodSignature;
 				for (int i = 0; i < callMessage.ArgCount; i++) {
@@ -409,11 +417,6 @@ namespace Qyoto {
 				}
 			}
 
-			if (methodId == -1) {
-				Console.Error.WriteLine("LEAVE Invoke() ** Missing method ** {0}", ((MethodInfo) callMessage.MethodBase).Name);
-				return returnMessage;
-			}
-			
 			GCHandle instanceHandle = GCHandle.Alloc(_instance);
 			MethodReturnMessageWrapper returnValue = new MethodReturnMessageWrapper((IMethodReturnMessage) returnMessage); 
 			

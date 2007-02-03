@@ -30,7 +30,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDBusInterface(service,path,arg3,connection,parent);
 		}
-		[SmokeMethod("QDBusInterface$$$##", "(const QString&, const QString&, const QString&, const QDBusConnection&, QObject*)")]
+		[SmokeMethod("QDBusInterface", "(const QString&, const QString&, const QString&, const QDBusConnection&, QObject*)", "$$$##")]
 		private void NewQDBusInterface(string service, string path, string arg3, QDBusConnection connection, QObject parent) {
 			ProxyQDBusInterface().NewQDBusInterface(service,path,arg3,connection,parent);
 		}
@@ -38,7 +38,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDBusInterface(service,path,arg3,connection);
 		}
-		[SmokeMethod("QDBusInterface$$$#", "(const QString&, const QString&, const QString&, const QDBusConnection&)")]
+		[SmokeMethod("QDBusInterface", "(const QString&, const QString&, const QString&, const QDBusConnection&)", "$$$#")]
 		private void NewQDBusInterface(string service, string path, string arg3, QDBusConnection connection) {
 			ProxyQDBusInterface().NewQDBusInterface(service,path,arg3,connection);
 		}
@@ -46,7 +46,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDBusInterface(service,path,arg3);
 		}
-		[SmokeMethod("QDBusInterface$$$", "(const QString&, const QString&, const QString&)")]
+		[SmokeMethod("QDBusInterface", "(const QString&, const QString&, const QString&)", "$$$")]
 		private void NewQDBusInterface(string service, string path, string arg3) {
 			ProxyQDBusInterface().NewQDBusInterface(service,path,arg3);
 		}
@@ -54,7 +54,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDBusInterface(service,path);
 		}
-		[SmokeMethod("QDBusInterface$$", "(const QString&, const QString&)")]
+		[SmokeMethod("QDBusInterface", "(const QString&, const QString&)", "$$")]
 		private void NewQDBusInterface(string service, string path) {
 			ProxyQDBusInterface().NewQDBusInterface(service,path);
 		}
@@ -65,7 +65,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQDBusInterface();
 		}
-		[SmokeMethod("~QDBusInterface", "()")]
+		[SmokeMethod("~QDBusInterface", "()", "")]
 		private void DisposeQDBusInterface() {
 			ProxyQDBusInterface().DisposeQDBusInterface();
 		}

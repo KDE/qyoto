@@ -17,31 +17,31 @@ namespace Qyoto {
 			bool op_gt(QByteArray lhs, string s2);
 			bool op_lte(QByteArray lhs, string s2);
 			bool op_gte(QByteArray lhs, string s2);
-			[SmokeMethod("number$$", "(int, int)")]
+			[SmokeMethod("number", "(int, int)", "$$")]
 			QByteArray Number(int arg1, int arg2);
-			[SmokeMethod("number$", "(int)")]
+			[SmokeMethod("number", "(int)", "$")]
 			QByteArray Number(int arg1);
-			[SmokeMethod("number$$", "(uint, int)")]
+			[SmokeMethod("number", "(uint, int)", "$$")]
 			QByteArray Number(uint arg1, int arg2);
-			[SmokeMethod("number$", "(uint)")]
+			[SmokeMethod("number", "(uint)", "$")]
 			QByteArray Number(uint arg1);
-			[SmokeMethod("number?$", "(qlonglong, int)")]
+			[SmokeMethod("number", "(qlonglong, int)", "?$")]
 			QByteArray Number(long arg1, int arg2);
-			[SmokeMethod("number?", "(qlonglong)")]
+			[SmokeMethod("number", "(qlonglong)", "?")]
 			QByteArray Number(long arg1);
-			[SmokeMethod("number$$", "(qulonglong, int)")]
+			[SmokeMethod("number", "(qulonglong, int)", "$$")]
 			QByteArray Number(ulong arg1, int arg2);
-			[SmokeMethod("number$", "(qulonglong)")]
+			[SmokeMethod("number", "(qulonglong)", "$")]
 			QByteArray Number(ulong arg1);
-			[SmokeMethod("number$$$", "(double, char, int)")]
+			[SmokeMethod("number", "(double, char, int)", "$$$")]
 			QByteArray Number(double arg1, char f, int prec);
-			[SmokeMethod("number$$", "(double, char)")]
+			[SmokeMethod("number", "(double, char)", "$$")]
 			QByteArray Number(double arg1, char f);
-			[SmokeMethod("number$", "(double)")]
+			[SmokeMethod("number", "(double)", "$")]
 			QByteArray Number(double arg1);
-			[SmokeMethod("fromRawData$$", "(const char*, int)")]
+			[SmokeMethod("fromRawData", "(const char*, int)", "$$")]
 			QByteArray FromRawData(string arg1, int size);
-			[SmokeMethod("fromBase64#", "(const QByteArray&)")]
+			[SmokeMethod("fromBase64", "(const QByteArray&)", "#")]
 			QByteArray FromBase64(QByteArray base64);
 		}
 
@@ -65,7 +65,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQByteArray();
 		}
-		[SmokeMethod("QByteArray", "()")]
+		[SmokeMethod("QByteArray", "()", "")]
 		private void NewQByteArray() {
 			ProxyQByteArray().NewQByteArray();
 		}
@@ -73,7 +73,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQByteArray(arg1);
 		}
-		[SmokeMethod("QByteArray$", "(const char*)")]
+		[SmokeMethod("QByteArray", "(const char*)", "$")]
 		private void NewQByteArray(string arg1) {
 			ProxyQByteArray().NewQByteArray(arg1);
 		}
@@ -81,7 +81,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQByteArray(arg1,size);
 		}
-		[SmokeMethod("QByteArray$$", "(const char*, int)")]
+		[SmokeMethod("QByteArray", "(const char*, int)", "$$")]
 		private void NewQByteArray(string arg1, int size) {
 			ProxyQByteArray().NewQByteArray(arg1,size);
 		}
@@ -89,7 +89,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQByteArray(size,c);
 		}
-		[SmokeMethod("QByteArray$$", "(int, char)")]
+		[SmokeMethod("QByteArray", "(int, char)", "$$")]
 		private void NewQByteArray(int size, char c) {
 			ProxyQByteArray().NewQByteArray(size,c);
 		}
@@ -97,552 +97,552 @@ namespace Qyoto {
 			CreateProxy();
 			NewQByteArray(arg1);
 		}
-		[SmokeMethod("QByteArray#", "(const QByteArray&)")]
+		[SmokeMethod("QByteArray", "(const QByteArray&)", "#")]
 		private void NewQByteArray(QByteArray arg1) {
 			ProxyQByteArray().NewQByteArray(arg1);
 		}
-		[SmokeMethod("size", "() const")]
+		[SmokeMethod("size", "() const", "")]
 		public int Size() {
 			return ProxyQByteArray().Size();
 		}
-		[SmokeMethod("isEmpty", "() const")]
+		[SmokeMethod("isEmpty", "() const", "")]
 		public bool IsEmpty() {
 			return ProxyQByteArray().IsEmpty();
 		}
-		[SmokeMethod("resize$", "(int)")]
+		[SmokeMethod("resize", "(int)", "$")]
 		public void Resize(int size) {
 			ProxyQByteArray().Resize(size);
 		}
-		[SmokeMethod("fill$$", "(char, int)")]
+		[SmokeMethod("fill", "(char, int)", "$$")]
 		public QByteArray Fill(char c, int size) {
 			return ProxyQByteArray().Fill(c,size);
 		}
-		[SmokeMethod("fill$", "(char)")]
+		[SmokeMethod("fill", "(char)", "$")]
 		public QByteArray Fill(char c) {
 			return ProxyQByteArray().Fill(c);
 		}
-		[SmokeMethod("capacity", "() const")]
+		[SmokeMethod("capacity", "() const", "")]
 		public int Capacity() {
 			return ProxyQByteArray().Capacity();
 		}
-		[SmokeMethod("reserve$", "(int)")]
+		[SmokeMethod("reserve", "(int)", "$")]
 		public void Reserve(int size) {
 			ProxyQByteArray().Reserve(size);
 		}
-		[SmokeMethod("squeeze", "()")]
+		[SmokeMethod("squeeze", "()", "")]
 		public void Squeeze() {
 			ProxyQByteArray().Squeeze();
 		}
 		//  operator const char *(); >>>> NOT CONVERTED
 		//  operator const void *(); >>>> NOT CONVERTED
-		[SmokeMethod("data", "()")]
+		[SmokeMethod("data", "()", "")]
 		public string Data() {
 			return ProxyQByteArray().Data();
 		}
-		[SmokeMethod("constData", "() const")]
+		[SmokeMethod("constData", "() const", "")]
 		public string ConstData() {
 			return ProxyQByteArray().ConstData();
 		}
-		[SmokeMethod("detach", "()")]
+		[SmokeMethod("detach", "()", "")]
 		public void Detach() {
 			ProxyQByteArray().Detach();
 		}
-		[SmokeMethod("isDetached", "() const")]
+		[SmokeMethod("isDetached", "() const", "")]
 		public bool IsDetached() {
 			return ProxyQByteArray().IsDetached();
 		}
-		[SmokeMethod("clear", "()")]
+		[SmokeMethod("clear", "()", "")]
 		public void Clear() {
 			ProxyQByteArray().Clear();
 		}
-		[SmokeMethod("at$", "(int) const")]
+		[SmokeMethod("at", "(int) const", "$")]
 		public char At(int i) {
 			return ProxyQByteArray().At(i);
 		}
-		[SmokeMethod("indexOf$$", "(char, int) const")]
+		[SmokeMethod("indexOf", "(char, int) const", "$$")]
 		public int IndexOf(char c, int from) {
 			return ProxyQByteArray().IndexOf(c,from);
 		}
-		[SmokeMethod("indexOf$", "(char) const")]
+		[SmokeMethod("indexOf", "(char) const", "$")]
 		public int IndexOf(char c) {
 			return ProxyQByteArray().IndexOf(c);
 		}
-		[SmokeMethod("indexOf$$", "(const char*, int) const")]
+		[SmokeMethod("indexOf", "(const char*, int) const", "$$")]
 		public int IndexOf(string c, int from) {
 			return ProxyQByteArray().IndexOf(c,from);
 		}
-		[SmokeMethod("indexOf$", "(const char*) const")]
+		[SmokeMethod("indexOf", "(const char*) const", "$")]
 		public int IndexOf(string c) {
 			return ProxyQByteArray().IndexOf(c);
 		}
-		[SmokeMethod("indexOf#$", "(const QByteArray&, int) const")]
+		[SmokeMethod("indexOf", "(const QByteArray&, int) const", "#$")]
 		public int IndexOf(QByteArray a, int from) {
 			return ProxyQByteArray().IndexOf(a,from);
 		}
-		[SmokeMethod("indexOf#", "(const QByteArray&) const")]
+		[SmokeMethod("indexOf", "(const QByteArray&) const", "#")]
 		public int IndexOf(QByteArray a) {
 			return ProxyQByteArray().IndexOf(a);
 		}
-		[SmokeMethod("lastIndexOf$$", "(char, int) const")]
+		[SmokeMethod("lastIndexOf", "(char, int) const", "$$")]
 		public int LastIndexOf(char c, int from) {
 			return ProxyQByteArray().LastIndexOf(c,from);
 		}
-		[SmokeMethod("lastIndexOf$", "(char) const")]
+		[SmokeMethod("lastIndexOf", "(char) const", "$")]
 		public int LastIndexOf(char c) {
 			return ProxyQByteArray().LastIndexOf(c);
 		}
-		[SmokeMethod("lastIndexOf$$", "(const char*, int) const")]
+		[SmokeMethod("lastIndexOf", "(const char*, int) const", "$$")]
 		public int LastIndexOf(string c, int from) {
 			return ProxyQByteArray().LastIndexOf(c,from);
 		}
-		[SmokeMethod("lastIndexOf$", "(const char*) const")]
+		[SmokeMethod("lastIndexOf", "(const char*) const", "$")]
 		public int LastIndexOf(string c) {
 			return ProxyQByteArray().LastIndexOf(c);
 		}
-		[SmokeMethod("lastIndexOf#$", "(const QByteArray&, int) const")]
+		[SmokeMethod("lastIndexOf", "(const QByteArray&, int) const", "#$")]
 		public int LastIndexOf(QByteArray a, int from) {
 			return ProxyQByteArray().LastIndexOf(a,from);
 		}
-		[SmokeMethod("lastIndexOf#", "(const QByteArray&) const")]
+		[SmokeMethod("lastIndexOf", "(const QByteArray&) const", "#")]
 		public int LastIndexOf(QByteArray a) {
 			return ProxyQByteArray().LastIndexOf(a);
 		}
-		[SmokeMethod("contains$", "(char) const")]
+		[SmokeMethod("contains", "(char) const", "$")]
 		public QBool Contains(char c) {
 			return ProxyQByteArray().Contains(c);
 		}
-		[SmokeMethod("contains$", "(const char*) const")]
+		[SmokeMethod("contains", "(const char*) const", "$")]
 		public QBool Contains(string a) {
 			return ProxyQByteArray().Contains(a);
 		}
-		[SmokeMethod("contains#", "(const QByteArray&) const")]
+		[SmokeMethod("contains", "(const QByteArray&) const", "#")]
 		public QBool Contains(QByteArray a) {
 			return ProxyQByteArray().Contains(a);
 		}
-		[SmokeMethod("count$", "(char) const")]
+		[SmokeMethod("count", "(char) const", "$")]
 		public int Count(char c) {
 			return ProxyQByteArray().Count(c);
 		}
-		[SmokeMethod("count$", "(const char*) const")]
+		[SmokeMethod("count", "(const char*) const", "$")]
 		public int Count(string a) {
 			return ProxyQByteArray().Count(a);
 		}
-		[SmokeMethod("count#", "(const QByteArray&) const")]
+		[SmokeMethod("count", "(const QByteArray&) const", "#")]
 		public int Count(QByteArray a) {
 			return ProxyQByteArray().Count(a);
 		}
-		[SmokeMethod("left$", "(int) const")]
+		[SmokeMethod("left", "(int) const", "$")]
 		public QByteArray Left(int len) {
 			return ProxyQByteArray().Left(len);
 		}
-		[SmokeMethod("right$", "(int) const")]
+		[SmokeMethod("right", "(int) const", "$")]
 		public QByteArray Right(int len) {
 			return ProxyQByteArray().Right(len);
 		}
-		[SmokeMethod("mid$$", "(int, int) const")]
+		[SmokeMethod("mid", "(int, int) const", "$$")]
 		public QByteArray Mid(int index, int len) {
 			return ProxyQByteArray().Mid(index,len);
 		}
-		[SmokeMethod("mid$", "(int) const")]
+		[SmokeMethod("mid", "(int) const", "$")]
 		public QByteArray Mid(int index) {
 			return ProxyQByteArray().Mid(index);
 		}
-		[SmokeMethod("startsWith#", "(const QByteArray&) const")]
+		[SmokeMethod("startsWith", "(const QByteArray&) const", "#")]
 		public bool StartsWith(QByteArray a) {
 			return ProxyQByteArray().StartsWith(a);
 		}
-		[SmokeMethod("startsWith$", "(char) const")]
+		[SmokeMethod("startsWith", "(char) const", "$")]
 		public bool StartsWith(char c) {
 			return ProxyQByteArray().StartsWith(c);
 		}
-		[SmokeMethod("startsWith$", "(const char*) const")]
+		[SmokeMethod("startsWith", "(const char*) const", "$")]
 		public bool StartsWith(string c) {
 			return ProxyQByteArray().StartsWith(c);
 		}
-		[SmokeMethod("endsWith#", "(const QByteArray&) const")]
+		[SmokeMethod("endsWith", "(const QByteArray&) const", "#")]
 		public bool EndsWith(QByteArray a) {
 			return ProxyQByteArray().EndsWith(a);
 		}
-		[SmokeMethod("endsWith$", "(char) const")]
+		[SmokeMethod("endsWith", "(char) const", "$")]
 		public bool EndsWith(char c) {
 			return ProxyQByteArray().EndsWith(c);
 		}
-		[SmokeMethod("endsWith$", "(const char*) const")]
+		[SmokeMethod("endsWith", "(const char*) const", "$")]
 		public bool EndsWith(string c) {
 			return ProxyQByteArray().EndsWith(c);
 		}
-		[SmokeMethod("truncate$", "(int)")]
+		[SmokeMethod("truncate", "(int)", "$")]
 		public void Truncate(int pos) {
 			ProxyQByteArray().Truncate(pos);
 		}
-		[SmokeMethod("chop$", "(int)")]
+		[SmokeMethod("chop", "(int)", "$")]
 		public void Chop(int n) {
 			ProxyQByteArray().Chop(n);
 		}
-		[SmokeMethod("toLower", "() const")]
+		[SmokeMethod("toLower", "() const", "")]
 		public QByteArray ToLower() {
 			return ProxyQByteArray().ToLower();
 		}
-		[SmokeMethod("toUpper", "() const")]
+		[SmokeMethod("toUpper", "() const", "")]
 		public QByteArray ToUpper() {
 			return ProxyQByteArray().ToUpper();
 		}
-		[SmokeMethod("trimmed", "() const")]
+		[SmokeMethod("trimmed", "() const", "")]
 		public QByteArray Trimmed() {
 			return ProxyQByteArray().Trimmed();
 		}
-		[SmokeMethod("simplified", "() const")]
+		[SmokeMethod("simplified", "() const", "")]
 		public QByteArray Simplified() {
 			return ProxyQByteArray().Simplified();
 		}
-		[SmokeMethod("leftJustified$$$", "(int, char, bool) const")]
+		[SmokeMethod("leftJustified", "(int, char, bool) const", "$$$")]
 		public QByteArray LeftJustified(int width, char fill, bool truncate) {
 			return ProxyQByteArray().LeftJustified(width,fill,truncate);
 		}
-		[SmokeMethod("leftJustified$$", "(int, char) const")]
+		[SmokeMethod("leftJustified", "(int, char) const", "$$")]
 		public QByteArray LeftJustified(int width, char fill) {
 			return ProxyQByteArray().LeftJustified(width,fill);
 		}
-		[SmokeMethod("leftJustified$", "(int) const")]
+		[SmokeMethod("leftJustified", "(int) const", "$")]
 		public QByteArray LeftJustified(int width) {
 			return ProxyQByteArray().LeftJustified(width);
 		}
-		[SmokeMethod("rightJustified$$$", "(int, char, bool) const")]
+		[SmokeMethod("rightJustified", "(int, char, bool) const", "$$$")]
 		public QByteArray RightJustified(int width, char fill, bool truncate) {
 			return ProxyQByteArray().RightJustified(width,fill,truncate);
 		}
-		[SmokeMethod("rightJustified$$", "(int, char) const")]
+		[SmokeMethod("rightJustified", "(int, char) const", "$$")]
 		public QByteArray RightJustified(int width, char fill) {
 			return ProxyQByteArray().RightJustified(width,fill);
 		}
-		[SmokeMethod("rightJustified$", "(int) const")]
+		[SmokeMethod("rightJustified", "(int) const", "$")]
 		public QByteArray RightJustified(int width) {
 			return ProxyQByteArray().RightJustified(width);
 		}
-		[SmokeMethod("prepend$", "(char)")]
+		[SmokeMethod("prepend", "(char)", "$")]
 		public QByteArray Prepend(char c) {
 			return ProxyQByteArray().Prepend(c);
 		}
-		[SmokeMethod("prepend$", "(const char*)")]
+		[SmokeMethod("prepend", "(const char*)", "$")]
 		public QByteArray Prepend(string s) {
 			return ProxyQByteArray().Prepend(s);
 		}
-		[SmokeMethod("prepend#", "(const QByteArray&)")]
+		[SmokeMethod("prepend", "(const QByteArray&)", "#")]
 		public QByteArray Prepend(QByteArray a) {
 			return ProxyQByteArray().Prepend(a);
 		}
-		[SmokeMethod("append$", "(char)")]
+		[SmokeMethod("append", "(char)", "$")]
 		public QByteArray Append(char c) {
 			return ProxyQByteArray().Append(c);
 		}
-		[SmokeMethod("append$", "(const char*)")]
+		[SmokeMethod("append", "(const char*)", "$")]
 		public QByteArray Append(string s) {
 			return ProxyQByteArray().Append(s);
 		}
-		[SmokeMethod("append#", "(const QByteArray&)")]
+		[SmokeMethod("append", "(const QByteArray&)", "#")]
 		public QByteArray Append(QByteArray a) {
 			return ProxyQByteArray().Append(a);
 		}
-		[SmokeMethod("insert$$", "(int, char)")]
+		[SmokeMethod("insert", "(int, char)", "$$")]
 		public QByteArray Insert(int i, char c) {
 			return ProxyQByteArray().Insert(i,c);
 		}
-		[SmokeMethod("insert$$", "(int, const char*)")]
+		[SmokeMethod("insert", "(int, const char*)", "$$")]
 		public QByteArray Insert(int i, string s) {
 			return ProxyQByteArray().Insert(i,s);
 		}
-		[SmokeMethod("insert$#", "(int, const QByteArray&)")]
+		[SmokeMethod("insert", "(int, const QByteArray&)", "$#")]
 		public QByteArray Insert(int i, QByteArray a) {
 			return ProxyQByteArray().Insert(i,a);
 		}
-		[SmokeMethod("remove$$", "(int, int)")]
+		[SmokeMethod("remove", "(int, int)", "$$")]
 		public QByteArray Remove(int index, int len) {
 			return ProxyQByteArray().Remove(index,len);
 		}
-		[SmokeMethod("replace$$$", "(int, int, const char*)")]
+		[SmokeMethod("replace", "(int, int, const char*)", "$$$")]
 		public QByteArray Replace(int index, int len, string s) {
 			return ProxyQByteArray().Replace(index,len,s);
 		}
-		[SmokeMethod("replace$$#", "(int, int, const QByteArray&)")]
+		[SmokeMethod("replace", "(int, int, const QByteArray&)", "$$#")]
 		public QByteArray Replace(int index, int len, QByteArray s) {
 			return ProxyQByteArray().Replace(index,len,s);
 		}
-		[SmokeMethod("replace$$", "(char, const char*)")]
+		[SmokeMethod("replace", "(char, const char*)", "$$")]
 		public QByteArray Replace(char before, string after) {
 			return ProxyQByteArray().Replace(before,after);
 		}
-		[SmokeMethod("replace$#", "(char, const QByteArray&)")]
+		[SmokeMethod("replace", "(char, const QByteArray&)", "$#")]
 		public QByteArray Replace(char before, QByteArray after) {
 			return ProxyQByteArray().Replace(before,after);
 		}
-		[SmokeMethod("replace$$", "(const char*, const char*)")]
+		[SmokeMethod("replace", "(const char*, const char*)", "$$")]
 		public QByteArray Replace(string before, string after) {
 			return ProxyQByteArray().Replace(before,after);
 		}
-		[SmokeMethod("replace##", "(const QByteArray&, const QByteArray&)")]
+		[SmokeMethod("replace", "(const QByteArray&, const QByteArray&)", "##")]
 		public QByteArray Replace(QByteArray before, QByteArray after) {
 			return ProxyQByteArray().Replace(before,after);
 		}
-		[SmokeMethod("replace#$", "(const QByteArray&, const char*)")]
+		[SmokeMethod("replace", "(const QByteArray&, const char*)", "#$")]
 		public QByteArray Replace(QByteArray before, string after) {
 			return ProxyQByteArray().Replace(before,after);
 		}
-		[SmokeMethod("replace$#", "(const char*, const QByteArray&)")]
+		[SmokeMethod("replace", "(const char*, const QByteArray&)", "$#")]
 		public QByteArray Replace(string before, QByteArray after) {
 			return ProxyQByteArray().Replace(before,after);
 		}
-		[SmokeMethod("replace$$", "(char, char)")]
+		[SmokeMethod("replace", "(char, char)", "$$")]
 		public QByteArray Replace(char before, char after) {
 			return ProxyQByteArray().Replace(before,after);
 		}
-		[SmokeMethod("split$", "(char) const")]
+		[SmokeMethod("split", "(char) const", "$")]
 		public List<QByteArray> Split(char sep) {
 			return ProxyQByteArray().Split(sep);
 		}
-		[SmokeMethod("operator==$", "(const QString&) const")]
+		[SmokeMethod("operator==", "(const QString&) const", "$")]
 		public static bool operator==(QByteArray lhs, string s2) {
 			return StaticQByteArray().op_equals(lhs,s2);
 		}
 		public static bool operator!=(QByteArray lhs, string s2) {
 			return !StaticQByteArray().op_equals(lhs,s2);
 		}
-		[SmokeMethod("operator<$", "(const QString&) const")]
+		[SmokeMethod("operator<", "(const QString&) const", "$")]
 		public static bool operator<(QByteArray lhs, string s2) {
 			return StaticQByteArray().op_lt(lhs,s2);
 		}
-		[SmokeMethod("operator>$", "(const QString&) const")]
+		[SmokeMethod("operator>", "(const QString&) const", "$")]
 		public static bool operator>(QByteArray lhs, string s2) {
 			return StaticQByteArray().op_gt(lhs,s2);
 		}
-		[SmokeMethod("operator<=$", "(const QString&) const")]
+		[SmokeMethod("operator<=", "(const QString&) const", "$")]
 		public static bool operator<=(QByteArray lhs, string s2) {
 			return StaticQByteArray().op_lte(lhs,s2);
 		}
-		[SmokeMethod("operator>=$", "(const QString&) const")]
+		[SmokeMethod("operator>=", "(const QString&) const", "$")]
 		public static bool operator>=(QByteArray lhs, string s2) {
 			return StaticQByteArray().op_gte(lhs,s2);
 		}
-		[SmokeMethod("toShort$$", "(bool*, int) const")]
+		[SmokeMethod("toShort", "(bool*, int) const", "$$")]
 		public short ToShort(out bool ok, int arg2) {
 			return ProxyQByteArray().ToShort(out ok,arg2);
 		}
-		[SmokeMethod("toShort$", "(bool*) const")]
+		[SmokeMethod("toShort", "(bool*) const", "$")]
 		public short ToShort(out bool ok) {
 			return ProxyQByteArray().ToShort(out ok);
 		}
-		[SmokeMethod("toShort", "() const")]
+		[SmokeMethod("toShort", "() const", "")]
 		public short ToShort() {
 			return ProxyQByteArray().ToShort();
 		}
-		[SmokeMethod("toUShort$$", "(bool*, int) const")]
+		[SmokeMethod("toUShort", "(bool*, int) const", "$$")]
 		public ushort ToUShort(out bool ok, int arg2) {
 			return ProxyQByteArray().ToUShort(out ok,arg2);
 		}
-		[SmokeMethod("toUShort$", "(bool*) const")]
+		[SmokeMethod("toUShort", "(bool*) const", "$")]
 		public ushort ToUShort(out bool ok) {
 			return ProxyQByteArray().ToUShort(out ok);
 		}
-		[SmokeMethod("toUShort", "() const")]
+		[SmokeMethod("toUShort", "() const", "")]
 		public ushort ToUShort() {
 			return ProxyQByteArray().ToUShort();
 		}
-		[SmokeMethod("toInt$$", "(bool*, int) const")]
+		[SmokeMethod("toInt", "(bool*, int) const", "$$")]
 		public int ToInt(out bool ok, int arg2) {
 			return ProxyQByteArray().ToInt(out ok,arg2);
 		}
-		[SmokeMethod("toInt$", "(bool*) const")]
+		[SmokeMethod("toInt", "(bool*) const", "$")]
 		public int ToInt(out bool ok) {
 			return ProxyQByteArray().ToInt(out ok);
 		}
-		[SmokeMethod("toInt", "() const")]
+		[SmokeMethod("toInt", "() const", "")]
 		public int ToInt() {
 			return ProxyQByteArray().ToInt();
 		}
-		[SmokeMethod("toUInt$$", "(bool*, int) const")]
+		[SmokeMethod("toUInt", "(bool*, int) const", "$$")]
 		public uint ToUInt(out bool ok, int arg2) {
 			return ProxyQByteArray().ToUInt(out ok,arg2);
 		}
-		[SmokeMethod("toUInt$", "(bool*) const")]
+		[SmokeMethod("toUInt", "(bool*) const", "$")]
 		public uint ToUInt(out bool ok) {
 			return ProxyQByteArray().ToUInt(out ok);
 		}
-		[SmokeMethod("toUInt", "() const")]
+		[SmokeMethod("toUInt", "() const", "")]
 		public uint ToUInt() {
 			return ProxyQByteArray().ToUInt();
 		}
-		[SmokeMethod("toLong$$", "(bool*, int) const")]
+		[SmokeMethod("toLong", "(bool*, int) const", "$$")]
 		public long ToLong(out bool ok, int arg2) {
 			return ProxyQByteArray().ToLong(out ok,arg2);
 		}
-		[SmokeMethod("toLong$", "(bool*) const")]
+		[SmokeMethod("toLong", "(bool*) const", "$")]
 		public long ToLong(out bool ok) {
 			return ProxyQByteArray().ToLong(out ok);
 		}
-		[SmokeMethod("toLong", "() const")]
+		[SmokeMethod("toLong", "() const", "")]
 		public long ToLong() {
 			return ProxyQByteArray().ToLong();
 		}
-		[SmokeMethod("toULong$$", "(bool*, int) const")]
+		[SmokeMethod("toULong", "(bool*, int) const", "$$")]
 		public ulong ToULong(out bool ok, int arg2) {
 			return ProxyQByteArray().ToULong(out ok,arg2);
 		}
-		[SmokeMethod("toULong$", "(bool*) const")]
+		[SmokeMethod("toULong", "(bool*) const", "$")]
 		public ulong ToULong(out bool ok) {
 			return ProxyQByteArray().ToULong(out ok);
 		}
-		[SmokeMethod("toULong", "() const")]
+		[SmokeMethod("toULong", "() const", "")]
 		public ulong ToULong() {
 			return ProxyQByteArray().ToULong();
 		}
-		[SmokeMethod("toLongLong$$", "(bool*, int) const")]
+		[SmokeMethod("toLongLong", "(bool*, int) const", "$$")]
 		public long ToLongLong(out bool ok, int arg2) {
 			return ProxyQByteArray().ToLongLong(out ok,arg2);
 		}
-		[SmokeMethod("toLongLong$", "(bool*) const")]
+		[SmokeMethod("toLongLong", "(bool*) const", "$")]
 		public long ToLongLong(out bool ok) {
 			return ProxyQByteArray().ToLongLong(out ok);
 		}
-		[SmokeMethod("toLongLong", "() const")]
+		[SmokeMethod("toLongLong", "() const", "")]
 		public long ToLongLong() {
 			return ProxyQByteArray().ToLongLong();
 		}
-		[SmokeMethod("toULongLong$$", "(bool*, int) const")]
+		[SmokeMethod("toULongLong", "(bool*, int) const", "$$")]
 		public ulong ToULongLong(out bool ok, int arg2) {
 			return ProxyQByteArray().ToULongLong(out ok,arg2);
 		}
-		[SmokeMethod("toULongLong$", "(bool*) const")]
+		[SmokeMethod("toULongLong", "(bool*) const", "$")]
 		public ulong ToULongLong(out bool ok) {
 			return ProxyQByteArray().ToULongLong(out ok);
 		}
-		[SmokeMethod("toULongLong", "() const")]
+		[SmokeMethod("toULongLong", "() const", "")]
 		public ulong ToULongLong() {
 			return ProxyQByteArray().ToULongLong();
 		}
-		[SmokeMethod("toFloat$", "(bool*) const")]
+		[SmokeMethod("toFloat", "(bool*) const", "$")]
 		public float ToFloat(out bool ok) {
 			return ProxyQByteArray().ToFloat(out ok);
 		}
-		[SmokeMethod("toFloat", "() const")]
+		[SmokeMethod("toFloat", "() const", "")]
 		public float ToFloat() {
 			return ProxyQByteArray().ToFloat();
 		}
-		[SmokeMethod("toDouble$", "(bool*) const")]
+		[SmokeMethod("toDouble", "(bool*) const", "$")]
 		public double ToDouble(out bool ok) {
 			return ProxyQByteArray().ToDouble(out ok);
 		}
-		[SmokeMethod("toDouble", "() const")]
+		[SmokeMethod("toDouble", "() const", "")]
 		public double ToDouble() {
 			return ProxyQByteArray().ToDouble();
 		}
-		[SmokeMethod("toBase64", "() const")]
+		[SmokeMethod("toBase64", "() const", "")]
 		public QByteArray ToBase64() {
 			return ProxyQByteArray().ToBase64();
 		}
-		[SmokeMethod("setNum$$", "(short, int)")]
+		[SmokeMethod("setNum", "(short, int)", "$$")]
 		public QByteArray SetNum(short arg1, int arg2) {
 			return ProxyQByteArray().SetNum(arg1,arg2);
 		}
-		[SmokeMethod("setNum$", "(short)")]
+		[SmokeMethod("setNum", "(short)", "$")]
 		public QByteArray SetNum(short arg1) {
 			return ProxyQByteArray().SetNum(arg1);
 		}
-		[SmokeMethod("setNum$$", "(ushort, int)")]
+		[SmokeMethod("setNum", "(ushort, int)", "$$")]
 		public QByteArray SetNum(ushort arg1, int arg2) {
 			return ProxyQByteArray().SetNum(arg1,arg2);
 		}
-		[SmokeMethod("setNum$", "(ushort)")]
+		[SmokeMethod("setNum", "(ushort)", "$")]
 		public QByteArray SetNum(ushort arg1) {
 			return ProxyQByteArray().SetNum(arg1);
 		}
-		[SmokeMethod("setNum$$", "(int, int)")]
+		[SmokeMethod("setNum", "(int, int)", "$$")]
 		public QByteArray SetNum(int arg1, int arg2) {
 			return ProxyQByteArray().SetNum(arg1,arg2);
 		}
-		[SmokeMethod("setNum$", "(int)")]
+		[SmokeMethod("setNum", "(int)", "$")]
 		public QByteArray SetNum(int arg1) {
 			return ProxyQByteArray().SetNum(arg1);
 		}
-		[SmokeMethod("setNum$$", "(uint, int)")]
+		[SmokeMethod("setNum", "(uint, int)", "$$")]
 		public QByteArray SetNum(uint arg1, int arg2) {
 			return ProxyQByteArray().SetNum(arg1,arg2);
 		}
-		[SmokeMethod("setNum$", "(uint)")]
+		[SmokeMethod("setNum", "(uint)", "$")]
 		public QByteArray SetNum(uint arg1) {
 			return ProxyQByteArray().SetNum(arg1);
 		}
-		[SmokeMethod("setNum?$", "(qlonglong, int)")]
+		[SmokeMethod("setNum", "(qlonglong, int)", "?$")]
 		public QByteArray SetNum(long arg1, int arg2) {
 			return ProxyQByteArray().SetNum(arg1,arg2);
 		}
-		[SmokeMethod("setNum?", "(qlonglong)")]
+		[SmokeMethod("setNum", "(qlonglong)", "?")]
 		public QByteArray SetNum(long arg1) {
 			return ProxyQByteArray().SetNum(arg1);
 		}
-		[SmokeMethod("setNum$$", "(qulonglong, int)")]
+		[SmokeMethod("setNum", "(qulonglong, int)", "$$")]
 		public QByteArray SetNum(ulong arg1, int arg2) {
 			return ProxyQByteArray().SetNum(arg1,arg2);
 		}
-		[SmokeMethod("setNum$", "(qulonglong)")]
+		[SmokeMethod("setNum", "(qulonglong)", "$")]
 		public QByteArray SetNum(ulong arg1) {
 			return ProxyQByteArray().SetNum(arg1);
 		}
-		[SmokeMethod("setNum$$$", "(float, char, int)")]
+		[SmokeMethod("setNum", "(float, char, int)", "$$$")]
 		public QByteArray SetNum(float arg1, char f, int prec) {
 			return ProxyQByteArray().SetNum(arg1,f,prec);
 		}
-		[SmokeMethod("setNum$$", "(float, char)")]
+		[SmokeMethod("setNum", "(float, char)", "$$")]
 		public QByteArray SetNum(float arg1, char f) {
 			return ProxyQByteArray().SetNum(arg1,f);
 		}
-		[SmokeMethod("setNum$", "(float)")]
+		[SmokeMethod("setNum", "(float)", "$")]
 		public QByteArray SetNum(float arg1) {
 			return ProxyQByteArray().SetNum(arg1);
 		}
-		[SmokeMethod("setNum$$$", "(double, char, int)")]
+		[SmokeMethod("setNum", "(double, char, int)", "$$$")]
 		public QByteArray SetNum(double arg1, char f, int prec) {
 			return ProxyQByteArray().SetNum(arg1,f,prec);
 		}
-		[SmokeMethod("setNum$$", "(double, char)")]
+		[SmokeMethod("setNum", "(double, char)", "$$")]
 		public QByteArray SetNum(double arg1, char f) {
 			return ProxyQByteArray().SetNum(arg1,f);
 		}
-		[SmokeMethod("setNum$", "(double)")]
+		[SmokeMethod("setNum", "(double)", "$")]
 		public QByteArray SetNum(double arg1) {
 			return ProxyQByteArray().SetNum(arg1);
 		}
-		[SmokeMethod("push_back$", "(char)")]
+		[SmokeMethod("push_back", "(char)", "$")]
 		public void Push_back(char c) {
 			ProxyQByteArray().Push_back(c);
 		}
-		[SmokeMethod("push_back$", "(const char*)")]
+		[SmokeMethod("push_back", "(const char*)", "$")]
 		public void Push_back(string c) {
 			ProxyQByteArray().Push_back(c);
 		}
-		[SmokeMethod("push_back#", "(const QByteArray&)")]
+		[SmokeMethod("push_back", "(const QByteArray&)", "#")]
 		public void Push_back(QByteArray a) {
 			ProxyQByteArray().Push_back(a);
 		}
-		[SmokeMethod("push_front$", "(char)")]
+		[SmokeMethod("push_front", "(char)", "$")]
 		public void Push_front(char c) {
 			ProxyQByteArray().Push_front(c);
 		}
-		[SmokeMethod("push_front$", "(const char*)")]
+		[SmokeMethod("push_front", "(const char*)", "$")]
 		public void Push_front(string c) {
 			ProxyQByteArray().Push_front(c);
 		}
-		[SmokeMethod("push_front#", "(const QByteArray&)")]
+		[SmokeMethod("push_front", "(const QByteArray&)", "#")]
 		public void Push_front(QByteArray a) {
 			ProxyQByteArray().Push_front(a);
 		}
-		[SmokeMethod("count", "() const")]
+		[SmokeMethod("count", "() const", "")]
 		public int Count() {
 			return ProxyQByteArray().Count();
 		}
-		[SmokeMethod("length", "() const")]
+		[SmokeMethod("length", "() const", "")]
 		public int Length() {
 			return ProxyQByteArray().Length();
 		}
-		[SmokeMethod("isNull", "() const")]
+		[SmokeMethod("isNull", "() const", "")]
 		public bool IsNull() {
 			return ProxyQByteArray().IsNull();
 		}
@@ -691,7 +691,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQByteArray();
 		}
-		[SmokeMethod("~QByteArray", "()")]
+		[SmokeMethod("~QByteArray", "()", "")]
 		private void DisposeQByteArray() {
 			ProxyQByteArray().DisposeQByteArray();
 		}

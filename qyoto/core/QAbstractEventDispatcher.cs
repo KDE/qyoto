@@ -9,11 +9,11 @@ namespace Qyoto {
 	public class QAbstractEventDispatcher : QObject {
  		protected QAbstractEventDispatcher(Type dummy) : base((Type) null) {}
 		interface IQAbstractEventDispatcherProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
-			[SmokeMethod("instance", "()")]
+			[SmokeMethod("instance", "()", "")]
 			QAbstractEventDispatcher Instance();
 		}
 
@@ -38,7 +38,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQAbstractEventDispatcher(parent);
 		}
-		[SmokeMethod("QAbstractEventDispatcher#", "(QObject*)")]
+		[SmokeMethod("QAbstractEventDispatcher", "(QObject*)", "#")]
 		private void NewQAbstractEventDispatcher(QObject parent) {
 			ProxyQAbstractEventDispatcher().NewQAbstractEventDispatcher(parent);
 		}
@@ -46,60 +46,60 @@ namespace Qyoto {
 			CreateProxy();
 			NewQAbstractEventDispatcher();
 		}
-		[SmokeMethod("QAbstractEventDispatcher", "()")]
+		[SmokeMethod("QAbstractEventDispatcher", "()", "")]
 		private void NewQAbstractEventDispatcher() {
 			ProxyQAbstractEventDispatcher().NewQAbstractEventDispatcher();
 		}
-		[SmokeMethod("processEvents$", "(QEventLoop::ProcessEventsFlags)")]
+		[SmokeMethod("processEvents", "(QEventLoop::ProcessEventsFlags)", "$")]
 		public virtual bool ProcessEvents(uint flags) {
 			return ProxyQAbstractEventDispatcher().ProcessEvents(flags);
 		}
-		[SmokeMethod("hasPendingEvents", "()")]
+		[SmokeMethod("hasPendingEvents", "()", "")]
 		public virtual bool HasPendingEvents() {
 			return ProxyQAbstractEventDispatcher().HasPendingEvents();
 		}
-		[SmokeMethod("registerSocketNotifier#", "(QSocketNotifier*)")]
+		[SmokeMethod("registerSocketNotifier", "(QSocketNotifier*)", "#")]
 		public virtual void RegisterSocketNotifier(QSocketNotifier notifier) {
 			ProxyQAbstractEventDispatcher().RegisterSocketNotifier(notifier);
 		}
-		[SmokeMethod("unregisterSocketNotifier#", "(QSocketNotifier*)")]
+		[SmokeMethod("unregisterSocketNotifier", "(QSocketNotifier*)", "#")]
 		public virtual void UnregisterSocketNotifier(QSocketNotifier notifier) {
 			ProxyQAbstractEventDispatcher().UnregisterSocketNotifier(notifier);
 		}
-		[SmokeMethod("registerTimer$#", "(int, QObject*)")]
+		[SmokeMethod("registerTimer", "(int, QObject*)", "$#")]
 		public int RegisterTimer(int interval, QObject arg2) {
 			return ProxyQAbstractEventDispatcher().RegisterTimer(interval,arg2);
 		}
-		[SmokeMethod("registerTimer$$#", "(int, int, QObject*)")]
+		[SmokeMethod("registerTimer", "(int, int, QObject*)", "$$#")]
 		public virtual void RegisterTimer(int timerId, int interval, QObject arg3) {
 			ProxyQAbstractEventDispatcher().RegisterTimer(timerId,interval,arg3);
 		}
-		[SmokeMethod("unregisterTimer$", "(int)")]
+		[SmokeMethod("unregisterTimer", "(int)", "$")]
 		public virtual bool UnregisterTimer(int timerId) {
 			return ProxyQAbstractEventDispatcher().UnregisterTimer(timerId);
 		}
-		[SmokeMethod("unregisterTimers#", "(QObject*)")]
+		[SmokeMethod("unregisterTimers", "(QObject*)", "#")]
 		public virtual bool UnregisterTimers(QObject arg1) {
 			return ProxyQAbstractEventDispatcher().UnregisterTimers(arg1);
 		}
 		// QList<QAbstractEventDispatcher::TimerInfo> registeredTimers(QObject* arg1); >>>> NOT CONVERTED
-		[SmokeMethod("wakeUp", "()")]
+		[SmokeMethod("wakeUp", "()", "")]
 		public virtual void WakeUp() {
 			ProxyQAbstractEventDispatcher().WakeUp();
 		}
-		[SmokeMethod("interrupt", "()")]
+		[SmokeMethod("interrupt", "()", "")]
 		public virtual void Interrupt() {
 			ProxyQAbstractEventDispatcher().Interrupt();
 		}
-		[SmokeMethod("flush", "()")]
+		[SmokeMethod("flush", "()", "")]
 		public virtual void Flush() {
 			ProxyQAbstractEventDispatcher().Flush();
 		}
-		[SmokeMethod("startingUp", "()")]
+		[SmokeMethod("startingUp", "()", "")]
 		public virtual void StartingUp() {
 			ProxyQAbstractEventDispatcher().StartingUp();
 		}
-		[SmokeMethod("closingDown", "()")]
+		[SmokeMethod("closingDown", "()", "")]
 		public virtual void ClosingDown() {
 			ProxyQAbstractEventDispatcher().ClosingDown();
 		}
@@ -121,7 +121,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQAbstractEventDispatcher();
 		}
-		[SmokeMethod("~QAbstractEventDispatcher", "()")]
+		[SmokeMethod("~QAbstractEventDispatcher", "()", "")]
 		private void DisposeQAbstractEventDispatcher() {
 			ProxyQAbstractEventDispatcher().DisposeQAbstractEventDispatcher();
 		}

@@ -12,33 +12,33 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QSqlDatabase(Type dummy) {}
 		interface IQSqlDatabaseProxy {
-			[SmokeMethod("addDatabase$$", "(const QString&, const QString&)")]
+			[SmokeMethod("addDatabase", "(const QString&, const QString&)", "$$")]
 			QSqlDatabase AddDatabase(string type, string connectionName);
-			[SmokeMethod("addDatabase$", "(const QString&)")]
+			[SmokeMethod("addDatabase", "(const QString&)", "$")]
 			QSqlDatabase AddDatabase(string type);
-			[SmokeMethod("addDatabase#$", "(QSqlDriver*, const QString&)")]
+			[SmokeMethod("addDatabase", "(QSqlDriver*, const QString&)", "#$")]
 			QSqlDatabase AddDatabase(QSqlDriver driver, string connectionName);
-			[SmokeMethod("addDatabase#", "(QSqlDriver*)")]
+			[SmokeMethod("addDatabase", "(QSqlDriver*)", "#")]
 			QSqlDatabase AddDatabase(QSqlDriver driver);
-			[SmokeMethod("cloneDatabase#$", "(const QSqlDatabase&, const QString&)")]
+			[SmokeMethod("cloneDatabase", "(const QSqlDatabase&, const QString&)", "#$")]
 			QSqlDatabase CloneDatabase(QSqlDatabase other, string connectionName);
-			[SmokeMethod("database$$", "(const QString&, bool)")]
+			[SmokeMethod("database", "(const QString&, bool)", "$$")]
 			QSqlDatabase Database(string connectionName, bool open);
-			[SmokeMethod("database$", "(const QString&)")]
+			[SmokeMethod("database", "(const QString&)", "$")]
 			QSqlDatabase Database(string connectionName);
-			[SmokeMethod("database", "()")]
+			[SmokeMethod("database", "()", "")]
 			QSqlDatabase Database();
-			[SmokeMethod("removeDatabase$", "(const QString&)")]
+			[SmokeMethod("removeDatabase", "(const QString&)", "$")]
 			void RemoveDatabase(string connectionName);
-			[SmokeMethod("contains$", "(const QString&)")]
+			[SmokeMethod("contains", "(const QString&)", "$")]
 			bool Contains(string connectionName);
-			[SmokeMethod("contains", "()")]
+			[SmokeMethod("contains", "()", "")]
 			bool Contains();
-			[SmokeMethod("drivers", "()")]
+			[SmokeMethod("drivers", "()", "")]
 			List<string> Drivers();
-			[SmokeMethod("connectionNames", "()")]
+			[SmokeMethod("connectionNames", "()", "")]
 			List<string> ConnectionNames();
-			[SmokeMethod("isDriverAvailable$", "(const QString&)")]
+			[SmokeMethod("isDriverAvailable", "(const QString&)", "$")]
 			bool IsDriverAvailable(string name);
 		}
 
@@ -62,7 +62,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSqlDatabase();
 		}
-		[SmokeMethod("QSqlDatabase", "()")]
+		[SmokeMethod("QSqlDatabase", "()", "")]
 		private void NewQSqlDatabase() {
 			ProxyQSqlDatabase().NewQSqlDatabase();
 		}
@@ -70,131 +70,131 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSqlDatabase(other);
 		}
-		[SmokeMethod("QSqlDatabase#", "(const QSqlDatabase&)")]
+		[SmokeMethod("QSqlDatabase", "(const QSqlDatabase&)", "#")]
 		private void NewQSqlDatabase(QSqlDatabase other) {
 			ProxyQSqlDatabase().NewQSqlDatabase(other);
 		}
-		[SmokeMethod("open", "()")]
+		[SmokeMethod("open", "()", "")]
 		public bool Open() {
 			return ProxyQSqlDatabase().Open();
 		}
-		[SmokeMethod("open$$", "(const QString&, const QString&)")]
+		[SmokeMethod("open", "(const QString&, const QString&)", "$$")]
 		public bool Open(string user, string password) {
 			return ProxyQSqlDatabase().Open(user,password);
 		}
-		[SmokeMethod("close", "()")]
+		[SmokeMethod("close", "()", "")]
 		public void Close() {
 			ProxyQSqlDatabase().Close();
 		}
-		[SmokeMethod("isOpen", "() const")]
+		[SmokeMethod("isOpen", "() const", "")]
 		public bool IsOpen() {
 			return ProxyQSqlDatabase().IsOpen();
 		}
-		[SmokeMethod("isOpenError", "() const")]
+		[SmokeMethod("isOpenError", "() const", "")]
 		public bool IsOpenError() {
 			return ProxyQSqlDatabase().IsOpenError();
 		}
-		[SmokeMethod("tables$", "(QSql::TableType) const")]
+		[SmokeMethod("tables", "(QSql::TableType) const", "$")]
 		public List<string> Tables(QSql.TableType type) {
 			return ProxyQSqlDatabase().Tables(type);
 		}
-		[SmokeMethod("tables", "() const")]
+		[SmokeMethod("tables", "() const", "")]
 		public List<string> Tables() {
 			return ProxyQSqlDatabase().Tables();
 		}
-		[SmokeMethod("primaryIndex$", "(const QString&) const")]
+		[SmokeMethod("primaryIndex", "(const QString&) const", "$")]
 		public QSqlIndex PrimaryIndex(string tablename) {
 			return ProxyQSqlDatabase().PrimaryIndex(tablename);
 		}
-		[SmokeMethod("record$", "(const QString&) const")]
+		[SmokeMethod("record", "(const QString&) const", "$")]
 		public QSqlRecord Record(string tablename) {
 			return ProxyQSqlDatabase().Record(tablename);
 		}
-		[SmokeMethod("exec$", "(const QString&) const")]
+		[SmokeMethod("exec", "(const QString&) const", "$")]
 		public IQSqlQuery Exec(string query) {
 			return ProxyQSqlDatabase().Exec(query);
 		}
-		[SmokeMethod("exec", "() const")]
+		[SmokeMethod("exec", "() const", "")]
 		public IQSqlQuery Exec() {
 			return ProxyQSqlDatabase().Exec();
 		}
-		[SmokeMethod("lastError", "() const")]
+		[SmokeMethod("lastError", "() const", "")]
 		public QSqlError LastError() {
 			return ProxyQSqlDatabase().LastError();
 		}
-		[SmokeMethod("isValid", "() const")]
+		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
 			return ProxyQSqlDatabase().IsValid();
 		}
-		[SmokeMethod("transaction", "()")]
+		[SmokeMethod("transaction", "()", "")]
 		public bool Transaction() {
 			return ProxyQSqlDatabase().Transaction();
 		}
-		[SmokeMethod("commit", "()")]
+		[SmokeMethod("commit", "()", "")]
 		public bool Commit() {
 			return ProxyQSqlDatabase().Commit();
 		}
-		[SmokeMethod("rollback", "()")]
+		[SmokeMethod("rollback", "()", "")]
 		public bool Rollback() {
 			return ProxyQSqlDatabase().Rollback();
 		}
-		[SmokeMethod("setDatabaseName$", "(const QString&)")]
+		[SmokeMethod("setDatabaseName", "(const QString&)", "$")]
 		public void SetDatabaseName(string name) {
 			ProxyQSqlDatabase().SetDatabaseName(name);
 		}
-		[SmokeMethod("setUserName$", "(const QString&)")]
+		[SmokeMethod("setUserName", "(const QString&)", "$")]
 		public void SetUserName(string name) {
 			ProxyQSqlDatabase().SetUserName(name);
 		}
-		[SmokeMethod("setPassword$", "(const QString&)")]
+		[SmokeMethod("setPassword", "(const QString&)", "$")]
 		public void SetPassword(string password) {
 			ProxyQSqlDatabase().SetPassword(password);
 		}
-		[SmokeMethod("setHostName$", "(const QString&)")]
+		[SmokeMethod("setHostName", "(const QString&)", "$")]
 		public void SetHostName(string host) {
 			ProxyQSqlDatabase().SetHostName(host);
 		}
-		[SmokeMethod("setPort$", "(int)")]
+		[SmokeMethod("setPort", "(int)", "$")]
 		public void SetPort(int p) {
 			ProxyQSqlDatabase().SetPort(p);
 		}
-		[SmokeMethod("setConnectOptions$", "(const QString&)")]
+		[SmokeMethod("setConnectOptions", "(const QString&)", "$")]
 		public void SetConnectOptions(string options) {
 			ProxyQSqlDatabase().SetConnectOptions(options);
 		}
-		[SmokeMethod("setConnectOptions", "()")]
+		[SmokeMethod("setConnectOptions", "()", "")]
 		public void SetConnectOptions() {
 			ProxyQSqlDatabase().SetConnectOptions();
 		}
-		[SmokeMethod("databaseName", "() const")]
+		[SmokeMethod("databaseName", "() const", "")]
 		public string DatabaseName() {
 			return ProxyQSqlDatabase().DatabaseName();
 		}
-		[SmokeMethod("userName", "() const")]
+		[SmokeMethod("userName", "() const", "")]
 		public string UserName() {
 			return ProxyQSqlDatabase().UserName();
 		}
-		[SmokeMethod("password", "() const")]
+		[SmokeMethod("password", "() const", "")]
 		public string Password() {
 			return ProxyQSqlDatabase().Password();
 		}
-		[SmokeMethod("hostName", "() const")]
+		[SmokeMethod("hostName", "() const", "")]
 		public string HostName() {
 			return ProxyQSqlDatabase().HostName();
 		}
-		[SmokeMethod("driverName", "() const")]
+		[SmokeMethod("driverName", "() const", "")]
 		public string DriverName() {
 			return ProxyQSqlDatabase().DriverName();
 		}
-		[SmokeMethod("port", "() const")]
+		[SmokeMethod("port", "() const", "")]
 		public int Port() {
 			return ProxyQSqlDatabase().Port();
 		}
-		[SmokeMethod("connectOptions", "() const")]
+		[SmokeMethod("connectOptions", "() const", "")]
 		public string ConnectOptions() {
 			return ProxyQSqlDatabase().ConnectOptions();
 		}
-		[SmokeMethod("driver", "() const")]
+		[SmokeMethod("driver", "() const", "")]
 		public QSqlDriver Driver() {
 			return ProxyQSqlDatabase().Driver();
 		}
@@ -245,7 +245,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSqlDatabase(type);
 		}
-		[SmokeMethod("QSqlDatabase$", "(const QString&)")]
+		[SmokeMethod("QSqlDatabase", "(const QString&)", "$")]
 		private void NewQSqlDatabase(string type) {
 			ProxyQSqlDatabase().NewQSqlDatabase(type);
 		}
@@ -253,7 +253,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSqlDatabase(driver);
 		}
-		[SmokeMethod("QSqlDatabase#", "(QSqlDriver*)")]
+		[SmokeMethod("QSqlDatabase", "(QSqlDriver*)", "#")]
 		private void NewQSqlDatabase(QSqlDriver driver) {
 			ProxyQSqlDatabase().NewQSqlDatabase(driver);
 		}
@@ -263,7 +263,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQSqlDatabase();
 		}
-		[SmokeMethod("~QSqlDatabase", "()")]
+		[SmokeMethod("~QSqlDatabase", "()", "")]
 		private void DisposeQSqlDatabase() {
 			ProxyQSqlDatabase().DisposeQSqlDatabase();
 		}

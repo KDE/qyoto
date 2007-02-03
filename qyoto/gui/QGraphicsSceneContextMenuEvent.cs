@@ -34,7 +34,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGraphicsSceneContextMenuEvent(type);
 		}
-		[SmokeMethod("QGraphicsSceneContextMenuEvent$", "(QEvent::Type)")]
+		[SmokeMethod("QGraphicsSceneContextMenuEvent", "(QEvent::Type)", "$")]
 		private void NewQGraphicsSceneContextMenuEvent(QEvent.TypeOf type) {
 			ProxyQGraphicsSceneContextMenuEvent().NewQGraphicsSceneContextMenuEvent(type);
 		}
@@ -42,47 +42,47 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGraphicsSceneContextMenuEvent();
 		}
-		[SmokeMethod("QGraphicsSceneContextMenuEvent", "()")]
+		[SmokeMethod("QGraphicsSceneContextMenuEvent", "()", "")]
 		private void NewQGraphicsSceneContextMenuEvent() {
 			ProxyQGraphicsSceneContextMenuEvent().NewQGraphicsSceneContextMenuEvent();
 		}
-		[SmokeMethod("pos", "() const")]
+		[SmokeMethod("pos", "() const", "")]
 		public QPointF Pos() {
 			return ProxyQGraphicsSceneContextMenuEvent().Pos();
 		}
-		[SmokeMethod("setPos#", "(const QPointF&)")]
+		[SmokeMethod("setPos", "(const QPointF&)", "#")]
 		public void SetPos(QPointF pos) {
 			ProxyQGraphicsSceneContextMenuEvent().SetPos(pos);
 		}
-		[SmokeMethod("scenePos", "() const")]
+		[SmokeMethod("scenePos", "() const", "")]
 		public QPointF ScenePos() {
 			return ProxyQGraphicsSceneContextMenuEvent().ScenePos();
 		}
-		[SmokeMethod("setScenePos#", "(const QPointF&)")]
+		[SmokeMethod("setScenePos", "(const QPointF&)", "#")]
 		public void SetScenePos(QPointF pos) {
 			ProxyQGraphicsSceneContextMenuEvent().SetScenePos(pos);
 		}
-		[SmokeMethod("screenPos", "() const")]
+		[SmokeMethod("screenPos", "() const", "")]
 		public QPoint ScreenPos() {
 			return ProxyQGraphicsSceneContextMenuEvent().ScreenPos();
 		}
-		[SmokeMethod("setScreenPos#", "(const QPoint&)")]
+		[SmokeMethod("setScreenPos", "(const QPoint&)", "#")]
 		public void SetScreenPos(QPoint pos) {
 			ProxyQGraphicsSceneContextMenuEvent().SetScreenPos(pos);
 		}
-		[SmokeMethod("modifiers", "() const")]
+		[SmokeMethod("modifiers", "() const", "")]
 		public int Modifiers() {
 			return ProxyQGraphicsSceneContextMenuEvent().Modifiers();
 		}
-		[SmokeMethod("setModifiers$", "(Qt::KeyboardModifiers)")]
+		[SmokeMethod("setModifiers", "(Qt::KeyboardModifiers)", "$")]
 		public void SetModifiers(int modifiers) {
 			ProxyQGraphicsSceneContextMenuEvent().SetModifiers(modifiers);
 		}
-		[SmokeMethod("reason", "() const")]
+		[SmokeMethod("reason", "() const", "")]
 		public QGraphicsSceneContextMenuEvent.Reason reason() {
 			return ProxyQGraphicsSceneContextMenuEvent().reason();
 		}
-		[SmokeMethod("setReason$", "(QGraphicsSceneContextMenuEvent::Reason)")]
+		[SmokeMethod("setReason", "(QGraphicsSceneContextMenuEvent::Reason)", "$")]
 		public void SetReason(QGraphicsSceneContextMenuEvent.Reason reason) {
 			ProxyQGraphicsSceneContextMenuEvent().SetReason(reason);
 		}
@@ -92,7 +92,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQGraphicsSceneContextMenuEvent();
 		}
-		[SmokeMethod("~QGraphicsSceneContextMenuEvent", "()")]
+		[SmokeMethod("~QGraphicsSceneContextMenuEvent", "()", "")]
 		private void DisposeQGraphicsSceneContextMenuEvent() {
 			ProxyQGraphicsSceneContextMenuEvent().DisposeQGraphicsSceneContextMenuEvent();
 		}

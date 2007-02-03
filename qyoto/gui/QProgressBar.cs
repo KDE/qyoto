@@ -9,9 +9,9 @@ namespace Qyoto {
 	public class QProgressBar : QWidget, IDisposable {
  		protected QProgressBar(Type dummy) : base((Type) null) {}
 		interface IQProgressBarProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
 
@@ -127,7 +127,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQProgressBar(parent);
 		}
-		[SmokeMethod("QProgressBar#", "(QWidget*)")]
+		[SmokeMethod("QProgressBar", "(QWidget*)", "#")]
 		private void NewQProgressBar(QWidget parent) {
 			ProxyQProgressBar().NewQProgressBar(parent);
 		}
@@ -135,28 +135,28 @@ namespace Qyoto {
 			CreateProxy();
 			NewQProgressBar();
 		}
-		[SmokeMethod("QProgressBar", "()")]
+		[SmokeMethod("QProgressBar", "()", "")]
 		private void NewQProgressBar() {
 			ProxyQProgressBar().NewQProgressBar();
 		}
-		[SmokeMethod("setRange$$", "(int, int)")]
+		[SmokeMethod("setRange", "(int, int)", "$$")]
 		public void SetRange(int minimum, int maximum) {
 			ProxyQProgressBar().SetRange(minimum,maximum);
 		}
-		[SmokeMethod("isTextVisible", "() const")]
+		[SmokeMethod("isTextVisible", "() const", "")]
 		public bool IsTextVisible() {
 			return ProxyQProgressBar().IsTextVisible();
 		}
-		[SmokeMethod("sizeHint", "() const")]
+		[SmokeMethod("sizeHint", "() const", "")]
 		public new QSize SizeHint() {
 			return ProxyQProgressBar().SizeHint();
 		}
-		[SmokeMethod("minimumSizeHint", "() const")]
+		[SmokeMethod("minimumSizeHint", "() const", "")]
 		public new QSize MinimumSizeHint() {
 			return ProxyQProgressBar().MinimumSizeHint();
 		}
 		[Q_SLOT("void reset()")]
-		[SmokeMethod("reset", "()")]
+		[SmokeMethod("reset", "()", "")]
 		public void Reset() {
 			ProxyQProgressBar().Reset();
 		}
@@ -166,11 +166,11 @@ namespace Qyoto {
 		public static new string Tr(string s) {
 			return StaticQProgressBar().Tr(s);
 		}
-		[SmokeMethod("event#", "(QEvent*)")]
+		[SmokeMethod("event", "(QEvent*)", "#")]
 		public new bool Event(QEvent e) {
 			return ProxyQProgressBar().Event(e);
 		}
-		[SmokeMethod("paintEvent#", "(QPaintEvent*)")]
+		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
 		protected new void PaintEvent(QPaintEvent arg1) {
 			ProxyQProgressBar().PaintEvent(arg1);
 		}
@@ -180,7 +180,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQProgressBar();
 		}
-		[SmokeMethod("~QProgressBar", "()")]
+		[SmokeMethod("~QProgressBar", "()", "")]
 		private void DisposeQProgressBar() {
 			ProxyQProgressBar().DisposeQProgressBar();
 		}

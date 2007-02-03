@@ -32,7 +32,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTextBlockUserData();
 		}
-		[SmokeMethod("QTextBlockUserData", "()")]
+		[SmokeMethod("QTextBlockUserData", "()", "")]
 		private void NewQTextBlockUserData() {
 			ProxyQTextBlockUserData().NewQTextBlockUserData();
 		}
@@ -42,7 +42,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQTextBlockUserData();
 		}
-		[SmokeMethod("~QTextBlockUserData", "()")]
+		[SmokeMethod("~QTextBlockUserData", "()", "")]
 		private void DisposeQTextBlockUserData() {
 			ProxyQTextBlockUserData().DisposeQTextBlockUserData();
 		}

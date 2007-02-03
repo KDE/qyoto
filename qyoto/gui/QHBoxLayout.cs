@@ -8,9 +8,9 @@ namespace Qyoto {
 	public class QHBoxLayout : QBoxLayout, IDisposable {
  		protected QHBoxLayout(Type dummy) : base((Type) null) {}
 		interface IQHBoxLayoutProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
 
@@ -35,7 +35,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQHBoxLayout();
 		}
-		[SmokeMethod("QHBoxLayout", "()")]
+		[SmokeMethod("QHBoxLayout", "()", "")]
 		private void NewQHBoxLayout() {
 			ProxyQHBoxLayout().NewQHBoxLayout();
 		}
@@ -43,7 +43,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQHBoxLayout(parent);
 		}
-		[SmokeMethod("QHBoxLayout#", "(QWidget*)")]
+		[SmokeMethod("QHBoxLayout", "(QWidget*)", "#")]
 		private void NewQHBoxLayout(QWidget parent) {
 			ProxyQHBoxLayout().NewQHBoxLayout(parent);
 		}
@@ -59,7 +59,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQHBoxLayout();
 		}
-		[SmokeMethod("~QHBoxLayout", "()")]
+		[SmokeMethod("~QHBoxLayout", "()", "")]
 		private void DisposeQHBoxLayout() {
 			ProxyQHBoxLayout().DisposeQHBoxLayout();
 		}

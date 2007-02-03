@@ -34,7 +34,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDBusArgument();
 		}
-		[SmokeMethod("QDBusArgument", "()")]
+		[SmokeMethod("QDBusArgument", "()", "")]
 		private void NewQDBusArgument() {
 			ProxyQDBusArgument().NewQDBusArgument();
 		}
@@ -42,141 +42,141 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDBusArgument(other);
 		}
-		[SmokeMethod("QDBusArgument#", "(const QDBusArgument&)")]
+		[SmokeMethod("QDBusArgument", "(const QDBusArgument&)", "#")]
 		private void NewQDBusArgument(QDBusArgument other) {
 			ProxyQDBusArgument().NewQDBusArgument(other);
 		}
-		[SmokeMethod("operator<<$", "(uchar)")]
+		[SmokeMethod("operator<<", "(uchar)", "$")]
 		public QDBusArgument op_write(ushort arg) {
 			return ProxyQDBusArgument().op_write(arg);
 		}
-		[SmokeMethod("operator<<$", "(bool)")]
+		[SmokeMethod("operator<<", "(bool)", "$")]
 		public QDBusArgument op_write(bool arg) {
 			return ProxyQDBusArgument().op_write(arg);
 		}
-		[SmokeMethod("operator<<$", "(short)")]
+		[SmokeMethod("operator<<", "(short)", "$")]
 		public QDBusArgument op_write(short arg) {
 			return ProxyQDBusArgument().op_write(arg);
 		}
-		[SmokeMethod("operator<<$", "(int)")]
+		[SmokeMethod("operator<<", "(int)", "$")]
 		public QDBusArgument op_write(int arg) {
 			return ProxyQDBusArgument().op_write(arg);
 		}
-		[SmokeMethod("operator<<$", "(uint)")]
+		[SmokeMethod("operator<<", "(uint)", "$")]
 		public QDBusArgument op_write(uint arg) {
 			return ProxyQDBusArgument().op_write(arg);
 		}
-		[SmokeMethod("operator<<?", "(qlonglong)")]
+		[SmokeMethod("operator<<", "(qlonglong)", "?")]
 		public QDBusArgument op_write(long arg) {
 			return ProxyQDBusArgument().op_write(arg);
 		}
-		[SmokeMethod("operator<<$", "(qulonglong)")]
+		[SmokeMethod("operator<<", "(qulonglong)", "$")]
 		public QDBusArgument op_write(ulong arg) {
 			return ProxyQDBusArgument().op_write(arg);
 		}
-		[SmokeMethod("operator<<$", "(double)")]
+		[SmokeMethod("operator<<", "(double)", "$")]
 		public QDBusArgument op_write(double arg) {
 			return ProxyQDBusArgument().op_write(arg);
 		}
-		[SmokeMethod("operator<<$", "(const QString&)")]
+		[SmokeMethod("operator<<", "(const QString&)", "$")]
 		public QDBusArgument op_write(string arg) {
 			return ProxyQDBusArgument().op_write(arg);
 		}
 		// QDBusArgument& operator<<(const QDBusVariant& arg1); >>>> NOT CONVERTED
 		// QDBusArgument& operator<<(const QDBusObjectPath& arg1); >>>> NOT CONVERTED
 		// QDBusArgument& operator<<(const QDBusSignature& arg1); >>>> NOT CONVERTED
-		[SmokeMethod("operator<<?", "(const QStringList&)")]
+		[SmokeMethod("operator<<", "(const QStringList&)", "?")]
 		public QDBusArgument op_write(List<string> arg) {
 			return ProxyQDBusArgument().op_write(arg);
 		}
-		[SmokeMethod("operator<<#", "(const QByteArray&)")]
+		[SmokeMethod("operator<<", "(const QByteArray&)", "#")]
 		public QDBusArgument op_write(QByteArray arg) {
 			return ProxyQDBusArgument().op_write(arg);
 		}
-		[SmokeMethod("beginStructure", "()")]
+		[SmokeMethod("beginStructure", "()", "")]
 		public void BeginStructure() {
 			ProxyQDBusArgument().BeginStructure();
 		}
-		[SmokeMethod("endStructure", "()")]
+		[SmokeMethod("endStructure", "()", "")]
 		public void EndStructure() {
 			ProxyQDBusArgument().EndStructure();
 		}
-		[SmokeMethod("beginArray$", "(int)")]
+		[SmokeMethod("beginArray", "(int)", "$")]
 		public void BeginArray(int elementMetaTypeId) {
 			ProxyQDBusArgument().BeginArray(elementMetaTypeId);
 		}
-		[SmokeMethod("endArray", "()")]
+		[SmokeMethod("endArray", "()", "")]
 		public void EndArray() {
 			ProxyQDBusArgument().EndArray();
 		}
-		[SmokeMethod("beginMap$$", "(int, int)")]
+		[SmokeMethod("beginMap", "(int, int)", "$$")]
 		public void BeginMap(int keyMetaTypeId, int valueMetaTypeId) {
 			ProxyQDBusArgument().BeginMap(keyMetaTypeId,valueMetaTypeId);
 		}
-		[SmokeMethod("endMap", "()")]
+		[SmokeMethod("endMap", "()", "")]
 		public void EndMap() {
 			ProxyQDBusArgument().EndMap();
 		}
-		[SmokeMethod("beginMapEntry", "()")]
+		[SmokeMethod("beginMapEntry", "()", "")]
 		public void BeginMapEntry() {
 			ProxyQDBusArgument().BeginMapEntry();
 		}
-		[SmokeMethod("endMapEntry", "()")]
+		[SmokeMethod("endMapEntry", "()", "")]
 		public void EndMapEntry() {
 			ProxyQDBusArgument().EndMapEntry();
 		}
-		[SmokeMethod("currentSignature", "() const")]
+		[SmokeMethod("currentSignature", "() const", "")]
 		public string CurrentSignature() {
 			return ProxyQDBusArgument().CurrentSignature();
 		}
-		[SmokeMethod("operator>>$", "(uchar&) const")]
+		[SmokeMethod("operator>>", "(uchar&) const", "$")]
 		public QDBusArgument op_read(ushort arg) {
 			return ProxyQDBusArgument().op_read(arg);
 		}
-		[SmokeMethod("operator>>$", "(bool&) const")]
+		[SmokeMethod("operator>>", "(bool&) const", "$")]
 		public QDBusArgument op_read(bool arg) {
 			return ProxyQDBusArgument().op_read(arg);
 		}
 		// const QDBusArgument& operator>>(short& arg1); >>>> NOT CONVERTED
 		// const QDBusArgument& operator>>(ushort& arg1); >>>> NOT CONVERTED
-		[SmokeMethod("operator>>$", "(int&) const")]
+		[SmokeMethod("operator>>", "(int&) const", "$")]
 		public QDBusArgument op_read(out int arg) {
 			return ProxyQDBusArgument().op_read(out arg);
 		}
-		[SmokeMethod("operator>>$", "(uint&) const")]
+		[SmokeMethod("operator>>", "(uint&) const", "$")]
 		public QDBusArgument op_read(uint arg) {
 			return ProxyQDBusArgument().op_read(arg);
 		}
 		// const QDBusArgument& operator>>(qlonglong& arg1); >>>> NOT CONVERTED
 		// const QDBusArgument& operator>>(qulonglong& arg1); >>>> NOT CONVERTED
-		[SmokeMethod("operator>>$", "(double&) const")]
+		[SmokeMethod("operator>>", "(double&) const", "$")]
 		public QDBusArgument op_read(double arg) {
 			return ProxyQDBusArgument().op_read(arg);
 		}
-		[SmokeMethod("operator>>$", "(QString&) const")]
+		[SmokeMethod("operator>>", "(QString&) const", "$")]
 		public QDBusArgument op_read(StringBuilder arg) {
 			return ProxyQDBusArgument().op_read(arg);
 		}
 		// const QDBusArgument& operator>>(QDBusVariant& arg1); >>>> NOT CONVERTED
 		// const QDBusArgument& operator>>(QDBusObjectPath& arg1); >>>> NOT CONVERTED
 		// const QDBusArgument& operator>>(QDBusSignature& arg1); >>>> NOT CONVERTED
-		[SmokeMethod("operator>>?", "(QStringList&) const")]
+		[SmokeMethod("operator>>", "(QStringList&) const", "?")]
 		public QDBusArgument op_read(List<string> arg) {
 			return ProxyQDBusArgument().op_read(arg);
 		}
-		[SmokeMethod("operator>>#", "(QByteArray&) const")]
+		[SmokeMethod("operator>>", "(QByteArray&) const", "#")]
 		public QDBusArgument op_read(QByteArray arg) {
 			return ProxyQDBusArgument().op_read(arg);
 		}
-		[SmokeMethod("beginArray", "() const")]
+		[SmokeMethod("beginArray", "() const", "")]
 		public void BeginArray() {
 			ProxyQDBusArgument().BeginArray();
 		}
-		[SmokeMethod("beginMap", "() const")]
+		[SmokeMethod("beginMap", "() const", "")]
 		public void BeginMap() {
 			ProxyQDBusArgument().BeginMap();
 		}
-		[SmokeMethod("atEnd", "() const")]
+		[SmokeMethod("atEnd", "() const", "")]
 		public bool AtEnd() {
 			return ProxyQDBusArgument().AtEnd();
 		}
@@ -186,7 +186,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQDBusArgument();
 		}
-		[SmokeMethod("~QDBusArgument", "()")]
+		[SmokeMethod("~QDBusArgument", "()", "")]
 		private void DisposeQDBusArgument() {
 			ProxyQDBusArgument().DisposeQDBusArgument();
 		}

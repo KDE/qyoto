@@ -8,9 +8,9 @@ namespace Qyoto {
 	public class QTcpSocket : QAbstractSocket, IDisposable {
  		protected QTcpSocket(Type dummy) : base((Type) null) {}
 		interface IQTcpSocketProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
 
@@ -35,7 +35,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTcpSocket(parent);
 		}
-		[SmokeMethod("QTcpSocket#", "(QObject*)")]
+		[SmokeMethod("QTcpSocket", "(QObject*)", "#")]
 		private void NewQTcpSocket(QObject parent) {
 			ProxyQTcpSocket().NewQTcpSocket(parent);
 		}
@@ -43,7 +43,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTcpSocket();
 		}
-		[SmokeMethod("QTcpSocket", "()")]
+		[SmokeMethod("QTcpSocket", "()", "")]
 		private void NewQTcpSocket() {
 			ProxyQTcpSocket().NewQTcpSocket();
 		}
@@ -59,7 +59,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQTcpSocket();
 		}
-		[SmokeMethod("~QTcpSocket", "()")]
+		[SmokeMethod("~QTcpSocket", "()", "")]
 		private void DisposeQTcpSocket() {
 			ProxyQTcpSocket().DisposeQTcpSocket();
 		}

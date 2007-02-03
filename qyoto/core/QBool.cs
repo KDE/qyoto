@@ -32,7 +32,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQBool(B);
 		}
-		[SmokeMethod("QBool$", "(bool)")]
+		[SmokeMethod("QBool", "(bool)", "$")]
 		private void NewQBool(bool B) {
 			ProxyQBool().NewQBool(B);
 		}
@@ -43,7 +43,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQBool();
 		}
-		[SmokeMethod("~QBool", "()")]
+		[SmokeMethod("~QBool", "()", "")]
 		private void DisposeQBool() {
 			ProxyQBool().DisposeQBool();
 		}

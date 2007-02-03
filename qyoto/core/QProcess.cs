@@ -10,19 +10,19 @@ namespace Qyoto {
 	public class QProcess : QIODevice, IDisposable {
  		protected QProcess(Type dummy) : base((Type) null) {}
 		interface IQProcessProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
-			[SmokeMethod("execute$?", "(const QString&, const QStringList&)")]
+			[SmokeMethod("execute", "(const QString&, const QStringList&)", "$?")]
 			int Execute(string program, List<string> arguments);
-			[SmokeMethod("execute$", "(const QString&)")]
+			[SmokeMethod("execute", "(const QString&)", "$")]
 			int Execute(string program);
-			[SmokeMethod("startDetached$?", "(const QString&, const QStringList&)")]
+			[SmokeMethod("startDetached", "(const QString&, const QStringList&)", "$?")]
 			bool StartDetached(string program, List<string> arguments);
-			[SmokeMethod("startDetached$", "(const QString&)")]
+			[SmokeMethod("startDetached", "(const QString&)", "$")]
 			bool StartDetached(string program);
-			[SmokeMethod("systemEnvironment", "()")]
+			[SmokeMethod("systemEnvironment", "()", "")]
 			List<string> SystemEnvironment();
 		}
 
@@ -73,7 +73,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQProcess(parent);
 		}
-		[SmokeMethod("QProcess#", "(QObject*)")]
+		[SmokeMethod("QProcess", "(QObject*)", "#")]
 		private void NewQProcess(QObject parent) {
 			ProxyQProcess().NewQProcess(parent);
 		}
@@ -81,186 +81,186 @@ namespace Qyoto {
 			CreateProxy();
 			NewQProcess();
 		}
-		[SmokeMethod("QProcess", "()")]
+		[SmokeMethod("QProcess", "()", "")]
 		private void NewQProcess() {
 			ProxyQProcess().NewQProcess();
 		}
-		[SmokeMethod("start$?$", "(const QString&, const QStringList&, OpenMode)")]
+		[SmokeMethod("start", "(const QString&, const QStringList&, OpenMode)", "$?$")]
 		public void Start(string program, List<string> arguments, int mode) {
 			ProxyQProcess().Start(program,arguments,mode);
 		}
-		[SmokeMethod("start$?", "(const QString&, const QStringList&)")]
+		[SmokeMethod("start", "(const QString&, const QStringList&)", "$?")]
 		public void Start(string program, List<string> arguments) {
 			ProxyQProcess().Start(program,arguments);
 		}
-		[SmokeMethod("start$$", "(const QString&, OpenMode)")]
+		[SmokeMethod("start", "(const QString&, OpenMode)", "$$")]
 		public void Start(string program, int mode) {
 			ProxyQProcess().Start(program,mode);
 		}
-		[SmokeMethod("start$", "(const QString&)")]
+		[SmokeMethod("start", "(const QString&)", "$")]
 		public void Start(string program) {
 			ProxyQProcess().Start(program);
 		}
-		[SmokeMethod("readChannelMode", "() const")]
+		[SmokeMethod("readChannelMode", "() const", "")]
 		public QProcess.ProcessChannelMode ReadChannelMode() {
 			return ProxyQProcess().ReadChannelMode();
 		}
-		[SmokeMethod("setReadChannelMode$", "(QProcess::ProcessChannelMode)")]
+		[SmokeMethod("setReadChannelMode", "(QProcess::ProcessChannelMode)", "$")]
 		public void SetReadChannelMode(QProcess.ProcessChannelMode mode) {
 			ProxyQProcess().SetReadChannelMode(mode);
 		}
-		[SmokeMethod("processChannelMode", "() const")]
+		[SmokeMethod("processChannelMode", "() const", "")]
 		public QProcess.ProcessChannelMode processChannelMode() {
 			return ProxyQProcess().processChannelMode();
 		}
-		[SmokeMethod("setProcessChannelMode$", "(QProcess::ProcessChannelMode)")]
+		[SmokeMethod("setProcessChannelMode", "(QProcess::ProcessChannelMode)", "$")]
 		public void SetProcessChannelMode(QProcess.ProcessChannelMode mode) {
 			ProxyQProcess().SetProcessChannelMode(mode);
 		}
-		[SmokeMethod("readChannel", "() const")]
+		[SmokeMethod("readChannel", "() const", "")]
 		public QProcess.ProcessChannel ReadChannel() {
 			return ProxyQProcess().ReadChannel();
 		}
-		[SmokeMethod("setReadChannel$", "(QProcess::ProcessChannel)")]
+		[SmokeMethod("setReadChannel", "(QProcess::ProcessChannel)", "$")]
 		public void SetReadChannel(QProcess.ProcessChannel channel) {
 			ProxyQProcess().SetReadChannel(channel);
 		}
-		[SmokeMethod("closeReadChannel$", "(QProcess::ProcessChannel)")]
+		[SmokeMethod("closeReadChannel", "(QProcess::ProcessChannel)", "$")]
 		public void CloseReadChannel(QProcess.ProcessChannel channel) {
 			ProxyQProcess().CloseReadChannel(channel);
 		}
-		[SmokeMethod("closeWriteChannel", "()")]
+		[SmokeMethod("closeWriteChannel", "()", "")]
 		public void CloseWriteChannel() {
 			ProxyQProcess().CloseWriteChannel();
 		}
-		[SmokeMethod("setStandardInputFile$", "(const QString&)")]
+		[SmokeMethod("setStandardInputFile", "(const QString&)", "$")]
 		public void SetStandardInputFile(string fileName) {
 			ProxyQProcess().SetStandardInputFile(fileName);
 		}
-		[SmokeMethod("setStandardOutputFile$$", "(const QString&, OpenMode)")]
+		[SmokeMethod("setStandardOutputFile", "(const QString&, OpenMode)", "$$")]
 		public void SetStandardOutputFile(string fileName, int mode) {
 			ProxyQProcess().SetStandardOutputFile(fileName,mode);
 		}
-		[SmokeMethod("setStandardOutputFile$", "(const QString&)")]
+		[SmokeMethod("setStandardOutputFile", "(const QString&)", "$")]
 		public void SetStandardOutputFile(string fileName) {
 			ProxyQProcess().SetStandardOutputFile(fileName);
 		}
-		[SmokeMethod("setStandardErrorFile$$", "(const QString&, OpenMode)")]
+		[SmokeMethod("setStandardErrorFile", "(const QString&, OpenMode)", "$$")]
 		public void SetStandardErrorFile(string fileName, int mode) {
 			ProxyQProcess().SetStandardErrorFile(fileName,mode);
 		}
-		[SmokeMethod("setStandardErrorFile$", "(const QString&)")]
+		[SmokeMethod("setStandardErrorFile", "(const QString&)", "$")]
 		public void SetStandardErrorFile(string fileName) {
 			ProxyQProcess().SetStandardErrorFile(fileName);
 		}
-		[SmokeMethod("setStandardOutputProcess#", "(QProcess*)")]
+		[SmokeMethod("setStandardOutputProcess", "(QProcess*)", "#")]
 		public void SetStandardOutputProcess(QProcess destination) {
 			ProxyQProcess().SetStandardOutputProcess(destination);
 		}
-		[SmokeMethod("workingDirectory", "() const")]
+		[SmokeMethod("workingDirectory", "() const", "")]
 		public string WorkingDirectory() {
 			return ProxyQProcess().WorkingDirectory();
 		}
-		[SmokeMethod("setWorkingDirectory$", "(const QString&)")]
+		[SmokeMethod("setWorkingDirectory", "(const QString&)", "$")]
 		public void SetWorkingDirectory(string dir) {
 			ProxyQProcess().SetWorkingDirectory(dir);
 		}
-		[SmokeMethod("setEnvironment?", "(const QStringList&)")]
+		[SmokeMethod("setEnvironment", "(const QStringList&)", "?")]
 		public void SetEnvironment(List<string> environment) {
 			ProxyQProcess().SetEnvironment(environment);
 		}
-		[SmokeMethod("environment", "() const")]
+		[SmokeMethod("environment", "() const", "")]
 		public List<string> Environment() {
 			return ProxyQProcess().Environment();
 		}
-		[SmokeMethod("error", "() const")]
+		[SmokeMethod("error", "() const", "")]
 		public QProcess.ProcessError Error() {
 			return ProxyQProcess().Error();
 		}
-		[SmokeMethod("state", "() const")]
+		[SmokeMethod("state", "() const", "")]
 		public QProcess.ProcessState State() {
 			return ProxyQProcess().State();
 		}
 		// Q_PID pid(); >>>> NOT CONVERTED
-		[SmokeMethod("waitForStarted$", "(int)")]
+		[SmokeMethod("waitForStarted", "(int)", "$")]
 		public bool WaitForStarted(int msecs) {
 			return ProxyQProcess().WaitForStarted(msecs);
 		}
-		[SmokeMethod("waitForStarted", "()")]
+		[SmokeMethod("waitForStarted", "()", "")]
 		public bool WaitForStarted() {
 			return ProxyQProcess().WaitForStarted();
 		}
-		[SmokeMethod("waitForReadyRead$", "(int)")]
+		[SmokeMethod("waitForReadyRead", "(int)", "$")]
 		public new bool WaitForReadyRead(int msecs) {
 			return ProxyQProcess().WaitForReadyRead(msecs);
 		}
-		[SmokeMethod("waitForReadyRead", "()")]
+		[SmokeMethod("waitForReadyRead", "()", "")]
 		public new bool WaitForReadyRead() {
 			return ProxyQProcess().WaitForReadyRead();
 		}
-		[SmokeMethod("waitForBytesWritten$", "(int)")]
+		[SmokeMethod("waitForBytesWritten", "(int)", "$")]
 		public new bool WaitForBytesWritten(int msecs) {
 			return ProxyQProcess().WaitForBytesWritten(msecs);
 		}
-		[SmokeMethod("waitForBytesWritten", "()")]
+		[SmokeMethod("waitForBytesWritten", "()", "")]
 		public new bool WaitForBytesWritten() {
 			return ProxyQProcess().WaitForBytesWritten();
 		}
-		[SmokeMethod("waitForFinished$", "(int)")]
+		[SmokeMethod("waitForFinished", "(int)", "$")]
 		public bool WaitForFinished(int msecs) {
 			return ProxyQProcess().WaitForFinished(msecs);
 		}
-		[SmokeMethod("waitForFinished", "()")]
+		[SmokeMethod("waitForFinished", "()", "")]
 		public bool WaitForFinished() {
 			return ProxyQProcess().WaitForFinished();
 		}
-		[SmokeMethod("readAllStandardOutput", "()")]
+		[SmokeMethod("readAllStandardOutput", "()", "")]
 		public QByteArray ReadAllStandardOutput() {
 			return ProxyQProcess().ReadAllStandardOutput();
 		}
-		[SmokeMethod("readAllStandardError", "()")]
+		[SmokeMethod("readAllStandardError", "()", "")]
 		public QByteArray ReadAllStandardError() {
 			return ProxyQProcess().ReadAllStandardError();
 		}
-		[SmokeMethod("exitCode", "() const")]
+		[SmokeMethod("exitCode", "() const", "")]
 		public int ExitCode() {
 			return ProxyQProcess().ExitCode();
 		}
-		[SmokeMethod("exitStatus", "() const")]
+		[SmokeMethod("exitStatus", "() const", "")]
 		public QProcess.ExitStatus exitStatus() {
 			return ProxyQProcess().exitStatus();
 		}
-		[SmokeMethod("bytesAvailable", "() const")]
+		[SmokeMethod("bytesAvailable", "() const", "")]
 		public new long BytesAvailable() {
 			return ProxyQProcess().BytesAvailable();
 		}
-		[SmokeMethod("bytesToWrite", "() const")]
+		[SmokeMethod("bytesToWrite", "() const", "")]
 		public new long BytesToWrite() {
 			return ProxyQProcess().BytesToWrite();
 		}
-		[SmokeMethod("isSequential", "() const")]
+		[SmokeMethod("isSequential", "() const", "")]
 		public new bool IsSequential() {
 			return ProxyQProcess().IsSequential();
 		}
-		[SmokeMethod("canReadLine", "() const")]
+		[SmokeMethod("canReadLine", "() const", "")]
 		public new bool CanReadLine() {
 			return ProxyQProcess().CanReadLine();
 		}
-		[SmokeMethod("close", "()")]
+		[SmokeMethod("close", "()", "")]
 		public new void Close() {
 			ProxyQProcess().Close();
 		}
-		[SmokeMethod("atEnd", "() const")]
+		[SmokeMethod("atEnd", "() const", "")]
 		public new bool AtEnd() {
 			return ProxyQProcess().AtEnd();
 		}
 		[Q_SLOT("void terminate()")]
-		[SmokeMethod("terminate", "()")]
+		[SmokeMethod("terminate", "()", "")]
 		public void Terminate() {
 			ProxyQProcess().Terminate();
 		}
 		[Q_SLOT("void kill()")]
-		[SmokeMethod("kill", "()")]
+		[SmokeMethod("kill", "()", "")]
 		public void Kill() {
 			ProxyQProcess().Kill();
 		}
@@ -285,19 +285,19 @@ namespace Qyoto {
 		public static List<string> SystemEnvironment() {
 			return StaticQProcess().SystemEnvironment();
 		}
-		[SmokeMethod("setProcessState$", "(QProcess::ProcessState)")]
+		[SmokeMethod("setProcessState", "(QProcess::ProcessState)", "$")]
 		protected void SetProcessState(QProcess.ProcessState state) {
 			ProxyQProcess().SetProcessState(state);
 		}
-		[SmokeMethod("setupChildProcess", "()")]
+		[SmokeMethod("setupChildProcess", "()", "")]
 		protected virtual void SetupChildProcess() {
 			ProxyQProcess().SetupChildProcess();
 		}
-		[SmokeMethod("readData$$", "(char*, qint64)")]
+		[SmokeMethod("readData", "(char*, qint64)", "$$")]
 		protected new long ReadData(string data, long maxlen) {
 			return ProxyQProcess().ReadData(data,maxlen);
 		}
-		[SmokeMethod("writeData$$", "(const char*, qint64)")]
+		[SmokeMethod("writeData", "(const char*, qint64)", "$$")]
 		protected new long WriteData(string data, long len) {
 			return ProxyQProcess().WriteData(data,len);
 		}
@@ -307,7 +307,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQProcess();
 		}
-		[SmokeMethod("~QProcess", "()")]
+		[SmokeMethod("~QProcess", "()", "")]
 		private void DisposeQProcess() {
 			ProxyQProcess().DisposeQProcess();
 		}

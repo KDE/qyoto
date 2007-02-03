@@ -9,9 +9,9 @@ namespace Qyoto {
 	public class QX11EmbedContainer : QWidget, IDisposable {
  		protected QX11EmbedContainer(Type dummy) : base((Type) null) {}
 		interface IQX11EmbedContainerProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
 
@@ -41,7 +41,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQX11EmbedContainer(parent);
 		}
-		[SmokeMethod("QX11EmbedContainer#", "(QWidget*)")]
+		[SmokeMethod("QX11EmbedContainer", "(QWidget*)", "#")]
 		private void NewQX11EmbedContainer(QWidget parent) {
 			ProxyQX11EmbedContainer().NewQX11EmbedContainer(parent);
 		}
@@ -49,27 +49,27 @@ namespace Qyoto {
 			CreateProxy();
 			NewQX11EmbedContainer();
 		}
-		[SmokeMethod("QX11EmbedContainer", "()")]
+		[SmokeMethod("QX11EmbedContainer", "()", "")]
 		private void NewQX11EmbedContainer() {
 			ProxyQX11EmbedContainer().NewQX11EmbedContainer();
 		}
-		[SmokeMethod("embedClient$", "(WId)")]
+		[SmokeMethod("embedClient", "(WId)", "$")]
 		public void EmbedClient(ulong id) {
 			ProxyQX11EmbedContainer().EmbedClient(id);
 		}
-		[SmokeMethod("discardClient", "()")]
+		[SmokeMethod("discardClient", "()", "")]
 		public void DiscardClient() {
 			ProxyQX11EmbedContainer().DiscardClient();
 		}
-		[SmokeMethod("clientWinId", "() const")]
+		[SmokeMethod("clientWinId", "() const", "")]
 		public ulong ClientWinId() {
 			return ProxyQX11EmbedContainer().ClientWinId();
 		}
-		[SmokeMethod("minimumSizeHint", "() const")]
+		[SmokeMethod("minimumSizeHint", "() const", "")]
 		public new QSize MinimumSizeHint() {
 			return ProxyQX11EmbedContainer().MinimumSizeHint();
 		}
-		[SmokeMethod("error", "() const")]
+		[SmokeMethod("error", "() const", "")]
 		public QX11EmbedContainer.Error error() {
 			return ProxyQX11EmbedContainer().error();
 		}
@@ -80,27 +80,27 @@ namespace Qyoto {
 			return StaticQX11EmbedContainer().Tr(s);
 		}
 		// bool x11Event(XEvent* arg1); >>>> NOT CONVERTED
-		[SmokeMethod("eventFilter##", "(QObject*, QEvent*)")]
+		[SmokeMethod("eventFilter", "(QObject*, QEvent*)", "##")]
 		public new bool EventFilter(QObject arg1, QEvent arg2) {
 			return ProxyQX11EmbedContainer().EventFilter(arg1,arg2);
 		}
-		[SmokeMethod("paintEvent#", "(QPaintEvent*)")]
+		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
 		protected new void PaintEvent(QPaintEvent e) {
 			ProxyQX11EmbedContainer().PaintEvent(e);
 		}
-		[SmokeMethod("resizeEvent#", "(QResizeEvent*)")]
+		[SmokeMethod("resizeEvent", "(QResizeEvent*)", "#")]
 		protected new void ResizeEvent(QResizeEvent arg1) {
 			ProxyQX11EmbedContainer().ResizeEvent(arg1);
 		}
-		[SmokeMethod("showEvent#", "(QShowEvent*)")]
+		[SmokeMethod("showEvent", "(QShowEvent*)", "#")]
 		public new void ShowEvent(QShowEvent arg1) {
 			ProxyQX11EmbedContainer().ShowEvent(arg1);
 		}
-		[SmokeMethod("hideEvent#", "(QHideEvent*)")]
+		[SmokeMethod("hideEvent", "(QHideEvent*)", "#")]
 		protected new void HideEvent(QHideEvent arg1) {
 			ProxyQX11EmbedContainer().HideEvent(arg1);
 		}
-		[SmokeMethod("event#", "(QEvent*)")]
+		[SmokeMethod("event", "(QEvent*)", "#")]
 		public new bool Event(QEvent arg1) {
 			return ProxyQX11EmbedContainer().Event(arg1);
 		}
@@ -110,7 +110,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQX11EmbedContainer();
 		}
-		[SmokeMethod("~QX11EmbedContainer", "()")]
+		[SmokeMethod("~QX11EmbedContainer", "()", "")]
 		private void DisposeQX11EmbedContainer() {
 			ProxyQX11EmbedContainer().DisposeQX11EmbedContainer();
 		}

@@ -915,7 +915,10 @@ extern "C" {
 int 
 FindMethodId(char * classname, char * mungedname, char * signature) 
 {
-// printf("FindMethodId(classname: %s mungedname: %s signature: %s)\n", classname, mungedname, signature);
+#ifdef DEBUG
+	printf("FindMethodId(classname: %s mungedname: %s signature: %s)\n", classname, mungedname, signature);
+#endif
+
 	Smoke::Index meth = qt_Smoke->findMethod(classname, mungedname);
 #ifdef DEBUG
 	if (do_debug & qtdb_calls) qWarning("DAMNIT on %s::%s => %d", classname, mungedname, meth);

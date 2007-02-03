@@ -10,11 +10,11 @@ namespace Qyoto {
 	public class QMovie : QObject, IDisposable {
  		protected QMovie(Type dummy) : base((Type) null) {}
 		interface IQMovieProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
-			[SmokeMethod("supportedFormats", "()")]
+			[SmokeMethod("supportedFormats", "()", "")]
 			List<QByteArray> SupportedFormats();
 		}
 
@@ -66,7 +66,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQMovie(parent);
 		}
-		[SmokeMethod("QMovie#", "(QObject*)")]
+		[SmokeMethod("QMovie", "(QObject*)", "#")]
 		private void NewQMovie(QObject parent) {
 			ProxyQMovie().NewQMovie(parent);
 		}
@@ -74,7 +74,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQMovie();
 		}
-		[SmokeMethod("QMovie", "()")]
+		[SmokeMethod("QMovie", "()", "")]
 		private void NewQMovie() {
 			ProxyQMovie().NewQMovie();
 		}
@@ -82,7 +82,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQMovie(device,format,parent);
 		}
-		[SmokeMethod("QMovie###", "(QIODevice*, const QByteArray&, QObject*)")]
+		[SmokeMethod("QMovie", "(QIODevice*, const QByteArray&, QObject*)", "###")]
 		private void NewQMovie(IQIODevice device, QByteArray format, QObject parent) {
 			ProxyQMovie().NewQMovie(device,format,parent);
 		}
@@ -90,7 +90,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQMovie(device,format);
 		}
-		[SmokeMethod("QMovie##", "(QIODevice*, const QByteArray&)")]
+		[SmokeMethod("QMovie", "(QIODevice*, const QByteArray&)", "##")]
 		private void NewQMovie(IQIODevice device, QByteArray format) {
 			ProxyQMovie().NewQMovie(device,format);
 		}
@@ -98,7 +98,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQMovie(device);
 		}
-		[SmokeMethod("QMovie#", "(QIODevice*)")]
+		[SmokeMethod("QMovie", "(QIODevice*)", "#")]
 		private void NewQMovie(IQIODevice device) {
 			ProxyQMovie().NewQMovie(device);
 		}
@@ -106,7 +106,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQMovie(fileName,format,parent);
 		}
-		[SmokeMethod("QMovie$##", "(const QString&, const QByteArray&, QObject*)")]
+		[SmokeMethod("QMovie", "(const QString&, const QByteArray&, QObject*)", "$##")]
 		private void NewQMovie(string fileName, QByteArray format, QObject parent) {
 			ProxyQMovie().NewQMovie(fileName,format,parent);
 		}
@@ -114,7 +114,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQMovie(fileName,format);
 		}
-		[SmokeMethod("QMovie$#", "(const QString&, const QByteArray&)")]
+		[SmokeMethod("QMovie", "(const QString&, const QByteArray&)", "$#")]
 		private void NewQMovie(string fileName, QByteArray format) {
 			ProxyQMovie().NewQMovie(fileName,format);
 		}
@@ -122,107 +122,107 @@ namespace Qyoto {
 			CreateProxy();
 			NewQMovie(fileName);
 		}
-		[SmokeMethod("QMovie$", "(const QString&)")]
+		[SmokeMethod("QMovie", "(const QString&)", "$")]
 		private void NewQMovie(string fileName) {
 			ProxyQMovie().NewQMovie(fileName);
 		}
-		[SmokeMethod("setDevice#", "(QIODevice*)")]
+		[SmokeMethod("setDevice", "(QIODevice*)", "#")]
 		public void SetDevice(IQIODevice device) {
 			ProxyQMovie().SetDevice(device);
 		}
-		[SmokeMethod("device", "() const")]
+		[SmokeMethod("device", "() const", "")]
 		public IQIODevice Device() {
 			return ProxyQMovie().Device();
 		}
-		[SmokeMethod("setFileName$", "(const QString&)")]
+		[SmokeMethod("setFileName", "(const QString&)", "$")]
 		public void SetFileName(string fileName) {
 			ProxyQMovie().SetFileName(fileName);
 		}
-		[SmokeMethod("fileName", "() const")]
+		[SmokeMethod("fileName", "() const", "")]
 		public string FileName() {
 			return ProxyQMovie().FileName();
 		}
-		[SmokeMethod("setFormat#", "(const QByteArray&)")]
+		[SmokeMethod("setFormat", "(const QByteArray&)", "#")]
 		public void SetFormat(QByteArray format) {
 			ProxyQMovie().SetFormat(format);
 		}
-		[SmokeMethod("format", "() const")]
+		[SmokeMethod("format", "() const", "")]
 		public QByteArray Format() {
 			return ProxyQMovie().Format();
 		}
-		[SmokeMethod("setBackgroundColor#", "(const QColor&)")]
+		[SmokeMethod("setBackgroundColor", "(const QColor&)", "#")]
 		public void SetBackgroundColor(QColor color) {
 			ProxyQMovie().SetBackgroundColor(color);
 		}
-		[SmokeMethod("backgroundColor", "() const")]
+		[SmokeMethod("backgroundColor", "() const", "")]
 		public QColor BackgroundColor() {
 			return ProxyQMovie().BackgroundColor();
 		}
-		[SmokeMethod("state", "() const")]
+		[SmokeMethod("state", "() const", "")]
 		public QMovie.MovieState State() {
 			return ProxyQMovie().State();
 		}
-		[SmokeMethod("frameRect", "() const")]
+		[SmokeMethod("frameRect", "() const", "")]
 		public QRect FrameRect() {
 			return ProxyQMovie().FrameRect();
 		}
-		[SmokeMethod("currentImage", "() const")]
+		[SmokeMethod("currentImage", "() const", "")]
 		public QImage CurrentImage() {
 			return ProxyQMovie().CurrentImage();
 		}
-		[SmokeMethod("currentPixmap", "() const")]
+		[SmokeMethod("currentPixmap", "() const", "")]
 		public QPixmap CurrentPixmap() {
 			return ProxyQMovie().CurrentPixmap();
 		}
-		[SmokeMethod("isValid", "() const")]
+		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
 			return ProxyQMovie().IsValid();
 		}
-		[SmokeMethod("jumpToFrame$", "(int)")]
+		[SmokeMethod("jumpToFrame", "(int)", "$")]
 		public bool JumpToFrame(int frameNumber) {
 			return ProxyQMovie().JumpToFrame(frameNumber);
 		}
-		[SmokeMethod("loopCount", "() const")]
+		[SmokeMethod("loopCount", "() const", "")]
 		public int LoopCount() {
 			return ProxyQMovie().LoopCount();
 		}
-		[SmokeMethod("frameCount", "() const")]
+		[SmokeMethod("frameCount", "() const", "")]
 		public int FrameCount() {
 			return ProxyQMovie().FrameCount();
 		}
-		[SmokeMethod("nextFrameDelay", "() const")]
+		[SmokeMethod("nextFrameDelay", "() const", "")]
 		public int NextFrameDelay() {
 			return ProxyQMovie().NextFrameDelay();
 		}
-		[SmokeMethod("currentFrameNumber", "() const")]
+		[SmokeMethod("currentFrameNumber", "() const", "")]
 		public int CurrentFrameNumber() {
 			return ProxyQMovie().CurrentFrameNumber();
 		}
-		[SmokeMethod("scaledSize", "()")]
+		[SmokeMethod("scaledSize", "()", "")]
 		public QSize ScaledSize() {
 			return ProxyQMovie().ScaledSize();
 		}
-		[SmokeMethod("setScaledSize#", "(const QSize&)")]
+		[SmokeMethod("setScaledSize", "(const QSize&)", "#")]
 		public void SetScaledSize(QSize size) {
 			ProxyQMovie().SetScaledSize(size);
 		}
 		[Q_SLOT("void start()")]
-		[SmokeMethod("start", "()")]
+		[SmokeMethod("start", "()", "")]
 		public void Start() {
 			ProxyQMovie().Start();
 		}
 		[Q_SLOT("bool jumpToNextFrame()")]
-		[SmokeMethod("jumpToNextFrame", "()")]
+		[SmokeMethod("jumpToNextFrame", "()", "")]
 		public bool JumpToNextFrame() {
 			return ProxyQMovie().JumpToNextFrame();
 		}
 		[Q_SLOT("void setPaused(bool)")]
-		[SmokeMethod("setPaused$", "(bool)")]
+		[SmokeMethod("setPaused", "(bool)", "$")]
 		public void SetPaused(bool paused) {
 			ProxyQMovie().SetPaused(paused);
 		}
 		[Q_SLOT("void stop()")]
-		[SmokeMethod("stop", "()")]
+		[SmokeMethod("stop", "()", "")]
 		public void Stop() {
 			ProxyQMovie().Stop();
 		}
@@ -241,7 +241,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQMovie();
 		}
-		[SmokeMethod("~QMovie", "()")]
+		[SmokeMethod("~QMovie", "()", "")]
 		private void DisposeQMovie() {
 			ProxyQMovie().DisposeQMovie();
 		}

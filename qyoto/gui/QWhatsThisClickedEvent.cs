@@ -30,11 +30,11 @@ namespace Qyoto {
 			CreateProxy();
 			NewQWhatsThisClickedEvent(href);
 		}
-		[SmokeMethod("QWhatsThisClickedEvent$", "(const QString&)")]
+		[SmokeMethod("QWhatsThisClickedEvent", "(const QString&)", "$")]
 		private void NewQWhatsThisClickedEvent(string href) {
 			ProxyQWhatsThisClickedEvent().NewQWhatsThisClickedEvent(href);
 		}
-		[SmokeMethod("href", "() const")]
+		[SmokeMethod("href", "() const", "")]
 		public string Href() {
 			return ProxyQWhatsThisClickedEvent().Href();
 		}
@@ -44,7 +44,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQWhatsThisClickedEvent();
 		}
-		[SmokeMethod("~QWhatsThisClickedEvent", "()")]
+		[SmokeMethod("~QWhatsThisClickedEvent", "()", "")]
 		private void DisposeQWhatsThisClickedEvent() {
 			ProxyQWhatsThisClickedEvent().DisposeQWhatsThisClickedEvent();
 		}

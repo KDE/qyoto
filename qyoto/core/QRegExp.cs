@@ -13,7 +13,7 @@ namespace Qyoto {
 		protected QRegExp(Type dummy) {}
 		interface IQRegExpProxy {
 			bool op_equals(QRegExp lhs, QRegExp rx);
-			[SmokeMethod("escape$", "(const QString&)")]
+			[SmokeMethod("escape", "(const QString&)", "$")]
 			string Escape(string str);
 		}
 
@@ -48,7 +48,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQRegExp();
 		}
-		[SmokeMethod("QRegExp", "()")]
+		[SmokeMethod("QRegExp", "()", "")]
 		private void NewQRegExp() {
 			ProxyQRegExp().NewQRegExp();
 		}
@@ -56,7 +56,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQRegExp(pattern,cs,syntax);
 		}
-		[SmokeMethod("QRegExp$$$", "(const QString&, Qt::CaseSensitivity, QRegExp::PatternSyntax)")]
+		[SmokeMethod("QRegExp", "(const QString&, Qt::CaseSensitivity, QRegExp::PatternSyntax)", "$$$")]
 		private void NewQRegExp(string pattern, Qt.CaseSensitivity cs, QRegExp.PatternSyntax syntax) {
 			ProxyQRegExp().NewQRegExp(pattern,cs,syntax);
 		}
@@ -64,7 +64,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQRegExp(pattern,cs);
 		}
-		[SmokeMethod("QRegExp$$", "(const QString&, Qt::CaseSensitivity)")]
+		[SmokeMethod("QRegExp", "(const QString&, Qt::CaseSensitivity)", "$$")]
 		private void NewQRegExp(string pattern, Qt.CaseSensitivity cs) {
 			ProxyQRegExp().NewQRegExp(pattern,cs);
 		}
@@ -72,7 +72,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQRegExp(pattern);
 		}
-		[SmokeMethod("QRegExp$", "(const QString&)")]
+		[SmokeMethod("QRegExp", "(const QString&)", "$")]
 		private void NewQRegExp(string pattern) {
 			ProxyQRegExp().NewQRegExp(pattern);
 		}
@@ -80,11 +80,11 @@ namespace Qyoto {
 			CreateProxy();
 			NewQRegExp(rx);
 		}
-		[SmokeMethod("QRegExp#", "(const QRegExp&)")]
+		[SmokeMethod("QRegExp", "(const QRegExp&)", "#")]
 		private void NewQRegExp(QRegExp rx) {
 			ProxyQRegExp().NewQRegExp(rx);
 		}
-		[SmokeMethod("operator==#", "(const QRegExp&) const")]
+		[SmokeMethod("operator==", "(const QRegExp&) const", "#")]
 		public static bool operator==(QRegExp lhs, QRegExp rx) {
 			return StaticQRegExp().op_equals(lhs,rx);
 		}
@@ -98,103 +98,103 @@ namespace Qyoto {
 		public override int GetHashCode() {
 			return ProxyQRegExp().GetHashCode();
 		}
-		[SmokeMethod("isEmpty", "() const")]
+		[SmokeMethod("isEmpty", "() const", "")]
 		public bool IsEmpty() {
 			return ProxyQRegExp().IsEmpty();
 		}
-		[SmokeMethod("isValid", "() const")]
+		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
 			return ProxyQRegExp().IsValid();
 		}
-		[SmokeMethod("pattern", "() const")]
+		[SmokeMethod("pattern", "() const", "")]
 		public string Pattern() {
 			return ProxyQRegExp().Pattern();
 		}
-		[SmokeMethod("setPattern$", "(const QString&)")]
+		[SmokeMethod("setPattern", "(const QString&)", "$")]
 		public void SetPattern(string pattern) {
 			ProxyQRegExp().SetPattern(pattern);
 		}
-		[SmokeMethod("caseSensitivity", "() const")]
+		[SmokeMethod("caseSensitivity", "() const", "")]
 		public Qt.CaseSensitivity CaseSensitivity() {
 			return ProxyQRegExp().CaseSensitivity();
 		}
-		[SmokeMethod("setCaseSensitivity$", "(Qt::CaseSensitivity)")]
+		[SmokeMethod("setCaseSensitivity", "(Qt::CaseSensitivity)", "$")]
 		public void SetCaseSensitivity(Qt.CaseSensitivity cs) {
 			ProxyQRegExp().SetCaseSensitivity(cs);
 		}
-		[SmokeMethod("patternSyntax", "() const")]
+		[SmokeMethod("patternSyntax", "() const", "")]
 		public QRegExp.PatternSyntax patternSyntax() {
 			return ProxyQRegExp().patternSyntax();
 		}
-		[SmokeMethod("setPatternSyntax$", "(QRegExp::PatternSyntax)")]
+		[SmokeMethod("setPatternSyntax", "(QRegExp::PatternSyntax)", "$")]
 		public void SetPatternSyntax(QRegExp.PatternSyntax syntax) {
 			ProxyQRegExp().SetPatternSyntax(syntax);
 		}
-		[SmokeMethod("isMinimal", "() const")]
+		[SmokeMethod("isMinimal", "() const", "")]
 		public bool IsMinimal() {
 			return ProxyQRegExp().IsMinimal();
 		}
-		[SmokeMethod("setMinimal$", "(bool)")]
+		[SmokeMethod("setMinimal", "(bool)", "$")]
 		public void SetMinimal(bool minimal) {
 			ProxyQRegExp().SetMinimal(minimal);
 		}
-		[SmokeMethod("exactMatch$", "(const QString&) const")]
+		[SmokeMethod("exactMatch", "(const QString&) const", "$")]
 		public bool ExactMatch(string str) {
 			return ProxyQRegExp().ExactMatch(str);
 		}
-		[SmokeMethod("indexIn$$$", "(const QString&, int, QRegExp::CaretMode) const")]
+		[SmokeMethod("indexIn", "(const QString&, int, QRegExp::CaretMode) const", "$$$")]
 		public int IndexIn(string str, int offset, QRegExp.CaretMode caretMode) {
 			return ProxyQRegExp().IndexIn(str,offset,caretMode);
 		}
-		[SmokeMethod("indexIn$$", "(const QString&, int) const")]
+		[SmokeMethod("indexIn", "(const QString&, int) const", "$$")]
 		public int IndexIn(string str, int offset) {
 			return ProxyQRegExp().IndexIn(str,offset);
 		}
-		[SmokeMethod("indexIn$", "(const QString&) const")]
+		[SmokeMethod("indexIn", "(const QString&) const", "$")]
 		public int IndexIn(string str) {
 			return ProxyQRegExp().IndexIn(str);
 		}
-		[SmokeMethod("lastIndexIn$$$", "(const QString&, int, QRegExp::CaretMode) const")]
+		[SmokeMethod("lastIndexIn", "(const QString&, int, QRegExp::CaretMode) const", "$$$")]
 		public int LastIndexIn(string str, int offset, QRegExp.CaretMode caretMode) {
 			return ProxyQRegExp().LastIndexIn(str,offset,caretMode);
 		}
-		[SmokeMethod("lastIndexIn$$", "(const QString&, int) const")]
+		[SmokeMethod("lastIndexIn", "(const QString&, int) const", "$$")]
 		public int LastIndexIn(string str, int offset) {
 			return ProxyQRegExp().LastIndexIn(str,offset);
 		}
-		[SmokeMethod("lastIndexIn$", "(const QString&) const")]
+		[SmokeMethod("lastIndexIn", "(const QString&) const", "$")]
 		public int LastIndexIn(string str) {
 			return ProxyQRegExp().LastIndexIn(str);
 		}
-		[SmokeMethod("matchedLength", "() const")]
+		[SmokeMethod("matchedLength", "() const", "")]
 		public int MatchedLength() {
 			return ProxyQRegExp().MatchedLength();
 		}
-		[SmokeMethod("numCaptures", "() const")]
+		[SmokeMethod("numCaptures", "() const", "")]
 		public int NumCaptures() {
 			return ProxyQRegExp().NumCaptures();
 		}
-		[SmokeMethod("capturedTexts", "()")]
+		[SmokeMethod("capturedTexts", "()", "")]
 		public List<string> CapturedTexts() {
 			return ProxyQRegExp().CapturedTexts();
 		}
-		[SmokeMethod("cap$", "(int)")]
+		[SmokeMethod("cap", "(int)", "$")]
 		public string Cap(int nth) {
 			return ProxyQRegExp().Cap(nth);
 		}
-		[SmokeMethod("cap", "()")]
+		[SmokeMethod("cap", "()", "")]
 		public string Cap() {
 			return ProxyQRegExp().Cap();
 		}
-		[SmokeMethod("pos$", "(int)")]
+		[SmokeMethod("pos", "(int)", "$")]
 		public int Pos(int nth) {
 			return ProxyQRegExp().Pos(nth);
 		}
-		[SmokeMethod("pos", "()")]
+		[SmokeMethod("pos", "()", "")]
 		public int Pos() {
 			return ProxyQRegExp().Pos();
 		}
-		[SmokeMethod("errorString", "()")]
+		[SmokeMethod("errorString", "()", "")]
 		public string ErrorString() {
 			return ProxyQRegExp().ErrorString();
 		}
@@ -207,7 +207,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQRegExp();
 		}
-		[SmokeMethod("~QRegExp", "()")]
+		[SmokeMethod("~QRegExp", "()", "")]
 		private void DisposeQRegExp() {
 			ProxyQRegExp().DisposeQRegExp();
 		}

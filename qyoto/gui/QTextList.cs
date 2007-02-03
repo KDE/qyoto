@@ -8,9 +8,9 @@ namespace Qyoto {
 	public class QTextList : QTextBlockGroup, IDisposable {
  		protected QTextList(Type dummy) : base((Type) null) {}
 		interface IQTextListProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
 
@@ -32,43 +32,43 @@ namespace Qyoto {
 
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		// QTextList* QTextList(QTextDocument* arg1); >>>> NOT CONVERTED
-		[SmokeMethod("count", "() const")]
+		[SmokeMethod("count", "() const", "")]
 		public int Count() {
 			return ProxyQTextList().Count();
 		}
-		[SmokeMethod("isEmpty", "() const")]
+		[SmokeMethod("isEmpty", "() const", "")]
 		public bool IsEmpty() {
 			return ProxyQTextList().IsEmpty();
 		}
-		[SmokeMethod("item$", "(int) const")]
+		[SmokeMethod("item", "(int) const", "$")]
 		public QTextBlock Item(int i) {
 			return ProxyQTextList().Item(i);
 		}
-		[SmokeMethod("itemNumber#", "(const QTextBlock&) const")]
+		[SmokeMethod("itemNumber", "(const QTextBlock&) const", "#")]
 		public int ItemNumber(QTextBlock arg1) {
 			return ProxyQTextList().ItemNumber(arg1);
 		}
-		[SmokeMethod("itemText#", "(const QTextBlock&) const")]
+		[SmokeMethod("itemText", "(const QTextBlock&) const", "#")]
 		public string ItemText(QTextBlock arg1) {
 			return ProxyQTextList().ItemText(arg1);
 		}
-		[SmokeMethod("removeItem$", "(int)")]
+		[SmokeMethod("removeItem", "(int)", "$")]
 		public void RemoveItem(int i) {
 			ProxyQTextList().RemoveItem(i);
 		}
-		[SmokeMethod("remove#", "(const QTextBlock&)")]
+		[SmokeMethod("remove", "(const QTextBlock&)", "#")]
 		public void Remove(QTextBlock arg1) {
 			ProxyQTextList().Remove(arg1);
 		}
-		[SmokeMethod("add#", "(const QTextBlock&)")]
+		[SmokeMethod("add", "(const QTextBlock&)", "#")]
 		public void Add(QTextBlock block) {
 			ProxyQTextList().Add(block);
 		}
-		[SmokeMethod("setFormat#", "(const QTextListFormat&)")]
+		[SmokeMethod("setFormat", "(const QTextListFormat&)", "#")]
 		public new void SetFormat(QTextListFormat format) {
 			ProxyQTextList().SetFormat(format);
 		}
-		[SmokeMethod("format", "() const")]
+		[SmokeMethod("format", "() const", "")]
 		public new QTextListFormat Format() {
 			return ProxyQTextList().Format();
 		}
@@ -84,7 +84,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQTextList();
 		}
-		[SmokeMethod("~QTextList", "()")]
+		[SmokeMethod("~QTextList", "()", "")]
 		private void DisposeQTextList() {
 			ProxyQTextList().DisposeQTextList();
 		}

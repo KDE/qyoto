@@ -10,9 +10,9 @@ namespace Qyoto {
 	public class QUndoGroup : QObject, IDisposable {
  		protected QUndoGroup(Type dummy) : base((Type) null) {}
 		interface IQUndoGroupProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
 
@@ -37,7 +37,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQUndoGroup(parent);
 		}
-		[SmokeMethod("QUndoGroup#", "(QObject*)")]
+		[SmokeMethod("QUndoGroup", "(QObject*)", "#")]
 		private void NewQUndoGroup(QObject parent) {
 			ProxyQUndoGroup().NewQUndoGroup(parent);
 		}
@@ -45,74 +45,74 @@ namespace Qyoto {
 			CreateProxy();
 			NewQUndoGroup();
 		}
-		[SmokeMethod("QUndoGroup", "()")]
+		[SmokeMethod("QUndoGroup", "()", "")]
 		private void NewQUndoGroup() {
 			ProxyQUndoGroup().NewQUndoGroup();
 		}
-		[SmokeMethod("addStack#", "(QUndoStack*)")]
+		[SmokeMethod("addStack", "(QUndoStack*)", "#")]
 		public void AddStack(QUndoStack stack) {
 			ProxyQUndoGroup().AddStack(stack);
 		}
-		[SmokeMethod("removeStack#", "(QUndoStack*)")]
+		[SmokeMethod("removeStack", "(QUndoStack*)", "#")]
 		public void RemoveStack(QUndoStack stack) {
 			ProxyQUndoGroup().RemoveStack(stack);
 		}
-		[SmokeMethod("stacks", "() const")]
+		[SmokeMethod("stacks", "() const", "")]
 		public List<QUndoStack> Stacks() {
 			return ProxyQUndoGroup().Stacks();
 		}
-		[SmokeMethod("activeStack", "() const")]
+		[SmokeMethod("activeStack", "() const", "")]
 		public QUndoStack ActiveStack() {
 			return ProxyQUndoGroup().ActiveStack();
 		}
-		[SmokeMethod("createUndoAction#$", "(QObject*, const QString&) const")]
+		[SmokeMethod("createUndoAction", "(QObject*, const QString&) const", "#$")]
 		public QAction CreateUndoAction(QObject parent, string prefix) {
 			return ProxyQUndoGroup().CreateUndoAction(parent,prefix);
 		}
-		[SmokeMethod("createUndoAction#", "(QObject*) const")]
+		[SmokeMethod("createUndoAction", "(QObject*) const", "#")]
 		public QAction CreateUndoAction(QObject parent) {
 			return ProxyQUndoGroup().CreateUndoAction(parent);
 		}
-		[SmokeMethod("createRedoAction#$", "(QObject*, const QString&) const")]
+		[SmokeMethod("createRedoAction", "(QObject*, const QString&) const", "#$")]
 		public QAction CreateRedoAction(QObject parent, string prefix) {
 			return ProxyQUndoGroup().CreateRedoAction(parent,prefix);
 		}
-		[SmokeMethod("createRedoAction#", "(QObject*) const")]
+		[SmokeMethod("createRedoAction", "(QObject*) const", "#")]
 		public QAction CreateRedoAction(QObject parent) {
 			return ProxyQUndoGroup().CreateRedoAction(parent);
 		}
-		[SmokeMethod("canUndo", "() const")]
+		[SmokeMethod("canUndo", "() const", "")]
 		public bool CanUndo() {
 			return ProxyQUndoGroup().CanUndo();
 		}
-		[SmokeMethod("canRedo", "() const")]
+		[SmokeMethod("canRedo", "() const", "")]
 		public bool CanRedo() {
 			return ProxyQUndoGroup().CanRedo();
 		}
-		[SmokeMethod("undoText", "() const")]
+		[SmokeMethod("undoText", "() const", "")]
 		public string UndoText() {
 			return ProxyQUndoGroup().UndoText();
 		}
-		[SmokeMethod("redoText", "() const")]
+		[SmokeMethod("redoText", "() const", "")]
 		public string RedoText() {
 			return ProxyQUndoGroup().RedoText();
 		}
-		[SmokeMethod("isClean", "() const")]
+		[SmokeMethod("isClean", "() const", "")]
 		public bool IsClean() {
 			return ProxyQUndoGroup().IsClean();
 		}
 		[Q_SLOT("void undo()")]
-		[SmokeMethod("undo", "()")]
+		[SmokeMethod("undo", "()", "")]
 		public void Undo() {
 			ProxyQUndoGroup().Undo();
 		}
 		[Q_SLOT("void redo()")]
-		[SmokeMethod("redo", "()")]
+		[SmokeMethod("redo", "()", "")]
 		public void Redo() {
 			ProxyQUndoGroup().Redo();
 		}
 		[Q_SLOT("void setActiveStack(QUndoStack*)")]
-		[SmokeMethod("setActiveStack#", "(QUndoStack*)")]
+		[SmokeMethod("setActiveStack", "(QUndoStack*)", "#")]
 		public void SetActiveStack(QUndoStack stack) {
 			ProxyQUndoGroup().SetActiveStack(stack);
 		}
@@ -128,7 +128,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQUndoGroup();
 		}
-		[SmokeMethod("~QUndoGroup", "()")]
+		[SmokeMethod("~QUndoGroup", "()", "")]
 		private void DisposeQUndoGroup() {
 			ProxyQUndoGroup().DisposeQUndoGroup();
 		}

@@ -11,11 +11,11 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QUrlInfo(Type dummy) {}
 		interface IQUrlInfoProxy {
-			[SmokeMethod("greaterThan##$", "(const QUrlInfo&, const QUrlInfo&, int)")]
+			[SmokeMethod("greaterThan", "(const QUrlInfo&, const QUrlInfo&, int)", "##$")]
 			bool GreaterThan(QUrlInfo i1, QUrlInfo i2, int sortBy);
-			[SmokeMethod("lessThan##$", "(const QUrlInfo&, const QUrlInfo&, int)")]
+			[SmokeMethod("lessThan", "(const QUrlInfo&, const QUrlInfo&, int)", "##$")]
 			bool LessThan(QUrlInfo i1, QUrlInfo i2, int sortBy);
-			[SmokeMethod("equal##$", "(const QUrlInfo&, const QUrlInfo&, int)")]
+			[SmokeMethod("equal", "(const QUrlInfo&, const QUrlInfo&, int)", "##$")]
 			bool Equal(QUrlInfo i1, QUrlInfo i2, int sortBy);
 		}
 
@@ -50,7 +50,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQUrlInfo();
 		}
-		[SmokeMethod("QUrlInfo", "()")]
+		[SmokeMethod("QUrlInfo", "()", "")]
 		private void NewQUrlInfo() {
 			ProxyQUrlInfo().NewQUrlInfo();
 		}
@@ -58,7 +58,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQUrlInfo(ui);
 		}
-		[SmokeMethod("QUrlInfo#", "(const QUrlInfo&)")]
+		[SmokeMethod("QUrlInfo", "(const QUrlInfo&)", "#")]
 		private void NewQUrlInfo(QUrlInfo ui) {
 			ProxyQUrlInfo().NewQUrlInfo(ui);
 		}
@@ -66,7 +66,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQUrlInfo(name,permissions,owner,group,size,lastModified,lastRead,isDir,isFile,isSymLink,isWritable,isReadable,isExecutable);
 		}
-		[SmokeMethod("QUrlInfo$$$$$##$$$$$$", "(const QString&, int, const QString&, const QString&, qint64, const QDateTime&, const QDateTime&, bool, bool, bool, bool, bool, bool)")]
+		[SmokeMethod("QUrlInfo", "(const QString&, int, const QString&, const QString&, qint64, const QDateTime&, const QDateTime&, bool, bool, bool, bool, bool, bool)", "$$$$$##$$$$$$")]
 		private void NewQUrlInfo(string name, int permissions, string owner, string group, long size, QDateTime lastModified, QDateTime lastRead, bool isDir, bool isFile, bool isSymLink, bool isWritable, bool isReadable, bool isExecutable) {
 			ProxyQUrlInfo().NewQUrlInfo(name,permissions,owner,group,size,lastModified,lastRead,isDir,isFile,isSymLink,isWritable,isReadable,isExecutable);
 		}
@@ -74,107 +74,107 @@ namespace Qyoto {
 			CreateProxy();
 			NewQUrlInfo(url,permissions,owner,group,size,lastModified,lastRead,isDir,isFile,isSymLink,isWritable,isReadable,isExecutable);
 		}
-		[SmokeMethod("QUrlInfo#$$$$##$$$$$$", "(const QUrl&, int, const QString&, const QString&, qint64, const QDateTime&, const QDateTime&, bool, bool, bool, bool, bool, bool)")]
+		[SmokeMethod("QUrlInfo", "(const QUrl&, int, const QString&, const QString&, qint64, const QDateTime&, const QDateTime&, bool, bool, bool, bool, bool, bool)", "#$$$$##$$$$$$")]
 		private void NewQUrlInfo(IQUrl url, int permissions, string owner, string group, long size, QDateTime lastModified, QDateTime lastRead, bool isDir, bool isFile, bool isSymLink, bool isWritable, bool isReadable, bool isExecutable) {
 			ProxyQUrlInfo().NewQUrlInfo(url,permissions,owner,group,size,lastModified,lastRead,isDir,isFile,isSymLink,isWritable,isReadable,isExecutable);
 		}
-		[SmokeMethod("setName$", "(const QString&)")]
+		[SmokeMethod("setName", "(const QString&)", "$")]
 		public virtual void SetName(string name) {
 			ProxyQUrlInfo().SetName(name);
 		}
-		[SmokeMethod("setDir$", "(bool)")]
+		[SmokeMethod("setDir", "(bool)", "$")]
 		public virtual void SetDir(bool b) {
 			ProxyQUrlInfo().SetDir(b);
 		}
-		[SmokeMethod("setFile$", "(bool)")]
+		[SmokeMethod("setFile", "(bool)", "$")]
 		public virtual void SetFile(bool b) {
 			ProxyQUrlInfo().SetFile(b);
 		}
-		[SmokeMethod("setSymLink$", "(bool)")]
+		[SmokeMethod("setSymLink", "(bool)", "$")]
 		public virtual void SetSymLink(bool b) {
 			ProxyQUrlInfo().SetSymLink(b);
 		}
-		[SmokeMethod("setOwner$", "(const QString&)")]
+		[SmokeMethod("setOwner", "(const QString&)", "$")]
 		public virtual void SetOwner(string s) {
 			ProxyQUrlInfo().SetOwner(s);
 		}
-		[SmokeMethod("setGroup$", "(const QString&)")]
+		[SmokeMethod("setGroup", "(const QString&)", "$")]
 		public virtual void SetGroup(string s) {
 			ProxyQUrlInfo().SetGroup(s);
 		}
-		[SmokeMethod("setSize$", "(qint64)")]
+		[SmokeMethod("setSize", "(qint64)", "$")]
 		public virtual void SetSize(long size) {
 			ProxyQUrlInfo().SetSize(size);
 		}
-		[SmokeMethod("setWritable$", "(bool)")]
+		[SmokeMethod("setWritable", "(bool)", "$")]
 		public virtual void SetWritable(bool b) {
 			ProxyQUrlInfo().SetWritable(b);
 		}
-		[SmokeMethod("setReadable$", "(bool)")]
+		[SmokeMethod("setReadable", "(bool)", "$")]
 		public virtual void SetReadable(bool b) {
 			ProxyQUrlInfo().SetReadable(b);
 		}
-		[SmokeMethod("setPermissions$", "(int)")]
+		[SmokeMethod("setPermissions", "(int)", "$")]
 		public virtual void SetPermissions(int p) {
 			ProxyQUrlInfo().SetPermissions(p);
 		}
-		[SmokeMethod("setLastModified#", "(const QDateTime&)")]
+		[SmokeMethod("setLastModified", "(const QDateTime&)", "#")]
 		public virtual void SetLastModified(QDateTime dt) {
 			ProxyQUrlInfo().SetLastModified(dt);
 		}
-		[SmokeMethod("isValid", "() const")]
+		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
 			return ProxyQUrlInfo().IsValid();
 		}
-		[SmokeMethod("name", "() const")]
+		[SmokeMethod("name", "() const", "")]
 		public string Name() {
 			return ProxyQUrlInfo().Name();
 		}
-		[SmokeMethod("permissions", "() const")]
+		[SmokeMethod("permissions", "() const", "")]
 		public int Permissions() {
 			return ProxyQUrlInfo().Permissions();
 		}
-		[SmokeMethod("owner", "() const")]
+		[SmokeMethod("owner", "() const", "")]
 		public string Owner() {
 			return ProxyQUrlInfo().Owner();
 		}
-		[SmokeMethod("group", "() const")]
+		[SmokeMethod("group", "() const", "")]
 		public string Group() {
 			return ProxyQUrlInfo().Group();
 		}
-		[SmokeMethod("size", "() const")]
+		[SmokeMethod("size", "() const", "")]
 		public long Size() {
 			return ProxyQUrlInfo().Size();
 		}
-		[SmokeMethod("lastModified", "() const")]
+		[SmokeMethod("lastModified", "() const", "")]
 		public QDateTime LastModified() {
 			return ProxyQUrlInfo().LastModified();
 		}
-		[SmokeMethod("lastRead", "() const")]
+		[SmokeMethod("lastRead", "() const", "")]
 		public QDateTime LastRead() {
 			return ProxyQUrlInfo().LastRead();
 		}
-		[SmokeMethod("isDir", "() const")]
+		[SmokeMethod("isDir", "() const", "")]
 		public bool IsDir() {
 			return ProxyQUrlInfo().IsDir();
 		}
-		[SmokeMethod("isFile", "() const")]
+		[SmokeMethod("isFile", "() const", "")]
 		public bool IsFile() {
 			return ProxyQUrlInfo().IsFile();
 		}
-		[SmokeMethod("isSymLink", "() const")]
+		[SmokeMethod("isSymLink", "() const", "")]
 		public bool IsSymLink() {
 			return ProxyQUrlInfo().IsSymLink();
 		}
-		[SmokeMethod("isWritable", "() const")]
+		[SmokeMethod("isWritable", "() const", "")]
 		public bool IsWritable() {
 			return ProxyQUrlInfo().IsWritable();
 		}
-		[SmokeMethod("isReadable", "() const")]
+		[SmokeMethod("isReadable", "() const", "")]
 		public bool IsReadable() {
 			return ProxyQUrlInfo().IsReadable();
 		}
-		[SmokeMethod("isExecutable", "() const")]
+		[SmokeMethod("isExecutable", "() const", "")]
 		public bool IsExecutable() {
 			return ProxyQUrlInfo().IsExecutable();
 		}
@@ -193,7 +193,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQUrlInfo();
 		}
-		[SmokeMethod("~QUrlInfo", "()")]
+		[SmokeMethod("~QUrlInfo", "()", "")]
 		private void DisposeQUrlInfo() {
 			ProxyQUrlInfo().DisposeQUrlInfo();
 		}

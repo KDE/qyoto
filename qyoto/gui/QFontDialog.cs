@@ -8,19 +8,19 @@ namespace Qyoto {
 	public class QFontDialog : QDialog {
  		protected QFontDialog(Type dummy) : base((Type) null) {}
 		interface IQFontDialogProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
-			[SmokeMethod("getFont$##$", "(bool*, const QFont&, QWidget*, const QString&)")]
+			[SmokeMethod("getFont", "(bool*, const QFont&, QWidget*, const QString&)", "$##$")]
 			QFont GetFont(out bool ok, QFont def, QWidget parent, string caption);
-			[SmokeMethod("getFont$##", "(bool*, const QFont&, QWidget*)")]
+			[SmokeMethod("getFont", "(bool*, const QFont&, QWidget*)", "$##")]
 			QFont GetFont(out bool ok, QFont def, QWidget parent);
-			[SmokeMethod("getFont$#", "(bool*, const QFont&)")]
+			[SmokeMethod("getFont", "(bool*, const QFont&)", "$#")]
 			QFont GetFont(out bool ok, QFont def);
-			[SmokeMethod("getFont$#", "(bool*, QWidget*)")]
+			[SmokeMethod("getFont", "(bool*, QWidget*)", "$#")]
 			QFont GetFont(out bool ok, QWidget parent);
-			[SmokeMethod("getFont$", "(bool*)")]
+			[SmokeMethod("getFont", "(bool*)", "$")]
 			QFont GetFont(out bool ok);
 		}
 

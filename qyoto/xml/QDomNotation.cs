@@ -30,7 +30,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDomNotation();
 		}
-		[SmokeMethod("QDomNotation", "()")]
+		[SmokeMethod("QDomNotation", "()", "")]
 		private void NewQDomNotation() {
 			ProxyQDomNotation().NewQDomNotation();
 		}
@@ -38,19 +38,19 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDomNotation(x);
 		}
-		[SmokeMethod("QDomNotation#", "(const QDomNotation&)")]
+		[SmokeMethod("QDomNotation", "(const QDomNotation&)", "#")]
 		private void NewQDomNotation(QDomNotation x) {
 			ProxyQDomNotation().NewQDomNotation(x);
 		}
-		[SmokeMethod("publicId", "() const")]
+		[SmokeMethod("publicId", "() const", "")]
 		public string PublicId() {
 			return ProxyQDomNotation().PublicId();
 		}
-		[SmokeMethod("systemId", "() const")]
+		[SmokeMethod("systemId", "() const", "")]
 		public string SystemId() {
 			return ProxyQDomNotation().SystemId();
 		}
-		[SmokeMethod("nodeType", "() const")]
+		[SmokeMethod("nodeType", "() const", "")]
 		public new QDomNode.NodeType NodeType() {
 			return ProxyQDomNotation().NodeType();
 		}
@@ -60,7 +60,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQDomNotation();
 		}
-		[SmokeMethod("~QDomNotation", "()")]
+		[SmokeMethod("~QDomNotation", "()", "")]
 		private void DisposeQDomNotation() {
 			ProxyQDomNotation().DisposeQDomNotation();
 		}

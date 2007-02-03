@@ -27,19 +27,19 @@ namespace Qyoto {
 			return (IQInputContextFactoryInterfaceProxy) _staticInterceptor;
 		}
 
-		[SmokeMethod("create$", "(const QString&)")]
+		[SmokeMethod("create", "(const QString&)", "$")]
 		public virtual QInputContext Create(string key) {
 			return ProxyQInputContextFactoryInterface().Create(key);
 		}
-		[SmokeMethod("languages$", "(const QString&)")]
+		[SmokeMethod("languages", "(const QString&)", "$")]
 		public virtual List<string> Languages(string key) {
 			return ProxyQInputContextFactoryInterface().Languages(key);
 		}
-		[SmokeMethod("displayName$", "(const QString&)")]
+		[SmokeMethod("displayName", "(const QString&)", "$")]
 		public virtual string DisplayName(string key) {
 			return ProxyQInputContextFactoryInterface().DisplayName(key);
 		}
-		[SmokeMethod("description$", "(const QString&)")]
+		[SmokeMethod("description", "(const QString&)", "$")]
 		public virtual string Description(string key) {
 			return ProxyQInputContextFactoryInterface().Description(key);
 		}
@@ -47,7 +47,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQInputContextFactoryInterface();
 		}
-		[SmokeMethod("QInputContextFactoryInterface", "()")]
+		[SmokeMethod("QInputContextFactoryInterface", "()", "")]
 		private void NewQInputContextFactoryInterface() {
 			ProxyQInputContextFactoryInterface().NewQInputContextFactoryInterface();
 		}
@@ -57,7 +57,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQInputContextFactoryInterface();
 		}
-		[SmokeMethod("~QInputContextFactoryInterface", "()")]
+		[SmokeMethod("~QInputContextFactoryInterface", "()", "")]
 		private void DisposeQInputContextFactoryInterface() {
 			ProxyQInputContextFactoryInterface().DisposeQInputContextFactoryInterface();
 		}

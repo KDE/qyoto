@@ -32,7 +32,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTextFrameLayoutData();
 		}
-		[SmokeMethod("QTextFrameLayoutData", "()")]
+		[SmokeMethod("QTextFrameLayoutData", "()", "")]
 		private void NewQTextFrameLayoutData() {
 			ProxyQTextFrameLayoutData().NewQTextFrameLayoutData();
 		}
@@ -42,7 +42,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQTextFrameLayoutData();
 		}
-		[SmokeMethod("~QTextFrameLayoutData", "()")]
+		[SmokeMethod("~QTextFrameLayoutData", "()", "")]
 		private void DisposeQTextFrameLayoutData() {
 			ProxyQTextFrameLayoutData().DisposeQTextFrameLayoutData();
 		}

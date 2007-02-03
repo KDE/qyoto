@@ -32,7 +32,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQNetworkAddressEntry();
 		}
-		[SmokeMethod("QNetworkAddressEntry", "()")]
+		[SmokeMethod("QNetworkAddressEntry", "()", "")]
 		private void NewQNetworkAddressEntry() {
 			ProxyQNetworkAddressEntry().NewQNetworkAddressEntry();
 		}
@@ -40,31 +40,31 @@ namespace Qyoto {
 			CreateProxy();
 			NewQNetworkAddressEntry(other);
 		}
-		[SmokeMethod("QNetworkAddressEntry#", "(const QNetworkAddressEntry&)")]
+		[SmokeMethod("QNetworkAddressEntry", "(const QNetworkAddressEntry&)", "#")]
 		private void NewQNetworkAddressEntry(QNetworkAddressEntry other) {
 			ProxyQNetworkAddressEntry().NewQNetworkAddressEntry(other);
 		}
-		[SmokeMethod("ip", "() const")]
+		[SmokeMethod("ip", "() const", "")]
 		public QHostAddress Ip() {
 			return ProxyQNetworkAddressEntry().Ip();
 		}
-		[SmokeMethod("setIp#", "(const QHostAddress&)")]
+		[SmokeMethod("setIp", "(const QHostAddress&)", "#")]
 		public void SetIp(QHostAddress newIp) {
 			ProxyQNetworkAddressEntry().SetIp(newIp);
 		}
-		[SmokeMethod("netmask", "() const")]
+		[SmokeMethod("netmask", "() const", "")]
 		public QHostAddress Netmask() {
 			return ProxyQNetworkAddressEntry().Netmask();
 		}
-		[SmokeMethod("setNetmask#", "(const QHostAddress&)")]
+		[SmokeMethod("setNetmask", "(const QHostAddress&)", "#")]
 		public void SetNetmask(QHostAddress newNetmask) {
 			ProxyQNetworkAddressEntry().SetNetmask(newNetmask);
 		}
-		[SmokeMethod("broadcast", "() const")]
+		[SmokeMethod("broadcast", "() const", "")]
 		public QHostAddress Broadcast() {
 			return ProxyQNetworkAddressEntry().Broadcast();
 		}
-		[SmokeMethod("setBroadcast#", "(const QHostAddress&)")]
+		[SmokeMethod("setBroadcast", "(const QHostAddress&)", "#")]
 		public void SetBroadcast(QHostAddress newBroadcast) {
 			ProxyQNetworkAddressEntry().SetBroadcast(newBroadcast);
 		}
@@ -74,7 +74,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQNetworkAddressEntry();
 		}
-		[SmokeMethod("~QNetworkAddressEntry", "()")]
+		[SmokeMethod("~QNetworkAddressEntry", "()", "")]
 		private void DisposeQNetworkAddressEntry() {
 			ProxyQNetworkAddressEntry().DisposeQNetworkAddressEntry();
 		}

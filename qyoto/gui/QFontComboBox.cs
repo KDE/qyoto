@@ -9,9 +9,9 @@ namespace Qyoto {
 	public class QFontComboBox : QComboBox, IDisposable {
  		protected QFontComboBox(Type dummy) : base((Type) null) {}
 		interface IQFontComboBoxProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
 
@@ -70,7 +70,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQFontComboBox(parent);
 		}
-		[SmokeMethod("QFontComboBox#", "(QWidget*)")]
+		[SmokeMethod("QFontComboBox", "(QWidget*)", "#")]
 		private void NewQFontComboBox(QWidget parent) {
 			ProxyQFontComboBox().NewQFontComboBox(parent);
 		}
@@ -78,11 +78,11 @@ namespace Qyoto {
 			CreateProxy();
 			NewQFontComboBox();
 		}
-		[SmokeMethod("QFontComboBox", "()")]
+		[SmokeMethod("QFontComboBox", "()", "")]
 		private void NewQFontComboBox() {
 			ProxyQFontComboBox().NewQFontComboBox();
 		}
-		[SmokeMethod("sizeHint", "() const")]
+		[SmokeMethod("sizeHint", "() const", "")]
 		public new QSize SizeHint() {
 			return ProxyQFontComboBox().SizeHint();
 		}
@@ -92,7 +92,7 @@ namespace Qyoto {
 		public static new string Tr(string s) {
 			return StaticQFontComboBox().Tr(s);
 		}
-		[SmokeMethod("event#", "(QEvent*)")]
+		[SmokeMethod("event", "(QEvent*)", "#")]
 		public new bool Event(QEvent e) {
 			return ProxyQFontComboBox().Event(e);
 		}
@@ -102,7 +102,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQFontComboBox();
 		}
-		[SmokeMethod("~QFontComboBox", "()")]
+		[SmokeMethod("~QFontComboBox", "()", "")]
 		private void DisposeQFontComboBox() {
 			ProxyQFontComboBox().DisposeQFontComboBox();
 		}

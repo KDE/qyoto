@@ -35,7 +35,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionDockWidget();
 		}
-		[SmokeMethod("QStyleOptionDockWidget", "()")]
+		[SmokeMethod("QStyleOptionDockWidget", "()", "")]
 		private void NewQStyleOptionDockWidget() {
 			ProxyQStyleOptionDockWidget().NewQStyleOptionDockWidget();
 		}
@@ -43,7 +43,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionDockWidget(other);
 		}
-		[SmokeMethod("QStyleOptionDockWidget#", "(const QStyleOptionDockWidget&)")]
+		[SmokeMethod("QStyleOptionDockWidget", "(const QStyleOptionDockWidget&)", "#")]
 		private void NewQStyleOptionDockWidget(QStyleOptionDockWidget other) {
 			ProxyQStyleOptionDockWidget().NewQStyleOptionDockWidget(other);
 		}
@@ -51,7 +51,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionDockWidget(version);
 		}
-		[SmokeMethod("QStyleOptionDockWidget$", "(int)")]
+		[SmokeMethod("QStyleOptionDockWidget", "(int)", "$")]
 		private void NewQStyleOptionDockWidget(int version) {
 			ProxyQStyleOptionDockWidget().NewQStyleOptionDockWidget(version);
 		}
@@ -61,7 +61,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQStyleOptionDockWidget();
 		}
-		[SmokeMethod("~QStyleOptionDockWidget", "()")]
+		[SmokeMethod("~QStyleOptionDockWidget", "()", "")]
 		private void DisposeQStyleOptionDockWidget() {
 			ProxyQStyleOptionDockWidget().DisposeQStyleOptionDockWidget();
 		}

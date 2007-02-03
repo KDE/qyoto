@@ -8,9 +8,9 @@ namespace Qyoto {
 	public class QAbstractProxyModel : QAbstractItemModel {
  		protected QAbstractProxyModel(Type dummy) : base((Type) null) {}
 		interface IQAbstractProxyModelProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
 
@@ -35,7 +35,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQAbstractProxyModel(parent);
 		}
-		[SmokeMethod("QAbstractProxyModel#", "(QObject*)")]
+		[SmokeMethod("QAbstractProxyModel", "(QObject*)", "#")]
 		private void NewQAbstractProxyModel(QObject parent) {
 			ProxyQAbstractProxyModel().NewQAbstractProxyModel(parent);
 		}
@@ -43,55 +43,55 @@ namespace Qyoto {
 			CreateProxy();
 			NewQAbstractProxyModel();
 		}
-		[SmokeMethod("QAbstractProxyModel", "()")]
+		[SmokeMethod("QAbstractProxyModel", "()", "")]
 		private void NewQAbstractProxyModel() {
 			ProxyQAbstractProxyModel().NewQAbstractProxyModel();
 		}
-		[SmokeMethod("setSourceModel#", "(QAbstractItemModel*)")]
+		[SmokeMethod("setSourceModel", "(QAbstractItemModel*)", "#")]
 		public virtual void SetSourceModel(QAbstractItemModel sourceModel) {
 			ProxyQAbstractProxyModel().SetSourceModel(sourceModel);
 		}
-		[SmokeMethod("sourceModel", "() const")]
+		[SmokeMethod("sourceModel", "() const", "")]
 		public QAbstractItemModel SourceModel() {
 			return ProxyQAbstractProxyModel().SourceModel();
 		}
-		[SmokeMethod("mapToSource#", "(const QModelIndex&) const")]
+		[SmokeMethod("mapToSource", "(const QModelIndex&) const", "#")]
 		public virtual QModelIndex MapToSource(QModelIndex proxyIndex) {
 			return ProxyQAbstractProxyModel().MapToSource(proxyIndex);
 		}
-		[SmokeMethod("mapFromSource#", "(const QModelIndex&) const")]
+		[SmokeMethod("mapFromSource", "(const QModelIndex&) const", "#")]
 		public virtual QModelIndex MapFromSource(QModelIndex sourceIndex) {
 			return ProxyQAbstractProxyModel().MapFromSource(sourceIndex);
 		}
-		[SmokeMethod("mapSelectionToSource#", "(const QItemSelection&) const")]
+		[SmokeMethod("mapSelectionToSource", "(const QItemSelection&) const", "#")]
 		public virtual QItemSelection MapSelectionToSource(QItemSelection selection) {
 			return ProxyQAbstractProxyModel().MapSelectionToSource(selection);
 		}
-		[SmokeMethod("mapSelectionFromSource#", "(const QItemSelection&) const")]
+		[SmokeMethod("mapSelectionFromSource", "(const QItemSelection&) const", "#")]
 		public virtual QItemSelection MapSelectionFromSource(QItemSelection selection) {
 			return ProxyQAbstractProxyModel().MapSelectionFromSource(selection);
 		}
-		[SmokeMethod("submit", "()")]
+		[SmokeMethod("submit", "()", "")]
 		public new bool Submit() {
 			return ProxyQAbstractProxyModel().Submit();
 		}
-		[SmokeMethod("revert", "()")]
+		[SmokeMethod("revert", "()", "")]
 		public new void Revert() {
 			ProxyQAbstractProxyModel().Revert();
 		}
-		[SmokeMethod("data#$", "(const QModelIndex&, int) const")]
+		[SmokeMethod("data", "(const QModelIndex&, int) const", "#$")]
 		public new QVariant Data(QModelIndex proxyIndex, int role) {
 			return ProxyQAbstractProxyModel().Data(proxyIndex,role);
 		}
-		[SmokeMethod("data#", "(const QModelIndex&) const")]
+		[SmokeMethod("data", "(const QModelIndex&) const", "#")]
 		public new QVariant Data(QModelIndex proxyIndex) {
 			return ProxyQAbstractProxyModel().Data(proxyIndex);
 		}
-		[SmokeMethod("headerData$$$", "(int, Qt::Orientation, int) const")]
+		[SmokeMethod("headerData", "(int, Qt::Orientation, int) const", "$$$")]
 		public new QVariant HeaderData(int section, Qt.Orientation orientation, int role) {
 			return ProxyQAbstractProxyModel().HeaderData(section,orientation,role);
 		}
-		[SmokeMethod("flags#", "(const QModelIndex&) const")]
+		[SmokeMethod("flags", "(const QModelIndex&) const", "#")]
 		public new int Flags(QModelIndex index) {
 			return ProxyQAbstractProxyModel().Flags(index);
 		}
@@ -107,7 +107,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQAbstractProxyModel();
 		}
-		[SmokeMethod("~QAbstractProxyModel", "()")]
+		[SmokeMethod("~QAbstractProxyModel", "()", "")]
 		private void DisposeQAbstractProxyModel() {
 			ProxyQAbstractProxyModel().DisposeQAbstractProxyModel();
 		}

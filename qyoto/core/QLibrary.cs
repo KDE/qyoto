@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QLibrary : QObject, IDisposable {
  		protected QLibrary(Type dummy) : base((Type) null) {}
 		interface IQLibraryProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
-			[SmokeMethod("isLibrary$", "(const QString&)")]
+			[SmokeMethod("isLibrary", "(const QString&)", "$")]
 			bool IsLibrary(string fileName);
 		}
 
@@ -51,7 +51,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQLibrary(parent);
 		}
-		[SmokeMethod("QLibrary#", "(QObject*)")]
+		[SmokeMethod("QLibrary", "(QObject*)", "#")]
 		private void NewQLibrary(QObject parent) {
 			ProxyQLibrary().NewQLibrary(parent);
 		}
@@ -59,7 +59,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQLibrary();
 		}
-		[SmokeMethod("QLibrary", "()")]
+		[SmokeMethod("QLibrary", "()", "")]
 		private void NewQLibrary() {
 			ProxyQLibrary().NewQLibrary();
 		}
@@ -67,7 +67,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQLibrary(fileName,parent);
 		}
-		[SmokeMethod("QLibrary$#", "(const QString&, QObject*)")]
+		[SmokeMethod("QLibrary", "(const QString&, QObject*)", "$#")]
 		private void NewQLibrary(string fileName, QObject parent) {
 			ProxyQLibrary().NewQLibrary(fileName,parent);
 		}
@@ -75,7 +75,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQLibrary(fileName);
 		}
-		[SmokeMethod("QLibrary$", "(const QString&)")]
+		[SmokeMethod("QLibrary", "(const QString&)", "$")]
 		private void NewQLibrary(string fileName) {
 			ProxyQLibrary().NewQLibrary(fileName);
 		}
@@ -83,7 +83,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQLibrary(fileName,verNum,parent);
 		}
-		[SmokeMethod("QLibrary$$#", "(const QString&, int, QObject*)")]
+		[SmokeMethod("QLibrary", "(const QString&, int, QObject*)", "$$#")]
 		private void NewQLibrary(string fileName, int verNum, QObject parent) {
 			ProxyQLibrary().NewQLibrary(fileName,verNum,parent);
 		}
@@ -91,28 +91,28 @@ namespace Qyoto {
 			CreateProxy();
 			NewQLibrary(fileName,verNum);
 		}
-		[SmokeMethod("QLibrary$$", "(const QString&, int)")]
+		[SmokeMethod("QLibrary", "(const QString&, int)", "$$")]
 		private void NewQLibrary(string fileName, int verNum) {
 			ProxyQLibrary().NewQLibrary(fileName,verNum);
 		}
 		// void* resolve(const char* arg1); >>>> NOT CONVERTED
-		[SmokeMethod("load", "()")]
+		[SmokeMethod("load", "()", "")]
 		public bool Load() {
 			return ProxyQLibrary().Load();
 		}
-		[SmokeMethod("unload", "()")]
+		[SmokeMethod("unload", "()", "")]
 		public bool Unload() {
 			return ProxyQLibrary().Unload();
 		}
-		[SmokeMethod("isLoaded", "() const")]
+		[SmokeMethod("isLoaded", "() const", "")]
 		public bool IsLoaded() {
 			return ProxyQLibrary().IsLoaded();
 		}
-		[SmokeMethod("setFileNameAndVersion$$", "(const QString&, int)")]
+		[SmokeMethod("setFileNameAndVersion", "(const QString&, int)", "$$")]
 		public void SetFileNameAndVersion(string fileName, int verNum) {
 			ProxyQLibrary().SetFileNameAndVersion(fileName,verNum);
 		}
-		[SmokeMethod("errorString", "() const")]
+		[SmokeMethod("errorString", "() const", "")]
 		public string ErrorString() {
 			return ProxyQLibrary().ErrorString();
 		}
@@ -133,7 +133,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQLibrary();
 		}
-		[SmokeMethod("~QLibrary", "()")]
+		[SmokeMethod("~QLibrary", "()", "")]
 		private void DisposeQLibrary() {
 			ProxyQLibrary().DisposeQLibrary();
 		}

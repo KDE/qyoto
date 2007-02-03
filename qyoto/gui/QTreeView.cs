@@ -10,9 +10,9 @@ namespace Qyoto {
 	public class QTreeView : QAbstractItemView, IDisposable {
  		protected QTreeView(Type dummy) : base((Type) null) {}
 		interface IQTreeViewProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
 
@@ -100,7 +100,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTreeView(parent);
 		}
-		[SmokeMethod("QTreeView#", "(QWidget*)")]
+		[SmokeMethod("QTreeView", "(QWidget*)", "#")]
 		private void NewQTreeView(QWidget parent) {
 			ProxyQTreeView().NewQTreeView(parent);
 		}
@@ -108,165 +108,165 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTreeView();
 		}
-		[SmokeMethod("QTreeView", "()")]
+		[SmokeMethod("QTreeView", "()", "")]
 		private void NewQTreeView() {
 			ProxyQTreeView().NewQTreeView();
 		}
-		[SmokeMethod("setModel#", "(QAbstractItemModel*)")]
+		[SmokeMethod("setModel", "(QAbstractItemModel*)", "#")]
 		public new void SetModel(QAbstractItemModel model) {
 			ProxyQTreeView().SetModel(model);
 		}
-		[SmokeMethod("setRootIndex#", "(const QModelIndex&)")]
+		[SmokeMethod("setRootIndex", "(const QModelIndex&)", "#")]
 		public new void SetRootIndex(QModelIndex index) {
 			ProxyQTreeView().SetRootIndex(index);
 		}
-		[SmokeMethod("setSelectionModel#", "(QItemSelectionModel*)")]
+		[SmokeMethod("setSelectionModel", "(QItemSelectionModel*)", "#")]
 		public new void SetSelectionModel(QItemSelectionModel selectionModel) {
 			ProxyQTreeView().SetSelectionModel(selectionModel);
 		}
-		[SmokeMethod("header", "() const")]
+		[SmokeMethod("header", "() const", "")]
 		public QHeaderView Header() {
 			return ProxyQTreeView().Header();
 		}
-		[SmokeMethod("setHeader#", "(QHeaderView*)")]
+		[SmokeMethod("setHeader", "(QHeaderView*)", "#")]
 		public void SetHeader(QHeaderView header) {
 			ProxyQTreeView().SetHeader(header);
 		}
-		[SmokeMethod("columnViewportPosition$", "(int) const")]
+		[SmokeMethod("columnViewportPosition", "(int) const", "$")]
 		public int ColumnViewportPosition(int column) {
 			return ProxyQTreeView().ColumnViewportPosition(column);
 		}
-		[SmokeMethod("columnWidth$", "(int) const")]
+		[SmokeMethod("columnWidth", "(int) const", "$")]
 		public int ColumnWidth(int column) {
 			return ProxyQTreeView().ColumnWidth(column);
 		}
-		[SmokeMethod("setColumnWidth$$", "(int, int)")]
+		[SmokeMethod("setColumnWidth", "(int, int)", "$$")]
 		public void SetColumnWidth(int column, int width) {
 			ProxyQTreeView().SetColumnWidth(column,width);
 		}
-		[SmokeMethod("columnAt$", "(int) const")]
+		[SmokeMethod("columnAt", "(int) const", "$")]
 		public int ColumnAt(int x) {
 			return ProxyQTreeView().ColumnAt(x);
 		}
-		[SmokeMethod("isColumnHidden$", "(int) const")]
+		[SmokeMethod("isColumnHidden", "(int) const", "$")]
 		public bool IsColumnHidden(int column) {
 			return ProxyQTreeView().IsColumnHidden(column);
 		}
-		[SmokeMethod("setColumnHidden$$", "(int, bool)")]
+		[SmokeMethod("setColumnHidden", "(int, bool)", "$$")]
 		public void SetColumnHidden(int column, bool hide) {
 			ProxyQTreeView().SetColumnHidden(column,hide);
 		}
-		[SmokeMethod("isRowHidden$#", "(int, const QModelIndex&) const")]
+		[SmokeMethod("isRowHidden", "(int, const QModelIndex&) const", "$#")]
 		public bool IsRowHidden(int row, QModelIndex parent) {
 			return ProxyQTreeView().IsRowHidden(row,parent);
 		}
-		[SmokeMethod("setRowHidden$#$", "(int, const QModelIndex&, bool)")]
+		[SmokeMethod("setRowHidden", "(int, const QModelIndex&, bool)", "$#$")]
 		public void SetRowHidden(int row, QModelIndex parent, bool hide) {
 			ProxyQTreeView().SetRowHidden(row,parent,hide);
 		}
-		[SmokeMethod("isExpanded#", "(const QModelIndex&) const")]
+		[SmokeMethod("isExpanded", "(const QModelIndex&) const", "#")]
 		public bool IsExpanded(QModelIndex index) {
 			return ProxyQTreeView().IsExpanded(index);
 		}
-		[SmokeMethod("setExpanded#$", "(const QModelIndex&, bool)")]
+		[SmokeMethod("setExpanded", "(const QModelIndex&, bool)", "#$")]
 		public void SetExpanded(QModelIndex index, bool expand) {
 			ProxyQTreeView().SetExpanded(index,expand);
 		}
-		[SmokeMethod("isSortingEnabled", "() const")]
+		[SmokeMethod("isSortingEnabled", "() const", "")]
 		public bool IsSortingEnabled() {
 			return ProxyQTreeView().IsSortingEnabled();
 		}
-		[SmokeMethod("isAnimated", "() const")]
+		[SmokeMethod("isAnimated", "() const", "")]
 		public bool IsAnimated() {
 			return ProxyQTreeView().IsAnimated();
 		}
-		[SmokeMethod("keyboardSearch$", "(const QString&)")]
+		[SmokeMethod("keyboardSearch", "(const QString&)", "$")]
 		public new void KeyboardSearch(string search) {
 			ProxyQTreeView().KeyboardSearch(search);
 		}
-		[SmokeMethod("visualRect#", "(const QModelIndex&) const")]
+		[SmokeMethod("visualRect", "(const QModelIndex&) const", "#")]
 		public new QRect VisualRect(QModelIndex index) {
 			return ProxyQTreeView().VisualRect(index);
 		}
-		[SmokeMethod("scrollTo#$", "(const QModelIndex&, QAbstractItemView::ScrollHint)")]
+		[SmokeMethod("scrollTo", "(const QModelIndex&, QAbstractItemView::ScrollHint)", "#$")]
 		public new void ScrollTo(QModelIndex index, QAbstractItemView.ScrollHint hint) {
 			ProxyQTreeView().ScrollTo(index,hint);
 		}
-		[SmokeMethod("scrollTo#", "(const QModelIndex&)")]
+		[SmokeMethod("scrollTo", "(const QModelIndex&)", "#")]
 		public new void ScrollTo(QModelIndex index) {
 			ProxyQTreeView().ScrollTo(index);
 		}
-		[SmokeMethod("indexAt#", "(const QPoint&) const")]
+		[SmokeMethod("indexAt", "(const QPoint&) const", "#")]
 		public new QModelIndex IndexAt(QPoint p) {
 			return ProxyQTreeView().IndexAt(p);
 		}
-		[SmokeMethod("indexAbove#", "(const QModelIndex&) const")]
+		[SmokeMethod("indexAbove", "(const QModelIndex&) const", "#")]
 		public QModelIndex IndexAbove(QModelIndex index) {
 			return ProxyQTreeView().IndexAbove(index);
 		}
-		[SmokeMethod("indexBelow#", "(const QModelIndex&) const")]
+		[SmokeMethod("indexBelow", "(const QModelIndex&) const", "#")]
 		public QModelIndex IndexBelow(QModelIndex index) {
 			return ProxyQTreeView().IndexBelow(index);
 		}
-		[SmokeMethod("doItemsLayout", "()")]
+		[SmokeMethod("doItemsLayout", "()", "")]
 		public new void DoItemsLayout() {
 			ProxyQTreeView().DoItemsLayout();
 		}
-		[SmokeMethod("reset", "()")]
+		[SmokeMethod("reset", "()", "")]
 		public new void Reset() {
 			ProxyQTreeView().Reset();
 		}
-		[SmokeMethod("sortByColumn$$", "(int, Qt::SortOrder)")]
+		[SmokeMethod("sortByColumn", "(int, Qt::SortOrder)", "$$")]
 		public void SortByColumn(int column, Qt.SortOrder order) {
 			ProxyQTreeView().SortByColumn(column,order);
 		}
 		[Q_SLOT("void dataChanged(const QModelIndex&, const QModelIndex&)")]
-		[SmokeMethod("dataChanged##", "(const QModelIndex&, const QModelIndex&)")]
+		[SmokeMethod("dataChanged", "(const QModelIndex&, const QModelIndex&)", "##")]
 		public new void DataChanged(QModelIndex topLeft, QModelIndex bottomRight) {
 			ProxyQTreeView().DataChanged(topLeft,bottomRight);
 		}
 		[Q_SLOT("void hideColumn(int)")]
-		[SmokeMethod("hideColumn$", "(int)")]
+		[SmokeMethod("hideColumn", "(int)", "$")]
 		public void HideColumn(int column) {
 			ProxyQTreeView().HideColumn(column);
 		}
 		[Q_SLOT("void showColumn(int)")]
-		[SmokeMethod("showColumn$", "(int)")]
+		[SmokeMethod("showColumn", "(int)", "$")]
 		public void ShowColumn(int column) {
 			ProxyQTreeView().ShowColumn(column);
 		}
 		[Q_SLOT("void expand(const QModelIndex&)")]
-		[SmokeMethod("expand#", "(const QModelIndex&)")]
+		[SmokeMethod("expand", "(const QModelIndex&)", "#")]
 		public void Expand(QModelIndex index) {
 			ProxyQTreeView().Expand(index);
 		}
 		[Q_SLOT("void collapse(const QModelIndex&)")]
-		[SmokeMethod("collapse#", "(const QModelIndex&)")]
+		[SmokeMethod("collapse", "(const QModelIndex&)", "#")]
 		public void Collapse(QModelIndex index) {
 			ProxyQTreeView().Collapse(index);
 		}
 		[Q_SLOT("void resizeColumnToContents(int)")]
-		[SmokeMethod("resizeColumnToContents$", "(int)")]
+		[SmokeMethod("resizeColumnToContents", "(int)", "$")]
 		public void ResizeColumnToContents(int column) {
 			ProxyQTreeView().ResizeColumnToContents(column);
 		}
 		[Q_SLOT("void sortByColumn(int)")]
-		[SmokeMethod("sortByColumn$", "(int)")]
+		[SmokeMethod("sortByColumn", "(int)", "$")]
 		public void SortByColumn(int column) {
 			ProxyQTreeView().SortByColumn(column);
 		}
 		[Q_SLOT("void selectAll()")]
-		[SmokeMethod("selectAll", "()")]
+		[SmokeMethod("selectAll", "()", "")]
 		public new void SelectAll() {
 			ProxyQTreeView().SelectAll();
 		}
 		[Q_SLOT("void expandAll()")]
-		[SmokeMethod("expandAll", "()")]
+		[SmokeMethod("expandAll", "()", "")]
 		public void ExpandAll() {
 			ProxyQTreeView().ExpandAll();
 		}
 		[Q_SLOT("void collapseAll()")]
-		[SmokeMethod("collapseAll", "()")]
+		[SmokeMethod("collapseAll", "()", "")]
 		public void CollapseAll() {
 			ProxyQTreeView().CollapseAll();
 		}
@@ -276,124 +276,124 @@ namespace Qyoto {
 		public static new string Tr(string s) {
 			return StaticQTreeView().Tr(s);
 		}
-		[SmokeMethod("scrollContentsBy$$", "(int, int)")]
+		[SmokeMethod("scrollContentsBy", "(int, int)", "$$")]
 		protected new void ScrollContentsBy(int dx, int dy) {
 			ProxyQTreeView().ScrollContentsBy(dx,dy);
 		}
-		[SmokeMethod("rowsInserted#$$", "(const QModelIndex&, int, int)")]
+		[SmokeMethod("rowsInserted", "(const QModelIndex&, int, int)", "#$$")]
 		protected new void RowsInserted(QModelIndex parent, int start, int end) {
 			ProxyQTreeView().RowsInserted(parent,start,end);
 		}
-		[SmokeMethod("rowsAboutToBeRemoved#$$", "(const QModelIndex&, int, int)")]
+		[SmokeMethod("rowsAboutToBeRemoved", "(const QModelIndex&, int, int)", "#$$")]
 		protected new void RowsAboutToBeRemoved(QModelIndex parent, int start, int end) {
 			ProxyQTreeView().RowsAboutToBeRemoved(parent,start,end);
 		}
-		[SmokeMethod("moveCursor$$", "(QAbstractItemView::CursorAction, Qt::KeyboardModifiers)")]
+		[SmokeMethod("moveCursor", "(QAbstractItemView::CursorAction, Qt::KeyboardModifiers)", "$$")]
 		protected new QModelIndex MoveCursor(QAbstractItemView.CursorAction cursorAction, int modifiers) {
 			return ProxyQTreeView().MoveCursor(cursorAction,modifiers);
 		}
-		[SmokeMethod("horizontalOffset", "() const")]
+		[SmokeMethod("horizontalOffset", "() const", "")]
 		protected new int HorizontalOffset() {
 			return ProxyQTreeView().HorizontalOffset();
 		}
-		[SmokeMethod("verticalOffset", "() const")]
+		[SmokeMethod("verticalOffset", "() const", "")]
 		protected new int VerticalOffset() {
 			return ProxyQTreeView().VerticalOffset();
 		}
-		[SmokeMethod("setSelection#$", "(const QRect&, QItemSelectionModel::SelectionFlags)")]
+		[SmokeMethod("setSelection", "(const QRect&, QItemSelectionModel::SelectionFlags)", "#$")]
 		protected new void SetSelection(QRect rect, int command) {
 			ProxyQTreeView().SetSelection(rect,command);
 		}
-		[SmokeMethod("visualRegionForSelection#", "(const QItemSelection&) const")]
+		[SmokeMethod("visualRegionForSelection", "(const QItemSelection&) const", "#")]
 		protected new QRegion VisualRegionForSelection(QItemSelection selection) {
 			return ProxyQTreeView().VisualRegionForSelection(selection);
 		}
-		[SmokeMethod("selectedIndexes", "() const")]
+		[SmokeMethod("selectedIndexes", "() const", "")]
 		protected new List<QModelIndex> SelectedIndexes() {
 			return ProxyQTreeView().SelectedIndexes();
 		}
-		[SmokeMethod("timerEvent#", "(QTimerEvent*)")]
+		[SmokeMethod("timerEvent", "(QTimerEvent*)", "#")]
 		protected new void TimerEvent(QTimerEvent arg1) {
 			ProxyQTreeView().TimerEvent(arg1);
 		}
-		[SmokeMethod("paintEvent#", "(QPaintEvent*)")]
+		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
 		protected new void PaintEvent(QPaintEvent arg1) {
 			ProxyQTreeView().PaintEvent(arg1);
 		}
-		[SmokeMethod("drawTree##", "(QPainter*, const QRegion&) const")]
+		[SmokeMethod("drawTree", "(QPainter*, const QRegion&) const", "##")]
 		protected void DrawTree(QPainter painter, QRegion region) {
 			ProxyQTreeView().DrawTree(painter,region);
 		}
-		[SmokeMethod("drawRow###", "(QPainter*, const QStyleOptionViewItem&, const QModelIndex&) const")]
+		[SmokeMethod("drawRow", "(QPainter*, const QStyleOptionViewItem&, const QModelIndex&) const", "###")]
 		protected virtual void DrawRow(QPainter painter, QStyleOptionViewItem options, QModelIndex index) {
 			ProxyQTreeView().DrawRow(painter,options,index);
 		}
-		[SmokeMethod("drawBranches###", "(QPainter*, const QRect&, const QModelIndex&) const")]
+		[SmokeMethod("drawBranches", "(QPainter*, const QRect&, const QModelIndex&) const", "###")]
 		protected virtual void DrawBranches(QPainter painter, QRect rect, QModelIndex index) {
 			ProxyQTreeView().DrawBranches(painter,rect,index);
 		}
-		[SmokeMethod("mousePressEvent#", "(QMouseEvent*)")]
+		[SmokeMethod("mousePressEvent", "(QMouseEvent*)", "#")]
 		protected new void MousePressEvent(QMouseEvent arg1) {
 			ProxyQTreeView().MousePressEvent(arg1);
 		}
-		[SmokeMethod("mouseReleaseEvent#", "(QMouseEvent*)")]
+		[SmokeMethod("mouseReleaseEvent", "(QMouseEvent*)", "#")]
 		protected new void MouseReleaseEvent(QMouseEvent arg1) {
 			ProxyQTreeView().MouseReleaseEvent(arg1);
 		}
-		[SmokeMethod("mouseDoubleClickEvent#", "(QMouseEvent*)")]
+		[SmokeMethod("mouseDoubleClickEvent", "(QMouseEvent*)", "#")]
 		protected new void MouseDoubleClickEvent(QMouseEvent arg1) {
 			ProxyQTreeView().MouseDoubleClickEvent(arg1);
 		}
-		[SmokeMethod("mouseMoveEvent#", "(QMouseEvent*)")]
+		[SmokeMethod("mouseMoveEvent", "(QMouseEvent*)", "#")]
 		protected new void MouseMoveEvent(QMouseEvent arg1) {
 			ProxyQTreeView().MouseMoveEvent(arg1);
 		}
-		[SmokeMethod("keyPressEvent#", "(QKeyEvent*)")]
+		[SmokeMethod("keyPressEvent", "(QKeyEvent*)", "#")]
 		protected new void KeyPressEvent(QKeyEvent arg1) {
 			ProxyQTreeView().KeyPressEvent(arg1);
 		}
-		[SmokeMethod("updateGeometries", "()")]
+		[SmokeMethod("updateGeometries", "()", "")]
 		protected new void UpdateGeometries() {
 			ProxyQTreeView().UpdateGeometries();
 		}
-		[SmokeMethod("sizeHintForColumn$", "(int) const")]
+		[SmokeMethod("sizeHintForColumn", "(int) const", "$")]
 		protected new int SizeHintForColumn(int column) {
 			return ProxyQTreeView().SizeHintForColumn(column);
 		}
-		[SmokeMethod("indexRowSizeHint#", "(const QModelIndex&) const")]
+		[SmokeMethod("indexRowSizeHint", "(const QModelIndex&) const", "#")]
 		protected int IndexRowSizeHint(QModelIndex index) {
 			return ProxyQTreeView().IndexRowSizeHint(index);
 		}
-		[SmokeMethod("horizontalScrollbarAction$", "(int)")]
+		[SmokeMethod("horizontalScrollbarAction", "(int)", "$")]
 		protected new void HorizontalScrollbarAction(int action) {
 			ProxyQTreeView().HorizontalScrollbarAction(action);
 		}
-		[SmokeMethod("isIndexHidden#", "(const QModelIndex&) const")]
+		[SmokeMethod("isIndexHidden", "(const QModelIndex&) const", "#")]
 		protected new bool IsIndexHidden(QModelIndex index) {
 			return ProxyQTreeView().IsIndexHidden(index);
 		}
 		[Q_SLOT("void columnResized(int, int, int)")]
-		[SmokeMethod("columnResized$$$", "(int, int, int)")]
+		[SmokeMethod("columnResized", "(int, int, int)", "$$$")]
 		protected void ColumnResized(int column, int oldSize, int newSize) {
 			ProxyQTreeView().ColumnResized(column,oldSize,newSize);
 		}
 		[Q_SLOT("void columnCountChanged(int, int)")]
-		[SmokeMethod("columnCountChanged$$", "(int, int)")]
+		[SmokeMethod("columnCountChanged", "(int, int)", "$$")]
 		protected void ColumnCountChanged(int oldCount, int newCount) {
 			ProxyQTreeView().ColumnCountChanged(oldCount,newCount);
 		}
 		[Q_SLOT("void columnMoved()")]
-		[SmokeMethod("columnMoved", "()")]
+		[SmokeMethod("columnMoved", "()", "")]
 		protected void ColumnMoved() {
 			ProxyQTreeView().ColumnMoved();
 		}
 		[Q_SLOT("void reexpand()")]
-		[SmokeMethod("reexpand", "()")]
+		[SmokeMethod("reexpand", "()", "")]
 		protected void Reexpand() {
 			ProxyQTreeView().Reexpand();
 		}
 		[Q_SLOT("void rowsRemoved(const QModelIndex&, int, int)")]
-		[SmokeMethod("rowsRemoved#$$", "(const QModelIndex&, int, int)")]
+		[SmokeMethod("rowsRemoved", "(const QModelIndex&, int, int)", "#$$")]
 		protected void RowsRemoved(QModelIndex parent, int first, int last) {
 			ProxyQTreeView().RowsRemoved(parent,first,last);
 		}
@@ -403,7 +403,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQTreeView();
 		}
-		[SmokeMethod("~QTreeView", "()")]
+		[SmokeMethod("~QTreeView", "()", "")]
 		private void DisposeQTreeView() {
 			ProxyQTreeView().DisposeQTreeView();
 		}

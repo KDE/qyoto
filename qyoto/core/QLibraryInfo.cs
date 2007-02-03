@@ -11,13 +11,13 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QLibraryInfo(Type dummy) {}
 		interface IQLibraryInfoProxy {
-			[SmokeMethod("licensee", "()")]
+			[SmokeMethod("licensee", "()", "")]
 			string Licensee();
-			[SmokeMethod("licensedProducts", "()")]
+			[SmokeMethod("licensedProducts", "()", "")]
 			string LicensedProducts();
-			[SmokeMethod("buildKey", "()")]
+			[SmokeMethod("buildKey", "()", "")]
 			string BuildKey();
-			[SmokeMethod("location$", "(QLibraryInfo::LibraryLocation)")]
+			[SmokeMethod("location", "(QLibraryInfo::LibraryLocation)", "$")]
 			string Location(QLibraryInfo.LibraryLocation arg1);
 		}
 
@@ -68,7 +68,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQLibraryInfo();
 		}
-		[SmokeMethod("~QLibraryInfo", "()")]
+		[SmokeMethod("~QLibraryInfo", "()", "")]
 		private void DisposeQLibraryInfo() {
 			ProxyQLibraryInfo().DisposeQLibraryInfo();
 		}

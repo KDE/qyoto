@@ -8,9 +8,9 @@ namespace Qyoto {
 	public class QFocusFrame : QWidget, IDisposable {
  		protected QFocusFrame(Type dummy) : base((Type) null) {}
 		interface IQFocusFrameProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
 
@@ -35,7 +35,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQFocusFrame(parent);
 		}
-		[SmokeMethod("QFocusFrame#", "(QWidget*)")]
+		[SmokeMethod("QFocusFrame", "(QWidget*)", "#")]
 		private void NewQFocusFrame(QWidget parent) {
 			ProxyQFocusFrame().NewQFocusFrame(parent);
 		}
@@ -43,15 +43,15 @@ namespace Qyoto {
 			CreateProxy();
 			NewQFocusFrame();
 		}
-		[SmokeMethod("QFocusFrame", "()")]
+		[SmokeMethod("QFocusFrame", "()", "")]
 		private void NewQFocusFrame() {
 			ProxyQFocusFrame().NewQFocusFrame();
 		}
-		[SmokeMethod("setWidget#", "(QWidget*)")]
+		[SmokeMethod("setWidget", "(QWidget*)", "#")]
 		public void SetWidget(QWidget widget) {
 			ProxyQFocusFrame().SetWidget(widget);
 		}
-		[SmokeMethod("widget", "() const")]
+		[SmokeMethod("widget", "() const", "")]
 		public QWidget Widget() {
 			return ProxyQFocusFrame().Widget();
 		}
@@ -61,15 +61,15 @@ namespace Qyoto {
 		public static new string Tr(string s) {
 			return StaticQFocusFrame().Tr(s);
 		}
-		[SmokeMethod("event#", "(QEvent*)")]
+		[SmokeMethod("event", "(QEvent*)", "#")]
 		public new bool Event(QEvent e) {
 			return ProxyQFocusFrame().Event(e);
 		}
-		[SmokeMethod("eventFilter##", "(QObject*, QEvent*)")]
+		[SmokeMethod("eventFilter", "(QObject*, QEvent*)", "##")]
 		public new bool EventFilter(QObject arg1, QEvent arg2) {
 			return ProxyQFocusFrame().EventFilter(arg1,arg2);
 		}
-		[SmokeMethod("paintEvent#", "(QPaintEvent*)")]
+		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
 		protected new void PaintEvent(QPaintEvent arg1) {
 			ProxyQFocusFrame().PaintEvent(arg1);
 		}
@@ -79,7 +79,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQFocusFrame();
 		}
-		[SmokeMethod("~QFocusFrame", "()")]
+		[SmokeMethod("~QFocusFrame", "()", "")]
 		private void DisposeQFocusFrame() {
 			ProxyQFocusFrame().DisposeQFocusFrame();
 		}

@@ -8,9 +8,9 @@ namespace Qyoto {
 	public class QFrame : QWidget, IDisposable {
  		protected QFrame(Type dummy) : base((Type) null) {}
 		interface IQFrameProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
 
@@ -104,7 +104,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQFrame(parent,f);
 		}
-		[SmokeMethod("QFrame#$", "(QWidget*, Qt::WindowFlags)")]
+		[SmokeMethod("QFrame", "(QWidget*, Qt::WindowFlags)", "#$")]
 		private void NewQFrame(QWidget parent, int f) {
 			ProxyQFrame().NewQFrame(parent,f);
 		}
@@ -112,7 +112,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQFrame(parent);
 		}
-		[SmokeMethod("QFrame#", "(QWidget*)")]
+		[SmokeMethod("QFrame", "(QWidget*)", "#")]
 		private void NewQFrame(QWidget parent) {
 			ProxyQFrame().NewQFrame(parent);
 		}
@@ -120,19 +120,19 @@ namespace Qyoto {
 			CreateProxy();
 			NewQFrame();
 		}
-		[SmokeMethod("QFrame", "()")]
+		[SmokeMethod("QFrame", "()", "")]
 		private void NewQFrame() {
 			ProxyQFrame().NewQFrame();
 		}
-		[SmokeMethod("frameStyle", "() const")]
+		[SmokeMethod("frameStyle", "() const", "")]
 		public int FrameStyle() {
 			return ProxyQFrame().FrameStyle();
 		}
-		[SmokeMethod("setFrameStyle$", "(int)")]
+		[SmokeMethod("setFrameStyle", "(int)", "$")]
 		public void SetFrameStyle(int arg1) {
 			ProxyQFrame().SetFrameStyle(arg1);
 		}
-		[SmokeMethod("sizeHint", "() const")]
+		[SmokeMethod("sizeHint", "() const", "")]
 		public new QSize SizeHint() {
 			return ProxyQFrame().SizeHint();
 		}
@@ -142,19 +142,19 @@ namespace Qyoto {
 		public static new string Tr(string s) {
 			return StaticQFrame().Tr(s);
 		}
-		[SmokeMethod("event#", "(QEvent*)")]
+		[SmokeMethod("event", "(QEvent*)", "#")]
 		public new bool Event(QEvent e) {
 			return ProxyQFrame().Event(e);
 		}
-		[SmokeMethod("paintEvent#", "(QPaintEvent*)")]
+		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
 		protected new void PaintEvent(QPaintEvent arg1) {
 			ProxyQFrame().PaintEvent(arg1);
 		}
-		[SmokeMethod("changeEvent#", "(QEvent*)")]
+		[SmokeMethod("changeEvent", "(QEvent*)", "#")]
 		protected new void ChangeEvent(QEvent arg1) {
 			ProxyQFrame().ChangeEvent(arg1);
 		}
-		[SmokeMethod("drawFrame#", "(QPainter*)")]
+		[SmokeMethod("drawFrame", "(QPainter*)", "#")]
 		protected void DrawFrame(QPainter arg1) {
 			ProxyQFrame().DrawFrame(arg1);
 		}
@@ -164,7 +164,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQFrame();
 		}
-		[SmokeMethod("~QFrame", "()")]
+		[SmokeMethod("~QFrame", "()", "")]
 		private void DisposeQFrame() {
 			ProxyQFrame().DisposeQFrame();
 		}

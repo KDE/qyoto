@@ -8,9 +8,9 @@ namespace Qyoto {
 	public class QUndoView : QListView, IDisposable {
  		protected QUndoView(Type dummy) : base((Type) null) {}
 		interface IQUndoViewProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
 
@@ -53,7 +53,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQUndoView(parent);
 		}
-		[SmokeMethod("QUndoView#", "(QWidget*)")]
+		[SmokeMethod("QUndoView", "(QWidget*)", "#")]
 		private void NewQUndoView(QWidget parent) {
 			ProxyQUndoView().NewQUndoView(parent);
 		}
@@ -61,7 +61,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQUndoView();
 		}
-		[SmokeMethod("QUndoView", "()")]
+		[SmokeMethod("QUndoView", "()", "")]
 		private void NewQUndoView() {
 			ProxyQUndoView().NewQUndoView();
 		}
@@ -69,7 +69,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQUndoView(stack,parent);
 		}
-		[SmokeMethod("QUndoView##", "(QUndoStack*, QWidget*)")]
+		[SmokeMethod("QUndoView", "(QUndoStack*, QWidget*)", "##")]
 		private void NewQUndoView(QUndoStack stack, QWidget parent) {
 			ProxyQUndoView().NewQUndoView(stack,parent);
 		}
@@ -77,7 +77,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQUndoView(stack);
 		}
-		[SmokeMethod("QUndoView#", "(QUndoStack*)")]
+		[SmokeMethod("QUndoView", "(QUndoStack*)", "#")]
 		private void NewQUndoView(QUndoStack stack) {
 			ProxyQUndoView().NewQUndoView(stack);
 		}
@@ -85,7 +85,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQUndoView(group,parent);
 		}
-		[SmokeMethod("QUndoView##", "(QUndoGroup*, QWidget*)")]
+		[SmokeMethod("QUndoView", "(QUndoGroup*, QWidget*)", "##")]
 		private void NewQUndoView(QUndoGroup group, QWidget parent) {
 			ProxyQUndoView().NewQUndoView(group,parent);
 		}
@@ -93,25 +93,25 @@ namespace Qyoto {
 			CreateProxy();
 			NewQUndoView(group);
 		}
-		[SmokeMethod("QUndoView#", "(QUndoGroup*)")]
+		[SmokeMethod("QUndoView", "(QUndoGroup*)", "#")]
 		private void NewQUndoView(QUndoGroup group) {
 			ProxyQUndoView().NewQUndoView(group);
 		}
-		[SmokeMethod("stack", "() const")]
+		[SmokeMethod("stack", "() const", "")]
 		public QUndoStack Stack() {
 			return ProxyQUndoView().Stack();
 		}
-		[SmokeMethod("group", "() const")]
+		[SmokeMethod("group", "() const", "")]
 		public QUndoGroup Group() {
 			return ProxyQUndoView().Group();
 		}
 		[Q_SLOT("void setStack(QUndoStack*)")]
-		[SmokeMethod("setStack#", "(QUndoStack*)")]
+		[SmokeMethod("setStack", "(QUndoStack*)", "#")]
 		public void SetStack(QUndoStack stack) {
 			ProxyQUndoView().SetStack(stack);
 		}
 		[Q_SLOT("void setGroup(QUndoGroup*)")]
-		[SmokeMethod("setGroup#", "(QUndoGroup*)")]
+		[SmokeMethod("setGroup", "(QUndoGroup*)", "#")]
 		public void SetGroup(QUndoGroup group) {
 			ProxyQUndoView().SetGroup(group);
 		}
@@ -127,7 +127,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQUndoView();
 		}
-		[SmokeMethod("~QUndoView", "()")]
+		[SmokeMethod("~QUndoView", "()", "")]
 		private void DisposeQUndoView() {
 			ProxyQUndoView().DisposeQUndoView();
 		}

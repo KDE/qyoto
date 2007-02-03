@@ -29,7 +29,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDomDocumentFragment();
 		}
-		[SmokeMethod("QDomDocumentFragment", "()")]
+		[SmokeMethod("QDomDocumentFragment", "()", "")]
 		private void NewQDomDocumentFragment() {
 			ProxyQDomDocumentFragment().NewQDomDocumentFragment();
 		}
@@ -37,11 +37,11 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDomDocumentFragment(x);
 		}
-		[SmokeMethod("QDomDocumentFragment#", "(const QDomDocumentFragment&)")]
+		[SmokeMethod("QDomDocumentFragment", "(const QDomDocumentFragment&)", "#")]
 		private void NewQDomDocumentFragment(QDomDocumentFragment x) {
 			ProxyQDomDocumentFragment().NewQDomDocumentFragment(x);
 		}
-		[SmokeMethod("nodeType", "() const")]
+		[SmokeMethod("nodeType", "() const", "")]
 		public new QDomNode.NodeType NodeType() {
 			return ProxyQDomDocumentFragment().NodeType();
 		}
@@ -51,7 +51,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQDomDocumentFragment();
 		}
-		[SmokeMethod("~QDomDocumentFragment", "()")]
+		[SmokeMethod("~QDomDocumentFragment", "()", "")]
 		private void DisposeQDomDocumentFragment() {
 			ProxyQDomDocumentFragment().DisposeQDomDocumentFragment();
 		}

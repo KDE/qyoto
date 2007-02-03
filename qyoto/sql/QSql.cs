@@ -46,7 +46,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQSql();
 		}
-		[SmokeMethod("~QSql", "()")]
+		[SmokeMethod("~QSql", "()", "")]
 		private void DisposeQSql() {
 			ProxyQSql().DisposeQSql();
 		}

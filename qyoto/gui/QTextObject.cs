@@ -8,9 +8,9 @@ namespace Qyoto {
 	public class QTextObject : QObject {
  		protected QTextObject(Type dummy) : base((Type) null) {}
 		interface IQTextObjectProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
 
@@ -32,12 +32,12 @@ namespace Qyoto {
 
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		// QTextFormat format(); >>>> NOT CONVERTED
-		[SmokeMethod("formatIndex", "() const")]
+		[SmokeMethod("formatIndex", "() const", "")]
 		public int FormatIndex() {
 			return ProxyQTextObject().FormatIndex();
 		}
 		// QTextDocument* document(); >>>> NOT CONVERTED
-		[SmokeMethod("objectIndex", "() const")]
+		[SmokeMethod("objectIndex", "() const", "")]
 		public int ObjectIndex() {
 			return ProxyQTextObject().ObjectIndex();
 		}

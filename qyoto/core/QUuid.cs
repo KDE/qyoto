@@ -14,7 +14,7 @@ namespace Qyoto {
 			bool op_equals(QUuid lhs, QUuid orig);
 			bool op_lt(QUuid lhs, QUuid other);
 			bool op_gt(QUuid lhs, QUuid other);
-			[SmokeMethod("createUuid", "()")]
+			[SmokeMethod("createUuid", "()", "")]
 			QUuid CreateUuid();
 		}
 
@@ -52,7 +52,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQUuid();
 		}
-		[SmokeMethod("QUuid", "()")]
+		[SmokeMethod("QUuid", "()", "")]
 		private void NewQUuid() {
 			ProxyQUuid().NewQUuid();
 		}
@@ -60,7 +60,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQUuid(l,w1,w2,b1,b2,b3,b4,b5,b6,b7,b8);
 		}
-		[SmokeMethod("QUuid$$$$$$$$$$$", "(uint, ushort, ushort, uchar, uchar, uchar, uchar, uchar, uchar, uchar, uchar)")]
+		[SmokeMethod("QUuid", "(uint, ushort, ushort, uchar, uchar, uchar, uchar, uchar, uchar, uchar, uchar)", "$$$$$$$$$$$")]
 		private void NewQUuid(uint l, ushort w1, ushort w2, ushort b1, ushort b2, ushort b3, ushort b4, ushort b5, ushort b6, ushort b7, ushort b8) {
 			ProxyQUuid().NewQUuid(l,w1,w2,b1,b2,b3,b4,b5,b6,b7,b8);
 		}
@@ -68,20 +68,20 @@ namespace Qyoto {
 			CreateProxy();
 			NewQUuid(arg1);
 		}
-		[SmokeMethod("QUuid$", "(const QString&)")]
+		[SmokeMethod("QUuid", "(const QString&)", "$")]
 		private void NewQUuid(string arg1) {
 			ProxyQUuid().NewQUuid(arg1);
 		}
-		[SmokeMethod("toString", "() const")]
+		[SmokeMethod("toString", "() const", "")]
 		public new string ToString() {
 			return ProxyQUuid().ToString();
 		}
 		//  operator QString(); >>>> NOT CONVERTED
-		[SmokeMethod("isNull", "() const")]
+		[SmokeMethod("isNull", "() const", "")]
 		public bool IsNull() {
 			return ProxyQUuid().IsNull();
 		}
-		[SmokeMethod("operator==#", "(const QUuid&) const")]
+		[SmokeMethod("operator==", "(const QUuid&) const", "#")]
 		public static bool operator==(QUuid lhs, QUuid orig) {
 			return StaticQUuid().op_equals(lhs,orig);
 		}
@@ -95,19 +95,19 @@ namespace Qyoto {
 		public override int GetHashCode() {
 			return ProxyQUuid().GetHashCode();
 		}
-		[SmokeMethod("operator<#", "(const QUuid&) const")]
+		[SmokeMethod("operator<", "(const QUuid&) const", "#")]
 		public static bool operator<(QUuid lhs, QUuid other) {
 			return StaticQUuid().op_lt(lhs,other);
 		}
-		[SmokeMethod("operator>#", "(const QUuid&) const")]
+		[SmokeMethod("operator>", "(const QUuid&) const", "#")]
 		public static bool operator>(QUuid lhs, QUuid other) {
 			return StaticQUuid().op_gt(lhs,other);
 		}
-		[SmokeMethod("variant", "() const")]
+		[SmokeMethod("variant", "() const", "")]
 		public QUuid.Variant variant() {
 			return ProxyQUuid().variant();
 		}
-		[SmokeMethod("version", "() const")]
+		[SmokeMethod("version", "() const", "")]
 		public QUuid.Version version() {
 			return ProxyQUuid().version();
 		}
@@ -120,7 +120,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQUuid();
 		}
-		[SmokeMethod("~QUuid", "()")]
+		[SmokeMethod("~QUuid", "()", "")]
 		private void DisposeQUuid() {
 			ProxyQUuid().DisposeQUuid();
 		}

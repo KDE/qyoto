@@ -33,7 +33,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQFontInfo(arg1);
 		}
-		[SmokeMethod("QFontInfo#", "(const QFont&)")]
+		[SmokeMethod("QFontInfo", "(const QFont&)", "#")]
 		private void NewQFontInfo(QFont arg1) {
 			ProxyQFontInfo().NewQFontInfo(arg1);
 		}
@@ -41,67 +41,67 @@ namespace Qyoto {
 			CreateProxy();
 			NewQFontInfo(arg1);
 		}
-		[SmokeMethod("QFontInfo#", "(const QFontInfo&)")]
+		[SmokeMethod("QFontInfo", "(const QFontInfo&)", "#")]
 		private void NewQFontInfo(QFontInfo arg1) {
 			ProxyQFontInfo().NewQFontInfo(arg1);
 		}
-		[SmokeMethod("family", "() const")]
+		[SmokeMethod("family", "() const", "")]
 		public string Family() {
 			return ProxyQFontInfo().Family();
 		}
-		[SmokeMethod("pixelSize", "() const")]
+		[SmokeMethod("pixelSize", "() const", "")]
 		public int PixelSize() {
 			return ProxyQFontInfo().PixelSize();
 		}
-		[SmokeMethod("pointSize", "() const")]
+		[SmokeMethod("pointSize", "() const", "")]
 		public int PointSize() {
 			return ProxyQFontInfo().PointSize();
 		}
-		[SmokeMethod("pointSizeF", "() const")]
+		[SmokeMethod("pointSizeF", "() const", "")]
 		public double PointSizeF() {
 			return ProxyQFontInfo().PointSizeF();
 		}
-		[SmokeMethod("italic", "() const")]
+		[SmokeMethod("italic", "() const", "")]
 		public bool Italic() {
 			return ProxyQFontInfo().Italic();
 		}
-		[SmokeMethod("style", "() const")]
+		[SmokeMethod("style", "() const", "")]
 		public QFont.Style Style() {
 			return ProxyQFontInfo().Style();
 		}
-		[SmokeMethod("weight", "() const")]
+		[SmokeMethod("weight", "() const", "")]
 		public int Weight() {
 			return ProxyQFontInfo().Weight();
 		}
-		[SmokeMethod("bold", "() const")]
+		[SmokeMethod("bold", "() const", "")]
 		public bool Bold() {
 			return ProxyQFontInfo().Bold();
 		}
-		[SmokeMethod("underline", "() const")]
+		[SmokeMethod("underline", "() const", "")]
 		public bool Underline() {
 			return ProxyQFontInfo().Underline();
 		}
-		[SmokeMethod("overline", "() const")]
+		[SmokeMethod("overline", "() const", "")]
 		public bool Overline() {
 			return ProxyQFontInfo().Overline();
 		}
-		[SmokeMethod("strikeOut", "() const")]
+		[SmokeMethod("strikeOut", "() const", "")]
 		public bool StrikeOut() {
 			return ProxyQFontInfo().StrikeOut();
 		}
-		[SmokeMethod("fixedPitch", "() const")]
+		[SmokeMethod("fixedPitch", "() const", "")]
 		public bool FixedPitch() {
 			return ProxyQFontInfo().FixedPitch();
 		}
-		[SmokeMethod("styleHint", "() const")]
+		[SmokeMethod("styleHint", "() const", "")]
 		public QFont.StyleHint StyleHint() {
 			return ProxyQFontInfo().StyleHint();
 		}
-		[SmokeMethod("rawMode", "() const")]
+		[SmokeMethod("rawMode", "() const", "")]
 		public bool RawMode() {
 			return ProxyQFontInfo().RawMode();
 		}
-		[SmokeMethod("exactMatch", "() const")]
+		[SmokeMethod("exactMatch", "() const", "")]
 		public bool ExactMatch() {
 			return ProxyQFontInfo().ExactMatch();
 		}
@@ -111,7 +111,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQFontInfo();
 		}
-		[SmokeMethod("~QFontInfo", "()")]
+		[SmokeMethod("~QFontInfo", "()", "")]
 		private void DisposeQFontInfo() {
 			ProxyQFontInfo().DisposeQFontInfo();
 		}

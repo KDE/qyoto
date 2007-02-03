@@ -12,9 +12,9 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QStyleFactory(Type dummy) {}
 		interface IQStyleFactoryProxy {
-			[SmokeMethod("keys", "()")]
+			[SmokeMethod("keys", "()", "")]
 			List<string> Keys();
-			[SmokeMethod("create$", "(const QString&)")]
+			[SmokeMethod("create", "(const QString&)", "$")]
 			QStyle Create(string arg1);
 		}
 
@@ -38,7 +38,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleFactory();
 		}
-		[SmokeMethod("QStyleFactory", "()")]
+		[SmokeMethod("QStyleFactory", "()", "")]
 		private void NewQStyleFactory() {
 			ProxyQStyleFactory().NewQStyleFactory();
 		}
@@ -54,7 +54,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQStyleFactory();
 		}
-		[SmokeMethod("~QStyleFactory", "()")]
+		[SmokeMethod("~QStyleFactory", "()", "")]
 		private void DisposeQStyleFactory() {
 			ProxyQStyleFactory().DisposeQStyleFactory();
 		}

@@ -34,7 +34,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSqlRecord();
 		}
-		[SmokeMethod("QSqlRecord", "()")]
+		[SmokeMethod("QSqlRecord", "()", "")]
 		private void NewQSqlRecord() {
 			ProxyQSqlRecord().NewQSqlRecord();
 		}
@@ -42,11 +42,11 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSqlRecord(other);
 		}
-		[SmokeMethod("QSqlRecord#", "(const QSqlRecord&)")]
+		[SmokeMethod("QSqlRecord", "(const QSqlRecord&)", "#")]
 		private void NewQSqlRecord(QSqlRecord other) {
 			ProxyQSqlRecord().NewQSqlRecord(other);
 		}
-		[SmokeMethod("operator==#", "(const QSqlRecord&) const")]
+		[SmokeMethod("operator==", "(const QSqlRecord&) const", "#")]
 		public static bool operator==(QSqlRecord lhs, QSqlRecord other) {
 			return StaticQSqlRecord().op_equals(lhs,other);
 		}
@@ -60,103 +60,103 @@ namespace Qyoto {
 		public override int GetHashCode() {
 			return ProxyQSqlRecord().GetHashCode();
 		}
-		[SmokeMethod("value$", "(int) const")]
+		[SmokeMethod("value", "(int) const", "$")]
 		public QVariant Value(int i) {
 			return ProxyQSqlRecord().Value(i);
 		}
-		[SmokeMethod("value$", "(const QString&) const")]
+		[SmokeMethod("value", "(const QString&) const", "$")]
 		public QVariant Value(string name) {
 			return ProxyQSqlRecord().Value(name);
 		}
-		[SmokeMethod("setValue$#", "(int, const QVariant&)")]
+		[SmokeMethod("setValue", "(int, const QVariant&)", "$#")]
 		public void SetValue(int i, QVariant val) {
 			ProxyQSqlRecord().SetValue(i,val);
 		}
-		[SmokeMethod("setValue$#", "(const QString&, const QVariant&)")]
+		[SmokeMethod("setValue", "(const QString&, const QVariant&)", "$#")]
 		public void SetValue(string name, QVariant val) {
 			ProxyQSqlRecord().SetValue(name,val);
 		}
-		[SmokeMethod("setNull$", "(int)")]
+		[SmokeMethod("setNull", "(int)", "$")]
 		public void SetNull(int i) {
 			ProxyQSqlRecord().SetNull(i);
 		}
-		[SmokeMethod("setNull$", "(const QString&)")]
+		[SmokeMethod("setNull", "(const QString&)", "$")]
 		public void SetNull(string name) {
 			ProxyQSqlRecord().SetNull(name);
 		}
-		[SmokeMethod("isNull$", "(int) const")]
+		[SmokeMethod("isNull", "(int) const", "$")]
 		public bool IsNull(int i) {
 			return ProxyQSqlRecord().IsNull(i);
 		}
-		[SmokeMethod("isNull$", "(const QString&) const")]
+		[SmokeMethod("isNull", "(const QString&) const", "$")]
 		public bool IsNull(string name) {
 			return ProxyQSqlRecord().IsNull(name);
 		}
-		[SmokeMethod("indexOf$", "(const QString&) const")]
+		[SmokeMethod("indexOf", "(const QString&) const", "$")]
 		public int IndexOf(string name) {
 			return ProxyQSqlRecord().IndexOf(name);
 		}
-		[SmokeMethod("fieldName$", "(int) const")]
+		[SmokeMethod("fieldName", "(int) const", "$")]
 		public string FieldName(int i) {
 			return ProxyQSqlRecord().FieldName(i);
 		}
-		[SmokeMethod("field$", "(int) const")]
+		[SmokeMethod("field", "(int) const", "$")]
 		public QSqlField Field(int i) {
 			return ProxyQSqlRecord().Field(i);
 		}
-		[SmokeMethod("field$", "(const QString&) const")]
+		[SmokeMethod("field", "(const QString&) const", "$")]
 		public QSqlField Field(string name) {
 			return ProxyQSqlRecord().Field(name);
 		}
-		[SmokeMethod("isGenerated$", "(int) const")]
+		[SmokeMethod("isGenerated", "(int) const", "$")]
 		public bool IsGenerated(int i) {
 			return ProxyQSqlRecord().IsGenerated(i);
 		}
-		[SmokeMethod("isGenerated$", "(const QString&) const")]
+		[SmokeMethod("isGenerated", "(const QString&) const", "$")]
 		public bool IsGenerated(string name) {
 			return ProxyQSqlRecord().IsGenerated(name);
 		}
-		[SmokeMethod("setGenerated$$", "(const QString&, bool)")]
+		[SmokeMethod("setGenerated", "(const QString&, bool)", "$$")]
 		public void SetGenerated(string name, bool generated) {
 			ProxyQSqlRecord().SetGenerated(name,generated);
 		}
-		[SmokeMethod("setGenerated$$", "(int, bool)")]
+		[SmokeMethod("setGenerated", "(int, bool)", "$$")]
 		public void SetGenerated(int i, bool generated) {
 			ProxyQSqlRecord().SetGenerated(i,generated);
 		}
-		[SmokeMethod("append#", "(const QSqlField&)")]
+		[SmokeMethod("append", "(const QSqlField&)", "#")]
 		public void Append(QSqlField field) {
 			ProxyQSqlRecord().Append(field);
 		}
-		[SmokeMethod("replace$#", "(int, const QSqlField&)")]
+		[SmokeMethod("replace", "(int, const QSqlField&)", "$#")]
 		public void Replace(int pos, QSqlField field) {
 			ProxyQSqlRecord().Replace(pos,field);
 		}
-		[SmokeMethod("insert$#", "(int, const QSqlField&)")]
+		[SmokeMethod("insert", "(int, const QSqlField&)", "$#")]
 		public void Insert(int pos, QSqlField field) {
 			ProxyQSqlRecord().Insert(pos,field);
 		}
-		[SmokeMethod("remove$", "(int)")]
+		[SmokeMethod("remove", "(int)", "$")]
 		public void Remove(int pos) {
 			ProxyQSqlRecord().Remove(pos);
 		}
-		[SmokeMethod("isEmpty", "() const")]
+		[SmokeMethod("isEmpty", "() const", "")]
 		public bool IsEmpty() {
 			return ProxyQSqlRecord().IsEmpty();
 		}
-		[SmokeMethod("contains$", "(const QString&) const")]
+		[SmokeMethod("contains", "(const QString&) const", "$")]
 		public bool Contains(string name) {
 			return ProxyQSqlRecord().Contains(name);
 		}
-		[SmokeMethod("clear", "()")]
+		[SmokeMethod("clear", "()", "")]
 		public void Clear() {
 			ProxyQSqlRecord().Clear();
 		}
-		[SmokeMethod("clearValues", "()")]
+		[SmokeMethod("clearValues", "()", "")]
 		public void ClearValues() {
 			ProxyQSqlRecord().ClearValues();
 		}
-		[SmokeMethod("count", "() const")]
+		[SmokeMethod("count", "() const", "")]
 		public int Count() {
 			return ProxyQSqlRecord().Count();
 		}
@@ -166,7 +166,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQSqlRecord();
 		}
-		[SmokeMethod("~QSqlRecord", "()")]
+		[SmokeMethod("~QSqlRecord", "()", "")]
 		private void DisposeQSqlRecord() {
 			ProxyQSqlRecord().DisposeQSqlRecord();
 		}

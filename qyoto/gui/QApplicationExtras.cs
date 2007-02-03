@@ -18,7 +18,7 @@ namespace Qyoto {
 			NewQApplication(args.Length, args);
 		}
 
-		[SmokeMethod("QApplication$?", "(int&, char**)")]
+		[SmokeMethod("QApplication", "(int&, char**)", "$?")]
 		private void NewQApplication(int argc, string[] argv) {
 			ProxyQApplication().NewQApplication(argc, argv);
 		}
@@ -35,7 +35,7 @@ namespace Qyoto {
 			NewQApplication(args.Length, args, GUIenabled);
 		}
 		
-		[SmokeMethod("QApplication$?$", "(int&, char**, bool)")]
+		[SmokeMethod("QApplication", "(int&, char**, bool)", "$?$")]
 		private void NewQApplication(int argc, string[] argv, bool GUIenabled) {
 			ProxyQApplication().NewQApplication(argc, argv,GUIenabled);
 		}
@@ -51,7 +51,7 @@ namespace Qyoto {
 
 			NewQApplication(args.Length, args, arg3);
 		}   
-		[SmokeMethod("QApplication$?$", "(int&, char**, QApplication::Type)")]
+		[SmokeMethod("QApplication", "(int&, char**, QApplication::Type)", "$?$")]
 		private void NewQApplication(int argc, string[] argv, QApplication.TypeOf arg3) {
 			ProxyQApplication().NewQApplication(argc, argv,arg3);
 		}

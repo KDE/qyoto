@@ -33,11 +33,11 @@ namespace Qyoto {
 			CreateProxy();
 			NewQAbstractFileEngineHandler();
 		}
-		[SmokeMethod("QAbstractFileEngineHandler", "()")]
+		[SmokeMethod("QAbstractFileEngineHandler", "()", "")]
 		private void NewQAbstractFileEngineHandler() {
 			ProxyQAbstractFileEngineHandler().NewQAbstractFileEngineHandler();
 		}
-		[SmokeMethod("create$", "(const QString&) const")]
+		[SmokeMethod("create", "(const QString&) const", "$")]
 		public virtual QAbstractFileEngine Create(string fileName) {
 			return ProxyQAbstractFileEngineHandler().Create(fileName);
 		}
@@ -47,7 +47,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQAbstractFileEngineHandler();
 		}
-		[SmokeMethod("~QAbstractFileEngineHandler", "()")]
+		[SmokeMethod("~QAbstractFileEngineHandler", "()", "")]
 		private void DisposeQAbstractFileEngineHandler() {
 			ProxyQAbstractFileEngineHandler().DisposeQAbstractFileEngineHandler();
 		}

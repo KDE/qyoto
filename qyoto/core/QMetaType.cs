@@ -10,11 +10,11 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QMetaType(Type dummy) {}
 		interface IQMetaTypeProxy {
-			[SmokeMethod("type$", "(const char*)")]
+			[SmokeMethod("type", "(const char*)", "$")]
 			int type(string typeName);
-			[SmokeMethod("typeName$", "(int)")]
+			[SmokeMethod("typeName", "(int)", "$")]
 			string TypeName(int type);
-			[SmokeMethod("isRegistered$", "(int)")]
+			[SmokeMethod("isRegistered", "(int)", "$")]
 			bool IsRegistered(int type);
 		}
 
@@ -101,7 +101,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQMetaType();
 		}
-		[SmokeMethod("QMetaType", "()")]
+		[SmokeMethod("QMetaType", "()", "")]
 		private void NewQMetaType() {
 			ProxyQMetaType().NewQMetaType();
 		}
@@ -127,7 +127,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQMetaType();
 		}
-		[SmokeMethod("~QMetaType", "()")]
+		[SmokeMethod("~QMetaType", "()", "")]
 		private void DisposeQMetaType() {
 			ProxyQMetaType().DisposeQMetaType();
 		}

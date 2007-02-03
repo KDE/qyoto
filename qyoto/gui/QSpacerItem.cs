@@ -29,7 +29,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSpacerItem(w,h,hData,vData);
 		}
-		[SmokeMethod("QSpacerItem$$$$", "(int, int, QSizePolicy::Policy, QSizePolicy::Policy)")]
+		[SmokeMethod("QSpacerItem", "(int, int, QSizePolicy::Policy, QSizePolicy::Policy)", "$$$$")]
 		private void NewQSpacerItem(int w, int h, QSizePolicy.Policy hData, QSizePolicy.Policy vData) {
 			ProxyQSpacerItem().NewQSpacerItem(w,h,hData,vData);
 		}
@@ -37,7 +37,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSpacerItem(w,h,hData);
 		}
-		[SmokeMethod("QSpacerItem$$$", "(int, int, QSizePolicy::Policy)")]
+		[SmokeMethod("QSpacerItem", "(int, int, QSizePolicy::Policy)", "$$$")]
 		private void NewQSpacerItem(int w, int h, QSizePolicy.Policy hData) {
 			ProxyQSpacerItem().NewQSpacerItem(w,h,hData);
 		}
@@ -45,51 +45,51 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSpacerItem(w,h);
 		}
-		[SmokeMethod("QSpacerItem$$", "(int, int)")]
+		[SmokeMethod("QSpacerItem", "(int, int)", "$$")]
 		private void NewQSpacerItem(int w, int h) {
 			ProxyQSpacerItem().NewQSpacerItem(w,h);
 		}
-		[SmokeMethod("changeSize$$$$", "(int, int, QSizePolicy::Policy, QSizePolicy::Policy)")]
+		[SmokeMethod("changeSize", "(int, int, QSizePolicy::Policy, QSizePolicy::Policy)", "$$$$")]
 		public void ChangeSize(int w, int h, QSizePolicy.Policy hData, QSizePolicy.Policy vData) {
 			ProxyQSpacerItem().ChangeSize(w,h,hData,vData);
 		}
-		[SmokeMethod("changeSize$$$", "(int, int, QSizePolicy::Policy)")]
+		[SmokeMethod("changeSize", "(int, int, QSizePolicy::Policy)", "$$$")]
 		public void ChangeSize(int w, int h, QSizePolicy.Policy hData) {
 			ProxyQSpacerItem().ChangeSize(w,h,hData);
 		}
-		[SmokeMethod("changeSize$$", "(int, int)")]
+		[SmokeMethod("changeSize", "(int, int)", "$$")]
 		public void ChangeSize(int w, int h) {
 			ProxyQSpacerItem().ChangeSize(w,h);
 		}
-		[SmokeMethod("sizeHint", "() const")]
+		[SmokeMethod("sizeHint", "() const", "")]
 		public new QSize SizeHint() {
 			return ProxyQSpacerItem().SizeHint();
 		}
-		[SmokeMethod("minimumSize", "() const")]
+		[SmokeMethod("minimumSize", "() const", "")]
 		public new QSize MinimumSize() {
 			return ProxyQSpacerItem().MinimumSize();
 		}
-		[SmokeMethod("maximumSize", "() const")]
+		[SmokeMethod("maximumSize", "() const", "")]
 		public new QSize MaximumSize() {
 			return ProxyQSpacerItem().MaximumSize();
 		}
-		[SmokeMethod("expandingDirections", "() const")]
+		[SmokeMethod("expandingDirections", "() const", "")]
 		public new int ExpandingDirections() {
 			return ProxyQSpacerItem().ExpandingDirections();
 		}
-		[SmokeMethod("isEmpty", "() const")]
+		[SmokeMethod("isEmpty", "() const", "")]
 		public new bool IsEmpty() {
 			return ProxyQSpacerItem().IsEmpty();
 		}
-		[SmokeMethod("setGeometry#", "(const QRect&)")]
+		[SmokeMethod("setGeometry", "(const QRect&)", "#")]
 		public new void SetGeometry(QRect arg1) {
 			ProxyQSpacerItem().SetGeometry(arg1);
 		}
-		[SmokeMethod("geometry", "() const")]
+		[SmokeMethod("geometry", "() const", "")]
 		public new QRect Geometry() {
 			return ProxyQSpacerItem().Geometry();
 		}
-		[SmokeMethod("spacerItem", "()")]
+		[SmokeMethod("spacerItem", "()", "")]
 		public new QSpacerItem SpacerItem() {
 			return ProxyQSpacerItem().SpacerItem();
 		}
@@ -99,7 +99,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQSpacerItem();
 		}
-		[SmokeMethod("~QSpacerItem", "()")]
+		[SmokeMethod("~QSpacerItem", "()", "")]
 		private void DisposeQSpacerItem() {
 			ProxyQSpacerItem().DisposeQSpacerItem();
 		}

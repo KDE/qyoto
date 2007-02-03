@@ -33,7 +33,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQPolygonF();
 		}
-		[SmokeMethod("QPolygonF", "()")]
+		[SmokeMethod("QPolygonF", "()", "")]
 		private void NewQPolygonF() {
 			ProxyQPolygonF().NewQPolygonF();
 		}
@@ -41,7 +41,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQPolygonF(size);
 		}
-		[SmokeMethod("QPolygonF$", "(int)")]
+		[SmokeMethod("QPolygonF", "(int)", "$")]
 		private void NewQPolygonF(int size) {
 			ProxyQPolygonF().NewQPolygonF(size);
 		}
@@ -49,7 +49,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQPolygonF(a);
 		}
-		[SmokeMethod("QPolygonF#", "(const QPolygonF&)")]
+		[SmokeMethod("QPolygonF", "(const QPolygonF&)", "#")]
 		private void NewQPolygonF(QPolygonF a) {
 			ProxyQPolygonF().NewQPolygonF(a);
 		}
@@ -57,7 +57,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQPolygonF(v);
 		}
-		[SmokeMethod("QPolygonF?", "(const QVector<QPointF>&)")]
+		[SmokeMethod("QPolygonF", "(const QVector<QPointF>&)", "?")]
 		private void NewQPolygonF(List<QPointF> v) {
 			ProxyQPolygonF().NewQPolygonF(v);
 		}
@@ -65,7 +65,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQPolygonF(r);
 		}
-		[SmokeMethod("QPolygonF#", "(const QRectF&)")]
+		[SmokeMethod("QPolygonF", "(const QRectF&)", "#")]
 		private void NewQPolygonF(QRectF r) {
 			ProxyQPolygonF().NewQPolygonF(r);
 		}
@@ -73,27 +73,27 @@ namespace Qyoto {
 			CreateProxy();
 			NewQPolygonF(a);
 		}
-		[SmokeMethod("QPolygonF#", "(const QPolygon&)")]
+		[SmokeMethod("QPolygonF", "(const QPolygon&)", "#")]
 		private void NewQPolygonF(QPolygon a) {
 			ProxyQPolygonF().NewQPolygonF(a);
 		}
-		[SmokeMethod("translate$$", "(qreal, qreal)")]
+		[SmokeMethod("translate", "(qreal, qreal)", "$$")]
 		public void Translate(double dx, double dy) {
 			ProxyQPolygonF().Translate(dx,dy);
 		}
-		[SmokeMethod("translate#", "(const QPointF&)")]
+		[SmokeMethod("translate", "(const QPointF&)", "#")]
 		public void Translate(QPointF offset) {
 			ProxyQPolygonF().Translate(offset);
 		}
-		[SmokeMethod("toPolygon", "() const")]
+		[SmokeMethod("toPolygon", "() const", "")]
 		public QPolygon ToPolygon() {
 			return ProxyQPolygonF().ToPolygon();
 		}
-		[SmokeMethod("isClosed", "() const")]
+		[SmokeMethod("isClosed", "() const", "")]
 		public bool IsClosed() {
 			return ProxyQPolygonF().IsClosed();
 		}
-		[SmokeMethod("boundingRect", "() const")]
+		[SmokeMethod("boundingRect", "() const", "")]
 		public QRectF BoundingRect() {
 			return ProxyQPolygonF().BoundingRect();
 		}
@@ -103,7 +103,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQPolygonF();
 		}
-		[SmokeMethod("~QPolygonF", "()")]
+		[SmokeMethod("~QPolygonF", "()", "")]
 		private void DisposeQPolygonF() {
 			ProxyQPolygonF().DisposeQPolygonF();
 		}

@@ -32,107 +32,107 @@ namespace Qyoto {
 			CreateProxy();
 			NewQMetaProperty();
 		}
-		[SmokeMethod("QMetaProperty", "()")]
+		[SmokeMethod("QMetaProperty", "()", "")]
 		private void NewQMetaProperty() {
 			ProxyQMetaProperty().NewQMetaProperty();
 		}
-		[SmokeMethod("name", "() const")]
+		[SmokeMethod("name", "() const", "")]
 		public string Name() {
 			return ProxyQMetaProperty().Name();
 		}
-		[SmokeMethod("typeName", "() const")]
+		[SmokeMethod("typeName", "() const", "")]
 		public string TypeName() {
 			return ProxyQMetaProperty().TypeName();
 		}
-		[SmokeMethod("type", "() const")]
+		[SmokeMethod("type", "() const", "")]
 		public QVariant.TypeOf type() {
 			return ProxyQMetaProperty().type();
 		}
-		[SmokeMethod("userType", "() const")]
+		[SmokeMethod("userType", "() const", "")]
 		public int UserType() {
 			return ProxyQMetaProperty().UserType();
 		}
-		[SmokeMethod("isReadable", "() const")]
+		[SmokeMethod("isReadable", "() const", "")]
 		public bool IsReadable() {
 			return ProxyQMetaProperty().IsReadable();
 		}
-		[SmokeMethod("isWritable", "() const")]
+		[SmokeMethod("isWritable", "() const", "")]
 		public bool IsWritable() {
 			return ProxyQMetaProperty().IsWritable();
 		}
-		[SmokeMethod("isResettable", "() const")]
+		[SmokeMethod("isResettable", "() const", "")]
 		public bool IsResettable() {
 			return ProxyQMetaProperty().IsResettable();
 		}
-		[SmokeMethod("isDesignable#", "(const QObject*) const")]
+		[SmokeMethod("isDesignable", "(const QObject*) const", "#")]
 		public bool IsDesignable(QObject arg1) {
 			return ProxyQMetaProperty().IsDesignable(arg1);
 		}
-		[SmokeMethod("isDesignable", "() const")]
+		[SmokeMethod("isDesignable", "() const", "")]
 		public bool IsDesignable() {
 			return ProxyQMetaProperty().IsDesignable();
 		}
-		[SmokeMethod("isScriptable#", "(const QObject*) const")]
+		[SmokeMethod("isScriptable", "(const QObject*) const", "#")]
 		public bool IsScriptable(QObject arg1) {
 			return ProxyQMetaProperty().IsScriptable(arg1);
 		}
-		[SmokeMethod("isScriptable", "() const")]
+		[SmokeMethod("isScriptable", "() const", "")]
 		public bool IsScriptable() {
 			return ProxyQMetaProperty().IsScriptable();
 		}
-		[SmokeMethod("isStored#", "(const QObject*) const")]
+		[SmokeMethod("isStored", "(const QObject*) const", "#")]
 		public bool IsStored(QObject arg1) {
 			return ProxyQMetaProperty().IsStored(arg1);
 		}
-		[SmokeMethod("isStored", "() const")]
+		[SmokeMethod("isStored", "() const", "")]
 		public bool IsStored() {
 			return ProxyQMetaProperty().IsStored();
 		}
-		[SmokeMethod("isEditable#", "(const QObject*) const")]
+		[SmokeMethod("isEditable", "(const QObject*) const", "#")]
 		public bool IsEditable(QObject arg1) {
 			return ProxyQMetaProperty().IsEditable(arg1);
 		}
-		[SmokeMethod("isEditable", "() const")]
+		[SmokeMethod("isEditable", "() const", "")]
 		public bool IsEditable() {
 			return ProxyQMetaProperty().IsEditable();
 		}
-		[SmokeMethod("isUser#", "(const QObject*) const")]
+		[SmokeMethod("isUser", "(const QObject*) const", "#")]
 		public bool IsUser(QObject arg1) {
 			return ProxyQMetaProperty().IsUser(arg1);
 		}
-		[SmokeMethod("isUser", "() const")]
+		[SmokeMethod("isUser", "() const", "")]
 		public bool IsUser() {
 			return ProxyQMetaProperty().IsUser();
 		}
-		[SmokeMethod("isFlagType", "() const")]
+		[SmokeMethod("isFlagType", "() const", "")]
 		public bool IsFlagType() {
 			return ProxyQMetaProperty().IsFlagType();
 		}
-		[SmokeMethod("isEnumType", "() const")]
+		[SmokeMethod("isEnumType", "() const", "")]
 		public bool IsEnumType() {
 			return ProxyQMetaProperty().IsEnumType();
 		}
-		[SmokeMethod("enumerator", "() const")]
+		[SmokeMethod("enumerator", "() const", "")]
 		public QMetaEnum Enumerator() {
 			return ProxyQMetaProperty().Enumerator();
 		}
-		[SmokeMethod("read#", "(const QObject*) const")]
+		[SmokeMethod("read", "(const QObject*) const", "#")]
 		public QVariant Read(QObject arg1) {
 			return ProxyQMetaProperty().Read(arg1);
 		}
-		[SmokeMethod("write##", "(QObject*, const QVariant&) const")]
+		[SmokeMethod("write", "(QObject*, const QVariant&) const", "##")]
 		public bool Write(QObject arg1, QVariant value) {
 			return ProxyQMetaProperty().Write(arg1,value);
 		}
-		[SmokeMethod("reset#", "(QObject*) const")]
+		[SmokeMethod("reset", "(QObject*) const", "#")]
 		public bool Reset(QObject arg1) {
 			return ProxyQMetaProperty().Reset(arg1);
 		}
-		[SmokeMethod("hasStdCppSet", "() const")]
+		[SmokeMethod("hasStdCppSet", "() const", "")]
 		public bool HasStdCppSet() {
 			return ProxyQMetaProperty().HasStdCppSet();
 		}
-		[SmokeMethod("isValid", "() const")]
+		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
 			return ProxyQMetaProperty().IsValid();
 		}
@@ -142,7 +142,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQMetaProperty();
 		}
-		[SmokeMethod("~QMetaProperty", "()")]
+		[SmokeMethod("~QMetaProperty", "()", "")]
 		private void DisposeQMetaProperty() {
 			ProxyQMetaProperty().DisposeQMetaProperty();
 		}

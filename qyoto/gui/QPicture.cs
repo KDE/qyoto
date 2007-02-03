@@ -9,15 +9,15 @@ namespace Qyoto {
 	public class QPicture : QPaintDevice, IDisposable {
  		protected QPicture(Type dummy) : base((Type) null) {}
 		interface IQPictureProxy {
-			[SmokeMethod("pictureFormat$", "(const QString&)")]
+			[SmokeMethod("pictureFormat", "(const QString&)", "$")]
 			string PictureFormat(string fileName);
-			[SmokeMethod("inputFormats", "()")]
+			[SmokeMethod("inputFormats", "()", "")]
 			List<QByteArray> InputFormats();
-			[SmokeMethod("outputFormats", "()")]
+			[SmokeMethod("outputFormats", "()", "")]
 			List<QByteArray> OutputFormats();
-			[SmokeMethod("inputFormatList", "()")]
+			[SmokeMethod("inputFormatList", "()", "")]
 			List<string> InputFormatList();
-			[SmokeMethod("outputFormatList", "()")]
+			[SmokeMethod("outputFormatList", "()", "")]
 			List<string> OutputFormatList();
 		}
 
@@ -41,7 +41,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQPicture(formatVersion);
 		}
-		[SmokeMethod("QPicture$", "(int)")]
+		[SmokeMethod("QPicture", "(int)", "$")]
 		private void NewQPicture(int formatVersion) {
 			ProxyQPicture().NewQPicture(formatVersion);
 		}
@@ -49,7 +49,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQPicture();
 		}
-		[SmokeMethod("QPicture", "()")]
+		[SmokeMethod("QPicture", "()", "")]
 		private void NewQPicture() {
 			ProxyQPicture().NewQPicture();
 		}
@@ -57,83 +57,83 @@ namespace Qyoto {
 			CreateProxy();
 			NewQPicture(arg1);
 		}
-		[SmokeMethod("QPicture#", "(const QPicture&)")]
+		[SmokeMethod("QPicture", "(const QPicture&)", "#")]
 		private void NewQPicture(QPicture arg1) {
 			ProxyQPicture().NewQPicture(arg1);
 		}
-		[SmokeMethod("isNull", "() const")]
+		[SmokeMethod("isNull", "() const", "")]
 		public bool IsNull() {
 			return ProxyQPicture().IsNull();
 		}
-		[SmokeMethod("devType", "() const")]
+		[SmokeMethod("devType", "() const", "")]
 		public new int DevType() {
 			return ProxyQPicture().DevType();
 		}
-		[SmokeMethod("size", "() const")]
+		[SmokeMethod("size", "() const", "")]
 		public uint Size() {
 			return ProxyQPicture().Size();
 		}
-		[SmokeMethod("data", "() const")]
+		[SmokeMethod("data", "() const", "")]
 		public string Data() {
 			return ProxyQPicture().Data();
 		}
-		[SmokeMethod("setData$$", "(const char*, uint)")]
+		[SmokeMethod("setData", "(const char*, uint)", "$$")]
 		public virtual void SetData(string data, uint size) {
 			ProxyQPicture().SetData(data,size);
 		}
-		[SmokeMethod("play#", "(QPainter*)")]
+		[SmokeMethod("play", "(QPainter*)", "#")]
 		public bool Play(QPainter p) {
 			return ProxyQPicture().Play(p);
 		}
-		[SmokeMethod("load#$", "(QIODevice*, const char*)")]
+		[SmokeMethod("load", "(QIODevice*, const char*)", "#$")]
 		public bool Load(IQIODevice dev, string format) {
 			return ProxyQPicture().Load(dev,format);
 		}
-		[SmokeMethod("load#", "(QIODevice*)")]
+		[SmokeMethod("load", "(QIODevice*)", "#")]
 		public bool Load(IQIODevice dev) {
 			return ProxyQPicture().Load(dev);
 		}
-		[SmokeMethod("load$$", "(const QString&, const char*)")]
+		[SmokeMethod("load", "(const QString&, const char*)", "$$")]
 		public bool Load(string fileName, string format) {
 			return ProxyQPicture().Load(fileName,format);
 		}
-		[SmokeMethod("load$", "(const QString&)")]
+		[SmokeMethod("load", "(const QString&)", "$")]
 		public bool Load(string fileName) {
 			return ProxyQPicture().Load(fileName);
 		}
-		[SmokeMethod("save#$", "(QIODevice*, const char*)")]
+		[SmokeMethod("save", "(QIODevice*, const char*)", "#$")]
 		public bool Save(IQIODevice dev, string format) {
 			return ProxyQPicture().Save(dev,format);
 		}
-		[SmokeMethod("save#", "(QIODevice*)")]
+		[SmokeMethod("save", "(QIODevice*)", "#")]
 		public bool Save(IQIODevice dev) {
 			return ProxyQPicture().Save(dev);
 		}
-		[SmokeMethod("save$$", "(const QString&, const char*)")]
+		[SmokeMethod("save", "(const QString&, const char*)", "$$")]
 		public bool Save(string fileName, string format) {
 			return ProxyQPicture().Save(fileName,format);
 		}
-		[SmokeMethod("save$", "(const QString&)")]
+		[SmokeMethod("save", "(const QString&)", "$")]
 		public bool Save(string fileName) {
 			return ProxyQPicture().Save(fileName);
 		}
-		[SmokeMethod("boundingRect", "() const")]
+		[SmokeMethod("boundingRect", "() const", "")]
 		public QRect BoundingRect() {
 			return ProxyQPicture().BoundingRect();
 		}
-		[SmokeMethod("setBoundingRect#", "(const QRect&)")]
+		[SmokeMethod("setBoundingRect", "(const QRect&)", "#")]
 		public void SetBoundingRect(QRect r) {
 			ProxyQPicture().SetBoundingRect(r);
 		}
-		[SmokeMethod("detach", "()")]
+		[SmokeMethod("detach", "()", "")]
 		public void Detach() {
 			ProxyQPicture().Detach();
 		}
-		[SmokeMethod("isDetached", "() const")]
+		[SmokeMethod("isDetached", "() const", "")]
 		public bool IsDetached() {
 			return ProxyQPicture().IsDetached();
 		}
-		[SmokeMethod("paintEngine", "() const")]
+		[SmokeMethod("paintEngine", "() const", "")]
 		public new QPaintEngine PaintEngine() {
 			return ProxyQPicture().PaintEngine();
 		}
@@ -153,7 +153,7 @@ namespace Qyoto {
 			return StaticQPicture().OutputFormatList();
 		}
 		// QPicture* QPicture(QPicturePrivate& arg1); >>>> NOT CONVERTED
-		[SmokeMethod("metric$", "(QPaintDevice::PaintDeviceMetric) const")]
+		[SmokeMethod("metric", "(QPaintDevice::PaintDeviceMetric) const", "$")]
 		protected new int Metric(IQPaintDevice m) {
 			return ProxyQPicture().Metric(m);
 		}
@@ -163,7 +163,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQPicture();
 		}
-		[SmokeMethod("~QPicture", "()")]
+		[SmokeMethod("~QPicture", "()", "")]
 		private void DisposeQPicture() {
 			ProxyQPicture().DisposeQPicture();
 		}

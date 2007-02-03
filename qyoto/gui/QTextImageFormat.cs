@@ -30,35 +30,35 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTextImageFormat();
 		}
-		[SmokeMethod("QTextImageFormat", "()")]
+		[SmokeMethod("QTextImageFormat", "()", "")]
 		private void NewQTextImageFormat() {
 			ProxyQTextImageFormat().NewQTextImageFormat();
 		}
-		[SmokeMethod("isValid", "() const")]
+		[SmokeMethod("isValid", "() const", "")]
 		public new bool IsValid() {
 			return ProxyQTextImageFormat().IsValid();
 		}
-		[SmokeMethod("setName$", "(const QString&)")]
+		[SmokeMethod("setName", "(const QString&)", "$")]
 		public void SetName(string name) {
 			ProxyQTextImageFormat().SetName(name);
 		}
-		[SmokeMethod("name", "() const")]
+		[SmokeMethod("name", "() const", "")]
 		public string Name() {
 			return ProxyQTextImageFormat().Name();
 		}
-		[SmokeMethod("setWidth$", "(qreal)")]
+		[SmokeMethod("setWidth", "(qreal)", "$")]
 		public void SetWidth(double width) {
 			ProxyQTextImageFormat().SetWidth(width);
 		}
-		[SmokeMethod("width", "() const")]
+		[SmokeMethod("width", "() const", "")]
 		public double Width() {
 			return ProxyQTextImageFormat().Width();
 		}
-		[SmokeMethod("setHeight$", "(qreal)")]
+		[SmokeMethod("setHeight", "(qreal)", "$")]
 		public void SetHeight(double height) {
 			ProxyQTextImageFormat().SetHeight(height);
 		}
-		[SmokeMethod("height", "() const")]
+		[SmokeMethod("height", "() const", "")]
 		public double Height() {
 			return ProxyQTextImageFormat().Height();
 		}
@@ -68,7 +68,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQTextImageFormat();
 		}
-		[SmokeMethod("~QTextImageFormat", "()")]
+		[SmokeMethod("~QTextImageFormat", "()", "")]
 		private void DisposeQTextImageFormat() {
 			ProxyQTextImageFormat().DisposeQTextImageFormat();
 		}

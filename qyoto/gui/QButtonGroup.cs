@@ -10,9 +10,9 @@ namespace Qyoto {
 	public class QButtonGroup : QObject, IDisposable {
  		protected QButtonGroup(Type dummy) : base((Type) null) {}
 		interface IQButtonGroupProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
 
@@ -46,7 +46,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQButtonGroup(parent);
 		}
-		[SmokeMethod("QButtonGroup#", "(QObject*)")]
+		[SmokeMethod("QButtonGroup", "(QObject*)", "#")]
 		private void NewQButtonGroup(QObject parent) {
 			ProxyQButtonGroup().NewQButtonGroup(parent);
 		}
@@ -54,43 +54,43 @@ namespace Qyoto {
 			CreateProxy();
 			NewQButtonGroup();
 		}
-		[SmokeMethod("QButtonGroup", "()")]
+		[SmokeMethod("QButtonGroup", "()", "")]
 		private void NewQButtonGroup() {
 			ProxyQButtonGroup().NewQButtonGroup();
 		}
-		[SmokeMethod("addButton#", "(QAbstractButton*)")]
+		[SmokeMethod("addButton", "(QAbstractButton*)", "#")]
 		public void AddButton(QAbstractButton arg1) {
 			ProxyQButtonGroup().AddButton(arg1);
 		}
-		[SmokeMethod("addButton#$", "(QAbstractButton*, int)")]
+		[SmokeMethod("addButton", "(QAbstractButton*, int)", "#$")]
 		public void AddButton(QAbstractButton arg1, int id) {
 			ProxyQButtonGroup().AddButton(arg1,id);
 		}
-		[SmokeMethod("removeButton#", "(QAbstractButton*)")]
+		[SmokeMethod("removeButton", "(QAbstractButton*)", "#")]
 		public void RemoveButton(QAbstractButton arg1) {
 			ProxyQButtonGroup().RemoveButton(arg1);
 		}
-		[SmokeMethod("buttons", "() const")]
+		[SmokeMethod("buttons", "() const", "")]
 		public List<QAbstractButton> Buttons() {
 			return ProxyQButtonGroup().Buttons();
 		}
-		[SmokeMethod("checkedButton", "() const")]
+		[SmokeMethod("checkedButton", "() const", "")]
 		public QAbstractButton CheckedButton() {
 			return ProxyQButtonGroup().CheckedButton();
 		}
-		[SmokeMethod("button$", "(int) const")]
+		[SmokeMethod("button", "(int) const", "$")]
 		public QAbstractButton Button(int id) {
 			return ProxyQButtonGroup().Button(id);
 		}
-		[SmokeMethod("setId#$", "(QAbstractButton*, int)")]
+		[SmokeMethod("setId", "(QAbstractButton*, int)", "#$")]
 		public void SetId(QAbstractButton button, int id) {
 			ProxyQButtonGroup().SetId(button,id);
 		}
-		[SmokeMethod("id#", "(QAbstractButton*) const")]
+		[SmokeMethod("id", "(QAbstractButton*) const", "#")]
 		public int Id(QAbstractButton button) {
 			return ProxyQButtonGroup().Id(button);
 		}
-		[SmokeMethod("checkedId", "() const")]
+		[SmokeMethod("checkedId", "() const", "")]
 		public int CheckedId() {
 			return ProxyQButtonGroup().CheckedId();
 		}
@@ -106,7 +106,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQButtonGroup();
 		}
-		[SmokeMethod("~QButtonGroup", "()")]
+		[SmokeMethod("~QButtonGroup", "()", "")]
 		private void DisposeQButtonGroup() {
 			ProxyQButtonGroup().DisposeQButtonGroup();
 		}

@@ -9,9 +9,9 @@ namespace Qyoto {
 	public class QDockWidget : QWidget, IDisposable {
  		protected QDockWidget(Type dummy) : base((Type) null) {}
 		interface IQDockWidgetProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
 
@@ -81,7 +81,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDockWidget(title,parent,flags);
 		}
-		[SmokeMethod("QDockWidget$#$", "(const QString&, QWidget*, Qt::WindowFlags)")]
+		[SmokeMethod("QDockWidget", "(const QString&, QWidget*, Qt::WindowFlags)", "$#$")]
 		private void NewQDockWidget(string title, QWidget parent, int flags) {
 			ProxyQDockWidget().NewQDockWidget(title,parent,flags);
 		}
@@ -89,7 +89,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDockWidget(title,parent);
 		}
-		[SmokeMethod("QDockWidget$#", "(const QString&, QWidget*)")]
+		[SmokeMethod("QDockWidget", "(const QString&, QWidget*)", "$#")]
 		private void NewQDockWidget(string title, QWidget parent) {
 			ProxyQDockWidget().NewQDockWidget(title,parent);
 		}
@@ -97,7 +97,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDockWidget(title);
 		}
-		[SmokeMethod("QDockWidget$", "(const QString&)")]
+		[SmokeMethod("QDockWidget", "(const QString&)", "$")]
 		private void NewQDockWidget(string title) {
 			ProxyQDockWidget().NewQDockWidget(title);
 		}
@@ -105,7 +105,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDockWidget(parent,flags);
 		}
-		[SmokeMethod("QDockWidget#$", "(QWidget*, Qt::WindowFlags)")]
+		[SmokeMethod("QDockWidget", "(QWidget*, Qt::WindowFlags)", "#$")]
 		private void NewQDockWidget(QWidget parent, int flags) {
 			ProxyQDockWidget().NewQDockWidget(parent,flags);
 		}
@@ -113,7 +113,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDockWidget(parent);
 		}
-		[SmokeMethod("QDockWidget#", "(QWidget*)")]
+		[SmokeMethod("QDockWidget", "(QWidget*)", "#")]
 		private void NewQDockWidget(QWidget parent) {
 			ProxyQDockWidget().NewQDockWidget(parent);
 		}
@@ -121,27 +121,27 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDockWidget();
 		}
-		[SmokeMethod("QDockWidget", "()")]
+		[SmokeMethod("QDockWidget", "()", "")]
 		private void NewQDockWidget() {
 			ProxyQDockWidget().NewQDockWidget();
 		}
-		[SmokeMethod("widget", "() const")]
+		[SmokeMethod("widget", "() const", "")]
 		public QWidget Widget() {
 			return ProxyQDockWidget().Widget();
 		}
-		[SmokeMethod("setWidget#", "(QWidget*)")]
+		[SmokeMethod("setWidget", "(QWidget*)", "#")]
 		public void SetWidget(QWidget widget) {
 			ProxyQDockWidget().SetWidget(widget);
 		}
-		[SmokeMethod("isFloating", "() const")]
+		[SmokeMethod("isFloating", "() const", "")]
 		public bool IsFloating() {
 			return ProxyQDockWidget().IsFloating();
 		}
-		[SmokeMethod("isAreaAllowed$", "(Qt::DockWidgetArea) const")]
+		[SmokeMethod("isAreaAllowed", "(Qt::DockWidgetArea) const", "$")]
 		public bool IsAreaAllowed(Qt.DockWidgetArea area) {
 			return ProxyQDockWidget().IsAreaAllowed(area);
 		}
-		[SmokeMethod("toggleViewAction", "() const")]
+		[SmokeMethod("toggleViewAction", "() const", "")]
 		public QAction ToggleViewAction() {
 			return ProxyQDockWidget().ToggleViewAction();
 		}
@@ -151,19 +151,19 @@ namespace Qyoto {
 		public static new string Tr(string s) {
 			return StaticQDockWidget().Tr(s);
 		}
-		[SmokeMethod("changeEvent#", "(QEvent*)")]
+		[SmokeMethod("changeEvent", "(QEvent*)", "#")]
 		protected new void ChangeEvent(QEvent arg1) {
 			ProxyQDockWidget().ChangeEvent(arg1);
 		}
-		[SmokeMethod("closeEvent#", "(QCloseEvent*)")]
+		[SmokeMethod("closeEvent", "(QCloseEvent*)", "#")]
 		protected new void CloseEvent(QCloseEvent arg1) {
 			ProxyQDockWidget().CloseEvent(arg1);
 		}
-		[SmokeMethod("paintEvent#", "(QPaintEvent*)")]
+		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
 		protected new void PaintEvent(QPaintEvent arg1) {
 			ProxyQDockWidget().PaintEvent(arg1);
 		}
-		[SmokeMethod("event#", "(QEvent*)")]
+		[SmokeMethod("event", "(QEvent*)", "#")]
 		public new bool Event(QEvent arg1) {
 			return ProxyQDockWidget().Event(arg1);
 		}
@@ -173,7 +173,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQDockWidget();
 		}
-		[SmokeMethod("~QDockWidget", "()")]
+		[SmokeMethod("~QDockWidget", "()", "")]
 		private void DisposeQDockWidget() {
 			ProxyQDockWidget().DisposeQDockWidget();
 		}

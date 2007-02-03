@@ -8,9 +8,9 @@ namespace Qyoto {
 	public class QPrintDialog : QAbstractPrintDialog, IDisposable {
  		protected QPrintDialog(Type dummy) : base((Type) null) {}
 		interface IQPrintDialogProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
 
@@ -35,7 +35,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQPrintDialog(printer,parent);
 		}
-		[SmokeMethod("QPrintDialog##", "(QPrinter*, QWidget*)")]
+		[SmokeMethod("QPrintDialog", "(QPrinter*, QWidget*)", "##")]
 		private void NewQPrintDialog(QPrinter printer, QWidget parent) {
 			ProxyQPrintDialog().NewQPrintDialog(printer,parent);
 		}
@@ -43,15 +43,15 @@ namespace Qyoto {
 			CreateProxy();
 			NewQPrintDialog(printer);
 		}
-		[SmokeMethod("QPrintDialog#", "(QPrinter*)")]
+		[SmokeMethod("QPrintDialog", "(QPrinter*)", "#")]
 		private void NewQPrintDialog(QPrinter printer) {
 			ProxyQPrintDialog().NewQPrintDialog(printer);
 		}
-		[SmokeMethod("exec", "()")]
+		[SmokeMethod("exec", "()", "")]
 		public new int Exec() {
 			return ProxyQPrintDialog().Exec();
 		}
-		[SmokeMethod("eventFilter##", "(QObject*, QEvent*)")]
+		[SmokeMethod("eventFilter", "(QObject*, QEvent*)", "##")]
 		public new bool EventFilter(QObject arg1, QEvent arg2) {
 			return ProxyQPrintDialog().EventFilter(arg1,arg2);
 		}
@@ -67,7 +67,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQPrintDialog();
 		}
-		[SmokeMethod("~QPrintDialog", "()")]
+		[SmokeMethod("~QPrintDialog", "()", "")]
 		private void DisposeQPrintDialog() {
 			ProxyQPrintDialog().DisposeQPrintDialog();
 		}

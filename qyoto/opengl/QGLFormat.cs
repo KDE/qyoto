@@ -10,17 +10,17 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QGLFormat(Type dummy) {}
 		interface IQGLFormatProxy {
-			[SmokeMethod("defaultFormat", "()")]
+			[SmokeMethod("defaultFormat", "()", "")]
 			QGLFormat DefaultFormat();
-			[SmokeMethod("setDefaultFormat#", "(const QGLFormat&)")]
+			[SmokeMethod("setDefaultFormat", "(const QGLFormat&)", "#")]
 			void SetDefaultFormat(QGLFormat f);
-			[SmokeMethod("defaultOverlayFormat", "()")]
+			[SmokeMethod("defaultOverlayFormat", "()", "")]
 			QGLFormat DefaultOverlayFormat();
-			[SmokeMethod("setDefaultOverlayFormat#", "(const QGLFormat&)")]
+			[SmokeMethod("setDefaultOverlayFormat", "(const QGLFormat&)", "#")]
 			void SetDefaultOverlayFormat(QGLFormat f);
-			[SmokeMethod("hasOpenGL", "()")]
+			[SmokeMethod("hasOpenGL", "()", "")]
 			bool HasOpenGL();
-			[SmokeMethod("hasOpenGLOverlays", "()")]
+			[SmokeMethod("hasOpenGLOverlays", "()", "")]
 			bool HasOpenGLOverlays();
 		}
 
@@ -59,7 +59,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGLFormat();
 		}
-		[SmokeMethod("QGLFormat", "()")]
+		[SmokeMethod("QGLFormat", "()", "")]
 		private void NewQGLFormat() {
 			ProxyQGLFormat().NewQGLFormat();
 		}
@@ -67,7 +67,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGLFormat(options,plane);
 		}
-		[SmokeMethod("QGLFormat$$", "(QGL::FormatOptions, int)")]
+		[SmokeMethod("QGLFormat", "(QGL::FormatOptions, int)", "$$")]
 		private void NewQGLFormat(int options, int plane) {
 			ProxyQGLFormat().NewQGLFormat(options,plane);
 		}
@@ -75,7 +75,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGLFormat(options);
 		}
-		[SmokeMethod("QGLFormat$", "(QGL::FormatOptions)")]
+		[SmokeMethod("QGLFormat", "(QGL::FormatOptions)", "$")]
 		private void NewQGLFormat(int options) {
 			ProxyQGLFormat().NewQGLFormat(options);
 		}
@@ -83,175 +83,175 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGLFormat(other);
 		}
-		[SmokeMethod("QGLFormat#", "(const QGLFormat&)")]
+		[SmokeMethod("QGLFormat", "(const QGLFormat&)", "#")]
 		private void NewQGLFormat(QGLFormat other) {
 			ProxyQGLFormat().NewQGLFormat(other);
 		}
-		[SmokeMethod("setDepthBufferSize$", "(int)")]
+		[SmokeMethod("setDepthBufferSize", "(int)", "$")]
 		public void SetDepthBufferSize(int size) {
 			ProxyQGLFormat().SetDepthBufferSize(size);
 		}
-		[SmokeMethod("depthBufferSize", "() const")]
+		[SmokeMethod("depthBufferSize", "() const", "")]
 		public int DepthBufferSize() {
 			return ProxyQGLFormat().DepthBufferSize();
 		}
-		[SmokeMethod("setAccumBufferSize$", "(int)")]
+		[SmokeMethod("setAccumBufferSize", "(int)", "$")]
 		public void SetAccumBufferSize(int size) {
 			ProxyQGLFormat().SetAccumBufferSize(size);
 		}
-		[SmokeMethod("accumBufferSize", "() const")]
+		[SmokeMethod("accumBufferSize", "() const", "")]
 		public int AccumBufferSize() {
 			return ProxyQGLFormat().AccumBufferSize();
 		}
-		[SmokeMethod("setRedBufferSize$", "(int)")]
+		[SmokeMethod("setRedBufferSize", "(int)", "$")]
 		public void SetRedBufferSize(int size) {
 			ProxyQGLFormat().SetRedBufferSize(size);
 		}
-		[SmokeMethod("redBufferSize", "() const")]
+		[SmokeMethod("redBufferSize", "() const", "")]
 		public int RedBufferSize() {
 			return ProxyQGLFormat().RedBufferSize();
 		}
-		[SmokeMethod("setGreenBufferSize$", "(int)")]
+		[SmokeMethod("setGreenBufferSize", "(int)", "$")]
 		public void SetGreenBufferSize(int size) {
 			ProxyQGLFormat().SetGreenBufferSize(size);
 		}
-		[SmokeMethod("greenBufferSize", "() const")]
+		[SmokeMethod("greenBufferSize", "() const", "")]
 		public int GreenBufferSize() {
 			return ProxyQGLFormat().GreenBufferSize();
 		}
-		[SmokeMethod("setBlueBufferSize$", "(int)")]
+		[SmokeMethod("setBlueBufferSize", "(int)", "$")]
 		public void SetBlueBufferSize(int size) {
 			ProxyQGLFormat().SetBlueBufferSize(size);
 		}
-		[SmokeMethod("blueBufferSize", "() const")]
+		[SmokeMethod("blueBufferSize", "() const", "")]
 		public int BlueBufferSize() {
 			return ProxyQGLFormat().BlueBufferSize();
 		}
-		[SmokeMethod("setAlphaBufferSize$", "(int)")]
+		[SmokeMethod("setAlphaBufferSize", "(int)", "$")]
 		public void SetAlphaBufferSize(int size) {
 			ProxyQGLFormat().SetAlphaBufferSize(size);
 		}
-		[SmokeMethod("alphaBufferSize", "() const")]
+		[SmokeMethod("alphaBufferSize", "() const", "")]
 		public int AlphaBufferSize() {
 			return ProxyQGLFormat().AlphaBufferSize();
 		}
-		[SmokeMethod("setStencilBufferSize$", "(int)")]
+		[SmokeMethod("setStencilBufferSize", "(int)", "$")]
 		public void SetStencilBufferSize(int size) {
 			ProxyQGLFormat().SetStencilBufferSize(size);
 		}
-		[SmokeMethod("stencilBufferSize", "() const")]
+		[SmokeMethod("stencilBufferSize", "() const", "")]
 		public int StencilBufferSize() {
 			return ProxyQGLFormat().StencilBufferSize();
 		}
-		[SmokeMethod("setSampleBuffers$", "(bool)")]
+		[SmokeMethod("setSampleBuffers", "(bool)", "$")]
 		public void SetSampleBuffers(bool enable) {
 			ProxyQGLFormat().SetSampleBuffers(enable);
 		}
-		[SmokeMethod("sampleBuffers", "() const")]
+		[SmokeMethod("sampleBuffers", "() const", "")]
 		public bool SampleBuffers() {
 			return ProxyQGLFormat().SampleBuffers();
 		}
-		[SmokeMethod("setSamples$", "(int)")]
+		[SmokeMethod("setSamples", "(int)", "$")]
 		public void SetSamples(int numSamples) {
 			ProxyQGLFormat().SetSamples(numSamples);
 		}
-		[SmokeMethod("samples", "() const")]
+		[SmokeMethod("samples", "() const", "")]
 		public int Samples() {
 			return ProxyQGLFormat().Samples();
 		}
-		[SmokeMethod("setSwapInterval$", "(int)")]
+		[SmokeMethod("setSwapInterval", "(int)", "$")]
 		public void SetSwapInterval(int interval) {
 			ProxyQGLFormat().SetSwapInterval(interval);
 		}
-		[SmokeMethod("swapInterval", "() const")]
+		[SmokeMethod("swapInterval", "() const", "")]
 		public int SwapInterval() {
 			return ProxyQGLFormat().SwapInterval();
 		}
-		[SmokeMethod("doubleBuffer", "() const")]
+		[SmokeMethod("doubleBuffer", "() const", "")]
 		public bool DoubleBuffer() {
 			return ProxyQGLFormat().DoubleBuffer();
 		}
-		[SmokeMethod("setDoubleBuffer$", "(bool)")]
+		[SmokeMethod("setDoubleBuffer", "(bool)", "$")]
 		public void SetDoubleBuffer(bool enable) {
 			ProxyQGLFormat().SetDoubleBuffer(enable);
 		}
-		[SmokeMethod("depth", "() const")]
+		[SmokeMethod("depth", "() const", "")]
 		public bool Depth() {
 			return ProxyQGLFormat().Depth();
 		}
-		[SmokeMethod("setDepth$", "(bool)")]
+		[SmokeMethod("setDepth", "(bool)", "$")]
 		public void SetDepth(bool enable) {
 			ProxyQGLFormat().SetDepth(enable);
 		}
-		[SmokeMethod("rgba", "() const")]
+		[SmokeMethod("rgba", "() const", "")]
 		public bool Rgba() {
 			return ProxyQGLFormat().Rgba();
 		}
-		[SmokeMethod("setRgba$", "(bool)")]
+		[SmokeMethod("setRgba", "(bool)", "$")]
 		public void SetRgba(bool enable) {
 			ProxyQGLFormat().SetRgba(enable);
 		}
-		[SmokeMethod("alpha", "() const")]
+		[SmokeMethod("alpha", "() const", "")]
 		public bool Alpha() {
 			return ProxyQGLFormat().Alpha();
 		}
-		[SmokeMethod("setAlpha$", "(bool)")]
+		[SmokeMethod("setAlpha", "(bool)", "$")]
 		public void SetAlpha(bool enable) {
 			ProxyQGLFormat().SetAlpha(enable);
 		}
-		[SmokeMethod("accum", "() const")]
+		[SmokeMethod("accum", "() const", "")]
 		public bool Accum() {
 			return ProxyQGLFormat().Accum();
 		}
-		[SmokeMethod("setAccum$", "(bool)")]
+		[SmokeMethod("setAccum", "(bool)", "$")]
 		public void SetAccum(bool enable) {
 			ProxyQGLFormat().SetAccum(enable);
 		}
-		[SmokeMethod("stencil", "() const")]
+		[SmokeMethod("stencil", "() const", "")]
 		public bool Stencil() {
 			return ProxyQGLFormat().Stencil();
 		}
-		[SmokeMethod("setStencil$", "(bool)")]
+		[SmokeMethod("setStencil", "(bool)", "$")]
 		public void SetStencil(bool enable) {
 			ProxyQGLFormat().SetStencil(enable);
 		}
-		[SmokeMethod("stereo", "() const")]
+		[SmokeMethod("stereo", "() const", "")]
 		public bool Stereo() {
 			return ProxyQGLFormat().Stereo();
 		}
-		[SmokeMethod("setStereo$", "(bool)")]
+		[SmokeMethod("setStereo", "(bool)", "$")]
 		public void SetStereo(bool enable) {
 			ProxyQGLFormat().SetStereo(enable);
 		}
-		[SmokeMethod("directRendering", "() const")]
+		[SmokeMethod("directRendering", "() const", "")]
 		public bool DirectRendering() {
 			return ProxyQGLFormat().DirectRendering();
 		}
-		[SmokeMethod("setDirectRendering$", "(bool)")]
+		[SmokeMethod("setDirectRendering", "(bool)", "$")]
 		public void SetDirectRendering(bool enable) {
 			ProxyQGLFormat().SetDirectRendering(enable);
 		}
-		[SmokeMethod("hasOverlay", "() const")]
+		[SmokeMethod("hasOverlay", "() const", "")]
 		public bool HasOverlay() {
 			return ProxyQGLFormat().HasOverlay();
 		}
-		[SmokeMethod("setOverlay$", "(bool)")]
+		[SmokeMethod("setOverlay", "(bool)", "$")]
 		public void SetOverlay(bool enable) {
 			ProxyQGLFormat().SetOverlay(enable);
 		}
-		[SmokeMethod("plane", "() const")]
+		[SmokeMethod("plane", "() const", "")]
 		public int Plane() {
 			return ProxyQGLFormat().Plane();
 		}
-		[SmokeMethod("setPlane$", "(int)")]
+		[SmokeMethod("setPlane", "(int)", "$")]
 		public void SetPlane(int plane) {
 			ProxyQGLFormat().SetPlane(plane);
 		}
-		[SmokeMethod("setOption$", "(QGL::FormatOptions)")]
+		[SmokeMethod("setOption", "(QGL::FormatOptions)", "$")]
 		public void SetOption(int opt) {
 			ProxyQGLFormat().SetOption(opt);
 		}
-		[SmokeMethod("testOption$", "(QGL::FormatOptions) const")]
+		[SmokeMethod("testOption", "(QGL::FormatOptions) const", "$")]
 		public bool TestOption(int opt) {
 			return ProxyQGLFormat().TestOption(opt);
 		}
@@ -280,7 +280,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQGLFormat();
 		}
-		[SmokeMethod("~QGLFormat", "()")]
+		[SmokeMethod("~QGLFormat", "()", "")]
 		private void DisposeQGLFormat() {
 			ProxyQGLFormat().DisposeQGLFormat();
 		}

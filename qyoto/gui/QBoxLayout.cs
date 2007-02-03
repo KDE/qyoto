@@ -8,9 +8,9 @@ namespace Qyoto {
 	public class QBoxLayout : QLayout, IDisposable {
  		protected QBoxLayout(Type dummy) : base((Type) null) {}
 		interface IQBoxLayoutProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
 
@@ -43,7 +43,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQBoxLayout(arg1,parent);
 		}
-		[SmokeMethod("QBoxLayout$#", "(QBoxLayout::Direction, QWidget*)")]
+		[SmokeMethod("QBoxLayout", "(QBoxLayout::Direction, QWidget*)", "$#")]
 		private void NewQBoxLayout(QBoxLayout.Direction arg1, QWidget parent) {
 			ProxyQBoxLayout().NewQBoxLayout(arg1,parent);
 		}
@@ -51,143 +51,143 @@ namespace Qyoto {
 			CreateProxy();
 			NewQBoxLayout(arg1);
 		}
-		[SmokeMethod("QBoxLayout$", "(QBoxLayout::Direction)")]
+		[SmokeMethod("QBoxLayout", "(QBoxLayout::Direction)", "$")]
 		private void NewQBoxLayout(QBoxLayout.Direction arg1) {
 			ProxyQBoxLayout().NewQBoxLayout(arg1);
 		}
-		[SmokeMethod("direction", "() const")]
+		[SmokeMethod("direction", "() const", "")]
 		public QBoxLayout.Direction direction() {
 			return ProxyQBoxLayout().direction();
 		}
-		[SmokeMethod("setDirection$", "(QBoxLayout::Direction)")]
+		[SmokeMethod("setDirection", "(QBoxLayout::Direction)", "$")]
 		public void SetDirection(QBoxLayout.Direction arg1) {
 			ProxyQBoxLayout().SetDirection(arg1);
 		}
-		[SmokeMethod("addSpacing$", "(int)")]
+		[SmokeMethod("addSpacing", "(int)", "$")]
 		public void AddSpacing(int size) {
 			ProxyQBoxLayout().AddSpacing(size);
 		}
-		[SmokeMethod("addStretch$", "(int)")]
+		[SmokeMethod("addStretch", "(int)", "$")]
 		public void AddStretch(int stretch) {
 			ProxyQBoxLayout().AddStretch(stretch);
 		}
-		[SmokeMethod("addStretch", "()")]
+		[SmokeMethod("addStretch", "()", "")]
 		public void AddStretch() {
 			ProxyQBoxLayout().AddStretch();
 		}
-		[SmokeMethod("addWidget#$$", "(QWidget*, int, Qt::Alignment)")]
+		[SmokeMethod("addWidget", "(QWidget*, int, Qt::Alignment)", "#$$")]
 		public new void AddWidget(QWidget arg1, int stretch, int alignment) {
 			ProxyQBoxLayout().AddWidget(arg1,stretch,alignment);
 		}
-		[SmokeMethod("addWidget#$", "(QWidget*, int)")]
+		[SmokeMethod("addWidget", "(QWidget*, int)", "#$")]
 		public new void AddWidget(QWidget arg1, int stretch) {
 			ProxyQBoxLayout().AddWidget(arg1,stretch);
 		}
-		[SmokeMethod("addWidget#", "(QWidget*)")]
+		[SmokeMethod("addWidget", "(QWidget*)", "#")]
 		public new void AddWidget(QWidget arg1) {
 			ProxyQBoxLayout().AddWidget(arg1);
 		}
-		[SmokeMethod("addLayout#$", "(QLayout*, int)")]
+		[SmokeMethod("addLayout", "(QLayout*, int)", "#$")]
 		public void AddLayout(QLayout layout, int stretch) {
 			ProxyQBoxLayout().AddLayout(layout,stretch);
 		}
-		[SmokeMethod("addLayout#", "(QLayout*)")]
+		[SmokeMethod("addLayout", "(QLayout*)", "#")]
 		public void AddLayout(QLayout layout) {
 			ProxyQBoxLayout().AddLayout(layout);
 		}
-		[SmokeMethod("addStrut$", "(int)")]
+		[SmokeMethod("addStrut", "(int)", "$")]
 		public void AddStrut(int arg1) {
 			ProxyQBoxLayout().AddStrut(arg1);
 		}
-		[SmokeMethod("addItem#", "(QLayoutItem*)")]
+		[SmokeMethod("addItem", "(QLayoutItem*)", "#")]
 		public new void AddItem(IQLayoutItem arg1) {
 			ProxyQBoxLayout().AddItem(arg1);
 		}
-		[SmokeMethod("insertSpacing$$", "(int, int)")]
+		[SmokeMethod("insertSpacing", "(int, int)", "$$")]
 		public void InsertSpacing(int index, int size) {
 			ProxyQBoxLayout().InsertSpacing(index,size);
 		}
-		[SmokeMethod("insertStretch$$", "(int, int)")]
+		[SmokeMethod("insertStretch", "(int, int)", "$$")]
 		public void InsertStretch(int index, int stretch) {
 			ProxyQBoxLayout().InsertStretch(index,stretch);
 		}
-		[SmokeMethod("insertStretch$", "(int)")]
+		[SmokeMethod("insertStretch", "(int)", "$")]
 		public void InsertStretch(int index) {
 			ProxyQBoxLayout().InsertStretch(index);
 		}
-		[SmokeMethod("insertWidget$#$$", "(int, QWidget*, int, Qt::Alignment)")]
+		[SmokeMethod("insertWidget", "(int, QWidget*, int, Qt::Alignment)", "$#$$")]
 		public void InsertWidget(int index, QWidget widget, int stretch, int alignment) {
 			ProxyQBoxLayout().InsertWidget(index,widget,stretch,alignment);
 		}
-		[SmokeMethod("insertWidget$#$", "(int, QWidget*, int)")]
+		[SmokeMethod("insertWidget", "(int, QWidget*, int)", "$#$")]
 		public void InsertWidget(int index, QWidget widget, int stretch) {
 			ProxyQBoxLayout().InsertWidget(index,widget,stretch);
 		}
-		[SmokeMethod("insertWidget$#", "(int, QWidget*)")]
+		[SmokeMethod("insertWidget", "(int, QWidget*)", "$#")]
 		public void InsertWidget(int index, QWidget widget) {
 			ProxyQBoxLayout().InsertWidget(index,widget);
 		}
-		[SmokeMethod("insertLayout$#$", "(int, QLayout*, int)")]
+		[SmokeMethod("insertLayout", "(int, QLayout*, int)", "$#$")]
 		public void InsertLayout(int index, QLayout layout, int stretch) {
 			ProxyQBoxLayout().InsertLayout(index,layout,stretch);
 		}
-		[SmokeMethod("insertLayout$#", "(int, QLayout*)")]
+		[SmokeMethod("insertLayout", "(int, QLayout*)", "$#")]
 		public void InsertLayout(int index, QLayout layout) {
 			ProxyQBoxLayout().InsertLayout(index,layout);
 		}
-		[SmokeMethod("setStretchFactor#$", "(QWidget*, int)")]
+		[SmokeMethod("setStretchFactor", "(QWidget*, int)", "#$")]
 		public bool SetStretchFactor(QWidget w, int stretch) {
 			return ProxyQBoxLayout().SetStretchFactor(w,stretch);
 		}
-		[SmokeMethod("setStretchFactor#$", "(QLayout*, int)")]
+		[SmokeMethod("setStretchFactor", "(QLayout*, int)", "#$")]
 		public bool SetStretchFactor(QLayout l, int stretch) {
 			return ProxyQBoxLayout().SetStretchFactor(l,stretch);
 		}
-		[SmokeMethod("sizeHint", "() const")]
+		[SmokeMethod("sizeHint", "() const", "")]
 		public new QSize SizeHint() {
 			return ProxyQBoxLayout().SizeHint();
 		}
-		[SmokeMethod("minimumSize", "() const")]
+		[SmokeMethod("minimumSize", "() const", "")]
 		public new QSize MinimumSize() {
 			return ProxyQBoxLayout().MinimumSize();
 		}
-		[SmokeMethod("maximumSize", "() const")]
+		[SmokeMethod("maximumSize", "() const", "")]
 		public new QSize MaximumSize() {
 			return ProxyQBoxLayout().MaximumSize();
 		}
-		[SmokeMethod("hasHeightForWidth", "() const")]
+		[SmokeMethod("hasHeightForWidth", "() const", "")]
 		public new bool HasHeightForWidth() {
 			return ProxyQBoxLayout().HasHeightForWidth();
 		}
-		[SmokeMethod("heightForWidth$", "(int) const")]
+		[SmokeMethod("heightForWidth", "(int) const", "$")]
 		public new int HeightForWidth(int arg1) {
 			return ProxyQBoxLayout().HeightForWidth(arg1);
 		}
-		[SmokeMethod("minimumHeightForWidth$", "(int) const")]
+		[SmokeMethod("minimumHeightForWidth", "(int) const", "$")]
 		public new int MinimumHeightForWidth(int arg1) {
 			return ProxyQBoxLayout().MinimumHeightForWidth(arg1);
 		}
-		[SmokeMethod("expandingDirections", "() const")]
+		[SmokeMethod("expandingDirections", "() const", "")]
 		public new int ExpandingDirections() {
 			return ProxyQBoxLayout().ExpandingDirections();
 		}
-		[SmokeMethod("invalidate", "()")]
+		[SmokeMethod("invalidate", "()", "")]
 		public new void Invalidate() {
 			ProxyQBoxLayout().Invalidate();
 		}
-		[SmokeMethod("itemAt$", "(int) const")]
+		[SmokeMethod("itemAt", "(int) const", "$")]
 		public new IQLayoutItem ItemAt(int arg1) {
 			return ProxyQBoxLayout().ItemAt(arg1);
 		}
-		[SmokeMethod("takeAt$", "(int)")]
+		[SmokeMethod("takeAt", "(int)", "$")]
 		public new IQLayoutItem TakeAt(int arg1) {
 			return ProxyQBoxLayout().TakeAt(arg1);
 		}
-		[SmokeMethod("count", "() const")]
+		[SmokeMethod("count", "() const", "")]
 		public new int Count() {
 			return ProxyQBoxLayout().Count();
 		}
-		[SmokeMethod("setGeometry#", "(const QRect&)")]
+		[SmokeMethod("setGeometry", "(const QRect&)", "#")]
 		public new void SetGeometry(QRect arg1) {
 			ProxyQBoxLayout().SetGeometry(arg1);
 		}
@@ -197,7 +197,7 @@ namespace Qyoto {
 		public static new string Tr(string s) {
 			return StaticQBoxLayout().Tr(s);
 		}
-		[SmokeMethod("insertItem$#", "(int, QLayoutItem*)")]
+		[SmokeMethod("insertItem", "(int, QLayoutItem*)", "$#")]
 		public void InsertItem(int index, IQLayoutItem arg2) {
 			ProxyQBoxLayout().InsertItem(index,arg2);
 		}
@@ -207,7 +207,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQBoxLayout();
 		}
-		[SmokeMethod("~QBoxLayout", "()")]
+		[SmokeMethod("~QBoxLayout", "()", "")]
 		private void DisposeQBoxLayout() {
 			ProxyQBoxLayout().DisposeQBoxLayout();
 		}

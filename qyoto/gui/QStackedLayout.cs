@@ -9,9 +9,9 @@ namespace Qyoto {
 	public class QStackedLayout : QLayout, IDisposable {
  		protected QStackedLayout(Type dummy) : base((Type) null) {}
 		interface IQStackedLayoutProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
 
@@ -45,7 +45,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStackedLayout();
 		}
-		[SmokeMethod("QStackedLayout", "()")]
+		[SmokeMethod("QStackedLayout", "()", "")]
 		private void NewQStackedLayout() {
 			ProxyQStackedLayout().NewQStackedLayout();
 		}
@@ -53,7 +53,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStackedLayout(parent);
 		}
-		[SmokeMethod("QStackedLayout#", "(QWidget*)")]
+		[SmokeMethod("QStackedLayout", "(QWidget*)", "#")]
 		private void NewQStackedLayout(QWidget parent) {
 			ProxyQStackedLayout().NewQStackedLayout(parent);
 		}
@@ -61,60 +61,60 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStackedLayout(parentLayout);
 		}
-		[SmokeMethod("QStackedLayout#", "(QLayout*)")]
+		[SmokeMethod("QStackedLayout", "(QLayout*)", "#")]
 		private void NewQStackedLayout(QLayout parentLayout) {
 			ProxyQStackedLayout().NewQStackedLayout(parentLayout);
 		}
-		[SmokeMethod("addWidget#", "(QWidget*)")]
+		[SmokeMethod("addWidget", "(QWidget*)", "#")]
 		public new int AddWidget(QWidget w) {
 			return ProxyQStackedLayout().AddWidget(w);
 		}
-		[SmokeMethod("insertWidget$#", "(int, QWidget*)")]
+		[SmokeMethod("insertWidget", "(int, QWidget*)", "$#")]
 		public int InsertWidget(int index, QWidget w) {
 			return ProxyQStackedLayout().InsertWidget(index,w);
 		}
-		[SmokeMethod("currentWidget", "() const")]
+		[SmokeMethod("currentWidget", "() const", "")]
 		public QWidget CurrentWidget() {
 			return ProxyQStackedLayout().CurrentWidget();
 		}
-		[SmokeMethod("widget", "()")]
+		[SmokeMethod("widget", "()", "")]
 		public new QWidget Widget() {
 			return ProxyQStackedLayout().Widget();
 		}
-		[SmokeMethod("widget$", "(int) const")]
+		[SmokeMethod("widget", "(int) const", "$")]
 		public new QWidget Widget(int arg1) {
 			return ProxyQStackedLayout().Widget(arg1);
 		}
-		[SmokeMethod("count", "() const")]
+		[SmokeMethod("count", "() const", "")]
 		public new int Count() {
 			return ProxyQStackedLayout().Count();
 		}
-		[SmokeMethod("addItem#", "(QLayoutItem*)")]
+		[SmokeMethod("addItem", "(QLayoutItem*)", "#")]
 		public new void AddItem(IQLayoutItem item) {
 			ProxyQStackedLayout().AddItem(item);
 		}
-		[SmokeMethod("sizeHint", "() const")]
+		[SmokeMethod("sizeHint", "() const", "")]
 		public new QSize SizeHint() {
 			return ProxyQStackedLayout().SizeHint();
 		}
-		[SmokeMethod("minimumSize", "() const")]
+		[SmokeMethod("minimumSize", "() const", "")]
 		public new QSize MinimumSize() {
 			return ProxyQStackedLayout().MinimumSize();
 		}
-		[SmokeMethod("itemAt$", "(int) const")]
+		[SmokeMethod("itemAt", "(int) const", "$")]
 		public new IQLayoutItem ItemAt(int arg1) {
 			return ProxyQStackedLayout().ItemAt(arg1);
 		}
-		[SmokeMethod("takeAt$", "(int)")]
+		[SmokeMethod("takeAt", "(int)", "$")]
 		public new IQLayoutItem TakeAt(int arg1) {
 			return ProxyQStackedLayout().TakeAt(arg1);
 		}
-		[SmokeMethod("setGeometry#", "(const QRect&)")]
+		[SmokeMethod("setGeometry", "(const QRect&)", "#")]
 		public new void SetGeometry(QRect rect) {
 			ProxyQStackedLayout().SetGeometry(rect);
 		}
 		[Q_SLOT("void setCurrentWidget(QWidget*)")]
-		[SmokeMethod("setCurrentWidget#", "(QWidget*)")]
+		[SmokeMethod("setCurrentWidget", "(QWidget*)", "#")]
 		public void SetCurrentWidget(QWidget w) {
 			ProxyQStackedLayout().SetCurrentWidget(w);
 		}
@@ -130,7 +130,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQStackedLayout();
 		}
-		[SmokeMethod("~QStackedLayout", "()")]
+		[SmokeMethod("~QStackedLayout", "()", "")]
 		private void DisposeQStackedLayout() {
 			ProxyQStackedLayout().DisposeQStackedLayout();
 		}

@@ -11,19 +11,19 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QPixmapCache(Type dummy) {}
 		interface IQPixmapCacheProxy {
-			[SmokeMethod("cacheLimit", "()")]
+			[SmokeMethod("cacheLimit", "()", "")]
 			int CacheLimit();
-			[SmokeMethod("setCacheLimit$", "(int)")]
+			[SmokeMethod("setCacheLimit", "(int)", "$")]
 			void SetCacheLimit(int arg1);
-			[SmokeMethod("find$", "(const QString&)")]
+			[SmokeMethod("find", "(const QString&)", "$")]
 			QPixmap Find(string key);
-			[SmokeMethod("find$#", "(const QString&, QPixmap&)")]
+			[SmokeMethod("find", "(const QString&, QPixmap&)", "$#")]
 			bool Find(string key, QPixmap arg2);
-			[SmokeMethod("insert$#", "(const QString&, const QPixmap&)")]
+			[SmokeMethod("insert", "(const QString&, const QPixmap&)", "$#")]
 			bool Insert(string key, QPixmap arg2);
-			[SmokeMethod("remove$", "(const QString&)")]
+			[SmokeMethod("remove", "(const QString&)", "$")]
 			void Remove(string key);
-			[SmokeMethod("clear", "()")]
+			[SmokeMethod("clear", "()", "")]
 			void Clear();
 		}
 
@@ -47,7 +47,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQPixmapCache();
 		}
-		[SmokeMethod("QPixmapCache", "()")]
+		[SmokeMethod("QPixmapCache", "()", "")]
 		private void NewQPixmapCache() {
 			ProxyQPixmapCache().NewQPixmapCache();
 		}
@@ -78,7 +78,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQPixmapCache();
 		}
-		[SmokeMethod("~QPixmapCache", "()")]
+		[SmokeMethod("~QPixmapCache", "()", "")]
 		private void DisposeQPixmapCache() {
 			ProxyQPixmapCache().DisposeQPixmapCache();
 		}

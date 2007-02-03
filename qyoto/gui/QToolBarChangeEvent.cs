@@ -29,11 +29,11 @@ namespace Qyoto {
 			CreateProxy();
 			NewQToolBarChangeEvent(t);
 		}
-		[SmokeMethod("QToolBarChangeEvent$", "(bool)")]
+		[SmokeMethod("QToolBarChangeEvent", "(bool)", "$")]
 		private void NewQToolBarChangeEvent(bool t) {
 			ProxyQToolBarChangeEvent().NewQToolBarChangeEvent(t);
 		}
-		[SmokeMethod("toggle", "() const")]
+		[SmokeMethod("toggle", "() const", "")]
 		public bool Toggle() {
 			return ProxyQToolBarChangeEvent().Toggle();
 		}
@@ -43,7 +43,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQToolBarChangeEvent();
 		}
-		[SmokeMethod("~QToolBarChangeEvent", "()")]
+		[SmokeMethod("~QToolBarChangeEvent", "()", "")]
 		private void DisposeQToolBarChangeEvent() {
 			ProxyQToolBarChangeEvent().DisposeQToolBarChangeEvent();
 		}

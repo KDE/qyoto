@@ -8,9 +8,9 @@ namespace Qyoto {
 	public class QTimeEdit : QDateTimeEdit, IDisposable {
  		protected QTimeEdit(Type dummy) : base((Type) null) {}
 		interface IQTimeEditProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
 
@@ -35,7 +35,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTimeEdit(parent);
 		}
-		[SmokeMethod("QTimeEdit#", "(QWidget*)")]
+		[SmokeMethod("QTimeEdit", "(QWidget*)", "#")]
 		private void NewQTimeEdit(QWidget parent) {
 			ProxyQTimeEdit().NewQTimeEdit(parent);
 		}
@@ -43,7 +43,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTimeEdit();
 		}
-		[SmokeMethod("QTimeEdit", "()")]
+		[SmokeMethod("QTimeEdit", "()", "")]
 		private void NewQTimeEdit() {
 			ProxyQTimeEdit().NewQTimeEdit();
 		}
@@ -51,7 +51,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTimeEdit(time,parent);
 		}
-		[SmokeMethod("QTimeEdit##", "(const QTime&, QWidget*)")]
+		[SmokeMethod("QTimeEdit", "(const QTime&, QWidget*)", "##")]
 		private void NewQTimeEdit(QTime time, QWidget parent) {
 			ProxyQTimeEdit().NewQTimeEdit(time,parent);
 		}
@@ -59,7 +59,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTimeEdit(time);
 		}
-		[SmokeMethod("QTimeEdit#", "(const QTime&)")]
+		[SmokeMethod("QTimeEdit", "(const QTime&)", "#")]
 		private void NewQTimeEdit(QTime time) {
 			ProxyQTimeEdit().NewQTimeEdit(time);
 		}
@@ -75,7 +75,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQTimeEdit();
 		}
-		[SmokeMethod("~QTimeEdit", "()")]
+		[SmokeMethod("~QTimeEdit", "()", "")]
 		private void DisposeQTimeEdit() {
 			ProxyQTimeEdit().DisposeQTimeEdit();
 		}

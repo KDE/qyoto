@@ -31,7 +31,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQAccessibleWidgetEx(o,r,name);
 		}
-		[SmokeMethod("QAccessibleWidgetEx#$$", "(QWidget*, QAccessible::Role, const QString&)")]
+		[SmokeMethod("QAccessibleWidgetEx", "(QWidget*, QAccessible::Role, const QString&)", "#$$")]
 		private void NewQAccessibleWidgetEx(QWidget o, QAccessible.Role r, string name) {
 			ProxyQAccessibleWidgetEx().NewQAccessibleWidgetEx(o,r,name);
 		}
@@ -39,7 +39,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQAccessibleWidgetEx(o,r);
 		}
-		[SmokeMethod("QAccessibleWidgetEx#$", "(QWidget*, QAccessible::Role)")]
+		[SmokeMethod("QAccessibleWidgetEx", "(QWidget*, QAccessible::Role)", "#$")]
 		private void NewQAccessibleWidgetEx(QWidget o, QAccessible.Role r) {
 			ProxyQAccessibleWidgetEx().NewQAccessibleWidgetEx(o,r);
 		}
@@ -47,79 +47,79 @@ namespace Qyoto {
 			CreateProxy();
 			NewQAccessibleWidgetEx(o);
 		}
-		[SmokeMethod("QAccessibleWidgetEx#", "(QWidget*)")]
+		[SmokeMethod("QAccessibleWidgetEx", "(QWidget*)", "#")]
 		private void NewQAccessibleWidgetEx(QWidget o) {
 			ProxyQAccessibleWidgetEx().NewQAccessibleWidgetEx(o);
 		}
-		[SmokeMethod("childCount", "() const")]
+		[SmokeMethod("childCount", "() const", "")]
 		public new int ChildCount() {
 			return ProxyQAccessibleWidgetEx().ChildCount();
 		}
-		[SmokeMethod("indexOfChild#", "(const QAccessibleInterface*) const")]
+		[SmokeMethod("indexOfChild", "(const QAccessibleInterface*) const", "#")]
 		public new int IndexOfChild(QAccessibleInterface child) {
 			return ProxyQAccessibleWidgetEx().IndexOfChild(child);
 		}
-		[SmokeMethod("relationTo$#$", "(int, const QAccessibleInterface*, int) const")]
+		[SmokeMethod("relationTo", "(int, const QAccessibleInterface*, int) const", "$#$")]
 		public new int RelationTo(int child, QAccessibleInterface other, int otherChild) {
 			return ProxyQAccessibleWidgetEx().RelationTo(child,other,otherChild);
 		}
-		[SmokeMethod("childAt$$", "(int, int) const")]
+		[SmokeMethod("childAt", "(int, int) const", "$$")]
 		public new int ChildAt(int x, int y) {
 			return ProxyQAccessibleWidgetEx().ChildAt(x,y);
 		}
-		[SmokeMethod("rect$", "(int) const")]
+		[SmokeMethod("rect", "(int) const", "$")]
 		public new QRect Rect(int child) {
 			return ProxyQAccessibleWidgetEx().Rect(child);
 		}
-		[SmokeMethod("navigate$$?", "(QAccessible::RelationFlag, int, QAccessibleInterface**) const")]
+		[SmokeMethod("navigate", "(QAccessible::RelationFlag, int, QAccessibleInterface**) const", "$$?")]
 		public new int Navigate(QAccessible.RelationFlag rel, int entry, QAccessibleInterface target) {
 			return ProxyQAccessibleWidgetEx().Navigate(rel,entry,target);
 		}
-		[SmokeMethod("text$$", "(QAccessible::Text, int) const")]
+		[SmokeMethod("text", "(QAccessible::Text, int) const", "$$")]
 		public new string Text(QAccessible.Text t, int child) {
 			return ProxyQAccessibleWidgetEx().Text(t,child);
 		}
-		[SmokeMethod("role$", "(int) const")]
+		[SmokeMethod("role", "(int) const", "$")]
 		public new QAccessible.Role Role(int child) {
 			return ProxyQAccessibleWidgetEx().Role(child);
 		}
-		[SmokeMethod("state$", "(int) const")]
+		[SmokeMethod("state", "(int) const", "$")]
 		public new int State(int child) {
 			return ProxyQAccessibleWidgetEx().State(child);
 		}
-		[SmokeMethod("actionText$$$", "(int, QAccessible::Text, int) const")]
+		[SmokeMethod("actionText", "(int, QAccessible::Text, int) const", "$$$")]
 		public new string ActionText(int action, QAccessible.Text t, int child) {
 			return ProxyQAccessibleWidgetEx().ActionText(action,t,child);
 		}
-		[SmokeMethod("doAction$$?", "(int, int, const QVariantList&)")]
+		[SmokeMethod("doAction", "(int, int, const QVariantList&)", "$$?")]
 		public new bool DoAction(int action, int child, List<QVariant> arg3) {
 			return ProxyQAccessibleWidgetEx().DoAction(action,child,arg3);
 		}
-		[SmokeMethod("widget", "() const")]
+		[SmokeMethod("widget", "() const", "")]
 		protected QWidget Widget() {
 			return ProxyQAccessibleWidgetEx().Widget();
 		}
-		[SmokeMethod("parentObject", "() const")]
+		[SmokeMethod("parentObject", "() const", "")]
 		protected QObject ParentObject() {
 			return ProxyQAccessibleWidgetEx().ParentObject();
 		}
-		[SmokeMethod("addControllingSignal$", "(const QString&)")]
+		[SmokeMethod("addControllingSignal", "(const QString&)", "$")]
 		protected void AddControllingSignal(string signal) {
 			ProxyQAccessibleWidgetEx().AddControllingSignal(signal);
 		}
-		[SmokeMethod("setValue$", "(const QString&)")]
+		[SmokeMethod("setValue", "(const QString&)", "$")]
 		protected void SetValue(string value) {
 			ProxyQAccessibleWidgetEx().SetValue(value);
 		}
-		[SmokeMethod("setDescription$", "(const QString&)")]
+		[SmokeMethod("setDescription", "(const QString&)", "$")]
 		protected void SetDescription(string desc) {
 			ProxyQAccessibleWidgetEx().SetDescription(desc);
 		}
-		[SmokeMethod("setHelp$", "(const QString&)")]
+		[SmokeMethod("setHelp", "(const QString&)", "$")]
 		protected void SetHelp(string help) {
 			ProxyQAccessibleWidgetEx().SetHelp(help);
 		}
-		[SmokeMethod("setAccelerator$", "(const QString&)")]
+		[SmokeMethod("setAccelerator", "(const QString&)", "$")]
 		protected void SetAccelerator(string accel) {
 			ProxyQAccessibleWidgetEx().SetAccelerator(accel);
 		}

@@ -8,9 +8,9 @@ namespace Qyoto {
 	public class QUdpSocket : QAbstractSocket, IDisposable {
  		protected QUdpSocket(Type dummy) : base((Type) null) {}
 		interface IQUdpSocketProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
 
@@ -41,7 +41,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQUdpSocket(parent);
 		}
-		[SmokeMethod("QUdpSocket#", "(QObject*)")]
+		[SmokeMethod("QUdpSocket", "(QObject*)", "#")]
 		private void NewQUdpSocket(QObject parent) {
 			ProxyQUdpSocket().NewQUdpSocket(parent);
 		}
@@ -49,52 +49,52 @@ namespace Qyoto {
 			CreateProxy();
 			NewQUdpSocket();
 		}
-		[SmokeMethod("QUdpSocket", "()")]
+		[SmokeMethod("QUdpSocket", "()", "")]
 		private void NewQUdpSocket() {
 			ProxyQUdpSocket().NewQUdpSocket();
 		}
-		[SmokeMethod("bind#$", "(const QHostAddress&, quint16)")]
+		[SmokeMethod("bind", "(const QHostAddress&, quint16)", "#$")]
 		public bool Bind(QHostAddress address, ushort port) {
 			return ProxyQUdpSocket().Bind(address,port);
 		}
-		[SmokeMethod("bind$", "(quint16)")]
+		[SmokeMethod("bind", "(quint16)", "$")]
 		public bool Bind(ushort port) {
 			return ProxyQUdpSocket().Bind(port);
 		}
-		[SmokeMethod("bind", "()")]
+		[SmokeMethod("bind", "()", "")]
 		public bool Bind() {
 			return ProxyQUdpSocket().Bind();
 		}
-		[SmokeMethod("bind#$$", "(const QHostAddress&, quint16, BindMode)")]
+		[SmokeMethod("bind", "(const QHostAddress&, quint16, BindMode)", "#$$")]
 		public bool Bind(QHostAddress address, ushort port, int mode) {
 			return ProxyQUdpSocket().Bind(address,port,mode);
 		}
-		[SmokeMethod("bind$$", "(quint16, BindMode)")]
+		[SmokeMethod("bind", "(quint16, BindMode)", "$$")]
 		public bool Bind(ushort port, int mode) {
 			return ProxyQUdpSocket().Bind(port,mode);
 		}
-		[SmokeMethod("hasPendingDatagrams", "() const")]
+		[SmokeMethod("hasPendingDatagrams", "() const", "")]
 		public bool HasPendingDatagrams() {
 			return ProxyQUdpSocket().HasPendingDatagrams();
 		}
-		[SmokeMethod("pendingDatagramSize", "() const")]
+		[SmokeMethod("pendingDatagramSize", "() const", "")]
 		public long PendingDatagramSize() {
 			return ProxyQUdpSocket().PendingDatagramSize();
 		}
 		// qint64 readDatagram(char* arg1,qint64 arg2,QHostAddress* arg3,quint16* arg4); >>>> NOT CONVERTED
-		[SmokeMethod("readDatagram$$#", "(char*, qint64, QHostAddress*)")]
+		[SmokeMethod("readDatagram", "(char*, qint64, QHostAddress*)", "$$#")]
 		public long ReadDatagram(string data, long maxlen, QHostAddress host) {
 			return ProxyQUdpSocket().ReadDatagram(data,maxlen,host);
 		}
-		[SmokeMethod("readDatagram$$", "(char*, qint64)")]
+		[SmokeMethod("readDatagram", "(char*, qint64)", "$$")]
 		public long ReadDatagram(string data, long maxlen) {
 			return ProxyQUdpSocket().ReadDatagram(data,maxlen);
 		}
-		[SmokeMethod("writeDatagram$$#$", "(const char*, qint64, const QHostAddress&, quint16)")]
+		[SmokeMethod("writeDatagram", "(const char*, qint64, const QHostAddress&, quint16)", "$$#$")]
 		public long WriteDatagram(string data, long len, QHostAddress host, ushort port) {
 			return ProxyQUdpSocket().WriteDatagram(data,len,host,port);
 		}
-		[SmokeMethod("writeDatagram##$", "(const QByteArray&, const QHostAddress&, quint16)")]
+		[SmokeMethod("writeDatagram", "(const QByteArray&, const QHostAddress&, quint16)", "##$")]
 		public long WriteDatagram(QByteArray datagram, QHostAddress host, ushort port) {
 			return ProxyQUdpSocket().WriteDatagram(datagram,host,port);
 		}
@@ -110,7 +110,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQUdpSocket();
 		}
-		[SmokeMethod("~QUdpSocket", "()")]
+		[SmokeMethod("~QUdpSocket", "()", "")]
 		private void DisposeQUdpSocket() {
 			ProxyQUdpSocket().DisposeQUdpSocket();
 		}

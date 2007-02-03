@@ -8,9 +8,9 @@ namespace Qyoto {
 	public partial class QDBusConnectionInterface : QDBusAbstractInterface {
  		protected QDBusConnectionInterface(Type dummy) : base((Type) null) {}
 		interface IQDBusConnectionInterfaceProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
 

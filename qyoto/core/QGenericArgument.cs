@@ -33,7 +33,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGenericArgument(aName);
 		}
-		[SmokeMethod("QGenericArgument$", "(const char*)")]
+		[SmokeMethod("QGenericArgument", "(const char*)", "$")]
 		private void NewQGenericArgument(string aName) {
 			ProxyQGenericArgument().NewQGenericArgument(aName);
 		}
@@ -41,12 +41,12 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGenericArgument();
 		}
-		[SmokeMethod("QGenericArgument", "()")]
+		[SmokeMethod("QGenericArgument", "()", "")]
 		private void NewQGenericArgument() {
 			ProxyQGenericArgument().NewQGenericArgument();
 		}
 		// void* data(); >>>> NOT CONVERTED
-		[SmokeMethod("name", "() const")]
+		[SmokeMethod("name", "() const", "")]
 		public string Name() {
 			return ProxyQGenericArgument().Name();
 		}
@@ -56,7 +56,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQGenericArgument();
 		}
-		[SmokeMethod("~QGenericArgument", "()")]
+		[SmokeMethod("~QGenericArgument", "()", "")]
 		private void DisposeQGenericArgument() {
 			ProxyQGenericArgument().DisposeQGenericArgument();
 		}

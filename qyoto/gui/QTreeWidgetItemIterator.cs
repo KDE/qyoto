@@ -56,7 +56,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTreeWidgetItemIterator(it);
 		}
-		[SmokeMethod("QTreeWidgetItemIterator#", "(const QTreeWidgetItemIterator&)")]
+		[SmokeMethod("QTreeWidgetItemIterator", "(const QTreeWidgetItemIterator&)", "#")]
 		private void NewQTreeWidgetItemIterator(QTreeWidgetItemIterator it) {
 			ProxyQTreeWidgetItemIterator().NewQTreeWidgetItemIterator(it);
 		}
@@ -64,7 +64,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTreeWidgetItemIterator(widget,flags);
 		}
-		[SmokeMethod("QTreeWidgetItemIterator#$", "(QTreeWidget*, IteratorFlags)")]
+		[SmokeMethod("QTreeWidgetItemIterator", "(QTreeWidget*, IteratorFlags)", "#$")]
 		private void NewQTreeWidgetItemIterator(QTreeWidget widget, int flags) {
 			ProxyQTreeWidgetItemIterator().NewQTreeWidgetItemIterator(widget,flags);
 		}
@@ -72,7 +72,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTreeWidgetItemIterator(widget);
 		}
-		[SmokeMethod("QTreeWidgetItemIterator#", "(QTreeWidget*)")]
+		[SmokeMethod("QTreeWidgetItemIterator", "(QTreeWidget*)", "#")]
 		private void NewQTreeWidgetItemIterator(QTreeWidget widget) {
 			ProxyQTreeWidgetItemIterator().NewQTreeWidgetItemIterator(widget);
 		}
@@ -80,7 +80,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTreeWidgetItemIterator(item,flags);
 		}
-		[SmokeMethod("QTreeWidgetItemIterator#$", "(QTreeWidgetItem*, IteratorFlags)")]
+		[SmokeMethod("QTreeWidgetItemIterator", "(QTreeWidgetItem*, IteratorFlags)", "#$")]
 		private void NewQTreeWidgetItemIterator(QTreeWidgetItem item, int flags) {
 			ProxyQTreeWidgetItemIterator().NewQTreeWidgetItemIterator(item,flags);
 		}
@@ -88,15 +88,15 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTreeWidgetItemIterator(item);
 		}
-		[SmokeMethod("QTreeWidgetItemIterator#", "(QTreeWidgetItem*)")]
+		[SmokeMethod("QTreeWidgetItemIterator", "(QTreeWidgetItem*)", "#")]
 		private void NewQTreeWidgetItemIterator(QTreeWidgetItem item) {
 			ProxyQTreeWidgetItemIterator().NewQTreeWidgetItemIterator(item);
 		}
-		[SmokeMethod("operator++", "()")]
+		[SmokeMethod("operator++", "()", "")]
 		public static QTreeWidgetItemIterator operator++(QTreeWidgetItemIterator lhs) {
 			return StaticQTreeWidgetItemIterator().op_incr(lhs);
 		}
-		[SmokeMethod("operator--", "()")]
+		[SmokeMethod("operator--", "()", "")]
 		public static QTreeWidgetItemIterator operator--(QTreeWidgetItemIterator lhs) {
 			return StaticQTreeWidgetItemIterator().op_decr(lhs);
 		}
@@ -106,7 +106,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQTreeWidgetItemIterator();
 		}
-		[SmokeMethod("~QTreeWidgetItemIterator", "()")]
+		[SmokeMethod("~QTreeWidgetItemIterator", "()", "")]
 		private void DisposeQTreeWidgetItemIterator() {
 			ProxyQTreeWidgetItemIterator().DisposeQTreeWidgetItemIterator();
 		}

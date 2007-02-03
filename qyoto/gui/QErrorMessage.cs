@@ -8,11 +8,11 @@ namespace Qyoto {
 	public class QErrorMessage : QDialog, IDisposable {
  		protected QErrorMessage(Type dummy) : base((Type) null) {}
 		interface IQErrorMessageProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
-			[SmokeMethod("qtHandler", "()")]
+			[SmokeMethod("qtHandler", "()", "")]
 			QErrorMessage QtHandler();
 		}
 
@@ -37,7 +37,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQErrorMessage(parent);
 		}
-		[SmokeMethod("QErrorMessage#", "(QWidget*)")]
+		[SmokeMethod("QErrorMessage", "(QWidget*)", "#")]
 		private void NewQErrorMessage(QWidget parent) {
 			ProxyQErrorMessage().NewQErrorMessage(parent);
 		}
@@ -45,12 +45,12 @@ namespace Qyoto {
 			CreateProxy();
 			NewQErrorMessage();
 		}
-		[SmokeMethod("QErrorMessage", "()")]
+		[SmokeMethod("QErrorMessage", "()", "")]
 		private void NewQErrorMessage() {
 			ProxyQErrorMessage().NewQErrorMessage();
 		}
 		[Q_SLOT("void showMessage(const QString&)")]
-		[SmokeMethod("showMessage$", "(const QString&)")]
+		[SmokeMethod("showMessage", "(const QString&)", "$")]
 		public void ShowMessage(string message) {
 			ProxyQErrorMessage().ShowMessage(message);
 		}
@@ -63,7 +63,7 @@ namespace Qyoto {
 		public static QErrorMessage QtHandler() {
 			return StaticQErrorMessage().QtHandler();
 		}
-		[SmokeMethod("done$", "(int)")]
+		[SmokeMethod("done", "(int)", "$")]
 		protected new void Done(int arg1) {
 			ProxyQErrorMessage().Done(arg1);
 		}
@@ -73,7 +73,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQErrorMessage();
 		}
-		[SmokeMethod("~QErrorMessage", "()")]
+		[SmokeMethod("~QErrorMessage", "()", "")]
 		private void DisposeQErrorMessage() {
 			ProxyQErrorMessage().DisposeQErrorMessage();
 		}

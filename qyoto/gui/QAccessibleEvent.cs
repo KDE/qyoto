@@ -30,19 +30,19 @@ namespace Qyoto {
 			CreateProxy();
 			NewQAccessibleEvent(type,child);
 		}
-		[SmokeMethod("QAccessibleEvent$$", "(QEvent::Type, int)")]
+		[SmokeMethod("QAccessibleEvent", "(QEvent::Type, int)", "$$")]
 		private void NewQAccessibleEvent(QEvent.TypeOf type, int child) {
 			ProxyQAccessibleEvent().NewQAccessibleEvent(type,child);
 		}
-		[SmokeMethod("child", "() const")]
+		[SmokeMethod("child", "() const", "")]
 		public int Child() {
 			return ProxyQAccessibleEvent().Child();
 		}
-		[SmokeMethod("value", "() const")]
+		[SmokeMethod("value", "() const", "")]
 		public string Value() {
 			return ProxyQAccessibleEvent().Value();
 		}
-		[SmokeMethod("setValue$", "(const QString&)")]
+		[SmokeMethod("setValue", "(const QString&)", "$")]
 		public void SetValue(string aText) {
 			ProxyQAccessibleEvent().SetValue(aText);
 		}
@@ -52,7 +52,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQAccessibleEvent();
 		}
-		[SmokeMethod("~QAccessibleEvent", "()")]
+		[SmokeMethod("~QAccessibleEvent", "()", "")]
 		private void DisposeQAccessibleEvent() {
 			ProxyQAccessibleEvent().DisposeQAccessibleEvent();
 		}

@@ -9,11 +9,11 @@ namespace Qyoto {
 	public class QPluginLoader : QObject, IDisposable {
  		protected QPluginLoader(Type dummy) : base((Type) null) {}
 		interface IQPluginLoaderProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
-			[SmokeMethod("staticInstances", "()")]
+			[SmokeMethod("staticInstances", "()", "")]
 			List<QObject> StaticInstances();
 		}
 
@@ -47,7 +47,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQPluginLoader(parent);
 		}
-		[SmokeMethod("QPluginLoader#", "(QObject*)")]
+		[SmokeMethod("QPluginLoader", "(QObject*)", "#")]
 		private void NewQPluginLoader(QObject parent) {
 			ProxyQPluginLoader().NewQPluginLoader(parent);
 		}
@@ -55,7 +55,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQPluginLoader();
 		}
-		[SmokeMethod("QPluginLoader", "()")]
+		[SmokeMethod("QPluginLoader", "()", "")]
 		private void NewQPluginLoader() {
 			ProxyQPluginLoader().NewQPluginLoader();
 		}
@@ -63,7 +63,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQPluginLoader(fileName,parent);
 		}
-		[SmokeMethod("QPluginLoader$#", "(const QString&, QObject*)")]
+		[SmokeMethod("QPluginLoader", "(const QString&, QObject*)", "$#")]
 		private void NewQPluginLoader(string fileName, QObject parent) {
 			ProxyQPluginLoader().NewQPluginLoader(fileName,parent);
 		}
@@ -71,27 +71,27 @@ namespace Qyoto {
 			CreateProxy();
 			NewQPluginLoader(fileName);
 		}
-		[SmokeMethod("QPluginLoader$", "(const QString&)")]
+		[SmokeMethod("QPluginLoader", "(const QString&)", "$")]
 		private void NewQPluginLoader(string fileName) {
 			ProxyQPluginLoader().NewQPluginLoader(fileName);
 		}
-		[SmokeMethod("instance", "()")]
+		[SmokeMethod("instance", "()", "")]
 		public QObject Instance() {
 			return ProxyQPluginLoader().Instance();
 		}
-		[SmokeMethod("load", "()")]
+		[SmokeMethod("load", "()", "")]
 		public bool Load() {
 			return ProxyQPluginLoader().Load();
 		}
-		[SmokeMethod("unload", "()")]
+		[SmokeMethod("unload", "()", "")]
 		public bool Unload() {
 			return ProxyQPluginLoader().Unload();
 		}
-		[SmokeMethod("isLoaded", "() const")]
+		[SmokeMethod("isLoaded", "() const", "")]
 		public bool IsLoaded() {
 			return ProxyQPluginLoader().IsLoaded();
 		}
-		[SmokeMethod("errorString", "() const")]
+		[SmokeMethod("errorString", "() const", "")]
 		public string ErrorString() {
 			return ProxyQPluginLoader().ErrorString();
 		}
@@ -110,7 +110,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQPluginLoader();
 		}
-		[SmokeMethod("~QPluginLoader", "()")]
+		[SmokeMethod("~QPluginLoader", "()", "")]
 		private void DisposeQPluginLoader() {
 			ProxyQPluginLoader().DisposeQPluginLoader();
 		}

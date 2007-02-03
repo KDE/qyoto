@@ -29,83 +29,83 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTextBlockFormat();
 		}
-		[SmokeMethod("QTextBlockFormat", "()")]
+		[SmokeMethod("QTextBlockFormat", "()", "")]
 		private void NewQTextBlockFormat() {
 			ProxyQTextBlockFormat().NewQTextBlockFormat();
 		}
-		[SmokeMethod("isValid", "() const")]
+		[SmokeMethod("isValid", "() const", "")]
 		public new bool IsValid() {
 			return ProxyQTextBlockFormat().IsValid();
 		}
-		[SmokeMethod("setAlignment$", "(Qt::Alignment)")]
+		[SmokeMethod("setAlignment", "(Qt::Alignment)", "$")]
 		public void SetAlignment(int alignment) {
 			ProxyQTextBlockFormat().SetAlignment(alignment);
 		}
-		[SmokeMethod("alignment", "() const")]
+		[SmokeMethod("alignment", "() const", "")]
 		public int Alignment() {
 			return ProxyQTextBlockFormat().Alignment();
 		}
-		[SmokeMethod("setTopMargin$", "(qreal)")]
+		[SmokeMethod("setTopMargin", "(qreal)", "$")]
 		public void SetTopMargin(double margin) {
 			ProxyQTextBlockFormat().SetTopMargin(margin);
 		}
-		[SmokeMethod("topMargin", "() const")]
+		[SmokeMethod("topMargin", "() const", "")]
 		public double TopMargin() {
 			return ProxyQTextBlockFormat().TopMargin();
 		}
-		[SmokeMethod("setBottomMargin$", "(qreal)")]
+		[SmokeMethod("setBottomMargin", "(qreal)", "$")]
 		public void SetBottomMargin(double margin) {
 			ProxyQTextBlockFormat().SetBottomMargin(margin);
 		}
-		[SmokeMethod("bottomMargin", "() const")]
+		[SmokeMethod("bottomMargin", "() const", "")]
 		public double BottomMargin() {
 			return ProxyQTextBlockFormat().BottomMargin();
 		}
-		[SmokeMethod("setLeftMargin$", "(qreal)")]
+		[SmokeMethod("setLeftMargin", "(qreal)", "$")]
 		public void SetLeftMargin(double margin) {
 			ProxyQTextBlockFormat().SetLeftMargin(margin);
 		}
-		[SmokeMethod("leftMargin", "() const")]
+		[SmokeMethod("leftMargin", "() const", "")]
 		public double LeftMargin() {
 			return ProxyQTextBlockFormat().LeftMargin();
 		}
-		[SmokeMethod("setRightMargin$", "(qreal)")]
+		[SmokeMethod("setRightMargin", "(qreal)", "$")]
 		public void SetRightMargin(double margin) {
 			ProxyQTextBlockFormat().SetRightMargin(margin);
 		}
-		[SmokeMethod("rightMargin", "() const")]
+		[SmokeMethod("rightMargin", "() const", "")]
 		public double RightMargin() {
 			return ProxyQTextBlockFormat().RightMargin();
 		}
-		[SmokeMethod("setTextIndent$", "(qreal)")]
+		[SmokeMethod("setTextIndent", "(qreal)", "$")]
 		public void SetTextIndent(double margin) {
 			ProxyQTextBlockFormat().SetTextIndent(margin);
 		}
-		[SmokeMethod("textIndent", "() const")]
+		[SmokeMethod("textIndent", "() const", "")]
 		public double TextIndent() {
 			return ProxyQTextBlockFormat().TextIndent();
 		}
-		[SmokeMethod("setIndent$", "(int)")]
+		[SmokeMethod("setIndent", "(int)", "$")]
 		public void SetIndent(int indent) {
 			ProxyQTextBlockFormat().SetIndent(indent);
 		}
-		[SmokeMethod("indent", "() const")]
+		[SmokeMethod("indent", "() const", "")]
 		public int Indent() {
 			return ProxyQTextBlockFormat().Indent();
 		}
-		[SmokeMethod("setNonBreakableLines$", "(bool)")]
+		[SmokeMethod("setNonBreakableLines", "(bool)", "$")]
 		public void SetNonBreakableLines(bool b) {
 			ProxyQTextBlockFormat().SetNonBreakableLines(b);
 		}
-		[SmokeMethod("nonBreakableLines", "() const")]
+		[SmokeMethod("nonBreakableLines", "() const", "")]
 		public bool NonBreakableLines() {
 			return ProxyQTextBlockFormat().NonBreakableLines();
 		}
-		[SmokeMethod("setPageBreakPolicy$", "(PageBreakFlags)")]
+		[SmokeMethod("setPageBreakPolicy", "(PageBreakFlags)", "$")]
 		public void SetPageBreakPolicy(int flags) {
 			ProxyQTextBlockFormat().SetPageBreakPolicy(flags);
 		}
-		[SmokeMethod("pageBreakPolicy", "() const")]
+		[SmokeMethod("pageBreakPolicy", "() const", "")]
 		public int PageBreakPolicy() {
 			return ProxyQTextBlockFormat().PageBreakPolicy();
 		}
@@ -115,7 +115,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQTextBlockFormat();
 		}
-		[SmokeMethod("~QTextBlockFormat", "()")]
+		[SmokeMethod("~QTextBlockFormat", "()", "")]
 		private void DisposeQTextBlockFormat() {
 			ProxyQTextBlockFormat().DisposeQTextBlockFormat();
 		}

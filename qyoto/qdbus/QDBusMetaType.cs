@@ -10,9 +10,9 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QDBusMetaType(Type dummy) {}
 		interface IQDBusMetaTypeProxy {
-			[SmokeMethod("signatureToType$", "(const char*)")]
+			[SmokeMethod("signatureToType", "(const char*)", "$")]
 			int SignatureToType(string signature);
-			[SmokeMethod("typeToSignature$", "(int)")]
+			[SmokeMethod("typeToSignature", "(int)", "$")]
 			string TypeToSignature(int type);
 		}
 
@@ -36,7 +36,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDBusMetaType();
 		}
-		[SmokeMethod("QDBusMetaType", "()")]
+		[SmokeMethod("QDBusMetaType", "()", "")]
 		private void NewQDBusMetaType() {
 			ProxyQDBusMetaType().NewQDBusMetaType();
 		}
@@ -55,7 +55,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQDBusMetaType();
 		}
-		[SmokeMethod("~QDBusMetaType", "()")]
+		[SmokeMethod("~QDBusMetaType", "()", "")]
 		private void DisposeQDBusMetaType() {
 			ProxyQDBusMetaType().DisposeQDBusMetaType();
 		}

@@ -8,9 +8,9 @@ namespace Qyoto {
 	public class QRubberBand : QWidget, IDisposable {
  		protected QRubberBand(Type dummy) : base((Type) null) {}
 		interface IQRubberBandProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
 
@@ -39,7 +39,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQRubberBand(arg1,arg2);
 		}
-		[SmokeMethod("QRubberBand$#", "(QRubberBand::Shape, QWidget*)")]
+		[SmokeMethod("QRubberBand", "(QRubberBand::Shape, QWidget*)", "$#")]
 		private void NewQRubberBand(QRubberBand.Shape arg1, QWidget arg2) {
 			ProxyQRubberBand().NewQRubberBand(arg1,arg2);
 		}
@@ -47,35 +47,35 @@ namespace Qyoto {
 			CreateProxy();
 			NewQRubberBand(arg1);
 		}
-		[SmokeMethod("QRubberBand$", "(QRubberBand::Shape)")]
+		[SmokeMethod("QRubberBand", "(QRubberBand::Shape)", "$")]
 		private void NewQRubberBand(QRubberBand.Shape arg1) {
 			ProxyQRubberBand().NewQRubberBand(arg1);
 		}
-		[SmokeMethod("shape", "() const")]
+		[SmokeMethod("shape", "() const", "")]
 		public QRubberBand.Shape shape() {
 			return ProxyQRubberBand().shape();
 		}
-		[SmokeMethod("setGeometry#", "(const QRect&)")]
+		[SmokeMethod("setGeometry", "(const QRect&)", "#")]
 		public new void SetGeometry(QRect r) {
 			ProxyQRubberBand().SetGeometry(r);
 		}
-		[SmokeMethod("setGeometry$$$$", "(int, int, int, int)")]
+		[SmokeMethod("setGeometry", "(int, int, int, int)", "$$$$")]
 		public new void SetGeometry(int x, int y, int w, int h) {
 			ProxyQRubberBand().SetGeometry(x,y,w,h);
 		}
-		[SmokeMethod("move$$", "(int, int)")]
+		[SmokeMethod("move", "(int, int)", "$$")]
 		public new void Move(int x, int y) {
 			ProxyQRubberBand().Move(x,y);
 		}
-		[SmokeMethod("move#", "(const QPoint&)")]
+		[SmokeMethod("move", "(const QPoint&)", "#")]
 		public new void Move(QPoint p) {
 			ProxyQRubberBand().Move(p);
 		}
-		[SmokeMethod("resize$$", "(int, int)")]
+		[SmokeMethod("resize", "(int, int)", "$$")]
 		public new void Resize(int w, int h) {
 			ProxyQRubberBand().Resize(w,h);
 		}
-		[SmokeMethod("resize#", "(const QSize&)")]
+		[SmokeMethod("resize", "(const QSize&)", "#")]
 		public new void Resize(QSize s) {
 			ProxyQRubberBand().Resize(s);
 		}
@@ -85,27 +85,27 @@ namespace Qyoto {
 		public static new string Tr(string s) {
 			return StaticQRubberBand().Tr(s);
 		}
-		[SmokeMethod("event#", "(QEvent*)")]
+		[SmokeMethod("event", "(QEvent*)", "#")]
 		public new bool Event(QEvent e) {
 			return ProxyQRubberBand().Event(e);
 		}
-		[SmokeMethod("paintEvent#", "(QPaintEvent*)")]
+		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
 		protected new void PaintEvent(QPaintEvent arg1) {
 			ProxyQRubberBand().PaintEvent(arg1);
 		}
-		[SmokeMethod("changeEvent#", "(QEvent*)")]
+		[SmokeMethod("changeEvent", "(QEvent*)", "#")]
 		protected new void ChangeEvent(QEvent arg1) {
 			ProxyQRubberBand().ChangeEvent(arg1);
 		}
-		[SmokeMethod("showEvent#", "(QShowEvent*)")]
+		[SmokeMethod("showEvent", "(QShowEvent*)", "#")]
 		public new void ShowEvent(QShowEvent arg1) {
 			ProxyQRubberBand().ShowEvent(arg1);
 		}
-		[SmokeMethod("resizeEvent#", "(QResizeEvent*)")]
+		[SmokeMethod("resizeEvent", "(QResizeEvent*)", "#")]
 		protected new void ResizeEvent(QResizeEvent arg1) {
 			ProxyQRubberBand().ResizeEvent(arg1);
 		}
-		[SmokeMethod("moveEvent#", "(QMoveEvent*)")]
+		[SmokeMethod("moveEvent", "(QMoveEvent*)", "#")]
 		protected new void MoveEvent(QMoveEvent arg1) {
 			ProxyQRubberBand().MoveEvent(arg1);
 		}
@@ -115,7 +115,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQRubberBand();
 		}
-		[SmokeMethod("~QRubberBand", "()")]
+		[SmokeMethod("~QRubberBand", "()", "")]
 		private void DisposeQRubberBand() {
 			ProxyQRubberBand().DisposeQRubberBand();
 		}

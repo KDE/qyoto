@@ -9,9 +9,9 @@ namespace Qyoto {
 	public class QMimeData : QObject, IDisposable {
  		protected QMimeData(Type dummy) : base((Type) null) {}
 		interface IQMimeDataProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
 
@@ -36,87 +36,87 @@ namespace Qyoto {
 			CreateProxy();
 			NewQMimeData();
 		}
-		[SmokeMethod("QMimeData", "()")]
+		[SmokeMethod("QMimeData", "()", "")]
 		private void NewQMimeData() {
 			ProxyQMimeData().NewQMimeData();
 		}
-		[SmokeMethod("urls", "() const")]
+		[SmokeMethod("urls", "() const", "")]
 		public List<QUrl> Urls() {
 			return ProxyQMimeData().Urls();
 		}
-		[SmokeMethod("setUrls?", "(const QList<QUrl>&)")]
+		[SmokeMethod("setUrls", "(const QList<QUrl>&)", "?")]
 		public void SetUrls(List<QUrl> urls) {
 			ProxyQMimeData().SetUrls(urls);
 		}
-		[SmokeMethod("hasUrls", "() const")]
+		[SmokeMethod("hasUrls", "() const", "")]
 		public bool HasUrls() {
 			return ProxyQMimeData().HasUrls();
 		}
-		[SmokeMethod("text", "() const")]
+		[SmokeMethod("text", "() const", "")]
 		public string Text() {
 			return ProxyQMimeData().Text();
 		}
-		[SmokeMethod("setText$", "(const QString&)")]
+		[SmokeMethod("setText", "(const QString&)", "$")]
 		public void SetText(string text) {
 			ProxyQMimeData().SetText(text);
 		}
-		[SmokeMethod("hasText", "() const")]
+		[SmokeMethod("hasText", "() const", "")]
 		public bool HasText() {
 			return ProxyQMimeData().HasText();
 		}
-		[SmokeMethod("html", "() const")]
+		[SmokeMethod("html", "() const", "")]
 		public string Html() {
 			return ProxyQMimeData().Html();
 		}
-		[SmokeMethod("setHtml$", "(const QString&)")]
+		[SmokeMethod("setHtml", "(const QString&)", "$")]
 		public void SetHtml(string html) {
 			ProxyQMimeData().SetHtml(html);
 		}
-		[SmokeMethod("hasHtml", "() const")]
+		[SmokeMethod("hasHtml", "() const", "")]
 		public bool HasHtml() {
 			return ProxyQMimeData().HasHtml();
 		}
-		[SmokeMethod("imageData", "() const")]
+		[SmokeMethod("imageData", "() const", "")]
 		public QVariant ImageData() {
 			return ProxyQMimeData().ImageData();
 		}
-		[SmokeMethod("setImageData#", "(const QVariant&)")]
+		[SmokeMethod("setImageData", "(const QVariant&)", "#")]
 		public void SetImageData(QVariant image) {
 			ProxyQMimeData().SetImageData(image);
 		}
-		[SmokeMethod("hasImage", "() const")]
+		[SmokeMethod("hasImage", "() const", "")]
 		public bool HasImage() {
 			return ProxyQMimeData().HasImage();
 		}
-		[SmokeMethod("colorData", "() const")]
+		[SmokeMethod("colorData", "() const", "")]
 		public QVariant ColorData() {
 			return ProxyQMimeData().ColorData();
 		}
-		[SmokeMethod("setColorData#", "(const QVariant&)")]
+		[SmokeMethod("setColorData", "(const QVariant&)", "#")]
 		public void SetColorData(QVariant color) {
 			ProxyQMimeData().SetColorData(color);
 		}
-		[SmokeMethod("hasColor", "() const")]
+		[SmokeMethod("hasColor", "() const", "")]
 		public bool HasColor() {
 			return ProxyQMimeData().HasColor();
 		}
-		[SmokeMethod("data$", "(const QString&) const")]
+		[SmokeMethod("data", "(const QString&) const", "$")]
 		public QByteArray Data(string mimetype) {
 			return ProxyQMimeData().Data(mimetype);
 		}
-		[SmokeMethod("setData$#", "(const QString&, const QByteArray&)")]
+		[SmokeMethod("setData", "(const QString&, const QByteArray&)", "$#")]
 		public void SetData(string mimetype, QByteArray data) {
 			ProxyQMimeData().SetData(mimetype,data);
 		}
-		[SmokeMethod("hasFormat$", "(const QString&) const")]
+		[SmokeMethod("hasFormat", "(const QString&) const", "$")]
 		public virtual bool HasFormat(string mimetype) {
 			return ProxyQMimeData().HasFormat(mimetype);
 		}
-		[SmokeMethod("formats", "() const")]
+		[SmokeMethod("formats", "() const", "")]
 		public virtual List<string> Formats() {
 			return ProxyQMimeData().Formats();
 		}
-		[SmokeMethod("clear", "()")]
+		[SmokeMethod("clear", "()", "")]
 		public void Clear() {
 			ProxyQMimeData().Clear();
 		}
@@ -126,7 +126,7 @@ namespace Qyoto {
 		public static new string Tr(string s) {
 			return StaticQMimeData().Tr(s);
 		}
-		[SmokeMethod("retrieveData$$", "(const QString&, QVariant::Type) const")]
+		[SmokeMethod("retrieveData", "(const QString&, QVariant::Type) const", "$$")]
 		protected virtual QVariant RetrieveData(string mimetype, QVariant.TypeOf preferredType) {
 			return ProxyQMimeData().RetrieveData(mimetype,preferredType);
 		}
@@ -136,7 +136,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQMimeData();
 		}
-		[SmokeMethod("~QMimeData", "()")]
+		[SmokeMethod("~QMimeData", "()", "")]
 		private void DisposeQMimeData() {
 			ProxyQMimeData().DisposeQMimeData();
 		}

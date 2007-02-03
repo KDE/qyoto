@@ -10,9 +10,9 @@ namespace Qyoto {
 	public class QActionGroup : QObject, IDisposable {
  		protected QActionGroup(Type dummy) : base((Type) null) {}
 		interface IQActionGroupProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
 
@@ -64,48 +64,48 @@ namespace Qyoto {
 			CreateProxy();
 			NewQActionGroup(parent);
 		}
-		[SmokeMethod("QActionGroup#", "(QObject*)")]
+		[SmokeMethod("QActionGroup", "(QObject*)", "#")]
 		private void NewQActionGroup(QObject parent) {
 			ProxyQActionGroup().NewQActionGroup(parent);
 		}
-		[SmokeMethod("addAction#", "(QAction*)")]
+		[SmokeMethod("addAction", "(QAction*)", "#")]
 		public QAction AddAction(QAction a) {
 			return ProxyQActionGroup().AddAction(a);
 		}
-		[SmokeMethod("addAction$", "(const QString&)")]
+		[SmokeMethod("addAction", "(const QString&)", "$")]
 		public QAction AddAction(string text) {
 			return ProxyQActionGroup().AddAction(text);
 		}
-		[SmokeMethod("addAction#$", "(const QIcon&, const QString&)")]
+		[SmokeMethod("addAction", "(const QIcon&, const QString&)", "#$")]
 		public QAction AddAction(QIcon icon, string text) {
 			return ProxyQActionGroup().AddAction(icon,text);
 		}
-		[SmokeMethod("removeAction#", "(QAction*)")]
+		[SmokeMethod("removeAction", "(QAction*)", "#")]
 		public void RemoveAction(QAction a) {
 			ProxyQActionGroup().RemoveAction(a);
 		}
-		[SmokeMethod("actions", "() const")]
+		[SmokeMethod("actions", "() const", "")]
 		public List<QAction> Actions() {
 			return ProxyQActionGroup().Actions();
 		}
-		[SmokeMethod("checkedAction", "() const")]
+		[SmokeMethod("checkedAction", "() const", "")]
 		public QAction CheckedAction() {
 			return ProxyQActionGroup().CheckedAction();
 		}
-		[SmokeMethod("isExclusive", "() const")]
+		[SmokeMethod("isExclusive", "() const", "")]
 		public bool IsExclusive() {
 			return ProxyQActionGroup().IsExclusive();
 		}
-		[SmokeMethod("isEnabled", "() const")]
+		[SmokeMethod("isEnabled", "() const", "")]
 		public bool IsEnabled() {
 			return ProxyQActionGroup().IsEnabled();
 		}
-		[SmokeMethod("isVisible", "() const")]
+		[SmokeMethod("isVisible", "() const", "")]
 		public bool IsVisible() {
 			return ProxyQActionGroup().IsVisible();
 		}
 		[Q_SLOT("void setDisabled(bool)")]
-		[SmokeMethod("setDisabled$", "(bool)")]
+		[SmokeMethod("setDisabled", "(bool)", "$")]
 		public void SetDisabled(bool b) {
 			ProxyQActionGroup().SetDisabled(b);
 		}
@@ -121,7 +121,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQActionGroup();
 		}
-		[SmokeMethod("~QActionGroup", "()")]
+		[SmokeMethod("~QActionGroup", "()", "")]
 		private void DisposeQActionGroup() {
 			ProxyQActionGroup().DisposeQActionGroup();
 		}

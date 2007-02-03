@@ -29,7 +29,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDragMoveEvent(pos,actions,data,buttons,modifiers,type);
 		}
-		[SmokeMethod("QDragMoveEvent#$#$$$", "(const QPoint&, Qt::DropActions, const QMimeData*, Qt::MouseButtons, Qt::KeyboardModifiers, QEvent::Type)")]
+		[SmokeMethod("QDragMoveEvent", "(const QPoint&, Qt::DropActions, const QMimeData*, Qt::MouseButtons, Qt::KeyboardModifiers, QEvent::Type)", "#$#$$$")]
 		private void NewQDragMoveEvent(QPoint pos, int actions, QMimeData data, int buttons, int modifiers, QEvent.TypeOf type) {
 			ProxyQDragMoveEvent().NewQDragMoveEvent(pos,actions,data,buttons,modifiers,type);
 		}
@@ -37,27 +37,27 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDragMoveEvent(pos,actions,data,buttons,modifiers);
 		}
-		[SmokeMethod("QDragMoveEvent#$#$$", "(const QPoint&, Qt::DropActions, const QMimeData*, Qt::MouseButtons, Qt::KeyboardModifiers)")]
+		[SmokeMethod("QDragMoveEvent", "(const QPoint&, Qt::DropActions, const QMimeData*, Qt::MouseButtons, Qt::KeyboardModifiers)", "#$#$$")]
 		private void NewQDragMoveEvent(QPoint pos, int actions, QMimeData data, int buttons, int modifiers) {
 			ProxyQDragMoveEvent().NewQDragMoveEvent(pos,actions,data,buttons,modifiers);
 		}
-		[SmokeMethod("answerRect", "() const")]
+		[SmokeMethod("answerRect", "() const", "")]
 		public QRect AnswerRect() {
 			return ProxyQDragMoveEvent().AnswerRect();
 		}
-		[SmokeMethod("accept", "()")]
+		[SmokeMethod("accept", "()", "")]
 		public new void Accept() {
 			ProxyQDragMoveEvent().Accept();
 		}
-		[SmokeMethod("ignore", "()")]
+		[SmokeMethod("ignore", "()", "")]
 		public new void Ignore() {
 			ProxyQDragMoveEvent().Ignore();
 		}
-		[SmokeMethod("accept#", "(const QRect&)")]
+		[SmokeMethod("accept", "(const QRect&)", "#")]
 		public new void Accept(QRect r) {
 			ProxyQDragMoveEvent().Accept(r);
 		}
-		[SmokeMethod("ignore#", "(const QRect&)")]
+		[SmokeMethod("ignore", "(const QRect&)", "#")]
 		public new void Ignore(QRect r) {
 			ProxyQDragMoveEvent().Ignore(r);
 		}
@@ -67,7 +67,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQDragMoveEvent();
 		}
-		[SmokeMethod("~QDragMoveEvent", "()")]
+		[SmokeMethod("~QDragMoveEvent", "()", "")]
 		private void DisposeQDragMoveEvent() {
 			ProxyQDragMoveEvent().DisposeQDragMoveEvent();
 		}

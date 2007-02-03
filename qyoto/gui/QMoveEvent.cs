@@ -29,15 +29,15 @@ namespace Qyoto {
 			CreateProxy();
 			NewQMoveEvent(pos,oldPos);
 		}
-		[SmokeMethod("QMoveEvent##", "(const QPoint&, const QPoint&)")]
+		[SmokeMethod("QMoveEvent", "(const QPoint&, const QPoint&)", "##")]
 		private void NewQMoveEvent(QPoint pos, QPoint oldPos) {
 			ProxyQMoveEvent().NewQMoveEvent(pos,oldPos);
 		}
-		[SmokeMethod("pos", "() const")]
+		[SmokeMethod("pos", "() const", "")]
 		public QPoint Pos() {
 			return ProxyQMoveEvent().Pos();
 		}
-		[SmokeMethod("oldPos", "() const")]
+		[SmokeMethod("oldPos", "() const", "")]
 		public QPoint OldPos() {
 			return ProxyQMoveEvent().OldPos();
 		}
@@ -47,7 +47,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQMoveEvent();
 		}
-		[SmokeMethod("~QMoveEvent", "()")]
+		[SmokeMethod("~QMoveEvent", "()", "")]
 		private void DisposeQMoveEvent() {
 			ProxyQMoveEvent().DisposeQMoveEvent();
 		}

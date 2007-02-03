@@ -40,7 +40,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSqlError(driverText,databaseText,type,number);
 		}
-		[SmokeMethod("QSqlError$$$$", "(const QString&, const QString&, QSqlError::ErrorType, int)")]
+		[SmokeMethod("QSqlError", "(const QString&, const QString&, QSqlError::ErrorType, int)", "$$$$")]
 		private void NewQSqlError(string driverText, string databaseText, QSqlError.ErrorType type, int number) {
 			ProxyQSqlError().NewQSqlError(driverText,databaseText,type,number);
 		}
@@ -48,7 +48,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSqlError(driverText,databaseText,type);
 		}
-		[SmokeMethod("QSqlError$$$", "(const QString&, const QString&, QSqlError::ErrorType)")]
+		[SmokeMethod("QSqlError", "(const QString&, const QString&, QSqlError::ErrorType)", "$$$")]
 		private void NewQSqlError(string driverText, string databaseText, QSqlError.ErrorType type) {
 			ProxyQSqlError().NewQSqlError(driverText,databaseText,type);
 		}
@@ -56,7 +56,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSqlError(driverText,databaseText);
 		}
-		[SmokeMethod("QSqlError$$", "(const QString&, const QString&)")]
+		[SmokeMethod("QSqlError", "(const QString&, const QString&)", "$$")]
 		private void NewQSqlError(string driverText, string databaseText) {
 			ProxyQSqlError().NewQSqlError(driverText,databaseText);
 		}
@@ -64,7 +64,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSqlError(driverText);
 		}
-		[SmokeMethod("QSqlError$", "(const QString&)")]
+		[SmokeMethod("QSqlError", "(const QString&)", "$")]
 		private void NewQSqlError(string driverText) {
 			ProxyQSqlError().NewQSqlError(driverText);
 		}
@@ -72,7 +72,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSqlError();
 		}
-		[SmokeMethod("QSqlError", "()")]
+		[SmokeMethod("QSqlError", "()", "")]
 		private void NewQSqlError() {
 			ProxyQSqlError().NewQSqlError();
 		}
@@ -80,47 +80,47 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSqlError(other);
 		}
-		[SmokeMethod("QSqlError#", "(const QSqlError&)")]
+		[SmokeMethod("QSqlError", "(const QSqlError&)", "#")]
 		private void NewQSqlError(QSqlError other) {
 			ProxyQSqlError().NewQSqlError(other);
 		}
-		[SmokeMethod("driverText", "() const")]
+		[SmokeMethod("driverText", "() const", "")]
 		public string DriverText() {
 			return ProxyQSqlError().DriverText();
 		}
-		[SmokeMethod("setDriverText$", "(const QString&)")]
+		[SmokeMethod("setDriverText", "(const QString&)", "$")]
 		public void SetDriverText(string driverText) {
 			ProxyQSqlError().SetDriverText(driverText);
 		}
-		[SmokeMethod("databaseText", "() const")]
+		[SmokeMethod("databaseText", "() const", "")]
 		public string DatabaseText() {
 			return ProxyQSqlError().DatabaseText();
 		}
-		[SmokeMethod("setDatabaseText$", "(const QString&)")]
+		[SmokeMethod("setDatabaseText", "(const QString&)", "$")]
 		public void SetDatabaseText(string databaseText) {
 			ProxyQSqlError().SetDatabaseText(databaseText);
 		}
-		[SmokeMethod("type", "() const")]
+		[SmokeMethod("type", "() const", "")]
 		public QSqlError.ErrorType type() {
 			return ProxyQSqlError().type();
 		}
-		[SmokeMethod("setType$", "(QSqlError::ErrorType)")]
+		[SmokeMethod("setType", "(QSqlError::ErrorType)", "$")]
 		public void SetType(QSqlError.ErrorType type) {
 			ProxyQSqlError().SetType(type);
 		}
-		[SmokeMethod("number", "() const")]
+		[SmokeMethod("number", "() const", "")]
 		public int Number() {
 			return ProxyQSqlError().Number();
 		}
-		[SmokeMethod("setNumber$", "(int)")]
+		[SmokeMethod("setNumber", "(int)", "$")]
 		public void SetNumber(int number) {
 			ProxyQSqlError().SetNumber(number);
 		}
-		[SmokeMethod("text", "() const")]
+		[SmokeMethod("text", "() const", "")]
 		public string Text() {
 			return ProxyQSqlError().Text();
 		}
-		[SmokeMethod("isValid", "() const")]
+		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
 			return ProxyQSqlError().IsValid();
 		}
@@ -130,7 +130,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQSqlError();
 		}
-		[SmokeMethod("~QSqlError", "()")]
+		[SmokeMethod("~QSqlError", "()", "")]
 		private void DisposeQSqlError() {
 			ProxyQSqlError().DisposeQSqlError();
 		}

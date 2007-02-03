@@ -11,7 +11,7 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QItemSelection(Type dummy) {}
 		interface IQItemSelectionProxy {
-			[SmokeMethod("split###", "(const QItemSelectionRange&, const QItemSelectionRange&, QItemSelection*)")]
+			[SmokeMethod("split", "(const QItemSelectionRange&, const QItemSelectionRange&, QItemSelection*)", "###")]
 			void Split(QItemSelectionRange range, QItemSelectionRange other, QItemSelection result);
 		}
 
@@ -35,7 +35,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQItemSelection();
 		}
-		[SmokeMethod("QItemSelection", "()")]
+		[SmokeMethod("QItemSelection", "()", "")]
 		private void NewQItemSelection() {
 			ProxyQItemSelection().NewQItemSelection();
 		}
@@ -43,23 +43,23 @@ namespace Qyoto {
 			CreateProxy();
 			NewQItemSelection(topLeft,bottomRight);
 		}
-		[SmokeMethod("QItemSelection##", "(const QModelIndex&, const QModelIndex&)")]
+		[SmokeMethod("QItemSelection", "(const QModelIndex&, const QModelIndex&)", "##")]
 		private void NewQItemSelection(QModelIndex topLeft, QModelIndex bottomRight) {
 			ProxyQItemSelection().NewQItemSelection(topLeft,bottomRight);
 		}
-		[SmokeMethod("select##", "(const QModelIndex&, const QModelIndex&)")]
+		[SmokeMethod("select", "(const QModelIndex&, const QModelIndex&)", "##")]
 		public void Select(QModelIndex topLeft, QModelIndex bottomRight) {
 			ProxyQItemSelection().Select(topLeft,bottomRight);
 		}
-		[SmokeMethod("contains#", "(const QModelIndex&) const")]
+		[SmokeMethod("contains", "(const QModelIndex&) const", "#")]
 		public bool Contains(QModelIndex index) {
 			return ProxyQItemSelection().Contains(index);
 		}
-		[SmokeMethod("indexes", "() const")]
+		[SmokeMethod("indexes", "() const", "")]
 		public List<QModelIndex> Indexes() {
 			return ProxyQItemSelection().Indexes();
 		}
-		[SmokeMethod("merge#$", "(const QItemSelection&, QItemSelectionModel::SelectionFlags)")]
+		[SmokeMethod("merge", "(const QItemSelection&, QItemSelectionModel::SelectionFlags)", "#$")]
 		public void Merge(QItemSelection other, int command) {
 			ProxyQItemSelection().Merge(other,command);
 		}
@@ -72,7 +72,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQItemSelection();
 		}
-		[SmokeMethod("~QItemSelection", "()")]
+		[SmokeMethod("~QItemSelection", "()", "")]
 		private void DisposeQItemSelection() {
 			ProxyQItemSelection().DisposeQItemSelection();
 		}

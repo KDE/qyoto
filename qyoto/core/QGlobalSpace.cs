@@ -12,239 +12,239 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QGlobalSpace(Type dummy) {}
 		interface IQGlobalSpaceProxy {
-			[SmokeMethod("qDBusReplyFill###", "(const QDBusMessage&, QDBusError&, QVariant&)")]
+			[SmokeMethod("qDBusReplyFill", "(const QDBusMessage&, QDBusError&, QVariant&)", "###")]
 			void QDBusReplyFill(QDBusMessage reply, QDBusError error, QVariant data);
-			[SmokeMethod("operator>>##", "(const QDBusArgument&, QVariant&)")]
+			[SmokeMethod("operator>>", "(const QDBusArgument&, QVariant&)", "##")]
 			QDBusArgument op_read(QDBusArgument a, QVariant v);
-			[SmokeMethod("operator>>##", "(const QDBusArgument&, QDate&)")]
+			[SmokeMethod("operator>>", "(const QDBusArgument&, QDate&)", "##")]
 			QDBusArgument op_read(QDBusArgument a, QDate date);
-			[SmokeMethod("operator<<##", "(QDBusArgument&, const QDate&)")]
+			[SmokeMethod("operator<<", "(QDBusArgument&, const QDate&)", "##")]
 			QDBusArgument op_write(QDBusArgument a, QDate date);
-			[SmokeMethod("operator>>##", "(const QDBusArgument&, QTime&)")]
+			[SmokeMethod("operator>>", "(const QDBusArgument&, QTime&)", "##")]
 			QDBusArgument op_read(QDBusArgument a, QTime time);
-			[SmokeMethod("operator<<##", "(QDBusArgument&, const QTime&)")]
+			[SmokeMethod("operator<<", "(QDBusArgument&, const QTime&)", "##")]
 			QDBusArgument op_write(QDBusArgument a, QTime time);
-			[SmokeMethod("operator>>##", "(const QDBusArgument&, QDateTime&)")]
+			[SmokeMethod("operator>>", "(const QDBusArgument&, QDateTime&)", "##")]
 			QDBusArgument op_read(QDBusArgument a, QDateTime dt);
-			[SmokeMethod("operator<<##", "(QDBusArgument&, const QDateTime&)")]
+			[SmokeMethod("operator<<", "(QDBusArgument&, const QDateTime&)", "##")]
 			QDBusArgument op_write(QDBusArgument a, QDateTime dt);
-			[SmokeMethod("operator>>##", "(const QDBusArgument&, QRect&)")]
+			[SmokeMethod("operator>>", "(const QDBusArgument&, QRect&)", "##")]
 			QDBusArgument op_read(QDBusArgument a, QRect rect);
-			[SmokeMethod("operator<<##", "(QDBusArgument&, const QRect&)")]
+			[SmokeMethod("operator<<", "(QDBusArgument&, const QRect&)", "##")]
 			QDBusArgument op_write(QDBusArgument a, QRect rect);
-			[SmokeMethod("operator>>##", "(const QDBusArgument&, QRectF&)")]
+			[SmokeMethod("operator>>", "(const QDBusArgument&, QRectF&)", "##")]
 			QDBusArgument op_read(QDBusArgument a, QRectF rect);
-			[SmokeMethod("operator<<##", "(QDBusArgument&, const QRectF&)")]
+			[SmokeMethod("operator<<", "(QDBusArgument&, const QRectF&)", "##")]
 			QDBusArgument op_write(QDBusArgument a, QRectF rect);
-			[SmokeMethod("operator>>##", "(const QDBusArgument&, QSize&)")]
+			[SmokeMethod("operator>>", "(const QDBusArgument&, QSize&)", "##")]
 			QDBusArgument op_read(QDBusArgument a, QSize size);
-			[SmokeMethod("operator<<##", "(QDBusArgument&, const QSize&)")]
+			[SmokeMethod("operator<<", "(QDBusArgument&, const QSize&)", "##")]
 			QDBusArgument op_write(QDBusArgument a, QSize size);
-			[SmokeMethod("operator>>##", "(const QDBusArgument&, QSizeF&)")]
+			[SmokeMethod("operator>>", "(const QDBusArgument&, QSizeF&)", "##")]
 			QDBusArgument op_read(QDBusArgument a, QSizeF size);
-			[SmokeMethod("operator<<##", "(QDBusArgument&, const QSizeF&)")]
+			[SmokeMethod("operator<<", "(QDBusArgument&, const QSizeF&)", "##")]
 			QDBusArgument op_write(QDBusArgument a, QSizeF size);
-			[SmokeMethod("operator>>##", "(const QDBusArgument&, QPoint&)")]
+			[SmokeMethod("operator>>", "(const QDBusArgument&, QPoint&)", "##")]
 			QDBusArgument op_read(QDBusArgument a, QPoint pt);
-			[SmokeMethod("operator<<##", "(QDBusArgument&, const QPoint&)")]
+			[SmokeMethod("operator<<", "(QDBusArgument&, const QPoint&)", "##")]
 			QDBusArgument op_write(QDBusArgument a, QPoint pt);
-			[SmokeMethod("operator>>##", "(const QDBusArgument&, QPointF&)")]
+			[SmokeMethod("operator>>", "(const QDBusArgument&, QPointF&)", "##")]
 			QDBusArgument op_read(QDBusArgument a, QPointF pt);
-			[SmokeMethod("operator<<##", "(QDBusArgument&, const QPointF&)")]
+			[SmokeMethod("operator<<", "(QDBusArgument&, const QPointF&)", "##")]
 			QDBusArgument op_write(QDBusArgument a, QPointF pt);
-			[SmokeMethod("operator>>##", "(const QDBusArgument&, QLine&)")]
+			[SmokeMethod("operator>>", "(const QDBusArgument&, QLine&)", "##")]
 			QDBusArgument op_read(QDBusArgument a, QLine line);
-			[SmokeMethod("operator<<##", "(QDBusArgument&, const QLine&)")]
+			[SmokeMethod("operator<<", "(QDBusArgument&, const QLine&)", "##")]
 			QDBusArgument op_write(QDBusArgument a, QLine line);
-			[SmokeMethod("operator>>##", "(const QDBusArgument&, QLineF&)")]
+			[SmokeMethod("operator>>", "(const QDBusArgument&, QLineF&)", "##")]
 			QDBusArgument op_read(QDBusArgument a, QLineF line);
-			[SmokeMethod("operator<<##", "(QDBusArgument&, const QLineF&)")]
+			[SmokeMethod("operator<<", "(QDBusArgument&, const QLineF&)", "##")]
 			QDBusArgument op_write(QDBusArgument a, QLineF line);
-			[SmokeMethod("operator<<#?", "(QDBusArgument&, const QVariantList&)")]
+			[SmokeMethod("operator<<", "(QDBusArgument&, const QVariantList&)", "#?")]
 			QDBusArgument op_write(QDBusArgument arg, List<QVariant> list);
 			bool op_equals(QGLFormat arg1, QGLFormat arg2);
 			bool op_equals(QHostAddress.SpecialAddress address1, QHostAddress address2);
-			[SmokeMethod("qHash#", "(const QHostAddress&)")]
+			[SmokeMethod("qHash", "(const QHostAddress&)", "#")]
 			uint QHash(QHostAddress key);
-			[SmokeMethod("operator<<##", "(QDataStream&, const QHostAddress&)")]
+			[SmokeMethod("operator<<", "(QDataStream&, const QHostAddress&)", "##")]
 			QDataStream op_write(QDataStream arg1, QHostAddress arg2);
-			[SmokeMethod("operator>>##", "(QDataStream&, QHostAddress&)")]
+			[SmokeMethod("operator>>", "(QDataStream&, QHostAddress&)", "##")]
 			QDataStream op_read(QDataStream arg1, QHostAddress arg2);
 			bool op_equals(QKeyEvent e, QKeySequence.StandardKey key);
 			bool op_equals(QKeySequence.StandardKey key, QKeyEvent e);
-			[SmokeMethod("operator<<##", "(QDataStream&, const QPalette&)")]
+			[SmokeMethod("operator<<", "(QDataStream&, const QPalette&)", "##")]
 			QDataStream op_write(QDataStream ds, QPalette p);
-			[SmokeMethod("operator>>##", "(QDataStream&, QPalette&)")]
+			[SmokeMethod("operator>>", "(QDataStream&, QPalette&)", "##")]
 			QDataStream op_read(QDataStream ds, QPalette p);
-			[SmokeMethod("operator<<##", "(QDataStream&, const QCursor&)")]
+			[SmokeMethod("operator<<", "(QDataStream&, const QCursor&)", "##")]
 			QDataStream op_write(QDataStream outS, QCursor cursor);
-			[SmokeMethod("operator>>##", "(QDataStream&, QCursor&)")]
+			[SmokeMethod("operator>>", "(QDataStream&, QCursor&)", "##")]
 			QDataStream op_read(QDataStream inS, QCursor cursor);
-			[SmokeMethod("operator<<##", "(QDataStream&, const QKeySequence&)")]
+			[SmokeMethod("operator<<", "(QDataStream&, const QKeySequence&)", "##")]
 			QDataStream op_write(QDataStream arg1, QKeySequence ks);
-			[SmokeMethod("operator>>##", "(QDataStream&, QKeySequence&)")]
+			[SmokeMethod("operator>>", "(QDataStream&, QKeySequence&)", "##")]
 			QDataStream op_read(QDataStream arg1, QKeySequence ks);
-			[SmokeMethod("operator<<##", "(QDataStream&, const QSizePolicy&)")]
+			[SmokeMethod("operator<<", "(QDataStream&, const QSizePolicy&)", "##")]
 			QDataStream op_write(QDataStream arg1, QSizePolicy arg2);
-			[SmokeMethod("operator>>##", "(QDataStream&, QSizePolicy&)")]
+			[SmokeMethod("operator>>", "(QDataStream&, QSizePolicy&)", "##")]
 			QDataStream op_read(QDataStream arg1, QSizePolicy arg2);
-			[SmokeMethod("operator<<##", "(QDataStream&, const QPicture&)")]
+			[SmokeMethod("operator<<", "(QDataStream&, const QPicture&)", "##")]
 			QDataStream op_write(QDataStream arg1, QPicture arg2);
-			[SmokeMethod("operator>>##", "(QDataStream&, QPicture&)")]
+			[SmokeMethod("operator>>", "(QDataStream&, QPicture&)", "##")]
 			QDataStream op_read(QDataStream arg1, QPicture arg2);
-			[SmokeMethod("operator<<##", "(QDataStream&, const QImage&)")]
+			[SmokeMethod("operator<<", "(QDataStream&, const QImage&)", "##")]
 			QDataStream op_write(QDataStream arg1, QImage arg2);
-			[SmokeMethod("operator>>##", "(QDataStream&, QImage&)")]
+			[SmokeMethod("operator>>", "(QDataStream&, QImage&)", "##")]
 			QDataStream op_read(QDataStream arg1, QImage arg2);
-			[SmokeMethod("operator<<##", "(QDataStream&, const QIcon&)")]
+			[SmokeMethod("operator<<", "(QDataStream&, const QIcon&)", "##")]
 			QDataStream op_write(QDataStream arg1, QIcon arg2);
-			[SmokeMethod("operator>>##", "(QDataStream&, QIcon&)")]
+			[SmokeMethod("operator>>", "(QDataStream&, QIcon&)", "##")]
 			QDataStream op_read(QDataStream arg1, QIcon arg2);
-			[SmokeMethod("operator<<##", "(QDataStream&, const QPixmap&)")]
+			[SmokeMethod("operator<<", "(QDataStream&, const QPixmap&)", "##")]
 			QDataStream op_write(QDataStream arg1, QPixmap arg2);
-			[SmokeMethod("operator>>##", "(QDataStream&, QPixmap&)")]
+			[SmokeMethod("operator>>", "(QDataStream&, QPixmap&)", "##")]
 			QDataStream op_read(QDataStream arg1, QPixmap arg2);
-			[SmokeMethod("operator<<##", "(QDataStream&, const QFont&)")]
+			[SmokeMethod("operator<<", "(QDataStream&, const QFont&)", "##")]
 			QDataStream op_write(QDataStream arg1, QFont arg2);
-			[SmokeMethod("operator>>##", "(QDataStream&, QFont&)")]
+			[SmokeMethod("operator>>", "(QDataStream&, QFont&)", "##")]
 			QDataStream op_read(QDataStream arg1, QFont arg2);
-			[SmokeMethod("operator<<##", "(QDataStream&, const QTextLength&)")]
+			[SmokeMethod("operator<<", "(QDataStream&, const QTextLength&)", "##")]
 			QDataStream op_write(QDataStream arg1, QTextLength arg2);
-			[SmokeMethod("operator>>##", "(QDataStream&, QTextLength&)")]
+			[SmokeMethod("operator>>", "(QDataStream&, QTextLength&)", "##")]
 			QDataStream op_read(QDataStream arg1, QTextLength arg2);
-			[SmokeMethod("operator<<##", "(QTextStream&, const QSplitter&)")]
+			[SmokeMethod("operator<<", "(QTextStream&, const QSplitter&)", "##")]
 			QTextStream op_write(QTextStream arg1, QSplitter arg2);
-			[SmokeMethod("operator>>##", "(QTextStream&, QSplitter&)")]
+			[SmokeMethod("operator>>", "(QTextStream&, QSplitter&)", "##")]
 			QTextStream op_read(QTextStream arg1, QSplitter arg2);
-			[SmokeMethod("operator<<##", "(QDataStream&, const QColor&)")]
+			[SmokeMethod("operator<<", "(QDataStream&, const QColor&)", "##")]
 			QDataStream op_write(QDataStream arg1, QColor arg2);
-			[SmokeMethod("operator>>##", "(QDataStream&, QColor&)")]
+			[SmokeMethod("operator>>", "(QDataStream&, QColor&)", "##")]
 			QDataStream op_read(QDataStream arg1, QColor arg2);
-			[SmokeMethod("operator<<##", "(QDataStream&, const QPen&)")]
+			[SmokeMethod("operator<<", "(QDataStream&, const QPen&)", "##")]
 			QDataStream op_write(QDataStream arg1, QPen arg2);
-			[SmokeMethod("operator>>##", "(QDataStream&, QPen&)")]
+			[SmokeMethod("operator>>", "(QDataStream&, QPen&)", "##")]
 			QDataStream op_read(QDataStream arg1, QPen arg2);
-			[SmokeMethod("qDrawShadeLine#$$$$#$$$", "(QPainter*, int, int, int, int, const QPalette&, bool, int, int)")]
+			[SmokeMethod("qDrawShadeLine", "(QPainter*, int, int, int, int, const QPalette&, bool, int, int)", "#$$$$#$$$")]
 			void QDrawShadeLine(QPainter p, int x1, int y1, int x2, int y2, QPalette pal, bool sunken, int lineWidth, int midLineWidth);
-			[SmokeMethod("qDrawShadeLine#$$$$#$$", "(QPainter*, int, int, int, int, const QPalette&, bool, int)")]
+			[SmokeMethod("qDrawShadeLine", "(QPainter*, int, int, int, int, const QPalette&, bool, int)", "#$$$$#$$")]
 			void QDrawShadeLine(QPainter p, int x1, int y1, int x2, int y2, QPalette pal, bool sunken, int lineWidth);
-			[SmokeMethod("qDrawShadeLine#$$$$#$", "(QPainter*, int, int, int, int, const QPalette&, bool)")]
+			[SmokeMethod("qDrawShadeLine", "(QPainter*, int, int, int, int, const QPalette&, bool)", "#$$$$#$")]
 			void QDrawShadeLine(QPainter p, int x1, int y1, int x2, int y2, QPalette pal, bool sunken);
-			[SmokeMethod("qDrawShadeLine#$$$$#", "(QPainter*, int, int, int, int, const QPalette&)")]
+			[SmokeMethod("qDrawShadeLine", "(QPainter*, int, int, int, int, const QPalette&)", "#$$$$#")]
 			void QDrawShadeLine(QPainter p, int x1, int y1, int x2, int y2, QPalette pal);
-			[SmokeMethod("qDrawShadeLine####$$$", "(QPainter*, const QPoint&, const QPoint&, const QPalette&, bool, int, int)")]
+			[SmokeMethod("qDrawShadeLine", "(QPainter*, const QPoint&, const QPoint&, const QPalette&, bool, int, int)", "####$$$")]
 			void QDrawShadeLine(QPainter p, QPoint p1, QPoint p2, QPalette pal, bool sunken, int lineWidth, int midLineWidth);
-			[SmokeMethod("qDrawShadeLine####$$", "(QPainter*, const QPoint&, const QPoint&, const QPalette&, bool, int)")]
+			[SmokeMethod("qDrawShadeLine", "(QPainter*, const QPoint&, const QPoint&, const QPalette&, bool, int)", "####$$")]
 			void QDrawShadeLine(QPainter p, QPoint p1, QPoint p2, QPalette pal, bool sunken, int lineWidth);
-			[SmokeMethod("qDrawShadeLine####$", "(QPainter*, const QPoint&, const QPoint&, const QPalette&, bool)")]
+			[SmokeMethod("qDrawShadeLine", "(QPainter*, const QPoint&, const QPoint&, const QPalette&, bool)", "####$")]
 			void QDrawShadeLine(QPainter p, QPoint p1, QPoint p2, QPalette pal, bool sunken);
-			[SmokeMethod("qDrawShadeLine####", "(QPainter*, const QPoint&, const QPoint&, const QPalette&)")]
+			[SmokeMethod("qDrawShadeLine", "(QPainter*, const QPoint&, const QPoint&, const QPalette&)", "####")]
 			void QDrawShadeLine(QPainter p, QPoint p1, QPoint p2, QPalette pal);
-			[SmokeMethod("qDrawShadeRect#$$$$#$$$#", "(QPainter*, int, int, int, int, const QPalette&, bool, int, int, const QBrush*)")]
+			[SmokeMethod("qDrawShadeRect", "(QPainter*, int, int, int, int, const QPalette&, bool, int, int, const QBrush*)", "#$$$$#$$$#")]
 			void QDrawShadeRect(QPainter p, int x, int y, int w, int h, QPalette pal, bool sunken, int lineWidth, int midLineWidth, QBrush fill);
-			[SmokeMethod("qDrawShadeRect#$$$$#$$$", "(QPainter*, int, int, int, int, const QPalette&, bool, int, int)")]
+			[SmokeMethod("qDrawShadeRect", "(QPainter*, int, int, int, int, const QPalette&, bool, int, int)", "#$$$$#$$$")]
 			void QDrawShadeRect(QPainter p, int x, int y, int w, int h, QPalette pal, bool sunken, int lineWidth, int midLineWidth);
-			[SmokeMethod("qDrawShadeRect#$$$$#$$", "(QPainter*, int, int, int, int, const QPalette&, bool, int)")]
+			[SmokeMethod("qDrawShadeRect", "(QPainter*, int, int, int, int, const QPalette&, bool, int)", "#$$$$#$$")]
 			void QDrawShadeRect(QPainter p, int x, int y, int w, int h, QPalette pal, bool sunken, int lineWidth);
-			[SmokeMethod("qDrawShadeRect#$$$$#$", "(QPainter*, int, int, int, int, const QPalette&, bool)")]
+			[SmokeMethod("qDrawShadeRect", "(QPainter*, int, int, int, int, const QPalette&, bool)", "#$$$$#$")]
 			void QDrawShadeRect(QPainter p, int x, int y, int w, int h, QPalette pal, bool sunken);
-			[SmokeMethod("qDrawShadeRect#$$$$#", "(QPainter*, int, int, int, int, const QPalette&)")]
+			[SmokeMethod("qDrawShadeRect", "(QPainter*, int, int, int, int, const QPalette&)", "#$$$$#")]
 			void QDrawShadeRect(QPainter p, int x, int y, int w, int h, QPalette pal);
-			[SmokeMethod("qDrawShadeRect###$$$#", "(QPainter*, const QRect&, const QPalette&, bool, int, int, const QBrush*)")]
+			[SmokeMethod("qDrawShadeRect", "(QPainter*, const QRect&, const QPalette&, bool, int, int, const QBrush*)", "###$$$#")]
 			void QDrawShadeRect(QPainter p, QRect r, QPalette pal, bool sunken, int lineWidth, int midLineWidth, QBrush fill);
-			[SmokeMethod("qDrawShadeRect###$$$", "(QPainter*, const QRect&, const QPalette&, bool, int, int)")]
+			[SmokeMethod("qDrawShadeRect", "(QPainter*, const QRect&, const QPalette&, bool, int, int)", "###$$$")]
 			void QDrawShadeRect(QPainter p, QRect r, QPalette pal, bool sunken, int lineWidth, int midLineWidth);
-			[SmokeMethod("qDrawShadeRect###$$", "(QPainter*, const QRect&, const QPalette&, bool, int)")]
+			[SmokeMethod("qDrawShadeRect", "(QPainter*, const QRect&, const QPalette&, bool, int)", "###$$")]
 			void QDrawShadeRect(QPainter p, QRect r, QPalette pal, bool sunken, int lineWidth);
-			[SmokeMethod("qDrawShadeRect###$", "(QPainter*, const QRect&, const QPalette&, bool)")]
+			[SmokeMethod("qDrawShadeRect", "(QPainter*, const QRect&, const QPalette&, bool)", "###$")]
 			void QDrawShadeRect(QPainter p, QRect r, QPalette pal, bool sunken);
-			[SmokeMethod("qDrawShadeRect###", "(QPainter*, const QRect&, const QPalette&)")]
+			[SmokeMethod("qDrawShadeRect", "(QPainter*, const QRect&, const QPalette&)", "###")]
 			void QDrawShadeRect(QPainter p, QRect r, QPalette pal);
-			[SmokeMethod("qDrawShadePanel#$$$$#$$#", "(QPainter*, int, int, int, int, const QPalette&, bool, int, const QBrush*)")]
+			[SmokeMethod("qDrawShadePanel", "(QPainter*, int, int, int, int, const QPalette&, bool, int, const QBrush*)", "#$$$$#$$#")]
 			void QDrawShadePanel(QPainter p, int x, int y, int w, int h, QPalette pal, bool sunken, int lineWidth, QBrush fill);
-			[SmokeMethod("qDrawShadePanel#$$$$#$$", "(QPainter*, int, int, int, int, const QPalette&, bool, int)")]
+			[SmokeMethod("qDrawShadePanel", "(QPainter*, int, int, int, int, const QPalette&, bool, int)", "#$$$$#$$")]
 			void QDrawShadePanel(QPainter p, int x, int y, int w, int h, QPalette pal, bool sunken, int lineWidth);
-			[SmokeMethod("qDrawShadePanel#$$$$#$", "(QPainter*, int, int, int, int, const QPalette&, bool)")]
+			[SmokeMethod("qDrawShadePanel", "(QPainter*, int, int, int, int, const QPalette&, bool)", "#$$$$#$")]
 			void QDrawShadePanel(QPainter p, int x, int y, int w, int h, QPalette pal, bool sunken);
-			[SmokeMethod("qDrawShadePanel#$$$$#", "(QPainter*, int, int, int, int, const QPalette&)")]
+			[SmokeMethod("qDrawShadePanel", "(QPainter*, int, int, int, int, const QPalette&)", "#$$$$#")]
 			void QDrawShadePanel(QPainter p, int x, int y, int w, int h, QPalette pal);
-			[SmokeMethod("qDrawShadePanel###$$#", "(QPainter*, const QRect&, const QPalette&, bool, int, const QBrush*)")]
+			[SmokeMethod("qDrawShadePanel", "(QPainter*, const QRect&, const QPalette&, bool, int, const QBrush*)", "###$$#")]
 			void QDrawShadePanel(QPainter p, QRect r, QPalette pal, bool sunken, int lineWidth, QBrush fill);
-			[SmokeMethod("qDrawShadePanel###$$", "(QPainter*, const QRect&, const QPalette&, bool, int)")]
+			[SmokeMethod("qDrawShadePanel", "(QPainter*, const QRect&, const QPalette&, bool, int)", "###$$")]
 			void QDrawShadePanel(QPainter p, QRect r, QPalette pal, bool sunken, int lineWidth);
-			[SmokeMethod("qDrawShadePanel###$", "(QPainter*, const QRect&, const QPalette&, bool)")]
+			[SmokeMethod("qDrawShadePanel", "(QPainter*, const QRect&, const QPalette&, bool)", "###$")]
 			void QDrawShadePanel(QPainter p, QRect r, QPalette pal, bool sunken);
-			[SmokeMethod("qDrawShadePanel###", "(QPainter*, const QRect&, const QPalette&)")]
+			[SmokeMethod("qDrawShadePanel", "(QPainter*, const QRect&, const QPalette&)", "###")]
 			void QDrawShadePanel(QPainter p, QRect r, QPalette pal);
-			[SmokeMethod("qDrawWinButton#$$$$#$#", "(QPainter*, int, int, int, int, const QPalette&, bool, const QBrush*)")]
+			[SmokeMethod("qDrawWinButton", "(QPainter*, int, int, int, int, const QPalette&, bool, const QBrush*)", "#$$$$#$#")]
 			void QDrawWinButton(QPainter p, int x, int y, int w, int h, QPalette pal, bool sunken, QBrush fill);
-			[SmokeMethod("qDrawWinButton#$$$$#$", "(QPainter*, int, int, int, int, const QPalette&, bool)")]
+			[SmokeMethod("qDrawWinButton", "(QPainter*, int, int, int, int, const QPalette&, bool)", "#$$$$#$")]
 			void QDrawWinButton(QPainter p, int x, int y, int w, int h, QPalette pal, bool sunken);
-			[SmokeMethod("qDrawWinButton#$$$$#", "(QPainter*, int, int, int, int, const QPalette&)")]
+			[SmokeMethod("qDrawWinButton", "(QPainter*, int, int, int, int, const QPalette&)", "#$$$$#")]
 			void QDrawWinButton(QPainter p, int x, int y, int w, int h, QPalette pal);
-			[SmokeMethod("qDrawWinButton###$#", "(QPainter*, const QRect&, const QPalette&, bool, const QBrush*)")]
+			[SmokeMethod("qDrawWinButton", "(QPainter*, const QRect&, const QPalette&, bool, const QBrush*)", "###$#")]
 			void QDrawWinButton(QPainter p, QRect r, QPalette pal, bool sunken, QBrush fill);
-			[SmokeMethod("qDrawWinButton###$", "(QPainter*, const QRect&, const QPalette&, bool)")]
+			[SmokeMethod("qDrawWinButton", "(QPainter*, const QRect&, const QPalette&, bool)", "###$")]
 			void QDrawWinButton(QPainter p, QRect r, QPalette pal, bool sunken);
-			[SmokeMethod("qDrawWinButton###", "(QPainter*, const QRect&, const QPalette&)")]
+			[SmokeMethod("qDrawWinButton", "(QPainter*, const QRect&, const QPalette&)", "###")]
 			void QDrawWinButton(QPainter p, QRect r, QPalette pal);
-			[SmokeMethod("qDrawWinPanel#$$$$#$#", "(QPainter*, int, int, int, int, const QPalette&, bool, const QBrush*)")]
+			[SmokeMethod("qDrawWinPanel", "(QPainter*, int, int, int, int, const QPalette&, bool, const QBrush*)", "#$$$$#$#")]
 			void QDrawWinPanel(QPainter p, int x, int y, int w, int h, QPalette pal, bool sunken, QBrush fill);
-			[SmokeMethod("qDrawWinPanel#$$$$#$", "(QPainter*, int, int, int, int, const QPalette&, bool)")]
+			[SmokeMethod("qDrawWinPanel", "(QPainter*, int, int, int, int, const QPalette&, bool)", "#$$$$#$")]
 			void QDrawWinPanel(QPainter p, int x, int y, int w, int h, QPalette pal, bool sunken);
-			[SmokeMethod("qDrawWinPanel#$$$$#", "(QPainter*, int, int, int, int, const QPalette&)")]
+			[SmokeMethod("qDrawWinPanel", "(QPainter*, int, int, int, int, const QPalette&)", "#$$$$#")]
 			void QDrawWinPanel(QPainter p, int x, int y, int w, int h, QPalette pal);
-			[SmokeMethod("qDrawWinPanel###$#", "(QPainter*, const QRect&, const QPalette&, bool, const QBrush*)")]
+			[SmokeMethod("qDrawWinPanel", "(QPainter*, const QRect&, const QPalette&, bool, const QBrush*)", "###$#")]
 			void QDrawWinPanel(QPainter p, QRect r, QPalette pal, bool sunken, QBrush fill);
-			[SmokeMethod("qDrawWinPanel###$", "(QPainter*, const QRect&, const QPalette&, bool)")]
+			[SmokeMethod("qDrawWinPanel", "(QPainter*, const QRect&, const QPalette&, bool)", "###$")]
 			void QDrawWinPanel(QPainter p, QRect r, QPalette pal, bool sunken);
-			[SmokeMethod("qDrawWinPanel###", "(QPainter*, const QRect&, const QPalette&)")]
+			[SmokeMethod("qDrawWinPanel", "(QPainter*, const QRect&, const QPalette&)", "###")]
 			void QDrawWinPanel(QPainter p, QRect r, QPalette pal);
-			[SmokeMethod("qDrawPlainRect#$$$$#$#", "(QPainter*, int, int, int, int, const QColor&, int, const QBrush*)")]
+			[SmokeMethod("qDrawPlainRect", "(QPainter*, int, int, int, int, const QColor&, int, const QBrush*)", "#$$$$#$#")]
 			void QDrawPlainRect(QPainter p, int x, int y, int w, int h, QColor arg6, int lineWidth, QBrush fill);
-			[SmokeMethod("qDrawPlainRect#$$$$#$", "(QPainter*, int, int, int, int, const QColor&, int)")]
+			[SmokeMethod("qDrawPlainRect", "(QPainter*, int, int, int, int, const QColor&, int)", "#$$$$#$")]
 			void QDrawPlainRect(QPainter p, int x, int y, int w, int h, QColor arg6, int lineWidth);
-			[SmokeMethod("qDrawPlainRect#$$$$#", "(QPainter*, int, int, int, int, const QColor&)")]
+			[SmokeMethod("qDrawPlainRect", "(QPainter*, int, int, int, int, const QColor&)", "#$$$$#")]
 			void QDrawPlainRect(QPainter p, int x, int y, int w, int h, QColor arg6);
-			[SmokeMethod("qDrawPlainRect###$#", "(QPainter*, const QRect&, const QColor&, int, const QBrush*)")]
+			[SmokeMethod("qDrawPlainRect", "(QPainter*, const QRect&, const QColor&, int, const QBrush*)", "###$#")]
 			void QDrawPlainRect(QPainter p, QRect r, QColor arg3, int lineWidth, QBrush fill);
-			[SmokeMethod("qDrawPlainRect###$", "(QPainter*, const QRect&, const QColor&, int)")]
+			[SmokeMethod("qDrawPlainRect", "(QPainter*, const QRect&, const QColor&, int)", "###$")]
 			void QDrawPlainRect(QPainter p, QRect r, QColor arg3, int lineWidth);
-			[SmokeMethod("qDrawPlainRect###", "(QPainter*, const QRect&, const QColor&)")]
+			[SmokeMethod("qDrawPlainRect", "(QPainter*, const QRect&, const QColor&)", "###")]
 			void QDrawPlainRect(QPainter p, QRect r, QColor arg3);
-			[SmokeMethod("operator<<##", "(QDataStream&, const QBrush&)")]
+			[SmokeMethod("operator<<", "(QDataStream&, const QBrush&)", "##")]
 			QDataStream op_write(QDataStream arg1, QBrush arg2);
-			[SmokeMethod("operator>>##", "(QDataStream&, QBrush&)")]
+			[SmokeMethod("operator>>", "(QDataStream&, QBrush&)", "##")]
 			QDataStream op_read(QDataStream arg1, QBrush arg2);
-			[SmokeMethod("qRed$", "(QRgb)")]
+			[SmokeMethod("qRed", "(QRgb)", "$")]
 			int QRed(uint rgb);
-			[SmokeMethod("qGreen$", "(QRgb)")]
+			[SmokeMethod("qGreen", "(QRgb)", "$")]
 			int QGreen(uint rgb);
-			[SmokeMethod("qBlue$", "(QRgb)")]
+			[SmokeMethod("qBlue", "(QRgb)", "$")]
 			int QBlue(uint rgb);
-			[SmokeMethod("qAlpha$", "(QRgb)")]
+			[SmokeMethod("qAlpha", "(QRgb)", "$")]
 			int QAlpha(uint rgb);
-			[SmokeMethod("qRgb$$$", "(int, int, int)")]
+			[SmokeMethod("qRgb", "(int, int, int)", "$$$")]
 			uint QRgb(int r, int g, int b);
-			[SmokeMethod("qRgba$$$$", "(int, int, int, int)")]
+			[SmokeMethod("qRgba", "(int, int, int, int)", "$$$$")]
 			uint QRgba(int r, int g, int b, int a);
-			[SmokeMethod("qGray$$$", "(int, int, int)")]
+			[SmokeMethod("qGray", "(int, int, int)", "$$$")]
 			int QGray(int r, int g, int b);
-			[SmokeMethod("qGray$", "(QRgb)")]
+			[SmokeMethod("qGray", "(QRgb)", "$")]
 			int QGray(uint rgb);
-			[SmokeMethod("qIsGray$", "(QRgb)")]
+			[SmokeMethod("qIsGray", "(QRgb)", "$")]
 			bool QIsGray(uint rgb);
-			[SmokeMethod("operator<<##", "(QDataStream&, const QPainterPath&)")]
+			[SmokeMethod("operator<<", "(QDataStream&, const QPainterPath&)", "##")]
 			QDataStream op_write(QDataStream arg1, QPainterPath arg2);
-			[SmokeMethod("operator>>##", "(QDataStream&, QPainterPath&)")]
+			[SmokeMethod("operator>>", "(QDataStream&, QPainterPath&)", "##")]
 			QDataStream op_read(QDataStream arg1, QPainterPath arg2);
-			[SmokeMethod("operator<<##", "(QDataStream&, const QRegion&)")]
+			[SmokeMethod("operator<<", "(QDataStream&, const QRegion&)", "##")]
 			QDataStream op_write(QDataStream arg1, QRegion arg2);
-			[SmokeMethod("operator>>##", "(QDataStream&, QRegion&)")]
+			[SmokeMethod("operator>>", "(QDataStream&, QRegion&)", "##")]
 			QDataStream op_read(QDataStream arg1, QRegion arg2);
-			[SmokeMethod("operator<<##", "(QDataStream&, const QPolygonF&)")]
+			[SmokeMethod("operator<<", "(QDataStream&, const QPolygonF&)", "##")]
 			QDataStream op_write(QDataStream stream, QPolygonF array);
-			[SmokeMethod("operator>>##", "(QDataStream&, QPolygonF&)")]
+			[SmokeMethod("operator>>", "(QDataStream&, QPolygonF&)", "##")]
 			QDataStream op_read(QDataStream stream, QPolygonF array);
 			QPoint op_mult(QPoint p, QMatrix m);
 			QPointF op_mult(QPointF p, QMatrix m);
@@ -254,100 +254,100 @@ namespace Qyoto {
 			QPolygonF op_mult(QPolygonF a, QMatrix m);
 			QRegion op_mult(QRegion r, QMatrix m);
 			QPainterPath op_mult(QPainterPath p, QMatrix m);
-			[SmokeMethod("operator<<##", "(QDataStream&, const QMatrix&)")]
+			[SmokeMethod("operator<<", "(QDataStream&, const QMatrix&)", "##")]
 			QDataStream op_write(QDataStream arg1, QMatrix arg2);
-			[SmokeMethod("operator>>##", "(QDataStream&, QMatrix&)")]
+			[SmokeMethod("operator>>", "(QDataStream&, QMatrix&)", "##")]
 			QDataStream op_read(QDataStream arg1, QMatrix arg2);
-			[SmokeMethod("operator>>##", "(QDataStream&, QTableWidgetItem&)")]
+			[SmokeMethod("operator>>", "(QDataStream&, QTableWidgetItem&)", "##")]
 			QDataStream op_read(QDataStream arg1, QTableWidgetItem item);
-			[SmokeMethod("operator<<##", "(QDataStream&, const QTableWidgetItem&)")]
+			[SmokeMethod("operator<<", "(QDataStream&, const QTableWidgetItem&)", "##")]
 			QDataStream op_write(QDataStream arg1, QTableWidgetItem item);
-			[SmokeMethod("operator<<##", "(QDataStream&, const QTreeWidgetItem&)")]
+			[SmokeMethod("operator<<", "(QDataStream&, const QTreeWidgetItem&)", "##")]
 			QDataStream op_write(QDataStream arg1, QTreeWidgetItem item);
-			[SmokeMethod("operator>>##", "(QDataStream&, QTreeWidgetItem&)")]
+			[SmokeMethod("operator>>", "(QDataStream&, QTreeWidgetItem&)", "##")]
 			QDataStream op_read(QDataStream arg1, QTreeWidgetItem item);
-			[SmokeMethod("operator<<##", "(QDataStream&, const QListWidgetItem&)")]
+			[SmokeMethod("operator<<", "(QDataStream&, const QListWidgetItem&)", "##")]
 			QDataStream op_write(QDataStream arg1, QListWidgetItem item);
-			[SmokeMethod("operator>>##", "(QDataStream&, QListWidgetItem&)")]
+			[SmokeMethod("operator>>", "(QDataStream&, QListWidgetItem&)", "##")]
 			QDataStream op_read(QDataStream arg1, QListWidgetItem item);
-			[SmokeMethod("qHash#", "(const QItemSelectionRange&)")]
+			[SmokeMethod("qHash", "(const QItemSelectionRange&)", "#")]
 			uint QHash(QItemSelectionRange arg1);
-			[SmokeMethod("operator<<##", "(QTextStream&, const QDomNode&)")]
+			[SmokeMethod("operator<<", "(QTextStream&, const QDomNode&)", "##")]
 			QTextStream op_write(QTextStream arg1, QDomNode arg2);
-			[SmokeMethod("qRound$", "(qreal)")]
+			[SmokeMethod("qRound", "(qreal)", "$")]
 			int QRound(double d);
-			[SmokeMethod("qRound64$", "(qreal)")]
+			[SmokeMethod("qRound64", "(qreal)", "$")]
 			long QRound64(double d);
-			[SmokeMethod("qVersion", "()")]
+			[SmokeMethod("qVersion", "()", "")]
 			string QVersion();
-			[SmokeMethod("qSharedBuild", "()")]
+			[SmokeMethod("qSharedBuild", "()", "")]
 			bool QSharedBuild();
 			bool op_equals(QBool b1, bool b2);
 			bool op_equals(bool b1, QBool b2);
 			bool op_equals(QBool b1, QBool b2);
-			[SmokeMethod("qFuzzyCompare$$", "(double, double)")]
+			[SmokeMethod("qFuzzyCompare", "(double, double)", "$$")]
 			bool QFuzzyCompare(double p1, double p2);
-			[SmokeMethod("qFuzzyCompare$$", "(float, float)")]
+			[SmokeMethod("qFuzzyCompare", "(float, float)", "$$")]
 			bool QFuzzyCompare(float p1, float p2);
-			[SmokeMethod("qIsNull$", "(double)")]
+			[SmokeMethod("qIsNull", "(double)", "$")]
 			bool QIsNull(double d);
-			[SmokeMethod("qIsNull$", "(float)")]
+			[SmokeMethod("qIsNull", "(float)", "$")]
 			bool QIsNull(float f);
-			[SmokeMethod("qgetenv$", "(const char*)")]
+			[SmokeMethod("qgetenv", "(const char*)", "$")]
 			QByteArray Qgetenv(string varName);
-			[SmokeMethod("qIntCast$", "(double)")]
+			[SmokeMethod("qIntCast", "(double)", "$")]
 			int QIntCast(double f);
-			[SmokeMethod("qIntCast$", "(float)")]
+			[SmokeMethod("qIntCast", "(float)", "$")]
 			int QIntCast(float f);
-			[SmokeMethod("qsrand$", "(uint)")]
+			[SmokeMethod("qsrand", "(uint)", "$")]
 			void Qsrand(uint seed);
-			[SmokeMethod("qrand", "()")]
+			[SmokeMethod("qrand", "()", "")]
 			int Qrand();
-			[SmokeMethod("operator>>##", "(QDataStream&, QVariant&)")]
+			[SmokeMethod("operator>>", "(QDataStream&, QVariant&)", "##")]
 			QDataStream op_read(QDataStream s, QVariant p);
-			[SmokeMethod("operator<<##", "(QDataStream&, const QVariant&)")]
+			[SmokeMethod("operator<<", "(QDataStream&, const QVariant&)", "##")]
 			QDataStream op_write(QDataStream s, QVariant p);
-			[SmokeMethod("qAppName", "()")]
+			[SmokeMethod("qAppName", "()", "")]
 			string QAppName();
-			[SmokeMethod("qHash#", "(const QModelIndex&)")]
+			[SmokeMethod("qHash", "(const QModelIndex&)", "#")]
 			uint QHash(QModelIndex index);
 			bool op_equals(QRect arg1, QRect arg2);
-			[SmokeMethod("operator<<##", "(QDataStream&, const QRect&)")]
+			[SmokeMethod("operator<<", "(QDataStream&, const QRect&)", "##")]
 			QDataStream op_write(QDataStream arg1, QRect arg2);
-			[SmokeMethod("operator>>##", "(QDataStream&, QRect&)")]
+			[SmokeMethod("operator>>", "(QDataStream&, QRect&)", "##")]
 			QDataStream op_read(QDataStream arg1, QRect arg2);
 			bool op_equals(QRectF arg1, QRectF arg2);
-			[SmokeMethod("operator<<##", "(QDataStream&, const QRectF&)")]
+			[SmokeMethod("operator<<", "(QDataStream&, const QRectF&)", "##")]
 			QDataStream op_write(QDataStream arg1, QRectF arg2);
-			[SmokeMethod("operator>>##", "(QDataStream&, QRectF&)")]
+			[SmokeMethod("operator>>", "(QDataStream&, QRectF&)", "##")]
 			QDataStream op_read(QDataStream arg1, QRectF arg2);
-			[SmokeMethod("operator<<##", "(QDataStream&, const QLocale&)")]
+			[SmokeMethod("operator<<", "(QDataStream&, const QLocale&)", "##")]
 			QDataStream op_write(QDataStream arg1, QLocale arg2);
-			[SmokeMethod("operator>>##", "(QDataStream&, QLocale&)")]
+			[SmokeMethod("operator>>", "(QDataStream&, QLocale&)", "##")]
 			QDataStream op_read(QDataStream arg1, QLocale arg2);
-			[SmokeMethod("operator>>#?", "(QDataStream&, QStringList&)")]
+			[SmokeMethod("operator>>", "(QDataStream&, QStringList&)", "#?")]
 			QDataStream op_read(QDataStream arg1, List<string> list);
-			[SmokeMethod("operator<<#?", "(QDataStream&, const QStringList&)")]
+			[SmokeMethod("operator<<", "(QDataStream&, const QStringList&)", "#?")]
 			QDataStream op_write(QDataStream arg1, List<string> list);
-			[SmokeMethod("qstrdup$", "(const char*)")]
+			[SmokeMethod("qstrdup", "(const char*)", "$")]
 			string Qstrdup(string arg1);
-			[SmokeMethod("qstrlen$", "(const char*)")]
+			[SmokeMethod("qstrlen", "(const char*)", "$")]
 			uint Qstrlen(string str);
-			[SmokeMethod("qstrnlen$$", "(const char*, uint)")]
+			[SmokeMethod("qstrnlen", "(const char*, uint)", "$$")]
 			uint Qstrnlen(string str, uint maxlen);
-			[SmokeMethod("qstrcpy$$", "(char*, const char*)")]
+			[SmokeMethod("qstrcpy", "(char*, const char*)", "$$")]
 			string Qstrcpy(string dst, string src);
-			[SmokeMethod("qstrncpy$$$", "(char*, const char*, uint)")]
+			[SmokeMethod("qstrncpy", "(char*, const char*, uint)", "$$$")]
 			string Qstrncpy(string dst, string src, uint len);
-			[SmokeMethod("qstrcmp$$", "(const char*, const char*)")]
+			[SmokeMethod("qstrcmp", "(const char*, const char*)", "$$")]
 			int Qstrcmp(string str1, string str2);
-			[SmokeMethod("qstrncmp$$$", "(const char*, const char*, uint)")]
+			[SmokeMethod("qstrncmp", "(const char*, const char*, uint)", "$$$")]
 			int Qstrncmp(string str1, string str2, uint len);
-			[SmokeMethod("qstricmp$$", "(const char*, const char*)")]
+			[SmokeMethod("qstricmp", "(const char*, const char*)", "$$")]
 			int Qstricmp(string arg1, string arg2);
-			[SmokeMethod("qstrnicmp$$$", "(const char*, const char*, uint)")]
+			[SmokeMethod("qstrnicmp", "(const char*, const char*, uint)", "$$$")]
 			int Qstrnicmp(string arg1, string arg2, uint len);
-			[SmokeMethod("qChecksum$$", "(const char*, uint)")]
+			[SmokeMethod("qChecksum", "(const char*, uint)", "$$")]
 			ushort QChecksum(string s, uint len);
 			bool op_equals(QByteArray a1, QByteArray a2);
 			bool op_equals(QByteArray a1, string a2);
@@ -369,25 +369,25 @@ namespace Qyoto {
 			QByteArray op_plus(QByteArray a1, char a2);
 			QByteArray op_plus(string a1, QByteArray a2);
 			QByteArray op_plus(char a1, QByteArray a2);
-			[SmokeMethod("operator<<##", "(QDataStream&, const QByteArray&)")]
+			[SmokeMethod("operator<<", "(QDataStream&, const QByteArray&)", "##")]
 			QDataStream op_write(QDataStream arg1, QByteArray arg2);
-			[SmokeMethod("operator>>##", "(QDataStream&, QByteArray&)")]
+			[SmokeMethod("operator>>", "(QDataStream&, QByteArray&)", "##")]
 			QDataStream op_read(QDataStream arg1, QByteArray arg2);
-			[SmokeMethod("qCompress$$$", "(const uchar*, int, int)")]
+			[SmokeMethod("qCompress", "(const uchar*, int, int)", "$$$")]
 			QByteArray QCompress(char[] data, int nbytes, int compressionLevel);
-			[SmokeMethod("qCompress$$", "(const uchar*, int)")]
+			[SmokeMethod("qCompress", "(const uchar*, int)", "$$")]
 			QByteArray QCompress(char[] data, int nbytes);
-			[SmokeMethod("qUncompress$$", "(const uchar*, int)")]
+			[SmokeMethod("qUncompress", "(const uchar*, int)", "$$")]
 			QByteArray QUncompress(char[] data, int nbytes);
-			[SmokeMethod("qCompress#$", "(const QByteArray&, int)")]
+			[SmokeMethod("qCompress", "(const QByteArray&, int)", "#$")]
 			QByteArray QCompress(QByteArray data, int compressionLevel);
-			[SmokeMethod("qCompress#", "(const QByteArray&)")]
+			[SmokeMethod("qCompress", "(const QByteArray&)", "#")]
 			QByteArray QCompress(QByteArray data);
-			[SmokeMethod("qUncompress#", "(const QByteArray&)")]
+			[SmokeMethod("qUncompress", "(const QByteArray&)", "#")]
 			QByteArray QUncompress(QByteArray data);
-			[SmokeMethod("operator<<##", "(QDataStream&, const QSize&)")]
+			[SmokeMethod("operator<<", "(QDataStream&, const QSize&)", "##")]
 			QDataStream op_write(QDataStream arg1, QSize arg2);
-			[SmokeMethod("operator>>##", "(QDataStream&, QSize&)")]
+			[SmokeMethod("operator>>", "(QDataStream&, QSize&)", "##")]
 			QDataStream op_read(QDataStream arg1, QSize arg2);
 			bool op_equals(QSize s1, QSize s2);
 			QSize op_plus(QSize s1, QSize s2);
@@ -395,9 +395,9 @@ namespace Qyoto {
 			QSize op_mult(QSize s, double c);
 			QSize op_mult(double c, QSize s);
 			QSize op_div(QSize s, double c);
-			[SmokeMethod("operator<<##", "(QDataStream&, const QSizeF&)")]
+			[SmokeMethod("operator<<", "(QDataStream&, const QSizeF&)", "##")]
 			QDataStream op_write(QDataStream arg1, QSizeF arg2);
-			[SmokeMethod("operator>>##", "(QDataStream&, QSizeF&)")]
+			[SmokeMethod("operator>>", "(QDataStream&, QSizeF&)", "##")]
 			QDataStream op_read(QDataStream arg1, QSizeF arg2);
 			bool op_equals(QSizeF s1, QSizeF s2);
 			QSizeF op_plus(QSizeF s1, QSizeF s2);
@@ -405,32 +405,32 @@ namespace Qyoto {
 			QSizeF op_mult(QSizeF s, double c);
 			QSizeF op_mult(double c, QSizeF s);
 			QSizeF op_div(QSizeF s, double c);
-			[SmokeMethod("operator<<##", "(QDataStream&, const QLine&)")]
+			[SmokeMethod("operator<<", "(QDataStream&, const QLine&)", "##")]
 			QDataStream op_write(QDataStream arg1, QLine arg2);
-			[SmokeMethod("operator>>##", "(QDataStream&, QLine&)")]
+			[SmokeMethod("operator>>", "(QDataStream&, QLine&)", "##")]
 			QDataStream op_read(QDataStream arg1, QLine arg2);
-			[SmokeMethod("operator<<##", "(QDataStream&, const QLineF&)")]
+			[SmokeMethod("operator<<", "(QDataStream&, const QLineF&)", "##")]
 			QDataStream op_write(QDataStream arg1, QLineF arg2);
-			[SmokeMethod("operator>>##", "(QDataStream&, QLineF&)")]
+			[SmokeMethod("operator>>", "(QDataStream&, QLineF&)", "##")]
 			QDataStream op_read(QDataStream arg1, QLineF arg2);
-			[SmokeMethod("operator<<##", "(QDataStream&, const QRegExp&)")]
+			[SmokeMethod("operator<<", "(QDataStream&, const QRegExp&)", "##")]
 			QDataStream op_write(QDataStream arg1, QRegExp regExp);
-			[SmokeMethod("operator>>##", "(QDataStream&, QRegExp&)")]
+			[SmokeMethod("operator>>", "(QDataStream&, QRegExp&)", "##")]
 			QDataStream op_read(QDataStream arg1, QRegExp regExp);
-			[SmokeMethod("operator<<##", "(QDataStream&, const QDate&)")]
+			[SmokeMethod("operator<<", "(QDataStream&, const QDate&)", "##")]
 			QDataStream op_write(QDataStream arg1, QDate arg2);
-			[SmokeMethod("operator>>##", "(QDataStream&, QDate&)")]
+			[SmokeMethod("operator>>", "(QDataStream&, QDate&)", "##")]
 			QDataStream op_read(QDataStream arg1, QDate arg2);
-			[SmokeMethod("operator<<##", "(QDataStream&, const QTime&)")]
+			[SmokeMethod("operator<<", "(QDataStream&, const QTime&)", "##")]
 			QDataStream op_write(QDataStream arg1, QTime arg2);
-			[SmokeMethod("operator>>##", "(QDataStream&, QTime&)")]
+			[SmokeMethod("operator>>", "(QDataStream&, QTime&)", "##")]
 			QDataStream op_read(QDataStream arg1, QTime arg2);
-			[SmokeMethod("operator<<##", "(QDataStream&, const QDateTime&)")]
+			[SmokeMethod("operator<<", "(QDataStream&, const QDateTime&)", "##")]
 			QDataStream op_write(QDataStream arg1, QDateTime arg2);
-			[SmokeMethod("operator>>##", "(QDataStream&, QDateTime&)")]
+			[SmokeMethod("operator>>", "(QDataStream&, QDateTime&)", "##")]
 			QDataStream op_read(QDataStream arg1, QDateTime arg2);
 			bool op_equals(string arg1, string arg2);
-			[SmokeMethod("qStringComparisonHelper$$", "(const QString&, const char*)")]
+			[SmokeMethod("qStringComparisonHelper", "(const QString&, const char*)", "$$")]
 			bool QStringComparisonHelper(string s1, string s2);
 			bool op_lt(string s1, string s2);
 			bool op_gt(string s1, string s2);
@@ -439,22 +439,22 @@ namespace Qyoto {
 			string op_plus(string s1, string s2);
 			string op_plus(string s1, char s2);
 			string op_plus(char s1, string s2);
-			[SmokeMethod("operator<<#$", "(QDataStream&, const QString&)")]
+			[SmokeMethod("operator<<", "(QDataStream&, const QString&)", "#$")]
 			QDataStream op_write(QDataStream arg1, string arg2);
-			[SmokeMethod("operator>>#$", "(QDataStream&, QString&)")]
+			[SmokeMethod("operator>>", "(QDataStream&, QString&)", "#$")]
 			QDataStream op_read(QDataStream arg1, StringBuilder arg2);
 			bool op_equals(char c1, char c2);
 			bool op_lte(char c1, char c2);
 			bool op_gte(char c1, char c2);
 			bool op_lt(char c1, char c2);
 			bool op_gt(char c1, char c2);
-			[SmokeMethod("operator<<##", "(QDataStream&, const QChar&)")]
+			[SmokeMethod("operator<<", "(QDataStream&, const QChar&)", "##")]
 			QDataStream op_write(QDataStream arg1, char arg2);
-			[SmokeMethod("operator>>##", "(QDataStream&, QChar&)")]
+			[SmokeMethod("operator>>", "(QDataStream&, QChar&)", "##")]
 			QDataStream op_read(QDataStream arg1, char arg2);
-			[SmokeMethod("operator<<##", "(QDataStream&, const QPoint&)")]
+			[SmokeMethod("operator<<", "(QDataStream&, const QPoint&)", "##")]
 			QDataStream op_write(QDataStream arg1, QPoint arg2);
-			[SmokeMethod("operator>>##", "(QDataStream&, QPoint&)")]
+			[SmokeMethod("operator>>", "(QDataStream&, QPoint&)", "##")]
 			QDataStream op_read(QDataStream arg1, QPoint arg2);
 			bool op_equals(QPoint p1, QPoint p2);
 			QPoint op_plus(QPoint p1, QPoint p2);
@@ -463,9 +463,9 @@ namespace Qyoto {
 			QPoint op_mult(double c, QPoint p);
 			QPoint op_minus(QPoint p);
 			QPoint op_div(QPoint p, double c);
-			[SmokeMethod("operator<<##", "(QDataStream&, const QPointF&)")]
+			[SmokeMethod("operator<<", "(QDataStream&, const QPointF&)", "##")]
 			QDataStream op_write(QDataStream arg1, QPointF arg2);
-			[SmokeMethod("operator>>##", "(QDataStream&, QPointF&)")]
+			[SmokeMethod("operator>>", "(QDataStream&, QPointF&)", "##")]
 			QDataStream op_read(QDataStream arg1, QPointF arg2);
 			bool op_equals(QPointF p1, QPointF p2);
 			QPointF op_plus(QPointF p1, QPointF p2);
@@ -474,61 +474,61 @@ namespace Qyoto {
 			QPointF op_mult(double c, QPointF p);
 			QPointF op_minus(QPointF p);
 			QPointF op_div(QPointF p, double c);
-			[SmokeMethod("bin#", "(QTextStream&)")]
+			[SmokeMethod("bin", "(QTextStream&)", "#")]
 			QTextStream Bin(QTextStream s);
-			[SmokeMethod("oct#", "(QTextStream&)")]
+			[SmokeMethod("oct", "(QTextStream&)", "#")]
 			QTextStream Oct(QTextStream s);
-			[SmokeMethod("dec#", "(QTextStream&)")]
+			[SmokeMethod("dec", "(QTextStream&)", "#")]
 			QTextStream Dec(QTextStream s);
-			[SmokeMethod("hex#", "(QTextStream&)")]
+			[SmokeMethod("hex", "(QTextStream&)", "#")]
 			QTextStream Hex(QTextStream s);
-			[SmokeMethod("showbase#", "(QTextStream&)")]
+			[SmokeMethod("showbase", "(QTextStream&)", "#")]
 			QTextStream Showbase(QTextStream s);
-			[SmokeMethod("forcesign#", "(QTextStream&)")]
+			[SmokeMethod("forcesign", "(QTextStream&)", "#")]
 			QTextStream Forcesign(QTextStream s);
-			[SmokeMethod("forcepoint#", "(QTextStream&)")]
+			[SmokeMethod("forcepoint", "(QTextStream&)", "#")]
 			QTextStream Forcepoint(QTextStream s);
-			[SmokeMethod("noshowbase#", "(QTextStream&)")]
+			[SmokeMethod("noshowbase", "(QTextStream&)", "#")]
 			QTextStream Noshowbase(QTextStream s);
-			[SmokeMethod("noforcesign#", "(QTextStream&)")]
+			[SmokeMethod("noforcesign", "(QTextStream&)", "#")]
 			QTextStream Noforcesign(QTextStream s);
-			[SmokeMethod("noforcepoint#", "(QTextStream&)")]
+			[SmokeMethod("noforcepoint", "(QTextStream&)", "#")]
 			QTextStream Noforcepoint(QTextStream s);
-			[SmokeMethod("uppercasebase#", "(QTextStream&)")]
+			[SmokeMethod("uppercasebase", "(QTextStream&)", "#")]
 			QTextStream Uppercasebase(QTextStream s);
-			[SmokeMethod("uppercasedigits#", "(QTextStream&)")]
+			[SmokeMethod("uppercasedigits", "(QTextStream&)", "#")]
 			QTextStream Uppercasedigits(QTextStream s);
-			[SmokeMethod("lowercasebase#", "(QTextStream&)")]
+			[SmokeMethod("lowercasebase", "(QTextStream&)", "#")]
 			QTextStream Lowercasebase(QTextStream s);
-			[SmokeMethod("lowercasedigits#", "(QTextStream&)")]
+			[SmokeMethod("lowercasedigits", "(QTextStream&)", "#")]
 			QTextStream Lowercasedigits(QTextStream s);
-			[SmokeMethod("fixed#", "(QTextStream&)")]
+			[SmokeMethod("fixed", "(QTextStream&)", "#")]
 			QTextStream Fixed(QTextStream s);
-			[SmokeMethod("scientific#", "(QTextStream&)")]
+			[SmokeMethod("scientific", "(QTextStream&)", "#")]
 			QTextStream Scientific(QTextStream s);
-			[SmokeMethod("left#", "(QTextStream&)")]
+			[SmokeMethod("left", "(QTextStream&)", "#")]
 			QTextStream Left(QTextStream s);
-			[SmokeMethod("right#", "(QTextStream&)")]
+			[SmokeMethod("right", "(QTextStream&)", "#")]
 			QTextStream Right(QTextStream s);
-			[SmokeMethod("center#", "(QTextStream&)")]
+			[SmokeMethod("center", "(QTextStream&)", "#")]
 			QTextStream Center(QTextStream s);
-			[SmokeMethod("endl#", "(QTextStream&)")]
+			[SmokeMethod("endl", "(QTextStream&)", "#")]
 			QTextStream Endl(QTextStream s);
-			[SmokeMethod("flush#", "(QTextStream&)")]
+			[SmokeMethod("flush", "(QTextStream&)", "#")]
 			QTextStream Flush(QTextStream s);
-			[SmokeMethod("reset#", "(QTextStream&)")]
+			[SmokeMethod("reset", "(QTextStream&)", "#")]
 			QTextStream Reset(QTextStream s);
-			[SmokeMethod("bom#", "(QTextStream&)")]
+			[SmokeMethod("bom", "(QTextStream&)", "#")]
 			QTextStream Bom(QTextStream s);
-			[SmokeMethod("ws#", "(QTextStream&)")]
+			[SmokeMethod("ws", "(QTextStream&)", "#")]
 			QTextStream Ws(QTextStream s);
-			[SmokeMethod("operator<<##", "(QDataStream&, const QUrl&)")]
+			[SmokeMethod("operator<<", "(QDataStream&, const QUrl&)", "##")]
 			QDataStream op_write(QDataStream arg1, IQUrl arg2);
-			[SmokeMethod("operator>>##", "(QDataStream&, QUrl&)")]
+			[SmokeMethod("operator>>", "(QDataStream&, QUrl&)", "##")]
 			QDataStream op_read(QDataStream arg1, IQUrl arg2);
-			[SmokeMethod("operator<<##", "(QDataStream&, const QUuid&)")]
+			[SmokeMethod("operator<<", "(QDataStream&, const QUuid&)", "##")]
 			QDataStream op_write(QDataStream arg1, QUuid arg2);
-			[SmokeMethod("operator>>##", "(QDataStream&, QUuid&)")]
+			[SmokeMethod("operator>>", "(QDataStream&, QUuid&)", "##")]
 			QDataStream op_read(QDataStream arg1, QUuid arg2);
 		}
 
@@ -646,11 +646,11 @@ namespace Qyoto {
 			return StaticQGlobalSpace().op_write(arg,list);
 		}
 		// QDBusArgument& operator<<(QDBusArgument& arg1,const QVariantMap& arg2); >>>> NOT CONVERTED
-		[SmokeMethod("operator==##", "(const QGLFormat&, const QGLFormat&)")]
+		[SmokeMethod("operator==", "(const QGLFormat&, const QGLFormat&)", "##")]
 		public static bool op_equals(QGLFormat arg1, QGLFormat arg2) {
 			return StaticQGlobalSpace().op_equals(arg1,arg2);
 		}
-		[SmokeMethod("operator==$#", "(QHostAddress::SpecialAddress, const QHostAddress&)")]
+		[SmokeMethod("operator==", "(QHostAddress::SpecialAddress, const QHostAddress&)", "$#")]
 		public static bool op_equals(QHostAddress.SpecialAddress address1, QHostAddress address2) {
 			return StaticQGlobalSpace().op_equals(address1,address2);
 		}
@@ -663,11 +663,11 @@ namespace Qyoto {
 		public static QDataStream op_read(QDataStream arg1, QHostAddress arg2) {
 			return StaticQGlobalSpace().op_read(arg1,arg2);
 		}
-		[SmokeMethod("operator==#$", "(QKeyEvent*, QKeySequence::StandardKey)")]
+		[SmokeMethod("operator==", "(QKeyEvent*, QKeySequence::StandardKey)", "#$")]
 		public static bool op_equals(QKeyEvent e, QKeySequence.StandardKey key) {
 			return StaticQGlobalSpace().op_equals(e,key);
 		}
-		[SmokeMethod("operator==$#", "(QKeySequence::StandardKey, QKeyEvent*)")]
+		[SmokeMethod("operator==", "(QKeySequence::StandardKey, QKeyEvent*)", "$#")]
 		public static bool op_equals(QKeySequence.StandardKey key, QKeyEvent e) {
 			return StaticQGlobalSpace().op_equals(key,e);
 		}
@@ -958,35 +958,35 @@ namespace Qyoto {
 		public static QDataStream op_read(QDataStream stream, QPolygonF array) {
 			return StaticQGlobalSpace().op_read(stream,array);
 		}
-		[SmokeMethod("operator*##", "(const QPoint&, const QMatrix&)")]
+		[SmokeMethod("operator*", "(const QPoint&, const QMatrix&)", "##")]
 		public static QPoint op_mult(QPoint p, QMatrix m) {
 			return StaticQGlobalSpace().op_mult(p,m);
 		}
-		[SmokeMethod("operator*##", "(const QPointF&, const QMatrix&)")]
+		[SmokeMethod("operator*", "(const QPointF&, const QMatrix&)", "##")]
 		public static QPointF op_mult(QPointF p, QMatrix m) {
 			return StaticQGlobalSpace().op_mult(p,m);
 		}
-		[SmokeMethod("operator*##", "(const QLineF&, const QMatrix&)")]
+		[SmokeMethod("operator*", "(const QLineF&, const QMatrix&)", "##")]
 		public static QLineF op_mult(QLineF l, QMatrix m) {
 			return StaticQGlobalSpace().op_mult(l,m);
 		}
-		[SmokeMethod("operator*##", "(const QLine&, const QMatrix&)")]
+		[SmokeMethod("operator*", "(const QLine&, const QMatrix&)", "##")]
 		public static QLine op_mult(QLine l, QMatrix m) {
 			return StaticQGlobalSpace().op_mult(l,m);
 		}
-		[SmokeMethod("operator*##", "(const QPolygon&, const QMatrix&)")]
+		[SmokeMethod("operator*", "(const QPolygon&, const QMatrix&)", "##")]
 		public static QPolygon op_mult(QPolygon a, QMatrix m) {
 			return StaticQGlobalSpace().op_mult(a,m);
 		}
-		[SmokeMethod("operator*##", "(const QPolygonF&, const QMatrix&)")]
+		[SmokeMethod("operator*", "(const QPolygonF&, const QMatrix&)", "##")]
 		public static QPolygonF op_mult(QPolygonF a, QMatrix m) {
 			return StaticQGlobalSpace().op_mult(a,m);
 		}
-		[SmokeMethod("operator*##", "(const QRegion&, const QMatrix&)")]
+		[SmokeMethod("operator*", "(const QRegion&, const QMatrix&)", "##")]
 		public static QRegion op_mult(QRegion r, QMatrix m) {
 			return StaticQGlobalSpace().op_mult(r,m);
 		}
-		[SmokeMethod("operator*##", "(const QPainterPath&, const QMatrix&)")]
+		[SmokeMethod("operator*", "(const QPainterPath&, const QMatrix&)", "##")]
 		public static QPainterPath op_mult(QPainterPath p, QMatrix m) {
 			return StaticQGlobalSpace().op_mult(p,m);
 		}
@@ -1039,15 +1039,15 @@ namespace Qyoto {
 		// QDebug qWarning(); >>>> NOT CONVERTED
 		// QDebug qCritical(); >>>> NOT CONVERTED
 		// QtMsgHandler qInstallMsgHandler(QtMsgHandler arg1); >>>> NOT CONVERTED
-		[SmokeMethod("operator==#$", "(QBool, bool)")]
+		[SmokeMethod("operator==", "(QBool, bool)", "#$")]
 		public static bool op_equals(QBool b1, bool b2) {
 			return StaticQGlobalSpace().op_equals(b1,b2);
 		}
-		[SmokeMethod("operator==$#", "(bool, QBool)")]
+		[SmokeMethod("operator==", "(bool, QBool)", "$#")]
 		public static bool op_equals(bool b1, QBool b2) {
 			return StaticQGlobalSpace().op_equals(b1,b2);
 		}
-		[SmokeMethod("operator==##", "(QBool, QBool)")]
+		[SmokeMethod("operator==", "(QBool, QBool)", "##")]
 		public static bool op_equals(QBool b1, QBool b2) {
 			return StaticQGlobalSpace().op_equals(b1,b2);
 		}
@@ -1099,7 +1099,7 @@ namespace Qyoto {
 		public static uint QHash(QModelIndex index) {
 			return StaticQGlobalSpace().QHash(index);
 		}
-		[SmokeMethod("operator==##", "(const QRect&, const QRect&)")]
+		[SmokeMethod("operator==", "(const QRect&, const QRect&)", "##")]
 		public static bool op_equals(QRect arg1, QRect arg2) {
 			return StaticQGlobalSpace().op_equals(arg1,arg2);
 		}
@@ -1112,7 +1112,7 @@ namespace Qyoto {
 		public static QDataStream op_read(QDataStream arg1, QRect arg2) {
 			return StaticQGlobalSpace().op_read(arg1,arg2);
 		}
-		[SmokeMethod("operator==##", "(const QRectF&, const QRectF&)")]
+		[SmokeMethod("operator==", "(const QRectF&, const QRectF&)", "##")]
 		public static bool op_equals(QRectF arg1, QRectF arg2) {
 			return StaticQGlobalSpace().op_equals(arg1,arg2);
 		}
@@ -1171,83 +1171,83 @@ namespace Qyoto {
 		public static ushort QChecksum(string s, uint len) {
 			return StaticQGlobalSpace().QChecksum(s,len);
 		}
-		[SmokeMethod("operator==##", "(const QByteArray&, const QByteArray&)")]
+		[SmokeMethod("operator==", "(const QByteArray&, const QByteArray&)", "##")]
 		public static bool op_equals(QByteArray a1, QByteArray a2) {
 			return StaticQGlobalSpace().op_equals(a1,a2);
 		}
-		[SmokeMethod("operator==#$", "(const QByteArray&, const char*)")]
+		[SmokeMethod("operator==", "(const QByteArray&, const char*)", "#$")]
 		public static bool op_equals(QByteArray a1, string a2) {
 			return StaticQGlobalSpace().op_equals(a1,a2);
 		}
-		[SmokeMethod("operator==$#", "(const char*, const QByteArray&)")]
+		[SmokeMethod("operator==", "(const char*, const QByteArray&)", "$#")]
 		public static bool op_equals(string a1, QByteArray a2) {
 			return StaticQGlobalSpace().op_equals(a1,a2);
 		}
-		[SmokeMethod("operator<##", "(const QByteArray&, const QByteArray&)")]
+		[SmokeMethod("operator<", "(const QByteArray&, const QByteArray&)", "##")]
 		public static bool op_lt(QByteArray a1, QByteArray a2) {
 			return StaticQGlobalSpace().op_lt(a1,a2);
 		}
-		[SmokeMethod("operator<#$", "(const QByteArray&, const char*)")]
+		[SmokeMethod("operator<", "(const QByteArray&, const char*)", "#$")]
 		public static bool op_lt(QByteArray a1, string a2) {
 			return StaticQGlobalSpace().op_lt(a1,a2);
 		}
-		[SmokeMethod("operator<$#", "(const char*, const QByteArray&)")]
+		[SmokeMethod("operator<", "(const char*, const QByteArray&)", "$#")]
 		public static bool op_lt(string a1, QByteArray a2) {
 			return StaticQGlobalSpace().op_lt(a1,a2);
 		}
-		[SmokeMethod("operator<=##", "(const QByteArray&, const QByteArray&)")]
+		[SmokeMethod("operator<=", "(const QByteArray&, const QByteArray&)", "##")]
 		public static bool op_lte(QByteArray a1, QByteArray a2) {
 			return StaticQGlobalSpace().op_lte(a1,a2);
 		}
-		[SmokeMethod("operator<=#$", "(const QByteArray&, const char*)")]
+		[SmokeMethod("operator<=", "(const QByteArray&, const char*)", "#$")]
 		public static bool op_lte(QByteArray a1, string a2) {
 			return StaticQGlobalSpace().op_lte(a1,a2);
 		}
-		[SmokeMethod("operator<=$#", "(const char*, const QByteArray&)")]
+		[SmokeMethod("operator<=", "(const char*, const QByteArray&)", "$#")]
 		public static bool op_lte(string a1, QByteArray a2) {
 			return StaticQGlobalSpace().op_lte(a1,a2);
 		}
-		[SmokeMethod("operator>##", "(const QByteArray&, const QByteArray&)")]
+		[SmokeMethod("operator>", "(const QByteArray&, const QByteArray&)", "##")]
 		public static bool op_gt(QByteArray a1, QByteArray a2) {
 			return StaticQGlobalSpace().op_gt(a1,a2);
 		}
-		[SmokeMethod("operator>#$", "(const QByteArray&, const char*)")]
+		[SmokeMethod("operator>", "(const QByteArray&, const char*)", "#$")]
 		public static bool op_gt(QByteArray a1, string a2) {
 			return StaticQGlobalSpace().op_gt(a1,a2);
 		}
-		[SmokeMethod("operator>$#", "(const char*, const QByteArray&)")]
+		[SmokeMethod("operator>", "(const char*, const QByteArray&)", "$#")]
 		public static bool op_gt(string a1, QByteArray a2) {
 			return StaticQGlobalSpace().op_gt(a1,a2);
 		}
-		[SmokeMethod("operator>=##", "(const QByteArray&, const QByteArray&)")]
+		[SmokeMethod("operator>=", "(const QByteArray&, const QByteArray&)", "##")]
 		public static bool op_gte(QByteArray a1, QByteArray a2) {
 			return StaticQGlobalSpace().op_gte(a1,a2);
 		}
-		[SmokeMethod("operator>=#$", "(const QByteArray&, const char*)")]
+		[SmokeMethod("operator>=", "(const QByteArray&, const char*)", "#$")]
 		public static bool op_gte(QByteArray a1, string a2) {
 			return StaticQGlobalSpace().op_gte(a1,a2);
 		}
-		[SmokeMethod("operator>=$#", "(const char*, const QByteArray&)")]
+		[SmokeMethod("operator>=", "(const char*, const QByteArray&)", "$#")]
 		public static bool op_gte(string a1, QByteArray a2) {
 			return StaticQGlobalSpace().op_gte(a1,a2);
 		}
-		[SmokeMethod("operator+##", "(const QByteArray&, const QByteArray&)")]
+		[SmokeMethod("operator+", "(const QByteArray&, const QByteArray&)", "##")]
 		public static QByteArray op_plus(QByteArray a1, QByteArray a2) {
 			return StaticQGlobalSpace().op_plus(a1,a2);
 		}
-		[SmokeMethod("operator+#$", "(const QByteArray&, const char*)")]
+		[SmokeMethod("operator+", "(const QByteArray&, const char*)", "#$")]
 		public static QByteArray op_plus(QByteArray a1, string a2) {
 			return StaticQGlobalSpace().op_plus(a1,a2);
 		}
-		[SmokeMethod("operator+#$", "(const QByteArray&, char)")]
+		[SmokeMethod("operator+", "(const QByteArray&, char)", "#$")]
 		public static QByteArray op_plus(QByteArray a1, char a2) {
 			return StaticQGlobalSpace().op_plus(a1,a2);
 		}
-		[SmokeMethod("operator+$#", "(const char*, const QByteArray&)")]
+		[SmokeMethod("operator+", "(const char*, const QByteArray&)", "$#")]
 		public static QByteArray op_plus(string a1, QByteArray a2) {
 			return StaticQGlobalSpace().op_plus(a1,a2);
 		}
-		[SmokeMethod("operator+$#", "(char, const QByteArray&)")]
+		[SmokeMethod("operator+", "(char, const QByteArray&)", "$#")]
 		public static QByteArray op_plus(char a1, QByteArray a2) {
 			return StaticQGlobalSpace().op_plus(a1,a2);
 		}
@@ -1287,27 +1287,27 @@ namespace Qyoto {
 		///<remarks>**************************************************
 		///  QSize inline functions
 		///**************************************************</remarks>		<short>                                                                                QSize inline functions                                                                            </short>
-		[SmokeMethod("operator==##", "(const QSize&, const QSize&)")]
+		[SmokeMethod("operator==", "(const QSize&, const QSize&)", "##")]
 		public static bool op_equals(QSize s1, QSize s2) {
 			return StaticQGlobalSpace().op_equals(s1,s2);
 		}
-		[SmokeMethod("operator+##", "(const QSize&, const QSize&)")]
+		[SmokeMethod("operator+", "(const QSize&, const QSize&)", "##")]
 		public static QSize op_plus(QSize s1, QSize s2) {
 			return StaticQGlobalSpace().op_plus(s1,s2);
 		}
-		[SmokeMethod("operator-##", "(const QSize&, const QSize&)")]
+		[SmokeMethod("operator-", "(const QSize&, const QSize&)", "##")]
 		public static QSize op_minus(QSize s1, QSize s2) {
 			return StaticQGlobalSpace().op_minus(s1,s2);
 		}
-		[SmokeMethod("operator*#$", "(const QSize&, qreal)")]
+		[SmokeMethod("operator*", "(const QSize&, qreal)", "#$")]
 		public static QSize op_mult(QSize s, double c) {
 			return StaticQGlobalSpace().op_mult(s,c);
 		}
-		[SmokeMethod("operator*$#", "(qreal, const QSize&)")]
+		[SmokeMethod("operator*", "(qreal, const QSize&)", "$#")]
 		public static QSize op_mult(double c, QSize s) {
 			return StaticQGlobalSpace().op_mult(c,s);
 		}
-		[SmokeMethod("operator/#$", "(const QSize&, qreal)")]
+		[SmokeMethod("operator/", "(const QSize&, qreal)", "#$")]
 		public static QSize op_div(QSize s, double c) {
 			return StaticQGlobalSpace().op_div(s,c);
 		}
@@ -1323,27 +1323,27 @@ namespace Qyoto {
 		///<remarks>**************************************************
 		///  QSizeF inline functions
 		///**************************************************</remarks>		<short>                                                                                QSizeF inline functions                                                                            </short>
-		[SmokeMethod("operator==##", "(const QSizeF&, const QSizeF&)")]
+		[SmokeMethod("operator==", "(const QSizeF&, const QSizeF&)", "##")]
 		public static bool op_equals(QSizeF s1, QSizeF s2) {
 			return StaticQGlobalSpace().op_equals(s1,s2);
 		}
-		[SmokeMethod("operator+##", "(const QSizeF&, const QSizeF&)")]
+		[SmokeMethod("operator+", "(const QSizeF&, const QSizeF&)", "##")]
 		public static QSizeF op_plus(QSizeF s1, QSizeF s2) {
 			return StaticQGlobalSpace().op_plus(s1,s2);
 		}
-		[SmokeMethod("operator-##", "(const QSizeF&, const QSizeF&)")]
+		[SmokeMethod("operator-", "(const QSizeF&, const QSizeF&)", "##")]
 		public static QSizeF op_minus(QSizeF s1, QSizeF s2) {
 			return StaticQGlobalSpace().op_minus(s1,s2);
 		}
-		[SmokeMethod("operator*#$", "(const QSizeF&, qreal)")]
+		[SmokeMethod("operator*", "(const QSizeF&, qreal)", "#$")]
 		public static QSizeF op_mult(QSizeF s, double c) {
 			return StaticQGlobalSpace().op_mult(s,c);
 		}
-		[SmokeMethod("operator*$#", "(qreal, const QSizeF&)")]
+		[SmokeMethod("operator*", "(qreal, const QSizeF&)", "$#")]
 		public static QSizeF op_mult(double c, QSizeF s) {
 			return StaticQGlobalSpace().op_mult(c,s);
 		}
-		[SmokeMethod("operator/#$", "(const QSizeF&, qreal)")]
+		[SmokeMethod("operator/", "(const QSizeF&, qreal)", "#$")]
 		public static QSizeF op_div(QSizeF s, double c) {
 			return StaticQGlobalSpace().op_div(s,c);
 		}
@@ -1383,38 +1383,38 @@ namespace Qyoto {
 		public static QDataStream op_read(QDataStream arg1, QDateTime arg2) {
 			return StaticQGlobalSpace().op_read(arg1,arg2);
 		}
-		[SmokeMethod("operator==??", "(QString::Null, QString::Null)")]
+		[SmokeMethod("operator==", "(QString::Null, QString::Null)", "??")]
 		public static bool op_equals(string arg1, string arg2) {
 			return StaticQGlobalSpace().op_equals(arg1,arg2);
 		}
 		public static bool QStringComparisonHelper(string s1, string s2) {
 			return StaticQGlobalSpace().QStringComparisonHelper(s1,s2);
 		}
-		[SmokeMethod("operator<$$", "(const char*, const QString&)")]
+		[SmokeMethod("operator<", "(const char*, const QString&)", "$$")]
 		public static bool op_lt(string s1, string s2) {
 			return StaticQGlobalSpace().op_lt(s1,s2);
 		}
-		[SmokeMethod("operator>$$", "(const char*, const QString&)")]
+		[SmokeMethod("operator>", "(const char*, const QString&)", "$$")]
 		public static bool op_gt(string s1, string s2) {
 			return StaticQGlobalSpace().op_gt(s1,s2);
 		}
-		[SmokeMethod("operator<=$$", "(const char*, const QString&)")]
+		[SmokeMethod("operator<=", "(const char*, const QString&)", "$$")]
 		public static bool op_lte(string s1, string s2) {
 			return StaticQGlobalSpace().op_lte(s1,s2);
 		}
-		[SmokeMethod("operator>=$$", "(const char*, const QString&)")]
+		[SmokeMethod("operator>=", "(const char*, const QString&)", "$$")]
 		public static bool op_gte(string s1, string s2) {
 			return StaticQGlobalSpace().op_gte(s1,s2);
 		}
-		[SmokeMethod("operator+$$", "(const QString&, const QString&)")]
+		[SmokeMethod("operator+", "(const QString&, const QString&)", "$$")]
 		public static string op_plus(string s1, string s2) {
 			return StaticQGlobalSpace().op_plus(s1,s2);
 		}
-		[SmokeMethod("operator+$#", "(const QString&, QChar)")]
+		[SmokeMethod("operator+", "(const QString&, QChar)", "$#")]
 		public static string op_plus(string s1, char s2) {
 			return StaticQGlobalSpace().op_plus(s1,s2);
 		}
-		[SmokeMethod("operator+#$", "(QChar, const QString&)")]
+		[SmokeMethod("operator+", "(QChar, const QString&)", "#$")]
 		public static string op_plus(char s1, string s2) {
 			return StaticQGlobalSpace().op_plus(s1,s2);
 		}
@@ -1429,23 +1429,23 @@ namespace Qyoto {
 		// QBitArray operator^(const QBitArray& arg1,const QBitArray& arg2); >>>> NOT CONVERTED
 		// QDataStream& operator<<(QDataStream& arg1,const QBitArray& arg2); >>>> NOT CONVERTED
 		// QDataStream& operator>>(QDataStream& arg1,QBitArray& arg2); >>>> NOT CONVERTED
-		[SmokeMethod("operator==##", "(QChar, QChar)")]
+		[SmokeMethod("operator==", "(QChar, QChar)", "##")]
 		public static bool op_equals(char c1, char c2) {
 			return StaticQGlobalSpace().op_equals(c1,c2);
 		}
-		[SmokeMethod("operator<=##", "(QChar, QChar)")]
+		[SmokeMethod("operator<=", "(QChar, QChar)", "##")]
 		public static bool op_lte(char c1, char c2) {
 			return StaticQGlobalSpace().op_lte(c1,c2);
 		}
-		[SmokeMethod("operator>=##", "(QChar, QChar)")]
+		[SmokeMethod("operator>=", "(QChar, QChar)", "##")]
 		public static bool op_gte(char c1, char c2) {
 			return StaticQGlobalSpace().op_gte(c1,c2);
 		}
-		[SmokeMethod("operator<##", "(QChar, QChar)")]
+		[SmokeMethod("operator<", "(QChar, QChar)", "##")]
 		public static bool op_lt(char c1, char c2) {
 			return StaticQGlobalSpace().op_lt(c1,c2);
 		}
-		[SmokeMethod("operator>##", "(QChar, QChar)")]
+		[SmokeMethod("operator>", "(QChar, QChar)", "##")]
 		public static bool op_gt(char c1, char c2) {
 			return StaticQGlobalSpace().op_gt(c1,c2);
 		}
@@ -1467,31 +1467,31 @@ namespace Qyoto {
 		///<remarks>**************************************************
 		///  QPoint inline functions
 		///**************************************************</remarks>		<short>                                                                                QPoint inline functions                                                                            </short>
-		[SmokeMethod("operator==##", "(const QPoint&, const QPoint&)")]
+		[SmokeMethod("operator==", "(const QPoint&, const QPoint&)", "##")]
 		public static bool op_equals(QPoint p1, QPoint p2) {
 			return StaticQGlobalSpace().op_equals(p1,p2);
 		}
-		[SmokeMethod("operator+##", "(const QPoint&, const QPoint&)")]
+		[SmokeMethod("operator+", "(const QPoint&, const QPoint&)", "##")]
 		public static QPoint op_plus(QPoint p1, QPoint p2) {
 			return StaticQGlobalSpace().op_plus(p1,p2);
 		}
-		[SmokeMethod("operator-##", "(const QPoint&, const QPoint&)")]
+		[SmokeMethod("operator-", "(const QPoint&, const QPoint&)", "##")]
 		public static QPoint op_minus(QPoint p1, QPoint p2) {
 			return StaticQGlobalSpace().op_minus(p1,p2);
 		}
-		[SmokeMethod("operator*#$", "(const QPoint&, qreal)")]
+		[SmokeMethod("operator*", "(const QPoint&, qreal)", "#$")]
 		public static QPoint op_mult(QPoint p, double c) {
 			return StaticQGlobalSpace().op_mult(p,c);
 		}
-		[SmokeMethod("operator*$#", "(qreal, const QPoint&)")]
+		[SmokeMethod("operator*", "(qreal, const QPoint&)", "$#")]
 		public static QPoint op_mult(double c, QPoint p) {
 			return StaticQGlobalSpace().op_mult(c,p);
 		}
-		[SmokeMethod("operator-#", "(const QPoint&)")]
+		[SmokeMethod("operator-", "(const QPoint&)", "#")]
 		public static QPoint op_minus(QPoint p) {
 			return StaticQGlobalSpace().op_minus(p);
 		}
-		[SmokeMethod("operator/#$", "(const QPoint&, qreal)")]
+		[SmokeMethod("operator/", "(const QPoint&, qreal)", "#$")]
 		public static QPoint op_div(QPoint p, double c) {
 			return StaticQGlobalSpace().op_div(p,c);
 		}
@@ -1507,31 +1507,31 @@ namespace Qyoto {
 		///<remarks>**************************************************
 		///  QPointF inline functions
 		///**************************************************</remarks>		<short>                                                                                QPointF inline functions                                                                            </short>
-		[SmokeMethod("operator==##", "(const QPointF&, const QPointF&)")]
+		[SmokeMethod("operator==", "(const QPointF&, const QPointF&)", "##")]
 		public static bool op_equals(QPointF p1, QPointF p2) {
 			return StaticQGlobalSpace().op_equals(p1,p2);
 		}
-		[SmokeMethod("operator+##", "(const QPointF&, const QPointF&)")]
+		[SmokeMethod("operator+", "(const QPointF&, const QPointF&)", "##")]
 		public static QPointF op_plus(QPointF p1, QPointF p2) {
 			return StaticQGlobalSpace().op_plus(p1,p2);
 		}
-		[SmokeMethod("operator-##", "(const QPointF&, const QPointF&)")]
+		[SmokeMethod("operator-", "(const QPointF&, const QPointF&)", "##")]
 		public static QPointF op_minus(QPointF p1, QPointF p2) {
 			return StaticQGlobalSpace().op_minus(p1,p2);
 		}
-		[SmokeMethod("operator*#$", "(const QPointF&, qreal)")]
+		[SmokeMethod("operator*", "(const QPointF&, qreal)", "#$")]
 		public static QPointF op_mult(QPointF p, double c) {
 			return StaticQGlobalSpace().op_mult(p,c);
 		}
-		[SmokeMethod("operator*$#", "(qreal, const QPointF&)")]
+		[SmokeMethod("operator*", "(qreal, const QPointF&)", "$#")]
 		public static QPointF op_mult(double c, QPointF p) {
 			return StaticQGlobalSpace().op_mult(c,p);
 		}
-		[SmokeMethod("operator-#", "(const QPointF&)")]
+		[SmokeMethod("operator-", "(const QPointF&)", "#")]
 		public static QPointF op_minus(QPointF p) {
 			return StaticQGlobalSpace().op_minus(p);
 		}
-		[SmokeMethod("operator/#$", "(const QPointF&, qreal)")]
+		[SmokeMethod("operator/", "(const QPointF&, qreal)", "#$")]
 		public static QPointF op_div(QPointF p, double c) {
 			return StaticQGlobalSpace().op_div(p,c);
 		}
@@ -1634,7 +1634,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQGlobalSpace();
 		}
-		[SmokeMethod("~QGlobalSpace", "()")]
+		[SmokeMethod("~QGlobalSpace", "()", "")]
 		private void DisposeQGlobalSpace() {
 			ProxyQGlobalSpace().DisposeQGlobalSpace();
 		}

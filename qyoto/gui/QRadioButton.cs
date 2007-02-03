@@ -8,9 +8,9 @@ namespace Qyoto {
 	public class QRadioButton : QAbstractButton, IDisposable {
  		protected QRadioButton(Type dummy) : base((Type) null) {}
 		interface IQRadioButtonProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
 
@@ -35,7 +35,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQRadioButton(parent);
 		}
-		[SmokeMethod("QRadioButton#", "(QWidget*)")]
+		[SmokeMethod("QRadioButton", "(QWidget*)", "#")]
 		private void NewQRadioButton(QWidget parent) {
 			ProxyQRadioButton().NewQRadioButton(parent);
 		}
@@ -43,7 +43,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQRadioButton();
 		}
-		[SmokeMethod("QRadioButton", "()")]
+		[SmokeMethod("QRadioButton", "()", "")]
 		private void NewQRadioButton() {
 			ProxyQRadioButton().NewQRadioButton();
 		}
@@ -51,7 +51,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQRadioButton(text,parent);
 		}
-		[SmokeMethod("QRadioButton$#", "(const QString&, QWidget*)")]
+		[SmokeMethod("QRadioButton", "(const QString&, QWidget*)", "$#")]
 		private void NewQRadioButton(string text, QWidget parent) {
 			ProxyQRadioButton().NewQRadioButton(text,parent);
 		}
@@ -59,11 +59,11 @@ namespace Qyoto {
 			CreateProxy();
 			NewQRadioButton(text);
 		}
-		[SmokeMethod("QRadioButton$", "(const QString&)")]
+		[SmokeMethod("QRadioButton", "(const QString&)", "$")]
 		private void NewQRadioButton(string text) {
 			ProxyQRadioButton().NewQRadioButton(text);
 		}
-		[SmokeMethod("sizeHint", "() const")]
+		[SmokeMethod("sizeHint", "() const", "")]
 		public new QSize SizeHint() {
 			return ProxyQRadioButton().SizeHint();
 		}
@@ -73,19 +73,19 @@ namespace Qyoto {
 		public static new string Tr(string s) {
 			return StaticQRadioButton().Tr(s);
 		}
-		[SmokeMethod("event#", "(QEvent*)")]
+		[SmokeMethod("event", "(QEvent*)", "#")]
 		public new bool Event(QEvent e) {
 			return ProxyQRadioButton().Event(e);
 		}
-		[SmokeMethod("hitButton#", "(const QPoint&) const")]
+		[SmokeMethod("hitButton", "(const QPoint&) const", "#")]
 		protected new bool HitButton(QPoint arg1) {
 			return ProxyQRadioButton().HitButton(arg1);
 		}
-		[SmokeMethod("paintEvent#", "(QPaintEvent*)")]
+		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
 		protected new void PaintEvent(QPaintEvent arg1) {
 			ProxyQRadioButton().PaintEvent(arg1);
 		}
-		[SmokeMethod("mouseMoveEvent#", "(QMouseEvent*)")]
+		[SmokeMethod("mouseMoveEvent", "(QMouseEvent*)", "#")]
 		protected new void MouseMoveEvent(QMouseEvent arg1) {
 			ProxyQRadioButton().MouseMoveEvent(arg1);
 		}
@@ -95,7 +95,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQRadioButton();
 		}
-		[SmokeMethod("~QRadioButton", "()")]
+		[SmokeMethod("~QRadioButton", "()", "")]
 		private void DisposeQRadioButton() {
 			ProxyQRadioButton().DisposeQRadioButton();
 		}

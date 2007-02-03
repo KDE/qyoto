@@ -9,13 +9,13 @@ namespace Qyoto {
 	public class QSystemTrayIcon : QObject, IDisposable {
  		protected QSystemTrayIcon(Type dummy) : base((Type) null) {}
 		interface IQSystemTrayIconProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
-			[SmokeMethod("isSystemTrayAvailable", "()")]
+			[SmokeMethod("isSystemTrayAvailable", "()", "")]
 			bool IsSystemTrayAvailable();
-			[SmokeMethod("supportsMessages", "()")]
+			[SmokeMethod("supportsMessages", "()", "")]
 			bool SupportsMessages();
 		}
 
@@ -80,7 +80,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSystemTrayIcon(parent);
 		}
-		[SmokeMethod("QSystemTrayIcon#", "(QObject*)")]
+		[SmokeMethod("QSystemTrayIcon", "(QObject*)", "#")]
 		private void NewQSystemTrayIcon(QObject parent) {
 			ProxyQSystemTrayIcon().NewQSystemTrayIcon(parent);
 		}
@@ -88,7 +88,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSystemTrayIcon();
 		}
-		[SmokeMethod("QSystemTrayIcon", "()")]
+		[SmokeMethod("QSystemTrayIcon", "()", "")]
 		private void NewQSystemTrayIcon() {
 			ProxyQSystemTrayIcon().NewQSystemTrayIcon();
 		}
@@ -96,7 +96,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSystemTrayIcon(icon,parent);
 		}
-		[SmokeMethod("QSystemTrayIcon##", "(const QIcon&, QObject*)")]
+		[SmokeMethod("QSystemTrayIcon", "(const QIcon&, QObject*)", "##")]
 		private void NewQSystemTrayIcon(QIcon icon, QObject parent) {
 			ProxyQSystemTrayIcon().NewQSystemTrayIcon(icon,parent);
 		}
@@ -104,41 +104,41 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSystemTrayIcon(icon);
 		}
-		[SmokeMethod("QSystemTrayIcon#", "(const QIcon&)")]
+		[SmokeMethod("QSystemTrayIcon", "(const QIcon&)", "#")]
 		private void NewQSystemTrayIcon(QIcon icon) {
 			ProxyQSystemTrayIcon().NewQSystemTrayIcon(icon);
 		}
-		[SmokeMethod("setContextMenu#", "(QMenu*)")]
+		[SmokeMethod("setContextMenu", "(QMenu*)", "#")]
 		public void SetContextMenu(QMenu menu) {
 			ProxyQSystemTrayIcon().SetContextMenu(menu);
 		}
-		[SmokeMethod("contextMenu", "() const")]
+		[SmokeMethod("contextMenu", "() const", "")]
 		public QMenu ContextMenu() {
 			return ProxyQSystemTrayIcon().ContextMenu();
 		}
-		[SmokeMethod("showMessage$$$$", "(const QString&, const QString&, QSystemTrayIcon::MessageIcon, int)")]
+		[SmokeMethod("showMessage", "(const QString&, const QString&, QSystemTrayIcon::MessageIcon, int)", "$$$$")]
 		public void ShowMessage(string title, string msg, QSystemTrayIcon.MessageIcon icon, int msecs) {
 			ProxyQSystemTrayIcon().ShowMessage(title,msg,icon,msecs);
 		}
-		[SmokeMethod("showMessage$$$", "(const QString&, const QString&, QSystemTrayIcon::MessageIcon)")]
+		[SmokeMethod("showMessage", "(const QString&, const QString&, QSystemTrayIcon::MessageIcon)", "$$$")]
 		public void ShowMessage(string title, string msg, QSystemTrayIcon.MessageIcon icon) {
 			ProxyQSystemTrayIcon().ShowMessage(title,msg,icon);
 		}
-		[SmokeMethod("showMessage$$", "(const QString&, const QString&)")]
+		[SmokeMethod("showMessage", "(const QString&, const QString&)", "$$")]
 		public void ShowMessage(string title, string msg) {
 			ProxyQSystemTrayIcon().ShowMessage(title,msg);
 		}
-		[SmokeMethod("isVisible", "() const")]
+		[SmokeMethod("isVisible", "() const", "")]
 		public bool IsVisible() {
 			return ProxyQSystemTrayIcon().IsVisible();
 		}
 		[Q_SLOT("void show()")]
-		[SmokeMethod("show", "()")]
+		[SmokeMethod("show", "()", "")]
 		public void Show() {
 			ProxyQSystemTrayIcon().Show();
 		}
 		[Q_SLOT("void hide()")]
-		[SmokeMethod("hide", "()")]
+		[SmokeMethod("hide", "()", "")]
 		public void Hide() {
 			ProxyQSystemTrayIcon().Hide();
 		}
@@ -154,7 +154,7 @@ namespace Qyoto {
 		public static bool SupportsMessages() {
 			return StaticQSystemTrayIcon().SupportsMessages();
 		}
-		[SmokeMethod("event#", "(QEvent*)")]
+		[SmokeMethod("event", "(QEvent*)", "#")]
 		public new bool Event(QEvent arg1) {
 			return ProxyQSystemTrayIcon().Event(arg1);
 		}
@@ -164,7 +164,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQSystemTrayIcon();
 		}
-		[SmokeMethod("~QSystemTrayIcon", "()")]
+		[SmokeMethod("~QSystemTrayIcon", "()", "")]
 		private void DisposeQSystemTrayIcon() {
 			ProxyQSystemTrayIcon().DisposeQSystemTrayIcon();
 		}

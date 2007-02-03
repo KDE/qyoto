@@ -52,7 +52,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQGL();
 		}
-		[SmokeMethod("~QGL", "()")]
+		[SmokeMethod("~QGL", "()", "")]
 		private void DisposeQGL() {
 			ProxyQGL().DisposeQGL();
 		}

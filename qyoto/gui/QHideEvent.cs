@@ -29,7 +29,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQHideEvent();
 		}
-		[SmokeMethod("QHideEvent", "()")]
+		[SmokeMethod("QHideEvent", "()", "")]
 		private void NewQHideEvent() {
 			ProxyQHideEvent().NewQHideEvent();
 		}
@@ -39,7 +39,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQHideEvent();
 		}
-		[SmokeMethod("~QHideEvent", "()")]
+		[SmokeMethod("~QHideEvent", "()", "")]
 		private void DisposeQHideEvent() {
 			ProxyQHideEvent().DisposeQHideEvent();
 		}

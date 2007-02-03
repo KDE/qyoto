@@ -8,29 +8,29 @@ namespace Qyoto {
 	public class QColorDialog : QDialog {
  		protected QColorDialog(Type dummy) : base((Type) null) {}
 		interface IQColorDialogProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
-			[SmokeMethod("getColor##", "(const QColor&, QWidget*)")]
+			[SmokeMethod("getColor", "(const QColor&, QWidget*)", "##")]
 			QColor GetColor(QColor init, QWidget parent);
-			[SmokeMethod("getColor#", "(const QColor&)")]
+			[SmokeMethod("getColor", "(const QColor&)", "#")]
 			QColor GetColor(QColor init);
-			[SmokeMethod("getColor", "()")]
+			[SmokeMethod("getColor", "()", "")]
 			QColor GetColor();
-			[SmokeMethod("getRgba$$#", "(QRgb, bool*, QWidget*)")]
+			[SmokeMethod("getRgba", "(QRgb, bool*, QWidget*)", "$$#")]
 			uint GetRgba(uint arg1, out bool ok, QWidget parent);
-			[SmokeMethod("getRgba$$", "(QRgb, bool*)")]
+			[SmokeMethod("getRgba", "(QRgb, bool*)", "$$")]
 			uint GetRgba(uint arg1, out bool ok);
-			[SmokeMethod("getRgba$", "(QRgb)")]
+			[SmokeMethod("getRgba", "(QRgb)", "$")]
 			uint GetRgba(uint arg1);
-			[SmokeMethod("customCount", "()")]
+			[SmokeMethod("customCount", "()", "")]
 			int CustomCount();
-			[SmokeMethod("customColor$", "(int)")]
+			[SmokeMethod("customColor", "(int)", "$")]
 			uint CustomColor(int arg1);
-			[SmokeMethod("setCustomColor$$", "(int, QRgb)")]
+			[SmokeMethod("setCustomColor", "(int, QRgb)", "$$")]
 			void SetCustomColor(int arg1, uint arg2);
-			[SmokeMethod("setStandardColor$$", "(int, QRgb)")]
+			[SmokeMethod("setStandardColor", "(int, QRgb)", "$$")]
 			void SetStandardColor(int arg1, uint arg2);
 		}
 

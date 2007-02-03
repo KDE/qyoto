@@ -35,7 +35,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionTabBarBase();
 		}
-		[SmokeMethod("QStyleOptionTabBarBase", "()")]
+		[SmokeMethod("QStyleOptionTabBarBase", "()", "")]
 		private void NewQStyleOptionTabBarBase() {
 			ProxyQStyleOptionTabBarBase().NewQStyleOptionTabBarBase();
 		}
@@ -43,7 +43,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionTabBarBase(other);
 		}
-		[SmokeMethod("QStyleOptionTabBarBase#", "(const QStyleOptionTabBarBase&)")]
+		[SmokeMethod("QStyleOptionTabBarBase", "(const QStyleOptionTabBarBase&)", "#")]
 		private void NewQStyleOptionTabBarBase(QStyleOptionTabBarBase other) {
 			ProxyQStyleOptionTabBarBase().NewQStyleOptionTabBarBase(other);
 		}
@@ -51,7 +51,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionTabBarBase(version);
 		}
-		[SmokeMethod("QStyleOptionTabBarBase$", "(int)")]
+		[SmokeMethod("QStyleOptionTabBarBase", "(int)", "$")]
 		private void NewQStyleOptionTabBarBase(int version) {
 			ProxyQStyleOptionTabBarBase().NewQStyleOptionTabBarBase(version);
 		}
@@ -61,7 +61,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQStyleOptionTabBarBase();
 		}
-		[SmokeMethod("~QStyleOptionTabBarBase", "()")]
+		[SmokeMethod("~QStyleOptionTabBarBase", "()", "")]
 		private void DisposeQStyleOptionTabBarBase() {
 			ProxyQStyleOptionTabBarBase().DisposeQStyleOptionTabBarBase();
 		}

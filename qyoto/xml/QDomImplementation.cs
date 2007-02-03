@@ -12,9 +12,9 @@ namespace Qyoto {
 		protected QDomImplementation(Type dummy) {}
 		interface IQDomImplementationProxy {
 			bool op_equals(QDomImplementation lhs, QDomImplementation arg1);
-			[SmokeMethod("invalidDataPolicy", "()")]
+			[SmokeMethod("invalidDataPolicy", "()", "")]
 			QDomImplementation.InvalidDataPolicy invalidDataPolicy();
-			[SmokeMethod("setInvalidDataPolicy$", "(QDomImplementation::InvalidDataPolicy)")]
+			[SmokeMethod("setInvalidDataPolicy", "(QDomImplementation::InvalidDataPolicy)", "$")]
 			void SetInvalidDataPolicy(QDomImplementation.InvalidDataPolicy policy);
 		}
 
@@ -43,7 +43,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDomImplementation();
 		}
-		[SmokeMethod("QDomImplementation", "()")]
+		[SmokeMethod("QDomImplementation", "()", "")]
 		private void NewQDomImplementation() {
 			ProxyQDomImplementation().NewQDomImplementation();
 		}
@@ -51,11 +51,11 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDomImplementation(arg1);
 		}
-		[SmokeMethod("QDomImplementation#", "(const QDomImplementation&)")]
+		[SmokeMethod("QDomImplementation", "(const QDomImplementation&)", "#")]
 		private void NewQDomImplementation(QDomImplementation arg1) {
 			ProxyQDomImplementation().NewQDomImplementation(arg1);
 		}
-		[SmokeMethod("operator==#", "(const QDomImplementation&) const")]
+		[SmokeMethod("operator==", "(const QDomImplementation&) const", "#")]
 		public static bool operator==(QDomImplementation lhs, QDomImplementation arg1) {
 			return StaticQDomImplementation().op_equals(lhs,arg1);
 		}
@@ -69,19 +69,19 @@ namespace Qyoto {
 		public override int GetHashCode() {
 			return ProxyQDomImplementation().GetHashCode();
 		}
-		[SmokeMethod("hasFeature$$", "(const QString&, const QString&) const")]
+		[SmokeMethod("hasFeature", "(const QString&, const QString&) const", "$$")]
 		public bool HasFeature(string feature, string version) {
 			return ProxyQDomImplementation().HasFeature(feature,version);
 		}
-		[SmokeMethod("createDocumentType$$$", "(const QString&, const QString&, const QString&)")]
+		[SmokeMethod("createDocumentType", "(const QString&, const QString&, const QString&)", "$$$")]
 		public QDomDocumentType CreateDocumentType(string qName, string publicId, string systemId) {
 			return ProxyQDomImplementation().CreateDocumentType(qName,publicId,systemId);
 		}
-		[SmokeMethod("createDocument$$#", "(const QString&, const QString&, const QDomDocumentType&)")]
+		[SmokeMethod("createDocument", "(const QString&, const QString&, const QDomDocumentType&)", "$$#")]
 		public QDomDocument CreateDocument(string nsURI, string qName, QDomDocumentType doctype) {
 			return ProxyQDomImplementation().CreateDocument(nsURI,qName,doctype);
 		}
-		[SmokeMethod("isNull", "()")]
+		[SmokeMethod("isNull", "()", "")]
 		public bool IsNull() {
 			return ProxyQDomImplementation().IsNull();
 		}
@@ -97,7 +97,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQDomImplementation();
 		}
-		[SmokeMethod("~QDomImplementation", "()")]
+		[SmokeMethod("~QDomImplementation", "()", "")]
 		private void DisposeQDomImplementation() {
 			ProxyQDomImplementation().DisposeQDomImplementation();
 		}

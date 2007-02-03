@@ -8,9 +8,9 @@ namespace Qyoto {
 	public class QDBusAbstractAdaptor : QObject, IDisposable {
  		protected QDBusAbstractAdaptor(Type dummy) : base((Type) null) {}
 		interface IQDBusAbstractAdaptorProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
 
@@ -41,15 +41,15 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDBusAbstractAdaptor(parent);
 		}
-		[SmokeMethod("QDBusAbstractAdaptor#", "(QObject*)")]
+		[SmokeMethod("QDBusAbstractAdaptor", "(QObject*)", "#")]
 		private void NewQDBusAbstractAdaptor(QObject parent) {
 			ProxyQDBusAbstractAdaptor().NewQDBusAbstractAdaptor(parent);
 		}
-		[SmokeMethod("setAutoRelaySignals$", "(bool)")]
+		[SmokeMethod("setAutoRelaySignals", "(bool)", "$")]
 		protected void SetAutoRelaySignals(bool enable) {
 			ProxyQDBusAbstractAdaptor().SetAutoRelaySignals(enable);
 		}
-		[SmokeMethod("autoRelaySignals", "() const")]
+		[SmokeMethod("autoRelaySignals", "() const", "")]
 		protected bool AutoRelaySignals() {
 			return ProxyQDBusAbstractAdaptor().AutoRelaySignals();
 		}
@@ -59,7 +59,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQDBusAbstractAdaptor();
 		}
-		[SmokeMethod("~QDBusAbstractAdaptor", "()")]
+		[SmokeMethod("~QDBusAbstractAdaptor", "()", "")]
 		private void DisposeQDBusAbstractAdaptor() {
 			ProxyQDBusAbstractAdaptor().DisposeQDBusAbstractAdaptor();
 		}

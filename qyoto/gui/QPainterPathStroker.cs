@@ -33,63 +33,63 @@ namespace Qyoto {
 			CreateProxy();
 			NewQPainterPathStroker();
 		}
-		[SmokeMethod("QPainterPathStroker", "()")]
+		[SmokeMethod("QPainterPathStroker", "()", "")]
 		private void NewQPainterPathStroker() {
 			ProxyQPainterPathStroker().NewQPainterPathStroker();
 		}
-		[SmokeMethod("setWidth$", "(qreal)")]
+		[SmokeMethod("setWidth", "(qreal)", "$")]
 		public void SetWidth(double width) {
 			ProxyQPainterPathStroker().SetWidth(width);
 		}
-		[SmokeMethod("width", "() const")]
+		[SmokeMethod("width", "() const", "")]
 		public double Width() {
 			return ProxyQPainterPathStroker().Width();
 		}
-		[SmokeMethod("setCapStyle$", "(Qt::PenCapStyle)")]
+		[SmokeMethod("setCapStyle", "(Qt::PenCapStyle)", "$")]
 		public void SetCapStyle(Qt.PenCapStyle style) {
 			ProxyQPainterPathStroker().SetCapStyle(style);
 		}
-		[SmokeMethod("capStyle", "() const")]
+		[SmokeMethod("capStyle", "() const", "")]
 		public Qt.PenCapStyle CapStyle() {
 			return ProxyQPainterPathStroker().CapStyle();
 		}
-		[SmokeMethod("setJoinStyle$", "(Qt::PenJoinStyle)")]
+		[SmokeMethod("setJoinStyle", "(Qt::PenJoinStyle)", "$")]
 		public void SetJoinStyle(Qt.PenJoinStyle style) {
 			ProxyQPainterPathStroker().SetJoinStyle(style);
 		}
-		[SmokeMethod("joinStyle", "() const")]
+		[SmokeMethod("joinStyle", "() const", "")]
 		public Qt.PenJoinStyle JoinStyle() {
 			return ProxyQPainterPathStroker().JoinStyle();
 		}
-		[SmokeMethod("setMiterLimit$", "(qreal)")]
+		[SmokeMethod("setMiterLimit", "(qreal)", "$")]
 		public void SetMiterLimit(double length) {
 			ProxyQPainterPathStroker().SetMiterLimit(length);
 		}
-		[SmokeMethod("miterLimit", "() const")]
+		[SmokeMethod("miterLimit", "() const", "")]
 		public double MiterLimit() {
 			return ProxyQPainterPathStroker().MiterLimit();
 		}
-		[SmokeMethod("setCurveThreshold$", "(qreal)")]
+		[SmokeMethod("setCurveThreshold", "(qreal)", "$")]
 		public void SetCurveThreshold(double threshold) {
 			ProxyQPainterPathStroker().SetCurveThreshold(threshold);
 		}
-		[SmokeMethod("curveThreshold", "() const")]
+		[SmokeMethod("curveThreshold", "() const", "")]
 		public double CurveThreshold() {
 			return ProxyQPainterPathStroker().CurveThreshold();
 		}
-		[SmokeMethod("setDashPattern$", "(Qt::PenStyle)")]
+		[SmokeMethod("setDashPattern", "(Qt::PenStyle)", "$")]
 		public void SetDashPattern(Qt.PenStyle arg1) {
 			ProxyQPainterPathStroker().SetDashPattern(arg1);
 		}
-		[SmokeMethod("setDashPattern?", "(const QVector<qreal>&)")]
+		[SmokeMethod("setDashPattern", "(const QVector<qreal>&)", "?")]
 		public void SetDashPattern(List<double> dashPattern) {
 			ProxyQPainterPathStroker().SetDashPattern(dashPattern);
 		}
-		[SmokeMethod("dashPattern", "() const")]
+		[SmokeMethod("dashPattern", "() const", "")]
 		public List<double> DashPattern() {
 			return ProxyQPainterPathStroker().DashPattern();
 		}
-		[SmokeMethod("createStroke#", "(const QPainterPath&) const")]
+		[SmokeMethod("createStroke", "(const QPainterPath&) const", "#")]
 		public QPainterPath CreateStroke(QPainterPath path) {
 			return ProxyQPainterPathStroker().CreateStroke(path);
 		}
@@ -99,7 +99,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQPainterPathStroker();
 		}
-		[SmokeMethod("~QPainterPathStroker", "()")]
+		[SmokeMethod("~QPainterPathStroker", "()", "")]
 		private void DisposeQPainterPathStroker() {
 			ProxyQPainterPathStroker().DisposeQPainterPathStroker();
 		}

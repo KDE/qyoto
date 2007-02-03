@@ -1,3 +1,25 @@
+2007-01-04  Richard Dale  <rdale@foton.es>
+
+	* The SmokeMethod attribute constructor now takes three arguments,
+	  for example:
+
+		[SmokeMethod("eventFilter", "(QObject*, QEvent*)", "##")]
+		public virtual bool EventFilter(QObject arg1, QEvent arg2) {
+			return ProxyQObject().EventFilter(arg1,arg2);
+		}
+
+	* There are four properties to access the values of a SmokeMethod.
+	  For example:
+
+		SmokeMethod.Name => "eventFilter"
+		SmokeMethod.ArgsSignature => "(QObject*, QEvent*)"
+		SmokeMethod.MungedName => "eventFilter##"
+		SmokeMethod.Signature => "eventFilter(QObject*, QEvent*)"
+
+	* Virtual method callbacks are now working again
+	* In SmokeInvocation.Invoke() destructors aren't called until a way of
+	  coordinating C# GC with C++ Qt instance deletion has been implemented.
+
 2007-01-03  Richard Dale  <rdale@foton.es>
 
 	* Added qdbus/remotecontrolledcar example

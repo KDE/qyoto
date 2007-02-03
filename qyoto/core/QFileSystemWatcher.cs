@@ -10,9 +10,9 @@ namespace Qyoto {
 	public class QFileSystemWatcher : QObject, IDisposable {
  		protected QFileSystemWatcher(Type dummy) : base((Type) null) {}
 		interface IQFileSystemWatcherProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
 
@@ -37,7 +37,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQFileSystemWatcher(parent);
 		}
-		[SmokeMethod("QFileSystemWatcher#", "(QObject*)")]
+		[SmokeMethod("QFileSystemWatcher", "(QObject*)", "#")]
 		private void NewQFileSystemWatcher(QObject parent) {
 			ProxyQFileSystemWatcher().NewQFileSystemWatcher(parent);
 		}
@@ -45,7 +45,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQFileSystemWatcher();
 		}
-		[SmokeMethod("QFileSystemWatcher", "()")]
+		[SmokeMethod("QFileSystemWatcher", "()", "")]
 		private void NewQFileSystemWatcher() {
 			ProxyQFileSystemWatcher().NewQFileSystemWatcher();
 		}
@@ -53,7 +53,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQFileSystemWatcher(paths,parent);
 		}
-		[SmokeMethod("QFileSystemWatcher?#", "(const QStringList&, QObject*)")]
+		[SmokeMethod("QFileSystemWatcher", "(const QStringList&, QObject*)", "?#")]
 		private void NewQFileSystemWatcher(List<string> paths, QObject parent) {
 			ProxyQFileSystemWatcher().NewQFileSystemWatcher(paths,parent);
 		}
@@ -61,31 +61,31 @@ namespace Qyoto {
 			CreateProxy();
 			NewQFileSystemWatcher(paths);
 		}
-		[SmokeMethod("QFileSystemWatcher?", "(const QStringList&)")]
+		[SmokeMethod("QFileSystemWatcher", "(const QStringList&)", "?")]
 		private void NewQFileSystemWatcher(List<string> paths) {
 			ProxyQFileSystemWatcher().NewQFileSystemWatcher(paths);
 		}
-		[SmokeMethod("addPath$", "(const QString&)")]
+		[SmokeMethod("addPath", "(const QString&)", "$")]
 		public void AddPath(string file) {
 			ProxyQFileSystemWatcher().AddPath(file);
 		}
-		[SmokeMethod("addPaths?", "(const QStringList&)")]
+		[SmokeMethod("addPaths", "(const QStringList&)", "?")]
 		public void AddPaths(List<string> files) {
 			ProxyQFileSystemWatcher().AddPaths(files);
 		}
-		[SmokeMethod("removePath$", "(const QString&)")]
+		[SmokeMethod("removePath", "(const QString&)", "$")]
 		public void RemovePath(string file) {
 			ProxyQFileSystemWatcher().RemovePath(file);
 		}
-		[SmokeMethod("removePaths?", "(const QStringList&)")]
+		[SmokeMethod("removePaths", "(const QStringList&)", "?")]
 		public void RemovePaths(List<string> files) {
 			ProxyQFileSystemWatcher().RemovePaths(files);
 		}
-		[SmokeMethod("files", "() const")]
+		[SmokeMethod("files", "() const", "")]
 		public List<string> Files() {
 			return ProxyQFileSystemWatcher().Files();
 		}
-		[SmokeMethod("directories", "() const")]
+		[SmokeMethod("directories", "() const", "")]
 		public List<string> Directories() {
 			return ProxyQFileSystemWatcher().Directories();
 		}
@@ -101,7 +101,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQFileSystemWatcher();
 		}
-		[SmokeMethod("~QFileSystemWatcher", "()")]
+		[SmokeMethod("~QFileSystemWatcher", "()", "")]
 		private void DisposeQFileSystemWatcher() {
 			ProxyQFileSystemWatcher().DisposeQFileSystemWatcher();
 		}

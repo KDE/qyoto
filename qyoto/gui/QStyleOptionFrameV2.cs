@@ -36,7 +36,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionFrameV2();
 		}
-		[SmokeMethod("QStyleOptionFrameV2", "()")]
+		[SmokeMethod("QStyleOptionFrameV2", "()", "")]
 		private void NewQStyleOptionFrameV2() {
 			ProxyQStyleOptionFrameV2().NewQStyleOptionFrameV2();
 		}
@@ -44,7 +44,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionFrameV2(other);
 		}
-		[SmokeMethod("QStyleOptionFrameV2#", "(const QStyleOptionFrameV2&)")]
+		[SmokeMethod("QStyleOptionFrameV2", "(const QStyleOptionFrameV2&)", "#")]
 		private void NewQStyleOptionFrameV2(QStyleOptionFrameV2 other) {
 			ProxyQStyleOptionFrameV2().NewQStyleOptionFrameV2(other);
 		}
@@ -52,7 +52,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionFrameV2(other);
 		}
-		[SmokeMethod("QStyleOptionFrameV2#", "(const QStyleOptionFrame&)")]
+		[SmokeMethod("QStyleOptionFrameV2", "(const QStyleOptionFrame&)", "#")]
 		private void NewQStyleOptionFrameV2(QStyleOptionFrame other) {
 			ProxyQStyleOptionFrameV2().NewQStyleOptionFrameV2(other);
 		}
@@ -60,7 +60,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionFrameV2(version);
 		}
-		[SmokeMethod("QStyleOptionFrameV2$", "(int)")]
+		[SmokeMethod("QStyleOptionFrameV2", "(int)", "$")]
 		private void NewQStyleOptionFrameV2(int version) {
 			ProxyQStyleOptionFrameV2().NewQStyleOptionFrameV2(version);
 		}
@@ -70,7 +70,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQStyleOptionFrameV2();
 		}
-		[SmokeMethod("~QStyleOptionFrameV2", "()")]
+		[SmokeMethod("~QStyleOptionFrameV2", "()", "")]
 		private void DisposeQStyleOptionFrameV2() {
 			ProxyQStyleOptionFrameV2().DisposeQStyleOptionFrameV2();
 		}

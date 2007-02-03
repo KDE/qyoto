@@ -33,7 +33,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQXmlInputSource();
 		}
-		[SmokeMethod("QXmlInputSource", "()")]
+		[SmokeMethod("QXmlInputSource", "()", "")]
 		private void NewQXmlInputSource() {
 			ProxyQXmlInputSource().NewQXmlInputSource();
 		}
@@ -41,39 +41,39 @@ namespace Qyoto {
 			CreateProxy();
 			NewQXmlInputSource(dev);
 		}
-		[SmokeMethod("QXmlInputSource#", "(QIODevice*)")]
+		[SmokeMethod("QXmlInputSource", "(QIODevice*)", "#")]
 		private void NewQXmlInputSource(IQIODevice dev) {
 			ProxyQXmlInputSource().NewQXmlInputSource(dev);
 		}
-		[SmokeMethod("setData$", "(const QString&)")]
+		[SmokeMethod("setData", "(const QString&)", "$")]
 		public virtual void SetData(string dat) {
 			ProxyQXmlInputSource().SetData(dat);
 		}
-		[SmokeMethod("setData#", "(const QByteArray&)")]
+		[SmokeMethod("setData", "(const QByteArray&)", "#")]
 		public virtual void SetData(QByteArray dat) {
 			ProxyQXmlInputSource().SetData(dat);
 		}
-		[SmokeMethod("fetchData", "()")]
+		[SmokeMethod("fetchData", "()", "")]
 		public virtual void FetchData() {
 			ProxyQXmlInputSource().FetchData();
 		}
-		[SmokeMethod("data", "() const")]
+		[SmokeMethod("data", "() const", "")]
 		public virtual string Data() {
 			return ProxyQXmlInputSource().Data();
 		}
-		[SmokeMethod("next", "()")]
+		[SmokeMethod("next", "()", "")]
 		public virtual char Next() {
 			return ProxyQXmlInputSource().Next();
 		}
-		[SmokeMethod("reset", "()")]
+		[SmokeMethod("reset", "()", "")]
 		public virtual void Reset() {
 			ProxyQXmlInputSource().Reset();
 		}
-		[SmokeMethod("fromRawData#$", "(const QByteArray&, bool)")]
+		[SmokeMethod("fromRawData", "(const QByteArray&, bool)", "#$")]
 		protected virtual string FromRawData(QByteArray data, bool beginning) {
 			return ProxyQXmlInputSource().FromRawData(data,beginning);
 		}
-		[SmokeMethod("fromRawData#", "(const QByteArray&)")]
+		[SmokeMethod("fromRawData", "(const QByteArray&)", "#")]
 		protected virtual string FromRawData(QByteArray data) {
 			return ProxyQXmlInputSource().FromRawData(data);
 		}
@@ -83,7 +83,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQXmlInputSource();
 		}
-		[SmokeMethod("~QXmlInputSource", "()")]
+		[SmokeMethod("~QXmlInputSource", "()", "")]
 		private void DisposeQXmlInputSource() {
 			ProxyQXmlInputSource().DisposeQXmlInputSource();
 		}

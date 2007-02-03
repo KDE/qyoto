@@ -8,9 +8,9 @@ namespace Qyoto {
 	public class QPushButton : QAbstractButton, IDisposable {
  		protected QPushButton(Type dummy) : base((Type) null) {}
 		interface IQPushButtonProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
 
@@ -62,7 +62,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQPushButton(parent);
 		}
-		[SmokeMethod("QPushButton#", "(QWidget*)")]
+		[SmokeMethod("QPushButton", "(QWidget*)", "#")]
 		private void NewQPushButton(QWidget parent) {
 			ProxyQPushButton().NewQPushButton(parent);
 		}
@@ -70,7 +70,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQPushButton();
 		}
-		[SmokeMethod("QPushButton", "()")]
+		[SmokeMethod("QPushButton", "()", "")]
 		private void NewQPushButton() {
 			ProxyQPushButton().NewQPushButton();
 		}
@@ -78,7 +78,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQPushButton(text,parent);
 		}
-		[SmokeMethod("QPushButton$#", "(const QString&, QWidget*)")]
+		[SmokeMethod("QPushButton", "(const QString&, QWidget*)", "$#")]
 		private void NewQPushButton(string text, QWidget parent) {
 			ProxyQPushButton().NewQPushButton(text,parent);
 		}
@@ -86,7 +86,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQPushButton(text);
 		}
-		[SmokeMethod("QPushButton$", "(const QString&)")]
+		[SmokeMethod("QPushButton", "(const QString&)", "$")]
 		private void NewQPushButton(string text) {
 			ProxyQPushButton().NewQPushButton(text);
 		}
@@ -94,7 +94,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQPushButton(icon,text,parent);
 		}
-		[SmokeMethod("QPushButton#$#", "(const QIcon&, const QString&, QWidget*)")]
+		[SmokeMethod("QPushButton", "(const QIcon&, const QString&, QWidget*)", "#$#")]
 		private void NewQPushButton(QIcon icon, string text, QWidget parent) {
 			ProxyQPushButton().NewQPushButton(icon,text,parent);
 		}
@@ -102,32 +102,32 @@ namespace Qyoto {
 			CreateProxy();
 			NewQPushButton(icon,text);
 		}
-		[SmokeMethod("QPushButton#$", "(const QIcon&, const QString&)")]
+		[SmokeMethod("QPushButton", "(const QIcon&, const QString&)", "#$")]
 		private void NewQPushButton(QIcon icon, string text) {
 			ProxyQPushButton().NewQPushButton(icon,text);
 		}
-		[SmokeMethod("sizeHint", "() const")]
+		[SmokeMethod("sizeHint", "() const", "")]
 		public new QSize SizeHint() {
 			return ProxyQPushButton().SizeHint();
 		}
-		[SmokeMethod("isDefault", "() const")]
+		[SmokeMethod("isDefault", "() const", "")]
 		public bool IsDefault() {
 			return ProxyQPushButton().IsDefault();
 		}
-		[SmokeMethod("setMenu#", "(QMenu*)")]
+		[SmokeMethod("setMenu", "(QMenu*)", "#")]
 		public void SetMenu(QMenu menu) {
 			ProxyQPushButton().SetMenu(menu);
 		}
-		[SmokeMethod("menu", "() const")]
+		[SmokeMethod("menu", "() const", "")]
 		public QMenu Menu() {
 			return ProxyQPushButton().Menu();
 		}
-		[SmokeMethod("isFlat", "() const")]
+		[SmokeMethod("isFlat", "() const", "")]
 		public bool IsFlat() {
 			return ProxyQPushButton().IsFlat();
 		}
 		[Q_SLOT("void showMenu()")]
-		[SmokeMethod("showMenu", "()")]
+		[SmokeMethod("showMenu", "()", "")]
 		public void ShowMenu() {
 			ProxyQPushButton().ShowMenu();
 		}
@@ -137,23 +137,23 @@ namespace Qyoto {
 		public static new string Tr(string s) {
 			return StaticQPushButton().Tr(s);
 		}
-		[SmokeMethod("event#", "(QEvent*)")]
+		[SmokeMethod("event", "(QEvent*)", "#")]
 		public new bool Event(QEvent e) {
 			return ProxyQPushButton().Event(e);
 		}
-		[SmokeMethod("paintEvent#", "(QPaintEvent*)")]
+		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
 		protected new void PaintEvent(QPaintEvent arg1) {
 			ProxyQPushButton().PaintEvent(arg1);
 		}
-		[SmokeMethod("keyPressEvent#", "(QKeyEvent*)")]
+		[SmokeMethod("keyPressEvent", "(QKeyEvent*)", "#")]
 		protected new void KeyPressEvent(QKeyEvent arg1) {
 			ProxyQPushButton().KeyPressEvent(arg1);
 		}
-		[SmokeMethod("focusInEvent#", "(QFocusEvent*)")]
+		[SmokeMethod("focusInEvent", "(QFocusEvent*)", "#")]
 		protected new void FocusInEvent(QFocusEvent arg1) {
 			ProxyQPushButton().FocusInEvent(arg1);
 		}
-		[SmokeMethod("focusOutEvent#", "(QFocusEvent*)")]
+		[SmokeMethod("focusOutEvent", "(QFocusEvent*)", "#")]
 		protected new void FocusOutEvent(QFocusEvent arg1) {
 			ProxyQPushButton().FocusOutEvent(arg1);
 		}
@@ -163,7 +163,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQPushButton();
 		}
-		[SmokeMethod("~QPushButton", "()")]
+		[SmokeMethod("~QPushButton", "()", "")]
 		private void DisposeQPushButton() {
 			ProxyQPushButton().DisposeQPushButton();
 		}

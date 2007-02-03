@@ -35,7 +35,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionTabWidgetFrame();
 		}
-		[SmokeMethod("QStyleOptionTabWidgetFrame", "()")]
+		[SmokeMethod("QStyleOptionTabWidgetFrame", "()", "")]
 		private void NewQStyleOptionTabWidgetFrame() {
 			ProxyQStyleOptionTabWidgetFrame().NewQStyleOptionTabWidgetFrame();
 		}
@@ -43,7 +43,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionTabWidgetFrame(other);
 		}
-		[SmokeMethod("QStyleOptionTabWidgetFrame#", "(const QStyleOptionTabWidgetFrame&)")]
+		[SmokeMethod("QStyleOptionTabWidgetFrame", "(const QStyleOptionTabWidgetFrame&)", "#")]
 		private void NewQStyleOptionTabWidgetFrame(QStyleOptionTabWidgetFrame other) {
 			ProxyQStyleOptionTabWidgetFrame().NewQStyleOptionTabWidgetFrame(other);
 		}
@@ -51,7 +51,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionTabWidgetFrame(version);
 		}
-		[SmokeMethod("QStyleOptionTabWidgetFrame$", "(int)")]
+		[SmokeMethod("QStyleOptionTabWidgetFrame", "(int)", "$")]
 		private void NewQStyleOptionTabWidgetFrame(int version) {
 			ProxyQStyleOptionTabWidgetFrame().NewQStyleOptionTabWidgetFrame(version);
 		}
@@ -61,7 +61,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQStyleOptionTabWidgetFrame();
 		}
-		[SmokeMethod("~QStyleOptionTabWidgetFrame", "()")]
+		[SmokeMethod("~QStyleOptionTabWidgetFrame", "()", "")]
 		private void DisposeQStyleOptionTabWidgetFrame() {
 			ProxyQStyleOptionTabWidgetFrame().DisposeQStyleOptionTabWidgetFrame();
 		}

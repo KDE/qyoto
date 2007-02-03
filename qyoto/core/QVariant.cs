@@ -13,9 +13,9 @@ namespace Qyoto {
 		protected QVariant(Type dummy) {}
 		interface IQVariantProxy {
 			bool op_equals(QVariant lhs, QVariant v);
-			[SmokeMethod("typeToName$", "(QVariant::Type)")]
+			[SmokeMethod("typeToName", "(QVariant::Type)", "$")]
 			string TypeToName(QVariant.TypeOf type);
-			[SmokeMethod("nameToType$", "(const char*)")]
+			[SmokeMethod("nameToType", "(const char*)", "$")]
 			QVariant.TypeOf NameToType(string name);
 		}
 
@@ -90,7 +90,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQVariant();
 		}
-		[SmokeMethod("QVariant", "()")]
+		[SmokeMethod("QVariant", "()", "")]
 		private void NewQVariant() {
 			ProxyQVariant().NewQVariant();
 		}
@@ -98,7 +98,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQVariant(type);
 		}
-		[SmokeMethod("QVariant$", "(QVariant::Type)")]
+		[SmokeMethod("QVariant", "(QVariant::Type)", "$")]
 		private void NewQVariant(QVariant.TypeOf type) {
 			ProxyQVariant().NewQVariant(type);
 		}
@@ -107,7 +107,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQVariant(other);
 		}
-		[SmokeMethod("QVariant#", "(const QVariant&)")]
+		[SmokeMethod("QVariant", "(const QVariant&)", "#")]
 		private void NewQVariant(QVariant other) {
 			ProxyQVariant().NewQVariant(other);
 		}
@@ -115,7 +115,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQVariant(s);
 		}
-		[SmokeMethod("QVariant#", "(QDataStream&)")]
+		[SmokeMethod("QVariant", "(QDataStream&)", "#")]
 		private void NewQVariant(QDataStream s) {
 			ProxyQVariant().NewQVariant(s);
 		}
@@ -123,7 +123,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQVariant(i);
 		}
-		[SmokeMethod("QVariant$", "(int)")]
+		[SmokeMethod("QVariant", "(int)", "$")]
 		private void NewQVariant(int i) {
 			ProxyQVariant().NewQVariant(i);
 		}
@@ -131,7 +131,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQVariant(ui);
 		}
-		[SmokeMethod("QVariant$", "(uint)")]
+		[SmokeMethod("QVariant", "(uint)", "$")]
 		private void NewQVariant(uint ui) {
 			ProxyQVariant().NewQVariant(ui);
 		}
@@ -139,7 +139,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQVariant(ll);
 		}
-		[SmokeMethod("QVariant?", "(qlonglong)")]
+		[SmokeMethod("QVariant", "(qlonglong)", "?")]
 		private void NewQVariant(long ll) {
 			ProxyQVariant().NewQVariant(ll);
 		}
@@ -147,7 +147,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQVariant(ull);
 		}
-		[SmokeMethod("QVariant$", "(qulonglong)")]
+		[SmokeMethod("QVariant", "(qulonglong)", "$")]
 		private void NewQVariant(ulong ull) {
 			ProxyQVariant().NewQVariant(ull);
 		}
@@ -155,7 +155,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQVariant(b);
 		}
-		[SmokeMethod("QVariant$", "(bool)")]
+		[SmokeMethod("QVariant", "(bool)", "$")]
 		private void NewQVariant(bool b) {
 			ProxyQVariant().NewQVariant(b);
 		}
@@ -163,7 +163,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQVariant(d);
 		}
-		[SmokeMethod("QVariant$", "(double)")]
+		[SmokeMethod("QVariant", "(double)", "$")]
 		private void NewQVariant(double d) {
 			ProxyQVariant().NewQVariant(d);
 		}
@@ -171,7 +171,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQVariant(str);
 		}
-		[SmokeMethod("QVariant$", "(const char*)")]
+		[SmokeMethod("QVariant", "(const char*)", "$")]
 		private void NewQVariant(string str) {
 			ProxyQVariant().NewQVariant(str);
 		}
@@ -179,7 +179,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQVariant(bytearray);
 		}
-		[SmokeMethod("QVariant#", "(const QByteArray&)")]
+		[SmokeMethod("QVariant", "(const QByteArray&)", "#")]
 		private void NewQVariant(QByteArray bytearray) {
 			ProxyQVariant().NewQVariant(bytearray);
 		}
@@ -189,7 +189,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQVariant(stringlist);
 		}
-		[SmokeMethod("QVariant?", "(const QStringList&)")]
+		[SmokeMethod("QVariant", "(const QStringList&)", "?")]
 		private void NewQVariant(List<string> stringlist) {
 			ProxyQVariant().NewQVariant(stringlist);
 		}
@@ -197,7 +197,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQVariant(qchar);
 		}
-		[SmokeMethod("QVariant#", "(const QChar&)")]
+		[SmokeMethod("QVariant", "(const QChar&)", "#")]
 		private void NewQVariant(char qchar) {
 			ProxyQVariant().NewQVariant(qchar);
 		}
@@ -205,7 +205,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQVariant(date);
 		}
-		[SmokeMethod("QVariant#", "(const QDate&)")]
+		[SmokeMethod("QVariant", "(const QDate&)", "#")]
 		private void NewQVariant(QDate date) {
 			ProxyQVariant().NewQVariant(date);
 		}
@@ -213,7 +213,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQVariant(time);
 		}
-		[SmokeMethod("QVariant#", "(const QTime&)")]
+		[SmokeMethod("QVariant", "(const QTime&)", "#")]
 		private void NewQVariant(QTime time) {
 			ProxyQVariant().NewQVariant(time);
 		}
@@ -221,7 +221,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQVariant(datetime);
 		}
-		[SmokeMethod("QVariant#", "(const QDateTime&)")]
+		[SmokeMethod("QVariant", "(const QDateTime&)", "#")]
 		private void NewQVariant(QDateTime datetime) {
 			ProxyQVariant().NewQVariant(datetime);
 		}
@@ -229,7 +229,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQVariant(list);
 		}
-		[SmokeMethod("QVariant?", "(const QList<QVariant>&)")]
+		[SmokeMethod("QVariant", "(const QList<QVariant>&)", "?")]
 		private void NewQVariant(List<QVariant> list) {
 			ProxyQVariant().NewQVariant(list);
 		}
@@ -237,7 +237,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQVariant(map);
 		}
-		[SmokeMethod("QVariant?", "(const QMap<QString, QVariant>&)")]
+		[SmokeMethod("QVariant", "(const QMap<QString, QVariant>&)", "?")]
 		private void NewQVariant(Dictionary<string, QVariant> map) {
 			ProxyQVariant().NewQVariant(map);
 		}
@@ -245,7 +245,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQVariant(size);
 		}
-		[SmokeMethod("QVariant#", "(const QSize&)")]
+		[SmokeMethod("QVariant", "(const QSize&)", "#")]
 		private void NewQVariant(QSize size) {
 			ProxyQVariant().NewQVariant(size);
 		}
@@ -253,7 +253,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQVariant(size);
 		}
-		[SmokeMethod("QVariant#", "(const QSizeF&)")]
+		[SmokeMethod("QVariant", "(const QSizeF&)", "#")]
 		private void NewQVariant(QSizeF size) {
 			ProxyQVariant().NewQVariant(size);
 		}
@@ -261,7 +261,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQVariant(pt);
 		}
-		[SmokeMethod("QVariant#", "(const QPoint&)")]
+		[SmokeMethod("QVariant", "(const QPoint&)", "#")]
 		private void NewQVariant(QPoint pt) {
 			ProxyQVariant().NewQVariant(pt);
 		}
@@ -269,7 +269,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQVariant(pt);
 		}
-		[SmokeMethod("QVariant#", "(const QPointF&)")]
+		[SmokeMethod("QVariant", "(const QPointF&)", "#")]
 		private void NewQVariant(QPointF pt) {
 			ProxyQVariant().NewQVariant(pt);
 		}
@@ -277,7 +277,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQVariant(line);
 		}
-		[SmokeMethod("QVariant#", "(const QLine&)")]
+		[SmokeMethod("QVariant", "(const QLine&)", "#")]
 		private void NewQVariant(QLine line) {
 			ProxyQVariant().NewQVariant(line);
 		}
@@ -285,7 +285,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQVariant(line);
 		}
-		[SmokeMethod("QVariant#", "(const QLineF&)")]
+		[SmokeMethod("QVariant", "(const QLineF&)", "#")]
 		private void NewQVariant(QLineF line) {
 			ProxyQVariant().NewQVariant(line);
 		}
@@ -293,7 +293,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQVariant(rect);
 		}
-		[SmokeMethod("QVariant#", "(const QRect&)")]
+		[SmokeMethod("QVariant", "(const QRect&)", "#")]
 		private void NewQVariant(QRect rect) {
 			ProxyQVariant().NewQVariant(rect);
 		}
@@ -301,7 +301,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQVariant(rect);
 		}
-		[SmokeMethod("QVariant#", "(const QRectF&)")]
+		[SmokeMethod("QVariant", "(const QRectF&)", "#")]
 		private void NewQVariant(QRectF rect) {
 			ProxyQVariant().NewQVariant(rect);
 		}
@@ -309,7 +309,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQVariant(url);
 		}
-		[SmokeMethod("QVariant#", "(const QUrl&)")]
+		[SmokeMethod("QVariant", "(const QUrl&)", "#")]
 		private void NewQVariant(IQUrl url) {
 			ProxyQVariant().NewQVariant(url);
 		}
@@ -317,7 +317,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQVariant(locale);
 		}
-		[SmokeMethod("QVariant#", "(const QLocale&)")]
+		[SmokeMethod("QVariant", "(const QLocale&)", "#")]
 		private void NewQVariant(QLocale locale) {
 			ProxyQVariant().NewQVariant(locale);
 		}
@@ -325,7 +325,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQVariant(regExp);
 		}
-		[SmokeMethod("QVariant#", "(const QRegExp&)")]
+		[SmokeMethod("QVariant", "(const QRegExp&)", "#")]
 		private void NewQVariant(QRegExp regExp) {
 			ProxyQVariant().NewQVariant(regExp);
 		}
@@ -333,187 +333,187 @@ namespace Qyoto {
 			CreateProxy();
 			NewQVariant(color);
 		}
-		[SmokeMethod("QVariant$", "(Qt::GlobalColor)")]
+		[SmokeMethod("QVariant", "(Qt::GlobalColor)", "$")]
 		private void NewQVariant(Qt.GlobalColor color) {
 			ProxyQVariant().NewQVariant(color);
 		}
-		[SmokeMethod("type", "() const")]
+		[SmokeMethod("type", "() const", "")]
 		public QVariant.TypeOf type() {
 			return ProxyQVariant().type();
 		}
-		[SmokeMethod("userType", "() const")]
+		[SmokeMethod("userType", "() const", "")]
 		public int UserType() {
 			return ProxyQVariant().UserType();
 		}
-		[SmokeMethod("typeName", "() const")]
+		[SmokeMethod("typeName", "() const", "")]
 		public string TypeName() {
 			return ProxyQVariant().TypeName();
 		}
-		[SmokeMethod("canConvert$", "(QVariant::Type) const")]
+		[SmokeMethod("canConvert", "(QVariant::Type) const", "$")]
 		public bool CanConvert(QVariant.TypeOf t) {
 			return ProxyQVariant().CanConvert(t);
 		}
-		[SmokeMethod("convert$", "(QVariant::Type)")]
+		[SmokeMethod("convert", "(QVariant::Type)", "$")]
 		public bool Convert(QVariant.TypeOf t) {
 			return ProxyQVariant().Convert(t);
 		}
-		[SmokeMethod("isValid", "() const")]
+		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
 			return ProxyQVariant().IsValid();
 		}
-		[SmokeMethod("isNull", "() const")]
+		[SmokeMethod("isNull", "() const", "")]
 		public bool IsNull() {
 			return ProxyQVariant().IsNull();
 		}
-		[SmokeMethod("clear", "()")]
+		[SmokeMethod("clear", "()", "")]
 		public void Clear() {
 			ProxyQVariant().Clear();
 		}
-		[SmokeMethod("detach", "()")]
+		[SmokeMethod("detach", "()", "")]
 		public void Detach() {
 			ProxyQVariant().Detach();
 		}
-		[SmokeMethod("isDetached", "() const")]
+		[SmokeMethod("isDetached", "() const", "")]
 		public bool IsDetached() {
 			return ProxyQVariant().IsDetached();
 		}
-		[SmokeMethod("toInt$", "(bool*) const")]
+		[SmokeMethod("toInt", "(bool*) const", "$")]
 		public int ToInt(out bool ok) {
 			return ProxyQVariant().ToInt(out ok);
 		}
-		[SmokeMethod("toInt", "() const")]
+		[SmokeMethod("toInt", "() const", "")]
 		public int ToInt() {
 			return ProxyQVariant().ToInt();
 		}
-		[SmokeMethod("toUInt$", "(bool*) const")]
+		[SmokeMethod("toUInt", "(bool*) const", "$")]
 		public uint ToUInt(out bool ok) {
 			return ProxyQVariant().ToUInt(out ok);
 		}
-		[SmokeMethod("toUInt", "() const")]
+		[SmokeMethod("toUInt", "() const", "")]
 		public uint ToUInt() {
 			return ProxyQVariant().ToUInt();
 		}
-		[SmokeMethod("toLongLong$", "(bool*) const")]
+		[SmokeMethod("toLongLong", "(bool*) const", "$")]
 		public long ToLongLong(out bool ok) {
 			return ProxyQVariant().ToLongLong(out ok);
 		}
-		[SmokeMethod("toLongLong", "() const")]
+		[SmokeMethod("toLongLong", "() const", "")]
 		public long ToLongLong() {
 			return ProxyQVariant().ToLongLong();
 		}
-		[SmokeMethod("toULongLong$", "(bool*) const")]
+		[SmokeMethod("toULongLong", "(bool*) const", "$")]
 		public ulong ToULongLong(out bool ok) {
 			return ProxyQVariant().ToULongLong(out ok);
 		}
-		[SmokeMethod("toULongLong", "() const")]
+		[SmokeMethod("toULongLong", "() const", "")]
 		public ulong ToULongLong() {
 			return ProxyQVariant().ToULongLong();
 		}
-		[SmokeMethod("toBool", "() const")]
+		[SmokeMethod("toBool", "() const", "")]
 		public bool ToBool() {
 			return ProxyQVariant().ToBool();
 		}
-		[SmokeMethod("toDouble$", "(bool*) const")]
+		[SmokeMethod("toDouble", "(bool*) const", "$")]
 		public double ToDouble(out bool ok) {
 			return ProxyQVariant().ToDouble(out ok);
 		}
-		[SmokeMethod("toDouble", "() const")]
+		[SmokeMethod("toDouble", "() const", "")]
 		public double ToDouble() {
 			return ProxyQVariant().ToDouble();
 		}
-		[SmokeMethod("toByteArray", "() const")]
+		[SmokeMethod("toByteArray", "() const", "")]
 		public QByteArray ToByteArray() {
 			return ProxyQVariant().ToByteArray();
 		}
 		// QBitArray toBitArray(); >>>> NOT CONVERTED
-		[SmokeMethod("toString", "() const")]
+		[SmokeMethod("toString", "() const", "")]
 		public new string ToString() {
 			return ProxyQVariant().ToString();
 		}
-		[SmokeMethod("toStringList", "() const")]
+		[SmokeMethod("toStringList", "() const", "")]
 		public List<string> ToStringList() {
 			return ProxyQVariant().ToStringList();
 		}
-		[SmokeMethod("toChar", "() const")]
+		[SmokeMethod("toChar", "() const", "")]
 		public char ToChar() {
 			return ProxyQVariant().ToChar();
 		}
-		[SmokeMethod("toDate", "() const")]
+		[SmokeMethod("toDate", "() const", "")]
 		public QDate ToDate() {
 			return ProxyQVariant().ToDate();
 		}
-		[SmokeMethod("toTime", "() const")]
+		[SmokeMethod("toTime", "() const", "")]
 		public QTime ToTime() {
 			return ProxyQVariant().ToTime();
 		}
-		[SmokeMethod("toDateTime", "() const")]
+		[SmokeMethod("toDateTime", "() const", "")]
 		public QDateTime ToDateTime() {
 			return ProxyQVariant().ToDateTime();
 		}
-		[SmokeMethod("toList", "() const")]
+		[SmokeMethod("toList", "() const", "")]
 		public List<QVariant> ToList() {
 			return ProxyQVariant().ToList();
 		}
-		[SmokeMethod("toMap", "() const")]
+		[SmokeMethod("toMap", "() const", "")]
 		public Dictionary<string, QVariant> ToMap() {
 			return ProxyQVariant().ToMap();
 		}
-		[SmokeMethod("toPoint", "() const")]
+		[SmokeMethod("toPoint", "() const", "")]
 		public QPoint ToPoint() {
 			return ProxyQVariant().ToPoint();
 		}
-		[SmokeMethod("toPointF", "() const")]
+		[SmokeMethod("toPointF", "() const", "")]
 		public QPointF ToPointF() {
 			return ProxyQVariant().ToPointF();
 		}
-		[SmokeMethod("toRect", "() const")]
+		[SmokeMethod("toRect", "() const", "")]
 		public QRect ToRect() {
 			return ProxyQVariant().ToRect();
 		}
-		[SmokeMethod("toSize", "() const")]
+		[SmokeMethod("toSize", "() const", "")]
 		public QSize ToSize() {
 			return ProxyQVariant().ToSize();
 		}
-		[SmokeMethod("toSizeF", "() const")]
+		[SmokeMethod("toSizeF", "() const", "")]
 		public QSizeF ToSizeF() {
 			return ProxyQVariant().ToSizeF();
 		}
-		[SmokeMethod("toLine", "() const")]
+		[SmokeMethod("toLine", "() const", "")]
 		public QLine ToLine() {
 			return ProxyQVariant().ToLine();
 		}
-		[SmokeMethod("toLineF", "() const")]
+		[SmokeMethod("toLineF", "() const", "")]
 		public QLineF ToLineF() {
 			return ProxyQVariant().ToLineF();
 		}
-		[SmokeMethod("toRectF", "() const")]
+		[SmokeMethod("toRectF", "() const", "")]
 		public QRectF ToRectF() {
 			return ProxyQVariant().ToRectF();
 		}
-		[SmokeMethod("toUrl", "() const")]
+		[SmokeMethod("toUrl", "() const", "")]
 		public IQUrl ToUrl() {
 			return ProxyQVariant().ToUrl();
 		}
-		[SmokeMethod("toLocale", "() const")]
+		[SmokeMethod("toLocale", "() const", "")]
 		public QLocale ToLocale() {
 			return ProxyQVariant().ToLocale();
 		}
-		[SmokeMethod("toRegExp", "() const")]
+		[SmokeMethod("toRegExp", "() const", "")]
 		public QRegExp ToRegExp() {
 			return ProxyQVariant().ToRegExp();
 		}
-		[SmokeMethod("load#", "(QDataStream&)")]
+		[SmokeMethod("load", "(QDataStream&)", "#")]
 		public void Load(QDataStream ds) {
 			ProxyQVariant().Load(ds);
 		}
-		[SmokeMethod("save#", "(QDataStream&) const")]
+		[SmokeMethod("save", "(QDataStream&) const", "#")]
 		public void Save(QDataStream ds) {
 			ProxyQVariant().Save(ds);
 		}
 		// void* data(); >>>> NOT CONVERTED
 		// const void* constData(); >>>> NOT CONVERTED
 		// const void* data(); >>>> NOT CONVERTED
-		[SmokeMethod("operator==#", "(const QVariant&) const")]
+		[SmokeMethod("operator==", "(const QVariant&) const", "#")]
 		public static bool operator==(QVariant lhs, QVariant v) {
 			return StaticQVariant().op_equals(lhs,v);
 		}
@@ -534,7 +534,7 @@ namespace Qyoto {
 			return StaticQVariant().NameToType(name);
 		}
 		// void create(int arg1,const void* arg2); >>>> NOT CONVERTED
-		[SmokeMethod("cmp#", "(const QVariant&) const")]
+		[SmokeMethod("cmp", "(const QVariant&) const", "#")]
 		protected bool Cmp(QVariant other) {
 			return ProxyQVariant().Cmp(other);
 		}
@@ -544,7 +544,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQVariant();
 		}
-		[SmokeMethod("~QVariant", "()")]
+		[SmokeMethod("~QVariant", "()", "")]
 		private void DisposeQVariant() {
 			ProxyQVariant().DisposeQVariant();
 		}

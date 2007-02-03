@@ -30,7 +30,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDomAttr();
 		}
-		[SmokeMethod("QDomAttr", "()")]
+		[SmokeMethod("QDomAttr", "()", "")]
 		private void NewQDomAttr() {
 			ProxyQDomAttr().NewQDomAttr();
 		}
@@ -38,31 +38,31 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDomAttr(x);
 		}
-		[SmokeMethod("QDomAttr#", "(const QDomAttr&)")]
+		[SmokeMethod("QDomAttr", "(const QDomAttr&)", "#")]
 		private void NewQDomAttr(QDomAttr x) {
 			ProxyQDomAttr().NewQDomAttr(x);
 		}
-		[SmokeMethod("name", "() const")]
+		[SmokeMethod("name", "() const", "")]
 		public string Name() {
 			return ProxyQDomAttr().Name();
 		}
-		[SmokeMethod("specified", "() const")]
+		[SmokeMethod("specified", "() const", "")]
 		public bool Specified() {
 			return ProxyQDomAttr().Specified();
 		}
-		[SmokeMethod("ownerElement", "() const")]
+		[SmokeMethod("ownerElement", "() const", "")]
 		public QDomElement OwnerElement() {
 			return ProxyQDomAttr().OwnerElement();
 		}
-		[SmokeMethod("value", "() const")]
+		[SmokeMethod("value", "() const", "")]
 		public string Value() {
 			return ProxyQDomAttr().Value();
 		}
-		[SmokeMethod("setValue$", "(const QString&)")]
+		[SmokeMethod("setValue", "(const QString&)", "$")]
 		public void SetValue(string arg1) {
 			ProxyQDomAttr().SetValue(arg1);
 		}
-		[SmokeMethod("nodeType", "() const")]
+		[SmokeMethod("nodeType", "() const", "")]
 		public new QDomNode.NodeType NodeType() {
 			return ProxyQDomAttr().NodeType();
 		}
@@ -72,7 +72,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQDomAttr();
 		}
-		[SmokeMethod("~QDomAttr", "()")]
+		[SmokeMethod("~QDomAttr", "()", "")]
 		private void DisposeQDomAttr() {
 			ProxyQDomAttr().DisposeQDomAttr();
 		}

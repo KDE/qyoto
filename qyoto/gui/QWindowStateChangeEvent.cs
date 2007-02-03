@@ -29,7 +29,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQWindowStateChangeEvent(aOldState);
 		}
-		[SmokeMethod("QWindowStateChangeEvent$", "(Qt::WindowStates)")]
+		[SmokeMethod("QWindowStateChangeEvent", "(Qt::WindowStates)", "$")]
 		private void NewQWindowStateChangeEvent(int aOldState) {
 			ProxyQWindowStateChangeEvent().NewQWindowStateChangeEvent(aOldState);
 		}
@@ -37,15 +37,15 @@ namespace Qyoto {
 			CreateProxy();
 			NewQWindowStateChangeEvent(aOldState,isOverride);
 		}
-		[SmokeMethod("QWindowStateChangeEvent$$", "(Qt::WindowStates, bool)")]
+		[SmokeMethod("QWindowStateChangeEvent", "(Qt::WindowStates, bool)", "$$")]
 		private void NewQWindowStateChangeEvent(int aOldState, bool isOverride) {
 			ProxyQWindowStateChangeEvent().NewQWindowStateChangeEvent(aOldState,isOverride);
 		}
-		[SmokeMethod("oldState", "() const")]
+		[SmokeMethod("oldState", "() const", "")]
 		public int OldState() {
 			return ProxyQWindowStateChangeEvent().OldState();
 		}
-		[SmokeMethod("isOverride", "() const")]
+		[SmokeMethod("isOverride", "() const", "")]
 		public bool IsOverride() {
 			return ProxyQWindowStateChangeEvent().IsOverride();
 		}
@@ -55,7 +55,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQWindowStateChangeEvent();
 		}
-		[SmokeMethod("~QWindowStateChangeEvent", "()")]
+		[SmokeMethod("~QWindowStateChangeEvent", "()", "")]
 		private void DisposeQWindowStateChangeEvent() {
 			ProxyQWindowStateChangeEvent().DisposeQWindowStateChangeEvent();
 		}

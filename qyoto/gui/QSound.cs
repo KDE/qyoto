@@ -8,13 +8,13 @@ namespace Qyoto {
 	public class QSound : QObject, IDisposable {
  		protected QSound(Type dummy) : base((Type) null) {}
 		interface IQSoundProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
-			[SmokeMethod("isAvailable", "()")]
+			[SmokeMethod("isAvailable", "()", "")]
 			bool IsAvailable();
-			[SmokeMethod("play$", "(const QString&)")]
+			[SmokeMethod("play", "(const QString&)", "$")]
 			void Play(string filename);
 		}
 
@@ -39,7 +39,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSound(filename,parent);
 		}
-		[SmokeMethod("QSound$#", "(const QString&, QObject*)")]
+		[SmokeMethod("QSound", "(const QString&, QObject*)", "$#")]
 		private void NewQSound(string filename, QObject parent) {
 			ProxyQSound().NewQSound(filename,parent);
 		}
@@ -47,37 +47,37 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSound(filename);
 		}
-		[SmokeMethod("QSound$", "(const QString&)")]
+		[SmokeMethod("QSound", "(const QString&)", "$")]
 		private void NewQSound(string filename) {
 			ProxyQSound().NewQSound(filename);
 		}
-		[SmokeMethod("loops", "() const")]
+		[SmokeMethod("loops", "() const", "")]
 		public int Loops() {
 			return ProxyQSound().Loops();
 		}
-		[SmokeMethod("loopsRemaining", "() const")]
+		[SmokeMethod("loopsRemaining", "() const", "")]
 		public int LoopsRemaining() {
 			return ProxyQSound().LoopsRemaining();
 		}
-		[SmokeMethod("setLoops$", "(int)")]
+		[SmokeMethod("setLoops", "(int)", "$")]
 		public void SetLoops(int arg1) {
 			ProxyQSound().SetLoops(arg1);
 		}
-		[SmokeMethod("fileName", "() const")]
+		[SmokeMethod("fileName", "() const", "")]
 		public string FileName() {
 			return ProxyQSound().FileName();
 		}
-		[SmokeMethod("isFinished", "() const")]
+		[SmokeMethod("isFinished", "() const", "")]
 		public bool IsFinished() {
 			return ProxyQSound().IsFinished();
 		}
 		[Q_SLOT("void play()")]
-		[SmokeMethod("play", "()")]
+		[SmokeMethod("play", "()", "")]
 		public void Play() {
 			ProxyQSound().Play();
 		}
 		[Q_SLOT("void stop()")]
-		[SmokeMethod("stop", "()")]
+		[SmokeMethod("stop", "()", "")]
 		public void Stop() {
 			ProxyQSound().Stop();
 		}
@@ -99,7 +99,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQSound();
 		}
-		[SmokeMethod("~QSound", "()")]
+		[SmokeMethod("~QSound", "()", "")]
 		private void DisposeQSound() {
 			ProxyQSound().DisposeQSound();
 		}

@@ -449,18 +449,27 @@ namespace Qyoto
 
 	[AttributeUsage(	AttributeTargets.Constructor 
 						| AttributeTargets.Method
-						| AttributeTargets.Interface)]
+						| AttributeTargets.Interface )]
 	class SmokeMethod : Attribute
 	{
-		public string mungedName;
-		public string signature;
+		public string name;
+		public string argsSignature;
+		public string mungedSignature;
 		public int methodId = -1;
 
-		public string MungedName
+		public string Name
 		{
 			get
 			{
-				return mungedName;
+				return name;
+			}
+		}
+	
+		public string ArgsSignature
+		{
+			get
+			{
+				return argsSignature;
 			}
 		}
 	
@@ -468,14 +477,23 @@ namespace Qyoto
 		{
 			get
 			{
-				return signature;
+				return name + argsSignature;
+			}
+		}
+
+		public string MungedName
+		{
+			get
+			{
+				return name + mungedSignature;
 			}
 		}
 	
-		public SmokeMethod(string mungedName, string signature)
+		public SmokeMethod(string name, string argsSignature, string mungedSignature)
 		{
-			this.mungedName = mungedName;
-			this.signature = signature;
+			this.name = name;
+			this.argsSignature = argsSignature;
+			this.mungedSignature = mungedSignature;
 		}
 	}
 	

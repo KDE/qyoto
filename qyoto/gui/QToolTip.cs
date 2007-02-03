@@ -11,21 +11,21 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QToolTip(Type dummy) {}
 		interface IQToolTipProxy {
-			[SmokeMethod("showText#$#", "(const QPoint&, const QString&, QWidget*)")]
+			[SmokeMethod("showText", "(const QPoint&, const QString&, QWidget*)", "#$#")]
 			void ShowText(QPoint pos, string text, QWidget w);
-			[SmokeMethod("showText#$", "(const QPoint&, const QString&)")]
+			[SmokeMethod("showText", "(const QPoint&, const QString&)", "#$")]
 			void ShowText(QPoint pos, string text);
-			[SmokeMethod("showText#$##", "(const QPoint&, const QString&, QWidget*, const QRect&)")]
+			[SmokeMethod("showText", "(const QPoint&, const QString&, QWidget*, const QRect&)", "#$##")]
 			void ShowText(QPoint pos, string text, QWidget w, QRect rect);
-			[SmokeMethod("hideText", "()")]
+			[SmokeMethod("hideText", "()", "")]
 			void HideText();
-			[SmokeMethod("palette", "()")]
+			[SmokeMethod("palette", "()", "")]
 			QPalette Palette();
-			[SmokeMethod("setPalette#", "(const QPalette&)")]
+			[SmokeMethod("setPalette", "(const QPalette&)", "#")]
 			void SetPalette(QPalette arg1);
-			[SmokeMethod("font", "()")]
+			[SmokeMethod("font", "()", "")]
 			QFont Font();
-			[SmokeMethod("setFont#", "(const QFont&)")]
+			[SmokeMethod("setFont", "(const QFont&)", "#")]
 			void SetFont(QFont arg1);
 		}
 
@@ -75,7 +75,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQToolTip();
 		}
-		[SmokeMethod("~QToolTip", "()")]
+		[SmokeMethod("~QToolTip", "()", "")]
 		private void DisposeQToolTip() {
 			ProxyQToolTip().DisposeQToolTip();
 		}

@@ -29,7 +29,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQConicalGradient();
 		}
-		[SmokeMethod("QConicalGradient", "()")]
+		[SmokeMethod("QConicalGradient", "()", "")]
 		private void NewQConicalGradient() {
 			ProxyQConicalGradient().NewQConicalGradient();
 		}
@@ -37,7 +37,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQConicalGradient(center,startAngle);
 		}
-		[SmokeMethod("QConicalGradient#$", "(const QPointF&, qreal)")]
+		[SmokeMethod("QConicalGradient", "(const QPointF&, qreal)", "#$")]
 		private void NewQConicalGradient(QPointF center, double startAngle) {
 			ProxyQConicalGradient().NewQConicalGradient(center,startAngle);
 		}
@@ -45,27 +45,27 @@ namespace Qyoto {
 			CreateProxy();
 			NewQConicalGradient(cx,cy,startAngle);
 		}
-		[SmokeMethod("QConicalGradient$$$", "(qreal, qreal, qreal)")]
+		[SmokeMethod("QConicalGradient", "(qreal, qreal, qreal)", "$$$")]
 		private void NewQConicalGradient(double cx, double cy, double startAngle) {
 			ProxyQConicalGradient().NewQConicalGradient(cx,cy,startAngle);
 		}
-		[SmokeMethod("center", "() const")]
+		[SmokeMethod("center", "() const", "")]
 		public QPointF Center() {
 			return ProxyQConicalGradient().Center();
 		}
-		[SmokeMethod("setCenter#", "(const QPointF&)")]
+		[SmokeMethod("setCenter", "(const QPointF&)", "#")]
 		public void SetCenter(QPointF center) {
 			ProxyQConicalGradient().SetCenter(center);
 		}
-		[SmokeMethod("setCenter$$", "(qreal, qreal)")]
+		[SmokeMethod("setCenter", "(qreal, qreal)", "$$")]
 		public void SetCenter(double x, double y) {
 			ProxyQConicalGradient().SetCenter(x,y);
 		}
-		[SmokeMethod("angle", "() const")]
+		[SmokeMethod("angle", "() const", "")]
 		public double Angle() {
 			return ProxyQConicalGradient().Angle();
 		}
-		[SmokeMethod("setAngle$", "(qreal)")]
+		[SmokeMethod("setAngle", "(qreal)", "$")]
 		public void SetAngle(double angle) {
 			ProxyQConicalGradient().SetAngle(angle);
 		}
@@ -75,7 +75,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQConicalGradient();
 		}
-		[SmokeMethod("~QConicalGradient", "()")]
+		[SmokeMethod("~QConicalGradient", "()", "")]
 		private void DisposeQConicalGradient() {
 			ProxyQConicalGradient().DisposeQConicalGradient();
 		}

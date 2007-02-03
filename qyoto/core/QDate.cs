@@ -16,31 +16,31 @@ namespace Qyoto {
 			bool op_lte(QDate lhs, QDate other);
 			bool op_gt(QDate lhs, QDate other);
 			bool op_gte(QDate lhs, QDate other);
-			[SmokeMethod("shortMonthName$", "(int)")]
+			[SmokeMethod("shortMonthName", "(int)", "$")]
 			string ShortMonthName(int month);
-			[SmokeMethod("shortDayName$", "(int)")]
+			[SmokeMethod("shortDayName", "(int)", "$")]
 			string ShortDayName(int weekday);
-			[SmokeMethod("longMonthName$", "(int)")]
+			[SmokeMethod("longMonthName", "(int)", "$")]
 			string LongMonthName(int month);
-			[SmokeMethod("longDayName$", "(int)")]
+			[SmokeMethod("longDayName", "(int)", "$")]
 			string LongDayName(int weekday);
-			[SmokeMethod("currentDate", "()")]
+			[SmokeMethod("currentDate", "()", "")]
 			QDate CurrentDate();
-			[SmokeMethod("fromString$$", "(const QString&, Qt::DateFormat)")]
+			[SmokeMethod("fromString", "(const QString&, Qt::DateFormat)", "$$")]
 			QDate FromString(string s, Qt.DateFormat f);
-			[SmokeMethod("fromString$", "(const QString&)")]
+			[SmokeMethod("fromString", "(const QString&)", "$")]
 			QDate FromString(string s);
-			[SmokeMethod("fromString$$", "(const QString&, const QString&)")]
+			[SmokeMethod("fromString", "(const QString&, const QString&)", "$$")]
 			QDate FromString(string s, string format);
-			[SmokeMethod("isValid$$$", "(int, int, int)")]
+			[SmokeMethod("isValid", "(int, int, int)", "$$$")]
 			bool IsValid(int y, int m, int d);
-			[SmokeMethod("isLeapYear$", "(int)")]
+			[SmokeMethod("isLeapYear", "(int)", "$")]
 			bool IsLeapYear(int year);
-			[SmokeMethod("gregorianToJulian$$$", "(int, int, int)")]
+			[SmokeMethod("gregorianToJulian", "(int, int, int)", "$$$")]
 			uint GregorianToJulian(int y, int m, int d);
-			[SmokeMethod("julianToGregorian$$$$", "(uint, int&, int&, int&)")]
+			[SmokeMethod("julianToGregorian", "(uint, int&, int&, int&)", "$$$$")]
 			void JulianToGregorian(uint jd, out int y, out int m, out int d);
-			[SmokeMethod("fromJulianDay$", "(int)")]
+			[SmokeMethod("fromJulianDay", "(int)", "$")]
 			QDate FromJulianDay(int jd);
 		}
 
@@ -64,7 +64,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDate();
 		}
-		[SmokeMethod("QDate", "()")]
+		[SmokeMethod("QDate", "()", "")]
 		private void NewQDate() {
 			ProxyQDate().NewQDate();
 		}
@@ -72,91 +72,91 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDate(y,m,d);
 		}
-		[SmokeMethod("QDate$$$", "(int, int, int)")]
+		[SmokeMethod("QDate", "(int, int, int)", "$$$")]
 		private void NewQDate(int y, int m, int d) {
 			ProxyQDate().NewQDate(y,m,d);
 		}
-		[SmokeMethod("isNull", "() const")]
+		[SmokeMethod("isNull", "() const", "")]
 		public bool IsNull() {
 			return ProxyQDate().IsNull();
 		}
-		[SmokeMethod("isValid", "() const")]
+		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
 			return ProxyQDate().IsValid();
 		}
-		[SmokeMethod("year", "() const")]
+		[SmokeMethod("year", "() const", "")]
 		public int Year() {
 			return ProxyQDate().Year();
 		}
-		[SmokeMethod("month", "() const")]
+		[SmokeMethod("month", "() const", "")]
 		public int Month() {
 			return ProxyQDate().Month();
 		}
-		[SmokeMethod("day", "() const")]
+		[SmokeMethod("day", "() const", "")]
 		public int Day() {
 			return ProxyQDate().Day();
 		}
-		[SmokeMethod("dayOfWeek", "() const")]
+		[SmokeMethod("dayOfWeek", "() const", "")]
 		public int DayOfWeek() {
 			return ProxyQDate().DayOfWeek();
 		}
-		[SmokeMethod("dayOfYear", "() const")]
+		[SmokeMethod("dayOfYear", "() const", "")]
 		public int DayOfYear() {
 			return ProxyQDate().DayOfYear();
 		}
-		[SmokeMethod("daysInMonth", "() const")]
+		[SmokeMethod("daysInMonth", "() const", "")]
 		public int DaysInMonth() {
 			return ProxyQDate().DaysInMonth();
 		}
-		[SmokeMethod("daysInYear", "() const")]
+		[SmokeMethod("daysInYear", "() const", "")]
 		public int DaysInYear() {
 			return ProxyQDate().DaysInYear();
 		}
-		[SmokeMethod("weekNumber$", "(int*) const")]
+		[SmokeMethod("weekNumber", "(int*) const", "$")]
 		public int WeekNumber(out int yearNum) {
 			return ProxyQDate().WeekNumber(out yearNum);
 		}
-		[SmokeMethod("weekNumber", "() const")]
+		[SmokeMethod("weekNumber", "() const", "")]
 		public int WeekNumber() {
 			return ProxyQDate().WeekNumber();
 		}
-		[SmokeMethod("toString$", "(Qt::DateFormat) const")]
+		[SmokeMethod("toString", "(Qt::DateFormat) const", "$")]
 		public new string ToString(Qt.DateFormat f) {
 			return ProxyQDate().ToString(f);
 		}
-		[SmokeMethod("toString", "() const")]
+		[SmokeMethod("toString", "() const", "")]
 		public new string ToString() {
 			return ProxyQDate().ToString();
 		}
-		[SmokeMethod("toString$", "(const QString&) const")]
+		[SmokeMethod("toString", "(const QString&) const", "$")]
 		public new string ToString(string format) {
 			return ProxyQDate().ToString(format);
 		}
-		[SmokeMethod("setYMD$$$", "(int, int, int)")]
+		[SmokeMethod("setYMD", "(int, int, int)", "$$$")]
 		public bool SetYMD(int y, int m, int d) {
 			return ProxyQDate().SetYMD(y,m,d);
 		}
-		[SmokeMethod("setDate$$$", "(int, int, int)")]
+		[SmokeMethod("setDate", "(int, int, int)", "$$$")]
 		public bool SetDate(int year, int month, int date) {
 			return ProxyQDate().SetDate(year,month,date);
 		}
-		[SmokeMethod("addDays$", "(int) const")]
+		[SmokeMethod("addDays", "(int) const", "$")]
 		public QDate AddDays(int days) {
 			return ProxyQDate().AddDays(days);
 		}
-		[SmokeMethod("addMonths$", "(int) const")]
+		[SmokeMethod("addMonths", "(int) const", "$")]
 		public QDate AddMonths(int months) {
 			return ProxyQDate().AddMonths(months);
 		}
-		[SmokeMethod("addYears$", "(int) const")]
+		[SmokeMethod("addYears", "(int) const", "$")]
 		public QDate AddYears(int years) {
 			return ProxyQDate().AddYears(years);
 		}
-		[SmokeMethod("daysTo#", "(const QDate&) const")]
+		[SmokeMethod("daysTo", "(const QDate&) const", "#")]
 		public int DaysTo(QDate arg1) {
 			return ProxyQDate().DaysTo(arg1);
 		}
-		[SmokeMethod("operator==#", "(const QDate&) const")]
+		[SmokeMethod("operator==", "(const QDate&) const", "#")]
 		public static bool operator==(QDate lhs, QDate other) {
 			return StaticQDate().op_equals(lhs,other);
 		}
@@ -170,23 +170,23 @@ namespace Qyoto {
 		public override int GetHashCode() {
 			return ProxyQDate().GetHashCode();
 		}
-		[SmokeMethod("operator<#", "(const QDate&) const")]
+		[SmokeMethod("operator<", "(const QDate&) const", "#")]
 		public static bool operator<(QDate lhs, QDate other) {
 			return StaticQDate().op_lt(lhs,other);
 		}
-		[SmokeMethod("operator<=#", "(const QDate&) const")]
+		[SmokeMethod("operator<=", "(const QDate&) const", "#")]
 		public static bool operator<=(QDate lhs, QDate other) {
 			return StaticQDate().op_lte(lhs,other);
 		}
-		[SmokeMethod("operator>#", "(const QDate&) const")]
+		[SmokeMethod("operator>", "(const QDate&) const", "#")]
 		public static bool operator>(QDate lhs, QDate other) {
 			return StaticQDate().op_gt(lhs,other);
 		}
-		[SmokeMethod("operator>=#", "(const QDate&) const")]
+		[SmokeMethod("operator>=", "(const QDate&) const", "#")]
 		public static bool operator>=(QDate lhs, QDate other) {
 			return StaticQDate().op_gte(lhs,other);
 		}
-		[SmokeMethod("toJulianDay", "() const")]
+		[SmokeMethod("toJulianDay", "() const", "")]
 		public int ToJulianDay() {
 			return ProxyQDate().ToJulianDay();
 		}
@@ -235,7 +235,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQDate();
 		}
-		[SmokeMethod("~QDate", "()")]
+		[SmokeMethod("~QDate", "()", "")]
 		private void DisposeQDate() {
 			ProxyQDate().DisposeQDate();
 		}

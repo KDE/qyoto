@@ -45,9 +45,9 @@ namespace Qyoto {
 	public class QIODevice : QObject {
  		protected QIODevice(Type dummy) : base((Type) null) {}
 		interface IQIODeviceProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
 
@@ -82,7 +82,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQIODevice();
 		}
-		[SmokeMethod("QIODevice", "()")]
+		[SmokeMethod("QIODevice", "()", "")]
 		private void NewQIODevice() {
 			ProxyQIODevice().NewQIODevice();
 		}
@@ -90,139 +90,139 @@ namespace Qyoto {
 			CreateProxy();
 			NewQIODevice(parent);
 		}
-		[SmokeMethod("QIODevice#", "(QObject*)")]
+		[SmokeMethod("QIODevice", "(QObject*)", "#")]
 		private void NewQIODevice(QObject parent) {
 			ProxyQIODevice().NewQIODevice(parent);
 		}
-		[SmokeMethod("openMode", "() const")]
+		[SmokeMethod("openMode", "() const", "")]
 		public int OpenMode() {
 			return ProxyQIODevice().OpenMode();
 		}
-		[SmokeMethod("setTextModeEnabled$", "(bool)")]
+		[SmokeMethod("setTextModeEnabled", "(bool)", "$")]
 		public void SetTextModeEnabled(bool enabled) {
 			ProxyQIODevice().SetTextModeEnabled(enabled);
 		}
-		[SmokeMethod("isTextModeEnabled", "() const")]
+		[SmokeMethod("isTextModeEnabled", "() const", "")]
 		public bool IsTextModeEnabled() {
 			return ProxyQIODevice().IsTextModeEnabled();
 		}
-		[SmokeMethod("isOpen", "() const")]
+		[SmokeMethod("isOpen", "() const", "")]
 		public bool IsOpen() {
 			return ProxyQIODevice().IsOpen();
 		}
-		[SmokeMethod("isReadable", "() const")]
+		[SmokeMethod("isReadable", "() const", "")]
 		public bool IsReadable() {
 			return ProxyQIODevice().IsReadable();
 		}
-		[SmokeMethod("isWritable", "() const")]
+		[SmokeMethod("isWritable", "() const", "")]
 		public bool IsWritable() {
 			return ProxyQIODevice().IsWritable();
 		}
-		[SmokeMethod("isSequential", "() const")]
+		[SmokeMethod("isSequential", "() const", "")]
 		public virtual bool IsSequential() {
 			return ProxyQIODevice().IsSequential();
 		}
-		[SmokeMethod("open$", "(OpenMode)")]
+		[SmokeMethod("open", "(OpenMode)", "$")]
 		public virtual bool Open(int mode) {
 			return ProxyQIODevice().Open(mode);
 		}
-		[SmokeMethod("close", "()")]
+		[SmokeMethod("close", "()", "")]
 		public virtual void Close() {
 			ProxyQIODevice().Close();
 		}
-		[SmokeMethod("pos", "() const")]
+		[SmokeMethod("pos", "() const", "")]
 		public virtual long Pos() {
 			return ProxyQIODevice().Pos();
 		}
-		[SmokeMethod("size", "() const")]
+		[SmokeMethod("size", "() const", "")]
 		public virtual long Size() {
 			return ProxyQIODevice().Size();
 		}
-		[SmokeMethod("seek$", "(qint64)")]
+		[SmokeMethod("seek", "(qint64)", "$")]
 		public virtual bool Seek(long pos) {
 			return ProxyQIODevice().Seek(pos);
 		}
-		[SmokeMethod("atEnd", "() const")]
+		[SmokeMethod("atEnd", "() const", "")]
 		public virtual bool AtEnd() {
 			return ProxyQIODevice().AtEnd();
 		}
-		[SmokeMethod("reset", "()")]
+		[SmokeMethod("reset", "()", "")]
 		public virtual bool Reset() {
 			return ProxyQIODevice().Reset();
 		}
-		[SmokeMethod("bytesAvailable", "() const")]
+		[SmokeMethod("bytesAvailable", "() const", "")]
 		public virtual long BytesAvailable() {
 			return ProxyQIODevice().BytesAvailable();
 		}
-		[SmokeMethod("bytesToWrite", "() const")]
+		[SmokeMethod("bytesToWrite", "() const", "")]
 		public virtual long BytesToWrite() {
 			return ProxyQIODevice().BytesToWrite();
 		}
-		[SmokeMethod("read$$", "(char*, qint64)")]
+		[SmokeMethod("read", "(char*, qint64)", "$$")]
 		public long Read(string data, long maxlen) {
 			return ProxyQIODevice().Read(data,maxlen);
 		}
-		[SmokeMethod("read$", "(qint64)")]
+		[SmokeMethod("read", "(qint64)", "$")]
 		public QByteArray Read(long maxlen) {
 			return ProxyQIODevice().Read(maxlen);
 		}
-		[SmokeMethod("readAll", "()")]
+		[SmokeMethod("readAll", "()", "")]
 		public QByteArray ReadAll() {
 			return ProxyQIODevice().ReadAll();
 		}
-		[SmokeMethod("readLine$$", "(char*, qint64)")]
+		[SmokeMethod("readLine", "(char*, qint64)", "$$")]
 		public long ReadLine(string data, long maxlen) {
 			return ProxyQIODevice().ReadLine(data,maxlen);
 		}
-		[SmokeMethod("readLine$", "(qint64)")]
+		[SmokeMethod("readLine", "(qint64)", "$")]
 		public QByteArray ReadLine(long maxlen) {
 			return ProxyQIODevice().ReadLine(maxlen);
 		}
-		[SmokeMethod("readLine", "()")]
+		[SmokeMethod("readLine", "()", "")]
 		public QByteArray ReadLine() {
 			return ProxyQIODevice().ReadLine();
 		}
-		[SmokeMethod("canReadLine", "() const")]
+		[SmokeMethod("canReadLine", "() const", "")]
 		public virtual bool CanReadLine() {
 			return ProxyQIODevice().CanReadLine();
 		}
-		[SmokeMethod("write$$", "(const char*, qint64)")]
+		[SmokeMethod("write", "(const char*, qint64)", "$$")]
 		public long Write(string data, long len) {
 			return ProxyQIODevice().Write(data,len);
 		}
-		[SmokeMethod("write#", "(const QByteArray&)")]
+		[SmokeMethod("write", "(const QByteArray&)", "#")]
 		public long Write(QByteArray data) {
 			return ProxyQIODevice().Write(data);
 		}
-		[SmokeMethod("peek$$", "(char*, qint64)")]
+		[SmokeMethod("peek", "(char*, qint64)", "$$")]
 		public long Peek(string data, long maxlen) {
 			return ProxyQIODevice().Peek(data,maxlen);
 		}
-		[SmokeMethod("peek$", "(qint64)")]
+		[SmokeMethod("peek", "(qint64)", "$")]
 		public QByteArray Peek(long maxlen) {
 			return ProxyQIODevice().Peek(maxlen);
 		}
-		[SmokeMethod("waitForReadyRead$", "(int)")]
+		[SmokeMethod("waitForReadyRead", "(int)", "$")]
 		public virtual bool WaitForReadyRead(int msecs) {
 			return ProxyQIODevice().WaitForReadyRead(msecs);
 		}
-		[SmokeMethod("waitForBytesWritten$", "(int)")]
+		[SmokeMethod("waitForBytesWritten", "(int)", "$")]
 		public virtual bool WaitForBytesWritten(int msecs) {
 			return ProxyQIODevice().WaitForBytesWritten(msecs);
 		}
-		[SmokeMethod("ungetChar$", "(char)")]
+		[SmokeMethod("ungetChar", "(char)", "$")]
 		public void UngetChar(char c) {
 			ProxyQIODevice().UngetChar(c);
 		}
-		[SmokeMethod("putChar$", "(char)")]
+		[SmokeMethod("putChar", "(char)", "$")]
 		public bool PutChar(char c) {
 			return ProxyQIODevice().PutChar(c);
 		}
-		[SmokeMethod("getChar$", "(char*)")]
+		[SmokeMethod("getChar", "(char*)", "$")]
 		public bool GetChar(string c) {
 			return ProxyQIODevice().GetChar(c);
 		}
-		[SmokeMethod("errorString", "() const")]
+		[SmokeMethod("errorString", "() const", "")]
 		public string ErrorString() {
 			return ProxyQIODevice().ErrorString();
 		}
@@ -238,7 +238,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQIODevice();
 		}
-		[SmokeMethod("~QIODevice", "()")]
+		[SmokeMethod("~QIODevice", "()", "")]
 		private void DisposeQIODevice() {
 			ProxyQIODevice().DisposeQIODevice();
 		}

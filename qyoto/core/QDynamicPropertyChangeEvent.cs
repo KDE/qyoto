@@ -29,11 +29,11 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDynamicPropertyChangeEvent(name);
 		}
-		[SmokeMethod("QDynamicPropertyChangeEvent#", "(const QByteArray&)")]
+		[SmokeMethod("QDynamicPropertyChangeEvent", "(const QByteArray&)", "#")]
 		private void NewQDynamicPropertyChangeEvent(QByteArray name) {
 			ProxyQDynamicPropertyChangeEvent().NewQDynamicPropertyChangeEvent(name);
 		}
-		[SmokeMethod("propertyName", "() const")]
+		[SmokeMethod("propertyName", "() const", "")]
 		public QByteArray PropertyName() {
 			return ProxyQDynamicPropertyChangeEvent().PropertyName();
 		}
@@ -43,7 +43,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQDynamicPropertyChangeEvent();
 		}
-		[SmokeMethod("~QDynamicPropertyChangeEvent", "()")]
+		[SmokeMethod("~QDynamicPropertyChangeEvent", "()", "")]
 		private void DisposeQDynamicPropertyChangeEvent() {
 			ProxyQDynamicPropertyChangeEvent().DisposeQDynamicPropertyChangeEvent();
 		}

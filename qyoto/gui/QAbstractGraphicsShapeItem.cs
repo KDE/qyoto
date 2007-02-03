@@ -29,7 +29,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQAbstractGraphicsShapeItem(parent,scene);
 		}
-		[SmokeMethod("QAbstractGraphicsShapeItem##", "(QGraphicsItem*, QGraphicsScene*)")]
+		[SmokeMethod("QAbstractGraphicsShapeItem", "(QGraphicsItem*, QGraphicsScene*)", "##")]
 		private void NewQAbstractGraphicsShapeItem(QGraphicsItem parent, QGraphicsScene scene) {
 			ProxyQAbstractGraphicsShapeItem().NewQAbstractGraphicsShapeItem(parent,scene);
 		}
@@ -37,7 +37,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQAbstractGraphicsShapeItem(parent);
 		}
-		[SmokeMethod("QAbstractGraphicsShapeItem#", "(QGraphicsItem*)")]
+		[SmokeMethod("QAbstractGraphicsShapeItem", "(QGraphicsItem*)", "#")]
 		private void NewQAbstractGraphicsShapeItem(QGraphicsItem parent) {
 			ProxyQAbstractGraphicsShapeItem().NewQAbstractGraphicsShapeItem(parent);
 		}
@@ -45,31 +45,31 @@ namespace Qyoto {
 			CreateProxy();
 			NewQAbstractGraphicsShapeItem();
 		}
-		[SmokeMethod("QAbstractGraphicsShapeItem", "()")]
+		[SmokeMethod("QAbstractGraphicsShapeItem", "()", "")]
 		private void NewQAbstractGraphicsShapeItem() {
 			ProxyQAbstractGraphicsShapeItem().NewQAbstractGraphicsShapeItem();
 		}
-		[SmokeMethod("pen", "() const")]
+		[SmokeMethod("pen", "() const", "")]
 		public QPen Pen() {
 			return ProxyQAbstractGraphicsShapeItem().Pen();
 		}
-		[SmokeMethod("setPen#", "(const QPen&)")]
+		[SmokeMethod("setPen", "(const QPen&)", "#")]
 		public void SetPen(QPen pen) {
 			ProxyQAbstractGraphicsShapeItem().SetPen(pen);
 		}
-		[SmokeMethod("brush", "() const")]
+		[SmokeMethod("brush", "() const", "")]
 		public QBrush Brush() {
 			return ProxyQAbstractGraphicsShapeItem().Brush();
 		}
-		[SmokeMethod("setBrush#", "(const QBrush&)")]
+		[SmokeMethod("setBrush", "(const QBrush&)", "#")]
 		public void SetBrush(QBrush brush) {
 			ProxyQAbstractGraphicsShapeItem().SetBrush(brush);
 		}
-		[SmokeMethod("isObscuredBy#", "(const QGraphicsItem*) const")]
+		[SmokeMethod("isObscuredBy", "(const QGraphicsItem*) const", "#")]
 		public new bool IsObscuredBy(QGraphicsItem item) {
 			return ProxyQAbstractGraphicsShapeItem().IsObscuredBy(item);
 		}
-		[SmokeMethod("opaqueArea", "() const")]
+		[SmokeMethod("opaqueArea", "() const", "")]
 		public new QPainterPath OpaqueArea() {
 			return ProxyQAbstractGraphicsShapeItem().OpaqueArea();
 		}
@@ -79,7 +79,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQAbstractGraphicsShapeItem();
 		}
-		[SmokeMethod("~QAbstractGraphicsShapeItem", "()")]
+		[SmokeMethod("~QAbstractGraphicsShapeItem", "()", "")]
 		private void DisposeQAbstractGraphicsShapeItem() {
 			ProxyQAbstractGraphicsShapeItem().DisposeQAbstractGraphicsShapeItem();
 		}

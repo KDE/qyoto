@@ -33,55 +33,55 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTextInlineObject();
 		}
-		[SmokeMethod("QTextInlineObject", "()")]
+		[SmokeMethod("QTextInlineObject", "()", "")]
 		private void NewQTextInlineObject() {
 			ProxyQTextInlineObject().NewQTextInlineObject();
 		}
-		[SmokeMethod("isValid", "() const")]
+		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
 			return ProxyQTextInlineObject().IsValid();
 		}
-		[SmokeMethod("rect", "() const")]
+		[SmokeMethod("rect", "() const", "")]
 		public QRectF Rect() {
 			return ProxyQTextInlineObject().Rect();
 		}
-		[SmokeMethod("width", "() const")]
+		[SmokeMethod("width", "() const", "")]
 		public double Width() {
 			return ProxyQTextInlineObject().Width();
 		}
-		[SmokeMethod("ascent", "() const")]
+		[SmokeMethod("ascent", "() const", "")]
 		public double Ascent() {
 			return ProxyQTextInlineObject().Ascent();
 		}
-		[SmokeMethod("descent", "() const")]
+		[SmokeMethod("descent", "() const", "")]
 		public double Descent() {
 			return ProxyQTextInlineObject().Descent();
 		}
-		[SmokeMethod("height", "() const")]
+		[SmokeMethod("height", "() const", "")]
 		public double Height() {
 			return ProxyQTextInlineObject().Height();
 		}
-		[SmokeMethod("textDirection", "() const")]
+		[SmokeMethod("textDirection", "() const", "")]
 		public Qt.LayoutDirection TextDirection() {
 			return ProxyQTextInlineObject().TextDirection();
 		}
-		[SmokeMethod("setWidth$", "(qreal)")]
+		[SmokeMethod("setWidth", "(qreal)", "$")]
 		public void SetWidth(double w) {
 			ProxyQTextInlineObject().SetWidth(w);
 		}
-		[SmokeMethod("setAscent$", "(qreal)")]
+		[SmokeMethod("setAscent", "(qreal)", "$")]
 		public void SetAscent(double a) {
 			ProxyQTextInlineObject().SetAscent(a);
 		}
-		[SmokeMethod("setDescent$", "(qreal)")]
+		[SmokeMethod("setDescent", "(qreal)", "$")]
 		public void SetDescent(double d) {
 			ProxyQTextInlineObject().SetDescent(d);
 		}
-		[SmokeMethod("textPosition", "() const")]
+		[SmokeMethod("textPosition", "() const", "")]
 		public int TextPosition() {
 			return ProxyQTextInlineObject().TextPosition();
 		}
-		[SmokeMethod("formatIndex", "() const")]
+		[SmokeMethod("formatIndex", "() const", "")]
 		public int FormatIndex() {
 			return ProxyQTextInlineObject().FormatIndex();
 		}
@@ -92,7 +92,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQTextInlineObject();
 		}
-		[SmokeMethod("~QTextInlineObject", "()")]
+		[SmokeMethod("~QTextInlineObject", "()", "")]
 		private void DisposeQTextInlineObject() {
 			ProxyQTextInlineObject().DisposeQTextInlineObject();
 		}

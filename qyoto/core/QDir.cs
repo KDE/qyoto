@@ -13,45 +13,45 @@ namespace Qyoto {
 		protected QDir(Type dummy) {}
 		interface IQDirProxy {
 			bool op_equals(QDir lhs, QDir dir);
-			[SmokeMethod("addResourceSearchPath$", "(const QString&)")]
+			[SmokeMethod("addResourceSearchPath", "(const QString&)", "$")]
 			void AddResourceSearchPath(string path);
-			[SmokeMethod("convertSeparators$", "(const QString&)")]
+			[SmokeMethod("convertSeparators", "(const QString&)", "$")]
 			string ConvertSeparators(string pathName);
-			[SmokeMethod("toNativeSeparators$", "(const QString&)")]
+			[SmokeMethod("toNativeSeparators", "(const QString&)", "$")]
 			string ToNativeSeparators(string pathName);
-			[SmokeMethod("fromNativeSeparators$", "(const QString&)")]
+			[SmokeMethod("fromNativeSeparators", "(const QString&)", "$")]
 			string FromNativeSeparators(string pathName);
-			[SmokeMethod("nameFiltersFromString$", "(const QString&)")]
+			[SmokeMethod("nameFiltersFromString", "(const QString&)", "$")]
 			List<string> NameFiltersFromString(string nameFilter);
-			[SmokeMethod("isRelativePath$", "(const QString&)")]
+			[SmokeMethod("isRelativePath", "(const QString&)", "$")]
 			bool IsRelativePath(string path);
-			[SmokeMethod("isAbsolutePath$", "(const QString&)")]
+			[SmokeMethod("isAbsolutePath", "(const QString&)", "$")]
 			bool IsAbsolutePath(string path);
-			[SmokeMethod("separator", "()")]
+			[SmokeMethod("separator", "()", "")]
 			char Separator();
-			[SmokeMethod("setCurrent$", "(const QString&)")]
+			[SmokeMethod("setCurrent", "(const QString&)", "$")]
 			bool SetCurrent(string path);
-			[SmokeMethod("current", "()")]
+			[SmokeMethod("current", "()", "")]
 			QDir Current();
-			[SmokeMethod("currentPath", "()")]
+			[SmokeMethod("currentPath", "()", "")]
 			string CurrentPath();
-			[SmokeMethod("home", "()")]
+			[SmokeMethod("home", "()", "")]
 			QDir Home();
-			[SmokeMethod("homePath", "()")]
+			[SmokeMethod("homePath", "()", "")]
 			string HomePath();
-			[SmokeMethod("root", "()")]
+			[SmokeMethod("root", "()", "")]
 			QDir Root();
-			[SmokeMethod("rootPath", "()")]
+			[SmokeMethod("rootPath", "()", "")]
 			string RootPath();
-			[SmokeMethod("temp", "()")]
+			[SmokeMethod("temp", "()", "")]
 			QDir Temp();
-			[SmokeMethod("tempPath", "()")]
+			[SmokeMethod("tempPath", "()", "")]
 			string TempPath();
-			[SmokeMethod("match?$", "(const QStringList&, const QString&)")]
+			[SmokeMethod("match", "(const QStringList&, const QString&)", "?$")]
 			bool Match(List<string> filters, string fileName);
-			[SmokeMethod("match$$", "(const QString&, const QString&)")]
+			[SmokeMethod("match", "(const QString&, const QString&)", "$$")]
 			bool Match(string filter, string fileName);
-			[SmokeMethod("cleanPath$", "(const QString&)")]
+			[SmokeMethod("cleanPath", "(const QString&)", "$")]
 			string CleanPath(string path);
 		}
 
@@ -109,7 +109,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDir(arg1);
 		}
-		[SmokeMethod("QDir#", "(const QDir&)")]
+		[SmokeMethod("QDir", "(const QDir&)", "#")]
 		private void NewQDir(QDir arg1) {
 			ProxyQDir().NewQDir(arg1);
 		}
@@ -117,7 +117,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDir(path);
 		}
-		[SmokeMethod("QDir$", "(const QString&)")]
+		[SmokeMethod("QDir", "(const QString&)", "$")]
 		private void NewQDir(string path) {
 			ProxyQDir().NewQDir(path);
 		}
@@ -125,7 +125,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDir();
 		}
-		[SmokeMethod("QDir", "()")]
+		[SmokeMethod("QDir", "()", "")]
 		private void NewQDir() {
 			ProxyQDir().NewQDir();
 		}
@@ -133,7 +133,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDir(path,nameFilter,sort,filter);
 		}
-		[SmokeMethod("QDir$$$$", "(const QString&, const QString&, SortFlags, Filters)")]
+		[SmokeMethod("QDir", "(const QString&, const QString&, SortFlags, Filters)", "$$$$")]
 		private void NewQDir(string path, string nameFilter, int sort, int filter) {
 			ProxyQDir().NewQDir(path,nameFilter,sort,filter);
 		}
@@ -141,7 +141,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDir(path,nameFilter,sort);
 		}
-		[SmokeMethod("QDir$$$", "(const QString&, const QString&, SortFlags)")]
+		[SmokeMethod("QDir", "(const QString&, const QString&, SortFlags)", "$$$")]
 		private void NewQDir(string path, string nameFilter, int sort) {
 			ProxyQDir().NewQDir(path,nameFilter,sort);
 		}
@@ -149,99 +149,99 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDir(path,nameFilter);
 		}
-		[SmokeMethod("QDir$$", "(const QString&, const QString&)")]
+		[SmokeMethod("QDir", "(const QString&, const QString&)", "$$")]
 		private void NewQDir(string path, string nameFilter) {
 			ProxyQDir().NewQDir(path,nameFilter);
 		}
-		[SmokeMethod("setPath$", "(const QString&)")]
+		[SmokeMethod("setPath", "(const QString&)", "$")]
 		public void SetPath(string path) {
 			ProxyQDir().SetPath(path);
 		}
-		[SmokeMethod("path", "() const")]
+		[SmokeMethod("path", "() const", "")]
 		public string Path() {
 			return ProxyQDir().Path();
 		}
-		[SmokeMethod("absolutePath", "() const")]
+		[SmokeMethod("absolutePath", "() const", "")]
 		public string AbsolutePath() {
 			return ProxyQDir().AbsolutePath();
 		}
-		[SmokeMethod("canonicalPath", "() const")]
+		[SmokeMethod("canonicalPath", "() const", "")]
 		public string CanonicalPath() {
 			return ProxyQDir().CanonicalPath();
 		}
-		[SmokeMethod("dirName", "() const")]
+		[SmokeMethod("dirName", "() const", "")]
 		public string DirName() {
 			return ProxyQDir().DirName();
 		}
-		[SmokeMethod("filePath$", "(const QString&) const")]
+		[SmokeMethod("filePath", "(const QString&) const", "$")]
 		public string FilePath(string fileName) {
 			return ProxyQDir().FilePath(fileName);
 		}
-		[SmokeMethod("absoluteFilePath$", "(const QString&) const")]
+		[SmokeMethod("absoluteFilePath", "(const QString&) const", "$")]
 		public string AbsoluteFilePath(string fileName) {
 			return ProxyQDir().AbsoluteFilePath(fileName);
 		}
-		[SmokeMethod("relativeFilePath$", "(const QString&) const")]
+		[SmokeMethod("relativeFilePath", "(const QString&) const", "$")]
 		public string RelativeFilePath(string fileName) {
 			return ProxyQDir().RelativeFilePath(fileName);
 		}
-		[SmokeMethod("cd$", "(const QString&)")]
+		[SmokeMethod("cd", "(const QString&)", "$")]
 		public bool Cd(string dirName) {
 			return ProxyQDir().Cd(dirName);
 		}
-		[SmokeMethod("cdUp", "()")]
+		[SmokeMethod("cdUp", "()", "")]
 		public bool CdUp() {
 			return ProxyQDir().CdUp();
 		}
-		[SmokeMethod("nameFilters", "() const")]
+		[SmokeMethod("nameFilters", "() const", "")]
 		public List<string> NameFilters() {
 			return ProxyQDir().NameFilters();
 		}
-		[SmokeMethod("setNameFilters?", "(const QStringList&)")]
+		[SmokeMethod("setNameFilters", "(const QStringList&)", "?")]
 		public void SetNameFilters(List<string> nameFilters) {
 			ProxyQDir().SetNameFilters(nameFilters);
 		}
-		[SmokeMethod("filter", "() const")]
+		[SmokeMethod("filter", "() const", "")]
 		public int filter() {
 			return ProxyQDir().filter();
 		}
-		[SmokeMethod("setFilter$", "(Filters)")]
+		[SmokeMethod("setFilter", "(Filters)", "$")]
 		public void SetFilter(int filter) {
 			ProxyQDir().SetFilter(filter);
 		}
-		[SmokeMethod("sorting", "() const")]
+		[SmokeMethod("sorting", "() const", "")]
 		public int Sorting() {
 			return ProxyQDir().Sorting();
 		}
-		[SmokeMethod("setSorting$", "(SortFlags)")]
+		[SmokeMethod("setSorting", "(SortFlags)", "$")]
 		public void SetSorting(int sort) {
 			ProxyQDir().SetSorting(sort);
 		}
-		[SmokeMethod("count", "() const")]
+		[SmokeMethod("count", "() const", "")]
 		public uint Count() {
 			return ProxyQDir().Count();
 		}
-		[SmokeMethod("entryList$$", "(Filters, SortFlags) const")]
+		[SmokeMethod("entryList", "(Filters, SortFlags) const", "$$")]
 		public List<string> EntryList(int filters, int sort) {
 			return ProxyQDir().EntryList(filters,sort);
 		}
-		[SmokeMethod("entryList$", "(Filters) const")]
+		[SmokeMethod("entryList", "(Filters) const", "$")]
 		public List<string> EntryList(int filters) {
 			return ProxyQDir().EntryList(filters);
 		}
-		[SmokeMethod("entryList", "() const")]
+		[SmokeMethod("entryList", "() const", "")]
 		public List<string> EntryList() {
 			return ProxyQDir().EntryList();
 		}
-		[SmokeMethod("entryList?$$", "(const QStringList&, Filters, SortFlags) const")]
+		[SmokeMethod("entryList", "(const QStringList&, Filters, SortFlags) const", "?$$")]
 		public List<string> EntryList(List<string> nameFilters, int filters, int sort) {
 			return ProxyQDir().EntryList(nameFilters,filters,sort);
 		}
-		[SmokeMethod("entryList?$", "(const QStringList&, Filters) const")]
+		[SmokeMethod("entryList", "(const QStringList&, Filters) const", "?$")]
 		public List<string> EntryList(List<string> nameFilters, int filters) {
 			return ProxyQDir().EntryList(nameFilters,filters);
 		}
-		[SmokeMethod("entryList?", "(const QStringList&) const")]
+		[SmokeMethod("entryList", "(const QStringList&) const", "?")]
 		public List<string> EntryList(List<string> nameFilters) {
 			return ProxyQDir().EntryList(nameFilters);
 		}
@@ -251,47 +251,47 @@ namespace Qyoto {
 		// QFileInfoList entryInfoList(const QStringList& arg1,Filters arg2,SortFlags arg3); >>>> NOT CONVERTED
 		// QFileInfoList entryInfoList(const QStringList& arg1,Filters arg2); >>>> NOT CONVERTED
 		// QFileInfoList entryInfoList(const QStringList& arg1); >>>> NOT CONVERTED
-		[SmokeMethod("mkdir$", "(const QString&) const")]
+		[SmokeMethod("mkdir", "(const QString&) const", "$")]
 		public bool Mkdir(string dirName) {
 			return ProxyQDir().Mkdir(dirName);
 		}
-		[SmokeMethod("rmdir$", "(const QString&) const")]
+		[SmokeMethod("rmdir", "(const QString&) const", "$")]
 		public bool Rmdir(string dirName) {
 			return ProxyQDir().Rmdir(dirName);
 		}
-		[SmokeMethod("mkpath$", "(const QString&) const")]
+		[SmokeMethod("mkpath", "(const QString&) const", "$")]
 		public bool Mkpath(string dirPath) {
 			return ProxyQDir().Mkpath(dirPath);
 		}
-		[SmokeMethod("rmpath$", "(const QString&) const")]
+		[SmokeMethod("rmpath", "(const QString&) const", "$")]
 		public bool Rmpath(string dirPath) {
 			return ProxyQDir().Rmpath(dirPath);
 		}
-		[SmokeMethod("isReadable", "() const")]
+		[SmokeMethod("isReadable", "() const", "")]
 		public bool IsReadable() {
 			return ProxyQDir().IsReadable();
 		}
-		[SmokeMethod("exists", "() const")]
+		[SmokeMethod("exists", "() const", "")]
 		public bool Exists() {
 			return ProxyQDir().Exists();
 		}
-		[SmokeMethod("isRoot", "() const")]
+		[SmokeMethod("isRoot", "() const", "")]
 		public bool IsRoot() {
 			return ProxyQDir().IsRoot();
 		}
-		[SmokeMethod("isRelative", "() const")]
+		[SmokeMethod("isRelative", "() const", "")]
 		public bool IsRelative() {
 			return ProxyQDir().IsRelative();
 		}
-		[SmokeMethod("isAbsolute", "() const")]
+		[SmokeMethod("isAbsolute", "() const", "")]
 		public bool IsAbsolute() {
 			return ProxyQDir().IsAbsolute();
 		}
-		[SmokeMethod("makeAbsolute", "()")]
+		[SmokeMethod("makeAbsolute", "()", "")]
 		public bool MakeAbsolute() {
 			return ProxyQDir().MakeAbsolute();
 		}
-		[SmokeMethod("operator==#", "(const QDir&) const")]
+		[SmokeMethod("operator==", "(const QDir&) const", "#")]
 		public static bool operator==(QDir lhs, QDir dir) {
 			return StaticQDir().op_equals(lhs,dir);
 		}
@@ -305,19 +305,19 @@ namespace Qyoto {
 		public override int GetHashCode() {
 			return ProxyQDir().GetHashCode();
 		}
-		[SmokeMethod("remove$", "(const QString&)")]
+		[SmokeMethod("remove", "(const QString&)", "$")]
 		public bool Remove(string fileName) {
 			return ProxyQDir().Remove(fileName);
 		}
-		[SmokeMethod("rename$$", "(const QString&, const QString&)")]
+		[SmokeMethod("rename", "(const QString&, const QString&)", "$$")]
 		public bool Rename(string oldName, string newName) {
 			return ProxyQDir().Rename(oldName,newName);
 		}
-		[SmokeMethod("exists$", "(const QString&) const")]
+		[SmokeMethod("exists", "(const QString&) const", "$")]
 		public bool Exists(string name) {
 			return ProxyQDir().Exists(name);
 		}
-		[SmokeMethod("refresh", "() const")]
+		[SmokeMethod("refresh", "() const", "")]
 		public void Refresh() {
 			ProxyQDir().Refresh();
 		}
@@ -388,7 +388,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQDir();
 		}
-		[SmokeMethod("~QDir", "()")]
+		[SmokeMethod("~QDir", "()", "")]
 		private void DisposeQDir() {
 			ProxyQDir().DisposeQDir();
 		}

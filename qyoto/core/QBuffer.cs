@@ -8,9 +8,9 @@ namespace Qyoto {
 	public class QBuffer : QIODevice, IDisposable {
  		protected QBuffer(Type dummy) : base((Type) null) {}
 		interface IQBufferProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
 
@@ -35,7 +35,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQBuffer(parent);
 		}
-		[SmokeMethod("QBuffer#", "(QObject*)")]
+		[SmokeMethod("QBuffer", "(QObject*)", "#")]
 		private void NewQBuffer(QObject parent) {
 			ProxyQBuffer().NewQBuffer(parent);
 		}
@@ -43,7 +43,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQBuffer();
 		}
-		[SmokeMethod("QBuffer", "()")]
+		[SmokeMethod("QBuffer", "()", "")]
 		private void NewQBuffer() {
 			ProxyQBuffer().NewQBuffer();
 		}
@@ -51,7 +51,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQBuffer(buf,parent);
 		}
-		[SmokeMethod("QBuffer##", "(QByteArray*, QObject*)")]
+		[SmokeMethod("QBuffer", "(QByteArray*, QObject*)", "##")]
 		private void NewQBuffer(QByteArray buf, QObject parent) {
 			ProxyQBuffer().NewQBuffer(buf,parent);
 		}
@@ -59,55 +59,55 @@ namespace Qyoto {
 			CreateProxy();
 			NewQBuffer(buf);
 		}
-		[SmokeMethod("QBuffer#", "(QByteArray*)")]
+		[SmokeMethod("QBuffer", "(QByteArray*)", "#")]
 		private void NewQBuffer(QByteArray buf) {
 			ProxyQBuffer().NewQBuffer(buf);
 		}
-		[SmokeMethod("buffer", "()")]
+		[SmokeMethod("buffer", "()", "")]
 		public QByteArray Buffer() {
 			return ProxyQBuffer().Buffer();
 		}
-		[SmokeMethod("setBuffer#", "(QByteArray*)")]
+		[SmokeMethod("setBuffer", "(QByteArray*)", "#")]
 		public void SetBuffer(QByteArray a) {
 			ProxyQBuffer().SetBuffer(a);
 		}
-		[SmokeMethod("setData#", "(const QByteArray&)")]
+		[SmokeMethod("setData", "(const QByteArray&)", "#")]
 		public void SetData(QByteArray data) {
 			ProxyQBuffer().SetData(data);
 		}
-		[SmokeMethod("setData$$", "(const char*, int)")]
+		[SmokeMethod("setData", "(const char*, int)", "$$")]
 		public void SetData(string data, int len) {
 			ProxyQBuffer().SetData(data,len);
 		}
-		[SmokeMethod("data", "() const")]
+		[SmokeMethod("data", "() const", "")]
 		public QByteArray Data() {
 			return ProxyQBuffer().Data();
 		}
-		[SmokeMethod("open$", "(OpenMode)")]
+		[SmokeMethod("open", "(OpenMode)", "$")]
 		public new bool Open(int openMode) {
 			return ProxyQBuffer().Open(openMode);
 		}
-		[SmokeMethod("close", "()")]
+		[SmokeMethod("close", "()", "")]
 		public new void Close() {
 			ProxyQBuffer().Close();
 		}
-		[SmokeMethod("size", "() const")]
+		[SmokeMethod("size", "() const", "")]
 		public new long Size() {
 			return ProxyQBuffer().Size();
 		}
-		[SmokeMethod("pos", "() const")]
+		[SmokeMethod("pos", "() const", "")]
 		public new long Pos() {
 			return ProxyQBuffer().Pos();
 		}
-		[SmokeMethod("seek$", "(qint64)")]
+		[SmokeMethod("seek", "(qint64)", "$")]
 		public new bool Seek(long off) {
 			return ProxyQBuffer().Seek(off);
 		}
-		[SmokeMethod("atEnd", "() const")]
+		[SmokeMethod("atEnd", "() const", "")]
 		public new bool AtEnd() {
 			return ProxyQBuffer().AtEnd();
 		}
-		[SmokeMethod("canReadLine", "() const")]
+		[SmokeMethod("canReadLine", "() const", "")]
 		public new bool CanReadLine() {
 			return ProxyQBuffer().CanReadLine();
 		}
@@ -117,11 +117,11 @@ namespace Qyoto {
 		public static new string Tr(string s) {
 			return StaticQBuffer().Tr(s);
 		}
-		[SmokeMethod("readData$$", "(char*, qint64)")]
+		[SmokeMethod("readData", "(char*, qint64)", "$$")]
 		protected new long ReadData(string data, long maxlen) {
 			return ProxyQBuffer().ReadData(data,maxlen);
 		}
-		[SmokeMethod("writeData$$", "(const char*, qint64)")]
+		[SmokeMethod("writeData", "(const char*, qint64)", "$$")]
 		protected new long WriteData(string data, long len) {
 			return ProxyQBuffer().WriteData(data,len);
 		}
@@ -131,7 +131,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQBuffer();
 		}
-		[SmokeMethod("~QBuffer", "()")]
+		[SmokeMethod("~QBuffer", "()", "")]
 		private void DisposeQBuffer() {
 			ProxyQBuffer().DisposeQBuffer();
 		}

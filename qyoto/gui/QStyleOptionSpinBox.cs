@@ -35,7 +35,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionSpinBox();
 		}
-		[SmokeMethod("QStyleOptionSpinBox", "()")]
+		[SmokeMethod("QStyleOptionSpinBox", "()", "")]
 		private void NewQStyleOptionSpinBox() {
 			ProxyQStyleOptionSpinBox().NewQStyleOptionSpinBox();
 		}
@@ -43,7 +43,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionSpinBox(other);
 		}
-		[SmokeMethod("QStyleOptionSpinBox#", "(const QStyleOptionSpinBox&)")]
+		[SmokeMethod("QStyleOptionSpinBox", "(const QStyleOptionSpinBox&)", "#")]
 		private void NewQStyleOptionSpinBox(QStyleOptionSpinBox other) {
 			ProxyQStyleOptionSpinBox().NewQStyleOptionSpinBox(other);
 		}
@@ -51,7 +51,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleOptionSpinBox(version);
 		}
-		[SmokeMethod("QStyleOptionSpinBox$", "(int)")]
+		[SmokeMethod("QStyleOptionSpinBox", "(int)", "$")]
 		private void NewQStyleOptionSpinBox(int version) {
 			ProxyQStyleOptionSpinBox().NewQStyleOptionSpinBox(version);
 		}
@@ -61,7 +61,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQStyleOptionSpinBox();
 		}
-		[SmokeMethod("~QStyleOptionSpinBox", "()")]
+		[SmokeMethod("~QStyleOptionSpinBox", "()", "")]
 		private void DisposeQStyleOptionSpinBox() {
 			ProxyQStyleOptionSpinBox().DisposeQStyleOptionSpinBox();
 		}

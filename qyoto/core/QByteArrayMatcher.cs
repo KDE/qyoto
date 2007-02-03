@@ -32,7 +32,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQByteArrayMatcher();
 		}
-		[SmokeMethod("QByteArrayMatcher", "()")]
+		[SmokeMethod("QByteArrayMatcher", "()", "")]
 		private void NewQByteArrayMatcher() {
 			ProxyQByteArrayMatcher().NewQByteArrayMatcher();
 		}
@@ -40,7 +40,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQByteArrayMatcher(pattern);
 		}
-		[SmokeMethod("QByteArrayMatcher#", "(const QByteArray&)")]
+		[SmokeMethod("QByteArrayMatcher", "(const QByteArray&)", "#")]
 		private void NewQByteArrayMatcher(QByteArray pattern) {
 			ProxyQByteArrayMatcher().NewQByteArrayMatcher(pattern);
 		}
@@ -48,23 +48,23 @@ namespace Qyoto {
 			CreateProxy();
 			NewQByteArrayMatcher(other);
 		}
-		[SmokeMethod("QByteArrayMatcher#", "(const QByteArrayMatcher&)")]
+		[SmokeMethod("QByteArrayMatcher", "(const QByteArrayMatcher&)", "#")]
 		private void NewQByteArrayMatcher(QByteArrayMatcher other) {
 			ProxyQByteArrayMatcher().NewQByteArrayMatcher(other);
 		}
-		[SmokeMethod("setPattern#", "(const QByteArray&)")]
+		[SmokeMethod("setPattern", "(const QByteArray&)", "#")]
 		public void SetPattern(QByteArray pattern) {
 			ProxyQByteArrayMatcher().SetPattern(pattern);
 		}
-		[SmokeMethod("indexIn#$", "(const QByteArray&, int) const")]
+		[SmokeMethod("indexIn", "(const QByteArray&, int) const", "#$")]
 		public int IndexIn(QByteArray ba, int from) {
 			return ProxyQByteArrayMatcher().IndexIn(ba,from);
 		}
-		[SmokeMethod("indexIn#", "(const QByteArray&) const")]
+		[SmokeMethod("indexIn", "(const QByteArray&) const", "#")]
 		public int IndexIn(QByteArray ba) {
 			return ProxyQByteArrayMatcher().IndexIn(ba);
 		}
-		[SmokeMethod("pattern", "() const")]
+		[SmokeMethod("pattern", "() const", "")]
 		public QByteArray Pattern() {
 			return ProxyQByteArrayMatcher().Pattern();
 		}
@@ -74,7 +74,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQByteArrayMatcher();
 		}
-		[SmokeMethod("~QByteArrayMatcher", "()")]
+		[SmokeMethod("~QByteArrayMatcher", "()", "")]
 		private void DisposeQByteArrayMatcher() {
 			ProxyQByteArrayMatcher().DisposeQByteArrayMatcher();
 		}

@@ -9,9 +9,9 @@ namespace Qyoto {
 	public class QDrag : QObject, IDisposable {
  		protected QDrag(Type dummy) : base((Type) null) {}
 		interface IQDragProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
 
@@ -36,51 +36,51 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDrag(dragSource);
 		}
-		[SmokeMethod("QDrag#", "(QWidget*)")]
+		[SmokeMethod("QDrag", "(QWidget*)", "#")]
 		private void NewQDrag(QWidget dragSource) {
 			ProxyQDrag().NewQDrag(dragSource);
 		}
-		[SmokeMethod("setMimeData#", "(QMimeData*)")]
+		[SmokeMethod("setMimeData", "(QMimeData*)", "#")]
 		public void SetMimeData(QMimeData data) {
 			ProxyQDrag().SetMimeData(data);
 		}
-		[SmokeMethod("mimeData", "() const")]
+		[SmokeMethod("mimeData", "() const", "")]
 		public QMimeData MimeData() {
 			return ProxyQDrag().MimeData();
 		}
-		[SmokeMethod("setPixmap#", "(const QPixmap&)")]
+		[SmokeMethod("setPixmap", "(const QPixmap&)", "#")]
 		public void SetPixmap(QPixmap arg1) {
 			ProxyQDrag().SetPixmap(arg1);
 		}
-		[SmokeMethod("pixmap", "() const")]
+		[SmokeMethod("pixmap", "() const", "")]
 		public QPixmap Pixmap() {
 			return ProxyQDrag().Pixmap();
 		}
-		[SmokeMethod("setHotSpot#", "(const QPoint&)")]
+		[SmokeMethod("setHotSpot", "(const QPoint&)", "#")]
 		public void SetHotSpot(QPoint hotspot) {
 			ProxyQDrag().SetHotSpot(hotspot);
 		}
-		[SmokeMethod("hotSpot", "() const")]
+		[SmokeMethod("hotSpot", "() const", "")]
 		public QPoint HotSpot() {
 			return ProxyQDrag().HotSpot();
 		}
-		[SmokeMethod("source", "() const")]
+		[SmokeMethod("source", "() const", "")]
 		public QWidget Source() {
 			return ProxyQDrag().Source();
 		}
-		[SmokeMethod("target", "() const")]
+		[SmokeMethod("target", "() const", "")]
 		public QWidget Target() {
 			return ProxyQDrag().Target();
 		}
-		[SmokeMethod("start$", "(Qt::DropActions)")]
+		[SmokeMethod("start", "(Qt::DropActions)", "$")]
 		public Qt.DropAction Start(int supportedActions) {
 			return ProxyQDrag().Start(supportedActions);
 		}
-		[SmokeMethod("start", "()")]
+		[SmokeMethod("start", "()", "")]
 		public Qt.DropAction Start() {
 			return ProxyQDrag().Start();
 		}
-		[SmokeMethod("setDragCursor#$", "(const QPixmap&, Qt::DropAction)")]
+		[SmokeMethod("setDragCursor", "(const QPixmap&, Qt::DropAction)", "#$")]
 		public void SetDragCursor(QPixmap cursor, Qt.DropAction action) {
 			ProxyQDrag().SetDragCursor(cursor,action);
 		}
@@ -96,7 +96,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQDrag();
 		}
-		[SmokeMethod("~QDrag", "()")]
+		[SmokeMethod("~QDrag", "()", "")]
 		private void DisposeQDrag() {
 			ProxyQDrag().DisposeQDrag();
 		}

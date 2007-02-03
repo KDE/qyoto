@@ -26,7 +26,7 @@ namespace Qyoto {
 			return (IQTextCodecFactoryInterfaceProxy) _staticInterceptor;
 		}
 
-		[SmokeMethod("create$", "(const QString&)")]
+		[SmokeMethod("create", "(const QString&)", "$")]
 		public virtual QTextCodec Create(string key) {
 			return ProxyQTextCodecFactoryInterface().Create(key);
 		}
@@ -34,7 +34,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTextCodecFactoryInterface();
 		}
-		[SmokeMethod("QTextCodecFactoryInterface", "()")]
+		[SmokeMethod("QTextCodecFactoryInterface", "()", "")]
 		private void NewQTextCodecFactoryInterface() {
 			ProxyQTextCodecFactoryInterface().NewQTextCodecFactoryInterface();
 		}
@@ -44,7 +44,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQTextCodecFactoryInterface();
 		}
-		[SmokeMethod("~QTextCodecFactoryInterface", "()")]
+		[SmokeMethod("~QTextCodecFactoryInterface", "()", "")]
 		private void DisposeQTextCodecFactoryInterface() {
 			ProxyQTextCodecFactoryInterface().DisposeQTextCodecFactoryInterface();
 		}

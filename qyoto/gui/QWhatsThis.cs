@@ -11,21 +11,21 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QWhatsThis(Type dummy) {}
 		interface IQWhatsThisProxy {
-			[SmokeMethod("enterWhatsThisMode", "()")]
+			[SmokeMethod("enterWhatsThisMode", "()", "")]
 			void EnterWhatsThisMode();
-			[SmokeMethod("inWhatsThisMode", "()")]
+			[SmokeMethod("inWhatsThisMode", "()", "")]
 			bool InWhatsThisMode();
-			[SmokeMethod("leaveWhatsThisMode", "()")]
+			[SmokeMethod("leaveWhatsThisMode", "()", "")]
 			void LeaveWhatsThisMode();
-			[SmokeMethod("showText#$#", "(const QPoint&, const QString&, QWidget*)")]
+			[SmokeMethod("showText", "(const QPoint&, const QString&, QWidget*)", "#$#")]
 			void ShowText(QPoint pos, string text, QWidget w);
-			[SmokeMethod("showText#$", "(const QPoint&, const QString&)")]
+			[SmokeMethod("showText", "(const QPoint&, const QString&)", "#$")]
 			void ShowText(QPoint pos, string text);
-			[SmokeMethod("hideText", "()")]
+			[SmokeMethod("hideText", "()", "")]
 			void HideText();
-			[SmokeMethod("createAction#", "(QObject*)")]
+			[SmokeMethod("createAction", "(QObject*)", "#")]
 			QAction CreateAction(QObject parent);
-			[SmokeMethod("createAction", "()")]
+			[SmokeMethod("createAction", "()", "")]
 			QAction CreateAction();
 		}
 
@@ -75,7 +75,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQWhatsThis();
 		}
-		[SmokeMethod("~QWhatsThis", "()")]
+		[SmokeMethod("~QWhatsThis", "()", "")]
 		private void DisposeQWhatsThis() {
 			ProxyQWhatsThis().DisposeQWhatsThis();
 		}

@@ -43,7 +43,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTextOption();
 		}
-		[SmokeMethod("QTextOption", "()")]
+		[SmokeMethod("QTextOption", "()", "")]
 		private void NewQTextOption() {
 			ProxyQTextOption().NewQTextOption();
 		}
@@ -51,7 +51,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTextOption(alignment);
 		}
-		[SmokeMethod("QTextOption$", "(Qt::Alignment)")]
+		[SmokeMethod("QTextOption", "(Qt::Alignment)", "$")]
 		private void NewQTextOption(int alignment) {
 			ProxyQTextOption().NewQTextOption(alignment);
 		}
@@ -59,63 +59,63 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTextOption(o);
 		}
-		[SmokeMethod("QTextOption#", "(const QTextOption&)")]
+		[SmokeMethod("QTextOption", "(const QTextOption&)", "#")]
 		private void NewQTextOption(QTextOption o) {
 			ProxyQTextOption().NewQTextOption(o);
 		}
-		[SmokeMethod("setAlignment$", "(Qt::Alignment)")]
+		[SmokeMethod("setAlignment", "(Qt::Alignment)", "$")]
 		public void SetAlignment(int alignment) {
 			ProxyQTextOption().SetAlignment(alignment);
 		}
-		[SmokeMethod("alignment", "() const")]
+		[SmokeMethod("alignment", "() const", "")]
 		public int Alignment() {
 			return ProxyQTextOption().Alignment();
 		}
-		[SmokeMethod("setTextDirection$", "(Qt::LayoutDirection)")]
+		[SmokeMethod("setTextDirection", "(Qt::LayoutDirection)", "$")]
 		public void SetTextDirection(Qt.LayoutDirection aDirection) {
 			ProxyQTextOption().SetTextDirection(aDirection);
 		}
-		[SmokeMethod("textDirection", "() const")]
+		[SmokeMethod("textDirection", "() const", "")]
 		public Qt.LayoutDirection TextDirection() {
 			return ProxyQTextOption().TextDirection();
 		}
-		[SmokeMethod("setWrapMode$", "(QTextOption::WrapMode)")]
+		[SmokeMethod("setWrapMode", "(QTextOption::WrapMode)", "$")]
 		public void SetWrapMode(QTextOption.WrapMode wrap) {
 			ProxyQTextOption().SetWrapMode(wrap);
 		}
-		[SmokeMethod("wrapMode", "() const")]
+		[SmokeMethod("wrapMode", "() const", "")]
 		public QTextOption.WrapMode wrapMode() {
 			return ProxyQTextOption().wrapMode();
 		}
-		[SmokeMethod("setFlags$", "(Flags)")]
+		[SmokeMethod("setFlags", "(Flags)", "$")]
 		public void SetFlags(int flags) {
 			ProxyQTextOption().SetFlags(flags);
 		}
-		[SmokeMethod("flags", "() const")]
+		[SmokeMethod("flags", "() const", "")]
 		public int Flags() {
 			return ProxyQTextOption().Flags();
 		}
-		[SmokeMethod("setTabStop$", "(qreal)")]
+		[SmokeMethod("setTabStop", "(qreal)", "$")]
 		public void SetTabStop(double tabStop) {
 			ProxyQTextOption().SetTabStop(tabStop);
 		}
-		[SmokeMethod("tabStop", "() const")]
+		[SmokeMethod("tabStop", "() const", "")]
 		public double TabStop() {
 			return ProxyQTextOption().TabStop();
 		}
-		[SmokeMethod("setTabArray?", "(QList<qreal>)")]
+		[SmokeMethod("setTabArray", "(QList<qreal>)", "?")]
 		public void SetTabArray(List<double> tabStops) {
 			ProxyQTextOption().SetTabArray(tabStops);
 		}
-		[SmokeMethod("tabArray", "() const")]
+		[SmokeMethod("tabArray", "() const", "")]
 		public List<double> TabArray() {
 			return ProxyQTextOption().TabArray();
 		}
-		[SmokeMethod("setUseDesignMetrics$", "(bool)")]
+		[SmokeMethod("setUseDesignMetrics", "(bool)", "$")]
 		public void SetUseDesignMetrics(bool b) {
 			ProxyQTextOption().SetUseDesignMetrics(b);
 		}
-		[SmokeMethod("useDesignMetrics", "() const")]
+		[SmokeMethod("useDesignMetrics", "() const", "")]
 		public bool UseDesignMetrics() {
 			return ProxyQTextOption().UseDesignMetrics();
 		}
@@ -125,7 +125,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQTextOption();
 		}
-		[SmokeMethod("~QTextOption", "()")]
+		[SmokeMethod("~QTextOption", "()", "")]
 		private void DisposeQTextOption() {
 			ProxyQTextOption().DisposeQTextOption();
 		}

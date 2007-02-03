@@ -12,13 +12,13 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QNetworkInterface(Type dummy) {}
 		interface IQNetworkInterfaceProxy {
-			[SmokeMethod("interfaceFromName$", "(const QString&)")]
+			[SmokeMethod("interfaceFromName", "(const QString&)", "$")]
 			QNetworkInterface InterfaceFromName(string name);
-			[SmokeMethod("interfaceFromIndex$", "(int)")]
+			[SmokeMethod("interfaceFromIndex", "(int)", "$")]
 			QNetworkInterface InterfaceFromIndex(int index);
-			[SmokeMethod("allInterfaces", "()")]
+			[SmokeMethod("allInterfaces", "()", "")]
 			List<QNetworkInterface> AllInterfaces();
-			[SmokeMethod("allAddresses", "()")]
+			[SmokeMethod("allAddresses", "()", "")]
 			List<QHostAddress> AllAddresses();
 		}
 
@@ -50,7 +50,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQNetworkInterface();
 		}
-		[SmokeMethod("QNetworkInterface", "()")]
+		[SmokeMethod("QNetworkInterface", "()", "")]
 		private void NewQNetworkInterface() {
 			ProxyQNetworkInterface().NewQNetworkInterface();
 		}
@@ -58,27 +58,27 @@ namespace Qyoto {
 			CreateProxy();
 			NewQNetworkInterface(other);
 		}
-		[SmokeMethod("QNetworkInterface#", "(const QNetworkInterface&)")]
+		[SmokeMethod("QNetworkInterface", "(const QNetworkInterface&)", "#")]
 		private void NewQNetworkInterface(QNetworkInterface other) {
 			ProxyQNetworkInterface().NewQNetworkInterface(other);
 		}
-		[SmokeMethod("isValid", "() const")]
+		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
 			return ProxyQNetworkInterface().IsValid();
 		}
-		[SmokeMethod("name", "() const")]
+		[SmokeMethod("name", "() const", "")]
 		public string Name() {
 			return ProxyQNetworkInterface().Name();
 		}
-		[SmokeMethod("flags", "() const")]
+		[SmokeMethod("flags", "() const", "")]
 		public int Flags() {
 			return ProxyQNetworkInterface().Flags();
 		}
-		[SmokeMethod("hardwareAddress", "() const")]
+		[SmokeMethod("hardwareAddress", "() const", "")]
 		public string HardwareAddress() {
 			return ProxyQNetworkInterface().HardwareAddress();
 		}
-		[SmokeMethod("addressEntries", "() const")]
+		[SmokeMethod("addressEntries", "() const", "")]
 		public List<QNetworkAddressEntry> AddressEntries() {
 			return ProxyQNetworkInterface().AddressEntries();
 		}
@@ -100,7 +100,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQNetworkInterface();
 		}
-		[SmokeMethod("~QNetworkInterface", "()")]
+		[SmokeMethod("~QNetworkInterface", "()", "")]
 		private void DisposeQNetworkInterface() {
 			ProxyQNetworkInterface().DisposeQNetworkInterface();
 		}

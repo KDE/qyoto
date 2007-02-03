@@ -29,15 +29,15 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGraphicsSceneEvent(type);
 		}
-		[SmokeMethod("QGraphicsSceneEvent$", "(QEvent::Type)")]
+		[SmokeMethod("QGraphicsSceneEvent", "(QEvent::Type)", "$")]
 		private void NewQGraphicsSceneEvent(QEvent.TypeOf type) {
 			ProxyQGraphicsSceneEvent().NewQGraphicsSceneEvent(type);
 		}
-		[SmokeMethod("widget", "() const")]
+		[SmokeMethod("widget", "() const", "")]
 		public QWidget Widget() {
 			return ProxyQGraphicsSceneEvent().Widget();
 		}
-		[SmokeMethod("setWidget#", "(QWidget*)")]
+		[SmokeMethod("setWidget", "(QWidget*)", "#")]
 		public void SetWidget(QWidget widget) {
 			ProxyQGraphicsSceneEvent().SetWidget(widget);
 		}
@@ -47,7 +47,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQGraphicsSceneEvent();
 		}
-		[SmokeMethod("~QGraphicsSceneEvent", "()")]
+		[SmokeMethod("~QGraphicsSceneEvent", "()", "")]
 		private void DisposeQGraphicsSceneEvent() {
 			ProxyQGraphicsSceneEvent().DisposeQGraphicsSceneEvent();
 		}

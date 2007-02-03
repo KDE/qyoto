@@ -9,9 +9,9 @@ namespace Qyoto {
 	public class QLabel : QFrame, IDisposable {
  		protected QLabel(Type dummy) : base((Type) null) {}
 		interface IQLabelProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
 
@@ -126,7 +126,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQLabel(parent,f);
 		}
-		[SmokeMethod("QLabel#$", "(QWidget*, Qt::WindowFlags)")]
+		[SmokeMethod("QLabel", "(QWidget*, Qt::WindowFlags)", "#$")]
 		private void NewQLabel(QWidget parent, int f) {
 			ProxyQLabel().NewQLabel(parent,f);
 		}
@@ -134,7 +134,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQLabel(parent);
 		}
-		[SmokeMethod("QLabel#", "(QWidget*)")]
+		[SmokeMethod("QLabel", "(QWidget*)", "#")]
 		private void NewQLabel(QWidget parent) {
 			ProxyQLabel().NewQLabel(parent);
 		}
@@ -142,7 +142,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQLabel();
 		}
-		[SmokeMethod("QLabel", "()")]
+		[SmokeMethod("QLabel", "()", "")]
 		private void NewQLabel() {
 			ProxyQLabel().NewQLabel();
 		}
@@ -150,7 +150,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQLabel(text,parent,f);
 		}
-		[SmokeMethod("QLabel$#$", "(const QString&, QWidget*, Qt::WindowFlags)")]
+		[SmokeMethod("QLabel", "(const QString&, QWidget*, Qt::WindowFlags)", "$#$")]
 		private void NewQLabel(string text, QWidget parent, int f) {
 			ProxyQLabel().NewQLabel(text,parent,f);
 		}
@@ -158,7 +158,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQLabel(text,parent);
 		}
-		[SmokeMethod("QLabel$#", "(const QString&, QWidget*)")]
+		[SmokeMethod("QLabel", "(const QString&, QWidget*)", "$#")]
 		private void NewQLabel(string text, QWidget parent) {
 			ProxyQLabel().NewQLabel(text,parent);
 		}
@@ -166,64 +166,64 @@ namespace Qyoto {
 			CreateProxy();
 			NewQLabel(text);
 		}
-		[SmokeMethod("QLabel$", "(const QString&)")]
+		[SmokeMethod("QLabel", "(const QString&)", "$")]
 		private void NewQLabel(string text) {
 			ProxyQLabel().NewQLabel(text);
 		}
-		[SmokeMethod("picture", "() const")]
+		[SmokeMethod("picture", "() const", "")]
 		public QPicture Picture() {
 			return ProxyQLabel().Picture();
 		}
-		[SmokeMethod("movie", "() const")]
+		[SmokeMethod("movie", "() const", "")]
 		public QMovie Movie() {
 			return ProxyQLabel().Movie();
 		}
-		[SmokeMethod("hasScaledContents", "() const")]
+		[SmokeMethod("hasScaledContents", "() const", "")]
 		public bool HasScaledContents() {
 			return ProxyQLabel().HasScaledContents();
 		}
-		[SmokeMethod("sizeHint", "() const")]
+		[SmokeMethod("sizeHint", "() const", "")]
 		public new QSize SizeHint() {
 			return ProxyQLabel().SizeHint();
 		}
-		[SmokeMethod("minimumSizeHint", "() const")]
+		[SmokeMethod("minimumSizeHint", "() const", "")]
 		public new QSize MinimumSizeHint() {
 			return ProxyQLabel().MinimumSizeHint();
 		}
-		[SmokeMethod("setBuddy#", "(QWidget*)")]
+		[SmokeMethod("setBuddy", "(QWidget*)", "#")]
 		public void SetBuddy(QWidget arg1) {
 			ProxyQLabel().SetBuddy(arg1);
 		}
-		[SmokeMethod("buddy", "() const")]
+		[SmokeMethod("buddy", "() const", "")]
 		public QWidget Buddy() {
 			return ProxyQLabel().Buddy();
 		}
-		[SmokeMethod("heightForWidth$", "(int) const")]
+		[SmokeMethod("heightForWidth", "(int) const", "$")]
 		public new int HeightForWidth(int arg1) {
 			return ProxyQLabel().HeightForWidth(arg1);
 		}
 		[Q_SLOT("void setPicture(const QPicture&)")]
-		[SmokeMethod("setPicture#", "(const QPicture&)")]
+		[SmokeMethod("setPicture", "(const QPicture&)", "#")]
 		public void SetPicture(QPicture arg1) {
 			ProxyQLabel().SetPicture(arg1);
 		}
 		[Q_SLOT("void setMovie(QMovie*)")]
-		[SmokeMethod("setMovie#", "(QMovie*)")]
+		[SmokeMethod("setMovie", "(QMovie*)", "#")]
 		public void SetMovie(QMovie movie) {
 			ProxyQLabel().SetMovie(movie);
 		}
 		[Q_SLOT("void setNum(int)")]
-		[SmokeMethod("setNum$", "(int)")]
+		[SmokeMethod("setNum", "(int)", "$")]
 		public void SetNum(int arg1) {
 			ProxyQLabel().SetNum(arg1);
 		}
 		[Q_SLOT("void setNum(double)")]
-		[SmokeMethod("setNum$", "(double)")]
+		[SmokeMethod("setNum", "(double)", "$")]
 		public void SetNum(double arg1) {
 			ProxyQLabel().SetNum(arg1);
 		}
 		[Q_SLOT("void clear()")]
-		[SmokeMethod("clear", "()")]
+		[SmokeMethod("clear", "()", "")]
 		public void Clear() {
 			ProxyQLabel().Clear();
 		}
@@ -233,47 +233,47 @@ namespace Qyoto {
 		public static new string Tr(string s) {
 			return StaticQLabel().Tr(s);
 		}
-		[SmokeMethod("event#", "(QEvent*)")]
+		[SmokeMethod("event", "(QEvent*)", "#")]
 		public new bool Event(QEvent e) {
 			return ProxyQLabel().Event(e);
 		}
-		[SmokeMethod("keyPressEvent#", "(QKeyEvent*)")]
+		[SmokeMethod("keyPressEvent", "(QKeyEvent*)", "#")]
 		protected new void KeyPressEvent(QKeyEvent ev) {
 			ProxyQLabel().KeyPressEvent(ev);
 		}
-		[SmokeMethod("paintEvent#", "(QPaintEvent*)")]
+		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
 		protected new void PaintEvent(QPaintEvent arg1) {
 			ProxyQLabel().PaintEvent(arg1);
 		}
-		[SmokeMethod("changeEvent#", "(QEvent*)")]
+		[SmokeMethod("changeEvent", "(QEvent*)", "#")]
 		protected new void ChangeEvent(QEvent arg1) {
 			ProxyQLabel().ChangeEvent(arg1);
 		}
-		[SmokeMethod("mousePressEvent#", "(QMouseEvent*)")]
+		[SmokeMethod("mousePressEvent", "(QMouseEvent*)", "#")]
 		protected new void MousePressEvent(QMouseEvent ev) {
 			ProxyQLabel().MousePressEvent(ev);
 		}
-		[SmokeMethod("mouseMoveEvent#", "(QMouseEvent*)")]
+		[SmokeMethod("mouseMoveEvent", "(QMouseEvent*)", "#")]
 		protected new void MouseMoveEvent(QMouseEvent ev) {
 			ProxyQLabel().MouseMoveEvent(ev);
 		}
-		[SmokeMethod("mouseReleaseEvent#", "(QMouseEvent*)")]
+		[SmokeMethod("mouseReleaseEvent", "(QMouseEvent*)", "#")]
 		protected new void MouseReleaseEvent(QMouseEvent ev) {
 			ProxyQLabel().MouseReleaseEvent(ev);
 		}
-		[SmokeMethod("contextMenuEvent#", "(QContextMenuEvent*)")]
+		[SmokeMethod("contextMenuEvent", "(QContextMenuEvent*)", "#")]
 		protected new void ContextMenuEvent(QContextMenuEvent ev) {
 			ProxyQLabel().ContextMenuEvent(ev);
 		}
-		[SmokeMethod("focusInEvent#", "(QFocusEvent*)")]
+		[SmokeMethod("focusInEvent", "(QFocusEvent*)", "#")]
 		protected new void FocusInEvent(QFocusEvent ev) {
 			ProxyQLabel().FocusInEvent(ev);
 		}
-		[SmokeMethod("focusOutEvent#", "(QFocusEvent*)")]
+		[SmokeMethod("focusOutEvent", "(QFocusEvent*)", "#")]
 		protected new void FocusOutEvent(QFocusEvent ev) {
 			ProxyQLabel().FocusOutEvent(ev);
 		}
-		[SmokeMethod("focusNextPrevChild$", "(bool)")]
+		[SmokeMethod("focusNextPrevChild", "(bool)", "$")]
 		protected new bool FocusNextPrevChild(bool next) {
 			return ProxyQLabel().FocusNextPrevChild(next);
 		}
@@ -283,7 +283,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQLabel();
 		}
-		[SmokeMethod("~QLabel", "()")]
+		[SmokeMethod("~QLabel", "()", "")]
 		private void DisposeQLabel() {
 			ProxyQLabel().DisposeQLabel();
 		}

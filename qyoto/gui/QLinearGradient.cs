@@ -29,7 +29,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQLinearGradient();
 		}
-		[SmokeMethod("QLinearGradient", "()")]
+		[SmokeMethod("QLinearGradient", "()", "")]
 		private void NewQLinearGradient() {
 			ProxyQLinearGradient().NewQLinearGradient();
 		}
@@ -37,7 +37,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQLinearGradient(start,finalStop);
 		}
-		[SmokeMethod("QLinearGradient##", "(const QPointF&, const QPointF&)")]
+		[SmokeMethod("QLinearGradient", "(const QPointF&, const QPointF&)", "##")]
 		private void NewQLinearGradient(QPointF start, QPointF finalStop) {
 			ProxyQLinearGradient().NewQLinearGradient(start,finalStop);
 		}
@@ -45,31 +45,31 @@ namespace Qyoto {
 			CreateProxy();
 			NewQLinearGradient(xStart,yStart,xFinalStop,yFinalStop);
 		}
-		[SmokeMethod("QLinearGradient$$$$", "(qreal, qreal, qreal, qreal)")]
+		[SmokeMethod("QLinearGradient", "(qreal, qreal, qreal, qreal)", "$$$$")]
 		private void NewQLinearGradient(double xStart, double yStart, double xFinalStop, double yFinalStop) {
 			ProxyQLinearGradient().NewQLinearGradient(xStart,yStart,xFinalStop,yFinalStop);
 		}
-		[SmokeMethod("start", "() const")]
+		[SmokeMethod("start", "() const", "")]
 		public QPointF Start() {
 			return ProxyQLinearGradient().Start();
 		}
-		[SmokeMethod("setStart#", "(const QPointF&)")]
+		[SmokeMethod("setStart", "(const QPointF&)", "#")]
 		public void SetStart(QPointF start) {
 			ProxyQLinearGradient().SetStart(start);
 		}
-		[SmokeMethod("setStart$$", "(qreal, qreal)")]
+		[SmokeMethod("setStart", "(qreal, qreal)", "$$")]
 		public void SetStart(double x, double y) {
 			ProxyQLinearGradient().SetStart(x,y);
 		}
-		[SmokeMethod("finalStop", "() const")]
+		[SmokeMethod("finalStop", "() const", "")]
 		public QPointF FinalStop() {
 			return ProxyQLinearGradient().FinalStop();
 		}
-		[SmokeMethod("setFinalStop#", "(const QPointF&)")]
+		[SmokeMethod("setFinalStop", "(const QPointF&)", "#")]
 		public void SetFinalStop(QPointF stop) {
 			ProxyQLinearGradient().SetFinalStop(stop);
 		}
-		[SmokeMethod("setFinalStop$$", "(qreal, qreal)")]
+		[SmokeMethod("setFinalStop", "(qreal, qreal)", "$$")]
 		public void SetFinalStop(double x, double y) {
 			ProxyQLinearGradient().SetFinalStop(x,y);
 		}
@@ -79,7 +79,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQLinearGradient();
 		}
-		[SmokeMethod("~QLinearGradient", "()")]
+		[SmokeMethod("~QLinearGradient", "()", "")]
 		private void DisposeQLinearGradient() {
 			ProxyQLinearGradient().DisposeQLinearGradient();
 		}

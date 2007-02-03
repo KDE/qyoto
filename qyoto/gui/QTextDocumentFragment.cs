@@ -33,19 +33,19 @@ namespace Qyoto {
 		// QTextDocumentFragment* QTextDocumentFragment(const QTextDocument* arg1); >>>> NOT CONVERTED
 		// QTextDocumentFragment* QTextDocumentFragment(const QTextCursor& arg1); >>>> NOT CONVERTED
 		// QTextDocumentFragment* QTextDocumentFragment(const QTextDocumentFragment& arg1); >>>> NOT CONVERTED
-		[SmokeMethod("isEmpty", "() const")]
+		[SmokeMethod("isEmpty", "() const", "")]
 		public bool IsEmpty() {
 			return ProxyQTextDocumentFragment().IsEmpty();
 		}
-		[SmokeMethod("toPlainText", "() const")]
+		[SmokeMethod("toPlainText", "() const", "")]
 		public string ToPlainText() {
 			return ProxyQTextDocumentFragment().ToPlainText();
 		}
-		[SmokeMethod("toHtml", "() const")]
+		[SmokeMethod("toHtml", "() const", "")]
 		public string ToHtml() {
 			return ProxyQTextDocumentFragment().ToHtml();
 		}
-		[SmokeMethod("toHtml#", "(const QByteArray&) const")]
+		[SmokeMethod("toHtml", "(const QByteArray&) const", "#")]
 		public string ToHtml(QByteArray encoding) {
 			return ProxyQTextDocumentFragment().ToHtml(encoding);
 		}
@@ -58,7 +58,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQTextDocumentFragment();
 		}
-		[SmokeMethod("~QTextDocumentFragment", "()")]
+		[SmokeMethod("~QTextDocumentFragment", "()", "")]
 		private void DisposeQTextDocumentFragment() {
 			ProxyQTextDocumentFragment().DisposeQTextDocumentFragment();
 		}

@@ -34,7 +34,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTextObjectInterface();
 		}
-		[SmokeMethod("QTextObjectInterface", "()")]
+		[SmokeMethod("QTextObjectInterface", "()", "")]
 		private void NewQTextObjectInterface() {
 			ProxyQTextObjectInterface().NewQTextObjectInterface();
 		}
@@ -44,7 +44,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQTextObjectInterface();
 		}
-		[SmokeMethod("~QTextObjectInterface", "()")]
+		[SmokeMethod("~QTextObjectInterface", "()", "")]
 		private void DisposeQTextObjectInterface() {
 			ProxyQTextObjectInterface().DisposeQTextObjectInterface();
 		}

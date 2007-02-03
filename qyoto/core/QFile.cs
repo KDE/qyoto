@@ -8,35 +8,35 @@ namespace Qyoto {
 	public class QFile : QIODevice, IDisposable {
  		protected QFile(Type dummy) : base((Type) null) {}
 		interface IQFileProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
-			[SmokeMethod("encodeName$", "(const QString&)")]
+			[SmokeMethod("encodeName", "(const QString&)", "$")]
 			QByteArray EncodeName(string fileName);
-			[SmokeMethod("decodeName#", "(const QByteArray&)")]
+			[SmokeMethod("decodeName", "(const QByteArray&)", "#")]
 			string DecodeName(QByteArray localFileName);
-			[SmokeMethod("decodeName$", "(const char*)")]
+			[SmokeMethod("decodeName", "(const char*)", "$")]
 			string DecodeName(string localFileName);
-			[SmokeMethod("exists$", "(const QString&)")]
+			[SmokeMethod("exists", "(const QString&)", "$")]
 			bool Exists(string fileName);
-			[SmokeMethod("readLink$", "(const QString&)")]
+			[SmokeMethod("readLink", "(const QString&)", "$")]
 			string ReadLink(string fileName);
-			[SmokeMethod("symLinkTarget$", "(const QString&)")]
+			[SmokeMethod("symLinkTarget", "(const QString&)", "$")]
 			string SymLinkTarget(string fileName);
-			[SmokeMethod("remove$", "(const QString&)")]
+			[SmokeMethod("remove", "(const QString&)", "$")]
 			bool Remove(string fileName);
-			[SmokeMethod("rename$$", "(const QString&, const QString&)")]
+			[SmokeMethod("rename", "(const QString&, const QString&)", "$$")]
 			bool Rename(string oldName, string newName);
-			[SmokeMethod("link$$", "(const QString&, const QString&)")]
+			[SmokeMethod("link", "(const QString&, const QString&)", "$$")]
 			bool Link(string oldname, string newName);
-			[SmokeMethod("copy$$", "(const QString&, const QString&)")]
+			[SmokeMethod("copy", "(const QString&, const QString&)", "$$")]
 			bool Copy(string fileName, string newName);
-			[SmokeMethod("resize$$", "(const QString&, qint64)")]
+			[SmokeMethod("resize", "(const QString&, qint64)", "$$")]
 			bool Resize(string filename, long sz);
-			[SmokeMethod("permissions$", "(const QString&)")]
+			[SmokeMethod("permissions", "(const QString&)", "$")]
 			int Permissions(string filename);
-			[SmokeMethod("setPermissions$$", "(const QString&, Permissions)")]
+			[SmokeMethod("setPermissions", "(const QString&, Permissions)", "$$")]
 			bool SetPermissions(string filename, int permissionSpec);
 		}
 
@@ -92,7 +92,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQFile();
 		}
-		[SmokeMethod("QFile", "()")]
+		[SmokeMethod("QFile", "()", "")]
 		private void NewQFile() {
 			ProxyQFile().NewQFile();
 		}
@@ -100,7 +100,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQFile(name);
 		}
-		[SmokeMethod("QFile$", "(const QString&)")]
+		[SmokeMethod("QFile", "(const QString&)", "$")]
 		private void NewQFile(string name) {
 			ProxyQFile().NewQFile(name);
 		}
@@ -108,7 +108,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQFile(parent);
 		}
-		[SmokeMethod("QFile#", "(QObject*)")]
+		[SmokeMethod("QFile", "(QObject*)", "#")]
 		private void NewQFile(QObject parent) {
 			ProxyQFile().NewQFile(parent);
 		}
@@ -116,103 +116,103 @@ namespace Qyoto {
 			CreateProxy();
 			NewQFile(name,parent);
 		}
-		[SmokeMethod("QFile$#", "(const QString&, QObject*)")]
+		[SmokeMethod("QFile", "(const QString&, QObject*)", "$#")]
 		private void NewQFile(string name, QObject parent) {
 			ProxyQFile().NewQFile(name,parent);
 		}
-		[SmokeMethod("error", "() const")]
+		[SmokeMethod("error", "() const", "")]
 		public QFile.FileError Error() {
 			return ProxyQFile().Error();
 		}
-		[SmokeMethod("unsetError", "()")]
+		[SmokeMethod("unsetError", "()", "")]
 		public void UnsetError() {
 			ProxyQFile().UnsetError();
 		}
-		[SmokeMethod("fileName", "() const")]
+		[SmokeMethod("fileName", "() const", "")]
 		public string FileName() {
 			return ProxyQFile().FileName();
 		}
-		[SmokeMethod("setFileName$", "(const QString&)")]
+		[SmokeMethod("setFileName", "(const QString&)", "$")]
 		public void SetFileName(string name) {
 			ProxyQFile().SetFileName(name);
 		}
-		[SmokeMethod("exists", "() const")]
+		[SmokeMethod("exists", "() const", "")]
 		public bool Exists() {
 			return ProxyQFile().Exists();
 		}
-		[SmokeMethod("readLink", "() const")]
+		[SmokeMethod("readLink", "() const", "")]
 		public string ReadLink() {
 			return ProxyQFile().ReadLink();
 		}
-		[SmokeMethod("symLinkTarget", "() const")]
+		[SmokeMethod("symLinkTarget", "() const", "")]
 		public string SymLinkTarget() {
 			return ProxyQFile().SymLinkTarget();
 		}
-		[SmokeMethod("remove", "()")]
+		[SmokeMethod("remove", "()", "")]
 		public bool Remove() {
 			return ProxyQFile().Remove();
 		}
-		[SmokeMethod("rename$", "(const QString&)")]
+		[SmokeMethod("rename", "(const QString&)", "$")]
 		public bool Rename(string newName) {
 			return ProxyQFile().Rename(newName);
 		}
-		[SmokeMethod("link$", "(const QString&)")]
+		[SmokeMethod("link", "(const QString&)", "$")]
 		public bool Link(string newName) {
 			return ProxyQFile().Link(newName);
 		}
-		[SmokeMethod("copy$", "(const QString&)")]
+		[SmokeMethod("copy", "(const QString&)", "$")]
 		public bool Copy(string newName) {
 			return ProxyQFile().Copy(newName);
 		}
-		[SmokeMethod("isSequential", "() const")]
+		[SmokeMethod("isSequential", "() const", "")]
 		public new bool IsSequential() {
 			return ProxyQFile().IsSequential();
 		}
-		[SmokeMethod("open$", "(OpenMode)")]
+		[SmokeMethod("open", "(OpenMode)", "$")]
 		public new bool Open(int flags) {
 			return ProxyQFile().Open(flags);
 		}
-		[SmokeMethod("open$$", "(int, OpenMode)")]
+		[SmokeMethod("open", "(int, OpenMode)", "$$")]
 		public new bool Open(int fd, int flags) {
 			return ProxyQFile().Open(fd,flags);
 		}
-		[SmokeMethod("close", "()")]
+		[SmokeMethod("close", "()", "")]
 		public new virtual void Close() {
 			ProxyQFile().Close();
 		}
-		[SmokeMethod("size", "() const")]
+		[SmokeMethod("size", "() const", "")]
 		public new long Size() {
 			return ProxyQFile().Size();
 		}
-		[SmokeMethod("pos", "() const")]
+		[SmokeMethod("pos", "() const", "")]
 		public new long Pos() {
 			return ProxyQFile().Pos();
 		}
-		[SmokeMethod("seek$", "(qint64)")]
+		[SmokeMethod("seek", "(qint64)", "$")]
 		public new bool Seek(long offset) {
 			return ProxyQFile().Seek(offset);
 		}
-		[SmokeMethod("atEnd", "() const")]
+		[SmokeMethod("atEnd", "() const", "")]
 		public new bool AtEnd() {
 			return ProxyQFile().AtEnd();
 		}
-		[SmokeMethod("flush", "()")]
+		[SmokeMethod("flush", "()", "")]
 		public bool Flush() {
 			return ProxyQFile().Flush();
 		}
-		[SmokeMethod("resize$", "(qint64)")]
+		[SmokeMethod("resize", "(qint64)", "$")]
 		public bool Resize(long sz) {
 			return ProxyQFile().Resize(sz);
 		}
-		[SmokeMethod("permissions", "() const")]
+		[SmokeMethod("permissions", "() const", "")]
 		public int Permissions() {
 			return ProxyQFile().Permissions();
 		}
-		[SmokeMethod("setPermissions$", "(Permissions)")]
+		[SmokeMethod("setPermissions", "(Permissions)", "$")]
 		public bool SetPermissions(int permissionSpec) {
 			return ProxyQFile().SetPermissions(permissionSpec);
 		}
-		[SmokeMethod("fileEngine", "() const")]
+		[SmokeMethod("fileEngine", "() const", "")]
 		public virtual QAbstractFileEngine FileEngine() {
 			return ProxyQFile().FileEngine();
 		}
@@ -261,15 +261,15 @@ namespace Qyoto {
 		public static bool SetPermissions(string filename, int permissionSpec) {
 			return StaticQFile().SetPermissions(filename,permissionSpec);
 		}
-		[SmokeMethod("readData$$", "(char*, qint64)")]
+		[SmokeMethod("readData", "(char*, qint64)", "$$")]
 		protected new long ReadData(string data, long maxlen) {
 			return ProxyQFile().ReadData(data,maxlen);
 		}
-		[SmokeMethod("writeData$$", "(const char*, qint64)")]
+		[SmokeMethod("writeData", "(const char*, qint64)", "$$")]
 		protected new long WriteData(string data, long len) {
 			return ProxyQFile().WriteData(data,len);
 		}
-		[SmokeMethod("readLineData$$", "(char*, qint64)")]
+		[SmokeMethod("readLineData", "(char*, qint64)", "$$")]
 		protected new long ReadLineData(string data, long maxlen) {
 			return ProxyQFile().ReadLineData(data,maxlen);
 		}
@@ -279,7 +279,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQFile();
 		}
-		[SmokeMethod("~QFile", "()")]
+		[SmokeMethod("~QFile", "()", "")]
 		private void DisposeQFile() {
 			ProxyQFile().DisposeQFile();
 		}

@@ -10,9 +10,9 @@ namespace Qyoto {
 	public class QTextBrowser : QTextEdit, IDisposable {
  		protected QTextBrowser(Type dummy) : base((Type) null) {}
 		interface IQTextBrowserProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
 
@@ -64,7 +64,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTextBrowser(parent);
 		}
-		[SmokeMethod("QTextBrowser#", "(QWidget*)")]
+		[SmokeMethod("QTextBrowser", "(QWidget*)", "#")]
 		private void NewQTextBrowser(QWidget parent) {
 			ProxyQTextBrowser().NewQTextBrowser(parent);
 		}
@@ -72,43 +72,43 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTextBrowser();
 		}
-		[SmokeMethod("QTextBrowser", "()")]
+		[SmokeMethod("QTextBrowser", "()", "")]
 		private void NewQTextBrowser() {
 			ProxyQTextBrowser().NewQTextBrowser();
 		}
-		[SmokeMethod("loadResource$#", "(int, const QUrl&)")]
+		[SmokeMethod("loadResource", "(int, const QUrl&)", "$#")]
 		public new virtual QVariant LoadResource(int type, IQUrl name) {
 			return ProxyQTextBrowser().LoadResource(type,name);
 		}
-		[SmokeMethod("isBackwardAvailable", "() const")]
+		[SmokeMethod("isBackwardAvailable", "() const", "")]
 		public bool IsBackwardAvailable() {
 			return ProxyQTextBrowser().IsBackwardAvailable();
 		}
-		[SmokeMethod("isForwardAvailable", "() const")]
+		[SmokeMethod("isForwardAvailable", "() const", "")]
 		public bool IsForwardAvailable() {
 			return ProxyQTextBrowser().IsForwardAvailable();
 		}
-		[SmokeMethod("clearHistory", "()")]
+		[SmokeMethod("clearHistory", "()", "")]
 		public void ClearHistory() {
 			ProxyQTextBrowser().ClearHistory();
 		}
 		[Q_SLOT("void backward()")]
-		[SmokeMethod("backward", "()")]
+		[SmokeMethod("backward", "()", "")]
 		public virtual void Backward() {
 			ProxyQTextBrowser().Backward();
 		}
 		[Q_SLOT("void forward()")]
-		[SmokeMethod("forward", "()")]
+		[SmokeMethod("forward", "()", "")]
 		public virtual void Forward() {
 			ProxyQTextBrowser().Forward();
 		}
 		[Q_SLOT("void home()")]
-		[SmokeMethod("home", "()")]
+		[SmokeMethod("home", "()", "")]
 		public virtual void Home() {
 			ProxyQTextBrowser().Home();
 		}
 		[Q_SLOT("void reload()")]
-		[SmokeMethod("reload", "()")]
+		[SmokeMethod("reload", "()", "")]
 		public virtual void Reload() {
 			ProxyQTextBrowser().Reload();
 		}
@@ -118,35 +118,35 @@ namespace Qyoto {
 		public static new string Tr(string s) {
 			return StaticQTextBrowser().Tr(s);
 		}
-		[SmokeMethod("event#", "(QEvent*)")]
+		[SmokeMethod("event", "(QEvent*)", "#")]
 		public new bool Event(QEvent e) {
 			return ProxyQTextBrowser().Event(e);
 		}
-		[SmokeMethod("keyPressEvent#", "(QKeyEvent*)")]
+		[SmokeMethod("keyPressEvent", "(QKeyEvent*)", "#")]
 		protected new virtual void KeyPressEvent(QKeyEvent ev) {
 			ProxyQTextBrowser().KeyPressEvent(ev);
 		}
-		[SmokeMethod("mouseMoveEvent#", "(QMouseEvent*)")]
+		[SmokeMethod("mouseMoveEvent", "(QMouseEvent*)", "#")]
 		protected new virtual void MouseMoveEvent(QMouseEvent ev) {
 			ProxyQTextBrowser().MouseMoveEvent(ev);
 		}
-		[SmokeMethod("mousePressEvent#", "(QMouseEvent*)")]
+		[SmokeMethod("mousePressEvent", "(QMouseEvent*)", "#")]
 		protected new virtual void MousePressEvent(QMouseEvent ev) {
 			ProxyQTextBrowser().MousePressEvent(ev);
 		}
-		[SmokeMethod("mouseReleaseEvent#", "(QMouseEvent*)")]
+		[SmokeMethod("mouseReleaseEvent", "(QMouseEvent*)", "#")]
 		protected new virtual void MouseReleaseEvent(QMouseEvent ev) {
 			ProxyQTextBrowser().MouseReleaseEvent(ev);
 		}
-		[SmokeMethod("focusOutEvent#", "(QFocusEvent*)")]
+		[SmokeMethod("focusOutEvent", "(QFocusEvent*)", "#")]
 		protected new virtual void FocusOutEvent(QFocusEvent ev) {
 			ProxyQTextBrowser().FocusOutEvent(ev);
 		}
-		[SmokeMethod("focusNextPrevChild$", "(bool)")]
+		[SmokeMethod("focusNextPrevChild", "(bool)", "$")]
 		protected new virtual bool FocusNextPrevChild(bool next) {
 			return ProxyQTextBrowser().FocusNextPrevChild(next);
 		}
-		[SmokeMethod("paintEvent#", "(QPaintEvent*)")]
+		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
 		protected new virtual void PaintEvent(QPaintEvent e) {
 			ProxyQTextBrowser().PaintEvent(e);
 		}
@@ -156,7 +156,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQTextBrowser();
 		}
-		[SmokeMethod("~QTextBrowser", "()")]
+		[SmokeMethod("~QTextBrowser", "()", "")]
 		private void DisposeQTextBrowser() {
 			ProxyQTextBrowser().DisposeQTextBrowser();
 		}

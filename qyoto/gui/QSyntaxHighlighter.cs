@@ -8,9 +8,9 @@ namespace Qyoto {
 	public class QSyntaxHighlighter : QObject {
  		protected QSyntaxHighlighter(Type dummy) : base((Type) null) {}
 		interface IQSyntaxHighlighterProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
 
@@ -35,7 +35,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSyntaxHighlighter(parent);
 		}
-		[SmokeMethod("QSyntaxHighlighter#", "(QObject*)")]
+		[SmokeMethod("QSyntaxHighlighter", "(QObject*)", "#")]
 		private void NewQSyntaxHighlighter(QObject parent) {
 			ProxyQSyntaxHighlighter().NewQSyntaxHighlighter(parent);
 		}
@@ -44,14 +44,14 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSyntaxHighlighter(parent);
 		}
-		[SmokeMethod("QSyntaxHighlighter#", "(QTextEdit*)")]
+		[SmokeMethod("QSyntaxHighlighter", "(QTextEdit*)", "#")]
 		private void NewQSyntaxHighlighter(QTextEdit parent) {
 			ProxyQSyntaxHighlighter().NewQSyntaxHighlighter(parent);
 		}
 		// void setDocument(QTextDocument* arg1); >>>> NOT CONVERTED
 		// QTextDocument* document(); >>>> NOT CONVERTED
 		[Q_SLOT("void rehighlight()")]
-		[SmokeMethod("rehighlight", "()")]
+		[SmokeMethod("rehighlight", "()", "")]
 		public void Rehighlight() {
 			ProxyQSyntaxHighlighter().Rehighlight();
 		}
@@ -67,7 +67,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQSyntaxHighlighter();
 		}
-		[SmokeMethod("~QSyntaxHighlighter", "()")]
+		[SmokeMethod("~QSyntaxHighlighter", "()", "")]
 		private void DisposeQSyntaxHighlighter() {
 			ProxyQSyntaxHighlighter().DisposeQSyntaxHighlighter();
 		}

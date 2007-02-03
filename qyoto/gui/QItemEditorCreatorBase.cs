@@ -28,11 +28,11 @@ namespace Qyoto {
 			return (IQItemEditorCreatorBaseProxy) _staticInterceptor;
 		}
 
-		[SmokeMethod("createWidget#", "(QWidget*) const")]
+		[SmokeMethod("createWidget", "(QWidget*) const", "#")]
 		public virtual QWidget CreateWidget(QWidget parent) {
 			return ProxyQItemEditorCreatorBase().CreateWidget(parent);
 		}
-		[SmokeMethod("valuePropertyName", "() const")]
+		[SmokeMethod("valuePropertyName", "() const", "")]
 		public virtual QByteArray ValuePropertyName() {
 			return ProxyQItemEditorCreatorBase().ValuePropertyName();
 		}
@@ -40,7 +40,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQItemEditorCreatorBase();
 		}
-		[SmokeMethod("QItemEditorCreatorBase", "()")]
+		[SmokeMethod("QItemEditorCreatorBase", "()", "")]
 		private void NewQItemEditorCreatorBase() {
 			ProxyQItemEditorCreatorBase().NewQItemEditorCreatorBase();
 		}
@@ -50,7 +50,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQItemEditorCreatorBase();
 		}
-		[SmokeMethod("~QItemEditorCreatorBase", "()")]
+		[SmokeMethod("~QItemEditorCreatorBase", "()", "")]
 		private void DisposeQItemEditorCreatorBase() {
 			ProxyQItemEditorCreatorBase().DisposeQItemEditorCreatorBase();
 		}

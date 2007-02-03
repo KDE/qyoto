@@ -10,9 +10,9 @@ namespace Qyoto {
 	public class QComboBox : QWidget, IDisposable {
  		protected QComboBox(Type dummy) : base((Type) null) {}
 		interface IQComboBoxProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
 
@@ -180,7 +180,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQComboBox(parent);
 		}
-		[SmokeMethod("QComboBox#", "(QWidget*)")]
+		[SmokeMethod("QComboBox", "(QWidget*)", "#")]
 		private void NewQComboBox(QWidget parent) {
 			ProxyQComboBox().NewQComboBox(parent);
 		}
@@ -188,202 +188,202 @@ namespace Qyoto {
 			CreateProxy();
 			NewQComboBox();
 		}
-		[SmokeMethod("QComboBox", "()")]
+		[SmokeMethod("QComboBox", "()", "")]
 		private void NewQComboBox() {
 			ProxyQComboBox().NewQComboBox();
 		}
-		[SmokeMethod("hasFrame", "() const")]
+		[SmokeMethod("hasFrame", "() const", "")]
 		public bool HasFrame() {
 			return ProxyQComboBox().HasFrame();
 		}
-		[SmokeMethod("findText$$", "(const QString&, Qt::MatchFlags) const")]
+		[SmokeMethod("findText", "(const QString&, Qt::MatchFlags) const", "$$")]
 		public int FindText(string text, int flags) {
 			return ProxyQComboBox().FindText(text,flags);
 		}
-		[SmokeMethod("findText$", "(const QString&) const")]
+		[SmokeMethod("findText", "(const QString&) const", "$")]
 		public int FindText(string text) {
 			return ProxyQComboBox().FindText(text);
 		}
-		[SmokeMethod("findData#$$", "(const QVariant&, int, Qt::MatchFlags) const")]
+		[SmokeMethod("findData", "(const QVariant&, int, Qt::MatchFlags) const", "#$$")]
 		public int FindData(QVariant data, int role, int flags) {
 			return ProxyQComboBox().FindData(data,role,flags);
 		}
-		[SmokeMethod("findData#$", "(const QVariant&, int) const")]
+		[SmokeMethod("findData", "(const QVariant&, int) const", "#$")]
 		public int FindData(QVariant data, int role) {
 			return ProxyQComboBox().FindData(data,role);
 		}
-		[SmokeMethod("findData#", "(const QVariant&) const")]
+		[SmokeMethod("findData", "(const QVariant&) const", "#")]
 		public int FindData(QVariant data) {
 			return ProxyQComboBox().FindData(data);
 		}
-		[SmokeMethod("isEditable", "() const")]
+		[SmokeMethod("isEditable", "() const", "")]
 		public bool IsEditable() {
 			return ProxyQComboBox().IsEditable();
 		}
-		[SmokeMethod("setLineEdit#", "(QLineEdit*)")]
+		[SmokeMethod("setLineEdit", "(QLineEdit*)", "#")]
 		public void SetLineEdit(QLineEdit edit) {
 			ProxyQComboBox().SetLineEdit(edit);
 		}
-		[SmokeMethod("lineEdit", "() const")]
+		[SmokeMethod("lineEdit", "() const", "")]
 		public QLineEdit LineEdit() {
 			return ProxyQComboBox().LineEdit();
 		}
-		[SmokeMethod("setValidator#", "(const QValidator*)")]
+		[SmokeMethod("setValidator", "(const QValidator*)", "#")]
 		public void SetValidator(QValidator v) {
 			ProxyQComboBox().SetValidator(v);
 		}
-		[SmokeMethod("validator", "() const")]
+		[SmokeMethod("validator", "() const", "")]
 		public QValidator Validator() {
 			return ProxyQComboBox().Validator();
 		}
-		[SmokeMethod("setCompleter#", "(QCompleter*)")]
+		[SmokeMethod("setCompleter", "(QCompleter*)", "#")]
 		public void SetCompleter(QCompleter c) {
 			ProxyQComboBox().SetCompleter(c);
 		}
-		[SmokeMethod("completer", "() const")]
+		[SmokeMethod("completer", "() const", "")]
 		public QCompleter Completer() {
 			return ProxyQComboBox().Completer();
 		}
-		[SmokeMethod("itemDelegate", "() const")]
+		[SmokeMethod("itemDelegate", "() const", "")]
 		public QAbstractItemDelegate ItemDelegate() {
 			return ProxyQComboBox().ItemDelegate();
 		}
-		[SmokeMethod("setItemDelegate#", "(QAbstractItemDelegate*)")]
+		[SmokeMethod("setItemDelegate", "(QAbstractItemDelegate*)", "#")]
 		public void SetItemDelegate(QAbstractItemDelegate arg1) {
 			ProxyQComboBox().SetItemDelegate(arg1);
 		}
-		[SmokeMethod("model", "() const")]
+		[SmokeMethod("model", "() const", "")]
 		public QAbstractItemModel Model() {
 			return ProxyQComboBox().Model();
 		}
-		[SmokeMethod("setModel#", "(QAbstractItemModel*)")]
+		[SmokeMethod("setModel", "(QAbstractItemModel*)", "#")]
 		public void SetModel(QAbstractItemModel model) {
 			ProxyQComboBox().SetModel(model);
 		}
-		[SmokeMethod("rootModelIndex", "() const")]
+		[SmokeMethod("rootModelIndex", "() const", "")]
 		public QModelIndex RootModelIndex() {
 			return ProxyQComboBox().RootModelIndex();
 		}
-		[SmokeMethod("setRootModelIndex#", "(const QModelIndex&)")]
+		[SmokeMethod("setRootModelIndex", "(const QModelIndex&)", "#")]
 		public void SetRootModelIndex(QModelIndex index) {
 			ProxyQComboBox().SetRootModelIndex(index);
 		}
-		[SmokeMethod("itemText$", "(int) const")]
+		[SmokeMethod("itemText", "(int) const", "$")]
 		public string ItemText(int index) {
 			return ProxyQComboBox().ItemText(index);
 		}
-		[SmokeMethod("itemIcon$", "(int) const")]
+		[SmokeMethod("itemIcon", "(int) const", "$")]
 		public QIcon ItemIcon(int index) {
 			return ProxyQComboBox().ItemIcon(index);
 		}
-		[SmokeMethod("itemData$$", "(int, int) const")]
+		[SmokeMethod("itemData", "(int, int) const", "$$")]
 		public QVariant ItemData(int index, int role) {
 			return ProxyQComboBox().ItemData(index,role);
 		}
-		[SmokeMethod("itemData$", "(int) const")]
+		[SmokeMethod("itemData", "(int) const", "$")]
 		public QVariant ItemData(int index) {
 			return ProxyQComboBox().ItemData(index);
 		}
-		[SmokeMethod("addItem$#", "(const QString&, const QVariant&)")]
+		[SmokeMethod("addItem", "(const QString&, const QVariant&)", "$#")]
 		public void AddItem(string text, QVariant userData) {
 			ProxyQComboBox().AddItem(text,userData);
 		}
-		[SmokeMethod("addItem$", "(const QString&)")]
+		[SmokeMethod("addItem", "(const QString&)", "$")]
 		public void AddItem(string text) {
 			ProxyQComboBox().AddItem(text);
 		}
-		[SmokeMethod("addItem#$#", "(const QIcon&, const QString&, const QVariant&)")]
+		[SmokeMethod("addItem", "(const QIcon&, const QString&, const QVariant&)", "#$#")]
 		public void AddItem(QIcon icon, string text, QVariant userData) {
 			ProxyQComboBox().AddItem(icon,text,userData);
 		}
-		[SmokeMethod("addItem#$", "(const QIcon&, const QString&)")]
+		[SmokeMethod("addItem", "(const QIcon&, const QString&)", "#$")]
 		public void AddItem(QIcon icon, string text) {
 			ProxyQComboBox().AddItem(icon,text);
 		}
-		[SmokeMethod("addItems?", "(const QStringList&)")]
+		[SmokeMethod("addItems", "(const QStringList&)", "?")]
 		public void AddItems(List<string> texts) {
 			ProxyQComboBox().AddItems(texts);
 		}
-		[SmokeMethod("insertItem$$#", "(int, const QString&, const QVariant&)")]
+		[SmokeMethod("insertItem", "(int, const QString&, const QVariant&)", "$$#")]
 		public void InsertItem(int index, string text, QVariant userData) {
 			ProxyQComboBox().InsertItem(index,text,userData);
 		}
-		[SmokeMethod("insertItem$$", "(int, const QString&)")]
+		[SmokeMethod("insertItem", "(int, const QString&)", "$$")]
 		public void InsertItem(int index, string text) {
 			ProxyQComboBox().InsertItem(index,text);
 		}
-		[SmokeMethod("insertItem$#$#", "(int, const QIcon&, const QString&, const QVariant&)")]
+		[SmokeMethod("insertItem", "(int, const QIcon&, const QString&, const QVariant&)", "$#$#")]
 		public void InsertItem(int index, QIcon icon, string text, QVariant userData) {
 			ProxyQComboBox().InsertItem(index,icon,text,userData);
 		}
-		[SmokeMethod("insertItem$#$", "(int, const QIcon&, const QString&)")]
+		[SmokeMethod("insertItem", "(int, const QIcon&, const QString&)", "$#$")]
 		public void InsertItem(int index, QIcon icon, string text) {
 			ProxyQComboBox().InsertItem(index,icon,text);
 		}
-		[SmokeMethod("insertItems$?", "(int, const QStringList&)")]
+		[SmokeMethod("insertItems", "(int, const QStringList&)", "$?")]
 		public void InsertItems(int index, List<string> texts) {
 			ProxyQComboBox().InsertItems(index,texts);
 		}
-		[SmokeMethod("removeItem$", "(int)")]
+		[SmokeMethod("removeItem", "(int)", "$")]
 		public void RemoveItem(int index) {
 			ProxyQComboBox().RemoveItem(index);
 		}
-		[SmokeMethod("setItemText$$", "(int, const QString&)")]
+		[SmokeMethod("setItemText", "(int, const QString&)", "$$")]
 		public void SetItemText(int index, string text) {
 			ProxyQComboBox().SetItemText(index,text);
 		}
-		[SmokeMethod("setItemIcon$#", "(int, const QIcon&)")]
+		[SmokeMethod("setItemIcon", "(int, const QIcon&)", "$#")]
 		public void SetItemIcon(int index, QIcon icon) {
 			ProxyQComboBox().SetItemIcon(index,icon);
 		}
-		[SmokeMethod("setItemData$#$", "(int, const QVariant&, int)")]
+		[SmokeMethod("setItemData", "(int, const QVariant&, int)", "$#$")]
 		public void SetItemData(int index, QVariant value, int role) {
 			ProxyQComboBox().SetItemData(index,value,role);
 		}
-		[SmokeMethod("setItemData$#", "(int, const QVariant&)")]
+		[SmokeMethod("setItemData", "(int, const QVariant&)", "$#")]
 		public void SetItemData(int index, QVariant value) {
 			ProxyQComboBox().SetItemData(index,value);
 		}
-		[SmokeMethod("view", "() const")]
+		[SmokeMethod("view", "() const", "")]
 		public QAbstractItemView View() {
 			return ProxyQComboBox().View();
 		}
-		[SmokeMethod("setView#", "(QAbstractItemView*)")]
+		[SmokeMethod("setView", "(QAbstractItemView*)", "#")]
 		public void SetView(QAbstractItemView itemView) {
 			ProxyQComboBox().SetView(itemView);
 		}
-		[SmokeMethod("sizeHint", "() const")]
+		[SmokeMethod("sizeHint", "() const", "")]
 		public new QSize SizeHint() {
 			return ProxyQComboBox().SizeHint();
 		}
-		[SmokeMethod("minimumSizeHint", "() const")]
+		[SmokeMethod("minimumSizeHint", "() const", "")]
 		public new QSize MinimumSizeHint() {
 			return ProxyQComboBox().MinimumSizeHint();
 		}
-		[SmokeMethod("showPopup", "()")]
+		[SmokeMethod("showPopup", "()", "")]
 		public virtual void ShowPopup() {
 			ProxyQComboBox().ShowPopup();
 		}
-		[SmokeMethod("hidePopup", "()")]
+		[SmokeMethod("hidePopup", "()", "")]
 		public virtual void HidePopup() {
 			ProxyQComboBox().HidePopup();
 		}
-		[SmokeMethod("event#", "(QEvent*)")]
+		[SmokeMethod("event", "(QEvent*)", "#")]
 		public new bool Event(QEvent arg1) {
 			return ProxyQComboBox().Event(arg1);
 		}
 		[Q_SLOT("void clear()")]
-		[SmokeMethod("clear", "()")]
+		[SmokeMethod("clear", "()", "")]
 		public void Clear() {
 			ProxyQComboBox().Clear();
 		}
 		[Q_SLOT("void clearEditText()")]
-		[SmokeMethod("clearEditText", "()")]
+		[SmokeMethod("clearEditText", "()", "")]
 		public void ClearEditText() {
 			ProxyQComboBox().ClearEditText();
 		}
 		[Q_SLOT("void setEditText(const QString&)")]
-		[SmokeMethod("setEditText$", "(const QString&)")]
+		[SmokeMethod("setEditText", "(const QString&)", "$")]
 		public void SetEditText(string text) {
 			ProxyQComboBox().SetEditText(text);
 		}
@@ -393,63 +393,63 @@ namespace Qyoto {
 		public static new string Tr(string s) {
 			return StaticQComboBox().Tr(s);
 		}
-		[SmokeMethod("focusInEvent#", "(QFocusEvent*)")]
+		[SmokeMethod("focusInEvent", "(QFocusEvent*)", "#")]
 		protected new void FocusInEvent(QFocusEvent e) {
 			ProxyQComboBox().FocusInEvent(e);
 		}
-		[SmokeMethod("focusOutEvent#", "(QFocusEvent*)")]
+		[SmokeMethod("focusOutEvent", "(QFocusEvent*)", "#")]
 		protected new void FocusOutEvent(QFocusEvent e) {
 			ProxyQComboBox().FocusOutEvent(e);
 		}
-		[SmokeMethod("changeEvent#", "(QEvent*)")]
+		[SmokeMethod("changeEvent", "(QEvent*)", "#")]
 		protected new void ChangeEvent(QEvent e) {
 			ProxyQComboBox().ChangeEvent(e);
 		}
-		[SmokeMethod("resizeEvent#", "(QResizeEvent*)")]
+		[SmokeMethod("resizeEvent", "(QResizeEvent*)", "#")]
 		protected new void ResizeEvent(QResizeEvent e) {
 			ProxyQComboBox().ResizeEvent(e);
 		}
-		[SmokeMethod("paintEvent#", "(QPaintEvent*)")]
+		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
 		protected new void PaintEvent(QPaintEvent e) {
 			ProxyQComboBox().PaintEvent(e);
 		}
-		[SmokeMethod("showEvent#", "(QShowEvent*)")]
+		[SmokeMethod("showEvent", "(QShowEvent*)", "#")]
 		public new void ShowEvent(QShowEvent e) {
 			ProxyQComboBox().ShowEvent(e);
 		}
-		[SmokeMethod("hideEvent#", "(QHideEvent*)")]
+		[SmokeMethod("hideEvent", "(QHideEvent*)", "#")]
 		protected new void HideEvent(QHideEvent e) {
 			ProxyQComboBox().HideEvent(e);
 		}
-		[SmokeMethod("mousePressEvent#", "(QMouseEvent*)")]
+		[SmokeMethod("mousePressEvent", "(QMouseEvent*)", "#")]
 		protected new void MousePressEvent(QMouseEvent e) {
 			ProxyQComboBox().MousePressEvent(e);
 		}
-		[SmokeMethod("mouseReleaseEvent#", "(QMouseEvent*)")]
+		[SmokeMethod("mouseReleaseEvent", "(QMouseEvent*)", "#")]
 		protected new void MouseReleaseEvent(QMouseEvent e) {
 			ProxyQComboBox().MouseReleaseEvent(e);
 		}
-		[SmokeMethod("keyPressEvent#", "(QKeyEvent*)")]
+		[SmokeMethod("keyPressEvent", "(QKeyEvent*)", "#")]
 		protected new void KeyPressEvent(QKeyEvent e) {
 			ProxyQComboBox().KeyPressEvent(e);
 		}
-		[SmokeMethod("keyReleaseEvent#", "(QKeyEvent*)")]
+		[SmokeMethod("keyReleaseEvent", "(QKeyEvent*)", "#")]
 		protected new void KeyReleaseEvent(QKeyEvent e) {
 			ProxyQComboBox().KeyReleaseEvent(e);
 		}
-		[SmokeMethod("wheelEvent#", "(QWheelEvent*)")]
+		[SmokeMethod("wheelEvent", "(QWheelEvent*)", "#")]
 		protected new void WheelEvent(QWheelEvent e) {
 			ProxyQComboBox().WheelEvent(e);
 		}
-		[SmokeMethod("contextMenuEvent#", "(QContextMenuEvent*)")]
+		[SmokeMethod("contextMenuEvent", "(QContextMenuEvent*)", "#")]
 		protected new void ContextMenuEvent(QContextMenuEvent e) {
 			ProxyQComboBox().ContextMenuEvent(e);
 		}
-		[SmokeMethod("inputMethodEvent#", "(QInputMethodEvent*)")]
+		[SmokeMethod("inputMethodEvent", "(QInputMethodEvent*)", "#")]
 		protected new void InputMethodEvent(QInputMethodEvent arg1) {
 			ProxyQComboBox().InputMethodEvent(arg1);
 		}
-		[SmokeMethod("inputMethodQuery$", "(Qt::InputMethodQuery) const")]
+		[SmokeMethod("inputMethodQuery", "(Qt::InputMethodQuery) const", "$")]
 		protected new QVariant InputMethodQuery(Qt.InputMethodQuery arg1) {
 			return ProxyQComboBox().InputMethodQuery(arg1);
 		}
@@ -459,7 +459,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQComboBox();
 		}
-		[SmokeMethod("~QComboBox", "()")]
+		[SmokeMethod("~QComboBox", "()", "")]
 		private void DisposeQComboBox() {
 			ProxyQComboBox().DisposeQComboBox();
 		}

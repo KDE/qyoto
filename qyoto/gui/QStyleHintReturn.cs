@@ -42,7 +42,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleHintReturn(version,type);
 		}
-		[SmokeMethod("QStyleHintReturn$$", "(int, int)")]
+		[SmokeMethod("QStyleHintReturn", "(int, int)", "$$")]
 		private void NewQStyleHintReturn(int version, int type) {
 			ProxyQStyleHintReturn().NewQStyleHintReturn(version,type);
 		}
@@ -50,7 +50,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleHintReturn(version);
 		}
-		[SmokeMethod("QStyleHintReturn$", "(int)")]
+		[SmokeMethod("QStyleHintReturn", "(int)", "$")]
 		private void NewQStyleHintReturn(int version) {
 			ProxyQStyleHintReturn().NewQStyleHintReturn(version);
 		}
@@ -58,7 +58,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleHintReturn();
 		}
-		[SmokeMethod("QStyleHintReturn", "()")]
+		[SmokeMethod("QStyleHintReturn", "()", "")]
 		private void NewQStyleHintReturn() {
 			ProxyQStyleHintReturn().NewQStyleHintReturn();
 		}
@@ -68,7 +68,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQStyleHintReturn();
 		}
-		[SmokeMethod("~QStyleHintReturn", "()")]
+		[SmokeMethod("~QStyleHintReturn", "()", "")]
 		private void DisposeQStyleHintReturn() {
 			ProxyQStyleHintReturn().DisposeQStyleHintReturn();
 		}

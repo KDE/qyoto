@@ -35,7 +35,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQObjectUserData();
 		}
-		[SmokeMethod("~QObjectUserData", "()")]
+		[SmokeMethod("~QObjectUserData", "()", "")]
 		private void DisposeQObjectUserData() {
 			ProxyQObjectUserData().DisposeQObjectUserData();
 		}

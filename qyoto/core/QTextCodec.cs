@@ -12,29 +12,29 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QTextCodec(Type dummy) {}
 		interface IQTextCodecProxy {
-			[SmokeMethod("codecForName#", "(const QByteArray&)")]
+			[SmokeMethod("codecForName", "(const QByteArray&)", "#")]
 			QTextCodec CodecForName(QByteArray name);
-			[SmokeMethod("codecForName$", "(const char*)")]
+			[SmokeMethod("codecForName", "(const char*)", "$")]
 			QTextCodec CodecForName(string name);
-			[SmokeMethod("codecForMib$", "(int)")]
+			[SmokeMethod("codecForMib", "(int)", "$")]
 			QTextCodec CodecForMib(int mib);
-			[SmokeMethod("availableCodecs", "()")]
+			[SmokeMethod("availableCodecs", "()", "")]
 			List<QByteArray> AvailableCodecs();
-			[SmokeMethod("availableMibs", "()")]
+			[SmokeMethod("availableMibs", "()", "")]
 			List<int> AvailableMibs();
-			[SmokeMethod("codecForLocale", "()")]
+			[SmokeMethod("codecForLocale", "()", "")]
 			QTextCodec CodecForLocale();
-			[SmokeMethod("setCodecForLocale#", "(QTextCodec*)")]
+			[SmokeMethod("setCodecForLocale", "(QTextCodec*)", "#")]
 			void SetCodecForLocale(QTextCodec c);
-			[SmokeMethod("codecForTr", "()")]
+			[SmokeMethod("codecForTr", "()", "")]
 			QTextCodec CodecForTr();
-			[SmokeMethod("setCodecForTr#", "(QTextCodec*)")]
+			[SmokeMethod("setCodecForTr", "(QTextCodec*)", "#")]
 			void SetCodecForTr(QTextCodec c);
-			[SmokeMethod("codecForCStrings", "()")]
+			[SmokeMethod("codecForCStrings", "()", "")]
 			QTextCodec CodecForCStrings();
-			[SmokeMethod("setCodecForCStrings#", "(QTextCodec*)")]
+			[SmokeMethod("setCodecForCStrings", "(QTextCodec*)", "#")]
 			void SetCodecForCStrings(QTextCodec c);
-			[SmokeMethod("codecForHtml#", "(const QByteArray&)")]
+			[SmokeMethod("codecForHtml", "(const QByteArray&)", "#")]
 			QTextCodec CodecForHtml(QByteArray ba);
 		}
 
@@ -59,53 +59,53 @@ namespace Qyoto {
 			ConvertInvalidToNull = 0x80000000,
 			IgnoreHeader = 0x1,
 		}
-		[SmokeMethod("makeDecoder", "() const")]
+		[SmokeMethod("makeDecoder", "() const", "")]
 		public QTextDecoder MakeDecoder() {
 			return ProxyQTextCodec().MakeDecoder();
 		}
-		[SmokeMethod("makeEncoder", "() const")]
+		[SmokeMethod("makeEncoder", "() const", "")]
 		public QTextEncoder MakeEncoder() {
 			return ProxyQTextCodec().MakeEncoder();
 		}
-		[SmokeMethod("canEncode#", "(QChar) const")]
+		[SmokeMethod("canEncode", "(QChar) const", "#")]
 		public bool CanEncode(char arg1) {
 			return ProxyQTextCodec().CanEncode(arg1);
 		}
-		[SmokeMethod("canEncode$", "(const QString&) const")]
+		[SmokeMethod("canEncode", "(const QString&) const", "$")]
 		public bool CanEncode(string arg1) {
 			return ProxyQTextCodec().CanEncode(arg1);
 		}
-		[SmokeMethod("toUnicode#", "(const QByteArray&) const")]
+		[SmokeMethod("toUnicode", "(const QByteArray&) const", "#")]
 		public string ToUnicode(QByteArray arg1) {
 			return ProxyQTextCodec().ToUnicode(arg1);
 		}
-		[SmokeMethod("toUnicode$", "(const char*) const")]
+		[SmokeMethod("toUnicode", "(const char*) const", "$")]
 		public string ToUnicode(string chars) {
 			return ProxyQTextCodec().ToUnicode(chars);
 		}
-		[SmokeMethod("fromUnicode$", "(const QString&) const")]
+		[SmokeMethod("fromUnicode", "(const QString&) const", "$")]
 		public QByteArray FromUnicode(string uc) {
 			return ProxyQTextCodec().FromUnicode(uc);
 		}
 		// QString toUnicode(const char* arg1,int arg2,QTextCodec::ConverterState* arg3); >>>> NOT CONVERTED
-		[SmokeMethod("toUnicode$$", "(const char*, int) const")]
+		[SmokeMethod("toUnicode", "(const char*, int) const", "$$")]
 		public string ToUnicode(string arg1, int length) {
 			return ProxyQTextCodec().ToUnicode(arg1,length);
 		}
 		// QByteArray fromUnicode(const QChar* arg1,int arg2,QTextCodec::ConverterState* arg3); >>>> NOT CONVERTED
-		[SmokeMethod("fromUnicode#$", "(const QChar*, int) const")]
+		[SmokeMethod("fromUnicode", "(const QChar*, int) const", "#$")]
 		public QByteArray FromUnicode(char arg1, int length) {
 			return ProxyQTextCodec().FromUnicode(arg1,length);
 		}
-		[SmokeMethod("name", "() const")]
+		[SmokeMethod("name", "() const", "")]
 		public virtual QByteArray Name() {
 			return ProxyQTextCodec().Name();
 		}
-		[SmokeMethod("aliases", "() const")]
+		[SmokeMethod("aliases", "() const", "")]
 		public virtual List<QByteArray> Aliases() {
 			return ProxyQTextCodec().Aliases();
 		}
-		[SmokeMethod("mibEnum", "() const")]
+		[SmokeMethod("mibEnum", "() const", "")]
 		public virtual int MibEnum() {
 			return ProxyQTextCodec().MibEnum();
 		}

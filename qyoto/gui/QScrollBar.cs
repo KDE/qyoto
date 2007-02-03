@@ -8,9 +8,9 @@ namespace Qyoto {
 	public class QScrollBar : QAbstractSlider, IDisposable {
  		protected QScrollBar(Type dummy) : base((Type) null) {}
 		interface IQScrollBarProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
 
@@ -35,7 +35,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQScrollBar(parent);
 		}
-		[SmokeMethod("QScrollBar#", "(QWidget*)")]
+		[SmokeMethod("QScrollBar", "(QWidget*)", "#")]
 		private void NewQScrollBar(QWidget parent) {
 			ProxyQScrollBar().NewQScrollBar(parent);
 		}
@@ -43,7 +43,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQScrollBar();
 		}
-		[SmokeMethod("QScrollBar", "()")]
+		[SmokeMethod("QScrollBar", "()", "")]
 		private void NewQScrollBar() {
 			ProxyQScrollBar().NewQScrollBar();
 		}
@@ -51,7 +51,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQScrollBar(arg1,parent);
 		}
-		[SmokeMethod("QScrollBar$#", "(Qt::Orientation, QWidget*)")]
+		[SmokeMethod("QScrollBar", "(Qt::Orientation, QWidget*)", "$#")]
 		private void NewQScrollBar(Qt.Orientation arg1, QWidget parent) {
 			ProxyQScrollBar().NewQScrollBar(arg1,parent);
 		}
@@ -59,15 +59,15 @@ namespace Qyoto {
 			CreateProxy();
 			NewQScrollBar(arg1);
 		}
-		[SmokeMethod("QScrollBar$", "(Qt::Orientation)")]
+		[SmokeMethod("QScrollBar", "(Qt::Orientation)", "$")]
 		private void NewQScrollBar(Qt.Orientation arg1) {
 			ProxyQScrollBar().NewQScrollBar(arg1);
 		}
-		[SmokeMethod("sizeHint", "() const")]
+		[SmokeMethod("sizeHint", "() const", "")]
 		public new QSize SizeHint() {
 			return ProxyQScrollBar().SizeHint();
 		}
-		[SmokeMethod("event#", "(QEvent*)")]
+		[SmokeMethod("event", "(QEvent*)", "#")]
 		public new bool Event(QEvent arg1) {
 			return ProxyQScrollBar().Event(arg1);
 		}
@@ -77,31 +77,31 @@ namespace Qyoto {
 		public static new string Tr(string s) {
 			return StaticQScrollBar().Tr(s);
 		}
-		[SmokeMethod("paintEvent#", "(QPaintEvent*)")]
+		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
 		protected new void PaintEvent(QPaintEvent arg1) {
 			ProxyQScrollBar().PaintEvent(arg1);
 		}
-		[SmokeMethod("mousePressEvent#", "(QMouseEvent*)")]
+		[SmokeMethod("mousePressEvent", "(QMouseEvent*)", "#")]
 		protected new void MousePressEvent(QMouseEvent arg1) {
 			ProxyQScrollBar().MousePressEvent(arg1);
 		}
-		[SmokeMethod("mouseReleaseEvent#", "(QMouseEvent*)")]
+		[SmokeMethod("mouseReleaseEvent", "(QMouseEvent*)", "#")]
 		protected new void MouseReleaseEvent(QMouseEvent arg1) {
 			ProxyQScrollBar().MouseReleaseEvent(arg1);
 		}
-		[SmokeMethod("mouseMoveEvent#", "(QMouseEvent*)")]
+		[SmokeMethod("mouseMoveEvent", "(QMouseEvent*)", "#")]
 		protected new void MouseMoveEvent(QMouseEvent arg1) {
 			ProxyQScrollBar().MouseMoveEvent(arg1);
 		}
-		[SmokeMethod("hideEvent#", "(QHideEvent*)")]
+		[SmokeMethod("hideEvent", "(QHideEvent*)", "#")]
 		protected new void HideEvent(QHideEvent arg1) {
 			ProxyQScrollBar().HideEvent(arg1);
 		}
-		[SmokeMethod("sliderChange$", "(QAbstractSlider::SliderChange)")]
+		[SmokeMethod("sliderChange", "(QAbstractSlider::SliderChange)", "$")]
 		protected new void SliderChange(QAbstractSlider.SliderChange change) {
 			ProxyQScrollBar().SliderChange(change);
 		}
-		[SmokeMethod("contextMenuEvent#", "(QContextMenuEvent*)")]
+		[SmokeMethod("contextMenuEvent", "(QContextMenuEvent*)", "#")]
 		protected new void ContextMenuEvent(QContextMenuEvent arg1) {
 			ProxyQScrollBar().ContextMenuEvent(arg1);
 		}
@@ -111,7 +111,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQScrollBar();
 		}
-		[SmokeMethod("~QScrollBar", "()")]
+		[SmokeMethod("~QScrollBar", "()", "")]
 		private void DisposeQScrollBar() {
 			ProxyQScrollBar().DisposeQScrollBar();
 		}

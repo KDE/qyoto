@@ -42,19 +42,19 @@ namespace Qyoto {
 			CreateProxy();
 			NewQFileIconProvider();
 		}
-		[SmokeMethod("QFileIconProvider", "()")]
+		[SmokeMethod("QFileIconProvider", "()", "")]
 		private void NewQFileIconProvider() {
 			ProxyQFileIconProvider().NewQFileIconProvider();
 		}
-		[SmokeMethod("icon$", "(QFileIconProvider::IconType) const")]
+		[SmokeMethod("icon", "(QFileIconProvider::IconType) const", "$")]
 		public virtual QIcon Icon(QFileIconProvider.IconType type) {
 			return ProxyQFileIconProvider().Icon(type);
 		}
-		[SmokeMethod("icon#", "(const QFileInfo&) const")]
+		[SmokeMethod("icon", "(const QFileInfo&) const", "#")]
 		public virtual QIcon Icon(QFileInfo info) {
 			return ProxyQFileIconProvider().Icon(info);
 		}
-		[SmokeMethod("type#", "(const QFileInfo&) const")]
+		[SmokeMethod("type", "(const QFileInfo&) const", "#")]
 		public virtual string type(QFileInfo info) {
 			return ProxyQFileIconProvider().type(info);
 		}
@@ -64,7 +64,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQFileIconProvider();
 		}
-		[SmokeMethod("~QFileIconProvider", "()")]
+		[SmokeMethod("~QFileIconProvider", "()", "")]
 		private void DisposeQFileIconProvider() {
 			ProxyQFileIconProvider().DisposeQFileIconProvider();
 		}

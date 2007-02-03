@@ -31,7 +31,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGraphicsRectItem(parent,scene);
 		}
-		[SmokeMethod("QGraphicsRectItem##", "(QGraphicsItem*, QGraphicsScene*)")]
+		[SmokeMethod("QGraphicsRectItem", "(QGraphicsItem*, QGraphicsScene*)", "##")]
 		private void NewQGraphicsRectItem(QGraphicsItem parent, QGraphicsScene scene) {
 			ProxyQGraphicsRectItem().NewQGraphicsRectItem(parent,scene);
 		}
@@ -39,7 +39,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGraphicsRectItem(parent);
 		}
-		[SmokeMethod("QGraphicsRectItem#", "(QGraphicsItem*)")]
+		[SmokeMethod("QGraphicsRectItem", "(QGraphicsItem*)", "#")]
 		private void NewQGraphicsRectItem(QGraphicsItem parent) {
 			ProxyQGraphicsRectItem().NewQGraphicsRectItem(parent);
 		}
@@ -47,7 +47,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGraphicsRectItem();
 		}
-		[SmokeMethod("QGraphicsRectItem", "()")]
+		[SmokeMethod("QGraphicsRectItem", "()", "")]
 		private void NewQGraphicsRectItem() {
 			ProxyQGraphicsRectItem().NewQGraphicsRectItem();
 		}
@@ -55,7 +55,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGraphicsRectItem(rect,parent,scene);
 		}
-		[SmokeMethod("QGraphicsRectItem###", "(const QRectF&, QGraphicsItem*, QGraphicsScene*)")]
+		[SmokeMethod("QGraphicsRectItem", "(const QRectF&, QGraphicsItem*, QGraphicsScene*)", "###")]
 		private void NewQGraphicsRectItem(QRectF rect, QGraphicsItem parent, QGraphicsScene scene) {
 			ProxyQGraphicsRectItem().NewQGraphicsRectItem(rect,parent,scene);
 		}
@@ -63,7 +63,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGraphicsRectItem(rect,parent);
 		}
-		[SmokeMethod("QGraphicsRectItem##", "(const QRectF&, QGraphicsItem*)")]
+		[SmokeMethod("QGraphicsRectItem", "(const QRectF&, QGraphicsItem*)", "##")]
 		private void NewQGraphicsRectItem(QRectF rect, QGraphicsItem parent) {
 			ProxyQGraphicsRectItem().NewQGraphicsRectItem(rect,parent);
 		}
@@ -71,7 +71,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGraphicsRectItem(rect);
 		}
-		[SmokeMethod("QGraphicsRectItem#", "(const QRectF&)")]
+		[SmokeMethod("QGraphicsRectItem", "(const QRectF&)", "#")]
 		private void NewQGraphicsRectItem(QRectF rect) {
 			ProxyQGraphicsRectItem().NewQGraphicsRectItem(rect);
 		}
@@ -79,7 +79,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGraphicsRectItem(x,y,w,h,parent,scene);
 		}
-		[SmokeMethod("QGraphicsRectItem$$$$##", "(qreal, qreal, qreal, qreal, QGraphicsItem*, QGraphicsScene*)")]
+		[SmokeMethod("QGraphicsRectItem", "(qreal, qreal, qreal, qreal, QGraphicsItem*, QGraphicsScene*)", "$$$$##")]
 		private void NewQGraphicsRectItem(double x, double y, double w, double h, QGraphicsItem parent, QGraphicsScene scene) {
 			ProxyQGraphicsRectItem().NewQGraphicsRectItem(x,y,w,h,parent,scene);
 		}
@@ -87,7 +87,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGraphicsRectItem(x,y,w,h,parent);
 		}
-		[SmokeMethod("QGraphicsRectItem$$$$#", "(qreal, qreal, qreal, qreal, QGraphicsItem*)")]
+		[SmokeMethod("QGraphicsRectItem", "(qreal, qreal, qreal, qreal, QGraphicsItem*)", "$$$$#")]
 		private void NewQGraphicsRectItem(double x, double y, double w, double h, QGraphicsItem parent) {
 			ProxyQGraphicsRectItem().NewQGraphicsRectItem(x,y,w,h,parent);
 		}
@@ -95,63 +95,63 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGraphicsRectItem(x,y,w,h);
 		}
-		[SmokeMethod("QGraphicsRectItem$$$$", "(qreal, qreal, qreal, qreal)")]
+		[SmokeMethod("QGraphicsRectItem", "(qreal, qreal, qreal, qreal)", "$$$$")]
 		private void NewQGraphicsRectItem(double x, double y, double w, double h) {
 			ProxyQGraphicsRectItem().NewQGraphicsRectItem(x,y,w,h);
 		}
-		[SmokeMethod("rect", "() const")]
+		[SmokeMethod("rect", "() const", "")]
 		public QRectF Rect() {
 			return ProxyQGraphicsRectItem().Rect();
 		}
-		[SmokeMethod("setRect#", "(const QRectF&)")]
+		[SmokeMethod("setRect", "(const QRectF&)", "#")]
 		public void SetRect(QRectF rect) {
 			ProxyQGraphicsRectItem().SetRect(rect);
 		}
-		[SmokeMethod("setRect$$$$", "(qreal, qreal, qreal, qreal)")]
+		[SmokeMethod("setRect", "(qreal, qreal, qreal, qreal)", "$$$$")]
 		public void SetRect(double x, double y, double w, double h) {
 			ProxyQGraphicsRectItem().SetRect(x,y,w,h);
 		}
-		[SmokeMethod("boundingRect", "() const")]
+		[SmokeMethod("boundingRect", "() const", "")]
 		public new QRectF BoundingRect() {
 			return ProxyQGraphicsRectItem().BoundingRect();
 		}
-		[SmokeMethod("shape", "() const")]
+		[SmokeMethod("shape", "() const", "")]
 		public new QPainterPath Shape() {
 			return ProxyQGraphicsRectItem().Shape();
 		}
-		[SmokeMethod("contains#", "(const QPointF&) const")]
+		[SmokeMethod("contains", "(const QPointF&) const", "#")]
 		public new bool Contains(QPointF point) {
 			return ProxyQGraphicsRectItem().Contains(point);
 		}
-		[SmokeMethod("paint###", "(QPainter*, const QStyleOptionGraphicsItem*, QWidget*)")]
+		[SmokeMethod("paint", "(QPainter*, const QStyleOptionGraphicsItem*, QWidget*)", "###")]
 		public new void Paint(QPainter painter, QStyleOptionGraphicsItem option, QWidget widget) {
 			ProxyQGraphicsRectItem().Paint(painter,option,widget);
 		}
-		[SmokeMethod("paint##", "(QPainter*, const QStyleOptionGraphicsItem*)")]
+		[SmokeMethod("paint", "(QPainter*, const QStyleOptionGraphicsItem*)", "##")]
 		public new void Paint(QPainter painter, QStyleOptionGraphicsItem option) {
 			ProxyQGraphicsRectItem().Paint(painter,option);
 		}
-		[SmokeMethod("isObscuredBy#", "(const QGraphicsItem*) const")]
+		[SmokeMethod("isObscuredBy", "(const QGraphicsItem*) const", "#")]
 		public new bool IsObscuredBy(QGraphicsItem item) {
 			return ProxyQGraphicsRectItem().IsObscuredBy(item);
 		}
-		[SmokeMethod("opaqueArea", "() const")]
+		[SmokeMethod("opaqueArea", "() const", "")]
 		public new QPainterPath OpaqueArea() {
 			return ProxyQGraphicsRectItem().OpaqueArea();
 		}
-		[SmokeMethod("type", "() const")]
+		[SmokeMethod("type", "() const", "")]
 		public new int type() {
 			return ProxyQGraphicsRectItem().type();
 		}
-		[SmokeMethod("supportsExtension$", "(QGraphicsItem::Extension) const")]
+		[SmokeMethod("supportsExtension", "(QGraphicsItem::Extension) const", "$")]
 		protected new bool SupportsExtension(QGraphicsItem.Extension extension) {
 			return ProxyQGraphicsRectItem().SupportsExtension(extension);
 		}
-		[SmokeMethod("setExtension$#", "(QGraphicsItem::Extension, const QVariant&)")]
+		[SmokeMethod("setExtension", "(QGraphicsItem::Extension, const QVariant&)", "$#")]
 		protected new void SetExtension(QGraphicsItem.Extension extension, QVariant variant) {
 			ProxyQGraphicsRectItem().SetExtension(extension,variant);
 		}
-		[SmokeMethod("extension#", "(const QVariant&) const")]
+		[SmokeMethod("extension", "(const QVariant&) const", "#")]
 		protected new QVariant Extension(QVariant variant) {
 			return ProxyQGraphicsRectItem().Extension(variant);
 		}
@@ -161,7 +161,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQGraphicsRectItem();
 		}
-		[SmokeMethod("~QGraphicsRectItem", "()")]
+		[SmokeMethod("~QGraphicsRectItem", "()", "")]
 		private void DisposeQGraphicsRectItem() {
 			ProxyQGraphicsRectItem().DisposeQGraphicsRectItem();
 		}

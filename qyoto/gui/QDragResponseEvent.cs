@@ -29,11 +29,11 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDragResponseEvent(accepted);
 		}
-		[SmokeMethod("QDragResponseEvent$", "(bool)")]
+		[SmokeMethod("QDragResponseEvent", "(bool)", "$")]
 		private void NewQDragResponseEvent(bool accepted) {
 			ProxyQDragResponseEvent().NewQDragResponseEvent(accepted);
 		}
-		[SmokeMethod("dragAccepted", "() const")]
+		[SmokeMethod("dragAccepted", "() const", "")]
 		public bool DragAccepted() {
 			return ProxyQDragResponseEvent().DragAccepted();
 		}
@@ -43,7 +43,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQDragResponseEvent();
 		}
-		[SmokeMethod("~QDragResponseEvent", "()")]
+		[SmokeMethod("~QDragResponseEvent", "()", "")]
 		private void DisposeQDragResponseEvent() {
 			ProxyQDragResponseEvent().DisposeQDragResponseEvent();
 		}

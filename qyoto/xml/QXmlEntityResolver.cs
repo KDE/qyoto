@@ -34,11 +34,11 @@ namespace Qyoto {
 			return (IQXmlEntityResolverProxy) _staticInterceptor;
 		}
 
-		[SmokeMethod("resolveEntity$$?", "(const QString&, const QString&, QXmlInputSource*&)")]
+		[SmokeMethod("resolveEntity", "(const QString&, const QString&, QXmlInputSource*&)", "$$?")]
 		public virtual bool ResolveEntity(string publicId, string systemId, QXmlInputSource ret) {
 			return ProxyQXmlEntityResolver().ResolveEntity(publicId,systemId,ret);
 		}
-		[SmokeMethod("errorString", "() const")]
+		[SmokeMethod("errorString", "() const", "")]
 		public virtual string ErrorString() {
 			return ProxyQXmlEntityResolver().ErrorString();
 		}
@@ -46,7 +46,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQXmlEntityResolver();
 		}
-		[SmokeMethod("QXmlEntityResolver", "()")]
+		[SmokeMethod("QXmlEntityResolver", "()", "")]
 		private void NewQXmlEntityResolver() {
 			ProxyQXmlEntityResolver().NewQXmlEntityResolver();
 		}
@@ -56,7 +56,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQXmlEntityResolver();
 		}
-		[SmokeMethod("~QXmlEntityResolver", "()")]
+		[SmokeMethod("~QXmlEntityResolver", "()", "")]
 		private void DisposeQXmlEntityResolver() {
 			ProxyQXmlEntityResolver().DisposeQXmlEntityResolver();
 		}

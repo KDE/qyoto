@@ -28,7 +28,7 @@ namespace Qyoto {
 			return (IQSqlDriverCreatorBaseProxy) _staticInterceptor;
 		}
 
-		[SmokeMethod("createObject", "() const")]
+		[SmokeMethod("createObject", "() const", "")]
 		public virtual QSqlDriver CreateObject() {
 			return ProxyQSqlDriverCreatorBase().CreateObject();
 		}
@@ -39,7 +39,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQSqlDriverCreatorBase();
 		}
-		[SmokeMethod("~QSqlDriverCreatorBase", "()")]
+		[SmokeMethod("~QSqlDriverCreatorBase", "()", "")]
 		private void DisposeQSqlDriverCreatorBase() {
 			ProxyQSqlDriverCreatorBase().DisposeQSqlDriverCreatorBase();
 		}

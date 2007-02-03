@@ -10,17 +10,17 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QAccessible(Type dummy) {}
 		interface IQAccessibleProxy {
-			[SmokeMethod("queryAccessibleInterface#", "(QObject*)")]
+			[SmokeMethod("queryAccessibleInterface", "(QObject*)", "#")]
 			QAccessibleInterface QueryAccessibleInterface(QObject arg1);
-			[SmokeMethod("updateAccessibility#$$", "(QObject*, int, QAccessible::Event)")]
+			[SmokeMethod("updateAccessibility", "(QObject*, int, QAccessible::Event)", "#$$")]
 			void UpdateAccessibility(QObject arg1, int who, QAccessible.Event reason);
-			[SmokeMethod("isActive", "()")]
+			[SmokeMethod("isActive", "()", "")]
 			bool IsActive();
-			[SmokeMethod("setRootObject#", "(QObject*)")]
+			[SmokeMethod("setRootObject", "(QObject*)", "#")]
 			void SetRootObject(QObject arg1);
-			[SmokeMethod("initialize", "()")]
+			[SmokeMethod("initialize", "()", "")]
 			void Initialize();
-			[SmokeMethod("cleanup", "()")]
+			[SmokeMethod("cleanup", "()", "")]
 			void Cleanup();
 		}
 
@@ -230,7 +230,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQAccessible();
 		}
-		[SmokeMethod("QAccessible", "()")]
+		[SmokeMethod("QAccessible", "()", "")]
 		private void NewQAccessible() {
 			ProxyQAccessible().NewQAccessible();
 		}
@@ -262,7 +262,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQAccessible();
 		}
-		[SmokeMethod("~QAccessible", "()")]
+		[SmokeMethod("~QAccessible", "()", "")]
 		private void DisposeQAccessible() {
 			ProxyQAccessible().DisposeQAccessible();
 		}

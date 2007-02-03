@@ -9,9 +9,9 @@ namespace Qyoto {
 	public class QTextDocument : QObject, IDisposable {
  		protected QTextDocument(Type dummy) : base((Type) null) {}
 		interface IQTextDocumentProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
 
@@ -136,53 +136,53 @@ namespace Qyoto {
 		// QTextDocument* QTextDocument(const QString& arg1); >>>> NOT CONVERTED
 		// QTextDocument* clone(QObject* arg1); >>>> NOT CONVERTED
 		// QTextDocument* clone(); >>>> NOT CONVERTED
-		[SmokeMethod("isEmpty", "() const")]
+		[SmokeMethod("isEmpty", "() const", "")]
 		public bool IsEmpty() {
 			return ProxyQTextDocument().IsEmpty();
 		}
-		[SmokeMethod("clear", "()")]
+		[SmokeMethod("clear", "()", "")]
 		public virtual void Clear() {
 			ProxyQTextDocument().Clear();
 		}
-		[SmokeMethod("isUndoRedoEnabled", "() const")]
+		[SmokeMethod("isUndoRedoEnabled", "() const", "")]
 		public bool IsUndoRedoEnabled() {
 			return ProxyQTextDocument().IsUndoRedoEnabled();
 		}
-		[SmokeMethod("isUndoAvailable", "() const")]
+		[SmokeMethod("isUndoAvailable", "() const", "")]
 		public bool IsUndoAvailable() {
 			return ProxyQTextDocument().IsUndoAvailable();
 		}
-		[SmokeMethod("isRedoAvailable", "() const")]
+		[SmokeMethod("isRedoAvailable", "() const", "")]
 		public bool IsRedoAvailable() {
 			return ProxyQTextDocument().IsRedoAvailable();
 		}
-		[SmokeMethod("setDocumentLayout#", "(QAbstractTextDocumentLayout*)")]
+		[SmokeMethod("setDocumentLayout", "(QAbstractTextDocumentLayout*)", "#")]
 		public void SetDocumentLayout(QAbstractTextDocumentLayout layout) {
 			ProxyQTextDocument().SetDocumentLayout(layout);
 		}
-		[SmokeMethod("documentLayout", "() const")]
+		[SmokeMethod("documentLayout", "() const", "")]
 		public QAbstractTextDocumentLayout DocumentLayout() {
 			return ProxyQTextDocument().DocumentLayout();
 		}
 		// void setMetaInformation(QTextDocument::MetaInformation arg1,const QString& arg2); >>>> NOT CONVERTED
 		// QString metaInformation(QTextDocument::MetaInformation arg1); >>>> NOT CONVERTED
-		[SmokeMethod("toHtml#", "(const QByteArray&) const")]
+		[SmokeMethod("toHtml", "(const QByteArray&) const", "#")]
 		public string ToHtml(QByteArray encoding) {
 			return ProxyQTextDocument().ToHtml(encoding);
 		}
-		[SmokeMethod("toHtml", "() const")]
+		[SmokeMethod("toHtml", "() const", "")]
 		public string ToHtml() {
 			return ProxyQTextDocument().ToHtml();
 		}
-		[SmokeMethod("setHtml$", "(const QString&)")]
+		[SmokeMethod("setHtml", "(const QString&)", "$")]
 		public void SetHtml(string html) {
 			ProxyQTextDocument().SetHtml(html);
 		}
-		[SmokeMethod("toPlainText", "() const")]
+		[SmokeMethod("toPlainText", "() const", "")]
 		public string ToPlainText() {
 			return ProxyQTextDocument().ToPlainText();
 		}
-		[SmokeMethod("setPlainText$", "(const QString&)")]
+		[SmokeMethod("setPlainText", "(const QString&)", "$")]
 		public void SetPlainText(string text) {
 			ProxyQTextDocument().SetPlainText(text);
 		}
@@ -196,69 +196,69 @@ namespace Qyoto {
 		// QTextCursor find(const QRegExp& arg1); >>>> NOT CONVERTED
 		// QTextCursor find(const QRegExp& arg1,const QTextCursor& arg2,FindFlags arg3); >>>> NOT CONVERTED
 		// QTextCursor find(const QRegExp& arg1,const QTextCursor& arg2); >>>> NOT CONVERTED
-		[SmokeMethod("frameAt$", "(int) const")]
+		[SmokeMethod("frameAt", "(int) const", "$")]
 		public QTextFrame FrameAt(int pos) {
 			return ProxyQTextDocument().FrameAt(pos);
 		}
-		[SmokeMethod("rootFrame", "() const")]
+		[SmokeMethod("rootFrame", "() const", "")]
 		public QTextFrame RootFrame() {
 			return ProxyQTextDocument().RootFrame();
 		}
-		[SmokeMethod("object$", "(int) const")]
+		[SmokeMethod("object", "(int) const", "$")]
 		public QTextObject Object(int objectIndex) {
 			return ProxyQTextDocument().Object(objectIndex);
 		}
 		// QTextObject* objectForFormat(const QTextFormat& arg1); >>>> NOT CONVERTED
-		[SmokeMethod("findBlock$", "(int) const")]
+		[SmokeMethod("findBlock", "(int) const", "$")]
 		public QTextBlock FindBlock(int pos) {
 			return ProxyQTextDocument().FindBlock(pos);
 		}
-		[SmokeMethod("begin", "() const")]
+		[SmokeMethod("begin", "() const", "")]
 		public QTextBlock Begin() {
 			return ProxyQTextDocument().Begin();
 		}
-		[SmokeMethod("end", "() const")]
+		[SmokeMethod("end", "() const", "")]
 		public QTextBlock End() {
 			return ProxyQTextDocument().End();
 		}
-		[SmokeMethod("pageCount", "() const")]
+		[SmokeMethod("pageCount", "() const", "")]
 		public int PageCount() {
 			return ProxyQTextDocument().PageCount();
 		}
-		[SmokeMethod("isModified", "() const")]
+		[SmokeMethod("isModified", "() const", "")]
 		public bool IsModified() {
 			return ProxyQTextDocument().IsModified();
 		}
-		[SmokeMethod("print#", "(QPrinter*) const")]
+		[SmokeMethod("print", "(QPrinter*) const", "#")]
 		public void Print(QPrinter printer) {
 			ProxyQTextDocument().Print(printer);
 		}
-		[SmokeMethod("resource$#", "(int, const QUrl&) const")]
+		[SmokeMethod("resource", "(int, const QUrl&) const", "$#")]
 		public QVariant Resource(int type, IQUrl name) {
 			return ProxyQTextDocument().Resource(type,name);
 		}
-		[SmokeMethod("addResource$##", "(int, const QUrl&, const QVariant&)")]
+		[SmokeMethod("addResource", "(int, const QUrl&, const QVariant&)", "$##")]
 		public void AddResource(int type, IQUrl name, QVariant resource) {
 			ProxyQTextDocument().AddResource(type,name,resource);
 		}
 		// QVector<QTextFormat> allFormats(); >>>> NOT CONVERTED
-		[SmokeMethod("markContentsDirty$$", "(int, int)")]
+		[SmokeMethod("markContentsDirty", "(int, int)", "$$")]
 		public void MarkContentsDirty(int from, int length) {
 			ProxyQTextDocument().MarkContentsDirty(from,length);
 		}
-		[SmokeMethod("drawContents##", "(QPainter*, const QRectF&)")]
+		[SmokeMethod("drawContents", "(QPainter*, const QRectF&)", "##")]
 		public void DrawContents(QPainter painter, QRectF rect) {
 			ProxyQTextDocument().DrawContents(painter,rect);
 		}
-		[SmokeMethod("drawContents#", "(QPainter*)")]
+		[SmokeMethod("drawContents", "(QPainter*)", "#")]
 		public void DrawContents(QPainter painter) {
 			ProxyQTextDocument().DrawContents(painter);
 		}
-		[SmokeMethod("idealWidth", "() const")]
+		[SmokeMethod("idealWidth", "() const", "")]
 		public double IdealWidth() {
 			return ProxyQTextDocument().IdealWidth();
 		}
-		[SmokeMethod("adjustSize", "()")]
+		[SmokeMethod("adjustSize", "()", "")]
 		public void AdjustSize() {
 			ProxyQTextDocument().AdjustSize();
 		}
@@ -266,12 +266,12 @@ namespace Qyoto {
 		// void redo(QTextCursor* arg1); >>>> NOT CONVERTED
 		// QTextDocumentPrivate* docHandle(); >>>> NOT CONVERTED
 		[Q_SLOT("void undo()")]
-		[SmokeMethod("undo", "()")]
+		[SmokeMethod("undo", "()", "")]
 		public void Undo() {
 			ProxyQTextDocument().Undo();
 		}
 		[Q_SLOT("void redo()")]
-		[SmokeMethod("redo", "()")]
+		[SmokeMethod("redo", "()", "")]
 		public void Redo() {
 			ProxyQTextDocument().Redo();
 		}
@@ -283,7 +283,7 @@ namespace Qyoto {
 			return StaticQTextDocument().Tr(s);
 		}
 		// QTextObject* createObject(const QTextFormat& arg1); >>>> NOT CONVERTED
-		[SmokeMethod("loadResource$#", "(int, const QUrl&)")]
+		[SmokeMethod("loadResource", "(int, const QUrl&)", "$#")]
 		protected virtual QVariant LoadResource(int type, IQUrl name) {
 			return ProxyQTextDocument().LoadResource(type,name);
 		}
@@ -293,7 +293,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQTextDocument();
 		}
-		[SmokeMethod("~QTextDocument", "()")]
+		[SmokeMethod("~QTextDocument", "()", "")]
 		private void DisposeQTextDocument() {
 			ProxyQTextDocument().DisposeQTextDocument();
 		}

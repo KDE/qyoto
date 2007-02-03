@@ -29,7 +29,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQPaintEvent(paintRegion);
 		}
-		[SmokeMethod("QPaintEvent#", "(const QRegion&)")]
+		[SmokeMethod("QPaintEvent", "(const QRegion&)", "#")]
 		private void NewQPaintEvent(QRegion paintRegion) {
 			ProxyQPaintEvent().NewQPaintEvent(paintRegion);
 		}
@@ -37,15 +37,15 @@ namespace Qyoto {
 			CreateProxy();
 			NewQPaintEvent(paintRect);
 		}
-		[SmokeMethod("QPaintEvent#", "(const QRect&)")]
+		[SmokeMethod("QPaintEvent", "(const QRect&)", "#")]
 		private void NewQPaintEvent(QRect paintRect) {
 			ProxyQPaintEvent().NewQPaintEvent(paintRect);
 		}
-		[SmokeMethod("rect", "() const")]
+		[SmokeMethod("rect", "() const", "")]
 		public QRect Rect() {
 			return ProxyQPaintEvent().Rect();
 		}
-		[SmokeMethod("region", "() const")]
+		[SmokeMethod("region", "() const", "")]
 		public QRegion Region() {
 			return ProxyQPaintEvent().Region();
 		}
@@ -55,7 +55,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQPaintEvent();
 		}
-		[SmokeMethod("~QPaintEvent", "()")]
+		[SmokeMethod("~QPaintEvent", "()", "")]
 		private void DisposeQPaintEvent() {
 			ProxyQPaintEvent().DisposeQPaintEvent();
 		}

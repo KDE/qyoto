@@ -32,15 +32,15 @@ namespace Qyoto {
 			CreateProxy();
 			NewQMetaClassInfo();
 		}
-		[SmokeMethod("QMetaClassInfo", "()")]
+		[SmokeMethod("QMetaClassInfo", "()", "")]
 		private void NewQMetaClassInfo() {
 			ProxyQMetaClassInfo().NewQMetaClassInfo();
 		}
-		[SmokeMethod("name", "() const")]
+		[SmokeMethod("name", "() const", "")]
 		public string Name() {
 			return ProxyQMetaClassInfo().Name();
 		}
-		[SmokeMethod("value", "() const")]
+		[SmokeMethod("value", "() const", "")]
 		public string Value() {
 			return ProxyQMetaClassInfo().Value();
 		}
@@ -50,7 +50,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQMetaClassInfo();
 		}
-		[SmokeMethod("~QMetaClassInfo", "()")]
+		[SmokeMethod("~QMetaClassInfo", "()", "")]
 		private void DisposeQMetaClassInfo() {
 			ProxyQMetaClassInfo().DisposeQMetaClassInfo();
 		}

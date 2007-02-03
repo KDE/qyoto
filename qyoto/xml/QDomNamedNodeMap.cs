@@ -34,7 +34,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDomNamedNodeMap();
 		}
-		[SmokeMethod("QDomNamedNodeMap", "()")]
+		[SmokeMethod("QDomNamedNodeMap", "()", "")]
 		private void NewQDomNamedNodeMap() {
 			ProxyQDomNamedNodeMap().NewQDomNamedNodeMap();
 		}
@@ -42,11 +42,11 @@ namespace Qyoto {
 			CreateProxy();
 			NewQDomNamedNodeMap(arg1);
 		}
-		[SmokeMethod("QDomNamedNodeMap#", "(const QDomNamedNodeMap&)")]
+		[SmokeMethod("QDomNamedNodeMap", "(const QDomNamedNodeMap&)", "#")]
 		private void NewQDomNamedNodeMap(QDomNamedNodeMap arg1) {
 			ProxyQDomNamedNodeMap().NewQDomNamedNodeMap(arg1);
 		}
-		[SmokeMethod("operator==#", "(const QDomNamedNodeMap&) const")]
+		[SmokeMethod("operator==", "(const QDomNamedNodeMap&) const", "#")]
 		public static bool operator==(QDomNamedNodeMap lhs, QDomNamedNodeMap arg1) {
 			return StaticQDomNamedNodeMap().op_equals(lhs,arg1);
 		}
@@ -60,51 +60,51 @@ namespace Qyoto {
 		public override int GetHashCode() {
 			return ProxyQDomNamedNodeMap().GetHashCode();
 		}
-		[SmokeMethod("namedItem$", "(const QString&) const")]
+		[SmokeMethod("namedItem", "(const QString&) const", "$")]
 		public QDomNode NamedItem(string name) {
 			return ProxyQDomNamedNodeMap().NamedItem(name);
 		}
-		[SmokeMethod("setNamedItem#", "(const QDomNode&)")]
+		[SmokeMethod("setNamedItem", "(const QDomNode&)", "#")]
 		public QDomNode SetNamedItem(QDomNode newNode) {
 			return ProxyQDomNamedNodeMap().SetNamedItem(newNode);
 		}
-		[SmokeMethod("removeNamedItem$", "(const QString&)")]
+		[SmokeMethod("removeNamedItem", "(const QString&)", "$")]
 		public QDomNode RemoveNamedItem(string name) {
 			return ProxyQDomNamedNodeMap().RemoveNamedItem(name);
 		}
-		[SmokeMethod("item$", "(int) const")]
+		[SmokeMethod("item", "(int) const", "$")]
 		public QDomNode Item(int index) {
 			return ProxyQDomNamedNodeMap().Item(index);
 		}
-		[SmokeMethod("namedItemNS$$", "(const QString&, const QString&) const")]
+		[SmokeMethod("namedItemNS", "(const QString&, const QString&) const", "$$")]
 		public QDomNode NamedItemNS(string nsURI, string localName) {
 			return ProxyQDomNamedNodeMap().NamedItemNS(nsURI,localName);
 		}
-		[SmokeMethod("setNamedItemNS#", "(const QDomNode&)")]
+		[SmokeMethod("setNamedItemNS", "(const QDomNode&)", "#")]
 		public QDomNode SetNamedItemNS(QDomNode newNode) {
 			return ProxyQDomNamedNodeMap().SetNamedItemNS(newNode);
 		}
-		[SmokeMethod("removeNamedItemNS$$", "(const QString&, const QString&)")]
+		[SmokeMethod("removeNamedItemNS", "(const QString&, const QString&)", "$$")]
 		public QDomNode RemoveNamedItemNS(string nsURI, string localName) {
 			return ProxyQDomNamedNodeMap().RemoveNamedItemNS(nsURI,localName);
 		}
-		[SmokeMethod("length", "() const")]
+		[SmokeMethod("length", "() const", "")]
 		public uint Length() {
 			return ProxyQDomNamedNodeMap().Length();
 		}
-		[SmokeMethod("count", "() const")]
+		[SmokeMethod("count", "() const", "")]
 		public int Count() {
 			return ProxyQDomNamedNodeMap().Count();
 		}
-		[SmokeMethod("size", "() const")]
+		[SmokeMethod("size", "() const", "")]
 		public int Size() {
 			return ProxyQDomNamedNodeMap().Size();
 		}
-		[SmokeMethod("isEmpty", "() const")]
+		[SmokeMethod("isEmpty", "() const", "")]
 		public bool IsEmpty() {
 			return ProxyQDomNamedNodeMap().IsEmpty();
 		}
-		[SmokeMethod("contains$", "(const QString&) const")]
+		[SmokeMethod("contains", "(const QString&) const", "$")]
 		public bool Contains(string name) {
 			return ProxyQDomNamedNodeMap().Contains(name);
 		}
@@ -114,7 +114,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQDomNamedNodeMap();
 		}
-		[SmokeMethod("~QDomNamedNodeMap", "()")]
+		[SmokeMethod("~QDomNamedNodeMap", "()", "")]
 		private void DisposeQDomNamedNodeMap() {
 			ProxyQDomNamedNodeMap().DisposeQDomNamedNodeMap();
 		}

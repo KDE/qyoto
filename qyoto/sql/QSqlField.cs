@@ -39,7 +39,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSqlField(fieldName,type);
 		}
-		[SmokeMethod("QSqlField$$", "(const QString&, QVariant::Type)")]
+		[SmokeMethod("QSqlField", "(const QString&, QVariant::Type)", "$$")]
 		private void NewQSqlField(string fieldName, QVariant.TypeOf type) {
 			ProxyQSqlField().NewQSqlField(fieldName,type);
 		}
@@ -47,7 +47,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSqlField(fieldName);
 		}
-		[SmokeMethod("QSqlField$", "(const QString&)")]
+		[SmokeMethod("QSqlField", "(const QString&)", "$")]
 		private void NewQSqlField(string fieldName) {
 			ProxyQSqlField().NewQSqlField(fieldName);
 		}
@@ -55,7 +55,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSqlField();
 		}
-		[SmokeMethod("QSqlField", "()")]
+		[SmokeMethod("QSqlField", "()", "")]
 		private void NewQSqlField() {
 			ProxyQSqlField().NewQSqlField();
 		}
@@ -63,11 +63,11 @@ namespace Qyoto {
 			CreateProxy();
 			NewQSqlField(other);
 		}
-		[SmokeMethod("QSqlField#", "(const QSqlField&)")]
+		[SmokeMethod("QSqlField", "(const QSqlField&)", "#")]
 		private void NewQSqlField(QSqlField other) {
 			ProxyQSqlField().NewQSqlField(other);
 		}
-		[SmokeMethod("operator==#", "(const QSqlField&) const")]
+		[SmokeMethod("operator==", "(const QSqlField&) const", "#")]
 		public static bool operator==(QSqlField lhs, QSqlField other) {
 			return StaticQSqlField().op_equals(lhs,other);
 		}
@@ -81,107 +81,107 @@ namespace Qyoto {
 		public override int GetHashCode() {
 			return ProxyQSqlField().GetHashCode();
 		}
-		[SmokeMethod("setValue#", "(const QVariant&)")]
+		[SmokeMethod("setValue", "(const QVariant&)", "#")]
 		public void SetValue(QVariant value) {
 			ProxyQSqlField().SetValue(value);
 		}
-		[SmokeMethod("value", "() const")]
+		[SmokeMethod("value", "() const", "")]
 		public QVariant Value() {
 			return ProxyQSqlField().Value();
 		}
-		[SmokeMethod("setName$", "(const QString&)")]
+		[SmokeMethod("setName", "(const QString&)", "$")]
 		public void SetName(string name) {
 			ProxyQSqlField().SetName(name);
 		}
-		[SmokeMethod("name", "() const")]
+		[SmokeMethod("name", "() const", "")]
 		public string Name() {
 			return ProxyQSqlField().Name();
 		}
-		[SmokeMethod("isNull", "() const")]
+		[SmokeMethod("isNull", "() const", "")]
 		public bool IsNull() {
 			return ProxyQSqlField().IsNull();
 		}
-		[SmokeMethod("setReadOnly$", "(bool)")]
+		[SmokeMethod("setReadOnly", "(bool)", "$")]
 		public void SetReadOnly(bool readOnly) {
 			ProxyQSqlField().SetReadOnly(readOnly);
 		}
-		[SmokeMethod("isReadOnly", "() const")]
+		[SmokeMethod("isReadOnly", "() const", "")]
 		public bool IsReadOnly() {
 			return ProxyQSqlField().IsReadOnly();
 		}
-		[SmokeMethod("clear", "()")]
+		[SmokeMethod("clear", "()", "")]
 		public void Clear() {
 			ProxyQSqlField().Clear();
 		}
-		[SmokeMethod("type", "() const")]
+		[SmokeMethod("type", "() const", "")]
 		public QVariant.TypeOf type() {
 			return ProxyQSqlField().type();
 		}
-		[SmokeMethod("isAutoValue", "() const")]
+		[SmokeMethod("isAutoValue", "() const", "")]
 		public bool IsAutoValue() {
 			return ProxyQSqlField().IsAutoValue();
 		}
-		[SmokeMethod("setType$", "(QVariant::Type)")]
+		[SmokeMethod("setType", "(QVariant::Type)", "$")]
 		public void SetType(QVariant.TypeOf type) {
 			ProxyQSqlField().SetType(type);
 		}
-		[SmokeMethod("setRequiredStatus$", "(QSqlField::RequiredStatus)")]
+		[SmokeMethod("setRequiredStatus", "(QSqlField::RequiredStatus)", "$")]
 		public void SetRequiredStatus(QSqlField.RequiredStatus status) {
 			ProxyQSqlField().SetRequiredStatus(status);
 		}
-		[SmokeMethod("setRequired$", "(bool)")]
+		[SmokeMethod("setRequired", "(bool)", "$")]
 		public void SetRequired(bool required) {
 			ProxyQSqlField().SetRequired(required);
 		}
-		[SmokeMethod("setLength$", "(int)")]
+		[SmokeMethod("setLength", "(int)", "$")]
 		public void SetLength(int fieldLength) {
 			ProxyQSqlField().SetLength(fieldLength);
 		}
-		[SmokeMethod("setPrecision$", "(int)")]
+		[SmokeMethod("setPrecision", "(int)", "$")]
 		public void SetPrecision(int precision) {
 			ProxyQSqlField().SetPrecision(precision);
 		}
-		[SmokeMethod("setDefaultValue#", "(const QVariant&)")]
+		[SmokeMethod("setDefaultValue", "(const QVariant&)", "#")]
 		public void SetDefaultValue(QVariant value) {
 			ProxyQSqlField().SetDefaultValue(value);
 		}
-		[SmokeMethod("setSqlType$", "(int)")]
+		[SmokeMethod("setSqlType", "(int)", "$")]
 		public void SetSqlType(int type) {
 			ProxyQSqlField().SetSqlType(type);
 		}
-		[SmokeMethod("setGenerated$", "(bool)")]
+		[SmokeMethod("setGenerated", "(bool)", "$")]
 		public void SetGenerated(bool gen) {
 			ProxyQSqlField().SetGenerated(gen);
 		}
-		[SmokeMethod("setAutoValue$", "(bool)")]
+		[SmokeMethod("setAutoValue", "(bool)", "$")]
 		public void SetAutoValue(bool autoVal) {
 			ProxyQSqlField().SetAutoValue(autoVal);
 		}
-		[SmokeMethod("requiredStatus", "() const")]
+		[SmokeMethod("requiredStatus", "() const", "")]
 		public QSqlField.RequiredStatus requiredStatus() {
 			return ProxyQSqlField().requiredStatus();
 		}
-		[SmokeMethod("length", "() const")]
+		[SmokeMethod("length", "() const", "")]
 		public int Length() {
 			return ProxyQSqlField().Length();
 		}
-		[SmokeMethod("precision", "() const")]
+		[SmokeMethod("precision", "() const", "")]
 		public int Precision() {
 			return ProxyQSqlField().Precision();
 		}
-		[SmokeMethod("defaultValue", "() const")]
+		[SmokeMethod("defaultValue", "() const", "")]
 		public QVariant DefaultValue() {
 			return ProxyQSqlField().DefaultValue();
 		}
-		[SmokeMethod("typeID", "() const")]
+		[SmokeMethod("typeID", "() const", "")]
 		public int TypeID() {
 			return ProxyQSqlField().TypeID();
 		}
-		[SmokeMethod("isGenerated", "() const")]
+		[SmokeMethod("isGenerated", "() const", "")]
 		public bool IsGenerated() {
 			return ProxyQSqlField().IsGenerated();
 		}
-		[SmokeMethod("isValid", "() const")]
+		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
 			return ProxyQSqlField().IsValid();
 		}
@@ -191,7 +191,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQSqlField();
 		}
-		[SmokeMethod("~QSqlField", "()")]
+		[SmokeMethod("~QSqlField", "()", "")]
 		private void DisposeQSqlField() {
 			ProxyQSqlField().DisposeQSqlField();
 		}

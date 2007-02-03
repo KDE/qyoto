@@ -12,21 +12,21 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QFontDatabase(Type dummy) {}
 		interface IQFontDatabaseProxy {
-			[SmokeMethod("standardSizes", "()")]
+			[SmokeMethod("standardSizes", "()", "")]
 			List<int> StandardSizes();
-			[SmokeMethod("writingSystemName$", "(QFontDatabase::WritingSystem)")]
+			[SmokeMethod("writingSystemName", "(QFontDatabase::WritingSystem)", "$")]
 			string WritingSystemName(QFontDatabase.WritingSystem writingSystem);
-			[SmokeMethod("writingSystemSample$", "(QFontDatabase::WritingSystem)")]
+			[SmokeMethod("writingSystemSample", "(QFontDatabase::WritingSystem)", "$")]
 			string WritingSystemSample(QFontDatabase.WritingSystem writingSystem);
-			[SmokeMethod("addApplicationFont$", "(const QString&)")]
+			[SmokeMethod("addApplicationFont", "(const QString&)", "$")]
 			int AddApplicationFont(string fileName);
-			[SmokeMethod("addApplicationFontFromData#", "(const QByteArray&)")]
+			[SmokeMethod("addApplicationFontFromData", "(const QByteArray&)", "#")]
 			int AddApplicationFontFromData(QByteArray fontData);
-			[SmokeMethod("applicationFontFamilies$", "(int)")]
+			[SmokeMethod("applicationFontFamilies", "(int)", "$")]
 			List<string> ApplicationFontFamilies(int id);
-			[SmokeMethod("removeApplicationFont$", "(int)")]
+			[SmokeMethod("removeApplicationFont", "(int)", "$")]
 			bool RemoveApplicationFont(int id);
-			[SmokeMethod("removeAllApplicationFonts", "()")]
+			[SmokeMethod("removeAllApplicationFonts", "()", "")]
 			bool RemoveAllApplicationFonts();
 		}
 
@@ -87,89 +87,89 @@ namespace Qyoto {
 			CreateProxy();
 			NewQFontDatabase();
 		}
-		[SmokeMethod("QFontDatabase", "()")]
+		[SmokeMethod("QFontDatabase", "()", "")]
 		private void NewQFontDatabase() {
 			ProxyQFontDatabase().NewQFontDatabase();
 		}
 		// QList<QFontDatabase::WritingSystem> writingSystems(); >>>> NOT CONVERTED
 		// QList<QFontDatabase::WritingSystem> writingSystems(const QString& arg1); >>>> NOT CONVERTED
-		[SmokeMethod("families$", "(QFontDatabase::WritingSystem) const")]
+		[SmokeMethod("families", "(QFontDatabase::WritingSystem) const", "$")]
 		public List<string> Families(QFontDatabase.WritingSystem writingSystem) {
 			return ProxyQFontDatabase().Families(writingSystem);
 		}
-		[SmokeMethod("families", "() const")]
+		[SmokeMethod("families", "() const", "")]
 		public List<string> Families() {
 			return ProxyQFontDatabase().Families();
 		}
-		[SmokeMethod("styles$", "(const QString&) const")]
+		[SmokeMethod("styles", "(const QString&) const", "$")]
 		public List<string> Styles(string family) {
 			return ProxyQFontDatabase().Styles(family);
 		}
-		[SmokeMethod("pointSizes$$", "(const QString&, const QString&)")]
+		[SmokeMethod("pointSizes", "(const QString&, const QString&)", "$$")]
 		public List<int> PointSizes(string family, string style) {
 			return ProxyQFontDatabase().PointSizes(family,style);
 		}
-		[SmokeMethod("pointSizes$", "(const QString&)")]
+		[SmokeMethod("pointSizes", "(const QString&)", "$")]
 		public List<int> PointSizes(string family) {
 			return ProxyQFontDatabase().PointSizes(family);
 		}
-		[SmokeMethod("smoothSizes$$", "(const QString&, const QString&)")]
+		[SmokeMethod("smoothSizes", "(const QString&, const QString&)", "$$")]
 		public List<int> SmoothSizes(string family, string style) {
 			return ProxyQFontDatabase().SmoothSizes(family,style);
 		}
-		[SmokeMethod("styleString#", "(const QFont&)")]
+		[SmokeMethod("styleString", "(const QFont&)", "#")]
 		public string StyleString(QFont font) {
 			return ProxyQFontDatabase().StyleString(font);
 		}
-		[SmokeMethod("styleString#", "(const QFontInfo&)")]
+		[SmokeMethod("styleString", "(const QFontInfo&)", "#")]
 		public string StyleString(QFontInfo fontInfo) {
 			return ProxyQFontDatabase().StyleString(fontInfo);
 		}
-		[SmokeMethod("font$$$", "(const QString&, const QString&, int) const")]
+		[SmokeMethod("font", "(const QString&, const QString&, int) const", "$$$")]
 		public QFont Font(string family, string style, int pointSize) {
 			return ProxyQFontDatabase().Font(family,style,pointSize);
 		}
-		[SmokeMethod("isBitmapScalable$$", "(const QString&, const QString&) const")]
+		[SmokeMethod("isBitmapScalable", "(const QString&, const QString&) const", "$$")]
 		public bool IsBitmapScalable(string family, string style) {
 			return ProxyQFontDatabase().IsBitmapScalable(family,style);
 		}
-		[SmokeMethod("isBitmapScalable$", "(const QString&) const")]
+		[SmokeMethod("isBitmapScalable", "(const QString&) const", "$")]
 		public bool IsBitmapScalable(string family) {
 			return ProxyQFontDatabase().IsBitmapScalable(family);
 		}
-		[SmokeMethod("isSmoothlyScalable$$", "(const QString&, const QString&) const")]
+		[SmokeMethod("isSmoothlyScalable", "(const QString&, const QString&) const", "$$")]
 		public bool IsSmoothlyScalable(string family, string style) {
 			return ProxyQFontDatabase().IsSmoothlyScalable(family,style);
 		}
-		[SmokeMethod("isSmoothlyScalable$", "(const QString&) const")]
+		[SmokeMethod("isSmoothlyScalable", "(const QString&) const", "$")]
 		public bool IsSmoothlyScalable(string family) {
 			return ProxyQFontDatabase().IsSmoothlyScalable(family);
 		}
-		[SmokeMethod("isScalable$$", "(const QString&, const QString&) const")]
+		[SmokeMethod("isScalable", "(const QString&, const QString&) const", "$$")]
 		public bool IsScalable(string family, string style) {
 			return ProxyQFontDatabase().IsScalable(family,style);
 		}
-		[SmokeMethod("isScalable$", "(const QString&) const")]
+		[SmokeMethod("isScalable", "(const QString&) const", "$")]
 		public bool IsScalable(string family) {
 			return ProxyQFontDatabase().IsScalable(family);
 		}
-		[SmokeMethod("isFixedPitch$$", "(const QString&, const QString&) const")]
+		[SmokeMethod("isFixedPitch", "(const QString&, const QString&) const", "$$")]
 		public bool IsFixedPitch(string family, string style) {
 			return ProxyQFontDatabase().IsFixedPitch(family,style);
 		}
-		[SmokeMethod("isFixedPitch$", "(const QString&) const")]
+		[SmokeMethod("isFixedPitch", "(const QString&) const", "$")]
 		public bool IsFixedPitch(string family) {
 			return ProxyQFontDatabase().IsFixedPitch(family);
 		}
-		[SmokeMethod("italic$$", "(const QString&, const QString&) const")]
+		[SmokeMethod("italic", "(const QString&, const QString&) const", "$$")]
 		public bool Italic(string family, string style) {
 			return ProxyQFontDatabase().Italic(family,style);
 		}
-		[SmokeMethod("bold$$", "(const QString&, const QString&) const")]
+		[SmokeMethod("bold", "(const QString&, const QString&) const", "$$")]
 		public bool Bold(string family, string style) {
 			return ProxyQFontDatabase().Bold(family,style);
 		}
-		[SmokeMethod("weight$$", "(const QString&, const QString&) const")]
+		[SmokeMethod("weight", "(const QString&, const QString&) const", "$$")]
 		public int Weight(string family, string style) {
 			return ProxyQFontDatabase().Weight(family,style);
 		}
@@ -203,7 +203,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQFontDatabase();
 		}
-		[SmokeMethod("~QFontDatabase", "()")]
+		[SmokeMethod("~QFontDatabase", "()", "")]
 		private void DisposeQFontDatabase() {
 			ProxyQFontDatabase().DisposeQFontDatabase();
 		}

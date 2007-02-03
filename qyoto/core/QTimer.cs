@@ -32,11 +32,11 @@ namespace Qyoto {
 	public class QTimer : QObject, IDisposable {
  		protected QTimer(Type dummy) : base((Type) null) {}
 		interface IQTimerProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
-			[SmokeMethod("singleShot$#$", "(int, QObject*, const char*)")]
+			[SmokeMethod("singleShot", "(int, QObject*, const char*)", "$#$")]
 			void singleShot(int msec, QObject receiver, string member);
 		}
 
@@ -79,7 +79,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTimer(parent);
 		}
-		[SmokeMethod("QTimer#", "(QObject*)")]
+		[SmokeMethod("QTimer", "(QObject*)", "#")]
 		private void NewQTimer(QObject parent) {
 			ProxyQTimer().NewQTimer(parent);
 		}
@@ -87,34 +87,34 @@ namespace Qyoto {
 			CreateProxy();
 			NewQTimer();
 		}
-		[SmokeMethod("QTimer", "()")]
+		[SmokeMethod("QTimer", "()", "")]
 		private void NewQTimer() {
 			ProxyQTimer().NewQTimer();
 		}
-		[SmokeMethod("isActive", "() const")]
+		[SmokeMethod("isActive", "() const", "")]
 		public bool IsActive() {
 			return ProxyQTimer().IsActive();
 		}
-		[SmokeMethod("timerId", "() const")]
+		[SmokeMethod("timerId", "() const", "")]
 		public int TimerId() {
 			return ProxyQTimer().TimerId();
 		}
-		[SmokeMethod("isSingleShot", "() const")]
+		[SmokeMethod("isSingleShot", "() const", "")]
 		public bool IsSingleShot() {
 			return ProxyQTimer().IsSingleShot();
 		}
 		[Q_SLOT("void start(int)")]
-		[SmokeMethod("start$", "(int)")]
+		[SmokeMethod("start", "(int)", "$")]
 		public void Start(int msec) {
 			ProxyQTimer().Start(msec);
 		}
 		[Q_SLOT("void start()")]
-		[SmokeMethod("start", "()")]
+		[SmokeMethod("start", "()", "")]
 		public void Start() {
 			ProxyQTimer().Start();
 		}
 		[Q_SLOT("void stop()")]
-		[SmokeMethod("stop", "()")]
+		[SmokeMethod("stop", "()", "")]
 		public void Stop() {
 			ProxyQTimer().Stop();
 		}
@@ -127,7 +127,7 @@ namespace Qyoto {
 		public static void singleShot(int msec, QObject receiver, string member) {
 			StaticQTimer().singleShot(msec,receiver,member);
 		}
-		[SmokeMethod("timerEvent#", "(QTimerEvent*)")]
+		[SmokeMethod("timerEvent", "(QTimerEvent*)", "#")]
 		protected new void TimerEvent(QTimerEvent arg1) {
 			ProxyQTimer().TimerEvent(arg1);
 		}
@@ -137,7 +137,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQTimer();
 		}
-		[SmokeMethod("~QTimer", "()")]
+		[SmokeMethod("~QTimer", "()", "")]
 		private void DisposeQTimer() {
 			ProxyQTimer().DisposeQTimer();
 		}

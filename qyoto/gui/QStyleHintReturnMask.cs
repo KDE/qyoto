@@ -35,7 +35,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStyleHintReturnMask();
 		}
-		[SmokeMethod("QStyleHintReturnMask", "()")]
+		[SmokeMethod("QStyleHintReturnMask", "()", "")]
 		private void NewQStyleHintReturnMask() {
 			ProxyQStyleHintReturnMask().NewQStyleHintReturnMask();
 		}
@@ -45,7 +45,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQStyleHintReturnMask();
 		}
-		[SmokeMethod("~QStyleHintReturnMask", "()")]
+		[SmokeMethod("~QStyleHintReturnMask", "()", "")]
 		private void DisposeQStyleHintReturnMask() {
 			ProxyQStyleHintReturnMask().DisposeQStyleHintReturnMask();
 		}

@@ -35,15 +35,15 @@ namespace Qyoto {
 			return (IQXmlDTDHandlerProxy) _staticInterceptor;
 		}
 
-		[SmokeMethod("notationDecl$$$", "(const QString&, const QString&, const QString&)")]
+		[SmokeMethod("notationDecl", "(const QString&, const QString&, const QString&)", "$$$")]
 		public virtual bool NotationDecl(string name, string publicId, string systemId) {
 			return ProxyQXmlDTDHandler().NotationDecl(name,publicId,systemId);
 		}
-		[SmokeMethod("unparsedEntityDecl$$$$", "(const QString&, const QString&, const QString&, const QString&)")]
+		[SmokeMethod("unparsedEntityDecl", "(const QString&, const QString&, const QString&, const QString&)", "$$$$")]
 		public virtual bool UnparsedEntityDecl(string name, string publicId, string systemId, string notationName) {
 			return ProxyQXmlDTDHandler().UnparsedEntityDecl(name,publicId,systemId,notationName);
 		}
-		[SmokeMethod("errorString", "() const")]
+		[SmokeMethod("errorString", "() const", "")]
 		public virtual string ErrorString() {
 			return ProxyQXmlDTDHandler().ErrorString();
 		}
@@ -51,7 +51,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQXmlDTDHandler();
 		}
-		[SmokeMethod("QXmlDTDHandler", "()")]
+		[SmokeMethod("QXmlDTDHandler", "()", "")]
 		private void NewQXmlDTDHandler() {
 			ProxyQXmlDTDHandler().NewQXmlDTDHandler();
 		}
@@ -61,7 +61,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQXmlDTDHandler();
 		}
-		[SmokeMethod("~QXmlDTDHandler", "()")]
+		[SmokeMethod("~QXmlDTDHandler", "()", "")]
 		private void DisposeQXmlDTDHandler() {
 			ProxyQXmlDTDHandler().DisposeQXmlDTDHandler();
 		}

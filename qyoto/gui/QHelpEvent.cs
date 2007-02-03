@@ -29,31 +29,31 @@ namespace Qyoto {
 			CreateProxy();
 			NewQHelpEvent(type,pos,globalPos);
 		}
-		[SmokeMethod("QHelpEvent$##", "(QEvent::Type, const QPoint&, const QPoint&)")]
+		[SmokeMethod("QHelpEvent", "(QEvent::Type, const QPoint&, const QPoint&)", "$##")]
 		private void NewQHelpEvent(QEvent.TypeOf type, QPoint pos, QPoint globalPos) {
 			ProxyQHelpEvent().NewQHelpEvent(type,pos,globalPos);
 		}
-		[SmokeMethod("x", "() const")]
+		[SmokeMethod("x", "() const", "")]
 		public int X() {
 			return ProxyQHelpEvent().X();
 		}
-		[SmokeMethod("y", "() const")]
+		[SmokeMethod("y", "() const", "")]
 		public int Y() {
 			return ProxyQHelpEvent().Y();
 		}
-		[SmokeMethod("globalX", "() const")]
+		[SmokeMethod("globalX", "() const", "")]
 		public int GlobalX() {
 			return ProxyQHelpEvent().GlobalX();
 		}
-		[SmokeMethod("globalY", "() const")]
+		[SmokeMethod("globalY", "() const", "")]
 		public int GlobalY() {
 			return ProxyQHelpEvent().GlobalY();
 		}
-		[SmokeMethod("pos", "() const")]
+		[SmokeMethod("pos", "() const", "")]
 		public QPoint Pos() {
 			return ProxyQHelpEvent().Pos();
 		}
-		[SmokeMethod("globalPos", "() const")]
+		[SmokeMethod("globalPos", "() const", "")]
 		public QPoint GlobalPos() {
 			return ProxyQHelpEvent().GlobalPos();
 		}
@@ -63,7 +63,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQHelpEvent();
 		}
-		[SmokeMethod("~QHelpEvent", "()")]
+		[SmokeMethod("~QHelpEvent", "()", "")]
 		private void DisposeQHelpEvent() {
 			ProxyQHelpEvent().DisposeQHelpEvent();
 		}

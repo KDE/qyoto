@@ -12,13 +12,13 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QHostInfo(Type dummy) {}
 		interface IQHostInfoProxy {
-			[SmokeMethod("lookupHost$#$", "(const QString&, QObject*, const char*)")]
+			[SmokeMethod("lookupHost", "(const QString&, QObject*, const char*)", "$#$")]
 			int LookupHost(string name, QObject receiver, string member);
-			[SmokeMethod("abortHostLookup$", "(int)")]
+			[SmokeMethod("abortHostLookup", "(int)", "$")]
 			void AbortHostLookup(int lookupId);
-			[SmokeMethod("fromName$", "(const QString&)")]
+			[SmokeMethod("fromName", "(const QString&)", "$")]
 			QHostInfo FromName(string name);
-			[SmokeMethod("localHostName", "()")]
+			[SmokeMethod("localHostName", "()", "")]
 			string LocalHostName();
 		}
 
@@ -47,7 +47,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQHostInfo(lookupId);
 		}
-		[SmokeMethod("QHostInfo$", "(int)")]
+		[SmokeMethod("QHostInfo", "(int)", "$")]
 		private void NewQHostInfo(int lookupId) {
 			ProxyQHostInfo().NewQHostInfo(lookupId);
 		}
@@ -55,7 +55,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQHostInfo();
 		}
-		[SmokeMethod("QHostInfo", "()")]
+		[SmokeMethod("QHostInfo", "()", "")]
 		private void NewQHostInfo() {
 			ProxyQHostInfo().NewQHostInfo();
 		}
@@ -63,47 +63,47 @@ namespace Qyoto {
 			CreateProxy();
 			NewQHostInfo(d);
 		}
-		[SmokeMethod("QHostInfo#", "(const QHostInfo&)")]
+		[SmokeMethod("QHostInfo", "(const QHostInfo&)", "#")]
 		private void NewQHostInfo(QHostInfo d) {
 			ProxyQHostInfo().NewQHostInfo(d);
 		}
-		[SmokeMethod("hostName", "() const")]
+		[SmokeMethod("hostName", "() const", "")]
 		public string HostName() {
 			return ProxyQHostInfo().HostName();
 		}
-		[SmokeMethod("setHostName$", "(const QString&)")]
+		[SmokeMethod("setHostName", "(const QString&)", "$")]
 		public void SetHostName(string name) {
 			ProxyQHostInfo().SetHostName(name);
 		}
-		[SmokeMethod("addresses", "() const")]
+		[SmokeMethod("addresses", "() const", "")]
 		public List<QHostAddress> Addresses() {
 			return ProxyQHostInfo().Addresses();
 		}
-		[SmokeMethod("setAddresses?", "(const QList<QHostAddress>&)")]
+		[SmokeMethod("setAddresses", "(const QList<QHostAddress>&)", "?")]
 		public void SetAddresses(List<QHostAddress> addresses) {
 			ProxyQHostInfo().SetAddresses(addresses);
 		}
-		[SmokeMethod("error", "() const")]
+		[SmokeMethod("error", "() const", "")]
 		public QHostInfo.HostInfoError Error() {
 			return ProxyQHostInfo().Error();
 		}
-		[SmokeMethod("setError$", "(QHostInfo::HostInfoError)")]
+		[SmokeMethod("setError", "(QHostInfo::HostInfoError)", "$")]
 		public void SetError(QHostInfo.HostInfoError error) {
 			ProxyQHostInfo().SetError(error);
 		}
-		[SmokeMethod("errorString", "() const")]
+		[SmokeMethod("errorString", "() const", "")]
 		public string ErrorString() {
 			return ProxyQHostInfo().ErrorString();
 		}
-		[SmokeMethod("setErrorString$", "(const QString&)")]
+		[SmokeMethod("setErrorString", "(const QString&)", "$")]
 		public void SetErrorString(string errorString) {
 			ProxyQHostInfo().SetErrorString(errorString);
 		}
-		[SmokeMethod("setLookupId$", "(int)")]
+		[SmokeMethod("setLookupId", "(int)", "$")]
 		public void SetLookupId(int id) {
 			ProxyQHostInfo().SetLookupId(id);
 		}
-		[SmokeMethod("lookupId", "() const")]
+		[SmokeMethod("lookupId", "() const", "")]
 		public int LookupId() {
 			return ProxyQHostInfo().LookupId();
 		}
@@ -125,7 +125,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQHostInfo();
 		}
-		[SmokeMethod("~QHostInfo", "()")]
+		[SmokeMethod("~QHostInfo", "()", "")]
 		private void DisposeQHostInfo() {
 			ProxyQHostInfo().DisposeQHostInfo();
 		}

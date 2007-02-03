@@ -9,9 +9,9 @@ namespace Qyoto {
 	public class QSessionManager : QObject {
  		protected QSessionManager(Type dummy) : base((Type) null) {}
 		interface IQSessionManagerProxy {
-			[SmokeMethod("tr$$", "(const char*, const char*)")]
+			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
-			[SmokeMethod("tr$", "(const char*)")]
+			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
 
@@ -38,67 +38,67 @@ namespace Qyoto {
 			RestartNever = 3,
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
-		[SmokeMethod("sessionId", "() const")]
+		[SmokeMethod("sessionId", "() const", "")]
 		public string SessionId() {
 			return ProxyQSessionManager().SessionId();
 		}
-		[SmokeMethod("sessionKey", "() const")]
+		[SmokeMethod("sessionKey", "() const", "")]
 		public string SessionKey() {
 			return ProxyQSessionManager().SessionKey();
 		}
-		[SmokeMethod("allowsInteraction", "()")]
+		[SmokeMethod("allowsInteraction", "()", "")]
 		public bool AllowsInteraction() {
 			return ProxyQSessionManager().AllowsInteraction();
 		}
-		[SmokeMethod("allowsErrorInteraction", "()")]
+		[SmokeMethod("allowsErrorInteraction", "()", "")]
 		public bool AllowsErrorInteraction() {
 			return ProxyQSessionManager().AllowsErrorInteraction();
 		}
-		[SmokeMethod("release", "()")]
+		[SmokeMethod("release", "()", "")]
 		public void Release() {
 			ProxyQSessionManager().Release();
 		}
-		[SmokeMethod("cancel", "()")]
+		[SmokeMethod("cancel", "()", "")]
 		public void Cancel() {
 			ProxyQSessionManager().Cancel();
 		}
-		[SmokeMethod("setRestartHint$", "(QSessionManager::RestartHint)")]
+		[SmokeMethod("setRestartHint", "(QSessionManager::RestartHint)", "$")]
 		public void SetRestartHint(QSessionManager.RestartHint arg1) {
 			ProxyQSessionManager().SetRestartHint(arg1);
 		}
-		[SmokeMethod("restartHint", "() const")]
+		[SmokeMethod("restartHint", "() const", "")]
 		public QSessionManager.RestartHint restartHint() {
 			return ProxyQSessionManager().restartHint();
 		}
-		[SmokeMethod("setRestartCommand?", "(const QStringList&)")]
+		[SmokeMethod("setRestartCommand", "(const QStringList&)", "?")]
 		public void SetRestartCommand(List<string> arg1) {
 			ProxyQSessionManager().SetRestartCommand(arg1);
 		}
-		[SmokeMethod("restartCommand", "() const")]
+		[SmokeMethod("restartCommand", "() const", "")]
 		public List<string> RestartCommand() {
 			return ProxyQSessionManager().RestartCommand();
 		}
-		[SmokeMethod("setDiscardCommand?", "(const QStringList&)")]
+		[SmokeMethod("setDiscardCommand", "(const QStringList&)", "?")]
 		public void SetDiscardCommand(List<string> arg1) {
 			ProxyQSessionManager().SetDiscardCommand(arg1);
 		}
-		[SmokeMethod("discardCommand", "() const")]
+		[SmokeMethod("discardCommand", "() const", "")]
 		public List<string> DiscardCommand() {
 			return ProxyQSessionManager().DiscardCommand();
 		}
-		[SmokeMethod("setManagerProperty$$", "(const QString&, const QString&)")]
+		[SmokeMethod("setManagerProperty", "(const QString&, const QString&)", "$$")]
 		public void SetManagerProperty(string name, string value) {
 			ProxyQSessionManager().SetManagerProperty(name,value);
 		}
-		[SmokeMethod("setManagerProperty$?", "(const QString&, const QStringList&)")]
+		[SmokeMethod("setManagerProperty", "(const QString&, const QStringList&)", "$?")]
 		public void SetManagerProperty(string name, List<string> value) {
 			ProxyQSessionManager().SetManagerProperty(name,value);
 		}
-		[SmokeMethod("isPhase2", "() const")]
+		[SmokeMethod("isPhase2", "() const", "")]
 		public bool IsPhase2() {
 			return ProxyQSessionManager().IsPhase2();
 		}
-		[SmokeMethod("requestPhase2", "()")]
+		[SmokeMethod("requestPhase2", "()", "")]
 		public void RequestPhase2() {
 			ProxyQSessionManager().RequestPhase2();
 		}

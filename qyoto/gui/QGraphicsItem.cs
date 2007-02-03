@@ -176,7 +176,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGraphicsItem(parent,scene);
 		}
-		[SmokeMethod("QGraphicsItem##", "(QGraphicsItem*, QGraphicsScene*)")]
+		[SmokeMethod("QGraphicsItem", "(QGraphicsItem*, QGraphicsScene*)", "##")]
 		private void NewQGraphicsItem(QGraphicsItem parent, QGraphicsScene scene) {
 			ProxyQGraphicsItem().NewQGraphicsItem(parent,scene);
 		}
@@ -184,7 +184,7 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGraphicsItem(parent);
 		}
-		[SmokeMethod("QGraphicsItem#", "(QGraphicsItem*)")]
+		[SmokeMethod("QGraphicsItem", "(QGraphicsItem*)", "#")]
 		private void NewQGraphicsItem(QGraphicsItem parent) {
 			ProxyQGraphicsItem().NewQGraphicsItem(parent);
 		}
@@ -192,479 +192,479 @@ namespace Qyoto {
 			CreateProxy();
 			NewQGraphicsItem();
 		}
-		[SmokeMethod("QGraphicsItem", "()")]
+		[SmokeMethod("QGraphicsItem", "()", "")]
 		private void NewQGraphicsItem() {
 			ProxyQGraphicsItem().NewQGraphicsItem();
 		}
-		[SmokeMethod("scene", "() const")]
+		[SmokeMethod("scene", "() const", "")]
 		public QGraphicsScene Scene() {
 			return ProxyQGraphicsItem().Scene();
 		}
-		[SmokeMethod("parentItem", "() const")]
+		[SmokeMethod("parentItem", "() const", "")]
 		public QGraphicsItem ParentItem() {
 			return ProxyQGraphicsItem().ParentItem();
 		}
-		[SmokeMethod("topLevelItem", "() const")]
+		[SmokeMethod("topLevelItem", "() const", "")]
 		public QGraphicsItem TopLevelItem() {
 			return ProxyQGraphicsItem().TopLevelItem();
 		}
-		[SmokeMethod("setParentItem#", "(QGraphicsItem*)")]
+		[SmokeMethod("setParentItem", "(QGraphicsItem*)", "#")]
 		public void SetParentItem(QGraphicsItem parent) {
 			ProxyQGraphicsItem().SetParentItem(parent);
 		}
-		[SmokeMethod("children", "() const")]
+		[SmokeMethod("children", "() const", "")]
 		public List<QGraphicsItem> Children() {
 			return ProxyQGraphicsItem().Children();
 		}
-		[SmokeMethod("group", "() const")]
+		[SmokeMethod("group", "() const", "")]
 		public QGraphicsItemGroup Group() {
 			return ProxyQGraphicsItem().Group();
 		}
-		[SmokeMethod("setGroup#", "(QGraphicsItemGroup*)")]
+		[SmokeMethod("setGroup", "(QGraphicsItemGroup*)", "#")]
 		public void SetGroup(QGraphicsItemGroup group) {
 			ProxyQGraphicsItem().SetGroup(group);
 		}
-		[SmokeMethod("flags", "() const")]
+		[SmokeMethod("flags", "() const", "")]
 		public int Flags() {
 			return ProxyQGraphicsItem().Flags();
 		}
-		[SmokeMethod("setFlag$$", "(QGraphicsItem::GraphicsItemFlag, bool)")]
+		[SmokeMethod("setFlag", "(QGraphicsItem::GraphicsItemFlag, bool)", "$$")]
 		public void SetFlag(QGraphicsItem.GraphicsItemFlag flag, bool enabled) {
 			ProxyQGraphicsItem().SetFlag(flag,enabled);
 		}
-		[SmokeMethod("setFlag$", "(QGraphicsItem::GraphicsItemFlag)")]
+		[SmokeMethod("setFlag", "(QGraphicsItem::GraphicsItemFlag)", "$")]
 		public void SetFlag(QGraphicsItem.GraphicsItemFlag flag) {
 			ProxyQGraphicsItem().SetFlag(flag);
 		}
-		[SmokeMethod("setFlags$", "(GraphicsItemFlags)")]
+		[SmokeMethod("setFlags", "(GraphicsItemFlags)", "$")]
 		public void SetFlags(int flags) {
 			ProxyQGraphicsItem().SetFlags(flags);
 		}
-		[SmokeMethod("toolTip", "() const")]
+		[SmokeMethod("toolTip", "() const", "")]
 		public string ToolTip() {
 			return ProxyQGraphicsItem().ToolTip();
 		}
-		[SmokeMethod("setToolTip$", "(const QString&)")]
+		[SmokeMethod("setToolTip", "(const QString&)", "$")]
 		public void SetToolTip(string toolTip) {
 			ProxyQGraphicsItem().SetToolTip(toolTip);
 		}
-		[SmokeMethod("cursor", "() const")]
+		[SmokeMethod("cursor", "() const", "")]
 		public QCursor Cursor() {
 			return ProxyQGraphicsItem().Cursor();
 		}
-		[SmokeMethod("setCursor#", "(const QCursor&)")]
+		[SmokeMethod("setCursor", "(const QCursor&)", "#")]
 		public void SetCursor(QCursor cursor) {
 			ProxyQGraphicsItem().SetCursor(cursor);
 		}
-		[SmokeMethod("hasCursor", "() const")]
+		[SmokeMethod("hasCursor", "() const", "")]
 		public bool HasCursor() {
 			return ProxyQGraphicsItem().HasCursor();
 		}
-		[SmokeMethod("unsetCursor", "()")]
+		[SmokeMethod("unsetCursor", "()", "")]
 		public void UnsetCursor() {
 			ProxyQGraphicsItem().UnsetCursor();
 		}
-		[SmokeMethod("isVisible", "() const")]
+		[SmokeMethod("isVisible", "() const", "")]
 		public bool IsVisible() {
 			return ProxyQGraphicsItem().IsVisible();
 		}
-		[SmokeMethod("setVisible$", "(bool)")]
+		[SmokeMethod("setVisible", "(bool)", "$")]
 		public void SetVisible(bool visible) {
 			ProxyQGraphicsItem().SetVisible(visible);
 		}
-		[SmokeMethod("hide", "()")]
+		[SmokeMethod("hide", "()", "")]
 		public void Hide() {
 			ProxyQGraphicsItem().Hide();
 		}
-		[SmokeMethod("show", "()")]
+		[SmokeMethod("show", "()", "")]
 		public void Show() {
 			ProxyQGraphicsItem().Show();
 		}
-		[SmokeMethod("isEnabled", "() const")]
+		[SmokeMethod("isEnabled", "() const", "")]
 		public bool IsEnabled() {
 			return ProxyQGraphicsItem().IsEnabled();
 		}
-		[SmokeMethod("setEnabled$", "(bool)")]
+		[SmokeMethod("setEnabled", "(bool)", "$")]
 		public void SetEnabled(bool enabled) {
 			ProxyQGraphicsItem().SetEnabled(enabled);
 		}
-		[SmokeMethod("isSelected", "() const")]
+		[SmokeMethod("isSelected", "() const", "")]
 		public bool IsSelected() {
 			return ProxyQGraphicsItem().IsSelected();
 		}
-		[SmokeMethod("setSelected$", "(bool)")]
+		[SmokeMethod("setSelected", "(bool)", "$")]
 		public void SetSelected(bool selected) {
 			ProxyQGraphicsItem().SetSelected(selected);
 		}
-		[SmokeMethod("acceptDrops", "() const")]
+		[SmokeMethod("acceptDrops", "() const", "")]
 		public bool AcceptDrops() {
 			return ProxyQGraphicsItem().AcceptDrops();
 		}
-		[SmokeMethod("setAcceptDrops$", "(bool)")]
+		[SmokeMethod("setAcceptDrops", "(bool)", "$")]
 		public void SetAcceptDrops(bool on) {
 			ProxyQGraphicsItem().SetAcceptDrops(on);
 		}
-		[SmokeMethod("acceptedMouseButtons", "() const")]
+		[SmokeMethod("acceptedMouseButtons", "() const", "")]
 		public int AcceptedMouseButtons() {
 			return ProxyQGraphicsItem().AcceptedMouseButtons();
 		}
-		[SmokeMethod("setAcceptedMouseButtons$", "(Qt::MouseButtons)")]
+		[SmokeMethod("setAcceptedMouseButtons", "(Qt::MouseButtons)", "$")]
 		public void SetAcceptedMouseButtons(int buttons) {
 			ProxyQGraphicsItem().SetAcceptedMouseButtons(buttons);
 		}
-		[SmokeMethod("acceptsHoverEvents", "() const")]
+		[SmokeMethod("acceptsHoverEvents", "() const", "")]
 		public bool AcceptsHoverEvents() {
 			return ProxyQGraphicsItem().AcceptsHoverEvents();
 		}
-		[SmokeMethod("setAcceptsHoverEvents$", "(bool)")]
+		[SmokeMethod("setAcceptsHoverEvents", "(bool)", "$")]
 		public void SetAcceptsHoverEvents(bool enabled) {
 			ProxyQGraphicsItem().SetAcceptsHoverEvents(enabled);
 		}
-		[SmokeMethod("handlesChildEvents", "() const")]
+		[SmokeMethod("handlesChildEvents", "() const", "")]
 		public bool HandlesChildEvents() {
 			return ProxyQGraphicsItem().HandlesChildEvents();
 		}
-		[SmokeMethod("setHandlesChildEvents$", "(bool)")]
+		[SmokeMethod("setHandlesChildEvents", "(bool)", "$")]
 		public void SetHandlesChildEvents(bool enabled) {
 			ProxyQGraphicsItem().SetHandlesChildEvents(enabled);
 		}
-		[SmokeMethod("hasFocus", "() const")]
+		[SmokeMethod("hasFocus", "() const", "")]
 		public bool HasFocus() {
 			return ProxyQGraphicsItem().HasFocus();
 		}
-		[SmokeMethod("setFocus$", "(Qt::FocusReason)")]
+		[SmokeMethod("setFocus", "(Qt::FocusReason)", "$")]
 		public void SetFocus(Qt.FocusReason focusReason) {
 			ProxyQGraphicsItem().SetFocus(focusReason);
 		}
-		[SmokeMethod("setFocus", "()")]
+		[SmokeMethod("setFocus", "()", "")]
 		public void SetFocus() {
 			ProxyQGraphicsItem().SetFocus();
 		}
-		[SmokeMethod("clearFocus", "()")]
+		[SmokeMethod("clearFocus", "()", "")]
 		public void ClearFocus() {
 			ProxyQGraphicsItem().ClearFocus();
 		}
-		[SmokeMethod("pos", "() const")]
+		[SmokeMethod("pos", "() const", "")]
 		public QPointF Pos() {
 			return ProxyQGraphicsItem().Pos();
 		}
-		[SmokeMethod("x", "() const")]
+		[SmokeMethod("x", "() const", "")]
 		public double X() {
 			return ProxyQGraphicsItem().X();
 		}
-		[SmokeMethod("y", "() const")]
+		[SmokeMethod("y", "() const", "")]
 		public double Y() {
 			return ProxyQGraphicsItem().Y();
 		}
-		[SmokeMethod("scenePos", "() const")]
+		[SmokeMethod("scenePos", "() const", "")]
 		public QPointF ScenePos() {
 			return ProxyQGraphicsItem().ScenePos();
 		}
-		[SmokeMethod("setPos#", "(const QPointF&)")]
+		[SmokeMethod("setPos", "(const QPointF&)", "#")]
 		public void SetPos(QPointF pos) {
 			ProxyQGraphicsItem().SetPos(pos);
 		}
-		[SmokeMethod("setPos$$", "(qreal, qreal)")]
+		[SmokeMethod("setPos", "(qreal, qreal)", "$$")]
 		public void SetPos(double x, double y) {
 			ProxyQGraphicsItem().SetPos(x,y);
 		}
-		[SmokeMethod("moveBy$$", "(qreal, qreal)")]
+		[SmokeMethod("moveBy", "(qreal, qreal)", "$$")]
 		public void MoveBy(double dx, double dy) {
 			ProxyQGraphicsItem().MoveBy(dx,dy);
 		}
-		[SmokeMethod("ensureVisible#$$", "(const QRectF&, int, int)")]
+		[SmokeMethod("ensureVisible", "(const QRectF&, int, int)", "#$$")]
 		public void EnsureVisible(QRectF rect, int xmargin, int ymargin) {
 			ProxyQGraphicsItem().EnsureVisible(rect,xmargin,ymargin);
 		}
-		[SmokeMethod("ensureVisible#$", "(const QRectF&, int)")]
+		[SmokeMethod("ensureVisible", "(const QRectF&, int)", "#$")]
 		public void EnsureVisible(QRectF rect, int xmargin) {
 			ProxyQGraphicsItem().EnsureVisible(rect,xmargin);
 		}
-		[SmokeMethod("ensureVisible#", "(const QRectF&)")]
+		[SmokeMethod("ensureVisible", "(const QRectF&)", "#")]
 		public void EnsureVisible(QRectF rect) {
 			ProxyQGraphicsItem().EnsureVisible(rect);
 		}
-		[SmokeMethod("ensureVisible", "()")]
+		[SmokeMethod("ensureVisible", "()", "")]
 		public void EnsureVisible() {
 			ProxyQGraphicsItem().EnsureVisible();
 		}
-		[SmokeMethod("ensureVisible$$$$$$", "(qreal, qreal, qreal, qreal, int, int)")]
+		[SmokeMethod("ensureVisible", "(qreal, qreal, qreal, qreal, int, int)", "$$$$$$")]
 		public void EnsureVisible(double x, double y, double w, double h, int xmargin, int ymargin) {
 			ProxyQGraphicsItem().EnsureVisible(x,y,w,h,xmargin,ymargin);
 		}
-		[SmokeMethod("ensureVisible$$$$$", "(qreal, qreal, qreal, qreal, int)")]
+		[SmokeMethod("ensureVisible", "(qreal, qreal, qreal, qreal, int)", "$$$$$")]
 		public void EnsureVisible(double x, double y, double w, double h, int xmargin) {
 			ProxyQGraphicsItem().EnsureVisible(x,y,w,h,xmargin);
 		}
-		[SmokeMethod("ensureVisible$$$$", "(qreal, qreal, qreal, qreal)")]
+		[SmokeMethod("ensureVisible", "(qreal, qreal, qreal, qreal)", "$$$$")]
 		public void EnsureVisible(double x, double y, double w, double h) {
 			ProxyQGraphicsItem().EnsureVisible(x,y,w,h);
 		}
-		[SmokeMethod("matrix", "() const")]
+		[SmokeMethod("matrix", "() const", "")]
 		public QMatrix Matrix() {
 			return ProxyQGraphicsItem().Matrix();
 		}
-		[SmokeMethod("sceneMatrix", "() const")]
+		[SmokeMethod("sceneMatrix", "() const", "")]
 		public QMatrix SceneMatrix() {
 			return ProxyQGraphicsItem().SceneMatrix();
 		}
-		[SmokeMethod("setMatrix#$", "(const QMatrix&, bool)")]
+		[SmokeMethod("setMatrix", "(const QMatrix&, bool)", "#$")]
 		public void SetMatrix(QMatrix matrix, bool combine) {
 			ProxyQGraphicsItem().SetMatrix(matrix,combine);
 		}
-		[SmokeMethod("setMatrix#", "(const QMatrix&)")]
+		[SmokeMethod("setMatrix", "(const QMatrix&)", "#")]
 		public void SetMatrix(QMatrix matrix) {
 			ProxyQGraphicsItem().SetMatrix(matrix);
 		}
-		[SmokeMethod("resetMatrix", "()")]
+		[SmokeMethod("resetMatrix", "()", "")]
 		public void ResetMatrix() {
 			ProxyQGraphicsItem().ResetMatrix();
 		}
-		[SmokeMethod("rotate$", "(qreal)")]
+		[SmokeMethod("rotate", "(qreal)", "$")]
 		public void Rotate(double angle) {
 			ProxyQGraphicsItem().Rotate(angle);
 		}
-		[SmokeMethod("scale$$", "(qreal, qreal)")]
+		[SmokeMethod("scale", "(qreal, qreal)", "$$")]
 		public void Scale(double sx, double sy) {
 			ProxyQGraphicsItem().Scale(sx,sy);
 		}
-		[SmokeMethod("shear$$", "(qreal, qreal)")]
+		[SmokeMethod("shear", "(qreal, qreal)", "$$")]
 		public void Shear(double sh, double sv) {
 			ProxyQGraphicsItem().Shear(sh,sv);
 		}
-		[SmokeMethod("translate$$", "(qreal, qreal)")]
+		[SmokeMethod("translate", "(qreal, qreal)", "$$")]
 		public void Translate(double dx, double dy) {
 			ProxyQGraphicsItem().Translate(dx,dy);
 		}
-		[SmokeMethod("advance$", "(int)")]
+		[SmokeMethod("advance", "(int)", "$")]
 		public virtual void Advance(int phase) {
 			ProxyQGraphicsItem().Advance(phase);
 		}
-		[SmokeMethod("zValue", "() const")]
+		[SmokeMethod("zValue", "() const", "")]
 		public double ZValue() {
 			return ProxyQGraphicsItem().ZValue();
 		}
-		[SmokeMethod("setZValue$", "(qreal)")]
+		[SmokeMethod("setZValue", "(qreal)", "$")]
 		public void SetZValue(double z) {
 			ProxyQGraphicsItem().SetZValue(z);
 		}
-		[SmokeMethod("boundingRect", "() const")]
+		[SmokeMethod("boundingRect", "() const", "")]
 		public virtual QRectF BoundingRect() {
 			return ProxyQGraphicsItem().BoundingRect();
 		}
-		[SmokeMethod("childrenBoundingRect", "() const")]
+		[SmokeMethod("childrenBoundingRect", "() const", "")]
 		public QRectF ChildrenBoundingRect() {
 			return ProxyQGraphicsItem().ChildrenBoundingRect();
 		}
-		[SmokeMethod("sceneBoundingRect", "() const")]
+		[SmokeMethod("sceneBoundingRect", "() const", "")]
 		public QRectF SceneBoundingRect() {
 			return ProxyQGraphicsItem().SceneBoundingRect();
 		}
-		[SmokeMethod("shape", "() const")]
+		[SmokeMethod("shape", "() const", "")]
 		public virtual QPainterPath Shape() {
 			return ProxyQGraphicsItem().Shape();
 		}
-		[SmokeMethod("contains#", "(const QPointF&) const")]
+		[SmokeMethod("contains", "(const QPointF&) const", "#")]
 		public virtual bool Contains(QPointF point) {
 			return ProxyQGraphicsItem().Contains(point);
 		}
-		[SmokeMethod("collidesWithItem#$", "(const QGraphicsItem*, Qt::ItemSelectionMode) const")]
+		[SmokeMethod("collidesWithItem", "(const QGraphicsItem*, Qt::ItemSelectionMode) const", "#$")]
 		public virtual bool CollidesWithItem(QGraphicsItem other, Qt.ItemSelectionMode mode) {
 			return ProxyQGraphicsItem().CollidesWithItem(other,mode);
 		}
-		[SmokeMethod("collidesWithItem#", "(const QGraphicsItem*) const")]
+		[SmokeMethod("collidesWithItem", "(const QGraphicsItem*) const", "#")]
 		public virtual bool CollidesWithItem(QGraphicsItem other) {
 			return ProxyQGraphicsItem().CollidesWithItem(other);
 		}
-		[SmokeMethod("collidesWithPath#$", "(const QPainterPath&, Qt::ItemSelectionMode) const")]
+		[SmokeMethod("collidesWithPath", "(const QPainterPath&, Qt::ItemSelectionMode) const", "#$")]
 		public virtual bool CollidesWithPath(QPainterPath path, Qt.ItemSelectionMode mode) {
 			return ProxyQGraphicsItem().CollidesWithPath(path,mode);
 		}
-		[SmokeMethod("collidesWithPath#", "(const QPainterPath&) const")]
+		[SmokeMethod("collidesWithPath", "(const QPainterPath&) const", "#")]
 		public virtual bool CollidesWithPath(QPainterPath path) {
 			return ProxyQGraphicsItem().CollidesWithPath(path);
 		}
-		[SmokeMethod("collidingItems$", "(Qt::ItemSelectionMode) const")]
+		[SmokeMethod("collidingItems", "(Qt::ItemSelectionMode) const", "$")]
 		public List<QGraphicsItem> CollidingItems(Qt.ItemSelectionMode mode) {
 			return ProxyQGraphicsItem().CollidingItems(mode);
 		}
-		[SmokeMethod("collidingItems", "() const")]
+		[SmokeMethod("collidingItems", "() const", "")]
 		public List<QGraphicsItem> CollidingItems() {
 			return ProxyQGraphicsItem().CollidingItems();
 		}
-		[SmokeMethod("isObscured", "() const")]
+		[SmokeMethod("isObscured", "() const", "")]
 		public bool IsObscured() {
 			return ProxyQGraphicsItem().IsObscured();
 		}
-		[SmokeMethod("isObscuredBy#", "(const QGraphicsItem*) const")]
+		[SmokeMethod("isObscuredBy", "(const QGraphicsItem*) const", "#")]
 		public virtual bool IsObscuredBy(QGraphicsItem item) {
 			return ProxyQGraphicsItem().IsObscuredBy(item);
 		}
-		[SmokeMethod("opaqueArea", "() const")]
+		[SmokeMethod("opaqueArea", "() const", "")]
 		public virtual QPainterPath OpaqueArea() {
 			return ProxyQGraphicsItem().OpaqueArea();
 		}
-		[SmokeMethod("paint###", "(QPainter*, const QStyleOptionGraphicsItem*, QWidget*)")]
+		[SmokeMethod("paint", "(QPainter*, const QStyleOptionGraphicsItem*, QWidget*)", "###")]
 		public virtual void Paint(QPainter painter, QStyleOptionGraphicsItem option, QWidget widget) {
 			ProxyQGraphicsItem().Paint(painter,option,widget);
 		}
-		[SmokeMethod("paint##", "(QPainter*, const QStyleOptionGraphicsItem*)")]
+		[SmokeMethod("paint", "(QPainter*, const QStyleOptionGraphicsItem*)", "##")]
 		public virtual void Paint(QPainter painter, QStyleOptionGraphicsItem option) {
 			ProxyQGraphicsItem().Paint(painter,option);
 		}
-		[SmokeMethod("update#", "(const QRectF&)")]
+		[SmokeMethod("update", "(const QRectF&)", "#")]
 		public void Update(QRectF rect) {
 			ProxyQGraphicsItem().Update(rect);
 		}
-		[SmokeMethod("update", "()")]
+		[SmokeMethod("update", "()", "")]
 		public void Update() {
 			ProxyQGraphicsItem().Update();
 		}
-		[SmokeMethod("update$$$$", "(qreal, qreal, qreal, qreal)")]
+		[SmokeMethod("update", "(qreal, qreal, qreal, qreal)", "$$$$")]
 		public void Update(double x, double y, double width, double height) {
 			ProxyQGraphicsItem().Update(x,y,width,height);
 		}
-		[SmokeMethod("mapToItem##", "(const QGraphicsItem*, const QPointF&) const")]
+		[SmokeMethod("mapToItem", "(const QGraphicsItem*, const QPointF&) const", "##")]
 		public QPointF MapToItem(QGraphicsItem item, QPointF point) {
 			return ProxyQGraphicsItem().MapToItem(item,point);
 		}
-		[SmokeMethod("mapToParent#", "(const QPointF&) const")]
+		[SmokeMethod("mapToParent", "(const QPointF&) const", "#")]
 		public QPointF MapToParent(QPointF point) {
 			return ProxyQGraphicsItem().MapToParent(point);
 		}
-		[SmokeMethod("mapToScene#", "(const QPointF&) const")]
+		[SmokeMethod("mapToScene", "(const QPointF&) const", "#")]
 		public QPointF MapToScene(QPointF point) {
 			return ProxyQGraphicsItem().MapToScene(point);
 		}
-		[SmokeMethod("mapToItem##", "(const QGraphicsItem*, const QRectF&) const")]
+		[SmokeMethod("mapToItem", "(const QGraphicsItem*, const QRectF&) const", "##")]
 		public QPolygonF MapToItem(QGraphicsItem item, QRectF rect) {
 			return ProxyQGraphicsItem().MapToItem(item,rect);
 		}
-		[SmokeMethod("mapToParent#", "(const QRectF&) const")]
+		[SmokeMethod("mapToParent", "(const QRectF&) const", "#")]
 		public QPolygonF MapToParent(QRectF rect) {
 			return ProxyQGraphicsItem().MapToParent(rect);
 		}
-		[SmokeMethod("mapToScene#", "(const QRectF&) const")]
+		[SmokeMethod("mapToScene", "(const QRectF&) const", "#")]
 		public QPolygonF MapToScene(QRectF rect) {
 			return ProxyQGraphicsItem().MapToScene(rect);
 		}
-		[SmokeMethod("mapToItem##", "(const QGraphicsItem*, const QPolygonF&) const")]
+		[SmokeMethod("mapToItem", "(const QGraphicsItem*, const QPolygonF&) const", "##")]
 		public QPolygonF MapToItem(QGraphicsItem item, QPolygonF polygon) {
 			return ProxyQGraphicsItem().MapToItem(item,polygon);
 		}
-		[SmokeMethod("mapToParent#", "(const QPolygonF&) const")]
+		[SmokeMethod("mapToParent", "(const QPolygonF&) const", "#")]
 		public QPolygonF MapToParent(QPolygonF polygon) {
 			return ProxyQGraphicsItem().MapToParent(polygon);
 		}
-		[SmokeMethod("mapToScene#", "(const QPolygonF&) const")]
+		[SmokeMethod("mapToScene", "(const QPolygonF&) const", "#")]
 		public QPolygonF MapToScene(QPolygonF polygon) {
 			return ProxyQGraphicsItem().MapToScene(polygon);
 		}
-		[SmokeMethod("mapToItem##", "(const QGraphicsItem*, const QPainterPath&) const")]
+		[SmokeMethod("mapToItem", "(const QGraphicsItem*, const QPainterPath&) const", "##")]
 		public QPainterPath MapToItem(QGraphicsItem item, QPainterPath path) {
 			return ProxyQGraphicsItem().MapToItem(item,path);
 		}
-		[SmokeMethod("mapToParent#", "(const QPainterPath&) const")]
+		[SmokeMethod("mapToParent", "(const QPainterPath&) const", "#")]
 		public QPainterPath MapToParent(QPainterPath path) {
 			return ProxyQGraphicsItem().MapToParent(path);
 		}
-		[SmokeMethod("mapToScene#", "(const QPainterPath&) const")]
+		[SmokeMethod("mapToScene", "(const QPainterPath&) const", "#")]
 		public QPainterPath MapToScene(QPainterPath path) {
 			return ProxyQGraphicsItem().MapToScene(path);
 		}
-		[SmokeMethod("mapFromItem##", "(const QGraphicsItem*, const QPointF&) const")]
+		[SmokeMethod("mapFromItem", "(const QGraphicsItem*, const QPointF&) const", "##")]
 		public QPointF MapFromItem(QGraphicsItem item, QPointF point) {
 			return ProxyQGraphicsItem().MapFromItem(item,point);
 		}
-		[SmokeMethod("mapFromParent#", "(const QPointF&) const")]
+		[SmokeMethod("mapFromParent", "(const QPointF&) const", "#")]
 		public QPointF MapFromParent(QPointF point) {
 			return ProxyQGraphicsItem().MapFromParent(point);
 		}
-		[SmokeMethod("mapFromScene#", "(const QPointF&) const")]
+		[SmokeMethod("mapFromScene", "(const QPointF&) const", "#")]
 		public QPointF MapFromScene(QPointF point) {
 			return ProxyQGraphicsItem().MapFromScene(point);
 		}
-		[SmokeMethod("mapFromItem##", "(const QGraphicsItem*, const QRectF&) const")]
+		[SmokeMethod("mapFromItem", "(const QGraphicsItem*, const QRectF&) const", "##")]
 		public QPolygonF MapFromItem(QGraphicsItem item, QRectF rect) {
 			return ProxyQGraphicsItem().MapFromItem(item,rect);
 		}
-		[SmokeMethod("mapFromParent#", "(const QRectF&) const")]
+		[SmokeMethod("mapFromParent", "(const QRectF&) const", "#")]
 		public QPolygonF MapFromParent(QRectF rect) {
 			return ProxyQGraphicsItem().MapFromParent(rect);
 		}
-		[SmokeMethod("mapFromScene#", "(const QRectF&) const")]
+		[SmokeMethod("mapFromScene", "(const QRectF&) const", "#")]
 		public QPolygonF MapFromScene(QRectF rect) {
 			return ProxyQGraphicsItem().MapFromScene(rect);
 		}
-		[SmokeMethod("mapFromItem##", "(const QGraphicsItem*, const QPolygonF&) const")]
+		[SmokeMethod("mapFromItem", "(const QGraphicsItem*, const QPolygonF&) const", "##")]
 		public QPolygonF MapFromItem(QGraphicsItem item, QPolygonF polygon) {
 			return ProxyQGraphicsItem().MapFromItem(item,polygon);
 		}
-		[SmokeMethod("mapFromParent#", "(const QPolygonF&) const")]
+		[SmokeMethod("mapFromParent", "(const QPolygonF&) const", "#")]
 		public QPolygonF MapFromParent(QPolygonF polygon) {
 			return ProxyQGraphicsItem().MapFromParent(polygon);
 		}
-		[SmokeMethod("mapFromScene#", "(const QPolygonF&) const")]
+		[SmokeMethod("mapFromScene", "(const QPolygonF&) const", "#")]
 		public QPolygonF MapFromScene(QPolygonF polygon) {
 			return ProxyQGraphicsItem().MapFromScene(polygon);
 		}
-		[SmokeMethod("mapFromItem##", "(const QGraphicsItem*, const QPainterPath&) const")]
+		[SmokeMethod("mapFromItem", "(const QGraphicsItem*, const QPainterPath&) const", "##")]
 		public QPainterPath MapFromItem(QGraphicsItem item, QPainterPath path) {
 			return ProxyQGraphicsItem().MapFromItem(item,path);
 		}
-		[SmokeMethod("mapFromParent#", "(const QPainterPath&) const")]
+		[SmokeMethod("mapFromParent", "(const QPainterPath&) const", "#")]
 		public QPainterPath MapFromParent(QPainterPath path) {
 			return ProxyQGraphicsItem().MapFromParent(path);
 		}
-		[SmokeMethod("mapFromScene#", "(const QPainterPath&) const")]
+		[SmokeMethod("mapFromScene", "(const QPainterPath&) const", "#")]
 		public QPainterPath MapFromScene(QPainterPath path) {
 			return ProxyQGraphicsItem().MapFromScene(path);
 		}
-		[SmokeMethod("mapToItem#$$", "(const QGraphicsItem*, qreal, qreal) const")]
+		[SmokeMethod("mapToItem", "(const QGraphicsItem*, qreal, qreal) const", "#$$")]
 		public QPointF MapToItem(QGraphicsItem item, double x, double y) {
 			return ProxyQGraphicsItem().MapToItem(item,x,y);
 		}
-		[SmokeMethod("mapToParent$$", "(qreal, qreal) const")]
+		[SmokeMethod("mapToParent", "(qreal, qreal) const", "$$")]
 		public QPointF MapToParent(double x, double y) {
 			return ProxyQGraphicsItem().MapToParent(x,y);
 		}
-		[SmokeMethod("mapToScene$$", "(qreal, qreal) const")]
+		[SmokeMethod("mapToScene", "(qreal, qreal) const", "$$")]
 		public QPointF MapToScene(double x, double y) {
 			return ProxyQGraphicsItem().MapToScene(x,y);
 		}
-		[SmokeMethod("mapFromItem#$$", "(const QGraphicsItem*, qreal, qreal) const")]
+		[SmokeMethod("mapFromItem", "(const QGraphicsItem*, qreal, qreal) const", "#$$")]
 		public QPointF MapFromItem(QGraphicsItem item, double x, double y) {
 			return ProxyQGraphicsItem().MapFromItem(item,x,y);
 		}
-		[SmokeMethod("mapFromParent$$", "(qreal, qreal) const")]
+		[SmokeMethod("mapFromParent", "(qreal, qreal) const", "$$")]
 		public QPointF MapFromParent(double x, double y) {
 			return ProxyQGraphicsItem().MapFromParent(x,y);
 		}
-		[SmokeMethod("mapFromScene$$", "(qreal, qreal) const")]
+		[SmokeMethod("mapFromScene", "(qreal, qreal) const", "$$")]
 		public QPointF MapFromScene(double x, double y) {
 			return ProxyQGraphicsItem().MapFromScene(x,y);
 		}
-		[SmokeMethod("isAncestorOf#", "(const QGraphicsItem*) const")]
+		[SmokeMethod("isAncestorOf", "(const QGraphicsItem*) const", "#")]
 		public bool IsAncestorOf(QGraphicsItem child) {
 			return ProxyQGraphicsItem().IsAncestorOf(child);
 		}
-		[SmokeMethod("data$", "(int) const")]
+		[SmokeMethod("data", "(int) const", "$")]
 		public QVariant Data(int key) {
 			return ProxyQGraphicsItem().Data(key);
 		}
-		[SmokeMethod("setData$#", "(int, const QVariant&)")]
+		[SmokeMethod("setData", "(int, const QVariant&)", "$#")]
 		public void SetData(int key, QVariant value) {
 			ProxyQGraphicsItem().SetData(key,value);
 		}
-		[SmokeMethod("type", "() const")]
+		[SmokeMethod("type", "() const", "")]
 		public virtual int type() {
 			return ProxyQGraphicsItem().type();
 		}
-		[SmokeMethod("installSceneEventFilter#", "(QGraphicsItem*)")]
+		[SmokeMethod("installSceneEventFilter", "(QGraphicsItem*)", "#")]
 		public void InstallSceneEventFilter(QGraphicsItem filterItem) {
 			ProxyQGraphicsItem().InstallSceneEventFilter(filterItem);
 		}
-		[SmokeMethod("removeSceneEventFilter#", "(QGraphicsItem*)")]
+		[SmokeMethod("removeSceneEventFilter", "(QGraphicsItem*)", "#")]
 		public void RemoveSceneEventFilter(QGraphicsItem filterItem) {
 			ProxyQGraphicsItem().RemoveSceneEventFilter(filterItem);
 		}
@@ -674,7 +674,7 @@ namespace Qyoto {
 		public void Dispose() {
 			DisposeQGraphicsItem();
 		}
-		[SmokeMethod("~QGraphicsItem", "()")]
+		[SmokeMethod("~QGraphicsItem", "()", "")]
 		private void DisposeQGraphicsItem() {
 			ProxyQGraphicsItem().DisposeQGraphicsItem();
 		}

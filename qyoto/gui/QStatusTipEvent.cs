@@ -30,11 +30,11 @@ namespace Qyoto {
 			CreateProxy();
 			NewQStatusTipEvent(tip);
 		}
-		[SmokeMethod("QStatusTipEvent$", "(const QString&)")]
+		[SmokeMethod("QStatusTipEvent", "(const QString&)", "$")]
 		private void NewQStatusTipEvent(string tip) {
 			ProxyQStatusTipEvent().NewQStatusTipEvent(tip);
 		}
-		[SmokeMethod("tip", "() const")]
+		[SmokeMethod("tip", "() const", "")]
 		public string Tip() {
 			return ProxyQStatusTipEvent().Tip();
 		}
@@ -44,7 +44,7 @@ namespace Qyoto {
 		public new void Dispose() {
 			DisposeQStatusTipEvent();
 		}
-		[SmokeMethod("~QStatusTipEvent", "()")]
+		[SmokeMethod("~QStatusTipEvent", "()", "")]
 		private void DisposeQStatusTipEvent() {
 			ProxyQStatusTipEvent().DisposeQStatusTipEvent();
 		}
