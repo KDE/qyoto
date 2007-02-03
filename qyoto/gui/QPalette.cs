@@ -10,6 +10,7 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QPalette(Type dummy) {}
 		interface IQPaletteProxy {
+			[SmokeMethod("operator==", "(const QPalette&) const", "#")]
 			bool op_equals(QPalette lhs, QPalette p);
 		}
 
@@ -246,7 +247,6 @@ namespace Qyoto {
 		public QBrush LinkVisited() {
 			return ProxyQPalette().LinkVisited();
 		}
-		[SmokeMethod("operator==", "(const QPalette&) const", "#")]
 		public static bool operator==(QPalette lhs, QPalette p) {
 			return StaticQPalette().op_equals(lhs,p);
 		}

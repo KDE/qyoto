@@ -11,6 +11,7 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QDomNamedNodeMap(Type dummy) {}
 		interface IQDomNamedNodeMapProxy {
+			[SmokeMethod("operator==", "(const QDomNamedNodeMap&) const", "#")]
 			bool op_equals(QDomNamedNodeMap lhs, QDomNamedNodeMap arg1);
 		}
 
@@ -46,7 +47,6 @@ namespace Qyoto {
 		private void NewQDomNamedNodeMap(QDomNamedNodeMap arg1) {
 			ProxyQDomNamedNodeMap().NewQDomNamedNodeMap(arg1);
 		}
-		[SmokeMethod("operator==", "(const QDomNamedNodeMap&) const", "#")]
 		public static bool operator==(QDomNamedNodeMap lhs, QDomNamedNodeMap arg1) {
 			return StaticQDomNamedNodeMap().op_equals(lhs,arg1);
 		}

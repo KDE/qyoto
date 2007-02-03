@@ -10,6 +10,7 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QTextLength(Type dummy) {}
 		interface IQTextLengthProxy {
+			[SmokeMethod("operator==", "(const QTextLength&) const", "#")]
 			bool op_equals(QTextLength lhs, QTextLength other);
 		}
 
@@ -62,7 +63,6 @@ namespace Qyoto {
 		public double RawValue() {
 			return ProxyQTextLength().RawValue();
 		}
-		[SmokeMethod("operator==", "(const QTextLength&) const", "#")]
 		public static bool operator==(QTextLength lhs, QTextLength other) {
 			return StaticQTextLength().op_equals(lhs,other);
 		}

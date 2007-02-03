@@ -10,6 +10,7 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QTextTableCell(Type dummy) {}
 		interface IQTextTableCellProxy {
+			[SmokeMethod("operator==", "(const QTextTableCell&) const", "#")]
 			bool op_equals(QTextTableCell lhs, QTextTableCell other);
 		}
 
@@ -83,7 +84,6 @@ namespace Qyoto {
 		public int LastPosition() {
 			return ProxyQTextTableCell().LastPosition();
 		}
-		[SmokeMethod("operator==", "(const QTextTableCell&) const", "#")]
 		public static bool operator==(QTextTableCell lhs, QTextTableCell other) {
 			return StaticQTextTableCell().op_equals(lhs,other);
 		}

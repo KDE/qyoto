@@ -11,8 +11,11 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QUuid(Type dummy) {}
 		interface IQUuidProxy {
+			[SmokeMethod("operator==", "(const QUuid&) const", "#")]
 			bool op_equals(QUuid lhs, QUuid orig);
+			[SmokeMethod("operator<", "(const QUuid&) const", "#")]
 			bool op_lt(QUuid lhs, QUuid other);
+			[SmokeMethod("operator>", "(const QUuid&) const", "#")]
 			bool op_gt(QUuid lhs, QUuid other);
 			[SmokeMethod("createUuid", "()", "")]
 			QUuid CreateUuid();
@@ -81,7 +84,6 @@ namespace Qyoto {
 		public bool IsNull() {
 			return ProxyQUuid().IsNull();
 		}
-		[SmokeMethod("operator==", "(const QUuid&) const", "#")]
 		public static bool operator==(QUuid lhs, QUuid orig) {
 			return StaticQUuid().op_equals(lhs,orig);
 		}
@@ -95,11 +97,9 @@ namespace Qyoto {
 		public override int GetHashCode() {
 			return ProxyQUuid().GetHashCode();
 		}
-		[SmokeMethod("operator<", "(const QUuid&) const", "#")]
 		public static bool operator<(QUuid lhs, QUuid other) {
 			return StaticQUuid().op_lt(lhs,other);
 		}
-		[SmokeMethod("operator>", "(const QUuid&) const", "#")]
 		public static bool operator>(QUuid lhs, QUuid other) {
 			return StaticQUuid().op_gt(lhs,other);
 		}

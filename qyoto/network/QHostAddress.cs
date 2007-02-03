@@ -11,7 +11,9 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QHostAddress(Type dummy) {}
 		interface IQHostAddressProxy {
+			[SmokeMethod("operator==", "(const QHostAddress&) const", "#")]
 			bool op_equals(QHostAddress lhs, QHostAddress address);
+			[SmokeMethod("operator==", "(QHostAddress::SpecialAddress) const", "$")]
 			bool op_equals(QHostAddress lhs, QHostAddress.SpecialAddress address);
 		}
 
@@ -114,7 +116,6 @@ namespace Qyoto {
 		public void SetScopeId(string id) {
 			ProxyQHostAddress().SetScopeId(id);
 		}
-		[SmokeMethod("operator==", "(const QHostAddress&) const", "#")]
 		public static bool operator==(QHostAddress lhs, QHostAddress address) {
 			return StaticQHostAddress().op_equals(lhs,address);
 		}
@@ -128,7 +129,6 @@ namespace Qyoto {
 		public override int GetHashCode() {
 			return ProxyQHostAddress().GetHashCode();
 		}
-		[SmokeMethod("operator==", "(QHostAddress::SpecialAddress) const", "$")]
 		public static bool operator==(QHostAddress lhs, QHostAddress.SpecialAddress address) {
 			return StaticQHostAddress().op_equals(lhs,address);
 		}

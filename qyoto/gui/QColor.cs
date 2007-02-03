@@ -12,6 +12,7 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QColor(Type dummy) {}
 		interface IQColorProxy {
+			[SmokeMethod("operator==", "(const QColor&) const", "#")]
 			bool op_equals(QColor lhs, QColor c);
 			[SmokeMethod("colorNames", "()", "")]
 			List<string> ColorNames();
@@ -393,7 +394,6 @@ namespace Qyoto {
 		public QColor Dark() {
 			return ProxyQColor().Dark();
 		}
-		[SmokeMethod("operator==", "(const QColor&) const", "#")]
 		public static bool operator==(QColor lhs, QColor c) {
 			return StaticQColor().op_equals(lhs,c);
 		}

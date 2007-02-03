@@ -19,6 +19,9 @@
 	* Virtual method callbacks are now working again
 	* In SmokeInvocation.Invoke() destructors aren't called until a way of
 	  coordinating C# GC with C++ Qt instance deletion has been implemented.
+	* C# operator methods are always static, and so the SmokeMethod Attribute
+	  must be for the method in the I<classname>Proxy interface, rather than
+	  on the static method call implementation.
 
 2007-01-03  Richard Dale  <rdale@foton.es>
 

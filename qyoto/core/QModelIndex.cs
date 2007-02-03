@@ -10,7 +10,9 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QModelIndex(Type dummy) {}
 		interface IQModelIndexProxy {
+			[SmokeMethod("operator==", "(const QModelIndex&) const", "#")]
 			bool op_equals(QModelIndex lhs, QModelIndex other);
+			[SmokeMethod("operator<", "(const QModelIndex&) const", "#")]
 			bool op_lt(QModelIndex lhs, QModelIndex other);
 		}
 
@@ -91,7 +93,6 @@ namespace Qyoto {
 		public bool IsValid() {
 			return ProxyQModelIndex().IsValid();
 		}
-		[SmokeMethod("operator==", "(const QModelIndex&) const", "#")]
 		public static bool operator==(QModelIndex lhs, QModelIndex other) {
 			return StaticQModelIndex().op_equals(lhs,other);
 		}
@@ -105,7 +106,6 @@ namespace Qyoto {
 		public override int GetHashCode() {
 			return ProxyQModelIndex().GetHashCode();
 		}
-		[SmokeMethod("operator<", "(const QModelIndex&) const", "#")]
 		public static bool operator<(QModelIndex lhs, QModelIndex other) {
 			return StaticQModelIndex().op_lt(lhs,other);
 		}

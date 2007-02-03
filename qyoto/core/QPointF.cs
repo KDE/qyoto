@@ -10,7 +10,9 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QPointF(Type dummy) {}
 		interface IQPointFProxy {
+			[SmokeMethod("operator*=", "(qreal)", "$")]
 			QPointF op_mult(QPointF lhs, double c);
+			[SmokeMethod("operator/=", "(qreal)", "$")]
 			QPointF op_div(QPointF lhs, double c);
 		}
 
@@ -76,11 +78,9 @@ namespace Qyoto {
 		}
 		// qreal& rx(); >>>> NOT CONVERTED
 		// qreal& ry(); >>>> NOT CONVERTED
-		[SmokeMethod("operator*=", "(qreal)", "$")]
 		public static QPointF operator*(QPointF lhs, double c) {
 			return StaticQPointF().op_mult(lhs,c);
 		}
-		[SmokeMethod("operator/=", "(qreal)", "$")]
 		public static QPointF operator/(QPointF lhs, double c) {
 			return StaticQPointF().op_div(lhs,c);
 		}

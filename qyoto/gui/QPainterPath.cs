@@ -12,6 +12,7 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QPainterPath(Type dummy) {}
 		interface IQPainterPathProxy {
+			[SmokeMethod("operator==", "(const QPainterPath&) const", "#")]
 			bool op_equals(QPainterPath lhs, QPainterPath other);
 		}
 
@@ -226,7 +227,6 @@ namespace Qyoto {
 		public void SetElementPositionAt(int i, double x, double y) {
 			ProxyQPainterPath().SetElementPositionAt(i,x,y);
 		}
-		[SmokeMethod("operator==", "(const QPainterPath&) const", "#")]
 		public static bool operator==(QPainterPath lhs, QPainterPath other) {
 			return StaticQPainterPath().op_equals(lhs,other);
 		}

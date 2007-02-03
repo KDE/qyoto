@@ -11,7 +11,9 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QTextFragment(Type dummy) {}
 		interface IQTextFragmentProxy {
+			[SmokeMethod("operator==", "(const QTextFragment&) const", "#")]
 			bool op_equals(QTextFragment lhs, QTextFragment o);
+			[SmokeMethod("operator<", "(const QTextFragment&) const", "#")]
 			bool op_lt(QTextFragment lhs, QTextFragment o);
 		}
 
@@ -51,7 +53,6 @@ namespace Qyoto {
 		public bool IsValid() {
 			return ProxyQTextFragment().IsValid();
 		}
-		[SmokeMethod("operator==", "(const QTextFragment&) const", "#")]
 		public static bool operator==(QTextFragment lhs, QTextFragment o) {
 			return StaticQTextFragment().op_equals(lhs,o);
 		}
@@ -65,7 +66,6 @@ namespace Qyoto {
 		public override int GetHashCode() {
 			return ProxyQTextFragment().GetHashCode();
 		}
-		[SmokeMethod("operator<", "(const QTextFragment&) const", "#")]
 		public static bool operator<(QTextFragment lhs, QTextFragment o) {
 			return StaticQTextFragment().op_lt(lhs,o);
 		}

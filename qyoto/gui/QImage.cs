@@ -9,6 +9,7 @@ namespace Qyoto {
 	public class QImage : QPaintDevice, IDisposable {
  		protected QImage(Type dummy) : base((Type) null) {}
 		interface IQImageProxy {
+			[SmokeMethod("operator==", "(const QImage&) const", "#")]
 			bool op_equals(QImage lhs, QImage arg1);
 			[SmokeMethod("trueMatrix", "(const QMatrix&, int, int)", "#$$")]
 			QMatrix TrueMatrix(QMatrix arg1, int w, int h);
@@ -118,7 +119,6 @@ namespace Qyoto {
 		public new int DevType() {
 			return ProxyQImage().DevType();
 		}
-		[SmokeMethod("operator==", "(const QImage&) const", "#")]
 		public static bool operator==(QImage lhs, QImage arg1) {
 			return StaticQImage().op_equals(lhs,arg1);
 		}

@@ -10,6 +10,7 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QBitRef(Type dummy) {}
 		interface IQBitRefProxy {
+			[SmokeMethod("operator!", "() const", "")]
 			bool op_not(QBitRef lhs);
 		}
 
@@ -30,7 +31,6 @@ namespace Qyoto {
 		}
 
 		//  operator bool(); >>>> NOT CONVERTED
-		[SmokeMethod("operator!", "() const", "")]
 		public static bool operator!(QBitRef lhs) {
 			return StaticQBitRef().op_not(lhs);
 		}

@@ -11,10 +11,15 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QDate(Type dummy) {}
 		interface IQDateProxy {
+			[SmokeMethod("operator==", "(const QDate&) const", "#")]
 			bool op_equals(QDate lhs, QDate other);
+			[SmokeMethod("operator<", "(const QDate&) const", "#")]
 			bool op_lt(QDate lhs, QDate other);
+			[SmokeMethod("operator<=", "(const QDate&) const", "#")]
 			bool op_lte(QDate lhs, QDate other);
+			[SmokeMethod("operator>", "(const QDate&) const", "#")]
 			bool op_gt(QDate lhs, QDate other);
+			[SmokeMethod("operator>=", "(const QDate&) const", "#")]
 			bool op_gte(QDate lhs, QDate other);
 			[SmokeMethod("shortMonthName", "(int)", "$")]
 			string ShortMonthName(int month);
@@ -156,7 +161,6 @@ namespace Qyoto {
 		public int DaysTo(QDate arg1) {
 			return ProxyQDate().DaysTo(arg1);
 		}
-		[SmokeMethod("operator==", "(const QDate&) const", "#")]
 		public static bool operator==(QDate lhs, QDate other) {
 			return StaticQDate().op_equals(lhs,other);
 		}
@@ -170,19 +174,15 @@ namespace Qyoto {
 		public override int GetHashCode() {
 			return ProxyQDate().GetHashCode();
 		}
-		[SmokeMethod("operator<", "(const QDate&) const", "#")]
 		public static bool operator<(QDate lhs, QDate other) {
 			return StaticQDate().op_lt(lhs,other);
 		}
-		[SmokeMethod("operator<=", "(const QDate&) const", "#")]
 		public static bool operator<=(QDate lhs, QDate other) {
 			return StaticQDate().op_lte(lhs,other);
 		}
-		[SmokeMethod("operator>", "(const QDate&) const", "#")]
 		public static bool operator>(QDate lhs, QDate other) {
 			return StaticQDate().op_gt(lhs,other);
 		}
-		[SmokeMethod("operator>=", "(const QDate&) const", "#")]
 		public static bool operator>=(QDate lhs, QDate other) {
 			return StaticQDate().op_gte(lhs,other);
 		}

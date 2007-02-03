@@ -10,6 +10,7 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QSizePolicy(Type dummy) {}
 		interface IQSizePolicyProxy {
+			[SmokeMethod("operator==", "(const QSizePolicy&) const", "#")]
 			bool op_equals(QSizePolicy lhs, QSizePolicy s);
 		}
 
@@ -88,7 +89,6 @@ namespace Qyoto {
 		public bool HasHeightForWidth() {
 			return ProxyQSizePolicy().HasHeightForWidth();
 		}
-		[SmokeMethod("operator==", "(const QSizePolicy&) const", "#")]
 		public static bool operator==(QSizePolicy lhs, QSizePolicy s) {
 			return StaticQSizePolicy().op_equals(lhs,s);
 		}

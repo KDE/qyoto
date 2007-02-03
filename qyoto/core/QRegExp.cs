@@ -12,6 +12,7 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QRegExp(Type dummy) {}
 		interface IQRegExpProxy {
+			[SmokeMethod("operator==", "(const QRegExp&) const", "#")]
 			bool op_equals(QRegExp lhs, QRegExp rx);
 			[SmokeMethod("escape", "(const QString&)", "$")]
 			string Escape(string str);
@@ -84,7 +85,6 @@ namespace Qyoto {
 		private void NewQRegExp(QRegExp rx) {
 			ProxyQRegExp().NewQRegExp(rx);
 		}
-		[SmokeMethod("operator==", "(const QRegExp&) const", "#")]
 		public static bool operator==(QRegExp lhs, QRegExp rx) {
 			return StaticQRegExp().op_equals(lhs,rx);
 		}

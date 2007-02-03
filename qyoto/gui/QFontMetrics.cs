@@ -11,6 +11,7 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QFontMetrics(Type dummy) {}
 		interface IQFontMetricsProxy {
+			[SmokeMethod("operator==", "(const QFontMetrics&)", "#")]
 			bool op_equals(QFontMetrics lhs, QFontMetrics other);
 		}
 
@@ -190,7 +191,6 @@ namespace Qyoto {
 		public int LineWidth() {
 			return ProxyQFontMetrics().LineWidth();
 		}
-		[SmokeMethod("operator==", "(const QFontMetrics&)", "#")]
 		public static bool operator==(QFontMetrics lhs, QFontMetrics other) {
 			return StaticQFontMetrics().op_equals(lhs,other);
 		}

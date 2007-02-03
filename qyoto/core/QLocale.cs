@@ -11,6 +11,7 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QLocale(Type dummy) {}
 		interface IQLocaleProxy {
+			[SmokeMethod("operator==", "(const QLocale&) const", "#")]
 			bool op_equals(QLocale lhs, QLocale other);
 			[SmokeMethod("languageToString", "(QLocale::Language)", "$")]
 			string LanguageToString(QLocale.Language language);
@@ -709,7 +710,6 @@ namespace Qyoto {
 		public string DayName(int arg1) {
 			return ProxyQLocale().DayName(arg1);
 		}
-		[SmokeMethod("operator==", "(const QLocale&) const", "#")]
 		public static bool operator==(QLocale lhs, QLocale other) {
 			return StaticQLocale().op_equals(lhs,other);
 		}

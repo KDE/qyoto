@@ -11,10 +11,15 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QDateTime(Type dummy) {}
 		interface IQDateTimeProxy {
+			[SmokeMethod("operator==", "(const QDateTime&) const", "#")]
 			bool op_equals(QDateTime lhs, QDateTime other);
+			[SmokeMethod("operator<", "(const QDateTime&) const", "#")]
 			bool op_lt(QDateTime lhs, QDateTime other);
+			[SmokeMethod("operator<=", "(const QDateTime&) const", "#")]
 			bool op_lte(QDateTime lhs, QDateTime other);
+			[SmokeMethod("operator>", "(const QDateTime&) const", "#")]
 			bool op_gt(QDateTime lhs, QDateTime other);
+			[SmokeMethod("operator>=", "(const QDateTime&) const", "#")]
 			bool op_gte(QDateTime lhs, QDateTime other);
 			[SmokeMethod("currentDateTime", "()", "")]
 			QDateTime CurrentDateTime();
@@ -176,7 +181,6 @@ namespace Qyoto {
 		public int SecsTo(QDateTime arg1) {
 			return ProxyQDateTime().SecsTo(arg1);
 		}
-		[SmokeMethod("operator==", "(const QDateTime&) const", "#")]
 		public static bool operator==(QDateTime lhs, QDateTime other) {
 			return StaticQDateTime().op_equals(lhs,other);
 		}
@@ -190,19 +194,15 @@ namespace Qyoto {
 		public override int GetHashCode() {
 			return ProxyQDateTime().GetHashCode();
 		}
-		[SmokeMethod("operator<", "(const QDateTime&) const", "#")]
 		public static bool operator<(QDateTime lhs, QDateTime other) {
 			return StaticQDateTime().op_lt(lhs,other);
 		}
-		[SmokeMethod("operator<=", "(const QDateTime&) const", "#")]
 		public static bool operator<=(QDateTime lhs, QDateTime other) {
 			return StaticQDateTime().op_lte(lhs,other);
 		}
-		[SmokeMethod("operator>", "(const QDateTime&) const", "#")]
 		public static bool operator>(QDateTime lhs, QDateTime other) {
 			return StaticQDateTime().op_gt(lhs,other);
 		}
-		[SmokeMethod("operator>=", "(const QDateTime&) const", "#")]
 		public static bool operator>=(QDateTime lhs, QDateTime other) {
 			return StaticQDateTime().op_gte(lhs,other);
 		}

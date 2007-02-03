@@ -10,6 +10,7 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QLine(Type dummy) {}
 		interface IQLineProxy {
+			[SmokeMethod("operator==", "(const QLine&) const", "#")]
 			bool op_equals(QLine lhs, QLine d);
 		}
 
@@ -97,7 +98,6 @@ namespace Qyoto {
 		public void Translate(int dx, int dy) {
 			ProxyQLine().Translate(dx,dy);
 		}
-		[SmokeMethod("operator==", "(const QLine&) const", "#")]
 		public static bool operator==(QLine lhs, QLine d) {
 			return StaticQLine().op_equals(lhs,d);
 		}

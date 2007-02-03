@@ -11,6 +11,7 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QSqlField(Type dummy) {}
 		interface IQSqlFieldProxy {
+			[SmokeMethod("operator==", "(const QSqlField&) const", "#")]
 			bool op_equals(QSqlField lhs, QSqlField other);
 		}
 
@@ -67,7 +68,6 @@ namespace Qyoto {
 		private void NewQSqlField(QSqlField other) {
 			ProxyQSqlField().NewQSqlField(other);
 		}
-		[SmokeMethod("operator==", "(const QSqlField&) const", "#")]
 		public static bool operator==(QSqlField lhs, QSqlField other) {
 			return StaticQSqlField().op_equals(lhs,other);
 		}

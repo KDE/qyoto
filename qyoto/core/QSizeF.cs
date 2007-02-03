@@ -10,7 +10,9 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QSizeF(Type dummy) {}
 		interface IQSizeFProxy {
+			[SmokeMethod("operator*=", "(qreal)", "$")]
 			QSizeF op_mult(QSizeF lhs, double c);
+			[SmokeMethod("operator/=", "(qreal)", "$")]
 			QSizeF op_div(QSizeF lhs, double c);
 		}
 
@@ -104,11 +106,9 @@ namespace Qyoto {
 		}
 		// qreal& rwidth(); >>>> NOT CONVERTED
 		// qreal& rheight(); >>>> NOT CONVERTED
-		[SmokeMethod("operator*=", "(qreal)", "$")]
 		public static QSizeF operator*(QSizeF lhs, double c) {
 			return StaticQSizeF().op_mult(lhs,c);
 		}
-		[SmokeMethod("operator/=", "(qreal)", "$")]
 		public static QSizeF operator/(QSizeF lhs, double c) {
 			return StaticQSizeF().op_div(lhs,c);
 		}

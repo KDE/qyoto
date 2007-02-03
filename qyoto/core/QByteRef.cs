@@ -10,10 +10,15 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QByteRef(Type dummy) {}
 		interface IQByteRefProxy {
+			[SmokeMethod("operator==", "(char) const", "$")]
 			bool op_equals(QByteRef lhs, char c);
+			[SmokeMethod("operator>", "(char) const", "$")]
 			bool op_gt(QByteRef lhs, char c);
+			[SmokeMethod("operator>=", "(char) const", "$")]
 			bool op_gte(QByteRef lhs, char c);
+			[SmokeMethod("operator<", "(char) const", "$")]
 			bool op_lt(QByteRef lhs, char c);
+			[SmokeMethod("operator<=", "(char) const", "$")]
 			bool op_lte(QByteRef lhs, char c);
 		}
 
@@ -34,26 +39,21 @@ namespace Qyoto {
 		}
 
 		//  operator const char(); >>>> NOT CONVERTED
-		[SmokeMethod("operator==", "(char) const", "$")]
 		public static bool operator==(QByteRef lhs, char c) {
 			return StaticQByteRef().op_equals(lhs,c);
 		}
 		public static bool operator!=(QByteRef lhs, char c) {
 			return !StaticQByteRef().op_equals(lhs,c);
 		}
-		[SmokeMethod("operator>", "(char) const", "$")]
 		public static bool operator>(QByteRef lhs, char c) {
 			return StaticQByteRef().op_gt(lhs,c);
 		}
-		[SmokeMethod("operator>=", "(char) const", "$")]
 		public static bool operator>=(QByteRef lhs, char c) {
 			return StaticQByteRef().op_gte(lhs,c);
 		}
-		[SmokeMethod("operator<", "(char) const", "$")]
 		public static bool operator<(QByteRef lhs, char c) {
 			return StaticQByteRef().op_lt(lhs,c);
 		}
-		[SmokeMethod("operator<=", "(char) const", "$")]
 		public static bool operator<=(QByteRef lhs, char c) {
 			return StaticQByteRef().op_lte(lhs,c);
 		}

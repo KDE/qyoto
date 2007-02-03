@@ -11,6 +11,7 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QSqlRecord(Type dummy) {}
 		interface IQSqlRecordProxy {
+			[SmokeMethod("operator==", "(const QSqlRecord&) const", "#")]
 			bool op_equals(QSqlRecord lhs, QSqlRecord other);
 		}
 
@@ -46,7 +47,6 @@ namespace Qyoto {
 		private void NewQSqlRecord(QSqlRecord other) {
 			ProxyQSqlRecord().NewQSqlRecord(other);
 		}
-		[SmokeMethod("operator==", "(const QSqlRecord&) const", "#")]
 		public static bool operator==(QSqlRecord lhs, QSqlRecord other) {
 			return StaticQSqlRecord().op_equals(lhs,other);
 		}

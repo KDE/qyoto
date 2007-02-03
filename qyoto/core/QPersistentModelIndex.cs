@@ -10,8 +10,11 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QPersistentModelIndex(Type dummy) {}
 		interface IQPersistentModelIndexProxy {
+			[SmokeMethod("operator<", "(const QPersistentModelIndex&) const", "#")]
 			bool op_lt(QPersistentModelIndex lhs, QPersistentModelIndex other);
+			[SmokeMethod("operator==", "(const QPersistentModelIndex&) const", "#")]
 			bool op_equals(QPersistentModelIndex lhs, QPersistentModelIndex other);
+			[SmokeMethod("operator==", "(const QModelIndex&) const", "#")]
 			bool op_equals(QPersistentModelIndex lhs, QModelIndex other);
 		}
 
@@ -55,7 +58,6 @@ namespace Qyoto {
 		private void NewQPersistentModelIndex(QPersistentModelIndex other) {
 			ProxyQPersistentModelIndex().NewQPersistentModelIndex(other);
 		}
-		[SmokeMethod("operator<", "(const QPersistentModelIndex&) const", "#")]
 		public static bool operator<(QPersistentModelIndex lhs, QPersistentModelIndex other) {
 			return StaticQPersistentModelIndex().op_lt(lhs,other);
 		}
@@ -63,7 +65,6 @@ namespace Qyoto {
 			return !StaticQPersistentModelIndex().op_lt(lhs,other)
 						&& !StaticQPersistentModelIndex().op_equals(lhs,other);
 		}
-		[SmokeMethod("operator==", "(const QPersistentModelIndex&) const", "#")]
 		public static bool operator==(QPersistentModelIndex lhs, QPersistentModelIndex other) {
 			return StaticQPersistentModelIndex().op_equals(lhs,other);
 		}
@@ -77,7 +78,6 @@ namespace Qyoto {
 		public override int GetHashCode() {
 			return ProxyQPersistentModelIndex().GetHashCode();
 		}
-		[SmokeMethod("operator==", "(const QModelIndex&) const", "#")]
 		public static bool operator==(QPersistentModelIndex lhs, QModelIndex other) {
 			return StaticQPersistentModelIndex().op_equals(lhs,other);
 		}

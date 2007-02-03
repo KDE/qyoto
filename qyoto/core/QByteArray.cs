@@ -12,10 +12,15 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QByteArray(Type dummy) {}
 		interface IQByteArrayProxy {
+			[SmokeMethod("operator==", "(const QString&) const", "$")]
 			bool op_equals(QByteArray lhs, string s2);
+			[SmokeMethod("operator<", "(const QString&) const", "$")]
 			bool op_lt(QByteArray lhs, string s2);
+			[SmokeMethod("operator>", "(const QString&) const", "$")]
 			bool op_gt(QByteArray lhs, string s2);
+			[SmokeMethod("operator<=", "(const QString&) const", "$")]
 			bool op_lte(QByteArray lhs, string s2);
+			[SmokeMethod("operator>=", "(const QString&) const", "$")]
 			bool op_gte(QByteArray lhs, string s2);
 			[SmokeMethod("number", "(int, int)", "$$")]
 			QByteArray Number(int arg1, int arg2);
@@ -399,26 +404,21 @@ namespace Qyoto {
 		public List<QByteArray> Split(char sep) {
 			return ProxyQByteArray().Split(sep);
 		}
-		[SmokeMethod("operator==", "(const QString&) const", "$")]
 		public static bool operator==(QByteArray lhs, string s2) {
 			return StaticQByteArray().op_equals(lhs,s2);
 		}
 		public static bool operator!=(QByteArray lhs, string s2) {
 			return !StaticQByteArray().op_equals(lhs,s2);
 		}
-		[SmokeMethod("operator<", "(const QString&) const", "$")]
 		public static bool operator<(QByteArray lhs, string s2) {
 			return StaticQByteArray().op_lt(lhs,s2);
 		}
-		[SmokeMethod("operator>", "(const QString&) const", "$")]
 		public static bool operator>(QByteArray lhs, string s2) {
 			return StaticQByteArray().op_gt(lhs,s2);
 		}
-		[SmokeMethod("operator<=", "(const QString&) const", "$")]
 		public static bool operator<=(QByteArray lhs, string s2) {
 			return StaticQByteArray().op_lte(lhs,s2);
 		}
-		[SmokeMethod("operator>=", "(const QString&) const", "$")]
 		public static bool operator>=(QByteArray lhs, string s2) {
 			return StaticQByteArray().op_gte(lhs,s2);
 		}

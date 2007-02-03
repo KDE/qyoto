@@ -10,7 +10,9 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QMatrix(Type dummy) {}
 		interface IQMatrixProxy {
+			[SmokeMethod("operator==", "(const QMatrix&) const", "#")]
 			bool op_equals(QMatrix lhs, QMatrix arg1);
+			[SmokeMethod("operator*", "(const QMatrix&) const", "#")]
 			QMatrix op_mult(QMatrix lhs, QMatrix o);
 		}
 
@@ -171,7 +173,6 @@ namespace Qyoto {
 		public QMatrix Inverted() {
 			return ProxyQMatrix().Inverted();
 		}
-		[SmokeMethod("operator==", "(const QMatrix&) const", "#")]
 		public static bool operator==(QMatrix lhs, QMatrix arg1) {
 			return StaticQMatrix().op_equals(lhs,arg1);
 		}
@@ -185,7 +186,6 @@ namespace Qyoto {
 		public override int GetHashCode() {
 			return ProxyQMatrix().GetHashCode();
 		}
-		[SmokeMethod("operator*", "(const QMatrix&) const", "#")]
 		public static QMatrix operator*(QMatrix lhs, QMatrix o) {
 			return StaticQMatrix().op_mult(lhs,o);
 		}

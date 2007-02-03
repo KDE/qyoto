@@ -12,6 +12,7 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QVariant(Type dummy) {}
 		interface IQVariantProxy {
+			[SmokeMethod("operator==", "(const QVariant&) const", "#")]
 			bool op_equals(QVariant lhs, QVariant v);
 			[SmokeMethod("typeToName", "(QVariant::Type)", "$")]
 			string TypeToName(QVariant.TypeOf type);
@@ -513,7 +514,6 @@ namespace Qyoto {
 		// void* data(); >>>> NOT CONVERTED
 		// const void* constData(); >>>> NOT CONVERTED
 		// const void* data(); >>>> NOT CONVERTED
-		[SmokeMethod("operator==", "(const QVariant&) const", "#")]
 		public static bool operator==(QVariant lhs, QVariant v) {
 			return StaticQVariant().op_equals(lhs,v);
 		}

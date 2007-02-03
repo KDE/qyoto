@@ -10,7 +10,9 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QSize(Type dummy) {}
 		interface IQSizeProxy {
+			[SmokeMethod("operator*=", "(qreal)", "$")]
 			QSize op_mult(QSize lhs, double c);
+			[SmokeMethod("operator/=", "(qreal)", "$")]
 			QSize op_div(QSize lhs, double c);
 		}
 
@@ -102,11 +104,9 @@ namespace Qyoto {
 		public int Rheight() {
 			return ProxyQSize().Rheight();
 		}
-		[SmokeMethod("operator*=", "(qreal)", "$")]
 		public static QSize operator*(QSize lhs, double c) {
 			return StaticQSize().op_mult(lhs,c);
 		}
-		[SmokeMethod("operator/=", "(qreal)", "$")]
 		public static QSize operator/(QSize lhs, double c) {
 			return StaticQSize().op_div(lhs,c);
 		}

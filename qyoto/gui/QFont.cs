@@ -12,7 +12,9 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QFont(Type dummy) {}
 		interface IQFontProxy {
+			[SmokeMethod("operator==", "(const QFont&) const", "#")]
 			bool op_equals(QFont lhs, QFont arg1);
+			[SmokeMethod("operator<", "(const QFont&) const", "#")]
 			bool op_lt(QFont lhs, QFont arg1);
 			[SmokeMethod("substitute", "(const QString&)", "$")]
 			string Substitute(string arg1);
@@ -298,7 +300,6 @@ namespace Qyoto {
 		public bool ExactMatch() {
 			return ProxyQFont().ExactMatch();
 		}
-		[SmokeMethod("operator==", "(const QFont&) const", "#")]
 		public static bool operator==(QFont lhs, QFont arg1) {
 			return StaticQFont().op_equals(lhs,arg1);
 		}
@@ -312,7 +313,6 @@ namespace Qyoto {
 		public override int GetHashCode() {
 			return ProxyQFont().GetHashCode();
 		}
-		[SmokeMethod("operator<", "(const QFont&) const", "#")]
 		public static bool operator<(QFont lhs, QFont arg1) {
 			return StaticQFont().op_lt(lhs,arg1);
 		}

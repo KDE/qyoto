@@ -11,6 +11,7 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QItemSelectionRange(Type dummy) {}
 		interface IQItemSelectionRangeProxy {
+			[SmokeMethod("operator==", "(const QItemSelectionRange&) const", "#")]
 			bool op_equals(QItemSelectionRange lhs, QItemSelectionRange other);
 		}
 
@@ -122,7 +123,6 @@ namespace Qyoto {
 		public QItemSelectionRange Intersected(QItemSelectionRange other) {
 			return ProxyQItemSelectionRange().Intersected(other);
 		}
-		[SmokeMethod("operator==", "(const QItemSelectionRange&) const", "#")]
 		public static bool operator==(QItemSelectionRange lhs, QItemSelectionRange other) {
 			return StaticQItemSelectionRange().op_equals(lhs,other);
 		}

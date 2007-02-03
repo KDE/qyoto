@@ -11,6 +11,7 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QFileInfo(Type dummy) {}
 		interface IQFileInfoProxy {
+			[SmokeMethod("operator==", "(const QFileInfo&)", "#")]
 			bool op_equals(QFileInfo lhs, QFileInfo fileinfo);
 		}
 
@@ -70,7 +71,6 @@ namespace Qyoto {
 		private void NewQFileInfo(QFileInfo fileinfo) {
 			ProxyQFileInfo().NewQFileInfo(fileinfo);
 		}
-		[SmokeMethod("operator==", "(const QFileInfo&)", "#")]
 		public static bool operator==(QFileInfo lhs, QFileInfo fileinfo) {
 			return StaticQFileInfo().op_equals(lhs,fileinfo);
 		}

@@ -10,6 +10,7 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QDomNodeList(Type dummy) {}
 		interface IQDomNodeListProxy {
+			[SmokeMethod("operator==", "(const QDomNodeList&) const", "#")]
 			bool op_equals(QDomNodeList lhs, QDomNodeList arg1);
 		}
 
@@ -45,7 +46,6 @@ namespace Qyoto {
 		private void NewQDomNodeList(QDomNodeList arg1) {
 			ProxyQDomNodeList().NewQDomNodeList(arg1);
 		}
-		[SmokeMethod("operator==", "(const QDomNodeList&) const", "#")]
 		public static bool operator==(QDomNodeList lhs, QDomNodeList arg1) {
 			return StaticQDomNodeList().op_equals(lhs,arg1);
 		}

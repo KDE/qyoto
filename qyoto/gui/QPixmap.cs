@@ -8,6 +8,7 @@ namespace Qyoto {
 	public class QPixmap : QPaintDevice, IDisposable {
  		protected QPixmap(Type dummy) : base((Type) null) {}
 		interface IQPixmapProxy {
+			[SmokeMethod("operator!", "() const", "")]
 			bool op_not(QPixmap lhs);
 			[SmokeMethod("defaultDepth", "()", "")]
 			int DefaultDepth();
@@ -339,7 +340,6 @@ namespace Qyoto {
 		public new QPaintEngine PaintEngine() {
 			return ProxyQPixmap().PaintEngine();
 		}
-		[SmokeMethod("operator!", "() const", "")]
 		public static bool operator!(QPixmap lhs) {
 			return StaticQPixmap().op_not(lhs);
 		}

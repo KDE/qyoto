@@ -11,6 +11,7 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QDomImplementation(Type dummy) {}
 		interface IQDomImplementationProxy {
+			[SmokeMethod("operator==", "(const QDomImplementation&) const", "#")]
 			bool op_equals(QDomImplementation lhs, QDomImplementation arg1);
 			[SmokeMethod("invalidDataPolicy", "()", "")]
 			QDomImplementation.InvalidDataPolicy invalidDataPolicy();
@@ -55,7 +56,6 @@ namespace Qyoto {
 		private void NewQDomImplementation(QDomImplementation arg1) {
 			ProxyQDomImplementation().NewQDomImplementation(arg1);
 		}
-		[SmokeMethod("operator==", "(const QDomImplementation&) const", "#")]
 		public static bool operator==(QDomImplementation lhs, QDomImplementation arg1) {
 			return StaticQDomImplementation().op_equals(lhs,arg1);
 		}

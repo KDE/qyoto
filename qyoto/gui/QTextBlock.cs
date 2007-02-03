@@ -11,7 +11,9 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QTextBlock(Type dummy) {}
 		interface IQTextBlockProxy {
+			[SmokeMethod("operator==", "(const QTextBlock&) const", "#")]
 			bool op_equals(QTextBlock lhs, QTextBlock o);
+			[SmokeMethod("operator<", "(const QTextBlock&) const", "#")]
 			bool op_lt(QTextBlock lhs, QTextBlock o);
 		}
 
@@ -51,7 +53,6 @@ namespace Qyoto {
 		public bool IsValid() {
 			return ProxyQTextBlock().IsValid();
 		}
-		[SmokeMethod("operator==", "(const QTextBlock&) const", "#")]
 		public static bool operator==(QTextBlock lhs, QTextBlock o) {
 			return StaticQTextBlock().op_equals(lhs,o);
 		}
@@ -65,7 +66,6 @@ namespace Qyoto {
 		public override int GetHashCode() {
 			return ProxyQTextBlock().GetHashCode();
 		}
-		[SmokeMethod("operator<", "(const QTextBlock&) const", "#")]
 		public static bool operator<(QTextBlock lhs, QTextBlock o) {
 			return StaticQTextBlock().op_lt(lhs,o);
 		}

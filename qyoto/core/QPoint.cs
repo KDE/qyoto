@@ -10,7 +10,9 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QPoint(Type dummy) {}
 		interface IQPointProxy {
+			[SmokeMethod("operator*=", "(qreal)", "$")]
 			QPoint op_mult(QPoint lhs, double c);
+			[SmokeMethod("operator/=", "(qreal)", "$")]
 			QPoint op_div(QPoint lhs, double c);
 		}
 
@@ -78,11 +80,9 @@ namespace Qyoto {
 		public int Ry() {
 			return ProxyQPoint().Ry();
 		}
-		[SmokeMethod("operator*=", "(qreal)", "$")]
 		public static QPoint operator*(QPoint lhs, double c) {
 			return StaticQPoint().op_mult(lhs,c);
 		}
-		[SmokeMethod("operator/=", "(qreal)", "$")]
 		public static QPoint operator/(QPoint lhs, double c) {
 			return StaticQPoint().op_div(lhs,c);
 		}

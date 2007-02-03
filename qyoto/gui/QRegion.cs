@@ -11,11 +11,17 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QRegion(Type dummy) {}
 		interface IQRegionProxy {
+			[SmokeMethod("operator|", "(const QRegion&) const", "#")]
 			QRegion op_or(QRegion lhs, QRegion r);
+			[SmokeMethod("operator+", "(const QRegion&) const", "#")]
 			QRegion op_plus(QRegion lhs, QRegion r);
+			[SmokeMethod("operator&", "(const QRegion&) const", "#")]
 			QRegion op_and(QRegion lhs, QRegion r);
+			[SmokeMethod("operator-", "(const QRegion&) const", "#")]
 			QRegion op_minus(QRegion lhs, QRegion r);
+			[SmokeMethod("operator^", "(const QRegion&) const", "#")]
 			QRegion op_xor(QRegion lhs, QRegion r);
+			[SmokeMethod("operator==", "(const QRegion&) const", "#")]
 			bool op_equals(QRegion lhs, QRegion r);
 		}
 
@@ -191,27 +197,21 @@ namespace Qyoto {
 		public void SetRects(QRect rect, int num) {
 			ProxyQRegion().SetRects(rect,num);
 		}
-		[SmokeMethod("operator|", "(const QRegion&) const", "#")]
 		public static QRegion operator|(QRegion lhs, QRegion r) {
 			return StaticQRegion().op_or(lhs,r);
 		}
-		[SmokeMethod("operator+", "(const QRegion&) const", "#")]
 		public static QRegion operator+(QRegion lhs, QRegion r) {
 			return StaticQRegion().op_plus(lhs,r);
 		}
-		[SmokeMethod("operator&", "(const QRegion&) const", "#")]
 		public static QRegion operator&(QRegion lhs, QRegion r) {
 			return StaticQRegion().op_and(lhs,r);
 		}
-		[SmokeMethod("operator-", "(const QRegion&) const", "#")]
 		public static QRegion operator-(QRegion lhs, QRegion r) {
 			return StaticQRegion().op_minus(lhs,r);
 		}
-		[SmokeMethod("operator^", "(const QRegion&) const", "#")]
 		public static QRegion operator^(QRegion lhs, QRegion r) {
 			return StaticQRegion().op_xor(lhs,r);
 		}
-		[SmokeMethod("operator==", "(const QRegion&) const", "#")]
 		public static bool operator==(QRegion lhs, QRegion r) {
 			return StaticQRegion().op_equals(lhs,r);
 		}

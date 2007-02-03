@@ -11,10 +11,15 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QTime(Type dummy) {}
 		interface IQTimeProxy {
+			[SmokeMethod("operator==", "(const QTime&) const", "#")]
 			bool op_equals(QTime lhs, QTime other);
+			[SmokeMethod("operator<", "(const QTime&) const", "#")]
 			bool op_lt(QTime lhs, QTime other);
+			[SmokeMethod("operator<=", "(const QTime&) const", "#")]
 			bool op_lte(QTime lhs, QTime other);
+			[SmokeMethod("operator>", "(const QTime&) const", "#")]
 			bool op_gt(QTime lhs, QTime other);
+			[SmokeMethod("operator>=", "(const QTime&) const", "#")]
 			bool op_gte(QTime lhs, QTime other);
 			[SmokeMethod("currentTime", "()", "")]
 			QTime CurrentTime();
@@ -138,7 +143,6 @@ namespace Qyoto {
 		public int MsecsTo(QTime arg1) {
 			return ProxyQTime().MsecsTo(arg1);
 		}
-		[SmokeMethod("operator==", "(const QTime&) const", "#")]
 		public static bool operator==(QTime lhs, QTime other) {
 			return StaticQTime().op_equals(lhs,other);
 		}
@@ -152,19 +156,15 @@ namespace Qyoto {
 		public override int GetHashCode() {
 			return ProxyQTime().GetHashCode();
 		}
-		[SmokeMethod("operator<", "(const QTime&) const", "#")]
 		public static bool operator<(QTime lhs, QTime other) {
 			return StaticQTime().op_lt(lhs,other);
 		}
-		[SmokeMethod("operator<=", "(const QTime&) const", "#")]
 		public static bool operator<=(QTime lhs, QTime other) {
 			return StaticQTime().op_lte(lhs,other);
 		}
-		[SmokeMethod("operator>", "(const QTime&) const", "#")]
 		public static bool operator>(QTime lhs, QTime other) {
 			return StaticQTime().op_gt(lhs,other);
 		}
-		[SmokeMethod("operator>=", "(const QTime&) const", "#")]
 		public static bool operator>=(QTime lhs, QTime other) {
 			return StaticQTime().op_gte(lhs,other);
 		}

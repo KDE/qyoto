@@ -11,6 +11,7 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QPen(Type dummy) {}
 		interface IQPenProxy {
+			[SmokeMethod("operator==", "(const QPen&) const", "#")]
 			bool op_equals(QPen lhs, QPen p);
 		}
 
@@ -170,7 +171,6 @@ namespace Qyoto {
 		public void SetJoinStyle(Qt.PenJoinStyle pcs) {
 			ProxyQPen().SetJoinStyle(pcs);
 		}
-		[SmokeMethod("operator==", "(const QPen&) const", "#")]
 		public static bool operator==(QPen lhs, QPen p) {
 			return StaticQPen().op_equals(lhs,p);
 		}

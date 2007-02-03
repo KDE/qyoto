@@ -12,6 +12,7 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QDir(Type dummy) {}
 		interface IQDirProxy {
+			[SmokeMethod("operator==", "(const QDir&) const", "#")]
 			bool op_equals(QDir lhs, QDir dir);
 			[SmokeMethod("addResourceSearchPath", "(const QString&)", "$")]
 			void AddResourceSearchPath(string path);
@@ -291,7 +292,6 @@ namespace Qyoto {
 		public bool MakeAbsolute() {
 			return ProxyQDir().MakeAbsolute();
 		}
-		[SmokeMethod("operator==", "(const QDir&) const", "#")]
 		public static bool operator==(QDir lhs, QDir dir) {
 			return StaticQDir().op_equals(lhs,dir);
 		}

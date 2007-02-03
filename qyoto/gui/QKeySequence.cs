@@ -12,10 +12,15 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QKeySequence(Type dummy) {}
 		interface IQKeySequenceProxy {
+			[SmokeMethod("operator==", "(const QKeySequence&) const", "#")]
 			bool op_equals(QKeySequence lhs, QKeySequence other);
+			[SmokeMethod("operator<", "(const QKeySequence&) const", "#")]
 			bool op_lt(QKeySequence lhs, QKeySequence ks);
+			[SmokeMethod("operator>", "(const QKeySequence&) const", "#")]
 			bool op_gt(QKeySequence lhs, QKeySequence other);
+			[SmokeMethod("operator<=", "(const QKeySequence&) const", "#")]
 			bool op_lte(QKeySequence lhs, QKeySequence other);
+			[SmokeMethod("operator>=", "(const QKeySequence&) const", "#")]
 			bool op_gte(QKeySequence lhs, QKeySequence other);
 			[SmokeMethod("fromString", "(const QString&, QKeySequence::SequenceFormat)", "$$")]
 			QKeySequence FromString(string str, QKeySequence.SequenceFormat format);
@@ -202,7 +207,6 @@ namespace Qyoto {
 		//  operator QString(); >>>> NOT CONVERTED
 		//  operator QVariant(); >>>> NOT CONVERTED
 		//  operator int(); >>>> NOT CONVERTED
-		[SmokeMethod("operator==", "(const QKeySequence&) const", "#")]
 		public static bool operator==(QKeySequence lhs, QKeySequence other) {
 			return StaticQKeySequence().op_equals(lhs,other);
 		}
@@ -216,19 +220,15 @@ namespace Qyoto {
 		public override int GetHashCode() {
 			return ProxyQKeySequence().GetHashCode();
 		}
-		[SmokeMethod("operator<", "(const QKeySequence&) const", "#")]
 		public static bool operator<(QKeySequence lhs, QKeySequence ks) {
 			return StaticQKeySequence().op_lt(lhs,ks);
 		}
-		[SmokeMethod("operator>", "(const QKeySequence&) const", "#")]
 		public static bool operator>(QKeySequence lhs, QKeySequence other) {
 			return StaticQKeySequence().op_gt(lhs,other);
 		}
-		[SmokeMethod("operator<=", "(const QKeySequence&) const", "#")]
 		public static bool operator<=(QKeySequence lhs, QKeySequence other) {
 			return StaticQKeySequence().op_lte(lhs,other);
 		}
-		[SmokeMethod("operator>=", "(const QKeySequence&) const", "#")]
 		public static bool operator>=(QKeySequence lhs, QKeySequence other) {
 			return StaticQKeySequence().op_gte(lhs,other);
 		}

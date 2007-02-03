@@ -10,6 +10,7 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QGradient(Type dummy) {}
 		interface IQGradientProxy {
+			[SmokeMethod("operator==", "(const QGradient&) const", "#")]
 			bool op_equals(QGradient lhs, QGradient gradient);
 		}
 
@@ -78,7 +79,6 @@ namespace Qyoto {
 		public void SetCoordinateMode(QGradient.CoordinateMode mode) {
 			ProxyQGradient().SetCoordinateMode(mode);
 		}
-		[SmokeMethod("operator==", "(const QGradient&) const", "#")]
 		public static bool operator==(QGradient lhs, QGradient gradient) {
 			return StaticQGradient().op_equals(lhs,gradient);
 		}

@@ -10,6 +10,7 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QBrush(Type dummy) {}
 		interface IQBrushProxy {
+			[SmokeMethod("operator==", "(const QBrush&) const", "#")]
 			bool op_equals(QBrush lhs, QBrush b);
 		}
 
@@ -178,7 +179,6 @@ namespace Qyoto {
 		public bool IsOpaque() {
 			return ProxyQBrush().IsOpaque();
 		}
-		[SmokeMethod("operator==", "(const QBrush&) const", "#")]
 		public static bool operator==(QBrush lhs, QBrush b) {
 			return StaticQBrush().op_equals(lhs,b);
 		}

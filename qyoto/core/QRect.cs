@@ -10,7 +10,9 @@ namespace Qyoto {
 		private IntPtr _smokeObject;
 		protected QRect(Type dummy) {}
 		interface IQRectProxy {
+			[SmokeMethod("operator|", "(const QRect&) const", "#")]
 			QRect op_or(QRect lhs, QRect r);
+			[SmokeMethod("operator&", "(const QRect&) const", "#")]
 			QRect op_and(QRect lhs, QRect r);
 		}
 
@@ -270,11 +272,9 @@ namespace Qyoto {
 		public void SetSize(QSize s) {
 			ProxyQRect().SetSize(s);
 		}
-		[SmokeMethod("operator|", "(const QRect&) const", "#")]
 		public static QRect operator|(QRect lhs, QRect r) {
 			return StaticQRect().op_or(lhs,r);
 		}
-		[SmokeMethod("operator&", "(const QRect&) const", "#")]
 		public static QRect operator&(QRect lhs, QRect r) {
 			return StaticQRect().op_and(lhs,r);
 		}
