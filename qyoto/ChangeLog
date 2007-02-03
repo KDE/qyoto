@@ -26,6 +26,8 @@
 	  transparent proxy for static method invocations.
 	* The SmokeClass Attribute is now used for the name of the class to use
 	  when looking up methods in the Smoke library
+	* The default format of a string in mono is utf8, and so assume that when
+	  converting to and from QStrings.
 
 2007-01-03  Richard Dale  <rdale@foton.es>
 

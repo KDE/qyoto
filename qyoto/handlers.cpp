@@ -495,14 +495,14 @@ StringArrayToCharStarStar(int length, char ** strArray)
 void *
 StringToQString(char *str)
 {
-	QString * result = new QString((const char *) str);
+	QString * result = new QString(QString::fromUtf8(str));
 	return (void *) result;
 }
 
 char *
 StringFromQString(void *ptr)
 {
-    QByteArray ba = ((QString *) ptr)->toLatin1();
+    QByteArray ba = ((QString *) ptr)->toUtf8();
     return strdup(ba.constData());
 }
 
@@ -807,17 +807,6 @@ static void marshall_QString(Marshall *m) {
 	    QString* s = 0;
 	    if( m->var().s_voidp != 0) {
 			s = (QString *) (*IntPtrToQString)(m->var().s_voidp);
-#if 0
-               if(SvUTF8(*(m->var())))
-                    s = QString::fromUtf8(SvPV_nolen(*(m->var())));
-               else if(PL_hints & HINT_LOCALE)
-                    s = QString::fromLocal8Bit(SvPV_nolen(*(m->var())));
-               else
-                    s = QString::fromLatin1(SvPV_nolen(*(m->var())));
-#else
-            // Treat everything as UTF-8..for now
-//            s = new QString(QString::fromUtf8(StringValuePtr(*(m->var())), RSTRING(*(m->var()))->len));
-#endif
             } else {
                 s = new QString(QString::null);
             }
@@ -843,15 +832,7 @@ static void marshall_QString(Marshall *m) {
 			} else {
 				m->var().s_class = (*IntPtrFromQString)(s);
 			}
-//                if(!(PL_hints & HINT_BYTES))
-//                {
-//		    sv_setpv_mg(m->var(), (const char *)s->utf8());
-//                    SvUTF8_on(*(m->var()));
-//                }
-//                else if(PL_hints & HINT_LOCALE)
-//                    sv_setpv_mg(m->var(), (const char *)s->local8Bit());
-//                else
-//                    sv_setpv_mg(m->var(), (const char *)s->latin1());
+
 			if (m->cleanup())
 				delete s;
 			} else {
