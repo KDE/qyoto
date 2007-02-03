@@ -9,6 +9,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QBitRef(Type dummy) {}
+		[SmokeClass("QBitRef")]
 		interface IQBitRefProxy {
 			[SmokeMethod("operator!", "() const", "")]
 			bool op_not(QBitRef lhs);

@@ -10,6 +10,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QSqlError(Type dummy) {}
+		[SmokeClass("QSqlError")]
 		interface IQSqlErrorProxy {
 		}
 

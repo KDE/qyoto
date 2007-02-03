@@ -9,6 +9,7 @@ namespace Qyoto {
 	[SmokeClass("QTreeWidget")]
 	public class QTreeWidget : QTreeView, IDisposable {
  		protected QTreeWidget(Type dummy) : base((Type) null) {}
+		[SmokeClass("QTreeWidget")]
 		interface IQTreeWidgetProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

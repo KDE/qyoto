@@ -11,6 +11,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QGlobalSpace(Type dummy) {}
+		[SmokeClass("QGlobalSpace")]
 		interface IQGlobalSpaceProxy {
 			[SmokeMethod("qDBusReplyFill", "(const QDBusMessage&, QDBusError&, QVariant&)", "###")]
 			void QDBusReplyFill(QDBusMessage reply, QDBusError error, QVariant data);

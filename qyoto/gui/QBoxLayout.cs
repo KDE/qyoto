@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QBoxLayout")]
 	public class QBoxLayout : QLayout, IDisposable {
  		protected QBoxLayout(Type dummy) : base((Type) null) {}
+		[SmokeClass("QBoxLayout")]
 		interface IQBoxLayoutProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

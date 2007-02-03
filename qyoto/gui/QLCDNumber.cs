@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QLCDNumber")]
 	public class QLCDNumber : QFrame, IDisposable {
  		protected QLCDNumber(Type dummy) : base((Type) null) {}
+		[SmokeClass("QLCDNumber")]
 		interface IQLCDNumberProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

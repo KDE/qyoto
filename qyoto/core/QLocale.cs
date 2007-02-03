@@ -10,6 +10,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QLocale(Type dummy) {}
+		[SmokeClass("QLocale")]
 		interface IQLocaleProxy {
 			[SmokeMethod("operator==", "(const QLocale&) const", "#")]
 			bool op_equals(QLocale lhs, QLocale other);

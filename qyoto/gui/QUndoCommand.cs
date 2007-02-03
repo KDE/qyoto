@@ -10,6 +10,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QUndoCommand(Type dummy) {}
+		[SmokeClass("QUndoCommand")]
 		interface IQUndoCommandProxy {
 		}
 

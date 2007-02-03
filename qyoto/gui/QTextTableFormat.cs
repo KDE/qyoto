@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QTextTableFormat")]
 	public class QTextTableFormat : QTextFrameFormat, IDisposable {
  		protected QTextTableFormat(Type dummy) : base((Type) null) {}
+		[SmokeClass("QTextTableFormat")]
 		interface IQTextTableFormatProxy {
 		}
 

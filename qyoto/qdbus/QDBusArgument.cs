@@ -11,6 +11,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QDBusArgument(Type dummy) {}
+		[SmokeClass("QDBusArgument")]
 		interface IQDBusArgumentProxy {
 		}
 

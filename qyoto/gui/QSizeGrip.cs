@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QSizeGrip")]
 	public class QSizeGrip : QWidget, IDisposable {
  		protected QSizeGrip(Type dummy) : base((Type) null) {}
+		[SmokeClass("QSizeGrip")]
 		interface IQSizeGripProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

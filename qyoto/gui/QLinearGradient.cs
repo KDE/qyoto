@@ -6,6 +6,7 @@ namespace Qyoto {
 	[SmokeClass("QLinearGradient")]
 	public class QLinearGradient : QGradient, IDisposable {
  		protected QLinearGradient(Type dummy) : base((Type) null) {}
+		[SmokeClass("QLinearGradient")]
 		interface IQLinearGradientProxy {
 		}
 

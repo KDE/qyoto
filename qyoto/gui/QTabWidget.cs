@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QTabWidget")]
 	public class QTabWidget : QWidget, IDisposable {
  		protected QTabWidget(Type dummy) : base((Type) null) {}
+		[SmokeClass("QTabWidget")]
 		interface IQTabWidgetProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

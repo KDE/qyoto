@@ -6,6 +6,7 @@ namespace Qyoto {
 	[SmokeClass("QTimerEvent")]
 	public class QTimerEvent : QEvent, IDisposable {
  		protected QTimerEvent(Type dummy) : base((Type) null) {}
+		[SmokeClass("QTimerEvent")]
 		interface IQTimerEventProxy {
 		}
 

@@ -10,6 +10,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QTextBlock(Type dummy) {}
+		[SmokeClass("QTextBlock")]
 		interface IQTextBlockProxy {
 			[SmokeMethod("operator==", "(const QTextBlock&) const", "#")]
 			bool op_equals(QTextBlock lhs, QTextBlock o);

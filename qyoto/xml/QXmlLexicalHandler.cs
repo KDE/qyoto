@@ -21,6 +21,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QXmlLexicalHandler(Type dummy) {}
+		[SmokeClass("QXmlLexicalHandler")]
 		interface IQXmlLexicalHandlerProxy {
 		}
 

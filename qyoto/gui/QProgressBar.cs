@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QProgressBar")]
 	public class QProgressBar : QWidget, IDisposable {
  		protected QProgressBar(Type dummy) : base((Type) null) {}
+		[SmokeClass("QProgressBar")]
 		interface IQProgressBarProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

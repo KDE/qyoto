@@ -6,6 +6,7 @@ namespace Qyoto {
 	[SmokeClass("QHoverEvent")]
 	public class QHoverEvent : QEvent, IDisposable {
  		protected QHoverEvent(Type dummy) : base((Type) null) {}
+		[SmokeClass("QHoverEvent")]
 		interface IQHoverEventProxy {
 		}
 

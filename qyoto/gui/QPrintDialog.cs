@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QPrintDialog")]
 	public class QPrintDialog : QAbstractPrintDialog, IDisposable {
  		protected QPrintDialog(Type dummy) : base((Type) null) {}
+		[SmokeClass("QPrintDialog")]
 		interface IQPrintDialogProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

@@ -6,6 +6,7 @@ namespace Qyoto {
 	[SmokeClass("QSpacerItem")]
 	public class QSpacerItem : QLayoutItem, IDisposable {
  		protected QSpacerItem(Type dummy) : base((Type) null) {}
+		[SmokeClass("QSpacerItem")]
 		interface IQSpacerItemProxy {
 		}
 

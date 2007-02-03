@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QDrag")]
 	public class QDrag : QObject, IDisposable {
  		protected QDrag(Type dummy) : base((Type) null) {}
+		[SmokeClass("QDrag")]
 		interface IQDragProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

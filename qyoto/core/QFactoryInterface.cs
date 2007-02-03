@@ -10,6 +10,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QFactoryInterface(Type dummy) {}
+		[SmokeClass("QFactoryInterface")]
 		interface IQFactoryInterfaceProxy {
 		}
 

@@ -9,6 +9,7 @@ namespace Qyoto {
 	[SmokeClass("QFileSystemWatcher")]
 	public class QFileSystemWatcher : QObject, IDisposable {
  		protected QFileSystemWatcher(Type dummy) : base((Type) null) {}
+		[SmokeClass("QFileSystemWatcher")]
 		interface IQFileSystemWatcherProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

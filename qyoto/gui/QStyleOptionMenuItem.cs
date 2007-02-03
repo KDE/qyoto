@@ -6,6 +6,7 @@ namespace Qyoto {
 	[SmokeClass("QStyleOptionMenuItem")]
 	public class QStyleOptionMenuItem : QStyleOption, IDisposable {
  		protected QStyleOptionMenuItem(Type dummy) : base((Type) null) {}
+		[SmokeClass("QStyleOptionMenuItem")]
 		interface IQStyleOptionMenuItemProxy {
 		}
 

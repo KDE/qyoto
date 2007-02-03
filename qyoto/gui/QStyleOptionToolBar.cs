@@ -6,6 +6,7 @@ namespace Qyoto {
 	[SmokeClass("QStyleOptionToolBar")]
 	public class QStyleOptionToolBar : QStyleOption, IDisposable {
  		protected QStyleOptionToolBar(Type dummy) : base((Type) null) {}
+		[SmokeClass("QStyleOptionToolBar")]
 		interface IQStyleOptionToolBarProxy {
 		}
 

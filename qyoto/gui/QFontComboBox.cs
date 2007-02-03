@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QFontComboBox")]
 	public class QFontComboBox : QComboBox, IDisposable {
  		protected QFontComboBox(Type dummy) : base((Type) null) {}
+		[SmokeClass("QFontComboBox")]
 		interface IQFontComboBoxProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

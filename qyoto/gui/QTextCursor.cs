@@ -10,6 +10,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QTextCursor(Type dummy) {}
+		[SmokeClass("QTextCursor")]
 		interface IQTextCursorProxy {
 		}
 

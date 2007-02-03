@@ -6,6 +6,7 @@ namespace Qyoto {
 	[SmokeClass("QToolBarChangeEvent")]
 	public class QToolBarChangeEvent : QEvent, IDisposable {
  		protected QToolBarChangeEvent(Type dummy) : base((Type) null) {}
+		[SmokeClass("QToolBarChangeEvent")]
 		interface IQToolBarChangeEventProxy {
 		}
 

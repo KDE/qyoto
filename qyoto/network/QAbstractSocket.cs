@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QAbstractSocket")]
 	public class QAbstractSocket : QIODevice, IDisposable {
  		protected QAbstractSocket(Type dummy) : base((Type) null) {}
+		[SmokeClass("QAbstractSocket")]
 		interface IQAbstractSocketProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

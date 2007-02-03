@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QDomAttr")]
 	public class QDomAttr : QDomNode, IDisposable {
  		protected QDomAttr(Type dummy) : base((Type) null) {}
+		[SmokeClass("QDomAttr")]
 		interface IQDomAttrProxy {
 		}
 

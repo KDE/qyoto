@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QDomEntity")]
 	public class QDomEntity : QDomNode, IDisposable {
  		protected QDomEntity(Type dummy) : base((Type) null) {}
+		[SmokeClass("QDomEntity")]
 		interface IQDomEntityProxy {
 		}
 

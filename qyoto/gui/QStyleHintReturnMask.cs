@@ -6,6 +6,7 @@ namespace Qyoto {
 	[SmokeClass("QStyleHintReturnMask")]
 	public class QStyleHintReturnMask : QStyleHintReturn, IDisposable {
  		protected QStyleHintReturnMask(Type dummy) : base((Type) null) {}
+		[SmokeClass("QStyleHintReturnMask")]
 		interface IQStyleHintReturnMaskProxy {
 		}
 

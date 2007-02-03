@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QColorDialog")]
 	public class QColorDialog : QDialog {
  		protected QColorDialog(Type dummy) : base((Type) null) {}
+		[SmokeClass("QColorDialog")]
 		interface IQColorDialogProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QStackedLayout")]
 	public class QStackedLayout : QLayout, IDisposable {
  		protected QStackedLayout(Type dummy) : base((Type) null) {}
+		[SmokeClass("QStackedLayout")]
 		interface IQStackedLayoutProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

@@ -9,6 +9,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QAccessible(Type dummy) {}
+		[SmokeClass("QAccessible")]
 		interface IQAccessibleProxy {
 			[SmokeMethod("queryAccessibleInterface", "(QObject*)", "#")]
 			QAccessibleInterface QueryAccessibleInterface(QObject arg1);

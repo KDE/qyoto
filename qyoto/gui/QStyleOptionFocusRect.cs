@@ -6,6 +6,7 @@ namespace Qyoto {
 	[SmokeClass("QStyleOptionFocusRect")]
 	public class QStyleOptionFocusRect : QStyleOption, IDisposable {
  		protected QStyleOptionFocusRect(Type dummy) : base((Type) null) {}
+		[SmokeClass("QStyleOptionFocusRect")]
 		interface IQStyleOptionFocusRectProxy {
 		}
 

@@ -9,6 +9,7 @@ namespace Qyoto {
 	[SmokeClass("QCompleter")]
 	public class QCompleter : QObject, IDisposable {
  		protected QCompleter(Type dummy) : base((Type) null) {}
+		[SmokeClass("QCompleter")]
 		interface IQCompleterProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

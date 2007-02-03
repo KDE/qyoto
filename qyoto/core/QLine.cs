@@ -9,6 +9,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QLine(Type dummy) {}
+		[SmokeClass("QLine")]
 		interface IQLineProxy {
 			[SmokeMethod("operator==", "(const QLine&) const", "#")]
 			bool op_equals(QLine lhs, QLine d);

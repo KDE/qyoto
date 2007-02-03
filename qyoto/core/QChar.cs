@@ -10,6 +10,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QChar(Type dummy) {}
+		[SmokeClass("QChar")]
 		interface IQCharProxy {
 			[SmokeMethod("fromAscii", "(char)", "$")]
 			char FromAscii(char c);

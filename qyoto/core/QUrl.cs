@@ -64,6 +64,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QUrl(Type dummy) {}
+		[SmokeClass("QUrl")]
 		interface IQUrlProxy {
 			[SmokeMethod("fromLocalFile", "(const QString&)", "$")]
 			IQUrl FromLocalFile(string localfile);

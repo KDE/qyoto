@@ -9,6 +9,7 @@ namespace Qyoto {
 	[SmokeClass("QActionGroup")]
 	public class QActionGroup : QObject, IDisposable {
  		protected QActionGroup(Type dummy) : base((Type) null) {}
+		[SmokeClass("QActionGroup")]
 		interface IQActionGroupProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

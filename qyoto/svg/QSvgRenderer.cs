@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QSvgRenderer")]
 	public class QSvgRenderer : QObject, IDisposable {
  		protected QSvgRenderer(Type dummy) : base((Type) null) {}
+		[SmokeClass("QSvgRenderer")]
 		interface IQSvgRendererProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

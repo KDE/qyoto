@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QSortFilterProxyModel")]
 	public class QSortFilterProxyModel : QAbstractProxyModel, IDisposable {
  		protected QSortFilterProxyModel(Type dummy) : base((Type) null) {}
+		[SmokeClass("QSortFilterProxyModel")]
 		interface IQSortFilterProxyModelProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

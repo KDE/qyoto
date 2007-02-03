@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QGridLayout")]
 	public class QGridLayout : QLayout, IDisposable {
  		protected QGridLayout(Type dummy) : base((Type) null) {}
+		[SmokeClass("QGridLayout")]
 		interface IQGridLayoutProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

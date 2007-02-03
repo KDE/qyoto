@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QTextEdit")]
 	public class QTextEdit : QAbstractScrollArea, IDisposable {
  		protected QTextEdit(Type dummy) : base((Type) null) {}
+		[SmokeClass("QTextEdit")]
 		interface IQTextEditProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

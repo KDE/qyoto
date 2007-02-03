@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QAbstractItemDelegate")]
 	public class QAbstractItemDelegate : QObject {
  		protected QAbstractItemDelegate(Type dummy) : base((Type) null) {}
+		[SmokeClass("QAbstractItemDelegate")]
 		interface IQAbstractItemDelegateProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

@@ -7,6 +7,7 @@ namespace Qyoto {
 
 	public partial class Qt : MarshalByRefObject {
 		protected Object _interceptor = null;
+		[SmokeClass("Qt")]
 		interface IQtProxy {
 			[SmokeMethod("mightBeRichText", "(const QString&)", "$")]
 			bool MightBeRichText(string arg1);

@@ -10,6 +10,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QColormap(Type dummy) {}
+		[SmokeClass("QColormap")]
 		interface IQColormapProxy {
 			[SmokeMethod("initialize", "()", "")]
 			void Initialize();

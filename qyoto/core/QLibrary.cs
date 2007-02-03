@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QLibrary")]
 	public class QLibrary : QObject, IDisposable {
  		protected QLibrary(Type dummy) : base((Type) null) {}
+		[SmokeClass("QLibrary")]
 		interface IQLibraryProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

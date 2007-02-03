@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QClipboard")]
 	public class QClipboard : QObject {
  		protected QClipboard(Type dummy) : base((Type) null) {}
+		[SmokeClass("QClipboard")]
 		interface IQClipboardProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

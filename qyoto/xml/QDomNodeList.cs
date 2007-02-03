@@ -9,6 +9,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QDomNodeList(Type dummy) {}
+		[SmokeClass("QDomNodeList")]
 		interface IQDomNodeListProxy {
 			[SmokeMethod("operator==", "(const QDomNodeList&) const", "#")]
 			bool op_equals(QDomNodeList lhs, QDomNodeList arg1);

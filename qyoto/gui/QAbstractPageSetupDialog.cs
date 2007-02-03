@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QAbstractPageSetupDialog")]
 	public class QAbstractPageSetupDialog : QDialog {
  		protected QAbstractPageSetupDialog(Type dummy) : base((Type) null) {}
+		[SmokeClass("QAbstractPageSetupDialog")]
 		interface IQAbstractPageSetupDialogProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

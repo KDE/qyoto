@@ -10,6 +10,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QSqlField(Type dummy) {}
+		[SmokeClass("QSqlField")]
 		interface IQSqlFieldProxy {
 			[SmokeMethod("operator==", "(const QSqlField&) const", "#")]
 			bool op_equals(QSqlField lhs, QSqlField other);

@@ -6,6 +6,7 @@ namespace Qyoto {
 	[SmokeClass("QStyleOptionSizeGrip")]
 	public class QStyleOptionSizeGrip : QStyleOptionComplex, IDisposable {
  		protected QStyleOptionSizeGrip(Type dummy) : base((Type) null) {}
+		[SmokeClass("QStyleOptionSizeGrip")]
 		interface IQStyleOptionSizeGripProxy {
 		}
 

@@ -6,6 +6,7 @@ namespace Qyoto {
 	[SmokeClass("QStyleOptionRubberBand")]
 	public class QStyleOptionRubberBand : QStyleOption, IDisposable {
  		protected QStyleOptionRubberBand(Type dummy) : base((Type) null) {}
+		[SmokeClass("QStyleOptionRubberBand")]
 		interface IQStyleOptionRubberBandProxy {
 		}
 

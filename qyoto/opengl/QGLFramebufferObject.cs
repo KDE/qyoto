@@ -6,6 +6,7 @@ namespace Qyoto {
 	[SmokeClass("QGLFramebufferObject")]
 	public class QGLFramebufferObject : QPaintDevice, IDisposable {
  		protected QGLFramebufferObject(Type dummy) : base((Type) null) {}
+		[SmokeClass("QGLFramebufferObject")]
 		interface IQGLFramebufferObjectProxy {
 			[SmokeMethod("hasOpenGLFramebufferObjects", "()", "")]
 			bool HasOpenGLFramebufferObjects();

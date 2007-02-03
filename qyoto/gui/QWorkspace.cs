@@ -9,6 +9,7 @@ namespace Qyoto {
 	[SmokeClass("QWorkspace")]
 	public class QWorkspace : QWidget, IDisposable {
  		protected QWorkspace(Type dummy) : base((Type) null) {}
+		[SmokeClass("QWorkspace")]
 		interface IQWorkspaceProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QImage")]
 	public class QImage : QPaintDevice, IDisposable {
  		protected QImage(Type dummy) : base((Type) null) {}
+		[SmokeClass("QImage")]
 		interface IQImageProxy {
 			[SmokeMethod("operator==", "(const QImage&) const", "#")]
 			bool op_equals(QImage lhs, QImage arg1);

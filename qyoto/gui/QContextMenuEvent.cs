@@ -6,6 +6,7 @@ namespace Qyoto {
 	[SmokeClass("QContextMenuEvent")]
 	public class QContextMenuEvent : QInputEvent, IDisposable {
  		protected QContextMenuEvent(Type dummy) : base((Type) null) {}
+		[SmokeClass("QContextMenuEvent")]
 		interface IQContextMenuEventProxy {
 		}
 

@@ -11,6 +11,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QFontDatabase(Type dummy) {}
+		[SmokeClass("QFontDatabase")]
 		interface IQFontDatabaseProxy {
 			[SmokeMethod("standardSizes", "()", "")]
 			List<int> StandardSizes();

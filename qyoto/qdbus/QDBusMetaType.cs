@@ -9,6 +9,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QDBusMetaType(Type dummy) {}
+		[SmokeClass("QDBusMetaType")]
 		interface IQDBusMetaTypeProxy {
 			[SmokeMethod("signatureToType", "(const char*)", "$")]
 			int SignatureToType(string signature);

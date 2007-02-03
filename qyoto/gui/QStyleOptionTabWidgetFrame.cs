@@ -6,6 +6,7 @@ namespace Qyoto {
 	[SmokeClass("QStyleOptionTabWidgetFrame")]
 	public class QStyleOptionTabWidgetFrame : QStyleOption, IDisposable {
  		protected QStyleOptionTabWidgetFrame(Type dummy) : base((Type) null) {}
+		[SmokeClass("QStyleOptionTabWidgetFrame")]
 		interface IQStyleOptionTabWidgetFrameProxy {
 		}
 

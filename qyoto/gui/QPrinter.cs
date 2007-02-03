@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QPrinter")]
 	public class QPrinter : QPaintDevice, IDisposable {
  		protected QPrinter(Type dummy) : base((Type) null) {}
+		[SmokeClass("QPrinter")]
 		interface IQPrinterProxy {
 		}
 

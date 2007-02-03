@@ -11,6 +11,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QTextFormat(Type dummy) {}
+		[SmokeClass("QTextFormat")]
 		interface IQTextFormatProxy {
 		}
 

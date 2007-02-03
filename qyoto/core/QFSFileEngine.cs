@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QFSFileEngine")]
 	public class QFSFileEngine : QAbstractFileEngine, IDisposable {
  		protected QFSFileEngine(Type dummy) : base((Type) null) {}
+		[SmokeClass("QFSFileEngine")]
 		interface IQFSFileEngineProxy {
 			[SmokeMethod("setCurrentPath", "(const QString&)", "$")]
 			bool SetCurrentPath(string path);

@@ -11,6 +11,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QColor(Type dummy) {}
+		[SmokeClass("QColor")]
 		interface IQColorProxy {
 			[SmokeMethod("operator==", "(const QColor&) const", "#")]
 			bool op_equals(QColor lhs, QColor c);

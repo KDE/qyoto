@@ -9,6 +9,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QSqlResult(Type dummy) {}
+		[SmokeClass("QSqlResult")]
 		interface IQSqlResultProxy {
 		}
 

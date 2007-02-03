@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QErrorMessage")]
 	public class QErrorMessage : QDialog, IDisposable {
  		protected QErrorMessage(Type dummy) : base((Type) null) {}
+		[SmokeClass("QErrorMessage")]
 		interface IQErrorMessageProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

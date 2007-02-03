@@ -9,6 +9,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QImageIOHandler(Type dummy) {}
+		[SmokeClass("QImageIOHandler")]
 		interface IQImageIOHandlerProxy {
 		}
 

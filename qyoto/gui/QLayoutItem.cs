@@ -28,6 +28,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QLayoutItem(Type dummy) {}
+		[SmokeClass("QLayoutItem")]
 		interface IQLayoutItemProxy {
 		}
 

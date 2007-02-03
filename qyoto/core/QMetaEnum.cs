@@ -9,6 +9,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QMetaEnum(Type dummy) {}
+		[SmokeClass("QMetaEnum")]
 		interface IQMetaEnumProxy {
 		}
 

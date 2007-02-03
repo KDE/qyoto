@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QUndoView")]
 	public class QUndoView : QListView, IDisposable {
  		protected QUndoView(Type dummy) : base((Type) null) {}
+		[SmokeClass("QUndoView")]
 		interface IQUndoViewProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

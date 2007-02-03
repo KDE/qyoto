@@ -9,6 +9,7 @@ namespace Qyoto {
 	[SmokeClass("QGraphicsTextItem")]
 	public class QGraphicsTextItem : QObject, IQGraphicsItem, IDisposable {
  		protected QGraphicsTextItem(Type dummy) : base((Type) null) {}
+		[SmokeClass("QGraphicsTextItem")]
 		interface IQGraphicsTextItemProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

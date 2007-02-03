@@ -10,6 +10,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QTime(Type dummy) {}
+		[SmokeClass("QTime")]
 		interface IQTimeProxy {
 			[SmokeMethod("operator==", "(const QTime&) const", "#")]
 			bool op_equals(QTime lhs, QTime other);

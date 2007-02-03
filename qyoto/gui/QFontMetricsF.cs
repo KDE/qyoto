@@ -10,6 +10,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QFontMetricsF(Type dummy) {}
+		[SmokeClass("QFontMetricsF")]
 		interface IQFontMetricsFProxy {
 			[SmokeMethod("operator==", "(const QFontMetricsF&)", "#")]
 			bool op_equals(QFontMetricsF lhs, QFontMetricsF other);

@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QXmlDefaultHandler")]
 	public class QXmlDefaultHandler : QXmlLexicalHandler, IQXmlContentHandler, IQXmlDTDHandler, IQXmlDeclHandler, IQXmlEntityResolver, IQXmlErrorHandler, IQXmlLexicalHandler, IDisposable {
  		protected QXmlDefaultHandler(Type dummy) : base((Type) null) {}
+		[SmokeClass("QXmlDefaultHandler")]
 		interface IQXmlDefaultHandlerProxy {
 		}
 

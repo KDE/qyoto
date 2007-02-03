@@ -9,6 +9,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QPointF(Type dummy) {}
+		[SmokeClass("QPointF")]
 		interface IQPointFProxy {
 			[SmokeMethod("operator*=", "(qreal)", "$")]
 			QPointF op_mult(QPointF lhs, double c);

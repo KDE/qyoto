@@ -9,6 +9,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QBasicTimer(Type dummy) {}
+		[SmokeClass("QBasicTimer")]
 		interface IQBasicTimerProxy {
 		}
 

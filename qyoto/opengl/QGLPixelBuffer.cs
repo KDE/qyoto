@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QGLPixelBuffer")]
 	public class QGLPixelBuffer : QPaintDevice, IDisposable {
  		protected QGLPixelBuffer(Type dummy) : base((Type) null) {}
+		[SmokeClass("QGLPixelBuffer")]
 		interface IQGLPixelBufferProxy {
 			[SmokeMethod("hasOpenGLPbuffers", "()", "")]
 			bool HasOpenGLPbuffers();

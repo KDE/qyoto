@@ -9,6 +9,7 @@ namespace Qyoto {
 	[SmokeClass("QTextBrowser")]
 	public class QTextBrowser : QTextEdit, IDisposable {
  		protected QTextBrowser(Type dummy) : base((Type) null) {}
+		[SmokeClass("QTextBrowser")]
 		interface IQTextBrowserProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

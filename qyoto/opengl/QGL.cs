@@ -5,6 +5,7 @@ namespace Qyoto {
 
 	public class QGL : MarshalByRefObject {
 		protected Object _interceptor = null;
+		[SmokeClass("QGL")]
 		interface IQGLProxy {
 		}
 

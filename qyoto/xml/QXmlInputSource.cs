@@ -10,6 +10,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QXmlInputSource(Type dummy) {}
+		[SmokeClass("QXmlInputSource")]
 		interface IQXmlInputSourceProxy {
 		}
 

@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QTextFrame")]
 	public class QTextFrame : QTextObject, IDisposable {
  		protected QTextFrame(Type dummy) : base((Type) null) {}
+		[SmokeClass("QTextFrame")]
 		interface IQTextFrameProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

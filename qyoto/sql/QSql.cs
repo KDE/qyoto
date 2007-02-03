@@ -5,6 +5,7 @@ namespace Qyoto {
 
 	public class QSql : MarshalByRefObject {
 		protected Object _interceptor = null;
+		[SmokeClass("QSql")]
 		interface IQSqlProxy {
 		}
 

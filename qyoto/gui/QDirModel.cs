@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QDirModel")]
 	public class QDirModel : QAbstractItemModel, IDisposable {
  		protected QDirModel(Type dummy) : base((Type) null) {}
+		[SmokeClass("QDirModel")]
 		interface IQDirModelProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QDomProcessingInstruction")]
 	public class QDomProcessingInstruction : QDomNode, IDisposable {
  		protected QDomProcessingInstruction(Type dummy) : base((Type) null) {}
+		[SmokeClass("QDomProcessingInstruction")]
 		interface IQDomProcessingInstructionProxy {
 		}
 

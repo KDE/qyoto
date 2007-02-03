@@ -9,6 +9,7 @@ namespace Qyoto {
 	[SmokeClass("QCalendarWidget")]
 	public class QCalendarWidget : QWidget, IDisposable {
  		protected QCalendarWidget(Type dummy) : base((Type) null) {}
+		[SmokeClass("QCalendarWidget")]
 		interface IQCalendarWidgetProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

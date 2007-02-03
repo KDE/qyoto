@@ -9,6 +9,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QTableWidgetSelectionRange(Type dummy) {}
+		[SmokeClass("QTableWidgetSelectionRange")]
 		interface IQTableWidgetSelectionRangeProxy {
 		}
 

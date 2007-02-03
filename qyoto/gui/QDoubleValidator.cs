@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QDoubleValidator")]
 	public class QDoubleValidator : QValidator, IDisposable {
  		protected QDoubleValidator(Type dummy) : base((Type) null) {}
+		[SmokeClass("QDoubleValidator")]
 		interface IQDoubleValidatorProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

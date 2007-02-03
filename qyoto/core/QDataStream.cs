@@ -9,6 +9,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QDataStream(Type dummy) {}
+		[SmokeClass("QDataStream")]
 		interface IQDataStreamProxy {
 		}
 

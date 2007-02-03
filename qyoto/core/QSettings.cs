@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QSettings")]
 	public class QSettings : QObject, IDisposable {
  		protected QSettings(Type dummy) : base((Type) null) {}
+		[SmokeClass("QSettings")]
 		interface IQSettingsProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

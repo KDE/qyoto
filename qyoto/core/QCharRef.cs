@@ -10,6 +10,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QCharRef(Type dummy) {}
+		[SmokeClass("QCharRef")]
 		interface IQCharRefProxy {
 		}
 

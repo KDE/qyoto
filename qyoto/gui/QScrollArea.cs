@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QScrollArea")]
 	public class QScrollArea : QAbstractScrollArea, IDisposable {
  		protected QScrollArea(Type dummy) : base((Type) null) {}
+		[SmokeClass("QScrollArea")]
 		interface IQScrollAreaProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

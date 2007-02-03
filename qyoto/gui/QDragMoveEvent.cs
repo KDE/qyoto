@@ -6,6 +6,7 @@ namespace Qyoto {
 	[SmokeClass("QDragMoveEvent")]
 	public class QDragMoveEvent : QDropEvent, IDisposable {
  		protected QDragMoveEvent(Type dummy) : base((Type) null) {}
+		[SmokeClass("QDragMoveEvent")]
 		interface IQDragMoveEventProxy {
 		}
 

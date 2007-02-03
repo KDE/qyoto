@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QFontDialog")]
 	public class QFontDialog : QDialog {
  		protected QFontDialog(Type dummy) : base((Type) null) {}
+		[SmokeClass("QFontDialog")]
 		interface IQFontDialogProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

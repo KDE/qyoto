@@ -6,6 +6,7 @@ namespace Qyoto {
 	[SmokeClass("QActionEvent")]
 	public class QActionEvent : QEvent, IDisposable {
  		protected QActionEvent(Type dummy) : base((Type) null) {}
+		[SmokeClass("QActionEvent")]
 		interface IQActionEventProxy {
 		}
 

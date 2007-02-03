@@ -9,6 +9,7 @@ namespace Qyoto {
 	[SmokeClass("QComboBox")]
 	public class QComboBox : QWidget, IDisposable {
  		protected QComboBox(Type dummy) : base((Type) null) {}
+		[SmokeClass("QComboBox")]
 		interface IQComboBoxProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

@@ -6,6 +6,7 @@ namespace Qyoto {
 	[SmokeClass("QCloseEvent")]
 	public class QCloseEvent : QEvent, IDisposable {
  		protected QCloseEvent(Type dummy) : base((Type) null) {}
+		[SmokeClass("QCloseEvent")]
 		interface IQCloseEventProxy {
 		}
 

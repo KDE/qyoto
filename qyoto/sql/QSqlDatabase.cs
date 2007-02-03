@@ -11,6 +11,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QSqlDatabase(Type dummy) {}
+		[SmokeClass("QSqlDatabase")]
 		interface IQSqlDatabaseProxy {
 			[SmokeMethod("addDatabase", "(const QString&, const QString&)", "$$")]
 			QSqlDatabase AddDatabase(string type, string connectionName);

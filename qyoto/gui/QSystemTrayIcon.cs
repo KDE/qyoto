@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QSystemTrayIcon")]
 	public class QSystemTrayIcon : QObject, IDisposable {
  		protected QSystemTrayIcon(Type dummy) : base((Type) null) {}
+		[SmokeClass("QSystemTrayIcon")]
 		interface IQSystemTrayIconProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

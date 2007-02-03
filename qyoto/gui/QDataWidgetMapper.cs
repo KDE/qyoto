@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QDataWidgetMapper")]
 	public class QDataWidgetMapper : QObject, IDisposable {
  		protected QDataWidgetMapper(Type dummy) : base((Type) null) {}
+		[SmokeClass("QDataWidgetMapper")]
 		interface IQDataWidgetMapperProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

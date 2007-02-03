@@ -9,6 +9,7 @@ namespace Qyoto {
 	[SmokeClass("QFileDialog")]
 	public class QFileDialog : QDialog, IDisposable {
  		protected QFileDialog(Type dummy) : base((Type) null) {}
+		[SmokeClass("QFileDialog")]
 		interface IQFileDialogProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QScrollBar")]
 	public class QScrollBar : QAbstractSlider, IDisposable {
  		protected QScrollBar(Type dummy) : base((Type) null) {}
+		[SmokeClass("QScrollBar")]
 		interface IQScrollBarProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

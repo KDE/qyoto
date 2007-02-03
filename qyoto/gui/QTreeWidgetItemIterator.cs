@@ -9,6 +9,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QTreeWidgetItemIterator(Type dummy) {}
+		[SmokeClass("QTreeWidgetItemIterator")]
 		interface IQTreeWidgetItemIteratorProxy {
 			[SmokeMethod("operator++", "()", "")]
 			QTreeWidgetItemIterator op_incr(QTreeWidgetItemIterator lhs);

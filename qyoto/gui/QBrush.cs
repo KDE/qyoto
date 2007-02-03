@@ -9,6 +9,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QBrush(Type dummy) {}
+		[SmokeClass("QBrush")]
 		interface IQBrushProxy {
 			[SmokeMethod("operator==", "(const QBrush&) const", "#")]
 			bool op_equals(QBrush lhs, QBrush b);

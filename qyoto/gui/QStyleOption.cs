@@ -9,6 +9,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QStyleOption(Type dummy) {}
+		[SmokeClass("QStyleOption")]
 		interface IQStyleOptionProxy {
 		}
 

@@ -9,6 +9,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QAccessibleBridge(Type dummy) {}
+		[SmokeClass("QAccessibleBridge")]
 		interface IQAccessibleBridgeProxy {
 		}
 

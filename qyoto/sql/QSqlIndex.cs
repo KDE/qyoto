@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QSqlIndex")]
 	public class QSqlIndex : QSqlRecord, IDisposable {
  		protected QSqlIndex(Type dummy) : base((Type) null) {}
+		[SmokeClass("QSqlIndex")]
 		interface IQSqlIndexProxy {
 		}
 

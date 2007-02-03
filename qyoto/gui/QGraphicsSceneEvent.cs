@@ -6,6 +6,7 @@ namespace Qyoto {
 	[SmokeClass("QGraphicsSceneEvent")]
 	public class QGraphicsSceneEvent : QEvent, IDisposable {
  		protected QGraphicsSceneEvent(Type dummy) : base((Type) null) {}
+		[SmokeClass("QGraphicsSceneEvent")]
 		interface IQGraphicsSceneEventProxy {
 		}
 

@@ -10,6 +10,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QPixmapCache(Type dummy) {}
+		[SmokeClass("QPixmapCache")]
 		interface IQPixmapCacheProxy {
 			[SmokeMethod("cacheLimit", "()", "")]
 			int CacheLimit();

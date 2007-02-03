@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QToolBox")]
 	public class QToolBox : QFrame, IDisposable {
  		protected QToolBox(Type dummy) : base((Type) null) {}
+		[SmokeClass("QToolBox")]
 		interface IQToolBoxProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

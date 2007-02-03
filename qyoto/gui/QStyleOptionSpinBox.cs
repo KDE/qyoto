@@ -6,6 +6,7 @@ namespace Qyoto {
 	[SmokeClass("QStyleOptionSpinBox")]
 	public class QStyleOptionSpinBox : QStyleOptionComplex, IDisposable {
  		protected QStyleOptionSpinBox(Type dummy) : base((Type) null) {}
+		[SmokeClass("QStyleOptionSpinBox")]
 		interface IQStyleOptionSpinBoxProxy {
 		}
 

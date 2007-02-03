@@ -11,6 +11,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QImageReader(Type dummy) {}
+		[SmokeClass("QImageReader")]
 		interface IQImageReaderProxy {
 			[SmokeMethod("imageFormat", "(const QString&)", "$")]
 			QByteArray ImageFormat(string fileName);

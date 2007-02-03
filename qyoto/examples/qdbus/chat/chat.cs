@@ -28,12 +28,12 @@ using System.Text;
 public class ChatMainWindow : QMainWindow {
     string m_nickname = "nickname";
     List<string> m_messages;
-    Ui_ChatMainWindow m_ui;
+    Ui.ChatMainWindow m_ui;
 
     ChatMainWindow() : base()
     {
         m_messages = new List<string>();
-        m_ui = new Ui_ChatMainWindow();
+        m_ui = new Ui.ChatMainWindow();
         m_ui.SetupUi(this);
         m_ui.sendButton.Enabled = false;
     
@@ -162,13 +162,13 @@ public interface IChatMainWindowSignals : IQMainWindowSignals {
 }
 
 public class NicknameDialog : QDialog {
-    public Ui_NicknameDialog m_ui;
+    public Ui.NicknameDialog m_ui;
 
     public NicknameDialog() : this((QWidget) null) {}
 
     public NicknameDialog(QWidget parent) : base(parent)
     {
-        m_ui = new Ui_NicknameDialog();
+        m_ui = new Ui.NicknameDialog();
         m_ui.SetupUi(this);
     }
     

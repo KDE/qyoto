@@ -16,6 +16,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QMimeSource(Type dummy) {}
+		[SmokeClass("QMimeSource")]
 		interface IQMimeSourceProxy {
 		}
 

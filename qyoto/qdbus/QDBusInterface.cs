@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QDBusInterface")]
 	public class QDBusInterface : QDBusAbstractInterface, IDisposable {
  		protected QDBusInterface(Type dummy) : base((Type) null) {}
+		[SmokeClass("QDBusInterface")]
 		interface IQDBusInterfaceProxy {
 		}
 

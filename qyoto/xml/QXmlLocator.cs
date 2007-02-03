@@ -9,6 +9,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QXmlLocator(Type dummy) {}
+		[SmokeClass("QXmlLocator")]
 		interface IQXmlLocatorProxy {
 		}
 

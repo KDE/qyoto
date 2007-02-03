@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QTextBlockGroup")]
 	public class QTextBlockGroup : QTextObject {
  		protected QTextBlockGroup(Type dummy) : base((Type) null) {}
+		[SmokeClass("QTextBlockGroup")]
 		interface IQTextBlockGroupProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

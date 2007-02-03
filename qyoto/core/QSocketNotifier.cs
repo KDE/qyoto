@@ -31,6 +31,7 @@ namespace Qyoto {
 	[SmokeClass("QSocketNotifier")]
 	public class QSocketNotifier : QObject, IDisposable {
  		protected QSocketNotifier(Type dummy) : base((Type) null) {}
+		[SmokeClass("QSocketNotifier")]
 		interface IQSocketNotifierProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

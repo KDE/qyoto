@@ -10,6 +10,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QTableWidgetItem(Type dummy) {}
+		[SmokeClass("QTableWidgetItem")]
 		interface IQTableWidgetItemProxy {
 		}
 

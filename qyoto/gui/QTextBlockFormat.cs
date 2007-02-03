@@ -6,6 +6,7 @@ namespace Qyoto {
 	[SmokeClass("QTextBlockFormat")]
 	public class QTextBlockFormat : QTextFormat, IDisposable {
  		protected QTextBlockFormat(Type dummy) : base((Type) null) {}
+		[SmokeClass("QTextBlockFormat")]
 		interface IQTextBlockFormatProxy {
 		}
 

@@ -11,6 +11,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QFont(Type dummy) {}
+		[SmokeClass("QFont")]
 		interface IQFontProxy {
 			[SmokeMethod("operator==", "(const QFont&) const", "#")]
 			bool op_equals(QFont lhs, QFont arg1);

@@ -10,6 +10,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QTextDocumentFragment(Type dummy) {}
+		[SmokeClass("QTextDocumentFragment")]
 		interface IQTextDocumentFragmentProxy {
 		}
 

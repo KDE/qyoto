@@ -6,6 +6,7 @@ namespace Qyoto {
 	[SmokeClass("QPaintEvent")]
 	public class QPaintEvent : QEvent, IDisposable {
  		protected QPaintEvent(Type dummy) : base((Type) null) {}
+		[SmokeClass("QPaintEvent")]
 		interface IQPaintEventProxy {
 		}
 

@@ -9,6 +9,7 @@ namespace Qyoto {
 	[SmokeClass("QSplitter")]
 	public class QSplitter : QFrame, IDisposable {
  		protected QSplitter(Type dummy) : base((Type) null) {}
+		[SmokeClass("QSplitter")]
 		interface IQSplitterProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

@@ -9,6 +9,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QEvent(Type dummy) {}
+		[SmokeClass("QEvent")]
 		interface IQEventProxy {
 		}
 

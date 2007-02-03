@@ -10,6 +10,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QDBusConnection(Type dummy) {}
+		[SmokeClass("QDBusConnection")]
 		interface IQDBusConnectionProxy {
 			[SmokeMethod("connectToBus", "(QDBusConnection::BusType, const QString&)", "$$")]
 			QDBusConnection ConnectToBus(QDBusConnection.BusType type, string name);

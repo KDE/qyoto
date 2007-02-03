@@ -6,6 +6,7 @@ namespace Qyoto {
 	[SmokeClass("QHelpEvent")]
 	public class QHelpEvent : QEvent, IDisposable {
  		protected QHelpEvent(Type dummy) : base((Type) null) {}
+		[SmokeClass("QHelpEvent")]
 		interface IQHelpEventProxy {
 		}
 

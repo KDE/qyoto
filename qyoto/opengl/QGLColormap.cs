@@ -9,6 +9,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QGLColormap(Type dummy) {}
+		[SmokeClass("QGLColormap")]
 		interface IQGLColormapProxy {
 		}
 

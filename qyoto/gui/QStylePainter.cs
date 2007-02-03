@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QStylePainter")]
 	public class QStylePainter : QPainter, IDisposable {
  		protected QStylePainter(Type dummy) : base((Type) null) {}
+		[SmokeClass("QStylePainter")]
 		interface IQStylePainterProxy {
 		}
 

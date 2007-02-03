@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QAbstractProxyModel")]
 	public class QAbstractProxyModel : QAbstractItemModel {
  		protected QAbstractProxyModel(Type dummy) : base((Type) null) {}
+		[SmokeClass("QAbstractProxyModel")]
 		interface IQAbstractProxyModelProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

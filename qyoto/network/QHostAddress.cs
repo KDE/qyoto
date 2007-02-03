@@ -10,6 +10,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QHostAddress(Type dummy) {}
+		[SmokeClass("QHostAddress")]
 		interface IQHostAddressProxy {
 			[SmokeMethod("operator==", "(const QHostAddress&) const", "#")]
 			bool op_equals(QHostAddress lhs, QHostAddress address);

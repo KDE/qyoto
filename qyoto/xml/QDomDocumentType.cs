@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QDomDocumentType")]
 	public class QDomDocumentType : QDomNode, IDisposable {
  		protected QDomDocumentType(Type dummy) : base((Type) null) {}
+		[SmokeClass("QDomDocumentType")]
 		interface IQDomDocumentTypeProxy {
 		}
 

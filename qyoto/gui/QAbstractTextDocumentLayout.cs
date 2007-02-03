@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QAbstractTextDocumentLayout")]
 	public class QAbstractTextDocumentLayout : QObject {
  		protected QAbstractTextDocumentLayout(Type dummy) : base((Type) null) {}
+		[SmokeClass("QAbstractTextDocumentLayout")]
 		interface IQAbstractTextDocumentLayoutProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

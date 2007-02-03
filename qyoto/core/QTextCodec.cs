@@ -11,6 +11,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QTextCodec(Type dummy) {}
+		[SmokeClass("QTextCodec")]
 		interface IQTextCodecProxy {
 			[SmokeMethod("codecForName", "(const QByteArray&)", "#")]
 			QTextCodec CodecForName(QByteArray name);

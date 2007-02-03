@@ -10,6 +10,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QFileIconProvider(Type dummy) {}
+		[SmokeClass("QFileIconProvider")]
 		interface IQFileIconProviderProxy {
 		}
 

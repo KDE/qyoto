@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QTimeLine")]
 	public class QTimeLine : QObject, IDisposable {
  		protected QTimeLine(Type dummy) : base((Type) null) {}
+		[SmokeClass("QTimeLine")]
 		interface IQTimeLineProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

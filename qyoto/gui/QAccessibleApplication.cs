@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QAccessibleApplication")]
 	public class QAccessibleApplication : QAccessibleObject, IDisposable {
  		protected QAccessibleApplication(Type dummy) : base((Type) null) {}
+		[SmokeClass("QAccessibleApplication")]
 		interface IQAccessibleApplicationProxy {
 		}
 

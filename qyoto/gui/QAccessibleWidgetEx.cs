@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QAccessibleWidgetEx")]
 	public class QAccessibleWidgetEx : QAccessibleObjectEx {
  		protected QAccessibleWidgetEx(Type dummy) : base((Type) null) {}
+		[SmokeClass("QAccessibleWidgetEx")]
 		interface IQAccessibleWidgetExProxy {
 		}
 

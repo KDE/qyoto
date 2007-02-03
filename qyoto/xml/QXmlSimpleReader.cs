@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QXmlSimpleReader")]
 	public class QXmlSimpleReader : QXmlReader, IDisposable {
  		protected QXmlSimpleReader(Type dummy) : base((Type) null) {}
+		[SmokeClass("QXmlSimpleReader")]
 		interface IQXmlSimpleReaderProxy {
 		}
 

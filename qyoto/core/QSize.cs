@@ -9,6 +9,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QSize(Type dummy) {}
+		[SmokeClass("QSize")]
 		interface IQSizeProxy {
 			[SmokeMethod("operator*=", "(qreal)", "$")]
 			QSize op_mult(QSize lhs, double c);

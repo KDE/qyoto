@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QTranslator")]
 	public class QTranslator : QObject, IDisposable {
  		protected QTranslator(Type dummy) : base((Type) null) {}
+		[SmokeClass("QTranslator")]
 		interface IQTranslatorProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

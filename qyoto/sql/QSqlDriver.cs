@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QSqlDriver")]
 	public class QSqlDriver : QObject {
  		protected QSqlDriver(Type dummy) : base((Type) null) {}
+		[SmokeClass("QSqlDriver")]
 		interface IQSqlDriverProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

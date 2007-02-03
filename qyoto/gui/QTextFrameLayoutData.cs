@@ -9,6 +9,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QTextFrameLayoutData(Type dummy) {}
+		[SmokeClass("QTextFrameLayoutData")]
 		interface IQTextFrameLayoutDataProxy {
 		}
 

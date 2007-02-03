@@ -6,6 +6,7 @@ namespace Qyoto {
 	[SmokeClass("QGenericReturnArgument")]
 	public class QGenericReturnArgument : QGenericArgument, IDisposable {
  		protected QGenericReturnArgument(Type dummy) : base((Type) null) {}
+		[SmokeClass("QGenericReturnArgument")]
 		interface IQGenericReturnArgumentProxy {
 		}
 

@@ -10,6 +10,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QLibraryInfo(Type dummy) {}
+		[SmokeClass("QLibraryInfo")]
 		interface IQLibraryInfoProxy {
 			[SmokeMethod("licensee", "()", "")]
 			string Licensee();

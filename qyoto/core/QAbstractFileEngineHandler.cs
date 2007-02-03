@@ -10,6 +10,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QAbstractFileEngineHandler(Type dummy) {}
+		[SmokeClass("QAbstractFileEngineHandler")]
 		interface IQAbstractFileEngineHandlerProxy {
 		}
 

@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QTextCodecFactoryInterface")]
 	public class QTextCodecFactoryInterface : QFactoryInterface {
  		protected QTextCodecFactoryInterface(Type dummy) : base((Type) null) {}
+		[SmokeClass("QTextCodecFactoryInterface")]
 		interface IQTextCodecFactoryInterfaceProxy {
 		}
 

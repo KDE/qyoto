@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QKeyEvent")]
 	public class QKeyEvent : QInputEvent, IDisposable {
  		protected QKeyEvent(Type dummy) : base((Type) null) {}
+		[SmokeClass("QKeyEvent")]
 		interface IQKeyEventProxy {
 			[SmokeMethod("createExtendedKeyEvent", "(QEvent::Type, int, Qt::KeyboardModifiers, quint32, quint32, quint32, const QString&, bool, ushort)", "$$$$$$$$$")]
 			QKeyEvent CreateExtendedKeyEvent(QEvent.TypeOf type, int key, int modifiers, uint nativeScanCode, uint nativeVirtualKey, uint nativeModifiers, string text, bool autorep, ushort count);

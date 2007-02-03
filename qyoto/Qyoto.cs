@@ -428,21 +428,18 @@ namespace Qyoto
 		}
 	}
 	
-	[AttributeUsage( AttributeTargets.Class )]
+	[AttributeUsage(AttributeTargets.Class | AttributeTargets.Interface)]
 	class SmokeClass : Attribute
 	{
 		public string signature;	
 	
-		public string Signature
-		{
-			get
-			{
+		public string Signature {
+			get {
 				return signature;
 			}
 		}
 	
-		public SmokeClass(string signature)
-		{
+		public SmokeClass(string signature) {
 			this.signature = signature;
 		}
 	}
@@ -457,34 +454,26 @@ namespace Qyoto
 		public string mungedSignature;
 		public int methodId = -1;
 
-		public string Name
-		{
-			get
-			{
+		public string Name {
+			get {
 				return name;
 			}
 		}
 	
-		public string ArgsSignature
-		{
-			get
-			{
+		public string ArgsSignature {
+			get {
 				return argsSignature;
 			}
 		}
 	
-		public string Signature
-		{
-			get
-			{
+		public string Signature {
+			get {
 				return name + argsSignature;
 			}
 		}
 
-		public string MungedName
-		{
-			get
-			{
+		public string MungedName {
+			get {
 				return name + mungedSignature;
 			}
 		}

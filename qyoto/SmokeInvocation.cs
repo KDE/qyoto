@@ -330,13 +330,17 @@ namespace Qyoto {
 		
 		private Type	_classToProxy;
 		private Object	_instance;
-		private string	_className;
+		private string	_className = "";
 		
 		public SmokeInvocation(Type classToProxy, Object instance) : base(classToProxy) 
 		{
 			_classToProxy = classToProxy;
 			_instance = instance;
-			_className = Regex.Replace(_classToProxy.ToString(), @"^[^\.]*.([^+]*).*", "$1");
+			object[] smokeClass = classToProxy.GetCustomAttributes(typeof(SmokeClass), true);
+			if (smokeClass.Length > 0) {
+				_className = ((SmokeClass) smokeClass[0]).Signature;
+			}
+
 			if (_instance != null) {
 				AddOverridenMethods(_instance.GetType());
 			}

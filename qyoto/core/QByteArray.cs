@@ -11,6 +11,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QByteArray(Type dummy) {}
+		[SmokeClass("QByteArray")]
 		interface IQByteArrayProxy {
 			[SmokeMethod("operator==", "(const QString&) const", "$")]
 			bool op_equals(QByteArray lhs, string s2);

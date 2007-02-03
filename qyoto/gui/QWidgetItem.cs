@@ -6,6 +6,7 @@ namespace Qyoto {
 	[SmokeClass("QWidgetItem")]
 	public class QWidgetItem : QLayoutItem, IDisposable {
  		protected QWidgetItem(Type dummy) : base((Type) null) {}
+		[SmokeClass("QWidgetItem")]
 		interface IQWidgetItemProxy {
 		}
 

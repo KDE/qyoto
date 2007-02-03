@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QStyleFactoryInterface")]
 	public class QStyleFactoryInterface : QFactoryInterface {
  		protected QStyleFactoryInterface(Type dummy) : base((Type) null) {}
+		[SmokeClass("QStyleFactoryInterface")]
 		interface IQStyleFactoryInterfaceProxy {
 		}
 

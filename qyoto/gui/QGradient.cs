@@ -9,6 +9,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QGradient(Type dummy) {}
+		[SmokeClass("QGradient")]
 		interface IQGradientProxy {
 			[SmokeMethod("operator==", "(const QGradient&) const", "#")]
 			bool op_equals(QGradient lhs, QGradient gradient);

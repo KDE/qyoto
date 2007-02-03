@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QCheckBox")]
 	public class QCheckBox : QAbstractButton, IDisposable {
  		protected QCheckBox(Type dummy) : base((Type) null) {}
+		[SmokeClass("QCheckBox")]
 		interface IQCheckBoxProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

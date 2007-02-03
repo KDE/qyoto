@@ -10,6 +10,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QPolygonF(Type dummy) {}
+		[SmokeClass("QPolygonF")]
 		interface IQPolygonFProxy {
 		}
 

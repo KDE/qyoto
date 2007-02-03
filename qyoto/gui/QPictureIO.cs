@@ -11,6 +11,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QPictureIO(Type dummy) {}
+		[SmokeClass("QPictureIO")]
 		interface IQPictureIOProxy {
 			[SmokeMethod("pictureFormat", "(const QString&)", "$")]
 			QByteArray PictureFormat(string fileName);

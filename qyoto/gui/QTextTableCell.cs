@@ -9,6 +9,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QTextTableCell(Type dummy) {}
+		[SmokeClass("QTextTableCell")]
 		interface IQTextTableCellProxy {
 			[SmokeMethod("operator==", "(const QTextTableCell&) const", "#")]
 			bool op_equals(QTextTableCell lhs, QTextTableCell other);

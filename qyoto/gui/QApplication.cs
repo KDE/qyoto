@@ -9,6 +9,7 @@ namespace Qyoto {
 	[SmokeClass("QApplication")]
 	public partial class QApplication : QCoreApplication, IDisposable {
  		protected QApplication(Type dummy) : base((Type) null) {}
+		[SmokeClass("QApplication")]
 		interface IQApplicationProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QDBusServer")]
 	public class QDBusServer : QObject, IDisposable {
  		protected QDBusServer(Type dummy) : base((Type) null) {}
+		[SmokeClass("QDBusServer")]
 		interface IQDBusServerProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

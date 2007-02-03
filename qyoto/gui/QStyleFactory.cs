@@ -11,6 +11,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QStyleFactory(Type dummy) {}
+		[SmokeClass("QStyleFactory")]
 		interface IQStyleFactoryProxy {
 			[SmokeMethod("keys", "()", "")]
 			List<string> Keys();

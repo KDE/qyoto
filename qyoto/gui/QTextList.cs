@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QTextList")]
 	public class QTextList : QTextBlockGroup, IDisposable {
  		protected QTextList(Type dummy) : base((Type) null) {}
+		[SmokeClass("QTextList")]
 		interface IQTextListProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

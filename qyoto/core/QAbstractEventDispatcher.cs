@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QAbstractEventDispatcher")]
 	public class QAbstractEventDispatcher : QObject {
  		protected QAbstractEventDispatcher(Type dummy) : base((Type) null) {}
+		[SmokeClass("QAbstractEventDispatcher")]
 		interface IQAbstractEventDispatcherProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

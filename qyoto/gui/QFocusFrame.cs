@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QFocusFrame")]
 	public class QFocusFrame : QWidget, IDisposable {
  		protected QFocusFrame(Type dummy) : base((Type) null) {}
+		[SmokeClass("QFocusFrame")]
 		interface IQFocusFrameProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

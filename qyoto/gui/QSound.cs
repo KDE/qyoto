@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QSound")]
 	public class QSound : QObject, IDisposable {
  		protected QSound(Type dummy) : base((Type) null) {}
+		[SmokeClass("QSound")]
 		interface IQSoundProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

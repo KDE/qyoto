@@ -9,6 +9,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QSizePolicy(Type dummy) {}
+		[SmokeClass("QSizePolicy")]
 		interface IQSizePolicyProxy {
 			[SmokeMethod("operator==", "(const QSizePolicy&) const", "#")]
 			bool op_equals(QSizePolicy lhs, QSizePolicy s);

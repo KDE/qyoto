@@ -6,6 +6,7 @@ namespace Qyoto {
 	[SmokeClass("QWindowStateChangeEvent")]
 	public class QWindowStateChangeEvent : QEvent, IDisposable {
  		protected QWindowStateChangeEvent(Type dummy) : base((Type) null) {}
+		[SmokeClass("QWindowStateChangeEvent")]
 		interface IQWindowStateChangeEventProxy {
 		}
 

@@ -9,6 +9,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QGenericArgument(Type dummy) {}
+		[SmokeClass("QGenericArgument")]
 		interface IQGenericArgumentProxy {
 		}
 

@@ -5,6 +5,7 @@ namespace Qyoto {
 
 	public class QDBus : MarshalByRefObject {
 		protected Object _interceptor = null;
+		[SmokeClass("QDBus")]
 		interface IQDBusProxy {
 		}
 

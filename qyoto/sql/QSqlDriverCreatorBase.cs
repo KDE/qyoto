@@ -9,6 +9,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QSqlDriverCreatorBase(Type dummy) {}
+		[SmokeClass("QSqlDriverCreatorBase")]
 		interface IQSqlDriverCreatorBaseProxy {
 		}
 

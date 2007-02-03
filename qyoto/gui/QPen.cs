@@ -10,6 +10,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QPen(Type dummy) {}
+		[SmokeClass("QPen")]
 		interface IQPenProxy {
 			[SmokeMethod("operator==", "(const QPen&) const", "#")]
 			bool op_equals(QPen lhs, QPen p);

@@ -9,6 +9,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QGLFormat(Type dummy) {}
+		[SmokeClass("QGLFormat")]
 		interface IQGLFormatProxy {
 			[SmokeMethod("defaultFormat", "()", "")]
 			QGLFormat DefaultFormat();

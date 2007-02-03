@@ -6,6 +6,7 @@ namespace Qyoto {
 	[SmokeClass("QAbstractGraphicsShapeItem")]
 	public class QAbstractGraphicsShapeItem : QGraphicsItem, IDisposable {
  		protected QAbstractGraphicsShapeItem(Type dummy) : base((Type) null) {}
+		[SmokeClass("QAbstractGraphicsShapeItem")]
 		interface IQAbstractGraphicsShapeItemProxy {
 		}
 

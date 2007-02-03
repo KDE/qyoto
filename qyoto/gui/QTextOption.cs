@@ -10,6 +10,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QTextOption(Type dummy) {}
+		[SmokeClass("QTextOption")]
 		interface IQTextOptionProxy {
 		}
 

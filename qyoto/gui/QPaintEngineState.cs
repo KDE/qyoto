@@ -9,6 +9,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QPaintEngineState(Type dummy) {}
+		[SmokeClass("QPaintEngineState")]
 		interface IQPaintEngineStateProxy {
 		}
 

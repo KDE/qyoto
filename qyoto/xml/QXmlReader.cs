@@ -10,6 +10,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QXmlReader(Type dummy) {}
+		[SmokeClass("QXmlReader")]
 		interface IQXmlReaderProxy {
 		}
 

@@ -11,6 +11,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QHttpHeader(Type dummy) {}
+		[SmokeClass("QHttpHeader")]
 		interface IQHttpHeaderProxy {
 		}
 

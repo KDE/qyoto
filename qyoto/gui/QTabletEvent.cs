@@ -6,6 +6,7 @@ namespace Qyoto {
 	[SmokeClass("QTabletEvent")]
 	public class QTabletEvent : QInputEvent, IDisposable {
  		protected QTabletEvent(Type dummy) : base((Type) null) {}
+		[SmokeClass("QTabletEvent")]
 		interface IQTabletEventProxy {
 		}
 

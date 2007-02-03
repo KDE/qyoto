@@ -9,6 +9,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QByteRef(Type dummy) {}
+		[SmokeClass("QByteRef")]
 		interface IQByteRefProxy {
 			[SmokeMethod("operator==", "(char) const", "$")]
 			bool op_equals(QByteRef lhs, char c);

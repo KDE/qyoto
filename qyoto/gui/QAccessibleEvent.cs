@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QAccessibleEvent")]
 	public class QAccessibleEvent : QEvent, IDisposable {
  		protected QAccessibleEvent(Type dummy) : base((Type) null) {}
+		[SmokeClass("QAccessibleEvent")]
 		interface IQAccessibleEventProxy {
 		}
 

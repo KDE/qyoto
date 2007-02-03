@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QInputContext")]
 	public class QInputContext : QObject {
  		protected QInputContext(Type dummy) : base((Type) null) {}
+		[SmokeClass("QInputContext")]
 		interface IQInputContextProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

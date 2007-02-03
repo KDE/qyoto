@@ -9,6 +9,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QMatrix(Type dummy) {}
+		[SmokeClass("QMatrix")]
 		interface IQMatrixProxy {
 			[SmokeMethod("operator==", "(const QMatrix&) const", "#")]
 			bool op_equals(QMatrix lhs, QMatrix arg1);

@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QAbstractItemView")]
 	public class QAbstractItemView : QAbstractScrollArea {
  		protected QAbstractItemView(Type dummy) : base((Type) null) {}
+		[SmokeClass("QAbstractItemView")]
 		interface IQAbstractItemViewProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

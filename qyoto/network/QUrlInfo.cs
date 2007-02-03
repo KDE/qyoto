@@ -10,6 +10,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QUrlInfo(Type dummy) {}
+		[SmokeClass("QUrlInfo")]
 		interface IQUrlInfoProxy {
 			[SmokeMethod("greaterThan", "(const QUrlInfo&, const QUrlInfo&, int)", "##$")]
 			bool GreaterThan(QUrlInfo i1, QUrlInfo i2, int sortBy);

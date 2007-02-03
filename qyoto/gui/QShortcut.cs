@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QShortcut")]
 	public class QShortcut : QObject, IDisposable {
  		protected QShortcut(Type dummy) : base((Type) null) {}
+		[SmokeClass("QShortcut")]
 		interface IQShortcutProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

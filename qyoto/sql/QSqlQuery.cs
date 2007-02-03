@@ -52,6 +52,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QSqlQuery(Type dummy) {}
+		[SmokeClass("QSqlQuery")]
 		interface IQSqlQueryProxy {
 		}
 

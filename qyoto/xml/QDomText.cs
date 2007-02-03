@@ -6,6 +6,7 @@ namespace Qyoto {
 	[SmokeClass("QDomText")]
 	public class QDomText : QDomCharacterData, IDisposable {
  		protected QDomText(Type dummy) : base((Type) null) {}
+		[SmokeClass("QDomText")]
 		interface IQDomTextProxy {
 		}
 

@@ -10,6 +10,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QGLContext(Type dummy) {}
+		[SmokeClass("QGLContext")]
 		interface IQGLContextProxy {
 			[SmokeMethod("setTextureCacheLimit", "(int)", "$")]
 			void SetTextureCacheLimit(int size);

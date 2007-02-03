@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QInputMethodEvent")]
 	public class QInputMethodEvent : QEvent, IDisposable {
  		protected QInputMethodEvent(Type dummy) : base((Type) null) {}
+		[SmokeClass("QInputMethodEvent")]
 		interface IQInputMethodEventProxy {
 		}
 

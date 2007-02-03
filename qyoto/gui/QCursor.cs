@@ -9,6 +9,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QCursor(Type dummy) {}
+		[SmokeClass("QCursor")]
 		interface IQCursorProxy {
 			[SmokeMethod("pos", "()", "")]
 			QPoint Pos();

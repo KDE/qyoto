@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QMessageBox")]
 	public class QMessageBox : QDialog, IDisposable {
  		protected QMessageBox(Type dummy) : base((Type) null) {}
+		[SmokeClass("QMessageBox")]
 		interface IQMessageBoxProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

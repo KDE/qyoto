@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QDomNotation")]
 	public class QDomNotation : QDomNode, IDisposable {
  		protected QDomNotation(Type dummy) : base((Type) null) {}
+		[SmokeClass("QDomNotation")]
 		interface IQDomNotationProxy {
 		}
 

@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QEventLoop")]
 	public class QEventLoop : QObject, IDisposable {
  		protected QEventLoop(Type dummy) : base((Type) null) {}
+		[SmokeClass("QEventLoop")]
 		interface IQEventLoopProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

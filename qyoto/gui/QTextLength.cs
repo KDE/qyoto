@@ -9,6 +9,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QTextLength(Type dummy) {}
+		[SmokeClass("QTextLength")]
 		interface IQTextLengthProxy {
 			[SmokeMethod("operator==", "(const QTextLength&) const", "#")]
 			bool op_equals(QTextLength lhs, QTextLength other);

@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QDBusAbstractAdaptor")]
 	public class QDBusAbstractAdaptor : QObject, IDisposable {
  		protected QDBusAbstractAdaptor(Type dummy) : base((Type) null) {}
+		[SmokeClass("QDBusAbstractAdaptor")]
 		interface IQDBusAbstractAdaptorProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

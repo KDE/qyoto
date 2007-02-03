@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QX11EmbedWidget")]
 	public class QX11EmbedWidget : QWidget, IDisposable {
  		protected QX11EmbedWidget(Type dummy) : base((Type) null) {}
+		[SmokeClass("QX11EmbedWidget")]
 		interface IQX11EmbedWidgetProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

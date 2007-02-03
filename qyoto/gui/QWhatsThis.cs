@@ -10,6 +10,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QWhatsThis(Type dummy) {}
+		[SmokeClass("QWhatsThis")]
 		interface IQWhatsThisProxy {
 			[SmokeMethod("enterWhatsThisMode", "()", "")]
 			void EnterWhatsThisMode();

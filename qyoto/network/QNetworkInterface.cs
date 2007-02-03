@@ -11,6 +11,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QNetworkInterface(Type dummy) {}
+		[SmokeClass("QNetworkInterface")]
 		interface IQNetworkInterfaceProxy {
 			[SmokeMethod("interfaceFromName", "(const QString&)", "$")]
 			QNetworkInterface InterfaceFromName(string name);

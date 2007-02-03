@@ -10,6 +10,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QSqlRecord(Type dummy) {}
+		[SmokeClass("QSqlRecord")]
 		interface IQSqlRecordProxy {
 			[SmokeMethod("operator==", "(const QSqlRecord&) const", "#")]
 			bool op_equals(QSqlRecord lhs, QSqlRecord other);

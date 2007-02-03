@@ -22,6 +22,10 @@
 	* C# operator methods are always static, and so the SmokeMethod Attribute
 	  must be for the method in the I<classname>Proxy interface, rather than
 	  on the static method call implementation.
+	* Added a SmokeClass Attribute to the interfaces used to create the 
+	  transparent proxy for static method invocations.
+	* The SmokeClass Attribute is now used for the name of the class to use
+	  when looking up methods in the Smoke library
 
 2007-01-03  Richard Dale  <rdale@foton.es>
 

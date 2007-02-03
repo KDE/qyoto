@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QPixmap")]
 	public class QPixmap : QPaintDevice, IDisposable {
  		protected QPixmap(Type dummy) : base((Type) null) {}
+		[SmokeClass("QPixmap")]
 		interface IQPixmapProxy {
 			[SmokeMethod("operator!", "() const", "")]
 			bool op_not(QPixmap lhs);

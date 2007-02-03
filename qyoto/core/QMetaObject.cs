@@ -10,6 +10,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QMetaObject(Type dummy) {}
+		[SmokeClass("QMetaObject")]
 		interface IQMetaObjectProxy {
 			[SmokeMethod("checkConnectArgs", "(const char*, const char*)", "$$")]
 			bool CheckConnectArgs(string signal, string method);

@@ -11,6 +11,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QHostInfo(Type dummy) {}
+		[SmokeClass("QHostInfo")]
 		interface IQHostInfoProxy {
 			[SmokeMethod("lookupHost", "(const QString&, QObject*, const char*)", "$#$")]
 			int LookupHost(string name, QObject receiver, string member);

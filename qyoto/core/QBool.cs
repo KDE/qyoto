@@ -9,6 +9,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QBool(Type dummy) {}
+		[SmokeClass("QBool")]
 		interface IQBoolProxy {
 		}
 

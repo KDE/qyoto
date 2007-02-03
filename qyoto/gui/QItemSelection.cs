@@ -10,6 +10,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QItemSelection(Type dummy) {}
+		[SmokeClass("QItemSelection")]
 		interface IQItemSelectionProxy {
 			[SmokeMethod("split", "(const QItemSelectionRange&, const QItemSelectionRange&, QItemSelection*)", "###")]
 			void Split(QItemSelectionRange range, QItemSelectionRange other, QItemSelection result);

@@ -9,6 +9,7 @@ namespace Qyoto {
 	[SmokeClass("QItemSelectionModel")]
 	public class QItemSelectionModel : QObject, IDisposable {
  		protected QItemSelectionModel(Type dummy) : base((Type) null) {}
+		[SmokeClass("QItemSelectionModel")]
 		interface IQItemSelectionModelProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

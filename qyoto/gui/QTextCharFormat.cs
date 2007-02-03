@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QTextCharFormat")]
 	public class QTextCharFormat : QTextFormat, IDisposable {
  		protected QTextCharFormat(Type dummy) : base((Type) null) {}
+		[SmokeClass("QTextCharFormat")]
 		interface IQTextCharFormatProxy {
 		}
 

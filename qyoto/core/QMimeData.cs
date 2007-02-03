@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QMimeData")]
 	public class QMimeData : QObject, IDisposable {
  		protected QMimeData(Type dummy) : base((Type) null) {}
+		[SmokeClass("QMimeData")]
 		interface IQMimeDataProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

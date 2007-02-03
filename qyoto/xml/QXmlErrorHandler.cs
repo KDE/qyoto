@@ -17,6 +17,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QXmlErrorHandler(Type dummy) {}
+		[SmokeClass("QXmlErrorHandler")]
 		interface IQXmlErrorHandlerProxy {
 		}
 

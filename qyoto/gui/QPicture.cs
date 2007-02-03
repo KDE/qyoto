@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QPicture")]
 	public class QPicture : QPaintDevice, IDisposable {
  		protected QPicture(Type dummy) : base((Type) null) {}
+		[SmokeClass("QPicture")]
 		interface IQPictureProxy {
 			[SmokeMethod("pictureFormat", "(const QString&)", "$")]
 			string PictureFormat(string fileName);

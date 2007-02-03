@@ -6,6 +6,7 @@ namespace Qyoto {
 	[SmokeClass("QGraphicsSceneDragDropEvent")]
 	public class QGraphicsSceneDragDropEvent : QGraphicsSceneEvent, IDisposable {
  		protected QGraphicsSceneDragDropEvent(Type dummy) : base((Type) null) {}
+		[SmokeClass("QGraphicsSceneDragDropEvent")]
 		interface IQGraphicsSceneDragDropEventProxy {
 		}
 

@@ -11,6 +11,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QXmlNamespaceSupport(Type dummy) {}
+		[SmokeClass("QXmlNamespaceSupport")]
 		interface IQXmlNamespaceSupportProxy {
 		}
 

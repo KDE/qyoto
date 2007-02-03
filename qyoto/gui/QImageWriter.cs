@@ -11,6 +11,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QImageWriter(Type dummy) {}
+		[SmokeClass("QImageWriter")]
 		interface IQImageWriterProxy {
 			[SmokeMethod("supportedImageFormats", "()", "")]
 			List<QByteArray> SupportedImageFormats();

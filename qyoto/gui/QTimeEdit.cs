@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QTimeEdit")]
 	public class QTimeEdit : QDateTimeEdit, IDisposable {
  		protected QTimeEdit(Type dummy) : base((Type) null) {}
+		[SmokeClass("QTimeEdit")]
 		interface IQTimeEditProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

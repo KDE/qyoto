@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QGraphicsItemAnimation")]
 	public class QGraphicsItemAnimation : QObject, IDisposable {
  		protected QGraphicsItemAnimation(Type dummy) : base((Type) null) {}
+		[SmokeClass("QGraphicsItemAnimation")]
 		interface IQGraphicsItemAnimationProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

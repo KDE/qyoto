@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QPluginLoader")]
 	public class QPluginLoader : QObject, IDisposable {
  		protected QPluginLoader(Type dummy) : base((Type) null) {}
+		[SmokeClass("QPluginLoader")]
 		interface IQPluginLoaderProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

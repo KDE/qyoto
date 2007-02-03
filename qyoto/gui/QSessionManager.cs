@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QSessionManager")]
 	public class QSessionManager : QObject {
  		protected QSessionManager(Type dummy) : base((Type) null) {}
+		[SmokeClass("QSessionManager")]
 		interface IQSessionManagerProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

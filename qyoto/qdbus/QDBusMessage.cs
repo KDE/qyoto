@@ -11,6 +11,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QDBusMessage(Type dummy) {}
+		[SmokeClass("QDBusMessage")]
 		interface IQDBusMessageProxy {
 			[SmokeMethod("createSignal", "(const QString&, const QString&, const QString&)", "$$$")]
 			QDBusMessage CreateSignal(string path, string arg2, string name);

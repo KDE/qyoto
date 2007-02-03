@@ -9,6 +9,7 @@ namespace Qyoto {
 	[SmokeClass("QProcess")]
 	public class QProcess : QIODevice, IDisposable {
  		protected QProcess(Type dummy) : base((Type) null) {}
+		[SmokeClass("QProcess")]
 		interface IQProcessProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

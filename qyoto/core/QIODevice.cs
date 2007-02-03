@@ -44,6 +44,7 @@ namespace Qyoto {
 	[SmokeClass("QIODevice")]
 	public class QIODevice : QObject {
  		protected QIODevice(Type dummy) : base((Type) null) {}
+		[SmokeClass("QIODevice")]
 		interface IQIODeviceProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

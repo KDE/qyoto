@@ -11,6 +11,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QKeySequence(Type dummy) {}
+		[SmokeClass("QKeySequence")]
 		interface IQKeySequenceProxy {
 			[SmokeMethod("operator==", "(const QKeySequence&) const", "#")]
 			bool op_equals(QKeySequence lhs, QKeySequence other);

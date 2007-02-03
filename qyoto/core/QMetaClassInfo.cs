@@ -9,6 +9,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QMetaClassInfo(Type dummy) {}
+		[SmokeClass("QMetaClassInfo")]
 		interface IQMetaClassInfoProxy {
 		}
 

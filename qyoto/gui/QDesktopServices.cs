@@ -10,6 +10,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QDesktopServices(Type dummy) {}
+		[SmokeClass("QDesktopServices")]
 		interface IQDesktopServicesProxy {
 			[SmokeMethod("openUrl", "(const QUrl&)", "#")]
 			bool OpenUrl(IQUrl url);

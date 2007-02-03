@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QHeaderView")]
 	public class QHeaderView : QAbstractItemView, IDisposable {
  		protected QHeaderView(Type dummy) : base((Type) null) {}
+		[SmokeClass("QHeaderView")]
 		interface IQHeaderViewProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

@@ -10,6 +10,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QItemSelectionRange(Type dummy) {}
+		[SmokeClass("QItemSelectionRange")]
 		interface IQItemSelectionRangeProxy {
 			[SmokeMethod("operator==", "(const QItemSelectionRange&) const", "#")]
 			bool op_equals(QItemSelectionRange lhs, QItemSelectionRange other);

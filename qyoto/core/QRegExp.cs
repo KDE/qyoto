@@ -11,6 +11,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QRegExp(Type dummy) {}
+		[SmokeClass("QRegExp")]
 		interface IQRegExpProxy {
 			[SmokeMethod("operator==", "(const QRegExp&) const", "#")]
 			bool op_equals(QRegExp lhs, QRegExp rx);

@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QGroupBox")]
 	public class QGroupBox : QWidget, IDisposable {
  		protected QGroupBox(Type dummy) : base((Type) null) {}
+		[SmokeClass("QGroupBox")]
 		interface IQGroupBoxProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

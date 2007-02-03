@@ -6,6 +6,7 @@ namespace Qyoto {
 	[SmokeClass("QDomEntityReference")]
 	public class QDomEntityReference : QDomNode, IDisposable {
  		protected QDomEntityReference(Type dummy) : base((Type) null) {}
+		[SmokeClass("QDomEntityReference")]
 		interface IQDomEntityReferenceProxy {
 		}
 

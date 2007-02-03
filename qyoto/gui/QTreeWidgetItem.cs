@@ -11,6 +11,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QTreeWidgetItem(Type dummy) {}
+		[SmokeClass("QTreeWidgetItem")]
 		interface IQTreeWidgetItemProxy {
 		}
 

@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QAbstractSpinBox")]
 	public class QAbstractSpinBox : QWidget, IDisposable {
  		protected QAbstractSpinBox(Type dummy) : base((Type) null) {}
+		[SmokeClass("QAbstractSpinBox")]
 		interface IQAbstractSpinBoxProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

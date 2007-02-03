@@ -11,6 +11,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QPainter(Type dummy) {}
+		[SmokeClass("QPainter")]
 		interface IQPainterProxy {
 			[SmokeMethod("setRedirected", "(const QPaintDevice*, QPaintDevice*, const QPoint&)", "###")]
 			void SetRedirected(IQPaintDevice device, IQPaintDevice replacement, QPoint offset);

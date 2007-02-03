@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QSqlDriverFactoryInterface")]
 	public class QSqlDriverFactoryInterface : QFactoryInterface {
  		protected QSqlDriverFactoryInterface(Type dummy) : base((Type) null) {}
+		[SmokeClass("QSqlDriverFactoryInterface")]
 		interface IQSqlDriverFactoryInterfaceProxy {
 		}
 

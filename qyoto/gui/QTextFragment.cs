@@ -10,6 +10,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QTextFragment(Type dummy) {}
+		[SmokeClass("QTextFragment")]
 		interface IQTextFragmentProxy {
 			[SmokeMethod("operator==", "(const QTextFragment&) const", "#")]
 			bool op_equals(QTextFragment lhs, QTextFragment o);

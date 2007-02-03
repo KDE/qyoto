@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QInputDialog")]
 	public class QInputDialog : QDialog {
  		protected QInputDialog(Type dummy) : base((Type) null) {}
+		[SmokeClass("QInputDialog")]
 		interface IQInputDialogProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

@@ -11,6 +11,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QVariant(Type dummy) {}
+		[SmokeClass("QVariant")]
 		interface IQVariantProxy {
 			[SmokeMethod("operator==", "(const QVariant&) const", "#")]
 			bool op_equals(QVariant lhs, QVariant v);

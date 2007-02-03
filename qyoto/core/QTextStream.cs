@@ -10,6 +10,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QTextStream(Type dummy) {}
+		[SmokeClass("QTextStream")]
 		interface IQTextStreamProxy {
 		}
 

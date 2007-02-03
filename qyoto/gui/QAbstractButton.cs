@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QAbstractButton")]
 	public class QAbstractButton : QWidget {
  		protected QAbstractButton(Type dummy) : base((Type) null) {}
+		[SmokeClass("QAbstractButton")]
 		interface IQAbstractButtonProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

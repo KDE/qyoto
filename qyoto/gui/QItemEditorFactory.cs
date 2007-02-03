@@ -9,6 +9,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QItemEditorFactory(Type dummy) {}
+		[SmokeClass("QItemEditorFactory")]
 		interface IQItemEditorFactoryProxy {
 			[SmokeMethod("defaultFactory", "()", "")]
 			QItemEditorFactory DefaultFactory();

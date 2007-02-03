@@ -9,6 +9,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QLatin1Char(Type dummy) {}
+		[SmokeClass("QLatin1Char")]
 		interface IQLatin1CharProxy {
 		}
 

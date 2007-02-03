@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QTcpSocket")]
 	public class QTcpSocket : QAbstractSocket, IDisposable {
  		protected QTcpSocket(Type dummy) : base((Type) null) {}
+		[SmokeClass("QTcpSocket")]
 		interface IQTcpSocketProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

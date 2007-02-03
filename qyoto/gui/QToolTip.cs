@@ -10,6 +10,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QToolTip(Type dummy) {}
+		[SmokeClass("QToolTip")]
 		interface IQToolTipProxy {
 			[SmokeMethod("showText", "(const QPoint&, const QString&, QWidget*)", "#$#")]
 			void ShowText(QPoint pos, string text, QWidget w);

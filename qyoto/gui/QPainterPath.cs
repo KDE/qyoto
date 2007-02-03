@@ -11,6 +11,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QPainterPath(Type dummy) {}
+		[SmokeClass("QPainterPath")]
 		interface IQPainterPathProxy {
 			[SmokeMethod("operator==", "(const QPainterPath&) const", "#")]
 			bool op_equals(QPainterPath lhs, QPainterPath other);

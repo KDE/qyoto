@@ -9,6 +9,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QTextBlockUserData(Type dummy) {}
+		[SmokeClass("QTextBlockUserData")]
 		interface IQTextBlockUserDataProxy {
 		}
 

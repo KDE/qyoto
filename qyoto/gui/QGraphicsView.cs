@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QGraphicsView")]
 	public class QGraphicsView : QAbstractScrollArea, IDisposable {
  		protected QGraphicsView(Type dummy) : base((Type) null) {}
+		[SmokeClass("QGraphicsView")]
 		interface IQGraphicsViewProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

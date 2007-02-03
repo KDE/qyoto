@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QWidgetAction")]
 	public class QWidgetAction : QAction, IDisposable {
  		protected QWidgetAction(Type dummy) : base((Type) null) {}
+		[SmokeClass("QWidgetAction")]
 		interface IQWidgetActionProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

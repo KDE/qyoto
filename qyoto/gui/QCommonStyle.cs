@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QCommonStyle")]
 	public class QCommonStyle : QStyle, IDisposable {
  		protected QCommonStyle(Type dummy) : base((Type) null) {}
+		[SmokeClass("QCommonStyle")]
 		interface IQCommonStyleProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

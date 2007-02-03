@@ -6,6 +6,7 @@ namespace Qyoto {
 	[SmokeClass("QStyleOptionTabBarBase")]
 	public class QStyleOptionTabBarBase : QStyleOption, IDisposable {
  		protected QStyleOptionTabBarBase(Type dummy) : base((Type) null) {}
+		[SmokeClass("QStyleOptionTabBarBase")]
 		interface IQStyleOptionTabBarBaseProxy {
 		}
 

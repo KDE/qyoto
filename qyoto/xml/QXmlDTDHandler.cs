@@ -16,6 +16,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QXmlDTDHandler(Type dummy) {}
+		[SmokeClass("QXmlDTDHandler")]
 		interface IQXmlDTDHandlerProxy {
 		}
 

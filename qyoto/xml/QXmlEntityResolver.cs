@@ -15,6 +15,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QXmlEntityResolver(Type dummy) {}
+		[SmokeClass("QXmlEntityResolver")]
 		interface IQXmlEntityResolverProxy {
 		}
 

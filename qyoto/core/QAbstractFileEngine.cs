@@ -11,6 +11,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QAbstractFileEngine(Type dummy) {}
+		[SmokeClass("QAbstractFileEngine")]
 		interface IQAbstractFileEngineProxy {
 			[SmokeMethod("create", "(const QString&)", "$")]
 			QAbstractFileEngine Create(string fileName);

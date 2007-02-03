@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QAccessibleBridgeFactoryInterface")]
 	public class QAccessibleBridgeFactoryInterface : QFactoryInterface {
  		protected QAccessibleBridgeFactoryInterface(Type dummy) : base((Type) null) {}
+		[SmokeClass("QAccessibleBridgeFactoryInterface")]
 		interface IQAccessibleBridgeFactoryInterfaceProxy {
 		}
 

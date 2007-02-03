@@ -9,6 +9,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QTextLine(Type dummy) {}
+		[SmokeClass("QTextLine")]
 		interface IQTextLineProxy {
 		}
 

@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QFileOpenEvent")]
 	public class QFileOpenEvent : QEvent, IDisposable {
  		protected QFileOpenEvent(Type dummy) : base((Type) null) {}
+		[SmokeClass("QFileOpenEvent")]
 		interface IQFileOpenEventProxy {
 		}
 

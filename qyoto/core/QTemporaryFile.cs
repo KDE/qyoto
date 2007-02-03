@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QTemporaryFile")]
 	public class QTemporaryFile : QFile, IDisposable {
  		protected QTemporaryFile(Type dummy) : base((Type) null) {}
+		[SmokeClass("QTemporaryFile")]
 		interface IQTemporaryFileProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

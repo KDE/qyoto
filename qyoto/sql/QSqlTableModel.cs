@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QSqlTableModel")]
 	public class QSqlTableModel : QSqlQueryModel, IDisposable {
  		protected QSqlTableModel(Type dummy) : base((Type) null) {}
+		[SmokeClass("QSqlTableModel")]
 		interface IQSqlTableModelProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

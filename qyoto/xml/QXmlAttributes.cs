@@ -10,6 +10,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QXmlAttributes(Type dummy) {}
+		[SmokeClass("QXmlAttributes")]
 		interface IQXmlAttributesProxy {
 		}
 

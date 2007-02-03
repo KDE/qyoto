@@ -10,6 +10,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QSqlRelation(Type dummy) {}
+		[SmokeClass("QSqlRelation")]
 		interface IQSqlRelationProxy {
 		}
 

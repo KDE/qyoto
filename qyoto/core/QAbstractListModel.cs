@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QAbstractListModel")]
 	public class QAbstractListModel : QAbstractItemModel, IDisposable {
  		protected QAbstractListModel(Type dummy) : base((Type) null) {}
+		[SmokeClass("QAbstractListModel")]
 		interface IQAbstractListModelProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

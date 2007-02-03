@@ -6,6 +6,7 @@ namespace Qyoto {
 	[SmokeClass("QMouseEvent")]
 	public class QMouseEvent : QInputEvent, IDisposable {
  		protected QMouseEvent(Type dummy) : base((Type) null) {}
+		[SmokeClass("QMouseEvent")]
 		interface IQMouseEventProxy {
 		}
 

@@ -9,6 +9,7 @@ namespace Qyoto {
 	[SmokeClass("QGraphicsScene")]
 	public class QGraphicsScene : QObject, IDisposable {
  		protected QGraphicsScene(Type dummy) : base((Type) null) {}
+		[SmokeClass("QGraphicsScene")]
 		interface IQGraphicsSceneProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

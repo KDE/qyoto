@@ -6,6 +6,7 @@ namespace Qyoto {
 	[SmokeClass("QClipboardEvent")]
 	public class QClipboardEvent : QEvent, IDisposable {
  		protected QClipboardEvent(Type dummy) : base((Type) null) {}
+		[SmokeClass("QClipboardEvent")]
 		interface IQClipboardEventProxy {
 		}
 

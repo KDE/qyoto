@@ -6,6 +6,7 @@ namespace Qyoto {
 	[SmokeClass("QStyleOptionHeader")]
 	public class QStyleOptionHeader : QStyleOption, IDisposable {
  		protected QStyleOptionHeader(Type dummy) : base((Type) null) {}
+		[SmokeClass("QStyleOptionHeader")]
 		interface IQStyleOptionHeaderProxy {
 		}
 

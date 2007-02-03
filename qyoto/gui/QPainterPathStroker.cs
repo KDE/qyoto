@@ -10,6 +10,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QPainterPathStroker(Type dummy) {}
+		[SmokeClass("QPainterPathStroker")]
 		interface IQPainterPathStrokerProxy {
 		}
 

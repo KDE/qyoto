@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QTextDocument")]
 	public class QTextDocument : QObject, IDisposable {
  		protected QTextDocument(Type dummy) : base((Type) null) {}
+		[SmokeClass("QTextDocument")]
 		interface IQTextDocumentProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

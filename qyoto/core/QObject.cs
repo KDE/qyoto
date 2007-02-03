@@ -30,6 +30,7 @@ namespace Qyoto {
 				return Qyoto.GetMetaObject(this);
 			}
 		}
+		[SmokeClass("QObject")]
 		interface IQObjectProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

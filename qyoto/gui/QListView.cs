@@ -10,6 +10,7 @@ namespace Qyoto {
 	[SmokeClass("QListView")]
 	public class QListView : QAbstractItemView, IDisposable {
  		protected QListView(Type dummy) : base((Type) null) {}
+		[SmokeClass("QListView")]
 		interface IQListViewProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

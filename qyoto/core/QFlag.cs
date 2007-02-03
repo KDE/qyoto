@@ -9,6 +9,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QFlag(Type dummy) {}
+		[SmokeClass("QFlag")]
 		interface IQFlagProxy {
 		}
 

@@ -10,6 +10,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QIcon(Type dummy) {}
+		[SmokeClass("QIcon")]
 		interface IQIconProxy {
 		}
 

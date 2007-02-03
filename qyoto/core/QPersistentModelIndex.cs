@@ -9,6 +9,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QPersistentModelIndex(Type dummy) {}
+		[SmokeClass("QPersistentModelIndex")]
 		interface IQPersistentModelIndexProxy {
 			[SmokeMethod("operator<", "(const QPersistentModelIndex&) const", "#")]
 			bool op_lt(QPersistentModelIndex lhs, QPersistentModelIndex other);

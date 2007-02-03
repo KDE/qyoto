@@ -132,6 +132,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QGraphicsItem(Type dummy) {}
+		[SmokeClass("QGraphicsItem")]
 		interface IQGraphicsItemProxy {
 		}
 

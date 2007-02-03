@@ -31,6 +31,7 @@ namespace Qyoto {
 	[SmokeClass("QTimer")]
 	public class QTimer : QObject, IDisposable {
  		protected QTimer(Type dummy) : base((Type) null) {}
+		[SmokeClass("QTimer")]
 		interface IQTimerProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QSplitterHandle")]
 	public class QSplitterHandle : QWidget, IDisposable {
  		protected QSplitterHandle(Type dummy) : base((Type) null) {}
+		[SmokeClass("QSplitterHandle")]
 		interface IQSplitterHandleProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

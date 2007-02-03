@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QRadioButton")]
 	public class QRadioButton : QAbstractButton, IDisposable {
  		protected QRadioButton(Type dummy) : base((Type) null) {}
+		[SmokeClass("QRadioButton")]
 		interface IQRadioButtonProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

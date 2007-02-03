@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QLineEdit")]
 	public class QLineEdit : QWidget, IDisposable {
  		protected QLineEdit(Type dummy) : base((Type) null) {}
+		[SmokeClass("QLineEdit")]
 		interface IQLineEditProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

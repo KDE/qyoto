@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QProgressDialog")]
 	public class QProgressDialog : QDialog, IDisposable {
  		protected QProgressDialog(Type dummy) : base((Type) null) {}
+		[SmokeClass("QProgressDialog")]
 		interface IQProgressDialogProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

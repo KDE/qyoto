@@ -10,6 +10,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QUuid(Type dummy) {}
+		[SmokeClass("QUuid")]
 		interface IQUuidProxy {
 			[SmokeMethod("operator==", "(const QUuid&) const", "#")]
 			bool op_equals(QUuid lhs, QUuid orig);

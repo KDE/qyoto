@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QSlider")]
 	public class QSlider : QAbstractSlider, IDisposable {
  		protected QSlider(Type dummy) : base((Type) null) {}
+		[SmokeClass("QSlider")]
 		interface IQSliderProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

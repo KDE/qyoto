@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QHttpResponseHeader")]
 	public class QHttpResponseHeader : QHttpHeader, IDisposable {
  		protected QHttpResponseHeader(Type dummy) : base((Type) null) {}
+		[SmokeClass("QHttpResponseHeader")]
 		interface IQHttpResponseHeaderProxy {
 		}
 

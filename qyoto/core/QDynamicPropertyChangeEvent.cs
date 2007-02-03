@@ -6,6 +6,7 @@ namespace Qyoto {
 	[SmokeClass("QDynamicPropertyChangeEvent")]
 	public class QDynamicPropertyChangeEvent : QEvent, IDisposable {
  		protected QDynamicPropertyChangeEvent(Type dummy) : base((Type) null) {}
+		[SmokeClass("QDynamicPropertyChangeEvent")]
 		interface IQDynamicPropertyChangeEventProxy {
 		}
 

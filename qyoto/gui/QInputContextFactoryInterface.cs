@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QInputContextFactoryInterface")]
 	public class QInputContextFactoryInterface : QFactoryInterface {
  		protected QInputContextFactoryInterface(Type dummy) : base((Type) null) {}
+		[SmokeClass("QInputContextFactoryInterface")]
 		interface IQInputContextFactoryInterfaceProxy {
 		}
 

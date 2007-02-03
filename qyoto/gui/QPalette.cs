@@ -9,6 +9,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QPalette(Type dummy) {}
+		[SmokeClass("QPalette")]
 		interface IQPaletteProxy {
 			[SmokeMethod("operator==", "(const QPalette&) const", "#")]
 			bool op_equals(QPalette lhs, QPalette p);

@@ -6,6 +6,7 @@ namespace Qyoto {
 	[SmokeClass("QStyleOptionProgressBarV2")]
 	public class QStyleOptionProgressBarV2 : QStyleOptionProgressBar, IDisposable {
  		protected QStyleOptionProgressBarV2(Type dummy) : base((Type) null) {}
+		[SmokeClass("QStyleOptionProgressBarV2")]
 		interface IQStyleOptionProgressBarV2Proxy {
 		}
 

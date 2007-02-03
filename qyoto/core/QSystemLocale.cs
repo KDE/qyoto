@@ -9,6 +9,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QSystemLocale(Type dummy) {}
+		[SmokeClass("QSystemLocale")]
 		interface IQSystemLocaleProxy {
 		}
 

@@ -9,6 +9,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QMetaType(Type dummy) {}
+		[SmokeClass("QMetaType")]
 		interface IQMetaTypeProxy {
 			[SmokeMethod("type", "(const char*)", "$")]
 			int type(string typeName);

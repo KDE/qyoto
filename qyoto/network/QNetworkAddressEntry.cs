@@ -9,6 +9,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QNetworkAddressEntry(Type dummy) {}
+		[SmokeClass("QNetworkAddressEntry")]
 		interface IQNetworkAddressEntryProxy {
 		}
 

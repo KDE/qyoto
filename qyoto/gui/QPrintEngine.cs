@@ -9,6 +9,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QPrintEngine(Type dummy) {}
+		[SmokeClass("QPrintEngine")]
 		interface IQPrintEngineProxy {
 		}
 

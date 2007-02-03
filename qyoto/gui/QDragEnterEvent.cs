@@ -6,6 +6,7 @@ namespace Qyoto {
 	[SmokeClass("QDragEnterEvent")]
 	public class QDragEnterEvent : QDragMoveEvent, IDisposable {
  		protected QDragEnterEvent(Type dummy) : base((Type) null) {}
+		[SmokeClass("QDragEnterEvent")]
 		interface IQDragEnterEventProxy {
 		}
 

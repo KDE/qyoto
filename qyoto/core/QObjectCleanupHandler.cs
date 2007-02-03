@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QObjectCleanupHandler")]
 	public class QObjectCleanupHandler : QObject, IDisposable {
  		protected QObjectCleanupHandler(Type dummy) : base((Type) null) {}
+		[SmokeClass("QObjectCleanupHandler")]
 		interface IQObjectCleanupHandlerProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

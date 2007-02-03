@@ -9,6 +9,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QRect(Type dummy) {}
+		[SmokeClass("QRect")]
 		interface IQRectProxy {
 			[SmokeMethod("operator|", "(const QRect&) const", "#")]
 			QRect op_or(QRect lhs, QRect r);

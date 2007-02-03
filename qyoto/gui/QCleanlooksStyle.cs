@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QCleanlooksStyle")]
 	public class QCleanlooksStyle : QWindowsStyle, IDisposable {
  		protected QCleanlooksStyle(Type dummy) : base((Type) null) {}
+		[SmokeClass("QCleanlooksStyle")]
 		interface IQCleanlooksStyleProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

@@ -9,6 +9,7 @@ namespace Qyoto {
 	[SmokeClass("QMovie")]
 	public class QMovie : QObject, IDisposable {
  		protected QMovie(Type dummy) : base((Type) null) {}
+		[SmokeClass("QMovie")]
 		interface IQMovieProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

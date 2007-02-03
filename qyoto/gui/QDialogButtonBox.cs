@@ -9,6 +9,7 @@ namespace Qyoto {
 	[SmokeClass("QDialogButtonBox")]
 	public class QDialogButtonBox : QWidget, IDisposable {
  		protected QDialogButtonBox(Type dummy) : base((Type) null) {}
+		[SmokeClass("QDialogButtonBox")]
 		interface IQDialogButtonBoxProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

@@ -7,6 +7,7 @@ namespace Qyoto {
 	[SmokeClass("QRubberBand")]
 	public class QRubberBand : QWidget, IDisposable {
  		protected QRubberBand(Type dummy) : base((Type) null) {}
+		[SmokeClass("QRubberBand")]
 		interface IQRubberBandProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QLabel")]
 	public class QLabel : QFrame, IDisposable {
  		protected QLabel(Type dummy) : base((Type) null) {}
+		[SmokeClass("QLabel")]
 		interface IQLabelProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

@@ -10,6 +10,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QRegion(Type dummy) {}
+		[SmokeClass("QRegion")]
 		interface IQRegionProxy {
 			[SmokeMethod("operator|", "(const QRegion&) const", "#")]
 			QRegion op_or(QRegion lhs, QRegion r);

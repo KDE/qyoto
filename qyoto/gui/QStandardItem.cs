@@ -11,6 +11,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QStandardItem(Type dummy) {}
+		[SmokeClass("QStandardItem")]
 		interface IQStandardItemProxy {
 		}
 

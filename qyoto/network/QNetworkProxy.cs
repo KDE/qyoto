@@ -10,6 +10,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QNetworkProxy(Type dummy) {}
+		[SmokeClass("QNetworkProxy")]
 		interface IQNetworkProxyProxy {
 			[SmokeMethod("setApplicationProxy", "(const QNetworkProxy&)", "#")]
 			void SetApplicationProxy(QNetworkProxy proxy);

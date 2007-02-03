@@ -6,6 +6,7 @@ namespace Qyoto {
 	[SmokeClass("QIconDragEvent")]
 	public class QIconDragEvent : QEvent, IDisposable {
  		protected QIconDragEvent(Type dummy) : base((Type) null) {}
+		[SmokeClass("QIconDragEvent")]
 		interface IQIconDragEventProxy {
 		}
 

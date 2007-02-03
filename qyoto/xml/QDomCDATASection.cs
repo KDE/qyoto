@@ -6,6 +6,7 @@ namespace Qyoto {
 	[SmokeClass("QDomCDATASection")]
 	public class QDomCDATASection : QDomText, IDisposable {
  		protected QDomCDATASection(Type dummy) : base((Type) null) {}
+		[SmokeClass("QDomCDATASection")]
 		interface IQDomCDATASectionProxy {
 		}
 

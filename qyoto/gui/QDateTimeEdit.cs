@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QDateTimeEdit")]
 	public class QDateTimeEdit : QAbstractSpinBox, IDisposable {
  		protected QDateTimeEdit(Type dummy) : base((Type) null) {}
+		[SmokeClass("QDateTimeEdit")]
 		interface IQDateTimeEditProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

@@ -10,6 +10,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QTextLayout(Type dummy) {}
+		[SmokeClass("QTextLayout")]
 		interface IQTextLayoutProxy {
 		}
 

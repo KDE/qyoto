@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QToolButton")]
 	public class QToolButton : QAbstractButton, IDisposable {
  		protected QToolButton(Type dummy) : base((Type) null) {}
+		[SmokeClass("QToolButton")]
 		interface IQToolButtonProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

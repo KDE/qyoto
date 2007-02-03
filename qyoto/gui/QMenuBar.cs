@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QMenuBar")]
 	public class QMenuBar : QWidget, IDisposable {
  		protected QMenuBar(Type dummy) : base((Type) null) {}
+		[SmokeClass("QMenuBar")]
 		interface IQMenuBarProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);

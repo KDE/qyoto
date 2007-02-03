@@ -10,6 +10,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QDate(Type dummy) {}
+		[SmokeClass("QDate")]
 		interface IQDateProxy {
 			[SmokeMethod("operator==", "(const QDate&) const", "#")]
 			bool op_equals(QDate lhs, QDate other);

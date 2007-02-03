@@ -11,6 +11,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QDir(Type dummy) {}
+		[SmokeClass("QDir")]
 		interface IQDirProxy {
 			[SmokeMethod("operator==", "(const QDir&) const", "#")]
 			bool op_equals(QDir lhs, QDir dir);

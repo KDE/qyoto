@@ -25,6 +25,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QPaintDevice(Type dummy) {}
+		[SmokeClass("QPaintDevice")]
 		interface IQPaintDeviceProxy {
 		}
 

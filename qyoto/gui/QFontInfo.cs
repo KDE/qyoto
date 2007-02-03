@@ -10,6 +10,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QFontInfo(Type dummy) {}
+		[SmokeClass("QFontInfo")]
 		interface IQFontInfoProxy {
 		}
 

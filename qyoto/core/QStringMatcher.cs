@@ -10,6 +10,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QStringMatcher(Type dummy) {}
+		[SmokeClass("QStringMatcher")]
 		interface IQStringMatcherProxy {
 		}
 

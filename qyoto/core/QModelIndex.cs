@@ -9,6 +9,7 @@ namespace Qyoto {
  
 		private IntPtr _smokeObject;
 		protected QModelIndex(Type dummy) {}
+		[SmokeClass("QModelIndex")]
 		interface IQModelIndexProxy {
 			[SmokeMethod("operator==", "(const QModelIndex&) const", "#")]
 			bool op_equals(QModelIndex lhs, QModelIndex other);

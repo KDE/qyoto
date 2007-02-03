@@ -8,6 +8,7 @@ namespace Qyoto {
 	[SmokeClass("QUndoStack")]
 	public class QUndoStack : QObject, IDisposable {
  		protected QUndoStack(Type dummy) : base((Type) null) {}
+		[SmokeClass("QUndoStack")]
 		interface IQUndoStackProxy {
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
