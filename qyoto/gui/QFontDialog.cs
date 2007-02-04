@@ -24,7 +24,6 @@ namespace Qyoto {
 			[SmokeMethod("getFont", "(bool*)", "$")]
 			QFont GetFont(out bool ok);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFontDialog), this);
 			_interceptor = (QFontDialog) realProxy.GetTransparentProxy();
@@ -40,7 +39,6 @@ namespace Qyoto {
 		private static IQFontDialogProxy StaticQFontDialog() {
 			return (IQFontDialogProxy) _staticInterceptor;
 		}
-
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public static new string Tr(string s, string c) {
 			return StaticQFontDialog().Tr(s,c);

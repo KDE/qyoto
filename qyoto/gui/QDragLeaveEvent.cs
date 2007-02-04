@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QDragLeaveEvent")]
 		interface IQDragLeaveEventProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDragLeaveEvent), this);
 			_interceptor = (QDragLeaveEvent) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQDragLeaveEventProxy StaticQDragLeaveEvent() {
 			return (IQDragLeaveEventProxy) _staticInterceptor;
 		}
-
 		public QDragLeaveEvent() : this((Type) null) {
 			CreateProxy();
 			NewQDragLeaveEvent();

@@ -7,13 +7,11 @@ namespace Qyoto {
 	[SmokeClass("QPolygonF")]
 	public class QPolygonF : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QPolygonF(Type dummy) {}
 		[SmokeClass("QPolygonF")]
 		interface IQPolygonFProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPolygonF), this);
 			_interceptor = (QPolygonF) realProxy.GetTransparentProxy();
@@ -29,7 +27,6 @@ namespace Qyoto {
 		private static IQPolygonFProxy StaticQPolygonF() {
 			return (IQPolygonFProxy) _staticInterceptor;
 		}
-
 		public QPolygonF() : this((Type) null) {
 			CreateProxy();
 			NewQPolygonF();

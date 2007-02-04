@@ -6,13 +6,11 @@ namespace Qyoto {
 	[SmokeClass("QFlag")]
 	public class QFlag : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QFlag(Type dummy) {}
 		[SmokeClass("QFlag")]
 		interface IQFlagProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFlag), this);
 			_interceptor = (QFlag) realProxy.GetTransparentProxy();
@@ -28,7 +26,6 @@ namespace Qyoto {
 		private static IQFlagProxy StaticQFlag() {
 			return (IQFlagProxy) _staticInterceptor;
 		}
-
 		public QFlag(int i) : this((Type) null) {
 			CreateProxy();
 			NewQFlag(i);

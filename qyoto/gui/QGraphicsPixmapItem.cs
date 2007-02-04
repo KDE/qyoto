@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QGraphicsPixmapItem")]
 		interface IQGraphicsPixmapItemProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGraphicsPixmapItem), this);
 			_interceptor = (QGraphicsPixmapItem) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQGraphicsPixmapItemProxy StaticQGraphicsPixmapItem() {
 			return (IQGraphicsPixmapItemProxy) _staticInterceptor;
 		}
-
 		public enum ShapeMode {
 			MaskShape = 0,
 			BoundingRectShape = 1,

@@ -7,13 +7,11 @@ namespace Qyoto {
 	[SmokeClass("QPainterPathStroker")]
 	public class QPainterPathStroker : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QPainterPathStroker(Type dummy) {}
 		[SmokeClass("QPainterPathStroker")]
 		interface IQPainterPathStrokerProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPainterPathStroker), this);
 			_interceptor = (QPainterPathStroker) realProxy.GetTransparentProxy();
@@ -29,7 +27,6 @@ namespace Qyoto {
 		private static IQPainterPathStrokerProxy StaticQPainterPathStroker() {
 			return (IQPainterPathStrokerProxy) _staticInterceptor;
 		}
-
 		public QPainterPathStroker() : this((Type) null) {
 			CreateProxy();
 			NewQPainterPathStroker();

@@ -15,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QProgressBar), this);
 			_interceptor = (QProgressBar) realProxy.GetTransparentProxy();
@@ -31,7 +30,6 @@ namespace Qyoto {
 		private static IQProgressBarProxy StaticQProgressBar() {
 			return (IQProgressBarProxy) _staticInterceptor;
 		}
-
 		public enum Direction {
 			TopToBottom = 0,
 			BottomToTop = 1,

@@ -7,7 +7,6 @@ namespace Qyoto {
 	[SmokeClass("QLocale")]
 	public class QLocale : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QLocale(Type dummy) {}
 		[SmokeClass("QLocale")]
@@ -25,7 +24,6 @@ namespace Qyoto {
 			[SmokeMethod("system", "()", "")]
 			QLocale System();
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QLocale), this);
 			_interceptor = (QLocale) realProxy.GetTransparentProxy();
@@ -41,7 +39,6 @@ namespace Qyoto {
 		private static IQLocaleProxy StaticQLocale() {
 			return (IQLocaleProxy) _staticInterceptor;
 		}
-
 		public enum Language {
 			C = 1,
 			Abkhazian = 2,

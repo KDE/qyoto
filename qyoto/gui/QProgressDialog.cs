@@ -15,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QProgressDialog), this);
 			_interceptor = (QProgressDialog) realProxy.GetTransparentProxy();
@@ -31,7 +30,6 @@ namespace Qyoto {
 		private static IQProgressDialogProxy StaticQProgressDialog() {
 			return (IQProgressDialogProxy) _staticInterceptor;
 		}
-
 		[Q_PROPERTY("bool", "wasCanceled")]
 		public bool WasCanceled {
 			get {

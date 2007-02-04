@@ -7,13 +7,11 @@ namespace Qyoto {
 	[SmokeClass("QFontInfo")]
 	public class QFontInfo : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QFontInfo(Type dummy) {}
 		[SmokeClass("QFontInfo")]
 		interface IQFontInfoProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFontInfo), this);
 			_interceptor = (QFontInfo) realProxy.GetTransparentProxy();
@@ -29,7 +27,6 @@ namespace Qyoto {
 		private static IQFontInfoProxy StaticQFontInfo() {
 			return (IQFontInfoProxy) _staticInterceptor;
 		}
-
 		public QFontInfo(QFont arg1) : this((Type) null) {
 			CreateProxy();
 			NewQFontInfo(arg1);

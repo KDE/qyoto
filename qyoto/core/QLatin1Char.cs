@@ -6,13 +6,11 @@ namespace Qyoto {
 	[SmokeClass("QLatin1Char")]
 	public class QLatin1Char : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QLatin1Char(Type dummy) {}
 		[SmokeClass("QLatin1Char")]
 		interface IQLatin1CharProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QLatin1Char), this);
 			_interceptor = (QLatin1Char) realProxy.GetTransparentProxy();
@@ -28,7 +26,6 @@ namespace Qyoto {
 		private static IQLatin1CharProxy StaticQLatin1Char() {
 			return (IQLatin1CharProxy) _staticInterceptor;
 		}
-
 		public QLatin1Char(char c) : this((Type) null) {
 			CreateProxy();
 			NewQLatin1Char(c);

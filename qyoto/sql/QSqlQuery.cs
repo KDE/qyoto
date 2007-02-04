@@ -49,13 +49,11 @@ namespace Qyoto {
 	[SmokeClass("QSqlQuery")]
 	public class QSqlQuery : MarshalByRefObject, IQSqlQuery, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QSqlQuery(Type dummy) {}
 		[SmokeClass("QSqlQuery")]
 		interface IQSqlQueryProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSqlQuery), this);
 			_interceptor = (QSqlQuery) realProxy.GetTransparentProxy();
@@ -71,7 +69,6 @@ namespace Qyoto {
 		private static IQSqlQueryProxy StaticQSqlQuery() {
 			return (IQSqlQueryProxy) _staticInterceptor;
 		}
-
 		public enum BatchExecutionMode {
 			ValuesAsRows = 0,
 			ValuesAsColumns = 1,

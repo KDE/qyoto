@@ -16,7 +16,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAction), this);
 			_interceptor = (QAction) realProxy.GetTransparentProxy();
@@ -32,7 +31,6 @@ namespace Qyoto {
 		private static IQActionProxy StaticQAction() {
 			return (IQActionProxy) _staticInterceptor;
 		}
-
 		public enum MenuRole {
 			NoRole = 0,
 			TextHeuristicRole = 1,

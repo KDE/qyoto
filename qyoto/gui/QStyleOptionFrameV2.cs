@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QStyleOptionFrameV2")]
 		interface IQStyleOptionFrameV2Proxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionFrameV2), this);
 			_interceptor = (QStyleOptionFrameV2) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQStyleOptionFrameV2Proxy StaticQStyleOptionFrameV2() {
 			return (IQStyleOptionFrameV2Proxy) _staticInterceptor;
 		}
-
 		public enum StyleOptionVersion {
 			Version = 2,
 		}

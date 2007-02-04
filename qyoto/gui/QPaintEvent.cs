@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QPaintEvent")]
 		interface IQPaintEventProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPaintEvent), this);
 			_interceptor = (QPaintEvent) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQPaintEventProxy StaticQPaintEvent() {
 			return (IQPaintEventProxy) _staticInterceptor;
 		}
-
 		public QPaintEvent(QRegion paintRegion) : this((Type) null) {
 			CreateProxy();
 			NewQPaintEvent(paintRegion);

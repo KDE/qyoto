@@ -15,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDialog), this);
 			_interceptor = (QDialog) realProxy.GetTransparentProxy();
@@ -31,7 +30,6 @@ namespace Qyoto {
 		private static IQDialogProxy StaticQDialog() {
 			return (IQDialogProxy) _staticInterceptor;
 		}
-
 		public enum DialogCode {
 			Rejected = 0,
 			Accepted = 1,

@@ -6,13 +6,11 @@ namespace Qyoto {
 	[SmokeClass("QBool")]
 	public class QBool : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QBool(Type dummy) {}
 		[SmokeClass("QBool")]
 		interface IQBoolProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QBool), this);
 			_interceptor = (QBool) realProxy.GetTransparentProxy();
@@ -28,7 +26,6 @@ namespace Qyoto {
 		private static IQBoolProxy StaticQBool() {
 			return (IQBoolProxy) _staticInterceptor;
 		}
-
 		public QBool(bool B) : this((Type) null) {
 			CreateProxy();
 			NewQBool(B);

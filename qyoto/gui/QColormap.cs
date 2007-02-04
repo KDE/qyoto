@@ -7,7 +7,6 @@ namespace Qyoto {
 	[SmokeClass("QColormap")]
 	public class QColormap : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QColormap(Type dummy) {}
 		[SmokeClass("QColormap")]
@@ -21,7 +20,6 @@ namespace Qyoto {
 			[SmokeMethod("instance", "()", "")]
 			QColormap Instance();
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QColormap), this);
 			_interceptor = (QColormap) realProxy.GetTransparentProxy();
@@ -37,7 +35,6 @@ namespace Qyoto {
 		private static IQColormapProxy StaticQColormap() {
 			return (IQColormapProxy) _staticInterceptor;
 		}
-
 		public enum Mode {
 			Direct = 0,
 			Indexed = 1,

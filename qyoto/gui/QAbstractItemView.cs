@@ -15,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAbstractItemView), this);
 			_interceptor = (QAbstractItemView) realProxy.GetTransparentProxy();
@@ -31,7 +30,6 @@ namespace Qyoto {
 		private static IQAbstractItemViewProxy StaticQAbstractItemView() {
 			return (IQAbstractItemViewProxy) _staticInterceptor;
 		}
-
 		public enum SelectionMode {
 			NoSelection = 0,
 			SingleSelection = 1,

@@ -15,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextDocument), this);
 			_interceptor = (QTextDocument) realProxy.GetTransparentProxy();
@@ -31,7 +30,6 @@ namespace Qyoto {
 		private static IQTextDocumentProxy StaticQTextDocument() {
 			return (IQTextDocumentProxy) _staticInterceptor;
 		}
-
 		public enum MetaInformation {
 			DocumentTitle = 0,
 		}

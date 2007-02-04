@@ -16,7 +16,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStandardItemModel), this);
 			_interceptor = (QStandardItemModel) realProxy.GetTransparentProxy();
@@ -32,7 +31,6 @@ namespace Qyoto {
 		private static IQStandardItemModelProxy StaticQStandardItemModel() {
 			return (IQStandardItemModelProxy) _staticInterceptor;
 		}
-
 		[Q_PROPERTY("int", "sortRole")]
 		public int SortRole {
 			get {

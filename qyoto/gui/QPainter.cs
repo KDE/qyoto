@@ -8,7 +8,6 @@ namespace Qyoto {
 	[SmokeClass("QPainter")]
 	public class QPainter : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QPainter(Type dummy) {}
 		[SmokeClass("QPainter")]
@@ -24,7 +23,6 @@ namespace Qyoto {
 			[SmokeMethod("restoreRedirected", "(const QPaintDevice*)", "#")]
 			void RestoreRedirected(IQPaintDevice device);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPainter), this);
 			_interceptor = (QPainter) realProxy.GetTransparentProxy();
@@ -40,7 +38,6 @@ namespace Qyoto {
 		private static IQPainterProxy StaticQPainter() {
 			return (IQPainterProxy) _staticInterceptor;
 		}
-
 		public enum RenderHint {
 			Antialiasing = 0x01,
 			TextAntialiasing = 0x02,

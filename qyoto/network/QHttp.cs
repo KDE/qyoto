@@ -15,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QHttp), this);
 			_interceptor = (QHttp) realProxy.GetTransparentProxy();
@@ -31,7 +30,6 @@ namespace Qyoto {
 		private static IQHttpProxy StaticQHttp() {
 			return (IQHttpProxy) _staticInterceptor;
 		}
-
 		public enum State {
 			Unconnected = 0,
 			HostLookup = 1,

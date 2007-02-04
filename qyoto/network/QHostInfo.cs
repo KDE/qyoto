@@ -8,7 +8,6 @@ namespace Qyoto {
 	[SmokeClass("QHostInfo")]
 	public class QHostInfo : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QHostInfo(Type dummy) {}
 		[SmokeClass("QHostInfo")]
@@ -22,7 +21,6 @@ namespace Qyoto {
 			[SmokeMethod("localHostName", "()", "")]
 			string LocalHostName();
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QHostInfo), this);
 			_interceptor = (QHostInfo) realProxy.GetTransparentProxy();
@@ -38,7 +36,6 @@ namespace Qyoto {
 		private static IQHostInfoProxy StaticQHostInfo() {
 			return (IQHostInfoProxy) _staticInterceptor;
 		}
-
 		public enum HostInfoError {
 			NoError = 0,
 			HostNotFound = 1,

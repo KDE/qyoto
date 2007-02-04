@@ -15,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDrag), this);
 			_interceptor = (QDrag) realProxy.GetTransparentProxy();
@@ -31,7 +30,6 @@ namespace Qyoto {
 		private static IQDragProxy StaticQDrag() {
 			return (IQDragProxy) _staticInterceptor;
 		}
-
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QDrag(QWidget dragSource) : this((Type) null) {
 			CreateProxy();

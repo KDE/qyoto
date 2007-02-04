@@ -14,7 +14,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDBusAbstractAdaptor), this);
 			_interceptor = (QDBusAbstractAdaptor) realProxy.GetTransparentProxy();
@@ -30,7 +29,6 @@ namespace Qyoto {
 		private static IQDBusAbstractAdaptorProxy StaticQDBusAbstractAdaptor() {
 			return (IQDBusAbstractAdaptorProxy) _staticInterceptor;
 		}
-
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public static new string Tr(string s, string c) {
 			return StaticQDBusAbstractAdaptor().Tr(s,c);

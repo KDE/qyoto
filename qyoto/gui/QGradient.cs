@@ -6,7 +6,6 @@ namespace Qyoto {
 	[SmokeClass("QGradient")]
 	public class QGradient : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QGradient(Type dummy) {}
 		[SmokeClass("QGradient")]
@@ -14,7 +13,6 @@ namespace Qyoto {
 			[SmokeMethod("operator==", "(const QGradient&) const", "#")]
 			bool op_equals(QGradient lhs, QGradient gradient);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGradient), this);
 			_interceptor = (QGradient) realProxy.GetTransparentProxy();
@@ -30,7 +28,6 @@ namespace Qyoto {
 		private static IQGradientProxy StaticQGradient() {
 			return (IQGradientProxy) _staticInterceptor;
 		}
-
 		public enum TypeOf {
 			LinearGradient = 0,
 			RadialGradient = 1,

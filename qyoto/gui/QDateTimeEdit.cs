@@ -15,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDateTimeEdit), this);
 			_interceptor = (QDateTimeEdit) realProxy.GetTransparentProxy();
@@ -31,7 +30,6 @@ namespace Qyoto {
 		private static IQDateTimeEditProxy StaticQDateTimeEdit() {
 			return (IQDateTimeEditProxy) _staticInterceptor;
 		}
-
 		public enum Section {
 			NoSection = 0x0000,
 			AmPmSection = 0x0001,

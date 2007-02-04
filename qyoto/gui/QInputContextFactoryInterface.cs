@@ -11,7 +11,6 @@ namespace Qyoto {
 		[SmokeClass("QInputContextFactoryInterface")]
 		interface IQInputContextFactoryInterfaceProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QInputContextFactoryInterface), this);
 			_interceptor = (QInputContextFactoryInterface) realProxy.GetTransparentProxy();
@@ -27,7 +26,6 @@ namespace Qyoto {
 		private static IQInputContextFactoryInterfaceProxy StaticQInputContextFactoryInterface() {
 			return (IQInputContextFactoryInterfaceProxy) _staticInterceptor;
 		}
-
 		[SmokeMethod("create", "(const QString&)", "$")]
 		public virtual QInputContext Create(string key) {
 			return ProxyQInputContextFactoryInterface().Create(key);

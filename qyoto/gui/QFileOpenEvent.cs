@@ -10,7 +10,6 @@ namespace Qyoto {
 		[SmokeClass("QFileOpenEvent")]
 		interface IQFileOpenEventProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFileOpenEvent), this);
 			_interceptor = (QFileOpenEvent) realProxy.GetTransparentProxy();
@@ -26,7 +25,6 @@ namespace Qyoto {
 		private static IQFileOpenEventProxy StaticQFileOpenEvent() {
 			return (IQFileOpenEventProxy) _staticInterceptor;
 		}
-
 		public QFileOpenEvent(string file) : this((Type) null) {
 			CreateProxy();
 			NewQFileOpenEvent(file);

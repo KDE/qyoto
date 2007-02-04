@@ -14,7 +14,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTcpSocket), this);
 			_interceptor = (QTcpSocket) realProxy.GetTransparentProxy();
@@ -30,7 +29,6 @@ namespace Qyoto {
 		private static IQTcpSocketProxy StaticQTcpSocket() {
 			return (IQTcpSocketProxy) _staticInterceptor;
 		}
-
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QTcpSocket(QObject parent) : this((Type) null) {
 			CreateProxy();

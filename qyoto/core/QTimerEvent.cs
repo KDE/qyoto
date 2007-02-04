@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QTimerEvent")]
 		interface IQTimerEventProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTimerEvent), this);
 			_interceptor = (QTimerEvent) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQTimerEventProxy StaticQTimerEvent() {
 			return (IQTimerEventProxy) _staticInterceptor;
 		}
-
 		public QTimerEvent(int timerId) : this((Type) null) {
 			CreateProxy();
 			NewQTimerEvent(timerId);

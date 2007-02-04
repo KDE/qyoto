@@ -15,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGraphicsView), this);
 			_interceptor = (QGraphicsView) realProxy.GetTransparentProxy();
@@ -31,7 +30,6 @@ namespace Qyoto {
 		private static IQGraphicsViewProxy StaticQGraphicsView() {
 			return (IQGraphicsViewProxy) _staticInterceptor;
 		}
-
 		public enum ViewportAnchor {
 			NoAnchor = 0,
 			AnchorViewCenter = 1,

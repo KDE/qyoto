@@ -16,7 +16,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QWorkspace), this);
 			_interceptor = (QWorkspace) realProxy.GetTransparentProxy();
@@ -32,7 +31,6 @@ namespace Qyoto {
 		private static IQWorkspaceProxy StaticQWorkspace() {
 			return (IQWorkspaceProxy) _staticInterceptor;
 		}
-
 		public enum WindowOrder {
 			CreationOrder = 0,
 			StackingOrder = 1,

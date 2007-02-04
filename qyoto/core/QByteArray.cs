@@ -8,7 +8,6 @@ namespace Qyoto {
 	[SmokeClass("QByteArray")]
 	public class QByteArray : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QByteArray(Type dummy) {}
 		[SmokeClass("QByteArray")]
@@ -50,7 +49,6 @@ namespace Qyoto {
 			[SmokeMethod("fromBase64", "(const QByteArray&)", "#")]
 			QByteArray FromBase64(QByteArray base64);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QByteArray), this);
 			_interceptor = (QByteArray) realProxy.GetTransparentProxy();
@@ -66,7 +64,6 @@ namespace Qyoto {
 		private static IQByteArrayProxy StaticQByteArray() {
 			return (IQByteArrayProxy) _staticInterceptor;
 		}
-
 		public QByteArray() : this((Type) null) {
 			CreateProxy();
 			NewQByteArray();

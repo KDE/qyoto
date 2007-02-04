@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QStyleOptionTitleBar")]
 		interface IQStyleOptionTitleBarProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionTitleBar), this);
 			_interceptor = (QStyleOptionTitleBar) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQStyleOptionTitleBarProxy StaticQStyleOptionTitleBar() {
 			return (IQStyleOptionTitleBarProxy) _staticInterceptor;
 		}
-
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_TitleBar,
 		}

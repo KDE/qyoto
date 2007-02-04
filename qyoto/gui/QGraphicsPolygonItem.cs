@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QGraphicsPolygonItem")]
 		interface IQGraphicsPolygonItemProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGraphicsPolygonItem), this);
 			_interceptor = (QGraphicsPolygonItem) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQGraphicsPolygonItemProxy StaticQGraphicsPolygonItem() {
 			return (IQGraphicsPolygonItemProxy) _staticInterceptor;
 		}
-
 		public const int Type = 5;
 
 		public QGraphicsPolygonItem(QGraphicsItem parent, QGraphicsScene scene) : this((Type) null) {

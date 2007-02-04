@@ -16,7 +16,6 @@ namespace Qyoto {
 			[SmokeMethod("closestAcceptableSize", "(const QWidget*, const QSize&)", "##")]
 			QSize ClosestAcceptableSize(QWidget w, QSize s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QLayout), this);
 			_interceptor = (QLayout) realProxy.GetTransparentProxy();
@@ -32,7 +31,6 @@ namespace Qyoto {
 		private static IQLayoutProxy StaticQLayout() {
 			return (IQLayoutProxy) _staticInterceptor;
 		}
-
 		public enum SizeConstraint {
 			SetDefaultConstraint = 0,
 			SetNoConstraint = 1,

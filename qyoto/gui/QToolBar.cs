@@ -15,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QToolBar), this);
 			_interceptor = (QToolBar) realProxy.GetTransparentProxy();
@@ -31,7 +30,6 @@ namespace Qyoto {
 		private static IQToolBarProxy StaticQToolBar() {
 			return (IQToolBarProxy) _staticInterceptor;
 		}
-
 		[Q_PROPERTY("bool", "movable")]
 		public bool Movable {
 			get {

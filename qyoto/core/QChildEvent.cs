@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QChildEvent")]
 		interface IQChildEventProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QChildEvent), this);
 			_interceptor = (QChildEvent) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQChildEventProxy StaticQChildEvent() {
 			return (IQChildEventProxy) _staticInterceptor;
 		}
-
 		public QChildEvent(QEvent.TypeOf type, QObject child) : this((Type) null) {
 			CreateProxy();
 			NewQChildEvent(type,child);

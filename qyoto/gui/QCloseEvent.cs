@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QCloseEvent")]
 		interface IQCloseEventProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QCloseEvent), this);
 			_interceptor = (QCloseEvent) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQCloseEventProxy StaticQCloseEvent() {
 			return (IQCloseEventProxy) _staticInterceptor;
 		}
-
 		public QCloseEvent() : this((Type) null) {
 			CreateProxy();
 			NewQCloseEvent();

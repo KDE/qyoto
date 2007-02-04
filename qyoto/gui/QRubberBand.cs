@@ -14,7 +14,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QRubberBand), this);
 			_interceptor = (QRubberBand) realProxy.GetTransparentProxy();
@@ -30,7 +29,6 @@ namespace Qyoto {
 		private static IQRubberBandProxy StaticQRubberBand() {
 			return (IQRubberBandProxy) _staticInterceptor;
 		}
-
 		public enum Shape {
 			Line = 0,
 			Rectangle = 1,

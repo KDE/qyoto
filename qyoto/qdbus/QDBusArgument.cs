@@ -8,13 +8,11 @@ namespace Qyoto {
 	[SmokeClass("QDBusArgument")]
 	public class QDBusArgument : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QDBusArgument(Type dummy) {}
 		[SmokeClass("QDBusArgument")]
 		interface IQDBusArgumentProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDBusArgument), this);
 			_interceptor = (QDBusArgument) realProxy.GetTransparentProxy();
@@ -30,7 +28,6 @@ namespace Qyoto {
 		private static IQDBusArgumentProxy StaticQDBusArgument() {
 			return (IQDBusArgumentProxy) _staticInterceptor;
 		}
-
 		public QDBusArgument() : this((Type) null) {
 			CreateProxy();
 			NewQDBusArgument();
@@ -48,51 +45,51 @@ namespace Qyoto {
 			ProxyQDBusArgument().NewQDBusArgument(other);
 		}
 		[SmokeMethod("operator<<", "(uchar)", "$")]
-		public QDBusArgument op_write(ushort arg) {
-			return ProxyQDBusArgument().op_write(arg);
+		public QDBusArgument Write(ushort arg) {
+			return ProxyQDBusArgument().Write(arg);
 		}
 		[SmokeMethod("operator<<", "(bool)", "$")]
-		public QDBusArgument op_write(bool arg) {
-			return ProxyQDBusArgument().op_write(arg);
+		public QDBusArgument Write(bool arg) {
+			return ProxyQDBusArgument().Write(arg);
 		}
 		[SmokeMethod("operator<<", "(short)", "$")]
-		public QDBusArgument op_write(short arg) {
-			return ProxyQDBusArgument().op_write(arg);
+		public QDBusArgument Write(short arg) {
+			return ProxyQDBusArgument().Write(arg);
 		}
 		[SmokeMethod("operator<<", "(int)", "$")]
-		public QDBusArgument op_write(int arg) {
-			return ProxyQDBusArgument().op_write(arg);
+		public QDBusArgument Write(int arg) {
+			return ProxyQDBusArgument().Write(arg);
 		}
 		[SmokeMethod("operator<<", "(uint)", "$")]
-		public QDBusArgument op_write(uint arg) {
-			return ProxyQDBusArgument().op_write(arg);
+		public QDBusArgument Write(uint arg) {
+			return ProxyQDBusArgument().Write(arg);
 		}
 		[SmokeMethod("operator<<", "(qlonglong)", "?")]
-		public QDBusArgument op_write(long arg) {
-			return ProxyQDBusArgument().op_write(arg);
+		public QDBusArgument Write(long arg) {
+			return ProxyQDBusArgument().Write(arg);
 		}
 		[SmokeMethod("operator<<", "(qulonglong)", "$")]
-		public QDBusArgument op_write(ulong arg) {
-			return ProxyQDBusArgument().op_write(arg);
+		public QDBusArgument Write(ulong arg) {
+			return ProxyQDBusArgument().Write(arg);
 		}
 		[SmokeMethod("operator<<", "(double)", "$")]
-		public QDBusArgument op_write(double arg) {
-			return ProxyQDBusArgument().op_write(arg);
+		public QDBusArgument Write(double arg) {
+			return ProxyQDBusArgument().Write(arg);
 		}
 		[SmokeMethod("operator<<", "(const QString&)", "$")]
-		public QDBusArgument op_write(string arg) {
-			return ProxyQDBusArgument().op_write(arg);
+		public QDBusArgument Write(string arg) {
+			return ProxyQDBusArgument().Write(arg);
 		}
 		// QDBusArgument& operator<<(const QDBusVariant& arg1); >>>> NOT CONVERTED
 		// QDBusArgument& operator<<(const QDBusObjectPath& arg1); >>>> NOT CONVERTED
 		// QDBusArgument& operator<<(const QDBusSignature& arg1); >>>> NOT CONVERTED
 		[SmokeMethod("operator<<", "(const QStringList&)", "?")]
-		public QDBusArgument op_write(List<string> arg) {
-			return ProxyQDBusArgument().op_write(arg);
+		public QDBusArgument Write(List<string> arg) {
+			return ProxyQDBusArgument().Write(arg);
 		}
 		[SmokeMethod("operator<<", "(const QByteArray&)", "#")]
-		public QDBusArgument op_write(QByteArray arg) {
-			return ProxyQDBusArgument().op_write(arg);
+		public QDBusArgument Write(QByteArray arg) {
+			return ProxyQDBusArgument().Write(arg);
 		}
 		[SmokeMethod("beginStructure", "()", "")]
 		public void BeginStructure() {
@@ -131,43 +128,43 @@ namespace Qyoto {
 			return ProxyQDBusArgument().CurrentSignature();
 		}
 		[SmokeMethod("operator>>", "(uchar&) const", "$")]
-		public QDBusArgument op_read(ushort arg) {
-			return ProxyQDBusArgument().op_read(arg);
+		public QDBusArgument Read(ushort arg) {
+			return ProxyQDBusArgument().Read(arg);
 		}
 		[SmokeMethod("operator>>", "(bool&) const", "$")]
-		public QDBusArgument op_read(bool arg) {
-			return ProxyQDBusArgument().op_read(arg);
+		public QDBusArgument Read(bool arg) {
+			return ProxyQDBusArgument().Read(arg);
 		}
 		// const QDBusArgument& operator>>(short& arg1); >>>> NOT CONVERTED
 		// const QDBusArgument& operator>>(ushort& arg1); >>>> NOT CONVERTED
 		[SmokeMethod("operator>>", "(int&) const", "$")]
-		public QDBusArgument op_read(out int arg) {
-			return ProxyQDBusArgument().op_read(out arg);
+		public QDBusArgument Read(out int arg) {
+			return ProxyQDBusArgument().Read(out arg);
 		}
 		[SmokeMethod("operator>>", "(uint&) const", "$")]
-		public QDBusArgument op_read(uint arg) {
-			return ProxyQDBusArgument().op_read(arg);
+		public QDBusArgument Read(uint arg) {
+			return ProxyQDBusArgument().Read(arg);
 		}
 		// const QDBusArgument& operator>>(qlonglong& arg1); >>>> NOT CONVERTED
 		// const QDBusArgument& operator>>(qulonglong& arg1); >>>> NOT CONVERTED
 		[SmokeMethod("operator>>", "(double&) const", "$")]
-		public QDBusArgument op_read(double arg) {
-			return ProxyQDBusArgument().op_read(arg);
+		public QDBusArgument Read(double arg) {
+			return ProxyQDBusArgument().Read(arg);
 		}
 		[SmokeMethod("operator>>", "(QString&) const", "$")]
-		public QDBusArgument op_read(StringBuilder arg) {
-			return ProxyQDBusArgument().op_read(arg);
+		public QDBusArgument Read(StringBuilder arg) {
+			return ProxyQDBusArgument().Read(arg);
 		}
 		// const QDBusArgument& operator>>(QDBusVariant& arg1); >>>> NOT CONVERTED
 		// const QDBusArgument& operator>>(QDBusObjectPath& arg1); >>>> NOT CONVERTED
 		// const QDBusArgument& operator>>(QDBusSignature& arg1); >>>> NOT CONVERTED
 		[SmokeMethod("operator>>", "(QStringList&) const", "?")]
-		public QDBusArgument op_read(List<string> arg) {
-			return ProxyQDBusArgument().op_read(arg);
+		public QDBusArgument Read(List<string> arg) {
+			return ProxyQDBusArgument().Read(arg);
 		}
 		[SmokeMethod("operator>>", "(QByteArray&) const", "#")]
-		public QDBusArgument op_read(QByteArray arg) {
-			return ProxyQDBusArgument().op_read(arg);
+		public QDBusArgument Read(QByteArray arg) {
+			return ProxyQDBusArgument().Read(arg);
 		}
 		[SmokeMethod("beginArray", "() const", "")]
 		public void BeginArray() {

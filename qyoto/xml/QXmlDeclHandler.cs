@@ -14,13 +14,11 @@ namespace Qyoto {
 	[SmokeClass("QXmlDeclHandler")]
 	public class QXmlDeclHandler : MarshalByRefObject, IQXmlDeclHandler {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QXmlDeclHandler(Type dummy) {}
 		[SmokeClass("QXmlDeclHandler")]
 		interface IQXmlDeclHandlerProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlDeclHandler), this);
 			_interceptor = (QXmlDeclHandler) realProxy.GetTransparentProxy();
@@ -36,7 +34,6 @@ namespace Qyoto {
 		private static IQXmlDeclHandlerProxy StaticQXmlDeclHandler() {
 			return (IQXmlDeclHandlerProxy) _staticInterceptor;
 		}
-
 		[SmokeMethod("attributeDecl", "(const QString&, const QString&, const QString&, const QString&, const QString&)", "$$$$$")]
 		public virtual bool AttributeDecl(string eName, string aName, string type, string valueDefault, string value) {
 			return ProxyQXmlDeclHandler().AttributeDecl(eName,aName,type,valueDefault,value);

@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QStyleOptionSlider")]
 		interface IQStyleOptionSliderProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionSlider), this);
 			_interceptor = (QStyleOptionSlider) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQStyleOptionSliderProxy StaticQStyleOptionSlider() {
 			return (IQStyleOptionSliderProxy) _staticInterceptor;
 		}
-
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_Slider,
 		}

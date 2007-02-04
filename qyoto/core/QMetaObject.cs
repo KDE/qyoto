@@ -7,7 +7,6 @@ namespace Qyoto {
 	[SmokeClass("QMetaObject")]
 	public class QMetaObject : MarshalByRefObject {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QMetaObject(Type dummy) {}
 		[SmokeClass("QMetaObject")]
@@ -117,7 +116,6 @@ namespace Qyoto {
 			[SmokeMethod("invokeMethod", "(QObject*, const char*)", "#$")]
 			bool InvokeMethod(QObject arg1, string member);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMetaObject), this);
 			_interceptor = (QMetaObject) realProxy.GetTransparentProxy();
@@ -133,7 +131,6 @@ namespace Qyoto {
 		private static IQMetaObjectProxy StaticQMetaObject() {
 			return (IQMetaObjectProxy) _staticInterceptor;
 		}
-
 		public enum Call {
 			InvokeMetaMethod = 0,
 			ReadProperty = 1,

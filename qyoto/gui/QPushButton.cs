@@ -14,7 +14,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPushButton), this);
 			_interceptor = (QPushButton) realProxy.GetTransparentProxy();
@@ -30,7 +29,6 @@ namespace Qyoto {
 		private static IQPushButtonProxy StaticQPushButton() {
 			return (IQPushButtonProxy) _staticInterceptor;
 		}
-
 		[Q_PROPERTY("bool", "autoDefault")]
 		public bool AutoDefault {
 			get {

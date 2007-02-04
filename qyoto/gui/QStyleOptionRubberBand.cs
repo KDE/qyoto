@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QStyleOptionRubberBand")]
 		interface IQStyleOptionRubberBandProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionRubberBand), this);
 			_interceptor = (QStyleOptionRubberBand) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQStyleOptionRubberBandProxy StaticQStyleOptionRubberBand() {
 			return (IQStyleOptionRubberBandProxy) _staticInterceptor;
 		}
-
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_RubberBand,
 		}

@@ -8,7 +8,6 @@ namespace Qyoto {
 	[SmokeClass("QNetworkInterface")]
 	public class QNetworkInterface : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QNetworkInterface(Type dummy) {}
 		[SmokeClass("QNetworkInterface")]
@@ -22,7 +21,6 @@ namespace Qyoto {
 			[SmokeMethod("allAddresses", "()", "")]
 			List<QHostAddress> AllAddresses();
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QNetworkInterface), this);
 			_interceptor = (QNetworkInterface) realProxy.GetTransparentProxy();
@@ -38,7 +36,6 @@ namespace Qyoto {
 		private static IQNetworkInterfaceProxy StaticQNetworkInterface() {
 			return (IQNetworkInterfaceProxy) _staticInterceptor;
 		}
-
 		public enum InterfaceFlag {
 			IsUp = 0x1,
 			IsRunning = 0x2,

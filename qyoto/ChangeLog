@@ -9,6 +9,11 @@
 	  This will show the virtual method callbacks from the Smoke lib
 	* Removed core/QGlobalSpace.cs as it isn't needed because the methods in 
 	  it are in Qt.cs
+	* The 'operator<<' and 'operator>>' methods are no longer renamed 
+	  'op_write' and 'op_read', but 'Write' and 'Read' instead.
+	* Started to implement QObject.FindChild() and QObject.FindChildren(),
+	  but the code needs to be translated from QtRuby.
+	* Removed unwanted blank lines from the generated code.
 
 2007-01-04  Richard Dale  <rdale@foton.es>
 

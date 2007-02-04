@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QGraphicsSceneContextMenuEvent")]
 		interface IQGraphicsSceneContextMenuEventProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGraphicsSceneContextMenuEvent), this);
 			_interceptor = (QGraphicsSceneContextMenuEvent) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQGraphicsSceneContextMenuEventProxy StaticQGraphicsSceneContextMenuEvent() {
 			return (IQGraphicsSceneContextMenuEventProxy) _staticInterceptor;
 		}
-
 		public enum Reason {
 			Mouse = 0,
 			Keyboard = 1,

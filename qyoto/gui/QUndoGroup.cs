@@ -16,7 +16,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QUndoGroup), this);
 			_interceptor = (QUndoGroup) realProxy.GetTransparentProxy();
@@ -32,7 +31,6 @@ namespace Qyoto {
 		private static IQUndoGroupProxy StaticQUndoGroup() {
 			return (IQUndoGroupProxy) _staticInterceptor;
 		}
-
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QUndoGroup(QObject parent) : this((Type) null) {
 			CreateProxy();

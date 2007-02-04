@@ -14,13 +14,11 @@ namespace Qyoto {
 	[SmokeClass("QXmlErrorHandler")]
 	public class QXmlErrorHandler : MarshalByRefObject, IQXmlErrorHandler {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QXmlErrorHandler(Type dummy) {}
 		[SmokeClass("QXmlErrorHandler")]
 		interface IQXmlErrorHandlerProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlErrorHandler), this);
 			_interceptor = (QXmlErrorHandler) realProxy.GetTransparentProxy();
@@ -36,7 +34,6 @@ namespace Qyoto {
 		private static IQXmlErrorHandlerProxy StaticQXmlErrorHandler() {
 			return (IQXmlErrorHandlerProxy) _staticInterceptor;
 		}
-
 		[SmokeMethod("warning", "(const QXmlParseException&)", "#")]
 		public virtual bool Warning(QXmlParseException exception) {
 			return ProxyQXmlErrorHandler().Warning(exception);

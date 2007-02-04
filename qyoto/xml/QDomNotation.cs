@@ -10,7 +10,6 @@ namespace Qyoto {
 		[SmokeClass("QDomNotation")]
 		interface IQDomNotationProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomNotation), this);
 			_interceptor = (QDomNotation) realProxy.GetTransparentProxy();
@@ -26,7 +25,6 @@ namespace Qyoto {
 		private static IQDomNotationProxy StaticQDomNotation() {
 			return (IQDomNotationProxy) _staticInterceptor;
 		}
-
 		public QDomNotation() : this((Type) null) {
 			CreateProxy();
 			NewQDomNotation();

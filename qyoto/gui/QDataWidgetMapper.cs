@@ -15,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDataWidgetMapper), this);
 			_interceptor = (QDataWidgetMapper) realProxy.GetTransparentProxy();
@@ -31,7 +30,6 @@ namespace Qyoto {
 		private static IQDataWidgetMapperProxy StaticQDataWidgetMapper() {
 			return (IQDataWidgetMapperProxy) _staticInterceptor;
 		}
-
 		public enum SubmitPolicy {
 			AutoSubmit = 0,
 			ManualSubmit = 1,

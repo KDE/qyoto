@@ -12,13 +12,11 @@ namespace Qyoto {
 	[SmokeClass("QXmlEntityResolver")]
 	public class QXmlEntityResolver : MarshalByRefObject, IQXmlEntityResolver {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QXmlEntityResolver(Type dummy) {}
 		[SmokeClass("QXmlEntityResolver")]
 		interface IQXmlEntityResolverProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlEntityResolver), this);
 			_interceptor = (QXmlEntityResolver) realProxy.GetTransparentProxy();
@@ -34,7 +32,6 @@ namespace Qyoto {
 		private static IQXmlEntityResolverProxy StaticQXmlEntityResolver() {
 			return (IQXmlEntityResolverProxy) _staticInterceptor;
 		}
-
 		[SmokeMethod("resolveEntity", "(const QString&, const QString&, QXmlInputSource*&)", "$$?")]
 		public virtual bool ResolveEntity(string publicId, string systemId, QXmlInputSource ret) {
 			return ProxyQXmlEntityResolver().ResolveEntity(publicId,systemId,ret);

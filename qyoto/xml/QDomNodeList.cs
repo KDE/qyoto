@@ -6,7 +6,6 @@ namespace Qyoto {
 	[SmokeClass("QDomNodeList")]
 	public class QDomNodeList : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QDomNodeList(Type dummy) {}
 		[SmokeClass("QDomNodeList")]
@@ -14,7 +13,6 @@ namespace Qyoto {
 			[SmokeMethod("operator==", "(const QDomNodeList&) const", "#")]
 			bool op_equals(QDomNodeList lhs, QDomNodeList arg1);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomNodeList), this);
 			_interceptor = (QDomNodeList) realProxy.GetTransparentProxy();
@@ -30,7 +28,6 @@ namespace Qyoto {
 		private static IQDomNodeListProxy StaticQDomNodeList() {
 			return (IQDomNodeListProxy) _staticInterceptor;
 		}
-
 		public QDomNodeList() : this((Type) null) {
 			CreateProxy();
 			NewQDomNodeList();

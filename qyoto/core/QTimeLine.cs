@@ -15,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTimeLine), this);
 			_interceptor = (QTimeLine) realProxy.GetTransparentProxy();
@@ -31,7 +30,6 @@ namespace Qyoto {
 		private static IQTimeLineProxy StaticQTimeLine() {
 			return (IQTimeLineProxy) _staticInterceptor;
 		}
-
 		public enum State {
 			NotRunning = 0,
 			Paused = 1,

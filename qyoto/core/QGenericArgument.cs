@@ -6,13 +6,11 @@ namespace Qyoto {
 	[SmokeClass("QGenericArgument")]
 	public class QGenericArgument : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QGenericArgument(Type dummy) {}
 		[SmokeClass("QGenericArgument")]
 		interface IQGenericArgumentProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGenericArgument), this);
 			_interceptor = (QGenericArgument) realProxy.GetTransparentProxy();
@@ -28,7 +26,6 @@ namespace Qyoto {
 		private static IQGenericArgumentProxy StaticQGenericArgument() {
 			return (IQGenericArgumentProxy) _staticInterceptor;
 		}
-
 		// QGenericArgument* QGenericArgument(const char* arg1,const void* arg2); >>>> NOT CONVERTED
 		public QGenericArgument(string aName) : this((Type) null) {
 			CreateProxy();

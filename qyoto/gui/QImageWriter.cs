@@ -8,7 +8,6 @@ namespace Qyoto {
 	[SmokeClass("QImageWriter")]
 	public class QImageWriter : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QImageWriter(Type dummy) {}
 		[SmokeClass("QImageWriter")]
@@ -16,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("supportedImageFormats", "()", "")]
 			List<QByteArray> SupportedImageFormats();
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QImageWriter), this);
 			_interceptor = (QImageWriter) realProxy.GetTransparentProxy();
@@ -32,7 +30,6 @@ namespace Qyoto {
 		private static IQImageWriterProxy StaticQImageWriter() {
 			return (IQImageWriterProxy) _staticInterceptor;
 		}
-
 		public enum ImageWriterError {
 			UnknownError = 0,
 			DeviceError = 1,

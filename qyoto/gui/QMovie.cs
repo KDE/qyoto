@@ -18,7 +18,6 @@ namespace Qyoto {
 			[SmokeMethod("supportedFormats", "()", "")]
 			List<QByteArray> SupportedFormats();
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMovie), this);
 			_interceptor = (QMovie) realProxy.GetTransparentProxy();
@@ -34,7 +33,6 @@ namespace Qyoto {
 		private static IQMovieProxy StaticQMovie() {
 			return (IQMovieProxy) _staticInterceptor;
 		}
-
 		public enum MovieState {
 			NotRunning = 0,
 			Paused = 1,

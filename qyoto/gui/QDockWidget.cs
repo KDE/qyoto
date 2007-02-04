@@ -15,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDockWidget), this);
 			_interceptor = (QDockWidget) realProxy.GetTransparentProxy();
@@ -31,7 +30,6 @@ namespace Qyoto {
 		private static IQDockWidgetProxy StaticQDockWidget() {
 			return (IQDockWidgetProxy) _staticInterceptor;
 		}
-
 		public enum DockWidgetFeature {
 			DockWidgetClosable = 0x01,
 			DockWidgetMovable = 0x02,

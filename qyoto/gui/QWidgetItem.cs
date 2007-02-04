@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QWidgetItem")]
 		interface IQWidgetItemProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QWidgetItem), this);
 			_interceptor = (QWidgetItem) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQWidgetItemProxy StaticQWidgetItem() {
 			return (IQWidgetItemProxy) _staticInterceptor;
 		}
-
 		public QWidgetItem(QWidget w) : this((Type) null) {
 			CreateProxy();
 			NewQWidgetItem(w);

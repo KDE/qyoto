@@ -8,7 +8,6 @@ namespace Qyoto {
 	[SmokeClass("QColor")]
 	public class QColor : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QColor(Type dummy) {}
 		[SmokeClass("QColor")]
@@ -46,7 +45,6 @@ namespace Qyoto {
 			[SmokeMethod("fromCmykF", "(qreal, qreal, qreal, qreal)", "$$$$")]
 			QColor FromCmykF(double c, double m, double y, double k);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QColor), this);
 			_interceptor = (QColor) realProxy.GetTransparentProxy();
@@ -62,7 +60,6 @@ namespace Qyoto {
 		private static IQColorProxy StaticQColor() {
 			return (IQColorProxy) _staticInterceptor;
 		}
-
 		public enum Spec {
 			Invalid = 0,
 			Rgb = 1,

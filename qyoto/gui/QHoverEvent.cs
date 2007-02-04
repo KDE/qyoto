@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QHoverEvent")]
 		interface IQHoverEventProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QHoverEvent), this);
 			_interceptor = (QHoverEvent) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQHoverEventProxy StaticQHoverEvent() {
 			return (IQHoverEventProxy) _staticInterceptor;
 		}
-
 		public QHoverEvent(QEvent.TypeOf type, QPoint pos, QPoint oldPos) : this((Type) null) {
 			CreateProxy();
 			NewQHoverEvent(type,pos,oldPos);

@@ -10,7 +10,6 @@ namespace Qyoto {
 		[SmokeClass("QStyleFactoryInterface")]
 		interface IQStyleFactoryInterfaceProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleFactoryInterface), this);
 			_interceptor = (QStyleFactoryInterface) realProxy.GetTransparentProxy();
@@ -26,7 +25,6 @@ namespace Qyoto {
 		private static IQStyleFactoryInterfaceProxy StaticQStyleFactoryInterface() {
 			return (IQStyleFactoryInterfaceProxy) _staticInterceptor;
 		}
-
 		[SmokeMethod("create", "(const QString&)", "$")]
 		public virtual QStyle Create(string key) {
 			return ProxyQStyleFactoryInterface().Create(key);

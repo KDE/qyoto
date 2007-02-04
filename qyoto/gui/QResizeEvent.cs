@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QResizeEvent")]
 		interface IQResizeEventProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QResizeEvent), this);
 			_interceptor = (QResizeEvent) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQResizeEventProxy StaticQResizeEvent() {
 			return (IQResizeEventProxy) _staticInterceptor;
 		}
-
 		public QResizeEvent(QSize size, QSize oldSize) : this((Type) null) {
 			CreateProxy();
 			NewQResizeEvent(size,oldSize);

@@ -7,13 +7,11 @@ namespace Qyoto {
 	[SmokeClass("QTextOption")]
 	public class QTextOption : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QTextOption(Type dummy) {}
 		[SmokeClass("QTextOption")]
 		interface IQTextOptionProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextOption), this);
 			_interceptor = (QTextOption) realProxy.GetTransparentProxy();
@@ -29,7 +27,6 @@ namespace Qyoto {
 		private static IQTextOptionProxy StaticQTextOption() {
 			return (IQTextOptionProxy) _staticInterceptor;
 		}
-
 		public enum WrapMode {
 			NoWrap = 0,
 			WordWrap = 1,

@@ -6,7 +6,6 @@ namespace Qyoto {
 	[SmokeClass("QTextTableCell")]
 	public class QTextTableCell : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QTextTableCell(Type dummy) {}
 		[SmokeClass("QTextTableCell")]
@@ -14,7 +13,6 @@ namespace Qyoto {
 			[SmokeMethod("operator==", "(const QTextTableCell&) const", "#")]
 			bool op_equals(QTextTableCell lhs, QTextTableCell other);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextTableCell), this);
 			_interceptor = (QTextTableCell) realProxy.GetTransparentProxy();
@@ -30,7 +28,6 @@ namespace Qyoto {
 		private static IQTextTableCellProxy StaticQTextTableCell() {
 			return (IQTextTableCellProxy) _staticInterceptor;
 		}
-
 		public QTextTableCell() : this((Type) null) {
 			CreateProxy();
 			NewQTextTableCell();

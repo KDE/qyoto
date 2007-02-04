@@ -13,13 +13,11 @@ namespace Qyoto {
 	[SmokeClass("QMimeSource")]
 	public class QMimeSource : MarshalByRefObject, IQMimeSource {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QMimeSource(Type dummy) {}
 		[SmokeClass("QMimeSource")]
 		interface IQMimeSourceProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMimeSource), this);
 			_interceptor = (QMimeSource) realProxy.GetTransparentProxy();
@@ -35,7 +33,6 @@ namespace Qyoto {
 		private static IQMimeSourceProxy StaticQMimeSource() {
 			return (IQMimeSourceProxy) _staticInterceptor;
 		}
-
 		[SmokeMethod("format", "(int) const", "$")]
 		public virtual string Format(int n) {
 			return ProxyQMimeSource().Format(n);

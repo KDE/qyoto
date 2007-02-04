@@ -14,7 +14,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QItemDelegate), this);
 			_interceptor = (QItemDelegate) realProxy.GetTransparentProxy();
@@ -30,7 +29,6 @@ namespace Qyoto {
 		private static IQItemDelegateProxy StaticQItemDelegate() {
 			return (IQItemDelegateProxy) _staticInterceptor;
 		}
-
 		[Q_PROPERTY("bool", "clipping")]
 		public bool Clipping {
 			get {

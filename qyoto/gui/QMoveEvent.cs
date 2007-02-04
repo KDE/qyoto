@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QMoveEvent")]
 		interface IQMoveEventProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMoveEvent), this);
 			_interceptor = (QMoveEvent) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQMoveEventProxy StaticQMoveEvent() {
 			return (IQMoveEventProxy) _staticInterceptor;
 		}
-
 		public QMoveEvent(QPoint pos, QPoint oldPos) : this((Type) null) {
 			CreateProxy();
 			NewQMoveEvent(pos,oldPos);

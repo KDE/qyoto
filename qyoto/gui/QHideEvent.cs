@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QHideEvent")]
 		interface IQHideEventProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QHideEvent), this);
 			_interceptor = (QHideEvent) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQHideEventProxy StaticQHideEvent() {
 			return (IQHideEventProxy) _staticInterceptor;
 		}
-
 		public QHideEvent() : this((Type) null) {
 			CreateProxy();
 			NewQHideEvent();

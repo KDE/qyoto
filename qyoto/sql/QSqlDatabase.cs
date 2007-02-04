@@ -8,7 +8,6 @@ namespace Qyoto {
 	[SmokeClass("QSqlDatabase")]
 	public class QSqlDatabase : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QSqlDatabase(Type dummy) {}
 		[SmokeClass("QSqlDatabase")]
@@ -42,7 +41,6 @@ namespace Qyoto {
 			[SmokeMethod("isDriverAvailable", "(const QString&)", "$")]
 			bool IsDriverAvailable(string name);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSqlDatabase), this);
 			_interceptor = (QSqlDatabase) realProxy.GetTransparentProxy();
@@ -58,7 +56,6 @@ namespace Qyoto {
 		private static IQSqlDatabaseProxy StaticQSqlDatabase() {
 			return (IQSqlDatabaseProxy) _staticInterceptor;
 		}
-
 		public QSqlDatabase() : this((Type) null) {
 			CreateProxy();
 			NewQSqlDatabase();

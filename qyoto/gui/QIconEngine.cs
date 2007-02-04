@@ -7,13 +7,11 @@ namespace Qyoto {
 	[SmokeClass("QIconEngine")]
 	public class QIconEngine : MarshalByRefObject {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QIconEngine(Type dummy) {}
 		[SmokeClass("QIconEngine")]
 		interface IQIconEngineProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QIconEngine), this);
 			_interceptor = (QIconEngine) realProxy.GetTransparentProxy();
@@ -29,7 +27,6 @@ namespace Qyoto {
 		private static IQIconEngineProxy StaticQIconEngine() {
 			return (IQIconEngineProxy) _staticInterceptor;
 		}
-
 		[SmokeMethod("paint", "(QPainter*, const QRect&, QIcon::Mode, QIcon::State)", "##$$")]
 		public virtual void Paint(QPainter painter, QRect rect, QIcon.Mode mode, QIcon.State state) {
 			ProxyQIconEngine().Paint(painter,rect,mode,state);

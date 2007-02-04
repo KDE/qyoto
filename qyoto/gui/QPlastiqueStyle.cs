@@ -14,7 +14,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPlastiqueStyle), this);
 			_interceptor = (QPlastiqueStyle) realProxy.GetTransparentProxy();
@@ -30,7 +29,6 @@ namespace Qyoto {
 		private static IQPlastiqueStyleProxy StaticQPlastiqueStyle() {
 			return (IQPlastiqueStyleProxy) _staticInterceptor;
 		}
-
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QPlastiqueStyle() : this((Type) null) {
 			CreateProxy();

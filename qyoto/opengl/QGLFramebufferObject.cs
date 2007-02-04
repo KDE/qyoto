@@ -11,7 +11,6 @@ namespace Qyoto {
 			[SmokeMethod("hasOpenGLFramebufferObjects", "()", "")]
 			bool HasOpenGLFramebufferObjects();
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGLFramebufferObject), this);
 			_interceptor = (QGLFramebufferObject) realProxy.GetTransparentProxy();
@@ -27,7 +26,6 @@ namespace Qyoto {
 		private static IQGLFramebufferObjectProxy StaticQGLFramebufferObject() {
 			return (IQGLFramebufferObjectProxy) _staticInterceptor;
 		}
-
 		public QGLFramebufferObject(QSize size, int target) : this((Type) null) {
 			CreateProxy();
 			NewQGLFramebufferObject(size,target);

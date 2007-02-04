@@ -7,13 +7,11 @@ namespace Qyoto {
 	[SmokeClass("QTextLayout")]
 	public class QTextLayout : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QTextLayout(Type dummy) {}
 		[SmokeClass("QTextLayout")]
 		interface IQTextLayoutProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextLayout), this);
 			_interceptor = (QTextLayout) realProxy.GetTransparentProxy();
@@ -29,7 +27,6 @@ namespace Qyoto {
 		private static IQTextLayoutProxy StaticQTextLayout() {
 			return (IQTextLayoutProxy) _staticInterceptor;
 		}
-
 		public enum CursorMode {
 			SkipCharacters = 0,
 			SkipWords = 1,

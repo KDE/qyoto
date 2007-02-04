@@ -112,7 +112,6 @@ namespace Qyoto {
 			[SmokeMethod("standardIcon", "(QMessageBox::Icon)", "$")]
 			QPixmap StandardIcon(QMessageBox.Icon icon);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMessageBox), this);
 			_interceptor = (QMessageBox) realProxy.GetTransparentProxy();
@@ -128,7 +127,6 @@ namespace Qyoto {
 		private static IQMessageBoxProxy StaticQMessageBox() {
 			return (IQMessageBoxProxy) _staticInterceptor;
 		}
-
 		public enum Icon {
 			NoIcon = 0,
 			Information = 1,

@@ -14,7 +14,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSlider), this);
 			_interceptor = (QSlider) realProxy.GetTransparentProxy();
@@ -30,7 +29,6 @@ namespace Qyoto {
 		private static IQSliderProxy StaticQSlider() {
 			return (IQSliderProxy) _staticInterceptor;
 		}
-
 		public enum TickPosition {
 			NoTicks = 0,
 			TicksAbove = 1,

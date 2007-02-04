@@ -6,7 +6,6 @@ namespace Qyoto {
 	[SmokeClass("QAccessible")]
 	public class QAccessible : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QAccessible(Type dummy) {}
 		[SmokeClass("QAccessible")]
@@ -24,7 +23,6 @@ namespace Qyoto {
 			[SmokeMethod("cleanup", "()", "")]
 			void Cleanup();
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAccessible), this);
 			_interceptor = (QAccessible) realProxy.GetTransparentProxy();
@@ -40,7 +38,6 @@ namespace Qyoto {
 		private static IQAccessibleProxy StaticQAccessible() {
 			return (IQAccessibleProxy) _staticInterceptor;
 		}
-
 		public enum Event {
 			SoundPlayed = 0x0001,
 			Alert = 0x0002,

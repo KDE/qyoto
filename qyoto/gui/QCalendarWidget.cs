@@ -16,7 +16,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QCalendarWidget), this);
 			_interceptor = (QCalendarWidget) realProxy.GetTransparentProxy();
@@ -32,7 +31,6 @@ namespace Qyoto {
 		private static IQCalendarWidgetProxy StaticQCalendarWidget() {
 			return (IQCalendarWidgetProxy) _staticInterceptor;
 		}
-
 		public enum HorizontalHeaderFormat {
 			NoHorizontalHeader = 0,
 			SingleLetterDayNames = 1,

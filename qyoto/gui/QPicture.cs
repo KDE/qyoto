@@ -21,7 +21,6 @@ namespace Qyoto {
 			[SmokeMethod("outputFormatList", "()", "")]
 			List<string> OutputFormatList();
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPicture), this);
 			_interceptor = (QPicture) realProxy.GetTransparentProxy();
@@ -37,7 +36,6 @@ namespace Qyoto {
 		private static IQPictureProxy StaticQPicture() {
 			return (IQPictureProxy) _staticInterceptor;
 		}
-
 		public QPicture(int formatVersion) : this((Type) null) {
 			CreateProxy();
 			NewQPicture(formatVersion);

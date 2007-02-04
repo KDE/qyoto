@@ -8,7 +8,6 @@ namespace Qyoto {
 	[SmokeClass("QVariant")]
 	public partial class QVariant : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QVariant(Type dummy) {}
 		[SmokeClass("QVariant")]
@@ -20,7 +19,6 @@ namespace Qyoto {
 			[SmokeMethod("nameToType", "(const char*)", "$")]
 			QVariant.TypeOf NameToType(string name);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QVariant), this);
 			_interceptor = (QVariant) realProxy.GetTransparentProxy();
@@ -36,7 +34,6 @@ namespace Qyoto {
 		private static IQVariantProxy StaticQVariant() {
 			return (IQVariantProxy) _staticInterceptor;
 		}
-
 		public enum TypeOf : uint {
 			Invalid = 0,
 			Bool = 1,

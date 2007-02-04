@@ -7,7 +7,6 @@ namespace Qyoto {
 	[SmokeClass("QDomImplementation")]
 	public class QDomImplementation : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QDomImplementation(Type dummy) {}
 		[SmokeClass("QDomImplementation")]
@@ -19,7 +18,6 @@ namespace Qyoto {
 			[SmokeMethod("setInvalidDataPolicy", "(QDomImplementation::InvalidDataPolicy)", "$")]
 			void SetInvalidDataPolicy(QDomImplementation.InvalidDataPolicy policy);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomImplementation), this);
 			_interceptor = (QDomImplementation) realProxy.GetTransparentProxy();
@@ -35,7 +33,6 @@ namespace Qyoto {
 		private static IQDomImplementationProxy StaticQDomImplementation() {
 			return (IQDomImplementationProxy) _staticInterceptor;
 		}
-
 		public enum InvalidDataPolicy {
 			AcceptInvalidChars = 0,
 			DropInvalidChars = 1,

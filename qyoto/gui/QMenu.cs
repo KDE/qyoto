@@ -20,7 +20,6 @@ namespace Qyoto {
 			[SmokeMethod("exec", "(QList<QAction*>, const QPoint&)", "?#")]
 			QAction Exec(List<QAction> actions, QPoint pos);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMenu), this);
 			_interceptor = (QMenu) realProxy.GetTransparentProxy();
@@ -36,7 +35,6 @@ namespace Qyoto {
 		private static IQMenuProxy StaticQMenu() {
 			return (IQMenuProxy) _staticInterceptor;
 		}
-
 		[Q_PROPERTY("bool", "tearOffEnabled")]
 		public bool TearOffEnabled {
 			get {

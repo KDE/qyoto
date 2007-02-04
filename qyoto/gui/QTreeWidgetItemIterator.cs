@@ -6,7 +6,6 @@ namespace Qyoto {
 	[SmokeClass("QTreeWidgetItemIterator")]
 	public class QTreeWidgetItemIterator : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QTreeWidgetItemIterator(Type dummy) {}
 		[SmokeClass("QTreeWidgetItemIterator")]
@@ -16,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("operator--", "()", "")]
 			QTreeWidgetItemIterator op_decr(QTreeWidgetItemIterator lhs);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTreeWidgetItemIterator), this);
 			_interceptor = (QTreeWidgetItemIterator) realProxy.GetTransparentProxy();
@@ -32,7 +30,6 @@ namespace Qyoto {
 		private static IQTreeWidgetItemIteratorProxy StaticQTreeWidgetItemIterator() {
 			return (IQTreeWidgetItemIteratorProxy) _staticInterceptor;
 		}
-
 		public enum IteratorFlag {
 			All = 0x00000000,
 			Hidden = 0x00000001,

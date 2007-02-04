@@ -7,7 +7,6 @@ namespace Qyoto {
 	[SmokeClass("QSqlField")]
 	public class QSqlField : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QSqlField(Type dummy) {}
 		[SmokeClass("QSqlField")]
@@ -15,7 +14,6 @@ namespace Qyoto {
 			[SmokeMethod("operator==", "(const QSqlField&) const", "#")]
 			bool op_equals(QSqlField lhs, QSqlField other);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSqlField), this);
 			_interceptor = (QSqlField) realProxy.GetTransparentProxy();
@@ -31,7 +29,6 @@ namespace Qyoto {
 		private static IQSqlFieldProxy StaticQSqlField() {
 			return (IQSqlFieldProxy) _staticInterceptor;
 		}
-
 		public enum RequiredStatus {
 			Unknown = -1,
 			Optional = 0,

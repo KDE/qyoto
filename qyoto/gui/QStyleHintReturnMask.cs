@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QStyleHintReturnMask")]
 		interface IQStyleHintReturnMaskProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleHintReturnMask), this);
 			_interceptor = (QStyleHintReturnMask) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQStyleHintReturnMaskProxy StaticQStyleHintReturnMask() {
 			return (IQStyleHintReturnMaskProxy) _staticInterceptor;
 		}
-
 		public enum StyleOptionType {
 			Type = QStyleHintReturn.HintReturnType.SH_Mask,
 		}

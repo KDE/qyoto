@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QIconDragEvent")]
 		interface IQIconDragEventProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QIconDragEvent), this);
 			_interceptor = (QIconDragEvent) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQIconDragEventProxy StaticQIconDragEvent() {
 			return (IQIconDragEventProxy) _staticInterceptor;
 		}
-
 		public QIconDragEvent() : this((Type) null) {
 			CreateProxy();
 			NewQIconDragEvent();

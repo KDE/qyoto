@@ -16,7 +16,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QListWidget), this);
 			_interceptor = (QListWidget) realProxy.GetTransparentProxy();
@@ -32,7 +31,6 @@ namespace Qyoto {
 		private static IQListWidgetProxy StaticQListWidget() {
 			return (IQListWidgetProxy) _staticInterceptor;
 		}
-
 		[Q_PROPERTY("int", "count")]
 		public int Count {
 			get {

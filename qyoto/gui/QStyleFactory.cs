@@ -8,7 +8,6 @@ namespace Qyoto {
 	[SmokeClass("QStyleFactory")]
 	public class QStyleFactory : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QStyleFactory(Type dummy) {}
 		[SmokeClass("QStyleFactory")]
@@ -18,7 +17,6 @@ namespace Qyoto {
 			[SmokeMethod("create", "(const QString&)", "$")]
 			QStyle Create(string arg1);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleFactory), this);
 			_interceptor = (QStyleFactory) realProxy.GetTransparentProxy();
@@ -34,7 +32,6 @@ namespace Qyoto {
 		private static IQStyleFactoryProxy StaticQStyleFactory() {
 			return (IQStyleFactoryProxy) _staticInterceptor;
 		}
-
 		public QStyleFactory() : this((Type) null) {
 			CreateProxy();
 			NewQStyleFactory();

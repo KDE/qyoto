@@ -10,7 +10,6 @@ namespace Qyoto {
 		[SmokeClass("QDomElement")]
 		interface IQDomElementProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomElement), this);
 			_interceptor = (QDomElement) realProxy.GetTransparentProxy();
@@ -26,7 +25,6 @@ namespace Qyoto {
 		private static IQDomElementProxy StaticQDomElement() {
 			return (IQDomElementProxy) _staticInterceptor;
 		}
-
 		public QDomElement() : this((Type) null) {
 			CreateProxy();
 			NewQDomElement();

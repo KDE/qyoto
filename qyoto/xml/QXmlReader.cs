@@ -7,13 +7,11 @@ namespace Qyoto {
 	[SmokeClass("QXmlReader")]
 	public class QXmlReader : MarshalByRefObject {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QXmlReader(Type dummy) {}
 		[SmokeClass("QXmlReader")]
 		interface IQXmlReaderProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlReader), this);
 			_interceptor = (QXmlReader) realProxy.GetTransparentProxy();
@@ -29,7 +27,6 @@ namespace Qyoto {
 		private static IQXmlReaderProxy StaticQXmlReader() {
 			return (IQXmlReaderProxy) _staticInterceptor;
 		}
-
 		[SmokeMethod("feature", "(const QString&, bool*) const", "$$")]
 		public virtual bool Feature(string name, out bool ok) {
 			return ProxyQXmlReader().Feature(name,out ok);

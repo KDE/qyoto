@@ -11,7 +11,6 @@ namespace Qyoto {
 		[SmokeClass("QAccessibleObject")]
 		interface IQAccessibleObjectProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAccessibleObject), this);
 			_interceptor = (QAccessibleObject) realProxy.GetTransparentProxy();
@@ -27,7 +26,6 @@ namespace Qyoto {
 		private static IQAccessibleObjectProxy StaticQAccessibleObject() {
 			return (IQAccessibleObjectProxy) _staticInterceptor;
 		}
-
 		public QAccessibleObject(QObject arg1) : this((Type) null) {
 			CreateProxy();
 			NewQAccessibleObject(arg1);

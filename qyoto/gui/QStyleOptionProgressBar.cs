@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QStyleOptionProgressBar")]
 		interface IQStyleOptionProgressBarProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionProgressBar), this);
 			_interceptor = (QStyleOptionProgressBar) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQStyleOptionProgressBarProxy StaticQStyleOptionProgressBar() {
 			return (IQStyleOptionProgressBarProxy) _staticInterceptor;
 		}
-
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_ProgressBar,
 		}

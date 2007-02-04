@@ -15,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAbstractScrollArea), this);
 			_interceptor = (QAbstractScrollArea) realProxy.GetTransparentProxy();
@@ -31,7 +30,6 @@ namespace Qyoto {
 		private static IQAbstractScrollAreaProxy StaticQAbstractScrollArea() {
 			return (IQAbstractScrollAreaProxy) _staticInterceptor;
 		}
-
 		[Q_PROPERTY("Qt::ScrollBarPolicy", "verticalScrollBarPolicy")]
 		public Qt.ScrollBarPolicy VerticalScrollBarPolicy {
 			get {

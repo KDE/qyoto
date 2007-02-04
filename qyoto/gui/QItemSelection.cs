@@ -7,7 +7,6 @@ namespace Qyoto {
 	[SmokeClass("QItemSelection")]
 	public class QItemSelection : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QItemSelection(Type dummy) {}
 		[SmokeClass("QItemSelection")]
@@ -15,7 +14,6 @@ namespace Qyoto {
 			[SmokeMethod("split", "(const QItemSelectionRange&, const QItemSelectionRange&, QItemSelection*)", "###")]
 			void Split(QItemSelectionRange range, QItemSelectionRange other, QItemSelection result);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QItemSelection), this);
 			_interceptor = (QItemSelection) realProxy.GetTransparentProxy();
@@ -31,7 +29,6 @@ namespace Qyoto {
 		private static IQItemSelectionProxy StaticQItemSelection() {
 			return (IQItemSelectionProxy) _staticInterceptor;
 		}
-
 		public QItemSelection() : this((Type) null) {
 			CreateProxy();
 			NewQItemSelection();

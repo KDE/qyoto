@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QStyleOptionSizeGrip")]
 		interface IQStyleOptionSizeGripProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionSizeGrip), this);
 			_interceptor = (QStyleOptionSizeGrip) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQStyleOptionSizeGripProxy StaticQStyleOptionSizeGrip() {
 			return (IQStyleOptionSizeGripProxy) _staticInterceptor;
 		}
-
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_SizeGrip,
 		}

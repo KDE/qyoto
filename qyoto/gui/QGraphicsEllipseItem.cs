@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QGraphicsEllipseItem")]
 		interface IQGraphicsEllipseItemProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGraphicsEllipseItem), this);
 			_interceptor = (QGraphicsEllipseItem) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQGraphicsEllipseItemProxy StaticQGraphicsEllipseItem() {
 			return (IQGraphicsEllipseItemProxy) _staticInterceptor;
 		}
-
 		public const int Type = 4;
 
 		public QGraphicsEllipseItem(QGraphicsItem parent, QGraphicsScene scene) : this((Type) null) {

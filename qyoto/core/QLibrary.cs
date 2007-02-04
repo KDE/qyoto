@@ -16,7 +16,6 @@ namespace Qyoto {
 			[SmokeMethod("isLibrary", "(const QString&)", "$")]
 			bool IsLibrary(string fileName);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QLibrary), this);
 			_interceptor = (QLibrary) realProxy.GetTransparentProxy();
@@ -32,7 +31,6 @@ namespace Qyoto {
 		private static IQLibraryProxy StaticQLibrary() {
 			return (IQLibraryProxy) _staticInterceptor;
 		}
-
 		public enum LoadHint {
 			ResolveAllSymbolsHint = 0x01,
 			ExportExternalSymbolsHint = 0x02,

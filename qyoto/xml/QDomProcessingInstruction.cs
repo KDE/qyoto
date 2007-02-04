@@ -10,7 +10,6 @@ namespace Qyoto {
 		[SmokeClass("QDomProcessingInstruction")]
 		interface IQDomProcessingInstructionProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomProcessingInstruction), this);
 			_interceptor = (QDomProcessingInstruction) realProxy.GetTransparentProxy();
@@ -26,7 +25,6 @@ namespace Qyoto {
 		private static IQDomProcessingInstructionProxy StaticQDomProcessingInstruction() {
 			return (IQDomProcessingInstructionProxy) _staticInterceptor;
 		}
-
 		public QDomProcessingInstruction() : this((Type) null) {
 			CreateProxy();
 			NewQDomProcessingInstruction();

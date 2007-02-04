@@ -7,7 +7,6 @@ namespace Qyoto {
 	[SmokeClass("QTime")]
 	public class QTime : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QTime(Type dummy) {}
 		[SmokeClass("QTime")]
@@ -35,7 +34,6 @@ namespace Qyoto {
 			[SmokeMethod("isValid", "(int, int, int)", "$$$")]
 			bool IsValid(int h, int m, int s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTime), this);
 			_interceptor = (QTime) realProxy.GetTransparentProxy();
@@ -51,7 +49,6 @@ namespace Qyoto {
 		private static IQTimeProxy StaticQTime() {
 			return (IQTimeProxy) _staticInterceptor;
 		}
-
 		public QTime() : this((Type) null) {
 			CreateProxy();
 			NewQTime();

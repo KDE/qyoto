@@ -23,7 +23,6 @@ namespace Qyoto {
 			[SmokeMethod("tempPath", "()", "")]
 			string TempPath();
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFSFileEngine), this);
 			_interceptor = (QFSFileEngine) realProxy.GetTransparentProxy();
@@ -39,7 +38,6 @@ namespace Qyoto {
 		private static IQFSFileEngineProxy StaticQFSFileEngine() {
 			return (IQFSFileEngineProxy) _staticInterceptor;
 		}
-
 		public QFSFileEngine() : this((Type) null) {
 			CreateProxy();
 			NewQFSFileEngine();

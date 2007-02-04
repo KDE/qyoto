@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QDomCDATASection")]
 		interface IQDomCDATASectionProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomCDATASection), this);
 			_interceptor = (QDomCDATASection) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQDomCDATASectionProxy StaticQDomCDATASection() {
 			return (IQDomCDATASectionProxy) _staticInterceptor;
 		}
-
 		public QDomCDATASection() : this((Type) null) {
 			CreateProxy();
 			NewQDomCDATASection();

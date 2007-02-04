@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QTabletEvent")]
 		interface IQTabletEventProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTabletEvent), this);
 			_interceptor = (QTabletEvent) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQTabletEventProxy StaticQTabletEvent() {
 			return (IQTabletEventProxy) _staticInterceptor;
 		}
-
 		public enum TabletDevice {
 			NoDevice = 0,
 			Puck = 1,

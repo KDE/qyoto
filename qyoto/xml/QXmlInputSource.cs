@@ -7,13 +7,11 @@ namespace Qyoto {
 	[SmokeClass("QXmlInputSource")]
 	public class QXmlInputSource : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QXmlInputSource(Type dummy) {}
 		[SmokeClass("QXmlInputSource")]
 		interface IQXmlInputSourceProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlInputSource), this);
 			_interceptor = (QXmlInputSource) realProxy.GetTransparentProxy();
@@ -29,7 +27,6 @@ namespace Qyoto {
 		private static IQXmlInputSourceProxy StaticQXmlInputSource() {
 			return (IQXmlInputSourceProxy) _staticInterceptor;
 		}
-
 		public QXmlInputSource() : this((Type) null) {
 			CreateProxy();
 			NewQXmlInputSource();

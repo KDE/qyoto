@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QConicalGradient")]
 		interface IQConicalGradientProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QConicalGradient), this);
 			_interceptor = (QConicalGradient) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQConicalGradientProxy StaticQConicalGradient() {
 			return (IQConicalGradientProxy) _staticInterceptor;
 		}
-
 		public QConicalGradient() : this((Type) null) {
 			CreateProxy();
 			NewQConicalGradient();

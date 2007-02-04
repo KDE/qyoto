@@ -15,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTabWidget), this);
 			_interceptor = (QTabWidget) realProxy.GetTransparentProxy();
@@ -31,7 +30,6 @@ namespace Qyoto {
 		private static IQTabWidgetProxy StaticQTabWidget() {
 			return (IQTabWidgetProxy) _staticInterceptor;
 		}
-
 		public enum TabPosition {
 			North = 0,
 			South = 1,

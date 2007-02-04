@@ -18,7 +18,6 @@ namespace Qyoto {
 			[SmokeMethod("createLocalFile", "(QFile&)", "#")]
 			QTemporaryFile CreateLocalFile(QFile file);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTemporaryFile), this);
 			_interceptor = (QTemporaryFile) realProxy.GetTransparentProxy();
@@ -34,7 +33,6 @@ namespace Qyoto {
 		private static IQTemporaryFileProxy StaticQTemporaryFile() {
 			return (IQTemporaryFileProxy) _staticInterceptor;
 		}
-
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QTemporaryFile() : this((Type) null) {
 			CreateProxy();

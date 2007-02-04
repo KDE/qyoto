@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QStyleOptionTabBarBase")]
 		interface IQStyleOptionTabBarBaseProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionTabBarBase), this);
 			_interceptor = (QStyleOptionTabBarBase) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQStyleOptionTabBarBaseProxy StaticQStyleOptionTabBarBase() {
 			return (IQStyleOptionTabBarBaseProxy) _staticInterceptor;
 		}
-
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_TabBarBase,
 		}

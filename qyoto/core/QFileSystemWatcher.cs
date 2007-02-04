@@ -16,7 +16,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFileSystemWatcher), this);
 			_interceptor = (QFileSystemWatcher) realProxy.GetTransparentProxy();
@@ -32,7 +31,6 @@ namespace Qyoto {
 		private static IQFileSystemWatcherProxy StaticQFileSystemWatcher() {
 			return (IQFileSystemWatcherProxy) _staticInterceptor;
 		}
-
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QFileSystemWatcher(QObject parent) : this((Type) null) {
 			CreateProxy();

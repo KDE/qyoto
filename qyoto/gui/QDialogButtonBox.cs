@@ -16,7 +16,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDialogButtonBox), this);
 			_interceptor = (QDialogButtonBox) realProxy.GetTransparentProxy();
@@ -32,7 +31,6 @@ namespace Qyoto {
 		private static IQDialogButtonBoxProxy StaticQDialogButtonBox() {
 			return (IQDialogButtonBoxProxy) _staticInterceptor;
 		}
-
 		public enum ButtonRole {
 			InvalidRole = -1,
 			AcceptRole = 0,

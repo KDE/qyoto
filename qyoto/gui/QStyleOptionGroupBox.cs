@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QStyleOptionGroupBox")]
 		interface IQStyleOptionGroupBoxProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionGroupBox), this);
 			_interceptor = (QStyleOptionGroupBox) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQStyleOptionGroupBoxProxy StaticQStyleOptionGroupBox() {
 			return (IQStyleOptionGroupBoxProxy) _staticInterceptor;
 		}
-
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_GroupBox,
 		}

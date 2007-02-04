@@ -7,7 +7,6 @@ namespace Qyoto {
 	[SmokeClass("QTextBlock")]
 	public class QTextBlock : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QTextBlock(Type dummy) {}
 		[SmokeClass("QTextBlock")]
@@ -17,7 +16,6 @@ namespace Qyoto {
 			[SmokeMethod("operator<", "(const QTextBlock&) const", "#")]
 			bool op_lt(QTextBlock lhs, QTextBlock o);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextBlock), this);
 			_interceptor = (QTextBlock) realProxy.GetTransparentProxy();
@@ -33,7 +31,6 @@ namespace Qyoto {
 		private static IQTextBlockProxy StaticQTextBlock() {
 			return (IQTextBlockProxy) _staticInterceptor;
 		}
-
 		public QTextBlock() : this((Type) null) {
 			CreateProxy();
 			NewQTextBlock();

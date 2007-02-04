@@ -7,7 +7,6 @@ namespace Qyoto {
 	[SmokeClass("QRegion")]
 	public class QRegion : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QRegion(Type dummy) {}
 		[SmokeClass("QRegion")]
@@ -25,7 +24,6 @@ namespace Qyoto {
 			[SmokeMethod("operator==", "(const QRegion&) const", "#")]
 			bool op_equals(QRegion lhs, QRegion r);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QRegion), this);
 			_interceptor = (QRegion) realProxy.GetTransparentProxy();
@@ -41,7 +39,6 @@ namespace Qyoto {
 		private static IQRegionProxy StaticQRegion() {
 			return (IQRegionProxy) _staticInterceptor;
 		}
-
 		public enum RegionType {
 			Rectangle = 0,
 			Ellipse = 1,

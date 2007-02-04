@@ -61,7 +61,6 @@ namespace Qyoto {
 	[SmokeClass("QUrl")]
 	public class QUrl : MarshalByRefObject, IQUrl, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QUrl(Type dummy) {}
 		[SmokeClass("QUrl")]
@@ -93,7 +92,6 @@ namespace Qyoto {
 			[SmokeMethod("setIdnWhitelist", "(const QStringList&)", "?")]
 			void SetIdnWhitelist(List<string> arg1);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QUrl), this);
 			_interceptor = (QUrl) realProxy.GetTransparentProxy();
@@ -109,7 +107,6 @@ namespace Qyoto {
 		private static IQUrlProxy StaticQUrl() {
 			return (IQUrlProxy) _staticInterceptor;
 		}
-
 		public enum ParsingMode {
 			TolerantMode = 0,
 			StrictMode = 1,

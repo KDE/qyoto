@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QDynamicPropertyChangeEvent")]
 		interface IQDynamicPropertyChangeEventProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDynamicPropertyChangeEvent), this);
 			_interceptor = (QDynamicPropertyChangeEvent) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQDynamicPropertyChangeEventProxy StaticQDynamicPropertyChangeEvent() {
 			return (IQDynamicPropertyChangeEventProxy) _staticInterceptor;
 		}
-
 		public QDynamicPropertyChangeEvent(QByteArray name) : this((Type) null) {
 			CreateProxy();
 			NewQDynamicPropertyChangeEvent(name);

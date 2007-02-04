@@ -14,7 +14,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDBusConnectionInterface), this);
 			_interceptor = (QDBusConnectionInterface) realProxy.GetTransparentProxy();
@@ -30,7 +29,6 @@ namespace Qyoto {
 		private static IQDBusConnectionInterfaceProxy StaticQDBusConnectionInterface() {
 			return (IQDBusConnectionInterfaceProxy) _staticInterceptor;
 		}
-
 		public enum ServiceQueueOptions {
 			DontQueueService = 0,
 			QueueService = 1,

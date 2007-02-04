@@ -6,7 +6,6 @@ namespace Qyoto {
 	[SmokeClass("QPalette")]
 	public class QPalette : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QPalette(Type dummy) {}
 		[SmokeClass("QPalette")]
@@ -14,7 +13,6 @@ namespace Qyoto {
 			[SmokeMethod("operator==", "(const QPalette&) const", "#")]
 			bool op_equals(QPalette lhs, QPalette p);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPalette), this);
 			_interceptor = (QPalette) realProxy.GetTransparentProxy();
@@ -30,7 +28,6 @@ namespace Qyoto {
 		private static IQPaletteProxy StaticQPalette() {
 			return (IQPaletteProxy) _staticInterceptor;
 		}
-
 		public enum ColorGroup {
 			Active = 0,
 			Disabled = 1,

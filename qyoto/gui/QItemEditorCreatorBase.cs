@@ -6,13 +6,11 @@ namespace Qyoto {
 	[SmokeClass("QItemEditorCreatorBase")]
 	public class QItemEditorCreatorBase : MarshalByRefObject {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QItemEditorCreatorBase(Type dummy) {}
 		[SmokeClass("QItemEditorCreatorBase")]
 		interface IQItemEditorCreatorBaseProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QItemEditorCreatorBase), this);
 			_interceptor = (QItemEditorCreatorBase) realProxy.GetTransparentProxy();
@@ -28,7 +26,6 @@ namespace Qyoto {
 		private static IQItemEditorCreatorBaseProxy StaticQItemEditorCreatorBase() {
 			return (IQItemEditorCreatorBaseProxy) _staticInterceptor;
 		}
-
 		[SmokeMethod("createWidget", "(QWidget*) const", "#")]
 		public virtual QWidget CreateWidget(QWidget parent) {
 			return ProxyQItemEditorCreatorBase().CreateWidget(parent);

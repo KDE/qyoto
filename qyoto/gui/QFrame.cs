@@ -14,7 +14,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFrame), this);
 			_interceptor = (QFrame) realProxy.GetTransparentProxy();
@@ -30,7 +29,6 @@ namespace Qyoto {
 		private static IQFrameProxy StaticQFrame() {
 			return (IQFrameProxy) _staticInterceptor;
 		}
-
 		public enum Shape {
 			NoFrame = 0,
 			Box = 0x0001,

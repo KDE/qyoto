@@ -7,13 +7,11 @@ namespace Qyoto {
 	[SmokeClass("QUndoCommand")]
 	public class QUndoCommand : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QUndoCommand(Type dummy) {}
 		[SmokeClass("QUndoCommand")]
 		interface IQUndoCommandProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QUndoCommand), this);
 			_interceptor = (QUndoCommand) realProxy.GetTransparentProxy();
@@ -29,7 +27,6 @@ namespace Qyoto {
 		private static IQUndoCommandProxy StaticQUndoCommand() {
 			return (IQUndoCommandProxy) _staticInterceptor;
 		}
-
 		public QUndoCommand(QUndoCommand parent) : this((Type) null) {
 			CreateProxy();
 			NewQUndoCommand(parent);

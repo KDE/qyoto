@@ -10,7 +10,6 @@ namespace Qyoto {
 		[SmokeClass("QXmlSimpleReader")]
 		interface IQXmlSimpleReaderProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlSimpleReader), this);
 			_interceptor = (QXmlSimpleReader) realProxy.GetTransparentProxy();
@@ -26,7 +25,6 @@ namespace Qyoto {
 		private static IQXmlSimpleReaderProxy StaticQXmlSimpleReader() {
 			return (IQXmlSimpleReaderProxy) _staticInterceptor;
 		}
-
 		public QXmlSimpleReader() : this((Type) null) {
 			CreateProxy();
 			NewQXmlSimpleReader();

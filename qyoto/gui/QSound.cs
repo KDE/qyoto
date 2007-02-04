@@ -18,7 +18,6 @@ namespace Qyoto {
 			[SmokeMethod("play", "(const QString&)", "$")]
 			void Play(string filename);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSound), this);
 			_interceptor = (QSound) realProxy.GetTransparentProxy();
@@ -34,7 +33,6 @@ namespace Qyoto {
 		private static IQSoundProxy StaticQSound() {
 			return (IQSoundProxy) _staticInterceptor;
 		}
-
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QSound(string filename, QObject parent) : this((Type) null) {
 			CreateProxy();

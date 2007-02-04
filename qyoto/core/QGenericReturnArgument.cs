@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QGenericReturnArgument")]
 		interface IQGenericReturnArgumentProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGenericReturnArgument), this);
 			_interceptor = (QGenericReturnArgument) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQGenericReturnArgumentProxy StaticQGenericReturnArgument() {
 			return (IQGenericReturnArgumentProxy) _staticInterceptor;
 		}
-
 		// QGenericReturnArgument* QGenericReturnArgument(const char* arg1,void* arg2); >>>> NOT CONVERTED
 		public QGenericReturnArgument(string aName) : this((Type) null) {
 			CreateProxy();

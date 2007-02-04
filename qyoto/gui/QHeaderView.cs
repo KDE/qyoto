@@ -15,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QHeaderView), this);
 			_interceptor = (QHeaderView) realProxy.GetTransparentProxy();
@@ -31,7 +30,6 @@ namespace Qyoto {
 		private static IQHeaderViewProxy StaticQHeaderView() {
 			return (IQHeaderViewProxy) _staticInterceptor;
 		}
-
 		public enum ResizeMode {
 			Interactive = 0,
 			Stretch = 1,

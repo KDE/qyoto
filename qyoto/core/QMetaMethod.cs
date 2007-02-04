@@ -7,13 +7,11 @@ namespace Qyoto {
 	[SmokeClass("QMetaMethod")]
 	public class QMetaMethod : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QMetaMethod(Type dummy) {}
 		[SmokeClass("QMetaMethod")]
 		interface IQMetaMethodProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMetaMethod), this);
 			_interceptor = (QMetaMethod) realProxy.GetTransparentProxy();
@@ -29,7 +27,6 @@ namespace Qyoto {
 		private static IQMetaMethodProxy StaticQMetaMethod() {
 			return (IQMetaMethodProxy) _staticInterceptor;
 		}
-
 		public enum Access {
 			Private = 0,
 			Protected = 1,

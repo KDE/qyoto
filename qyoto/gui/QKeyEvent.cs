@@ -18,7 +18,6 @@ namespace Qyoto {
 			[SmokeMethod("createExtendedKeyEvent", "(QEvent::Type, int, Qt::KeyboardModifiers, quint32, quint32, quint32)", "$$$$$$")]
 			QKeyEvent CreateExtendedKeyEvent(QEvent.TypeOf type, int key, int modifiers, uint nativeScanCode, uint nativeVirtualKey, uint nativeModifiers);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QKeyEvent), this);
 			_interceptor = (QKeyEvent) realProxy.GetTransparentProxy();
@@ -34,7 +33,6 @@ namespace Qyoto {
 		private static IQKeyEventProxy StaticQKeyEvent() {
 			return (IQKeyEventProxy) _staticInterceptor;
 		}
-
 		public QKeyEvent(QEvent.TypeOf type, int key, int modifiers, string text, bool autorep, ushort count) : this((Type) null) {
 			CreateProxy();
 			NewQKeyEvent(type,key,modifiers,text,autorep,count);

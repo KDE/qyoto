@@ -15,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStatusBar), this);
 			_interceptor = (QStatusBar) realProxy.GetTransparentProxy();
@@ -31,7 +30,6 @@ namespace Qyoto {
 		private static IQStatusBarProxy StaticQStatusBar() {
 			return (IQStatusBarProxy) _staticInterceptor;
 		}
-
 		[Q_PROPERTY("bool", "sizeGripEnabled")]
 		public bool SizeGripEnabled {
 			get {

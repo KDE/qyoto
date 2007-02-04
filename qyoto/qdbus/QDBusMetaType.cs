@@ -6,7 +6,6 @@ namespace Qyoto {
 	[SmokeClass("QDBusMetaType")]
 	public class QDBusMetaType : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QDBusMetaType(Type dummy) {}
 		[SmokeClass("QDBusMetaType")]
@@ -16,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("typeToSignature", "(int)", "$")]
 			string TypeToSignature(int type);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDBusMetaType), this);
 			_interceptor = (QDBusMetaType) realProxy.GetTransparentProxy();
@@ -32,7 +30,6 @@ namespace Qyoto {
 		private static IQDBusMetaTypeProxy StaticQDBusMetaType() {
 			return (IQDBusMetaTypeProxy) _staticInterceptor;
 		}
-
 		public QDBusMetaType() : this((Type) null) {
 			CreateProxy();
 			NewQDBusMetaType();

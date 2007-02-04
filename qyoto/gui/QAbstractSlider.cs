@@ -15,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAbstractSlider), this);
 			_interceptor = (QAbstractSlider) realProxy.GetTransparentProxy();
@@ -31,7 +30,6 @@ namespace Qyoto {
 		private static IQAbstractSliderProxy StaticQAbstractSlider() {
 			return (IQAbstractSliderProxy) _staticInterceptor;
 		}
-
 		public enum SliderAction {
 			SliderNoAction = 0,
 			SliderSingleStepAdd = 1,

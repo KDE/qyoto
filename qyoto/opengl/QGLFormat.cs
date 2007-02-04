@@ -6,7 +6,6 @@ namespace Qyoto {
 	[SmokeClass("QGLFormat")]
 	public class QGLFormat : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QGLFormat(Type dummy) {}
 		[SmokeClass("QGLFormat")]
@@ -24,7 +23,6 @@ namespace Qyoto {
 			[SmokeMethod("hasOpenGLOverlays", "()", "")]
 			bool HasOpenGLOverlays();
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGLFormat), this);
 			_interceptor = (QGLFormat) realProxy.GetTransparentProxy();
@@ -40,7 +38,6 @@ namespace Qyoto {
 		private static IQGLFormatProxy StaticQGLFormat() {
 			return (IQGLFormatProxy) _staticInterceptor;
 		}
-
 		public enum OpenGLVersionFlag {
 			OpenGL_Version_None = 0x00000000,
 			OpenGL_Version_1_1 = 0x00000001,

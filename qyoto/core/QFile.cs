@@ -40,7 +40,6 @@ namespace Qyoto {
 			[SmokeMethod("setPermissions", "(const QString&, Permissions)", "$$")]
 			bool SetPermissions(string filename, int permissionSpec);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFile), this);
 			_interceptor = (QFile) realProxy.GetTransparentProxy();
@@ -56,7 +55,6 @@ namespace Qyoto {
 		private static IQFileProxy StaticQFile() {
 			return (IQFileProxy) _staticInterceptor;
 		}
-
 		public enum FileError {
 			NoError = 0,
 			ReadError = 1,

@@ -7,7 +7,6 @@ namespace Qyoto {
 	[SmokeClass("QPixmapCache")]
 	public class QPixmapCache : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QPixmapCache(Type dummy) {}
 		[SmokeClass("QPixmapCache")]
@@ -27,7 +26,6 @@ namespace Qyoto {
 			[SmokeMethod("clear", "()", "")]
 			void Clear();
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPixmapCache), this);
 			_interceptor = (QPixmapCache) realProxy.GetTransparentProxy();
@@ -43,7 +41,6 @@ namespace Qyoto {
 		private static IQPixmapCacheProxy StaticQPixmapCache() {
 			return (IQPixmapCacheProxy) _staticInterceptor;
 		}
-
 		public QPixmapCache() : this((Type) null) {
 			CreateProxy();
 			NewQPixmapCache();

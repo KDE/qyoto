@@ -10,7 +10,6 @@ namespace Qyoto {
 		[SmokeClass("QXmlDefaultHandler")]
 		interface IQXmlDefaultHandlerProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlDefaultHandler), this);
 			_interceptor = (QXmlDefaultHandler) realProxy.GetTransparentProxy();
@@ -26,7 +25,6 @@ namespace Qyoto {
 		private static IQXmlDefaultHandlerProxy StaticQXmlDefaultHandler() {
 			return (IQXmlDefaultHandlerProxy) _staticInterceptor;
 		}
-
 		public QXmlDefaultHandler() : this((Type) null) {
 			CreateProxy();
 			NewQXmlDefaultHandler();

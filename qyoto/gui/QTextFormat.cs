@@ -8,13 +8,11 @@ namespace Qyoto {
 	[SmokeClass("QTextFormat")]
 	public class QTextFormat : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QTextFormat(Type dummy) {}
 		[SmokeClass("QTextFormat")]
 		interface IQTextFormatProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextFormat), this);
 			_interceptor = (QTextFormat) realProxy.GetTransparentProxy();
@@ -30,7 +28,6 @@ namespace Qyoto {
 		private static IQTextFormatProxy StaticQTextFormat() {
 			return (IQTextFormatProxy) _staticInterceptor;
 		}
-
 		public enum FormatType {
 			InvalidFormat = -1,
 			BlockFormat = 1,

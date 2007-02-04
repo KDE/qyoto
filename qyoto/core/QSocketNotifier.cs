@@ -38,7 +38,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSocketNotifier), this);
 			_interceptor = (QSocketNotifier) realProxy.GetTransparentProxy();
@@ -54,7 +53,6 @@ namespace Qyoto {
 		private static IQSocketNotifierProxy StaticQSocketNotifier() {
 			return (IQSocketNotifierProxy) _staticInterceptor;
 		}
-
 		public enum TypeOf {
 			Read = 0,
 			Write = 1,

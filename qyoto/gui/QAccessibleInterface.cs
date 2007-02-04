@@ -11,7 +11,6 @@ namespace Qyoto {
 		[SmokeClass("QAccessibleInterface")]
 		interface IQAccessibleInterfaceProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAccessibleInterface), this);
 			_interceptor = (QAccessibleInterface) realProxy.GetTransparentProxy();
@@ -27,7 +26,6 @@ namespace Qyoto {
 		private static IQAccessibleInterfaceProxy StaticQAccessibleInterface() {
 			return (IQAccessibleInterfaceProxy) _staticInterceptor;
 		}
-
 		[SmokeMethod("isValid", "() const", "")]
 		public virtual bool IsValid() {
 			return ProxyQAccessibleInterface().IsValid();

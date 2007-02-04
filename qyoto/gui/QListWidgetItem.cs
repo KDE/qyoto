@@ -7,13 +7,11 @@ namespace Qyoto {
 	[SmokeClass("QListWidgetItem")]
 	public class QListWidgetItem : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QListWidgetItem(Type dummy) {}
 		[SmokeClass("QListWidgetItem")]
 		interface IQListWidgetItemProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QListWidgetItem), this);
 			_interceptor = (QListWidgetItem) realProxy.GetTransparentProxy();
@@ -29,7 +27,6 @@ namespace Qyoto {
 		private static IQListWidgetItemProxy StaticQListWidgetItem() {
 			return (IQListWidgetItemProxy) _staticInterceptor;
 		}
-
 		public enum ItemType {
 			Type = 0,
 			UserType = 1000,

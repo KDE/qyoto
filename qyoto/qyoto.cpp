@@ -996,6 +996,112 @@ MethodFromMap(int meth)
 	return qt_Smoke->methodMaps[meth].method;
 }
 
+/* Adapted from the internal function qt_qFindChildren() in qobject.cpp */
+static void 
+cs_qFindChildrenHelper(void * parent, const QString &name, void * re,
+                         const QMetaObject &mo, void * list)
+{
+/*
+    if (parent == Qnil || list == Qnil)
+        return;
+	VALUE children = rb_funcall(parent, rb_intern("children"), 0);
+    VALUE rv = Qnil;
+    for (int i = 0; i < RARRAY(children)->len; ++i) {
+        rv = RARRAY(children)->ptr[i];
+		smokeruby_object *o = value_obj_info(rv);
+		QObject * obj = (QObject *) o->smoke->cast(o->ptr, o->classId, o->smoke->idClass("QObject"));
+		
+		// The original code had 'if (mo.cast(obj))' as a test, but it doesn't work here
+        if (obj->qt_metacast(mo.className()) != 0) {
+            if (re != Qnil) {
+				VALUE re_test = rb_funcall(re, rb_intern("=~"), 1, rb_funcall(rv, rb_intern("objectName"), 0));
+				if (re_test != Qnil && re_test != Qfalse) {
+					rb_ary_push(list, rv);
+				}
+            } else {
+                if (name.isNull() || obj->objectName() == name) {
+					rb_ary_push(list, rv);
+				}
+            }
+        }
+        rb_qFindChildren_helper(rv, name, re, mo, list);
+    }
+*/
+	return;
+}
+
+/* Should mimic Qt4's QObject::findChildren method with this syntax:
+     obj.findChildren(Qt::Widget, "Optional Widget Name")
+*/
+static void *
+FindQObjectChildren(char * typeName, char * name)
+{
+/*
+	QString name;
+	VALUE re = Qnil;
+	if (argc == 2) {
+		// If the second arg isn't a String, assume it's a regular expression
+		if (TYPE(argv[1]) == T_STRING) {
+			name = QString::fromLatin1(StringValuePtr(argv[1]));
+		} else {
+			re = argv[1];
+		}
+	}
+		
+	VALUE metaObject = rb_funcall(argv[0], rb_intern("staticMetaObject"), 0);
+	smokeruby_object *o = value_obj_info(metaObject);
+	QMetaObject * mo = (QMetaObject*) o->ptr;
+	VALUE result = rb_ary_new();
+	rb_qFindChildren_helper(self, name, re, *mo, result);
+	return result;
+*/
+}
+
+/* Adapted from the internal function qt_qFindChild() in qobject.cpp */
+static void *
+cs_qFindChildHelper(void * parent, const QString &name, const QMetaObject &mo)
+{
+/*
+    if (parent == Qnil)
+        return Qnil;
+	VALUE children = rb_funcall(parent, rb_intern("children"), 0);
+    VALUE rv;
+	int i;
+    for (i = 0; i < RARRAY(children)->len; ++i) {
+        rv = RARRAY(children)->ptr[i];
+		smokeruby_object *o = value_obj_info(rv);
+		QObject * obj = (QObject *) o->smoke->cast(o->ptr, o->classId, o->smoke->idClass("QObject"));
+        if (obj->qt_metacast(mo.className()) != 0 && (name.isNull() || obj->objectName() == name))
+            return rv;
+    }
+    for (i = 0; i < RARRAY(children)->len; ++i) {
+        rv = rb_qFindChild_helper(RARRAY(children)->ptr[i], name, mo);
+        if (rv != Qnil)
+            return rv;
+    }
+    return Qnil;
+*/
+}
+
+static void *
+FindQObjectChild(char * typeName, char * name)
+{
+/*
+	if (argc < 1 || argc > 2) rb_raise(rb_eArgError, "Invalid argument list");
+	Check_Type(argv[0], T_CLASS);
+
+	QString name;
+	if (argc == 2) {
+		name = QString::fromLatin1(StringValuePtr(argv[1]));
+	}
+		
+	VALUE metaObject = rb_funcall(argv[0], rb_intern("staticMetaObject"), 0);
+	smokeruby_object *o = value_obj_info(metaObject);
+	QMetaObject * mo = (QMetaObject*) o->ptr;
+	return rb_qFindChild_helper(self, name, *mo);
+*/
+}
+
 void *
 QVariantValue(char * typeName, void * variant)
 {

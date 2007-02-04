@@ -7,13 +7,11 @@ namespace Qyoto {
 	[SmokeClass("QCharRef")]
 	public class QCharRef : MarshalByRefObject {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QCharRef(Type dummy) {}
 		[SmokeClass("QCharRef")]
 		interface IQCharRefProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QCharRef), this);
 			_interceptor = (QCharRef) realProxy.GetTransparentProxy();
@@ -29,7 +27,6 @@ namespace Qyoto {
 		private static IQCharRefProxy StaticQCharRef() {
 			return (IQCharRefProxy) _staticInterceptor;
 		}
-
 		//  operator QChar(); >>>> NOT CONVERTED
 		[SmokeMethod("isNull", "() const", "")]
 		public bool IsNull() {

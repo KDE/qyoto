@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QFocusEvent")]
 		interface IQFocusEventProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFocusEvent), this);
 			_interceptor = (QFocusEvent) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQFocusEventProxy StaticQFocusEvent() {
 			return (IQFocusEventProxy) _staticInterceptor;
 		}
-
 		public QFocusEvent(QEvent.TypeOf type, Qt.FocusReason reason) : this((Type) null) {
 			CreateProxy();
 			NewQFocusEvent(type,reason);

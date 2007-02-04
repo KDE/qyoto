@@ -8,7 +8,6 @@ namespace Qyoto {
 		[SmokeClass("QSql")]
 		interface IQSqlProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSql), this);
 			_interceptor = (QSql) realProxy.GetTransparentProxy();
@@ -24,7 +23,6 @@ namespace Qyoto {
 		private static IQSqlProxy StaticQSql() {
 			return (IQSqlProxy) _staticInterceptor;
 		}
-
 		public enum Location {
 			BeforeFirstRow = -1,
 			AfterLastRow = -2,

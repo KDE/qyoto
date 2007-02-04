@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QGraphicsPathItem")]
 		interface IQGraphicsPathItemProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGraphicsPathItem), this);
 			_interceptor = (QGraphicsPathItem) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQGraphicsPathItemProxy StaticQGraphicsPathItem() {
 			return (IQGraphicsPathItemProxy) _staticInterceptor;
 		}
-
 		public const int Type = 2;
 
 		public QGraphicsPathItem(QGraphicsItem parent, QGraphicsScene scene) : this((Type) null) {

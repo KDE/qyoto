@@ -8,13 +8,11 @@ namespace Qyoto {
 	[SmokeClass("QStandardItem")]
 	public class QStandardItem : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QStandardItem(Type dummy) {}
 		[SmokeClass("QStandardItem")]
 		interface IQStandardItemProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStandardItem), this);
 			_interceptor = (QStandardItem) realProxy.GetTransparentProxy();
@@ -30,7 +28,6 @@ namespace Qyoto {
 		private static IQStandardItemProxy StaticQStandardItem() {
 			return (IQStandardItemProxy) _staticInterceptor;
 		}
-
 		public enum ItemType {
 			Type = 0,
 			UserType = 1000,

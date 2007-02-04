@@ -15,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTableView), this);
 			_interceptor = (QTableView) realProxy.GetTransparentProxy();
@@ -31,7 +30,6 @@ namespace Qyoto {
 		private static IQTableViewProxy StaticQTableView() {
 			return (IQTableViewProxy) _staticInterceptor;
 		}
-
 		[Q_PROPERTY("bool", "showGrid")]
 		public bool ShowGrid {
 			get {

@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QAbstractGraphicsShapeItem")]
 		interface IQAbstractGraphicsShapeItemProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAbstractGraphicsShapeItem), this);
 			_interceptor = (QAbstractGraphicsShapeItem) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQAbstractGraphicsShapeItemProxy StaticQAbstractGraphicsShapeItem() {
 			return (IQAbstractGraphicsShapeItemProxy) _staticInterceptor;
 		}
-
 		public QAbstractGraphicsShapeItem(QGraphicsItem parent, QGraphicsScene scene) : this((Type) null) {
 			CreateProxy();
 			NewQAbstractGraphicsShapeItem(parent,scene);

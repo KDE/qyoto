@@ -8,13 +8,11 @@ namespace Qyoto {
 	[SmokeClass("QHttpHeader")]
 	public class QHttpHeader : MarshalByRefObject {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QHttpHeader(Type dummy) {}
 		[SmokeClass("QHttpHeader")]
 		interface IQHttpHeaderProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QHttpHeader), this);
 			_interceptor = (QHttpHeader) realProxy.GetTransparentProxy();
@@ -30,7 +28,6 @@ namespace Qyoto {
 		private static IQHttpHeaderProxy StaticQHttpHeader() {
 			return (IQHttpHeaderProxy) _staticInterceptor;
 		}
-
 		public QHttpHeader() : this((Type) null) {
 			CreateProxy();
 			NewQHttpHeader();

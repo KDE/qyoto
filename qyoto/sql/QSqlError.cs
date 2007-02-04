@@ -7,13 +7,11 @@ namespace Qyoto {
 	[SmokeClass("QSqlError")]
 	public class QSqlError : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QSqlError(Type dummy) {}
 		[SmokeClass("QSqlError")]
 		interface IQSqlErrorProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSqlError), this);
 			_interceptor = (QSqlError) realProxy.GetTransparentProxy();
@@ -29,7 +27,6 @@ namespace Qyoto {
 		private static IQSqlErrorProxy StaticQSqlError() {
 			return (IQSqlErrorProxy) _staticInterceptor;
 		}
-
 		public enum ErrorType {
 			NoError = 0,
 			ConnectionError = 1,

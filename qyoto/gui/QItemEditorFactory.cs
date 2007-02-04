@@ -6,7 +6,6 @@ namespace Qyoto {
 	[SmokeClass("QItemEditorFactory")]
 	public class QItemEditorFactory : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QItemEditorFactory(Type dummy) {}
 		[SmokeClass("QItemEditorFactory")]
@@ -16,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("setDefaultFactory", "(QItemEditorFactory*)", "#")]
 			void SetDefaultFactory(QItemEditorFactory factory);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QItemEditorFactory), this);
 			_interceptor = (QItemEditorFactory) realProxy.GetTransparentProxy();
@@ -32,7 +30,6 @@ namespace Qyoto {
 		private static IQItemEditorFactoryProxy StaticQItemEditorFactory() {
 			return (IQItemEditorFactoryProxy) _staticInterceptor;
 		}
-
 		public QItemEditorFactory() : this((Type) null) {
 			CreateProxy();
 			NewQItemEditorFactory();

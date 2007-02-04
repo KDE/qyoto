@@ -8,7 +8,6 @@ namespace Qyoto {
 	[SmokeClass("QTextCodec")]
 	public class QTextCodec : MarshalByRefObject {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QTextCodec(Type dummy) {}
 		[SmokeClass("QTextCodec")]
@@ -38,7 +37,6 @@ namespace Qyoto {
 			[SmokeMethod("codecForHtml", "(const QByteArray&)", "#")]
 			QTextCodec CodecForHtml(QByteArray ba);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextCodec), this);
 			_interceptor = (QTextCodec) realProxy.GetTransparentProxy();
@@ -54,7 +52,6 @@ namespace Qyoto {
 		private static IQTextCodecProxy StaticQTextCodec() {
 			return (IQTextCodecProxy) _staticInterceptor;
 		}
-
 		public enum ConversionFlag : long {
 			DefaultConversion = 0,
 			ConvertInvalidToNull = 0x80000000,

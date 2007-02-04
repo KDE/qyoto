@@ -129,13 +129,11 @@ namespace Qyoto {
 	[SmokeClass("QGraphicsItem")]
 	public class QGraphicsItem : MarshalByRefObject, IQGraphicsItem {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QGraphicsItem(Type dummy) {}
 		[SmokeClass("QGraphicsItem")]
 		interface IQGraphicsItemProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGraphicsItem), this);
 			_interceptor = (QGraphicsItem) realProxy.GetTransparentProxy();
@@ -151,7 +149,6 @@ namespace Qyoto {
 		private static IQGraphicsItemProxy StaticQGraphicsItem() {
 			return (IQGraphicsItemProxy) _staticInterceptor;
 		}
-
 		public enum GraphicsItemFlag {
 			ItemIsMovable = 0x1,
 			ItemIsSelectable = 0x2,

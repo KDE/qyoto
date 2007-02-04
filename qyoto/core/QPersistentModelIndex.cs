@@ -6,7 +6,6 @@ namespace Qyoto {
 	[SmokeClass("QPersistentModelIndex")]
 	public class QPersistentModelIndex : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QPersistentModelIndex(Type dummy) {}
 		[SmokeClass("QPersistentModelIndex")]
@@ -18,7 +17,6 @@ namespace Qyoto {
 			[SmokeMethod("operator==", "(const QModelIndex&) const", "#")]
 			bool op_equals(QPersistentModelIndex lhs, QModelIndex other);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPersistentModelIndex), this);
 			_interceptor = (QPersistentModelIndex) realProxy.GetTransparentProxy();
@@ -34,7 +32,6 @@ namespace Qyoto {
 		private static IQPersistentModelIndexProxy StaticQPersistentModelIndex() {
 			return (IQPersistentModelIndexProxy) _staticInterceptor;
 		}
-
 		public QPersistentModelIndex() : this((Type) null) {
 			CreateProxy();
 			NewQPersistentModelIndex();

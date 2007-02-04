@@ -18,7 +18,6 @@ namespace Qyoto {
 			[SmokeMethod("fromData", "(const QSize&, const uchar*)", "#$")]
 			QBitmap FromData(QSize size, char[] bits);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QBitmap), this);
 			_interceptor = (QBitmap) realProxy.GetTransparentProxy();
@@ -34,7 +33,6 @@ namespace Qyoto {
 		private static IQBitmapProxy StaticQBitmap() {
 			return (IQBitmapProxy) _staticInterceptor;
 		}
-
 		public QBitmap() : this((Type) null) {
 			CreateProxy();
 			NewQBitmap();

@@ -14,7 +14,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QRegExpValidator), this);
 			_interceptor = (QRegExpValidator) realProxy.GetTransparentProxy();
@@ -30,7 +29,6 @@ namespace Qyoto {
 		private static IQRegExpValidatorProxy StaticQRegExpValidator() {
 			return (IQRegExpValidatorProxy) _staticInterceptor;
 		}
-
 		[Q_PROPERTY("QRegExp", "regExp")]
 		public QRegExp RegExp {
 			get {

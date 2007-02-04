@@ -15,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSessionManager), this);
 			_interceptor = (QSessionManager) realProxy.GetTransparentProxy();
@@ -31,7 +30,6 @@ namespace Qyoto {
 		private static IQSessionManagerProxy StaticQSessionManager() {
 			return (IQSessionManagerProxy) _staticInterceptor;
 		}
-
 		public enum RestartHint {
 			RestartIfRunning = 0,
 			RestartAnyway = 1,

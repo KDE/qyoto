@@ -17,7 +17,6 @@ namespace Qyoto {
 			[SmokeMethod("staticInstances", "()", "")]
 			List<QObject> StaticInstances();
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPluginLoader), this);
 			_interceptor = (QPluginLoader) realProxy.GetTransparentProxy();
@@ -33,7 +32,6 @@ namespace Qyoto {
 		private static IQPluginLoaderProxy StaticQPluginLoader() {
 			return (IQPluginLoaderProxy) _staticInterceptor;
 		}
-
 		[Q_PROPERTY("QString", "fileName")]
 		public string FileName {
 			get {

@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QDropEvent")]
 		interface IQDropEventProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDropEvent), this);
 			_interceptor = (QDropEvent) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQDropEventProxy StaticQDropEvent() {
 			return (IQDropEventProxy) _staticInterceptor;
 		}
-
 		public QDropEvent(QPoint pos, int actions, QMimeData data, int buttons, int modifiers, QEvent.TypeOf type) : this((Type) null) {
 			CreateProxy();
 			NewQDropEvent(pos,actions,data,buttons,modifiers,type);

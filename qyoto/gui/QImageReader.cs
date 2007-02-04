@@ -8,7 +8,6 @@ namespace Qyoto {
 	[SmokeClass("QImageReader")]
 	public class QImageReader : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QImageReader(Type dummy) {}
 		[SmokeClass("QImageReader")]
@@ -20,7 +19,6 @@ namespace Qyoto {
 			[SmokeMethod("supportedImageFormats", "()", "")]
 			List<QByteArray> SupportedImageFormats();
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QImageReader), this);
 			_interceptor = (QImageReader) realProxy.GetTransparentProxy();
@@ -36,7 +34,6 @@ namespace Qyoto {
 		private static IQImageReaderProxy StaticQImageReader() {
 			return (IQImageReaderProxy) _staticInterceptor;
 		}
-
 		public enum ImageReaderError {
 			UnknownError = 0,
 			FileNotFoundError = 1,

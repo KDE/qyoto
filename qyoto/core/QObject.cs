@@ -8,8 +8,7 @@ namespace Qyoto {
 
 	/// See <see cref="IQObjectSignals"></see> for signals emitted by QObject
 	[SmokeClass("QObject")]
-	public class QObject : Qt, IDisposable {
- 
+	public partial class QObject : Qt, IDisposable {
 		private IntPtr _smokeObject;
 		protected Object Q_EMIT = null;
 		protected QObject(Type dummy) {
@@ -45,7 +44,6 @@ namespace Qyoto {
 			[SmokeMethod("registerUserData", "()", "")]
 			uint RegisterUserData();
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QObject), this);
 			_interceptor = (QObject) realProxy.GetTransparentProxy();
@@ -61,7 +59,6 @@ namespace Qyoto {
 		private static IQObjectProxy StaticQObject() {
 			return (IQObjectProxy) _staticInterceptor;
 		}
-
 		[Q_PROPERTY("QString", "objectName")]
 		public string ObjectName {
 			get {

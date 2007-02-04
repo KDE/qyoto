@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QStyleOptionFocusRect")]
 		interface IQStyleOptionFocusRectProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionFocusRect), this);
 			_interceptor = (QStyleOptionFocusRect) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQStyleOptionFocusRectProxy StaticQStyleOptionFocusRect() {
 			return (IQStyleOptionFocusRectProxy) _staticInterceptor;
 		}
-
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_FocusRect,
 		}

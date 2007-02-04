@@ -16,7 +16,6 @@ namespace Qyoto {
 			[SmokeMethod("qtHandler", "()", "")]
 			QErrorMessage QtHandler();
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QErrorMessage), this);
 			_interceptor = (QErrorMessage) realProxy.GetTransparentProxy();
@@ -32,7 +31,6 @@ namespace Qyoto {
 		private static IQErrorMessageProxy StaticQErrorMessage() {
 			return (IQErrorMessageProxy) _staticInterceptor;
 		}
-
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QErrorMessage(QWidget parent) : this((Type) null) {
 			CreateProxy();

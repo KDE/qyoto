@@ -6,7 +6,6 @@ namespace Qyoto {
 	[SmokeClass("QBrush")]
 	public class QBrush : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QBrush(Type dummy) {}
 		[SmokeClass("QBrush")]
@@ -14,7 +13,6 @@ namespace Qyoto {
 			[SmokeMethod("operator==", "(const QBrush&) const", "#")]
 			bool op_equals(QBrush lhs, QBrush b);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QBrush), this);
 			_interceptor = (QBrush) realProxy.GetTransparentProxy();
@@ -30,7 +28,6 @@ namespace Qyoto {
 		private static IQBrushProxy StaticQBrush() {
 			return (IQBrushProxy) _staticInterceptor;
 		}
-
 		public QBrush() : this((Type) null) {
 			CreateProxy();
 			NewQBrush();

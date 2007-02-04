@@ -6,13 +6,11 @@ namespace Qyoto {
 	[SmokeClass("QStyleHintReturn")]
 	public class QStyleHintReturn : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QStyleHintReturn(Type dummy) {}
 		[SmokeClass("QStyleHintReturn")]
 		interface IQStyleHintReturnProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleHintReturn), this);
 			_interceptor = (QStyleHintReturn) realProxy.GetTransparentProxy();
@@ -28,7 +26,6 @@ namespace Qyoto {
 		private static IQStyleHintReturnProxy StaticQStyleHintReturn() {
 			return (IQStyleHintReturnProxy) _staticInterceptor;
 		}
-
 		public enum HintReturnType {
 			SH_Default = 0xf000,
 			SH_Mask = 0,

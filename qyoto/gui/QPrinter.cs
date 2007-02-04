@@ -11,7 +11,6 @@ namespace Qyoto {
 		[SmokeClass("QPrinter")]
 		interface IQPrinterProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPrinter), this);
 			_interceptor = (QPrinter) realProxy.GetTransparentProxy();
@@ -27,7 +26,6 @@ namespace Qyoto {
 		private static IQPrinterProxy StaticQPrinter() {
 			return (IQPrinterProxy) _staticInterceptor;
 		}
-
 		public enum PrinterMode {
 			ScreenResolution = 0,
 			PrinterResolution = 1,

@@ -7,7 +7,6 @@ namespace Qyoto {
 	[SmokeClass("QSqlRecord")]
 	public class QSqlRecord : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QSqlRecord(Type dummy) {}
 		[SmokeClass("QSqlRecord")]
@@ -15,7 +14,6 @@ namespace Qyoto {
 			[SmokeMethod("operator==", "(const QSqlRecord&) const", "#")]
 			bool op_equals(QSqlRecord lhs, QSqlRecord other);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSqlRecord), this);
 			_interceptor = (QSqlRecord) realProxy.GetTransparentProxy();
@@ -31,7 +29,6 @@ namespace Qyoto {
 		private static IQSqlRecordProxy StaticQSqlRecord() {
 			return (IQSqlRecordProxy) _staticInterceptor;
 		}
-
 		public QSqlRecord() : this((Type) null) {
 			CreateProxy();
 			NewQSqlRecord();

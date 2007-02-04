@@ -6,13 +6,11 @@ namespace Qyoto {
 	[SmokeClass("QEvent")]
 	public class QEvent : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QEvent(Type dummy) {}
 		[SmokeClass("QEvent")]
 		interface IQEventProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QEvent), this);
 			_interceptor = (QEvent) realProxy.GetTransparentProxy();
@@ -28,7 +26,6 @@ namespace Qyoto {
 		private static IQEventProxy StaticQEvent() {
 			return (IQEventProxy) _staticInterceptor;
 		}
-
 		public enum TypeOf {
 			None = 0,
 			Timer = 1,

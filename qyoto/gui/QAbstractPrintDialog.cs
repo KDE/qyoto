@@ -14,7 +14,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAbstractPrintDialog), this);
 			_interceptor = (QAbstractPrintDialog) realProxy.GetTransparentProxy();
@@ -30,7 +29,6 @@ namespace Qyoto {
 		private static IQAbstractPrintDialogProxy StaticQAbstractPrintDialog() {
 			return (IQAbstractPrintDialogProxy) _staticInterceptor;
 		}
-
 		public enum PrintRange {
 			AllPages = 0,
 			Selection = 1,

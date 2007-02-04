@@ -8,7 +8,6 @@ namespace Qyoto {
 	[SmokeClass("QFontDatabase")]
 	public class QFontDatabase : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QFontDatabase(Type dummy) {}
 		[SmokeClass("QFontDatabase")]
@@ -30,7 +29,6 @@ namespace Qyoto {
 			[SmokeMethod("removeAllApplicationFonts", "()", "")]
 			bool RemoveAllApplicationFonts();
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFontDatabase), this);
 			_interceptor = (QFontDatabase) realProxy.GetTransparentProxy();
@@ -46,7 +44,6 @@ namespace Qyoto {
 		private static IQFontDatabaseProxy StaticQFontDatabase() {
 			return (IQFontDatabaseProxy) _staticInterceptor;
 		}
-
 		public enum WritingSystem {
 			Any = 0,
 			Latin = 1,

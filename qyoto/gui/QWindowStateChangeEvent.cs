@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QWindowStateChangeEvent")]
 		interface IQWindowStateChangeEventProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QWindowStateChangeEvent), this);
 			_interceptor = (QWindowStateChangeEvent) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQWindowStateChangeEventProxy StaticQWindowStateChangeEvent() {
 			return (IQWindowStateChangeEventProxy) _staticInterceptor;
 		}
-
 		public QWindowStateChangeEvent(int aOldState) : this((Type) null) {
 			CreateProxy();
 			NewQWindowStateChangeEvent(aOldState);

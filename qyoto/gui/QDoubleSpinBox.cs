@@ -15,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDoubleSpinBox), this);
 			_interceptor = (QDoubleSpinBox) realProxy.GetTransparentProxy();
@@ -31,7 +30,6 @@ namespace Qyoto {
 		private static IQDoubleSpinBoxProxy StaticQDoubleSpinBox() {
 			return (IQDoubleSpinBoxProxy) _staticInterceptor;
 		}
-
 		[Q_PROPERTY("QString", "prefix")]
 		public string Prefix {
 			get {

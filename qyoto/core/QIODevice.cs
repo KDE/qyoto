@@ -51,7 +51,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QIODevice), this);
 			_interceptor = (QIODevice) realProxy.GetTransparentProxy();
@@ -67,7 +66,6 @@ namespace Qyoto {
 		private static IQIODeviceProxy StaticQIODevice() {
 			return (IQIODeviceProxy) _staticInterceptor;
 		}
-
 		public enum OpenModeFlag {
 			NotOpen = 0x0000,
 			ReadOnly = 0x0001,

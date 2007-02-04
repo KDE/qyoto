@@ -7,7 +7,6 @@ namespace Qyoto {
 	[SmokeClass("QUuid")]
 	public class QUuid : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QUuid(Type dummy) {}
 		[SmokeClass("QUuid")]
@@ -21,7 +20,6 @@ namespace Qyoto {
 			[SmokeMethod("createUuid", "()", "")]
 			QUuid CreateUuid();
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QUuid), this);
 			_interceptor = (QUuid) realProxy.GetTransparentProxy();
@@ -37,7 +35,6 @@ namespace Qyoto {
 		private static IQUuidProxy StaticQUuid() {
 			return (IQUuidProxy) _staticInterceptor;
 		}
-
 		public enum Variant {
 			VarUnknown = -1,
 			NCS = 0,

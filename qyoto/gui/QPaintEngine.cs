@@ -6,13 +6,11 @@ namespace Qyoto {
 	[SmokeClass("QPaintEngine")]
 	public class QPaintEngine : MarshalByRefObject {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QPaintEngine(Type dummy) {}
 		[SmokeClass("QPaintEngine")]
 		interface IQPaintEngineProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPaintEngine), this);
 			_interceptor = (QPaintEngine) realProxy.GetTransparentProxy();
@@ -28,7 +26,6 @@ namespace Qyoto {
 		private static IQPaintEngineProxy StaticQPaintEngine() {
 			return (IQPaintEngineProxy) _staticInterceptor;
 		}
-
 		public enum PaintEngineFeature : uint {
 			PrimitiveTransform = 0x00000001,
 			PatternTransform = 0x00000002,

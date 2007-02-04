@@ -10,7 +10,6 @@ namespace Qyoto {
 		[SmokeClass("QGraphicsSimpleTextItem")]
 		interface IQGraphicsSimpleTextItemProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGraphicsSimpleTextItem), this);
 			_interceptor = (QGraphicsSimpleTextItem) realProxy.GetTransparentProxy();
@@ -26,7 +25,6 @@ namespace Qyoto {
 		private static IQGraphicsSimpleTextItemProxy StaticQGraphicsSimpleTextItem() {
 			return (IQGraphicsSimpleTextItemProxy) _staticInterceptor;
 		}
-
 		public const int Type = 9;
 
 		public QGraphicsSimpleTextItem(QGraphicsItem parent, QGraphicsScene scene) : this((Type) null) {

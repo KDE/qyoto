@@ -16,7 +16,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextBrowser), this);
 			_interceptor = (QTextBrowser) realProxy.GetTransparentProxy();
@@ -32,7 +31,6 @@ namespace Qyoto {
 		private static IQTextBrowserProxy StaticQTextBrowser() {
 			return (IQTextBrowserProxy) _staticInterceptor;
 		}
-
 		[Q_PROPERTY("QUrl", "source")]
 		public IQUrl Source {
 			get {

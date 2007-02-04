@@ -7,7 +7,6 @@ namespace Qyoto {
 	[SmokeClass("QUrlInfo")]
 	public class QUrlInfo : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QUrlInfo(Type dummy) {}
 		[SmokeClass("QUrlInfo")]
@@ -19,7 +18,6 @@ namespace Qyoto {
 			[SmokeMethod("equal", "(const QUrlInfo&, const QUrlInfo&, int)", "##$")]
 			bool Equal(QUrlInfo i1, QUrlInfo i2, int sortBy);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QUrlInfo), this);
 			_interceptor = (QUrlInfo) realProxy.GetTransparentProxy();
@@ -35,7 +33,6 @@ namespace Qyoto {
 		private static IQUrlInfoProxy StaticQUrlInfo() {
 			return (IQUrlInfoProxy) _staticInterceptor;
 		}
-
 		public enum PermissionSpec {
 			ReadOwner = 00400,
 			WriteOwner = 00200,

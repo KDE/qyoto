@@ -8,7 +8,6 @@ namespace Qyoto {
 	[SmokeClass("QPictureIO")]
 	public class QPictureIO : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QPictureIO(Type dummy) {}
 		[SmokeClass("QPictureIO")]
@@ -22,7 +21,6 @@ namespace Qyoto {
 			[SmokeMethod("outputFormats", "()", "")]
 			List<QByteArray> OutputFormats();
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPictureIO), this);
 			_interceptor = (QPictureIO) realProxy.GetTransparentProxy();
@@ -38,7 +36,6 @@ namespace Qyoto {
 		private static IQPictureIOProxy StaticQPictureIO() {
 			return (IQPictureIOProxy) _staticInterceptor;
 		}
-
 		public QPictureIO() : this((Type) null) {
 			CreateProxy();
 			NewQPictureIO();

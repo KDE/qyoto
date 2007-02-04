@@ -23,7 +23,6 @@ namespace Qyoto {
 			[SmokeMethod("fromData", "(const QByteArray&)", "#")]
 			QImage FromData(QByteArray data);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QImage), this);
 			_interceptor = (QImage) realProxy.GetTransparentProxy();
@@ -39,7 +38,6 @@ namespace Qyoto {
 		private static IQImageProxy StaticQImage() {
 			return (IQImageProxy) _staticInterceptor;
 		}
-
 		public enum InvertMode {
 			InvertRgb = 0,
 			InvertRgba = 1,

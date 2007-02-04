@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QDomDocumentFragment")]
 		interface IQDomDocumentFragmentProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomDocumentFragment), this);
 			_interceptor = (QDomDocumentFragment) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQDomDocumentFragmentProxy StaticQDomDocumentFragment() {
 			return (IQDomDocumentFragmentProxy) _staticInterceptor;
 		}
-
 		public QDomDocumentFragment() : this((Type) null) {
 			CreateProxy();
 			NewQDomDocumentFragment();

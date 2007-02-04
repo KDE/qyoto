@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QShortcutEvent")]
 		interface IQShortcutEventProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QShortcutEvent), this);
 			_interceptor = (QShortcutEvent) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQShortcutEventProxy StaticQShortcutEvent() {
 			return (IQShortcutEventProxy) _staticInterceptor;
 		}
-
 		public QShortcutEvent(QKeySequence key, int id, bool ambiguous) : this((Type) null) {
 			CreateProxy();
 			NewQShortcutEvent(key,id,ambiguous);

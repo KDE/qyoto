@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QDragResponseEvent")]
 		interface IQDragResponseEventProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDragResponseEvent), this);
 			_interceptor = (QDragResponseEvent) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQDragResponseEventProxy StaticQDragResponseEvent() {
 			return (IQDragResponseEventProxy) _staticInterceptor;
 		}
-
 		public QDragResponseEvent(bool accepted) : this((Type) null) {
 			CreateProxy();
 			NewQDragResponseEvent(accepted);

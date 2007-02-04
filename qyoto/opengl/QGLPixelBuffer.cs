@@ -12,7 +12,6 @@ namespace Qyoto {
 			[SmokeMethod("hasOpenGLPbuffers", "()", "")]
 			bool HasOpenGLPbuffers();
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGLPixelBuffer), this);
 			_interceptor = (QGLPixelBuffer) realProxy.GetTransparentProxy();
@@ -28,7 +27,6 @@ namespace Qyoto {
 		private static IQGLPixelBufferProxy StaticQGLPixelBuffer() {
 			return (IQGLPixelBufferProxy) _staticInterceptor;
 		}
-
 		public QGLPixelBuffer(QSize size, QGLFormat format, QGLWidget shareWidget) : this((Type) null) {
 			CreateProxy();
 			NewQGLPixelBuffer(size,format,shareWidget);

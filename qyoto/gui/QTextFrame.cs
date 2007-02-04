@@ -15,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextFrame), this);
 			_interceptor = (QTextFrame) realProxy.GetTransparentProxy();
@@ -31,7 +30,6 @@ namespace Qyoto {
 		private static IQTextFrameProxy StaticQTextFrame() {
 			return (IQTextFrameProxy) _staticInterceptor;
 		}
-
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		// QTextFrame* QTextFrame(QTextDocument* arg1); >>>> NOT CONVERTED
 		[SmokeMethod("setFrameFormat", "(const QTextFrameFormat&)", "#")]

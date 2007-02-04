@@ -7,7 +7,6 @@ namespace Qyoto {
 	[SmokeClass("QDate")]
 	public class QDate : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QDate(Type dummy) {}
 		[SmokeClass("QDate")]
@@ -49,7 +48,6 @@ namespace Qyoto {
 			[SmokeMethod("fromJulianDay", "(int)", "$")]
 			QDate FromJulianDay(int jd);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDate), this);
 			_interceptor = (QDate) realProxy.GetTransparentProxy();
@@ -65,7 +63,6 @@ namespace Qyoto {
 		private static IQDateProxy StaticQDate() {
 			return (IQDateProxy) _staticInterceptor;
 		}
-
 		public QDate() : this((Type) null) {
 			CreateProxy();
 			NewQDate();

@@ -7,7 +7,6 @@ namespace Qyoto {
 	[SmokeClass("QHostAddress")]
 	public class QHostAddress : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QHostAddress(Type dummy) {}
 		[SmokeClass("QHostAddress")]
@@ -17,7 +16,6 @@ namespace Qyoto {
 			[SmokeMethod("operator==", "(QHostAddress::SpecialAddress) const", "$")]
 			bool op_equals(QHostAddress lhs, QHostAddress.SpecialAddress address);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QHostAddress), this);
 			_interceptor = (QHostAddress) realProxy.GetTransparentProxy();
@@ -33,7 +31,6 @@ namespace Qyoto {
 		private static IQHostAddressProxy StaticQHostAddress() {
 			return (IQHostAddressProxy) _staticInterceptor;
 		}
-
 		public enum SpecialAddress {
 			Null = 0,
 			Broadcast = 1,

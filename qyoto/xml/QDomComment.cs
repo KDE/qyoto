@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QDomComment")]
 		interface IQDomCommentProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomComment), this);
 			_interceptor = (QDomComment) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQDomCommentProxy StaticQDomComment() {
 			return (IQDomCommentProxy) _staticInterceptor;
 		}
-
 		public QDomComment() : this((Type) null) {
 			CreateProxy();
 			NewQDomComment();

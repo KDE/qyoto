@@ -7,7 +7,6 @@ namespace Qyoto {
 	[SmokeClass("QDesktopServices")]
 	public class QDesktopServices : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QDesktopServices(Type dummy) {}
 		[SmokeClass("QDesktopServices")]
@@ -19,7 +18,6 @@ namespace Qyoto {
 			[SmokeMethod("unsetUrlHandler", "(const QString&)", "$")]
 			void UnsetUrlHandler(string scheme);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDesktopServices), this);
 			_interceptor = (QDesktopServices) realProxy.GetTransparentProxy();
@@ -35,7 +33,6 @@ namespace Qyoto {
 		private static IQDesktopServicesProxy StaticQDesktopServices() {
 			return (IQDesktopServicesProxy) _staticInterceptor;
 		}
-
 		public QDesktopServices() : this((Type) null) {
 			CreateProxy();
 			NewQDesktopServices();

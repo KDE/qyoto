@@ -6,13 +6,11 @@ namespace Qyoto {
 	[SmokeClass("QTextFrameLayoutData")]
 	public class QTextFrameLayoutData : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QTextFrameLayoutData(Type dummy) {}
 		[SmokeClass("QTextFrameLayoutData")]
 		interface IQTextFrameLayoutDataProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextFrameLayoutData), this);
 			_interceptor = (QTextFrameLayoutData) realProxy.GetTransparentProxy();
@@ -28,7 +26,6 @@ namespace Qyoto {
 		private static IQTextFrameLayoutDataProxy StaticQTextFrameLayoutData() {
 			return (IQTextFrameLayoutDataProxy) _staticInterceptor;
 		}
-
 		public QTextFrameLayoutData() : this((Type) null) {
 			CreateProxy();
 			NewQTextFrameLayoutData();

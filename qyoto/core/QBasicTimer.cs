@@ -6,13 +6,11 @@ namespace Qyoto {
 	[SmokeClass("QBasicTimer")]
 	public class QBasicTimer : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QBasicTimer(Type dummy) {}
 		[SmokeClass("QBasicTimer")]
 		interface IQBasicTimerProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QBasicTimer), this);
 			_interceptor = (QBasicTimer) realProxy.GetTransparentProxy();
@@ -28,7 +26,6 @@ namespace Qyoto {
 		private static IQBasicTimerProxy StaticQBasicTimer() {
 			return (IQBasicTimerProxy) _staticInterceptor;
 		}
-
 		public QBasicTimer() : this((Type) null) {
 			CreateProxy();
 			NewQBasicTimer();

@@ -7,7 +7,6 @@ namespace Qyoto {
 	[SmokeClass("QLibraryInfo")]
 	public class QLibraryInfo : MarshalByRefObject {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QLibraryInfo(Type dummy) {}
 		[SmokeClass("QLibraryInfo")]
@@ -21,7 +20,6 @@ namespace Qyoto {
 			[SmokeMethod("location", "(QLibraryInfo::LibraryLocation)", "$")]
 			string Location(QLibraryInfo.LibraryLocation arg1);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QLibraryInfo), this);
 			_interceptor = (QLibraryInfo) realProxy.GetTransparentProxy();
@@ -37,7 +35,6 @@ namespace Qyoto {
 		private static IQLibraryInfoProxy StaticQLibraryInfo() {
 			return (IQLibraryInfoProxy) _staticInterceptor;
 		}
-
 		public enum LibraryLocation {
 			PrefixPath = 0,
 			DocumentationPath = 1,

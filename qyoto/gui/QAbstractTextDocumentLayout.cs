@@ -15,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAbstractTextDocumentLayout), this);
 			_interceptor = (QAbstractTextDocumentLayout) realProxy.GetTransparentProxy();
@@ -31,7 +30,6 @@ namespace Qyoto {
 		private static IQAbstractTextDocumentLayoutProxy StaticQAbstractTextDocumentLayout() {
 			return (IQAbstractTextDocumentLayoutProxy) _staticInterceptor;
 		}
-
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		// QAbstractTextDocumentLayout* QAbstractTextDocumentLayout(QTextDocument* arg1); >>>> NOT CONVERTED
 		// void draw(QPainter* arg1,const QAbstractTextDocumentLayout::PaintContext& arg2); >>>> NOT CONVERTED

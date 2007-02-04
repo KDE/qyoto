@@ -6,13 +6,11 @@ namespace Qyoto {
 	[SmokeClass("QAccessibleBridge")]
 	public class QAccessibleBridge : MarshalByRefObject {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QAccessibleBridge(Type dummy) {}
 		[SmokeClass("QAccessibleBridge")]
 		interface IQAccessibleBridgeProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAccessibleBridge), this);
 			_interceptor = (QAccessibleBridge) realProxy.GetTransparentProxy();
@@ -28,7 +26,6 @@ namespace Qyoto {
 		private static IQAccessibleBridgeProxy StaticQAccessibleBridge() {
 			return (IQAccessibleBridgeProxy) _staticInterceptor;
 		}
-
 		[SmokeMethod("setRootObject", "(QAccessibleInterface*)", "#")]
 		public virtual void SetRootObject(QAccessibleInterface arg1) {
 			ProxyQAccessibleBridge().SetRootObject(arg1);

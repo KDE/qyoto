@@ -16,7 +16,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QActionGroup), this);
 			_interceptor = (QActionGroup) realProxy.GetTransparentProxy();
@@ -32,7 +31,6 @@ namespace Qyoto {
 		private static IQActionGroupProxy StaticQActionGroup() {
 			return (IQActionGroupProxy) _staticInterceptor;
 		}
-
 		[Q_PROPERTY("bool", "exclusive")]
 		public bool Exclusive {
 			get {

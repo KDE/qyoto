@@ -7,7 +7,6 @@ namespace Qyoto {
 	[SmokeClass("QDateTime")]
 	public class QDateTime : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QDateTime(Type dummy) {}
 		[SmokeClass("QDateTime")]
@@ -33,7 +32,6 @@ namespace Qyoto {
 			[SmokeMethod("fromTime_t", "(uint)", "$")]
 			QDateTime FromTime_t(uint secsSince1Jan1970UTC);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDateTime), this);
 			_interceptor = (QDateTime) realProxy.GetTransparentProxy();
@@ -49,7 +47,6 @@ namespace Qyoto {
 		private static IQDateTimeProxy StaticQDateTime() {
 			return (IQDateTimeProxy) _staticInterceptor;
 		}
-
 		public QDateTime() : this((Type) null) {
 			CreateProxy();
 			NewQDateTime();

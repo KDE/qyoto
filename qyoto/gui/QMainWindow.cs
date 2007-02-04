@@ -15,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMainWindow), this);
 			_interceptor = (QMainWindow) realProxy.GetTransparentProxy();
@@ -31,7 +30,6 @@ namespace Qyoto {
 		private static IQMainWindowProxy StaticQMainWindow() {
 			return (IQMainWindowProxy) _staticInterceptor;
 		}
-
 		[Q_PROPERTY("QSize", "iconSize")]
 		public QSize IconSize {
 			get {

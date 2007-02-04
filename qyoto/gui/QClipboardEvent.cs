@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QClipboardEvent")]
 		interface IQClipboardEventProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QClipboardEvent), this);
 			_interceptor = (QClipboardEvent) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQClipboardEventProxy StaticQClipboardEvent() {
 			return (IQClipboardEventProxy) _staticInterceptor;
 		}
-
 		// QClipboardEvent* QClipboardEvent(QEventPrivate* arg1); >>>> NOT CONVERTED
 		// QEventPrivate* data(); >>>> NOT CONVERTED
 		~QClipboardEvent() {

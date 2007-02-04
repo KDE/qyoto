@@ -14,7 +14,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QUdpSocket), this);
 			_interceptor = (QUdpSocket) realProxy.GetTransparentProxy();
@@ -30,7 +29,6 @@ namespace Qyoto {
 		private static IQUdpSocketProxy StaticQUdpSocket() {
 			return (IQUdpSocketProxy) _staticInterceptor;
 		}
-
 		public enum BindFlag {
 			DefaultForPlatform = 0x0,
 			ShareAddress = 0x1,

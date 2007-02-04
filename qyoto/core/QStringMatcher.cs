@@ -7,13 +7,11 @@ namespace Qyoto {
 	[SmokeClass("QStringMatcher")]
 	public class QStringMatcher : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QStringMatcher(Type dummy) {}
 		[SmokeClass("QStringMatcher")]
 		interface IQStringMatcherProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStringMatcher), this);
 			_interceptor = (QStringMatcher) realProxy.GetTransparentProxy();
@@ -29,7 +27,6 @@ namespace Qyoto {
 		private static IQStringMatcherProxy StaticQStringMatcher() {
 			return (IQStringMatcherProxy) _staticInterceptor;
 		}
-
 		public QStringMatcher() : this((Type) null) {
 			CreateProxy();
 			NewQStringMatcher();

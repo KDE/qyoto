@@ -15,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDirModel), this);
 			_interceptor = (QDirModel) realProxy.GetTransparentProxy();
@@ -31,7 +30,6 @@ namespace Qyoto {
 		private static IQDirModelProxy StaticQDirModel() {
 			return (IQDirModelProxy) _staticInterceptor;
 		}
-
 		public enum Roles {
 			FileIconRole = Qt.ItemDataRole.DecorationRole,
 			FilePathRole = Qt.ItemDataRole.UserRole+1,

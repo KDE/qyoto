@@ -6,13 +6,11 @@ namespace Qyoto {
 	[SmokeClass("QTextLine")]
 	public class QTextLine : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QTextLine(Type dummy) {}
 		[SmokeClass("QTextLine")]
 		interface IQTextLineProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextLine), this);
 			_interceptor = (QTextLine) realProxy.GetTransparentProxy();
@@ -28,7 +26,6 @@ namespace Qyoto {
 		private static IQTextLineProxy StaticQTextLine() {
 			return (IQTextLineProxy) _staticInterceptor;
 		}
-
 		public enum Edge {
 			Leading = 0,
 			Trailing = 1,

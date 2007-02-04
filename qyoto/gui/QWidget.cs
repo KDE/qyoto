@@ -24,7 +24,6 @@ namespace Qyoto {
 			[SmokeMethod("find", "(WId)", "$")]
 			QWidget Find(ulong arg1);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QWidget), this);
 			_interceptor = (QWidget) realProxy.GetTransparentProxy();
@@ -40,7 +39,6 @@ namespace Qyoto {
 		private static IQWidgetProxy StaticQWidget() {
 			return (IQWidgetProxy) _staticInterceptor;
 		}
-
 		[Q_PROPERTY("bool", "modal")]
 		public bool Modal {
 			get {

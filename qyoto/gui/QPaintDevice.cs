@@ -22,13 +22,11 @@ namespace Qyoto {
 	[SmokeClass("QPaintDevice")]
 	public class QPaintDevice : MarshalByRefObject, IQPaintDevice {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QPaintDevice(Type dummy) {}
 		[SmokeClass("QPaintDevice")]
 		interface IQPaintDeviceProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPaintDevice), this);
 			_interceptor = (QPaintDevice) realProxy.GetTransparentProxy();
@@ -44,7 +42,6 @@ namespace Qyoto {
 		private static IQPaintDeviceProxy StaticQPaintDevice() {
 			return (IQPaintDeviceProxy) _staticInterceptor;
 		}
-
 		public enum PaintDeviceMetric {
 			PdmWidth = 1,
 			PdmHeight = 2,

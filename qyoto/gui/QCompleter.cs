@@ -16,7 +16,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QCompleter), this);
 			_interceptor = (QCompleter) realProxy.GetTransparentProxy();
@@ -32,7 +31,6 @@ namespace Qyoto {
 		private static IQCompleterProxy StaticQCompleter() {
 			return (IQCompleterProxy) _staticInterceptor;
 		}
-
 		public enum CompletionMode {
 			PopupCompletion = 0,
 			UnfilteredPopupCompletion = 1,

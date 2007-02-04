@@ -7,7 +7,6 @@ namespace Qyoto {
 	[SmokeClass("QFileInfo")]
 	public class QFileInfo : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QFileInfo(Type dummy) {}
 		[SmokeClass("QFileInfo")]
@@ -15,7 +14,6 @@ namespace Qyoto {
 			[SmokeMethod("operator==", "(const QFileInfo&)", "#")]
 			bool op_equals(QFileInfo lhs, QFileInfo fileinfo);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFileInfo), this);
 			_interceptor = (QFileInfo) realProxy.GetTransparentProxy();
@@ -31,7 +29,6 @@ namespace Qyoto {
 		private static IQFileInfoProxy StaticQFileInfo() {
 			return (IQFileInfoProxy) _staticInterceptor;
 		}
-
 		public QFileInfo() : this((Type) null) {
 			CreateProxy();
 			NewQFileInfo();

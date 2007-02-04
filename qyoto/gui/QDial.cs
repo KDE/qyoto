@@ -14,7 +14,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDial), this);
 			_interceptor = (QDial) realProxy.GetTransparentProxy();
@@ -30,7 +29,6 @@ namespace Qyoto {
 		private static IQDialProxy StaticQDial() {
 			return (IQDialProxy) _staticInterceptor;
 		}
-
 		[Q_PROPERTY("bool", "wrapping")]
 		public bool Wrapping {
 			get {

@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QStyleOptionSpinBox")]
 		interface IQStyleOptionSpinBoxProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionSpinBox), this);
 			_interceptor = (QStyleOptionSpinBox) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQStyleOptionSpinBoxProxy StaticQStyleOptionSpinBox() {
 			return (IQStyleOptionSpinBoxProxy) _staticInterceptor;
 		}
-
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_SpinBox,
 		}

@@ -14,7 +14,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDoubleValidator), this);
 			_interceptor = (QDoubleValidator) realProxy.GetTransparentProxy();
@@ -30,7 +29,6 @@ namespace Qyoto {
 		private static IQDoubleValidatorProxy StaticQDoubleValidator() {
 			return (IQDoubleValidatorProxy) _staticInterceptor;
 		}
-
 		[Q_PROPERTY("double", "bottom")]
 		public double Bottom {
 			get {

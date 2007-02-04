@@ -17,7 +17,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QListView), this);
 			_interceptor = (QListView) realProxy.GetTransparentProxy();
@@ -33,7 +32,6 @@ namespace Qyoto {
 		private static IQListViewProxy StaticQListView() {
 			return (IQListViewProxy) _staticInterceptor;
 		}
-
 		public enum Movement {
 			Static = 0,
 			Free = 1,

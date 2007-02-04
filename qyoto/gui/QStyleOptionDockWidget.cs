@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QStyleOptionDockWidget")]
 		interface IQStyleOptionDockWidgetProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionDockWidget), this);
 			_interceptor = (QStyleOptionDockWidget) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQStyleOptionDockWidgetProxy StaticQStyleOptionDockWidget() {
 			return (IQStyleOptionDockWidgetProxy) _staticInterceptor;
 		}
-
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_DockWidget,
 		}

@@ -10,7 +10,6 @@ namespace Qyoto {
 		[SmokeClass("QAccessibleBridgeFactoryInterface")]
 		interface IQAccessibleBridgeFactoryInterfaceProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAccessibleBridgeFactoryInterface), this);
 			_interceptor = (QAccessibleBridgeFactoryInterface) realProxy.GetTransparentProxy();
@@ -26,7 +25,6 @@ namespace Qyoto {
 		private static IQAccessibleBridgeFactoryInterfaceProxy StaticQAccessibleBridgeFactoryInterface() {
 			return (IQAccessibleBridgeFactoryInterfaceProxy) _staticInterceptor;
 		}
-
 		[SmokeMethod("create", "(const QString&)", "$")]
 		public virtual QAccessibleBridge Create(string name) {
 			return ProxyQAccessibleBridgeFactoryInterface().Create(name);

@@ -8,7 +8,6 @@ namespace Qyoto {
 	[SmokeClass("QDBusMessage")]
 	public class QDBusMessage : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QDBusMessage(Type dummy) {}
 		[SmokeClass("QDBusMessage")]
@@ -22,7 +21,6 @@ namespace Qyoto {
 			[SmokeMethod("createError", "(const QDBusError&)", "#")]
 			QDBusMessage CreateError(QDBusError err);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDBusMessage), this);
 			_interceptor = (QDBusMessage) realProxy.GetTransparentProxy();
@@ -38,7 +36,6 @@ namespace Qyoto {
 		private static IQDBusMessageProxy StaticQDBusMessage() {
 			return (IQDBusMessageProxy) _staticInterceptor;
 		}
-
 		public enum MessageType {
 			InvalidMessage = 0,
 			MethodCallMessage = 1,
@@ -131,8 +128,8 @@ namespace Qyoto {
 			return ProxyQDBusMessage().Arguments();
 		}
 		[SmokeMethod("operator<<", "(const QVariant&)", "#")]
-		public QDBusMessage op_write(QVariant arg) {
-			return ProxyQDBusMessage().op_write(arg);
+		public QDBusMessage Write(QVariant arg) {
+			return ProxyQDBusMessage().Write(arg);
 		}
 		public static QDBusMessage CreateSignal(string path, string arg2, string name) {
 			return StaticQDBusMessage().CreateSignal(path,arg2,name);

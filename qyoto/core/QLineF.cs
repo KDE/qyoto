@@ -6,7 +6,6 @@ namespace Qyoto {
 	[SmokeClass("QLineF")]
 	public class QLineF : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QLineF(Type dummy) {}
 		[SmokeClass("QLineF")]
@@ -14,7 +13,6 @@ namespace Qyoto {
 			[SmokeMethod("operator==", "(const QLineF&) const", "#")]
 			bool op_equals(QLineF lhs, QLineF d);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QLineF), this);
 			_interceptor = (QLineF) realProxy.GetTransparentProxy();
@@ -30,7 +28,6 @@ namespace Qyoto {
 		private static IQLineFProxy StaticQLineF() {
 			return (IQLineFProxy) _staticInterceptor;
 		}
-
 		public enum IntersectType {
 			NoIntersection = 0,
 			BoundedIntersection = 1,

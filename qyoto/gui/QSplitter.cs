@@ -16,7 +16,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSplitter), this);
 			_interceptor = (QSplitter) realProxy.GetTransparentProxy();
@@ -32,7 +31,6 @@ namespace Qyoto {
 		private static IQSplitterProxy StaticQSplitter() {
 			return (IQSplitterProxy) _staticInterceptor;
 		}
-
 		[Q_PROPERTY("Qt::Orientation", "orientation")]
 		public Qt.Orientation Orientation {
 			get {

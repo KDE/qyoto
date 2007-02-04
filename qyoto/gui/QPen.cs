@@ -7,7 +7,6 @@ namespace Qyoto {
 	[SmokeClass("QPen")]
 	public class QPen : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QPen(Type dummy) {}
 		[SmokeClass("QPen")]
@@ -15,7 +14,6 @@ namespace Qyoto {
 			[SmokeMethod("operator==", "(const QPen&) const", "#")]
 			bool op_equals(QPen lhs, QPen p);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPen), this);
 			_interceptor = (QPen) realProxy.GetTransparentProxy();
@@ -31,7 +29,6 @@ namespace Qyoto {
 		private static IQPenProxy StaticQPen() {
 			return (IQPenProxy) _staticInterceptor;
 		}
-
 		public QPen() : this((Type) null) {
 			CreateProxy();
 			NewQPen();

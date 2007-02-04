@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QDragMoveEvent")]
 		interface IQDragMoveEventProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDragMoveEvent), this);
 			_interceptor = (QDragMoveEvent) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQDragMoveEventProxy StaticQDragMoveEvent() {
 			return (IQDragMoveEventProxy) _staticInterceptor;
 		}
-
 		public QDragMoveEvent(QPoint pos, int actions, QMimeData data, int buttons, int modifiers, QEvent.TypeOf type) : this((Type) null) {
 			CreateProxy();
 			NewQDragMoveEvent(pos,actions,data,buttons,modifiers,type);

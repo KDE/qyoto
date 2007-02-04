@@ -6,13 +6,11 @@ namespace Qyoto {
 	[SmokeClass("QSqlDriverCreatorBase")]
 	public class QSqlDriverCreatorBase : MarshalByRefObject {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QSqlDriverCreatorBase(Type dummy) {}
 		[SmokeClass("QSqlDriverCreatorBase")]
 		interface IQSqlDriverCreatorBaseProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSqlDriverCreatorBase), this);
 			_interceptor = (QSqlDriverCreatorBase) realProxy.GetTransparentProxy();
@@ -28,7 +26,6 @@ namespace Qyoto {
 		private static IQSqlDriverCreatorBaseProxy StaticQSqlDriverCreatorBase() {
 			return (IQSqlDriverCreatorBaseProxy) _staticInterceptor;
 		}
-
 		[SmokeMethod("createObject", "() const", "")]
 		public virtual QSqlDriver CreateObject() {
 			return ProxyQSqlDriverCreatorBase().CreateObject();

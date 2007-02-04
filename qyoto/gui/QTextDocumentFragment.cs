@@ -7,13 +7,11 @@ namespace Qyoto {
 	[SmokeClass("QTextDocumentFragment")]
 	public class QTextDocumentFragment : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QTextDocumentFragment(Type dummy) {}
 		[SmokeClass("QTextDocumentFragment")]
 		interface IQTextDocumentFragmentProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextDocumentFragment), this);
 			_interceptor = (QTextDocumentFragment) realProxy.GetTransparentProxy();
@@ -29,7 +27,6 @@ namespace Qyoto {
 		private static IQTextDocumentFragmentProxy StaticQTextDocumentFragment() {
 			return (IQTextDocumentFragmentProxy) _staticInterceptor;
 		}
-
 		// QTextDocumentFragment* QTextDocumentFragment(); >>>> NOT CONVERTED
 		// QTextDocumentFragment* QTextDocumentFragment(const QTextDocument* arg1); >>>> NOT CONVERTED
 		// QTextDocumentFragment* QTextDocumentFragment(const QTextCursor& arg1); >>>> NOT CONVERTED

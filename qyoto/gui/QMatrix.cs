@@ -6,7 +6,6 @@ namespace Qyoto {
 	[SmokeClass("QMatrix")]
 	public class QMatrix : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QMatrix(Type dummy) {}
 		[SmokeClass("QMatrix")]
@@ -16,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("operator*", "(const QMatrix&) const", "#")]
 			QMatrix op_mult(QMatrix lhs, QMatrix o);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMatrix), this);
 			_interceptor = (QMatrix) realProxy.GetTransparentProxy();
@@ -32,7 +30,6 @@ namespace Qyoto {
 		private static IQMatrixProxy StaticQMatrix() {
 			return (IQMatrixProxy) _staticInterceptor;
 		}
-
 		public QMatrix() : this((Type) null) {
 			CreateProxy();
 			NewQMatrix();

@@ -15,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QToolButton), this);
 			_interceptor = (QToolButton) realProxy.GetTransparentProxy();
@@ -31,7 +30,6 @@ namespace Qyoto {
 		private static IQToolButtonProxy StaticQToolButton() {
 			return (IQToolButtonProxy) _staticInterceptor;
 		}
-
 		public enum ToolButtonPopupMode {
 			DelayedPopup = 0,
 			MenuButtonPopup = 1,

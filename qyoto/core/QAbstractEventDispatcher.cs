@@ -17,7 +17,6 @@ namespace Qyoto {
 			[SmokeMethod("instance", "()", "")]
 			QAbstractEventDispatcher Instance();
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAbstractEventDispatcher), this);
 			_interceptor = (QAbstractEventDispatcher) realProxy.GetTransparentProxy();
@@ -33,7 +32,6 @@ namespace Qyoto {
 		private static IQAbstractEventDispatcherProxy StaticQAbstractEventDispatcher() {
 			return (IQAbstractEventDispatcherProxy) _staticInterceptor;
 		}
-
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QAbstractEventDispatcher(QObject parent) : this((Type) null) {
 			CreateProxy();

@@ -6,7 +6,6 @@ namespace Qyoto {
 	[SmokeClass("QModelIndex")]
 	public class QModelIndex : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QModelIndex(Type dummy) {}
 		[SmokeClass("QModelIndex")]
@@ -16,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("operator<", "(const QModelIndex&) const", "#")]
 			bool op_lt(QModelIndex lhs, QModelIndex other);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QModelIndex), this);
 			_interceptor = (QModelIndex) realProxy.GetTransparentProxy();
@@ -32,7 +30,6 @@ namespace Qyoto {
 		private static IQModelIndexProxy StaticQModelIndex() {
 			return (IQModelIndexProxy) _staticInterceptor;
 		}
-
 		public QModelIndex() : this((Type) null) {
 			CreateProxy();
 			NewQModelIndex();

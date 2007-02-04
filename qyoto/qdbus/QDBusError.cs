@@ -7,13 +7,11 @@ namespace Qyoto {
 	[SmokeClass("QDBusError")]
 	public class QDBusError : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QDBusError(Type dummy) {}
 		[SmokeClass("QDBusError")]
 		interface IQDBusErrorProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDBusError), this);
 			_interceptor = (QDBusError) realProxy.GetTransparentProxy();
@@ -29,7 +27,6 @@ namespace Qyoto {
 		private static IQDBusErrorProxy StaticQDBusError() {
 			return (IQDBusErrorProxy) _staticInterceptor;
 		}
-
 		public enum ErrorType {
 			NoError = 0,
 			Other = 1,

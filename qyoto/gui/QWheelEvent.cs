@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QWheelEvent")]
 		interface IQWheelEventProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QWheelEvent), this);
 			_interceptor = (QWheelEvent) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQWheelEventProxy StaticQWheelEvent() {
 			return (IQWheelEventProxy) _staticInterceptor;
 		}
-
 		public QWheelEvent(QPoint pos, int delta, int buttons, int modifiers, Qt.Orientation orient) : this((Type) null) {
 			CreateProxy();
 			NewQWheelEvent(pos,delta,buttons,modifiers,orient);

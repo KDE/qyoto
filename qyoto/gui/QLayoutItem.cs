@@ -25,13 +25,11 @@ namespace Qyoto {
 	[SmokeClass("QLayoutItem")]
 	public class QLayoutItem : MarshalByRefObject, IQLayoutItem {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QLayoutItem(Type dummy) {}
 		[SmokeClass("QLayoutItem")]
 		interface IQLayoutItemProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QLayoutItem), this);
 			_interceptor = (QLayoutItem) realProxy.GetTransparentProxy();
@@ -47,7 +45,6 @@ namespace Qyoto {
 		private static IQLayoutItemProxy StaticQLayoutItem() {
 			return (IQLayoutItemProxy) _staticInterceptor;
 		}
-
 		public QLayoutItem(int alignment) : this((Type) null) {
 			CreateProxy();
 			NewQLayoutItem(alignment);

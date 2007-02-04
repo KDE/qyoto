@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QGraphicsSceneHelpEvent")]
 		interface IQGraphicsSceneHelpEventProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGraphicsSceneHelpEvent), this);
 			_interceptor = (QGraphicsSceneHelpEvent) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQGraphicsSceneHelpEventProxy StaticQGraphicsSceneHelpEvent() {
 			return (IQGraphicsSceneHelpEventProxy) _staticInterceptor;
 		}
-
 		public QGraphicsSceneHelpEvent(QEvent.TypeOf type) : this((Type) null) {
 			CreateProxy();
 			NewQGraphicsSceneHelpEvent(type);

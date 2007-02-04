@@ -6,7 +6,6 @@ namespace Qyoto {
 	[SmokeClass("QTextLength")]
 	public class QTextLength : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QTextLength(Type dummy) {}
 		[SmokeClass("QTextLength")]
@@ -14,7 +13,6 @@ namespace Qyoto {
 			[SmokeMethod("operator==", "(const QTextLength&) const", "#")]
 			bool op_equals(QTextLength lhs, QTextLength other);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextLength), this);
 			_interceptor = (QTextLength) realProxy.GetTransparentProxy();
@@ -30,7 +28,6 @@ namespace Qyoto {
 		private static IQTextLengthProxy StaticQTextLength() {
 			return (IQTextLengthProxy) _staticInterceptor;
 		}
-
 		public enum TypeOf {
 			VariableLength = 0,
 			FixedLength = 1,

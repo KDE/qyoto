@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QGraphicsSceneDragDropEvent")]
 		interface IQGraphicsSceneDragDropEventProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGraphicsSceneDragDropEvent), this);
 			_interceptor = (QGraphicsSceneDragDropEvent) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQGraphicsSceneDragDropEventProxy StaticQGraphicsSceneDragDropEvent() {
 			return (IQGraphicsSceneDragDropEventProxy) _staticInterceptor;
 		}
-
 		public QGraphicsSceneDragDropEvent(QEvent.TypeOf type) : this((Type) null) {
 			CreateProxy();
 			NewQGraphicsSceneDragDropEvent(type);

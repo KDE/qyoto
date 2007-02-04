@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QToolBarChangeEvent")]
 		interface IQToolBarChangeEventProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QToolBarChangeEvent), this);
 			_interceptor = (QToolBarChangeEvent) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQToolBarChangeEventProxy StaticQToolBarChangeEvent() {
 			return (IQToolBarChangeEventProxy) _staticInterceptor;
 		}
-
 		public QToolBarChangeEvent(bool t) : this((Type) null) {
 			CreateProxy();
 			NewQToolBarChangeEvent(t);

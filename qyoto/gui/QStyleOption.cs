@@ -6,13 +6,11 @@ namespace Qyoto {
 	[SmokeClass("QStyleOption")]
 	public class QStyleOption : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QStyleOption(Type dummy) {}
 		[SmokeClass("QStyleOption")]
 		interface IQStyleOptionProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOption), this);
 			_interceptor = (QStyleOption) realProxy.GetTransparentProxy();
@@ -28,7 +26,6 @@ namespace Qyoto {
 		private static IQStyleOptionProxy StaticQStyleOption() {
 			return (IQStyleOptionProxy) _staticInterceptor;
 		}
-
 		public enum OptionType {
 			SO_Default = 0,
 			SO_FocusRect = 1,

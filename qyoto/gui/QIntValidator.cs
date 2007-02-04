@@ -14,7 +14,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QIntValidator), this);
 			_interceptor = (QIntValidator) realProxy.GetTransparentProxy();
@@ -30,7 +29,6 @@ namespace Qyoto {
 		private static IQIntValidatorProxy StaticQIntValidator() {
 			return (IQIntValidatorProxy) _staticInterceptor;
 		}
-
 		[Q_PROPERTY("int", "bottom")]
 		public int Bottom {
 			get {

@@ -10,7 +10,6 @@ namespace Qyoto {
 		[SmokeClass("QStylePainter")]
 		interface IQStylePainterProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStylePainter), this);
 			_interceptor = (QStylePainter) realProxy.GetTransparentProxy();
@@ -26,7 +25,6 @@ namespace Qyoto {
 		private static IQStylePainterProxy StaticQStylePainter() {
 			return (IQStylePainterProxy) _staticInterceptor;
 		}
-
 		public QStylePainter() : this((Type) null) {
 			CreateProxy();
 			NewQStylePainter();

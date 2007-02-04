@@ -6,13 +6,11 @@ namespace Qyoto {
 	[SmokeClass("QGLColormap")]
 	public class QGLColormap : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QGLColormap(Type dummy) {}
 		[SmokeClass("QGLColormap")]
 		interface IQGLColormapProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGLColormap), this);
 			_interceptor = (QGLColormap) realProxy.GetTransparentProxy();
@@ -28,7 +26,6 @@ namespace Qyoto {
 		private static IQGLColormapProxy StaticQGLColormap() {
 			return (IQGLColormapProxy) _staticInterceptor;
 		}
-
 		public QGLColormap() : this((Type) null) {
 			CreateProxy();
 			NewQGLColormap();

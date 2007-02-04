@@ -10,7 +10,6 @@ namespace Qyoto {
 		[SmokeClass("QStatusTipEvent")]
 		interface IQStatusTipEventProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStatusTipEvent), this);
 			_interceptor = (QStatusTipEvent) realProxy.GetTransparentProxy();
@@ -26,7 +25,6 @@ namespace Qyoto {
 		private static IQStatusTipEventProxy StaticQStatusTipEvent() {
 			return (IQStatusTipEventProxy) _staticInterceptor;
 		}
-
 		public QStatusTipEvent(string tip) : this((Type) null) {
 			CreateProxy();
 			NewQStatusTipEvent(tip);

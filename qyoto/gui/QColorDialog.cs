@@ -34,7 +34,6 @@ namespace Qyoto {
 			[SmokeMethod("setStandardColor", "(int, QRgb)", "$$")]
 			void SetStandardColor(int arg1, uint arg2);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QColorDialog), this);
 			_interceptor = (QColorDialog) realProxy.GetTransparentProxy();
@@ -50,7 +49,6 @@ namespace Qyoto {
 		private static IQColorDialogProxy StaticQColorDialog() {
 			return (IQColorDialogProxy) _staticInterceptor;
 		}
-
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public static new string Tr(string s, string c) {
 			return StaticQColorDialog().Tr(s,c);

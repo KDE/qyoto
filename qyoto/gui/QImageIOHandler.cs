@@ -6,13 +6,11 @@ namespace Qyoto {
 	[SmokeClass("QImageIOHandler")]
 	public class QImageIOHandler : MarshalByRefObject {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QImageIOHandler(Type dummy) {}
 		[SmokeClass("QImageIOHandler")]
 		interface IQImageIOHandlerProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QImageIOHandler), this);
 			_interceptor = (QImageIOHandler) realProxy.GetTransparentProxy();
@@ -28,7 +26,6 @@ namespace Qyoto {
 		private static IQImageIOHandlerProxy StaticQImageIOHandler() {
 			return (IQImageIOHandlerProxy) _staticInterceptor;
 		}
-
 		public enum ImageOption {
 			Size = 0,
 			ClipRect = 1,

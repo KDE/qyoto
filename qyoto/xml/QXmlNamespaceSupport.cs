@@ -8,13 +8,11 @@ namespace Qyoto {
 	[SmokeClass("QXmlNamespaceSupport")]
 	public class QXmlNamespaceSupport : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QXmlNamespaceSupport(Type dummy) {}
 		[SmokeClass("QXmlNamespaceSupport")]
 		interface IQXmlNamespaceSupportProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlNamespaceSupport), this);
 			_interceptor = (QXmlNamespaceSupport) realProxy.GetTransparentProxy();
@@ -30,7 +28,6 @@ namespace Qyoto {
 		private static IQXmlNamespaceSupportProxy StaticQXmlNamespaceSupport() {
 			return (IQXmlNamespaceSupportProxy) _staticInterceptor;
 		}
-
 		public QXmlNamespaceSupport() : this((Type) null) {
 			CreateProxy();
 			NewQXmlNamespaceSupport();

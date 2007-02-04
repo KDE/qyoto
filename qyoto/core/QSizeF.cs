@@ -6,7 +6,6 @@ namespace Qyoto {
 	[SmokeClass("QSizeF")]
 	public class QSizeF : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QSizeF(Type dummy) {}
 		[SmokeClass("QSizeF")]
@@ -16,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("operator/=", "(qreal)", "$")]
 			QSizeF op_div(QSizeF lhs, double c);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSizeF), this);
 			_interceptor = (QSizeF) realProxy.GetTransparentProxy();
@@ -32,7 +30,6 @@ namespace Qyoto {
 		private static IQSizeFProxy StaticQSizeF() {
 			return (IQSizeFProxy) _staticInterceptor;
 		}
-
 		public QSizeF() : this((Type) null) {
 			CreateProxy();
 			NewQSizeF();

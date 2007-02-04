@@ -6,13 +6,11 @@ namespace Qyoto {
 	[SmokeClass("QSysInfo")]
 	public class QSysInfo : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QSysInfo(Type dummy) {}
 		[SmokeClass("QSysInfo")]
 		interface IQSysInfoProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSysInfo), this);
 			_interceptor = (QSysInfo) realProxy.GetTransparentProxy();
@@ -28,7 +26,6 @@ namespace Qyoto {
 		private static IQSysInfoProxy StaticQSysInfo() {
 			return (IQSysInfoProxy) _staticInterceptor;
 		}
-
 		public enum Sizes {
 			WordSize = (4<<3),
 		}

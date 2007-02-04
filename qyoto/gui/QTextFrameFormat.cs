@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QTextFrameFormat")]
 		interface IQTextFrameFormatProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextFrameFormat), this);
 			_interceptor = (QTextFrameFormat) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQTextFrameFormatProxy StaticQTextFrameFormat() {
 			return (IQTextFrameFormatProxy) _staticInterceptor;
 		}
-
 		public enum Position {
 			InFlow = 0,
 			FloatLeft = 1,

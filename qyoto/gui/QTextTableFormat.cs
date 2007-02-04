@@ -10,7 +10,6 @@ namespace Qyoto {
 		[SmokeClass("QTextTableFormat")]
 		interface IQTextTableFormatProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextTableFormat), this);
 			_interceptor = (QTextTableFormat) realProxy.GetTransparentProxy();
@@ -26,7 +25,6 @@ namespace Qyoto {
 		private static IQTextTableFormatProxy StaticQTextTableFormat() {
 			return (IQTextTableFormatProxy) _staticInterceptor;
 		}
-
 		public QTextTableFormat() : this((Type) null) {
 			CreateProxy();
 			NewQTextTableFormat();

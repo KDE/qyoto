@@ -16,7 +16,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QComboBox), this);
 			_interceptor = (QComboBox) realProxy.GetTransparentProxy();
@@ -32,7 +31,6 @@ namespace Qyoto {
 		private static IQComboBoxProxy StaticQComboBox() {
 			return (IQComboBoxProxy) _staticInterceptor;
 		}
-
 		public enum InsertPolicy {
 			NoInsert = 0,
 			InsertAtTop = 1,

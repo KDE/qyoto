@@ -14,7 +14,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QBoxLayout), this);
 			_interceptor = (QBoxLayout) realProxy.GetTransparentProxy();
@@ -30,7 +29,6 @@ namespace Qyoto {
 		private static IQBoxLayoutProxy StaticQBoxLayout() {
 			return (IQBoxLayoutProxy) _staticInterceptor;
 		}
-
 		public enum Direction {
 			LeftToRight = 0,
 			RightToLeft = 1,

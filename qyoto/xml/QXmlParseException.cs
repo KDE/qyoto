@@ -7,13 +7,11 @@ namespace Qyoto {
 	[SmokeClass("QXmlParseException")]
 	public class QXmlParseException : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QXmlParseException(Type dummy) {}
 		[SmokeClass("QXmlParseException")]
 		interface IQXmlParseExceptionProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlParseException), this);
 			_interceptor = (QXmlParseException) realProxy.GetTransparentProxy();
@@ -29,7 +27,6 @@ namespace Qyoto {
 		private static IQXmlParseExceptionProxy StaticQXmlParseException() {
 			return (IQXmlParseExceptionProxy) _staticInterceptor;
 		}
-
 		public QXmlParseException(string name, int c, int l, string p, string s) : this((Type) null) {
 			CreateProxy();
 			NewQXmlParseException(name,c,l,p,s);

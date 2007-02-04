@@ -68,7 +68,6 @@ namespace Qyoto {
 			[SmokeMethod("getOpenFileNames", "()", "")]
 			List<string> GetOpenFileNames();
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFileDialog), this);
 			_interceptor = (QFileDialog) realProxy.GetTransparentProxy();
@@ -84,7 +83,6 @@ namespace Qyoto {
 		private static IQFileDialogProxy StaticQFileDialog() {
 			return (IQFileDialogProxy) _staticInterceptor;
 		}
-
 		public enum ViewMode {
 			Detail = 0,
 			List = 1,

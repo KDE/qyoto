@@ -15,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QLineEdit), this);
 			_interceptor = (QLineEdit) realProxy.GetTransparentProxy();
@@ -31,7 +30,6 @@ namespace Qyoto {
 		private static IQLineEditProxy StaticQLineEdit() {
 			return (IQLineEditProxy) _staticInterceptor;
 		}
-
 		public enum EchoMode {
 			Normal = 0,
 			NoEcho = 1,

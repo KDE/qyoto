@@ -15,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QUndoStack), this);
 			_interceptor = (QUndoStack) realProxy.GetTransparentProxy();
@@ -31,7 +30,6 @@ namespace Qyoto {
 		private static IQUndoStackProxy StaticQUndoStack() {
 			return (IQUndoStackProxy) _staticInterceptor;
 		}
-
 		[Q_PROPERTY("bool", "active")]
 		public bool Active {
 			get {

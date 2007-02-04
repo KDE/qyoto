@@ -8,7 +8,6 @@ namespace Qyoto {
 		[SmokeClass("QDBus")]
 		interface IQDBusProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDBus), this);
 			_interceptor = (QDBus) realProxy.GetTransparentProxy();
@@ -24,7 +23,6 @@ namespace Qyoto {
 		private static IQDBusProxy StaticQDBus() {
 			return (IQDBusProxy) _staticInterceptor;
 		}
-
 		public enum CallMode {
 			NoBlock = 0,
 			Block = 1,

@@ -14,7 +14,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QEventLoop), this);
 			_interceptor = (QEventLoop) realProxy.GetTransparentProxy();
@@ -30,7 +29,6 @@ namespace Qyoto {
 		private static IQEventLoopProxy StaticQEventLoop() {
 			return (IQEventLoopProxy) _staticInterceptor;
 		}
-
 		public enum ProcessEventsFlag {
 			AllEvents = 0x00,
 			ExcludeUserInputEvents = 0x01,

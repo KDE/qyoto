@@ -10,7 +10,6 @@ namespace Qyoto {
 		[SmokeClass("QHttpResponseHeader")]
 		interface IQHttpResponseHeaderProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QHttpResponseHeader), this);
 			_interceptor = (QHttpResponseHeader) realProxy.GetTransparentProxy();
@@ -26,7 +25,6 @@ namespace Qyoto {
 		private static IQHttpResponseHeaderProxy StaticQHttpResponseHeader() {
 			return (IQHttpResponseHeaderProxy) _staticInterceptor;
 		}
-
 		public QHttpResponseHeader() : this((Type) null) {
 			CreateProxy();
 			NewQHttpResponseHeader();

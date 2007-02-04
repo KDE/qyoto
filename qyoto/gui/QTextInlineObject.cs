@@ -6,13 +6,11 @@ namespace Qyoto {
 	[SmokeClass("QTextInlineObject")]
 	public class QTextInlineObject : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QTextInlineObject(Type dummy) {}
 		[SmokeClass("QTextInlineObject")]
 		interface IQTextInlineObjectProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextInlineObject), this);
 			_interceptor = (QTextInlineObject) realProxy.GetTransparentProxy();
@@ -28,7 +26,6 @@ namespace Qyoto {
 		private static IQTextInlineObjectProxy StaticQTextInlineObject() {
 			return (IQTextInlineObjectProxy) _staticInterceptor;
 		}
-
 		// QTextInlineObject* QTextInlineObject(int arg1,QTextEngine* arg2); >>>> NOT CONVERTED
 		public QTextInlineObject() : this((Type) null) {
 			CreateProxy();

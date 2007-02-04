@@ -42,7 +42,6 @@ namespace Qyoto {
 			[SmokeMethod("fromImage", "(const QImage&)", "#")]
 			QPixmap FromImage(QImage image);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPixmap), this);
 			_interceptor = (QPixmap) realProxy.GetTransparentProxy();
@@ -58,7 +57,6 @@ namespace Qyoto {
 		private static IQPixmapProxy StaticQPixmap() {
 			return (IQPixmapProxy) _staticInterceptor;
 		}
-
 		public QPixmap() : this((Type) null) {
 			CreateProxy();
 			NewQPixmap();

@@ -6,7 +6,6 @@ namespace Qyoto {
 	[SmokeClass("QSizePolicy")]
 	public class QSizePolicy : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QSizePolicy(Type dummy) {}
 		[SmokeClass("QSizePolicy")]
@@ -14,7 +13,6 @@ namespace Qyoto {
 			[SmokeMethod("operator==", "(const QSizePolicy&) const", "#")]
 			bool op_equals(QSizePolicy lhs, QSizePolicy s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSizePolicy), this);
 			_interceptor = (QSizePolicy) realProxy.GetTransparentProxy();
@@ -30,7 +28,6 @@ namespace Qyoto {
 		private static IQSizePolicyProxy StaticQSizePolicy() {
 			return (IQSizePolicyProxy) _staticInterceptor;
 		}
-
 		public enum PolicyFlag {
 			GrowFlag = 1,
 			ExpandFlag = 2,

@@ -15,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QShortcut), this);
 			_interceptor = (QShortcut) realProxy.GetTransparentProxy();
@@ -31,7 +30,6 @@ namespace Qyoto {
 		private static IQShortcutProxy StaticQShortcut() {
 			return (IQShortcutProxy) _staticInterceptor;
 		}
-
 		[Q_PROPERTY("QKeySequence", "key")]
 		public QKeySequence Key {
 			get {

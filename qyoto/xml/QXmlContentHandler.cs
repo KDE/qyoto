@@ -22,13 +22,11 @@ namespace Qyoto {
 	[SmokeClass("QXmlContentHandler")]
 	public class QXmlContentHandler : MarshalByRefObject, IQXmlContentHandler {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QXmlContentHandler(Type dummy) {}
 		[SmokeClass("QXmlContentHandler")]
 		interface IQXmlContentHandlerProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlContentHandler), this);
 			_interceptor = (QXmlContentHandler) realProxy.GetTransparentProxy();
@@ -44,7 +42,6 @@ namespace Qyoto {
 		private static IQXmlContentHandlerProxy StaticQXmlContentHandler() {
 			return (IQXmlContentHandlerProxy) _staticInterceptor;
 		}
-
 		[SmokeMethod("setDocumentLocator", "(QXmlLocator*)", "#")]
 		public virtual void SetDocumentLocator(QXmlLocator locator) {
 			ProxyQXmlContentHandler().SetDocumentLocator(locator);

@@ -17,7 +17,6 @@ namespace Qyoto {
 			[SmokeMethod("elidedText", "(const QFontMetrics&, int, Qt::TextElideMode, const QString&)", "#$$$")]
 			string ElidedText(QFontMetrics fontMetrics, int width, Qt.TextElideMode mode, string text);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAbstractItemDelegate), this);
 			_interceptor = (QAbstractItemDelegate) realProxy.GetTransparentProxy();
@@ -33,7 +32,6 @@ namespace Qyoto {
 		private static IQAbstractItemDelegateProxy StaticQAbstractItemDelegate() {
 			return (IQAbstractItemDelegateProxy) _staticInterceptor;
 		}
-
 		public enum EndEditHint {
 			NoHint = 0,
 			EditNextItem = 1,

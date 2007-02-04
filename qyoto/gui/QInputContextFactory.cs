@@ -8,7 +8,6 @@ namespace Qyoto {
 	[SmokeClass("QInputContextFactory")]
 	public class QInputContextFactory : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QInputContextFactory(Type dummy) {}
 		[SmokeClass("QInputContextFactory")]
@@ -24,7 +23,6 @@ namespace Qyoto {
 			[SmokeMethod("description", "(const QString&)", "$")]
 			string Description(string key);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QInputContextFactory), this);
 			_interceptor = (QInputContextFactory) realProxy.GetTransparentProxy();
@@ -40,7 +38,6 @@ namespace Qyoto {
 		private static IQInputContextFactoryProxy StaticQInputContextFactory() {
 			return (IQInputContextFactoryProxy) _staticInterceptor;
 		}
-
 		public QInputContextFactory() : this((Type) null) {
 			CreateProxy();
 			NewQInputContextFactory();

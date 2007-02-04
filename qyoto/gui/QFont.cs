@@ -8,7 +8,6 @@ namespace Qyoto {
 	[SmokeClass("QFont")]
 	public class QFont : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QFont(Type dummy) {}
 		[SmokeClass("QFont")]
@@ -36,7 +35,6 @@ namespace Qyoto {
 			[SmokeMethod("cacheStatistics", "()", "")]
 			void CacheStatistics();
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFont), this);
 			_interceptor = (QFont) realProxy.GetTransparentProxy();
@@ -52,7 +50,6 @@ namespace Qyoto {
 		private static IQFontProxy StaticQFont() {
 			return (IQFontProxy) _staticInterceptor;
 		}
-
 		public enum StyleHint {
 			Helvetica = 0,
 			SansSerif = Helvetica,

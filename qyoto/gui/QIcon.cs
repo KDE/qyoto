@@ -7,13 +7,11 @@ namespace Qyoto {
 	[SmokeClass("QIcon")]
 	public class QIcon : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QIcon(Type dummy) {}
 		[SmokeClass("QIcon")]
 		interface IQIconProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QIcon), this);
 			_interceptor = (QIcon) realProxy.GetTransparentProxy();
@@ -29,7 +27,6 @@ namespace Qyoto {
 		private static IQIconProxy StaticQIcon() {
 			return (IQIconProxy) _staticInterceptor;
 		}
-
 		public enum Mode {
 			Normal = 0,
 			Disabled = 1,

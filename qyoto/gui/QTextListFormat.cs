@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QTextListFormat")]
 		interface IQTextListFormatProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextListFormat), this);
 			_interceptor = (QTextListFormat) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQTextListFormatProxy StaticQTextListFormat() {
 			return (IQTextListFormatProxy) _staticInterceptor;
 		}
-
 		public enum Style {
 			ListDisc = -1,
 			ListCircle = -2,

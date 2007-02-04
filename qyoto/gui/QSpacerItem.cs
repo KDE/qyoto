@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QSpacerItem")]
 		interface IQSpacerItemProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSpacerItem), this);
 			_interceptor = (QSpacerItem) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQSpacerItemProxy StaticQSpacerItem() {
 			return (IQSpacerItemProxy) _staticInterceptor;
 		}
-
 		public QSpacerItem(int w, int h, QSizePolicy.Policy hData, QSizePolicy.Policy vData) : this((Type) null) {
 			CreateProxy();
 			NewQSpacerItem(w,h,hData,vData);

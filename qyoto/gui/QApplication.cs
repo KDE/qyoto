@@ -156,7 +156,6 @@ namespace Qyoto {
 			[SmokeMethod("aboutQt", "()", "")]
 			void AboutQt();
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QApplication), this);
 			_interceptor = (QApplication) realProxy.GetTransparentProxy();
@@ -172,7 +171,6 @@ namespace Qyoto {
 		private static IQApplicationProxy StaticQApplication() {
 			return (IQApplicationProxy) _staticInterceptor;
 		}
-
 		public enum TypeOf {
 			Tty = 0,
 			GuiClient = 1,

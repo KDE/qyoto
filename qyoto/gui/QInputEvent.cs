@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QInputEvent")]
 		interface IQInputEventProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QInputEvent), this);
 			_interceptor = (QInputEvent) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQInputEventProxy StaticQInputEvent() {
 			return (IQInputEventProxy) _staticInterceptor;
 		}
-
 		public QInputEvent(QEvent.TypeOf type, int modifiers) : this((Type) null) {
 			CreateProxy();
 			NewQInputEvent(type,modifiers);

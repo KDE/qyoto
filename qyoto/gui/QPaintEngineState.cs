@@ -6,13 +6,11 @@ namespace Qyoto {
 	[SmokeClass("QPaintEngineState")]
 	public class QPaintEngineState : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QPaintEngineState(Type dummy) {}
 		[SmokeClass("QPaintEngineState")]
 		interface IQPaintEngineStateProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPaintEngineState), this);
 			_interceptor = (QPaintEngineState) realProxy.GetTransparentProxy();
@@ -28,7 +26,6 @@ namespace Qyoto {
 		private static IQPaintEngineStateProxy StaticQPaintEngineState() {
 			return (IQPaintEngineStateProxy) _staticInterceptor;
 		}
-
 		[SmokeMethod("state", "() const", "")]
 		public int State() {
 			return ProxyQPaintEngineState().State();

@@ -8,7 +8,6 @@ namespace Qyoto {
 		[SmokeClass("QGL")]
 		interface IQGLProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGL), this);
 			_interceptor = (QGL) realProxy.GetTransparentProxy();
@@ -24,7 +23,6 @@ namespace Qyoto {
 		private static IQGLProxy StaticQGL() {
 			return (IQGLProxy) _staticInterceptor;
 		}
-
 		public enum FormatOption {
 			DoubleBuffer = 0x0001,
 			DepthBuffer = 0x0002,

@@ -6,7 +6,6 @@ namespace Qyoto {
 	[SmokeClass("QPoint")]
 	public class QPoint : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QPoint(Type dummy) {}
 		[SmokeClass("QPoint")]
@@ -16,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("operator/=", "(qreal)", "$")]
 			QPoint op_div(QPoint lhs, double c);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPoint), this);
 			_interceptor = (QPoint) realProxy.GetTransparentProxy();
@@ -32,7 +30,6 @@ namespace Qyoto {
 		private static IQPointProxy StaticQPoint() {
 			return (IQPointProxy) _staticInterceptor;
 		}
-
 		public QPoint() : this((Type) null) {
 			CreateProxy();
 			NewQPoint();

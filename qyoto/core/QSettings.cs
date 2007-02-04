@@ -21,7 +21,6 @@ namespace Qyoto {
 			[SmokeMethod("setPath", "(QSettings::Format, QSettings::Scope, const QString&)", "$$$")]
 			void SetPath(QSettings.Format format, QSettings.Scope scope, string path);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSettings), this);
 			_interceptor = (QSettings) realProxy.GetTransparentProxy();
@@ -37,7 +36,6 @@ namespace Qyoto {
 		private static IQSettingsProxy StaticQSettings() {
 			return (IQSettingsProxy) _staticInterceptor;
 		}
-
 		public enum Status {
 			NoError = 0,
 			AccessError = 1,

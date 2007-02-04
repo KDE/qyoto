@@ -40,7 +40,6 @@ namespace Qyoto {
 			[SmokeMethod("singleShot", "(int, QObject*, const char*)", "$#$")]
 			void singleShot(int msec, QObject receiver, string member);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTimer), this);
 			_interceptor = (QTimer) realProxy.GetTransparentProxy();
@@ -56,7 +55,6 @@ namespace Qyoto {
 		private static IQTimerProxy StaticQTimer() {
 			return (IQTimerProxy) _staticInterceptor;
 		}
-
 		[Q_PROPERTY("bool", "singleShot")]
 		public bool SingleShot {
 			get {

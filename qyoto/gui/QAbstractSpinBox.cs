@@ -15,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAbstractSpinBox), this);
 			_interceptor = (QAbstractSpinBox) realProxy.GetTransparentProxy();
@@ -31,7 +30,6 @@ namespace Qyoto {
 		private static IQAbstractSpinBoxProxy StaticQAbstractSpinBox() {
 			return (IQAbstractSpinBoxProxy) _staticInterceptor;
 		}
-
 		public enum StepEnabledFlag {
 			StepNone = 0x00,
 			StepUpEnabled = 0x01,

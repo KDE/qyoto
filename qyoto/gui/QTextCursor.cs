@@ -7,13 +7,11 @@ namespace Qyoto {
 	[SmokeClass("QTextCursor")]
 	public class QTextCursor : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QTextCursor(Type dummy) {}
 		[SmokeClass("QTextCursor")]
 		interface IQTextCursorProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextCursor), this);
 			_interceptor = (QTextCursor) realProxy.GetTransparentProxy();
@@ -29,7 +27,6 @@ namespace Qyoto {
 		private static IQTextCursorProxy StaticQTextCursor() {
 			return (IQTextCursorProxy) _staticInterceptor;
 		}
-
 		public enum MoveMode {
 			MoveAnchor = 0,
 			KeepAnchor = 1,

@@ -15,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QLCDNumber), this);
 			_interceptor = (QLCDNumber) realProxy.GetTransparentProxy();
@@ -31,7 +30,6 @@ namespace Qyoto {
 		private static IQLCDNumberProxy StaticQLCDNumber() {
 			return (IQLCDNumberProxy) _staticInterceptor;
 		}
-
 		public enum Mode {
 			Hex = 0,
 			Dec = 1,

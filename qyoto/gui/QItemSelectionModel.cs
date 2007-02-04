@@ -16,7 +16,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QItemSelectionModel), this);
 			_interceptor = (QItemSelectionModel) realProxy.GetTransparentProxy();
@@ -32,7 +31,6 @@ namespace Qyoto {
 		private static IQItemSelectionModelProxy StaticQItemSelectionModel() {
 			return (IQItemSelectionModelProxy) _staticInterceptor;
 		}
-
 		public enum SelectionFlag {
 			NoUpdate = 0x0000,
 			Clear = 0x0001,

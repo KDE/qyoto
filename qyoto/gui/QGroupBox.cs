@@ -15,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGroupBox), this);
 			_interceptor = (QGroupBox) realProxy.GetTransparentProxy();
@@ -31,7 +30,6 @@ namespace Qyoto {
 		private static IQGroupBoxProxy StaticQGroupBox() {
 			return (IQGroupBoxProxy) _staticInterceptor;
 		}
-
 		[Q_PROPERTY("QString", "title")]
 		public string Title {
 			get {

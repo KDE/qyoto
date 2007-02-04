@@ -26,7 +26,6 @@ namespace Qyoto {
 			[SmokeMethod("systemEnvironment", "()", "")]
 			List<string> SystemEnvironment();
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QProcess), this);
 			_interceptor = (QProcess) realProxy.GetTransparentProxy();
@@ -42,7 +41,6 @@ namespace Qyoto {
 		private static IQProcessProxy StaticQProcess() {
 			return (IQProcessProxy) _staticInterceptor;
 		}
-
 		public enum ProcessError {
 			FailedToStart = 0,
 			Crashed = 1,

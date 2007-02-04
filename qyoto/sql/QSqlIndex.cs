@@ -10,7 +10,6 @@ namespace Qyoto {
 		[SmokeClass("QSqlIndex")]
 		interface IQSqlIndexProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSqlIndex), this);
 			_interceptor = (QSqlIndex) realProxy.GetTransparentProxy();
@@ -26,7 +25,6 @@ namespace Qyoto {
 		private static IQSqlIndexProxy StaticQSqlIndex() {
 			return (IQSqlIndexProxy) _staticInterceptor;
 		}
-
 		public QSqlIndex(string cursorName, string name) : this((Type) null) {
 			CreateProxy();
 			NewQSqlIndex(cursorName,name);

@@ -15,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSvgRenderer), this);
 			_interceptor = (QSvgRenderer) realProxy.GetTransparentProxy();
@@ -31,7 +30,6 @@ namespace Qyoto {
 		private static IQSvgRendererProxy StaticQSvgRenderer() {
 			return (IQSvgRendererProxy) _staticInterceptor;
 		}
-
 		[Q_PROPERTY("QRectF", "viewBox")]
 		public QRectF ViewBox {
 			get {

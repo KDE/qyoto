@@ -8,7 +8,6 @@ namespace Qyoto {
 	[SmokeClass("QDir")]
 	public class QDir : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QDir(Type dummy) {}
 		[SmokeClass("QDir")]
@@ -56,7 +55,6 @@ namespace Qyoto {
 			[SmokeMethod("cleanPath", "(const QString&)", "$")]
 			string CleanPath(string path);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDir), this);
 			_interceptor = (QDir) realProxy.GetTransparentProxy();
@@ -72,7 +70,6 @@ namespace Qyoto {
 		private static IQDirProxy StaticQDir() {
 			return (IQDirProxy) _staticInterceptor;
 		}
-
 		public enum Filter {
 			Dirs = 0x001,
 			Files = 0x002,

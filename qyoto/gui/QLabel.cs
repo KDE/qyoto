@@ -15,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QLabel), this);
 			_interceptor = (QLabel) realProxy.GetTransparentProxy();
@@ -31,7 +30,6 @@ namespace Qyoto {
 		private static IQLabelProxy StaticQLabel() {
 			return (IQLabelProxy) _staticInterceptor;
 		}
-
 		[Q_PROPERTY("QString", "text")]
 		public string Text {
 			get {

@@ -8,7 +8,6 @@ namespace Qyoto {
 	[SmokeClass("QPainterPath")]
 	public class QPainterPath : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QPainterPath(Type dummy) {}
 		[SmokeClass("QPainterPath")]
@@ -16,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("operator==", "(const QPainterPath&) const", "#")]
 			bool op_equals(QPainterPath lhs, QPainterPath other);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPainterPath), this);
 			_interceptor = (QPainterPath) realProxy.GetTransparentProxy();
@@ -32,7 +30,6 @@ namespace Qyoto {
 		private static IQPainterPathProxy StaticQPainterPath() {
 			return (IQPainterPathProxy) _staticInterceptor;
 		}
-
 		public enum ElementType {
 			MoveToElement = 0,
 			LineToElement = 1,

@@ -14,7 +14,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextTable), this);
 			_interceptor = (QTextTable) realProxy.GetTransparentProxy();
@@ -30,7 +29,6 @@ namespace Qyoto {
 		private static IQTextTableProxy StaticQTextTable() {
 			return (IQTextTableProxy) _staticInterceptor;
 		}
-
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		// QTextTable* QTextTable(QTextDocument* arg1); >>>> NOT CONVERTED
 		[SmokeMethod("resize", "(int, int)", "$$")]

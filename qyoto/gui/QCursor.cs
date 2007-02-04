@@ -6,7 +6,6 @@ namespace Qyoto {
 	[SmokeClass("QCursor")]
 	public class QCursor : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QCursor(Type dummy) {}
 		[SmokeClass("QCursor")]
@@ -18,7 +17,6 @@ namespace Qyoto {
 			[SmokeMethod("setPos", "(const QPoint&)", "#")]
 			void SetPos(QPoint p);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QCursor), this);
 			_interceptor = (QCursor) realProxy.GetTransparentProxy();
@@ -34,7 +32,6 @@ namespace Qyoto {
 		private static IQCursorProxy StaticQCursor() {
 			return (IQCursorProxy) _staticInterceptor;
 		}
-
 		public QCursor() : this((Type) null) {
 			CreateProxy();
 			NewQCursor();

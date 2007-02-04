@@ -7,7 +7,6 @@ namespace Qyoto {
 	[SmokeClass("QChar")]
 	public class QChar : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QChar(Type dummy) {}
 		[SmokeClass("QChar")]
@@ -17,7 +16,6 @@ namespace Qyoto {
 			[SmokeMethod("fromLatin1", "(char)", "$")]
 			char FromLatin1(char c);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QChar), this);
 			_interceptor = (QChar) realProxy.GetTransparentProxy();
@@ -33,7 +31,6 @@ namespace Qyoto {
 		private static IQCharProxy StaticQChar() {
 			return (IQCharProxy) _staticInterceptor;
 		}
-
 		public enum SpecialCharacter {
 			Null = 0x0000,
 			Nbsp = 0x00a0,

@@ -10,7 +10,6 @@ namespace Qyoto {
 		[SmokeClass("QWhatsThisClickedEvent")]
 		interface IQWhatsThisClickedEventProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QWhatsThisClickedEvent), this);
 			_interceptor = (QWhatsThisClickedEvent) realProxy.GetTransparentProxy();
@@ -26,7 +25,6 @@ namespace Qyoto {
 		private static IQWhatsThisClickedEventProxy StaticQWhatsThisClickedEvent() {
 			return (IQWhatsThisClickedEventProxy) _staticInterceptor;
 		}
-
 		public QWhatsThisClickedEvent(string href) : this((Type) null) {
 			CreateProxy();
 			NewQWhatsThisClickedEvent(href);

@@ -15,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSqlTableModel), this);
 			_interceptor = (QSqlTableModel) realProxy.GetTransparentProxy();
@@ -31,7 +30,6 @@ namespace Qyoto {
 		private static IQSqlTableModelProxy StaticQSqlTableModel() {
 			return (IQSqlTableModelProxy) _staticInterceptor;
 		}
-
 		public enum EditStrategy {
 			OnFieldChange = 0,
 			OnRowChange = 1,

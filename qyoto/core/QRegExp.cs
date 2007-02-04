@@ -8,7 +8,6 @@ namespace Qyoto {
 	[SmokeClass("QRegExp")]
 	public class QRegExp : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QRegExp(Type dummy) {}
 		[SmokeClass("QRegExp")]
@@ -18,7 +17,6 @@ namespace Qyoto {
 			[SmokeMethod("escape", "(const QString&)", "$")]
 			string Escape(string str);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QRegExp), this);
 			_interceptor = (QRegExp) realProxy.GetTransparentProxy();
@@ -34,7 +32,6 @@ namespace Qyoto {
 		private static IQRegExpProxy StaticQRegExp() {
 			return (IQRegExpProxy) _staticInterceptor;
 		}
-
 		public enum PatternSyntax {
 			RegExp = 0,
 			Wildcard = 1,

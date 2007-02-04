@@ -7,7 +7,6 @@ namespace Qyoto {
 	[SmokeClass("QFontMetrics")]
 	public class QFontMetrics : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QFontMetrics(Type dummy) {}
 		[SmokeClass("QFontMetrics")]
@@ -15,7 +14,6 @@ namespace Qyoto {
 			[SmokeMethod("operator==", "(const QFontMetrics&)", "#")]
 			bool op_equals(QFontMetrics lhs, QFontMetrics other);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFontMetrics), this);
 			_interceptor = (QFontMetrics) realProxy.GetTransparentProxy();
@@ -31,7 +29,6 @@ namespace Qyoto {
 		private static IQFontMetricsProxy StaticQFontMetrics() {
 			return (IQFontMetricsProxy) _staticInterceptor;
 		}
-
 		public QFontMetrics(QFont arg1) : this((Type) null) {
 			CreateProxy();
 			NewQFontMetrics(arg1);

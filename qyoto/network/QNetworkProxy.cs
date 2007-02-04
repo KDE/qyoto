@@ -7,7 +7,6 @@ namespace Qyoto {
 	[SmokeClass("QNetworkProxy")]
 	public class QNetworkProxy : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QNetworkProxy(Type dummy) {}
 		[SmokeClass("QNetworkProxy")]
@@ -17,7 +16,6 @@ namespace Qyoto {
 			[SmokeMethod("applicationProxy", "()", "")]
 			QNetworkProxy ApplicationProxy();
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QNetworkProxy), this);
 			_interceptor = (QNetworkProxy) realProxy.GetTransparentProxy();
@@ -33,7 +31,6 @@ namespace Qyoto {
 		private static IQNetworkProxyProxy StaticQNetworkProxy() {
 			return (IQNetworkProxyProxy) _staticInterceptor;
 		}
-
 		public enum ProxyType {
 			DefaultProxy = 0,
 			Socks5Proxy = 1,

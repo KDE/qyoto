@@ -15,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QX11EmbedWidget), this);
 			_interceptor = (QX11EmbedWidget) realProxy.GetTransparentProxy();
@@ -31,7 +30,6 @@ namespace Qyoto {
 		private static IQX11EmbedWidgetProxy StaticQX11EmbedWidget() {
 			return (IQX11EmbedWidgetProxy) _staticInterceptor;
 		}
-
 		public enum Error {
 			Unknown = 0,
 			Internal = 1,

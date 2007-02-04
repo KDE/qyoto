@@ -6,7 +6,6 @@ namespace Qyoto {
 	[SmokeClass("QByteRef")]
 	public class QByteRef : MarshalByRefObject {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QByteRef(Type dummy) {}
 		[SmokeClass("QByteRef")]
@@ -22,7 +21,6 @@ namespace Qyoto {
 			[SmokeMethod("operator<=", "(char) const", "$")]
 			bool op_lte(QByteRef lhs, char c);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QByteRef), this);
 			_interceptor = (QByteRef) realProxy.GetTransparentProxy();
@@ -38,7 +36,6 @@ namespace Qyoto {
 		private static IQByteRefProxy StaticQByteRef() {
 			return (IQByteRefProxy) _staticInterceptor;
 		}
-
 		//  operator const char(); >>>> NOT CONVERTED
 		public static bool operator==(QByteRef lhs, char c) {
 			return StaticQByteRef().op_equals(lhs,c);

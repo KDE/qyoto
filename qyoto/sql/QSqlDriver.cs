@@ -15,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSqlDriver), this);
 			_interceptor = (QSqlDriver) realProxy.GetTransparentProxy();
@@ -31,7 +30,6 @@ namespace Qyoto {
 		private static IQSqlDriverProxy StaticQSqlDriver() {
 			return (IQSqlDriverProxy) _staticInterceptor;
 		}
-
 		public enum DriverFeature {
 			Transactions = 0,
 			QuerySize = 1,

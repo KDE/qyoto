@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QStyleOptionButton")]
 		interface IQStyleOptionButtonProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionButton), this);
 			_interceptor = (QStyleOptionButton) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQStyleOptionButtonProxy StaticQStyleOptionButton() {
 			return (IQStyleOptionButtonProxy) _staticInterceptor;
 		}
-
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_Button,
 		}

@@ -14,7 +14,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QScrollArea), this);
 			_interceptor = (QScrollArea) realProxy.GetTransparentProxy();
@@ -30,7 +29,6 @@ namespace Qyoto {
 		private static IQScrollAreaProxy StaticQScrollArea() {
 			return (IQScrollAreaProxy) _staticInterceptor;
 		}
-
 		[Q_PROPERTY("bool", "widgetResizable")]
 		public bool WidgetResizable {
 			get {

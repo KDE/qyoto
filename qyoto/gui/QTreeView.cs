@@ -16,7 +16,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTreeView), this);
 			_interceptor = (QTreeView) realProxy.GetTransparentProxy();
@@ -32,7 +31,6 @@ namespace Qyoto {
 		private static IQTreeViewProxy StaticQTreeView() {
 			return (IQTreeViewProxy) _staticInterceptor;
 		}
-
 		[Q_PROPERTY("int", "indentation")]
 		public int Indentation {
 			get {

@@ -15,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QToolBox), this);
 			_interceptor = (QToolBox) realProxy.GetTransparentProxy();
@@ -31,7 +30,6 @@ namespace Qyoto {
 		private static IQToolBoxProxy StaticQToolBox() {
 			return (IQToolBoxProxy) _staticInterceptor;
 		}
-
 		[Q_PROPERTY("int", "currentIndex")]
 		public int CurrentIndex {
 			get {

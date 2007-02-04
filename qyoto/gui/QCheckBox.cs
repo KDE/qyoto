@@ -15,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QCheckBox), this);
 			_interceptor = (QCheckBox) realProxy.GetTransparentProxy();
@@ -31,7 +30,6 @@ namespace Qyoto {
 		private static IQCheckBoxProxy StaticQCheckBox() {
 			return (IQCheckBoxProxy) _staticInterceptor;
 		}
-
 		[Q_PROPERTY("bool", "tristate")]
 		public bool Tristate {
 			get {

@@ -30,7 +30,6 @@ namespace Qyoto {
 			[SmokeMethod("alignedRect", "(Qt::LayoutDirection, Qt::Alignment, const QSize&, const QRect&)", "$$##")]
 			QRect AlignedRect(Qt.LayoutDirection direction, int alignment, QSize size, QRect rectangle);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyle), this);
 			_interceptor = (QStyle) realProxy.GetTransparentProxy();
@@ -46,7 +45,6 @@ namespace Qyoto {
 		private static IQStyleProxy StaticQStyle() {
 			return (IQStyleProxy) _staticInterceptor;
 		}
-
 		public enum StateFlag {
 			State_None = 0x00000000,
 			State_Enabled = 0x00000001,

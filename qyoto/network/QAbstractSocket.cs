@@ -15,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAbstractSocket), this);
 			_interceptor = (QAbstractSocket) realProxy.GetTransparentProxy();
@@ -31,7 +30,6 @@ namespace Qyoto {
 		private static IQAbstractSocketProxy StaticQAbstractSocket() {
 			return (IQAbstractSocketProxy) _staticInterceptor;
 		}
-
 		public enum SocketType {
 			TcpSocket = 0,
 			UdpSocket = 1,

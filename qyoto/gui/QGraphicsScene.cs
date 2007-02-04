@@ -16,7 +16,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGraphicsScene), this);
 			_interceptor = (QGraphicsScene) realProxy.GetTransparentProxy();
@@ -32,7 +31,6 @@ namespace Qyoto {
 		private static IQGraphicsSceneProxy StaticQGraphicsScene() {
 			return (IQGraphicsSceneProxy) _staticInterceptor;
 		}
-
 		public enum ItemIndexMethod {
 			BspTreeIndex = 0,
 			NoIndex = -1,

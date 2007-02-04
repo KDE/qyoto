@@ -15,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSortFilterProxyModel), this);
 			_interceptor = (QSortFilterProxyModel) realProxy.GetTransparentProxy();
@@ -31,7 +30,6 @@ namespace Qyoto {
 		private static IQSortFilterProxyModelProxy StaticQSortFilterProxyModel() {
 			return (IQSortFilterProxyModelProxy) _staticInterceptor;
 		}
-
 		[Q_PROPERTY("QRegExp", "filterRegExp")]
 		public QRegExp FilterRegExp {
 			get {

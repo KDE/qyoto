@@ -7,7 +7,6 @@ namespace Qyoto {
 	[SmokeClass("QGLContext")]
 	public class QGLContext : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QGLContext(Type dummy) {}
 		[SmokeClass("QGLContext")]
@@ -19,7 +18,6 @@ namespace Qyoto {
 			[SmokeMethod("currentContext", "()", "")]
 			QGLContext CurrentContext();
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGLContext), this);
 			_interceptor = (QGLContext) realProxy.GetTransparentProxy();
@@ -35,7 +33,6 @@ namespace Qyoto {
 		private static IQGLContextProxy StaticQGLContext() {
 			return (IQGLContextProxy) _staticInterceptor;
 		}
-
 		public QGLContext(QGLFormat format, IQPaintDevice device) : this((Type) null) {
 			CreateProxy();
 			NewQGLContext(format,device);

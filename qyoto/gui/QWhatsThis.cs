@@ -7,7 +7,6 @@ namespace Qyoto {
 	[SmokeClass("QWhatsThis")]
 	public class QWhatsThis : MarshalByRefObject {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QWhatsThis(Type dummy) {}
 		[SmokeClass("QWhatsThis")]
@@ -29,7 +28,6 @@ namespace Qyoto {
 			[SmokeMethod("createAction", "()", "")]
 			QAction CreateAction();
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QWhatsThis), this);
 			_interceptor = (QWhatsThis) realProxy.GetTransparentProxy();
@@ -45,7 +43,6 @@ namespace Qyoto {
 		private static IQWhatsThisProxy StaticQWhatsThis() {
 			return (IQWhatsThisProxy) _staticInterceptor;
 		}
-
 		public static void EnterWhatsThisMode() {
 			StaticQWhatsThis().EnterWhatsThisMode();
 		}

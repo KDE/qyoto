@@ -16,7 +16,6 @@ namespace Qyoto {
 			[SmokeMethod("convertToGLFormat", "(const QImage&)", "#")]
 			QImage ConvertToGLFormat(QImage img);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGLWidget), this);
 			_interceptor = (QGLWidget) realProxy.GetTransparentProxy();
@@ -32,7 +31,6 @@ namespace Qyoto {
 		private static IQGLWidgetProxy StaticQGLWidget() {
 			return (IQGLWidgetProxy) _staticInterceptor;
 		}
-
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QGLWidget(QWidget parent, QGLWidget shareWidget, int f) : this((Type) null) {
 			CreateProxy();

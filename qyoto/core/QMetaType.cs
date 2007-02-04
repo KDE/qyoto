@@ -6,7 +6,6 @@ namespace Qyoto {
 	[SmokeClass("QMetaType")]
 	public class QMetaType : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QMetaType(Type dummy) {}
 		[SmokeClass("QMetaType")]
@@ -18,7 +17,6 @@ namespace Qyoto {
 			[SmokeMethod("isRegistered", "(int)", "$")]
 			bool IsRegistered(int type);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMetaType), this);
 			_interceptor = (QMetaType) realProxy.GetTransparentProxy();
@@ -34,7 +32,6 @@ namespace Qyoto {
 		private static IQMetaTypeProxy StaticQMetaType() {
 			return (IQMetaTypeProxy) _staticInterceptor;
 		}
-
 		public enum TypeOf {
 			Void = 0,
 			Bool = 1,

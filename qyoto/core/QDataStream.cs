@@ -6,13 +6,11 @@ namespace Qyoto {
 	[SmokeClass("QDataStream")]
 	public class QDataStream : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QDataStream(Type dummy) {}
 		[SmokeClass("QDataStream")]
 		interface IQDataStreamProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDataStream), this);
 			_interceptor = (QDataStream) realProxy.GetTransparentProxy();
@@ -28,7 +26,6 @@ namespace Qyoto {
 		private static IQDataStreamProxy StaticQDataStream() {
 			return (IQDataStreamProxy) _staticInterceptor;
 		}
-
 		public enum Version {
 			Qt_1_0 = 1,
 			Qt_2_0 = 2,
@@ -118,69 +115,69 @@ namespace Qyoto {
 		// QDataStream& operator>>(qint16& arg1); >>>> NOT CONVERTED
 		// QDataStream& operator>>(quint16& arg1); >>>> NOT CONVERTED
 		[SmokeMethod("operator>>", "(qint32&)", "$")]
-		public QDataStream op_read(int i) {
-			return ProxyQDataStream().op_read(i);
+		public QDataStream Read(int i) {
+			return ProxyQDataStream().Read(i);
 		}
 		// QDataStream& operator>>(quint32& arg1); >>>> NOT CONVERTED
 		// QDataStream& operator>>(qint64& arg1); >>>> NOT CONVERTED
 		// QDataStream& operator>>(quint64& arg1); >>>> NOT CONVERTED
 		[SmokeMethod("operator>>", "(bool&)", "$")]
-		public QDataStream op_read(bool i) {
-			return ProxyQDataStream().op_read(i);
+		public QDataStream Read(bool i) {
+			return ProxyQDataStream().Read(i);
 		}
 		[SmokeMethod("operator>>", "(float&)", "$")]
-		public QDataStream op_read(float f) {
-			return ProxyQDataStream().op_read(f);
+		public QDataStream Read(float f) {
+			return ProxyQDataStream().Read(f);
 		}
 		[SmokeMethod("operator>>", "(double&)", "$")]
-		public QDataStream op_read(double f) {
-			return ProxyQDataStream().op_read(f);
+		public QDataStream Read(double f) {
+			return ProxyQDataStream().Read(f);
 		}
 		[SmokeMethod("operator>>", "(char*&)", "?")]
-		public QDataStream op_read(string str) {
-			return ProxyQDataStream().op_read(str);
+		public QDataStream Read(string str) {
+			return ProxyQDataStream().Read(str);
 		}
 		// QDataStream& operator<<(qint8 arg1); >>>> NOT CONVERTED
 		// QDataStream& operator<<(quint8 arg1); >>>> NOT CONVERTED
 		[SmokeMethod("operator<<", "(qint16)", "$")]
-		public QDataStream op_write(short i) {
-			return ProxyQDataStream().op_write(i);
+		public QDataStream Write(short i) {
+			return ProxyQDataStream().Write(i);
 		}
 		[SmokeMethod("operator<<", "(quint16)", "$")]
-		public QDataStream op_write(ushort i) {
-			return ProxyQDataStream().op_write(i);
+		public QDataStream Write(ushort i) {
+			return ProxyQDataStream().Write(i);
 		}
 		[SmokeMethod("operator<<", "(qint32)", "$")]
-		public QDataStream op_write(int i) {
-			return ProxyQDataStream().op_write(i);
+		public QDataStream Write(int i) {
+			return ProxyQDataStream().Write(i);
 		}
 		[SmokeMethod("operator<<", "(quint32)", "$")]
-		public QDataStream op_write(uint i) {
-			return ProxyQDataStream().op_write(i);
+		public QDataStream Write(uint i) {
+			return ProxyQDataStream().Write(i);
 		}
 		[SmokeMethod("operator<<", "(qint64)", "$")]
-		public QDataStream op_write(long i) {
-			return ProxyQDataStream().op_write(i);
+		public QDataStream Write(long i) {
+			return ProxyQDataStream().Write(i);
 		}
 		[SmokeMethod("operator<<", "(quint64)", "$")]
-		public QDataStream op_write(ulong i) {
-			return ProxyQDataStream().op_write(i);
+		public QDataStream Write(ulong i) {
+			return ProxyQDataStream().Write(i);
 		}
 		[SmokeMethod("operator<<", "(bool)", "$")]
-		public QDataStream op_write(bool i) {
-			return ProxyQDataStream().op_write(i);
+		public QDataStream Write(bool i) {
+			return ProxyQDataStream().Write(i);
 		}
 		[SmokeMethod("operator<<", "(float)", "$")]
-		public QDataStream op_write(float f) {
-			return ProxyQDataStream().op_write(f);
+		public QDataStream Write(float f) {
+			return ProxyQDataStream().Write(f);
 		}
 		[SmokeMethod("operator<<", "(double)", "$")]
-		public QDataStream op_write(double f) {
-			return ProxyQDataStream().op_write(f);
+		public QDataStream Write(double f) {
+			return ProxyQDataStream().Write(f);
 		}
 		[SmokeMethod("operator<<", "(const char*)", "$")]
-		public QDataStream op_write(string str) {
-			return ProxyQDataStream().op_write(str);
+		public QDataStream Write(string str) {
+			return ProxyQDataStream().Write(str);
 		}
 		[SmokeMethod("readBytes", "(char*&, uint&)", "?$")]
 		public QDataStream ReadBytes(string arg1, uint len) {

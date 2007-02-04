@@ -6,7 +6,6 @@ namespace Qyoto {
 	[SmokeClass("QRectF")]
 	public class QRectF : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QRectF(Type dummy) {}
 		[SmokeClass("QRectF")]
@@ -16,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("operator&", "(const QRectF&) const", "#")]
 			QRectF op_and(QRectF lhs, QRectF r);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QRectF), this);
 			_interceptor = (QRectF) realProxy.GetTransparentProxy();
@@ -32,7 +30,6 @@ namespace Qyoto {
 		private static IQRectFProxy StaticQRectF() {
 			return (IQRectFProxy) _staticInterceptor;
 		}
-
 		public QRectF() : this((Type) null) {
 			CreateProxy();
 			NewQRectF();

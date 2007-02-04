@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QActionEvent")]
 		interface IQActionEventProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QActionEvent), this);
 			_interceptor = (QActionEvent) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQActionEventProxy StaticQActionEvent() {
 			return (IQActionEventProxy) _staticInterceptor;
 		}
-
 		public QActionEvent(int type, QAction action, QAction before) : this((Type) null) {
 			CreateProxy();
 			NewQActionEvent(type,action,before);

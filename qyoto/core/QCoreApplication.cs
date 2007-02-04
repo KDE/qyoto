@@ -94,7 +94,6 @@ namespace Qyoto {
 			[SmokeMethod("quit", "()", "")]
 			void Quit();
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QCoreApplication), this);
 			_interceptor = (QCoreApplication) realProxy.GetTransparentProxy();
@@ -110,7 +109,6 @@ namespace Qyoto {
 		private static IQCoreApplicationProxy StaticQCoreApplication() {
 			return (IQCoreApplicationProxy) _staticInterceptor;
 		}
-
 		public enum Encoding {
 			CodecForTr = 0,
 			UnicodeUTF8 = 1,

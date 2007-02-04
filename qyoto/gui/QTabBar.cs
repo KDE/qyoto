@@ -15,7 +15,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTabBar), this);
 			_interceptor = (QTabBar) realProxy.GetTransparentProxy();
@@ -31,7 +30,6 @@ namespace Qyoto {
 		private static IQTabBarProxy StaticQTabBar() {
 			return (IQTabBarProxy) _staticInterceptor;
 		}
-
 		public enum Shape {
 			RoundedNorth = 0,
 			RoundedSouth = 1,

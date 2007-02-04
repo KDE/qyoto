@@ -6,13 +6,11 @@ namespace Qyoto {
 	[SmokeClass("QSqlResult")]
 	public class QSqlResult : MarshalByRefObject {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QSqlResult(Type dummy) {}
 		[SmokeClass("QSqlResult")]
 		interface IQSqlResultProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSqlResult), this);
 			_interceptor = (QSqlResult) realProxy.GetTransparentProxy();
@@ -28,7 +26,6 @@ namespace Qyoto {
 		private static IQSqlResultProxy StaticQSqlResult() {
 			return (IQSqlResultProxy) _staticInterceptor;
 		}
-
 		public enum BindingSyntax {
 			PositionalBinding = 0,
 			NamedBinding = 1,

@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QStyleOptionComboBox")]
 		interface IQStyleOptionComboBoxProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionComboBox), this);
 			_interceptor = (QStyleOptionComboBox) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQStyleOptionComboBoxProxy StaticQStyleOptionComboBox() {
 			return (IQStyleOptionComboBoxProxy) _staticInterceptor;
 		}
-
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_ComboBox,
 		}

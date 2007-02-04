@@ -7,7 +7,6 @@ namespace Qyoto {
 	[SmokeClass("QDBusConnection")]
 	public class QDBusConnection : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QDBusConnection(Type dummy) {}
 		[SmokeClass("QDBusConnection")]
@@ -25,7 +24,6 @@ namespace Qyoto {
 			[SmokeMethod("sender", "()", "")]
 			QDBusConnection Sender();
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDBusConnection), this);
 			_interceptor = (QDBusConnection) realProxy.GetTransparentProxy();
@@ -41,7 +39,6 @@ namespace Qyoto {
 		private static IQDBusConnectionProxy StaticQDBusConnection() {
 			return (IQDBusConnectionProxy) _staticInterceptor;
 		}
-
 		public enum BusType {
 			SessionBus = 0,
 			SystemBus = 1,

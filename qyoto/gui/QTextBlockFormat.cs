@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QTextBlockFormat")]
 		interface IQTextBlockFormatProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextBlockFormat), this);
 			_interceptor = (QTextBlockFormat) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQTextBlockFormatProxy StaticQTextBlockFormat() {
 			return (IQTextBlockFormatProxy) _staticInterceptor;
 		}
-
 		public QTextBlockFormat() : this((Type) null) {
 			CreateProxy();
 			NewQTextBlockFormat();

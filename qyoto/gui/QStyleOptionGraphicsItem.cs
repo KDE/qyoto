@@ -9,7 +9,6 @@ namespace Qyoto {
 		[SmokeClass("QStyleOptionGraphicsItem")]
 		interface IQStyleOptionGraphicsItemProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionGraphicsItem), this);
 			_interceptor = (QStyleOptionGraphicsItem) realProxy.GetTransparentProxy();
@@ -25,7 +24,6 @@ namespace Qyoto {
 		private static IQStyleOptionGraphicsItemProxy StaticQStyleOptionGraphicsItem() {
 			return (IQStyleOptionGraphicsItemProxy) _staticInterceptor;
 		}
-
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_GraphicsItem,
 		}

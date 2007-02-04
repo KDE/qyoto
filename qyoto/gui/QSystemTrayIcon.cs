@@ -19,7 +19,6 @@ namespace Qyoto {
 			[SmokeMethod("supportsMessages", "()", "")]
 			bool SupportsMessages();
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSystemTrayIcon), this);
 			_interceptor = (QSystemTrayIcon) realProxy.GetTransparentProxy();
@@ -35,7 +34,6 @@ namespace Qyoto {
 		private static IQSystemTrayIconProxy StaticQSystemTrayIcon() {
 			return (IQSystemTrayIconProxy) _staticInterceptor;
 		}
-
 		public enum ActivationReason {
 			Unknown = 0,
 			Context = 1,

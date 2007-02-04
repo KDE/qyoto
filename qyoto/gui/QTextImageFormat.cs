@@ -10,7 +10,6 @@ namespace Qyoto {
 		[SmokeClass("QTextImageFormat")]
 		interface IQTextImageFormatProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextImageFormat), this);
 			_interceptor = (QTextImageFormat) realProxy.GetTransparentProxy();
@@ -26,7 +25,6 @@ namespace Qyoto {
 		private static IQTextImageFormatProxy StaticQTextImageFormat() {
 			return (IQTextImageFormatProxy) _staticInterceptor;
 		}
-
 		public QTextImageFormat() : this((Type) null) {
 			CreateProxy();
 			NewQTextImageFormat();

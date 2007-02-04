@@ -7,13 +7,11 @@ namespace Qyoto {
 	[SmokeClass("QAbstractFileEngineHandler")]
 	public class QAbstractFileEngineHandler : MarshalByRefObject {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QAbstractFileEngineHandler(Type dummy) {}
 		[SmokeClass("QAbstractFileEngineHandler")]
 		interface IQAbstractFileEngineHandlerProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAbstractFileEngineHandler), this);
 			_interceptor = (QAbstractFileEngineHandler) realProxy.GetTransparentProxy();
@@ -29,7 +27,6 @@ namespace Qyoto {
 		private static IQAbstractFileEngineHandlerProxy StaticQAbstractFileEngineHandler() {
 			return (IQAbstractFileEngineHandlerProxy) _staticInterceptor;
 		}
-
 		public QAbstractFileEngineHandler() : this((Type) null) {
 			CreateProxy();
 			NewQAbstractFileEngineHandler();

@@ -6,13 +6,11 @@ namespace Qyoto {
 	[SmokeClass("QMetaProperty")]
 	public class QMetaProperty : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QMetaProperty(Type dummy) {}
 		[SmokeClass("QMetaProperty")]
 		interface IQMetaPropertyProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMetaProperty), this);
 			_interceptor = (QMetaProperty) realProxy.GetTransparentProxy();
@@ -28,7 +26,6 @@ namespace Qyoto {
 		private static IQMetaPropertyProxy StaticQMetaProperty() {
 			return (IQMetaPropertyProxy) _staticInterceptor;
 		}
-
 		public QMetaProperty() : this((Type) null) {
 			CreateProxy();
 			NewQMetaProperty();

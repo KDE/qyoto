@@ -10,7 +10,6 @@ namespace Qyoto {
 		[SmokeClass("QTextCharFormat")]
 		interface IQTextCharFormatProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextCharFormat), this);
 			_interceptor = (QTextCharFormat) realProxy.GetTransparentProxy();
@@ -26,7 +25,6 @@ namespace Qyoto {
 		private static IQTextCharFormatProxy StaticQTextCharFormat() {
 			return (IQTextCharFormatProxy) _staticInterceptor;
 		}
-
 		public enum VerticalAlignment {
 			AlignNormal = 0,
 			AlignSuperScript = 1,

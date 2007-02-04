@@ -6,13 +6,11 @@ namespace Qyoto {
 	[SmokeClass("QMetaEnum")]
 	public class QMetaEnum : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QMetaEnum(Type dummy) {}
 		[SmokeClass("QMetaEnum")]
 		interface IQMetaEnumProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMetaEnum), this);
 			_interceptor = (QMetaEnum) realProxy.GetTransparentProxy();
@@ -28,7 +26,6 @@ namespace Qyoto {
 		private static IQMetaEnumProxy StaticQMetaEnum() {
 			return (IQMetaEnumProxy) _staticInterceptor;
 		}
-
 		public QMetaEnum() : this((Type) null) {
 			CreateProxy();
 			NewQMetaEnum();

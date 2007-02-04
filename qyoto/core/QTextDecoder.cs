@@ -7,13 +7,11 @@ namespace Qyoto {
 	[SmokeClass("QTextDecoder")]
 	public class QTextDecoder : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QTextDecoder(Type dummy) {}
 		[SmokeClass("QTextDecoder")]
 		interface IQTextDecoderProxy {
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextDecoder), this);
 			_interceptor = (QTextDecoder) realProxy.GetTransparentProxy();
@@ -29,7 +27,6 @@ namespace Qyoto {
 		private static IQTextDecoderProxy StaticQTextDecoder() {
 			return (IQTextDecoderProxy) _staticInterceptor;
 		}
-
 		public QTextDecoder(QTextCodec codec) : this((Type) null) {
 			CreateProxy();
 			NewQTextDecoder(codec);

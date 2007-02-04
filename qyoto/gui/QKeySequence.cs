@@ -8,7 +8,6 @@ namespace Qyoto {
 	[SmokeClass("QKeySequence")]
 	public class QKeySequence : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
- 
 		private IntPtr _smokeObject;
 		protected QKeySequence(Type dummy) {}
 		[SmokeClass("QKeySequence")]
@@ -32,7 +31,6 @@ namespace Qyoto {
 			[SmokeMethod("keyBindings", "(QKeySequence::StandardKey)", "$")]
 			List<QKeySequence> KeyBindings(QKeySequence.StandardKey key);
 		}
-
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QKeySequence), this);
 			_interceptor = (QKeySequence) realProxy.GetTransparentProxy();
@@ -48,7 +46,6 @@ namespace Qyoto {
 		private static IQKeySequenceProxy StaticQKeySequence() {
 			return (IQKeySequenceProxy) _staticInterceptor;
 		}
-
 		public enum StandardKey {
 			UnknownKey = 0,
 			HelpContents = 1,
