@@ -46,8 +46,6 @@ subclasses having C# slots defined. It may work already, but I'm
 like 'QMetaObject.InvokeMethod(QCoreApplication.Instance(), "quit");'
 cause a mono crash.
 
-* Make the methods in QGlobalSpace.cs part of the Qt class.
-
 * Write a dbusxml2cs tool based on the C++ one
 
 * Some C++ operator instance methods have been mapped onto C# static

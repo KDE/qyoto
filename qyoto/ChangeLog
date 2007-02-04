@@ -7,6 +7,8 @@
 		Debug.SetDebug(QtDebugChannel.QTDB_VIRTUAL);
 
 	  This will show the virtual method callbacks from the Smoke lib
+	* Removed core/QGlobalSpace.cs as it isn't needed because the methods in 
+	  it are in Qt.cs
 
 2007-01-04  Richard Dale  <rdale@foton.es>
 
