@@ -1,39 +1,57 @@
-* Change the way the signals interceptor 'Q_EMIT' is set up
-	* At the moment each generated QObject subclass has some code like
-		this to set up Q_EMIT
+* Implement a way of ensuring instances with 'owners' like
+QLayoutItem, QListWidgetItem, QTableWidgetItem, QWidget and QObject
+are not garbage collected when they are no referenced in the C# code.
+This matters if they have been subclassed in C#, as when they are
+referenced again and a new C# wrapper instance is created it will
+have lost the customised subclassing.
 
-		protected new void CreateSignalProxy() {
-			SignalInvocation realProxy = new SignalInvocation(typeof(IQWidgetSignals), this);
-			Q_EMIT = (IQWidgetSignals) realProxy.GetTransparentProxy();
-		}
-		protected new IQWidgetSignals Emit() {
-			return (IQWidgetSignals) Q_EMIT;
-		}
+* Implement Q_PROPERTYs by adding them to the the QMetaObject when it
+is constructed in the same way Q_SLOTS/Q_SIGNALs are. Find out what
+the 'flags' field is by looking at the moc code. The details need to
+be held in Dictionaries in a very similar way to slots, but
+referencing PropertyInfos rather than MethodInfos. Then add
+functionality to qt_metacall to handle reading and writing properties
+via new classes similar to InvokeSlot, called something like
+ReadProperty and WriteProperty. 
 
-	* Change the way it works so that instead it is set up in the dummy constructor 
-in QObject.cs:
+* Write a C# version of the rcc tool, called csrcc as a lot of the Qt
+examples use rcc.
 
- 		protected QObject(Type dummy) : base((Type) null) {}
+* Implement QModelIndex.InternalPointer() and
+QAbstractItemModel.CreateIndex() with 'objects' as args instead
+of 'void *'s and convert to and from GCHandle when stored internally
+by Qt.
 
-	* Every subclass of QObject calls this constructor. From the current instance obtain
-the Emit() method via reflection, then obtain the return type. The return type can then
-be use to create a transparent proxy which is assigned to Q_EMIT
-	* Change the code generation in kalyptus to generate code for the new way of setting
-up Q_EMIT.
+* Implement C# versions of QObject.FindChild() and
+QObject.FindChildren()
 
-* Add a Qyoto class to Qyoto.cs with some static methods.
-	* Obtain the C++ type string of each signal in a QObject class. First get the
-interface which is the return type of the class's Emit() method via reflection. Next get
-all the methods in the interface and extract their C++ Q_SIGNAL attribute strings.
-	* Obtain all the C++ type strings for a class's slots by getting all the methods for the
-class via reflection, and extracting any C++ type strings if they have a Q_SLOT attribute.
-Add the C++ string to a hash table as a key, with the C# method as a value . This hash table 
-is held within another Hashtable with the class name as key (this is very similar to the 
-Hashtables used for looking up C# virtual methods given a  C++ type string in SmokeInvocation.cs) .
-	* Add another Hashtable to Qyoto with a String of a class name as key, and a QMetaObject
-instance as a value.
-	* Add declarations for the C functions in qt3qyoto.cpp that create a QMetaObject at runtime
-so they can be called from C#. As each signal or slot C++ string is obtained above, use it as an arg to 
-pass to a suitable C function to construct a QMetaObject.
-	* Add a static method which can be called from C to look up a class's QOMetaObject in the
-Hashtable described above. If the QMetaObject doesn't exist then create it.
+* Implement QTableModel and QListModel as subclasses of
+QAbstractTableModel. Special case the RowCount(), ColumnCount(),
+Data(), SetData(), Flags(), InsertRows(), InsertColumns(),
+RemoveRows() and RemoveColumns() methods. These classes can't be
+created from C# code, and only need dummy constructors with a Type
+arg so CreateInstance() can use it to create C# wrapper instances.
+
+* Translate more of the Qt examples to C# and fix any problems in
+Qyoto encountered.
+
+* Write a tool in C# to introspect on the Smoke library like rbqtapi.
+
+* Make the construction of QMetaObjects work correctly when a QObject
+class is subclassed in C# and then subclassed again, with both
+subclasses having C# slots defined. It may work already, but I'm
+(rjd) not sure it does.
+
+* Investigate the reason calls
+like 'QMetaObject.InvokeMethod(QCoreApplication.Instance(), "quit");'
+cause a mono crash.
+
+* Some C++ operator instance methods have been mapped onto C# static
+operator methods, and these calls will need to be special cased
+somewhere - at the moment they won't work.
+
+* Start making use of the sites David Canar has set up, and put
+translations of the cannon game tutorial, and a first release on
+them.
+
+
