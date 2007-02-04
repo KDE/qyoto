@@ -1,6 +1,12 @@
 2007-01-05  Richard Dale  <rdale@foton.es>
 
 	* Updated the project TODO list
+	* Added a a Qyoto Debug class for turning on debugging options
+	  Example usage:
+
+		Debug.SetDebug(QtDebugChannel.QTDB_VIRTUAL);
+
+	  This will show the virtual method callbacks from the Smoke lib
 
 2007-01-04  Richard Dale  <rdale@foton.es>
 

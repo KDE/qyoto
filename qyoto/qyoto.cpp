@@ -912,6 +912,12 @@ public:
 
 extern "C" {
 
+void
+SetDebug(int channel) 
+{
+	do_debug = channel;
+}
+
 int 
 FindMethodId(char * classname, char * mungedname, char * signature) 
 {

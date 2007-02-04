@@ -9,7 +9,39 @@ namespace Qyoto
 	using System.Text;
 	using System.Text.RegularExpressions;
 	using System.Runtime.InteropServices;
-	
+
+	public enum DebugLevel {
+		Off, 
+		Minimal, 
+		High, 
+		Extensive
+	}
+
+	public enum QtDebugChannel {
+		QTDB_NONE = 0x00,
+		QTDB_AMBIGUOUS = 0x01,
+		QTDB_METHOD_MISSING = 0x02,
+		QTDB_CALLS = 0x04,
+		QTDB_GC = 0x08,
+		QTDB_VIRTUAL = 0x10,
+		QTDB_VERBOSE = 0x20,
+		QTDB_ALL = QTDB_VERBOSE | QTDB_VIRTUAL | QTDB_GC | QTDB_CALLS | QTDB_METHOD_MISSING | QTDB_AMBIGUOUS
+	}
+
+	public class Debug {
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		public static extern void SetDebug(QtDebugChannel debugChannel);
+
+		public static DebugLevel debugLevel = DebugLevel.Off;
+
+		public static void SetDebugLevel(DebugLevel level) {
+			debugLevel = level;
+			if (level == DebugLevel.Extensive) {
+				SetDebug(QtDebugChannel.QTDB_ALL);
+			}
+		}
+	}
+
 	public class Qyoto : System.Object
 	{
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]

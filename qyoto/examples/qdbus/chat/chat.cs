@@ -135,7 +135,7 @@ public class ChatMainWindow : QMainWindow {
         new QApplication(args);
     
         if (!QDBusConnection.SessionBus().IsConnected()) {
-            Console.WriteLine("Cannot connect to the D-BUS session bus.\n" +
+            Console.Write("Cannot connect to the D-BUS session bus.\n" +
                      "Please check your system settings and try again.\n");
             return 1;
         }
