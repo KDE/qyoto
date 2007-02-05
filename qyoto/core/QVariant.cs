@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 	using System.Collections.Generic;
 
 	[SmokeClass("QVariant")]
@@ -546,5 +545,6 @@ namespace Qyoto {
 		private void DisposeQVariant() {
 			ProxyQVariant().DisposeQVariant();
 		}
+		// bool operator==(const QVariant& arg1,const QVariantComparisonHelper& arg2); >>>> NOT CONVERTED
 	}
 }

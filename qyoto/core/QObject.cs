@@ -3,7 +3,6 @@ namespace Qyoto {
 
 	using System;
 	using System.Reflection;
-	using System.Text;
 	using System.Collections.Generic;
 
 	/// See <see cref="IQObjectSignals"></see> for signals emitted by QObject

@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QGLContext")]
 	public class QGLContext : MarshalByRefObject, IDisposable {

@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QXmlAttributes")]
 	public class QXmlAttributes : MarshalByRefObject, IDisposable {

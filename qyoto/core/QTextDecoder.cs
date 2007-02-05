@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QTextDecoder")]
 	public class QTextDecoder : MarshalByRefObject, IDisposable {

@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	/// See <see cref="IQTextDocumentSignals"></see> for signals emitted by QTextDocument
 	[SmokeClass("QTextDocument")]
@@ -264,16 +263,6 @@ namespace Qyoto {
 		// void undo(QTextCursor* arg1); >>>> NOT CONVERTED
 		// void redo(QTextCursor* arg1); >>>> NOT CONVERTED
 		// QTextDocumentPrivate* docHandle(); >>>> NOT CONVERTED
-		[Q_SLOT("void undo()")]
-		[SmokeMethod("undo", "()", "")]
-		public void Undo() {
-			ProxyQTextDocument().Undo();
-		}
-		[Q_SLOT("void redo()")]
-		[SmokeMethod("redo", "()", "")]
-		public void Redo() {
-			ProxyQTextDocument().Redo();
-		}
 		// void appendUndoItem(QAbstractUndoItem* arg1); >>>> NOT CONVERTED
 		public static new string Tr(string s, string c) {
 			return StaticQTextDocument().Tr(s,c);

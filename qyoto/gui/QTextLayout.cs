@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QTextLayout")]
 	public class QTextLayout : MarshalByRefObject, IDisposable {

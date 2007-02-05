@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	public interface IQXmlDTDHandler {
 			bool NotationDecl(string name, string publicId, string systemId);

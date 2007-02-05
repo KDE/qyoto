@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QRubberBand")]
 	public class QRubberBand : QWidget, IDisposable {

@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QDesktopServices")]
 	public class QDesktopServices : MarshalByRefObject, IDisposable {

@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	public interface IQXmlErrorHandler {
 			bool Warning(QXmlParseException exception);

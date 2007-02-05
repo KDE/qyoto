@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	/// See <see cref="IQSqlTableModelSignals"></see> for signals emitted by QSqlTableModel
 	[SmokeClass("QSqlTableModel")]

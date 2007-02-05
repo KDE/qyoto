@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QAbstractProxyModel")]
 	public class QAbstractProxyModel : QAbstractItemModel {

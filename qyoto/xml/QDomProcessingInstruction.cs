@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QDomProcessingInstruction")]
 	public class QDomProcessingInstruction : QDomNode, IDisposable {

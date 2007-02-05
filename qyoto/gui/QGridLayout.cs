@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QGridLayout")]
 	public class QGridLayout : QLayout, IDisposable {

@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QScrollArea")]
 	public class QScrollArea : QAbstractScrollArea, IDisposable {

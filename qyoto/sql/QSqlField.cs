@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QSqlField")]
 	public class QSqlField : MarshalByRefObject, IDisposable {

@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	public interface IQXmlLexicalHandler {
 			bool StartDTD(string name, string publicId, string systemId);

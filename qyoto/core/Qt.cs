@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 	using System.Collections.Generic;
 
 	public partial class Qt : MarshalByRefObject {
@@ -69,20 +68,12 @@ namespace Qyoto {
 			QDBusArgument Write(QDBusArgument a, QLineF line);
 			[SmokeMethod("operator<<", "(QDBusArgument&, const QVariantList&)", "#?")]
 			QDBusArgument Write(QDBusArgument arg, List<QVariant> list);
-			[SmokeMethod("operator==", "(const QGLFormat&, const QGLFormat&)", "##")]
-			bool op_equals(QGLFormat arg1, QGLFormat arg2);
-			[SmokeMethod("operator==", "(QHostAddress::SpecialAddress, const QHostAddress&)", "$#")]
-			bool op_equals(QHostAddress.SpecialAddress address1, QHostAddress address2);
 			[SmokeMethod("qHash", "(const QHostAddress&)", "#")]
 			uint QHash(QHostAddress key);
 			[SmokeMethod("operator<<", "(QDataStream&, const QHostAddress&)", "##")]
 			QDataStream Write(QDataStream arg1, QHostAddress arg2);
 			[SmokeMethod("operator>>", "(QDataStream&, QHostAddress&)", "##")]
 			QDataStream Read(QDataStream arg1, QHostAddress arg2);
-			[SmokeMethod("operator==", "(QKeyEvent*, QKeySequence::StandardKey)", "#$")]
-			bool op_equals(QKeyEvent e, QKeySequence.StandardKey key);
-			[SmokeMethod("operator==", "(QKeySequence::StandardKey, QKeyEvent*)", "$#")]
-			bool op_equals(QKeySequence.StandardKey key, QKeyEvent e);
 			[SmokeMethod("operator<<", "(QDataStream&, const QPalette&)", "##")]
 			QDataStream Write(QDataStream ds, QPalette p);
 			[SmokeMethod("operator>>", "(QDataStream&, QPalette&)", "##")]
@@ -257,22 +248,6 @@ namespace Qyoto {
 			QDataStream Write(QDataStream stream, QPolygonF array);
 			[SmokeMethod("operator>>", "(QDataStream&, QPolygonF&)", "##")]
 			QDataStream Read(QDataStream stream, QPolygonF array);
-			[SmokeMethod("operator*", "(const QPoint&, const QMatrix&)", "##")]
-			QPoint op_mult(QPoint p, QMatrix m);
-			[SmokeMethod("operator*", "(const QPointF&, const QMatrix&)", "##")]
-			QPointF op_mult(QPointF p, QMatrix m);
-			[SmokeMethod("operator*", "(const QLineF&, const QMatrix&)", "##")]
-			QLineF op_mult(QLineF l, QMatrix m);
-			[SmokeMethod("operator*", "(const QLine&, const QMatrix&)", "##")]
-			QLine op_mult(QLine l, QMatrix m);
-			[SmokeMethod("operator*", "(const QPolygon&, const QMatrix&)", "##")]
-			QPolygon op_mult(QPolygon a, QMatrix m);
-			[SmokeMethod("operator*", "(const QPolygonF&, const QMatrix&)", "##")]
-			QPolygonF op_mult(QPolygonF a, QMatrix m);
-			[SmokeMethod("operator*", "(const QRegion&, const QMatrix&)", "##")]
-			QRegion op_mult(QRegion r, QMatrix m);
-			[SmokeMethod("operator*", "(const QPainterPath&, const QMatrix&)", "##")]
-			QPainterPath op_mult(QPainterPath p, QMatrix m);
 			[SmokeMethod("operator<<", "(QDataStream&, const QMatrix&)", "##")]
 			QDataStream Write(QDataStream arg1, QMatrix arg2);
 			[SmokeMethod("operator>>", "(QDataStream&, QMatrix&)", "##")]
@@ -301,12 +276,6 @@ namespace Qyoto {
 			string QVersion();
 			[SmokeMethod("qSharedBuild", "()", "")]
 			bool QSharedBuild();
-			[SmokeMethod("operator==", "(QBool, bool)", "#$")]
-			bool op_equals(QBool b1, bool b2);
-			[SmokeMethod("operator==", "(bool, QBool)", "$#")]
-			bool op_equals(bool b1, QBool b2);
-			[SmokeMethod("operator==", "(QBool, QBool)", "##")]
-			bool op_equals(QBool b1, QBool b2);
 			[SmokeMethod("qFuzzyCompare", "(double, double)", "$$")]
 			bool QFuzzyCompare(double p1, double p2);
 			[SmokeMethod("qFuzzyCompare", "(float, float)", "$$")]
@@ -333,14 +302,10 @@ namespace Qyoto {
 			string QAppName();
 			[SmokeMethod("qHash", "(const QModelIndex&)", "#")]
 			uint QHash(QModelIndex index);
-			[SmokeMethod("operator==", "(const QRect&, const QRect&)", "##")]
-			bool op_equals(QRect arg1, QRect arg2);
 			[SmokeMethod("operator<<", "(QDataStream&, const QRect&)", "##")]
 			QDataStream Write(QDataStream arg1, QRect arg2);
 			[SmokeMethod("operator>>", "(QDataStream&, QRect&)", "##")]
 			QDataStream Read(QDataStream arg1, QRect arg2);
-			[SmokeMethod("operator==", "(const QRectF&, const QRectF&)", "##")]
-			bool op_equals(QRectF arg1, QRectF arg2);
 			[SmokeMethod("operator<<", "(QDataStream&, const QRectF&)", "##")]
 			QDataStream Write(QDataStream arg1, QRectF arg2);
 			[SmokeMethod("operator>>", "(QDataStream&, QRectF&)", "##")]
@@ -373,46 +338,6 @@ namespace Qyoto {
 			int Qstrnicmp(string arg1, string arg2, uint len);
 			[SmokeMethod("qChecksum", "(const char*, uint)", "$$")]
 			ushort QChecksum(string s, uint len);
-			[SmokeMethod("operator==", "(const QByteArray&, const QByteArray&)", "##")]
-			bool op_equals(QByteArray a1, QByteArray a2);
-			[SmokeMethod("operator==", "(const QByteArray&, const char*)", "#$")]
-			bool op_equals(QByteArray a1, string a2);
-			[SmokeMethod("operator==", "(const char*, const QByteArray&)", "$#")]
-			bool op_equals(string a1, QByteArray a2);
-			[SmokeMethod("operator<", "(const QByteArray&, const QByteArray&)", "##")]
-			bool op_lt(QByteArray a1, QByteArray a2);
-			[SmokeMethod("operator<", "(const QByteArray&, const char*)", "#$")]
-			bool op_lt(QByteArray a1, string a2);
-			[SmokeMethod("operator<", "(const char*, const QByteArray&)", "$#")]
-			bool op_lt(string a1, QByteArray a2);
-			[SmokeMethod("operator<=", "(const QByteArray&, const QByteArray&)", "##")]
-			bool op_lte(QByteArray a1, QByteArray a2);
-			[SmokeMethod("operator<=", "(const QByteArray&, const char*)", "#$")]
-			bool op_lte(QByteArray a1, string a2);
-			[SmokeMethod("operator<=", "(const char*, const QByteArray&)", "$#")]
-			bool op_lte(string a1, QByteArray a2);
-			[SmokeMethod("operator>", "(const QByteArray&, const QByteArray&)", "##")]
-			bool op_gt(QByteArray a1, QByteArray a2);
-			[SmokeMethod("operator>", "(const QByteArray&, const char*)", "#$")]
-			bool op_gt(QByteArray a1, string a2);
-			[SmokeMethod("operator>", "(const char*, const QByteArray&)", "$#")]
-			bool op_gt(string a1, QByteArray a2);
-			[SmokeMethod("operator>=", "(const QByteArray&, const QByteArray&)", "##")]
-			bool op_gte(QByteArray a1, QByteArray a2);
-			[SmokeMethod("operator>=", "(const QByteArray&, const char*)", "#$")]
-			bool op_gte(QByteArray a1, string a2);
-			[SmokeMethod("operator>=", "(const char*, const QByteArray&)", "$#")]
-			bool op_gte(string a1, QByteArray a2);
-			[SmokeMethod("operator+", "(const QByteArray&, const QByteArray&)", "##")]
-			QByteArray op_plus(QByteArray a1, QByteArray a2);
-			[SmokeMethod("operator+", "(const QByteArray&, const char*)", "#$")]
-			QByteArray op_plus(QByteArray a1, string a2);
-			[SmokeMethod("operator+", "(const QByteArray&, char)", "#$")]
-			QByteArray op_plus(QByteArray a1, char a2);
-			[SmokeMethod("operator+", "(const char*, const QByteArray&)", "$#")]
-			QByteArray op_plus(string a1, QByteArray a2);
-			[SmokeMethod("operator+", "(char, const QByteArray&)", "$#")]
-			QByteArray op_plus(char a1, QByteArray a2);
 			[SmokeMethod("operator<<", "(QDataStream&, const QByteArray&)", "##")]
 			QDataStream Write(QDataStream arg1, QByteArray arg2);
 			[SmokeMethod("operator>>", "(QDataStream&, QByteArray&)", "##")]
@@ -433,34 +358,10 @@ namespace Qyoto {
 			QDataStream Write(QDataStream arg1, QSize arg2);
 			[SmokeMethod("operator>>", "(QDataStream&, QSize&)", "##")]
 			QDataStream Read(QDataStream arg1, QSize arg2);
-			[SmokeMethod("operator==", "(const QSize&, const QSize&)", "##")]
-			bool op_equals(QSize s1, QSize s2);
-			[SmokeMethod("operator+", "(const QSize&, const QSize&)", "##")]
-			QSize op_plus(QSize s1, QSize s2);
-			[SmokeMethod("operator-", "(const QSize&, const QSize&)", "##")]
-			QSize op_minus(QSize s1, QSize s2);
-			[SmokeMethod("operator*", "(const QSize&, qreal)", "#$")]
-			QSize op_mult(QSize s, double c);
-			[SmokeMethod("operator*", "(qreal, const QSize&)", "$#")]
-			QSize op_mult(double c, QSize s);
-			[SmokeMethod("operator/", "(const QSize&, qreal)", "#$")]
-			QSize op_div(QSize s, double c);
 			[SmokeMethod("operator<<", "(QDataStream&, const QSizeF&)", "##")]
 			QDataStream Write(QDataStream arg1, QSizeF arg2);
 			[SmokeMethod("operator>>", "(QDataStream&, QSizeF&)", "##")]
 			QDataStream Read(QDataStream arg1, QSizeF arg2);
-			[SmokeMethod("operator==", "(const QSizeF&, const QSizeF&)", "##")]
-			bool op_equals(QSizeF s1, QSizeF s2);
-			[SmokeMethod("operator+", "(const QSizeF&, const QSizeF&)", "##")]
-			QSizeF op_plus(QSizeF s1, QSizeF s2);
-			[SmokeMethod("operator-", "(const QSizeF&, const QSizeF&)", "##")]
-			QSizeF op_minus(QSizeF s1, QSizeF s2);
-			[SmokeMethod("operator*", "(const QSizeF&, qreal)", "#$")]
-			QSizeF op_mult(QSizeF s, double c);
-			[SmokeMethod("operator*", "(qreal, const QSizeF&)", "$#")]
-			QSizeF op_mult(double c, QSizeF s);
-			[SmokeMethod("operator/", "(const QSizeF&, qreal)", "#$")]
-			QSizeF op_div(QSizeF s, double c);
 			[SmokeMethod("operator<<", "(QDataStream&, const QLine&)", "##")]
 			QDataStream Write(QDataStream arg1, QLine arg2);
 			[SmokeMethod("operator>>", "(QDataStream&, QLine&)", "##")]
@@ -485,16 +386,6 @@ namespace Qyoto {
 			QDataStream Write(QDataStream arg1, QDateTime arg2);
 			[SmokeMethod("operator>>", "(QDataStream&, QDateTime&)", "##")]
 			QDataStream Read(QDataStream arg1, QDateTime arg2);
-			[SmokeMethod("operator==", "(QChar, QChar)", "##")]
-			bool op_equals(char c1, char c2);
-			[SmokeMethod("operator<=", "(QChar, QChar)", "##")]
-			bool op_lte(char c1, char c2);
-			[SmokeMethod("operator>=", "(QChar, QChar)", "##")]
-			bool op_gte(char c1, char c2);
-			[SmokeMethod("operator<", "(QChar, QChar)", "##")]
-			bool op_lt(char c1, char c2);
-			[SmokeMethod("operator>", "(QChar, QChar)", "##")]
-			bool op_gt(char c1, char c2);
 			[SmokeMethod("operator<<", "(QDataStream&, const QChar&)", "##")]
 			QDataStream Write(QDataStream arg1, char arg2);
 			[SmokeMethod("operator>>", "(QDataStream&, QChar&)", "##")]
@@ -503,38 +394,10 @@ namespace Qyoto {
 			QDataStream Write(QDataStream arg1, QPoint arg2);
 			[SmokeMethod("operator>>", "(QDataStream&, QPoint&)", "##")]
 			QDataStream Read(QDataStream arg1, QPoint arg2);
-			[SmokeMethod("operator==", "(const QPoint&, const QPoint&)", "##")]
-			bool op_equals(QPoint p1, QPoint p2);
-			[SmokeMethod("operator+", "(const QPoint&, const QPoint&)", "##")]
-			QPoint op_plus(QPoint p1, QPoint p2);
-			[SmokeMethod("operator-", "(const QPoint&, const QPoint&)", "##")]
-			QPoint op_minus(QPoint p1, QPoint p2);
-			[SmokeMethod("operator*", "(const QPoint&, qreal)", "#$")]
-			QPoint op_mult(QPoint p, double c);
-			[SmokeMethod("operator*", "(qreal, const QPoint&)", "$#")]
-			QPoint op_mult(double c, QPoint p);
-			[SmokeMethod("operator-", "(const QPoint&)", "#")]
-			QPoint op_minus(QPoint p);
-			[SmokeMethod("operator/", "(const QPoint&, qreal)", "#$")]
-			QPoint op_div(QPoint p, double c);
 			[SmokeMethod("operator<<", "(QDataStream&, const QPointF&)", "##")]
 			QDataStream Write(QDataStream arg1, QPointF arg2);
 			[SmokeMethod("operator>>", "(QDataStream&, QPointF&)", "##")]
 			QDataStream Read(QDataStream arg1, QPointF arg2);
-			[SmokeMethod("operator==", "(const QPointF&, const QPointF&)", "##")]
-			bool op_equals(QPointF p1, QPointF p2);
-			[SmokeMethod("operator+", "(const QPointF&, const QPointF&)", "##")]
-			QPointF op_plus(QPointF p1, QPointF p2);
-			[SmokeMethod("operator-", "(const QPointF&, const QPointF&)", "##")]
-			QPointF op_minus(QPointF p1, QPointF p2);
-			[SmokeMethod("operator*", "(const QPointF&, qreal)", "#$")]
-			QPointF op_mult(QPointF p, double c);
-			[SmokeMethod("operator*", "(qreal, const QPointF&)", "$#")]
-			QPointF op_mult(double c, QPointF p);
-			[SmokeMethod("operator-", "(const QPointF&)", "#")]
-			QPointF op_minus(QPointF p);
-			[SmokeMethod("operator/", "(const QPointF&, qreal)", "#$")]
-			QPointF op_div(QPointF p, double c);
 			[SmokeMethod("bin", "(QTextStream&)", "#")]
 			QTextStream Bin(QTextStream s);
 			[SmokeMethod("oct", "(QTextStream&)", "#")]
@@ -1484,28 +1347,6 @@ namespace Qyoto {
 		private void DisposeQt() {
 			ProxyQt().DisposeQt();
 		}
-		///<remarks>*************************************************
-		///
-		///* Copyright (C) 1992-2006 Trolltech ASA. All rights reserved.
-		///
-		///* This file is part of the tools applications of the Qt Toolkit.
-		///
-		///* This file may be used under the terms of the GNU General Public
-		/// License version 2.0 as published by the Free Software Foundation
-		/// and appearing in the file LICENSE.GPL included in the packaging of
-		/// this file.  Please review the following information to ensure GNU
-		/// General Public Licensing requirements will be met:
-		/// http://www.trolltech.com/products/qt/opensource.html
-		///
-		///* If you are unsure which license is appropriate for your use, please
-		/// review the following information:
-		/// http://www.trolltech.com/products/qt/licensing.html or contact the
-		/// sales department at sales@trolltech.com.
-		///
-		///* This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
-		/// WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
-		///
-		///**************************************************</remarks>		<short>                                                                                 Copyright (C) 1992-2006 Trolltech ASA.</short>
 		public static void QDBusReplyFill(QDBusMessage reply, QDBusError error, QVariant data) {
 			StaticQt().QDBusReplyFill(reply,error,data);
 		}
@@ -1582,12 +1423,6 @@ namespace Qyoto {
 			return StaticQt().Write(arg,list);
 		}
 		// QDBusArgument& operator<<(QDBusArgument& arg1,const QVariantMap& arg2); >>>> NOT CONVERTED
-		public static bool op_equals(QGLFormat arg1, QGLFormat arg2) {
-			return StaticQt().op_equals(arg1,arg2);
-		}
-		public static bool op_equals(QHostAddress.SpecialAddress address1, QHostAddress address2) {
-			return StaticQt().op_equals(address1,address2);
-		}
 		public static uint QHash(QHostAddress key) {
 			return StaticQt().QHash(key);
 		}
@@ -1597,24 +1432,12 @@ namespace Qyoto {
 		public static QDataStream Read(QDataStream arg1, QHostAddress arg2) {
 			return StaticQt().Read(arg1,arg2);
 		}
-		public static bool op_equals(QKeyEvent e, QKeySequence.StandardKey key) {
-			return StaticQt().op_equals(e,key);
-		}
-		public static bool op_equals(QKeySequence.StandardKey key, QKeyEvent e) {
-			return StaticQt().op_equals(key,e);
-		}
-		///<remarks>**************************************************
-		///  QPalette stream functions
-		///**************************************************</remarks>		<short>                                                                                QPalette stream functions                                                                            </short>
 		public static QDataStream Write(QDataStream ds, QPalette p) {
 			return StaticQt().Write(ds,p);
 		}
 		public static QDataStream Read(QDataStream ds, QPalette p) {
 			return StaticQt().Read(ds,p);
 		}
-		///<remarks>**************************************************
-		///  QCursor stream functions
-		///**************************************************</remarks>		<short>                                                                                QCursor stream functions                                                                            </short>
 		public static QDataStream Write(QDataStream outS, QCursor cursor) {
 			return StaticQt().Write(outS,cursor);
 		}
@@ -1633,9 +1456,6 @@ namespace Qyoto {
 		public static QDataStream Read(QDataStream arg1, QSizePolicy arg2) {
 			return StaticQt().Read(arg1,arg2);
 		}
-		///<remarks>**************************************************
-		///  QPicture stream functions
-		///**************************************************</remarks>		<short>                                                                                QPicture stream functions                                                                            </short>
 		public static QDataStream Write(QDataStream arg1, QPicture arg2) {
 			return StaticQt().Write(arg1,arg2);
 		}
@@ -1654,18 +1474,12 @@ namespace Qyoto {
 		public static QDataStream Read(QDataStream arg1, QIcon arg2) {
 			return StaticQt().Read(arg1,arg2);
 		}
-		///<remarks>**************************************************
-		/// QPixmap stream functions
-		///**************************************************</remarks>		<short>                                                                               QPixmap stream functions                                                                            </short>
 		public static QDataStream Write(QDataStream arg1, QPixmap arg2) {
 			return StaticQt().Write(arg1,arg2);
 		}
 		public static QDataStream Read(QDataStream arg1, QPixmap arg2) {
 			return StaticQt().Read(arg1,arg2);
 		}
-		///<remarks>**************************************************
-		///  QFont stream functions
-		///**************************************************</remarks>		<short>                                                                                QFont stream functions                                                                            </short>
 		public static QDataStream Write(QDataStream arg1, QFont arg2) {
 			return StaticQt().Write(arg1,arg2);
 		}
@@ -1830,9 +1644,6 @@ namespace Qyoto {
 		public static void QDrawPlainRect(QPainter p, QRect r, QColor arg3) {
 			StaticQt().QDrawPlainRect(p,r,arg3);
 		}
-		///<remarks>**************************************************
-		///  QBrush stream functions
-		///**************************************************</remarks>		<short>                                                                                QBrush stream functions                                                                            </short>
 		public static QDataStream Write(QDataStream arg1, QBrush arg2) {
 			return StaticQt().Write(arg1,arg2);
 		}
@@ -1872,51 +1683,18 @@ namespace Qyoto {
 		public static QDataStream Read(QDataStream arg1, QPainterPath arg2) {
 			return StaticQt().Read(arg1,arg2);
 		}
-		///<remarks>**************************************************
-		///  QRegion stream functions
-		///**************************************************</remarks>		<short>                                                                                QRegion stream functions                                                                            </short>
 		public static QDataStream Write(QDataStream arg1, QRegion arg2) {
 			return StaticQt().Write(arg1,arg2);
 		}
 		public static QDataStream Read(QDataStream arg1, QRegion arg2) {
 			return StaticQt().Read(arg1,arg2);
 		}
-		///<remarks>**************************************************
-		///  QPolygonF stream functions
-		///**************************************************</remarks>		<short>                                                                                QPolygonF stream functions                                                                            </short>
 		public static QDataStream Write(QDataStream stream, QPolygonF array) {
 			return StaticQt().Write(stream,array);
 		}
 		public static QDataStream Read(QDataStream stream, QPolygonF array) {
 			return StaticQt().Read(stream,array);
 		}
-		public static QPoint op_mult(QPoint p, QMatrix m) {
-			return StaticQt().op_mult(p,m);
-		}
-		public static QPointF op_mult(QPointF p, QMatrix m) {
-			return StaticQt().op_mult(p,m);
-		}
-		public static QLineF op_mult(QLineF l, QMatrix m) {
-			return StaticQt().op_mult(l,m);
-		}
-		public static QLine op_mult(QLine l, QMatrix m) {
-			return StaticQt().op_mult(l,m);
-		}
-		public static QPolygon op_mult(QPolygon a, QMatrix m) {
-			return StaticQt().op_mult(a,m);
-		}
-		public static QPolygonF op_mult(QPolygonF a, QMatrix m) {
-			return StaticQt().op_mult(a,m);
-		}
-		public static QRegion op_mult(QRegion r, QMatrix m) {
-			return StaticQt().op_mult(r,m);
-		}
-		public static QPainterPath op_mult(QPainterPath p, QMatrix m) {
-			return StaticQt().op_mult(p,m);
-		}
-		///<remarks>**************************************************
-		/// QMatrix stream functions
-		///**************************************************</remarks>		<short>                                                                               QMatrix stream functions                                                                            </short>
 		public static QDataStream Write(QDataStream arg1, QMatrix arg2) {
 			return StaticQt().Write(arg1,arg2);
 		}
@@ -1963,15 +1741,6 @@ namespace Qyoto {
 		// QDebug qWarning(); >>>> NOT CONVERTED
 		// QDebug qCritical(); >>>> NOT CONVERTED
 		// QtMsgHandler qInstallMsgHandler(QtMsgHandler arg1); >>>> NOT CONVERTED
-		public static bool op_equals(QBool b1, bool b2) {
-			return StaticQt().op_equals(b1,b2);
-		}
-		public static bool op_equals(bool b1, QBool b2) {
-			return StaticQt().op_equals(b1,b2);
-		}
-		public static bool op_equals(QBool b1, QBool b2) {
-			return StaticQt().op_equals(b1,b2);
-		}
 		public static bool QFuzzyCompare(double p1, double p2) {
 			return StaticQt().QFuzzyCompare(p1,p2);
 		}
@@ -2020,24 +1789,12 @@ namespace Qyoto {
 		public static uint QHash(QModelIndex index) {
 			return StaticQt().QHash(index);
 		}
-		public static bool op_equals(QRect arg1, QRect arg2) {
-			return StaticQt().op_equals(arg1,arg2);
-		}
-		///<remarks>**************************************************
-		///  QRect stream functions
-		///**************************************************</remarks>		<short>                                                                                QRect stream functions                                                                            </short>
 		public static QDataStream Write(QDataStream arg1, QRect arg2) {
 			return StaticQt().Write(arg1,arg2);
 		}
 		public static QDataStream Read(QDataStream arg1, QRect arg2) {
 			return StaticQt().Read(arg1,arg2);
 		}
-		public static bool op_equals(QRectF arg1, QRectF arg2) {
-			return StaticQt().op_equals(arg1,arg2);
-		}
-		///<remarks>**************************************************
-		///  QRectF stream functions
-		///**************************************************</remarks>		<short>                                                                                QRectF stream functions                                                                            </short>
 		public static QDataStream Write(QDataStream arg1, QRectF arg2) {
 			return StaticQt().Write(arg1,arg2);
 		}
@@ -2056,9 +1813,6 @@ namespace Qyoto {
 		public static QDataStream Write(QDataStream arg1, List<string> list) {
 			return StaticQt().Write(arg1,list);
 		}
-		///<remarks>**************************************************
-		///  Safe and portable C string functions; extensions to standard string.h
-		///**************************************************</remarks>		<short>                                                                                Safe and portable C string functions; extensions to standard string.</short>
 		public static string Qstrdup(string arg1) {
 			return StaticQt().Qstrdup(arg1);
 		}
@@ -2090,66 +1844,6 @@ namespace Qyoto {
 		public static ushort QChecksum(string s, uint len) {
 			return StaticQt().QChecksum(s,len);
 		}
-		public static bool op_equals(QByteArray a1, QByteArray a2) {
-			return StaticQt().op_equals(a1,a2);
-		}
-		public static bool op_equals(QByteArray a1, string a2) {
-			return StaticQt().op_equals(a1,a2);
-		}
-		public static bool op_equals(string a1, QByteArray a2) {
-			return StaticQt().op_equals(a1,a2);
-		}
-		public static bool op_lt(QByteArray a1, QByteArray a2) {
-			return StaticQt().op_lt(a1,a2);
-		}
-		public static bool op_lt(QByteArray a1, string a2) {
-			return StaticQt().op_lt(a1,a2);
-		}
-		public static bool op_lt(string a1, QByteArray a2) {
-			return StaticQt().op_lt(a1,a2);
-		}
-		public static bool op_lte(QByteArray a1, QByteArray a2) {
-			return StaticQt().op_lte(a1,a2);
-		}
-		public static bool op_lte(QByteArray a1, string a2) {
-			return StaticQt().op_lte(a1,a2);
-		}
-		public static bool op_lte(string a1, QByteArray a2) {
-			return StaticQt().op_lte(a1,a2);
-		}
-		public static bool op_gt(QByteArray a1, QByteArray a2) {
-			return StaticQt().op_gt(a1,a2);
-		}
-		public static bool op_gt(QByteArray a1, string a2) {
-			return StaticQt().op_gt(a1,a2);
-		}
-		public static bool op_gt(string a1, QByteArray a2) {
-			return StaticQt().op_gt(a1,a2);
-		}
-		public static bool op_gte(QByteArray a1, QByteArray a2) {
-			return StaticQt().op_gte(a1,a2);
-		}
-		public static bool op_gte(QByteArray a1, string a2) {
-			return StaticQt().op_gte(a1,a2);
-		}
-		public static bool op_gte(string a1, QByteArray a2) {
-			return StaticQt().op_gte(a1,a2);
-		}
-		public static QByteArray op_plus(QByteArray a1, QByteArray a2) {
-			return StaticQt().op_plus(a1,a2);
-		}
-		public static QByteArray op_plus(QByteArray a1, string a2) {
-			return StaticQt().op_plus(a1,a2);
-		}
-		public static QByteArray op_plus(QByteArray a1, char a2) {
-			return StaticQt().op_plus(a1,a2);
-		}
-		public static QByteArray op_plus(string a1, QByteArray a2) {
-			return StaticQt().op_plus(a1,a2);
-		}
-		public static QByteArray op_plus(char a1, QByteArray a2) {
-			return StaticQt().op_plus(a1,a2);
-		}
 		public static QDataStream Write(QDataStream arg1, QByteArray arg2) {
 			return StaticQt().Write(arg1,arg2);
 		}
@@ -2174,65 +1868,17 @@ namespace Qyoto {
 		public static QByteArray QUncompress(QByteArray data) {
 			return StaticQt().QUncompress(data);
 		}
-		///<remarks>**************************************************
-		///  QSize stream functions
-		///**************************************************</remarks>		<short>                                                                                QSize stream functions                                                                            </short>
 		public static QDataStream Write(QDataStream arg1, QSize arg2) {
 			return StaticQt().Write(arg1,arg2);
 		}
 		public static QDataStream Read(QDataStream arg1, QSize arg2) {
 			return StaticQt().Read(arg1,arg2);
 		}
-		///<remarks>**************************************************
-		///  QSize inline functions
-		///**************************************************</remarks>		<short>                                                                                QSize inline functions                                                                            </short>
-		public static bool op_equals(QSize s1, QSize s2) {
-			return StaticQt().op_equals(s1,s2);
-		}
-		public static QSize op_plus(QSize s1, QSize s2) {
-			return StaticQt().op_plus(s1,s2);
-		}
-		public static QSize op_minus(QSize s1, QSize s2) {
-			return StaticQt().op_minus(s1,s2);
-		}
-		public static QSize op_mult(QSize s, double c) {
-			return StaticQt().op_mult(s,c);
-		}
-		public static QSize op_mult(double c, QSize s) {
-			return StaticQt().op_mult(c,s);
-		}
-		public static QSize op_div(QSize s, double c) {
-			return StaticQt().op_div(s,c);
-		}
-		///<remarks>**************************************************
-		///  QSizeF stream functions
-		///**************************************************</remarks>		<short>                                                                                QSizeF stream functions                                                                            </short>
 		public static QDataStream Write(QDataStream arg1, QSizeF arg2) {
 			return StaticQt().Write(arg1,arg2);
 		}
 		public static QDataStream Read(QDataStream arg1, QSizeF arg2) {
 			return StaticQt().Read(arg1,arg2);
-		}
-		///<remarks>**************************************************
-		///  QSizeF inline functions
-		///**************************************************</remarks>		<short>                                                                                QSizeF inline functions                                                                            </short>
-		public static bool op_equals(QSizeF s1, QSizeF s2) {
-			return StaticQt().op_equals(s1,s2);
-		}
-		public static QSizeF op_plus(QSizeF s1, QSizeF s2) {
-			return StaticQt().op_plus(s1,s2);
-		}
-		public static QSizeF op_minus(QSizeF s1, QSizeF s2) {
-			return StaticQt().op_minus(s1,s2);
-		}
-		public static QSizeF op_mult(QSizeF s, double c) {
-			return StaticQt().op_mult(s,c);
-		}
-		public static QSizeF op_mult(double c, QSizeF s) {
-			return StaticQt().op_mult(c,s);
-		}
-		public static QSizeF op_div(QSizeF s, double c) {
-			return StaticQt().op_div(s,c);
 		}
 		public static QDataStream Write(QDataStream arg1, QLine arg2) {
 			return StaticQt().Write(arg1,arg2);
@@ -2275,92 +1921,23 @@ namespace Qyoto {
 		// QBitArray operator^(const QBitArray& arg1,const QBitArray& arg2); >>>> NOT CONVERTED
 		// QDataStream& operator<<(QDataStream& arg1,const QBitArray& arg2); >>>> NOT CONVERTED
 		// QDataStream& operator>>(QDataStream& arg1,QBitArray& arg2); >>>> NOT CONVERTED
-		public static bool op_equals(char c1, char c2) {
-			return StaticQt().op_equals(c1,c2);
-		}
-		public static bool op_lte(char c1, char c2) {
-			return StaticQt().op_lte(c1,c2);
-		}
-		public static bool op_gte(char c1, char c2) {
-			return StaticQt().op_gte(c1,c2);
-		}
-		public static bool op_lt(char c1, char c2) {
-			return StaticQt().op_lt(c1,c2);
-		}
-		public static bool op_gt(char c1, char c2) {
-			return StaticQt().op_gt(c1,c2);
-		}
 		public static QDataStream Write(QDataStream arg1, char arg2) {
 			return StaticQt().Write(arg1,arg2);
 		}
 		public static QDataStream Read(QDataStream arg1, char arg2) {
 			return StaticQt().Read(arg1,arg2);
 		}
-		///<remarks>**************************************************
-		///  QPoint stream functions
-		///**************************************************</remarks>		<short>                                                                                QPoint stream functions                                                                            </short>
 		public static QDataStream Write(QDataStream arg1, QPoint arg2) {
 			return StaticQt().Write(arg1,arg2);
 		}
 		public static QDataStream Read(QDataStream arg1, QPoint arg2) {
 			return StaticQt().Read(arg1,arg2);
 		}
-		///<remarks>**************************************************
-		///  QPoint inline functions
-		///**************************************************</remarks>		<short>                                                                                QPoint inline functions                                                                            </short>
-		public static bool op_equals(QPoint p1, QPoint p2) {
-			return StaticQt().op_equals(p1,p2);
-		}
-		public static QPoint op_plus(QPoint p1, QPoint p2) {
-			return StaticQt().op_plus(p1,p2);
-		}
-		public static QPoint op_minus(QPoint p1, QPoint p2) {
-			return StaticQt().op_minus(p1,p2);
-		}
-		public static QPoint op_mult(QPoint p, double c) {
-			return StaticQt().op_mult(p,c);
-		}
-		public static QPoint op_mult(double c, QPoint p) {
-			return StaticQt().op_mult(c,p);
-		}
-		public static QPoint op_minus(QPoint p) {
-			return StaticQt().op_minus(p);
-		}
-		public static QPoint op_div(QPoint p, double c) {
-			return StaticQt().op_div(p,c);
-		}
-		///<remarks>**************************************************
-		///  QPointF stream functions
-		///**************************************************</remarks>		<short>                                                                                QPointF stream functions                                                                            </short>
 		public static QDataStream Write(QDataStream arg1, QPointF arg2) {
 			return StaticQt().Write(arg1,arg2);
 		}
 		public static QDataStream Read(QDataStream arg1, QPointF arg2) {
 			return StaticQt().Read(arg1,arg2);
-		}
-		///<remarks>**************************************************
-		///  QPointF inline functions
-		///**************************************************</remarks>		<short>                                                                                QPointF inline functions                                                                            </short>
-		public static bool op_equals(QPointF p1, QPointF p2) {
-			return StaticQt().op_equals(p1,p2);
-		}
-		public static QPointF op_plus(QPointF p1, QPointF p2) {
-			return StaticQt().op_plus(p1,p2);
-		}
-		public static QPointF op_minus(QPointF p1, QPointF p2) {
-			return StaticQt().op_minus(p1,p2);
-		}
-		public static QPointF op_mult(QPointF p, double c) {
-			return StaticQt().op_mult(p,c);
-		}
-		public static QPointF op_mult(double c, QPointF p) {
-			return StaticQt().op_mult(c,p);
-		}
-		public static QPointF op_minus(QPointF p) {
-			return StaticQt().op_minus(p);
-		}
-		public static QPointF op_div(QPointF p, double c) {
-			return StaticQt().op_div(p,c);
 		}
 		// QTextStream& operator>>(QTextStream& arg1,QTextStreamFunction arg2); >>>> NOT CONVERTED
 		// QTextStream& operator<<(QTextStream& arg1,QTextStreamFunction arg2); >>>> NOT CONVERTED

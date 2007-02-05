@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	/// See <see cref="IQGroupBoxSignals"></see> for signals emitted by QGroupBox
 	[SmokeClass("QGroupBox")]

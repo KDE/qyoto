@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QIcon")]
 	public class QIcon : MarshalByRefObject, IDisposable {

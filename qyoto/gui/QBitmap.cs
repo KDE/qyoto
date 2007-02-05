@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QBitmap")]
 	public class QBitmap : QPixmap, IDisposable {

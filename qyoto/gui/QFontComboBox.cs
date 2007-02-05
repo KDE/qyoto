@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	/// See <see cref="IQFontComboBoxSignals"></see> for signals emitted by QFontComboBox
 	[SmokeClass("QFontComboBox")]

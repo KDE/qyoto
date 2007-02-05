@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QPushButton")]
 	public class QPushButton : QAbstractButton, IDisposable {

@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QDomImplementation")]
 	public class QDomImplementation : MarshalByRefObject, IDisposable {

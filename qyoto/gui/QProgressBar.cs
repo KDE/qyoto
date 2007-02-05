@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	/// See <see cref="IQProgressBarSignals"></see> for signals emitted by QProgressBar
 	[SmokeClass("QProgressBar")]

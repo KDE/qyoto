@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	/// See <see cref="IQX11EmbedContainerSignals"></see> for signals emitted by QX11EmbedContainer
 	[SmokeClass("QX11EmbedContainer")]

@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QStatusTipEvent")]
 	public class QStatusTipEvent : QEvent, IDisposable {

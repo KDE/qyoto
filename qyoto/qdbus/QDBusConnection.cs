@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QDBusConnection")]
 	public class QDBusConnection : MarshalByRefObject, IDisposable {

@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	/// See <see cref="IQMenuBarSignals"></see> for signals emitted by QMenuBar
 	[SmokeClass("QMenuBar")]

@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QFile")]
 	public class QFile : QIODevice, IDisposable {

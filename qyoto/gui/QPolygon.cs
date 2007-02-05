@@ -11,6 +11,8 @@ namespace Qyoto {
 		protected QPolygon(Type dummy) {}
 		[SmokeClass("QPolygon")]
 		interface IQPolygonProxy {
+			[SmokeMethod("operator*", "(const QPolygon&, const QMatrix&)", "##")]
+			QPolygon op_mult(QPolygon a, QMatrix m);
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPolygon), this);
@@ -137,6 +139,9 @@ namespace Qyoto {
 		[SmokeMethod("~QPolygon", "()", "")]
 		private void DisposeQPolygon() {
 			ProxyQPolygon().DisposeQPolygon();
+		}
+		public static QPolygon operator*(QPolygon a, QMatrix m) {
+			return StaticQPolygon().op_mult(a,m);
 		}
 	}
 }

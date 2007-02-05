@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	/// See <see cref="IQMainWindowSignals"></see> for signals emitted by QMainWindow
 	[SmokeClass("QMainWindow")]

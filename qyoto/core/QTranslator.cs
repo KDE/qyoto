@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QTranslator")]
 	public class QTranslator : QObject, IDisposable {

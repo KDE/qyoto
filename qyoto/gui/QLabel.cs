@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	/// See <see cref="IQLabelSignals"></see> for signals emitted by QLabel
 	[SmokeClass("QLabel")]

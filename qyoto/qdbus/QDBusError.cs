@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QDBusError")]
 	public class QDBusError : MarshalByRefObject, IDisposable {
@@ -52,14 +51,6 @@ namespace Qyoto {
 			LastErrorType = InternalError,
 		}
 		// QDBusError* QDBusError(const DBusError* arg1); >>>> NOT CONVERTED
-		public QDBusError() : this((Type) null) {
-			CreateProxy();
-			NewQDBusError();
-		}
-		[SmokeMethod("QDBusError", "()", "")]
-		private void NewQDBusError() {
-			ProxyQDBusError().NewQDBusError();
-		}
 		public QDBusError(QDBusMessage msg) : this((Type) null) {
 			CreateProxy();
 			NewQDBusError(msg);

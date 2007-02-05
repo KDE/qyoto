@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QPrintDialog")]
 	public class QPrintDialog : QAbstractPrintDialog, IDisposable {

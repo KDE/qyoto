@@ -23,6 +23,8 @@ namespace Qyoto {
 			QRegion op_xor(QRegion lhs, QRegion r);
 			[SmokeMethod("operator==", "(const QRegion&) const", "#")]
 			bool op_equals(QRegion lhs, QRegion r);
+			[SmokeMethod("operator*", "(const QRegion&, const QMatrix&)", "##")]
+			QRegion op_mult(QRegion r, QMatrix m);
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QRegion), this);
@@ -233,6 +235,9 @@ namespace Qyoto {
 		[SmokeMethod("~QRegion", "()", "")]
 		private void DisposeQRegion() {
 			ProxyQRegion().DisposeQRegion();
+		}
+		public static QRegion operator*(QRegion r, QMatrix m) {
+			return StaticQRegion().op_mult(r,m);
 		}
 	}
 }

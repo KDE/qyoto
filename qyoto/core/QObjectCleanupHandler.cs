@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QObjectCleanupHandler")]
 	public class QObjectCleanupHandler : QObject, IDisposable {

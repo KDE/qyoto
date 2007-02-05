@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 	using System.Collections.Generic;
 
 	/// See <see cref="IQCalendarWidgetSignals"></see> for signals emitted by QCalendarWidget

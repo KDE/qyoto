@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QUndoView")]
 	public class QUndoView : QListView, IDisposable {

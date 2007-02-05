@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	/// See <see cref="IQFtpSignals"></see> for signals emitted by QFtp
 	[SmokeClass("QFtp")]

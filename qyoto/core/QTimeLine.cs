@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	/// See <see cref="IQTimeLineSignals"></see> for signals emitted by QTimeLine
 	[SmokeClass("QTimeLine")]

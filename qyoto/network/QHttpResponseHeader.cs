@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QHttpResponseHeader")]
 	public class QHttpResponseHeader : QHttpHeader, IDisposable {

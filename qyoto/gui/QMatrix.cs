@@ -14,6 +14,22 @@ namespace Qyoto {
 			bool op_equals(QMatrix lhs, QMatrix arg1);
 			[SmokeMethod("operator*", "(const QMatrix&) const", "#")]
 			QMatrix op_mult(QMatrix lhs, QMatrix o);
+			[SmokeMethod("operator*", "(const QPoint&, const QMatrix&)", "##")]
+			QPoint op_mult(QPoint p, QMatrix m);
+			[SmokeMethod("operator*", "(const QPointF&, const QMatrix&)", "##")]
+			QPointF op_mult(QPointF p, QMatrix m);
+			[SmokeMethod("operator*", "(const QLineF&, const QMatrix&)", "##")]
+			QLineF op_mult(QLineF l, QMatrix m);
+			[SmokeMethod("operator*", "(const QLine&, const QMatrix&)", "##")]
+			QLine op_mult(QLine l, QMatrix m);
+			[SmokeMethod("operator*", "(const QPolygon&, const QMatrix&)", "##")]
+			QPolygon op_mult(QPolygon a, QMatrix m);
+			[SmokeMethod("operator*", "(const QPolygonF&, const QMatrix&)", "##")]
+			QPolygonF op_mult(QPolygonF a, QMatrix m);
+			[SmokeMethod("operator*", "(const QRegion&, const QMatrix&)", "##")]
+			QRegion op_mult(QRegion r, QMatrix m);
+			[SmokeMethod("operator*", "(const QPainterPath&, const QMatrix&)", "##")]
+			QPainterPath op_mult(QPainterPath p, QMatrix m);
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMatrix), this);
@@ -197,6 +213,30 @@ namespace Qyoto {
 		[SmokeMethod("~QMatrix", "()", "")]
 		private void DisposeQMatrix() {
 			ProxyQMatrix().DisposeQMatrix();
+		}
+		public static QPoint operator*(QPoint p, QMatrix m) {
+			return StaticQMatrix().op_mult(p,m);
+		}
+		public static QPointF operator*(QPointF p, QMatrix m) {
+			return StaticQMatrix().op_mult(p,m);
+		}
+		public static QLineF operator*(QLineF l, QMatrix m) {
+			return StaticQMatrix().op_mult(l,m);
+		}
+		public static QLine operator*(QLine l, QMatrix m) {
+			return StaticQMatrix().op_mult(l,m);
+		}
+		public static QPolygon operator*(QPolygon a, QMatrix m) {
+			return StaticQMatrix().op_mult(a,m);
+		}
+		public static QPolygonF operator*(QPolygonF a, QMatrix m) {
+			return StaticQMatrix().op_mult(a,m);
+		}
+		public static QRegion operator*(QRegion r, QMatrix m) {
+			return StaticQMatrix().op_mult(r,m);
+		}
+		public static QPainterPath operator*(QPainterPath p, QMatrix m) {
+			return StaticQMatrix().op_mult(p,m);
 		}
 	}
 }

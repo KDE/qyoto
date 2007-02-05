@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QGraphicsSimpleTextItem")]
 	public class QGraphicsSimpleTextItem : QAbstractGraphicsShapeItem, IDisposable {

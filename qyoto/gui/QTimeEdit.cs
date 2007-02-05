@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QTimeEdit")]
 	public class QTimeEdit : QDateTimeEdit, IDisposable {

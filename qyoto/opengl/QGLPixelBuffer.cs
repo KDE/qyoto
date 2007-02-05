@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QGLPixelBuffer")]
 	public class QGLPixelBuffer : QPaintDevice, IDisposable {

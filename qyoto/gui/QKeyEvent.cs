@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QKeyEvent")]
 	public class QKeyEvent : QInputEvent, IDisposable {
@@ -17,6 +16,10 @@ namespace Qyoto {
 			QKeyEvent CreateExtendedKeyEvent(QEvent.TypeOf type, int key, int modifiers, uint nativeScanCode, uint nativeVirtualKey, uint nativeModifiers, string text);
 			[SmokeMethod("createExtendedKeyEvent", "(QEvent::Type, int, Qt::KeyboardModifiers, quint32, quint32, quint32)", "$$$$$$")]
 			QKeyEvent CreateExtendedKeyEvent(QEvent.TypeOf type, int key, int modifiers, uint nativeScanCode, uint nativeVirtualKey, uint nativeModifiers);
+			[SmokeMethod("operator==", "(QKeyEvent*, QKeySequence::StandardKey)", "#$")]
+			bool op_equals(QKeyEvent e, QKeySequence.StandardKey key);
+			[SmokeMethod("operator==", "(QKeySequence::StandardKey, QKeyEvent*)", "$#")]
+			bool op_equals(QKeySequence.StandardKey key, QKeyEvent e);
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QKeyEvent), this);
@@ -126,6 +129,18 @@ namespace Qyoto {
 		[SmokeMethod("~QKeyEvent", "()", "")]
 		private void DisposeQKeyEvent() {
 			ProxyQKeyEvent().DisposeQKeyEvent();
+		}
+		public static bool operator==(QKeyEvent e, QKeySequence.StandardKey key) {
+			return StaticQKeyEvent().op_equals(e,key);
+		}
+		public static bool operator!=(QKeyEvent e, QKeySequence.StandardKey key) {
+			return !StaticQKeyEvent().op_equals(e,key);
+		}
+		public static bool operator==(QKeySequence.StandardKey key, QKeyEvent e) {
+			return StaticQKeyEvent().op_equals(key,e);
+		}
+		public static bool operator!=(QKeySequence.StandardKey key, QKeyEvent e) {
+			return !StaticQKeyEvent().op_equals(key,e);
 		}
 	}
 }

@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	/// See <see cref="IQDataWidgetMapperSignals"></see> for signals emitted by QDataWidgetMapper
 	[SmokeClass("QDataWidgetMapper")]

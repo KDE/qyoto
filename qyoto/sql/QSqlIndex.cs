@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QSqlIndex")]
 	public class QSqlIndex : QSqlRecord, IDisposable {

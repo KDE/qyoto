@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QCharRef")]
 	public class QCharRef : MarshalByRefObject {

@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 	using System.Collections.Generic;
 
 	public interface IQGraphicsItem {

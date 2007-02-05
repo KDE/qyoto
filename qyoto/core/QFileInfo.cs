@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QFileInfo")]
 	public class QFileInfo : MarshalByRefObject, IDisposable {

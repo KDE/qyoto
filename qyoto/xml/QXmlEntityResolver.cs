@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	public interface IQXmlEntityResolver {
 			bool ResolveEntity(string publicId, string systemId, QXmlInputSource ret);

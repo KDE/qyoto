@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QWindowsStyle")]
 	public class QWindowsStyle : QCommonStyle, IDisposable {

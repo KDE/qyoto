@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	/// See <see cref="IQTcpServerSignals"></see> for signals emitted by QTcpServer
 	[SmokeClass("QTcpServer")]

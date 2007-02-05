@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QXmlSimpleReader")]
 	public class QXmlSimpleReader : QXmlReader, IDisposable {

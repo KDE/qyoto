@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QTextImageFormat")]
 	public class QTextImageFormat : QTextCharFormat, IDisposable {

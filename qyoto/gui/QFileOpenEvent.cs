@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QFileOpenEvent")]
 	public class QFileOpenEvent : QEvent, IDisposable {

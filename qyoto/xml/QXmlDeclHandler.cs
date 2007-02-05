@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	public interface IQXmlDeclHandler {
 			bool AttributeDecl(string eName, string aName, string type, string valueDefault, string value);

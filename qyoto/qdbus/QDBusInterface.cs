@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QDBusInterface")]
 	public class QDBusInterface : QDBusAbstractInterface, IDisposable {

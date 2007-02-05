@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	/// See <see cref="IQTextEditSignals"></see> for signals emitted by QTextEdit
 	[SmokeClass("QTextEdit")]
@@ -282,10 +281,6 @@ namespace Qyoto {
 		}
 		// QTextCursor cursorForPosition(const QPoint& arg1); >>>> NOT CONVERTED
 		// QRect cursorRect(const QTextCursor& arg1); >>>> NOT CONVERTED
-		[SmokeMethod("cursorRect", "() const", "")]
-		public QRect CursorRect() {
-			return ProxyQTextEdit().CursorRect();
-		}
 		[SmokeMethod("anchorAt", "(const QPoint&) const", "#")]
 		public string AnchorAt(QPoint pos) {
 			return ProxyQTextEdit().AnchorAt(pos);

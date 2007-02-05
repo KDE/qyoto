@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QHostAddress")]
 	public class QHostAddress : MarshalByRefObject, IDisposable {
@@ -15,6 +14,8 @@ namespace Qyoto {
 			bool op_equals(QHostAddress lhs, QHostAddress address);
 			[SmokeMethod("operator==", "(QHostAddress::SpecialAddress) const", "$")]
 			bool op_equals(QHostAddress lhs, QHostAddress.SpecialAddress address);
+			[SmokeMethod("operator==", "(QHostAddress::SpecialAddress, const QHostAddress&)", "$#")]
+			bool op_equals(QHostAddress.SpecialAddress address1, QHostAddress address2);
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QHostAddress), this);
@@ -150,6 +151,12 @@ namespace Qyoto {
 		[SmokeMethod("~QHostAddress", "()", "")]
 		private void DisposeQHostAddress() {
 			ProxyQHostAddress().DisposeQHostAddress();
+		}
+		public static bool operator==(QHostAddress.SpecialAddress address1, QHostAddress address2) {
+			return StaticQHostAddress().op_equals(address1,address2);
+		}
+		public static bool operator!=(QHostAddress.SpecialAddress address1, QHostAddress address2) {
+			return !StaticQHostAddress().op_equals(address1,address2);
 		}
 	}
 }

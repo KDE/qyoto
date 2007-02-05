@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QSizeGrip")]
 	public class QSizeGrip : QWidget, IDisposable {

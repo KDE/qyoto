@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 	using System.Collections.Generic;
 
 	/// See <see cref="IQStandardItemModelSignals"></see> for signals emitted by QStandardItemModel

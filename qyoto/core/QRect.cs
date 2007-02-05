@@ -14,6 +14,8 @@ namespace Qyoto {
 			QRect op_or(QRect lhs, QRect r);
 			[SmokeMethod("operator&", "(const QRect&) const", "#")]
 			QRect op_and(QRect lhs, QRect r);
+			[SmokeMethod("operator==", "(const QRect&, const QRect&)", "##")]
+			bool op_equals(QRect arg1, QRect arg2);
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QRect), this);
@@ -329,6 +331,19 @@ namespace Qyoto {
 		[SmokeMethod("~QRect", "()", "")]
 		private void DisposeQRect() {
 			ProxyQRect().DisposeQRect();
+		}
+		public static bool operator==(QRect arg1, QRect arg2) {
+			return StaticQRect().op_equals(arg1,arg2);
+		}
+		public static bool operator!=(QRect arg1, QRect arg2) {
+			return !StaticQRect().op_equals(arg1,arg2);
+		}
+		public override bool Equals(object o) {
+			if (!(o is QRect)) { return false; }
+			return this == (QRect) o;
+		}
+		public override int GetHashCode() {
+			return ProxyQRect().GetHashCode();
 		}
 	}
 }

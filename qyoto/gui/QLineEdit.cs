@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	/// See <see cref="IQLineEditSignals"></see> for signals emitted by QLineEdit
 	[SmokeClass("QLineEdit")]

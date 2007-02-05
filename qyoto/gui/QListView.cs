@@ -3,7 +3,6 @@ namespace Qyoto {
 
 	using System;
 	using System.Collections.Generic;
-	using System.Text;
 	using System.Collections.Generic;
 
 	/// See <see cref="IQListViewSignals"></see> for signals emitted by QListView

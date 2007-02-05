@@ -22,6 +22,8 @@ namespace Qyoto {
 			bool HasOpenGL();
 			[SmokeMethod("hasOpenGLOverlays", "()", "")]
 			bool HasOpenGLOverlays();
+			[SmokeMethod("operator==", "(const QGLFormat&, const QGLFormat&)", "##")]
+			bool op_equals(QGLFormat arg1, QGLFormat arg2);
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGLFormat), this);
@@ -281,6 +283,19 @@ namespace Qyoto {
 		[SmokeMethod("~QGLFormat", "()", "")]
 		private void DisposeQGLFormat() {
 			ProxyQGLFormat().DisposeQGLFormat();
+		}
+		public static bool operator==(QGLFormat arg1, QGLFormat arg2) {
+			return StaticQGLFormat().op_equals(arg1,arg2);
+		}
+		public static bool operator!=(QGLFormat arg1, QGLFormat arg2) {
+			return !StaticQGLFormat().op_equals(arg1,arg2);
+		}
+		public override bool Equals(object o) {
+			if (!(o is QGLFormat)) { return false; }
+			return this == (QGLFormat) o;
+		}
+		public override int GetHashCode() {
+			return ProxyQGLFormat().GetHashCode();
 		}
 	}
 }

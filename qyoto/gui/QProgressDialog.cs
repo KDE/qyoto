@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	/// See <see cref="IQProgressDialogSignals"></see> for signals emitted by QProgressDialog
 	[SmokeClass("QProgressDialog")]

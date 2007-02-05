@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QTextTable")]
 	public class QTextTable : QTextFrame, IDisposable {

@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QGraphicsItemAnimation")]
 	public class QGraphicsItemAnimation : QObject, IDisposable {

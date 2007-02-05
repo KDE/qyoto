@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QTemporaryFile")]
 	public class QTemporaryFile : QFile, IDisposable {

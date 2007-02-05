@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QDBusServer")]
 	public class QDBusServer : QObject, IDisposable {

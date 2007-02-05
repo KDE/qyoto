@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	/// See <see cref="IQStackedLayoutSignals"></see> for signals emitted by QStackedLayout
 	[SmokeClass("QStackedLayout")]

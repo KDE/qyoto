@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QIconEngine")]
 	public class QIconEngine : MarshalByRefObject {

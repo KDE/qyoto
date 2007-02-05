@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QSvgWidget")]
 	public class QSvgWidget : QWidget, IDisposable {

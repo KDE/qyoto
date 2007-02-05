@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QSqlQueryModel")]
 	public class QSqlQueryModel : QAbstractTableModel, IDisposable {

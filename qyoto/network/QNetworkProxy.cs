@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QNetworkProxy")]
 	public class QNetworkProxy : MarshalByRefObject, IDisposable {

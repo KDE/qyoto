@@ -14,6 +14,14 @@ namespace Qyoto {
 			QSize op_mult(QSize lhs, double c);
 			[SmokeMethod("operator/=", "(qreal)", "$")]
 			QSize op_div(QSize lhs, double c);
+			[SmokeMethod("operator==", "(const QSize&, const QSize&)", "##")]
+			bool op_equals(QSize s1, QSize s2);
+			[SmokeMethod("operator+", "(const QSize&, const QSize&)", "##")]
+			QSize op_plus(QSize s1, QSize s2);
+			[SmokeMethod("operator-", "(const QSize&, const QSize&)", "##")]
+			QSize op_minus(QSize s1, QSize s2);
+			[SmokeMethod("operator*", "(qreal, const QSize&)", "$#")]
+			QSize op_mult(double c, QSize s);
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSize), this);
@@ -117,6 +125,28 @@ namespace Qyoto {
 		[SmokeMethod("~QSize", "()", "")]
 		private void DisposeQSize() {
 			ProxyQSize().DisposeQSize();
+		}
+		public static bool operator==(QSize s1, QSize s2) {
+			return StaticQSize().op_equals(s1,s2);
+		}
+		public static bool operator!=(QSize s1, QSize s2) {
+			return !StaticQSize().op_equals(s1,s2);
+		}
+		public override bool Equals(object o) {
+			if (!(o is QSize)) { return false; }
+			return this == (QSize) o;
+		}
+		public override int GetHashCode() {
+			return ProxyQSize().GetHashCode();
+		}
+		public static QSize operator+(QSize s1, QSize s2) {
+			return StaticQSize().op_plus(s1,s2);
+		}
+		public static QSize operator-(QSize s1, QSize s2) {
+			return StaticQSize().op_minus(s1,s2);
+		}
+		public static QSize operator*(double c, QSize s) {
+			return StaticQSize().op_mult(c,s);
 		}
 	}
 }

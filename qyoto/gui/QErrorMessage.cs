@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QErrorMessage")]
 	public class QErrorMessage : QDialog, IDisposable {

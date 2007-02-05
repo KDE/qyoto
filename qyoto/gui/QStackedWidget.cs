@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	/// See <see cref="IQStackedWidgetSignals"></see> for signals emitted by QStackedWidget
 	[SmokeClass("QStackedWidget")]

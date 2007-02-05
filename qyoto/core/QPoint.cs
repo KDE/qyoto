@@ -10,10 +10,22 @@ namespace Qyoto {
 		protected QPoint(Type dummy) {}
 		[SmokeClass("QPoint")]
 		interface IQPointProxy {
-			[SmokeMethod("operator*=", "(qreal)", "$")]
-			QPoint op_mult(QPoint lhs, double c);
 			[SmokeMethod("operator/=", "(qreal)", "$")]
 			QPoint op_div(QPoint lhs, double c);
+			[SmokeMethod("operator*", "(const QPoint&, const QMatrix&)", "##")]
+			QPoint op_mult(QPoint p, QMatrix m);
+			[SmokeMethod("operator==", "(const QPoint&, const QPoint&)", "##")]
+			bool op_equals(QPoint p1, QPoint p2);
+			[SmokeMethod("operator+", "(const QPoint&, const QPoint&)", "##")]
+			QPoint op_plus(QPoint p1, QPoint p2);
+			[SmokeMethod("operator-", "(const QPoint&, const QPoint&)", "##")]
+			QPoint op_minus(QPoint p1, QPoint p2);
+			[SmokeMethod("operator*", "(const QPoint&, qreal)", "#$")]
+			QPoint op_mult(QPoint p, double c);
+			[SmokeMethod("operator*", "(qreal, const QPoint&)", "$#")]
+			QPoint op_mult(double c, QPoint p);
+			[SmokeMethod("operator-", "(const QPoint&)", "#")]
+			QPoint op_minus(QPoint p);
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPoint), this);
@@ -78,9 +90,7 @@ namespace Qyoto {
 		public int Ry() {
 			return ProxyQPoint().Ry();
 		}
-		public static QPoint operator*(QPoint lhs, double c) {
-			return StaticQPoint().op_mult(lhs,c);
-		}
+		// QPoint& operator*=(qreal arg1); >>>> NOT CONVERTED
 		public static QPoint operator/(QPoint lhs, double c) {
 			return StaticQPoint().op_div(lhs,c);
 		}
@@ -93,6 +103,37 @@ namespace Qyoto {
 		[SmokeMethod("~QPoint", "()", "")]
 		private void DisposeQPoint() {
 			ProxyQPoint().DisposeQPoint();
+		}
+		public static QPoint operator*(QPoint p, QMatrix m) {
+			return StaticQPoint().op_mult(p,m);
+		}
+		public static bool operator==(QPoint p1, QPoint p2) {
+			return StaticQPoint().op_equals(p1,p2);
+		}
+		public static bool operator!=(QPoint p1, QPoint p2) {
+			return !StaticQPoint().op_equals(p1,p2);
+		}
+		public override bool Equals(object o) {
+			if (!(o is QPoint)) { return false; }
+			return this == (QPoint) o;
+		}
+		public override int GetHashCode() {
+			return ProxyQPoint().GetHashCode();
+		}
+		public static QPoint operator+(QPoint p1, QPoint p2) {
+			return StaticQPoint().op_plus(p1,p2);
+		}
+		public static QPoint operator-(QPoint p1, QPoint p2) {
+			return StaticQPoint().op_minus(p1,p2);
+		}
+		public static QPoint operator*(QPoint p, double c) {
+			return StaticQPoint().op_mult(p,c);
+		}
+		public static QPoint operator*(double c, QPoint p) {
+			return StaticQPoint().op_mult(c,p);
+		}
+		public static QPoint operator-(QPoint p) {
+			return StaticQPoint().op_minus(p);
 		}
 	}
 }

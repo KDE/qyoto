@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QSplitterHandle")]
 	public class QSplitterHandle : QWidget, IDisposable {

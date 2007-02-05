@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 	using System.Collections.Generic;
 
 	/// See <see cref="IQGraphicsTextItemSignals"></see> for signals emitted by QGraphicsTextItem

@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QStylePainter")]
 	public class QStylePainter : QPainter, IDisposable {

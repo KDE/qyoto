@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	/// See <see cref="IQSvgRendererSignals"></see> for signals emitted by QSvgRenderer
 	[SmokeClass("QSvgRenderer")]

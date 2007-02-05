@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QInputMethodEvent")]
 	public class QInputMethodEvent : QEvent, IDisposable {

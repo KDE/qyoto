@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QSqlDriverFactoryInterface")]
 	public class QSqlDriverFactoryInterface : QFactoryInterface {

@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	/// See <see cref="IQHttpSignals"></see> for signals emitted by QHttp
 	[SmokeClass("QHttp")]

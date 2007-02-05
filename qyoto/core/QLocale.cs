@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QLocale")]
 	public class QLocale : MarshalByRefObject, IDisposable {

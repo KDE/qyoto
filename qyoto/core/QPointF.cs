@@ -14,6 +14,18 @@ namespace Qyoto {
 			QPointF op_mult(QPointF lhs, double c);
 			[SmokeMethod("operator/=", "(qreal)", "$")]
 			QPointF op_div(QPointF lhs, double c);
+			[SmokeMethod("operator*", "(const QPointF&, const QMatrix&)", "##")]
+			QPointF op_mult(QPointF p, QMatrix m);
+			[SmokeMethod("operator==", "(const QPointF&, const QPointF&)", "##")]
+			bool op_equals(QPointF p1, QPointF p2);
+			[SmokeMethod("operator+", "(const QPointF&, const QPointF&)", "##")]
+			QPointF op_plus(QPointF p1, QPointF p2);
+			[SmokeMethod("operator-", "(const QPointF&, const QPointF&)", "##")]
+			QPointF op_minus(QPointF p1, QPointF p2);
+			[SmokeMethod("operator*", "(qreal, const QPointF&)", "$#")]
+			QPointF op_mult(double c, QPointF p);
+			[SmokeMethod("operator-", "(const QPointF&)", "#")]
+			QPointF op_minus(QPointF p);
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPointF), this);
@@ -95,6 +107,34 @@ namespace Qyoto {
 		[SmokeMethod("~QPointF", "()", "")]
 		private void DisposeQPointF() {
 			ProxyQPointF().DisposeQPointF();
+		}
+		public static QPointF operator*(QPointF p, QMatrix m) {
+			return StaticQPointF().op_mult(p,m);
+		}
+		public static bool operator==(QPointF p1, QPointF p2) {
+			return StaticQPointF().op_equals(p1,p2);
+		}
+		public static bool operator!=(QPointF p1, QPointF p2) {
+			return !StaticQPointF().op_equals(p1,p2);
+		}
+		public override bool Equals(object o) {
+			if (!(o is QPointF)) { return false; }
+			return this == (QPointF) o;
+		}
+		public override int GetHashCode() {
+			return ProxyQPointF().GetHashCode();
+		}
+		public static QPointF operator+(QPointF p1, QPointF p2) {
+			return StaticQPointF().op_plus(p1,p2);
+		}
+		public static QPointF operator-(QPointF p1, QPointF p2) {
+			return StaticQPointF().op_minus(p1,p2);
+		}
+		public static QPointF operator*(double c, QPointF p) {
+			return StaticQPointF().op_mult(c,p);
+		}
+		public static QPointF operator-(QPointF p) {
+			return StaticQPointF().op_minus(p);
 		}
 	}
 }

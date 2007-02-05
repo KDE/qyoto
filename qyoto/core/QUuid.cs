@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QUuid")]
 	public class QUuid : MarshalByRefObject, IDisposable {

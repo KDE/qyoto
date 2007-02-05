@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	/// See <see cref="IQAbstractEventDispatcherSignals"></see> for signals emitted by QAbstractEventDispatcher
 	[SmokeClass("QAbstractEventDispatcher")]
@@ -14,8 +13,6 @@ namespace Qyoto {
 			string Tr(string s, string c);
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
-			[SmokeMethod("instance", "()", "")]
-			QAbstractEventDispatcher Instance();
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAbstractEventDispatcher), this);
@@ -111,9 +108,6 @@ namespace Qyoto {
 			return StaticQAbstractEventDispatcher().Tr(s);
 		}
 		// QAbstractEventDispatcher* instance(QThread* arg1); >>>> NOT CONVERTED
-		public static QAbstractEventDispatcher Instance() {
-			return StaticQAbstractEventDispatcher().Instance();
-		}
 		~QAbstractEventDispatcher() {
 			DisposeQAbstractEventDispatcher();
 		}

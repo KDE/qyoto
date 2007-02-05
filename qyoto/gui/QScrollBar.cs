@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QScrollBar")]
 	public class QScrollBar : QAbstractSlider, IDisposable {

@@ -10,6 +10,12 @@ namespace Qyoto {
 		protected QBool(Type dummy) {}
 		[SmokeClass("QBool")]
 		interface IQBoolProxy {
+			[SmokeMethod("operator==", "(QBool, bool)", "#$")]
+			bool op_equals(QBool b1, bool b2);
+			[SmokeMethod("operator==", "(bool, QBool)", "$#")]
+			bool op_equals(bool b1, QBool b2);
+			[SmokeMethod("operator==", "(QBool, QBool)", "##")]
+			bool op_equals(QBool b1, QBool b2);
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QBool), this);
@@ -44,6 +50,24 @@ namespace Qyoto {
 		[SmokeMethod("~QBool", "()", "")]
 		private void DisposeQBool() {
 			ProxyQBool().DisposeQBool();
+		}
+		public static bool operator==(QBool b1, bool b2) {
+			return StaticQBool().op_equals(b1,b2);
+		}
+		public static bool operator!=(QBool b1, bool b2) {
+			return !StaticQBool().op_equals(b1,b2);
+		}
+		public static bool operator==(bool b1, QBool b2) {
+			return StaticQBool().op_equals(b1,b2);
+		}
+		public static bool operator!=(bool b1, QBool b2) {
+			return !StaticQBool().op_equals(b1,b2);
+		}
+		public static bool operator==(QBool b1, QBool b2) {
+			return StaticQBool().op_equals(b1,b2);
+		}
+		public static bool operator!=(QBool b1, QBool b2) {
+			return !StaticQBool().op_equals(b1,b2);
 		}
 	}
 }

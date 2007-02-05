@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	/// See <see cref="IQHeaderViewSignals"></see> for signals emitted by QHeaderView
 	[SmokeClass("QHeaderView")]

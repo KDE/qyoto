@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QSqlRelation")]
 	public class QSqlRelation : MarshalByRefObject, IDisposable {

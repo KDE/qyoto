@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QDomEntity")]
 	public class QDomEntity : QDomNode, IDisposable {

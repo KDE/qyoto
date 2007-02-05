@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	/// See <see cref="IQSystemTrayIconSignals"></see> for signals emitted by QSystemTrayIcon
 	[SmokeClass("QSystemTrayIcon")]

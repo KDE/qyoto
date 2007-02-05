@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	/// See <see cref="IQAbstractTextDocumentLayoutSignals"></see> for signals emitted by QAbstractTextDocumentLayout
 	[SmokeClass("QAbstractTextDocumentLayout")]

@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QFrame")]
 	public class QFrame : QWidget, IDisposable {

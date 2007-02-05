@@ -12,6 +12,8 @@ namespace Qyoto {
 		interface IQLineProxy {
 			[SmokeMethod("operator==", "(const QLine&) const", "#")]
 			bool op_equals(QLine lhs, QLine d);
+			[SmokeMethod("operator*", "(const QLine&, const QMatrix&)", "##")]
+			QLine op_mult(QLine l, QMatrix m);
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QLine), this);
@@ -118,6 +120,9 @@ namespace Qyoto {
 		[SmokeMethod("~QLine", "()", "")]
 		private void DisposeQLine() {
 			ProxyQLine().DisposeQLine();
+		}
+		public static QLine operator*(QLine l, QMatrix m) {
+			return StaticQLine().op_mult(l,m);
 		}
 	}
 }

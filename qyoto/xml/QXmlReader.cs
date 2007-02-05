@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QXmlReader")]
 	public class QXmlReader : MarshalByRefObject {

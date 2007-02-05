@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	/// See <see cref="IQDialogSignals"></see> for signals emitted by QDialog
 	[SmokeClass("QDialog")]

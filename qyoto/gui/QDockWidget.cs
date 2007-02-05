@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	/// See <see cref="IQDockWidgetSignals"></see> for signals emitted by QDockWidget
 	[SmokeClass("QDockWidget")]

@@ -1,3 +1,12 @@
+2007-01-06  Richard Dale  <rdale@foton.es>
+
+	* Moved operator methods out of Qt.cs, and made them operator
+	  methods in the classes of their arguments. In Qt.cs they
+	  had to be translated to use names like op_mult() or op_add()
+	  because C# only allows operator methods to be defined in the
+	  class of one of their arguments. Now they are proper operator
+	  methods which looks better.
+
 2007-01-05  Richard Dale  <rdale@foton.es>
 
 	* Updated the project TODO list

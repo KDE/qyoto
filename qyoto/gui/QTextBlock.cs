@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QTextBlock")]
 	public class QTextBlock : MarshalByRefObject, IDisposable {

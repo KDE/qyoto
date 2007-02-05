@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	/// See <see cref="IQShortcutSignals"></see> for signals emitted by QShortcut
 	[SmokeClass("QShortcut")]

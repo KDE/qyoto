@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	/// See <see cref="IQAbstractButtonSignals"></see> for signals emitted by QAbstractButton
 	[SmokeClass("QAbstractButton")]

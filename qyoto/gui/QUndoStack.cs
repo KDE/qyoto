@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	/// See <see cref="IQUndoStackSignals"></see> for signals emitted by QUndoStack
 	[SmokeClass("QUndoStack")]

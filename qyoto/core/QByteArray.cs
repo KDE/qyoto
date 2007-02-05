@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 	using System.Collections.Generic;
 
 	[SmokeClass("QByteArray")]
@@ -48,6 +47,36 @@ namespace Qyoto {
 			QByteArray FromRawData(string arg1, int size);
 			[SmokeMethod("fromBase64", "(const QByteArray&)", "#")]
 			QByteArray FromBase64(QByteArray base64);
+			[SmokeMethod("operator==", "(const QByteArray&, const QByteArray&)", "##")]
+			bool op_equals(QByteArray a1, QByteArray a2);
+			[SmokeMethod("operator==", "(const char*, const QByteArray&)", "$#")]
+			bool op_equals(string a1, QByteArray a2);
+			[SmokeMethod("operator<", "(const QByteArray&, const QByteArray&)", "##")]
+			bool op_lt(QByteArray a1, QByteArray a2);
+			[SmokeMethod("operator<", "(const char*, const QByteArray&)", "$#")]
+			bool op_lt(string a1, QByteArray a2);
+			[SmokeMethod("operator<=", "(const QByteArray&, const QByteArray&)", "##")]
+			bool op_lte(QByteArray a1, QByteArray a2);
+			[SmokeMethod("operator<=", "(const char*, const QByteArray&)", "$#")]
+			bool op_lte(string a1, QByteArray a2);
+			[SmokeMethod("operator>", "(const QByteArray&, const QByteArray&)", "##")]
+			bool op_gt(QByteArray a1, QByteArray a2);
+			[SmokeMethod("operator>", "(const char*, const QByteArray&)", "$#")]
+			bool op_gt(string a1, QByteArray a2);
+			[SmokeMethod("operator>=", "(const QByteArray&, const QByteArray&)", "##")]
+			bool op_gte(QByteArray a1, QByteArray a2);
+			[SmokeMethod("operator>=", "(const char*, const QByteArray&)", "$#")]
+			bool op_gte(string a1, QByteArray a2);
+			[SmokeMethod("operator+", "(const QByteArray&, const QByteArray&)", "##")]
+			QByteArray op_plus(QByteArray a1, QByteArray a2);
+			[SmokeMethod("operator+", "(const QByteArray&, const char*)", "#$")]
+			QByteArray op_plus(QByteArray a1, string a2);
+			[SmokeMethod("operator+", "(const QByteArray&, char)", "#$")]
+			QByteArray op_plus(QByteArray a1, char a2);
+			[SmokeMethod("operator+", "(const char*, const QByteArray&)", "$#")]
+			QByteArray op_plus(string a1, QByteArray a2);
+			[SmokeMethod("operator+", "(char, const QByteArray&)", "$#")]
+			QByteArray op_plus(char a1, QByteArray a2);
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QByteArray), this);
@@ -692,6 +721,64 @@ namespace Qyoto {
 		[SmokeMethod("~QByteArray", "()", "")]
 		private void DisposeQByteArray() {
 			ProxyQByteArray().DisposeQByteArray();
+		}
+		public static bool operator==(QByteArray a1, QByteArray a2) {
+			return StaticQByteArray().op_equals(a1,a2);
+		}
+		public static bool operator!=(QByteArray a1, QByteArray a2) {
+			return !StaticQByteArray().op_equals(a1,a2);
+		}
+		public override bool Equals(object o) {
+			if (!(o is QByteArray)) { return false; }
+			return this == (QByteArray) o;
+		}
+		public override int GetHashCode() {
+			return ProxyQByteArray().GetHashCode();
+		}
+		public static bool operator==(string a1, QByteArray a2) {
+			return StaticQByteArray().op_equals(a1,a2);
+		}
+		public static bool operator!=(string a1, QByteArray a2) {
+			return !StaticQByteArray().op_equals(a1,a2);
+		}
+		public static bool operator<(QByteArray a1, QByteArray a2) {
+			return StaticQByteArray().op_lt(a1,a2);
+		}
+		public static bool operator<(string a1, QByteArray a2) {
+			return StaticQByteArray().op_lt(a1,a2);
+		}
+		public static bool operator<=(QByteArray a1, QByteArray a2) {
+			return StaticQByteArray().op_lte(a1,a2);
+		}
+		public static bool operator<=(string a1, QByteArray a2) {
+			return StaticQByteArray().op_lte(a1,a2);
+		}
+		public static bool operator>(QByteArray a1, QByteArray a2) {
+			return StaticQByteArray().op_gt(a1,a2);
+		}
+		public static bool operator>(string a1, QByteArray a2) {
+			return StaticQByteArray().op_gt(a1,a2);
+		}
+		public static bool operator>=(QByteArray a1, QByteArray a2) {
+			return StaticQByteArray().op_gte(a1,a2);
+		}
+		public static bool operator>=(string a1, QByteArray a2) {
+			return StaticQByteArray().op_gte(a1,a2);
+		}
+		public static QByteArray operator+(QByteArray a1, QByteArray a2) {
+			return StaticQByteArray().op_plus(a1,a2);
+		}
+		public static QByteArray operator+(QByteArray a1, string a2) {
+			return StaticQByteArray().op_plus(a1,a2);
+		}
+		public static QByteArray operator+(QByteArray a1, char a2) {
+			return StaticQByteArray().op_plus(a1,a2);
+		}
+		public static QByteArray operator+(string a1, QByteArray a2) {
+			return StaticQByteArray().op_plus(a1,a2);
+		}
+		public static QByteArray operator+(char a1, QByteArray a2) {
+			return StaticQByteArray().op_plus(a1,a2);
 		}
 	}
 }

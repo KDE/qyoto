@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QTextList")]
 	public class QTextList : QTextBlockGroup, IDisposable {

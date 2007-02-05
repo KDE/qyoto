@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QFontMetrics")]
 	public class QFontMetrics : MarshalByRefObject, IDisposable {

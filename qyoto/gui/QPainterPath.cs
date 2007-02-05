@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 	using System.Collections.Generic;
 
 	[SmokeClass("QPainterPath")]
@@ -14,6 +13,8 @@ namespace Qyoto {
 		interface IQPainterPathProxy {
 			[SmokeMethod("operator==", "(const QPainterPath&) const", "#")]
 			bool op_equals(QPainterPath lhs, QPainterPath other);
+			[SmokeMethod("operator*", "(const QPainterPath&, const QMatrix&)", "##")]
+			QPainterPath op_mult(QPainterPath p, QMatrix m);
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPainterPath), this);
@@ -247,6 +248,9 @@ namespace Qyoto {
 		[SmokeMethod("~QPainterPath", "()", "")]
 		private void DisposeQPainterPath() {
 			ProxyQPainterPath().DisposeQPainterPath();
+		}
+		public static QPainterPath operator*(QPainterPath p, QMatrix m) {
+			return StaticQPainterPath().op_mult(p,m);
 		}
 	}
 }

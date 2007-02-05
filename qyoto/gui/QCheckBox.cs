@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	/// See <see cref="IQCheckBoxSignals"></see> for signals emitted by QCheckBox
 	[SmokeClass("QCheckBox")]

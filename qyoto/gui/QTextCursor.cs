@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QTextCursor")]
 	public class QTextCursor : MarshalByRefObject, IDisposable {

@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QPixmapCache")]
 	public class QPixmapCache : MarshalByRefObject, IDisposable {

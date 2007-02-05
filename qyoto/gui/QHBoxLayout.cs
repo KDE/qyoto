@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QHBoxLayout")]
 	public class QHBoxLayout : QBoxLayout, IDisposable {

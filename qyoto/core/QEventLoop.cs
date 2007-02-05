@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QEventLoop")]
 	public class QEventLoop : QObject, IDisposable {

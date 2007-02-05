@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QRadioButton")]
 	public class QRadioButton : QAbstractButton, IDisposable {

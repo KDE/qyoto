@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	/// See <see cref="IQSplashScreenSignals"></see> for signals emitted by QSplashScreen
 	[SmokeClass("QSplashScreen")]

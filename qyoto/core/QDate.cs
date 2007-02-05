@@ -2,7 +2,6 @@
 namespace Qyoto {
 
 	using System;
-	using System.Text;
 
 	[SmokeClass("QDate")]
 	public class QDate : MarshalByRefObject, IDisposable {
