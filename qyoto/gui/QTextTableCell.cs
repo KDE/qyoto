@@ -72,8 +72,14 @@ namespace Qyoto {
 		public bool IsValid() {
 			return ProxyQTextTableCell().IsValid();
 		}
-		// QTextCursor firstCursorPosition(); >>>> NOT CONVERTED
-		// QTextCursor lastCursorPosition(); >>>> NOT CONVERTED
+		[SmokeMethod("firstCursorPosition", "() const", "")]
+		public QTextCursor FirstCursorPosition() {
+			return ProxyQTextTableCell().FirstCursorPosition();
+		}
+		[SmokeMethod("lastCursorPosition", "() const", "")]
+		public QTextCursor LastCursorPosition() {
+			return ProxyQTextTableCell().LastCursorPosition();
+		}
 		[SmokeMethod("firstPosition", "() const", "")]
 		public int FirstPosition() {
 			return ProxyQTextTableCell().FirstPosition();

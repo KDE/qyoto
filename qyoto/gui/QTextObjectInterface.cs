@@ -26,8 +26,14 @@ namespace Qyoto {
 		private static IQTextObjectInterfaceProxy StaticQTextObjectInterface() {
 			return (IQTextObjectInterfaceProxy) _staticInterceptor;
 		}
-		// QSizeF intrinsicSize(QTextDocument* arg1,int arg2,const QTextFormat& arg3); >>>> NOT CONVERTED
-		// void drawObject(QPainter* arg1,const QRectF& arg2,QTextDocument* arg3,int arg4,const QTextFormat& arg5); >>>> NOT CONVERTED
+		[SmokeMethod("intrinsicSize", "(QTextDocument*, int, const QTextFormat&)", "#$#")]
+		public virtual QSizeF IntrinsicSize(QTextDocument doc, int posInDocument, QTextFormat format) {
+			return ProxyQTextObjectInterface().IntrinsicSize(doc,posInDocument,format);
+		}
+		[SmokeMethod("drawObject", "(QPainter*, const QRectF&, QTextDocument*, int, const QTextFormat&)", "###$#")]
+		public virtual void DrawObject(QPainter painter, QRectF rect, QTextDocument doc, int posInDocument, QTextFormat format) {
+			ProxyQTextObjectInterface().DrawObject(painter,rect,doc,posInDocument,format);
+		}
 		public QTextObjectInterface() : this((Type) null) {
 			CreateProxy();
 			NewQTextObjectInterface();

@@ -2,6 +2,7 @@
 namespace Qyoto {
 
 	using System;
+	using System.Collections.Generic;
 
 	/// See <see cref="IQTextDocumentSignals"></see> for signals emitted by QTextDocument
 	[SmokeClass("QTextDocument")]
@@ -128,12 +129,46 @@ namespace Qyoto {
 			}
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
-		// QTextDocument* QTextDocument(QObject* arg1); >>>> NOT CONVERTED
-		// QTextDocument* QTextDocument(); >>>> NOT CONVERTED
-		// QTextDocument* QTextDocument(const QString& arg1,QObject* arg2); >>>> NOT CONVERTED
-		// QTextDocument* QTextDocument(const QString& arg1); >>>> NOT CONVERTED
-		// QTextDocument* clone(QObject* arg1); >>>> NOT CONVERTED
-		// QTextDocument* clone(); >>>> NOT CONVERTED
+		public QTextDocument(QObject parent) : this((Type) null) {
+			CreateProxy();
+			NewQTextDocument(parent);
+		}
+		[SmokeMethod("QTextDocument", "(QObject*)", "#")]
+		private void NewQTextDocument(QObject parent) {
+			ProxyQTextDocument().NewQTextDocument(parent);
+		}
+		public QTextDocument() : this((Type) null) {
+			CreateProxy();
+			NewQTextDocument();
+		}
+		[SmokeMethod("QTextDocument", "()", "")]
+		private void NewQTextDocument() {
+			ProxyQTextDocument().NewQTextDocument();
+		}
+		public QTextDocument(string text, QObject parent) : this((Type) null) {
+			CreateProxy();
+			NewQTextDocument(text,parent);
+		}
+		[SmokeMethod("QTextDocument", "(const QString&, QObject*)", "$#")]
+		private void NewQTextDocument(string text, QObject parent) {
+			ProxyQTextDocument().NewQTextDocument(text,parent);
+		}
+		public QTextDocument(string text) : this((Type) null) {
+			CreateProxy();
+			NewQTextDocument(text);
+		}
+		[SmokeMethod("QTextDocument", "(const QString&)", "$")]
+		private void NewQTextDocument(string text) {
+			ProxyQTextDocument().NewQTextDocument(text);
+		}
+		[SmokeMethod("clone", "(QObject*) const", "#")]
+		public QTextDocument Clone(QObject parent) {
+			return ProxyQTextDocument().Clone(parent);
+		}
+		[SmokeMethod("clone", "() const", "")]
+		public QTextDocument Clone() {
+			return ProxyQTextDocument().Clone();
+		}
 		[SmokeMethod("isEmpty", "() const", "")]
 		public bool IsEmpty() {
 			return ProxyQTextDocument().IsEmpty();
@@ -162,8 +197,14 @@ namespace Qyoto {
 		public QAbstractTextDocumentLayout DocumentLayout() {
 			return ProxyQTextDocument().DocumentLayout();
 		}
-		// void setMetaInformation(QTextDocument::MetaInformation arg1,const QString& arg2); >>>> NOT CONVERTED
-		// QString metaInformation(QTextDocument::MetaInformation arg1); >>>> NOT CONVERTED
+		[SmokeMethod("setMetaInformation", "(QTextDocument::MetaInformation, const QString&)", "$$")]
+		public void SetMetaInformation(QTextDocument.MetaInformation info, string arg2) {
+			ProxyQTextDocument().SetMetaInformation(info,arg2);
+		}
+		[SmokeMethod("metaInformation", "(QTextDocument::MetaInformation) const", "$")]
+		public string metaInformation(QTextDocument.MetaInformation info) {
+			return ProxyQTextDocument().metaInformation(info);
+		}
 		[SmokeMethod("toHtml", "(const QByteArray&) const", "#")]
 		public string ToHtml(QByteArray encoding) {
 			return ProxyQTextDocument().ToHtml(encoding);
@@ -184,16 +225,46 @@ namespace Qyoto {
 		public void SetPlainText(string text) {
 			ProxyQTextDocument().SetPlainText(text);
 		}
-		// QTextCursor find(const QString& arg1,int arg2,FindFlags arg3); >>>> NOT CONVERTED
-		// QTextCursor find(const QString& arg1,int arg2); >>>> NOT CONVERTED
-		// QTextCursor find(const QString& arg1); >>>> NOT CONVERTED
-		// QTextCursor find(const QString& arg1,const QTextCursor& arg2,FindFlags arg3); >>>> NOT CONVERTED
-		// QTextCursor find(const QString& arg1,const QTextCursor& arg2); >>>> NOT CONVERTED
-		// QTextCursor find(const QRegExp& arg1,int arg2,FindFlags arg3); >>>> NOT CONVERTED
-		// QTextCursor find(const QRegExp& arg1,int arg2); >>>> NOT CONVERTED
-		// QTextCursor find(const QRegExp& arg1); >>>> NOT CONVERTED
-		// QTextCursor find(const QRegExp& arg1,const QTextCursor& arg2,FindFlags arg3); >>>> NOT CONVERTED
-		// QTextCursor find(const QRegExp& arg1,const QTextCursor& arg2); >>>> NOT CONVERTED
+		[SmokeMethod("find", "(const QString&, int, FindFlags) const", "$$$")]
+		public QTextCursor Find(string subString, int from, int options) {
+			return ProxyQTextDocument().Find(subString,from,options);
+		}
+		[SmokeMethod("find", "(const QString&, int) const", "$$")]
+		public QTextCursor Find(string subString, int from) {
+			return ProxyQTextDocument().Find(subString,from);
+		}
+		[SmokeMethod("find", "(const QString&) const", "$")]
+		public QTextCursor Find(string subString) {
+			return ProxyQTextDocument().Find(subString);
+		}
+		[SmokeMethod("find", "(const QString&, const QTextCursor&, FindFlags) const", "$#$")]
+		public QTextCursor Find(string subString, QTextCursor from, int options) {
+			return ProxyQTextDocument().Find(subString,from,options);
+		}
+		[SmokeMethod("find", "(const QString&, const QTextCursor&) const", "$#")]
+		public QTextCursor Find(string subString, QTextCursor from) {
+			return ProxyQTextDocument().Find(subString,from);
+		}
+		[SmokeMethod("find", "(const QRegExp&, int, FindFlags) const", "#$$")]
+		public QTextCursor Find(QRegExp expr, int from, int options) {
+			return ProxyQTextDocument().Find(expr,from,options);
+		}
+		[SmokeMethod("find", "(const QRegExp&, int) const", "#$")]
+		public QTextCursor Find(QRegExp expr, int from) {
+			return ProxyQTextDocument().Find(expr,from);
+		}
+		[SmokeMethod("find", "(const QRegExp&) const", "#")]
+		public QTextCursor Find(QRegExp expr) {
+			return ProxyQTextDocument().Find(expr);
+		}
+		[SmokeMethod("find", "(const QRegExp&, const QTextCursor&, FindFlags) const", "##$")]
+		public QTextCursor Find(QRegExp expr, QTextCursor from, int options) {
+			return ProxyQTextDocument().Find(expr,from,options);
+		}
+		[SmokeMethod("find", "(const QRegExp&, const QTextCursor&) const", "##")]
+		public QTextCursor Find(QRegExp expr, QTextCursor from) {
+			return ProxyQTextDocument().Find(expr,from);
+		}
 		[SmokeMethod("frameAt", "(int) const", "$")]
 		public QTextFrame FrameAt(int pos) {
 			return ProxyQTextDocument().FrameAt(pos);
@@ -206,7 +277,10 @@ namespace Qyoto {
 		public QTextObject Object(int objectIndex) {
 			return ProxyQTextDocument().Object(objectIndex);
 		}
-		// QTextObject* objectForFormat(const QTextFormat& arg1); >>>> NOT CONVERTED
+		[SmokeMethod("objectForFormat", "(const QTextFormat&) const", "#")]
+		public QTextObject ObjectForFormat(QTextFormat arg1) {
+			return ProxyQTextDocument().ObjectForFormat(arg1);
+		}
 		[SmokeMethod("findBlock", "(int) const", "$")]
 		public QTextBlock FindBlock(int pos) {
 			return ProxyQTextDocument().FindBlock(pos);
@@ -239,7 +313,10 @@ namespace Qyoto {
 		public void AddResource(int type, IQUrl name, QVariant resource) {
 			ProxyQTextDocument().AddResource(type,name,resource);
 		}
-		// QVector<QTextFormat> allFormats(); >>>> NOT CONVERTED
+		[SmokeMethod("allFormats", "() const", "")]
+		public List<QTextFormat> AllFormats() {
+			return ProxyQTextDocument().AllFormats();
+		}
 		[SmokeMethod("markContentsDirty", "(int, int)", "$$")]
 		public void MarkContentsDirty(int from, int length) {
 			ProxyQTextDocument().MarkContentsDirty(from,length);
@@ -260,9 +337,25 @@ namespace Qyoto {
 		public void AdjustSize() {
 			ProxyQTextDocument().AdjustSize();
 		}
-		// void undo(QTextCursor* arg1); >>>> NOT CONVERTED
-		// void redo(QTextCursor* arg1); >>>> NOT CONVERTED
+		[SmokeMethod("undo", "(QTextCursor*)", "#")]
+		public void Undo(QTextCursor cursor) {
+			ProxyQTextDocument().Undo(cursor);
+		}
+		[SmokeMethod("redo", "(QTextCursor*)", "#")]
+		public void Redo(QTextCursor cursor) {
+			ProxyQTextDocument().Redo(cursor);
+		}
 		// QTextDocumentPrivate* docHandle(); >>>> NOT CONVERTED
+		[Q_SLOT("void undo()")]
+		[SmokeMethod("undo", "()", "")]
+		public void Undo() {
+			ProxyQTextDocument().Undo();
+		}
+		[Q_SLOT("void redo()")]
+		[SmokeMethod("redo", "()", "")]
+		public void Redo() {
+			ProxyQTextDocument().Redo();
+		}
 		// void appendUndoItem(QAbstractUndoItem* arg1); >>>> NOT CONVERTED
 		public static new string Tr(string s, string c) {
 			return StaticQTextDocument().Tr(s,c);
@@ -270,7 +363,10 @@ namespace Qyoto {
 		public static new string Tr(string s) {
 			return StaticQTextDocument().Tr(s);
 		}
-		// QTextObject* createObject(const QTextFormat& arg1); >>>> NOT CONVERTED
+		[SmokeMethod("createObject", "(const QTextFormat&)", "#")]
+		protected virtual QTextObject CreateObject(QTextFormat f) {
+			return ProxyQTextDocument().CreateObject(f);
+		}
 		[SmokeMethod("loadResource", "(int, const QUrl&)", "$#")]
 		protected virtual QVariant LoadResource(int type, IQUrl name) {
 			return ProxyQTextDocument().LoadResource(type,name);
@@ -303,6 +399,7 @@ namespace Qyoto {
 		void RedoAvailable(bool arg1);
 		[Q_SIGNAL("void modificationChanged(bool)")]
 		void ModificationChanged(bool m);
-		// void cursorPositionChanged(const QTextCursor& arg1); >>>> NOT CONVERTED
+		[Q_SIGNAL("void cursorPositionChanged(const QTextCursor&)")]
+		void CursorPositionChanged(QTextCursor cursor);
 	}
 }

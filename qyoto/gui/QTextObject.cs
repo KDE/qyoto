@@ -29,12 +29,18 @@ namespace Qyoto {
 			return (IQTextObjectProxy) _staticInterceptor;
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
-		// QTextFormat format(); >>>> NOT CONVERTED
+		[SmokeMethod("format", "() const", "")]
+		public QTextFormat Format() {
+			return ProxyQTextObject().Format();
+		}
 		[SmokeMethod("formatIndex", "() const", "")]
 		public int FormatIndex() {
 			return ProxyQTextObject().FormatIndex();
 		}
-		// QTextDocument* document(); >>>> NOT CONVERTED
+		[SmokeMethod("document", "() const", "")]
+		public QTextDocument Document() {
+			return ProxyQTextObject().Document();
+		}
 		[SmokeMethod("objectIndex", "() const", "")]
 		public int ObjectIndex() {
 			return ProxyQTextObject().ObjectIndex();
@@ -46,8 +52,18 @@ namespace Qyoto {
 		public static new string Tr(string s) {
 			return StaticQTextObject().Tr(s);
 		}
-		// QTextObject* QTextObject(QTextDocument* arg1); >>>> NOT CONVERTED
-		// void setFormat(const QTextFormat& arg1); >>>> NOT CONVERTED
+		public QTextObject(QTextDocument doc) : this((Type) null) {
+			CreateProxy();
+			NewQTextObject(doc);
+		}
+		[SmokeMethod("QTextObject", "(QTextDocument*)", "#")]
+		private void NewQTextObject(QTextDocument doc) {
+			ProxyQTextObject().NewQTextObject(doc);
+		}
+		[SmokeMethod("setFormat", "(const QTextFormat&)", "#")]
+		protected void SetFormat(QTextFormat format) {
+			ProxyQTextObject().SetFormat(format);
+		}
 		protected new IQTextObjectSignals Emit {
 			get {
 				return (IQTextObjectSignals) Q_EMIT;

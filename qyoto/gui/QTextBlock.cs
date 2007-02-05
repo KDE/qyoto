@@ -106,7 +106,10 @@ namespace Qyoto {
 		public string Text() {
 			return ProxyQTextBlock().Text();
 		}
-		// const QTextDocument* document(); >>>> NOT CONVERTED
+		[SmokeMethod("document", "() const", "")]
+		public QTextDocument Document() {
+			return ProxyQTextBlock().Document();
+		}
 		[SmokeMethod("textList", "() const", "")]
 		public QTextList TextList() {
 			return ProxyQTextBlock().TextList();

@@ -36,7 +36,14 @@ namespace Qyoto {
 		public static new string Tr(string s) {
 			return StaticQTextBlockGroup().Tr(s);
 		}
-		// QTextBlockGroup* QTextBlockGroup(QTextDocument* arg1); >>>> NOT CONVERTED
+		public QTextBlockGroup(QTextDocument doc) : this((Type) null) {
+			CreateProxy();
+			NewQTextBlockGroup(doc);
+		}
+		[SmokeMethod("QTextBlockGroup", "(QTextDocument*)", "#")]
+		private void NewQTextBlockGroup(QTextDocument doc) {
+			ProxyQTextBlockGroup().NewQTextBlockGroup(doc);
+		}
 		[SmokeMethod("blockInserted", "(const QTextBlock&)", "#")]
 		protected virtual void BlockInserted(QTextBlock block) {
 			ProxyQTextBlockGroup().BlockInserted(block);

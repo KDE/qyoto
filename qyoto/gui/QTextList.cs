@@ -29,7 +29,14 @@ namespace Qyoto {
 			return (IQTextListProxy) _staticInterceptor;
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
-		// QTextList* QTextList(QTextDocument* arg1); >>>> NOT CONVERTED
+		public QTextList(QTextDocument doc) : this((Type) null) {
+			CreateProxy();
+			NewQTextList(doc);
+		}
+		[SmokeMethod("QTextList", "(QTextDocument*)", "#")]
+		private void NewQTextList(QTextDocument doc) {
+			ProxyQTextList().NewQTextList(doc);
+		}
 		[SmokeMethod("count", "() const", "")]
 		public int Count() {
 			return ProxyQTextList().Count();

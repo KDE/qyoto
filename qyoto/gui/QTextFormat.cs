@@ -11,6 +11,8 @@ namespace Qyoto {
 		protected QTextFormat(Type dummy) {}
 		[SmokeClass("QTextFormat")]
 		interface IQTextFormatProxy {
+			[SmokeMethod("operator==", "(const QTextFormat&) const", "#")]
+			bool op_equals(QTextFormat lhs, QTextFormat rhs);
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextFormat), this);
@@ -103,10 +105,34 @@ namespace Qyoto {
 			PageBreak_AlwaysBefore = 0x001,
 			PageBreak_AlwaysAfter = 0x010,
 		}
-		// QTextFormat* QTextFormat(); >>>> NOT CONVERTED
-		// QTextFormat* QTextFormat(int arg1); >>>> NOT CONVERTED
-		// QTextFormat* QTextFormat(const QTextFormat& arg1); >>>> NOT CONVERTED
-		// void merge(const QTextFormat& arg1); >>>> NOT CONVERTED
+		public QTextFormat() : this((Type) null) {
+			CreateProxy();
+			NewQTextFormat();
+		}
+		[SmokeMethod("QTextFormat", "()", "")]
+		private void NewQTextFormat() {
+			ProxyQTextFormat().NewQTextFormat();
+		}
+		public QTextFormat(int type) : this((Type) null) {
+			CreateProxy();
+			NewQTextFormat(type);
+		}
+		[SmokeMethod("QTextFormat", "(int)", "$")]
+		private void NewQTextFormat(int type) {
+			ProxyQTextFormat().NewQTextFormat(type);
+		}
+		public QTextFormat(QTextFormat rhs) : this((Type) null) {
+			CreateProxy();
+			NewQTextFormat(rhs);
+		}
+		[SmokeMethod("QTextFormat", "(const QTextFormat&)", "#")]
+		private void NewQTextFormat(QTextFormat rhs) {
+			ProxyQTextFormat().NewQTextFormat(rhs);
+		}
+		[SmokeMethod("merge", "(const QTextFormat&)", "#")]
+		public void Merge(QTextFormat other) {
+			ProxyQTextFormat().Merge(other);
+		}
 		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
 			return ProxyQTextFormat().IsValid();
@@ -239,7 +265,19 @@ namespace Qyoto {
 		public QTextImageFormat ToImageFormat() {
 			return ProxyQTextFormat().ToImageFormat();
 		}
-		// bool operator==(const QTextFormat& arg1); >>>> NOT CONVERTED
+		public static bool operator==(QTextFormat lhs, QTextFormat rhs) {
+			return StaticQTextFormat().op_equals(lhs,rhs);
+		}
+		public static bool operator!=(QTextFormat lhs, QTextFormat rhs) {
+			return !StaticQTextFormat().op_equals(lhs,rhs);
+		}
+		public override bool Equals(object o) {
+			if (!(o is QTextFormat)) { return false; }
+			return this == (QTextFormat) o;
+		}
+		public override int GetHashCode() {
+			return ProxyQTextFormat().GetHashCode();
+		}
 		//  operator QVariant(); >>>> NOT CONVERTED
 		[SmokeMethod("setLayoutDirection", "(Qt::LayoutDirection)", "$")]
 		public void SetLayoutDirection(Qt.LayoutDirection direction) {

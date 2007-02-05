@@ -10,6 +10,16 @@ namespace Qyoto {
 		protected QTextCursor(Type dummy) {}
 		[SmokeClass("QTextCursor")]
 		interface IQTextCursorProxy {
+			[SmokeMethod("operator<", "(const QTextCursor&) const", "#")]
+			bool op_lt(QTextCursor lhs, QTextCursor rhs);
+			[SmokeMethod("operator<=", "(const QTextCursor&) const", "#")]
+			bool op_lte(QTextCursor lhs, QTextCursor rhs);
+			[SmokeMethod("operator==", "(const QTextCursor&) const", "#")]
+			bool op_equals(QTextCursor lhs, QTextCursor rhs);
+			[SmokeMethod("operator>=", "(const QTextCursor&) const", "#")]
+			bool op_gte(QTextCursor lhs, QTextCursor rhs);
+			[SmokeMethod("operator>", "(const QTextCursor&) const", "#")]
+			bool op_gt(QTextCursor lhs, QTextCursor rhs);
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextCursor), this);
@@ -59,17 +69,55 @@ namespace Qyoto {
 			BlockUnderCursor = 2,
 			Document = 3,
 		}
-		// QTextCursor* QTextCursor(); >>>> NOT CONVERTED
-		// QTextCursor* QTextCursor(QTextDocument* arg1); >>>> NOT CONVERTED
-		// QTextCursor* QTextCursor(QTextFrame* arg1); >>>> NOT CONVERTED
-		// QTextCursor* QTextCursor(const QTextBlock& arg1); >>>> NOT CONVERTED
+		public QTextCursor() : this((Type) null) {
+			CreateProxy();
+			NewQTextCursor();
+		}
+		[SmokeMethod("QTextCursor", "()", "")]
+		private void NewQTextCursor() {
+			ProxyQTextCursor().NewQTextCursor();
+		}
+		public QTextCursor(QTextDocument document) : this((Type) null) {
+			CreateProxy();
+			NewQTextCursor(document);
+		}
+		[SmokeMethod("QTextCursor", "(QTextDocument*)", "#")]
+		private void NewQTextCursor(QTextDocument document) {
+			ProxyQTextCursor().NewQTextCursor(document);
+		}
+		public QTextCursor(QTextFrame frame) : this((Type) null) {
+			CreateProxy();
+			NewQTextCursor(frame);
+		}
+		[SmokeMethod("QTextCursor", "(QTextFrame*)", "#")]
+		private void NewQTextCursor(QTextFrame frame) {
+			ProxyQTextCursor().NewQTextCursor(frame);
+		}
+		public QTextCursor(QTextBlock block) : this((Type) null) {
+			CreateProxy();
+			NewQTextCursor(block);
+		}
+		[SmokeMethod("QTextCursor", "(const QTextBlock&)", "#")]
+		private void NewQTextCursor(QTextBlock block) {
+			ProxyQTextCursor().NewQTextCursor(block);
+		}
 		// QTextCursor* QTextCursor(QTextCursorPrivate* arg1); >>>> NOT CONVERTED
-		// QTextCursor* QTextCursor(const QTextCursor& arg1); >>>> NOT CONVERTED
+		public QTextCursor(QTextCursor cursor) : this((Type) null) {
+			CreateProxy();
+			NewQTextCursor(cursor);
+		}
+		[SmokeMethod("QTextCursor", "(const QTextCursor&)", "#")]
+		private void NewQTextCursor(QTextCursor cursor) {
+			ProxyQTextCursor().NewQTextCursor(cursor);
+		}
 		[SmokeMethod("isNull", "() const", "")]
 		public bool IsNull() {
 			return ProxyQTextCursor().IsNull();
 		}
-		// void setPosition(int arg1,QTextCursor::MoveMode arg2); >>>> NOT CONVERTED
+		[SmokeMethod("setPosition", "(int, QTextCursor::MoveMode)", "$$")]
+		public void SetPosition(int pos, QTextCursor.MoveMode mode) {
+			ProxyQTextCursor().SetPosition(pos,mode);
+		}
 		[SmokeMethod("setPosition", "(int)", "$")]
 		public void SetPosition(int pos) {
 			ProxyQTextCursor().SetPosition(pos);
@@ -90,9 +138,18 @@ namespace Qyoto {
 		public void InsertText(string text, QTextCharFormat format) {
 			ProxyQTextCursor().InsertText(text,format);
 		}
-		// bool movePosition(QTextCursor::MoveOperation arg1,QTextCursor::MoveMode arg2,int arg3); >>>> NOT CONVERTED
-		// bool movePosition(QTextCursor::MoveOperation arg1,QTextCursor::MoveMode arg2); >>>> NOT CONVERTED
-		// bool movePosition(QTextCursor::MoveOperation arg1); >>>> NOT CONVERTED
+		[SmokeMethod("movePosition", "(QTextCursor::MoveOperation, QTextCursor::MoveMode, int)", "$$$")]
+		public bool MovePosition(QTextCursor.MoveOperation op, QTextCursor.MoveMode arg2, int n) {
+			return ProxyQTextCursor().MovePosition(op,arg2,n);
+		}
+		[SmokeMethod("movePosition", "(QTextCursor::MoveOperation, QTextCursor::MoveMode)", "$$")]
+		public bool MovePosition(QTextCursor.MoveOperation op, QTextCursor.MoveMode arg2) {
+			return ProxyQTextCursor().MovePosition(op,arg2);
+		}
+		[SmokeMethod("movePosition", "(QTextCursor::MoveOperation)", "$")]
+		public bool MovePosition(QTextCursor.MoveOperation op) {
+			return ProxyQTextCursor().MovePosition(op);
+		}
 		[SmokeMethod("deleteChar", "()", "")]
 		public void DeleteChar() {
 			ProxyQTextCursor().DeleteChar();
@@ -101,7 +158,10 @@ namespace Qyoto {
 		public void DeletePreviousChar() {
 			ProxyQTextCursor().DeletePreviousChar();
 		}
-		// void select(QTextCursor::SelectionType arg1); >>>> NOT CONVERTED
+		[SmokeMethod("select", "(QTextCursor::SelectionType)", "$")]
+		public void Select(QTextCursor.SelectionType selection) {
+			ProxyQTextCursor().Select(selection);
+		}
 		[SmokeMethod("hasSelection", "() const", "")]
 		public bool HasSelection() {
 			return ProxyQTextCursor().HasSelection();
@@ -130,7 +190,10 @@ namespace Qyoto {
 		public string SelectedText() {
 			return ProxyQTextCursor().SelectedText();
 		}
-		// QTextDocumentFragment selection(); >>>> NOT CONVERTED
+		[SmokeMethod("selection", "() const", "")]
+		public QTextDocumentFragment Selection() {
+			return ProxyQTextCursor().Selection();
+		}
 		[SmokeMethod("selectedTableCells", "(int*, int*, int*, int*) const", "$$$$")]
 		public void SelectedTableCells(out int firstRow, out int numRows, out int firstColumn, out int numColumns) {
 			ProxyQTextCursor().SelectedTableCells(out firstRow,out numRows,out firstColumn,out numColumns);
@@ -243,7 +306,10 @@ namespace Qyoto {
 		public QTextFrame CurrentFrame() {
 			return ProxyQTextCursor().CurrentFrame();
 		}
-		// void insertFragment(const QTextDocumentFragment& arg1); >>>> NOT CONVERTED
+		[SmokeMethod("insertFragment", "(const QTextDocumentFragment&)", "#")]
+		public void InsertFragment(QTextDocumentFragment fragment) {
+			ProxyQTextCursor().InsertFragment(fragment);
+		}
 		[SmokeMethod("insertHtml", "(const QString&)", "$")]
 		public void InsertHtml(string html) {
 			ProxyQTextCursor().InsertHtml(html);
@@ -272,12 +338,35 @@ namespace Qyoto {
 		public void EndEditBlock() {
 			ProxyQTextCursor().EndEditBlock();
 		}
-		// bool operator<(const QTextCursor& arg1); >>>> NOT CONVERTED
-		// bool operator<=(const QTextCursor& arg1); >>>> NOT CONVERTED
-		// bool operator==(const QTextCursor& arg1); >>>> NOT CONVERTED
-		// bool operator>=(const QTextCursor& arg1); >>>> NOT CONVERTED
-		// bool operator>(const QTextCursor& arg1); >>>> NOT CONVERTED
-		// bool isCopyOf(const QTextCursor& arg1); >>>> NOT CONVERTED
+		public static bool operator<(QTextCursor lhs, QTextCursor rhs) {
+			return StaticQTextCursor().op_lt(lhs,rhs);
+		}
+		public static bool operator<=(QTextCursor lhs, QTextCursor rhs) {
+			return StaticQTextCursor().op_lte(lhs,rhs);
+		}
+		public static bool operator==(QTextCursor lhs, QTextCursor rhs) {
+			return StaticQTextCursor().op_equals(lhs,rhs);
+		}
+		public static bool operator!=(QTextCursor lhs, QTextCursor rhs) {
+			return !StaticQTextCursor().op_equals(lhs,rhs);
+		}
+		public override bool Equals(object o) {
+			if (!(o is QTextCursor)) { return false; }
+			return this == (QTextCursor) o;
+		}
+		public override int GetHashCode() {
+			return ProxyQTextCursor().GetHashCode();
+		}
+		public static bool operator>=(QTextCursor lhs, QTextCursor rhs) {
+			return StaticQTextCursor().op_gte(lhs,rhs);
+		}
+		public static bool operator>(QTextCursor lhs, QTextCursor rhs) {
+			return StaticQTextCursor().op_gt(lhs,rhs);
+		}
+		[SmokeMethod("isCopyOf", "(const QTextCursor&) const", "#")]
+		public bool IsCopyOf(QTextCursor other) {
+			return ProxyQTextCursor().IsCopyOf(other);
+		}
 		[SmokeMethod("blockNumber", "() const", "")]
 		public int BlockNumber() {
 			return ProxyQTextCursor().BlockNumber();

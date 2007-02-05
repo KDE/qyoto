@@ -30,7 +30,14 @@ namespace Qyoto {
 			return (IQAbstractTextDocumentLayoutProxy) _staticInterceptor;
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
-		// QAbstractTextDocumentLayout* QAbstractTextDocumentLayout(QTextDocument* arg1); >>>> NOT CONVERTED
+		public QAbstractTextDocumentLayout(QTextDocument doc) : this((Type) null) {
+			CreateProxy();
+			NewQAbstractTextDocumentLayout(doc);
+		}
+		[SmokeMethod("QAbstractTextDocumentLayout", "(QTextDocument*)", "#")]
+		private void NewQAbstractTextDocumentLayout(QTextDocument doc) {
+			ProxyQAbstractTextDocumentLayout().NewQAbstractTextDocumentLayout(doc);
+		}
 		// void draw(QPainter* arg1,const QAbstractTextDocumentLayout::PaintContext& arg2); >>>> NOT CONVERTED
 		[SmokeMethod("hitTest", "(const QPointF&, Qt::HitTestAccuracy) const", "#$")]
 		public virtual int HitTest(QPointF point, Qt.HitTestAccuracy accuracy) {
@@ -64,7 +71,10 @@ namespace Qyoto {
 		public IQPaintDevice PaintDevice() {
 			return ProxyQAbstractTextDocumentLayout().PaintDevice();
 		}
-		// QTextDocument* document(); >>>> NOT CONVERTED
+		[SmokeMethod("document", "() const", "")]
+		public QTextDocument Document() {
+			return ProxyQAbstractTextDocumentLayout().Document();
+		}
 		[SmokeMethod("registerHandler", "(int, QObject*)", "$#")]
 		public void RegisterHandler(int objectType, QObject component) {
 			ProxyQAbstractTextDocumentLayout().RegisterHandler(objectType,component);

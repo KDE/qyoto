@@ -83,7 +83,10 @@ namespace Qyoto {
 		public int FormatIndex() {
 			return ProxyQTextInlineObject().FormatIndex();
 		}
-		// QTextFormat format(); >>>> NOT CONVERTED
+		[SmokeMethod("format", "() const", "")]
+		public QTextFormat Format() {
+			return ProxyQTextInlineObject().Format();
+		}
 		~QTextInlineObject() {
 			DisposeQTextInlineObject();
 		}

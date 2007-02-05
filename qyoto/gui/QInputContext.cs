@@ -102,7 +102,10 @@ namespace Qyoto {
 		public void SendEvent(QInputMethodEvent arg1) {
 			ProxyQInputContext().SendEvent(arg1);
 		}
-		// QTextFormat standardFormat(QInputContext::StandardFormat arg1); >>>> NOT CONVERTED
+		[SmokeMethod("standardFormat", "(QInputContext::StandardFormat) const", "$")]
+		public QTextFormat standardFormat(QInputContext.StandardFormat s) {
+			return ProxyQInputContext().standardFormat(s);
+		}
 		public static new string Tr(string s, string c) {
 			return StaticQInputContext().Tr(s,c);
 		}

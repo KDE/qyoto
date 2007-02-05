@@ -153,8 +153,14 @@ namespace Qyoto {
 		public void AdjustSize() {
 			ProxyQGraphicsTextItem().AdjustSize();
 		}
-		// void setDocument(QTextDocument* arg1); >>>> NOT CONVERTED
-		// QTextDocument* document(); >>>> NOT CONVERTED
+		[SmokeMethod("setDocument", "(QTextDocument*)", "#")]
+		public void SetDocument(QTextDocument document) {
+			ProxyQGraphicsTextItem().SetDocument(document);
+		}
+		[SmokeMethod("document", "() const", "")]
+		public QTextDocument Document() {
+			return ProxyQGraphicsTextItem().Document();
+		}
 		[SmokeMethod("setTextInteractionFlags", "(Qt::TextInteractionFlags)", "$")]
 		public void SetTextInteractionFlags(int flags) {
 			ProxyQGraphicsTextItem().SetTextInteractionFlags(flags);
@@ -171,8 +177,14 @@ namespace Qyoto {
 		public bool OpenExternalLinks() {
 			return ProxyQGraphicsTextItem().OpenExternalLinks();
 		}
-		// void setTextCursor(const QTextCursor& arg1); >>>> NOT CONVERTED
-		// QTextCursor textCursor(); >>>> NOT CONVERTED
+		[SmokeMethod("setTextCursor", "(const QTextCursor&)", "#")]
+		public void SetTextCursor(QTextCursor cursor) {
+			ProxyQGraphicsTextItem().SetTextCursor(cursor);
+		}
+		[SmokeMethod("textCursor", "() const", "")]
+		public QTextCursor TextCursor() {
+			return ProxyQGraphicsTextItem().TextCursor();
+		}
 		public static new string Tr(string s, string c) {
 			return StaticQGraphicsTextItem().Tr(s,c);
 		}

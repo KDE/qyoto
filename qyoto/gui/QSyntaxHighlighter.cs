@@ -37,7 +37,14 @@ namespace Qyoto {
 		private void NewQSyntaxHighlighter(QObject parent) {
 			ProxyQSyntaxHighlighter().NewQSyntaxHighlighter(parent);
 		}
-		// QSyntaxHighlighter* QSyntaxHighlighter(QTextDocument* arg1); >>>> NOT CONVERTED
+		public QSyntaxHighlighter(QTextDocument parent) : this((Type) null) {
+			CreateProxy();
+			NewQSyntaxHighlighter(parent);
+		}
+		[SmokeMethod("QSyntaxHighlighter", "(QTextDocument*)", "#")]
+		private void NewQSyntaxHighlighter(QTextDocument parent) {
+			ProxyQSyntaxHighlighter().NewQSyntaxHighlighter(parent);
+		}
 		public QSyntaxHighlighter(QTextEdit parent) : this((Type) null) {
 			CreateProxy();
 			NewQSyntaxHighlighter(parent);
@@ -46,8 +53,14 @@ namespace Qyoto {
 		private void NewQSyntaxHighlighter(QTextEdit parent) {
 			ProxyQSyntaxHighlighter().NewQSyntaxHighlighter(parent);
 		}
-		// void setDocument(QTextDocument* arg1); >>>> NOT CONVERTED
-		// QTextDocument* document(); >>>> NOT CONVERTED
+		[SmokeMethod("setDocument", "(QTextDocument*)", "#")]
+		public void SetDocument(QTextDocument doc) {
+			ProxyQSyntaxHighlighter().SetDocument(doc);
+		}
+		[SmokeMethod("document", "() const", "")]
+		public QTextDocument Document() {
+			return ProxyQSyntaxHighlighter().Document();
+		}
 		[Q_SLOT("void rehighlight()")]
 		[SmokeMethod("rehighlight", "()", "")]
 		public void Rehighlight() {

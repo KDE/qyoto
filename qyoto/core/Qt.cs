@@ -114,6 +114,10 @@ namespace Qyoto {
 			QDataStream Write(QDataStream arg1, QTextLength arg2);
 			[SmokeMethod("operator>>", "(QDataStream&, QTextLength&)", "##")]
 			QDataStream Read(QDataStream arg1, QTextLength arg2);
+			[SmokeMethod("operator<<", "(QDataStream&, const QTextFormat&)", "##")]
+			QDataStream Write(QDataStream arg1, QTextFormat arg2);
+			[SmokeMethod("operator>>", "(QDataStream&, QTextFormat&)", "##")]
+			QDataStream Read(QDataStream arg1, QTextFormat arg2);
 			[SmokeMethod("operator<<", "(QTextStream&, const QSplitter&)", "##")]
 			QTextStream Write(QTextStream arg1, QSplitter arg2);
 			[SmokeMethod("operator>>", "(QTextStream&, QSplitter&)", "##")]
@@ -1492,8 +1496,12 @@ namespace Qyoto {
 		public static QDataStream Read(QDataStream arg1, QTextLength arg2) {
 			return StaticQt().Read(arg1,arg2);
 		}
-		// QDataStream& operator<<(QDataStream& arg1,const QTextFormat& arg2); >>>> NOT CONVERTED
-		// QDataStream& operator>>(QDataStream& arg1,QTextFormat& arg2); >>>> NOT CONVERTED
+		public static QDataStream Write(QDataStream arg1, QTextFormat arg2) {
+			return StaticQt().Write(arg1,arg2);
+		}
+		public static QDataStream Read(QDataStream arg1, QTextFormat arg2) {
+			return StaticQt().Read(arg1,arg2);
+		}
 		public static QTextStream Write(QTextStream arg1, QSplitter arg2) {
 			return StaticQt().Write(arg1,arg2);
 		}

@@ -190,10 +190,22 @@ namespace Qyoto {
 		private void NewQTextEdit(string text) {
 			ProxyQTextEdit().NewQTextEdit(text);
 		}
-		// void setDocument(QTextDocument* arg1); >>>> NOT CONVERTED
-		// QTextDocument* document(); >>>> NOT CONVERTED
-		// void setTextCursor(const QTextCursor& arg1); >>>> NOT CONVERTED
-		// QTextCursor textCursor(); >>>> NOT CONVERTED
+		[SmokeMethod("setDocument", "(QTextDocument*)", "#")]
+		public void SetDocument(QTextDocument document) {
+			ProxyQTextEdit().SetDocument(document);
+		}
+		[SmokeMethod("document", "() const", "")]
+		public QTextDocument Document() {
+			return ProxyQTextEdit().Document();
+		}
+		[SmokeMethod("setTextCursor", "(const QTextCursor&)", "#")]
+		public void SetTextCursor(QTextCursor cursor) {
+			ProxyQTextEdit().SetTextCursor(cursor);
+		}
+		[SmokeMethod("textCursor", "() const", "")]
+		public QTextCursor TextCursor() {
+			return ProxyQTextEdit().TextCursor();
+		}
 		[SmokeMethod("isReadOnly", "() const", "")]
 		public bool IsReadOnly() {
 			return ProxyQTextEdit().IsReadOnly();
@@ -254,7 +266,10 @@ namespace Qyoto {
 		public void SetWordWrapMode(QTextOption.WrapMode policy) {
 			ProxyQTextEdit().SetWordWrapMode(policy);
 		}
-		// bool find(const QString& arg1,QTextDocument::FindFlags arg2); >>>> NOT CONVERTED
+		[SmokeMethod("find", "(const QString&, QTextDocument::FindFlags)", "$$")]
+		public new bool Find(string exp, int options) {
+			return ProxyQTextEdit().Find(exp,options);
+		}
 		[SmokeMethod("find", "(const QString&)", "$")]
 		public new bool Find(string exp) {
 			return ProxyQTextEdit().Find(exp);
@@ -279,16 +294,32 @@ namespace Qyoto {
 		public QMenu CreateStandardContextMenu() {
 			return ProxyQTextEdit().CreateStandardContextMenu();
 		}
-		// QTextCursor cursorForPosition(const QPoint& arg1); >>>> NOT CONVERTED
-		// QRect cursorRect(const QTextCursor& arg1); >>>> NOT CONVERTED
+		[SmokeMethod("cursorForPosition", "(const QPoint&) const", "#")]
+		public QTextCursor CursorForPosition(QPoint pos) {
+			return ProxyQTextEdit().CursorForPosition(pos);
+		}
+		[SmokeMethod("cursorRect", "(const QTextCursor&) const", "#")]
+		public QRect CursorRect(QTextCursor cursor) {
+			return ProxyQTextEdit().CursorRect(cursor);
+		}
+		[SmokeMethod("cursorRect", "() const", "")]
+		public QRect CursorRect() {
+			return ProxyQTextEdit().CursorRect();
+		}
 		[SmokeMethod("anchorAt", "(const QPoint&) const", "#")]
 		public string AnchorAt(QPoint pos) {
 			return ProxyQTextEdit().AnchorAt(pos);
 		}
 		// void setExtraSelections(const QList<QTextEdit::ExtraSelection>& arg1); >>>> NOT CONVERTED
 		// QList<QTextEdit::ExtraSelection> extraSelections(); >>>> NOT CONVERTED
-		// void moveCursor(QTextCursor::MoveOperation arg1,QTextCursor::MoveMode arg2); >>>> NOT CONVERTED
-		// void moveCursor(QTextCursor::MoveOperation arg1); >>>> NOT CONVERTED
+		[SmokeMethod("moveCursor", "(QTextCursor::MoveOperation, QTextCursor::MoveMode)", "$$")]
+		public void MoveCursor(QTextCursor.MoveOperation operation, QTextCursor.MoveMode mode) {
+			ProxyQTextEdit().MoveCursor(operation,mode);
+		}
+		[SmokeMethod("moveCursor", "(QTextCursor::MoveOperation)", "$")]
+		public void MoveCursor(QTextCursor.MoveOperation operation) {
+			ProxyQTextEdit().MoveCursor(operation);
+		}
 		[SmokeMethod("canPaste", "() const", "")]
 		public bool CanPaste() {
 			return ProxyQTextEdit().CanPaste();

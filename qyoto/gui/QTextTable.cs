@@ -29,7 +29,14 @@ namespace Qyoto {
 			return (IQTextTableProxy) _staticInterceptor;
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
-		// QTextTable* QTextTable(QTextDocument* arg1); >>>> NOT CONVERTED
+		public QTextTable(QTextDocument doc) : this((Type) null) {
+			CreateProxy();
+			NewQTextTable(doc);
+		}
+		[SmokeMethod("QTextTable", "(QTextDocument*)", "#")]
+		private void NewQTextTable(QTextDocument doc) {
+			ProxyQTextTable().NewQTextTable(doc);
+		}
 		[SmokeMethod("resize", "(int, int)", "$$")]
 		public void Resize(int rows, int cols) {
 			ProxyQTextTable().Resize(rows,cols);
@@ -54,7 +61,10 @@ namespace Qyoto {
 		public void MergeCells(int row, int col, int numRows, int numCols) {
 			ProxyQTextTable().MergeCells(row,col,numRows,numCols);
 		}
-		// void mergeCells(const QTextCursor& arg1); >>>> NOT CONVERTED
+		[SmokeMethod("mergeCells", "(const QTextCursor&)", "#")]
+		public void MergeCells(QTextCursor cursor) {
+			ProxyQTextTable().MergeCells(cursor);
+		}
 		[SmokeMethod("splitCell", "(int, int, int, int)", "$$$$")]
 		public void SplitCell(int row, int col, int numRows, int numCols) {
 			ProxyQTextTable().SplitCell(row,col,numRows,numCols);
@@ -75,9 +85,18 @@ namespace Qyoto {
 		public QTextTableCell CellAt(int position) {
 			return ProxyQTextTable().CellAt(position);
 		}
-		// QTextTableCell cellAt(const QTextCursor& arg1); >>>> NOT CONVERTED
-		// QTextCursor rowStart(const QTextCursor& arg1); >>>> NOT CONVERTED
-		// QTextCursor rowEnd(const QTextCursor& arg1); >>>> NOT CONVERTED
+		[SmokeMethod("cellAt", "(const QTextCursor&) const", "#")]
+		public QTextTableCell CellAt(QTextCursor c) {
+			return ProxyQTextTable().CellAt(c);
+		}
+		[SmokeMethod("rowStart", "(const QTextCursor&) const", "#")]
+		public QTextCursor RowStart(QTextCursor c) {
+			return ProxyQTextTable().RowStart(c);
+		}
+		[SmokeMethod("rowEnd", "(const QTextCursor&) const", "#")]
+		public QTextCursor RowEnd(QTextCursor c) {
+			return ProxyQTextTable().RowEnd(c);
+		}
 		[SmokeMethod("setFormat", "(const QTextTableFormat&)", "#")]
 		public new void SetFormat(QTextTableFormat format) {
 			ProxyQTextTable().SetFormat(format);

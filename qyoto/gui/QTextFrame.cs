@@ -30,7 +30,14 @@ namespace Qyoto {
 			return (IQTextFrameProxy) _staticInterceptor;
 		}
 		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
-		// QTextFrame* QTextFrame(QTextDocument* arg1); >>>> NOT CONVERTED
+		public QTextFrame(QTextDocument doc) : this((Type) null) {
+			CreateProxy();
+			NewQTextFrame(doc);
+		}
+		[SmokeMethod("QTextFrame", "(QTextDocument*)", "#")]
+		private void NewQTextFrame(QTextDocument doc) {
+			ProxyQTextFrame().NewQTextFrame(doc);
+		}
 		[SmokeMethod("setFrameFormat", "(const QTextFrameFormat&)", "#")]
 		public void SetFrameFormat(QTextFrameFormat format) {
 			ProxyQTextFrame().SetFrameFormat(format);
@@ -39,8 +46,14 @@ namespace Qyoto {
 		public QTextFrameFormat FrameFormat() {
 			return ProxyQTextFrame().FrameFormat();
 		}
-		// QTextCursor firstCursorPosition(); >>>> NOT CONVERTED
-		// QTextCursor lastCursorPosition(); >>>> NOT CONVERTED
+		[SmokeMethod("firstCursorPosition", "() const", "")]
+		public QTextCursor FirstCursorPosition() {
+			return ProxyQTextFrame().FirstCursorPosition();
+		}
+		[SmokeMethod("lastCursorPosition", "() const", "")]
+		public QTextCursor LastCursorPosition() {
+			return ProxyQTextFrame().LastCursorPosition();
+		}
 		[SmokeMethod("firstPosition", "() const", "")]
 		public int FirstPosition() {
 			return ProxyQTextFrame().FirstPosition();
