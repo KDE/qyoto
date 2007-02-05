@@ -21,6 +21,8 @@ namespace Qyoto {
 			string RootPath();
 			[SmokeMethod("tempPath", "()", "")]
 			string TempPath();
+			[SmokeMethod("drives", "()", "")]
+			List<QFileInfo> Drives();
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFSFileEngine), this);
@@ -195,7 +197,9 @@ namespace Qyoto {
 		public static string TempPath() {
 			return StaticQFSFileEngine().TempPath();
 		}
-		// QFileInfoList drives(); >>>> NOT CONVERTED
+		public static List<QFileInfo> Drives() {
+			return StaticQFSFileEngine().Drives();
+		}
 		// QFSFileEngine* QFSFileEngine(QFSFileEnginePrivate& arg1); >>>> NOT CONVERTED
 		~QFSFileEngine() {
 			DisposeQFSFileEngine();

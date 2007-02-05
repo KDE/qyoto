@@ -27,6 +27,8 @@ namespace Qyoto {
 			bool IsRelativePath(string path);
 			[SmokeMethod("isAbsolutePath", "(const QString&)", "$")]
 			bool IsAbsolutePath(string path);
+			[SmokeMethod("drives", "()", "")]
+			List<QFileInfo> Drives();
 			[SmokeMethod("separator", "()", "")]
 			char Separator();
 			[SmokeMethod("setCurrent", "(const QString&)", "$")]
@@ -243,12 +245,30 @@ namespace Qyoto {
 		public List<string> EntryList(List<string> nameFilters) {
 			return ProxyQDir().EntryList(nameFilters);
 		}
-		// QFileInfoList entryInfoList(Filters arg1,SortFlags arg2); >>>> NOT CONVERTED
-		// QFileInfoList entryInfoList(Filters arg1); >>>> NOT CONVERTED
-		// QFileInfoList entryInfoList(); >>>> NOT CONVERTED
-		// QFileInfoList entryInfoList(const QStringList& arg1,Filters arg2,SortFlags arg3); >>>> NOT CONVERTED
-		// QFileInfoList entryInfoList(const QStringList& arg1,Filters arg2); >>>> NOT CONVERTED
-		// QFileInfoList entryInfoList(const QStringList& arg1); >>>> NOT CONVERTED
+		[SmokeMethod("entryInfoList", "(Filters, SortFlags) const", "$$")]
+		public List<QFileInfo> EntryInfoList(int filters, int sort) {
+			return ProxyQDir().EntryInfoList(filters,sort);
+		}
+		[SmokeMethod("entryInfoList", "(Filters) const", "$")]
+		public List<QFileInfo> EntryInfoList(int filters) {
+			return ProxyQDir().EntryInfoList(filters);
+		}
+		[SmokeMethod("entryInfoList", "() const", "")]
+		public List<QFileInfo> EntryInfoList() {
+			return ProxyQDir().EntryInfoList();
+		}
+		[SmokeMethod("entryInfoList", "(const QStringList&, Filters, SortFlags) const", "?$$")]
+		public List<QFileInfo> EntryInfoList(List<string> nameFilters, int filters, int sort) {
+			return ProxyQDir().EntryInfoList(nameFilters,filters,sort);
+		}
+		[SmokeMethod("entryInfoList", "(const QStringList&, Filters) const", "?$")]
+		public List<QFileInfo> EntryInfoList(List<string> nameFilters, int filters) {
+			return ProxyQDir().EntryInfoList(nameFilters,filters);
+		}
+		[SmokeMethod("entryInfoList", "(const QStringList&) const", "?")]
+		public List<QFileInfo> EntryInfoList(List<string> nameFilters) {
+			return ProxyQDir().EntryInfoList(nameFilters);
+		}
 		[SmokeMethod("mkdir", "(const QString&) const", "$")]
 		public bool Mkdir(string dirName) {
 			return ProxyQDir().Mkdir(dirName);
@@ -339,7 +359,9 @@ namespace Qyoto {
 		public static bool IsAbsolutePath(string path) {
 			return StaticQDir().IsAbsolutePath(path);
 		}
-		// QFileInfoList drives(); >>>> NOT CONVERTED
+		public static List<QFileInfo> Drives() {
+			return StaticQDir().Drives();
+		}
 		public static char Separator() {
 			return StaticQDir().Separator();
 		}
