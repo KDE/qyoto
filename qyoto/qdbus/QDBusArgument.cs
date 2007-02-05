@@ -80,9 +80,18 @@ namespace Qyoto {
 		public QDBusArgument Write(string arg) {
 			return ProxyQDBusArgument().Write(arg);
 		}
-		// QDBusArgument& operator<<(const QDBusVariant& arg1); >>>> NOT CONVERTED
-		// QDBusArgument& operator<<(const QDBusObjectPath& arg1); >>>> NOT CONVERTED
-		// QDBusArgument& operator<<(const QDBusSignature& arg1); >>>> NOT CONVERTED
+		[SmokeMethod("operator<<", "(const QDBusVariant&)", "?")]
+		public QDBusArgument Write(QDBusVariant arg) {
+			return ProxyQDBusArgument().Write(arg);
+		}
+		[SmokeMethod("operator<<", "(const QDBusObjectPath&)", "$")]
+		public QDBusArgument Write(QDBusObjectPath arg) {
+			return ProxyQDBusArgument().Write(arg);
+		}
+		[SmokeMethod("operator<<", "(const QDBusSignature&)", "$")]
+		public QDBusArgument Write(QDBusSignature arg) {
+			return ProxyQDBusArgument().Write(arg);
+		}
 		[SmokeMethod("operator<<", "(const QStringList&)", "?")]
 		public QDBusArgument Write(List<string> arg) {
 			return ProxyQDBusArgument().Write(arg);
@@ -155,9 +164,18 @@ namespace Qyoto {
 		public QDBusArgument Read(StringBuilder arg) {
 			return ProxyQDBusArgument().Read(arg);
 		}
-		// const QDBusArgument& operator>>(QDBusVariant& arg1); >>>> NOT CONVERTED
-		// const QDBusArgument& operator>>(QDBusObjectPath& arg1); >>>> NOT CONVERTED
-		// const QDBusArgument& operator>>(QDBusSignature& arg1); >>>> NOT CONVERTED
+		[SmokeMethod("operator>>", "(QDBusVariant&) const", "?")]
+		public QDBusArgument Read(QDBusVariant arg) {
+			return ProxyQDBusArgument().Read(arg);
+		}
+		[SmokeMethod("operator>>", "(QDBusObjectPath&) const", "$")]
+		public QDBusArgument Read(QDBusObjectPath arg) {
+			return ProxyQDBusArgument().Read(arg);
+		}
+		[SmokeMethod("operator>>", "(QDBusSignature&) const", "$")]
+		public QDBusArgument Read(QDBusSignature arg) {
+			return ProxyQDBusArgument().Read(arg);
+		}
 		[SmokeMethod("operator>>", "(QStringList&) const", "?")]
 		public QDBusArgument Read(List<string> arg) {
 			return ProxyQDBusArgument().Read(arg);
