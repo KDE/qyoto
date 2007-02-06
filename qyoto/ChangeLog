@@ -8,6 +8,8 @@
 	  a for loop
 	* Added QMin() and QMax() methods
 	* Added marshalling for StringBuilder <--> QStrings
+	* Add a generically typed QDBusVariant.FromValue() method to make 
+	  constructing them less ugly.
 
 2007-01-06  Richard Dale  <rdale@foton.es>
 
