@@ -55,12 +55,18 @@ namespace Qyoto {
 		public void SetValue(string key, string value) {
 			ProxyQHttpHeader().SetValue(key,value);
 		}
-		// void setValues(const QList<QPair<QString, QString> >& arg1); >>>> NOT CONVERTED
+		[SmokeMethod("setValues", "(const QList<QPair<QString, QString> >&)", "?")]
+		public void SetValues(List<QPair<string, string>> values) {
+			ProxyQHttpHeader().SetValues(values);
+		}
 		[SmokeMethod("addValue", "(const QString&, const QString&)", "$$")]
 		public void AddValue(string key, string value) {
 			ProxyQHttpHeader().AddValue(key,value);
 		}
-		// QList<QPair<QString, QString> > values(); >>>> NOT CONVERTED
+		[SmokeMethod("values", "() const", "")]
+		public List<QPair<string, string>> Values() {
+			return ProxyQHttpHeader().Values();
+		}
 		[SmokeMethod("hasKey", "(const QString&) const", "$")]
 		public bool HasKey(string key) {
 			return ProxyQHttpHeader().HasKey(key);

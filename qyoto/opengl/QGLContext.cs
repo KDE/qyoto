@@ -10,6 +10,8 @@ namespace Qyoto {
 		protected QGLContext(Type dummy) {}
 		[SmokeClass("QGLContext")]
 		interface IQGLContextProxy {
+			[SmokeMethod("currentCtx", "()", "")]
+			QGLContext currentCtx();
 			[SmokeMethod("setTextureCacheLimit", "(int)", "$")]
 			void SetTextureCacheLimit(int size);
 			[SmokeMethod("textureCacheLimit", "()", "")]
@@ -31,6 +33,9 @@ namespace Qyoto {
 		}
 		private static IQGLContextProxy StaticQGLContext() {
 			return (IQGLContextProxy) _staticInterceptor;
+		}
+		public static QGLContext CurrentCtx() {
+			return StaticQGLContext().currentCtx();
 		}
 		public QGLContext(QGLFormat format, IQPaintDevice device) : this((Type) null) {
 			CreateProxy();

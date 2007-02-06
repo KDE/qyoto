@@ -11,6 +11,8 @@ namespace Qyoto {
 		protected QSqlDatabase(Type dummy) {}
 		[SmokeClass("QSqlDatabase")]
 		interface IQSqlDatabaseProxy {
+			[SmokeMethod("defaultConnection", "()", "")]
+			string defaultConnection();
 			[SmokeMethod("addDatabase", "(const QString&, const QString&)", "$$")]
 			QSqlDatabase AddDatabase(string type, string connectionName);
 			[SmokeMethod("addDatabase", "(const QString&)", "$")]
@@ -54,6 +56,9 @@ namespace Qyoto {
 		}
 		private static IQSqlDatabaseProxy StaticQSqlDatabase() {
 			return (IQSqlDatabaseProxy) _staticInterceptor;
+		}
+		public static string DefaultConnection() {
+			return StaticQSqlDatabase().defaultConnection();
 		}
 		public QSqlDatabase() : this((Type) null) {
 			CreateProxy();

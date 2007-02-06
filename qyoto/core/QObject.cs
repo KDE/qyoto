@@ -30,6 +30,8 @@ namespace Qyoto {
 		}
 		[SmokeClass("QObject")]
 		interface IQObjectProxy {
+			[SmokeMethod("staticQtMetaObject", "()", "")]
+			QMetaObject staticQtMetaObject();
 			[SmokeMethod("tr", "(const char*, const char*)", "$$")]
 			string Tr(string s, string c);
 			[SmokeMethod("tr", "(const char*)", "$")]
@@ -57,6 +59,9 @@ namespace Qyoto {
 		}
 		private static IQObjectProxy StaticQObject() {
 			return (IQObjectProxy) _staticInterceptor;
+		}
+		public static QMetaObject StaticQtMetaObject() {
+			return StaticQObject().staticQtMetaObject();
 		}
 		[Q_PROPERTY("QString", "objectName")]
 		public string ObjectName {

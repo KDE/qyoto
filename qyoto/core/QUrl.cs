@@ -35,7 +35,9 @@ namespace Qyoto {
 			void SetQueryDelimiters(char valueDelimiter, char pairDelimiter);
 			char QueryValueDelimiter();
 			char QueryPairDelimiter();
+			void SetQueryItems(List<QPair<string, string>> query);
 			void AddQueryItem(string key, string value);
+			List<QPair<string, string>> QueryItems();
 			bool HasQueryItem(string key);
 			string QueryItemValue(string key);
 			List<string> AllQueryItemValues(string key);
@@ -274,12 +276,18 @@ namespace Qyoto {
 		public char QueryPairDelimiter() {
 			return ProxyQUrl().QueryPairDelimiter();
 		}
-		// void setQueryItems(const QList<QPair<QString, QString> >& arg1); >>>> NOT CONVERTED
+		[SmokeMethod("setQueryItems", "(const QList<QPair<QString, QString> >&)", "?")]
+		public void SetQueryItems(List<QPair<string, string>> query) {
+			ProxyQUrl().SetQueryItems(query);
+		}
 		[SmokeMethod("addQueryItem", "(const QString&, const QString&)", "$$")]
 		public void AddQueryItem(string key, string value) {
 			ProxyQUrl().AddQueryItem(key,value);
 		}
-		// QList<QPair<QString, QString> > queryItems(); >>>> NOT CONVERTED
+		[SmokeMethod("queryItems", "() const", "")]
+		public List<QPair<string, string>> QueryItems() {
+			return ProxyQUrl().QueryItems();
+		}
 		[SmokeMethod("hasQueryItem", "(const QString&) const", "$")]
 		public bool HasQueryItem(string key) {
 			return ProxyQUrl().HasQueryItem(key);

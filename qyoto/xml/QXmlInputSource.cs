@@ -10,6 +10,10 @@ namespace Qyoto {
 		protected QXmlInputSource(Type dummy) {}
 		[SmokeClass("QXmlInputSource")]
 		interface IQXmlInputSourceProxy {
+			[SmokeMethod("EndOfData", "()", "")]
+			ushort EndOfData();
+			[SmokeMethod("EndOfDocument", "()", "")]
+			ushort EndOfDocument();
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlInputSource), this);
@@ -25,6 +29,12 @@ namespace Qyoto {
 		}
 		private static IQXmlInputSourceProxy StaticQXmlInputSource() {
 			return (IQXmlInputSourceProxy) _staticInterceptor;
+		}
+		public static ushort EndOfData() {
+			return StaticQXmlInputSource().EndOfData();
+		}
+		public static ushort EndOfDocument() {
+			return StaticQXmlInputSource().EndOfDocument();
 		}
 		public QXmlInputSource() : this((Type) null) {
 			CreateProxy();

@@ -1,3 +1,9 @@
+2007-01-07  Richard Dale  <rdale@foton.es>
+
+	* Added a QPair struct corresponding to the C++ one, and generate
+	  method calls with arguments that use it
+	* Generate accessor methods for static variables and instane variables
+
 2007-01-06  Richard Dale  <rdale@foton.es>
 
 	* Moved operator methods out of Qt.cs, and made them operator
