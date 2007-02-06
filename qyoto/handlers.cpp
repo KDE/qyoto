@@ -64,6 +64,8 @@ static GetCharStarFromIntPtr IntPtrToCharStar;
 static GetIntPtrFromCharStar IntPtrFromCharStar;
 static GetIntPtr IntPtrToQString;
 static GetIntPtr IntPtrFromQString;
+static GetIntPtr StringBuilderToQString;
+static SetIntPtrFromCharStar StringBuilderFromQString;
 static GetIntPtr StringListToQStringList;
 static GetIntPtr ListToPointerList;
 static GetIntPtr ListIntToQListInt;
@@ -98,6 +100,16 @@ void InstallIntPtrToQString(GetIntPtr callback)
 void InstallIntPtrFromQString(GetIntPtr callback)
 {
 	IntPtrFromQString = callback;
+}
+
+void InstallStringBuilderToQString(GetIntPtr callback)
+{
+	StringBuilderToQString = callback;
+}
+
+void InstallStringBuilderFromQString(SetIntPtrFromCharStar callback)
+{
+	StringBuilderFromQString = callback;
 }
 
 void InstallStringListToQStringList(GetIntPtr callback)
@@ -801,26 +813,29 @@ static void marshall_charP(Marshall *m) {
 }
 
 static void marshall_QString(Marshall *m) {
-    switch(m->action()) {
-      case Marshall::FromObject:
+	switch(m->action()) {
+	case Marshall::FromObject:
 	{
-	    QString* s = 0;
-	    if( m->var().s_voidp != 0) {
-			s = (QString *) (*IntPtrToQString)(m->var().s_voidp);
-            } else {
-                s = new QString(QString::null);
-            }
+		QString* s = 0;
+		if (m->var().s_voidp != 0) {
+			if (m->type().isConst()) {
+				s = (QString *) (*IntPtrToQString)(m->var().s_voidp);
+			} else {
+				s = (QString *) (*StringBuilderToQString)(m->var().s_voidp);
+			}
+		} else {
+			s = new QString(QString::null);
+		}
 		
-	    m->item().s_voidp = s;
+		m->item().s_voidp = s;
 	    m->next();
 		
 		if (!m->type().isConst() && m->var().s_voidp != 0 && s != 0) {
-//			rb_str_resize(*(m->var()), 0);
-//			rb_str_cat2(*(m->var()), (const char *)*s);
+			(*StringBuilderFromQString)(m->var().s_voidp, (const char *) s->toUtf8());
 		}
 	    
-		if(s && m->cleanup())
-		delete s;
+		if (s && m->cleanup())
+			delete s;
 	}
 	break;
       case Marshall::ToObject:

@@ -7,6 +7,7 @@
 	* Fixed bug in marshalling QVector types with an unitialise variable in
 	  a for loop
 	* Added QMin() and QMax() methods
+	* Added marshalling for StringBuilder <--> QStrings
 
 2007-01-06  Richard Dale  <rdale@foton.es>
 

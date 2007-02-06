@@ -41,7 +41,7 @@ struct TypeHandler {
 
 extern int do_debug;   // evil
 
-// keep this enum in sync with lib/Qt/debug.pm
+// keep this enum in sync with Qyoto.cs
 
 enum QtDebugChannel {
     qtdb_none = 0x00,
@@ -64,6 +64,7 @@ typedef void* (*GetIntPtr)(void *);
 typedef void (*SetIntPtr)(void *, void *);
 typedef void (*FromIntPtr)(void *);
 typedef void* (*GetIntPtrFromCharStar)(char *);
+typedef void (*SetIntPtrFromCharStar)(void*, const char *);
 typedef char* (*GetCharStarFromIntPtr)(void *);
 typedef void* (*OverridenMethodFn)(void *, const char *);
 typedef void (*InvokeMethodFn)(void *, void *, void *);

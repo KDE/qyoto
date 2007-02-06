@@ -5,6 +5,7 @@ namespace Qyoto {
 	using System.Reflection;
 	using System.Runtime.Remoting.Proxies;
 	using System.Runtime.InteropServices;
+	using System.Text;
 
 	public class SmokeMarshallers : object {
 		
@@ -94,6 +95,12 @@ namespace Qyoto {
 		public static extern void InstallIntPtrFromQString(GetIntPtr callback);
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		public static extern void InstallStringBuilderToQString(GetIntPtr callback);
+
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		public static extern void InstallStringBuilderFromQString(SetIntPtrFromCharStar callback);
+		
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		public static extern void InstallOverridenMethod(OverridenMethodFn callback);
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
@@ -140,6 +147,7 @@ namespace Qyoto {
 		public delegate bool IsSmokeClassFn(IntPtr obj);
 		public delegate IntPtr GetIntPtrFromString(string str);
 		public delegate string GetStringFromIntPtr(IntPtr ptr);
+		public delegate void SetIntPtrFromCharStar(IntPtr ptr, string str);
 		public delegate IntPtr OverridenMethodFn(IntPtr instance, string method);
 		public delegate void InvokeMethodFn(IntPtr instance, IntPtr method, IntPtr args);
 		public delegate void AddInt(IntPtr obj, int i);
@@ -288,6 +296,17 @@ namespace Qyoto {
 			return (IntPtr) GCHandle.Alloc(StringFromQString(ptr));
 		}
 
+		public static IntPtr StringBuilderToQString(IntPtr ptr) {
+			StringBuilder temp = (StringBuilder) ((GCHandle) ptr).Target;
+			return StringToQString(temp.ToString());
+		}
+
+		public static void StringBuilderFromQString(IntPtr ptr, string str) {
+			StringBuilder temp = (StringBuilder) ((GCHandle) ptr).Target;
+//			temp.Remove(0, temp.Length - 1);
+			temp.Append(str);
+		}
+
 		public static IntPtr StringListToQStringList(IntPtr ptr) {
 			List<string> sl = (List<string>) ((GCHandle) ptr).Target;
 			string[] s = (string[]) sl.ToArray();
@@ -401,6 +420,8 @@ namespace Qyoto {
 		static private GetIntPtrFromString intPtrFromString = new GetIntPtrFromString(IntPtrFromString);
 		static private GetIntPtr intPtrToQString = new GetIntPtr(IntPtrToQString);
 		static private GetIntPtr intPtrFromQString = new GetIntPtr(IntPtrFromQString);
+		static private GetIntPtr stringBuilderToQString = new GetIntPtr(StringBuilderToQString);
+		static private SetIntPtrFromCharStar stringBuilderFromQString = new SetIntPtrFromCharStar(StringBuilderFromQString);
 		
 		static private GetIntPtr stringListToQStringList = new GetIntPtr(StringListToQStringList);
 		static private GetIntPtr listToPointerList = new GetIntPtr(ListToPointerList);
@@ -438,6 +459,8 @@ namespace Qyoto {
 			InstallIntPtrFromCharStar(intPtrFromString);
 			InstallIntPtrToQString(intPtrToQString);
 			InstallIntPtrFromQString(intPtrFromQString);
+			InstallStringBuilderToQString(stringBuilderToQString);
+			InstallStringBuilderFromQString(stringBuilderFromQString);
 			InstallConstructList(constructList);
 			InstallStringListToQStringList(stringListToQStringList);
 			InstallListToPointerList(listToPointerList);
