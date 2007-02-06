@@ -303,7 +303,7 @@ namespace Qyoto {
 
 		public static void StringBuilderFromQString(IntPtr ptr, string str) {
 			StringBuilder temp = (StringBuilder) ((GCHandle) ptr).Target;
-//			temp.Remove(0, temp.Length - 1);
+			temp.Remove(0, temp.Length);
 			temp.Append(str);
 		}
 
