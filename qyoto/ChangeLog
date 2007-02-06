@@ -2,7 +2,11 @@
 
 	* Added a QPair struct corresponding to the C++ one, and generate
 	  method calls with arguments that use it
-	* Generate accessor methods for static variables and instane variables
+	* Generate accessor methods for static variables and instance variables
+	* Added the widgets/analogclock example
+	* Fixed bug in marshalling QVector types with an unitialise variable in
+	  a for loop
+	* Added QMin() and QMax() methods
 
 2007-01-06  Richard Dale  <rdale@foton.es>
 

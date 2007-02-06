@@ -1295,8 +1295,8 @@ void marshall_ValueListItem(Marshall *m) {
 		{
 			ItemList *cpplist = new ItemList;
 			QList<void*>* list = (QList<void*>*) (*ListToPointerList)(m->var().s_voidp);
-			
-			for (int i; i < list->size(); ++i) {
+
+			for (int i = 0; i < list->size(); ++i) {
 				smokeqyoto_object * o = value_obj_info(list->at(i));
 				
 				void* ptr = o->ptr;

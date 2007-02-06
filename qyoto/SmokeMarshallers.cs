@@ -148,7 +148,7 @@ namespace Qyoto {
 		public delegate IntPtr ConstructDict(string type1, string type2);
 #endregion
 		
-#region marshallung functions
+#region marshalling functions
 		public static void FreeGCHandle(IntPtr handle) {
 			((GCHandle) handle).Free();
 		}
