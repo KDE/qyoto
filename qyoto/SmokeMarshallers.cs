@@ -297,14 +297,21 @@ namespace Qyoto {
 		}
 
 		public static IntPtr StringBuilderToQString(IntPtr ptr) {
-			StringBuilder temp = (StringBuilder) ((GCHandle) ptr).Target;
-			return StringToQString(temp.ToString());
+			object obj = (object) ((GCHandle) ptr).Target;
+			if (obj.GetType() == typeof(StringBuilder)) {
+				return StringToQString(((StringBuilder) obj).ToString());
+			} else {
+				return StringToQString((string) obj);
+			}
 		}
 
 		public static void StringBuilderFromQString(IntPtr ptr, string str) {
-			StringBuilder temp = (StringBuilder) ((GCHandle) ptr).Target;
-			temp.Remove(0, temp.Length);
-			temp.Append(str);
+			object obj = (object) ((GCHandle) ptr).Target;
+			if (obj.GetType() == typeof(StringBuilder)) {
+				StringBuilder temp = (StringBuilder) obj;
+				temp.Remove(0, temp.Length);
+				temp.Append(str);
+			}
 		}
 
 		public static IntPtr StringListToQStringList(IntPtr ptr) {

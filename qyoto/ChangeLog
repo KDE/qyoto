@@ -10,6 +10,8 @@
 	* Added marshalling for StringBuilder <--> QStrings
 	* Add a generically typed QDBusVariant.FromValue() method to make 
 	  constructing them less ugly.
+	* Use reflection via GetType() to find out whether a string or a 
+	  StringBuilder needs to be marshalled to a QString
 
 2007-01-06  Richard Dale  <rdale@foton.es>
 
