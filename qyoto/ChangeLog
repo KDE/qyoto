@@ -1,8 +1,8 @@
-2007-01-08  Richard Dale  <rdale@foton.es>
+2007-02-07  Richard Dale  <rdale@foton.es>
 
 	* Added a Debug.DebugChannel() method to get debug setting in C#
 
-2007-01-07  Richard Dale  <rdale@foton.es>
+2007-02-06  Richard Dale  <rdale@foton.es>
 
 	* Added a QPair struct corresponding to the C++ one, and generate
 	  method calls with arguments that use it
@@ -17,7 +17,7 @@
 	* Use reflection via GetType() to find out whether a string or a 
 	  StringBuilder needs to be marshalled to a QString
 
-2007-01-06  Richard Dale  <rdale@foton.es>
+2007-02-05  Richard Dale  <rdale@foton.es>
 
 	* Moved operator methods out of Qt.cs, and made them operator
 	  methods in the classes of their arguments. In Qt.cs they
@@ -26,7 +26,7 @@
 	  class of one of their arguments. Now they are proper operator
 	  methods which looks better.
 
-2007-01-05  Richard Dale  <rdale@foton.es>
+2007-02-04  Richard Dale  <rdale@foton.es>
 
 	* Updated the project TODO list
 	* Added a a Qyoto Debug class for turning on debugging options
@@ -43,7 +43,7 @@
 	  but the code needs to be translated from QtRuby.
 	* Removed unwanted blank lines from the generated code.
 
-2007-01-04  Richard Dale  <rdale@foton.es>
+2007-02-03  Richard Dale  <rdale@foton.es>
 
 	* The SmokeMethod attribute constructor now takes three arguments,
 	  for example:
@@ -74,7 +74,7 @@
 	* The default format of a string in mono is utf8, and so assume that when
 	  converting to and from QStrings.
 
-2007-01-03  Richard Dale  <rdale@foton.es>
+2007-02-03  Richard Dale  <rdale@foton.es>
 
 	* Added qdbus/remotecontrolledcar example
 	* The enums named 'Type' clash with the C# method of the same name,
@@ -107,7 +107,7 @@
 	* The generation of the 'munged method names' in the Attributes is currently
 	  wrong, and needs fixing.
 
-2007-01-02  Richard Dale  <rdale@foton.es>
+2007-02-02  Richard Dale  <rdale@foton.es>
 
 	* Improved the debugging output for the content of a QMetaObject
 	* Added the qdbus/chat example
