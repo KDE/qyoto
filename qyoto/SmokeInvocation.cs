@@ -348,12 +348,15 @@ namespace Qyoto {
 
 		public override IMessage Invoke(IMessage message) {
 			IMethodCallMessage callMessage = (IMethodCallMessage) message;
-#if DEBUG
-			Console.WriteLine(	"ENTER Invoke() MethodName: {0} Type: {1} ArgCount: {2}", 
-								callMessage.MethodName, 
-								callMessage.TypeName, 
-								callMessage.ArgCount.ToString() );
-#endif
+//#if DEBUG
+			if ((Debug.DebugChannel() & QtDebugChannel.QTDB_METHOD_MISSING) != 0) {
+				Console.WriteLine(	"ENTER Invoke() MethodName: {0}.{1} Type: {2} ArgCount: {3}", 
+									_className,
+									callMessage.MethodName, 
+									callMessage.TypeName, 
+									callMessage.ArgCount.ToString() );
+			}
+//#endif
 
 			StackItem[] stack = new StackItem[callMessage.ArgCount+1];
 			
@@ -369,13 +372,14 @@ namespace Qyoto {
 				}
 			}
 
-//			Console.WriteLine("Invoke() methodId: {0}", methodId);
-
 			IMethodReturnMessage returnMessage = (IMethodReturnMessage) message;
 
 			// Ignore destructors for now until a way of coordinating C# GC
 			// with C++ deletions has been implemented
-			if (((SmokeMethod) smokeMethod[0]).MungedName.StartsWith("~")) {
+			if (	((SmokeMethod) smokeMethod[0]).MungedName.StartsWith("~")
+					&& _className != "QApplication"
+					&& _className != "QCoreApplication" ) 
+			{
 				return returnMessage;
 			}
 
@@ -464,10 +468,6 @@ namespace Qyoto {
 			}
 						
 			returnMessage = returnValue;
-
-#if DEBUG
-			Console.WriteLine("LEAVE Invoke()");
-#endif
 			return returnMessage;
 		}
 		
@@ -545,10 +545,7 @@ namespace Qyoto {
 			}
 
 			Qyoto.CPPMethod signalEntry = signals[(MethodInfo) callMessage.MethodBase];
-#if DEBUG
-			Console.WriteLine( "Q_SIGNAL signature: {0}", signalEntry.signature );
-			Console.WriteLine( "Q_SIGNAL type: {0}", signalEntry.type );
-#endif
+
 			unsafe {
 				fixed(StackItem * stackPtr = stack) {
 					Type returnType = ((MethodInfo) returnMessage.MethodBase).ReturnType;

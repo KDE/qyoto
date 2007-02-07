@@ -732,7 +732,6 @@ public:
 		// qt_metacall()
 		void * ptr = o[0];
 		smokeStackToQtStack(_stack, o, 1, _replyType);
-			printf("SlotReturnValue o[0]: %p\n", o[0]);
 
 		// Only if the zeroth element of the arrary of 'void*'s passed to qt_metacall()
 		// contains an address, is the return value of the slot needed.
@@ -797,9 +796,6 @@ public:
 		(*InvokeCustomSlot)(_obj, _slotname, _sp, ret);
 		
 		if (_mocret[0].argType != xmoc_void) {
-// #ifdef DEBUG
-			printf("CREATE SlotReturnValue()\n");
-// #endif
 			SlotReturnValue r(_o, ret, _mocret);
 		}
 	}
@@ -916,6 +912,12 @@ void
 SetDebug(int channel) 
 {
 	do_debug = channel;
+}
+
+int
+DebugChannel() 
+{
+	return do_debug;
 }
 
 int 

@@ -1,3 +1,7 @@
+2007-01-08  Richard Dale  <rdale@foton.es>
+
+	* Added a Debug.DebugChannel() method to get debug setting in C#
+
 2007-01-07  Richard Dale  <rdale@foton.es>
 
 	* Added a QPair struct corresponding to the C++ one, and generate

@@ -32,6 +32,9 @@ namespace Qyoto
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		public static extern void SetDebug(QtDebugChannel debugChannel);
 
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		public static extern QtDebugChannel DebugChannel();
+
 		public static DebugLevel debugLevel = DebugLevel.Off;
 
 		public static void SetDebugLevel(DebugLevel level) {
