@@ -4,17 +4,17 @@ PROJECT (kimono)
 SET(SRC_CPP qyoto.cpp
 	handlers.cpp)
 
-SET(SRC_CS SmokeInvocation.cs
-	SmokeMarshallers.cs
-	Qyoto.cs
-	core/*.cs
-	gui/*.cs
-	network/*.cs
-	sql/*.cs
-	xml/*.cs
-	svg/*.cs
-	opengl/*.cs
-	qdbus/*.cs)
+SET(SRC_CS ${CMAKE_CURRENT_SOURCE_DIR}/SmokeInvocation.cs
+	${CMAKE_CURRENT_SOURCE_DIR}/SmokeMarshallers.cs
+	${CMAKE_CURRENT_SOURCE_DIR}/Qyoto.cs
+	${CMAKE_CURRENT_SOURCE_DIR}/core/*.cs
+	${CMAKE_CURRENT_SOURCE_DIR}/gui/*.cs
+	${CMAKE_CURRENT_SOURCE_DIR}/network/*.cs
+	${CMAKE_CURRENT_SOURCE_DIR}/sql/*.cs
+	${CMAKE_CURRENT_SOURCE_DIR}/xml/*.cs
+	${CMAKE_CURRENT_SOURCE_DIR}/svg/*.cs
+	${CMAKE_CURRENT_SOURCE_DIR}/opengl/*.cs
+	${CMAKE_CURRENT_SOURCE_DIR}/qdbus/*.cs)
 
 # find Qt4
 FIND_PACKAGE (Qt4 REQUIRED)
@@ -53,7 +53,8 @@ INCLUDE_DIRECTORIES (${QT_INCLUDES})
 ADD_LIBRARY (qyoto SHARED ${SRC_CPP})
 TARGET_LINK_LIBRARIES (qyoto smokeqt ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY})
 
-ADD_CUSTOM_TARGET (qt-dotnet ALL ${GMCS_PATH} -unsafe -warn:0 -out:qt-dotnet.dll -target:library ${SRC_CS})
+ADD_CUSTOM_TARGET (qt-dotnet ALL ${GMCS_PATH} -unsafe -warn:0 -out:qt-dotnet.dll -target:library ${SRC_CS}
+	COMMENT "Building qt-dotnet.dll")
 
 ADD_DEPENDENCIES (qt-dotnet qyoto)
 

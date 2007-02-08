@@ -1,3 +1,9 @@
+2007-02-08  Arno Rehn  <arno@arnorehn.de>
+
+	* Fixed names of flags in Qyoto.cs
+	* Modified CMakeLists.txt to output more infos and to get out-of-source-dir
+	  builds working
+
 2007-02-08  Richard Dale  <rdale@foton.es>
 
 	* Fixed bugs in the debug dump of QMetaObjects created at runtime
