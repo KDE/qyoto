@@ -1,3 +1,14 @@
+2007-02-08  Richard Dale  <rdale@foton.es>
+
+	* Added a first attempt at setting up the strongReferenceMap and calling
+	  destructors. A boolean function CreateStrongReference() checks whether
+	  or not a strong reference is needed when a new instance has been
+	  constructed. Another function is needed to checked whether the C++
+	  instance still has a parent or container, and not delete if it has.
+
+	* Currently apps crash on exit, but the Qyoto.DeleteQApp()
+	  hack shouldn't be need anymore once destructors are working.
+
 2007-02-08  Arno Rehn  <arno@arnorehn.de>
 
 	* Fixed names of flags in Qyoto.cs

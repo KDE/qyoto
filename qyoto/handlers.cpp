@@ -225,6 +225,48 @@ extern void * set_obj_info(const char * className, smokeqyoto_object * o);
 extern bool isDerivedFromByName(Smoke *smoke, const char *className, const char *baseClassName);
 extern void mapPointer(void * obj, smokeqyoto_object *o, Smoke::Index classId, void *lastptr);
 
+bool
+CreateStrongReference(smokeqyoto_object *o)
+{
+    const char *className = o->smoke->classes[o->classId].className;
+		
+	if (	qstrcmp(className, "QObject") == 0
+			|| qstrcmp(className, "QListBoxItem") == 0
+			|| qstrcmp(className, "QStyleSheetItem") == 0
+			|| qstrcmp(className, "QSqlCursor") == 0
+			|| qstrcmp(className, "QModelIndex") == 0 )
+	{
+		return true;
+	} else if (isDerivedFromByName(o->smoke, className, "QLayoutItem")) {
+		QLayoutItem * item = (QLayoutItem *) o->smoke->cast(o->ptr, o->classId, o->smoke->idClass("QLayoutItem"));
+		if (item->layout() != 0 || item->widget() != 0 || item->spacerItem() != 0) {
+			return true;
+		}
+	} else if (qstrcmp(className, "QListWidgetItem") == 0) {
+		QListWidgetItem * item = (QListWidgetItem *) o->ptr;
+		if (item->listWidget() != 0) {
+			return true;
+		}
+	} else if (isDerivedFromByName(o->smoke, className, "QTableWidgetItem")) {
+		QTableWidgetItem * item = (QTableWidgetItem *) o->smoke->cast(o->ptr, o->classId, o->smoke->idClass("QTableWidgetItem"));
+		if (item->tableWidget() != 0) {
+			return true;
+		}
+	} else if (isDerivedFromByName(o->smoke, className, "QWidget")) {
+		QWidget * qwidget = (QWidget *) o->smoke->cast(o->ptr, o->classId, o->smoke->idClass("QWidget"));
+		if (qwidget->parentWidget() != 0) {
+			return true;
+		}
+	} else if (isDerivedFromByName(o->smoke, className, "QObject")) {
+		QObject * qobject = (QObject *) o->smoke->cast(o->ptr, o->classId, o->smoke->idClass("QObject"));
+		if (qobject->parent() != 0) {
+			return true;
+		}
+	}
+	
+    return false;
+}
+
 /*
  * Given an approximate classname and a qt instance, try to improve the resolution of the name
  * by using the various Qt rtti mechanisms for QObjects, QEvents and QCanvasItems

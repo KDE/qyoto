@@ -1,3 +1,5 @@
+#define DEBUG
+
 namespace Qyoto {
 	using System;
 	using System.Collections;
@@ -62,7 +64,7 @@ namespace Qyoto {
 		public static extern void InstallSetSmokeObject(SetIntPtr callback);
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		public static extern void InstallMapPointer(SetIntPtr callback);
+		public static extern void InstallMapPointer(MapPointerFn callback);
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		public static extern void InstallUnmapPointer(FromIntPtr callback);
@@ -142,6 +144,7 @@ namespace Qyoto {
 		public delegate IntPtr GetIntPtr(IntPtr instance);
 		public delegate void SetIntPtr(IntPtr instance, IntPtr ptr);
 		public delegate void FromIntPtr(IntPtr ptr);
+		public delegate void MapPointerFn(IntPtr instance, IntPtr ptr, bool createStrongReference);
 		public delegate IntPtr CreateInstanceFn(string className);
 		public delegate void InvokeCustomSlotFn(IntPtr obj, string slot, IntPtr stack, IntPtr ret);
 		public delegate bool IsSmokeClassFn(IntPtr obj);
@@ -211,10 +214,23 @@ namespace Qyoto {
 		// and the value is a WeakReference to the C# instance.
 		static private Dictionary<IntPtr, WeakReference> pointerMap = new Dictionary<IntPtr, WeakReference>();
 
-		public static void MapPointer(IntPtr ptr, IntPtr instancePtr) {
+		public static void MapPointer(IntPtr ptr, IntPtr instancePtr, bool createStrongReference) {
 			Object instance = ((GCHandle) instancePtr).Target;
 			WeakReference weakRef = new WeakReference(instance);
 			pointerMap[ptr] = weakRef;
+#if DEBUG
+			if ((Debug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
+				Console.WriteLine("MapPointer() Creating weak reference {0} to ptr: {1}", instance, ptr);
+			}
+#endif
+			if (createStrongReference) {
+				strongReferenceMap[ptr] = instance;
+#if DEBUG
+				if ((Debug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
+					Console.WriteLine("MapPointer() Creating strong reference {0} to ptr: {1}", instance, ptr);
+				}
+#endif
+			}
 		}
 		
 		public static void UnmapPointer(IntPtr ptr) {
@@ -222,9 +238,9 @@ namespace Qyoto {
 			if (!strongReferenceMap.ContainsKey(ptr)) {
 #if DEBUG
 				if ((Debug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
-					object ref;
-					if (strongReferenceMap.TryGetValue(ptr, out ref)) {
-						Console.WriteLine("UnmapPointer() Removing strong reference {0} to ptr: {1}", ref, ptr);
+					object reference;
+					if (strongReferenceMap.TryGetValue(ptr, out reference)) {
+						Console.WriteLine("UnmapPointer() Removing strong reference {0} to ptr: {1}", reference, ptr);
 					}
 				}
 #endif
@@ -286,7 +302,9 @@ namespace Qyoto {
 		public static IntPtr CreateInstance(string className) {
 			Type klass = Type.GetType(className);
 #if DEBUG
-			Console.WriteLine("ENTER CreateInstance className => {0}, {1}", className, klass);
+			if ((Debug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
+				Console.WriteLine("ENTER CreateInstance className => {0}, {1}", className, klass);
+			}
 #endif
 
 			Type[] constructorParamTypes = new Type[1];
@@ -299,14 +317,16 @@ namespace Qyoto {
 			}
 			object result = constructorInfo.Invoke(new object [] { constructorParamTypes[0] });
 #if DEBUG
-			Console.WriteLine("CreateInstance(\"{0}\") constructed {1}", className, result);
+			if ((Debug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
+				Console.WriteLine("CreateInstance(\"{0}\") constructed {1}", className, result);
+			}
 #endif
 			Type[] paramTypes = new Type[0];
 			MethodInfo proxyCreator = klass.GetMethod("CreateProxy", BindingFlags.NonPublic 
 																	| BindingFlags.Instance
 																	| BindingFlags.DeclaredOnly);
 			if (proxyCreator == null) {
-				Console.WriteLine("CreateInstance() proxyCreator method missing");
+				Console.Error.WriteLine("CreateInstance() proxyCreator method missing");
 				return (IntPtr) 0;
 			}
 			proxyCreator.Invoke(result, null);
@@ -458,7 +478,7 @@ namespace Qyoto {
 		static private GetIntPtr getSmokeObject = new GetIntPtr(GetSmokeObject);
 		static private SetIntPtr setSmokeObject = new SetIntPtr(SetSmokeObject);
 		
-		static private SetIntPtr mapPointer = new SetIntPtr(MapPointer);
+		static private MapPointerFn mapPointer = new MapPointerFn(MapPointer);
 		static private FromIntPtr unmapPointer = new FromIntPtr(UnmapPointer);
 		static private GetIntPtr getPointerObject = new GetIntPtr(GetPointerObject);
 		

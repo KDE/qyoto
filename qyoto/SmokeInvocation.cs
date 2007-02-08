@@ -374,15 +374,24 @@ namespace Qyoto {
 
 			IMethodReturnMessage returnMessage = (IMethodReturnMessage) message;
 
-			// Ignore destructors for now until a way of coordinating C# GC
-			// with C++ deletions has been implemented
-			if (	!((SmokeMethod) smokeMethod[0]).MungedName.StartsWith("~")
-					|| (_className == "QApplication" && ((SmokeMethod) smokeMethod[0]).MungedName == "~QApplication")
-					|| (_className == "QCoreApplication" && ((SmokeMethod) smokeMethod[0]).MungedName == "~QCoreApplication") )
+			// Ignore destructors where the destructor method isn't the actual class
+			// of the instance
+			if (	(	((SmokeMethod) smokeMethod[0]).MungedName.StartsWith("~")
+						&& (("~" + _className) != ((SmokeMethod) smokeMethod[0]).MungedName) )
+					|| ((SmokeMethod) smokeMethod[0]).MungedName == "~QMetaObject" )
 			{
-				;
-			} else {
+#if DEBUG
+				if ((Debug.DebugChannel() & QtDebugChannel.QTDB_TRANSPARENT_PROXY) != 0) {
+					Console.WriteLine(	"SKIPPING Invoke() MethodName: {0}.{1} Type: {2} ArgCount: {3}", 
+										_className,
+										callMessage.MethodName, 
+										callMessage.TypeName, 
+										callMessage.ArgCount.ToString() );
+				}
+#endif
 				return returnMessage;
+			} else {
+				;
 			}
 
 			if (methodId == -1) {

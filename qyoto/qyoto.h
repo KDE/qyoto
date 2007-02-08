@@ -58,6 +58,7 @@ typedef void * GCHandle;
 void unmapPointer(smokeqyoto_object *, Smoke::Index, void*);
 smokeqyoto_object *value_obj_info(void * value);
 void * getPointerObject(void *ptr);
+bool CreateStrongReference(smokeqyoto_object *o);
 
 typedef void* (*NoArgs)();
 typedef void* (*GetIntPtr)(void *);
@@ -66,6 +67,7 @@ typedef void (*FromIntPtr)(void *);
 typedef void* (*GetIntPtrFromCharStar)(char *);
 typedef void (*SetIntPtrFromCharStar)(void*, const char *);
 typedef char* (*GetCharStarFromIntPtr)(void *);
+typedef void (*MapPointerFn)(void *, void *, bool);
 typedef void* (*OverridenMethodFn)(void *, const char *);
 typedef void (*InvokeMethodFn)(void *, void *, void *);
 typedef void* (*CreateInstanceFn)(const char *);

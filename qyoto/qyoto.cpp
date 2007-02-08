@@ -68,7 +68,7 @@ FromIntPtr FreeGCHandle;
 static GetIntPtr GetSmokeObject;
 static SetIntPtr SetSmokeObject;
 
-static SetIntPtr MapPointer;
+static MapPointerFn MapPointer;
 static FromIntPtr UnmapPointer;
 static GetIntPtr GetPointerObject;
 
@@ -352,9 +352,13 @@ void mapPointer(void * obj, smokeqyoto_object *o, Smoke::Index classId, void *la
 		lastptr = ptr;
 		if (do_debug & qtdb_gc) {
 			const char *className = o->smoke->classes[o->classId].className;
-			qWarning("mapPointer (%s*)%p -> %p", className, ptr, (void*)obj);
+			qWarning(	"mapPointer (%s*)%p -> %p strong ref: %s", 
+						className, 
+						ptr, 
+						(void*)obj,
+						CreateStrongReference(o) ? "true" : "false" );
 		}
-		(*MapPointer)(ptr, obj);
+		(*MapPointer)(ptr, obj, CreateStrongReference(o));
     }
 	
 	for (Smoke::Index *i = o->smoke->inheritanceList + o->smoke->classes[classId].parents; *i; i++) {
@@ -1153,7 +1157,7 @@ InstallSetSmokeObject(SetIntPtr callback)
 }
 
 void 
-InstallMapPointer(SetIntPtr callback)
+InstallMapPointer(MapPointerFn callback)
 {
 	MapPointer = callback;
 }
