@@ -376,15 +376,19 @@ namespace Qyoto {
 
 			// Ignore destructors for now until a way of coordinating C# GC
 			// with C++ deletions has been implemented
-			if (	((SmokeMethod) smokeMethod[0]).MungedName.StartsWith("~")
-					&& _className != "QApplication"
-					&& _className != "QCoreApplication" ) 
+			if (	!((SmokeMethod) smokeMethod[0]).MungedName.StartsWith("~")
+					|| (_className == "QApplication" && ((SmokeMethod) smokeMethod[0]).MungedName == "~QApplication")
+					|| (_className == "QCoreApplication" && ((SmokeMethod) smokeMethod[0]).MungedName == "~QCoreApplication") )
 			{
+				;
+			} else {
 				return returnMessage;
 			}
 
 			if (methodId == -1) {
-				Console.Error.WriteLine("LEAVE Invoke() ** Missing method ** {0}", ((MethodInfo) callMessage.MethodBase).Name);
+				Console.Error.WriteLine(	"LEAVE Invoke() ** Missing method ** {0}.{1}", 
+											_className,
+											((MethodInfo) callMessage.MethodBase).Name );
 				return returnMessage;
 			}
 			

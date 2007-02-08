@@ -321,24 +321,24 @@ void * getPointerObject(void *ptr) {
 }
 
 void unmapPointer(smokeqyoto_object *o, Smoke::Index classId, void *lastptr) {
-    void *ptr = o->smoke->cast(o->ptr, o->classId, classId);
-    if(ptr != lastptr) {
-	lastptr = ptr;
-	if (getPointerObject(ptr) != 0) {
-		void * obj_ptr = getPointerObject(ptr);
+	void *ptr = o->smoke->cast(o->ptr, o->classId, classId);
+
+	if (ptr != lastptr) {
+		lastptr = ptr;
+		if (getPointerObject(ptr) != 0) {
+			void * obj_ptr = getPointerObject(ptr);
 		
-		if (do_debug & qtdb_gc) {
-			const char *className = o->smoke->classes[o->classId].className;
-			qWarning("unmapPointer (%s*)%p -> %p", className, ptr, obj_ptr);
-		}
+			if (do_debug & qtdb_gc) {
+				const char *className = o->smoke->classes[o->classId].className;
+				qWarning("unmapPointer (%s*)%p -> %p", className, ptr, obj_ptr);
+			}
 	    
-		(*UnmapPointer)(ptr);
+			(*UnmapPointer)(ptr);
+		}
 	}
-    }
-    for(Smoke::Index *i = o->smoke->inheritanceList + o->smoke->classes[classId].parents;
-	*i;
-	i++) {
-	unmapPointer(o, *i, lastptr);
+
+	for (Smoke::Index *i = o->smoke->inheritanceList + o->smoke->classes[classId].parents; *i; i++) {
+		unmapPointer(o, *i, lastptr);
     }
 }
 
@@ -357,10 +357,8 @@ void mapPointer(void * obj, smokeqyoto_object *o, Smoke::Index classId, void *la
 		(*MapPointer)(ptr, obj);
     }
 	
-    for(Smoke::Index *i = o->smoke->inheritanceList + o->smoke->classes[classId].parents;
-	*i;
-	i++) {
-	mapPointer(obj, o, *i, lastptr);
+	for (Smoke::Index *i = o->smoke->inheritanceList + o->smoke->classes[classId].parents; *i; i++) {
+		mapPointer(obj, o, *i, lastptr);
     }
 	
 	return;
@@ -522,45 +520,47 @@ class MethodCall : public Marshall {
 public:
     MethodCall(Smoke *smoke, Smoke::Index method, void * target, Smoke::Stack sp, int items) :
 	_cur(-1), _smoke(smoke), _method(method), _target(target), _current_object(0), _sp(sp), _items(items), _called(false)
-    {
-	if (_target != 0) {
-	    smokeqyoto_object *o = value_obj_info(_target);
-		if (o && o->ptr) {
-		    _current_object = o->ptr;
-		    _current_object_class = o->classId;
+	{
+		if (_target != 0) {
+	    	smokeqyoto_object *o = value_obj_info(_target);
+			if (o != 0 && o->ptr != 0) {
+		    	_current_object = o->ptr;
+		    	_current_object_class = o->classId;
+			}
 		}
-	}
 	
-	_args = _smoke->argumentList + _smoke->methods[_method].args;
-	_items = _smoke->methods[_method].numArgs;
-	_stack = new Smoke::StackItem[items + 1];
-	_retval = _sp;
+		_args = _smoke->argumentList + _smoke->methods[_method].args;
+		_items = _smoke->methods[_method].numArgs;
+		_stack = new Smoke::StackItem[items + 1];
+		_retval = _sp;
     }
 
 	~MethodCall() {
 		delete[] _stack;
-		(*FreeGCHandle)(_target);
+		if (_target != 0) {
+			(*FreeGCHandle)(_target);
+		}
 	}
 
-    SmokeType type() {
+	SmokeType type() {
     	return SmokeType(_smoke, _args[_cur]);
-    }
+	}
 
-    Marshall::Action action() {
-    	return Marshall::FromObject;
-    }
-    Smoke::StackItem &item() {
-    	return _stack[_cur + 1];
-    }
+	Marshall::Action action() {
+		return Marshall::FromObject;
+	}
+	Smoke::StackItem &item() {
+		return _stack[_cur + 1];
+	}
 
 	Smoke::StackItem &var() {
 		if (_cur < 0) return *_retval;
-		return _sp[_cur + 1];
-    }
+			return _sp[_cur + 1];
+	}
 
-    inline const Smoke::Method &method() {
+	inline const Smoke::Method &method() {
     	return _smoke->methods[_method];
-    }
+	}
 
     void unsupported() {
     	if (strcmp(_smoke->className(method().classId), "QGlobalSpace") == 0) {
@@ -597,23 +597,24 @@ public:
 
     }
 
-    void next() {
-	int oldcur = _cur;
-	_cur++;
+	void next() {
+		int oldcur = _cur;
+		_cur++;
 
-	while(!_called && _cur < _items) {
-	    Marshall::HandlerFn fn = getMarshallFn(type());
-	    (*fn)(this);
-	    _cur++;
-	}
-	callMethod();
-	_cur = oldcur;
+		while(!_called && _cur < _items) {
+			Marshall::HandlerFn fn = getMarshallFn(type());
+	    	(*fn)(this);
+	    	_cur++;
+		}
+		callMethod();
+		_cur = oldcur;
     }
 
     bool cleanup() {
     	return true;
     }
 };
+
 /*
 	Converts a C++ value returned by a signal invocation to a C# 
 	reply type
@@ -1396,22 +1397,26 @@ void* make_metaObject(void* obj, const char* stringdata, int stringdata_count, c
 	data[0], data[1], data[2], data[3], 
 	data[4], data[5], data[6], data[7], data[8], data[9]);
 
-	printf(
-	"\n // classinfo: key, value\n"
-	"      %d,    %d\n",
-	data[10], data[11]);
+	int s = data[3];
 
-	int s = 12;
+	if (data[2] > 0) {
+		printf("\n // classinfo: key, value\n");
+		for (uint j = 0; j < data[2]; j++) {
+			printf("      %d,    %d\n", data[s + (j * 2)], data[s + (j * 2) + 1]);
+		}
+	}
+
+	s = data[5];
 	bool signal_headings = true;
 	bool slot_headings = true;
 
 	for (uint j = 0; j < data[4]; j++) {
-		if (signal_headings && (data[s + (j * 5) + 4] & 0x04)) {
+		if (signal_headings && (data[s + (j * 5) + 4] & 0x04) != 0) {
 			printf("\n // signals: signature, parameters, type, tag, flags\n");
 			signal_headings = false;
 		} 
 
-		if (slot_headings && (data[s + (j * 5) + 4] & 0x08)) {
+		if (slot_headings && (data[s + (j * 5) + 4] & 0x08) != 0) {
 			printf("\n // slots: signature, parameters, type, tag, flags\n");
 			slot_headings = false;
 		}
