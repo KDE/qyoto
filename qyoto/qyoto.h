@@ -46,7 +46,7 @@ extern int do_debug;   // evil
 enum QtDebugChannel {
     qtdb_none = 0x00,
     qtdb_ambiguous = 0x01,
-    qtdb_method_missing = 0x02,
+    qtdb_transparent_proxy = 0x02,
     qtdb_calls = 0x04,
     qtdb_gc = 0x08,
     qtdb_virtual = 0x10,

@@ -3,6 +3,14 @@
 	* Fixed bugs in the debug dump of QMetaObjects created at runtime
 	* Normalized some code layout
 	* Only QApplication and QCoreApplication destructors are now called
+	* Added a strongReferenceMap to hold a mapping from a C++ pointer to
+	  a C# instance. It is used to prevent garbage collection for instances
+	  which are contained in another instance, such as a QObject with a
+	  parent, even when there are no references to the child within the C#
+	  Qyoto application code. When the parent finally deletes the child on 
+	  the C++ side, the reference is removed from the Dictionary by the 
+	  SmokeMarshallers.UnmapPointer() method.
+	* Renamed the QTDB_METHOD_MISSING debugging flag as QTDB_TRANSPARENT_PROXY
 
 2007-02-07  Richard Dale  <rdale@foton.es>
 

@@ -199,6 +199,15 @@ namespace Qyoto {
 		}
 
 		// The key is an IntPtr corresponding to the address of the C++ instance,
+		// and the value is a the C# instance. This is used to prevent garbage
+		// collection for instances which are contained inside, and owned by
+		// other instances. For instance, a QObject can have a parent which will
+		// delete the child when it is deleted. This Dictionary will prevent the
+		// child from being GCd even if there are no references to it in the Qyoto
+		// application code.
+		static private Dictionary<IntPtr, object> strongReferenceMap = new Dictionary<IntPtr, object>();
+
+		// The key is an IntPtr corresponding to the address of the C++ instance,
 		// and the value is a WeakReference to the C# instance.
 		static private Dictionary<IntPtr, WeakReference> pointerMap = new Dictionary<IntPtr, WeakReference>();
 
@@ -210,25 +219,56 @@ namespace Qyoto {
 		
 		public static void UnmapPointer(IntPtr ptr) {
 			pointerMap.Remove(ptr);
+			if (!strongReferenceMap.ContainsKey(ptr)) {
+#if DEBUG
+				if ((Debug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
+					object ref;
+					if (strongReferenceMap.TryGetValue(ptr, out ref)) {
+						Console.WriteLine("UnmapPointer() Removing strong reference {0} to ptr: {1}", ref, ptr);
+					}
+				}
+#endif
+				strongReferenceMap.Remove(ptr);
+			}
 		}
 		
 		public static IntPtr GetPointerObject(IntPtr ptr) {
-//			Console.WriteLine("ENTER GetPointerObject() ptr: {0}", ptr);
+#if DEBUG
+			if ((Debug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
+				Console.WriteLine("ENTER GetPointerObject() ptr: {0}", ptr);
+			}
+#endif
 			WeakReference weakRef;
 			if (!pointerMap.TryGetValue(ptr, out weakRef)) {
-//				Console.WriteLine("GetPointerObject() pointerMap[ptr] == null");
+#if DEBUG
+				if ((Debug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
+					Console.WriteLine("GetPointerObject() pointerMap[ptr] == null");
+				}
+#endif
 				return (IntPtr) 0;
 			}
 
 			if (weakRef == null) {
-//				Console.WriteLine("GetPointerObject() weakRef zero");
+#if DEBUG
+				if ((Debug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
+					Console.WriteLine("GetPointerObject() weakRef zero");
+				}
+#endif
 				return (IntPtr) 0;
 			} else if (weakRef.IsAlive) {
-//				Console.WriteLine("GetPointerObject() weakRef.IsAlive");
+#if DEBUG
+				if ((Debug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
+					Console.WriteLine("GetPointerObject() weakRef.IsAlive");
+				}
+#endif
 				GCHandle instanceHandle = GCHandle.Alloc(weakRef.Target);
 				return (IntPtr) instanceHandle;
 			} else {
-//				Console.WriteLine("GetPointerObject() weakRef dead");
+#if DEBUG
+				if ((Debug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
+					Console.WriteLine("GetPointerObject() weakRef dead");
+				}
+#endif
 				return (IntPtr) 0;
 			}
 		}

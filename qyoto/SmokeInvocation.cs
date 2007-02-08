@@ -349,7 +349,7 @@ namespace Qyoto {
 		public override IMessage Invoke(IMessage message) {
 			IMethodCallMessage callMessage = (IMethodCallMessage) message;
 //#if DEBUG
-			if ((Debug.DebugChannel() & QtDebugChannel.QTDB_METHOD_MISSING) != 0) {
+			if ((Debug.DebugChannel() & QtDebugChannel.QTDB_TRANSPARENT_PROXY) != 0) {
 				Console.WriteLine(	"ENTER Invoke() MethodName: {0}.{1} Type: {2} ArgCount: {3}", 
 									_className,
 									callMessage.MethodName, 
