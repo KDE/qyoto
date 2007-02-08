@@ -220,14 +220,14 @@ namespace Qyoto {
 			pointerMap[ptr] = weakRef;
 #if DEBUG
 			if ((Debug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
-				Console.WriteLine("MapPointer() Creating weak reference {0} to ptr: {1}", instance, ptr);
+				Console.WriteLine("MapPointer() Creating weak reference 0x{0:x8} -> {1}", (int) ptr, instance);
 			}
 #endif
 			if (createStrongReference) {
 				strongReferenceMap[ptr] = instance;
 #if DEBUG
 				if ((Debug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
-					Console.WriteLine("MapPointer() Creating strong reference {0} to ptr: {1}", instance, ptr);
+					Console.WriteLine("MapPointer() Creating strong reference 0x{0:x8} -> {1}", (int) ptr, instance);
 				}
 #endif
 			}
@@ -240,7 +240,7 @@ namespace Qyoto {
 				if ((Debug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
 					object reference;
 					if (strongReferenceMap.TryGetValue(ptr, out reference)) {
-						Console.WriteLine("UnmapPointer() Removing strong reference {0} to ptr: {1}", reference, ptr);
+						Console.WriteLine("UnmapPointer() Removing strong reference 0x{0:x8} -> {1}", (int) ptr, reference);
 					}
 				}
 #endif
@@ -249,16 +249,11 @@ namespace Qyoto {
 		}
 		
 		public static IntPtr GetPointerObject(IntPtr ptr) {
-#if DEBUG
-			if ((Debug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
-				Console.WriteLine("ENTER GetPointerObject() ptr: {0}", ptr);
-			}
-#endif
 			WeakReference weakRef;
 			if (!pointerMap.TryGetValue(ptr, out weakRef)) {
 #if DEBUG
 				if ((Debug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
-					Console.WriteLine("GetPointerObject() pointerMap[ptr] == null");
+					Console.WriteLine("GetPointerObject() pointerMap[0x{0:x8}] == null", (int) ptr);
 				}
 #endif
 				return (IntPtr) 0;
@@ -267,14 +262,14 @@ namespace Qyoto {
 			if (weakRef == null) {
 #if DEBUG
 				if ((Debug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
-					Console.WriteLine("GetPointerObject() weakRef zero");
+					Console.WriteLine("GetPointerObject() weakRef null ptr: 0x{0:x8}", (int) ptr);
 				}
 #endif
 				return (IntPtr) 0;
 			} else if (weakRef.IsAlive) {
 #if DEBUG
 				if ((Debug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
-					Console.WriteLine("GetPointerObject() weakRef.IsAlive");
+					Console.WriteLine("GetPointerObject() weakRef.IsAlive 0x{0:x8} -> {1}", (int) ptr, weakRef.Target);
 				}
 #endif
 				GCHandle instanceHandle = GCHandle.Alloc(weakRef.Target);
@@ -282,7 +277,7 @@ namespace Qyoto {
 			} else {
 #if DEBUG
 				if ((Debug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
-					Console.WriteLine("GetPointerObject() weakRef dead");
+					Console.WriteLine("GetPointerObject() weakRef dead ptr: 0x{0:x8}", (int) ptr);
 				}
 #endif
 				return (IntPtr) 0;
@@ -301,18 +296,12 @@ namespace Qyoto {
 		// calls to SmokeInvocation.Invoke() is called.
 		public static IntPtr CreateInstance(string className) {
 			Type klass = Type.GetType(className);
-#if DEBUG
-			if ((Debug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
-				Console.WriteLine("ENTER CreateInstance className => {0}, {1}", className, klass);
-			}
-#endif
-
 			Type[] constructorParamTypes = new Type[1];
 			constructorParamTypes[0] = typeof(Type);
 			ConstructorInfo constructorInfo = klass.GetConstructor(BindingFlags.NonPublic 
 					| BindingFlags.Instance, null, new Type[ ] { typeof( Type ) } , null);
 			if (constructorInfo == null) {
-				Console.WriteLine("CreateInstance(\"{0}\") constructor method missing {1}", className, constructorParamTypes[0]);
+				Console.Error.WriteLine("CreateInstance(\"{0}\") constructor method missing {1}", className, constructorParamTypes[0]);
 				return (IntPtr) 0;
 			}
 			object result = constructorInfo.Invoke(new object [] { constructorParamTypes[0] });
