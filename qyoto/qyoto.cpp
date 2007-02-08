@@ -521,6 +521,7 @@ class MethodCall : public Marshall {
     int _items;
     Smoke::StackItem * _retval;
     bool _called;
+    bool _ctor;
 public:
     MethodCall(Smoke *smoke, Smoke::Index method, void * target, Smoke::Stack sp, int items) :
 	_cur(-1), _smoke(smoke), _method(method), _target(target), _current_object(0), _sp(sp), _items(items), _called(false)
@@ -537,6 +538,17 @@ public:
 		_items = _smoke->methods[_method].numArgs;
 		_stack = new Smoke::StackItem[items + 1];
 		_retval = _sp;
+		
+		Smoke::Method _tmp = _smoke->methods[_method];
+		// constructor?
+		_ctor = (strcmp(_smoke->methodNames[_tmp.name], _smoke->className(_tmp.classId)) == 0);
+		
+		// We have to check here, if our target does still exist
+		// If there is no entry in the weakRef Dictionary, the instance doesn't exist anymore.
+		// There's also no entry, if the method is a constructor or the method is static.
+		// If the target doesn't exist anymore, set _called to true so the method won't be invoked
+		if ((getPointerObject(_current_object) == 0) && !_ctor && !(_tmp.flags == Smoke::mf_static))
+			_called = true;
     }
 
 	~MethodCall() {
@@ -593,7 +605,7 @@ public:
 		MethodReturnValue r(_smoke, _method, _stack, _retval);
 
 		// A constructor
-		if (strcmp(_smoke->methodNames[method().name], _smoke->className(method().classId)) == 0) {
+		if (_ctor) {
 			smokeqyoto_object  * o = alloc_smokeqyoto_object(true, _smoke, method().classId, _stack[0].s_voidp);
 			(*SetSmokeObject)(_target, o);
 		    mapPointer(_target, o, o->classId, 0);

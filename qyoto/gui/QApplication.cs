@@ -514,9 +514,9 @@ namespace Qyoto {
 			return StaticQApplication().KeyboardInputDirection();
 		}
 		public static new int Exec() {
-			int ret = StaticQApplication().Exec();
-			Qyoto.DeleteQApp();
-			return ret;
+			/*int ret = StaticQApplication().Exec();
+			Qyoto.DeleteQApp();*/
+			return StaticQApplication().Exec();
 		}
 		public static void SetQuitOnLastWindowClosed(bool quit) {
 			StaticQApplication().SetQuitOnLastWindowClosed(quit);

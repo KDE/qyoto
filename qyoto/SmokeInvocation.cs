@@ -376,7 +376,7 @@ namespace Qyoto {
 
 			// Ignore destructors where the destructor method isn't the actual class
 			// of the instance
-			if (	(	((SmokeMethod) smokeMethod[0]).MungedName.StartsWith("~")
+			/*if (	(	((SmokeMethod) smokeMethod[0]).MungedName.StartsWith("~")
 						&& (("~" + _className) != ((SmokeMethod) smokeMethod[0]).MungedName) )
 					|| ((SmokeMethod) smokeMethod[0]).MungedName == "~QMetaObject" )
 			{
@@ -392,7 +392,7 @@ namespace Qyoto {
 				return returnMessage;
 			} else {
 				;
-			}
+			}*/
 
 			if (methodId == -1) {
 				Console.Error.WriteLine(	"LEAVE Invoke() ** Missing method ** {0}.{1}", 

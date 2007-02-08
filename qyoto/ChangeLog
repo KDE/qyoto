@@ -1,3 +1,11 @@
+2007-02-08  Arno Rehn  <arno@arnorehn.de>
+
+	* Made destructors work. The only problem was that we have to check
+	  if the instance of which a method should be invoked still exists.
+	  This was not the case, e.g. if the QApplication instance was destroyed
+	  at the end of an app and with it all other Qt instances.
+	  Now the DeleteQApp-Hack isn't needed anymore, too.
+
 2007-02-08  Richard Dale  <rdale@foton.es>
 
 	* Added a first attempt at setting up the strongReferenceMap and calling
