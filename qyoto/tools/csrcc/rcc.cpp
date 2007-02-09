@@ -469,9 +469,9 @@ RCCResourceLibrary::writeHeader(FILE *out)
         fprintf(out, "using System.Runtime.InteropServices;\n\n");
         fprintf(out, "public class QCleanupResources__dest_class__ {\n\n");
         fprintf(out, "[DllImport(\"libqyoto\", CharSet=CharSet.Ansi)]\n");
-        fprintf(out, "public static extern void qRegisterResourceData(byte flag, byte[] resource_struct, byte[] resource_name, byte[] resource_data);\n\n");
+        fprintf(out, "public static extern void qRegisterResourceData(int flag, byte[] resource_struct, byte[] resource_name, byte[] resource_data);\n\n");
         fprintf(out, "[DllImport(\"libqyoto\", CharSet=CharSet.Ansi)]\n");
-        fprintf(out, "public static extern void qUnregisterResourceData(byte flag, byte[] resource_struct, byte[] resource_name, byte[] resource_data);\n\n");
+        fprintf(out, "public static extern void qUnregisterResourceData(int flag, byte[] resource_struct, byte[] resource_name, byte[] resource_data);\n\n");
     } else if(mFormat == Binary) {
         fprintf(out,"qres");
         qt_rcc_write_number(out, 0, 4, mFormat);
