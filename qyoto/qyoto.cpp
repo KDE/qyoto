@@ -543,11 +543,14 @@ public:
 		// constructor?
 		_ctor = (strcmp(_smoke->methodNames[_tmp.name], _smoke->className(_tmp.classId)) == 0);
 		
-		// We have to check here, if our target does still exist
+		// We have to check here, if our target does still exists.
 		// If there is no entry in the weakRef Dictionary, the instance doesn't exist anymore.
 		// There's also no entry, if the method is a constructor or the method is static.
-		// If the target doesn't exist anymore, set _called to true so the method won't be invoked
-		if ((getPointerObject(_current_object) == 0) && !_ctor && !(_tmp.flags == Smoke::mf_static))
+		// If the target doesn't exist anymore, set _called to true so the method won't be invoked.
+		// The other possibility is that the qApp was just destroyed and we want to call a destructor.
+		// This could lead to a crash when we interfere with the destroying mechanism of Q(Core)Application.
+		if ( ((getPointerObject(_current_object) == 0) && !_ctor && !(_tmp.flags & Smoke::mf_static))
+			|| ((_tmp.flags & Smoke::mf_dtor) && (qApp == 0)) )
 			_called = true;
     }
 
