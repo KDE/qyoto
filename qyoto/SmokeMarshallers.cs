@@ -252,7 +252,9 @@ namespace Qyoto {
 			WeakReference weakRef;
 			if (!pointerMap.TryGetValue(ptr, out weakRef)) {
 #if DEBUG
-				if ((Debug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
+				if (	(Debug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0
+						&& Debug.debugLevel >= DebugLevel.Extensive ) 
+				{
 					Console.WriteLine("GetPointerObject() pointerMap[0x{0:x8}] == null", (int) ptr);
 				}
 #endif
@@ -261,14 +263,18 @@ namespace Qyoto {
 
 			if (weakRef == null) {
 #if DEBUG
-				if ((Debug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
+				if (	(Debug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0
+						&& Debug.debugLevel >= DebugLevel.Extensive ) 
+				{
 					Console.WriteLine("GetPointerObject() weakRef null ptr: 0x{0:x8}", (int) ptr);
 				}
 #endif
 				return (IntPtr) 0;
 			} else if (weakRef.IsAlive) {
 #if DEBUG
-				if ((Debug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
+				if (	(Debug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0
+						&& Debug.debugLevel >= DebugLevel.Extensive ) 
+				{
 					Console.WriteLine("GetPointerObject() weakRef.IsAlive 0x{0:x8} -> {1}", (int) ptr, weakRef.Target);
 				}
 #endif
@@ -276,7 +282,9 @@ namespace Qyoto {
 				return (IntPtr) instanceHandle;
 			} else {
 #if DEBUG
-				if ((Debug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
+				if (	(Debug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0
+						&& Debug.debugLevel >= DebugLevel.Extensive ) 
+				{
 					Console.WriteLine("GetPointerObject() weakRef dead ptr: 0x{0:x8}", (int) ptr);
 				}
 #endif
