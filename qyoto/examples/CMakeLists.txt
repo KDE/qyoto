@@ -1,5 +1,6 @@
-ADD_SUBDIRECTORY(tutorial)
+ADD_SUBDIRECTORY(graphicsview)
 ADD_SUBDIRECTORY(qdbus)
+ADD_SUBDIRECTORY(tutorial)
 ADD_SUBDIRECTORY(widgets)
 
 

@@ -467,7 +467,14 @@ RCCResourceLibrary::writeHeader(FILE *out)
         fprintf(out,  "*****************************************************************************/\n\n");
         fprintf(out, "using Qyoto;\n");
         fprintf(out, "using System.Runtime.InteropServices;\n\n");
-        fprintf(out, "public class QCleanupResources__dest_class__ {\n\n");
+
+        QString initName = mInitName;
+        if(!initName.isEmpty()) {
+            initName.prepend("_");
+            initName.replace(QRegExp("[^a-zA-Z0-9_]"), "_");
+        }
+
+        fprintf(out, "public class QCleanupResources%s__dest_class__ {\n\n", initName.toLatin1().constData());
         fprintf(out, "[DllImport(\"libqyoto\", CharSet=CharSet.Ansi)]\n");
         fprintf(out, "public static extern void qRegisterResourceData(int flag, byte[] resource_struct, byte[] resource_name, byte[] resource_data);\n\n");
         fprintf(out, "[DllImport(\"libqyoto\", CharSet=CharSet.Ansi)]\n");
@@ -620,16 +627,19 @@ RCCResourceLibrary::writeInitializer(FILE *out)
         }
 
         //init
-        fprintf(out, "int QInitResources%s()\n{\n", initName.toLatin1().constData());
+        fprintf(out, "static int QInitResources%s()\n{\n", initName.toLatin1().constData());
         fprintf(out, "    qRegisterResourceData(0x01, qt_resource_struct, "
                      "qt_resource_name, qt_resource_data);\n");
         fprintf(out, "    return 1;\n");
         fprintf(out, "}\n\n");
 //        fprintf(out, "Q_CONSTRUCTOR_FUNCTION(qInitResources%s)\n",
 //                initName.toLatin1().constData());
+        fprintf(out, "static QCleanupResources%s__dest_class__() {\n", initName.toLatin1().constData());
+        fprintf(out, "    QInitResources%s();\n", initName.toLatin1().constData());
+        fprintf(out, "}\n\n");
 
         //cleanup
-        fprintf(out, "int QCleanupResources%s()\n{\n", initName.toLatin1().constData());
+        fprintf(out, "static int QCleanupResources%s()\n{\n", initName.toLatin1().constData());
         fprintf(out, "    qUnregisterResourceData(0x01, qt_resource_struct, "
                      "qt_resource_name, qt_resource_data);\n");
         fprintf(out, "    return 1;\n");

@@ -2,6 +2,10 @@
 
 	* Renamed CreateStrongReference() as IsInstanceContained()
 	* Added 'csrcc', a C# version of the Qt rcc tool
+	* Added the graphicsview/collidingmice example
+	* Fixed code generation of the csrcc tool, and added a static
+	  constructor
+	* Added a cmake rule for a ${CSRCC_PATH} variable
 
 2007-02-08  Arno Rehn  <arno@arnorehn.de>
 

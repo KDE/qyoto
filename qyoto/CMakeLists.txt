@@ -49,6 +49,16 @@ ELSE (NOT UICS_PATH)
 	MESSAGE (STATUS "Looking for uics - found - ${UICS_PATH}")
 ENDIF (NOT UICS_PATH)
 
+# find 'csrcc'
+MESSAGE (STATUS "Looking for csrcc")
+FIND_PROGRAM (CSRCC_PATH csrcc)
+IF (NOT CSRCC_PATH)
+	MESSAGE (STATUS "Looking for csrcc - not found")
+	MESSAGE (FATAL_ERROR "csrcc was not found on your system")
+ELSE (NOT CSRCC_PATH)
+	MESSAGE (STATUS "Looking for csrcc - found - ${CSRCC_PATH}")
+ENDIF (NOT CSRCC_PATH)
+
 INCLUDE_DIRECTORIES (${QT_INCLUDES})
 ADD_LIBRARY (qyoto SHARED ${SRC_CPP})
 TARGET_LINK_LIBRARIES (qyoto smokeqt ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY})
