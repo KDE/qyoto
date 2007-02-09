@@ -358,7 +358,7 @@ void mapPointer(void * obj, smokeqyoto_object *o, Smoke::Index classId, void *la
 						(void*)obj,
 						CreateStrongReference(o) ? "true" : "false" );
 		}
-		(*MapPointer)(ptr, obj, CreateStrongReference(o));
+		(*MapPointer)(ptr, obj, IsInstanceContained(o));
     }
 	
 	for (Smoke::Index *i = o->smoke->inheritanceList + o->smoke->classes[classId].parents; *i; i++) {

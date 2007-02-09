@@ -226,7 +226,7 @@ extern bool isDerivedFromByName(Smoke *smoke, const char *className, const char 
 extern void mapPointer(void * obj, smokeqyoto_object *o, Smoke::Index classId, void *lastptr);
 
 bool
-CreateStrongReference(smokeqyoto_object *o)
+IsInstanceContained(smokeqyoto_object *o)
 {
     const char *className = o->smoke->classes[o->classId].className;
 		
