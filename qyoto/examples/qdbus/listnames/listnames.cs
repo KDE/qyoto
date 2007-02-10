@@ -72,7 +72,6 @@ class ListNames {
         Method2();
         Method3();
 
-        Qyoto.Qyoto.DeleteQApp();
         return 0;
     }
 }

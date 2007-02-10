@@ -196,6 +196,7 @@ namespace Qyoto {
 		public bool AtEnd() {
 			return ProxyQDBusArgument().AtEnd();
 		}
+		// QDBusArgument* QDBusArgument(QDBusArgumentPrivate* arg1); >>>> NOT CONVERTED
 		~QDBusArgument() {
 			DisposeQDBusArgument();
 		}

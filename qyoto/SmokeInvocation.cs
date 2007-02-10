@@ -152,7 +152,9 @@ namespace Qyoto {
 			object instance = ((GCHandle) instanceHandle).Target;
 			MethodInfo method = (MethodInfo) ((GCHandle) methodHandle).Target;
 #if DEBUG
-			if ((Debug.DebugChannel() & QtDebugChannel.QTDB_TRANSPARENT_PROXY) != 0) {
+			if (	(Debug.DebugChannel() & QtDebugChannel.QTDB_TRANSPARENT_PROXY) != 0
+					&& (Debug.DebugChannel() & QtDebugChannel.QTDB_VIRTUAL) != 0 )
+			{
 				Console.WriteLine(	"ENTER InvokeMethod() {0}.{1}", 
 									instance,
 									method.Name );
@@ -497,7 +499,7 @@ namespace Qyoto {
 
 #if DEBUG
 			if ((Debug.DebugChannel() & QtDebugChannel.QTDB_TRANSPARENT_PROXY) != 0) {
-				Console.WriteLine(	"ENTER SmokeInvocation.Invoke() MethodName: {0}.{1} Type: {2} ArgCount: {3}", 
+				Console.WriteLine(	"ENTER SignalInvocation.Invoke() MethodName: {0}.{1} Type: {2} ArgCount: {3}", 
 									_className,
 									callMessage.MethodName, 
 									callMessage.TypeName, 

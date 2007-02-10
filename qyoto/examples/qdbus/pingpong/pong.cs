@@ -27,23 +27,22 @@ using Qyoto;
 using System;
 using System.Collections.Generic;
 
-class Pong : QObject 
-{
+class Pong : QObject {
     static private string SERVICE_NAME = "com.trolltech.QtDBus.PingExample";
 
     [Q_SLOT]
     public string ping(string arg)
     {
-//        This call crashes mono for some reason, so comment it out for now..
-//        QMetaObject.InvokeMethod(QCoreApplication.Instance(), "quit");
+        QMetaObject.InvokeMethod(QCoreApplication.Instance(), "quit");
+                Debug.SetDebug(QtDebugChannel.QTDB_ALL);
         return "ping(\"" + arg + "\") got called";
     }
 
     public static int Main(string[] args) {
-        new QCoreApplication(args);
+        QCoreApplication app = new QCoreApplication(args);
 
         if (!QDBusConnection.SessionBus().IsConnected()) {
-            Console.WriteLine("Cannot connect to the D-BUS session bus.\n" +
+            Console.Write("Cannot connect to the D-BUS session bus.\n" +
                 "To start it, run:\n" +
                 "\teval `dbus-launch --auto-syntax`\n");
             return 1;

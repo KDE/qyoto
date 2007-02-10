@@ -80,6 +80,8 @@ static IsSmokeClassFn IsSmokeClass;
 
 // Maps from a classname in the form Qt::Widget to an int id
 QHash<int,char *> classname;
+extern bool qRegisterResourceData(int, const unsigned char *, const unsigned char *, const unsigned char *);
+extern bool qUnregisterResourceData(int, const unsigned char *, const unsigned char *, const unsigned char *);
 
 extern "C" {
 extern void * set_obj_info(const char * className, smokeqyoto_object * o);
@@ -1153,6 +1155,17 @@ QVariantFromValue(int type, void * value)
 	return set_obj_info("Qyoto.QVariant", vo);
 }
 
+
+bool QyotoRegisterResourceData(int flag, const unsigned char * s, const unsigned char *n, const unsigned char *d)
+{
+	qRegisterResourceData(flag, s, n, d);
+}
+
+bool QyotoUnregisterResourceData(int flag, const unsigned char * s, const unsigned char *n, const unsigned char *d)
+{
+	qUnregisterResourceData(flag, s, n, d);
+}
+
 void 
 InstallFreeGCHandle(FromIntPtr callback)
 {
@@ -1364,7 +1377,7 @@ SignalEmit(char * signature, char * type, void * obj, Smoke::StackItem * sp, int
 
 QMetaObject* parent_meta_object(void* obj) {
 #ifdef DEBUG
-printf("In make_metaObject()\n");
+printf("ENTER make_metaObject()\n");
 #endif
 	smokeqyoto_object* o = value_obj_info(obj);
 	Smoke::Index nameId = o->smoke->idMethodName("metaObject");
@@ -1555,15 +1568,9 @@ Init_qyoto()
 
     for (int i = 1; i <= qt_Smoke->numClasses; i++) {
         className = classPrefix + qt_Smoke->classes[i].className;
-//  printf("classname: %s id: %d\n", className.latin1(), i);
         classStringName = className.toLatin1();
         classname.insert(i, strdup(classStringName.constData()));
     }
-}
-
-void
-DeleteQApp() {
-	delete qApp;
 }
 
 }

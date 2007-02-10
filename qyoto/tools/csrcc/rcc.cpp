@@ -474,11 +474,11 @@ RCCResourceLibrary::writeHeader(FILE *out)
             initName.replace(QRegExp("[^a-zA-Z0-9_]"), "_");
         }
 
-        fprintf(out, "public class QCleanupResources%s__dest_class__ {\n\n", initName.toLatin1().constData());
+        fprintf(out, "public class QInitResources%s__dest_class__ {\n\n", initName.toLatin1().constData());
         fprintf(out, "[DllImport(\"libqyoto\", CharSet=CharSet.Ansi)]\n");
-        fprintf(out, "public static extern void qRegisterResourceData(int flag, byte[] resource_struct, byte[] resource_name, byte[] resource_data);\n\n");
+        fprintf(out, "public static unsafe extern void QyotoRegisterResourceData(int flag, byte * resource_struct, byte * resource_name, byte * resource_data);\n\n");
         fprintf(out, "[DllImport(\"libqyoto\", CharSet=CharSet.Ansi)]\n");
-        fprintf(out, "public static extern void qUnregisterResourceData(int flag, byte[] resource_struct, byte[] resource_name, byte[] resource_data);\n\n");
+        fprintf(out, "public static unsafe extern void QyotoUnregisterResourceData(int flag, byte * resource_struct, byte * resource_name, byte * resource_data);\n\n");
     } else if(mFormat == Binary) {
         fprintf(out,"qres");
         qt_rcc_write_number(out, 0, 4, mFormat);
@@ -627,26 +627,31 @@ RCCResourceLibrary::writeInitializer(FILE *out)
         }
 
         //init
-        fprintf(out, "static int QInitResources%s()\n{\n", initName.toLatin1().constData());
-        fprintf(out, "    qRegisterResourceData(0x01, qt_resource_struct, "
-                     "qt_resource_name, qt_resource_data);\n");
+        fprintf(out, "public static int QInitResources%s()\n{\n", initName.toLatin1().constData());
+        fprintf(out, "    unsafe {\n");
+        fprintf(out, "        fixed (byte *s = qt_resource_struct, n = qt_resource_name, d = qt_resource_data)\n");
+
+        // Make the call here, passing in the array.
+        fprintf(out, "        QyotoRegisterResourceData(0x01, s, n, d);\n");
+        fprintf(out, "    }\n");
         fprintf(out, "    return 1;\n");
         fprintf(out, "}\n\n");
-//        fprintf(out, "Q_CONSTRUCTOR_FUNCTION(qInitResources%s)\n",
-//                initName.toLatin1().constData());
-        fprintf(out, "static QCleanupResources%s__dest_class__() {\n", initName.toLatin1().constData());
+
+        fprintf(out, "static QInitResources%s__dest_class__() {\n", initName.toLatin1().constData());
         fprintf(out, "    QInitResources%s();\n", initName.toLatin1().constData());
         fprintf(out, "}\n\n");
 
         //cleanup
-        fprintf(out, "static int QCleanupResources%s()\n{\n", initName.toLatin1().constData());
-        fprintf(out, "    qUnregisterResourceData(0x01, qt_resource_struct, "
-                     "qt_resource_name, qt_resource_data);\n");
+        fprintf(out, "public static int QCleanupResources%s()\n{\n", initName.toLatin1().constData());
+        fprintf(out, "    unsafe {\n");
+        fprintf(out, "        fixed (byte *s = qt_resource_struct, n = qt_resource_name, d = qt_resource_data)\n");
+
+        // Make the call here, passing in the array.
+        fprintf(out, "        QyotoUnregisterResourceData(0x01, s, n, d);\n");
+        fprintf(out, "    }\n");
         fprintf(out, "    return 1;\n");
         fprintf(out, "}\n\n");
         fprintf(out, "}\n");
-//        fprintf(out, "Q_DESTRUCTOR_FUNCTION(qCleanupResources%s)\n",
-//                initName.toLatin1().constData());
     } else if(mFormat == Binary) {
         const long old_pos = ftell(out);
         fseek(out, 4, SEEK_SET);

@@ -22,7 +22,7 @@
 using Qyoto;
 using System;
 
-class T13 {
+class T14 {
     public static void Main(string[] args) {
         new QApplication(args);
         GameBoard board = new GameBoard();

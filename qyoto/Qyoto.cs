@@ -48,9 +48,6 @@ namespace Qyoto
 	public class Qyoto : System.Object
 	{
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		public static extern void DeleteQApp();
-
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		public static extern void Init_qyoto();
     
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]

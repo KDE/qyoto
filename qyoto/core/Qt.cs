@@ -1349,7 +1349,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~Qt", "()", "")]
 		private void DisposeQt() {
-			ProxyQt().DisposeQt();
+//			ProxyQt().DisposeQt();
 		}
 		public static void QDBusReplyFill(QDBusMessage reply, QDBusError error, QVariant data) {
 			StaticQt().QDBusReplyFill(reply,error,data);

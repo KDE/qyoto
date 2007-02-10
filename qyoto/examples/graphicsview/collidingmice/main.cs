@@ -23,10 +23,11 @@
 using Qyoto;
 using System;
 
-public class MouseMain {
+public class MouseMain : Qt{
     private static int MouseCount = 7;
     
     public static int Main(string[] args) {
+        Q_INIT_RESOURCE("mice");
         new QApplication(args);
     
         QGraphicsScene scene = new QGraphicsScene();
