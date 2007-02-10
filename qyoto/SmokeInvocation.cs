@@ -15,7 +15,7 @@
  *                                                                         *
  ***************************************************************************/
 
-// #define DEBUG
+#define DEBUG
 
 namespace Qyoto {
 
@@ -149,12 +149,15 @@ namespace Qyoto {
 		}
 
 		public static void InvokeMethod(IntPtr instanceHandle, IntPtr methodHandle, IntPtr stack) {
-#if DEBUG
-			Console.WriteLine("ENTER: InvokeMethod");
-#endif
 			object instance = ((GCHandle) instanceHandle).Target;
 			MethodInfo method = (MethodInfo) ((GCHandle) methodHandle).Target;
-//			Console.WriteLine("InvokeMethod() {0}.{1}", instance, method.Name);
+#if DEBUG
+			if ((Debug.DebugChannel() & QtDebugChannel.QTDB_TRANSPARENT_PROXY) != 0) {
+				Console.WriteLine(	"ENTER InvokeMethod() {0}.{1}", 
+									instance,
+									method.Name );
+			}
+#endif
 
 			unsafe {
 				StackItem * stackPtr = (StackItem *) stack;
@@ -234,7 +237,11 @@ namespace Qyoto {
 			QObject qobj = (QObject) ((GCHandle)obj).Target;
 			string className = qobj.GetType().ToString();
 #if DEBUG
-			Console.WriteLine("handling slot {0} for class {1}", slotname, qobj.GetType());
+			if ((Debug.DebugChannel() & QtDebugChannel.QTDB_TRANSPARENT_PROXY) != 0) {
+				Console.WriteLine(	"ENTER InvokeCustomSlot() {0}.{1}", 
+									qobj.GetType(),
+									slotname );
+			}
 #endif
 			Dictionary<string, Qyoto.CPPMethod> slotTable;
 			if (!Qyoto.classes.TryGetValue(className, out slotTable)) {
@@ -246,7 +253,7 @@ namespace Qyoto {
 			}
 			catch (KeyNotFoundException) {
 				// should not happen
-				Console.WriteLine("** Could not retrieve slot {0}.{1} info **", className, slotname);
+				Console.Error.WriteLine("** Could not retrieve slot {0}.{1} info **", className, slotname);
 				return;
 			}
 		
@@ -348,15 +355,15 @@ namespace Qyoto {
 
 		public override IMessage Invoke(IMessage message) {
 			IMethodCallMessage callMessage = (IMethodCallMessage) message;
-//#if DEBUG
+#if DEBUG
 			if ((Debug.DebugChannel() & QtDebugChannel.QTDB_TRANSPARENT_PROXY) != 0) {
-				Console.WriteLine(	"ENTER Invoke() MethodName: {0}.{1} Type: {2} ArgCount: {3}", 
+				Console.WriteLine(	"ENTER SmokeInvocation.Invoke() MethodName: {0}.{1} Type: {2} ArgCount: {3}", 
 									_className,
 									callMessage.MethodName, 
 									callMessage.TypeName, 
 									callMessage.ArgCount.ToString() );
 			}
-//#endif
+#endif
 
 			StackItem[] stack = new StackItem[callMessage.ArgCount+1];
 			
@@ -373,26 +380,6 @@ namespace Qyoto {
 			}
 
 			IMethodReturnMessage returnMessage = (IMethodReturnMessage) message;
-
-			// Ignore destructors where the destructor method isn't the actual class
-			// of the instance
-			/*if (	(	((SmokeMethod) smokeMethod[0]).MungedName.StartsWith("~")
-						&& (("~" + _className) != ((SmokeMethod) smokeMethod[0]).MungedName) )
-					|| ((SmokeMethod) smokeMethod[0]).MungedName == "~QMetaObject" )
-			{
-#if DEBUG
-				if ((Debug.DebugChannel() & QtDebugChannel.QTDB_TRANSPARENT_PROXY) != 0) {
-					Console.WriteLine(	"SKIPPING Invoke() MethodName: {0}.{1} Type: {2} ArgCount: {3}", 
-										_className,
-										callMessage.MethodName, 
-										callMessage.TypeName, 
-										callMessage.ArgCount.ToString() );
-				}
-#endif
-				return returnMessage;
-			} else {
-				;
-			}*/
 
 			if (methodId == -1) {
 				Console.Error.WriteLine(	"LEAVE Invoke() ** Missing method ** {0}.{1}", 
@@ -507,6 +494,16 @@ namespace Qyoto {
 		public override IMessage Invoke(IMessage message) {
 			IMethodCallMessage callMessage = (IMethodCallMessage) message;
 			StackItem[] stack = new StackItem[callMessage.ArgCount+1];
+
+#if DEBUG
+			if ((Debug.DebugChannel() & QtDebugChannel.QTDB_TRANSPARENT_PROXY) != 0) {
+				Console.WriteLine(	"ENTER SmokeInvocation.Invoke() MethodName: {0}.{1} Type: {2} ArgCount: {3}", 
+									_className,
+									callMessage.MethodName, 
+									callMessage.TypeName, 
+									callMessage.ArgCount.ToString() );
+			}
+#endif
 
 			if (callMessage.MethodSignature != null) {
 				Type[] types = (Type[]) callMessage.MethodSignature;

@@ -1,3 +1,7 @@
+2007-02-10  Richard Dale  <rdale@foton.es>
+
+	* Improved debug messages in SmokeInvocation.cs
+
 2007-02-09  Arno Rehn  <arno@arnorehn.de>
 
 	* When a qApp instance was destroyed, it would automatically destroy all
