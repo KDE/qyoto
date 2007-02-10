@@ -1,3 +1,9 @@
+2007-02-10  Arno Rehn  <arno@arnorehn.de>
+
+	* If the aboutToQuit() signal is catched, no destructors will be called.
+	  Replaces the check for qApp == 0. No warning about QSocketNotifiers at
+	  the end of the main event loop anymore.
+
 2007-02-10  Richard Dale  <rdale@foton.es>
 
 	* Improved debug messages in SmokeInvocation.cs
