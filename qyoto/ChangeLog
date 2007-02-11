@@ -6,6 +6,7 @@
 	* Renamed IsInstanceContained() as IsContainedInstance(), and only call
 	  a destructor for instances where it is false, as the C++ side will
 	  delete the instance.
+	* Q_INIT_RESOURCE() now correctly finds the resource class to load
 
 2007-02-10  Arno Rehn  <arno@arnorehn.de>
 

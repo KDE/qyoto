@@ -16,27 +16,39 @@ namespace Qyoto {
 			return "1" + slot;
 		}
 
-		public static void Q_INIT_RESOURCE(string name) {
+		private static Type findResourceClass(string name) {
 			string className = "QInitResources_" + name + "__dest_class__";
-			// This unfortunately doesn't work because it only looks in the
-			// current assembly. Is it possible to force a search of all
-			// assemblies?
-			Type klass = Type.GetType(className);
+			Assembly[] assemblies = AppDomain.CurrentDomain.GetAssemblies();
+			Type klass = null;
+
+			foreach (Assembly assembly in assemblies) {
+				klass = assembly.GetType(className);
+				if (klass != null) {
+					break;
+				}
+			}
+
+			return klass;
+		}
+
+		public static void Q_INIT_RESOURCE(string name) {
+			Type klass = findResourceClass(name);
 			if (klass == null) {
 				Console.Error.WriteLine("Q_INIT_RESOURCE: resource '{0}' is missing", name);
 				return;
 			}
+
 			MethodInfo initResource = klass.GetMethod("QInitResources_" + name);
 			initResource.Invoke(null, null);		
 		}
 
 		public static void Q_CLEANUP_RESOURCE(string name) {
-			string className = "QInitResources_" + name + "__dest_class__";
-			Type klass = Type.GetType(className);
+			Type klass = findResourceClass(name);
 			if (klass == null) {
 				Console.Error.WriteLine("Q_CLEANUP_RESOURCE: resource '{0}' is missing", name);
 				return;
 			}
+
 			MethodInfo cleanupResource = klass.GetMethod("QCleanupResources_" + name);
 			cleanupResource.Invoke(null, null);
 		}
