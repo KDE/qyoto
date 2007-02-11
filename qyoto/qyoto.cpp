@@ -520,22 +520,23 @@ class MethodCall : public Marshall {
     Smoke::Index _method;
     Smoke::Index *_args;
 	void * _target;
-	void * _current_object;
-	Smoke::Index _current_object_class;
+	smokeqyoto_object * _o;
     Smoke::Stack _sp;
     int _items;
     Smoke::StackItem * _retval;
     bool _called;
-    bool _ctor;
 public:
     MethodCall(Smoke *smoke, Smoke::Index method, void * target, Smoke::Stack sp, int items) :
-	_cur(-1), _smoke(smoke), _method(method), _target(target), _current_object(0), _sp(sp), _items(items), _called(false)
+	_cur(-1), _smoke(smoke), _method(method), _target(target), _sp(sp), _items(items), _called(false)
 	{
 		if (_target != 0) {
-	    	smokeqyoto_object *o = value_obj_info(_target);
-			if (o != 0 && o->ptr != 0) {
-		    	_current_object = o->ptr;
-		    	_current_object_class = o->classId;
+	    	_o = value_obj_info(_target);
+			if (_o != 0 && _o->ptr != 0) {
+				if (!_o->allocated && isDestructor()) {
+					_called = true;
+				}
+			} else if (!isConstructor() && !isStatic()) {
+				_called = true;
 			}
 		}
 	
@@ -544,19 +545,18 @@ public:
 		_stack = new Smoke::StackItem[items + 1];
 		_retval = _sp;
 		
-		Smoke::Method _tmp = _smoke->methods[_method];
-		// constructor?
-		_ctor = (strcmp(_smoke->methodNames[_tmp.name], _smoke->className(_tmp.classId)) == 0);
-		
 		// We have to check here, if our target does still exists.
 		// If there is no entry in the weakRef Dictionary, the instance doesn't exist anymore.
 		// There's also no entry, if the method is a constructor or the method is static.
 		// If the target doesn't exist anymore, set _called to true so the method won't be invoked.
 		// The other possibility is that the qApp is about to quit and we want to call a destructor.
 		// This could lead to a crash when we interfere with the destroying mechanism of Q(Core)Application.
-		if ( ((_tmp.flags & Smoke::mf_dtor) && qapp_spy && (qapp_spy->count() != 0))
-			|| ((getPointerObject(_current_object) == 0) && !_ctor && !(_tmp.flags & Smoke::mf_static)) )
+//		if ( ((_tmp.flags & Smoke::mf_dtor) && qapp_spy && (qapp_spy->count() != 0))
+//			|| ((getPointerObject(_current_object) == 0) && !_ctor && !(_tmp.flags & Smoke::mf_static)) )
+//			_called = true;
+		if (qapp_spy != 0 && qapp_spy->count() != 0) {
 			_called = true;
+		}
     }
 
 	~MethodCall() {
@@ -586,6 +586,10 @@ public:
     	return _smoke->methods[_method];
 	}
 
+    inline bool isConstructor() { return method().flags & Smoke::mf_ctor; }
+    inline bool isDestructor() { return method().flags & Smoke::mf_dtor; }
+    inline bool isStatic() { return method().flags & Smoke::mf_static; }
+
     void unsupported() {
     	if (strcmp(_smoke->className(method().classId), "QGlobalSpace") == 0) {
 			qFatal("Cannot handle '%s' as argument to %s",
@@ -607,16 +611,19 @@ public:
 		if (_called) return;
 		_called = true;
 		Smoke::ClassFn fn = _smoke->classes[method().classId].classFn;
-		void *ptr = _smoke->cast(_current_object, _current_object_class, method().classId);
+		void *ptr = 0;
+		if (_o != 0 && _o->ptr != 0) {
+			ptr = _smoke->cast(_o->ptr, _o->classId, method().classId);
+		}
 		_items = -1;
 		(*fn)(method().method, ptr, _stack);
 		MethodReturnValue r(_smoke, _method, _stack, _retval);
 
 		// A constructor
-		if (_ctor) {
-			smokeqyoto_object  * o = alloc_smokeqyoto_object(true, _smoke, method().classId, _stack[0].s_voidp);
-			(*SetSmokeObject)(_target, o);
-		    mapPointer(_target, o, o->classId, 0);
+		if (isConstructor()) {
+			_o = alloc_smokeqyoto_object(true, _smoke, method().classId, _stack[0].s_voidp);
+			(*SetSmokeObject)(_target, _o);
+		    mapPointer(_target, _o, _o->classId, 0);
 			
 			// create a signal spy to catch the "aboutToQuit()" signal
 			if (strcmp("QApplication", _smoke->className(method().classId)) == 0
@@ -624,6 +631,9 @@ public:
 				
 				qapp_spy = new QSignalSpy(qApp, SIGNAL(aboutToQuit()));
 			}
+		} else if (isDestructor()) {
+			_o->ptr = 0;
+			_o->allocated = false;
 		}
 
     }

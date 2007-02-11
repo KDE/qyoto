@@ -146,6 +146,8 @@ public:
 
     bool isStatic() const { return flags() & Smoke::mf_static; }
     bool isConst() const { return flags() & Smoke::mf_const; }
+    bool isConstructor() const { return flags() & Smoke::mf_ctor; }
+    bool isDestructor() const { return flags() & Smoke::mf_dtor; }
 
     void call(Smoke::Stack args, void *ptr = 0) const {
 	Smoke::ClassFn fn = c().classFn();
