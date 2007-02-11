@@ -150,6 +150,10 @@ public class Mouse : QGraphicsItem {
             
             QLineF lineToMouse = new QLineF(new QPointF(0, 0), MapFromItem(item, 0, 0));
             double angleToMouse = Math.Acos(lineToMouse.Dx() / lineToMouse.Length());
+            if (lineToMouse.Length() == 0) {
+                angleToMouse = 0;
+            }
+
             if (lineToMouse.Dy() < 0)
                 angleToMouse = TwoPi - angleToMouse;
             angleToMouse = NormalizeAngle((Pi - angleToMouse) + Pi / 2);
