@@ -23,7 +23,7 @@
 using Qyoto;
 using System;
 
-public class MouseMain : Qt{
+public class MouseMain : Qt {
     private static int MouseCount = 7;
     
     public static int Main(string[] args) {
@@ -46,8 +46,7 @@ public class MouseMain : Qt{
         view.BackgroundBrush = new QBrush(new QPixmap(":/images/cheese.jpg"));
         view.CacheMode = (int) QGraphicsView.CacheModeFlag.CacheBackground;
         view.dragMode = QGraphicsView.DragMode.ScrollHandDrag;
-//        view.setWindowTitle(QT_TRANSLATE_NOOP(QGraphicsView, "Colliding Mice"));
-        view.WindowTitle = "Colliding Mice";
+        view.WindowTitle = QT_TRANSLATE_NOOP("QGraphicsView", "Colliding Mice");
         view.Resize(400, 300);
         view.Show();
     

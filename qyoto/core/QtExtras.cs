@@ -53,6 +53,14 @@ namespace Qyoto {
 			cleanupResource.Invoke(null, null);
 		}
 
+		public static string QT_TR_NOOP(string text) {
+			return text;
+		}
+
+		public static string QT_TRANSLATE_NOOP(string klass, string text) {
+			return text;
+		}
+
 		// These should really use generic types like the C++ originals, but
 		// it doesn't seem to work with C#
 		public static int QMin(int a, int b) { if (a < b) return a; return b; }
