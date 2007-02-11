@@ -58,7 +58,7 @@ typedef void * GCHandle;
 void unmapPointer(smokeqyoto_object *, Smoke::Index, void*);
 smokeqyoto_object *value_obj_info(void * value);
 void * getPointerObject(void *ptr);
-bool IsInstanceContained(smokeqyoto_object *o);
+bool IsContainedInstance(smokeqyoto_object *o);
 
 typedef void* (*NoArgs)();
 typedef void* (*GetIntPtr)(void *);

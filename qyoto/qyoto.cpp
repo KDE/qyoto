@@ -361,9 +361,9 @@ void mapPointer(void * obj, smokeqyoto_object *o, Smoke::Index classId, void *la
 						className, 
 						ptr, 
 						(void*)obj,
-						IsInstanceContained(o) ? "true" : "false" );
+						IsContainedInstance(o) ? "true" : "false" );
 		}
-		(*MapPointer)(ptr, obj, IsInstanceContained(o));
+		(*MapPointer)(ptr, obj, IsContainedInstance(o));
     }
 	
 	for (Smoke::Index *i = o->smoke->inheritanceList + o->smoke->classes[classId].parents; *i; i++) {
@@ -527,13 +527,16 @@ class MethodCall : public Marshall {
     bool _called;
 public:
     MethodCall(Smoke *smoke, Smoke::Index method, void * target, Smoke::Stack sp, int items) :
-	_cur(-1), _smoke(smoke), _method(method), _target(target), _sp(sp), _items(items), _called(false)
+	_cur(-1), _smoke(smoke), _method(method), _target(target), _o(0), _sp(sp), _items(items), _called(false)
 	{
 		if (_target != 0) {
 	    	_o = value_obj_info(_target);
 			if (_o != 0 && _o->ptr != 0) {
-				if (!_o->allocated && isDestructor()) {
+				if (	isDestructor() 
+						&& (!_o->allocated || IsContainedInstance(_o)) ) 
+				{
 					_called = true;
+					_o->allocated = false;
 				}
 			} else if (!isConstructor() && !isStatic()) {
 				_called = true;
@@ -619,7 +622,6 @@ public:
 		(*fn)(method().method, ptr, _stack);
 		MethodReturnValue r(_smoke, _method, _stack, _retval);
 
-		// A constructor
 		if (isConstructor()) {
 			_o = alloc_smokeqyoto_object(true, _smoke, method().classId, _stack[0].s_voidp);
 			(*SetSmokeObject)(_target, _o);
