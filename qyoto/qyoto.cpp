@@ -634,8 +634,8 @@ public:
 				qapp_spy = new QSignalSpy(qApp, SIGNAL(aboutToQuit()));
 			}
 		} else if (isDestructor()) {
+			unmapPointer(_o, _o->classId, 0);
 			_o->ptr = 0;
-			_o->allocated = false;
 		}
 
     }
@@ -1184,7 +1184,6 @@ QVariantFromValue(int type, void * value)
 	(*FreeGCHandle)(value);
 	return set_obj_info("Qyoto.QVariant", vo);
 }
-
 
 bool QyotoRegisterResourceData(int flag, const unsigned char * s, const unsigned char *n, const unsigned char *d)
 {

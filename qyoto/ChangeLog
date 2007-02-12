@@ -4,6 +4,8 @@
 	  didn't work, and the value returned was always -1, even when it had been
 	  set to a value. So use a dictionary of type Dictionary<MethodInfo, int>
 	  as a cache instead.
+	* When a destructor has been called, remove the item from the weak 
+	  reference map
 
 2007-02-11  Richard Dale  <rdale@foton.es>
 
