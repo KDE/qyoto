@@ -6,6 +6,8 @@
 	  as a cache instead.
 	* When a destructor has been called, remove the item from the weak 
 	  reference map
+	* Additionally, in a destructor free the smokeqyoto_object struct, and
+	  set the pointer to it in the C# instance to 0.
 
 2007-02-11  Richard Dale  <rdale@foton.es>
 

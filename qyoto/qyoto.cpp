@@ -635,7 +635,8 @@ public:
 			}
 		} else if (isDestructor()) {
 			unmapPointer(_o, _o->classId, 0);
-			_o->ptr = 0;
+			(*SetSmokeObject)(_target, 0);
+			free_smokeqyoto_object(_o);
 		}
 
     }
@@ -890,7 +891,8 @@ public:
 			return;
 		}
 		unmapPointer(o, o->classId, 0);
-		o->ptr = 0;
+		(*SetSmokeObject)(obj, 0);
+		free_smokeqyoto_object(o);
 		
 		// delete the previously created QSignalSpy
 		if (strcmp("QApplication", smoke->className(classId)) == 0
