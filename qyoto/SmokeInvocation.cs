@@ -340,6 +340,8 @@ namespace Qyoto {
 		private Type	_classToProxy;
 		private Object	_instance;
 		private string	_className = "";
+
+		private static Dictionary<MethodInfo, int> methodIdCache = new Dictionary<MethodInfo, int>();
 		
 		public SmokeInvocation(Type classToProxy, Object instance) : base(classToProxy) 
 		{
@@ -357,6 +359,8 @@ namespace Qyoto {
 
 		public override IMessage Invoke(IMessage message) {
 			IMethodCallMessage callMessage = (IMethodCallMessage) message;
+			IMethodReturnMessage returnMessage = (IMethodReturnMessage) message;
+
 #if DEBUG
 			if ((Debug.DebugChannel() & QtDebugChannel.QTDB_TRANSPARENT_PROXY) != 0) {
 				Console.WriteLine(	"ENTER SmokeInvocation.Invoke() MethodName: {0}.{1} Type: {2} ArgCount: {3}", 
@@ -366,30 +370,32 @@ namespace Qyoto {
 									callMessage.ArgCount.ToString() );
 			}
 #endif
-
-			StackItem[] stack = new StackItem[callMessage.ArgCount+1];
 			
 			int methodId = -1;
-			object[] smokeMethod = ((MethodInfo) callMessage.MethodBase).GetCustomAttributes(typeof(SmokeMethod), false);
-			if (smokeMethod.Length > 0) {
-				methodId = ((SmokeMethod) smokeMethod[0]).methodId;
-				if (methodId == -1) {
+			if (!methodIdCache.TryGetValue((MethodInfo) callMessage.MethodBase, out methodId)) {
+				object[] smokeMethod = ((MethodInfo) callMessage.MethodBase).GetCustomAttributes(typeof(SmokeMethod), false);
+				if (smokeMethod.Length > 0) {
 					methodId = FindMethodId(	_className,
 												((SmokeMethod) smokeMethod[0]).MungedName, 
 												((SmokeMethod) smokeMethod[0]).ArgsSignature );
-					((SmokeMethod) smokeMethod[0]).methodId = methodId;
+
+					if (methodId == -1) {
+						Console.Error.WriteLine(	"LEAVE Invoke() ** Missing method ** {0}.{1}", 
+													_className,
+													((MethodInfo) callMessage.MethodBase).Name );
+						return returnMessage;
+					}
+
+					// Don't cache calls to QObject.MetaObject() as it is the same method for all
+					// classes, and the wrong method is cached for classes which aren't QObject.
+					if (!callMessage.MethodName.EndsWith("MetaObject")) {
+						methodIdCache[(MethodInfo) callMessage.MethodBase] = methodId;
+					}
 				}
 			}
-
-			IMethodReturnMessage returnMessage = (IMethodReturnMessage) message;
-
-			if (methodId == -1) {
-				Console.Error.WriteLine(	"LEAVE Invoke() ** Missing method ** {0}.{1}", 
-											_className,
-											((MethodInfo) callMessage.MethodBase).Name );
-				return returnMessage;
-			}
 			
+			StackItem[] stack = new StackItem[callMessage.ArgCount+1];
+
 			if (callMessage.MethodSignature != null) {
 				Type[] types = (Type[]) callMessage.MethodSignature;
 				for (int i = 0; i < callMessage.ArgCount; i++) {
@@ -397,6 +403,10 @@ namespace Qyoto {
 						unsafe {
 							stack[i+1].s_class = (IntPtr) 0;
 						}
+					} else if (types[i] == typeof(int) || types[i].IsEnum) {
+						stack[i+1].s_int = (int) callMessage.Args[i];
+					} else if (!types[i].IsPrimitive) {
+						stack[i+1].s_class = (IntPtr) GCHandle.Alloc(callMessage.Args[i]);
 					} else if (types[i] == typeof(bool)) {
 						stack[i+1].s_bool = (bool) callMessage.Args[i];
 					} else if (types[i] == typeof(sbyte)) {
@@ -407,8 +417,6 @@ namespace Qyoto {
 						stack[i+1].s_short = (short) callMessage.Args[i];
 					} else if (types[i] == typeof(ushort)) {
 						stack[i+1].s_ushort = (ushort) callMessage.Args[i];
-					} else if (types[i] == typeof(int) || types[i].IsEnum) {
-						stack[i+1].s_int = (int) callMessage.Args[i];
 					} else if (types[i] == typeof(uint)) {
 						stack[i+1].s_uint = (uint) callMessage.Args[i];
 					} else if (types[i] == typeof(long)) {
@@ -419,10 +427,11 @@ namespace Qyoto {
 						stack[i+1].s_float = (float) callMessage.Args[i];
 					} else if (types[i] == typeof(double)) {
 						stack[i+1].s_double = (double) callMessage.Args[i];
-					} else if (types[i] == typeof(string)) {
-						stack[i+1].s_class = (IntPtr) GCHandle.Alloc(callMessage.Args[i]);
 					} else {
-						stack[i+1].s_class = (IntPtr) GCHandle.Alloc(callMessage.Args[i]);
+						Console.Error.WriteLine(	"MethodName: {0}.{1} Unknown type: {2}", 
+													_className,
+													callMessage.MethodName, 
+													types[i] );
 					}
 				}
 			}

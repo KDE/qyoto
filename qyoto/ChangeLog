@@ -1,3 +1,10 @@
+2007-02-12  Richard Dale  <rdale@foton.es>
+
+	* The scheme for caching the smoke methodId inside a SmokeMethod Attribute
+	  didn't work, and the value returned was always -1, even when it had been
+	  set to a value. So use a dictionary of type Dictionary<MethodInfo, int>
+	  as a cache instead.
+
 2007-02-11  Richard Dale  <rdale@foton.es>
 
 	* Don't call a destructor is the instance was allocated in the C++ world
