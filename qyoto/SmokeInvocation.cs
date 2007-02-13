@@ -403,10 +403,6 @@ namespace Qyoto {
 						unsafe {
 							stack[i+1].s_class = (IntPtr) 0;
 						}
-					} else if (types[i] == typeof(int) || types[i].IsEnum) {
-						stack[i+1].s_int = (int) callMessage.Args[i];
-					} else if (!types[i].IsPrimitive) {
-						stack[i+1].s_class = (IntPtr) GCHandle.Alloc(callMessage.Args[i]);
 					} else if (types[i] == typeof(bool)) {
 						stack[i+1].s_bool = (bool) callMessage.Args[i];
 					} else if (types[i] == typeof(sbyte)) {
@@ -417,6 +413,8 @@ namespace Qyoto {
 						stack[i+1].s_short = (short) callMessage.Args[i];
 					} else if (types[i] == typeof(ushort)) {
 						stack[i+1].s_ushort = (ushort) callMessage.Args[i];
+					} else if (types[i] == typeof(int) || types[i].IsEnum) {
+						stack[i+1].s_int = (int) callMessage.Args[i];
 					} else if (types[i] == typeof(uint)) {
 						stack[i+1].s_uint = (uint) callMessage.Args[i];
 					} else if (types[i] == typeof(long)) {
@@ -427,11 +425,10 @@ namespace Qyoto {
 						stack[i+1].s_float = (float) callMessage.Args[i];
 					} else if (types[i] == typeof(double)) {
 						stack[i+1].s_double = (double) callMessage.Args[i];
+					} else if (types[i] == typeof(string)) {
+						stack[i+1].s_class = (IntPtr) GCHandle.Alloc(callMessage.Args[i]);
 					} else {
-						Console.Error.WriteLine(	"MethodName: {0}.{1} Unknown type: {2}", 
-													_className,
-													callMessage.MethodName, 
-													types[i] );
+						stack[i+1].s_class = (IntPtr) GCHandle.Alloc(callMessage.Args[i]);
 					}
 				}
 			}

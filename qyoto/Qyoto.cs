@@ -51,6 +51,9 @@ namespace Qyoto
 		public static extern void Init_qyoto();
     
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		public static extern void SetApplicationTerminated();
+
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern IntPtr make_metaObject(IntPtr parent, IntPtr stringdata, int stringdataCount, 
 											 IntPtr data, int dataCount);
 		

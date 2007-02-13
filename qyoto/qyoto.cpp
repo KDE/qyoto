@@ -29,8 +29,6 @@
 #include <QtCore/qstringlist.h>
 #include <QMetaMethod>
 
-#include <QtTest/qsignalspy.h>
-
 #undef DEBUG
 #ifndef __USE_POSIX
 #define __USE_POSIX
@@ -83,11 +81,9 @@ QHash<int,char *> classname;
 extern bool qRegisterResourceData(int, const unsigned char *, const unsigned char *, const unsigned char *);
 extern bool qUnregisterResourceData(int, const unsigned char *, const unsigned char *, const unsigned char *);
 
-// watches out for the aboutToQuit() signal from qApp
-QSignalSpy* qapp_spy;
-
 extern "C" {
 extern void * set_obj_info(const char * className, smokeqyoto_object * o);
+bool application_terminated = false;
 };
 
 extern void smokeStackToQtStack(Smoke::Stack stack, void ** o, int items, MocArgument* args);
@@ -533,7 +529,7 @@ public:
 	    	_o = value_obj_info(_target);
 			if (_o != 0 && _o->ptr != 0) {
 				if (	isDestructor() 
-						&& (!_o->allocated || IsContainedInstance(_o)) ) 
+						&& (!_o->allocated || IsContainedInstance(_o) || application_terminated) ) 
 				{
 					_called = true;
 					_o->allocated = false;
@@ -547,19 +543,6 @@ public:
 		_items = _smoke->methods[_method].numArgs;
 		_stack = new Smoke::StackItem[items + 1];
 		_retval = _sp;
-		
-		// We have to check here, if our target does still exists.
-		// If there is no entry in the weakRef Dictionary, the instance doesn't exist anymore.
-		// There's also no entry, if the method is a constructor or the method is static.
-		// If the target doesn't exist anymore, set _called to true so the method won't be invoked.
-		// The other possibility is that the qApp is about to quit and we want to call a destructor.
-		// This could lead to a crash when we interfere with the destroying mechanism of Q(Core)Application.
-//		if ( ((_tmp.flags & Smoke::mf_dtor) && qapp_spy && (qapp_spy->count() != 0))
-//			|| ((getPointerObject(_current_object) == 0) && !_ctor && !(_tmp.flags & Smoke::mf_static)) )
-//			_called = true;
-		if (qapp_spy != 0 && qapp_spy->count() != 0) {
-			_called = true;
-		}
     }
 
 	~MethodCall() {
@@ -626,13 +609,6 @@ public:
 			_o = alloc_smokeqyoto_object(true, _smoke, method().classId, _stack[0].s_voidp);
 			(*SetSmokeObject)(_target, _o);
 		    mapPointer(_target, _o, _o->classId, 0);
-			
-			// create a signal spy to catch the "aboutToQuit()" signal
-			if (strcmp("QApplication", _smoke->className(method().classId)) == 0
-				|| strcmp("QCoreApplication", _smoke->className(method().classId)) == 0) {
-				
-				qapp_spy = new QSignalSpy(qApp, SIGNAL(aboutToQuit()));
-			}
 		} else if (isDestructor()) {
 			unmapPointer(_o, _o->classId, 0);
 			(*SetSmokeObject)(_target, 0);
@@ -893,14 +869,6 @@ public:
 		unmapPointer(o, o->classId, 0);
 		(*SetSmokeObject)(obj, 0);
 		free_smokeqyoto_object(o);
-		
-		// delete the previously created QSignalSpy
-		if (strcmp("QApplication", smoke->className(classId)) == 0
-			|| strcmp("QCoreApplication", smoke->className(classId)) == 0) {
-			
-			delete qapp_spy;
-			qapp_spy = 0;
-		}
     }
 
 	bool callMethod(Smoke::Index method, void *ptr, Smoke::Stack args, bool /*isAbstract*/) {
@@ -1261,6 +1229,12 @@ void
 InstallIsSmokeClass(IsSmokeClassFn callback)
 {
 	IsSmokeClass = callback;
+}
+
+void
+SetApplicationTerminated()
+{
+	application_terminated = true;
 }
 
 void

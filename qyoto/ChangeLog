@@ -1,3 +1,9 @@
+2007-02-13  Richard Dale  <rdale@foton.es>
+
+	* Removed the signal spy check and replaced it with a global flag 
+	  'application_terminated'. Once the flag is set, destructors are no
+	  longer called.
+
 2007-02-12  Richard Dale  <rdale@foton.es>
 
 	* The scheme for caching the smoke methodId inside a SmokeMethod Attribute
