@@ -2,10 +2,6 @@
 include_directories( ${CMAKE_SOURCE_DIR}/uics )
 include_directories( ${CMAKE_SOURCE_DIR}/uics/cs )
 
-# find Qt4
-FIND_PACKAGE (Qt4 REQUIRED)
-INCLUDE_DIRECTORIES (${QT_INCLUDES})
-
 ########### next target ###############
 
 set(uics_bin_SRCS 

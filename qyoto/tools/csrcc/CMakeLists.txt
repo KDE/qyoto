@@ -1,8 +1,5 @@
 SET(csrcc_SRCS rcc.cpp main.cpp )
 
-# find Qt4
-FIND_PACKAGE (Qt4 REQUIRED)
-
 ADD_EXECUTABLE(csrcc ${csrcc_SRCS})
 TARGET_LINK_LIBRARIES (csrcc ${QT_QTCORE_LIBRARY} ${QT_QTXML_LIBRARY})
 
