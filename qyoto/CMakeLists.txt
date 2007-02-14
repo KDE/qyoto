@@ -51,6 +51,6 @@ ADD_CUSTOM_TARGET (qt-dotnet ALL ${GMCS_PATH} -unsafe -warn:0 -out:qt-dotnet.dll
 
 ADD_DEPENDENCIES (qt-dotnet qyoto)
 
-ADD_SUBDIRECTORY(examples)
-ADD_SUBDIRECTORY(tools)
 ADD_SUBDIRECTORY(uics)
+ADD_SUBDIRECTORY(tools)
+ADD_SUBDIRECTORY(examples)
