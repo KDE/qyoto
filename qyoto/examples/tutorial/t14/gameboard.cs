@@ -45,7 +45,7 @@ class GameBoard : QWidget {
         force.SetRange(10, 50);
 
         QFrame cannonBox = new QFrame();
-        cannonBox.SetFrameStyle((int) (QFrame.Shape.WinPanel | QFrame.Shadow.Sunken));
+        cannonBox.SetFrameStyle((int) QFrame.Shape.WinPanel | (int) QFrame.Shadow.Sunken);
 
         cannonField = new CannonField();
 
