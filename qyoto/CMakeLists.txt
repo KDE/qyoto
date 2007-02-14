@@ -39,25 +39,8 @@ ELSE (NOT GMCS_PATH)
 	MESSAGE (STATUS "Looking for gmcs - found - ${GMCS_PATH}")
 ENDIF (NOT GMCS_PATH)
 
-# find 'uics'
-MESSAGE (STATUS "Looking for uics")
-FIND_PROGRAM (UICS_PATH uics)
-IF (NOT UICS_PATH)
-	MESSAGE (STATUS "Looking for uics - not found")
-	MESSAGE (FATAL_ERROR "uics was not found on your system")
-ELSE (NOT UICS_PATH)
-	MESSAGE (STATUS "Looking for uics - found - ${UICS_PATH}")
-ENDIF (NOT UICS_PATH)
-
-# find 'csrcc'
-MESSAGE (STATUS "Looking for csrcc")
-FIND_PROGRAM (CSRCC_PATH csrcc)
-IF (NOT CSRCC_PATH)
-	MESSAGE (STATUS "Looking for csrcc - not found")
-	MESSAGE (FATAL_ERROR "csrcc was not found on your system")
-ELSE (NOT CSRCC_PATH)
-	MESSAGE (STATUS "Looking for csrcc - found - ${CSRCC_PATH}")
-ENDIF (NOT CSRCC_PATH)
+SET( UICS_PATH ${CMAKE_CURRENT_SOURCE_DIR}/uics/uics )
+SET( CSRCC_PATH ${CMAKE_CURRENT_SOURCE_DIR}/tools/csrcc/csrcc )
 
 INCLUDE_DIRECTORIES (${QT_INCLUDES})
 ADD_LIBRARY (qyoto SHARED ${SRC_CPP})

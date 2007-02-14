@@ -17,6 +17,7 @@ set(uics_bin_SRCS
    uic.cpp 
    validator.cpp 
    cs/cswritedeclaration.cpp 
+   cs/cswriteincludes.cpp 
    cs/cswriteicondata.cpp 
    cs/cswriteicondeclaration.cpp 
    cs/cswriteiconinitialization.cpp 
@@ -25,6 +26,7 @@ set(uics_bin_SRCS
 
 add_executable(uics_bin ${uics_bin_SRCS})
 set_target_properties(uics_bin PROPERTIES OUTPUT_NAME uics)
+set_target_properties(uics_bin PROPERTIES COMPILE_FLAGS -DQT_UIC_CS_GENERATOR)
 
 target_link_libraries(uics_bin  ${QT_QTCORE_LIBRARY} ${QT_QTXML_LIBRARY} )
 

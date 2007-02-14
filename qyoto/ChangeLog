@@ -2,6 +2,8 @@
 
 	* Added cmake files for building the csrcc tool
 	* Fix the cmake file for building the uics tool
+	* Specify the ${UICS_PATH} and ${CSRCC_PATH} as their relative positions
+	  within the qyoto project.
 
 2007-02-13  Richard Dale  <rdale@foton.es>
 
