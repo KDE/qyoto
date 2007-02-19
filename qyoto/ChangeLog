@@ -1,5 +1,15 @@
 2007-02-14  Arno Rehn  <arno@arnorehn.de>
 
+	* Implemented adding Q_PROPERTY's to the QMetaObject. Next step is
+	  adding classes like InvokeSlot for properties in qyoto.cpp.
+	* When retrieving slot signatures, also include the slots of the superclass,
+	  if it isn't a native C++ class. Same has to be done for signals.
+	* Did some code cleanup:
+		* Moved QyotoMetaData class into a seperate file, QyotoMetaData.cs
+		* Made code in QyotoMetaData better readable
+
+2007-02-14  Arno Rehn  <arno@arnorehn.de>
+
 	* Fixed compilation error in t14
 	* Modified all CMakeLists.txt to produce nicer output
 

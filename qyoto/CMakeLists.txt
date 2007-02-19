@@ -7,6 +7,7 @@ SET(SRC_CPP qyoto.cpp
 SET(SRC_CS ${CMAKE_CURRENT_SOURCE_DIR}/SmokeInvocation.cs
 	${CMAKE_CURRENT_SOURCE_DIR}/SmokeMarshallers.cs
 	${CMAKE_CURRENT_SOURCE_DIR}/Qyoto.cs
+	${CMAKE_CURRENT_SOURCE_DIR}/QyotoMetaData.cs
 	${CMAKE_CURRENT_SOURCE_DIR}/core/*.cs
 	${CMAKE_CURRENT_SOURCE_DIR}/gui/*.cs
 	${CMAKE_CURRENT_SOURCE_DIR}/network/*.cs

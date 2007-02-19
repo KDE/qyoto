@@ -64,6 +64,13 @@ namespace Qyoto
 			public bool scriptable;
 		}
 		
+		public struct CPPProperty {
+			public string type;
+			public string name;
+			public PropertyInfo pi;
+			public bool scriptable;
+		}
+		
 		/// This Hashtable contains a list of classes with their Hashtables for slots. The class name is the key, the slot-hashtable the value.
 		public static Dictionary<string, Dictionary<string, CPPMethod>> classes = 
 			new Dictionary<string, Dictionary<string, CPPMethod>>();
@@ -212,9 +219,10 @@ namespace Qyoto
 												| BindingFlags.Static 
 												| BindingFlags.Public 
 												| BindingFlags.NonPublic
-												| BindingFlags.DeclaredOnly );
+												/*| BindingFlags.DeclaredOnly */);
 			
 			foreach (MethodInfo mi in mis) {
+				if (IsSmokeClass(mi.DeclaringType)) continue;
 				object[] attributes = mi.GetCustomAttributes(typeof(Q_SLOT), false);
 				foreach (Q_SLOT attr in attributes) {
 					CPPMethod cppinfo = new CPPMethod();
@@ -222,7 +230,7 @@ namespace Qyoto
 					string sig = attr.Signature;
 					if (sig == "")
 						sig = SignatureFromMethodInfo(mi);
-					
+					Console.WriteLine(sig);
 					GetCPPMethodInfo(sig, out cppinfo.signature, out cppinfo.type);
 					
 					cppinfo.mi = mi;
@@ -296,119 +304,32 @@ namespace Qyoto
 			return classinfos;
 		}
 		
-		class QyotoMetaData {
-			byte[] stringdata;
-			uint[] data;
-			private delegate uint Handler(string str);
-			Handler handler;
-		
-			// from qt-copy/src/tools/moc/generator.cpp
-			enum MethodFlags {
-				AccessPrivate = 0x00,
-				AccessProtected = 0x01,
-				AccessPublic = 0x02,
-				MethodMethod = 0x00,
-				MethodSignal = 0x04,
-				MethodSlot = 0x08,
-				MethodCompatibility = 0x10,
-				MethodCloned = 0x20,
-				MethodScriptable = 0x40
-			}
+		public static Dictionary<PropertyInfo, CPPProperty> GetProperties(Type t) {
+			Dictionary<PropertyInfo, CPPProperty> props = new Dictionary<PropertyInfo, CPPProperty>();
 			
-			void AddClassInfo(List<uint> array, string key, string value) {
-				array.Add(handler(key));
-				array.Add(handler(value));
-			}
-			
-			void AddMethod(List<uint> array, string method, string type, MethodFlags flags) {
-				array.Add(handler(method));                            // signature
-				array.Add(handler(Regex.Replace(method, "[^,]", ""))); // parameters
-				array.Add(handler(type));				// type
-				array.Add(handler(""));                                // tag
-				array.Add((uint)flags);                                 // flags
-			}
-			
-			byte[] ComputeStringData(List<string> array) {
-				List<byte> result = new List<byte>();
-				foreach(string x in array) {
-					result.AddRange(Encoding.ASCII.GetBytes(x));
-					result.Add(0);
+			foreach (PropertyInfo pi in t.GetProperties()) {
+				if (IsSmokeClass(pi.DeclaringType)) continue;
+				object[] attrs = pi.GetCustomAttributes(typeof(Q_PROPERTY), false);
+				if (attrs.Length != 0) {
+					Q_PROPERTY attr = (Q_PROPERTY) attrs[0];
+					CPPProperty prop = new CPPProperty();
+					if (attr.Type == "" || attr.Name == "") {
+						prop.type = GetPrimitiveString(pi.PropertyType);
+						prop.name = pi.Name;
+					} else {
+						prop.type = attr.Type;
+						prop.name = attr.Name;
+					}
+					prop.pi = pi;
+					if (pi.GetCustomAttributes(typeof(Q_SCRIPTABLE), false).Length != 0)
+						prop.scriptable = true;
+					props.Add(pi, prop);
 				}
-				return result.ToArray();
-			}
-		
-			public QyotoMetaData(string className, ICollection<CPPMethod> signals, 
-								ICollection<CPPMethod> slots, Dictionary<string, string> classinfos) {
-				Dictionary<string, uint> hash = new Dictionary<string, uint>();
-				uint offset = 0;
-				List<string> stringdata_tmp = new List<string>();
-
-				handler = delegate(string str) {
-						uint res;
-						if (!hash.TryGetValue(str, out res)) {
-#if DEBUG
-							Console.WriteLine("adding {0} in hash at offset {1}", str, offset);
-#endif
-							hash.Add(str, offset);
-							stringdata_tmp.Add(str);
-							res = offset;
-							offset += (uint)str.Length + 1;
-						}
-						return res;
-				};
-				
-				List<uint> tmp = new List<uint>(new uint[] {
-					1,                                  // revision
-					handler(className),                 // classname
-					(uint)classinfos.Count, classinfos.Count > 0 ? (uint)10 : (uint)0,  // classinfo
-					(uint)(signals.Count + slots.Count),
-					(uint)(10 + (2 * classinfos.Count)),        // methods
-					0, 0,                               // properties
-					0, 0
-				});
-				
-				foreach (KeyValuePair<string, string> p in classinfos)
-					AddClassInfo(tmp, p.Key, p.Value);
-				
-				foreach (CPPMethod entry in signals) {
-					MethodFlags flags = MethodFlags.MethodSignal | MethodFlags.AccessProtected;
-					
-					if (entry.scriptable)
-						flags = MethodFlags.MethodScriptable | MethodFlags.MethodSignal | MethodFlags.AccessPublic;
-					
-					AddMethod(tmp,
-						entry.signature,						// signature
-						entry.type,							// return type, "" for void
-						flags);
-				}
-				
-				foreach (CPPMethod entry in slots) {
-					MethodFlags flags = MethodFlags.MethodSlot | MethodFlags.AccessPublic;
-					
-					if (entry.scriptable)
-						flags = MethodFlags.MethodScriptable | MethodFlags.MethodSlot | MethodFlags.AccessPublic;
-					
-					AddMethod(tmp,
-						entry.signature,						// signature
-						entry.type,							// return type, "" for void
-						MethodFlags.MethodSlot | MethodFlags.AccessPublic);
-				}
-				
-				tmp.Add(0);
-				
-				stringdata = ComputeStringData(stringdata_tmp);
-				data = tmp.ToArray();
-			}
-		
-			public byte[] StringData {
-				get { return stringdata; }
 			}
 			
-			public uint[] Data {
-				get { return data; }
-			}
+			return props;
 		}
-    
+		
 		public static QMetaObject MakeMetaObject(Type t, QObject o) {
 			if (t == null) return null;
 		
@@ -423,8 +344,11 @@ namespace Qyoto
 				slots = GetSlotSignatures(t).Values;
 			}
 
-			Dictionary<MethodInfo, CPPMethod> signals = GetSignalSignatures(t);
-			QyotoMetaData metaData = new QyotoMetaData(className, signals.Values, slots, GetClassInfos(t));
+			ICollection<CPPMethod> signals = GetSignalSignatures(t).Values;
+			
+			ICollection<CPPProperty> properties = GetProperties(t).Values;
+			
+			QyotoMetaData metaData = new QyotoMetaData(className, signals, slots, GetClassInfos(t), properties);
 			
 			GCHandle objHandle = GCHandle.Alloc(o);
 			IntPtr metaObject;
@@ -608,8 +532,13 @@ namespace Qyoto
 	[AttributeUsage( AttributeTargets.Property )]
 	public class Q_PROPERTY : Attribute
 	{
-		public Q_PROPERTY(string signature, string name)
+		public string Type;
+		public string Name;
+		
+		public Q_PROPERTY(string type, string name)
 		{
+			Type = type;
+			Name = name;
 		}
 
 		public Q_PROPERTY()
