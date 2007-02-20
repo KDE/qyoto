@@ -44,7 +44,7 @@ SET( UICS_PATH ${CMAKE_CURRENT_SOURCE_DIR}/uics/uics )
 SET( CSRCC_PATH ${CMAKE_CURRENT_SOURCE_DIR}/tools/csrcc/csrcc )
 
 INCLUDE_DIRECTORIES (${QT_INCLUDES})
-ADD_LIBRARY (qyoto SHARED ${SRC_CPP})
+ADD_LIBRARY (qyoto MODULE ${SRC_CPP})
 TARGET_LINK_LIBRARIES (qyoto smokeqt ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY})
 
 ADD_CUSTOM_TARGET (qt-dotnet ALL ${GMCS_PATH} -unsafe -warn:0 -out:qt-dotnet.dll -target:library ${SRC_CS}

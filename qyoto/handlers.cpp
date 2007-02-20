@@ -1426,7 +1426,7 @@ DEF_VALUELIST_MARSHALLER( QTextLayoutFormatRangeList, QList<QTextLayout::FormatR
 DEF_VALUELIST_MARSHALLER( QVariantList, QList<QVariant>, QVariant )
 DEF_VALUELIST_MARSHALLER( QPixmapList, QList<QPixmap>, QPixmap )
 DEF_VALUELIST_MARSHALLER( QModelIndexList, QList<QModelIndex>, QModelIndex )
-DEF_VALUELIST_MARSHALLER( QHostAddressList, QList<QHostAddress>, QHostAddress )
+// DEF_VALUELIST_MARSHALLER( QHostAddressList, QList<QHostAddress>, QHostAddress )
 DEF_VALUELIST_MARSHALLER( QPolygonFList, QList<QPolygonF>, QPolygonF )
 DEF_VALUELIST_MARSHALLER( QImageTextKeyLangList, QList<QImageTextKeyLang>, QImageTextKeyLang )
 DEF_VALUELIST_MARSHALLER( QUrlList, QList<QUrl>, QUrl )
@@ -1467,8 +1467,8 @@ TypeHandler Qt_handlers[] = {
     { "QList<QTextLayout::FormatRange>&", marshall_QTextLayoutFormatRangeList },
     { "QList<QTextBlock>", marshall_QTextBlockList },
     { "QList<QPolygonF>", marshall_QPolygonFList },
-    { "QList<QHostAddress>", marshall_QHostAddressList },
-    { "QList<QHostAddress>&", marshall_QHostAddressList },
+   // { "QList<QHostAddress>", marshall_QHostAddressList },
+   // { "QList<QHostAddress>&", marshall_QHostAddressList },
     { "QList<QVariant>", marshall_QVariantList },
     { "QList<QVariant>&", marshall_QVariantList },
     { "QVariantList&", marshall_QVariantList },

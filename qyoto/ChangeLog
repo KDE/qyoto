@@ -1,4 +1,12 @@
-2007-02-14  Arno Rehn  <arno@arnorehn.de>
+2007-02-20  Richard Dale  <rdale@foton.es>
+
+	* Commented out QList<QHostAddress> marshallers as it caused a linking
+	  problem on Mac OS X
+	* Change 'ADD_LIBRARY (qyoto SHARED ${SRC_CPP})' to 
+	  'ADD_LIBRARY (qyoto MODULE ${SRC_CPP})' to build libqyoto.so, rather
+	  than libqyoto.dyld on Mac OS X
+
+2007-02-19  Arno Rehn  <arno@arnorehn.de>
 
 	* Implemented adding Q_PROPERTY's to the QMetaObject. Next step is
 	  adding classes like InvokeSlot for properties in qyoto.cpp.
