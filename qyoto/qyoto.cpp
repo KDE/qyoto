@@ -75,6 +75,7 @@ static InvokeMethodFn InvokeMethod;
 static CreateInstanceFn CreateInstance;
 static InvokeCustomSlotFn InvokeCustomSlot;
 static IsSmokeClassFn IsSmokeClass;
+static GetIntPtr GetParentMetaObject;
 
 // Maps from a classname in the form Qt::Widget to an int id
 QHash<int,char *> classname;
@@ -1232,6 +1233,12 @@ InstallIsSmokeClass(IsSmokeClassFn callback)
 }
 
 void
+InstallGetParentMetaObject(GetIntPtr callback)
+{
+	GetParentMetaObject = callback;
+}
+
+void
 SetApplicationTerminated()
 {
 	application_terminated = true;
@@ -1380,27 +1387,47 @@ SignalEmit(char * signature, char * type, void * obj, Smoke::StackItem * sp, int
 	return true;
 }
 
-QMetaObject* parent_meta_object(void* obj) {
+QMetaObject* parent_meta_object(void* type) {
 #ifdef DEBUG
 printf("ENTER make_metaObject()\n");
 #endif
+	void* obj = (*GetParentMetaObject)(type);
 	smokeqyoto_object* o = value_obj_info(obj);
-	Smoke::Index nameId = o->smoke->idMethodName("metaObject");
-	Smoke::Index meth = o->smoke->findMethod(o->classId, nameId);
-	if (meth <= 0) {
-		// Should never happen..
-		return 0;
+	return (QMetaObject*) o->ptr;
 	}
 
-	Smoke::Method &methodId = o->smoke->methods[o->smoke->methodMaps[meth].method];
-	Smoke::ClassFn fn = o->smoke->classes[methodId.classId].classFn;
-	Smoke::StackItem i[1];
-	(*fn)(methodId.method, o->ptr, i);
-	return (QMetaObject*) i[0].s_voidp;
-}
-
-void* make_metaObject(void* obj, const char* stringdata, int stringdata_count, const uint* data, int data_count) {
-	QMetaObject* parent = parent_meta_object(obj);
+void* make_metaObject(void* type, const char* className, bool isSmokeClass, 
+	const char* stringdata, int stringdata_count, const uint* data, int data_count)
+{
+	// if it is a Smoke class, don't build a new metaobject
+	// this would have the 'real' metaobject just as a parent and
+	// would be cluttered with duplicate signal/slot definitions
+	// instead use the original one
+	if (isSmokeClass) {
+		Smoke::Index classId = qt_Smoke->idClass(className);
+		Smoke::Index nameId = qt_Smoke->idMethodName("staticMetaObject");
+		Smoke::Index meth = qt_Smoke->findMethod(classId, nameId);
+		if (meth <= 0) {
+			// Should never happen..
+			return 0;
+		}
+	
+		Smoke::Method &methodId = qt_Smoke->methods[qt_Smoke->methodMaps[meth].method];
+		Smoke::ClassFn fn = qt_Smoke->classes[methodId.classId].classFn;
+		Smoke::StackItem i[1];
+		(*fn)(methodId.method, 0, i);
+		QMetaObject* meta = (QMetaObject*) i[0].s_voidp;
+		
+		// create smoke object
+		smokeqyoto_object  * m = alloc_smokeqyoto_object(	true, 
+									qt_Smoke, 
+									qt_Smoke->idClass("QMetaObject"), 
+									meta );		
+		// create wrapper C# instance
+		return set_obj_info("Qyoto.QMetaObject", m);
+	}
+	
+	QMetaObject* parent = parent_meta_object(type);
 
 	char* my_stringdata = new char[stringdata_count];
 	memcpy(my_stringdata, stringdata, stringdata_count * sizeof(char));

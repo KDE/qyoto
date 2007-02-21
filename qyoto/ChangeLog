@@ -1,3 +1,11 @@
+2007-02-21  Arno Rehn  <arno@arnorehn.de>
+
+	* QMetaObjects are now correctly inherited.
+	* If there was a request for a QMetaObject of a native Qt class, a new
+	  QMetaObject was created with all the signals and slots of the class and
+	  the native QMetaObject was just used as a parent. The resulting object had
+	  every definition twice. Fixed.
+
 2007-02-20  Richard Dale  <rdale@foton.es>
 
 	* Commented out QList<QHostAddress> marshallers as it caused a linking

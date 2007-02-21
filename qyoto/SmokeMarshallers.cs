@@ -82,6 +82,9 @@ namespace Qyoto {
 		public static extern bool InstallIsSmokeClass(IsSmokeClassFn callback);
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		public static extern bool InstallGetParentMetaObject(GetIntPtr callback);
+		
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		public static extern void InstallIntPtrToCharStarStar(GetIntPtr callback);
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
@@ -199,6 +202,18 @@ namespace Qyoto {
 			}
 			SetSmokeObject(instance, smokeObjectPtr);
 			return;
+		}
+		
+		public static IntPtr GetParentMetaObject(IntPtr type) {
+			Type t = (Type) ((GCHandle) type).Target;
+// 			Type t = Type.GetType(name);
+			Type baseType = t.BaseType;
+			QMetaObject mo = Qyoto.GetMetaObject(baseType);
+			if (mo == null) {
+				Console.WriteLine("Qyoto.GetMetaObject() returned NULL");
+				return (IntPtr) 0;
+			}
+			return (IntPtr) GCHandle.Alloc(mo);
 		}
 
 		// The key is an IntPtr corresponding to the address of the C++ instance,
@@ -507,6 +522,7 @@ namespace Qyoto {
 		static private CreateInstanceFn createInstance = new CreateInstanceFn(CreateInstance);
 		static private InvokeCustomSlotFn invokeCustomSlot = new InvokeCustomSlotFn(SmokeInvocation.InvokeCustomSlot);
 		static private IsSmokeClassFn isSmokeClass = new IsSmokeClassFn(Qyoto.IsSmokeClass);
+		static private GetIntPtr getParentMetaObject = new GetIntPtr(GetParentMetaObject);
 		
 		public static void SetUp() {
 			InstallFreeGCHandle(freeGCHandle);
@@ -544,6 +560,7 @@ namespace Qyoto {
 			InstallCreateInstance(createInstance);
 			InstallInvokeCustomSlot(invokeCustomSlot);
 			InstallIsSmokeClass(isSmokeClass);
+			InstallGetParentMetaObject(getParentMetaObject);
 		}
 #endregion
 

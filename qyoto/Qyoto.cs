@@ -54,7 +54,8 @@ namespace Qyoto
 		public static extern void SetApplicationTerminated();
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		static extern IntPtr make_metaObject(IntPtr parent, IntPtr stringdata, int stringdataCount, 
+		static extern IntPtr make_metaObject(IntPtr type, string className, bool isSmokeClass, 
+											IntPtr stringdata, int stringdataCount, 
 											 IntPtr data, int dataCount);
 		
 		public struct CPPMethod {
@@ -230,7 +231,6 @@ namespace Qyoto
 					string sig = attr.Signature;
 					if (sig == "")
 						sig = SignatureFromMethodInfo(mi);
-					Console.WriteLine(sig);
 					GetCPPMethodInfo(sig, out cppinfo.signature, out cppinfo.type);
 					
 					cppinfo.mi = mi;
@@ -330,10 +330,24 @@ namespace Qyoto
 			return props;
 		}
 		
-		public static QMetaObject MakeMetaObject(Type t, QObject o) {
+		public static QMetaObject MakeMetaObject(Type t) {
 			if (t == null) return null;
+			
+			string className = t.Name;
+			GCHandle typeHandle = GCHandle.Alloc(t);
+			IntPtr metaObject;
 		
-			string className = t.ToString();
+			// if it is a Smoke class, don't build a new metaobject
+			// this would have the 'real' metaobject just as a parent and
+			// would be cluttered with duplicate signal/slot definitions
+			if (IsSmokeClass(t)) {
+				metaObject = make_metaObject((IntPtr) typeHandle, className, true, 
+							(IntPtr)0, 0,
+							(IntPtr)0, 0);
+				QMetaObject original = (QMetaObject)((GCHandle) metaObject).Target;
+				return original;
+			}
+		
 			Dictionary<string, CPPMethod> slotTable;
 			ICollection<CPPMethod> slots;
 			
@@ -350,13 +364,10 @@ namespace Qyoto
 			
 			QyotoMetaData metaData = new QyotoMetaData(className, signals, slots, GetClassInfos(t), properties);
 			
-			GCHandle objHandle = GCHandle.Alloc(o);
-			IntPtr metaObject;
-			
 			unsafe {
 				fixed (byte* stringdata = metaData.StringData)
 				fixed (uint* data = metaData.Data) {
-					metaObject = make_metaObject((IntPtr)objHandle, 
+					metaObject = make_metaObject((IntPtr) typeHandle, className, false, 
 												 (IntPtr)stringdata, metaData.StringData.Length,
 												 (IntPtr)data, metaData.Data.Length);
 				}
@@ -368,6 +379,10 @@ namespace Qyoto
     
 		public static QMetaObject GetMetaObject(QObject o) {
 			Type t = o.GetType();
+			return GetMetaObject(t);
+		}
+		
+		public static QMetaObject GetMetaObject(Type t) {
 #if DEBUG
 			Console.WriteLine("ENTER GetMetaObject t => {0}", t);
 #endif
@@ -375,7 +390,7 @@ namespace Qyoto
 			QMetaObject res;
 			if (!metaObjects.TryGetValue(t.ToString(), out res)) {
 				// create QMetaObject
-				res = MakeMetaObject(t, o);
+				res = MakeMetaObject(t);
 				metaObjects.Add(t.ToString(), res);
 			}
 	
