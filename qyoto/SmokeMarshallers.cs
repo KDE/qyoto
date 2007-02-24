@@ -85,6 +85,12 @@ namespace Qyoto {
 		public static extern bool InstallGetParentMetaObject(GetIntPtr callback);
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		public static extern bool InstallGetProperty(OverridenMethodFn callback);
+		
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
+		public static extern bool InstallSetProperty(SetPropertyFn callback);
+		
+		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		public static extern void InstallIntPtrToCharStarStar(GetIntPtr callback);
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
@@ -160,6 +166,7 @@ namespace Qyoto {
 		public delegate void AddIntObject(IntPtr hash, int key, IntPtr val);
 		public delegate IntPtr DictToMap(IntPtr ptr, int type);
 		public delegate IntPtr ConstructDict(string type1, string type2);
+		public delegate void SetPropertyFn(IntPtr obj, string name, IntPtr variant);
 #endregion
 		
 #region marshalling functions
@@ -214,6 +221,43 @@ namespace Qyoto {
 				return (IntPtr) 0;
 			}
 			return (IntPtr) GCHandle.Alloc(mo);
+		}
+		
+		public static IntPtr GetProperty(IntPtr obj, string propertyName) {
+			object o = ((GCHandle) obj).Target;
+			Type t = o.GetType();
+			PropertyInfo pi = t.GetProperty(propertyName, BindingFlags.Public | BindingFlags.NonPublic |
+									BindingFlags.Instance | BindingFlags.Static);
+			
+			MethodInfo fromValue = typeof(QVariant).GetMethod("FromValue", BindingFlags.Public | BindingFlags.Static);
+			if (fromValue == null) throw new Exception("Couldn't find QVariant.FromValue<T> method");
+			fromValue = fromValue.MakeGenericMethod( new Type[]{ pi.PropertyType } );
+
+			if (pi != null) {
+				object value = pi.GetValue(o, null);
+				object[] args = { value };
+				QVariant variant = (QVariant) fromValue.Invoke(null, args);
+				return (IntPtr) GCHandle.Alloc(variant);
+			}
+			
+			return (IntPtr) 0;
+		}
+		
+		public static void SetProperty(IntPtr obj, string propertyName, IntPtr variant) {
+			object o = ((GCHandle) obj).Target;
+			Type t = o.GetType();
+			object v = ((GCHandle) variant).Target;
+			PropertyInfo pi = t.GetProperty(propertyName, BindingFlags.Public | BindingFlags.NonPublic |
+									BindingFlags.Instance | BindingFlags.Static);
+									
+			MethodInfo value = typeof(QVariant).GetMethod("Value", BindingFlags.Public | BindingFlags.Instance);
+			if (value == null) throw new Exception("Couldn't find QVariant.Value<T> method");
+			value = value.MakeGenericMethod( new Type[]{ pi.PropertyType } );
+
+			if (pi != null) {
+				object ret = value.Invoke(v, null);
+				pi.SetValue(o, ret, null);
+			}
 		}
 
 		// The key is an IntPtr corresponding to the address of the C++ instance,
@@ -524,6 +568,9 @@ namespace Qyoto {
 		static private IsSmokeClassFn isSmokeClass = new IsSmokeClassFn(Qyoto.IsSmokeClass);
 		static private GetIntPtr getParentMetaObject = new GetIntPtr(GetParentMetaObject);
 		
+		static private OverridenMethodFn getProperty = new OverridenMethodFn(GetProperty);
+		static private SetPropertyFn setProperty = new SetPropertyFn(SetProperty);
+		
 		public static void SetUp() {
 			InstallFreeGCHandle(freeGCHandle);
 
@@ -561,6 +608,9 @@ namespace Qyoto {
 			InstallInvokeCustomSlot(invokeCustomSlot);
 			InstallIsSmokeClass(isSmokeClass);
 			InstallGetParentMetaObject(getParentMetaObject);
+			
+			InstallGetProperty(getProperty);
+			InstallSetProperty(setProperty);
 		}
 #endregion
 

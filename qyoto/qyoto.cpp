@@ -77,6 +77,9 @@ static InvokeCustomSlotFn InvokeCustomSlot;
 static IsSmokeClassFn IsSmokeClass;
 static GetIntPtr GetParentMetaObject;
 
+static OverridenMethodFn GetProperty;
+static SetPropertyFn SetProperty;
+
 // Maps from a classname in the form Qt::Widget to an int id
 QHash<int,char *> classname;
 extern bool qRegisterResourceData(int, const unsigned char *, const unsigned char *, const unsigned char *);
@@ -852,6 +855,106 @@ public:
 	}
 };
 
+class ReadProperty : public Marshall {
+	SmokeType* _type;
+	Smoke::StackItem* _stack;
+	Smoke::StackItem* _result;
+public:
+	ReadProperty(void* obj, const char* propertyName, void** o)
+	{
+// 		_type = new SmokeType(qt_Smoke, qt_Smoke->idType("QVariant"));
+// 		_stack = new Smoke::StackItem;
+// 		_result = new Smoke::StackItem;
+		
+		// Get the C# property value
+		void* variant = (*GetProperty)(obj, propertyName);
+// 		_stack->s_voidp = variant;
+		
+		// FIXME
+		// doesn't work, Mono throws 'System.ArgumentException: GCHandle value belongs to a different domain'
+		// anyway, it's faster the way it's done now than with all the marshalling stuff
+// 		Marshall::HandlerFn fn = getMarshallFn(type());
+// 		(*fn)(this);
+		
+		// put the marshalled value into the void* array of qt_metacall()
+		smokeqyoto_object* sqo = value_obj_info(variant);
+		o[0] = sqo->ptr; // _result->s_voidp;
+	}
+
+	SmokeType type() {
+		return *_type;
+	}
+	Marshall::Action action() { return Marshall::FromObject; }
+	Smoke::StackItem &item() { return *_stack; }
+	Smoke::StackItem &var() {
+		return *_result;
+	}
+	
+	void unsupported() 
+	{
+		printf("Cannot handle '%s' as property", type().name());
+	}
+	Smoke *smoke() { return type().smoke(); }
+
+	void next() {}
+
+	bool cleanup() { return false; }
+	
+	~ReadProperty() {
+// 		delete _stack;
+	}
+};
+
+class WriteProperty : public Marshall {
+	SmokeType* _type;
+	Smoke::StackItem* _stack;
+	Smoke::StackItem* _result;
+public:
+	WriteProperty(void* obj, const char* propertyName, void** o)
+	{
+// 		_type = new SmokeType(qt_Smoke, qt_Smoke->idType("QVariant"));
+		_stack = new Smoke::StackItem;
+		_result = new Smoke::StackItem;
+		
+		_stack->s_voidp = o[0];
+		
+		// TODO
+		// check if it works with getMarshallFn and stuff.
+		// didn't test it since it didn't work with ReadProperty
+// 		Marshall::HandlerFn fn = getMarshallFn(type());
+// 		(*fn)(this);
+		
+		smokeqyoto_object* sqo = alloc_smokeqyoto_object(false, qt_Smoke, qt_Smoke->idClass("QVariant"), _stack->s_voidp);
+		void* variant = set_obj_info("Qyoto.QVariant", sqo);
+		
+		// Set the C# property value
+		(*SetProperty)(obj, propertyName, variant);
+	}
+
+	SmokeType type() {
+		return *_type;
+	}
+	Marshall::Action action() { return Marshall::FromObject; }
+	Smoke::StackItem &item() { return *_stack; }
+	Smoke::StackItem &var() {
+		return *_result;
+	}
+	
+	void unsupported() 
+	{
+		printf("Cannot handle '%s' as property", type().name());
+	}
+	Smoke *smoke() { return type().smoke(); }
+
+	void next() {}
+
+	bool cleanup() { return false; }
+	
+	~WriteProperty() {
+// 		delete _stack;
+	}
+};
+
 class QyotoSmokeBinding : public SmokeBinding {
 public:
     QyotoSmokeBinding(Smoke *s) : SmokeBinding(s) {}
@@ -1239,6 +1342,18 @@ InstallGetParentMetaObject(GetIntPtr callback)
 }
 
 void
+InstallGetProperty(OverridenMethodFn callback)
+{
+	GetProperty = callback;
+}
+
+void
+InstallSetProperty(SetPropertyFn callback)
+{
+	SetProperty = callback;
+}
+
+void
 SetApplicationTerminated()
 {
 	application_terminated = true;
@@ -1538,8 +1653,16 @@ int qt_metacall(void* obj, int _c, int _id, void* _o) {
 	const QMetaObject *metaobject = qobj->metaObject();
 	
 	// get method count and offset
-	int count = metaobject->methodCount();
-	int offset = metaobject->methodOffset();
+	int count = 0;
+	int offset = 0;
+	if (_c == QMetaObject::InvokeMetaMethod) {
+		count = metaobject->methodCount();
+		offset = metaobject->methodOffset();
+	} else {
+		count = metaobject->propertyCount();
+		offset = metaobject->propertyOffset();
+	}
+	
 
 	// if id < offset call base version
 	if (_id < offset || (*IsSmokeClass)(obj)) {
@@ -1554,37 +1677,41 @@ int qt_metacall(void* obj, int _c, int _id, void* _o) {
 			i[2].s_int = _id;
 			i[3].s_voidp = _o;
 			(*fn)(m.method, o->ptr, i);
+			
 			return i[0].s_int;
 		}
-
+		
 		// Should never happen..
 		qFatal("Cannot find %s::qt_metacall() method\n", 
 			o->smoke->classes[o->classId].className );
 	}
 
-	// return immediately if _c != QMetaObject::InvokeMetaMethod
-    if (_c != QMetaObject::InvokeMetaMethod) {
-		return _id;
+	if (_c == QMetaObject::InvokeMetaMethod) {
+		// retrieve method signature from id
+		QMetaMethod method = metaobject->method(_id);
+		QString name(method.signature());
+		QString type(method.typeName());
+		
+		if (method.methodType() == QMetaMethod::Signal) {
+			metaobject->activate(qobj, _id, (void**) _o);
+			return _id - (count - offset);
+		}
+	
+		int items;
+		MocArgument* mocArgs = GetMocArgumentsNumber(type, name, items);
+		
+		// invoke slot
+		InvokeSlot slot(obj, method.signature(), items, mocArgs, (void**)_o);
+		slot.next();
+		
+		delete mocArgs;
+	} else if (_c == QMetaObject::ReadProperty) {
+		QMetaProperty property = metaobject->property(_id);
+		ReadProperty prop(obj, property.name(), (void**)_o);
+	} else if (_c == QMetaObject::WriteProperty) {
+		QMetaProperty property = metaobject->property(_id);
+		WriteProperty prop(obj, property.name(), (void**)_o);
 	}
-
-	// retrieve method signature from id
-	QMetaMethod method = metaobject->method(_id);
-	QString name(method.signature());
-	QString type(method.typeName());
-	
-	if (method.methodType() == QMetaMethod::Signal) {
-		metaobject->activate(qobj, _id, (void**) _o);
-		return _id - (count - offset);
-	}
-
-	int items;
-	MocArgument* mocArgs = GetMocArgumentsNumber(type, name, items);
-	
-	// invoke slot
-	InvokeSlot slot(obj, method.signature(), items, mocArgs, (void**)_o);
-	slot.next();
-	
-	delete mocArgs;
 	return _id - count;
 }
 

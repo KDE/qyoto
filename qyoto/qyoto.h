@@ -76,7 +76,8 @@ typedef bool (*IsSmokeClassFn)(void*);
 typedef void (*AddInt)(void*, int);
 typedef void (*AddIntObject)(void*, int, void*);
 typedef void* (*DictToMap)(void*, int);
-typedef void* (*ConstructDict)(const char* type1, const char* type2);
+typedef void* (*ConstructDict)(const char*, const char*);
+typedef void (*SetPropertyFn)(void*, const char*, void*);
 
 extern FromIntPtr FreeGCHandle;
 

@@ -140,14 +140,14 @@ namespace Qyoto {
 			}
 			
 			foreach (Qyoto.CPPProperty entry in properties) {
-				PropertyFlags flags = PropertyFlags.Invalid;
+				PropertyFlags flags = PropertyFlags.StdCppSet | PropertyFlags.ResolveEditable | PropertyFlags.Stored;
 				
 				if (entry.pi.CanRead && entry.pi.CanWrite) {
-					flags = PropertyFlags.Readable | PropertyFlags.Writable;
+					flags |= PropertyFlags.Readable | PropertyFlags.Writable;
 				} else if (entry.pi.CanRead) {
-					flags = PropertyFlags.Readable;
+					flags |= PropertyFlags.Readable;
 				} else if (entry.pi.CanWrite) {
-					flags = PropertyFlags.Writable;
+					flags |= PropertyFlags.Writable;
 				}
 				
 				if (entry.scriptable)

@@ -555,9 +555,11 @@ namespace Qyoto
 			Type = type;
 			Name = name;
 		}
-
+		
 		public Q_PROPERTY()
 		{
+			Type = "";
+			Name = "";
 		}
 	}
 }

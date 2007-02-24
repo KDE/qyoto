@@ -1,3 +1,12 @@
+2007-02-24  Arno Rehn  <arno@arnorehn.de>
+
+	* Added ReadProperty and WriteProperty classes. Now custom properties can
+	  be accessed via Property() and SetProperty() (and dbus?). However there seems
+	  to be a problem with marshalling, see FIXMEs in the code. The workaround should
+	  work as well as with marshalling, though.
+	* Autogeneration of Q_PROPERTY signatures and types now works properly.
+	* Flags of properties should now be set correctly.
+	
 2007-02-21  Arno Rehn  <arno@arnorehn.de>
 
 	* QMetaObjects are now correctly inherited.
