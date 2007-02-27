@@ -1,3 +1,7 @@
+2007-02-27  Richard Dale  <rdale@foton.es>
+
+	* Made the QMetaObject creation work correctly with nested subclasses
+
 2007-02-24  Arno Rehn  <arno@arnorehn.de>
 
 	* Added ReadProperty and WriteProperty classes. Now custom properties can
