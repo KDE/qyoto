@@ -8,6 +8,7 @@
 		* If the return value is postive, it was a C++ slot/signal/property, return
 		* If the return value is negative, look for C# slots/signals/properties
 		  and call them
+	* Made QObject.FindChild() and QObject.FindChildren() work
 
 2007-02-27  Richard Dale  <rdale@foton.es>
 
