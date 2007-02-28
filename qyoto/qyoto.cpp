@@ -1175,13 +1175,11 @@ FindQObjectChildren(void* parent, void* regexp, char* childName, FromIntPtr addF
 	smokeqyoto_object *o;
 	o = value_obj_info(parent);
 	QObject* p = (QObject*) o->ptr;
-	delete o;
 	
 	QRegExp* re = 0;
 	if (regexp) {
 		o = value_obj_info(regexp);
 		re = (QRegExp*) o->ptr;
-		delete o;
 	}
 	
 	QList<void*> *list = new QList<void*>();
@@ -1202,7 +1200,6 @@ cs_qFindChildHelper(void * parent, const QString &name, const QMetaObject &mo)
 		
 	smokeqyoto_object *o = value_obj_info(parent);
 	QObject* p = (QObject*) o->ptr;
-	delete o;
 	
 	const QObjectList &children = p->children();
 	QObject* obj;
