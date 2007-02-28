@@ -247,7 +247,7 @@ namespace Qyoto {
 #endif
 			Dictionary<string, Qyoto.CPPMethod> slotTable;
 			if (!Qyoto.classes.TryGetValue(className, out slotTable)) {
-				slotTable = Qyoto.GetSlotSignatures(qobj.GetType());
+				slotTable = Qyoto.GetAllSlotSignatures(qobj.GetType());
 			}
 			MethodInfo slot;
 			try {
@@ -554,7 +554,7 @@ namespace Qyoto {
 			IMethodReturnMessage returnMessage = (IMethodReturnMessage) message;
 			MethodReturnMessageWrapper returnValue = new MethodReturnMessageWrapper((IMethodReturnMessage) returnMessage); 
 			GCHandle instanceHandle = GCHandle.Alloc(_instance);
-			Dictionary<MethodInfo, Qyoto.CPPMethod> signals = Qyoto.GetSignalSignatures(_instance.GetType());
+			Dictionary<MethodInfo, Qyoto.CPPMethod> signals = Qyoto.GetAllSignalSignatures(_instance.GetType());
 			
 			/// should not happen
 			if (signals == null) {

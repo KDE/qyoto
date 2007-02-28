@@ -1630,45 +1630,40 @@ void* make_metaObject(	void* obj, void* parentMeta,
 
 
 int qt_metacall(void* obj, int _c, int _id, void* _o) {
-	// get obj metaobject with a virtual call
 	smokeqyoto_object* o = value_obj_info(obj);
-    QObject *qobj = (QObject*)o->ptr;
-	const QMetaObject *metaobject = qobj->metaObject();
 	
-	// get method count and offset
-	int count = 0;
-	int offset = 0;
-	if (_c == QMetaObject::InvokeMetaMethod) {
-		count = metaobject->methodCount();
-		offset = metaobject->methodOffset();
-	} else {
-		count = metaobject->propertyCount();
-		offset = metaobject->propertyOffset();
-	}
-	
-
-	// if id < offset call base version
-	if (_id < offset || (*IsSmokeClass)(obj)) {
-		// Assume the target slot is a C++ one
-		Smoke::Index nameId = o->smoke->idMethodName("qt_metacall$$?");
-		Smoke::Index meth = o->smoke->findMethod(o->classId, nameId);
-		if(meth > 0) {
-			Smoke::Method &m = o->smoke->methods[o->smoke->methodMaps[meth].method];
-			Smoke::ClassFn fn = o->smoke->classes[m.classId].classFn;
-			Smoke::StackItem i[4];
-			i[1].s_enum = _c;
-			i[2].s_int = _id;
-			i[3].s_voidp = _o;
-			(*fn)(m.method, o->ptr, i);
-			
-			return i[0].s_int;
-		}
+	Smoke::Index nameId = o->smoke->idMethodName("qt_metacall$$?");
+	Smoke::Index meth = o->smoke->findMethod(o->classId, nameId);
+	if(meth > 0) {
+		Smoke::Method &m = o->smoke->methods[o->smoke->methodMaps[meth].method];
+		Smoke::ClassFn fn = o->smoke->classes[m.classId].classFn;
+		Smoke::StackItem i[4];
+		i[1].s_enum = _c;
+		i[2].s_int = _id;
+		i[3].s_voidp = _o;
+		(*fn)(m.method, o->ptr, i);
 		
+		int ret = i[0].s_int;
+		if (ret < 0)
+			return ret;
+	} else {
 		// Should never happen..
 		qFatal("Cannot find %s::qt_metacall() method\n", 
 			o->smoke->classes[o->classId].className );
 	}
 
+	QObject *qobj = (QObject*)o->ptr;
+	// get obj metaobject with a virtual call
+	const QMetaObject *metaobject = qobj->metaObject();
+	
+	// get method/property count
+	int count = 0;
+	if (_c == QMetaObject::InvokeMetaMethod) {
+		count = metaobject->methodCount();
+	} else {
+		count = metaobject->propertyCount();
+	}
+	
 	if (_c == QMetaObject::InvokeMetaMethod) {
 		// retrieve method signature from id
 		QMetaMethod method = metaobject->method(_id);
@@ -1677,7 +1672,7 @@ int qt_metacall(void* obj, int _c, int _id, void* _o) {
 		
 		if (method.methodType() == QMetaMethod::Signal) {
 			metaobject->activate(qobj, _id, (void**) _o);
-			return _id - (count - offset);
+			return _id - count;
 		}
 	
 		int items;

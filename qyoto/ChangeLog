@@ -1,3 +1,14 @@
+2007-02-28  Arno Rehn  <arno@arnorehn.de>
+
+	* Don't include inherited signals/slots when building up the metaobject
+	* Added seperate methods for getting all the signals/slots of a class, including
+	  inherited ones. This is needed for InvokeCustomSlot() and SignalInvocation.Invoke()
+	* Changed qt_metacall to be more like the one genereted by moc:
+		* First call qt_metacall of the base class
+		* If the return value is postive, it was a C++ slot/signal/property, return
+		* If the return value is negative, look for C# slots/signals/properties
+		  and call them
+
 2007-02-27  Richard Dale  <rdale@foton.es>
 
 	* Made the QMetaObject creation work correctly with nested subclasses
