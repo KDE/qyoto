@@ -6,7 +6,7 @@ namespace Qyoto {
 
 	/// See <see cref="IQAbstractItemModelSignals"></see> for signals emitted by QAbstractItemModel
 	[SmokeClass("QAbstractItemModel")]
-	public class QAbstractItemModel : QObject {
+	public partial class QAbstractItemModel : QObject {
  		protected QAbstractItemModel(Type dummy) : base((Type) null) {}
 		[SmokeClass("QAbstractItemModel")]
 		interface IQAbstractItemModelProxy {

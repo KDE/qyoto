@@ -177,10 +177,10 @@ namespace Qyoto {
 						args[i] = stackPtr[i].s_short;
 					} else if (parameters[i].ParameterType == typeof(ushort)) {
 						args[i] = stackPtr[i].s_ushort;
-					} else if (	parameters[i].ParameterType == typeof(int) 
-								|| parameters[i].ParameterType.IsEnum ) 
-					{
+					} else if (parameters[i].ParameterType == typeof(int)) {
 						args[i] = stackPtr[i].s_int;
+					} else if (parameters[i].ParameterType.IsEnum) {
+						args[i] = Enum.ToObject(parameters[i].ParameterType, stackPtr[i].s_int);
 					} else if (parameters[i].ParameterType == typeof(uint)) {
 						args[i] = stackPtr[i].s_uint;
 					} else if (parameters[i].ParameterType == typeof(long)) {

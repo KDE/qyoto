@@ -28,6 +28,7 @@
 #include <QtCore/qregexp.h>
 #include <QtCore/qstringlist.h>
 #include <QMetaMethod>
+#include <QModelIndex>
 
 #undef DEBUG
 #ifndef __USE_POSIX
@@ -1189,6 +1190,7 @@ FindQObjectChildren(void* parent, void* regexp, char* childName, FromIntPtr addF
 	for(int i = 0; i < list->size(); ++i) {
 		(*addFn)(list->at(i));
 	}
+	(*FreeGCHandle)(parent);
 }
 
 /* Adapted from the internal function qt_qFindChild() in qobject.cpp */
@@ -1227,6 +1229,7 @@ FindQObjectChild(void* parent, char * childName)
 	QString name = QString::fromUtf8(childName);
 	
 	QMetaObject * mo = parent_meta_object(parent);
+	(*FreeGCHandle)(parent);
 	return cs_qFindChildHelper(parent, name, *mo);
 }
 
@@ -1257,6 +1260,42 @@ QVariantFromValue(int type, void * value)
 	smokeqyoto_object  * vo = alloc_smokeqyoto_object(true, o->smoke, id, (void *) v);
 	(*FreeGCHandle)(value);
 	return set_obj_info("Qyoto.QVariant", vo);
+}
+
+void *
+ModelIndexInternalPointer(void *obj)
+{
+	smokeqyoto_object *o = value_obj_info(obj);
+	QModelIndex *modelIndex = (QModelIndex*) o->ptr;
+	void *ptr = modelIndex->internalPointer();
+	return ptr;
+}
+
+void *
+AbstractItemModelCreateIndex(void* obj, int row, int column, void *ptr)
+{
+	smokeqyoto_object *o = value_obj_info(obj);
+	
+	Smoke::Index method = FindMethodId("QAbstractItemModel", "createIndex$$$", "(int, int, void*) const");
+	if (method == -1) {
+		return 0;
+	}
+	Smoke::Method &methodId = o->smoke->methods[method];
+	Smoke::ClassFn fn = o->smoke->classes[methodId.classId].classFn;
+	Smoke::StackItem i[4];
+	i[1].s_int = row;
+	i[2].s_int = column;
+	i[3].s_voidp = ptr;
+	(*fn)(methodId.method, o->ptr, i);
+	
+	if (i[0].s_voidp == 0) {
+		return 0;
+	}
+	
+	int id = o->smoke->idClass("QModelIndex");
+	smokeqyoto_object *ret = alloc_smokeqyoto_object(true, o->smoke, id, i[0].s_voidp);
+	(*FreeGCHandle)(obj);
+	return set_obj_info("Qyoto.QModelIndex", ret);
 }
 
 bool QyotoRegisterResourceData(int flag, const unsigned char * s, const unsigned char *n, const unsigned char *d)

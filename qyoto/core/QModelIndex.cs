@@ -4,7 +4,7 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QModelIndex")]
-	public class QModelIndex : MarshalByRefObject, IDisposable {
+	public partial class QModelIndex : MarshalByRefObject, IDisposable {
 		protected Object _interceptor = null;
 		private IntPtr _smokeObject;
 		protected QModelIndex(Type dummy) {}

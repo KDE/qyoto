@@ -1,3 +1,9 @@
+2007-03-03  Arno Rehn  <arno@arnorehn.de>
+
+	* Added QModelIndex.InternalPointer() and QAbstractItemModel.CreateIndex()
+	* Added simpletreemodel example (doesn't fully work yet)
+	* Fixed invocation of methods with an enum as a argument
+
 2007-02-28  Arno Rehn  <arno@arnorehn.de>
 
 	* Don't include inherited signals/slots when building up the metaobject
