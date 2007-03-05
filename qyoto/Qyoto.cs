@@ -461,6 +461,7 @@ namespace Qyoto
 			}
       
 			QMetaObject res = (QMetaObject)((GCHandle) metaObject).Target;
+			((GCHandle) metaObject).Free();
 			metaObjects.Add(t.Name, res);
 			return res;
 		}

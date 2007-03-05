@@ -1268,6 +1268,7 @@ ModelIndexInternalPointer(void *obj)
 	smokeqyoto_object *o = value_obj_info(obj);
 	QModelIndex *modelIndex = (QModelIndex*) o->ptr;
 	void *ptr = modelIndex->internalPointer();
+	(*FreeGCHandle)(obj);
 	return ptr;
 }
 
@@ -1550,7 +1551,10 @@ void* make_metaObject(	void* obj, void* parentMeta,
 		// was constructed at runtime
 		smokeqyoto_object* o = value_obj_info(parentMeta);
 		parent = (QMetaObject *) o->ptr;
+		(*FreeGCHandle)(parentMeta);
 	}
+
+	(*FreeGCHandle)(obj);
 
 	char* my_stringdata = new char[stringdata_count];
 	memcpy(my_stringdata, stringdata, stringdata_count * sizeof(char));
