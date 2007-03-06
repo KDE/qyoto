@@ -150,7 +150,8 @@ class TreeModel : QAbstractItemModel {
 		
 			if (lineData != "") {
 				// Read the column data from the rest of the line.
-				List<string> columnStrings = new List<string>(lineData.Split("\t".ToCharArray()));
+				List<string> columnStrings = new List<string>(lineData.Split(new char[] { '\t' },
+										 StringSplitOptions.RemoveEmptyEntries));
 				List<QVariant> columnData = new List<QVariant>();
 				
 				for (int column = 0; column < columnStrings.Count; ++column)
