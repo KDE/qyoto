@@ -111,9 +111,6 @@ namespace Qyoto {
 			return !StaticQModelIndex().op_lt(lhs,other)
 						&& !StaticQModelIndex().op_equals(lhs,other);
 		}
-		~QModelIndex() {
-			DisposeQModelIndex();
-		}
 		public void Dispose() {
 			DisposeQModelIndex();
 		}

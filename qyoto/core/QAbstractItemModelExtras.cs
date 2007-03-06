@@ -8,35 +8,54 @@ namespace Qyoto {
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		public static extern IntPtr AbstractItemModelCreateIndex(IntPtr obj, int row, int column, IntPtr ptr);
 		
-		private static Dictionary<WeakReference, GCHandle> handleMap = new Dictionary<WeakReference, GCHandle>();
+		private struct HandleRef {
+			public int refCount;
+			public GCHandle handle;
+		}
+
+		private static Dictionary<object, HandleRef> handleMap = new Dictionary<object, HandleRef>();
 		
 		protected QModelIndex CreateIndex(int row, int column, object ptr) {
 			IntPtr ret = AbstractItemModelCreateIndex((IntPtr) GCHandle.Alloc(this),
 									row, column, (IntPtr) GetIndexHandle(ptr));
-			return (QModelIndex) ((GCHandle) ret).Target;
+			QModelIndex result = (QModelIndex) ((GCHandle) ret).Target;
+			((GCHandle) ret).Free();
+			return result;
 		}
 		
 		protected QModelIndex CreateIndex(int row, int column) {
 			IntPtr ret = AbstractItemModelCreateIndex((IntPtr) GCHandle.Alloc(this),
 									row, column, IntPtr.Zero);
-			return (QModelIndex) ((GCHandle) ret).Target;
+			QModelIndex result = (QModelIndex) ((GCHandle) ret).Target;
+			((GCHandle) ret).Free();
+			return result;
 		}
 		
 		private GCHandle GetIndexHandle(object o) {
-			foreach (WeakReference weakRef in handleMap.Keys) {
-				if (weakRef.Target == o) {
-					// found
-					return handleMap[weakRef];
-				}
-				
-				if (!weakRef.IsAlive) {
-					handleMap.Remove(weakRef);
+			HandleRef reference;
+			if (!handleMap.TryGetValue(o, out reference)) {
+				reference = new HandleRef();
+				reference.refCount = 0;
+				reference.handle = GCHandle.Alloc(o);
+				handleMap.Add(o, reference);
+			}
+
+			reference.refCount += 1;
+			return reference.handle;
+		}
+		
+		static public void DerefIndexHandle(object o) {
+			HandleRef reference;
+			if (handleMap.TryGetValue(o, out reference)) {
+				reference.refCount -= 1;
+
+				if (reference.refCount == 0) {
+					reference.handle.Free();
+					handleMap.Remove(o);
 				}
 			}
-			
-			GCHandle handle = GCHandle.Alloc(o);
-			handleMap.Add(new WeakReference(o), handle);
-			return handle;
+
+			return ;
 		}
 	}
 }

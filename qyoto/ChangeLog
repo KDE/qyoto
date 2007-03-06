@@ -1,9 +1,15 @@
-2007-03-06  Arno Rehn  <arno@arnorehn.de>
+2007-03-06  Richard Dale  <rdale@foton.es>
 
-	* GCHandles for QModelIndex'es are now stored in a Dictionary.
-	  QAbstractItemModel.CreateIndex() looks up a GCHandle in the Dictionary
-	  and if it exists it is passed to the C++ function. Child items of a tree model
-	  can now be selected.
+	* A GCHandle was being used to hold the 'internalPointer' value in a 
+	  QModelIndex. A new one was being allocated everytime a new index
+	  was created by QAbstractItemModel.CreateIndex(), which meant that
+	  different GCHandles could hold the same underlying 'Target' instance.
+	  However, this meant that the equality operator for QModelIndex no longer
+	  worked correctly. So GCHandles for holding the InternalPointer() 
+	  references are kept in a Dictionary with the object instance to be 
+	  wrapped as the key. A reference count against the handle is used to 
+	  ensure that the GCHandle is freed once there are no references to it 
+	  via InternalPointer().
 
 2007-03-05  Richard Dale  <rdale@foton.es>
 
