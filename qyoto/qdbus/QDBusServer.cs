@@ -28,7 +28,6 @@ namespace Qyoto {
 		private static IQDBusServerProxy StaticQDBusServer() {
 			return (IQDBusServerProxy) _staticInterceptor;
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QDBusServer(string address, QObject parent) : this((Type) null) {
 			CreateProxy();
 			NewQDBusServer(address,parent);

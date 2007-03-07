@@ -94,7 +94,6 @@ namespace Qyoto {
 				SetProperty("caseSensitivity", QVariant.FromValue<Qt.CaseSensitivity>(value));
 			}
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QCompleter(QObject parent) : this((Type) null) {
 			CreateProxy();
 			NewQCompleter(parent);

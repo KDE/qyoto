@@ -157,7 +157,6 @@ namespace Qyoto {
 				SetProperty("textInteractionFlags", QVariant.FromValue<int>(value));
 			}
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QTextEdit(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			NewQTextEdit(parent);

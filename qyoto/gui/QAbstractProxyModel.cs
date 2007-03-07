@@ -28,7 +28,6 @@ namespace Qyoto {
 		private static IQAbstractProxyModelProxy StaticQAbstractProxyModel() {
 			return (IQAbstractProxyModelProxy) _staticInterceptor;
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QAbstractProxyModel(QObject parent) : this((Type) null) {
 			CreateProxy();
 			NewQAbstractProxyModel(parent);

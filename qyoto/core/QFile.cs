@@ -85,7 +85,6 @@ namespace Qyoto {
 			WriteOther = 0x0002,
 			ExeOther = 0x0001,
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QFile() : this((Type) null) {
 			CreateProxy();
 			NewQFile();

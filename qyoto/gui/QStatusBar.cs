@@ -38,7 +38,6 @@ namespace Qyoto {
 				SetProperty("sizeGripEnabled", QVariant.FromValue<bool>(value));
 			}
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QStatusBar(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			NewQStatusBar(parent);

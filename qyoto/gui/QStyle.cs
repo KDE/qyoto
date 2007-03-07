@@ -509,7 +509,6 @@ namespace Qyoto {
 			SP_ArrowForward = 54,
 			SP_CustomBase = 0xf0000000,
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QStyle() : this((Type) null) {
 			CreateProxy();
 			NewQStyle();

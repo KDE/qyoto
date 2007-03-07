@@ -56,7 +56,6 @@ namespace Qyoto {
 				SetProperty("decimals", QVariant.FromValue<int>(value));
 			}
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QDoubleValidator(QObject parent) : this((Type) null) {
 			CreateProxy();
 			NewQDoubleValidator(parent);

@@ -28,7 +28,6 @@ namespace Qyoto {
 		private static IQDateEditProxy StaticQDateEdit() {
 			return (IQDateEditProxy) _staticInterceptor;
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QDateEdit(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			NewQDateEdit(parent);

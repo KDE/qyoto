@@ -38,7 +38,6 @@ namespace Qyoto {
 				SetProperty("regExp", QVariant.FromValue<QRegExp>(value));
 			}
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QRegExpValidator(QObject parent) : this((Type) null) {
 			CreateProxy();
 			NewQRegExpValidator(parent);

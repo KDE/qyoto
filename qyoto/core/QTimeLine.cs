@@ -99,7 +99,6 @@ namespace Qyoto {
 				SetProperty("curveShape", QVariant.FromValue<QTimeLine.CurveShape>(value));
 			}
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QTimeLine(int duration, QObject parent) : this((Type) null) {
 			CreateProxy();
 			NewQTimeLine(duration,parent);

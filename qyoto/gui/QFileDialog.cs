@@ -175,7 +175,6 @@ namespace Qyoto {
 				SetProperty("defaultSuffix", QVariant.FromValue<string>(value));
 			}
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QFileDialog(QWidget parent, int f) : this((Type) null) {
 			CreateProxy();
 			NewQFileDialog(parent,f);

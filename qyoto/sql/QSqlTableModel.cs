@@ -34,7 +34,6 @@ namespace Qyoto {
 			OnRowChange = 1,
 			OnManualSubmit = 2,
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QSqlTableModel(QObject parent, QSqlDatabase db) : this((Type) null) {
 			CreateProxy();
 			NewQSqlTableModel(parent,db);

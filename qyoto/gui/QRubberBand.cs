@@ -32,7 +32,6 @@ namespace Qyoto {
 			Line = 0,
 			Rectangle = 1,
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QRubberBand(QRubberBand.Shape arg1, QWidget arg2) : this((Type) null) {
 			CreateProxy();
 			NewQRubberBand(arg1,arg2);

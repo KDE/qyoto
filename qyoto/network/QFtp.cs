@@ -69,7 +69,6 @@ namespace Qyoto {
 			Binary = 0,
 			Ascii = 1,
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QFtp(QObject parent) : this((Type) null) {
 			CreateProxy();
 			NewQFtp(parent);

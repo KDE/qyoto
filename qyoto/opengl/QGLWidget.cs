@@ -30,7 +30,6 @@ namespace Qyoto {
 		private static IQGLWidgetProxy StaticQGLWidget() {
 			return (IQGLWidgetProxy) _staticInterceptor;
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QGLWidget(QWidget parent, QGLWidget shareWidget, int f) : this((Type) null) {
 			CreateProxy();
 			NewQGLWidget(parent,shareWidget,f);

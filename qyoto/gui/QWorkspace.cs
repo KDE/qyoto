@@ -52,7 +52,6 @@ namespace Qyoto {
 				SetProperty("background", QVariant.FromValue<QBrush>(value));
 			}
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QWorkspace(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			NewQWorkspace(parent);

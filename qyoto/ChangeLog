@@ -1,6 +1,8 @@
 2007-03-07  Richard Dale  <rdale@foton.es>
 
 	* Made the simpletreemodel example use the csrcc resource compiler
+	* Removed the 'qt_metacall NOT CONVERTED' messages from the sources as
+	  were just noise
 
 2007-03-06  Richard Dale  <rdale@foton.es>
 

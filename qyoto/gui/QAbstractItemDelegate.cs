@@ -38,7 +38,6 @@ namespace Qyoto {
 			SubmitModelCache = 3,
 			RevertModelCache = 4,
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QAbstractItemDelegate(QObject parent) : this((Type) null) {
 			CreateProxy();
 			NewQAbstractItemDelegate(parent);

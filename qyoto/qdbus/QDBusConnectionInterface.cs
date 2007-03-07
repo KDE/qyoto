@@ -42,7 +42,6 @@ namespace Qyoto {
 			ServiceRegistered = 1,
 			ServiceQueued = 2,
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		// QDBusReply<QStringList> registeredServiceNames(); >>>> NOT CONVERTED
 		// QDBusReply<bool> isServiceRegistered(const QString& arg1); >>>> NOT CONVERTED
 		// QDBusReply<QString> serviceOwner(const QString& arg1); >>>> NOT CONVERTED

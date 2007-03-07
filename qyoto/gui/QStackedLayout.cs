@@ -38,7 +38,6 @@ namespace Qyoto {
 				SetProperty("currentIndex", QVariant.FromValue<int>(value));
 			}
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QStackedLayout() : this((Type) null) {
 			CreateProxy();
 			NewQStackedLayout();

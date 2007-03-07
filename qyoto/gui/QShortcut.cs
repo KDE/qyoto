@@ -74,7 +74,6 @@ namespace Qyoto {
 				SetProperty("context", QVariant.FromValue<Qt.ShortcutContext>(value));
 			}
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QShortcut(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			NewQShortcut(parent);

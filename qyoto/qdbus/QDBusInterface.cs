@@ -56,7 +56,6 @@ namespace Qyoto {
 		private void NewQDBusInterface(string service, string path) {
 			ProxyQDBusInterface().NewQDBusInterface(service,path);
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		~QDBusInterface() {
 			DisposeQDBusInterface();
 		}

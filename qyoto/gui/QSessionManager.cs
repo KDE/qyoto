@@ -35,7 +35,6 @@ namespace Qyoto {
 			RestartImmediately = 2,
 			RestartNever = 3,
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		[SmokeMethod("sessionId", "() const", "")]
 		public string SessionId() {
 			return ProxyQSessionManager().SessionId();

@@ -28,7 +28,6 @@ namespace Qyoto {
 		private static IQBufferProxy StaticQBuffer() {
 			return (IQBufferProxy) _staticInterceptor;
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QBuffer(QObject parent) : this((Type) null) {
 			CreateProxy();
 			NewQBuffer(parent);

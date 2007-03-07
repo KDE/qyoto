@@ -44,7 +44,6 @@ namespace Qyoto {
 				return Property("count").Value<int>();
 			}
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QToolBox(QWidget parent, int f) : this((Type) null) {
 			CreateProxy();
 			NewQToolBox(parent,f);

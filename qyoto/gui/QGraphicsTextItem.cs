@@ -32,7 +32,6 @@ namespace Qyoto {
 		}
 		public const int Type = 8;
 
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QGraphicsTextItem(QGraphicsItem parent, QGraphicsScene scene) : this((Type) null) {
 			CreateProxy();
 			NewQGraphicsTextItem(parent,scene);

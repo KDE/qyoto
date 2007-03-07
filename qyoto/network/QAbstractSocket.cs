@@ -62,7 +62,6 @@ namespace Qyoto {
 			ListeningState = 5,
 			ClosingState = 6,
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QAbstractSocket(QAbstractSocket.SocketType socketType, QObject parent) : this((Type) null) {
 			CreateProxy();
 			NewQAbstractSocket(socketType,parent);

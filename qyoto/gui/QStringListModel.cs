@@ -29,7 +29,6 @@ namespace Qyoto {
 		private static IQStringListModelProxy StaticQStringListModel() {
 			return (IQStringListModelProxy) _staticInterceptor;
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QStringListModel(QObject parent) : this((Type) null) {
 			CreateProxy();
 			NewQStringListModel(parent);

@@ -29,7 +29,6 @@ namespace Qyoto {
 		private static IQTextBlockGroupProxy StaticQTextBlockGroup() {
 			return (IQTextBlockGroupProxy) _staticInterceptor;
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public static new string Tr(string s, string c) {
 			return StaticQTextBlockGroup().Tr(s,c);
 		}

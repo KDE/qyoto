@@ -35,7 +35,6 @@ namespace Qyoto {
 			FindBuffer = 2,
 			LastMode = FindBuffer,
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		[SmokeMethod("clear", "(QClipboard::Mode)", "$")]
 		public void Clear(QClipboard.Mode mode) {
 			ProxyQClipboard().Clear(mode);

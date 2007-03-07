@@ -74,7 +74,6 @@ namespace Qyoto {
 				SetProperty("toolButtonStyle", QVariant.FromValue<Qt.ToolButtonStyle>(value));
 			}
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QToolBar(string title, QWidget parent) : this((Type) null) {
 			CreateProxy();
 			NewQToolBar(title,parent);

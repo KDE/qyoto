@@ -28,7 +28,6 @@ namespace Qyoto {
 		private static IQSyntaxHighlighterProxy StaticQSyntaxHighlighter() {
 			return (IQSyntaxHighlighterProxy) _staticInterceptor;
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QSyntaxHighlighter(QObject parent) : this((Type) null) {
 			CreateProxy();
 			NewQSyntaxHighlighter(parent);

@@ -29,7 +29,6 @@ namespace Qyoto {
 		private static IQSplashScreenProxy StaticQSplashScreen() {
 			return (IQSplashScreenProxy) _staticInterceptor;
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QSplashScreen(QPixmap pixmap, int f) : this((Type) null) {
 			CreateProxy();
 			NewQSplashScreen(pixmap,f);

@@ -178,7 +178,6 @@ namespace Qyoto {
 				SetProperty("menuRole", QVariant.FromValue<QAction.MenuRole>(value));
 			}
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QAction(QObject parent) : this((Type) null) {
 			CreateProxy();
 			NewQAction(parent);

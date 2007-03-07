@@ -61,7 +61,6 @@ namespace Qyoto {
 				SetProperty("notchesVisible", QVariant.FromValue<bool>(value));
 			}
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QDial(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			NewQDial(parent);

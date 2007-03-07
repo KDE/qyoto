@@ -29,7 +29,6 @@ namespace Qyoto {
 		private static IQDragProxy StaticQDrag() {
 			return (IQDragProxy) _staticInterceptor;
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QDrag(QWidget dragSource) : this((Type) null) {
 			CreateProxy();
 			NewQDrag(dragSource);

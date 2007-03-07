@@ -28,7 +28,6 @@ namespace Qyoto {
 		private static IQTextTableProxy StaticQTextTable() {
 			return (IQTextTableProxy) _staticInterceptor;
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QTextTable(QTextDocument doc) : this((Type) null) {
 			CreateProxy();
 			NewQTextTable(doc);

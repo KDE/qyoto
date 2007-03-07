@@ -29,7 +29,6 @@ namespace Qyoto {
 		private static IQDBusAbstractInterfaceProxy StaticQDBusAbstractInterface() {
 			return (IQDBusAbstractInterfaceProxy) _staticInterceptor;
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
 			return ProxyQDBusAbstractInterface().IsValid();

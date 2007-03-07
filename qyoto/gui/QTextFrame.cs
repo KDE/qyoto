@@ -29,7 +29,6 @@ namespace Qyoto {
 		private static IQTextFrameProxy StaticQTextFrame() {
 			return (IQTextFrameProxy) _staticInterceptor;
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QTextFrame(QTextDocument doc) : this((Type) null) {
 			CreateProxy();
 			NewQTextFrame(doc);

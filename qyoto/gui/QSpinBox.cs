@@ -90,7 +90,6 @@ namespace Qyoto {
 				SetProperty("value", QVariant.FromValue<int>(value));
 			}
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QSpinBox(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			NewQSpinBox(parent);

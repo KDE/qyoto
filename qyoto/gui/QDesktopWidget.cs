@@ -29,7 +29,6 @@ namespace Qyoto {
 		private static IQDesktopWidgetProxy StaticQDesktopWidget() {
 			return (IQDesktopWidgetProxy) _staticInterceptor;
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QDesktopWidget() : this((Type) null) {
 			CreateProxy();
 			NewQDesktopWidget();

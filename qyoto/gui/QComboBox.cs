@@ -173,7 +173,6 @@ namespace Qyoto {
 				SetProperty("modelColumn", QVariant.FromValue<int>(value));
 			}
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QComboBox(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			NewQComboBox(parent);

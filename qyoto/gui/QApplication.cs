@@ -279,7 +279,6 @@ namespace Qyoto {
 				SetProperty("styleSheet", QVariant.FromValue<string>(value));
 			}
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		[SmokeMethod("isSessionRestored", "() const", "")]
 		public bool IsSessionRestored() {
 			return ProxyQApplication().IsSessionRestored();
@@ -514,9 +513,7 @@ namespace Qyoto {
 			return StaticQApplication().KeyboardInputDirection();
 		}
 		public static new int Exec() {
-			int result = StaticQApplication().Exec();
-			Qyoto.SetApplicationTerminated();
-			return result;
+			return StaticQApplication().Exec();
 		}
 		public static void SetQuitOnLastWindowClosed(bool quit) {
 			StaticQApplication().SetQuitOnLastWindowClosed(quit);

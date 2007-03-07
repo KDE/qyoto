@@ -74,7 +74,6 @@ namespace Qyoto {
 				SetProperty("windowTitle", QVariant.FromValue<string>(value));
 			}
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QDockWidget(string title, QWidget parent, int flags) : this((Type) null) {
 			CreateProxy();
 			NewQDockWidget(title,parent,flags);

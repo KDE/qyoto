@@ -111,11 +111,15 @@ namespace Qyoto {
 			return !StaticQModelIndex().op_lt(lhs,other)
 						&& !StaticQModelIndex().op_equals(lhs,other);
 		}
+		~QModelIndex() {
+			DisposeQModelIndex();
+		}
 		public void Dispose() {
 			DisposeQModelIndex();
 		}
 		[SmokeMethod("~QModelIndex", "()", "")]
 		private void DisposeQModelIndex() {
+			QAbstractItemModel.DerefIndexHandle(InternalPointer());
 			ProxyQModelIndex().DisposeQModelIndex();
 		}
 	}

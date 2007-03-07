@@ -36,7 +36,6 @@ namespace Qyoto {
 			Down = TopToBottom,
 			Up = BottomToTop,
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QBoxLayout(QBoxLayout.Direction arg1, QWidget parent) : this((Type) null) {
 			CreateProxy();
 			NewQBoxLayout(arg1,parent);

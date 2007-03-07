@@ -28,7 +28,6 @@ namespace Qyoto {
 		private static IQSplitterHandleProxy StaticQSplitterHandle() {
 			return (IQSplitterHandleProxy) _staticInterceptor;
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QSplitterHandle(Qt.Orientation o, QSplitter parent) : this((Type) null) {
 			CreateProxy();
 			NewQSplitterHandle(o,parent);

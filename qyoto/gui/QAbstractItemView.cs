@@ -220,7 +220,6 @@ namespace Qyoto {
 				SetProperty("horizontalScrollMode", QVariant.FromValue<QAbstractItemView.ScrollMode>(value));
 			}
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QAbstractItemView(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			NewQAbstractItemView(parent);

@@ -28,7 +28,6 @@ namespace Qyoto {
 		private static IQCleanlooksStyleProxy StaticQCleanlooksStyle() {
 			return (IQCleanlooksStyleProxy) _staticInterceptor;
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QCleanlooksStyle() : this((Type) null) {
 			CreateProxy();
 			NewQCleanlooksStyle();

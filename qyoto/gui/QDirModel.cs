@@ -61,7 +61,6 @@ namespace Qyoto {
 				SetProperty("lazyChildCount", QVariant.FromValue<bool>(value));
 			}
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QDirModel(List<string> nameFilters, int filters, int sort, QObject parent) : this((Type) null) {
 			CreateProxy();
 			NewQDirModel(nameFilters,filters,sort,parent);

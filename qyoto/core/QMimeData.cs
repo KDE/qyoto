@@ -29,7 +29,6 @@ namespace Qyoto {
 		private static IQMimeDataProxy StaticQMimeData() {
 			return (IQMimeDataProxy) _staticInterceptor;
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QMimeData() : this((Type) null) {
 			CreateProxy();
 			NewQMimeData();

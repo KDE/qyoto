@@ -28,7 +28,6 @@ namespace Qyoto {
 		private static IQSqlQueryModelProxy StaticQSqlQueryModel() {
 			return (IQSqlQueryModelProxy) _staticInterceptor;
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QSqlQueryModel(QObject parent) : this((Type) null) {
 			CreateProxy();
 			NewQSqlQueryModel(parent);

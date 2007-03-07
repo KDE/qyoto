@@ -34,7 +34,6 @@ namespace Qyoto {
 			DontShareAddress = 0x2,
 			ReuseAddressHint = 0x4,
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QUdpSocket(QObject parent) : this((Type) null) {
 			CreateProxy();
 			NewQUdpSocket(parent);

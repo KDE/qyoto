@@ -77,7 +77,6 @@ namespace Qyoto {
 		private static IQInputDialogProxy StaticQInputDialog() {
 			return (IQInputDialogProxy) _staticInterceptor;
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public static new string Tr(string s, string c) {
 			return StaticQInputDialog().Tr(s,c);
 		}

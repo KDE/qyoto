@@ -28,7 +28,6 @@ namespace Qyoto {
 		private static IQFocusFrameProxy StaticQFocusFrame() {
 			return (IQFocusFrameProxy) _staticInterceptor;
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QFocusFrame(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			NewQFocusFrame(parent);

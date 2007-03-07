@@ -48,7 +48,6 @@ namespace Qyoto {
 		private static IQColorDialogProxy StaticQColorDialog() {
 			return (IQColorDialogProxy) _staticInterceptor;
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public static new string Tr(string s, string c) {
 			return StaticQColorDialog().Tr(s,c);
 		}

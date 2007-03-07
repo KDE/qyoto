@@ -11,10 +11,5 @@ namespace Qyoto {
 			IntPtr ptr = ModelIndexInternalPointer((IntPtr) GCHandle.Alloc(this));
 			return ((GCHandle) ptr).Target;
 		}
-
-		~QModelIndex() {
-			QAbstractItemModel.DerefIndexHandle(InternalPointer());
-			DisposeQModelIndex();
-		}
 	}
 }

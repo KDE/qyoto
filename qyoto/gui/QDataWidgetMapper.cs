@@ -60,7 +60,6 @@ namespace Qyoto {
 				SetProperty("submitPolicy", QVariant.FromValue<QDataWidgetMapper.SubmitPolicy>(value));
 			}
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QDataWidgetMapper(QObject parent) : this((Type) null) {
 			CreateProxy();
 			NewQDataWidgetMapper(parent);

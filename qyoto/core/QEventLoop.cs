@@ -36,7 +36,6 @@ namespace Qyoto {
 			X11ExcludeTimers = 0x08,
 			DeferredDeletion = 0x10,
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QEventLoop(QObject parent) : this((Type) null) {
 			CreateProxy();
 			NewQEventLoop(parent);

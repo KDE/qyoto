@@ -47,7 +47,6 @@ namespace Qyoto {
 				SetProperty("top", QVariant.FromValue<int>(value));
 			}
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QIntValidator(QObject parent) : this((Type) null) {
 			CreateProxy();
 			NewQIntValidator(parent);

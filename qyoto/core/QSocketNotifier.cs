@@ -57,7 +57,6 @@ namespace Qyoto {
 			Write = 1,
 			Exception = 2,
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QSocketNotifier(int socket, QSocketNotifier.TypeOf arg2, QObject parent) : this((Type) null) {
 			CreateProxy();
 			NewQSocketNotifier(socket,arg2,parent);

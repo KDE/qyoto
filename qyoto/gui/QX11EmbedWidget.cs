@@ -34,7 +34,6 @@ namespace Qyoto {
 			Internal = 1,
 			InvalidWindowID = 2,
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QX11EmbedWidget(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			NewQX11EmbedWidget(parent);

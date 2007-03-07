@@ -34,7 +34,6 @@ namespace Qyoto {
 			Intermediate = 1,
 			Acceptable = 2,
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QValidator(QObject parent) : this((Type) null) {
 			CreateProxy();
 			NewQValidator(parent);

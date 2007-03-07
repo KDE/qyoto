@@ -40,7 +40,6 @@ namespace Qyoto {
 			PrintPageRange = 0x0004,
 			PrintCollateCopies = 0x0010,
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QAbstractPrintDialog(QPrinter printer, QWidget parent) : this((Type) null) {
 			CreateProxy();
 			NewQAbstractPrintDialog(printer,parent);

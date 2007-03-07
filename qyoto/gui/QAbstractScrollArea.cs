@@ -47,7 +47,6 @@ namespace Qyoto {
 				SetProperty("horizontalScrollBarPolicy", QVariant.FromValue<Qt.ScrollBarPolicy>(value));
 			}
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QAbstractScrollArea(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			NewQAbstractScrollArea(parent);

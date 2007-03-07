@@ -45,7 +45,6 @@ namespace Qyoto {
 				return Property("topLevelItemCount").Value<int>();
 			}
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QTreeWidget(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			NewQTreeWidget(parent);

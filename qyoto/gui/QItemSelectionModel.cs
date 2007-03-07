@@ -43,7 +43,6 @@ namespace Qyoto {
 			ToggleCurrent = Toggle|Current,
 			ClearAndSelect = Clear|Select,
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QItemSelectionModel(QAbstractItemModel model) : this((Type) null) {
 			CreateProxy();
 			NewQItemSelectionModel(model);

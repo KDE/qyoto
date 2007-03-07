@@ -97,7 +97,6 @@ namespace Qyoto {
 				SetProperty("frameRect", QVariant.FromValue<QRect>(value));
 			}
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QFrame(QWidget parent, int f) : this((Type) null) {
 			CreateProxy();
 			NewQFrame(parent,f);

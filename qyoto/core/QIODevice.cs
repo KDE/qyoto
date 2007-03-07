@@ -75,7 +75,6 @@ namespace Qyoto {
 			Text = 0x0010,
 			Unbuffered = 0x0020,
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QIODevice() : this((Type) null) {
 			CreateProxy();
 			NewQIODevice();

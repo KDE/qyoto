@@ -70,7 +70,6 @@ namespace Qyoto {
 				SetProperty("arrowType", QVariant.FromValue<Qt.ArrowType>(value));
 			}
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QToolButton(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			NewQToolButton(parent);

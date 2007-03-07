@@ -48,7 +48,6 @@ namespace Qyoto {
 			WrongContentLength = 6,
 			Aborted = 7,
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QHttp(QObject parent) : this((Type) null) {
 			CreateProxy();
 			NewQHttp(parent);

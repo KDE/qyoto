@@ -29,7 +29,6 @@ namespace Qyoto {
 		private static IQAbstractEventDispatcherProxy StaticQAbstractEventDispatcher() {
 			return (IQAbstractEventDispatcherProxy) _staticInterceptor;
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QAbstractEventDispatcher(QObject parent) : this((Type) null) {
 			CreateProxy();
 			NewQAbstractEventDispatcher(parent);

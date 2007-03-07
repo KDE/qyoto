@@ -30,7 +30,6 @@ namespace Qyoto {
 		private static IQErrorMessageProxy StaticQErrorMessage() {
 			return (IQErrorMessageProxy) _staticInterceptor;
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QErrorMessage(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			NewQErrorMessage(parent);

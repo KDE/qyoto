@@ -68,6 +68,8 @@ namespace Qyoto {
 			QDBusArgument Write(QDBusArgument a, QLineF line);
 			[SmokeMethod("operator<<", "(QDBusArgument&, const QVariantList&)", "#?")]
 			QDBusArgument Write(QDBusArgument arg, List<QVariant> list);
+			[SmokeMethod("operator<<", "(QTextStream&, const QDomNode&)", "##")]
+			QTextStream Write(QTextStream arg1, QDomNode arg2);
 			[SmokeMethod("qHash", "(const QHostAddress&)", "#")]
 			uint QHash(QHostAddress key);
 			[SmokeMethod("operator<<", "(QDataStream&, const QHostAddress&)", "##")]
@@ -270,8 +272,6 @@ namespace Qyoto {
 			QDataStream Read(QDataStream arg1, QListWidgetItem item);
 			[SmokeMethod("qHash", "(const QItemSelectionRange&)", "#")]
 			uint QHash(QItemSelectionRange arg1);
-			[SmokeMethod("operator<<", "(QTextStream&, const QDomNode&)", "##")]
-			QTextStream Write(QTextStream arg1, QDomNode arg2);
 			[SmokeMethod("qRound", "(qreal)", "$")]
 			int QRound(double d);
 			[SmokeMethod("qRound64", "(qreal)", "$")]
@@ -1349,7 +1349,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~Qt", "()", "")]
 		private void DisposeQt() {
-//			ProxyQt().DisposeQt();
+			ProxyQt().DisposeQt();
 		}
 		public static void QDBusReplyFill(QDBusMessage reply, QDBusError error, QVariant data) {
 			StaticQt().QDBusReplyFill(reply,error,data);
@@ -1427,6 +1427,9 @@ namespace Qyoto {
 			return StaticQt().Write(arg,list);
 		}
 		// QDBusArgument& operator<<(QDBusArgument& arg1,const QVariantMap& arg2); >>>> NOT CONVERTED
+		public static QTextStream Write(QTextStream arg1, QDomNode arg2) {
+			return StaticQt().Write(arg1,arg2);
+		}
 		public static uint QHash(QHostAddress key) {
 			return StaticQt().QHash(key);
 		}
@@ -1729,9 +1732,6 @@ namespace Qyoto {
 		}
 		public static uint QHash(QItemSelectionRange arg1) {
 			return StaticQt().QHash(arg1);
-		}
-		public static QTextStream Write(QTextStream arg1, QDomNode arg2) {
-			return StaticQt().Write(arg1,arg2);
 		}
 		public static int QRound(double d) {
 			return StaticQt().QRound(d);

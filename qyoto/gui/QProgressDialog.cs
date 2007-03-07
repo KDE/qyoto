@@ -98,7 +98,6 @@ namespace Qyoto {
 				SetProperty("labelText", QVariant.FromValue<string>(value));
 			}
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QProgressDialog(QWidget parent, int f) : this((Type) null) {
 			CreateProxy();
 			NewQProgressDialog(parent,f);

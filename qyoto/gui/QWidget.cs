@@ -446,7 +446,6 @@ namespace Qyoto {
 				SetProperty("styleSheet", QVariant.FromValue<string>(value));
 			}
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QWidget(QWidget parent, int f) : this((Type) null) {
 			CreateProxy();
 			NewQWidget(parent,f);

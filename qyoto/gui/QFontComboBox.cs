@@ -63,7 +63,6 @@ namespace Qyoto {
 				SetProperty("currentFont", QVariant.FromValue<QFont>(value));
 			}
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QFontComboBox(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			NewQFontComboBox(parent);

@@ -140,7 +140,6 @@ namespace Qyoto {
 				SetProperty("organizationDomain", QVariant.FromValue<string>(value));
 			}
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		[SmokeMethod("notify", "(QObject*, QEvent*)", "##")]
 		public virtual bool Notify(QObject arg1, QEvent arg2) {
 			return ProxyQCoreApplication().Notify(arg1,arg2);
@@ -187,9 +186,7 @@ namespace Qyoto {
 			return StaticQCoreApplication().Instance();
 		}
 		public static int Exec() {
-			int result = StaticQCoreApplication().Exec();
-			Qyoto.SetApplicationTerminated();
-			return result;
+			return StaticQCoreApplication().Exec();
 		}
 		public static void ProcessEvents(uint flags) {
 			StaticQCoreApplication().ProcessEvents(flags);

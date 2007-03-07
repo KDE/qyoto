@@ -32,7 +32,6 @@ namespace Qyoto {
 		private static IQSoundProxy StaticQSound() {
 			return (IQSoundProxy) _staticInterceptor;
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QSound(string filename, QObject parent) : this((Type) null) {
 			CreateProxy();
 			NewQSound(filename,parent);

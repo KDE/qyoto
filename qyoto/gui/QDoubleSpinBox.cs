@@ -99,7 +99,6 @@ namespace Qyoto {
 				SetProperty("value", QVariant.FromValue<double>(value));
 			}
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QDoubleSpinBox(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			NewQDoubleSpinBox(parent);

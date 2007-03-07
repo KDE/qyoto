@@ -29,7 +29,6 @@ namespace Qyoto {
 		private static IQAbstractTextDocumentLayoutProxy StaticQAbstractTextDocumentLayout() {
 			return (IQAbstractTextDocumentLayoutProxy) _staticInterceptor;
 		}
-		// int qt_metacall(QMetaObject::Call arg1,int arg2,void** arg3); >>>> NOT CONVERTED
 		public QAbstractTextDocumentLayout(QTextDocument doc) : this((Type) null) {
 			CreateProxy();
 			NewQAbstractTextDocumentLayout(doc);
