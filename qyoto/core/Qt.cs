@@ -459,13 +459,6 @@ namespace Qyoto {
 			[SmokeMethod("operator>>", "(QDataStream&, QUuid&)", "##")]
 			QDataStream Read(QDataStream arg1, QUuid arg2);
 		}
-		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(Qt), this);
-			_interceptor = (Qt) realProxy.GetTransparentProxy();
-		}
-		private Qt ProxyQt() {
-			return (Qt) _interceptor;
-		}
 		private static Object _staticInterceptor = null;
 		static Qt() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQtProxy), null);
@@ -1340,16 +1333,6 @@ namespace Qyoto {
 		}
 		public static QTextCodec CodecForHtml(QByteArray ba) {
 			return StaticQt().CodecForHtml(ba);
-		}
-		~Qt() {
-			DisposeQt();
-		}
-		public void Dispose() {
-			DisposeQt();
-		}
-		[SmokeMethod("~Qt", "()", "")]
-		private void DisposeQt() {
-			ProxyQt().DisposeQt();
 		}
 		public static void QDBusReplyFill(QDBusMessage reply, QDBusError error, QVariant data) {
 			StaticQt().QDBusReplyFill(reply,error,data);
