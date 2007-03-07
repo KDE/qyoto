@@ -2,15 +2,15 @@ using System;
 using System.IO;
 using Qyoto;
 
-class MainClass {
+class MainClass : Qt {
 	public static int Main(string[] args) {
-// 		Q_INIT_RESOURCE("simpletreemodel");
+ 		Q_INIT_RESOURCE("simpletreemodel");
 		
 		new QApplication(args);
 		
-		StreamReader file = new StreamReader("default.txt");
-// 		Debug.SetDebug(QtDebugChannel.QTDB_TRANSPARENT_PROXY | QtDebugChannel.QTDB_VIRTUAL);
-		TreeModel model = new TreeModel(file.ReadToEnd());
+		QFile file = new QFile(":/default.txt");
+		file.Open((int) QIODevice.OpenModeFlag.ReadOnly);
+		TreeModel model = new TreeModel(new QTextStream(file.ReadAll()).ReadAll());
 		file.Close();
 		
 		QTreeView view = new QTreeView();

@@ -24,15 +24,11 @@ class TreeItem : object {
 	}
 	
 	public int ChildCount() {
-// 		if (childItems != null)
-			return childItems.Count;
-// 		return 0;
+		return childItems.Count;
 	}
 	
 	public int ColumnCount() {
-// 		if (itemData != null)
-			return itemData.Count;
-// 		return 0;
+		return itemData.Count;
 	}
 	
 	public QVariant Data(int column) {

@@ -1,3 +1,7 @@
+2007-03-07  Richard Dale  <rdale@foton.es>
+
+	* Made the simpletreemodel example use the csrcc resource compiler
+
 2007-03-06  Richard Dale  <rdale@foton.es>
 
 	* A GCHandle was being used to hold the 'internalPointer' value in a 

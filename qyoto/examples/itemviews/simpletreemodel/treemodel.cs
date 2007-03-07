@@ -84,11 +84,11 @@ class TreeModel : QAbstractItemModel {
 		else
 			return new QModelIndex();
 	}
-	
+
 	public override QModelIndex Index(int row, int column) {
 		return Index(row, column, new QModelIndex());
 	}
-	
+
 	public override QModelIndex Parent(QModelIndex index) {
 		if (!index.IsValid())
 			return new QModelIndex();
