@@ -29,7 +29,7 @@ class Ping
     static private string SERVICE_NAME = "com.trolltech.QtDBus.PingExample";
 
     public static int Main(string[] args) {
-        QCoreApplication app = new QCoreApplication(args);
+        new QCoreApplication(args);
 
         if (!QDBusConnection.SessionBus().IsConnected()) {
             Console.WriteLine("Cannot connect to the D-BUS session bus.\n" +
@@ -40,11 +40,11 @@ class Ping
 
         QDBusInterface iface = new QDBusInterface(SERVICE_NAME, "/", "", QDBusConnection.SessionBus());
         if (iface.IsValid()) {
+//Debug.SetDebug(QtDebugChannel.QTDB_ALL);
             QDBusMessage message = iface.Call("ping", new QVariant(args.Length > 0 ? args[0] : ""));
             QDBusReply<string> reply = new QDBusReply<string>(message);
             if (reply.IsValid()) {
                 Console.WriteLine("Reply was: {0}", reply.Value());
-                Debug.SetDebug(QtDebugChannel.QTDB_ALL);
                 return 0;
             }
 

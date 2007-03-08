@@ -4,7 +4,7 @@ namespace Qyoto {
 	using System.Collections.Generic;
 	using System.Runtime.InteropServices;
 
-	public partial class QAbstractItemModel : QObject {
+	public abstract partial class QAbstractItemModel : QObject {
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		public static extern IntPtr AbstractItemModelCreateIndex(IntPtr obj, int row, int column, IntPtr ptr);
 		
@@ -18,14 +18,6 @@ namespace Qyoto {
 		protected QModelIndex CreateIndex(int row, int column, object ptr) {
 			IntPtr ret = AbstractItemModelCreateIndex((IntPtr) GCHandle.Alloc(this),
 									row, column, (IntPtr) GetIndexHandle(ptr));
-			QModelIndex result = (QModelIndex) ((GCHandle) ret).Target;
-			((GCHandle) ret).Free();
-			return result;
-		}
-		
-		protected QModelIndex CreateIndex(int row, int column) {
-			IntPtr ret = AbstractItemModelCreateIndex((IntPtr) GCHandle.Alloc(this),
-									row, column, IntPtr.Zero);
 			QModelIndex result = (QModelIndex) ((GCHandle) ret).Target;
 			((GCHandle) ret).Free();
 			return result;

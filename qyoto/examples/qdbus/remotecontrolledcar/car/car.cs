@@ -31,7 +31,7 @@ public class Car : QGraphicsItem {
     
     static double Pi = 3.14159265358979323846264338327950288419717;
     
-    public QRectF BoundingRect()
+    public override QRectF BoundingRect()
     {
         return new QRectF(-35, -81, 70, 115);
     }
@@ -71,6 +71,8 @@ public class Car : QGraphicsItem {
            wheelsAngle += 5;
     }
     
+    public override void Paint(QPainter painter, QStyleOptionGraphicsItem option) {}
+
     public override void Paint(QPainter painter, QStyleOptionGraphicsItem option, QWidget widget)
     {
         painter.SetBrush(new QBrush(Qt.GlobalColor.gray));

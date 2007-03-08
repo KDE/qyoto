@@ -39,6 +39,8 @@ class TreeModel : QAbstractItemModel {
 	
 	public TreeModel(string data) : this(data, null) {}
 	
+	public override QVariant Data(QModelIndex index) { return new QVariant(); }
+
 	public override QVariant Data(QModelIndex index, int role) {
 		if (!index.IsValid())
 			return new QVariant();

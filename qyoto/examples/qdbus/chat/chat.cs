@@ -55,7 +55,7 @@ public class ChatMainWindow : QMainWindow {
         Connect(iface, SIGNAL("Action(QString,QString)"), this, SLOT("ActionSlot(QString,QString)"));
     
         NicknameDialog dialog = new NicknameDialog();
-        dialog.m_ui.cancelButton.Visible = false;
+        dialog.m_ui.cancelButton.SetVisible(false);
         dialog.Exec();
         m_nickname = dialog.m_ui.nickname.Text.Trim();
         Emit.Action(m_nickname, "joins the chat");

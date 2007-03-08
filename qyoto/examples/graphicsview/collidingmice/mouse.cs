@@ -68,7 +68,7 @@ public class Mouse : QGraphicsItem {
         Rotate(RandomClass.Next(360 * 16));
     }
     
-    public QRectF BoundingRect()
+    public override QRectF BoundingRect()
     {
         double adjust = 0.5;
         return new QRectF(-20 - adjust, -22 - adjust,
@@ -82,7 +82,9 @@ public class Mouse : QGraphicsItem {
         return path;
     }
     
-    public void Paint(QPainter painter, QStyleOptionGraphicsItem option, QWidget widget)
+    public override void Paint(QPainter painter, QStyleOptionGraphicsItem option) {}
+
+    public override void Paint(QPainter painter, QStyleOptionGraphicsItem option, QWidget widget)
     {
         // Body
         painter.SetBrush(new QBrush(color));

@@ -1,3 +1,18 @@
+2007-03-08  Richard Dale  <rdale@foton.es>
+
+	* Improved the code generation for overriden methods and they are
+	  now labelled 'virtual' or 'override' where appropriate, rather than
+	  as 'new'
+	* Classes with pure virtual methods are now 'abstract' as are the pure
+	  virtual methods.
+	* Made the code generated for Q_PROPERTIES shorter for clarity
+	* Fixed some compile errors in the examples as a result of the above 
+	  changes
+	* The tutorial application t14 now seg faults on exit
+	* Pure virtual protected methods such as 
+	  QSyntaxHighlighter.HighlightBlock() are no longer omitted from the
+	  generated code
+
 2007-03-07  Richard Dale  <rdale@foton.es>
 
 	* Made the simpletreemodel example use the csrcc resource compiler

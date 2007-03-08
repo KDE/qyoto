@@ -31,16 +31,20 @@ class Pong : QObject {
     static private string SERVICE_NAME = "com.trolltech.QtDBus.PingExample";
 
     [Q_SLOT]
+    public void Terminator() {
+        Console.WriteLine("Terminator called");
+        Qyoto.Qyoto.SetApplicationTerminated();
+    }
+
+    [Q_SLOT]
     public string ping(string arg)
     {
         QMetaObject.InvokeMethod(QCoreApplication.Instance(), "quit");
-                Debug.SetDebug(QtDebugChannel.QTDB_ALL);
         return "ping(\"" + arg + "\") got called";
     }
 
     public static int Main(string[] args) {
         QCoreApplication app = new QCoreApplication(args);
-
         if (!QDBusConnection.SessionBus().IsConnected()) {
             Console.Write("Cannot connect to the D-BUS session bus.\n" +
                 "To start it, run:\n" +
@@ -54,6 +58,7 @@ class Pong : QObject {
         }
 
         Pong pong = new Pong();
+        Connect(app, SIGNAL("aboutToQuit()"), pong, SLOT("Terminator()"));
         QDBusConnection.SessionBus().RegisterObject("/", pong, (int) QDBusConnection.RegisterOption.ExportAllSlots);
 
         return QCoreApplication.Exec();
