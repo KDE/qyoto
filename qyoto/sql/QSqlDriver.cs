@@ -123,11 +123,6 @@ namespace Qyoto {
 		public abstract void Close();
 		public abstract QSqlResult CreateResult();
 		public abstract bool Open(string db, string user, string password, string host, int port, string connOpts);
-		public abstract bool Open(string db, string user, string password, string host, int port);
-		public abstract bool Open(string db, string user, string password, string host);
-		public abstract bool Open(string db, string user, string password);
-		public abstract bool Open(string db, string user);
-		public abstract bool Open(string db);
 		public static string Tr(string s, string c) {
 			return StaticQSqlDriver().Tr(s,c);
 		}

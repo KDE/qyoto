@@ -72,7 +72,7 @@ namespace Qyoto {
 			return ProxyQStandardItemModel().Index(row,column,parent);
 		}
 		[SmokeMethod("index", "(int, int) const", "$$")]
-		public override QModelIndex Index(int row, int column) {
+		public virtual QModelIndex Index(int row, int column) {
 			return ProxyQStandardItemModel().Index(row,column);
 		}
 		[SmokeMethod("parent", "(const QModelIndex&) const", "#")]
@@ -84,7 +84,7 @@ namespace Qyoto {
 			return ProxyQStandardItemModel().RowCount(parent);
 		}
 		[SmokeMethod("rowCount", "() const", "")]
-		public override int RowCount() {
+		public virtual int RowCount() {
 			return ProxyQStandardItemModel().RowCount();
 		}
 		[SmokeMethod("columnCount", "(const QModelIndex&) const", "#")]
@@ -92,7 +92,7 @@ namespace Qyoto {
 			return ProxyQStandardItemModel().ColumnCount(parent);
 		}
 		[SmokeMethod("columnCount", "() const", "")]
-		public override int ColumnCount() {
+		public virtual int ColumnCount() {
 			return ProxyQStandardItemModel().ColumnCount();
 		}
 		[SmokeMethod("hasChildren", "(const QModelIndex&) const", "#")]
@@ -108,7 +108,7 @@ namespace Qyoto {
 			return ProxyQStandardItemModel().Data(index,role);
 		}
 		[SmokeMethod("data", "(const QModelIndex&) const", "#")]
-		public override QVariant Data(QModelIndex index) {
+		public virtual QVariant Data(QModelIndex index) {
 			return ProxyQStandardItemModel().Data(index);
 		}
 		[SmokeMethod("setData", "(const QModelIndex&, const QVariant&, int)", "##$")]

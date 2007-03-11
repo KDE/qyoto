@@ -37,7 +37,7 @@ namespace Qyoto {
 			return ProxyQXmlSimpleReader().Feature(name,out ok);
 		}
 		[SmokeMethod("feature", "(const QString&) const", "$")]
-		public override bool Feature(string name) {
+		public virtual bool Feature(string name) {
 			return ProxyQXmlSimpleReader().Feature(name);
 		}
 		[SmokeMethod("setFeature", "(const QString&, bool)", "$$")]

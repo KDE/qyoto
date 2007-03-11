@@ -149,7 +149,7 @@ namespace Qyoto {
 			ProxyQTableView().ScrollTo(index,hint);
 		}
 		[SmokeMethod("scrollTo", "(const QModelIndex&)", "#")]
-		public override void ScrollTo(QModelIndex index) {
+		public virtual void ScrollTo(QModelIndex index) {
 			ProxyQTableView().ScrollTo(index);
 		}
 		[SmokeMethod("indexAt", "(const QPoint&) const", "#")]

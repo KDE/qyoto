@@ -82,8 +82,6 @@ public class Mouse : QGraphicsItem {
         return path;
     }
     
-    public override void Paint(QPainter painter, QStyleOptionGraphicsItem option) {}
-
     public override void Paint(QPainter painter, QStyleOptionGraphicsItem option, QWidget widget)
     {
         // Body

@@ -55,16 +55,13 @@ namespace Qyoto {
 			return ProxyQAbstractItemModel().HasIndex(row,column);
 		}
 		public abstract QModelIndex Index(int row, int column, QModelIndex parent);
-		public abstract QModelIndex Index(int row, int column);
 		public abstract QModelIndex Parent(QModelIndex child);
 		[SmokeMethod("sibling", "(int, int, const QModelIndex&) const", "$$#")]
 		public QModelIndex Sibling(int row, int column, QModelIndex idx) {
 			return ProxyQAbstractItemModel().Sibling(row,column,idx);
 		}
 		public abstract int RowCount(QModelIndex parent);
-		public abstract int RowCount();
 		public abstract int ColumnCount(QModelIndex parent);
-		public abstract int ColumnCount();
 		[SmokeMethod("hasChildren", "(const QModelIndex&) const", "#")]
 		public virtual bool HasChildren(QModelIndex parent) {
 			return ProxyQAbstractItemModel().HasChildren(parent);
@@ -74,7 +71,6 @@ namespace Qyoto {
 			return ProxyQAbstractItemModel().HasChildren();
 		}
 		public abstract QVariant Data(QModelIndex index, int role);
-		public abstract QVariant Data(QModelIndex index);
 		[SmokeMethod("setData", "(const QModelIndex&, const QVariant&, int)", "##$")]
 		public virtual bool SetData(QModelIndex index, QVariant value, int role) {
 			return ProxyQAbstractItemModel().SetData(index,value,role);

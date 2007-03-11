@@ -75,7 +75,7 @@ namespace Qyoto {
 			return ProxyQAbstractProxyModel().Data(proxyIndex,role);
 		}
 		[SmokeMethod("data", "(const QModelIndex&) const", "#")]
-		public override QVariant Data(QModelIndex proxyIndex) {
+		public virtual QVariant Data(QModelIndex proxyIndex) {
 			return ProxyQAbstractProxyModel().Data(proxyIndex);
 		}
 		[SmokeMethod("headerData", "(int, Qt::Orientation, int) const", "$$$")]

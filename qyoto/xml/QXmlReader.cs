@@ -27,7 +27,6 @@ namespace Qyoto {
 			return (IQXmlReaderProxy) _staticInterceptor;
 		}
 		public abstract bool Feature(string name, out bool ok);
-		public abstract bool Feature(string name);
 		public abstract void SetFeature(string name, bool value);
 		public abstract bool HasFeature(string name);
 		// void* property(const QString& arg1,bool* arg2); >>>> NOT CONVERTED

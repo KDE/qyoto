@@ -227,7 +227,6 @@ namespace Qyoto {
 		}
 		public abstract QRect VisualRect(QModelIndex index);
 		public abstract void ScrollTo(QModelIndex index, QAbstractItemView.ScrollHint hint);
-		public abstract void ScrollTo(QModelIndex index);
 		public abstract QModelIndex IndexAt(QPoint point);
 		[SmokeMethod("sizeHintForIndex", "(const QModelIndex&) const", "#")]
 		public QSize SizeHintForIndex(QModelIndex index) {

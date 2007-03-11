@@ -38,8 +38,6 @@ class TreeModel : QAbstractItemModel {
 	}
 	
 	public TreeModel(string data) : this(data, null) {}
-	
-	public override QVariant Data(QModelIndex index) { return new QVariant(); }
 
 	public override QVariant Data(QModelIndex index, int role) {
 		if (!index.IsValid())
@@ -87,10 +85,6 @@ class TreeModel : QAbstractItemModel {
 			return new QModelIndex();
 	}
 
-	public override QModelIndex Index(int row, int column) {
-		return Index(row, column, new QModelIndex());
-	}
-
 	public override QModelIndex Parent(QModelIndex index) {
 		if (!index.IsValid())
 			return new QModelIndex();
@@ -116,20 +110,12 @@ class TreeModel : QAbstractItemModel {
 		return parentItem.ChildCount();
 	}
 	
-	public override int RowCount() {
-		return RowCount(new QModelIndex());
-	}
-	
 	public override int ColumnCount(QModelIndex parent) {
 		if (parent.IsValid()) {
 			return ((TreeItem) parent.InternalPointer()).ColumnCount();
 		} else {
 			return rootItem.ColumnCount();
 		}
-	}
-	
-	public override int ColumnCount() {
-		return ColumnCount(new QModelIndex());
 	}
 	
 	private void SetupModelData(List<string> lines, TreeItem parent) {

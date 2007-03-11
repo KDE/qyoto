@@ -67,7 +67,7 @@ namespace Qyoto {
 			ProxyQGraphicsItemGroup().Paint(painter,option,widget);
 		}
 		[SmokeMethod("paint", "(QPainter*, const QStyleOptionGraphicsItem*)", "##")]
-		public override void Paint(QPainter painter, QStyleOptionGraphicsItem option) {
+		public virtual void Paint(QPainter painter, QStyleOptionGraphicsItem option) {
 			ProxyQGraphicsItemGroup().Paint(painter,option);
 		}
 		[SmokeMethod("isObscuredBy", "(const QGraphicsItem*) const", "#")]

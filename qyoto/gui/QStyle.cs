@@ -562,29 +562,15 @@ namespace Qyoto {
 			return ProxyQStyle().StandardPalette();
 		}
 		public abstract void DrawPrimitive(QStyle.PrimitiveElement pe, out int opt, QPainter p, QWidget w);
-		public abstract void DrawPrimitive(QStyle.PrimitiveElement pe, out int opt, QPainter p);
 		public abstract void DrawControl(QStyle.ControlElement element, out int opt, QPainter p, QWidget w);
-		public abstract void DrawControl(QStyle.ControlElement element, out int opt, QPainter p);
 		public abstract QRect SubElementRect(QStyle.SubElement subElement, out int option, QWidget widget);
-		public abstract QRect SubElementRect(QStyle.SubElement subElement, out int option);
 		public abstract void DrawComplexControl(QStyle.ComplexControl cc, QStyleOptionComplex opt, QPainter p, QWidget widget);
-		public abstract void DrawComplexControl(QStyle.ComplexControl cc, QStyleOptionComplex opt, QPainter p);
 		public abstract QStyle.SubControl HitTestComplexControl(QStyle.ComplexControl cc, QStyleOptionComplex opt, QPoint pt, QWidget widget);
-		public abstract QStyle.SubControl HitTestComplexControl(QStyle.ComplexControl cc, QStyleOptionComplex opt, QPoint pt);
 		public abstract QRect SubControlRect(QStyle.ComplexControl cc, QStyleOptionComplex opt, QStyle.SubControl sc, QWidget widget);
-		public abstract QRect SubControlRect(QStyle.ComplexControl cc, QStyleOptionComplex opt, QStyle.SubControl sc);
 		public abstract int pixelMetric(QStyle.PixelMetric metric, out int option, QWidget widget);
-		public abstract int pixelMetric(QStyle.PixelMetric metric, out int option);
-		public abstract int pixelMetric(QStyle.PixelMetric metric);
 		public abstract QSize SizeFromContents(QStyle.ContentsType ct, out int opt, QSize contentsSize, QWidget w);
-		public abstract QSize SizeFromContents(QStyle.ContentsType ct, out int opt, QSize contentsSize);
 		public abstract int styleHint(QStyle.StyleHint stylehint, out int opt, QWidget widget, QStyleHintReturn returnData);
-		public abstract int styleHint(QStyle.StyleHint stylehint, out int opt, QWidget widget);
-		public abstract int styleHint(QStyle.StyleHint stylehint, out int opt);
-		public abstract int styleHint(QStyle.StyleHint stylehint);
 		public abstract QPixmap standardPixmap(QStyle.StandardPixmap standardPixmap, out int opt, QWidget widget);
-		public abstract QPixmap standardPixmap(QStyle.StandardPixmap standardPixmap, out int opt);
-		public abstract QPixmap standardPixmap(QStyle.StandardPixmap standardPixmap);
 		[SmokeMethod("standardIcon", "(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const", "$##")]
 		public QIcon StandardIcon(QStyle.StandardPixmap standardIcon, out int option, QWidget widget) {
 			return ProxyQStyle().StandardIcon(standardIcon,out option,widget);

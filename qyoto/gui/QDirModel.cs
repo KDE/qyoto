@@ -86,7 +86,7 @@ namespace Qyoto {
 			return ProxyQDirModel().Index(row,column,parent);
 		}
 		[SmokeMethod("index", "(int, int) const", "$$")]
-		public override QModelIndex Index(int row, int column) {
+		public virtual QModelIndex Index(int row, int column) {
 			return ProxyQDirModel().Index(row,column);
 		}
 		[SmokeMethod("parent", "(const QModelIndex&) const", "#")]
@@ -98,7 +98,7 @@ namespace Qyoto {
 			return ProxyQDirModel().RowCount(parent);
 		}
 		[SmokeMethod("rowCount", "() const", "")]
-		public override int RowCount() {
+		public virtual int RowCount() {
 			return ProxyQDirModel().RowCount();
 		}
 		[SmokeMethod("columnCount", "(const QModelIndex&) const", "#")]
@@ -106,7 +106,7 @@ namespace Qyoto {
 			return ProxyQDirModel().ColumnCount(parent);
 		}
 		[SmokeMethod("columnCount", "() const", "")]
-		public override int ColumnCount() {
+		public virtual int ColumnCount() {
 			return ProxyQDirModel().ColumnCount();
 		}
 		[SmokeMethod("data", "(const QModelIndex&, int) const", "#$")]
@@ -114,7 +114,7 @@ namespace Qyoto {
 			return ProxyQDirModel().Data(index,role);
 		}
 		[SmokeMethod("data", "(const QModelIndex&) const", "#")]
-		public override QVariant Data(QModelIndex index) {
+		public virtual QVariant Data(QModelIndex index) {
 			return ProxyQDirModel().Data(index);
 		}
 		[SmokeMethod("setData", "(const QModelIndex&, const QVariant&, int)", "##$")]

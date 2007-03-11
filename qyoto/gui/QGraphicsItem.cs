@@ -83,7 +83,6 @@ namespace Qyoto {
 			bool IsObscuredBy(QGraphicsItem item);
 			QPainterPath OpaqueArea();
 			void Paint(QPainter painter, QStyleOptionGraphicsItem option, QWidget widget);
-			void Paint(QPainter painter, QStyleOptionGraphicsItem option);
 			void Update(QRectF rect);
 			void Update();
 			void Update(double x, double y, double width, double height);
@@ -501,7 +500,6 @@ namespace Qyoto {
 			return ProxyQGraphicsItem().OpaqueArea();
 		}
 		public abstract void Paint(QPainter painter, QStyleOptionGraphicsItem option, QWidget widget);
-		public abstract void Paint(QPainter painter, QStyleOptionGraphicsItem option);
 		[SmokeMethod("update", "(const QRectF&)", "#")]
 		public void Update(QRectF rect) {
 			ProxyQGraphicsItem().Update(rect);

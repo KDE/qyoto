@@ -5,7 +5,6 @@ namespace Qyoto {
 
 	public interface IQMimeSource {
 			string Format(int n);
-			string Format();
 			bool Provides(string arg1);
 			QByteArray EncodedData(string arg1);
 	}
@@ -34,7 +33,6 @@ namespace Qyoto {
 			return (IQMimeSourceProxy) _staticInterceptor;
 		}
 		public abstract string Format(int n);
-		public abstract string Format();
 		[SmokeMethod("provides", "(const char*) const", "$")]
 		public virtual bool Provides(string arg1) {
 			return ProxyQMimeSource().Provides(arg1);

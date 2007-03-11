@@ -109,7 +109,7 @@ namespace Qyoto {
 			return ProxyQSortFilterProxyModel().Index(row,column,parent);
 		}
 		[SmokeMethod("index", "(int, int) const", "$$")]
-		public override QModelIndex Index(int row, int column) {
+		public virtual QModelIndex Index(int row, int column) {
 			return ProxyQSortFilterProxyModel().Index(row,column);
 		}
 		[SmokeMethod("parent", "(const QModelIndex&) const", "#")]
@@ -121,7 +121,7 @@ namespace Qyoto {
 			return ProxyQSortFilterProxyModel().RowCount(parent);
 		}
 		[SmokeMethod("rowCount", "() const", "")]
-		public override int RowCount() {
+		public virtual int RowCount() {
 			return ProxyQSortFilterProxyModel().RowCount();
 		}
 		[SmokeMethod("columnCount", "(const QModelIndex&) const", "#")]
@@ -129,7 +129,7 @@ namespace Qyoto {
 			return ProxyQSortFilterProxyModel().ColumnCount(parent);
 		}
 		[SmokeMethod("columnCount", "() const", "")]
-		public override int ColumnCount() {
+		public virtual int ColumnCount() {
 			return ProxyQSortFilterProxyModel().ColumnCount();
 		}
 		[SmokeMethod("hasChildren", "(const QModelIndex&) const", "#")]

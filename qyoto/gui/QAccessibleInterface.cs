@@ -40,7 +40,6 @@ namespace Qyoto {
 		public abstract int UserActionCount(int child);
 		public abstract string ActionText(int action, QAccessible.Text t, int child);
 		public abstract bool DoAction(int action, int child, List<QVariant> arg3);
-		public abstract bool DoAction(int action, int child);
 		[SmokeMethod("invokeMethod", "(QAccessible::Method, int, const QVariantList&)", "$$?")]
 		public QVariant InvokeMethod(QAccessible.Method method, int child, List<QVariant> arg3) {
 			return ProxyQAccessibleInterface().InvokeMethod(method,child,arg3);

@@ -49,11 +49,11 @@ namespace Qyoto {
 			return ProxyQAbstractListModel().Index(row,column,parent);
 		}
 		[SmokeMethod("index", "(int, int) const", "$$")]
-		public override QModelIndex Index(int row, int column) {
+		public virtual QModelIndex Index(int row, int column) {
 			return ProxyQAbstractListModel().Index(row,column);
 		}
 		[SmokeMethod("index", "(int) const", "$")]
-		public QModelIndex Index(int row) {
+		public virtual QModelIndex Index(int row) {
 			return ProxyQAbstractListModel().Index(row);
 		}
 		[SmokeMethod("dropMimeData", "(const QMimeData*, Qt::DropAction, int, int, const QModelIndex&)", "#$$$#")]

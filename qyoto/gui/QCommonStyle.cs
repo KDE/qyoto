@@ -41,7 +41,7 @@ namespace Qyoto {
 			ProxyQCommonStyle().DrawPrimitive(pe,out opt,p,w);
 		}
 		[SmokeMethod("drawPrimitive", "(QStyle::PrimitiveElement, const QStyleOption*, QPainter*) const", "$##")]
-		public override void DrawPrimitive(QStyle.PrimitiveElement pe, out int opt, QPainter p) {
+		public virtual void DrawPrimitive(QStyle.PrimitiveElement pe, out int opt, QPainter p) {
 			ProxyQCommonStyle().DrawPrimitive(pe,out opt,p);
 		}
 		[SmokeMethod("drawControl", "(QStyle::ControlElement, const QStyleOption*, QPainter*, const QWidget*) const", "$###")]
@@ -49,7 +49,7 @@ namespace Qyoto {
 			ProxyQCommonStyle().DrawControl(element,out opt,p,w);
 		}
 		[SmokeMethod("drawControl", "(QStyle::ControlElement, const QStyleOption*, QPainter*) const", "$##")]
-		public override void DrawControl(QStyle.ControlElement element, out int opt, QPainter p) {
+		public virtual void DrawControl(QStyle.ControlElement element, out int opt, QPainter p) {
 			ProxyQCommonStyle().DrawControl(element,out opt,p);
 		}
 		[SmokeMethod("subElementRect", "(QStyle::SubElement, const QStyleOption*, const QWidget*) const", "$##")]
@@ -57,7 +57,7 @@ namespace Qyoto {
 			return ProxyQCommonStyle().SubElementRect(r,out opt,widget);
 		}
 		[SmokeMethod("subElementRect", "(QStyle::SubElement, const QStyleOption*) const", "$#")]
-		public override QRect SubElementRect(QStyle.SubElement r, out int opt) {
+		public virtual QRect SubElementRect(QStyle.SubElement r, out int opt) {
 			return ProxyQCommonStyle().SubElementRect(r,out opt);
 		}
 		[SmokeMethod("drawComplexControl", "(QStyle::ComplexControl, const QStyleOptionComplex*, QPainter*, const QWidget*) const", "$###")]
@@ -65,7 +65,7 @@ namespace Qyoto {
 			ProxyQCommonStyle().DrawComplexControl(cc,opt,p,w);
 		}
 		[SmokeMethod("drawComplexControl", "(QStyle::ComplexControl, const QStyleOptionComplex*, QPainter*) const", "$##")]
-		public override void DrawComplexControl(QStyle.ComplexControl cc, QStyleOptionComplex opt, QPainter p) {
+		public virtual void DrawComplexControl(QStyle.ComplexControl cc, QStyleOptionComplex opt, QPainter p) {
 			ProxyQCommonStyle().DrawComplexControl(cc,opt,p);
 		}
 		[SmokeMethod("hitTestComplexControl", "(QStyle::ComplexControl, const QStyleOptionComplex*, const QPoint&, const QWidget*) const", "$###")]
@@ -73,7 +73,7 @@ namespace Qyoto {
 			return ProxyQCommonStyle().HitTestComplexControl(cc,opt,pt,w);
 		}
 		[SmokeMethod("hitTestComplexControl", "(QStyle::ComplexControl, const QStyleOptionComplex*, const QPoint&) const", "$##")]
-		public override QStyle.SubControl HitTestComplexControl(QStyle.ComplexControl cc, QStyleOptionComplex opt, QPoint pt) {
+		public virtual QStyle.SubControl HitTestComplexControl(QStyle.ComplexControl cc, QStyleOptionComplex opt, QPoint pt) {
 			return ProxyQCommonStyle().HitTestComplexControl(cc,opt,pt);
 		}
 		[SmokeMethod("subControlRect", "(QStyle::ComplexControl, const QStyleOptionComplex*, QStyle::SubControl, const QWidget*) const", "$#$#")]
@@ -81,7 +81,7 @@ namespace Qyoto {
 			return ProxyQCommonStyle().SubControlRect(cc,opt,sc,w);
 		}
 		[SmokeMethod("subControlRect", "(QStyle::ComplexControl, const QStyleOptionComplex*, QStyle::SubControl) const", "$#$")]
-		public override QRect SubControlRect(QStyle.ComplexControl cc, QStyleOptionComplex opt, QStyle.SubControl sc) {
+		public virtual QRect SubControlRect(QStyle.ComplexControl cc, QStyleOptionComplex opt, QStyle.SubControl sc) {
 			return ProxyQCommonStyle().SubControlRect(cc,opt,sc);
 		}
 		[SmokeMethod("sizeFromContents", "(QStyle::ContentsType, const QStyleOption*, const QSize&, const QWidget*) const", "$###")]
@@ -89,7 +89,7 @@ namespace Qyoto {
 			return ProxyQCommonStyle().SizeFromContents(ct,out opt,contentsSize,widget);
 		}
 		[SmokeMethod("sizeFromContents", "(QStyle::ContentsType, const QStyleOption*, const QSize&) const", "$##")]
-		public override QSize SizeFromContents(QStyle.ContentsType ct, out int opt, QSize contentsSize) {
+		public virtual QSize SizeFromContents(QStyle.ContentsType ct, out int opt, QSize contentsSize) {
 			return ProxyQCommonStyle().SizeFromContents(ct,out opt,contentsSize);
 		}
 		[SmokeMethod("pixelMetric", "(QStyle::PixelMetric, const QStyleOption*, const QWidget*) const", "$##")]
@@ -97,11 +97,11 @@ namespace Qyoto {
 			return ProxyQCommonStyle().pixelMetric(m,out opt,widget);
 		}
 		[SmokeMethod("pixelMetric", "(QStyle::PixelMetric, const QStyleOption*) const", "$#")]
-		public override int pixelMetric(QStyle.PixelMetric m, out int opt) {
+		public virtual int pixelMetric(QStyle.PixelMetric m, out int opt) {
 			return ProxyQCommonStyle().pixelMetric(m,out opt);
 		}
 		[SmokeMethod("pixelMetric", "(QStyle::PixelMetric) const", "$")]
-		public override int pixelMetric(QStyle.PixelMetric m) {
+		public virtual int pixelMetric(QStyle.PixelMetric m) {
 			return ProxyQCommonStyle().pixelMetric(m);
 		}
 		[SmokeMethod("styleHint", "(QStyle::StyleHint, const QStyleOption*, const QWidget*, QStyleHintReturn*) const", "$###")]
@@ -109,15 +109,15 @@ namespace Qyoto {
 			return ProxyQCommonStyle().styleHint(sh,out opt,w,shret);
 		}
 		[SmokeMethod("styleHint", "(QStyle::StyleHint, const QStyleOption*, const QWidget*) const", "$##")]
-		public override int styleHint(QStyle.StyleHint sh, out int opt, QWidget w) {
+		public virtual int styleHint(QStyle.StyleHint sh, out int opt, QWidget w) {
 			return ProxyQCommonStyle().styleHint(sh,out opt,w);
 		}
 		[SmokeMethod("styleHint", "(QStyle::StyleHint, const QStyleOption*) const", "$#")]
-		public override int styleHint(QStyle.StyleHint sh, out int opt) {
+		public virtual int styleHint(QStyle.StyleHint sh, out int opt) {
 			return ProxyQCommonStyle().styleHint(sh,out opt);
 		}
 		[SmokeMethod("styleHint", "(QStyle::StyleHint) const", "$")]
-		public override int styleHint(QStyle.StyleHint sh) {
+		public virtual int styleHint(QStyle.StyleHint sh) {
 			return ProxyQCommonStyle().styleHint(sh);
 		}
 		[SmokeMethod("standardPixmap", "(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const", "$##")]
@@ -125,11 +125,11 @@ namespace Qyoto {
 			return ProxyQCommonStyle().standardPixmap(sp,out opt,widget);
 		}
 		[SmokeMethod("standardPixmap", "(QStyle::StandardPixmap, const QStyleOption*) const", "$#")]
-		public override QPixmap standardPixmap(QStyle.StandardPixmap sp, out int opt) {
+		public virtual QPixmap standardPixmap(QStyle.StandardPixmap sp, out int opt) {
 			return ProxyQCommonStyle().standardPixmap(sp,out opt);
 		}
 		[SmokeMethod("standardPixmap", "(QStyle::StandardPixmap) const", "$")]
-		public override QPixmap standardPixmap(QStyle.StandardPixmap sp) {
+		public virtual QPixmap standardPixmap(QStyle.StandardPixmap sp) {
 			return ProxyQCommonStyle().standardPixmap(sp);
 		}
 		[SmokeMethod("generatedIconPixmap", "(QIcon::Mode, const QPixmap&, const QStyleOption*) const", "$##")]

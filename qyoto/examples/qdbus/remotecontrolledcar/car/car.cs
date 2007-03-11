@@ -71,8 +71,6 @@ public class Car : QGraphicsItem {
            wheelsAngle += 5;
     }
     
-    public override void Paint(QPainter painter, QStyleOptionGraphicsItem option) {}
-
     public override void Paint(QPainter painter, QStyleOptionGraphicsItem option, QWidget widget)
     {
         painter.SetBrush(new QBrush(Qt.GlobalColor.gray));

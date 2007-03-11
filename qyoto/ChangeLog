@@ -1,3 +1,10 @@
+2007-03-11  Richard Dale  <rdale@foton.es>
+
+	* For pure virtual methods with optional arguments, only translate the
+	  longest version to a C# abstract method. Otherwise, it was necessary
+	  to add extra methods in subclasses that wouldn't be needed in the C++
+	  equivalent code. Fixed example code that needed to do that.
+
 2007-03-08  Richard Dale  <rdale@foton.es>
 
 	* Improved the code generation for overriden methods and they are

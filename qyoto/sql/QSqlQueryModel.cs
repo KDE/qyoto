@@ -49,7 +49,7 @@ namespace Qyoto {
 			return ProxyQSqlQueryModel().RowCount(parent);
 		}
 		[SmokeMethod("rowCount", "() const", "")]
-		public override int RowCount() {
+		public virtual int RowCount() {
 			return ProxyQSqlQueryModel().RowCount();
 		}
 		[SmokeMethod("columnCount", "(const QModelIndex&) const", "#")]
@@ -57,7 +57,7 @@ namespace Qyoto {
 			return ProxyQSqlQueryModel().ColumnCount(parent);
 		}
 		[SmokeMethod("columnCount", "() const", "")]
-		public override int ColumnCount() {
+		public virtual int ColumnCount() {
 			return ProxyQSqlQueryModel().ColumnCount();
 		}
 		[SmokeMethod("record", "(int) const", "$")]
@@ -73,7 +73,7 @@ namespace Qyoto {
 			return ProxyQSqlQueryModel().Data(item,role);
 		}
 		[SmokeMethod("data", "(const QModelIndex&) const", "#")]
-		public override QVariant Data(QModelIndex item) {
+		public virtual QVariant Data(QModelIndex item) {
 			return ProxyQSqlQueryModel().Data(item);
 		}
 		[SmokeMethod("headerData", "(int, Qt::Orientation, int) const", "$$$")]

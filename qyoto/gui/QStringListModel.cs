@@ -66,7 +66,7 @@ namespace Qyoto {
 			return ProxyQStringListModel().RowCount(parent);
 		}
 		[SmokeMethod("rowCount", "() const", "")]
-		public override int RowCount() {
+		public virtual int RowCount() {
 			return ProxyQStringListModel().RowCount();
 		}
 		[SmokeMethod("data", "(const QModelIndex&, int) const", "#$")]
