@@ -306,7 +306,7 @@ namespace Qyoto {
 			return StaticQGLWidget().ConvertToGLFormat(img);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent arg1) {
+		protected override bool Event(QEvent arg1) {
 			return ProxyQGLWidget().Event(arg1);
 		}
 		[SmokeMethod("initializeGL", "()", "")]

@@ -83,7 +83,7 @@ namespace Qyoto {
 			return ProxyQTextBlock().Contains(position);
 		}
 		[SmokeMethod("layout", "() const", "")]
-		public QLayout Layout() {
+		public QTextLayout Layout() {
 			return ProxyQTextBlock().Layout();
 		}
 		[SmokeMethod("blockFormat", "() const", "")]

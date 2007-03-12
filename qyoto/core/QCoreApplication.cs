@@ -259,7 +259,7 @@ namespace Qyoto {
 			StaticQCoreApplication().Quit();
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent arg1) {
+		protected new virtual bool Event(QEvent arg1) {
 			return ProxyQCoreApplication().Event(arg1);
 		}
 		// bool compressEvent(QEvent* arg1,QObject* arg2,QPostEventList* arg3); >>>> NOT CONVERTED

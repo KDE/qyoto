@@ -60,7 +60,7 @@ namespace Qyoto {
 			return StaticQWidgetAction().Tr(s);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent arg1) {
+		protected override bool Event(QEvent arg1) {
 			return ProxyQWidgetAction().Event(arg1);
 		}
 		[SmokeMethod("createWidget", "(QWidget*)", "#")]

@@ -105,7 +105,7 @@ namespace Qyoto {
 			return StaticQTemporaryFile().CreateLocalFile(file);
 		}
 		[SmokeMethod("open", "(OpenMode)", "$")]
-		public override bool Open(int flags) {
+		protected new virtual bool Open(int flags) {
 			return ProxyQTemporaryFile().Open(flags);
 		}
 		~QTemporaryFile() {

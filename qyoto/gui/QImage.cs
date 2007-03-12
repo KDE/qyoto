@@ -216,7 +216,7 @@ namespace Qyoto {
 			return ProxyQImage().IsGrayscale();
 		}
 		[SmokeMethod("bits", "()", "")]
-		public byte[] Bits() {
+		public char[] Bits() {
 			return ProxyQImage().Bits();
 		}
 		[SmokeMethod("numBytes", "() const", "")]
@@ -224,7 +224,7 @@ namespace Qyoto {
 			return ProxyQImage().NumBytes();
 		}
 		[SmokeMethod("scanLine", "(int)", "$")]
-		public byte[] ScanLine(int arg1) {
+		public char[] ScanLine(int arg1) {
 			return ProxyQImage().ScanLine(arg1);
 		}
 		[SmokeMethod("bytesPerLine", "() const", "")]

@@ -204,7 +204,7 @@ namespace Qyoto {
 			return StaticQCalendarWidget().Tr(s);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent arg1) {
+		protected override bool Event(QEvent arg1) {
 			return ProxyQCalendarWidget().Event(arg1);
 		}
 		[SmokeMethod("mousePressEvent", "(QMouseEvent*)", "#")]
@@ -220,7 +220,7 @@ namespace Qyoto {
 			ProxyQCalendarWidget().KeyPressEvent(arg1);
 		}
 		[SmokeMethod("paintCell", "(QPainter*, const QRect&, const QDate&) const", "###")]
-		public virtual void PaintCell(QPainter painter, QRect rect, QDate date) {
+		protected virtual void PaintCell(QPainter painter, QRect rect, QDate date) {
 			ProxyQCalendarWidget().PaintCell(painter,rect,date);
 		}
 		~QCalendarWidget() {

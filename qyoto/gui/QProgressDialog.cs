@@ -170,7 +170,7 @@ namespace Qyoto {
 			ProxyQProgressDialog().ChangeEvent(arg1);
 		}
 		[SmokeMethod("showEvent", "(QShowEvent*)", "#")]
-		public override void ShowEvent(QShowEvent e) {
+		protected override void ShowEvent(QShowEvent e) {
 			ProxyQProgressDialog().ShowEvent(e);
 		}
 		[Q_SLOT("void forceShow()")]

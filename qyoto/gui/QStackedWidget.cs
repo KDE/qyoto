@@ -90,7 +90,7 @@ namespace Qyoto {
 			return StaticQStackedWidget().Tr(s);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent e) {
+		protected override bool Event(QEvent e) {
 			return ProxyQStackedWidget().Event(e);
 		}
 		~QStackedWidget() {

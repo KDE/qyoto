@@ -91,7 +91,7 @@ namespace Qyoto {
 			return ProxyQAbstractTextDocumentLayout().FormatIndex(pos);
 		}
 		[SmokeMethod("format", "(int)", "$")]
-		public QTextCharFormat Format(int pos) {
+		protected QTextCharFormat Format(int pos) {
 			return ProxyQAbstractTextDocumentLayout().Format(pos);
 		}
 		~QAbstractTextDocumentLayout() {

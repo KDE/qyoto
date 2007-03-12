@@ -156,7 +156,7 @@ namespace Qyoto {
 			ProxyQAbstractButton().NextCheckState();
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent e) {
+		protected override bool Event(QEvent e) {
 			return ProxyQAbstractButton().Event(e);
 		}
 		[SmokeMethod("keyPressEvent", "(QKeyEvent*)", "#")]

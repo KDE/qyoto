@@ -104,7 +104,7 @@ namespace Qyoto {
 			return StaticQTextBrowser().Tr(s);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent e) {
+		protected override bool Event(QEvent e) {
 			return ProxyQTextBrowser().Event(e);
 		}
 		[SmokeMethod("keyPressEvent", "(QKeyEvent*)", "#")]
@@ -128,7 +128,7 @@ namespace Qyoto {
 			ProxyQTextBrowser().FocusOutEvent(ev);
 		}
 		[SmokeMethod("focusNextPrevChild", "(bool)", "$")]
-		public override bool FocusNextPrevChild(bool next) {
+		protected override bool FocusNextPrevChild(bool next) {
 			return ProxyQTextBrowser().FocusNextPrevChild(next);
 		}
 		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]

@@ -78,7 +78,7 @@ namespace Qyoto {
 			return StaticQFontComboBox().Tr(s);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent e) {
+		protected new virtual bool Event(QEvent e) {
 			return ProxyQFontComboBox().Event(e);
 		}
 		~QFontComboBox() {

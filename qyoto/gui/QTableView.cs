@@ -278,11 +278,11 @@ namespace Qyoto {
 			ProxyQTableView().UpdateGeometries();
 		}
 		[SmokeMethod("sizeHintForRow", "(int) const", "$")]
-		public override int SizeHintForRow(int row) {
+		protected new virtual int SizeHintForRow(int row) {
 			return ProxyQTableView().SizeHintForRow(row);
 		}
 		[SmokeMethod("sizeHintForColumn", "(int) const", "$")]
-		public override int SizeHintForColumn(int column) {
+		protected new virtual int SizeHintForColumn(int column) {
 			return ProxyQTableView().SizeHintForColumn(column);
 		}
 		[SmokeMethod("verticalScrollbarAction", "(int)", "$")]

@@ -87,7 +87,7 @@ namespace Qyoto {
 			return ProxyQSlider().MinimumSizeHint();
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent arg1) {
+		public new virtual bool Event(QEvent arg1) {
 			return ProxyQSlider().Event(arg1);
 		}
 		public static string Tr(string s, string c) {

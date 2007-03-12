@@ -91,11 +91,11 @@ namespace Qyoto {
 			return StaticQSpinBox().Tr(s);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent arg1) {
+		protected new virtual bool Event(QEvent arg1) {
 			return ProxyQSpinBox().Event(arg1);
 		}
 		[SmokeMethod("validate", "(QString&, int&) const", "$$")]
-		public override int Validate(StringBuilder input, out int pos) {
+		protected new virtual int Validate(StringBuilder input, out int pos) {
 			return ProxyQSpinBox().Validate(input,out pos);
 		}
 		[SmokeMethod("valueFromText", "(const QString&) const", "$")]
@@ -107,7 +107,7 @@ namespace Qyoto {
 			return ProxyQSpinBox().TextFromValue(val);
 		}
 		[SmokeMethod("fixup", "(QString&) const", "$")]
-		public override void Fixup(StringBuilder str) {
+		protected new virtual void Fixup(StringBuilder str) {
 			ProxyQSpinBox().Fixup(str);
 		}
 		~QSpinBox() {

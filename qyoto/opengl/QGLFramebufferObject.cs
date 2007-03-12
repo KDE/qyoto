@@ -94,7 +94,7 @@ namespace Qyoto {
 			return ProxyQGLFramebufferObject().Metric(metric);
 		}
 		[SmokeMethod("devType", "() const", "")]
-		public override int DevType() {
+		protected new virtual int DevType() {
 			return ProxyQGLFramebufferObject().DevType();
 		}
 		~QGLFramebufferObject() {

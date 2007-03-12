@@ -83,7 +83,7 @@ namespace Qyoto {
 			return StaticQRubberBand().Tr(s);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent e) {
+		protected override bool Event(QEvent e) {
 			return ProxyQRubberBand().Event(e);
 		}
 		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
@@ -95,7 +95,7 @@ namespace Qyoto {
 			ProxyQRubberBand().ChangeEvent(arg1);
 		}
 		[SmokeMethod("showEvent", "(QShowEvent*)", "#")]
-		public override void ShowEvent(QShowEvent arg1) {
+		protected override void ShowEvent(QShowEvent arg1) {
 			ProxyQRubberBand().ShowEvent(arg1);
 		}
 		[SmokeMethod("resizeEvent", "(QResizeEvent*)", "#")]

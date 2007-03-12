@@ -59,11 +59,11 @@ namespace Qyoto {
 			return StaticQFocusFrame().Tr(s);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent e) {
+		protected override bool Event(QEvent e) {
 			return ProxyQFocusFrame().Event(e);
 		}
 		[SmokeMethod("eventFilter", "(QObject*, QEvent*)", "##")]
-		public override bool EventFilter(QObject arg1, QEvent arg2) {
+		protected new virtual bool EventFilter(QObject arg1, QEvent arg2) {
 			return ProxyQFocusFrame().EventFilter(arg1,arg2);
 		}
 		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]

@@ -71,7 +71,7 @@ namespace Qyoto {
 			return StaticQRadioButton().Tr(s);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent e) {
+		protected override bool Event(QEvent e) {
 			return ProxyQRadioButton().Event(e);
 		}
 		[SmokeMethod("hitButton", "(const QPoint&) const", "#")]

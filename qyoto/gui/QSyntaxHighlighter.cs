@@ -85,7 +85,7 @@ namespace Qyoto {
 			ProxyQSyntaxHighlighter().SetFormat(start,count,font);
 		}
 		[SmokeMethod("format", "(int) const", "$")]
-		public QTextCharFormat Format(int pos) {
+		protected QTextCharFormat Format(int pos) {
 			return ProxyQSyntaxHighlighter().Format(pos);
 		}
 		[SmokeMethod("previousBlockState", "() const", "")]

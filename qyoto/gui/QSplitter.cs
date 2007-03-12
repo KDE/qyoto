@@ -161,7 +161,7 @@ namespace Qyoto {
 			ProxyQSplitter().ChildEvent(arg1);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent arg1) {
+		protected override bool Event(QEvent arg1) {
 			return ProxyQSplitter().Event(arg1);
 		}
 		[SmokeMethod("resizeEvent", "(QResizeEvent*)", "#")]

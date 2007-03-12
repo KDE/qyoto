@@ -279,7 +279,7 @@ namespace Qyoto {
 		// QSettings::Format registerFormat(const QString& arg1,ReadFunc arg2,WriteFunc arg3,Qt::CaseSensitivity arg4); >>>> NOT CONVERTED
 		// QSettings::Format registerFormat(const QString& arg1,ReadFunc arg2,WriteFunc arg3); >>>> NOT CONVERTED
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent arg1) {
+		protected new virtual bool Event(QEvent arg1) {
 			return ProxyQSettings().Event(arg1);
 		}
 		~QSettings() {

@@ -191,7 +191,7 @@ namespace Qyoto {
 			return StaticQLabel().Tr(s);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent e) {
+		protected override bool Event(QEvent e) {
 			return ProxyQLabel().Event(e);
 		}
 		[SmokeMethod("keyPressEvent", "(QKeyEvent*)", "#")]
@@ -231,7 +231,7 @@ namespace Qyoto {
 			ProxyQLabel().FocusOutEvent(ev);
 		}
 		[SmokeMethod("focusNextPrevChild", "(bool)", "$")]
-		public override bool FocusNextPrevChild(bool next) {
+		protected override bool FocusNextPrevChild(bool next) {
 			return ProxyQLabel().FocusNextPrevChild(next);
 		}
 		~QLabel() {

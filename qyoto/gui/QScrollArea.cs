@@ -71,7 +71,7 @@ namespace Qyoto {
 			return ProxyQScrollArea().SizeHint();
 		}
 		[SmokeMethod("focusNextPrevChild", "(bool)", "$")]
-		public override bool FocusNextPrevChild(bool next) {
+		public new virtual bool FocusNextPrevChild(bool next) {
 			return ProxyQScrollArea().FocusNextPrevChild(next);
 		}
 		[SmokeMethod("ensureVisible", "(int, int, int, int)", "$$$$")]
@@ -105,11 +105,11 @@ namespace Qyoto {
 			return StaticQScrollArea().Tr(s);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent arg1) {
+		protected override bool Event(QEvent arg1) {
 			return ProxyQScrollArea().Event(arg1);
 		}
 		[SmokeMethod("eventFilter", "(QObject*, QEvent*)", "##")]
-		public override bool EventFilter(QObject arg1, QEvent arg2) {
+		protected new virtual bool EventFilter(QObject arg1, QEvent arg2) {
 			return ProxyQScrollArea().EventFilter(arg1,arg2);
 		}
 		[SmokeMethod("resizeEvent", "(QResizeEvent*)", "#")]

@@ -156,7 +156,7 @@ namespace Qyoto {
 			return StaticQLCDNumber().Tr(s);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent e) {
+		protected override bool Event(QEvent e) {
 			return ProxyQLCDNumber().Event(e);
 		}
 		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]

@@ -78,7 +78,7 @@ namespace Qyoto {
 			return StaticQDial().Tr(s);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent e) {
+		protected override bool Event(QEvent e) {
 			return ProxyQDial().Event(e);
 		}
 		[SmokeMethod("resizeEvent", "(QResizeEvent*)", "#")]

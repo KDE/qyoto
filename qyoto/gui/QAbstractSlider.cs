@@ -139,7 +139,7 @@ namespace Qyoto {
 			return StaticQAbstractSlider().Tr(s);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent e) {
+		protected override bool Event(QEvent e) {
 			return ProxyQAbstractSlider().Event(e);
 		}
 		[SmokeMethod("setRepeatAction", "(QAbstractSlider::SliderAction, int, int)", "$$$")]

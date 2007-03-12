@@ -910,7 +910,7 @@ namespace Qyoto {
 			return StaticQWidget().Find(arg1);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent arg1) {
+		protected new virtual bool Event(QEvent arg1) {
 			return ProxyQWidget().Event(arg1);
 		}
 		[SmokeMethod("mousePressEvent", "(QMouseEvent*)", "#")]
@@ -998,11 +998,11 @@ namespace Qyoto {
 			ProxyQWidget().DragLeaveEvent(arg1);
 		}
 		[SmokeMethod("dropEvent", "(QDropEvent*)", "#")]
-		public virtual void DropEvent(QDropEvent arg1) {
+		protected virtual void DropEvent(QDropEvent arg1) {
 			ProxyQWidget().DropEvent(arg1);
 		}
 		[SmokeMethod("showEvent", "(QShowEvent*)", "#")]
-		public virtual void ShowEvent(QShowEvent arg1) {
+		protected virtual void ShowEvent(QShowEvent arg1) {
 			ProxyQWidget().ShowEvent(arg1);
 		}
 		[SmokeMethod("hideEvent", "(QHideEvent*)", "#")]
@@ -1054,7 +1054,7 @@ namespace Qyoto {
 			ProxyQWidget().Destroy();
 		}
 		[SmokeMethod("focusNextPrevChild", "(bool)", "$")]
-		public virtual bool FocusNextPrevChild(bool next) {
+		protected virtual bool FocusNextPrevChild(bool next) {
 			return ProxyQWidget().FocusNextPrevChild(next);
 		}
 		[SmokeMethod("focusNextChild", "()", "")]
@@ -1066,7 +1066,7 @@ namespace Qyoto {
 			return ProxyQWidget().FocusPreviousChild();
 		}
 		[SmokeMethod("styleChange", "(QStyle&)", "#")]
-		public virtual void StyleChange(QStyle arg1) {
+		protected virtual void StyleChange(QStyle arg1) {
 			ProxyQWidget().StyleChange(arg1);
 		}
 		[SmokeMethod("enabledChange", "(bool)", "$")]

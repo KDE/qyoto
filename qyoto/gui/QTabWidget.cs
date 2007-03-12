@@ -205,7 +205,7 @@ namespace Qyoto {
 			ProxyQTabWidget().TabRemoved(index);
 		}
 		[SmokeMethod("showEvent", "(QShowEvent*)", "#")]
-		public override void ShowEvent(QShowEvent arg1) {
+		protected override void ShowEvent(QShowEvent arg1) {
 			ProxyQTabWidget().ShowEvent(arg1);
 		}
 		[SmokeMethod("resizeEvent", "(QResizeEvent*)", "#")]
@@ -233,7 +233,7 @@ namespace Qyoto {
 			ProxyQTabWidget().ChangeEvent(arg1);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent arg1) {
+		protected override bool Event(QEvent arg1) {
 			return ProxyQTabWidget().Event(arg1);
 		}
 		~QTabWidget() {

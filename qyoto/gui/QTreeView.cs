@@ -191,7 +191,7 @@ namespace Qyoto {
 		}
 		[Q_SLOT("void dataChanged(const QModelIndex&, const QModelIndex&)")]
 		[SmokeMethod("dataChanged", "(const QModelIndex&, const QModelIndex&)", "##")]
-		public override void DataChanged(QModelIndex topLeft, QModelIndex bottomRight) {
+		public new virtual void DataChanged(QModelIndex topLeft, QModelIndex bottomRight) {
 			ProxyQTreeView().DataChanged(topLeft,bottomRight);
 		}
 		[Q_SLOT("void hideColumn(int)")]
@@ -326,7 +326,7 @@ namespace Qyoto {
 			ProxyQTreeView().UpdateGeometries();
 		}
 		[SmokeMethod("sizeHintForColumn", "(int) const", "$")]
-		public override int SizeHintForColumn(int column) {
+		protected new virtual int SizeHintForColumn(int column) {
 			return ProxyQTreeView().SizeHintForColumn(column);
 		}
 		[SmokeMethod("indexRowSizeHint", "(const QModelIndex&) const", "#")]

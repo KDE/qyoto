@@ -403,7 +403,7 @@ namespace Qyoto {
 			return StaticQTextEdit().Tr(s);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent e) {
+		protected override bool Event(QEvent e) {
 			return ProxyQTextEdit().Event(e);
 		}
 		[SmokeMethod("timerEvent", "(QTimerEvent*)", "#")]
@@ -443,7 +443,7 @@ namespace Qyoto {
 			ProxyQTextEdit().MouseDoubleClickEvent(e);
 		}
 		[SmokeMethod("focusNextPrevChild", "(bool)", "$")]
-		public override bool FocusNextPrevChild(bool next) {
+		protected override bool FocusNextPrevChild(bool next) {
 			return ProxyQTextEdit().FocusNextPrevChild(next);
 		}
 		[SmokeMethod("contextMenuEvent", "(QContextMenuEvent*)", "#")]
@@ -463,7 +463,7 @@ namespace Qyoto {
 			ProxyQTextEdit().DragMoveEvent(e);
 		}
 		[SmokeMethod("dropEvent", "(QDropEvent*)", "#")]
-		public override void DropEvent(QDropEvent e) {
+		protected override void DropEvent(QDropEvent e) {
 			ProxyQTextEdit().DropEvent(e);
 		}
 		[SmokeMethod("focusInEvent", "(QFocusEvent*)", "#")]
@@ -475,7 +475,7 @@ namespace Qyoto {
 			ProxyQTextEdit().FocusOutEvent(e);
 		}
 		[SmokeMethod("showEvent", "(QShowEvent*)", "#")]
-		public override void ShowEvent(QShowEvent arg1) {
+		protected override void ShowEvent(QShowEvent arg1) {
 			ProxyQTextEdit().ShowEvent(arg1);
 		}
 		[SmokeMethod("changeEvent", "(QEvent*)", "#")]
@@ -503,7 +503,7 @@ namespace Qyoto {
 			ProxyQTextEdit().InputMethodEvent(arg1);
 		}
 		[SmokeMethod("inputMethodQuery", "(Qt::InputMethodQuery) const", "$")]
-		public override QVariant InputMethodQuery(Qt.InputMethodQuery property) {
+		protected new virtual QVariant InputMethodQuery(Qt.InputMethodQuery property) {
 			return ProxyQTextEdit().InputMethodQuery(property);
 		}
 		[SmokeMethod("scrollContentsBy", "(int, int)", "$$")]

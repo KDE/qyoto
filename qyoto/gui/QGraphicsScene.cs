@@ -340,7 +340,7 @@ namespace Qyoto {
 			return StaticQGraphicsScene().Tr(s);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent arg1) {
+		protected new virtual bool Event(QEvent arg1) {
 			return ProxyQGraphicsScene().Event(arg1);
 		}
 		[SmokeMethod("contextMenuEvent", "(QGraphicsSceneContextMenuEvent*)", "#")]
@@ -360,7 +360,7 @@ namespace Qyoto {
 			ProxyQGraphicsScene().DragLeaveEvent(arg1);
 		}
 		[SmokeMethod("dropEvent", "(QGraphicsSceneDragDropEvent*)", "#")]
-		public virtual void DropEvent(QGraphicsSceneDragDropEvent arg1) {
+		protected virtual void DropEvent(QGraphicsSceneDragDropEvent arg1) {
 			ProxyQGraphicsScene().DropEvent(arg1);
 		}
 		[SmokeMethod("focusInEvent", "(QFocusEvent*)", "#")]

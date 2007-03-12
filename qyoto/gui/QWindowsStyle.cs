@@ -139,7 +139,7 @@ namespace Qyoto {
 			return StaticQWindowsStyle().Tr(s);
 		}
 		[SmokeMethod("eventFilter", "(QObject*, QEvent*)", "##")]
-		public override bool EventFilter(QObject o, QEvent e) {
+		protected new virtual bool EventFilter(QObject o, QEvent e) {
 			return ProxyQWindowsStyle().EventFilter(o,e);
 		}
 		[SmokeMethod("timerEvent", "(QTimerEvent*)", "#")]

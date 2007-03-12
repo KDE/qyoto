@@ -279,7 +279,7 @@ namespace Qyoto {
 			return StaticQTableWidget().Tr(s);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent e) {
+		protected override bool Event(QEvent e) {
 			return ProxyQTableWidget().Event(e);
 		}
 		[SmokeMethod("mimeTypes", "() const", "")]
@@ -311,7 +311,7 @@ namespace Qyoto {
 			return ProxyQTableWidget().ItemFromIndex(index);
 		}
 		[SmokeMethod("dropEvent", "(QDropEvent*)", "#")]
-		public override void DropEvent(QDropEvent arg1) {
+		protected override void DropEvent(QDropEvent arg1) {
 			ProxyQTableWidget().DropEvent(arg1);
 		}
 		~QTableWidget() {

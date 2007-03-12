@@ -118,7 +118,7 @@ namespace Qyoto {
 			ProxyQAbstractScrollArea().SetViewportMargins(left,top,right,bottom);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent arg1) {
+		protected override bool Event(QEvent arg1) {
 			return ProxyQAbstractScrollArea().Event(arg1);
 		}
 		[SmokeMethod("viewportEvent", "(QEvent*)", "#")]
@@ -170,7 +170,7 @@ namespace Qyoto {
 			ProxyQAbstractScrollArea().DragLeaveEvent(arg1);
 		}
 		[SmokeMethod("dropEvent", "(QDropEvent*)", "#")]
-		public override void DropEvent(QDropEvent arg1) {
+		protected override void DropEvent(QDropEvent arg1) {
 			ProxyQAbstractScrollArea().DropEvent(arg1);
 		}
 		[SmokeMethod("keyPressEvent", "(QKeyEvent*)", "#")]

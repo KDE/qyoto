@@ -131,7 +131,7 @@ namespace Qyoto {
 			return StaticQWorkspace().Tr(s);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent e) {
+		protected override bool Event(QEvent e) {
 			return ProxyQWorkspace().Event(e);
 		}
 		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
@@ -151,11 +151,11 @@ namespace Qyoto {
 			ProxyQWorkspace().ResizeEvent(arg1);
 		}
 		[SmokeMethod("eventFilter", "(QObject*, QEvent*)", "##")]
-		public override bool EventFilter(QObject arg1, QEvent arg2) {
+		protected new virtual bool EventFilter(QObject arg1, QEvent arg2) {
 			return ProxyQWorkspace().EventFilter(arg1,arg2);
 		}
 		[SmokeMethod("showEvent", "(QShowEvent*)", "#")]
-		public override void ShowEvent(QShowEvent e) {
+		protected override void ShowEvent(QShowEvent e) {
 			ProxyQWorkspace().ShowEvent(e);
 		}
 		[SmokeMethod("hideEvent", "(QHideEvent*)", "#")]

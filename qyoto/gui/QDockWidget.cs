@@ -145,7 +145,7 @@ namespace Qyoto {
 			ProxyQDockWidget().PaintEvent(arg1);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent arg1) {
+		protected override bool Event(QEvent arg1) {
 			return ProxyQDockWidget().Event(arg1);
 		}
 		~QDockWidget() {

@@ -504,7 +504,7 @@ namespace Qyoto {
 			ProxyQMessageBox().ResizeEvent(arg1);
 		}
 		[SmokeMethod("showEvent", "(QShowEvent*)", "#")]
-		public override void ShowEvent(QShowEvent arg1) {
+		protected override void ShowEvent(QShowEvent arg1) {
 			ProxyQMessageBox().ShowEvent(arg1);
 		}
 		[SmokeMethod("closeEvent", "(QCloseEvent*)", "#")]

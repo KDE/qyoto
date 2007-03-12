@@ -120,7 +120,7 @@ namespace Qyoto {
 			return StaticQSplashScreen().Tr(s);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent e) {
+		protected override bool Event(QEvent e) {
 			return ProxyQSplashScreen().Event(e);
 		}
 		[SmokeMethod("drawContents", "(QPainter*)", "#")]

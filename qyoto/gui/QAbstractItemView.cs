@@ -382,7 +382,7 @@ namespace Qyoto {
 			return ProxyQAbstractItemView().state();
 		}
 		[SmokeMethod("setState", "(QAbstractItemView::State)", "$")]
-		public void SetState(QAbstractItemView.State state) {
+		protected void SetState(QAbstractItemView.State state) {
 			ProxyQAbstractItemView().SetState(state);
 		}
 		[SmokeMethod("scheduleDelayedItemsLayout", "()", "")]
@@ -418,11 +418,11 @@ namespace Qyoto {
 			ProxyQAbstractItemView().DoAutoScroll();
 		}
 		[SmokeMethod("focusNextPrevChild", "(bool)", "$")]
-		public override bool FocusNextPrevChild(bool next) {
+		protected override bool FocusNextPrevChild(bool next) {
 			return ProxyQAbstractItemView().FocusNextPrevChild(next);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent arg1) {
+		protected override bool Event(QEvent arg1) {
 			return ProxyQAbstractItemView().Event(arg1);
 		}
 		[SmokeMethod("viewportEvent", "(QEvent*)", "#")]
@@ -458,7 +458,7 @@ namespace Qyoto {
 			ProxyQAbstractItemView().DragLeaveEvent(arg1);
 		}
 		[SmokeMethod("dropEvent", "(QDropEvent*)", "#")]
-		public override void DropEvent(QDropEvent arg1) {
+		protected override void DropEvent(QDropEvent arg1) {
 			ProxyQAbstractItemView().DropEvent(arg1);
 		}
 		[SmokeMethod("focusInEvent", "(QFocusEvent*)", "#")]
@@ -491,7 +491,7 @@ namespace Qyoto {
 		}
 		[Q_SLOT("void dataChanged(const QModelIndex&, const QModelIndex&)")]
 		[SmokeMethod("dataChanged", "(const QModelIndex&, const QModelIndex&)", "##")]
-		public virtual void DataChanged(QModelIndex topLeft, QModelIndex bottomRight) {
+		protected virtual void DataChanged(QModelIndex topLeft, QModelIndex bottomRight) {
 			ProxyQAbstractItemView().DataChanged(topLeft,bottomRight);
 		}
 		[Q_SLOT("void rowsInserted(const QModelIndex&, int, int)")]

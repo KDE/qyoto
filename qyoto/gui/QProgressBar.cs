@@ -126,7 +126,7 @@ namespace Qyoto {
 			return StaticQProgressBar().Tr(s);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent e) {
+		protected override bool Event(QEvent e) {
 			return ProxyQProgressBar().Event(e);
 		}
 		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]

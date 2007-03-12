@@ -310,7 +310,7 @@ namespace Qyoto {
 			ProxyQComboBox().HidePopup();
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent arg1) {
+		public new virtual bool Event(QEvent arg1) {
 			return ProxyQComboBox().Event(arg1);
 		}
 		[Q_SLOT("void clear()")]
@@ -355,7 +355,7 @@ namespace Qyoto {
 			ProxyQComboBox().PaintEvent(e);
 		}
 		[SmokeMethod("showEvent", "(QShowEvent*)", "#")]
-		public override void ShowEvent(QShowEvent e) {
+		protected override void ShowEvent(QShowEvent e) {
 			ProxyQComboBox().ShowEvent(e);
 		}
 		[SmokeMethod("hideEvent", "(QHideEvent*)", "#")]
@@ -391,7 +391,7 @@ namespace Qyoto {
 			ProxyQComboBox().InputMethodEvent(arg1);
 		}
 		[SmokeMethod("inputMethodQuery", "(Qt::InputMethodQuery) const", "$")]
-		public override QVariant InputMethodQuery(Qt.InputMethodQuery arg1) {
+		protected new virtual QVariant InputMethodQuery(Qt.InputMethodQuery arg1) {
 			return ProxyQComboBox().InputMethodQuery(arg1);
 		}
 		~QComboBox() {

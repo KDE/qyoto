@@ -1,3 +1,10 @@
+2007-03-12  Richard Dale  <rdale@foton.es>
+
+	* When the access level of an overriden method is changed, use 'new' in
+	  the method declaration allow the change, rather than always making
+	  these methods public
+	* Allow covariant return types as C# has them
+
 2007-03-11  Richard Dale  <rdale@foton.es>
 
 	* For pure virtual methods with optional arguments, only translate the

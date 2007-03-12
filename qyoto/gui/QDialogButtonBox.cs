@@ -190,7 +190,7 @@ namespace Qyoto {
 			ProxyQDialogButtonBox().ChangeEvent(arg1);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent arg1) {
+		protected override bool Event(QEvent arg1) {
 			return ProxyQDialogButtonBox().Event(arg1);
 		}
 		~QDialogButtonBox() {

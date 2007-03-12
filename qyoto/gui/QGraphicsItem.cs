@@ -122,8 +122,6 @@ namespace Qyoto {
 			int type();
 			void InstallSceneEventFilter(QGraphicsItem filterItem);
 			void RemoveSceneEventFilter(QGraphicsItem filterItem);
-			void DropEvent(QGraphicsSceneDragDropEvent arg1);
-			QVariant InputMethodQuery(Qt.InputMethodQuery query);
 	}
 
 	[SmokeClass("QGraphicsItem")]
@@ -681,7 +679,7 @@ namespace Qyoto {
 			ProxyQGraphicsItem().DragMoveEvent(arg1);
 		}
 		[SmokeMethod("dropEvent", "(QGraphicsSceneDragDropEvent*)", "#")]
-		public virtual void DropEvent(QGraphicsSceneDragDropEvent arg1) {
+		protected virtual void DropEvent(QGraphicsSceneDragDropEvent arg1) {
 			ProxyQGraphicsItem().DropEvent(arg1);
 		}
 		[SmokeMethod("focusInEvent", "(QFocusEvent*)", "#")]
@@ -737,7 +735,7 @@ namespace Qyoto {
 			ProxyQGraphicsItem().InputMethodEvent(arg1);
 		}
 		[SmokeMethod("inputMethodQuery", "(Qt::InputMethodQuery) const", "$")]
-		public virtual QVariant InputMethodQuery(Qt.InputMethodQuery query) {
+		protected virtual QVariant InputMethodQuery(Qt.InputMethodQuery query) {
 			return ProxyQGraphicsItem().InputMethodQuery(query);
 		}
 		[SmokeMethod("itemChange", "(QGraphicsItem::GraphicsItemChange, const QVariant&)", "$#")]

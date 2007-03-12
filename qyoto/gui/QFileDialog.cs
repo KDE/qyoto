@@ -357,11 +357,11 @@ namespace Qyoto {
 		}
 		// QFileDialog* QFileDialog(const QFileDialogArgs& arg1); >>>> NOT CONVERTED
 		[SmokeMethod("done", "(int)", "$")]
-		public override void Done(int result) {
+		protected new virtual void Done(int result) {
 			ProxyQFileDialog().Done(result);
 		}
 		[SmokeMethod("accept", "()", "")]
-		public override void Accept() {
+		protected new virtual void Accept() {
 			ProxyQFileDialog().Accept();
 		}
 		~QFileDialog() {

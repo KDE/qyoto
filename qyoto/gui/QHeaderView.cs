@@ -289,7 +289,7 @@ namespace Qyoto {
 			ProxyQHeaderView().CurrentChanged(current,old);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent e) {
+		protected override bool Event(QEvent e) {
 			return ProxyQHeaderView().Event(e);
 		}
 		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
@@ -341,7 +341,7 @@ namespace Qyoto {
 			ProxyQHeaderView().ScrollContentsBy(dx,dy);
 		}
 		[SmokeMethod("dataChanged", "(const QModelIndex&, const QModelIndex&)", "##")]
-		public override void DataChanged(QModelIndex topLeft, QModelIndex bottomRight) {
+		protected override void DataChanged(QModelIndex topLeft, QModelIndex bottomRight) {
 			ProxyQHeaderView().DataChanged(topLeft,bottomRight);
 		}
 		[SmokeMethod("rowsInserted", "(const QModelIndex&, int, int)", "#$$")]

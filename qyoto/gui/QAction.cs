@@ -249,7 +249,7 @@ namespace Qyoto {
 			return StaticQAction().Tr(s);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent arg1) {
+		protected new virtual bool Event(QEvent arg1) {
 			return ProxyQAction().Event(arg1);
 		}
 		~QAction() {

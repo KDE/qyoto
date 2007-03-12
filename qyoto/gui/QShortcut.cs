@@ -113,7 +113,7 @@ namespace Qyoto {
 			return StaticQShortcut().Tr(s);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent e) {
+		protected new virtual bool Event(QEvent e) {
 			return ProxyQShortcut().Event(e);
 		}
 		~QShortcut() {

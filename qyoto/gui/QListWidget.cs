@@ -173,7 +173,7 @@ namespace Qyoto {
 			ProxyQListWidget().SetItemHidden(item,hide);
 		}
 		[SmokeMethod("dropEvent", "(QDropEvent*)", "#")]
-		public override void DropEvent(QDropEvent arg1) {
+		public new virtual void DropEvent(QDropEvent arg1) {
 			ProxyQListWidget().DropEvent(arg1);
 		}
 		[Q_SLOT("void scrollToItem(const QListWidgetItem*, QAbstractItemView::ScrollHint)")]
@@ -198,7 +198,7 @@ namespace Qyoto {
 			return StaticQListWidget().Tr(s);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent e) {
+		protected override bool Event(QEvent e) {
 			return ProxyQListWidget().Event(e);
 		}
 		[SmokeMethod("mimeTypes", "() const", "")]

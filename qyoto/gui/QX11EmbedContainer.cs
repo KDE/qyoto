@@ -78,7 +78,7 @@ namespace Qyoto {
 		}
 		// bool x11Event(XEvent* arg1); >>>> NOT CONVERTED
 		[SmokeMethod("eventFilter", "(QObject*, QEvent*)", "##")]
-		public override bool EventFilter(QObject arg1, QEvent arg2) {
+		protected new virtual bool EventFilter(QObject arg1, QEvent arg2) {
 			return ProxyQX11EmbedContainer().EventFilter(arg1,arg2);
 		}
 		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
@@ -90,7 +90,7 @@ namespace Qyoto {
 			ProxyQX11EmbedContainer().ResizeEvent(arg1);
 		}
 		[SmokeMethod("showEvent", "(QShowEvent*)", "#")]
-		public override void ShowEvent(QShowEvent arg1) {
+		protected override void ShowEvent(QShowEvent arg1) {
 			ProxyQX11EmbedContainer().ShowEvent(arg1);
 		}
 		[SmokeMethod("hideEvent", "(QHideEvent*)", "#")]
@@ -98,7 +98,7 @@ namespace Qyoto {
 			ProxyQX11EmbedContainer().HideEvent(arg1);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent arg1) {
+		protected override bool Event(QEvent arg1) {
 			return ProxyQX11EmbedContainer().Event(arg1);
 		}
 		~QX11EmbedContainer() {

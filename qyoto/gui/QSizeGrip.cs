@@ -63,11 +63,11 @@ namespace Qyoto {
 			ProxyQSizeGrip().MouseMoveEvent(arg1);
 		}
 		[SmokeMethod("eventFilter", "(QObject*, QEvent*)", "##")]
-		public override bool EventFilter(QObject arg1, QEvent arg2) {
+		protected new virtual bool EventFilter(QObject arg1, QEvent arg2) {
 			return ProxyQSizeGrip().EventFilter(arg1,arg2);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent arg1) {
+		protected override bool Event(QEvent arg1) {
 			return ProxyQSizeGrip().Event(arg1);
 		}
 		~QSizeGrip() {

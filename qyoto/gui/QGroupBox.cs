@@ -109,7 +109,7 @@ namespace Qyoto {
 			return StaticQGroupBox().Tr(s);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent arg1) {
+		protected override bool Event(QEvent arg1) {
 			return ProxyQGroupBox().Event(arg1);
 		}
 		[SmokeMethod("childEvent", "(QChildEvent*)", "#")]

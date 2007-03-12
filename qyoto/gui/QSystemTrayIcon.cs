@@ -140,7 +140,7 @@ namespace Qyoto {
 			return StaticQSystemTrayIcon().SupportsMessages();
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent arg1) {
+		protected new virtual bool Event(QEvent arg1) {
 			return ProxyQSystemTrayIcon().Event(arg1);
 		}
 		~QSystemTrayIcon() {

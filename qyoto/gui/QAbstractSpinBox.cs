@@ -136,7 +136,7 @@ namespace Qyoto {
 			ProxyQAbstractSpinBox().InterpretText();
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent arg1) {
+		public new virtual bool Event(QEvent arg1) {
 			return ProxyQAbstractSpinBox().Event(arg1);
 		}
 		[SmokeMethod("validate", "(QString&, int&) const", "$$")]
@@ -238,7 +238,7 @@ namespace Qyoto {
 			ProxyQAbstractSpinBox().PaintEvent(arg1);
 		}
 		[SmokeMethod("showEvent", "(QShowEvent*)", "#")]
-		public override void ShowEvent(QShowEvent arg1) {
+		protected override void ShowEvent(QShowEvent arg1) {
 			ProxyQAbstractSpinBox().ShowEvent(arg1);
 		}
 		[SmokeMethod("lineEdit", "() const", "")]

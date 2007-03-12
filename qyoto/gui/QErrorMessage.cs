@@ -61,7 +61,7 @@ namespace Qyoto {
 			return StaticQErrorMessage().QtHandler();
 		}
 		[SmokeMethod("done", "(int)", "$")]
-		public override void Done(int arg1) {
+		protected new virtual void Done(int arg1) {
 			ProxyQErrorMessage().Done(arg1);
 		}
 		~QErrorMessage() {

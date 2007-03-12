@@ -279,11 +279,11 @@ namespace Qyoto {
 			ProxyQMenu().TimerEvent(arg1);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent arg1) {
+		protected override bool Event(QEvent arg1) {
 			return ProxyQMenu().Event(arg1);
 		}
 		[SmokeMethod("focusNextPrevChild", "(bool)", "$")]
-		public override bool FocusNextPrevChild(bool next) {
+		protected override bool FocusNextPrevChild(bool next) {
 			return ProxyQMenu().FocusNextPrevChild(next);
 		}
 		~QMenu() {

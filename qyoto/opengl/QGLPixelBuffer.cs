@@ -150,7 +150,7 @@ namespace Qyoto {
 			return ProxyQGLPixelBuffer().Metric(metric);
 		}
 		[SmokeMethod("devType", "() const", "")]
-		public override int DevType() {
+		protected new virtual int DevType() {
 			return ProxyQGLPixelBuffer().DevType();
 		}
 		~QGLPixelBuffer() {

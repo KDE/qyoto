@@ -49,7 +49,7 @@ namespace Qyoto {
 			return ProxyQPrintDialog().Exec();
 		}
 		[SmokeMethod("eventFilter", "(QObject*, QEvent*)", "##")]
-		public override bool EventFilter(QObject arg1, QEvent arg2) {
+		public new virtual bool EventFilter(QObject arg1, QEvent arg2) {
 			return ProxyQPrintDialog().EventFilter(arg1,arg2);
 		}
 		public static string Tr(string s, string c) {

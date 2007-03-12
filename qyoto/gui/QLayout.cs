@@ -86,7 +86,7 @@ namespace Qyoto {
 			ProxyQLayout().SetMenuBar(w);
 		}
 		[SmokeMethod("menuBar", "() const", "")]
-		public QMenuBar MenuBar() {
+		public QWidget MenuBar() {
 			return ProxyQLayout().MenuBar();
 		}
 		[SmokeMethod("parentWidget", "() const", "")]

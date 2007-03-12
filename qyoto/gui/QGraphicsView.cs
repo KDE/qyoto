@@ -390,7 +390,7 @@ namespace Qyoto {
 			return StaticQGraphicsView().Tr(s);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent arg1) {
+		protected override bool Event(QEvent arg1) {
 			return ProxyQGraphicsView().Event(arg1);
 		}
 		[SmokeMethod("viewportEvent", "(QEvent*)", "#")]
@@ -414,7 +414,7 @@ namespace Qyoto {
 			ProxyQGraphicsView().DragMoveEvent(arg1);
 		}
 		[SmokeMethod("dropEvent", "(QDropEvent*)", "#")]
-		public override void DropEvent(QDropEvent arg1) {
+		protected override void DropEvent(QDropEvent arg1) {
 			ProxyQGraphicsView().DropEvent(arg1);
 		}
 		[SmokeMethod("focusInEvent", "(QFocusEvent*)", "#")]
@@ -466,7 +466,7 @@ namespace Qyoto {
 			ProxyQGraphicsView().ScrollContentsBy(dx,dy);
 		}
 		[SmokeMethod("showEvent", "(QShowEvent*)", "#")]
-		public override void ShowEvent(QShowEvent arg1) {
+		protected override void ShowEvent(QShowEvent arg1) {
 			ProxyQGraphicsView().ShowEvent(arg1);
 		}
 		[SmokeMethod("inputMethodEvent", "(QInputMethodEvent*)", "#")]

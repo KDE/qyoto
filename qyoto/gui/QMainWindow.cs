@@ -216,7 +216,7 @@ namespace Qyoto {
 			ProxyQMainWindow().ContextMenuEvent(arg1);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent arg1) {
+		protected override bool Event(QEvent arg1) {
 			return ProxyQMainWindow().Event(arg1);
 		}
 		~QMainWindow() {

@@ -179,7 +179,7 @@ namespace Qyoto {
 			return StaticQListView().Tr(s);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent e) {
+		protected override bool Event(QEvent e) {
 			return ProxyQListView().Event(e);
 		}
 		[SmokeMethod("scrollContentsBy", "(int, int)", "$$")]
@@ -195,7 +195,7 @@ namespace Qyoto {
 			return ProxyQListView().ContentsSize();
 		}
 		[SmokeMethod("dataChanged", "(const QModelIndex&, const QModelIndex&)", "##")]
-		public override void DataChanged(QModelIndex topLeft, QModelIndex bottomRight) {
+		protected override void DataChanged(QModelIndex topLeft, QModelIndex bottomRight) {
 			ProxyQListView().DataChanged(topLeft,bottomRight);
 		}
 		[SmokeMethod("rowsInserted", "(const QModelIndex&, int, int)", "#$$")]
@@ -231,7 +231,7 @@ namespace Qyoto {
 			ProxyQListView().DragLeaveEvent(e);
 		}
 		[SmokeMethod("dropEvent", "(QDropEvent*)", "#")]
-		public override void DropEvent(QDropEvent e) {
+		protected override void DropEvent(QDropEvent e) {
 			ProxyQListView().DropEvent(e);
 		}
 		[SmokeMethod("startDrag", "(Qt::DropActions)", "$")]

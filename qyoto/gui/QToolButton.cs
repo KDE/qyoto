@@ -107,7 +107,7 @@ namespace Qyoto {
 			return StaticQToolButton().Tr(s);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent e) {
+		protected override bool Event(QEvent e) {
 			return ProxyQToolButton().Event(e);
 		}
 		[SmokeMethod("mousePressEvent", "(QMouseEvent*)", "#")]

@@ -138,7 +138,7 @@ namespace Qyoto {
 			return StaticQToolBox().Tr(s);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent e) {
+		protected override bool Event(QEvent e) {
 			return ProxyQToolBox().Event(e);
 		}
 		[SmokeMethod("itemInserted", "(int)", "$")]
@@ -150,7 +150,7 @@ namespace Qyoto {
 			ProxyQToolBox().ItemRemoved(index);
 		}
 		[SmokeMethod("showEvent", "(QShowEvent*)", "#")]
-		public override void ShowEvent(QShowEvent e) {
+		protected override void ShowEvent(QShowEvent e) {
 			ProxyQToolBox().ShowEvent(e);
 		}
 		[SmokeMethod("changeEvent", "(QEvent*)", "#")]

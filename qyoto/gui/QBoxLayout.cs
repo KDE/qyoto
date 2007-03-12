@@ -195,7 +195,7 @@ namespace Qyoto {
 			return StaticQBoxLayout().Tr(s);
 		}
 		[SmokeMethod("insertItem", "(int, QLayoutItem*)", "$#")]
-		public void InsertItem(int index, IQLayoutItem arg2) {
+		protected void InsertItem(int index, IQLayoutItem arg2) {
 			ProxyQBoxLayout().InsertItem(index,arg2);
 		}
 		~QBoxLayout() {

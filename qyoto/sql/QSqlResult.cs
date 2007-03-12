@@ -99,7 +99,7 @@ namespace Qyoto {
 			ProxyQSqlResult().SetForwardOnly(forward);
 		}
 		[SmokeMethod("exec", "()", "")]
-		public virtual bool Exec() {
+		protected virtual bool Exec() {
 			return ProxyQSqlResult().Exec();
 		}
 		[SmokeMethod("prepare", "(const QString&)", "$")]

@@ -228,15 +228,15 @@ namespace Qyoto {
 			ProxyQDateTimeEdit().FocusInEvent(arg1);
 		}
 		[SmokeMethod("focusNextPrevChild", "(bool)", "$")]
-		public override bool FocusNextPrevChild(bool next) {
+		protected override bool FocusNextPrevChild(bool next) {
 			return ProxyQDateTimeEdit().FocusNextPrevChild(next);
 		}
 		[SmokeMethod("validate", "(QString&, int&) const", "$$")]
-		public override int Validate(StringBuilder input, out int pos) {
+		protected new virtual int Validate(StringBuilder input, out int pos) {
 			return ProxyQDateTimeEdit().Validate(input,out pos);
 		}
 		[SmokeMethod("fixup", "(QString&) const", "$")]
-		public override void Fixup(StringBuilder input) {
+		protected new virtual void Fixup(StringBuilder input) {
 			ProxyQDateTimeEdit().Fixup(input);
 		}
 		[SmokeMethod("dateTimeFromText", "(const QString&) const", "$")]

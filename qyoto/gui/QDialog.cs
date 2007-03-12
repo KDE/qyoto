@@ -104,7 +104,7 @@ namespace Qyoto {
 			return ProxyQDialog().IsSizeGripEnabled();
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent arg1) {
+		public new virtual bool Event(QEvent arg1) {
 			return ProxyQDialog().Event(arg1);
 		}
 		[SmokeMethod("setResult", "(int)", "$")]
@@ -151,7 +151,7 @@ namespace Qyoto {
 			ProxyQDialog().CloseEvent(arg1);
 		}
 		[SmokeMethod("showEvent", "(QShowEvent*)", "#")]
-		public override void ShowEvent(QShowEvent arg1) {
+		protected override void ShowEvent(QShowEvent arg1) {
 			ProxyQDialog().ShowEvent(arg1);
 		}
 		[SmokeMethod("resizeEvent", "(QResizeEvent*)", "#")]
@@ -163,7 +163,7 @@ namespace Qyoto {
 			ProxyQDialog().ContextMenuEvent(arg1);
 		}
 		[SmokeMethod("eventFilter", "(QObject*, QEvent*)", "##")]
-		public override bool EventFilter(QObject arg1, QEvent arg2) {
+		protected new virtual bool EventFilter(QObject arg1, QEvent arg2) {
 			return ProxyQDialog().EventFilter(arg1,arg2);
 		}
 		[SmokeMethod("adjustPosition", "(QWidget*)", "#")]

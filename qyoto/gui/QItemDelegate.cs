@@ -120,11 +120,11 @@ namespace Qyoto {
 			return ProxyQItemDelegate().Rect(option,index,role);
 		}
 		[SmokeMethod("eventFilter", "(QObject*, QEvent*)", "##")]
-		public override bool EventFilter(QObject arg1, QEvent arg2) {
+		protected new virtual bool EventFilter(QObject arg1, QEvent arg2) {
 			return ProxyQItemDelegate().EventFilter(arg1,arg2);
 		}
 		[SmokeMethod("editorEvent", "(QEvent*, QAbstractItemModel*, const QStyleOptionViewItem&, const QModelIndex&)", "####")]
-		public override bool EditorEvent(QEvent arg1, QAbstractItemModel model, QStyleOptionViewItem option, QModelIndex index) {
+		protected new virtual bool EditorEvent(QEvent arg1, QAbstractItemModel model, QStyleOptionViewItem option, QModelIndex index) {
 			return ProxyQItemDelegate().EditorEvent(arg1,model,option,index);
 		}
 		[SmokeMethod("setOptions", "(const QModelIndex&, const QStyleOptionViewItem&) const", "##")]

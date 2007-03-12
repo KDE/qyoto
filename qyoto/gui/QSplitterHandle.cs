@@ -79,7 +79,7 @@ namespace Qyoto {
 			ProxyQSplitterHandle().MouseReleaseEvent(arg1);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent arg1) {
+		protected override bool Event(QEvent arg1) {
 			return ProxyQSplitterHandle().Event(arg1);
 		}
 		[SmokeMethod("moveSplitter", "(int)", "$")]

@@ -243,7 +243,7 @@ namespace Qyoto {
 			ProxyQGraphicsTextItem().DragMoveEvent(arg1);
 		}
 		[SmokeMethod("dropEvent", "(QGraphicsSceneDragDropEvent*)", "#")]
-		public virtual void DropEvent(QGraphicsSceneDragDropEvent arg1) {
+		protected virtual void DropEvent(QGraphicsSceneDragDropEvent arg1) {
 			ProxyQGraphicsTextItem().DropEvent(arg1);
 		}
 		[SmokeMethod("inputMethodEvent", "(QInputMethodEvent*)", "#")]
@@ -263,7 +263,7 @@ namespace Qyoto {
 			ProxyQGraphicsTextItem().HoverLeaveEvent(arg1);
 		}
 		[SmokeMethod("inputMethodQuery", "(Qt::InputMethodQuery) const", "$")]
-		public virtual QVariant InputMethodQuery(Qt.InputMethodQuery query) {
+		protected virtual QVariant InputMethodQuery(Qt.InputMethodQuery query) {
 			return ProxyQGraphicsTextItem().InputMethodQuery(query);
 		}
 		[SmokeMethod("supportsExtension", "(QGraphicsItem::Extension) const", "$")]

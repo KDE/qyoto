@@ -258,7 +258,7 @@ namespace Qyoto {
 			return ProxyQLineEdit().InputMethodQuery(arg1);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent arg1) {
+		public new virtual bool Event(QEvent arg1) {
 			return ProxyQLineEdit().Event(arg1);
 		}
 		[Q_SLOT("void clear()")]
@@ -347,7 +347,7 @@ namespace Qyoto {
 			ProxyQLineEdit().DragLeaveEvent(e);
 		}
 		[SmokeMethod("dropEvent", "(QDropEvent*)", "#")]
-		public override void DropEvent(QDropEvent arg1) {
+		protected override void DropEvent(QDropEvent arg1) {
 			ProxyQLineEdit().DropEvent(arg1);
 		}
 		[SmokeMethod("changeEvent", "(QEvent*)", "#")]

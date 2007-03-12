@@ -132,7 +132,7 @@ namespace Qyoto {
 			ProxyQStatusBar().HideOrShow();
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent arg1) {
+		protected override bool Event(QEvent arg1) {
 			return ProxyQStatusBar().Event(arg1);
 		}
 		~QStatusBar() {

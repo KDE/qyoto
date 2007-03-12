@@ -89,7 +89,7 @@ namespace Qyoto {
 			return StaticQCheckBox().Tr(s);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent e) {
+		protected override bool Event(QEvent e) {
 			return ProxyQCheckBox().Event(e);
 		}
 		[SmokeMethod("hitButton", "(const QPoint&) const", "#")]

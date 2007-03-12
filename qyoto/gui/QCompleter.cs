@@ -191,11 +191,11 @@ namespace Qyoto {
 			return StaticQCompleter().Tr(s);
 		}
 		[SmokeMethod("eventFilter", "(QObject*, QEvent*)", "##")]
-		public override bool EventFilter(QObject o, QEvent e) {
+		protected new virtual bool EventFilter(QObject o, QEvent e) {
 			return ProxyQCompleter().EventFilter(o,e);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent arg1) {
+		protected new virtual bool Event(QEvent arg1) {
 			return ProxyQCompleter().Event(arg1);
 		}
 		~QCompleter() {

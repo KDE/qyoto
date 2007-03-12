@@ -181,7 +181,7 @@ namespace Qyoto {
 			ProxyQToolBar().ResizeEvent(arg1);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
-		public override bool Event(QEvent arg1) {
+		protected override bool Event(QEvent arg1) {
 			return ProxyQToolBar().Event(arg1);
 		}
 		~QToolBar() {
