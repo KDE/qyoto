@@ -5,7 +5,7 @@ namespace Qyoto {
 
 	/// See <see cref="IQHeaderViewSignals"></see> for signals emitted by QHeaderView
 	[SmokeClass("QHeaderView")]
-	public abstract class QHeaderView : QAbstractItemView, IDisposable {
+	public class QHeaderView : QAbstractItemView, IDisposable {
  		protected QHeaderView(Type dummy) : base((Type) null) {}
 		[SmokeClass("QHeaderView")]
 		interface IQHeaderViewProxy {
