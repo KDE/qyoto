@@ -5,7 +5,7 @@ namespace Qyoto {
 	using System.Collections.Generic;
 
 	[SmokeClass("QAccessibleWidget")]
-	public abstract class QAccessibleWidget : QAccessibleObject {
+	public class QAccessibleWidget : QAccessibleObject {
  		protected QAccessibleWidget(Type dummy) : base((Type) null) {}
 		[SmokeClass("QAccessibleWidget")]
 		interface IQAccessibleWidgetProxy {

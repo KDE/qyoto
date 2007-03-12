@@ -5,7 +5,7 @@ namespace Qyoto {
 	using System.Collections.Generic;
 
 	[SmokeClass("QStringListModel")]
-	public abstract class QStringListModel : QAbstractListModel, IDisposable {
+	public partial class QStringListModel : QAbstractListModel, IDisposable {
  		protected QStringListModel(Type dummy) : base((Type) null) {}
 		[SmokeClass("QStringListModel")]
 		interface IQStringListModelProxy {

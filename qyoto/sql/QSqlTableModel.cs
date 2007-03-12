@@ -5,7 +5,7 @@ namespace Qyoto {
 
 	/// See <see cref="IQSqlTableModelSignals"></see> for signals emitted by QSqlTableModel
 	[SmokeClass("QSqlTableModel")]
-	public abstract class QSqlTableModel : QSqlQueryModel, IDisposable {
+	public class QSqlTableModel : QSqlQueryModel, IDisposable {
  		protected QSqlTableModel(Type dummy) : base((Type) null) {}
 		[SmokeClass("QSqlTableModel")]
 		interface IQSqlTableModelProxy {

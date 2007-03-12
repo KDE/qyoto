@@ -4,7 +4,7 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QSqlQueryModel")]
-	public abstract class QSqlQueryModel : QAbstractTableModel, IDisposable {
+	public partial class QSqlQueryModel : QAbstractTableModel, IDisposable {
  		protected QSqlQueryModel(Type dummy) : base((Type) null) {}
 		[SmokeClass("QSqlQueryModel")]
 		interface IQSqlQueryModelProxy {

@@ -469,7 +469,9 @@ namespace Qyoto {
 			return StaticQApplication().KeyboardInputDirection();
 		}
 		public static int Exec() {
-			return StaticQApplication().Exec();
+			int result = StaticQApplication().Exec();
+			Qyoto.SetApplicationTerminated();
+			return result;
 		}
 		public static void SetQuitOnLastWindowClosed(bool quit) {
 			StaticQApplication().SetQuitOnLastWindowClosed(quit);

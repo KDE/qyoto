@@ -4,7 +4,7 @@ namespace Qyoto {
 	using System;
 
 	[SmokeClass("QGraphicsPixmapItem")]
-	public abstract class QGraphicsPixmapItem : QGraphicsItem, IDisposable {
+	public class QGraphicsPixmapItem : QGraphicsItem, IDisposable {
  		protected QGraphicsPixmapItem(Type dummy) : base((Type) null) {}
 		[SmokeClass("QGraphicsPixmapItem")]
 		interface IQGraphicsPixmapItemProxy {

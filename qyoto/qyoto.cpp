@@ -1299,6 +1299,32 @@ AbstractItemModelCreateIndex(void* obj, int row, int column, void *ptr)
 	return set_obj_info("Qyoto.QModelIndex", ret);
 }
 
+void *
+QAbstractItemModelParent(void* obj, void * modelIndex)
+{
+	smokeqyoto_object *o = value_obj_info(obj);
+	smokeqyoto_object *i = value_obj_info(modelIndex);
+	QModelIndex ix = ((QAbstractItemModel*) o->ptr)->parent(*(((QModelIndex*) i->ptr)));
+	(*FreeGCHandle)(obj);
+	(*FreeGCHandle)(modelIndex);
+	smokeqyoto_object *ret = alloc_smokeqyoto_object(	true, 
+														o->smoke, 
+														o->smoke->idClass("QModelIndex"), 
+														new QModelIndex(ix) );
+	return set_obj_info("Qyoto.QModelIndex", ret);
+}
+
+int
+QAbstractItemModelColumnCount(void* obj, void * modelIndex)
+{
+	smokeqyoto_object *o = value_obj_info(obj);
+	smokeqyoto_object *i = value_obj_info(modelIndex);
+	int result = ((QAbstractItemModel*) o->ptr)->columnCount(*(((QModelIndex*) i->ptr)));
+	(*FreeGCHandle)(obj);
+	(*FreeGCHandle)(modelIndex);
+	return result;
+}
+
 bool QyotoRegisterResourceData(int flag, const unsigned char * s, const unsigned char *n, const unsigned char *d)
 {
 	qRegisterResourceData(flag, s, n, d);

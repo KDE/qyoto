@@ -174,7 +174,9 @@ namespace Qyoto {
 			return StaticQCoreApplication().Instance();
 		}
 		public static int Exec() {
-			return StaticQCoreApplication().Exec();
+			int result = StaticQCoreApplication().Exec();
+			Qyoto.SetApplicationTerminated();
+			return result;
 		}
 		public static void ProcessEvents(uint flags) {
 			StaticQCoreApplication().ProcessEvents(flags);
