@@ -225,8 +225,14 @@ namespace Qyoto {
 		public void SetRgb(int r, int g, int b) {
 			ProxyQColor().SetRgb(r,g,b);
 		}
-		// void getRgbF(qreal* arg1,qreal* arg2,qreal* arg3,qreal* arg4); >>>> NOT CONVERTED
-		// void getRgbF(qreal* arg1,qreal* arg2,qreal* arg3); >>>> NOT CONVERTED
+		[SmokeMethod("getRgbF", "(qreal*, qreal*, qreal*, qreal*) const", "$$$$")]
+		public void GetRgbF(out double r, out double g, out double b, out double a) {
+			ProxyQColor().GetRgbF(out r,out g,out b,out a);
+		}
+		[SmokeMethod("getRgbF", "(qreal*, qreal*, qreal*) const", "$$$")]
+		public void GetRgbF(out double r, out double g, out double b) {
+			ProxyQColor().GetRgbF(out r,out g,out b);
+		}
 		[SmokeMethod("setRgbF", "(qreal, qreal, qreal, qreal)", "$$$$")]
 		public void SetRgbF(double r, double g, double b, double a) {
 			ProxyQColor().SetRgbF(r,g,b,a);
@@ -291,8 +297,14 @@ namespace Qyoto {
 		public void SetHsv(int h, int s, int v) {
 			ProxyQColor().SetHsv(h,s,v);
 		}
-		// void getHsvF(qreal* arg1,qreal* arg2,qreal* arg3,qreal* arg4); >>>> NOT CONVERTED
-		// void getHsvF(qreal* arg1,qreal* arg2,qreal* arg3); >>>> NOT CONVERTED
+		[SmokeMethod("getHsvF", "(qreal*, qreal*, qreal*, qreal*) const", "$$$$")]
+		public void GetHsvF(out double h, out double s, out double v, out double a) {
+			ProxyQColor().GetHsvF(out h,out s,out v,out a);
+		}
+		[SmokeMethod("getHsvF", "(qreal*, qreal*, qreal*) const", "$$$")]
+		public void GetHsvF(out double h, out double s, out double v) {
+			ProxyQColor().GetHsvF(out h,out s,out v);
+		}
 		[SmokeMethod("setHsvF", "(qreal, qreal, qreal, qreal)", "$$$$")]
 		public void SetHsvF(double h, double s, double v, double a) {
 			ProxyQColor().SetHsvF(h,s,v,a);
@@ -349,8 +361,14 @@ namespace Qyoto {
 		public void SetCmyk(int c, int m, int y, int k) {
 			ProxyQColor().SetCmyk(c,m,y,k);
 		}
-		// void getCmykF(qreal* arg1,qreal* arg2,qreal* arg3,qreal* arg4,qreal* arg5); >>>> NOT CONVERTED
-		// void getCmykF(qreal* arg1,qreal* arg2,qreal* arg3,qreal* arg4); >>>> NOT CONVERTED
+		[SmokeMethod("getCmykF", "(qreal*, qreal*, qreal*, qreal*, qreal*)", "$$$$$")]
+		public void GetCmykF(out double c, out double m, out double y, out double k, out double a) {
+			ProxyQColor().GetCmykF(out c,out m,out y,out k,out a);
+		}
+		[SmokeMethod("getCmykF", "(qreal*, qreal*, qreal*, qreal*)", "$$$$")]
+		public void GetCmykF(out double c, out double m, out double y, out double k) {
+			ProxyQColor().GetCmykF(out c,out m,out y,out k);
+		}
 		[SmokeMethod("setCmykF", "(qreal, qreal, qreal, qreal, qreal)", "$$$$$")]
 		public void SetCmykF(double c, double m, double y, double k, double a) {
 			ProxyQColor().SetCmykF(c,m,y,k,a);

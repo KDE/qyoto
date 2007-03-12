@@ -220,12 +220,18 @@ namespace Qyoto {
 		public void SetRect(double x, double y, double w, double h) {
 			ProxyQRectF().SetRect(x,y,w,h);
 		}
-		// void getRect(qreal* arg1,qreal* arg2,qreal* arg3,qreal* arg4); >>>> NOT CONVERTED
+		[SmokeMethod("getRect", "(qreal*, qreal*, qreal*, qreal*) const", "$$$$")]
+		public void GetRect(out double x, out double y, out double w, out double h) {
+			ProxyQRectF().GetRect(out x,out y,out w,out h);
+		}
 		[SmokeMethod("setCoords", "(qreal, qreal, qreal, qreal)", "$$$$")]
 		public void SetCoords(double x1, double y1, double x2, double y2) {
 			ProxyQRectF().SetCoords(x1,y1,x2,y2);
 		}
-		// void getCoords(qreal* arg1,qreal* arg2,qreal* arg3,qreal* arg4); >>>> NOT CONVERTED
+		[SmokeMethod("getCoords", "(qreal*, qreal*, qreal*, qreal*) const", "$$$$")]
+		public void GetCoords(out double x1, out double y1, out double x2, out double y2) {
+			ProxyQRectF().GetCoords(out x1,out y1,out x2,out y2);
+		}
 		[SmokeMethod("adjust", "(qreal, qreal, qreal, qreal)", "$$$$")]
 		public void Adjust(double x1, double y1, double x2, double y2) {
 			ProxyQRectF().Adjust(x1,y1,x2,y2);

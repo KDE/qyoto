@@ -86,8 +86,14 @@ namespace Qyoto {
 		public void SetY(double y) {
 			ProxyQPointF().SetY(y);
 		}
-		// qreal& rx(); >>>> NOT CONVERTED
-		// qreal& ry(); >>>> NOT CONVERTED
+		[SmokeMethod("rx", "()", "")]
+		public  double Rx() {
+			return ProxyQPointF().Rx();
+		}
+		[SmokeMethod("ry", "()", "")]
+		public  double Ry() {
+			return ProxyQPointF().Ry();
+		}
 		public static QPointF operator*(QPointF lhs, double c) {
 			return StaticQPointF().op_mult(lhs,c);
 		}

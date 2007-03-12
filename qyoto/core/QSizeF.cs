@@ -110,8 +110,14 @@ namespace Qyoto {
 		public QSizeF BoundedTo(QSizeF arg1) {
 			return ProxyQSizeF().BoundedTo(arg1);
 		}
-		// qreal& rwidth(); >>>> NOT CONVERTED
-		// qreal& rheight(); >>>> NOT CONVERTED
+		[SmokeMethod("rwidth", "()", "")]
+		public  double Rwidth() {
+			return ProxyQSizeF().Rwidth();
+		}
+		[SmokeMethod("rheight", "()", "")]
+		public  double Rheight() {
+			return ProxyQSizeF().Rheight();
+		}
 		public static QSizeF operator*(QSizeF lhs, double c) {
 			return StaticQSizeF().op_mult(lhs,c);
 		}

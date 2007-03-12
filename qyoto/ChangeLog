@@ -6,6 +6,7 @@
 	* Allow covariant return types as C# has them
 	* Make some classes non-abstract by adding the missing methods
 	* Fix code generation of QApplication.Exec() so apps don't crash on exit
+	* Convert 'qreal*' to 'double out' argument types
 
 2007-03-11  Richard Dale  <rdale@foton.es>
 

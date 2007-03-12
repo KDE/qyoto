@@ -102,7 +102,10 @@ namespace Qyoto {
 		public void Map(int x, int y, out int tx, out int ty) {
 			ProxyQMatrix().Map(x,y,out tx,out ty);
 		}
-		// void map(qreal arg1,qreal arg2,qreal* arg3,qreal* arg4); >>>> NOT CONVERTED
+		[SmokeMethod("map", "(qreal, qreal, qreal*, qreal*) const", "$$$$")]
+		public void Map(double x, double y, out double tx, out double ty) {
+			ProxyQMatrix().Map(x,y,out tx,out ty);
+		}
 		[SmokeMethod("mapRect", "(const QRect&) const", "#")]
 		public QRect MapRect(QRect arg1) {
 			return ProxyQMatrix().MapRect(arg1);
