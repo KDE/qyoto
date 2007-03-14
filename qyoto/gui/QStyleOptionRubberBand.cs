@@ -6,23 +6,12 @@ namespace Qyoto {
 	[SmokeClass("QStyleOptionRubberBand")]
 	public class QStyleOptionRubberBand : QStyleOption, IDisposable {
  		protected QStyleOptionRubberBand(Type dummy) : base((Type) null) {}
-		[SmokeClass("QStyleOptionRubberBand")]
-		interface IQStyleOptionRubberBandProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionRubberBand), this);
 			_interceptor = (QStyleOptionRubberBand) realProxy.GetTransparentProxy();
 		}
 		private QStyleOptionRubberBand ProxyQStyleOptionRubberBand() {
 			return (QStyleOptionRubberBand) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QStyleOptionRubberBand() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQStyleOptionRubberBandProxy), null);
-			_staticInterceptor = (IQStyleOptionRubberBandProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQStyleOptionRubberBandProxy StaticQStyleOptionRubberBand() {
-			return (IQStyleOptionRubberBandProxy) _staticInterceptor;
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_RubberBand,

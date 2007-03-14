@@ -28,6 +28,7 @@ namespace Qyoto {
 		private static IQCommonStyleProxy StaticQCommonStyle() {
 			return (IQCommonStyleProxy) _staticInterceptor;
 		}
+		// QCommonStyle* QCommonStyle(QCommonStylePrivate& arg1); >>>> NOT CONVERTED
 		public QCommonStyle() : this((Type) null) {
 			CreateProxy();
 			NewQCommonStyle();
@@ -136,13 +137,6 @@ namespace Qyoto {
 		public override QPixmap GeneratedIconPixmap(QIcon.Mode iconMode, QPixmap pixmap, out int opt) {
 			return ProxyQCommonStyle().GeneratedIconPixmap(iconMode,pixmap,out opt);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQCommonStyle().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQCommonStyle().Tr(s);
-		}
-		// QCommonStyle* QCommonStyle(QCommonStylePrivate& arg1); >>>> NOT CONVERTED
 		[Q_SLOT("QIcon standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const")]
 		[SmokeMethod("standardIconImplementation", "(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const", "$##")]
 		protected QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon, out int opt, QWidget widget) {
@@ -167,6 +161,12 @@ namespace Qyoto {
 		[SmokeMethod("~QCommonStyle", "()", "")]
 		private void DisposeQCommonStyle() {
 			ProxyQCommonStyle().DisposeQCommonStyle();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQCommonStyle().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQCommonStyle().Tr(s);
 		}
 		protected new IQCommonStyleSignals Emit {
 			get { return (IQCommonStyleSignals) Q_EMIT; }

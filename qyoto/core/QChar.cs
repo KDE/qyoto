@@ -152,6 +152,7 @@ namespace Qyoto {
 			Unicode_3_2 = 6,
 			Unicode_4_0 = 7,
 		}
+		// ushort& unicode(); >>>> NOT CONVERTED
 		public QChar() : this((Type) null) {
 			CreateProxy();
 			NewQChar();
@@ -284,7 +285,6 @@ namespace Qyoto {
 		public ushort Unicode() {
 			return ProxyQChar().Unicode();
 		}
-		// ushort& unicode(); >>>> NOT CONVERTED
 		[SmokeMethod("isNull", "() const", "")]
 		public bool IsNull() {
 			return ProxyQChar().IsNull();
@@ -341,12 +341,6 @@ namespace Qyoto {
 		public void SetRow(ushort row) {
 			ProxyQChar().SetRow(row);
 		}
-		public static char FromAscii(char c) {
-			return StaticQChar().FromAscii(c);
-		}
-		public static char FromLatin1(char c) {
-			return StaticQChar().FromLatin1(c);
-		}
 		~QChar() {
 			DisposeQChar();
 		}
@@ -356,6 +350,12 @@ namespace Qyoto {
 		[SmokeMethod("~QChar", "()", "")]
 		private void DisposeQChar() {
 			ProxyQChar().DisposeQChar();
+		}
+		public static char FromAscii(char c) {
+			return StaticQChar().FromAscii(c);
+		}
+		public static char FromLatin1(char c) {
+			return StaticQChar().FromLatin1(c);
 		}
 	}
 }

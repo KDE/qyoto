@@ -8,23 +8,12 @@ namespace Qyoto {
 		protected Object _interceptor = null;
 		private IntPtr _smokeObject;
 		protected QXmlAttributes(Type dummy) {}
-		[SmokeClass("QXmlAttributes")]
-		interface IQXmlAttributesProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlAttributes), this);
 			_interceptor = (QXmlAttributes) realProxy.GetTransparentProxy();
 		}
 		private QXmlAttributes ProxyQXmlAttributes() {
 			return (QXmlAttributes) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QXmlAttributes() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQXmlAttributesProxy), null);
-			_staticInterceptor = (IQXmlAttributesProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQXmlAttributesProxy StaticQXmlAttributes() {
-			return (IQXmlAttributesProxy) _staticInterceptor;
 		}
 		public QXmlAttributes() : this((Type) null) {
 			CreateProxy();

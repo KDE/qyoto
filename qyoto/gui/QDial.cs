@@ -71,12 +71,6 @@ namespace Qyoto {
 		public override QSize MinimumSizeHint() {
 			return ProxyQDial().MinimumSizeHint();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQDial().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQDial().Tr(s);
-		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent e) {
 			return ProxyQDial().Event(e);
@@ -114,6 +108,12 @@ namespace Qyoto {
 		[SmokeMethod("~QDial", "()", "")]
 		private void DisposeQDial() {
 			ProxyQDial().DisposeQDial();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQDial().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQDial().Tr(s);
 		}
 		protected new IQDialSignals Emit {
 			get { return (IQDialSignals) Q_EMIT; }

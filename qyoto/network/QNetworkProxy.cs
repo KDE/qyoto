@@ -131,12 +131,6 @@ namespace Qyoto {
 		public ushort Port() {
 			return ProxyQNetworkProxy().Port();
 		}
-		public static void SetApplicationProxy(QNetworkProxy proxy) {
-			StaticQNetworkProxy().SetApplicationProxy(proxy);
-		}
-		public static QNetworkProxy ApplicationProxy() {
-			return StaticQNetworkProxy().ApplicationProxy();
-		}
 		~QNetworkProxy() {
 			DisposeQNetworkProxy();
 		}
@@ -146,6 +140,12 @@ namespace Qyoto {
 		[SmokeMethod("~QNetworkProxy", "()", "")]
 		private void DisposeQNetworkProxy() {
 			ProxyQNetworkProxy().DisposeQNetworkProxy();
+		}
+		public static void SetApplicationProxy(QNetworkProxy proxy) {
+			StaticQNetworkProxy().SetApplicationProxy(proxy);
+		}
+		public static QNetworkProxy ApplicationProxy() {
+			return StaticQNetworkProxy().ApplicationProxy();
 		}
 	}
 }

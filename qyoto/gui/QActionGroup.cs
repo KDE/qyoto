@@ -94,12 +94,6 @@ namespace Qyoto {
 		public void SetDisabled(bool b) {
 			ProxyQActionGroup().SetDisabled(b);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQActionGroup().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQActionGroup().Tr(s);
-		}
 		~QActionGroup() {
 			DisposeQActionGroup();
 		}
@@ -109,6 +103,12 @@ namespace Qyoto {
 		[SmokeMethod("~QActionGroup", "()", "")]
 		private void DisposeQActionGroup() {
 			ProxyQActionGroup().DisposeQActionGroup();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQActionGroup().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQActionGroup().Tr(s);
 		}
 		protected new IQActionGroupSignals Emit {
 			get { return (IQActionGroupSignals) Q_EMIT; }

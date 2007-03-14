@@ -40,6 +40,13 @@ namespace Qyoto {
 			Any = 4,
 			AnyIPv6 = 5,
 		}
+		// QHostAddress* QHostAddress(quint8* arg1); >>>> NOT CONVERTED
+		// QHostAddress* QHostAddress(const Q_IPV6ADDR& arg1); >>>> NOT CONVERTED
+		// QHostAddress* QHostAddress(const sockaddr* arg1); >>>> NOT CONVERTED
+		// void setAddress(quint8* arg1); >>>> NOT CONVERTED
+		// void setAddress(const Q_IPV6ADDR& arg1); >>>> NOT CONVERTED
+		// void setAddress(const sockaddr* arg1); >>>> NOT CONVERTED
+		// Q_IPV6ADDR toIPv6Address(); >>>> NOT CONVERTED
 		public QHostAddress() : this((Type) null) {
 			CreateProxy();
 			NewQHostAddress();
@@ -56,9 +63,6 @@ namespace Qyoto {
 		private void NewQHostAddress(uint ip4Addr) {
 			ProxyQHostAddress().NewQHostAddress(ip4Addr);
 		}
-		// QHostAddress* QHostAddress(quint8* arg1); >>>> NOT CONVERTED
-		// QHostAddress* QHostAddress(const Q_IPV6ADDR& arg1); >>>> NOT CONVERTED
-		// QHostAddress* QHostAddress(const sockaddr* arg1); >>>> NOT CONVERTED
 		public QHostAddress(string address) : this((Type) null) {
 			CreateProxy();
 			NewQHostAddress(address);
@@ -87,9 +91,6 @@ namespace Qyoto {
 		public void SetAddress(uint ip4Addr) {
 			ProxyQHostAddress().SetAddress(ip4Addr);
 		}
-		// void setAddress(quint8* arg1); >>>> NOT CONVERTED
-		// void setAddress(const Q_IPV6ADDR& arg1); >>>> NOT CONVERTED
-		// void setAddress(const sockaddr* arg1); >>>> NOT CONVERTED
 		[SmokeMethod("setAddress", "(const QString&)", "$")]
 		public bool SetAddress(string address) {
 			return ProxyQHostAddress().SetAddress(address);
@@ -102,7 +103,6 @@ namespace Qyoto {
 		public uint ToIPv4Address() {
 			return ProxyQHostAddress().ToIPv4Address();
 		}
-		// Q_IPV6ADDR toIPv6Address(); >>>> NOT CONVERTED
 		[SmokeMethod("toString", "() const", "")]
 		public string ToString() {
 			return ProxyQHostAddress().ToString();
@@ -115,24 +115,12 @@ namespace Qyoto {
 		public void SetScopeId(string id) {
 			ProxyQHostAddress().SetScopeId(id);
 		}
-		public static bool operator==(QHostAddress lhs, QHostAddress address) {
-			return StaticQHostAddress().op_equals(lhs,address);
-		}
-		public static bool operator!=(QHostAddress lhs, QHostAddress address) {
-			return !StaticQHostAddress().op_equals(lhs,address);
-		}
 		public override bool Equals(object o) {
 			if (!(o is QHostAddress)) { return false; }
 			return this == (QHostAddress) o;
 		}
 		public override int GetHashCode() {
 			return ProxyQHostAddress().GetHashCode();
-		}
-		public static bool operator==(QHostAddress lhs, QHostAddress.SpecialAddress address) {
-			return StaticQHostAddress().op_equals(lhs,address);
-		}
-		public static bool operator!=(QHostAddress lhs, QHostAddress.SpecialAddress address) {
-			return !StaticQHostAddress().op_equals(lhs,address);
 		}
 		[SmokeMethod("isNull", "() const", "")]
 		public bool IsNull() {
@@ -151,6 +139,18 @@ namespace Qyoto {
 		[SmokeMethod("~QHostAddress", "()", "")]
 		private void DisposeQHostAddress() {
 			ProxyQHostAddress().DisposeQHostAddress();
+		}
+		public static bool operator==(QHostAddress lhs, QHostAddress address) {
+			return StaticQHostAddress().op_equals(lhs,address);
+		}
+		public static bool operator!=(QHostAddress lhs, QHostAddress address) {
+			return !StaticQHostAddress().op_equals(lhs,address);
+		}
+		public static bool operator==(QHostAddress lhs, QHostAddress.SpecialAddress address) {
+			return StaticQHostAddress().op_equals(lhs,address);
+		}
+		public static bool operator!=(QHostAddress lhs, QHostAddress.SpecialAddress address) {
+			return !StaticQHostAddress().op_equals(lhs,address);
 		}
 		public static bool operator==(QHostAddress.SpecialAddress address1, QHostAddress address2) {
 			return StaticQHostAddress().op_equals(address1,address2);

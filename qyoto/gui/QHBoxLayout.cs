@@ -44,12 +44,6 @@ namespace Qyoto {
 		private void NewQHBoxLayout(QWidget parent) {
 			ProxyQHBoxLayout().NewQHBoxLayout(parent);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQHBoxLayout().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQHBoxLayout().Tr(s);
-		}
 		~QHBoxLayout() {
 			DisposeQHBoxLayout();
 		}
@@ -59,6 +53,12 @@ namespace Qyoto {
 		[SmokeMethod("~QHBoxLayout", "()", "")]
 		private void DisposeQHBoxLayout() {
 			ProxyQHBoxLayout().DisposeQHBoxLayout();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQHBoxLayout().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQHBoxLayout().Tr(s);
 		}
 		protected new IQHBoxLayoutSignals Emit {
 			get { return (IQHBoxLayoutSignals) Q_EMIT; }

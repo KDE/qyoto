@@ -188,12 +188,6 @@ namespace Qyoto {
 		public override void SetGeometry(QRect arg1) {
 			ProxyQBoxLayout().SetGeometry(arg1);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQBoxLayout().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQBoxLayout().Tr(s);
-		}
 		[SmokeMethod("insertItem", "(int, QLayoutItem*)", "$#")]
 		protected void InsertItem(int index, IQLayoutItem arg2) {
 			ProxyQBoxLayout().InsertItem(index,arg2);
@@ -207,6 +201,12 @@ namespace Qyoto {
 		[SmokeMethod("~QBoxLayout", "()", "")]
 		private void DisposeQBoxLayout() {
 			ProxyQBoxLayout().DisposeQBoxLayout();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQBoxLayout().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQBoxLayout().Tr(s);
 		}
 		protected new IQBoxLayoutSignals Emit {
 			get { return (IQBoxLayoutSignals) Q_EMIT; }

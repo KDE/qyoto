@@ -6,23 +6,12 @@ namespace Qyoto {
 	[SmokeClass("QStyleOptionTitleBar")]
 	public class QStyleOptionTitleBar : QStyleOptionComplex, IDisposable {
  		protected QStyleOptionTitleBar(Type dummy) : base((Type) null) {}
-		[SmokeClass("QStyleOptionTitleBar")]
-		interface IQStyleOptionTitleBarProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionTitleBar), this);
 			_interceptor = (QStyleOptionTitleBar) realProxy.GetTransparentProxy();
 		}
 		private QStyleOptionTitleBar ProxyQStyleOptionTitleBar() {
 			return (QStyleOptionTitleBar) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QStyleOptionTitleBar() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQStyleOptionTitleBarProxy), null);
-			_staticInterceptor = (IQStyleOptionTitleBarProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQStyleOptionTitleBarProxy StaticQStyleOptionTitleBar() {
-			return (IQStyleOptionTitleBarProxy) _staticInterceptor;
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_TitleBar,

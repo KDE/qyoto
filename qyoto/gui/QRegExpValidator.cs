@@ -54,12 +54,6 @@ namespace Qyoto {
 		public override int Validate(StringBuilder input, out int pos) {
 			return ProxyQRegExpValidator().Validate(input,out pos);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQRegExpValidator().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQRegExpValidator().Tr(s);
-		}
 		~QRegExpValidator() {
 			DisposeQRegExpValidator();
 		}
@@ -69,6 +63,12 @@ namespace Qyoto {
 		[SmokeMethod("~QRegExpValidator", "()", "")]
 		private void DisposeQRegExpValidator() {
 			ProxyQRegExpValidator().DisposeQRegExpValidator();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQRegExpValidator().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQRegExpValidator().Tr(s);
 		}
 		protected new IQRegExpValidatorSignals Emit {
 			get { return (IQRegExpValidatorSignals) Q_EMIT; }

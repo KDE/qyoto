@@ -9,23 +9,12 @@ namespace Qyoto {
 		protected Object _interceptor = null;
 		private IntPtr _smokeObject;
 		protected QFactoryInterface(Type dummy) {}
-		[SmokeClass("QFactoryInterface")]
-		interface IQFactoryInterfaceProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFactoryInterface), this);
 			_interceptor = (QFactoryInterface) realProxy.GetTransparentProxy();
 		}
 		private QFactoryInterface ProxyQFactoryInterface() {
 			return (QFactoryInterface) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QFactoryInterface() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQFactoryInterfaceProxy), null);
-			_staticInterceptor = (IQFactoryInterfaceProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQFactoryInterfaceProxy StaticQFactoryInterface() {
-			return (IQFactoryInterfaceProxy) _staticInterceptor;
 		}
 		public abstract List<string> Keys();
 		public QFactoryInterface() : this((Type) null) {
@@ -35,16 +24,6 @@ namespace Qyoto {
 		[SmokeMethod("QFactoryInterface", "()", "")]
 		private void NewQFactoryInterface() {
 			ProxyQFactoryInterface().NewQFactoryInterface();
-		}
-		~QFactoryInterface() {
-			DisposeQFactoryInterface();
-		}
-		public void Dispose() {
-			DisposeQFactoryInterface();
-		}
-		[SmokeMethod("~QFactoryInterface", "()", "")]
-		private void DisposeQFactoryInterface() {
-			ProxyQFactoryInterface().DisposeQFactoryInterface();
 		}
 	}
 }

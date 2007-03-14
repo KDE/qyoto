@@ -6,23 +6,12 @@ namespace Qyoto {
 	[SmokeClass("QGraphicsEllipseItem")]
 	public class QGraphicsEllipseItem : QAbstractGraphicsShapeItem, IDisposable {
  		protected QGraphicsEllipseItem(Type dummy) : base((Type) null) {}
-		[SmokeClass("QGraphicsEllipseItem")]
-		interface IQGraphicsEllipseItemProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGraphicsEllipseItem), this);
 			_interceptor = (QGraphicsEllipseItem) realProxy.GetTransparentProxy();
 		}
 		private QGraphicsEllipseItem ProxyQGraphicsEllipseItem() {
 			return (QGraphicsEllipseItem) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QGraphicsEllipseItem() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQGraphicsEllipseItemProxy), null);
-			_staticInterceptor = (IQGraphicsEllipseItemProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQGraphicsEllipseItemProxy StaticQGraphicsEllipseItem() {
-			return (IQGraphicsEllipseItemProxy) _staticInterceptor;
 		}
 		public const int Type = 4;
 

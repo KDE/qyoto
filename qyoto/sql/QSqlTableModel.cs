@@ -206,12 +206,6 @@ namespace Qyoto {
 		public void RevertAll() {
 			ProxyQSqlTableModel().RevertAll();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQSqlTableModel().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQSqlTableModel().Tr(s);
-		}
 		[SmokeMethod("updateRowInTable", "(int, const QSqlRecord&)", "$#")]
 		protected virtual bool UpdateRowInTable(int row, QSqlRecord values) {
 			return ProxyQSqlTableModel().UpdateRowInTable(row,values);
@@ -253,6 +247,12 @@ namespace Qyoto {
 		[SmokeMethod("~QSqlTableModel", "()", "")]
 		private void DisposeQSqlTableModel() {
 			ProxyQSqlTableModel().DisposeQSqlTableModel();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQSqlTableModel().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQSqlTableModel().Tr(s);
 		}
 		protected new IQSqlTableModelSignals Emit {
 			get { return (IQSqlTableModelSignals) Q_EMIT; }

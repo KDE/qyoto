@@ -92,18 +92,6 @@ namespace Qyoto {
 		public override QAbstractFileEngine FileEngine() {
 			return ProxyQTemporaryFile().FileEngine();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQTemporaryFile().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQTemporaryFile().Tr(s);
-		}
-		public static QTemporaryFile CreateLocalFile(string fileName) {
-			return StaticQTemporaryFile().CreateLocalFile(fileName);
-		}
-		public static QTemporaryFile CreateLocalFile(QFile file) {
-			return StaticQTemporaryFile().CreateLocalFile(file);
-		}
 		[SmokeMethod("open", "(OpenMode)", "$")]
 		protected new virtual bool Open(int flags) {
 			return ProxyQTemporaryFile().Open(flags);
@@ -117,6 +105,18 @@ namespace Qyoto {
 		[SmokeMethod("~QTemporaryFile", "()", "")]
 		private void DisposeQTemporaryFile() {
 			ProxyQTemporaryFile().DisposeQTemporaryFile();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQTemporaryFile().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQTemporaryFile().Tr(s);
+		}
+		public static QTemporaryFile CreateLocalFile(string fileName) {
+			return StaticQTemporaryFile().CreateLocalFile(fileName);
+		}
+		public static QTemporaryFile CreateLocalFile(QFile file) {
+			return StaticQTemporaryFile().CreateLocalFile(file);
 		}
 		protected new IQTemporaryFileSignals Emit {
 			get { return (IQTemporaryFileSignals) Q_EMIT; }

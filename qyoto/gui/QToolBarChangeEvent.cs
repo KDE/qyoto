@@ -6,23 +6,12 @@ namespace Qyoto {
 	[SmokeClass("QToolBarChangeEvent")]
 	public class QToolBarChangeEvent : QEvent, IDisposable {
  		protected QToolBarChangeEvent(Type dummy) : base((Type) null) {}
-		[SmokeClass("QToolBarChangeEvent")]
-		interface IQToolBarChangeEventProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QToolBarChangeEvent), this);
 			_interceptor = (QToolBarChangeEvent) realProxy.GetTransparentProxy();
 		}
 		private QToolBarChangeEvent ProxyQToolBarChangeEvent() {
 			return (QToolBarChangeEvent) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QToolBarChangeEvent() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQToolBarChangeEventProxy), null);
-			_staticInterceptor = (IQToolBarChangeEventProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQToolBarChangeEventProxy StaticQToolBarChangeEvent() {
-			return (IQToolBarChangeEventProxy) _staticInterceptor;
 		}
 		public QToolBarChangeEvent(bool t) : this((Type) null) {
 			CreateProxy();

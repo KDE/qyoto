@@ -6,23 +6,12 @@ namespace Qyoto {
 	[SmokeClass("QSpacerItem")]
 	public class QSpacerItem : QLayoutItem, IDisposable {
  		protected QSpacerItem(Type dummy) : base((Type) null) {}
-		[SmokeClass("QSpacerItem")]
-		interface IQSpacerItemProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSpacerItem), this);
 			_interceptor = (QSpacerItem) realProxy.GetTransparentProxy();
 		}
 		private QSpacerItem ProxyQSpacerItem() {
 			return (QSpacerItem) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QSpacerItem() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQSpacerItemProxy), null);
-			_staticInterceptor = (IQSpacerItemProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQSpacerItemProxy StaticQSpacerItem() {
-			return (IQSpacerItemProxy) _staticInterceptor;
 		}
 		public QSpacerItem(int w, int h, QSizePolicy.Policy hData, QSizePolicy.Policy vData) : this((Type) null) {
 			CreateProxy();

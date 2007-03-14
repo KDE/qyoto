@@ -138,9 +138,6 @@ namespace Qyoto {
 		public bool SupportsOption(QImageIOHandler.ImageOption option) {
 			return ProxyQImageWriter().SupportsOption(option);
 		}
-		public static List<QByteArray> SupportedImageFormats() {
-			return StaticQImageWriter().SupportedImageFormats();
-		}
 		~QImageWriter() {
 			DisposeQImageWriter();
 		}
@@ -150,6 +147,9 @@ namespace Qyoto {
 		[SmokeMethod("~QImageWriter", "()", "")]
 		private void DisposeQImageWriter() {
 			ProxyQImageWriter().DisposeQImageWriter();
+		}
+		public static List<QByteArray> SupportedImageFormats() {
+			return StaticQImageWriter().SupportedImageFormats();
 		}
 	}
 }

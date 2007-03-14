@@ -124,12 +124,6 @@ namespace Qyoto {
 		public void ActivatePreviousWindow() {
 			ProxyQWorkspace().ActivatePreviousWindow();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQWorkspace().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQWorkspace().Tr(s);
-		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent e) {
 			return ProxyQWorkspace().Event(e);
@@ -175,6 +169,12 @@ namespace Qyoto {
 		[SmokeMethod("~QWorkspace", "()", "")]
 		private void DisposeQWorkspace() {
 			ProxyQWorkspace().DisposeQWorkspace();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQWorkspace().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQWorkspace().Tr(s);
 		}
 		protected new IQWorkspaceSignals Emit {
 			get { return (IQWorkspaceSignals) Q_EMIT; }

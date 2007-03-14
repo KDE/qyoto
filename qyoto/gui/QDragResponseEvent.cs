@@ -6,23 +6,12 @@ namespace Qyoto {
 	[SmokeClass("QDragResponseEvent")]
 	public class QDragResponseEvent : QEvent, IDisposable {
  		protected QDragResponseEvent(Type dummy) : base((Type) null) {}
-		[SmokeClass("QDragResponseEvent")]
-		interface IQDragResponseEventProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDragResponseEvent), this);
 			_interceptor = (QDragResponseEvent) realProxy.GetTransparentProxy();
 		}
 		private QDragResponseEvent ProxyQDragResponseEvent() {
 			return (QDragResponseEvent) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QDragResponseEvent() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQDragResponseEventProxy), null);
-			_staticInterceptor = (IQDragResponseEventProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQDragResponseEventProxy StaticQDragResponseEvent() {
-			return (IQDragResponseEventProxy) _staticInterceptor;
 		}
 		public QDragResponseEvent(bool accepted) : this((Type) null) {
 			CreateProxy();

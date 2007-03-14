@@ -6,23 +6,12 @@ namespace Qyoto {
 	[SmokeClass("QGraphicsRectItem")]
 	public class QGraphicsRectItem : QAbstractGraphicsShapeItem, IDisposable {
  		protected QGraphicsRectItem(Type dummy) : base((Type) null) {}
-		[SmokeClass("QGraphicsRectItem")]
-		interface IQGraphicsRectItemProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGraphicsRectItem), this);
 			_interceptor = (QGraphicsRectItem) realProxy.GetTransparentProxy();
 		}
 		private QGraphicsRectItem ProxyQGraphicsRectItem() {
 			return (QGraphicsRectItem) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QGraphicsRectItem() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQGraphicsRectItemProxy), null);
-			_staticInterceptor = (IQGraphicsRectItemProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQGraphicsRectItemProxy StaticQGraphicsRectItem() {
-			return (IQGraphicsRectItemProxy) _staticInterceptor;
 		}
 		public const int Type = 3;
 

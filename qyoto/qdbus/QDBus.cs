@@ -5,39 +5,11 @@ namespace Qyoto {
 
 	public class QDBus : MarshalByRefObject {
 		protected Object _interceptor = null;
-		[SmokeClass("QDBus")]
-		interface IQDBusProxy {
-		}
-		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDBus), this);
-			_interceptor = (QDBus) realProxy.GetTransparentProxy();
-		}
-		private QDBus ProxyQDBus() {
-			return (QDBus) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QDBus() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQDBusProxy), null);
-			_staticInterceptor = (IQDBusProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQDBusProxy StaticQDBus() {
-			return (IQDBusProxy) _staticInterceptor;
-		}
 		public enum CallMode {
 			NoBlock = 0,
 			Block = 1,
 			BlockWithGui = 2,
 			AutoDetect = 3,
-		}
-		~QDBus() {
-			DisposeQDBus();
-		}
-		public void Dispose() {
-			DisposeQDBus();
-		}
-		[SmokeMethod("~QDBus", "()", "")]
-		private void DisposeQDBus() {
-			ProxyQDBus().DisposeQDBus();
 		}
 	}
 }

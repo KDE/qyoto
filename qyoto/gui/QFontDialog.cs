@@ -23,13 +23,6 @@ namespace Qyoto {
 			[SmokeMethod("getFont", "(bool*)", "$")]
 			QFont GetFont(out bool ok);
 		}
-		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFontDialog), this);
-			_interceptor = (QFontDialog) realProxy.GetTransparentProxy();
-		}
-		private QFontDialog ProxyQFontDialog() {
-			return (QFontDialog) _interceptor;
-		}
 		private static Object _staticInterceptor = null;
 		static QFontDialog() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQFontDialogProxy), null);

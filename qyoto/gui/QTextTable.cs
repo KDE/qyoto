@@ -104,12 +104,6 @@ namespace Qyoto {
 		public QTextTableFormat Format() {
 			return ProxyQTextTable().Format();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQTextTable().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQTextTable().Tr(s);
-		}
 		~QTextTable() {
 			DisposeQTextTable();
 		}
@@ -119,6 +113,12 @@ namespace Qyoto {
 		[SmokeMethod("~QTextTable", "()", "")]
 		private void DisposeQTextTable() {
 			ProxyQTextTable().DisposeQTextTable();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQTextTable().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQTextTable().Tr(s);
 		}
 		protected new IQTextTableSignals Emit {
 			get { return (IQTextTableSignals) Q_EMIT; }

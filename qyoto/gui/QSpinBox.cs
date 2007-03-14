@@ -84,12 +84,6 @@ namespace Qyoto {
 		public void SetRange(int min, int max) {
 			ProxyQSpinBox().SetRange(min,max);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQSpinBox().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQSpinBox().Tr(s);
-		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected new virtual bool Event(QEvent arg1) {
 			return ProxyQSpinBox().Event(arg1);
@@ -119,6 +113,12 @@ namespace Qyoto {
 		[SmokeMethod("~QSpinBox", "()", "")]
 		private void DisposeQSpinBox() {
 			ProxyQSpinBox().DisposeQSpinBox();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQSpinBox().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQSpinBox().Tr(s);
 		}
 		protected new IQSpinBoxSignals Emit {
 			get { return (IQSpinBoxSignals) Q_EMIT; }

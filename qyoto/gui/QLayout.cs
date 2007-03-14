@@ -174,15 +174,6 @@ namespace Qyoto {
 		public bool IsEnabled() {
 			return ProxyQLayout().IsEnabled();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQLayout().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQLayout().Tr(s);
-		}
-		public static QSize ClosestAcceptableSize(QWidget w, QSize s) {
-			return StaticQLayout().ClosestAcceptableSize(w,s);
-		}
 		[SmokeMethod("widgetEvent", "(QEvent*)", "#")]
 		protected void WidgetEvent(QEvent arg1) {
 			ProxyQLayout().WidgetEvent(arg1);
@@ -202,16 +193,6 @@ namespace Qyoto {
 		[SmokeMethod("alignmentRect", "(const QRect&) const", "#")]
 		protected QRect AlignmentRect(QRect arg1) {
 			return ProxyQLayout().AlignmentRect(arg1);
-		}
-		~QLayout() {
-			DisposeQLayout();
-		}
-		public new void Dispose() {
-			DisposeQLayout();
-		}
-		[SmokeMethod("~QLayout", "()", "")]
-		private void DisposeQLayout() {
-			ProxyQLayout().DisposeQLayout();
 		}
 		public abstract QSize SizeHint();
 		[SmokeMethod("hasHeightForWidth", "() const", "")]
@@ -237,6 +218,15 @@ namespace Qyoto {
 		[SmokeMethod("alignment", "() const", "")]
 		public int Alignment() {
 			return ProxyQLayout().Alignment();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQLayout().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQLayout().Tr(s);
+		}
+		public static QSize ClosestAcceptableSize(QWidget w, QSize s) {
+			return StaticQLayout().ClosestAcceptableSize(w,s);
 		}
 		protected new IQLayoutSignals Emit {
 			get { return (IQLayoutSignals) Q_EMIT; }

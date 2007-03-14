@@ -136,12 +136,6 @@ namespace Qyoto {
 		public void ShowExtension(bool arg1) {
 			ProxyQDialog().ShowExtension(arg1);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQDialog().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQDialog().Tr(s);
-		}
 		[SmokeMethod("keyPressEvent", "(QKeyEvent*)", "#")]
 		protected override void KeyPressEvent(QKeyEvent arg1) {
 			ProxyQDialog().KeyPressEvent(arg1);
@@ -179,6 +173,12 @@ namespace Qyoto {
 		[SmokeMethod("~QDialog", "()", "")]
 		private void DisposeQDialog() {
 			ProxyQDialog().DisposeQDialog();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQDialog().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQDialog().Tr(s);
 		}
 		protected new IQDialogSignals Emit {
 			get { return (IQDialogSignals) Q_EMIT; }

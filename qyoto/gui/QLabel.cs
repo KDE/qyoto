@@ -184,12 +184,6 @@ namespace Qyoto {
 		public void Clear() {
 			ProxyQLabel().Clear();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQLabel().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQLabel().Tr(s);
-		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent e) {
 			return ProxyQLabel().Event(e);
@@ -243,6 +237,12 @@ namespace Qyoto {
 		[SmokeMethod("~QLabel", "()", "")]
 		private void DisposeQLabel() {
 			ProxyQLabel().DisposeQLabel();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQLabel().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQLabel().Tr(s);
 		}
 		protected new IQLabelSignals Emit {
 			get { return (IQLabelSignals) Q_EMIT; }

@@ -242,12 +242,6 @@ namespace Qyoto {
 		public void SetDisabled(bool b) {
 			ProxyQAction().SetDisabled(b);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQAction().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQAction().Tr(s);
-		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected new virtual bool Event(QEvent arg1) {
 			return ProxyQAction().Event(arg1);
@@ -261,6 +255,12 @@ namespace Qyoto {
 		[SmokeMethod("~QAction", "()", "")]
 		private void DisposeQAction() {
 			ProxyQAction().DisposeQAction();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQAction().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQAction().Tr(s);
 		}
 		protected new IQActionSignals Emit {
 			get { return (IQActionSignals) Q_EMIT; }

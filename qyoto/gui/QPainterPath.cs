@@ -37,6 +37,7 @@ namespace Qyoto {
 			CurveToElement = 2,
 			CurveToDataElement = 3,
 		}
+		// const QPainterPath::Element& elementAt(int arg1); >>>> NOT CONVERTED
 		public QPainterPath() : this((Type) null) {
 			CreateProxy();
 			NewQPainterPath();
@@ -221,16 +222,9 @@ namespace Qyoto {
 		public int ElementCount() {
 			return ProxyQPainterPath().ElementCount();
 		}
-		// const QPainterPath::Element& elementAt(int arg1); >>>> NOT CONVERTED
 		[SmokeMethod("setElementPositionAt", "(int, qreal, qreal)", "$$$")]
 		public void SetElementPositionAt(int i, double x, double y) {
 			ProxyQPainterPath().SetElementPositionAt(i,x,y);
-		}
-		public static bool operator==(QPainterPath lhs, QPainterPath other) {
-			return StaticQPainterPath().op_equals(lhs,other);
-		}
-		public static bool operator!=(QPainterPath lhs, QPainterPath other) {
-			return !StaticQPainterPath().op_equals(lhs,other);
 		}
 		public override bool Equals(object o) {
 			if (!(o is QPainterPath)) { return false; }
@@ -248,6 +242,12 @@ namespace Qyoto {
 		[SmokeMethod("~QPainterPath", "()", "")]
 		private void DisposeQPainterPath() {
 			ProxyQPainterPath().DisposeQPainterPath();
+		}
+		public static bool operator==(QPainterPath lhs, QPainterPath other) {
+			return StaticQPainterPath().op_equals(lhs,other);
+		}
+		public static bool operator!=(QPainterPath lhs, QPainterPath other) {
+			return !StaticQPainterPath().op_equals(lhs,other);
 		}
 		public static QPainterPath operator*(QPainterPath p, QMatrix m) {
 			return StaticQPainterPath().op_mult(p,m);

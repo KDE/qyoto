@@ -8,9 +8,6 @@ namespace Qyoto {
 		protected Object _interceptor = null;
 		private IntPtr _smokeObject;
 		protected QTextLayout(Type dummy) {}
-		[SmokeClass("QTextLayout")]
-		interface IQTextLayoutProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextLayout), this);
 			_interceptor = (QTextLayout) realProxy.GetTransparentProxy();
@@ -18,18 +15,15 @@ namespace Qyoto {
 		private QTextLayout ProxyQTextLayout() {
 			return (QTextLayout) _interceptor;
 		}
-		private static Object _staticInterceptor = null;
-		static QTextLayout() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTextLayoutProxy), null);
-			_staticInterceptor = (IQTextLayoutProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQTextLayoutProxy StaticQTextLayout() {
-			return (IQTextLayoutProxy) _staticInterceptor;
-		}
 		public enum CursorMode {
 			SkipCharacters = 0,
 			SkipWords = 1,
 		}
+		// void setAdditionalFormats(const QList<QTextLayout::FormatRange>& arg1); >>>> NOT CONVERTED
+		// QList<QTextLayout::FormatRange> additionalFormats(); >>>> NOT CONVERTED
+		// void draw(QPainter* arg1,const QPointF& arg2,const QVector<QTextLayout::FormatRange>& arg3,const QRectF& arg4); >>>> NOT CONVERTED
+		// void draw(QPainter* arg1,const QPointF& arg2,const QVector<QTextLayout::FormatRange>& arg3); >>>> NOT CONVERTED
+		// QTextEngine* engine(); >>>> NOT CONVERTED
 		public QTextLayout() : this((Type) null) {
 			CreateProxy();
 			NewQTextLayout();
@@ -106,8 +100,6 @@ namespace Qyoto {
 		public string PreeditAreaText() {
 			return ProxyQTextLayout().PreeditAreaText();
 		}
-		// void setAdditionalFormats(const QList<QTextLayout::FormatRange>& arg1); >>>> NOT CONVERTED
-		// QList<QTextLayout::FormatRange> additionalFormats(); >>>> NOT CONVERTED
 		[SmokeMethod("clearAdditionalFormats", "()", "")]
 		public void ClearAdditionalFormats() {
 			ProxyQTextLayout().ClearAdditionalFormats();
@@ -164,8 +156,6 @@ namespace Qyoto {
 		public int PreviousCursorPosition(int oldPos) {
 			return ProxyQTextLayout().PreviousCursorPosition(oldPos);
 		}
-		// void draw(QPainter* arg1,const QPointF& arg2,const QVector<QTextLayout::FormatRange>& arg3,const QRectF& arg4); >>>> NOT CONVERTED
-		// void draw(QPainter* arg1,const QPointF& arg2,const QVector<QTextLayout::FormatRange>& arg3); >>>> NOT CONVERTED
 		[SmokeMethod("draw", "(QPainter*, const QPointF&) const", "##")]
 		public void Draw(QPainter p, QPointF pos) {
 			ProxyQTextLayout().Draw(p,pos);
@@ -198,7 +188,6 @@ namespace Qyoto {
 		public double MaximumWidth() {
 			return ProxyQTextLayout().MaximumWidth();
 		}
-		// QTextEngine* engine(); >>>> NOT CONVERTED
 		~QTextLayout() {
 			DisposeQTextLayout();
 		}

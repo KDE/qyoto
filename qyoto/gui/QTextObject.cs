@@ -28,6 +28,7 @@ namespace Qyoto {
 		private static IQTextObjectProxy StaticQTextObject() {
 			return (IQTextObjectProxy) _staticInterceptor;
 		}
+		// QTextDocumentPrivate* docHandle(); >>>> NOT CONVERTED
 		[SmokeMethod("format", "() const", "")]
 		public QTextFormat Format() {
 			return ProxyQTextObject().Format();
@@ -44,13 +45,6 @@ namespace Qyoto {
 		public int ObjectIndex() {
 			return ProxyQTextObject().ObjectIndex();
 		}
-		// QTextDocumentPrivate* docHandle(); >>>> NOT CONVERTED
-		public static string Tr(string s, string c) {
-			return StaticQTextObject().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQTextObject().Tr(s);
-		}
 		public QTextObject(QTextDocument doc) : this((Type) null) {
 			CreateProxy();
 			NewQTextObject(doc);
@@ -62,6 +56,12 @@ namespace Qyoto {
 		[SmokeMethod("setFormat", "(const QTextFormat&)", "#")]
 		protected void SetFormat(QTextFormat format) {
 			ProxyQTextObject().SetFormat(format);
+		}
+		public static string Tr(string s, string c) {
+			return StaticQTextObject().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQTextObject().Tr(s);
 		}
 		protected new IQTextObjectSignals Emit {
 			get { return (IQTextObjectSignals) Q_EMIT; }

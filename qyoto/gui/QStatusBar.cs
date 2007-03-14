@@ -109,12 +109,6 @@ namespace Qyoto {
 		public void ClearMessage() {
 			ProxyQStatusBar().ClearMessage();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQStatusBar().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQStatusBar().Tr(s);
-		}
 		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
 		protected override void PaintEvent(QPaintEvent arg1) {
 			ProxyQStatusBar().PaintEvent(arg1);
@@ -144,6 +138,12 @@ namespace Qyoto {
 		[SmokeMethod("~QStatusBar", "()", "")]
 		private void DisposeQStatusBar() {
 			ProxyQStatusBar().DisposeQStatusBar();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQStatusBar().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQStatusBar().Tr(s);
 		}
 		protected new IQStatusBarSignals Emit {
 			get { return (IQStatusBarSignals) Q_EMIT; }

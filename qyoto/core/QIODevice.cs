@@ -187,12 +187,6 @@ namespace Qyoto {
 		public string ErrorString() {
 			return ProxyQIODevice().ErrorString();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQIODevice().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQIODevice().Tr(s);
-		}
 		protected abstract long ReadData(string data, long maxlen);
 		[SmokeMethod("readLineData", "(char*, qint64)", "$$")]
 		protected virtual long ReadLineData(string data, long maxlen) {
@@ -207,15 +201,11 @@ namespace Qyoto {
 		protected void SetErrorString(string errorString) {
 			ProxyQIODevice().SetErrorString(errorString);
 		}
-		~QIODevice() {
-			DisposeQIODevice();
+		public static string Tr(string s, string c) {
+			return StaticQIODevice().Tr(s,c);
 		}
-		public new void Dispose() {
-			DisposeQIODevice();
-		}
-		[SmokeMethod("~QIODevice", "()", "")]
-		private void DisposeQIODevice() {
-			ProxyQIODevice().DisposeQIODevice();
+		public static string Tr(string s) {
+			return StaticQIODevice().Tr(s);
 		}
 		protected new IQIODeviceSignals Emit {
 			get { return (IQIODeviceSignals) Q_EMIT; }

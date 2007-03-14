@@ -132,12 +132,6 @@ namespace Qyoto {
 		public override QPalette StandardPalette() {
 			return ProxyQPlastiqueStyle().StandardPalette();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQPlastiqueStyle().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQPlastiqueStyle().Tr(s);
-		}
 		[SmokeMethod("eventFilter", "(QObject*, QEvent*)", "##")]
 		protected override bool EventFilter(QObject watched, QEvent arg2) {
 			return ProxyQPlastiqueStyle().EventFilter(watched,arg2);
@@ -170,6 +164,12 @@ namespace Qyoto {
 		[SmokeMethod("~QPlastiqueStyle", "()", "")]
 		private void DisposeQPlastiqueStyle() {
 			ProxyQPlastiqueStyle().DisposeQPlastiqueStyle();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQPlastiqueStyle().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQPlastiqueStyle().Tr(s);
 		}
 		protected new IQPlastiqueStyleSignals Emit {
 			get { return (IQPlastiqueStyleSignals) Q_EMIT; }

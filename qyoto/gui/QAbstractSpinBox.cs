@@ -171,12 +171,6 @@ namespace Qyoto {
 		public virtual void Clear() {
 			ProxyQAbstractSpinBox().Clear();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQAbstractSpinBox().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQAbstractSpinBox().Tr(s);
-		}
 		[SmokeMethod("resizeEvent", "(QResizeEvent*)", "#")]
 		protected override void ResizeEvent(QResizeEvent arg1) {
 			ProxyQAbstractSpinBox().ResizeEvent(arg1);
@@ -262,6 +256,12 @@ namespace Qyoto {
 		[SmokeMethod("~QAbstractSpinBox", "()", "")]
 		private void DisposeQAbstractSpinBox() {
 			ProxyQAbstractSpinBox().DisposeQAbstractSpinBox();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQAbstractSpinBox().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQAbstractSpinBox().Tr(s);
 		}
 		protected new IQAbstractSpinBoxSignals Emit {
 			get { return (IQAbstractSpinBoxSignals) Q_EMIT; }

@@ -85,12 +85,6 @@ namespace Qyoto {
 		public void SetItemEditorFactory(QItemEditorFactory factory) {
 			ProxyQItemDelegate().SetItemEditorFactory(factory);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQItemDelegate().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQItemDelegate().Tr(s);
-		}
 		[SmokeMethod("drawDisplay", "(QPainter*, const QStyleOptionViewItem&, const QRect&, const QString&) const", "###$")]
 		protected virtual void DrawDisplay(QPainter painter, QStyleOptionViewItem option, QRect rect, string text) {
 			ProxyQItemDelegate().DrawDisplay(painter,option,rect,text);
@@ -156,6 +150,12 @@ namespace Qyoto {
 		[SmokeMethod("~QItemDelegate", "()", "")]
 		private void DisposeQItemDelegate() {
 			ProxyQItemDelegate().DisposeQItemDelegate();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQItemDelegate().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQItemDelegate().Tr(s);
 		}
 		protected new IQItemDelegateSignals Emit {
 			get { return (IQItemDelegateSignals) Q_EMIT; }

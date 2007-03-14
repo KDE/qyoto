@@ -108,6 +108,16 @@ namespace Qyoto {
 		public uint NativeModifiers() {
 			return ProxyQKeyEvent().NativeModifiers();
 		}
+		~QKeyEvent() {
+			DisposeQKeyEvent();
+		}
+		public new void Dispose() {
+			DisposeQKeyEvent();
+		}
+		[SmokeMethod("~QKeyEvent", "()", "")]
+		private void DisposeQKeyEvent() {
+			ProxyQKeyEvent().DisposeQKeyEvent();
+		}
 		public static QKeyEvent CreateExtendedKeyEvent(QEvent.TypeOf type, int key, int modifiers, uint nativeScanCode, uint nativeVirtualKey, uint nativeModifiers, string text, bool autorep, ushort count) {
 			return StaticQKeyEvent().CreateExtendedKeyEvent(type,key,modifiers,nativeScanCode,nativeVirtualKey,nativeModifiers,text,autorep,count);
 		}
@@ -119,16 +129,6 @@ namespace Qyoto {
 		}
 		public static QKeyEvent CreateExtendedKeyEvent(QEvent.TypeOf type, int key, int modifiers, uint nativeScanCode, uint nativeVirtualKey, uint nativeModifiers) {
 			return StaticQKeyEvent().CreateExtendedKeyEvent(type,key,modifiers,nativeScanCode,nativeVirtualKey,nativeModifiers);
-		}
-		~QKeyEvent() {
-			DisposeQKeyEvent();
-		}
-		public new void Dispose() {
-			DisposeQKeyEvent();
-		}
-		[SmokeMethod("~QKeyEvent", "()", "")]
-		private void DisposeQKeyEvent() {
-			ProxyQKeyEvent().DisposeQKeyEvent();
 		}
 		public static bool operator==(QKeyEvent e, QKeySequence.StandardKey key) {
 			return StaticQKeyEvent().op_equals(e,key);

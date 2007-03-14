@@ -142,9 +142,6 @@ namespace Qyoto {
 		public QGLFormat Format() {
 			return ProxyQGLPixelBuffer().Format();
 		}
-		public static bool HasOpenGLPbuffers() {
-			return StaticQGLPixelBuffer().HasOpenGLPbuffers();
-		}
 		[SmokeMethod("metric", "(QPaintDevice::PaintDeviceMetric) const", "$")]
 		protected override int Metric(IQPaintDevice metric) {
 			return ProxyQGLPixelBuffer().Metric(metric);
@@ -162,6 +159,9 @@ namespace Qyoto {
 		[SmokeMethod("~QGLPixelBuffer", "()", "")]
 		private void DisposeQGLPixelBuffer() {
 			ProxyQGLPixelBuffer().DisposeQGLPixelBuffer();
+		}
+		public static bool HasOpenGLPbuffers() {
+			return StaticQGLPixelBuffer().HasOpenGLPbuffers();
 		}
 	}
 }

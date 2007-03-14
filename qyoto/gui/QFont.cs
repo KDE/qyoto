@@ -97,6 +97,7 @@ namespace Qyoto {
 			ExtraExpanded = 150,
 			UltraExpanded = 200,
 		}
+		//  operator QVariant(); >>>> NOT CONVERTED
 		public QFont() : this((Type) null) {
 			CreateProxy();
 			NewQFont();
@@ -297,12 +298,6 @@ namespace Qyoto {
 		public bool ExactMatch() {
 			return ProxyQFont().ExactMatch();
 		}
-		public static bool operator==(QFont lhs, QFont arg1) {
-			return StaticQFont().op_equals(lhs,arg1);
-		}
-		public static bool operator!=(QFont lhs, QFont arg1) {
-			return !StaticQFont().op_equals(lhs,arg1);
-		}
 		public override bool Equals(object o) {
 			if (!(o is QFont)) { return false; }
 			return this == (QFont) o;
@@ -310,14 +305,6 @@ namespace Qyoto {
 		public override int GetHashCode() {
 			return ProxyQFont().GetHashCode();
 		}
-		public static bool operator<(QFont lhs, QFont arg1) {
-			return StaticQFont().op_lt(lhs,arg1);
-		}
-		public static bool operator>(QFont lhs, QFont arg1) {
-			return !StaticQFont().op_lt(lhs,arg1)
-						&& !StaticQFont().op_equals(lhs,arg1);
-		}
-		//  operator QVariant(); >>>> NOT CONVERTED
 		[SmokeMethod("isCopyOf", "(const QFont&) const", "#")]
 		public bool IsCopyOf(QFont arg1) {
 			return ProxyQFont().IsCopyOf(arg1);
@@ -366,6 +353,29 @@ namespace Qyoto {
 		public void Resolve(uint mask) {
 			ProxyQFont().Resolve(mask);
 		}
+		~QFont() {
+			DisposeQFont();
+		}
+		public void Dispose() {
+			DisposeQFont();
+		}
+		[SmokeMethod("~QFont", "()", "")]
+		private void DisposeQFont() {
+			ProxyQFont().DisposeQFont();
+		}
+		public static bool operator==(QFont lhs, QFont arg1) {
+			return StaticQFont().op_equals(lhs,arg1);
+		}
+		public static bool operator!=(QFont lhs, QFont arg1) {
+			return !StaticQFont().op_equals(lhs,arg1);
+		}
+		public static bool operator<(QFont lhs, QFont arg1) {
+			return StaticQFont().op_lt(lhs,arg1);
+		}
+		public static bool operator>(QFont lhs, QFont arg1) {
+			return !StaticQFont().op_lt(lhs,arg1)
+						&& !StaticQFont().op_equals(lhs,arg1);
+		}
 		public static string Substitute(string arg1) {
 			return StaticQFont().Substitute(arg1);
 		}
@@ -392,16 +402,6 @@ namespace Qyoto {
 		}
 		public static void CacheStatistics() {
 			StaticQFont().CacheStatistics();
-		}
-		~QFont() {
-			DisposeQFont();
-		}
-		public void Dispose() {
-			DisposeQFont();
-		}
-		[SmokeMethod("~QFont", "()", "")]
-		private void DisposeQFont() {
-			ProxyQFont().DisposeQFont();
 		}
 	}
 }

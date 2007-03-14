@@ -8,23 +8,12 @@ namespace Qyoto {
 		protected Object _interceptor = null;
 		private IntPtr _smokeObject;
 		protected QIcon(Type dummy) {}
-		[SmokeClass("QIcon")]
-		interface IQIconProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QIcon), this);
 			_interceptor = (QIcon) realProxy.GetTransparentProxy();
 		}
 		private QIcon ProxyQIcon() {
 			return (QIcon) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QIcon() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQIconProxy), null);
-			_staticInterceptor = (IQIconProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQIconProxy StaticQIcon() {
-			return (IQIconProxy) _staticInterceptor;
 		}
 		public enum Mode {
 			Normal = 0,
@@ -36,6 +25,7 @@ namespace Qyoto {
 			On = 0,
 			Off = 1,
 		}
+		//  operator QVariant(); >>>> NOT CONVERTED
 		public QIcon() : this((Type) null) {
 			CreateProxy();
 			NewQIcon();
@@ -76,7 +66,6 @@ namespace Qyoto {
 		private void NewQIcon(QIconEngine engine) {
 			ProxyQIcon().NewQIcon(engine);
 		}
-		//  operator QVariant(); >>>> NOT CONVERTED
 		[SmokeMethod("pixmap", "(const QSize&, QIcon::Mode, QIcon::State) const", "#$$")]
 		public QPixmap Pixmap(QSize size, QIcon.Mode mode, QIcon.State state) {
 			return ProxyQIcon().Pixmap(size,mode,state);

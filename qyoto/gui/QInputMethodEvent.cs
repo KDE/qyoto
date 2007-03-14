@@ -6,9 +6,6 @@ namespace Qyoto {
 	[SmokeClass("QInputMethodEvent")]
 	public class QInputMethodEvent : QEvent, IDisposable {
  		protected QInputMethodEvent(Type dummy) : base((Type) null) {}
-		[SmokeClass("QInputMethodEvent")]
-		interface IQInputMethodEventProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QInputMethodEvent), this);
 			_interceptor = (QInputMethodEvent) realProxy.GetTransparentProxy();
@@ -16,20 +13,14 @@ namespace Qyoto {
 		private QInputMethodEvent ProxyQInputMethodEvent() {
 			return (QInputMethodEvent) _interceptor;
 		}
-		private static Object _staticInterceptor = null;
-		static QInputMethodEvent() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQInputMethodEventProxy), null);
-			_staticInterceptor = (IQInputMethodEventProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQInputMethodEventProxy StaticQInputMethodEvent() {
-			return (IQInputMethodEventProxy) _staticInterceptor;
-		}
 		public enum AttributeType {
 			TextFormat = 0,
 			Cursor = 1,
 			Language = 2,
 			Ruby = 3,
 		}
+		// QInputMethodEvent* QInputMethodEvent(const QString& arg1,const QList<QInputMethodEvent::Attribute>& arg2); >>>> NOT CONVERTED
+		// const QList<QInputMethodEvent::Attribute>& attributes(); >>>> NOT CONVERTED
 		public QInputMethodEvent() : this((Type) null) {
 			CreateProxy();
 			NewQInputMethodEvent();
@@ -38,7 +29,6 @@ namespace Qyoto {
 		private void NewQInputMethodEvent() {
 			ProxyQInputMethodEvent().NewQInputMethodEvent();
 		}
-		// QInputMethodEvent* QInputMethodEvent(const QString& arg1,const QList<QInputMethodEvent::Attribute>& arg2); >>>> NOT CONVERTED
 		[SmokeMethod("setCommitString", "(const QString&, int, int)", "$$$")]
 		public void SetCommitString(string commitString, int replaceFrom, int replaceLength) {
 			ProxyQInputMethodEvent().SetCommitString(commitString,replaceFrom,replaceLength);
@@ -51,7 +41,6 @@ namespace Qyoto {
 		public void SetCommitString(string commitString) {
 			ProxyQInputMethodEvent().SetCommitString(commitString);
 		}
-		// const QList<QInputMethodEvent::Attribute>& attributes(); >>>> NOT CONVERTED
 		[SmokeMethod("preeditString", "() const", "")]
 		public string PreeditString() {
 			return ProxyQInputMethodEvent().PreeditString();

@@ -80,6 +80,8 @@ namespace Qyoto {
 			Runic = 32,
 			WritingSystemsCount = 33,
 		}
+		// QList<QFontDatabase::WritingSystem> writingSystems(); >>>> NOT CONVERTED
+		// QList<QFontDatabase::WritingSystem> writingSystems(const QString& arg1); >>>> NOT CONVERTED
 		public QFontDatabase() : this((Type) null) {
 			CreateProxy();
 			NewQFontDatabase();
@@ -88,8 +90,6 @@ namespace Qyoto {
 		private void NewQFontDatabase() {
 			ProxyQFontDatabase().NewQFontDatabase();
 		}
-		// QList<QFontDatabase::WritingSystem> writingSystems(); >>>> NOT CONVERTED
-		// QList<QFontDatabase::WritingSystem> writingSystems(const QString& arg1); >>>> NOT CONVERTED
 		[SmokeMethod("families", "(QFontDatabase::WritingSystem) const", "$")]
 		public List<string> Families(QFontDatabase.WritingSystem writingSystem) {
 			return ProxyQFontDatabase().Families(writingSystem);
@@ -170,6 +170,16 @@ namespace Qyoto {
 		public int Weight(string family, string style) {
 			return ProxyQFontDatabase().Weight(family,style);
 		}
+		~QFontDatabase() {
+			DisposeQFontDatabase();
+		}
+		public void Dispose() {
+			DisposeQFontDatabase();
+		}
+		[SmokeMethod("~QFontDatabase", "()", "")]
+		private void DisposeQFontDatabase() {
+			ProxyQFontDatabase().DisposeQFontDatabase();
+		}
 		public static List<int> StandardSizes() {
 			return StaticQFontDatabase().StandardSizes();
 		}
@@ -193,16 +203,6 @@ namespace Qyoto {
 		}
 		public static bool RemoveAllApplicationFonts() {
 			return StaticQFontDatabase().RemoveAllApplicationFonts();
-		}
-		~QFontDatabase() {
-			DisposeQFontDatabase();
-		}
-		public void Dispose() {
-			DisposeQFontDatabase();
-		}
-		[SmokeMethod("~QFontDatabase", "()", "")]
-		private void DisposeQFontDatabase() {
-			ProxyQFontDatabase().DisposeQFontDatabase();
 		}
 	}
 }

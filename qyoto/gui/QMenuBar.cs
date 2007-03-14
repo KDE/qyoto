@@ -138,12 +138,6 @@ namespace Qyoto {
 		public QWidget CornerWidget() {
 			return ProxyQMenuBar().CornerWidget();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQMenuBar().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQMenuBar().Tr(s);
-		}
 		[SmokeMethod("changeEvent", "(QEvent*)", "#")]
 		protected override void ChangeEvent(QEvent arg1) {
 			ProxyQMenuBar().ChangeEvent(arg1);
@@ -205,6 +199,12 @@ namespace Qyoto {
 		[SmokeMethod("~QMenuBar", "()", "")]
 		private void DisposeQMenuBar() {
 			ProxyQMenuBar().DisposeQMenuBar();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQMenuBar().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQMenuBar().Tr(s);
 		}
 		protected new IQMenuBarSignals Emit {
 			get { return (IQMenuBarSignals) Q_EMIT; }

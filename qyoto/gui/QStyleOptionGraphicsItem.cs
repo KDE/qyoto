@@ -6,23 +6,12 @@ namespace Qyoto {
 	[SmokeClass("QStyleOptionGraphicsItem")]
 	public class QStyleOptionGraphicsItem : QStyleOption, IDisposable {
  		protected QStyleOptionGraphicsItem(Type dummy) : base((Type) null) {}
-		[SmokeClass("QStyleOptionGraphicsItem")]
-		interface IQStyleOptionGraphicsItemProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionGraphicsItem), this);
 			_interceptor = (QStyleOptionGraphicsItem) realProxy.GetTransparentProxy();
 		}
 		private QStyleOptionGraphicsItem ProxyQStyleOptionGraphicsItem() {
 			return (QStyleOptionGraphicsItem) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QStyleOptionGraphicsItem() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQStyleOptionGraphicsItemProxy), null);
-			_staticInterceptor = (IQStyleOptionGraphicsItemProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQStyleOptionGraphicsItemProxy StaticQStyleOptionGraphicsItem() {
-			return (IQStyleOptionGraphicsItemProxy) _staticInterceptor;
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_GraphicsItem,

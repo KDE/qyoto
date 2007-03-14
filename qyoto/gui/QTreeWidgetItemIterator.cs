@@ -92,12 +92,6 @@ namespace Qyoto {
 		private void NewQTreeWidgetItemIterator(QTreeWidgetItem item) {
 			ProxyQTreeWidgetItemIterator().NewQTreeWidgetItemIterator(item);
 		}
-		public static QTreeWidgetItemIterator operator++(QTreeWidgetItemIterator lhs) {
-			return StaticQTreeWidgetItemIterator().op_incr(lhs);
-		}
-		public static QTreeWidgetItemIterator operator--(QTreeWidgetItemIterator lhs) {
-			return StaticQTreeWidgetItemIterator().op_decr(lhs);
-		}
 		~QTreeWidgetItemIterator() {
 			DisposeQTreeWidgetItemIterator();
 		}
@@ -107,6 +101,12 @@ namespace Qyoto {
 		[SmokeMethod("~QTreeWidgetItemIterator", "()", "")]
 		private void DisposeQTreeWidgetItemIterator() {
 			ProxyQTreeWidgetItemIterator().DisposeQTreeWidgetItemIterator();
+		}
+		public static QTreeWidgetItemIterator operator++(QTreeWidgetItemIterator lhs) {
+			return StaticQTreeWidgetItemIterator().op_incr(lhs);
+		}
+		public static QTreeWidgetItemIterator operator--(QTreeWidgetItemIterator lhs) {
+			return StaticQTreeWidgetItemIterator().op_decr(lhs);
 		}
 	}
 }

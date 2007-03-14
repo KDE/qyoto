@@ -28,6 +28,7 @@ namespace Qyoto {
 		private static IQBrushProxy StaticQBrush() {
 			return (IQBrushProxy) _staticInterceptor;
 		}
+		//  operator QVariant(); >>>> NOT CONVERTED
 		public QBrush() : this((Type) null) {
 			CreateProxy();
 			NewQBrush();
@@ -124,7 +125,6 @@ namespace Qyoto {
 		private void NewQBrush(QGradient gradient) {
 			ProxyQBrush().NewQBrush(gradient);
 		}
-		//  operator QVariant(); >>>> NOT CONVERTED
 		[SmokeMethod("style", "() const", "")]
 		public Qt.BrushStyle Style() {
 			return ProxyQBrush().Style();
@@ -177,12 +177,6 @@ namespace Qyoto {
 		public bool IsOpaque() {
 			return ProxyQBrush().IsOpaque();
 		}
-		public static bool operator==(QBrush lhs, QBrush b) {
-			return StaticQBrush().op_equals(lhs,b);
-		}
-		public static bool operator!=(QBrush lhs, QBrush b) {
-			return !StaticQBrush().op_equals(lhs,b);
-		}
 		public override bool Equals(object o) {
 			if (!(o is QBrush)) { return false; }
 			return this == (QBrush) o;
@@ -199,6 +193,12 @@ namespace Qyoto {
 		[SmokeMethod("~QBrush", "()", "")]
 		private void DisposeQBrush() {
 			ProxyQBrush().DisposeQBrush();
+		}
+		public static bool operator==(QBrush lhs, QBrush b) {
+			return StaticQBrush().op_equals(lhs,b);
+		}
+		public static bool operator!=(QBrush lhs, QBrush b) {
+			return !StaticQBrush().op_equals(lhs,b);
 		}
 	}
 }

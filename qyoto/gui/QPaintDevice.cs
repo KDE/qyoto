@@ -24,23 +24,12 @@ namespace Qyoto {
 		protected Object _interceptor = null;
 		private IntPtr _smokeObject;
 		protected QPaintDevice(Type dummy) {}
-		[SmokeClass("QPaintDevice")]
-		interface IQPaintDeviceProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPaintDevice), this);
 			_interceptor = (QPaintDevice) realProxy.GetTransparentProxy();
 		}
 		private QPaintDevice ProxyQPaintDevice() {
 			return (QPaintDevice) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QPaintDevice() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQPaintDeviceProxy), null);
-			_staticInterceptor = (IQPaintDeviceProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQPaintDeviceProxy StaticQPaintDevice() {
-			return (IQPaintDeviceProxy) _staticInterceptor;
 		}
 		public enum PaintDeviceMetric {
 			PdmWidth = 1,
@@ -114,16 +103,6 @@ namespace Qyoto {
 		[SmokeMethod("metric", "(QPaintDevice::PaintDeviceMetric) const", "$")]
 		protected virtual int Metric(IQPaintDevice metric) {
 			return ProxyQPaintDevice().Metric(metric);
-		}
-		~QPaintDevice() {
-			DisposeQPaintDevice();
-		}
-		public void Dispose() {
-			DisposeQPaintDevice();
-		}
-		[SmokeMethod("~QPaintDevice", "()", "")]
-		private void DisposeQPaintDevice() {
-			ProxyQPaintDevice().DisposeQPaintDevice();
 		}
 	}
 }

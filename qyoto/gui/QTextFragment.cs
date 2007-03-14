@@ -50,25 +50,12 @@ namespace Qyoto {
 		public bool IsValid() {
 			return ProxyQTextFragment().IsValid();
 		}
-		public static bool operator==(QTextFragment lhs, QTextFragment o) {
-			return StaticQTextFragment().op_equals(lhs,o);
-		}
-		public static bool operator!=(QTextFragment lhs, QTextFragment o) {
-			return !StaticQTextFragment().op_equals(lhs,o);
-		}
 		public override bool Equals(object o) {
 			if (!(o is QTextFragment)) { return false; }
 			return this == (QTextFragment) o;
 		}
 		public override int GetHashCode() {
 			return ProxyQTextFragment().GetHashCode();
-		}
-		public static bool operator<(QTextFragment lhs, QTextFragment o) {
-			return StaticQTextFragment().op_lt(lhs,o);
-		}
-		public static bool operator>(QTextFragment lhs, QTextFragment o) {
-			return !StaticQTextFragment().op_lt(lhs,o)
-						&& !StaticQTextFragment().op_equals(lhs,o);
 		}
 		[SmokeMethod("position", "() const", "")]
 		public int Position() {
@@ -103,6 +90,19 @@ namespace Qyoto {
 		[SmokeMethod("~QTextFragment", "()", "")]
 		private void DisposeQTextFragment() {
 			ProxyQTextFragment().DisposeQTextFragment();
+		}
+		public static bool operator==(QTextFragment lhs, QTextFragment o) {
+			return StaticQTextFragment().op_equals(lhs,o);
+		}
+		public static bool operator!=(QTextFragment lhs, QTextFragment o) {
+			return !StaticQTextFragment().op_equals(lhs,o);
+		}
+		public static bool operator<(QTextFragment lhs, QTextFragment o) {
+			return StaticQTextFragment().op_lt(lhs,o);
+		}
+		public static bool operator>(QTextFragment lhs, QTextFragment o) {
+			return !StaticQTextFragment().op_lt(lhs,o)
+						&& !StaticQTextFragment().op_equals(lhs,o);
 		}
 	}
 }

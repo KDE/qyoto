@@ -39,6 +39,11 @@ namespace Qyoto {
 		private static IQFSFileEngineProxy StaticQFSFileEngine() {
 			return (IQFSFileEngineProxy) _staticInterceptor;
 		}
+		// QAbstractFileEngine::Iterator* beginEntryList(QDir::Filters arg1,const QStringList& arg2); >>>> NOT CONVERTED
+		// QAbstractFileEngine::Iterator* endEntryList(); >>>> NOT CONVERTED
+		// bool extension(QAbstractFileEngine::Extension arg1,const QAbstractFileEngine::ExtensionOption* arg2,QAbstractFileEngine::ExtensionReturn* arg3); >>>> NOT CONVERTED
+		// bool extension(QAbstractFileEngine::Extension arg1,const QAbstractFileEngine::ExtensionOption* arg2); >>>> NOT CONVERTED
+		// QFSFileEngine* QFSFileEngine(QFSFileEnginePrivate& arg1); >>>> NOT CONVERTED
 		public QFSFileEngine() : this((Type) null) {
 			CreateProxy();
 			NewQFSFileEngine();
@@ -151,8 +156,6 @@ namespace Qyoto {
 		public override void SetFileName(string file) {
 			ProxyQFSFileEngine().SetFileName(file);
 		}
-		// QAbstractFileEngine::Iterator* beginEntryList(QDir::Filters arg1,const QStringList& arg2); >>>> NOT CONVERTED
-		// QAbstractFileEngine::Iterator* endEntryList(); >>>> NOT CONVERTED
 		[SmokeMethod("read", "(char*, qint64)", "$$")]
 		public override long Read(string data, long maxlen) {
 			return ProxyQFSFileEngine().Read(data,maxlen);
@@ -165,8 +168,6 @@ namespace Qyoto {
 		public override long Write(string data, long len) {
 			return ProxyQFSFileEngine().Write(data,len);
 		}
-		// bool extension(QAbstractFileEngine::Extension arg1,const QAbstractFileEngine::ExtensionOption* arg2,QAbstractFileEngine::ExtensionReturn* arg3); >>>> NOT CONVERTED
-		// bool extension(QAbstractFileEngine::Extension arg1,const QAbstractFileEngine::ExtensionOption* arg2); >>>> NOT CONVERTED
 		[SmokeMethod("extension", "(QAbstractFileEngine::Extension)", "$")]
 		public override bool extension(QAbstractFileEngine.Extension extension) {
 			return ProxyQFSFileEngine().extension(extension);
@@ -178,6 +179,16 @@ namespace Qyoto {
 		[SmokeMethod("open", "(QIODevice::OpenMode, int)", "$$")]
 		public bool Open(int flags, int fd) {
 			return ProxyQFSFileEngine().Open(flags,fd);
+		}
+		~QFSFileEngine() {
+			DisposeQFSFileEngine();
+		}
+		public new void Dispose() {
+			DisposeQFSFileEngine();
+		}
+		[SmokeMethod("~QFSFileEngine", "()", "")]
+		private void DisposeQFSFileEngine() {
+			ProxyQFSFileEngine().DisposeQFSFileEngine();
 		}
 		public static bool SetCurrentPath(string path) {
 			return StaticQFSFileEngine().SetCurrentPath(path);
@@ -199,17 +210,6 @@ namespace Qyoto {
 		}
 		public static List<QFileInfo> Drives() {
 			return StaticQFSFileEngine().Drives();
-		}
-		// QFSFileEngine* QFSFileEngine(QFSFileEnginePrivate& arg1); >>>> NOT CONVERTED
-		~QFSFileEngine() {
-			DisposeQFSFileEngine();
-		}
-		public new void Dispose() {
-			DisposeQFSFileEngine();
-		}
-		[SmokeMethod("~QFSFileEngine", "()", "")]
-		private void DisposeQFSFileEngine() {
-			ProxyQFSFileEngine().DisposeQFSFileEngine();
 		}
 	}
 }

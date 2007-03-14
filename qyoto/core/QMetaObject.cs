@@ -141,6 +141,13 @@ namespace Qyoto {
 			QueryPropertyEditable = 7,
 			QueryPropertyUser = 8,
 		}
+		// void activate(QObject* arg1,int arg2,void** arg3); >>>> NOT CONVERTED
+		// void activate(QObject* arg1,int arg2,int arg3,void** arg4); >>>> NOT CONVERTED
+		// void activate(QObject* arg1,const QMetaObject* arg2,int arg3,void** arg4); >>>> NOT CONVERTED
+		// void activate(QObject* arg1,const QMetaObject* arg2,int arg3,int arg4,void** arg5); >>>> NOT CONVERTED
+		// void addGuard(QObject** arg1); >>>> NOT CONVERTED
+		// void removeGuard(QObject** arg1); >>>> NOT CONVERTED
+		// void changeGuard(QObject** arg1,QObject* arg2); >>>> NOT CONVERTED
 		[SmokeMethod("className", "() const", "")]
 		public string ClassName() {
 			return ProxyQMetaObject().ClassName();
@@ -277,13 +284,6 @@ namespace Qyoto {
 		public static void ConnectSlotsByName(QObject o) {
 			StaticQMetaObject().ConnectSlotsByName(o);
 		}
-		// void activate(QObject* arg1,int arg2,void** arg3); >>>> NOT CONVERTED
-		// void activate(QObject* arg1,int arg2,int arg3,void** arg4); >>>> NOT CONVERTED
-		// void activate(QObject* arg1,const QMetaObject* arg2,int arg3,void** arg4); >>>> NOT CONVERTED
-		// void activate(QObject* arg1,const QMetaObject* arg2,int arg3,int arg4,void** arg5); >>>> NOT CONVERTED
-		// void addGuard(QObject** arg1); >>>> NOT CONVERTED
-		// void removeGuard(QObject** arg1); >>>> NOT CONVERTED
-		// void changeGuard(QObject** arg1,QObject* arg2); >>>> NOT CONVERTED
 		public static bool InvokeMethod(QObject arg1, string member, Qt.ConnectionType arg3, QGenericReturnArgument ret, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6, QGenericArgument val7, QGenericArgument val8, QGenericArgument val9) {
 			return StaticQMetaObject().InvokeMethod(arg1,member,arg3,ret,val0,val1,val2,val3,val4,val5,val6,val7,val8,val9);
 		}
@@ -415,16 +415,6 @@ namespace Qyoto {
 		}
 		public static bool InvokeMethod(QObject arg1, string member) {
 			return StaticQMetaObject().InvokeMethod(arg1,member);
-		}
-		~QMetaObject() {
-			DisposeQMetaObject();
-		}
-		public void Dispose() {
-			DisposeQMetaObject();
-		}
-		[SmokeMethod("~QMetaObject", "()", "")]
-		private void DisposeQMetaObject() {
-			ProxyQMetaObject().DisposeQMetaObject();
 		}
 	}
 }

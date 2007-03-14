@@ -78,12 +78,6 @@ namespace Qyoto {
 		public void Load(QByteArray contents) {
 			ProxyQSvgWidget().Load(contents);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQSvgWidget().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQSvgWidget().Tr(s);
-		}
 		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
 		protected override void PaintEvent(QPaintEvent arg1) {
 			ProxyQSvgWidget().PaintEvent(arg1);
@@ -97,6 +91,12 @@ namespace Qyoto {
 		[SmokeMethod("~QSvgWidget", "()", "")]
 		private void DisposeQSvgWidget() {
 			ProxyQSvgWidget().DisposeQSvgWidget();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQSvgWidget().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQSvgWidget().Tr(s);
 		}
 		protected new IQSvgWidgetSignals Emit {
 			get { return (IQSvgWidgetSignals) Q_EMIT; }

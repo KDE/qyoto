@@ -62,13 +62,6 @@ namespace Qyoto {
 			[SmokeMethod("getItem", "(QWidget*, const QString&, const QString&, const QStringList&)", "#$$?")]
 			string GetItem(QWidget parent, string title, string label, List<string> list);
 		}
-		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QInputDialog), this);
-			_interceptor = (QInputDialog) realProxy.GetTransparentProxy();
-		}
-		private QInputDialog ProxyQInputDialog() {
-			return (QInputDialog) _interceptor;
-		}
 		private static Object _staticInterceptor = null;
 		static QInputDialog() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQInputDialogProxy), null);

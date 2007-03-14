@@ -105,12 +105,6 @@ namespace Qyoto {
 		public override void RevertRow(int row) {
 			ProxyQSqlRelationalTableModel().RevertRow(row);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQSqlRelationalTableModel().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQSqlRelationalTableModel().Tr(s);
-		}
 		[SmokeMethod("selectStatement", "() const", "")]
 		protected override string SelectStatement() {
 			return ProxyQSqlRelationalTableModel().SelectStatement();
@@ -136,6 +130,12 @@ namespace Qyoto {
 		[SmokeMethod("~QSqlRelationalTableModel", "()", "")]
 		private void DisposeQSqlRelationalTableModel() {
 			ProxyQSqlRelationalTableModel().DisposeQSqlRelationalTableModel();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQSqlRelationalTableModel().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQSqlRelationalTableModel().Tr(s);
 		}
 		protected new IQSqlRelationalTableModelSignals Emit {
 			get { return (IQSqlRelationalTableModelSignals) Q_EMIT; }

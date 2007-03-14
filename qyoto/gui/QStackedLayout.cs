@@ -111,12 +111,6 @@ namespace Qyoto {
 		public void SetCurrentWidget(QWidget w) {
 			ProxyQStackedLayout().SetCurrentWidget(w);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQStackedLayout().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQStackedLayout().Tr(s);
-		}
 		~QStackedLayout() {
 			DisposeQStackedLayout();
 		}
@@ -126,6 +120,12 @@ namespace Qyoto {
 		[SmokeMethod("~QStackedLayout", "()", "")]
 		private void DisposeQStackedLayout() {
 			ProxyQStackedLayout().DisposeQStackedLayout();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQStackedLayout().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQStackedLayout().Tr(s);
 		}
 		protected new IQStackedLayoutSignals Emit {
 			get { return (IQStackedLayoutSignals) Q_EMIT; }

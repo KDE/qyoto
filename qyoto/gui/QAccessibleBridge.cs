@@ -8,23 +8,12 @@ namespace Qyoto {
 		protected Object _interceptor = null;
 		private IntPtr _smokeObject;
 		protected QAccessibleBridge(Type dummy) {}
-		[SmokeClass("QAccessibleBridge")]
-		interface IQAccessibleBridgeProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAccessibleBridge), this);
 			_interceptor = (QAccessibleBridge) realProxy.GetTransparentProxy();
 		}
 		private QAccessibleBridge ProxyQAccessibleBridge() {
 			return (QAccessibleBridge) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QAccessibleBridge() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQAccessibleBridgeProxy), null);
-			_staticInterceptor = (IQAccessibleBridgeProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQAccessibleBridgeProxy StaticQAccessibleBridge() {
-			return (IQAccessibleBridgeProxy) _staticInterceptor;
 		}
 		public abstract void SetRootObject(QAccessibleInterface arg1);
 		public abstract void NotifyAccessibilityUpdate(int arg1, QAccessibleInterface arg2, int arg3);
@@ -35,16 +24,6 @@ namespace Qyoto {
 		[SmokeMethod("QAccessibleBridge", "()", "")]
 		private void NewQAccessibleBridge() {
 			ProxyQAccessibleBridge().NewQAccessibleBridge();
-		}
-		~QAccessibleBridge() {
-			DisposeQAccessibleBridge();
-		}
-		public void Dispose() {
-			DisposeQAccessibleBridge();
-		}
-		[SmokeMethod("~QAccessibleBridge", "()", "")]
-		private void DisposeQAccessibleBridge() {
-			ProxyQAccessibleBridge().DisposeQAccessibleBridge();
 		}
 	}
 }

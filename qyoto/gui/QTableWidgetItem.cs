@@ -8,23 +8,12 @@ namespace Qyoto {
 		protected Object _interceptor = null;
 		private IntPtr _smokeObject;
 		protected QTableWidgetItem(Type dummy) {}
-		[SmokeClass("QTableWidgetItem")]
-		interface IQTableWidgetItemProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTableWidgetItem), this);
 			_interceptor = (QTableWidgetItem) realProxy.GetTransparentProxy();
 		}
 		private QTableWidgetItem ProxyQTableWidgetItem() {
 			return (QTableWidgetItem) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QTableWidgetItem() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTableWidgetItemProxy), null);
-			_staticInterceptor = (IQTableWidgetItemProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQTableWidgetItemProxy StaticQTableWidgetItem() {
-			return (IQTableWidgetItemProxy) _staticInterceptor;
 		}
 		public enum ItemType {
 			Type = 0,

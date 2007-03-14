@@ -131,12 +131,6 @@ namespace Qyoto {
 		public void SetCurrentWidget(QWidget widget) {
 			ProxyQToolBox().SetCurrentWidget(widget);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQToolBox().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQToolBox().Tr(s);
-		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent e) {
 			return ProxyQToolBox().Event(e);
@@ -166,6 +160,12 @@ namespace Qyoto {
 		[SmokeMethod("~QToolBox", "()", "")]
 		private void DisposeQToolBox() {
 			ProxyQToolBox().DisposeQToolBox();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQToolBox().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQToolBox().Tr(s);
 		}
 		protected new IQToolBoxSignals Emit {
 			get { return (IQToolBoxSignals) Q_EMIT; }

@@ -118,12 +118,6 @@ namespace Qyoto {
 		public  double Rheight() {
 			return ProxyQSizeF().Rheight();
 		}
-		public static QSizeF operator*(QSizeF lhs, double c) {
-			return StaticQSizeF().op_mult(lhs,c);
-		}
-		public static QSizeF operator/(QSizeF lhs, double c) {
-			return StaticQSizeF().op_div(lhs,c);
-		}
 		[SmokeMethod("toSize", "() const", "")]
 		public QSize ToSize() {
 			return ProxyQSizeF().ToSize();
@@ -138,18 +132,24 @@ namespace Qyoto {
 		private void DisposeQSizeF() {
 			ProxyQSizeF().DisposeQSizeF();
 		}
-		public static bool operator==(QSizeF s1, QSizeF s2) {
-			return StaticQSizeF().op_equals(s1,s2);
-		}
-		public static bool operator!=(QSizeF s1, QSizeF s2) {
-			return !StaticQSizeF().op_equals(s1,s2);
-		}
 		public override bool Equals(object o) {
 			if (!(o is QSizeF)) { return false; }
 			return this == (QSizeF) o;
 		}
 		public override int GetHashCode() {
 			return ProxyQSizeF().GetHashCode();
+		}
+		public static QSizeF operator*(QSizeF lhs, double c) {
+			return StaticQSizeF().op_mult(lhs,c);
+		}
+		public static QSizeF operator/(QSizeF lhs, double c) {
+			return StaticQSizeF().op_div(lhs,c);
+		}
+		public static bool operator==(QSizeF s1, QSizeF s2) {
+			return StaticQSizeF().op_equals(s1,s2);
+		}
+		public static bool operator!=(QSizeF s1, QSizeF s2) {
+			return !StaticQSizeF().op_equals(s1,s2);
 		}
 		public static QSizeF operator+(QSizeF s1, QSizeF s2) {
 			return StaticQSizeF().op_plus(s1,s2);

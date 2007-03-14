@@ -82,12 +82,6 @@ namespace Qyoto {
 		private void NewQRegExp(QRegExp rx) {
 			ProxyQRegExp().NewQRegExp(rx);
 		}
-		public static bool operator==(QRegExp lhs, QRegExp rx) {
-			return StaticQRegExp().op_equals(lhs,rx);
-		}
-		public static bool operator!=(QRegExp lhs, QRegExp rx) {
-			return !StaticQRegExp().op_equals(lhs,rx);
-		}
 		public override bool Equals(object o) {
 			if (!(o is QRegExp)) { return false; }
 			return this == (QRegExp) o;
@@ -195,9 +189,6 @@ namespace Qyoto {
 		public string ErrorString() {
 			return ProxyQRegExp().ErrorString();
 		}
-		public static string Escape(string str) {
-			return StaticQRegExp().Escape(str);
-		}
 		~QRegExp() {
 			DisposeQRegExp();
 		}
@@ -207,6 +198,15 @@ namespace Qyoto {
 		[SmokeMethod("~QRegExp", "()", "")]
 		private void DisposeQRegExp() {
 			ProxyQRegExp().DisposeQRegExp();
+		}
+		public static bool operator==(QRegExp lhs, QRegExp rx) {
+			return StaticQRegExp().op_equals(lhs,rx);
+		}
+		public static bool operator!=(QRegExp lhs, QRegExp rx) {
+			return !StaticQRegExp().op_equals(lhs,rx);
+		}
+		public static string Escape(string str) {
+			return StaticQRegExp().Escape(str);
 		}
 	}
 }

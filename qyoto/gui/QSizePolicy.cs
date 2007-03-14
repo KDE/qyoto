@@ -43,6 +43,7 @@ namespace Qyoto {
 			Expanding = PolicyFlag.GrowFlag|PolicyFlag.ShrinkFlag|PolicyFlag.ExpandFlag,
 			Ignored = PolicyFlag.ShrinkFlag|PolicyFlag.GrowFlag|PolicyFlag.IgnoreFlag,
 		}
+		//  operator QVariant(); >>>> NOT CONVERTED
 		public QSizePolicy() : this((Type) null) {
 			CreateProxy();
 			NewQSizePolicy();
@@ -87,12 +88,6 @@ namespace Qyoto {
 		public bool HasHeightForWidth() {
 			return ProxyQSizePolicy().HasHeightForWidth();
 		}
-		public static bool operator==(QSizePolicy lhs, QSizePolicy s) {
-			return StaticQSizePolicy().op_equals(lhs,s);
-		}
-		public static bool operator!=(QSizePolicy lhs, QSizePolicy s) {
-			return !StaticQSizePolicy().op_equals(lhs,s);
-		}
 		public override bool Equals(object o) {
 			if (!(o is QSizePolicy)) { return false; }
 			return this == (QSizePolicy) o;
@@ -100,7 +95,6 @@ namespace Qyoto {
 		public override int GetHashCode() {
 			return ProxyQSizePolicy().GetHashCode();
 		}
-		//  operator QVariant(); >>>> NOT CONVERTED
 		[SmokeMethod("horizontalStretch", "() const", "")]
 		public int HorizontalStretch() {
 			return ProxyQSizePolicy().HorizontalStretch();
@@ -130,6 +124,12 @@ namespace Qyoto {
 		[SmokeMethod("~QSizePolicy", "()", "")]
 		private void DisposeQSizePolicy() {
 			ProxyQSizePolicy().DisposeQSizePolicy();
+		}
+		public static bool operator==(QSizePolicy lhs, QSizePolicy s) {
+			return StaticQSizePolicy().op_equals(lhs,s);
+		}
+		public static bool operator!=(QSizePolicy lhs, QSizePolicy s) {
+			return !StaticQSizePolicy().op_equals(lhs,s);
 		}
 	}
 }

@@ -6,23 +6,12 @@ namespace Qyoto {
 	[SmokeClass("QStyleOptionSizeGrip")]
 	public class QStyleOptionSizeGrip : QStyleOptionComplex, IDisposable {
  		protected QStyleOptionSizeGrip(Type dummy) : base((Type) null) {}
-		[SmokeClass("QStyleOptionSizeGrip")]
-		interface IQStyleOptionSizeGripProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionSizeGrip), this);
 			_interceptor = (QStyleOptionSizeGrip) realProxy.GetTransparentProxy();
 		}
 		private QStyleOptionSizeGrip ProxyQStyleOptionSizeGrip() {
 			return (QStyleOptionSizeGrip) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QStyleOptionSizeGrip() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQStyleOptionSizeGripProxy), null);
-			_staticInterceptor = (IQStyleOptionSizeGripProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQStyleOptionSizeGripProxy StaticQStyleOptionSizeGrip() {
-			return (IQStyleOptionSizeGripProxy) _staticInterceptor;
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_SizeGrip,

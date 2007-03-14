@@ -6,23 +6,12 @@ namespace Qyoto {
 	[SmokeClass("QContextMenuEvent")]
 	public class QContextMenuEvent : QInputEvent, IDisposable {
  		protected QContextMenuEvent(Type dummy) : base((Type) null) {}
-		[SmokeClass("QContextMenuEvent")]
-		interface IQContextMenuEventProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QContextMenuEvent), this);
 			_interceptor = (QContextMenuEvent) realProxy.GetTransparentProxy();
 		}
 		private QContextMenuEvent ProxyQContextMenuEvent() {
 			return (QContextMenuEvent) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QContextMenuEvent() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQContextMenuEventProxy), null);
-			_staticInterceptor = (IQContextMenuEventProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQContextMenuEventProxy StaticQContextMenuEvent() {
-			return (IQContextMenuEventProxy) _staticInterceptor;
 		}
 		public enum Reason {
 			Mouse = 0,

@@ -6,23 +6,12 @@ namespace Qyoto {
 	[SmokeClass("QStyleOptionGroupBox")]
 	public class QStyleOptionGroupBox : QStyleOptionComplex, IDisposable {
  		protected QStyleOptionGroupBox(Type dummy) : base((Type) null) {}
-		[SmokeClass("QStyleOptionGroupBox")]
-		interface IQStyleOptionGroupBoxProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionGroupBox), this);
 			_interceptor = (QStyleOptionGroupBox) realProxy.GetTransparentProxy();
 		}
 		private QStyleOptionGroupBox ProxyQStyleOptionGroupBox() {
 			return (QStyleOptionGroupBox) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QStyleOptionGroupBox() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQStyleOptionGroupBoxProxy), null);
-			_staticInterceptor = (IQStyleOptionGroupBoxProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQStyleOptionGroupBoxProxy StaticQStyleOptionGroupBox() {
-			return (IQStyleOptionGroupBoxProxy) _staticInterceptor;
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_GroupBox,

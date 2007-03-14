@@ -6,23 +6,12 @@ namespace Qyoto {
 	[SmokeClass("QHttpResponseHeader")]
 	public class QHttpResponseHeader : QHttpHeader, IDisposable {
  		protected QHttpResponseHeader(Type dummy) : base((Type) null) {}
-		[SmokeClass("QHttpResponseHeader")]
-		interface IQHttpResponseHeaderProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QHttpResponseHeader), this);
 			_interceptor = (QHttpResponseHeader) realProxy.GetTransparentProxy();
 		}
 		private QHttpResponseHeader ProxyQHttpResponseHeader() {
 			return (QHttpResponseHeader) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QHttpResponseHeader() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQHttpResponseHeaderProxy), null);
-			_staticInterceptor = (IQHttpResponseHeaderProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQHttpResponseHeaderProxy StaticQHttpResponseHeader() {
-			return (IQHttpResponseHeaderProxy) _staticInterceptor;
 		}
 		public QHttpResponseHeader() : this((Type) null) {
 			CreateProxy();

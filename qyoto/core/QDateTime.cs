@@ -178,18 +178,28 @@ namespace Qyoto {
 		public int SecsTo(QDateTime arg1) {
 			return ProxyQDateTime().SecsTo(arg1);
 		}
-		public static bool operator==(QDateTime lhs, QDateTime other) {
-			return StaticQDateTime().op_equals(lhs,other);
-		}
-		public static bool operator!=(QDateTime lhs, QDateTime other) {
-			return !StaticQDateTime().op_equals(lhs,other);
-		}
 		public override bool Equals(object o) {
 			if (!(o is QDateTime)) { return false; }
 			return this == (QDateTime) o;
 		}
 		public override int GetHashCode() {
 			return ProxyQDateTime().GetHashCode();
+		}
+		~QDateTime() {
+			DisposeQDateTime();
+		}
+		public void Dispose() {
+			DisposeQDateTime();
+		}
+		[SmokeMethod("~QDateTime", "()", "")]
+		private void DisposeQDateTime() {
+			ProxyQDateTime().DisposeQDateTime();
+		}
+		public static bool operator==(QDateTime lhs, QDateTime other) {
+			return StaticQDateTime().op_equals(lhs,other);
+		}
+		public static bool operator!=(QDateTime lhs, QDateTime other) {
+			return !StaticQDateTime().op_equals(lhs,other);
 		}
 		public static bool operator<(QDateTime lhs, QDateTime other) {
 			return StaticQDateTime().op_lt(lhs,other);
@@ -217,16 +227,6 @@ namespace Qyoto {
 		}
 		public static QDateTime FromTime_t(uint secsSince1Jan1970UTC) {
 			return StaticQDateTime().FromTime_t(secsSince1Jan1970UTC);
-		}
-		~QDateTime() {
-			DisposeQDateTime();
-		}
-		public void Dispose() {
-			DisposeQDateTime();
-		}
-		[SmokeMethod("~QDateTime", "()", "")]
-		private void DisposeQDateTime() {
-			ProxyQDateTime().DisposeQDateTime();
 		}
 	}
 }

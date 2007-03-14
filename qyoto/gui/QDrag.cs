@@ -81,12 +81,6 @@ namespace Qyoto {
 		public void SetDragCursor(QPixmap cursor, Qt.DropAction action) {
 			ProxyQDrag().SetDragCursor(cursor,action);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQDrag().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQDrag().Tr(s);
-		}
 		~QDrag() {
 			DisposeQDrag();
 		}
@@ -96,6 +90,12 @@ namespace Qyoto {
 		[SmokeMethod("~QDrag", "()", "")]
 		private void DisposeQDrag() {
 			ProxyQDrag().DisposeQDrag();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQDrag().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQDrag().Tr(s);
 		}
 		protected new IQDragSignals Emit {
 			get { return (IQDragSignals) Q_EMIT; }

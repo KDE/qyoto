@@ -8,23 +8,12 @@ namespace Qyoto {
 		protected Object _interceptor = null;
 		private IntPtr _smokeObject;
 		protected QTextObjectInterface(Type dummy) {}
-		[SmokeClass("QTextObjectInterface")]
-		interface IQTextObjectInterfaceProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextObjectInterface), this);
 			_interceptor = (QTextObjectInterface) realProxy.GetTransparentProxy();
 		}
 		private QTextObjectInterface ProxyQTextObjectInterface() {
 			return (QTextObjectInterface) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QTextObjectInterface() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTextObjectInterfaceProxy), null);
-			_staticInterceptor = (IQTextObjectInterfaceProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQTextObjectInterfaceProxy StaticQTextObjectInterface() {
-			return (IQTextObjectInterfaceProxy) _staticInterceptor;
 		}
 		public abstract QSizeF IntrinsicSize(QTextDocument doc, int posInDocument, QTextFormat format);
 		public abstract void DrawObject(QPainter painter, QRectF rect, QTextDocument doc, int posInDocument, QTextFormat format);
@@ -35,16 +24,6 @@ namespace Qyoto {
 		[SmokeMethod("QTextObjectInterface", "()", "")]
 		private void NewQTextObjectInterface() {
 			ProxyQTextObjectInterface().NewQTextObjectInterface();
-		}
-		~QTextObjectInterface() {
-			DisposeQTextObjectInterface();
-		}
-		public void Dispose() {
-			DisposeQTextObjectInterface();
-		}
-		[SmokeMethod("~QTextObjectInterface", "()", "")]
-		private void DisposeQTextObjectInterface() {
-			ProxyQTextObjectInterface().DisposeQTextObjectInterface();
 		}
 	}
 }

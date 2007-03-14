@@ -76,12 +76,6 @@ namespace Qyoto {
 		public QTextListFormat Format() {
 			return ProxyQTextList().Format();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQTextList().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQTextList().Tr(s);
-		}
 		~QTextList() {
 			DisposeQTextList();
 		}
@@ -91,6 +85,12 @@ namespace Qyoto {
 		[SmokeMethod("~QTextList", "()", "")]
 		private void DisposeQTextList() {
 			ProxyQTextList().DisposeQTextList();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQTextList().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQTextList().Tr(s);
 		}
 		protected new IQTextListSignals Emit {
 			get { return (IQTextListSignals) Q_EMIT; }

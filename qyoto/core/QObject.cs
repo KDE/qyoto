@@ -68,6 +68,10 @@ namespace Qyoto {
 			get { return Property("objectName").Value<string>(); }
 			set { SetProperty("objectName", QVariant.FromValue<string>(value)); }
 		}
+		// QThread* thread(); >>>> NOT CONVERTED
+		// void moveToThread(QThread* arg1); >>>> NOT CONVERTED
+		// void setUserData(uint arg1,QObjectUserData* arg2); >>>> NOT CONVERTED
+		// QObjectUserData* userData(uint arg1); >>>> NOT CONVERTED
 		public QObject(QObject parent) : this((Type) null) {
 			CreateProxy();
 			NewQObject(parent);
@@ -104,8 +108,6 @@ namespace Qyoto {
 		public bool BlockSignals(bool b) {
 			return ProxyQObject().BlockSignals(b);
 		}
-		// QThread* thread(); >>>> NOT CONVERTED
-		// void moveToThread(QThread* arg1); >>>> NOT CONVERTED
 		[SmokeMethod("startTimer", "(int)", "$")]
 		public int StartTimer(int interval) {
 			return ProxyQObject().StartTimer(interval);
@@ -182,8 +184,6 @@ namespace Qyoto {
 		public List<QByteArray> DynamicPropertyNames() {
 			return ProxyQObject().DynamicPropertyNames();
 		}
-		// void setUserData(uint arg1,QObjectUserData* arg2); >>>> NOT CONVERTED
-		// QObjectUserData* userData(uint arg1); >>>> NOT CONVERTED
 		[SmokeMethod("parent", "() const", "")]
 		public QObject Parent() {
 			return ProxyQObject().Parent();
@@ -196,24 +196,6 @@ namespace Qyoto {
 		[SmokeMethod("deleteLater", "()", "")]
 		public void DeleteLater() {
 			ProxyQObject().DeleteLater();
-		}
-		public static string Tr(string s, string c) {
-			return StaticQObject().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQObject().Tr(s);
-		}
-		public static bool Connect(QObject sender, string signal, QObject receiver, string member, Qt.ConnectionType arg5) {
-			return StaticQObject().Connect(sender,signal,receiver,member,arg5);
-		}
-		public static bool Connect(QObject sender, string signal, QObject receiver, string member) {
-			return StaticQObject().Connect(sender,signal,receiver,member);
-		}
-		public static bool Disconnect(QObject sender, string signal, QObject receiver, string member) {
-			return StaticQObject().Disconnect(sender,signal,receiver,member);
-		}
-		public static uint RegisterUserData() {
-			return StaticQObject().RegisterUserData();
 		}
 		[SmokeMethod("sender", "() const", "")]
 		protected QObject Sender() {
@@ -252,6 +234,24 @@ namespace Qyoto {
 		[SmokeMethod("~QObject", "()", "")]
 		private void DisposeQObject() {
 			ProxyQObject().DisposeQObject();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQObject().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQObject().Tr(s);
+		}
+		public static bool Connect(QObject sender, string signal, QObject receiver, string member, Qt.ConnectionType arg5) {
+			return StaticQObject().Connect(sender,signal,receiver,member,arg5);
+		}
+		public static bool Connect(QObject sender, string signal, QObject receiver, string member) {
+			return StaticQObject().Connect(sender,signal,receiver,member);
+		}
+		public static bool Disconnect(QObject sender, string signal, QObject receiver, string member) {
+			return StaticQObject().Disconnect(sender,signal,receiver,member);
+		}
+		public static uint RegisterUserData() {
+			return StaticQObject().RegisterUserData();
 		}
 		protected new IQObjectSignals Emit {
 			get { return (IQObjectSignals) Q_EMIT; }

@@ -6,23 +6,12 @@ namespace Qyoto {
 	[SmokeClass("QStyleOptionProgressBar")]
 	public class QStyleOptionProgressBar : QStyleOption, IDisposable {
  		protected QStyleOptionProgressBar(Type dummy) : base((Type) null) {}
-		[SmokeClass("QStyleOptionProgressBar")]
-		interface IQStyleOptionProgressBarProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionProgressBar), this);
 			_interceptor = (QStyleOptionProgressBar) realProxy.GetTransparentProxy();
 		}
 		private QStyleOptionProgressBar ProxyQStyleOptionProgressBar() {
 			return (QStyleOptionProgressBar) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QStyleOptionProgressBar() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQStyleOptionProgressBarProxy), null);
-			_staticInterceptor = (IQStyleOptionProgressBarProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQStyleOptionProgressBarProxy StaticQStyleOptionProgressBar() {
-			return (IQStyleOptionProgressBarProxy) _staticInterceptor;
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_ProgressBar,

@@ -188,12 +188,6 @@ namespace Qyoto {
 		public int LineWidth() {
 			return ProxyQFontMetrics().LineWidth();
 		}
-		public static bool operator==(QFontMetrics lhs, QFontMetrics other) {
-			return StaticQFontMetrics().op_equals(lhs,other);
-		}
-		public static bool operator!=(QFontMetrics lhs, QFontMetrics other) {
-			return !StaticQFontMetrics().op_equals(lhs,other);
-		}
 		public override bool Equals(object o) {
 			if (!(o is QFontMetrics)) { return false; }
 			return this == (QFontMetrics) o;
@@ -210,6 +204,12 @@ namespace Qyoto {
 		[SmokeMethod("~QFontMetrics", "()", "")]
 		private void DisposeQFontMetrics() {
 			ProxyQFontMetrics().DisposeQFontMetrics();
+		}
+		public static bool operator==(QFontMetrics lhs, QFontMetrics other) {
+			return StaticQFontMetrics().op_equals(lhs,other);
+		}
+		public static bool operator!=(QFontMetrics lhs, QFontMetrics other) {
+			return !StaticQFontMetrics().op_equals(lhs,other);
 		}
 	}
 }

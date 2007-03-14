@@ -172,12 +172,6 @@ namespace Qyoto {
 		public override void SetRootIndex(QModelIndex index) {
 			ProxyQListView().SetRootIndex(index);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQListView().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQListView().Tr(s);
-		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent e) {
 			return ProxyQListView().Event(e);
@@ -303,6 +297,12 @@ namespace Qyoto {
 		[SmokeMethod("~QListView", "()", "")]
 		private void DisposeQListView() {
 			ProxyQListView().DisposeQListView();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQListView().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQListView().Tr(s);
 		}
 		protected new IQListViewSignals Emit {
 			get { return (IQListViewSignals) Q_EMIT; }

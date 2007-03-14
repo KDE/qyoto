@@ -328,12 +328,6 @@ namespace Qyoto {
 		public void SetEditText(string text) {
 			ProxyQComboBox().SetEditText(text);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQComboBox().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQComboBox().Tr(s);
-		}
 		[SmokeMethod("focusInEvent", "(QFocusEvent*)", "#")]
 		protected override void FocusInEvent(QFocusEvent e) {
 			ProxyQComboBox().FocusInEvent(e);
@@ -403,6 +397,12 @@ namespace Qyoto {
 		[SmokeMethod("~QComboBox", "()", "")]
 		private void DisposeQComboBox() {
 			ProxyQComboBox().DisposeQComboBox();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQComboBox().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQComboBox().Tr(s);
 		}
 		protected new IQComboBoxSignals Emit {
 			get { return (IQComboBoxSignals) Q_EMIT; }

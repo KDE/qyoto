@@ -93,12 +93,6 @@ namespace Qyoto {
 		public void Quit() {
 			ProxyQEventLoop().Quit();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQEventLoop().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQEventLoop().Tr(s);
-		}
 		~QEventLoop() {
 			DisposeQEventLoop();
 		}
@@ -108,6 +102,12 @@ namespace Qyoto {
 		[SmokeMethod("~QEventLoop", "()", "")]
 		private void DisposeQEventLoop() {
 			ProxyQEventLoop().DisposeQEventLoop();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQEventLoop().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQEventLoop().Tr(s);
 		}
 		protected new IQEventLoopSignals Emit {
 			get { return (IQEventLoopSignals) Q_EMIT; }

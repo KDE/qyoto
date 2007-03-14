@@ -15,23 +15,12 @@ namespace Qyoto {
 		protected Object _interceptor = null;
 		private IntPtr _smokeObject;
 		protected QXmlDeclHandler(Type dummy) {}
-		[SmokeClass("QXmlDeclHandler")]
-		interface IQXmlDeclHandlerProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlDeclHandler), this);
 			_interceptor = (QXmlDeclHandler) realProxy.GetTransparentProxy();
 		}
 		private QXmlDeclHandler ProxyQXmlDeclHandler() {
 			return (QXmlDeclHandler) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QXmlDeclHandler() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQXmlDeclHandlerProxy), null);
-			_staticInterceptor = (IQXmlDeclHandlerProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQXmlDeclHandlerProxy StaticQXmlDeclHandler() {
-			return (IQXmlDeclHandlerProxy) _staticInterceptor;
 		}
 		public abstract bool AttributeDecl(string eName, string aName, string type, string valueDefault, string value);
 		public abstract bool InternalEntityDecl(string name, string value);
@@ -44,16 +33,6 @@ namespace Qyoto {
 		[SmokeMethod("QXmlDeclHandler", "()", "")]
 		private void NewQXmlDeclHandler() {
 			ProxyQXmlDeclHandler().NewQXmlDeclHandler();
-		}
-		~QXmlDeclHandler() {
-			DisposeQXmlDeclHandler();
-		}
-		public void Dispose() {
-			DisposeQXmlDeclHandler();
-		}
-		[SmokeMethod("~QXmlDeclHandler", "()", "")]
-		private void DisposeQXmlDeclHandler() {
-			ProxyQXmlDeclHandler().DisposeQXmlDeclHandler();
 		}
 	}
 }

@@ -47,12 +47,6 @@ namespace Qyoto {
 		public virtual void Fixup(StringBuilder arg1) {
 			ProxyQValidator().Fixup(arg1);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQValidator().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQValidator().Tr(s);
-		}
 		~QValidator() {
 			DisposeQValidator();
 		}
@@ -62,6 +56,12 @@ namespace Qyoto {
 		[SmokeMethod("~QValidator", "()", "")]
 		private void DisposeQValidator() {
 			ProxyQValidator().DisposeQValidator();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQValidator().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQValidator().Tr(s);
 		}
 		protected new IQValidatorSignals Emit {
 			get { return (IQValidatorSignals) Q_EMIT; }

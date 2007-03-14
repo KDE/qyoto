@@ -37,6 +37,7 @@ namespace Qyoto {
 		public static QGLContext CurrentCtx() {
 			return StaticQGLContext().currentCtx();
 		}
+		// void* getProcAddress(const QString& arg1); >>>> NOT CONVERTED
 		public QGLContext(QGLFormat format, IQPaintDevice device) : this((Type) null) {
 			CreateProxy();
 			NewQGLContext(format,device);
@@ -129,7 +130,6 @@ namespace Qyoto {
 		public void DeleteTexture(uint tx_id) {
 			ProxyQGLContext().DeleteTexture(tx_id);
 		}
-		// void* getProcAddress(const QString& arg1); >>>> NOT CONVERTED
 		[SmokeMethod("device", "() const", "")]
 		public IQPaintDevice Device() {
 			return ProxyQGLContext().Device();
@@ -137,15 +137,6 @@ namespace Qyoto {
 		[SmokeMethod("overlayTransparentColor", "() const", "")]
 		public QColor OverlayTransparentColor() {
 			return ProxyQGLContext().OverlayTransparentColor();
-		}
-		public static void SetTextureCacheLimit(int size) {
-			StaticQGLContext().SetTextureCacheLimit(size);
-		}
-		public static int TextureCacheLimit() {
-			return StaticQGLContext().TextureCacheLimit();
-		}
-		public static QGLContext CurrentContext() {
-			return StaticQGLContext().CurrentContext();
 		}
 		[SmokeMethod("chooseContext", "(const QGLContext*)", "#")]
 		protected virtual bool ChooseContext(QGLContext shareContext) {
@@ -200,6 +191,15 @@ namespace Qyoto {
 		[SmokeMethod("~QGLContext", "()", "")]
 		private void DisposeQGLContext() {
 			ProxyQGLContext().DisposeQGLContext();
+		}
+		public static void SetTextureCacheLimit(int size) {
+			StaticQGLContext().SetTextureCacheLimit(size);
+		}
+		public static int TextureCacheLimit() {
+			return StaticQGLContext().TextureCacheLimit();
+		}
+		public static QGLContext CurrentContext() {
+			return StaticQGLContext().CurrentContext();
 		}
 	}
 }

@@ -148,12 +148,6 @@ namespace Qyoto {
 		public bool CanFetchMore() {
 			return ProxyQSqlQueryModel().CanFetchMore();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQSqlQueryModel().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQSqlQueryModel().Tr(s);
-		}
 		[SmokeMethod("queryChange", "()", "")]
 		protected virtual void QueryChange() {
 			ProxyQSqlQueryModel().QueryChange();
@@ -175,6 +169,12 @@ namespace Qyoto {
 		[SmokeMethod("~QSqlQueryModel", "()", "")]
 		private void DisposeQSqlQueryModel() {
 			ProxyQSqlQueryModel().DisposeQSqlQueryModel();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQSqlQueryModel().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQSqlQueryModel().Tr(s);
 		}
 		protected new IQSqlQueryModelSignals Emit {
 			get { return (IQSqlQueryModelSignals) Q_EMIT; }

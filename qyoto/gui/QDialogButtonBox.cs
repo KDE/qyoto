@@ -179,12 +179,6 @@ namespace Qyoto {
 		public QPushButton Button(QDialogButtonBox.StandardButton which) {
 			return ProxyQDialogButtonBox().Button(which);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQDialogButtonBox().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQDialogButtonBox().Tr(s);
-		}
 		[SmokeMethod("changeEvent", "(QEvent*)", "#")]
 		protected override void ChangeEvent(QEvent arg1) {
 			ProxyQDialogButtonBox().ChangeEvent(arg1);
@@ -202,6 +196,12 @@ namespace Qyoto {
 		[SmokeMethod("~QDialogButtonBox", "()", "")]
 		private void DisposeQDialogButtonBox() {
 			ProxyQDialogButtonBox().DisposeQDialogButtonBox();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQDialogButtonBox().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQDialogButtonBox().Tr(s);
 		}
 		protected new IQDialogButtonBoxSignals Emit {
 			get { return (IQDialogButtonBoxSignals) Q_EMIT; }

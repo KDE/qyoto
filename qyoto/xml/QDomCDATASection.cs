@@ -6,23 +6,12 @@ namespace Qyoto {
 	[SmokeClass("QDomCDATASection")]
 	public class QDomCDATASection : QDomText, IDisposable {
  		protected QDomCDATASection(Type dummy) : base((Type) null) {}
-		[SmokeClass("QDomCDATASection")]
-		interface IQDomCDATASectionProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomCDATASection), this);
 			_interceptor = (QDomCDATASection) realProxy.GetTransparentProxy();
 		}
 		private QDomCDATASection ProxyQDomCDATASection() {
 			return (QDomCDATASection) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QDomCDATASection() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQDomCDATASectionProxy), null);
-			_staticInterceptor = (IQDomCDATASectionProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQDomCDATASectionProxy StaticQDomCDATASection() {
-			return (IQDomCDATASectionProxy) _staticInterceptor;
 		}
 		public QDomCDATASection() : this((Type) null) {
 			CreateProxy();

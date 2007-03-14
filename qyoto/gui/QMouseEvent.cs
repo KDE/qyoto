@@ -6,23 +6,12 @@ namespace Qyoto {
 	[SmokeClass("QMouseEvent")]
 	public class QMouseEvent : QInputEvent, IDisposable {
  		protected QMouseEvent(Type dummy) : base((Type) null) {}
-		[SmokeClass("QMouseEvent")]
-		interface IQMouseEventProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMouseEvent), this);
 			_interceptor = (QMouseEvent) realProxy.GetTransparentProxy();
 		}
 		private QMouseEvent ProxyQMouseEvent() {
 			return (QMouseEvent) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QMouseEvent() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQMouseEventProxy), null);
-			_staticInterceptor = (IQMouseEventProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQMouseEventProxy StaticQMouseEvent() {
-			return (IQMouseEventProxy) _staticInterceptor;
 		}
 		public QMouseEvent(QEvent.TypeOf type, QPoint pos, Qt.MouseButton button, int buttons, int modifiers) : this((Type) null) {
 			CreateProxy();

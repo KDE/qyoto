@@ -6,23 +6,12 @@ namespace Qyoto {
 	[SmokeClass("QConicalGradient")]
 	public class QConicalGradient : QGradient, IDisposable {
  		protected QConicalGradient(Type dummy) : base((Type) null) {}
-		[SmokeClass("QConicalGradient")]
-		interface IQConicalGradientProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QConicalGradient), this);
 			_interceptor = (QConicalGradient) realProxy.GetTransparentProxy();
 		}
 		private QConicalGradient ProxyQConicalGradient() {
 			return (QConicalGradient) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QConicalGradient() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQConicalGradientProxy), null);
-			_staticInterceptor = (IQConicalGradientProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQConicalGradientProxy StaticQConicalGradient() {
-			return (IQConicalGradientProxy) _staticInterceptor;
 		}
 		public QConicalGradient() : this((Type) null) {
 			CreateProxy();

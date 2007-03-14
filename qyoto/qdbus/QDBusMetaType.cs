@@ -30,6 +30,9 @@ namespace Qyoto {
 		private static IQDBusMetaTypeProxy StaticQDBusMetaType() {
 			return (IQDBusMetaTypeProxy) _staticInterceptor;
 		}
+		// void registerMarshallOperators(int arg1,MarshallFunction arg2,DemarshallFunction arg3); >>>> NOT CONVERTED
+		// bool marshall(QDBusArgument& arg1,int arg2,const void* arg3); >>>> NOT CONVERTED
+		// bool demarshall(const QDBusArgument& arg1,int arg2,void* arg3); >>>> NOT CONVERTED
 		public QDBusMetaType() : this((Type) null) {
 			CreateProxy();
 			NewQDBusMetaType();
@@ -37,15 +40,6 @@ namespace Qyoto {
 		[SmokeMethod("QDBusMetaType", "()", "")]
 		private void NewQDBusMetaType() {
 			ProxyQDBusMetaType().NewQDBusMetaType();
-		}
-		// void registerMarshallOperators(int arg1,MarshallFunction arg2,DemarshallFunction arg3); >>>> NOT CONVERTED
-		// bool marshall(QDBusArgument& arg1,int arg2,const void* arg3); >>>> NOT CONVERTED
-		// bool demarshall(const QDBusArgument& arg1,int arg2,void* arg3); >>>> NOT CONVERTED
-		public static int SignatureToType(string signature) {
-			return StaticQDBusMetaType().SignatureToType(signature);
-		}
-		public static string TypeToSignature(int type) {
-			return StaticQDBusMetaType().TypeToSignature(type);
 		}
 		~QDBusMetaType() {
 			DisposeQDBusMetaType();
@@ -56,6 +50,12 @@ namespace Qyoto {
 		[SmokeMethod("~QDBusMetaType", "()", "")]
 		private void DisposeQDBusMetaType() {
 			ProxyQDBusMetaType().DisposeQDBusMetaType();
+		}
+		public static int SignatureToType(string signature) {
+			return StaticQDBusMetaType().SignatureToType(signature);
+		}
+		public static string TypeToSignature(int type) {
+			return StaticQDBusMetaType().TypeToSignature(type);
 		}
 	}
 }

@@ -82,12 +82,6 @@ namespace Qyoto {
 		public void SetCheckState(Qt.CheckState state) {
 			ProxyQCheckBox().SetCheckState(state);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQCheckBox().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQCheckBox().Tr(s);
-		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent e) {
 			return ProxyQCheckBox().Event(e);
@@ -121,6 +115,12 @@ namespace Qyoto {
 		[SmokeMethod("~QCheckBox", "()", "")]
 		private void DisposeQCheckBox() {
 			ProxyQCheckBox().DisposeQCheckBox();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQCheckBox().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQCheckBox().Tr(s);
 		}
 		protected new IQCheckBoxSignals Emit {
 			get { return (IQCheckBoxSignals) Q_EMIT; }

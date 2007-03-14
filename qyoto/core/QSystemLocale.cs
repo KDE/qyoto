@@ -8,23 +8,12 @@ namespace Qyoto {
 		protected Object _interceptor = null;
 		private IntPtr _smokeObject;
 		protected QSystemLocale(Type dummy) {}
-		[SmokeClass("QSystemLocale")]
-		interface IQSystemLocaleProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSystemLocale), this);
 			_interceptor = (QSystemLocale) realProxy.GetTransparentProxy();
 		}
 		private QSystemLocale ProxyQSystemLocale() {
 			return (QSystemLocale) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QSystemLocale() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQSystemLocaleProxy), null);
-			_staticInterceptor = (IQSystemLocaleProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQSystemLocaleProxy StaticQSystemLocale() {
-			return (IQSystemLocaleProxy) _staticInterceptor;
 		}
 		public enum QueryType {
 			LanguageId = 0,

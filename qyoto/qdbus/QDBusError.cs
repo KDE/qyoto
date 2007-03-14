@@ -8,23 +8,12 @@ namespace Qyoto {
 		protected Object _interceptor = null;
 		private IntPtr _smokeObject;
 		protected QDBusError(Type dummy) {}
-		[SmokeClass("QDBusError")]
-		interface IQDBusErrorProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDBusError), this);
 			_interceptor = (QDBusError) realProxy.GetTransparentProxy();
 		}
 		private QDBusError ProxyQDBusError() {
 			return (QDBusError) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QDBusError() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQDBusErrorProxy), null);
-			_staticInterceptor = (IQDBusErrorProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQDBusErrorProxy StaticQDBusError() {
-			return (IQDBusErrorProxy) _staticInterceptor;
 		}
 		public enum ErrorType {
 			NoError = 0,

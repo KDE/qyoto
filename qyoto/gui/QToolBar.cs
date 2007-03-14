@@ -154,12 +154,6 @@ namespace Qyoto {
 		public QWidget WidgetForAction(QAction action) {
 			return ProxyQToolBar().WidgetForAction(action);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQToolBar().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQToolBar().Tr(s);
-		}
 		[SmokeMethod("actionEvent", "(QActionEvent*)", "#")]
 		protected override void ActionEvent(QActionEvent arg1) {
 			ProxyQToolBar().ActionEvent(arg1);
@@ -193,6 +187,12 @@ namespace Qyoto {
 		[SmokeMethod("~QToolBar", "()", "")]
 		private void DisposeQToolBar() {
 			ProxyQToolBar().DisposeQToolBar();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQToolBar().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQToolBar().Tr(s);
 		}
 		protected new IQToolBarSignals Emit {
 			get { return (IQToolBarSignals) Q_EMIT; }

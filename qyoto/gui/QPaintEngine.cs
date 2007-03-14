@@ -8,23 +8,12 @@ namespace Qyoto {
 		protected Object _interceptor = null;
 		private IntPtr _smokeObject;
 		protected QPaintEngine(Type dummy) {}
-		[SmokeClass("QPaintEngine")]
-		interface IQPaintEngineProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPaintEngine), this);
 			_interceptor = (QPaintEngine) realProxy.GetTransparentProxy();
 		}
 		private QPaintEngine ProxyQPaintEngine() {
 			return (QPaintEngine) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QPaintEngine() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQPaintEngineProxy), null);
-			_staticInterceptor = (IQPaintEngineProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQPaintEngineProxy StaticQPaintEngine() {
-			return (IQPaintEngineProxy) _staticInterceptor;
 		}
 		public enum PaintEngineFeature : uint {
 			PrimitiveTransform = 0x00000001,
@@ -221,16 +210,6 @@ namespace Qyoto {
 		[SmokeMethod("syncState", "()", "")]
 		public void SyncState() {
 			ProxyQPaintEngine().SyncState();
-		}
-		~QPaintEngine() {
-			DisposeQPaintEngine();
-		}
-		public void Dispose() {
-			DisposeQPaintEngine();
-		}
-		[SmokeMethod("~QPaintEngine", "()", "")]
-		private void DisposeQPaintEngine() {
-			ProxyQPaintEngine().DisposeQPaintEngine();
 		}
 	}
 }

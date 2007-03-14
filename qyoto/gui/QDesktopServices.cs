@@ -40,15 +40,6 @@ namespace Qyoto {
 		private void NewQDesktopServices() {
 			ProxyQDesktopServices().NewQDesktopServices();
 		}
-		public static bool OpenUrl(IQUrl url) {
-			return StaticQDesktopServices().OpenUrl(url);
-		}
-		public static void SetUrlHandler(string scheme, QObject receiver, string method) {
-			StaticQDesktopServices().SetUrlHandler(scheme,receiver,method);
-		}
-		public static void UnsetUrlHandler(string scheme) {
-			StaticQDesktopServices().UnsetUrlHandler(scheme);
-		}
 		~QDesktopServices() {
 			DisposeQDesktopServices();
 		}
@@ -58,6 +49,15 @@ namespace Qyoto {
 		[SmokeMethod("~QDesktopServices", "()", "")]
 		private void DisposeQDesktopServices() {
 			ProxyQDesktopServices().DisposeQDesktopServices();
+		}
+		public static bool OpenUrl(IQUrl url) {
+			return StaticQDesktopServices().OpenUrl(url);
+		}
+		public static void SetUrlHandler(string scheme, QObject receiver, string method) {
+			StaticQDesktopServices().SetUrlHandler(scheme,receiver,method);
+		}
+		public static void UnsetUrlHandler(string scheme) {
+			StaticQDesktopServices().UnsetUrlHandler(scheme);
 		}
 	}
 }

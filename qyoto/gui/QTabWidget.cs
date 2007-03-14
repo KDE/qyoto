@@ -190,12 +190,6 @@ namespace Qyoto {
 		public void SetCurrentWidget(QWidget widget) {
 			ProxyQTabWidget().SetCurrentWidget(widget);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQTabWidget().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQTabWidget().Tr(s);
-		}
 		[SmokeMethod("tabInserted", "(int)", "$")]
 		protected virtual void TabInserted(int index) {
 			ProxyQTabWidget().TabInserted(index);
@@ -245,6 +239,12 @@ namespace Qyoto {
 		[SmokeMethod("~QTabWidget", "()", "")]
 		private void DisposeQTabWidget() {
 			ProxyQTabWidget().DisposeQTabWidget();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQTabWidget().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQTabWidget().Tr(s);
 		}
 		protected new IQTabWidgetSignals Emit {
 			get { return (IQTabWidgetSignals) Q_EMIT; }

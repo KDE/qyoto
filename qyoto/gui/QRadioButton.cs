@@ -64,12 +64,6 @@ namespace Qyoto {
 		public override QSize SizeHint() {
 			return ProxyQRadioButton().SizeHint();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQRadioButton().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQRadioButton().Tr(s);
-		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent e) {
 			return ProxyQRadioButton().Event(e);
@@ -95,6 +89,12 @@ namespace Qyoto {
 		[SmokeMethod("~QRadioButton", "()", "")]
 		private void DisposeQRadioButton() {
 			ProxyQRadioButton().DisposeQRadioButton();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQRadioButton().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQRadioButton().Tr(s);
 		}
 		protected new IQRadioButtonSignals Emit {
 			get { return (IQRadioButtonSignals) Q_EMIT; }

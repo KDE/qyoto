@@ -8,23 +8,12 @@ namespace Qyoto {
 		protected Object _interceptor = null;
 		private IntPtr _smokeObject;
 		protected QXmlLexicalHandler(Type dummy) {}
-		[SmokeClass("QXmlLexicalHandler")]
-		interface IQXmlLexicalHandlerProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlLexicalHandler), this);
 			_interceptor = (QXmlLexicalHandler) realProxy.GetTransparentProxy();
 		}
 		private QXmlLexicalHandler ProxyQXmlLexicalHandler() {
 			return (QXmlLexicalHandler) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QXmlLexicalHandler() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQXmlLexicalHandlerProxy), null);
-			_staticInterceptor = (IQXmlLexicalHandlerProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQXmlLexicalHandlerProxy StaticQXmlLexicalHandler() {
-			return (IQXmlLexicalHandlerProxy) _staticInterceptor;
 		}
 		public abstract bool StartDTD(string name, string publicId, string systemId);
 		public abstract bool EndDTD();
@@ -41,16 +30,6 @@ namespace Qyoto {
 		[SmokeMethod("QXmlLexicalHandler", "()", "")]
 		private void NewQXmlLexicalHandler() {
 			ProxyQXmlLexicalHandler().NewQXmlLexicalHandler();
-		}
-		~QXmlLexicalHandler() {
-			DisposeQXmlLexicalHandler();
-		}
-		public void Dispose() {
-			DisposeQXmlLexicalHandler();
-		}
-		[SmokeMethod("~QXmlLexicalHandler", "()", "")]
-		private void DisposeQXmlLexicalHandler() {
-			ProxyQXmlLexicalHandler().DisposeQXmlLexicalHandler();
 		}
 	}
 }

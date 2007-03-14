@@ -77,12 +77,6 @@ namespace Qyoto {
 		public QTextFrame ParentFrame() {
 			return ProxyQTextFrame().ParentFrame();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQTextFrame().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQTextFrame().Tr(s);
-		}
 		~QTextFrame() {
 			DisposeQTextFrame();
 		}
@@ -92,6 +86,12 @@ namespace Qyoto {
 		[SmokeMethod("~QTextFrame", "()", "")]
 		private void DisposeQTextFrame() {
 			ProxyQTextFrame().DisposeQTextFrame();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQTextFrame().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQTextFrame().Tr(s);
 		}
 		protected new IQTextFrameSignals Emit {
 			get { return (IQTextFrameSignals) Q_EMIT; }

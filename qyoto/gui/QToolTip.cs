@@ -27,13 +27,6 @@ namespace Qyoto {
 			[SmokeMethod("setFont", "(const QFont&)", "#")]
 			void SetFont(QFont arg1);
 		}
-		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QToolTip), this);
-			_interceptor = (QToolTip) realProxy.GetTransparentProxy();
-		}
-		private QToolTip ProxyQToolTip() {
-			return (QToolTip) _interceptor;
-		}
 		private static Object _staticInterceptor = null;
 		static QToolTip() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQToolTipProxy), null);
@@ -65,16 +58,6 @@ namespace Qyoto {
 		}
 		public static void SetFont(QFont arg1) {
 			StaticQToolTip().SetFont(arg1);
-		}
-		~QToolTip() {
-			DisposeQToolTip();
-		}
-		public void Dispose() {
-			DisposeQToolTip();
-		}
-		[SmokeMethod("~QToolTip", "()", "")]
-		private void DisposeQToolTip() {
-			ProxyQToolTip().DisposeQToolTip();
 		}
 	}
 }

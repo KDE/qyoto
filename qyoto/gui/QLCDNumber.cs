@@ -149,12 +149,6 @@ namespace Qyoto {
 		public void SetBinMode() {
 			ProxyQLCDNumber().SetBinMode();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQLCDNumber().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQLCDNumber().Tr(s);
-		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent e) {
 			return ProxyQLCDNumber().Event(e);
@@ -172,6 +166,12 @@ namespace Qyoto {
 		[SmokeMethod("~QLCDNumber", "()", "")]
 		private void DisposeQLCDNumber() {
 			ProxyQLCDNumber().DisposeQLCDNumber();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQLCDNumber().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQLCDNumber().Tr(s);
 		}
 		protected new IQLCDNumberSignals Emit {
 			get { return (IQLCDNumberSignals) Q_EMIT; }

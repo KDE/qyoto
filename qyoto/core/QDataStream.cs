@@ -8,23 +8,12 @@ namespace Qyoto {
 		protected Object _interceptor = null;
 		private IntPtr _smokeObject;
 		protected QDataStream(Type dummy) {}
-		[SmokeClass("QDataStream")]
-		interface IQDataStreamProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDataStream), this);
 			_interceptor = (QDataStream) realProxy.GetTransparentProxy();
 		}
 		private QDataStream ProxyQDataStream() {
 			return (QDataStream) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QDataStream() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQDataStreamProxy), null);
-			_staticInterceptor = (IQDataStreamProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQDataStreamProxy StaticQDataStream() {
-			return (IQDataStreamProxy) _staticInterceptor;
 		}
 		public enum Version {
 			Qt_1_0 = 1,
@@ -42,6 +31,15 @@ namespace Qyoto {
 			ReadPastEnd = 1,
 			ReadCorruptData = 2,
 		}
+		// QDataStream& operator>>(qint8& arg1); >>>> NOT CONVERTED
+		// QDataStream& operator>>(quint8& arg1); >>>> NOT CONVERTED
+		// QDataStream& operator>>(qint16& arg1); >>>> NOT CONVERTED
+		// QDataStream& operator>>(quint16& arg1); >>>> NOT CONVERTED
+		// QDataStream& operator>>(quint32& arg1); >>>> NOT CONVERTED
+		// QDataStream& operator>>(qint64& arg1); >>>> NOT CONVERTED
+		// QDataStream& operator>>(quint64& arg1); >>>> NOT CONVERTED
+		// QDataStream& operator<<(qint8 arg1); >>>> NOT CONVERTED
+		// QDataStream& operator<<(quint8 arg1); >>>> NOT CONVERTED
 		public QDataStream() : this((Type) null) {
 			CreateProxy();
 			NewQDataStream();
@@ -110,17 +108,10 @@ namespace Qyoto {
 		public void SetVersion(int arg1) {
 			ProxyQDataStream().SetVersion(arg1);
 		}
-		// QDataStream& operator>>(qint8& arg1); >>>> NOT CONVERTED
-		// QDataStream& operator>>(quint8& arg1); >>>> NOT CONVERTED
-		// QDataStream& operator>>(qint16& arg1); >>>> NOT CONVERTED
-		// QDataStream& operator>>(quint16& arg1); >>>> NOT CONVERTED
 		[SmokeMethod("operator>>", "(qint32&)", "$")]
 		public QDataStream Read(int i) {
 			return ProxyQDataStream().Read(i);
 		}
-		// QDataStream& operator>>(quint32& arg1); >>>> NOT CONVERTED
-		// QDataStream& operator>>(qint64& arg1); >>>> NOT CONVERTED
-		// QDataStream& operator>>(quint64& arg1); >>>> NOT CONVERTED
 		[SmokeMethod("operator>>", "(bool&)", "$")]
 		public QDataStream Read(bool i) {
 			return ProxyQDataStream().Read(i);
@@ -137,8 +128,6 @@ namespace Qyoto {
 		public QDataStream Read(string str) {
 			return ProxyQDataStream().Read(str);
 		}
-		// QDataStream& operator<<(qint8 arg1); >>>> NOT CONVERTED
-		// QDataStream& operator<<(quint8 arg1); >>>> NOT CONVERTED
 		[SmokeMethod("operator<<", "(qint16)", "$")]
 		public QDataStream Write(short i) {
 			return ProxyQDataStream().Write(i);

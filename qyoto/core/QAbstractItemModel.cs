@@ -30,6 +30,7 @@ namespace Qyoto {
 		private static IQAbstractItemModelProxy StaticQAbstractItemModel() {
 			return (IQAbstractItemModelProxy) _staticInterceptor;
 		}
+		// QModelIndex createIndex(int arg1,int arg2,void* arg3); >>>> NOT CONVERTED
 		public QAbstractItemModel(QObject parent) : this((Type) null) {
 			CreateProxy();
 			NewQAbstractItemModel(parent);
@@ -245,13 +246,6 @@ namespace Qyoto {
 		public virtual void Revert() {
 			ProxyQAbstractItemModel().Revert();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQAbstractItemModel().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQAbstractItemModel().Tr(s);
-		}
-		// QModelIndex createIndex(int arg1,int arg2,void* arg3); >>>> NOT CONVERTED
 		[SmokeMethod("createIndex", "(int, int) const", "$$")]
 		protected QModelIndex CreateIndex(int row, int column) {
 			return ProxyQAbstractItemModel().CreateIndex(row,column);
@@ -320,15 +314,11 @@ namespace Qyoto {
 		protected List<QModelIndex> PersistentIndexList() {
 			return ProxyQAbstractItemModel().PersistentIndexList();
 		}
-		~QAbstractItemModel() {
-			DisposeQAbstractItemModel();
+		public static string Tr(string s, string c) {
+			return StaticQAbstractItemModel().Tr(s,c);
 		}
-		public new void Dispose() {
-			DisposeQAbstractItemModel();
-		}
-		[SmokeMethod("~QAbstractItemModel", "()", "")]
-		private void DisposeQAbstractItemModel() {
-			ProxyQAbstractItemModel().DisposeQAbstractItemModel();
+		public static string Tr(string s) {
+			return StaticQAbstractItemModel().Tr(s);
 		}
 		protected new IQAbstractItemModelSignals Emit {
 			get { return (IQAbstractItemModelSignals) Q_EMIT; }

@@ -9,9 +9,6 @@ namespace Qyoto {
 		protected Object _interceptor = null;
 		private IntPtr _smokeObject;
 		protected QStandardItem(Type dummy) {}
-		[SmokeClass("QStandardItem")]
-		interface IQStandardItemProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStandardItem), this);
 			_interceptor = (QStandardItem) realProxy.GetTransparentProxy();
@@ -19,18 +16,11 @@ namespace Qyoto {
 		private QStandardItem ProxyQStandardItem() {
 			return (QStandardItem) _interceptor;
 		}
-		private static Object _staticInterceptor = null;
-		static QStandardItem() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQStandardItemProxy), null);
-			_staticInterceptor = (IQStandardItemProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQStandardItemProxy StaticQStandardItem() {
-			return (IQStandardItemProxy) _staticInterceptor;
-		}
 		public enum ItemType {
 			Type = 0,
 			UserType = 1000,
 		}
+		// QStandardItem* QStandardItem(QStandardItemPrivate& arg1); >>>> NOT CONVERTED
 		public QStandardItem() : this((Type) null) {
 			CreateProxy();
 			NewQStandardItem();
@@ -407,7 +397,6 @@ namespace Qyoto {
 		private void NewQStandardItem(QStandardItem other) {
 			ProxyQStandardItem().NewQStandardItem(other);
 		}
-		// QStandardItem* QStandardItem(QStandardItemPrivate& arg1); >>>> NOT CONVERTED
 		~QStandardItem() {
 			DisposeQStandardItem();
 		}

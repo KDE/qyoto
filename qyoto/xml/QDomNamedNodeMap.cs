@@ -44,12 +44,6 @@ namespace Qyoto {
 		private void NewQDomNamedNodeMap(QDomNamedNodeMap arg1) {
 			ProxyQDomNamedNodeMap().NewQDomNamedNodeMap(arg1);
 		}
-		public static bool operator==(QDomNamedNodeMap lhs, QDomNamedNodeMap arg1) {
-			return StaticQDomNamedNodeMap().op_equals(lhs,arg1);
-		}
-		public static bool operator!=(QDomNamedNodeMap lhs, QDomNamedNodeMap arg1) {
-			return !StaticQDomNamedNodeMap().op_equals(lhs,arg1);
-		}
 		public override bool Equals(object o) {
 			if (!(o is QDomNamedNodeMap)) { return false; }
 			return this == (QDomNamedNodeMap) o;
@@ -114,6 +108,12 @@ namespace Qyoto {
 		[SmokeMethod("~QDomNamedNodeMap", "()", "")]
 		private void DisposeQDomNamedNodeMap() {
 			ProxyQDomNamedNodeMap().DisposeQDomNamedNodeMap();
+		}
+		public static bool operator==(QDomNamedNodeMap lhs, QDomNamedNodeMap arg1) {
+			return StaticQDomNamedNodeMap().op_equals(lhs,arg1);
+		}
+		public static bool operator!=(QDomNamedNodeMap lhs, QDomNamedNodeMap arg1) {
+			return !StaticQDomNamedNodeMap().op_equals(lhs,arg1);
 		}
 	}
 }

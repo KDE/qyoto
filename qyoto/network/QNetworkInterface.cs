@@ -79,6 +79,16 @@ namespace Qyoto {
 		public List<QNetworkAddressEntry> AddressEntries() {
 			return ProxyQNetworkInterface().AddressEntries();
 		}
+		~QNetworkInterface() {
+			DisposeQNetworkInterface();
+		}
+		public void Dispose() {
+			DisposeQNetworkInterface();
+		}
+		[SmokeMethod("~QNetworkInterface", "()", "")]
+		private void DisposeQNetworkInterface() {
+			ProxyQNetworkInterface().DisposeQNetworkInterface();
+		}
 		public static QNetworkInterface InterfaceFromName(string name) {
 			return StaticQNetworkInterface().InterfaceFromName(name);
 		}
@@ -90,16 +100,6 @@ namespace Qyoto {
 		}
 		public static List<QHostAddress> AllAddresses() {
 			return StaticQNetworkInterface().AllAddresses();
-		}
-		~QNetworkInterface() {
-			DisposeQNetworkInterface();
-		}
-		public void Dispose() {
-			DisposeQNetworkInterface();
-		}
-		[SmokeMethod("~QNetworkInterface", "()", "")]
-		private void DisposeQNetworkInterface() {
-			ProxyQNetworkInterface().DisposeQNetworkInterface();
 		}
 	}
 }

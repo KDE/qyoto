@@ -128,12 +128,27 @@ namespace Qyoto {
 			get { return Property("organizationDomain").Value<string>(); }
 			set { SetProperty("organizationDomain", QVariant.FromValue<string>(value)); }
 		}
+		// EventFilter setEventFilter(EventFilter arg1); >>>> NOT CONVERTED
+		// bool filterEvent(void* arg1,long* arg2); >>>> NOT CONVERTED
+		// bool compressEvent(QEvent* arg1,QObject* arg2,QPostEventList* arg3); >>>> NOT CONVERTED
 		[SmokeMethod("notify", "(QObject*, QEvent*)", "##")]
 		public virtual bool Notify(QObject arg1, QEvent arg2) {
 			return ProxyQCoreApplication().Notify(arg1,arg2);
 		}
-		// EventFilter setEventFilter(EventFilter arg1); >>>> NOT CONVERTED
-		// bool filterEvent(void* arg1,long* arg2); >>>> NOT CONVERTED
+		[SmokeMethod("event", "(QEvent*)", "#")]
+		protected new virtual bool Event(QEvent arg1) {
+			return ProxyQCoreApplication().Event(arg1);
+		}
+		~QCoreApplication() {
+			DisposeQCoreApplication();
+		}
+		public new void Dispose() {
+			DisposeQCoreApplication();
+		}
+		[SmokeMethod("~QCoreApplication", "()", "")]
+		private void DisposeQCoreApplication() {
+			ProxyQCoreApplication().DisposeQCoreApplication();
+		}
 		public static string Tr(string s, string c) {
 			return StaticQCoreApplication().Tr(s,c);
 		}
@@ -256,24 +271,8 @@ namespace Qyoto {
 		public static void Flush() {
 			StaticQCoreApplication().Flush();
 		}
-		[Q_SLOT("void quit()")]
 		public static void Quit() {
 			StaticQCoreApplication().Quit();
-		}
-		[SmokeMethod("event", "(QEvent*)", "#")]
-		protected new virtual bool Event(QEvent arg1) {
-			return ProxyQCoreApplication().Event(arg1);
-		}
-		// bool compressEvent(QEvent* arg1,QObject* arg2,QPostEventList* arg3); >>>> NOT CONVERTED
-		~QCoreApplication() {
-			DisposeQCoreApplication();
-		}
-		public new void Dispose() {
-			DisposeQCoreApplication();
-		}
-		[SmokeMethod("~QCoreApplication", "()", "")]
-		private void DisposeQCoreApplication() {
-			ProxyQCoreApplication().DisposeQCoreApplication();
 		}
 		protected new IQCoreApplicationSignals Emit {
 			get { return (IQCoreApplicationSignals) Q_EMIT; }

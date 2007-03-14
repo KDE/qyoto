@@ -105,6 +105,8 @@ namespace Qyoto {
 			get { return Property("textInteractionFlags").Value<int>(); }
 			set { SetProperty("textInteractionFlags", QVariant.FromValue<int>(value)); }
 		}
+		// void setExtraSelections(const QList<QTextEdit::ExtraSelection>& arg1); >>>> NOT CONVERTED
+		// QList<QTextEdit::ExtraSelection> extraSelections(); >>>> NOT CONVERTED
 		public QTextEdit(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			NewQTextEdit(parent);
@@ -257,8 +259,6 @@ namespace Qyoto {
 		public string AnchorAt(QPoint pos) {
 			return ProxyQTextEdit().AnchorAt(pos);
 		}
-		// void setExtraSelections(const QList<QTextEdit::ExtraSelection>& arg1); >>>> NOT CONVERTED
-		// QList<QTextEdit::ExtraSelection> extraSelections(); >>>> NOT CONVERTED
 		[SmokeMethod("moveCursor", "(QTextCursor::MoveOperation, QTextCursor::MoveMode)", "$$")]
 		public void MoveCursor(QTextCursor.MoveOperation operation, QTextCursor.MoveMode mode) {
 			ProxyQTextEdit().MoveCursor(operation,mode);
@@ -396,12 +396,6 @@ namespace Qyoto {
 		public void ZoomOut() {
 			ProxyQTextEdit().ZoomOut();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQTextEdit().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQTextEdit().Tr(s);
-		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent e) {
 			return ProxyQTextEdit().Event(e);
@@ -519,6 +513,12 @@ namespace Qyoto {
 		[SmokeMethod("~QTextEdit", "()", "")]
 		private void DisposeQTextEdit() {
 			ProxyQTextEdit().DisposeQTextEdit();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQTextEdit().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQTextEdit().Tr(s);
 		}
 		protected new IQTextEditSignals Emit {
 			get { return (IQTextEditSignals) Q_EMIT; }

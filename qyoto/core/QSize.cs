@@ -110,12 +110,6 @@ namespace Qyoto {
 		public int Rheight() {
 			return ProxyQSize().Rheight();
 		}
-		public static QSize operator*(QSize lhs, double c) {
-			return StaticQSize().op_mult(lhs,c);
-		}
-		public static QSize operator/(QSize lhs, double c) {
-			return StaticQSize().op_div(lhs,c);
-		}
 		~QSize() {
 			DisposeQSize();
 		}
@@ -126,18 +120,24 @@ namespace Qyoto {
 		private void DisposeQSize() {
 			ProxyQSize().DisposeQSize();
 		}
-		public static bool operator==(QSize s1, QSize s2) {
-			return StaticQSize().op_equals(s1,s2);
-		}
-		public static bool operator!=(QSize s1, QSize s2) {
-			return !StaticQSize().op_equals(s1,s2);
-		}
 		public override bool Equals(object o) {
 			if (!(o is QSize)) { return false; }
 			return this == (QSize) o;
 		}
 		public override int GetHashCode() {
 			return ProxyQSize().GetHashCode();
+		}
+		public static QSize operator*(QSize lhs, double c) {
+			return StaticQSize().op_mult(lhs,c);
+		}
+		public static QSize operator/(QSize lhs, double c) {
+			return StaticQSize().op_div(lhs,c);
+		}
+		public static bool operator==(QSize s1, QSize s2) {
+			return StaticQSize().op_equals(s1,s2);
+		}
+		public static bool operator!=(QSize s1, QSize s2) {
+			return !StaticQSize().op_equals(s1,s2);
 		}
 		public static QSize operator+(QSize s1, QSize s2) {
 			return StaticQSize().op_plus(s1,s2);

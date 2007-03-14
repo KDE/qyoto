@@ -6,23 +6,12 @@ namespace Qyoto {
 	[SmokeClass("QActionEvent")]
 	public class QActionEvent : QEvent, IDisposable {
  		protected QActionEvent(Type dummy) : base((Type) null) {}
-		[SmokeClass("QActionEvent")]
-		interface IQActionEventProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QActionEvent), this);
 			_interceptor = (QActionEvent) realProxy.GetTransparentProxy();
 		}
 		private QActionEvent ProxyQActionEvent() {
 			return (QActionEvent) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QActionEvent() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQActionEventProxy), null);
-			_staticInterceptor = (IQActionEventProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQActionEventProxy StaticQActionEvent() {
-			return (IQActionEventProxy) _staticInterceptor;
 		}
 		public QActionEvent(int type, QAction action, QAction before) : this((Type) null) {
 			CreateProxy();

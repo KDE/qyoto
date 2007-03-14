@@ -8,23 +8,12 @@ namespace Qyoto {
 		protected Object _interceptor = null;
 		private IntPtr _smokeObject;
 		protected QSqlRelation(Type dummy) {}
-		[SmokeClass("QSqlRelation")]
-		interface IQSqlRelationProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSqlRelation), this);
 			_interceptor = (QSqlRelation) realProxy.GetTransparentProxy();
 		}
 		private QSqlRelation ProxyQSqlRelation() {
 			return (QSqlRelation) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QSqlRelation() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQSqlRelationProxy), null);
-			_staticInterceptor = (IQSqlRelationProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQSqlRelationProxy StaticQSqlRelation() {
-			return (IQSqlRelationProxy) _staticInterceptor;
 		}
 		public QSqlRelation() : this((Type) null) {
 			CreateProxy();

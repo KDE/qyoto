@@ -159,12 +159,6 @@ namespace Qyoto {
 		public void ToggleDirection() {
 			ProxyQTimeLine().ToggleDirection();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQTimeLine().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQTimeLine().Tr(s);
-		}
 		[SmokeMethod("timerEvent", "(QTimerEvent*)", "#")]
 		protected override void TimerEvent(QTimerEvent arg1) {
 			ProxyQTimeLine().TimerEvent(arg1);
@@ -178,6 +172,12 @@ namespace Qyoto {
 		[SmokeMethod("~QTimeLine", "()", "")]
 		private void DisposeQTimeLine() {
 			ProxyQTimeLine().DisposeQTimeLine();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQTimeLine().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQTimeLine().Tr(s);
 		}
 		protected new IQTimeLineSignals Emit {
 			get { return (IQTimeLineSignals) Q_EMIT; }

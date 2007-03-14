@@ -102,12 +102,6 @@ namespace Qyoto {
 		public bool IsChecked() {
 			return ProxyQGroupBox().IsChecked();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQGroupBox().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQGroupBox().Tr(s);
-		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent arg1) {
 			return ProxyQGroupBox().Event(arg1);
@@ -153,6 +147,12 @@ namespace Qyoto {
 		[SmokeMethod("~QGroupBox", "()", "")]
 		private void DisposeQGroupBox() {
 			ProxyQGroupBox().DisposeQGroupBox();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQGroupBox().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQGroupBox().Tr(s);
 		}
 		protected new IQGroupBoxSignals Emit {
 			get { return (IQGroupBoxSignals) Q_EMIT; }

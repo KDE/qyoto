@@ -142,12 +142,6 @@ namespace Qyoto {
 		public void Redo() {
 			ProxyQUndoStack().Redo();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQUndoStack().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQUndoStack().Tr(s);
-		}
 		~QUndoStack() {
 			DisposeQUndoStack();
 		}
@@ -157,6 +151,12 @@ namespace Qyoto {
 		[SmokeMethod("~QUndoStack", "()", "")]
 		private void DisposeQUndoStack() {
 			ProxyQUndoStack().DisposeQUndoStack();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQUndoStack().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQUndoStack().Tr(s);
 		}
 		protected new IQUndoStackSignals Emit {
 			get { return (IQUndoStackSignals) Q_EMIT; }

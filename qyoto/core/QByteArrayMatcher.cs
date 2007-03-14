@@ -8,23 +8,12 @@ namespace Qyoto {
 		protected Object _interceptor = null;
 		private IntPtr _smokeObject;
 		protected QByteArrayMatcher(Type dummy) {}
-		[SmokeClass("QByteArrayMatcher")]
-		interface IQByteArrayMatcherProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QByteArrayMatcher), this);
 			_interceptor = (QByteArrayMatcher) realProxy.GetTransparentProxy();
 		}
 		private QByteArrayMatcher ProxyQByteArrayMatcher() {
 			return (QByteArrayMatcher) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QByteArrayMatcher() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQByteArrayMatcherProxy), null);
-			_staticInterceptor = (IQByteArrayMatcherProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQByteArrayMatcherProxy StaticQByteArrayMatcher() {
-			return (IQByteArrayMatcherProxy) _staticInterceptor;
 		}
 		public QByteArrayMatcher() : this((Type) null) {
 			CreateProxy();

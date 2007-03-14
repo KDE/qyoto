@@ -52,12 +52,6 @@ namespace Qyoto {
 		public new virtual bool EventFilter(QObject arg1, QEvent arg2) {
 			return ProxyQPrintDialog().EventFilter(arg1,arg2);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQPrintDialog().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQPrintDialog().Tr(s);
-		}
 		~QPrintDialog() {
 			DisposeQPrintDialog();
 		}
@@ -67,6 +61,12 @@ namespace Qyoto {
 		[SmokeMethod("~QPrintDialog", "()", "")]
 		private void DisposeQPrintDialog() {
 			ProxyQPrintDialog().DisposeQPrintDialog();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQPrintDialog().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQPrintDialog().Tr(s);
 		}
 		protected new IQPrintDialogSignals Emit {
 			get { return (IQPrintDialogSignals) Q_EMIT; }

@@ -33,6 +33,7 @@ namespace Qyoto {
 			FixedLength = 1,
 			PercentageLength = 2,
 		}
+		//  operator QVariant(); >>>> NOT CONVERTED
 		public QTextLength() : this((Type) null) {
 			CreateProxy();
 			NewQTextLength();
@@ -61,12 +62,6 @@ namespace Qyoto {
 		public double RawValue() {
 			return ProxyQTextLength().RawValue();
 		}
-		public static bool operator==(QTextLength lhs, QTextLength other) {
-			return StaticQTextLength().op_equals(lhs,other);
-		}
-		public static bool operator!=(QTextLength lhs, QTextLength other) {
-			return !StaticQTextLength().op_equals(lhs,other);
-		}
 		public override bool Equals(object o) {
 			if (!(o is QTextLength)) { return false; }
 			return this == (QTextLength) o;
@@ -74,7 +69,6 @@ namespace Qyoto {
 		public override int GetHashCode() {
 			return ProxyQTextLength().GetHashCode();
 		}
-		//  operator QVariant(); >>>> NOT CONVERTED
 		~QTextLength() {
 			DisposeQTextLength();
 		}
@@ -84,6 +78,12 @@ namespace Qyoto {
 		[SmokeMethod("~QTextLength", "()", "")]
 		private void DisposeQTextLength() {
 			ProxyQTextLength().DisposeQTextLength();
+		}
+		public static bool operator==(QTextLength lhs, QTextLength other) {
+			return StaticQTextLength().op_equals(lhs,other);
+		}
+		public static bool operator!=(QTextLength lhs, QTextLength other) {
+			return !StaticQTextLength().op_equals(lhs,other);
 		}
 	}
 }

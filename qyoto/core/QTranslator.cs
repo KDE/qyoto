@@ -80,12 +80,6 @@ namespace Qyoto {
 		public bool Load(char[] data, int len) {
 			return ProxyQTranslator().Load(data,len);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQTranslator().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQTranslator().Tr(s);
-		}
 		~QTranslator() {
 			DisposeQTranslator();
 		}
@@ -95,6 +89,12 @@ namespace Qyoto {
 		[SmokeMethod("~QTranslator", "()", "")]
 		private void DisposeQTranslator() {
 			ProxyQTranslator().DisposeQTranslator();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQTranslator().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQTranslator().Tr(s);
 		}
 		protected new IQTranslatorSignals Emit {
 			get { return (IQTranslatorSignals) Q_EMIT; }

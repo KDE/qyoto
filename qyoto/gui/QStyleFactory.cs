@@ -39,12 +39,6 @@ namespace Qyoto {
 		private void NewQStyleFactory() {
 			ProxyQStyleFactory().NewQStyleFactory();
 		}
-		public static List<string> Keys() {
-			return StaticQStyleFactory().Keys();
-		}
-		public static QStyle Create(string arg1) {
-			return StaticQStyleFactory().Create(arg1);
-		}
 		~QStyleFactory() {
 			DisposeQStyleFactory();
 		}
@@ -54,6 +48,12 @@ namespace Qyoto {
 		[SmokeMethod("~QStyleFactory", "()", "")]
 		private void DisposeQStyleFactory() {
 			ProxyQStyleFactory().DisposeQStyleFactory();
+		}
+		public static List<string> Keys() {
+			return StaticQStyleFactory().Keys();
+		}
+		public static QStyle Create(string arg1) {
+			return StaticQStyleFactory().Create(arg1);
 		}
 	}
 }

@@ -130,12 +130,6 @@ namespace Qyoto {
 		public void Reset() {
 			ProxyQGraphicsItemAnimation().Reset();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQGraphicsItemAnimation().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQGraphicsItemAnimation().Tr(s);
-		}
 		[SmokeMethod("beforeAnimationStep", "(qreal)", "$")]
 		protected virtual void BeforeAnimationStep(double step) {
 			ProxyQGraphicsItemAnimation().BeforeAnimationStep(step);
@@ -153,6 +147,12 @@ namespace Qyoto {
 		[SmokeMethod("~QGraphicsItemAnimation", "()", "")]
 		private void DisposeQGraphicsItemAnimation() {
 			ProxyQGraphicsItemAnimation().DisposeQGraphicsItemAnimation();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQGraphicsItemAnimation().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQGraphicsItemAnimation().Tr(s);
 		}
 		protected new IQGraphicsItemAnimationSignals Emit {
 			get { return (IQGraphicsItemAnimationSignals) Q_EMIT; }

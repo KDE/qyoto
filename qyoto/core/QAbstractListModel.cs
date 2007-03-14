@@ -60,12 +60,6 @@ namespace Qyoto {
 		public override bool DropMimeData(QMimeData data, Qt.DropAction action, int row, int column, QModelIndex parent) {
 			return ProxyQAbstractListModel().DropMimeData(data,action,row,column,parent);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQAbstractListModel().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQAbstractListModel().Tr(s);
-		}
 		~QAbstractListModel() {
 			DisposeQAbstractListModel();
 		}
@@ -75,6 +69,12 @@ namespace Qyoto {
 		[SmokeMethod("~QAbstractListModel", "()", "")]
 		private void DisposeQAbstractListModel() {
 			ProxyQAbstractListModel().DisposeQAbstractListModel();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQAbstractListModel().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQAbstractListModel().Tr(s);
 		}
 		protected new IQAbstractListModelSignals Emit {
 			get { return (IQAbstractListModelSignals) Q_EMIT; }

@@ -6,23 +6,12 @@ namespace Qyoto {
 	[SmokeClass("QStyleOptionFrameV2")]
 	public class QStyleOptionFrameV2 : QStyleOptionFrame, IDisposable {
  		protected QStyleOptionFrameV2(Type dummy) : base((Type) null) {}
-		[SmokeClass("QStyleOptionFrameV2")]
-		interface IQStyleOptionFrameV2Proxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionFrameV2), this);
 			_interceptor = (QStyleOptionFrameV2) realProxy.GetTransparentProxy();
 		}
 		private QStyleOptionFrameV2 ProxyQStyleOptionFrameV2() {
 			return (QStyleOptionFrameV2) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QStyleOptionFrameV2() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQStyleOptionFrameV2Proxy), null);
-			_staticInterceptor = (IQStyleOptionFrameV2Proxy) realProxy.GetTransparentProxy();
-		}
-		private static IQStyleOptionFrameV2Proxy StaticQStyleOptionFrameV2() {
-			return (IQStyleOptionFrameV2Proxy) _staticInterceptor;
 		}
 		public enum StyleOptionVersion {
 			Version = 2,

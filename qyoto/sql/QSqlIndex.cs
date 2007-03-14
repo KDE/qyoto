@@ -6,23 +6,12 @@ namespace Qyoto {
 	[SmokeClass("QSqlIndex")]
 	public class QSqlIndex : QSqlRecord, IDisposable {
  		protected QSqlIndex(Type dummy) : base((Type) null) {}
-		[SmokeClass("QSqlIndex")]
-		interface IQSqlIndexProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSqlIndex), this);
 			_interceptor = (QSqlIndex) realProxy.GetTransparentProxy();
 		}
 		private QSqlIndex ProxyQSqlIndex() {
 			return (QSqlIndex) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QSqlIndex() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQSqlIndexProxy), null);
-			_staticInterceptor = (IQSqlIndexProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQSqlIndexProxy StaticQSqlIndex() {
-			return (IQSqlIndexProxy) _staticInterceptor;
 		}
 		public QSqlIndex(string cursorName, string name) : this((Type) null) {
 			CreateProxy();

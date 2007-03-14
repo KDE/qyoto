@@ -6,23 +6,12 @@ namespace Qyoto {
 	[SmokeClass("QDynamicPropertyChangeEvent")]
 	public class QDynamicPropertyChangeEvent : QEvent, IDisposable {
  		protected QDynamicPropertyChangeEvent(Type dummy) : base((Type) null) {}
-		[SmokeClass("QDynamicPropertyChangeEvent")]
-		interface IQDynamicPropertyChangeEventProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDynamicPropertyChangeEvent), this);
 			_interceptor = (QDynamicPropertyChangeEvent) realProxy.GetTransparentProxy();
 		}
 		private QDynamicPropertyChangeEvent ProxyQDynamicPropertyChangeEvent() {
 			return (QDynamicPropertyChangeEvent) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QDynamicPropertyChangeEvent() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQDynamicPropertyChangeEventProxy), null);
-			_staticInterceptor = (IQDynamicPropertyChangeEventProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQDynamicPropertyChangeEventProxy StaticQDynamicPropertyChangeEvent() {
-			return (IQDynamicPropertyChangeEventProxy) _staticInterceptor;
 		}
 		public QDynamicPropertyChangeEvent(QByteArray name) : this((Type) null) {
 			CreateProxy();

@@ -6,23 +6,12 @@ namespace Qyoto {
 	[SmokeClass("QResizeEvent")]
 	public class QResizeEvent : QEvent, IDisposable {
  		protected QResizeEvent(Type dummy) : base((Type) null) {}
-		[SmokeClass("QResizeEvent")]
-		interface IQResizeEventProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QResizeEvent), this);
 			_interceptor = (QResizeEvent) realProxy.GetTransparentProxy();
 		}
 		private QResizeEvent ProxyQResizeEvent() {
 			return (QResizeEvent) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QResizeEvent() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQResizeEventProxy), null);
-			_staticInterceptor = (IQResizeEventProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQResizeEventProxy StaticQResizeEvent() {
-			return (IQResizeEventProxy) _staticInterceptor;
 		}
 		public QResizeEvent(QSize size, QSize oldSize) : this((Type) null) {
 			CreateProxy();

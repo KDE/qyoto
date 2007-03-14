@@ -255,12 +255,6 @@ namespace Qyoto {
 		public void Clear() {
 			ProxyQSortFilterProxyModel().Clear();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQSortFilterProxyModel().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQSortFilterProxyModel().Tr(s);
-		}
 		[SmokeMethod("filterAcceptsRow", "(int, const QModelIndex&) const", "$#")]
 		protected virtual bool FilterAcceptsRow(int source_row, QModelIndex source_parent) {
 			return ProxyQSortFilterProxyModel().FilterAcceptsRow(source_row,source_parent);
@@ -286,6 +280,12 @@ namespace Qyoto {
 		[SmokeMethod("~QSortFilterProxyModel", "()", "")]
 		private void DisposeQSortFilterProxyModel() {
 			ProxyQSortFilterProxyModel().DisposeQSortFilterProxyModel();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQSortFilterProxyModel().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQSortFilterProxyModel().Tr(s);
 		}
 		protected new IQSortFilterProxyModelSignals Emit {
 			get { return (IQSortFilterProxyModelSignals) Q_EMIT; }

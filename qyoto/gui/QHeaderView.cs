@@ -266,12 +266,6 @@ namespace Qyoto {
 		public void HeaderDataChanged(Qt.Orientation orientation, int logicalFirst, int logicalLast) {
 			ProxyQHeaderView().HeaderDataChanged(orientation,logicalFirst,logicalLast);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQHeaderView().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQHeaderView().Tr(s);
-		}
 		[SmokeMethod("initialize", "()", "")]
 		protected void Initialize() {
 			ProxyQHeaderView().Initialize();
@@ -405,6 +399,12 @@ namespace Qyoto {
 		[SmokeMethod("~QHeaderView", "()", "")]
 		private void DisposeQHeaderView() {
 			ProxyQHeaderView().DisposeQHeaderView();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQHeaderView().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQHeaderView().Tr(s);
 		}
 		protected new IQHeaderViewSignals Emit {
 			get { return (IQHeaderViewSignals) Q_EMIT; }

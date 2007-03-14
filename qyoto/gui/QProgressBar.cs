@@ -119,12 +119,6 @@ namespace Qyoto {
 		public void Reset() {
 			ProxyQProgressBar().Reset();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQProgressBar().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQProgressBar().Tr(s);
-		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent e) {
 			return ProxyQProgressBar().Event(e);
@@ -142,6 +136,12 @@ namespace Qyoto {
 		[SmokeMethod("~QProgressBar", "()", "")]
 		private void DisposeQProgressBar() {
 			ProxyQProgressBar().DisposeQProgressBar();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQProgressBar().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQProgressBar().Tr(s);
 		}
 		protected new IQProgressBarSignals Emit {
 			get { return (IQProgressBarSignals) Q_EMIT; }

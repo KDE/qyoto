@@ -177,12 +177,6 @@ namespace Qyoto {
 		public override QSize MinimumSizeHint() {
 			return ProxyQTabBar().MinimumSizeHint();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQTabBar().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQTabBar().Tr(s);
-		}
 		[SmokeMethod("tabSizeHint", "(int) const", "$")]
 		protected virtual QSize TabSizeHint(int index) {
 			return ProxyQTabBar().TabSizeHint(index);
@@ -244,6 +238,12 @@ namespace Qyoto {
 		[SmokeMethod("~QTabBar", "()", "")]
 		private void DisposeQTabBar() {
 			ProxyQTabBar().DisposeQTabBar();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQTabBar().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQTabBar().Tr(s);
 		}
 		protected new IQTabBarSignals Emit {
 			get { return (IQTabBarSignals) Q_EMIT; }

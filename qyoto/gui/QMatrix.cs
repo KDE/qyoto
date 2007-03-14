@@ -46,6 +46,7 @@ namespace Qyoto {
 		private static IQMatrixProxy StaticQMatrix() {
 			return (IQMatrixProxy) _staticInterceptor;
 		}
+		//  operator QVariant(); >>>> NOT CONVERTED
 		public QMatrix() : this((Type) null) {
 			CreateProxy();
 			NewQMatrix();
@@ -190,12 +191,6 @@ namespace Qyoto {
 		public QMatrix Inverted() {
 			return ProxyQMatrix().Inverted();
 		}
-		public static bool operator==(QMatrix lhs, QMatrix arg1) {
-			return StaticQMatrix().op_equals(lhs,arg1);
-		}
-		public static bool operator!=(QMatrix lhs, QMatrix arg1) {
-			return !StaticQMatrix().op_equals(lhs,arg1);
-		}
 		public override bool Equals(object o) {
 			if (!(o is QMatrix)) { return false; }
 			return this == (QMatrix) o;
@@ -203,10 +198,6 @@ namespace Qyoto {
 		public override int GetHashCode() {
 			return ProxyQMatrix().GetHashCode();
 		}
-		public static QMatrix operator*(QMatrix lhs, QMatrix o) {
-			return StaticQMatrix().op_mult(lhs,o);
-		}
-		//  operator QVariant(); >>>> NOT CONVERTED
 		~QMatrix() {
 			DisposeQMatrix();
 		}
@@ -216,6 +207,15 @@ namespace Qyoto {
 		[SmokeMethod("~QMatrix", "()", "")]
 		private void DisposeQMatrix() {
 			ProxyQMatrix().DisposeQMatrix();
+		}
+		public static bool operator==(QMatrix lhs, QMatrix arg1) {
+			return StaticQMatrix().op_equals(lhs,arg1);
+		}
+		public static bool operator!=(QMatrix lhs, QMatrix arg1) {
+			return !StaticQMatrix().op_equals(lhs,arg1);
+		}
+		public static QMatrix operator*(QMatrix lhs, QMatrix o) {
+			return StaticQMatrix().op_mult(lhs,o);
 		}
 		public static QPoint operator*(QPoint p, QMatrix m) {
 			return StaticQMatrix().op_mult(p,m);

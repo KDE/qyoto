@@ -63,6 +63,7 @@ namespace Qyoto {
 			UnregisterNode = 0,
 			UnregisterTree = 1,
 		}
+		// QDBusConnection* QDBusConnection(QDBusConnectionPrivate* arg1); >>>> NOT CONVERTED
 		public QDBusConnection(string name) : this((Type) null) {
 			CreateProxy();
 			NewQDBusConnection(name);
@@ -163,6 +164,16 @@ namespace Qyoto {
 		public QDBusConnectionInterface Interface() {
 			return ProxyQDBusConnection().Interface();
 		}
+		~QDBusConnection() {
+			DisposeQDBusConnection();
+		}
+		public void Dispose() {
+			DisposeQDBusConnection();
+		}
+		[SmokeMethod("~QDBusConnection", "()", "")]
+		private void DisposeQDBusConnection() {
+			ProxyQDBusConnection().DisposeQDBusConnection();
+		}
 		public static QDBusConnection ConnectToBus(QDBusConnection.BusType type, string name) {
 			return StaticQDBusConnection().ConnectToBus(type,name);
 		}
@@ -180,17 +191,6 @@ namespace Qyoto {
 		}
 		public static QDBusConnection Sender() {
 			return StaticQDBusConnection().Sender();
-		}
-		// QDBusConnection* QDBusConnection(QDBusConnectionPrivate* arg1); >>>> NOT CONVERTED
-		~QDBusConnection() {
-			DisposeQDBusConnection();
-		}
-		public void Dispose() {
-			DisposeQDBusConnection();
-		}
-		[SmokeMethod("~QDBusConnection", "()", "")]
-		private void DisposeQDBusConnection() {
-			ProxyQDBusConnection().DisposeQDBusConnection();
 		}
 	}
 }

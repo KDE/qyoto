@@ -90,12 +90,6 @@ namespace Qyoto {
 		public void SetEnabled(bool arg1) {
 			ProxyQSocketNotifier().SetEnabled(arg1);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQSocketNotifier().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQSocketNotifier().Tr(s);
-		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected new virtual bool Event(QEvent arg1) {
 			return ProxyQSocketNotifier().Event(arg1);
@@ -109,6 +103,12 @@ namespace Qyoto {
 		[SmokeMethod("~QSocketNotifier", "()", "")]
 		private void DisposeQSocketNotifier() {
 			ProxyQSocketNotifier().DisposeQSocketNotifier();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQSocketNotifier().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQSocketNotifier().Tr(s);
 		}
 		protected new IQSocketNotifierSignals Emit {
 			get { return (IQSocketNotifierSignals) Q_EMIT; }

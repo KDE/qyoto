@@ -8,23 +8,12 @@ namespace Qyoto {
 		protected Object _interceptor = null;
 		private IntPtr _smokeObject;
 		protected QCharRef(Type dummy) {}
-		[SmokeClass("QCharRef")]
-		interface IQCharRefProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QCharRef), this);
 			_interceptor = (QCharRef) realProxy.GetTransparentProxy();
 		}
 		private QCharRef ProxyQCharRef() {
 			return (QCharRef) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QCharRef() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQCharRefProxy), null);
-			_staticInterceptor = (IQCharRefProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQCharRefProxy StaticQCharRef() {
-			return (IQCharRefProxy) _staticInterceptor;
 		}
 		//  operator QChar(); >>>> NOT CONVERTED
 		[SmokeMethod("isNull", "() const", "")]
@@ -138,16 +127,6 @@ namespace Qyoto {
 		[SmokeMethod("unicode", "() const", "")]
 		public ushort Unicode() {
 			return ProxyQCharRef().Unicode();
-		}
-		~QCharRef() {
-			DisposeQCharRef();
-		}
-		public void Dispose() {
-			DisposeQCharRef();
-		}
-		[SmokeMethod("~QCharRef", "()", "")]
-		private void DisposeQCharRef() {
-			ProxyQCharRef().DisposeQCharRef();
 		}
 	}
 }

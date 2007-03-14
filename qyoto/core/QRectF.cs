@@ -264,12 +264,6 @@ namespace Qyoto {
 		public void SetSize(QSizeF s) {
 			ProxyQRectF().SetSize(s);
 		}
-		public static QRectF operator|(QRectF lhs, QRectF r) {
-			return StaticQRectF().op_or(lhs,r);
-		}
-		public static QRectF operator&(QRectF lhs, QRectF r) {
-			return StaticQRectF().op_and(lhs,r);
-		}
 		[SmokeMethod("contains", "(const QPointF&) const", "#")]
 		public bool Contains(QPointF p) {
 			return ProxyQRectF().Contains(p);
@@ -316,18 +310,24 @@ namespace Qyoto {
 		private void DisposeQRectF() {
 			ProxyQRectF().DisposeQRectF();
 		}
-		public static bool operator==(QRectF arg1, QRectF arg2) {
-			return StaticQRectF().op_equals(arg1,arg2);
-		}
-		public static bool operator!=(QRectF arg1, QRectF arg2) {
-			return !StaticQRectF().op_equals(arg1,arg2);
-		}
 		public override bool Equals(object o) {
 			if (!(o is QRectF)) { return false; }
 			return this == (QRectF) o;
 		}
 		public override int GetHashCode() {
 			return ProxyQRectF().GetHashCode();
+		}
+		public static QRectF operator|(QRectF lhs, QRectF r) {
+			return StaticQRectF().op_or(lhs,r);
+		}
+		public static QRectF operator&(QRectF lhs, QRectF r) {
+			return StaticQRectF().op_and(lhs,r);
+		}
+		public static bool operator==(QRectF arg1, QRectF arg2) {
+			return StaticQRectF().op_equals(arg1,arg2);
+		}
+		public static bool operator!=(QRectF arg1, QRectF arg2) {
+			return !StaticQRectF().op_equals(arg1,arg2);
 		}
 	}
 }

@@ -52,12 +52,6 @@ namespace Qyoto {
 		public void Clear() {
 			ProxyQObjectCleanupHandler().Clear();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQObjectCleanupHandler().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQObjectCleanupHandler().Tr(s);
-		}
 		~QObjectCleanupHandler() {
 			DisposeQObjectCleanupHandler();
 		}
@@ -67,6 +61,12 @@ namespace Qyoto {
 		[SmokeMethod("~QObjectCleanupHandler", "()", "")]
 		private void DisposeQObjectCleanupHandler() {
 			ProxyQObjectCleanupHandler().DisposeQObjectCleanupHandler();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQObjectCleanupHandler().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQObjectCleanupHandler().Tr(s);
 		}
 		protected new IQObjectCleanupHandlerSignals Emit {
 			get { return (IQObjectCleanupHandlerSignals) Q_EMIT; }

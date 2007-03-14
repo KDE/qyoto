@@ -8,23 +8,12 @@ namespace Qyoto {
 		protected Object _interceptor = null;
 		private IntPtr _smokeObject;
 		protected QTableWidgetSelectionRange(Type dummy) {}
-		[SmokeClass("QTableWidgetSelectionRange")]
-		interface IQTableWidgetSelectionRangeProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTableWidgetSelectionRange), this);
 			_interceptor = (QTableWidgetSelectionRange) realProxy.GetTransparentProxy();
 		}
 		private QTableWidgetSelectionRange ProxyQTableWidgetSelectionRange() {
 			return (QTableWidgetSelectionRange) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QTableWidgetSelectionRange() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTableWidgetSelectionRangeProxy), null);
-			_staticInterceptor = (IQTableWidgetSelectionRangeProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQTableWidgetSelectionRangeProxy StaticQTableWidgetSelectionRange() {
-			return (IQTableWidgetSelectionRangeProxy) _staticInterceptor;
 		}
 		public QTableWidgetSelectionRange() : this((Type) null) {
 			CreateProxy();

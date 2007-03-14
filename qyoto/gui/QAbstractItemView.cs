@@ -325,12 +325,6 @@ namespace Qyoto {
 		public void ScrollToBottom() {
 			ProxyQAbstractItemView().ScrollToBottom();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQAbstractItemView().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQAbstractItemView().Tr(s);
-		}
 		[SmokeMethod("setHorizontalStepsPerItem", "(int)", "$")]
 		protected void SetHorizontalStepsPerItem(int steps) {
 			ProxyQAbstractItemView().SetHorizontalStepsPerItem(steps);
@@ -564,15 +558,11 @@ namespace Qyoto {
 		protected virtual void EditorDestroyed(QObject editor) {
 			ProxyQAbstractItemView().EditorDestroyed(editor);
 		}
-		~QAbstractItemView() {
-			DisposeQAbstractItemView();
+		public static string Tr(string s, string c) {
+			return StaticQAbstractItemView().Tr(s,c);
 		}
-		public new void Dispose() {
-			DisposeQAbstractItemView();
-		}
-		[SmokeMethod("~QAbstractItemView", "()", "")]
-		private void DisposeQAbstractItemView() {
-			ProxyQAbstractItemView().DisposeQAbstractItemView();
+		public static string Tr(string s) {
+			return StaticQAbstractItemView().Tr(s);
 		}
 		protected new IQAbstractItemViewSignals Emit {
 			get { return (IQAbstractItemViewSignals) Q_EMIT; }

@@ -132,12 +132,6 @@ namespace Qyoto {
 		public void TriggerAction(QAbstractSlider.SliderAction action) {
 			ProxyQAbstractSlider().TriggerAction(action);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQAbstractSlider().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQAbstractSlider().Tr(s);
-		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent e) {
 			return ProxyQAbstractSlider().Event(e);
@@ -187,6 +181,12 @@ namespace Qyoto {
 		[SmokeMethod("~QAbstractSlider", "()", "")]
 		private void DisposeQAbstractSlider() {
 			ProxyQAbstractSlider().DisposeQAbstractSlider();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQAbstractSlider().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQAbstractSlider().Tr(s);
 		}
 		protected new IQAbstractSliderSignals Emit {
 			get { return (IQAbstractSliderSignals) Q_EMIT; }

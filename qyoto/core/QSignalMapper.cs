@@ -91,12 +91,6 @@ namespace Qyoto {
 		public void Map(QObject sender) {
 			ProxyQSignalMapper().Map(sender);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQSignalMapper().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQSignalMapper().Tr(s);
-		}
 		~QSignalMapper() {
 			DisposeQSignalMapper();
 		}
@@ -106,6 +100,12 @@ namespace Qyoto {
 		[SmokeMethod("~QSignalMapper", "()", "")]
 		private void DisposeQSignalMapper() {
 			ProxyQSignalMapper().DisposeQSignalMapper();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQSignalMapper().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQSignalMapper().Tr(s);
 		}
 		protected new IQSignalMapperSignals Emit {
 			get { return (IQSignalMapperSignals) Q_EMIT; }

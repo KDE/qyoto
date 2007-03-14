@@ -184,12 +184,6 @@ namespace Qyoto {
 		public void Complete() {
 			ProxyQCompleter().Complete();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQCompleter().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQCompleter().Tr(s);
-		}
 		[SmokeMethod("eventFilter", "(QObject*, QEvent*)", "##")]
 		protected new virtual bool EventFilter(QObject o, QEvent e) {
 			return ProxyQCompleter().EventFilter(o,e);
@@ -207,6 +201,12 @@ namespace Qyoto {
 		[SmokeMethod("~QCompleter", "()", "")]
 		private void DisposeQCompleter() {
 			ProxyQCompleter().DisposeQCompleter();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQCompleter().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQCompleter().Tr(s);
 		}
 		protected new IQCompleterSignals Emit {
 			get { return (IQCompleterSignals) Q_EMIT; }

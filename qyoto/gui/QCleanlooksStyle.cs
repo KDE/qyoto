@@ -156,12 +156,6 @@ namespace Qyoto {
 		public override void Unpolish(QApplication app) {
 			ProxyQCleanlooksStyle().Unpolish(app);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQCleanlooksStyle().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQCleanlooksStyle().Tr(s);
-		}
 		[Q_SLOT("QIcon standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const")]
 		[SmokeMethod("standardIconImplementation", "(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const", "$##")]
 		protected QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon, out int option, QWidget widget) {
@@ -181,6 +175,12 @@ namespace Qyoto {
 		[SmokeMethod("~QCleanlooksStyle", "()", "")]
 		private void DisposeQCleanlooksStyle() {
 			ProxyQCleanlooksStyle().DisposeQCleanlooksStyle();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQCleanlooksStyle().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQCleanlooksStyle().Tr(s);
 		}
 		protected new IQCleanlooksStyleSignals Emit {
 			get { return (IQCleanlooksStyleSignals) Q_EMIT; }

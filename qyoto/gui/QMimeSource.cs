@@ -14,23 +14,12 @@ namespace Qyoto {
 		protected Object _interceptor = null;
 		private IntPtr _smokeObject;
 		protected QMimeSource(Type dummy) {}
-		[SmokeClass("QMimeSource")]
-		interface IQMimeSourceProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMimeSource), this);
 			_interceptor = (QMimeSource) realProxy.GetTransparentProxy();
 		}
 		private QMimeSource ProxyQMimeSource() {
 			return (QMimeSource) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QMimeSource() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQMimeSourceProxy), null);
-			_staticInterceptor = (IQMimeSourceProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQMimeSourceProxy StaticQMimeSource() {
-			return (IQMimeSourceProxy) _staticInterceptor;
 		}
 		public abstract string Format(int n);
 		[SmokeMethod("provides", "(const char*) const", "$")]
@@ -45,16 +34,6 @@ namespace Qyoto {
 		[SmokeMethod("QMimeSource", "()", "")]
 		private void NewQMimeSource() {
 			ProxyQMimeSource().NewQMimeSource();
-		}
-		~QMimeSource() {
-			DisposeQMimeSource();
-		}
-		public void Dispose() {
-			DisposeQMimeSource();
-		}
-		[SmokeMethod("~QMimeSource", "()", "")]
-		private void DisposeQMimeSource() {
-			ProxyQMimeSource().DisposeQMimeSource();
 		}
 	}
 }

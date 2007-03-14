@@ -48,6 +48,16 @@ namespace Qyoto {
 		private void NewQPixmapCache() {
 			ProxyQPixmapCache().NewQPixmapCache();
 		}
+		~QPixmapCache() {
+			DisposeQPixmapCache();
+		}
+		public void Dispose() {
+			DisposeQPixmapCache();
+		}
+		[SmokeMethod("~QPixmapCache", "()", "")]
+		private void DisposeQPixmapCache() {
+			ProxyQPixmapCache().DisposeQPixmapCache();
+		}
 		public static int CacheLimit() {
 			return StaticQPixmapCache().CacheLimit();
 		}
@@ -68,16 +78,6 @@ namespace Qyoto {
 		}
 		public static void Clear() {
 			StaticQPixmapCache().Clear();
-		}
-		~QPixmapCache() {
-			DisposeQPixmapCache();
-		}
-		public void Dispose() {
-			DisposeQPixmapCache();
-		}
-		[SmokeMethod("~QPixmapCache", "()", "")]
-		private void DisposeQPixmapCache() {
-			ProxyQPixmapCache().DisposeQPixmapCache();
 		}
 	}
 }

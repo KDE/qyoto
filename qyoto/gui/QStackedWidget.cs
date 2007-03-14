@@ -83,12 +83,6 @@ namespace Qyoto {
 		public void SetCurrentWidget(QWidget w) {
 			ProxyQStackedWidget().SetCurrentWidget(w);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQStackedWidget().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQStackedWidget().Tr(s);
-		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent e) {
 			return ProxyQStackedWidget().Event(e);
@@ -102,6 +96,12 @@ namespace Qyoto {
 		[SmokeMethod("~QStackedWidget", "()", "")]
 		private void DisposeQStackedWidget() {
 			ProxyQStackedWidget().DisposeQStackedWidget();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQStackedWidget().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQStackedWidget().Tr(s);
 		}
 		protected new IQStackedWidgetSignals Emit {
 			get { return (IQStackedWidgetSignals) Q_EMIT; }

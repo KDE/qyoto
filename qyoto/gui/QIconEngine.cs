@@ -8,23 +8,12 @@ namespace Qyoto {
 		protected Object _interceptor = null;
 		private IntPtr _smokeObject;
 		protected QIconEngine(Type dummy) {}
-		[SmokeClass("QIconEngine")]
-		interface IQIconEngineProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QIconEngine), this);
 			_interceptor = (QIconEngine) realProxy.GetTransparentProxy();
 		}
 		private QIconEngine ProxyQIconEngine() {
 			return (QIconEngine) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QIconEngine() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQIconEngineProxy), null);
-			_staticInterceptor = (IQIconEngineProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQIconEngineProxy StaticQIconEngine() {
-			return (IQIconEngineProxy) _staticInterceptor;
 		}
 		public abstract void Paint(QPainter painter, QRect rect, QIcon.Mode mode, QIcon.State state);
 		[SmokeMethod("actualSize", "(const QSize&, QIcon::Mode, QIcon::State)", "#$$")]
@@ -50,16 +39,6 @@ namespace Qyoto {
 		[SmokeMethod("QIconEngine", "()", "")]
 		private void NewQIconEngine() {
 			ProxyQIconEngine().NewQIconEngine();
-		}
-		~QIconEngine() {
-			DisposeQIconEngine();
-		}
-		public void Dispose() {
-			DisposeQIconEngine();
-		}
-		[SmokeMethod("~QIconEngine", "()", "")]
-		private void DisposeQIconEngine() {
-			ProxyQIconEngine().DisposeQIconEngine();
 		}
 	}
 }

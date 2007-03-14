@@ -8,23 +8,12 @@ namespace Qyoto {
 		protected Object _interceptor = null;
 		private IntPtr _smokeObject;
 		protected QPrintEngine(Type dummy) {}
-		[SmokeClass("QPrintEngine")]
-		interface IQPrintEngineProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPrintEngine), this);
 			_interceptor = (QPrintEngine) realProxy.GetTransparentProxy();
 		}
 		private QPrintEngine ProxyQPrintEngine() {
 			return (QPrintEngine) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QPrintEngine() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQPrintEngineProxy), null);
-			_staticInterceptor = (IQPrintEngineProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQPrintEngineProxy StaticQPrintEngine() {
-			return (IQPrintEngineProxy) _staticInterceptor;
 		}
 		public enum PrintEnginePropertyKey {
 			PPK_CollateCopies = 0,
@@ -64,16 +53,6 @@ namespace Qyoto {
 		[SmokeMethod("QPrintEngine", "()", "")]
 		private void NewQPrintEngine() {
 			ProxyQPrintEngine().NewQPrintEngine();
-		}
-		~QPrintEngine() {
-			DisposeQPrintEngine();
-		}
-		public void Dispose() {
-			DisposeQPrintEngine();
-		}
-		[SmokeMethod("~QPrintEngine", "()", "")]
-		private void DisposeQPrintEngine() {
-			ProxyQPrintEngine().DisposeQPrintEngine();
 		}
 	}
 }

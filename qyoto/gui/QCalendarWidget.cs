@@ -197,12 +197,6 @@ namespace Qyoto {
 		public void ShowToday() {
 			ProxyQCalendarWidget().ShowToday();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQCalendarWidget().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQCalendarWidget().Tr(s);
-		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent arg1) {
 			return ProxyQCalendarWidget().Event(arg1);
@@ -232,6 +226,12 @@ namespace Qyoto {
 		[SmokeMethod("~QCalendarWidget", "()", "")]
 		private void DisposeQCalendarWidget() {
 			ProxyQCalendarWidget().DisposeQCalendarWidget();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQCalendarWidget().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQCalendarWidget().Tr(s);
 		}
 		protected new IQCalendarWidgetSignals Emit {
 			get { return (IQCalendarWidgetSignals) Q_EMIT; }

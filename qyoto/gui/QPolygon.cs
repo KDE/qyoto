@@ -29,6 +29,7 @@ namespace Qyoto {
 		private static IQPolygonProxy StaticQPolygon() {
 			return (IQPolygonProxy) _staticInterceptor;
 		}
+		//  operator QVariant(); >>>> NOT CONVERTED
 		public QPolygon() : this((Type) null) {
 			CreateProxy();
 			NewQPolygon();
@@ -85,7 +86,6 @@ namespace Qyoto {
 		private void NewQPolygon(int nPoints, out int points) {
 			ProxyQPolygon().NewQPolygon(nPoints,out points);
 		}
-		//  operator QVariant(); >>>> NOT CONVERTED
 		[SmokeMethod("translate", "(int, int)", "$$")]
 		public void Translate(int dx, int dy) {
 			ProxyQPolygon().Translate(dx,dy);

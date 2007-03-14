@@ -143,12 +143,6 @@ namespace Qyoto {
 		public void SetCurrentModelIndex(QModelIndex index) {
 			ProxyQDataWidgetMapper().SetCurrentModelIndex(index);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQDataWidgetMapper().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQDataWidgetMapper().Tr(s);
-		}
 		~QDataWidgetMapper() {
 			DisposeQDataWidgetMapper();
 		}
@@ -158,6 +152,12 @@ namespace Qyoto {
 		[SmokeMethod("~QDataWidgetMapper", "()", "")]
 		private void DisposeQDataWidgetMapper() {
 			ProxyQDataWidgetMapper().DisposeQDataWidgetMapper();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQDataWidgetMapper().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQDataWidgetMapper().Tr(s);
 		}
 		protected new IQDataWidgetMapperSignals Emit {
 			get { return (IQDataWidgetMapperSignals) Q_EMIT; }

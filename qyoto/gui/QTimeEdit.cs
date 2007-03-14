@@ -60,12 +60,6 @@ namespace Qyoto {
 		private void NewQTimeEdit(QTime time) {
 			ProxyQTimeEdit().NewQTimeEdit(time);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQTimeEdit().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQTimeEdit().Tr(s);
-		}
 		~QTimeEdit() {
 			DisposeQTimeEdit();
 		}
@@ -75,6 +69,12 @@ namespace Qyoto {
 		[SmokeMethod("~QTimeEdit", "()", "")]
 		private void DisposeQTimeEdit() {
 			ProxyQTimeEdit().DisposeQTimeEdit();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQTimeEdit().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQTimeEdit().Tr(s);
 		}
 		protected new IQTimeEditSignals Emit {
 			get { return (IQTimeEditSignals) Q_EMIT; }

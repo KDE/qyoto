@@ -8,23 +8,12 @@ namespace Qyoto {
 		protected Object _interceptor = null;
 		private IntPtr _smokeObject;
 		protected QFileIconProvider(Type dummy) {}
-		[SmokeClass("QFileIconProvider")]
-		interface IQFileIconProviderProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFileIconProvider), this);
 			_interceptor = (QFileIconProvider) realProxy.GetTransparentProxy();
 		}
 		private QFileIconProvider ProxyQFileIconProvider() {
 			return (QFileIconProvider) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QFileIconProvider() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQFileIconProviderProxy), null);
-			_staticInterceptor = (IQFileIconProviderProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQFileIconProviderProxy StaticQFileIconProvider() {
-			return (IQFileIconProviderProxy) _staticInterceptor;
 		}
 		public enum IconType {
 			Computer = 0,

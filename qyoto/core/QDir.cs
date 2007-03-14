@@ -309,12 +309,6 @@ namespace Qyoto {
 		public bool MakeAbsolute() {
 			return ProxyQDir().MakeAbsolute();
 		}
-		public static bool operator==(QDir lhs, QDir dir) {
-			return StaticQDir().op_equals(lhs,dir);
-		}
-		public static bool operator!=(QDir lhs, QDir dir) {
-			return !StaticQDir().op_equals(lhs,dir);
-		}
 		public override bool Equals(object o) {
 			if (!(o is QDir)) { return false; }
 			return this == (QDir) o;
@@ -337,6 +331,22 @@ namespace Qyoto {
 		[SmokeMethod("refresh", "() const", "")]
 		public void Refresh() {
 			ProxyQDir().Refresh();
+		}
+		~QDir() {
+			DisposeQDir();
+		}
+		public void Dispose() {
+			DisposeQDir();
+		}
+		[SmokeMethod("~QDir", "()", "")]
+		private void DisposeQDir() {
+			ProxyQDir().DisposeQDir();
+		}
+		public static bool operator==(QDir lhs, QDir dir) {
+			return StaticQDir().op_equals(lhs,dir);
+		}
+		public static bool operator!=(QDir lhs, QDir dir) {
+			return !StaticQDir().op_equals(lhs,dir);
 		}
 		public static void AddResourceSearchPath(string path) {
 			StaticQDir().AddResourceSearchPath(path);
@@ -400,16 +410,6 @@ namespace Qyoto {
 		}
 		public static string CleanPath(string path) {
 			return StaticQDir().CleanPath(path);
-		}
-		~QDir() {
-			DisposeQDir();
-		}
-		public void Dispose() {
-			DisposeQDir();
-		}
-		[SmokeMethod("~QDir", "()", "")]
-		private void DisposeQDir() {
-			ProxyQDir().DisposeQDir();
 		}
 	}
 }

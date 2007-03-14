@@ -117,12 +117,6 @@ namespace Qyoto {
 		public void Clear() {
 			ProxyQMimeData().Clear();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQMimeData().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQMimeData().Tr(s);
-		}
 		[SmokeMethod("retrieveData", "(const QString&, QVariant::Type) const", "$$")]
 		protected virtual QVariant RetrieveData(string mimetype, QVariant.TypeOf preferredType) {
 			return ProxyQMimeData().RetrieveData(mimetype,preferredType);
@@ -136,6 +130,12 @@ namespace Qyoto {
 		[SmokeMethod("~QMimeData", "()", "")]
 		private void DisposeQMimeData() {
 			ProxyQMimeData().DisposeQMimeData();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQMimeData().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQMimeData().Tr(s);
 		}
 		protected new IQMimeDataSignals Emit {
 			get { return (IQMimeDataSignals) Q_EMIT; }

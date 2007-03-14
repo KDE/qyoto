@@ -68,12 +68,6 @@ namespace Qyoto {
 		private void NewQFileInfo(QFileInfo fileinfo) {
 			ProxyQFileInfo().NewQFileInfo(fileinfo);
 		}
-		public static bool operator==(QFileInfo lhs, QFileInfo fileinfo) {
-			return StaticQFileInfo().op_equals(lhs,fileinfo);
-		}
-		public static bool operator!=(QFileInfo lhs, QFileInfo fileinfo) {
-			return !StaticQFileInfo().op_equals(lhs,fileinfo);
-		}
 		public override bool Equals(object o) {
 			if (!(o is QFileInfo)) { return false; }
 			return this == (QFileInfo) o;
@@ -266,6 +260,12 @@ namespace Qyoto {
 		[SmokeMethod("~QFileInfo", "()", "")]
 		private void DisposeQFileInfo() {
 			ProxyQFileInfo().DisposeQFileInfo();
+		}
+		public static bool operator==(QFileInfo lhs, QFileInfo fileinfo) {
+			return StaticQFileInfo().op_equals(lhs,fileinfo);
+		}
+		public static bool operator!=(QFileInfo lhs, QFileInfo fileinfo) {
+			return !StaticQFileInfo().op_equals(lhs,fileinfo);
 		}
 	}
 }

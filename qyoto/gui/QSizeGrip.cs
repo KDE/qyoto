@@ -44,12 +44,6 @@ namespace Qyoto {
 		public override void SetVisible(bool arg1) {
 			ProxyQSizeGrip().SetVisible(arg1);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQSizeGrip().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQSizeGrip().Tr(s);
-		}
 		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
 		protected override void PaintEvent(QPaintEvent arg1) {
 			ProxyQSizeGrip().PaintEvent(arg1);
@@ -79,6 +73,12 @@ namespace Qyoto {
 		[SmokeMethod("~QSizeGrip", "()", "")]
 		private void DisposeQSizeGrip() {
 			ProxyQSizeGrip().DisposeQSizeGrip();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQSizeGrip().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQSizeGrip().Tr(s);
 		}
 		protected new IQSizeGripSignals Emit {
 			get { return (IQSizeGripSignals) Q_EMIT; }

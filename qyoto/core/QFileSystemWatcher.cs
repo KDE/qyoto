@@ -86,12 +86,6 @@ namespace Qyoto {
 		public List<string> Directories() {
 			return ProxyQFileSystemWatcher().Directories();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQFileSystemWatcher().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQFileSystemWatcher().Tr(s);
-		}
 		~QFileSystemWatcher() {
 			DisposeQFileSystemWatcher();
 		}
@@ -101,6 +95,12 @@ namespace Qyoto {
 		[SmokeMethod("~QFileSystemWatcher", "()", "")]
 		private void DisposeQFileSystemWatcher() {
 			ProxyQFileSystemWatcher().DisposeQFileSystemWatcher();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQFileSystemWatcher().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQFileSystemWatcher().Tr(s);
 		}
 		protected new IQFileSystemWatcherSignals Emit {
 			get { return (IQFileSystemWatcherSignals) Q_EMIT; }

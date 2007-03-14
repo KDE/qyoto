@@ -8,23 +8,12 @@ namespace Qyoto {
 		protected Object _interceptor = null;
 		private IntPtr _smokeObject;
 		protected QItemEditorCreatorBase(Type dummy) {}
-		[SmokeClass("QItemEditorCreatorBase")]
-		interface IQItemEditorCreatorBaseProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QItemEditorCreatorBase), this);
 			_interceptor = (QItemEditorCreatorBase) realProxy.GetTransparentProxy();
 		}
 		private QItemEditorCreatorBase ProxyQItemEditorCreatorBase() {
 			return (QItemEditorCreatorBase) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QItemEditorCreatorBase() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQItemEditorCreatorBaseProxy), null);
-			_staticInterceptor = (IQItemEditorCreatorBaseProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQItemEditorCreatorBaseProxy StaticQItemEditorCreatorBase() {
-			return (IQItemEditorCreatorBaseProxy) _staticInterceptor;
 		}
 		public abstract QWidget CreateWidget(QWidget parent);
 		public abstract QByteArray ValuePropertyName();
@@ -35,16 +24,6 @@ namespace Qyoto {
 		[SmokeMethod("QItemEditorCreatorBase", "()", "")]
 		private void NewQItemEditorCreatorBase() {
 			ProxyQItemEditorCreatorBase().NewQItemEditorCreatorBase();
-		}
-		~QItemEditorCreatorBase() {
-			DisposeQItemEditorCreatorBase();
-		}
-		public void Dispose() {
-			DisposeQItemEditorCreatorBase();
-		}
-		[SmokeMethod("~QItemEditorCreatorBase", "()", "")]
-		private void DisposeQItemEditorCreatorBase() {
-			ProxyQItemEditorCreatorBase().DisposeQItemEditorCreatorBase();
 		}
 	}
 }

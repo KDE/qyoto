@@ -69,6 +69,7 @@ namespace Qyoto {
 			BlockUnderCursor = 2,
 			Document = 3,
 		}
+		// QTextCursor* QTextCursor(QTextCursorPrivate* arg1); >>>> NOT CONVERTED
 		public QTextCursor() : this((Type) null) {
 			CreateProxy();
 			NewQTextCursor();
@@ -101,7 +102,6 @@ namespace Qyoto {
 		private void NewQTextCursor(QTextBlock block) {
 			ProxyQTextCursor().NewQTextCursor(block);
 		}
-		// QTextCursor* QTextCursor(QTextCursorPrivate* arg1); >>>> NOT CONVERTED
 		public QTextCursor(QTextCursor cursor) : this((Type) null) {
 			CreateProxy();
 			NewQTextCursor(cursor);
@@ -338,30 +338,12 @@ namespace Qyoto {
 		public void EndEditBlock() {
 			ProxyQTextCursor().EndEditBlock();
 		}
-		public static bool operator<(QTextCursor lhs, QTextCursor rhs) {
-			return StaticQTextCursor().op_lt(lhs,rhs);
-		}
-		public static bool operator<=(QTextCursor lhs, QTextCursor rhs) {
-			return StaticQTextCursor().op_lte(lhs,rhs);
-		}
-		public static bool operator==(QTextCursor lhs, QTextCursor rhs) {
-			return StaticQTextCursor().op_equals(lhs,rhs);
-		}
-		public static bool operator!=(QTextCursor lhs, QTextCursor rhs) {
-			return !StaticQTextCursor().op_equals(lhs,rhs);
-		}
 		public override bool Equals(object o) {
 			if (!(o is QTextCursor)) { return false; }
 			return this == (QTextCursor) o;
 		}
 		public override int GetHashCode() {
 			return ProxyQTextCursor().GetHashCode();
-		}
-		public static bool operator>=(QTextCursor lhs, QTextCursor rhs) {
-			return StaticQTextCursor().op_gte(lhs,rhs);
-		}
-		public static bool operator>(QTextCursor lhs, QTextCursor rhs) {
-			return StaticQTextCursor().op_gt(lhs,rhs);
 		}
 		[SmokeMethod("isCopyOf", "(const QTextCursor&) const", "#")]
 		public bool IsCopyOf(QTextCursor other) {
@@ -384,6 +366,24 @@ namespace Qyoto {
 		[SmokeMethod("~QTextCursor", "()", "")]
 		private void DisposeQTextCursor() {
 			ProxyQTextCursor().DisposeQTextCursor();
+		}
+		public static bool operator<(QTextCursor lhs, QTextCursor rhs) {
+			return StaticQTextCursor().op_lt(lhs,rhs);
+		}
+		public static bool operator<=(QTextCursor lhs, QTextCursor rhs) {
+			return StaticQTextCursor().op_lte(lhs,rhs);
+		}
+		public static bool operator==(QTextCursor lhs, QTextCursor rhs) {
+			return StaticQTextCursor().op_equals(lhs,rhs);
+		}
+		public static bool operator!=(QTextCursor lhs, QTextCursor rhs) {
+			return !StaticQTextCursor().op_equals(lhs,rhs);
+		}
+		public static bool operator>=(QTextCursor lhs, QTextCursor rhs) {
+			return StaticQTextCursor().op_gte(lhs,rhs);
+		}
+		public static bool operator>(QTextCursor lhs, QTextCursor rhs) {
+			return StaticQTextCursor().op_gt(lhs,rhs);
 		}
 	}
 }

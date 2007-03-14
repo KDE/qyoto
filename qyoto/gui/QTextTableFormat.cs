@@ -7,23 +7,12 @@ namespace Qyoto {
 	[SmokeClass("QTextTableFormat")]
 	public class QTextTableFormat : QTextFrameFormat, IDisposable {
  		protected QTextTableFormat(Type dummy) : base((Type) null) {}
-		[SmokeClass("QTextTableFormat")]
-		interface IQTextTableFormatProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextTableFormat), this);
 			_interceptor = (QTextTableFormat) realProxy.GetTransparentProxy();
 		}
 		private QTextTableFormat ProxyQTextTableFormat() {
 			return (QTextTableFormat) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QTextTableFormat() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTextTableFormatProxy), null);
-			_staticInterceptor = (IQTextTableFormatProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQTextTableFormatProxy StaticQTextTableFormat() {
-			return (IQTextTableFormatProxy) _staticInterceptor;
 		}
 		public QTextTableFormat() : this((Type) null) {
 			CreateProxy();

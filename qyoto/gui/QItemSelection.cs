@@ -61,9 +61,6 @@ namespace Qyoto {
 		public void Merge(QItemSelection other, int command) {
 			ProxyQItemSelection().Merge(other,command);
 		}
-		public static void Split(QItemSelectionRange range, QItemSelectionRange other, QItemSelection result) {
-			StaticQItemSelection().Split(range,other,result);
-		}
 		~QItemSelection() {
 			DisposeQItemSelection();
 		}
@@ -73,6 +70,9 @@ namespace Qyoto {
 		[SmokeMethod("~QItemSelection", "()", "")]
 		private void DisposeQItemSelection() {
 			ProxyQItemSelection().DisposeQItemSelection();
+		}
+		public static void Split(QItemSelectionRange range, QItemSelectionRange other, QItemSelection result) {
+			StaticQItemSelection().Split(range,other,result);
 		}
 	}
 }

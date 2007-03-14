@@ -75,6 +75,11 @@ namespace Qyoto {
 		}
 		public enum Extension {
 		}
+		// QAbstractFileEngine::Iterator* beginEntryList(QDir::Filters arg1,const QStringList& arg2); >>>> NOT CONVERTED
+		// QAbstractFileEngine::Iterator* endEntryList(); >>>> NOT CONVERTED
+		// bool extension(QAbstractFileEngine::Extension arg1,const QAbstractFileEngine::ExtensionOption* arg2,QAbstractFileEngine::ExtensionReturn* arg3); >>>> NOT CONVERTED
+		// bool extension(QAbstractFileEngine::Extension arg1,const QAbstractFileEngine::ExtensionOption* arg2); >>>> NOT CONVERTED
+		// QAbstractFileEngine* QAbstractFileEngine(QAbstractFileEnginePrivate& arg1); >>>> NOT CONVERTED
 		[SmokeMethod("open", "(QIODevice::OpenMode)", "$")]
 		public virtual bool Open(int openMode) {
 			return ProxyQAbstractFileEngine().Open(openMode);
@@ -179,8 +184,6 @@ namespace Qyoto {
 		public virtual void SetFileName(string file) {
 			ProxyQAbstractFileEngine().SetFileName(file);
 		}
-		// QAbstractFileEngine::Iterator* beginEntryList(QDir::Filters arg1,const QStringList& arg2); >>>> NOT CONVERTED
-		// QAbstractFileEngine::Iterator* endEntryList(); >>>> NOT CONVERTED
 		[SmokeMethod("read", "(char*, qint64)", "$$")]
 		public virtual long Read(string data, long maxlen) {
 			return ProxyQAbstractFileEngine().Read(data,maxlen);
@@ -201,8 +204,6 @@ namespace Qyoto {
 		public string ErrorString() {
 			return ProxyQAbstractFileEngine().ErrorString();
 		}
-		// bool extension(QAbstractFileEngine::Extension arg1,const QAbstractFileEngine::ExtensionOption* arg2,QAbstractFileEngine::ExtensionReturn* arg3); >>>> NOT CONVERTED
-		// bool extension(QAbstractFileEngine::Extension arg1,const QAbstractFileEngine::ExtensionOption* arg2); >>>> NOT CONVERTED
 		[SmokeMethod("extension", "(QAbstractFileEngine::Extension)", "$")]
 		public virtual bool extension(QAbstractFileEngine.Extension extension) {
 			return ProxyQAbstractFileEngine().extension(extension);
@@ -210,9 +211,6 @@ namespace Qyoto {
 		[SmokeMethod("supportsExtension", "(QAbstractFileEngine::Extension) const", "$")]
 		public virtual bool SupportsExtension(QAbstractFileEngine.Extension extension) {
 			return ProxyQAbstractFileEngine().SupportsExtension(extension);
-		}
-		public static QAbstractFileEngine Create(string fileName) {
-			return StaticQAbstractFileEngine().Create(fileName);
 		}
 		[SmokeMethod("setError", "(QFile::FileError, const QString&)", "$$")]
 		protected void SetError(QFile.FileError error, string str) {
@@ -226,7 +224,6 @@ namespace Qyoto {
 		private void NewQAbstractFileEngine() {
 			ProxyQAbstractFileEngine().NewQAbstractFileEngine();
 		}
-		// QAbstractFileEngine* QAbstractFileEngine(QAbstractFileEnginePrivate& arg1); >>>> NOT CONVERTED
 		~QAbstractFileEngine() {
 			DisposeQAbstractFileEngine();
 		}
@@ -236,6 +233,9 @@ namespace Qyoto {
 		[SmokeMethod("~QAbstractFileEngine", "()", "")]
 		private void DisposeQAbstractFileEngine() {
 			ProxyQAbstractFileEngine().DisposeQAbstractFileEngine();
+		}
+		public static QAbstractFileEngine Create(string fileName) {
+			return StaticQAbstractFileEngine().Create(fileName);
 		}
 	}
 }

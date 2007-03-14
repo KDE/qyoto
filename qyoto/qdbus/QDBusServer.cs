@@ -56,12 +56,6 @@ namespace Qyoto {
 		public string Address() {
 			return ProxyQDBusServer().Address();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQDBusServer().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQDBusServer().Tr(s);
-		}
 		~QDBusServer() {
 			DisposeQDBusServer();
 		}
@@ -71,6 +65,12 @@ namespace Qyoto {
 		[SmokeMethod("~QDBusServer", "()", "")]
 		private void DisposeQDBusServer() {
 			ProxyQDBusServer().DisposeQDBusServer();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQDBusServer().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQDBusServer().Tr(s);
 		}
 		protected new IQDBusServerSignals Emit {
 			get { return (IQDBusServerSignals) Q_EMIT; }

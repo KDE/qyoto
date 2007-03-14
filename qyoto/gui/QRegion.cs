@@ -45,6 +45,7 @@ namespace Qyoto {
 			Rectangle = 0,
 			Ellipse = 1,
 		}
+		//  operator QVariant(); >>>> NOT CONVERTED
 		public QRegion() : this((Type) null) {
 			CreateProxy();
 			NewQRegion();
@@ -197,6 +198,23 @@ namespace Qyoto {
 		public void SetRects(QRect rect, int num) {
 			ProxyQRegion().SetRects(rect,num);
 		}
+		public override bool Equals(object o) {
+			if (!(o is QRegion)) { return false; }
+			return this == (QRegion) o;
+		}
+		public override int GetHashCode() {
+			return ProxyQRegion().GetHashCode();
+		}
+		~QRegion() {
+			DisposeQRegion();
+		}
+		public void Dispose() {
+			DisposeQRegion();
+		}
+		[SmokeMethod("~QRegion", "()", "")]
+		private void DisposeQRegion() {
+			ProxyQRegion().DisposeQRegion();
+		}
 		public static QRegion operator|(QRegion lhs, QRegion r) {
 			return StaticQRegion().op_or(lhs,r);
 		}
@@ -217,24 +235,6 @@ namespace Qyoto {
 		}
 		public static bool operator!=(QRegion lhs, QRegion r) {
 			return !StaticQRegion().op_equals(lhs,r);
-		}
-		public override bool Equals(object o) {
-			if (!(o is QRegion)) { return false; }
-			return this == (QRegion) o;
-		}
-		public override int GetHashCode() {
-			return ProxyQRegion().GetHashCode();
-		}
-		//  operator QVariant(); >>>> NOT CONVERTED
-		~QRegion() {
-			DisposeQRegion();
-		}
-		public void Dispose() {
-			DisposeQRegion();
-		}
-		[SmokeMethod("~QRegion", "()", "")]
-		private void DisposeQRegion() {
-			ProxyQRegion().DisposeQRegion();
 		}
 		public static QRegion operator*(QRegion r, QMatrix m) {
 			return StaticQRegion().op_mult(r,m);

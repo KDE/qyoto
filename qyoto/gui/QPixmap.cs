@@ -56,6 +56,8 @@ namespace Qyoto {
 		private static IQPixmapProxy StaticQPixmap() {
 			return (IQPixmapProxy) _staticInterceptor;
 		}
+		// QPixmap* QPixmap(const char** arg1); >>>> NOT CONVERTED
+		//  operator QVariant(); >>>> NOT CONVERTED
 		public QPixmap() : this((Type) null) {
 			CreateProxy();
 			NewQPixmap();
@@ -104,7 +106,6 @@ namespace Qyoto {
 		private void NewQPixmap(string fileName) {
 			ProxyQPixmap().NewQPixmap(fileName);
 		}
-		// QPixmap* QPixmap(const char** arg1); >>>> NOT CONVERTED
 		public QPixmap(QPixmap arg1) : this((Type) null) {
 			CreateProxy();
 			NewQPixmap(arg1);
@@ -113,7 +114,6 @@ namespace Qyoto {
 		private void NewQPixmap(QPixmap arg1) {
 			ProxyQPixmap().NewQPixmap(arg1);
 		}
-		//  operator QVariant(); >>>> NOT CONVERTED
 		[SmokeMethod("isNull", "() const", "")]
 		public bool IsNull() {
 			return ProxyQPixmap().IsNull();
@@ -338,6 +338,20 @@ namespace Qyoto {
 		public override QPaintEngine PaintEngine() {
 			return ProxyQPixmap().PaintEngine();
 		}
+		[SmokeMethod("metric", "(QPaintDevice::PaintDeviceMetric) const", "$")]
+		protected override int Metric(IQPaintDevice arg1) {
+			return ProxyQPixmap().Metric(arg1);
+		}
+		~QPixmap() {
+			DisposeQPixmap();
+		}
+		public void Dispose() {
+			DisposeQPixmap();
+		}
+		[SmokeMethod("~QPixmap", "()", "")]
+		private void DisposeQPixmap() {
+			ProxyQPixmap().DisposeQPixmap();
+		}
 		public static bool operator!(QPixmap lhs) {
 			return StaticQPixmap().op_not(lhs);
 		}
@@ -385,20 +399,6 @@ namespace Qyoto {
 		}
 		public static QPixmap FromImage(QImage image) {
 			return StaticQPixmap().FromImage(image);
-		}
-		[SmokeMethod("metric", "(QPaintDevice::PaintDeviceMetric) const", "$")]
-		protected override int Metric(IQPaintDevice arg1) {
-			return ProxyQPixmap().Metric(arg1);
-		}
-		~QPixmap() {
-			DisposeQPixmap();
-		}
-		public void Dispose() {
-			DisposeQPixmap();
-		}
-		[SmokeMethod("~QPixmap", "()", "")]
-		private void DisposeQPixmap() {
-			ProxyQPixmap().DisposeQPixmap();
 		}
 	}
 }

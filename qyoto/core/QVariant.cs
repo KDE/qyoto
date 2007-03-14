@@ -84,6 +84,15 @@ namespace Qyoto {
 			UserType = 127,
 			LastType = 0xffffffff,
 		}
+		// QVariant* QVariant(int arg1,const void* arg2); >>>> NOT CONVERTED
+		// QVariant* QVariant(const QBitArray& arg1); >>>> NOT CONVERTED
+		// QVariant* QVariant(const QLatin1String& arg1); >>>> NOT CONVERTED
+		// QBitArray toBitArray(); >>>> NOT CONVERTED
+		// void* data(); >>>> NOT CONVERTED
+		// const void* constData(); >>>> NOT CONVERTED
+		// const void* data(); >>>> NOT CONVERTED
+		// void create(int arg1,const void* arg2); >>>> NOT CONVERTED
+		// bool operator==(const QVariant& arg1,const QVariantComparisonHelper& arg2); >>>> NOT CONVERTED
 		public QVariant() : this((Type) null) {
 			CreateProxy();
 			NewQVariant();
@@ -100,7 +109,6 @@ namespace Qyoto {
 		private void NewQVariant(QVariant.TypeOf type) {
 			ProxyQVariant().NewQVariant(type);
 		}
-		// QVariant* QVariant(int arg1,const void* arg2); >>>> NOT CONVERTED
 		public QVariant(QVariant other) : this((Type) null) {
 			CreateProxy();
 			NewQVariant(other);
@@ -181,8 +189,6 @@ namespace Qyoto {
 		private void NewQVariant(QByteArray bytearray) {
 			ProxyQVariant().NewQVariant(bytearray);
 		}
-		// QVariant* QVariant(const QBitArray& arg1); >>>> NOT CONVERTED
-		// QVariant* QVariant(const QLatin1String& arg1); >>>> NOT CONVERTED
 		public QVariant(List<string> stringlist) : this((Type) null) {
 			CreateProxy();
 			NewQVariant(stringlist);
@@ -423,7 +429,6 @@ namespace Qyoto {
 		public QByteArray ToByteArray() {
 			return ProxyQVariant().ToByteArray();
 		}
-		// QBitArray toBitArray(); >>>> NOT CONVERTED
 		[SmokeMethod("toString", "() const", "")]
 		public string ToString() {
 			return ProxyQVariant().ToString();
@@ -508,15 +513,6 @@ namespace Qyoto {
 		public void Save(QDataStream ds) {
 			ProxyQVariant().Save(ds);
 		}
-		// void* data(); >>>> NOT CONVERTED
-		// const void* constData(); >>>> NOT CONVERTED
-		// const void* data(); >>>> NOT CONVERTED
-		public static bool operator==(QVariant lhs, QVariant v) {
-			return StaticQVariant().op_equals(lhs,v);
-		}
-		public static bool operator!=(QVariant lhs, QVariant v) {
-			return !StaticQVariant().op_equals(lhs,v);
-		}
 		public override bool Equals(object o) {
 			if (!(o is QVariant)) { return false; }
 			return this == (QVariant) o;
@@ -524,13 +520,6 @@ namespace Qyoto {
 		public override int GetHashCode() {
 			return ProxyQVariant().GetHashCode();
 		}
-		public static string TypeToName(QVariant.TypeOf type) {
-			return StaticQVariant().TypeToName(type);
-		}
-		public static QVariant.TypeOf NameToType(string name) {
-			return StaticQVariant().NameToType(name);
-		}
-		// void create(int arg1,const void* arg2); >>>> NOT CONVERTED
 		[SmokeMethod("cmp", "(const QVariant&) const", "#")]
 		protected bool Cmp(QVariant other) {
 			return ProxyQVariant().Cmp(other);
@@ -545,6 +534,17 @@ namespace Qyoto {
 		private void DisposeQVariant() {
 			ProxyQVariant().DisposeQVariant();
 		}
-		// bool operator==(const QVariant& arg1,const QVariantComparisonHelper& arg2); >>>> NOT CONVERTED
+		public static bool operator==(QVariant lhs, QVariant v) {
+			return StaticQVariant().op_equals(lhs,v);
+		}
+		public static bool operator!=(QVariant lhs, QVariant v) {
+			return !StaticQVariant().op_equals(lhs,v);
+		}
+		public static string TypeToName(QVariant.TypeOf type) {
+			return StaticQVariant().TypeToName(type);
+		}
+		public static QVariant.TypeOf NameToType(string name) {
+			return StaticQVariant().NameToType(name);
+		}
 	}
 }

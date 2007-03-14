@@ -106,12 +106,6 @@ namespace Qyoto {
 		public QWidget ParentWidget() {
 			return ProxyQShortcut().ParentWidget();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQShortcut().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQShortcut().Tr(s);
-		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected new virtual bool Event(QEvent e) {
 			return ProxyQShortcut().Event(e);
@@ -125,6 +119,12 @@ namespace Qyoto {
 		[SmokeMethod("~QShortcut", "()", "")]
 		private void DisposeQShortcut() {
 			ProxyQShortcut().DisposeQShortcut();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQShortcut().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQShortcut().Tr(s);
 		}
 		protected new IQShortcutSignals Emit {
 			get { return (IQShortcutSignals) Q_EMIT; }

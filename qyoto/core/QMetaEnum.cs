@@ -8,23 +8,12 @@ namespace Qyoto {
 		protected Object _interceptor = null;
 		private IntPtr _smokeObject;
 		protected QMetaEnum(Type dummy) {}
-		[SmokeClass("QMetaEnum")]
-		interface IQMetaEnumProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMetaEnum), this);
 			_interceptor = (QMetaEnum) realProxy.GetTransparentProxy();
 		}
 		private QMetaEnum ProxyQMetaEnum() {
 			return (QMetaEnum) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QMetaEnum() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQMetaEnumProxy), null);
-			_staticInterceptor = (IQMetaEnumProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQMetaEnumProxy StaticQMetaEnum() {
-			return (IQMetaEnumProxy) _staticInterceptor;
 		}
 		public QMetaEnum() : this((Type) null) {
 			CreateProxy();

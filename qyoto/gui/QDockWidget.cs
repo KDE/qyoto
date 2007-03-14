@@ -126,12 +126,6 @@ namespace Qyoto {
 		public QAction ToggleViewAction() {
 			return ProxyQDockWidget().ToggleViewAction();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQDockWidget().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQDockWidget().Tr(s);
-		}
 		[SmokeMethod("changeEvent", "(QEvent*)", "#")]
 		protected override void ChangeEvent(QEvent arg1) {
 			ProxyQDockWidget().ChangeEvent(arg1);
@@ -157,6 +151,12 @@ namespace Qyoto {
 		[SmokeMethod("~QDockWidget", "()", "")]
 		private void DisposeQDockWidget() {
 			ProxyQDockWidget().DisposeQDockWidget();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQDockWidget().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQDockWidget().Tr(s);
 		}
 		protected new IQDockWidgetSignals Emit {
 			get { return (IQDockWidgetSignals) Q_EMIT; }

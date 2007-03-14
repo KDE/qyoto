@@ -8,9 +8,6 @@ namespace Qyoto {
 		protected Object _interceptor = null;
 		private IntPtr _smokeObject;
 		protected QSqlDriverCreatorBase(Type dummy) {}
-		[SmokeClass("QSqlDriverCreatorBase")]
-		interface IQSqlDriverCreatorBaseProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSqlDriverCreatorBase), this);
 			_interceptor = (QSqlDriverCreatorBase) realProxy.GetTransparentProxy();
@@ -18,25 +15,7 @@ namespace Qyoto {
 		private QSqlDriverCreatorBase ProxyQSqlDriverCreatorBase() {
 			return (QSqlDriverCreatorBase) _interceptor;
 		}
-		private static Object _staticInterceptor = null;
-		static QSqlDriverCreatorBase() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQSqlDriverCreatorBaseProxy), null);
-			_staticInterceptor = (IQSqlDriverCreatorBaseProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQSqlDriverCreatorBaseProxy StaticQSqlDriverCreatorBase() {
-			return (IQSqlDriverCreatorBaseProxy) _staticInterceptor;
-		}
-		public abstract QSqlDriver CreateObject();
 		// QSqlDriverCreatorBase* QSqlDriverCreatorBase(); >>>> NOT CONVERTED
-		~QSqlDriverCreatorBase() {
-			DisposeQSqlDriverCreatorBase();
-		}
-		public void Dispose() {
-			DisposeQSqlDriverCreatorBase();
-		}
-		[SmokeMethod("~QSqlDriverCreatorBase", "()", "")]
-		private void DisposeQSqlDriverCreatorBase() {
-			ProxyQSqlDriverCreatorBase().DisposeQSqlDriverCreatorBase();
-		}
+		public abstract QSqlDriver CreateObject();
 	}
 }

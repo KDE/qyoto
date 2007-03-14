@@ -158,18 +158,32 @@ namespace Qyoto {
 		public int DaysTo(QDate arg1) {
 			return ProxyQDate().DaysTo(arg1);
 		}
-		public static bool operator==(QDate lhs, QDate other) {
-			return StaticQDate().op_equals(lhs,other);
-		}
-		public static bool operator!=(QDate lhs, QDate other) {
-			return !StaticQDate().op_equals(lhs,other);
-		}
 		public override bool Equals(object o) {
 			if (!(o is QDate)) { return false; }
 			return this == (QDate) o;
 		}
 		public override int GetHashCode() {
 			return ProxyQDate().GetHashCode();
+		}
+		[SmokeMethod("toJulianDay", "() const", "")]
+		public int ToJulianDay() {
+			return ProxyQDate().ToJulianDay();
+		}
+		~QDate() {
+			DisposeQDate();
+		}
+		public void Dispose() {
+			DisposeQDate();
+		}
+		[SmokeMethod("~QDate", "()", "")]
+		private void DisposeQDate() {
+			ProxyQDate().DisposeQDate();
+		}
+		public static bool operator==(QDate lhs, QDate other) {
+			return StaticQDate().op_equals(lhs,other);
+		}
+		public static bool operator!=(QDate lhs, QDate other) {
+			return !StaticQDate().op_equals(lhs,other);
 		}
 		public static bool operator<(QDate lhs, QDate other) {
 			return StaticQDate().op_lt(lhs,other);
@@ -182,10 +196,6 @@ namespace Qyoto {
 		}
 		public static bool operator>=(QDate lhs, QDate other) {
 			return StaticQDate().op_gte(lhs,other);
-		}
-		[SmokeMethod("toJulianDay", "() const", "")]
-		public int ToJulianDay() {
-			return ProxyQDate().ToJulianDay();
 		}
 		public static string ShortMonthName(int month) {
 			return StaticQDate().ShortMonthName(month);
@@ -225,16 +235,6 @@ namespace Qyoto {
 		}
 		public static QDate FromJulianDay(int jd) {
 			return StaticQDate().FromJulianDay(jd);
-		}
-		~QDate() {
-			DisposeQDate();
-		}
-		public void Dispose() {
-			DisposeQDate();
-		}
-		[SmokeMethod("~QDate", "()", "")]
-		private void DisposeQDate() {
-			ProxyQDate().DisposeQDate();
 		}
 	}
 }

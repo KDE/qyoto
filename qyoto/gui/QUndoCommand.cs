@@ -8,23 +8,12 @@ namespace Qyoto {
 		protected Object _interceptor = null;
 		private IntPtr _smokeObject;
 		protected QUndoCommand(Type dummy) {}
-		[SmokeClass("QUndoCommand")]
-		interface IQUndoCommandProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QUndoCommand), this);
 			_interceptor = (QUndoCommand) realProxy.GetTransparentProxy();
 		}
 		private QUndoCommand ProxyQUndoCommand() {
 			return (QUndoCommand) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QUndoCommand() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQUndoCommandProxy), null);
-			_staticInterceptor = (IQUndoCommandProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQUndoCommandProxy StaticQUndoCommand() {
-			return (IQUndoCommandProxy) _staticInterceptor;
 		}
 		public QUndoCommand(QUndoCommand parent) : this((Type) null) {
 			CreateProxy();

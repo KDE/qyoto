@@ -60,12 +60,6 @@ namespace Qyoto {
 		private void NewQDateEdit(QDate date) {
 			ProxyQDateEdit().NewQDateEdit(date);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQDateEdit().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQDateEdit().Tr(s);
-		}
 		~QDateEdit() {
 			DisposeQDateEdit();
 		}
@@ -75,6 +69,12 @@ namespace Qyoto {
 		[SmokeMethod("~QDateEdit", "()", "")]
 		private void DisposeQDateEdit() {
 			ProxyQDateEdit().DisposeQDateEdit();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQDateEdit().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQDateEdit().Tr(s);
 		}
 		protected new IQDateEditSignals Emit {
 			get { return (IQDateEditSignals) Q_EMIT; }

@@ -19,13 +19,6 @@ namespace Qyoto {
 			[SmokeMethod("location", "(QLibraryInfo::LibraryLocation)", "$")]
 			string Location(QLibraryInfo.LibraryLocation arg1);
 		}
-		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QLibraryInfo), this);
-			_interceptor = (QLibraryInfo) realProxy.GetTransparentProxy();
-		}
-		private QLibraryInfo ProxyQLibraryInfo() {
-			return (QLibraryInfo) _interceptor;
-		}
 		private static Object _staticInterceptor = null;
 		static QLibraryInfo() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQLibraryInfoProxy), null);
@@ -58,16 +51,6 @@ namespace Qyoto {
 		}
 		public static string Location(QLibraryInfo.LibraryLocation arg1) {
 			return StaticQLibraryInfo().Location(arg1);
-		}
-		~QLibraryInfo() {
-			DisposeQLibraryInfo();
-		}
-		public void Dispose() {
-			DisposeQLibraryInfo();
-		}
-		[SmokeMethod("~QLibraryInfo", "()", "")]
-		private void DisposeQLibraryInfo() {
-			ProxyQLibraryInfo().DisposeQLibraryInfo();
 		}
 	}
 }

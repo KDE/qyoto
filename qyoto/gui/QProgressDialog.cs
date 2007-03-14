@@ -151,12 +151,6 @@ namespace Qyoto {
 		public void SetCancelButtonText(string arg1) {
 			ProxyQProgressDialog().SetCancelButtonText(arg1);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQProgressDialog().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQProgressDialog().Tr(s);
-		}
 		[SmokeMethod("resizeEvent", "(QResizeEvent*)", "#")]
 		protected override void ResizeEvent(QResizeEvent arg1) {
 			ProxyQProgressDialog().ResizeEvent(arg1);
@@ -187,6 +181,12 @@ namespace Qyoto {
 		[SmokeMethod("~QProgressDialog", "()", "")]
 		private void DisposeQProgressDialog() {
 			ProxyQProgressDialog().DisposeQProgressDialog();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQProgressDialog().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQProgressDialog().Tr(s);
 		}
 		protected new IQProgressDialogSignals Emit {
 			get { return (IQProgressDialogSignals) Q_EMIT; }

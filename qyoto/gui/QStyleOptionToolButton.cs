@@ -6,23 +6,12 @@ namespace Qyoto {
 	[SmokeClass("QStyleOptionToolButton")]
 	public class QStyleOptionToolButton : QStyleOptionComplex, IDisposable {
  		protected QStyleOptionToolButton(Type dummy) : base((Type) null) {}
-		[SmokeClass("QStyleOptionToolButton")]
-		interface IQStyleOptionToolButtonProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionToolButton), this);
 			_interceptor = (QStyleOptionToolButton) realProxy.GetTransparentProxy();
 		}
 		private QStyleOptionToolButton ProxyQStyleOptionToolButton() {
 			return (QStyleOptionToolButton) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QStyleOptionToolButton() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQStyleOptionToolButtonProxy), null);
-			_staticInterceptor = (IQStyleOptionToolButtonProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQStyleOptionToolButtonProxy StaticQStyleOptionToolButton() {
-			return (IQStyleOptionToolButtonProxy) _staticInterceptor;
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_ToolButton,

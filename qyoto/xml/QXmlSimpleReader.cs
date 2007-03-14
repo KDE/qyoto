@@ -6,9 +6,6 @@ namespace Qyoto {
 	[SmokeClass("QXmlSimpleReader")]
 	public class QXmlSimpleReader : QXmlReader, IDisposable {
  		protected QXmlSimpleReader(Type dummy) : base((Type) null) {}
-		[SmokeClass("QXmlSimpleReader")]
-		interface IQXmlSimpleReaderProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlSimpleReader), this);
 			_interceptor = (QXmlSimpleReader) realProxy.GetTransparentProxy();
@@ -16,14 +13,9 @@ namespace Qyoto {
 		private QXmlSimpleReader ProxyQXmlSimpleReader() {
 			return (QXmlSimpleReader) _interceptor;
 		}
-		private static Object _staticInterceptor = null;
-		static QXmlSimpleReader() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQXmlSimpleReaderProxy), null);
-			_staticInterceptor = (IQXmlSimpleReaderProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQXmlSimpleReaderProxy StaticQXmlSimpleReader() {
-			return (IQXmlSimpleReaderProxy) _staticInterceptor;
-		}
+		// void* property(const QString& arg1,bool* arg2); >>>> NOT CONVERTED
+		// void* property(const QString& arg1); >>>> NOT CONVERTED
+		// void setProperty(const QString& arg1,void* arg2); >>>> NOT CONVERTED
 		public QXmlSimpleReader() : this((Type) null) {
 			CreateProxy();
 			NewQXmlSimpleReader();
@@ -48,9 +40,6 @@ namespace Qyoto {
 		public override bool HasFeature(string name) {
 			return ProxyQXmlSimpleReader().HasFeature(name);
 		}
-		// void* property(const QString& arg1,bool* arg2); >>>> NOT CONVERTED
-		// void* property(const QString& arg1); >>>> NOT CONVERTED
-		// void setProperty(const QString& arg1,void* arg2); >>>> NOT CONVERTED
 		[SmokeMethod("hasProperty", "(const QString&) const", "$")]
 		public override bool HasProperty(string name) {
 			return ProxyQXmlSimpleReader().HasProperty(name);

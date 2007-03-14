@@ -235,6 +235,7 @@ namespace Qyoto {
 			get { return Property("styleSheet").Value<string>(); }
 			set { SetProperty("styleSheet", QVariant.FromValue<string>(value)); }
 		}
+		// bool compressEvent(QEvent* arg1,QObject* arg2,QPostEventList* arg3); >>>> NOT CONVERTED
 		[SmokeMethod("isSessionRestored", "() const", "")]
 		public bool IsSessionRestored() {
 			return ProxyQApplication().IsSessionRestored();
@@ -266,6 +267,20 @@ namespace Qyoto {
 		[SmokeMethod("notify", "(QObject*, QEvent*)", "##")]
 		public override bool Notify(QObject arg1, QEvent arg2) {
 			return ProxyQApplication().Notify(arg1,arg2);
+		}
+		[SmokeMethod("event", "(QEvent*)", "#")]
+		protected override bool Event(QEvent arg1) {
+			return ProxyQApplication().Event(arg1);
+		}
+		~QApplication() {
+			DisposeQApplication();
+		}
+		public new void Dispose() {
+			DisposeQApplication();
+		}
+		[SmokeMethod("~QApplication", "()", "")]
+		private void DisposeQApplication() {
+			ProxyQApplication().DisposeQApplication();
 		}
 		public static string Tr(string s, string c) {
 			return StaticQApplication().Tr(s,c);
@@ -479,28 +494,11 @@ namespace Qyoto {
 		public static bool quitOnLastWindowClosed() {
 			return StaticQApplication().quitOnLastWindowClosed();
 		}
-		[Q_SLOT("void closeAllWindows()")]
 		public static void CloseAllWindows() {
 			StaticQApplication().CloseAllWindows();
 		}
-		[Q_SLOT("void aboutQt()")]
 		public static void AboutQt() {
 			StaticQApplication().AboutQt();
-		}
-		[SmokeMethod("event", "(QEvent*)", "#")]
-		protected override bool Event(QEvent arg1) {
-			return ProxyQApplication().Event(arg1);
-		}
-		// bool compressEvent(QEvent* arg1,QObject* arg2,QPostEventList* arg3); >>>> NOT CONVERTED
-		~QApplication() {
-			DisposeQApplication();
-		}
-		public new void Dispose() {
-			DisposeQApplication();
-		}
-		[SmokeMethod("~QApplication", "()", "")]
-		private void DisposeQApplication() {
-			ProxyQApplication().DisposeQApplication();
 		}
 		protected new IQApplicationSignals Emit {
 			get { return (IQApplicationSignals) Q_EMIT; }

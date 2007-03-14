@@ -54,6 +54,8 @@ namespace Qyoto {
 			get { return Property("sceneRect").Value<QRectF>(); }
 			set { SetProperty("sceneRect", QVariant.FromValue<QRectF>(value)); }
 		}
+		// void drawItems(QPainter* arg1,int arg2,QGraphicsItem** arg3,const QStyleOptionGraphicsItem* arg4,QWidget* arg5); >>>> NOT CONVERTED
+		// void drawItems(QPainter* arg1,int arg2,QGraphicsItem** arg3,const QStyleOptionGraphicsItem* arg4); >>>> NOT CONVERTED
 		public QGraphicsScene(QObject parent) : this((Type) null) {
 			CreateProxy();
 			NewQGraphicsScene(parent);
@@ -333,12 +335,6 @@ namespace Qyoto {
 		public void Advance() {
 			ProxyQGraphicsScene().Advance();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQGraphicsScene().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQGraphicsScene().Tr(s);
-		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected new virtual bool Event(QEvent arg1) {
 			return ProxyQGraphicsScene().Event(arg1);
@@ -415,8 +411,6 @@ namespace Qyoto {
 		protected virtual void DrawForeground(QPainter painter, QRectF rect) {
 			ProxyQGraphicsScene().DrawForeground(painter,rect);
 		}
-		// void drawItems(QPainter* arg1,int arg2,QGraphicsItem** arg3,const QStyleOptionGraphicsItem* arg4,QWidget* arg5); >>>> NOT CONVERTED
-		// void drawItems(QPainter* arg1,int arg2,QGraphicsItem** arg3,const QStyleOptionGraphicsItem* arg4); >>>> NOT CONVERTED
 		~QGraphicsScene() {
 			DisposeQGraphicsScene();
 		}
@@ -426,6 +420,12 @@ namespace Qyoto {
 		[SmokeMethod("~QGraphicsScene", "()", "")]
 		private void DisposeQGraphicsScene() {
 			ProxyQGraphicsScene().DisposeQGraphicsScene();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQGraphicsScene().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQGraphicsScene().Tr(s);
 		}
 		protected new IQGraphicsSceneSignals Emit {
 			get { return (IQGraphicsSceneSignals) Q_EMIT; }

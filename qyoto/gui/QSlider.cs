@@ -90,12 +90,6 @@ namespace Qyoto {
 		public new virtual bool Event(QEvent arg1) {
 			return ProxyQSlider().Event(arg1);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQSlider().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQSlider().Tr(s);
-		}
 		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
 		protected override void PaintEvent(QPaintEvent ev) {
 			ProxyQSlider().PaintEvent(ev);
@@ -121,6 +115,12 @@ namespace Qyoto {
 		[SmokeMethod("~QSlider", "()", "")]
 		private void DisposeQSlider() {
 			ProxyQSlider().DisposeQSlider();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQSlider().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQSlider().Tr(s);
 		}
 		protected new IQSliderSignals Emit {
 			get { return (IQSliderSignals) Q_EMIT; }

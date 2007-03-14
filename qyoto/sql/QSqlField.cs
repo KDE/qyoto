@@ -65,12 +65,6 @@ namespace Qyoto {
 		private void NewQSqlField(QSqlField other) {
 			ProxyQSqlField().NewQSqlField(other);
 		}
-		public static bool operator==(QSqlField lhs, QSqlField other) {
-			return StaticQSqlField().op_equals(lhs,other);
-		}
-		public static bool operator!=(QSqlField lhs, QSqlField other) {
-			return !StaticQSqlField().op_equals(lhs,other);
-		}
 		public override bool Equals(object o) {
 			if (!(o is QSqlField)) { return false; }
 			return this == (QSqlField) o;
@@ -191,6 +185,12 @@ namespace Qyoto {
 		[SmokeMethod("~QSqlField", "()", "")]
 		private void DisposeQSqlField() {
 			ProxyQSqlField().DisposeQSqlField();
+		}
+		public static bool operator==(QSqlField lhs, QSqlField other) {
+			return StaticQSqlField().op_equals(lhs,other);
+		}
+		public static bool operator!=(QSqlField lhs, QSqlField other) {
+			return !StaticQSqlField().op_equals(lhs,other);
 		}
 	}
 }

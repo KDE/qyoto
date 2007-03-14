@@ -9,23 +9,12 @@ namespace Qyoto {
 		protected Object _interceptor = null;
 		private IntPtr _smokeObject;
 		protected QHttpHeader(Type dummy) {}
-		[SmokeClass("QHttpHeader")]
-		interface IQHttpHeaderProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QHttpHeader), this);
 			_interceptor = (QHttpHeader) realProxy.GetTransparentProxy();
 		}
 		private QHttpHeader ProxyQHttpHeader() {
 			return (QHttpHeader) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QHttpHeader() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQHttpHeaderProxy), null);
-			_staticInterceptor = (IQHttpHeaderProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQHttpHeaderProxy StaticQHttpHeader() {
-			return (IQHttpHeaderProxy) _staticInterceptor;
 		}
 		public QHttpHeader() : this((Type) null) {
 			CreateProxy();
@@ -136,16 +125,6 @@ namespace Qyoto {
 		[SmokeMethod("setValid", "(bool)", "$")]
 		protected void SetValid(bool arg1) {
 			ProxyQHttpHeader().SetValid(arg1);
-		}
-		~QHttpHeader() {
-			DisposeQHttpHeader();
-		}
-		public void Dispose() {
-			DisposeQHttpHeader();
-		}
-		[SmokeMethod("~QHttpHeader", "()", "")]
-		private void DisposeQHttpHeader() {
-			ProxyQHttpHeader().DisposeQHttpHeader();
 		}
 	}
 }

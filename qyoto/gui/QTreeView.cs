@@ -239,12 +239,6 @@ namespace Qyoto {
 		public void CollapseAll() {
 			ProxyQTreeView().CollapseAll();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQTreeView().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQTreeView().Tr(s);
-		}
 		[SmokeMethod("scrollContentsBy", "(int, int)", "$$")]
 		protected override void ScrollContentsBy(int dx, int dy) {
 			ProxyQTreeView().ScrollContentsBy(dx,dy);
@@ -375,6 +369,12 @@ namespace Qyoto {
 		[SmokeMethod("~QTreeView", "()", "")]
 		private void DisposeQTreeView() {
 			ProxyQTreeView().DisposeQTreeView();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQTreeView().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQTreeView().Tr(s);
 		}
 		protected new IQTreeViewSignals Emit {
 			get { return (IQTreeViewSignals) Q_EMIT; }

@@ -108,12 +108,6 @@ namespace Qyoto {
 		public override bool CanReadLine() {
 			return ProxyQBuffer().CanReadLine();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQBuffer().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQBuffer().Tr(s);
-		}
 		[SmokeMethod("readData", "(char*, qint64)", "$$")]
 		protected override long ReadData(string data, long maxlen) {
 			return ProxyQBuffer().ReadData(data,maxlen);
@@ -131,6 +125,12 @@ namespace Qyoto {
 		[SmokeMethod("~QBuffer", "()", "")]
 		private void DisposeQBuffer() {
 			ProxyQBuffer().DisposeQBuffer();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQBuffer().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQBuffer().Tr(s);
 		}
 		protected new IQBufferSignals Emit {
 			get { return (IQBufferSignals) Q_EMIT; }

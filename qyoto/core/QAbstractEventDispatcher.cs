@@ -29,6 +29,10 @@ namespace Qyoto {
 		private static IQAbstractEventDispatcherProxy StaticQAbstractEventDispatcher() {
 			return (IQAbstractEventDispatcherProxy) _staticInterceptor;
 		}
+		// QList<QAbstractEventDispatcher::TimerInfo> registeredTimers(QObject* arg1); >>>> NOT CONVERTED
+		// EventFilter setEventFilter(EventFilter arg1); >>>> NOT CONVERTED
+		// bool filterEvent(void* arg1); >>>> NOT CONVERTED
+		// QAbstractEventDispatcher* instance(QThread* arg1); >>>> NOT CONVERTED
 		public QAbstractEventDispatcher(QObject parent) : this((Type) null) {
 			CreateProxy();
 			NewQAbstractEventDispatcher(parent);
@@ -56,7 +60,6 @@ namespace Qyoto {
 		public abstract void RegisterTimer(int timerId, int interval, QObject arg3);
 		public abstract bool UnregisterTimer(int timerId);
 		public abstract bool UnregisterTimers(QObject arg1);
-		// QList<QAbstractEventDispatcher::TimerInfo> registeredTimers(QObject* arg1); >>>> NOT CONVERTED
 		public abstract void WakeUp();
 		public abstract void Interrupt();
 		public abstract void Flush();
@@ -68,24 +71,11 @@ namespace Qyoto {
 		public virtual void ClosingDown() {
 			ProxyQAbstractEventDispatcher().ClosingDown();
 		}
-		// EventFilter setEventFilter(EventFilter arg1); >>>> NOT CONVERTED
-		// bool filterEvent(void* arg1); >>>> NOT CONVERTED
 		public static string Tr(string s, string c) {
 			return StaticQAbstractEventDispatcher().Tr(s,c);
 		}
 		public static string Tr(string s) {
 			return StaticQAbstractEventDispatcher().Tr(s);
-		}
-		// QAbstractEventDispatcher* instance(QThread* arg1); >>>> NOT CONVERTED
-		~QAbstractEventDispatcher() {
-			DisposeQAbstractEventDispatcher();
-		}
-		public new void Dispose() {
-			DisposeQAbstractEventDispatcher();
-		}
-		[SmokeMethod("~QAbstractEventDispatcher", "()", "")]
-		private void DisposeQAbstractEventDispatcher() {
-			ProxyQAbstractEventDispatcher().DisposeQAbstractEventDispatcher();
 		}
 		protected new IQAbstractEventDispatcherSignals Emit {
 			get { return (IQAbstractEventDispatcherSignals) Q_EMIT; }

@@ -5,24 +5,6 @@ namespace Qyoto {
 
 	public class QGL : MarshalByRefObject {
 		protected Object _interceptor = null;
-		[SmokeClass("QGL")]
-		interface IQGLProxy {
-		}
-		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGL), this);
-			_interceptor = (QGL) realProxy.GetTransparentProxy();
-		}
-		private QGL ProxyQGL() {
-			return (QGL) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QGL() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQGLProxy), null);
-			_staticInterceptor = (IQGLProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQGLProxy StaticQGL() {
-			return (IQGLProxy) _staticInterceptor;
-		}
 		public enum FormatOption {
 			DoubleBuffer = 0x0001,
 			DepthBuffer = 0x0002,
@@ -44,16 +26,6 @@ namespace Qyoto {
 			IndirectRendering = DirectRendering<<16,
 			NoOverlay = HasOverlay<<16,
 			NoSampleBuffers = SampleBuffers<<16,
-		}
-		~QGL() {
-			DisposeQGL();
-		}
-		public void Dispose() {
-			DisposeQGL();
-		}
-		[SmokeMethod("~QGL", "()", "")]
-		private void DisposeQGL() {
-			ProxyQGL().DisposeQGL();
 		}
 	}
 }

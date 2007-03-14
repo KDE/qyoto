@@ -45,6 +45,16 @@ namespace Qyoto {
 		private void NewQInputContextFactory() {
 			ProxyQInputContextFactory().NewQInputContextFactory();
 		}
+		~QInputContextFactory() {
+			DisposeQInputContextFactory();
+		}
+		public void Dispose() {
+			DisposeQInputContextFactory();
+		}
+		[SmokeMethod("~QInputContextFactory", "()", "")]
+		private void DisposeQInputContextFactory() {
+			ProxyQInputContextFactory().DisposeQInputContextFactory();
+		}
 		public static List<string> Keys() {
 			return StaticQInputContextFactory().Keys();
 		}
@@ -59,16 +69,6 @@ namespace Qyoto {
 		}
 		public static string Description(string key) {
 			return StaticQInputContextFactory().Description(key);
-		}
-		~QInputContextFactory() {
-			DisposeQInputContextFactory();
-		}
-		public void Dispose() {
-			DisposeQInputContextFactory();
-		}
-		[SmokeMethod("~QInputContextFactory", "()", "")]
-		private void DisposeQInputContextFactory() {
-			ProxyQInputContextFactory().DisposeQInputContextFactory();
 		}
 	}
 }

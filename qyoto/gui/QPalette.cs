@@ -60,6 +60,7 @@ namespace Qyoto {
 			Foreground = WindowText,
 			Background = Window,
 		}
+		//  operator QVariant(); >>>> NOT CONVERTED
 		public QPalette() : this((Type) null) {
 			CreateProxy();
 			NewQPalette();
@@ -116,7 +117,6 @@ namespace Qyoto {
 		private void NewQPalette(QPalette palette) {
 			ProxyQPalette().NewQPalette(palette);
 		}
-		//  operator QVariant(); >>>> NOT CONVERTED
 		[SmokeMethod("currentColorGroup", "() const", "")]
 		public QPalette.ColorGroup CurrentColorGroup() {
 			return ProxyQPalette().CurrentColorGroup();
@@ -245,12 +245,6 @@ namespace Qyoto {
 		public QBrush LinkVisited() {
 			return ProxyQPalette().LinkVisited();
 		}
-		public static bool operator==(QPalette lhs, QPalette p) {
-			return StaticQPalette().op_equals(lhs,p);
-		}
-		public static bool operator!=(QPalette lhs, QPalette p) {
-			return !StaticQPalette().op_equals(lhs,p);
-		}
 		public override bool Equals(object o) {
 			if (!(o is QPalette)) { return false; }
 			return this == (QPalette) o;
@@ -287,6 +281,12 @@ namespace Qyoto {
 		[SmokeMethod("~QPalette", "()", "")]
 		private void DisposeQPalette() {
 			ProxyQPalette().DisposeQPalette();
+		}
+		public static bool operator==(QPalette lhs, QPalette p) {
+			return StaticQPalette().op_equals(lhs,p);
+		}
+		public static bool operator!=(QPalette lhs, QPalette p) {
+			return !StaticQPalette().op_equals(lhs,p);
 		}
 	}
 }

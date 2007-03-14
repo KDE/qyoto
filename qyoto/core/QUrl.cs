@@ -364,6 +364,16 @@ namespace Qyoto {
 		public string ErrorString() {
 			return ProxyQUrl().ErrorString();
 		}
+		~QUrl() {
+			DisposeQUrl();
+		}
+		public void Dispose() {
+			DisposeQUrl();
+		}
+		[SmokeMethod("~QUrl", "()", "")]
+		private void DisposeQUrl() {
+			ProxyQUrl().DisposeQUrl();
+		}
 		public static IQUrl FromLocalFile(string localfile) {
 			return StaticQUrl().FromLocalFile(localfile);
 		}
@@ -402,16 +412,6 @@ namespace Qyoto {
 		}
 		public static void SetIdnWhitelist(List<string> arg1) {
 			StaticQUrl().SetIdnWhitelist(arg1);
-		}
-		~QUrl() {
-			DisposeQUrl();
-		}
-		public void Dispose() {
-			DisposeQUrl();
-		}
-		[SmokeMethod("~QUrl", "()", "")]
-		private void DisposeQUrl() {
-			ProxyQUrl().DisposeQUrl();
 		}
 	}
 }

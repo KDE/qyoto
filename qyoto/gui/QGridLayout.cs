@@ -204,12 +204,6 @@ namespace Qyoto {
 		public void GetItemPosition(int idx, out int row, out int column, out int rowSpan, out int columnSpan) {
 			ProxyQGridLayout().GetItemPosition(idx,out row,out column,out rowSpan,out columnSpan);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQGridLayout().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQGridLayout().Tr(s);
-		}
 		[SmokeMethod("addItem", "(QLayoutItem*)", "#")]
 		public override void AddItem(IQLayoutItem arg1) {
 			ProxyQGridLayout().AddItem(arg1);
@@ -223,6 +217,12 @@ namespace Qyoto {
 		[SmokeMethod("~QGridLayout", "()", "")]
 		private void DisposeQGridLayout() {
 			ProxyQGridLayout().DisposeQGridLayout();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQGridLayout().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQGridLayout().Tr(s);
 		}
 		protected new IQGridLayoutSignals Emit {
 			get { return (IQGridLayoutSignals) Q_EMIT; }

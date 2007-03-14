@@ -296,12 +296,6 @@ namespace Qyoto {
 		public void Paste() {
 			ProxyQLineEdit().Paste();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQLineEdit().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQLineEdit().Tr(s);
-		}
 		[SmokeMethod("mousePressEvent", "(QMouseEvent*)", "#")]
 		protected override void MousePressEvent(QMouseEvent arg1) {
 			ProxyQLineEdit().MousePressEvent(arg1);
@@ -371,6 +365,12 @@ namespace Qyoto {
 		[SmokeMethod("~QLineEdit", "()", "")]
 		private void DisposeQLineEdit() {
 			ProxyQLineEdit().DisposeQLineEdit();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQLineEdit().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQLineEdit().Tr(s);
 		}
 		protected new IQLineEditSignals Emit {
 			get { return (IQLineEditSignals) Q_EMIT; }

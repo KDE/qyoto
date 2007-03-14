@@ -52,6 +52,10 @@ namespace Qyoto {
 			Format_RGB16 = 7,
 			NImageFormats = 8,
 		}
+		// QImage* QImage(const char** arg1); >>>> NOT CONVERTED
+		//  operator QVariant(); >>>> NOT CONVERTED
+		// QList<QImageTextKeyLang> textList(); >>>> NOT CONVERTED
+		// QString text(const QImageTextKeyLang& arg1); >>>> NOT CONVERTED
 		public QImage() : this((Type) null) {
 			CreateProxy();
 			NewQImage();
@@ -84,7 +88,6 @@ namespace Qyoto {
 		private void NewQImage(char[] data, int width, int height, QImage.Format format) {
 			ProxyQImage().NewQImage(data,width,height,format);
 		}
-		// QImage* QImage(const char** arg1); >>>> NOT CONVERTED
 		public QImage(string fileName, string format) : this((Type) null) {
 			CreateProxy();
 			NewQImage(fileName,format);
@@ -117,12 +120,6 @@ namespace Qyoto {
 		public override int DevType() {
 			return ProxyQImage().DevType();
 		}
-		public static bool operator==(QImage lhs, QImage arg1) {
-			return StaticQImage().op_equals(lhs,arg1);
-		}
-		public static bool operator!=(QImage lhs, QImage arg1) {
-			return !StaticQImage().op_equals(lhs,arg1);
-		}
 		public override bool Equals(object o) {
 			if (!(o is QImage)) { return false; }
 			return this == (QImage) o;
@@ -130,7 +127,6 @@ namespace Qyoto {
 		public override int GetHashCode() {
 			return ProxyQImage().GetHashCode();
 		}
-		//  operator QVariant(); >>>> NOT CONVERTED
 		[SmokeMethod("detach", "()", "")]
 		public void Detach() {
 			ProxyQImage().Detach();
@@ -479,15 +475,33 @@ namespace Qyoto {
 		public string Text(string key, string lang) {
 			return ProxyQImage().Text(key,lang);
 		}
-		// QList<QImageTextKeyLang> textList(); >>>> NOT CONVERTED
 		[SmokeMethod("textLanguages", "() const", "")]
 		public List<string> TextLanguages() {
 			return ProxyQImage().TextLanguages();
 		}
-		// QString text(const QImageTextKeyLang& arg1); >>>> NOT CONVERTED
 		[SmokeMethod("setText", "(const char*, const char*, const QString&)", "$$$")]
 		public void SetText(string key, string lang, string arg3) {
 			ProxyQImage().SetText(key,lang,arg3);
+		}
+		[SmokeMethod("metric", "(QPaintDevice::PaintDeviceMetric) const", "$")]
+		protected override int Metric(IQPaintDevice metric) {
+			return ProxyQImage().Metric(metric);
+		}
+		~QImage() {
+			DisposeQImage();
+		}
+		public void Dispose() {
+			DisposeQImage();
+		}
+		[SmokeMethod("~QImage", "()", "")]
+		private void DisposeQImage() {
+			ProxyQImage().DisposeQImage();
+		}
+		public static bool operator==(QImage lhs, QImage arg1) {
+			return StaticQImage().op_equals(lhs,arg1);
+		}
+		public static bool operator!=(QImage lhs, QImage arg1) {
+			return !StaticQImage().op_equals(lhs,arg1);
 		}
 		public static QMatrix TrueMatrix(QMatrix arg1, int w, int h) {
 			return StaticQImage().TrueMatrix(arg1,w,h);
@@ -503,20 +517,6 @@ namespace Qyoto {
 		}
 		public static QImage FromData(QByteArray data) {
 			return StaticQImage().FromData(data);
-		}
-		[SmokeMethod("metric", "(QPaintDevice::PaintDeviceMetric) const", "$")]
-		protected override int Metric(IQPaintDevice metric) {
-			return ProxyQImage().Metric(metric);
-		}
-		~QImage() {
-			DisposeQImage();
-		}
-		public void Dispose() {
-			DisposeQImage();
-		}
-		[SmokeMethod("~QImage", "()", "")]
-		private void DisposeQImage() {
-			ProxyQImage().DisposeQImage();
 		}
 	}
 }

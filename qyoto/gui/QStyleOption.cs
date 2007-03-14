@@ -8,23 +8,12 @@ namespace Qyoto {
 		protected Object _interceptor = null;
 		private IntPtr _smokeObject;
 		protected QStyleOption(Type dummy) {}
-		[SmokeClass("QStyleOption")]
-		interface IQStyleOptionProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOption), this);
 			_interceptor = (QStyleOption) realProxy.GetTransparentProxy();
 		}
 		private QStyleOption ProxyQStyleOption() {
 			return (QStyleOption) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QStyleOption() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQStyleOptionProxy), null);
-			_staticInterceptor = (IQStyleOptionProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQStyleOptionProxy StaticQStyleOption() {
-			return (IQStyleOptionProxy) _staticInterceptor;
 		}
 		public enum OptionType {
 			SO_Default = 0,

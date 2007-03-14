@@ -145,12 +145,6 @@ namespace Qyoto {
 		public void ClearSelection() {
 			ProxyQItemSelectionModel().ClearSelection();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQItemSelectionModel().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQItemSelectionModel().Tr(s);
-		}
 		[SmokeMethod("emitSelectionChanged", "(const QItemSelection&, const QItemSelection&)", "##")]
 		protected void EmitSelectionChanged(QItemSelection newSelection, QItemSelection oldSelection) {
 			ProxyQItemSelectionModel().EmitSelectionChanged(newSelection,oldSelection);
@@ -164,6 +158,12 @@ namespace Qyoto {
 		[SmokeMethod("~QItemSelectionModel", "()", "")]
 		private void DisposeQItemSelectionModel() {
 			ProxyQItemSelectionModel().DisposeQItemSelectionModel();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQItemSelectionModel().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQItemSelectionModel().Tr(s);
 		}
 		protected new IQItemSelectionModelSignals Emit {
 			get { return (IQItemSelectionModelSignals) Q_EMIT; }

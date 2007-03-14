@@ -48,12 +48,6 @@ namespace Qyoto {
 		public override int Exec() {
 			return ProxyQPageSetupDialog().Exec();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQPageSetupDialog().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQPageSetupDialog().Tr(s);
-		}
 		~QPageSetupDialog() {
 			DisposeQPageSetupDialog();
 		}
@@ -63,6 +57,12 @@ namespace Qyoto {
 		[SmokeMethod("~QPageSetupDialog", "()", "")]
 		private void DisposeQPageSetupDialog() {
 			ProxyQPageSetupDialog().DisposeQPageSetupDialog();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQPageSetupDialog().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQPageSetupDialog().Tr(s);
 		}
 		protected new IQPageSetupDialogSignals Emit {
 			get { return (IQPageSetupDialogSignals) Q_EMIT; }

@@ -7,23 +7,12 @@ namespace Qyoto {
 	[SmokeClass("QAccessibleWidgetEx")]
 	public abstract class QAccessibleWidgetEx : QAccessibleObjectEx {
  		protected QAccessibleWidgetEx(Type dummy) : base((Type) null) {}
-		[SmokeClass("QAccessibleWidgetEx")]
-		interface IQAccessibleWidgetExProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAccessibleWidgetEx), this);
 			_interceptor = (QAccessibleWidgetEx) realProxy.GetTransparentProxy();
 		}
 		private QAccessibleWidgetEx ProxyQAccessibleWidgetEx() {
 			return (QAccessibleWidgetEx) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QAccessibleWidgetEx() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQAccessibleWidgetExProxy), null);
-			_staticInterceptor = (IQAccessibleWidgetExProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQAccessibleWidgetExProxy StaticQAccessibleWidgetEx() {
-			return (IQAccessibleWidgetExProxy) _staticInterceptor;
 		}
 		public QAccessibleWidgetEx(QWidget o, QAccessible.Role r, string name) : this((Type) null) {
 			CreateProxy();

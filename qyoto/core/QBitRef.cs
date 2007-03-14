@@ -13,13 +13,6 @@ namespace Qyoto {
 			[SmokeMethod("operator!", "() const", "")]
 			bool op_not(QBitRef lhs);
 		}
-		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QBitRef), this);
-			_interceptor = (QBitRef) realProxy.GetTransparentProxy();
-		}
-		private QBitRef ProxyQBitRef() {
-			return (QBitRef) _interceptor;
-		}
 		private static Object _staticInterceptor = null;
 		static QBitRef() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQBitRefProxy), null);
@@ -31,16 +24,6 @@ namespace Qyoto {
 		//  operator bool(); >>>> NOT CONVERTED
 		public static bool operator!(QBitRef lhs) {
 			return StaticQBitRef().op_not(lhs);
-		}
-		~QBitRef() {
-			DisposeQBitRef();
-		}
-		public void Dispose() {
-			DisposeQBitRef();
-		}
-		[SmokeMethod("~QBitRef", "()", "")]
-		private void DisposeQBitRef() {
-			ProxyQBitRef().DisposeQBitRef();
 		}
 	}
 }

@@ -6,23 +6,12 @@ namespace Qyoto {
 	[SmokeClass("QGraphicsPixmapItem")]
 	public class QGraphicsPixmapItem : QGraphicsItem, IDisposable {
  		protected QGraphicsPixmapItem(Type dummy) : base((Type) null) {}
-		[SmokeClass("QGraphicsPixmapItem")]
-		interface IQGraphicsPixmapItemProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGraphicsPixmapItem), this);
 			_interceptor = (QGraphicsPixmapItem) realProxy.GetTransparentProxy();
 		}
 		private QGraphicsPixmapItem ProxyQGraphicsPixmapItem() {
 			return (QGraphicsPixmapItem) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QGraphicsPixmapItem() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQGraphicsPixmapItemProxy), null);
-			_staticInterceptor = (IQGraphicsPixmapItemProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQGraphicsPixmapItemProxy StaticQGraphicsPixmapItem() {
-			return (IQGraphicsPixmapItemProxy) _staticInterceptor;
 		}
 		public enum ShapeMode {
 			MaskShape = 0,

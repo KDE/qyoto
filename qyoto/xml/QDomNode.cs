@@ -44,6 +44,7 @@ namespace Qyoto {
 			BaseNode = 21,
 			CharacterDataNode = 22,
 		}
+		// QDomNode* QDomNode(QDomNodePrivate* arg1); >>>> NOT CONVERTED
 		public QDomNode() : this((Type) null) {
 			CreateProxy();
 			NewQDomNode();
@@ -59,12 +60,6 @@ namespace Qyoto {
 		[SmokeMethod("QDomNode", "(const QDomNode&)", "#")]
 		private void NewQDomNode(QDomNode arg1) {
 			ProxyQDomNode().NewQDomNode(arg1);
-		}
-		public static bool operator==(QDomNode lhs, QDomNode arg1) {
-			return StaticQDomNode().op_equals(lhs,arg1);
-		}
-		public static bool operator!=(QDomNode lhs, QDomNode arg1) {
-			return !StaticQDomNode().op_equals(lhs,arg1);
 		}
 		public override bool Equals(object o) {
 			if (!(o is QDomNode)) { return false; }
@@ -345,7 +340,6 @@ namespace Qyoto {
 		public int ColumnNumber() {
 			return ProxyQDomNode().ColumnNumber();
 		}
-		// QDomNode* QDomNode(QDomNodePrivate* arg1); >>>> NOT CONVERTED
 		~QDomNode() {
 			DisposeQDomNode();
 		}
@@ -355,6 +349,12 @@ namespace Qyoto {
 		[SmokeMethod("~QDomNode", "()", "")]
 		private void DisposeQDomNode() {
 			ProxyQDomNode().DisposeQDomNode();
+		}
+		public static bool operator==(QDomNode lhs, QDomNode arg1) {
+			return StaticQDomNode().op_equals(lhs,arg1);
+		}
+		public static bool operator!=(QDomNode lhs, QDomNode arg1) {
+			return !StaticQDomNode().op_equals(lhs,arg1);
 		}
 	}
 }

@@ -136,12 +136,6 @@ namespace Qyoto {
 		public void Toggle() {
 			ProxyQAbstractButton().Toggle();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQAbstractButton().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQAbstractButton().Tr(s);
-		}
 		protected abstract void PaintEvent(QPaintEvent e);
 		[SmokeMethod("hitButton", "(const QPoint&) const", "#")]
 		protected virtual bool HitButton(QPoint pos) {
@@ -195,15 +189,11 @@ namespace Qyoto {
 		protected override void TimerEvent(QTimerEvent e) {
 			ProxyQAbstractButton().TimerEvent(e);
 		}
-		~QAbstractButton() {
-			DisposeQAbstractButton();
+		public static string Tr(string s, string c) {
+			return StaticQAbstractButton().Tr(s,c);
 		}
-		public new void Dispose() {
-			DisposeQAbstractButton();
-		}
-		[SmokeMethod("~QAbstractButton", "()", "")]
-		private void DisposeQAbstractButton() {
-			ProxyQAbstractButton().DisposeQAbstractButton();
+		public static string Tr(string s) {
+			return StaticQAbstractButton().Tr(s);
 		}
 		protected new IQAbstractButtonSignals Emit {
 			get { return (IQAbstractButtonSignals) Q_EMIT; }

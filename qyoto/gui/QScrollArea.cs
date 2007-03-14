@@ -98,12 +98,6 @@ namespace Qyoto {
 		public void EnsureWidgetVisible(QWidget childWidget) {
 			ProxyQScrollArea().EnsureWidgetVisible(childWidget);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQScrollArea().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQScrollArea().Tr(s);
-		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent arg1) {
 			return ProxyQScrollArea().Event(arg1);
@@ -129,6 +123,12 @@ namespace Qyoto {
 		[SmokeMethod("~QScrollArea", "()", "")]
 		private void DisposeQScrollArea() {
 			ProxyQScrollArea().DisposeQScrollArea();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQScrollArea().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQScrollArea().Tr(s);
 		}
 		protected new IQScrollAreaSignals Emit {
 			get { return (IQScrollAreaSignals) Q_EMIT; }

@@ -85,16 +85,6 @@ namespace Qyoto {
 		public static string ElidedText(QFontMetrics fontMetrics, int width, Qt.TextElideMode mode, string text) {
 			return StaticQAbstractItemDelegate().ElidedText(fontMetrics,width,mode,text);
 		}
-		~QAbstractItemDelegate() {
-			DisposeQAbstractItemDelegate();
-		}
-		public new void Dispose() {
-			DisposeQAbstractItemDelegate();
-		}
-		[SmokeMethod("~QAbstractItemDelegate", "()", "")]
-		private void DisposeQAbstractItemDelegate() {
-			ProxyQAbstractItemDelegate().DisposeQAbstractItemDelegate();
-		}
 		protected new IQAbstractItemDelegateSignals Emit {
 			get { return (IQAbstractItemDelegateSignals) Q_EMIT; }
 		}

@@ -66,6 +66,7 @@ namespace Qyoto {
 			NormalExit = 0,
 			CrashExit = 1,
 		}
+		// Q_PID pid(); >>>> NOT CONVERTED
 		public QProcess(QObject parent) : this((Type) null) {
 			CreateProxy();
 			NewQProcess(parent);
@@ -178,7 +179,6 @@ namespace Qyoto {
 		public QProcess.ProcessState State() {
 			return ProxyQProcess().State();
 		}
-		// Q_PID pid(); >>>> NOT CONVERTED
 		[SmokeMethod("waitForStarted", "(int)", "$")]
 		public bool WaitForStarted(int msecs) {
 			return ProxyQProcess().WaitForStarted(msecs);
@@ -261,27 +261,6 @@ namespace Qyoto {
 		public void Kill() {
 			ProxyQProcess().Kill();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQProcess().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQProcess().Tr(s);
-		}
-		public static int Execute(string program, List<string> arguments) {
-			return StaticQProcess().Execute(program,arguments);
-		}
-		public static int Execute(string program) {
-			return StaticQProcess().Execute(program);
-		}
-		public static bool StartDetached(string program, List<string> arguments) {
-			return StaticQProcess().StartDetached(program,arguments);
-		}
-		public static bool StartDetached(string program) {
-			return StaticQProcess().StartDetached(program);
-		}
-		public static List<string> SystemEnvironment() {
-			return StaticQProcess().SystemEnvironment();
-		}
 		[SmokeMethod("setProcessState", "(QProcess::ProcessState)", "$")]
 		protected void SetProcessState(QProcess.ProcessState state) {
 			ProxyQProcess().SetProcessState(state);
@@ -307,6 +286,27 @@ namespace Qyoto {
 		[SmokeMethod("~QProcess", "()", "")]
 		private void DisposeQProcess() {
 			ProxyQProcess().DisposeQProcess();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQProcess().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQProcess().Tr(s);
+		}
+		public static int Execute(string program, List<string> arguments) {
+			return StaticQProcess().Execute(program,arguments);
+		}
+		public static int Execute(string program) {
+			return StaticQProcess().Execute(program);
+		}
+		public static bool StartDetached(string program, List<string> arguments) {
+			return StaticQProcess().StartDetached(program,arguments);
+		}
+		public static bool StartDetached(string program) {
+			return StaticQProcess().StartDetached(program);
+		}
+		public static List<string> SystemEnvironment() {
+			return StaticQProcess().SystemEnvironment();
 		}
 		protected new IQProcessSignals Emit {
 			get { return (IQProcessSignals) Q_EMIT; }

@@ -28,12 +28,6 @@ namespace Qyoto {
 		private static IQDBusAbstractAdaptorProxy StaticQDBusAbstractAdaptor() {
 			return (IQDBusAbstractAdaptorProxy) _staticInterceptor;
 		}
-		public static string Tr(string s, string c) {
-			return StaticQDBusAbstractAdaptor().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQDBusAbstractAdaptor().Tr(s);
-		}
 		public QDBusAbstractAdaptor(QObject parent) : this((Type) null) {
 			CreateProxy();
 			NewQDBusAbstractAdaptor(parent);
@@ -59,6 +53,12 @@ namespace Qyoto {
 		[SmokeMethod("~QDBusAbstractAdaptor", "()", "")]
 		private void DisposeQDBusAbstractAdaptor() {
 			ProxyQDBusAbstractAdaptor().DisposeQDBusAbstractAdaptor();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQDBusAbstractAdaptor().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQDBusAbstractAdaptor().Tr(s);
 		}
 		protected new IQDBusAbstractAdaptorSignals Emit {
 			get { return (IQDBusAbstractAdaptorSignals) Q_EMIT; }

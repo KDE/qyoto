@@ -296,15 +296,6 @@ namespace Qyoto {
 		public virtual void UpdateOverlayGL() {
 			ProxyQGLWidget().UpdateOverlayGL();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQGLWidget().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQGLWidget().Tr(s);
-		}
-		public static QImage ConvertToGLFormat(QImage img) {
-			return StaticQGLWidget().ConvertToGLFormat(img);
-		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent arg1) {
 			return ProxyQGLWidget().Event(arg1);
@@ -374,6 +365,15 @@ namespace Qyoto {
 		[SmokeMethod("~QGLWidget", "()", "")]
 		private void DisposeQGLWidget() {
 			ProxyQGLWidget().DisposeQGLWidget();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQGLWidget().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQGLWidget().Tr(s);
+		}
+		public static QImage ConvertToGLFormat(QImage img) {
+			return StaticQGLWidget().ConvertToGLFormat(img);
 		}
 		protected new IQGLWidgetSignals Emit {
 			get { return (IQGLWidgetSignals) Q_EMIT; }

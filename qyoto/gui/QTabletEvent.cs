@@ -6,23 +6,12 @@ namespace Qyoto {
 	[SmokeClass("QTabletEvent")]
 	public class QTabletEvent : QInputEvent, IDisposable {
  		protected QTabletEvent(Type dummy) : base((Type) null) {}
-		[SmokeClass("QTabletEvent")]
-		interface IQTabletEventProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTabletEvent), this);
 			_interceptor = (QTabletEvent) realProxy.GetTransparentProxy();
 		}
 		private QTabletEvent ProxyQTabletEvent() {
 			return (QTabletEvent) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QTabletEvent() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTabletEventProxy), null);
-			_staticInterceptor = (IQTabletEventProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQTabletEventProxy StaticQTabletEvent() {
-			return (IQTabletEventProxy) _staticInterceptor;
 		}
 		public enum TabletDevice {
 			NoDevice = 0,

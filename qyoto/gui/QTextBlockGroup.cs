@@ -29,12 +29,6 @@ namespace Qyoto {
 		private static IQTextBlockGroupProxy StaticQTextBlockGroup() {
 			return (IQTextBlockGroupProxy) _staticInterceptor;
 		}
-		public static string Tr(string s, string c) {
-			return StaticQTextBlockGroup().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQTextBlockGroup().Tr(s);
-		}
 		public QTextBlockGroup(QTextDocument doc) : this((Type) null) {
 			CreateProxy();
 			NewQTextBlockGroup(doc);
@@ -58,6 +52,12 @@ namespace Qyoto {
 		[SmokeMethod("blockList", "() const", "")]
 		protected List<QTextBlock> BlockList() {
 			return ProxyQTextBlockGroup().BlockList();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQTextBlockGroup().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQTextBlockGroup().Tr(s);
 		}
 		protected new IQTextBlockGroupSignals Emit {
 			get { return (IQTextBlockGroupSignals) Q_EMIT; }

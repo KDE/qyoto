@@ -123,12 +123,6 @@ namespace Qyoto {
 		public abstract void Close();
 		public abstract QSqlResult CreateResult();
 		public abstract bool Open(string db, string user, string password, string host, int port, string connOpts);
-		public static string Tr(string s, string c) {
-			return StaticQSqlDriver().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQSqlDriver().Tr(s);
-		}
 		[SmokeMethod("setOpen", "(bool)", "$")]
 		protected virtual void SetOpen(bool o) {
 			ProxyQSqlDriver().SetOpen(o);
@@ -141,15 +135,11 @@ namespace Qyoto {
 		protected virtual void SetLastError(QSqlError e) {
 			ProxyQSqlDriver().SetLastError(e);
 		}
-		~QSqlDriver() {
-			DisposeQSqlDriver();
+		public static string Tr(string s, string c) {
+			return StaticQSqlDriver().Tr(s,c);
 		}
-		public new void Dispose() {
-			DisposeQSqlDriver();
-		}
-		[SmokeMethod("~QSqlDriver", "()", "")]
-		private void DisposeQSqlDriver() {
-			ProxyQSqlDriver().DisposeQSqlDriver();
+		public static string Tr(string s) {
+			return StaticQSqlDriver().Tr(s);
 		}
 		protected new IQSqlDriverSignals Emit {
 			get { return (IQSqlDriverSignals) Q_EMIT; }

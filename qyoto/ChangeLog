@@ -1,3 +1,16 @@
+2007-03-14  Richard Dale  <rdale@foton.es>
+
+	* Only generate destructors if the class is implementing IDisposible
+	* Only generate code to set up transparent proxy interceptors for instance
+	  or static methods if the class has some instance or static methods that
+	  would need an interceptor
+	* Order the generated code:
+		1) Enums
+		2) Properties
+		3) Methods not converted
+		4) Instance methods
+		5) Static methods
+
 2007-03-12  Richard Dale  <rdale@foton.es>
 
 	* When the access level of an overriden method is changed, use 'new' in

@@ -121,12 +121,6 @@ namespace Qyoto {
 		public QItemSelectionRange Intersected(QItemSelectionRange other) {
 			return ProxyQItemSelectionRange().Intersected(other);
 		}
-		public static bool operator==(QItemSelectionRange lhs, QItemSelectionRange other) {
-			return StaticQItemSelectionRange().op_equals(lhs,other);
-		}
-		public static bool operator!=(QItemSelectionRange lhs, QItemSelectionRange other) {
-			return !StaticQItemSelectionRange().op_equals(lhs,other);
-		}
 		public override bool Equals(object o) {
 			if (!(o is QItemSelectionRange)) { return false; }
 			return this == (QItemSelectionRange) o;
@@ -151,6 +145,12 @@ namespace Qyoto {
 		[SmokeMethod("~QItemSelectionRange", "()", "")]
 		private void DisposeQItemSelectionRange() {
 			ProxyQItemSelectionRange().DisposeQItemSelectionRange();
+		}
+		public static bool operator==(QItemSelectionRange lhs, QItemSelectionRange other) {
+			return StaticQItemSelectionRange().op_equals(lhs,other);
+		}
+		public static bool operator!=(QItemSelectionRange lhs, QItemSelectionRange other) {
+			return !StaticQItemSelectionRange().op_equals(lhs,other);
 		}
 	}
 }

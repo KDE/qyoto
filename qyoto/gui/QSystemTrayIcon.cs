@@ -127,18 +127,6 @@ namespace Qyoto {
 		public void Hide() {
 			ProxyQSystemTrayIcon().Hide();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQSystemTrayIcon().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQSystemTrayIcon().Tr(s);
-		}
-		public static bool IsSystemTrayAvailable() {
-			return StaticQSystemTrayIcon().IsSystemTrayAvailable();
-		}
-		public static bool SupportsMessages() {
-			return StaticQSystemTrayIcon().SupportsMessages();
-		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected new virtual bool Event(QEvent arg1) {
 			return ProxyQSystemTrayIcon().Event(arg1);
@@ -152,6 +140,18 @@ namespace Qyoto {
 		[SmokeMethod("~QSystemTrayIcon", "()", "")]
 		private void DisposeQSystemTrayIcon() {
 			ProxyQSystemTrayIcon().DisposeQSystemTrayIcon();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQSystemTrayIcon().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQSystemTrayIcon().Tr(s);
+		}
+		public static bool IsSystemTrayAvailable() {
+			return StaticQSystemTrayIcon().IsSystemTrayAvailable();
+		}
+		public static bool SupportsMessages() {
+			return StaticQSystemTrayIcon().SupportsMessages();
 		}
 		protected new IQSystemTrayIconSignals Emit {
 			get { return (IQSystemTrayIconSignals) Q_EMIT; }

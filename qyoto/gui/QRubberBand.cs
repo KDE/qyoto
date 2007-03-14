@@ -76,12 +76,6 @@ namespace Qyoto {
 		public void Resize(QSize s) {
 			ProxyQRubberBand().Resize(s);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQRubberBand().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQRubberBand().Tr(s);
-		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent e) {
 			return ProxyQRubberBand().Event(e);
@@ -115,6 +109,12 @@ namespace Qyoto {
 		[SmokeMethod("~QRubberBand", "()", "")]
 		private void DisposeQRubberBand() {
 			ProxyQRubberBand().DisposeQRubberBand();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQRubberBand().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQRubberBand().Tr(s);
 		}
 		protected new IQRubberBandSignals Emit {
 			get { return (IQRubberBandSignals) Q_EMIT; }

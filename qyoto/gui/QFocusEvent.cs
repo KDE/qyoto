@@ -6,23 +6,12 @@ namespace Qyoto {
 	[SmokeClass("QFocusEvent")]
 	public class QFocusEvent : QEvent, IDisposable {
  		protected QFocusEvent(Type dummy) : base((Type) null) {}
-		[SmokeClass("QFocusEvent")]
-		interface IQFocusEventProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFocusEvent), this);
 			_interceptor = (QFocusEvent) realProxy.GetTransparentProxy();
 		}
 		private QFocusEvent ProxyQFocusEvent() {
 			return (QFocusEvent) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QFocusEvent() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQFocusEventProxy), null);
-			_staticInterceptor = (IQFocusEventProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQFocusEventProxy StaticQFocusEvent() {
-			return (IQFocusEventProxy) _staticInterceptor;
 		}
 		public QFocusEvent(QEvent.TypeOf type, Qt.FocusReason reason) : this((Type) null) {
 			CreateProxy();

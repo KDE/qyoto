@@ -117,12 +117,6 @@ namespace Qyoto {
 		public void SetStringList(List<string> strings) {
 			ProxyQStringListModel().SetStringList(strings);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQStringListModel().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQStringListModel().Tr(s);
-		}
 		~QStringListModel() {
 			DisposeQStringListModel();
 		}
@@ -132,6 +126,12 @@ namespace Qyoto {
 		[SmokeMethod("~QStringListModel", "()", "")]
 		private void DisposeQStringListModel() {
 			ProxyQStringListModel().DisposeQStringListModel();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQStringListModel().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQStringListModel().Tr(s);
 		}
 		protected new IQStringListModelSignals Emit {
 			get { return (IQStringListModelSignals) Q_EMIT; }

@@ -28,6 +28,7 @@ namespace Qyoto {
 		private static IQWindowsStyleProxy StaticQWindowsStyle() {
 			return (IQWindowsStyleProxy) _staticInterceptor;
 		}
+		// QWindowsStyle* QWindowsStyle(QWindowsStylePrivate& arg1); >>>> NOT CONVERTED
 		public QWindowsStyle() : this((Type) null) {
 			CreateProxy();
 			NewQWindowsStyle();
@@ -132,12 +133,6 @@ namespace Qyoto {
 		public override QPixmap standardPixmap(QStyle.StandardPixmap standardPixmap, out int opt) {
 			return ProxyQWindowsStyle().standardPixmap(standardPixmap,out opt);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQWindowsStyle().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQWindowsStyle().Tr(s);
-		}
 		[SmokeMethod("eventFilter", "(QObject*, QEvent*)", "##")]
 		protected new virtual bool EventFilter(QObject o, QEvent e) {
 			return ProxyQWindowsStyle().EventFilter(o,e);
@@ -146,7 +141,6 @@ namespace Qyoto {
 		protected override void TimerEvent(QTimerEvent arg1) {
 			ProxyQWindowsStyle().TimerEvent(arg1);
 		}
-		// QWindowsStyle* QWindowsStyle(QWindowsStylePrivate& arg1); >>>> NOT CONVERTED
 		[Q_SLOT("QIcon standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const")]
 		[SmokeMethod("standardIconImplementation", "(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const", "$##")]
 		protected QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon, out int option, QWidget widget) {
@@ -166,6 +160,12 @@ namespace Qyoto {
 		[SmokeMethod("~QWindowsStyle", "()", "")]
 		private void DisposeQWindowsStyle() {
 			ProxyQWindowsStyle().DisposeQWindowsStyle();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQWindowsStyle().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQWindowsStyle().Tr(s);
 		}
 		protected new IQWindowsStyleSignals Emit {
 			get { return (IQWindowsStyleSignals) Q_EMIT; }

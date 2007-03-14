@@ -6,23 +6,12 @@ namespace Qyoto {
 	[SmokeClass("QTextCodecFactoryInterface")]
 	public abstract class QTextCodecFactoryInterface : QFactoryInterface {
  		protected QTextCodecFactoryInterface(Type dummy) : base((Type) null) {}
-		[SmokeClass("QTextCodecFactoryInterface")]
-		interface IQTextCodecFactoryInterfaceProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextCodecFactoryInterface), this);
 			_interceptor = (QTextCodecFactoryInterface) realProxy.GetTransparentProxy();
 		}
 		private QTextCodecFactoryInterface ProxyQTextCodecFactoryInterface() {
 			return (QTextCodecFactoryInterface) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QTextCodecFactoryInterface() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTextCodecFactoryInterfaceProxy), null);
-			_staticInterceptor = (IQTextCodecFactoryInterfaceProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQTextCodecFactoryInterfaceProxy StaticQTextCodecFactoryInterface() {
-			return (IQTextCodecFactoryInterfaceProxy) _staticInterceptor;
 		}
 		public abstract QTextCodec Create(string key);
 		public QTextCodecFactoryInterface() : this((Type) null) {
@@ -32,16 +21,6 @@ namespace Qyoto {
 		[SmokeMethod("QTextCodecFactoryInterface", "()", "")]
 		private void NewQTextCodecFactoryInterface() {
 			ProxyQTextCodecFactoryInterface().NewQTextCodecFactoryInterface();
-		}
-		~QTextCodecFactoryInterface() {
-			DisposeQTextCodecFactoryInterface();
-		}
-		public new void Dispose() {
-			DisposeQTextCodecFactoryInterface();
-		}
-		[SmokeMethod("~QTextCodecFactoryInterface", "()", "")]
-		private void DisposeQTextCodecFactoryInterface() {
-			ProxyQTextCodecFactoryInterface().DisposeQTextCodecFactoryInterface();
 		}
 	}
 }

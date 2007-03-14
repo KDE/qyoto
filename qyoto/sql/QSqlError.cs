@@ -8,23 +8,12 @@ namespace Qyoto {
 		protected Object _interceptor = null;
 		private IntPtr _smokeObject;
 		protected QSqlError(Type dummy) {}
-		[SmokeClass("QSqlError")]
-		interface IQSqlErrorProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSqlError), this);
 			_interceptor = (QSqlError) realProxy.GetTransparentProxy();
 		}
 		private QSqlError ProxyQSqlError() {
 			return (QSqlError) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QSqlError() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQSqlErrorProxy), null);
-			_staticInterceptor = (IQSqlErrorProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQSqlErrorProxy StaticQSqlError() {
-			return (IQSqlErrorProxy) _staticInterceptor;
 		}
 		public enum ErrorType {
 			NoError = 0,

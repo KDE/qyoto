@@ -227,12 +227,6 @@ namespace Qyoto {
 		public void SortByColumn(int column) {
 			ProxyQTableView().SortByColumn(column);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQTableView().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQTableView().Tr(s);
-		}
 		[SmokeMethod("scrollContentsBy", "(int, int)", "$$")]
 		protected override void ScrollContentsBy(int dx, int dy) {
 			ProxyQTableView().ScrollContentsBy(dx,dy);
@@ -336,6 +330,12 @@ namespace Qyoto {
 		[SmokeMethod("~QTableView", "()", "")]
 		private void DisposeQTableView() {
 			ProxyQTableView().DisposeQTableView();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQTableView().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQTableView().Tr(s);
 		}
 		protected new IQTableViewSignals Emit {
 			get { return (IQTableViewSignals) Q_EMIT; }

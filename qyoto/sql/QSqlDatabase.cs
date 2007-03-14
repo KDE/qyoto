@@ -60,6 +60,7 @@ namespace Qyoto {
 		public static string DefaultConnection() {
 			return StaticQSqlDatabase().defaultConnection();
 		}
+		// void registerSqlDriver(const QString& arg1,QSqlDriverCreatorBase* arg2); >>>> NOT CONVERTED
 		public QSqlDatabase() : this((Type) null) {
 			CreateProxy();
 			NewQSqlDatabase();
@@ -200,6 +201,32 @@ namespace Qyoto {
 		public QSqlDriver Driver() {
 			return ProxyQSqlDatabase().Driver();
 		}
+		public QSqlDatabase(string type) : this((Type) null) {
+			CreateProxy();
+			NewQSqlDatabase(type);
+		}
+		[SmokeMethod("QSqlDatabase", "(const QString&)", "$")]
+		private void NewQSqlDatabase(string type) {
+			ProxyQSqlDatabase().NewQSqlDatabase(type);
+		}
+		public QSqlDatabase(QSqlDriver driver) : this((Type) null) {
+			CreateProxy();
+			NewQSqlDatabase(driver);
+		}
+		[SmokeMethod("QSqlDatabase", "(QSqlDriver*)", "#")]
+		private void NewQSqlDatabase(QSqlDriver driver) {
+			ProxyQSqlDatabase().NewQSqlDatabase(driver);
+		}
+		~QSqlDatabase() {
+			DisposeQSqlDatabase();
+		}
+		public void Dispose() {
+			DisposeQSqlDatabase();
+		}
+		[SmokeMethod("~QSqlDatabase", "()", "")]
+		private void DisposeQSqlDatabase() {
+			ProxyQSqlDatabase().DisposeQSqlDatabase();
+		}
 		public static QSqlDatabase AddDatabase(string type, string connectionName) {
 			return StaticQSqlDatabase().AddDatabase(type,connectionName);
 		}
@@ -239,35 +266,8 @@ namespace Qyoto {
 		public static List<string> ConnectionNames() {
 			return StaticQSqlDatabase().ConnectionNames();
 		}
-		// void registerSqlDriver(const QString& arg1,QSqlDriverCreatorBase* arg2); >>>> NOT CONVERTED
 		public static bool IsDriverAvailable(string name) {
 			return StaticQSqlDatabase().IsDriverAvailable(name);
-		}
-		public QSqlDatabase(string type) : this((Type) null) {
-			CreateProxy();
-			NewQSqlDatabase(type);
-		}
-		[SmokeMethod("QSqlDatabase", "(const QString&)", "$")]
-		private void NewQSqlDatabase(string type) {
-			ProxyQSqlDatabase().NewQSqlDatabase(type);
-		}
-		public QSqlDatabase(QSqlDriver driver) : this((Type) null) {
-			CreateProxy();
-			NewQSqlDatabase(driver);
-		}
-		[SmokeMethod("QSqlDatabase", "(QSqlDriver*)", "#")]
-		private void NewQSqlDatabase(QSqlDriver driver) {
-			ProxyQSqlDatabase().NewQSqlDatabase(driver);
-		}
-		~QSqlDatabase() {
-			DisposeQSqlDatabase();
-		}
-		public void Dispose() {
-			DisposeQSqlDatabase();
-		}
-		[SmokeMethod("~QSqlDatabase", "()", "")]
-		private void DisposeQSqlDatabase() {
-			ProxyQSqlDatabase().DisposeQSqlDatabase();
 		}
 	}
 }

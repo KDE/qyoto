@@ -27,13 +27,6 @@ namespace Qyoto {
 			[SmokeMethod("createAction", "()", "")]
 			QAction CreateAction();
 		}
-		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QWhatsThis), this);
-			_interceptor = (QWhatsThis) realProxy.GetTransparentProxy();
-		}
-		private QWhatsThis ProxyQWhatsThis() {
-			return (QWhatsThis) _interceptor;
-		}
 		private static Object _staticInterceptor = null;
 		static QWhatsThis() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQWhatsThisProxy), null);
@@ -65,16 +58,6 @@ namespace Qyoto {
 		}
 		public static QAction CreateAction() {
 			return StaticQWhatsThis().CreateAction();
-		}
-		~QWhatsThis() {
-			DisposeQWhatsThis();
-		}
-		public void Dispose() {
-			DisposeQWhatsThis();
-		}
-		[SmokeMethod("~QWhatsThis", "()", "")]
-		private void DisposeQWhatsThis() {
-			ProxyQWhatsThis().DisposeQWhatsThis();
 		}
 	}
 }

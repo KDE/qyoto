@@ -92,16 +92,6 @@ namespace Qyoto {
 		public static string Tr(string s) {
 			return StaticQAbstractProxyModel().Tr(s);
 		}
-		~QAbstractProxyModel() {
-			DisposeQAbstractProxyModel();
-		}
-		public new void Dispose() {
-			DisposeQAbstractProxyModel();
-		}
-		[SmokeMethod("~QAbstractProxyModel", "()", "")]
-		private void DisposeQAbstractProxyModel() {
-			ProxyQAbstractProxyModel().DisposeQAbstractProxyModel();
-		}
 		protected new IQAbstractProxyModelSignals Emit {
 			get { return (IQAbstractProxyModelSignals) Q_EMIT; }
 		}

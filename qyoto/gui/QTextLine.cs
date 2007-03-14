@@ -8,23 +8,12 @@ namespace Qyoto {
 		protected Object _interceptor = null;
 		private IntPtr _smokeObject;
 		protected QTextLine(Type dummy) {}
-		[SmokeClass("QTextLine")]
-		interface IQTextLineProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextLine), this);
 			_interceptor = (QTextLine) realProxy.GetTransparentProxy();
 		}
 		private QTextLine ProxyQTextLine() {
 			return (QTextLine) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QTextLine() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTextLineProxy), null);
-			_staticInterceptor = (IQTextLineProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQTextLineProxy StaticQTextLine() {
-			return (IQTextLineProxy) _staticInterceptor;
 		}
 		public enum Edge {
 			Leading = 0,
@@ -34,6 +23,7 @@ namespace Qyoto {
 			CursorBetweenCharacters = 0,
 			CursorOnCharacter = 1,
 		}
+		// void draw(QPainter* arg1,const QPointF& arg2,const QTextLayout::FormatRange* arg3); >>>> NOT CONVERTED
 		public QTextLine() : this((Type) null) {
 			CreateProxy();
 			NewQTextLine();
@@ -134,7 +124,6 @@ namespace Qyoto {
 		public int LineNumber() {
 			return ProxyQTextLine().LineNumber();
 		}
-		// void draw(QPainter* arg1,const QPointF& arg2,const QTextLayout::FormatRange* arg3); >>>> NOT CONVERTED
 		[SmokeMethod("draw", "(QPainter*, const QPointF&) const", "##")]
 		public void Draw(QPainter p, QPointF point) {
 			ProxyQTextLine().Draw(p,point);

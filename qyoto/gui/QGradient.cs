@@ -43,6 +43,8 @@ namespace Qyoto {
 			LogicalMode = 0,
 			StretchToDeviceMode = 1,
 		}
+		// void setStops(const QGradientStops& arg1); >>>> NOT CONVERTED
+		// QGradientStops stops(); >>>> NOT CONVERTED
 		public QGradient() : this((Type) null) {
 			CreateProxy();
 			NewQGradient();
@@ -67,8 +69,6 @@ namespace Qyoto {
 		public void SetColorAt(double pos, QColor color) {
 			ProxyQGradient().SetColorAt(pos,color);
 		}
-		// void setStops(const QGradientStops& arg1); >>>> NOT CONVERTED
-		// QGradientStops stops(); >>>> NOT CONVERTED
 		[SmokeMethod("coordinateMode", "() const", "")]
 		public QGradient.CoordinateMode coordinateMode() {
 			return ProxyQGradient().coordinateMode();
@@ -76,12 +76,6 @@ namespace Qyoto {
 		[SmokeMethod("setCoordinateMode", "(QGradient::CoordinateMode)", "$")]
 		public void SetCoordinateMode(QGradient.CoordinateMode mode) {
 			ProxyQGradient().SetCoordinateMode(mode);
-		}
-		public static bool operator==(QGradient lhs, QGradient gradient) {
-			return StaticQGradient().op_equals(lhs,gradient);
-		}
-		public static bool operator!=(QGradient lhs, QGradient gradient) {
-			return !StaticQGradient().op_equals(lhs,gradient);
 		}
 		public override bool Equals(object o) {
 			if (!(o is QGradient)) { return false; }
@@ -99,6 +93,12 @@ namespace Qyoto {
 		[SmokeMethod("~QGradient", "()", "")]
 		private void DisposeQGradient() {
 			ProxyQGradient().DisposeQGradient();
+		}
+		public static bool operator==(QGradient lhs, QGradient gradient) {
+			return StaticQGradient().op_equals(lhs,gradient);
+		}
+		public static bool operator!=(QGradient lhs, QGradient gradient) {
+			return !StaticQGradient().op_equals(lhs,gradient);
 		}
 	}
 }

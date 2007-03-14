@@ -212,15 +212,6 @@ namespace Qyoto {
 		public bool SupportsOption(QImageIOHandler.ImageOption option) {
 			return ProxyQImageReader().SupportsOption(option);
 		}
-		public static QByteArray ImageFormat(string fileName) {
-			return StaticQImageReader().ImageFormat(fileName);
-		}
-		public static QByteArray ImageFormat(QIODevice device) {
-			return StaticQImageReader().ImageFormat(device);
-		}
-		public static List<QByteArray> SupportedImageFormats() {
-			return StaticQImageReader().SupportedImageFormats();
-		}
 		~QImageReader() {
 			DisposeQImageReader();
 		}
@@ -230,6 +221,15 @@ namespace Qyoto {
 		[SmokeMethod("~QImageReader", "()", "")]
 		private void DisposeQImageReader() {
 			ProxyQImageReader().DisposeQImageReader();
+		}
+		public static QByteArray ImageFormat(string fileName) {
+			return StaticQImageReader().ImageFormat(fileName);
+		}
+		public static QByteArray ImageFormat(QIODevice device) {
+			return StaticQImageReader().ImageFormat(device);
+		}
+		public static List<QByteArray> SupportedImageFormats() {
+			return StaticQImageReader().SupportedImageFormats();
 		}
 	}
 }

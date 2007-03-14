@@ -53,12 +53,6 @@ namespace Qyoto {
 		private void NewQDomImplementation(QDomImplementation arg1) {
 			ProxyQDomImplementation().NewQDomImplementation(arg1);
 		}
-		public static bool operator==(QDomImplementation lhs, QDomImplementation arg1) {
-			return StaticQDomImplementation().op_equals(lhs,arg1);
-		}
-		public static bool operator!=(QDomImplementation lhs, QDomImplementation arg1) {
-			return !StaticQDomImplementation().op_equals(lhs,arg1);
-		}
 		public override bool Equals(object o) {
 			if (!(o is QDomImplementation)) { return false; }
 			return this == (QDomImplementation) o;
@@ -82,12 +76,6 @@ namespace Qyoto {
 		public bool IsNull() {
 			return ProxyQDomImplementation().IsNull();
 		}
-		public static QDomImplementation.InvalidDataPolicy invalidDataPolicy() {
-			return StaticQDomImplementation().invalidDataPolicy();
-		}
-		public static void SetInvalidDataPolicy(QDomImplementation.InvalidDataPolicy policy) {
-			StaticQDomImplementation().SetInvalidDataPolicy(policy);
-		}
 		~QDomImplementation() {
 			DisposeQDomImplementation();
 		}
@@ -97,6 +85,18 @@ namespace Qyoto {
 		[SmokeMethod("~QDomImplementation", "()", "")]
 		private void DisposeQDomImplementation() {
 			ProxyQDomImplementation().DisposeQDomImplementation();
+		}
+		public static bool operator==(QDomImplementation lhs, QDomImplementation arg1) {
+			return StaticQDomImplementation().op_equals(lhs,arg1);
+		}
+		public static bool operator!=(QDomImplementation lhs, QDomImplementation arg1) {
+			return !StaticQDomImplementation().op_equals(lhs,arg1);
+		}
+		public static QDomImplementation.InvalidDataPolicy invalidDataPolicy() {
+			return StaticQDomImplementation().invalidDataPolicy();
+		}
+		public static void SetInvalidDataPolicy(QDomImplementation.InvalidDataPolicy policy) {
+			StaticQDomImplementation().SetInvalidDataPolicy(policy);
 		}
 	}
 }

@@ -9,23 +9,12 @@ namespace Qyoto {
 		protected Object _interceptor = null;
 		private IntPtr _smokeObject;
 		protected QTextOption(Type dummy) {}
-		[SmokeClass("QTextOption")]
-		interface IQTextOptionProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextOption), this);
 			_interceptor = (QTextOption) realProxy.GetTransparentProxy();
 		}
 		private QTextOption ProxyQTextOption() {
 			return (QTextOption) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QTextOption() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTextOptionProxy), null);
-			_staticInterceptor = (IQTextOptionProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQTextOptionProxy StaticQTextOption() {
-			return (IQTextOptionProxy) _staticInterceptor;
 		}
 		public enum WrapMode {
 			NoWrap = 0,

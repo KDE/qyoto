@@ -6,23 +6,12 @@ namespace Qyoto {
 	[SmokeClass("QAccessibleBridgeFactoryInterface")]
 	public abstract class QAccessibleBridgeFactoryInterface : QFactoryInterface {
  		protected QAccessibleBridgeFactoryInterface(Type dummy) : base((Type) null) {}
-		[SmokeClass("QAccessibleBridgeFactoryInterface")]
-		interface IQAccessibleBridgeFactoryInterfaceProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAccessibleBridgeFactoryInterface), this);
 			_interceptor = (QAccessibleBridgeFactoryInterface) realProxy.GetTransparentProxy();
 		}
 		private QAccessibleBridgeFactoryInterface ProxyQAccessibleBridgeFactoryInterface() {
 			return (QAccessibleBridgeFactoryInterface) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QAccessibleBridgeFactoryInterface() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQAccessibleBridgeFactoryInterfaceProxy), null);
-			_staticInterceptor = (IQAccessibleBridgeFactoryInterfaceProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQAccessibleBridgeFactoryInterfaceProxy StaticQAccessibleBridgeFactoryInterface() {
-			return (IQAccessibleBridgeFactoryInterfaceProxy) _staticInterceptor;
 		}
 		public abstract QAccessibleBridge Create(string name);
 		public QAccessibleBridgeFactoryInterface() : this((Type) null) {
@@ -32,16 +21,6 @@ namespace Qyoto {
 		[SmokeMethod("QAccessibleBridgeFactoryInterface", "()", "")]
 		private void NewQAccessibleBridgeFactoryInterface() {
 			ProxyQAccessibleBridgeFactoryInterface().NewQAccessibleBridgeFactoryInterface();
-		}
-		~QAccessibleBridgeFactoryInterface() {
-			DisposeQAccessibleBridgeFactoryInterface();
-		}
-		public new void Dispose() {
-			DisposeQAccessibleBridgeFactoryInterface();
-		}
-		[SmokeMethod("~QAccessibleBridgeFactoryInterface", "()", "")]
-		private void DisposeQAccessibleBridgeFactoryInterface() {
-			ProxyQAccessibleBridgeFactoryInterface().DisposeQAccessibleBridgeFactoryInterface();
 		}
 	}
 }

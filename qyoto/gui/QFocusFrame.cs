@@ -52,12 +52,6 @@ namespace Qyoto {
 		public QWidget Widget() {
 			return ProxyQFocusFrame().Widget();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQFocusFrame().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQFocusFrame().Tr(s);
-		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent e) {
 			return ProxyQFocusFrame().Event(e);
@@ -79,6 +73,12 @@ namespace Qyoto {
 		[SmokeMethod("~QFocusFrame", "()", "")]
 		private void DisposeQFocusFrame() {
 			ProxyQFocusFrame().DisposeQFocusFrame();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQFocusFrame().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQFocusFrame().Tr(s);
 		}
 		protected new IQFocusFrameSignals Emit {
 			get { return (IQFocusFrameSignals) Q_EMIT; }

@@ -343,12 +343,6 @@ namespace Qyoto {
 		public List<QStandardItem> FindItems(string text) {
 			return ProxyQStandardItemModel().FindItems(text);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQStandardItemModel().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQStandardItemModel().Tr(s);
-		}
 		~QStandardItemModel() {
 			DisposeQStandardItemModel();
 		}
@@ -358,6 +352,12 @@ namespace Qyoto {
 		[SmokeMethod("~QStandardItemModel", "()", "")]
 		private void DisposeQStandardItemModel() {
 			ProxyQStandardItemModel().DisposeQStandardItemModel();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQStandardItemModel().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQStandardItemModel().Tr(s);
 		}
 		protected new IQStandardItemModelSignals Emit {
 			get { return (IQStandardItemModelSignals) Q_EMIT; }

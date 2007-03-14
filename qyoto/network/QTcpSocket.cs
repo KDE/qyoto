@@ -44,12 +44,6 @@ namespace Qyoto {
 		private void NewQTcpSocket() {
 			ProxyQTcpSocket().NewQTcpSocket();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQTcpSocket().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQTcpSocket().Tr(s);
-		}
 		~QTcpSocket() {
 			DisposeQTcpSocket();
 		}
@@ -59,6 +53,12 @@ namespace Qyoto {
 		[SmokeMethod("~QTcpSocket", "()", "")]
 		private void DisposeQTcpSocket() {
 			ProxyQTcpSocket().DisposeQTcpSocket();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQTcpSocket().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQTcpSocket().Tr(s);
 		}
 		protected new IQTcpSocketSignals Emit {
 			get { return (IQTcpSocketSignals) Q_EMIT; }

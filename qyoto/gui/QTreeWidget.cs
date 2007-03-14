@@ -240,12 +240,6 @@ namespace Qyoto {
 		public void Clear() {
 			ProxyQTreeWidget().Clear();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQTreeWidget().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQTreeWidget().Tr(s);
-		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent e) {
 			return ProxyQTreeWidget().Event(e);
@@ -295,6 +289,12 @@ namespace Qyoto {
 		[SmokeMethod("~QTreeWidget", "()", "")]
 		private void DisposeQTreeWidget() {
 			ProxyQTreeWidget().DisposeQTreeWidget();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQTreeWidget().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQTreeWidget().Tr(s);
 		}
 		protected new IQTreeWidgetSignals Emit {
 			get { return (IQTreeWidgetSignals) Q_EMIT; }

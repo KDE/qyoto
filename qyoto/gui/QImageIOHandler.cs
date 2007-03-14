@@ -8,23 +8,12 @@ namespace Qyoto {
 		protected Object _interceptor = null;
 		private IntPtr _smokeObject;
 		protected QImageIOHandler(Type dummy) {}
-		[SmokeClass("QImageIOHandler")]
-		interface IQImageIOHandlerProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QImageIOHandler), this);
 			_interceptor = (QImageIOHandler) realProxy.GetTransparentProxy();
 		}
 		private QImageIOHandler ProxyQImageIOHandler() {
 			return (QImageIOHandler) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QImageIOHandler() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQImageIOHandlerProxy), null);
-			_staticInterceptor = (IQImageIOHandlerProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQImageIOHandlerProxy StaticQImageIOHandler() {
-			return (IQImageIOHandlerProxy) _staticInterceptor;
 		}
 		public enum ImageOption {
 			Size = 0,
@@ -42,6 +31,7 @@ namespace Qyoto {
 			Animation = 12,
 			BackgroundColor = 13,
 		}
+		// QImageIOHandler* QImageIOHandler(QImageIOHandlerPrivate& arg1); >>>> NOT CONVERTED
 		public QImageIOHandler() : this((Type) null) {
 			CreateProxy();
 			NewQImageIOHandler();
@@ -115,17 +105,6 @@ namespace Qyoto {
 		[SmokeMethod("currentImageRect", "() const", "")]
 		public virtual QRect CurrentImageRect() {
 			return ProxyQImageIOHandler().CurrentImageRect();
-		}
-		// QImageIOHandler* QImageIOHandler(QImageIOHandlerPrivate& arg1); >>>> NOT CONVERTED
-		~QImageIOHandler() {
-			DisposeQImageIOHandler();
-		}
-		public void Dispose() {
-			DisposeQImageIOHandler();
-		}
-		[SmokeMethod("~QImageIOHandler", "()", "")]
-		private void DisposeQImageIOHandler() {
-			ProxyQImageIOHandler().DisposeQImageIOHandler();
 		}
 	}
 }

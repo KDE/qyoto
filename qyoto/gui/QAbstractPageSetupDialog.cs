@@ -55,16 +55,6 @@ namespace Qyoto {
 		public static string Tr(string s) {
 			return StaticQAbstractPageSetupDialog().Tr(s);
 		}
-		~QAbstractPageSetupDialog() {
-			DisposeQAbstractPageSetupDialog();
-		}
-		public new void Dispose() {
-			DisposeQAbstractPageSetupDialog();
-		}
-		[SmokeMethod("~QAbstractPageSetupDialog", "()", "")]
-		private void DisposeQAbstractPageSetupDialog() {
-			ProxyQAbstractPageSetupDialog().DisposeQAbstractPageSetupDialog();
-		}
 		protected new IQAbstractPageSetupDialogSignals Emit {
 			get { return (IQAbstractPageSetupDialogSignals) Q_EMIT; }
 		}

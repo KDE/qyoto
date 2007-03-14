@@ -93,6 +93,8 @@ namespace Qyoto {
 		private static IQByteArrayProxy StaticQByteArray() {
 			return (IQByteArrayProxy) _staticInterceptor;
 		}
+		//  operator const char *(); >>>> NOT CONVERTED
+		//  operator const void *(); >>>> NOT CONVERTED
 		public QByteArray() : this((Type) null) {
 			CreateProxy();
 			NewQByteArray();
@@ -165,8 +167,6 @@ namespace Qyoto {
 		public void Squeeze() {
 			ProxyQByteArray().Squeeze();
 		}
-		//  operator const char *(); >>>> NOT CONVERTED
-		//  operator const void *(); >>>> NOT CONVERTED
 		[SmokeMethod("data", "()", "")]
 		public string Data() {
 			return ProxyQByteArray().Data();
@@ -431,24 +431,6 @@ namespace Qyoto {
 		public List<QByteArray> Split(char sep) {
 			return ProxyQByteArray().Split(sep);
 		}
-		public static bool operator==(QByteArray lhs, string s2) {
-			return StaticQByteArray().op_equals(lhs,s2);
-		}
-		public static bool operator!=(QByteArray lhs, string s2) {
-			return !StaticQByteArray().op_equals(lhs,s2);
-		}
-		public static bool operator<(QByteArray lhs, string s2) {
-			return StaticQByteArray().op_lt(lhs,s2);
-		}
-		public static bool operator>(QByteArray lhs, string s2) {
-			return StaticQByteArray().op_gt(lhs,s2);
-		}
-		public static bool operator<=(QByteArray lhs, string s2) {
-			return StaticQByteArray().op_lte(lhs,s2);
-		}
-		public static bool operator>=(QByteArray lhs, string s2) {
-			return StaticQByteArray().op_gte(lhs,s2);
-		}
 		[SmokeMethod("toShort", "(bool*, int) const", "$$")]
 		public short ToShort(out bool ok, int arg2) {
 			return ProxyQByteArray().ToShort(out ok,arg2);
@@ -673,6 +655,41 @@ namespace Qyoto {
 		public bool IsNull() {
 			return ProxyQByteArray().IsNull();
 		}
+		~QByteArray() {
+			DisposeQByteArray();
+		}
+		public void Dispose() {
+			DisposeQByteArray();
+		}
+		[SmokeMethod("~QByteArray", "()", "")]
+		private void DisposeQByteArray() {
+			ProxyQByteArray().DisposeQByteArray();
+		}
+		public override bool Equals(object o) {
+			if (!(o is QByteArray)) { return false; }
+			return this == (QByteArray) o;
+		}
+		public override int GetHashCode() {
+			return ProxyQByteArray().GetHashCode();
+		}
+		public static bool operator==(QByteArray lhs, string s2) {
+			return StaticQByteArray().op_equals(lhs,s2);
+		}
+		public static bool operator!=(QByteArray lhs, string s2) {
+			return !StaticQByteArray().op_equals(lhs,s2);
+		}
+		public static bool operator<(QByteArray lhs, string s2) {
+			return StaticQByteArray().op_lt(lhs,s2);
+		}
+		public static bool operator>(QByteArray lhs, string s2) {
+			return StaticQByteArray().op_gt(lhs,s2);
+		}
+		public static bool operator<=(QByteArray lhs, string s2) {
+			return StaticQByteArray().op_lte(lhs,s2);
+		}
+		public static bool operator>=(QByteArray lhs, string s2) {
+			return StaticQByteArray().op_gte(lhs,s2);
+		}
 		public static QByteArray Number(int arg1, int arg2) {
 			return StaticQByteArray().Number(arg1,arg2);
 		}
@@ -712,28 +729,11 @@ namespace Qyoto {
 		public static QByteArray FromBase64(QByteArray base64) {
 			return StaticQByteArray().FromBase64(base64);
 		}
-		~QByteArray() {
-			DisposeQByteArray();
-		}
-		public void Dispose() {
-			DisposeQByteArray();
-		}
-		[SmokeMethod("~QByteArray", "()", "")]
-		private void DisposeQByteArray() {
-			ProxyQByteArray().DisposeQByteArray();
-		}
 		public static bool operator==(QByteArray a1, QByteArray a2) {
 			return StaticQByteArray().op_equals(a1,a2);
 		}
 		public static bool operator!=(QByteArray a1, QByteArray a2) {
 			return !StaticQByteArray().op_equals(a1,a2);
-		}
-		public override bool Equals(object o) {
-			if (!(o is QByteArray)) { return false; }
-			return this == (QByteArray) o;
-		}
-		public override int GetHashCode() {
-			return ProxyQByteArray().GetHashCode();
 		}
 		public static bool operator==(string a1, QByteArray a2) {
 			return StaticQByteArray().op_equals(a1,a2);

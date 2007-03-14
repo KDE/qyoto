@@ -23,23 +23,12 @@ namespace Qyoto {
 		protected Object _interceptor = null;
 		private IntPtr _smokeObject;
 		protected QXmlContentHandler(Type dummy) {}
-		[SmokeClass("QXmlContentHandler")]
-		interface IQXmlContentHandlerProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlContentHandler), this);
 			_interceptor = (QXmlContentHandler) realProxy.GetTransparentProxy();
 		}
 		private QXmlContentHandler ProxyQXmlContentHandler() {
 			return (QXmlContentHandler) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QXmlContentHandler() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQXmlContentHandlerProxy), null);
-			_staticInterceptor = (IQXmlContentHandlerProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQXmlContentHandlerProxy StaticQXmlContentHandler() {
-			return (IQXmlContentHandlerProxy) _staticInterceptor;
 		}
 		public abstract void SetDocumentLocator(QXmlLocator locator);
 		public abstract bool StartDocument();
@@ -60,16 +49,6 @@ namespace Qyoto {
 		[SmokeMethod("QXmlContentHandler", "()", "")]
 		private void NewQXmlContentHandler() {
 			ProxyQXmlContentHandler().NewQXmlContentHandler();
-		}
-		~QXmlContentHandler() {
-			DisposeQXmlContentHandler();
-		}
-		public void Dispose() {
-			DisposeQXmlContentHandler();
-		}
-		[SmokeMethod("~QXmlContentHandler", "()", "")]
-		private void DisposeQXmlContentHandler() {
-			ProxyQXmlContentHandler().DisposeQXmlContentHandler();
 		}
 	}
 }

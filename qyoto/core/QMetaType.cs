@@ -95,6 +95,13 @@ namespace Qyoto {
 			LastCoreExtType = 137,
 			User = 256,
 		}
+		// void registerStreamOperators(const char* arg1,SaveOperator arg2,LoadOperator arg3); >>>> NOT CONVERTED
+		// int registerType(const char* arg1,Destructor arg2,Constructor arg3); >>>> NOT CONVERTED
+		// void* construct(int arg1,const void* arg2); >>>> NOT CONVERTED
+		// void* construct(int arg1); >>>> NOT CONVERTED
+		// void destroy(int arg1,void* arg2); >>>> NOT CONVERTED
+		// bool save(QDataStream& arg1,int arg2,const void* arg3); >>>> NOT CONVERTED
+		// bool load(QDataStream& arg1,int arg2,void* arg3); >>>> NOT CONVERTED
 		public QMetaType() : this((Type) null) {
 			CreateProxy();
 			NewQMetaType();
@@ -103,22 +110,6 @@ namespace Qyoto {
 		private void NewQMetaType() {
 			ProxyQMetaType().NewQMetaType();
 		}
-		// void registerStreamOperators(const char* arg1,SaveOperator arg2,LoadOperator arg3); >>>> NOT CONVERTED
-		// int registerType(const char* arg1,Destructor arg2,Constructor arg3); >>>> NOT CONVERTED
-		public static int type(string typeName) {
-			return StaticQMetaType().type(typeName);
-		}
-		public static string TypeName(int type) {
-			return StaticQMetaType().TypeName(type);
-		}
-		public static bool IsRegistered(int type) {
-			return StaticQMetaType().IsRegistered(type);
-		}
-		// void* construct(int arg1,const void* arg2); >>>> NOT CONVERTED
-		// void* construct(int arg1); >>>> NOT CONVERTED
-		// void destroy(int arg1,void* arg2); >>>> NOT CONVERTED
-		// bool save(QDataStream& arg1,int arg2,const void* arg3); >>>> NOT CONVERTED
-		// bool load(QDataStream& arg1,int arg2,void* arg3); >>>> NOT CONVERTED
 		~QMetaType() {
 			DisposeQMetaType();
 		}
@@ -128,6 +119,15 @@ namespace Qyoto {
 		[SmokeMethod("~QMetaType", "()", "")]
 		private void DisposeQMetaType() {
 			ProxyQMetaType().DisposeQMetaType();
+		}
+		public static int type(string typeName) {
+			return StaticQMetaType().type(typeName);
+		}
+		public static string TypeName(int type) {
+			return StaticQMetaType().TypeName(type);
+		}
+		public static bool IsRegistered(int type) {
+			return StaticQMetaType().IsRegistered(type);
 		}
 	}
 }

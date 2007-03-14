@@ -32,6 +32,7 @@ namespace Qyoto {
 		private static IQCursorProxy StaticQCursor() {
 			return (IQCursorProxy) _staticInterceptor;
 		}
+		//  operator QVariant(); >>>> NOT CONVERTED
 		public QCursor() : this((Type) null) {
 			CreateProxy();
 			NewQCursor();
@@ -104,7 +105,6 @@ namespace Qyoto {
 		private void NewQCursor(QCursor cursor) {
 			ProxyQCursor().NewQCursor(cursor);
 		}
-		//  operator QVariant(); >>>> NOT CONVERTED
 		[SmokeMethod("shape", "() const", "")]
 		public Qt.CursorShape Shape() {
 			return ProxyQCursor().Shape();
@@ -129,15 +129,6 @@ namespace Qyoto {
 		public QPoint HotSpot() {
 			return ProxyQCursor().HotSpot();
 		}
-		public static QPoint Pos() {
-			return StaticQCursor().Pos();
-		}
-		public static void SetPos(int x, int y) {
-			StaticQCursor().SetPos(x,y);
-		}
-		public static void SetPos(QPoint p) {
-			StaticQCursor().SetPos(p);
-		}
 		~QCursor() {
 			DisposeQCursor();
 		}
@@ -147,6 +138,15 @@ namespace Qyoto {
 		[SmokeMethod("~QCursor", "()", "")]
 		private void DisposeQCursor() {
 			ProxyQCursor().DisposeQCursor();
+		}
+		public static QPoint Pos() {
+			return StaticQCursor().Pos();
+		}
+		public static void SetPos(int x, int y) {
+			StaticQCursor().SetPos(x,y);
+		}
+		public static void SetPos(QPoint p) {
+			StaticQCursor().SetPos(p);
 		}
 	}
 }

@@ -146,12 +146,6 @@ namespace Qyoto {
 		public void SetStretchFactor(int index, int stretch) {
 			ProxyQSplitter().SetStretchFactor(index,stretch);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQSplitter().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQSplitter().Tr(s);
-		}
 		[SmokeMethod("createHandle", "()", "")]
 		protected virtual QSplitterHandle CreateHandle() {
 			return ProxyQSplitter().CreateHandle();
@@ -193,6 +187,12 @@ namespace Qyoto {
 		[SmokeMethod("~QSplitter", "()", "")]
 		private void DisposeQSplitter() {
 			ProxyQSplitter().DisposeQSplitter();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQSplitter().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQSplitter().Tr(s);
 		}
 		protected new IQSplitterSignals Emit {
 			get { return (IQSplitterSignals) Q_EMIT; }

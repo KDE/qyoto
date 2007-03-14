@@ -56,12 +56,6 @@ namespace Qyoto {
 		public override QSize SizeHint() {
 			return ProxyQSplitterHandle().SizeHint();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQSplitterHandle().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQSplitterHandle().Tr(s);
-		}
 		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
 		protected override void PaintEvent(QPaintEvent arg1) {
 			ProxyQSplitterHandle().PaintEvent(arg1);
@@ -99,6 +93,12 @@ namespace Qyoto {
 		[SmokeMethod("~QSplitterHandle", "()", "")]
 		private void DisposeQSplitterHandle() {
 			ProxyQSplitterHandle().DisposeQSplitterHandle();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQSplitterHandle().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQSplitterHandle().Tr(s);
 		}
 		protected new IQSplitterHandleSignals Emit {
 			get { return (IQSplitterHandleSignals) Q_EMIT; }

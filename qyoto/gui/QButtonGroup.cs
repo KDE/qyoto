@@ -87,12 +87,6 @@ namespace Qyoto {
 		public int CheckedId() {
 			return ProxyQButtonGroup().CheckedId();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQButtonGroup().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQButtonGroup().Tr(s);
-		}
 		~QButtonGroup() {
 			DisposeQButtonGroup();
 		}
@@ -102,6 +96,12 @@ namespace Qyoto {
 		[SmokeMethod("~QButtonGroup", "()", "")]
 		private void DisposeQButtonGroup() {
 			ProxyQButtonGroup().DisposeQButtonGroup();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQButtonGroup().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQButtonGroup().Tr(s);
 		}
 		protected new IQButtonGroupSignals Emit {
 			get { return (IQButtonGroupSignals) Q_EMIT; }

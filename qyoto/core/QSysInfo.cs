@@ -8,23 +8,12 @@ namespace Qyoto {
 		protected Object _interceptor = null;
 		private IntPtr _smokeObject;
 		protected QSysInfo(Type dummy) {}
-		[SmokeClass("QSysInfo")]
-		interface IQSysInfoProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSysInfo), this);
 			_interceptor = (QSysInfo) realProxy.GetTransparentProxy();
 		}
 		private QSysInfo ProxyQSysInfo() {
 			return (QSysInfo) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QSysInfo() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQSysInfoProxy), null);
-			_staticInterceptor = (IQSysInfoProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQSysInfoProxy StaticQSysInfo() {
-			return (IQSysInfoProxy) _staticInterceptor;
 		}
 		public enum Sizes {
 			WordSize = (4<<3),

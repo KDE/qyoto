@@ -6,23 +6,12 @@ namespace Qyoto {
 	[SmokeClass("QStyleOptionDockWidget")]
 	public class QStyleOptionDockWidget : QStyleOption, IDisposable {
  		protected QStyleOptionDockWidget(Type dummy) : base((Type) null) {}
-		[SmokeClass("QStyleOptionDockWidget")]
-		interface IQStyleOptionDockWidgetProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionDockWidget), this);
 			_interceptor = (QStyleOptionDockWidget) realProxy.GetTransparentProxy();
 		}
 		private QStyleOptionDockWidget ProxyQStyleOptionDockWidget() {
 			return (QStyleOptionDockWidget) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QStyleOptionDockWidget() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQStyleOptionDockWidgetProxy), null);
-			_staticInterceptor = (IQStyleOptionDockWidgetProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQStyleOptionDockWidgetProxy StaticQStyleOptionDockWidget() {
-			return (IQStyleOptionDockWidgetProxy) _staticInterceptor;
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_DockWidget,

@@ -233,12 +233,6 @@ namespace Qyoto {
 		public void Abort() {
 			ProxyQHttp().Abort();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQHttp().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQHttp().Tr(s);
-		}
 		~QHttp() {
 			DisposeQHttp();
 		}
@@ -248,6 +242,12 @@ namespace Qyoto {
 		[SmokeMethod("~QHttp", "()", "")]
 		private void DisposeQHttp() {
 			ProxyQHttp().DisposeQHttp();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQHttp().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQHttp().Tr(s);
 		}
 		protected new IQHttpSignals Emit {
 			get { return (IQHttpSignals) Q_EMIT; }

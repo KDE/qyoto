@@ -34,6 +34,7 @@ namespace Qyoto {
 			DontShareAddress = 0x2,
 			ReuseAddressHint = 0x4,
 		}
+		// qint64 readDatagram(char* arg1,qint64 arg2,QHostAddress* arg3,quint16* arg4); >>>> NOT CONVERTED
 		public QUdpSocket(QObject parent) : this((Type) null) {
 			CreateProxy();
 			NewQUdpSocket(parent);
@@ -78,7 +79,6 @@ namespace Qyoto {
 		public long PendingDatagramSize() {
 			return ProxyQUdpSocket().PendingDatagramSize();
 		}
-		// qint64 readDatagram(char* arg1,qint64 arg2,QHostAddress* arg3,quint16* arg4); >>>> NOT CONVERTED
 		[SmokeMethod("readDatagram", "(char*, qint64, QHostAddress*)", "$$#")]
 		public long ReadDatagram(string data, long maxlen, QHostAddress host) {
 			return ProxyQUdpSocket().ReadDatagram(data,maxlen,host);
@@ -95,12 +95,6 @@ namespace Qyoto {
 		public long WriteDatagram(QByteArray datagram, QHostAddress host, ushort port) {
 			return ProxyQUdpSocket().WriteDatagram(datagram,host,port);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQUdpSocket().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQUdpSocket().Tr(s);
-		}
 		~QUdpSocket() {
 			DisposeQUdpSocket();
 		}
@@ -110,6 +104,12 @@ namespace Qyoto {
 		[SmokeMethod("~QUdpSocket", "()", "")]
 		private void DisposeQUdpSocket() {
 			ProxyQUdpSocket().DisposeQUdpSocket();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQUdpSocket().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQUdpSocket().Tr(s);
 		}
 		protected new IQUdpSocketSignals Emit {
 			get { return (IQUdpSocketSignals) Q_EMIT; }

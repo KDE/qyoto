@@ -224,6 +224,10 @@ namespace Qyoto {
 			SetCursorPosition = 1,
 			GetCursorPosition = 2,
 		}
+		// void installFactory(InterfaceFactory arg1); >>>> NOT CONVERTED
+		// void removeFactory(InterfaceFactory arg1); >>>> NOT CONVERTED
+		// UpdateHandler installUpdateHandler(UpdateHandler arg1); >>>> NOT CONVERTED
+		// RootObjectHandler installRootObjectHandler(RootObjectHandler arg1); >>>> NOT CONVERTED
 		public QAccessible() : this((Type) null) {
 			CreateProxy();
 			NewQAccessible();
@@ -232,10 +236,16 @@ namespace Qyoto {
 		private void NewQAccessible() {
 			ProxyQAccessible().NewQAccessible();
 		}
-		// void installFactory(InterfaceFactory arg1); >>>> NOT CONVERTED
-		// void removeFactory(InterfaceFactory arg1); >>>> NOT CONVERTED
-		// UpdateHandler installUpdateHandler(UpdateHandler arg1); >>>> NOT CONVERTED
-		// RootObjectHandler installRootObjectHandler(RootObjectHandler arg1); >>>> NOT CONVERTED
+		~QAccessible() {
+			DisposeQAccessible();
+		}
+		public void Dispose() {
+			DisposeQAccessible();
+		}
+		[SmokeMethod("~QAccessible", "()", "")]
+		private void DisposeQAccessible() {
+			ProxyQAccessible().DisposeQAccessible();
+		}
 		public static QAccessibleInterface QueryAccessibleInterface(QObject arg1) {
 			return StaticQAccessible().QueryAccessibleInterface(arg1);
 		}
@@ -253,16 +263,6 @@ namespace Qyoto {
 		}
 		public static void Cleanup() {
 			StaticQAccessible().Cleanup();
-		}
-		~QAccessible() {
-			DisposeQAccessible();
-		}
-		public void Dispose() {
-			DisposeQAccessible();
-		}
-		[SmokeMethod("~QAccessible", "()", "")]
-		private void DisposeQAccessible() {
-			ProxyQAccessible().DisposeQAccessible();
 		}
 	}
 }

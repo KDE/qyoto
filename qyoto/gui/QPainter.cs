@@ -900,6 +900,16 @@ namespace Qyoto {
 		public QPaintEngine PaintEngine() {
 			return ProxyQPainter().PaintEngine();
 		}
+		~QPainter() {
+			DisposeQPainter();
+		}
+		public void Dispose() {
+			DisposeQPainter();
+		}
+		[SmokeMethod("~QPainter", "()", "")]
+		private void DisposeQPainter() {
+			ProxyQPainter().DisposeQPainter();
+		}
 		public static void SetRedirected(IQPaintDevice device, IQPaintDevice replacement, QPoint offset) {
 			StaticQPainter().SetRedirected(device,replacement,offset);
 		}
@@ -914,16 +924,6 @@ namespace Qyoto {
 		}
 		public static void RestoreRedirected(IQPaintDevice device) {
 			StaticQPainter().RestoreRedirected(device);
-		}
-		~QPainter() {
-			DisposeQPainter();
-		}
-		public void Dispose() {
-			DisposeQPainter();
-		}
-		[SmokeMethod("~QPainter", "()", "")]
-		private void DisposeQPainter() {
-			ProxyQPainter().DisposeQPainter();
 		}
 	}
 }

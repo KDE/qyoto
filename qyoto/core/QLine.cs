@@ -98,12 +98,6 @@ namespace Qyoto {
 		public void Translate(int dx, int dy) {
 			ProxyQLine().Translate(dx,dy);
 		}
-		public static bool operator==(QLine lhs, QLine d) {
-			return StaticQLine().op_equals(lhs,d);
-		}
-		public static bool operator!=(QLine lhs, QLine d) {
-			return !StaticQLine().op_equals(lhs,d);
-		}
 		public override bool Equals(object o) {
 			if (!(o is QLine)) { return false; }
 			return this == (QLine) o;
@@ -120,6 +114,12 @@ namespace Qyoto {
 		[SmokeMethod("~QLine", "()", "")]
 		private void DisposeQLine() {
 			ProxyQLine().DisposeQLine();
+		}
+		public static bool operator==(QLine lhs, QLine d) {
+			return StaticQLine().op_equals(lhs,d);
+		}
+		public static bool operator!=(QLine lhs, QLine d) {
+			return !StaticQLine().op_equals(lhs,d);
 		}
 		public static QLine operator*(QLine l, QMatrix m) {
 			return StaticQLine().op_mult(l,m);

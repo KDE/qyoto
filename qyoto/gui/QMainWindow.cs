@@ -205,12 +205,6 @@ namespace Qyoto {
 		public virtual QMenu CreatePopupMenu() {
 			return ProxyQMainWindow().CreatePopupMenu();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQMainWindow().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQMainWindow().Tr(s);
-		}
 		[SmokeMethod("contextMenuEvent", "(QContextMenuEvent*)", "#")]
 		protected override void ContextMenuEvent(QContextMenuEvent arg1) {
 			ProxyQMainWindow().ContextMenuEvent(arg1);
@@ -228,6 +222,12 @@ namespace Qyoto {
 		[SmokeMethod("~QMainWindow", "()", "")]
 		private void DisposeQMainWindow() {
 			ProxyQMainWindow().DisposeQMainWindow();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQMainWindow().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQMainWindow().Tr(s);
 		}
 		protected new IQMainWindowSignals Emit {
 			get { return (IQMainWindowSignals) Q_EMIT; }

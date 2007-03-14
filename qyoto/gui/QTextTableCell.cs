@@ -88,12 +88,6 @@ namespace Qyoto {
 		public int LastPosition() {
 			return ProxyQTextTableCell().LastPosition();
 		}
-		public static bool operator==(QTextTableCell lhs, QTextTableCell other) {
-			return StaticQTextTableCell().op_equals(lhs,other);
-		}
-		public static bool operator!=(QTextTableCell lhs, QTextTableCell other) {
-			return !StaticQTextTableCell().op_equals(lhs,other);
-		}
 		public override bool Equals(object o) {
 			if (!(o is QTextTableCell)) { return false; }
 			return this == (QTextTableCell) o;
@@ -110,6 +104,12 @@ namespace Qyoto {
 		[SmokeMethod("~QTextTableCell", "()", "")]
 		private void DisposeQTextTableCell() {
 			ProxyQTextTableCell().DisposeQTextTableCell();
+		}
+		public static bool operator==(QTextTableCell lhs, QTextTableCell other) {
+			return StaticQTextTableCell().op_equals(lhs,other);
+		}
+		public static bool operator!=(QTextTableCell lhs, QTextTableCell other) {
+			return !StaticQTextTableCell().op_equals(lhs,other);
 		}
 	}
 }

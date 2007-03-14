@@ -48,6 +48,7 @@ namespace Qyoto {
 			Name = 3,
 			Random = 4,
 		}
+		//  operator QString(); >>>> NOT CONVERTED
 		public QUuid() : this((Type) null) {
 			CreateProxy();
 			NewQUuid();
@@ -76,16 +77,9 @@ namespace Qyoto {
 		public string ToString() {
 			return ProxyQUuid().ToString();
 		}
-		//  operator QString(); >>>> NOT CONVERTED
 		[SmokeMethod("isNull", "() const", "")]
 		public bool IsNull() {
 			return ProxyQUuid().IsNull();
-		}
-		public static bool operator==(QUuid lhs, QUuid orig) {
-			return StaticQUuid().op_equals(lhs,orig);
-		}
-		public static bool operator!=(QUuid lhs, QUuid orig) {
-			return !StaticQUuid().op_equals(lhs,orig);
 		}
 		public override bool Equals(object o) {
 			if (!(o is QUuid)) { return false; }
@@ -94,12 +88,6 @@ namespace Qyoto {
 		public override int GetHashCode() {
 			return ProxyQUuid().GetHashCode();
 		}
-		public static bool operator<(QUuid lhs, QUuid other) {
-			return StaticQUuid().op_lt(lhs,other);
-		}
-		public static bool operator>(QUuid lhs, QUuid other) {
-			return StaticQUuid().op_gt(lhs,other);
-		}
 		[SmokeMethod("variant", "() const", "")]
 		public QUuid.Variant variant() {
 			return ProxyQUuid().variant();
@@ -107,9 +95,6 @@ namespace Qyoto {
 		[SmokeMethod("version", "() const", "")]
 		public QUuid.Version version() {
 			return ProxyQUuid().version();
-		}
-		public static QUuid CreateUuid() {
-			return StaticQUuid().CreateUuid();
 		}
 		~QUuid() {
 			DisposeQUuid();
@@ -120,6 +105,21 @@ namespace Qyoto {
 		[SmokeMethod("~QUuid", "()", "")]
 		private void DisposeQUuid() {
 			ProxyQUuid().DisposeQUuid();
+		}
+		public static bool operator==(QUuid lhs, QUuid orig) {
+			return StaticQUuid().op_equals(lhs,orig);
+		}
+		public static bool operator!=(QUuid lhs, QUuid orig) {
+			return !StaticQUuid().op_equals(lhs,orig);
+		}
+		public static bool operator<(QUuid lhs, QUuid other) {
+			return StaticQUuid().op_lt(lhs,other);
+		}
+		public static bool operator>(QUuid lhs, QUuid other) {
+			return StaticQUuid().op_gt(lhs,other);
+		}
+		public static QUuid CreateUuid() {
+			return StaticQUuid().CreateUuid();
 		}
 	}
 }

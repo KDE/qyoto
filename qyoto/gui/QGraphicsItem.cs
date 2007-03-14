@@ -129,23 +129,12 @@ namespace Qyoto {
 		protected Object _interceptor = null;
 		private IntPtr _smokeObject;
 		protected QGraphicsItem(Type dummy) {}
-		[SmokeClass("QGraphicsItem")]
-		interface IQGraphicsItemProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGraphicsItem), this);
 			_interceptor = (QGraphicsItem) realProxy.GetTransparentProxy();
 		}
 		private QGraphicsItem ProxyQGraphicsItem() {
 			return (QGraphicsItem) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QGraphicsItem() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQGraphicsItemProxy), null);
-			_staticInterceptor = (IQGraphicsItemProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQGraphicsItemProxy StaticQGraphicsItem() {
-			return (IQGraphicsItemProxy) _staticInterceptor;
 		}
 		public enum GraphicsItemFlag {
 			ItemIsMovable = 0x1,
@@ -765,16 +754,6 @@ namespace Qyoto {
 		[SmokeMethod("prepareGeometryChange", "()", "")]
 		protected void PrepareGeometryChange() {
 			ProxyQGraphicsItem().PrepareGeometryChange();
-		}
-		~QGraphicsItem() {
-			DisposeQGraphicsItem();
-		}
-		public void Dispose() {
-			DisposeQGraphicsItem();
-		}
-		[SmokeMethod("~QGraphicsItem", "()", "")]
-		private void DisposeQGraphicsItem() {
-			ProxyQGraphicsItem().DisposeQGraphicsItem();
 		}
 	}
 }

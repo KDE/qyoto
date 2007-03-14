@@ -71,12 +71,6 @@ namespace Qyoto {
 		public override QSize SizeHint() {
 			return ProxyQFontComboBox().SizeHint();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQFontComboBox().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQFontComboBox().Tr(s);
-		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected new virtual bool Event(QEvent e) {
 			return ProxyQFontComboBox().Event(e);
@@ -90,6 +84,12 @@ namespace Qyoto {
 		[SmokeMethod("~QFontComboBox", "()", "")]
 		private void DisposeQFontComboBox() {
 			ProxyQFontComboBox().DisposeQFontComboBox();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQFontComboBox().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQFontComboBox().Tr(s);
 		}
 		protected new IQFontComboBoxSignals Emit {
 			get { return (IQFontComboBoxSignals) Q_EMIT; }

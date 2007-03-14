@@ -72,6 +72,16 @@ namespace Qyoto {
 		public List<QColor> Colormap() {
 			return ProxyQColormap().Colormap();
 		}
+		~QColormap() {
+			DisposeQColormap();
+		}
+		public void Dispose() {
+			DisposeQColormap();
+		}
+		[SmokeMethod("~QColormap", "()", "")]
+		private void DisposeQColormap() {
+			ProxyQColormap().DisposeQColormap();
+		}
 		public static void Initialize() {
 			StaticQColormap().Initialize();
 		}
@@ -83,16 +93,6 @@ namespace Qyoto {
 		}
 		public static QColormap Instance() {
 			return StaticQColormap().Instance();
-		}
-		~QColormap() {
-			DisposeQColormap();
-		}
-		public void Dispose() {
-			DisposeQColormap();
-		}
-		[SmokeMethod("~QColormap", "()", "")]
-		private void DisposeQColormap() {
-			ProxyQColormap().DisposeQColormap();
 		}
 	}
 }

@@ -40,6 +40,9 @@ namespace Qyoto {
 			get { return Property("fileName").Value<string>(); }
 			set { SetProperty("fileName", QVariant.FromValue<string>(value)); }
 		}
+		// void* resolve(const char* arg1); >>>> NOT CONVERTED
+		// void* resolve(const QString& arg1,const char* arg2); >>>> NOT CONVERTED
+		// void* resolve(const QString& arg1,int arg2,const char* arg3); >>>> NOT CONVERTED
 		public QLibrary(QObject parent) : this((Type) null) {
 			CreateProxy();
 			NewQLibrary(parent);
@@ -88,7 +91,6 @@ namespace Qyoto {
 		private void NewQLibrary(string fileName, int verNum) {
 			ProxyQLibrary().NewQLibrary(fileName,verNum);
 		}
-		// void* resolve(const char* arg1); >>>> NOT CONVERTED
 		[SmokeMethod("load", "()", "")]
 		public bool Load() {
 			return ProxyQLibrary().Load();
@@ -109,17 +111,6 @@ namespace Qyoto {
 		public string ErrorString() {
 			return ProxyQLibrary().ErrorString();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQLibrary().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQLibrary().Tr(s);
-		}
-		// void* resolve(const QString& arg1,const char* arg2); >>>> NOT CONVERTED
-		// void* resolve(const QString& arg1,int arg2,const char* arg3); >>>> NOT CONVERTED
-		public static bool IsLibrary(string fileName) {
-			return StaticQLibrary().IsLibrary(fileName);
-		}
 		~QLibrary() {
 			DisposeQLibrary();
 		}
@@ -129,6 +120,15 @@ namespace Qyoto {
 		[SmokeMethod("~QLibrary", "()", "")]
 		private void DisposeQLibrary() {
 			ProxyQLibrary().DisposeQLibrary();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQLibrary().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQLibrary().Tr(s);
+		}
+		public static bool IsLibrary(string fileName) {
+			return StaticQLibrary().IsLibrary(fileName);
 		}
 		protected new IQLibrarySignals Emit {
 			get { return (IQLibrarySignals) Q_EMIT; }

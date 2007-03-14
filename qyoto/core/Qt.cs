@@ -1319,6 +1319,35 @@ namespace Qyoto {
 			TextEditorInteraction = TextSelectableByMouse|TextSelectableByKeyboard|TextEditable,
 			TextBrowserInteraction = TextSelectableByMouse|LinksAccessibleByMouse|LinksAccessibleByKeyboard,
 		}
+		// QDBusArgument& operator<<(QDBusArgument& arg1,const QVariantMap& arg2); >>>> NOT CONVERTED
+		// QDebug qDebug(); >>>> NOT CONVERTED
+		// QDebug qWarning(); >>>> NOT CONVERTED
+		// QDebug qCritical(); >>>> NOT CONVERTED
+		// QtMsgHandler qInstallMsgHandler(QtMsgHandler arg1); >>>> NOT CONVERTED
+		// void* qMalloc(size_t arg1); >>>> NOT CONVERTED
+		// void qFree(void* arg1); >>>> NOT CONVERTED
+		// void* qRealloc(void* arg1,size_t arg2); >>>> NOT CONVERTED
+		// void* qMemCopy(void* arg1,const void* arg2,size_t arg3); >>>> NOT CONVERTED
+		// void* qMemSet(void* arg1,int arg2,size_t arg3); >>>> NOT CONVERTED
+		// bool qvariant_cast_helper(const QVariant& arg1,QVariant::Type arg2,void* arg3); >>>> NOT CONVERTED
+		// bool operator==(const QVariant& arg1,const QVariantComparisonHelper& arg2); >>>> NOT CONVERTED
+		// void qAddPostRoutine(QtCleanUpFunction arg1); >>>> NOT CONVERTED
+		// void qRemovePostRoutine(QtCleanUpFunction arg1); >>>> NOT CONVERTED
+		// int qvsnprintf(char* arg1,size_t arg2,const char* arg3,va_list arg4); >>>> NOT CONVERTED
+		// QBitArray operator&(const QBitArray& arg1,const QBitArray& arg2); >>>> NOT CONVERTED
+		// QBitArray operator|(const QBitArray& arg1,const QBitArray& arg2); >>>> NOT CONVERTED
+		// QBitArray operator^(const QBitArray& arg1,const QBitArray& arg2); >>>> NOT CONVERTED
+		// QDataStream& operator<<(QDataStream& arg1,const QBitArray& arg2); >>>> NOT CONVERTED
+		// QDataStream& operator>>(QDataStream& arg1,QBitArray& arg2); >>>> NOT CONVERTED
+		// QTextStream& operator>>(QTextStream& arg1,QTextStreamFunction arg2); >>>> NOT CONVERTED
+		// QTextStream& operator<<(QTextStream& arg1,QTextStreamFunction arg2); >>>> NOT CONVERTED
+		// QTextStream& operator<<(QTextStream& arg1,QTextStreamManipulator arg2); >>>> NOT CONVERTED
+		// QTextStreamManipulator qSetFieldWidth(int arg1); >>>> NOT CONVERTED
+		// QTextStreamManipulator qSetPadChar(QChar arg1); >>>> NOT CONVERTED
+		// QTextStreamManipulator qSetRealNumberPrecision(int arg1); >>>> NOT CONVERTED
+		// QDebug qDebug(); >>>> NOT CONVERTED
+		// QDebug qWarning(); >>>> NOT CONVERTED
+		// QDebug qCritical(); >>>> NOT CONVERTED
 		public static bool MightBeRichText(string arg1) {
 			return StaticQt().MightBeRichText(arg1);
 		}
@@ -1409,7 +1438,6 @@ namespace Qyoto {
 		public static QDBusArgument Write(QDBusArgument arg, List<QVariant> list) {
 			return StaticQt().Write(arg,list);
 		}
-		// QDBusArgument& operator<<(QDBusArgument& arg1,const QVariantMap& arg2); >>>> NOT CONVERTED
 		public static QTextStream Write(QTextStream arg1, QDomNode arg2) {
 			return StaticQt().Write(arg1,arg2);
 		}
@@ -1728,10 +1756,6 @@ namespace Qyoto {
 		public static bool QSharedBuild() {
 			return StaticQt().QSharedBuild();
 		}
-		// QDebug qDebug(); >>>> NOT CONVERTED
-		// QDebug qWarning(); >>>> NOT CONVERTED
-		// QDebug qCritical(); >>>> NOT CONVERTED
-		// QtMsgHandler qInstallMsgHandler(QtMsgHandler arg1); >>>> NOT CONVERTED
 		public static bool QFuzzyCompare(double p1, double p2) {
 			return StaticQt().QFuzzyCompare(p1,p2);
 		}
@@ -1744,11 +1768,6 @@ namespace Qyoto {
 		public static bool QIsNull(float f) {
 			return StaticQt().QIsNull(f);
 		}
-		// void* qMalloc(size_t arg1); >>>> NOT CONVERTED
-		// void qFree(void* arg1); >>>> NOT CONVERTED
-		// void* qRealloc(void* arg1,size_t arg2); >>>> NOT CONVERTED
-		// void* qMemCopy(void* arg1,const void* arg2,size_t arg3); >>>> NOT CONVERTED
-		// void* qMemSet(void* arg1,int arg2,size_t arg3); >>>> NOT CONVERTED
 		public static QByteArray Qgetenv(string varName) {
 			return StaticQt().Qgetenv(varName);
 		}
@@ -1764,16 +1783,12 @@ namespace Qyoto {
 		public static int Qrand() {
 			return StaticQt().Qrand();
 		}
-		// bool qvariant_cast_helper(const QVariant& arg1,QVariant::Type arg2,void* arg3); >>>> NOT CONVERTED
 		public static QDataStream Read(QDataStream s, QVariant p) {
 			return StaticQt().Read(s,p);
 		}
 		public static QDataStream Write(QDataStream s, QVariant p) {
 			return StaticQt().Write(s,p);
 		}
-		// bool operator==(const QVariant& arg1,const QVariantComparisonHelper& arg2); >>>> NOT CONVERTED
-		// void qAddPostRoutine(QtCleanUpFunction arg1); >>>> NOT CONVERTED
-		// void qRemovePostRoutine(QtCleanUpFunction arg1); >>>> NOT CONVERTED
 		public static string QAppName() {
 			return StaticQt().QAppName();
 		}
@@ -1831,7 +1846,6 @@ namespace Qyoto {
 		public static int Qstrnicmp(string arg1, string arg2, uint len) {
 			return StaticQt().Qstrnicmp(arg1,arg2,len);
 		}
-		// int qvsnprintf(char* arg1,size_t arg2,const char* arg3,va_list arg4); >>>> NOT CONVERTED
 		public static ushort QChecksum(string s, uint len) {
 			return StaticQt().QChecksum(s,len);
 		}
@@ -1907,11 +1921,6 @@ namespace Qyoto {
 		public static QDataStream Read(QDataStream arg1, QDateTime arg2) {
 			return StaticQt().Read(arg1,arg2);
 		}
-		// QBitArray operator&(const QBitArray& arg1,const QBitArray& arg2); >>>> NOT CONVERTED
-		// QBitArray operator|(const QBitArray& arg1,const QBitArray& arg2); >>>> NOT CONVERTED
-		// QBitArray operator^(const QBitArray& arg1,const QBitArray& arg2); >>>> NOT CONVERTED
-		// QDataStream& operator<<(QDataStream& arg1,const QBitArray& arg2); >>>> NOT CONVERTED
-		// QDataStream& operator>>(QDataStream& arg1,QBitArray& arg2); >>>> NOT CONVERTED
 		public static QDataStream Write(QDataStream arg1, char arg2) {
 			return StaticQt().Write(arg1,arg2);
 		}
@@ -1930,9 +1939,6 @@ namespace Qyoto {
 		public static QDataStream Read(QDataStream arg1, QPointF arg2) {
 			return StaticQt().Read(arg1,arg2);
 		}
-		// QTextStream& operator>>(QTextStream& arg1,QTextStreamFunction arg2); >>>> NOT CONVERTED
-		// QTextStream& operator<<(QTextStream& arg1,QTextStreamFunction arg2); >>>> NOT CONVERTED
-		// QTextStream& operator<<(QTextStream& arg1,QTextStreamManipulator arg2); >>>> NOT CONVERTED
 		public static QTextStream Bin(QTextStream s) {
 			return StaticQt().Bin(s);
 		}
@@ -2005,12 +2011,6 @@ namespace Qyoto {
 		public static QTextStream Ws(QTextStream s) {
 			return StaticQt().Ws(s);
 		}
-		// QTextStreamManipulator qSetFieldWidth(int arg1); >>>> NOT CONVERTED
-		// QTextStreamManipulator qSetPadChar(QChar arg1); >>>> NOT CONVERTED
-		// QTextStreamManipulator qSetRealNumberPrecision(int arg1); >>>> NOT CONVERTED
-		// QDebug qDebug(); >>>> NOT CONVERTED
-		// QDebug qWarning(); >>>> NOT CONVERTED
-		// QDebug qCritical(); >>>> NOT CONVERTED
 		public static QDataStream Write(QDataStream arg1, IQUrl arg2) {
 			return StaticQt().Write(arg1,arg2);
 		}

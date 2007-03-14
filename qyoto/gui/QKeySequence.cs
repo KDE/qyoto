@@ -117,6 +117,9 @@ namespace Qyoto {
 			NativeText = 0,
 			PortableText = 1,
 		}
+		//  operator QString(); >>>> NOT CONVERTED
+		//  operator QVariant(); >>>> NOT CONVERTED
+		//  operator int(); >>>> NOT CONVERTED
 		public QKeySequence() : this((Type) null) {
 			CreateProxy();
 			NewQKeySequence();
@@ -201,21 +204,32 @@ namespace Qyoto {
 		public QKeySequence.SequenceMatch Matches(QKeySequence seq) {
 			return ProxyQKeySequence().Matches(seq);
 		}
-		//  operator QString(); >>>> NOT CONVERTED
-		//  operator QVariant(); >>>> NOT CONVERTED
-		//  operator int(); >>>> NOT CONVERTED
-		public static bool operator==(QKeySequence lhs, QKeySequence other) {
-			return StaticQKeySequence().op_equals(lhs,other);
-		}
-		public static bool operator!=(QKeySequence lhs, QKeySequence other) {
-			return !StaticQKeySequence().op_equals(lhs,other);
-		}
 		public override bool Equals(object o) {
 			if (!(o is QKeySequence)) { return false; }
 			return this == (QKeySequence) o;
 		}
 		public override int GetHashCode() {
 			return ProxyQKeySequence().GetHashCode();
+		}
+		[SmokeMethod("isDetached", "() const", "")]
+		public bool IsDetached() {
+			return ProxyQKeySequence().IsDetached();
+		}
+		~QKeySequence() {
+			DisposeQKeySequence();
+		}
+		public void Dispose() {
+			DisposeQKeySequence();
+		}
+		[SmokeMethod("~QKeySequence", "()", "")]
+		private void DisposeQKeySequence() {
+			ProxyQKeySequence().DisposeQKeySequence();
+		}
+		public static bool operator==(QKeySequence lhs, QKeySequence other) {
+			return StaticQKeySequence().op_equals(lhs,other);
+		}
+		public static bool operator!=(QKeySequence lhs, QKeySequence other) {
+			return !StaticQKeySequence().op_equals(lhs,other);
 		}
 		public static bool operator<(QKeySequence lhs, QKeySequence ks) {
 			return StaticQKeySequence().op_lt(lhs,ks);
@@ -229,10 +243,6 @@ namespace Qyoto {
 		public static bool operator>=(QKeySequence lhs, QKeySequence other) {
 			return StaticQKeySequence().op_gte(lhs,other);
 		}
-		[SmokeMethod("isDetached", "() const", "")]
-		public bool IsDetached() {
-			return ProxyQKeySequence().IsDetached();
-		}
 		public static QKeySequence FromString(string str, QKeySequence.SequenceFormat format) {
 			return StaticQKeySequence().FromString(str,format);
 		}
@@ -244,16 +254,6 @@ namespace Qyoto {
 		}
 		public static List<QKeySequence> KeyBindings(QKeySequence.StandardKey key) {
 			return StaticQKeySequence().KeyBindings(key);
-		}
-		~QKeySequence() {
-			DisposeQKeySequence();
-		}
-		public void Dispose() {
-			DisposeQKeySequence();
-		}
-		[SmokeMethod("~QKeySequence", "()", "")]
-		private void DisposeQKeySequence() {
-			ProxyQKeySequence().DisposeQKeySequence();
 		}
 	}
 }

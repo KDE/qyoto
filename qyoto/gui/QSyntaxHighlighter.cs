@@ -65,12 +65,6 @@ namespace Qyoto {
 		public void Rehighlight() {
 			ProxyQSyntaxHighlighter().Rehighlight();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQSyntaxHighlighter().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQSyntaxHighlighter().Tr(s);
-		}
 		protected abstract void HighlightBlock(string text);
 		[SmokeMethod("setFormat", "(int, int, const QTextCharFormat&)", "$$#")]
 		protected void SetFormat(int start, int count, QTextCharFormat format) {
@@ -108,15 +102,11 @@ namespace Qyoto {
 		protected QTextBlockUserData CurrentBlockUserData() {
 			return ProxyQSyntaxHighlighter().CurrentBlockUserData();
 		}
-		~QSyntaxHighlighter() {
-			DisposeQSyntaxHighlighter();
+		public static string Tr(string s, string c) {
+			return StaticQSyntaxHighlighter().Tr(s,c);
 		}
-		public new void Dispose() {
-			DisposeQSyntaxHighlighter();
-		}
-		[SmokeMethod("~QSyntaxHighlighter", "()", "")]
-		private void DisposeQSyntaxHighlighter() {
-			ProxyQSyntaxHighlighter().DisposeQSyntaxHighlighter();
+		public static string Tr(string s) {
+			return StaticQSyntaxHighlighter().Tr(s);
 		}
 		protected new IQSyntaxHighlighterSignals Emit {
 			get { return (IQSyntaxHighlighterSignals) Q_EMIT; }

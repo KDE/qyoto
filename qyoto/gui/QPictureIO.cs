@@ -35,6 +35,7 @@ namespace Qyoto {
 		private static IQPictureIOProxy StaticQPictureIO() {
 			return (IQPictureIOProxy) _staticInterceptor;
 		}
+		// void defineIOHandler(const char* arg1,const char* arg2,const char* arg3,picture_io_handler arg4,picture_io_handler arg5); >>>> NOT CONVERTED
 		public QPictureIO() : this((Type) null) {
 			CreateProxy();
 			NewQPictureIO();
@@ -139,6 +140,16 @@ namespace Qyoto {
 		public bool Write() {
 			return ProxyQPictureIO().Write();
 		}
+		~QPictureIO() {
+			DisposeQPictureIO();
+		}
+		public void Dispose() {
+			DisposeQPictureIO();
+		}
+		[SmokeMethod("~QPictureIO", "()", "")]
+		private void DisposeQPictureIO() {
+			ProxyQPictureIO().DisposeQPictureIO();
+		}
 		public static QByteArray PictureFormat(string fileName) {
 			return StaticQPictureIO().PictureFormat(fileName);
 		}
@@ -150,17 +161,6 @@ namespace Qyoto {
 		}
 		public static List<QByteArray> OutputFormats() {
 			return StaticQPictureIO().OutputFormats();
-		}
-		// void defineIOHandler(const char* arg1,const char* arg2,const char* arg3,picture_io_handler arg4,picture_io_handler arg5); >>>> NOT CONVERTED
-		~QPictureIO() {
-			DisposeQPictureIO();
-		}
-		public void Dispose() {
-			DisposeQPictureIO();
-		}
-		[SmokeMethod("~QPictureIO", "()", "")]
-		private void DisposeQPictureIO() {
-			ProxyQPictureIO().DisposeQPictureIO();
 		}
 	}
 }

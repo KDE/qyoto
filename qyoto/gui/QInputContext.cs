@@ -99,16 +99,6 @@ namespace Qyoto {
 		public static string Tr(string s) {
 			return StaticQInputContext().Tr(s);
 		}
-		~QInputContext() {
-			DisposeQInputContext();
-		}
-		public new void Dispose() {
-			DisposeQInputContext();
-		}
-		[SmokeMethod("~QInputContext", "()", "")]
-		private void DisposeQInputContext() {
-			ProxyQInputContext().DisposeQInputContext();
-		}
 		protected new IQInputContextSignals Emit {
 			get { return (IQInputContextSignals) Q_EMIT; }
 		}

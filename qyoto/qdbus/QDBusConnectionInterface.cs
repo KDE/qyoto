@@ -13,13 +13,6 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDBusConnectionInterface), this);
-			_interceptor = (QDBusConnectionInterface) realProxy.GetTransparentProxy();
-		}
-		private QDBusConnectionInterface ProxyQDBusConnectionInterface() {
-			return (QDBusConnectionInterface) _interceptor;
-		}
 		private static Object _staticInterceptor = null;
 		static QDBusConnectionInterface() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQDBusConnectionInterfaceProxy), null);

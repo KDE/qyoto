@@ -88,15 +88,6 @@ namespace Qyoto {
 		public string ErrorString() {
 			return ProxyQPluginLoader().ErrorString();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQPluginLoader().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQPluginLoader().Tr(s);
-		}
-		public static List<QObject> StaticInstances() {
-			return StaticQPluginLoader().StaticInstances();
-		}
 		~QPluginLoader() {
 			DisposeQPluginLoader();
 		}
@@ -106,6 +97,15 @@ namespace Qyoto {
 		[SmokeMethod("~QPluginLoader", "()", "")]
 		private void DisposeQPluginLoader() {
 			ProxyQPluginLoader().DisposeQPluginLoader();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQPluginLoader().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQPluginLoader().Tr(s);
+		}
+		public static List<QObject> StaticInstances() {
+			return StaticQPluginLoader().StaticInstances();
 		}
 		protected new IQPluginLoaderSignals Emit {
 			get { return (IQPluginLoaderSignals) Q_EMIT; }

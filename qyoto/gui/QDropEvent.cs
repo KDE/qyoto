@@ -6,23 +6,12 @@ namespace Qyoto {
 	[SmokeClass("QDropEvent")]
 	public class QDropEvent : QEvent, IQMimeSource, IDisposable {
  		protected QDropEvent(Type dummy) : base((Type) null) {}
-		[SmokeClass("QDropEvent")]
-		interface IQDropEventProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDropEvent), this);
 			_interceptor = (QDropEvent) realProxy.GetTransparentProxy();
 		}
 		private QDropEvent ProxyQDropEvent() {
 			return (QDropEvent) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QDropEvent() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQDropEventProxy), null);
-			_staticInterceptor = (IQDropEventProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQDropEventProxy StaticQDropEvent() {
-			return (IQDropEventProxy) _staticInterceptor;
 		}
 		public QDropEvent(QPoint pos, int actions, QMimeData data, int buttons, int modifiers, QEvent.TypeOf type) : this((Type) null) {
 			CreateProxy();

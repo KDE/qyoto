@@ -147,6 +147,7 @@ namespace Qyoto {
 			get { return Property("defaultSuffix").Value<string>(); }
 			set { SetProperty("defaultSuffix", QVariant.FromValue<string>(value)); }
 		}
+		// QFileDialog* QFileDialog(const QFileDialogArgs& arg1); >>>> NOT CONVERTED
 		public QFileDialog(QWidget parent, int f) : this((Type) null) {
 			CreateProxy();
 			NewQFileDialog(parent,f);
@@ -271,6 +272,24 @@ namespace Qyoto {
 		public string LabelText(QFileDialog.DialogLabel label) {
 			return ProxyQFileDialog().LabelText(label);
 		}
+		[SmokeMethod("done", "(int)", "$")]
+		protected new virtual void Done(int result) {
+			ProxyQFileDialog().Done(result);
+		}
+		[SmokeMethod("accept", "()", "")]
+		protected new virtual void Accept() {
+			ProxyQFileDialog().Accept();
+		}
+		~QFileDialog() {
+			DisposeQFileDialog();
+		}
+		public new void Dispose() {
+			DisposeQFileDialog();
+		}
+		[SmokeMethod("~QFileDialog", "()", "")]
+		private void DisposeQFileDialog() {
+			ProxyQFileDialog().DisposeQFileDialog();
+		}
 		public static string Tr(string s, string c) {
 			return StaticQFileDialog().Tr(s,c);
 		}
@@ -354,25 +373,6 @@ namespace Qyoto {
 		}
 		public static List<string> GetOpenFileNames() {
 			return StaticQFileDialog().GetOpenFileNames();
-		}
-		// QFileDialog* QFileDialog(const QFileDialogArgs& arg1); >>>> NOT CONVERTED
-		[SmokeMethod("done", "(int)", "$")]
-		protected new virtual void Done(int result) {
-			ProxyQFileDialog().Done(result);
-		}
-		[SmokeMethod("accept", "()", "")]
-		protected new virtual void Accept() {
-			ProxyQFileDialog().Accept();
-		}
-		~QFileDialog() {
-			DisposeQFileDialog();
-		}
-		public new void Dispose() {
-			DisposeQFileDialog();
-		}
-		[SmokeMethod("~QFileDialog", "()", "")]
-		private void DisposeQFileDialog() {
-			ProxyQFileDialog().DisposeQFileDialog();
 		}
 		protected new IQFileDialogSignals Emit {
 			get { return (IQFileDialogSignals) Q_EMIT; }

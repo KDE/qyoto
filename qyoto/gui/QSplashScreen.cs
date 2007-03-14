@@ -113,12 +113,6 @@ namespace Qyoto {
 		public void ClearMessage() {
 			ProxyQSplashScreen().ClearMessage();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQSplashScreen().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQSplashScreen().Tr(s);
-		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent e) {
 			return ProxyQSplashScreen().Event(e);
@@ -140,6 +134,12 @@ namespace Qyoto {
 		[SmokeMethod("~QSplashScreen", "()", "")]
 		private void DisposeQSplashScreen() {
 			ProxyQSplashScreen().DisposeQSplashScreen();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQSplashScreen().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQSplashScreen().Tr(s);
 		}
 		protected new IQSplashScreenSignals Emit {
 			get { return (IQSplashScreenSignals) Q_EMIT; }

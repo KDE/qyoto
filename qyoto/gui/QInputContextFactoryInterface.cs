@@ -7,23 +7,12 @@ namespace Qyoto {
 	[SmokeClass("QInputContextFactoryInterface")]
 	public abstract class QInputContextFactoryInterface : QFactoryInterface {
  		protected QInputContextFactoryInterface(Type dummy) : base((Type) null) {}
-		[SmokeClass("QInputContextFactoryInterface")]
-		interface IQInputContextFactoryInterfaceProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QInputContextFactoryInterface), this);
 			_interceptor = (QInputContextFactoryInterface) realProxy.GetTransparentProxy();
 		}
 		private QInputContextFactoryInterface ProxyQInputContextFactoryInterface() {
 			return (QInputContextFactoryInterface) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QInputContextFactoryInterface() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQInputContextFactoryInterfaceProxy), null);
-			_staticInterceptor = (IQInputContextFactoryInterfaceProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQInputContextFactoryInterfaceProxy StaticQInputContextFactoryInterface() {
-			return (IQInputContextFactoryInterfaceProxy) _staticInterceptor;
 		}
 		public abstract QInputContext Create(string key);
 		public abstract List<string> Languages(string key);
@@ -36,16 +25,6 @@ namespace Qyoto {
 		[SmokeMethod("QInputContextFactoryInterface", "()", "")]
 		private void NewQInputContextFactoryInterface() {
 			ProxyQInputContextFactoryInterface().NewQInputContextFactoryInterface();
-		}
-		~QInputContextFactoryInterface() {
-			DisposeQInputContextFactoryInterface();
-		}
-		public new void Dispose() {
-			DisposeQInputContextFactoryInterface();
-		}
-		[SmokeMethod("~QInputContextFactoryInterface", "()", "")]
-		private void DisposeQInputContextFactoryInterface() {
-			ProxyQInputContextFactoryInterface().DisposeQInputContextFactoryInterface();
 		}
 	}
 }

@@ -50,12 +50,6 @@ namespace Qyoto {
 		public void RegisterEditor(QVariant.TypeOf type, QItemEditorCreatorBase creator) {
 			ProxyQItemEditorFactory().RegisterEditor(type,creator);
 		}
-		public static QItemEditorFactory DefaultFactory() {
-			return StaticQItemEditorFactory().DefaultFactory();
-		}
-		public static void SetDefaultFactory(QItemEditorFactory factory) {
-			StaticQItemEditorFactory().SetDefaultFactory(factory);
-		}
 		~QItemEditorFactory() {
 			DisposeQItemEditorFactory();
 		}
@@ -65,6 +59,12 @@ namespace Qyoto {
 		[SmokeMethod("~QItemEditorFactory", "()", "")]
 		private void DisposeQItemEditorFactory() {
 			ProxyQItemEditorFactory().DisposeQItemEditorFactory();
+		}
+		public static QItemEditorFactory DefaultFactory() {
+			return StaticQItemEditorFactory().DefaultFactory();
+		}
+		public static void SetDefaultFactory(QItemEditorFactory factory) {
+			StaticQItemEditorFactory().SetDefaultFactory(factory);
 		}
 	}
 }

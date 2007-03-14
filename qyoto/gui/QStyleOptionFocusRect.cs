@@ -6,23 +6,12 @@ namespace Qyoto {
 	[SmokeClass("QStyleOptionFocusRect")]
 	public class QStyleOptionFocusRect : QStyleOption, IDisposable {
  		protected QStyleOptionFocusRect(Type dummy) : base((Type) null) {}
-		[SmokeClass("QStyleOptionFocusRect")]
-		interface IQStyleOptionFocusRectProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionFocusRect), this);
 			_interceptor = (QStyleOptionFocusRect) realProxy.GetTransparentProxy();
 		}
 		private QStyleOptionFocusRect ProxyQStyleOptionFocusRect() {
 			return (QStyleOptionFocusRect) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QStyleOptionFocusRect() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQStyleOptionFocusRectProxy), null);
-			_staticInterceptor = (IQStyleOptionFocusRectProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQStyleOptionFocusRectProxy StaticQStyleOptionFocusRect() {
-			return (IQStyleOptionFocusRectProxy) _staticInterceptor;
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_FocusRect,

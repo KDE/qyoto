@@ -7,23 +7,12 @@ namespace Qyoto {
 	[SmokeClass("QAccessibleInterface")]
 	public abstract class QAccessibleInterface : QAccessible {
  		protected QAccessibleInterface(Type dummy) : base((Type) null) {}
-		[SmokeClass("QAccessibleInterface")]
-		interface IQAccessibleInterfaceProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAccessibleInterface), this);
 			_interceptor = (QAccessibleInterface) realProxy.GetTransparentProxy();
 		}
 		private QAccessibleInterface ProxyQAccessibleInterface() {
 			return (QAccessibleInterface) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QAccessibleInterface() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQAccessibleInterfaceProxy), null);
-			_staticInterceptor = (IQAccessibleInterfaceProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQAccessibleInterfaceProxy StaticQAccessibleInterface() {
-			return (IQAccessibleInterfaceProxy) _staticInterceptor;
 		}
 		public abstract bool IsValid();
 		public abstract QObject Object();
@@ -59,16 +48,6 @@ namespace Qyoto {
 		[SmokeMethod("QAccessibleInterface", "()", "")]
 		private void NewQAccessibleInterface() {
 			ProxyQAccessibleInterface().NewQAccessibleInterface();
-		}
-		~QAccessibleInterface() {
-			DisposeQAccessibleInterface();
-		}
-		public void Dispose() {
-			DisposeQAccessibleInterface();
-		}
-		[SmokeMethod("~QAccessibleInterface", "()", "")]
-		private void DisposeQAccessibleInterface() {
-			ProxyQAccessibleInterface().DisposeQAccessibleInterface();
 		}
 	}
 }

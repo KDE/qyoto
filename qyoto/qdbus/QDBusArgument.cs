@@ -10,9 +10,6 @@ namespace Qyoto {
 		protected Object _interceptor = null;
 		private IntPtr _smokeObject;
 		protected QDBusArgument(Type dummy) {}
-		[SmokeClass("QDBusArgument")]
-		interface IQDBusArgumentProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDBusArgument), this);
 			_interceptor = (QDBusArgument) realProxy.GetTransparentProxy();
@@ -20,14 +17,11 @@ namespace Qyoto {
 		private QDBusArgument ProxyQDBusArgument() {
 			return (QDBusArgument) _interceptor;
 		}
-		private static Object _staticInterceptor = null;
-		static QDBusArgument() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQDBusArgumentProxy), null);
-			_staticInterceptor = (IQDBusArgumentProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQDBusArgumentProxy StaticQDBusArgument() {
-			return (IQDBusArgumentProxy) _staticInterceptor;
-		}
+		// const QDBusArgument& operator>>(short& arg1); >>>> NOT CONVERTED
+		// const QDBusArgument& operator>>(ushort& arg1); >>>> NOT CONVERTED
+		// const QDBusArgument& operator>>(qlonglong& arg1); >>>> NOT CONVERTED
+		// const QDBusArgument& operator>>(qulonglong& arg1); >>>> NOT CONVERTED
+		// QDBusArgument* QDBusArgument(QDBusArgumentPrivate* arg1); >>>> NOT CONVERTED
 		public QDBusArgument() : this((Type) null) {
 			CreateProxy();
 			NewQDBusArgument();
@@ -144,8 +138,6 @@ namespace Qyoto {
 		public QDBusArgument Read(bool arg) {
 			return ProxyQDBusArgument().Read(arg);
 		}
-		// const QDBusArgument& operator>>(short& arg1); >>>> NOT CONVERTED
-		// const QDBusArgument& operator>>(ushort& arg1); >>>> NOT CONVERTED
 		[SmokeMethod("operator>>", "(int&) const", "$")]
 		public QDBusArgument Read(out int arg) {
 			return ProxyQDBusArgument().Read(out arg);
@@ -154,8 +146,6 @@ namespace Qyoto {
 		public QDBusArgument Read(uint arg) {
 			return ProxyQDBusArgument().Read(arg);
 		}
-		// const QDBusArgument& operator>>(qlonglong& arg1); >>>> NOT CONVERTED
-		// const QDBusArgument& operator>>(qulonglong& arg1); >>>> NOT CONVERTED
 		[SmokeMethod("operator>>", "(double&) const", "$")]
 		public QDBusArgument Read(double arg) {
 			return ProxyQDBusArgument().Read(arg);
@@ -196,7 +186,6 @@ namespace Qyoto {
 		public bool AtEnd() {
 			return ProxyQDBusArgument().AtEnd();
 		}
-		// QDBusArgument* QDBusArgument(QDBusArgumentPrivate* arg1); >>>> NOT CONVERTED
 		~QDBusArgument() {
 			DisposeQDBusArgument();
 		}

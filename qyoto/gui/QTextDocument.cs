@@ -92,6 +92,8 @@ namespace Qyoto {
 			get { return Property("maximumBlockCount").Value<int>(); }
 			set { SetProperty("maximumBlockCount", QVariant.FromValue<int>(value)); }
 		}
+		// QTextDocumentPrivate* docHandle(); >>>> NOT CONVERTED
+		// void appendUndoItem(QAbstractUndoItem* arg1); >>>> NOT CONVERTED
 		public QTextDocument(QObject parent) : this((Type) null) {
 			CreateProxy();
 			NewQTextDocument(parent);
@@ -308,7 +310,6 @@ namespace Qyoto {
 		public void Redo(QTextCursor cursor) {
 			ProxyQTextDocument().Redo(cursor);
 		}
-		// QTextDocumentPrivate* docHandle(); >>>> NOT CONVERTED
 		[Q_SLOT("void undo()")]
 		[SmokeMethod("undo", "()", "")]
 		public void Undo() {
@@ -318,13 +319,6 @@ namespace Qyoto {
 		[SmokeMethod("redo", "()", "")]
 		public void Redo() {
 			ProxyQTextDocument().Redo();
-		}
-		// void appendUndoItem(QAbstractUndoItem* arg1); >>>> NOT CONVERTED
-		public static string Tr(string s, string c) {
-			return StaticQTextDocument().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQTextDocument().Tr(s);
 		}
 		[SmokeMethod("createObject", "(const QTextFormat&)", "#")]
 		protected virtual QTextObject CreateObject(QTextFormat f) {
@@ -343,6 +337,12 @@ namespace Qyoto {
 		[SmokeMethod("~QTextDocument", "()", "")]
 		private void DisposeQTextDocument() {
 			ProxyQTextDocument().DisposeQTextDocument();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQTextDocument().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQTextDocument().Tr(s);
 		}
 		protected new IQTextDocumentSignals Emit {
 			get { return (IQTextDocumentSignals) Q_EMIT; }

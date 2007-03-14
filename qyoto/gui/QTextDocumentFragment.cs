@@ -80,15 +80,6 @@ namespace Qyoto {
 		public string ToHtml(QByteArray encoding) {
 			return ProxyQTextDocumentFragment().ToHtml(encoding);
 		}
-		public static QTextDocumentFragment FromPlainText(string plainText) {
-			return StaticQTextDocumentFragment().FromPlainText(plainText);
-		}
-		public static QTextDocumentFragment FromHtml(string html) {
-			return StaticQTextDocumentFragment().FromHtml(html);
-		}
-		public static QTextDocumentFragment FromHtml(string html, QTextDocument resourceProvider) {
-			return StaticQTextDocumentFragment().FromHtml(html,resourceProvider);
-		}
 		~QTextDocumentFragment() {
 			DisposeQTextDocumentFragment();
 		}
@@ -98,6 +89,15 @@ namespace Qyoto {
 		[SmokeMethod("~QTextDocumentFragment", "()", "")]
 		private void DisposeQTextDocumentFragment() {
 			ProxyQTextDocumentFragment().DisposeQTextDocumentFragment();
+		}
+		public static QTextDocumentFragment FromPlainText(string plainText) {
+			return StaticQTextDocumentFragment().FromPlainText(plainText);
+		}
+		public static QTextDocumentFragment FromHtml(string html) {
+			return StaticQTextDocumentFragment().FromHtml(html);
+		}
+		public static QTextDocumentFragment FromHtml(string html, QTextDocument resourceProvider) {
+			return StaticQTextDocumentFragment().FromHtml(html,resourceProvider);
 		}
 	}
 }

@@ -29,6 +29,7 @@ namespace Qyoto {
 		private static IQAbstractTextDocumentLayoutProxy StaticQAbstractTextDocumentLayout() {
 			return (IQAbstractTextDocumentLayoutProxy) _staticInterceptor;
 		}
+		// void draw(QPainter* arg1,const QAbstractTextDocumentLayout::PaintContext& arg2); >>>> NOT CONVERTED
 		public QAbstractTextDocumentLayout(QTextDocument doc) : this((Type) null) {
 			CreateProxy();
 			NewQAbstractTextDocumentLayout(doc);
@@ -37,7 +38,6 @@ namespace Qyoto {
 		private void NewQAbstractTextDocumentLayout(QTextDocument doc) {
 			ProxyQAbstractTextDocumentLayout().NewQAbstractTextDocumentLayout(doc);
 		}
-		// void draw(QPainter* arg1,const QAbstractTextDocumentLayout::PaintContext& arg2); >>>> NOT CONVERTED
 		public abstract int HitTest(QPointF point, Qt.HitTestAccuracy accuracy);
 		[SmokeMethod("anchorAt", "(const QPointF&) const", "#")]
 		public string AnchorAt(QPointF pos) {
@@ -67,12 +67,6 @@ namespace Qyoto {
 		public QTextObjectInterface HandlerForObject(int objectType) {
 			return ProxyQAbstractTextDocumentLayout().HandlerForObject(objectType);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQAbstractTextDocumentLayout().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQAbstractTextDocumentLayout().Tr(s);
-		}
 		protected abstract void DocumentChanged(int from, int charsRemoved, int charsAdded);
 		[SmokeMethod("resizeInlineObject", "(QTextInlineObject, int, const QTextFormat&)", "#$#")]
 		protected virtual void ResizeInlineObject(QTextInlineObject item, int posInDocument, QTextFormat format) {
@@ -94,15 +88,11 @@ namespace Qyoto {
 		protected QTextCharFormat Format(int pos) {
 			return ProxyQAbstractTextDocumentLayout().Format(pos);
 		}
-		~QAbstractTextDocumentLayout() {
-			DisposeQAbstractTextDocumentLayout();
+		public static string Tr(string s, string c) {
+			return StaticQAbstractTextDocumentLayout().Tr(s,c);
 		}
-		public new void Dispose() {
-			DisposeQAbstractTextDocumentLayout();
-		}
-		[SmokeMethod("~QAbstractTextDocumentLayout", "()", "")]
-		private void DisposeQAbstractTextDocumentLayout() {
-			ProxyQAbstractTextDocumentLayout().DisposeQAbstractTextDocumentLayout();
+		public static string Tr(string s) {
+			return StaticQAbstractTextDocumentLayout().Tr(s);
 		}
 		protected new IQAbstractTextDocumentLayoutSignals Emit {
 			get { return (IQAbstractTextDocumentLayoutSignals) Q_EMIT; }

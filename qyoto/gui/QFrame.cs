@@ -111,12 +111,6 @@ namespace Qyoto {
 		public override QSize SizeHint() {
 			return ProxyQFrame().SizeHint();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQFrame().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQFrame().Tr(s);
-		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent e) {
 			return ProxyQFrame().Event(e);
@@ -142,6 +136,12 @@ namespace Qyoto {
 		[SmokeMethod("~QFrame", "()", "")]
 		private void DisposeQFrame() {
 			ProxyQFrame().DisposeQFrame();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQFrame().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQFrame().Tr(s);
 		}
 		protected new IQFrameSignals Emit {
 			get { return (IQFrameSignals) Q_EMIT; }

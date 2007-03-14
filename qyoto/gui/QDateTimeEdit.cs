@@ -209,12 +209,6 @@ namespace Qyoto {
 		public override bool Event(QEvent arg1) {
 			return ProxyQDateTimeEdit().Event(arg1);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQDateTimeEdit().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQDateTimeEdit().Tr(s);
-		}
 		[SmokeMethod("keyPressEvent", "(QKeyEvent*)", "#")]
 		protected override void KeyPressEvent(QKeyEvent arg1) {
 			ProxyQDateTimeEdit().KeyPressEvent(arg1);
@@ -268,6 +262,12 @@ namespace Qyoto {
 		[SmokeMethod("~QDateTimeEdit", "()", "")]
 		private void DisposeQDateTimeEdit() {
 			ProxyQDateTimeEdit().DisposeQDateTimeEdit();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQDateTimeEdit().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQDateTimeEdit().Tr(s);
 		}
 		protected new IQDateTimeEditSignals Emit {
 			get { return (IQDateTimeEditSignals) Q_EMIT; }

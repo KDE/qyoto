@@ -8,9 +8,6 @@ namespace Qyoto {
 		protected Object _interceptor = null;
 		private IntPtr _smokeObject;
 		protected QFlag(Type dummy) {}
-		[SmokeClass("QFlag")]
-		interface IQFlagProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFlag), this);
 			_interceptor = (QFlag) realProxy.GetTransparentProxy();
@@ -18,14 +15,7 @@ namespace Qyoto {
 		private QFlag ProxyQFlag() {
 			return (QFlag) _interceptor;
 		}
-		private static Object _staticInterceptor = null;
-		static QFlag() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQFlagProxy), null);
-			_staticInterceptor = (IQFlagProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQFlagProxy StaticQFlag() {
-			return (IQFlagProxy) _staticInterceptor;
-		}
+		//  operator int(); >>>> NOT CONVERTED
 		public QFlag(int i) : this((Type) null) {
 			CreateProxy();
 			NewQFlag(i);
@@ -34,7 +24,6 @@ namespace Qyoto {
 		private void NewQFlag(int i) {
 			ProxyQFlag().NewQFlag(i);
 		}
-		//  operator int(); >>>> NOT CONVERTED
 		~QFlag() {
 			DisposeQFlag();
 		}

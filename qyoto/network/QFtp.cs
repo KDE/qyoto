@@ -226,12 +226,6 @@ namespace Qyoto {
 		public void Abort() {
 			ProxyQFtp().Abort();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQFtp().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQFtp().Tr(s);
-		}
 		~QFtp() {
 			DisposeQFtp();
 		}
@@ -241,6 +235,12 @@ namespace Qyoto {
 		[SmokeMethod("~QFtp", "()", "")]
 		private void DisposeQFtp() {
 			ProxyQFtp().DisposeQFtp();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQFtp().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQFtp().Tr(s);
 		}
 		protected new IQFtpSignals Emit {
 			get { return (IQFtpSignals) Q_EMIT; }

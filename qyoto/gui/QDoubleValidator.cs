@@ -72,12 +72,6 @@ namespace Qyoto {
 		public virtual void SetRange(double bottom, double top) {
 			ProxyQDoubleValidator().SetRange(bottom,top);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQDoubleValidator().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQDoubleValidator().Tr(s);
-		}
 		~QDoubleValidator() {
 			DisposeQDoubleValidator();
 		}
@@ -87,6 +81,12 @@ namespace Qyoto {
 		[SmokeMethod("~QDoubleValidator", "()", "")]
 		private void DisposeQDoubleValidator() {
 			ProxyQDoubleValidator().DisposeQDoubleValidator();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQDoubleValidator().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQDoubleValidator().Tr(s);
 		}
 		protected new IQDoubleValidatorSignals Emit {
 			get { return (IQDoubleValidatorSignals) Q_EMIT; }

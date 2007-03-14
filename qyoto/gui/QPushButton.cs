@@ -116,12 +116,6 @@ namespace Qyoto {
 		public void ShowMenu() {
 			ProxyQPushButton().ShowMenu();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQPushButton().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQPushButton().Tr(s);
-		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent e) {
 			return ProxyQPushButton().Event(e);
@@ -151,6 +145,12 @@ namespace Qyoto {
 		[SmokeMethod("~QPushButton", "()", "")]
 		private void DisposeQPushButton() {
 			ProxyQPushButton().DisposeQPushButton();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQPushButton().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQPushButton().Tr(s);
 		}
 		protected new IQPushButtonSignals Emit {
 			get { return (IQPushButtonSignals) Q_EMIT; }

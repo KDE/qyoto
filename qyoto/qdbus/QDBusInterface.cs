@@ -6,23 +6,12 @@ namespace Qyoto {
 	[SmokeClass("QDBusInterface")]
 	public class QDBusInterface : QDBusAbstractInterface, IDisposable {
  		protected QDBusInterface(Type dummy) : base((Type) null) {}
-		[SmokeClass("QDBusInterface")]
-		interface IQDBusInterfaceProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDBusInterface), this);
 			_interceptor = (QDBusInterface) realProxy.GetTransparentProxy();
 		}
 		private QDBusInterface ProxyQDBusInterface() {
 			return (QDBusInterface) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QDBusInterface() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQDBusInterfaceProxy), null);
-			_staticInterceptor = (IQDBusInterfaceProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQDBusInterfaceProxy StaticQDBusInterface() {
-			return (IQDBusInterfaceProxy) _staticInterceptor;
 		}
 		public QDBusInterface(string service, string path, string arg3, QDBusConnection connection, QObject parent) : this((Type) null) {
 			CreateProxy();

@@ -215,15 +215,6 @@ namespace Qyoto {
 		public void Stop() {
 			ProxyQMovie().Stop();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQMovie().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQMovie().Tr(s);
-		}
-		public static List<QByteArray> SupportedFormats() {
-			return StaticQMovie().SupportedFormats();
-		}
 		~QMovie() {
 			DisposeQMovie();
 		}
@@ -233,6 +224,15 @@ namespace Qyoto {
 		[SmokeMethod("~QMovie", "()", "")]
 		private void DisposeQMovie() {
 			ProxyQMovie().DisposeQMovie();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQMovie().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQMovie().Tr(s);
+		}
+		public static List<QByteArray> SupportedFormats() {
+			return StaticQMovie().SupportedFormats();
 		}
 		protected new IQMovieSignals Emit {
 			get { return (IQMovieSignals) Q_EMIT; }

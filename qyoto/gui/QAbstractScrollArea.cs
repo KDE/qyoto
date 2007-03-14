@@ -107,12 +107,6 @@ namespace Qyoto {
 		public override QSize SizeHint() {
 			return ProxyQAbstractScrollArea().SizeHint();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQAbstractScrollArea().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQAbstractScrollArea().Tr(s);
-		}
 		[SmokeMethod("setViewportMargins", "(int, int, int, int)", "$$$$")]
 		protected void SetViewportMargins(int left, int top, int right, int bottom) {
 			ProxyQAbstractScrollArea().SetViewportMargins(left,top,right,bottom);
@@ -195,6 +189,12 @@ namespace Qyoto {
 		[SmokeMethod("~QAbstractScrollArea", "()", "")]
 		private void DisposeQAbstractScrollArea() {
 			ProxyQAbstractScrollArea().DisposeQAbstractScrollArea();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQAbstractScrollArea().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQAbstractScrollArea().Tr(s);
 		}
 		protected new IQAbstractScrollAreaSignals Emit {
 			get { return (IQAbstractScrollAreaSignals) Q_EMIT; }

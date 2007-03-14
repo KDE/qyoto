@@ -32,6 +32,7 @@ namespace Qyoto {
 		private static IQBoolProxy StaticQBool() {
 			return (IQBoolProxy) _staticInterceptor;
 		}
+		//  operator const void *(); >>>> NOT CONVERTED
 		public QBool(bool B) : this((Type) null) {
 			CreateProxy();
 			NewQBool(B);
@@ -40,7 +41,6 @@ namespace Qyoto {
 		private void NewQBool(bool B) {
 			ProxyQBool().NewQBool(B);
 		}
-		//  operator const void *(); >>>> NOT CONVERTED
 		~QBool() {
 			DisposeQBool();
 		}

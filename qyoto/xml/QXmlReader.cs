@@ -8,9 +8,6 @@ namespace Qyoto {
 		protected Object _interceptor = null;
 		private IntPtr _smokeObject;
 		protected QXmlReader(Type dummy) {}
-		[SmokeClass("QXmlReader")]
-		interface IQXmlReaderProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlReader), this);
 			_interceptor = (QXmlReader) realProxy.GetTransparentProxy();
@@ -18,20 +15,12 @@ namespace Qyoto {
 		private QXmlReader ProxyQXmlReader() {
 			return (QXmlReader) _interceptor;
 		}
-		private static Object _staticInterceptor = null;
-		static QXmlReader() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQXmlReaderProxy), null);
-			_staticInterceptor = (IQXmlReaderProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQXmlReaderProxy StaticQXmlReader() {
-			return (IQXmlReaderProxy) _staticInterceptor;
-		}
-		public abstract bool Feature(string name, out bool ok);
-		public abstract void SetFeature(string name, bool value);
-		public abstract bool HasFeature(string name);
 		// void* property(const QString& arg1,bool* arg2); >>>> NOT CONVERTED
 		// void* property(const QString& arg1); >>>> NOT CONVERTED
 		// void setProperty(const QString& arg1,void* arg2); >>>> NOT CONVERTED
+		public abstract bool Feature(string name, out bool ok);
+		public abstract void SetFeature(string name, bool value);
+		public abstract bool HasFeature(string name);
 		public abstract bool HasProperty(string name);
 		public abstract void SetEntityResolver(IQXmlEntityResolver handler);
 		public abstract IQXmlEntityResolver EntityResolver();
@@ -53,16 +42,6 @@ namespace Qyoto {
 		[SmokeMethod("QXmlReader", "()", "")]
 		private void NewQXmlReader() {
 			ProxyQXmlReader().NewQXmlReader();
-		}
-		~QXmlReader() {
-			DisposeQXmlReader();
-		}
-		public void Dispose() {
-			DisposeQXmlReader();
-		}
-		[SmokeMethod("~QXmlReader", "()", "")]
-		private void DisposeQXmlReader() {
-			ProxyQXmlReader().DisposeQXmlReader();
 		}
 	}
 }

@@ -125,12 +125,6 @@ namespace Qyoto {
 		public QNetworkProxy Proxy() {
 			return ProxyQTcpServer().Proxy();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQTcpServer().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQTcpServer().Tr(s);
-		}
 		[SmokeMethod("incomingConnection", "(int)", "$")]
 		protected virtual void IncomingConnection(int handle) {
 			ProxyQTcpServer().IncomingConnection(handle);
@@ -144,6 +138,12 @@ namespace Qyoto {
 		[SmokeMethod("~QTcpServer", "()", "")]
 		private void DisposeQTcpServer() {
 			ProxyQTcpServer().DisposeQTcpServer();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQTcpServer().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQTcpServer().Tr(s);
 		}
 		protected new IQTcpServerSignals Emit {
 			get { return (IQTcpServerSignals) Q_EMIT; }

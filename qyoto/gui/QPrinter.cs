@@ -7,23 +7,12 @@ namespace Qyoto {
 	[SmokeClass("QPrinter")]
 	public class QPrinter : QPaintDevice, IDisposable {
  		protected QPrinter(Type dummy) : base((Type) null) {}
-		[SmokeClass("QPrinter")]
-		interface IQPrinterProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPrinter), this);
 			_interceptor = (QPrinter) realProxy.GetTransparentProxy();
 		}
 		private QPrinter ProxyQPrinter() {
 			return (QPrinter) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QPrinter() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQPrinterProxy), null);
-			_staticInterceptor = (IQPrinterProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQPrinterProxy StaticQPrinter() {
-			return (IQPrinterProxy) _staticInterceptor;
 		}
 		public enum PrinterMode {
 			ScreenResolution = 0,

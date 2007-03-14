@@ -8,23 +8,12 @@ namespace Qyoto {
 		protected Object _interceptor = null;
 		private IntPtr _smokeObject;
 		protected QTextEncoder(Type dummy) {}
-		[SmokeClass("QTextEncoder")]
-		interface IQTextEncoderProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextEncoder), this);
 			_interceptor = (QTextEncoder) realProxy.GetTransparentProxy();
 		}
 		private QTextEncoder ProxyQTextEncoder() {
 			return (QTextEncoder) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QTextEncoder() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTextEncoderProxy), null);
-			_staticInterceptor = (IQTextEncoderProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQTextEncoderProxy StaticQTextEncoder() {
-			return (IQTextEncoderProxy) _staticInterceptor;
 		}
 		public QTextEncoder(QTextCodec codec) : this((Type) null) {
 			CreateProxy();

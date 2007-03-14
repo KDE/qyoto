@@ -104,6 +104,16 @@ namespace Qyoto {
 		public int LookupId() {
 			return ProxyQHostInfo().LookupId();
 		}
+		~QHostInfo() {
+			DisposeQHostInfo();
+		}
+		public void Dispose() {
+			DisposeQHostInfo();
+		}
+		[SmokeMethod("~QHostInfo", "()", "")]
+		private void DisposeQHostInfo() {
+			ProxyQHostInfo().DisposeQHostInfo();
+		}
 		public static int LookupHost(string name, QObject receiver, string member) {
 			return StaticQHostInfo().LookupHost(name,receiver,member);
 		}
@@ -115,16 +125,6 @@ namespace Qyoto {
 		}
 		public static string LocalHostName() {
 			return StaticQHostInfo().LocalHostName();
-		}
-		~QHostInfo() {
-			DisposeQHostInfo();
-		}
-		public void Dispose() {
-			DisposeQHostInfo();
-		}
-		[SmokeMethod("~QHostInfo", "()", "")]
-		private void DisposeQHostInfo() {
-			ProxyQHostInfo().DisposeQHostInfo();
 		}
 	}
 }

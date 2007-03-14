@@ -44,12 +44,6 @@ namespace Qyoto {
 		private void NewQDomNodeList(QDomNodeList arg1) {
 			ProxyQDomNodeList().NewQDomNodeList(arg1);
 		}
-		public static bool operator==(QDomNodeList lhs, QDomNodeList arg1) {
-			return StaticQDomNodeList().op_equals(lhs,arg1);
-		}
-		public static bool operator!=(QDomNodeList lhs, QDomNodeList arg1) {
-			return !StaticQDomNodeList().op_equals(lhs,arg1);
-		}
 		public override bool Equals(object o) {
 			if (!(o is QDomNodeList)) { return false; }
 			return this == (QDomNodeList) o;
@@ -90,6 +84,12 @@ namespace Qyoto {
 		[SmokeMethod("~QDomNodeList", "()", "")]
 		private void DisposeQDomNodeList() {
 			ProxyQDomNodeList().DisposeQDomNodeList();
+		}
+		public static bool operator==(QDomNodeList lhs, QDomNodeList arg1) {
+			return StaticQDomNodeList().op_equals(lhs,arg1);
+		}
+		public static bool operator!=(QDomNodeList lhs, QDomNodeList arg1) {
+			return !StaticQDomNodeList().op_equals(lhs,arg1);
 		}
 	}
 }

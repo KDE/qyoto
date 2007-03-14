@@ -6,23 +6,12 @@ namespace Qyoto {
 	[SmokeClass("QStyleOptionTabV2")]
 	public class QStyleOptionTabV2 : QStyleOptionTab, IDisposable {
  		protected QStyleOptionTabV2(Type dummy) : base((Type) null) {}
-		[SmokeClass("QStyleOptionTabV2")]
-		interface IQStyleOptionTabV2Proxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionTabV2), this);
 			_interceptor = (QStyleOptionTabV2) realProxy.GetTransparentProxy();
 		}
 		private QStyleOptionTabV2 ProxyQStyleOptionTabV2() {
 			return (QStyleOptionTabV2) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QStyleOptionTabV2() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQStyleOptionTabV2Proxy), null);
-			_staticInterceptor = (IQStyleOptionTabV2Proxy) realProxy.GetTransparentProxy();
-		}
-		private static IQStyleOptionTabV2Proxy StaticQStyleOptionTabV2() {
-			return (IQStyleOptionTabV2Proxy) _staticInterceptor;
 		}
 		public enum StyleOptionVersion {
 			Version = 2,

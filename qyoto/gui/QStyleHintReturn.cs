@@ -8,23 +8,12 @@ namespace Qyoto {
 		protected Object _interceptor = null;
 		private IntPtr _smokeObject;
 		protected QStyleHintReturn(Type dummy) {}
-		[SmokeClass("QStyleHintReturn")]
-		interface IQStyleHintReturnProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleHintReturn), this);
 			_interceptor = (QStyleHintReturn) realProxy.GetTransparentProxy();
 		}
 		private QStyleHintReturn ProxyQStyleHintReturn() {
 			return (QStyleHintReturn) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QStyleHintReturn() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQStyleHintReturnProxy), null);
-			_staticInterceptor = (IQStyleHintReturnProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQStyleHintReturnProxy StaticQStyleHintReturn() {
-			return (IQStyleHintReturnProxy) _staticInterceptor;
 		}
 		public enum HintReturnType {
 			SH_Default = 0xf000,

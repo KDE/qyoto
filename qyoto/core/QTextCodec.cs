@@ -56,6 +56,10 @@ namespace Qyoto {
 			ConvertInvalidToNull = 0x80000000,
 			IgnoreHeader = 0x1,
 		}
+		// QString toUnicode(const char* arg1,int arg2,QTextCodec::ConverterState* arg3); >>>> NOT CONVERTED
+		// QByteArray fromUnicode(const QChar* arg1,int arg2,QTextCodec::ConverterState* arg3); >>>> NOT CONVERTED
+		// QString convertToUnicode(const char* arg1,int arg2,QTextCodec::ConverterState* arg3); >>>> NOT CONVERTED
+		// QByteArray convertFromUnicode(const QChar* arg1,int arg2,QTextCodec::ConverterState* arg3); >>>> NOT CONVERTED
 		[SmokeMethod("makeDecoder", "() const", "")]
 		public QTextDecoder MakeDecoder() {
 			return ProxyQTextCodec().MakeDecoder();
@@ -84,12 +88,10 @@ namespace Qyoto {
 		public QByteArray FromUnicode(string uc) {
 			return ProxyQTextCodec().FromUnicode(uc);
 		}
-		// QString toUnicode(const char* arg1,int arg2,QTextCodec::ConverterState* arg3); >>>> NOT CONVERTED
 		[SmokeMethod("toUnicode", "(const char*, int) const", "$$")]
 		public string ToUnicode(string arg1, int length) {
 			return ProxyQTextCodec().ToUnicode(arg1,length);
 		}
-		// QByteArray fromUnicode(const QChar* arg1,int arg2,QTextCodec::ConverterState* arg3); >>>> NOT CONVERTED
 		[SmokeMethod("fromUnicode", "(const QChar*, int) const", "#$")]
 		public QByteArray FromUnicode(char arg1, int length) {
 			return ProxyQTextCodec().FromUnicode(arg1,length);
@@ -100,6 +102,14 @@ namespace Qyoto {
 			return ProxyQTextCodec().Aliases();
 		}
 		public abstract int MibEnum();
+		public QTextCodec() : this((Type) null) {
+			CreateProxy();
+			NewQTextCodec();
+		}
+		[SmokeMethod("QTextCodec", "()", "")]
+		private void NewQTextCodec() {
+			ProxyQTextCodec().NewQTextCodec();
+		}
 		public static QTextCodec CodecForName(QByteArray name) {
 			return StaticQTextCodec().CodecForName(name);
 		}
@@ -135,16 +145,6 @@ namespace Qyoto {
 		}
 		public static QTextCodec CodecForHtml(QByteArray ba) {
 			return StaticQTextCodec().CodecForHtml(ba);
-		}
-		// QString convertToUnicode(const char* arg1,int arg2,QTextCodec::ConverterState* arg3); >>>> NOT CONVERTED
-		// QByteArray convertFromUnicode(const QChar* arg1,int arg2,QTextCodec::ConverterState* arg3); >>>> NOT CONVERTED
-		public QTextCodec() : this((Type) null) {
-			CreateProxy();
-			NewQTextCodec();
-		}
-		[SmokeMethod("QTextCodec", "()", "")]
-		private void NewQTextCodec() {
-			ProxyQTextCodec().NewQTextCodec();
 		}
 	}
 }

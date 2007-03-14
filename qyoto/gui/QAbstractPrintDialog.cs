@@ -115,16 +115,6 @@ namespace Qyoto {
 		public static string Tr(string s) {
 			return StaticQAbstractPrintDialog().Tr(s);
 		}
-		~QAbstractPrintDialog() {
-			DisposeQAbstractPrintDialog();
-		}
-		public new void Dispose() {
-			DisposeQAbstractPrintDialog();
-		}
-		[SmokeMethod("~QAbstractPrintDialog", "()", "")]
-		private void DisposeQAbstractPrintDialog() {
-			ProxyQAbstractPrintDialog().DisposeQAbstractPrintDialog();
-		}
 		protected new IQAbstractPrintDialogSignals Emit {
 			get { return (IQAbstractPrintDialogSignals) Q_EMIT; }
 		}

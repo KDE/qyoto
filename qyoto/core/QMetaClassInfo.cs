@@ -8,23 +8,12 @@ namespace Qyoto {
 		protected Object _interceptor = null;
 		private IntPtr _smokeObject;
 		protected QMetaClassInfo(Type dummy) {}
-		[SmokeClass("QMetaClassInfo")]
-		interface IQMetaClassInfoProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMetaClassInfo), this);
 			_interceptor = (QMetaClassInfo) realProxy.GetTransparentProxy();
 		}
 		private QMetaClassInfo ProxyQMetaClassInfo() {
 			return (QMetaClassInfo) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QMetaClassInfo() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQMetaClassInfoProxy), null);
-			_staticInterceptor = (IQMetaClassInfoProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQMetaClassInfoProxy StaticQMetaClassInfo() {
-			return (IQMetaClassInfoProxy) _staticInterceptor;
 		}
 		public QMetaClassInfo() : this((Type) null) {
 			CreateProxy();

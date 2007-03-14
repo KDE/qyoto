@@ -140,30 +140,12 @@ namespace Qyoto {
 		public int MsecsTo(QTime arg1) {
 			return ProxyQTime().MsecsTo(arg1);
 		}
-		public static bool operator==(QTime lhs, QTime other) {
-			return StaticQTime().op_equals(lhs,other);
-		}
-		public static bool operator!=(QTime lhs, QTime other) {
-			return !StaticQTime().op_equals(lhs,other);
-		}
 		public override bool Equals(object o) {
 			if (!(o is QTime)) { return false; }
 			return this == (QTime) o;
 		}
 		public override int GetHashCode() {
 			return ProxyQTime().GetHashCode();
-		}
-		public static bool operator<(QTime lhs, QTime other) {
-			return StaticQTime().op_lt(lhs,other);
-		}
-		public static bool operator<=(QTime lhs, QTime other) {
-			return StaticQTime().op_lte(lhs,other);
-		}
-		public static bool operator>(QTime lhs, QTime other) {
-			return StaticQTime().op_gt(lhs,other);
-		}
-		public static bool operator>=(QTime lhs, QTime other) {
-			return StaticQTime().op_gte(lhs,other);
 		}
 		[SmokeMethod("start", "()", "")]
 		public void Start() {
@@ -176,6 +158,34 @@ namespace Qyoto {
 		[SmokeMethod("elapsed", "() const", "")]
 		public int Elapsed() {
 			return ProxyQTime().Elapsed();
+		}
+		~QTime() {
+			DisposeQTime();
+		}
+		public void Dispose() {
+			DisposeQTime();
+		}
+		[SmokeMethod("~QTime", "()", "")]
+		private void DisposeQTime() {
+			ProxyQTime().DisposeQTime();
+		}
+		public static bool operator==(QTime lhs, QTime other) {
+			return StaticQTime().op_equals(lhs,other);
+		}
+		public static bool operator!=(QTime lhs, QTime other) {
+			return !StaticQTime().op_equals(lhs,other);
+		}
+		public static bool operator<(QTime lhs, QTime other) {
+			return StaticQTime().op_lt(lhs,other);
+		}
+		public static bool operator<=(QTime lhs, QTime other) {
+			return StaticQTime().op_lte(lhs,other);
+		}
+		public static bool operator>(QTime lhs, QTime other) {
+			return StaticQTime().op_gt(lhs,other);
+		}
+		public static bool operator>=(QTime lhs, QTime other) {
+			return StaticQTime().op_gte(lhs,other);
 		}
 		public static QTime CurrentTime() {
 			return StaticQTime().CurrentTime();
@@ -194,16 +204,6 @@ namespace Qyoto {
 		}
 		public static bool IsValid(int h, int m, int s) {
 			return StaticQTime().IsValid(h,m,s);
-		}
-		~QTime() {
-			DisposeQTime();
-		}
-		public void Dispose() {
-			DisposeQTime();
-		}
-		[SmokeMethod("~QTime", "()", "")]
-		private void DisposeQTime() {
-			ProxyQTime().DisposeQTime();
 		}
 	}
 }

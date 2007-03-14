@@ -130,6 +130,16 @@ namespace Qyoto {
 		public QDBusMessage Write(QVariant arg) {
 			return ProxyQDBusMessage().Write(arg);
 		}
+		~QDBusMessage() {
+			DisposeQDBusMessage();
+		}
+		public void Dispose() {
+			DisposeQDBusMessage();
+		}
+		[SmokeMethod("~QDBusMessage", "()", "")]
+		private void DisposeQDBusMessage() {
+			ProxyQDBusMessage().DisposeQDBusMessage();
+		}
 		public static QDBusMessage CreateSignal(string path, string arg2, string name) {
 			return StaticQDBusMessage().CreateSignal(path,arg2,name);
 		}
@@ -141,16 +151,6 @@ namespace Qyoto {
 		}
 		public static QDBusMessage CreateError(QDBusError err) {
 			return StaticQDBusMessage().CreateError(err);
-		}
-		~QDBusMessage() {
-			DisposeQDBusMessage();
-		}
-		public void Dispose() {
-			DisposeQDBusMessage();
-		}
-		[SmokeMethod("~QDBusMessage", "()", "")]
-		private void DisposeQDBusMessage() {
-			ProxyQDBusMessage().DisposeQDBusMessage();
 		}
 	}
 }

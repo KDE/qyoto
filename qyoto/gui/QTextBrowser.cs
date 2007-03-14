@@ -97,12 +97,6 @@ namespace Qyoto {
 		public virtual void Reload() {
 			ProxyQTextBrowser().Reload();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQTextBrowser().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQTextBrowser().Tr(s);
-		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent e) {
 			return ProxyQTextBrowser().Event(e);
@@ -144,6 +138,12 @@ namespace Qyoto {
 		[SmokeMethod("~QTextBrowser", "()", "")]
 		private void DisposeQTextBrowser() {
 			ProxyQTextBrowser().DisposeQTextBrowser();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQTextBrowser().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQTextBrowser().Tr(s);
 		}
 		protected new IQTextBrowserSignals Emit {
 			get { return (IQTextBrowserSignals) Q_EMIT; }

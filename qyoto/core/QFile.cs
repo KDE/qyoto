@@ -213,6 +213,28 @@ namespace Qyoto {
 		public virtual QAbstractFileEngine FileEngine() {
 			return ProxyQFile().FileEngine();
 		}
+		[SmokeMethod("readData", "(char*, qint64)", "$$")]
+		protected override long ReadData(string data, long maxlen) {
+			return ProxyQFile().ReadData(data,maxlen);
+		}
+		[SmokeMethod("writeData", "(const char*, qint64)", "$$")]
+		protected override long WriteData(string data, long len) {
+			return ProxyQFile().WriteData(data,len);
+		}
+		[SmokeMethod("readLineData", "(char*, qint64)", "$$")]
+		protected override long ReadLineData(string data, long maxlen) {
+			return ProxyQFile().ReadLineData(data,maxlen);
+		}
+		~QFile() {
+			DisposeQFile();
+		}
+		public new void Dispose() {
+			DisposeQFile();
+		}
+		[SmokeMethod("~QFile", "()", "")]
+		private void DisposeQFile() {
+			ProxyQFile().DisposeQFile();
+		}
 		public static string Tr(string s, string c) {
 			return StaticQFile().Tr(s,c);
 		}
@@ -257,28 +279,6 @@ namespace Qyoto {
 		}
 		public static bool SetPermissions(string filename, int permissionSpec) {
 			return StaticQFile().SetPermissions(filename,permissionSpec);
-		}
-		[SmokeMethod("readData", "(char*, qint64)", "$$")]
-		protected override long ReadData(string data, long maxlen) {
-			return ProxyQFile().ReadData(data,maxlen);
-		}
-		[SmokeMethod("writeData", "(const char*, qint64)", "$$")]
-		protected override long WriteData(string data, long len) {
-			return ProxyQFile().WriteData(data,len);
-		}
-		[SmokeMethod("readLineData", "(char*, qint64)", "$$")]
-		protected override long ReadLineData(string data, long maxlen) {
-			return ProxyQFile().ReadLineData(data,maxlen);
-		}
-		~QFile() {
-			DisposeQFile();
-		}
-		public new void Dispose() {
-			DisposeQFile();
-		}
-		[SmokeMethod("~QFile", "()", "")]
-		private void DisposeQFile() {
-			ProxyQFile().DisposeQFile();
 		}
 		protected new IQFileSignals Emit {
 			get { return (IQFileSignals) Q_EMIT; }

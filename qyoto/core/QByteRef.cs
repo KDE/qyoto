@@ -21,13 +21,6 @@ namespace Qyoto {
 			[SmokeMethod("operator<=", "(char) const", "$")]
 			bool op_lte(QByteRef lhs, char c);
 		}
-		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QByteRef), this);
-			_interceptor = (QByteRef) realProxy.GetTransparentProxy();
-		}
-		private QByteRef ProxyQByteRef() {
-			return (QByteRef) _interceptor;
-		}
 		private static Object _staticInterceptor = null;
 		static QByteRef() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQByteRefProxy), null);
@@ -54,16 +47,6 @@ namespace Qyoto {
 		}
 		public static bool operator<=(QByteRef lhs, char c) {
 			return StaticQByteRef().op_lte(lhs,c);
-		}
-		~QByteRef() {
-			DisposeQByteRef();
-		}
-		public void Dispose() {
-			DisposeQByteRef();
-		}
-		[SmokeMethod("~QByteRef", "()", "")]
-		private void DisposeQByteRef() {
-			ProxyQByteRef().DisposeQByteRef();
 		}
 	}
 }

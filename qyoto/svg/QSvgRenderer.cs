@@ -154,12 +154,6 @@ namespace Qyoto {
 		public void Render(QPainter p, string elementId) {
 			ProxyQSvgRenderer().Render(p,elementId);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQSvgRenderer().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQSvgRenderer().Tr(s);
-		}
 		~QSvgRenderer() {
 			DisposeQSvgRenderer();
 		}
@@ -169,6 +163,12 @@ namespace Qyoto {
 		[SmokeMethod("~QSvgRenderer", "()", "")]
 		private void DisposeQSvgRenderer() {
 			ProxyQSvgRenderer().DisposeQSvgRenderer();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQSvgRenderer().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQSvgRenderer().Tr(s);
 		}
 		protected new IQSvgRendererSignals Emit {
 			get { return (IQSvgRendererSignals) Q_EMIT; }

@@ -30,6 +30,7 @@ namespace Qyoto {
 		private static IQModelIndexProxy StaticQModelIndex() {
 			return (IQModelIndexProxy) _staticInterceptor;
 		}
+		// void* internalPointer(); >>>> NOT CONVERTED
 		public QModelIndex() : this((Type) null) {
 			CreateProxy();
 			NewQModelIndex();
@@ -54,7 +55,6 @@ namespace Qyoto {
 		public int Column() {
 			return ProxyQModelIndex().Column();
 		}
-		// void* internalPointer(); >>>> NOT CONVERTED
 		[SmokeMethod("internalId", "() const", "")]
 		public long InternalId() {
 			return ProxyQModelIndex().InternalId();
@@ -91,25 +91,12 @@ namespace Qyoto {
 		public bool IsValid() {
 			return ProxyQModelIndex().IsValid();
 		}
-		public static bool operator==(QModelIndex lhs, QModelIndex other) {
-			return StaticQModelIndex().op_equals(lhs,other);
-		}
-		public static bool operator!=(QModelIndex lhs, QModelIndex other) {
-			return !StaticQModelIndex().op_equals(lhs,other);
-		}
 		public override bool Equals(object o) {
 			if (!(o is QModelIndex)) { return false; }
 			return this == (QModelIndex) o;
 		}
 		public override int GetHashCode() {
 			return ProxyQModelIndex().GetHashCode();
-		}
-		public static bool operator<(QModelIndex lhs, QModelIndex other) {
-			return StaticQModelIndex().op_lt(lhs,other);
-		}
-		public static bool operator>(QModelIndex lhs, QModelIndex other) {
-			return !StaticQModelIndex().op_lt(lhs,other)
-						&& !StaticQModelIndex().op_equals(lhs,other);
 		}
 		~QModelIndex() {
 			DisposeQModelIndex();
@@ -121,6 +108,19 @@ namespace Qyoto {
 		private void DisposeQModelIndex() {
 			QAbstractItemModel.DerefIndexHandle(InternalPointer());
 			ProxyQModelIndex().DisposeQModelIndex();
+		}
+		public static bool operator==(QModelIndex lhs, QModelIndex other) {
+			return StaticQModelIndex().op_equals(lhs,other);
+		}
+		public static bool operator!=(QModelIndex lhs, QModelIndex other) {
+			return !StaticQModelIndex().op_equals(lhs,other);
+		}
+		public static bool operator<(QModelIndex lhs, QModelIndex other) {
+			return StaticQModelIndex().op_lt(lhs,other);
+		}
+		public static bool operator>(QModelIndex lhs, QModelIndex other) {
+			return !StaticQModelIndex().op_lt(lhs,other)
+						&& !StaticQModelIndex().op_equals(lhs,other);
 		}
 	}
 }

@@ -346,6 +346,36 @@ namespace Qyoto {
 		public void SetWindowModality(Qt.WindowModality windowModality) {
 			ProxyQMessageBox().SetWindowModality(windowModality);
 		}
+		[SmokeMethod("resizeEvent", "(QResizeEvent*)", "#")]
+		protected override void ResizeEvent(QResizeEvent arg1) {
+			ProxyQMessageBox().ResizeEvent(arg1);
+		}
+		[SmokeMethod("showEvent", "(QShowEvent*)", "#")]
+		protected override void ShowEvent(QShowEvent arg1) {
+			ProxyQMessageBox().ShowEvent(arg1);
+		}
+		[SmokeMethod("closeEvent", "(QCloseEvent*)", "#")]
+		protected override void CloseEvent(QCloseEvent arg1) {
+			ProxyQMessageBox().CloseEvent(arg1);
+		}
+		[SmokeMethod("keyPressEvent", "(QKeyEvent*)", "#")]
+		protected override void KeyPressEvent(QKeyEvent arg1) {
+			ProxyQMessageBox().KeyPressEvent(arg1);
+		}
+		[SmokeMethod("changeEvent", "(QEvent*)", "#")]
+		protected override void ChangeEvent(QEvent arg1) {
+			ProxyQMessageBox().ChangeEvent(arg1);
+		}
+		~QMessageBox() {
+			DisposeQMessageBox();
+		}
+		public new void Dispose() {
+			DisposeQMessageBox();
+		}
+		[SmokeMethod("~QMessageBox", "()", "")]
+		private void DisposeQMessageBox() {
+			ProxyQMessageBox().DisposeQMessageBox();
+		}
 		public static string Tr(string s, string c) {
 			return StaticQMessageBox().Tr(s,c);
 		}
@@ -498,36 +528,6 @@ namespace Qyoto {
 		}
 		public static QPixmap StandardIcon(QMessageBox.Icon icon) {
 			return StaticQMessageBox().StandardIcon(icon);
-		}
-		[SmokeMethod("resizeEvent", "(QResizeEvent*)", "#")]
-		protected override void ResizeEvent(QResizeEvent arg1) {
-			ProxyQMessageBox().ResizeEvent(arg1);
-		}
-		[SmokeMethod("showEvent", "(QShowEvent*)", "#")]
-		protected override void ShowEvent(QShowEvent arg1) {
-			ProxyQMessageBox().ShowEvent(arg1);
-		}
-		[SmokeMethod("closeEvent", "(QCloseEvent*)", "#")]
-		protected override void CloseEvent(QCloseEvent arg1) {
-			ProxyQMessageBox().CloseEvent(arg1);
-		}
-		[SmokeMethod("keyPressEvent", "(QKeyEvent*)", "#")]
-		protected override void KeyPressEvent(QKeyEvent arg1) {
-			ProxyQMessageBox().KeyPressEvent(arg1);
-		}
-		[SmokeMethod("changeEvent", "(QEvent*)", "#")]
-		protected override void ChangeEvent(QEvent arg1) {
-			ProxyQMessageBox().ChangeEvent(arg1);
-		}
-		~QMessageBox() {
-			DisposeQMessageBox();
-		}
-		public new void Dispose() {
-			DisposeQMessageBox();
-		}
-		[SmokeMethod("~QMessageBox", "()", "")]
-		private void DisposeQMessageBox() {
-			ProxyQMessageBox().DisposeQMessageBox();
 		}
 		protected new IQMessageBoxSignals Emit {
 			get { return (IQMessageBoxSignals) Q_EMIT; }

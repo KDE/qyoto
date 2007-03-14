@@ -86,9 +86,6 @@ namespace Qyoto {
 		public override QPaintEngine PaintEngine() {
 			return ProxyQGLFramebufferObject().PaintEngine();
 		}
-		public static bool HasOpenGLFramebufferObjects() {
-			return StaticQGLFramebufferObject().HasOpenGLFramebufferObjects();
-		}
 		[SmokeMethod("metric", "(QPaintDevice::PaintDeviceMetric) const", "$")]
 		protected override int Metric(IQPaintDevice metric) {
 			return ProxyQGLFramebufferObject().Metric(metric);
@@ -106,6 +103,9 @@ namespace Qyoto {
 		[SmokeMethod("~QGLFramebufferObject", "()", "")]
 		private void DisposeQGLFramebufferObject() {
 			ProxyQGLFramebufferObject().DisposeQGLFramebufferObject();
+		}
+		public static bool HasOpenGLFramebufferObjects() {
+			return StaticQGLFramebufferObject().HasOpenGLFramebufferObjects();
 		}
 	}
 }

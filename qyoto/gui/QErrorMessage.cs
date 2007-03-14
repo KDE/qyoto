@@ -51,15 +51,6 @@ namespace Qyoto {
 		public void ShowMessage(string message) {
 			ProxyQErrorMessage().ShowMessage(message);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQErrorMessage().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQErrorMessage().Tr(s);
-		}
-		public static QErrorMessage QtHandler() {
-			return StaticQErrorMessage().QtHandler();
-		}
 		[SmokeMethod("done", "(int)", "$")]
 		protected new virtual void Done(int arg1) {
 			ProxyQErrorMessage().Done(arg1);
@@ -73,6 +64,15 @@ namespace Qyoto {
 		[SmokeMethod("~QErrorMessage", "()", "")]
 		private void DisposeQErrorMessage() {
 			ProxyQErrorMessage().DisposeQErrorMessage();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQErrorMessage().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQErrorMessage().Tr(s);
+		}
+		public static QErrorMessage QtHandler() {
+			return StaticQErrorMessage().QtHandler();
 		}
 		protected new IQErrorMessageSignals Emit {
 			get { return (IQErrorMessageSignals) Q_EMIT; }

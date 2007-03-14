@@ -78,6 +78,16 @@ namespace Qyoto {
 		public void Stop() {
 			ProxyQSound().Stop();
 		}
+		~QSound() {
+			DisposeQSound();
+		}
+		public new void Dispose() {
+			DisposeQSound();
+		}
+		[SmokeMethod("~QSound", "()", "")]
+		private void DisposeQSound() {
+			ProxyQSound().DisposeQSound();
+		}
 		public static string Tr(string s, string c) {
 			return StaticQSound().Tr(s,c);
 		}
@@ -89,16 +99,6 @@ namespace Qyoto {
 		}
 		public static void Play(string filename) {
 			StaticQSound().Play(filename);
-		}
-		~QSound() {
-			DisposeQSound();
-		}
-		public new void Dispose() {
-			DisposeQSound();
-		}
-		[SmokeMethod("~QSound", "()", "")]
-		private void DisposeQSound() {
-			ProxyQSound().DisposeQSound();
 		}
 		protected new IQSoundSignals Emit {
 			get { return (IQSoundSignals) Q_EMIT; }

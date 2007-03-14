@@ -63,12 +63,6 @@ namespace Qyoto {
 		public virtual void SetRange(int bottom, int top) {
 			ProxyQIntValidator().SetRange(bottom,top);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQIntValidator().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQIntValidator().Tr(s);
-		}
 		~QIntValidator() {
 			DisposeQIntValidator();
 		}
@@ -78,6 +72,12 @@ namespace Qyoto {
 		[SmokeMethod("~QIntValidator", "()", "")]
 		private void DisposeQIntValidator() {
 			ProxyQIntValidator().DisposeQIntValidator();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQIntValidator().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQIntValidator().Tr(s);
 		}
 		protected new IQIntValidatorSignals Emit {
 			get { return (IQIntValidatorSignals) Q_EMIT; }

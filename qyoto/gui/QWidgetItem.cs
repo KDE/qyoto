@@ -6,23 +6,12 @@ namespace Qyoto {
 	[SmokeClass("QWidgetItem")]
 	public class QWidgetItem : QLayoutItem, IDisposable {
  		protected QWidgetItem(Type dummy) : base((Type) null) {}
-		[SmokeClass("QWidgetItem")]
-		interface IQWidgetItemProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QWidgetItem), this);
 			_interceptor = (QWidgetItem) realProxy.GetTransparentProxy();
 		}
 		private QWidgetItem ProxyQWidgetItem() {
 			return (QWidgetItem) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QWidgetItem() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQWidgetItemProxy), null);
-			_staticInterceptor = (IQWidgetItemProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQWidgetItemProxy StaticQWidgetItem() {
-			return (IQWidgetItemProxy) _staticInterceptor;
 		}
 		public QWidgetItem(QWidget w) : this((Type) null) {
 			CreateProxy();

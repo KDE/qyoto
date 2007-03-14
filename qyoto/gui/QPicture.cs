@@ -35,6 +35,7 @@ namespace Qyoto {
 		private static IQPictureProxy StaticQPicture() {
 			return (IQPictureProxy) _staticInterceptor;
 		}
+		// QPicture* QPicture(QPicturePrivate& arg1); >>>> NOT CONVERTED
 		public QPicture(int formatVersion) : this((Type) null) {
 			CreateProxy();
 			NewQPicture(formatVersion);
@@ -135,6 +136,20 @@ namespace Qyoto {
 		public override QPaintEngine PaintEngine() {
 			return ProxyQPicture().PaintEngine();
 		}
+		[SmokeMethod("metric", "(QPaintDevice::PaintDeviceMetric) const", "$")]
+		protected override int Metric(IQPaintDevice m) {
+			return ProxyQPicture().Metric(m);
+		}
+		~QPicture() {
+			DisposeQPicture();
+		}
+		public void Dispose() {
+			DisposeQPicture();
+		}
+		[SmokeMethod("~QPicture", "()", "")]
+		private void DisposeQPicture() {
+			ProxyQPicture().DisposeQPicture();
+		}
 		public static string PictureFormat(string fileName) {
 			return StaticQPicture().PictureFormat(fileName);
 		}
@@ -149,21 +164,6 @@ namespace Qyoto {
 		}
 		public static List<string> OutputFormatList() {
 			return StaticQPicture().OutputFormatList();
-		}
-		// QPicture* QPicture(QPicturePrivate& arg1); >>>> NOT CONVERTED
-		[SmokeMethod("metric", "(QPaintDevice::PaintDeviceMetric) const", "$")]
-		protected override int Metric(IQPaintDevice m) {
-			return ProxyQPicture().Metric(m);
-		}
-		~QPicture() {
-			DisposeQPicture();
-		}
-		public void Dispose() {
-			DisposeQPicture();
-		}
-		[SmokeMethod("~QPicture", "()", "")]
-		private void DisposeQPicture() {
-			ProxyQPicture().DisposeQPicture();
 		}
 	}
 }

@@ -101,12 +101,6 @@ namespace Qyoto {
 		public QRect AvailableGeometry(QPoint point) {
 			return ProxyQDesktopWidget().AvailableGeometry(point);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQDesktopWidget().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQDesktopWidget().Tr(s);
-		}
 		[SmokeMethod("resizeEvent", "(QResizeEvent*)", "#")]
 		protected override void ResizeEvent(QResizeEvent e) {
 			ProxyQDesktopWidget().ResizeEvent(e);
@@ -120,6 +114,12 @@ namespace Qyoto {
 		[SmokeMethod("~QDesktopWidget", "()", "")]
 		private void DisposeQDesktopWidget() {
 			ProxyQDesktopWidget().DisposeQDesktopWidget();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQDesktopWidget().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQDesktopWidget().Tr(s);
 		}
 		protected new IQDesktopWidgetSignals Emit {
 			get { return (IQDesktopWidgetSignals) Q_EMIT; }

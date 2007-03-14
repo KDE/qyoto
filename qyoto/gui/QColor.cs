@@ -65,6 +65,7 @@ namespace Qyoto {
 			Hsv = 2,
 			Cmyk = 3,
 		}
+		//  operator QVariant(); >>>> NOT CONVERTED
 		public QColor() : this((Type) null) {
 			CreateProxy();
 			NewQColor();
@@ -409,12 +410,6 @@ namespace Qyoto {
 		public QColor Dark() {
 			return ProxyQColor().Dark();
 		}
-		public static bool operator==(QColor lhs, QColor c) {
-			return StaticQColor().op_equals(lhs,c);
-		}
-		public static bool operator!=(QColor lhs, QColor c) {
-			return !StaticQColor().op_equals(lhs,c);
-		}
 		public override bool Equals(object o) {
 			if (!(o is QColor)) { return false; }
 			return this == (QColor) o;
@@ -422,7 +417,22 @@ namespace Qyoto {
 		public override int GetHashCode() {
 			return ProxyQColor().GetHashCode();
 		}
-		//  operator QVariant(); >>>> NOT CONVERTED
+		~QColor() {
+			DisposeQColor();
+		}
+		public void Dispose() {
+			DisposeQColor();
+		}
+		[SmokeMethod("~QColor", "()", "")]
+		private void DisposeQColor() {
+			ProxyQColor().DisposeQColor();
+		}
+		public static bool operator==(QColor lhs, QColor c) {
+			return StaticQColor().op_equals(lhs,c);
+		}
+		public static bool operator!=(QColor lhs, QColor c) {
+			return !StaticQColor().op_equals(lhs,c);
+		}
 		public static List<string> ColorNames() {
 			return StaticQColor().ColorNames();
 		}
@@ -467,16 +477,6 @@ namespace Qyoto {
 		}
 		public static QColor FromCmykF(double c, double m, double y, double k) {
 			return StaticQColor().FromCmykF(c,m,y,k);
-		}
-		~QColor() {
-			DisposeQColor();
-		}
-		public void Dispose() {
-			DisposeQColor();
-		}
-		[SmokeMethod("~QColor", "()", "")]
-		private void DisposeQColor() {
-			ProxyQColor().DisposeQColor();
 		}
 	}
 }

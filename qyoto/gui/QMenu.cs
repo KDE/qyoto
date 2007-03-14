@@ -214,18 +214,6 @@ namespace Qyoto {
 		public void SetNoReplayFor(QWidget widget) {
 			ProxyQMenu().SetNoReplayFor(widget);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQMenu().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQMenu().Tr(s);
-		}
-		public static QAction Exec(List<QAction> actions, QPoint pos, QAction at) {
-			return StaticQMenu().Exec(actions,pos,at);
-		}
-		public static QAction Exec(List<QAction> actions, QPoint pos) {
-			return StaticQMenu().Exec(actions,pos);
-		}
 		[SmokeMethod("columnCount", "() const", "")]
 		protected int ColumnCount() {
 			return ProxyQMenu().ColumnCount();
@@ -295,6 +283,18 @@ namespace Qyoto {
 		[SmokeMethod("~QMenu", "()", "")]
 		private void DisposeQMenu() {
 			ProxyQMenu().DisposeQMenu();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQMenu().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQMenu().Tr(s);
+		}
+		public static QAction Exec(List<QAction> actions, QPoint pos, QAction at) {
+			return StaticQMenu().Exec(actions,pos,at);
+		}
+		public static QAction Exec(List<QAction> actions, QPoint pos) {
+			return StaticQMenu().Exec(actions,pos);
 		}
 		protected new IQMenuSignals Emit {
 			get { return (IQMenuSignals) Q_EMIT; }

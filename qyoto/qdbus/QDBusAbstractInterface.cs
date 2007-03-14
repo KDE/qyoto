@@ -133,12 +133,6 @@ namespace Qyoto {
 		public bool CallWithCallback(string method, List<QVariant> args, QObject receiver, string member) {
 			return ProxyQDBusAbstractInterface().CallWithCallback(method,args,receiver,member);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQDBusAbstractInterface().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQDBusAbstractInterface().Tr(s);
-		}
 		public QDBusAbstractInterface(string service, string path, string arg3, QDBusConnection connection, QObject parent) : this((Type) null) {
 			CreateProxy();
 			NewQDBusAbstractInterface(service,path,arg3,connection,parent);
@@ -180,6 +174,12 @@ namespace Qyoto {
 		[SmokeMethod("~QDBusAbstractInterface", "()", "")]
 		private void DisposeQDBusAbstractInterface() {
 			ProxyQDBusAbstractInterface().DisposeQDBusAbstractInterface();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQDBusAbstractInterface().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQDBusAbstractInterface().Tr(s);
 		}
 		protected new IQDBusAbstractInterfaceSignals Emit {
 			get { return (IQDBusAbstractInterfaceSignals) Q_EMIT; }

@@ -53,12 +53,6 @@ namespace Qyoto {
 		public void ReleaseWidget(QWidget widget) {
 			ProxyQWidgetAction().ReleaseWidget(widget);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQWidgetAction().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQWidgetAction().Tr(s);
-		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent arg1) {
 			return ProxyQWidgetAction().Event(arg1);
@@ -84,6 +78,12 @@ namespace Qyoto {
 		[SmokeMethod("~QWidgetAction", "()", "")]
 		private void DisposeQWidgetAction() {
 			ProxyQWidgetAction().DisposeQWidgetAction();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQWidgetAction().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQWidgetAction().Tr(s);
 		}
 		protected new IQWidgetActionSignals Emit {
 			get { return (IQWidgetActionSignals) Q_EMIT; }

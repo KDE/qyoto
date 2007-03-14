@@ -27,23 +27,12 @@ namespace Qyoto {
 		protected Object _interceptor = null;
 		private IntPtr _smokeObject;
 		protected QLayoutItem(Type dummy) {}
-		[SmokeClass("QLayoutItem")]
-		interface IQLayoutItemProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QLayoutItem), this);
 			_interceptor = (QLayoutItem) realProxy.GetTransparentProxy();
 		}
 		private QLayoutItem ProxyQLayoutItem() {
 			return (QLayoutItem) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QLayoutItem() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQLayoutItemProxy), null);
-			_staticInterceptor = (IQLayoutItemProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQLayoutItemProxy StaticQLayoutItem() {
-			return (IQLayoutItemProxy) _staticInterceptor;
 		}
 		public QLayoutItem(int alignment) : this((Type) null) {
 			CreateProxy();
@@ -103,16 +92,6 @@ namespace Qyoto {
 		[SmokeMethod("setAlignment", "(Qt::Alignment)", "$")]
 		public void SetAlignment(int a) {
 			ProxyQLayoutItem().SetAlignment(a);
-		}
-		~QLayoutItem() {
-			DisposeQLayoutItem();
-		}
-		public void Dispose() {
-			DisposeQLayoutItem();
-		}
-		[SmokeMethod("~QLayoutItem", "()", "")]
-		private void DisposeQLayoutItem() {
-			ProxyQLayoutItem().DisposeQLayoutItem();
 		}
 	}
 }

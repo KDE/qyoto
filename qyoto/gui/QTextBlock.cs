@@ -30,6 +30,7 @@ namespace Qyoto {
 		private static IQTextBlockProxy StaticQTextBlock() {
 			return (IQTextBlockProxy) _staticInterceptor;
 		}
+		// QTextDocumentPrivate* docHandle(); >>>> NOT CONVERTED
 		public QTextBlock() : this((Type) null) {
 			CreateProxy();
 			NewQTextBlock();
@@ -50,25 +51,12 @@ namespace Qyoto {
 		public bool IsValid() {
 			return ProxyQTextBlock().IsValid();
 		}
-		public static bool operator==(QTextBlock lhs, QTextBlock o) {
-			return StaticQTextBlock().op_equals(lhs,o);
-		}
-		public static bool operator!=(QTextBlock lhs, QTextBlock o) {
-			return !StaticQTextBlock().op_equals(lhs,o);
-		}
 		public override bool Equals(object o) {
 			if (!(o is QTextBlock)) { return false; }
 			return this == (QTextBlock) o;
 		}
 		public override int GetHashCode() {
 			return ProxyQTextBlock().GetHashCode();
-		}
-		public static bool operator<(QTextBlock lhs, QTextBlock o) {
-			return StaticQTextBlock().op_lt(lhs,o);
-		}
-		public static bool operator>(QTextBlock lhs, QTextBlock o) {
-			return !StaticQTextBlock().op_lt(lhs,o)
-						&& !StaticQTextBlock().op_equals(lhs,o);
 		}
 		[SmokeMethod("position", "() const", "")]
 		public int Position() {
@@ -138,7 +126,6 @@ namespace Qyoto {
 		public QTextBlock Previous() {
 			return ProxyQTextBlock().Previous();
 		}
-		// QTextDocumentPrivate* docHandle(); >>>> NOT CONVERTED
 		~QTextBlock() {
 			DisposeQTextBlock();
 		}
@@ -148,6 +135,19 @@ namespace Qyoto {
 		[SmokeMethod("~QTextBlock", "()", "")]
 		private void DisposeQTextBlock() {
 			ProxyQTextBlock().DisposeQTextBlock();
+		}
+		public static bool operator==(QTextBlock lhs, QTextBlock o) {
+			return StaticQTextBlock().op_equals(lhs,o);
+		}
+		public static bool operator!=(QTextBlock lhs, QTextBlock o) {
+			return !StaticQTextBlock().op_equals(lhs,o);
+		}
+		public static bool operator<(QTextBlock lhs, QTextBlock o) {
+			return StaticQTextBlock().op_lt(lhs,o);
+		}
+		public static bool operator>(QTextBlock lhs, QTextBlock o) {
+			return !StaticQTextBlock().op_lt(lhs,o)
+						&& !StaticQTextBlock().op_equals(lhs,o);
 		}
 	}
 }

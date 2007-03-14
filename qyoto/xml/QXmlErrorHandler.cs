@@ -15,23 +15,12 @@ namespace Qyoto {
 		protected Object _interceptor = null;
 		private IntPtr _smokeObject;
 		protected QXmlErrorHandler(Type dummy) {}
-		[SmokeClass("QXmlErrorHandler")]
-		interface IQXmlErrorHandlerProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlErrorHandler), this);
 			_interceptor = (QXmlErrorHandler) realProxy.GetTransparentProxy();
 		}
 		private QXmlErrorHandler ProxyQXmlErrorHandler() {
 			return (QXmlErrorHandler) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QXmlErrorHandler() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQXmlErrorHandlerProxy), null);
-			_staticInterceptor = (IQXmlErrorHandlerProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQXmlErrorHandlerProxy StaticQXmlErrorHandler() {
-			return (IQXmlErrorHandlerProxy) _staticInterceptor;
 		}
 		public abstract bool Warning(QXmlParseException exception);
 		public abstract bool Error(QXmlParseException exception);
@@ -44,16 +33,6 @@ namespace Qyoto {
 		[SmokeMethod("QXmlErrorHandler", "()", "")]
 		private void NewQXmlErrorHandler() {
 			ProxyQXmlErrorHandler().NewQXmlErrorHandler();
-		}
-		~QXmlErrorHandler() {
-			DisposeQXmlErrorHandler();
-		}
-		public void Dispose() {
-			DisposeQXmlErrorHandler();
-		}
-		[SmokeMethod("~QXmlErrorHandler", "()", "")]
-		private void DisposeQXmlErrorHandler() {
-			ProxyQXmlErrorHandler().DisposeQXmlErrorHandler();
 		}
 	}
 }

@@ -62,6 +62,8 @@ namespace Qyoto {
 			ListeningState = 5,
 			ClosingState = 6,
 		}
+		// QAbstractSocket* QAbstractSocket(QAbstractSocket::SocketType arg1,QAbstractSocketPrivate& arg2,QObject* arg3); >>>> NOT CONVERTED
+		// QAbstractSocket* QAbstractSocket(QAbstractSocket::SocketType arg1,QAbstractSocketPrivate& arg2); >>>> NOT CONVERTED
 		public QAbstractSocket(QAbstractSocket.SocketType socketType, QObject parent) : this((Type) null) {
 			CreateProxy();
 			NewQAbstractSocket(socketType,parent);
@@ -222,12 +224,6 @@ namespace Qyoto {
 		public QNetworkProxy Proxy() {
 			return ProxyQAbstractSocket().Proxy();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQAbstractSocket().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQAbstractSocket().Tr(s);
-		}
 		[SmokeMethod("readData", "(char*, qint64)", "$$")]
 		protected override long ReadData(string data, long maxlen) {
 			return ProxyQAbstractSocket().ReadData(data,maxlen);
@@ -268,8 +264,6 @@ namespace Qyoto {
 		protected void SetPeerName(string name) {
 			ProxyQAbstractSocket().SetPeerName(name);
 		}
-		// QAbstractSocket* QAbstractSocket(QAbstractSocket::SocketType arg1,QAbstractSocketPrivate& arg2,QObject* arg3); >>>> NOT CONVERTED
-		// QAbstractSocket* QAbstractSocket(QAbstractSocket::SocketType arg1,QAbstractSocketPrivate& arg2); >>>> NOT CONVERTED
 		[Q_SLOT("void connectToHostImplementation(const QString&, quint16, OpenMode)")]
 		[SmokeMethod("connectToHostImplementation", "(const QString&, quint16, OpenMode)", "$$$")]
 		protected void ConnectToHostImplementation(string hostName, ushort port, int mode) {
@@ -294,6 +288,12 @@ namespace Qyoto {
 		[SmokeMethod("~QAbstractSocket", "()", "")]
 		private void DisposeQAbstractSocket() {
 			ProxyQAbstractSocket().DisposeQAbstractSocket();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQAbstractSocket().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQAbstractSocket().Tr(s);
 		}
 		protected new IQAbstractSocketSignals Emit {
 			get { return (IQAbstractSocketSignals) Q_EMIT; }

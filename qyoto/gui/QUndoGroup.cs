@@ -113,12 +113,6 @@ namespace Qyoto {
 		public void SetActiveStack(QUndoStack stack) {
 			ProxyQUndoGroup().SetActiveStack(stack);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQUndoGroup().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQUndoGroup().Tr(s);
-		}
 		~QUndoGroup() {
 			DisposeQUndoGroup();
 		}
@@ -128,6 +122,12 @@ namespace Qyoto {
 		[SmokeMethod("~QUndoGroup", "()", "")]
 		private void DisposeQUndoGroup() {
 			ProxyQUndoGroup().DisposeQUndoGroup();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQUndoGroup().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQUndoGroup().Tr(s);
 		}
 		protected new IQUndoGroupSignals Emit {
 			get { return (IQUndoGroupSignals) Q_EMIT; }

@@ -175,15 +175,6 @@ namespace Qyoto {
 		public bool IsExecutable() {
 			return ProxyQUrlInfo().IsExecutable();
 		}
-		public static bool GreaterThan(QUrlInfo i1, QUrlInfo i2, int sortBy) {
-			return StaticQUrlInfo().GreaterThan(i1,i2,sortBy);
-		}
-		public static bool LessThan(QUrlInfo i1, QUrlInfo i2, int sortBy) {
-			return StaticQUrlInfo().LessThan(i1,i2,sortBy);
-		}
-		public static bool Equal(QUrlInfo i1, QUrlInfo i2, int sortBy) {
-			return StaticQUrlInfo().Equal(i1,i2,sortBy);
-		}
 		~QUrlInfo() {
 			DisposeQUrlInfo();
 		}
@@ -193,6 +184,15 @@ namespace Qyoto {
 		[SmokeMethod("~QUrlInfo", "()", "")]
 		private void DisposeQUrlInfo() {
 			ProxyQUrlInfo().DisposeQUrlInfo();
+		}
+		public static bool GreaterThan(QUrlInfo i1, QUrlInfo i2, int sortBy) {
+			return StaticQUrlInfo().GreaterThan(i1,i2,sortBy);
+		}
+		public static bool LessThan(QUrlInfo i1, QUrlInfo i2, int sortBy) {
+			return StaticQUrlInfo().LessThan(i1,i2,sortBy);
+		}
+		public static bool Equal(QUrlInfo i1, QUrlInfo i2, int sortBy) {
+			return StaticQUrlInfo().Equal(i1,i2,sortBy);
 		}
 	}
 }

@@ -6,23 +6,12 @@ namespace Qyoto {
 	[SmokeClass("QStyleOptionFrame")]
 	public class QStyleOptionFrame : QStyleOption, IDisposable {
  		protected QStyleOptionFrame(Type dummy) : base((Type) null) {}
-		[SmokeClass("QStyleOptionFrame")]
-		interface IQStyleOptionFrameProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionFrame), this);
 			_interceptor = (QStyleOptionFrame) realProxy.GetTransparentProxy();
 		}
 		private QStyleOptionFrame ProxyQStyleOptionFrame() {
 			return (QStyleOptionFrame) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QStyleOptionFrame() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQStyleOptionFrameProxy), null);
-			_staticInterceptor = (IQStyleOptionFrameProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQStyleOptionFrameProxy StaticQStyleOptionFrame() {
-			return (IQStyleOptionFrameProxy) _staticInterceptor;
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_Frame,

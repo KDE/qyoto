@@ -6,23 +6,12 @@ namespace Qyoto {
 	[SmokeClass("QTextListFormat")]
 	public class QTextListFormat : QTextFormat, IDisposable {
  		protected QTextListFormat(Type dummy) : base((Type) null) {}
-		[SmokeClass("QTextListFormat")]
-		interface IQTextListFormatProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextListFormat), this);
 			_interceptor = (QTextListFormat) realProxy.GetTransparentProxy();
 		}
 		private QTextListFormat ProxyQTextListFormat() {
 			return (QTextListFormat) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QTextListFormat() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTextListFormatProxy), null);
-			_staticInterceptor = (IQTextListFormatProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQTextListFormatProxy StaticQTextListFormat() {
-			return (IQTextListFormatProxy) _staticInterceptor;
 		}
 		public enum Style {
 			ListDisc = -1,

@@ -105,12 +105,6 @@ namespace Qyoto {
 		public override void Fixup(StringBuilder str) {
 			ProxyQDoubleSpinBox().Fixup(str);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQDoubleSpinBox().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQDoubleSpinBox().Tr(s);
-		}
 		~QDoubleSpinBox() {
 			DisposeQDoubleSpinBox();
 		}
@@ -120,6 +114,12 @@ namespace Qyoto {
 		[SmokeMethod("~QDoubleSpinBox", "()", "")]
 		private void DisposeQDoubleSpinBox() {
 			ProxyQDoubleSpinBox().DisposeQDoubleSpinBox();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQDoubleSpinBox().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQDoubleSpinBox().Tr(s);
 		}
 		protected new IQDoubleSpinBoxSignals Emit {
 			get { return (IQDoubleSpinBoxSignals) Q_EMIT; }

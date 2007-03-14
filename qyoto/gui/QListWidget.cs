@@ -191,12 +191,6 @@ namespace Qyoto {
 		public void Clear() {
 			ProxyQListWidget().Clear();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQListWidget().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQListWidget().Tr(s);
-		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent e) {
 			return ProxyQListWidget().Event(e);
@@ -238,6 +232,12 @@ namespace Qyoto {
 		[SmokeMethod("~QListWidget", "()", "")]
 		private void DisposeQListWidget() {
 			ProxyQListWidget().DisposeQListWidget();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQListWidget().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQListWidget().Tr(s);
 		}
 		protected new IQListWidgetSignals Emit {
 			get { return (IQListWidgetSignals) Q_EMIT; }

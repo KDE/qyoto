@@ -104,12 +104,6 @@ namespace Qyoto {
 		public void SetGroup(QUndoGroup group) {
 			ProxyQUndoView().SetGroup(group);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQUndoView().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQUndoView().Tr(s);
-		}
 		~QUndoView() {
 			DisposeQUndoView();
 		}
@@ -119,6 +113,12 @@ namespace Qyoto {
 		[SmokeMethod("~QUndoView", "()", "")]
 		private void DisposeQUndoView() {
 			ProxyQUndoView().DisposeQUndoView();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQUndoView().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQUndoView().Tr(s);
 		}
 		protected new IQUndoViewSignals Emit {
 			get { return (IQUndoViewSignals) Q_EMIT; }

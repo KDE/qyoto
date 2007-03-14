@@ -509,6 +509,7 @@ namespace Qyoto {
 			SP_ArrowForward = 54,
 			SP_CustomBase = 0xf0000000,
 		}
+		// QStyle* QStyle(QStylePrivate& arg1); >>>> NOT CONVERTED
 		public QStyle() : this((Type) null) {
 			CreateProxy();
 			NewQStyle();
@@ -584,6 +585,21 @@ namespace Qyoto {
 			return ProxyQStyle().StandardIcon(standardIcon);
 		}
 		public abstract QPixmap GeneratedIconPixmap(QIcon.Mode iconMode, QPixmap pixmap, out int opt);
+		[Q_SLOT("QIcon standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const")]
+		[SmokeMethod("standardIconImplementation", "(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const", "$##")]
+		protected QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon, out int opt, QWidget widget) {
+			return ProxyQStyle().StandardIconImplementation(standardIcon,out opt,widget);
+		}
+		[Q_SLOT("QIcon standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*) const")]
+		[SmokeMethod("standardIconImplementation", "(QStyle::StandardPixmap, const QStyleOption*) const", "$#")]
+		protected QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon, out int opt) {
+			return ProxyQStyle().StandardIconImplementation(standardIcon,out opt);
+		}
+		[Q_SLOT("QIcon standardIconImplementation(QStyle::StandardPixmap) const")]
+		[SmokeMethod("standardIconImplementation", "(QStyle::StandardPixmap) const", "$")]
+		protected QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon) {
+			return ProxyQStyle().StandardIconImplementation(standardIcon);
+		}
 		public static string Tr(string s, string c) {
 			return StaticQStyle().Tr(s,c);
 		}
@@ -613,32 +629,6 @@ namespace Qyoto {
 		}
 		public static QRect AlignedRect(Qt.LayoutDirection direction, int alignment, QSize size, QRect rectangle) {
 			return StaticQStyle().AlignedRect(direction,alignment,size,rectangle);
-		}
-		// QStyle* QStyle(QStylePrivate& arg1); >>>> NOT CONVERTED
-		[Q_SLOT("QIcon standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const")]
-		[SmokeMethod("standardIconImplementation", "(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const", "$##")]
-		protected QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon, out int opt, QWidget widget) {
-			return ProxyQStyle().StandardIconImplementation(standardIcon,out opt,widget);
-		}
-		[Q_SLOT("QIcon standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*) const")]
-		[SmokeMethod("standardIconImplementation", "(QStyle::StandardPixmap, const QStyleOption*) const", "$#")]
-		protected QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon, out int opt) {
-			return ProxyQStyle().StandardIconImplementation(standardIcon,out opt);
-		}
-		[Q_SLOT("QIcon standardIconImplementation(QStyle::StandardPixmap) const")]
-		[SmokeMethod("standardIconImplementation", "(QStyle::StandardPixmap) const", "$")]
-		protected QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon) {
-			return ProxyQStyle().StandardIconImplementation(standardIcon);
-		}
-		~QStyle() {
-			DisposeQStyle();
-		}
-		public new void Dispose() {
-			DisposeQStyle();
-		}
-		[SmokeMethod("~QStyle", "()", "")]
-		private void DisposeQStyle() {
-			ProxyQStyle().DisposeQStyle();
 		}
 		protected new IQStyleSignals Emit {
 			get { return (IQStyleSignals) Q_EMIT; }

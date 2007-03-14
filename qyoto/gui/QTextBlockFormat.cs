@@ -6,23 +6,12 @@ namespace Qyoto {
 	[SmokeClass("QTextBlockFormat")]
 	public class QTextBlockFormat : QTextFormat, IDisposable {
  		protected QTextBlockFormat(Type dummy) : base((Type) null) {}
-		[SmokeClass("QTextBlockFormat")]
-		interface IQTextBlockFormatProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextBlockFormat), this);
 			_interceptor = (QTextBlockFormat) realProxy.GetTransparentProxy();
 		}
 		private QTextBlockFormat ProxyQTextBlockFormat() {
 			return (QTextBlockFormat) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QTextBlockFormat() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTextBlockFormatProxy), null);
-			_staticInterceptor = (IQTextBlockFormatProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQTextBlockFormatProxy StaticQTextBlockFormat() {
-			return (IQTextBlockFormatProxy) _staticInterceptor;
 		}
 		public QTextBlockFormat() : this((Type) null) {
 			CreateProxy();

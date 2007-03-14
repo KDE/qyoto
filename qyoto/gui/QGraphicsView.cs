@@ -93,6 +93,7 @@ namespace Qyoto {
 			get { return Property("resizeAnchor").Value<QGraphicsView.ViewportAnchor>(); }
 			set { SetProperty("resizeAnchor", QVariant.FromValue<QGraphicsView.ViewportAnchor>(value)); }
 		}
+		// void drawItems(QPainter* arg1,int arg2,QGraphicsItem** arg3,const QStyleOptionGraphicsItem* arg4); >>>> NOT CONVERTED
 		public QGraphicsView(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			NewQGraphicsView(parent);
@@ -383,12 +384,6 @@ namespace Qyoto {
 		public void UpdateSceneRect(QRectF rect) {
 			ProxyQGraphicsView().UpdateSceneRect(rect);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQGraphicsView().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQGraphicsView().Tr(s);
-		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent arg1) {
 			return ProxyQGraphicsView().Event(arg1);
@@ -481,7 +476,6 @@ namespace Qyoto {
 		protected virtual void DrawForeground(QPainter painter, QRectF rect) {
 			ProxyQGraphicsView().DrawForeground(painter,rect);
 		}
-		// void drawItems(QPainter* arg1,int arg2,QGraphicsItem** arg3,const QStyleOptionGraphicsItem* arg4); >>>> NOT CONVERTED
 		[Q_SLOT("void setupViewport(QWidget*)")]
 		[SmokeMethod("setupViewport", "(QWidget*)", "#")]
 		protected void SetupViewport(QWidget widget) {
@@ -496,6 +490,12 @@ namespace Qyoto {
 		[SmokeMethod("~QGraphicsView", "()", "")]
 		private void DisposeQGraphicsView() {
 			ProxyQGraphicsView().DisposeQGraphicsView();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQGraphicsView().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQGraphicsView().Tr(s);
 		}
 		protected new IQGraphicsViewSignals Emit {
 			get { return (IQGraphicsViewSignals) Q_EMIT; }

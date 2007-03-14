@@ -184,12 +184,6 @@ namespace Qyoto {
 		public QTextCursor TextCursor() {
 			return ProxyQGraphicsTextItem().TextCursor();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQGraphicsTextItem().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQGraphicsTextItem().Tr(s);
-		}
 		[SmokeMethod("sceneEvent", "(QEvent*)", "#")]
 		protected virtual bool SceneEvent(QEvent arg1) {
 			return ProxyQGraphicsTextItem().SceneEvent(arg1);
@@ -755,6 +749,12 @@ namespace Qyoto {
 		[SmokeMethod("prepareGeometryChange", "()", "")]
 		protected void PrepareGeometryChange() {
 			ProxyQGraphicsTextItem().PrepareGeometryChange();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQGraphicsTextItem().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQGraphicsTextItem().Tr(s);
 		}
 		protected new IQGraphicsTextItemSignals Emit {
 			get { return (IQGraphicsTextItemSignals) Q_EMIT; }

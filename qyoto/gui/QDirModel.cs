@@ -257,12 +257,6 @@ namespace Qyoto {
 		public QObject Parent() {
 			return ProxyQDirModel().Parent();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQDirModel().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQDirModel().Tr(s);
-		}
 		~QDirModel() {
 			DisposeQDirModel();
 		}
@@ -272,6 +266,12 @@ namespace Qyoto {
 		[SmokeMethod("~QDirModel", "()", "")]
 		private void DisposeQDirModel() {
 			ProxyQDirModel().DisposeQDirModel();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQDirModel().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQDirModel().Tr(s);
 		}
 		protected new IQDirModelSignals Emit {
 			get { return (IQDirModelSignals) Q_EMIT; }

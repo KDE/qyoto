@@ -9,23 +9,12 @@ namespace Qyoto {
 		protected Object _interceptor = null;
 		private IntPtr _smokeObject;
 		protected QSqlResult(Type dummy) {}
-		[SmokeClass("QSqlResult")]
-		interface IQSqlResultProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSqlResult), this);
 			_interceptor = (QSqlResult) realProxy.GetTransparentProxy();
 		}
 		private QSqlResult ProxyQSqlResult() {
 			return (QSqlResult) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QSqlResult() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQSqlResultProxy), null);
-			_staticInterceptor = (IQSqlResultProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQSqlResultProxy StaticQSqlResult() {
-			return (IQSqlResultProxy) _staticInterceptor;
 		}
 		public enum BindingSyntax {
 			PositionalBinding = 0,
@@ -197,16 +186,6 @@ namespace Qyoto {
 		[SmokeMethod("execBatch", "()", "")]
 		protected bool ExecBatch() {
 			return ProxyQSqlResult().ExecBatch();
-		}
-		~QSqlResult() {
-			DisposeQSqlResult();
-		}
-		public void Dispose() {
-			DisposeQSqlResult();
-		}
-		[SmokeMethod("~QSqlResult", "()", "")]
-		private void DisposeQSqlResult() {
-			ProxyQSqlResult().DisposeQSqlResult();
 		}
 	}
 }

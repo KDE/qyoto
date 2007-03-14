@@ -94,12 +94,6 @@ namespace Qyoto {
 		public  double Ry() {
 			return ProxyQPointF().Ry();
 		}
-		public static QPointF operator*(QPointF lhs, double c) {
-			return StaticQPointF().op_mult(lhs,c);
-		}
-		public static QPointF operator/(QPointF lhs, double c) {
-			return StaticQPointF().op_div(lhs,c);
-		}
 		[SmokeMethod("toPoint", "() const", "")]
 		public QPoint ToPoint() {
 			return ProxyQPointF().ToPoint();
@@ -114,6 +108,19 @@ namespace Qyoto {
 		private void DisposeQPointF() {
 			ProxyQPointF().DisposeQPointF();
 		}
+		public override bool Equals(object o) {
+			if (!(o is QPointF)) { return false; }
+			return this == (QPointF) o;
+		}
+		public override int GetHashCode() {
+			return ProxyQPointF().GetHashCode();
+		}
+		public static QPointF operator*(QPointF lhs, double c) {
+			return StaticQPointF().op_mult(lhs,c);
+		}
+		public static QPointF operator/(QPointF lhs, double c) {
+			return StaticQPointF().op_div(lhs,c);
+		}
 		public static QPointF operator*(QPointF p, QMatrix m) {
 			return StaticQPointF().op_mult(p,m);
 		}
@@ -122,13 +129,6 @@ namespace Qyoto {
 		}
 		public static bool operator!=(QPointF p1, QPointF p2) {
 			return !StaticQPointF().op_equals(p1,p2);
-		}
-		public override bool Equals(object o) {
-			if (!(o is QPointF)) { return false; }
-			return this == (QPointF) o;
-		}
-		public override int GetHashCode() {
-			return ProxyQPointF().GetHashCode();
 		}
 		public static QPointF operator+(QPointF p1, QPointF p2) {
 			return StaticQPointF().op_plus(p1,p2);

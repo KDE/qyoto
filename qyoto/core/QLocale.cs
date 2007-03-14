@@ -707,12 +707,6 @@ namespace Qyoto {
 		public string DayName(int arg1) {
 			return ProxyQLocale().DayName(arg1);
 		}
-		public static bool operator==(QLocale lhs, QLocale other) {
-			return StaticQLocale().op_equals(lhs,other);
-		}
-		public static bool operator!=(QLocale lhs, QLocale other) {
-			return !StaticQLocale().op_equals(lhs,other);
-		}
 		public override bool Equals(object o) {
 			if (!(o is QLocale)) { return false; }
 			return this == (QLocale) o;
@@ -728,6 +722,22 @@ namespace Qyoto {
 		public int NumberOptions() {
 			return ProxyQLocale().NumberOptions();
 		}
+		~QLocale() {
+			DisposeQLocale();
+		}
+		public void Dispose() {
+			DisposeQLocale();
+		}
+		[SmokeMethod("~QLocale", "()", "")]
+		private void DisposeQLocale() {
+			ProxyQLocale().DisposeQLocale();
+		}
+		public static bool operator==(QLocale lhs, QLocale other) {
+			return StaticQLocale().op_equals(lhs,other);
+		}
+		public static bool operator!=(QLocale lhs, QLocale other) {
+			return !StaticQLocale().op_equals(lhs,other);
+		}
 		public static string LanguageToString(QLocale.Language language) {
 			return StaticQLocale().LanguageToString(language);
 		}
@@ -742,16 +752,6 @@ namespace Qyoto {
 		}
 		public static QLocale System() {
 			return StaticQLocale().System();
-		}
-		~QLocale() {
-			DisposeQLocale();
-		}
-		public void Dispose() {
-			DisposeQLocale();
-		}
-		[SmokeMethod("~QLocale", "()", "")]
-		private void DisposeQLocale() {
-			ProxyQLocale().DisposeQLocale();
 		}
 	}
 }

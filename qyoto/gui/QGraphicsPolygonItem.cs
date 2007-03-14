@@ -6,23 +6,12 @@ namespace Qyoto {
 	[SmokeClass("QGraphicsPolygonItem")]
 	public class QGraphicsPolygonItem : QAbstractGraphicsShapeItem, IDisposable {
  		protected QGraphicsPolygonItem(Type dummy) : base((Type) null) {}
-		[SmokeClass("QGraphicsPolygonItem")]
-		interface IQGraphicsPolygonItemProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGraphicsPolygonItem), this);
 			_interceptor = (QGraphicsPolygonItem) realProxy.GetTransparentProxy();
 		}
 		private QGraphicsPolygonItem ProxyQGraphicsPolygonItem() {
 			return (QGraphicsPolygonItem) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QGraphicsPolygonItem() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQGraphicsPolygonItemProxy), null);
-			_staticInterceptor = (IQGraphicsPolygonItemProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQGraphicsPolygonItemProxy StaticQGraphicsPolygonItem() {
-			return (IQGraphicsPolygonItemProxy) _staticInterceptor;
 		}
 		public const int Type = 5;
 

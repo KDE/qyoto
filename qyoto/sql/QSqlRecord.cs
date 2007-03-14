@@ -44,12 +44,6 @@ namespace Qyoto {
 		private void NewQSqlRecord(QSqlRecord other) {
 			ProxyQSqlRecord().NewQSqlRecord(other);
 		}
-		public static bool operator==(QSqlRecord lhs, QSqlRecord other) {
-			return StaticQSqlRecord().op_equals(lhs,other);
-		}
-		public static bool operator!=(QSqlRecord lhs, QSqlRecord other) {
-			return !StaticQSqlRecord().op_equals(lhs,other);
-		}
 		public override bool Equals(object o) {
 			if (!(o is QSqlRecord)) { return false; }
 			return this == (QSqlRecord) o;
@@ -166,6 +160,12 @@ namespace Qyoto {
 		[SmokeMethod("~QSqlRecord", "()", "")]
 		private void DisposeQSqlRecord() {
 			ProxyQSqlRecord().DisposeQSqlRecord();
+		}
+		public static bool operator==(QSqlRecord lhs, QSqlRecord other) {
+			return StaticQSqlRecord().op_equals(lhs,other);
+		}
+		public static bool operator!=(QSqlRecord lhs, QSqlRecord other) {
+			return !StaticQSqlRecord().op_equals(lhs,other);
 		}
 	}
 }

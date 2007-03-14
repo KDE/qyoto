@@ -5,24 +5,6 @@ namespace Qyoto {
 
 	public class QSql : MarshalByRefObject {
 		protected Object _interceptor = null;
-		[SmokeClass("QSql")]
-		interface IQSqlProxy {
-		}
-		protected new void CreateProxy() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSql), this);
-			_interceptor = (QSql) realProxy.GetTransparentProxy();
-		}
-		private QSql ProxyQSql() {
-			return (QSql) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QSql() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQSqlProxy), null);
-			_staticInterceptor = (IQSqlProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQSqlProxy StaticQSql() {
-			return (IQSqlProxy) _staticInterceptor;
-		}
 		public enum Location {
 			BeforeFirstRow = -1,
 			AfterLastRow = -2,
@@ -38,16 +20,6 @@ namespace Qyoto {
 			SystemTables = 0x02,
 			Views = 0x04,
 			AllTables = 0xff,
-		}
-		~QSql() {
-			DisposeQSql();
-		}
-		public void Dispose() {
-			DisposeQSql();
-		}
-		[SmokeMethod("~QSql", "()", "")]
-		private void DisposeQSql() {
-			ProxyQSql().DisposeQSql();
 		}
 	}
 }

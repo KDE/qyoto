@@ -8,23 +8,12 @@ namespace Qyoto {
 		protected Object _interceptor = null;
 		private IntPtr _smokeObject;
 		protected QTextBlockUserData(Type dummy) {}
-		[SmokeClass("QTextBlockUserData")]
-		interface IQTextBlockUserDataProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextBlockUserData), this);
 			_interceptor = (QTextBlockUserData) realProxy.GetTransparentProxy();
 		}
 		private QTextBlockUserData ProxyQTextBlockUserData() {
 			return (QTextBlockUserData) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QTextBlockUserData() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTextBlockUserDataProxy), null);
-			_staticInterceptor = (IQTextBlockUserDataProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQTextBlockUserDataProxy StaticQTextBlockUserData() {
-			return (IQTextBlockUserDataProxy) _staticInterceptor;
 		}
 		public QTextBlockUserData() : this((Type) null) {
 			CreateProxy();

@@ -269,6 +269,8 @@ namespace Qyoto {
 			get { return Property("styleSheet").Value<string>(); }
 			set { SetProperty("styleSheet", QVariant.FromValue<string>(value)); }
 		}
+		// void setWindowSurface(QWindowSurface* arg1); >>>> NOT CONVERTED
+		// QWindowSurface* windowSurface(); >>>> NOT CONVERTED
 		public QWidget(QWidget parent, int f) : this((Type) null) {
 			CreateProxy();
 			NewQWidget(parent,f);
@@ -805,8 +807,6 @@ namespace Qyoto {
 		public bool IsAncestorOf(QWidget child) {
 			return ProxyQWidget().IsAncestorOf(child);
 		}
-		// void setWindowSurface(QWindowSurface* arg1); >>>> NOT CONVERTED
-		// QWindowSurface* windowSurface(); >>>> NOT CONVERTED
 		[SmokeMethod("inputMethodQuery", "(Qt::InputMethodQuery) const", "$")]
 		public virtual QVariant InputMethodQuery(Qt.InputMethodQuery arg1) {
 			return ProxyQWidget().InputMethodQuery(arg1);
@@ -890,24 +890,6 @@ namespace Qyoto {
 		[SmokeMethod("lower", "()", "")]
 		public void Lower() {
 			ProxyQWidget().Lower();
-		}
-		public static string Tr(string s, string c) {
-			return StaticQWidget().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQWidget().Tr(s);
-		}
-		public static void SetTabOrder(QWidget arg1, QWidget arg2) {
-			StaticQWidget().SetTabOrder(arg1,arg2);
-		}
-		public static QWidget MouseGrabber() {
-			return StaticQWidget().MouseGrabber();
-		}
-		public static QWidget KeyboardGrabber() {
-			return StaticQWidget().KeyboardGrabber();
-		}
-		public static QWidget Find(ulong arg1) {
-			return StaticQWidget().Find(arg1);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected new virtual bool Event(QEvent arg1) {
@@ -1139,6 +1121,24 @@ namespace Qyoto {
 		[SmokeMethod("depth", "() const", "")]
 		public int Depth() {
 			return ProxyQWidget().Depth();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQWidget().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQWidget().Tr(s);
+		}
+		public static void SetTabOrder(QWidget arg1, QWidget arg2) {
+			StaticQWidget().SetTabOrder(arg1,arg2);
+		}
+		public static QWidget MouseGrabber() {
+			return StaticQWidget().MouseGrabber();
+		}
+		public static QWidget KeyboardGrabber() {
+			return StaticQWidget().KeyboardGrabber();
+		}
+		public static QWidget Find(ulong arg1) {
+			return StaticQWidget().Find(arg1);
 		}
 		protected new IQWidgetSignals Emit {
 			get { return (IQWidgetSignals) Q_EMIT; }

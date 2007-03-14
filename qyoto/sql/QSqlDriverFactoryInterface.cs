@@ -6,23 +6,12 @@ namespace Qyoto {
 	[SmokeClass("QSqlDriverFactoryInterface")]
 	public abstract class QSqlDriverFactoryInterface : QFactoryInterface {
  		protected QSqlDriverFactoryInterface(Type dummy) : base((Type) null) {}
-		[SmokeClass("QSqlDriverFactoryInterface")]
-		interface IQSqlDriverFactoryInterfaceProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSqlDriverFactoryInterface), this);
 			_interceptor = (QSqlDriverFactoryInterface) realProxy.GetTransparentProxy();
 		}
 		private QSqlDriverFactoryInterface ProxyQSqlDriverFactoryInterface() {
 			return (QSqlDriverFactoryInterface) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QSqlDriverFactoryInterface() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQSqlDriverFactoryInterfaceProxy), null);
-			_staticInterceptor = (IQSqlDriverFactoryInterfaceProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQSqlDriverFactoryInterfaceProxy StaticQSqlDriverFactoryInterface() {
-			return (IQSqlDriverFactoryInterfaceProxy) _staticInterceptor;
 		}
 		public abstract QSqlDriver Create(string name);
 		public QSqlDriverFactoryInterface() : this((Type) null) {
@@ -32,16 +21,6 @@ namespace Qyoto {
 		[SmokeMethod("QSqlDriverFactoryInterface", "()", "")]
 		private void NewQSqlDriverFactoryInterface() {
 			ProxyQSqlDriverFactoryInterface().NewQSqlDriverFactoryInterface();
-		}
-		~QSqlDriverFactoryInterface() {
-			DisposeQSqlDriverFactoryInterface();
-		}
-		public new void Dispose() {
-			DisposeQSqlDriverFactoryInterface();
-		}
-		[SmokeMethod("~QSqlDriverFactoryInterface", "()", "")]
-		private void DisposeQSqlDriverFactoryInterface() {
-			ProxyQSqlDriverFactoryInterface().DisposeQSqlDriverFactoryInterface();
 		}
 	}
 }

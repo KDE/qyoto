@@ -65,6 +65,8 @@ namespace Qyoto {
 			UserScope = 0,
 			SystemScope = 1,
 		}
+		// QSettings::Format registerFormat(const QString& arg1,ReadFunc arg2,WriteFunc arg3,Qt::CaseSensitivity arg4); >>>> NOT CONVERTED
+		// QSettings::Format registerFormat(const QString& arg1,ReadFunc arg2,WriteFunc arg3); >>>> NOT CONVERTED
 		public QSettings(string organization, string application, QObject parent) : this((Type) null) {
 			CreateProxy();
 			NewQSettings(organization,application,parent);
@@ -261,6 +263,20 @@ namespace Qyoto {
 		public string FileName() {
 			return ProxyQSettings().FileName();
 		}
+		[SmokeMethod("event", "(QEvent*)", "#")]
+		protected new virtual bool Event(QEvent arg1) {
+			return ProxyQSettings().Event(arg1);
+		}
+		~QSettings() {
+			DisposeQSettings();
+		}
+		public new void Dispose() {
+			DisposeQSettings();
+		}
+		[SmokeMethod("~QSettings", "()", "")]
+		private void DisposeQSettings() {
+			ProxyQSettings().DisposeQSettings();
+		}
 		public static string Tr(string s, string c) {
 			return StaticQSettings().Tr(s,c);
 		}
@@ -275,22 +291,6 @@ namespace Qyoto {
 		}
 		public static void SetPath(QSettings.Format format, QSettings.Scope scope, string path) {
 			StaticQSettings().SetPath(format,scope,path);
-		}
-		// QSettings::Format registerFormat(const QString& arg1,ReadFunc arg2,WriteFunc arg3,Qt::CaseSensitivity arg4); >>>> NOT CONVERTED
-		// QSettings::Format registerFormat(const QString& arg1,ReadFunc arg2,WriteFunc arg3); >>>> NOT CONVERTED
-		[SmokeMethod("event", "(QEvent*)", "#")]
-		protected new virtual bool Event(QEvent arg1) {
-			return ProxyQSettings().Event(arg1);
-		}
-		~QSettings() {
-			DisposeQSettings();
-		}
-		public new void Dispose() {
-			DisposeQSettings();
-		}
-		[SmokeMethod("~QSettings", "()", "")]
-		private void DisposeQSettings() {
-			ProxyQSettings().DisposeQSettings();
 		}
 		protected new IQSettingsSignals Emit {
 			get { return (IQSettingsSignals) Q_EMIT; }

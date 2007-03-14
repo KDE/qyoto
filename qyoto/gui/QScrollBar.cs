@@ -68,12 +68,6 @@ namespace Qyoto {
 		public new virtual bool Event(QEvent arg1) {
 			return ProxyQScrollBar().Event(arg1);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQScrollBar().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQScrollBar().Tr(s);
-		}
 		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
 		protected override void PaintEvent(QPaintEvent arg1) {
 			ProxyQScrollBar().PaintEvent(arg1);
@@ -111,6 +105,12 @@ namespace Qyoto {
 		[SmokeMethod("~QScrollBar", "()", "")]
 		private void DisposeQScrollBar() {
 			ProxyQScrollBar().DisposeQScrollBar();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQScrollBar().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQScrollBar().Tr(s);
 		}
 		protected new IQScrollBarSignals Emit {
 			get { return (IQScrollBarSignals) Q_EMIT; }

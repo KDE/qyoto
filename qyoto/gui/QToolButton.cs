@@ -100,12 +100,6 @@ namespace Qyoto {
 		public void SetDefaultAction(QAction arg1) {
 			ProxyQToolButton().SetDefaultAction(arg1);
 		}
-		public static string Tr(string s, string c) {
-			return StaticQToolButton().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQToolButton().Tr(s);
-		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent e) {
 			return ProxyQToolButton().Event(e);
@@ -159,6 +153,12 @@ namespace Qyoto {
 		[SmokeMethod("~QToolButton", "()", "")]
 		private void DisposeQToolButton() {
 			ProxyQToolButton().DisposeQToolButton();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQToolButton().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQToolButton().Tr(s);
 		}
 		protected new IQToolButtonSignals Emit {
 			get { return (IQToolButtonSignals) Q_EMIT; }

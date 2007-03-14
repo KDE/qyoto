@@ -107,15 +107,6 @@ namespace Qyoto {
 		public void Stop() {
 			ProxyQTimer().Stop();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQTimer().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQTimer().Tr(s);
-		}
-		public static void singleShot(int msec, QObject receiver, string member) {
-			StaticQTimer().singleShot(msec,receiver,member);
-		}
 		[SmokeMethod("timerEvent", "(QTimerEvent*)", "#")]
 		protected override void TimerEvent(QTimerEvent arg1) {
 			ProxyQTimer().TimerEvent(arg1);
@@ -129,6 +120,15 @@ namespace Qyoto {
 		[SmokeMethod("~QTimer", "()", "")]
 		private void DisposeQTimer() {
 			ProxyQTimer().DisposeQTimer();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQTimer().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQTimer().Tr(s);
+		}
+		public static void singleShot(int msec, QObject receiver, string member) {
+			StaticQTimer().singleShot(msec,receiver,member);
 		}
 		protected new IQTimerSignals Emit {
 			get { return (IQTimerSignals) Q_EMIT; }

@@ -34,6 +34,7 @@ namespace Qyoto {
 			Internal = 1,
 			InvalidWindowID = 2,
 		}
+		// bool x11Event(XEvent* arg1); >>>> NOT CONVERTED
 		public QX11EmbedContainer(QWidget parent) : this((Type) null) {
 			CreateProxy();
 			NewQX11EmbedContainer(parent);
@@ -70,13 +71,6 @@ namespace Qyoto {
 		public QX11EmbedContainer.Error error() {
 			return ProxyQX11EmbedContainer().error();
 		}
-		public static string Tr(string s, string c) {
-			return StaticQX11EmbedContainer().Tr(s,c);
-		}
-		public static string Tr(string s) {
-			return StaticQX11EmbedContainer().Tr(s);
-		}
-		// bool x11Event(XEvent* arg1); >>>> NOT CONVERTED
 		[SmokeMethod("eventFilter", "(QObject*, QEvent*)", "##")]
 		protected new virtual bool EventFilter(QObject arg1, QEvent arg2) {
 			return ProxyQX11EmbedContainer().EventFilter(arg1,arg2);
@@ -110,6 +104,12 @@ namespace Qyoto {
 		[SmokeMethod("~QX11EmbedContainer", "()", "")]
 		private void DisposeQX11EmbedContainer() {
 			ProxyQX11EmbedContainer().DisposeQX11EmbedContainer();
+		}
+		public static string Tr(string s, string c) {
+			return StaticQX11EmbedContainer().Tr(s,c);
+		}
+		public static string Tr(string s) {
+			return StaticQX11EmbedContainer().Tr(s);
 		}
 		protected new IQX11EmbedContainerSignals Emit {
 			get { return (IQX11EmbedContainerSignals) Q_EMIT; }

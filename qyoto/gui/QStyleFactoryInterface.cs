@@ -6,23 +6,12 @@ namespace Qyoto {
 	[SmokeClass("QStyleFactoryInterface")]
 	public abstract class QStyleFactoryInterface : QFactoryInterface {
  		protected QStyleFactoryInterface(Type dummy) : base((Type) null) {}
-		[SmokeClass("QStyleFactoryInterface")]
-		interface IQStyleFactoryInterfaceProxy {
-		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleFactoryInterface), this);
 			_interceptor = (QStyleFactoryInterface) realProxy.GetTransparentProxy();
 		}
 		private QStyleFactoryInterface ProxyQStyleFactoryInterface() {
 			return (QStyleFactoryInterface) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
-		static QStyleFactoryInterface() {
-			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQStyleFactoryInterfaceProxy), null);
-			_staticInterceptor = (IQStyleFactoryInterfaceProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQStyleFactoryInterfaceProxy StaticQStyleFactoryInterface() {
-			return (IQStyleFactoryInterfaceProxy) _staticInterceptor;
 		}
 		public abstract QStyle Create(string key);
 		public QStyleFactoryInterface() : this((Type) null) {
@@ -32,16 +21,6 @@ namespace Qyoto {
 		[SmokeMethod("QStyleFactoryInterface", "()", "")]
 		private void NewQStyleFactoryInterface() {
 			ProxyQStyleFactoryInterface().NewQStyleFactoryInterface();
-		}
-		~QStyleFactoryInterface() {
-			DisposeQStyleFactoryInterface();
-		}
-		public new void Dispose() {
-			DisposeQStyleFactoryInterface();
-		}
-		[SmokeMethod("~QStyleFactoryInterface", "()", "")]
-		private void DisposeQStyleFactoryInterface() {
-			ProxyQStyleFactoryInterface().DisposeQStyleFactoryInterface();
 		}
 	}
 }

@@ -55,6 +55,7 @@ namespace Qyoto {
 			OpenGL_ES_CommonLite_Version_1_1 = 0x00000400,
 			OpenGL_ES_Version_2_0 = 0x00000800,
 		}
+		// OpenGLVersionFlags openGLVersionFlags(); >>>> NOT CONVERTED
 		public QGLFormat() : this((Type) null) {
 			CreateProxy();
 			NewQGLFormat();
@@ -255,6 +256,23 @@ namespace Qyoto {
 		public bool TestOption(int opt) {
 			return ProxyQGLFormat().TestOption(opt);
 		}
+		~QGLFormat() {
+			DisposeQGLFormat();
+		}
+		public void Dispose() {
+			DisposeQGLFormat();
+		}
+		[SmokeMethod("~QGLFormat", "()", "")]
+		private void DisposeQGLFormat() {
+			ProxyQGLFormat().DisposeQGLFormat();
+		}
+		public override bool Equals(object o) {
+			if (!(o is QGLFormat)) { return false; }
+			return this == (QGLFormat) o;
+		}
+		public override int GetHashCode() {
+			return ProxyQGLFormat().GetHashCode();
+		}
 		public static QGLFormat DefaultFormat() {
 			return StaticQGLFormat().DefaultFormat();
 		}
@@ -273,29 +291,11 @@ namespace Qyoto {
 		public static bool HasOpenGLOverlays() {
 			return StaticQGLFormat().HasOpenGLOverlays();
 		}
-		// OpenGLVersionFlags openGLVersionFlags(); >>>> NOT CONVERTED
-		~QGLFormat() {
-			DisposeQGLFormat();
-		}
-		public void Dispose() {
-			DisposeQGLFormat();
-		}
-		[SmokeMethod("~QGLFormat", "()", "")]
-		private void DisposeQGLFormat() {
-			ProxyQGLFormat().DisposeQGLFormat();
-		}
 		public static bool operator==(QGLFormat arg1, QGLFormat arg2) {
 			return StaticQGLFormat().op_equals(arg1,arg2);
 		}
 		public static bool operator!=(QGLFormat arg1, QGLFormat arg2) {
 			return !StaticQGLFormat().op_equals(arg1,arg2);
-		}
-		public override bool Equals(object o) {
-			if (!(o is QGLFormat)) { return false; }
-			return this == (QGLFormat) o;
-		}
-		public override int GetHashCode() {
-			return ProxyQGLFormat().GetHashCode();
 		}
 	}
 }

@@ -29,6 +29,7 @@ namespace Qyoto {
 		private static IQPenProxy StaticQPen() {
 			return (IQPenProxy) _staticInterceptor;
 		}
+		//  operator QVariant(); >>>> NOT CONVERTED
 		public QPen() : this((Type) null) {
 			CreateProxy();
 			NewQPen();
@@ -169,12 +170,6 @@ namespace Qyoto {
 		public void SetJoinStyle(Qt.PenJoinStyle pcs) {
 			ProxyQPen().SetJoinStyle(pcs);
 		}
-		public static bool operator==(QPen lhs, QPen p) {
-			return StaticQPen().op_equals(lhs,p);
-		}
-		public static bool operator!=(QPen lhs, QPen p) {
-			return !StaticQPen().op_equals(lhs,p);
-		}
 		public override bool Equals(object o) {
 			if (!(o is QPen)) { return false; }
 			return this == (QPen) o;
@@ -182,7 +177,6 @@ namespace Qyoto {
 		public override int GetHashCode() {
 			return ProxyQPen().GetHashCode();
 		}
-		//  operator QVariant(); >>>> NOT CONVERTED
 		[SmokeMethod("isDetached", "()", "")]
 		public bool IsDetached() {
 			return ProxyQPen().IsDetached();
@@ -196,6 +190,12 @@ namespace Qyoto {
 		[SmokeMethod("~QPen", "()", "")]
 		private void DisposeQPen() {
 			ProxyQPen().DisposeQPen();
+		}
+		public static bool operator==(QPen lhs, QPen p) {
+			return StaticQPen().op_equals(lhs,p);
+		}
+		public static bool operator!=(QPen lhs, QPen p) {
+			return !StaticQPen().op_equals(lhs,p);
 		}
 	}
 }

@@ -32,6 +32,7 @@ namespace Qyoto {
 		private static IQBitmapProxy StaticQBitmap() {
 			return (IQBitmapProxy) _staticInterceptor;
 		}
+		//  operator QVariant(); >>>> NOT CONVERTED
 		public QBitmap() : this((Type) null) {
 			CreateProxy();
 			NewQBitmap();
@@ -80,7 +81,6 @@ namespace Qyoto {
 		private void NewQBitmap(string fileName) {
 			ProxyQBitmap().NewQBitmap(fileName);
 		}
-		//  operator QVariant(); >>>> NOT CONVERTED
 		[SmokeMethod("clear", "()", "")]
 		public void Clear() {
 			ProxyQBitmap().Clear();
@@ -88,6 +88,16 @@ namespace Qyoto {
 		[SmokeMethod("transformed", "(const QMatrix&) const", "#")]
 		public QBitmap Transformed(QMatrix arg1) {
 			return ProxyQBitmap().Transformed(arg1);
+		}
+		~QBitmap() {
+			DisposeQBitmap();
+		}
+		public void Dispose() {
+			DisposeQBitmap();
+		}
+		[SmokeMethod("~QBitmap", "()", "")]
+		private void DisposeQBitmap() {
+			ProxyQBitmap().DisposeQBitmap();
 		}
 		public static QBitmap FromImage(QImage image, int flags) {
 			return StaticQBitmap().FromImage(image,flags);
@@ -100,16 +110,6 @@ namespace Qyoto {
 		}
 		public static QBitmap FromData(QSize size, char[] bits) {
 			return StaticQBitmap().FromData(size,bits);
-		}
-		~QBitmap() {
-			DisposeQBitmap();
-		}
-		public void Dispose() {
-			DisposeQBitmap();
-		}
-		[SmokeMethod("~QBitmap", "()", "")]
-		private void DisposeQBitmap() {
-			ProxyQBitmap().DisposeQBitmap();
 		}
 	}
 }

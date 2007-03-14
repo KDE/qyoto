@@ -42,6 +42,7 @@ namespace Qyoto {
 		private static IQPointProxy StaticQPoint() {
 			return (IQPointProxy) _staticInterceptor;
 		}
+		// QPoint& operator*=(qreal arg1); >>>> NOT CONVERTED
 		public QPoint() : this((Type) null) {
 			CreateProxy();
 			NewQPoint();
@@ -90,10 +91,6 @@ namespace Qyoto {
 		public int Ry() {
 			return ProxyQPoint().Ry();
 		}
-		// QPoint& operator*=(qreal arg1); >>>> NOT CONVERTED
-		public static QPoint operator/(QPoint lhs, double c) {
-			return StaticQPoint().op_div(lhs,c);
-		}
 		~QPoint() {
 			DisposeQPoint();
 		}
@@ -104,6 +101,16 @@ namespace Qyoto {
 		private void DisposeQPoint() {
 			ProxyQPoint().DisposeQPoint();
 		}
+		public override bool Equals(object o) {
+			if (!(o is QPoint)) { return false; }
+			return this == (QPoint) o;
+		}
+		public override int GetHashCode() {
+			return ProxyQPoint().GetHashCode();
+		}
+		public static QPoint operator/(QPoint lhs, double c) {
+			return StaticQPoint().op_div(lhs,c);
+		}
 		public static QPoint operator*(QPoint p, QMatrix m) {
 			return StaticQPoint().op_mult(p,m);
 		}
@@ -112,13 +119,6 @@ namespace Qyoto {
 		}
 		public static bool operator!=(QPoint p1, QPoint p2) {
 			return !StaticQPoint().op_equals(p1,p2);
-		}
-		public override bool Equals(object o) {
-			if (!(o is QPoint)) { return false; }
-			return this == (QPoint) o;
-		}
-		public override int GetHashCode() {
-			return ProxyQPoint().GetHashCode();
 		}
 		public static QPoint operator+(QPoint p1, QPoint p2) {
 			return StaticQPoint().op_plus(p1,p2);
