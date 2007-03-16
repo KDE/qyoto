@@ -366,11 +366,10 @@ namespace Qyoto {
 			MethodInfo proxyCreator = klass.GetMethod("CreateProxy", BindingFlags.NonPublic 
 																	| BindingFlags.Instance
 																	| BindingFlags.DeclaredOnly);
-			if (proxyCreator == null) {
-				Console.Error.WriteLine("CreateInstance() proxyCreator method missing");
-				return (IntPtr) 0;
+			if (proxyCreator != null) {
+				proxyCreator.Invoke(result, null);
 			}
-			proxyCreator.Invoke(result, null);
+
 			return (IntPtr) GCHandle.Alloc(result);
 		}
 

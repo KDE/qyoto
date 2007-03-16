@@ -4,6 +4,8 @@
 	  Attribute was being generated for them
 	* Fixed bug in invoking constructors where wrapper instances were being
 	  created twice
+	* When constructing an instance via CreateInstance() the CreateProxy()
+	  method is now optional, so just don't call it if not found.
 
 2007-03-14  Richard Dale  <rdale@foton.es>
 
