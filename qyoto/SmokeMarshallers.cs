@@ -363,11 +363,19 @@ namespace Qyoto {
 			}
 #endif
 			Type[] paramTypes = new Type[0];
-			MethodInfo proxyCreator = klass.GetMethod("CreateProxy", BindingFlags.NonPublic 
-																	| BindingFlags.Instance
-																	| BindingFlags.DeclaredOnly);
+			MethodInfo proxyCreator = null;
+
+			do {
+				proxyCreator = klass.GetMethod("CreateProxy", BindingFlags.NonPublic 
+																| BindingFlags.Instance
+																| BindingFlags.DeclaredOnly);
+				klass = klass.BaseType;
+			} while (klass != typeof(object) && proxyCreator == null);
+
 			if (proxyCreator != null) {
 				proxyCreator.Invoke(result, null);
+			} else {
+				Console.WriteLine("CreateInstance(\"{0}\") no CreateProxy() found", className);
 			}
 
 			return (IntPtr) GCHandle.Alloc(result);
