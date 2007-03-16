@@ -15,7 +15,9 @@ namespace Qyoto {
 		private QAccessibleBridge ProxyQAccessibleBridge() {
 			return (QAccessibleBridge) _interceptor;
 		}
+		[SmokeMethod("setRootObject", "(QAccessibleInterface*)", "#")]
 		public abstract void SetRootObject(QAccessibleInterface arg1);
+		[SmokeMethod("notifyAccessibilityUpdate", "(int, QAccessibleInterface*, int)", "$#$")]
 		public abstract void NotifyAccessibilityUpdate(int arg1, QAccessibleInterface arg2, int arg3);
 		public QAccessibleBridge() : this((Type) null) {
 			CreateProxy();

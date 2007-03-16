@@ -119,9 +119,13 @@ namespace Qyoto {
 		public QSqlError LastError() {
 			return ProxyQSqlDriver().LastError();
 		}
+		[SmokeMethod("hasFeature", "(QSqlDriver::DriverFeature) const", "$")]
 		public abstract bool HasFeature(QSqlDriver.DriverFeature f);
+		[SmokeMethod("close", "()", "")]
 		public abstract void Close();
+		[SmokeMethod("createResult", "() const", "")]
 		public abstract QSqlResult CreateResult();
+		[SmokeMethod("open", "(const QString&, const QString&, const QString&, const QString&, int, const QString&)", "$$$$$$")]
 		public abstract bool Open(string db, string user, string password, string host, int port, string connOpts);
 		[SmokeMethod("setOpen", "(bool)", "$")]
 		protected virtual void SetOpen(bool o) {

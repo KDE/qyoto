@@ -529,7 +529,7 @@ public:
     MethodCall(Smoke *smoke, Smoke::Index method, void * target, Smoke::Stack sp, int items) :
 	_cur(-1), _smoke(smoke), _method(method), _target(target), _o(0), _sp(sp), _items(items), _called(false)
 	{
-		if (_target != 0) {
+		if (!isConstructor() && !isStatic()) {
 	    	_o = value_obj_info(_target);
 			if (_o != 0 && _o->ptr != 0) {
 				if (	isDestructor() 
@@ -538,8 +538,6 @@ public:
 					_called = true;
 					_o->allocated = false;
 				}
-			} else if (!isConstructor() && !isStatic()) {
-				_called = true;
 			}
 		}
 	
@@ -607,7 +605,6 @@ public:
 		}
 		_items = -1;
 		(*fn)(method().method, ptr, _stack);
-		MethodReturnValue r(_smoke, _method, _stack, _retval);
 
 		if (isConstructor()) {
 			_o = alloc_smokeqyoto_object(true, _smoke, method().classId, _stack[0].s_voidp);
@@ -617,6 +614,8 @@ public:
 			unmapPointer(_o, _o->classId, 0);
 			(*SetSmokeObject)(_target, 0);
 			free_smokeqyoto_object(_o);
+		} else {
+			MethodReturnValue r(_smoke, _method, _stack, _retval);
 		}
 
     }

@@ -51,6 +51,7 @@ namespace Qyoto {
 		public bool PaintingActive() {
 			return ProxyQPaintDevice().PaintingActive();
 		}
+		[SmokeMethod("paintEngine", "() const", "")]
 		public abstract QPaintEngine PaintEngine();
 		[SmokeMethod("width", "() const", "")]
 		public int Width() {

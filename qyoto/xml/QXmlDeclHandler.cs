@@ -22,9 +22,13 @@ namespace Qyoto {
 		private QXmlDeclHandler ProxyQXmlDeclHandler() {
 			return (QXmlDeclHandler) _interceptor;
 		}
+		[SmokeMethod("attributeDecl", "(const QString&, const QString&, const QString&, const QString&, const QString&)", "$$$$$")]
 		public abstract bool AttributeDecl(string eName, string aName, string type, string valueDefault, string value);
+		[SmokeMethod("internalEntityDecl", "(const QString&, const QString&)", "$$")]
 		public abstract bool InternalEntityDecl(string name, string value);
+		[SmokeMethod("externalEntityDecl", "(const QString&, const QString&, const QString&)", "$$$")]
 		public abstract bool ExternalEntityDecl(string name, string publicId, string systemId);
+		[SmokeMethod("errorString", "() const", "")]
 		public abstract string ErrorString();
 		public QXmlDeclHandler() : this((Type) null) {
 			CreateProxy();

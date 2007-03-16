@@ -55,13 +55,17 @@ namespace Qyoto {
 		public bool HasIndex(int row, int column) {
 			return ProxyQAbstractItemModel().HasIndex(row,column);
 		}
+		[SmokeMethod("index", "(int, int, const QModelIndex&) const", "$$#")]
 		public abstract QModelIndex Index(int row, int column, QModelIndex parent);
+		[SmokeMethod("parent", "(const QModelIndex&) const", "#")]
 		public abstract QModelIndex Parent(QModelIndex child);
 		[SmokeMethod("sibling", "(int, int, const QModelIndex&) const", "$$#")]
 		public QModelIndex Sibling(int row, int column, QModelIndex idx) {
 			return ProxyQAbstractItemModel().Sibling(row,column,idx);
 		}
+		[SmokeMethod("rowCount", "(const QModelIndex&) const", "#")]
 		public abstract int RowCount(QModelIndex parent);
+		[SmokeMethod("columnCount", "(const QModelIndex&) const", "#")]
 		public abstract int ColumnCount(QModelIndex parent);
 		[SmokeMethod("hasChildren", "(const QModelIndex&) const", "#")]
 		public virtual bool HasChildren(QModelIndex parent) {
@@ -71,6 +75,7 @@ namespace Qyoto {
 		public virtual bool HasChildren() {
 			return ProxyQAbstractItemModel().HasChildren();
 		}
+		[SmokeMethod("data", "(const QModelIndex&, int) const", "#$")]
 		public abstract QVariant Data(QModelIndex index, int role);
 		[SmokeMethod("setData", "(const QModelIndex&, const QVariant&, int)", "##$")]
 		public virtual bool SetData(QModelIndex index, QVariant value, int role) {

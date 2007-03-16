@@ -1,3 +1,10 @@
+2007-03-16  Richard Dale  <rdale@foton.es>
+
+	* Overriding abstract methods wasn't working because no SmokeMethod
+	  Attribute was being generated for them
+	* Fixed bug in invoking constructors where wrapper instances were being
+	  created twice
+
 2007-03-14  Richard Dale  <rdale@foton.es>
 
 	* Only generate destructors if the class is implementing IDisposible

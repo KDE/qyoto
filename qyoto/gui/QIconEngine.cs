@@ -15,6 +15,7 @@ namespace Qyoto {
 		private QIconEngine ProxyQIconEngine() {
 			return (QIconEngine) _interceptor;
 		}
+		[SmokeMethod("paint", "(QPainter*, const QRect&, QIcon::Mode, QIcon::State)", "##$$")]
 		public abstract void Paint(QPainter painter, QRect rect, QIcon.Mode mode, QIcon.State state);
 		[SmokeMethod("actualSize", "(const QSize&, QIcon::Mode, QIcon::State)", "#$$")]
 		public virtual QSize ActualSize(QSize size, QIcon.Mode mode, QIcon.State state) {

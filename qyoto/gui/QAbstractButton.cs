@@ -136,6 +136,7 @@ namespace Qyoto {
 		public void Toggle() {
 			ProxyQAbstractButton().Toggle();
 		}
+		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
 		protected abstract void PaintEvent(QPaintEvent e);
 		[SmokeMethod("hitButton", "(const QPoint&) const", "#")]
 		protected virtual bool HitButton(QPoint pos) {

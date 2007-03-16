@@ -14,9 +14,13 @@ namespace Qyoto {
 		private QInputContextFactoryInterface ProxyQInputContextFactoryInterface() {
 			return (QInputContextFactoryInterface) _interceptor;
 		}
+		[SmokeMethod("create", "(const QString&)", "$")]
 		public abstract QInputContext Create(string key);
+		[SmokeMethod("languages", "(const QString&)", "$")]
 		public abstract List<string> Languages(string key);
+		[SmokeMethod("displayName", "(const QString&)", "$")]
 		public abstract string DisplayName(string key);
+		[SmokeMethod("description", "(const QString&)", "$")]
 		public abstract string Description(string key);
 		public QInputContextFactoryInterface() : this((Type) null) {
 			CreateProxy();

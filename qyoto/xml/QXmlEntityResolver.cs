@@ -20,7 +20,9 @@ namespace Qyoto {
 		private QXmlEntityResolver ProxyQXmlEntityResolver() {
 			return (QXmlEntityResolver) _interceptor;
 		}
+		[SmokeMethod("resolveEntity", "(const QString&, const QString&, QXmlInputSource*&)", "$$?")]
 		public abstract bool ResolveEntity(string publicId, string systemId, QXmlInputSource ret);
+		[SmokeMethod("errorString", "() const", "")]
 		public abstract string ErrorString();
 		public QXmlEntityResolver() : this((Type) null) {
 			CreateProxy();

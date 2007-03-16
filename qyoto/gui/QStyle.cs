@@ -562,15 +562,25 @@ namespace Qyoto {
 		public virtual QPalette StandardPalette() {
 			return ProxyQStyle().StandardPalette();
 		}
+		[SmokeMethod("drawPrimitive", "(QStyle::PrimitiveElement, const QStyleOption*, QPainter*, const QWidget*) const", "$###")]
 		public abstract void DrawPrimitive(QStyle.PrimitiveElement pe, out int opt, QPainter p, QWidget w);
+		[SmokeMethod("drawControl", "(QStyle::ControlElement, const QStyleOption*, QPainter*, const QWidget*) const", "$###")]
 		public abstract void DrawControl(QStyle.ControlElement element, out int opt, QPainter p, QWidget w);
+		[SmokeMethod("subElementRect", "(QStyle::SubElement, const QStyleOption*, const QWidget*) const", "$##")]
 		public abstract QRect SubElementRect(QStyle.SubElement subElement, out int option, QWidget widget);
+		[SmokeMethod("drawComplexControl", "(QStyle::ComplexControl, const QStyleOptionComplex*, QPainter*, const QWidget*) const", "$###")]
 		public abstract void DrawComplexControl(QStyle.ComplexControl cc, QStyleOptionComplex opt, QPainter p, QWidget widget);
+		[SmokeMethod("hitTestComplexControl", "(QStyle::ComplexControl, const QStyleOptionComplex*, const QPoint&, const QWidget*) const", "$###")]
 		public abstract QStyle.SubControl HitTestComplexControl(QStyle.ComplexControl cc, QStyleOptionComplex opt, QPoint pt, QWidget widget);
+		[SmokeMethod("subControlRect", "(QStyle::ComplexControl, const QStyleOptionComplex*, QStyle::SubControl, const QWidget*) const", "$#$#")]
 		public abstract QRect SubControlRect(QStyle.ComplexControl cc, QStyleOptionComplex opt, QStyle.SubControl sc, QWidget widget);
+		[SmokeMethod("pixelMetric", "(QStyle::PixelMetric, const QStyleOption*, const QWidget*) const", "$##")]
 		public abstract int pixelMetric(QStyle.PixelMetric metric, out int option, QWidget widget);
+		[SmokeMethod("sizeFromContents", "(QStyle::ContentsType, const QStyleOption*, const QSize&, const QWidget*) const", "$###")]
 		public abstract QSize SizeFromContents(QStyle.ContentsType ct, out int opt, QSize contentsSize, QWidget w);
+		[SmokeMethod("styleHint", "(QStyle::StyleHint, const QStyleOption*, const QWidget*, QStyleHintReturn*) const", "$###")]
 		public abstract int styleHint(QStyle.StyleHint stylehint, out int opt, QWidget widget, QStyleHintReturn returnData);
+		[SmokeMethod("standardPixmap", "(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const", "$##")]
 		public abstract QPixmap standardPixmap(QStyle.StandardPixmap standardPixmap, out int opt, QWidget widget);
 		[SmokeMethod("standardIcon", "(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const", "$##")]
 		public QIcon StandardIcon(QStyle.StandardPixmap standardIcon, out int option, QWidget widget) {
@@ -584,6 +594,7 @@ namespace Qyoto {
 		public QIcon StandardIcon(QStyle.StandardPixmap standardIcon) {
 			return ProxyQStyle().StandardIcon(standardIcon);
 		}
+		[SmokeMethod("generatedIconPixmap", "(QIcon::Mode, const QPixmap&, const QStyleOption*) const", "$##")]
 		public abstract QPixmap GeneratedIconPixmap(QIcon.Mode iconMode, QPixmap pixmap, out int opt);
 		[Q_SLOT("QIcon standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const")]
 		[SmokeMethod("standardIconImplementation", "(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const", "$##")]

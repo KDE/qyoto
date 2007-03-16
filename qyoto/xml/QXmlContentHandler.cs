@@ -30,17 +30,29 @@ namespace Qyoto {
 		private QXmlContentHandler ProxyQXmlContentHandler() {
 			return (QXmlContentHandler) _interceptor;
 		}
+		[SmokeMethod("setDocumentLocator", "(QXmlLocator*)", "#")]
 		public abstract void SetDocumentLocator(QXmlLocator locator);
+		[SmokeMethod("startDocument", "()", "")]
 		public abstract bool StartDocument();
+		[SmokeMethod("endDocument", "()", "")]
 		public abstract bool EndDocument();
+		[SmokeMethod("startPrefixMapping", "(const QString&, const QString&)", "$$")]
 		public abstract bool StartPrefixMapping(string prefix, string uri);
+		[SmokeMethod("endPrefixMapping", "(const QString&)", "$")]
 		public abstract bool EndPrefixMapping(string prefix);
+		[SmokeMethod("startElement", "(const QString&, const QString&, const QString&, const QXmlAttributes&)", "$$$#")]
 		public abstract bool StartElement(string namespaceURI, string localName, string qName, QXmlAttributes atts);
+		[SmokeMethod("endElement", "(const QString&, const QString&, const QString&)", "$$$")]
 		public abstract bool EndElement(string namespaceURI, string localName, string qName);
+		[SmokeMethod("characters", "(const QString&)", "$")]
 		public abstract bool Characters(string ch);
+		[SmokeMethod("ignorableWhitespace", "(const QString&)", "$")]
 		public abstract bool IgnorableWhitespace(string ch);
+		[SmokeMethod("processingInstruction", "(const QString&, const QString&)", "$$")]
 		public abstract bool ProcessingInstruction(string target, string data);
+		[SmokeMethod("skippedEntity", "(const QString&)", "$")]
 		public abstract bool SkippedEntity(string name);
+		[SmokeMethod("errorString", "() const", "")]
 		public abstract string ErrorString();
 		public QXmlContentHandler() : this((Type) null) {
 			CreateProxy();

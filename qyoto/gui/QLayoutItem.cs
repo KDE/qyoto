@@ -50,12 +50,19 @@ namespace Qyoto {
 		private void NewQLayoutItem() {
 			ProxyQLayoutItem().NewQLayoutItem();
 		}
+		[SmokeMethod("sizeHint", "() const", "")]
 		public abstract QSize SizeHint();
+		[SmokeMethod("minimumSize", "() const", "")]
 		public abstract QSize MinimumSize();
+		[SmokeMethod("maximumSize", "() const", "")]
 		public abstract QSize MaximumSize();
+		[SmokeMethod("expandingDirections", "() const", "")]
 		public abstract int ExpandingDirections();
+		[SmokeMethod("setGeometry", "(const QRect&)", "#")]
 		public abstract void SetGeometry(QRect arg1);
+		[SmokeMethod("geometry", "() const", "")]
 		public abstract QRect Geometry();
+		[SmokeMethod("isEmpty", "() const", "")]
 		public abstract bool IsEmpty();
 		[SmokeMethod("hasHeightForWidth", "() const", "")]
 		public virtual bool HasHeightForWidth() {

@@ -22,9 +22,13 @@ namespace Qyoto {
 		private QXmlErrorHandler ProxyQXmlErrorHandler() {
 			return (QXmlErrorHandler) _interceptor;
 		}
+		[SmokeMethod("warning", "(const QXmlParseException&)", "#")]
 		public abstract bool Warning(QXmlParseException exception);
+		[SmokeMethod("error", "(const QXmlParseException&)", "#")]
 		public abstract bool Error(QXmlParseException exception);
+		[SmokeMethod("fatalError", "(const QXmlParseException&)", "#")]
 		public abstract bool FatalError(QXmlParseException exception);
+		[SmokeMethod("errorString", "() const", "")]
 		public abstract string ErrorString();
 		public QXmlErrorHandler() : this((Type) null) {
 			CreateProxy();

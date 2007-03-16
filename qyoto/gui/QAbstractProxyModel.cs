@@ -52,7 +52,9 @@ namespace Qyoto {
 		public QAbstractItemModel SourceModel() {
 			return ProxyQAbstractProxyModel().SourceModel();
 		}
+		[SmokeMethod("mapToSource", "(const QModelIndex&) const", "#")]
 		public abstract QModelIndex MapToSource(QModelIndex proxyIndex);
+		[SmokeMethod("mapFromSource", "(const QModelIndex&) const", "#")]
 		public abstract QModelIndex MapFromSource(QModelIndex sourceIndex);
 		[SmokeMethod("mapSelectionToSource", "(const QItemSelection&) const", "#")]
 		public virtual QItemSelection MapSelectionToSource(QItemSelection selection) {

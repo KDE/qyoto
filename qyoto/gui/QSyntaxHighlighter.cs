@@ -65,6 +65,7 @@ namespace Qyoto {
 		public void Rehighlight() {
 			ProxyQSyntaxHighlighter().Rehighlight();
 		}
+		[SmokeMethod("highlightBlock", "(const QString&)", "$")]
 		protected abstract void HighlightBlock(string text);
 		[SmokeMethod("setFormat", "(int, int, const QTextCharFormat&)", "$$#")]
 		protected void SetFormat(int start, int count, QTextCharFormat format) {

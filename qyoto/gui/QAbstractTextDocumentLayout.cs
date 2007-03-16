@@ -38,14 +38,19 @@ namespace Qyoto {
 		private void NewQAbstractTextDocumentLayout(QTextDocument doc) {
 			ProxyQAbstractTextDocumentLayout().NewQAbstractTextDocumentLayout(doc);
 		}
+		[SmokeMethod("hitTest", "(const QPointF&, Qt::HitTestAccuracy) const", "#$")]
 		public abstract int HitTest(QPointF point, Qt.HitTestAccuracy accuracy);
 		[SmokeMethod("anchorAt", "(const QPointF&) const", "#")]
 		public string AnchorAt(QPointF pos) {
 			return ProxyQAbstractTextDocumentLayout().AnchorAt(pos);
 		}
+		[SmokeMethod("pageCount", "() const", "")]
 		public abstract int PageCount();
+		[SmokeMethod("documentSize", "() const", "")]
 		public abstract QSizeF DocumentSize();
+		[SmokeMethod("frameBoundingRect", "(QTextFrame*) const", "#")]
 		public abstract QRectF FrameBoundingRect(QTextFrame frame);
+		[SmokeMethod("blockBoundingRect", "(const QTextBlock&) const", "#")]
 		public abstract QRectF BlockBoundingRect(QTextBlock block);
 		[SmokeMethod("setPaintDevice", "(QPaintDevice*)", "#")]
 		public void SetPaintDevice(IQPaintDevice device) {
@@ -67,6 +72,7 @@ namespace Qyoto {
 		public QTextObjectInterface HandlerForObject(int objectType) {
 			return ProxyQAbstractTextDocumentLayout().HandlerForObject(objectType);
 		}
+		[SmokeMethod("documentChanged", "(int, int, int)", "$$$")]
 		protected abstract void DocumentChanged(int from, int charsRemoved, int charsAdded);
 		[SmokeMethod("resizeInlineObject", "(QTextInlineObject, int, const QTextFormat&)", "#$#")]
 		protected virtual void ResizeInlineObject(QTextInlineObject item, int posInDocument, QTextFormat format) {

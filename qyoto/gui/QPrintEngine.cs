@@ -40,11 +40,17 @@ namespace Qyoto {
 			PPK_Duplex = 21,
 			PPK_CustomBase = 0xff00,
 		}
+		[SmokeMethod("setProperty", "(QPrintEngine::PrintEnginePropertyKey, const QVariant&)", "$#")]
 		public abstract void SetProperty(QPrintEngine.PrintEnginePropertyKey key, QVariant value);
+		[SmokeMethod("property", "(QPrintEngine::PrintEnginePropertyKey) const", "$")]
 		public abstract QVariant Property(QPrintEngine.PrintEnginePropertyKey key);
+		[SmokeMethod("newPage", "()", "")]
 		public abstract bool NewPage();
+		[SmokeMethod("abort", "()", "")]
 		public abstract bool Abort();
+		[SmokeMethod("metric", "(QPaintDevice::PaintDeviceMetric) const", "$")]
 		public abstract int Metric(IQPaintDevice arg1);
+		[SmokeMethod("printerState", "() const", "")]
 		public abstract QPrinter.PrinterState PrinterState();
 		public QPrintEngine() : this((Type) null) {
 			CreateProxy();

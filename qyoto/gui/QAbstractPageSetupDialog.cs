@@ -44,6 +44,7 @@ namespace Qyoto {
 		private void NewQAbstractPageSetupDialog(QPrinter printer) {
 			ProxyQAbstractPageSetupDialog().NewQAbstractPageSetupDialog(printer);
 		}
+		[SmokeMethod("exec", "()", "")]
 		public abstract int Exec();
 		[SmokeMethod("printer", "()", "")]
 		public QPrinter Printer() {

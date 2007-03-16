@@ -49,8 +49,11 @@ namespace Qyoto {
 		private void NewQInputContext() {
 			ProxyQInputContext().NewQInputContext();
 		}
+		[SmokeMethod("identifierName", "()", "")]
 		public abstract string IdentifierName();
+		[SmokeMethod("language", "()", "")]
 		public abstract string Language();
+		[SmokeMethod("reset", "()", "")]
 		public abstract void Reset();
 		[SmokeMethod("update", "()", "")]
 		public virtual void Update() {
@@ -64,6 +67,7 @@ namespace Qyoto {
 		public virtual QFont Font() {
 			return ProxyQInputContext().Font();
 		}
+		[SmokeMethod("isComposing", "() const", "")]
 		public abstract bool IsComposing();
 		[SmokeMethod("focusWidget", "() const", "")]
 		public QWidget FocusWidget() {

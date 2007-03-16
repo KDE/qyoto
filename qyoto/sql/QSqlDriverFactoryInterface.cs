@@ -13,6 +13,7 @@ namespace Qyoto {
 		private QSqlDriverFactoryInterface ProxyQSqlDriverFactoryInterface() {
 			return (QSqlDriverFactoryInterface) _interceptor;
 		}
+		[SmokeMethod("create", "(const QString&)", "$")]
 		public abstract QSqlDriver Create(string name);
 		public QSqlDriverFactoryInterface() : this((Type) null) {
 			CreateProxy();

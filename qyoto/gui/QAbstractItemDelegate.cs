@@ -54,7 +54,9 @@ namespace Qyoto {
 		private void NewQAbstractItemDelegate() {
 			ProxyQAbstractItemDelegate().NewQAbstractItemDelegate();
 		}
+		[SmokeMethod("paint", "(QPainter*, const QStyleOptionViewItem&, const QModelIndex&) const", "###")]
 		public abstract void Paint(QPainter painter, QStyleOptionViewItem option, QModelIndex index);
+		[SmokeMethod("sizeHint", "(const QStyleOptionViewItem&, const QModelIndex&) const", "##")]
 		public abstract QSize SizeHint(QStyleOptionViewItem option, QModelIndex index);
 		[SmokeMethod("createEditor", "(QWidget*, const QStyleOptionViewItem&, const QModelIndex&) const", "###")]
 		public virtual QWidget CreateEditor(QWidget parent, QStyleOptionViewItem option, QModelIndex index) {

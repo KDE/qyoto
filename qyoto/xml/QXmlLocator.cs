@@ -23,7 +23,9 @@ namespace Qyoto {
 		private void NewQXmlLocator() {
 			ProxyQXmlLocator().NewQXmlLocator();
 		}
+		[SmokeMethod("columnNumber", "() const", "")]
 		public abstract int ColumnNumber();
+		[SmokeMethod("lineNumber", "() const", "")]
 		public abstract int LineNumber();
 	}
 }

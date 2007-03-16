@@ -15,7 +15,9 @@ namespace Qyoto {
 		private QItemEditorCreatorBase ProxyQItemEditorCreatorBase() {
 			return (QItemEditorCreatorBase) _interceptor;
 		}
+		[SmokeMethod("createWidget", "(QWidget*) const", "#")]
 		public abstract QWidget CreateWidget(QWidget parent);
+		[SmokeMethod("valuePropertyName", "() const", "")]
 		public abstract QByteArray ValuePropertyName();
 		public QItemEditorCreatorBase() : this((Type) null) {
 			CreateProxy();

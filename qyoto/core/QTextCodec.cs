@@ -96,11 +96,13 @@ namespace Qyoto {
 		public QByteArray FromUnicode(char arg1, int length) {
 			return ProxyQTextCodec().FromUnicode(arg1,length);
 		}
+		[SmokeMethod("name", "() const", "")]
 		public abstract QByteArray Name();
 		[SmokeMethod("aliases", "() const", "")]
 		public virtual List<QByteArray> Aliases() {
 			return ProxyQTextCodec().Aliases();
 		}
+		[SmokeMethod("mibEnum", "() const", "")]
 		public abstract int MibEnum();
 		public QTextCodec() : this((Type) null) {
 			CreateProxy();

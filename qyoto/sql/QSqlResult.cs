@@ -155,9 +155,13 @@ namespace Qyoto {
 		protected QSqlResult.BindingSyntax bindingSyntax() {
 			return ProxyQSqlResult().bindingSyntax();
 		}
+		[SmokeMethod("data", "(int)", "$")]
 		protected abstract QVariant Data(int i);
+		[SmokeMethod("isNull", "(int)", "$")]
 		protected abstract bool IsNull(int i);
+		[SmokeMethod("reset", "(const QString&)", "$")]
 		protected abstract bool Reset(string sqlquery);
+		[SmokeMethod("fetch", "(int)", "$")]
 		protected abstract bool Fetch(int i);
 		[SmokeMethod("fetchNext", "()", "")]
 		protected virtual bool FetchNext() {
@@ -167,9 +171,13 @@ namespace Qyoto {
 		protected virtual bool FetchPrevious() {
 			return ProxyQSqlResult().FetchPrevious();
 		}
+		[SmokeMethod("fetchFirst", "()", "")]
 		protected abstract bool FetchFirst();
+		[SmokeMethod("fetchLast", "()", "")]
 		protected abstract bool FetchLast();
+		[SmokeMethod("size", "()", "")]
 		protected abstract int Size();
+		[SmokeMethod("numRowsAffected", "()", "")]
 		protected abstract int NumRowsAffected();
 		[SmokeMethod("record", "() const", "")]
 		protected virtual QSqlRecord Record() {

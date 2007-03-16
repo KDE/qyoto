@@ -112,7 +112,9 @@ namespace Qyoto {
 		public bool IsValid() {
 			return ProxyQHttpHeader().IsValid();
 		}
+		[SmokeMethod("majorVersion", "() const", "")]
 		public abstract int MajorVersion();
+		[SmokeMethod("minorVersion", "() const", "")]
 		public abstract int MinorVersion();
 		[SmokeMethod("parseLine", "(const QString&, int)", "$$")]
 		protected virtual bool ParseLine(string line, int number) {

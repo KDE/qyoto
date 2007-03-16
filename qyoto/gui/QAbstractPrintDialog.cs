@@ -56,6 +56,7 @@ namespace Qyoto {
 		private void NewQAbstractPrintDialog(QPrinter printer) {
 			ProxyQAbstractPrintDialog().NewQAbstractPrintDialog(printer);
 		}
+		[SmokeMethod("exec", "()", "")]
 		public abstract int Exec();
 		[SmokeMethod("addEnabledOption", "(QAbstractPrintDialog::PrintDialogOption)", "$")]
 		public void AddEnabledOption(QAbstractPrintDialog.PrintDialogOption option) {

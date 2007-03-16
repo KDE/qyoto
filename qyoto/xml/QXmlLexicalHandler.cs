@@ -15,13 +15,21 @@ namespace Qyoto {
 		private QXmlLexicalHandler ProxyQXmlLexicalHandler() {
 			return (QXmlLexicalHandler) _interceptor;
 		}
+		[SmokeMethod("startDTD", "(const QString&, const QString&, const QString&)", "$$$")]
 		public abstract bool StartDTD(string name, string publicId, string systemId);
+		[SmokeMethod("endDTD", "()", "")]
 		public abstract bool EndDTD();
+		[SmokeMethod("startEntity", "(const QString&)", "$")]
 		public abstract bool StartEntity(string name);
+		[SmokeMethod("endEntity", "(const QString&)", "$")]
 		public abstract bool EndEntity(string name);
+		[SmokeMethod("startCDATA", "()", "")]
 		public abstract bool StartCDATA();
+		[SmokeMethod("endCDATA", "()", "")]
 		public abstract bool EndCDATA();
+		[SmokeMethod("comment", "(const QString&)", "$")]
 		public abstract bool Comment(string ch);
+		[SmokeMethod("errorString", "() const", "")]
 		public abstract string ErrorString();
 		public QXmlLexicalHandler() : this((Type) null) {
 			CreateProxy();

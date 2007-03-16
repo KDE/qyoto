@@ -16,6 +16,7 @@ namespace Qyoto {
 		private QFactoryInterface ProxyQFactoryInterface() {
 			return (QFactoryInterface) _interceptor;
 		}
+		[SmokeMethod("keys", "() const", "")]
 		public abstract List<string> Keys();
 		public QFactoryInterface() : this((Type) null) {
 			CreateProxy();

@@ -37,7 +37,7 @@ class TreeModel : QAbstractItemModel {
 		SetupModelData(new List<string>(data.Split("\n".ToCharArray())), rootItem);
 	}
 	
-	public TreeModel(string data) : this(data, null) {}
+	public TreeModel(string data) : this(data, (QObject) null) {}
 
 	public override QVariant Data(QModelIndex index, int role) {
 		if (!index.IsValid())

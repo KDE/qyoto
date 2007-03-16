@@ -94,8 +94,11 @@ namespace Qyoto {
 		public void SetActive(bool newState) {
 			ProxyQPaintEngine().SetActive(newState);
 		}
+		[SmokeMethod("begin", "(QPaintDevice*)", "#")]
 		public abstract bool Begin(IQPaintDevice pdev);
+		[SmokeMethod("end", "()", "")]
 		public abstract bool End();
+		[SmokeMethod("updateState", "(const QPaintEngineState&)", "#")]
 		public abstract void UpdateState(QPaintEngineState state);
 		[SmokeMethod("drawRects", "(const QRect*, int)", "#$")]
 		public virtual void DrawRects(QRect rects, int rectCount) {
@@ -141,6 +144,7 @@ namespace Qyoto {
 		public virtual void DrawPolygon(QPoint points, int pointCount, QPaintEngine.PolygonDrawMode mode) {
 			ProxyQPaintEngine().DrawPolygon(points,pointCount,mode);
 		}
+		[SmokeMethod("drawPixmap", "(const QRectF&, const QPixmap&, const QRectF&)", "###")]
 		public abstract void DrawPixmap(QRectF r, QPixmap pm, QRectF sr);
 		[SmokeMethod("drawTiledPixmap", "(const QRectF&, const QPixmap&, const QPointF&)", "###")]
 		public virtual void DrawTiledPixmap(QRectF r, QPixmap pixmap, QPointF s) {
@@ -182,6 +186,7 @@ namespace Qyoto {
 		public virtual QPoint CoordinateOffset() {
 			return ProxyQPaintEngine().CoordinateOffset();
 		}
+		[SmokeMethod("type", "() const", "")]
 		public abstract QPaintEngine.TypeOf type();
 		[SmokeMethod("fix_neg_rect", "(int*, int*, int*, int*)", "$$$$")]
 		public void Fix_neg_rect(out int x, out int y, out int w, out int h) {

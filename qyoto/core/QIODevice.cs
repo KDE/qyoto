@@ -187,11 +187,13 @@ namespace Qyoto {
 		public string ErrorString() {
 			return ProxyQIODevice().ErrorString();
 		}
+		[SmokeMethod("readData", "(char*, qint64)", "$$")]
 		protected abstract long ReadData(string data, long maxlen);
 		[SmokeMethod("readLineData", "(char*, qint64)", "$$")]
 		protected virtual long ReadLineData(string data, long maxlen) {
 			return ProxyQIODevice().ReadLineData(data,maxlen);
 		}
+		[SmokeMethod("writeData", "(const char*, qint64)", "$$")]
 		protected abstract long WriteData(string data, long len);
 		[SmokeMethod("setOpenMode", "(OpenMode)", "$")]
 		protected void SetOpenMode(int openMode) {

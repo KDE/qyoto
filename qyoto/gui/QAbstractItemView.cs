@@ -225,8 +225,11 @@ namespace Qyoto {
 		public virtual void KeyboardSearch(string search) {
 			ProxyQAbstractItemView().KeyboardSearch(search);
 		}
+		[SmokeMethod("visualRect", "(const QModelIndex&) const", "#")]
 		public abstract QRect VisualRect(QModelIndex index);
+		[SmokeMethod("scrollTo", "(const QModelIndex&, QAbstractItemView::ScrollHint)", "#$")]
 		public abstract void ScrollTo(QModelIndex index, QAbstractItemView.ScrollHint hint);
+		[SmokeMethod("indexAt", "(const QPoint&) const", "#")]
 		public abstract QModelIndex IndexAt(QPoint point);
 		[SmokeMethod("sizeHintForIndex", "(const QModelIndex&) const", "#")]
 		public QSize SizeHintForIndex(QModelIndex index) {
@@ -341,11 +344,17 @@ namespace Qyoto {
 		protected int VerticalStepsPerItem() {
 			return ProxyQAbstractItemView().VerticalStepsPerItem();
 		}
+		[SmokeMethod("moveCursor", "(QAbstractItemView::CursorAction, Qt::KeyboardModifiers)", "$$")]
 		protected abstract QModelIndex MoveCursor(QAbstractItemView.CursorAction cursorAction, int modifiers);
+		[SmokeMethod("horizontalOffset", "() const", "")]
 		protected abstract int HorizontalOffset();
+		[SmokeMethod("verticalOffset", "() const", "")]
 		protected abstract int VerticalOffset();
+		[SmokeMethod("isIndexHidden", "(const QModelIndex&) const", "#")]
 		protected abstract bool IsIndexHidden(QModelIndex index);
+		[SmokeMethod("setSelection", "(const QRect&, QItemSelectionModel::SelectionFlags)", "#$")]
 		protected abstract void SetSelection(QRect rect, int command);
+		[SmokeMethod("visualRegionForSelection", "(const QItemSelection&) const", "#")]
 		protected abstract QRegion VisualRegionForSelection(QItemSelection selection);
 		[SmokeMethod("selectedIndexes", "() const", "")]
 		protected virtual List<QModelIndex> SelectedIndexes() {

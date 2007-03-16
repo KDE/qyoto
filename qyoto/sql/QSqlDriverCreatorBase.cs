@@ -16,6 +16,7 @@ namespace Qyoto {
 			return (QSqlDriverCreatorBase) _interceptor;
 		}
 		// QSqlDriverCreatorBase* QSqlDriverCreatorBase(); >>>> NOT CONVERTED
+		[SmokeMethod("createObject", "() const", "")]
 		public abstract QSqlDriver CreateObject();
 	}
 }

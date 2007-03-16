@@ -21,8 +21,11 @@ namespace Qyoto {
 		private QXmlDTDHandler ProxyQXmlDTDHandler() {
 			return (QXmlDTDHandler) _interceptor;
 		}
+		[SmokeMethod("notationDecl", "(const QString&, const QString&, const QString&)", "$$$")]
 		public abstract bool NotationDecl(string name, string publicId, string systemId);
+		[SmokeMethod("unparsedEntityDecl", "(const QString&, const QString&, const QString&, const QString&)", "$$$$")]
 		public abstract bool UnparsedEntityDecl(string name, string publicId, string systemId, string notationName);
+		[SmokeMethod("errorString", "() const", "")]
 		public abstract string ErrorString();
 		public QXmlDTDHandler() : this((Type) null) {
 			CreateProxy();

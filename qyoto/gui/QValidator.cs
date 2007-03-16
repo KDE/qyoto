@@ -42,6 +42,7 @@ namespace Qyoto {
 		private void NewQValidator(QObject parent) {
 			ProxyQValidator().NewQValidator(parent);
 		}
+		[SmokeMethod("validate", "(QString&, int&) const", "$$")]
 		public abstract int Validate(StringBuilder arg1, out int arg2);
 		[SmokeMethod("fixup", "(QString&) const", "$")]
 		public virtual void Fixup(StringBuilder arg1) {

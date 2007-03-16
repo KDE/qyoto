@@ -13,6 +13,7 @@ namespace Qyoto {
 		private QStyleFactoryInterface ProxyQStyleFactoryInterface() {
 			return (QStyleFactoryInterface) _interceptor;
 		}
+		[SmokeMethod("create", "(const QString&)", "$")]
 		public abstract QStyle Create(string key);
 		public QStyleFactoryInterface() : this((Type) null) {
 			CreateProxy();

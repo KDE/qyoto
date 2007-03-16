@@ -13,6 +13,7 @@ namespace Qyoto {
 		private QTextCodecFactoryInterface ProxyQTextCodecFactoryInterface() {
 			return (QTextCodecFactoryInterface) _interceptor;
 		}
+		[SmokeMethod("create", "(const QString&)", "$")]
 		public abstract QTextCodec Create(string key);
 		public QTextCodecFactoryInterface() : this((Type) null) {
 			CreateProxy();

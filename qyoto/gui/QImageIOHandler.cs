@@ -60,7 +60,9 @@ namespace Qyoto {
 		public virtual QByteArray Name() {
 			return ProxyQImageIOHandler().Name();
 		}
+		[SmokeMethod("canRead", "() const", "")]
 		public abstract bool CanRead();
+		[SmokeMethod("read", "(QImage*)", "#")]
 		public abstract bool Read(QImage image);
 		[SmokeMethod("write", "(const QImage&)", "#")]
 		public virtual bool Write(QImage image) {

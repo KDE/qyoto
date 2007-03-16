@@ -21,11 +21,13 @@ namespace Qyoto {
 		private QMimeSource ProxyQMimeSource() {
 			return (QMimeSource) _interceptor;
 		}
+		[SmokeMethod("format", "(int) const", "$")]
 		public abstract string Format(int n);
 		[SmokeMethod("provides", "(const char*) const", "$")]
 		public virtual bool Provides(string arg1) {
 			return ProxyQMimeSource().Provides(arg1);
 		}
+		[SmokeMethod("encodedData", "(const char*) const", "$")]
 		public abstract QByteArray EncodedData(string arg1);
 		public QMimeSource() : this((Type) null) {
 			CreateProxy();

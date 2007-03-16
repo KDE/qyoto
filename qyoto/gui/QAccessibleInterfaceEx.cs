@@ -14,6 +14,7 @@ namespace Qyoto {
 		private QAccessibleInterfaceEx ProxyQAccessibleInterfaceEx() {
 			return (QAccessibleInterfaceEx) _interceptor;
 		}
+		[SmokeMethod("invokeMethodEx", "(QAccessible::Method, int, const QVariantList&)", "$$?")]
 		public abstract QVariant InvokeMethodEx(QAccessible.Method method, int child, List<QVariant> arg3);
 		public QAccessibleInterfaceEx() : this((Type) null) {
 			CreateProxy();

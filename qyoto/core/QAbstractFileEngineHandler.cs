@@ -23,6 +23,7 @@ namespace Qyoto {
 		private void NewQAbstractFileEngineHandler() {
 			ProxyQAbstractFileEngineHandler().NewQAbstractFileEngineHandler();
 		}
+		[SmokeMethod("create", "(const QString&) const", "$")]
 		public abstract QAbstractFileEngine Create(string fileName);
 	}
 }

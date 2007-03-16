@@ -49,19 +49,29 @@ namespace Qyoto {
 		private void NewQAbstractEventDispatcher() {
 			ProxyQAbstractEventDispatcher().NewQAbstractEventDispatcher();
 		}
+		[SmokeMethod("processEvents", "(QEventLoop::ProcessEventsFlags)", "$")]
 		public abstract bool ProcessEvents(uint flags);
+		[SmokeMethod("hasPendingEvents", "()", "")]
 		public abstract bool HasPendingEvents();
+		[SmokeMethod("registerSocketNotifier", "(QSocketNotifier*)", "#")]
 		public abstract void RegisterSocketNotifier(QSocketNotifier notifier);
+		[SmokeMethod("unregisterSocketNotifier", "(QSocketNotifier*)", "#")]
 		public abstract void UnregisterSocketNotifier(QSocketNotifier notifier);
 		[SmokeMethod("registerTimer", "(int, QObject*)", "$#")]
 		public int RegisterTimer(int interval, QObject arg2) {
 			return ProxyQAbstractEventDispatcher().RegisterTimer(interval,arg2);
 		}
+		[SmokeMethod("registerTimer", "(int, int, QObject*)", "$$#")]
 		public abstract void RegisterTimer(int timerId, int interval, QObject arg3);
+		[SmokeMethod("unregisterTimer", "(int)", "$")]
 		public abstract bool UnregisterTimer(int timerId);
+		[SmokeMethod("unregisterTimers", "(QObject*)", "#")]
 		public abstract bool UnregisterTimers(QObject arg1);
+		[SmokeMethod("wakeUp", "()", "")]
 		public abstract void WakeUp();
+		[SmokeMethod("interrupt", "()", "")]
 		public abstract void Interrupt();
+		[SmokeMethod("flush", "()", "")]
 		public abstract void Flush();
 		[SmokeMethod("startingUp", "()", "")]
 		public virtual void StartingUp() {

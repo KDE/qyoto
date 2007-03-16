@@ -13,6 +13,7 @@ namespace Qyoto {
 		private QAccessibleBridgeFactoryInterface ProxyQAccessibleBridgeFactoryInterface() {
 			return (QAccessibleBridgeFactoryInterface) _interceptor;
 		}
+		[SmokeMethod("create", "(const QString&)", "$")]
 		public abstract QAccessibleBridge Create(string name);
 		public QAccessibleBridgeFactoryInterface() : this((Type) null) {
 			CreateProxy();

@@ -433,6 +433,7 @@ namespace Qyoto {
 		public void SetZValue(double z) {
 			ProxyQGraphicsItem().SetZValue(z);
 		}
+		[SmokeMethod("boundingRect", "() const", "")]
 		public abstract QRectF BoundingRect();
 		[SmokeMethod("childrenBoundingRect", "() const", "")]
 		public QRectF ChildrenBoundingRect() {
@@ -486,6 +487,7 @@ namespace Qyoto {
 		public virtual QPainterPath OpaqueArea() {
 			return ProxyQGraphicsItem().OpaqueArea();
 		}
+		[SmokeMethod("paint", "(QPainter*, const QStyleOptionGraphicsItem*, QWidget*)", "###")]
 		public abstract void Paint(QPainter painter, QStyleOptionGraphicsItem option, QWidget widget);
 		[SmokeMethod("update", "(const QRectF&)", "#")]
 		public void Update(QRectF rect) {

@@ -113,6 +113,7 @@ namespace Qyoto {
 		public void AddWidget(QWidget w) {
 			ProxyQLayout().AddWidget(w);
 		}
+		[SmokeMethod("addItem", "(QLayoutItem*)", "#")]
 		public abstract void AddItem(IQLayoutItem arg1);
 		[SmokeMethod("removeWidget", "(QWidget*)", "#")]
 		public void RemoveWidget(QWidget w) {
@@ -134,13 +135,17 @@ namespace Qyoto {
 		public virtual QSize MaximumSize() {
 			return ProxyQLayout().MaximumSize();
 		}
+		[SmokeMethod("setGeometry", "(const QRect&)", "#")]
 		public abstract void SetGeometry(QRect arg1);
+		[SmokeMethod("itemAt", "(int) const", "$")]
 		public abstract IQLayoutItem ItemAt(int index);
+		[SmokeMethod("takeAt", "(int)", "$")]
 		public abstract IQLayoutItem TakeAt(int index);
 		[SmokeMethod("indexOf", "(QWidget*) const", "#")]
 		public virtual int IndexOf(QWidget arg1) {
 			return ProxyQLayout().IndexOf(arg1);
 		}
+		[SmokeMethod("count", "() const", "")]
 		public abstract int Count();
 		[SmokeMethod("isEmpty", "() const", "")]
 		public virtual bool IsEmpty() {
@@ -194,6 +199,7 @@ namespace Qyoto {
 		protected QRect AlignmentRect(QRect arg1) {
 			return ProxyQLayout().AlignmentRect(arg1);
 		}
+		[SmokeMethod("sizeHint", "() const", "")]
 		public abstract QSize SizeHint();
 		[SmokeMethod("hasHeightForWidth", "() const", "")]
 		public virtual bool HasHeightForWidth() {
