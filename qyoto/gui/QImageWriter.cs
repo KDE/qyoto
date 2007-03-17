@@ -6,8 +6,8 @@ namespace Qyoto {
 
 	[SmokeClass("QImageWriter")]
 	public class QImageWriter : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QImageWriter interceptor = null;
+		private IntPtr smokeObject;
 		protected QImageWriter(Type dummy) {}
 		[SmokeClass("QImageWriter")]
 		interface IQImageWriterProxy {
@@ -16,18 +16,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QImageWriter), this);
-			_interceptor = (QImageWriter) realProxy.GetTransparentProxy();
+			interceptor = (QImageWriter) realProxy.GetTransparentProxy();
 		}
-		private QImageWriter ProxyQImageWriter() {
-			return (QImageWriter) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQImageWriterProxy staticInterceptor = null;
 		static QImageWriter() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQImageWriterProxy), null);
-			_staticInterceptor = (IQImageWriterProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQImageWriterProxy StaticQImageWriter() {
-			return (IQImageWriterProxy) _staticInterceptor;
+			staticInterceptor = (IQImageWriterProxy) realProxy.GetTransparentProxy();
 		}
 		public enum ImageWriterError {
 			UnknownError = 0,
@@ -40,7 +34,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QImageWriter", "()", "")]
 		private void NewQImageWriter() {
-			ProxyQImageWriter().NewQImageWriter();
+			((QImageWriter) interceptor).NewQImageWriter();
 		}
 		public QImageWriter(QIODevice device, QByteArray format) : this((Type) null) {
 			CreateProxy();
@@ -48,7 +42,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QImageWriter", "(QIODevice*, const QByteArray&)", "##")]
 		private void NewQImageWriter(QIODevice device, QByteArray format) {
-			ProxyQImageWriter().NewQImageWriter(device,format);
+			((QImageWriter) interceptor).NewQImageWriter(device,format);
 		}
 		public QImageWriter(string fileName, QByteArray format) : this((Type) null) {
 			CreateProxy();
@@ -56,7 +50,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QImageWriter", "(const QString&, const QByteArray&)", "$#")]
 		private void NewQImageWriter(string fileName, QByteArray format) {
-			ProxyQImageWriter().NewQImageWriter(fileName,format);
+			((QImageWriter) interceptor).NewQImageWriter(fileName,format);
 		}
 		public QImageWriter(string fileName) : this((Type) null) {
 			CreateProxy();
@@ -64,79 +58,79 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QImageWriter", "(const QString&)", "$")]
 		private void NewQImageWriter(string fileName) {
-			ProxyQImageWriter().NewQImageWriter(fileName);
+			((QImageWriter) interceptor).NewQImageWriter(fileName);
 		}
 		[SmokeMethod("setFormat", "(const QByteArray&)", "#")]
 		public void SetFormat(QByteArray format) {
-			ProxyQImageWriter().SetFormat(format);
+			((QImageWriter) interceptor).SetFormat(format);
 		}
 		[SmokeMethod("format", "() const", "")]
 		public QByteArray Format() {
-			return ProxyQImageWriter().Format();
+			return ((QImageWriter) interceptor).Format();
 		}
 		[SmokeMethod("setDevice", "(QIODevice*)", "#")]
 		public void SetDevice(QIODevice device) {
-			ProxyQImageWriter().SetDevice(device);
+			((QImageWriter) interceptor).SetDevice(device);
 		}
 		[SmokeMethod("device", "() const", "")]
 		public QIODevice Device() {
-			return ProxyQImageWriter().Device();
+			return ((QImageWriter) interceptor).Device();
 		}
 		[SmokeMethod("setFileName", "(const QString&)", "$")]
 		public void SetFileName(string fileName) {
-			ProxyQImageWriter().SetFileName(fileName);
+			((QImageWriter) interceptor).SetFileName(fileName);
 		}
 		[SmokeMethod("fileName", "() const", "")]
 		public string FileName() {
-			return ProxyQImageWriter().FileName();
+			return ((QImageWriter) interceptor).FileName();
 		}
 		[SmokeMethod("setQuality", "(int)", "$")]
 		public void SetQuality(int quality) {
-			ProxyQImageWriter().SetQuality(quality);
+			((QImageWriter) interceptor).SetQuality(quality);
 		}
 		[SmokeMethod("quality", "() const", "")]
 		public int Quality() {
-			return ProxyQImageWriter().Quality();
+			return ((QImageWriter) interceptor).Quality();
 		}
 		[SmokeMethod("setGamma", "(float)", "$")]
 		public void SetGamma(float gamma) {
-			ProxyQImageWriter().SetGamma(gamma);
+			((QImageWriter) interceptor).SetGamma(gamma);
 		}
 		[SmokeMethod("gamma", "() const", "")]
 		public float Gamma() {
-			return ProxyQImageWriter().Gamma();
+			return ((QImageWriter) interceptor).Gamma();
 		}
 		[SmokeMethod("setDescription", "(const QString&)", "$")]
 		public void SetDescription(string description) {
-			ProxyQImageWriter().SetDescription(description);
+			((QImageWriter) interceptor).SetDescription(description);
 		}
 		[SmokeMethod("description", "() const", "")]
 		public string Description() {
-			return ProxyQImageWriter().Description();
+			return ((QImageWriter) interceptor).Description();
 		}
 		[SmokeMethod("setText", "(const QString&, const QString&)", "$$")]
 		public void SetText(string key, string text) {
-			ProxyQImageWriter().SetText(key,text);
+			((QImageWriter) interceptor).SetText(key,text);
 		}
 		[SmokeMethod("canWrite", "() const", "")]
 		public bool CanWrite() {
-			return ProxyQImageWriter().CanWrite();
+			return ((QImageWriter) interceptor).CanWrite();
 		}
 		[SmokeMethod("write", "(const QImage&)", "#")]
 		public bool Write(QImage image) {
-			return ProxyQImageWriter().Write(image);
+			return ((QImageWriter) interceptor).Write(image);
 		}
 		[SmokeMethod("error", "() const", "")]
 		public QImageWriter.ImageWriterError Error() {
-			return ProxyQImageWriter().Error();
+			return ((QImageWriter) interceptor).Error();
 		}
 		[SmokeMethod("errorString", "() const", "")]
 		public string ErrorString() {
-			return ProxyQImageWriter().ErrorString();
+			return ((QImageWriter) interceptor).ErrorString();
 		}
 		[SmokeMethod("supportsOption", "(QImageIOHandler::ImageOption) const", "$")]
 		public bool SupportsOption(QImageIOHandler.ImageOption option) {
-			return ProxyQImageWriter().SupportsOption(option);
+			return ((QImageWriter) interceptor).SupportsOption(option);
 		}
 		~QImageWriter() {
 			DisposeQImageWriter();
@@ -146,10 +140,10 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QImageWriter", "()", "")]
 		private void DisposeQImageWriter() {
-			ProxyQImageWriter().DisposeQImageWriter();
+			((QImageWriter) interceptor).DisposeQImageWriter();
 		}
 		public static List<QByteArray> SupportedImageFormats() {
-			return StaticQImageWriter().SupportedImageFormats();
+			return staticInterceptor.SupportedImageFormats();
 		}
 	}
 }

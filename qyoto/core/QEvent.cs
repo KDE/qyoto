@@ -5,15 +5,12 @@ namespace Qyoto {
 
 	[SmokeClass("QEvent")]
 	public class QEvent : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QEvent interceptor = null;
+		private IntPtr smokeObject;
 		protected QEvent(Type dummy) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QEvent), this);
-			_interceptor = (QEvent) realProxy.GetTransparentProxy();
-		}
-		private QEvent ProxyQEvent() {
-			return (QEvent) _interceptor;
+			interceptor = (QEvent) realProxy.GetTransparentProxy();
 		}
 		public enum TypeOf {
 			None = 0,
@@ -150,31 +147,31 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QEvent", "(QEvent::Type)", "$")]
 		private void NewQEvent(QEvent.TypeOf type) {
-			ProxyQEvent().NewQEvent(type);
+			((QEvent) interceptor).NewQEvent(type);
 		}
 		[SmokeMethod("type", "() const", "")]
 		public QEvent.TypeOf type() {
-			return ProxyQEvent().type();
+			return ((QEvent) interceptor).type();
 		}
 		[SmokeMethod("spontaneous", "() const", "")]
 		public bool Spontaneous() {
-			return ProxyQEvent().Spontaneous();
+			return ((QEvent) interceptor).Spontaneous();
 		}
 		[SmokeMethod("setAccepted", "(bool)", "$")]
 		public void SetAccepted(bool accepted) {
-			ProxyQEvent().SetAccepted(accepted);
+			((QEvent) interceptor).SetAccepted(accepted);
 		}
 		[SmokeMethod("isAccepted", "() const", "")]
 		public bool IsAccepted() {
-			return ProxyQEvent().IsAccepted();
+			return ((QEvent) interceptor).IsAccepted();
 		}
 		[SmokeMethod("accept", "()", "")]
 		public void Accept() {
-			ProxyQEvent().Accept();
+			((QEvent) interceptor).Accept();
 		}
 		[SmokeMethod("ignore", "()", "")]
 		public void Ignore() {
-			ProxyQEvent().Ignore();
+			((QEvent) interceptor).Ignore();
 		}
 		~QEvent() {
 			DisposeQEvent();
@@ -184,7 +181,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QEvent", "()", "")]
 		private void DisposeQEvent() {
-			ProxyQEvent().DisposeQEvent();
+			((QEvent) interceptor).DisposeQEvent();
 		}
 	}
 }

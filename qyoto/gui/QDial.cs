@@ -15,18 +15,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDial), this);
-			_interceptor = (QDial) realProxy.GetTransparentProxy();
+			interceptor = (QDial) realProxy.GetTransparentProxy();
 		}
-		private QDial ProxyQDial() {
-			return (QDial) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQDialProxy staticInterceptor = null;
 		static QDial() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQDialProxy), null);
-			_staticInterceptor = (IQDialProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQDialProxy StaticQDial() {
-			return (IQDialProxy) _staticInterceptor;
+			staticInterceptor = (IQDialProxy) realProxy.GetTransparentProxy();
 		}
 		[Q_PROPERTY("bool", "wrapping")]
 		public bool Wrapping {
@@ -53,7 +47,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDial", "(QWidget*)", "#")]
 		private void NewQDial(QWidget parent) {
-			ProxyQDial().NewQDial(parent);
+			((QDial) interceptor).NewQDial(parent);
 		}
 		public QDial() : this((Type) null) {
 			CreateProxy();
@@ -61,43 +55,43 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDial", "()", "")]
 		private void NewQDial() {
-			ProxyQDial().NewQDial();
+			((QDial) interceptor).NewQDial();
 		}
 		[SmokeMethod("sizeHint", "() const", "")]
 		public override QSize SizeHint() {
-			return ProxyQDial().SizeHint();
+			return ((QDial) interceptor).SizeHint();
 		}
 		[SmokeMethod("minimumSizeHint", "() const", "")]
 		public override QSize MinimumSizeHint() {
-			return ProxyQDial().MinimumSizeHint();
+			return ((QDial) interceptor).MinimumSizeHint();
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent e) {
-			return ProxyQDial().Event(e);
+			return ((QDial) interceptor).Event(e);
 		}
 		[SmokeMethod("resizeEvent", "(QResizeEvent*)", "#")]
 		protected override void ResizeEvent(QResizeEvent re) {
-			ProxyQDial().ResizeEvent(re);
+			((QDial) interceptor).ResizeEvent(re);
 		}
 		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
 		protected override void PaintEvent(QPaintEvent pe) {
-			ProxyQDial().PaintEvent(pe);
+			((QDial) interceptor).PaintEvent(pe);
 		}
 		[SmokeMethod("mousePressEvent", "(QMouseEvent*)", "#")]
 		protected override void MousePressEvent(QMouseEvent me) {
-			ProxyQDial().MousePressEvent(me);
+			((QDial) interceptor).MousePressEvent(me);
 		}
 		[SmokeMethod("mouseReleaseEvent", "(QMouseEvent*)", "#")]
 		protected override void MouseReleaseEvent(QMouseEvent me) {
-			ProxyQDial().MouseReleaseEvent(me);
+			((QDial) interceptor).MouseReleaseEvent(me);
 		}
 		[SmokeMethod("mouseMoveEvent", "(QMouseEvent*)", "#")]
 		protected override void MouseMoveEvent(QMouseEvent me) {
-			ProxyQDial().MouseMoveEvent(me);
+			((QDial) interceptor).MouseMoveEvent(me);
 		}
 		[SmokeMethod("sliderChange", "(QAbstractSlider::SliderChange)", "$")]
 		protected override void sliderChange(QAbstractSlider.SliderChange change) {
-			ProxyQDial().sliderChange(change);
+			((QDial) interceptor).sliderChange(change);
 		}
 		~QDial() {
 			DisposeQDial();
@@ -107,13 +101,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QDial", "()", "")]
 		private void DisposeQDial() {
-			ProxyQDial().DisposeQDial();
+			((QDial) interceptor).DisposeQDial();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQDial().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQDial().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQDialSignals Emit {
 			get { return (IQDialSignals) Q_EMIT; }

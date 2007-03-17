@@ -9,10 +9,7 @@ namespace Qyoto {
  		protected QTextTableFormat(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextTableFormat), this);
-			_interceptor = (QTextTableFormat) realProxy.GetTransparentProxy();
-		}
-		private QTextTableFormat ProxyQTextTableFormat() {
-			return (QTextTableFormat) _interceptor;
+			interceptor = (QTextTableFormat) realProxy.GetTransparentProxy();
 		}
 		public QTextTableFormat() : this((Type) null) {
 			CreateProxy();
@@ -20,63 +17,63 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTextTableFormat", "()", "")]
 		private void NewQTextTableFormat() {
-			ProxyQTextTableFormat().NewQTextTableFormat();
+			((QTextTableFormat) interceptor).NewQTextTableFormat();
 		}
 		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ProxyQTextTableFormat().IsValid();
+			return ((QTextTableFormat) interceptor).IsValid();
 		}
 		[SmokeMethod("columns", "() const", "")]
 		public int Columns() {
-			return ProxyQTextTableFormat().Columns();
+			return ((QTextTableFormat) interceptor).Columns();
 		}
 		[SmokeMethod("setColumns", "(int)", "$")]
 		public void SetColumns(int columns) {
-			ProxyQTextTableFormat().SetColumns(columns);
+			((QTextTableFormat) interceptor).SetColumns(columns);
 		}
 		[SmokeMethod("setColumnWidthConstraints", "(const QVector<QTextLength>&)", "?")]
 		public void SetColumnWidthConstraints(List<QTextLength> constraints) {
-			ProxyQTextTableFormat().SetColumnWidthConstraints(constraints);
+			((QTextTableFormat) interceptor).SetColumnWidthConstraints(constraints);
 		}
 		[SmokeMethod("columnWidthConstraints", "() const", "")]
 		public List<QTextLength> ColumnWidthConstraints() {
-			return ProxyQTextTableFormat().ColumnWidthConstraints();
+			return ((QTextTableFormat) interceptor).ColumnWidthConstraints();
 		}
 		[SmokeMethod("clearColumnWidthConstraints", "()", "")]
 		public void ClearColumnWidthConstraints() {
-			ProxyQTextTableFormat().ClearColumnWidthConstraints();
+			((QTextTableFormat) interceptor).ClearColumnWidthConstraints();
 		}
 		[SmokeMethod("cellSpacing", "() const", "")]
 		public double CellSpacing() {
-			return ProxyQTextTableFormat().CellSpacing();
+			return ((QTextTableFormat) interceptor).CellSpacing();
 		}
 		[SmokeMethod("setCellSpacing", "(qreal)", "$")]
 		public void SetCellSpacing(double spacing) {
-			ProxyQTextTableFormat().SetCellSpacing(spacing);
+			((QTextTableFormat) interceptor).SetCellSpacing(spacing);
 		}
 		[SmokeMethod("cellPadding", "() const", "")]
 		public double CellPadding() {
-			return ProxyQTextTableFormat().CellPadding();
+			return ((QTextTableFormat) interceptor).CellPadding();
 		}
 		[SmokeMethod("setCellPadding", "(qreal)", "$")]
 		public void SetCellPadding(double padding) {
-			ProxyQTextTableFormat().SetCellPadding(padding);
+			((QTextTableFormat) interceptor).SetCellPadding(padding);
 		}
 		[SmokeMethod("setAlignment", "(Qt::Alignment)", "$")]
 		public void SetAlignment(int alignment) {
-			ProxyQTextTableFormat().SetAlignment(alignment);
+			((QTextTableFormat) interceptor).SetAlignment(alignment);
 		}
 		[SmokeMethod("alignment", "() const", "")]
 		public int Alignment() {
-			return ProxyQTextTableFormat().Alignment();
+			return ((QTextTableFormat) interceptor).Alignment();
 		}
 		[SmokeMethod("setHeaderRowCount", "(int)", "$")]
 		public void SetHeaderRowCount(int count) {
-			ProxyQTextTableFormat().SetHeaderRowCount(count);
+			((QTextTableFormat) interceptor).SetHeaderRowCount(count);
 		}
 		[SmokeMethod("headerRowCount", "() const", "")]
 		public int HeaderRowCount() {
-			return ProxyQTextTableFormat().HeaderRowCount();
+			return ((QTextTableFormat) interceptor).HeaderRowCount();
 		}
 		~QTextTableFormat() {
 			DisposeQTextTableFormat();
@@ -86,7 +83,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QTextTableFormat", "()", "")]
 		private void DisposeQTextTableFormat() {
-			ProxyQTextTableFormat().DisposeQTextTableFormat();
+			((QTextTableFormat) interceptor).DisposeQTextTableFormat();
 		}
 	}
 }

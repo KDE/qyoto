@@ -16,18 +16,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSqlTableModel), this);
-			_interceptor = (QSqlTableModel) realProxy.GetTransparentProxy();
+			interceptor = (QSqlTableModel) realProxy.GetTransparentProxy();
 		}
-		private QSqlTableModel ProxyQSqlTableModel() {
-			return (QSqlTableModel) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQSqlTableModelProxy staticInterceptor = null;
 		static QSqlTableModel() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQSqlTableModelProxy), null);
-			_staticInterceptor = (IQSqlTableModelProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQSqlTableModelProxy StaticQSqlTableModel() {
-			return (IQSqlTableModelProxy) _staticInterceptor;
+			staticInterceptor = (IQSqlTableModelProxy) realProxy.GetTransparentProxy();
 		}
 		public enum EditStrategy {
 			OnFieldChange = 0,
@@ -40,7 +34,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSqlTableModel", "(QObject*, QSqlDatabase)", "##")]
 		private void NewQSqlTableModel(QObject parent, QSqlDatabase db) {
-			ProxyQSqlTableModel().NewQSqlTableModel(parent,db);
+			((QSqlTableModel) interceptor).NewQSqlTableModel(parent,db);
 		}
 		public QSqlTableModel(QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -48,7 +42,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSqlTableModel", "(QObject*)", "#")]
 		private void NewQSqlTableModel(QObject parent) {
-			ProxyQSqlTableModel().NewQSqlTableModel(parent);
+			((QSqlTableModel) interceptor).NewQSqlTableModel(parent);
 		}
 		public QSqlTableModel() : this((Type) null) {
 			CreateProxy();
@@ -56,187 +50,187 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSqlTableModel", "()", "")]
 		private void NewQSqlTableModel() {
-			ProxyQSqlTableModel().NewQSqlTableModel();
+			((QSqlTableModel) interceptor).NewQSqlTableModel();
 		}
 		[SmokeMethod("select", "()", "")]
 		public virtual bool Select() {
-			return ProxyQSqlTableModel().Select();
+			return ((QSqlTableModel) interceptor).Select();
 		}
 		[SmokeMethod("setTable", "(const QString&)", "$")]
 		public virtual void SetTable(string tableName) {
-			ProxyQSqlTableModel().SetTable(tableName);
+			((QSqlTableModel) interceptor).SetTable(tableName);
 		}
 		[SmokeMethod("tableName", "() const", "")]
 		public string TableName() {
-			return ProxyQSqlTableModel().TableName();
+			return ((QSqlTableModel) interceptor).TableName();
 		}
 		[SmokeMethod("flags", "(const QModelIndex&) const", "#")]
 		public override int Flags(QModelIndex index) {
-			return ProxyQSqlTableModel().Flags(index);
+			return ((QSqlTableModel) interceptor).Flags(index);
 		}
 		[SmokeMethod("data", "(const QModelIndex&, int) const", "#$")]
 		public override QVariant Data(QModelIndex idx, int role) {
-			return ProxyQSqlTableModel().Data(idx,role);
+			return ((QSqlTableModel) interceptor).Data(idx,role);
 		}
 		[SmokeMethod("data", "(const QModelIndex&) const", "#")]
 		public override QVariant Data(QModelIndex idx) {
-			return ProxyQSqlTableModel().Data(idx);
+			return ((QSqlTableModel) interceptor).Data(idx);
 		}
 		[SmokeMethod("setData", "(const QModelIndex&, const QVariant&, int)", "##$")]
 		public override bool SetData(QModelIndex index, QVariant value, int role) {
-			return ProxyQSqlTableModel().SetData(index,value,role);
+			return ((QSqlTableModel) interceptor).SetData(index,value,role);
 		}
 		[SmokeMethod("setData", "(const QModelIndex&, const QVariant&)", "##")]
 		public override bool SetData(QModelIndex index, QVariant value) {
-			return ProxyQSqlTableModel().SetData(index,value);
+			return ((QSqlTableModel) interceptor).SetData(index,value);
 		}
 		[SmokeMethod("headerData", "(int, Qt::Orientation, int) const", "$$$")]
 		public override QVariant HeaderData(int section, Qt.Orientation orientation, int role) {
-			return ProxyQSqlTableModel().HeaderData(section,orientation,role);
+			return ((QSqlTableModel) interceptor).HeaderData(section,orientation,role);
 		}
 		[SmokeMethod("headerData", "(int, Qt::Orientation) const", "$$")]
 		public override QVariant HeaderData(int section, Qt.Orientation orientation) {
-			return ProxyQSqlTableModel().HeaderData(section,orientation);
+			return ((QSqlTableModel) interceptor).HeaderData(section,orientation);
 		}
 		[SmokeMethod("isDirty", "(const QModelIndex&) const", "#")]
 		public bool IsDirty(QModelIndex index) {
-			return ProxyQSqlTableModel().IsDirty(index);
+			return ((QSqlTableModel) interceptor).IsDirty(index);
 		}
 		[SmokeMethod("clear", "()", "")]
 		public override void Clear() {
-			ProxyQSqlTableModel().Clear();
+			((QSqlTableModel) interceptor).Clear();
 		}
 		[SmokeMethod("setEditStrategy", "(QSqlTableModel::EditStrategy)", "$")]
 		public virtual void SetEditStrategy(QSqlTableModel.EditStrategy strategy) {
-			ProxyQSqlTableModel().SetEditStrategy(strategy);
+			((QSqlTableModel) interceptor).SetEditStrategy(strategy);
 		}
 		[SmokeMethod("editStrategy", "() const", "")]
 		public QSqlTableModel.EditStrategy editStrategy() {
-			return ProxyQSqlTableModel().editStrategy();
+			return ((QSqlTableModel) interceptor).editStrategy();
 		}
 		[SmokeMethod("primaryKey", "() const", "")]
 		public QSqlIndex PrimaryKey() {
-			return ProxyQSqlTableModel().PrimaryKey();
+			return ((QSqlTableModel) interceptor).PrimaryKey();
 		}
 		[SmokeMethod("database", "() const", "")]
 		public QSqlDatabase Database() {
-			return ProxyQSqlTableModel().Database();
+			return ((QSqlTableModel) interceptor).Database();
 		}
 		[SmokeMethod("fieldIndex", "(const QString&) const", "$")]
 		public int FieldIndex(string fieldName) {
-			return ProxyQSqlTableModel().FieldIndex(fieldName);
+			return ((QSqlTableModel) interceptor).FieldIndex(fieldName);
 		}
 		[SmokeMethod("sort", "(int, Qt::SortOrder)", "$$")]
 		public override void Sort(int column, Qt.SortOrder order) {
-			ProxyQSqlTableModel().Sort(column,order);
+			((QSqlTableModel) interceptor).Sort(column,order);
 		}
 		[SmokeMethod("setSort", "(int, Qt::SortOrder)", "$$")]
 		public virtual void SetSort(int column, Qt.SortOrder order) {
-			ProxyQSqlTableModel().SetSort(column,order);
+			((QSqlTableModel) interceptor).SetSort(column,order);
 		}
 		[SmokeMethod("filter", "() const", "")]
 		public string Filter() {
-			return ProxyQSqlTableModel().Filter();
+			return ((QSqlTableModel) interceptor).Filter();
 		}
 		[SmokeMethod("setFilter", "(const QString&)", "$")]
 		public virtual void SetFilter(string filter) {
-			ProxyQSqlTableModel().SetFilter(filter);
+			((QSqlTableModel) interceptor).SetFilter(filter);
 		}
 		[SmokeMethod("rowCount", "(const QModelIndex&) const", "#")]
 		public override int RowCount(QModelIndex parent) {
-			return ProxyQSqlTableModel().RowCount(parent);
+			return ((QSqlTableModel) interceptor).RowCount(parent);
 		}
 		[SmokeMethod("rowCount", "() const", "")]
 		public override int RowCount() {
-			return ProxyQSqlTableModel().RowCount();
+			return ((QSqlTableModel) interceptor).RowCount();
 		}
 		[SmokeMethod("removeColumns", "(int, int, const QModelIndex&)", "$$#")]
 		public override bool RemoveColumns(int column, int count, QModelIndex parent) {
-			return ProxyQSqlTableModel().RemoveColumns(column,count,parent);
+			return ((QSqlTableModel) interceptor).RemoveColumns(column,count,parent);
 		}
 		[SmokeMethod("removeColumns", "(int, int)", "$$")]
 		public override bool RemoveColumns(int column, int count) {
-			return ProxyQSqlTableModel().RemoveColumns(column,count);
+			return ((QSqlTableModel) interceptor).RemoveColumns(column,count);
 		}
 		[SmokeMethod("removeRows", "(int, int, const QModelIndex&)", "$$#")]
 		public override bool RemoveRows(int row, int count, QModelIndex parent) {
-			return ProxyQSqlTableModel().RemoveRows(row,count,parent);
+			return ((QSqlTableModel) interceptor).RemoveRows(row,count,parent);
 		}
 		[SmokeMethod("removeRows", "(int, int)", "$$")]
 		public override bool RemoveRows(int row, int count) {
-			return ProxyQSqlTableModel().RemoveRows(row,count);
+			return ((QSqlTableModel) interceptor).RemoveRows(row,count);
 		}
 		[SmokeMethod("insertRows", "(int, int, const QModelIndex&)", "$$#")]
 		public override bool InsertRows(int row, int count, QModelIndex parent) {
-			return ProxyQSqlTableModel().InsertRows(row,count,parent);
+			return ((QSqlTableModel) interceptor).InsertRows(row,count,parent);
 		}
 		[SmokeMethod("insertRows", "(int, int)", "$$")]
 		public override bool InsertRows(int row, int count) {
-			return ProxyQSqlTableModel().InsertRows(row,count);
+			return ((QSqlTableModel) interceptor).InsertRows(row,count);
 		}
 		[SmokeMethod("insertRecord", "(int, const QSqlRecord&)", "$#")]
 		public bool InsertRecord(int row, QSqlRecord record) {
-			return ProxyQSqlTableModel().InsertRecord(row,record);
+			return ((QSqlTableModel) interceptor).InsertRecord(row,record);
 		}
 		[SmokeMethod("setRecord", "(int, const QSqlRecord&)", "$#")]
 		public bool SetRecord(int row, QSqlRecord record) {
-			return ProxyQSqlTableModel().SetRecord(row,record);
+			return ((QSqlTableModel) interceptor).SetRecord(row,record);
 		}
 		[SmokeMethod("revertRow", "(int)", "$")]
 		public virtual void RevertRow(int row) {
-			ProxyQSqlTableModel().RevertRow(row);
+			((QSqlTableModel) interceptor).RevertRow(row);
 		}
 		[Q_SLOT("bool submit()")]
 		[SmokeMethod("submit", "()", "")]
 		public override bool Submit() {
-			return ProxyQSqlTableModel().Submit();
+			return ((QSqlTableModel) interceptor).Submit();
 		}
 		[Q_SLOT("void revert()")]
 		[SmokeMethod("revert", "()", "")]
 		public override void Revert() {
-			ProxyQSqlTableModel().Revert();
+			((QSqlTableModel) interceptor).Revert();
 		}
 		[Q_SLOT("bool submitAll()")]
 		[SmokeMethod("submitAll", "()", "")]
 		public bool SubmitAll() {
-			return ProxyQSqlTableModel().SubmitAll();
+			return ((QSqlTableModel) interceptor).SubmitAll();
 		}
 		[Q_SLOT("void revertAll()")]
 		[SmokeMethod("revertAll", "()", "")]
 		public void RevertAll() {
-			ProxyQSqlTableModel().RevertAll();
+			((QSqlTableModel) interceptor).RevertAll();
 		}
 		[SmokeMethod("updateRowInTable", "(int, const QSqlRecord&)", "$#")]
 		protected virtual bool UpdateRowInTable(int row, QSqlRecord values) {
-			return ProxyQSqlTableModel().UpdateRowInTable(row,values);
+			return ((QSqlTableModel) interceptor).UpdateRowInTable(row,values);
 		}
 		[SmokeMethod("insertRowIntoTable", "(const QSqlRecord&)", "#")]
 		protected virtual bool InsertRowIntoTable(QSqlRecord values) {
-			return ProxyQSqlTableModel().InsertRowIntoTable(values);
+			return ((QSqlTableModel) interceptor).InsertRowIntoTable(values);
 		}
 		[SmokeMethod("deleteRowFromTable", "(int)", "$")]
 		protected virtual bool DeleteRowFromTable(int row) {
-			return ProxyQSqlTableModel().DeleteRowFromTable(row);
+			return ((QSqlTableModel) interceptor).DeleteRowFromTable(row);
 		}
 		[SmokeMethod("orderByClause", "() const", "")]
 		protected virtual string OrderByClause() {
-			return ProxyQSqlTableModel().OrderByClause();
+			return ((QSqlTableModel) interceptor).OrderByClause();
 		}
 		[SmokeMethod("selectStatement", "() const", "")]
 		protected virtual string SelectStatement() {
-			return ProxyQSqlTableModel().SelectStatement();
+			return ((QSqlTableModel) interceptor).SelectStatement();
 		}
 		[SmokeMethod("setPrimaryKey", "(const QSqlIndex&)", "#")]
 		protected void SetPrimaryKey(QSqlIndex key) {
-			ProxyQSqlTableModel().SetPrimaryKey(key);
+			((QSqlTableModel) interceptor).SetPrimaryKey(key);
 		}
 		[SmokeMethod("setQuery", "(const QSqlQuery&)", "#")]
 		protected void SetQuery(IQSqlQuery query) {
-			ProxyQSqlTableModel().SetQuery(query);
+			((QSqlTableModel) interceptor).SetQuery(query);
 		}
 		[SmokeMethod("indexInQuery", "(const QModelIndex&) const", "#")]
 		protected QModelIndex IndexInQuery(QModelIndex item) {
-			return ProxyQSqlTableModel().IndexInQuery(item);
+			return ((QSqlTableModel) interceptor).IndexInQuery(item);
 		}
 		~QSqlTableModel() {
 			DisposeQSqlTableModel();
@@ -246,13 +240,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QSqlTableModel", "()", "")]
 		private void DisposeQSqlTableModel() {
-			ProxyQSqlTableModel().DisposeQSqlTableModel();
+			((QSqlTableModel) interceptor).DisposeQSqlTableModel();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQSqlTableModel().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQSqlTableModel().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQSqlTableModelSignals Emit {
 			get { return (IQSqlTableModelSignals) Q_EMIT; }

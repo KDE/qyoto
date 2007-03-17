@@ -16,18 +16,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSplashScreen), this);
-			_interceptor = (QSplashScreen) realProxy.GetTransparentProxy();
+			interceptor = (QSplashScreen) realProxy.GetTransparentProxy();
 		}
-		private QSplashScreen ProxyQSplashScreen() {
-			return (QSplashScreen) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQSplashScreenProxy staticInterceptor = null;
 		static QSplashScreen() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQSplashScreenProxy), null);
-			_staticInterceptor = (IQSplashScreenProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQSplashScreenProxy StaticQSplashScreen() {
-			return (IQSplashScreenProxy) _staticInterceptor;
+			staticInterceptor = (IQSplashScreenProxy) realProxy.GetTransparentProxy();
 		}
 		public QSplashScreen(QPixmap pixmap, int f) : this((Type) null) {
 			CreateProxy();
@@ -35,7 +29,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSplashScreen", "(const QPixmap&, Qt::WindowFlags)", "#$")]
 		private void NewQSplashScreen(QPixmap pixmap, int f) {
-			ProxyQSplashScreen().NewQSplashScreen(pixmap,f);
+			((QSplashScreen) interceptor).NewQSplashScreen(pixmap,f);
 		}
 		public QSplashScreen(QPixmap pixmap) : this((Type) null) {
 			CreateProxy();
@@ -43,7 +37,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSplashScreen", "(const QPixmap&)", "#")]
 		private void NewQSplashScreen(QPixmap pixmap) {
-			ProxyQSplashScreen().NewQSplashScreen(pixmap);
+			((QSplashScreen) interceptor).NewQSplashScreen(pixmap);
 		}
 		public QSplashScreen() : this((Type) null) {
 			CreateProxy();
@@ -51,7 +45,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSplashScreen", "()", "")]
 		private void NewQSplashScreen() {
-			ProxyQSplashScreen().NewQSplashScreen();
+			((QSplashScreen) interceptor).NewQSplashScreen();
 		}
 		public QSplashScreen(QWidget parent, QPixmap pixmap, int f) : this((Type) null) {
 			CreateProxy();
@@ -59,7 +53,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSplashScreen", "(QWidget*, const QPixmap&, Qt::WindowFlags)", "##$")]
 		private void NewQSplashScreen(QWidget parent, QPixmap pixmap, int f) {
-			ProxyQSplashScreen().NewQSplashScreen(parent,pixmap,f);
+			((QSplashScreen) interceptor).NewQSplashScreen(parent,pixmap,f);
 		}
 		public QSplashScreen(QWidget parent, QPixmap pixmap) : this((Type) null) {
 			CreateProxy();
@@ -67,7 +61,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSplashScreen", "(QWidget*, const QPixmap&)", "##")]
 		private void NewQSplashScreen(QWidget parent, QPixmap pixmap) {
-			ProxyQSplashScreen().NewQSplashScreen(parent,pixmap);
+			((QSplashScreen) interceptor).NewQSplashScreen(parent,pixmap);
 		}
 		public QSplashScreen(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -75,55 +69,55 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSplashScreen", "(QWidget*)", "#")]
 		private void NewQSplashScreen(QWidget parent) {
-			ProxyQSplashScreen().NewQSplashScreen(parent);
+			((QSplashScreen) interceptor).NewQSplashScreen(parent);
 		}
 		[SmokeMethod("setPixmap", "(const QPixmap&)", "#")]
 		public void SetPixmap(QPixmap pixmap) {
-			ProxyQSplashScreen().SetPixmap(pixmap);
+			((QSplashScreen) interceptor).SetPixmap(pixmap);
 		}
 		[SmokeMethod("pixmap", "() const", "")]
 		public QPixmap Pixmap() {
-			return ProxyQSplashScreen().Pixmap();
+			return ((QSplashScreen) interceptor).Pixmap();
 		}
 		[SmokeMethod("finish", "(QWidget*)", "#")]
 		public void Finish(QWidget w) {
-			ProxyQSplashScreen().Finish(w);
+			((QSplashScreen) interceptor).Finish(w);
 		}
 		[SmokeMethod("repaint", "()", "")]
 		public void Repaint() {
-			ProxyQSplashScreen().Repaint();
+			((QSplashScreen) interceptor).Repaint();
 		}
 		[Q_SLOT("void showMessage(const QString&, int, const QColor&)")]
 		[SmokeMethod("showMessage", "(const QString&, int, const QColor&)", "$$#")]
 		public void ShowMessage(string message, int alignment, QColor color) {
-			ProxyQSplashScreen().ShowMessage(message,alignment,color);
+			((QSplashScreen) interceptor).ShowMessage(message,alignment,color);
 		}
 		[Q_SLOT("void showMessage(const QString&, int)")]
 		[SmokeMethod("showMessage", "(const QString&, int)", "$$")]
 		public void ShowMessage(string message, int alignment) {
-			ProxyQSplashScreen().ShowMessage(message,alignment);
+			((QSplashScreen) interceptor).ShowMessage(message,alignment);
 		}
 		[Q_SLOT("void showMessage(const QString&)")]
 		[SmokeMethod("showMessage", "(const QString&)", "$")]
 		public void ShowMessage(string message) {
-			ProxyQSplashScreen().ShowMessage(message);
+			((QSplashScreen) interceptor).ShowMessage(message);
 		}
 		[Q_SLOT("void clearMessage()")]
 		[SmokeMethod("clearMessage", "()", "")]
 		public void ClearMessage() {
-			ProxyQSplashScreen().ClearMessage();
+			((QSplashScreen) interceptor).ClearMessage();
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent e) {
-			return ProxyQSplashScreen().Event(e);
+			return ((QSplashScreen) interceptor).Event(e);
 		}
 		[SmokeMethod("drawContents", "(QPainter*)", "#")]
 		protected virtual void DrawContents(QPainter painter) {
-			ProxyQSplashScreen().DrawContents(painter);
+			((QSplashScreen) interceptor).DrawContents(painter);
 		}
 		[SmokeMethod("mousePressEvent", "(QMouseEvent*)", "#")]
 		protected override void MousePressEvent(QMouseEvent arg1) {
-			ProxyQSplashScreen().MousePressEvent(arg1);
+			((QSplashScreen) interceptor).MousePressEvent(arg1);
 		}
 		~QSplashScreen() {
 			DisposeQSplashScreen();
@@ -133,13 +127,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QSplashScreen", "()", "")]
 		private void DisposeQSplashScreen() {
-			ProxyQSplashScreen().DisposeQSplashScreen();
+			((QSplashScreen) interceptor).DisposeQSplashScreen();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQSplashScreen().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQSplashScreen().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQSplashScreenSignals Emit {
 			get { return (IQSplashScreenSignals) Q_EMIT; }

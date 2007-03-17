@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QGenericReturnArgument(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGenericReturnArgument), this);
-			_interceptor = (QGenericReturnArgument) realProxy.GetTransparentProxy();
-		}
-		private QGenericReturnArgument ProxyQGenericReturnArgument() {
-			return (QGenericReturnArgument) _interceptor;
+			interceptor = (QGenericReturnArgument) realProxy.GetTransparentProxy();
 		}
 		// QGenericReturnArgument* QGenericReturnArgument(const char* arg1,void* arg2); >>>> NOT CONVERTED
 		public QGenericReturnArgument(string aName) : this((Type) null) {
@@ -20,7 +17,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGenericReturnArgument", "(const char*)", "$")]
 		private void NewQGenericReturnArgument(string aName) {
-			ProxyQGenericReturnArgument().NewQGenericReturnArgument(aName);
+			((QGenericReturnArgument) interceptor).NewQGenericReturnArgument(aName);
 		}
 		public QGenericReturnArgument() : this((Type) null) {
 			CreateProxy();
@@ -28,7 +25,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGenericReturnArgument", "()", "")]
 		private void NewQGenericReturnArgument() {
-			ProxyQGenericReturnArgument().NewQGenericReturnArgument();
+			((QGenericReturnArgument) interceptor).NewQGenericReturnArgument();
 		}
 		~QGenericReturnArgument() {
 			DisposeQGenericReturnArgument();
@@ -38,7 +35,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QGenericReturnArgument", "()", "")]
 		private void DisposeQGenericReturnArgument() {
-			ProxyQGenericReturnArgument().DisposeQGenericReturnArgument();
+			((QGenericReturnArgument) interceptor).DisposeQGenericReturnArgument();
 		}
 	}
 }

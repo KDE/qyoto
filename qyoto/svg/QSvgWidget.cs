@@ -15,18 +15,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSvgWidget), this);
-			_interceptor = (QSvgWidget) realProxy.GetTransparentProxy();
+			interceptor = (QSvgWidget) realProxy.GetTransparentProxy();
 		}
-		private QSvgWidget ProxyQSvgWidget() {
-			return (QSvgWidget) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQSvgWidgetProxy staticInterceptor = null;
 		static QSvgWidget() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQSvgWidgetProxy), null);
-			_staticInterceptor = (IQSvgWidgetProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQSvgWidgetProxy StaticQSvgWidget() {
-			return (IQSvgWidgetProxy) _staticInterceptor;
+			staticInterceptor = (IQSvgWidgetProxy) realProxy.GetTransparentProxy();
 		}
 		public QSvgWidget(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -34,7 +28,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSvgWidget", "(QWidget*)", "#")]
 		private void NewQSvgWidget(QWidget parent) {
-			ProxyQSvgWidget().NewQSvgWidget(parent);
+			((QSvgWidget) interceptor).NewQSvgWidget(parent);
 		}
 		public QSvgWidget() : this((Type) null) {
 			CreateProxy();
@@ -42,7 +36,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSvgWidget", "()", "")]
 		private void NewQSvgWidget() {
-			ProxyQSvgWidget().NewQSvgWidget();
+			((QSvgWidget) interceptor).NewQSvgWidget();
 		}
 		public QSvgWidget(string file, QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -50,7 +44,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSvgWidget", "(const QString&, QWidget*)", "$#")]
 		private void NewQSvgWidget(string file, QWidget parent) {
-			ProxyQSvgWidget().NewQSvgWidget(file,parent);
+			((QSvgWidget) interceptor).NewQSvgWidget(file,parent);
 		}
 		public QSvgWidget(string file) : this((Type) null) {
 			CreateProxy();
@@ -58,29 +52,29 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSvgWidget", "(const QString&)", "$")]
 		private void NewQSvgWidget(string file) {
-			ProxyQSvgWidget().NewQSvgWidget(file);
+			((QSvgWidget) interceptor).NewQSvgWidget(file);
 		}
 		[SmokeMethod("renderer", "() const", "")]
 		public QSvgRenderer Renderer() {
-			return ProxyQSvgWidget().Renderer();
+			return ((QSvgWidget) interceptor).Renderer();
 		}
 		[SmokeMethod("sizeHint", "() const", "")]
 		public override QSize SizeHint() {
-			return ProxyQSvgWidget().SizeHint();
+			return ((QSvgWidget) interceptor).SizeHint();
 		}
 		[Q_SLOT("void load(const QString&)")]
 		[SmokeMethod("load", "(const QString&)", "$")]
 		public void Load(string file) {
-			ProxyQSvgWidget().Load(file);
+			((QSvgWidget) interceptor).Load(file);
 		}
 		[Q_SLOT("void load(const QByteArray&)")]
 		[SmokeMethod("load", "(const QByteArray&)", "#")]
 		public void Load(QByteArray contents) {
-			ProxyQSvgWidget().Load(contents);
+			((QSvgWidget) interceptor).Load(contents);
 		}
 		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
 		protected override void PaintEvent(QPaintEvent arg1) {
-			ProxyQSvgWidget().PaintEvent(arg1);
+			((QSvgWidget) interceptor).PaintEvent(arg1);
 		}
 		~QSvgWidget() {
 			DisposeQSvgWidget();
@@ -90,13 +84,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QSvgWidget", "()", "")]
 		private void DisposeQSvgWidget() {
-			ProxyQSvgWidget().DisposeQSvgWidget();
+			((QSvgWidget) interceptor).DisposeQSvgWidget();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQSvgWidget().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQSvgWidget().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQSvgWidgetSignals Emit {
 			get { return (IQSvgWidgetSignals) Q_EMIT; }

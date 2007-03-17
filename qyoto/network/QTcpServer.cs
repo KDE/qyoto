@@ -16,18 +16,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTcpServer), this);
-			_interceptor = (QTcpServer) realProxy.GetTransparentProxy();
+			interceptor = (QTcpServer) realProxy.GetTransparentProxy();
 		}
-		private QTcpServer ProxyQTcpServer() {
-			return (QTcpServer) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQTcpServerProxy staticInterceptor = null;
 		static QTcpServer() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTcpServerProxy), null);
-			_staticInterceptor = (IQTcpServerProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQTcpServerProxy StaticQTcpServer() {
-			return (IQTcpServerProxy) _staticInterceptor;
+			staticInterceptor = (IQTcpServerProxy) realProxy.GetTransparentProxy();
 		}
 		public QTcpServer(QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -35,7 +29,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTcpServer", "(QObject*)", "#")]
 		private void NewQTcpServer(QObject parent) {
-			ProxyQTcpServer().NewQTcpServer(parent);
+			((QTcpServer) interceptor).NewQTcpServer(parent);
 		}
 		public QTcpServer() : this((Type) null) {
 			CreateProxy();
@@ -43,91 +37,91 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTcpServer", "()", "")]
 		private void NewQTcpServer() {
-			ProxyQTcpServer().NewQTcpServer();
+			((QTcpServer) interceptor).NewQTcpServer();
 		}
 		[SmokeMethod("listen", "(const QHostAddress&, quint16)", "#$")]
 		public bool Listen(QHostAddress address, ushort port) {
-			return ProxyQTcpServer().Listen(address,port);
+			return ((QTcpServer) interceptor).Listen(address,port);
 		}
 		[SmokeMethod("listen", "(const QHostAddress&)", "#")]
 		public bool Listen(QHostAddress address) {
-			return ProxyQTcpServer().Listen(address);
+			return ((QTcpServer) interceptor).Listen(address);
 		}
 		[SmokeMethod("listen", "()", "")]
 		public bool Listen() {
-			return ProxyQTcpServer().Listen();
+			return ((QTcpServer) interceptor).Listen();
 		}
 		[SmokeMethod("close", "()", "")]
 		public void Close() {
-			ProxyQTcpServer().Close();
+			((QTcpServer) interceptor).Close();
 		}
 		[SmokeMethod("isListening", "() const", "")]
 		public bool IsListening() {
-			return ProxyQTcpServer().IsListening();
+			return ((QTcpServer) interceptor).IsListening();
 		}
 		[SmokeMethod("setMaxPendingConnections", "(int)", "$")]
 		public void SetMaxPendingConnections(int numConnections) {
-			ProxyQTcpServer().SetMaxPendingConnections(numConnections);
+			((QTcpServer) interceptor).SetMaxPendingConnections(numConnections);
 		}
 		[SmokeMethod("maxPendingConnections", "() const", "")]
 		public int MaxPendingConnections() {
-			return ProxyQTcpServer().MaxPendingConnections();
+			return ((QTcpServer) interceptor).MaxPendingConnections();
 		}
 		[SmokeMethod("serverPort", "() const", "")]
 		public ushort ServerPort() {
-			return ProxyQTcpServer().ServerPort();
+			return ((QTcpServer) interceptor).ServerPort();
 		}
 		[SmokeMethod("serverAddress", "() const", "")]
 		public QHostAddress ServerAddress() {
-			return ProxyQTcpServer().ServerAddress();
+			return ((QTcpServer) interceptor).ServerAddress();
 		}
 		[SmokeMethod("socketDescriptor", "() const", "")]
 		public int SocketDescriptor() {
-			return ProxyQTcpServer().SocketDescriptor();
+			return ((QTcpServer) interceptor).SocketDescriptor();
 		}
 		[SmokeMethod("setSocketDescriptor", "(int)", "$")]
 		public bool SetSocketDescriptor(int socketDescriptor) {
-			return ProxyQTcpServer().SetSocketDescriptor(socketDescriptor);
+			return ((QTcpServer) interceptor).SetSocketDescriptor(socketDescriptor);
 		}
 		[SmokeMethod("waitForNewConnection", "(int, bool*)", "$$")]
 		public bool WaitForNewConnection(int msec, out bool timedOut) {
-			return ProxyQTcpServer().WaitForNewConnection(msec,out timedOut);
+			return ((QTcpServer) interceptor).WaitForNewConnection(msec,out timedOut);
 		}
 		[SmokeMethod("waitForNewConnection", "(int)", "$")]
 		public bool WaitForNewConnection(int msec) {
-			return ProxyQTcpServer().WaitForNewConnection(msec);
+			return ((QTcpServer) interceptor).WaitForNewConnection(msec);
 		}
 		[SmokeMethod("waitForNewConnection", "()", "")]
 		public bool WaitForNewConnection() {
-			return ProxyQTcpServer().WaitForNewConnection();
+			return ((QTcpServer) interceptor).WaitForNewConnection();
 		}
 		[SmokeMethod("hasPendingConnections", "() const", "")]
 		public virtual bool HasPendingConnections() {
-			return ProxyQTcpServer().HasPendingConnections();
+			return ((QTcpServer) interceptor).HasPendingConnections();
 		}
 		[SmokeMethod("nextPendingConnection", "()", "")]
 		public virtual QTcpSocket NextPendingConnection() {
-			return ProxyQTcpServer().NextPendingConnection();
+			return ((QTcpServer) interceptor).NextPendingConnection();
 		}
 		[SmokeMethod("serverError", "() const", "")]
 		public QAbstractSocket.SocketError ServerError() {
-			return ProxyQTcpServer().ServerError();
+			return ((QTcpServer) interceptor).ServerError();
 		}
 		[SmokeMethod("errorString", "() const", "")]
 		public string ErrorString() {
-			return ProxyQTcpServer().ErrorString();
+			return ((QTcpServer) interceptor).ErrorString();
 		}
 		[SmokeMethod("setProxy", "(const QNetworkProxy&)", "#")]
 		public void SetProxy(QNetworkProxy networkProxy) {
-			ProxyQTcpServer().SetProxy(networkProxy);
+			((QTcpServer) interceptor).SetProxy(networkProxy);
 		}
 		[SmokeMethod("proxy", "() const", "")]
 		public QNetworkProxy Proxy() {
-			return ProxyQTcpServer().Proxy();
+			return ((QTcpServer) interceptor).Proxy();
 		}
 		[SmokeMethod("incomingConnection", "(int)", "$")]
 		protected virtual void IncomingConnection(int handle) {
-			ProxyQTcpServer().IncomingConnection(handle);
+			((QTcpServer) interceptor).IncomingConnection(handle);
 		}
 		~QTcpServer() {
 			DisposeQTcpServer();
@@ -137,13 +131,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QTcpServer", "()", "")]
 		private void DisposeQTcpServer() {
-			ProxyQTcpServer().DisposeQTcpServer();
+			((QTcpServer) interceptor).DisposeQTcpServer();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQTcpServer().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQTcpServer().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQTcpServerSignals Emit {
 			get { return (IQTcpServerSignals) Q_EMIT; }

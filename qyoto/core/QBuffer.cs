@@ -15,18 +15,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QBuffer), this);
-			_interceptor = (QBuffer) realProxy.GetTransparentProxy();
+			interceptor = (QBuffer) realProxy.GetTransparentProxy();
 		}
-		private QBuffer ProxyQBuffer() {
-			return (QBuffer) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQBufferProxy staticInterceptor = null;
 		static QBuffer() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQBufferProxy), null);
-			_staticInterceptor = (IQBufferProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQBufferProxy StaticQBuffer() {
-			return (IQBufferProxy) _staticInterceptor;
+			staticInterceptor = (IQBufferProxy) realProxy.GetTransparentProxy();
 		}
 		public QBuffer(QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -34,7 +28,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QBuffer", "(QObject*)", "#")]
 		private void NewQBuffer(QObject parent) {
-			ProxyQBuffer().NewQBuffer(parent);
+			((QBuffer) interceptor).NewQBuffer(parent);
 		}
 		public QBuffer() : this((Type) null) {
 			CreateProxy();
@@ -42,7 +36,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QBuffer", "()", "")]
 		private void NewQBuffer() {
-			ProxyQBuffer().NewQBuffer();
+			((QBuffer) interceptor).NewQBuffer();
 		}
 		public QBuffer(QByteArray buf, QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -50,7 +44,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QBuffer", "(QByteArray*, QObject*)", "##")]
 		private void NewQBuffer(QByteArray buf, QObject parent) {
-			ProxyQBuffer().NewQBuffer(buf,parent);
+			((QBuffer) interceptor).NewQBuffer(buf,parent);
 		}
 		public QBuffer(QByteArray buf) : this((Type) null) {
 			CreateProxy();
@@ -58,63 +52,63 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QBuffer", "(QByteArray*)", "#")]
 		private void NewQBuffer(QByteArray buf) {
-			ProxyQBuffer().NewQBuffer(buf);
+			((QBuffer) interceptor).NewQBuffer(buf);
 		}
 		[SmokeMethod("buffer", "()", "")]
 		public QByteArray Buffer() {
-			return ProxyQBuffer().Buffer();
+			return ((QBuffer) interceptor).Buffer();
 		}
 		[SmokeMethod("setBuffer", "(QByteArray*)", "#")]
 		public void SetBuffer(QByteArray a) {
-			ProxyQBuffer().SetBuffer(a);
+			((QBuffer) interceptor).SetBuffer(a);
 		}
 		[SmokeMethod("setData", "(const QByteArray&)", "#")]
 		public void SetData(QByteArray data) {
-			ProxyQBuffer().SetData(data);
+			((QBuffer) interceptor).SetData(data);
 		}
 		[SmokeMethod("setData", "(const char*, int)", "$$")]
 		public void SetData(string data, int len) {
-			ProxyQBuffer().SetData(data,len);
+			((QBuffer) interceptor).SetData(data,len);
 		}
 		[SmokeMethod("data", "() const", "")]
 		public QByteArray Data() {
-			return ProxyQBuffer().Data();
+			return ((QBuffer) interceptor).Data();
 		}
 		[SmokeMethod("open", "(OpenMode)", "$")]
 		public override bool Open(int openMode) {
-			return ProxyQBuffer().Open(openMode);
+			return ((QBuffer) interceptor).Open(openMode);
 		}
 		[SmokeMethod("close", "()", "")]
 		public override void Close() {
-			ProxyQBuffer().Close();
+			((QBuffer) interceptor).Close();
 		}
 		[SmokeMethod("size", "() const", "")]
 		public override long Size() {
-			return ProxyQBuffer().Size();
+			return ((QBuffer) interceptor).Size();
 		}
 		[SmokeMethod("pos", "() const", "")]
 		public override long Pos() {
-			return ProxyQBuffer().Pos();
+			return ((QBuffer) interceptor).Pos();
 		}
 		[SmokeMethod("seek", "(qint64)", "$")]
 		public override bool Seek(long off) {
-			return ProxyQBuffer().Seek(off);
+			return ((QBuffer) interceptor).Seek(off);
 		}
 		[SmokeMethod("atEnd", "() const", "")]
 		public override bool AtEnd() {
-			return ProxyQBuffer().AtEnd();
+			return ((QBuffer) interceptor).AtEnd();
 		}
 		[SmokeMethod("canReadLine", "() const", "")]
 		public override bool CanReadLine() {
-			return ProxyQBuffer().CanReadLine();
+			return ((QBuffer) interceptor).CanReadLine();
 		}
 		[SmokeMethod("readData", "(char*, qint64)", "$$")]
 		protected override long ReadData(string data, long maxlen) {
-			return ProxyQBuffer().ReadData(data,maxlen);
+			return ((QBuffer) interceptor).ReadData(data,maxlen);
 		}
 		[SmokeMethod("writeData", "(const char*, qint64)", "$$")]
 		protected override long WriteData(string data, long len) {
-			return ProxyQBuffer().WriteData(data,len);
+			return ((QBuffer) interceptor).WriteData(data,len);
 		}
 		~QBuffer() {
 			DisposeQBuffer();
@@ -124,13 +118,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QBuffer", "()", "")]
 		private void DisposeQBuffer() {
-			ProxyQBuffer().DisposeQBuffer();
+			((QBuffer) interceptor).DisposeQBuffer();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQBuffer().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQBuffer().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQBufferSignals Emit {
 			get { return (IQBufferSignals) Q_EMIT; }

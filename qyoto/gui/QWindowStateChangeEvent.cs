@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QWindowStateChangeEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QWindowStateChangeEvent), this);
-			_interceptor = (QWindowStateChangeEvent) realProxy.GetTransparentProxy();
-		}
-		private QWindowStateChangeEvent ProxyQWindowStateChangeEvent() {
-			return (QWindowStateChangeEvent) _interceptor;
+			interceptor = (QWindowStateChangeEvent) realProxy.GetTransparentProxy();
 		}
 		public QWindowStateChangeEvent(int aOldState) : this((Type) null) {
 			CreateProxy();
@@ -19,7 +16,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QWindowStateChangeEvent", "(Qt::WindowStates)", "$")]
 		private void NewQWindowStateChangeEvent(int aOldState) {
-			ProxyQWindowStateChangeEvent().NewQWindowStateChangeEvent(aOldState);
+			((QWindowStateChangeEvent) interceptor).NewQWindowStateChangeEvent(aOldState);
 		}
 		public QWindowStateChangeEvent(int aOldState, bool isOverride) : this((Type) null) {
 			CreateProxy();
@@ -27,15 +24,15 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QWindowStateChangeEvent", "(Qt::WindowStates, bool)", "$$")]
 		private void NewQWindowStateChangeEvent(int aOldState, bool isOverride) {
-			ProxyQWindowStateChangeEvent().NewQWindowStateChangeEvent(aOldState,isOverride);
+			((QWindowStateChangeEvent) interceptor).NewQWindowStateChangeEvent(aOldState,isOverride);
 		}
 		[SmokeMethod("oldState", "() const", "")]
 		public int OldState() {
-			return ProxyQWindowStateChangeEvent().OldState();
+			return ((QWindowStateChangeEvent) interceptor).OldState();
 		}
 		[SmokeMethod("isOverride", "() const", "")]
 		public bool IsOverride() {
-			return ProxyQWindowStateChangeEvent().IsOverride();
+			return ((QWindowStateChangeEvent) interceptor).IsOverride();
 		}
 		~QWindowStateChangeEvent() {
 			DisposeQWindowStateChangeEvent();
@@ -45,7 +42,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QWindowStateChangeEvent", "()", "")]
 		private void DisposeQWindowStateChangeEvent() {
-			ProxyQWindowStateChangeEvent().DisposeQWindowStateChangeEvent();
+			((QWindowStateChangeEvent) interceptor).DisposeQWindowStateChangeEvent();
 		}
 	}
 }

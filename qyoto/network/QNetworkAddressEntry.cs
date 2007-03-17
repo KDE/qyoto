@@ -5,15 +5,12 @@ namespace Qyoto {
 
 	[SmokeClass("QNetworkAddressEntry")]
 	public class QNetworkAddressEntry : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QNetworkAddressEntry interceptor = null;
+		private IntPtr smokeObject;
 		protected QNetworkAddressEntry(Type dummy) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QNetworkAddressEntry), this);
-			_interceptor = (QNetworkAddressEntry) realProxy.GetTransparentProxy();
-		}
-		private QNetworkAddressEntry ProxyQNetworkAddressEntry() {
-			return (QNetworkAddressEntry) _interceptor;
+			interceptor = (QNetworkAddressEntry) realProxy.GetTransparentProxy();
 		}
 		public QNetworkAddressEntry() : this((Type) null) {
 			CreateProxy();
@@ -21,7 +18,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QNetworkAddressEntry", "()", "")]
 		private void NewQNetworkAddressEntry() {
-			ProxyQNetworkAddressEntry().NewQNetworkAddressEntry();
+			((QNetworkAddressEntry) interceptor).NewQNetworkAddressEntry();
 		}
 		public QNetworkAddressEntry(QNetworkAddressEntry other) : this((Type) null) {
 			CreateProxy();
@@ -29,31 +26,31 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QNetworkAddressEntry", "(const QNetworkAddressEntry&)", "#")]
 		private void NewQNetworkAddressEntry(QNetworkAddressEntry other) {
-			ProxyQNetworkAddressEntry().NewQNetworkAddressEntry(other);
+			((QNetworkAddressEntry) interceptor).NewQNetworkAddressEntry(other);
 		}
 		[SmokeMethod("ip", "() const", "")]
 		public QHostAddress Ip() {
-			return ProxyQNetworkAddressEntry().Ip();
+			return ((QNetworkAddressEntry) interceptor).Ip();
 		}
 		[SmokeMethod("setIp", "(const QHostAddress&)", "#")]
 		public void SetIp(QHostAddress newIp) {
-			ProxyQNetworkAddressEntry().SetIp(newIp);
+			((QNetworkAddressEntry) interceptor).SetIp(newIp);
 		}
 		[SmokeMethod("netmask", "() const", "")]
 		public QHostAddress Netmask() {
-			return ProxyQNetworkAddressEntry().Netmask();
+			return ((QNetworkAddressEntry) interceptor).Netmask();
 		}
 		[SmokeMethod("setNetmask", "(const QHostAddress&)", "#")]
 		public void SetNetmask(QHostAddress newNetmask) {
-			ProxyQNetworkAddressEntry().SetNetmask(newNetmask);
+			((QNetworkAddressEntry) interceptor).SetNetmask(newNetmask);
 		}
 		[SmokeMethod("broadcast", "() const", "")]
 		public QHostAddress Broadcast() {
-			return ProxyQNetworkAddressEntry().Broadcast();
+			return ((QNetworkAddressEntry) interceptor).Broadcast();
 		}
 		[SmokeMethod("setBroadcast", "(const QHostAddress&)", "#")]
 		public void SetBroadcast(QHostAddress newBroadcast) {
-			ProxyQNetworkAddressEntry().SetBroadcast(newBroadcast);
+			((QNetworkAddressEntry) interceptor).SetBroadcast(newBroadcast);
 		}
 		~QNetworkAddressEntry() {
 			DisposeQNetworkAddressEntry();
@@ -63,7 +60,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QNetworkAddressEntry", "()", "")]
 		private void DisposeQNetworkAddressEntry() {
-			ProxyQNetworkAddressEntry().DisposeQNetworkAddressEntry();
+			((QNetworkAddressEntry) interceptor).DisposeQNetworkAddressEntry();
 		}
 	}
 }

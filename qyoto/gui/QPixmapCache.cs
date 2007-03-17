@@ -5,8 +5,8 @@ namespace Qyoto {
 
 	[SmokeClass("QPixmapCache")]
 	public class QPixmapCache : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QPixmapCache interceptor = null;
+		private IntPtr smokeObject;
 		protected QPixmapCache(Type dummy) {}
 		[SmokeClass("QPixmapCache")]
 		interface IQPixmapCacheProxy {
@@ -27,18 +27,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPixmapCache), this);
-			_interceptor = (QPixmapCache) realProxy.GetTransparentProxy();
+			interceptor = (QPixmapCache) realProxy.GetTransparentProxy();
 		}
-		private QPixmapCache ProxyQPixmapCache() {
-			return (QPixmapCache) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQPixmapCacheProxy staticInterceptor = null;
 		static QPixmapCache() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQPixmapCacheProxy), null);
-			_staticInterceptor = (IQPixmapCacheProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQPixmapCacheProxy StaticQPixmapCache() {
-			return (IQPixmapCacheProxy) _staticInterceptor;
+			staticInterceptor = (IQPixmapCacheProxy) realProxy.GetTransparentProxy();
 		}
 		public QPixmapCache() : this((Type) null) {
 			CreateProxy();
@@ -46,7 +40,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QPixmapCache", "()", "")]
 		private void NewQPixmapCache() {
-			ProxyQPixmapCache().NewQPixmapCache();
+			((QPixmapCache) interceptor).NewQPixmapCache();
 		}
 		~QPixmapCache() {
 			DisposeQPixmapCache();
@@ -56,28 +50,28 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QPixmapCache", "()", "")]
 		private void DisposeQPixmapCache() {
-			ProxyQPixmapCache().DisposeQPixmapCache();
+			((QPixmapCache) interceptor).DisposeQPixmapCache();
 		}
 		public static int CacheLimit() {
-			return StaticQPixmapCache().CacheLimit();
+			return staticInterceptor.CacheLimit();
 		}
 		public static void SetCacheLimit(int arg1) {
-			StaticQPixmapCache().SetCacheLimit(arg1);
+			staticInterceptor.SetCacheLimit(arg1);
 		}
 		public static QPixmap Find(string key) {
-			return StaticQPixmapCache().Find(key);
+			return staticInterceptor.Find(key);
 		}
 		public static bool Find(string key, QPixmap arg2) {
-			return StaticQPixmapCache().Find(key,arg2);
+			return staticInterceptor.Find(key,arg2);
 		}
 		public static bool Insert(string key, QPixmap arg2) {
-			return StaticQPixmapCache().Insert(key,arg2);
+			return staticInterceptor.Insert(key,arg2);
 		}
 		public static void Remove(string key) {
-			StaticQPixmapCache().Remove(key);
+			staticInterceptor.Remove(key);
 		}
 		public static void Clear() {
-			StaticQPixmapCache().Clear();
+			staticInterceptor.Clear();
 		}
 	}
 }

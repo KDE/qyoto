@@ -5,8 +5,8 @@ namespace Qyoto {
 
 	[SmokeClass("QTextDocumentFragment")]
 	public class QTextDocumentFragment : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QTextDocumentFragment interceptor = null;
+		private IntPtr smokeObject;
 		protected QTextDocumentFragment(Type dummy) {}
 		[SmokeClass("QTextDocumentFragment")]
 		interface IQTextDocumentFragmentProxy {
@@ -19,18 +19,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextDocumentFragment), this);
-			_interceptor = (QTextDocumentFragment) realProxy.GetTransparentProxy();
+			interceptor = (QTextDocumentFragment) realProxy.GetTransparentProxy();
 		}
-		private QTextDocumentFragment ProxyQTextDocumentFragment() {
-			return (QTextDocumentFragment) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQTextDocumentFragmentProxy staticInterceptor = null;
 		static QTextDocumentFragment() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTextDocumentFragmentProxy), null);
-			_staticInterceptor = (IQTextDocumentFragmentProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQTextDocumentFragmentProxy StaticQTextDocumentFragment() {
-			return (IQTextDocumentFragmentProxy) _staticInterceptor;
+			staticInterceptor = (IQTextDocumentFragmentProxy) realProxy.GetTransparentProxy();
 		}
 		public QTextDocumentFragment() : this((Type) null) {
 			CreateProxy();
@@ -38,7 +32,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTextDocumentFragment", "()", "")]
 		private void NewQTextDocumentFragment() {
-			ProxyQTextDocumentFragment().NewQTextDocumentFragment();
+			((QTextDocumentFragment) interceptor).NewQTextDocumentFragment();
 		}
 		public QTextDocumentFragment(QTextDocument document) : this((Type) null) {
 			CreateProxy();
@@ -46,7 +40,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTextDocumentFragment", "(const QTextDocument*)", "#")]
 		private void NewQTextDocumentFragment(QTextDocument document) {
-			ProxyQTextDocumentFragment().NewQTextDocumentFragment(document);
+			((QTextDocumentFragment) interceptor).NewQTextDocumentFragment(document);
 		}
 		public QTextDocumentFragment(QTextCursor range) : this((Type) null) {
 			CreateProxy();
@@ -54,7 +48,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTextDocumentFragment", "(const QTextCursor&)", "#")]
 		private void NewQTextDocumentFragment(QTextCursor range) {
-			ProxyQTextDocumentFragment().NewQTextDocumentFragment(range);
+			((QTextDocumentFragment) interceptor).NewQTextDocumentFragment(range);
 		}
 		public QTextDocumentFragment(QTextDocumentFragment rhs) : this((Type) null) {
 			CreateProxy();
@@ -62,23 +56,23 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTextDocumentFragment", "(const QTextDocumentFragment&)", "#")]
 		private void NewQTextDocumentFragment(QTextDocumentFragment rhs) {
-			ProxyQTextDocumentFragment().NewQTextDocumentFragment(rhs);
+			((QTextDocumentFragment) interceptor).NewQTextDocumentFragment(rhs);
 		}
 		[SmokeMethod("isEmpty", "() const", "")]
 		public bool IsEmpty() {
-			return ProxyQTextDocumentFragment().IsEmpty();
+			return ((QTextDocumentFragment) interceptor).IsEmpty();
 		}
 		[SmokeMethod("toPlainText", "() const", "")]
 		public string ToPlainText() {
-			return ProxyQTextDocumentFragment().ToPlainText();
+			return ((QTextDocumentFragment) interceptor).ToPlainText();
 		}
 		[SmokeMethod("toHtml", "() const", "")]
 		public string ToHtml() {
-			return ProxyQTextDocumentFragment().ToHtml();
+			return ((QTextDocumentFragment) interceptor).ToHtml();
 		}
 		[SmokeMethod("toHtml", "(const QByteArray&) const", "#")]
 		public string ToHtml(QByteArray encoding) {
-			return ProxyQTextDocumentFragment().ToHtml(encoding);
+			return ((QTextDocumentFragment) interceptor).ToHtml(encoding);
 		}
 		~QTextDocumentFragment() {
 			DisposeQTextDocumentFragment();
@@ -88,16 +82,16 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QTextDocumentFragment", "()", "")]
 		private void DisposeQTextDocumentFragment() {
-			ProxyQTextDocumentFragment().DisposeQTextDocumentFragment();
+			((QTextDocumentFragment) interceptor).DisposeQTextDocumentFragment();
 		}
 		public static QTextDocumentFragment FromPlainText(string plainText) {
-			return StaticQTextDocumentFragment().FromPlainText(plainText);
+			return staticInterceptor.FromPlainText(plainText);
 		}
 		public static QTextDocumentFragment FromHtml(string html) {
-			return StaticQTextDocumentFragment().FromHtml(html);
+			return staticInterceptor.FromHtml(html);
 		}
 		public static QTextDocumentFragment FromHtml(string html, QTextDocument resourceProvider) {
-			return StaticQTextDocumentFragment().FromHtml(html,resourceProvider);
+			return staticInterceptor.FromHtml(html,resourceProvider);
 		}
 	}
 }

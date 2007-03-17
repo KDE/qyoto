@@ -5,33 +5,30 @@ namespace Qyoto {
 
 	[SmokeClass("QIconEngine")]
 	public abstract class QIconEngine : MarshalByRefObject {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QIconEngine interceptor = null;
+		private IntPtr smokeObject;
 		protected QIconEngine(Type dummy) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QIconEngine), this);
-			_interceptor = (QIconEngine) realProxy.GetTransparentProxy();
-		}
-		private QIconEngine ProxyQIconEngine() {
-			return (QIconEngine) _interceptor;
+			interceptor = (QIconEngine) realProxy.GetTransparentProxy();
 		}
 		[SmokeMethod("paint", "(QPainter*, const QRect&, QIcon::Mode, QIcon::State)", "##$$")]
 		public abstract void Paint(QPainter painter, QRect rect, QIcon.Mode mode, QIcon.State state);
 		[SmokeMethod("actualSize", "(const QSize&, QIcon::Mode, QIcon::State)", "#$$")]
 		public virtual QSize ActualSize(QSize size, QIcon.Mode mode, QIcon.State state) {
-			return ProxyQIconEngine().ActualSize(size,mode,state);
+			return ((QIconEngine) interceptor).ActualSize(size,mode,state);
 		}
 		[SmokeMethod("pixmap", "(const QSize&, QIcon::Mode, QIcon::State)", "#$$")]
 		public virtual QPixmap Pixmap(QSize size, QIcon.Mode mode, QIcon.State state) {
-			return ProxyQIconEngine().Pixmap(size,mode,state);
+			return ((QIconEngine) interceptor).Pixmap(size,mode,state);
 		}
 		[SmokeMethod("addPixmap", "(const QPixmap&, QIcon::Mode, QIcon::State)", "#$$")]
 		public virtual void AddPixmap(QPixmap pixmap, QIcon.Mode mode, QIcon.State state) {
-			ProxyQIconEngine().AddPixmap(pixmap,mode,state);
+			((QIconEngine) interceptor).AddPixmap(pixmap,mode,state);
 		}
 		[SmokeMethod("addFile", "(const QString&, const QSize&, QIcon::Mode, QIcon::State)", "$#$$")]
 		public virtual void AddFile(string fileName, QSize size, QIcon.Mode mode, QIcon.State state) {
-			ProxyQIconEngine().AddFile(fileName,size,mode,state);
+			((QIconEngine) interceptor).AddFile(fileName,size,mode,state);
 		}
 		public QIconEngine() : this((Type) null) {
 			CreateProxy();
@@ -39,7 +36,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QIconEngine", "()", "")]
 		private void NewQIconEngine() {
-			ProxyQIconEngine().NewQIconEngine();
+			((QIconEngine) interceptor).NewQIconEngine();
 		}
 	}
 }

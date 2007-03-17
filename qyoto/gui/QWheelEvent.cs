@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QWheelEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QWheelEvent), this);
-			_interceptor = (QWheelEvent) realProxy.GetTransparentProxy();
-		}
-		private QWheelEvent ProxyQWheelEvent() {
-			return (QWheelEvent) _interceptor;
+			interceptor = (QWheelEvent) realProxy.GetTransparentProxy();
 		}
 		public QWheelEvent(QPoint pos, int delta, int buttons, int modifiers, Qt.Orientation orient) : this((Type) null) {
 			CreateProxy();
@@ -19,7 +16,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QWheelEvent", "(const QPoint&, int, Qt::MouseButtons, Qt::KeyboardModifiers, Qt::Orientation)", "#$$$$")]
 		private void NewQWheelEvent(QPoint pos, int delta, int buttons, int modifiers, Qt.Orientation orient) {
-			ProxyQWheelEvent().NewQWheelEvent(pos,delta,buttons,modifiers,orient);
+			((QWheelEvent) interceptor).NewQWheelEvent(pos,delta,buttons,modifiers,orient);
 		}
 		public QWheelEvent(QPoint pos, int delta, int buttons, int modifiers) : this((Type) null) {
 			CreateProxy();
@@ -27,7 +24,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QWheelEvent", "(const QPoint&, int, Qt::MouseButtons, Qt::KeyboardModifiers)", "#$$$")]
 		private void NewQWheelEvent(QPoint pos, int delta, int buttons, int modifiers) {
-			ProxyQWheelEvent().NewQWheelEvent(pos,delta,buttons,modifiers);
+			((QWheelEvent) interceptor).NewQWheelEvent(pos,delta,buttons,modifiers);
 		}
 		public QWheelEvent(QPoint pos, QPoint globalPos, int delta, int buttons, int modifiers, Qt.Orientation orient) : this((Type) null) {
 			CreateProxy();
@@ -35,7 +32,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QWheelEvent", "(const QPoint&, const QPoint&, int, Qt::MouseButtons, Qt::KeyboardModifiers, Qt::Orientation)", "##$$$$")]
 		private void NewQWheelEvent(QPoint pos, QPoint globalPos, int delta, int buttons, int modifiers, Qt.Orientation orient) {
-			ProxyQWheelEvent().NewQWheelEvent(pos,globalPos,delta,buttons,modifiers,orient);
+			((QWheelEvent) interceptor).NewQWheelEvent(pos,globalPos,delta,buttons,modifiers,orient);
 		}
 		public QWheelEvent(QPoint pos, QPoint globalPos, int delta, int buttons, int modifiers) : this((Type) null) {
 			CreateProxy();
@@ -43,43 +40,43 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QWheelEvent", "(const QPoint&, const QPoint&, int, Qt::MouseButtons, Qt::KeyboardModifiers)", "##$$$")]
 		private void NewQWheelEvent(QPoint pos, QPoint globalPos, int delta, int buttons, int modifiers) {
-			ProxyQWheelEvent().NewQWheelEvent(pos,globalPos,delta,buttons,modifiers);
+			((QWheelEvent) interceptor).NewQWheelEvent(pos,globalPos,delta,buttons,modifiers);
 		}
 		[SmokeMethod("delta", "() const", "")]
 		public int Delta() {
-			return ProxyQWheelEvent().Delta();
+			return ((QWheelEvent) interceptor).Delta();
 		}
 		[SmokeMethod("pos", "() const", "")]
 		public QPoint Pos() {
-			return ProxyQWheelEvent().Pos();
+			return ((QWheelEvent) interceptor).Pos();
 		}
 		[SmokeMethod("globalPos", "() const", "")]
 		public QPoint GlobalPos() {
-			return ProxyQWheelEvent().GlobalPos();
+			return ((QWheelEvent) interceptor).GlobalPos();
 		}
 		[SmokeMethod("x", "() const", "")]
 		public int X() {
-			return ProxyQWheelEvent().X();
+			return ((QWheelEvent) interceptor).X();
 		}
 		[SmokeMethod("y", "() const", "")]
 		public int Y() {
-			return ProxyQWheelEvent().Y();
+			return ((QWheelEvent) interceptor).Y();
 		}
 		[SmokeMethod("globalX", "() const", "")]
 		public int GlobalX() {
-			return ProxyQWheelEvent().GlobalX();
+			return ((QWheelEvent) interceptor).GlobalX();
 		}
 		[SmokeMethod("globalY", "() const", "")]
 		public int GlobalY() {
-			return ProxyQWheelEvent().GlobalY();
+			return ((QWheelEvent) interceptor).GlobalY();
 		}
 		[SmokeMethod("buttons", "() const", "")]
 		public int Buttons() {
-			return ProxyQWheelEvent().Buttons();
+			return ((QWheelEvent) interceptor).Buttons();
 		}
 		[SmokeMethod("orientation", "() const", "")]
 		public Qt.Orientation Orientation() {
-			return ProxyQWheelEvent().Orientation();
+			return ((QWheelEvent) interceptor).Orientation();
 		}
 		~QWheelEvent() {
 			DisposeQWheelEvent();
@@ -89,7 +86,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QWheelEvent", "()", "")]
 		private void DisposeQWheelEvent() {
-			ProxyQWheelEvent().DisposeQWheelEvent();
+			((QWheelEvent) interceptor).DisposeQWheelEvent();
 		}
 	}
 }

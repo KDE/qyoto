@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QStyleOptionViewItemV2(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionViewItemV2), this);
-			_interceptor = (QStyleOptionViewItemV2) realProxy.GetTransparentProxy();
-		}
-		private QStyleOptionViewItemV2 ProxyQStyleOptionViewItemV2() {
-			return (QStyleOptionViewItemV2) _interceptor;
+			interceptor = (QStyleOptionViewItemV2) realProxy.GetTransparentProxy();
 		}
 		public enum StyleOptionVersion {
 			Version = 2,
@@ -27,7 +24,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionViewItemV2", "()", "")]
 		private void NewQStyleOptionViewItemV2() {
-			ProxyQStyleOptionViewItemV2().NewQStyleOptionViewItemV2();
+			((QStyleOptionViewItemV2) interceptor).NewQStyleOptionViewItemV2();
 		}
 		public QStyleOptionViewItemV2(QStyleOptionViewItemV2 other) : this((Type) null) {
 			CreateProxy();
@@ -35,7 +32,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionViewItemV2", "(const QStyleOptionViewItemV2&)", "#")]
 		private void NewQStyleOptionViewItemV2(QStyleOptionViewItemV2 other) {
-			ProxyQStyleOptionViewItemV2().NewQStyleOptionViewItemV2(other);
+			((QStyleOptionViewItemV2) interceptor).NewQStyleOptionViewItemV2(other);
 		}
 		public QStyleOptionViewItemV2(QStyleOptionViewItem other) : this((Type) null) {
 			CreateProxy();
@@ -43,7 +40,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionViewItemV2", "(const QStyleOptionViewItem&)", "#")]
 		private void NewQStyleOptionViewItemV2(QStyleOptionViewItem other) {
-			ProxyQStyleOptionViewItemV2().NewQStyleOptionViewItemV2(other);
+			((QStyleOptionViewItemV2) interceptor).NewQStyleOptionViewItemV2(other);
 		}
 		public QStyleOptionViewItemV2(int version) : this((Type) null) {
 			CreateProxy();
@@ -51,7 +48,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionViewItemV2", "(int)", "$")]
 		private void NewQStyleOptionViewItemV2(int version) {
-			ProxyQStyleOptionViewItemV2().NewQStyleOptionViewItemV2(version);
+			((QStyleOptionViewItemV2) interceptor).NewQStyleOptionViewItemV2(version);
 		}
 		~QStyleOptionViewItemV2() {
 			DisposeQStyleOptionViewItemV2();
@@ -61,7 +58,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QStyleOptionViewItemV2", "()", "")]
 		private void DisposeQStyleOptionViewItemV2() {
-			ProxyQStyleOptionViewItemV2().DisposeQStyleOptionViewItemV2();
+			((QStyleOptionViewItemV2) interceptor).DisposeQStyleOptionViewItemV2();
 		}
 	}
 }

@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QStyleOptionProgressBar(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionProgressBar), this);
-			_interceptor = (QStyleOptionProgressBar) realProxy.GetTransparentProxy();
-		}
-		private QStyleOptionProgressBar ProxyQStyleOptionProgressBar() {
-			return (QStyleOptionProgressBar) _interceptor;
+			interceptor = (QStyleOptionProgressBar) realProxy.GetTransparentProxy();
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_ProgressBar,
@@ -25,7 +22,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionProgressBar", "()", "")]
 		private void NewQStyleOptionProgressBar() {
-			ProxyQStyleOptionProgressBar().NewQStyleOptionProgressBar();
+			((QStyleOptionProgressBar) interceptor).NewQStyleOptionProgressBar();
 		}
 		public QStyleOptionProgressBar(QStyleOptionProgressBar other) : this((Type) null) {
 			CreateProxy();
@@ -33,7 +30,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionProgressBar", "(const QStyleOptionProgressBar&)", "#")]
 		private void NewQStyleOptionProgressBar(QStyleOptionProgressBar other) {
-			ProxyQStyleOptionProgressBar().NewQStyleOptionProgressBar(other);
+			((QStyleOptionProgressBar) interceptor).NewQStyleOptionProgressBar(other);
 		}
 		public QStyleOptionProgressBar(int version) : this((Type) null) {
 			CreateProxy();
@@ -41,7 +38,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionProgressBar", "(int)", "$")]
 		private void NewQStyleOptionProgressBar(int version) {
-			ProxyQStyleOptionProgressBar().NewQStyleOptionProgressBar(version);
+			((QStyleOptionProgressBar) interceptor).NewQStyleOptionProgressBar(version);
 		}
 		~QStyleOptionProgressBar() {
 			DisposeQStyleOptionProgressBar();
@@ -51,7 +48,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QStyleOptionProgressBar", "()", "")]
 		private void DisposeQStyleOptionProgressBar() {
-			ProxyQStyleOptionProgressBar().DisposeQStyleOptionProgressBar();
+			((QStyleOptionProgressBar) interceptor).DisposeQStyleOptionProgressBar();
 		}
 	}
 }

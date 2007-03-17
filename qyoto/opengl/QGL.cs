@@ -4,7 +4,7 @@ namespace Qyoto {
 	using System;
 
 	public class QGL : MarshalByRefObject {
-		protected Object _interceptor = null;
+		protected QGL interceptor = null;
 		public enum FormatOption {
 			DoubleBuffer = 0x0001,
 			DepthBuffer = 0x0002,

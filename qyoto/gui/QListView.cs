@@ -18,18 +18,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QListView), this);
-			_interceptor = (QListView) realProxy.GetTransparentProxy();
+			interceptor = (QListView) realProxy.GetTransparentProxy();
 		}
-		private QListView ProxyQListView() {
-			return (QListView) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQListViewProxy staticInterceptor = null;
 		static QListView() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQListViewProxy), null);
-			_staticInterceptor = (IQListViewProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQListViewProxy StaticQListView() {
-			return (IQListViewProxy) _staticInterceptor;
+			staticInterceptor = (IQListViewProxy) realProxy.GetTransparentProxy();
 		}
 		public enum Movement {
 			Static = 0,
@@ -118,7 +112,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QListView", "(QWidget*)", "#")]
 		private void NewQListView(QWidget parent) {
-			ProxyQListView().NewQListView(parent);
+			((QListView) interceptor).NewQListView(parent);
 		}
 		public QListView() : this((Type) null) {
 			CreateProxy();
@@ -126,167 +120,167 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QListView", "()", "")]
 		private void NewQListView() {
-			ProxyQListView().NewQListView();
+			((QListView) interceptor).NewQListView();
 		}
 		[SmokeMethod("setWrapping", "(bool)", "$")]
 		public void SetWrapping(bool enable) {
-			ProxyQListView().SetWrapping(enable);
+			((QListView) interceptor).SetWrapping(enable);
 		}
 		[SmokeMethod("clearPropertyFlags", "()", "")]
 		public void ClearPropertyFlags() {
-			ProxyQListView().ClearPropertyFlags();
+			((QListView) interceptor).ClearPropertyFlags();
 		}
 		[SmokeMethod("isRowHidden", "(int) const", "$")]
 		public bool IsRowHidden(int row) {
-			return ProxyQListView().IsRowHidden(row);
+			return ((QListView) interceptor).IsRowHidden(row);
 		}
 		[SmokeMethod("setRowHidden", "(int, bool)", "$$")]
 		public void SetRowHidden(int row, bool hide) {
-			ProxyQListView().SetRowHidden(row,hide);
+			((QListView) interceptor).SetRowHidden(row,hide);
 		}
 		[SmokeMethod("visualRect", "(const QModelIndex&) const", "#")]
 		public override QRect VisualRect(QModelIndex index) {
-			return ProxyQListView().VisualRect(index);
+			return ((QListView) interceptor).VisualRect(index);
 		}
 		[SmokeMethod("scrollTo", "(const QModelIndex&, QAbstractItemView::ScrollHint)", "#$")]
 		public override void ScrollTo(QModelIndex index, QAbstractItemView.ScrollHint hint) {
-			ProxyQListView().ScrollTo(index,hint);
+			((QListView) interceptor).ScrollTo(index,hint);
 		}
 		[SmokeMethod("scrollTo", "(const QModelIndex&)", "#")]
 		public virtual void ScrollTo(QModelIndex index) {
-			ProxyQListView().ScrollTo(index);
+			((QListView) interceptor).ScrollTo(index);
 		}
 		[SmokeMethod("indexAt", "(const QPoint&) const", "#")]
 		public override QModelIndex IndexAt(QPoint p) {
-			return ProxyQListView().IndexAt(p);
+			return ((QListView) interceptor).IndexAt(p);
 		}
 		[SmokeMethod("doItemsLayout", "()", "")]
 		public override void DoItemsLayout() {
-			ProxyQListView().DoItemsLayout();
+			((QListView) interceptor).DoItemsLayout();
 		}
 		[SmokeMethod("reset", "()", "")]
 		public override void Reset() {
-			ProxyQListView().Reset();
+			((QListView) interceptor).Reset();
 		}
 		[SmokeMethod("setRootIndex", "(const QModelIndex&)", "#")]
 		public override void SetRootIndex(QModelIndex index) {
-			ProxyQListView().SetRootIndex(index);
+			((QListView) interceptor).SetRootIndex(index);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent e) {
-			return ProxyQListView().Event(e);
+			return ((QListView) interceptor).Event(e);
 		}
 		[SmokeMethod("scrollContentsBy", "(int, int)", "$$")]
 		protected override void ScrollContentsBy(int dx, int dy) {
-			ProxyQListView().ScrollContentsBy(dx,dy);
+			((QListView) interceptor).ScrollContentsBy(dx,dy);
 		}
 		[SmokeMethod("resizeContents", "(int, int)", "$$")]
 		protected void ResizeContents(int width, int height) {
-			ProxyQListView().ResizeContents(width,height);
+			((QListView) interceptor).ResizeContents(width,height);
 		}
 		[SmokeMethod("contentsSize", "() const", "")]
 		protected QSize ContentsSize() {
-			return ProxyQListView().ContentsSize();
+			return ((QListView) interceptor).ContentsSize();
 		}
 		[SmokeMethod("dataChanged", "(const QModelIndex&, const QModelIndex&)", "##")]
 		protected override void DataChanged(QModelIndex topLeft, QModelIndex bottomRight) {
-			ProxyQListView().DataChanged(topLeft,bottomRight);
+			((QListView) interceptor).DataChanged(topLeft,bottomRight);
 		}
 		[SmokeMethod("rowsInserted", "(const QModelIndex&, int, int)", "#$$")]
 		protected override void RowsInserted(QModelIndex parent, int start, int end) {
-			ProxyQListView().RowsInserted(parent,start,end);
+			((QListView) interceptor).RowsInserted(parent,start,end);
 		}
 		[SmokeMethod("rowsAboutToBeRemoved", "(const QModelIndex&, int, int)", "#$$")]
 		protected override void RowsAboutToBeRemoved(QModelIndex parent, int start, int end) {
-			ProxyQListView().RowsAboutToBeRemoved(parent,start,end);
+			((QListView) interceptor).RowsAboutToBeRemoved(parent,start,end);
 		}
 		[SmokeMethod("mouseMoveEvent", "(QMouseEvent*)", "#")]
 		protected override void MouseMoveEvent(QMouseEvent e) {
-			ProxyQListView().MouseMoveEvent(e);
+			((QListView) interceptor).MouseMoveEvent(e);
 		}
 		[SmokeMethod("mouseReleaseEvent", "(QMouseEvent*)", "#")]
 		protected override void MouseReleaseEvent(QMouseEvent e) {
-			ProxyQListView().MouseReleaseEvent(e);
+			((QListView) interceptor).MouseReleaseEvent(e);
 		}
 		[SmokeMethod("timerEvent", "(QTimerEvent*)", "#")]
 		protected override void TimerEvent(QTimerEvent e) {
-			ProxyQListView().TimerEvent(e);
+			((QListView) interceptor).TimerEvent(e);
 		}
 		[SmokeMethod("resizeEvent", "(QResizeEvent*)", "#")]
 		protected override void ResizeEvent(QResizeEvent e) {
-			ProxyQListView().ResizeEvent(e);
+			((QListView) interceptor).ResizeEvent(e);
 		}
 		[SmokeMethod("dragMoveEvent", "(QDragMoveEvent*)", "#")]
 		protected override void DragMoveEvent(QDragMoveEvent e) {
-			ProxyQListView().DragMoveEvent(e);
+			((QListView) interceptor).DragMoveEvent(e);
 		}
 		[SmokeMethod("dragLeaveEvent", "(QDragLeaveEvent*)", "#")]
 		protected override void DragLeaveEvent(QDragLeaveEvent e) {
-			ProxyQListView().DragLeaveEvent(e);
+			((QListView) interceptor).DragLeaveEvent(e);
 		}
 		[SmokeMethod("dropEvent", "(QDropEvent*)", "#")]
 		protected override void DropEvent(QDropEvent e) {
-			ProxyQListView().DropEvent(e);
+			((QListView) interceptor).DropEvent(e);
 		}
 		[SmokeMethod("startDrag", "(Qt::DropActions)", "$")]
 		protected override void StartDrag(int supportedActions) {
-			ProxyQListView().StartDrag(supportedActions);
+			((QListView) interceptor).StartDrag(supportedActions);
 		}
 		[SmokeMethod("internalDrop", "(QDropEvent*)", "#")]
 		protected void InternalDrop(QDropEvent e) {
-			ProxyQListView().InternalDrop(e);
+			((QListView) interceptor).InternalDrop(e);
 		}
 		[SmokeMethod("internalDrag", "(Qt::DropActions)", "$")]
 		protected void InternalDrag(int supportedActions) {
-			ProxyQListView().InternalDrag(supportedActions);
+			((QListView) interceptor).InternalDrag(supportedActions);
 		}
 		[SmokeMethod("viewOptions", "() const", "")]
 		protected override QStyleOptionViewItem ViewOptions() {
-			return ProxyQListView().ViewOptions();
+			return ((QListView) interceptor).ViewOptions();
 		}
 		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
 		protected override void PaintEvent(QPaintEvent e) {
-			ProxyQListView().PaintEvent(e);
+			((QListView) interceptor).PaintEvent(e);
 		}
 		[SmokeMethod("horizontalOffset", "() const", "")]
 		protected override int HorizontalOffset() {
-			return ProxyQListView().HorizontalOffset();
+			return ((QListView) interceptor).HorizontalOffset();
 		}
 		[SmokeMethod("verticalOffset", "() const", "")]
 		protected override int VerticalOffset() {
-			return ProxyQListView().VerticalOffset();
+			return ((QListView) interceptor).VerticalOffset();
 		}
 		[SmokeMethod("moveCursor", "(QAbstractItemView::CursorAction, Qt::KeyboardModifiers)", "$$")]
 		protected override QModelIndex MoveCursor(QAbstractItemView.CursorAction cursorAction, int modifiers) {
-			return ProxyQListView().MoveCursor(cursorAction,modifiers);
+			return ((QListView) interceptor).MoveCursor(cursorAction,modifiers);
 		}
 		[SmokeMethod("rectForIndex", "(const QModelIndex&) const", "#")]
 		protected QRect RectForIndex(QModelIndex index) {
-			return ProxyQListView().RectForIndex(index);
+			return ((QListView) interceptor).RectForIndex(index);
 		}
 		[SmokeMethod("setPositionForIndex", "(const QPoint&, const QModelIndex&)", "##")]
 		protected void SetPositionForIndex(QPoint position, QModelIndex index) {
-			ProxyQListView().SetPositionForIndex(position,index);
+			((QListView) interceptor).SetPositionForIndex(position,index);
 		}
 		[SmokeMethod("setSelection", "(const QRect&, QItemSelectionModel::SelectionFlags)", "#$")]
 		protected override void SetSelection(QRect rect, int command) {
-			ProxyQListView().SetSelection(rect,command);
+			((QListView) interceptor).SetSelection(rect,command);
 		}
 		[SmokeMethod("visualRegionForSelection", "(const QItemSelection&) const", "#")]
 		protected override QRegion VisualRegionForSelection(QItemSelection selection) {
-			return ProxyQListView().VisualRegionForSelection(selection);
+			return ((QListView) interceptor).VisualRegionForSelection(selection);
 		}
 		[SmokeMethod("selectedIndexes", "() const", "")]
 		protected override List<QModelIndex> SelectedIndexes() {
-			return ProxyQListView().SelectedIndexes();
+			return ((QListView) interceptor).SelectedIndexes();
 		}
 		[SmokeMethod("updateGeometries", "()", "")]
 		protected override void UpdateGeometries() {
-			ProxyQListView().UpdateGeometries();
+			((QListView) interceptor).UpdateGeometries();
 		}
 		[SmokeMethod("isIndexHidden", "(const QModelIndex&) const", "#")]
 		protected override bool IsIndexHidden(QModelIndex index) {
-			return ProxyQListView().IsIndexHidden(index);
+			return ((QListView) interceptor).IsIndexHidden(index);
 		}
 		~QListView() {
 			DisposeQListView();
@@ -296,13 +290,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QListView", "()", "")]
 		private void DisposeQListView() {
-			ProxyQListView().DisposeQListView();
+			((QListView) interceptor).DisposeQListView();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQListView().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQListView().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQListViewSignals Emit {
 			get { return (IQListViewSignals) Q_EMIT; }

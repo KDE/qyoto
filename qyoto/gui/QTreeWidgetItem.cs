@@ -6,15 +6,12 @@ namespace Qyoto {
 
 	[SmokeClass("QTreeWidgetItem")]
 	public class QTreeWidgetItem : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QTreeWidgetItem interceptor = null;
+		private IntPtr smokeObject;
 		protected QTreeWidgetItem(Type dummy) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTreeWidgetItem), this);
-			_interceptor = (QTreeWidgetItem) realProxy.GetTransparentProxy();
-		}
-		private QTreeWidgetItem ProxyQTreeWidgetItem() {
-			return (QTreeWidgetItem) _interceptor;
+			interceptor = (QTreeWidgetItem) realProxy.GetTransparentProxy();
 		}
 		public enum ItemType {
 			Type = 0,
@@ -26,7 +23,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTreeWidgetItem", "(int)", "$")]
 		private void NewQTreeWidgetItem(int type) {
-			ProxyQTreeWidgetItem().NewQTreeWidgetItem(type);
+			((QTreeWidgetItem) interceptor).NewQTreeWidgetItem(type);
 		}
 		public QTreeWidgetItem() : this((Type) null) {
 			CreateProxy();
@@ -34,7 +31,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTreeWidgetItem", "()", "")]
 		private void NewQTreeWidgetItem() {
-			ProxyQTreeWidgetItem().NewQTreeWidgetItem();
+			((QTreeWidgetItem) interceptor).NewQTreeWidgetItem();
 		}
 		public QTreeWidgetItem(List<string> strings, int type) : this((Type) null) {
 			CreateProxy();
@@ -42,7 +39,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTreeWidgetItem", "(const QStringList&, int)", "?$")]
 		private void NewQTreeWidgetItem(List<string> strings, int type) {
-			ProxyQTreeWidgetItem().NewQTreeWidgetItem(strings,type);
+			((QTreeWidgetItem) interceptor).NewQTreeWidgetItem(strings,type);
 		}
 		public QTreeWidgetItem(List<string> strings) : this((Type) null) {
 			CreateProxy();
@@ -50,7 +47,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTreeWidgetItem", "(const QStringList&)", "?")]
 		private void NewQTreeWidgetItem(List<string> strings) {
-			ProxyQTreeWidgetItem().NewQTreeWidgetItem(strings);
+			((QTreeWidgetItem) interceptor).NewQTreeWidgetItem(strings);
 		}
 		public QTreeWidgetItem(QTreeWidget view, int type) : this((Type) null) {
 			CreateProxy();
@@ -58,7 +55,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTreeWidgetItem", "(QTreeWidget*, int)", "#$")]
 		private void NewQTreeWidgetItem(QTreeWidget view, int type) {
-			ProxyQTreeWidgetItem().NewQTreeWidgetItem(view,type);
+			((QTreeWidgetItem) interceptor).NewQTreeWidgetItem(view,type);
 		}
 		public QTreeWidgetItem(QTreeWidget view) : this((Type) null) {
 			CreateProxy();
@@ -66,7 +63,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTreeWidgetItem", "(QTreeWidget*)", "#")]
 		private void NewQTreeWidgetItem(QTreeWidget view) {
-			ProxyQTreeWidgetItem().NewQTreeWidgetItem(view);
+			((QTreeWidgetItem) interceptor).NewQTreeWidgetItem(view);
 		}
 		public QTreeWidgetItem(QTreeWidget view, List<string> strings, int type) : this((Type) null) {
 			CreateProxy();
@@ -74,7 +71,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTreeWidgetItem", "(QTreeWidget*, const QStringList&, int)", "#?$")]
 		private void NewQTreeWidgetItem(QTreeWidget view, List<string> strings, int type) {
-			ProxyQTreeWidgetItem().NewQTreeWidgetItem(view,strings,type);
+			((QTreeWidgetItem) interceptor).NewQTreeWidgetItem(view,strings,type);
 		}
 		public QTreeWidgetItem(QTreeWidget view, List<string> strings) : this((Type) null) {
 			CreateProxy();
@@ -82,7 +79,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTreeWidgetItem", "(QTreeWidget*, const QStringList&)", "#?")]
 		private void NewQTreeWidgetItem(QTreeWidget view, List<string> strings) {
-			ProxyQTreeWidgetItem().NewQTreeWidgetItem(view,strings);
+			((QTreeWidgetItem) interceptor).NewQTreeWidgetItem(view,strings);
 		}
 		public QTreeWidgetItem(QTreeWidget view, QTreeWidgetItem after, int type) : this((Type) null) {
 			CreateProxy();
@@ -90,7 +87,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTreeWidgetItem", "(QTreeWidget*, QTreeWidgetItem*, int)", "##$")]
 		private void NewQTreeWidgetItem(QTreeWidget view, QTreeWidgetItem after, int type) {
-			ProxyQTreeWidgetItem().NewQTreeWidgetItem(view,after,type);
+			((QTreeWidgetItem) interceptor).NewQTreeWidgetItem(view,after,type);
 		}
 		public QTreeWidgetItem(QTreeWidget view, QTreeWidgetItem after) : this((Type) null) {
 			CreateProxy();
@@ -98,7 +95,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTreeWidgetItem", "(QTreeWidget*, QTreeWidgetItem*)", "##")]
 		private void NewQTreeWidgetItem(QTreeWidget view, QTreeWidgetItem after) {
-			ProxyQTreeWidgetItem().NewQTreeWidgetItem(view,after);
+			((QTreeWidgetItem) interceptor).NewQTreeWidgetItem(view,after);
 		}
 		public QTreeWidgetItem(QTreeWidgetItem parent, int type) : this((Type) null) {
 			CreateProxy();
@@ -106,7 +103,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTreeWidgetItem", "(QTreeWidgetItem*, int)", "#$")]
 		private void NewQTreeWidgetItem(QTreeWidgetItem parent, int type) {
-			ProxyQTreeWidgetItem().NewQTreeWidgetItem(parent,type);
+			((QTreeWidgetItem) interceptor).NewQTreeWidgetItem(parent,type);
 		}
 		public QTreeWidgetItem(QTreeWidgetItem parent) : this((Type) null) {
 			CreateProxy();
@@ -114,7 +111,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTreeWidgetItem", "(QTreeWidgetItem*)", "#")]
 		private void NewQTreeWidgetItem(QTreeWidgetItem parent) {
-			ProxyQTreeWidgetItem().NewQTreeWidgetItem(parent);
+			((QTreeWidgetItem) interceptor).NewQTreeWidgetItem(parent);
 		}
 		public QTreeWidgetItem(QTreeWidgetItem parent, List<string> strings, int type) : this((Type) null) {
 			CreateProxy();
@@ -122,7 +119,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTreeWidgetItem", "(QTreeWidgetItem*, const QStringList&, int)", "#?$")]
 		private void NewQTreeWidgetItem(QTreeWidgetItem parent, List<string> strings, int type) {
-			ProxyQTreeWidgetItem().NewQTreeWidgetItem(parent,strings,type);
+			((QTreeWidgetItem) interceptor).NewQTreeWidgetItem(parent,strings,type);
 		}
 		public QTreeWidgetItem(QTreeWidgetItem parent, List<string> strings) : this((Type) null) {
 			CreateProxy();
@@ -130,7 +127,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTreeWidgetItem", "(QTreeWidgetItem*, const QStringList&)", "#?")]
 		private void NewQTreeWidgetItem(QTreeWidgetItem parent, List<string> strings) {
-			ProxyQTreeWidgetItem().NewQTreeWidgetItem(parent,strings);
+			((QTreeWidgetItem) interceptor).NewQTreeWidgetItem(parent,strings);
 		}
 		public QTreeWidgetItem(QTreeWidgetItem parent, QTreeWidgetItem after, int type) : this((Type) null) {
 			CreateProxy();
@@ -138,7 +135,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTreeWidgetItem", "(QTreeWidgetItem*, QTreeWidgetItem*, int)", "##$")]
 		private void NewQTreeWidgetItem(QTreeWidgetItem parent, QTreeWidgetItem after, int type) {
-			ProxyQTreeWidgetItem().NewQTreeWidgetItem(parent,after,type);
+			((QTreeWidgetItem) interceptor).NewQTreeWidgetItem(parent,after,type);
 		}
 		public QTreeWidgetItem(QTreeWidgetItem parent, QTreeWidgetItem after) : this((Type) null) {
 			CreateProxy();
@@ -146,219 +143,219 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTreeWidgetItem", "(QTreeWidgetItem*, QTreeWidgetItem*)", "##")]
 		private void NewQTreeWidgetItem(QTreeWidgetItem parent, QTreeWidgetItem after) {
-			ProxyQTreeWidgetItem().NewQTreeWidgetItem(parent,after);
+			((QTreeWidgetItem) interceptor).NewQTreeWidgetItem(parent,after);
 		}
 		[SmokeMethod("clone", "() const", "")]
 		public virtual QTreeWidgetItem Clone() {
-			return ProxyQTreeWidgetItem().Clone();
+			return ((QTreeWidgetItem) interceptor).Clone();
 		}
 		[SmokeMethod("treeWidget", "() const", "")]
 		public QTreeWidget TreeWidget() {
-			return ProxyQTreeWidgetItem().TreeWidget();
+			return ((QTreeWidgetItem) interceptor).TreeWidget();
 		}
 		[SmokeMethod("setSelected", "(bool)", "$")]
 		public void SetSelected(bool select) {
-			ProxyQTreeWidgetItem().SetSelected(select);
+			((QTreeWidgetItem) interceptor).SetSelected(select);
 		}
 		[SmokeMethod("isSelected", "() const", "")]
 		public bool IsSelected() {
-			return ProxyQTreeWidgetItem().IsSelected();
+			return ((QTreeWidgetItem) interceptor).IsSelected();
 		}
 		[SmokeMethod("setHidden", "(bool)", "$")]
 		public void SetHidden(bool hide) {
-			ProxyQTreeWidgetItem().SetHidden(hide);
+			((QTreeWidgetItem) interceptor).SetHidden(hide);
 		}
 		[SmokeMethod("isHidden", "() const", "")]
 		public bool IsHidden() {
-			return ProxyQTreeWidgetItem().IsHidden();
+			return ((QTreeWidgetItem) interceptor).IsHidden();
 		}
 		[SmokeMethod("setExpanded", "(bool)", "$")]
 		public void SetExpanded(bool expand) {
-			ProxyQTreeWidgetItem().SetExpanded(expand);
+			((QTreeWidgetItem) interceptor).SetExpanded(expand);
 		}
 		[SmokeMethod("isExpanded", "() const", "")]
 		public bool IsExpanded() {
-			return ProxyQTreeWidgetItem().IsExpanded();
+			return ((QTreeWidgetItem) interceptor).IsExpanded();
 		}
 		[SmokeMethod("flags", "() const", "")]
 		public int Flags() {
-			return ProxyQTreeWidgetItem().Flags();
+			return ((QTreeWidgetItem) interceptor).Flags();
 		}
 		[SmokeMethod("setFlags", "(Qt::ItemFlags)", "$")]
 		public void SetFlags(int flags) {
-			ProxyQTreeWidgetItem().SetFlags(flags);
+			((QTreeWidgetItem) interceptor).SetFlags(flags);
 		}
 		[SmokeMethod("text", "(int) const", "$")]
 		public string Text(int column) {
-			return ProxyQTreeWidgetItem().Text(column);
+			return ((QTreeWidgetItem) interceptor).Text(column);
 		}
 		[SmokeMethod("setText", "(int, const QString&)", "$$")]
 		public void SetText(int column, string text) {
-			ProxyQTreeWidgetItem().SetText(column,text);
+			((QTreeWidgetItem) interceptor).SetText(column,text);
 		}
 		[SmokeMethod("icon", "(int) const", "$")]
 		public QIcon Icon(int column) {
-			return ProxyQTreeWidgetItem().Icon(column);
+			return ((QTreeWidgetItem) interceptor).Icon(column);
 		}
 		[SmokeMethod("setIcon", "(int, const QIcon&)", "$#")]
 		public void SetIcon(int column, QIcon icon) {
-			ProxyQTreeWidgetItem().SetIcon(column,icon);
+			((QTreeWidgetItem) interceptor).SetIcon(column,icon);
 		}
 		[SmokeMethod("statusTip", "(int) const", "$")]
 		public string StatusTip(int column) {
-			return ProxyQTreeWidgetItem().StatusTip(column);
+			return ((QTreeWidgetItem) interceptor).StatusTip(column);
 		}
 		[SmokeMethod("setStatusTip", "(int, const QString&)", "$$")]
 		public void SetStatusTip(int column, string statusTip) {
-			ProxyQTreeWidgetItem().SetStatusTip(column,statusTip);
+			((QTreeWidgetItem) interceptor).SetStatusTip(column,statusTip);
 		}
 		[SmokeMethod("toolTip", "(int) const", "$")]
 		public string ToolTip(int column) {
-			return ProxyQTreeWidgetItem().ToolTip(column);
+			return ((QTreeWidgetItem) interceptor).ToolTip(column);
 		}
 		[SmokeMethod("setToolTip", "(int, const QString&)", "$$")]
 		public void SetToolTip(int column, string toolTip) {
-			ProxyQTreeWidgetItem().SetToolTip(column,toolTip);
+			((QTreeWidgetItem) interceptor).SetToolTip(column,toolTip);
 		}
 		[SmokeMethod("whatsThis", "(int) const", "$")]
 		public string WhatsThis(int column) {
-			return ProxyQTreeWidgetItem().WhatsThis(column);
+			return ((QTreeWidgetItem) interceptor).WhatsThis(column);
 		}
 		[SmokeMethod("setWhatsThis", "(int, const QString&)", "$$")]
 		public void SetWhatsThis(int column, string whatsThis) {
-			ProxyQTreeWidgetItem().SetWhatsThis(column,whatsThis);
+			((QTreeWidgetItem) interceptor).SetWhatsThis(column,whatsThis);
 		}
 		[SmokeMethod("font", "(int) const", "$")]
 		public QFont Font(int column) {
-			return ProxyQTreeWidgetItem().Font(column);
+			return ((QTreeWidgetItem) interceptor).Font(column);
 		}
 		[SmokeMethod("setFont", "(int, const QFont&)", "$#")]
 		public void SetFont(int column, QFont font) {
-			ProxyQTreeWidgetItem().SetFont(column,font);
+			((QTreeWidgetItem) interceptor).SetFont(column,font);
 		}
 		[SmokeMethod("textAlignment", "(int) const", "$")]
 		public int TextAlignment(int column) {
-			return ProxyQTreeWidgetItem().TextAlignment(column);
+			return ((QTreeWidgetItem) interceptor).TextAlignment(column);
 		}
 		[SmokeMethod("setTextAlignment", "(int, int)", "$$")]
 		public void SetTextAlignment(int column, int alignment) {
-			ProxyQTreeWidgetItem().SetTextAlignment(column,alignment);
+			((QTreeWidgetItem) interceptor).SetTextAlignment(column,alignment);
 		}
 		[SmokeMethod("backgroundColor", "(int) const", "$")]
 		public QColor BackgroundColor(int column) {
-			return ProxyQTreeWidgetItem().BackgroundColor(column);
+			return ((QTreeWidgetItem) interceptor).BackgroundColor(column);
 		}
 		[SmokeMethod("setBackgroundColor", "(int, const QColor&)", "$#")]
 		public void SetBackgroundColor(int column, QColor color) {
-			ProxyQTreeWidgetItem().SetBackgroundColor(column,color);
+			((QTreeWidgetItem) interceptor).SetBackgroundColor(column,color);
 		}
 		[SmokeMethod("background", "(int) const", "$")]
 		public QBrush Background(int column) {
-			return ProxyQTreeWidgetItem().Background(column);
+			return ((QTreeWidgetItem) interceptor).Background(column);
 		}
 		[SmokeMethod("setBackground", "(int, const QBrush&)", "$#")]
 		public void SetBackground(int column, QBrush brush) {
-			ProxyQTreeWidgetItem().SetBackground(column,brush);
+			((QTreeWidgetItem) interceptor).SetBackground(column,brush);
 		}
 		[SmokeMethod("textColor", "(int) const", "$")]
 		public QColor TextColor(int column) {
-			return ProxyQTreeWidgetItem().TextColor(column);
+			return ((QTreeWidgetItem) interceptor).TextColor(column);
 		}
 		[SmokeMethod("setTextColor", "(int, const QColor&)", "$#")]
 		public void SetTextColor(int column, QColor color) {
-			ProxyQTreeWidgetItem().SetTextColor(column,color);
+			((QTreeWidgetItem) interceptor).SetTextColor(column,color);
 		}
 		[SmokeMethod("foreground", "(int) const", "$")]
 		public QBrush Foreground(int column) {
-			return ProxyQTreeWidgetItem().Foreground(column);
+			return ((QTreeWidgetItem) interceptor).Foreground(column);
 		}
 		[SmokeMethod("setForeground", "(int, const QBrush&)", "$#")]
 		public void SetForeground(int column, QBrush brush) {
-			ProxyQTreeWidgetItem().SetForeground(column,brush);
+			((QTreeWidgetItem) interceptor).SetForeground(column,brush);
 		}
 		[SmokeMethod("checkState", "(int) const", "$")]
 		public Qt.CheckState CheckState(int column) {
-			return ProxyQTreeWidgetItem().CheckState(column);
+			return ((QTreeWidgetItem) interceptor).CheckState(column);
 		}
 		[SmokeMethod("setCheckState", "(int, Qt::CheckState)", "$$")]
 		public void SetCheckState(int column, Qt.CheckState state) {
-			ProxyQTreeWidgetItem().SetCheckState(column,state);
+			((QTreeWidgetItem) interceptor).SetCheckState(column,state);
 		}
 		[SmokeMethod("sizeHint", "(int) const", "$")]
 		public QSize SizeHint(int column) {
-			return ProxyQTreeWidgetItem().SizeHint(column);
+			return ((QTreeWidgetItem) interceptor).SizeHint(column);
 		}
 		[SmokeMethod("setSizeHint", "(int, const QSize&)", "$#")]
 		public void SetSizeHint(int column, QSize size) {
-			ProxyQTreeWidgetItem().SetSizeHint(column,size);
+			((QTreeWidgetItem) interceptor).SetSizeHint(column,size);
 		}
 		[SmokeMethod("data", "(int, int) const", "$$")]
 		public virtual QVariant Data(int column, int role) {
-			return ProxyQTreeWidgetItem().Data(column,role);
+			return ((QTreeWidgetItem) interceptor).Data(column,role);
 		}
 		[SmokeMethod("setData", "(int, int, const QVariant&)", "$$#")]
 		public virtual void SetData(int column, int role, QVariant value) {
-			ProxyQTreeWidgetItem().SetData(column,role,value);
+			((QTreeWidgetItem) interceptor).SetData(column,role,value);
 		}
 		[SmokeMethod("read", "(QDataStream&)", "#")]
 		public virtual void Read(QDataStream arg1) {
-			ProxyQTreeWidgetItem().Read(arg1);
+			((QTreeWidgetItem) interceptor).Read(arg1);
 		}
 		[SmokeMethod("write", "(QDataStream&) const", "#")]
 		public virtual void Write(QDataStream arg1) {
-			ProxyQTreeWidgetItem().Write(arg1);
+			((QTreeWidgetItem) interceptor).Write(arg1);
 		}
 		[SmokeMethod("parent", "() const", "")]
 		public QTreeWidgetItem Parent() {
-			return ProxyQTreeWidgetItem().Parent();
+			return ((QTreeWidgetItem) interceptor).Parent();
 		}
 		[SmokeMethod("child", "(int) const", "$")]
 		public QTreeWidgetItem Child(int index) {
-			return ProxyQTreeWidgetItem().Child(index);
+			return ((QTreeWidgetItem) interceptor).Child(index);
 		}
 		[SmokeMethod("childCount", "() const", "")]
 		public int ChildCount() {
-			return ProxyQTreeWidgetItem().ChildCount();
+			return ((QTreeWidgetItem) interceptor).ChildCount();
 		}
 		[SmokeMethod("columnCount", "() const", "")]
 		public int ColumnCount() {
-			return ProxyQTreeWidgetItem().ColumnCount();
+			return ((QTreeWidgetItem) interceptor).ColumnCount();
 		}
 		[SmokeMethod("indexOfChild", "(QTreeWidgetItem*) const", "#")]
 		public int IndexOfChild(QTreeWidgetItem child) {
-			return ProxyQTreeWidgetItem().IndexOfChild(child);
+			return ((QTreeWidgetItem) interceptor).IndexOfChild(child);
 		}
 		[SmokeMethod("addChild", "(QTreeWidgetItem*)", "#")]
 		public void AddChild(QTreeWidgetItem child) {
-			ProxyQTreeWidgetItem().AddChild(child);
+			((QTreeWidgetItem) interceptor).AddChild(child);
 		}
 		[SmokeMethod("insertChild", "(int, QTreeWidgetItem*)", "$#")]
 		public void InsertChild(int index, QTreeWidgetItem child) {
-			ProxyQTreeWidgetItem().InsertChild(index,child);
+			((QTreeWidgetItem) interceptor).InsertChild(index,child);
 		}
 		[SmokeMethod("takeChild", "(int)", "$")]
 		public QTreeWidgetItem TakeChild(int index) {
-			return ProxyQTreeWidgetItem().TakeChild(index);
+			return ((QTreeWidgetItem) interceptor).TakeChild(index);
 		}
 		[SmokeMethod("addChildren", "(const QList<QTreeWidgetItem*>&)", "?")]
 		public void AddChildren(List<QTreeWidgetItem> children) {
-			ProxyQTreeWidgetItem().AddChildren(children);
+			((QTreeWidgetItem) interceptor).AddChildren(children);
 		}
 		[SmokeMethod("insertChildren", "(int, const QList<QTreeWidgetItem*>&)", "$?")]
 		public void InsertChildren(int index, List<QTreeWidgetItem> children) {
-			ProxyQTreeWidgetItem().InsertChildren(index,children);
+			((QTreeWidgetItem) interceptor).InsertChildren(index,children);
 		}
 		[SmokeMethod("takeChildren", "()", "")]
 		public List<QTreeWidgetItem> TakeChildren() {
-			return ProxyQTreeWidgetItem().TakeChildren();
+			return ((QTreeWidgetItem) interceptor).TakeChildren();
 		}
 		[SmokeMethod("type", "() const", "")]
 		public int type() {
-			return ProxyQTreeWidgetItem().type();
+			return ((QTreeWidgetItem) interceptor).type();
 		}
 		[SmokeMethod("sortChildren", "(int, Qt::SortOrder)", "$$")]
 		public void SortChildren(int column, Qt.SortOrder order) {
-			ProxyQTreeWidgetItem().SortChildren(column,order);
+			((QTreeWidgetItem) interceptor).SortChildren(column,order);
 		}
 		~QTreeWidgetItem() {
 			DisposeQTreeWidgetItem();
@@ -368,7 +365,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QTreeWidgetItem", "()", "")]
 		private void DisposeQTreeWidgetItem() {
-			ProxyQTreeWidgetItem().DisposeQTreeWidgetItem();
+			((QTreeWidgetItem) interceptor).DisposeQTreeWidgetItem();
 		}
 	}
 }

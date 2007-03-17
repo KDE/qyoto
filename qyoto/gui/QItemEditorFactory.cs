@@ -5,8 +5,8 @@ namespace Qyoto {
 
 	[SmokeClass("QItemEditorFactory")]
 	public class QItemEditorFactory : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QItemEditorFactory interceptor = null;
+		private IntPtr smokeObject;
 		protected QItemEditorFactory(Type dummy) {}
 		[SmokeClass("QItemEditorFactory")]
 		interface IQItemEditorFactoryProxy {
@@ -17,18 +17,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QItemEditorFactory), this);
-			_interceptor = (QItemEditorFactory) realProxy.GetTransparentProxy();
+			interceptor = (QItemEditorFactory) realProxy.GetTransparentProxy();
 		}
-		private QItemEditorFactory ProxyQItemEditorFactory() {
-			return (QItemEditorFactory) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQItemEditorFactoryProxy staticInterceptor = null;
 		static QItemEditorFactory() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQItemEditorFactoryProxy), null);
-			_staticInterceptor = (IQItemEditorFactoryProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQItemEditorFactoryProxy StaticQItemEditorFactory() {
-			return (IQItemEditorFactoryProxy) _staticInterceptor;
+			staticInterceptor = (IQItemEditorFactoryProxy) realProxy.GetTransparentProxy();
 		}
 		public QItemEditorFactory() : this((Type) null) {
 			CreateProxy();
@@ -36,19 +30,19 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QItemEditorFactory", "()", "")]
 		private void NewQItemEditorFactory() {
-			ProxyQItemEditorFactory().NewQItemEditorFactory();
+			((QItemEditorFactory) interceptor).NewQItemEditorFactory();
 		}
 		[SmokeMethod("createEditor", "(QVariant::Type, QWidget*) const", "$#")]
 		public virtual QWidget CreateEditor(QVariant.TypeOf type, QWidget parent) {
-			return ProxyQItemEditorFactory().CreateEditor(type,parent);
+			return ((QItemEditorFactory) interceptor).CreateEditor(type,parent);
 		}
 		[SmokeMethod("valuePropertyName", "(QVariant::Type) const", "$")]
 		public virtual QByteArray ValuePropertyName(QVariant.TypeOf type) {
-			return ProxyQItemEditorFactory().ValuePropertyName(type);
+			return ((QItemEditorFactory) interceptor).ValuePropertyName(type);
 		}
 		[SmokeMethod("registerEditor", "(QVariant::Type, QItemEditorCreatorBase*)", "$#")]
 		public void RegisterEditor(QVariant.TypeOf type, QItemEditorCreatorBase creator) {
-			ProxyQItemEditorFactory().RegisterEditor(type,creator);
+			((QItemEditorFactory) interceptor).RegisterEditor(type,creator);
 		}
 		~QItemEditorFactory() {
 			DisposeQItemEditorFactory();
@@ -58,13 +52,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QItemEditorFactory", "()", "")]
 		private void DisposeQItemEditorFactory() {
-			ProxyQItemEditorFactory().DisposeQItemEditorFactory();
+			((QItemEditorFactory) interceptor).DisposeQItemEditorFactory();
 		}
 		public static QItemEditorFactory DefaultFactory() {
-			return StaticQItemEditorFactory().DefaultFactory();
+			return staticInterceptor.DefaultFactory();
 		}
 		public static void SetDefaultFactory(QItemEditorFactory factory) {
-			StaticQItemEditorFactory().SetDefaultFactory(factory);
+			staticInterceptor.SetDefaultFactory(factory);
 		}
 	}
 }

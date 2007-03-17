@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QGraphicsSimpleTextItem(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGraphicsSimpleTextItem), this);
-			_interceptor = (QGraphicsSimpleTextItem) realProxy.GetTransparentProxy();
-		}
-		private QGraphicsSimpleTextItem ProxyQGraphicsSimpleTextItem() {
-			return (QGraphicsSimpleTextItem) _interceptor;
+			interceptor = (QGraphicsSimpleTextItem) realProxy.GetTransparentProxy();
 		}
 		public const int Type = 9;
 
@@ -21,7 +18,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGraphicsSimpleTextItem", "(QGraphicsItem*, QGraphicsScene*)", "##")]
 		private void NewQGraphicsSimpleTextItem(QGraphicsItem parent, QGraphicsScene scene) {
-			ProxyQGraphicsSimpleTextItem().NewQGraphicsSimpleTextItem(parent,scene);
+			((QGraphicsSimpleTextItem) interceptor).NewQGraphicsSimpleTextItem(parent,scene);
 		}
 		public QGraphicsSimpleTextItem(QGraphicsItem parent) : this((Type) null) {
 			CreateProxy();
@@ -29,7 +26,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGraphicsSimpleTextItem", "(QGraphicsItem*)", "#")]
 		private void NewQGraphicsSimpleTextItem(QGraphicsItem parent) {
-			ProxyQGraphicsSimpleTextItem().NewQGraphicsSimpleTextItem(parent);
+			((QGraphicsSimpleTextItem) interceptor).NewQGraphicsSimpleTextItem(parent);
 		}
 		public QGraphicsSimpleTextItem() : this((Type) null) {
 			CreateProxy();
@@ -37,7 +34,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGraphicsSimpleTextItem", "()", "")]
 		private void NewQGraphicsSimpleTextItem() {
-			ProxyQGraphicsSimpleTextItem().NewQGraphicsSimpleTextItem();
+			((QGraphicsSimpleTextItem) interceptor).NewQGraphicsSimpleTextItem();
 		}
 		public QGraphicsSimpleTextItem(string text, QGraphicsItem parent, QGraphicsScene scene) : this((Type) null) {
 			CreateProxy();
@@ -45,7 +42,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGraphicsSimpleTextItem", "(const QString&, QGraphicsItem*, QGraphicsScene*)", "$##")]
 		private void NewQGraphicsSimpleTextItem(string text, QGraphicsItem parent, QGraphicsScene scene) {
-			ProxyQGraphicsSimpleTextItem().NewQGraphicsSimpleTextItem(text,parent,scene);
+			((QGraphicsSimpleTextItem) interceptor).NewQGraphicsSimpleTextItem(text,parent,scene);
 		}
 		public QGraphicsSimpleTextItem(string text, QGraphicsItem parent) : this((Type) null) {
 			CreateProxy();
@@ -53,7 +50,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGraphicsSimpleTextItem", "(const QString&, QGraphicsItem*)", "$#")]
 		private void NewQGraphicsSimpleTextItem(string text, QGraphicsItem parent) {
-			ProxyQGraphicsSimpleTextItem().NewQGraphicsSimpleTextItem(text,parent);
+			((QGraphicsSimpleTextItem) interceptor).NewQGraphicsSimpleTextItem(text,parent);
 		}
 		public QGraphicsSimpleTextItem(string text) : this((Type) null) {
 			CreateProxy();
@@ -61,63 +58,63 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGraphicsSimpleTextItem", "(const QString&)", "$")]
 		private void NewQGraphicsSimpleTextItem(string text) {
-			ProxyQGraphicsSimpleTextItem().NewQGraphicsSimpleTextItem(text);
+			((QGraphicsSimpleTextItem) interceptor).NewQGraphicsSimpleTextItem(text);
 		}
 		[SmokeMethod("setText", "(const QString&)", "$")]
 		public void SetText(string text) {
-			ProxyQGraphicsSimpleTextItem().SetText(text);
+			((QGraphicsSimpleTextItem) interceptor).SetText(text);
 		}
 		[SmokeMethod("text", "() const", "")]
 		public string Text() {
-			return ProxyQGraphicsSimpleTextItem().Text();
+			return ((QGraphicsSimpleTextItem) interceptor).Text();
 		}
 		[SmokeMethod("setFont", "(const QFont&)", "#")]
 		public void SetFont(QFont font) {
-			ProxyQGraphicsSimpleTextItem().SetFont(font);
+			((QGraphicsSimpleTextItem) interceptor).SetFont(font);
 		}
 		[SmokeMethod("font", "() const", "")]
 		public QFont Font() {
-			return ProxyQGraphicsSimpleTextItem().Font();
+			return ((QGraphicsSimpleTextItem) interceptor).Font();
 		}
 		[SmokeMethod("boundingRect", "() const", "")]
 		public override QRectF BoundingRect() {
-			return ProxyQGraphicsSimpleTextItem().BoundingRect();
+			return ((QGraphicsSimpleTextItem) interceptor).BoundingRect();
 		}
 		[SmokeMethod("shape", "() const", "")]
 		public override QPainterPath Shape() {
-			return ProxyQGraphicsSimpleTextItem().Shape();
+			return ((QGraphicsSimpleTextItem) interceptor).Shape();
 		}
 		[SmokeMethod("contains", "(const QPointF&) const", "#")]
 		public override bool Contains(QPointF point) {
-			return ProxyQGraphicsSimpleTextItem().Contains(point);
+			return ((QGraphicsSimpleTextItem) interceptor).Contains(point);
 		}
 		[SmokeMethod("paint", "(QPainter*, const QStyleOptionGraphicsItem*, QWidget*)", "###")]
 		public override void Paint(QPainter painter, QStyleOptionGraphicsItem option, QWidget widget) {
-			ProxyQGraphicsSimpleTextItem().Paint(painter,option,widget);
+			((QGraphicsSimpleTextItem) interceptor).Paint(painter,option,widget);
 		}
 		[SmokeMethod("isObscuredBy", "(const QGraphicsItem*) const", "#")]
 		public override bool IsObscuredBy(QGraphicsItem item) {
-			return ProxyQGraphicsSimpleTextItem().IsObscuredBy(item);
+			return ((QGraphicsSimpleTextItem) interceptor).IsObscuredBy(item);
 		}
 		[SmokeMethod("opaqueArea", "() const", "")]
 		public override QPainterPath OpaqueArea() {
-			return ProxyQGraphicsSimpleTextItem().OpaqueArea();
+			return ((QGraphicsSimpleTextItem) interceptor).OpaqueArea();
 		}
 		[SmokeMethod("type", "() const", "")]
 		public override int type() {
-			return ProxyQGraphicsSimpleTextItem().type();
+			return ((QGraphicsSimpleTextItem) interceptor).type();
 		}
 		[SmokeMethod("supportsExtension", "(QGraphicsItem::Extension) const", "$")]
 		protected override bool SupportsExtension(QGraphicsItem.Extension extension) {
-			return ProxyQGraphicsSimpleTextItem().SupportsExtension(extension);
+			return ((QGraphicsSimpleTextItem) interceptor).SupportsExtension(extension);
 		}
 		[SmokeMethod("setExtension", "(QGraphicsItem::Extension, const QVariant&)", "$#")]
 		protected override void SetExtension(QGraphicsItem.Extension extension, QVariant variant) {
-			ProxyQGraphicsSimpleTextItem().SetExtension(extension,variant);
+			((QGraphicsSimpleTextItem) interceptor).SetExtension(extension,variant);
 		}
 		[SmokeMethod("extension", "(const QVariant&) const", "#")]
 		protected override QVariant extension(QVariant variant) {
-			return ProxyQGraphicsSimpleTextItem().extension(variant);
+			return ((QGraphicsSimpleTextItem) interceptor).extension(variant);
 		}
 		~QGraphicsSimpleTextItem() {
 			DisposeQGraphicsSimpleTextItem();
@@ -127,7 +124,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QGraphicsSimpleTextItem", "()", "")]
 		private void DisposeQGraphicsSimpleTextItem() {
-			ProxyQGraphicsSimpleTextItem().DisposeQGraphicsSimpleTextItem();
+			((QGraphicsSimpleTextItem) interceptor).DisposeQGraphicsSimpleTextItem();
 		}
 	}
 }

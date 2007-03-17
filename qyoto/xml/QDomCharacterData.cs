@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QDomCharacterData(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomCharacterData), this);
-			_interceptor = (QDomCharacterData) realProxy.GetTransparentProxy();
-		}
-		private QDomCharacterData ProxyQDomCharacterData() {
-			return (QDomCharacterData) _interceptor;
+			interceptor = (QDomCharacterData) realProxy.GetTransparentProxy();
 		}
 		public QDomCharacterData() : this((Type) null) {
 			CreateProxy();
@@ -19,7 +16,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDomCharacterData", "()", "")]
 		private void NewQDomCharacterData() {
-			ProxyQDomCharacterData().NewQDomCharacterData();
+			((QDomCharacterData) interceptor).NewQDomCharacterData();
 		}
 		public QDomCharacterData(QDomCharacterData x) : this((Type) null) {
 			CreateProxy();
@@ -27,43 +24,43 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDomCharacterData", "(const QDomCharacterData&)", "#")]
 		private void NewQDomCharacterData(QDomCharacterData x) {
-			ProxyQDomCharacterData().NewQDomCharacterData(x);
+			((QDomCharacterData) interceptor).NewQDomCharacterData(x);
 		}
 		[SmokeMethod("substringData", "(unsigned long, unsigned long)", "$$")]
 		public string SubstringData(ulong offset, ulong count) {
-			return ProxyQDomCharacterData().SubstringData(offset,count);
+			return ((QDomCharacterData) interceptor).SubstringData(offset,count);
 		}
 		[SmokeMethod("appendData", "(const QString&)", "$")]
 		public void AppendData(string arg) {
-			ProxyQDomCharacterData().AppendData(arg);
+			((QDomCharacterData) interceptor).AppendData(arg);
 		}
 		[SmokeMethod("insertData", "(unsigned long, const QString&)", "$$")]
 		public void InsertData(ulong offset, string arg) {
-			ProxyQDomCharacterData().InsertData(offset,arg);
+			((QDomCharacterData) interceptor).InsertData(offset,arg);
 		}
 		[SmokeMethod("deleteData", "(unsigned long, unsigned long)", "$$")]
 		public void DeleteData(ulong offset, ulong count) {
-			ProxyQDomCharacterData().DeleteData(offset,count);
+			((QDomCharacterData) interceptor).DeleteData(offset,count);
 		}
 		[SmokeMethod("replaceData", "(unsigned long, unsigned long, const QString&)", "$$$")]
 		public void ReplaceData(ulong offset, ulong count, string arg) {
-			ProxyQDomCharacterData().ReplaceData(offset,count,arg);
+			((QDomCharacterData) interceptor).ReplaceData(offset,count,arg);
 		}
 		[SmokeMethod("length", "() const", "")]
 		public uint Length() {
-			return ProxyQDomCharacterData().Length();
+			return ((QDomCharacterData) interceptor).Length();
 		}
 		[SmokeMethod("data", "() const", "")]
 		public string Data() {
-			return ProxyQDomCharacterData().Data();
+			return ((QDomCharacterData) interceptor).Data();
 		}
 		[SmokeMethod("setData", "(const QString&)", "$")]
 		public void SetData(string arg1) {
-			ProxyQDomCharacterData().SetData(arg1);
+			((QDomCharacterData) interceptor).SetData(arg1);
 		}
 		[SmokeMethod("nodeType", "() const", "")]
 		public QDomNode.NodeType NodeType() {
-			return ProxyQDomCharacterData().NodeType();
+			return ((QDomCharacterData) interceptor).NodeType();
 		}
 		~QDomCharacterData() {
 			DisposeQDomCharacterData();
@@ -73,7 +70,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QDomCharacterData", "()", "")]
 		private void DisposeQDomCharacterData() {
-			ProxyQDomCharacterData().DisposeQDomCharacterData();
+			((QDomCharacterData) interceptor).DisposeQDomCharacterData();
 		}
 	}
 }

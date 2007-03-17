@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QInputMethodEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QInputMethodEvent), this);
-			_interceptor = (QInputMethodEvent) realProxy.GetTransparentProxy();
-		}
-		private QInputMethodEvent ProxyQInputMethodEvent() {
-			return (QInputMethodEvent) _interceptor;
+			interceptor = (QInputMethodEvent) realProxy.GetTransparentProxy();
 		}
 		public enum AttributeType {
 			TextFormat = 0,
@@ -27,35 +24,35 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QInputMethodEvent", "()", "")]
 		private void NewQInputMethodEvent() {
-			ProxyQInputMethodEvent().NewQInputMethodEvent();
+			((QInputMethodEvent) interceptor).NewQInputMethodEvent();
 		}
 		[SmokeMethod("setCommitString", "(const QString&, int, int)", "$$$")]
 		public void SetCommitString(string commitString, int replaceFrom, int replaceLength) {
-			ProxyQInputMethodEvent().SetCommitString(commitString,replaceFrom,replaceLength);
+			((QInputMethodEvent) interceptor).SetCommitString(commitString,replaceFrom,replaceLength);
 		}
 		[SmokeMethod("setCommitString", "(const QString&, int)", "$$")]
 		public void SetCommitString(string commitString, int replaceFrom) {
-			ProxyQInputMethodEvent().SetCommitString(commitString,replaceFrom);
+			((QInputMethodEvent) interceptor).SetCommitString(commitString,replaceFrom);
 		}
 		[SmokeMethod("setCommitString", "(const QString&)", "$")]
 		public void SetCommitString(string commitString) {
-			ProxyQInputMethodEvent().SetCommitString(commitString);
+			((QInputMethodEvent) interceptor).SetCommitString(commitString);
 		}
 		[SmokeMethod("preeditString", "() const", "")]
 		public string PreeditString() {
-			return ProxyQInputMethodEvent().PreeditString();
+			return ((QInputMethodEvent) interceptor).PreeditString();
 		}
 		[SmokeMethod("commitString", "() const", "")]
 		public string CommitString() {
-			return ProxyQInputMethodEvent().CommitString();
+			return ((QInputMethodEvent) interceptor).CommitString();
 		}
 		[SmokeMethod("replacementStart", "() const", "")]
 		public int ReplacementStart() {
-			return ProxyQInputMethodEvent().ReplacementStart();
+			return ((QInputMethodEvent) interceptor).ReplacementStart();
 		}
 		[SmokeMethod("replacementLength", "() const", "")]
 		public int ReplacementLength() {
-			return ProxyQInputMethodEvent().ReplacementLength();
+			return ((QInputMethodEvent) interceptor).ReplacementLength();
 		}
 		public QInputMethodEvent(QInputMethodEvent other) : this((Type) null) {
 			CreateProxy();
@@ -63,7 +60,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QInputMethodEvent", "(const QInputMethodEvent&)", "#")]
 		private void NewQInputMethodEvent(QInputMethodEvent other) {
-			ProxyQInputMethodEvent().NewQInputMethodEvent(other);
+			((QInputMethodEvent) interceptor).NewQInputMethodEvent(other);
 		}
 		~QInputMethodEvent() {
 			DisposeQInputMethodEvent();
@@ -73,7 +70,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QInputMethodEvent", "()", "")]
 		private void DisposeQInputMethodEvent() {
-			ProxyQInputMethodEvent().DisposeQInputMethodEvent();
+			((QInputMethodEvent) interceptor).DisposeQInputMethodEvent();
 		}
 	}
 }

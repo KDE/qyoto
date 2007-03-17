@@ -16,18 +16,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QCheckBox), this);
-			_interceptor = (QCheckBox) realProxy.GetTransparentProxy();
+			interceptor = (QCheckBox) realProxy.GetTransparentProxy();
 		}
-		private QCheckBox ProxyQCheckBox() {
-			return (QCheckBox) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQCheckBoxProxy staticInterceptor = null;
 		static QCheckBox() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQCheckBoxProxy), null);
-			_staticInterceptor = (IQCheckBoxProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQCheckBoxProxy StaticQCheckBox() {
-			return (IQCheckBoxProxy) _staticInterceptor;
+			staticInterceptor = (IQCheckBoxProxy) realProxy.GetTransparentProxy();
 		}
 		[Q_PROPERTY("bool", "tristate")]
 		public bool Tristate {
@@ -40,7 +34,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QCheckBox", "(QWidget*)", "#")]
 		private void NewQCheckBox(QWidget parent) {
-			ProxyQCheckBox().NewQCheckBox(parent);
+			((QCheckBox) interceptor).NewQCheckBox(parent);
 		}
 		public QCheckBox() : this((Type) null) {
 			CreateProxy();
@@ -48,7 +42,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QCheckBox", "()", "")]
 		private void NewQCheckBox() {
-			ProxyQCheckBox().NewQCheckBox();
+			((QCheckBox) interceptor).NewQCheckBox();
 		}
 		public QCheckBox(string text, QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -56,7 +50,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QCheckBox", "(const QString&, QWidget*)", "$#")]
 		private void NewQCheckBox(string text, QWidget parent) {
-			ProxyQCheckBox().NewQCheckBox(text,parent);
+			((QCheckBox) interceptor).NewQCheckBox(text,parent);
 		}
 		public QCheckBox(string text) : this((Type) null) {
 			CreateProxy();
@@ -64,47 +58,47 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QCheckBox", "(const QString&)", "$")]
 		private void NewQCheckBox(string text) {
-			ProxyQCheckBox().NewQCheckBox(text);
+			((QCheckBox) interceptor).NewQCheckBox(text);
 		}
 		[SmokeMethod("sizeHint", "() const", "")]
 		public override QSize SizeHint() {
-			return ProxyQCheckBox().SizeHint();
+			return ((QCheckBox) interceptor).SizeHint();
 		}
 		[SmokeMethod("isTristate", "() const", "")]
 		public bool IsTristate() {
-			return ProxyQCheckBox().IsTristate();
+			return ((QCheckBox) interceptor).IsTristate();
 		}
 		[SmokeMethod("checkState", "() const", "")]
 		public Qt.CheckState CheckState() {
-			return ProxyQCheckBox().CheckState();
+			return ((QCheckBox) interceptor).CheckState();
 		}
 		[SmokeMethod("setCheckState", "(Qt::CheckState)", "$")]
 		public void SetCheckState(Qt.CheckState state) {
-			ProxyQCheckBox().SetCheckState(state);
+			((QCheckBox) interceptor).SetCheckState(state);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent e) {
-			return ProxyQCheckBox().Event(e);
+			return ((QCheckBox) interceptor).Event(e);
 		}
 		[SmokeMethod("hitButton", "(const QPoint&) const", "#")]
 		protected override bool HitButton(QPoint pos) {
-			return ProxyQCheckBox().HitButton(pos);
+			return ((QCheckBox) interceptor).HitButton(pos);
 		}
 		[SmokeMethod("checkStateSet", "()", "")]
 		protected override void CheckStateSet() {
-			ProxyQCheckBox().CheckStateSet();
+			((QCheckBox) interceptor).CheckStateSet();
 		}
 		[SmokeMethod("nextCheckState", "()", "")]
 		protected override void NextCheckState() {
-			ProxyQCheckBox().NextCheckState();
+			((QCheckBox) interceptor).NextCheckState();
 		}
 		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
 		protected override void PaintEvent(QPaintEvent arg1) {
-			ProxyQCheckBox().PaintEvent(arg1);
+			((QCheckBox) interceptor).PaintEvent(arg1);
 		}
 		[SmokeMethod("mouseMoveEvent", "(QMouseEvent*)", "#")]
 		protected override void MouseMoveEvent(QMouseEvent arg1) {
-			ProxyQCheckBox().MouseMoveEvent(arg1);
+			((QCheckBox) interceptor).MouseMoveEvent(arg1);
 		}
 		~QCheckBox() {
 			DisposeQCheckBox();
@@ -114,13 +108,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QCheckBox", "()", "")]
 		private void DisposeQCheckBox() {
-			ProxyQCheckBox().DisposeQCheckBox();
+			((QCheckBox) interceptor).DisposeQCheckBox();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQCheckBox().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQCheckBox().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQCheckBoxSignals Emit {
 			get { return (IQCheckBoxSignals) Q_EMIT; }

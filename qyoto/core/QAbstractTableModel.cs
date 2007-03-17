@@ -15,18 +15,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAbstractTableModel), this);
-			_interceptor = (QAbstractTableModel) realProxy.GetTransparentProxy();
+			interceptor = (QAbstractTableModel) realProxy.GetTransparentProxy();
 		}
-		private QAbstractTableModel ProxyQAbstractTableModel() {
-			return (QAbstractTableModel) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQAbstractTableModelProxy staticInterceptor = null;
 		static QAbstractTableModel() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQAbstractTableModelProxy), null);
-			_staticInterceptor = (IQAbstractTableModelProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQAbstractTableModelProxy StaticQAbstractTableModel() {
-			return (IQAbstractTableModelProxy) _staticInterceptor;
+			staticInterceptor = (IQAbstractTableModelProxy) realProxy.GetTransparentProxy();
 		}
 		public QAbstractTableModel(QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -34,7 +28,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QAbstractTableModel", "(QObject*)", "#")]
 		private void NewQAbstractTableModel(QObject parent) {
-			ProxyQAbstractTableModel().NewQAbstractTableModel(parent);
+			((QAbstractTableModel) interceptor).NewQAbstractTableModel(parent);
 		}
 		public QAbstractTableModel() : this((Type) null) {
 			CreateProxy();
@@ -42,19 +36,19 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QAbstractTableModel", "()", "")]
 		private void NewQAbstractTableModel() {
-			ProxyQAbstractTableModel().NewQAbstractTableModel();
+			((QAbstractTableModel) interceptor).NewQAbstractTableModel();
 		}
 		[SmokeMethod("index", "(int, int, const QModelIndex&) const", "$$#")]
 		public override QModelIndex Index(int row, int column, QModelIndex parent) {
-			return ProxyQAbstractTableModel().Index(row,column,parent);
+			return ((QAbstractTableModel) interceptor).Index(row,column,parent);
 		}
 		[SmokeMethod("index", "(int, int) const", "$$")]
 		public virtual QModelIndex Index(int row, int column) {
-			return ProxyQAbstractTableModel().Index(row,column);
+			return ((QAbstractTableModel) interceptor).Index(row,column);
 		}
 		[SmokeMethod("dropMimeData", "(const QMimeData*, Qt::DropAction, int, int, const QModelIndex&)", "#$$$#")]
 		public override bool DropMimeData(QMimeData data, Qt.DropAction action, int row, int column, QModelIndex parent) {
-			return ProxyQAbstractTableModel().DropMimeData(data,action,row,column,parent);
+			return ((QAbstractTableModel) interceptor).DropMimeData(data,action,row,column,parent);
 		}
 		~QAbstractTableModel() {
 			DisposeQAbstractTableModel();
@@ -64,13 +58,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QAbstractTableModel", "()", "")]
 		private void DisposeQAbstractTableModel() {
-			ProxyQAbstractTableModel().DisposeQAbstractTableModel();
+			((QAbstractTableModel) interceptor).DisposeQAbstractTableModel();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQAbstractTableModel().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQAbstractTableModel().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQAbstractTableModelSignals Emit {
 			get { return (IQAbstractTableModelSignals) Q_EMIT; }

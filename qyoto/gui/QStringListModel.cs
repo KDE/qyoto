@@ -16,18 +16,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStringListModel), this);
-			_interceptor = (QStringListModel) realProxy.GetTransparentProxy();
+			interceptor = (QStringListModel) realProxy.GetTransparentProxy();
 		}
-		private QStringListModel ProxyQStringListModel() {
-			return (QStringListModel) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQStringListModelProxy staticInterceptor = null;
 		static QStringListModel() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQStringListModelProxy), null);
-			_staticInterceptor = (IQStringListModelProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQStringListModelProxy StaticQStringListModel() {
-			return (IQStringListModelProxy) _staticInterceptor;
+			staticInterceptor = (IQStringListModelProxy) realProxy.GetTransparentProxy();
 		}
 		public QStringListModel(QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -35,7 +29,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStringListModel", "(QObject*)", "#")]
 		private void NewQStringListModel(QObject parent) {
-			ProxyQStringListModel().NewQStringListModel(parent);
+			((QStringListModel) interceptor).NewQStringListModel(parent);
 		}
 		public QStringListModel() : this((Type) null) {
 			CreateProxy();
@@ -43,7 +37,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStringListModel", "()", "")]
 		private void NewQStringListModel() {
-			ProxyQStringListModel().NewQStringListModel();
+			((QStringListModel) interceptor).NewQStringListModel();
 		}
 		public QStringListModel(List<string> strings, QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -51,7 +45,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStringListModel", "(const QStringList&, QObject*)", "?#")]
 		private void NewQStringListModel(List<string> strings, QObject parent) {
-			ProxyQStringListModel().NewQStringListModel(strings,parent);
+			((QStringListModel) interceptor).NewQStringListModel(strings,parent);
 		}
 		public QStringListModel(List<string> strings) : this((Type) null) {
 			CreateProxy();
@@ -59,63 +53,63 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStringListModel", "(const QStringList&)", "?")]
 		private void NewQStringListModel(List<string> strings) {
-			ProxyQStringListModel().NewQStringListModel(strings);
+			((QStringListModel) interceptor).NewQStringListModel(strings);
 		}
 		[SmokeMethod("rowCount", "(const QModelIndex&) const", "#")]
 		public override int RowCount(QModelIndex parent) {
-			return ProxyQStringListModel().RowCount(parent);
+			return ((QStringListModel) interceptor).RowCount(parent);
 		}
 		[SmokeMethod("rowCount", "() const", "")]
 		public virtual int RowCount() {
-			return ProxyQStringListModel().RowCount();
+			return ((QStringListModel) interceptor).RowCount();
 		}
 		[SmokeMethod("data", "(const QModelIndex&, int) const", "#$")]
 		public override QVariant Data(QModelIndex index, int role) {
-			return ProxyQStringListModel().Data(index,role);
+			return ((QStringListModel) interceptor).Data(index,role);
 		}
 		[SmokeMethod("setData", "(const QModelIndex&, const QVariant&, int)", "##$")]
 		public override bool SetData(QModelIndex index, QVariant value, int role) {
-			return ProxyQStringListModel().SetData(index,value,role);
+			return ((QStringListModel) interceptor).SetData(index,value,role);
 		}
 		[SmokeMethod("setData", "(const QModelIndex&, const QVariant&)", "##")]
 		public override bool SetData(QModelIndex index, QVariant value) {
-			return ProxyQStringListModel().SetData(index,value);
+			return ((QStringListModel) interceptor).SetData(index,value);
 		}
 		[SmokeMethod("flags", "(const QModelIndex&) const", "#")]
 		public override int Flags(QModelIndex index) {
-			return ProxyQStringListModel().Flags(index);
+			return ((QStringListModel) interceptor).Flags(index);
 		}
 		[SmokeMethod("insertRows", "(int, int, const QModelIndex&)", "$$#")]
 		public override bool InsertRows(int row, int count, QModelIndex parent) {
-			return ProxyQStringListModel().InsertRows(row,count,parent);
+			return ((QStringListModel) interceptor).InsertRows(row,count,parent);
 		}
 		[SmokeMethod("insertRows", "(int, int)", "$$")]
 		public override bool InsertRows(int row, int count) {
-			return ProxyQStringListModel().InsertRows(row,count);
+			return ((QStringListModel) interceptor).InsertRows(row,count);
 		}
 		[SmokeMethod("removeRows", "(int, int, const QModelIndex&)", "$$#")]
 		public override bool RemoveRows(int row, int count, QModelIndex parent) {
-			return ProxyQStringListModel().RemoveRows(row,count,parent);
+			return ((QStringListModel) interceptor).RemoveRows(row,count,parent);
 		}
 		[SmokeMethod("removeRows", "(int, int)", "$$")]
 		public override bool RemoveRows(int row, int count) {
-			return ProxyQStringListModel().RemoveRows(row,count);
+			return ((QStringListModel) interceptor).RemoveRows(row,count);
 		}
 		[SmokeMethod("sort", "(int, Qt::SortOrder)", "$$")]
 		public override void Sort(int column, Qt.SortOrder order) {
-			ProxyQStringListModel().Sort(column,order);
+			((QStringListModel) interceptor).Sort(column,order);
 		}
 		[SmokeMethod("sort", "(int)", "$")]
 		public override void Sort(int column) {
-			ProxyQStringListModel().Sort(column);
+			((QStringListModel) interceptor).Sort(column);
 		}
 		[SmokeMethod("stringList", "() const", "")]
 		public List<string> StringList() {
-			return ProxyQStringListModel().StringList();
+			return ((QStringListModel) interceptor).StringList();
 		}
 		[SmokeMethod("setStringList", "(const QStringList&)", "?")]
 		public void SetStringList(List<string> strings) {
-			ProxyQStringListModel().SetStringList(strings);
+			((QStringListModel) interceptor).SetStringList(strings);
 		}
 		~QStringListModel() {
 			DisposeQStringListModel();
@@ -125,13 +119,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QStringListModel", "()", "")]
 		private void DisposeQStringListModel() {
-			ProxyQStringListModel().DisposeQStringListModel();
+			((QStringListModel) interceptor).DisposeQStringListModel();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQStringListModel().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQStringListModel().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQStringListModelSignals Emit {
 			get { return (IQStringListModelSignals) Q_EMIT; }

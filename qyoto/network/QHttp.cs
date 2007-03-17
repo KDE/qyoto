@@ -16,18 +16,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QHttp), this);
-			_interceptor = (QHttp) realProxy.GetTransparentProxy();
+			interceptor = (QHttp) realProxy.GetTransparentProxy();
 		}
-		private QHttp ProxyQHttp() {
-			return (QHttp) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQHttpProxy staticInterceptor = null;
 		static QHttp() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQHttpProxy), null);
-			_staticInterceptor = (IQHttpProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQHttpProxy StaticQHttp() {
-			return (IQHttpProxy) _staticInterceptor;
+			staticInterceptor = (IQHttpProxy) realProxy.GetTransparentProxy();
 		}
 		public enum State {
 			Unconnected = 0,
@@ -54,7 +48,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QHttp", "(QObject*)", "#")]
 		private void NewQHttp(QObject parent) {
-			ProxyQHttp().NewQHttp(parent);
+			((QHttp) interceptor).NewQHttp(parent);
 		}
 		public QHttp() : this((Type) null) {
 			CreateProxy();
@@ -62,7 +56,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QHttp", "()", "")]
 		private void NewQHttp() {
-			ProxyQHttp().NewQHttp();
+			((QHttp) interceptor).NewQHttp();
 		}
 		public QHttp(string hostname, ushort port, QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -70,7 +64,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QHttp", "(const QString&, quint16, QObject*)", "$$#")]
 		private void NewQHttp(string hostname, ushort port, QObject parent) {
-			ProxyQHttp().NewQHttp(hostname,port,parent);
+			((QHttp) interceptor).NewQHttp(hostname,port,parent);
 		}
 		public QHttp(string hostname, ushort port) : this((Type) null) {
 			CreateProxy();
@@ -78,7 +72,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QHttp", "(const QString&, quint16)", "$$")]
 		private void NewQHttp(string hostname, ushort port) {
-			ProxyQHttp().NewQHttp(hostname,port);
+			((QHttp) interceptor).NewQHttp(hostname,port);
 		}
 		public QHttp(string hostname) : this((Type) null) {
 			CreateProxy();
@@ -86,152 +80,152 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QHttp", "(const QString&)", "$")]
 		private void NewQHttp(string hostname) {
-			ProxyQHttp().NewQHttp(hostname);
+			((QHttp) interceptor).NewQHttp(hostname);
 		}
 		[SmokeMethod("setHost", "(const QString&, quint16)", "$$")]
 		public int SetHost(string hostname, ushort port) {
-			return ProxyQHttp().SetHost(hostname,port);
+			return ((QHttp) interceptor).SetHost(hostname,port);
 		}
 		[SmokeMethod("setHost", "(const QString&)", "$")]
 		public int SetHost(string hostname) {
-			return ProxyQHttp().SetHost(hostname);
+			return ((QHttp) interceptor).SetHost(hostname);
 		}
 		[SmokeMethod("setSocket", "(QTcpSocket*)", "#")]
 		public int SetSocket(QTcpSocket socket) {
-			return ProxyQHttp().SetSocket(socket);
+			return ((QHttp) interceptor).SetSocket(socket);
 		}
 		[SmokeMethod("setUser", "(const QString&, const QString&)", "$$")]
 		public int SetUser(string username, string password) {
-			return ProxyQHttp().SetUser(username,password);
+			return ((QHttp) interceptor).SetUser(username,password);
 		}
 		[SmokeMethod("setUser", "(const QString&)", "$")]
 		public int SetUser(string username) {
-			return ProxyQHttp().SetUser(username);
+			return ((QHttp) interceptor).SetUser(username);
 		}
 		[SmokeMethod("setProxy", "(const QString&, int, const QString&, const QString&)", "$$$$")]
 		public int SetProxy(string host, int port, string username, string password) {
-			return ProxyQHttp().SetProxy(host,port,username,password);
+			return ((QHttp) interceptor).SetProxy(host,port,username,password);
 		}
 		[SmokeMethod("setProxy", "(const QString&, int, const QString&)", "$$$")]
 		public int SetProxy(string host, int port, string username) {
-			return ProxyQHttp().SetProxy(host,port,username);
+			return ((QHttp) interceptor).SetProxy(host,port,username);
 		}
 		[SmokeMethod("setProxy", "(const QString&, int)", "$$")]
 		public int SetProxy(string host, int port) {
-			return ProxyQHttp().SetProxy(host,port);
+			return ((QHttp) interceptor).SetProxy(host,port);
 		}
 		[SmokeMethod("get", "(const QString&, QIODevice*)", "$#")]
 		public int Get(string path, QIODevice to) {
-			return ProxyQHttp().Get(path,to);
+			return ((QHttp) interceptor).Get(path,to);
 		}
 		[SmokeMethod("get", "(const QString&)", "$")]
 		public int Get(string path) {
-			return ProxyQHttp().Get(path);
+			return ((QHttp) interceptor).Get(path);
 		}
 		[SmokeMethod("post", "(const QString&, QIODevice*, QIODevice*)", "$##")]
 		public int Post(string path, QIODevice data, QIODevice to) {
-			return ProxyQHttp().Post(path,data,to);
+			return ((QHttp) interceptor).Post(path,data,to);
 		}
 		[SmokeMethod("post", "(const QString&, QIODevice*)", "$#")]
 		public int Post(string path, QIODevice data) {
-			return ProxyQHttp().Post(path,data);
+			return ((QHttp) interceptor).Post(path,data);
 		}
 		[SmokeMethod("post", "(const QString&, const QByteArray&, QIODevice*)", "$##")]
 		public int Post(string path, QByteArray data, QIODevice to) {
-			return ProxyQHttp().Post(path,data,to);
+			return ((QHttp) interceptor).Post(path,data,to);
 		}
 		[SmokeMethod("post", "(const QString&, const QByteArray&)", "$#")]
 		public int Post(string path, QByteArray data) {
-			return ProxyQHttp().Post(path,data);
+			return ((QHttp) interceptor).Post(path,data);
 		}
 		[SmokeMethod("head", "(const QString&)", "$")]
 		public int Head(string path) {
-			return ProxyQHttp().Head(path);
+			return ((QHttp) interceptor).Head(path);
 		}
 		[SmokeMethod("request", "(const QHttpRequestHeader&, QIODevice*, QIODevice*)", "###")]
 		public int Request(QHttpRequestHeader header, QIODevice device, QIODevice to) {
-			return ProxyQHttp().Request(header,device,to);
+			return ((QHttp) interceptor).Request(header,device,to);
 		}
 		[SmokeMethod("request", "(const QHttpRequestHeader&, QIODevice*)", "##")]
 		public int Request(QHttpRequestHeader header, QIODevice device) {
-			return ProxyQHttp().Request(header,device);
+			return ((QHttp) interceptor).Request(header,device);
 		}
 		[SmokeMethod("request", "(const QHttpRequestHeader&)", "#")]
 		public int Request(QHttpRequestHeader header) {
-			return ProxyQHttp().Request(header);
+			return ((QHttp) interceptor).Request(header);
 		}
 		[SmokeMethod("request", "(const QHttpRequestHeader&, const QByteArray&, QIODevice*)", "###")]
 		public int Request(QHttpRequestHeader header, QByteArray data, QIODevice to) {
-			return ProxyQHttp().Request(header,data,to);
+			return ((QHttp) interceptor).Request(header,data,to);
 		}
 		[SmokeMethod("request", "(const QHttpRequestHeader&, const QByteArray&)", "##")]
 		public int Request(QHttpRequestHeader header, QByteArray data) {
-			return ProxyQHttp().Request(header,data);
+			return ((QHttp) interceptor).Request(header,data);
 		}
 		[SmokeMethod("closeConnection", "()", "")]
 		public int CloseConnection() {
-			return ProxyQHttp().CloseConnection();
+			return ((QHttp) interceptor).CloseConnection();
 		}
 		[SmokeMethod("close", "()", "")]
 		public int Close() {
-			return ProxyQHttp().Close();
+			return ((QHttp) interceptor).Close();
 		}
 		[SmokeMethod("bytesAvailable", "() const", "")]
 		public long BytesAvailable() {
-			return ProxyQHttp().BytesAvailable();
+			return ((QHttp) interceptor).BytesAvailable();
 		}
 		[SmokeMethod("read", "(char*, qint64)", "$$")]
 		public long Read(string data, long maxlen) {
-			return ProxyQHttp().Read(data,maxlen);
+			return ((QHttp) interceptor).Read(data,maxlen);
 		}
 		[SmokeMethod("readAll", "()", "")]
 		public QByteArray ReadAll() {
-			return ProxyQHttp().ReadAll();
+			return ((QHttp) interceptor).ReadAll();
 		}
 		[SmokeMethod("currentId", "() const", "")]
 		public int CurrentId() {
-			return ProxyQHttp().CurrentId();
+			return ((QHttp) interceptor).CurrentId();
 		}
 		[SmokeMethod("currentSourceDevice", "() const", "")]
 		public QIODevice CurrentSourceDevice() {
-			return ProxyQHttp().CurrentSourceDevice();
+			return ((QHttp) interceptor).CurrentSourceDevice();
 		}
 		[SmokeMethod("currentDestinationDevice", "() const", "")]
 		public QIODevice CurrentDestinationDevice() {
-			return ProxyQHttp().CurrentDestinationDevice();
+			return ((QHttp) interceptor).CurrentDestinationDevice();
 		}
 		[SmokeMethod("currentRequest", "() const", "")]
 		public QHttpRequestHeader CurrentRequest() {
-			return ProxyQHttp().CurrentRequest();
+			return ((QHttp) interceptor).CurrentRequest();
 		}
 		[SmokeMethod("lastResponse", "() const", "")]
 		public QHttpResponseHeader LastResponse() {
-			return ProxyQHttp().LastResponse();
+			return ((QHttp) interceptor).LastResponse();
 		}
 		[SmokeMethod("hasPendingRequests", "() const", "")]
 		public bool HasPendingRequests() {
-			return ProxyQHttp().HasPendingRequests();
+			return ((QHttp) interceptor).HasPendingRequests();
 		}
 		[SmokeMethod("clearPendingRequests", "()", "")]
 		public void ClearPendingRequests() {
-			ProxyQHttp().ClearPendingRequests();
+			((QHttp) interceptor).ClearPendingRequests();
 		}
 		[SmokeMethod("state", "() const", "")]
 		public QHttp.State state() {
-			return ProxyQHttp().state();
+			return ((QHttp) interceptor).state();
 		}
 		[SmokeMethod("error", "() const", "")]
 		public QHttp.Error error() {
-			return ProxyQHttp().error();
+			return ((QHttp) interceptor).error();
 		}
 		[SmokeMethod("errorString", "() const", "")]
 		public string ErrorString() {
-			return ProxyQHttp().ErrorString();
+			return ((QHttp) interceptor).ErrorString();
 		}
 		[Q_SLOT("void abort()")]
 		[SmokeMethod("abort", "()", "")]
 		public void Abort() {
-			ProxyQHttp().Abort();
+			((QHttp) interceptor).Abort();
 		}
 		~QHttp() {
 			DisposeQHttp();
@@ -241,13 +235,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QHttp", "()", "")]
 		private void DisposeQHttp() {
-			ProxyQHttp().DisposeQHttp();
+			((QHttp) interceptor).DisposeQHttp();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQHttp().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQHttp().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQHttpSignals Emit {
 			get { return (IQHttpSignals) Q_EMIT; }

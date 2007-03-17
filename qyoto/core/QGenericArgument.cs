@@ -5,15 +5,12 @@ namespace Qyoto {
 
 	[SmokeClass("QGenericArgument")]
 	public class QGenericArgument : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QGenericArgument interceptor = null;
+		private IntPtr smokeObject;
 		protected QGenericArgument(Type dummy) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGenericArgument), this);
-			_interceptor = (QGenericArgument) realProxy.GetTransparentProxy();
-		}
-		private QGenericArgument ProxyQGenericArgument() {
-			return (QGenericArgument) _interceptor;
+			interceptor = (QGenericArgument) realProxy.GetTransparentProxy();
 		}
 		// QGenericArgument* QGenericArgument(const char* arg1,const void* arg2); >>>> NOT CONVERTED
 		// void* data(); >>>> NOT CONVERTED
@@ -23,7 +20,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGenericArgument", "(const char*)", "$")]
 		private void NewQGenericArgument(string aName) {
-			ProxyQGenericArgument().NewQGenericArgument(aName);
+			((QGenericArgument) interceptor).NewQGenericArgument(aName);
 		}
 		public QGenericArgument() : this((Type) null) {
 			CreateProxy();
@@ -31,11 +28,11 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGenericArgument", "()", "")]
 		private void NewQGenericArgument() {
-			ProxyQGenericArgument().NewQGenericArgument();
+			((QGenericArgument) interceptor).NewQGenericArgument();
 		}
 		[SmokeMethod("name", "() const", "")]
 		public string Name() {
-			return ProxyQGenericArgument().Name();
+			return ((QGenericArgument) interceptor).Name();
 		}
 		~QGenericArgument() {
 			DisposeQGenericArgument();
@@ -45,7 +42,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QGenericArgument", "()", "")]
 		private void DisposeQGenericArgument() {
-			ProxyQGenericArgument().DisposeQGenericArgument();
+			((QGenericArgument) interceptor).DisposeQGenericArgument();
 		}
 	}
 }

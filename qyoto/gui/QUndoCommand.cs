@@ -5,15 +5,12 @@ namespace Qyoto {
 
 	[SmokeClass("QUndoCommand")]
 	public class QUndoCommand : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QUndoCommand interceptor = null;
+		private IntPtr smokeObject;
 		protected QUndoCommand(Type dummy) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QUndoCommand), this);
-			_interceptor = (QUndoCommand) realProxy.GetTransparentProxy();
-		}
-		private QUndoCommand ProxyQUndoCommand() {
-			return (QUndoCommand) _interceptor;
+			interceptor = (QUndoCommand) realProxy.GetTransparentProxy();
 		}
 		public QUndoCommand(QUndoCommand parent) : this((Type) null) {
 			CreateProxy();
@@ -21,7 +18,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QUndoCommand", "(QUndoCommand*)", "#")]
 		private void NewQUndoCommand(QUndoCommand parent) {
-			ProxyQUndoCommand().NewQUndoCommand(parent);
+			((QUndoCommand) interceptor).NewQUndoCommand(parent);
 		}
 		public QUndoCommand() : this((Type) null) {
 			CreateProxy();
@@ -29,7 +26,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QUndoCommand", "()", "")]
 		private void NewQUndoCommand() {
-			ProxyQUndoCommand().NewQUndoCommand();
+			((QUndoCommand) interceptor).NewQUndoCommand();
 		}
 		public QUndoCommand(string text, QUndoCommand parent) : this((Type) null) {
 			CreateProxy();
@@ -37,7 +34,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QUndoCommand", "(const QString&, QUndoCommand*)", "$#")]
 		private void NewQUndoCommand(string text, QUndoCommand parent) {
-			ProxyQUndoCommand().NewQUndoCommand(text,parent);
+			((QUndoCommand) interceptor).NewQUndoCommand(text,parent);
 		}
 		public QUndoCommand(string text) : this((Type) null) {
 			CreateProxy();
@@ -45,31 +42,31 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QUndoCommand", "(const QString&)", "$")]
 		private void NewQUndoCommand(string text) {
-			ProxyQUndoCommand().NewQUndoCommand(text);
+			((QUndoCommand) interceptor).NewQUndoCommand(text);
 		}
 		[SmokeMethod("undo", "()", "")]
 		public virtual void Undo() {
-			ProxyQUndoCommand().Undo();
+			((QUndoCommand) interceptor).Undo();
 		}
 		[SmokeMethod("redo", "()", "")]
 		public virtual void Redo() {
-			ProxyQUndoCommand().Redo();
+			((QUndoCommand) interceptor).Redo();
 		}
 		[SmokeMethod("text", "() const", "")]
 		public string Text() {
-			return ProxyQUndoCommand().Text();
+			return ((QUndoCommand) interceptor).Text();
 		}
 		[SmokeMethod("setText", "(const QString&)", "$")]
 		public void SetText(string text) {
-			ProxyQUndoCommand().SetText(text);
+			((QUndoCommand) interceptor).SetText(text);
 		}
 		[SmokeMethod("id", "() const", "")]
 		public virtual int Id() {
-			return ProxyQUndoCommand().Id();
+			return ((QUndoCommand) interceptor).Id();
 		}
 		[SmokeMethod("mergeWith", "(const QUndoCommand*)", "#")]
 		public virtual bool MergeWith(QUndoCommand other) {
-			return ProxyQUndoCommand().MergeWith(other);
+			return ((QUndoCommand) interceptor).MergeWith(other);
 		}
 		~QUndoCommand() {
 			DisposeQUndoCommand();
@@ -79,7 +76,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QUndoCommand", "()", "")]
 		private void DisposeQUndoCommand() {
-			ProxyQUndoCommand().DisposeQUndoCommand();
+			((QUndoCommand) interceptor).DisposeQUndoCommand();
 		}
 	}
 }

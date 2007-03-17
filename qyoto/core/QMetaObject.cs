@@ -5,8 +5,8 @@ namespace Qyoto {
 
 	[SmokeClass("QMetaObject")]
 	public class QMetaObject : MarshalByRefObject {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QMetaObject interceptor = null;
+		private IntPtr smokeObject;
 		protected QMetaObject(Type dummy) {}
 		[SmokeClass("QMetaObject")]
 		interface IQMetaObjectProxy {
@@ -117,18 +117,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMetaObject), this);
-			_interceptor = (QMetaObject) realProxy.GetTransparentProxy();
+			interceptor = (QMetaObject) realProxy.GetTransparentProxy();
 		}
-		private QMetaObject ProxyQMetaObject() {
-			return (QMetaObject) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQMetaObjectProxy staticInterceptor = null;
 		static QMetaObject() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQMetaObjectProxy), null);
-			_staticInterceptor = (IQMetaObjectProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQMetaObjectProxy StaticQMetaObject() {
-			return (IQMetaObjectProxy) _staticInterceptor;
+			staticInterceptor = (IQMetaObjectProxy) realProxy.GetTransparentProxy();
 		}
 		public enum Call {
 			InvokeMetaMethod = 0,
@@ -150,107 +144,107 @@ namespace Qyoto {
 		// void changeGuard(QObject** arg1,QObject* arg2); >>>> NOT CONVERTED
 		[SmokeMethod("className", "() const", "")]
 		public string ClassName() {
-			return ProxyQMetaObject().ClassName();
+			return ((QMetaObject) interceptor).ClassName();
 		}
 		[SmokeMethod("superClass", "() const", "")]
 		public QMetaObject SuperClass() {
-			return ProxyQMetaObject().SuperClass();
+			return ((QMetaObject) interceptor).SuperClass();
 		}
 		[SmokeMethod("cast", "(QObject*) const", "#")]
 		public QObject Cast(QObject arg1) {
-			return ProxyQMetaObject().Cast(arg1);
+			return ((QMetaObject) interceptor).Cast(arg1);
 		}
 		[SmokeMethod("tr", "(const char*, const char*) const", "$$")]
 		public string Tr(string s, string c) {
-			return ProxyQMetaObject().Tr(s,c);
+			return ((QMetaObject) interceptor).Tr(s,c);
 		}
 		[SmokeMethod("trUtf8", "(const char*, const char*) const", "$$")]
 		public string TrUtf8(string s, string c) {
-			return ProxyQMetaObject().TrUtf8(s,c);
+			return ((QMetaObject) interceptor).TrUtf8(s,c);
 		}
 		[SmokeMethod("tr", "(const char*, const char*, int) const", "$$$")]
 		public string Tr(string s, string c, int n) {
-			return ProxyQMetaObject().Tr(s,c,n);
+			return ((QMetaObject) interceptor).Tr(s,c,n);
 		}
 		[SmokeMethod("trUtf8", "(const char*, const char*, int) const", "$$$")]
 		public string TrUtf8(string s, string c, int n) {
-			return ProxyQMetaObject().TrUtf8(s,c,n);
+			return ((QMetaObject) interceptor).TrUtf8(s,c,n);
 		}
 		[SmokeMethod("methodOffset", "() const", "")]
 		public int MethodOffset() {
-			return ProxyQMetaObject().MethodOffset();
+			return ((QMetaObject) interceptor).MethodOffset();
 		}
 		[SmokeMethod("enumeratorOffset", "() const", "")]
 		public int EnumeratorOffset() {
-			return ProxyQMetaObject().EnumeratorOffset();
+			return ((QMetaObject) interceptor).EnumeratorOffset();
 		}
 		[SmokeMethod("propertyOffset", "() const", "")]
 		public int PropertyOffset() {
-			return ProxyQMetaObject().PropertyOffset();
+			return ((QMetaObject) interceptor).PropertyOffset();
 		}
 		[SmokeMethod("classInfoOffset", "() const", "")]
 		public int ClassInfoOffset() {
-			return ProxyQMetaObject().ClassInfoOffset();
+			return ((QMetaObject) interceptor).ClassInfoOffset();
 		}
 		[SmokeMethod("methodCount", "() const", "")]
 		public int MethodCount() {
-			return ProxyQMetaObject().MethodCount();
+			return ((QMetaObject) interceptor).MethodCount();
 		}
 		[SmokeMethod("enumeratorCount", "() const", "")]
 		public int EnumeratorCount() {
-			return ProxyQMetaObject().EnumeratorCount();
+			return ((QMetaObject) interceptor).EnumeratorCount();
 		}
 		[SmokeMethod("propertyCount", "() const", "")]
 		public int PropertyCount() {
-			return ProxyQMetaObject().PropertyCount();
+			return ((QMetaObject) interceptor).PropertyCount();
 		}
 		[SmokeMethod("classInfoCount", "() const", "")]
 		public int ClassInfoCount() {
-			return ProxyQMetaObject().ClassInfoCount();
+			return ((QMetaObject) interceptor).ClassInfoCount();
 		}
 		[SmokeMethod("indexOfMethod", "(const char*) const", "$")]
 		public int IndexOfMethod(string method) {
-			return ProxyQMetaObject().IndexOfMethod(method);
+			return ((QMetaObject) interceptor).IndexOfMethod(method);
 		}
 		[SmokeMethod("indexOfSignal", "(const char*) const", "$")]
 		public int IndexOfSignal(string signal) {
-			return ProxyQMetaObject().IndexOfSignal(signal);
+			return ((QMetaObject) interceptor).IndexOfSignal(signal);
 		}
 		[SmokeMethod("indexOfSlot", "(const char*) const", "$")]
 		public int IndexOfSlot(string slot) {
-			return ProxyQMetaObject().IndexOfSlot(slot);
+			return ((QMetaObject) interceptor).IndexOfSlot(slot);
 		}
 		[SmokeMethod("indexOfEnumerator", "(const char*) const", "$")]
 		public int IndexOfEnumerator(string name) {
-			return ProxyQMetaObject().IndexOfEnumerator(name);
+			return ((QMetaObject) interceptor).IndexOfEnumerator(name);
 		}
 		[SmokeMethod("indexOfProperty", "(const char*) const", "$")]
 		public int IndexOfProperty(string name) {
-			return ProxyQMetaObject().IndexOfProperty(name);
+			return ((QMetaObject) interceptor).IndexOfProperty(name);
 		}
 		[SmokeMethod("indexOfClassInfo", "(const char*) const", "$")]
 		public int IndexOfClassInfo(string name) {
-			return ProxyQMetaObject().IndexOfClassInfo(name);
+			return ((QMetaObject) interceptor).IndexOfClassInfo(name);
 		}
 		[SmokeMethod("method", "(int) const", "$")]
 		public QMetaMethod Method(int index) {
-			return ProxyQMetaObject().Method(index);
+			return ((QMetaObject) interceptor).Method(index);
 		}
 		[SmokeMethod("enumerator", "(int) const", "$")]
 		public QMetaEnum Enumerator(int index) {
-			return ProxyQMetaObject().Enumerator(index);
+			return ((QMetaObject) interceptor).Enumerator(index);
 		}
 		[SmokeMethod("property", "(int) const", "$")]
 		public QMetaProperty Property(int index) {
-			return ProxyQMetaObject().Property(index);
+			return ((QMetaObject) interceptor).Property(index);
 		}
 		[SmokeMethod("classInfo", "(int) const", "$")]
 		public QMetaClassInfo ClassInfo(int index) {
-			return ProxyQMetaObject().ClassInfo(index);
+			return ((QMetaObject) interceptor).ClassInfo(index);
 		}
 		[SmokeMethod("userProperty", "() const", "")]
 		public QMetaProperty UserProperty() {
-			return ProxyQMetaObject().UserProperty();
+			return ((QMetaObject) interceptor).UserProperty();
 		}
 		public QMetaObject() : this((Type) null) {
 			CreateProxy();
@@ -258,163 +252,163 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QMetaObject", "()", "")]
 		private void NewQMetaObject() {
-			ProxyQMetaObject().NewQMetaObject();
+			((QMetaObject) interceptor).NewQMetaObject();
 		}
 		public static bool CheckConnectArgs(string signal, string method) {
-			return StaticQMetaObject().CheckConnectArgs(signal,method);
+			return staticInterceptor.CheckConnectArgs(signal,method);
 		}
 		public static QByteArray NormalizedSignature(string method) {
-			return StaticQMetaObject().NormalizedSignature(method);
+			return staticInterceptor.NormalizedSignature(method);
 		}
 		public static QByteArray NormalizedType(string type) {
-			return StaticQMetaObject().NormalizedType(type);
+			return staticInterceptor.NormalizedType(type);
 		}
 		public static bool Connect(QObject sender, int signal_index, QObject receiver, int method_index, int type, out int types) {
-			return StaticQMetaObject().Connect(sender,signal_index,receiver,method_index,type,out types);
+			return staticInterceptor.Connect(sender,signal_index,receiver,method_index,type,out types);
 		}
 		public static bool Connect(QObject sender, int signal_index, QObject receiver, int method_index, int type) {
-			return StaticQMetaObject().Connect(sender,signal_index,receiver,method_index,type);
+			return staticInterceptor.Connect(sender,signal_index,receiver,method_index,type);
 		}
 		public static bool Connect(QObject sender, int signal_index, QObject receiver, int method_index) {
-			return StaticQMetaObject().Connect(sender,signal_index,receiver,method_index);
+			return staticInterceptor.Connect(sender,signal_index,receiver,method_index);
 		}
 		public static bool Disconnect(QObject sender, int signal_index, QObject receiver, int method_index) {
-			return StaticQMetaObject().Disconnect(sender,signal_index,receiver,method_index);
+			return staticInterceptor.Disconnect(sender,signal_index,receiver,method_index);
 		}
 		public static void ConnectSlotsByName(QObject o) {
-			StaticQMetaObject().ConnectSlotsByName(o);
+			staticInterceptor.ConnectSlotsByName(o);
 		}
 		public static bool InvokeMethod(QObject arg1, string member, Qt.ConnectionType arg3, QGenericReturnArgument ret, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6, QGenericArgument val7, QGenericArgument val8, QGenericArgument val9) {
-			return StaticQMetaObject().InvokeMethod(arg1,member,arg3,ret,val0,val1,val2,val3,val4,val5,val6,val7,val8,val9);
+			return staticInterceptor.InvokeMethod(arg1,member,arg3,ret,val0,val1,val2,val3,val4,val5,val6,val7,val8,val9);
 		}
 		public static bool InvokeMethod(QObject arg1, string member, Qt.ConnectionType arg3, QGenericReturnArgument ret, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6, QGenericArgument val7, QGenericArgument val8) {
-			return StaticQMetaObject().InvokeMethod(arg1,member,arg3,ret,val0,val1,val2,val3,val4,val5,val6,val7,val8);
+			return staticInterceptor.InvokeMethod(arg1,member,arg3,ret,val0,val1,val2,val3,val4,val5,val6,val7,val8);
 		}
 		public static bool InvokeMethod(QObject arg1, string member, Qt.ConnectionType arg3, QGenericReturnArgument ret, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6, QGenericArgument val7) {
-			return StaticQMetaObject().InvokeMethod(arg1,member,arg3,ret,val0,val1,val2,val3,val4,val5,val6,val7);
+			return staticInterceptor.InvokeMethod(arg1,member,arg3,ret,val0,val1,val2,val3,val4,val5,val6,val7);
 		}
 		public static bool InvokeMethod(QObject arg1, string member, Qt.ConnectionType arg3, QGenericReturnArgument ret, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6) {
-			return StaticQMetaObject().InvokeMethod(arg1,member,arg3,ret,val0,val1,val2,val3,val4,val5,val6);
+			return staticInterceptor.InvokeMethod(arg1,member,arg3,ret,val0,val1,val2,val3,val4,val5,val6);
 		}
 		public static bool InvokeMethod(QObject arg1, string member, Qt.ConnectionType arg3, QGenericReturnArgument ret, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5) {
-			return StaticQMetaObject().InvokeMethod(arg1,member,arg3,ret,val0,val1,val2,val3,val4,val5);
+			return staticInterceptor.InvokeMethod(arg1,member,arg3,ret,val0,val1,val2,val3,val4,val5);
 		}
 		public static bool InvokeMethod(QObject arg1, string member, Qt.ConnectionType arg3, QGenericReturnArgument ret, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4) {
-			return StaticQMetaObject().InvokeMethod(arg1,member,arg3,ret,val0,val1,val2,val3,val4);
+			return staticInterceptor.InvokeMethod(arg1,member,arg3,ret,val0,val1,val2,val3,val4);
 		}
 		public static bool InvokeMethod(QObject arg1, string member, Qt.ConnectionType arg3, QGenericReturnArgument ret, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3) {
-			return StaticQMetaObject().InvokeMethod(arg1,member,arg3,ret,val0,val1,val2,val3);
+			return staticInterceptor.InvokeMethod(arg1,member,arg3,ret,val0,val1,val2,val3);
 		}
 		public static bool InvokeMethod(QObject arg1, string member, Qt.ConnectionType arg3, QGenericReturnArgument ret, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2) {
-			return StaticQMetaObject().InvokeMethod(arg1,member,arg3,ret,val0,val1,val2);
+			return staticInterceptor.InvokeMethod(arg1,member,arg3,ret,val0,val1,val2);
 		}
 		public static bool InvokeMethod(QObject arg1, string member, Qt.ConnectionType arg3, QGenericReturnArgument ret, QGenericArgument val0, QGenericArgument val1) {
-			return StaticQMetaObject().InvokeMethod(arg1,member,arg3,ret,val0,val1);
+			return staticInterceptor.InvokeMethod(arg1,member,arg3,ret,val0,val1);
 		}
 		public static bool InvokeMethod(QObject arg1, string member, Qt.ConnectionType arg3, QGenericReturnArgument ret, QGenericArgument val0) {
-			return StaticQMetaObject().InvokeMethod(arg1,member,arg3,ret,val0);
+			return staticInterceptor.InvokeMethod(arg1,member,arg3,ret,val0);
 		}
 		public static bool InvokeMethod(QObject arg1, string member, Qt.ConnectionType arg3, QGenericReturnArgument ret) {
-			return StaticQMetaObject().InvokeMethod(arg1,member,arg3,ret);
+			return staticInterceptor.InvokeMethod(arg1,member,arg3,ret);
 		}
 		public static bool InvokeMethod(QObject arg1, string member, QGenericReturnArgument ret, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6, QGenericArgument val7, QGenericArgument val8, QGenericArgument val9) {
-			return StaticQMetaObject().InvokeMethod(arg1,member,ret,val0,val1,val2,val3,val4,val5,val6,val7,val8,val9);
+			return staticInterceptor.InvokeMethod(arg1,member,ret,val0,val1,val2,val3,val4,val5,val6,val7,val8,val9);
 		}
 		public static bool InvokeMethod(QObject arg1, string member, QGenericReturnArgument ret, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6, QGenericArgument val7, QGenericArgument val8) {
-			return StaticQMetaObject().InvokeMethod(arg1,member,ret,val0,val1,val2,val3,val4,val5,val6,val7,val8);
+			return staticInterceptor.InvokeMethod(arg1,member,ret,val0,val1,val2,val3,val4,val5,val6,val7,val8);
 		}
 		public static bool InvokeMethod(QObject arg1, string member, QGenericReturnArgument ret, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6, QGenericArgument val7) {
-			return StaticQMetaObject().InvokeMethod(arg1,member,ret,val0,val1,val2,val3,val4,val5,val6,val7);
+			return staticInterceptor.InvokeMethod(arg1,member,ret,val0,val1,val2,val3,val4,val5,val6,val7);
 		}
 		public static bool InvokeMethod(QObject arg1, string member, QGenericReturnArgument ret, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6) {
-			return StaticQMetaObject().InvokeMethod(arg1,member,ret,val0,val1,val2,val3,val4,val5,val6);
+			return staticInterceptor.InvokeMethod(arg1,member,ret,val0,val1,val2,val3,val4,val5,val6);
 		}
 		public static bool InvokeMethod(QObject arg1, string member, QGenericReturnArgument ret, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5) {
-			return StaticQMetaObject().InvokeMethod(arg1,member,ret,val0,val1,val2,val3,val4,val5);
+			return staticInterceptor.InvokeMethod(arg1,member,ret,val0,val1,val2,val3,val4,val5);
 		}
 		public static bool InvokeMethod(QObject arg1, string member, QGenericReturnArgument ret, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4) {
-			return StaticQMetaObject().InvokeMethod(arg1,member,ret,val0,val1,val2,val3,val4);
+			return staticInterceptor.InvokeMethod(arg1,member,ret,val0,val1,val2,val3,val4);
 		}
 		public static bool InvokeMethod(QObject arg1, string member, QGenericReturnArgument ret, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3) {
-			return StaticQMetaObject().InvokeMethod(arg1,member,ret,val0,val1,val2,val3);
+			return staticInterceptor.InvokeMethod(arg1,member,ret,val0,val1,val2,val3);
 		}
 		public static bool InvokeMethod(QObject arg1, string member, QGenericReturnArgument ret, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2) {
-			return StaticQMetaObject().InvokeMethod(arg1,member,ret,val0,val1,val2);
+			return staticInterceptor.InvokeMethod(arg1,member,ret,val0,val1,val2);
 		}
 		public static bool InvokeMethod(QObject arg1, string member, QGenericReturnArgument ret, QGenericArgument val0, QGenericArgument val1) {
-			return StaticQMetaObject().InvokeMethod(arg1,member,ret,val0,val1);
+			return staticInterceptor.InvokeMethod(arg1,member,ret,val0,val1);
 		}
 		public static bool InvokeMethod(QObject arg1, string member, QGenericReturnArgument ret, QGenericArgument val0) {
-			return StaticQMetaObject().InvokeMethod(arg1,member,ret,val0);
+			return staticInterceptor.InvokeMethod(arg1,member,ret,val0);
 		}
 		public static bool InvokeMethod(QObject arg1, string member, QGenericReturnArgument ret) {
-			return StaticQMetaObject().InvokeMethod(arg1,member,ret);
+			return staticInterceptor.InvokeMethod(arg1,member,ret);
 		}
 		public static bool InvokeMethod(QObject arg1, string member, Qt.ConnectionType type, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6, QGenericArgument val7, QGenericArgument val8, QGenericArgument val9) {
-			return StaticQMetaObject().InvokeMethod(arg1,member,type,val0,val1,val2,val3,val4,val5,val6,val7,val8,val9);
+			return staticInterceptor.InvokeMethod(arg1,member,type,val0,val1,val2,val3,val4,val5,val6,val7,val8,val9);
 		}
 		public static bool InvokeMethod(QObject arg1, string member, Qt.ConnectionType type, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6, QGenericArgument val7, QGenericArgument val8) {
-			return StaticQMetaObject().InvokeMethod(arg1,member,type,val0,val1,val2,val3,val4,val5,val6,val7,val8);
+			return staticInterceptor.InvokeMethod(arg1,member,type,val0,val1,val2,val3,val4,val5,val6,val7,val8);
 		}
 		public static bool InvokeMethod(QObject arg1, string member, Qt.ConnectionType type, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6, QGenericArgument val7) {
-			return StaticQMetaObject().InvokeMethod(arg1,member,type,val0,val1,val2,val3,val4,val5,val6,val7);
+			return staticInterceptor.InvokeMethod(arg1,member,type,val0,val1,val2,val3,val4,val5,val6,val7);
 		}
 		public static bool InvokeMethod(QObject arg1, string member, Qt.ConnectionType type, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6) {
-			return StaticQMetaObject().InvokeMethod(arg1,member,type,val0,val1,val2,val3,val4,val5,val6);
+			return staticInterceptor.InvokeMethod(arg1,member,type,val0,val1,val2,val3,val4,val5,val6);
 		}
 		public static bool InvokeMethod(QObject arg1, string member, Qt.ConnectionType type, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5) {
-			return StaticQMetaObject().InvokeMethod(arg1,member,type,val0,val1,val2,val3,val4,val5);
+			return staticInterceptor.InvokeMethod(arg1,member,type,val0,val1,val2,val3,val4,val5);
 		}
 		public static bool InvokeMethod(QObject arg1, string member, Qt.ConnectionType type, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4) {
-			return StaticQMetaObject().InvokeMethod(arg1,member,type,val0,val1,val2,val3,val4);
+			return staticInterceptor.InvokeMethod(arg1,member,type,val0,val1,val2,val3,val4);
 		}
 		public static bool InvokeMethod(QObject arg1, string member, Qt.ConnectionType type, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3) {
-			return StaticQMetaObject().InvokeMethod(arg1,member,type,val0,val1,val2,val3);
+			return staticInterceptor.InvokeMethod(arg1,member,type,val0,val1,val2,val3);
 		}
 		public static bool InvokeMethod(QObject arg1, string member, Qt.ConnectionType type, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2) {
-			return StaticQMetaObject().InvokeMethod(arg1,member,type,val0,val1,val2);
+			return staticInterceptor.InvokeMethod(arg1,member,type,val0,val1,val2);
 		}
 		public static bool InvokeMethod(QObject arg1, string member, Qt.ConnectionType type, QGenericArgument val0, QGenericArgument val1) {
-			return StaticQMetaObject().InvokeMethod(arg1,member,type,val0,val1);
+			return staticInterceptor.InvokeMethod(arg1,member,type,val0,val1);
 		}
 		public static bool InvokeMethod(QObject arg1, string member, Qt.ConnectionType type, QGenericArgument val0) {
-			return StaticQMetaObject().InvokeMethod(arg1,member,type,val0);
+			return staticInterceptor.InvokeMethod(arg1,member,type,val0);
 		}
 		public static bool InvokeMethod(QObject arg1, string member, Qt.ConnectionType type) {
-			return StaticQMetaObject().InvokeMethod(arg1,member,type);
+			return staticInterceptor.InvokeMethod(arg1,member,type);
 		}
 		public static bool InvokeMethod(QObject arg1, string member, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6, QGenericArgument val7, QGenericArgument val8, QGenericArgument val9) {
-			return StaticQMetaObject().InvokeMethod(arg1,member,val0,val1,val2,val3,val4,val5,val6,val7,val8,val9);
+			return staticInterceptor.InvokeMethod(arg1,member,val0,val1,val2,val3,val4,val5,val6,val7,val8,val9);
 		}
 		public static bool InvokeMethod(QObject arg1, string member, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6, QGenericArgument val7, QGenericArgument val8) {
-			return StaticQMetaObject().InvokeMethod(arg1,member,val0,val1,val2,val3,val4,val5,val6,val7,val8);
+			return staticInterceptor.InvokeMethod(arg1,member,val0,val1,val2,val3,val4,val5,val6,val7,val8);
 		}
 		public static bool InvokeMethod(QObject arg1, string member, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6, QGenericArgument val7) {
-			return StaticQMetaObject().InvokeMethod(arg1,member,val0,val1,val2,val3,val4,val5,val6,val7);
+			return staticInterceptor.InvokeMethod(arg1,member,val0,val1,val2,val3,val4,val5,val6,val7);
 		}
 		public static bool InvokeMethod(QObject arg1, string member, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5, QGenericArgument val6) {
-			return StaticQMetaObject().InvokeMethod(arg1,member,val0,val1,val2,val3,val4,val5,val6);
+			return staticInterceptor.InvokeMethod(arg1,member,val0,val1,val2,val3,val4,val5,val6);
 		}
 		public static bool InvokeMethod(QObject arg1, string member, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4, QGenericArgument val5) {
-			return StaticQMetaObject().InvokeMethod(arg1,member,val0,val1,val2,val3,val4,val5);
+			return staticInterceptor.InvokeMethod(arg1,member,val0,val1,val2,val3,val4,val5);
 		}
 		public static bool InvokeMethod(QObject arg1, string member, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3, QGenericArgument val4) {
-			return StaticQMetaObject().InvokeMethod(arg1,member,val0,val1,val2,val3,val4);
+			return staticInterceptor.InvokeMethod(arg1,member,val0,val1,val2,val3,val4);
 		}
 		public static bool InvokeMethod(QObject arg1, string member, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2, QGenericArgument val3) {
-			return StaticQMetaObject().InvokeMethod(arg1,member,val0,val1,val2,val3);
+			return staticInterceptor.InvokeMethod(arg1,member,val0,val1,val2,val3);
 		}
 		public static bool InvokeMethod(QObject arg1, string member, QGenericArgument val0, QGenericArgument val1, QGenericArgument val2) {
-			return StaticQMetaObject().InvokeMethod(arg1,member,val0,val1,val2);
+			return staticInterceptor.InvokeMethod(arg1,member,val0,val1,val2);
 		}
 		public static bool InvokeMethod(QObject arg1, string member, QGenericArgument val0, QGenericArgument val1) {
-			return StaticQMetaObject().InvokeMethod(arg1,member,val0,val1);
+			return staticInterceptor.InvokeMethod(arg1,member,val0,val1);
 		}
 		public static bool InvokeMethod(QObject arg1, string member, QGenericArgument val0) {
-			return StaticQMetaObject().InvokeMethod(arg1,member,val0);
+			return staticInterceptor.InvokeMethod(arg1,member,val0);
 		}
 		public static bool InvokeMethod(QObject arg1, string member) {
-			return StaticQMetaObject().InvokeMethod(arg1,member);
+			return staticInterceptor.InvokeMethod(arg1,member);
 		}
 	}
 }

@@ -15,18 +15,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QRubberBand), this);
-			_interceptor = (QRubberBand) realProxy.GetTransparentProxy();
+			interceptor = (QRubberBand) realProxy.GetTransparentProxy();
 		}
-		private QRubberBand ProxyQRubberBand() {
-			return (QRubberBand) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQRubberBandProxy staticInterceptor = null;
 		static QRubberBand() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQRubberBandProxy), null);
-			_staticInterceptor = (IQRubberBandProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQRubberBandProxy StaticQRubberBand() {
-			return (IQRubberBandProxy) _staticInterceptor;
+			staticInterceptor = (IQRubberBandProxy) realProxy.GetTransparentProxy();
 		}
 		public enum Shape {
 			Line = 0,
@@ -38,7 +32,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QRubberBand", "(QRubberBand::Shape, QWidget*)", "$#")]
 		private void NewQRubberBand(QRubberBand.Shape arg1, QWidget arg2) {
-			ProxyQRubberBand().NewQRubberBand(arg1,arg2);
+			((QRubberBand) interceptor).NewQRubberBand(arg1,arg2);
 		}
 		public QRubberBand(QRubberBand.Shape arg1) : this((Type) null) {
 			CreateProxy();
@@ -46,59 +40,59 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QRubberBand", "(QRubberBand::Shape)", "$")]
 		private void NewQRubberBand(QRubberBand.Shape arg1) {
-			ProxyQRubberBand().NewQRubberBand(arg1);
+			((QRubberBand) interceptor).NewQRubberBand(arg1);
 		}
 		[SmokeMethod("shape", "() const", "")]
 		public QRubberBand.Shape shape() {
-			return ProxyQRubberBand().shape();
+			return ((QRubberBand) interceptor).shape();
 		}
 		[SmokeMethod("setGeometry", "(const QRect&)", "#")]
 		public void SetGeometry(QRect r) {
-			ProxyQRubberBand().SetGeometry(r);
+			((QRubberBand) interceptor).SetGeometry(r);
 		}
 		[SmokeMethod("setGeometry", "(int, int, int, int)", "$$$$")]
 		public void SetGeometry(int x, int y, int w, int h) {
-			ProxyQRubberBand().SetGeometry(x,y,w,h);
+			((QRubberBand) interceptor).SetGeometry(x,y,w,h);
 		}
 		[SmokeMethod("move", "(int, int)", "$$")]
 		public void Move(int x, int y) {
-			ProxyQRubberBand().Move(x,y);
+			((QRubberBand) interceptor).Move(x,y);
 		}
 		[SmokeMethod("move", "(const QPoint&)", "#")]
 		public void Move(QPoint p) {
-			ProxyQRubberBand().Move(p);
+			((QRubberBand) interceptor).Move(p);
 		}
 		[SmokeMethod("resize", "(int, int)", "$$")]
 		public void Resize(int w, int h) {
-			ProxyQRubberBand().Resize(w,h);
+			((QRubberBand) interceptor).Resize(w,h);
 		}
 		[SmokeMethod("resize", "(const QSize&)", "#")]
 		public void Resize(QSize s) {
-			ProxyQRubberBand().Resize(s);
+			((QRubberBand) interceptor).Resize(s);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent e) {
-			return ProxyQRubberBand().Event(e);
+			return ((QRubberBand) interceptor).Event(e);
 		}
 		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
 		protected override void PaintEvent(QPaintEvent arg1) {
-			ProxyQRubberBand().PaintEvent(arg1);
+			((QRubberBand) interceptor).PaintEvent(arg1);
 		}
 		[SmokeMethod("changeEvent", "(QEvent*)", "#")]
 		protected override void ChangeEvent(QEvent arg1) {
-			ProxyQRubberBand().ChangeEvent(arg1);
+			((QRubberBand) interceptor).ChangeEvent(arg1);
 		}
 		[SmokeMethod("showEvent", "(QShowEvent*)", "#")]
 		protected override void ShowEvent(QShowEvent arg1) {
-			ProxyQRubberBand().ShowEvent(arg1);
+			((QRubberBand) interceptor).ShowEvent(arg1);
 		}
 		[SmokeMethod("resizeEvent", "(QResizeEvent*)", "#")]
 		protected override void ResizeEvent(QResizeEvent arg1) {
-			ProxyQRubberBand().ResizeEvent(arg1);
+			((QRubberBand) interceptor).ResizeEvent(arg1);
 		}
 		[SmokeMethod("moveEvent", "(QMoveEvent*)", "#")]
 		protected override void MoveEvent(QMoveEvent arg1) {
-			ProxyQRubberBand().MoveEvent(arg1);
+			((QRubberBand) interceptor).MoveEvent(arg1);
 		}
 		~QRubberBand() {
 			DisposeQRubberBand();
@@ -108,13 +102,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QRubberBand", "()", "")]
 		private void DisposeQRubberBand() {
-			ProxyQRubberBand().DisposeQRubberBand();
+			((QRubberBand) interceptor).DisposeQRubberBand();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQRubberBand().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQRubberBand().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQRubberBandSignals Emit {
 			get { return (IQRubberBandSignals) Q_EMIT; }

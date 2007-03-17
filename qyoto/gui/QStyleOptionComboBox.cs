@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QStyleOptionComboBox(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionComboBox), this);
-			_interceptor = (QStyleOptionComboBox) realProxy.GetTransparentProxy();
-		}
-		private QStyleOptionComboBox ProxyQStyleOptionComboBox() {
-			return (QStyleOptionComboBox) _interceptor;
+			interceptor = (QStyleOptionComboBox) realProxy.GetTransparentProxy();
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_ComboBox,
@@ -25,7 +22,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionComboBox", "()", "")]
 		private void NewQStyleOptionComboBox() {
-			ProxyQStyleOptionComboBox().NewQStyleOptionComboBox();
+			((QStyleOptionComboBox) interceptor).NewQStyleOptionComboBox();
 		}
 		public QStyleOptionComboBox(QStyleOptionComboBox other) : this((Type) null) {
 			CreateProxy();
@@ -33,7 +30,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionComboBox", "(const QStyleOptionComboBox&)", "#")]
 		private void NewQStyleOptionComboBox(QStyleOptionComboBox other) {
-			ProxyQStyleOptionComboBox().NewQStyleOptionComboBox(other);
+			((QStyleOptionComboBox) interceptor).NewQStyleOptionComboBox(other);
 		}
 		public QStyleOptionComboBox(int version) : this((Type) null) {
 			CreateProxy();
@@ -41,7 +38,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionComboBox", "(int)", "$")]
 		private void NewQStyleOptionComboBox(int version) {
-			ProxyQStyleOptionComboBox().NewQStyleOptionComboBox(version);
+			((QStyleOptionComboBox) interceptor).NewQStyleOptionComboBox(version);
 		}
 		~QStyleOptionComboBox() {
 			DisposeQStyleOptionComboBox();
@@ -51,7 +48,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QStyleOptionComboBox", "()", "")]
 		private void DisposeQStyleOptionComboBox() {
-			ProxyQStyleOptionComboBox().DisposeQStyleOptionComboBox();
+			((QStyleOptionComboBox) interceptor).DisposeQStyleOptionComboBox();
 		}
 	}
 }

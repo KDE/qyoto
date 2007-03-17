@@ -15,18 +15,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QWindowsStyle), this);
-			_interceptor = (QWindowsStyle) realProxy.GetTransparentProxy();
+			interceptor = (QWindowsStyle) realProxy.GetTransparentProxy();
 		}
-		private QWindowsStyle ProxyQWindowsStyle() {
-			return (QWindowsStyle) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQWindowsStyleProxy staticInterceptor = null;
 		static QWindowsStyle() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQWindowsStyleProxy), null);
-			_staticInterceptor = (IQWindowsStyleProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQWindowsStyleProxy StaticQWindowsStyle() {
-			return (IQWindowsStyleProxy) _staticInterceptor;
+			staticInterceptor = (IQWindowsStyleProxy) realProxy.GetTransparentProxy();
 		}
 		// QWindowsStyle* QWindowsStyle(QWindowsStylePrivate& arg1); >>>> NOT CONVERTED
 		public QWindowsStyle() : this((Type) null) {
@@ -35,121 +29,121 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QWindowsStyle", "()", "")]
 		private void NewQWindowsStyle() {
-			ProxyQWindowsStyle().NewQWindowsStyle();
+			((QWindowsStyle) interceptor).NewQWindowsStyle();
 		}
 		[SmokeMethod("polish", "(QApplication*)", "#")]
 		public override void Polish(QApplication arg1) {
-			ProxyQWindowsStyle().Polish(arg1);
+			((QWindowsStyle) interceptor).Polish(arg1);
 		}
 		[SmokeMethod("unpolish", "(QApplication*)", "#")]
 		public override void Unpolish(QApplication arg1) {
-			ProxyQWindowsStyle().Unpolish(arg1);
+			((QWindowsStyle) interceptor).Unpolish(arg1);
 		}
 		[SmokeMethod("polish", "(QWidget*)", "#")]
 		public override void Polish(QWidget arg1) {
-			ProxyQWindowsStyle().Polish(arg1);
+			((QWindowsStyle) interceptor).Polish(arg1);
 		}
 		[SmokeMethod("unpolish", "(QWidget*)", "#")]
 		public override void Unpolish(QWidget arg1) {
-			ProxyQWindowsStyle().Unpolish(arg1);
+			((QWindowsStyle) interceptor).Unpolish(arg1);
 		}
 		[SmokeMethod("polish", "(QPalette&)", "#")]
 		public override void Polish(QPalette arg1) {
-			ProxyQWindowsStyle().Polish(arg1);
+			((QWindowsStyle) interceptor).Polish(arg1);
 		}
 		[SmokeMethod("drawPrimitive", "(QStyle::PrimitiveElement, const QStyleOption*, QPainter*, const QWidget*) const", "$###")]
 		public override void DrawPrimitive(QStyle.PrimitiveElement pe, out int opt, QPainter p, QWidget w) {
-			ProxyQWindowsStyle().DrawPrimitive(pe,out opt,p,w);
+			((QWindowsStyle) interceptor).DrawPrimitive(pe,out opt,p,w);
 		}
 		[SmokeMethod("drawPrimitive", "(QStyle::PrimitiveElement, const QStyleOption*, QPainter*) const", "$##")]
 		public override void DrawPrimitive(QStyle.PrimitiveElement pe, out int opt, QPainter p) {
-			ProxyQWindowsStyle().DrawPrimitive(pe,out opt,p);
+			((QWindowsStyle) interceptor).DrawPrimitive(pe,out opt,p);
 		}
 		[SmokeMethod("drawControl", "(QStyle::ControlElement, const QStyleOption*, QPainter*, const QWidget*) const", "$###")]
 		public override void DrawControl(QStyle.ControlElement element, out int opt, QPainter p, QWidget w) {
-			ProxyQWindowsStyle().DrawControl(element,out opt,p,w);
+			((QWindowsStyle) interceptor).DrawControl(element,out opt,p,w);
 		}
 		[SmokeMethod("drawControl", "(QStyle::ControlElement, const QStyleOption*, QPainter*) const", "$##")]
 		public override void DrawControl(QStyle.ControlElement element, out int opt, QPainter p) {
-			ProxyQWindowsStyle().DrawControl(element,out opt,p);
+			((QWindowsStyle) interceptor).DrawControl(element,out opt,p);
 		}
 		[SmokeMethod("subElementRect", "(QStyle::SubElement, const QStyleOption*, const QWidget*) const", "$##")]
 		public override QRect SubElementRect(QStyle.SubElement r, out int opt, QWidget widget) {
-			return ProxyQWindowsStyle().SubElementRect(r,out opt,widget);
+			return ((QWindowsStyle) interceptor).SubElementRect(r,out opt,widget);
 		}
 		[SmokeMethod("subElementRect", "(QStyle::SubElement, const QStyleOption*) const", "$#")]
 		public override QRect SubElementRect(QStyle.SubElement r, out int opt) {
-			return ProxyQWindowsStyle().SubElementRect(r,out opt);
+			return ((QWindowsStyle) interceptor).SubElementRect(r,out opt);
 		}
 		[SmokeMethod("drawComplexControl", "(QStyle::ComplexControl, const QStyleOptionComplex*, QPainter*, const QWidget*) const", "$###")]
 		public override void DrawComplexControl(QStyle.ComplexControl cc, QStyleOptionComplex opt, QPainter p, QWidget w) {
-			ProxyQWindowsStyle().DrawComplexControl(cc,opt,p,w);
+			((QWindowsStyle) interceptor).DrawComplexControl(cc,opt,p,w);
 		}
 		[SmokeMethod("drawComplexControl", "(QStyle::ComplexControl, const QStyleOptionComplex*, QPainter*) const", "$##")]
 		public override void DrawComplexControl(QStyle.ComplexControl cc, QStyleOptionComplex opt, QPainter p) {
-			ProxyQWindowsStyle().DrawComplexControl(cc,opt,p);
+			((QWindowsStyle) interceptor).DrawComplexControl(cc,opt,p);
 		}
 		[SmokeMethod("sizeFromContents", "(QStyle::ContentsType, const QStyleOption*, const QSize&, const QWidget*) const", "$###")]
 		public override QSize SizeFromContents(QStyle.ContentsType ct, out int opt, QSize contentsSize, QWidget widget) {
-			return ProxyQWindowsStyle().SizeFromContents(ct,out opt,contentsSize,widget);
+			return ((QWindowsStyle) interceptor).SizeFromContents(ct,out opt,contentsSize,widget);
 		}
 		[SmokeMethod("sizeFromContents", "(QStyle::ContentsType, const QStyleOption*, const QSize&) const", "$##")]
 		public override QSize SizeFromContents(QStyle.ContentsType ct, out int opt, QSize contentsSize) {
-			return ProxyQWindowsStyle().SizeFromContents(ct,out opt,contentsSize);
+			return ((QWindowsStyle) interceptor).SizeFromContents(ct,out opt,contentsSize);
 		}
 		[SmokeMethod("pixelMetric", "(QStyle::PixelMetric, const QStyleOption*, const QWidget*) const", "$##")]
 		public override int pixelMetric(QStyle.PixelMetric pm, out int option, QWidget widget) {
-			return ProxyQWindowsStyle().pixelMetric(pm,out option,widget);
+			return ((QWindowsStyle) interceptor).pixelMetric(pm,out option,widget);
 		}
 		[SmokeMethod("pixelMetric", "(QStyle::PixelMetric, const QStyleOption*) const", "$#")]
 		public override int pixelMetric(QStyle.PixelMetric pm, out int option) {
-			return ProxyQWindowsStyle().pixelMetric(pm,out option);
+			return ((QWindowsStyle) interceptor).pixelMetric(pm,out option);
 		}
 		[SmokeMethod("pixelMetric", "(QStyle::PixelMetric) const", "$")]
 		public override int pixelMetric(QStyle.PixelMetric pm) {
-			return ProxyQWindowsStyle().pixelMetric(pm);
+			return ((QWindowsStyle) interceptor).pixelMetric(pm);
 		}
 		[SmokeMethod("styleHint", "(QStyle::StyleHint, const QStyleOption*, const QWidget*, QStyleHintReturn*) const", "$###")]
 		public override int styleHint(QStyle.StyleHint hint, out int opt, QWidget widget, QStyleHintReturn returnData) {
-			return ProxyQWindowsStyle().styleHint(hint,out opt,widget,returnData);
+			return ((QWindowsStyle) interceptor).styleHint(hint,out opt,widget,returnData);
 		}
 		[SmokeMethod("styleHint", "(QStyle::StyleHint, const QStyleOption*, const QWidget*) const", "$##")]
 		public override int styleHint(QStyle.StyleHint hint, out int opt, QWidget widget) {
-			return ProxyQWindowsStyle().styleHint(hint,out opt,widget);
+			return ((QWindowsStyle) interceptor).styleHint(hint,out opt,widget);
 		}
 		[SmokeMethod("styleHint", "(QStyle::StyleHint, const QStyleOption*) const", "$#")]
 		public override int styleHint(QStyle.StyleHint hint, out int opt) {
-			return ProxyQWindowsStyle().styleHint(hint,out opt);
+			return ((QWindowsStyle) interceptor).styleHint(hint,out opt);
 		}
 		[SmokeMethod("styleHint", "(QStyle::StyleHint) const", "$")]
 		public override int styleHint(QStyle.StyleHint hint) {
-			return ProxyQWindowsStyle().styleHint(hint);
+			return ((QWindowsStyle) interceptor).styleHint(hint);
 		}
 		[SmokeMethod("standardPixmap", "(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const", "$##")]
 		public override QPixmap standardPixmap(QStyle.StandardPixmap standardPixmap, out int opt, QWidget widget) {
-			return ProxyQWindowsStyle().standardPixmap(standardPixmap,out opt,widget);
+			return ((QWindowsStyle) interceptor).standardPixmap(standardPixmap,out opt,widget);
 		}
 		[SmokeMethod("standardPixmap", "(QStyle::StandardPixmap, const QStyleOption*) const", "$#")]
 		public override QPixmap standardPixmap(QStyle.StandardPixmap standardPixmap, out int opt) {
-			return ProxyQWindowsStyle().standardPixmap(standardPixmap,out opt);
+			return ((QWindowsStyle) interceptor).standardPixmap(standardPixmap,out opt);
 		}
 		[SmokeMethod("eventFilter", "(QObject*, QEvent*)", "##")]
 		protected new virtual bool EventFilter(QObject o, QEvent e) {
-			return ProxyQWindowsStyle().EventFilter(o,e);
+			return ((QWindowsStyle) interceptor).EventFilter(o,e);
 		}
 		[SmokeMethod("timerEvent", "(QTimerEvent*)", "#")]
 		protected override void TimerEvent(QTimerEvent arg1) {
-			ProxyQWindowsStyle().TimerEvent(arg1);
+			((QWindowsStyle) interceptor).TimerEvent(arg1);
 		}
 		[Q_SLOT("QIcon standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const")]
 		[SmokeMethod("standardIconImplementation", "(QStyle::StandardPixmap, const QStyleOption*, const QWidget*) const", "$##")]
 		protected QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon, out int option, QWidget widget) {
-			return ProxyQWindowsStyle().StandardIconImplementation(standardIcon,out option,widget);
+			return ((QWindowsStyle) interceptor).StandardIconImplementation(standardIcon,out option,widget);
 		}
 		[Q_SLOT("QIcon standardIconImplementation(QStyle::StandardPixmap, const QStyleOption*) const")]
 		[SmokeMethod("standardIconImplementation", "(QStyle::StandardPixmap, const QStyleOption*) const", "$#")]
 		protected QIcon StandardIconImplementation(QStyle.StandardPixmap standardIcon, out int option) {
-			return ProxyQWindowsStyle().StandardIconImplementation(standardIcon,out option);
+			return ((QWindowsStyle) interceptor).StandardIconImplementation(standardIcon,out option);
 		}
 		~QWindowsStyle() {
 			DisposeQWindowsStyle();
@@ -159,13 +153,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QWindowsStyle", "()", "")]
 		private void DisposeQWindowsStyle() {
-			ProxyQWindowsStyle().DisposeQWindowsStyle();
+			((QWindowsStyle) interceptor).DisposeQWindowsStyle();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQWindowsStyle().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQWindowsStyle().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQWindowsStyleSignals Emit {
 			get { return (IQWindowsStyleSignals) Q_EMIT; }

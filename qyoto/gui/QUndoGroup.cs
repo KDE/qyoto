@@ -17,18 +17,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QUndoGroup), this);
-			_interceptor = (QUndoGroup) realProxy.GetTransparentProxy();
+			interceptor = (QUndoGroup) realProxy.GetTransparentProxy();
 		}
-		private QUndoGroup ProxyQUndoGroup() {
-			return (QUndoGroup) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQUndoGroupProxy staticInterceptor = null;
 		static QUndoGroup() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQUndoGroupProxy), null);
-			_staticInterceptor = (IQUndoGroupProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQUndoGroupProxy StaticQUndoGroup() {
-			return (IQUndoGroupProxy) _staticInterceptor;
+			staticInterceptor = (IQUndoGroupProxy) realProxy.GetTransparentProxy();
 		}
 		public QUndoGroup(QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -36,7 +30,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QUndoGroup", "(QObject*)", "#")]
 		private void NewQUndoGroup(QObject parent) {
-			ProxyQUndoGroup().NewQUndoGroup(parent);
+			((QUndoGroup) interceptor).NewQUndoGroup(parent);
 		}
 		public QUndoGroup() : this((Type) null) {
 			CreateProxy();
@@ -44,74 +38,74 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QUndoGroup", "()", "")]
 		private void NewQUndoGroup() {
-			ProxyQUndoGroup().NewQUndoGroup();
+			((QUndoGroup) interceptor).NewQUndoGroup();
 		}
 		[SmokeMethod("addStack", "(QUndoStack*)", "#")]
 		public void AddStack(QUndoStack stack) {
-			ProxyQUndoGroup().AddStack(stack);
+			((QUndoGroup) interceptor).AddStack(stack);
 		}
 		[SmokeMethod("removeStack", "(QUndoStack*)", "#")]
 		public void RemoveStack(QUndoStack stack) {
-			ProxyQUndoGroup().RemoveStack(stack);
+			((QUndoGroup) interceptor).RemoveStack(stack);
 		}
 		[SmokeMethod("stacks", "() const", "")]
 		public List<QUndoStack> Stacks() {
-			return ProxyQUndoGroup().Stacks();
+			return ((QUndoGroup) interceptor).Stacks();
 		}
 		[SmokeMethod("activeStack", "() const", "")]
 		public QUndoStack ActiveStack() {
-			return ProxyQUndoGroup().ActiveStack();
+			return ((QUndoGroup) interceptor).ActiveStack();
 		}
 		[SmokeMethod("createUndoAction", "(QObject*, const QString&) const", "#$")]
 		public QAction CreateUndoAction(QObject parent, string prefix) {
-			return ProxyQUndoGroup().CreateUndoAction(parent,prefix);
+			return ((QUndoGroup) interceptor).CreateUndoAction(parent,prefix);
 		}
 		[SmokeMethod("createUndoAction", "(QObject*) const", "#")]
 		public QAction CreateUndoAction(QObject parent) {
-			return ProxyQUndoGroup().CreateUndoAction(parent);
+			return ((QUndoGroup) interceptor).CreateUndoAction(parent);
 		}
 		[SmokeMethod("createRedoAction", "(QObject*, const QString&) const", "#$")]
 		public QAction CreateRedoAction(QObject parent, string prefix) {
-			return ProxyQUndoGroup().CreateRedoAction(parent,prefix);
+			return ((QUndoGroup) interceptor).CreateRedoAction(parent,prefix);
 		}
 		[SmokeMethod("createRedoAction", "(QObject*) const", "#")]
 		public QAction CreateRedoAction(QObject parent) {
-			return ProxyQUndoGroup().CreateRedoAction(parent);
+			return ((QUndoGroup) interceptor).CreateRedoAction(parent);
 		}
 		[SmokeMethod("canUndo", "() const", "")]
 		public bool CanUndo() {
-			return ProxyQUndoGroup().CanUndo();
+			return ((QUndoGroup) interceptor).CanUndo();
 		}
 		[SmokeMethod("canRedo", "() const", "")]
 		public bool CanRedo() {
-			return ProxyQUndoGroup().CanRedo();
+			return ((QUndoGroup) interceptor).CanRedo();
 		}
 		[SmokeMethod("undoText", "() const", "")]
 		public string UndoText() {
-			return ProxyQUndoGroup().UndoText();
+			return ((QUndoGroup) interceptor).UndoText();
 		}
 		[SmokeMethod("redoText", "() const", "")]
 		public string RedoText() {
-			return ProxyQUndoGroup().RedoText();
+			return ((QUndoGroup) interceptor).RedoText();
 		}
 		[SmokeMethod("isClean", "() const", "")]
 		public bool IsClean() {
-			return ProxyQUndoGroup().IsClean();
+			return ((QUndoGroup) interceptor).IsClean();
 		}
 		[Q_SLOT("void undo()")]
 		[SmokeMethod("undo", "()", "")]
 		public void Undo() {
-			ProxyQUndoGroup().Undo();
+			((QUndoGroup) interceptor).Undo();
 		}
 		[Q_SLOT("void redo()")]
 		[SmokeMethod("redo", "()", "")]
 		public void Redo() {
-			ProxyQUndoGroup().Redo();
+			((QUndoGroup) interceptor).Redo();
 		}
 		[Q_SLOT("void setActiveStack(QUndoStack*)")]
 		[SmokeMethod("setActiveStack", "(QUndoStack*)", "#")]
 		public void SetActiveStack(QUndoStack stack) {
-			ProxyQUndoGroup().SetActiveStack(stack);
+			((QUndoGroup) interceptor).SetActiveStack(stack);
 		}
 		~QUndoGroup() {
 			DisposeQUndoGroup();
@@ -121,13 +115,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QUndoGroup", "()", "")]
 		private void DisposeQUndoGroup() {
-			ProxyQUndoGroup().DisposeQUndoGroup();
+			((QUndoGroup) interceptor).DisposeQUndoGroup();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQUndoGroup().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQUndoGroup().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQUndoGroupSignals Emit {
 			get { return (IQUndoGroupSignals) Q_EMIT; }

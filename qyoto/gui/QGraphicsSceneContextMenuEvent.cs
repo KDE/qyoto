@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QGraphicsSceneContextMenuEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGraphicsSceneContextMenuEvent), this);
-			_interceptor = (QGraphicsSceneContextMenuEvent) realProxy.GetTransparentProxy();
-		}
-		private QGraphicsSceneContextMenuEvent ProxyQGraphicsSceneContextMenuEvent() {
-			return (QGraphicsSceneContextMenuEvent) _interceptor;
+			interceptor = (QGraphicsSceneContextMenuEvent) realProxy.GetTransparentProxy();
 		}
 		public enum Reason {
 			Mouse = 0,
@@ -24,7 +21,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGraphicsSceneContextMenuEvent", "(QEvent::Type)", "$")]
 		private void NewQGraphicsSceneContextMenuEvent(QEvent.TypeOf type) {
-			ProxyQGraphicsSceneContextMenuEvent().NewQGraphicsSceneContextMenuEvent(type);
+			((QGraphicsSceneContextMenuEvent) interceptor).NewQGraphicsSceneContextMenuEvent(type);
 		}
 		public QGraphicsSceneContextMenuEvent() : this((Type) null) {
 			CreateProxy();
@@ -32,47 +29,47 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGraphicsSceneContextMenuEvent", "()", "")]
 		private void NewQGraphicsSceneContextMenuEvent() {
-			ProxyQGraphicsSceneContextMenuEvent().NewQGraphicsSceneContextMenuEvent();
+			((QGraphicsSceneContextMenuEvent) interceptor).NewQGraphicsSceneContextMenuEvent();
 		}
 		[SmokeMethod("pos", "() const", "")]
 		public QPointF Pos() {
-			return ProxyQGraphicsSceneContextMenuEvent().Pos();
+			return ((QGraphicsSceneContextMenuEvent) interceptor).Pos();
 		}
 		[SmokeMethod("setPos", "(const QPointF&)", "#")]
 		public void SetPos(QPointF pos) {
-			ProxyQGraphicsSceneContextMenuEvent().SetPos(pos);
+			((QGraphicsSceneContextMenuEvent) interceptor).SetPos(pos);
 		}
 		[SmokeMethod("scenePos", "() const", "")]
 		public QPointF ScenePos() {
-			return ProxyQGraphicsSceneContextMenuEvent().ScenePos();
+			return ((QGraphicsSceneContextMenuEvent) interceptor).ScenePos();
 		}
 		[SmokeMethod("setScenePos", "(const QPointF&)", "#")]
 		public void SetScenePos(QPointF pos) {
-			ProxyQGraphicsSceneContextMenuEvent().SetScenePos(pos);
+			((QGraphicsSceneContextMenuEvent) interceptor).SetScenePos(pos);
 		}
 		[SmokeMethod("screenPos", "() const", "")]
 		public QPoint ScreenPos() {
-			return ProxyQGraphicsSceneContextMenuEvent().ScreenPos();
+			return ((QGraphicsSceneContextMenuEvent) interceptor).ScreenPos();
 		}
 		[SmokeMethod("setScreenPos", "(const QPoint&)", "#")]
 		public void SetScreenPos(QPoint pos) {
-			ProxyQGraphicsSceneContextMenuEvent().SetScreenPos(pos);
+			((QGraphicsSceneContextMenuEvent) interceptor).SetScreenPos(pos);
 		}
 		[SmokeMethod("modifiers", "() const", "")]
 		public int Modifiers() {
-			return ProxyQGraphicsSceneContextMenuEvent().Modifiers();
+			return ((QGraphicsSceneContextMenuEvent) interceptor).Modifiers();
 		}
 		[SmokeMethod("setModifiers", "(Qt::KeyboardModifiers)", "$")]
 		public void SetModifiers(int modifiers) {
-			ProxyQGraphicsSceneContextMenuEvent().SetModifiers(modifiers);
+			((QGraphicsSceneContextMenuEvent) interceptor).SetModifiers(modifiers);
 		}
 		[SmokeMethod("reason", "() const", "")]
 		public QGraphicsSceneContextMenuEvent.Reason reason() {
-			return ProxyQGraphicsSceneContextMenuEvent().reason();
+			return ((QGraphicsSceneContextMenuEvent) interceptor).reason();
 		}
 		[SmokeMethod("setReason", "(QGraphicsSceneContextMenuEvent::Reason)", "$")]
 		public void SetReason(QGraphicsSceneContextMenuEvent.Reason reason) {
-			ProxyQGraphicsSceneContextMenuEvent().SetReason(reason);
+			((QGraphicsSceneContextMenuEvent) interceptor).SetReason(reason);
 		}
 		~QGraphicsSceneContextMenuEvent() {
 			DisposeQGraphicsSceneContextMenuEvent();
@@ -82,7 +79,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QGraphicsSceneContextMenuEvent", "()", "")]
 		private void DisposeQGraphicsSceneContextMenuEvent() {
-			ProxyQGraphicsSceneContextMenuEvent().DisposeQGraphicsSceneContextMenuEvent();
+			((QGraphicsSceneContextMenuEvent) interceptor).DisposeQGraphicsSceneContextMenuEvent();
 		}
 	}
 }

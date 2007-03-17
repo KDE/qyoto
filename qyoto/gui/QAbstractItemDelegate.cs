@@ -18,18 +18,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAbstractItemDelegate), this);
-			_interceptor = (QAbstractItemDelegate) realProxy.GetTransparentProxy();
+			interceptor = (QAbstractItemDelegate) realProxy.GetTransparentProxy();
 		}
-		private QAbstractItemDelegate ProxyQAbstractItemDelegate() {
-			return (QAbstractItemDelegate) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQAbstractItemDelegateProxy staticInterceptor = null;
 		static QAbstractItemDelegate() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQAbstractItemDelegateProxy), null);
-			_staticInterceptor = (IQAbstractItemDelegateProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQAbstractItemDelegateProxy StaticQAbstractItemDelegate() {
-			return (IQAbstractItemDelegateProxy) _staticInterceptor;
+			staticInterceptor = (IQAbstractItemDelegateProxy) realProxy.GetTransparentProxy();
 		}
 		public enum EndEditHint {
 			NoHint = 0,
@@ -44,7 +38,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QAbstractItemDelegate", "(QObject*)", "#")]
 		private void NewQAbstractItemDelegate(QObject parent) {
-			ProxyQAbstractItemDelegate().NewQAbstractItemDelegate(parent);
+			((QAbstractItemDelegate) interceptor).NewQAbstractItemDelegate(parent);
 		}
 		public QAbstractItemDelegate() : this((Type) null) {
 			CreateProxy();
@@ -52,7 +46,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QAbstractItemDelegate", "()", "")]
 		private void NewQAbstractItemDelegate() {
-			ProxyQAbstractItemDelegate().NewQAbstractItemDelegate();
+			((QAbstractItemDelegate) interceptor).NewQAbstractItemDelegate();
 		}
 		[SmokeMethod("paint", "(QPainter*, const QStyleOptionViewItem&, const QModelIndex&) const", "###")]
 		public abstract void Paint(QPainter painter, QStyleOptionViewItem option, QModelIndex index);
@@ -60,32 +54,32 @@ namespace Qyoto {
 		public abstract QSize SizeHint(QStyleOptionViewItem option, QModelIndex index);
 		[SmokeMethod("createEditor", "(QWidget*, const QStyleOptionViewItem&, const QModelIndex&) const", "###")]
 		public virtual QWidget CreateEditor(QWidget parent, QStyleOptionViewItem option, QModelIndex index) {
-			return ProxyQAbstractItemDelegate().CreateEditor(parent,option,index);
+			return ((QAbstractItemDelegate) interceptor).CreateEditor(parent,option,index);
 		}
 		[SmokeMethod("setEditorData", "(QWidget*, const QModelIndex&) const", "##")]
 		public virtual void SetEditorData(QWidget editor, QModelIndex index) {
-			ProxyQAbstractItemDelegate().SetEditorData(editor,index);
+			((QAbstractItemDelegate) interceptor).SetEditorData(editor,index);
 		}
 		[SmokeMethod("setModelData", "(QWidget*, QAbstractItemModel*, const QModelIndex&) const", "###")]
 		public virtual void SetModelData(QWidget editor, QAbstractItemModel model, QModelIndex index) {
-			ProxyQAbstractItemDelegate().SetModelData(editor,model,index);
+			((QAbstractItemDelegate) interceptor).SetModelData(editor,model,index);
 		}
 		[SmokeMethod("updateEditorGeometry", "(QWidget*, const QStyleOptionViewItem&, const QModelIndex&) const", "###")]
 		public virtual void UpdateEditorGeometry(QWidget editor, QStyleOptionViewItem option, QModelIndex index) {
-			ProxyQAbstractItemDelegate().UpdateEditorGeometry(editor,option,index);
+			((QAbstractItemDelegate) interceptor).UpdateEditorGeometry(editor,option,index);
 		}
 		[SmokeMethod("editorEvent", "(QEvent*, QAbstractItemModel*, const QStyleOptionViewItem&, const QModelIndex&)", "####")]
 		public virtual bool EditorEvent(QEvent arg1, QAbstractItemModel model, QStyleOptionViewItem option, QModelIndex index) {
-			return ProxyQAbstractItemDelegate().EditorEvent(arg1,model,option,index);
+			return ((QAbstractItemDelegate) interceptor).EditorEvent(arg1,model,option,index);
 		}
 		public static string Tr(string s, string c) {
-			return StaticQAbstractItemDelegate().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQAbstractItemDelegate().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		public static string ElidedText(QFontMetrics fontMetrics, int width, Qt.TextElideMode mode, string text) {
-			return StaticQAbstractItemDelegate().ElidedText(fontMetrics,width,mode,text);
+			return staticInterceptor.ElidedText(fontMetrics,width,mode,text);
 		}
 		protected new IQAbstractItemDelegateSignals Emit {
 			get { return (IQAbstractItemDelegateSignals) Q_EMIT; }

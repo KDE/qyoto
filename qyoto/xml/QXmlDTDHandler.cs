@@ -4,22 +4,19 @@ namespace Qyoto {
 	using System;
 
 	public interface IQXmlDTDHandler {
-			bool NotationDecl(string name, string publicId, string systemId);
-			bool UnparsedEntityDecl(string name, string publicId, string systemId, string notationName);
-			string ErrorString();
+		bool NotationDecl(string name, string publicId, string systemId);
+		bool UnparsedEntityDecl(string name, string publicId, string systemId, string notationName);
+		string ErrorString();
 	}
 
 	[SmokeClass("QXmlDTDHandler")]
 	public abstract class QXmlDTDHandler : MarshalByRefObject, IQXmlDTDHandler {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QXmlDTDHandler interceptor = null;
+		private IntPtr smokeObject;
 		protected QXmlDTDHandler(Type dummy) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlDTDHandler), this);
-			_interceptor = (QXmlDTDHandler) realProxy.GetTransparentProxy();
-		}
-		private QXmlDTDHandler ProxyQXmlDTDHandler() {
-			return (QXmlDTDHandler) _interceptor;
+			interceptor = (QXmlDTDHandler) realProxy.GetTransparentProxy();
 		}
 		[SmokeMethod("notationDecl", "(const QString&, const QString&, const QString&)", "$$$")]
 		public abstract bool NotationDecl(string name, string publicId, string systemId);
@@ -33,7 +30,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QXmlDTDHandler", "()", "")]
 		private void NewQXmlDTDHandler() {
-			ProxyQXmlDTDHandler().NewQXmlDTDHandler();
+			((QXmlDTDHandler) interceptor).NewQXmlDTDHandler();
 		}
 	}
 }

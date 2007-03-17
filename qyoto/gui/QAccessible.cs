@@ -5,8 +5,8 @@ namespace Qyoto {
 
 	[SmokeClass("QAccessible")]
 	public class QAccessible : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QAccessible interceptor = null;
+		private IntPtr smokeObject;
 		protected QAccessible(Type dummy) {}
 		[SmokeClass("QAccessible")]
 		interface IQAccessibleProxy {
@@ -25,18 +25,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAccessible), this);
-			_interceptor = (QAccessible) realProxy.GetTransparentProxy();
+			interceptor = (QAccessible) realProxy.GetTransparentProxy();
 		}
-		private QAccessible ProxyQAccessible() {
-			return (QAccessible) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQAccessibleProxy staticInterceptor = null;
 		static QAccessible() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQAccessibleProxy), null);
-			_staticInterceptor = (IQAccessibleProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQAccessibleProxy StaticQAccessible() {
-			return (IQAccessibleProxy) _staticInterceptor;
+			staticInterceptor = (IQAccessibleProxy) realProxy.GetTransparentProxy();
 		}
 		public enum Event {
 			SoundPlayed = 0x0001,
@@ -234,7 +228,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QAccessible", "()", "")]
 		private void NewQAccessible() {
-			ProxyQAccessible().NewQAccessible();
+			((QAccessible) interceptor).NewQAccessible();
 		}
 		~QAccessible() {
 			DisposeQAccessible();
@@ -244,25 +238,25 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QAccessible", "()", "")]
 		private void DisposeQAccessible() {
-			ProxyQAccessible().DisposeQAccessible();
+			((QAccessible) interceptor).DisposeQAccessible();
 		}
 		public static QAccessibleInterface QueryAccessibleInterface(QObject arg1) {
-			return StaticQAccessible().QueryAccessibleInterface(arg1);
+			return staticInterceptor.QueryAccessibleInterface(arg1);
 		}
 		public static void UpdateAccessibility(QObject arg1, int who, QAccessible.Event reason) {
-			StaticQAccessible().UpdateAccessibility(arg1,who,reason);
+			staticInterceptor.UpdateAccessibility(arg1,who,reason);
 		}
 		public static bool IsActive() {
-			return StaticQAccessible().IsActive();
+			return staticInterceptor.IsActive();
 		}
 		public static void SetRootObject(QObject arg1) {
-			StaticQAccessible().SetRootObject(arg1);
+			staticInterceptor.SetRootObject(arg1);
 		}
 		public static void Initialize() {
-			StaticQAccessible().Initialize();
+			staticInterceptor.Initialize();
 		}
 		public static void Cleanup() {
-			StaticQAccessible().Cleanup();
+			staticInterceptor.Cleanup();
 		}
 	}
 }

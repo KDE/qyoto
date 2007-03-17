@@ -5,8 +5,8 @@ namespace Qyoto {
 
 	[SmokeClass("QTextCursor")]
 	public class QTextCursor : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QTextCursor interceptor = null;
+		private IntPtr smokeObject;
 		protected QTextCursor(Type dummy) {}
 		[SmokeClass("QTextCursor")]
 		interface IQTextCursorProxy {
@@ -23,18 +23,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextCursor), this);
-			_interceptor = (QTextCursor) realProxy.GetTransparentProxy();
+			interceptor = (QTextCursor) realProxy.GetTransparentProxy();
 		}
-		private QTextCursor ProxyQTextCursor() {
-			return (QTextCursor) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQTextCursorProxy staticInterceptor = null;
 		static QTextCursor() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTextCursorProxy), null);
-			_staticInterceptor = (IQTextCursorProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQTextCursorProxy StaticQTextCursor() {
-			return (IQTextCursorProxy) _staticInterceptor;
+			staticInterceptor = (IQTextCursorProxy) realProxy.GetTransparentProxy();
 		}
 		public enum MoveMode {
 			MoveAnchor = 0,
@@ -76,7 +70,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTextCursor", "()", "")]
 		private void NewQTextCursor() {
-			ProxyQTextCursor().NewQTextCursor();
+			((QTextCursor) interceptor).NewQTextCursor();
 		}
 		public QTextCursor(QTextDocument document) : this((Type) null) {
 			CreateProxy();
@@ -84,7 +78,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTextCursor", "(QTextDocument*)", "#")]
 		private void NewQTextCursor(QTextDocument document) {
-			ProxyQTextCursor().NewQTextCursor(document);
+			((QTextCursor) interceptor).NewQTextCursor(document);
 		}
 		public QTextCursor(QTextFrame frame) : this((Type) null) {
 			CreateProxy();
@@ -92,7 +86,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTextCursor", "(QTextFrame*)", "#")]
 		private void NewQTextCursor(QTextFrame frame) {
-			ProxyQTextCursor().NewQTextCursor(frame);
+			((QTextCursor) interceptor).NewQTextCursor(frame);
 		}
 		public QTextCursor(QTextBlock block) : this((Type) null) {
 			CreateProxy();
@@ -100,7 +94,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTextCursor", "(const QTextBlock&)", "#")]
 		private void NewQTextCursor(QTextBlock block) {
-			ProxyQTextCursor().NewQTextCursor(block);
+			((QTextCursor) interceptor).NewQTextCursor(block);
 		}
 		public QTextCursor(QTextCursor cursor) : this((Type) null) {
 			CreateProxy();
@@ -108,254 +102,254 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTextCursor", "(const QTextCursor&)", "#")]
 		private void NewQTextCursor(QTextCursor cursor) {
-			ProxyQTextCursor().NewQTextCursor(cursor);
+			((QTextCursor) interceptor).NewQTextCursor(cursor);
 		}
 		[SmokeMethod("isNull", "() const", "")]
 		public bool IsNull() {
-			return ProxyQTextCursor().IsNull();
+			return ((QTextCursor) interceptor).IsNull();
 		}
 		[SmokeMethod("setPosition", "(int, QTextCursor::MoveMode)", "$$")]
 		public void SetPosition(int pos, QTextCursor.MoveMode mode) {
-			ProxyQTextCursor().SetPosition(pos,mode);
+			((QTextCursor) interceptor).SetPosition(pos,mode);
 		}
 		[SmokeMethod("setPosition", "(int)", "$")]
 		public void SetPosition(int pos) {
-			ProxyQTextCursor().SetPosition(pos);
+			((QTextCursor) interceptor).SetPosition(pos);
 		}
 		[SmokeMethod("position", "() const", "")]
 		public int Position() {
-			return ProxyQTextCursor().Position();
+			return ((QTextCursor) interceptor).Position();
 		}
 		[SmokeMethod("anchor", "() const", "")]
 		public int Anchor() {
-			return ProxyQTextCursor().Anchor();
+			return ((QTextCursor) interceptor).Anchor();
 		}
 		[SmokeMethod("insertText", "(const QString&)", "$")]
 		public void InsertText(string text) {
-			ProxyQTextCursor().InsertText(text);
+			((QTextCursor) interceptor).InsertText(text);
 		}
 		[SmokeMethod("insertText", "(const QString&, const QTextCharFormat&)", "$#")]
 		public void InsertText(string text, QTextCharFormat format) {
-			ProxyQTextCursor().InsertText(text,format);
+			((QTextCursor) interceptor).InsertText(text,format);
 		}
 		[SmokeMethod("movePosition", "(QTextCursor::MoveOperation, QTextCursor::MoveMode, int)", "$$$")]
 		public bool MovePosition(QTextCursor.MoveOperation op, QTextCursor.MoveMode arg2, int n) {
-			return ProxyQTextCursor().MovePosition(op,arg2,n);
+			return ((QTextCursor) interceptor).MovePosition(op,arg2,n);
 		}
 		[SmokeMethod("movePosition", "(QTextCursor::MoveOperation, QTextCursor::MoveMode)", "$$")]
 		public bool MovePosition(QTextCursor.MoveOperation op, QTextCursor.MoveMode arg2) {
-			return ProxyQTextCursor().MovePosition(op,arg2);
+			return ((QTextCursor) interceptor).MovePosition(op,arg2);
 		}
 		[SmokeMethod("movePosition", "(QTextCursor::MoveOperation)", "$")]
 		public bool MovePosition(QTextCursor.MoveOperation op) {
-			return ProxyQTextCursor().MovePosition(op);
+			return ((QTextCursor) interceptor).MovePosition(op);
 		}
 		[SmokeMethod("deleteChar", "()", "")]
 		public void DeleteChar() {
-			ProxyQTextCursor().DeleteChar();
+			((QTextCursor) interceptor).DeleteChar();
 		}
 		[SmokeMethod("deletePreviousChar", "()", "")]
 		public void DeletePreviousChar() {
-			ProxyQTextCursor().DeletePreviousChar();
+			((QTextCursor) interceptor).DeletePreviousChar();
 		}
 		[SmokeMethod("select", "(QTextCursor::SelectionType)", "$")]
 		public void Select(QTextCursor.SelectionType selection) {
-			ProxyQTextCursor().Select(selection);
+			((QTextCursor) interceptor).Select(selection);
 		}
 		[SmokeMethod("hasSelection", "() const", "")]
 		public bool HasSelection() {
-			return ProxyQTextCursor().HasSelection();
+			return ((QTextCursor) interceptor).HasSelection();
 		}
 		[SmokeMethod("hasComplexSelection", "() const", "")]
 		public bool HasComplexSelection() {
-			return ProxyQTextCursor().HasComplexSelection();
+			return ((QTextCursor) interceptor).HasComplexSelection();
 		}
 		[SmokeMethod("removeSelectedText", "()", "")]
 		public void RemoveSelectedText() {
-			ProxyQTextCursor().RemoveSelectedText();
+			((QTextCursor) interceptor).RemoveSelectedText();
 		}
 		[SmokeMethod("clearSelection", "()", "")]
 		public void ClearSelection() {
-			ProxyQTextCursor().ClearSelection();
+			((QTextCursor) interceptor).ClearSelection();
 		}
 		[SmokeMethod("selectionStart", "() const", "")]
 		public int SelectionStart() {
-			return ProxyQTextCursor().SelectionStart();
+			return ((QTextCursor) interceptor).SelectionStart();
 		}
 		[SmokeMethod("selectionEnd", "() const", "")]
 		public int SelectionEnd() {
-			return ProxyQTextCursor().SelectionEnd();
+			return ((QTextCursor) interceptor).SelectionEnd();
 		}
 		[SmokeMethod("selectedText", "() const", "")]
 		public string SelectedText() {
-			return ProxyQTextCursor().SelectedText();
+			return ((QTextCursor) interceptor).SelectedText();
 		}
 		[SmokeMethod("selection", "() const", "")]
 		public QTextDocumentFragment Selection() {
-			return ProxyQTextCursor().Selection();
+			return ((QTextCursor) interceptor).Selection();
 		}
 		[SmokeMethod("selectedTableCells", "(int*, int*, int*, int*) const", "$$$$")]
 		public void SelectedTableCells(out int firstRow, out int numRows, out int firstColumn, out int numColumns) {
-			ProxyQTextCursor().SelectedTableCells(out firstRow,out numRows,out firstColumn,out numColumns);
+			((QTextCursor) interceptor).SelectedTableCells(out firstRow,out numRows,out firstColumn,out numColumns);
 		}
 		[SmokeMethod("block", "() const", "")]
 		public QTextBlock Block() {
-			return ProxyQTextCursor().Block();
+			return ((QTextCursor) interceptor).Block();
 		}
 		[SmokeMethod("charFormat", "() const", "")]
 		public QTextCharFormat CharFormat() {
-			return ProxyQTextCursor().CharFormat();
+			return ((QTextCursor) interceptor).CharFormat();
 		}
 		[SmokeMethod("setCharFormat", "(const QTextCharFormat&)", "#")]
 		public void SetCharFormat(QTextCharFormat format) {
-			ProxyQTextCursor().SetCharFormat(format);
+			((QTextCursor) interceptor).SetCharFormat(format);
 		}
 		[SmokeMethod("mergeCharFormat", "(const QTextCharFormat&)", "#")]
 		public void MergeCharFormat(QTextCharFormat modifier) {
-			ProxyQTextCursor().MergeCharFormat(modifier);
+			((QTextCursor) interceptor).MergeCharFormat(modifier);
 		}
 		[SmokeMethod("blockFormat", "() const", "")]
 		public QTextBlockFormat BlockFormat() {
-			return ProxyQTextCursor().BlockFormat();
+			return ((QTextCursor) interceptor).BlockFormat();
 		}
 		[SmokeMethod("setBlockFormat", "(const QTextBlockFormat&)", "#")]
 		public void SetBlockFormat(QTextBlockFormat format) {
-			ProxyQTextCursor().SetBlockFormat(format);
+			((QTextCursor) interceptor).SetBlockFormat(format);
 		}
 		[SmokeMethod("mergeBlockFormat", "(const QTextBlockFormat&)", "#")]
 		public void MergeBlockFormat(QTextBlockFormat modifier) {
-			ProxyQTextCursor().MergeBlockFormat(modifier);
+			((QTextCursor) interceptor).MergeBlockFormat(modifier);
 		}
 		[SmokeMethod("blockCharFormat", "() const", "")]
 		public QTextCharFormat BlockCharFormat() {
-			return ProxyQTextCursor().BlockCharFormat();
+			return ((QTextCursor) interceptor).BlockCharFormat();
 		}
 		[SmokeMethod("setBlockCharFormat", "(const QTextCharFormat&)", "#")]
 		public void SetBlockCharFormat(QTextCharFormat format) {
-			ProxyQTextCursor().SetBlockCharFormat(format);
+			((QTextCursor) interceptor).SetBlockCharFormat(format);
 		}
 		[SmokeMethod("mergeBlockCharFormat", "(const QTextCharFormat&)", "#")]
 		public void MergeBlockCharFormat(QTextCharFormat modifier) {
-			ProxyQTextCursor().MergeBlockCharFormat(modifier);
+			((QTextCursor) interceptor).MergeBlockCharFormat(modifier);
 		}
 		[SmokeMethod("atBlockStart", "() const", "")]
 		public bool AtBlockStart() {
-			return ProxyQTextCursor().AtBlockStart();
+			return ((QTextCursor) interceptor).AtBlockStart();
 		}
 		[SmokeMethod("atBlockEnd", "() const", "")]
 		public bool AtBlockEnd() {
-			return ProxyQTextCursor().AtBlockEnd();
+			return ((QTextCursor) interceptor).AtBlockEnd();
 		}
 		[SmokeMethod("atStart", "() const", "")]
 		public bool AtStart() {
-			return ProxyQTextCursor().AtStart();
+			return ((QTextCursor) interceptor).AtStart();
 		}
 		[SmokeMethod("atEnd", "() const", "")]
 		public bool AtEnd() {
-			return ProxyQTextCursor().AtEnd();
+			return ((QTextCursor) interceptor).AtEnd();
 		}
 		[SmokeMethod("insertBlock", "()", "")]
 		public void InsertBlock() {
-			ProxyQTextCursor().InsertBlock();
+			((QTextCursor) interceptor).InsertBlock();
 		}
 		[SmokeMethod("insertBlock", "(const QTextBlockFormat&)", "#")]
 		public void InsertBlock(QTextBlockFormat format) {
-			ProxyQTextCursor().InsertBlock(format);
+			((QTextCursor) interceptor).InsertBlock(format);
 		}
 		[SmokeMethod("insertBlock", "(const QTextBlockFormat&, const QTextCharFormat&)", "##")]
 		public void InsertBlock(QTextBlockFormat format, QTextCharFormat charFormat) {
-			ProxyQTextCursor().InsertBlock(format,charFormat);
+			((QTextCursor) interceptor).InsertBlock(format,charFormat);
 		}
 		[SmokeMethod("insertList", "(const QTextListFormat&)", "#")]
 		public QTextList InsertList(QTextListFormat format) {
-			return ProxyQTextCursor().InsertList(format);
+			return ((QTextCursor) interceptor).InsertList(format);
 		}
 		[SmokeMethod("insertList", "(QTextListFormat::Style)", "$")]
 		public QTextList InsertList(QTextListFormat.Style style) {
-			return ProxyQTextCursor().InsertList(style);
+			return ((QTextCursor) interceptor).InsertList(style);
 		}
 		[SmokeMethod("createList", "(const QTextListFormat&)", "#")]
 		public QTextList CreateList(QTextListFormat format) {
-			return ProxyQTextCursor().CreateList(format);
+			return ((QTextCursor) interceptor).CreateList(format);
 		}
 		[SmokeMethod("createList", "(QTextListFormat::Style)", "$")]
 		public QTextList CreateList(QTextListFormat.Style style) {
-			return ProxyQTextCursor().CreateList(style);
+			return ((QTextCursor) interceptor).CreateList(style);
 		}
 		[SmokeMethod("currentList", "() const", "")]
 		public QTextList CurrentList() {
-			return ProxyQTextCursor().CurrentList();
+			return ((QTextCursor) interceptor).CurrentList();
 		}
 		[SmokeMethod("insertTable", "(int, int, const QTextTableFormat&)", "$$#")]
 		public QTextTable InsertTable(int rows, int cols, QTextTableFormat format) {
-			return ProxyQTextCursor().InsertTable(rows,cols,format);
+			return ((QTextCursor) interceptor).InsertTable(rows,cols,format);
 		}
 		[SmokeMethod("insertTable", "(int, int)", "$$")]
 		public QTextTable InsertTable(int rows, int cols) {
-			return ProxyQTextCursor().InsertTable(rows,cols);
+			return ((QTextCursor) interceptor).InsertTable(rows,cols);
 		}
 		[SmokeMethod("currentTable", "() const", "")]
 		public QTextTable CurrentTable() {
-			return ProxyQTextCursor().CurrentTable();
+			return ((QTextCursor) interceptor).CurrentTable();
 		}
 		[SmokeMethod("insertFrame", "(const QTextFrameFormat&)", "#")]
 		public QTextFrame InsertFrame(QTextFrameFormat format) {
-			return ProxyQTextCursor().InsertFrame(format);
+			return ((QTextCursor) interceptor).InsertFrame(format);
 		}
 		[SmokeMethod("currentFrame", "() const", "")]
 		public QTextFrame CurrentFrame() {
-			return ProxyQTextCursor().CurrentFrame();
+			return ((QTextCursor) interceptor).CurrentFrame();
 		}
 		[SmokeMethod("insertFragment", "(const QTextDocumentFragment&)", "#")]
 		public void InsertFragment(QTextDocumentFragment fragment) {
-			ProxyQTextCursor().InsertFragment(fragment);
+			((QTextCursor) interceptor).InsertFragment(fragment);
 		}
 		[SmokeMethod("insertHtml", "(const QString&)", "$")]
 		public void InsertHtml(string html) {
-			ProxyQTextCursor().InsertHtml(html);
+			((QTextCursor) interceptor).InsertHtml(html);
 		}
 		[SmokeMethod("insertImage", "(const QTextImageFormat&, QTextFrameFormat::Position)", "#$")]
 		public void InsertImage(QTextImageFormat format, QTextFrameFormat.Position alignment) {
-			ProxyQTextCursor().InsertImage(format,alignment);
+			((QTextCursor) interceptor).InsertImage(format,alignment);
 		}
 		[SmokeMethod("insertImage", "(const QTextImageFormat&)", "#")]
 		public void InsertImage(QTextImageFormat format) {
-			ProxyQTextCursor().InsertImage(format);
+			((QTextCursor) interceptor).InsertImage(format);
 		}
 		[SmokeMethod("insertImage", "(const QString&)", "$")]
 		public void InsertImage(string name) {
-			ProxyQTextCursor().InsertImage(name);
+			((QTextCursor) interceptor).InsertImage(name);
 		}
 		[SmokeMethod("beginEditBlock", "()", "")]
 		public void BeginEditBlock() {
-			ProxyQTextCursor().BeginEditBlock();
+			((QTextCursor) interceptor).BeginEditBlock();
 		}
 		[SmokeMethod("joinPreviousEditBlock", "()", "")]
 		public void JoinPreviousEditBlock() {
-			ProxyQTextCursor().JoinPreviousEditBlock();
+			((QTextCursor) interceptor).JoinPreviousEditBlock();
 		}
 		[SmokeMethod("endEditBlock", "()", "")]
 		public void EndEditBlock() {
-			ProxyQTextCursor().EndEditBlock();
+			((QTextCursor) interceptor).EndEditBlock();
 		}
 		public override bool Equals(object o) {
 			if (!(o is QTextCursor)) { return false; }
 			return this == (QTextCursor) o;
 		}
 		public override int GetHashCode() {
-			return ProxyQTextCursor().GetHashCode();
+			return ((QTextCursor) interceptor).GetHashCode();
 		}
 		[SmokeMethod("isCopyOf", "(const QTextCursor&) const", "#")]
 		public bool IsCopyOf(QTextCursor other) {
-			return ProxyQTextCursor().IsCopyOf(other);
+			return ((QTextCursor) interceptor).IsCopyOf(other);
 		}
 		[SmokeMethod("blockNumber", "() const", "")]
 		public int BlockNumber() {
-			return ProxyQTextCursor().BlockNumber();
+			return ((QTextCursor) interceptor).BlockNumber();
 		}
 		[SmokeMethod("columnNumber", "() const", "")]
 		public int ColumnNumber() {
-			return ProxyQTextCursor().ColumnNumber();
+			return ((QTextCursor) interceptor).ColumnNumber();
 		}
 		~QTextCursor() {
 			DisposeQTextCursor();
@@ -365,25 +359,25 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QTextCursor", "()", "")]
 		private void DisposeQTextCursor() {
-			ProxyQTextCursor().DisposeQTextCursor();
+			((QTextCursor) interceptor).DisposeQTextCursor();
 		}
 		public static bool operator<(QTextCursor lhs, QTextCursor rhs) {
-			return StaticQTextCursor().op_lt(lhs,rhs);
+			return staticInterceptor.op_lt(lhs,rhs);
 		}
 		public static bool operator<=(QTextCursor lhs, QTextCursor rhs) {
-			return StaticQTextCursor().op_lte(lhs,rhs);
+			return staticInterceptor.op_lte(lhs,rhs);
 		}
 		public static bool operator==(QTextCursor lhs, QTextCursor rhs) {
-			return StaticQTextCursor().op_equals(lhs,rhs);
+			return staticInterceptor.op_equals(lhs,rhs);
 		}
 		public static bool operator!=(QTextCursor lhs, QTextCursor rhs) {
-			return !StaticQTextCursor().op_equals(lhs,rhs);
+			return !staticInterceptor.op_equals(lhs,rhs);
 		}
 		public static bool operator>=(QTextCursor lhs, QTextCursor rhs) {
-			return StaticQTextCursor().op_gte(lhs,rhs);
+			return staticInterceptor.op_gte(lhs,rhs);
 		}
 		public static bool operator>(QTextCursor lhs, QTextCursor rhs) {
-			return StaticQTextCursor().op_gt(lhs,rhs);
+			return staticInterceptor.op_gt(lhs,rhs);
 		}
 	}
 }

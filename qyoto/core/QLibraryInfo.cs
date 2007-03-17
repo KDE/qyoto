@@ -5,8 +5,8 @@ namespace Qyoto {
 
 	[SmokeClass("QLibraryInfo")]
 	public class QLibraryInfo : MarshalByRefObject {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QLibraryInfo interceptor = null;
+		private IntPtr smokeObject;
 		protected QLibraryInfo(Type dummy) {}
 		[SmokeClass("QLibraryInfo")]
 		interface IQLibraryInfoProxy {
@@ -19,13 +19,10 @@ namespace Qyoto {
 			[SmokeMethod("location", "(QLibraryInfo::LibraryLocation)", "$")]
 			string Location(QLibraryInfo.LibraryLocation arg1);
 		}
-		private static Object _staticInterceptor = null;
+		private static IQLibraryInfoProxy staticInterceptor = null;
 		static QLibraryInfo() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQLibraryInfoProxy), null);
-			_staticInterceptor = (IQLibraryInfoProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQLibraryInfoProxy StaticQLibraryInfo() {
-			return (IQLibraryInfoProxy) _staticInterceptor;
+			staticInterceptor = (IQLibraryInfoProxy) realProxy.GetTransparentProxy();
 		}
 		public enum LibraryLocation {
 			PrefixPath = 0,
@@ -41,16 +38,16 @@ namespace Qyoto {
 			ExamplesPath = 10,
 		}
 		public static string Licensee() {
-			return StaticQLibraryInfo().Licensee();
+			return staticInterceptor.Licensee();
 		}
 		public static string LicensedProducts() {
-			return StaticQLibraryInfo().LicensedProducts();
+			return staticInterceptor.LicensedProducts();
 		}
 		public static string BuildKey() {
-			return StaticQLibraryInfo().BuildKey();
+			return staticInterceptor.BuildKey();
 		}
 		public static string Location(QLibraryInfo.LibraryLocation arg1) {
-			return StaticQLibraryInfo().Location(arg1);
+			return staticInterceptor.Location(arg1);
 		}
 	}
 }

@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QStyleOptionGraphicsItem(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionGraphicsItem), this);
-			_interceptor = (QStyleOptionGraphicsItem) realProxy.GetTransparentProxy();
-		}
-		private QStyleOptionGraphicsItem ProxyQStyleOptionGraphicsItem() {
-			return (QStyleOptionGraphicsItem) _interceptor;
+			interceptor = (QStyleOptionGraphicsItem) realProxy.GetTransparentProxy();
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_GraphicsItem,
@@ -25,7 +22,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionGraphicsItem", "()", "")]
 		private void NewQStyleOptionGraphicsItem() {
-			ProxyQStyleOptionGraphicsItem().NewQStyleOptionGraphicsItem();
+			((QStyleOptionGraphicsItem) interceptor).NewQStyleOptionGraphicsItem();
 		}
 		public QStyleOptionGraphicsItem(QStyleOptionGraphicsItem other) : this((Type) null) {
 			CreateProxy();
@@ -33,7 +30,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionGraphicsItem", "(const QStyleOptionGraphicsItem&)", "#")]
 		private void NewQStyleOptionGraphicsItem(QStyleOptionGraphicsItem other) {
-			ProxyQStyleOptionGraphicsItem().NewQStyleOptionGraphicsItem(other);
+			((QStyleOptionGraphicsItem) interceptor).NewQStyleOptionGraphicsItem(other);
 		}
 		public QStyleOptionGraphicsItem(int version) : this((Type) null) {
 			CreateProxy();
@@ -41,7 +38,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionGraphicsItem", "(int)", "$")]
 		private void NewQStyleOptionGraphicsItem(int version) {
-			ProxyQStyleOptionGraphicsItem().NewQStyleOptionGraphicsItem(version);
+			((QStyleOptionGraphicsItem) interceptor).NewQStyleOptionGraphicsItem(version);
 		}
 		~QStyleOptionGraphicsItem() {
 			DisposeQStyleOptionGraphicsItem();
@@ -51,7 +48,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QStyleOptionGraphicsItem", "()", "")]
 		private void DisposeQStyleOptionGraphicsItem() {
-			ProxyQStyleOptionGraphicsItem().DisposeQStyleOptionGraphicsItem();
+			((QStyleOptionGraphicsItem) interceptor).DisposeQStyleOptionGraphicsItem();
 		}
 	}
 }

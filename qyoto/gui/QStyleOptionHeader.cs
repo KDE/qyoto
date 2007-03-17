@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QStyleOptionHeader(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionHeader), this);
-			_interceptor = (QStyleOptionHeader) realProxy.GetTransparentProxy();
-		}
-		private QStyleOptionHeader ProxyQStyleOptionHeader() {
-			return (QStyleOptionHeader) _interceptor;
+			interceptor = (QStyleOptionHeader) realProxy.GetTransparentProxy();
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_Header,
@@ -42,7 +39,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionHeader", "()", "")]
 		private void NewQStyleOptionHeader() {
-			ProxyQStyleOptionHeader().NewQStyleOptionHeader();
+			((QStyleOptionHeader) interceptor).NewQStyleOptionHeader();
 		}
 		public QStyleOptionHeader(QStyleOptionHeader other) : this((Type) null) {
 			CreateProxy();
@@ -50,7 +47,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionHeader", "(const QStyleOptionHeader&)", "#")]
 		private void NewQStyleOptionHeader(QStyleOptionHeader other) {
-			ProxyQStyleOptionHeader().NewQStyleOptionHeader(other);
+			((QStyleOptionHeader) interceptor).NewQStyleOptionHeader(other);
 		}
 		public QStyleOptionHeader(int version) : this((Type) null) {
 			CreateProxy();
@@ -58,7 +55,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionHeader", "(int)", "$")]
 		private void NewQStyleOptionHeader(int version) {
-			ProxyQStyleOptionHeader().NewQStyleOptionHeader(version);
+			((QStyleOptionHeader) interceptor).NewQStyleOptionHeader(version);
 		}
 		~QStyleOptionHeader() {
 			DisposeQStyleOptionHeader();
@@ -68,7 +65,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QStyleOptionHeader", "()", "")]
 		private void DisposeQStyleOptionHeader() {
-			ProxyQStyleOptionHeader().DisposeQStyleOptionHeader();
+			((QStyleOptionHeader) interceptor).DisposeQStyleOptionHeader();
 		}
 	}
 }

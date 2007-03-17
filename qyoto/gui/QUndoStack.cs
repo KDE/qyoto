@@ -16,18 +16,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QUndoStack), this);
-			_interceptor = (QUndoStack) realProxy.GetTransparentProxy();
+			interceptor = (QUndoStack) realProxy.GetTransparentProxy();
 		}
-		private QUndoStack ProxyQUndoStack() {
-			return (QUndoStack) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQUndoStackProxy staticInterceptor = null;
 		static QUndoStack() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQUndoStackProxy), null);
-			_staticInterceptor = (IQUndoStackProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQUndoStackProxy StaticQUndoStack() {
-			return (IQUndoStackProxy) _staticInterceptor;
+			staticInterceptor = (IQUndoStackProxy) realProxy.GetTransparentProxy();
 		}
 		[Q_PROPERTY("bool", "active")]
 		public bool Active {
@@ -40,7 +34,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QUndoStack", "(QObject*)", "#")]
 		private void NewQUndoStack(QObject parent) {
-			ProxyQUndoStack().NewQUndoStack(parent);
+			((QUndoStack) interceptor).NewQUndoStack(parent);
 		}
 		public QUndoStack() : this((Type) null) {
 			CreateProxy();
@@ -48,99 +42,99 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QUndoStack", "()", "")]
 		private void NewQUndoStack() {
-			ProxyQUndoStack().NewQUndoStack();
+			((QUndoStack) interceptor).NewQUndoStack();
 		}
 		[SmokeMethod("clear", "()", "")]
 		public void Clear() {
-			ProxyQUndoStack().Clear();
+			((QUndoStack) interceptor).Clear();
 		}
 		[SmokeMethod("push", "(QUndoCommand*)", "#")]
 		public void Push(QUndoCommand cmd) {
-			ProxyQUndoStack().Push(cmd);
+			((QUndoStack) interceptor).Push(cmd);
 		}
 		[SmokeMethod("canUndo", "() const", "")]
 		public bool CanUndo() {
-			return ProxyQUndoStack().CanUndo();
+			return ((QUndoStack) interceptor).CanUndo();
 		}
 		[SmokeMethod("canRedo", "() const", "")]
 		public bool CanRedo() {
-			return ProxyQUndoStack().CanRedo();
+			return ((QUndoStack) interceptor).CanRedo();
 		}
 		[SmokeMethod("undoText", "() const", "")]
 		public string UndoText() {
-			return ProxyQUndoStack().UndoText();
+			return ((QUndoStack) interceptor).UndoText();
 		}
 		[SmokeMethod("redoText", "() const", "")]
 		public string RedoText() {
-			return ProxyQUndoStack().RedoText();
+			return ((QUndoStack) interceptor).RedoText();
 		}
 		[SmokeMethod("count", "() const", "")]
 		public int Count() {
-			return ProxyQUndoStack().Count();
+			return ((QUndoStack) interceptor).Count();
 		}
 		[SmokeMethod("index", "() const", "")]
 		public int Index() {
-			return ProxyQUndoStack().Index();
+			return ((QUndoStack) interceptor).Index();
 		}
 		[SmokeMethod("text", "(int) const", "$")]
 		public string Text(int idx) {
-			return ProxyQUndoStack().Text(idx);
+			return ((QUndoStack) interceptor).Text(idx);
 		}
 		[SmokeMethod("createUndoAction", "(QObject*, const QString&) const", "#$")]
 		public QAction CreateUndoAction(QObject parent, string prefix) {
-			return ProxyQUndoStack().CreateUndoAction(parent,prefix);
+			return ((QUndoStack) interceptor).CreateUndoAction(parent,prefix);
 		}
 		[SmokeMethod("createUndoAction", "(QObject*) const", "#")]
 		public QAction CreateUndoAction(QObject parent) {
-			return ProxyQUndoStack().CreateUndoAction(parent);
+			return ((QUndoStack) interceptor).CreateUndoAction(parent);
 		}
 		[SmokeMethod("createRedoAction", "(QObject*, const QString&) const", "#$")]
 		public QAction CreateRedoAction(QObject parent, string prefix) {
-			return ProxyQUndoStack().CreateRedoAction(parent,prefix);
+			return ((QUndoStack) interceptor).CreateRedoAction(parent,prefix);
 		}
 		[SmokeMethod("createRedoAction", "(QObject*) const", "#")]
 		public QAction CreateRedoAction(QObject parent) {
-			return ProxyQUndoStack().CreateRedoAction(parent);
+			return ((QUndoStack) interceptor).CreateRedoAction(parent);
 		}
 		[SmokeMethod("isActive", "() const", "")]
 		public bool IsActive() {
-			return ProxyQUndoStack().IsActive();
+			return ((QUndoStack) interceptor).IsActive();
 		}
 		[SmokeMethod("isClean", "() const", "")]
 		public bool IsClean() {
-			return ProxyQUndoStack().IsClean();
+			return ((QUndoStack) interceptor).IsClean();
 		}
 		[SmokeMethod("cleanIndex", "() const", "")]
 		public int CleanIndex() {
-			return ProxyQUndoStack().CleanIndex();
+			return ((QUndoStack) interceptor).CleanIndex();
 		}
 		[SmokeMethod("beginMacro", "(const QString&)", "$")]
 		public void BeginMacro(string text) {
-			ProxyQUndoStack().BeginMacro(text);
+			((QUndoStack) interceptor).BeginMacro(text);
 		}
 		[SmokeMethod("endMacro", "()", "")]
 		public void EndMacro() {
-			ProxyQUndoStack().EndMacro();
+			((QUndoStack) interceptor).EndMacro();
 		}
 		[Q_SLOT("void setClean()")]
 		[SmokeMethod("setClean", "()", "")]
 		public void SetClean() {
-			ProxyQUndoStack().SetClean();
+			((QUndoStack) interceptor).SetClean();
 		}
 		[Q_SLOT("void setIndex(int)")]
 		[SmokeMethod("setIndex", "(int)", "$")]
 		public void SetIndex(int idx) {
-			ProxyQUndoStack().SetIndex(idx);
+			((QUndoStack) interceptor).SetIndex(idx);
 		}
 		[Q_SLOT("void undo()")]
 		[SmokeMethod("undo", "()", "")]
 		public void Undo() {
-			ProxyQUndoStack().Undo();
+			((QUndoStack) interceptor).Undo();
 		}
 		[Q_SLOT("void redo()")]
 		[SmokeMethod("redo", "()", "")]
 		public void Redo() {
-			ProxyQUndoStack().Redo();
+			((QUndoStack) interceptor).Redo();
 		}
 		~QUndoStack() {
 			DisposeQUndoStack();
@@ -150,13 +144,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QUndoStack", "()", "")]
 		private void DisposeQUndoStack() {
-			ProxyQUndoStack().DisposeQUndoStack();
+			((QUndoStack) interceptor).DisposeQUndoStack();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQUndoStack().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQUndoStack().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQUndoStackSignals Emit {
 			get { return (IQUndoStackSignals) Q_EMIT; }

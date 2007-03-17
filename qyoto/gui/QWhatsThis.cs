@@ -5,8 +5,8 @@ namespace Qyoto {
 
 	[SmokeClass("QWhatsThis")]
 	public class QWhatsThis : MarshalByRefObject {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QWhatsThis interceptor = null;
+		private IntPtr smokeObject;
 		protected QWhatsThis(Type dummy) {}
 		[SmokeClass("QWhatsThis")]
 		interface IQWhatsThisProxy {
@@ -27,37 +27,34 @@ namespace Qyoto {
 			[SmokeMethod("createAction", "()", "")]
 			QAction CreateAction();
 		}
-		private static Object _staticInterceptor = null;
+		private static IQWhatsThisProxy staticInterceptor = null;
 		static QWhatsThis() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQWhatsThisProxy), null);
-			_staticInterceptor = (IQWhatsThisProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQWhatsThisProxy StaticQWhatsThis() {
-			return (IQWhatsThisProxy) _staticInterceptor;
+			staticInterceptor = (IQWhatsThisProxy) realProxy.GetTransparentProxy();
 		}
 		public static void EnterWhatsThisMode() {
-			StaticQWhatsThis().EnterWhatsThisMode();
+			staticInterceptor.EnterWhatsThisMode();
 		}
 		public static bool InWhatsThisMode() {
-			return StaticQWhatsThis().InWhatsThisMode();
+			return staticInterceptor.InWhatsThisMode();
 		}
 		public static void LeaveWhatsThisMode() {
-			StaticQWhatsThis().LeaveWhatsThisMode();
+			staticInterceptor.LeaveWhatsThisMode();
 		}
 		public static void ShowText(QPoint pos, string text, QWidget w) {
-			StaticQWhatsThis().ShowText(pos,text,w);
+			staticInterceptor.ShowText(pos,text,w);
 		}
 		public static void ShowText(QPoint pos, string text) {
-			StaticQWhatsThis().ShowText(pos,text);
+			staticInterceptor.ShowText(pos,text);
 		}
 		public static void HideText() {
-			StaticQWhatsThis().HideText();
+			staticInterceptor.HideText();
 		}
 		public static QAction CreateAction(QObject parent) {
-			return StaticQWhatsThis().CreateAction(parent);
+			return staticInterceptor.CreateAction(parent);
 		}
 		public static QAction CreateAction() {
-			return StaticQWhatsThis().CreateAction();
+			return staticInterceptor.CreateAction();
 		}
 	}
 }

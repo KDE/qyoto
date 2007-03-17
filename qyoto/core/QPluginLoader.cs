@@ -18,18 +18,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPluginLoader), this);
-			_interceptor = (QPluginLoader) realProxy.GetTransparentProxy();
+			interceptor = (QPluginLoader) realProxy.GetTransparentProxy();
 		}
-		private QPluginLoader ProxyQPluginLoader() {
-			return (QPluginLoader) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQPluginLoaderProxy staticInterceptor = null;
 		static QPluginLoader() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQPluginLoaderProxy), null);
-			_staticInterceptor = (IQPluginLoaderProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQPluginLoaderProxy StaticQPluginLoader() {
-			return (IQPluginLoaderProxy) _staticInterceptor;
+			staticInterceptor = (IQPluginLoaderProxy) realProxy.GetTransparentProxy();
 		}
 		[Q_PROPERTY("QString", "fileName")]
 		public string FileName {
@@ -42,7 +36,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QPluginLoader", "(QObject*)", "#")]
 		private void NewQPluginLoader(QObject parent) {
-			ProxyQPluginLoader().NewQPluginLoader(parent);
+			((QPluginLoader) interceptor).NewQPluginLoader(parent);
 		}
 		public QPluginLoader() : this((Type) null) {
 			CreateProxy();
@@ -50,7 +44,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QPluginLoader", "()", "")]
 		private void NewQPluginLoader() {
-			ProxyQPluginLoader().NewQPluginLoader();
+			((QPluginLoader) interceptor).NewQPluginLoader();
 		}
 		public QPluginLoader(string fileName, QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -58,7 +52,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QPluginLoader", "(const QString&, QObject*)", "$#")]
 		private void NewQPluginLoader(string fileName, QObject parent) {
-			ProxyQPluginLoader().NewQPluginLoader(fileName,parent);
+			((QPluginLoader) interceptor).NewQPluginLoader(fileName,parent);
 		}
 		public QPluginLoader(string fileName) : this((Type) null) {
 			CreateProxy();
@@ -66,27 +60,27 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QPluginLoader", "(const QString&)", "$")]
 		private void NewQPluginLoader(string fileName) {
-			ProxyQPluginLoader().NewQPluginLoader(fileName);
+			((QPluginLoader) interceptor).NewQPluginLoader(fileName);
 		}
 		[SmokeMethod("instance", "()", "")]
 		public QObject Instance() {
-			return ProxyQPluginLoader().Instance();
+			return ((QPluginLoader) interceptor).Instance();
 		}
 		[SmokeMethod("load", "()", "")]
 		public bool Load() {
-			return ProxyQPluginLoader().Load();
+			return ((QPluginLoader) interceptor).Load();
 		}
 		[SmokeMethod("unload", "()", "")]
 		public bool Unload() {
-			return ProxyQPluginLoader().Unload();
+			return ((QPluginLoader) interceptor).Unload();
 		}
 		[SmokeMethod("isLoaded", "() const", "")]
 		public bool IsLoaded() {
-			return ProxyQPluginLoader().IsLoaded();
+			return ((QPluginLoader) interceptor).IsLoaded();
 		}
 		[SmokeMethod("errorString", "() const", "")]
 		public string ErrorString() {
-			return ProxyQPluginLoader().ErrorString();
+			return ((QPluginLoader) interceptor).ErrorString();
 		}
 		~QPluginLoader() {
 			DisposeQPluginLoader();
@@ -96,16 +90,16 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QPluginLoader", "()", "")]
 		private void DisposeQPluginLoader() {
-			ProxyQPluginLoader().DisposeQPluginLoader();
+			((QPluginLoader) interceptor).DisposeQPluginLoader();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQPluginLoader().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQPluginLoader().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		public static List<QObject> StaticInstances() {
-			return StaticQPluginLoader().StaticInstances();
+			return staticInterceptor.StaticInstances();
 		}
 		protected new IQPluginLoaderSignals Emit {
 			get { return (IQPluginLoaderSignals) Q_EMIT; }

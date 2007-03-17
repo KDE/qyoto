@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QDomDocumentType(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomDocumentType), this);
-			_interceptor = (QDomDocumentType) realProxy.GetTransparentProxy();
-		}
-		private QDomDocumentType ProxyQDomDocumentType() {
-			return (QDomDocumentType) _interceptor;
+			interceptor = (QDomDocumentType) realProxy.GetTransparentProxy();
 		}
 		public QDomDocumentType() : this((Type) null) {
 			CreateProxy();
@@ -19,7 +16,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDomDocumentType", "()", "")]
 		private void NewQDomDocumentType() {
-			ProxyQDomDocumentType().NewQDomDocumentType();
+			((QDomDocumentType) interceptor).NewQDomDocumentType();
 		}
 		public QDomDocumentType(QDomDocumentType x) : this((Type) null) {
 			CreateProxy();
@@ -27,35 +24,35 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDomDocumentType", "(const QDomDocumentType&)", "#")]
 		private void NewQDomDocumentType(QDomDocumentType x) {
-			ProxyQDomDocumentType().NewQDomDocumentType(x);
+			((QDomDocumentType) interceptor).NewQDomDocumentType(x);
 		}
 		[SmokeMethod("name", "() const", "")]
 		public string Name() {
-			return ProxyQDomDocumentType().Name();
+			return ((QDomDocumentType) interceptor).Name();
 		}
 		[SmokeMethod("entities", "() const", "")]
 		public QDomNamedNodeMap Entities() {
-			return ProxyQDomDocumentType().Entities();
+			return ((QDomDocumentType) interceptor).Entities();
 		}
 		[SmokeMethod("notations", "() const", "")]
 		public QDomNamedNodeMap Notations() {
-			return ProxyQDomDocumentType().Notations();
+			return ((QDomDocumentType) interceptor).Notations();
 		}
 		[SmokeMethod("publicId", "() const", "")]
 		public string PublicId() {
-			return ProxyQDomDocumentType().PublicId();
+			return ((QDomDocumentType) interceptor).PublicId();
 		}
 		[SmokeMethod("systemId", "() const", "")]
 		public string SystemId() {
-			return ProxyQDomDocumentType().SystemId();
+			return ((QDomDocumentType) interceptor).SystemId();
 		}
 		[SmokeMethod("internalSubset", "() const", "")]
 		public string InternalSubset() {
-			return ProxyQDomDocumentType().InternalSubset();
+			return ((QDomDocumentType) interceptor).InternalSubset();
 		}
 		[SmokeMethod("nodeType", "() const", "")]
 		public QDomNode.NodeType NodeType() {
-			return ProxyQDomDocumentType().NodeType();
+			return ((QDomDocumentType) interceptor).NodeType();
 		}
 		~QDomDocumentType() {
 			DisposeQDomDocumentType();
@@ -65,7 +62,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QDomDocumentType", "()", "")]
 		private void DisposeQDomDocumentType() {
-			ProxyQDomDocumentType().DisposeQDomDocumentType();
+			((QDomDocumentType) interceptor).DisposeQDomDocumentType();
 		}
 	}
 }

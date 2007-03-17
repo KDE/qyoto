@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QGraphicsSceneEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGraphicsSceneEvent), this);
-			_interceptor = (QGraphicsSceneEvent) realProxy.GetTransparentProxy();
-		}
-		private QGraphicsSceneEvent ProxyQGraphicsSceneEvent() {
-			return (QGraphicsSceneEvent) _interceptor;
+			interceptor = (QGraphicsSceneEvent) realProxy.GetTransparentProxy();
 		}
 		public QGraphicsSceneEvent(QEvent.TypeOf type) : this((Type) null) {
 			CreateProxy();
@@ -19,15 +16,15 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGraphicsSceneEvent", "(QEvent::Type)", "$")]
 		private void NewQGraphicsSceneEvent(QEvent.TypeOf type) {
-			ProxyQGraphicsSceneEvent().NewQGraphicsSceneEvent(type);
+			((QGraphicsSceneEvent) interceptor).NewQGraphicsSceneEvent(type);
 		}
 		[SmokeMethod("widget", "() const", "")]
 		public QWidget Widget() {
-			return ProxyQGraphicsSceneEvent().Widget();
+			return ((QGraphicsSceneEvent) interceptor).Widget();
 		}
 		[SmokeMethod("setWidget", "(QWidget*)", "#")]
 		public void SetWidget(QWidget widget) {
-			ProxyQGraphicsSceneEvent().SetWidget(widget);
+			((QGraphicsSceneEvent) interceptor).SetWidget(widget);
 		}
 		~QGraphicsSceneEvent() {
 			DisposeQGraphicsSceneEvent();
@@ -37,7 +34,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QGraphicsSceneEvent", "()", "")]
 		private void DisposeQGraphicsSceneEvent() {
-			ProxyQGraphicsSceneEvent().DisposeQGraphicsSceneEvent();
+			((QGraphicsSceneEvent) interceptor).DisposeQGraphicsSceneEvent();
 		}
 	}
 }

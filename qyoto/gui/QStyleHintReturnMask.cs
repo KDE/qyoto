@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QStyleHintReturnMask(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleHintReturnMask), this);
-			_interceptor = (QStyleHintReturnMask) realProxy.GetTransparentProxy();
-		}
-		private QStyleHintReturnMask ProxyQStyleHintReturnMask() {
-			return (QStyleHintReturnMask) _interceptor;
+			interceptor = (QStyleHintReturnMask) realProxy.GetTransparentProxy();
 		}
 		public enum StyleOptionType {
 			Type = QStyleHintReturn.HintReturnType.SH_Mask,
@@ -25,7 +22,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleHintReturnMask", "()", "")]
 		private void NewQStyleHintReturnMask() {
-			ProxyQStyleHintReturnMask().NewQStyleHintReturnMask();
+			((QStyleHintReturnMask) interceptor).NewQStyleHintReturnMask();
 		}
 		~QStyleHintReturnMask() {
 			DisposeQStyleHintReturnMask();
@@ -35,7 +32,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QStyleHintReturnMask", "()", "")]
 		private void DisposeQStyleHintReturnMask() {
-			ProxyQStyleHintReturnMask().DisposeQStyleHintReturnMask();
+			((QStyleHintReturnMask) interceptor).DisposeQStyleHintReturnMask();
 		}
 	}
 }

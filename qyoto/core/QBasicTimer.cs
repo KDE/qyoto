@@ -5,15 +5,12 @@ namespace Qyoto {
 
 	[SmokeClass("QBasicTimer")]
 	public class QBasicTimer : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QBasicTimer interceptor = null;
+		private IntPtr smokeObject;
 		protected QBasicTimer(Type dummy) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QBasicTimer), this);
-			_interceptor = (QBasicTimer) realProxy.GetTransparentProxy();
-		}
-		private QBasicTimer ProxyQBasicTimer() {
-			return (QBasicTimer) _interceptor;
+			interceptor = (QBasicTimer) realProxy.GetTransparentProxy();
 		}
 		public QBasicTimer() : this((Type) null) {
 			CreateProxy();
@@ -21,23 +18,23 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QBasicTimer", "()", "")]
 		private void NewQBasicTimer() {
-			ProxyQBasicTimer().NewQBasicTimer();
+			((QBasicTimer) interceptor).NewQBasicTimer();
 		}
 		[SmokeMethod("isActive", "() const", "")]
 		public bool IsActive() {
-			return ProxyQBasicTimer().IsActive();
+			return ((QBasicTimer) interceptor).IsActive();
 		}
 		[SmokeMethod("timerId", "() const", "")]
 		public int TimerId() {
-			return ProxyQBasicTimer().TimerId();
+			return ((QBasicTimer) interceptor).TimerId();
 		}
 		[SmokeMethod("start", "(int, QObject*)", "$#")]
 		public void Start(int msec, QObject arg2) {
-			ProxyQBasicTimer().Start(msec,arg2);
+			((QBasicTimer) interceptor).Start(msec,arg2);
 		}
 		[SmokeMethod("stop", "()", "")]
 		public void Stop() {
-			ProxyQBasicTimer().Stop();
+			((QBasicTimer) interceptor).Stop();
 		}
 		~QBasicTimer() {
 			DisposeQBasicTimer();
@@ -47,7 +44,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QBasicTimer", "()", "")]
 		private void DisposeQBasicTimer() {
-			ProxyQBasicTimer().DisposeQBasicTimer();
+			((QBasicTimer) interceptor).DisposeQBasicTimer();
 		}
 	}
 }

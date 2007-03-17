@@ -5,25 +5,22 @@ namespace Qyoto {
 
 	[SmokeClass("QBitRef")]
 	public class QBitRef : MarshalByRefObject {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QBitRef interceptor = null;
+		private IntPtr smokeObject;
 		protected QBitRef(Type dummy) {}
 		[SmokeClass("QBitRef")]
 		interface IQBitRefProxy {
 			[SmokeMethod("operator!", "() const", "")]
 			bool op_not(QBitRef lhs);
 		}
-		private static Object _staticInterceptor = null;
+		private static IQBitRefProxy staticInterceptor = null;
 		static QBitRef() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQBitRefProxy), null);
-			_staticInterceptor = (IQBitRefProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQBitRefProxy StaticQBitRef() {
-			return (IQBitRefProxy) _staticInterceptor;
+			staticInterceptor = (IQBitRefProxy) realProxy.GetTransparentProxy();
 		}
 		//  operator bool(); >>>> NOT CONVERTED
 		public static bool operator!(QBitRef lhs) {
-			return StaticQBitRef().op_not(lhs);
+			return staticInterceptor.op_not(lhs);
 		}
 	}
 }

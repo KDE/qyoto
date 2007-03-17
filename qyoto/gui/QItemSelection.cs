@@ -6,8 +6,8 @@ namespace Qyoto {
 
 	[SmokeClass("QItemSelection")]
 	public class QItemSelection : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QItemSelection interceptor = null;
+		private IntPtr smokeObject;
 		protected QItemSelection(Type dummy) {}
 		[SmokeClass("QItemSelection")]
 		interface IQItemSelectionProxy {
@@ -16,18 +16,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QItemSelection), this);
-			_interceptor = (QItemSelection) realProxy.GetTransparentProxy();
+			interceptor = (QItemSelection) realProxy.GetTransparentProxy();
 		}
-		private QItemSelection ProxyQItemSelection() {
-			return (QItemSelection) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQItemSelectionProxy staticInterceptor = null;
 		static QItemSelection() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQItemSelectionProxy), null);
-			_staticInterceptor = (IQItemSelectionProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQItemSelectionProxy StaticQItemSelection() {
-			return (IQItemSelectionProxy) _staticInterceptor;
+			staticInterceptor = (IQItemSelectionProxy) realProxy.GetTransparentProxy();
 		}
 		public QItemSelection() : this((Type) null) {
 			CreateProxy();
@@ -35,7 +29,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QItemSelection", "()", "")]
 		private void NewQItemSelection() {
-			ProxyQItemSelection().NewQItemSelection();
+			((QItemSelection) interceptor).NewQItemSelection();
 		}
 		public QItemSelection(QModelIndex topLeft, QModelIndex bottomRight) : this((Type) null) {
 			CreateProxy();
@@ -43,23 +37,23 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QItemSelection", "(const QModelIndex&, const QModelIndex&)", "##")]
 		private void NewQItemSelection(QModelIndex topLeft, QModelIndex bottomRight) {
-			ProxyQItemSelection().NewQItemSelection(topLeft,bottomRight);
+			((QItemSelection) interceptor).NewQItemSelection(topLeft,bottomRight);
 		}
 		[SmokeMethod("select", "(const QModelIndex&, const QModelIndex&)", "##")]
 		public void Select(QModelIndex topLeft, QModelIndex bottomRight) {
-			ProxyQItemSelection().Select(topLeft,bottomRight);
+			((QItemSelection) interceptor).Select(topLeft,bottomRight);
 		}
 		[SmokeMethod("contains", "(const QModelIndex&) const", "#")]
 		public bool Contains(QModelIndex index) {
-			return ProxyQItemSelection().Contains(index);
+			return ((QItemSelection) interceptor).Contains(index);
 		}
 		[SmokeMethod("indexes", "() const", "")]
 		public List<QModelIndex> Indexes() {
-			return ProxyQItemSelection().Indexes();
+			return ((QItemSelection) interceptor).Indexes();
 		}
 		[SmokeMethod("merge", "(const QItemSelection&, QItemSelectionModel::SelectionFlags)", "#$")]
 		public void Merge(QItemSelection other, int command) {
-			ProxyQItemSelection().Merge(other,command);
+			((QItemSelection) interceptor).Merge(other,command);
 		}
 		~QItemSelection() {
 			DisposeQItemSelection();
@@ -69,10 +63,10 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QItemSelection", "()", "")]
 		private void DisposeQItemSelection() {
-			ProxyQItemSelection().DisposeQItemSelection();
+			((QItemSelection) interceptor).DisposeQItemSelection();
 		}
 		public static void Split(QItemSelectionRange range, QItemSelectionRange other, QItemSelection result) {
-			StaticQItemSelection().Split(range,other,result);
+			staticInterceptor.Split(range,other,result);
 		}
 	}
 }

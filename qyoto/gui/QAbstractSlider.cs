@@ -16,18 +16,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAbstractSlider), this);
-			_interceptor = (QAbstractSlider) realProxy.GetTransparentProxy();
+			interceptor = (QAbstractSlider) realProxy.GetTransparentProxy();
 		}
-		private QAbstractSlider ProxyQAbstractSlider() {
-			return (QAbstractSlider) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQAbstractSliderProxy staticInterceptor = null;
 		static QAbstractSlider() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQAbstractSliderProxy), null);
-			_staticInterceptor = (IQAbstractSliderProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQAbstractSliderProxy StaticQAbstractSlider() {
-			return (IQAbstractSliderProxy) _staticInterceptor;
+			staticInterceptor = (IQAbstractSliderProxy) realProxy.GetTransparentProxy();
 		}
 		public enum SliderAction {
 			SliderNoAction = 0,
@@ -106,7 +100,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QAbstractSlider", "(QWidget*)", "#")]
 		private void NewQAbstractSlider(QWidget parent) {
-			ProxyQAbstractSlider().NewQAbstractSlider(parent);
+			((QAbstractSlider) interceptor).NewQAbstractSlider(parent);
 		}
 		public QAbstractSlider() : this((Type) null) {
 			CreateProxy();
@@ -114,63 +108,63 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QAbstractSlider", "()", "")]
 		private void NewQAbstractSlider() {
-			ProxyQAbstractSlider().NewQAbstractSlider();
+			((QAbstractSlider) interceptor).NewQAbstractSlider();
 		}
 		[SmokeMethod("setRange", "(int, int)", "$$")]
 		public void SetRange(int min, int max) {
-			ProxyQAbstractSlider().SetRange(min,max);
+			((QAbstractSlider) interceptor).SetRange(min,max);
 		}
 		[SmokeMethod("hasTracking", "() const", "")]
 		public bool HasTracking() {
-			return ProxyQAbstractSlider().HasTracking();
+			return ((QAbstractSlider) interceptor).HasTracking();
 		}
 		[SmokeMethod("isSliderDown", "() const", "")]
 		public bool IsSliderDown() {
-			return ProxyQAbstractSlider().IsSliderDown();
+			return ((QAbstractSlider) interceptor).IsSliderDown();
 		}
 		[SmokeMethod("triggerAction", "(QAbstractSlider::SliderAction)", "$")]
 		public void TriggerAction(QAbstractSlider.SliderAction action) {
-			ProxyQAbstractSlider().TriggerAction(action);
+			((QAbstractSlider) interceptor).TriggerAction(action);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent e) {
-			return ProxyQAbstractSlider().Event(e);
+			return ((QAbstractSlider) interceptor).Event(e);
 		}
 		[SmokeMethod("setRepeatAction", "(QAbstractSlider::SliderAction, int, int)", "$$$")]
 		protected void SetRepeatAction(QAbstractSlider.SliderAction action, int thresholdTime, int repeatTime) {
-			ProxyQAbstractSlider().SetRepeatAction(action,thresholdTime,repeatTime);
+			((QAbstractSlider) interceptor).SetRepeatAction(action,thresholdTime,repeatTime);
 		}
 		[SmokeMethod("setRepeatAction", "(QAbstractSlider::SliderAction, int)", "$$")]
 		protected void SetRepeatAction(QAbstractSlider.SliderAction action, int thresholdTime) {
-			ProxyQAbstractSlider().SetRepeatAction(action,thresholdTime);
+			((QAbstractSlider) interceptor).SetRepeatAction(action,thresholdTime);
 		}
 		[SmokeMethod("setRepeatAction", "(QAbstractSlider::SliderAction)", "$")]
 		protected void SetRepeatAction(QAbstractSlider.SliderAction action) {
-			ProxyQAbstractSlider().SetRepeatAction(action);
+			((QAbstractSlider) interceptor).SetRepeatAction(action);
 		}
 		[SmokeMethod("repeatAction", "() const", "")]
 		protected QAbstractSlider.SliderAction RepeatAction() {
-			return ProxyQAbstractSlider().RepeatAction();
+			return ((QAbstractSlider) interceptor).RepeatAction();
 		}
 		[SmokeMethod("sliderChange", "(QAbstractSlider::SliderChange)", "$")]
 		protected virtual void sliderChange(QAbstractSlider.SliderChange change) {
-			ProxyQAbstractSlider().sliderChange(change);
+			((QAbstractSlider) interceptor).sliderChange(change);
 		}
 		[SmokeMethod("keyPressEvent", "(QKeyEvent*)", "#")]
 		protected override void KeyPressEvent(QKeyEvent ev) {
-			ProxyQAbstractSlider().KeyPressEvent(ev);
+			((QAbstractSlider) interceptor).KeyPressEvent(ev);
 		}
 		[SmokeMethod("timerEvent", "(QTimerEvent*)", "#")]
 		protected override void TimerEvent(QTimerEvent arg1) {
-			ProxyQAbstractSlider().TimerEvent(arg1);
+			((QAbstractSlider) interceptor).TimerEvent(arg1);
 		}
 		[SmokeMethod("wheelEvent", "(QWheelEvent*)", "#")]
 		protected override void WheelEvent(QWheelEvent e) {
-			ProxyQAbstractSlider().WheelEvent(e);
+			((QAbstractSlider) interceptor).WheelEvent(e);
 		}
 		[SmokeMethod("changeEvent", "(QEvent*)", "#")]
 		protected override void ChangeEvent(QEvent e) {
-			ProxyQAbstractSlider().ChangeEvent(e);
+			((QAbstractSlider) interceptor).ChangeEvent(e);
 		}
 		~QAbstractSlider() {
 			DisposeQAbstractSlider();
@@ -180,13 +174,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QAbstractSlider", "()", "")]
 		private void DisposeQAbstractSlider() {
-			ProxyQAbstractSlider().DisposeQAbstractSlider();
+			((QAbstractSlider) interceptor).DisposeQAbstractSlider();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQAbstractSlider().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQAbstractSlider().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQAbstractSliderSignals Emit {
 			get { return (IQAbstractSliderSignals) Q_EMIT; }

@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QShortcutEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QShortcutEvent), this);
-			_interceptor = (QShortcutEvent) realProxy.GetTransparentProxy();
-		}
-		private QShortcutEvent ProxyQShortcutEvent() {
-			return (QShortcutEvent) _interceptor;
+			interceptor = (QShortcutEvent) realProxy.GetTransparentProxy();
 		}
 		public QShortcutEvent(QKeySequence key, int id, bool ambiguous) : this((Type) null) {
 			CreateProxy();
@@ -19,7 +16,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QShortcutEvent", "(const QKeySequence&, int, bool)", "#$$")]
 		private void NewQShortcutEvent(QKeySequence key, int id, bool ambiguous) {
-			ProxyQShortcutEvent().NewQShortcutEvent(key,id,ambiguous);
+			((QShortcutEvent) interceptor).NewQShortcutEvent(key,id,ambiguous);
 		}
 		public QShortcutEvent(QKeySequence key, int id) : this((Type) null) {
 			CreateProxy();
@@ -27,19 +24,19 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QShortcutEvent", "(const QKeySequence&, int)", "#$")]
 		private void NewQShortcutEvent(QKeySequence key, int id) {
-			ProxyQShortcutEvent().NewQShortcutEvent(key,id);
+			((QShortcutEvent) interceptor).NewQShortcutEvent(key,id);
 		}
 		[SmokeMethod("key", "()", "")]
 		public QKeySequence Key() {
-			return ProxyQShortcutEvent().Key();
+			return ((QShortcutEvent) interceptor).Key();
 		}
 		[SmokeMethod("shortcutId", "()", "")]
 		public int ShortcutId() {
-			return ProxyQShortcutEvent().ShortcutId();
+			return ((QShortcutEvent) interceptor).ShortcutId();
 		}
 		[SmokeMethod("isAmbiguous", "()", "")]
 		public bool IsAmbiguous() {
-			return ProxyQShortcutEvent().IsAmbiguous();
+			return ((QShortcutEvent) interceptor).IsAmbiguous();
 		}
 		~QShortcutEvent() {
 			DisposeQShortcutEvent();
@@ -49,7 +46,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QShortcutEvent", "()", "")]
 		private void DisposeQShortcutEvent() {
-			ProxyQShortcutEvent().DisposeQShortcutEvent();
+			((QShortcutEvent) interceptor).DisposeQShortcutEvent();
 		}
 	}
 }

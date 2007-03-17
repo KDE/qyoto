@@ -5,8 +5,8 @@ namespace Qyoto {
 
 	[SmokeClass("QFontMetricsF")]
 	public class QFontMetricsF : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QFontMetricsF interceptor = null;
+		private IntPtr smokeObject;
 		protected QFontMetricsF(Type dummy) {}
 		[SmokeClass("QFontMetricsF")]
 		interface IQFontMetricsFProxy {
@@ -15,18 +15,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFontMetricsF), this);
-			_interceptor = (QFontMetricsF) realProxy.GetTransparentProxy();
+			interceptor = (QFontMetricsF) realProxy.GetTransparentProxy();
 		}
-		private QFontMetricsF ProxyQFontMetricsF() {
-			return (QFontMetricsF) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQFontMetricsFProxy staticInterceptor = null;
 		static QFontMetricsF() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQFontMetricsFProxy), null);
-			_staticInterceptor = (IQFontMetricsFProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQFontMetricsFProxy StaticQFontMetricsF() {
-			return (IQFontMetricsFProxy) _staticInterceptor;
+			staticInterceptor = (IQFontMetricsFProxy) realProxy.GetTransparentProxy();
 		}
 		public QFontMetricsF(QFont arg1) : this((Type) null) {
 			CreateProxy();
@@ -34,7 +28,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QFontMetricsF", "(const QFont&)", "#")]
 		private void NewQFontMetricsF(QFont arg1) {
-			ProxyQFontMetricsF().NewQFontMetricsF(arg1);
+			((QFontMetricsF) interceptor).NewQFontMetricsF(arg1);
 		}
 		public QFontMetricsF(QFont arg1, IQPaintDevice pd) : this((Type) null) {
 			CreateProxy();
@@ -42,7 +36,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QFontMetricsF", "(const QFont&, QPaintDevice*)", "##")]
 		private void NewQFontMetricsF(QFont arg1, IQPaintDevice pd) {
-			ProxyQFontMetricsF().NewQFontMetricsF(arg1,pd);
+			((QFontMetricsF) interceptor).NewQFontMetricsF(arg1,pd);
 		}
 		public QFontMetricsF(QFontMetricsF arg1) : this((Type) null) {
 			CreateProxy();
@@ -50,130 +44,130 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QFontMetricsF", "(const QFontMetricsF&)", "#")]
 		private void NewQFontMetricsF(QFontMetricsF arg1) {
-			ProxyQFontMetricsF().NewQFontMetricsF(arg1);
+			((QFontMetricsF) interceptor).NewQFontMetricsF(arg1);
 		}
 		[SmokeMethod("ascent", "() const", "")]
 		public double Ascent() {
-			return ProxyQFontMetricsF().Ascent();
+			return ((QFontMetricsF) interceptor).Ascent();
 		}
 		[SmokeMethod("descent", "() const", "")]
 		public double Descent() {
-			return ProxyQFontMetricsF().Descent();
+			return ((QFontMetricsF) interceptor).Descent();
 		}
 		[SmokeMethod("height", "() const", "")]
 		public double Height() {
-			return ProxyQFontMetricsF().Height();
+			return ((QFontMetricsF) interceptor).Height();
 		}
 		[SmokeMethod("leading", "() const", "")]
 		public double Leading() {
-			return ProxyQFontMetricsF().Leading();
+			return ((QFontMetricsF) interceptor).Leading();
 		}
 		[SmokeMethod("lineSpacing", "() const", "")]
 		public double LineSpacing() {
-			return ProxyQFontMetricsF().LineSpacing();
+			return ((QFontMetricsF) interceptor).LineSpacing();
 		}
 		[SmokeMethod("minLeftBearing", "() const", "")]
 		public double MinLeftBearing() {
-			return ProxyQFontMetricsF().MinLeftBearing();
+			return ((QFontMetricsF) interceptor).MinLeftBearing();
 		}
 		[SmokeMethod("minRightBearing", "() const", "")]
 		public double MinRightBearing() {
-			return ProxyQFontMetricsF().MinRightBearing();
+			return ((QFontMetricsF) interceptor).MinRightBearing();
 		}
 		[SmokeMethod("maxWidth", "() const", "")]
 		public double MaxWidth() {
-			return ProxyQFontMetricsF().MaxWidth();
+			return ((QFontMetricsF) interceptor).MaxWidth();
 		}
 		[SmokeMethod("xHeight", "() const", "")]
 		public double XHeight() {
-			return ProxyQFontMetricsF().XHeight();
+			return ((QFontMetricsF) interceptor).XHeight();
 		}
 		[SmokeMethod("averageCharWidth", "() const", "")]
 		public double AverageCharWidth() {
-			return ProxyQFontMetricsF().AverageCharWidth();
+			return ((QFontMetricsF) interceptor).AverageCharWidth();
 		}
 		[SmokeMethod("inFont", "(QChar) const", "#")]
 		public bool InFont(char arg1) {
-			return ProxyQFontMetricsF().InFont(arg1);
+			return ((QFontMetricsF) interceptor).InFont(arg1);
 		}
 		[SmokeMethod("leftBearing", "(QChar) const", "#")]
 		public double LeftBearing(char arg1) {
-			return ProxyQFontMetricsF().LeftBearing(arg1);
+			return ((QFontMetricsF) interceptor).LeftBearing(arg1);
 		}
 		[SmokeMethod("rightBearing", "(QChar) const", "#")]
 		public double RightBearing(char arg1) {
-			return ProxyQFontMetricsF().RightBearing(arg1);
+			return ((QFontMetricsF) interceptor).RightBearing(arg1);
 		}
 		[SmokeMethod("width", "(const QString&) const", "$")]
 		public double Width(string arg1) {
-			return ProxyQFontMetricsF().Width(arg1);
+			return ((QFontMetricsF) interceptor).Width(arg1);
 		}
 		[SmokeMethod("width", "(QChar) const", "#")]
 		public double Width(char arg1) {
-			return ProxyQFontMetricsF().Width(arg1);
+			return ((QFontMetricsF) interceptor).Width(arg1);
 		}
 		[SmokeMethod("boundingRect", "(const QString&) const", "$")]
 		public QRectF BoundingRect(string arg1) {
-			return ProxyQFontMetricsF().BoundingRect(arg1);
+			return ((QFontMetricsF) interceptor).BoundingRect(arg1);
 		}
 		[SmokeMethod("boundingRect", "(QChar) const", "#")]
 		public QRectF BoundingRect(char arg1) {
-			return ProxyQFontMetricsF().BoundingRect(arg1);
+			return ((QFontMetricsF) interceptor).BoundingRect(arg1);
 		}
 		[SmokeMethod("boundingRect", "(const QRectF&, int, const QString&, int, int*) const", "#$$$$")]
 		public QRectF BoundingRect(QRectF r, int flags, string arg3, int tabstops, out int tabarray) {
-			return ProxyQFontMetricsF().BoundingRect(r,flags,arg3,tabstops,out tabarray);
+			return ((QFontMetricsF) interceptor).BoundingRect(r,flags,arg3,tabstops,out tabarray);
 		}
 		[SmokeMethod("boundingRect", "(const QRectF&, int, const QString&, int) const", "#$$$")]
 		public QRectF BoundingRect(QRectF r, int flags, string arg3, int tabstops) {
-			return ProxyQFontMetricsF().BoundingRect(r,flags,arg3,tabstops);
+			return ((QFontMetricsF) interceptor).BoundingRect(r,flags,arg3,tabstops);
 		}
 		[SmokeMethod("boundingRect", "(const QRectF&, int, const QString&) const", "#$$")]
 		public QRectF BoundingRect(QRectF r, int flags, string arg3) {
-			return ProxyQFontMetricsF().BoundingRect(r,flags,arg3);
+			return ((QFontMetricsF) interceptor).BoundingRect(r,flags,arg3);
 		}
 		[SmokeMethod("size", "(int, const QString&, int, int*) const", "$$$$")]
 		public QSizeF Size(int flags, string str, int tabstops, out int tabarray) {
-			return ProxyQFontMetricsF().Size(flags,str,tabstops,out tabarray);
+			return ((QFontMetricsF) interceptor).Size(flags,str,tabstops,out tabarray);
 		}
 		[SmokeMethod("size", "(int, const QString&, int) const", "$$$")]
 		public QSizeF Size(int flags, string str, int tabstops) {
-			return ProxyQFontMetricsF().Size(flags,str,tabstops);
+			return ((QFontMetricsF) interceptor).Size(flags,str,tabstops);
 		}
 		[SmokeMethod("size", "(int, const QString&) const", "$$")]
 		public QSizeF Size(int flags, string str) {
-			return ProxyQFontMetricsF().Size(flags,str);
+			return ((QFontMetricsF) interceptor).Size(flags,str);
 		}
 		[SmokeMethod("elidedText", "(const QString&, Qt::TextElideMode, qreal, int) const", "$$$$")]
 		public string ElidedText(string text, Qt.TextElideMode mode, double width, int flags) {
-			return ProxyQFontMetricsF().ElidedText(text,mode,width,flags);
+			return ((QFontMetricsF) interceptor).ElidedText(text,mode,width,flags);
 		}
 		[SmokeMethod("elidedText", "(const QString&, Qt::TextElideMode, qreal) const", "$$$")]
 		public string ElidedText(string text, Qt.TextElideMode mode, double width) {
-			return ProxyQFontMetricsF().ElidedText(text,mode,width);
+			return ((QFontMetricsF) interceptor).ElidedText(text,mode,width);
 		}
 		[SmokeMethod("underlinePos", "() const", "")]
 		public double UnderlinePos() {
-			return ProxyQFontMetricsF().UnderlinePos();
+			return ((QFontMetricsF) interceptor).UnderlinePos();
 		}
 		[SmokeMethod("overlinePos", "() const", "")]
 		public double OverlinePos() {
-			return ProxyQFontMetricsF().OverlinePos();
+			return ((QFontMetricsF) interceptor).OverlinePos();
 		}
 		[SmokeMethod("strikeOutPos", "() const", "")]
 		public double StrikeOutPos() {
-			return ProxyQFontMetricsF().StrikeOutPos();
+			return ((QFontMetricsF) interceptor).StrikeOutPos();
 		}
 		[SmokeMethod("lineWidth", "() const", "")]
 		public double LineWidth() {
-			return ProxyQFontMetricsF().LineWidth();
+			return ((QFontMetricsF) interceptor).LineWidth();
 		}
 		public override bool Equals(object o) {
 			if (!(o is QFontMetricsF)) { return false; }
 			return this == (QFontMetricsF) o;
 		}
 		public override int GetHashCode() {
-			return ProxyQFontMetricsF().GetHashCode();
+			return ((QFontMetricsF) interceptor).GetHashCode();
 		}
 		~QFontMetricsF() {
 			DisposeQFontMetricsF();
@@ -183,13 +177,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QFontMetricsF", "()", "")]
 		private void DisposeQFontMetricsF() {
-			ProxyQFontMetricsF().DisposeQFontMetricsF();
+			((QFontMetricsF) interceptor).DisposeQFontMetricsF();
 		}
 		public static bool operator==(QFontMetricsF lhs, QFontMetricsF other) {
-			return StaticQFontMetricsF().op_equals(lhs,other);
+			return staticInterceptor.op_equals(lhs,other);
 		}
 		public static bool operator!=(QFontMetricsF lhs, QFontMetricsF other) {
-			return !StaticQFontMetricsF().op_equals(lhs,other);
+			return !staticInterceptor.op_equals(lhs,other);
 		}
 	}
 }

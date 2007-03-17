@@ -16,18 +16,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextFrame), this);
-			_interceptor = (QTextFrame) realProxy.GetTransparentProxy();
+			interceptor = (QTextFrame) realProxy.GetTransparentProxy();
 		}
-		private QTextFrame ProxyQTextFrame() {
-			return (QTextFrame) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQTextFrameProxy staticInterceptor = null;
 		static QTextFrame() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTextFrameProxy), null);
-			_staticInterceptor = (IQTextFrameProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQTextFrameProxy StaticQTextFrame() {
-			return (IQTextFrameProxy) _staticInterceptor;
+			staticInterceptor = (IQTextFrameProxy) realProxy.GetTransparentProxy();
 		}
 		public QTextFrame(QTextDocument doc) : this((Type) null) {
 			CreateProxy();
@@ -35,47 +29,47 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTextFrame", "(QTextDocument*)", "#")]
 		private void NewQTextFrame(QTextDocument doc) {
-			ProxyQTextFrame().NewQTextFrame(doc);
+			((QTextFrame) interceptor).NewQTextFrame(doc);
 		}
 		[SmokeMethod("setFrameFormat", "(const QTextFrameFormat&)", "#")]
 		public void SetFrameFormat(QTextFrameFormat format) {
-			ProxyQTextFrame().SetFrameFormat(format);
+			((QTextFrame) interceptor).SetFrameFormat(format);
 		}
 		[SmokeMethod("frameFormat", "() const", "")]
 		public QTextFrameFormat FrameFormat() {
-			return ProxyQTextFrame().FrameFormat();
+			return ((QTextFrame) interceptor).FrameFormat();
 		}
 		[SmokeMethod("firstCursorPosition", "() const", "")]
 		public QTextCursor FirstCursorPosition() {
-			return ProxyQTextFrame().FirstCursorPosition();
+			return ((QTextFrame) interceptor).FirstCursorPosition();
 		}
 		[SmokeMethod("lastCursorPosition", "() const", "")]
 		public QTextCursor LastCursorPosition() {
-			return ProxyQTextFrame().LastCursorPosition();
+			return ((QTextFrame) interceptor).LastCursorPosition();
 		}
 		[SmokeMethod("firstPosition", "() const", "")]
 		public int FirstPosition() {
-			return ProxyQTextFrame().FirstPosition();
+			return ((QTextFrame) interceptor).FirstPosition();
 		}
 		[SmokeMethod("lastPosition", "() const", "")]
 		public int LastPosition() {
-			return ProxyQTextFrame().LastPosition();
+			return ((QTextFrame) interceptor).LastPosition();
 		}
 		[SmokeMethod("layoutData", "() const", "")]
 		public QTextFrameLayoutData LayoutData() {
-			return ProxyQTextFrame().LayoutData();
+			return ((QTextFrame) interceptor).LayoutData();
 		}
 		[SmokeMethod("setLayoutData", "(QTextFrameLayoutData*)", "#")]
 		public void SetLayoutData(QTextFrameLayoutData data) {
-			ProxyQTextFrame().SetLayoutData(data);
+			((QTextFrame) interceptor).SetLayoutData(data);
 		}
 		[SmokeMethod("childFrames", "() const", "")]
 		public List<QTextFrame> ChildFrames() {
-			return ProxyQTextFrame().ChildFrames();
+			return ((QTextFrame) interceptor).ChildFrames();
 		}
 		[SmokeMethod("parentFrame", "() const", "")]
 		public QTextFrame ParentFrame() {
-			return ProxyQTextFrame().ParentFrame();
+			return ((QTextFrame) interceptor).ParentFrame();
 		}
 		~QTextFrame() {
 			DisposeQTextFrame();
@@ -85,13 +79,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QTextFrame", "()", "")]
 		private void DisposeQTextFrame() {
-			ProxyQTextFrame().DisposeQTextFrame();
+			((QTextFrame) interceptor).DisposeQTextFrame();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQTextFrame().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQTextFrame().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQTextFrameSignals Emit {
 			get { return (IQTextFrameSignals) Q_EMIT; }

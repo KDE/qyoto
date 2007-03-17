@@ -15,18 +15,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QHBoxLayout), this);
-			_interceptor = (QHBoxLayout) realProxy.GetTransparentProxy();
+			interceptor = (QHBoxLayout) realProxy.GetTransparentProxy();
 		}
-		private QHBoxLayout ProxyQHBoxLayout() {
-			return (QHBoxLayout) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQHBoxLayoutProxy staticInterceptor = null;
 		static QHBoxLayout() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQHBoxLayoutProxy), null);
-			_staticInterceptor = (IQHBoxLayoutProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQHBoxLayoutProxy StaticQHBoxLayout() {
-			return (IQHBoxLayoutProxy) _staticInterceptor;
+			staticInterceptor = (IQHBoxLayoutProxy) realProxy.GetTransparentProxy();
 		}
 		public QHBoxLayout() : this((Type) null) {
 			CreateProxy();
@@ -34,7 +28,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QHBoxLayout", "()", "")]
 		private void NewQHBoxLayout() {
-			ProxyQHBoxLayout().NewQHBoxLayout();
+			((QHBoxLayout) interceptor).NewQHBoxLayout();
 		}
 		public QHBoxLayout(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -42,7 +36,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QHBoxLayout", "(QWidget*)", "#")]
 		private void NewQHBoxLayout(QWidget parent) {
-			ProxyQHBoxLayout().NewQHBoxLayout(parent);
+			((QHBoxLayout) interceptor).NewQHBoxLayout(parent);
 		}
 		~QHBoxLayout() {
 			DisposeQHBoxLayout();
@@ -52,13 +46,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QHBoxLayout", "()", "")]
 		private void DisposeQHBoxLayout() {
-			ProxyQHBoxLayout().DisposeQHBoxLayout();
+			((QHBoxLayout) interceptor).DisposeQHBoxLayout();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQHBoxLayout().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQHBoxLayout().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQHBoxLayoutSignals Emit {
 			get { return (IQHBoxLayoutSignals) Q_EMIT; }

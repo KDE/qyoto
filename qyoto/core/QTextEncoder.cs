@@ -5,15 +5,12 @@ namespace Qyoto {
 
 	[SmokeClass("QTextEncoder")]
 	public class QTextEncoder : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QTextEncoder interceptor = null;
+		private IntPtr smokeObject;
 		protected QTextEncoder(Type dummy) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextEncoder), this);
-			_interceptor = (QTextEncoder) realProxy.GetTransparentProxy();
-		}
-		private QTextEncoder ProxyQTextEncoder() {
-			return (QTextEncoder) _interceptor;
+			interceptor = (QTextEncoder) realProxy.GetTransparentProxy();
 		}
 		public QTextEncoder(QTextCodec codec) : this((Type) null) {
 			CreateProxy();
@@ -21,15 +18,15 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTextEncoder", "(const QTextCodec*)", "#")]
 		private void NewQTextEncoder(QTextCodec codec) {
-			ProxyQTextEncoder().NewQTextEncoder(codec);
+			((QTextEncoder) interceptor).NewQTextEncoder(codec);
 		}
 		[SmokeMethod("fromUnicode", "(const QString&)", "$")]
 		public QByteArray FromUnicode(string str) {
-			return ProxyQTextEncoder().FromUnicode(str);
+			return ((QTextEncoder) interceptor).FromUnicode(str);
 		}
 		[SmokeMethod("fromUnicode", "(const QChar*, int)", "#$")]
 		public QByteArray FromUnicode(char uc, int len) {
-			return ProxyQTextEncoder().FromUnicode(uc,len);
+			return ((QTextEncoder) interceptor).FromUnicode(uc,len);
 		}
 		~QTextEncoder() {
 			DisposeQTextEncoder();
@@ -39,7 +36,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QTextEncoder", "()", "")]
 		private void DisposeQTextEncoder() {
-			ProxyQTextEncoder().DisposeQTextEncoder();
+			((QTextEncoder) interceptor).DisposeQTextEncoder();
 		}
 	}
 }

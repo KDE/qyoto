@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QStyleOptionFocusRect(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionFocusRect), this);
-			_interceptor = (QStyleOptionFocusRect) realProxy.GetTransparentProxy();
-		}
-		private QStyleOptionFocusRect ProxyQStyleOptionFocusRect() {
-			return (QStyleOptionFocusRect) _interceptor;
+			interceptor = (QStyleOptionFocusRect) realProxy.GetTransparentProxy();
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_FocusRect,
@@ -25,7 +22,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionFocusRect", "()", "")]
 		private void NewQStyleOptionFocusRect() {
-			ProxyQStyleOptionFocusRect().NewQStyleOptionFocusRect();
+			((QStyleOptionFocusRect) interceptor).NewQStyleOptionFocusRect();
 		}
 		public QStyleOptionFocusRect(QStyleOptionFocusRect other) : this((Type) null) {
 			CreateProxy();
@@ -33,7 +30,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionFocusRect", "(const QStyleOptionFocusRect&)", "#")]
 		private void NewQStyleOptionFocusRect(QStyleOptionFocusRect other) {
-			ProxyQStyleOptionFocusRect().NewQStyleOptionFocusRect(other);
+			((QStyleOptionFocusRect) interceptor).NewQStyleOptionFocusRect(other);
 		}
 		public QStyleOptionFocusRect(int version) : this((Type) null) {
 			CreateProxy();
@@ -41,7 +38,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionFocusRect", "(int)", "$")]
 		private void NewQStyleOptionFocusRect(int version) {
-			ProxyQStyleOptionFocusRect().NewQStyleOptionFocusRect(version);
+			((QStyleOptionFocusRect) interceptor).NewQStyleOptionFocusRect(version);
 		}
 		~QStyleOptionFocusRect() {
 			DisposeQStyleOptionFocusRect();
@@ -51,7 +48,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QStyleOptionFocusRect", "()", "")]
 		private void DisposeQStyleOptionFocusRect() {
-			ProxyQStyleOptionFocusRect().DisposeQStyleOptionFocusRect();
+			((QStyleOptionFocusRect) interceptor).DisposeQStyleOptionFocusRect();
 		}
 	}
 }

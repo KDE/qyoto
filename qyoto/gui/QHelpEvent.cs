@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QHelpEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QHelpEvent), this);
-			_interceptor = (QHelpEvent) realProxy.GetTransparentProxy();
-		}
-		private QHelpEvent ProxyQHelpEvent() {
-			return (QHelpEvent) _interceptor;
+			interceptor = (QHelpEvent) realProxy.GetTransparentProxy();
 		}
 		public QHelpEvent(QEvent.TypeOf type, QPoint pos, QPoint globalPos) : this((Type) null) {
 			CreateProxy();
@@ -19,31 +16,31 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QHelpEvent", "(QEvent::Type, const QPoint&, const QPoint&)", "$##")]
 		private void NewQHelpEvent(QEvent.TypeOf type, QPoint pos, QPoint globalPos) {
-			ProxyQHelpEvent().NewQHelpEvent(type,pos,globalPos);
+			((QHelpEvent) interceptor).NewQHelpEvent(type,pos,globalPos);
 		}
 		[SmokeMethod("x", "() const", "")]
 		public int X() {
-			return ProxyQHelpEvent().X();
+			return ((QHelpEvent) interceptor).X();
 		}
 		[SmokeMethod("y", "() const", "")]
 		public int Y() {
-			return ProxyQHelpEvent().Y();
+			return ((QHelpEvent) interceptor).Y();
 		}
 		[SmokeMethod("globalX", "() const", "")]
 		public int GlobalX() {
-			return ProxyQHelpEvent().GlobalX();
+			return ((QHelpEvent) interceptor).GlobalX();
 		}
 		[SmokeMethod("globalY", "() const", "")]
 		public int GlobalY() {
-			return ProxyQHelpEvent().GlobalY();
+			return ((QHelpEvent) interceptor).GlobalY();
 		}
 		[SmokeMethod("pos", "() const", "")]
 		public QPoint Pos() {
-			return ProxyQHelpEvent().Pos();
+			return ((QHelpEvent) interceptor).Pos();
 		}
 		[SmokeMethod("globalPos", "() const", "")]
 		public QPoint GlobalPos() {
-			return ProxyQHelpEvent().GlobalPos();
+			return ((QHelpEvent) interceptor).GlobalPos();
 		}
 		~QHelpEvent() {
 			DisposeQHelpEvent();
@@ -53,7 +50,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QHelpEvent", "()", "")]
 		private void DisposeQHelpEvent() {
-			ProxyQHelpEvent().DisposeQHelpEvent();
+			((QHelpEvent) interceptor).DisposeQHelpEvent();
 		}
 	}
 }

@@ -16,18 +16,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextBlockGroup), this);
-			_interceptor = (QTextBlockGroup) realProxy.GetTransparentProxy();
+			interceptor = (QTextBlockGroup) realProxy.GetTransparentProxy();
 		}
-		private QTextBlockGroup ProxyQTextBlockGroup() {
-			return (QTextBlockGroup) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQTextBlockGroupProxy staticInterceptor = null;
 		static QTextBlockGroup() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTextBlockGroupProxy), null);
-			_staticInterceptor = (IQTextBlockGroupProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQTextBlockGroupProxy StaticQTextBlockGroup() {
-			return (IQTextBlockGroupProxy) _staticInterceptor;
+			staticInterceptor = (IQTextBlockGroupProxy) realProxy.GetTransparentProxy();
 		}
 		public QTextBlockGroup(QTextDocument doc) : this((Type) null) {
 			CreateProxy();
@@ -35,29 +29,29 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTextBlockGroup", "(QTextDocument*)", "#")]
 		private void NewQTextBlockGroup(QTextDocument doc) {
-			ProxyQTextBlockGroup().NewQTextBlockGroup(doc);
+			((QTextBlockGroup) interceptor).NewQTextBlockGroup(doc);
 		}
 		[SmokeMethod("blockInserted", "(const QTextBlock&)", "#")]
 		protected virtual void BlockInserted(QTextBlock block) {
-			ProxyQTextBlockGroup().BlockInserted(block);
+			((QTextBlockGroup) interceptor).BlockInserted(block);
 		}
 		[SmokeMethod("blockRemoved", "(const QTextBlock&)", "#")]
 		protected virtual void BlockRemoved(QTextBlock block) {
-			ProxyQTextBlockGroup().BlockRemoved(block);
+			((QTextBlockGroup) interceptor).BlockRemoved(block);
 		}
 		[SmokeMethod("blockFormatChanged", "(const QTextBlock&)", "#")]
 		protected virtual void BlockFormatChanged(QTextBlock block) {
-			ProxyQTextBlockGroup().BlockFormatChanged(block);
+			((QTextBlockGroup) interceptor).BlockFormatChanged(block);
 		}
 		[SmokeMethod("blockList", "() const", "")]
 		protected List<QTextBlock> BlockList() {
-			return ProxyQTextBlockGroup().BlockList();
+			return ((QTextBlockGroup) interceptor).BlockList();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQTextBlockGroup().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQTextBlockGroup().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQTextBlockGroupSignals Emit {
 			get { return (IQTextBlockGroupSignals) Q_EMIT; }

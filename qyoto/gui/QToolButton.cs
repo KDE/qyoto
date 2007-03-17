@@ -16,18 +16,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QToolButton), this);
-			_interceptor = (QToolButton) realProxy.GetTransparentProxy();
+			interceptor = (QToolButton) realProxy.GetTransparentProxy();
 		}
-		private QToolButton ProxyQToolButton() {
-			return (QToolButton) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQToolButtonProxy staticInterceptor = null;
 		static QToolButton() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQToolButtonProxy), null);
-			_staticInterceptor = (IQToolButtonProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQToolButtonProxy StaticQToolButton() {
-			return (IQToolButtonProxy) _staticInterceptor;
+			staticInterceptor = (IQToolButtonProxy) realProxy.GetTransparentProxy();
 		}
 		public enum ToolButtonPopupMode {
 			DelayedPopup = 0,
@@ -60,7 +54,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QToolButton", "(QWidget*)", "#")]
 		private void NewQToolButton(QWidget parent) {
-			ProxyQToolButton().NewQToolButton(parent);
+			((QToolButton) interceptor).NewQToolButton(parent);
 		}
 		public QToolButton() : this((Type) null) {
 			CreateProxy();
@@ -68,81 +62,81 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QToolButton", "()", "")]
 		private void NewQToolButton() {
-			ProxyQToolButton().NewQToolButton();
+			((QToolButton) interceptor).NewQToolButton();
 		}
 		[SmokeMethod("sizeHint", "() const", "")]
 		public override QSize SizeHint() {
-			return ProxyQToolButton().SizeHint();
+			return ((QToolButton) interceptor).SizeHint();
 		}
 		[SmokeMethod("minimumSizeHint", "() const", "")]
 		public override QSize MinimumSizeHint() {
-			return ProxyQToolButton().MinimumSizeHint();
+			return ((QToolButton) interceptor).MinimumSizeHint();
 		}
 		[SmokeMethod("setMenu", "(QMenu*)", "#")]
 		public void SetMenu(QMenu menu) {
-			ProxyQToolButton().SetMenu(menu);
+			((QToolButton) interceptor).SetMenu(menu);
 		}
 		[SmokeMethod("menu", "() const", "")]
 		public QMenu Menu() {
-			return ProxyQToolButton().Menu();
+			return ((QToolButton) interceptor).Menu();
 		}
 		[SmokeMethod("defaultAction", "() const", "")]
 		public QAction DefaultAction() {
-			return ProxyQToolButton().DefaultAction();
+			return ((QToolButton) interceptor).DefaultAction();
 		}
 		[Q_SLOT("void showMenu()")]
 		[SmokeMethod("showMenu", "()", "")]
 		public void ShowMenu() {
-			ProxyQToolButton().ShowMenu();
+			((QToolButton) interceptor).ShowMenu();
 		}
 		[Q_SLOT("void setDefaultAction(QAction*)")]
 		[SmokeMethod("setDefaultAction", "(QAction*)", "#")]
 		public void SetDefaultAction(QAction arg1) {
-			ProxyQToolButton().SetDefaultAction(arg1);
+			((QToolButton) interceptor).SetDefaultAction(arg1);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent e) {
-			return ProxyQToolButton().Event(e);
+			return ((QToolButton) interceptor).Event(e);
 		}
 		[SmokeMethod("mousePressEvent", "(QMouseEvent*)", "#")]
 		protected override void MousePressEvent(QMouseEvent arg1) {
-			ProxyQToolButton().MousePressEvent(arg1);
+			((QToolButton) interceptor).MousePressEvent(arg1);
 		}
 		[SmokeMethod("mouseReleaseEvent", "(QMouseEvent*)", "#")]
 		protected override void MouseReleaseEvent(QMouseEvent arg1) {
-			ProxyQToolButton().MouseReleaseEvent(arg1);
+			((QToolButton) interceptor).MouseReleaseEvent(arg1);
 		}
 		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
 		protected override void PaintEvent(QPaintEvent arg1) {
-			ProxyQToolButton().PaintEvent(arg1);
+			((QToolButton) interceptor).PaintEvent(arg1);
 		}
 		[SmokeMethod("actionEvent", "(QActionEvent*)", "#")]
 		protected override void ActionEvent(QActionEvent arg1) {
-			ProxyQToolButton().ActionEvent(arg1);
+			((QToolButton) interceptor).ActionEvent(arg1);
 		}
 		[SmokeMethod("enterEvent", "(QEvent*)", "#")]
 		protected override void EnterEvent(QEvent arg1) {
-			ProxyQToolButton().EnterEvent(arg1);
+			((QToolButton) interceptor).EnterEvent(arg1);
 		}
 		[SmokeMethod("leaveEvent", "(QEvent*)", "#")]
 		protected override void LeaveEvent(QEvent arg1) {
-			ProxyQToolButton().LeaveEvent(arg1);
+			((QToolButton) interceptor).LeaveEvent(arg1);
 		}
 		[SmokeMethod("timerEvent", "(QTimerEvent*)", "#")]
 		protected override void TimerEvent(QTimerEvent arg1) {
-			ProxyQToolButton().TimerEvent(arg1);
+			((QToolButton) interceptor).TimerEvent(arg1);
 		}
 		[SmokeMethod("changeEvent", "(QEvent*)", "#")]
 		protected override void ChangeEvent(QEvent arg1) {
-			ProxyQToolButton().ChangeEvent(arg1);
+			((QToolButton) interceptor).ChangeEvent(arg1);
 		}
 		[SmokeMethod("hitButton", "(const QPoint&) const", "#")]
 		protected override bool HitButton(QPoint pos) {
-			return ProxyQToolButton().HitButton(pos);
+			return ((QToolButton) interceptor).HitButton(pos);
 		}
 		[SmokeMethod("nextCheckState", "()", "")]
 		protected override void NextCheckState() {
-			ProxyQToolButton().NextCheckState();
+			((QToolButton) interceptor).NextCheckState();
 		}
 		~QToolButton() {
 			DisposeQToolButton();
@@ -152,13 +146,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QToolButton", "()", "")]
 		private void DisposeQToolButton() {
-			ProxyQToolButton().DisposeQToolButton();
+			((QToolButton) interceptor).DisposeQToolButton();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQToolButton().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQToolButton().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQToolButtonSignals Emit {
 			get { return (IQToolButtonSignals) Q_EMIT; }

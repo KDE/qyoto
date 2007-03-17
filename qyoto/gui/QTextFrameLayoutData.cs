@@ -5,15 +5,12 @@ namespace Qyoto {
 
 	[SmokeClass("QTextFrameLayoutData")]
 	public class QTextFrameLayoutData : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QTextFrameLayoutData interceptor = null;
+		private IntPtr smokeObject;
 		protected QTextFrameLayoutData(Type dummy) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextFrameLayoutData), this);
-			_interceptor = (QTextFrameLayoutData) realProxy.GetTransparentProxy();
-		}
-		private QTextFrameLayoutData ProxyQTextFrameLayoutData() {
-			return (QTextFrameLayoutData) _interceptor;
+			interceptor = (QTextFrameLayoutData) realProxy.GetTransparentProxy();
 		}
 		public QTextFrameLayoutData() : this((Type) null) {
 			CreateProxy();
@@ -21,7 +18,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTextFrameLayoutData", "()", "")]
 		private void NewQTextFrameLayoutData() {
-			ProxyQTextFrameLayoutData().NewQTextFrameLayoutData();
+			((QTextFrameLayoutData) interceptor).NewQTextFrameLayoutData();
 		}
 		~QTextFrameLayoutData() {
 			DisposeQTextFrameLayoutData();
@@ -31,7 +28,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QTextFrameLayoutData", "()", "")]
 		private void DisposeQTextFrameLayoutData() {
-			ProxyQTextFrameLayoutData().DisposeQTextFrameLayoutData();
+			((QTextFrameLayoutData) interceptor).DisposeQTextFrameLayoutData();
 		}
 	}
 }

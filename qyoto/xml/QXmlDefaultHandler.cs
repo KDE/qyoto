@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QXmlDefaultHandler(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlDefaultHandler), this);
-			_interceptor = (QXmlDefaultHandler) realProxy.GetTransparentProxy();
-		}
-		private QXmlDefaultHandler ProxyQXmlDefaultHandler() {
-			return (QXmlDefaultHandler) _interceptor;
+			interceptor = (QXmlDefaultHandler) realProxy.GetTransparentProxy();
 		}
 		public QXmlDefaultHandler() : this((Type) null) {
 			CreateProxy();
@@ -19,119 +16,119 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QXmlDefaultHandler", "()", "")]
 		private void NewQXmlDefaultHandler() {
-			ProxyQXmlDefaultHandler().NewQXmlDefaultHandler();
+			((QXmlDefaultHandler) interceptor).NewQXmlDefaultHandler();
 		}
 		[SmokeMethod("setDocumentLocator", "(QXmlLocator*)", "#")]
 		public virtual void SetDocumentLocator(QXmlLocator locator) {
-			ProxyQXmlDefaultHandler().SetDocumentLocator(locator);
+			((QXmlDefaultHandler) interceptor).SetDocumentLocator(locator);
 		}
 		[SmokeMethod("startDocument", "()", "")]
 		public virtual bool StartDocument() {
-			return ProxyQXmlDefaultHandler().StartDocument();
+			return ((QXmlDefaultHandler) interceptor).StartDocument();
 		}
 		[SmokeMethod("endDocument", "()", "")]
 		public virtual bool EndDocument() {
-			return ProxyQXmlDefaultHandler().EndDocument();
+			return ((QXmlDefaultHandler) interceptor).EndDocument();
 		}
 		[SmokeMethod("startPrefixMapping", "(const QString&, const QString&)", "$$")]
 		public virtual bool StartPrefixMapping(string prefix, string uri) {
-			return ProxyQXmlDefaultHandler().StartPrefixMapping(prefix,uri);
+			return ((QXmlDefaultHandler) interceptor).StartPrefixMapping(prefix,uri);
 		}
 		[SmokeMethod("endPrefixMapping", "(const QString&)", "$")]
 		public virtual bool EndPrefixMapping(string prefix) {
-			return ProxyQXmlDefaultHandler().EndPrefixMapping(prefix);
+			return ((QXmlDefaultHandler) interceptor).EndPrefixMapping(prefix);
 		}
 		[SmokeMethod("startElement", "(const QString&, const QString&, const QString&, const QXmlAttributes&)", "$$$#")]
 		public virtual bool StartElement(string namespaceURI, string localName, string qName, QXmlAttributes atts) {
-			return ProxyQXmlDefaultHandler().StartElement(namespaceURI,localName,qName,atts);
+			return ((QXmlDefaultHandler) interceptor).StartElement(namespaceURI,localName,qName,atts);
 		}
 		[SmokeMethod("endElement", "(const QString&, const QString&, const QString&)", "$$$")]
 		public virtual bool EndElement(string namespaceURI, string localName, string qName) {
-			return ProxyQXmlDefaultHandler().EndElement(namespaceURI,localName,qName);
+			return ((QXmlDefaultHandler) interceptor).EndElement(namespaceURI,localName,qName);
 		}
 		[SmokeMethod("characters", "(const QString&)", "$")]
 		public virtual bool Characters(string ch) {
-			return ProxyQXmlDefaultHandler().Characters(ch);
+			return ((QXmlDefaultHandler) interceptor).Characters(ch);
 		}
 		[SmokeMethod("ignorableWhitespace", "(const QString&)", "$")]
 		public virtual bool IgnorableWhitespace(string ch) {
-			return ProxyQXmlDefaultHandler().IgnorableWhitespace(ch);
+			return ((QXmlDefaultHandler) interceptor).IgnorableWhitespace(ch);
 		}
 		[SmokeMethod("processingInstruction", "(const QString&, const QString&)", "$$")]
 		public virtual bool ProcessingInstruction(string target, string data) {
-			return ProxyQXmlDefaultHandler().ProcessingInstruction(target,data);
+			return ((QXmlDefaultHandler) interceptor).ProcessingInstruction(target,data);
 		}
 		[SmokeMethod("skippedEntity", "(const QString&)", "$")]
 		public virtual bool SkippedEntity(string name) {
-			return ProxyQXmlDefaultHandler().SkippedEntity(name);
+			return ((QXmlDefaultHandler) interceptor).SkippedEntity(name);
 		}
 		[SmokeMethod("warning", "(const QXmlParseException&)", "#")]
 		public virtual bool Warning(QXmlParseException exception) {
-			return ProxyQXmlDefaultHandler().Warning(exception);
+			return ((QXmlDefaultHandler) interceptor).Warning(exception);
 		}
 		[SmokeMethod("error", "(const QXmlParseException&)", "#")]
 		public virtual bool Error(QXmlParseException exception) {
-			return ProxyQXmlDefaultHandler().Error(exception);
+			return ((QXmlDefaultHandler) interceptor).Error(exception);
 		}
 		[SmokeMethod("fatalError", "(const QXmlParseException&)", "#")]
 		public virtual bool FatalError(QXmlParseException exception) {
-			return ProxyQXmlDefaultHandler().FatalError(exception);
+			return ((QXmlDefaultHandler) interceptor).FatalError(exception);
 		}
 		[SmokeMethod("notationDecl", "(const QString&, const QString&, const QString&)", "$$$")]
 		public virtual bool NotationDecl(string name, string publicId, string systemId) {
-			return ProxyQXmlDefaultHandler().NotationDecl(name,publicId,systemId);
+			return ((QXmlDefaultHandler) interceptor).NotationDecl(name,publicId,systemId);
 		}
 		[SmokeMethod("unparsedEntityDecl", "(const QString&, const QString&, const QString&, const QString&)", "$$$$")]
 		public virtual bool UnparsedEntityDecl(string name, string publicId, string systemId, string notationName) {
-			return ProxyQXmlDefaultHandler().UnparsedEntityDecl(name,publicId,systemId,notationName);
+			return ((QXmlDefaultHandler) interceptor).UnparsedEntityDecl(name,publicId,systemId,notationName);
 		}
 		[SmokeMethod("resolveEntity", "(const QString&, const QString&, QXmlInputSource*&)", "$$?")]
 		public virtual bool ResolveEntity(string publicId, string systemId, QXmlInputSource ret) {
-			return ProxyQXmlDefaultHandler().ResolveEntity(publicId,systemId,ret);
+			return ((QXmlDefaultHandler) interceptor).ResolveEntity(publicId,systemId,ret);
 		}
 		[SmokeMethod("startDTD", "(const QString&, const QString&, const QString&)", "$$$")]
 		public override bool StartDTD(string name, string publicId, string systemId) {
-			return ProxyQXmlDefaultHandler().StartDTD(name,publicId,systemId);
+			return ((QXmlDefaultHandler) interceptor).StartDTD(name,publicId,systemId);
 		}
 		[SmokeMethod("endDTD", "()", "")]
 		public override bool EndDTD() {
-			return ProxyQXmlDefaultHandler().EndDTD();
+			return ((QXmlDefaultHandler) interceptor).EndDTD();
 		}
 		[SmokeMethod("startEntity", "(const QString&)", "$")]
 		public override bool StartEntity(string name) {
-			return ProxyQXmlDefaultHandler().StartEntity(name);
+			return ((QXmlDefaultHandler) interceptor).StartEntity(name);
 		}
 		[SmokeMethod("endEntity", "(const QString&)", "$")]
 		public override bool EndEntity(string name) {
-			return ProxyQXmlDefaultHandler().EndEntity(name);
+			return ((QXmlDefaultHandler) interceptor).EndEntity(name);
 		}
 		[SmokeMethod("startCDATA", "()", "")]
 		public override bool StartCDATA() {
-			return ProxyQXmlDefaultHandler().StartCDATA();
+			return ((QXmlDefaultHandler) interceptor).StartCDATA();
 		}
 		[SmokeMethod("endCDATA", "()", "")]
 		public override bool EndCDATA() {
-			return ProxyQXmlDefaultHandler().EndCDATA();
+			return ((QXmlDefaultHandler) interceptor).EndCDATA();
 		}
 		[SmokeMethod("comment", "(const QString&)", "$")]
 		public override bool Comment(string ch) {
-			return ProxyQXmlDefaultHandler().Comment(ch);
+			return ((QXmlDefaultHandler) interceptor).Comment(ch);
 		}
 		[SmokeMethod("attributeDecl", "(const QString&, const QString&, const QString&, const QString&, const QString&)", "$$$$$")]
 		public virtual bool AttributeDecl(string eName, string aName, string type, string valueDefault, string value) {
-			return ProxyQXmlDefaultHandler().AttributeDecl(eName,aName,type,valueDefault,value);
+			return ((QXmlDefaultHandler) interceptor).AttributeDecl(eName,aName,type,valueDefault,value);
 		}
 		[SmokeMethod("internalEntityDecl", "(const QString&, const QString&)", "$$")]
 		public virtual bool InternalEntityDecl(string name, string value) {
-			return ProxyQXmlDefaultHandler().InternalEntityDecl(name,value);
+			return ((QXmlDefaultHandler) interceptor).InternalEntityDecl(name,value);
 		}
 		[SmokeMethod("externalEntityDecl", "(const QString&, const QString&, const QString&)", "$$$")]
 		public virtual bool ExternalEntityDecl(string name, string publicId, string systemId) {
-			return ProxyQXmlDefaultHandler().ExternalEntityDecl(name,publicId,systemId);
+			return ((QXmlDefaultHandler) interceptor).ExternalEntityDecl(name,publicId,systemId);
 		}
 		[SmokeMethod("errorString", "() const", "")]
 		public override string ErrorString() {
-			return ProxyQXmlDefaultHandler().ErrorString();
+			return ((QXmlDefaultHandler) interceptor).ErrorString();
 		}
 		~QXmlDefaultHandler() {
 			DisposeQXmlDefaultHandler();
@@ -141,7 +138,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QXmlDefaultHandler", "()", "")]
 		private void DisposeQXmlDefaultHandler() {
-			ProxyQXmlDefaultHandler().DisposeQXmlDefaultHandler();
+			((QXmlDefaultHandler) interceptor).DisposeQXmlDefaultHandler();
 		}
 	}
 }

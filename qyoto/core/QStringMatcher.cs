@@ -5,15 +5,12 @@ namespace Qyoto {
 
 	[SmokeClass("QStringMatcher")]
 	public class QStringMatcher : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QStringMatcher interceptor = null;
+		private IntPtr smokeObject;
 		protected QStringMatcher(Type dummy) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStringMatcher), this);
-			_interceptor = (QStringMatcher) realProxy.GetTransparentProxy();
-		}
-		private QStringMatcher ProxyQStringMatcher() {
-			return (QStringMatcher) _interceptor;
+			interceptor = (QStringMatcher) realProxy.GetTransparentProxy();
 		}
 		public QStringMatcher() : this((Type) null) {
 			CreateProxy();
@@ -21,7 +18,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStringMatcher", "()", "")]
 		private void NewQStringMatcher() {
-			ProxyQStringMatcher().NewQStringMatcher();
+			((QStringMatcher) interceptor).NewQStringMatcher();
 		}
 		public QStringMatcher(string pattern, Qt.CaseSensitivity cs) : this((Type) null) {
 			CreateProxy();
@@ -29,7 +26,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStringMatcher", "(const QString&, Qt::CaseSensitivity)", "$$")]
 		private void NewQStringMatcher(string pattern, Qt.CaseSensitivity cs) {
-			ProxyQStringMatcher().NewQStringMatcher(pattern,cs);
+			((QStringMatcher) interceptor).NewQStringMatcher(pattern,cs);
 		}
 		public QStringMatcher(string pattern) : this((Type) null) {
 			CreateProxy();
@@ -37,31 +34,31 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStringMatcher", "(const QString&)", "$")]
 		private void NewQStringMatcher(string pattern) {
-			ProxyQStringMatcher().NewQStringMatcher(pattern);
+			((QStringMatcher) interceptor).NewQStringMatcher(pattern);
 		}
 		[SmokeMethod("setPattern", "(const QString&)", "$")]
 		public void SetPattern(string pattern) {
-			ProxyQStringMatcher().SetPattern(pattern);
+			((QStringMatcher) interceptor).SetPattern(pattern);
 		}
 		[SmokeMethod("setCaseSensitivity", "(Qt::CaseSensitivity)", "$")]
 		public void SetCaseSensitivity(Qt.CaseSensitivity cs) {
-			ProxyQStringMatcher().SetCaseSensitivity(cs);
+			((QStringMatcher) interceptor).SetCaseSensitivity(cs);
 		}
 		[SmokeMethod("indexIn", "(const QString&, int) const", "$$")]
 		public int IndexIn(string str, int from) {
-			return ProxyQStringMatcher().IndexIn(str,from);
+			return ((QStringMatcher) interceptor).IndexIn(str,from);
 		}
 		[SmokeMethod("indexIn", "(const QString&) const", "$")]
 		public int IndexIn(string str) {
-			return ProxyQStringMatcher().IndexIn(str);
+			return ((QStringMatcher) interceptor).IndexIn(str);
 		}
 		[SmokeMethod("pattern", "() const", "")]
 		public string Pattern() {
-			return ProxyQStringMatcher().Pattern();
+			return ((QStringMatcher) interceptor).Pattern();
 		}
 		[SmokeMethod("caseSensitivity", "() const", "")]
 		public Qt.CaseSensitivity CaseSensitivity() {
-			return ProxyQStringMatcher().CaseSensitivity();
+			return ((QStringMatcher) interceptor).CaseSensitivity();
 		}
 		~QStringMatcher() {
 			DisposeQStringMatcher();
@@ -71,7 +68,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QStringMatcher", "()", "")]
 		private void DisposeQStringMatcher() {
-			ProxyQStringMatcher().DisposeQStringMatcher();
+			((QStringMatcher) interceptor).DisposeQStringMatcher();
 		}
 	}
 }

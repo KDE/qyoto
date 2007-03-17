@@ -5,8 +5,8 @@ namespace Qyoto {
 
 	[SmokeClass("QDomNamedNodeMap")]
 	public class QDomNamedNodeMap : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QDomNamedNodeMap interceptor = null;
+		private IntPtr smokeObject;
 		protected QDomNamedNodeMap(Type dummy) {}
 		[SmokeClass("QDomNamedNodeMap")]
 		interface IQDomNamedNodeMapProxy {
@@ -15,18 +15,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomNamedNodeMap), this);
-			_interceptor = (QDomNamedNodeMap) realProxy.GetTransparentProxy();
+			interceptor = (QDomNamedNodeMap) realProxy.GetTransparentProxy();
 		}
-		private QDomNamedNodeMap ProxyQDomNamedNodeMap() {
-			return (QDomNamedNodeMap) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQDomNamedNodeMapProxy staticInterceptor = null;
 		static QDomNamedNodeMap() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQDomNamedNodeMapProxy), null);
-			_staticInterceptor = (IQDomNamedNodeMapProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQDomNamedNodeMapProxy StaticQDomNamedNodeMap() {
-			return (IQDomNamedNodeMapProxy) _staticInterceptor;
+			staticInterceptor = (IQDomNamedNodeMapProxy) realProxy.GetTransparentProxy();
 		}
 		public QDomNamedNodeMap() : this((Type) null) {
 			CreateProxy();
@@ -34,7 +28,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDomNamedNodeMap", "()", "")]
 		private void NewQDomNamedNodeMap() {
-			ProxyQDomNamedNodeMap().NewQDomNamedNodeMap();
+			((QDomNamedNodeMap) interceptor).NewQDomNamedNodeMap();
 		}
 		public QDomNamedNodeMap(QDomNamedNodeMap arg1) : this((Type) null) {
 			CreateProxy();
@@ -42,62 +36,62 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDomNamedNodeMap", "(const QDomNamedNodeMap&)", "#")]
 		private void NewQDomNamedNodeMap(QDomNamedNodeMap arg1) {
-			ProxyQDomNamedNodeMap().NewQDomNamedNodeMap(arg1);
+			((QDomNamedNodeMap) interceptor).NewQDomNamedNodeMap(arg1);
 		}
 		public override bool Equals(object o) {
 			if (!(o is QDomNamedNodeMap)) { return false; }
 			return this == (QDomNamedNodeMap) o;
 		}
 		public override int GetHashCode() {
-			return ProxyQDomNamedNodeMap().GetHashCode();
+			return ((QDomNamedNodeMap) interceptor).GetHashCode();
 		}
 		[SmokeMethod("namedItem", "(const QString&) const", "$")]
 		public QDomNode NamedItem(string name) {
-			return ProxyQDomNamedNodeMap().NamedItem(name);
+			return ((QDomNamedNodeMap) interceptor).NamedItem(name);
 		}
 		[SmokeMethod("setNamedItem", "(const QDomNode&)", "#")]
 		public QDomNode SetNamedItem(QDomNode newNode) {
-			return ProxyQDomNamedNodeMap().SetNamedItem(newNode);
+			return ((QDomNamedNodeMap) interceptor).SetNamedItem(newNode);
 		}
 		[SmokeMethod("removeNamedItem", "(const QString&)", "$")]
 		public QDomNode RemoveNamedItem(string name) {
-			return ProxyQDomNamedNodeMap().RemoveNamedItem(name);
+			return ((QDomNamedNodeMap) interceptor).RemoveNamedItem(name);
 		}
 		[SmokeMethod("item", "(int) const", "$")]
 		public QDomNode Item(int index) {
-			return ProxyQDomNamedNodeMap().Item(index);
+			return ((QDomNamedNodeMap) interceptor).Item(index);
 		}
 		[SmokeMethod("namedItemNS", "(const QString&, const QString&) const", "$$")]
 		public QDomNode NamedItemNS(string nsURI, string localName) {
-			return ProxyQDomNamedNodeMap().NamedItemNS(nsURI,localName);
+			return ((QDomNamedNodeMap) interceptor).NamedItemNS(nsURI,localName);
 		}
 		[SmokeMethod("setNamedItemNS", "(const QDomNode&)", "#")]
 		public QDomNode SetNamedItemNS(QDomNode newNode) {
-			return ProxyQDomNamedNodeMap().SetNamedItemNS(newNode);
+			return ((QDomNamedNodeMap) interceptor).SetNamedItemNS(newNode);
 		}
 		[SmokeMethod("removeNamedItemNS", "(const QString&, const QString&)", "$$")]
 		public QDomNode RemoveNamedItemNS(string nsURI, string localName) {
-			return ProxyQDomNamedNodeMap().RemoveNamedItemNS(nsURI,localName);
+			return ((QDomNamedNodeMap) interceptor).RemoveNamedItemNS(nsURI,localName);
 		}
 		[SmokeMethod("length", "() const", "")]
 		public uint Length() {
-			return ProxyQDomNamedNodeMap().Length();
+			return ((QDomNamedNodeMap) interceptor).Length();
 		}
 		[SmokeMethod("count", "() const", "")]
 		public int Count() {
-			return ProxyQDomNamedNodeMap().Count();
+			return ((QDomNamedNodeMap) interceptor).Count();
 		}
 		[SmokeMethod("size", "() const", "")]
 		public int Size() {
-			return ProxyQDomNamedNodeMap().Size();
+			return ((QDomNamedNodeMap) interceptor).Size();
 		}
 		[SmokeMethod("isEmpty", "() const", "")]
 		public bool IsEmpty() {
-			return ProxyQDomNamedNodeMap().IsEmpty();
+			return ((QDomNamedNodeMap) interceptor).IsEmpty();
 		}
 		[SmokeMethod("contains", "(const QString&) const", "$")]
 		public bool Contains(string name) {
-			return ProxyQDomNamedNodeMap().Contains(name);
+			return ((QDomNamedNodeMap) interceptor).Contains(name);
 		}
 		~QDomNamedNodeMap() {
 			DisposeQDomNamedNodeMap();
@@ -107,13 +101,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QDomNamedNodeMap", "()", "")]
 		private void DisposeQDomNamedNodeMap() {
-			ProxyQDomNamedNodeMap().DisposeQDomNamedNodeMap();
+			((QDomNamedNodeMap) interceptor).DisposeQDomNamedNodeMap();
 		}
 		public static bool operator==(QDomNamedNodeMap lhs, QDomNamedNodeMap arg1) {
-			return StaticQDomNamedNodeMap().op_equals(lhs,arg1);
+			return staticInterceptor.op_equals(lhs,arg1);
 		}
 		public static bool operator!=(QDomNamedNodeMap lhs, QDomNamedNodeMap arg1) {
-			return !StaticQDomNamedNodeMap().op_equals(lhs,arg1);
+			return !staticInterceptor.op_equals(lhs,arg1);
 		}
 	}
 }

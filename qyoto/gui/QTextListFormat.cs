@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QTextListFormat(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextListFormat), this);
-			_interceptor = (QTextListFormat) realProxy.GetTransparentProxy();
-		}
-		private QTextListFormat ProxyQTextListFormat() {
-			return (QTextListFormat) _interceptor;
+			interceptor = (QTextListFormat) realProxy.GetTransparentProxy();
 		}
 		public enum Style {
 			ListDisc = -1,
@@ -28,27 +25,27 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTextListFormat", "()", "")]
 		private void NewQTextListFormat() {
-			ProxyQTextListFormat().NewQTextListFormat();
+			((QTextListFormat) interceptor).NewQTextListFormat();
 		}
 		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ProxyQTextListFormat().IsValid();
+			return ((QTextListFormat) interceptor).IsValid();
 		}
 		[SmokeMethod("setStyle", "(QTextListFormat::Style)", "$")]
 		public void SetStyle(QTextListFormat.Style style) {
-			ProxyQTextListFormat().SetStyle(style);
+			((QTextListFormat) interceptor).SetStyle(style);
 		}
 		[SmokeMethod("style", "() const", "")]
 		public QTextListFormat.Style style() {
-			return ProxyQTextListFormat().style();
+			return ((QTextListFormat) interceptor).style();
 		}
 		[SmokeMethod("setIndent", "(int)", "$")]
 		public void SetIndent(int indent) {
-			ProxyQTextListFormat().SetIndent(indent);
+			((QTextListFormat) interceptor).SetIndent(indent);
 		}
 		[SmokeMethod("indent", "() const", "")]
 		public int Indent() {
-			return ProxyQTextListFormat().Indent();
+			return ((QTextListFormat) interceptor).Indent();
 		}
 		~QTextListFormat() {
 			DisposeQTextListFormat();
@@ -58,7 +55,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QTextListFormat", "()", "")]
 		private void DisposeQTextListFormat() {
-			ProxyQTextListFormat().DisposeQTextListFormat();
+			((QTextListFormat) interceptor).DisposeQTextListFormat();
 		}
 	}
 }

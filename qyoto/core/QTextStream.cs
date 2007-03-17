@@ -6,15 +6,12 @@ namespace Qyoto {
 
 	[SmokeClass("QTextStream")]
 	public class QTextStream : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QTextStream interceptor = null;
+		private IntPtr smokeObject;
 		protected QTextStream(Type dummy) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextStream), this);
-			_interceptor = (QTextStream) realProxy.GetTransparentProxy();
-		}
-		private QTextStream ProxyQTextStream() {
-			return (QTextStream) _interceptor;
+			interceptor = (QTextStream) realProxy.GetTransparentProxy();
 		}
 		public enum RealNumberNotation {
 			SmartNotation = 0,
@@ -54,7 +51,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTextStream", "()", "")]
 		private void NewQTextStream() {
-			ProxyQTextStream().NewQTextStream();
+			((QTextStream) interceptor).NewQTextStream();
 		}
 		public QTextStream(QIODevice device) : this((Type) null) {
 			CreateProxy();
@@ -62,7 +59,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTextStream", "(QIODevice*)", "#")]
 		private void NewQTextStream(QIODevice device) {
-			ProxyQTextStream().NewQTextStream(device);
+			((QTextStream) interceptor).NewQTextStream(device);
 		}
 		public QTextStream(StringBuilder arg1, int openMode) : this((Type) null) {
 			CreateProxy();
@@ -70,7 +67,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTextStream", "(QString*, QIODevice::OpenMode)", "$$")]
 		private void NewQTextStream(StringBuilder arg1, int openMode) {
-			ProxyQTextStream().NewQTextStream(arg1,openMode);
+			((QTextStream) interceptor).NewQTextStream(arg1,openMode);
 		}
 		public QTextStream(StringBuilder arg1) : this((Type) null) {
 			CreateProxy();
@@ -78,7 +75,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTextStream", "(QString*)", "$")]
 		private void NewQTextStream(StringBuilder arg1) {
-			ProxyQTextStream().NewQTextStream(arg1);
+			((QTextStream) interceptor).NewQTextStream(arg1);
 		}
 		public QTextStream(QByteArray array, int openMode) : this((Type) null) {
 			CreateProxy();
@@ -86,7 +83,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTextStream", "(QByteArray*, QIODevice::OpenMode)", "#$")]
 		private void NewQTextStream(QByteArray array, int openMode) {
-			ProxyQTextStream().NewQTextStream(array,openMode);
+			((QTextStream) interceptor).NewQTextStream(array,openMode);
 		}
 		public QTextStream(QByteArray array) : this((Type) null) {
 			CreateProxy();
@@ -94,239 +91,239 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTextStream", "(QByteArray*)", "#")]
 		private void NewQTextStream(QByteArray array) {
-			ProxyQTextStream().NewQTextStream(array);
+			((QTextStream) interceptor).NewQTextStream(array);
 		}
 		[SmokeMethod("setCodec", "(QTextCodec*)", "#")]
 		public void SetCodec(QTextCodec codec) {
-			ProxyQTextStream().SetCodec(codec);
+			((QTextStream) interceptor).SetCodec(codec);
 		}
 		[SmokeMethod("setCodec", "(const char*)", "$")]
 		public void SetCodec(string codecName) {
-			ProxyQTextStream().SetCodec(codecName);
+			((QTextStream) interceptor).SetCodec(codecName);
 		}
 		[SmokeMethod("codec", "() const", "")]
 		public QTextCodec Codec() {
-			return ProxyQTextStream().Codec();
+			return ((QTextStream) interceptor).Codec();
 		}
 		[SmokeMethod("setAutoDetectUnicode", "(bool)", "$")]
 		public void SetAutoDetectUnicode(bool enabled) {
-			ProxyQTextStream().SetAutoDetectUnicode(enabled);
+			((QTextStream) interceptor).SetAutoDetectUnicode(enabled);
 		}
 		[SmokeMethod("autoDetectUnicode", "() const", "")]
 		public bool AutoDetectUnicode() {
-			return ProxyQTextStream().AutoDetectUnicode();
+			return ((QTextStream) interceptor).AutoDetectUnicode();
 		}
 		[SmokeMethod("setGenerateByteOrderMark", "(bool)", "$")]
 		public void SetGenerateByteOrderMark(bool generate) {
-			ProxyQTextStream().SetGenerateByteOrderMark(generate);
+			((QTextStream) interceptor).SetGenerateByteOrderMark(generate);
 		}
 		[SmokeMethod("generateByteOrderMark", "() const", "")]
 		public bool GenerateByteOrderMark() {
-			return ProxyQTextStream().GenerateByteOrderMark();
+			return ((QTextStream) interceptor).GenerateByteOrderMark();
 		}
 		[SmokeMethod("setDevice", "(QIODevice*)", "#")]
 		public void SetDevice(QIODevice device) {
-			ProxyQTextStream().SetDevice(device);
+			((QTextStream) interceptor).SetDevice(device);
 		}
 		[SmokeMethod("device", "() const", "")]
 		public QIODevice Device() {
-			return ProxyQTextStream().Device();
+			return ((QTextStream) interceptor).Device();
 		}
 		[SmokeMethod("setString", "(QString*, QIODevice::OpenMode)", "$$")]
 		public void SetString(StringBuilder arg1, int openMode) {
-			ProxyQTextStream().SetString(arg1,openMode);
+			((QTextStream) interceptor).SetString(arg1,openMode);
 		}
 		[SmokeMethod("setString", "(QString*)", "$")]
 		public void SetString(StringBuilder arg1) {
-			ProxyQTextStream().SetString(arg1);
+			((QTextStream) interceptor).SetString(arg1);
 		}
 		[SmokeMethod("string", "() const", "")]
 		public string String() {
-			return ProxyQTextStream().String();
+			return ((QTextStream) interceptor).String();
 		}
 		[SmokeMethod("status", "() const", "")]
 		public QTextStream.Status status() {
-			return ProxyQTextStream().status();
+			return ((QTextStream) interceptor).status();
 		}
 		[SmokeMethod("setStatus", "(QTextStream::Status)", "$")]
 		public void SetStatus(QTextStream.Status status) {
-			ProxyQTextStream().SetStatus(status);
+			((QTextStream) interceptor).SetStatus(status);
 		}
 		[SmokeMethod("resetStatus", "()", "")]
 		public void ResetStatus() {
-			ProxyQTextStream().ResetStatus();
+			((QTextStream) interceptor).ResetStatus();
 		}
 		[SmokeMethod("atEnd", "() const", "")]
 		public bool AtEnd() {
-			return ProxyQTextStream().AtEnd();
+			return ((QTextStream) interceptor).AtEnd();
 		}
 		[SmokeMethod("reset", "()", "")]
 		public void Reset() {
-			ProxyQTextStream().Reset();
+			((QTextStream) interceptor).Reset();
 		}
 		[SmokeMethod("flush", "()", "")]
 		public void Flush() {
-			ProxyQTextStream().Flush();
+			((QTextStream) interceptor).Flush();
 		}
 		[SmokeMethod("seek", "(qint64)", "$")]
 		public bool Seek(long pos) {
-			return ProxyQTextStream().Seek(pos);
+			return ((QTextStream) interceptor).Seek(pos);
 		}
 		[SmokeMethod("pos", "() const", "")]
 		public long Pos() {
-			return ProxyQTextStream().Pos();
+			return ((QTextStream) interceptor).Pos();
 		}
 		[SmokeMethod("skipWhiteSpace", "()", "")]
 		public void SkipWhiteSpace() {
-			ProxyQTextStream().SkipWhiteSpace();
+			((QTextStream) interceptor).SkipWhiteSpace();
 		}
 		[SmokeMethod("readLine", "(qint64)", "$")]
 		public string ReadLine(long maxlen) {
-			return ProxyQTextStream().ReadLine(maxlen);
+			return ((QTextStream) interceptor).ReadLine(maxlen);
 		}
 		[SmokeMethod("readLine", "()", "")]
 		public string ReadLine() {
-			return ProxyQTextStream().ReadLine();
+			return ((QTextStream) interceptor).ReadLine();
 		}
 		[SmokeMethod("readAll", "()", "")]
 		public string ReadAll() {
-			return ProxyQTextStream().ReadAll();
+			return ((QTextStream) interceptor).ReadAll();
 		}
 		[SmokeMethod("read", "(qint64)", "$")]
 		public string Read(long maxlen) {
-			return ProxyQTextStream().Read(maxlen);
+			return ((QTextStream) interceptor).Read(maxlen);
 		}
 		[SmokeMethod("setFieldAlignment", "(QTextStream::FieldAlignment)", "$")]
 		public void SetFieldAlignment(QTextStream.FieldAlignment alignment) {
-			ProxyQTextStream().SetFieldAlignment(alignment);
+			((QTextStream) interceptor).SetFieldAlignment(alignment);
 		}
 		[SmokeMethod("fieldAlignment", "() const", "")]
 		public QTextStream.FieldAlignment fieldAlignment() {
-			return ProxyQTextStream().fieldAlignment();
+			return ((QTextStream) interceptor).fieldAlignment();
 		}
 		[SmokeMethod("setPadChar", "(QChar)", "#")]
 		public void SetPadChar(char ch) {
-			ProxyQTextStream().SetPadChar(ch);
+			((QTextStream) interceptor).SetPadChar(ch);
 		}
 		[SmokeMethod("padChar", "() const", "")]
 		public char PadChar() {
-			return ProxyQTextStream().PadChar();
+			return ((QTextStream) interceptor).PadChar();
 		}
 		[SmokeMethod("setFieldWidth", "(int)", "$")]
 		public void SetFieldWidth(int width) {
-			ProxyQTextStream().SetFieldWidth(width);
+			((QTextStream) interceptor).SetFieldWidth(width);
 		}
 		[SmokeMethod("fieldWidth", "() const", "")]
 		public int FieldWidth() {
-			return ProxyQTextStream().FieldWidth();
+			return ((QTextStream) interceptor).FieldWidth();
 		}
 		[SmokeMethod("setNumberFlags", "(NumberFlags)", "$")]
 		public void SetNumberFlags(int flags) {
-			ProxyQTextStream().SetNumberFlags(flags);
+			((QTextStream) interceptor).SetNumberFlags(flags);
 		}
 		[SmokeMethod("numberFlags", "() const", "")]
 		public int NumberFlags() {
-			return ProxyQTextStream().NumberFlags();
+			return ((QTextStream) interceptor).NumberFlags();
 		}
 		[SmokeMethod("setIntegerBase", "(int)", "$")]
 		public void SetIntegerBase(int arg1) {
-			ProxyQTextStream().SetIntegerBase(arg1);
+			((QTextStream) interceptor).SetIntegerBase(arg1);
 		}
 		[SmokeMethod("integerBase", "() const", "")]
 		public int IntegerBase() {
-			return ProxyQTextStream().IntegerBase();
+			return ((QTextStream) interceptor).IntegerBase();
 		}
 		[SmokeMethod("setRealNumberNotation", "(QTextStream::RealNumberNotation)", "$")]
 		public void SetRealNumberNotation(QTextStream.RealNumberNotation notation) {
-			ProxyQTextStream().SetRealNumberNotation(notation);
+			((QTextStream) interceptor).SetRealNumberNotation(notation);
 		}
 		[SmokeMethod("realNumberNotation", "() const", "")]
 		public QTextStream.RealNumberNotation realNumberNotation() {
-			return ProxyQTextStream().realNumberNotation();
+			return ((QTextStream) interceptor).realNumberNotation();
 		}
 		[SmokeMethod("setRealNumberPrecision", "(int)", "$")]
 		public void SetRealNumberPrecision(int precision) {
-			ProxyQTextStream().SetRealNumberPrecision(precision);
+			((QTextStream) interceptor).SetRealNumberPrecision(precision);
 		}
 		[SmokeMethod("realNumberPrecision", "() const", "")]
 		public int RealNumberPrecision() {
-			return ProxyQTextStream().RealNumberPrecision();
+			return ((QTextStream) interceptor).RealNumberPrecision();
 		}
 		[SmokeMethod("operator>>", "(QChar&)", "#")]
 		public QTextStream Read(char ch) {
-			return ProxyQTextStream().Read(ch);
+			return ((QTextStream) interceptor).Read(ch);
 		}
 		[SmokeMethod("operator>>", "(unsigned short&)", "$")]
 		public QTextStream Read(ushort i) {
-			return ProxyQTextStream().Read(i);
+			return ((QTextStream) interceptor).Read(i);
 		}
 		[SmokeMethod("operator>>", "(unsigned int&)", "$")]
 		public QTextStream Read(uint i) {
-			return ProxyQTextStream().Read(i);
+			return ((QTextStream) interceptor).Read(i);
 		}
 		[SmokeMethod("operator>>", "(unsigned long&)", "$")]
 		public QTextStream Read(ulong i) {
-			return ProxyQTextStream().Read(i);
+			return ((QTextStream) interceptor).Read(i);
 		}
 		[SmokeMethod("operator>>", "(float&)", "$")]
 		public QTextStream Read(float f) {
-			return ProxyQTextStream().Read(f);
+			return ((QTextStream) interceptor).Read(f);
 		}
 		[SmokeMethod("operator>>", "(double&)", "$")]
 		public QTextStream Read(double f) {
-			return ProxyQTextStream().Read(f);
+			return ((QTextStream) interceptor).Read(f);
 		}
 		[SmokeMethod("operator>>", "(QString&)", "$")]
 		public QTextStream Read(StringBuilder s) {
-			return ProxyQTextStream().Read(s);
+			return ((QTextStream) interceptor).Read(s);
 		}
 		[SmokeMethod("operator>>", "(QByteArray&)", "#")]
 		public QTextStream Read(QByteArray array) {
-			return ProxyQTextStream().Read(array);
+			return ((QTextStream) interceptor).Read(array);
 		}
 		[SmokeMethod("operator>>", "(char*)", "$")]
 		public QTextStream Read(string c) {
-			return ProxyQTextStream().Read(c);
+			return ((QTextStream) interceptor).Read(c);
 		}
 		[SmokeMethod("operator<<", "(QBool)", "#")]
 		public QTextStream Write(QBool b) {
-			return ProxyQTextStream().Write(b);
+			return ((QTextStream) interceptor).Write(b);
 		}
 		[SmokeMethod("operator<<", "(QChar)", "#")]
 		public QTextStream Write(char ch) {
-			return ProxyQTextStream().Write(ch);
+			return ((QTextStream) interceptor).Write(ch);
 		}
 		[SmokeMethod("operator<<", "(unsigned short)", "$")]
 		public QTextStream Write(ushort i) {
-			return ProxyQTextStream().Write(i);
+			return ((QTextStream) interceptor).Write(i);
 		}
 		[SmokeMethod("operator<<", "(unsigned int)", "$")]
 		public QTextStream Write(uint i) {
-			return ProxyQTextStream().Write(i);
+			return ((QTextStream) interceptor).Write(i);
 		}
 		[SmokeMethod("operator<<", "(unsigned long)", "$")]
 		public QTextStream Write(ulong i) {
-			return ProxyQTextStream().Write(i);
+			return ((QTextStream) interceptor).Write(i);
 		}
 		[SmokeMethod("operator<<", "(qlonglong)", "?")]
 		public QTextStream Write(long i) {
-			return ProxyQTextStream().Write(i);
+			return ((QTextStream) interceptor).Write(i);
 		}
 		[SmokeMethod("operator<<", "(float)", "$")]
 		public QTextStream Write(float f) {
-			return ProxyQTextStream().Write(f);
+			return ((QTextStream) interceptor).Write(f);
 		}
 		[SmokeMethod("operator<<", "(double)", "$")]
 		public QTextStream Write(double f) {
-			return ProxyQTextStream().Write(f);
+			return ((QTextStream) interceptor).Write(f);
 		}
 		[SmokeMethod("operator<<", "(const QString&)", "$")]
 		public QTextStream Write(string s) {
-			return ProxyQTextStream().Write(s);
+			return ((QTextStream) interceptor).Write(s);
 		}
 		[SmokeMethod("operator<<", "(const QByteArray&)", "#")]
 		public QTextStream Write(QByteArray array) {
-			return ProxyQTextStream().Write(array);
+			return ((QTextStream) interceptor).Write(array);
 		}
 		~QTextStream() {
 			DisposeQTextStream();
@@ -336,7 +333,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QTextStream", "()", "")]
 		private void DisposeQTextStream() {
-			ProxyQTextStream().DisposeQTextStream();
+			((QTextStream) interceptor).DisposeQTextStream();
 		}
 	}
 }

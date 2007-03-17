@@ -5,8 +5,8 @@ namespace Qyoto {
 
 	[SmokeClass("QModelIndex")]
 	public partial class QModelIndex : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QModelIndex interceptor = null;
+		private IntPtr smokeObject;
 		protected QModelIndex(Type dummy) {}
 		[SmokeClass("QModelIndex")]
 		interface IQModelIndexProxy {
@@ -17,18 +17,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QModelIndex), this);
-			_interceptor = (QModelIndex) realProxy.GetTransparentProxy();
+			interceptor = (QModelIndex) realProxy.GetTransparentProxy();
 		}
-		private QModelIndex ProxyQModelIndex() {
-			return (QModelIndex) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQModelIndexProxy staticInterceptor = null;
 		static QModelIndex() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQModelIndexProxy), null);
-			_staticInterceptor = (IQModelIndexProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQModelIndexProxy StaticQModelIndex() {
-			return (IQModelIndexProxy) _staticInterceptor;
+			staticInterceptor = (IQModelIndexProxy) realProxy.GetTransparentProxy();
 		}
 		// void* internalPointer(); >>>> NOT CONVERTED
 		public QModelIndex() : this((Type) null) {
@@ -37,7 +31,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QModelIndex", "()", "")]
 		private void NewQModelIndex() {
-			ProxyQModelIndex().NewQModelIndex();
+			((QModelIndex) interceptor).NewQModelIndex();
 		}
 		public QModelIndex(QModelIndex other) : this((Type) null) {
 			CreateProxy();
@@ -45,58 +39,58 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QModelIndex", "(const QModelIndex&)", "#")]
 		private void NewQModelIndex(QModelIndex other) {
-			ProxyQModelIndex().NewQModelIndex(other);
+			((QModelIndex) interceptor).NewQModelIndex(other);
 		}
 		[SmokeMethod("row", "() const", "")]
 		public int Row() {
-			return ProxyQModelIndex().Row();
+			return ((QModelIndex) interceptor).Row();
 		}
 		[SmokeMethod("column", "() const", "")]
 		public int Column() {
-			return ProxyQModelIndex().Column();
+			return ((QModelIndex) interceptor).Column();
 		}
 		[SmokeMethod("internalId", "() const", "")]
 		public long InternalId() {
-			return ProxyQModelIndex().InternalId();
+			return ((QModelIndex) interceptor).InternalId();
 		}
 		[SmokeMethod("parent", "() const", "")]
 		public QModelIndex Parent() {
-			return ProxyQModelIndex().Parent();
+			return ((QModelIndex) interceptor).Parent();
 		}
 		[SmokeMethod("sibling", "(int, int) const", "$$")]
 		public QModelIndex Sibling(int row, int column) {
-			return ProxyQModelIndex().Sibling(row,column);
+			return ((QModelIndex) interceptor).Sibling(row,column);
 		}
 		[SmokeMethod("child", "(int, int) const", "$$")]
 		public QModelIndex Child(int row, int column) {
-			return ProxyQModelIndex().Child(row,column);
+			return ((QModelIndex) interceptor).Child(row,column);
 		}
 		[SmokeMethod("data", "(int) const", "$")]
 		public QVariant Data(int role) {
-			return ProxyQModelIndex().Data(role);
+			return ((QModelIndex) interceptor).Data(role);
 		}
 		[SmokeMethod("data", "() const", "")]
 		public QVariant Data() {
-			return ProxyQModelIndex().Data();
+			return ((QModelIndex) interceptor).Data();
 		}
 		[SmokeMethod("flags", "() const", "")]
 		public int Flags() {
-			return ProxyQModelIndex().Flags();
+			return ((QModelIndex) interceptor).Flags();
 		}
 		[SmokeMethod("model", "() const", "")]
 		public QAbstractItemModel Model() {
-			return ProxyQModelIndex().Model();
+			return ((QModelIndex) interceptor).Model();
 		}
 		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ProxyQModelIndex().IsValid();
+			return ((QModelIndex) interceptor).IsValid();
 		}
 		public override bool Equals(object o) {
 			if (!(o is QModelIndex)) { return false; }
 			return this == (QModelIndex) o;
 		}
 		public override int GetHashCode() {
-			return ProxyQModelIndex().GetHashCode();
+			return ((QModelIndex) interceptor).GetHashCode();
 		}
 		~QModelIndex() {
 			DisposeQModelIndex();
@@ -107,20 +101,20 @@ namespace Qyoto {
 		[SmokeMethod("~QModelIndex", "()", "")]
 		private void DisposeQModelIndex() {
 			QAbstractItemModel.DerefIndexHandle(InternalPointer());
-			ProxyQModelIndex().DisposeQModelIndex();
+			((QModelIndex) interceptor).DisposeQModelIndex();
 		}
 		public static bool operator==(QModelIndex lhs, QModelIndex other) {
-			return StaticQModelIndex().op_equals(lhs,other);
+			return staticInterceptor.op_equals(lhs,other);
 		}
 		public static bool operator!=(QModelIndex lhs, QModelIndex other) {
-			return !StaticQModelIndex().op_equals(lhs,other);
+			return !staticInterceptor.op_equals(lhs,other);
 		}
 		public static bool operator<(QModelIndex lhs, QModelIndex other) {
-			return StaticQModelIndex().op_lt(lhs,other);
+			return staticInterceptor.op_lt(lhs,other);
 		}
 		public static bool operator>(QModelIndex lhs, QModelIndex other) {
-			return !StaticQModelIndex().op_lt(lhs,other)
-						&& !StaticQModelIndex().op_equals(lhs,other);
+			return !staticInterceptor.op_lt(lhs,other)
+						&& !staticInterceptor.op_equals(lhs,other);
 		}
 	}
 }

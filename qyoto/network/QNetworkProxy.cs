@@ -5,8 +5,8 @@ namespace Qyoto {
 
 	[SmokeClass("QNetworkProxy")]
 	public class QNetworkProxy : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QNetworkProxy interceptor = null;
+		private IntPtr smokeObject;
 		protected QNetworkProxy(Type dummy) {}
 		[SmokeClass("QNetworkProxy")]
 		interface IQNetworkProxyProxy {
@@ -17,18 +17,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QNetworkProxy), this);
-			_interceptor = (QNetworkProxy) realProxy.GetTransparentProxy();
+			interceptor = (QNetworkProxy) realProxy.GetTransparentProxy();
 		}
-		private QNetworkProxy ProxyQNetworkProxy() {
-			return (QNetworkProxy) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQNetworkProxyProxy staticInterceptor = null;
 		static QNetworkProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQNetworkProxyProxy), null);
-			_staticInterceptor = (IQNetworkProxyProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQNetworkProxyProxy StaticQNetworkProxy() {
-			return (IQNetworkProxyProxy) _staticInterceptor;
+			staticInterceptor = (IQNetworkProxyProxy) realProxy.GetTransparentProxy();
 		}
 		public enum ProxyType {
 			DefaultProxy = 0,
@@ -41,7 +35,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QNetworkProxy", "()", "")]
 		private void NewQNetworkProxy() {
-			ProxyQNetworkProxy().NewQNetworkProxy();
+			((QNetworkProxy) interceptor).NewQNetworkProxy();
 		}
 		public QNetworkProxy(QNetworkProxy.ProxyType type, string hostName, ushort port, string user, string password) : this((Type) null) {
 			CreateProxy();
@@ -49,7 +43,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QNetworkProxy", "(QNetworkProxy::ProxyType, const QString&, quint16, const QString&, const QString&)", "$$$$$")]
 		private void NewQNetworkProxy(QNetworkProxy.ProxyType type, string hostName, ushort port, string user, string password) {
-			ProxyQNetworkProxy().NewQNetworkProxy(type,hostName,port,user,password);
+			((QNetworkProxy) interceptor).NewQNetworkProxy(type,hostName,port,user,password);
 		}
 		public QNetworkProxy(QNetworkProxy.ProxyType type, string hostName, ushort port, string user) : this((Type) null) {
 			CreateProxy();
@@ -57,7 +51,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QNetworkProxy", "(QNetworkProxy::ProxyType, const QString&, quint16, const QString&)", "$$$$")]
 		private void NewQNetworkProxy(QNetworkProxy.ProxyType type, string hostName, ushort port, string user) {
-			ProxyQNetworkProxy().NewQNetworkProxy(type,hostName,port,user);
+			((QNetworkProxy) interceptor).NewQNetworkProxy(type,hostName,port,user);
 		}
 		public QNetworkProxy(QNetworkProxy.ProxyType type, string hostName, ushort port) : this((Type) null) {
 			CreateProxy();
@@ -65,7 +59,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QNetworkProxy", "(QNetworkProxy::ProxyType, const QString&, quint16)", "$$$")]
 		private void NewQNetworkProxy(QNetworkProxy.ProxyType type, string hostName, ushort port) {
-			ProxyQNetworkProxy().NewQNetworkProxy(type,hostName,port);
+			((QNetworkProxy) interceptor).NewQNetworkProxy(type,hostName,port);
 		}
 		public QNetworkProxy(QNetworkProxy.ProxyType type, string hostName) : this((Type) null) {
 			CreateProxy();
@@ -73,7 +67,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QNetworkProxy", "(QNetworkProxy::ProxyType, const QString&)", "$$")]
 		private void NewQNetworkProxy(QNetworkProxy.ProxyType type, string hostName) {
-			ProxyQNetworkProxy().NewQNetworkProxy(type,hostName);
+			((QNetworkProxy) interceptor).NewQNetworkProxy(type,hostName);
 		}
 		public QNetworkProxy(QNetworkProxy.ProxyType type) : this((Type) null) {
 			CreateProxy();
@@ -81,7 +75,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QNetworkProxy", "(QNetworkProxy::ProxyType)", "$")]
 		private void NewQNetworkProxy(QNetworkProxy.ProxyType type) {
-			ProxyQNetworkProxy().NewQNetworkProxy(type);
+			((QNetworkProxy) interceptor).NewQNetworkProxy(type);
 		}
 		public QNetworkProxy(QNetworkProxy other) : this((Type) null) {
 			CreateProxy();
@@ -89,47 +83,47 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QNetworkProxy", "(const QNetworkProxy&)", "#")]
 		private void NewQNetworkProxy(QNetworkProxy other) {
-			ProxyQNetworkProxy().NewQNetworkProxy(other);
+			((QNetworkProxy) interceptor).NewQNetworkProxy(other);
 		}
 		[SmokeMethod("setType", "(QNetworkProxy::ProxyType)", "$")]
 		public void SetType(QNetworkProxy.ProxyType type) {
-			ProxyQNetworkProxy().SetType(type);
+			((QNetworkProxy) interceptor).SetType(type);
 		}
 		[SmokeMethod("type", "() const", "")]
 		public QNetworkProxy.ProxyType type() {
-			return ProxyQNetworkProxy().type();
+			return ((QNetworkProxy) interceptor).type();
 		}
 		[SmokeMethod("setUser", "(const QString&)", "$")]
 		public void SetUser(string userName) {
-			ProxyQNetworkProxy().SetUser(userName);
+			((QNetworkProxy) interceptor).SetUser(userName);
 		}
 		[SmokeMethod("user", "() const", "")]
 		public string User() {
-			return ProxyQNetworkProxy().User();
+			return ((QNetworkProxy) interceptor).User();
 		}
 		[SmokeMethod("setPassword", "(const QString&)", "$")]
 		public void SetPassword(string password) {
-			ProxyQNetworkProxy().SetPassword(password);
+			((QNetworkProxy) interceptor).SetPassword(password);
 		}
 		[SmokeMethod("password", "() const", "")]
 		public string Password() {
-			return ProxyQNetworkProxy().Password();
+			return ((QNetworkProxy) interceptor).Password();
 		}
 		[SmokeMethod("setHostName", "(const QString&)", "$")]
 		public void SetHostName(string hostName) {
-			ProxyQNetworkProxy().SetHostName(hostName);
+			((QNetworkProxy) interceptor).SetHostName(hostName);
 		}
 		[SmokeMethod("hostName", "() const", "")]
 		public string HostName() {
-			return ProxyQNetworkProxy().HostName();
+			return ((QNetworkProxy) interceptor).HostName();
 		}
 		[SmokeMethod("setPort", "(quint16)", "$")]
 		public void SetPort(ushort port) {
-			ProxyQNetworkProxy().SetPort(port);
+			((QNetworkProxy) interceptor).SetPort(port);
 		}
 		[SmokeMethod("port", "() const", "")]
 		public ushort Port() {
-			return ProxyQNetworkProxy().Port();
+			return ((QNetworkProxy) interceptor).Port();
 		}
 		~QNetworkProxy() {
 			DisposeQNetworkProxy();
@@ -139,13 +133,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QNetworkProxy", "()", "")]
 		private void DisposeQNetworkProxy() {
-			ProxyQNetworkProxy().DisposeQNetworkProxy();
+			((QNetworkProxy) interceptor).DisposeQNetworkProxy();
 		}
 		public static void SetApplicationProxy(QNetworkProxy proxy) {
-			StaticQNetworkProxy().SetApplicationProxy(proxy);
+			staticInterceptor.SetApplicationProxy(proxy);
 		}
 		public static QNetworkProxy ApplicationProxy() {
-			return StaticQNetworkProxy().ApplicationProxy();
+			return staticInterceptor.ApplicationProxy();
 		}
 	}
 }

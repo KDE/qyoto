@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QDomText(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomText), this);
-			_interceptor = (QDomText) realProxy.GetTransparentProxy();
-		}
-		private QDomText ProxyQDomText() {
-			return (QDomText) _interceptor;
+			interceptor = (QDomText) realProxy.GetTransparentProxy();
 		}
 		public QDomText() : this((Type) null) {
 			CreateProxy();
@@ -19,7 +16,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDomText", "()", "")]
 		private void NewQDomText() {
-			ProxyQDomText().NewQDomText();
+			((QDomText) interceptor).NewQDomText();
 		}
 		public QDomText(QDomText x) : this((Type) null) {
 			CreateProxy();
@@ -27,15 +24,15 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDomText", "(const QDomText&)", "#")]
 		private void NewQDomText(QDomText x) {
-			ProxyQDomText().NewQDomText(x);
+			((QDomText) interceptor).NewQDomText(x);
 		}
 		[SmokeMethod("splitText", "(int)", "$")]
 		public QDomText SplitText(int offset) {
-			return ProxyQDomText().SplitText(offset);
+			return ((QDomText) interceptor).SplitText(offset);
 		}
 		[SmokeMethod("nodeType", "() const", "")]
 		public QDomNode.NodeType NodeType() {
-			return ProxyQDomText().NodeType();
+			return ((QDomText) interceptor).NodeType();
 		}
 		~QDomText() {
 			DisposeQDomText();
@@ -45,7 +42,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QDomText", "()", "")]
 		private void DisposeQDomText() {
-			ProxyQDomText().DisposeQDomText();
+			((QDomText) interceptor).DisposeQDomText();
 		}
 	}
 }

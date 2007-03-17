@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QDomEntityReference(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomEntityReference), this);
-			_interceptor = (QDomEntityReference) realProxy.GetTransparentProxy();
-		}
-		private QDomEntityReference ProxyQDomEntityReference() {
-			return (QDomEntityReference) _interceptor;
+			interceptor = (QDomEntityReference) realProxy.GetTransparentProxy();
 		}
 		public QDomEntityReference() : this((Type) null) {
 			CreateProxy();
@@ -19,7 +16,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDomEntityReference", "()", "")]
 		private void NewQDomEntityReference() {
-			ProxyQDomEntityReference().NewQDomEntityReference();
+			((QDomEntityReference) interceptor).NewQDomEntityReference();
 		}
 		public QDomEntityReference(QDomEntityReference x) : this((Type) null) {
 			CreateProxy();
@@ -27,11 +24,11 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDomEntityReference", "(const QDomEntityReference&)", "#")]
 		private void NewQDomEntityReference(QDomEntityReference x) {
-			ProxyQDomEntityReference().NewQDomEntityReference(x);
+			((QDomEntityReference) interceptor).NewQDomEntityReference(x);
 		}
 		[SmokeMethod("nodeType", "() const", "")]
 		public QDomNode.NodeType NodeType() {
-			return ProxyQDomEntityReference().NodeType();
+			return ((QDomEntityReference) interceptor).NodeType();
 		}
 		~QDomEntityReference() {
 			DisposeQDomEntityReference();
@@ -41,7 +38,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QDomEntityReference", "()", "")]
 		private void DisposeQDomEntityReference() {
-			ProxyQDomEntityReference().DisposeQDomEntityReference();
+			((QDomEntityReference) interceptor).DisposeQDomEntityReference();
 		}
 	}
 }

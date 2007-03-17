@@ -15,18 +15,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextTable), this);
-			_interceptor = (QTextTable) realProxy.GetTransparentProxy();
+			interceptor = (QTextTable) realProxy.GetTransparentProxy();
 		}
-		private QTextTable ProxyQTextTable() {
-			return (QTextTable) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQTextTableProxy staticInterceptor = null;
 		static QTextTable() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTextTableProxy), null);
-			_staticInterceptor = (IQTextTableProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQTextTableProxy StaticQTextTable() {
-			return (IQTextTableProxy) _staticInterceptor;
+			staticInterceptor = (IQTextTableProxy) realProxy.GetTransparentProxy();
 		}
 		public QTextTable(QTextDocument doc) : this((Type) null) {
 			CreateProxy();
@@ -34,75 +28,75 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTextTable", "(QTextDocument*)", "#")]
 		private void NewQTextTable(QTextDocument doc) {
-			ProxyQTextTable().NewQTextTable(doc);
+			((QTextTable) interceptor).NewQTextTable(doc);
 		}
 		[SmokeMethod("resize", "(int, int)", "$$")]
 		public void Resize(int rows, int cols) {
-			ProxyQTextTable().Resize(rows,cols);
+			((QTextTable) interceptor).Resize(rows,cols);
 		}
 		[SmokeMethod("insertRows", "(int, int)", "$$")]
 		public void InsertRows(int pos, int num) {
-			ProxyQTextTable().InsertRows(pos,num);
+			((QTextTable) interceptor).InsertRows(pos,num);
 		}
 		[SmokeMethod("insertColumns", "(int, int)", "$$")]
 		public void InsertColumns(int pos, int num) {
-			ProxyQTextTable().InsertColumns(pos,num);
+			((QTextTable) interceptor).InsertColumns(pos,num);
 		}
 		[SmokeMethod("removeRows", "(int, int)", "$$")]
 		public void RemoveRows(int pos, int num) {
-			ProxyQTextTable().RemoveRows(pos,num);
+			((QTextTable) interceptor).RemoveRows(pos,num);
 		}
 		[SmokeMethod("removeColumns", "(int, int)", "$$")]
 		public void RemoveColumns(int pos, int num) {
-			ProxyQTextTable().RemoveColumns(pos,num);
+			((QTextTable) interceptor).RemoveColumns(pos,num);
 		}
 		[SmokeMethod("mergeCells", "(int, int, int, int)", "$$$$")]
 		public void MergeCells(int row, int col, int numRows, int numCols) {
-			ProxyQTextTable().MergeCells(row,col,numRows,numCols);
+			((QTextTable) interceptor).MergeCells(row,col,numRows,numCols);
 		}
 		[SmokeMethod("mergeCells", "(const QTextCursor&)", "#")]
 		public void MergeCells(QTextCursor cursor) {
-			ProxyQTextTable().MergeCells(cursor);
+			((QTextTable) interceptor).MergeCells(cursor);
 		}
 		[SmokeMethod("splitCell", "(int, int, int, int)", "$$$$")]
 		public void SplitCell(int row, int col, int numRows, int numCols) {
-			ProxyQTextTable().SplitCell(row,col,numRows,numCols);
+			((QTextTable) interceptor).SplitCell(row,col,numRows,numCols);
 		}
 		[SmokeMethod("rows", "() const", "")]
 		public int Rows() {
-			return ProxyQTextTable().Rows();
+			return ((QTextTable) interceptor).Rows();
 		}
 		[SmokeMethod("columns", "() const", "")]
 		public int Columns() {
-			return ProxyQTextTable().Columns();
+			return ((QTextTable) interceptor).Columns();
 		}
 		[SmokeMethod("cellAt", "(int, int) const", "$$")]
 		public QTextTableCell CellAt(int row, int col) {
-			return ProxyQTextTable().CellAt(row,col);
+			return ((QTextTable) interceptor).CellAt(row,col);
 		}
 		[SmokeMethod("cellAt", "(int) const", "$")]
 		public QTextTableCell CellAt(int position) {
-			return ProxyQTextTable().CellAt(position);
+			return ((QTextTable) interceptor).CellAt(position);
 		}
 		[SmokeMethod("cellAt", "(const QTextCursor&) const", "#")]
 		public QTextTableCell CellAt(QTextCursor c) {
-			return ProxyQTextTable().CellAt(c);
+			return ((QTextTable) interceptor).CellAt(c);
 		}
 		[SmokeMethod("rowStart", "(const QTextCursor&) const", "#")]
 		public QTextCursor RowStart(QTextCursor c) {
-			return ProxyQTextTable().RowStart(c);
+			return ((QTextTable) interceptor).RowStart(c);
 		}
 		[SmokeMethod("rowEnd", "(const QTextCursor&) const", "#")]
 		public QTextCursor RowEnd(QTextCursor c) {
-			return ProxyQTextTable().RowEnd(c);
+			return ((QTextTable) interceptor).RowEnd(c);
 		}
 		[SmokeMethod("setFormat", "(const QTextTableFormat&)", "#")]
 		public void SetFormat(QTextTableFormat format) {
-			ProxyQTextTable().SetFormat(format);
+			((QTextTable) interceptor).SetFormat(format);
 		}
 		[SmokeMethod("format", "() const", "")]
 		public QTextTableFormat Format() {
-			return ProxyQTextTable().Format();
+			return ((QTextTable) interceptor).Format();
 		}
 		~QTextTable() {
 			DisposeQTextTable();
@@ -112,13 +106,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QTextTable", "()", "")]
 		private void DisposeQTextTable() {
-			ProxyQTextTable().DisposeQTextTable();
+			((QTextTable) interceptor).DisposeQTextTable();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQTextTable().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQTextTable().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQTextTableSignals Emit {
 			get { return (IQTextTableSignals) Q_EMIT; }

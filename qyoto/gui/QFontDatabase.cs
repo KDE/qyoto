@@ -6,8 +6,8 @@ namespace Qyoto {
 
 	[SmokeClass("QFontDatabase")]
 	public class QFontDatabase : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QFontDatabase interceptor = null;
+		private IntPtr smokeObject;
 		protected QFontDatabase(Type dummy) {}
 		[SmokeClass("QFontDatabase")]
 		interface IQFontDatabaseProxy {
@@ -30,18 +30,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFontDatabase), this);
-			_interceptor = (QFontDatabase) realProxy.GetTransparentProxy();
+			interceptor = (QFontDatabase) realProxy.GetTransparentProxy();
 		}
-		private QFontDatabase ProxyQFontDatabase() {
-			return (QFontDatabase) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQFontDatabaseProxy staticInterceptor = null;
 		static QFontDatabase() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQFontDatabaseProxy), null);
-			_staticInterceptor = (IQFontDatabaseProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQFontDatabaseProxy StaticQFontDatabase() {
-			return (IQFontDatabaseProxy) _staticInterceptor;
+			staticInterceptor = (IQFontDatabaseProxy) realProxy.GetTransparentProxy();
 		}
 		public enum WritingSystem {
 			Any = 0,
@@ -88,87 +82,87 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QFontDatabase", "()", "")]
 		private void NewQFontDatabase() {
-			ProxyQFontDatabase().NewQFontDatabase();
+			((QFontDatabase) interceptor).NewQFontDatabase();
 		}
 		[SmokeMethod("families", "(QFontDatabase::WritingSystem) const", "$")]
 		public List<string> Families(QFontDatabase.WritingSystem writingSystem) {
-			return ProxyQFontDatabase().Families(writingSystem);
+			return ((QFontDatabase) interceptor).Families(writingSystem);
 		}
 		[SmokeMethod("families", "() const", "")]
 		public List<string> Families() {
-			return ProxyQFontDatabase().Families();
+			return ((QFontDatabase) interceptor).Families();
 		}
 		[SmokeMethod("styles", "(const QString&) const", "$")]
 		public List<string> Styles(string family) {
-			return ProxyQFontDatabase().Styles(family);
+			return ((QFontDatabase) interceptor).Styles(family);
 		}
 		[SmokeMethod("pointSizes", "(const QString&, const QString&)", "$$")]
 		public List<int> PointSizes(string family, string style) {
-			return ProxyQFontDatabase().PointSizes(family,style);
+			return ((QFontDatabase) interceptor).PointSizes(family,style);
 		}
 		[SmokeMethod("pointSizes", "(const QString&)", "$")]
 		public List<int> PointSizes(string family) {
-			return ProxyQFontDatabase().PointSizes(family);
+			return ((QFontDatabase) interceptor).PointSizes(family);
 		}
 		[SmokeMethod("smoothSizes", "(const QString&, const QString&)", "$$")]
 		public List<int> SmoothSizes(string family, string style) {
-			return ProxyQFontDatabase().SmoothSizes(family,style);
+			return ((QFontDatabase) interceptor).SmoothSizes(family,style);
 		}
 		[SmokeMethod("styleString", "(const QFont&)", "#")]
 		public string StyleString(QFont font) {
-			return ProxyQFontDatabase().StyleString(font);
+			return ((QFontDatabase) interceptor).StyleString(font);
 		}
 		[SmokeMethod("styleString", "(const QFontInfo&)", "#")]
 		public string StyleString(QFontInfo fontInfo) {
-			return ProxyQFontDatabase().StyleString(fontInfo);
+			return ((QFontDatabase) interceptor).StyleString(fontInfo);
 		}
 		[SmokeMethod("font", "(const QString&, const QString&, int) const", "$$$")]
 		public QFont Font(string family, string style, int pointSize) {
-			return ProxyQFontDatabase().Font(family,style,pointSize);
+			return ((QFontDatabase) interceptor).Font(family,style,pointSize);
 		}
 		[SmokeMethod("isBitmapScalable", "(const QString&, const QString&) const", "$$")]
 		public bool IsBitmapScalable(string family, string style) {
-			return ProxyQFontDatabase().IsBitmapScalable(family,style);
+			return ((QFontDatabase) interceptor).IsBitmapScalable(family,style);
 		}
 		[SmokeMethod("isBitmapScalable", "(const QString&) const", "$")]
 		public bool IsBitmapScalable(string family) {
-			return ProxyQFontDatabase().IsBitmapScalable(family);
+			return ((QFontDatabase) interceptor).IsBitmapScalable(family);
 		}
 		[SmokeMethod("isSmoothlyScalable", "(const QString&, const QString&) const", "$$")]
 		public bool IsSmoothlyScalable(string family, string style) {
-			return ProxyQFontDatabase().IsSmoothlyScalable(family,style);
+			return ((QFontDatabase) interceptor).IsSmoothlyScalable(family,style);
 		}
 		[SmokeMethod("isSmoothlyScalable", "(const QString&) const", "$")]
 		public bool IsSmoothlyScalable(string family) {
-			return ProxyQFontDatabase().IsSmoothlyScalable(family);
+			return ((QFontDatabase) interceptor).IsSmoothlyScalable(family);
 		}
 		[SmokeMethod("isScalable", "(const QString&, const QString&) const", "$$")]
 		public bool IsScalable(string family, string style) {
-			return ProxyQFontDatabase().IsScalable(family,style);
+			return ((QFontDatabase) interceptor).IsScalable(family,style);
 		}
 		[SmokeMethod("isScalable", "(const QString&) const", "$")]
 		public bool IsScalable(string family) {
-			return ProxyQFontDatabase().IsScalable(family);
+			return ((QFontDatabase) interceptor).IsScalable(family);
 		}
 		[SmokeMethod("isFixedPitch", "(const QString&, const QString&) const", "$$")]
 		public bool IsFixedPitch(string family, string style) {
-			return ProxyQFontDatabase().IsFixedPitch(family,style);
+			return ((QFontDatabase) interceptor).IsFixedPitch(family,style);
 		}
 		[SmokeMethod("isFixedPitch", "(const QString&) const", "$")]
 		public bool IsFixedPitch(string family) {
-			return ProxyQFontDatabase().IsFixedPitch(family);
+			return ((QFontDatabase) interceptor).IsFixedPitch(family);
 		}
 		[SmokeMethod("italic", "(const QString&, const QString&) const", "$$")]
 		public bool Italic(string family, string style) {
-			return ProxyQFontDatabase().Italic(family,style);
+			return ((QFontDatabase) interceptor).Italic(family,style);
 		}
 		[SmokeMethod("bold", "(const QString&, const QString&) const", "$$")]
 		public bool Bold(string family, string style) {
-			return ProxyQFontDatabase().Bold(family,style);
+			return ((QFontDatabase) interceptor).Bold(family,style);
 		}
 		[SmokeMethod("weight", "(const QString&, const QString&) const", "$$")]
 		public int Weight(string family, string style) {
-			return ProxyQFontDatabase().Weight(family,style);
+			return ((QFontDatabase) interceptor).Weight(family,style);
 		}
 		~QFontDatabase() {
 			DisposeQFontDatabase();
@@ -178,31 +172,31 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QFontDatabase", "()", "")]
 		private void DisposeQFontDatabase() {
-			ProxyQFontDatabase().DisposeQFontDatabase();
+			((QFontDatabase) interceptor).DisposeQFontDatabase();
 		}
 		public static List<int> StandardSizes() {
-			return StaticQFontDatabase().StandardSizes();
+			return staticInterceptor.StandardSizes();
 		}
 		public static string WritingSystemName(QFontDatabase.WritingSystem writingSystem) {
-			return StaticQFontDatabase().WritingSystemName(writingSystem);
+			return staticInterceptor.WritingSystemName(writingSystem);
 		}
 		public static string WritingSystemSample(QFontDatabase.WritingSystem writingSystem) {
-			return StaticQFontDatabase().WritingSystemSample(writingSystem);
+			return staticInterceptor.WritingSystemSample(writingSystem);
 		}
 		public static int AddApplicationFont(string fileName) {
-			return StaticQFontDatabase().AddApplicationFont(fileName);
+			return staticInterceptor.AddApplicationFont(fileName);
 		}
 		public static int AddApplicationFontFromData(QByteArray fontData) {
-			return StaticQFontDatabase().AddApplicationFontFromData(fontData);
+			return staticInterceptor.AddApplicationFontFromData(fontData);
 		}
 		public static List<string> ApplicationFontFamilies(int id) {
-			return StaticQFontDatabase().ApplicationFontFamilies(id);
+			return staticInterceptor.ApplicationFontFamilies(id);
 		}
 		public static bool RemoveApplicationFont(int id) {
-			return StaticQFontDatabase().RemoveApplicationFont(id);
+			return staticInterceptor.RemoveApplicationFont(id);
 		}
 		public static bool RemoveAllApplicationFonts() {
-			return StaticQFontDatabase().RemoveAllApplicationFonts();
+			return staticInterceptor.RemoveAllApplicationFonts();
 		}
 	}
 }

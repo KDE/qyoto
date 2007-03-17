@@ -5,15 +5,12 @@ namespace Qyoto {
 
 	[SmokeClass("QSystemLocale")]
 	public class QSystemLocale : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QSystemLocale interceptor = null;
+		private IntPtr smokeObject;
 		protected QSystemLocale(Type dummy) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSystemLocale), this);
-			_interceptor = (QSystemLocale) realProxy.GetTransparentProxy();
-		}
-		private QSystemLocale ProxyQSystemLocale() {
-			return (QSystemLocale) _interceptor;
+			interceptor = (QSystemLocale) realProxy.GetTransparentProxy();
 		}
 		public enum QueryType {
 			LanguageId = 0,
@@ -41,15 +38,15 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSystemLocale", "()", "")]
 		private void NewQSystemLocale() {
-			ProxyQSystemLocale().NewQSystemLocale();
+			((QSystemLocale) interceptor).NewQSystemLocale();
 		}
 		[SmokeMethod("query", "(QSystemLocale::QueryType, QVariant) const", "$#")]
 		public virtual QVariant Query(QSystemLocale.QueryType type, QVariant arg2) {
-			return ProxyQSystemLocale().Query(type,arg2);
+			return ((QSystemLocale) interceptor).Query(type,arg2);
 		}
 		[SmokeMethod("fallbackLocale", "() const", "")]
 		public virtual QLocale FallbackLocale() {
-			return ProxyQSystemLocale().FallbackLocale();
+			return ((QSystemLocale) interceptor).FallbackLocale();
 		}
 		~QSystemLocale() {
 			DisposeQSystemLocale();
@@ -59,7 +56,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QSystemLocale", "()", "")]
 		private void DisposeQSystemLocale() {
-			ProxyQSystemLocale().DisposeQSystemLocale();
+			((QSystemLocale) interceptor).DisposeQSystemLocale();
 		}
 	}
 }

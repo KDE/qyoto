@@ -9,10 +9,7 @@ namespace Qyoto {
  		protected QAccessibleInterface(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAccessibleInterface), this);
-			_interceptor = (QAccessibleInterface) realProxy.GetTransparentProxy();
-		}
-		private QAccessibleInterface ProxyQAccessibleInterface() {
-			return (QAccessibleInterface) _interceptor;
+			interceptor = (QAccessibleInterface) realProxy.GetTransparentProxy();
 		}
 		[SmokeMethod("isValid", "() const", "")]
 		public abstract bool IsValid();
@@ -46,15 +43,15 @@ namespace Qyoto {
 		public abstract bool DoAction(int action, int child, List<QVariant> arg3);
 		[SmokeMethod("invokeMethod", "(QAccessible::Method, int, const QVariantList&)", "$$?")]
 		public QVariant InvokeMethod(QAccessible.Method method, int child, List<QVariant> arg3) {
-			return ProxyQAccessibleInterface().InvokeMethod(method,child,arg3);
+			return ((QAccessibleInterface) interceptor).InvokeMethod(method,child,arg3);
 		}
 		[SmokeMethod("invokeMethod", "(QAccessible::Method, int)", "$$")]
 		public QVariant InvokeMethod(QAccessible.Method method, int child) {
-			return ProxyQAccessibleInterface().InvokeMethod(method,child);
+			return ((QAccessibleInterface) interceptor).InvokeMethod(method,child);
 		}
 		[SmokeMethod("invokeMethod", "(QAccessible::Method)", "$")]
 		public QVariant InvokeMethod(QAccessible.Method method) {
-			return ProxyQAccessibleInterface().InvokeMethod(method);
+			return ((QAccessibleInterface) interceptor).InvokeMethod(method);
 		}
 		public QAccessibleInterface() : this((Type) null) {
 			CreateProxy();
@@ -62,7 +59,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QAccessibleInterface", "()", "")]
 		private void NewQAccessibleInterface() {
-			ProxyQAccessibleInterface().NewQAccessibleInterface();
+			((QAccessibleInterface) interceptor).NewQAccessibleInterface();
 		}
 	}
 }

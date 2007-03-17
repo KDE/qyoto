@@ -5,8 +5,8 @@ namespace Qyoto {
 
 	[SmokeClass("QHostAddress")]
 	public class QHostAddress : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QHostAddress interceptor = null;
+		private IntPtr smokeObject;
 		protected QHostAddress(Type dummy) {}
 		[SmokeClass("QHostAddress")]
 		interface IQHostAddressProxy {
@@ -19,18 +19,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QHostAddress), this);
-			_interceptor = (QHostAddress) realProxy.GetTransparentProxy();
+			interceptor = (QHostAddress) realProxy.GetTransparentProxy();
 		}
-		private QHostAddress ProxyQHostAddress() {
-			return (QHostAddress) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQHostAddressProxy staticInterceptor = null;
 		static QHostAddress() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQHostAddressProxy), null);
-			_staticInterceptor = (IQHostAddressProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQHostAddressProxy StaticQHostAddress() {
-			return (IQHostAddressProxy) _staticInterceptor;
+			staticInterceptor = (IQHostAddressProxy) realProxy.GetTransparentProxy();
 		}
 		public enum SpecialAddress {
 			Null = 0,
@@ -53,7 +47,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QHostAddress", "()", "")]
 		private void NewQHostAddress() {
-			ProxyQHostAddress().NewQHostAddress();
+			((QHostAddress) interceptor).NewQHostAddress();
 		}
 		public QHostAddress(uint ip4Addr) : this((Type) null) {
 			CreateProxy();
@@ -61,7 +55,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QHostAddress", "(quint32)", "$")]
 		private void NewQHostAddress(uint ip4Addr) {
-			ProxyQHostAddress().NewQHostAddress(ip4Addr);
+			((QHostAddress) interceptor).NewQHostAddress(ip4Addr);
 		}
 		public QHostAddress(string address) : this((Type) null) {
 			CreateProxy();
@@ -69,7 +63,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QHostAddress", "(const QString&)", "$")]
 		private void NewQHostAddress(string address) {
-			ProxyQHostAddress().NewQHostAddress(address);
+			((QHostAddress) interceptor).NewQHostAddress(address);
 		}
 		public QHostAddress(QHostAddress copy) : this((Type) null) {
 			CreateProxy();
@@ -77,7 +71,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QHostAddress", "(const QHostAddress&)", "#")]
 		private void NewQHostAddress(QHostAddress copy) {
-			ProxyQHostAddress().NewQHostAddress(copy);
+			((QHostAddress) interceptor).NewQHostAddress(copy);
 		}
 		public QHostAddress(QHostAddress.SpecialAddress address) : this((Type) null) {
 			CreateProxy();
@@ -85,50 +79,50 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QHostAddress", "(QHostAddress::SpecialAddress)", "$")]
 		private void NewQHostAddress(QHostAddress.SpecialAddress address) {
-			ProxyQHostAddress().NewQHostAddress(address);
+			((QHostAddress) interceptor).NewQHostAddress(address);
 		}
 		[SmokeMethod("setAddress", "(quint32)", "$")]
 		public void SetAddress(uint ip4Addr) {
-			ProxyQHostAddress().SetAddress(ip4Addr);
+			((QHostAddress) interceptor).SetAddress(ip4Addr);
 		}
 		[SmokeMethod("setAddress", "(const QString&)", "$")]
 		public bool SetAddress(string address) {
-			return ProxyQHostAddress().SetAddress(address);
+			return ((QHostAddress) interceptor).SetAddress(address);
 		}
 		[SmokeMethod("protocol", "() const", "")]
 		public QAbstractSocket.NetworkLayerProtocol Protocol() {
-			return ProxyQHostAddress().Protocol();
+			return ((QHostAddress) interceptor).Protocol();
 		}
 		[SmokeMethod("toIPv4Address", "() const", "")]
 		public uint ToIPv4Address() {
-			return ProxyQHostAddress().ToIPv4Address();
+			return ((QHostAddress) interceptor).ToIPv4Address();
 		}
 		[SmokeMethod("toString", "() const", "")]
 		public string ToString() {
-			return ProxyQHostAddress().ToString();
+			return ((QHostAddress) interceptor).ToString();
 		}
 		[SmokeMethod("scopeId", "() const", "")]
 		public string ScopeId() {
-			return ProxyQHostAddress().ScopeId();
+			return ((QHostAddress) interceptor).ScopeId();
 		}
 		[SmokeMethod("setScopeId", "(const QString&)", "$")]
 		public void SetScopeId(string id) {
-			ProxyQHostAddress().SetScopeId(id);
+			((QHostAddress) interceptor).SetScopeId(id);
 		}
 		public override bool Equals(object o) {
 			if (!(o is QHostAddress)) { return false; }
 			return this == (QHostAddress) o;
 		}
 		public override int GetHashCode() {
-			return ProxyQHostAddress().GetHashCode();
+			return ((QHostAddress) interceptor).GetHashCode();
 		}
 		[SmokeMethod("isNull", "() const", "")]
 		public bool IsNull() {
-			return ProxyQHostAddress().IsNull();
+			return ((QHostAddress) interceptor).IsNull();
 		}
 		[SmokeMethod("clear", "()", "")]
 		public void Clear() {
-			ProxyQHostAddress().Clear();
+			((QHostAddress) interceptor).Clear();
 		}
 		~QHostAddress() {
 			DisposeQHostAddress();
@@ -138,25 +132,25 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QHostAddress", "()", "")]
 		private void DisposeQHostAddress() {
-			ProxyQHostAddress().DisposeQHostAddress();
+			((QHostAddress) interceptor).DisposeQHostAddress();
 		}
 		public static bool operator==(QHostAddress lhs, QHostAddress address) {
-			return StaticQHostAddress().op_equals(lhs,address);
+			return staticInterceptor.op_equals(lhs,address);
 		}
 		public static bool operator!=(QHostAddress lhs, QHostAddress address) {
-			return !StaticQHostAddress().op_equals(lhs,address);
+			return !staticInterceptor.op_equals(lhs,address);
 		}
 		public static bool operator==(QHostAddress lhs, QHostAddress.SpecialAddress address) {
-			return StaticQHostAddress().op_equals(lhs,address);
+			return staticInterceptor.op_equals(lhs,address);
 		}
 		public static bool operator!=(QHostAddress lhs, QHostAddress.SpecialAddress address) {
-			return !StaticQHostAddress().op_equals(lhs,address);
+			return !staticInterceptor.op_equals(lhs,address);
 		}
 		public static bool operator==(QHostAddress.SpecialAddress address1, QHostAddress address2) {
-			return StaticQHostAddress().op_equals(address1,address2);
+			return staticInterceptor.op_equals(address1,address2);
 		}
 		public static bool operator!=(QHostAddress.SpecialAddress address1, QHostAddress address2) {
-			return !StaticQHostAddress().op_equals(address1,address2);
+			return !staticInterceptor.op_equals(address1,address2);
 		}
 	}
 }

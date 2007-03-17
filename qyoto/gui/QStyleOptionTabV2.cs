@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QStyleOptionTabV2(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionTabV2), this);
-			_interceptor = (QStyleOptionTabV2) realProxy.GetTransparentProxy();
-		}
-		private QStyleOptionTabV2 ProxyQStyleOptionTabV2() {
-			return (QStyleOptionTabV2) _interceptor;
+			interceptor = (QStyleOptionTabV2) realProxy.GetTransparentProxy();
 		}
 		public enum StyleOptionVersion {
 			Version = 2,
@@ -22,7 +19,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionTabV2", "()", "")]
 		private void NewQStyleOptionTabV2() {
-			ProxyQStyleOptionTabV2().NewQStyleOptionTabV2();
+			((QStyleOptionTabV2) interceptor).NewQStyleOptionTabV2();
 		}
 		public QStyleOptionTabV2(QStyleOptionTabV2 other) : this((Type) null) {
 			CreateProxy();
@@ -30,7 +27,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionTabV2", "(const QStyleOptionTabV2&)", "#")]
 		private void NewQStyleOptionTabV2(QStyleOptionTabV2 other) {
-			ProxyQStyleOptionTabV2().NewQStyleOptionTabV2(other);
+			((QStyleOptionTabV2) interceptor).NewQStyleOptionTabV2(other);
 		}
 		public QStyleOptionTabV2(QStyleOptionTab other) : this((Type) null) {
 			CreateProxy();
@@ -38,7 +35,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionTabV2", "(const QStyleOptionTab&)", "#")]
 		private void NewQStyleOptionTabV2(QStyleOptionTab other) {
-			ProxyQStyleOptionTabV2().NewQStyleOptionTabV2(other);
+			((QStyleOptionTabV2) interceptor).NewQStyleOptionTabV2(other);
 		}
 		public QStyleOptionTabV2(int version) : this((Type) null) {
 			CreateProxy();
@@ -46,7 +43,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionTabV2", "(int)", "$")]
 		private void NewQStyleOptionTabV2(int version) {
-			ProxyQStyleOptionTabV2().NewQStyleOptionTabV2(version);
+			((QStyleOptionTabV2) interceptor).NewQStyleOptionTabV2(version);
 		}
 		~QStyleOptionTabV2() {
 			DisposeQStyleOptionTabV2();
@@ -56,7 +53,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QStyleOptionTabV2", "()", "")]
 		private void DisposeQStyleOptionTabV2() {
-			ProxyQStyleOptionTabV2().DisposeQStyleOptionTabV2();
+			((QStyleOptionTabV2) interceptor).DisposeQStyleOptionTabV2();
 		}
 	}
 }

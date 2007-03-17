@@ -17,18 +17,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QWorkspace), this);
-			_interceptor = (QWorkspace) realProxy.GetTransparentProxy();
+			interceptor = (QWorkspace) realProxy.GetTransparentProxy();
 		}
-		private QWorkspace ProxyQWorkspace() {
-			return (QWorkspace) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQWorkspaceProxy staticInterceptor = null;
 		static QWorkspace() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQWorkspaceProxy), null);
-			_staticInterceptor = (IQWorkspaceProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQWorkspaceProxy StaticQWorkspace() {
-			return (IQWorkspaceProxy) _staticInterceptor;
+			staticInterceptor = (IQWorkspaceProxy) realProxy.GetTransparentProxy();
 		}
 		public enum WindowOrder {
 			CreationOrder = 0,
@@ -50,7 +44,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QWorkspace", "(QWidget*)", "#")]
 		private void NewQWorkspace(QWidget parent) {
-			ProxyQWorkspace().NewQWorkspace(parent);
+			((QWorkspace) interceptor).NewQWorkspace(parent);
 		}
 		public QWorkspace() : this((Type) null) {
 			CreateProxy();
@@ -58,107 +52,107 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QWorkspace", "()", "")]
 		private void NewQWorkspace() {
-			ProxyQWorkspace().NewQWorkspace();
+			((QWorkspace) interceptor).NewQWorkspace();
 		}
 		[SmokeMethod("activeWindow", "() const", "")]
 		public QWidget ActiveWindow() {
-			return ProxyQWorkspace().ActiveWindow();
+			return ((QWorkspace) interceptor).ActiveWindow();
 		}
 		[SmokeMethod("windowList", "(QWorkspace::WindowOrder) const", "$")]
 		public List<QWidget> WindowList(QWorkspace.WindowOrder order) {
-			return ProxyQWorkspace().WindowList(order);
+			return ((QWorkspace) interceptor).WindowList(order);
 		}
 		[SmokeMethod("windowList", "() const", "")]
 		public List<QWidget> WindowList() {
-			return ProxyQWorkspace().WindowList();
+			return ((QWorkspace) interceptor).WindowList();
 		}
 		[SmokeMethod("addWindow", "(QWidget*, Qt::WindowFlags)", "#$")]
 		public QWidget AddWindow(QWidget w, int flags) {
-			return ProxyQWorkspace().AddWindow(w,flags);
+			return ((QWorkspace) interceptor).AddWindow(w,flags);
 		}
 		[SmokeMethod("addWindow", "(QWidget*)", "#")]
 		public QWidget AddWindow(QWidget w) {
-			return ProxyQWorkspace().AddWindow(w);
+			return ((QWorkspace) interceptor).AddWindow(w);
 		}
 		[SmokeMethod("sizeHint", "() const", "")]
 		public override QSize SizeHint() {
-			return ProxyQWorkspace().SizeHint();
+			return ((QWorkspace) interceptor).SizeHint();
 		}
 		[Q_SLOT("void setActiveWindow(QWidget*)")]
 		[SmokeMethod("setActiveWindow", "(QWidget*)", "#")]
 		public void SetActiveWindow(QWidget w) {
-			ProxyQWorkspace().SetActiveWindow(w);
+			((QWorkspace) interceptor).SetActiveWindow(w);
 		}
 		[Q_SLOT("void cascade()")]
 		[SmokeMethod("cascade", "()", "")]
 		public void Cascade() {
-			ProxyQWorkspace().Cascade();
+			((QWorkspace) interceptor).Cascade();
 		}
 		[Q_SLOT("void tile()")]
 		[SmokeMethod("tile", "()", "")]
 		public void Tile() {
-			ProxyQWorkspace().Tile();
+			((QWorkspace) interceptor).Tile();
 		}
 		[Q_SLOT("void arrangeIcons()")]
 		[SmokeMethod("arrangeIcons", "()", "")]
 		public void ArrangeIcons() {
-			ProxyQWorkspace().ArrangeIcons();
+			((QWorkspace) interceptor).ArrangeIcons();
 		}
 		[Q_SLOT("void closeActiveWindow()")]
 		[SmokeMethod("closeActiveWindow", "()", "")]
 		public void CloseActiveWindow() {
-			ProxyQWorkspace().CloseActiveWindow();
+			((QWorkspace) interceptor).CloseActiveWindow();
 		}
 		[Q_SLOT("void closeAllWindows()")]
 		[SmokeMethod("closeAllWindows", "()", "")]
 		public void CloseAllWindows() {
-			ProxyQWorkspace().CloseAllWindows();
+			((QWorkspace) interceptor).CloseAllWindows();
 		}
 		[Q_SLOT("void activateNextWindow()")]
 		[SmokeMethod("activateNextWindow", "()", "")]
 		public void ActivateNextWindow() {
-			ProxyQWorkspace().ActivateNextWindow();
+			((QWorkspace) interceptor).ActivateNextWindow();
 		}
 		[Q_SLOT("void activatePreviousWindow()")]
 		[SmokeMethod("activatePreviousWindow", "()", "")]
 		public void ActivatePreviousWindow() {
-			ProxyQWorkspace().ActivatePreviousWindow();
+			((QWorkspace) interceptor).ActivatePreviousWindow();
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent e) {
-			return ProxyQWorkspace().Event(e);
+			return ((QWorkspace) interceptor).Event(e);
 		}
 		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
 		protected override void PaintEvent(QPaintEvent e) {
-			ProxyQWorkspace().PaintEvent(e);
+			((QWorkspace) interceptor).PaintEvent(e);
 		}
 		[SmokeMethod("changeEvent", "(QEvent*)", "#")]
 		protected override void ChangeEvent(QEvent arg1) {
-			ProxyQWorkspace().ChangeEvent(arg1);
+			((QWorkspace) interceptor).ChangeEvent(arg1);
 		}
 		[SmokeMethod("childEvent", "(QChildEvent*)", "#")]
 		protected override void ChildEvent(QChildEvent arg1) {
-			ProxyQWorkspace().ChildEvent(arg1);
+			((QWorkspace) interceptor).ChildEvent(arg1);
 		}
 		[SmokeMethod("resizeEvent", "(QResizeEvent*)", "#")]
 		protected override void ResizeEvent(QResizeEvent arg1) {
-			ProxyQWorkspace().ResizeEvent(arg1);
+			((QWorkspace) interceptor).ResizeEvent(arg1);
 		}
 		[SmokeMethod("eventFilter", "(QObject*, QEvent*)", "##")]
 		protected new virtual bool EventFilter(QObject arg1, QEvent arg2) {
-			return ProxyQWorkspace().EventFilter(arg1,arg2);
+			return ((QWorkspace) interceptor).EventFilter(arg1,arg2);
 		}
 		[SmokeMethod("showEvent", "(QShowEvent*)", "#")]
 		protected override void ShowEvent(QShowEvent e) {
-			ProxyQWorkspace().ShowEvent(e);
+			((QWorkspace) interceptor).ShowEvent(e);
 		}
 		[SmokeMethod("hideEvent", "(QHideEvent*)", "#")]
 		protected override void HideEvent(QHideEvent e) {
-			ProxyQWorkspace().HideEvent(e);
+			((QWorkspace) interceptor).HideEvent(e);
 		}
 		[SmokeMethod("wheelEvent", "(QWheelEvent*)", "#")]
 		protected override void WheelEvent(QWheelEvent e) {
-			ProxyQWorkspace().WheelEvent(e);
+			((QWorkspace) interceptor).WheelEvent(e);
 		}
 		~QWorkspace() {
 			DisposeQWorkspace();
@@ -168,13 +162,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QWorkspace", "()", "")]
 		private void DisposeQWorkspace() {
-			ProxyQWorkspace().DisposeQWorkspace();
+			((QWorkspace) interceptor).DisposeQWorkspace();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQWorkspace().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQWorkspace().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQWorkspaceSignals Emit {
 			get { return (IQWorkspaceSignals) Q_EMIT; }

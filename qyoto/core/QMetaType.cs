@@ -5,8 +5,8 @@ namespace Qyoto {
 
 	[SmokeClass("QMetaType")]
 	public class QMetaType : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QMetaType interceptor = null;
+		private IntPtr smokeObject;
 		protected QMetaType(Type dummy) {}
 		[SmokeClass("QMetaType")]
 		interface IQMetaTypeProxy {
@@ -19,18 +19,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMetaType), this);
-			_interceptor = (QMetaType) realProxy.GetTransparentProxy();
+			interceptor = (QMetaType) realProxy.GetTransparentProxy();
 		}
-		private QMetaType ProxyQMetaType() {
-			return (QMetaType) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQMetaTypeProxy staticInterceptor = null;
 		static QMetaType() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQMetaTypeProxy), null);
-			_staticInterceptor = (IQMetaTypeProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQMetaTypeProxy StaticQMetaType() {
-			return (IQMetaTypeProxy) _staticInterceptor;
+			staticInterceptor = (IQMetaTypeProxy) realProxy.GetTransparentProxy();
 		}
 		public enum TypeOf {
 			Void = 0,
@@ -108,7 +102,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QMetaType", "()", "")]
 		private void NewQMetaType() {
-			ProxyQMetaType().NewQMetaType();
+			((QMetaType) interceptor).NewQMetaType();
 		}
 		~QMetaType() {
 			DisposeQMetaType();
@@ -118,16 +112,16 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QMetaType", "()", "")]
 		private void DisposeQMetaType() {
-			ProxyQMetaType().DisposeQMetaType();
+			((QMetaType) interceptor).DisposeQMetaType();
 		}
 		public static int type(string typeName) {
-			return StaticQMetaType().type(typeName);
+			return staticInterceptor.type(typeName);
 		}
 		public static string TypeName(int type) {
-			return StaticQMetaType().TypeName(type);
+			return staticInterceptor.TypeName(type);
 		}
 		public static bool IsRegistered(int type) {
-			return StaticQMetaType().IsRegistered(type);
+			return staticInterceptor.IsRegistered(type);
 		}
 	}
 }

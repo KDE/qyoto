@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QIconDragEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QIconDragEvent), this);
-			_interceptor = (QIconDragEvent) realProxy.GetTransparentProxy();
-		}
-		private QIconDragEvent ProxyQIconDragEvent() {
-			return (QIconDragEvent) _interceptor;
+			interceptor = (QIconDragEvent) realProxy.GetTransparentProxy();
 		}
 		public QIconDragEvent() : this((Type) null) {
 			CreateProxy();
@@ -19,7 +16,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QIconDragEvent", "()", "")]
 		private void NewQIconDragEvent() {
-			ProxyQIconDragEvent().NewQIconDragEvent();
+			((QIconDragEvent) interceptor).NewQIconDragEvent();
 		}
 		~QIconDragEvent() {
 			DisposeQIconDragEvent();
@@ -29,7 +26,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QIconDragEvent", "()", "")]
 		private void DisposeQIconDragEvent() {
-			ProxyQIconDragEvent().DisposeQIconDragEvent();
+			((QIconDragEvent) interceptor).DisposeQIconDragEvent();
 		}
 	}
 }

@@ -15,18 +15,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTcpSocket), this);
-			_interceptor = (QTcpSocket) realProxy.GetTransparentProxy();
+			interceptor = (QTcpSocket) realProxy.GetTransparentProxy();
 		}
-		private QTcpSocket ProxyQTcpSocket() {
-			return (QTcpSocket) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQTcpSocketProxy staticInterceptor = null;
 		static QTcpSocket() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTcpSocketProxy), null);
-			_staticInterceptor = (IQTcpSocketProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQTcpSocketProxy StaticQTcpSocket() {
-			return (IQTcpSocketProxy) _staticInterceptor;
+			staticInterceptor = (IQTcpSocketProxy) realProxy.GetTransparentProxy();
 		}
 		public QTcpSocket(QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -34,7 +28,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTcpSocket", "(QObject*)", "#")]
 		private void NewQTcpSocket(QObject parent) {
-			ProxyQTcpSocket().NewQTcpSocket(parent);
+			((QTcpSocket) interceptor).NewQTcpSocket(parent);
 		}
 		public QTcpSocket() : this((Type) null) {
 			CreateProxy();
@@ -42,7 +36,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTcpSocket", "()", "")]
 		private void NewQTcpSocket() {
-			ProxyQTcpSocket().NewQTcpSocket();
+			((QTcpSocket) interceptor).NewQTcpSocket();
 		}
 		~QTcpSocket() {
 			DisposeQTcpSocket();
@@ -52,13 +46,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QTcpSocket", "()", "")]
 		private void DisposeQTcpSocket() {
-			ProxyQTcpSocket().DisposeQTcpSocket();
+			((QTcpSocket) interceptor).DisposeQTcpSocket();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQTcpSocket().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQTcpSocket().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQTcpSocketSignals Emit {
 			get { return (IQTcpSocketSignals) Q_EMIT; }

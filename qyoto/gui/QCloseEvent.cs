@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QCloseEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QCloseEvent), this);
-			_interceptor = (QCloseEvent) realProxy.GetTransparentProxy();
-		}
-		private QCloseEvent ProxyQCloseEvent() {
-			return (QCloseEvent) _interceptor;
+			interceptor = (QCloseEvent) realProxy.GetTransparentProxy();
 		}
 		public QCloseEvent() : this((Type) null) {
 			CreateProxy();
@@ -19,7 +16,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QCloseEvent", "()", "")]
 		private void NewQCloseEvent() {
-			ProxyQCloseEvent().NewQCloseEvent();
+			((QCloseEvent) interceptor).NewQCloseEvent();
 		}
 		~QCloseEvent() {
 			DisposeQCloseEvent();
@@ -29,7 +26,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QCloseEvent", "()", "")]
 		private void DisposeQCloseEvent() {
-			ProxyQCloseEvent().DisposeQCloseEvent();
+			((QCloseEvent) interceptor).DisposeQCloseEvent();
 		}
 	}
 }

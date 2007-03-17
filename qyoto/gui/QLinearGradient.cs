@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QLinearGradient(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QLinearGradient), this);
-			_interceptor = (QLinearGradient) realProxy.GetTransparentProxy();
-		}
-		private QLinearGradient ProxyQLinearGradient() {
-			return (QLinearGradient) _interceptor;
+			interceptor = (QLinearGradient) realProxy.GetTransparentProxy();
 		}
 		public QLinearGradient() : this((Type) null) {
 			CreateProxy();
@@ -19,7 +16,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QLinearGradient", "()", "")]
 		private void NewQLinearGradient() {
-			ProxyQLinearGradient().NewQLinearGradient();
+			((QLinearGradient) interceptor).NewQLinearGradient();
 		}
 		public QLinearGradient(QPointF start, QPointF finalStop) : this((Type) null) {
 			CreateProxy();
@@ -27,7 +24,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QLinearGradient", "(const QPointF&, const QPointF&)", "##")]
 		private void NewQLinearGradient(QPointF start, QPointF finalStop) {
-			ProxyQLinearGradient().NewQLinearGradient(start,finalStop);
+			((QLinearGradient) interceptor).NewQLinearGradient(start,finalStop);
 		}
 		public QLinearGradient(double xStart, double yStart, double xFinalStop, double yFinalStop) : this((Type) null) {
 			CreateProxy();
@@ -35,31 +32,31 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QLinearGradient", "(qreal, qreal, qreal, qreal)", "$$$$")]
 		private void NewQLinearGradient(double xStart, double yStart, double xFinalStop, double yFinalStop) {
-			ProxyQLinearGradient().NewQLinearGradient(xStart,yStart,xFinalStop,yFinalStop);
+			((QLinearGradient) interceptor).NewQLinearGradient(xStart,yStart,xFinalStop,yFinalStop);
 		}
 		[SmokeMethod("start", "() const", "")]
 		public QPointF Start() {
-			return ProxyQLinearGradient().Start();
+			return ((QLinearGradient) interceptor).Start();
 		}
 		[SmokeMethod("setStart", "(const QPointF&)", "#")]
 		public void SetStart(QPointF start) {
-			ProxyQLinearGradient().SetStart(start);
+			((QLinearGradient) interceptor).SetStart(start);
 		}
 		[SmokeMethod("setStart", "(qreal, qreal)", "$$")]
 		public void SetStart(double x, double y) {
-			ProxyQLinearGradient().SetStart(x,y);
+			((QLinearGradient) interceptor).SetStart(x,y);
 		}
 		[SmokeMethod("finalStop", "() const", "")]
 		public QPointF FinalStop() {
-			return ProxyQLinearGradient().FinalStop();
+			return ((QLinearGradient) interceptor).FinalStop();
 		}
 		[SmokeMethod("setFinalStop", "(const QPointF&)", "#")]
 		public void SetFinalStop(QPointF stop) {
-			ProxyQLinearGradient().SetFinalStop(stop);
+			((QLinearGradient) interceptor).SetFinalStop(stop);
 		}
 		[SmokeMethod("setFinalStop", "(qreal, qreal)", "$$")]
 		public void SetFinalStop(double x, double y) {
-			ProxyQLinearGradient().SetFinalStop(x,y);
+			((QLinearGradient) interceptor).SetFinalStop(x,y);
 		}
 		~QLinearGradient() {
 			DisposeQLinearGradient();
@@ -69,7 +66,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QLinearGradient", "()", "")]
 		private void DisposeQLinearGradient() {
-			ProxyQLinearGradient().DisposeQLinearGradient();
+			((QLinearGradient) interceptor).DisposeQLinearGradient();
 		}
 	}
 }

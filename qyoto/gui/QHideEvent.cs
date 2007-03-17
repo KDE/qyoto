@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QHideEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QHideEvent), this);
-			_interceptor = (QHideEvent) realProxy.GetTransparentProxy();
-		}
-		private QHideEvent ProxyQHideEvent() {
-			return (QHideEvent) _interceptor;
+			interceptor = (QHideEvent) realProxy.GetTransparentProxy();
 		}
 		public QHideEvent() : this((Type) null) {
 			CreateProxy();
@@ -19,7 +16,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QHideEvent", "()", "")]
 		private void NewQHideEvent() {
-			ProxyQHideEvent().NewQHideEvent();
+			((QHideEvent) interceptor).NewQHideEvent();
 		}
 		~QHideEvent() {
 			DisposeQHideEvent();
@@ -29,7 +26,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QHideEvent", "()", "")]
 		private void DisposeQHideEvent() {
-			ProxyQHideEvent().DisposeQHideEvent();
+			((QHideEvent) interceptor).DisposeQHideEvent();
 		}
 	}
 }

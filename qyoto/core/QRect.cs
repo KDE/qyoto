@@ -5,8 +5,8 @@ namespace Qyoto {
 
 	[SmokeClass("QRect")]
 	public class QRect : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QRect interceptor = null;
+		private IntPtr smokeObject;
 		protected QRect(Type dummy) {}
 		[SmokeClass("QRect")]
 		interface IQRectProxy {
@@ -19,18 +19,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QRect), this);
-			_interceptor = (QRect) realProxy.GetTransparentProxy();
+			interceptor = (QRect) realProxy.GetTransparentProxy();
 		}
-		private QRect ProxyQRect() {
-			return (QRect) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQRectProxy staticInterceptor = null;
 		static QRect() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQRectProxy), null);
-			_staticInterceptor = (IQRectProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQRectProxy StaticQRect() {
-			return (IQRectProxy) _staticInterceptor;
+			staticInterceptor = (IQRectProxy) realProxy.GetTransparentProxy();
 		}
 		public QRect() : this((Type) null) {
 			CreateProxy();
@@ -38,7 +32,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QRect", "()", "")]
 		private void NewQRect() {
-			ProxyQRect().NewQRect();
+			((QRect) interceptor).NewQRect();
 		}
 		public QRect(QPoint topleft, QPoint bottomright) : this((Type) null) {
 			CreateProxy();
@@ -46,7 +40,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QRect", "(const QPoint&, const QPoint&)", "##")]
 		private void NewQRect(QPoint topleft, QPoint bottomright) {
-			ProxyQRect().NewQRect(topleft,bottomright);
+			((QRect) interceptor).NewQRect(topleft,bottomright);
 		}
 		public QRect(QPoint topleft, QSize size) : this((Type) null) {
 			CreateProxy();
@@ -54,7 +48,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QRect", "(const QPoint&, const QSize&)", "##")]
 		private void NewQRect(QPoint topleft, QSize size) {
-			ProxyQRect().NewQRect(topleft,size);
+			((QRect) interceptor).NewQRect(topleft,size);
 		}
 		public QRect(int left, int top, int width, int height) : this((Type) null) {
 			CreateProxy();
@@ -62,259 +56,259 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QRect", "(int, int, int, int)", "$$$$")]
 		private void NewQRect(int left, int top, int width, int height) {
-			ProxyQRect().NewQRect(left,top,width,height);
+			((QRect) interceptor).NewQRect(left,top,width,height);
 		}
 		[SmokeMethod("isNull", "() const", "")]
 		public bool IsNull() {
-			return ProxyQRect().IsNull();
+			return ((QRect) interceptor).IsNull();
 		}
 		[SmokeMethod("isEmpty", "() const", "")]
 		public bool IsEmpty() {
-			return ProxyQRect().IsEmpty();
+			return ((QRect) interceptor).IsEmpty();
 		}
 		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ProxyQRect().IsValid();
+			return ((QRect) interceptor).IsValid();
 		}
 		[SmokeMethod("left", "() const", "")]
 		public int Left() {
-			return ProxyQRect().Left();
+			return ((QRect) interceptor).Left();
 		}
 		[SmokeMethod("top", "() const", "")]
 		public int Top() {
-			return ProxyQRect().Top();
+			return ((QRect) interceptor).Top();
 		}
 		[SmokeMethod("right", "() const", "")]
 		public int Right() {
-			return ProxyQRect().Right();
+			return ((QRect) interceptor).Right();
 		}
 		[SmokeMethod("bottom", "() const", "")]
 		public int Bottom() {
-			return ProxyQRect().Bottom();
+			return ((QRect) interceptor).Bottom();
 		}
 		[SmokeMethod("normalized", "() const", "")]
 		public QRect Normalized() {
-			return ProxyQRect().Normalized();
+			return ((QRect) interceptor).Normalized();
 		}
 		[SmokeMethod("x", "() const", "")]
 		public int X() {
-			return ProxyQRect().X();
+			return ((QRect) interceptor).X();
 		}
 		[SmokeMethod("y", "() const", "")]
 		public int Y() {
-			return ProxyQRect().Y();
+			return ((QRect) interceptor).Y();
 		}
 		[SmokeMethod("setLeft", "(int)", "$")]
 		public void SetLeft(int pos) {
-			ProxyQRect().SetLeft(pos);
+			((QRect) interceptor).SetLeft(pos);
 		}
 		[SmokeMethod("setTop", "(int)", "$")]
 		public void SetTop(int pos) {
-			ProxyQRect().SetTop(pos);
+			((QRect) interceptor).SetTop(pos);
 		}
 		[SmokeMethod("setRight", "(int)", "$")]
 		public void SetRight(int pos) {
-			ProxyQRect().SetRight(pos);
+			((QRect) interceptor).SetRight(pos);
 		}
 		[SmokeMethod("setBottom", "(int)", "$")]
 		public void SetBottom(int pos) {
-			ProxyQRect().SetBottom(pos);
+			((QRect) interceptor).SetBottom(pos);
 		}
 		[SmokeMethod("setX", "(int)", "$")]
 		public void SetX(int x) {
-			ProxyQRect().SetX(x);
+			((QRect) interceptor).SetX(x);
 		}
 		[SmokeMethod("setY", "(int)", "$")]
 		public void SetY(int y) {
-			ProxyQRect().SetY(y);
+			((QRect) interceptor).SetY(y);
 		}
 		[SmokeMethod("setTopLeft", "(const QPoint&)", "#")]
 		public void SetTopLeft(QPoint p) {
-			ProxyQRect().SetTopLeft(p);
+			((QRect) interceptor).SetTopLeft(p);
 		}
 		[SmokeMethod("setBottomRight", "(const QPoint&)", "#")]
 		public void SetBottomRight(QPoint p) {
-			ProxyQRect().SetBottomRight(p);
+			((QRect) interceptor).SetBottomRight(p);
 		}
 		[SmokeMethod("setTopRight", "(const QPoint&)", "#")]
 		public void SetTopRight(QPoint p) {
-			ProxyQRect().SetTopRight(p);
+			((QRect) interceptor).SetTopRight(p);
 		}
 		[SmokeMethod("setBottomLeft", "(const QPoint&)", "#")]
 		public void SetBottomLeft(QPoint p) {
-			ProxyQRect().SetBottomLeft(p);
+			((QRect) interceptor).SetBottomLeft(p);
 		}
 		[SmokeMethod("topLeft", "() const", "")]
 		public QPoint TopLeft() {
-			return ProxyQRect().TopLeft();
+			return ((QRect) interceptor).TopLeft();
 		}
 		[SmokeMethod("bottomRight", "() const", "")]
 		public QPoint BottomRight() {
-			return ProxyQRect().BottomRight();
+			return ((QRect) interceptor).BottomRight();
 		}
 		[SmokeMethod("topRight", "() const", "")]
 		public QPoint TopRight() {
-			return ProxyQRect().TopRight();
+			return ((QRect) interceptor).TopRight();
 		}
 		[SmokeMethod("bottomLeft", "() const", "")]
 		public QPoint BottomLeft() {
-			return ProxyQRect().BottomLeft();
+			return ((QRect) interceptor).BottomLeft();
 		}
 		[SmokeMethod("center", "() const", "")]
 		public QPoint Center() {
-			return ProxyQRect().Center();
+			return ((QRect) interceptor).Center();
 		}
 		[SmokeMethod("moveLeft", "(int)", "$")]
 		public void MoveLeft(int pos) {
-			ProxyQRect().MoveLeft(pos);
+			((QRect) interceptor).MoveLeft(pos);
 		}
 		[SmokeMethod("moveTop", "(int)", "$")]
 		public void MoveTop(int pos) {
-			ProxyQRect().MoveTop(pos);
+			((QRect) interceptor).MoveTop(pos);
 		}
 		[SmokeMethod("moveRight", "(int)", "$")]
 		public void MoveRight(int pos) {
-			ProxyQRect().MoveRight(pos);
+			((QRect) interceptor).MoveRight(pos);
 		}
 		[SmokeMethod("moveBottom", "(int)", "$")]
 		public void MoveBottom(int pos) {
-			ProxyQRect().MoveBottom(pos);
+			((QRect) interceptor).MoveBottom(pos);
 		}
 		[SmokeMethod("moveTopLeft", "(const QPoint&)", "#")]
 		public void MoveTopLeft(QPoint p) {
-			ProxyQRect().MoveTopLeft(p);
+			((QRect) interceptor).MoveTopLeft(p);
 		}
 		[SmokeMethod("moveBottomRight", "(const QPoint&)", "#")]
 		public void MoveBottomRight(QPoint p) {
-			ProxyQRect().MoveBottomRight(p);
+			((QRect) interceptor).MoveBottomRight(p);
 		}
 		[SmokeMethod("moveTopRight", "(const QPoint&)", "#")]
 		public void MoveTopRight(QPoint p) {
-			ProxyQRect().MoveTopRight(p);
+			((QRect) interceptor).MoveTopRight(p);
 		}
 		[SmokeMethod("moveBottomLeft", "(const QPoint&)", "#")]
 		public void MoveBottomLeft(QPoint p) {
-			ProxyQRect().MoveBottomLeft(p);
+			((QRect) interceptor).MoveBottomLeft(p);
 		}
 		[SmokeMethod("moveCenter", "(const QPoint&)", "#")]
 		public void MoveCenter(QPoint p) {
-			ProxyQRect().MoveCenter(p);
+			((QRect) interceptor).MoveCenter(p);
 		}
 		[SmokeMethod("translate", "(int, int)", "$$")]
 		public void Translate(int dx, int dy) {
-			ProxyQRect().Translate(dx,dy);
+			((QRect) interceptor).Translate(dx,dy);
 		}
 		[SmokeMethod("translate", "(const QPoint&)", "#")]
 		public void Translate(QPoint p) {
-			ProxyQRect().Translate(p);
+			((QRect) interceptor).Translate(p);
 		}
 		[SmokeMethod("translated", "(int, int) const", "$$")]
 		public QRect Translated(int dx, int dy) {
-			return ProxyQRect().Translated(dx,dy);
+			return ((QRect) interceptor).Translated(dx,dy);
 		}
 		[SmokeMethod("translated", "(const QPoint&) const", "#")]
 		public QRect Translated(QPoint p) {
-			return ProxyQRect().Translated(p);
+			return ((QRect) interceptor).Translated(p);
 		}
 		[SmokeMethod("moveTo", "(int, int)", "$$")]
 		public void MoveTo(int x, int t) {
-			ProxyQRect().MoveTo(x,t);
+			((QRect) interceptor).MoveTo(x,t);
 		}
 		[SmokeMethod("moveTo", "(const QPoint&)", "#")]
 		public void MoveTo(QPoint p) {
-			ProxyQRect().MoveTo(p);
+			((QRect) interceptor).MoveTo(p);
 		}
 		[SmokeMethod("setRect", "(int, int, int, int)", "$$$$")]
 		public void SetRect(int x, int y, int w, int h) {
-			ProxyQRect().SetRect(x,y,w,h);
+			((QRect) interceptor).SetRect(x,y,w,h);
 		}
 		[SmokeMethod("getRect", "(int*, int*, int*, int*) const", "$$$$")]
 		public void GetRect(out int x, out int y, out int w, out int h) {
-			ProxyQRect().GetRect(out x,out y,out w,out h);
+			((QRect) interceptor).GetRect(out x,out y,out w,out h);
 		}
 		[SmokeMethod("setCoords", "(int, int, int, int)", "$$$$")]
 		public void SetCoords(int x1, int y1, int x2, int y2) {
-			ProxyQRect().SetCoords(x1,y1,x2,y2);
+			((QRect) interceptor).SetCoords(x1,y1,x2,y2);
 		}
 		[SmokeMethod("getCoords", "(int*, int*, int*, int*) const", "$$$$")]
 		public void GetCoords(out int x1, out int y1, out int x2, out int y2) {
-			ProxyQRect().GetCoords(out x1,out y1,out x2,out y2);
+			((QRect) interceptor).GetCoords(out x1,out y1,out x2,out y2);
 		}
 		[SmokeMethod("adjust", "(int, int, int, int)", "$$$$")]
 		public void Adjust(int x1, int y1, int x2, int y2) {
-			ProxyQRect().Adjust(x1,y1,x2,y2);
+			((QRect) interceptor).Adjust(x1,y1,x2,y2);
 		}
 		[SmokeMethod("adjusted", "(int, int, int, int) const", "$$$$")]
 		public QRect Adjusted(int x1, int y1, int x2, int y2) {
-			return ProxyQRect().Adjusted(x1,y1,x2,y2);
+			return ((QRect) interceptor).Adjusted(x1,y1,x2,y2);
 		}
 		[SmokeMethod("size", "() const", "")]
 		public QSize Size() {
-			return ProxyQRect().Size();
+			return ((QRect) interceptor).Size();
 		}
 		[SmokeMethod("width", "() const", "")]
 		public int Width() {
-			return ProxyQRect().Width();
+			return ((QRect) interceptor).Width();
 		}
 		[SmokeMethod("height", "() const", "")]
 		public int Height() {
-			return ProxyQRect().Height();
+			return ((QRect) interceptor).Height();
 		}
 		[SmokeMethod("setWidth", "(int)", "$")]
 		public void SetWidth(int w) {
-			ProxyQRect().SetWidth(w);
+			((QRect) interceptor).SetWidth(w);
 		}
 		[SmokeMethod("setHeight", "(int)", "$")]
 		public void SetHeight(int h) {
-			ProxyQRect().SetHeight(h);
+			((QRect) interceptor).SetHeight(h);
 		}
 		[SmokeMethod("setSize", "(const QSize&)", "#")]
 		public void SetSize(QSize s) {
-			ProxyQRect().SetSize(s);
+			((QRect) interceptor).SetSize(s);
 		}
 		[SmokeMethod("contains", "(const QPoint&, bool) const", "#$")]
 		public bool Contains(QPoint p, bool proper) {
-			return ProxyQRect().Contains(p,proper);
+			return ((QRect) interceptor).Contains(p,proper);
 		}
 		[SmokeMethod("contains", "(const QPoint&) const", "#")]
 		public bool Contains(QPoint p) {
-			return ProxyQRect().Contains(p);
+			return ((QRect) interceptor).Contains(p);
 		}
 		[SmokeMethod("contains", "(int, int) const", "$$")]
 		public bool Contains(int x, int y) {
-			return ProxyQRect().Contains(x,y);
+			return ((QRect) interceptor).Contains(x,y);
 		}
 		[SmokeMethod("contains", "(int, int, bool) const", "$$$")]
 		public bool Contains(int x, int y, bool proper) {
-			return ProxyQRect().Contains(x,y,proper);
+			return ((QRect) interceptor).Contains(x,y,proper);
 		}
 		[SmokeMethod("contains", "(const QRect&, bool) const", "#$")]
 		public bool Contains(QRect r, bool proper) {
-			return ProxyQRect().Contains(r,proper);
+			return ((QRect) interceptor).Contains(r,proper);
 		}
 		[SmokeMethod("contains", "(const QRect&) const", "#")]
 		public bool Contains(QRect r) {
-			return ProxyQRect().Contains(r);
+			return ((QRect) interceptor).Contains(r);
 		}
 		[SmokeMethod("unite", "(const QRect&) const", "#")]
 		public QRect Unite(QRect r) {
-			return ProxyQRect().Unite(r);
+			return ((QRect) interceptor).Unite(r);
 		}
 		[SmokeMethod("united", "(const QRect&) const", "#")]
 		public QRect United(QRect other) {
-			return ProxyQRect().United(other);
+			return ((QRect) interceptor).United(other);
 		}
 		[SmokeMethod("intersect", "(const QRect&) const", "#")]
 		public QRect Intersect(QRect r) {
-			return ProxyQRect().Intersect(r);
+			return ((QRect) interceptor).Intersect(r);
 		}
 		[SmokeMethod("intersected", "(const QRect&) const", "#")]
 		public QRect Intersected(QRect other) {
-			return ProxyQRect().Intersected(other);
+			return ((QRect) interceptor).Intersected(other);
 		}
 		[SmokeMethod("intersects", "(const QRect&) const", "#")]
 		public bool Intersects(QRect r) {
-			return ProxyQRect().Intersects(r);
+			return ((QRect) interceptor).Intersects(r);
 		}
 		~QRect() {
 			DisposeQRect();
@@ -324,26 +318,26 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QRect", "()", "")]
 		private void DisposeQRect() {
-			ProxyQRect().DisposeQRect();
+			((QRect) interceptor).DisposeQRect();
 		}
 		public override bool Equals(object o) {
 			if (!(o is QRect)) { return false; }
 			return this == (QRect) o;
 		}
 		public override int GetHashCode() {
-			return ProxyQRect().GetHashCode();
+			return ((QRect) interceptor).GetHashCode();
 		}
 		public static QRect operator|(QRect lhs, QRect r) {
-			return StaticQRect().op_or(lhs,r);
+			return staticInterceptor.op_or(lhs,r);
 		}
 		public static QRect operator&(QRect lhs, QRect r) {
-			return StaticQRect().op_and(lhs,r);
+			return staticInterceptor.op_and(lhs,r);
 		}
 		public static bool operator==(QRect arg1, QRect arg2) {
-			return StaticQRect().op_equals(arg1,arg2);
+			return staticInterceptor.op_equals(arg1,arg2);
 		}
 		public static bool operator!=(QRect arg1, QRect arg2) {
-			return !StaticQRect().op_equals(arg1,arg2);
+			return !staticInterceptor.op_equals(arg1,arg2);
 		}
 	}
 }

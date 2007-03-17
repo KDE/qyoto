@@ -5,8 +5,8 @@ namespace Qyoto {
 
 	[SmokeClass("QDomNodeList")]
 	public class QDomNodeList : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QDomNodeList interceptor = null;
+		private IntPtr smokeObject;
 		protected QDomNodeList(Type dummy) {}
 		[SmokeClass("QDomNodeList")]
 		interface IQDomNodeListProxy {
@@ -15,18 +15,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomNodeList), this);
-			_interceptor = (QDomNodeList) realProxy.GetTransparentProxy();
+			interceptor = (QDomNodeList) realProxy.GetTransparentProxy();
 		}
-		private QDomNodeList ProxyQDomNodeList() {
-			return (QDomNodeList) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQDomNodeListProxy staticInterceptor = null;
 		static QDomNodeList() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQDomNodeListProxy), null);
-			_staticInterceptor = (IQDomNodeListProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQDomNodeListProxy StaticQDomNodeList() {
-			return (IQDomNodeListProxy) _staticInterceptor;
+			staticInterceptor = (IQDomNodeListProxy) realProxy.GetTransparentProxy();
 		}
 		public QDomNodeList() : this((Type) null) {
 			CreateProxy();
@@ -34,7 +28,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDomNodeList", "()", "")]
 		private void NewQDomNodeList() {
-			ProxyQDomNodeList().NewQDomNodeList();
+			((QDomNodeList) interceptor).NewQDomNodeList();
 		}
 		public QDomNodeList(QDomNodeList arg1) : this((Type) null) {
 			CreateProxy();
@@ -42,38 +36,38 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDomNodeList", "(const QDomNodeList&)", "#")]
 		private void NewQDomNodeList(QDomNodeList arg1) {
-			ProxyQDomNodeList().NewQDomNodeList(arg1);
+			((QDomNodeList) interceptor).NewQDomNodeList(arg1);
 		}
 		public override bool Equals(object o) {
 			if (!(o is QDomNodeList)) { return false; }
 			return this == (QDomNodeList) o;
 		}
 		public override int GetHashCode() {
-			return ProxyQDomNodeList().GetHashCode();
+			return ((QDomNodeList) interceptor).GetHashCode();
 		}
 		[SmokeMethod("item", "(int) const", "$")]
 		public QDomNode Item(int index) {
-			return ProxyQDomNodeList().Item(index);
+			return ((QDomNodeList) interceptor).Item(index);
 		}
 		[SmokeMethod("at", "(int) const", "$")]
 		public QDomNode At(int index) {
-			return ProxyQDomNodeList().At(index);
+			return ((QDomNodeList) interceptor).At(index);
 		}
 		[SmokeMethod("length", "() const", "")]
 		public uint Length() {
-			return ProxyQDomNodeList().Length();
+			return ((QDomNodeList) interceptor).Length();
 		}
 		[SmokeMethod("count", "() const", "")]
 		public int Count() {
-			return ProxyQDomNodeList().Count();
+			return ((QDomNodeList) interceptor).Count();
 		}
 		[SmokeMethod("size", "() const", "")]
 		public int Size() {
-			return ProxyQDomNodeList().Size();
+			return ((QDomNodeList) interceptor).Size();
 		}
 		[SmokeMethod("isEmpty", "() const", "")]
 		public bool IsEmpty() {
-			return ProxyQDomNodeList().IsEmpty();
+			return ((QDomNodeList) interceptor).IsEmpty();
 		}
 		~QDomNodeList() {
 			DisposeQDomNodeList();
@@ -83,13 +77,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QDomNodeList", "()", "")]
 		private void DisposeQDomNodeList() {
-			ProxyQDomNodeList().DisposeQDomNodeList();
+			((QDomNodeList) interceptor).DisposeQDomNodeList();
 		}
 		public static bool operator==(QDomNodeList lhs, QDomNodeList arg1) {
-			return StaticQDomNodeList().op_equals(lhs,arg1);
+			return staticInterceptor.op_equals(lhs,arg1);
 		}
 		public static bool operator!=(QDomNodeList lhs, QDomNodeList arg1) {
-			return !StaticQDomNodeList().op_equals(lhs,arg1);
+			return !staticInterceptor.op_equals(lhs,arg1);
 		}
 	}
 }

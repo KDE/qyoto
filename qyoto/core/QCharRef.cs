@@ -5,128 +5,125 @@ namespace Qyoto {
 
 	[SmokeClass("QCharRef")]
 	public class QCharRef : MarshalByRefObject {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QCharRef interceptor = null;
+		private IntPtr smokeObject;
 		protected QCharRef(Type dummy) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QCharRef), this);
-			_interceptor = (QCharRef) realProxy.GetTransparentProxy();
-		}
-		private QCharRef ProxyQCharRef() {
-			return (QCharRef) _interceptor;
+			interceptor = (QCharRef) realProxy.GetTransparentProxy();
 		}
 		//  operator QChar(); >>>> NOT CONVERTED
 		[SmokeMethod("isNull", "() const", "")]
 		public bool IsNull() {
-			return ProxyQCharRef().IsNull();
+			return ((QCharRef) interceptor).IsNull();
 		}
 		[SmokeMethod("isPrint", "() const", "")]
 		public bool IsPrint() {
-			return ProxyQCharRef().IsPrint();
+			return ((QCharRef) interceptor).IsPrint();
 		}
 		[SmokeMethod("isPunct", "() const", "")]
 		public bool IsPunct() {
-			return ProxyQCharRef().IsPunct();
+			return ((QCharRef) interceptor).IsPunct();
 		}
 		[SmokeMethod("isSpace", "() const", "")]
 		public bool IsSpace() {
-			return ProxyQCharRef().IsSpace();
+			return ((QCharRef) interceptor).IsSpace();
 		}
 		[SmokeMethod("isMark", "() const", "")]
 		public bool IsMark() {
-			return ProxyQCharRef().IsMark();
+			return ((QCharRef) interceptor).IsMark();
 		}
 		[SmokeMethod("isLetter", "() const", "")]
 		public bool IsLetter() {
-			return ProxyQCharRef().IsLetter();
+			return ((QCharRef) interceptor).IsLetter();
 		}
 		[SmokeMethod("isNumber", "() const", "")]
 		public bool IsNumber() {
-			return ProxyQCharRef().IsNumber();
+			return ((QCharRef) interceptor).IsNumber();
 		}
 		[SmokeMethod("isLetterOrNumber", "()", "")]
 		public bool IsLetterOrNumber() {
-			return ProxyQCharRef().IsLetterOrNumber();
+			return ((QCharRef) interceptor).IsLetterOrNumber();
 		}
 		[SmokeMethod("isDigit", "() const", "")]
 		public bool IsDigit() {
-			return ProxyQCharRef().IsDigit();
+			return ((QCharRef) interceptor).IsDigit();
 		}
 		[SmokeMethod("digitValue", "() const", "")]
 		public int DigitValue() {
-			return ProxyQCharRef().DigitValue();
+			return ((QCharRef) interceptor).DigitValue();
 		}
 		[SmokeMethod("toLower", "() const", "")]
 		public char ToLower() {
-			return ProxyQCharRef().ToLower();
+			return ((QCharRef) interceptor).ToLower();
 		}
 		[SmokeMethod("toUpper", "() const", "")]
 		public char ToUpper() {
-			return ProxyQCharRef().ToUpper();
+			return ((QCharRef) interceptor).ToUpper();
 		}
 		[SmokeMethod("category", "() const", "")]
 		public char Category() {
-			return ProxyQCharRef().Category();
+			return ((QCharRef) interceptor).Category();
 		}
 		[SmokeMethod("direction", "() const", "")]
 		public char Direction() {
-			return ProxyQCharRef().Direction();
+			return ((QCharRef) interceptor).Direction();
 		}
 		[SmokeMethod("joining", "() const", "")]
 		public char Joining() {
-			return ProxyQCharRef().Joining();
+			return ((QCharRef) interceptor).Joining();
 		}
 		[SmokeMethod("hasMirrored", "() const", "")]
 		public bool HasMirrored() {
-			return ProxyQCharRef().HasMirrored();
+			return ((QCharRef) interceptor).HasMirrored();
 		}
 		[SmokeMethod("mirroredChar", "() const", "")]
 		public char MirroredChar() {
-			return ProxyQCharRef().MirroredChar();
+			return ((QCharRef) interceptor).MirroredChar();
 		}
 		[SmokeMethod("decomposition", "() const", "")]
 		public string Decomposition() {
-			return ProxyQCharRef().Decomposition();
+			return ((QCharRef) interceptor).Decomposition();
 		}
 		[SmokeMethod("decompositionTag", "() const", "")]
 		public char DecompositionTag() {
-			return ProxyQCharRef().DecompositionTag();
+			return ((QCharRef) interceptor).DecompositionTag();
 		}
 		[SmokeMethod("combiningClass", "() const", "")]
 		public ushort CombiningClass() {
-			return ProxyQCharRef().CombiningClass();
+			return ((QCharRef) interceptor).CombiningClass();
 		}
 		[SmokeMethod("unicodeVersion", "() const", "")]
 		public char UnicodeVersion() {
-			return ProxyQCharRef().UnicodeVersion();
+			return ((QCharRef) interceptor).UnicodeVersion();
 		}
 		[SmokeMethod("cell", "() const", "")]
 		public ushort Cell() {
-			return ProxyQCharRef().Cell();
+			return ((QCharRef) interceptor).Cell();
 		}
 		[SmokeMethod("row", "() const", "")]
 		public ushort Row() {
-			return ProxyQCharRef().Row();
+			return ((QCharRef) interceptor).Row();
 		}
 		[SmokeMethod("setCell", "(uchar)", "$")]
 		public void SetCell(ushort cell) {
-			ProxyQCharRef().SetCell(cell);
+			((QCharRef) interceptor).SetCell(cell);
 		}
 		[SmokeMethod("setRow", "(uchar)", "$")]
 		public void SetRow(ushort row) {
-			ProxyQCharRef().SetRow(row);
+			((QCharRef) interceptor).SetRow(row);
 		}
 		[SmokeMethod("toAscii", "() const", "")]
 		public char ToAscii() {
-			return ProxyQCharRef().ToAscii();
+			return ((QCharRef) interceptor).ToAscii();
 		}
 		[SmokeMethod("toLatin1", "() const", "")]
 		public char ToLatin1() {
-			return ProxyQCharRef().ToLatin1();
+			return ((QCharRef) interceptor).ToLatin1();
 		}
 		[SmokeMethod("unicode", "() const", "")]
 		public ushort Unicode() {
-			return ProxyQCharRef().Unicode();
+			return ((QCharRef) interceptor).Unicode();
 		}
 	}
 }

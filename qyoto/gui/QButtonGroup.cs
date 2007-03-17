@@ -17,18 +17,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QButtonGroup), this);
-			_interceptor = (QButtonGroup) realProxy.GetTransparentProxy();
+			interceptor = (QButtonGroup) realProxy.GetTransparentProxy();
 		}
-		private QButtonGroup ProxyQButtonGroup() {
-			return (QButtonGroup) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQButtonGroupProxy staticInterceptor = null;
 		static QButtonGroup() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQButtonGroupProxy), null);
-			_staticInterceptor = (IQButtonGroupProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQButtonGroupProxy StaticQButtonGroup() {
-			return (IQButtonGroupProxy) _staticInterceptor;
+			staticInterceptor = (IQButtonGroupProxy) realProxy.GetTransparentProxy();
 		}
 		[Q_PROPERTY("bool", "exclusive")]
 		public bool Exclusive {
@@ -41,7 +35,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QButtonGroup", "(QObject*)", "#")]
 		private void NewQButtonGroup(QObject parent) {
-			ProxyQButtonGroup().NewQButtonGroup(parent);
+			((QButtonGroup) interceptor).NewQButtonGroup(parent);
 		}
 		public QButtonGroup() : this((Type) null) {
 			CreateProxy();
@@ -49,43 +43,43 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QButtonGroup", "()", "")]
 		private void NewQButtonGroup() {
-			ProxyQButtonGroup().NewQButtonGroup();
+			((QButtonGroup) interceptor).NewQButtonGroup();
 		}
 		[SmokeMethod("addButton", "(QAbstractButton*)", "#")]
 		public void AddButton(QAbstractButton arg1) {
-			ProxyQButtonGroup().AddButton(arg1);
+			((QButtonGroup) interceptor).AddButton(arg1);
 		}
 		[SmokeMethod("addButton", "(QAbstractButton*, int)", "#$")]
 		public void AddButton(QAbstractButton arg1, int id) {
-			ProxyQButtonGroup().AddButton(arg1,id);
+			((QButtonGroup) interceptor).AddButton(arg1,id);
 		}
 		[SmokeMethod("removeButton", "(QAbstractButton*)", "#")]
 		public void RemoveButton(QAbstractButton arg1) {
-			ProxyQButtonGroup().RemoveButton(arg1);
+			((QButtonGroup) interceptor).RemoveButton(arg1);
 		}
 		[SmokeMethod("buttons", "() const", "")]
 		public List<QAbstractButton> Buttons() {
-			return ProxyQButtonGroup().Buttons();
+			return ((QButtonGroup) interceptor).Buttons();
 		}
 		[SmokeMethod("checkedButton", "() const", "")]
 		public QAbstractButton CheckedButton() {
-			return ProxyQButtonGroup().CheckedButton();
+			return ((QButtonGroup) interceptor).CheckedButton();
 		}
 		[SmokeMethod("button", "(int) const", "$")]
 		public QAbstractButton Button(int id) {
-			return ProxyQButtonGroup().Button(id);
+			return ((QButtonGroup) interceptor).Button(id);
 		}
 		[SmokeMethod("setId", "(QAbstractButton*, int)", "#$")]
 		public void SetId(QAbstractButton button, int id) {
-			ProxyQButtonGroup().SetId(button,id);
+			((QButtonGroup) interceptor).SetId(button,id);
 		}
 		[SmokeMethod("id", "(QAbstractButton*) const", "#")]
 		public int Id(QAbstractButton button) {
-			return ProxyQButtonGroup().Id(button);
+			return ((QButtonGroup) interceptor).Id(button);
 		}
 		[SmokeMethod("checkedId", "() const", "")]
 		public int CheckedId() {
-			return ProxyQButtonGroup().CheckedId();
+			return ((QButtonGroup) interceptor).CheckedId();
 		}
 		~QButtonGroup() {
 			DisposeQButtonGroup();
@@ -95,13 +89,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QButtonGroup", "()", "")]
 		private void DisposeQButtonGroup() {
-			ProxyQButtonGroup().DisposeQButtonGroup();
+			((QButtonGroup) interceptor).DisposeQButtonGroup();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQButtonGroup().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQButtonGroup().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQButtonGroupSignals Emit {
 			get { return (IQButtonGroupSignals) Q_EMIT; }

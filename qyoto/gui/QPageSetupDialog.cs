@@ -15,18 +15,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPageSetupDialog), this);
-			_interceptor = (QPageSetupDialog) realProxy.GetTransparentProxy();
+			interceptor = (QPageSetupDialog) realProxy.GetTransparentProxy();
 		}
-		private QPageSetupDialog ProxyQPageSetupDialog() {
-			return (QPageSetupDialog) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQPageSetupDialogProxy staticInterceptor = null;
 		static QPageSetupDialog() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQPageSetupDialogProxy), null);
-			_staticInterceptor = (IQPageSetupDialogProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQPageSetupDialogProxy StaticQPageSetupDialog() {
-			return (IQPageSetupDialogProxy) _staticInterceptor;
+			staticInterceptor = (IQPageSetupDialogProxy) realProxy.GetTransparentProxy();
 		}
 		public QPageSetupDialog(QPrinter printer, QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -34,7 +28,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QPageSetupDialog", "(QPrinter*, QWidget*)", "##")]
 		private void NewQPageSetupDialog(QPrinter printer, QWidget parent) {
-			ProxyQPageSetupDialog().NewQPageSetupDialog(printer,parent);
+			((QPageSetupDialog) interceptor).NewQPageSetupDialog(printer,parent);
 		}
 		public QPageSetupDialog(QPrinter printer) : this((Type) null) {
 			CreateProxy();
@@ -42,11 +36,11 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QPageSetupDialog", "(QPrinter*)", "#")]
 		private void NewQPageSetupDialog(QPrinter printer) {
-			ProxyQPageSetupDialog().NewQPageSetupDialog(printer);
+			((QPageSetupDialog) interceptor).NewQPageSetupDialog(printer);
 		}
 		[SmokeMethod("exec", "()", "")]
 		public override int Exec() {
-			return ProxyQPageSetupDialog().Exec();
+			return ((QPageSetupDialog) interceptor).Exec();
 		}
 		~QPageSetupDialog() {
 			DisposeQPageSetupDialog();
@@ -56,13 +50,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QPageSetupDialog", "()", "")]
 		private void DisposeQPageSetupDialog() {
-			ProxyQPageSetupDialog().DisposeQPageSetupDialog();
+			((QPageSetupDialog) interceptor).DisposeQPageSetupDialog();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQPageSetupDialog().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQPageSetupDialog().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQPageSetupDialogSignals Emit {
 			get { return (IQPageSetupDialogSignals) Q_EMIT; }

@@ -16,18 +16,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QShortcut), this);
-			_interceptor = (QShortcut) realProxy.GetTransparentProxy();
+			interceptor = (QShortcut) realProxy.GetTransparentProxy();
 		}
-		private QShortcut ProxyQShortcut() {
-			return (QShortcut) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQShortcutProxy staticInterceptor = null;
 		static QShortcut() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQShortcutProxy), null);
-			_staticInterceptor = (IQShortcutProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQShortcutProxy StaticQShortcut() {
-			return (IQShortcutProxy) _staticInterceptor;
+			staticInterceptor = (IQShortcutProxy) realProxy.GetTransparentProxy();
 		}
 		[Q_PROPERTY("QKeySequence", "key")]
 		public QKeySequence Key {
@@ -60,7 +54,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QShortcut", "(QWidget*)", "#")]
 		private void NewQShortcut(QWidget parent) {
-			ProxyQShortcut().NewQShortcut(parent);
+			((QShortcut) interceptor).NewQShortcut(parent);
 		}
 		public QShortcut(QKeySequence key, QWidget parent, string member, string ambiguousMember, Qt.ShortcutContext context) : this((Type) null) {
 			CreateProxy();
@@ -68,7 +62,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QShortcut", "(const QKeySequence&, QWidget*, const char*, const char*, Qt::ShortcutContext)", "##$$$")]
 		private void NewQShortcut(QKeySequence key, QWidget parent, string member, string ambiguousMember, Qt.ShortcutContext context) {
-			ProxyQShortcut().NewQShortcut(key,parent,member,ambiguousMember,context);
+			((QShortcut) interceptor).NewQShortcut(key,parent,member,ambiguousMember,context);
 		}
 		public QShortcut(QKeySequence key, QWidget parent, string member, string ambiguousMember) : this((Type) null) {
 			CreateProxy();
@@ -76,7 +70,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QShortcut", "(const QKeySequence&, QWidget*, const char*, const char*)", "##$$")]
 		private void NewQShortcut(QKeySequence key, QWidget parent, string member, string ambiguousMember) {
-			ProxyQShortcut().NewQShortcut(key,parent,member,ambiguousMember);
+			((QShortcut) interceptor).NewQShortcut(key,parent,member,ambiguousMember);
 		}
 		public QShortcut(QKeySequence key, QWidget parent, string member) : this((Type) null) {
 			CreateProxy();
@@ -84,7 +78,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QShortcut", "(const QKeySequence&, QWidget*, const char*)", "##$")]
 		private void NewQShortcut(QKeySequence key, QWidget parent, string member) {
-			ProxyQShortcut().NewQShortcut(key,parent,member);
+			((QShortcut) interceptor).NewQShortcut(key,parent,member);
 		}
 		public QShortcut(QKeySequence key, QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -92,23 +86,23 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QShortcut", "(const QKeySequence&, QWidget*)", "##")]
 		private void NewQShortcut(QKeySequence key, QWidget parent) {
-			ProxyQShortcut().NewQShortcut(key,parent);
+			((QShortcut) interceptor).NewQShortcut(key,parent);
 		}
 		[SmokeMethod("isEnabled", "() const", "")]
 		public bool IsEnabled() {
-			return ProxyQShortcut().IsEnabled();
+			return ((QShortcut) interceptor).IsEnabled();
 		}
 		[SmokeMethod("id", "() const", "")]
 		public int Id() {
-			return ProxyQShortcut().Id();
+			return ((QShortcut) interceptor).Id();
 		}
 		[SmokeMethod("parentWidget", "() const", "")]
 		public QWidget ParentWidget() {
-			return ProxyQShortcut().ParentWidget();
+			return ((QShortcut) interceptor).ParentWidget();
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected new virtual bool Event(QEvent e) {
-			return ProxyQShortcut().Event(e);
+			return ((QShortcut) interceptor).Event(e);
 		}
 		~QShortcut() {
 			DisposeQShortcut();
@@ -118,13 +112,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QShortcut", "()", "")]
 		private void DisposeQShortcut() {
-			ProxyQShortcut().DisposeQShortcut();
+			((QShortcut) interceptor).DisposeQShortcut();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQShortcut().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQShortcut().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQShortcutSignals Emit {
 			get { return (IQShortcutSignals) Q_EMIT; }

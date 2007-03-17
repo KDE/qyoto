@@ -15,18 +15,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSplitterHandle), this);
-			_interceptor = (QSplitterHandle) realProxy.GetTransparentProxy();
+			interceptor = (QSplitterHandle) realProxy.GetTransparentProxy();
 		}
-		private QSplitterHandle ProxyQSplitterHandle() {
-			return (QSplitterHandle) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQSplitterHandleProxy staticInterceptor = null;
 		static QSplitterHandle() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQSplitterHandleProxy), null);
-			_staticInterceptor = (IQSplitterHandleProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQSplitterHandleProxy StaticQSplitterHandle() {
-			return (IQSplitterHandleProxy) _staticInterceptor;
+			staticInterceptor = (IQSplitterHandleProxy) realProxy.GetTransparentProxy();
 		}
 		public QSplitterHandle(Qt.Orientation o, QSplitter parent) : this((Type) null) {
 			CreateProxy();
@@ -34,55 +28,55 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSplitterHandle", "(Qt::Orientation, QSplitter*)", "$#")]
 		private void NewQSplitterHandle(Qt.Orientation o, QSplitter parent) {
-			ProxyQSplitterHandle().NewQSplitterHandle(o,parent);
+			((QSplitterHandle) interceptor).NewQSplitterHandle(o,parent);
 		}
 		[SmokeMethod("setOrientation", "(Qt::Orientation)", "$")]
 		public void SetOrientation(Qt.Orientation o) {
-			ProxyQSplitterHandle().SetOrientation(o);
+			((QSplitterHandle) interceptor).SetOrientation(o);
 		}
 		[SmokeMethod("orientation", "() const", "")]
 		public Qt.Orientation Orientation() {
-			return ProxyQSplitterHandle().Orientation();
+			return ((QSplitterHandle) interceptor).Orientation();
 		}
 		[SmokeMethod("opaqueResize", "() const", "")]
 		public bool OpaqueResize() {
-			return ProxyQSplitterHandle().OpaqueResize();
+			return ((QSplitterHandle) interceptor).OpaqueResize();
 		}
 		[SmokeMethod("splitter", "() const", "")]
 		public QSplitter Splitter() {
-			return ProxyQSplitterHandle().Splitter();
+			return ((QSplitterHandle) interceptor).Splitter();
 		}
 		[SmokeMethod("sizeHint", "() const", "")]
 		public override QSize SizeHint() {
-			return ProxyQSplitterHandle().SizeHint();
+			return ((QSplitterHandle) interceptor).SizeHint();
 		}
 		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
 		protected override void PaintEvent(QPaintEvent arg1) {
-			ProxyQSplitterHandle().PaintEvent(arg1);
+			((QSplitterHandle) interceptor).PaintEvent(arg1);
 		}
 		[SmokeMethod("mouseMoveEvent", "(QMouseEvent*)", "#")]
 		protected override void MouseMoveEvent(QMouseEvent arg1) {
-			ProxyQSplitterHandle().MouseMoveEvent(arg1);
+			((QSplitterHandle) interceptor).MouseMoveEvent(arg1);
 		}
 		[SmokeMethod("mousePressEvent", "(QMouseEvent*)", "#")]
 		protected override void MousePressEvent(QMouseEvent arg1) {
-			ProxyQSplitterHandle().MousePressEvent(arg1);
+			((QSplitterHandle) interceptor).MousePressEvent(arg1);
 		}
 		[SmokeMethod("mouseReleaseEvent", "(QMouseEvent*)", "#")]
 		protected override void MouseReleaseEvent(QMouseEvent arg1) {
-			ProxyQSplitterHandle().MouseReleaseEvent(arg1);
+			((QSplitterHandle) interceptor).MouseReleaseEvent(arg1);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent arg1) {
-			return ProxyQSplitterHandle().Event(arg1);
+			return ((QSplitterHandle) interceptor).Event(arg1);
 		}
 		[SmokeMethod("moveSplitter", "(int)", "$")]
 		protected void MoveSplitter(int p) {
-			ProxyQSplitterHandle().MoveSplitter(p);
+			((QSplitterHandle) interceptor).MoveSplitter(p);
 		}
 		[SmokeMethod("closestLegalPosition", "(int)", "$")]
 		protected int ClosestLegalPosition(int p) {
-			return ProxyQSplitterHandle().ClosestLegalPosition(p);
+			return ((QSplitterHandle) interceptor).ClosestLegalPosition(p);
 		}
 		~QSplitterHandle() {
 			DisposeQSplitterHandle();
@@ -92,13 +86,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QSplitterHandle", "()", "")]
 		private void DisposeQSplitterHandle() {
-			ProxyQSplitterHandle().DisposeQSplitterHandle();
+			((QSplitterHandle) interceptor).DisposeQSplitterHandle();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQSplitterHandle().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQSplitterHandle().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQSplitterHandleSignals Emit {
 			get { return (IQSplitterHandleSignals) Q_EMIT; }

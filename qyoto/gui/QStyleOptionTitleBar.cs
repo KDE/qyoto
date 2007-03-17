@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QStyleOptionTitleBar(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionTitleBar), this);
-			_interceptor = (QStyleOptionTitleBar) realProxy.GetTransparentProxy();
-		}
-		private QStyleOptionTitleBar ProxyQStyleOptionTitleBar() {
-			return (QStyleOptionTitleBar) _interceptor;
+			interceptor = (QStyleOptionTitleBar) realProxy.GetTransparentProxy();
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_TitleBar,
@@ -25,7 +22,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionTitleBar", "()", "")]
 		private void NewQStyleOptionTitleBar() {
-			ProxyQStyleOptionTitleBar().NewQStyleOptionTitleBar();
+			((QStyleOptionTitleBar) interceptor).NewQStyleOptionTitleBar();
 		}
 		public QStyleOptionTitleBar(QStyleOptionTitleBar other) : this((Type) null) {
 			CreateProxy();
@@ -33,7 +30,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionTitleBar", "(const QStyleOptionTitleBar&)", "#")]
 		private void NewQStyleOptionTitleBar(QStyleOptionTitleBar other) {
-			ProxyQStyleOptionTitleBar().NewQStyleOptionTitleBar(other);
+			((QStyleOptionTitleBar) interceptor).NewQStyleOptionTitleBar(other);
 		}
 		public QStyleOptionTitleBar(int version) : this((Type) null) {
 			CreateProxy();
@@ -41,7 +38,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionTitleBar", "(int)", "$")]
 		private void NewQStyleOptionTitleBar(int version) {
-			ProxyQStyleOptionTitleBar().NewQStyleOptionTitleBar(version);
+			((QStyleOptionTitleBar) interceptor).NewQStyleOptionTitleBar(version);
 		}
 		~QStyleOptionTitleBar() {
 			DisposeQStyleOptionTitleBar();
@@ -51,7 +48,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QStyleOptionTitleBar", "()", "")]
 		private void DisposeQStyleOptionTitleBar() {
-			ProxyQStyleOptionTitleBar().DisposeQStyleOptionTitleBar();
+			((QStyleOptionTitleBar) interceptor).DisposeQStyleOptionTitleBar();
 		}
 	}
 }

@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QClipboardEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QClipboardEvent), this);
-			_interceptor = (QClipboardEvent) realProxy.GetTransparentProxy();
-		}
-		private QClipboardEvent ProxyQClipboardEvent() {
-			return (QClipboardEvent) _interceptor;
+			interceptor = (QClipboardEvent) realProxy.GetTransparentProxy();
 		}
 		// QClipboardEvent* QClipboardEvent(QEventPrivate* arg1); >>>> NOT CONVERTED
 		// QEventPrivate* data(); >>>> NOT CONVERTED
@@ -23,7 +20,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QClipboardEvent", "()", "")]
 		private void DisposeQClipboardEvent() {
-			ProxyQClipboardEvent().DisposeQClipboardEvent();
+			((QClipboardEvent) interceptor).DisposeQClipboardEvent();
 		}
 	}
 }

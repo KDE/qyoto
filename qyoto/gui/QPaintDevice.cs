@@ -4,32 +4,29 @@ namespace Qyoto {
 	using System;
 
 	public interface IQPaintDevice {
-			int DevType();
-			bool PaintingActive();
-			QPaintEngine PaintEngine();
-			int Width();
-			int Height();
-			int WidthMM();
-			int HeightMM();
-			int LogicalDpiX();
-			int LogicalDpiY();
-			int PhysicalDpiX();
-			int PhysicalDpiY();
-			int NumColors();
-			int Depth();
+		int DevType();
+		bool PaintingActive();
+		QPaintEngine PaintEngine();
+		int Width();
+		int Height();
+		int WidthMM();
+		int HeightMM();
+		int LogicalDpiX();
+		int LogicalDpiY();
+		int PhysicalDpiX();
+		int PhysicalDpiY();
+		int NumColors();
+		int Depth();
 	}
 
 	[SmokeClass("QPaintDevice")]
 	public abstract class QPaintDevice : MarshalByRefObject, IQPaintDevice {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QPaintDevice interceptor = null;
+		private IntPtr smokeObject;
 		protected QPaintDevice(Type dummy) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPaintDevice), this);
-			_interceptor = (QPaintDevice) realProxy.GetTransparentProxy();
-		}
-		private QPaintDevice ProxyQPaintDevice() {
-			return (QPaintDevice) _interceptor;
+			interceptor = (QPaintDevice) realProxy.GetTransparentProxy();
 		}
 		public enum PaintDeviceMetric {
 			PdmWidth = 1,
@@ -45,53 +42,53 @@ namespace Qyoto {
 		}
 		[SmokeMethod("devType", "() const", "")]
 		public virtual int DevType() {
-			return ProxyQPaintDevice().DevType();
+			return ((QPaintDevice) interceptor).DevType();
 		}
 		[SmokeMethod("paintingActive", "() const", "")]
 		public bool PaintingActive() {
-			return ProxyQPaintDevice().PaintingActive();
+			return ((QPaintDevice) interceptor).PaintingActive();
 		}
 		[SmokeMethod("paintEngine", "() const", "")]
 		public abstract QPaintEngine PaintEngine();
 		[SmokeMethod("width", "() const", "")]
 		public int Width() {
-			return ProxyQPaintDevice().Width();
+			return ((QPaintDevice) interceptor).Width();
 		}
 		[SmokeMethod("height", "() const", "")]
 		public int Height() {
-			return ProxyQPaintDevice().Height();
+			return ((QPaintDevice) interceptor).Height();
 		}
 		[SmokeMethod("widthMM", "() const", "")]
 		public int WidthMM() {
-			return ProxyQPaintDevice().WidthMM();
+			return ((QPaintDevice) interceptor).WidthMM();
 		}
 		[SmokeMethod("heightMM", "() const", "")]
 		public int HeightMM() {
-			return ProxyQPaintDevice().HeightMM();
+			return ((QPaintDevice) interceptor).HeightMM();
 		}
 		[SmokeMethod("logicalDpiX", "() const", "")]
 		public int LogicalDpiX() {
-			return ProxyQPaintDevice().LogicalDpiX();
+			return ((QPaintDevice) interceptor).LogicalDpiX();
 		}
 		[SmokeMethod("logicalDpiY", "() const", "")]
 		public int LogicalDpiY() {
-			return ProxyQPaintDevice().LogicalDpiY();
+			return ((QPaintDevice) interceptor).LogicalDpiY();
 		}
 		[SmokeMethod("physicalDpiX", "() const", "")]
 		public int PhysicalDpiX() {
-			return ProxyQPaintDevice().PhysicalDpiX();
+			return ((QPaintDevice) interceptor).PhysicalDpiX();
 		}
 		[SmokeMethod("physicalDpiY", "() const", "")]
 		public int PhysicalDpiY() {
-			return ProxyQPaintDevice().PhysicalDpiY();
+			return ((QPaintDevice) interceptor).PhysicalDpiY();
 		}
 		[SmokeMethod("numColors", "() const", "")]
 		public int NumColors() {
-			return ProxyQPaintDevice().NumColors();
+			return ((QPaintDevice) interceptor).NumColors();
 		}
 		[SmokeMethod("depth", "() const", "")]
 		public int Depth() {
-			return ProxyQPaintDevice().Depth();
+			return ((QPaintDevice) interceptor).Depth();
 		}
 		public QPaintDevice() : this((Type) null) {
 			CreateProxy();
@@ -99,11 +96,11 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QPaintDevice", "()", "")]
 		private void NewQPaintDevice() {
-			ProxyQPaintDevice().NewQPaintDevice();
+			((QPaintDevice) interceptor).NewQPaintDevice();
 		}
 		[SmokeMethod("metric", "(QPaintDevice::PaintDeviceMetric) const", "$")]
 		protected virtual int Metric(IQPaintDevice metric) {
-			return ProxyQPaintDevice().Metric(metric);
+			return ((QPaintDevice) interceptor).Metric(metric);
 		}
 	}
 }

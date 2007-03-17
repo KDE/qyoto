@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QConicalGradient(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QConicalGradient), this);
-			_interceptor = (QConicalGradient) realProxy.GetTransparentProxy();
-		}
-		private QConicalGradient ProxyQConicalGradient() {
-			return (QConicalGradient) _interceptor;
+			interceptor = (QConicalGradient) realProxy.GetTransparentProxy();
 		}
 		public QConicalGradient() : this((Type) null) {
 			CreateProxy();
@@ -19,7 +16,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QConicalGradient", "()", "")]
 		private void NewQConicalGradient() {
-			ProxyQConicalGradient().NewQConicalGradient();
+			((QConicalGradient) interceptor).NewQConicalGradient();
 		}
 		public QConicalGradient(QPointF center, double startAngle) : this((Type) null) {
 			CreateProxy();
@@ -27,7 +24,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QConicalGradient", "(const QPointF&, qreal)", "#$")]
 		private void NewQConicalGradient(QPointF center, double startAngle) {
-			ProxyQConicalGradient().NewQConicalGradient(center,startAngle);
+			((QConicalGradient) interceptor).NewQConicalGradient(center,startAngle);
 		}
 		public QConicalGradient(double cx, double cy, double startAngle) : this((Type) null) {
 			CreateProxy();
@@ -35,27 +32,27 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QConicalGradient", "(qreal, qreal, qreal)", "$$$")]
 		private void NewQConicalGradient(double cx, double cy, double startAngle) {
-			ProxyQConicalGradient().NewQConicalGradient(cx,cy,startAngle);
+			((QConicalGradient) interceptor).NewQConicalGradient(cx,cy,startAngle);
 		}
 		[SmokeMethod("center", "() const", "")]
 		public QPointF Center() {
-			return ProxyQConicalGradient().Center();
+			return ((QConicalGradient) interceptor).Center();
 		}
 		[SmokeMethod("setCenter", "(const QPointF&)", "#")]
 		public void SetCenter(QPointF center) {
-			ProxyQConicalGradient().SetCenter(center);
+			((QConicalGradient) interceptor).SetCenter(center);
 		}
 		[SmokeMethod("setCenter", "(qreal, qreal)", "$$")]
 		public void SetCenter(double x, double y) {
-			ProxyQConicalGradient().SetCenter(x,y);
+			((QConicalGradient) interceptor).SetCenter(x,y);
 		}
 		[SmokeMethod("angle", "() const", "")]
 		public double Angle() {
-			return ProxyQConicalGradient().Angle();
+			return ((QConicalGradient) interceptor).Angle();
 		}
 		[SmokeMethod("setAngle", "(qreal)", "$")]
 		public void SetAngle(double angle) {
-			ProxyQConicalGradient().SetAngle(angle);
+			((QConicalGradient) interceptor).SetAngle(angle);
 		}
 		~QConicalGradient() {
 			DisposeQConicalGradient();
@@ -65,7 +62,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QConicalGradient", "()", "")]
 		private void DisposeQConicalGradient() {
-			ProxyQConicalGradient().DisposeQConicalGradient();
+			((QConicalGradient) interceptor).DisposeQConicalGradient();
 		}
 	}
 }

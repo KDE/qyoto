@@ -113,18 +113,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMessageBox), this);
-			_interceptor = (QMessageBox) realProxy.GetTransparentProxy();
+			interceptor = (QMessageBox) realProxy.GetTransparentProxy();
 		}
-		private QMessageBox ProxyQMessageBox() {
-			return (QMessageBox) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQMessageBoxProxy staticInterceptor = null;
 		static QMessageBox() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQMessageBoxProxy), null);
-			_staticInterceptor = (IQMessageBoxProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQMessageBoxProxy StaticQMessageBox() {
-			return (IQMessageBoxProxy) _staticInterceptor;
+			staticInterceptor = (IQMessageBoxProxy) realProxy.GetTransparentProxy();
 		}
 		public enum Icon {
 			NoIcon = 0,
@@ -216,7 +210,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QMessageBox", "(QWidget*)", "#")]
 		private void NewQMessageBox(QWidget parent) {
-			ProxyQMessageBox().NewQMessageBox(parent);
+			((QMessageBox) interceptor).NewQMessageBox(parent);
 		}
 		public QMessageBox() : this((Type) null) {
 			CreateProxy();
@@ -224,7 +218,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QMessageBox", "()", "")]
 		private void NewQMessageBox() {
-			ProxyQMessageBox().NewQMessageBox();
+			((QMessageBox) interceptor).NewQMessageBox();
 		}
 		public QMessageBox(QMessageBox.Icon icon, string title, string text, int buttons, QWidget parent, int f) : this((Type) null) {
 			CreateProxy();
@@ -232,7 +226,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QMessageBox", "(QMessageBox::Icon, const QString&, const QString&, StandardButtons, QWidget*, Qt::WindowFlags)", "$$$$#$")]
 		private void NewQMessageBox(QMessageBox.Icon icon, string title, string text, int buttons, QWidget parent, int f) {
-			ProxyQMessageBox().NewQMessageBox(icon,title,text,buttons,parent,f);
+			((QMessageBox) interceptor).NewQMessageBox(icon,title,text,buttons,parent,f);
 		}
 		public QMessageBox(QMessageBox.Icon icon, string title, string text, int buttons, QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -240,7 +234,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QMessageBox", "(QMessageBox::Icon, const QString&, const QString&, StandardButtons, QWidget*)", "$$$$#")]
 		private void NewQMessageBox(QMessageBox.Icon icon, string title, string text, int buttons, QWidget parent) {
-			ProxyQMessageBox().NewQMessageBox(icon,title,text,buttons,parent);
+			((QMessageBox) interceptor).NewQMessageBox(icon,title,text,buttons,parent);
 		}
 		public QMessageBox(QMessageBox.Icon icon, string title, string text, int buttons) : this((Type) null) {
 			CreateProxy();
@@ -248,7 +242,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QMessageBox", "(QMessageBox::Icon, const QString&, const QString&, StandardButtons)", "$$$$")]
 		private void NewQMessageBox(QMessageBox.Icon icon, string title, string text, int buttons) {
-			ProxyQMessageBox().NewQMessageBox(icon,title,text,buttons);
+			((QMessageBox) interceptor).NewQMessageBox(icon,title,text,buttons);
 		}
 		public QMessageBox(QMessageBox.Icon icon, string title, string text) : this((Type) null) {
 			CreateProxy();
@@ -256,55 +250,55 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QMessageBox", "(QMessageBox::Icon, const QString&, const QString&)", "$$$")]
 		private void NewQMessageBox(QMessageBox.Icon icon, string title, string text) {
-			ProxyQMessageBox().NewQMessageBox(icon,title,text);
+			((QMessageBox) interceptor).NewQMessageBox(icon,title,text);
 		}
 		[SmokeMethod("addButton", "(QAbstractButton*, QMessageBox::ButtonRole)", "#$")]
 		public void AddButton(QAbstractButton button, QMessageBox.ButtonRole role) {
-			ProxyQMessageBox().AddButton(button,role);
+			((QMessageBox) interceptor).AddButton(button,role);
 		}
 		[SmokeMethod("addButton", "(const QString&, QMessageBox::ButtonRole)", "$$")]
 		public QPushButton AddButton(string text, QMessageBox.ButtonRole role) {
-			return ProxyQMessageBox().AddButton(text,role);
+			return ((QMessageBox) interceptor).AddButton(text,role);
 		}
 		[SmokeMethod("addButton", "(QMessageBox::StandardButton)", "$")]
 		public QPushButton AddButton(QMessageBox.StandardButton button) {
-			return ProxyQMessageBox().AddButton(button);
+			return ((QMessageBox) interceptor).AddButton(button);
 		}
 		[SmokeMethod("removeButton", "(QAbstractButton*)", "#")]
 		public void RemoveButton(QAbstractButton button) {
-			ProxyQMessageBox().RemoveButton(button);
+			((QMessageBox) interceptor).RemoveButton(button);
 		}
 		[SmokeMethod("standardButton", "(QAbstractButton*) const", "#")]
 		public QMessageBox.StandardButton standardButton(QAbstractButton button) {
-			return ProxyQMessageBox().standardButton(button);
+			return ((QMessageBox) interceptor).standardButton(button);
 		}
 		[SmokeMethod("button", "(QMessageBox::StandardButton) const", "$")]
 		public QAbstractButton Button(QMessageBox.StandardButton which) {
-			return ProxyQMessageBox().Button(which);
+			return ((QMessageBox) interceptor).Button(which);
 		}
 		[SmokeMethod("defaultButton", "() const", "")]
 		public QPushButton DefaultButton() {
-			return ProxyQMessageBox().DefaultButton();
+			return ((QMessageBox) interceptor).DefaultButton();
 		}
 		[SmokeMethod("setDefaultButton", "(QPushButton*)", "#")]
 		public void SetDefaultButton(QPushButton button) {
-			ProxyQMessageBox().SetDefaultButton(button);
+			((QMessageBox) interceptor).SetDefaultButton(button);
 		}
 		[SmokeMethod("escapeButton", "() const", "")]
 		public QAbstractButton EscapeButton() {
-			return ProxyQMessageBox().EscapeButton();
+			return ((QMessageBox) interceptor).EscapeButton();
 		}
 		[SmokeMethod("setEscapeButton", "(QAbstractButton*)", "#")]
 		public void SetEscapeButton(QAbstractButton button) {
-			ProxyQMessageBox().SetEscapeButton(button);
+			((QMessageBox) interceptor).SetEscapeButton(button);
 		}
 		[SmokeMethod("clickedButton", "() const", "")]
 		public QAbstractButton ClickedButton() {
-			return ProxyQMessageBox().ClickedButton();
+			return ((QMessageBox) interceptor).ClickedButton();
 		}
 		[SmokeMethod("sizeHint", "() const", "")]
 		public override QSize SizeHint() {
-			return ProxyQMessageBox().SizeHint();
+			return ((QMessageBox) interceptor).SizeHint();
 		}
 		public QMessageBox(string title, string text, QMessageBox.Icon icon, int button0, int button1, int button2, QWidget parent, int f) : this((Type) null) {
 			CreateProxy();
@@ -312,7 +306,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QMessageBox", "(const QString&, const QString&, QMessageBox::Icon, int, int, int, QWidget*, Qt::WindowFlags)", "$$$$$$#$")]
 		private void NewQMessageBox(string title, string text, QMessageBox.Icon icon, int button0, int button1, int button2, QWidget parent, int f) {
-			ProxyQMessageBox().NewQMessageBox(title,text,icon,button0,button1,button2,parent,f);
+			((QMessageBox) interceptor).NewQMessageBox(title,text,icon,button0,button1,button2,parent,f);
 		}
 		public QMessageBox(string title, string text, QMessageBox.Icon icon, int button0, int button1, int button2, QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -320,7 +314,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QMessageBox", "(const QString&, const QString&, QMessageBox::Icon, int, int, int, QWidget*)", "$$$$$$#")]
 		private void NewQMessageBox(string title, string text, QMessageBox.Icon icon, int button0, int button1, int button2, QWidget parent) {
-			ProxyQMessageBox().NewQMessageBox(title,text,icon,button0,button1,button2,parent);
+			((QMessageBox) interceptor).NewQMessageBox(title,text,icon,button0,button1,button2,parent);
 		}
 		public QMessageBox(string title, string text, QMessageBox.Icon icon, int button0, int button1, int button2) : this((Type) null) {
 			CreateProxy();
@@ -328,43 +322,43 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QMessageBox", "(const QString&, const QString&, QMessageBox::Icon, int, int, int)", "$$$$$$")]
 		private void NewQMessageBox(string title, string text, QMessageBox.Icon icon, int button0, int button1, int button2) {
-			ProxyQMessageBox().NewQMessageBox(title,text,icon,button0,button1,button2);
+			((QMessageBox) interceptor).NewQMessageBox(title,text,icon,button0,button1,button2);
 		}
 		[SmokeMethod("buttonText", "(int) const", "$")]
 		public string ButtonText(int button) {
-			return ProxyQMessageBox().ButtonText(button);
+			return ((QMessageBox) interceptor).ButtonText(button);
 		}
 		[SmokeMethod("setButtonText", "(int, const QString&)", "$$")]
 		public void SetButtonText(int button, string text) {
-			ProxyQMessageBox().SetButtonText(button,text);
+			((QMessageBox) interceptor).SetButtonText(button,text);
 		}
 		[SmokeMethod("setWindowTitle", "(const QString&)", "$")]
 		public void SetWindowTitle(string title) {
-			ProxyQMessageBox().SetWindowTitle(title);
+			((QMessageBox) interceptor).SetWindowTitle(title);
 		}
 		[SmokeMethod("setWindowModality", "(Qt::WindowModality)", "$")]
 		public void SetWindowModality(Qt.WindowModality windowModality) {
-			ProxyQMessageBox().SetWindowModality(windowModality);
+			((QMessageBox) interceptor).SetWindowModality(windowModality);
 		}
 		[SmokeMethod("resizeEvent", "(QResizeEvent*)", "#")]
 		protected override void ResizeEvent(QResizeEvent arg1) {
-			ProxyQMessageBox().ResizeEvent(arg1);
+			((QMessageBox) interceptor).ResizeEvent(arg1);
 		}
 		[SmokeMethod("showEvent", "(QShowEvent*)", "#")]
 		protected override void ShowEvent(QShowEvent arg1) {
-			ProxyQMessageBox().ShowEvent(arg1);
+			((QMessageBox) interceptor).ShowEvent(arg1);
 		}
 		[SmokeMethod("closeEvent", "(QCloseEvent*)", "#")]
 		protected override void CloseEvent(QCloseEvent arg1) {
-			ProxyQMessageBox().CloseEvent(arg1);
+			((QMessageBox) interceptor).CloseEvent(arg1);
 		}
 		[SmokeMethod("keyPressEvent", "(QKeyEvent*)", "#")]
 		protected override void KeyPressEvent(QKeyEvent arg1) {
-			ProxyQMessageBox().KeyPressEvent(arg1);
+			((QMessageBox) interceptor).KeyPressEvent(arg1);
 		}
 		[SmokeMethod("changeEvent", "(QEvent*)", "#")]
 		protected override void ChangeEvent(QEvent arg1) {
-			ProxyQMessageBox().ChangeEvent(arg1);
+			((QMessageBox) interceptor).ChangeEvent(arg1);
 		}
 		~QMessageBox() {
 			DisposeQMessageBox();
@@ -374,160 +368,160 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QMessageBox", "()", "")]
 		private void DisposeQMessageBox() {
-			ProxyQMessageBox().DisposeQMessageBox();
+			((QMessageBox) interceptor).DisposeQMessageBox();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQMessageBox().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQMessageBox().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		public static QMessageBox.StandardButton Information(QWidget parent, string title, string text, int buttons, QMessageBox.StandardButton defaultButton) {
-			return StaticQMessageBox().Information(parent,title,text,buttons,defaultButton);
+			return staticInterceptor.Information(parent,title,text,buttons,defaultButton);
 		}
 		public static QMessageBox.StandardButton Information(QWidget parent, string title, string text, int buttons) {
-			return StaticQMessageBox().Information(parent,title,text,buttons);
+			return staticInterceptor.Information(parent,title,text,buttons);
 		}
 		public static QMessageBox.StandardButton Information(QWidget parent, string title, string text) {
-			return StaticQMessageBox().Information(parent,title,text);
+			return staticInterceptor.Information(parent,title,text);
 		}
 		public static QMessageBox.StandardButton Question(QWidget parent, string title, string text, int buttons, QMessageBox.StandardButton defaultButton) {
-			return StaticQMessageBox().Question(parent,title,text,buttons,defaultButton);
+			return staticInterceptor.Question(parent,title,text,buttons,defaultButton);
 		}
 		public static QMessageBox.StandardButton Question(QWidget parent, string title, string text, int buttons) {
-			return StaticQMessageBox().Question(parent,title,text,buttons);
+			return staticInterceptor.Question(parent,title,text,buttons);
 		}
 		public static QMessageBox.StandardButton Question(QWidget parent, string title, string text) {
-			return StaticQMessageBox().Question(parent,title,text);
+			return staticInterceptor.Question(parent,title,text);
 		}
 		public static QMessageBox.StandardButton Warning(QWidget parent, string title, string text, int buttons, QMessageBox.StandardButton defaultButton) {
-			return StaticQMessageBox().Warning(parent,title,text,buttons,defaultButton);
+			return staticInterceptor.Warning(parent,title,text,buttons,defaultButton);
 		}
 		public static QMessageBox.StandardButton Warning(QWidget parent, string title, string text, int buttons) {
-			return StaticQMessageBox().Warning(parent,title,text,buttons);
+			return staticInterceptor.Warning(parent,title,text,buttons);
 		}
 		public static QMessageBox.StandardButton Warning(QWidget parent, string title, string text) {
-			return StaticQMessageBox().Warning(parent,title,text);
+			return staticInterceptor.Warning(parent,title,text);
 		}
 		public static QMessageBox.StandardButton Critical(QWidget parent, string title, string text, int buttons, QMessageBox.StandardButton defaultButton) {
-			return StaticQMessageBox().Critical(parent,title,text,buttons,defaultButton);
+			return staticInterceptor.Critical(parent,title,text,buttons,defaultButton);
 		}
 		public static QMessageBox.StandardButton Critical(QWidget parent, string title, string text, int buttons) {
-			return StaticQMessageBox().Critical(parent,title,text,buttons);
+			return staticInterceptor.Critical(parent,title,text,buttons);
 		}
 		public static QMessageBox.StandardButton Critical(QWidget parent, string title, string text) {
-			return StaticQMessageBox().Critical(parent,title,text);
+			return staticInterceptor.Critical(parent,title,text);
 		}
 		public static void About(QWidget parent, string title, string text) {
-			StaticQMessageBox().About(parent,title,text);
+			staticInterceptor.About(parent,title,text);
 		}
 		public static void AboutQt(QWidget parent, string title) {
-			StaticQMessageBox().AboutQt(parent,title);
+			staticInterceptor.AboutQt(parent,title);
 		}
 		public static void AboutQt(QWidget parent) {
-			StaticQMessageBox().AboutQt(parent);
+			staticInterceptor.AboutQt(parent);
 		}
 		public static int Information(QWidget parent, string title, string text, int button0, int button1, int button2) {
-			return StaticQMessageBox().Information(parent,title,text,button0,button1,button2);
+			return staticInterceptor.Information(parent,title,text,button0,button1,button2);
 		}
 		public static int Information(QWidget parent, string title, string text, int button0, int button1) {
-			return StaticQMessageBox().Information(parent,title,text,button0,button1);
+			return staticInterceptor.Information(parent,title,text,button0,button1);
 		}
 		public static int Information(QWidget parent, string title, string text, string button0Text, string button1Text, string button2Text, int defaultButtonNumber, int escapeButtonNumber) {
-			return StaticQMessageBox().Information(parent,title,text,button0Text,button1Text,button2Text,defaultButtonNumber,escapeButtonNumber);
+			return staticInterceptor.Information(parent,title,text,button0Text,button1Text,button2Text,defaultButtonNumber,escapeButtonNumber);
 		}
 		public static int Information(QWidget parent, string title, string text, string button0Text, string button1Text, string button2Text, int defaultButtonNumber) {
-			return StaticQMessageBox().Information(parent,title,text,button0Text,button1Text,button2Text,defaultButtonNumber);
+			return staticInterceptor.Information(parent,title,text,button0Text,button1Text,button2Text,defaultButtonNumber);
 		}
 		public static int Information(QWidget parent, string title, string text, string button0Text, string button1Text, string button2Text) {
-			return StaticQMessageBox().Information(parent,title,text,button0Text,button1Text,button2Text);
+			return staticInterceptor.Information(parent,title,text,button0Text,button1Text,button2Text);
 		}
 		public static int Information(QWidget parent, string title, string text, string button0Text, string button1Text) {
-			return StaticQMessageBox().Information(parent,title,text,button0Text,button1Text);
+			return staticInterceptor.Information(parent,title,text,button0Text,button1Text);
 		}
 		public static int Information(QWidget parent, string title, string text, string button0Text) {
-			return StaticQMessageBox().Information(parent,title,text,button0Text);
+			return staticInterceptor.Information(parent,title,text,button0Text);
 		}
 		public static QMessageBox.StandardButton Information(QWidget parent, string title, string text, QMessageBox.StandardButton button0, QMessageBox.StandardButton button1) {
-			return StaticQMessageBox().Information(parent,title,text,button0,button1);
+			return staticInterceptor.Information(parent,title,text,button0,button1);
 		}
 		public static QMessageBox.StandardButton Information(QWidget parent, string title, string text, QMessageBox.StandardButton button0) {
-			return StaticQMessageBox().Information(parent,title,text,button0);
+			return staticInterceptor.Information(parent,title,text,button0);
 		}
 		public static int Question(QWidget parent, string title, string text, int button0, int button1, int button2) {
-			return StaticQMessageBox().Question(parent,title,text,button0,button1,button2);
+			return staticInterceptor.Question(parent,title,text,button0,button1,button2);
 		}
 		public static int Question(QWidget parent, string title, string text, int button0, int button1) {
-			return StaticQMessageBox().Question(parent,title,text,button0,button1);
+			return staticInterceptor.Question(parent,title,text,button0,button1);
 		}
 		public static int Question(QWidget parent, string title, string text, string button0Text, string button1Text, string button2Text, int defaultButtonNumber, int escapeButtonNumber) {
-			return StaticQMessageBox().Question(parent,title,text,button0Text,button1Text,button2Text,defaultButtonNumber,escapeButtonNumber);
+			return staticInterceptor.Question(parent,title,text,button0Text,button1Text,button2Text,defaultButtonNumber,escapeButtonNumber);
 		}
 		public static int Question(QWidget parent, string title, string text, string button0Text, string button1Text, string button2Text, int defaultButtonNumber) {
-			return StaticQMessageBox().Question(parent,title,text,button0Text,button1Text,button2Text,defaultButtonNumber);
+			return staticInterceptor.Question(parent,title,text,button0Text,button1Text,button2Text,defaultButtonNumber);
 		}
 		public static int Question(QWidget parent, string title, string text, string button0Text, string button1Text, string button2Text) {
-			return StaticQMessageBox().Question(parent,title,text,button0Text,button1Text,button2Text);
+			return staticInterceptor.Question(parent,title,text,button0Text,button1Text,button2Text);
 		}
 		public static int Question(QWidget parent, string title, string text, string button0Text, string button1Text) {
-			return StaticQMessageBox().Question(parent,title,text,button0Text,button1Text);
+			return staticInterceptor.Question(parent,title,text,button0Text,button1Text);
 		}
 		public static int Question(QWidget parent, string title, string text, string button0Text) {
-			return StaticQMessageBox().Question(parent,title,text,button0Text);
+			return staticInterceptor.Question(parent,title,text,button0Text);
 		}
 		public static int Question(QWidget parent, string title, string text, QMessageBox.StandardButton button0, QMessageBox.StandardButton button1) {
-			return StaticQMessageBox().Question(parent,title,text,button0,button1);
+			return staticInterceptor.Question(parent,title,text,button0,button1);
 		}
 		public static int Warning(QWidget parent, string title, string text, int button0, int button1, int button2) {
-			return StaticQMessageBox().Warning(parent,title,text,button0,button1,button2);
+			return staticInterceptor.Warning(parent,title,text,button0,button1,button2);
 		}
 		public static int Warning(QWidget parent, string title, string text, int button0, int button1) {
-			return StaticQMessageBox().Warning(parent,title,text,button0,button1);
+			return staticInterceptor.Warning(parent,title,text,button0,button1);
 		}
 		public static int Warning(QWidget parent, string title, string text, string button0Text, string button1Text, string button2Text, int defaultButtonNumber, int escapeButtonNumber) {
-			return StaticQMessageBox().Warning(parent,title,text,button0Text,button1Text,button2Text,defaultButtonNumber,escapeButtonNumber);
+			return staticInterceptor.Warning(parent,title,text,button0Text,button1Text,button2Text,defaultButtonNumber,escapeButtonNumber);
 		}
 		public static int Warning(QWidget parent, string title, string text, string button0Text, string button1Text, string button2Text, int defaultButtonNumber) {
-			return StaticQMessageBox().Warning(parent,title,text,button0Text,button1Text,button2Text,defaultButtonNumber);
+			return staticInterceptor.Warning(parent,title,text,button0Text,button1Text,button2Text,defaultButtonNumber);
 		}
 		public static int Warning(QWidget parent, string title, string text, string button0Text, string button1Text, string button2Text) {
-			return StaticQMessageBox().Warning(parent,title,text,button0Text,button1Text,button2Text);
+			return staticInterceptor.Warning(parent,title,text,button0Text,button1Text,button2Text);
 		}
 		public static int Warning(QWidget parent, string title, string text, string button0Text, string button1Text) {
-			return StaticQMessageBox().Warning(parent,title,text,button0Text,button1Text);
+			return staticInterceptor.Warning(parent,title,text,button0Text,button1Text);
 		}
 		public static int Warning(QWidget parent, string title, string text, string button0Text) {
-			return StaticQMessageBox().Warning(parent,title,text,button0Text);
+			return staticInterceptor.Warning(parent,title,text,button0Text);
 		}
 		public static int Warning(QWidget parent, string title, string text, QMessageBox.StandardButton button0, QMessageBox.StandardButton button1) {
-			return StaticQMessageBox().Warning(parent,title,text,button0,button1);
+			return staticInterceptor.Warning(parent,title,text,button0,button1);
 		}
 		public static int Critical(QWidget parent, string title, string text, int button0, int button1, int button2) {
-			return StaticQMessageBox().Critical(parent,title,text,button0,button1,button2);
+			return staticInterceptor.Critical(parent,title,text,button0,button1,button2);
 		}
 		public static int Critical(QWidget parent, string title, string text, int button0, int button1) {
-			return StaticQMessageBox().Critical(parent,title,text,button0,button1);
+			return staticInterceptor.Critical(parent,title,text,button0,button1);
 		}
 		public static int Critical(QWidget parent, string title, string text, string button0Text, string button1Text, string button2Text, int defaultButtonNumber, int escapeButtonNumber) {
-			return StaticQMessageBox().Critical(parent,title,text,button0Text,button1Text,button2Text,defaultButtonNumber,escapeButtonNumber);
+			return staticInterceptor.Critical(parent,title,text,button0Text,button1Text,button2Text,defaultButtonNumber,escapeButtonNumber);
 		}
 		public static int Critical(QWidget parent, string title, string text, string button0Text, string button1Text, string button2Text, int defaultButtonNumber) {
-			return StaticQMessageBox().Critical(parent,title,text,button0Text,button1Text,button2Text,defaultButtonNumber);
+			return staticInterceptor.Critical(parent,title,text,button0Text,button1Text,button2Text,defaultButtonNumber);
 		}
 		public static int Critical(QWidget parent, string title, string text, string button0Text, string button1Text, string button2Text) {
-			return StaticQMessageBox().Critical(parent,title,text,button0Text,button1Text,button2Text);
+			return staticInterceptor.Critical(parent,title,text,button0Text,button1Text,button2Text);
 		}
 		public static int Critical(QWidget parent, string title, string text, string button0Text, string button1Text) {
-			return StaticQMessageBox().Critical(parent,title,text,button0Text,button1Text);
+			return staticInterceptor.Critical(parent,title,text,button0Text,button1Text);
 		}
 		public static int Critical(QWidget parent, string title, string text, string button0Text) {
-			return StaticQMessageBox().Critical(parent,title,text,button0Text);
+			return staticInterceptor.Critical(parent,title,text,button0Text);
 		}
 		public static int Critical(QWidget parent, string title, string text, QMessageBox.StandardButton button0, QMessageBox.StandardButton button1) {
-			return StaticQMessageBox().Critical(parent,title,text,button0,button1);
+			return staticInterceptor.Critical(parent,title,text,button0,button1);
 		}
 		public static QPixmap StandardIcon(QMessageBox.Icon icon) {
-			return StaticQMessageBox().StandardIcon(icon);
+			return staticInterceptor.StandardIcon(icon);
 		}
 		protected new IQMessageBoxSignals Emit {
 			get { return (IQMessageBoxSignals) Q_EMIT; }

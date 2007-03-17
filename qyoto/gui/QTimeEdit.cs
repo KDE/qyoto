@@ -15,18 +15,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTimeEdit), this);
-			_interceptor = (QTimeEdit) realProxy.GetTransparentProxy();
+			interceptor = (QTimeEdit) realProxy.GetTransparentProxy();
 		}
-		private QTimeEdit ProxyQTimeEdit() {
-			return (QTimeEdit) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQTimeEditProxy staticInterceptor = null;
 		static QTimeEdit() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTimeEditProxy), null);
-			_staticInterceptor = (IQTimeEditProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQTimeEditProxy StaticQTimeEdit() {
-			return (IQTimeEditProxy) _staticInterceptor;
+			staticInterceptor = (IQTimeEditProxy) realProxy.GetTransparentProxy();
 		}
 		public QTimeEdit(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -34,7 +28,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTimeEdit", "(QWidget*)", "#")]
 		private void NewQTimeEdit(QWidget parent) {
-			ProxyQTimeEdit().NewQTimeEdit(parent);
+			((QTimeEdit) interceptor).NewQTimeEdit(parent);
 		}
 		public QTimeEdit() : this((Type) null) {
 			CreateProxy();
@@ -42,7 +36,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTimeEdit", "()", "")]
 		private void NewQTimeEdit() {
-			ProxyQTimeEdit().NewQTimeEdit();
+			((QTimeEdit) interceptor).NewQTimeEdit();
 		}
 		public QTimeEdit(QTime time, QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -50,7 +44,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTimeEdit", "(const QTime&, QWidget*)", "##")]
 		private void NewQTimeEdit(QTime time, QWidget parent) {
-			ProxyQTimeEdit().NewQTimeEdit(time,parent);
+			((QTimeEdit) interceptor).NewQTimeEdit(time,parent);
 		}
 		public QTimeEdit(QTime time) : this((Type) null) {
 			CreateProxy();
@@ -58,7 +52,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTimeEdit", "(const QTime&)", "#")]
 		private void NewQTimeEdit(QTime time) {
-			ProxyQTimeEdit().NewQTimeEdit(time);
+			((QTimeEdit) interceptor).NewQTimeEdit(time);
 		}
 		~QTimeEdit() {
 			DisposeQTimeEdit();
@@ -68,13 +62,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QTimeEdit", "()", "")]
 		private void DisposeQTimeEdit() {
-			ProxyQTimeEdit().DisposeQTimeEdit();
+			((QTimeEdit) interceptor).DisposeQTimeEdit();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQTimeEdit().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQTimeEdit().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQTimeEditSignals Emit {
 			get { return (IQTimeEditSignals) Q_EMIT; }

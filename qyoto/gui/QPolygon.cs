@@ -6,8 +6,8 @@ namespace Qyoto {
 
 	[SmokeClass("QPolygon")]
 	public class QPolygon : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QPolygon interceptor = null;
+		private IntPtr smokeObject;
 		protected QPolygon(Type dummy) {}
 		[SmokeClass("QPolygon")]
 		interface IQPolygonProxy {
@@ -16,18 +16,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPolygon), this);
-			_interceptor = (QPolygon) realProxy.GetTransparentProxy();
+			interceptor = (QPolygon) realProxy.GetTransparentProxy();
 		}
-		private QPolygon ProxyQPolygon() {
-			return (QPolygon) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQPolygonProxy staticInterceptor = null;
 		static QPolygon() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQPolygonProxy), null);
-			_staticInterceptor = (IQPolygonProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQPolygonProxy StaticQPolygon() {
-			return (IQPolygonProxy) _staticInterceptor;
+			staticInterceptor = (IQPolygonProxy) realProxy.GetTransparentProxy();
 		}
 		//  operator QVariant(); >>>> NOT CONVERTED
 		public QPolygon() : this((Type) null) {
@@ -36,7 +30,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QPolygon", "()", "")]
 		private void NewQPolygon() {
-			ProxyQPolygon().NewQPolygon();
+			((QPolygon) interceptor).NewQPolygon();
 		}
 		public QPolygon(int size) : this((Type) null) {
 			CreateProxy();
@@ -44,7 +38,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QPolygon", "(int)", "$")]
 		private void NewQPolygon(int size) {
-			ProxyQPolygon().NewQPolygon(size);
+			((QPolygon) interceptor).NewQPolygon(size);
 		}
 		public QPolygon(QPolygon a) : this((Type) null) {
 			CreateProxy();
@@ -52,7 +46,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QPolygon", "(const QPolygon&)", "#")]
 		private void NewQPolygon(QPolygon a) {
-			ProxyQPolygon().NewQPolygon(a);
+			((QPolygon) interceptor).NewQPolygon(a);
 		}
 		public QPolygon(List<QPoint> v) : this((Type) null) {
 			CreateProxy();
@@ -60,7 +54,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QPolygon", "(const QVector<QPoint>&)", "?")]
 		private void NewQPolygon(List<QPoint> v) {
-			ProxyQPolygon().NewQPolygon(v);
+			((QPolygon) interceptor).NewQPolygon(v);
 		}
 		public QPolygon(QRect r, bool closed) : this((Type) null) {
 			CreateProxy();
@@ -68,7 +62,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QPolygon", "(const QRect&, bool)", "#$")]
 		private void NewQPolygon(QRect r, bool closed) {
-			ProxyQPolygon().NewQPolygon(r,closed);
+			((QPolygon) interceptor).NewQPolygon(r,closed);
 		}
 		public QPolygon(QRect r) : this((Type) null) {
 			CreateProxy();
@@ -76,7 +70,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QPolygon", "(const QRect&)", "#")]
 		private void NewQPolygon(QRect r) {
-			ProxyQPolygon().NewQPolygon(r);
+			((QPolygon) interceptor).NewQPolygon(r);
 		}
 		public QPolygon(int nPoints, out int points) : this((Type) null) {
 			CreateProxy();
@@ -84,51 +78,51 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QPolygon", "(int, const int*)", "$$")]
 		private void NewQPolygon(int nPoints, out int points) {
-			ProxyQPolygon().NewQPolygon(nPoints,out points);
+			((QPolygon) interceptor).NewQPolygon(nPoints,out points);
 		}
 		[SmokeMethod("translate", "(int, int)", "$$")]
 		public void Translate(int dx, int dy) {
-			ProxyQPolygon().Translate(dx,dy);
+			((QPolygon) interceptor).Translate(dx,dy);
 		}
 		[SmokeMethod("translate", "(const QPoint&)", "#")]
 		public void Translate(QPoint offset) {
-			ProxyQPolygon().Translate(offset);
+			((QPolygon) interceptor).Translate(offset);
 		}
 		[SmokeMethod("boundingRect", "() const", "")]
 		public QRect BoundingRect() {
-			return ProxyQPolygon().BoundingRect();
+			return ((QPolygon) interceptor).BoundingRect();
 		}
 		[SmokeMethod("point", "(int, int*, int*) const", "$$$")]
 		public void Point(int i, out int x, out int y) {
-			ProxyQPolygon().Point(i,out x,out y);
+			((QPolygon) interceptor).Point(i,out x,out y);
 		}
 		[SmokeMethod("point", "(int) const", "$")]
 		public QPoint Point(int i) {
-			return ProxyQPolygon().Point(i);
+			return ((QPolygon) interceptor).Point(i);
 		}
 		[SmokeMethod("setPoint", "(int, int, int)", "$$$")]
 		public void SetPoint(int index, int x, int y) {
-			ProxyQPolygon().SetPoint(index,x,y);
+			((QPolygon) interceptor).SetPoint(index,x,y);
 		}
 		[SmokeMethod("setPoint", "(int, const QPoint&)", "$#")]
 		public void SetPoint(int index, QPoint p) {
-			ProxyQPolygon().SetPoint(index,p);
+			((QPolygon) interceptor).SetPoint(index,p);
 		}
 		[SmokeMethod("setPoints", "(int, const int*)", "$$")]
 		public void SetPoints(int nPoints, out int points) {
-			ProxyQPolygon().SetPoints(nPoints,out points);
+			((QPolygon) interceptor).SetPoints(nPoints,out points);
 		}
 		[SmokeMethod("putPoints", "(int, int, const int*)", "$$$")]
 		public void PutPoints(int index, int nPoints, out int points) {
-			ProxyQPolygon().PutPoints(index,nPoints,out points);
+			((QPolygon) interceptor).PutPoints(index,nPoints,out points);
 		}
 		[SmokeMethod("putPoints", "(int, int, const QPolygon&, int)", "$$#$")]
 		public void PutPoints(int index, int nPoints, QPolygon from, int fromIndex) {
-			ProxyQPolygon().PutPoints(index,nPoints,from,fromIndex);
+			((QPolygon) interceptor).PutPoints(index,nPoints,from,fromIndex);
 		}
 		[SmokeMethod("putPoints", "(int, int, const QPolygon&)", "$$#")]
 		public void PutPoints(int index, int nPoints, QPolygon from) {
-			ProxyQPolygon().PutPoints(index,nPoints,from);
+			((QPolygon) interceptor).PutPoints(index,nPoints,from);
 		}
 		~QPolygon() {
 			DisposeQPolygon();
@@ -138,10 +132,10 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QPolygon", "()", "")]
 		private void DisposeQPolygon() {
-			ProxyQPolygon().DisposeQPolygon();
+			((QPolygon) interceptor).DisposeQPolygon();
 		}
 		public static QPolygon operator*(QPolygon a, QMatrix m) {
-			return StaticQPolygon().op_mult(a,m);
+			return staticInterceptor.op_mult(a,m);
 		}
 	}
 }

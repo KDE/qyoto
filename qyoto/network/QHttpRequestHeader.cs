@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QHttpRequestHeader(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QHttpRequestHeader), this);
-			_interceptor = (QHttpRequestHeader) realProxy.GetTransparentProxy();
-		}
-		private QHttpRequestHeader ProxyQHttpRequestHeader() {
-			return (QHttpRequestHeader) _interceptor;
+			interceptor = (QHttpRequestHeader) realProxy.GetTransparentProxy();
 		}
 		public QHttpRequestHeader() : this((Type) null) {
 			CreateProxy();
@@ -19,7 +16,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QHttpRequestHeader", "()", "")]
 		private void NewQHttpRequestHeader() {
-			ProxyQHttpRequestHeader().NewQHttpRequestHeader();
+			((QHttpRequestHeader) interceptor).NewQHttpRequestHeader();
 		}
 		public QHttpRequestHeader(string method, string path, int majorVer, int minorVer) : this((Type) null) {
 			CreateProxy();
@@ -27,7 +24,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QHttpRequestHeader", "(const QString&, const QString&, int, int)", "$$$$")]
 		private void NewQHttpRequestHeader(string method, string path, int majorVer, int minorVer) {
-			ProxyQHttpRequestHeader().NewQHttpRequestHeader(method,path,majorVer,minorVer);
+			((QHttpRequestHeader) interceptor).NewQHttpRequestHeader(method,path,majorVer,minorVer);
 		}
 		public QHttpRequestHeader(string method, string path, int majorVer) : this((Type) null) {
 			CreateProxy();
@@ -35,7 +32,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QHttpRequestHeader", "(const QString&, const QString&, int)", "$$$")]
 		private void NewQHttpRequestHeader(string method, string path, int majorVer) {
-			ProxyQHttpRequestHeader().NewQHttpRequestHeader(method,path,majorVer);
+			((QHttpRequestHeader) interceptor).NewQHttpRequestHeader(method,path,majorVer);
 		}
 		public QHttpRequestHeader(string method, string path) : this((Type) null) {
 			CreateProxy();
@@ -43,7 +40,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QHttpRequestHeader", "(const QString&, const QString&)", "$$")]
 		private void NewQHttpRequestHeader(string method, string path) {
-			ProxyQHttpRequestHeader().NewQHttpRequestHeader(method,path);
+			((QHttpRequestHeader) interceptor).NewQHttpRequestHeader(method,path);
 		}
 		public QHttpRequestHeader(QHttpRequestHeader header) : this((Type) null) {
 			CreateProxy();
@@ -51,7 +48,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QHttpRequestHeader", "(const QHttpRequestHeader&)", "#")]
 		private void NewQHttpRequestHeader(QHttpRequestHeader header) {
-			ProxyQHttpRequestHeader().NewQHttpRequestHeader(header);
+			((QHttpRequestHeader) interceptor).NewQHttpRequestHeader(header);
 		}
 		public QHttpRequestHeader(string str) : this((Type) null) {
 			CreateProxy();
@@ -59,43 +56,43 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QHttpRequestHeader", "(const QString&)", "$")]
 		private void NewQHttpRequestHeader(string str) {
-			ProxyQHttpRequestHeader().NewQHttpRequestHeader(str);
+			((QHttpRequestHeader) interceptor).NewQHttpRequestHeader(str);
 		}
 		[SmokeMethod("setRequest", "(const QString&, const QString&, int, int)", "$$$$")]
 		public void SetRequest(string method, string path, int majorVer, int minorVer) {
-			ProxyQHttpRequestHeader().SetRequest(method,path,majorVer,minorVer);
+			((QHttpRequestHeader) interceptor).SetRequest(method,path,majorVer,minorVer);
 		}
 		[SmokeMethod("setRequest", "(const QString&, const QString&, int)", "$$$")]
 		public void SetRequest(string method, string path, int majorVer) {
-			ProxyQHttpRequestHeader().SetRequest(method,path,majorVer);
+			((QHttpRequestHeader) interceptor).SetRequest(method,path,majorVer);
 		}
 		[SmokeMethod("setRequest", "(const QString&, const QString&)", "$$")]
 		public void SetRequest(string method, string path) {
-			ProxyQHttpRequestHeader().SetRequest(method,path);
+			((QHttpRequestHeader) interceptor).SetRequest(method,path);
 		}
 		[SmokeMethod("method", "() const", "")]
 		public string Method() {
-			return ProxyQHttpRequestHeader().Method();
+			return ((QHttpRequestHeader) interceptor).Method();
 		}
 		[SmokeMethod("path", "() const", "")]
 		public string Path() {
-			return ProxyQHttpRequestHeader().Path();
+			return ((QHttpRequestHeader) interceptor).Path();
 		}
 		[SmokeMethod("majorVersion", "() const", "")]
 		public override int MajorVersion() {
-			return ProxyQHttpRequestHeader().MajorVersion();
+			return ((QHttpRequestHeader) interceptor).MajorVersion();
 		}
 		[SmokeMethod("minorVersion", "() const", "")]
 		public override int MinorVersion() {
-			return ProxyQHttpRequestHeader().MinorVersion();
+			return ((QHttpRequestHeader) interceptor).MinorVersion();
 		}
 		[SmokeMethod("toString", "() const", "")]
 		public new string ToString() {
-			return ProxyQHttpRequestHeader().ToString();
+			return ((QHttpRequestHeader) interceptor).ToString();
 		}
 		[SmokeMethod("parseLine", "(const QString&, int)", "$$")]
 		protected override bool ParseLine(string line, int number) {
-			return ProxyQHttpRequestHeader().ParseLine(line,number);
+			return ((QHttpRequestHeader) interceptor).ParseLine(line,number);
 		}
 		~QHttpRequestHeader() {
 			DisposeQHttpRequestHeader();
@@ -105,7 +102,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QHttpRequestHeader", "()", "")]
 		private void DisposeQHttpRequestHeader() {
-			ProxyQHttpRequestHeader().DisposeQHttpRequestHeader();
+			((QHttpRequestHeader) interceptor).DisposeQHttpRequestHeader();
 		}
 	}
 }

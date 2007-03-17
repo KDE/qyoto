@@ -16,18 +16,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAbstractEventDispatcher), this);
-			_interceptor = (QAbstractEventDispatcher) realProxy.GetTransparentProxy();
+			interceptor = (QAbstractEventDispatcher) realProxy.GetTransparentProxy();
 		}
-		private QAbstractEventDispatcher ProxyQAbstractEventDispatcher() {
-			return (QAbstractEventDispatcher) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQAbstractEventDispatcherProxy staticInterceptor = null;
 		static QAbstractEventDispatcher() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQAbstractEventDispatcherProxy), null);
-			_staticInterceptor = (IQAbstractEventDispatcherProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQAbstractEventDispatcherProxy StaticQAbstractEventDispatcher() {
-			return (IQAbstractEventDispatcherProxy) _staticInterceptor;
+			staticInterceptor = (IQAbstractEventDispatcherProxy) realProxy.GetTransparentProxy();
 		}
 		// QList<QAbstractEventDispatcher::TimerInfo> registeredTimers(QObject* arg1); >>>> NOT CONVERTED
 		// EventFilter setEventFilter(EventFilter arg1); >>>> NOT CONVERTED
@@ -39,7 +33,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QAbstractEventDispatcher", "(QObject*)", "#")]
 		private void NewQAbstractEventDispatcher(QObject parent) {
-			ProxyQAbstractEventDispatcher().NewQAbstractEventDispatcher(parent);
+			((QAbstractEventDispatcher) interceptor).NewQAbstractEventDispatcher(parent);
 		}
 		public QAbstractEventDispatcher() : this((Type) null) {
 			CreateProxy();
@@ -47,7 +41,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QAbstractEventDispatcher", "()", "")]
 		private void NewQAbstractEventDispatcher() {
-			ProxyQAbstractEventDispatcher().NewQAbstractEventDispatcher();
+			((QAbstractEventDispatcher) interceptor).NewQAbstractEventDispatcher();
 		}
 		[SmokeMethod("processEvents", "(QEventLoop::ProcessEventsFlags)", "$")]
 		public abstract bool ProcessEvents(uint flags);
@@ -59,7 +53,7 @@ namespace Qyoto {
 		public abstract void UnregisterSocketNotifier(QSocketNotifier notifier);
 		[SmokeMethod("registerTimer", "(int, QObject*)", "$#")]
 		public int RegisterTimer(int interval, QObject arg2) {
-			return ProxyQAbstractEventDispatcher().RegisterTimer(interval,arg2);
+			return ((QAbstractEventDispatcher) interceptor).RegisterTimer(interval,arg2);
 		}
 		[SmokeMethod("registerTimer", "(int, int, QObject*)", "$$#")]
 		public abstract void RegisterTimer(int timerId, int interval, QObject arg3);
@@ -75,17 +69,17 @@ namespace Qyoto {
 		public abstract void Flush();
 		[SmokeMethod("startingUp", "()", "")]
 		public virtual void StartingUp() {
-			ProxyQAbstractEventDispatcher().StartingUp();
+			((QAbstractEventDispatcher) interceptor).StartingUp();
 		}
 		[SmokeMethod("closingDown", "()", "")]
 		public virtual void ClosingDown() {
-			ProxyQAbstractEventDispatcher().ClosingDown();
+			((QAbstractEventDispatcher) interceptor).ClosingDown();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQAbstractEventDispatcher().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQAbstractEventDispatcher().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQAbstractEventDispatcherSignals Emit {
 			get { return (IQAbstractEventDispatcherSignals) Q_EMIT; }

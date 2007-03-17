@@ -6,8 +6,8 @@ namespace Qyoto {
 
 	[SmokeClass("QInputContextFactory")]
 	public class QInputContextFactory : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QInputContextFactory interceptor = null;
+		private IntPtr smokeObject;
 		protected QInputContextFactory(Type dummy) {}
 		[SmokeClass("QInputContextFactory")]
 		interface IQInputContextFactoryProxy {
@@ -24,18 +24,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QInputContextFactory), this);
-			_interceptor = (QInputContextFactory) realProxy.GetTransparentProxy();
+			interceptor = (QInputContextFactory) realProxy.GetTransparentProxy();
 		}
-		private QInputContextFactory ProxyQInputContextFactory() {
-			return (QInputContextFactory) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQInputContextFactoryProxy staticInterceptor = null;
 		static QInputContextFactory() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQInputContextFactoryProxy), null);
-			_staticInterceptor = (IQInputContextFactoryProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQInputContextFactoryProxy StaticQInputContextFactory() {
-			return (IQInputContextFactoryProxy) _staticInterceptor;
+			staticInterceptor = (IQInputContextFactoryProxy) realProxy.GetTransparentProxy();
 		}
 		public QInputContextFactory() : this((Type) null) {
 			CreateProxy();
@@ -43,7 +37,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QInputContextFactory", "()", "")]
 		private void NewQInputContextFactory() {
-			ProxyQInputContextFactory().NewQInputContextFactory();
+			((QInputContextFactory) interceptor).NewQInputContextFactory();
 		}
 		~QInputContextFactory() {
 			DisposeQInputContextFactory();
@@ -53,22 +47,22 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QInputContextFactory", "()", "")]
 		private void DisposeQInputContextFactory() {
-			ProxyQInputContextFactory().DisposeQInputContextFactory();
+			((QInputContextFactory) interceptor).DisposeQInputContextFactory();
 		}
 		public static List<string> Keys() {
-			return StaticQInputContextFactory().Keys();
+			return staticInterceptor.Keys();
 		}
 		public static QInputContext Create(string key, QObject parent) {
-			return StaticQInputContextFactory().Create(key,parent);
+			return staticInterceptor.Create(key,parent);
 		}
 		public static List<string> Languages(string key) {
-			return StaticQInputContextFactory().Languages(key);
+			return staticInterceptor.Languages(key);
 		}
 		public static string DisplayName(string key) {
-			return StaticQInputContextFactory().DisplayName(key);
+			return staticInterceptor.DisplayName(key);
 		}
 		public static string Description(string key) {
-			return StaticQInputContextFactory().Description(key);
+			return staticInterceptor.Description(key);
 		}
 	}
 }

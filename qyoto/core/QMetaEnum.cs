@@ -5,15 +5,12 @@ namespace Qyoto {
 
 	[SmokeClass("QMetaEnum")]
 	public class QMetaEnum : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QMetaEnum interceptor = null;
+		private IntPtr smokeObject;
 		protected QMetaEnum(Type dummy) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMetaEnum), this);
-			_interceptor = (QMetaEnum) realProxy.GetTransparentProxy();
-		}
-		private QMetaEnum ProxyQMetaEnum() {
-			return (QMetaEnum) _interceptor;
+			interceptor = (QMetaEnum) realProxy.GetTransparentProxy();
 		}
 		public QMetaEnum() : this((Type) null) {
 			CreateProxy();
@@ -21,51 +18,51 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QMetaEnum", "()", "")]
 		private void NewQMetaEnum() {
-			ProxyQMetaEnum().NewQMetaEnum();
+			((QMetaEnum) interceptor).NewQMetaEnum();
 		}
 		[SmokeMethod("name", "() const", "")]
 		public string Name() {
-			return ProxyQMetaEnum().Name();
+			return ((QMetaEnum) interceptor).Name();
 		}
 		[SmokeMethod("isFlag", "() const", "")]
 		public bool IsFlag() {
-			return ProxyQMetaEnum().IsFlag();
+			return ((QMetaEnum) interceptor).IsFlag();
 		}
 		[SmokeMethod("keyCount", "() const", "")]
 		public int KeyCount() {
-			return ProxyQMetaEnum().KeyCount();
+			return ((QMetaEnum) interceptor).KeyCount();
 		}
 		[SmokeMethod("key", "(int) const", "$")]
 		public string Key(int index) {
-			return ProxyQMetaEnum().Key(index);
+			return ((QMetaEnum) interceptor).Key(index);
 		}
 		[SmokeMethod("value", "(int) const", "$")]
 		public int Value(int index) {
-			return ProxyQMetaEnum().Value(index);
+			return ((QMetaEnum) interceptor).Value(index);
 		}
 		[SmokeMethod("scope", "() const", "")]
 		public string Scope() {
-			return ProxyQMetaEnum().Scope();
+			return ((QMetaEnum) interceptor).Scope();
 		}
 		[SmokeMethod("keyToValue", "(const char*) const", "$")]
 		public int KeyToValue(string key) {
-			return ProxyQMetaEnum().KeyToValue(key);
+			return ((QMetaEnum) interceptor).KeyToValue(key);
 		}
 		[SmokeMethod("valueToKey", "(int) const", "$")]
 		public string ValueToKey(int value) {
-			return ProxyQMetaEnum().ValueToKey(value);
+			return ((QMetaEnum) interceptor).ValueToKey(value);
 		}
 		[SmokeMethod("keysToValue", "(const char*) const", "$")]
 		public int KeysToValue(string keys) {
-			return ProxyQMetaEnum().KeysToValue(keys);
+			return ((QMetaEnum) interceptor).KeysToValue(keys);
 		}
 		[SmokeMethod("valueToKeys", "(int) const", "$")]
 		public QByteArray ValueToKeys(int value) {
-			return ProxyQMetaEnum().ValueToKeys(value);
+			return ((QMetaEnum) interceptor).ValueToKeys(value);
 		}
 		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ProxyQMetaEnum().IsValid();
+			return ((QMetaEnum) interceptor).IsValid();
 		}
 		~QMetaEnum() {
 			DisposeQMetaEnum();
@@ -75,7 +72,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QMetaEnum", "()", "")]
 		private void DisposeQMetaEnum() {
-			ProxyQMetaEnum().DisposeQMetaEnum();
+			((QMetaEnum) interceptor).DisposeQMetaEnum();
 		}
 	}
 }

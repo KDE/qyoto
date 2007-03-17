@@ -16,18 +16,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QIODevice), this);
-			_interceptor = (QIODevice) realProxy.GetTransparentProxy();
+			interceptor = (QIODevice) realProxy.GetTransparentProxy();
 		}
-		private QIODevice ProxyQIODevice() {
-			return (QIODevice) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQIODeviceProxy staticInterceptor = null;
 		static QIODevice() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQIODeviceProxy), null);
-			_staticInterceptor = (IQIODeviceProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQIODeviceProxy StaticQIODevice() {
-			return (IQIODeviceProxy) _staticInterceptor;
+			staticInterceptor = (IQIODeviceProxy) realProxy.GetTransparentProxy();
 		}
 		public enum OpenModeFlag {
 			NotOpen = 0x0000,
@@ -45,7 +39,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QIODevice", "()", "")]
 		private void NewQIODevice() {
-			ProxyQIODevice().NewQIODevice();
+			((QIODevice) interceptor).NewQIODevice();
 		}
 		public QIODevice(QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -53,161 +47,161 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QIODevice", "(QObject*)", "#")]
 		private void NewQIODevice(QObject parent) {
-			ProxyQIODevice().NewQIODevice(parent);
+			((QIODevice) interceptor).NewQIODevice(parent);
 		}
 		[SmokeMethod("openMode", "() const", "")]
 		public int OpenMode() {
-			return ProxyQIODevice().OpenMode();
+			return ((QIODevice) interceptor).OpenMode();
 		}
 		[SmokeMethod("setTextModeEnabled", "(bool)", "$")]
 		public void SetTextModeEnabled(bool enabled) {
-			ProxyQIODevice().SetTextModeEnabled(enabled);
+			((QIODevice) interceptor).SetTextModeEnabled(enabled);
 		}
 		[SmokeMethod("isTextModeEnabled", "() const", "")]
 		public bool IsTextModeEnabled() {
-			return ProxyQIODevice().IsTextModeEnabled();
+			return ((QIODevice) interceptor).IsTextModeEnabled();
 		}
 		[SmokeMethod("isOpen", "() const", "")]
 		public bool IsOpen() {
-			return ProxyQIODevice().IsOpen();
+			return ((QIODevice) interceptor).IsOpen();
 		}
 		[SmokeMethod("isReadable", "() const", "")]
 		public bool IsReadable() {
-			return ProxyQIODevice().IsReadable();
+			return ((QIODevice) interceptor).IsReadable();
 		}
 		[SmokeMethod("isWritable", "() const", "")]
 		public bool IsWritable() {
-			return ProxyQIODevice().IsWritable();
+			return ((QIODevice) interceptor).IsWritable();
 		}
 		[SmokeMethod("isSequential", "() const", "")]
 		public virtual bool IsSequential() {
-			return ProxyQIODevice().IsSequential();
+			return ((QIODevice) interceptor).IsSequential();
 		}
 		[SmokeMethod("open", "(OpenMode)", "$")]
 		public virtual bool Open(int mode) {
-			return ProxyQIODevice().Open(mode);
+			return ((QIODevice) interceptor).Open(mode);
 		}
 		[SmokeMethod("close", "()", "")]
 		public virtual void Close() {
-			ProxyQIODevice().Close();
+			((QIODevice) interceptor).Close();
 		}
 		[SmokeMethod("pos", "() const", "")]
 		public virtual long Pos() {
-			return ProxyQIODevice().Pos();
+			return ((QIODevice) interceptor).Pos();
 		}
 		[SmokeMethod("size", "() const", "")]
 		public virtual long Size() {
-			return ProxyQIODevice().Size();
+			return ((QIODevice) interceptor).Size();
 		}
 		[SmokeMethod("seek", "(qint64)", "$")]
 		public virtual bool Seek(long pos) {
-			return ProxyQIODevice().Seek(pos);
+			return ((QIODevice) interceptor).Seek(pos);
 		}
 		[SmokeMethod("atEnd", "() const", "")]
 		public virtual bool AtEnd() {
-			return ProxyQIODevice().AtEnd();
+			return ((QIODevice) interceptor).AtEnd();
 		}
 		[SmokeMethod("reset", "()", "")]
 		public virtual bool Reset() {
-			return ProxyQIODevice().Reset();
+			return ((QIODevice) interceptor).Reset();
 		}
 		[SmokeMethod("bytesAvailable", "() const", "")]
 		public virtual long BytesAvailable() {
-			return ProxyQIODevice().BytesAvailable();
+			return ((QIODevice) interceptor).BytesAvailable();
 		}
 		[SmokeMethod("bytesToWrite", "() const", "")]
 		public virtual long BytesToWrite() {
-			return ProxyQIODevice().BytesToWrite();
+			return ((QIODevice) interceptor).BytesToWrite();
 		}
 		[SmokeMethod("read", "(char*, qint64)", "$$")]
 		public long Read(string data, long maxlen) {
-			return ProxyQIODevice().Read(data,maxlen);
+			return ((QIODevice) interceptor).Read(data,maxlen);
 		}
 		[SmokeMethod("read", "(qint64)", "$")]
 		public QByteArray Read(long maxlen) {
-			return ProxyQIODevice().Read(maxlen);
+			return ((QIODevice) interceptor).Read(maxlen);
 		}
 		[SmokeMethod("readAll", "()", "")]
 		public QByteArray ReadAll() {
-			return ProxyQIODevice().ReadAll();
+			return ((QIODevice) interceptor).ReadAll();
 		}
 		[SmokeMethod("readLine", "(char*, qint64)", "$$")]
 		public long ReadLine(string data, long maxlen) {
-			return ProxyQIODevice().ReadLine(data,maxlen);
+			return ((QIODevice) interceptor).ReadLine(data,maxlen);
 		}
 		[SmokeMethod("readLine", "(qint64)", "$")]
 		public QByteArray ReadLine(long maxlen) {
-			return ProxyQIODevice().ReadLine(maxlen);
+			return ((QIODevice) interceptor).ReadLine(maxlen);
 		}
 		[SmokeMethod("readLine", "()", "")]
 		public QByteArray ReadLine() {
-			return ProxyQIODevice().ReadLine();
+			return ((QIODevice) interceptor).ReadLine();
 		}
 		[SmokeMethod("canReadLine", "() const", "")]
 		public virtual bool CanReadLine() {
-			return ProxyQIODevice().CanReadLine();
+			return ((QIODevice) interceptor).CanReadLine();
 		}
 		[SmokeMethod("write", "(const char*, qint64)", "$$")]
 		public long Write(string data, long len) {
-			return ProxyQIODevice().Write(data,len);
+			return ((QIODevice) interceptor).Write(data,len);
 		}
 		[SmokeMethod("write", "(const QByteArray&)", "#")]
 		public long Write(QByteArray data) {
-			return ProxyQIODevice().Write(data);
+			return ((QIODevice) interceptor).Write(data);
 		}
 		[SmokeMethod("peek", "(char*, qint64)", "$$")]
 		public long Peek(string data, long maxlen) {
-			return ProxyQIODevice().Peek(data,maxlen);
+			return ((QIODevice) interceptor).Peek(data,maxlen);
 		}
 		[SmokeMethod("peek", "(qint64)", "$")]
 		public QByteArray Peek(long maxlen) {
-			return ProxyQIODevice().Peek(maxlen);
+			return ((QIODevice) interceptor).Peek(maxlen);
 		}
 		[SmokeMethod("waitForReadyRead", "(int)", "$")]
 		public virtual bool WaitForReadyRead(int msecs) {
-			return ProxyQIODevice().WaitForReadyRead(msecs);
+			return ((QIODevice) interceptor).WaitForReadyRead(msecs);
 		}
 		[SmokeMethod("waitForBytesWritten", "(int)", "$")]
 		public virtual bool WaitForBytesWritten(int msecs) {
-			return ProxyQIODevice().WaitForBytesWritten(msecs);
+			return ((QIODevice) interceptor).WaitForBytesWritten(msecs);
 		}
 		[SmokeMethod("ungetChar", "(char)", "$")]
 		public void UngetChar(char c) {
-			ProxyQIODevice().UngetChar(c);
+			((QIODevice) interceptor).UngetChar(c);
 		}
 		[SmokeMethod("putChar", "(char)", "$")]
 		public bool PutChar(char c) {
-			return ProxyQIODevice().PutChar(c);
+			return ((QIODevice) interceptor).PutChar(c);
 		}
 		[SmokeMethod("getChar", "(char*)", "$")]
 		public bool GetChar(string c) {
-			return ProxyQIODevice().GetChar(c);
+			return ((QIODevice) interceptor).GetChar(c);
 		}
 		[SmokeMethod("errorString", "() const", "")]
 		public string ErrorString() {
-			return ProxyQIODevice().ErrorString();
+			return ((QIODevice) interceptor).ErrorString();
 		}
 		[SmokeMethod("readData", "(char*, qint64)", "$$")]
 		protected abstract long ReadData(string data, long maxlen);
 		[SmokeMethod("readLineData", "(char*, qint64)", "$$")]
 		protected virtual long ReadLineData(string data, long maxlen) {
-			return ProxyQIODevice().ReadLineData(data,maxlen);
+			return ((QIODevice) interceptor).ReadLineData(data,maxlen);
 		}
 		[SmokeMethod("writeData", "(const char*, qint64)", "$$")]
 		protected abstract long WriteData(string data, long len);
 		[SmokeMethod("setOpenMode", "(OpenMode)", "$")]
 		protected void SetOpenMode(int openMode) {
-			ProxyQIODevice().SetOpenMode(openMode);
+			((QIODevice) interceptor).SetOpenMode(openMode);
 		}
 		[SmokeMethod("setErrorString", "(const QString&)", "$")]
 		protected void SetErrorString(string errorString) {
-			ProxyQIODevice().SetErrorString(errorString);
+			((QIODevice) interceptor).SetErrorString(errorString);
 		}
 		public static string Tr(string s, string c) {
-			return StaticQIODevice().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQIODevice().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQIODeviceSignals Emit {
 			get { return (IQIODeviceSignals) Q_EMIT; }

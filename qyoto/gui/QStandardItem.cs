@@ -6,15 +6,12 @@ namespace Qyoto {
 
 	[SmokeClass("QStandardItem")]
 	public class QStandardItem : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QStandardItem interceptor = null;
+		private IntPtr smokeObject;
 		protected QStandardItem(Type dummy) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStandardItem), this);
-			_interceptor = (QStandardItem) realProxy.GetTransparentProxy();
-		}
-		private QStandardItem ProxyQStandardItem() {
-			return (QStandardItem) _interceptor;
+			interceptor = (QStandardItem) realProxy.GetTransparentProxy();
 		}
 		public enum ItemType {
 			Type = 0,
@@ -27,7 +24,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStandardItem", "()", "")]
 		private void NewQStandardItem() {
-			ProxyQStandardItem().NewQStandardItem();
+			((QStandardItem) interceptor).NewQStandardItem();
 		}
 		public QStandardItem(string text) : this((Type) null) {
 			CreateProxy();
@@ -35,7 +32,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStandardItem", "(const QString&)", "$")]
 		private void NewQStandardItem(string text) {
-			ProxyQStandardItem().NewQStandardItem(text);
+			((QStandardItem) interceptor).NewQStandardItem(text);
 		}
 		public QStandardItem(QIcon icon, string text) : this((Type) null) {
 			CreateProxy();
@@ -43,7 +40,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStandardItem", "(const QIcon&, const QString&)", "#$")]
 		private void NewQStandardItem(QIcon icon, string text) {
-			ProxyQStandardItem().NewQStandardItem(icon,text);
+			((QStandardItem) interceptor).NewQStandardItem(icon,text);
 		}
 		public QStandardItem(int rows, int columns) : this((Type) null) {
 			CreateProxy();
@@ -51,7 +48,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStandardItem", "(int, int)", "$$")]
 		private void NewQStandardItem(int rows, int columns) {
-			ProxyQStandardItem().NewQStandardItem(rows,columns);
+			((QStandardItem) interceptor).NewQStandardItem(rows,columns);
 		}
 		public QStandardItem(int rows) : this((Type) null) {
 			CreateProxy();
@@ -59,335 +56,335 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStandardItem", "(int)", "$")]
 		private void NewQStandardItem(int rows) {
-			ProxyQStandardItem().NewQStandardItem(rows);
+			((QStandardItem) interceptor).NewQStandardItem(rows);
 		}
 		[SmokeMethod("data", "(int) const", "$")]
 		public virtual QVariant Data(int role) {
-			return ProxyQStandardItem().Data(role);
+			return ((QStandardItem) interceptor).Data(role);
 		}
 		[SmokeMethod("data", "() const", "")]
 		public virtual QVariant Data() {
-			return ProxyQStandardItem().Data();
+			return ((QStandardItem) interceptor).Data();
 		}
 		[SmokeMethod("setData", "(const QVariant&, int)", "#$")]
 		public virtual void SetData(QVariant value, int role) {
-			ProxyQStandardItem().SetData(value,role);
+			((QStandardItem) interceptor).SetData(value,role);
 		}
 		[SmokeMethod("setData", "(const QVariant&)", "#")]
 		public virtual void SetData(QVariant value) {
-			ProxyQStandardItem().SetData(value);
+			((QStandardItem) interceptor).SetData(value);
 		}
 		[SmokeMethod("text", "() const", "")]
 		public string Text() {
-			return ProxyQStandardItem().Text();
+			return ((QStandardItem) interceptor).Text();
 		}
 		[SmokeMethod("setText", "(const QString&)", "$")]
 		public void SetText(string text) {
-			ProxyQStandardItem().SetText(text);
+			((QStandardItem) interceptor).SetText(text);
 		}
 		[SmokeMethod("icon", "() const", "")]
 		public QIcon Icon() {
-			return ProxyQStandardItem().Icon();
+			return ((QStandardItem) interceptor).Icon();
 		}
 		[SmokeMethod("setIcon", "(const QIcon&)", "#")]
 		public void SetIcon(QIcon icon) {
-			ProxyQStandardItem().SetIcon(icon);
+			((QStandardItem) interceptor).SetIcon(icon);
 		}
 		[SmokeMethod("toolTip", "() const", "")]
 		public string ToolTip() {
-			return ProxyQStandardItem().ToolTip();
+			return ((QStandardItem) interceptor).ToolTip();
 		}
 		[SmokeMethod("setToolTip", "(const QString&)", "$")]
 		public void SetToolTip(string toolTip) {
-			ProxyQStandardItem().SetToolTip(toolTip);
+			((QStandardItem) interceptor).SetToolTip(toolTip);
 		}
 		[SmokeMethod("statusTip", "() const", "")]
 		public string StatusTip() {
-			return ProxyQStandardItem().StatusTip();
+			return ((QStandardItem) interceptor).StatusTip();
 		}
 		[SmokeMethod("setStatusTip", "(const QString&)", "$")]
 		public void SetStatusTip(string statusTip) {
-			ProxyQStandardItem().SetStatusTip(statusTip);
+			((QStandardItem) interceptor).SetStatusTip(statusTip);
 		}
 		[SmokeMethod("whatsThis", "() const", "")]
 		public string WhatsThis() {
-			return ProxyQStandardItem().WhatsThis();
+			return ((QStandardItem) interceptor).WhatsThis();
 		}
 		[SmokeMethod("setWhatsThis", "(const QString&)", "$")]
 		public void SetWhatsThis(string whatsThis) {
-			ProxyQStandardItem().SetWhatsThis(whatsThis);
+			((QStandardItem) interceptor).SetWhatsThis(whatsThis);
 		}
 		[SmokeMethod("sizeHint", "() const", "")]
 		public QSize SizeHint() {
-			return ProxyQStandardItem().SizeHint();
+			return ((QStandardItem) interceptor).SizeHint();
 		}
 		[SmokeMethod("setSizeHint", "(const QSize&)", "#")]
 		public void SetSizeHint(QSize sizeHint) {
-			ProxyQStandardItem().SetSizeHint(sizeHint);
+			((QStandardItem) interceptor).SetSizeHint(sizeHint);
 		}
 		[SmokeMethod("font", "() const", "")]
 		public QFont Font() {
-			return ProxyQStandardItem().Font();
+			return ((QStandardItem) interceptor).Font();
 		}
 		[SmokeMethod("setFont", "(const QFont&)", "#")]
 		public void SetFont(QFont font) {
-			ProxyQStandardItem().SetFont(font);
+			((QStandardItem) interceptor).SetFont(font);
 		}
 		[SmokeMethod("textAlignment", "() const", "")]
 		public int TextAlignment() {
-			return ProxyQStandardItem().TextAlignment();
+			return ((QStandardItem) interceptor).TextAlignment();
 		}
 		[SmokeMethod("setTextAlignment", "(Qt::Alignment)", "$")]
 		public void SetTextAlignment(int textAlignment) {
-			ProxyQStandardItem().SetTextAlignment(textAlignment);
+			((QStandardItem) interceptor).SetTextAlignment(textAlignment);
 		}
 		[SmokeMethod("background", "() const", "")]
 		public QBrush Background() {
-			return ProxyQStandardItem().Background();
+			return ((QStandardItem) interceptor).Background();
 		}
 		[SmokeMethod("setBackground", "(const QBrush&)", "#")]
 		public void SetBackground(QBrush brush) {
-			ProxyQStandardItem().SetBackground(brush);
+			((QStandardItem) interceptor).SetBackground(brush);
 		}
 		[SmokeMethod("foreground", "() const", "")]
 		public QBrush Foreground() {
-			return ProxyQStandardItem().Foreground();
+			return ((QStandardItem) interceptor).Foreground();
 		}
 		[SmokeMethod("setForeground", "(const QBrush&)", "#")]
 		public void SetForeground(QBrush brush) {
-			ProxyQStandardItem().SetForeground(brush);
+			((QStandardItem) interceptor).SetForeground(brush);
 		}
 		[SmokeMethod("checkState", "() const", "")]
 		public Qt.CheckState CheckState() {
-			return ProxyQStandardItem().CheckState();
+			return ((QStandardItem) interceptor).CheckState();
 		}
 		[SmokeMethod("setCheckState", "(Qt::CheckState)", "$")]
 		public void SetCheckState(Qt.CheckState checkState) {
-			ProxyQStandardItem().SetCheckState(checkState);
+			((QStandardItem) interceptor).SetCheckState(checkState);
 		}
 		[SmokeMethod("accessibleText", "() const", "")]
 		public string AccessibleText() {
-			return ProxyQStandardItem().AccessibleText();
+			return ((QStandardItem) interceptor).AccessibleText();
 		}
 		[SmokeMethod("setAccessibleText", "(const QString&)", "$")]
 		public void SetAccessibleText(string accessibleText) {
-			ProxyQStandardItem().SetAccessibleText(accessibleText);
+			((QStandardItem) interceptor).SetAccessibleText(accessibleText);
 		}
 		[SmokeMethod("accessibleDescription", "() const", "")]
 		public string AccessibleDescription() {
-			return ProxyQStandardItem().AccessibleDescription();
+			return ((QStandardItem) interceptor).AccessibleDescription();
 		}
 		[SmokeMethod("setAccessibleDescription", "(const QString&)", "$")]
 		public void SetAccessibleDescription(string accessibleDescription) {
-			ProxyQStandardItem().SetAccessibleDescription(accessibleDescription);
+			((QStandardItem) interceptor).SetAccessibleDescription(accessibleDescription);
 		}
 		[SmokeMethod("flags", "() const", "")]
 		public int Flags() {
-			return ProxyQStandardItem().Flags();
+			return ((QStandardItem) interceptor).Flags();
 		}
 		[SmokeMethod("setFlags", "(Qt::ItemFlags)", "$")]
 		public void SetFlags(int flags) {
-			ProxyQStandardItem().SetFlags(flags);
+			((QStandardItem) interceptor).SetFlags(flags);
 		}
 		[SmokeMethod("isEnabled", "() const", "")]
 		public bool IsEnabled() {
-			return ProxyQStandardItem().IsEnabled();
+			return ((QStandardItem) interceptor).IsEnabled();
 		}
 		[SmokeMethod("setEnabled", "(bool)", "$")]
 		public void SetEnabled(bool enabled) {
-			ProxyQStandardItem().SetEnabled(enabled);
+			((QStandardItem) interceptor).SetEnabled(enabled);
 		}
 		[SmokeMethod("isEditable", "() const", "")]
 		public bool IsEditable() {
-			return ProxyQStandardItem().IsEditable();
+			return ((QStandardItem) interceptor).IsEditable();
 		}
 		[SmokeMethod("setEditable", "(bool)", "$")]
 		public void SetEditable(bool editable) {
-			ProxyQStandardItem().SetEditable(editable);
+			((QStandardItem) interceptor).SetEditable(editable);
 		}
 		[SmokeMethod("isSelectable", "() const", "")]
 		public bool IsSelectable() {
-			return ProxyQStandardItem().IsSelectable();
+			return ((QStandardItem) interceptor).IsSelectable();
 		}
 		[SmokeMethod("setSelectable", "(bool)", "$")]
 		public void SetSelectable(bool selectable) {
-			ProxyQStandardItem().SetSelectable(selectable);
+			((QStandardItem) interceptor).SetSelectable(selectable);
 		}
 		[SmokeMethod("isCheckable", "() const", "")]
 		public bool IsCheckable() {
-			return ProxyQStandardItem().IsCheckable();
+			return ((QStandardItem) interceptor).IsCheckable();
 		}
 		[SmokeMethod("setCheckable", "(bool)", "$")]
 		public void SetCheckable(bool checkable) {
-			ProxyQStandardItem().SetCheckable(checkable);
+			((QStandardItem) interceptor).SetCheckable(checkable);
 		}
 		[SmokeMethod("isTristate", "() const", "")]
 		public bool IsTristate() {
-			return ProxyQStandardItem().IsTristate();
+			return ((QStandardItem) interceptor).IsTristate();
 		}
 		[SmokeMethod("setTristate", "(bool)", "$")]
 		public void SetTristate(bool tristate) {
-			ProxyQStandardItem().SetTristate(tristate);
+			((QStandardItem) interceptor).SetTristate(tristate);
 		}
 		[SmokeMethod("isDragEnabled", "() const", "")]
 		public bool IsDragEnabled() {
-			return ProxyQStandardItem().IsDragEnabled();
+			return ((QStandardItem) interceptor).IsDragEnabled();
 		}
 		[SmokeMethod("setDragEnabled", "(bool)", "$")]
 		public void SetDragEnabled(bool dragEnabled) {
-			ProxyQStandardItem().SetDragEnabled(dragEnabled);
+			((QStandardItem) interceptor).SetDragEnabled(dragEnabled);
 		}
 		[SmokeMethod("isDropEnabled", "() const", "")]
 		public bool IsDropEnabled() {
-			return ProxyQStandardItem().IsDropEnabled();
+			return ((QStandardItem) interceptor).IsDropEnabled();
 		}
 		[SmokeMethod("setDropEnabled", "(bool)", "$")]
 		public void SetDropEnabled(bool dropEnabled) {
-			ProxyQStandardItem().SetDropEnabled(dropEnabled);
+			((QStandardItem) interceptor).SetDropEnabled(dropEnabled);
 		}
 		[SmokeMethod("parent", "() const", "")]
 		public QStandardItem Parent() {
-			return ProxyQStandardItem().Parent();
+			return ((QStandardItem) interceptor).Parent();
 		}
 		[SmokeMethod("row", "() const", "")]
 		public int Row() {
-			return ProxyQStandardItem().Row();
+			return ((QStandardItem) interceptor).Row();
 		}
 		[SmokeMethod("column", "() const", "")]
 		public int Column() {
-			return ProxyQStandardItem().Column();
+			return ((QStandardItem) interceptor).Column();
 		}
 		[SmokeMethod("index", "() const", "")]
 		public QModelIndex Index() {
-			return ProxyQStandardItem().Index();
+			return ((QStandardItem) interceptor).Index();
 		}
 		[SmokeMethod("model", "() const", "")]
 		public QStandardItemModel Model() {
-			return ProxyQStandardItem().Model();
+			return ((QStandardItem) interceptor).Model();
 		}
 		[SmokeMethod("rowCount", "() const", "")]
 		public int RowCount() {
-			return ProxyQStandardItem().RowCount();
+			return ((QStandardItem) interceptor).RowCount();
 		}
 		[SmokeMethod("setRowCount", "(int)", "$")]
 		public void SetRowCount(int rows) {
-			ProxyQStandardItem().SetRowCount(rows);
+			((QStandardItem) interceptor).SetRowCount(rows);
 		}
 		[SmokeMethod("columnCount", "() const", "")]
 		public int ColumnCount() {
-			return ProxyQStandardItem().ColumnCount();
+			return ((QStandardItem) interceptor).ColumnCount();
 		}
 		[SmokeMethod("setColumnCount", "(int)", "$")]
 		public void SetColumnCount(int columns) {
-			ProxyQStandardItem().SetColumnCount(columns);
+			((QStandardItem) interceptor).SetColumnCount(columns);
 		}
 		[SmokeMethod("hasChildren", "() const", "")]
 		public bool HasChildren() {
-			return ProxyQStandardItem().HasChildren();
+			return ((QStandardItem) interceptor).HasChildren();
 		}
 		[SmokeMethod("child", "(int, int) const", "$$")]
 		public QStandardItem Child(int row, int column) {
-			return ProxyQStandardItem().Child(row,column);
+			return ((QStandardItem) interceptor).Child(row,column);
 		}
 		[SmokeMethod("child", "(int) const", "$")]
 		public QStandardItem Child(int row) {
-			return ProxyQStandardItem().Child(row);
+			return ((QStandardItem) interceptor).Child(row);
 		}
 		[SmokeMethod("setChild", "(int, int, QStandardItem*)", "$$#")]
 		public void SetChild(int row, int column, QStandardItem item) {
-			ProxyQStandardItem().SetChild(row,column,item);
+			((QStandardItem) interceptor).SetChild(row,column,item);
 		}
 		[SmokeMethod("setChild", "(int, QStandardItem*)", "$#")]
 		public void SetChild(int row, QStandardItem item) {
-			ProxyQStandardItem().SetChild(row,item);
+			((QStandardItem) interceptor).SetChild(row,item);
 		}
 		[SmokeMethod("insertRow", "(int, const QList<QStandardItem*>&)", "$?")]
 		public void InsertRow(int row, List<QStandardItem> items) {
-			ProxyQStandardItem().InsertRow(row,items);
+			((QStandardItem) interceptor).InsertRow(row,items);
 		}
 		[SmokeMethod("insertColumn", "(int, const QList<QStandardItem*>&)", "$?")]
 		public void InsertColumn(int column, List<QStandardItem> items) {
-			ProxyQStandardItem().InsertColumn(column,items);
+			((QStandardItem) interceptor).InsertColumn(column,items);
 		}
 		[SmokeMethod("insertRows", "(int, int)", "$$")]
 		public void InsertRows(int row, int count) {
-			ProxyQStandardItem().InsertRows(row,count);
+			((QStandardItem) interceptor).InsertRows(row,count);
 		}
 		[SmokeMethod("insertColumns", "(int, int)", "$$")]
 		public void InsertColumns(int column, int count) {
-			ProxyQStandardItem().InsertColumns(column,count);
+			((QStandardItem) interceptor).InsertColumns(column,count);
 		}
 		[SmokeMethod("removeRow", "(int)", "$")]
 		public void RemoveRow(int row) {
-			ProxyQStandardItem().RemoveRow(row);
+			((QStandardItem) interceptor).RemoveRow(row);
 		}
 		[SmokeMethod("removeColumn", "(int)", "$")]
 		public void RemoveColumn(int column) {
-			ProxyQStandardItem().RemoveColumn(column);
+			((QStandardItem) interceptor).RemoveColumn(column);
 		}
 		[SmokeMethod("removeRows", "(int, int)", "$$")]
 		public void RemoveRows(int row, int count) {
-			ProxyQStandardItem().RemoveRows(row,count);
+			((QStandardItem) interceptor).RemoveRows(row,count);
 		}
 		[SmokeMethod("removeColumns", "(int, int)", "$$")]
 		public void RemoveColumns(int column, int count) {
-			ProxyQStandardItem().RemoveColumns(column,count);
+			((QStandardItem) interceptor).RemoveColumns(column,count);
 		}
 		[SmokeMethod("appendRow", "(const QList<QStandardItem*>&)", "?")]
 		public void AppendRow(List<QStandardItem> items) {
-			ProxyQStandardItem().AppendRow(items);
+			((QStandardItem) interceptor).AppendRow(items);
 		}
 		[SmokeMethod("appendColumn", "(const QList<QStandardItem*>&)", "?")]
 		public void AppendColumn(List<QStandardItem> items) {
-			ProxyQStandardItem().AppendColumn(items);
+			((QStandardItem) interceptor).AppendColumn(items);
 		}
 		[SmokeMethod("insertRow", "(int, QStandardItem*)", "$#")]
 		public void InsertRow(int row, QStandardItem item) {
-			ProxyQStandardItem().InsertRow(row,item);
+			((QStandardItem) interceptor).InsertRow(row,item);
 		}
 		[SmokeMethod("appendRow", "(QStandardItem*)", "#")]
 		public void AppendRow(QStandardItem item) {
-			ProxyQStandardItem().AppendRow(item);
+			((QStandardItem) interceptor).AppendRow(item);
 		}
 		[SmokeMethod("takeChild", "(int, int)", "$$")]
 		public QStandardItem TakeChild(int row, int column) {
-			return ProxyQStandardItem().TakeChild(row,column);
+			return ((QStandardItem) interceptor).TakeChild(row,column);
 		}
 		[SmokeMethod("takeChild", "(int)", "$")]
 		public QStandardItem TakeChild(int row) {
-			return ProxyQStandardItem().TakeChild(row);
+			return ((QStandardItem) interceptor).TakeChild(row);
 		}
 		[SmokeMethod("takeRow", "(int)", "$")]
 		public List<QStandardItem> TakeRow(int row) {
-			return ProxyQStandardItem().TakeRow(row);
+			return ((QStandardItem) interceptor).TakeRow(row);
 		}
 		[SmokeMethod("takeColumn", "(int)", "$")]
 		public List<QStandardItem> TakeColumn(int column) {
-			return ProxyQStandardItem().TakeColumn(column);
+			return ((QStandardItem) interceptor).TakeColumn(column);
 		}
 		[SmokeMethod("sortChildren", "(int, Qt::SortOrder)", "$$")]
 		public void SortChildren(int column, Qt.SortOrder order) {
-			ProxyQStandardItem().SortChildren(column,order);
+			((QStandardItem) interceptor).SortChildren(column,order);
 		}
 		[SmokeMethod("sortChildren", "(int)", "$")]
 		public void SortChildren(int column) {
-			ProxyQStandardItem().SortChildren(column);
+			((QStandardItem) interceptor).SortChildren(column);
 		}
 		[SmokeMethod("clone", "() const", "")]
 		public virtual QStandardItem Clone() {
-			return ProxyQStandardItem().Clone();
+			return ((QStandardItem) interceptor).Clone();
 		}
 		[SmokeMethod("type", "() const", "")]
 		public virtual int type() {
-			return ProxyQStandardItem().type();
+			return ((QStandardItem) interceptor).type();
 		}
 		[SmokeMethod("read", "(QDataStream&)", "#")]
 		public virtual void Read(QDataStream arg1) {
-			ProxyQStandardItem().Read(arg1);
+			((QStandardItem) interceptor).Read(arg1);
 		}
 		[SmokeMethod("write", "(QDataStream&) const", "#")]
 		public virtual void Write(QDataStream arg1) {
-			ProxyQStandardItem().Write(arg1);
+			((QStandardItem) interceptor).Write(arg1);
 		}
 		public QStandardItem(QStandardItem other) : this((Type) null) {
 			CreateProxy();
@@ -395,7 +392,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStandardItem", "(const QStandardItem&)", "#")]
 		private void NewQStandardItem(QStandardItem other) {
-			ProxyQStandardItem().NewQStandardItem(other);
+			((QStandardItem) interceptor).NewQStandardItem(other);
 		}
 		~QStandardItem() {
 			DisposeQStandardItem();
@@ -405,7 +402,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QStandardItem", "()", "")]
 		private void DisposeQStandardItem() {
-			ProxyQStandardItem().DisposeQStandardItem();
+			((QStandardItem) interceptor).DisposeQStandardItem();
 		}
 	}
 }

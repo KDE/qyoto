@@ -5,15 +5,12 @@ namespace Qyoto {
 
 	[SmokeClass("QTextItem")]
 	public class QTextItem : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QTextItem interceptor = null;
+		private IntPtr smokeObject;
 		protected QTextItem(Type dummy) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextItem), this);
-			_interceptor = (QTextItem) realProxy.GetTransparentProxy();
-		}
-		private QTextItem ProxyQTextItem() {
-			return (QTextItem) _interceptor;
+			interceptor = (QTextItem) realProxy.GetTransparentProxy();
 		}
 		public enum RenderFlag : uint {
 			RightToLeft = 0x1,
@@ -24,27 +21,27 @@ namespace Qyoto {
 		}
 		[SmokeMethod("descent", "() const", "")]
 		public double Descent() {
-			return ProxyQTextItem().Descent();
+			return ((QTextItem) interceptor).Descent();
 		}
 		[SmokeMethod("ascent", "() const", "")]
 		public double Ascent() {
-			return ProxyQTextItem().Ascent();
+			return ((QTextItem) interceptor).Ascent();
 		}
 		[SmokeMethod("width", "() const", "")]
 		public double Width() {
-			return ProxyQTextItem().Width();
+			return ((QTextItem) interceptor).Width();
 		}
 		[SmokeMethod("renderFlags", "() const", "")]
 		public int RenderFlags() {
-			return ProxyQTextItem().RenderFlags();
+			return ((QTextItem) interceptor).RenderFlags();
 		}
 		[SmokeMethod("text", "() const", "")]
 		public string Text() {
-			return ProxyQTextItem().Text();
+			return ((QTextItem) interceptor).Text();
 		}
 		[SmokeMethod("font", "() const", "")]
 		public QFont Font() {
-			return ProxyQTextItem().Font();
+			return ((QTextItem) interceptor).Font();
 		}
 		public QTextItem() : this((Type) null) {
 			CreateProxy();
@@ -52,7 +49,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTextItem", "()", "")]
 		private void NewQTextItem() {
-			ProxyQTextItem().NewQTextItem();
+			((QTextItem) interceptor).NewQTextItem();
 		}
 		~QTextItem() {
 			DisposeQTextItem();
@@ -62,7 +59,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QTextItem", "()", "")]
 		private void DisposeQTextItem() {
-			ProxyQTextItem().DisposeQTextItem();
+			((QTextItem) interceptor).DisposeQTextItem();
 		}
 	}
 }

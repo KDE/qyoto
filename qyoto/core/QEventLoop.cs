@@ -15,18 +15,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QEventLoop), this);
-			_interceptor = (QEventLoop) realProxy.GetTransparentProxy();
+			interceptor = (QEventLoop) realProxy.GetTransparentProxy();
 		}
-		private QEventLoop ProxyQEventLoop() {
-			return (QEventLoop) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQEventLoopProxy staticInterceptor = null;
 		static QEventLoop() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQEventLoopProxy), null);
-			_staticInterceptor = (IQEventLoopProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQEventLoopProxy StaticQEventLoop() {
-			return (IQEventLoopProxy) _staticInterceptor;
+			staticInterceptor = (IQEventLoopProxy) realProxy.GetTransparentProxy();
 		}
 		public enum ProcessEventsFlag {
 			AllEvents = 0x00,
@@ -42,7 +36,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QEventLoop", "(QObject*)", "#")]
 		private void NewQEventLoop(QObject parent) {
-			ProxyQEventLoop().NewQEventLoop(parent);
+			((QEventLoop) interceptor).NewQEventLoop(parent);
 		}
 		public QEventLoop() : this((Type) null) {
 			CreateProxy();
@@ -50,48 +44,48 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QEventLoop", "()", "")]
 		private void NewQEventLoop() {
-			ProxyQEventLoop().NewQEventLoop();
+			((QEventLoop) interceptor).NewQEventLoop();
 		}
 		[SmokeMethod("processEvents", "(ProcessEventsFlags)", "$")]
 		public bool ProcessEvents(int flags) {
-			return ProxyQEventLoop().ProcessEvents(flags);
+			return ((QEventLoop) interceptor).ProcessEvents(flags);
 		}
 		[SmokeMethod("processEvents", "()", "")]
 		public bool ProcessEvents() {
-			return ProxyQEventLoop().ProcessEvents();
+			return ((QEventLoop) interceptor).ProcessEvents();
 		}
 		[SmokeMethod("processEvents", "(ProcessEventsFlags, int)", "$$")]
 		public void ProcessEvents(int flags, int maximumTime) {
-			ProxyQEventLoop().ProcessEvents(flags,maximumTime);
+			((QEventLoop) interceptor).ProcessEvents(flags,maximumTime);
 		}
 		[SmokeMethod("exec", "(ProcessEventsFlags)", "$")]
 		public int Exec(int flags) {
-			return ProxyQEventLoop().Exec(flags);
+			return ((QEventLoop) interceptor).Exec(flags);
 		}
 		[SmokeMethod("exec", "()", "")]
 		public int Exec() {
-			return ProxyQEventLoop().Exec();
+			return ((QEventLoop) interceptor).Exec();
 		}
 		[SmokeMethod("exit", "(int)", "$")]
 		public void Exit(int returnCode) {
-			ProxyQEventLoop().Exit(returnCode);
+			((QEventLoop) interceptor).Exit(returnCode);
 		}
 		[SmokeMethod("exit", "()", "")]
 		public void Exit() {
-			ProxyQEventLoop().Exit();
+			((QEventLoop) interceptor).Exit();
 		}
 		[SmokeMethod("isRunning", "() const", "")]
 		public bool IsRunning() {
-			return ProxyQEventLoop().IsRunning();
+			return ((QEventLoop) interceptor).IsRunning();
 		}
 		[SmokeMethod("wakeUp", "()", "")]
 		public void WakeUp() {
-			ProxyQEventLoop().WakeUp();
+			((QEventLoop) interceptor).WakeUp();
 		}
 		[Q_SLOT("void quit()")]
 		[SmokeMethod("quit", "()", "")]
 		public void Quit() {
-			ProxyQEventLoop().Quit();
+			((QEventLoop) interceptor).Quit();
 		}
 		~QEventLoop() {
 			DisposeQEventLoop();
@@ -101,13 +95,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QEventLoop", "()", "")]
 		private void DisposeQEventLoop() {
-			ProxyQEventLoop().DisposeQEventLoop();
+			((QEventLoop) interceptor).DisposeQEventLoop();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQEventLoop().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQEventLoop().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQEventLoopSignals Emit {
 			get { return (IQEventLoopSignals) Q_EMIT; }

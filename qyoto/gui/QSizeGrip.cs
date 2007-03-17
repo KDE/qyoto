@@ -15,18 +15,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSizeGrip), this);
-			_interceptor = (QSizeGrip) realProxy.GetTransparentProxy();
+			interceptor = (QSizeGrip) realProxy.GetTransparentProxy();
 		}
-		private QSizeGrip ProxyQSizeGrip() {
-			return (QSizeGrip) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQSizeGripProxy staticInterceptor = null;
 		static QSizeGrip() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQSizeGripProxy), null);
-			_staticInterceptor = (IQSizeGripProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQSizeGripProxy StaticQSizeGrip() {
-			return (IQSizeGripProxy) _staticInterceptor;
+			staticInterceptor = (IQSizeGripProxy) realProxy.GetTransparentProxy();
 		}
 		public QSizeGrip(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -34,35 +28,35 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSizeGrip", "(QWidget*)", "#")]
 		private void NewQSizeGrip(QWidget parent) {
-			ProxyQSizeGrip().NewQSizeGrip(parent);
+			((QSizeGrip) interceptor).NewQSizeGrip(parent);
 		}
 		[SmokeMethod("sizeHint", "() const", "")]
 		public override QSize SizeHint() {
-			return ProxyQSizeGrip().SizeHint();
+			return ((QSizeGrip) interceptor).SizeHint();
 		}
 		[SmokeMethod("setVisible", "(bool)", "$")]
 		public override void SetVisible(bool arg1) {
-			ProxyQSizeGrip().SetVisible(arg1);
+			((QSizeGrip) interceptor).SetVisible(arg1);
 		}
 		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
 		protected override void PaintEvent(QPaintEvent arg1) {
-			ProxyQSizeGrip().PaintEvent(arg1);
+			((QSizeGrip) interceptor).PaintEvent(arg1);
 		}
 		[SmokeMethod("mousePressEvent", "(QMouseEvent*)", "#")]
 		protected override void MousePressEvent(QMouseEvent arg1) {
-			ProxyQSizeGrip().MousePressEvent(arg1);
+			((QSizeGrip) interceptor).MousePressEvent(arg1);
 		}
 		[SmokeMethod("mouseMoveEvent", "(QMouseEvent*)", "#")]
 		protected override void MouseMoveEvent(QMouseEvent arg1) {
-			ProxyQSizeGrip().MouseMoveEvent(arg1);
+			((QSizeGrip) interceptor).MouseMoveEvent(arg1);
 		}
 		[SmokeMethod("eventFilter", "(QObject*, QEvent*)", "##")]
 		protected new virtual bool EventFilter(QObject arg1, QEvent arg2) {
-			return ProxyQSizeGrip().EventFilter(arg1,arg2);
+			return ((QSizeGrip) interceptor).EventFilter(arg1,arg2);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent arg1) {
-			return ProxyQSizeGrip().Event(arg1);
+			return ((QSizeGrip) interceptor).Event(arg1);
 		}
 		~QSizeGrip() {
 			DisposeQSizeGrip();
@@ -72,13 +66,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QSizeGrip", "()", "")]
 		private void DisposeQSizeGrip() {
-			ProxyQSizeGrip().DisposeQSizeGrip();
+			((QSizeGrip) interceptor).DisposeQSizeGrip();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQSizeGrip().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQSizeGrip().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQSizeGripSignals Emit {
 			get { return (IQSizeGripSignals) Q_EMIT; }

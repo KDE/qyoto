@@ -4,31 +4,28 @@ namespace Qyoto {
 	using System;
 
 	public interface IQXmlContentHandler {
-			void SetDocumentLocator(QXmlLocator locator);
-			bool StartDocument();
-			bool EndDocument();
-			bool StartPrefixMapping(string prefix, string uri);
-			bool EndPrefixMapping(string prefix);
-			bool StartElement(string namespaceURI, string localName, string qName, QXmlAttributes atts);
-			bool EndElement(string namespaceURI, string localName, string qName);
-			bool Characters(string ch);
-			bool IgnorableWhitespace(string ch);
-			bool ProcessingInstruction(string target, string data);
-			bool SkippedEntity(string name);
-			string ErrorString();
+		void SetDocumentLocator(QXmlLocator locator);
+		bool StartDocument();
+		bool EndDocument();
+		bool StartPrefixMapping(string prefix, string uri);
+		bool EndPrefixMapping(string prefix);
+		bool StartElement(string namespaceURI, string localName, string qName, QXmlAttributes atts);
+		bool EndElement(string namespaceURI, string localName, string qName);
+		bool Characters(string ch);
+		bool IgnorableWhitespace(string ch);
+		bool ProcessingInstruction(string target, string data);
+		bool SkippedEntity(string name);
+		string ErrorString();
 	}
 
 	[SmokeClass("QXmlContentHandler")]
 	public abstract class QXmlContentHandler : MarshalByRefObject, IQXmlContentHandler {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QXmlContentHandler interceptor = null;
+		private IntPtr smokeObject;
 		protected QXmlContentHandler(Type dummy) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlContentHandler), this);
-			_interceptor = (QXmlContentHandler) realProxy.GetTransparentProxy();
-		}
-		private QXmlContentHandler ProxyQXmlContentHandler() {
-			return (QXmlContentHandler) _interceptor;
+			interceptor = (QXmlContentHandler) realProxy.GetTransparentProxy();
 		}
 		[SmokeMethod("setDocumentLocator", "(QXmlLocator*)", "#")]
 		public abstract void SetDocumentLocator(QXmlLocator locator);
@@ -60,7 +57,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QXmlContentHandler", "()", "")]
 		private void NewQXmlContentHandler() {
-			ProxyQXmlContentHandler().NewQXmlContentHandler();
+			((QXmlContentHandler) interceptor).NewQXmlContentHandler();
 		}
 	}
 }

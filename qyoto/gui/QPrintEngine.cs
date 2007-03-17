@@ -5,15 +5,12 @@ namespace Qyoto {
 
 	[SmokeClass("QPrintEngine")]
 	public abstract class QPrintEngine : MarshalByRefObject {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QPrintEngine interceptor = null;
+		private IntPtr smokeObject;
 		protected QPrintEngine(Type dummy) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPrintEngine), this);
-			_interceptor = (QPrintEngine) realProxy.GetTransparentProxy();
-		}
-		private QPrintEngine ProxyQPrintEngine() {
-			return (QPrintEngine) _interceptor;
+			interceptor = (QPrintEngine) realProxy.GetTransparentProxy();
 		}
 		public enum PrintEnginePropertyKey {
 			PPK_CollateCopies = 0,
@@ -58,7 +55,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QPrintEngine", "()", "")]
 		private void NewQPrintEngine() {
-			ProxyQPrintEngine().NewQPrintEngine();
+			((QPrintEngine) interceptor).NewQPrintEngine();
 		}
 	}
 }

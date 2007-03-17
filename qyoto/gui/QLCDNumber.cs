@@ -16,18 +16,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QLCDNumber), this);
-			_interceptor = (QLCDNumber) realProxy.GetTransparentProxy();
+			interceptor = (QLCDNumber) realProxy.GetTransparentProxy();
 		}
-		private QLCDNumber ProxyQLCDNumber() {
-			return (QLCDNumber) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQLCDNumberProxy staticInterceptor = null;
 		static QLCDNumber() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQLCDNumberProxy), null);
-			_staticInterceptor = (IQLCDNumberProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQLCDNumberProxy StaticQLCDNumber() {
-			return (IQLCDNumberProxy) _staticInterceptor;
+			staticInterceptor = (IQLCDNumberProxy) realProxy.GetTransparentProxy();
 		}
 		public enum Mode {
 			Hex = 0,
@@ -76,7 +70,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QLCDNumber", "(QWidget*)", "#")]
 		private void NewQLCDNumber(QWidget parent) {
-			ProxyQLCDNumber().NewQLCDNumber(parent);
+			((QLCDNumber) interceptor).NewQLCDNumber(parent);
 		}
 		public QLCDNumber() : this((Type) null) {
 			CreateProxy();
@@ -84,7 +78,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QLCDNumber", "()", "")]
 		private void NewQLCDNumber() {
-			ProxyQLCDNumber().NewQLCDNumber();
+			((QLCDNumber) interceptor).NewQLCDNumber();
 		}
 		public QLCDNumber(uint numDigits, QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -92,7 +86,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QLCDNumber", "(uint, QWidget*)", "$#")]
 		private void NewQLCDNumber(uint numDigits, QWidget parent) {
-			ProxyQLCDNumber().NewQLCDNumber(numDigits,parent);
+			((QLCDNumber) interceptor).NewQLCDNumber(numDigits,parent);
 		}
 		public QLCDNumber(uint numDigits) : this((Type) null) {
 			CreateProxy();
@@ -100,62 +94,62 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QLCDNumber", "(uint)", "$")]
 		private void NewQLCDNumber(uint numDigits) {
-			ProxyQLCDNumber().NewQLCDNumber(numDigits);
+			((QLCDNumber) interceptor).NewQLCDNumber(numDigits);
 		}
 		[SmokeMethod("checkOverflow", "(double) const", "$")]
 		public bool CheckOverflow(double num) {
-			return ProxyQLCDNumber().CheckOverflow(num);
+			return ((QLCDNumber) interceptor).CheckOverflow(num);
 		}
 		[SmokeMethod("checkOverflow", "(int) const", "$")]
 		public bool CheckOverflow(int num) {
-			return ProxyQLCDNumber().CheckOverflow(num);
+			return ((QLCDNumber) interceptor).CheckOverflow(num);
 		}
 		[SmokeMethod("sizeHint", "() const", "")]
 		public override QSize SizeHint() {
-			return ProxyQLCDNumber().SizeHint();
+			return ((QLCDNumber) interceptor).SizeHint();
 		}
 		[Q_SLOT("void display(const QString&)")]
 		[SmokeMethod("display", "(const QString&)", "$")]
 		public void Display(string str) {
-			ProxyQLCDNumber().Display(str);
+			((QLCDNumber) interceptor).Display(str);
 		}
 		[Q_SLOT("void display(int)")]
 		[SmokeMethod("display", "(int)", "$")]
 		public void Display(int num) {
-			ProxyQLCDNumber().Display(num);
+			((QLCDNumber) interceptor).Display(num);
 		}
 		[Q_SLOT("void display(double)")]
 		[SmokeMethod("display", "(double)", "$")]
 		public void Display(double num) {
-			ProxyQLCDNumber().Display(num);
+			((QLCDNumber) interceptor).Display(num);
 		}
 		[Q_SLOT("void setHexMode()")]
 		[SmokeMethod("setHexMode", "()", "")]
 		public void SetHexMode() {
-			ProxyQLCDNumber().SetHexMode();
+			((QLCDNumber) interceptor).SetHexMode();
 		}
 		[Q_SLOT("void setDecMode()")]
 		[SmokeMethod("setDecMode", "()", "")]
 		public void SetDecMode() {
-			ProxyQLCDNumber().SetDecMode();
+			((QLCDNumber) interceptor).SetDecMode();
 		}
 		[Q_SLOT("void setOctMode()")]
 		[SmokeMethod("setOctMode", "()", "")]
 		public void SetOctMode() {
-			ProxyQLCDNumber().SetOctMode();
+			((QLCDNumber) interceptor).SetOctMode();
 		}
 		[Q_SLOT("void setBinMode()")]
 		[SmokeMethod("setBinMode", "()", "")]
 		public void SetBinMode() {
-			ProxyQLCDNumber().SetBinMode();
+			((QLCDNumber) interceptor).SetBinMode();
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent e) {
-			return ProxyQLCDNumber().Event(e);
+			return ((QLCDNumber) interceptor).Event(e);
 		}
 		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
 		protected override void PaintEvent(QPaintEvent arg1) {
-			ProxyQLCDNumber().PaintEvent(arg1);
+			((QLCDNumber) interceptor).PaintEvent(arg1);
 		}
 		~QLCDNumber() {
 			DisposeQLCDNumber();
@@ -165,13 +159,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QLCDNumber", "()", "")]
 		private void DisposeQLCDNumber() {
-			ProxyQLCDNumber().DisposeQLCDNumber();
+			((QLCDNumber) interceptor).DisposeQLCDNumber();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQLCDNumber().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQLCDNumber().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQLCDNumberSignals Emit {
 			get { return (IQLCDNumberSignals) Q_EMIT; }

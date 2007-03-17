@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QXmlSimpleReader(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlSimpleReader), this);
-			_interceptor = (QXmlSimpleReader) realProxy.GetTransparentProxy();
-		}
-		private QXmlSimpleReader ProxyQXmlSimpleReader() {
-			return (QXmlSimpleReader) _interceptor;
+			interceptor = (QXmlSimpleReader) realProxy.GetTransparentProxy();
 		}
 		// void* property(const QString& arg1,bool* arg2); >>>> NOT CONVERTED
 		// void* property(const QString& arg1); >>>> NOT CONVERTED
@@ -22,87 +19,87 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QXmlSimpleReader", "()", "")]
 		private void NewQXmlSimpleReader() {
-			ProxyQXmlSimpleReader().NewQXmlSimpleReader();
+			((QXmlSimpleReader) interceptor).NewQXmlSimpleReader();
 		}
 		[SmokeMethod("feature", "(const QString&, bool*) const", "$$")]
 		public override bool Feature(string name, out bool ok) {
-			return ProxyQXmlSimpleReader().Feature(name,out ok);
+			return ((QXmlSimpleReader) interceptor).Feature(name,out ok);
 		}
 		[SmokeMethod("feature", "(const QString&) const", "$")]
 		public virtual bool Feature(string name) {
-			return ProxyQXmlSimpleReader().Feature(name);
+			return ((QXmlSimpleReader) interceptor).Feature(name);
 		}
 		[SmokeMethod("setFeature", "(const QString&, bool)", "$$")]
 		public override void SetFeature(string name, bool value) {
-			ProxyQXmlSimpleReader().SetFeature(name,value);
+			((QXmlSimpleReader) interceptor).SetFeature(name,value);
 		}
 		[SmokeMethod("hasFeature", "(const QString&) const", "$")]
 		public override bool HasFeature(string name) {
-			return ProxyQXmlSimpleReader().HasFeature(name);
+			return ((QXmlSimpleReader) interceptor).HasFeature(name);
 		}
 		[SmokeMethod("hasProperty", "(const QString&) const", "$")]
 		public override bool HasProperty(string name) {
-			return ProxyQXmlSimpleReader().HasProperty(name);
+			return ((QXmlSimpleReader) interceptor).HasProperty(name);
 		}
 		[SmokeMethod("setEntityResolver", "(QXmlEntityResolver*)", "#")]
 		public override void SetEntityResolver(IQXmlEntityResolver handler) {
-			ProxyQXmlSimpleReader().SetEntityResolver(handler);
+			((QXmlSimpleReader) interceptor).SetEntityResolver(handler);
 		}
 		[SmokeMethod("entityResolver", "() const", "")]
 		public override IQXmlEntityResolver EntityResolver() {
-			return ProxyQXmlSimpleReader().EntityResolver();
+			return ((QXmlSimpleReader) interceptor).EntityResolver();
 		}
 		[SmokeMethod("setDTDHandler", "(QXmlDTDHandler*)", "#")]
 		public override void SetDTDHandler(IQXmlDTDHandler handler) {
-			ProxyQXmlSimpleReader().SetDTDHandler(handler);
+			((QXmlSimpleReader) interceptor).SetDTDHandler(handler);
 		}
 		[SmokeMethod("DTDHandler", "() const", "")]
 		public override IQXmlDTDHandler DTDHandler() {
-			return ProxyQXmlSimpleReader().DTDHandler();
+			return ((QXmlSimpleReader) interceptor).DTDHandler();
 		}
 		[SmokeMethod("setContentHandler", "(QXmlContentHandler*)", "#")]
 		public override void SetContentHandler(IQXmlContentHandler handler) {
-			ProxyQXmlSimpleReader().SetContentHandler(handler);
+			((QXmlSimpleReader) interceptor).SetContentHandler(handler);
 		}
 		[SmokeMethod("contentHandler", "() const", "")]
 		public override IQXmlContentHandler ContentHandler() {
-			return ProxyQXmlSimpleReader().ContentHandler();
+			return ((QXmlSimpleReader) interceptor).ContentHandler();
 		}
 		[SmokeMethod("setErrorHandler", "(QXmlErrorHandler*)", "#")]
 		public override void SetErrorHandler(IQXmlErrorHandler handler) {
-			ProxyQXmlSimpleReader().SetErrorHandler(handler);
+			((QXmlSimpleReader) interceptor).SetErrorHandler(handler);
 		}
 		[SmokeMethod("errorHandler", "() const", "")]
 		public override IQXmlErrorHandler ErrorHandler() {
-			return ProxyQXmlSimpleReader().ErrorHandler();
+			return ((QXmlSimpleReader) interceptor).ErrorHandler();
 		}
 		[SmokeMethod("setLexicalHandler", "(QXmlLexicalHandler*)", "#")]
 		public override void SetLexicalHandler(QXmlLexicalHandler handler) {
-			ProxyQXmlSimpleReader().SetLexicalHandler(handler);
+			((QXmlSimpleReader) interceptor).SetLexicalHandler(handler);
 		}
 		[SmokeMethod("lexicalHandler", "() const", "")]
 		public override QXmlLexicalHandler LexicalHandler() {
-			return ProxyQXmlSimpleReader().LexicalHandler();
+			return ((QXmlSimpleReader) interceptor).LexicalHandler();
 		}
 		[SmokeMethod("setDeclHandler", "(QXmlDeclHandler*)", "#")]
 		public override void SetDeclHandler(IQXmlDeclHandler handler) {
-			ProxyQXmlSimpleReader().SetDeclHandler(handler);
+			((QXmlSimpleReader) interceptor).SetDeclHandler(handler);
 		}
 		[SmokeMethod("declHandler", "() const", "")]
 		public override IQXmlDeclHandler DeclHandler() {
-			return ProxyQXmlSimpleReader().DeclHandler();
+			return ((QXmlSimpleReader) interceptor).DeclHandler();
 		}
 		[SmokeMethod("parse", "(const QXmlInputSource&)", "#")]
 		public override bool Parse(QXmlInputSource input) {
-			return ProxyQXmlSimpleReader().Parse(input);
+			return ((QXmlSimpleReader) interceptor).Parse(input);
 		}
 		[SmokeMethod("parse", "(const QXmlInputSource*, bool)", "#$")]
 		public virtual bool Parse(QXmlInputSource input, bool incremental) {
-			return ProxyQXmlSimpleReader().Parse(input,incremental);
+			return ((QXmlSimpleReader) interceptor).Parse(input,incremental);
 		}
 		[SmokeMethod("parseContinue", "()", "")]
 		public virtual bool ParseContinue() {
-			return ProxyQXmlSimpleReader().ParseContinue();
+			return ((QXmlSimpleReader) interceptor).ParseContinue();
 		}
 		~QXmlSimpleReader() {
 			DisposeQXmlSimpleReader();
@@ -112,7 +109,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QXmlSimpleReader", "()", "")]
 		private void DisposeQXmlSimpleReader() {
-			ProxyQXmlSimpleReader().DisposeQXmlSimpleReader();
+			((QXmlSimpleReader) interceptor).DisposeQXmlSimpleReader();
 		}
 	}
 }

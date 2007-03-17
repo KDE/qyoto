@@ -16,18 +16,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QInputContext), this);
-			_interceptor = (QInputContext) realProxy.GetTransparentProxy();
+			interceptor = (QInputContext) realProxy.GetTransparentProxy();
 		}
-		private QInputContext ProxyQInputContext() {
-			return (QInputContext) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQInputContextProxy staticInterceptor = null;
 		static QInputContext() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQInputContextProxy), null);
-			_staticInterceptor = (IQInputContextProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQInputContextProxy StaticQInputContext() {
-			return (IQInputContextProxy) _staticInterceptor;
+			staticInterceptor = (IQInputContextProxy) realProxy.GetTransparentProxy();
 		}
 		public enum StandardFormat {
 			PreeditFormat = 0,
@@ -39,7 +33,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QInputContext", "(QObject*)", "#")]
 		private void NewQInputContext(QObject parent) {
-			ProxyQInputContext().NewQInputContext(parent);
+			((QInputContext) interceptor).NewQInputContext(parent);
 		}
 		public QInputContext() : this((Type) null) {
 			CreateProxy();
@@ -47,7 +41,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QInputContext", "()", "")]
 		private void NewQInputContext() {
-			ProxyQInputContext().NewQInputContext();
+			((QInputContext) interceptor).NewQInputContext();
 		}
 		[SmokeMethod("identifierName", "()", "")]
 		public abstract string IdentifierName();
@@ -57,51 +51,51 @@ namespace Qyoto {
 		public abstract void Reset();
 		[SmokeMethod("update", "()", "")]
 		public virtual void Update() {
-			ProxyQInputContext().Update();
+			((QInputContext) interceptor).Update();
 		}
 		[SmokeMethod("mouseHandler", "(int, QMouseEvent*)", "$#")]
 		public virtual void MouseHandler(int x, QMouseEvent arg2) {
-			ProxyQInputContext().MouseHandler(x,arg2);
+			((QInputContext) interceptor).MouseHandler(x,arg2);
 		}
 		[SmokeMethod("font", "() const", "")]
 		public virtual QFont Font() {
-			return ProxyQInputContext().Font();
+			return ((QInputContext) interceptor).Font();
 		}
 		[SmokeMethod("isComposing", "() const", "")]
 		public abstract bool IsComposing();
 		[SmokeMethod("focusWidget", "() const", "")]
 		public QWidget FocusWidget() {
-			return ProxyQInputContext().FocusWidget();
+			return ((QInputContext) interceptor).FocusWidget();
 		}
 		[SmokeMethod("setFocusWidget", "(QWidget*)", "#")]
 		public virtual void SetFocusWidget(QWidget w) {
-			ProxyQInputContext().SetFocusWidget(w);
+			((QInputContext) interceptor).SetFocusWidget(w);
 		}
 		[SmokeMethod("widgetDestroyed", "(QWidget*)", "#")]
 		public virtual void WidgetDestroyed(QWidget w) {
-			ProxyQInputContext().WidgetDestroyed(w);
+			((QInputContext) interceptor).WidgetDestroyed(w);
 		}
 		[SmokeMethod("actions", "()", "")]
 		public virtual List<QAction> Actions() {
-			return ProxyQInputContext().Actions();
+			return ((QInputContext) interceptor).Actions();
 		}
 		[SmokeMethod("filterEvent", "(const QEvent*)", "#")]
 		public virtual bool FilterEvent(QEvent arg1) {
-			return ProxyQInputContext().FilterEvent(arg1);
+			return ((QInputContext) interceptor).FilterEvent(arg1);
 		}
 		[SmokeMethod("sendEvent", "(const QInputMethodEvent&)", "#")]
 		public void SendEvent(QInputMethodEvent arg1) {
-			ProxyQInputContext().SendEvent(arg1);
+			((QInputContext) interceptor).SendEvent(arg1);
 		}
 		[SmokeMethod("standardFormat", "(QInputContext::StandardFormat) const", "$")]
 		public QTextFormat standardFormat(QInputContext.StandardFormat s) {
-			return ProxyQInputContext().standardFormat(s);
+			return ((QInputContext) interceptor).standardFormat(s);
 		}
 		public static string Tr(string s, string c) {
-			return StaticQInputContext().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQInputContext().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQInputContextSignals Emit {
 			get { return (IQInputContextSignals) Q_EMIT; }

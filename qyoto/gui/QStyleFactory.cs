@@ -6,8 +6,8 @@ namespace Qyoto {
 
 	[SmokeClass("QStyleFactory")]
 	public class QStyleFactory : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QStyleFactory interceptor = null;
+		private IntPtr smokeObject;
 		protected QStyleFactory(Type dummy) {}
 		[SmokeClass("QStyleFactory")]
 		interface IQStyleFactoryProxy {
@@ -18,18 +18,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleFactory), this);
-			_interceptor = (QStyleFactory) realProxy.GetTransparentProxy();
+			interceptor = (QStyleFactory) realProxy.GetTransparentProxy();
 		}
-		private QStyleFactory ProxyQStyleFactory() {
-			return (QStyleFactory) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQStyleFactoryProxy staticInterceptor = null;
 		static QStyleFactory() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQStyleFactoryProxy), null);
-			_staticInterceptor = (IQStyleFactoryProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQStyleFactoryProxy StaticQStyleFactory() {
-			return (IQStyleFactoryProxy) _staticInterceptor;
+			staticInterceptor = (IQStyleFactoryProxy) realProxy.GetTransparentProxy();
 		}
 		public QStyleFactory() : this((Type) null) {
 			CreateProxy();
@@ -37,7 +31,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleFactory", "()", "")]
 		private void NewQStyleFactory() {
-			ProxyQStyleFactory().NewQStyleFactory();
+			((QStyleFactory) interceptor).NewQStyleFactory();
 		}
 		~QStyleFactory() {
 			DisposeQStyleFactory();
@@ -47,13 +41,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QStyleFactory", "()", "")]
 		private void DisposeQStyleFactory() {
-			ProxyQStyleFactory().DisposeQStyleFactory();
+			((QStyleFactory) interceptor).DisposeQStyleFactory();
 		}
 		public static List<string> Keys() {
-			return StaticQStyleFactory().Keys();
+			return staticInterceptor.Keys();
 		}
 		public static QStyle Create(string arg1) {
-			return StaticQStyleFactory().Create(arg1);
+			return staticInterceptor.Create(arg1);
 		}
 	}
 }

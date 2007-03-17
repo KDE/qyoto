@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QGraphicsItemGroup(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGraphicsItemGroup), this);
-			_interceptor = (QGraphicsItemGroup) realProxy.GetTransparentProxy();
-		}
-		private QGraphicsItemGroup ProxyQGraphicsItemGroup() {
-			return (QGraphicsItemGroup) _interceptor;
+			interceptor = (QGraphicsItemGroup) realProxy.GetTransparentProxy();
 		}
 		public const int Type = 10;
 
@@ -21,7 +18,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGraphicsItemGroup", "(QGraphicsItem*, QGraphicsScene*)", "##")]
 		private void NewQGraphicsItemGroup(QGraphicsItem parent, QGraphicsScene scene) {
-			ProxyQGraphicsItemGroup().NewQGraphicsItemGroup(parent,scene);
+			((QGraphicsItemGroup) interceptor).NewQGraphicsItemGroup(parent,scene);
 		}
 		public QGraphicsItemGroup(QGraphicsItem parent) : this((Type) null) {
 			CreateProxy();
@@ -29,7 +26,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGraphicsItemGroup", "(QGraphicsItem*)", "#")]
 		private void NewQGraphicsItemGroup(QGraphicsItem parent) {
-			ProxyQGraphicsItemGroup().NewQGraphicsItemGroup(parent);
+			((QGraphicsItemGroup) interceptor).NewQGraphicsItemGroup(parent);
 		}
 		public QGraphicsItemGroup() : this((Type) null) {
 			CreateProxy();
@@ -37,39 +34,39 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGraphicsItemGroup", "()", "")]
 		private void NewQGraphicsItemGroup() {
-			ProxyQGraphicsItemGroup().NewQGraphicsItemGroup();
+			((QGraphicsItemGroup) interceptor).NewQGraphicsItemGroup();
 		}
 		[SmokeMethod("addToGroup", "(QGraphicsItem*)", "#")]
 		public void AddToGroup(QGraphicsItem item) {
-			ProxyQGraphicsItemGroup().AddToGroup(item);
+			((QGraphicsItemGroup) interceptor).AddToGroup(item);
 		}
 		[SmokeMethod("removeFromGroup", "(QGraphicsItem*)", "#")]
 		public void RemoveFromGroup(QGraphicsItem item) {
-			ProxyQGraphicsItemGroup().RemoveFromGroup(item);
+			((QGraphicsItemGroup) interceptor).RemoveFromGroup(item);
 		}
 		[SmokeMethod("boundingRect", "() const", "")]
 		public override QRectF BoundingRect() {
-			return ProxyQGraphicsItemGroup().BoundingRect();
+			return ((QGraphicsItemGroup) interceptor).BoundingRect();
 		}
 		[SmokeMethod("paint", "(QPainter*, const QStyleOptionGraphicsItem*, QWidget*)", "###")]
 		public override void Paint(QPainter painter, QStyleOptionGraphicsItem option, QWidget widget) {
-			ProxyQGraphicsItemGroup().Paint(painter,option,widget);
+			((QGraphicsItemGroup) interceptor).Paint(painter,option,widget);
 		}
 		[SmokeMethod("paint", "(QPainter*, const QStyleOptionGraphicsItem*)", "##")]
 		public virtual void Paint(QPainter painter, QStyleOptionGraphicsItem option) {
-			ProxyQGraphicsItemGroup().Paint(painter,option);
+			((QGraphicsItemGroup) interceptor).Paint(painter,option);
 		}
 		[SmokeMethod("isObscuredBy", "(const QGraphicsItem*) const", "#")]
 		public override bool IsObscuredBy(QGraphicsItem item) {
-			return ProxyQGraphicsItemGroup().IsObscuredBy(item);
+			return ((QGraphicsItemGroup) interceptor).IsObscuredBy(item);
 		}
 		[SmokeMethod("opaqueArea", "() const", "")]
 		public override QPainterPath OpaqueArea() {
-			return ProxyQGraphicsItemGroup().OpaqueArea();
+			return ((QGraphicsItemGroup) interceptor).OpaqueArea();
 		}
 		[SmokeMethod("type", "() const", "")]
 		public override int type() {
-			return ProxyQGraphicsItemGroup().type();
+			return ((QGraphicsItemGroup) interceptor).type();
 		}
 		~QGraphicsItemGroup() {
 			DisposeQGraphicsItemGroup();
@@ -79,7 +76,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QGraphicsItemGroup", "()", "")]
 		private void DisposeQGraphicsItemGroup() {
-			ProxyQGraphicsItemGroup().DisposeQGraphicsItemGroup();
+			((QGraphicsItemGroup) interceptor).DisposeQGraphicsItemGroup();
 		}
 	}
 }

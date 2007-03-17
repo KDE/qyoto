@@ -17,18 +17,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QErrorMessage), this);
-			_interceptor = (QErrorMessage) realProxy.GetTransparentProxy();
+			interceptor = (QErrorMessage) realProxy.GetTransparentProxy();
 		}
-		private QErrorMessage ProxyQErrorMessage() {
-			return (QErrorMessage) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQErrorMessageProxy staticInterceptor = null;
 		static QErrorMessage() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQErrorMessageProxy), null);
-			_staticInterceptor = (IQErrorMessageProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQErrorMessageProxy StaticQErrorMessage() {
-			return (IQErrorMessageProxy) _staticInterceptor;
+			staticInterceptor = (IQErrorMessageProxy) realProxy.GetTransparentProxy();
 		}
 		public QErrorMessage(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -36,7 +30,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QErrorMessage", "(QWidget*)", "#")]
 		private void NewQErrorMessage(QWidget parent) {
-			ProxyQErrorMessage().NewQErrorMessage(parent);
+			((QErrorMessage) interceptor).NewQErrorMessage(parent);
 		}
 		public QErrorMessage() : this((Type) null) {
 			CreateProxy();
@@ -44,16 +38,16 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QErrorMessage", "()", "")]
 		private void NewQErrorMessage() {
-			ProxyQErrorMessage().NewQErrorMessage();
+			((QErrorMessage) interceptor).NewQErrorMessage();
 		}
 		[Q_SLOT("void showMessage(const QString&)")]
 		[SmokeMethod("showMessage", "(const QString&)", "$")]
 		public void ShowMessage(string message) {
-			ProxyQErrorMessage().ShowMessage(message);
+			((QErrorMessage) interceptor).ShowMessage(message);
 		}
 		[SmokeMethod("done", "(int)", "$")]
 		protected new virtual void Done(int arg1) {
-			ProxyQErrorMessage().Done(arg1);
+			((QErrorMessage) interceptor).Done(arg1);
 		}
 		~QErrorMessage() {
 			DisposeQErrorMessage();
@@ -63,16 +57,16 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QErrorMessage", "()", "")]
 		private void DisposeQErrorMessage() {
-			ProxyQErrorMessage().DisposeQErrorMessage();
+			((QErrorMessage) interceptor).DisposeQErrorMessage();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQErrorMessage().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQErrorMessage().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		public static QErrorMessage QtHandler() {
-			return StaticQErrorMessage().QtHandler();
+			return staticInterceptor.QtHandler();
 		}
 		protected new IQErrorMessageSignals Emit {
 			get { return (IQErrorMessageSignals) Q_EMIT; }

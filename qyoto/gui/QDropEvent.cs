@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QDropEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDropEvent), this);
-			_interceptor = (QDropEvent) realProxy.GetTransparentProxy();
-		}
-		private QDropEvent ProxyQDropEvent() {
-			return (QDropEvent) _interceptor;
+			interceptor = (QDropEvent) realProxy.GetTransparentProxy();
 		}
 		public QDropEvent(QPoint pos, int actions, QMimeData data, int buttons, int modifiers, QEvent.TypeOf type) : this((Type) null) {
 			CreateProxy();
@@ -19,7 +16,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDropEvent", "(const QPoint&, Qt::DropActions, const QMimeData*, Qt::MouseButtons, Qt::KeyboardModifiers, QEvent::Type)", "#$#$$$")]
 		private void NewQDropEvent(QPoint pos, int actions, QMimeData data, int buttons, int modifiers, QEvent.TypeOf type) {
-			ProxyQDropEvent().NewQDropEvent(pos,actions,data,buttons,modifiers,type);
+			((QDropEvent) interceptor).NewQDropEvent(pos,actions,data,buttons,modifiers,type);
 		}
 		public QDropEvent(QPoint pos, int actions, QMimeData data, int buttons, int modifiers) : this((Type) null) {
 			CreateProxy();
@@ -27,63 +24,63 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDropEvent", "(const QPoint&, Qt::DropActions, const QMimeData*, Qt::MouseButtons, Qt::KeyboardModifiers)", "#$#$$")]
 		private void NewQDropEvent(QPoint pos, int actions, QMimeData data, int buttons, int modifiers) {
-			ProxyQDropEvent().NewQDropEvent(pos,actions,data,buttons,modifiers);
+			((QDropEvent) interceptor).NewQDropEvent(pos,actions,data,buttons,modifiers);
 		}
 		[SmokeMethod("pos", "() const", "")]
 		public QPoint Pos() {
-			return ProxyQDropEvent().Pos();
+			return ((QDropEvent) interceptor).Pos();
 		}
 		[SmokeMethod("mouseButtons", "() const", "")]
 		public int MouseButtons() {
-			return ProxyQDropEvent().MouseButtons();
+			return ((QDropEvent) interceptor).MouseButtons();
 		}
 		[SmokeMethod("keyboardModifiers", "() const", "")]
 		public int KeyboardModifiers() {
-			return ProxyQDropEvent().KeyboardModifiers();
+			return ((QDropEvent) interceptor).KeyboardModifiers();
 		}
 		[SmokeMethod("possibleActions", "() const", "")]
 		public int PossibleActions() {
-			return ProxyQDropEvent().PossibleActions();
+			return ((QDropEvent) interceptor).PossibleActions();
 		}
 		[SmokeMethod("proposedAction", "() const", "")]
 		public Qt.DropAction ProposedAction() {
-			return ProxyQDropEvent().ProposedAction();
+			return ((QDropEvent) interceptor).ProposedAction();
 		}
 		[SmokeMethod("acceptProposedAction", "()", "")]
 		public void AcceptProposedAction() {
-			ProxyQDropEvent().AcceptProposedAction();
+			((QDropEvent) interceptor).AcceptProposedAction();
 		}
 		[SmokeMethod("dropAction", "() const", "")]
 		public Qt.DropAction DropAction() {
-			return ProxyQDropEvent().DropAction();
+			return ((QDropEvent) interceptor).DropAction();
 		}
 		[SmokeMethod("setDropAction", "(Qt::DropAction)", "$")]
 		public void SetDropAction(Qt.DropAction action) {
-			ProxyQDropEvent().SetDropAction(action);
+			((QDropEvent) interceptor).SetDropAction(action);
 		}
 		[SmokeMethod("source", "() const", "")]
 		public QWidget Source() {
-			return ProxyQDropEvent().Source();
+			return ((QDropEvent) interceptor).Source();
 		}
 		[SmokeMethod("mimeData", "() const", "")]
 		public QMimeData MimeData() {
-			return ProxyQDropEvent().MimeData();
+			return ((QDropEvent) interceptor).MimeData();
 		}
 		[SmokeMethod("format", "(int) const", "$")]
 		public virtual string Format(int n) {
-			return ProxyQDropEvent().Format(n);
+			return ((QDropEvent) interceptor).Format(n);
 		}
 		[SmokeMethod("format", "() const", "")]
 		public virtual string Format() {
-			return ProxyQDropEvent().Format();
+			return ((QDropEvent) interceptor).Format();
 		}
 		[SmokeMethod("encodedData", "(const char*) const", "$")]
 		public virtual QByteArray EncodedData(string arg1) {
-			return ProxyQDropEvent().EncodedData(arg1);
+			return ((QDropEvent) interceptor).EncodedData(arg1);
 		}
 		[SmokeMethod("provides", "(const char*) const", "$")]
 		public virtual bool Provides(string arg1) {
-			return ProxyQDropEvent().Provides(arg1);
+			return ((QDropEvent) interceptor).Provides(arg1);
 		}
 		~QDropEvent() {
 			DisposeQDropEvent();
@@ -93,7 +90,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QDropEvent", "()", "")]
 		private void DisposeQDropEvent() {
-			ProxyQDropEvent().DisposeQDropEvent();
+			((QDropEvent) interceptor).DisposeQDropEvent();
 		}
 	}
 }

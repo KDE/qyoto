@@ -5,15 +5,12 @@ namespace Qyoto {
 
 	[SmokeClass("QSqlRelation")]
 	public class QSqlRelation : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QSqlRelation interceptor = null;
+		private IntPtr smokeObject;
 		protected QSqlRelation(Type dummy) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSqlRelation), this);
-			_interceptor = (QSqlRelation) realProxy.GetTransparentProxy();
-		}
-		private QSqlRelation ProxyQSqlRelation() {
-			return (QSqlRelation) _interceptor;
+			interceptor = (QSqlRelation) realProxy.GetTransparentProxy();
 		}
 		public QSqlRelation() : this((Type) null) {
 			CreateProxy();
@@ -21,7 +18,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSqlRelation", "()", "")]
 		private void NewQSqlRelation() {
-			ProxyQSqlRelation().NewQSqlRelation();
+			((QSqlRelation) interceptor).NewQSqlRelation();
 		}
 		public QSqlRelation(string aTableName, string indexCol, string displayCol) : this((Type) null) {
 			CreateProxy();
@@ -29,23 +26,23 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSqlRelation", "(const QString&, const QString&, const QString&)", "$$$")]
 		private void NewQSqlRelation(string aTableName, string indexCol, string displayCol) {
-			ProxyQSqlRelation().NewQSqlRelation(aTableName,indexCol,displayCol);
+			((QSqlRelation) interceptor).NewQSqlRelation(aTableName,indexCol,displayCol);
 		}
 		[SmokeMethod("tableName", "() const", "")]
 		public string TableName() {
-			return ProxyQSqlRelation().TableName();
+			return ((QSqlRelation) interceptor).TableName();
 		}
 		[SmokeMethod("indexColumn", "() const", "")]
 		public string IndexColumn() {
-			return ProxyQSqlRelation().IndexColumn();
+			return ((QSqlRelation) interceptor).IndexColumn();
 		}
 		[SmokeMethod("displayColumn", "() const", "")]
 		public string DisplayColumn() {
-			return ProxyQSqlRelation().DisplayColumn();
+			return ((QSqlRelation) interceptor).DisplayColumn();
 		}
 		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ProxyQSqlRelation().IsValid();
+			return ((QSqlRelation) interceptor).IsValid();
 		}
 		~QSqlRelation() {
 			DisposeQSqlRelation();
@@ -55,7 +52,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QSqlRelation", "()", "")]
 		private void DisposeQSqlRelation() {
-			ProxyQSqlRelation().DisposeQSqlRelation();
+			((QSqlRelation) interceptor).DisposeQSqlRelation();
 		}
 	}
 }

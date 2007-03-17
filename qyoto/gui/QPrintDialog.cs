@@ -15,18 +15,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPrintDialog), this);
-			_interceptor = (QPrintDialog) realProxy.GetTransparentProxy();
+			interceptor = (QPrintDialog) realProxy.GetTransparentProxy();
 		}
-		private QPrintDialog ProxyQPrintDialog() {
-			return (QPrintDialog) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQPrintDialogProxy staticInterceptor = null;
 		static QPrintDialog() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQPrintDialogProxy), null);
-			_staticInterceptor = (IQPrintDialogProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQPrintDialogProxy StaticQPrintDialog() {
-			return (IQPrintDialogProxy) _staticInterceptor;
+			staticInterceptor = (IQPrintDialogProxy) realProxy.GetTransparentProxy();
 		}
 		public QPrintDialog(QPrinter printer, QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -34,7 +28,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QPrintDialog", "(QPrinter*, QWidget*)", "##")]
 		private void NewQPrintDialog(QPrinter printer, QWidget parent) {
-			ProxyQPrintDialog().NewQPrintDialog(printer,parent);
+			((QPrintDialog) interceptor).NewQPrintDialog(printer,parent);
 		}
 		public QPrintDialog(QPrinter printer) : this((Type) null) {
 			CreateProxy();
@@ -42,15 +36,15 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QPrintDialog", "(QPrinter*)", "#")]
 		private void NewQPrintDialog(QPrinter printer) {
-			ProxyQPrintDialog().NewQPrintDialog(printer);
+			((QPrintDialog) interceptor).NewQPrintDialog(printer);
 		}
 		[SmokeMethod("exec", "()", "")]
 		public override int Exec() {
-			return ProxyQPrintDialog().Exec();
+			return ((QPrintDialog) interceptor).Exec();
 		}
 		[SmokeMethod("eventFilter", "(QObject*, QEvent*)", "##")]
 		public new virtual bool EventFilter(QObject arg1, QEvent arg2) {
-			return ProxyQPrintDialog().EventFilter(arg1,arg2);
+			return ((QPrintDialog) interceptor).EventFilter(arg1,arg2);
 		}
 		~QPrintDialog() {
 			DisposeQPrintDialog();
@@ -60,13 +54,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QPrintDialog", "()", "")]
 		private void DisposeQPrintDialog() {
-			ProxyQPrintDialog().DisposeQPrintDialog();
+			((QPrintDialog) interceptor).DisposeQPrintDialog();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQPrintDialog().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQPrintDialog().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQPrintDialogSignals Emit {
 			get { return (IQPrintDialogSignals) Q_EMIT; }

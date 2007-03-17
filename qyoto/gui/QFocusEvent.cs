@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QFocusEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFocusEvent), this);
-			_interceptor = (QFocusEvent) realProxy.GetTransparentProxy();
-		}
-		private QFocusEvent ProxyQFocusEvent() {
-			return (QFocusEvent) _interceptor;
+			interceptor = (QFocusEvent) realProxy.GetTransparentProxy();
 		}
 		public QFocusEvent(QEvent.TypeOf type, Qt.FocusReason reason) : this((Type) null) {
 			CreateProxy();
@@ -19,7 +16,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QFocusEvent", "(QEvent::Type, Qt::FocusReason)", "$$")]
 		private void NewQFocusEvent(QEvent.TypeOf type, Qt.FocusReason reason) {
-			ProxyQFocusEvent().NewQFocusEvent(type,reason);
+			((QFocusEvent) interceptor).NewQFocusEvent(type,reason);
 		}
 		public QFocusEvent(QEvent.TypeOf type) : this((Type) null) {
 			CreateProxy();
@@ -27,19 +24,19 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QFocusEvent", "(QEvent::Type)", "$")]
 		private void NewQFocusEvent(QEvent.TypeOf type) {
-			ProxyQFocusEvent().NewQFocusEvent(type);
+			((QFocusEvent) interceptor).NewQFocusEvent(type);
 		}
 		[SmokeMethod("gotFocus", "() const", "")]
 		public bool GotFocus() {
-			return ProxyQFocusEvent().GotFocus();
+			return ((QFocusEvent) interceptor).GotFocus();
 		}
 		[SmokeMethod("lostFocus", "() const", "")]
 		public bool LostFocus() {
-			return ProxyQFocusEvent().LostFocus();
+			return ((QFocusEvent) interceptor).LostFocus();
 		}
 		[SmokeMethod("reason", "()", "")]
 		public Qt.FocusReason Reason() {
-			return ProxyQFocusEvent().Reason();
+			return ((QFocusEvent) interceptor).Reason();
 		}
 		~QFocusEvent() {
 			DisposeQFocusEvent();
@@ -49,7 +46,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QFocusEvent", "()", "")]
 		private void DisposeQFocusEvent() {
-			ProxyQFocusEvent().DisposeQFocusEvent();
+			((QFocusEvent) interceptor).DisposeQFocusEvent();
 		}
 	}
 }

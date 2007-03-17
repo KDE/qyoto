@@ -16,18 +16,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QX11EmbedWidget), this);
-			_interceptor = (QX11EmbedWidget) realProxy.GetTransparentProxy();
+			interceptor = (QX11EmbedWidget) realProxy.GetTransparentProxy();
 		}
-		private QX11EmbedWidget ProxyQX11EmbedWidget() {
-			return (QX11EmbedWidget) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQX11EmbedWidgetProxy staticInterceptor = null;
 		static QX11EmbedWidget() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQX11EmbedWidgetProxy), null);
-			_staticInterceptor = (IQX11EmbedWidgetProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQX11EmbedWidgetProxy StaticQX11EmbedWidget() {
-			return (IQX11EmbedWidgetProxy) _staticInterceptor;
+			staticInterceptor = (IQX11EmbedWidgetProxy) realProxy.GetTransparentProxy();
 		}
 		public enum Error {
 			Unknown = 0,
@@ -41,7 +35,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QX11EmbedWidget", "(QWidget*)", "#")]
 		private void NewQX11EmbedWidget(QWidget parent) {
-			ProxyQX11EmbedWidget().NewQX11EmbedWidget(parent);
+			((QX11EmbedWidget) interceptor).NewQX11EmbedWidget(parent);
 		}
 		public QX11EmbedWidget() : this((Type) null) {
 			CreateProxy();
@@ -49,31 +43,31 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QX11EmbedWidget", "()", "")]
 		private void NewQX11EmbedWidget() {
-			ProxyQX11EmbedWidget().NewQX11EmbedWidget();
+			((QX11EmbedWidget) interceptor).NewQX11EmbedWidget();
 		}
 		[SmokeMethod("embedInto", "(WId)", "$")]
 		public void EmbedInto(ulong id) {
-			ProxyQX11EmbedWidget().EmbedInto(id);
+			((QX11EmbedWidget) interceptor).EmbedInto(id);
 		}
 		[SmokeMethod("containerWinId", "() const", "")]
 		public ulong ContainerWinId() {
-			return ProxyQX11EmbedWidget().ContainerWinId();
+			return ((QX11EmbedWidget) interceptor).ContainerWinId();
 		}
 		[SmokeMethod("error", "() const", "")]
 		public QX11EmbedWidget.Error error() {
-			return ProxyQX11EmbedWidget().error();
+			return ((QX11EmbedWidget) interceptor).error();
 		}
 		[SmokeMethod("eventFilter", "(QObject*, QEvent*)", "##")]
 		protected new virtual bool EventFilter(QObject arg1, QEvent arg2) {
-			return ProxyQX11EmbedWidget().EventFilter(arg1,arg2);
+			return ((QX11EmbedWidget) interceptor).EventFilter(arg1,arg2);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent arg1) {
-			return ProxyQX11EmbedWidget().Event(arg1);
+			return ((QX11EmbedWidget) interceptor).Event(arg1);
 		}
 		[SmokeMethod("resizeEvent", "(QResizeEvent*)", "#")]
 		protected override void ResizeEvent(QResizeEvent arg1) {
-			ProxyQX11EmbedWidget().ResizeEvent(arg1);
+			((QX11EmbedWidget) interceptor).ResizeEvent(arg1);
 		}
 		~QX11EmbedWidget() {
 			DisposeQX11EmbedWidget();
@@ -83,13 +77,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QX11EmbedWidget", "()", "")]
 		private void DisposeQX11EmbedWidget() {
-			ProxyQX11EmbedWidget().DisposeQX11EmbedWidget();
+			((QX11EmbedWidget) interceptor).DisposeQX11EmbedWidget();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQX11EmbedWidget().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQX11EmbedWidget().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQX11EmbedWidgetSignals Emit {
 			get { return (IQX11EmbedWidgetSignals) Q_EMIT; }

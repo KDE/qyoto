@@ -16,18 +16,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDoubleValidator), this);
-			_interceptor = (QDoubleValidator) realProxy.GetTransparentProxy();
+			interceptor = (QDoubleValidator) realProxy.GetTransparentProxy();
 		}
-		private QDoubleValidator ProxyQDoubleValidator() {
-			return (QDoubleValidator) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQDoubleValidatorProxy staticInterceptor = null;
 		static QDoubleValidator() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQDoubleValidatorProxy), null);
-			_staticInterceptor = (IQDoubleValidatorProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQDoubleValidatorProxy StaticQDoubleValidator() {
-			return (IQDoubleValidatorProxy) _staticInterceptor;
+			staticInterceptor = (IQDoubleValidatorProxy) realProxy.GetTransparentProxy();
 		}
 		[Q_PROPERTY("double", "bottom")]
 		public double Bottom {
@@ -50,7 +44,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDoubleValidator", "(QObject*)", "#")]
 		private void NewQDoubleValidator(QObject parent) {
-			ProxyQDoubleValidator().NewQDoubleValidator(parent);
+			((QDoubleValidator) interceptor).NewQDoubleValidator(parent);
 		}
 		public QDoubleValidator(double bottom, double top, int decimals, QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -58,19 +52,19 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDoubleValidator", "(double, double, int, QObject*)", "$$$#")]
 		private void NewQDoubleValidator(double bottom, double top, int decimals, QObject parent) {
-			ProxyQDoubleValidator().NewQDoubleValidator(bottom,top,decimals,parent);
+			((QDoubleValidator) interceptor).NewQDoubleValidator(bottom,top,decimals,parent);
 		}
 		[SmokeMethod("validate", "(QString&, int&) const", "$$")]
 		public override int Validate(StringBuilder arg1, out int arg2) {
-			return ProxyQDoubleValidator().Validate(arg1,out arg2);
+			return ((QDoubleValidator) interceptor).Validate(arg1,out arg2);
 		}
 		[SmokeMethod("setRange", "(double, double, int)", "$$$")]
 		public virtual void SetRange(double bottom, double top, int decimals) {
-			ProxyQDoubleValidator().SetRange(bottom,top,decimals);
+			((QDoubleValidator) interceptor).SetRange(bottom,top,decimals);
 		}
 		[SmokeMethod("setRange", "(double, double)", "$$")]
 		public virtual void SetRange(double bottom, double top) {
-			ProxyQDoubleValidator().SetRange(bottom,top);
+			((QDoubleValidator) interceptor).SetRange(bottom,top);
 		}
 		~QDoubleValidator() {
 			DisposeQDoubleValidator();
@@ -80,13 +74,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QDoubleValidator", "()", "")]
 		private void DisposeQDoubleValidator() {
-			ProxyQDoubleValidator().DisposeQDoubleValidator();
+			((QDoubleValidator) interceptor).DisposeQDoubleValidator();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQDoubleValidator().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQDoubleValidator().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQDoubleValidatorSignals Emit {
 			get { return (IQDoubleValidatorSignals) Q_EMIT; }

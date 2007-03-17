@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QTextImageFormat(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextImageFormat), this);
-			_interceptor = (QTextImageFormat) realProxy.GetTransparentProxy();
-		}
-		private QTextImageFormat ProxyQTextImageFormat() {
-			return (QTextImageFormat) _interceptor;
+			interceptor = (QTextImageFormat) realProxy.GetTransparentProxy();
 		}
 		public QTextImageFormat() : this((Type) null) {
 			CreateProxy();
@@ -19,35 +16,35 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTextImageFormat", "()", "")]
 		private void NewQTextImageFormat() {
-			ProxyQTextImageFormat().NewQTextImageFormat();
+			((QTextImageFormat) interceptor).NewQTextImageFormat();
 		}
 		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ProxyQTextImageFormat().IsValid();
+			return ((QTextImageFormat) interceptor).IsValid();
 		}
 		[SmokeMethod("setName", "(const QString&)", "$")]
 		public void SetName(string name) {
-			ProxyQTextImageFormat().SetName(name);
+			((QTextImageFormat) interceptor).SetName(name);
 		}
 		[SmokeMethod("name", "() const", "")]
 		public string Name() {
-			return ProxyQTextImageFormat().Name();
+			return ((QTextImageFormat) interceptor).Name();
 		}
 		[SmokeMethod("setWidth", "(qreal)", "$")]
 		public void SetWidth(double width) {
-			ProxyQTextImageFormat().SetWidth(width);
+			((QTextImageFormat) interceptor).SetWidth(width);
 		}
 		[SmokeMethod("width", "() const", "")]
 		public double Width() {
-			return ProxyQTextImageFormat().Width();
+			return ((QTextImageFormat) interceptor).Width();
 		}
 		[SmokeMethod("setHeight", "(qreal)", "$")]
 		public void SetHeight(double height) {
-			ProxyQTextImageFormat().SetHeight(height);
+			((QTextImageFormat) interceptor).SetHeight(height);
 		}
 		[SmokeMethod("height", "() const", "")]
 		public double Height() {
-			return ProxyQTextImageFormat().Height();
+			return ((QTextImageFormat) interceptor).Height();
 		}
 		~QTextImageFormat() {
 			DisposeQTextImageFormat();
@@ -57,7 +54,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QTextImageFormat", "()", "")]
 		private void DisposeQTextImageFormat() {
-			ProxyQTextImageFormat().DisposeQTextImageFormat();
+			((QTextImageFormat) interceptor).DisposeQTextImageFormat();
 		}
 	}
 }

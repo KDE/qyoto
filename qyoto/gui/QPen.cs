@@ -6,8 +6,8 @@ namespace Qyoto {
 
 	[SmokeClass("QPen")]
 	public class QPen : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QPen interceptor = null;
+		private IntPtr smokeObject;
 		protected QPen(Type dummy) {}
 		[SmokeClass("QPen")]
 		interface IQPenProxy {
@@ -16,18 +16,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPen), this);
-			_interceptor = (QPen) realProxy.GetTransparentProxy();
+			interceptor = (QPen) realProxy.GetTransparentProxy();
 		}
-		private QPen ProxyQPen() {
-			return (QPen) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQPenProxy staticInterceptor = null;
 		static QPen() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQPenProxy), null);
-			_staticInterceptor = (IQPenProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQPenProxy StaticQPen() {
-			return (IQPenProxy) _staticInterceptor;
+			staticInterceptor = (IQPenProxy) realProxy.GetTransparentProxy();
 		}
 		//  operator QVariant(); >>>> NOT CONVERTED
 		public QPen() : this((Type) null) {
@@ -36,7 +30,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QPen", "()", "")]
 		private void NewQPen() {
-			ProxyQPen().NewQPen();
+			((QPen) interceptor).NewQPen();
 		}
 		public QPen(Qt.PenStyle arg1) : this((Type) null) {
 			CreateProxy();
@@ -44,7 +38,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QPen", "(Qt::PenStyle)", "$")]
 		private void NewQPen(Qt.PenStyle arg1) {
-			ProxyQPen().NewQPen(arg1);
+			((QPen) interceptor).NewQPen(arg1);
 		}
 		public QPen(QColor color) : this((Type) null) {
 			CreateProxy();
@@ -52,7 +46,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QPen", "(const QColor&)", "#")]
 		private void NewQPen(QColor color) {
-			ProxyQPen().NewQPen(color);
+			((QPen) interceptor).NewQPen(color);
 		}
 		public QPen(QBrush brush, double width, Qt.PenStyle s, Qt.PenCapStyle c, Qt.PenJoinStyle j) : this((Type) null) {
 			CreateProxy();
@@ -60,7 +54,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QPen", "(const QBrush&, qreal, Qt::PenStyle, Qt::PenCapStyle, Qt::PenJoinStyle)", "#$$$$")]
 		private void NewQPen(QBrush brush, double width, Qt.PenStyle s, Qt.PenCapStyle c, Qt.PenJoinStyle j) {
-			ProxyQPen().NewQPen(brush,width,s,c,j);
+			((QPen) interceptor).NewQPen(brush,width,s,c,j);
 		}
 		public QPen(QBrush brush, double width, Qt.PenStyle s, Qt.PenCapStyle c) : this((Type) null) {
 			CreateProxy();
@@ -68,7 +62,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QPen", "(const QBrush&, qreal, Qt::PenStyle, Qt::PenCapStyle)", "#$$$")]
 		private void NewQPen(QBrush brush, double width, Qt.PenStyle s, Qt.PenCapStyle c) {
-			ProxyQPen().NewQPen(brush,width,s,c);
+			((QPen) interceptor).NewQPen(brush,width,s,c);
 		}
 		public QPen(QBrush brush, double width, Qt.PenStyle s) : this((Type) null) {
 			CreateProxy();
@@ -76,7 +70,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QPen", "(const QBrush&, qreal, Qt::PenStyle)", "#$$")]
 		private void NewQPen(QBrush brush, double width, Qt.PenStyle s) {
-			ProxyQPen().NewQPen(brush,width,s);
+			((QPen) interceptor).NewQPen(brush,width,s);
 		}
 		public QPen(QBrush brush, double width) : this((Type) null) {
 			CreateProxy();
@@ -84,7 +78,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QPen", "(const QBrush&, qreal)", "#$")]
 		private void NewQPen(QBrush brush, double width) {
-			ProxyQPen().NewQPen(brush,width);
+			((QPen) interceptor).NewQPen(brush,width);
 		}
 		public QPen(QPen pen) : this((Type) null) {
 			CreateProxy();
@@ -92,94 +86,94 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QPen", "(const QPen&)", "#")]
 		private void NewQPen(QPen pen) {
-			ProxyQPen().NewQPen(pen);
+			((QPen) interceptor).NewQPen(pen);
 		}
 		[SmokeMethod("style", "() const", "")]
 		public Qt.PenStyle Style() {
-			return ProxyQPen().Style();
+			return ((QPen) interceptor).Style();
 		}
 		[SmokeMethod("setStyle", "(Qt::PenStyle)", "$")]
 		public void SetStyle(Qt.PenStyle arg1) {
-			ProxyQPen().SetStyle(arg1);
+			((QPen) interceptor).SetStyle(arg1);
 		}
 		[SmokeMethod("dashPattern", "() const", "")]
 		public List<double> DashPattern() {
-			return ProxyQPen().DashPattern();
+			return ((QPen) interceptor).DashPattern();
 		}
 		[SmokeMethod("setDashPattern", "(const QVector<qreal>&)", "?")]
 		public void SetDashPattern(List<double> pattern) {
-			ProxyQPen().SetDashPattern(pattern);
+			((QPen) interceptor).SetDashPattern(pattern);
 		}
 		[SmokeMethod("miterLimit", "() const", "")]
 		public double MiterLimit() {
-			return ProxyQPen().MiterLimit();
+			return ((QPen) interceptor).MiterLimit();
 		}
 		[SmokeMethod("setMiterLimit", "(qreal)", "$")]
 		public void SetMiterLimit(double limit) {
-			ProxyQPen().SetMiterLimit(limit);
+			((QPen) interceptor).SetMiterLimit(limit);
 		}
 		[SmokeMethod("widthF", "() const", "")]
 		public double WidthF() {
-			return ProxyQPen().WidthF();
+			return ((QPen) interceptor).WidthF();
 		}
 		[SmokeMethod("setWidthF", "(qreal)", "$")]
 		public void SetWidthF(double width) {
-			ProxyQPen().SetWidthF(width);
+			((QPen) interceptor).SetWidthF(width);
 		}
 		[SmokeMethod("width", "() const", "")]
 		public int Width() {
-			return ProxyQPen().Width();
+			return ((QPen) interceptor).Width();
 		}
 		[SmokeMethod("setWidth", "(int)", "$")]
 		public void SetWidth(int width) {
-			ProxyQPen().SetWidth(width);
+			((QPen) interceptor).SetWidth(width);
 		}
 		[SmokeMethod("color", "() const", "")]
 		public QColor Color() {
-			return ProxyQPen().Color();
+			return ((QPen) interceptor).Color();
 		}
 		[SmokeMethod("setColor", "(const QColor&)", "#")]
 		public void SetColor(QColor color) {
-			ProxyQPen().SetColor(color);
+			((QPen) interceptor).SetColor(color);
 		}
 		[SmokeMethod("brush", "() const", "")]
 		public QBrush Brush() {
-			return ProxyQPen().Brush();
+			return ((QPen) interceptor).Brush();
 		}
 		[SmokeMethod("setBrush", "(const QBrush&)", "#")]
 		public void SetBrush(QBrush brush) {
-			ProxyQPen().SetBrush(brush);
+			((QPen) interceptor).SetBrush(brush);
 		}
 		[SmokeMethod("isSolid", "() const", "")]
 		public bool IsSolid() {
-			return ProxyQPen().IsSolid();
+			return ((QPen) interceptor).IsSolid();
 		}
 		[SmokeMethod("capStyle", "() const", "")]
 		public Qt.PenCapStyle CapStyle() {
-			return ProxyQPen().CapStyle();
+			return ((QPen) interceptor).CapStyle();
 		}
 		[SmokeMethod("setCapStyle", "(Qt::PenCapStyle)", "$")]
 		public void SetCapStyle(Qt.PenCapStyle pcs) {
-			ProxyQPen().SetCapStyle(pcs);
+			((QPen) interceptor).SetCapStyle(pcs);
 		}
 		[SmokeMethod("joinStyle", "() const", "")]
 		public Qt.PenJoinStyle JoinStyle() {
-			return ProxyQPen().JoinStyle();
+			return ((QPen) interceptor).JoinStyle();
 		}
 		[SmokeMethod("setJoinStyle", "(Qt::PenJoinStyle)", "$")]
 		public void SetJoinStyle(Qt.PenJoinStyle pcs) {
-			ProxyQPen().SetJoinStyle(pcs);
+			((QPen) interceptor).SetJoinStyle(pcs);
 		}
 		public override bool Equals(object o) {
 			if (!(o is QPen)) { return false; }
 			return this == (QPen) o;
 		}
 		public override int GetHashCode() {
-			return ProxyQPen().GetHashCode();
+			return ((QPen) interceptor).GetHashCode();
 		}
 		[SmokeMethod("isDetached", "()", "")]
 		public bool IsDetached() {
-			return ProxyQPen().IsDetached();
+			return ((QPen) interceptor).IsDetached();
 		}
 		~QPen() {
 			DisposeQPen();
@@ -189,13 +183,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QPen", "()", "")]
 		private void DisposeQPen() {
-			ProxyQPen().DisposeQPen();
+			((QPen) interceptor).DisposeQPen();
 		}
 		public static bool operator==(QPen lhs, QPen p) {
-			return StaticQPen().op_equals(lhs,p);
+			return staticInterceptor.op_equals(lhs,p);
 		}
 		public static bool operator!=(QPen lhs, QPen p) {
-			return !StaticQPen().op_equals(lhs,p);
+			return !staticInterceptor.op_equals(lhs,p);
 		}
 	}
 }

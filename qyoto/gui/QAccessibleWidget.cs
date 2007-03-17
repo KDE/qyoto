@@ -9,10 +9,7 @@ namespace Qyoto {
  		protected QAccessibleWidget(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAccessibleWidget), this);
-			_interceptor = (QAccessibleWidget) realProxy.GetTransparentProxy();
-		}
-		private QAccessibleWidget ProxyQAccessibleWidget() {
-			return (QAccessibleWidget) _interceptor;
+			interceptor = (QAccessibleWidget) realProxy.GetTransparentProxy();
 		}
 		public QAccessibleWidget(QWidget o, QAccessible.Role r, string name) : this((Type) null) {
 			CreateProxy();
@@ -20,7 +17,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QAccessibleWidget", "(QWidget*, QAccessible::Role, const QString&)", "#$$")]
 		private void NewQAccessibleWidget(QWidget o, QAccessible.Role r, string name) {
-			ProxyQAccessibleWidget().NewQAccessibleWidget(o,r,name);
+			((QAccessibleWidget) interceptor).NewQAccessibleWidget(o,r,name);
 		}
 		public QAccessibleWidget(QWidget o, QAccessible.Role r) : this((Type) null) {
 			CreateProxy();
@@ -28,7 +25,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QAccessibleWidget", "(QWidget*, QAccessible::Role)", "#$")]
 		private void NewQAccessibleWidget(QWidget o, QAccessible.Role r) {
-			ProxyQAccessibleWidget().NewQAccessibleWidget(o,r);
+			((QAccessibleWidget) interceptor).NewQAccessibleWidget(o,r);
 		}
 		public QAccessibleWidget(QWidget o) : this((Type) null) {
 			CreateProxy();
@@ -36,79 +33,79 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QAccessibleWidget", "(QWidget*)", "#")]
 		private void NewQAccessibleWidget(QWidget o) {
-			ProxyQAccessibleWidget().NewQAccessibleWidget(o);
+			((QAccessibleWidget) interceptor).NewQAccessibleWidget(o);
 		}
 		[SmokeMethod("childCount", "() const", "")]
 		public override int ChildCount() {
-			return ProxyQAccessibleWidget().ChildCount();
+			return ((QAccessibleWidget) interceptor).ChildCount();
 		}
 		[SmokeMethod("indexOfChild", "(const QAccessibleInterface*) const", "#")]
 		public override int IndexOfChild(QAccessibleInterface child) {
-			return ProxyQAccessibleWidget().IndexOfChild(child);
+			return ((QAccessibleWidget) interceptor).IndexOfChild(child);
 		}
 		[SmokeMethod("relationTo", "(int, const QAccessibleInterface*, int) const", "$#$")]
 		public override int RelationTo(int child, QAccessibleInterface other, int otherChild) {
-			return ProxyQAccessibleWidget().RelationTo(child,other,otherChild);
+			return ((QAccessibleWidget) interceptor).RelationTo(child,other,otherChild);
 		}
 		[SmokeMethod("childAt", "(int, int) const", "$$")]
 		public override int ChildAt(int x, int y) {
-			return ProxyQAccessibleWidget().ChildAt(x,y);
+			return ((QAccessibleWidget) interceptor).ChildAt(x,y);
 		}
 		[SmokeMethod("rect", "(int) const", "$")]
 		public override QRect Rect(int child) {
-			return ProxyQAccessibleWidget().Rect(child);
+			return ((QAccessibleWidget) interceptor).Rect(child);
 		}
 		[SmokeMethod("navigate", "(QAccessible::RelationFlag, int, QAccessibleInterface**) const", "$$?")]
 		public override int Navigate(QAccessible.RelationFlag rel, int entry, QAccessibleInterface target) {
-			return ProxyQAccessibleWidget().Navigate(rel,entry,target);
+			return ((QAccessibleWidget) interceptor).Navigate(rel,entry,target);
 		}
 		[SmokeMethod("text", "(QAccessible::Text, int) const", "$$")]
 		public override string Text(QAccessible.Text t, int child) {
-			return ProxyQAccessibleWidget().Text(t,child);
+			return ((QAccessibleWidget) interceptor).Text(t,child);
 		}
 		[SmokeMethod("role", "(int) const", "$")]
 		public override QAccessible.Role Role(int child) {
-			return ProxyQAccessibleWidget().Role(child);
+			return ((QAccessibleWidget) interceptor).Role(child);
 		}
 		[SmokeMethod("state", "(int) const", "$")]
 		public override int State(int child) {
-			return ProxyQAccessibleWidget().State(child);
+			return ((QAccessibleWidget) interceptor).State(child);
 		}
 		[SmokeMethod("actionText", "(int, QAccessible::Text, int) const", "$$$")]
 		public override string ActionText(int action, QAccessible.Text t, int child) {
-			return ProxyQAccessibleWidget().ActionText(action,t,child);
+			return ((QAccessibleWidget) interceptor).ActionText(action,t,child);
 		}
 		[SmokeMethod("doAction", "(int, int, const QVariantList&)", "$$?")]
 		public override bool DoAction(int action, int child, List<QVariant> arg3) {
-			return ProxyQAccessibleWidget().DoAction(action,child,arg3);
+			return ((QAccessibleWidget) interceptor).DoAction(action,child,arg3);
 		}
 		[SmokeMethod("widget", "() const", "")]
 		protected QWidget Widget() {
-			return ProxyQAccessibleWidget().Widget();
+			return ((QAccessibleWidget) interceptor).Widget();
 		}
 		[SmokeMethod("parentObject", "() const", "")]
 		protected QObject ParentObject() {
-			return ProxyQAccessibleWidget().ParentObject();
+			return ((QAccessibleWidget) interceptor).ParentObject();
 		}
 		[SmokeMethod("addControllingSignal", "(const QString&)", "$")]
 		protected void AddControllingSignal(string signal) {
-			ProxyQAccessibleWidget().AddControllingSignal(signal);
+			((QAccessibleWidget) interceptor).AddControllingSignal(signal);
 		}
 		[SmokeMethod("setValue", "(const QString&)", "$")]
 		protected void SetValue(string value) {
-			ProxyQAccessibleWidget().SetValue(value);
+			((QAccessibleWidget) interceptor).SetValue(value);
 		}
 		[SmokeMethod("setDescription", "(const QString&)", "$")]
 		protected void SetDescription(string desc) {
-			ProxyQAccessibleWidget().SetDescription(desc);
+			((QAccessibleWidget) interceptor).SetDescription(desc);
 		}
 		[SmokeMethod("setHelp", "(const QString&)", "$")]
 		protected void SetHelp(string help) {
-			ProxyQAccessibleWidget().SetHelp(help);
+			((QAccessibleWidget) interceptor).SetHelp(help);
 		}
 		[SmokeMethod("setAccelerator", "(const QString&)", "$")]
 		protected void SetAccelerator(string accel) {
-			ProxyQAccessibleWidget().SetAccelerator(accel);
+			((QAccessibleWidget) interceptor).SetAccelerator(accel);
 		}
 	}
 }

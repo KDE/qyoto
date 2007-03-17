@@ -6,8 +6,8 @@ namespace Qyoto {
 
 	[SmokeClass("QHostInfo")]
 	public class QHostInfo : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QHostInfo interceptor = null;
+		private IntPtr smokeObject;
 		protected QHostInfo(Type dummy) {}
 		[SmokeClass("QHostInfo")]
 		interface IQHostInfoProxy {
@@ -22,18 +22,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QHostInfo), this);
-			_interceptor = (QHostInfo) realProxy.GetTransparentProxy();
+			interceptor = (QHostInfo) realProxy.GetTransparentProxy();
 		}
-		private QHostInfo ProxyQHostInfo() {
-			return (QHostInfo) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQHostInfoProxy staticInterceptor = null;
 		static QHostInfo() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQHostInfoProxy), null);
-			_staticInterceptor = (IQHostInfoProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQHostInfoProxy StaticQHostInfo() {
-			return (IQHostInfoProxy) _staticInterceptor;
+			staticInterceptor = (IQHostInfoProxy) realProxy.GetTransparentProxy();
 		}
 		public enum HostInfoError {
 			NoError = 0,
@@ -46,7 +40,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QHostInfo", "(int)", "$")]
 		private void NewQHostInfo(int lookupId) {
-			ProxyQHostInfo().NewQHostInfo(lookupId);
+			((QHostInfo) interceptor).NewQHostInfo(lookupId);
 		}
 		public QHostInfo() : this((Type) null) {
 			CreateProxy();
@@ -54,7 +48,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QHostInfo", "()", "")]
 		private void NewQHostInfo() {
-			ProxyQHostInfo().NewQHostInfo();
+			((QHostInfo) interceptor).NewQHostInfo();
 		}
 		public QHostInfo(QHostInfo d) : this((Type) null) {
 			CreateProxy();
@@ -62,47 +56,47 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QHostInfo", "(const QHostInfo&)", "#")]
 		private void NewQHostInfo(QHostInfo d) {
-			ProxyQHostInfo().NewQHostInfo(d);
+			((QHostInfo) interceptor).NewQHostInfo(d);
 		}
 		[SmokeMethod("hostName", "() const", "")]
 		public string HostName() {
-			return ProxyQHostInfo().HostName();
+			return ((QHostInfo) interceptor).HostName();
 		}
 		[SmokeMethod("setHostName", "(const QString&)", "$")]
 		public void SetHostName(string name) {
-			ProxyQHostInfo().SetHostName(name);
+			((QHostInfo) interceptor).SetHostName(name);
 		}
 		[SmokeMethod("addresses", "() const", "")]
 		public List<QHostAddress> Addresses() {
-			return ProxyQHostInfo().Addresses();
+			return ((QHostInfo) interceptor).Addresses();
 		}
 		[SmokeMethod("setAddresses", "(const QList<QHostAddress>&)", "?")]
 		public void SetAddresses(List<QHostAddress> addresses) {
-			ProxyQHostInfo().SetAddresses(addresses);
+			((QHostInfo) interceptor).SetAddresses(addresses);
 		}
 		[SmokeMethod("error", "() const", "")]
 		public QHostInfo.HostInfoError Error() {
-			return ProxyQHostInfo().Error();
+			return ((QHostInfo) interceptor).Error();
 		}
 		[SmokeMethod("setError", "(QHostInfo::HostInfoError)", "$")]
 		public void SetError(QHostInfo.HostInfoError error) {
-			ProxyQHostInfo().SetError(error);
+			((QHostInfo) interceptor).SetError(error);
 		}
 		[SmokeMethod("errorString", "() const", "")]
 		public string ErrorString() {
-			return ProxyQHostInfo().ErrorString();
+			return ((QHostInfo) interceptor).ErrorString();
 		}
 		[SmokeMethod("setErrorString", "(const QString&)", "$")]
 		public void SetErrorString(string errorString) {
-			ProxyQHostInfo().SetErrorString(errorString);
+			((QHostInfo) interceptor).SetErrorString(errorString);
 		}
 		[SmokeMethod("setLookupId", "(int)", "$")]
 		public void SetLookupId(int id) {
-			ProxyQHostInfo().SetLookupId(id);
+			((QHostInfo) interceptor).SetLookupId(id);
 		}
 		[SmokeMethod("lookupId", "() const", "")]
 		public int LookupId() {
-			return ProxyQHostInfo().LookupId();
+			return ((QHostInfo) interceptor).LookupId();
 		}
 		~QHostInfo() {
 			DisposeQHostInfo();
@@ -112,19 +106,19 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QHostInfo", "()", "")]
 		private void DisposeQHostInfo() {
-			ProxyQHostInfo().DisposeQHostInfo();
+			((QHostInfo) interceptor).DisposeQHostInfo();
 		}
 		public static int LookupHost(string name, QObject receiver, string member) {
-			return StaticQHostInfo().LookupHost(name,receiver,member);
+			return staticInterceptor.LookupHost(name,receiver,member);
 		}
 		public static void AbortHostLookup(int lookupId) {
-			StaticQHostInfo().AbortHostLookup(lookupId);
+			staticInterceptor.AbortHostLookup(lookupId);
 		}
 		public static QHostInfo FromName(string name) {
-			return StaticQHostInfo().FromName(name);
+			return staticInterceptor.FromName(name);
 		}
 		public static string LocalHostName() {
-			return StaticQHostInfo().LocalHostName();
+			return staticInterceptor.LocalHostName();
 		}
 	}
 }

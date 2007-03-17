@@ -15,18 +15,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QVBoxLayout), this);
-			_interceptor = (QVBoxLayout) realProxy.GetTransparentProxy();
+			interceptor = (QVBoxLayout) realProxy.GetTransparentProxy();
 		}
-		private QVBoxLayout ProxyQVBoxLayout() {
-			return (QVBoxLayout) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQVBoxLayoutProxy staticInterceptor = null;
 		static QVBoxLayout() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQVBoxLayoutProxy), null);
-			_staticInterceptor = (IQVBoxLayoutProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQVBoxLayoutProxy StaticQVBoxLayout() {
-			return (IQVBoxLayoutProxy) _staticInterceptor;
+			staticInterceptor = (IQVBoxLayoutProxy) realProxy.GetTransparentProxy();
 		}
 		public QVBoxLayout() : this((Type) null) {
 			CreateProxy();
@@ -34,7 +28,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QVBoxLayout", "()", "")]
 		private void NewQVBoxLayout() {
-			ProxyQVBoxLayout().NewQVBoxLayout();
+			((QVBoxLayout) interceptor).NewQVBoxLayout();
 		}
 		public QVBoxLayout(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -42,7 +36,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QVBoxLayout", "(QWidget*)", "#")]
 		private void NewQVBoxLayout(QWidget parent) {
-			ProxyQVBoxLayout().NewQVBoxLayout(parent);
+			((QVBoxLayout) interceptor).NewQVBoxLayout(parent);
 		}
 		~QVBoxLayout() {
 			DisposeQVBoxLayout();
@@ -52,13 +46,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QVBoxLayout", "()", "")]
 		private void DisposeQVBoxLayout() {
-			ProxyQVBoxLayout().DisposeQVBoxLayout();
+			((QVBoxLayout) interceptor).DisposeQVBoxLayout();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQVBoxLayout().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQVBoxLayout().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQVBoxLayoutSignals Emit {
 			get { return (IQVBoxLayoutSignals) Q_EMIT; }

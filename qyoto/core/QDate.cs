@@ -5,8 +5,8 @@ namespace Qyoto {
 
 	[SmokeClass("QDate")]
 	public class QDate : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QDate interceptor = null;
+		private IntPtr smokeObject;
 		protected QDate(Type dummy) {}
 		[SmokeClass("QDate")]
 		interface IQDateProxy {
@@ -49,18 +49,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDate), this);
-			_interceptor = (QDate) realProxy.GetTransparentProxy();
+			interceptor = (QDate) realProxy.GetTransparentProxy();
 		}
-		private QDate ProxyQDate() {
-			return (QDate) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQDateProxy staticInterceptor = null;
 		static QDate() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQDateProxy), null);
-			_staticInterceptor = (IQDateProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQDateProxy StaticQDate() {
-			return (IQDateProxy) _staticInterceptor;
+			staticInterceptor = (IQDateProxy) realProxy.GetTransparentProxy();
 		}
 		public QDate() : this((Type) null) {
 			CreateProxy();
@@ -68,7 +62,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDate", "()", "")]
 		private void NewQDate() {
-			ProxyQDate().NewQDate();
+			((QDate) interceptor).NewQDate();
 		}
 		public QDate(int y, int m, int d) : this((Type) null) {
 			CreateProxy();
@@ -76,98 +70,98 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDate", "(int, int, int)", "$$$")]
 		private void NewQDate(int y, int m, int d) {
-			ProxyQDate().NewQDate(y,m,d);
+			((QDate) interceptor).NewQDate(y,m,d);
 		}
 		[SmokeMethod("isNull", "() const", "")]
 		public bool IsNull() {
-			return ProxyQDate().IsNull();
+			return ((QDate) interceptor).IsNull();
 		}
 		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ProxyQDate().IsValid();
+			return ((QDate) interceptor).IsValid();
 		}
 		[SmokeMethod("year", "() const", "")]
 		public int Year() {
-			return ProxyQDate().Year();
+			return ((QDate) interceptor).Year();
 		}
 		[SmokeMethod("month", "() const", "")]
 		public int Month() {
-			return ProxyQDate().Month();
+			return ((QDate) interceptor).Month();
 		}
 		[SmokeMethod("day", "() const", "")]
 		public int Day() {
-			return ProxyQDate().Day();
+			return ((QDate) interceptor).Day();
 		}
 		[SmokeMethod("dayOfWeek", "() const", "")]
 		public int DayOfWeek() {
-			return ProxyQDate().DayOfWeek();
+			return ((QDate) interceptor).DayOfWeek();
 		}
 		[SmokeMethod("dayOfYear", "() const", "")]
 		public int DayOfYear() {
-			return ProxyQDate().DayOfYear();
+			return ((QDate) interceptor).DayOfYear();
 		}
 		[SmokeMethod("daysInMonth", "() const", "")]
 		public int DaysInMonth() {
-			return ProxyQDate().DaysInMonth();
+			return ((QDate) interceptor).DaysInMonth();
 		}
 		[SmokeMethod("daysInYear", "() const", "")]
 		public int DaysInYear() {
-			return ProxyQDate().DaysInYear();
+			return ((QDate) interceptor).DaysInYear();
 		}
 		[SmokeMethod("weekNumber", "(int*) const", "$")]
 		public int WeekNumber(out int yearNum) {
-			return ProxyQDate().WeekNumber(out yearNum);
+			return ((QDate) interceptor).WeekNumber(out yearNum);
 		}
 		[SmokeMethod("weekNumber", "() const", "")]
 		public int WeekNumber() {
-			return ProxyQDate().WeekNumber();
+			return ((QDate) interceptor).WeekNumber();
 		}
 		[SmokeMethod("toString", "(Qt::DateFormat) const", "$")]
 		public string ToString(Qt.DateFormat f) {
-			return ProxyQDate().ToString(f);
+			return ((QDate) interceptor).ToString(f);
 		}
 		[SmokeMethod("toString", "() const", "")]
 		public string ToString() {
-			return ProxyQDate().ToString();
+			return ((QDate) interceptor).ToString();
 		}
 		[SmokeMethod("toString", "(const QString&) const", "$")]
 		public string ToString(string format) {
-			return ProxyQDate().ToString(format);
+			return ((QDate) interceptor).ToString(format);
 		}
 		[SmokeMethod("setYMD", "(int, int, int)", "$$$")]
 		public bool SetYMD(int y, int m, int d) {
-			return ProxyQDate().SetYMD(y,m,d);
+			return ((QDate) interceptor).SetYMD(y,m,d);
 		}
 		[SmokeMethod("setDate", "(int, int, int)", "$$$")]
 		public bool SetDate(int year, int month, int date) {
-			return ProxyQDate().SetDate(year,month,date);
+			return ((QDate) interceptor).SetDate(year,month,date);
 		}
 		[SmokeMethod("addDays", "(int) const", "$")]
 		public QDate AddDays(int days) {
-			return ProxyQDate().AddDays(days);
+			return ((QDate) interceptor).AddDays(days);
 		}
 		[SmokeMethod("addMonths", "(int) const", "$")]
 		public QDate AddMonths(int months) {
-			return ProxyQDate().AddMonths(months);
+			return ((QDate) interceptor).AddMonths(months);
 		}
 		[SmokeMethod("addYears", "(int) const", "$")]
 		public QDate AddYears(int years) {
-			return ProxyQDate().AddYears(years);
+			return ((QDate) interceptor).AddYears(years);
 		}
 		[SmokeMethod("daysTo", "(const QDate&) const", "#")]
 		public int DaysTo(QDate arg1) {
-			return ProxyQDate().DaysTo(arg1);
+			return ((QDate) interceptor).DaysTo(arg1);
 		}
 		public override bool Equals(object o) {
 			if (!(o is QDate)) { return false; }
 			return this == (QDate) o;
 		}
 		public override int GetHashCode() {
-			return ProxyQDate().GetHashCode();
+			return ((QDate) interceptor).GetHashCode();
 		}
 		[SmokeMethod("toJulianDay", "() const", "")]
 		public int ToJulianDay() {
-			return ProxyQDate().ToJulianDay();
+			return ((QDate) interceptor).ToJulianDay();
 		}
 		~QDate() {
 			DisposeQDate();
@@ -177,64 +171,64 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QDate", "()", "")]
 		private void DisposeQDate() {
-			ProxyQDate().DisposeQDate();
+			((QDate) interceptor).DisposeQDate();
 		}
 		public static bool operator==(QDate lhs, QDate other) {
-			return StaticQDate().op_equals(lhs,other);
+			return staticInterceptor.op_equals(lhs,other);
 		}
 		public static bool operator!=(QDate lhs, QDate other) {
-			return !StaticQDate().op_equals(lhs,other);
+			return !staticInterceptor.op_equals(lhs,other);
 		}
 		public static bool operator<(QDate lhs, QDate other) {
-			return StaticQDate().op_lt(lhs,other);
+			return staticInterceptor.op_lt(lhs,other);
 		}
 		public static bool operator<=(QDate lhs, QDate other) {
-			return StaticQDate().op_lte(lhs,other);
+			return staticInterceptor.op_lte(lhs,other);
 		}
 		public static bool operator>(QDate lhs, QDate other) {
-			return StaticQDate().op_gt(lhs,other);
+			return staticInterceptor.op_gt(lhs,other);
 		}
 		public static bool operator>=(QDate lhs, QDate other) {
-			return StaticQDate().op_gte(lhs,other);
+			return staticInterceptor.op_gte(lhs,other);
 		}
 		public static string ShortMonthName(int month) {
-			return StaticQDate().ShortMonthName(month);
+			return staticInterceptor.ShortMonthName(month);
 		}
 		public static string ShortDayName(int weekday) {
-			return StaticQDate().ShortDayName(weekday);
+			return staticInterceptor.ShortDayName(weekday);
 		}
 		public static string LongMonthName(int month) {
-			return StaticQDate().LongMonthName(month);
+			return staticInterceptor.LongMonthName(month);
 		}
 		public static string LongDayName(int weekday) {
-			return StaticQDate().LongDayName(weekday);
+			return staticInterceptor.LongDayName(weekday);
 		}
 		public static QDate CurrentDate() {
-			return StaticQDate().CurrentDate();
+			return staticInterceptor.CurrentDate();
 		}
 		public static QDate FromString(string s, Qt.DateFormat f) {
-			return StaticQDate().FromString(s,f);
+			return staticInterceptor.FromString(s,f);
 		}
 		public static QDate FromString(string s) {
-			return StaticQDate().FromString(s);
+			return staticInterceptor.FromString(s);
 		}
 		public static QDate FromString(string s, string format) {
-			return StaticQDate().FromString(s,format);
+			return staticInterceptor.FromString(s,format);
 		}
 		public static bool IsValid(int y, int m, int d) {
-			return StaticQDate().IsValid(y,m,d);
+			return staticInterceptor.IsValid(y,m,d);
 		}
 		public static bool IsLeapYear(int year) {
-			return StaticQDate().IsLeapYear(year);
+			return staticInterceptor.IsLeapYear(year);
 		}
 		public static uint GregorianToJulian(int y, int m, int d) {
-			return StaticQDate().GregorianToJulian(y,m,d);
+			return staticInterceptor.GregorianToJulian(y,m,d);
 		}
 		public static void JulianToGregorian(uint jd, out int y, out int m, out int d) {
-			StaticQDate().JulianToGregorian(jd,out y,out m,out d);
+			staticInterceptor.JulianToGregorian(jd,out y,out m,out d);
 		}
 		public static QDate FromJulianDay(int jd) {
-			return StaticQDate().FromJulianDay(jd);
+			return staticInterceptor.FromJulianDay(jd);
 		}
 	}
 }

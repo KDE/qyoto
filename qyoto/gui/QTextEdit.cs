@@ -16,18 +16,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextEdit), this);
-			_interceptor = (QTextEdit) realProxy.GetTransparentProxy();
+			interceptor = (QTextEdit) realProxy.GetTransparentProxy();
 		}
-		private QTextEdit ProxyQTextEdit() {
-			return (QTextEdit) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQTextEditProxy staticInterceptor = null;
 		static QTextEdit() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTextEditProxy), null);
-			_staticInterceptor = (IQTextEditProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQTextEditProxy StaticQTextEdit() {
-			return (IQTextEditProxy) _staticInterceptor;
+			staticInterceptor = (IQTextEditProxy) realProxy.GetTransparentProxy();
 		}
 		public enum LineWrapMode {
 			NoWrap = 0,
@@ -113,7 +107,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTextEdit", "(QWidget*)", "#")]
 		private void NewQTextEdit(QWidget parent) {
-			ProxyQTextEdit().NewQTextEdit(parent);
+			((QTextEdit) interceptor).NewQTextEdit(parent);
 		}
 		public QTextEdit() : this((Type) null) {
 			CreateProxy();
@@ -121,7 +115,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTextEdit", "()", "")]
 		private void NewQTextEdit() {
-			ProxyQTextEdit().NewQTextEdit();
+			((QTextEdit) interceptor).NewQTextEdit();
 		}
 		public QTextEdit(string text, QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -129,7 +123,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTextEdit", "(const QString&, QWidget*)", "$#")]
 		private void NewQTextEdit(string text, QWidget parent) {
-			ProxyQTextEdit().NewQTextEdit(text,parent);
+			((QTextEdit) interceptor).NewQTextEdit(text,parent);
 		}
 		public QTextEdit(string text) : this((Type) null) {
 			CreateProxy();
@@ -137,372 +131,372 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTextEdit", "(const QString&)", "$")]
 		private void NewQTextEdit(string text) {
-			ProxyQTextEdit().NewQTextEdit(text);
+			((QTextEdit) interceptor).NewQTextEdit(text);
 		}
 		[SmokeMethod("setDocument", "(QTextDocument*)", "#")]
 		public void SetDocument(QTextDocument document) {
-			ProxyQTextEdit().SetDocument(document);
+			((QTextEdit) interceptor).SetDocument(document);
 		}
 		[SmokeMethod("document", "() const", "")]
 		public QTextDocument Document() {
-			return ProxyQTextEdit().Document();
+			return ((QTextEdit) interceptor).Document();
 		}
 		[SmokeMethod("setTextCursor", "(const QTextCursor&)", "#")]
 		public void SetTextCursor(QTextCursor cursor) {
-			ProxyQTextEdit().SetTextCursor(cursor);
+			((QTextEdit) interceptor).SetTextCursor(cursor);
 		}
 		[SmokeMethod("textCursor", "() const", "")]
 		public QTextCursor TextCursor() {
-			return ProxyQTextEdit().TextCursor();
+			return ((QTextEdit) interceptor).TextCursor();
 		}
 		[SmokeMethod("isReadOnly", "() const", "")]
 		public bool IsReadOnly() {
-			return ProxyQTextEdit().IsReadOnly();
+			return ((QTextEdit) interceptor).IsReadOnly();
 		}
 		[SmokeMethod("fontPointSize", "() const", "")]
 		public double FontPointSize() {
-			return ProxyQTextEdit().FontPointSize();
+			return ((QTextEdit) interceptor).FontPointSize();
 		}
 		[SmokeMethod("fontFamily", "() const", "")]
 		public string FontFamily() {
-			return ProxyQTextEdit().FontFamily();
+			return ((QTextEdit) interceptor).FontFamily();
 		}
 		[SmokeMethod("fontWeight", "() const", "")]
 		public int FontWeight() {
-			return ProxyQTextEdit().FontWeight();
+			return ((QTextEdit) interceptor).FontWeight();
 		}
 		[SmokeMethod("fontUnderline", "() const", "")]
 		public bool FontUnderline() {
-			return ProxyQTextEdit().FontUnderline();
+			return ((QTextEdit) interceptor).FontUnderline();
 		}
 		[SmokeMethod("fontItalic", "() const", "")]
 		public bool FontItalic() {
-			return ProxyQTextEdit().FontItalic();
+			return ((QTextEdit) interceptor).FontItalic();
 		}
 		[SmokeMethod("textColor", "() const", "")]
 		public QColor TextColor() {
-			return ProxyQTextEdit().TextColor();
+			return ((QTextEdit) interceptor).TextColor();
 		}
 		[SmokeMethod("currentFont", "() const", "")]
 		public QFont CurrentFont() {
-			return ProxyQTextEdit().CurrentFont();
+			return ((QTextEdit) interceptor).CurrentFont();
 		}
 		[SmokeMethod("alignment", "() const", "")]
 		public int Alignment() {
-			return ProxyQTextEdit().Alignment();
+			return ((QTextEdit) interceptor).Alignment();
 		}
 		[SmokeMethod("mergeCurrentCharFormat", "(const QTextCharFormat&)", "#")]
 		public void MergeCurrentCharFormat(QTextCharFormat modifier) {
-			ProxyQTextEdit().MergeCurrentCharFormat(modifier);
+			((QTextEdit) interceptor).MergeCurrentCharFormat(modifier);
 		}
 		[SmokeMethod("setCurrentCharFormat", "(const QTextCharFormat&)", "#")]
 		public void SetCurrentCharFormat(QTextCharFormat format) {
-			ProxyQTextEdit().SetCurrentCharFormat(format);
+			((QTextEdit) interceptor).SetCurrentCharFormat(format);
 		}
 		[SmokeMethod("currentCharFormat", "() const", "")]
 		public QTextCharFormat CurrentCharFormat() {
-			return ProxyQTextEdit().CurrentCharFormat();
+			return ((QTextEdit) interceptor).CurrentCharFormat();
 		}
 		[SmokeMethod("isUndoRedoEnabled", "() const", "")]
 		public bool IsUndoRedoEnabled() {
-			return ProxyQTextEdit().IsUndoRedoEnabled();
+			return ((QTextEdit) interceptor).IsUndoRedoEnabled();
 		}
 		[SmokeMethod("wordWrapMode", "() const", "")]
 		public QTextOption.WrapMode WordWrapMode() {
-			return ProxyQTextEdit().WordWrapMode();
+			return ((QTextEdit) interceptor).WordWrapMode();
 		}
 		[SmokeMethod("setWordWrapMode", "(QTextOption::WrapMode)", "$")]
 		public void SetWordWrapMode(QTextOption.WrapMode policy) {
-			ProxyQTextEdit().SetWordWrapMode(policy);
+			((QTextEdit) interceptor).SetWordWrapMode(policy);
 		}
 		[SmokeMethod("find", "(const QString&, QTextDocument::FindFlags)", "$$")]
 		public bool Find(string exp, int options) {
-			return ProxyQTextEdit().Find(exp,options);
+			return ((QTextEdit) interceptor).Find(exp,options);
 		}
 		[SmokeMethod("find", "(const QString&)", "$")]
 		public bool Find(string exp) {
-			return ProxyQTextEdit().Find(exp);
+			return ((QTextEdit) interceptor).Find(exp);
 		}
 		[SmokeMethod("toPlainText", "() const", "")]
 		public string ToPlainText() {
-			return ProxyQTextEdit().ToPlainText();
+			return ((QTextEdit) interceptor).ToPlainText();
 		}
 		[SmokeMethod("toHtml", "() const", "")]
 		public string ToHtml() {
-			return ProxyQTextEdit().ToHtml();
+			return ((QTextEdit) interceptor).ToHtml();
 		}
 		[SmokeMethod("ensureCursorVisible", "()", "")]
 		public void EnsureCursorVisible() {
-			ProxyQTextEdit().EnsureCursorVisible();
+			((QTextEdit) interceptor).EnsureCursorVisible();
 		}
 		[SmokeMethod("loadResource", "(int, const QUrl&)", "$#")]
 		public virtual QVariant LoadResource(int type, IQUrl name) {
-			return ProxyQTextEdit().LoadResource(type,name);
+			return ((QTextEdit) interceptor).LoadResource(type,name);
 		}
 		[SmokeMethod("createStandardContextMenu", "()", "")]
 		public QMenu CreateStandardContextMenu() {
-			return ProxyQTextEdit().CreateStandardContextMenu();
+			return ((QTextEdit) interceptor).CreateStandardContextMenu();
 		}
 		[SmokeMethod("cursorForPosition", "(const QPoint&) const", "#")]
 		public QTextCursor CursorForPosition(QPoint pos) {
-			return ProxyQTextEdit().CursorForPosition(pos);
+			return ((QTextEdit) interceptor).CursorForPosition(pos);
 		}
 		[SmokeMethod("cursorRect", "(const QTextCursor&) const", "#")]
 		public QRect CursorRect(QTextCursor cursor) {
-			return ProxyQTextEdit().CursorRect(cursor);
+			return ((QTextEdit) interceptor).CursorRect(cursor);
 		}
 		[SmokeMethod("cursorRect", "() const", "")]
 		public QRect CursorRect() {
-			return ProxyQTextEdit().CursorRect();
+			return ((QTextEdit) interceptor).CursorRect();
 		}
 		[SmokeMethod("anchorAt", "(const QPoint&) const", "#")]
 		public string AnchorAt(QPoint pos) {
-			return ProxyQTextEdit().AnchorAt(pos);
+			return ((QTextEdit) interceptor).AnchorAt(pos);
 		}
 		[SmokeMethod("moveCursor", "(QTextCursor::MoveOperation, QTextCursor::MoveMode)", "$$")]
 		public void MoveCursor(QTextCursor.MoveOperation operation, QTextCursor.MoveMode mode) {
-			ProxyQTextEdit().MoveCursor(operation,mode);
+			((QTextEdit) interceptor).MoveCursor(operation,mode);
 		}
 		[SmokeMethod("moveCursor", "(QTextCursor::MoveOperation)", "$")]
 		public void MoveCursor(QTextCursor.MoveOperation operation) {
-			ProxyQTextEdit().MoveCursor(operation);
+			((QTextEdit) interceptor).MoveCursor(operation);
 		}
 		[SmokeMethod("canPaste", "() const", "")]
 		public bool CanPaste() {
-			return ProxyQTextEdit().CanPaste();
+			return ((QTextEdit) interceptor).CanPaste();
 		}
 		[Q_SLOT("void setFontPointSize(qreal)")]
 		[SmokeMethod("setFontPointSize", "(qreal)", "$")]
 		public void SetFontPointSize(double s) {
-			ProxyQTextEdit().SetFontPointSize(s);
+			((QTextEdit) interceptor).SetFontPointSize(s);
 		}
 		[Q_SLOT("void setFontFamily(const QString&)")]
 		[SmokeMethod("setFontFamily", "(const QString&)", "$")]
 		public void SetFontFamily(string fontFamily) {
-			ProxyQTextEdit().SetFontFamily(fontFamily);
+			((QTextEdit) interceptor).SetFontFamily(fontFamily);
 		}
 		[Q_SLOT("void setFontWeight(int)")]
 		[SmokeMethod("setFontWeight", "(int)", "$")]
 		public void SetFontWeight(int w) {
-			ProxyQTextEdit().SetFontWeight(w);
+			((QTextEdit) interceptor).SetFontWeight(w);
 		}
 		[Q_SLOT("void setFontUnderline(bool)")]
 		[SmokeMethod("setFontUnderline", "(bool)", "$")]
 		public void SetFontUnderline(bool b) {
-			ProxyQTextEdit().SetFontUnderline(b);
+			((QTextEdit) interceptor).SetFontUnderline(b);
 		}
 		[Q_SLOT("void setFontItalic(bool)")]
 		[SmokeMethod("setFontItalic", "(bool)", "$")]
 		public void SetFontItalic(bool b) {
-			ProxyQTextEdit().SetFontItalic(b);
+			((QTextEdit) interceptor).SetFontItalic(b);
 		}
 		[Q_SLOT("void setTextColor(const QColor&)")]
 		[SmokeMethod("setTextColor", "(const QColor&)", "#")]
 		public void SetTextColor(QColor c) {
-			ProxyQTextEdit().SetTextColor(c);
+			((QTextEdit) interceptor).SetTextColor(c);
 		}
 		[Q_SLOT("void setCurrentFont(const QFont&)")]
 		[SmokeMethod("setCurrentFont", "(const QFont&)", "#")]
 		public void SetCurrentFont(QFont f) {
-			ProxyQTextEdit().SetCurrentFont(f);
+			((QTextEdit) interceptor).SetCurrentFont(f);
 		}
 		[Q_SLOT("void setAlignment(Qt::Alignment)")]
 		[SmokeMethod("setAlignment", "(Qt::Alignment)", "$")]
 		public void SetAlignment(int a) {
-			ProxyQTextEdit().SetAlignment(a);
+			((QTextEdit) interceptor).SetAlignment(a);
 		}
 		[Q_SLOT("void setPlainText(const QString&)")]
 		[SmokeMethod("setPlainText", "(const QString&)", "$")]
 		public void SetPlainText(string text) {
-			ProxyQTextEdit().SetPlainText(text);
+			((QTextEdit) interceptor).SetPlainText(text);
 		}
 		[Q_SLOT("void setText(const QString&)")]
 		[SmokeMethod("setText", "(const QString&)", "$")]
 		public void SetText(string text) {
-			ProxyQTextEdit().SetText(text);
+			((QTextEdit) interceptor).SetText(text);
 		}
 		[Q_SLOT("void cut()")]
 		[SmokeMethod("cut", "()", "")]
 		public void Cut() {
-			ProxyQTextEdit().Cut();
+			((QTextEdit) interceptor).Cut();
 		}
 		[Q_SLOT("void copy()")]
 		[SmokeMethod("copy", "()", "")]
 		public void Copy() {
-			ProxyQTextEdit().Copy();
+			((QTextEdit) interceptor).Copy();
 		}
 		[Q_SLOT("void paste()")]
 		[SmokeMethod("paste", "()", "")]
 		public void Paste() {
-			ProxyQTextEdit().Paste();
+			((QTextEdit) interceptor).Paste();
 		}
 		[Q_SLOT("void undo()")]
 		[SmokeMethod("undo", "()", "")]
 		public void Undo() {
-			ProxyQTextEdit().Undo();
+			((QTextEdit) interceptor).Undo();
 		}
 		[Q_SLOT("void redo()")]
 		[SmokeMethod("redo", "()", "")]
 		public void Redo() {
-			ProxyQTextEdit().Redo();
+			((QTextEdit) interceptor).Redo();
 		}
 		[Q_SLOT("void clear()")]
 		[SmokeMethod("clear", "()", "")]
 		public void Clear() {
-			ProxyQTextEdit().Clear();
+			((QTextEdit) interceptor).Clear();
 		}
 		[Q_SLOT("void selectAll()")]
 		[SmokeMethod("selectAll", "()", "")]
 		public void SelectAll() {
-			ProxyQTextEdit().SelectAll();
+			((QTextEdit) interceptor).SelectAll();
 		}
 		[Q_SLOT("void insertPlainText(const QString&)")]
 		[SmokeMethod("insertPlainText", "(const QString&)", "$")]
 		public void InsertPlainText(string text) {
-			ProxyQTextEdit().InsertPlainText(text);
+			((QTextEdit) interceptor).InsertPlainText(text);
 		}
 		[Q_SLOT("void insertHtml(const QString&)")]
 		[SmokeMethod("insertHtml", "(const QString&)", "$")]
 		public void InsertHtml(string text) {
-			ProxyQTextEdit().InsertHtml(text);
+			((QTextEdit) interceptor).InsertHtml(text);
 		}
 		[Q_SLOT("void append(const QString&)")]
 		[SmokeMethod("append", "(const QString&)", "$")]
 		public void Append(string text) {
-			ProxyQTextEdit().Append(text);
+			((QTextEdit) interceptor).Append(text);
 		}
 		[Q_SLOT("void scrollToAnchor(const QString&)")]
 		[SmokeMethod("scrollToAnchor", "(const QString&)", "$")]
 		public void ScrollToAnchor(string name) {
-			ProxyQTextEdit().ScrollToAnchor(name);
+			((QTextEdit) interceptor).ScrollToAnchor(name);
 		}
 		[Q_SLOT("void zoomIn(int)")]
 		[SmokeMethod("zoomIn", "(int)", "$")]
 		public void ZoomIn(int range) {
-			ProxyQTextEdit().ZoomIn(range);
+			((QTextEdit) interceptor).ZoomIn(range);
 		}
 		[Q_SLOT("void zoomIn()")]
 		[SmokeMethod("zoomIn", "()", "")]
 		public void ZoomIn() {
-			ProxyQTextEdit().ZoomIn();
+			((QTextEdit) interceptor).ZoomIn();
 		}
 		[Q_SLOT("void zoomOut(int)")]
 		[SmokeMethod("zoomOut", "(int)", "$")]
 		public void ZoomOut(int range) {
-			ProxyQTextEdit().ZoomOut(range);
+			((QTextEdit) interceptor).ZoomOut(range);
 		}
 		[Q_SLOT("void zoomOut()")]
 		[SmokeMethod("zoomOut", "()", "")]
 		public void ZoomOut() {
-			ProxyQTextEdit().ZoomOut();
+			((QTextEdit) interceptor).ZoomOut();
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent e) {
-			return ProxyQTextEdit().Event(e);
+			return ((QTextEdit) interceptor).Event(e);
 		}
 		[SmokeMethod("timerEvent", "(QTimerEvent*)", "#")]
 		protected override void TimerEvent(QTimerEvent e) {
-			ProxyQTextEdit().TimerEvent(e);
+			((QTextEdit) interceptor).TimerEvent(e);
 		}
 		[SmokeMethod("keyPressEvent", "(QKeyEvent*)", "#")]
 		protected override void KeyPressEvent(QKeyEvent e) {
-			ProxyQTextEdit().KeyPressEvent(e);
+			((QTextEdit) interceptor).KeyPressEvent(e);
 		}
 		[SmokeMethod("keyReleaseEvent", "(QKeyEvent*)", "#")]
 		protected override void KeyReleaseEvent(QKeyEvent e) {
-			ProxyQTextEdit().KeyReleaseEvent(e);
+			((QTextEdit) interceptor).KeyReleaseEvent(e);
 		}
 		[SmokeMethod("resizeEvent", "(QResizeEvent*)", "#")]
 		protected override void ResizeEvent(QResizeEvent e) {
-			ProxyQTextEdit().ResizeEvent(e);
+			((QTextEdit) interceptor).ResizeEvent(e);
 		}
 		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
 		protected override void PaintEvent(QPaintEvent e) {
-			ProxyQTextEdit().PaintEvent(e);
+			((QTextEdit) interceptor).PaintEvent(e);
 		}
 		[SmokeMethod("mousePressEvent", "(QMouseEvent*)", "#")]
 		protected override void MousePressEvent(QMouseEvent e) {
-			ProxyQTextEdit().MousePressEvent(e);
+			((QTextEdit) interceptor).MousePressEvent(e);
 		}
 		[SmokeMethod("mouseMoveEvent", "(QMouseEvent*)", "#")]
 		protected override void MouseMoveEvent(QMouseEvent e) {
-			ProxyQTextEdit().MouseMoveEvent(e);
+			((QTextEdit) interceptor).MouseMoveEvent(e);
 		}
 		[SmokeMethod("mouseReleaseEvent", "(QMouseEvent*)", "#")]
 		protected override void MouseReleaseEvent(QMouseEvent e) {
-			ProxyQTextEdit().MouseReleaseEvent(e);
+			((QTextEdit) interceptor).MouseReleaseEvent(e);
 		}
 		[SmokeMethod("mouseDoubleClickEvent", "(QMouseEvent*)", "#")]
 		protected override void MouseDoubleClickEvent(QMouseEvent e) {
-			ProxyQTextEdit().MouseDoubleClickEvent(e);
+			((QTextEdit) interceptor).MouseDoubleClickEvent(e);
 		}
 		[SmokeMethod("focusNextPrevChild", "(bool)", "$")]
 		protected override bool FocusNextPrevChild(bool next) {
-			return ProxyQTextEdit().FocusNextPrevChild(next);
+			return ((QTextEdit) interceptor).FocusNextPrevChild(next);
 		}
 		[SmokeMethod("contextMenuEvent", "(QContextMenuEvent*)", "#")]
 		protected override void ContextMenuEvent(QContextMenuEvent e) {
-			ProxyQTextEdit().ContextMenuEvent(e);
+			((QTextEdit) interceptor).ContextMenuEvent(e);
 		}
 		[SmokeMethod("dragEnterEvent", "(QDragEnterEvent*)", "#")]
 		protected override void DragEnterEvent(QDragEnterEvent e) {
-			ProxyQTextEdit().DragEnterEvent(e);
+			((QTextEdit) interceptor).DragEnterEvent(e);
 		}
 		[SmokeMethod("dragLeaveEvent", "(QDragLeaveEvent*)", "#")]
 		protected override void DragLeaveEvent(QDragLeaveEvent e) {
-			ProxyQTextEdit().DragLeaveEvent(e);
+			((QTextEdit) interceptor).DragLeaveEvent(e);
 		}
 		[SmokeMethod("dragMoveEvent", "(QDragMoveEvent*)", "#")]
 		protected override void DragMoveEvent(QDragMoveEvent e) {
-			ProxyQTextEdit().DragMoveEvent(e);
+			((QTextEdit) interceptor).DragMoveEvent(e);
 		}
 		[SmokeMethod("dropEvent", "(QDropEvent*)", "#")]
 		protected override void DropEvent(QDropEvent e) {
-			ProxyQTextEdit().DropEvent(e);
+			((QTextEdit) interceptor).DropEvent(e);
 		}
 		[SmokeMethod("focusInEvent", "(QFocusEvent*)", "#")]
 		protected override void FocusInEvent(QFocusEvent e) {
-			ProxyQTextEdit().FocusInEvent(e);
+			((QTextEdit) interceptor).FocusInEvent(e);
 		}
 		[SmokeMethod("focusOutEvent", "(QFocusEvent*)", "#")]
 		protected override void FocusOutEvent(QFocusEvent e) {
-			ProxyQTextEdit().FocusOutEvent(e);
+			((QTextEdit) interceptor).FocusOutEvent(e);
 		}
 		[SmokeMethod("showEvent", "(QShowEvent*)", "#")]
 		protected override void ShowEvent(QShowEvent arg1) {
-			ProxyQTextEdit().ShowEvent(arg1);
+			((QTextEdit) interceptor).ShowEvent(arg1);
 		}
 		[SmokeMethod("changeEvent", "(QEvent*)", "#")]
 		protected override void ChangeEvent(QEvent e) {
-			ProxyQTextEdit().ChangeEvent(e);
+			((QTextEdit) interceptor).ChangeEvent(e);
 		}
 		[SmokeMethod("wheelEvent", "(QWheelEvent*)", "#")]
 		protected override void WheelEvent(QWheelEvent e) {
-			ProxyQTextEdit().WheelEvent(e);
+			((QTextEdit) interceptor).WheelEvent(e);
 		}
 		[SmokeMethod("createMimeDataFromSelection", "() const", "")]
 		protected virtual QMimeData CreateMimeDataFromSelection() {
-			return ProxyQTextEdit().CreateMimeDataFromSelection();
+			return ((QTextEdit) interceptor).CreateMimeDataFromSelection();
 		}
 		[SmokeMethod("canInsertFromMimeData", "(const QMimeData*) const", "#")]
 		protected virtual bool CanInsertFromMimeData(QMimeData source) {
-			return ProxyQTextEdit().CanInsertFromMimeData(source);
+			return ((QTextEdit) interceptor).CanInsertFromMimeData(source);
 		}
 		[SmokeMethod("insertFromMimeData", "(const QMimeData*)", "#")]
 		protected virtual void InsertFromMimeData(QMimeData source) {
-			ProxyQTextEdit().InsertFromMimeData(source);
+			((QTextEdit) interceptor).InsertFromMimeData(source);
 		}
 		[SmokeMethod("inputMethodEvent", "(QInputMethodEvent*)", "#")]
 		protected override void InputMethodEvent(QInputMethodEvent arg1) {
-			ProxyQTextEdit().InputMethodEvent(arg1);
+			((QTextEdit) interceptor).InputMethodEvent(arg1);
 		}
 		[SmokeMethod("inputMethodQuery", "(Qt::InputMethodQuery) const", "$")]
 		protected new virtual QVariant InputMethodQuery(Qt.InputMethodQuery property) {
-			return ProxyQTextEdit().InputMethodQuery(property);
+			return ((QTextEdit) interceptor).InputMethodQuery(property);
 		}
 		[SmokeMethod("scrollContentsBy", "(int, int)", "$$")]
 		protected override void ScrollContentsBy(int dx, int dy) {
-			ProxyQTextEdit().ScrollContentsBy(dx,dy);
+			((QTextEdit) interceptor).ScrollContentsBy(dx,dy);
 		}
 		~QTextEdit() {
 			DisposeQTextEdit();
@@ -512,13 +506,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QTextEdit", "()", "")]
 		private void DisposeQTextEdit() {
-			ProxyQTextEdit().DisposeQTextEdit();
+			((QTextEdit) interceptor).DisposeQTextEdit();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQTextEdit().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQTextEdit().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQTextEditSignals Emit {
 			get { return (IQTextEditSignals) Q_EMIT; }

@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QDragMoveEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDragMoveEvent), this);
-			_interceptor = (QDragMoveEvent) realProxy.GetTransparentProxy();
-		}
-		private QDragMoveEvent ProxyQDragMoveEvent() {
-			return (QDragMoveEvent) _interceptor;
+			interceptor = (QDragMoveEvent) realProxy.GetTransparentProxy();
 		}
 		public QDragMoveEvent(QPoint pos, int actions, QMimeData data, int buttons, int modifiers, QEvent.TypeOf type) : this((Type) null) {
 			CreateProxy();
@@ -19,7 +16,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDragMoveEvent", "(const QPoint&, Qt::DropActions, const QMimeData*, Qt::MouseButtons, Qt::KeyboardModifiers, QEvent::Type)", "#$#$$$")]
 		private void NewQDragMoveEvent(QPoint pos, int actions, QMimeData data, int buttons, int modifiers, QEvent.TypeOf type) {
-			ProxyQDragMoveEvent().NewQDragMoveEvent(pos,actions,data,buttons,modifiers,type);
+			((QDragMoveEvent) interceptor).NewQDragMoveEvent(pos,actions,data,buttons,modifiers,type);
 		}
 		public QDragMoveEvent(QPoint pos, int actions, QMimeData data, int buttons, int modifiers) : this((Type) null) {
 			CreateProxy();
@@ -27,27 +24,27 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDragMoveEvent", "(const QPoint&, Qt::DropActions, const QMimeData*, Qt::MouseButtons, Qt::KeyboardModifiers)", "#$#$$")]
 		private void NewQDragMoveEvent(QPoint pos, int actions, QMimeData data, int buttons, int modifiers) {
-			ProxyQDragMoveEvent().NewQDragMoveEvent(pos,actions,data,buttons,modifiers);
+			((QDragMoveEvent) interceptor).NewQDragMoveEvent(pos,actions,data,buttons,modifiers);
 		}
 		[SmokeMethod("answerRect", "() const", "")]
 		public QRect AnswerRect() {
-			return ProxyQDragMoveEvent().AnswerRect();
+			return ((QDragMoveEvent) interceptor).AnswerRect();
 		}
 		[SmokeMethod("accept", "()", "")]
 		public void Accept() {
-			ProxyQDragMoveEvent().Accept();
+			((QDragMoveEvent) interceptor).Accept();
 		}
 		[SmokeMethod("ignore", "()", "")]
 		public void Ignore() {
-			ProxyQDragMoveEvent().Ignore();
+			((QDragMoveEvent) interceptor).Ignore();
 		}
 		[SmokeMethod("accept", "(const QRect&)", "#")]
 		public void Accept(QRect r) {
-			ProxyQDragMoveEvent().Accept(r);
+			((QDragMoveEvent) interceptor).Accept(r);
 		}
 		[SmokeMethod("ignore", "(const QRect&)", "#")]
 		public void Ignore(QRect r) {
-			ProxyQDragMoveEvent().Ignore(r);
+			((QDragMoveEvent) interceptor).Ignore(r);
 		}
 		~QDragMoveEvent() {
 			DisposeQDragMoveEvent();
@@ -57,7 +54,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QDragMoveEvent", "()", "")]
 		private void DisposeQDragMoveEvent() {
-			ProxyQDragMoveEvent().DisposeQDragMoveEvent();
+			((QDragMoveEvent) interceptor).DisposeQDragMoveEvent();
 		}
 	}
 }

@@ -4,23 +4,20 @@ namespace Qyoto {
 	using System;
 
 	public interface IQXmlDeclHandler {
-			bool AttributeDecl(string eName, string aName, string type, string valueDefault, string value);
-			bool InternalEntityDecl(string name, string value);
-			bool ExternalEntityDecl(string name, string publicId, string systemId);
-			string ErrorString();
+		bool AttributeDecl(string eName, string aName, string type, string valueDefault, string value);
+		bool InternalEntityDecl(string name, string value);
+		bool ExternalEntityDecl(string name, string publicId, string systemId);
+		string ErrorString();
 	}
 
 	[SmokeClass("QXmlDeclHandler")]
 	public abstract class QXmlDeclHandler : MarshalByRefObject, IQXmlDeclHandler {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QXmlDeclHandler interceptor = null;
+		private IntPtr smokeObject;
 		protected QXmlDeclHandler(Type dummy) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlDeclHandler), this);
-			_interceptor = (QXmlDeclHandler) realProxy.GetTransparentProxy();
-		}
-		private QXmlDeclHandler ProxyQXmlDeclHandler() {
-			return (QXmlDeclHandler) _interceptor;
+			interceptor = (QXmlDeclHandler) realProxy.GetTransparentProxy();
 		}
 		[SmokeMethod("attributeDecl", "(const QString&, const QString&, const QString&, const QString&, const QString&)", "$$$$$")]
 		public abstract bool AttributeDecl(string eName, string aName, string type, string valueDefault, string value);
@@ -36,7 +33,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QXmlDeclHandler", "()", "")]
 		private void NewQXmlDeclHandler() {
-			ProxyQXmlDeclHandler().NewQXmlDeclHandler();
+			((QXmlDeclHandler) interceptor).NewQXmlDeclHandler();
 		}
 	}
 }

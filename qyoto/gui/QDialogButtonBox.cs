@@ -17,18 +17,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDialogButtonBox), this);
-			_interceptor = (QDialogButtonBox) realProxy.GetTransparentProxy();
+			interceptor = (QDialogButtonBox) realProxy.GetTransparentProxy();
 		}
-		private QDialogButtonBox ProxyQDialogButtonBox() {
-			return (QDialogButtonBox) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQDialogButtonBoxProxy staticInterceptor = null;
 		static QDialogButtonBox() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQDialogButtonBoxProxy), null);
-			_staticInterceptor = (IQDialogButtonBoxProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQDialogButtonBoxProxy StaticQDialogButtonBox() {
-			return (IQDialogButtonBoxProxy) _staticInterceptor;
+			staticInterceptor = (IQDialogButtonBoxProxy) realProxy.GetTransparentProxy();
 		}
 		public enum ButtonRole {
 			InvalidRole = -1,
@@ -93,7 +87,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDialogButtonBox", "(QWidget*)", "#")]
 		private void NewQDialogButtonBox(QWidget parent) {
-			ProxyQDialogButtonBox().NewQDialogButtonBox(parent);
+			((QDialogButtonBox) interceptor).NewQDialogButtonBox(parent);
 		}
 		public QDialogButtonBox() : this((Type) null) {
 			CreateProxy();
@@ -101,7 +95,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDialogButtonBox", "()", "")]
 		private void NewQDialogButtonBox() {
-			ProxyQDialogButtonBox().NewQDialogButtonBox();
+			((QDialogButtonBox) interceptor).NewQDialogButtonBox();
 		}
 		public QDialogButtonBox(Qt.Orientation orientation, QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -109,7 +103,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDialogButtonBox", "(Qt::Orientation, QWidget*)", "$#")]
 		private void NewQDialogButtonBox(Qt.Orientation orientation, QWidget parent) {
-			ProxyQDialogButtonBox().NewQDialogButtonBox(orientation,parent);
+			((QDialogButtonBox) interceptor).NewQDialogButtonBox(orientation,parent);
 		}
 		public QDialogButtonBox(Qt.Orientation orientation) : this((Type) null) {
 			CreateProxy();
@@ -117,7 +111,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDialogButtonBox", "(Qt::Orientation)", "$")]
 		private void NewQDialogButtonBox(Qt.Orientation orientation) {
-			ProxyQDialogButtonBox().NewQDialogButtonBox(orientation);
+			((QDialogButtonBox) interceptor).NewQDialogButtonBox(orientation);
 		}
 		public QDialogButtonBox(int buttons, Qt.Orientation orientation, QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -125,7 +119,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDialogButtonBox", "(StandardButtons, Qt::Orientation, QWidget*)", "$$#")]
 		private void NewQDialogButtonBox(int buttons, Qt.Orientation orientation, QWidget parent) {
-			ProxyQDialogButtonBox().NewQDialogButtonBox(buttons,orientation,parent);
+			((QDialogButtonBox) interceptor).NewQDialogButtonBox(buttons,orientation,parent);
 		}
 		public QDialogButtonBox(int buttons, Qt.Orientation orientation) : this((Type) null) {
 			CreateProxy();
@@ -133,7 +127,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDialogButtonBox", "(StandardButtons, Qt::Orientation)", "$$")]
 		private void NewQDialogButtonBox(int buttons, Qt.Orientation orientation) {
-			ProxyQDialogButtonBox().NewQDialogButtonBox(buttons,orientation);
+			((QDialogButtonBox) interceptor).NewQDialogButtonBox(buttons,orientation);
 		}
 		public QDialogButtonBox(int buttons) : this((Type) null) {
 			CreateProxy();
@@ -141,51 +135,51 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDialogButtonBox", "(StandardButtons)", "$")]
 		private void NewQDialogButtonBox(int buttons) {
-			ProxyQDialogButtonBox().NewQDialogButtonBox(buttons);
+			((QDialogButtonBox) interceptor).NewQDialogButtonBox(buttons);
 		}
 		[SmokeMethod("addButton", "(QAbstractButton*, QDialogButtonBox::ButtonRole)", "#$")]
 		public void AddButton(QAbstractButton button, QDialogButtonBox.ButtonRole role) {
-			ProxyQDialogButtonBox().AddButton(button,role);
+			((QDialogButtonBox) interceptor).AddButton(button,role);
 		}
 		[SmokeMethod("addButton", "(const QString&, QDialogButtonBox::ButtonRole)", "$$")]
 		public QPushButton AddButton(string text, QDialogButtonBox.ButtonRole role) {
-			return ProxyQDialogButtonBox().AddButton(text,role);
+			return ((QDialogButtonBox) interceptor).AddButton(text,role);
 		}
 		[SmokeMethod("addButton", "(QDialogButtonBox::StandardButton)", "$")]
 		public QPushButton AddButton(QDialogButtonBox.StandardButton button) {
-			return ProxyQDialogButtonBox().AddButton(button);
+			return ((QDialogButtonBox) interceptor).AddButton(button);
 		}
 		[SmokeMethod("removeButton", "(QAbstractButton*)", "#")]
 		public void RemoveButton(QAbstractButton button) {
-			ProxyQDialogButtonBox().RemoveButton(button);
+			((QDialogButtonBox) interceptor).RemoveButton(button);
 		}
 		[SmokeMethod("clear", "()", "")]
 		public void Clear() {
-			ProxyQDialogButtonBox().Clear();
+			((QDialogButtonBox) interceptor).Clear();
 		}
 		[SmokeMethod("buttons", "() const", "")]
 		public List<QAbstractButton> Buttons() {
-			return ProxyQDialogButtonBox().Buttons();
+			return ((QDialogButtonBox) interceptor).Buttons();
 		}
 		[SmokeMethod("buttonRole", "(QAbstractButton*) const", "#")]
 		public QDialogButtonBox.ButtonRole buttonRole(QAbstractButton button) {
-			return ProxyQDialogButtonBox().buttonRole(button);
+			return ((QDialogButtonBox) interceptor).buttonRole(button);
 		}
 		[SmokeMethod("standardButton", "(QAbstractButton*) const", "#")]
 		public QDialogButtonBox.StandardButton standardButton(QAbstractButton button) {
-			return ProxyQDialogButtonBox().standardButton(button);
+			return ((QDialogButtonBox) interceptor).standardButton(button);
 		}
 		[SmokeMethod("button", "(QDialogButtonBox::StandardButton) const", "$")]
 		public QPushButton Button(QDialogButtonBox.StandardButton which) {
-			return ProxyQDialogButtonBox().Button(which);
+			return ((QDialogButtonBox) interceptor).Button(which);
 		}
 		[SmokeMethod("changeEvent", "(QEvent*)", "#")]
 		protected override void ChangeEvent(QEvent arg1) {
-			ProxyQDialogButtonBox().ChangeEvent(arg1);
+			((QDialogButtonBox) interceptor).ChangeEvent(arg1);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent arg1) {
-			return ProxyQDialogButtonBox().Event(arg1);
+			return ((QDialogButtonBox) interceptor).Event(arg1);
 		}
 		~QDialogButtonBox() {
 			DisposeQDialogButtonBox();
@@ -195,13 +189,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QDialogButtonBox", "()", "")]
 		private void DisposeQDialogButtonBox() {
-			ProxyQDialogButtonBox().DisposeQDialogButtonBox();
+			((QDialogButtonBox) interceptor).DisposeQDialogButtonBox();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQDialogButtonBox().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQDialogButtonBox().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQDialogButtonBoxSignals Emit {
 			get { return (IQDialogButtonBoxSignals) Q_EMIT; }

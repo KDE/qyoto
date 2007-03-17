@@ -5,15 +5,12 @@ namespace Qyoto {
 
 	[SmokeClass("QListWidgetItem")]
 	public class QListWidgetItem : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QListWidgetItem interceptor = null;
+		private IntPtr smokeObject;
 		protected QListWidgetItem(Type dummy) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QListWidgetItem), this);
-			_interceptor = (QListWidgetItem) realProxy.GetTransparentProxy();
-		}
-		private QListWidgetItem ProxyQListWidgetItem() {
-			return (QListWidgetItem) _interceptor;
+			interceptor = (QListWidgetItem) realProxy.GetTransparentProxy();
 		}
 		public enum ItemType {
 			Type = 0,
@@ -25,7 +22,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QListWidgetItem", "(QListWidget*, int)", "#$")]
 		private void NewQListWidgetItem(QListWidget view, int type) {
-			ProxyQListWidgetItem().NewQListWidgetItem(view,type);
+			((QListWidgetItem) interceptor).NewQListWidgetItem(view,type);
 		}
 		public QListWidgetItem(QListWidget view) : this((Type) null) {
 			CreateProxy();
@@ -33,7 +30,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QListWidgetItem", "(QListWidget*)", "#")]
 		private void NewQListWidgetItem(QListWidget view) {
-			ProxyQListWidgetItem().NewQListWidgetItem(view);
+			((QListWidgetItem) interceptor).NewQListWidgetItem(view);
 		}
 		public QListWidgetItem() : this((Type) null) {
 			CreateProxy();
@@ -41,7 +38,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QListWidgetItem", "()", "")]
 		private void NewQListWidgetItem() {
-			ProxyQListWidgetItem().NewQListWidgetItem();
+			((QListWidgetItem) interceptor).NewQListWidgetItem();
 		}
 		public QListWidgetItem(string text, QListWidget view, int type) : this((Type) null) {
 			CreateProxy();
@@ -49,7 +46,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QListWidgetItem", "(const QString&, QListWidget*, int)", "$#$")]
 		private void NewQListWidgetItem(string text, QListWidget view, int type) {
-			ProxyQListWidgetItem().NewQListWidgetItem(text,view,type);
+			((QListWidgetItem) interceptor).NewQListWidgetItem(text,view,type);
 		}
 		public QListWidgetItem(string text, QListWidget view) : this((Type) null) {
 			CreateProxy();
@@ -57,7 +54,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QListWidgetItem", "(const QString&, QListWidget*)", "$#")]
 		private void NewQListWidgetItem(string text, QListWidget view) {
-			ProxyQListWidgetItem().NewQListWidgetItem(text,view);
+			((QListWidgetItem) interceptor).NewQListWidgetItem(text,view);
 		}
 		public QListWidgetItem(string text) : this((Type) null) {
 			CreateProxy();
@@ -65,7 +62,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QListWidgetItem", "(const QString&)", "$")]
 		private void NewQListWidgetItem(string text) {
-			ProxyQListWidgetItem().NewQListWidgetItem(text);
+			((QListWidgetItem) interceptor).NewQListWidgetItem(text);
 		}
 		public QListWidgetItem(QIcon icon, string text, QListWidget view, int type) : this((Type) null) {
 			CreateProxy();
@@ -73,7 +70,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QListWidgetItem", "(const QIcon&, const QString&, QListWidget*, int)", "#$#$")]
 		private void NewQListWidgetItem(QIcon icon, string text, QListWidget view, int type) {
-			ProxyQListWidgetItem().NewQListWidgetItem(icon,text,view,type);
+			((QListWidgetItem) interceptor).NewQListWidgetItem(icon,text,view,type);
 		}
 		public QListWidgetItem(QIcon icon, string text, QListWidget view) : this((Type) null) {
 			CreateProxy();
@@ -81,7 +78,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QListWidgetItem", "(const QIcon&, const QString&, QListWidget*)", "#$#")]
 		private void NewQListWidgetItem(QIcon icon, string text, QListWidget view) {
-			ProxyQListWidgetItem().NewQListWidgetItem(icon,text,view);
+			((QListWidgetItem) interceptor).NewQListWidgetItem(icon,text,view);
 		}
 		public QListWidgetItem(QIcon icon, string text) : this((Type) null) {
 			CreateProxy();
@@ -89,7 +86,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QListWidgetItem", "(const QIcon&, const QString&)", "#$")]
 		private void NewQListWidgetItem(QIcon icon, string text) {
-			ProxyQListWidgetItem().NewQListWidgetItem(icon,text);
+			((QListWidgetItem) interceptor).NewQListWidgetItem(icon,text);
 		}
 		public QListWidgetItem(QListWidgetItem other) : this((Type) null) {
 			CreateProxy();
@@ -97,163 +94,163 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QListWidgetItem", "(const QListWidgetItem&)", "#")]
 		private void NewQListWidgetItem(QListWidgetItem other) {
-			ProxyQListWidgetItem().NewQListWidgetItem(other);
+			((QListWidgetItem) interceptor).NewQListWidgetItem(other);
 		}
 		[SmokeMethod("clone", "() const", "")]
 		public virtual QListWidgetItem Clone() {
-			return ProxyQListWidgetItem().Clone();
+			return ((QListWidgetItem) interceptor).Clone();
 		}
 		[SmokeMethod("listWidget", "() const", "")]
 		public QListWidget ListWidget() {
-			return ProxyQListWidgetItem().ListWidget();
+			return ((QListWidgetItem) interceptor).ListWidget();
 		}
 		[SmokeMethod("setSelected", "(bool)", "$")]
 		public void SetSelected(bool select) {
-			ProxyQListWidgetItem().SetSelected(select);
+			((QListWidgetItem) interceptor).SetSelected(select);
 		}
 		[SmokeMethod("isSelected", "() const", "")]
 		public bool IsSelected() {
-			return ProxyQListWidgetItem().IsSelected();
+			return ((QListWidgetItem) interceptor).IsSelected();
 		}
 		[SmokeMethod("setHidden", "(bool)", "$")]
 		public void SetHidden(bool hide) {
-			ProxyQListWidgetItem().SetHidden(hide);
+			((QListWidgetItem) interceptor).SetHidden(hide);
 		}
 		[SmokeMethod("isHidden", "() const", "")]
 		public bool IsHidden() {
-			return ProxyQListWidgetItem().IsHidden();
+			return ((QListWidgetItem) interceptor).IsHidden();
 		}
 		[SmokeMethod("flags", "() const", "")]
 		public int Flags() {
-			return ProxyQListWidgetItem().Flags();
+			return ((QListWidgetItem) interceptor).Flags();
 		}
 		[SmokeMethod("setFlags", "(Qt::ItemFlags)", "$")]
 		public void SetFlags(int flags) {
-			ProxyQListWidgetItem().SetFlags(flags);
+			((QListWidgetItem) interceptor).SetFlags(flags);
 		}
 		[SmokeMethod("text", "() const", "")]
 		public string Text() {
-			return ProxyQListWidgetItem().Text();
+			return ((QListWidgetItem) interceptor).Text();
 		}
 		[SmokeMethod("setText", "(const QString&)", "$")]
 		public void SetText(string text) {
-			ProxyQListWidgetItem().SetText(text);
+			((QListWidgetItem) interceptor).SetText(text);
 		}
 		[SmokeMethod("icon", "() const", "")]
 		public QIcon Icon() {
-			return ProxyQListWidgetItem().Icon();
+			return ((QListWidgetItem) interceptor).Icon();
 		}
 		[SmokeMethod("setIcon", "(const QIcon&)", "#")]
 		public void SetIcon(QIcon icon) {
-			ProxyQListWidgetItem().SetIcon(icon);
+			((QListWidgetItem) interceptor).SetIcon(icon);
 		}
 		[SmokeMethod("statusTip", "() const", "")]
 		public string StatusTip() {
-			return ProxyQListWidgetItem().StatusTip();
+			return ((QListWidgetItem) interceptor).StatusTip();
 		}
 		[SmokeMethod("setStatusTip", "(const QString&)", "$")]
 		public void SetStatusTip(string statusTip) {
-			ProxyQListWidgetItem().SetStatusTip(statusTip);
+			((QListWidgetItem) interceptor).SetStatusTip(statusTip);
 		}
 		[SmokeMethod("toolTip", "() const", "")]
 		public string ToolTip() {
-			return ProxyQListWidgetItem().ToolTip();
+			return ((QListWidgetItem) interceptor).ToolTip();
 		}
 		[SmokeMethod("setToolTip", "(const QString&)", "$")]
 		public void SetToolTip(string toolTip) {
-			ProxyQListWidgetItem().SetToolTip(toolTip);
+			((QListWidgetItem) interceptor).SetToolTip(toolTip);
 		}
 		[SmokeMethod("whatsThis", "() const", "")]
 		public string WhatsThis() {
-			return ProxyQListWidgetItem().WhatsThis();
+			return ((QListWidgetItem) interceptor).WhatsThis();
 		}
 		[SmokeMethod("setWhatsThis", "(const QString&)", "$")]
 		public void SetWhatsThis(string whatsThis) {
-			ProxyQListWidgetItem().SetWhatsThis(whatsThis);
+			((QListWidgetItem) interceptor).SetWhatsThis(whatsThis);
 		}
 		[SmokeMethod("font", "() const", "")]
 		public QFont Font() {
-			return ProxyQListWidgetItem().Font();
+			return ((QListWidgetItem) interceptor).Font();
 		}
 		[SmokeMethod("setFont", "(const QFont&)", "#")]
 		public void SetFont(QFont font) {
-			ProxyQListWidgetItem().SetFont(font);
+			((QListWidgetItem) interceptor).SetFont(font);
 		}
 		[SmokeMethod("textAlignment", "() const", "")]
 		public int TextAlignment() {
-			return ProxyQListWidgetItem().TextAlignment();
+			return ((QListWidgetItem) interceptor).TextAlignment();
 		}
 		[SmokeMethod("setTextAlignment", "(int)", "$")]
 		public void SetTextAlignment(int alignment) {
-			ProxyQListWidgetItem().SetTextAlignment(alignment);
+			((QListWidgetItem) interceptor).SetTextAlignment(alignment);
 		}
 		[SmokeMethod("backgroundColor", "() const", "")]
 		public QColor BackgroundColor() {
-			return ProxyQListWidgetItem().BackgroundColor();
+			return ((QListWidgetItem) interceptor).BackgroundColor();
 		}
 		[SmokeMethod("setBackgroundColor", "(const QColor&)", "#")]
 		public virtual void SetBackgroundColor(QColor color) {
-			ProxyQListWidgetItem().SetBackgroundColor(color);
+			((QListWidgetItem) interceptor).SetBackgroundColor(color);
 		}
 		[SmokeMethod("background", "() const", "")]
 		public QBrush Background() {
-			return ProxyQListWidgetItem().Background();
+			return ((QListWidgetItem) interceptor).Background();
 		}
 		[SmokeMethod("setBackground", "(const QBrush&)", "#")]
 		public void SetBackground(QBrush brush) {
-			ProxyQListWidgetItem().SetBackground(brush);
+			((QListWidgetItem) interceptor).SetBackground(brush);
 		}
 		[SmokeMethod("textColor", "() const", "")]
 		public QColor TextColor() {
-			return ProxyQListWidgetItem().TextColor();
+			return ((QListWidgetItem) interceptor).TextColor();
 		}
 		[SmokeMethod("setTextColor", "(const QColor&)", "#")]
 		public void SetTextColor(QColor color) {
-			ProxyQListWidgetItem().SetTextColor(color);
+			((QListWidgetItem) interceptor).SetTextColor(color);
 		}
 		[SmokeMethod("foreground", "() const", "")]
 		public QBrush Foreground() {
-			return ProxyQListWidgetItem().Foreground();
+			return ((QListWidgetItem) interceptor).Foreground();
 		}
 		[SmokeMethod("setForeground", "(const QBrush&)", "#")]
 		public void SetForeground(QBrush brush) {
-			ProxyQListWidgetItem().SetForeground(brush);
+			((QListWidgetItem) interceptor).SetForeground(brush);
 		}
 		[SmokeMethod("checkState", "() const", "")]
 		public Qt.CheckState CheckState() {
-			return ProxyQListWidgetItem().CheckState();
+			return ((QListWidgetItem) interceptor).CheckState();
 		}
 		[SmokeMethod("setCheckState", "(Qt::CheckState)", "$")]
 		public void SetCheckState(Qt.CheckState state) {
-			ProxyQListWidgetItem().SetCheckState(state);
+			((QListWidgetItem) interceptor).SetCheckState(state);
 		}
 		[SmokeMethod("sizeHint", "() const", "")]
 		public QSize SizeHint() {
-			return ProxyQListWidgetItem().SizeHint();
+			return ((QListWidgetItem) interceptor).SizeHint();
 		}
 		[SmokeMethod("setSizeHint", "(const QSize&)", "#")]
 		public void SetSizeHint(QSize size) {
-			ProxyQListWidgetItem().SetSizeHint(size);
+			((QListWidgetItem) interceptor).SetSizeHint(size);
 		}
 		[SmokeMethod("data", "(int) const", "$")]
 		public virtual QVariant Data(int role) {
-			return ProxyQListWidgetItem().Data(role);
+			return ((QListWidgetItem) interceptor).Data(role);
 		}
 		[SmokeMethod("setData", "(int, const QVariant&)", "$#")]
 		public virtual void SetData(int role, QVariant value) {
-			ProxyQListWidgetItem().SetData(role,value);
+			((QListWidgetItem) interceptor).SetData(role,value);
 		}
 		[SmokeMethod("read", "(QDataStream&)", "#")]
 		public virtual void Read(QDataStream arg1) {
-			ProxyQListWidgetItem().Read(arg1);
+			((QListWidgetItem) interceptor).Read(arg1);
 		}
 		[SmokeMethod("write", "(QDataStream&) const", "#")]
 		public virtual void Write(QDataStream arg1) {
-			ProxyQListWidgetItem().Write(arg1);
+			((QListWidgetItem) interceptor).Write(arg1);
 		}
 		[SmokeMethod("type", "() const", "")]
 		public int type() {
-			return ProxyQListWidgetItem().type();
+			return ((QListWidgetItem) interceptor).type();
 		}
 		~QListWidgetItem() {
 			DisposeQListWidgetItem();
@@ -263,7 +260,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QListWidgetItem", "()", "")]
 		private void DisposeQListWidgetItem() {
-			ProxyQListWidgetItem().DisposeQListWidgetItem();
+			((QListWidgetItem) interceptor).DisposeQListWidgetItem();
 		}
 	}
 }

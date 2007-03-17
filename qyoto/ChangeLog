@@ -1,3 +1,15 @@
+2007-03-17  Richard Dale  <rdale@foton.es>
+
+	* Removed redundant method calls for invoking methods on the interceptors,
+	  that only cast the interceptor to the type of the current class. Just
+	  do the cast directly. The 'staticInterceptor' field now has the type of
+	  the instance for which it is proxying the static methods and doesn't
+	  need casting at all.
+	* When marshalling pointer lists from C++ to C# use the 
+	  'resolve_classname()' function to get a more accurate name of the class
+	  to instantiate.
+	* Improved resolve_classname() for QGraphicsItem subclasses
+
 2007-03-16  Richard Dale  <rdale@foton.es>
 
 	* Overriding abstract methods wasn't working because no SmokeMethod

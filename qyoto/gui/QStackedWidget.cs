@@ -16,18 +16,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStackedWidget), this);
-			_interceptor = (QStackedWidget) realProxy.GetTransparentProxy();
+			interceptor = (QStackedWidget) realProxy.GetTransparentProxy();
 		}
-		private QStackedWidget ProxyQStackedWidget() {
-			return (QStackedWidget) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQStackedWidgetProxy staticInterceptor = null;
 		static QStackedWidget() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQStackedWidgetProxy), null);
-			_staticInterceptor = (IQStackedWidgetProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQStackedWidgetProxy StaticQStackedWidget() {
-			return (IQStackedWidgetProxy) _staticInterceptor;
+			staticInterceptor = (IQStackedWidgetProxy) realProxy.GetTransparentProxy();
 		}
 		[Q_PROPERTY("int", "currentIndex")]
 		public int CurrentIndex {
@@ -44,7 +38,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStackedWidget", "(QWidget*)", "#")]
 		private void NewQStackedWidget(QWidget parent) {
-			ProxyQStackedWidget().NewQStackedWidget(parent);
+			((QStackedWidget) interceptor).NewQStackedWidget(parent);
 		}
 		public QStackedWidget() : this((Type) null) {
 			CreateProxy();
@@ -52,40 +46,40 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStackedWidget", "()", "")]
 		private void NewQStackedWidget() {
-			ProxyQStackedWidget().NewQStackedWidget();
+			((QStackedWidget) interceptor).NewQStackedWidget();
 		}
 		[SmokeMethod("addWidget", "(QWidget*)", "#")]
 		public int AddWidget(QWidget w) {
-			return ProxyQStackedWidget().AddWidget(w);
+			return ((QStackedWidget) interceptor).AddWidget(w);
 		}
 		[SmokeMethod("insertWidget", "(int, QWidget*)", "$#")]
 		public int InsertWidget(int index, QWidget w) {
-			return ProxyQStackedWidget().InsertWidget(index,w);
+			return ((QStackedWidget) interceptor).InsertWidget(index,w);
 		}
 		[SmokeMethod("removeWidget", "(QWidget*)", "#")]
 		public void RemoveWidget(QWidget w) {
-			ProxyQStackedWidget().RemoveWidget(w);
+			((QStackedWidget) interceptor).RemoveWidget(w);
 		}
 		[SmokeMethod("currentWidget", "() const", "")]
 		public QWidget CurrentWidget() {
-			return ProxyQStackedWidget().CurrentWidget();
+			return ((QStackedWidget) interceptor).CurrentWidget();
 		}
 		[SmokeMethod("indexOf", "(QWidget*) const", "#")]
 		public int IndexOf(QWidget arg1) {
-			return ProxyQStackedWidget().IndexOf(arg1);
+			return ((QStackedWidget) interceptor).IndexOf(arg1);
 		}
 		[SmokeMethod("widget", "(int) const", "$")]
 		public QWidget Widget(int arg1) {
-			return ProxyQStackedWidget().Widget(arg1);
+			return ((QStackedWidget) interceptor).Widget(arg1);
 		}
 		[Q_SLOT("void setCurrentWidget(QWidget*)")]
 		[SmokeMethod("setCurrentWidget", "(QWidget*)", "#")]
 		public void SetCurrentWidget(QWidget w) {
-			ProxyQStackedWidget().SetCurrentWidget(w);
+			((QStackedWidget) interceptor).SetCurrentWidget(w);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent e) {
-			return ProxyQStackedWidget().Event(e);
+			return ((QStackedWidget) interceptor).Event(e);
 		}
 		~QStackedWidget() {
 			DisposeQStackedWidget();
@@ -95,13 +89,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QStackedWidget", "()", "")]
 		private void DisposeQStackedWidget() {
-			ProxyQStackedWidget().DisposeQStackedWidget();
+			((QStackedWidget) interceptor).DisposeQStackedWidget();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQStackedWidget().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQStackedWidget().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQStackedWidgetSignals Emit {
 			get { return (IQStackedWidgetSignals) Q_EMIT; }

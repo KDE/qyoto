@@ -5,8 +5,8 @@ namespace Qyoto {
 
 	[SmokeClass("QByteRef")]
 	public class QByteRef : MarshalByRefObject {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QByteRef interceptor = null;
+		private IntPtr smokeObject;
 		protected QByteRef(Type dummy) {}
 		[SmokeClass("QByteRef")]
 		interface IQByteRefProxy {
@@ -21,32 +21,29 @@ namespace Qyoto {
 			[SmokeMethod("operator<=", "(char) const", "$")]
 			bool op_lte(QByteRef lhs, char c);
 		}
-		private static Object _staticInterceptor = null;
+		private static IQByteRefProxy staticInterceptor = null;
 		static QByteRef() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQByteRefProxy), null);
-			_staticInterceptor = (IQByteRefProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQByteRefProxy StaticQByteRef() {
-			return (IQByteRefProxy) _staticInterceptor;
+			staticInterceptor = (IQByteRefProxy) realProxy.GetTransparentProxy();
 		}
 		//  operator const char(); >>>> NOT CONVERTED
 		public static bool operator==(QByteRef lhs, char c) {
-			return StaticQByteRef().op_equals(lhs,c);
+			return staticInterceptor.op_equals(lhs,c);
 		}
 		public static bool operator!=(QByteRef lhs, char c) {
-			return !StaticQByteRef().op_equals(lhs,c);
+			return !staticInterceptor.op_equals(lhs,c);
 		}
 		public static bool operator>(QByteRef lhs, char c) {
-			return StaticQByteRef().op_gt(lhs,c);
+			return staticInterceptor.op_gt(lhs,c);
 		}
 		public static bool operator>=(QByteRef lhs, char c) {
-			return StaticQByteRef().op_gte(lhs,c);
+			return staticInterceptor.op_gte(lhs,c);
 		}
 		public static bool operator<(QByteRef lhs, char c) {
-			return StaticQByteRef().op_lt(lhs,c);
+			return staticInterceptor.op_lt(lhs,c);
 		}
 		public static bool operator<=(QByteRef lhs, char c) {
-			return StaticQByteRef().op_lte(lhs,c);
+			return staticInterceptor.op_lte(lhs,c);
 		}
 	}
 }

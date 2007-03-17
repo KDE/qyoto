@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QStyleOptionTabBarBase(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionTabBarBase), this);
-			_interceptor = (QStyleOptionTabBarBase) realProxy.GetTransparentProxy();
-		}
-		private QStyleOptionTabBarBase ProxyQStyleOptionTabBarBase() {
-			return (QStyleOptionTabBarBase) _interceptor;
+			interceptor = (QStyleOptionTabBarBase) realProxy.GetTransparentProxy();
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_TabBarBase,
@@ -25,7 +22,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionTabBarBase", "()", "")]
 		private void NewQStyleOptionTabBarBase() {
-			ProxyQStyleOptionTabBarBase().NewQStyleOptionTabBarBase();
+			((QStyleOptionTabBarBase) interceptor).NewQStyleOptionTabBarBase();
 		}
 		public QStyleOptionTabBarBase(QStyleOptionTabBarBase other) : this((Type) null) {
 			CreateProxy();
@@ -33,7 +30,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionTabBarBase", "(const QStyleOptionTabBarBase&)", "#")]
 		private void NewQStyleOptionTabBarBase(QStyleOptionTabBarBase other) {
-			ProxyQStyleOptionTabBarBase().NewQStyleOptionTabBarBase(other);
+			((QStyleOptionTabBarBase) interceptor).NewQStyleOptionTabBarBase(other);
 		}
 		public QStyleOptionTabBarBase(int version) : this((Type) null) {
 			CreateProxy();
@@ -41,7 +38,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionTabBarBase", "(int)", "$")]
 		private void NewQStyleOptionTabBarBase(int version) {
-			ProxyQStyleOptionTabBarBase().NewQStyleOptionTabBarBase(version);
+			((QStyleOptionTabBarBase) interceptor).NewQStyleOptionTabBarBase(version);
 		}
 		~QStyleOptionTabBarBase() {
 			DisposeQStyleOptionTabBarBase();
@@ -51,7 +48,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QStyleOptionTabBarBase", "()", "")]
 		private void DisposeQStyleOptionTabBarBase() {
-			ProxyQStyleOptionTabBarBase().DisposeQStyleOptionTabBarBase();
+			((QStyleOptionTabBarBase) interceptor).DisposeQStyleOptionTabBarBase();
 		}
 	}
 }

@@ -5,8 +5,8 @@ namespace Qyoto {
 
 	[SmokeClass("QSize")]
 	public class QSize : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QSize interceptor = null;
+		private IntPtr smokeObject;
 		protected QSize(Type dummy) {}
 		[SmokeClass("QSize")]
 		interface IQSizeProxy {
@@ -25,18 +25,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSize), this);
-			_interceptor = (QSize) realProxy.GetTransparentProxy();
+			interceptor = (QSize) realProxy.GetTransparentProxy();
 		}
-		private QSize ProxyQSize() {
-			return (QSize) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQSizeProxy staticInterceptor = null;
 		static QSize() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQSizeProxy), null);
-			_staticInterceptor = (IQSizeProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQSizeProxy StaticQSize() {
-			return (IQSizeProxy) _staticInterceptor;
+			staticInterceptor = (IQSizeProxy) realProxy.GetTransparentProxy();
 		}
 		public QSize() : this((Type) null) {
 			CreateProxy();
@@ -44,7 +38,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSize", "()", "")]
 		private void NewQSize() {
-			ProxyQSize().NewQSize();
+			((QSize) interceptor).NewQSize();
 		}
 		public QSize(int w, int h) : this((Type) null) {
 			CreateProxy();
@@ -52,63 +46,63 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSize", "(int, int)", "$$")]
 		private void NewQSize(int w, int h) {
-			ProxyQSize().NewQSize(w,h);
+			((QSize) interceptor).NewQSize(w,h);
 		}
 		[SmokeMethod("isNull", "() const", "")]
 		public bool IsNull() {
-			return ProxyQSize().IsNull();
+			return ((QSize) interceptor).IsNull();
 		}
 		[SmokeMethod("isEmpty", "() const", "")]
 		public bool IsEmpty() {
-			return ProxyQSize().IsEmpty();
+			return ((QSize) interceptor).IsEmpty();
 		}
 		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ProxyQSize().IsValid();
+			return ((QSize) interceptor).IsValid();
 		}
 		[SmokeMethod("width", "() const", "")]
 		public int Width() {
-			return ProxyQSize().Width();
+			return ((QSize) interceptor).Width();
 		}
 		[SmokeMethod("height", "() const", "")]
 		public int Height() {
-			return ProxyQSize().Height();
+			return ((QSize) interceptor).Height();
 		}
 		[SmokeMethod("setWidth", "(int)", "$")]
 		public void SetWidth(int w) {
-			ProxyQSize().SetWidth(w);
+			((QSize) interceptor).SetWidth(w);
 		}
 		[SmokeMethod("setHeight", "(int)", "$")]
 		public void SetHeight(int h) {
-			ProxyQSize().SetHeight(h);
+			((QSize) interceptor).SetHeight(h);
 		}
 		[SmokeMethod("transpose", "()", "")]
 		public void Transpose() {
-			ProxyQSize().Transpose();
+			((QSize) interceptor).Transpose();
 		}
 		[SmokeMethod("scale", "(int, int, Qt::AspectRatioMode)", "$$$")]
 		public void Scale(int w, int h, Qt.AspectRatioMode mode) {
-			ProxyQSize().Scale(w,h,mode);
+			((QSize) interceptor).Scale(w,h,mode);
 		}
 		[SmokeMethod("scale", "(const QSize&, Qt::AspectRatioMode)", "#$")]
 		public void Scale(QSize s, Qt.AspectRatioMode mode) {
-			ProxyQSize().Scale(s,mode);
+			((QSize) interceptor).Scale(s,mode);
 		}
 		[SmokeMethod("expandedTo", "(const QSize&) const", "#")]
 		public QSize ExpandedTo(QSize arg1) {
-			return ProxyQSize().ExpandedTo(arg1);
+			return ((QSize) interceptor).ExpandedTo(arg1);
 		}
 		[SmokeMethod("boundedTo", "(const QSize&) const", "#")]
 		public QSize BoundedTo(QSize arg1) {
-			return ProxyQSize().BoundedTo(arg1);
+			return ((QSize) interceptor).BoundedTo(arg1);
 		}
 		[SmokeMethod("rwidth", "()", "")]
 		public int Rwidth() {
-			return ProxyQSize().Rwidth();
+			return ((QSize) interceptor).Rwidth();
 		}
 		[SmokeMethod("rheight", "()", "")]
 		public int Rheight() {
-			return ProxyQSize().Rheight();
+			return ((QSize) interceptor).Rheight();
 		}
 		~QSize() {
 			DisposeQSize();
@@ -118,35 +112,35 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QSize", "()", "")]
 		private void DisposeQSize() {
-			ProxyQSize().DisposeQSize();
+			((QSize) interceptor).DisposeQSize();
 		}
 		public override bool Equals(object o) {
 			if (!(o is QSize)) { return false; }
 			return this == (QSize) o;
 		}
 		public override int GetHashCode() {
-			return ProxyQSize().GetHashCode();
+			return ((QSize) interceptor).GetHashCode();
 		}
 		public static QSize operator*(QSize lhs, double c) {
-			return StaticQSize().op_mult(lhs,c);
+			return staticInterceptor.op_mult(lhs,c);
 		}
 		public static QSize operator/(QSize lhs, double c) {
-			return StaticQSize().op_div(lhs,c);
+			return staticInterceptor.op_div(lhs,c);
 		}
 		public static bool operator==(QSize s1, QSize s2) {
-			return StaticQSize().op_equals(s1,s2);
+			return staticInterceptor.op_equals(s1,s2);
 		}
 		public static bool operator!=(QSize s1, QSize s2) {
-			return !StaticQSize().op_equals(s1,s2);
+			return !staticInterceptor.op_equals(s1,s2);
 		}
 		public static QSize operator+(QSize s1, QSize s2) {
-			return StaticQSize().op_plus(s1,s2);
+			return staticInterceptor.op_plus(s1,s2);
 		}
 		public static QSize operator-(QSize s1, QSize s2) {
-			return StaticQSize().op_minus(s1,s2);
+			return staticInterceptor.op_minus(s1,s2);
 		}
 		public static QSize operator*(double c, QSize s) {
-			return StaticQSize().op_mult(c,s);
+			return staticInterceptor.op_mult(c,s);
 		}
 	}
 }

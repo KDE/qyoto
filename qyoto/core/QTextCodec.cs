@@ -6,8 +6,8 @@ namespace Qyoto {
 
 	[SmokeClass("QTextCodec")]
 	public abstract class QTextCodec : MarshalByRefObject {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QTextCodec interceptor = null;
+		private IntPtr smokeObject;
 		protected QTextCodec(Type dummy) {}
 		[SmokeClass("QTextCodec")]
 		interface IQTextCodecProxy {
@@ -38,18 +38,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextCodec), this);
-			_interceptor = (QTextCodec) realProxy.GetTransparentProxy();
+			interceptor = (QTextCodec) realProxy.GetTransparentProxy();
 		}
-		private QTextCodec ProxyQTextCodec() {
-			return (QTextCodec) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQTextCodecProxy staticInterceptor = null;
 		static QTextCodec() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTextCodecProxy), null);
-			_staticInterceptor = (IQTextCodecProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQTextCodecProxy StaticQTextCodec() {
-			return (IQTextCodecProxy) _staticInterceptor;
+			staticInterceptor = (IQTextCodecProxy) realProxy.GetTransparentProxy();
 		}
 		public enum ConversionFlag : long {
 			DefaultConversion = 0,
@@ -62,45 +56,45 @@ namespace Qyoto {
 		// QByteArray convertFromUnicode(const QChar* arg1,int arg2,QTextCodec::ConverterState* arg3); >>>> NOT CONVERTED
 		[SmokeMethod("makeDecoder", "() const", "")]
 		public QTextDecoder MakeDecoder() {
-			return ProxyQTextCodec().MakeDecoder();
+			return ((QTextCodec) interceptor).MakeDecoder();
 		}
 		[SmokeMethod("makeEncoder", "() const", "")]
 		public QTextEncoder MakeEncoder() {
-			return ProxyQTextCodec().MakeEncoder();
+			return ((QTextCodec) interceptor).MakeEncoder();
 		}
 		[SmokeMethod("canEncode", "(QChar) const", "#")]
 		public bool CanEncode(char arg1) {
-			return ProxyQTextCodec().CanEncode(arg1);
+			return ((QTextCodec) interceptor).CanEncode(arg1);
 		}
 		[SmokeMethod("canEncode", "(const QString&) const", "$")]
 		public bool CanEncode(string arg1) {
-			return ProxyQTextCodec().CanEncode(arg1);
+			return ((QTextCodec) interceptor).CanEncode(arg1);
 		}
 		[SmokeMethod("toUnicode", "(const QByteArray&) const", "#")]
 		public string ToUnicode(QByteArray arg1) {
-			return ProxyQTextCodec().ToUnicode(arg1);
+			return ((QTextCodec) interceptor).ToUnicode(arg1);
 		}
 		[SmokeMethod("toUnicode", "(const char*) const", "$")]
 		public string ToUnicode(string chars) {
-			return ProxyQTextCodec().ToUnicode(chars);
+			return ((QTextCodec) interceptor).ToUnicode(chars);
 		}
 		[SmokeMethod("fromUnicode", "(const QString&) const", "$")]
 		public QByteArray FromUnicode(string uc) {
-			return ProxyQTextCodec().FromUnicode(uc);
+			return ((QTextCodec) interceptor).FromUnicode(uc);
 		}
 		[SmokeMethod("toUnicode", "(const char*, int) const", "$$")]
 		public string ToUnicode(string arg1, int length) {
-			return ProxyQTextCodec().ToUnicode(arg1,length);
+			return ((QTextCodec) interceptor).ToUnicode(arg1,length);
 		}
 		[SmokeMethod("fromUnicode", "(const QChar*, int) const", "#$")]
 		public QByteArray FromUnicode(char arg1, int length) {
-			return ProxyQTextCodec().FromUnicode(arg1,length);
+			return ((QTextCodec) interceptor).FromUnicode(arg1,length);
 		}
 		[SmokeMethod("name", "() const", "")]
 		public abstract QByteArray Name();
 		[SmokeMethod("aliases", "() const", "")]
 		public virtual List<QByteArray> Aliases() {
-			return ProxyQTextCodec().Aliases();
+			return ((QTextCodec) interceptor).Aliases();
 		}
 		[SmokeMethod("mibEnum", "() const", "")]
 		public abstract int MibEnum();
@@ -110,43 +104,43 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTextCodec", "()", "")]
 		private void NewQTextCodec() {
-			ProxyQTextCodec().NewQTextCodec();
+			((QTextCodec) interceptor).NewQTextCodec();
 		}
 		public static QTextCodec CodecForName(QByteArray name) {
-			return StaticQTextCodec().CodecForName(name);
+			return staticInterceptor.CodecForName(name);
 		}
 		public static QTextCodec CodecForName(string name) {
-			return StaticQTextCodec().CodecForName(name);
+			return staticInterceptor.CodecForName(name);
 		}
 		public static QTextCodec CodecForMib(int mib) {
-			return StaticQTextCodec().CodecForMib(mib);
+			return staticInterceptor.CodecForMib(mib);
 		}
 		public static List<QByteArray> AvailableCodecs() {
-			return StaticQTextCodec().AvailableCodecs();
+			return staticInterceptor.AvailableCodecs();
 		}
 		public static List<int> AvailableMibs() {
-			return StaticQTextCodec().AvailableMibs();
+			return staticInterceptor.AvailableMibs();
 		}
 		public static QTextCodec CodecForLocale() {
-			return StaticQTextCodec().CodecForLocale();
+			return staticInterceptor.CodecForLocale();
 		}
 		public static void SetCodecForLocale(QTextCodec c) {
-			StaticQTextCodec().SetCodecForLocale(c);
+			staticInterceptor.SetCodecForLocale(c);
 		}
 		public static QTextCodec CodecForTr() {
-			return StaticQTextCodec().CodecForTr();
+			return staticInterceptor.CodecForTr();
 		}
 		public static void SetCodecForTr(QTextCodec c) {
-			StaticQTextCodec().SetCodecForTr(c);
+			staticInterceptor.SetCodecForTr(c);
 		}
 		public static QTextCodec CodecForCStrings() {
-			return StaticQTextCodec().CodecForCStrings();
+			return staticInterceptor.CodecForCStrings();
 		}
 		public static void SetCodecForCStrings(QTextCodec c) {
-			StaticQTextCodec().SetCodecForCStrings(c);
+			staticInterceptor.SetCodecForCStrings(c);
 		}
 		public static QTextCodec CodecForHtml(QByteArray ba) {
-			return StaticQTextCodec().CodecForHtml(ba);
+			return staticInterceptor.CodecForHtml(ba);
 		}
 	}
 }

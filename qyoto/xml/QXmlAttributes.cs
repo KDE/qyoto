@@ -5,15 +5,12 @@ namespace Qyoto {
 
 	[SmokeClass("QXmlAttributes")]
 	public class QXmlAttributes : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QXmlAttributes interceptor = null;
+		private IntPtr smokeObject;
 		protected QXmlAttributes(Type dummy) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlAttributes), this);
-			_interceptor = (QXmlAttributes) realProxy.GetTransparentProxy();
-		}
-		private QXmlAttributes ProxyQXmlAttributes() {
-			return (QXmlAttributes) _interceptor;
+			interceptor = (QXmlAttributes) realProxy.GetTransparentProxy();
 		}
 		public QXmlAttributes() : this((Type) null) {
 			CreateProxy();
@@ -21,67 +18,67 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QXmlAttributes", "()", "")]
 		private void NewQXmlAttributes() {
-			ProxyQXmlAttributes().NewQXmlAttributes();
+			((QXmlAttributes) interceptor).NewQXmlAttributes();
 		}
 		[SmokeMethod("index", "(const QString&) const", "$")]
 		public int Index(string qName) {
-			return ProxyQXmlAttributes().Index(qName);
+			return ((QXmlAttributes) interceptor).Index(qName);
 		}
 		[SmokeMethod("index", "(const QString&, const QString&) const", "$$")]
 		public int Index(string uri, string localPart) {
-			return ProxyQXmlAttributes().Index(uri,localPart);
+			return ((QXmlAttributes) interceptor).Index(uri,localPart);
 		}
 		[SmokeMethod("length", "() const", "")]
 		public int Length() {
-			return ProxyQXmlAttributes().Length();
+			return ((QXmlAttributes) interceptor).Length();
 		}
 		[SmokeMethod("count", "() const", "")]
 		public int Count() {
-			return ProxyQXmlAttributes().Count();
+			return ((QXmlAttributes) interceptor).Count();
 		}
 		[SmokeMethod("localName", "(int) const", "$")]
 		public string LocalName(int index) {
-			return ProxyQXmlAttributes().LocalName(index);
+			return ((QXmlAttributes) interceptor).LocalName(index);
 		}
 		[SmokeMethod("qName", "(int) const", "$")]
 		public string QName(int index) {
-			return ProxyQXmlAttributes().QName(index);
+			return ((QXmlAttributes) interceptor).QName(index);
 		}
 		[SmokeMethod("uri", "(int) const", "$")]
 		public string Uri(int index) {
-			return ProxyQXmlAttributes().Uri(index);
+			return ((QXmlAttributes) interceptor).Uri(index);
 		}
 		[SmokeMethod("type", "(int) const", "$")]
 		public string type(int index) {
-			return ProxyQXmlAttributes().type(index);
+			return ((QXmlAttributes) interceptor).type(index);
 		}
 		[SmokeMethod("type", "(const QString&) const", "$")]
 		public string type(string qName) {
-			return ProxyQXmlAttributes().type(qName);
+			return ((QXmlAttributes) interceptor).type(qName);
 		}
 		[SmokeMethod("type", "(const QString&, const QString&) const", "$$")]
 		public string type(string uri, string localName) {
-			return ProxyQXmlAttributes().type(uri,localName);
+			return ((QXmlAttributes) interceptor).type(uri,localName);
 		}
 		[SmokeMethod("value", "(int) const", "$")]
 		public string Value(int index) {
-			return ProxyQXmlAttributes().Value(index);
+			return ((QXmlAttributes) interceptor).Value(index);
 		}
 		[SmokeMethod("value", "(const QString&) const", "$")]
 		public string Value(string qName) {
-			return ProxyQXmlAttributes().Value(qName);
+			return ((QXmlAttributes) interceptor).Value(qName);
 		}
 		[SmokeMethod("value", "(const QString&, const QString&) const", "$$")]
 		public string Value(string uri, string localName) {
-			return ProxyQXmlAttributes().Value(uri,localName);
+			return ((QXmlAttributes) interceptor).Value(uri,localName);
 		}
 		[SmokeMethod("clear", "()", "")]
 		public void Clear() {
-			ProxyQXmlAttributes().Clear();
+			((QXmlAttributes) interceptor).Clear();
 		}
 		[SmokeMethod("append", "(const QString&, const QString&, const QString&, const QString&)", "$$$$")]
 		public void Append(string qName, string uri, string localPart, string value) {
-			ProxyQXmlAttributes().Append(qName,uri,localPart,value);
+			((QXmlAttributes) interceptor).Append(qName,uri,localPart,value);
 		}
 		~QXmlAttributes() {
 			DisposeQXmlAttributes();
@@ -91,7 +88,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QXmlAttributes", "()", "")]
 		private void DisposeQXmlAttributes() {
-			ProxyQXmlAttributes().DisposeQXmlAttributes();
+			((QXmlAttributes) interceptor).DisposeQXmlAttributes();
 		}
 	}
 }

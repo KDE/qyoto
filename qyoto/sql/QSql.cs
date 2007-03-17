@@ -4,7 +4,7 @@ namespace Qyoto {
 	using System;
 
 	public class QSql : MarshalByRefObject {
-		protected Object _interceptor = null;
+		protected QSql interceptor = null;
 		public enum Location {
 			BeforeFirstRow = -1,
 			AfterLastRow = -2,

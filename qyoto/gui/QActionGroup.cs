@@ -17,18 +17,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QActionGroup), this);
-			_interceptor = (QActionGroup) realProxy.GetTransparentProxy();
+			interceptor = (QActionGroup) realProxy.GetTransparentProxy();
 		}
-		private QActionGroup ProxyQActionGroup() {
-			return (QActionGroup) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQActionGroupProxy staticInterceptor = null;
 		static QActionGroup() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQActionGroupProxy), null);
-			_staticInterceptor = (IQActionGroupProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQActionGroupProxy StaticQActionGroup() {
-			return (IQActionGroupProxy) _staticInterceptor;
+			staticInterceptor = (IQActionGroupProxy) realProxy.GetTransparentProxy();
 		}
 		[Q_PROPERTY("bool", "exclusive")]
 		public bool Exclusive {
@@ -51,48 +45,48 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QActionGroup", "(QObject*)", "#")]
 		private void NewQActionGroup(QObject parent) {
-			ProxyQActionGroup().NewQActionGroup(parent);
+			((QActionGroup) interceptor).NewQActionGroup(parent);
 		}
 		[SmokeMethod("addAction", "(QAction*)", "#")]
 		public QAction AddAction(QAction a) {
-			return ProxyQActionGroup().AddAction(a);
+			return ((QActionGroup) interceptor).AddAction(a);
 		}
 		[SmokeMethod("addAction", "(const QString&)", "$")]
 		public QAction AddAction(string text) {
-			return ProxyQActionGroup().AddAction(text);
+			return ((QActionGroup) interceptor).AddAction(text);
 		}
 		[SmokeMethod("addAction", "(const QIcon&, const QString&)", "#$")]
 		public QAction AddAction(QIcon icon, string text) {
-			return ProxyQActionGroup().AddAction(icon,text);
+			return ((QActionGroup) interceptor).AddAction(icon,text);
 		}
 		[SmokeMethod("removeAction", "(QAction*)", "#")]
 		public void RemoveAction(QAction a) {
-			ProxyQActionGroup().RemoveAction(a);
+			((QActionGroup) interceptor).RemoveAction(a);
 		}
 		[SmokeMethod("actions", "() const", "")]
 		public List<QAction> Actions() {
-			return ProxyQActionGroup().Actions();
+			return ((QActionGroup) interceptor).Actions();
 		}
 		[SmokeMethod("checkedAction", "() const", "")]
 		public QAction CheckedAction() {
-			return ProxyQActionGroup().CheckedAction();
+			return ((QActionGroup) interceptor).CheckedAction();
 		}
 		[SmokeMethod("isExclusive", "() const", "")]
 		public bool IsExclusive() {
-			return ProxyQActionGroup().IsExclusive();
+			return ((QActionGroup) interceptor).IsExclusive();
 		}
 		[SmokeMethod("isEnabled", "() const", "")]
 		public bool IsEnabled() {
-			return ProxyQActionGroup().IsEnabled();
+			return ((QActionGroup) interceptor).IsEnabled();
 		}
 		[SmokeMethod("isVisible", "() const", "")]
 		public bool IsVisible() {
-			return ProxyQActionGroup().IsVisible();
+			return ((QActionGroup) interceptor).IsVisible();
 		}
 		[Q_SLOT("void setDisabled(bool)")]
 		[SmokeMethod("setDisabled", "(bool)", "$")]
 		public void SetDisabled(bool b) {
-			ProxyQActionGroup().SetDisabled(b);
+			((QActionGroup) interceptor).SetDisabled(b);
 		}
 		~QActionGroup() {
 			DisposeQActionGroup();
@@ -102,13 +96,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QActionGroup", "()", "")]
 		private void DisposeQActionGroup() {
-			ProxyQActionGroup().DisposeQActionGroup();
+			((QActionGroup) interceptor).DisposeQActionGroup();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQActionGroup().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQActionGroup().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQActionGroupSignals Emit {
 			get { return (IQActionGroupSignals) Q_EMIT; }

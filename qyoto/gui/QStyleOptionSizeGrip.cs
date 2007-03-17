@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QStyleOptionSizeGrip(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionSizeGrip), this);
-			_interceptor = (QStyleOptionSizeGrip) realProxy.GetTransparentProxy();
-		}
-		private QStyleOptionSizeGrip ProxyQStyleOptionSizeGrip() {
-			return (QStyleOptionSizeGrip) _interceptor;
+			interceptor = (QStyleOptionSizeGrip) realProxy.GetTransparentProxy();
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_SizeGrip,
@@ -25,7 +22,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionSizeGrip", "()", "")]
 		private void NewQStyleOptionSizeGrip() {
-			ProxyQStyleOptionSizeGrip().NewQStyleOptionSizeGrip();
+			((QStyleOptionSizeGrip) interceptor).NewQStyleOptionSizeGrip();
 		}
 		public QStyleOptionSizeGrip(QStyleOptionSizeGrip other) : this((Type) null) {
 			CreateProxy();
@@ -33,7 +30,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionSizeGrip", "(const QStyleOptionSizeGrip&)", "#")]
 		private void NewQStyleOptionSizeGrip(QStyleOptionSizeGrip other) {
-			ProxyQStyleOptionSizeGrip().NewQStyleOptionSizeGrip(other);
+			((QStyleOptionSizeGrip) interceptor).NewQStyleOptionSizeGrip(other);
 		}
 		public QStyleOptionSizeGrip(int version) : this((Type) null) {
 			CreateProxy();
@@ -41,7 +38,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionSizeGrip", "(int)", "$")]
 		private void NewQStyleOptionSizeGrip(int version) {
-			ProxyQStyleOptionSizeGrip().NewQStyleOptionSizeGrip(version);
+			((QStyleOptionSizeGrip) interceptor).NewQStyleOptionSizeGrip(version);
 		}
 		~QStyleOptionSizeGrip() {
 			DisposeQStyleOptionSizeGrip();
@@ -51,7 +48,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QStyleOptionSizeGrip", "()", "")]
 		private void DisposeQStyleOptionSizeGrip() {
-			ProxyQStyleOptionSizeGrip().DisposeQStyleOptionSizeGrip();
+			((QStyleOptionSizeGrip) interceptor).DisposeQStyleOptionSizeGrip();
 		}
 	}
 }

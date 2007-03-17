@@ -9,10 +9,7 @@ namespace Qyoto {
  		protected QAccessibleObjectEx(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAccessibleObjectEx), this);
-			_interceptor = (QAccessibleObjectEx) realProxy.GetTransparentProxy();
-		}
-		private QAccessibleObjectEx ProxyQAccessibleObjectEx() {
-			return (QAccessibleObjectEx) _interceptor;
+			interceptor = (QAccessibleObjectEx) realProxy.GetTransparentProxy();
 		}
 		public QAccessibleObjectEx(QObject arg1) : this((Type) null) {
 			CreateProxy();
@@ -20,35 +17,35 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QAccessibleObjectEx", "(QObject*)", "#")]
 		private void NewQAccessibleObjectEx(QObject arg1) {
-			ProxyQAccessibleObjectEx().NewQAccessibleObjectEx(arg1);
+			((QAccessibleObjectEx) interceptor).NewQAccessibleObjectEx(arg1);
 		}
 		[SmokeMethod("isValid", "() const", "")]
 		public override bool IsValid() {
-			return ProxyQAccessibleObjectEx().IsValid();
+			return ((QAccessibleObjectEx) interceptor).IsValid();
 		}
 		[SmokeMethod("object", "() const", "")]
 		public override QObject Object() {
-			return ProxyQAccessibleObjectEx().Object();
+			return ((QAccessibleObjectEx) interceptor).Object();
 		}
 		[SmokeMethod("rect", "(int) const", "$")]
 		public override QRect Rect(int child) {
-			return ProxyQAccessibleObjectEx().Rect(child);
+			return ((QAccessibleObjectEx) interceptor).Rect(child);
 		}
 		[SmokeMethod("setText", "(QAccessible::Text, int, const QString&)", "$$$")]
 		public override void SetText(QAccessible.Text t, int child, string text) {
-			ProxyQAccessibleObjectEx().SetText(t,child,text);
+			((QAccessibleObjectEx) interceptor).SetText(t,child,text);
 		}
 		[SmokeMethod("userActionCount", "(int) const", "$")]
 		public override int UserActionCount(int child) {
-			return ProxyQAccessibleObjectEx().UserActionCount(child);
+			return ((QAccessibleObjectEx) interceptor).UserActionCount(child);
 		}
 		[SmokeMethod("doAction", "(int, int, const QVariantList&)", "$$?")]
 		public override bool DoAction(int action, int child, List<QVariant> arg3) {
-			return ProxyQAccessibleObjectEx().DoAction(action,child,arg3);
+			return ((QAccessibleObjectEx) interceptor).DoAction(action,child,arg3);
 		}
 		[SmokeMethod("actionText", "(int, QAccessible::Text, int) const", "$$$")]
 		public override string ActionText(int action, QAccessible.Text t, int child) {
-			return ProxyQAccessibleObjectEx().ActionText(action,t,child);
+			return ((QAccessibleObjectEx) interceptor).ActionText(action,t,child);
 		}
 	}
 }

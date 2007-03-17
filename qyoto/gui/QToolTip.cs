@@ -5,8 +5,8 @@ namespace Qyoto {
 
 	[SmokeClass("QToolTip")]
 	public class QToolTip : MarshalByRefObject {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QToolTip interceptor = null;
+		private IntPtr smokeObject;
 		protected QToolTip(Type dummy) {}
 		[SmokeClass("QToolTip")]
 		interface IQToolTipProxy {
@@ -27,37 +27,34 @@ namespace Qyoto {
 			[SmokeMethod("setFont", "(const QFont&)", "#")]
 			void SetFont(QFont arg1);
 		}
-		private static Object _staticInterceptor = null;
+		private static IQToolTipProxy staticInterceptor = null;
 		static QToolTip() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQToolTipProxy), null);
-			_staticInterceptor = (IQToolTipProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQToolTipProxy StaticQToolTip() {
-			return (IQToolTipProxy) _staticInterceptor;
+			staticInterceptor = (IQToolTipProxy) realProxy.GetTransparentProxy();
 		}
 		public static void ShowText(QPoint pos, string text, QWidget w) {
-			StaticQToolTip().ShowText(pos,text,w);
+			staticInterceptor.ShowText(pos,text,w);
 		}
 		public static void ShowText(QPoint pos, string text) {
-			StaticQToolTip().ShowText(pos,text);
+			staticInterceptor.ShowText(pos,text);
 		}
 		public static void ShowText(QPoint pos, string text, QWidget w, QRect rect) {
-			StaticQToolTip().ShowText(pos,text,w,rect);
+			staticInterceptor.ShowText(pos,text,w,rect);
 		}
 		public static void HideText() {
-			StaticQToolTip().HideText();
+			staticInterceptor.HideText();
 		}
 		public static QPalette Palette() {
-			return StaticQToolTip().Palette();
+			return staticInterceptor.Palette();
 		}
 		public static void SetPalette(QPalette arg1) {
-			StaticQToolTip().SetPalette(arg1);
+			staticInterceptor.SetPalette(arg1);
 		}
 		public static QFont Font() {
-			return StaticQToolTip().Font();
+			return staticInterceptor.Font();
 		}
 		public static void SetFont(QFont arg1) {
-			StaticQToolTip().SetFont(arg1);
+			staticInterceptor.SetFont(arg1);
 		}
 	}
 }

@@ -5,8 +5,8 @@ namespace Qyoto {
 
 	[SmokeClass("QPoint")]
 	public class QPoint : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QPoint interceptor = null;
+		private IntPtr smokeObject;
 		protected QPoint(Type dummy) {}
 		[SmokeClass("QPoint")]
 		interface IQPointProxy {
@@ -29,18 +29,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPoint), this);
-			_interceptor = (QPoint) realProxy.GetTransparentProxy();
+			interceptor = (QPoint) realProxy.GetTransparentProxy();
 		}
-		private QPoint ProxyQPoint() {
-			return (QPoint) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQPointProxy staticInterceptor = null;
 		static QPoint() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQPointProxy), null);
-			_staticInterceptor = (IQPointProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQPointProxy StaticQPoint() {
-			return (IQPointProxy) _staticInterceptor;
+			staticInterceptor = (IQPointProxy) realProxy.GetTransparentProxy();
 		}
 		// QPoint& operator*=(qreal arg1); >>>> NOT CONVERTED
 		public QPoint() : this((Type) null) {
@@ -49,7 +43,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QPoint", "()", "")]
 		private void NewQPoint() {
-			ProxyQPoint().NewQPoint();
+			((QPoint) interceptor).NewQPoint();
 		}
 		public QPoint(int xpos, int ypos) : this((Type) null) {
 			CreateProxy();
@@ -57,39 +51,39 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QPoint", "(int, int)", "$$")]
 		private void NewQPoint(int xpos, int ypos) {
-			ProxyQPoint().NewQPoint(xpos,ypos);
+			((QPoint) interceptor).NewQPoint(xpos,ypos);
 		}
 		[SmokeMethod("isNull", "() const", "")]
 		public bool IsNull() {
-			return ProxyQPoint().IsNull();
+			return ((QPoint) interceptor).IsNull();
 		}
 		[SmokeMethod("x", "() const", "")]
 		public int X() {
-			return ProxyQPoint().X();
+			return ((QPoint) interceptor).X();
 		}
 		[SmokeMethod("y", "() const", "")]
 		public int Y() {
-			return ProxyQPoint().Y();
+			return ((QPoint) interceptor).Y();
 		}
 		[SmokeMethod("setX", "(int)", "$")]
 		public void SetX(int x) {
-			ProxyQPoint().SetX(x);
+			((QPoint) interceptor).SetX(x);
 		}
 		[SmokeMethod("setY", "(int)", "$")]
 		public void SetY(int y) {
-			ProxyQPoint().SetY(y);
+			((QPoint) interceptor).SetY(y);
 		}
 		[SmokeMethod("manhattanLength", "() const", "")]
 		public int ManhattanLength() {
-			return ProxyQPoint().ManhattanLength();
+			return ((QPoint) interceptor).ManhattanLength();
 		}
 		[SmokeMethod("rx", "()", "")]
 		public int Rx() {
-			return ProxyQPoint().Rx();
+			return ((QPoint) interceptor).Rx();
 		}
 		[SmokeMethod("ry", "()", "")]
 		public int Ry() {
-			return ProxyQPoint().Ry();
+			return ((QPoint) interceptor).Ry();
 		}
 		~QPoint() {
 			DisposeQPoint();
@@ -99,41 +93,41 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QPoint", "()", "")]
 		private void DisposeQPoint() {
-			ProxyQPoint().DisposeQPoint();
+			((QPoint) interceptor).DisposeQPoint();
 		}
 		public override bool Equals(object o) {
 			if (!(o is QPoint)) { return false; }
 			return this == (QPoint) o;
 		}
 		public override int GetHashCode() {
-			return ProxyQPoint().GetHashCode();
+			return ((QPoint) interceptor).GetHashCode();
 		}
 		public static QPoint operator/(QPoint lhs, double c) {
-			return StaticQPoint().op_div(lhs,c);
+			return staticInterceptor.op_div(lhs,c);
 		}
 		public static QPoint operator*(QPoint p, QMatrix m) {
-			return StaticQPoint().op_mult(p,m);
+			return staticInterceptor.op_mult(p,m);
 		}
 		public static bool operator==(QPoint p1, QPoint p2) {
-			return StaticQPoint().op_equals(p1,p2);
+			return staticInterceptor.op_equals(p1,p2);
 		}
 		public static bool operator!=(QPoint p1, QPoint p2) {
-			return !StaticQPoint().op_equals(p1,p2);
+			return !staticInterceptor.op_equals(p1,p2);
 		}
 		public static QPoint operator+(QPoint p1, QPoint p2) {
-			return StaticQPoint().op_plus(p1,p2);
+			return staticInterceptor.op_plus(p1,p2);
 		}
 		public static QPoint operator-(QPoint p1, QPoint p2) {
-			return StaticQPoint().op_minus(p1,p2);
+			return staticInterceptor.op_minus(p1,p2);
 		}
 		public static QPoint operator*(QPoint p, double c) {
-			return StaticQPoint().op_mult(p,c);
+			return staticInterceptor.op_mult(p,c);
 		}
 		public static QPoint operator*(double c, QPoint p) {
-			return StaticQPoint().op_mult(c,p);
+			return staticInterceptor.op_mult(c,p);
 		}
 		public static QPoint operator-(QPoint p) {
-			return StaticQPoint().op_minus(p);
+			return staticInterceptor.op_minus(p);
 		}
 	}
 }

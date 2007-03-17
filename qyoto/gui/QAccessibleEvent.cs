@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QAccessibleEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAccessibleEvent), this);
-			_interceptor = (QAccessibleEvent) realProxy.GetTransparentProxy();
-		}
-		private QAccessibleEvent ProxyQAccessibleEvent() {
-			return (QAccessibleEvent) _interceptor;
+			interceptor = (QAccessibleEvent) realProxy.GetTransparentProxy();
 		}
 		public QAccessibleEvent(QEvent.TypeOf type, int child) : this((Type) null) {
 			CreateProxy();
@@ -19,19 +16,19 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QAccessibleEvent", "(QEvent::Type, int)", "$$")]
 		private void NewQAccessibleEvent(QEvent.TypeOf type, int child) {
-			ProxyQAccessibleEvent().NewQAccessibleEvent(type,child);
+			((QAccessibleEvent) interceptor).NewQAccessibleEvent(type,child);
 		}
 		[SmokeMethod("child", "() const", "")]
 		public int Child() {
-			return ProxyQAccessibleEvent().Child();
+			return ((QAccessibleEvent) interceptor).Child();
 		}
 		[SmokeMethod("value", "() const", "")]
 		public string Value() {
-			return ProxyQAccessibleEvent().Value();
+			return ((QAccessibleEvent) interceptor).Value();
 		}
 		[SmokeMethod("setValue", "(const QString&)", "$")]
 		public void SetValue(string aText) {
-			ProxyQAccessibleEvent().SetValue(aText);
+			((QAccessibleEvent) interceptor).SetValue(aText);
 		}
 		~QAccessibleEvent() {
 			DisposeQAccessibleEvent();
@@ -41,7 +38,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QAccessibleEvent", "()", "")]
 		private void DisposeQAccessibleEvent() {
-			ProxyQAccessibleEvent().DisposeQAccessibleEvent();
+			((QAccessibleEvent) interceptor).DisposeQAccessibleEvent();
 		}
 	}
 }

@@ -6,8 +6,8 @@ namespace Qyoto {
 
 	[SmokeClass("QColor")]
 	public class QColor : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QColor interceptor = null;
+		private IntPtr smokeObject;
 		protected QColor(Type dummy) {}
 		[SmokeClass("QColor")]
 		interface IQColorProxy {
@@ -46,18 +46,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QColor), this);
-			_interceptor = (QColor) realProxy.GetTransparentProxy();
+			interceptor = (QColor) realProxy.GetTransparentProxy();
 		}
-		private QColor ProxyQColor() {
-			return (QColor) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQColorProxy staticInterceptor = null;
 		static QColor() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQColorProxy), null);
-			_staticInterceptor = (IQColorProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQColorProxy StaticQColor() {
-			return (IQColorProxy) _staticInterceptor;
+			staticInterceptor = (IQColorProxy) realProxy.GetTransparentProxy();
 		}
 		public enum Spec {
 			Invalid = 0,
@@ -72,7 +66,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QColor", "()", "")]
 		private void NewQColor() {
-			ProxyQColor().NewQColor();
+			((QColor) interceptor).NewQColor();
 		}
 		public QColor(Qt.GlobalColor color) : this((Type) null) {
 			CreateProxy();
@@ -80,7 +74,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QColor", "(Qt::GlobalColor)", "$")]
 		private void NewQColor(Qt.GlobalColor color) {
-			ProxyQColor().NewQColor(color);
+			((QColor) interceptor).NewQColor(color);
 		}
 		public QColor(int r, int g, int b, int a) : this((Type) null) {
 			CreateProxy();
@@ -88,7 +82,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QColor", "(int, int, int, int)", "$$$$")]
 		private void NewQColor(int r, int g, int b, int a) {
-			ProxyQColor().NewQColor(r,g,b,a);
+			((QColor) interceptor).NewQColor(r,g,b,a);
 		}
 		public QColor(int r, int g, int b) : this((Type) null) {
 			CreateProxy();
@@ -96,7 +90,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QColor", "(int, int, int)", "$$$")]
 		private void NewQColor(int r, int g, int b) {
-			ProxyQColor().NewQColor(r,g,b);
+			((QColor) interceptor).NewQColor(r,g,b);
 		}
 		public QColor(uint rgb) : this((Type) null) {
 			CreateProxy();
@@ -104,7 +98,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QColor", "(QRgb)", "$")]
 		private void NewQColor(uint rgb) {
-			ProxyQColor().NewQColor(rgb);
+			((QColor) interceptor).NewQColor(rgb);
 		}
 		public QColor(string name) : this((Type) null) {
 			CreateProxy();
@@ -112,7 +106,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QColor", "(const QString&)", "$")]
 		private void NewQColor(string name) {
-			ProxyQColor().NewQColor(name);
+			((QColor) interceptor).NewQColor(name);
 		}
 		public QColor(QColor color) : this((Type) null) {
 			CreateProxy();
@@ -120,7 +114,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QColor", "(const QColor&)", "#")]
 		private void NewQColor(QColor color) {
-			ProxyQColor().NewQColor(color);
+			((QColor) interceptor).NewQColor(color);
 		}
 		public QColor(QColor.Spec spec) : this((Type) null) {
 			CreateProxy();
@@ -128,294 +122,294 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QColor", "(QColor::Spec)", "$")]
 		private void NewQColor(QColor.Spec spec) {
-			ProxyQColor().NewQColor(spec);
+			((QColor) interceptor).NewQColor(spec);
 		}
 		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ProxyQColor().IsValid();
+			return ((QColor) interceptor).IsValid();
 		}
 		[SmokeMethod("name", "() const", "")]
 		public string Name() {
-			return ProxyQColor().Name();
+			return ((QColor) interceptor).Name();
 		}
 		[SmokeMethod("setNamedColor", "(const QString&)", "$")]
 		public void SetNamedColor(string name) {
-			ProxyQColor().SetNamedColor(name);
+			((QColor) interceptor).SetNamedColor(name);
 		}
 		[SmokeMethod("spec", "() const", "")]
 		public QColor.Spec spec() {
-			return ProxyQColor().spec();
+			return ((QColor) interceptor).spec();
 		}
 		[SmokeMethod("alpha", "() const", "")]
 		public int Alpha() {
-			return ProxyQColor().Alpha();
+			return ((QColor) interceptor).Alpha();
 		}
 		[SmokeMethod("setAlpha", "(int)", "$")]
 		public void SetAlpha(int alpha) {
-			ProxyQColor().SetAlpha(alpha);
+			((QColor) interceptor).SetAlpha(alpha);
 		}
 		[SmokeMethod("alphaF", "() const", "")]
 		public double AlphaF() {
-			return ProxyQColor().AlphaF();
+			return ((QColor) interceptor).AlphaF();
 		}
 		[SmokeMethod("setAlphaF", "(qreal)", "$")]
 		public void SetAlphaF(double alpha) {
-			ProxyQColor().SetAlphaF(alpha);
+			((QColor) interceptor).SetAlphaF(alpha);
 		}
 		[SmokeMethod("red", "() const", "")]
 		public int Red() {
-			return ProxyQColor().Red();
+			return ((QColor) interceptor).Red();
 		}
 		[SmokeMethod("green", "() const", "")]
 		public int Green() {
-			return ProxyQColor().Green();
+			return ((QColor) interceptor).Green();
 		}
 		[SmokeMethod("blue", "() const", "")]
 		public int Blue() {
-			return ProxyQColor().Blue();
+			return ((QColor) interceptor).Blue();
 		}
 		[SmokeMethod("setRed", "(int)", "$")]
 		public void SetRed(int red) {
-			ProxyQColor().SetRed(red);
+			((QColor) interceptor).SetRed(red);
 		}
 		[SmokeMethod("setGreen", "(int)", "$")]
 		public void SetGreen(int green) {
-			ProxyQColor().SetGreen(green);
+			((QColor) interceptor).SetGreen(green);
 		}
 		[SmokeMethod("setBlue", "(int)", "$")]
 		public void SetBlue(int blue) {
-			ProxyQColor().SetBlue(blue);
+			((QColor) interceptor).SetBlue(blue);
 		}
 		[SmokeMethod("redF", "() const", "")]
 		public double RedF() {
-			return ProxyQColor().RedF();
+			return ((QColor) interceptor).RedF();
 		}
 		[SmokeMethod("greenF", "() const", "")]
 		public double GreenF() {
-			return ProxyQColor().GreenF();
+			return ((QColor) interceptor).GreenF();
 		}
 		[SmokeMethod("blueF", "() const", "")]
 		public double BlueF() {
-			return ProxyQColor().BlueF();
+			return ((QColor) interceptor).BlueF();
 		}
 		[SmokeMethod("setRedF", "(qreal)", "$")]
 		public void SetRedF(double red) {
-			ProxyQColor().SetRedF(red);
+			((QColor) interceptor).SetRedF(red);
 		}
 		[SmokeMethod("setGreenF", "(qreal)", "$")]
 		public void SetGreenF(double green) {
-			ProxyQColor().SetGreenF(green);
+			((QColor) interceptor).SetGreenF(green);
 		}
 		[SmokeMethod("setBlueF", "(qreal)", "$")]
 		public void SetBlueF(double blue) {
-			ProxyQColor().SetBlueF(blue);
+			((QColor) interceptor).SetBlueF(blue);
 		}
 		[SmokeMethod("getRgb", "(int*, int*, int*, int*) const", "$$$$")]
 		public void GetRgb(out int r, out int g, out int b, out int a) {
-			ProxyQColor().GetRgb(out r,out g,out b,out a);
+			((QColor) interceptor).GetRgb(out r,out g,out b,out a);
 		}
 		[SmokeMethod("getRgb", "(int*, int*, int*) const", "$$$")]
 		public void GetRgb(out int r, out int g, out int b) {
-			ProxyQColor().GetRgb(out r,out g,out b);
+			((QColor) interceptor).GetRgb(out r,out g,out b);
 		}
 		[SmokeMethod("setRgb", "(int, int, int, int)", "$$$$")]
 		public void SetRgb(int r, int g, int b, int a) {
-			ProxyQColor().SetRgb(r,g,b,a);
+			((QColor) interceptor).SetRgb(r,g,b,a);
 		}
 		[SmokeMethod("setRgb", "(int, int, int)", "$$$")]
 		public void SetRgb(int r, int g, int b) {
-			ProxyQColor().SetRgb(r,g,b);
+			((QColor) interceptor).SetRgb(r,g,b);
 		}
 		[SmokeMethod("getRgbF", "(qreal*, qreal*, qreal*, qreal*) const", "$$$$")]
 		public void GetRgbF(out double r, out double g, out double b, out double a) {
-			ProxyQColor().GetRgbF(out r,out g,out b,out a);
+			((QColor) interceptor).GetRgbF(out r,out g,out b,out a);
 		}
 		[SmokeMethod("getRgbF", "(qreal*, qreal*, qreal*) const", "$$$")]
 		public void GetRgbF(out double r, out double g, out double b) {
-			ProxyQColor().GetRgbF(out r,out g,out b);
+			((QColor) interceptor).GetRgbF(out r,out g,out b);
 		}
 		[SmokeMethod("setRgbF", "(qreal, qreal, qreal, qreal)", "$$$$")]
 		public void SetRgbF(double r, double g, double b, double a) {
-			ProxyQColor().SetRgbF(r,g,b,a);
+			((QColor) interceptor).SetRgbF(r,g,b,a);
 		}
 		[SmokeMethod("setRgbF", "(qreal, qreal, qreal)", "$$$")]
 		public void SetRgbF(double r, double g, double b) {
-			ProxyQColor().SetRgbF(r,g,b);
+			((QColor) interceptor).SetRgbF(r,g,b);
 		}
 		[SmokeMethod("rgba", "() const", "")]
 		public uint Rgba() {
-			return ProxyQColor().Rgba();
+			return ((QColor) interceptor).Rgba();
 		}
 		[SmokeMethod("setRgba", "(QRgb)", "$")]
 		public void SetRgba(uint rgba) {
-			ProxyQColor().SetRgba(rgba);
+			((QColor) interceptor).SetRgba(rgba);
 		}
 		[SmokeMethod("rgb", "() const", "")]
 		public uint Rgb() {
-			return ProxyQColor().Rgb();
+			return ((QColor) interceptor).Rgb();
 		}
 		[SmokeMethod("setRgb", "(QRgb)", "$")]
 		public void SetRgb(uint rgb) {
-			ProxyQColor().SetRgb(rgb);
+			((QColor) interceptor).SetRgb(rgb);
 		}
 		[SmokeMethod("hue", "() const", "")]
 		public int Hue() {
-			return ProxyQColor().Hue();
+			return ((QColor) interceptor).Hue();
 		}
 		[SmokeMethod("saturation", "() const", "")]
 		public int Saturation() {
-			return ProxyQColor().Saturation();
+			return ((QColor) interceptor).Saturation();
 		}
 		[SmokeMethod("value", "() const", "")]
 		public int Value() {
-			return ProxyQColor().Value();
+			return ((QColor) interceptor).Value();
 		}
 		[SmokeMethod("hueF", "() const", "")]
 		public double HueF() {
-			return ProxyQColor().HueF();
+			return ((QColor) interceptor).HueF();
 		}
 		[SmokeMethod("saturationF", "() const", "")]
 		public double SaturationF() {
-			return ProxyQColor().SaturationF();
+			return ((QColor) interceptor).SaturationF();
 		}
 		[SmokeMethod("valueF", "() const", "")]
 		public double ValueF() {
-			return ProxyQColor().ValueF();
+			return ((QColor) interceptor).ValueF();
 		}
 		[SmokeMethod("getHsv", "(int*, int*, int*, int*) const", "$$$$")]
 		public void GetHsv(out int h, out int s, out int v, out int a) {
-			ProxyQColor().GetHsv(out h,out s,out v,out a);
+			((QColor) interceptor).GetHsv(out h,out s,out v,out a);
 		}
 		[SmokeMethod("getHsv", "(int*, int*, int*) const", "$$$")]
 		public void GetHsv(out int h, out int s, out int v) {
-			ProxyQColor().GetHsv(out h,out s,out v);
+			((QColor) interceptor).GetHsv(out h,out s,out v);
 		}
 		[SmokeMethod("setHsv", "(int, int, int, int)", "$$$$")]
 		public void SetHsv(int h, int s, int v, int a) {
-			ProxyQColor().SetHsv(h,s,v,a);
+			((QColor) interceptor).SetHsv(h,s,v,a);
 		}
 		[SmokeMethod("setHsv", "(int, int, int)", "$$$")]
 		public void SetHsv(int h, int s, int v) {
-			ProxyQColor().SetHsv(h,s,v);
+			((QColor) interceptor).SetHsv(h,s,v);
 		}
 		[SmokeMethod("getHsvF", "(qreal*, qreal*, qreal*, qreal*) const", "$$$$")]
 		public void GetHsvF(out double h, out double s, out double v, out double a) {
-			ProxyQColor().GetHsvF(out h,out s,out v,out a);
+			((QColor) interceptor).GetHsvF(out h,out s,out v,out a);
 		}
 		[SmokeMethod("getHsvF", "(qreal*, qreal*, qreal*) const", "$$$")]
 		public void GetHsvF(out double h, out double s, out double v) {
-			ProxyQColor().GetHsvF(out h,out s,out v);
+			((QColor) interceptor).GetHsvF(out h,out s,out v);
 		}
 		[SmokeMethod("setHsvF", "(qreal, qreal, qreal, qreal)", "$$$$")]
 		public void SetHsvF(double h, double s, double v, double a) {
-			ProxyQColor().SetHsvF(h,s,v,a);
+			((QColor) interceptor).SetHsvF(h,s,v,a);
 		}
 		[SmokeMethod("setHsvF", "(qreal, qreal, qreal)", "$$$")]
 		public void SetHsvF(double h, double s, double v) {
-			ProxyQColor().SetHsvF(h,s,v);
+			((QColor) interceptor).SetHsvF(h,s,v);
 		}
 		[SmokeMethod("cyan", "() const", "")]
 		public int Cyan() {
-			return ProxyQColor().Cyan();
+			return ((QColor) interceptor).Cyan();
 		}
 		[SmokeMethod("magenta", "() const", "")]
 		public int Magenta() {
-			return ProxyQColor().Magenta();
+			return ((QColor) interceptor).Magenta();
 		}
 		[SmokeMethod("yellow", "() const", "")]
 		public int Yellow() {
-			return ProxyQColor().Yellow();
+			return ((QColor) interceptor).Yellow();
 		}
 		[SmokeMethod("black", "() const", "")]
 		public int Black() {
-			return ProxyQColor().Black();
+			return ((QColor) interceptor).Black();
 		}
 		[SmokeMethod("cyanF", "() const", "")]
 		public double CyanF() {
-			return ProxyQColor().CyanF();
+			return ((QColor) interceptor).CyanF();
 		}
 		[SmokeMethod("magentaF", "() const", "")]
 		public double MagentaF() {
-			return ProxyQColor().MagentaF();
+			return ((QColor) interceptor).MagentaF();
 		}
 		[SmokeMethod("yellowF", "() const", "")]
 		public double YellowF() {
-			return ProxyQColor().YellowF();
+			return ((QColor) interceptor).YellowF();
 		}
 		[SmokeMethod("blackF", "() const", "")]
 		public double BlackF() {
-			return ProxyQColor().BlackF();
+			return ((QColor) interceptor).BlackF();
 		}
 		[SmokeMethod("getCmyk", "(int*, int*, int*, int*, int*)", "$$$$$")]
 		public void GetCmyk(out int c, out int m, out int y, out int k, out int a) {
-			ProxyQColor().GetCmyk(out c,out m,out y,out k,out a);
+			((QColor) interceptor).GetCmyk(out c,out m,out y,out k,out a);
 		}
 		[SmokeMethod("getCmyk", "(int*, int*, int*, int*)", "$$$$")]
 		public void GetCmyk(out int c, out int m, out int y, out int k) {
-			ProxyQColor().GetCmyk(out c,out m,out y,out k);
+			((QColor) interceptor).GetCmyk(out c,out m,out y,out k);
 		}
 		[SmokeMethod("setCmyk", "(int, int, int, int, int)", "$$$$$")]
 		public void SetCmyk(int c, int m, int y, int k, int a) {
-			ProxyQColor().SetCmyk(c,m,y,k,a);
+			((QColor) interceptor).SetCmyk(c,m,y,k,a);
 		}
 		[SmokeMethod("setCmyk", "(int, int, int, int)", "$$$$")]
 		public void SetCmyk(int c, int m, int y, int k) {
-			ProxyQColor().SetCmyk(c,m,y,k);
+			((QColor) interceptor).SetCmyk(c,m,y,k);
 		}
 		[SmokeMethod("getCmykF", "(qreal*, qreal*, qreal*, qreal*, qreal*)", "$$$$$")]
 		public void GetCmykF(out double c, out double m, out double y, out double k, out double a) {
-			ProxyQColor().GetCmykF(out c,out m,out y,out k,out a);
+			((QColor) interceptor).GetCmykF(out c,out m,out y,out k,out a);
 		}
 		[SmokeMethod("getCmykF", "(qreal*, qreal*, qreal*, qreal*)", "$$$$")]
 		public void GetCmykF(out double c, out double m, out double y, out double k) {
-			ProxyQColor().GetCmykF(out c,out m,out y,out k);
+			((QColor) interceptor).GetCmykF(out c,out m,out y,out k);
 		}
 		[SmokeMethod("setCmykF", "(qreal, qreal, qreal, qreal, qreal)", "$$$$$")]
 		public void SetCmykF(double c, double m, double y, double k, double a) {
-			ProxyQColor().SetCmykF(c,m,y,k,a);
+			((QColor) interceptor).SetCmykF(c,m,y,k,a);
 		}
 		[SmokeMethod("setCmykF", "(qreal, qreal, qreal, qreal)", "$$$$")]
 		public void SetCmykF(double c, double m, double y, double k) {
-			ProxyQColor().SetCmykF(c,m,y,k);
+			((QColor) interceptor).SetCmykF(c,m,y,k);
 		}
 		[SmokeMethod("toRgb", "() const", "")]
 		public QColor ToRgb() {
-			return ProxyQColor().ToRgb();
+			return ((QColor) interceptor).ToRgb();
 		}
 		[SmokeMethod("toHsv", "() const", "")]
 		public QColor ToHsv() {
-			return ProxyQColor().ToHsv();
+			return ((QColor) interceptor).ToHsv();
 		}
 		[SmokeMethod("toCmyk", "() const", "")]
 		public QColor ToCmyk() {
-			return ProxyQColor().ToCmyk();
+			return ((QColor) interceptor).ToCmyk();
 		}
 		[SmokeMethod("convertTo", "(QColor::Spec) const", "$")]
 		public QColor ConvertTo(QColor.Spec colorSpec) {
-			return ProxyQColor().ConvertTo(colorSpec);
+			return ((QColor) interceptor).ConvertTo(colorSpec);
 		}
 		[SmokeMethod("light", "(int) const", "$")]
 		public QColor Light(int f) {
-			return ProxyQColor().Light(f);
+			return ((QColor) interceptor).Light(f);
 		}
 		[SmokeMethod("light", "() const", "")]
 		public QColor Light() {
-			return ProxyQColor().Light();
+			return ((QColor) interceptor).Light();
 		}
 		[SmokeMethod("dark", "(int) const", "$")]
 		public QColor Dark(int f) {
-			return ProxyQColor().Dark(f);
+			return ((QColor) interceptor).Dark(f);
 		}
 		[SmokeMethod("dark", "() const", "")]
 		public QColor Dark() {
-			return ProxyQColor().Dark();
+			return ((QColor) interceptor).Dark();
 		}
 		public override bool Equals(object o) {
 			if (!(o is QColor)) { return false; }
 			return this == (QColor) o;
 		}
 		public override int GetHashCode() {
-			return ProxyQColor().GetHashCode();
+			return ((QColor) interceptor).GetHashCode();
 		}
 		~QColor() {
 			DisposeQColor();
@@ -425,58 +419,58 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QColor", "()", "")]
 		private void DisposeQColor() {
-			ProxyQColor().DisposeQColor();
+			((QColor) interceptor).DisposeQColor();
 		}
 		public static bool operator==(QColor lhs, QColor c) {
-			return StaticQColor().op_equals(lhs,c);
+			return staticInterceptor.op_equals(lhs,c);
 		}
 		public static bool operator!=(QColor lhs, QColor c) {
-			return !StaticQColor().op_equals(lhs,c);
+			return !staticInterceptor.op_equals(lhs,c);
 		}
 		public static List<string> ColorNames() {
-			return StaticQColor().ColorNames();
+			return staticInterceptor.ColorNames();
 		}
 		public static QColor FromRgb(uint rgb) {
-			return StaticQColor().FromRgb(rgb);
+			return staticInterceptor.FromRgb(rgb);
 		}
 		public static QColor FromRgba(uint rgba) {
-			return StaticQColor().FromRgba(rgba);
+			return staticInterceptor.FromRgba(rgba);
 		}
 		public static QColor FromRgb(int r, int g, int b, int a) {
-			return StaticQColor().FromRgb(r,g,b,a);
+			return staticInterceptor.FromRgb(r,g,b,a);
 		}
 		public static QColor FromRgb(int r, int g, int b) {
-			return StaticQColor().FromRgb(r,g,b);
+			return staticInterceptor.FromRgb(r,g,b);
 		}
 		public static QColor FromRgbF(double r, double g, double b, double a) {
-			return StaticQColor().FromRgbF(r,g,b,a);
+			return staticInterceptor.FromRgbF(r,g,b,a);
 		}
 		public static QColor FromRgbF(double r, double g, double b) {
-			return StaticQColor().FromRgbF(r,g,b);
+			return staticInterceptor.FromRgbF(r,g,b);
 		}
 		public static QColor FromHsv(int h, int s, int v, int a) {
-			return StaticQColor().FromHsv(h,s,v,a);
+			return staticInterceptor.FromHsv(h,s,v,a);
 		}
 		public static QColor FromHsv(int h, int s, int v) {
-			return StaticQColor().FromHsv(h,s,v);
+			return staticInterceptor.FromHsv(h,s,v);
 		}
 		public static QColor FromHsvF(double h, double s, double v, double a) {
-			return StaticQColor().FromHsvF(h,s,v,a);
+			return staticInterceptor.FromHsvF(h,s,v,a);
 		}
 		public static QColor FromHsvF(double h, double s, double v) {
-			return StaticQColor().FromHsvF(h,s,v);
+			return staticInterceptor.FromHsvF(h,s,v);
 		}
 		public static QColor FromCmyk(int c, int m, int y, int k, int a) {
-			return StaticQColor().FromCmyk(c,m,y,k,a);
+			return staticInterceptor.FromCmyk(c,m,y,k,a);
 		}
 		public static QColor FromCmyk(int c, int m, int y, int k) {
-			return StaticQColor().FromCmyk(c,m,y,k);
+			return staticInterceptor.FromCmyk(c,m,y,k);
 		}
 		public static QColor FromCmykF(double c, double m, double y, double k, double a) {
-			return StaticQColor().FromCmykF(c,m,y,k,a);
+			return staticInterceptor.FromCmykF(c,m,y,k,a);
 		}
 		public static QColor FromCmykF(double c, double m, double y, double k) {
-			return StaticQColor().FromCmykF(c,m,y,k);
+			return staticInterceptor.FromCmykF(c,m,y,k);
 		}
 	}
 }

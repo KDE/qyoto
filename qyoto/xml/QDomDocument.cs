@@ -9,10 +9,7 @@ namespace Qyoto {
  		protected QDomDocument(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomDocument), this);
-			_interceptor = (QDomDocument) realProxy.GetTransparentProxy();
-		}
-		private QDomDocument ProxyQDomDocument() {
-			return (QDomDocument) _interceptor;
+			interceptor = (QDomDocument) realProxy.GetTransparentProxy();
 		}
 		public QDomDocument() : this((Type) null) {
 			CreateProxy();
@@ -20,7 +17,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDomDocument", "()", "")]
 		private void NewQDomDocument() {
-			ProxyQDomDocument().NewQDomDocument();
+			((QDomDocument) interceptor).NewQDomDocument();
 		}
 		public QDomDocument(string name) : this((Type) null) {
 			CreateProxy();
@@ -28,7 +25,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDomDocument", "(const QString&)", "$")]
 		private void NewQDomDocument(string name) {
-			ProxyQDomDocument().NewQDomDocument(name);
+			((QDomDocument) interceptor).NewQDomDocument(name);
 		}
 		public QDomDocument(QDomDocumentType doctype) : this((Type) null) {
 			CreateProxy();
@@ -36,7 +33,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDomDocument", "(const QDomDocumentType&)", "#")]
 		private void NewQDomDocument(QDomDocumentType doctype) {
-			ProxyQDomDocument().NewQDomDocument(doctype);
+			((QDomDocument) interceptor).NewQDomDocument(doctype);
 		}
 		public QDomDocument(QDomDocument x) : this((Type) null) {
 			CreateProxy();
@@ -44,207 +41,207 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDomDocument", "(const QDomDocument&)", "#")]
 		private void NewQDomDocument(QDomDocument x) {
-			ProxyQDomDocument().NewQDomDocument(x);
+			((QDomDocument) interceptor).NewQDomDocument(x);
 		}
 		[SmokeMethod("createElement", "(const QString&)", "$")]
 		public QDomElement CreateElement(string tagName) {
-			return ProxyQDomDocument().CreateElement(tagName);
+			return ((QDomDocument) interceptor).CreateElement(tagName);
 		}
 		[SmokeMethod("createDocumentFragment", "()", "")]
 		public QDomDocumentFragment CreateDocumentFragment() {
-			return ProxyQDomDocument().CreateDocumentFragment();
+			return ((QDomDocument) interceptor).CreateDocumentFragment();
 		}
 		[SmokeMethod("createTextNode", "(const QString&)", "$")]
 		public QDomText CreateTextNode(string data) {
-			return ProxyQDomDocument().CreateTextNode(data);
+			return ((QDomDocument) interceptor).CreateTextNode(data);
 		}
 		[SmokeMethod("createComment", "(const QString&)", "$")]
 		public QDomComment CreateComment(string data) {
-			return ProxyQDomDocument().CreateComment(data);
+			return ((QDomDocument) interceptor).CreateComment(data);
 		}
 		[SmokeMethod("createCDATASection", "(const QString&)", "$")]
 		public QDomCDATASection CreateCDATASection(string data) {
-			return ProxyQDomDocument().CreateCDATASection(data);
+			return ((QDomDocument) interceptor).CreateCDATASection(data);
 		}
 		[SmokeMethod("createProcessingInstruction", "(const QString&, const QString&)", "$$")]
 		public QDomProcessingInstruction CreateProcessingInstruction(string target, string data) {
-			return ProxyQDomDocument().CreateProcessingInstruction(target,data);
+			return ((QDomDocument) interceptor).CreateProcessingInstruction(target,data);
 		}
 		[SmokeMethod("createAttribute", "(const QString&)", "$")]
 		public QDomAttr CreateAttribute(string name) {
-			return ProxyQDomDocument().CreateAttribute(name);
+			return ((QDomDocument) interceptor).CreateAttribute(name);
 		}
 		[SmokeMethod("createEntityReference", "(const QString&)", "$")]
 		public QDomEntityReference CreateEntityReference(string name) {
-			return ProxyQDomDocument().CreateEntityReference(name);
+			return ((QDomDocument) interceptor).CreateEntityReference(name);
 		}
 		[SmokeMethod("elementsByTagName", "(const QString&) const", "$")]
 		public QDomNodeList ElementsByTagName(string tagname) {
-			return ProxyQDomDocument().ElementsByTagName(tagname);
+			return ((QDomDocument) interceptor).ElementsByTagName(tagname);
 		}
 		[SmokeMethod("importNode", "(const QDomNode&, bool)", "#$")]
 		public QDomNode ImportNode(QDomNode importedNode, bool deep) {
-			return ProxyQDomDocument().ImportNode(importedNode,deep);
+			return ((QDomDocument) interceptor).ImportNode(importedNode,deep);
 		}
 		[SmokeMethod("createElementNS", "(const QString&, const QString&)", "$$")]
 		public QDomElement CreateElementNS(string nsURI, string qName) {
-			return ProxyQDomDocument().CreateElementNS(nsURI,qName);
+			return ((QDomDocument) interceptor).CreateElementNS(nsURI,qName);
 		}
 		[SmokeMethod("createAttributeNS", "(const QString&, const QString&)", "$$")]
 		public QDomAttr CreateAttributeNS(string nsURI, string qName) {
-			return ProxyQDomDocument().CreateAttributeNS(nsURI,qName);
+			return ((QDomDocument) interceptor).CreateAttributeNS(nsURI,qName);
 		}
 		[SmokeMethod("elementsByTagNameNS", "(const QString&, const QString&)", "$$")]
 		public QDomNodeList ElementsByTagNameNS(string nsURI, string localName) {
-			return ProxyQDomDocument().ElementsByTagNameNS(nsURI,localName);
+			return ((QDomDocument) interceptor).ElementsByTagNameNS(nsURI,localName);
 		}
 		[SmokeMethod("elementById", "(const QString&)", "$")]
 		public QDomElement ElementById(string elementId) {
-			return ProxyQDomDocument().ElementById(elementId);
+			return ((QDomDocument) interceptor).ElementById(elementId);
 		}
 		[SmokeMethod("doctype", "() const", "")]
 		public QDomDocumentType Doctype() {
-			return ProxyQDomDocument().Doctype();
+			return ((QDomDocument) interceptor).Doctype();
 		}
 		[SmokeMethod("implementation", "() const", "")]
 		public QDomImplementation Implementation() {
-			return ProxyQDomDocument().Implementation();
+			return ((QDomDocument) interceptor).Implementation();
 		}
 		[SmokeMethod("documentElement", "() const", "")]
 		public QDomElement DocumentElement() {
-			return ProxyQDomDocument().DocumentElement();
+			return ((QDomDocument) interceptor).DocumentElement();
 		}
 		[SmokeMethod("nodeType", "() const", "")]
 		public QDomNode.NodeType NodeType() {
-			return ProxyQDomDocument().NodeType();
+			return ((QDomDocument) interceptor).NodeType();
 		}
 		[SmokeMethod("setContent", "(const QByteArray&, bool, QString*, int*, int*)", "#$$$$")]
 		public bool SetContent(QByteArray text, bool namespaceProcessing, StringBuilder errorMsg, out int errorLine, out int errorColumn) {
-			return ProxyQDomDocument().SetContent(text,namespaceProcessing,errorMsg,out errorLine,out errorColumn);
+			return ((QDomDocument) interceptor).SetContent(text,namespaceProcessing,errorMsg,out errorLine,out errorColumn);
 		}
 		[SmokeMethod("setContent", "(const QByteArray&, bool, QString*, int*)", "#$$$")]
 		public bool SetContent(QByteArray text, bool namespaceProcessing, StringBuilder errorMsg, out int errorLine) {
-			return ProxyQDomDocument().SetContent(text,namespaceProcessing,errorMsg,out errorLine);
+			return ((QDomDocument) interceptor).SetContent(text,namespaceProcessing,errorMsg,out errorLine);
 		}
 		[SmokeMethod("setContent", "(const QByteArray&, bool, QString*)", "#$$")]
 		public bool SetContent(QByteArray text, bool namespaceProcessing, StringBuilder errorMsg) {
-			return ProxyQDomDocument().SetContent(text,namespaceProcessing,errorMsg);
+			return ((QDomDocument) interceptor).SetContent(text,namespaceProcessing,errorMsg);
 		}
 		[SmokeMethod("setContent", "(const QByteArray&, bool)", "#$")]
 		public bool SetContent(QByteArray text, bool namespaceProcessing) {
-			return ProxyQDomDocument().SetContent(text,namespaceProcessing);
+			return ((QDomDocument) interceptor).SetContent(text,namespaceProcessing);
 		}
 		[SmokeMethod("setContent", "(const QString&, bool, QString*, int*, int*)", "$$$$$")]
 		public bool SetContent(string text, bool namespaceProcessing, StringBuilder errorMsg, out int errorLine, out int errorColumn) {
-			return ProxyQDomDocument().SetContent(text,namespaceProcessing,errorMsg,out errorLine,out errorColumn);
+			return ((QDomDocument) interceptor).SetContent(text,namespaceProcessing,errorMsg,out errorLine,out errorColumn);
 		}
 		[SmokeMethod("setContent", "(const QString&, bool, QString*, int*)", "$$$$")]
 		public bool SetContent(string text, bool namespaceProcessing, StringBuilder errorMsg, out int errorLine) {
-			return ProxyQDomDocument().SetContent(text,namespaceProcessing,errorMsg,out errorLine);
+			return ((QDomDocument) interceptor).SetContent(text,namespaceProcessing,errorMsg,out errorLine);
 		}
 		[SmokeMethod("setContent", "(const QString&, bool, QString*)", "$$$")]
 		public bool SetContent(string text, bool namespaceProcessing, StringBuilder errorMsg) {
-			return ProxyQDomDocument().SetContent(text,namespaceProcessing,errorMsg);
+			return ((QDomDocument) interceptor).SetContent(text,namespaceProcessing,errorMsg);
 		}
 		[SmokeMethod("setContent", "(const QString&, bool)", "$$")]
 		public bool SetContent(string text, bool namespaceProcessing) {
-			return ProxyQDomDocument().SetContent(text,namespaceProcessing);
+			return ((QDomDocument) interceptor).SetContent(text,namespaceProcessing);
 		}
 		[SmokeMethod("setContent", "(QIODevice*, bool, QString*, int*, int*)", "#$$$$")]
 		public bool SetContent(QIODevice dev, bool namespaceProcessing, StringBuilder errorMsg, out int errorLine, out int errorColumn) {
-			return ProxyQDomDocument().SetContent(dev,namespaceProcessing,errorMsg,out errorLine,out errorColumn);
+			return ((QDomDocument) interceptor).SetContent(dev,namespaceProcessing,errorMsg,out errorLine,out errorColumn);
 		}
 		[SmokeMethod("setContent", "(QIODevice*, bool, QString*, int*)", "#$$$")]
 		public bool SetContent(QIODevice dev, bool namespaceProcessing, StringBuilder errorMsg, out int errorLine) {
-			return ProxyQDomDocument().SetContent(dev,namespaceProcessing,errorMsg,out errorLine);
+			return ((QDomDocument) interceptor).SetContent(dev,namespaceProcessing,errorMsg,out errorLine);
 		}
 		[SmokeMethod("setContent", "(QIODevice*, bool, QString*)", "#$$")]
 		public bool SetContent(QIODevice dev, bool namespaceProcessing, StringBuilder errorMsg) {
-			return ProxyQDomDocument().SetContent(dev,namespaceProcessing,errorMsg);
+			return ((QDomDocument) interceptor).SetContent(dev,namespaceProcessing,errorMsg);
 		}
 		[SmokeMethod("setContent", "(QIODevice*, bool)", "#$")]
 		public bool SetContent(QIODevice dev, bool namespaceProcessing) {
-			return ProxyQDomDocument().SetContent(dev,namespaceProcessing);
+			return ((QDomDocument) interceptor).SetContent(dev,namespaceProcessing);
 		}
 		[SmokeMethod("setContent", "(const QByteArray&, QString*, int*, int*)", "#$$$")]
 		public bool SetContent(QByteArray text, StringBuilder errorMsg, out int errorLine, out int errorColumn) {
-			return ProxyQDomDocument().SetContent(text,errorMsg,out errorLine,out errorColumn);
+			return ((QDomDocument) interceptor).SetContent(text,errorMsg,out errorLine,out errorColumn);
 		}
 		[SmokeMethod("setContent", "(const QByteArray&, QString*, int*)", "#$$")]
 		public bool SetContent(QByteArray text, StringBuilder errorMsg, out int errorLine) {
-			return ProxyQDomDocument().SetContent(text,errorMsg,out errorLine);
+			return ((QDomDocument) interceptor).SetContent(text,errorMsg,out errorLine);
 		}
 		[SmokeMethod("setContent", "(const QByteArray&, QString*)", "#$")]
 		public bool SetContent(QByteArray text, StringBuilder errorMsg) {
-			return ProxyQDomDocument().SetContent(text,errorMsg);
+			return ((QDomDocument) interceptor).SetContent(text,errorMsg);
 		}
 		[SmokeMethod("setContent", "(const QByteArray&)", "#")]
 		public bool SetContent(QByteArray text) {
-			return ProxyQDomDocument().SetContent(text);
+			return ((QDomDocument) interceptor).SetContent(text);
 		}
 		[SmokeMethod("setContent", "(const QString&, QString*, int*, int*)", "$$$$")]
 		public bool SetContent(string text, StringBuilder errorMsg, out int errorLine, out int errorColumn) {
-			return ProxyQDomDocument().SetContent(text,errorMsg,out errorLine,out errorColumn);
+			return ((QDomDocument) interceptor).SetContent(text,errorMsg,out errorLine,out errorColumn);
 		}
 		[SmokeMethod("setContent", "(const QString&, QString*, int*)", "$$$")]
 		public bool SetContent(string text, StringBuilder errorMsg, out int errorLine) {
-			return ProxyQDomDocument().SetContent(text,errorMsg,out errorLine);
+			return ((QDomDocument) interceptor).SetContent(text,errorMsg,out errorLine);
 		}
 		[SmokeMethod("setContent", "(const QString&, QString*)", "$$")]
 		public bool SetContent(string text, StringBuilder errorMsg) {
-			return ProxyQDomDocument().SetContent(text,errorMsg);
+			return ((QDomDocument) interceptor).SetContent(text,errorMsg);
 		}
 		[SmokeMethod("setContent", "(const QString&)", "$")]
 		public bool SetContent(string text) {
-			return ProxyQDomDocument().SetContent(text);
+			return ((QDomDocument) interceptor).SetContent(text);
 		}
 		[SmokeMethod("setContent", "(QIODevice*, QString*, int*, int*)", "#$$$")]
 		public bool SetContent(QIODevice dev, StringBuilder errorMsg, out int errorLine, out int errorColumn) {
-			return ProxyQDomDocument().SetContent(dev,errorMsg,out errorLine,out errorColumn);
+			return ((QDomDocument) interceptor).SetContent(dev,errorMsg,out errorLine,out errorColumn);
 		}
 		[SmokeMethod("setContent", "(QIODevice*, QString*, int*)", "#$$")]
 		public bool SetContent(QIODevice dev, StringBuilder errorMsg, out int errorLine) {
-			return ProxyQDomDocument().SetContent(dev,errorMsg,out errorLine);
+			return ((QDomDocument) interceptor).SetContent(dev,errorMsg,out errorLine);
 		}
 		[SmokeMethod("setContent", "(QIODevice*, QString*)", "#$")]
 		public bool SetContent(QIODevice dev, StringBuilder errorMsg) {
-			return ProxyQDomDocument().SetContent(dev,errorMsg);
+			return ((QDomDocument) interceptor).SetContent(dev,errorMsg);
 		}
 		[SmokeMethod("setContent", "(QIODevice*)", "#")]
 		public bool SetContent(QIODevice dev) {
-			return ProxyQDomDocument().SetContent(dev);
+			return ((QDomDocument) interceptor).SetContent(dev);
 		}
 		[SmokeMethod("setContent", "(QXmlInputSource*, QXmlReader*, QString*, int*, int*)", "##$$$")]
 		public bool SetContent(QXmlInputSource source, QXmlReader reader, StringBuilder errorMsg, out int errorLine, out int errorColumn) {
-			return ProxyQDomDocument().SetContent(source,reader,errorMsg,out errorLine,out errorColumn);
+			return ((QDomDocument) interceptor).SetContent(source,reader,errorMsg,out errorLine,out errorColumn);
 		}
 		[SmokeMethod("setContent", "(QXmlInputSource*, QXmlReader*, QString*, int*)", "##$$")]
 		public bool SetContent(QXmlInputSource source, QXmlReader reader, StringBuilder errorMsg, out int errorLine) {
-			return ProxyQDomDocument().SetContent(source,reader,errorMsg,out errorLine);
+			return ((QDomDocument) interceptor).SetContent(source,reader,errorMsg,out errorLine);
 		}
 		[SmokeMethod("setContent", "(QXmlInputSource*, QXmlReader*, QString*)", "##$")]
 		public bool SetContent(QXmlInputSource source, QXmlReader reader, StringBuilder errorMsg) {
-			return ProxyQDomDocument().SetContent(source,reader,errorMsg);
+			return ((QDomDocument) interceptor).SetContent(source,reader,errorMsg);
 		}
 		[SmokeMethod("setContent", "(QXmlInputSource*, QXmlReader*)", "##")]
 		public bool SetContent(QXmlInputSource source, QXmlReader reader) {
-			return ProxyQDomDocument().SetContent(source,reader);
+			return ((QDomDocument) interceptor).SetContent(source,reader);
 		}
 		[SmokeMethod("toString", "(int) const", "$")]
 		public string ToString(int arg1) {
-			return ProxyQDomDocument().ToString(arg1);
+			return ((QDomDocument) interceptor).ToString(arg1);
 		}
 		[SmokeMethod("toString", "() const", "")]
 		public string ToString() {
-			return ProxyQDomDocument().ToString();
+			return ((QDomDocument) interceptor).ToString();
 		}
 		[SmokeMethod("toByteArray", "(int) const", "$")]
 		public QByteArray ToByteArray(int arg1) {
-			return ProxyQDomDocument().ToByteArray(arg1);
+			return ((QDomDocument) interceptor).ToByteArray(arg1);
 		}
 		[SmokeMethod("toByteArray", "() const", "")]
 		public QByteArray ToByteArray() {
-			return ProxyQDomDocument().ToByteArray();
+			return ((QDomDocument) interceptor).ToByteArray();
 		}
 		~QDomDocument() {
 			DisposeQDomDocument();
@@ -254,7 +251,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QDomDocument", "()", "")]
 		private void DisposeQDomDocument() {
-			ProxyQDomDocument().DisposeQDomDocument();
+			((QDomDocument) interceptor).DisposeQDomDocument();
 		}
 	}
 }

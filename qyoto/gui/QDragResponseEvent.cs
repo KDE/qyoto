@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QDragResponseEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDragResponseEvent), this);
-			_interceptor = (QDragResponseEvent) realProxy.GetTransparentProxy();
-		}
-		private QDragResponseEvent ProxyQDragResponseEvent() {
-			return (QDragResponseEvent) _interceptor;
+			interceptor = (QDragResponseEvent) realProxy.GetTransparentProxy();
 		}
 		public QDragResponseEvent(bool accepted) : this((Type) null) {
 			CreateProxy();
@@ -19,11 +16,11 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDragResponseEvent", "(bool)", "$")]
 		private void NewQDragResponseEvent(bool accepted) {
-			ProxyQDragResponseEvent().NewQDragResponseEvent(accepted);
+			((QDragResponseEvent) interceptor).NewQDragResponseEvent(accepted);
 		}
 		[SmokeMethod("dragAccepted", "() const", "")]
 		public bool DragAccepted() {
-			return ProxyQDragResponseEvent().DragAccepted();
+			return ((QDragResponseEvent) interceptor).DragAccepted();
 		}
 		~QDragResponseEvent() {
 			DisposeQDragResponseEvent();
@@ -33,7 +30,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QDragResponseEvent", "()", "")]
 		private void DisposeQDragResponseEvent() {
-			ProxyQDragResponseEvent().DisposeQDragResponseEvent();
+			((QDragResponseEvent) interceptor).DisposeQDragResponseEvent();
 		}
 	}
 }

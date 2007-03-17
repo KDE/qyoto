@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QStyleOptionSpinBox(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionSpinBox), this);
-			_interceptor = (QStyleOptionSpinBox) realProxy.GetTransparentProxy();
-		}
-		private QStyleOptionSpinBox ProxyQStyleOptionSpinBox() {
-			return (QStyleOptionSpinBox) _interceptor;
+			interceptor = (QStyleOptionSpinBox) realProxy.GetTransparentProxy();
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_SpinBox,
@@ -25,7 +22,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionSpinBox", "()", "")]
 		private void NewQStyleOptionSpinBox() {
-			ProxyQStyleOptionSpinBox().NewQStyleOptionSpinBox();
+			((QStyleOptionSpinBox) interceptor).NewQStyleOptionSpinBox();
 		}
 		public QStyleOptionSpinBox(QStyleOptionSpinBox other) : this((Type) null) {
 			CreateProxy();
@@ -33,7 +30,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionSpinBox", "(const QStyleOptionSpinBox&)", "#")]
 		private void NewQStyleOptionSpinBox(QStyleOptionSpinBox other) {
-			ProxyQStyleOptionSpinBox().NewQStyleOptionSpinBox(other);
+			((QStyleOptionSpinBox) interceptor).NewQStyleOptionSpinBox(other);
 		}
 		public QStyleOptionSpinBox(int version) : this((Type) null) {
 			CreateProxy();
@@ -41,7 +38,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionSpinBox", "(int)", "$")]
 		private void NewQStyleOptionSpinBox(int version) {
-			ProxyQStyleOptionSpinBox().NewQStyleOptionSpinBox(version);
+			((QStyleOptionSpinBox) interceptor).NewQStyleOptionSpinBox(version);
 		}
 		~QStyleOptionSpinBox() {
 			DisposeQStyleOptionSpinBox();
@@ -51,7 +48,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QStyleOptionSpinBox", "()", "")]
 		private void DisposeQStyleOptionSpinBox() {
-			ProxyQStyleOptionSpinBox().DisposeQStyleOptionSpinBox();
+			((QStyleOptionSpinBox) interceptor).DisposeQStyleOptionSpinBox();
 		}
 	}
 }

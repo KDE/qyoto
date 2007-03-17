@@ -4,23 +4,20 @@ namespace Qyoto {
 	using System;
 
 	public interface IQXmlErrorHandler {
-			bool Warning(QXmlParseException exception);
-			bool Error(QXmlParseException exception);
-			bool FatalError(QXmlParseException exception);
-			string ErrorString();
+		bool Warning(QXmlParseException exception);
+		bool Error(QXmlParseException exception);
+		bool FatalError(QXmlParseException exception);
+		string ErrorString();
 	}
 
 	[SmokeClass("QXmlErrorHandler")]
 	public abstract class QXmlErrorHandler : MarshalByRefObject, IQXmlErrorHandler {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QXmlErrorHandler interceptor = null;
+		private IntPtr smokeObject;
 		protected QXmlErrorHandler(Type dummy) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlErrorHandler), this);
-			_interceptor = (QXmlErrorHandler) realProxy.GetTransparentProxy();
-		}
-		private QXmlErrorHandler ProxyQXmlErrorHandler() {
-			return (QXmlErrorHandler) _interceptor;
+			interceptor = (QXmlErrorHandler) realProxy.GetTransparentProxy();
 		}
 		[SmokeMethod("warning", "(const QXmlParseException&)", "#")]
 		public abstract bool Warning(QXmlParseException exception);
@@ -36,7 +33,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QXmlErrorHandler", "()", "")]
 		private void NewQXmlErrorHandler() {
-			ProxyQXmlErrorHandler().NewQXmlErrorHandler();
+			((QXmlErrorHandler) interceptor).NewQXmlErrorHandler();
 		}
 	}
 }

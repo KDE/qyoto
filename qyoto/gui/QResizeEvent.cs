@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QResizeEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QResizeEvent), this);
-			_interceptor = (QResizeEvent) realProxy.GetTransparentProxy();
-		}
-		private QResizeEvent ProxyQResizeEvent() {
-			return (QResizeEvent) _interceptor;
+			interceptor = (QResizeEvent) realProxy.GetTransparentProxy();
 		}
 		public QResizeEvent(QSize size, QSize oldSize) : this((Type) null) {
 			CreateProxy();
@@ -19,15 +16,15 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QResizeEvent", "(const QSize&, const QSize&)", "##")]
 		private void NewQResizeEvent(QSize size, QSize oldSize) {
-			ProxyQResizeEvent().NewQResizeEvent(size,oldSize);
+			((QResizeEvent) interceptor).NewQResizeEvent(size,oldSize);
 		}
 		[SmokeMethod("size", "() const", "")]
 		public QSize Size() {
-			return ProxyQResizeEvent().Size();
+			return ((QResizeEvent) interceptor).Size();
 		}
 		[SmokeMethod("oldSize", "() const", "")]
 		public QSize OldSize() {
-			return ProxyQResizeEvent().OldSize();
+			return ((QResizeEvent) interceptor).OldSize();
 		}
 		~QResizeEvent() {
 			DisposeQResizeEvent();
@@ -37,7 +34,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QResizeEvent", "()", "")]
 		private void DisposeQResizeEvent() {
-			ProxyQResizeEvent().DisposeQResizeEvent();
+			((QResizeEvent) interceptor).DisposeQResizeEvent();
 		}
 	}
 }

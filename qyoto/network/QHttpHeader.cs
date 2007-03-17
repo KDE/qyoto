@@ -6,15 +6,12 @@ namespace Qyoto {
 
 	[SmokeClass("QHttpHeader")]
 	public abstract class QHttpHeader : MarshalByRefObject {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QHttpHeader interceptor = null;
+		private IntPtr smokeObject;
 		protected QHttpHeader(Type dummy) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QHttpHeader), this);
-			_interceptor = (QHttpHeader) realProxy.GetTransparentProxy();
-		}
-		private QHttpHeader ProxyQHttpHeader() {
-			return (QHttpHeader) _interceptor;
+			interceptor = (QHttpHeader) realProxy.GetTransparentProxy();
 		}
 		public QHttpHeader() : this((Type) null) {
 			CreateProxy();
@@ -22,7 +19,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QHttpHeader", "()", "")]
 		private void NewQHttpHeader() {
-			ProxyQHttpHeader().NewQHttpHeader();
+			((QHttpHeader) interceptor).NewQHttpHeader();
 		}
 		public QHttpHeader(QHttpHeader header) : this((Type) null) {
 			CreateProxy();
@@ -30,7 +27,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QHttpHeader", "(const QHttpHeader&)", "#")]
 		private void NewQHttpHeader(QHttpHeader header) {
-			ProxyQHttpHeader().NewQHttpHeader(header);
+			((QHttpHeader) interceptor).NewQHttpHeader(header);
 		}
 		public QHttpHeader(string str) : this((Type) null) {
 			CreateProxy();
@@ -38,79 +35,79 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QHttpHeader", "(const QString&)", "$")]
 		private void NewQHttpHeader(string str) {
-			ProxyQHttpHeader().NewQHttpHeader(str);
+			((QHttpHeader) interceptor).NewQHttpHeader(str);
 		}
 		[SmokeMethod("setValue", "(const QString&, const QString&)", "$$")]
 		public void SetValue(string key, string value) {
-			ProxyQHttpHeader().SetValue(key,value);
+			((QHttpHeader) interceptor).SetValue(key,value);
 		}
 		[SmokeMethod("setValues", "(const QList<QPair<QString, QString> >&)", "?")]
 		public void SetValues(List<QPair<string, string>> values) {
-			ProxyQHttpHeader().SetValues(values);
+			((QHttpHeader) interceptor).SetValues(values);
 		}
 		[SmokeMethod("addValue", "(const QString&, const QString&)", "$$")]
 		public void AddValue(string key, string value) {
-			ProxyQHttpHeader().AddValue(key,value);
+			((QHttpHeader) interceptor).AddValue(key,value);
 		}
 		[SmokeMethod("values", "() const", "")]
 		public List<QPair<string, string>> Values() {
-			return ProxyQHttpHeader().Values();
+			return ((QHttpHeader) interceptor).Values();
 		}
 		[SmokeMethod("hasKey", "(const QString&) const", "$")]
 		public bool HasKey(string key) {
-			return ProxyQHttpHeader().HasKey(key);
+			return ((QHttpHeader) interceptor).HasKey(key);
 		}
 		[SmokeMethod("keys", "() const", "")]
 		public List<string> Keys() {
-			return ProxyQHttpHeader().Keys();
+			return ((QHttpHeader) interceptor).Keys();
 		}
 		[SmokeMethod("value", "(const QString&) const", "$")]
 		public string Value(string key) {
-			return ProxyQHttpHeader().Value(key);
+			return ((QHttpHeader) interceptor).Value(key);
 		}
 		[SmokeMethod("allValues", "(const QString&) const", "$")]
 		public List<string> AllValues(string key) {
-			return ProxyQHttpHeader().AllValues(key);
+			return ((QHttpHeader) interceptor).AllValues(key);
 		}
 		[SmokeMethod("removeValue", "(const QString&)", "$")]
 		public void RemoveValue(string key) {
-			ProxyQHttpHeader().RemoveValue(key);
+			((QHttpHeader) interceptor).RemoveValue(key);
 		}
 		[SmokeMethod("removeAllValues", "(const QString&)", "$")]
 		public void RemoveAllValues(string key) {
-			ProxyQHttpHeader().RemoveAllValues(key);
+			((QHttpHeader) interceptor).RemoveAllValues(key);
 		}
 		[SmokeMethod("hasContentLength", "() const", "")]
 		public bool HasContentLength() {
-			return ProxyQHttpHeader().HasContentLength();
+			return ((QHttpHeader) interceptor).HasContentLength();
 		}
 		[SmokeMethod("contentLength", "() const", "")]
 		public uint ContentLength() {
-			return ProxyQHttpHeader().ContentLength();
+			return ((QHttpHeader) interceptor).ContentLength();
 		}
 		[SmokeMethod("setContentLength", "(int)", "$")]
 		public void SetContentLength(int len) {
-			ProxyQHttpHeader().SetContentLength(len);
+			((QHttpHeader) interceptor).SetContentLength(len);
 		}
 		[SmokeMethod("hasContentType", "() const", "")]
 		public bool HasContentType() {
-			return ProxyQHttpHeader().HasContentType();
+			return ((QHttpHeader) interceptor).HasContentType();
 		}
 		[SmokeMethod("contentType", "() const", "")]
 		public string ContentType() {
-			return ProxyQHttpHeader().ContentType();
+			return ((QHttpHeader) interceptor).ContentType();
 		}
 		[SmokeMethod("setContentType", "(const QString&)", "$")]
 		public void SetContentType(string type) {
-			ProxyQHttpHeader().SetContentType(type);
+			((QHttpHeader) interceptor).SetContentType(type);
 		}
 		[SmokeMethod("toString", "() const", "")]
 		public virtual string ToString() {
-			return ProxyQHttpHeader().ToString();
+			return ((QHttpHeader) interceptor).ToString();
 		}
 		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ProxyQHttpHeader().IsValid();
+			return ((QHttpHeader) interceptor).IsValid();
 		}
 		[SmokeMethod("majorVersion", "() const", "")]
 		public abstract int MajorVersion();
@@ -118,15 +115,15 @@ namespace Qyoto {
 		public abstract int MinorVersion();
 		[SmokeMethod("parseLine", "(const QString&, int)", "$$")]
 		protected virtual bool ParseLine(string line, int number) {
-			return ProxyQHttpHeader().ParseLine(line,number);
+			return ((QHttpHeader) interceptor).ParseLine(line,number);
 		}
 		[SmokeMethod("parse", "(const QString&)", "$")]
 		protected bool Parse(string str) {
-			return ProxyQHttpHeader().Parse(str);
+			return ((QHttpHeader) interceptor).Parse(str);
 		}
 		[SmokeMethod("setValid", "(bool)", "$")]
 		protected void SetValid(bool arg1) {
-			ProxyQHttpHeader().SetValid(arg1);
+			((QHttpHeader) interceptor).SetValid(arg1);
 		}
 	}
 }

@@ -6,8 +6,8 @@ namespace Qyoto {
 
 	[SmokeClass("QKeySequence")]
 	public class QKeySequence : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QKeySequence interceptor = null;
+		private IntPtr smokeObject;
 		protected QKeySequence(Type dummy) {}
 		[SmokeClass("QKeySequence")]
 		interface IQKeySequenceProxy {
@@ -32,18 +32,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QKeySequence), this);
-			_interceptor = (QKeySequence) realProxy.GetTransparentProxy();
+			interceptor = (QKeySequence) realProxy.GetTransparentProxy();
 		}
-		private QKeySequence ProxyQKeySequence() {
-			return (QKeySequence) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQKeySequenceProxy staticInterceptor = null;
 		static QKeySequence() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQKeySequenceProxy), null);
-			_staticInterceptor = (IQKeySequenceProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQKeySequenceProxy StaticQKeySequence() {
-			return (IQKeySequenceProxy) _staticInterceptor;
+			staticInterceptor = (IQKeySequenceProxy) realProxy.GetTransparentProxy();
 		}
 		public enum StandardKey {
 			UnknownKey = 0,
@@ -126,7 +120,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QKeySequence", "()", "")]
 		private void NewQKeySequence() {
-			ProxyQKeySequence().NewQKeySequence();
+			((QKeySequence) interceptor).NewQKeySequence();
 		}
 		public QKeySequence(string key) : this((Type) null) {
 			CreateProxy();
@@ -134,7 +128,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QKeySequence", "(const QString&)", "$")]
 		private void NewQKeySequence(string key) {
-			ProxyQKeySequence().NewQKeySequence(key);
+			((QKeySequence) interceptor).NewQKeySequence(key);
 		}
 		public QKeySequence(int k1, int k2, int k3, int k4) : this((Type) null) {
 			CreateProxy();
@@ -142,7 +136,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QKeySequence", "(int, int, int, int)", "$$$$")]
 		private void NewQKeySequence(int k1, int k2, int k3, int k4) {
-			ProxyQKeySequence().NewQKeySequence(k1,k2,k3,k4);
+			((QKeySequence) interceptor).NewQKeySequence(k1,k2,k3,k4);
 		}
 		public QKeySequence(int k1, int k2, int k3) : this((Type) null) {
 			CreateProxy();
@@ -150,7 +144,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QKeySequence", "(int, int, int)", "$$$")]
 		private void NewQKeySequence(int k1, int k2, int k3) {
-			ProxyQKeySequence().NewQKeySequence(k1,k2,k3);
+			((QKeySequence) interceptor).NewQKeySequence(k1,k2,k3);
 		}
 		public QKeySequence(int k1, int k2) : this((Type) null) {
 			CreateProxy();
@@ -158,7 +152,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QKeySequence", "(int, int)", "$$")]
 		private void NewQKeySequence(int k1, int k2) {
-			ProxyQKeySequence().NewQKeySequence(k1,k2);
+			((QKeySequence) interceptor).NewQKeySequence(k1,k2);
 		}
 		public QKeySequence(int k1) : this((Type) null) {
 			CreateProxy();
@@ -166,7 +160,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QKeySequence", "(int)", "$")]
 		private void NewQKeySequence(int k1) {
-			ProxyQKeySequence().NewQKeySequence(k1);
+			((QKeySequence) interceptor).NewQKeySequence(k1);
 		}
 		public QKeySequence(QKeySequence ks) : this((Type) null) {
 			CreateProxy();
@@ -174,7 +168,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QKeySequence", "(const QKeySequence&)", "#")]
 		private void NewQKeySequence(QKeySequence ks) {
-			ProxyQKeySequence().NewQKeySequence(ks);
+			((QKeySequence) interceptor).NewQKeySequence(ks);
 		}
 		public QKeySequence(QKeySequence.StandardKey key) : this((Type) null) {
 			CreateProxy();
@@ -182,38 +176,38 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QKeySequence", "(QKeySequence::StandardKey)", "$")]
 		private void NewQKeySequence(QKeySequence.StandardKey key) {
-			ProxyQKeySequence().NewQKeySequence(key);
+			((QKeySequence) interceptor).NewQKeySequence(key);
 		}
 		[SmokeMethod("count", "() const", "")]
 		public uint Count() {
-			return ProxyQKeySequence().Count();
+			return ((QKeySequence) interceptor).Count();
 		}
 		[SmokeMethod("isEmpty", "() const", "")]
 		public bool IsEmpty() {
-			return ProxyQKeySequence().IsEmpty();
+			return ((QKeySequence) interceptor).IsEmpty();
 		}
 		[SmokeMethod("toString", "(QKeySequence::SequenceFormat) const", "$")]
 		public string ToString(QKeySequence.SequenceFormat format) {
-			return ProxyQKeySequence().ToString(format);
+			return ((QKeySequence) interceptor).ToString(format);
 		}
 		[SmokeMethod("toString", "() const", "")]
 		public string ToString() {
-			return ProxyQKeySequence().ToString();
+			return ((QKeySequence) interceptor).ToString();
 		}
 		[SmokeMethod("matches", "(const QKeySequence&) const", "#")]
 		public QKeySequence.SequenceMatch Matches(QKeySequence seq) {
-			return ProxyQKeySequence().Matches(seq);
+			return ((QKeySequence) interceptor).Matches(seq);
 		}
 		public override bool Equals(object o) {
 			if (!(o is QKeySequence)) { return false; }
 			return this == (QKeySequence) o;
 		}
 		public override int GetHashCode() {
-			return ProxyQKeySequence().GetHashCode();
+			return ((QKeySequence) interceptor).GetHashCode();
 		}
 		[SmokeMethod("isDetached", "() const", "")]
 		public bool IsDetached() {
-			return ProxyQKeySequence().IsDetached();
+			return ((QKeySequence) interceptor).IsDetached();
 		}
 		~QKeySequence() {
 			DisposeQKeySequence();
@@ -223,37 +217,37 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QKeySequence", "()", "")]
 		private void DisposeQKeySequence() {
-			ProxyQKeySequence().DisposeQKeySequence();
+			((QKeySequence) interceptor).DisposeQKeySequence();
 		}
 		public static bool operator==(QKeySequence lhs, QKeySequence other) {
-			return StaticQKeySequence().op_equals(lhs,other);
+			return staticInterceptor.op_equals(lhs,other);
 		}
 		public static bool operator!=(QKeySequence lhs, QKeySequence other) {
-			return !StaticQKeySequence().op_equals(lhs,other);
+			return !staticInterceptor.op_equals(lhs,other);
 		}
 		public static bool operator<(QKeySequence lhs, QKeySequence ks) {
-			return StaticQKeySequence().op_lt(lhs,ks);
+			return staticInterceptor.op_lt(lhs,ks);
 		}
 		public static bool operator>(QKeySequence lhs, QKeySequence other) {
-			return StaticQKeySequence().op_gt(lhs,other);
+			return staticInterceptor.op_gt(lhs,other);
 		}
 		public static bool operator<=(QKeySequence lhs, QKeySequence other) {
-			return StaticQKeySequence().op_lte(lhs,other);
+			return staticInterceptor.op_lte(lhs,other);
 		}
 		public static bool operator>=(QKeySequence lhs, QKeySequence other) {
-			return StaticQKeySequence().op_gte(lhs,other);
+			return staticInterceptor.op_gte(lhs,other);
 		}
 		public static QKeySequence FromString(string str, QKeySequence.SequenceFormat format) {
-			return StaticQKeySequence().FromString(str,format);
+			return staticInterceptor.FromString(str,format);
 		}
 		public static QKeySequence FromString(string str) {
-			return StaticQKeySequence().FromString(str);
+			return staticInterceptor.FromString(str);
 		}
 		public static QKeySequence Mnemonic(string text) {
-			return StaticQKeySequence().Mnemonic(text);
+			return staticInterceptor.Mnemonic(text);
 		}
 		public static List<QKeySequence> KeyBindings(QKeySequence.StandardKey key) {
-			return StaticQKeySequence().KeyBindings(key);
+			return staticInterceptor.KeyBindings(key);
 		}
 	}
 }

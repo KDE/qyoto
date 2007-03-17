@@ -17,18 +17,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QLibrary), this);
-			_interceptor = (QLibrary) realProxy.GetTransparentProxy();
+			interceptor = (QLibrary) realProxy.GetTransparentProxy();
 		}
-		private QLibrary ProxyQLibrary() {
-			return (QLibrary) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQLibraryProxy staticInterceptor = null;
 		static QLibrary() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQLibraryProxy), null);
-			_staticInterceptor = (IQLibraryProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQLibraryProxy StaticQLibrary() {
-			return (IQLibraryProxy) _staticInterceptor;
+			staticInterceptor = (IQLibraryProxy) realProxy.GetTransparentProxy();
 		}
 		public enum LoadHint {
 			ResolveAllSymbolsHint = 0x01,
@@ -49,7 +43,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QLibrary", "(QObject*)", "#")]
 		private void NewQLibrary(QObject parent) {
-			ProxyQLibrary().NewQLibrary(parent);
+			((QLibrary) interceptor).NewQLibrary(parent);
 		}
 		public QLibrary() : this((Type) null) {
 			CreateProxy();
@@ -57,7 +51,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QLibrary", "()", "")]
 		private void NewQLibrary() {
-			ProxyQLibrary().NewQLibrary();
+			((QLibrary) interceptor).NewQLibrary();
 		}
 		public QLibrary(string fileName, QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -65,7 +59,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QLibrary", "(const QString&, QObject*)", "$#")]
 		private void NewQLibrary(string fileName, QObject parent) {
-			ProxyQLibrary().NewQLibrary(fileName,parent);
+			((QLibrary) interceptor).NewQLibrary(fileName,parent);
 		}
 		public QLibrary(string fileName) : this((Type) null) {
 			CreateProxy();
@@ -73,7 +67,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QLibrary", "(const QString&)", "$")]
 		private void NewQLibrary(string fileName) {
-			ProxyQLibrary().NewQLibrary(fileName);
+			((QLibrary) interceptor).NewQLibrary(fileName);
 		}
 		public QLibrary(string fileName, int verNum, QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -81,7 +75,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QLibrary", "(const QString&, int, QObject*)", "$$#")]
 		private void NewQLibrary(string fileName, int verNum, QObject parent) {
-			ProxyQLibrary().NewQLibrary(fileName,verNum,parent);
+			((QLibrary) interceptor).NewQLibrary(fileName,verNum,parent);
 		}
 		public QLibrary(string fileName, int verNum) : this((Type) null) {
 			CreateProxy();
@@ -89,27 +83,27 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QLibrary", "(const QString&, int)", "$$")]
 		private void NewQLibrary(string fileName, int verNum) {
-			ProxyQLibrary().NewQLibrary(fileName,verNum);
+			((QLibrary) interceptor).NewQLibrary(fileName,verNum);
 		}
 		[SmokeMethod("load", "()", "")]
 		public bool Load() {
-			return ProxyQLibrary().Load();
+			return ((QLibrary) interceptor).Load();
 		}
 		[SmokeMethod("unload", "()", "")]
 		public bool Unload() {
-			return ProxyQLibrary().Unload();
+			return ((QLibrary) interceptor).Unload();
 		}
 		[SmokeMethod("isLoaded", "() const", "")]
 		public bool IsLoaded() {
-			return ProxyQLibrary().IsLoaded();
+			return ((QLibrary) interceptor).IsLoaded();
 		}
 		[SmokeMethod("setFileNameAndVersion", "(const QString&, int)", "$$")]
 		public void SetFileNameAndVersion(string fileName, int verNum) {
-			ProxyQLibrary().SetFileNameAndVersion(fileName,verNum);
+			((QLibrary) interceptor).SetFileNameAndVersion(fileName,verNum);
 		}
 		[SmokeMethod("errorString", "() const", "")]
 		public string ErrorString() {
-			return ProxyQLibrary().ErrorString();
+			return ((QLibrary) interceptor).ErrorString();
 		}
 		~QLibrary() {
 			DisposeQLibrary();
@@ -119,16 +113,16 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QLibrary", "()", "")]
 		private void DisposeQLibrary() {
-			ProxyQLibrary().DisposeQLibrary();
+			((QLibrary) interceptor).DisposeQLibrary();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQLibrary().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQLibrary().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		public static bool IsLibrary(string fileName) {
-			return StaticQLibrary().IsLibrary(fileName);
+			return staticInterceptor.IsLibrary(fileName);
 		}
 		protected new IQLibrarySignals Emit {
 			get { return (IQLibrarySignals) Q_EMIT; }

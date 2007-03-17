@@ -16,18 +16,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMimeData), this);
-			_interceptor = (QMimeData) realProxy.GetTransparentProxy();
+			interceptor = (QMimeData) realProxy.GetTransparentProxy();
 		}
-		private QMimeData ProxyQMimeData() {
-			return (QMimeData) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQMimeDataProxy staticInterceptor = null;
 		static QMimeData() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQMimeDataProxy), null);
-			_staticInterceptor = (IQMimeDataProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQMimeDataProxy StaticQMimeData() {
-			return (IQMimeDataProxy) _staticInterceptor;
+			staticInterceptor = (IQMimeDataProxy) realProxy.GetTransparentProxy();
 		}
 		public QMimeData() : this((Type) null) {
 			CreateProxy();
@@ -35,91 +29,91 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QMimeData", "()", "")]
 		private void NewQMimeData() {
-			ProxyQMimeData().NewQMimeData();
+			((QMimeData) interceptor).NewQMimeData();
 		}
 		[SmokeMethod("urls", "() const", "")]
 		public List<QUrl> Urls() {
-			return ProxyQMimeData().Urls();
+			return ((QMimeData) interceptor).Urls();
 		}
 		[SmokeMethod("setUrls", "(const QList<QUrl>&)", "?")]
 		public void SetUrls(List<QUrl> urls) {
-			ProxyQMimeData().SetUrls(urls);
+			((QMimeData) interceptor).SetUrls(urls);
 		}
 		[SmokeMethod("hasUrls", "() const", "")]
 		public bool HasUrls() {
-			return ProxyQMimeData().HasUrls();
+			return ((QMimeData) interceptor).HasUrls();
 		}
 		[SmokeMethod("text", "() const", "")]
 		public string Text() {
-			return ProxyQMimeData().Text();
+			return ((QMimeData) interceptor).Text();
 		}
 		[SmokeMethod("setText", "(const QString&)", "$")]
 		public void SetText(string text) {
-			ProxyQMimeData().SetText(text);
+			((QMimeData) interceptor).SetText(text);
 		}
 		[SmokeMethod("hasText", "() const", "")]
 		public bool HasText() {
-			return ProxyQMimeData().HasText();
+			return ((QMimeData) interceptor).HasText();
 		}
 		[SmokeMethod("html", "() const", "")]
 		public string Html() {
-			return ProxyQMimeData().Html();
+			return ((QMimeData) interceptor).Html();
 		}
 		[SmokeMethod("setHtml", "(const QString&)", "$")]
 		public void SetHtml(string html) {
-			ProxyQMimeData().SetHtml(html);
+			((QMimeData) interceptor).SetHtml(html);
 		}
 		[SmokeMethod("hasHtml", "() const", "")]
 		public bool HasHtml() {
-			return ProxyQMimeData().HasHtml();
+			return ((QMimeData) interceptor).HasHtml();
 		}
 		[SmokeMethod("imageData", "() const", "")]
 		public QVariant ImageData() {
-			return ProxyQMimeData().ImageData();
+			return ((QMimeData) interceptor).ImageData();
 		}
 		[SmokeMethod("setImageData", "(const QVariant&)", "#")]
 		public void SetImageData(QVariant image) {
-			ProxyQMimeData().SetImageData(image);
+			((QMimeData) interceptor).SetImageData(image);
 		}
 		[SmokeMethod("hasImage", "() const", "")]
 		public bool HasImage() {
-			return ProxyQMimeData().HasImage();
+			return ((QMimeData) interceptor).HasImage();
 		}
 		[SmokeMethod("colorData", "() const", "")]
 		public QVariant ColorData() {
-			return ProxyQMimeData().ColorData();
+			return ((QMimeData) interceptor).ColorData();
 		}
 		[SmokeMethod("setColorData", "(const QVariant&)", "#")]
 		public void SetColorData(QVariant color) {
-			ProxyQMimeData().SetColorData(color);
+			((QMimeData) interceptor).SetColorData(color);
 		}
 		[SmokeMethod("hasColor", "() const", "")]
 		public bool HasColor() {
-			return ProxyQMimeData().HasColor();
+			return ((QMimeData) interceptor).HasColor();
 		}
 		[SmokeMethod("data", "(const QString&) const", "$")]
 		public QByteArray Data(string mimetype) {
-			return ProxyQMimeData().Data(mimetype);
+			return ((QMimeData) interceptor).Data(mimetype);
 		}
 		[SmokeMethod("setData", "(const QString&, const QByteArray&)", "$#")]
 		public void SetData(string mimetype, QByteArray data) {
-			ProxyQMimeData().SetData(mimetype,data);
+			((QMimeData) interceptor).SetData(mimetype,data);
 		}
 		[SmokeMethod("hasFormat", "(const QString&) const", "$")]
 		public virtual bool HasFormat(string mimetype) {
-			return ProxyQMimeData().HasFormat(mimetype);
+			return ((QMimeData) interceptor).HasFormat(mimetype);
 		}
 		[SmokeMethod("formats", "() const", "")]
 		public virtual List<string> Formats() {
-			return ProxyQMimeData().Formats();
+			return ((QMimeData) interceptor).Formats();
 		}
 		[SmokeMethod("clear", "()", "")]
 		public void Clear() {
-			ProxyQMimeData().Clear();
+			((QMimeData) interceptor).Clear();
 		}
 		[SmokeMethod("retrieveData", "(const QString&, QVariant::Type) const", "$$")]
 		protected virtual QVariant RetrieveData(string mimetype, QVariant.TypeOf preferredType) {
-			return ProxyQMimeData().RetrieveData(mimetype,preferredType);
+			return ((QMimeData) interceptor).RetrieveData(mimetype,preferredType);
 		}
 		~QMimeData() {
 			DisposeQMimeData();
@@ -129,13 +123,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QMimeData", "()", "")]
 		private void DisposeQMimeData() {
-			ProxyQMimeData().DisposeQMimeData();
+			((QMimeData) interceptor).DisposeQMimeData();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQMimeData().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQMimeData().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQMimeDataSignals Emit {
 			get { return (IQMimeDataSignals) Q_EMIT; }

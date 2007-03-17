@@ -15,18 +15,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QUdpSocket), this);
-			_interceptor = (QUdpSocket) realProxy.GetTransparentProxy();
+			interceptor = (QUdpSocket) realProxy.GetTransparentProxy();
 		}
-		private QUdpSocket ProxyQUdpSocket() {
-			return (QUdpSocket) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQUdpSocketProxy staticInterceptor = null;
 		static QUdpSocket() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQUdpSocketProxy), null);
-			_staticInterceptor = (IQUdpSocketProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQUdpSocketProxy StaticQUdpSocket() {
-			return (IQUdpSocketProxy) _staticInterceptor;
+			staticInterceptor = (IQUdpSocketProxy) realProxy.GetTransparentProxy();
 		}
 		public enum BindFlag {
 			DefaultForPlatform = 0x0,
@@ -41,7 +35,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QUdpSocket", "(QObject*)", "#")]
 		private void NewQUdpSocket(QObject parent) {
-			ProxyQUdpSocket().NewQUdpSocket(parent);
+			((QUdpSocket) interceptor).NewQUdpSocket(parent);
 		}
 		public QUdpSocket() : this((Type) null) {
 			CreateProxy();
@@ -49,51 +43,51 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QUdpSocket", "()", "")]
 		private void NewQUdpSocket() {
-			ProxyQUdpSocket().NewQUdpSocket();
+			((QUdpSocket) interceptor).NewQUdpSocket();
 		}
 		[SmokeMethod("bind", "(const QHostAddress&, quint16)", "#$")]
 		public bool Bind(QHostAddress address, ushort port) {
-			return ProxyQUdpSocket().Bind(address,port);
+			return ((QUdpSocket) interceptor).Bind(address,port);
 		}
 		[SmokeMethod("bind", "(quint16)", "$")]
 		public bool Bind(ushort port) {
-			return ProxyQUdpSocket().Bind(port);
+			return ((QUdpSocket) interceptor).Bind(port);
 		}
 		[SmokeMethod("bind", "()", "")]
 		public bool Bind() {
-			return ProxyQUdpSocket().Bind();
+			return ((QUdpSocket) interceptor).Bind();
 		}
 		[SmokeMethod("bind", "(const QHostAddress&, quint16, BindMode)", "#$$")]
 		public bool Bind(QHostAddress address, ushort port, int mode) {
-			return ProxyQUdpSocket().Bind(address,port,mode);
+			return ((QUdpSocket) interceptor).Bind(address,port,mode);
 		}
 		[SmokeMethod("bind", "(quint16, BindMode)", "$$")]
 		public bool Bind(ushort port, int mode) {
-			return ProxyQUdpSocket().Bind(port,mode);
+			return ((QUdpSocket) interceptor).Bind(port,mode);
 		}
 		[SmokeMethod("hasPendingDatagrams", "() const", "")]
 		public bool HasPendingDatagrams() {
-			return ProxyQUdpSocket().HasPendingDatagrams();
+			return ((QUdpSocket) interceptor).HasPendingDatagrams();
 		}
 		[SmokeMethod("pendingDatagramSize", "() const", "")]
 		public long PendingDatagramSize() {
-			return ProxyQUdpSocket().PendingDatagramSize();
+			return ((QUdpSocket) interceptor).PendingDatagramSize();
 		}
 		[SmokeMethod("readDatagram", "(char*, qint64, QHostAddress*)", "$$#")]
 		public long ReadDatagram(string data, long maxlen, QHostAddress host) {
-			return ProxyQUdpSocket().ReadDatagram(data,maxlen,host);
+			return ((QUdpSocket) interceptor).ReadDatagram(data,maxlen,host);
 		}
 		[SmokeMethod("readDatagram", "(char*, qint64)", "$$")]
 		public long ReadDatagram(string data, long maxlen) {
-			return ProxyQUdpSocket().ReadDatagram(data,maxlen);
+			return ((QUdpSocket) interceptor).ReadDatagram(data,maxlen);
 		}
 		[SmokeMethod("writeDatagram", "(const char*, qint64, const QHostAddress&, quint16)", "$$#$")]
 		public long WriteDatagram(string data, long len, QHostAddress host, ushort port) {
-			return ProxyQUdpSocket().WriteDatagram(data,len,host,port);
+			return ((QUdpSocket) interceptor).WriteDatagram(data,len,host,port);
 		}
 		[SmokeMethod("writeDatagram", "(const QByteArray&, const QHostAddress&, quint16)", "##$")]
 		public long WriteDatagram(QByteArray datagram, QHostAddress host, ushort port) {
-			return ProxyQUdpSocket().WriteDatagram(datagram,host,port);
+			return ((QUdpSocket) interceptor).WriteDatagram(datagram,host,port);
 		}
 		~QUdpSocket() {
 			DisposeQUdpSocket();
@@ -103,13 +97,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QUdpSocket", "()", "")]
 		private void DisposeQUdpSocket() {
-			ProxyQUdpSocket().DisposeQUdpSocket();
+			((QUdpSocket) interceptor).DisposeQUdpSocket();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQUdpSocket().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQUdpSocket().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQUdpSocketSignals Emit {
 			get { return (IQUdpSocketSignals) Q_EMIT; }

@@ -5,15 +5,12 @@ namespace Qyoto {
 
 	[SmokeClass("QFlag")]
 	public class QFlag : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QFlag interceptor = null;
+		private IntPtr smokeObject;
 		protected QFlag(Type dummy) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFlag), this);
-			_interceptor = (QFlag) realProxy.GetTransparentProxy();
-		}
-		private QFlag ProxyQFlag() {
-			return (QFlag) _interceptor;
+			interceptor = (QFlag) realProxy.GetTransparentProxy();
 		}
 		//  operator int(); >>>> NOT CONVERTED
 		public QFlag(int i) : this((Type) null) {
@@ -22,7 +19,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QFlag", "(int)", "$")]
 		private void NewQFlag(int i) {
-			ProxyQFlag().NewQFlag(i);
+			((QFlag) interceptor).NewQFlag(i);
 		}
 		~QFlag() {
 			DisposeQFlag();
@@ -32,7 +29,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QFlag", "()", "")]
 		private void DisposeQFlag() {
-			ProxyQFlag().DisposeQFlag();
+			((QFlag) interceptor).DisposeQFlag();
 		}
 	}
 }

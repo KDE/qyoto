@@ -171,32 +171,20 @@ namespace Qyoto {
 			((GCHandle) handle).Free();
 		}
 		
-		public static IntPtr GetSmokeObject(object instance) {
-			if (instance == null) {
-				return (IntPtr) 0;
-			}
-			FieldInfo fieldInfo = instance.GetType().GetField(	"_smokeObject", 
-															BindingFlags.NonPublic 
-															| BindingFlags.GetField
-															| BindingFlags.Instance );
-			return (IntPtr) fieldInfo.GetValue(instance);
-		}
-		
 		public static IntPtr GetSmokeObject(IntPtr instancePtr) {
 			if (((int) instancePtr) == 0)
 				return (IntPtr) 0;
 			
 			Object instance = ((GCHandle) instancePtr).Target;
-			return GetSmokeObject(instance);
-		}
-		
-		public static void SetSmokeObject(object instance, IntPtr smokeObjectPtr) {
-			FieldInfo fieldInfo = instance.GetType().GetField(	"_smokeObject", 
+			if (instance == null) {
+				return (IntPtr) 0;
+			}
+
+			FieldInfo fieldInfo = instance.GetType().GetField(	"smokeObject", 
 															BindingFlags.NonPublic 
 															| BindingFlags.GetField
 															| BindingFlags.Instance );
-			fieldInfo.SetValue(instance, smokeObjectPtr);
-			return;
+			return (IntPtr) fieldInfo.GetValue(instance);
 		}
 		
 		public static void SetSmokeObject(IntPtr instancePtr, IntPtr smokeObjectPtr) {
@@ -204,7 +192,12 @@ namespace Qyoto {
 			if (instance == null) {
 				return;
 			}
-			SetSmokeObject(instance, smokeObjectPtr);
+
+			FieldInfo fieldInfo = instance.GetType().GetField(	"smokeObject", 
+															BindingFlags.NonPublic 
+															| BindingFlags.GetField
+															| BindingFlags.Instance );
+			fieldInfo.SetValue(instance, smokeObjectPtr);
 			return;
 		}
 		
@@ -246,7 +239,7 @@ namespace Qyoto {
 		}
 
 		// The key is an IntPtr corresponding to the address of the C++ instance,
-		// and the value is a the C# instance. This is used to prevent garbage
+		// and the value is the C# instance. This is used to prevent garbage
 		// collection for instances which are contained inside, and owned by
 		// other instances. For instance, a QObject can have a parent which will
 		// delete the child when it is deleted. This Dictionary will prevent the
@@ -279,7 +272,7 @@ namespace Qyoto {
 		
 		public static void UnmapPointer(IntPtr ptr) {
 			pointerMap.Remove(ptr);
-			if (!strongReferenceMap.ContainsKey(ptr)) {
+			if (strongReferenceMap.ContainsKey(ptr)) {
 #if DEBUG
 				if ((Debug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
 					object reference;
@@ -362,23 +355,22 @@ namespace Qyoto {
 				Console.WriteLine("CreateInstance(\"{0}\") constructed {1}", className, result);
 			}
 #endif
-			Type[] paramTypes = new Type[0];
-			MethodInfo proxyCreator = null;
 
+			MethodInfo proxyCreator = null;
 			do {
 				proxyCreator = klass.GetMethod("CreateProxy", BindingFlags.NonPublic 
 																| BindingFlags.Instance
 																| BindingFlags.DeclaredOnly);
+				if (proxyCreator != null) {
+					proxyCreator.Invoke(result, null);
+					return (IntPtr) GCHandle.Alloc(result);
+				}
+
 				klass = klass.BaseType;
-			} while (klass != typeof(object) && proxyCreator == null);
+			} while (klass != typeof(object));
 
-			if (proxyCreator != null) {
-				proxyCreator.Invoke(result, null);
-			} else {
-				Console.WriteLine("CreateInstance(\"{0}\") no CreateProxy() found", className);
-			}
-
-			return (IntPtr) GCHandle.Alloc(result);
+			Console.Error.WriteLine("CreateInstance(\"{0}\") no CreateProxy() found", className);
+			return (IntPtr) 0;
 		}
 
 		public static IntPtr IntPtrToCharStarStar(IntPtr ptr) {

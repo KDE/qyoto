@@ -62,91 +62,88 @@ namespace Qyoto {
 			[SmokeMethod("getItem", "(QWidget*, const QString&, const QString&, const QStringList&)", "#$$?")]
 			string GetItem(QWidget parent, string title, string label, List<string> list);
 		}
-		private static Object _staticInterceptor = null;
+		private static IQInputDialogProxy staticInterceptor = null;
 		static QInputDialog() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQInputDialogProxy), null);
-			_staticInterceptor = (IQInputDialogProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQInputDialogProxy StaticQInputDialog() {
-			return (IQInputDialogProxy) _staticInterceptor;
+			staticInterceptor = (IQInputDialogProxy) realProxy.GetTransparentProxy();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQInputDialog().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQInputDialog().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		public static string GetText(QWidget parent, string title, string label, QLineEdit.EchoMode echo, string text, out bool ok, int f) {
-			return StaticQInputDialog().GetText(parent,title,label,echo,text,out ok,f);
+			return staticInterceptor.GetText(parent,title,label,echo,text,out ok,f);
 		}
 		public static string GetText(QWidget parent, string title, string label, QLineEdit.EchoMode echo, string text, out bool ok) {
-			return StaticQInputDialog().GetText(parent,title,label,echo,text,out ok);
+			return staticInterceptor.GetText(parent,title,label,echo,text,out ok);
 		}
 		public static string GetText(QWidget parent, string title, string label, QLineEdit.EchoMode echo, string text) {
-			return StaticQInputDialog().GetText(parent,title,label,echo,text);
+			return staticInterceptor.GetText(parent,title,label,echo,text);
 		}
 		public static string GetText(QWidget parent, string title, string label, QLineEdit.EchoMode echo) {
-			return StaticQInputDialog().GetText(parent,title,label,echo);
+			return staticInterceptor.GetText(parent,title,label,echo);
 		}
 		public static string GetText(QWidget parent, string title, string label) {
-			return StaticQInputDialog().GetText(parent,title,label);
+			return staticInterceptor.GetText(parent,title,label);
 		}
 		public static int GetInteger(QWidget parent, string title, string label, int value, int minValue, int maxValue, int step, out bool ok, int f) {
-			return StaticQInputDialog().GetInteger(parent,title,label,value,minValue,maxValue,step,out ok,f);
+			return staticInterceptor.GetInteger(parent,title,label,value,minValue,maxValue,step,out ok,f);
 		}
 		public static int GetInteger(QWidget parent, string title, string label, int value, int minValue, int maxValue, int step, out bool ok) {
-			return StaticQInputDialog().GetInteger(parent,title,label,value,minValue,maxValue,step,out ok);
+			return staticInterceptor.GetInteger(parent,title,label,value,minValue,maxValue,step,out ok);
 		}
 		public static int GetInteger(QWidget parent, string title, string label, int value, int minValue, int maxValue, int step) {
-			return StaticQInputDialog().GetInteger(parent,title,label,value,minValue,maxValue,step);
+			return staticInterceptor.GetInteger(parent,title,label,value,minValue,maxValue,step);
 		}
 		public static int GetInteger(QWidget parent, string title, string label, int value, int minValue, int maxValue) {
-			return StaticQInputDialog().GetInteger(parent,title,label,value,minValue,maxValue);
+			return staticInterceptor.GetInteger(parent,title,label,value,minValue,maxValue);
 		}
 		public static int GetInteger(QWidget parent, string title, string label, int value, int minValue) {
-			return StaticQInputDialog().GetInteger(parent,title,label,value,minValue);
+			return staticInterceptor.GetInteger(parent,title,label,value,minValue);
 		}
 		public static int GetInteger(QWidget parent, string title, string label, int value) {
-			return StaticQInputDialog().GetInteger(parent,title,label,value);
+			return staticInterceptor.GetInteger(parent,title,label,value);
 		}
 		public static int GetInteger(QWidget parent, string title, string label) {
-			return StaticQInputDialog().GetInteger(parent,title,label);
+			return staticInterceptor.GetInteger(parent,title,label);
 		}
 		public static double GetDouble(QWidget parent, string title, string label, double value, double minValue, double maxValue, int decimals, out bool ok, int f) {
-			return StaticQInputDialog().GetDouble(parent,title,label,value,minValue,maxValue,decimals,out ok,f);
+			return staticInterceptor.GetDouble(parent,title,label,value,minValue,maxValue,decimals,out ok,f);
 		}
 		public static double GetDouble(QWidget parent, string title, string label, double value, double minValue, double maxValue, int decimals, out bool ok) {
-			return StaticQInputDialog().GetDouble(parent,title,label,value,minValue,maxValue,decimals,out ok);
+			return staticInterceptor.GetDouble(parent,title,label,value,minValue,maxValue,decimals,out ok);
 		}
 		public static double GetDouble(QWidget parent, string title, string label, double value, double minValue, double maxValue, int decimals) {
-			return StaticQInputDialog().GetDouble(parent,title,label,value,minValue,maxValue,decimals);
+			return staticInterceptor.GetDouble(parent,title,label,value,minValue,maxValue,decimals);
 		}
 		public static double GetDouble(QWidget parent, string title, string label, double value, double minValue, double maxValue) {
-			return StaticQInputDialog().GetDouble(parent,title,label,value,minValue,maxValue);
+			return staticInterceptor.GetDouble(parent,title,label,value,minValue,maxValue);
 		}
 		public static double GetDouble(QWidget parent, string title, string label, double value, double minValue) {
-			return StaticQInputDialog().GetDouble(parent,title,label,value,minValue);
+			return staticInterceptor.GetDouble(parent,title,label,value,minValue);
 		}
 		public static double GetDouble(QWidget parent, string title, string label, double value) {
-			return StaticQInputDialog().GetDouble(parent,title,label,value);
+			return staticInterceptor.GetDouble(parent,title,label,value);
 		}
 		public static double GetDouble(QWidget parent, string title, string label) {
-			return StaticQInputDialog().GetDouble(parent,title,label);
+			return staticInterceptor.GetDouble(parent,title,label);
 		}
 		public static string GetItem(QWidget parent, string title, string label, List<string> list, int current, bool editable, out bool ok, int f) {
-			return StaticQInputDialog().GetItem(parent,title,label,list,current,editable,out ok,f);
+			return staticInterceptor.GetItem(parent,title,label,list,current,editable,out ok,f);
 		}
 		public static string GetItem(QWidget parent, string title, string label, List<string> list, int current, bool editable, out bool ok) {
-			return StaticQInputDialog().GetItem(parent,title,label,list,current,editable,out ok);
+			return staticInterceptor.GetItem(parent,title,label,list,current,editable,out ok);
 		}
 		public static string GetItem(QWidget parent, string title, string label, List<string> list, int current, bool editable) {
-			return StaticQInputDialog().GetItem(parent,title,label,list,current,editable);
+			return staticInterceptor.GetItem(parent,title,label,list,current,editable);
 		}
 		public static string GetItem(QWidget parent, string title, string label, List<string> list, int current) {
-			return StaticQInputDialog().GetItem(parent,title,label,list,current);
+			return staticInterceptor.GetItem(parent,title,label,list,current);
 		}
 		public static string GetItem(QWidget parent, string title, string label, List<string> list) {
-			return StaticQInputDialog().GetItem(parent,title,label,list);
+			return staticInterceptor.GetItem(parent,title,label,list);
 		}
 		protected new IQInputDialogSignals Emit {
 			get { return (IQInputDialogSignals) Q_EMIT; }

@@ -5,15 +5,12 @@ namespace Qyoto {
 
 	[SmokeClass("QTextInlineObject")]
 	public class QTextInlineObject : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QTextInlineObject interceptor = null;
+		private IntPtr smokeObject;
 		protected QTextInlineObject(Type dummy) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextInlineObject), this);
-			_interceptor = (QTextInlineObject) realProxy.GetTransparentProxy();
-		}
-		private QTextInlineObject ProxyQTextInlineObject() {
-			return (QTextInlineObject) _interceptor;
+			interceptor = (QTextInlineObject) realProxy.GetTransparentProxy();
 		}
 		// QTextInlineObject* QTextInlineObject(int arg1,QTextEngine* arg2); >>>> NOT CONVERTED
 		public QTextInlineObject() : this((Type) null) {
@@ -22,59 +19,59 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTextInlineObject", "()", "")]
 		private void NewQTextInlineObject() {
-			ProxyQTextInlineObject().NewQTextInlineObject();
+			((QTextInlineObject) interceptor).NewQTextInlineObject();
 		}
 		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ProxyQTextInlineObject().IsValid();
+			return ((QTextInlineObject) interceptor).IsValid();
 		}
 		[SmokeMethod("rect", "() const", "")]
 		public QRectF Rect() {
-			return ProxyQTextInlineObject().Rect();
+			return ((QTextInlineObject) interceptor).Rect();
 		}
 		[SmokeMethod("width", "() const", "")]
 		public double Width() {
-			return ProxyQTextInlineObject().Width();
+			return ((QTextInlineObject) interceptor).Width();
 		}
 		[SmokeMethod("ascent", "() const", "")]
 		public double Ascent() {
-			return ProxyQTextInlineObject().Ascent();
+			return ((QTextInlineObject) interceptor).Ascent();
 		}
 		[SmokeMethod("descent", "() const", "")]
 		public double Descent() {
-			return ProxyQTextInlineObject().Descent();
+			return ((QTextInlineObject) interceptor).Descent();
 		}
 		[SmokeMethod("height", "() const", "")]
 		public double Height() {
-			return ProxyQTextInlineObject().Height();
+			return ((QTextInlineObject) interceptor).Height();
 		}
 		[SmokeMethod("textDirection", "() const", "")]
 		public Qt.LayoutDirection TextDirection() {
-			return ProxyQTextInlineObject().TextDirection();
+			return ((QTextInlineObject) interceptor).TextDirection();
 		}
 		[SmokeMethod("setWidth", "(qreal)", "$")]
 		public void SetWidth(double w) {
-			ProxyQTextInlineObject().SetWidth(w);
+			((QTextInlineObject) interceptor).SetWidth(w);
 		}
 		[SmokeMethod("setAscent", "(qreal)", "$")]
 		public void SetAscent(double a) {
-			ProxyQTextInlineObject().SetAscent(a);
+			((QTextInlineObject) interceptor).SetAscent(a);
 		}
 		[SmokeMethod("setDescent", "(qreal)", "$")]
 		public void SetDescent(double d) {
-			ProxyQTextInlineObject().SetDescent(d);
+			((QTextInlineObject) interceptor).SetDescent(d);
 		}
 		[SmokeMethod("textPosition", "() const", "")]
 		public int TextPosition() {
-			return ProxyQTextInlineObject().TextPosition();
+			return ((QTextInlineObject) interceptor).TextPosition();
 		}
 		[SmokeMethod("formatIndex", "() const", "")]
 		public int FormatIndex() {
-			return ProxyQTextInlineObject().FormatIndex();
+			return ((QTextInlineObject) interceptor).FormatIndex();
 		}
 		[SmokeMethod("format", "() const", "")]
 		public QTextFormat Format() {
-			return ProxyQTextInlineObject().Format();
+			return ((QTextInlineObject) interceptor).Format();
 		}
 		~QTextInlineObject() {
 			DisposeQTextInlineObject();
@@ -84,7 +81,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QTextInlineObject", "()", "")]
 		private void DisposeQTextInlineObject() {
-			ProxyQTextInlineObject().DisposeQTextInlineObject();
+			((QTextInlineObject) interceptor).DisposeQTextInlineObject();
 		}
 	}
 }

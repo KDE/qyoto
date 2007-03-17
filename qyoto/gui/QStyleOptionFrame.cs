@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QStyleOptionFrame(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionFrame), this);
-			_interceptor = (QStyleOptionFrame) realProxy.GetTransparentProxy();
-		}
-		private QStyleOptionFrame ProxyQStyleOptionFrame() {
-			return (QStyleOptionFrame) _interceptor;
+			interceptor = (QStyleOptionFrame) realProxy.GetTransparentProxy();
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_Frame,
@@ -25,7 +22,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionFrame", "()", "")]
 		private void NewQStyleOptionFrame() {
-			ProxyQStyleOptionFrame().NewQStyleOptionFrame();
+			((QStyleOptionFrame) interceptor).NewQStyleOptionFrame();
 		}
 		public QStyleOptionFrame(QStyleOptionFrame other) : this((Type) null) {
 			CreateProxy();
@@ -33,7 +30,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionFrame", "(const QStyleOptionFrame&)", "#")]
 		private void NewQStyleOptionFrame(QStyleOptionFrame other) {
-			ProxyQStyleOptionFrame().NewQStyleOptionFrame(other);
+			((QStyleOptionFrame) interceptor).NewQStyleOptionFrame(other);
 		}
 		public QStyleOptionFrame(int version) : this((Type) null) {
 			CreateProxy();
@@ -41,7 +38,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionFrame", "(int)", "$")]
 		private void NewQStyleOptionFrame(int version) {
-			ProxyQStyleOptionFrame().NewQStyleOptionFrame(version);
+			((QStyleOptionFrame) interceptor).NewQStyleOptionFrame(version);
 		}
 		~QStyleOptionFrame() {
 			DisposeQStyleOptionFrame();
@@ -51,7 +48,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QStyleOptionFrame", "()", "")]
 		private void DisposeQStyleOptionFrame() {
-			ProxyQStyleOptionFrame().DisposeQStyleOptionFrame();
+			((QStyleOptionFrame) interceptor).DisposeQStyleOptionFrame();
 		}
 	}
 }

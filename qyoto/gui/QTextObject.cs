@@ -15,35 +15,29 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextObject), this);
-			_interceptor = (QTextObject) realProxy.GetTransparentProxy();
+			interceptor = (QTextObject) realProxy.GetTransparentProxy();
 		}
-		private QTextObject ProxyQTextObject() {
-			return (QTextObject) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQTextObjectProxy staticInterceptor = null;
 		static QTextObject() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTextObjectProxy), null);
-			_staticInterceptor = (IQTextObjectProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQTextObjectProxy StaticQTextObject() {
-			return (IQTextObjectProxy) _staticInterceptor;
+			staticInterceptor = (IQTextObjectProxy) realProxy.GetTransparentProxy();
 		}
 		// QTextDocumentPrivate* docHandle(); >>>> NOT CONVERTED
 		[SmokeMethod("format", "() const", "")]
 		public QTextFormat Format() {
-			return ProxyQTextObject().Format();
+			return ((QTextObject) interceptor).Format();
 		}
 		[SmokeMethod("formatIndex", "() const", "")]
 		public int FormatIndex() {
-			return ProxyQTextObject().FormatIndex();
+			return ((QTextObject) interceptor).FormatIndex();
 		}
 		[SmokeMethod("document", "() const", "")]
 		public QTextDocument Document() {
-			return ProxyQTextObject().Document();
+			return ((QTextObject) interceptor).Document();
 		}
 		[SmokeMethod("objectIndex", "() const", "")]
 		public int ObjectIndex() {
-			return ProxyQTextObject().ObjectIndex();
+			return ((QTextObject) interceptor).ObjectIndex();
 		}
 		public QTextObject(QTextDocument doc) : this((Type) null) {
 			CreateProxy();
@@ -51,17 +45,17 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTextObject", "(QTextDocument*)", "#")]
 		private void NewQTextObject(QTextDocument doc) {
-			ProxyQTextObject().NewQTextObject(doc);
+			((QTextObject) interceptor).NewQTextObject(doc);
 		}
 		[SmokeMethod("setFormat", "(const QTextFormat&)", "#")]
 		protected void SetFormat(QTextFormat format) {
-			ProxyQTextObject().SetFormat(format);
+			((QTextObject) interceptor).SetFormat(format);
 		}
 		public static string Tr(string s, string c) {
-			return StaticQTextObject().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQTextObject().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQTextObjectSignals Emit {
 			get { return (IQTextObjectSignals) Q_EMIT; }

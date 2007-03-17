@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QTabletEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTabletEvent), this);
-			_interceptor = (QTabletEvent) realProxy.GetTransparentProxy();
-		}
-		private QTabletEvent ProxyQTabletEvent() {
-			return (QTabletEvent) _interceptor;
+			interceptor = (QTabletEvent) realProxy.GetTransparentProxy();
 		}
 		public enum TabletDevice {
 			NoDevice = 0,
@@ -34,79 +31,79 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTabletEvent", "(QEvent::Type, const QPoint&, const QPoint&, const QPointF&, int, int, qreal, int, int, qreal, qreal, int, Qt::KeyboardModifiers, qint64)", "$###$$$$$$$$$$")]
 		private void NewQTabletEvent(QEvent.TypeOf t, QPoint pos, QPoint globalPos, QPointF hiResGlobalPos, int device, int pointerType, double pressure, int xTilt, int yTilt, double tangentialPressure, double rotation, int z, int keyState, long uniqueID) {
-			ProxyQTabletEvent().NewQTabletEvent(t,pos,globalPos,hiResGlobalPos,device,pointerType,pressure,xTilt,yTilt,tangentialPressure,rotation,z,keyState,uniqueID);
+			((QTabletEvent) interceptor).NewQTabletEvent(t,pos,globalPos,hiResGlobalPos,device,pointerType,pressure,xTilt,yTilt,tangentialPressure,rotation,z,keyState,uniqueID);
 		}
 		[SmokeMethod("pos", "() const", "")]
 		public QPoint Pos() {
-			return ProxyQTabletEvent().Pos();
+			return ((QTabletEvent) interceptor).Pos();
 		}
 		[SmokeMethod("globalPos", "() const", "")]
 		public QPoint GlobalPos() {
-			return ProxyQTabletEvent().GlobalPos();
+			return ((QTabletEvent) interceptor).GlobalPos();
 		}
 		[SmokeMethod("hiResGlobalPos", "() const", "")]
 		public QPointF HiResGlobalPos() {
-			return ProxyQTabletEvent().HiResGlobalPos();
+			return ((QTabletEvent) interceptor).HiResGlobalPos();
 		}
 		[SmokeMethod("x", "() const", "")]
 		public int X() {
-			return ProxyQTabletEvent().X();
+			return ((QTabletEvent) interceptor).X();
 		}
 		[SmokeMethod("y", "() const", "")]
 		public int Y() {
-			return ProxyQTabletEvent().Y();
+			return ((QTabletEvent) interceptor).Y();
 		}
 		[SmokeMethod("globalX", "() const", "")]
 		public int GlobalX() {
-			return ProxyQTabletEvent().GlobalX();
+			return ((QTabletEvent) interceptor).GlobalX();
 		}
 		[SmokeMethod("globalY", "() const", "")]
 		public int GlobalY() {
-			return ProxyQTabletEvent().GlobalY();
+			return ((QTabletEvent) interceptor).GlobalY();
 		}
 		[SmokeMethod("hiResGlobalX", "() const", "")]
 		public double HiResGlobalX() {
-			return ProxyQTabletEvent().HiResGlobalX();
+			return ((QTabletEvent) interceptor).HiResGlobalX();
 		}
 		[SmokeMethod("hiResGlobalY", "() const", "")]
 		public double HiResGlobalY() {
-			return ProxyQTabletEvent().HiResGlobalY();
+			return ((QTabletEvent) interceptor).HiResGlobalY();
 		}
 		[SmokeMethod("device", "() const", "")]
 		public QTabletEvent.TabletDevice Device() {
-			return ProxyQTabletEvent().Device();
+			return ((QTabletEvent) interceptor).Device();
 		}
 		[SmokeMethod("pointerType", "() const", "")]
 		public QTabletEvent.PointerType pointerType() {
-			return ProxyQTabletEvent().pointerType();
+			return ((QTabletEvent) interceptor).pointerType();
 		}
 		[SmokeMethod("uniqueId", "() const", "")]
 		public long UniqueId() {
-			return ProxyQTabletEvent().UniqueId();
+			return ((QTabletEvent) interceptor).UniqueId();
 		}
 		[SmokeMethod("pressure", "() const", "")]
 		public double Pressure() {
-			return ProxyQTabletEvent().Pressure();
+			return ((QTabletEvent) interceptor).Pressure();
 		}
 		[SmokeMethod("z", "() const", "")]
 		public int Z() {
-			return ProxyQTabletEvent().Z();
+			return ((QTabletEvent) interceptor).Z();
 		}
 		[SmokeMethod("tangentialPressure", "() const", "")]
 		public double TangentialPressure() {
-			return ProxyQTabletEvent().TangentialPressure();
+			return ((QTabletEvent) interceptor).TangentialPressure();
 		}
 		[SmokeMethod("rotation", "() const", "")]
 		public double Rotation() {
-			return ProxyQTabletEvent().Rotation();
+			return ((QTabletEvent) interceptor).Rotation();
 		}
 		[SmokeMethod("xTilt", "() const", "")]
 		public int XTilt() {
-			return ProxyQTabletEvent().XTilt();
+			return ((QTabletEvent) interceptor).XTilt();
 		}
 		[SmokeMethod("yTilt", "() const", "")]
 		public int YTilt() {
-			return ProxyQTabletEvent().YTilt();
+			return ((QTabletEvent) interceptor).YTilt();
 		}
 		~QTabletEvent() {
 			DisposeQTabletEvent();
@@ -116,7 +113,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QTabletEvent", "()", "")]
 		private void DisposeQTabletEvent() {
-			ProxyQTabletEvent().DisposeQTabletEvent();
+			((QTabletEvent) interceptor).DisposeQTabletEvent();
 		}
 	}
 }

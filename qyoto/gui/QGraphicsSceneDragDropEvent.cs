@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QGraphicsSceneDragDropEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGraphicsSceneDragDropEvent), this);
-			_interceptor = (QGraphicsSceneDragDropEvent) realProxy.GetTransparentProxy();
-		}
-		private QGraphicsSceneDragDropEvent ProxyQGraphicsSceneDragDropEvent() {
-			return (QGraphicsSceneDragDropEvent) _interceptor;
+			interceptor = (QGraphicsSceneDragDropEvent) realProxy.GetTransparentProxy();
 		}
 		public QGraphicsSceneDragDropEvent(QEvent.TypeOf type) : this((Type) null) {
 			CreateProxy();
@@ -19,7 +16,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGraphicsSceneDragDropEvent", "(QEvent::Type)", "$")]
 		private void NewQGraphicsSceneDragDropEvent(QEvent.TypeOf type) {
-			ProxyQGraphicsSceneDragDropEvent().NewQGraphicsSceneDragDropEvent(type);
+			((QGraphicsSceneDragDropEvent) interceptor).NewQGraphicsSceneDragDropEvent(type);
 		}
 		public QGraphicsSceneDragDropEvent() : this((Type) null) {
 			CreateProxy();
@@ -27,91 +24,91 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGraphicsSceneDragDropEvent", "()", "")]
 		private void NewQGraphicsSceneDragDropEvent() {
-			ProxyQGraphicsSceneDragDropEvent().NewQGraphicsSceneDragDropEvent();
+			((QGraphicsSceneDragDropEvent) interceptor).NewQGraphicsSceneDragDropEvent();
 		}
 		[SmokeMethod("pos", "() const", "")]
 		public QPointF Pos() {
-			return ProxyQGraphicsSceneDragDropEvent().Pos();
+			return ((QGraphicsSceneDragDropEvent) interceptor).Pos();
 		}
 		[SmokeMethod("setPos", "(const QPointF&)", "#")]
 		public void SetPos(QPointF pos) {
-			ProxyQGraphicsSceneDragDropEvent().SetPos(pos);
+			((QGraphicsSceneDragDropEvent) interceptor).SetPos(pos);
 		}
 		[SmokeMethod("scenePos", "() const", "")]
 		public QPointF ScenePos() {
-			return ProxyQGraphicsSceneDragDropEvent().ScenePos();
+			return ((QGraphicsSceneDragDropEvent) interceptor).ScenePos();
 		}
 		[SmokeMethod("setScenePos", "(const QPointF&)", "#")]
 		public void SetScenePos(QPointF pos) {
-			ProxyQGraphicsSceneDragDropEvent().SetScenePos(pos);
+			((QGraphicsSceneDragDropEvent) interceptor).SetScenePos(pos);
 		}
 		[SmokeMethod("screenPos", "() const", "")]
 		public QPoint ScreenPos() {
-			return ProxyQGraphicsSceneDragDropEvent().ScreenPos();
+			return ((QGraphicsSceneDragDropEvent) interceptor).ScreenPos();
 		}
 		[SmokeMethod("setScreenPos", "(const QPoint&)", "#")]
 		public void SetScreenPos(QPoint pos) {
-			ProxyQGraphicsSceneDragDropEvent().SetScreenPos(pos);
+			((QGraphicsSceneDragDropEvent) interceptor).SetScreenPos(pos);
 		}
 		[SmokeMethod("buttons", "() const", "")]
 		public int Buttons() {
-			return ProxyQGraphicsSceneDragDropEvent().Buttons();
+			return ((QGraphicsSceneDragDropEvent) interceptor).Buttons();
 		}
 		[SmokeMethod("setButtons", "(Qt::MouseButtons)", "$")]
 		public void SetButtons(int buttons) {
-			ProxyQGraphicsSceneDragDropEvent().SetButtons(buttons);
+			((QGraphicsSceneDragDropEvent) interceptor).SetButtons(buttons);
 		}
 		[SmokeMethod("modifiers", "() const", "")]
 		public int Modifiers() {
-			return ProxyQGraphicsSceneDragDropEvent().Modifiers();
+			return ((QGraphicsSceneDragDropEvent) interceptor).Modifiers();
 		}
 		[SmokeMethod("setModifiers", "(Qt::KeyboardModifiers)", "$")]
 		public void SetModifiers(int modifiers) {
-			ProxyQGraphicsSceneDragDropEvent().SetModifiers(modifiers);
+			((QGraphicsSceneDragDropEvent) interceptor).SetModifiers(modifiers);
 		}
 		[SmokeMethod("possibleActions", "() const", "")]
 		public int PossibleActions() {
-			return ProxyQGraphicsSceneDragDropEvent().PossibleActions();
+			return ((QGraphicsSceneDragDropEvent) interceptor).PossibleActions();
 		}
 		[SmokeMethod("setPossibleActions", "(Qt::DropActions)", "$")]
 		public void SetPossibleActions(int actions) {
-			ProxyQGraphicsSceneDragDropEvent().SetPossibleActions(actions);
+			((QGraphicsSceneDragDropEvent) interceptor).SetPossibleActions(actions);
 		}
 		[SmokeMethod("proposedAction", "() const", "")]
 		public Qt.DropAction ProposedAction() {
-			return ProxyQGraphicsSceneDragDropEvent().ProposedAction();
+			return ((QGraphicsSceneDragDropEvent) interceptor).ProposedAction();
 		}
 		[SmokeMethod("setProposedAction", "(Qt::DropAction)", "$")]
 		public void SetProposedAction(Qt.DropAction action) {
-			ProxyQGraphicsSceneDragDropEvent().SetProposedAction(action);
+			((QGraphicsSceneDragDropEvent) interceptor).SetProposedAction(action);
 		}
 		[SmokeMethod("acceptProposedAction", "()", "")]
 		public void AcceptProposedAction() {
-			ProxyQGraphicsSceneDragDropEvent().AcceptProposedAction();
+			((QGraphicsSceneDragDropEvent) interceptor).AcceptProposedAction();
 		}
 		[SmokeMethod("dropAction", "() const", "")]
 		public Qt.DropAction DropAction() {
-			return ProxyQGraphicsSceneDragDropEvent().DropAction();
+			return ((QGraphicsSceneDragDropEvent) interceptor).DropAction();
 		}
 		[SmokeMethod("setDropAction", "(Qt::DropAction)", "$")]
 		public void SetDropAction(Qt.DropAction action) {
-			ProxyQGraphicsSceneDragDropEvent().SetDropAction(action);
+			((QGraphicsSceneDragDropEvent) interceptor).SetDropAction(action);
 		}
 		[SmokeMethod("source", "() const", "")]
 		public QWidget Source() {
-			return ProxyQGraphicsSceneDragDropEvent().Source();
+			return ((QGraphicsSceneDragDropEvent) interceptor).Source();
 		}
 		[SmokeMethod("setSource", "(QWidget*)", "#")]
 		public void SetSource(QWidget source) {
-			ProxyQGraphicsSceneDragDropEvent().SetSource(source);
+			((QGraphicsSceneDragDropEvent) interceptor).SetSource(source);
 		}
 		[SmokeMethod("mimeData", "() const", "")]
 		public QMimeData MimeData() {
-			return ProxyQGraphicsSceneDragDropEvent().MimeData();
+			return ((QGraphicsSceneDragDropEvent) interceptor).MimeData();
 		}
 		[SmokeMethod("setMimeData", "(const QMimeData*)", "#")]
 		public void SetMimeData(QMimeData data) {
-			ProxyQGraphicsSceneDragDropEvent().SetMimeData(data);
+			((QGraphicsSceneDragDropEvent) interceptor).SetMimeData(data);
 		}
 		~QGraphicsSceneDragDropEvent() {
 			DisposeQGraphicsSceneDragDropEvent();
@@ -121,7 +118,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QGraphicsSceneDragDropEvent", "()", "")]
 		private void DisposeQGraphicsSceneDragDropEvent() {
-			ProxyQGraphicsSceneDragDropEvent().DisposeQGraphicsSceneDragDropEvent();
+			((QGraphicsSceneDragDropEvent) interceptor).DisposeQGraphicsSceneDragDropEvent();
 		}
 	}
 }

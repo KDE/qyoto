@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QHoverEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QHoverEvent), this);
-			_interceptor = (QHoverEvent) realProxy.GetTransparentProxy();
-		}
-		private QHoverEvent ProxyQHoverEvent() {
-			return (QHoverEvent) _interceptor;
+			interceptor = (QHoverEvent) realProxy.GetTransparentProxy();
 		}
 		public QHoverEvent(QEvent.TypeOf type, QPoint pos, QPoint oldPos) : this((Type) null) {
 			CreateProxy();
@@ -19,15 +16,15 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QHoverEvent", "(QEvent::Type, const QPoint&, const QPoint&)", "$##")]
 		private void NewQHoverEvent(QEvent.TypeOf type, QPoint pos, QPoint oldPos) {
-			ProxyQHoverEvent().NewQHoverEvent(type,pos,oldPos);
+			((QHoverEvent) interceptor).NewQHoverEvent(type,pos,oldPos);
 		}
 		[SmokeMethod("pos", "() const", "")]
 		public QPoint Pos() {
-			return ProxyQHoverEvent().Pos();
+			return ((QHoverEvent) interceptor).Pos();
 		}
 		[SmokeMethod("oldPos", "() const", "")]
 		public QPoint OldPos() {
-			return ProxyQHoverEvent().OldPos();
+			return ((QHoverEvent) interceptor).OldPos();
 		}
 		~QHoverEvent() {
 			DisposeQHoverEvent();
@@ -37,7 +34,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QHoverEvent", "()", "")]
 		private void DisposeQHoverEvent() {
-			ProxyQHoverEvent().DisposeQHoverEvent();
+			((QHoverEvent) interceptor).DisposeQHoverEvent();
 		}
 	}
 }

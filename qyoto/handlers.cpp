@@ -277,158 +277,154 @@ resolve_classname(Smoke* smoke, int classId, void * ptr)
 	if (isDerivedFromByName(smoke, smoke->classes[classId].className, "QEvent")) {
 		QEvent * qevent = (QEvent *) smoke->cast(ptr, classId, smoke->idClass("QEvent"));
 		switch (qevent->type()) {
-
-
-                case QEvent::Timer:
-                        return "Qyoto.QTimerEvent";
-                case QEvent::MouseButtonPress:
-                case QEvent::MouseButtonRelease:
-                case QEvent::MouseButtonDblClick:
-                case QEvent::MouseMove:
-                        return "Qyoto.QMouseEvent";
-                case QEvent::KeyPress:
-                case QEvent::KeyRelease:
-                case QEvent::ShortcutOverride:
-                        return "Qyoto.QKeyEvent";
-                case QEvent::FocusIn:
-                case QEvent::FocusOut:
-                        return "Qyoto.QFocusEvent";
-                case QEvent::Enter:
-                case QEvent::Leave:
-                        return "Qyoto.QEvent";
-                case QEvent::Paint:
-                        return "Qyoto.QPaintEvent";
-                case QEvent::Move:
-                        return "Qyoto.QMoveEvent";
-                case QEvent::Resize:
-                        return "Qyoto.QResizeEvent";
-                case QEvent::Create:
-                case QEvent::Destroy:
-                        return "Qyoto.QEvent";
-                case QEvent::Show:
-                        return "Qyoto.QShowEvent";
-                case QEvent::Hide:
-                        return "Qyoto.QHideEvent";
-                case QEvent::Close:
-                        return "Qyoto.QCloseEvent";
-                case QEvent::Quit:
-                case QEvent::ParentChange:
-                case QEvent::ParentAboutToChange:
-                case QEvent::ThreadChange:
-                case QEvent::WindowActivate:
-                case QEvent::WindowDeactivate:
-                case QEvent::ShowToParent:
-                case QEvent::HideToParent:
-                        return "Qyoto.QEvent";
-                case QEvent::Wheel:
-                        return "Qyoto.QWheelEvent";
-                case QEvent::WindowTitleChange:
-                case QEvent::WindowIconChange:
-                case QEvent::ApplicationWindowIconChange:
-                case QEvent::ApplicationFontChange:
-                case QEvent::ApplicationLayoutDirectionChange:
-                case QEvent::ApplicationPaletteChange:
-                case QEvent::PaletteChange:
-                        return "Qyoto.QEvent";
-                case QEvent::Clipboard:
-                        return "Qyoto.QClipboardEvent";
-                case QEvent::Speech:
-                case QEvent::MetaCall:
-                case QEvent::SockAct:
-                case QEvent::WinEventAct:
-                case QEvent::DeferredDelete:
-                        return "Qyoto.QEvent";
-                case QEvent::DragEnter:
-                        return "Qyoto.QDragEnterEvent";
-                case QEvent::DragLeave:
-                        return "Qyoto.QDragLeaveEvent";
-                case QEvent::DragMove:
-                        return "Qyoto.QDragMoveEvent";
-                case QEvent::Drop:
-                        return "Qyoto.QDropEvent";
-                case QEvent::DragResponse:
-                        return "Qyoto.QDragResponseEvent";
-                case QEvent::ChildAdded:
-                case QEvent::ChildRemoved:
-                case QEvent::ChildPolished:
-                        return "Qyoto.QChildEvent";
-                case QEvent::ShowWindowRequest:
-                case QEvent::PolishRequest:
-                case QEvent::Polish:
-                case QEvent::LayoutRequest:
-                case QEvent::UpdateRequest:
-                case QEvent::EmbeddingControl:
-                case QEvent::ActivateControl:
-                case QEvent::DeactivateControl:
-                        return "Qyoto.QEvent";
-                case QEvent::ContextMenu:
-                        return "Qyoto.QContextMenuEvent";
-                case QEvent::InputMethod:
-                        return "Qyoto.QInputMethodEvent";
-                case QEvent::AccessibilityPrepare:
-                        return "Qyoto.QEvent";
-                case QEvent::TabletMove:
-                case QEvent::TabletPress:
-                case QEvent::TabletRelease:
-                        return "Qyoto.QTabletEvent";
-                case QEvent::LocaleChange:
-                case QEvent::LanguageChange:
-                case QEvent::LayoutDirectionChange:
-                case QEvent::Style:
-                case QEvent::OkRequest:
-                case QEvent::HelpRequest:
-                        return "Qyoto.QEvent";
-                case QEvent::IconDrag:
-                        return "Qyoto.QIconDragEvent";
-                case QEvent::FontChange:
-                case QEvent::EnabledChange:
-                case QEvent::ActivationChange:
-                case QEvent::StyleChange:
-                case QEvent::IconTextChange:
-                case QEvent::ModifiedChange:
-                case QEvent::MouseTrackingChange:
-                        return "Qyoto.QEvent";
-                case QEvent::WindowBlocked:
-                case QEvent::WindowUnblocked:
-                case QEvent::WindowStateChange:
-                        return "Qyoto.QWindowStateChangeEvent";
-                case QEvent::ToolTip:
-                case QEvent::WhatsThis:
-                        return "Qyoto.QHelpEvent";
-                case QEvent::StatusTip:
-                        return "Qyoto.QEvent";
-                case QEvent::ActionChanged:
-                case QEvent::ActionAdded:
-                case QEvent::ActionRemoved:
-                        return "Qyoto.QActionEvent";
-                case QEvent::FileOpen:
-                        return "Qyoto.QFileOpenEvent";
-                case QEvent::Shortcut:
-                        return "Qyoto.QShortcutEvent";
-                case QEvent::WhatsThisClicked:
-                        return "Qyoto.QWhatsThisClickedEvent";
-                case QEvent::ToolBarChange:
-                        return "Qyoto.QToolBarChangeEvent";
-                case QEvent::ApplicationActivated:
-                case QEvent::ApplicationDeactivated:
-                case QEvent::QueryWhatsThis:
-                case QEvent::EnterWhatsThisMode:
-                case QEvent::LeaveWhatsThisMode:
-                case QEvent::ZOrderChange:
-                        return "Qyoto.QEvent";
-                case QEvent::HoverEnter:
-                case QEvent::HoverLeave:
-                case QEvent::HoverMove:
-                        return "Qyoto.QHoverEvent";
-                case QEvent::AccessibilityHelp:
-                case QEvent::AccessibilityDescription:
-                        return "Qyoto.QEvent";
+		case QEvent::Timer:
+				return "Qyoto.QTimerEvent";
+		case QEvent::MouseButtonPress:
+		case QEvent::MouseButtonRelease:
+		case QEvent::MouseButtonDblClick:
+		case QEvent::MouseMove:
+				return "Qyoto.QMouseEvent";
+		case QEvent::KeyPress:
+		case QEvent::KeyRelease:
+		case QEvent::ShortcutOverride:
+				return "Qyoto.QKeyEvent";
+		case QEvent::FocusIn:
+		case QEvent::FocusOut:
+				return "Qyoto.QFocusEvent";
+		case QEvent::Enter:
+		case QEvent::Leave:
+				return "Qyoto.QEvent";
+		case QEvent::Paint:
+				return "Qyoto.QPaintEvent";
+		case QEvent::Move:
+				return "Qyoto.QMoveEvent";
+		case QEvent::Resize:
+				return "Qyoto.QResizeEvent";
+		case QEvent::Create:
+		case QEvent::Destroy:
+				return "Qyoto.QEvent";
+		case QEvent::Show:
+				return "Qyoto.QShowEvent";
+		case QEvent::Hide:
+				return "Qyoto.QHideEvent";
+		case QEvent::Close:
+				return "Qyoto.QCloseEvent";
+		case QEvent::Quit:
+		case QEvent::ParentChange:
+		case QEvent::ParentAboutToChange:
+		case QEvent::ThreadChange:
+		case QEvent::WindowActivate:
+		case QEvent::WindowDeactivate:
+		case QEvent::ShowToParent:
+		case QEvent::HideToParent:
+				return "Qyoto.QEvent";
+		case QEvent::Wheel:
+				return "Qyoto.QWheelEvent";
+		case QEvent::WindowTitleChange:
+		case QEvent::WindowIconChange:
+		case QEvent::ApplicationWindowIconChange:
+		case QEvent::ApplicationFontChange:
+		case QEvent::ApplicationLayoutDirectionChange:
+		case QEvent::ApplicationPaletteChange:
+		case QEvent::PaletteChange:
+				return "Qyoto.QEvent";
+		case QEvent::Clipboard:
+				return "Qyoto.QClipboardEvent";
+		case QEvent::Speech:
+		case QEvent::MetaCall:
+		case QEvent::SockAct:
+		case QEvent::WinEventAct:
+		case QEvent::DeferredDelete:
+				return "Qyoto.QEvent";
+		case QEvent::DragEnter:
+				return "Qyoto.QDragEnterEvent";
+		case QEvent::DragLeave:
+				return "Qyoto.QDragLeaveEvent";
+		case QEvent::DragMove:
+				return "Qyoto.QDragMoveEvent";
+		case QEvent::Drop:
+				return "Qyoto.QDropEvent";
+		case QEvent::DragResponse:
+				return "Qyoto.QDragResponseEvent";
+		case QEvent::ChildAdded:
+		case QEvent::ChildRemoved:
+		case QEvent::ChildPolished:
+				return "Qyoto.QChildEvent";
+		case QEvent::ShowWindowRequest:
+		case QEvent::PolishRequest:
+		case QEvent::Polish:
+		case QEvent::LayoutRequest:
+		case QEvent::UpdateRequest:
+		case QEvent::EmbeddingControl:
+		case QEvent::ActivateControl:
+		case QEvent::DeactivateControl:
+				return "Qyoto.QEvent";
+		case QEvent::ContextMenu:
+				return "Qyoto.QContextMenuEvent";
+		case QEvent::InputMethod:
+				return "Qyoto.QInputMethodEvent";
+		case QEvent::AccessibilityPrepare:
+				return "Qyoto.QEvent";
+		case QEvent::TabletMove:
+		case QEvent::TabletPress:
+		case QEvent::TabletRelease:
+				return "Qyoto.QTabletEvent";
+		case QEvent::LocaleChange:
+		case QEvent::LanguageChange:
+		case QEvent::LayoutDirectionChange:
+		case QEvent::Style:
+		case QEvent::OkRequest:
+		case QEvent::HelpRequest:
+				return "Qyoto.QEvent";
+		case QEvent::IconDrag:
+				return "Qyoto.QIconDragEvent";
+		case QEvent::FontChange:
+		case QEvent::EnabledChange:
+		case QEvent::ActivationChange:
+		case QEvent::StyleChange:
+		case QEvent::IconTextChange:
+		case QEvent::ModifiedChange:
+		case QEvent::MouseTrackingChange:
+				return "Qyoto.QEvent";
+		case QEvent::WindowBlocked:
+		case QEvent::WindowUnblocked:
+		case QEvent::WindowStateChange:
+				return "Qyoto.QWindowStateChangeEvent";
+		case QEvent::ToolTip:
+		case QEvent::WhatsThis:
+				return "Qyoto.QHelpEvent";
+		case QEvent::StatusTip:
+				return "Qyoto.QEvent";
+		case QEvent::ActionChanged:
+		case QEvent::ActionAdded:
+		case QEvent::ActionRemoved:
+				return "Qyoto.QActionEvent";
+		case QEvent::FileOpen:
+				return "Qyoto.QFileOpenEvent";
+		case QEvent::Shortcut:
+				return "Qyoto.QShortcutEvent";
+		case QEvent::WhatsThisClicked:
+				return "Qyoto.QWhatsThisClickedEvent";
+		case QEvent::ToolBarChange:
+				return "Qyoto.QToolBarChangeEvent";
+		case QEvent::ApplicationActivated:
+		case QEvent::ApplicationDeactivated:
+		case QEvent::QueryWhatsThis:
+		case QEvent::EnterWhatsThisMode:
+		case QEvent::LeaveWhatsThisMode:
+		case QEvent::ZOrderChange:
+				return "Qyoto.QEvent";
+		case QEvent::HoverEnter:
+		case QEvent::HoverLeave:
+		case QEvent::HoverMove:
+				return "Qyoto.QHoverEvent";
+		case QEvent::AccessibilityHelp:
+		case QEvent::AccessibilityDescription:
+				return "Qyoto.QEvent";
 		default:
 			break;
 		}
 	} else if (isDerivedFromByName(smoke, smoke->classes[classId].className, "QObject")) {
-		return smoke->binding->className(classId);
-
 		QObject * qobject = (QObject *) smoke->cast(ptr, classId, smoke->idClass("QObject"));
 		const QMetaObject * meta = qobject->metaObject();
 
@@ -439,6 +435,32 @@ resolve_classname(Smoke* smoke, int classId, void * ptr)
 			}
 
 			meta = meta->superClass();
+		}
+	} else if (isDerivedFromByName(smoke, smoke->classes[classId].className, "QGraphicsItem")) {
+		QGraphicsItem * item = (QGraphicsItem *) smoke->cast(ptr, classId, smoke->idClass("QGraphicsItem"));
+		switch (item->type()) {
+		case 1:
+			return "Qyoto.QGraphicsItem";
+		case 2:
+			return "Qyoto.QGraphicsPathItem";
+		case 3:
+			return "Qyoto.QGraphicsRectItem";
+		case 4:
+			return "Qyoto.QGraphicsEllipseItem";
+		case 5:
+			return "Qyoto.QGraphicsPolygonItem";
+		case 6:
+			return "Qyoto.QGraphicsLineItem";
+		case 7:
+			return "Qyoto.QGraphicsPixmapItem";
+		case 8:
+			return "Qyoto.QGraphicsTextItem";
+		case 9:
+			return "Qyoto.QGraphicsSimpleTextItem";
+		case 10:
+			return "Qyoto.QGraphicsItemGroup";
+		default:
+			return "Qyoto.QGraphicsItem";
 		}
 	} else if (isDerivedFromByName(smoke, smoke->classes[classId].className, "QLayoutItem")) {
 		QLayoutItem * item = (QLayoutItem *) smoke->cast(ptr, classId, smoke->idClass("QLayoutItem"));
@@ -778,18 +800,18 @@ marshall_basetype(Marshall *m)
 		void *p = m->item().s_voidp;
 		void * obj = getPointerObject(p);
 		if(obj != 0) {
-                    m->var().s_voidp = obj;
+			m->var().s_voidp = obj;
 		    break;
 		}
-		smokeqyoto_object  * o = alloc_smokeqyoto_object(false, m->smoke(), m->type().classId(), p);
 
+		smokeqyoto_object  * o = alloc_smokeqyoto_object(false, m->smoke(), m->type().classId(), p);
 		const char * classname = resolve_classname(o->smoke, o->classId, o->ptr);
-		
+
 		if(m->type().isConst() && m->type().isRef()) {
-		    p = construct_copy( o );
-		    if(p) {
-			o->ptr = p;
-			o->allocated = true;
+			p = construct_copy( o );
+			if (p != 0) {
+				o->ptr = p;
+				o->allocated = true;
 		    }
 		}
 		
@@ -1248,8 +1270,8 @@ void marshall_ItemList(Marshall *m) {
       
 		case Marshall::ToObject:
 		{
-			ItemList *valuelist = (ItemList*)m->item().s_voidp;
-			if (valuelist == 0) {
+			ItemList *list = (ItemList*)m->item().s_voidp;
+			if (list == 0) {
 				break;
 			}
 
@@ -1258,11 +1280,13 @@ void marshall_ItemList(Marshall *m) {
 			
 			void * al = (*ConstructList)(className);
 			
-			for (int i=0; i < valuelist->size() ; ++i) {
-				void *p = (void *) valuelist->at(i);
-
-				smokeqyoto_object * o = alloc_smokeqyoto_object(false, m->smoke(), ix, p);
-				void * obj = set_obj_info(className, o);
+			for (int i=0; i < list->size() ; ++i) {
+				void *p = (void *) list->at(i);
+				void * obj = getPointerObject(p);
+				if (obj == 0) {
+					smokeqyoto_object * o = alloc_smokeqyoto_object(false, m->smoke(), ix, p);
+					obj = set_obj_info(resolve_classname(o->smoke, o->classId, o->ptr), o);
+				}
 				(*AddIntPtrToList)(al, obj);
 			}
 
@@ -1270,7 +1294,7 @@ void marshall_ItemList(Marshall *m) {
 			m->next();
 
 			if (m->cleanup()) {
-				delete valuelist;
+				delete list;
 			}
 			
 
@@ -1391,12 +1415,13 @@ void marshall_ValueListItem(Marshall *m) {
 
 			for (int i=0; i < valuelist->size() ; ++i) {
 				void *p = (void *) &(valuelist->at(i));
-
 				void * obj = getPointerObject(p);
+
 				if (obj == 0) {
 					smokeqyoto_object * o = alloc_smokeqyoto_object(false, m->smoke(), ix, p);
-					obj = set_obj_info(className, o);
+					obj = set_obj_info(resolve_classname(o->smoke, o->classId, o->ptr), o);
 				}
+
 				(*AddIntPtrToList)(al, obj);
 			}
 

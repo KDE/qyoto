@@ -5,8 +5,8 @@ namespace Qyoto {
 
 	[SmokeClass("QCursor")]
 	public class QCursor : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QCursor interceptor = null;
+		private IntPtr smokeObject;
 		protected QCursor(Type dummy) {}
 		[SmokeClass("QCursor")]
 		interface IQCursorProxy {
@@ -19,18 +19,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QCursor), this);
-			_interceptor = (QCursor) realProxy.GetTransparentProxy();
+			interceptor = (QCursor) realProxy.GetTransparentProxy();
 		}
-		private QCursor ProxyQCursor() {
-			return (QCursor) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQCursorProxy staticInterceptor = null;
 		static QCursor() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQCursorProxy), null);
-			_staticInterceptor = (IQCursorProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQCursorProxy StaticQCursor() {
-			return (IQCursorProxy) _staticInterceptor;
+			staticInterceptor = (IQCursorProxy) realProxy.GetTransparentProxy();
 		}
 		//  operator QVariant(); >>>> NOT CONVERTED
 		public QCursor() : this((Type) null) {
@@ -39,7 +33,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QCursor", "()", "")]
 		private void NewQCursor() {
-			ProxyQCursor().NewQCursor();
+			((QCursor) interceptor).NewQCursor();
 		}
 		public QCursor(Qt.CursorShape shape) : this((Type) null) {
 			CreateProxy();
@@ -47,7 +41,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QCursor", "(Qt::CursorShape)", "$")]
 		private void NewQCursor(Qt.CursorShape shape) {
-			ProxyQCursor().NewQCursor(shape);
+			((QCursor) interceptor).NewQCursor(shape);
 		}
 		public QCursor(QBitmap bitmap, QBitmap mask, int hotX, int hotY) : this((Type) null) {
 			CreateProxy();
@@ -55,7 +49,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QCursor", "(const QBitmap&, const QBitmap&, int, int)", "##$$")]
 		private void NewQCursor(QBitmap bitmap, QBitmap mask, int hotX, int hotY) {
-			ProxyQCursor().NewQCursor(bitmap,mask,hotX,hotY);
+			((QCursor) interceptor).NewQCursor(bitmap,mask,hotX,hotY);
 		}
 		public QCursor(QBitmap bitmap, QBitmap mask, int hotX) : this((Type) null) {
 			CreateProxy();
@@ -63,7 +57,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QCursor", "(const QBitmap&, const QBitmap&, int)", "##$")]
 		private void NewQCursor(QBitmap bitmap, QBitmap mask, int hotX) {
-			ProxyQCursor().NewQCursor(bitmap,mask,hotX);
+			((QCursor) interceptor).NewQCursor(bitmap,mask,hotX);
 		}
 		public QCursor(QBitmap bitmap, QBitmap mask) : this((Type) null) {
 			CreateProxy();
@@ -71,7 +65,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QCursor", "(const QBitmap&, const QBitmap&)", "##")]
 		private void NewQCursor(QBitmap bitmap, QBitmap mask) {
-			ProxyQCursor().NewQCursor(bitmap,mask);
+			((QCursor) interceptor).NewQCursor(bitmap,mask);
 		}
 		public QCursor(QPixmap pixmap, int hotX, int hotY) : this((Type) null) {
 			CreateProxy();
@@ -79,7 +73,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QCursor", "(const QPixmap&, int, int)", "#$$")]
 		private void NewQCursor(QPixmap pixmap, int hotX, int hotY) {
-			ProxyQCursor().NewQCursor(pixmap,hotX,hotY);
+			((QCursor) interceptor).NewQCursor(pixmap,hotX,hotY);
 		}
 		public QCursor(QPixmap pixmap, int hotX) : this((Type) null) {
 			CreateProxy();
@@ -87,7 +81,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QCursor", "(const QPixmap&, int)", "#$")]
 		private void NewQCursor(QPixmap pixmap, int hotX) {
-			ProxyQCursor().NewQCursor(pixmap,hotX);
+			((QCursor) interceptor).NewQCursor(pixmap,hotX);
 		}
 		public QCursor(QPixmap pixmap) : this((Type) null) {
 			CreateProxy();
@@ -95,7 +89,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QCursor", "(const QPixmap&)", "#")]
 		private void NewQCursor(QPixmap pixmap) {
-			ProxyQCursor().NewQCursor(pixmap);
+			((QCursor) interceptor).NewQCursor(pixmap);
 		}
 		public QCursor(QCursor cursor) : this((Type) null) {
 			CreateProxy();
@@ -103,31 +97,31 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QCursor", "(const QCursor&)", "#")]
 		private void NewQCursor(QCursor cursor) {
-			ProxyQCursor().NewQCursor(cursor);
+			((QCursor) interceptor).NewQCursor(cursor);
 		}
 		[SmokeMethod("shape", "() const", "")]
 		public Qt.CursorShape Shape() {
-			return ProxyQCursor().Shape();
+			return ((QCursor) interceptor).Shape();
 		}
 		[SmokeMethod("setShape", "(Qt::CursorShape)", "$")]
 		public void SetShape(Qt.CursorShape newShape) {
-			ProxyQCursor().SetShape(newShape);
+			((QCursor) interceptor).SetShape(newShape);
 		}
 		[SmokeMethod("bitmap", "() const", "")]
 		public QBitmap Bitmap() {
-			return ProxyQCursor().Bitmap();
+			return ((QCursor) interceptor).Bitmap();
 		}
 		[SmokeMethod("mask", "() const", "")]
 		public QBitmap Mask() {
-			return ProxyQCursor().Mask();
+			return ((QCursor) interceptor).Mask();
 		}
 		[SmokeMethod("pixmap", "() const", "")]
 		public QPixmap Pixmap() {
-			return ProxyQCursor().Pixmap();
+			return ((QCursor) interceptor).Pixmap();
 		}
 		[SmokeMethod("hotSpot", "() const", "")]
 		public QPoint HotSpot() {
-			return ProxyQCursor().HotSpot();
+			return ((QCursor) interceptor).HotSpot();
 		}
 		~QCursor() {
 			DisposeQCursor();
@@ -137,16 +131,16 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QCursor", "()", "")]
 		private void DisposeQCursor() {
-			ProxyQCursor().DisposeQCursor();
+			((QCursor) interceptor).DisposeQCursor();
 		}
 		public static QPoint Pos() {
-			return StaticQCursor().Pos();
+			return staticInterceptor.Pos();
 		}
 		public static void SetPos(int x, int y) {
-			StaticQCursor().SetPos(x,y);
+			staticInterceptor.SetPos(x,y);
 		}
 		public static void SetPos(QPoint p) {
-			StaticQCursor().SetPos(p);
+			staticInterceptor.SetPos(p);
 		}
 	}
 }

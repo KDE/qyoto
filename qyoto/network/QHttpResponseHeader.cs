@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QHttpResponseHeader(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QHttpResponseHeader), this);
-			_interceptor = (QHttpResponseHeader) realProxy.GetTransparentProxy();
-		}
-		private QHttpResponseHeader ProxyQHttpResponseHeader() {
-			return (QHttpResponseHeader) _interceptor;
+			interceptor = (QHttpResponseHeader) realProxy.GetTransparentProxy();
 		}
 		public QHttpResponseHeader() : this((Type) null) {
 			CreateProxy();
@@ -19,7 +16,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QHttpResponseHeader", "()", "")]
 		private void NewQHttpResponseHeader() {
-			ProxyQHttpResponseHeader().NewQHttpResponseHeader();
+			((QHttpResponseHeader) interceptor).NewQHttpResponseHeader();
 		}
 		public QHttpResponseHeader(QHttpResponseHeader header) : this((Type) null) {
 			CreateProxy();
@@ -27,7 +24,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QHttpResponseHeader", "(const QHttpResponseHeader&)", "#")]
 		private void NewQHttpResponseHeader(QHttpResponseHeader header) {
-			ProxyQHttpResponseHeader().NewQHttpResponseHeader(header);
+			((QHttpResponseHeader) interceptor).NewQHttpResponseHeader(header);
 		}
 		public QHttpResponseHeader(string str) : this((Type) null) {
 			CreateProxy();
@@ -35,7 +32,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QHttpResponseHeader", "(const QString&)", "$")]
 		private void NewQHttpResponseHeader(string str) {
-			ProxyQHttpResponseHeader().NewQHttpResponseHeader(str);
+			((QHttpResponseHeader) interceptor).NewQHttpResponseHeader(str);
 		}
 		public QHttpResponseHeader(int code, string text, int majorVer, int minorVer) : this((Type) null) {
 			CreateProxy();
@@ -43,7 +40,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QHttpResponseHeader", "(int, const QString&, int, int)", "$$$$")]
 		private void NewQHttpResponseHeader(int code, string text, int majorVer, int minorVer) {
-			ProxyQHttpResponseHeader().NewQHttpResponseHeader(code,text,majorVer,minorVer);
+			((QHttpResponseHeader) interceptor).NewQHttpResponseHeader(code,text,majorVer,minorVer);
 		}
 		public QHttpResponseHeader(int code, string text, int majorVer) : this((Type) null) {
 			CreateProxy();
@@ -51,7 +48,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QHttpResponseHeader", "(int, const QString&, int)", "$$$")]
 		private void NewQHttpResponseHeader(int code, string text, int majorVer) {
-			ProxyQHttpResponseHeader().NewQHttpResponseHeader(code,text,majorVer);
+			((QHttpResponseHeader) interceptor).NewQHttpResponseHeader(code,text,majorVer);
 		}
 		public QHttpResponseHeader(int code, string text) : this((Type) null) {
 			CreateProxy();
@@ -59,7 +56,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QHttpResponseHeader", "(int, const QString&)", "$$")]
 		private void NewQHttpResponseHeader(int code, string text) {
-			ProxyQHttpResponseHeader().NewQHttpResponseHeader(code,text);
+			((QHttpResponseHeader) interceptor).NewQHttpResponseHeader(code,text);
 		}
 		public QHttpResponseHeader(int code) : this((Type) null) {
 			CreateProxy();
@@ -67,47 +64,47 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QHttpResponseHeader", "(int)", "$")]
 		private void NewQHttpResponseHeader(int code) {
-			ProxyQHttpResponseHeader().NewQHttpResponseHeader(code);
+			((QHttpResponseHeader) interceptor).NewQHttpResponseHeader(code);
 		}
 		[SmokeMethod("setStatusLine", "(int, const QString&, int, int)", "$$$$")]
 		public void SetStatusLine(int code, string text, int majorVer, int minorVer) {
-			ProxyQHttpResponseHeader().SetStatusLine(code,text,majorVer,minorVer);
+			((QHttpResponseHeader) interceptor).SetStatusLine(code,text,majorVer,minorVer);
 		}
 		[SmokeMethod("setStatusLine", "(int, const QString&, int)", "$$$")]
 		public void SetStatusLine(int code, string text, int majorVer) {
-			ProxyQHttpResponseHeader().SetStatusLine(code,text,majorVer);
+			((QHttpResponseHeader) interceptor).SetStatusLine(code,text,majorVer);
 		}
 		[SmokeMethod("setStatusLine", "(int, const QString&)", "$$")]
 		public void SetStatusLine(int code, string text) {
-			ProxyQHttpResponseHeader().SetStatusLine(code,text);
+			((QHttpResponseHeader) interceptor).SetStatusLine(code,text);
 		}
 		[SmokeMethod("setStatusLine", "(int)", "$")]
 		public void SetStatusLine(int code) {
-			ProxyQHttpResponseHeader().SetStatusLine(code);
+			((QHttpResponseHeader) interceptor).SetStatusLine(code);
 		}
 		[SmokeMethod("statusCode", "() const", "")]
 		public int StatusCode() {
-			return ProxyQHttpResponseHeader().StatusCode();
+			return ((QHttpResponseHeader) interceptor).StatusCode();
 		}
 		[SmokeMethod("reasonPhrase", "() const", "")]
 		public string ReasonPhrase() {
-			return ProxyQHttpResponseHeader().ReasonPhrase();
+			return ((QHttpResponseHeader) interceptor).ReasonPhrase();
 		}
 		[SmokeMethod("majorVersion", "() const", "")]
 		public override int MajorVersion() {
-			return ProxyQHttpResponseHeader().MajorVersion();
+			return ((QHttpResponseHeader) interceptor).MajorVersion();
 		}
 		[SmokeMethod("minorVersion", "() const", "")]
 		public override int MinorVersion() {
-			return ProxyQHttpResponseHeader().MinorVersion();
+			return ((QHttpResponseHeader) interceptor).MinorVersion();
 		}
 		[SmokeMethod("toString", "() const", "")]
 		public new string ToString() {
-			return ProxyQHttpResponseHeader().ToString();
+			return ((QHttpResponseHeader) interceptor).ToString();
 		}
 		[SmokeMethod("parseLine", "(const QString&, int)", "$$")]
 		protected override bool ParseLine(string line, int number) {
-			return ProxyQHttpResponseHeader().ParseLine(line,number);
+			return ((QHttpResponseHeader) interceptor).ParseLine(line,number);
 		}
 		~QHttpResponseHeader() {
 			DisposeQHttpResponseHeader();
@@ -117,7 +114,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QHttpResponseHeader", "()", "")]
 		private void DisposeQHttpResponseHeader() {
-			ProxyQHttpResponseHeader().DisposeQHttpResponseHeader();
+			((QHttpResponseHeader) interceptor).DisposeQHttpResponseHeader();
 		}
 	}
 }

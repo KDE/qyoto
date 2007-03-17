@@ -16,18 +16,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGroupBox), this);
-			_interceptor = (QGroupBox) realProxy.GetTransparentProxy();
+			interceptor = (QGroupBox) realProxy.GetTransparentProxy();
 		}
-		private QGroupBox ProxyQGroupBox() {
-			return (QGroupBox) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQGroupBoxProxy staticInterceptor = null;
 		static QGroupBox() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQGroupBoxProxy), null);
-			_staticInterceptor = (IQGroupBoxProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQGroupBoxProxy StaticQGroupBox() {
-			return (IQGroupBoxProxy) _staticInterceptor;
+			staticInterceptor = (IQGroupBoxProxy) realProxy.GetTransparentProxy();
 		}
 		[Q_PROPERTY("QString", "title")]
 		public string Title {
@@ -60,7 +54,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGroupBox", "(QWidget*)", "#")]
 		private void NewQGroupBox(QWidget parent) {
-			ProxyQGroupBox().NewQGroupBox(parent);
+			((QGroupBox) interceptor).NewQGroupBox(parent);
 		}
 		public QGroupBox() : this((Type) null) {
 			CreateProxy();
@@ -68,7 +62,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGroupBox", "()", "")]
 		private void NewQGroupBox() {
-			ProxyQGroupBox().NewQGroupBox();
+			((QGroupBox) interceptor).NewQGroupBox();
 		}
 		public QGroupBox(string title, QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -76,7 +70,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGroupBox", "(const QString&, QWidget*)", "$#")]
 		private void NewQGroupBox(string title, QWidget parent) {
-			ProxyQGroupBox().NewQGroupBox(title,parent);
+			((QGroupBox) interceptor).NewQGroupBox(title,parent);
 		}
 		public QGroupBox(string title) : this((Type) null) {
 			CreateProxy();
@@ -84,59 +78,59 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGroupBox", "(const QString&)", "$")]
 		private void NewQGroupBox(string title) {
-			ProxyQGroupBox().NewQGroupBox(title);
+			((QGroupBox) interceptor).NewQGroupBox(title);
 		}
 		[SmokeMethod("minimumSizeHint", "() const", "")]
 		public override QSize MinimumSizeHint() {
-			return ProxyQGroupBox().MinimumSizeHint();
+			return ((QGroupBox) interceptor).MinimumSizeHint();
 		}
 		[SmokeMethod("isFlat", "() const", "")]
 		public bool IsFlat() {
-			return ProxyQGroupBox().IsFlat();
+			return ((QGroupBox) interceptor).IsFlat();
 		}
 		[SmokeMethod("isCheckable", "() const", "")]
 		public bool IsCheckable() {
-			return ProxyQGroupBox().IsCheckable();
+			return ((QGroupBox) interceptor).IsCheckable();
 		}
 		[SmokeMethod("isChecked", "() const", "")]
 		public bool IsChecked() {
-			return ProxyQGroupBox().IsChecked();
+			return ((QGroupBox) interceptor).IsChecked();
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent arg1) {
-			return ProxyQGroupBox().Event(arg1);
+			return ((QGroupBox) interceptor).Event(arg1);
 		}
 		[SmokeMethod("childEvent", "(QChildEvent*)", "#")]
 		protected override void ChildEvent(QChildEvent arg1) {
-			ProxyQGroupBox().ChildEvent(arg1);
+			((QGroupBox) interceptor).ChildEvent(arg1);
 		}
 		[SmokeMethod("resizeEvent", "(QResizeEvent*)", "#")]
 		protected override void ResizeEvent(QResizeEvent arg1) {
-			ProxyQGroupBox().ResizeEvent(arg1);
+			((QGroupBox) interceptor).ResizeEvent(arg1);
 		}
 		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
 		protected override void PaintEvent(QPaintEvent arg1) {
-			ProxyQGroupBox().PaintEvent(arg1);
+			((QGroupBox) interceptor).PaintEvent(arg1);
 		}
 		[SmokeMethod("focusInEvent", "(QFocusEvent*)", "#")]
 		protected override void FocusInEvent(QFocusEvent arg1) {
-			ProxyQGroupBox().FocusInEvent(arg1);
+			((QGroupBox) interceptor).FocusInEvent(arg1);
 		}
 		[SmokeMethod("changeEvent", "(QEvent*)", "#")]
 		protected override void ChangeEvent(QEvent arg1) {
-			ProxyQGroupBox().ChangeEvent(arg1);
+			((QGroupBox) interceptor).ChangeEvent(arg1);
 		}
 		[SmokeMethod("mousePressEvent", "(QMouseEvent*)", "#")]
 		protected override void MousePressEvent(QMouseEvent arg1) {
-			ProxyQGroupBox().MousePressEvent(arg1);
+			((QGroupBox) interceptor).MousePressEvent(arg1);
 		}
 		[SmokeMethod("mouseMoveEvent", "(QMouseEvent*)", "#")]
 		protected override void MouseMoveEvent(QMouseEvent arg1) {
-			ProxyQGroupBox().MouseMoveEvent(arg1);
+			((QGroupBox) interceptor).MouseMoveEvent(arg1);
 		}
 		[SmokeMethod("mouseReleaseEvent", "(QMouseEvent*)", "#")]
 		protected override void MouseReleaseEvent(QMouseEvent arg1) {
-			ProxyQGroupBox().MouseReleaseEvent(arg1);
+			((QGroupBox) interceptor).MouseReleaseEvent(arg1);
 		}
 		~QGroupBox() {
 			DisposeQGroupBox();
@@ -146,13 +140,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QGroupBox", "()", "")]
 		private void DisposeQGroupBox() {
-			ProxyQGroupBox().DisposeQGroupBox();
+			((QGroupBox) interceptor).DisposeQGroupBox();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQGroupBox().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQGroupBox().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQGroupBoxSignals Emit {
 			get { return (IQGroupBoxSignals) Q_EMIT; }

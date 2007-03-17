@@ -5,7 +5,7 @@ namespace Qyoto {
 	using System.Collections.Generic;
 
 	public partial class Qt : MarshalByRefObject {
-		protected Object _interceptor = null;
+		protected Qt interceptor = null;
 		[SmokeClass("Qt")]
 		interface IQtProxy {
 			[SmokeMethod("mightBeRichText", "(const QString&)", "$")]
@@ -459,13 +459,10 @@ namespace Qyoto {
 			[SmokeMethod("operator>>", "(QDataStream&, QUuid&)", "##")]
 			QDataStream Read(QDataStream arg1, QUuid arg2);
 		}
-		private static Object _staticInterceptor = null;
+		private static IQtProxy staticInterceptor = null;
 		static Qt() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQtProxy), null);
-			_staticInterceptor = (IQtProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQtProxy StaticQt() {
-			return (IQtProxy) _staticInterceptor;
+			staticInterceptor = (IQtProxy) realProxy.GetTransparentProxy();
 		}
 		public enum HitTestAccuracy {
 			ExactHit = 0,
@@ -1349,679 +1346,679 @@ namespace Qyoto {
 		// QDebug qWarning(); >>>> NOT CONVERTED
 		// QDebug qCritical(); >>>> NOT CONVERTED
 		public static bool MightBeRichText(string arg1) {
-			return StaticQt().MightBeRichText(arg1);
+			return staticInterceptor.MightBeRichText(arg1);
 		}
 		public static string Escape(string plain) {
-			return StaticQt().Escape(plain);
+			return staticInterceptor.Escape(plain);
 		}
 		public static string ConvertFromPlainText(string plain, Qt.WhiteSpaceMode mode) {
-			return StaticQt().ConvertFromPlainText(plain,mode);
+			return staticInterceptor.ConvertFromPlainText(plain,mode);
 		}
 		public static string ConvertFromPlainText(string plain) {
-			return StaticQt().ConvertFromPlainText(plain);
+			return staticInterceptor.ConvertFromPlainText(plain);
 		}
 		public static QTextCodec CodecForHtml(QByteArray ba) {
-			return StaticQt().CodecForHtml(ba);
+			return staticInterceptor.CodecForHtml(ba);
 		}
 		public static void QDBusReplyFill(QDBusMessage reply, QDBusError error, QVariant data) {
-			StaticQt().QDBusReplyFill(reply,error,data);
+			staticInterceptor.QDBusReplyFill(reply,error,data);
 		}
 		public static QDBusArgument Read(QDBusArgument a, QVariant v) {
-			return StaticQt().Read(a,v);
+			return staticInterceptor.Read(a,v);
 		}
 		public static QDBusArgument Read(QDBusArgument a, QDate date) {
-			return StaticQt().Read(a,date);
+			return staticInterceptor.Read(a,date);
 		}
 		public static QDBusArgument Write(QDBusArgument a, QDate date) {
-			return StaticQt().Write(a,date);
+			return staticInterceptor.Write(a,date);
 		}
 		public static QDBusArgument Read(QDBusArgument a, QTime time) {
-			return StaticQt().Read(a,time);
+			return staticInterceptor.Read(a,time);
 		}
 		public static QDBusArgument Write(QDBusArgument a, QTime time) {
-			return StaticQt().Write(a,time);
+			return staticInterceptor.Write(a,time);
 		}
 		public static QDBusArgument Read(QDBusArgument a, QDateTime dt) {
-			return StaticQt().Read(a,dt);
+			return staticInterceptor.Read(a,dt);
 		}
 		public static QDBusArgument Write(QDBusArgument a, QDateTime dt) {
-			return StaticQt().Write(a,dt);
+			return staticInterceptor.Write(a,dt);
 		}
 		public static QDBusArgument Read(QDBusArgument a, QRect rect) {
-			return StaticQt().Read(a,rect);
+			return staticInterceptor.Read(a,rect);
 		}
 		public static QDBusArgument Write(QDBusArgument a, QRect rect) {
-			return StaticQt().Write(a,rect);
+			return staticInterceptor.Write(a,rect);
 		}
 		public static QDBusArgument Read(QDBusArgument a, QRectF rect) {
-			return StaticQt().Read(a,rect);
+			return staticInterceptor.Read(a,rect);
 		}
 		public static QDBusArgument Write(QDBusArgument a, QRectF rect) {
-			return StaticQt().Write(a,rect);
+			return staticInterceptor.Write(a,rect);
 		}
 		public static QDBusArgument Read(QDBusArgument a, QSize size) {
-			return StaticQt().Read(a,size);
+			return staticInterceptor.Read(a,size);
 		}
 		public static QDBusArgument Write(QDBusArgument a, QSize size) {
-			return StaticQt().Write(a,size);
+			return staticInterceptor.Write(a,size);
 		}
 		public static QDBusArgument Read(QDBusArgument a, QSizeF size) {
-			return StaticQt().Read(a,size);
+			return staticInterceptor.Read(a,size);
 		}
 		public static QDBusArgument Write(QDBusArgument a, QSizeF size) {
-			return StaticQt().Write(a,size);
+			return staticInterceptor.Write(a,size);
 		}
 		public static QDBusArgument Read(QDBusArgument a, QPoint pt) {
-			return StaticQt().Read(a,pt);
+			return staticInterceptor.Read(a,pt);
 		}
 		public static QDBusArgument Write(QDBusArgument a, QPoint pt) {
-			return StaticQt().Write(a,pt);
+			return staticInterceptor.Write(a,pt);
 		}
 		public static QDBusArgument Read(QDBusArgument a, QPointF pt) {
-			return StaticQt().Read(a,pt);
+			return staticInterceptor.Read(a,pt);
 		}
 		public static QDBusArgument Write(QDBusArgument a, QPointF pt) {
-			return StaticQt().Write(a,pt);
+			return staticInterceptor.Write(a,pt);
 		}
 		public static QDBusArgument Read(QDBusArgument a, QLine line) {
-			return StaticQt().Read(a,line);
+			return staticInterceptor.Read(a,line);
 		}
 		public static QDBusArgument Write(QDBusArgument a, QLine line) {
-			return StaticQt().Write(a,line);
+			return staticInterceptor.Write(a,line);
 		}
 		public static QDBusArgument Read(QDBusArgument a, QLineF line) {
-			return StaticQt().Read(a,line);
+			return staticInterceptor.Read(a,line);
 		}
 		public static QDBusArgument Write(QDBusArgument a, QLineF line) {
-			return StaticQt().Write(a,line);
+			return staticInterceptor.Write(a,line);
 		}
 		public static QDBusArgument Write(QDBusArgument arg, List<QVariant> list) {
-			return StaticQt().Write(arg,list);
+			return staticInterceptor.Write(arg,list);
 		}
 		public static QTextStream Write(QTextStream arg1, QDomNode arg2) {
-			return StaticQt().Write(arg1,arg2);
+			return staticInterceptor.Write(arg1,arg2);
 		}
 		public static uint QHash(QHostAddress key) {
-			return StaticQt().QHash(key);
+			return staticInterceptor.QHash(key);
 		}
 		public static QDataStream Write(QDataStream arg1, QHostAddress arg2) {
-			return StaticQt().Write(arg1,arg2);
+			return staticInterceptor.Write(arg1,arg2);
 		}
 		public static QDataStream Read(QDataStream arg1, QHostAddress arg2) {
-			return StaticQt().Read(arg1,arg2);
+			return staticInterceptor.Read(arg1,arg2);
 		}
 		public static QDataStream Write(QDataStream ds, QPalette p) {
-			return StaticQt().Write(ds,p);
+			return staticInterceptor.Write(ds,p);
 		}
 		public static QDataStream Read(QDataStream ds, QPalette p) {
-			return StaticQt().Read(ds,p);
+			return staticInterceptor.Read(ds,p);
 		}
 		public static QDataStream Write(QDataStream outS, QCursor cursor) {
-			return StaticQt().Write(outS,cursor);
+			return staticInterceptor.Write(outS,cursor);
 		}
 		public static QDataStream Read(QDataStream inS, QCursor cursor) {
-			return StaticQt().Read(inS,cursor);
+			return staticInterceptor.Read(inS,cursor);
 		}
 		public static QDataStream Write(QDataStream arg1, QKeySequence ks) {
-			return StaticQt().Write(arg1,ks);
+			return staticInterceptor.Write(arg1,ks);
 		}
 		public static QDataStream Read(QDataStream arg1, QKeySequence ks) {
-			return StaticQt().Read(arg1,ks);
+			return staticInterceptor.Read(arg1,ks);
 		}
 		public static QDataStream Write(QDataStream arg1, QSizePolicy arg2) {
-			return StaticQt().Write(arg1,arg2);
+			return staticInterceptor.Write(arg1,arg2);
 		}
 		public static QDataStream Read(QDataStream arg1, QSizePolicy arg2) {
-			return StaticQt().Read(arg1,arg2);
+			return staticInterceptor.Read(arg1,arg2);
 		}
 		public static QDataStream Write(QDataStream arg1, QPicture arg2) {
-			return StaticQt().Write(arg1,arg2);
+			return staticInterceptor.Write(arg1,arg2);
 		}
 		public static QDataStream Read(QDataStream arg1, QPicture arg2) {
-			return StaticQt().Read(arg1,arg2);
+			return staticInterceptor.Read(arg1,arg2);
 		}
 		public static QDataStream Write(QDataStream arg1, QImage arg2) {
-			return StaticQt().Write(arg1,arg2);
+			return staticInterceptor.Write(arg1,arg2);
 		}
 		public static QDataStream Read(QDataStream arg1, QImage arg2) {
-			return StaticQt().Read(arg1,arg2);
+			return staticInterceptor.Read(arg1,arg2);
 		}
 		public static QDataStream Write(QDataStream arg1, QIcon arg2) {
-			return StaticQt().Write(arg1,arg2);
+			return staticInterceptor.Write(arg1,arg2);
 		}
 		public static QDataStream Read(QDataStream arg1, QIcon arg2) {
-			return StaticQt().Read(arg1,arg2);
+			return staticInterceptor.Read(arg1,arg2);
 		}
 		public static QDataStream Write(QDataStream arg1, QPixmap arg2) {
-			return StaticQt().Write(arg1,arg2);
+			return staticInterceptor.Write(arg1,arg2);
 		}
 		public static QDataStream Read(QDataStream arg1, QPixmap arg2) {
-			return StaticQt().Read(arg1,arg2);
+			return staticInterceptor.Read(arg1,arg2);
 		}
 		public static QDataStream Write(QDataStream arg1, QFont arg2) {
-			return StaticQt().Write(arg1,arg2);
+			return staticInterceptor.Write(arg1,arg2);
 		}
 		public static QDataStream Read(QDataStream arg1, QFont arg2) {
-			return StaticQt().Read(arg1,arg2);
+			return staticInterceptor.Read(arg1,arg2);
 		}
 		public static QDataStream Write(QDataStream arg1, QTextLength arg2) {
-			return StaticQt().Write(arg1,arg2);
+			return staticInterceptor.Write(arg1,arg2);
 		}
 		public static QDataStream Read(QDataStream arg1, QTextLength arg2) {
-			return StaticQt().Read(arg1,arg2);
+			return staticInterceptor.Read(arg1,arg2);
 		}
 		public static QDataStream Write(QDataStream arg1, QTextFormat arg2) {
-			return StaticQt().Write(arg1,arg2);
+			return staticInterceptor.Write(arg1,arg2);
 		}
 		public static QDataStream Read(QDataStream arg1, QTextFormat arg2) {
-			return StaticQt().Read(arg1,arg2);
+			return staticInterceptor.Read(arg1,arg2);
 		}
 		public static QTextStream Write(QTextStream arg1, QSplitter arg2) {
-			return StaticQt().Write(arg1,arg2);
+			return staticInterceptor.Write(arg1,arg2);
 		}
 		public static QTextStream Read(QTextStream arg1, QSplitter arg2) {
-			return StaticQt().Read(arg1,arg2);
+			return staticInterceptor.Read(arg1,arg2);
 		}
 		public static QDataStream Write(QDataStream arg1, QColor arg2) {
-			return StaticQt().Write(arg1,arg2);
+			return staticInterceptor.Write(arg1,arg2);
 		}
 		public static QDataStream Read(QDataStream arg1, QColor arg2) {
-			return StaticQt().Read(arg1,arg2);
+			return staticInterceptor.Read(arg1,arg2);
 		}
 		public static QDataStream Write(QDataStream arg1, QPen arg2) {
-			return StaticQt().Write(arg1,arg2);
+			return staticInterceptor.Write(arg1,arg2);
 		}
 		public static QDataStream Read(QDataStream arg1, QPen arg2) {
-			return StaticQt().Read(arg1,arg2);
+			return staticInterceptor.Read(arg1,arg2);
 		}
 		public static void QDrawShadeLine(QPainter p, int x1, int y1, int x2, int y2, QPalette pal, bool sunken, int lineWidth, int midLineWidth) {
-			StaticQt().QDrawShadeLine(p,x1,y1,x2,y2,pal,sunken,lineWidth,midLineWidth);
+			staticInterceptor.QDrawShadeLine(p,x1,y1,x2,y2,pal,sunken,lineWidth,midLineWidth);
 		}
 		public static void QDrawShadeLine(QPainter p, int x1, int y1, int x2, int y2, QPalette pal, bool sunken, int lineWidth) {
-			StaticQt().QDrawShadeLine(p,x1,y1,x2,y2,pal,sunken,lineWidth);
+			staticInterceptor.QDrawShadeLine(p,x1,y1,x2,y2,pal,sunken,lineWidth);
 		}
 		public static void QDrawShadeLine(QPainter p, int x1, int y1, int x2, int y2, QPalette pal, bool sunken) {
-			StaticQt().QDrawShadeLine(p,x1,y1,x2,y2,pal,sunken);
+			staticInterceptor.QDrawShadeLine(p,x1,y1,x2,y2,pal,sunken);
 		}
 		public static void QDrawShadeLine(QPainter p, int x1, int y1, int x2, int y2, QPalette pal) {
-			StaticQt().QDrawShadeLine(p,x1,y1,x2,y2,pal);
+			staticInterceptor.QDrawShadeLine(p,x1,y1,x2,y2,pal);
 		}
 		public static void QDrawShadeLine(QPainter p, QPoint p1, QPoint p2, QPalette pal, bool sunken, int lineWidth, int midLineWidth) {
-			StaticQt().QDrawShadeLine(p,p1,p2,pal,sunken,lineWidth,midLineWidth);
+			staticInterceptor.QDrawShadeLine(p,p1,p2,pal,sunken,lineWidth,midLineWidth);
 		}
 		public static void QDrawShadeLine(QPainter p, QPoint p1, QPoint p2, QPalette pal, bool sunken, int lineWidth) {
-			StaticQt().QDrawShadeLine(p,p1,p2,pal,sunken,lineWidth);
+			staticInterceptor.QDrawShadeLine(p,p1,p2,pal,sunken,lineWidth);
 		}
 		public static void QDrawShadeLine(QPainter p, QPoint p1, QPoint p2, QPalette pal, bool sunken) {
-			StaticQt().QDrawShadeLine(p,p1,p2,pal,sunken);
+			staticInterceptor.QDrawShadeLine(p,p1,p2,pal,sunken);
 		}
 		public static void QDrawShadeLine(QPainter p, QPoint p1, QPoint p2, QPalette pal) {
-			StaticQt().QDrawShadeLine(p,p1,p2,pal);
+			staticInterceptor.QDrawShadeLine(p,p1,p2,pal);
 		}
 		public static void QDrawShadeRect(QPainter p, int x, int y, int w, int h, QPalette pal, bool sunken, int lineWidth, int midLineWidth, QBrush fill) {
-			StaticQt().QDrawShadeRect(p,x,y,w,h,pal,sunken,lineWidth,midLineWidth,fill);
+			staticInterceptor.QDrawShadeRect(p,x,y,w,h,pal,sunken,lineWidth,midLineWidth,fill);
 		}
 		public static void QDrawShadeRect(QPainter p, int x, int y, int w, int h, QPalette pal, bool sunken, int lineWidth, int midLineWidth) {
-			StaticQt().QDrawShadeRect(p,x,y,w,h,pal,sunken,lineWidth,midLineWidth);
+			staticInterceptor.QDrawShadeRect(p,x,y,w,h,pal,sunken,lineWidth,midLineWidth);
 		}
 		public static void QDrawShadeRect(QPainter p, int x, int y, int w, int h, QPalette pal, bool sunken, int lineWidth) {
-			StaticQt().QDrawShadeRect(p,x,y,w,h,pal,sunken,lineWidth);
+			staticInterceptor.QDrawShadeRect(p,x,y,w,h,pal,sunken,lineWidth);
 		}
 		public static void QDrawShadeRect(QPainter p, int x, int y, int w, int h, QPalette pal, bool sunken) {
-			StaticQt().QDrawShadeRect(p,x,y,w,h,pal,sunken);
+			staticInterceptor.QDrawShadeRect(p,x,y,w,h,pal,sunken);
 		}
 		public static void QDrawShadeRect(QPainter p, int x, int y, int w, int h, QPalette pal) {
-			StaticQt().QDrawShadeRect(p,x,y,w,h,pal);
+			staticInterceptor.QDrawShadeRect(p,x,y,w,h,pal);
 		}
 		public static void QDrawShadeRect(QPainter p, QRect r, QPalette pal, bool sunken, int lineWidth, int midLineWidth, QBrush fill) {
-			StaticQt().QDrawShadeRect(p,r,pal,sunken,lineWidth,midLineWidth,fill);
+			staticInterceptor.QDrawShadeRect(p,r,pal,sunken,lineWidth,midLineWidth,fill);
 		}
 		public static void QDrawShadeRect(QPainter p, QRect r, QPalette pal, bool sunken, int lineWidth, int midLineWidth) {
-			StaticQt().QDrawShadeRect(p,r,pal,sunken,lineWidth,midLineWidth);
+			staticInterceptor.QDrawShadeRect(p,r,pal,sunken,lineWidth,midLineWidth);
 		}
 		public static void QDrawShadeRect(QPainter p, QRect r, QPalette pal, bool sunken, int lineWidth) {
-			StaticQt().QDrawShadeRect(p,r,pal,sunken,lineWidth);
+			staticInterceptor.QDrawShadeRect(p,r,pal,sunken,lineWidth);
 		}
 		public static void QDrawShadeRect(QPainter p, QRect r, QPalette pal, bool sunken) {
-			StaticQt().QDrawShadeRect(p,r,pal,sunken);
+			staticInterceptor.QDrawShadeRect(p,r,pal,sunken);
 		}
 		public static void QDrawShadeRect(QPainter p, QRect r, QPalette pal) {
-			StaticQt().QDrawShadeRect(p,r,pal);
+			staticInterceptor.QDrawShadeRect(p,r,pal);
 		}
 		public static void QDrawShadePanel(QPainter p, int x, int y, int w, int h, QPalette pal, bool sunken, int lineWidth, QBrush fill) {
-			StaticQt().QDrawShadePanel(p,x,y,w,h,pal,sunken,lineWidth,fill);
+			staticInterceptor.QDrawShadePanel(p,x,y,w,h,pal,sunken,lineWidth,fill);
 		}
 		public static void QDrawShadePanel(QPainter p, int x, int y, int w, int h, QPalette pal, bool sunken, int lineWidth) {
-			StaticQt().QDrawShadePanel(p,x,y,w,h,pal,sunken,lineWidth);
+			staticInterceptor.QDrawShadePanel(p,x,y,w,h,pal,sunken,lineWidth);
 		}
 		public static void QDrawShadePanel(QPainter p, int x, int y, int w, int h, QPalette pal, bool sunken) {
-			StaticQt().QDrawShadePanel(p,x,y,w,h,pal,sunken);
+			staticInterceptor.QDrawShadePanel(p,x,y,w,h,pal,sunken);
 		}
 		public static void QDrawShadePanel(QPainter p, int x, int y, int w, int h, QPalette pal) {
-			StaticQt().QDrawShadePanel(p,x,y,w,h,pal);
+			staticInterceptor.QDrawShadePanel(p,x,y,w,h,pal);
 		}
 		public static void QDrawShadePanel(QPainter p, QRect r, QPalette pal, bool sunken, int lineWidth, QBrush fill) {
-			StaticQt().QDrawShadePanel(p,r,pal,sunken,lineWidth,fill);
+			staticInterceptor.QDrawShadePanel(p,r,pal,sunken,lineWidth,fill);
 		}
 		public static void QDrawShadePanel(QPainter p, QRect r, QPalette pal, bool sunken, int lineWidth) {
-			StaticQt().QDrawShadePanel(p,r,pal,sunken,lineWidth);
+			staticInterceptor.QDrawShadePanel(p,r,pal,sunken,lineWidth);
 		}
 		public static void QDrawShadePanel(QPainter p, QRect r, QPalette pal, bool sunken) {
-			StaticQt().QDrawShadePanel(p,r,pal,sunken);
+			staticInterceptor.QDrawShadePanel(p,r,pal,sunken);
 		}
 		public static void QDrawShadePanel(QPainter p, QRect r, QPalette pal) {
-			StaticQt().QDrawShadePanel(p,r,pal);
+			staticInterceptor.QDrawShadePanel(p,r,pal);
 		}
 		public static void QDrawWinButton(QPainter p, int x, int y, int w, int h, QPalette pal, bool sunken, QBrush fill) {
-			StaticQt().QDrawWinButton(p,x,y,w,h,pal,sunken,fill);
+			staticInterceptor.QDrawWinButton(p,x,y,w,h,pal,sunken,fill);
 		}
 		public static void QDrawWinButton(QPainter p, int x, int y, int w, int h, QPalette pal, bool sunken) {
-			StaticQt().QDrawWinButton(p,x,y,w,h,pal,sunken);
+			staticInterceptor.QDrawWinButton(p,x,y,w,h,pal,sunken);
 		}
 		public static void QDrawWinButton(QPainter p, int x, int y, int w, int h, QPalette pal) {
-			StaticQt().QDrawWinButton(p,x,y,w,h,pal);
+			staticInterceptor.QDrawWinButton(p,x,y,w,h,pal);
 		}
 		public static void QDrawWinButton(QPainter p, QRect r, QPalette pal, bool sunken, QBrush fill) {
-			StaticQt().QDrawWinButton(p,r,pal,sunken,fill);
+			staticInterceptor.QDrawWinButton(p,r,pal,sunken,fill);
 		}
 		public static void QDrawWinButton(QPainter p, QRect r, QPalette pal, bool sunken) {
-			StaticQt().QDrawWinButton(p,r,pal,sunken);
+			staticInterceptor.QDrawWinButton(p,r,pal,sunken);
 		}
 		public static void QDrawWinButton(QPainter p, QRect r, QPalette pal) {
-			StaticQt().QDrawWinButton(p,r,pal);
+			staticInterceptor.QDrawWinButton(p,r,pal);
 		}
 		public static void QDrawWinPanel(QPainter p, int x, int y, int w, int h, QPalette pal, bool sunken, QBrush fill) {
-			StaticQt().QDrawWinPanel(p,x,y,w,h,pal,sunken,fill);
+			staticInterceptor.QDrawWinPanel(p,x,y,w,h,pal,sunken,fill);
 		}
 		public static void QDrawWinPanel(QPainter p, int x, int y, int w, int h, QPalette pal, bool sunken) {
-			StaticQt().QDrawWinPanel(p,x,y,w,h,pal,sunken);
+			staticInterceptor.QDrawWinPanel(p,x,y,w,h,pal,sunken);
 		}
 		public static void QDrawWinPanel(QPainter p, int x, int y, int w, int h, QPalette pal) {
-			StaticQt().QDrawWinPanel(p,x,y,w,h,pal);
+			staticInterceptor.QDrawWinPanel(p,x,y,w,h,pal);
 		}
 		public static void QDrawWinPanel(QPainter p, QRect r, QPalette pal, bool sunken, QBrush fill) {
-			StaticQt().QDrawWinPanel(p,r,pal,sunken,fill);
+			staticInterceptor.QDrawWinPanel(p,r,pal,sunken,fill);
 		}
 		public static void QDrawWinPanel(QPainter p, QRect r, QPalette pal, bool sunken) {
-			StaticQt().QDrawWinPanel(p,r,pal,sunken);
+			staticInterceptor.QDrawWinPanel(p,r,pal,sunken);
 		}
 		public static void QDrawWinPanel(QPainter p, QRect r, QPalette pal) {
-			StaticQt().QDrawWinPanel(p,r,pal);
+			staticInterceptor.QDrawWinPanel(p,r,pal);
 		}
 		public static void QDrawPlainRect(QPainter p, int x, int y, int w, int h, QColor arg6, int lineWidth, QBrush fill) {
-			StaticQt().QDrawPlainRect(p,x,y,w,h,arg6,lineWidth,fill);
+			staticInterceptor.QDrawPlainRect(p,x,y,w,h,arg6,lineWidth,fill);
 		}
 		public static void QDrawPlainRect(QPainter p, int x, int y, int w, int h, QColor arg6, int lineWidth) {
-			StaticQt().QDrawPlainRect(p,x,y,w,h,arg6,lineWidth);
+			staticInterceptor.QDrawPlainRect(p,x,y,w,h,arg6,lineWidth);
 		}
 		public static void QDrawPlainRect(QPainter p, int x, int y, int w, int h, QColor arg6) {
-			StaticQt().QDrawPlainRect(p,x,y,w,h,arg6);
+			staticInterceptor.QDrawPlainRect(p,x,y,w,h,arg6);
 		}
 		public static void QDrawPlainRect(QPainter p, QRect r, QColor arg3, int lineWidth, QBrush fill) {
-			StaticQt().QDrawPlainRect(p,r,arg3,lineWidth,fill);
+			staticInterceptor.QDrawPlainRect(p,r,arg3,lineWidth,fill);
 		}
 		public static void QDrawPlainRect(QPainter p, QRect r, QColor arg3, int lineWidth) {
-			StaticQt().QDrawPlainRect(p,r,arg3,lineWidth);
+			staticInterceptor.QDrawPlainRect(p,r,arg3,lineWidth);
 		}
 		public static void QDrawPlainRect(QPainter p, QRect r, QColor arg3) {
-			StaticQt().QDrawPlainRect(p,r,arg3);
+			staticInterceptor.QDrawPlainRect(p,r,arg3);
 		}
 		public static QDataStream Write(QDataStream arg1, QBrush arg2) {
-			return StaticQt().Write(arg1,arg2);
+			return staticInterceptor.Write(arg1,arg2);
 		}
 		public static QDataStream Read(QDataStream arg1, QBrush arg2) {
-			return StaticQt().Read(arg1,arg2);
+			return staticInterceptor.Read(arg1,arg2);
 		}
 		public static int QRed(uint rgb) {
-			return StaticQt().QRed(rgb);
+			return staticInterceptor.QRed(rgb);
 		}
 		public static int QGreen(uint rgb) {
-			return StaticQt().QGreen(rgb);
+			return staticInterceptor.QGreen(rgb);
 		}
 		public static int QBlue(uint rgb) {
-			return StaticQt().QBlue(rgb);
+			return staticInterceptor.QBlue(rgb);
 		}
 		public static int QAlpha(uint rgb) {
-			return StaticQt().QAlpha(rgb);
+			return staticInterceptor.QAlpha(rgb);
 		}
 		public static uint QRgb(int r, int g, int b) {
-			return StaticQt().QRgb(r,g,b);
+			return staticInterceptor.QRgb(r,g,b);
 		}
 		public static uint QRgba(int r, int g, int b, int a) {
-			return StaticQt().QRgba(r,g,b,a);
+			return staticInterceptor.QRgba(r,g,b,a);
 		}
 		public static int QGray(int r, int g, int b) {
-			return StaticQt().QGray(r,g,b);
+			return staticInterceptor.QGray(r,g,b);
 		}
 		public static int QGray(uint rgb) {
-			return StaticQt().QGray(rgb);
+			return staticInterceptor.QGray(rgb);
 		}
 		public static bool QIsGray(uint rgb) {
-			return StaticQt().QIsGray(rgb);
+			return staticInterceptor.QIsGray(rgb);
 		}
 		public static QDataStream Write(QDataStream arg1, QPainterPath arg2) {
-			return StaticQt().Write(arg1,arg2);
+			return staticInterceptor.Write(arg1,arg2);
 		}
 		public static QDataStream Read(QDataStream arg1, QPainterPath arg2) {
-			return StaticQt().Read(arg1,arg2);
+			return staticInterceptor.Read(arg1,arg2);
 		}
 		public static QDataStream Write(QDataStream arg1, QRegion arg2) {
-			return StaticQt().Write(arg1,arg2);
+			return staticInterceptor.Write(arg1,arg2);
 		}
 		public static QDataStream Read(QDataStream arg1, QRegion arg2) {
-			return StaticQt().Read(arg1,arg2);
+			return staticInterceptor.Read(arg1,arg2);
 		}
 		public static QDataStream Write(QDataStream stream, QPolygonF array) {
-			return StaticQt().Write(stream,array);
+			return staticInterceptor.Write(stream,array);
 		}
 		public static QDataStream Read(QDataStream stream, QPolygonF array) {
-			return StaticQt().Read(stream,array);
+			return staticInterceptor.Read(stream,array);
 		}
 		public static QDataStream Write(QDataStream arg1, QMatrix arg2) {
-			return StaticQt().Write(arg1,arg2);
+			return staticInterceptor.Write(arg1,arg2);
 		}
 		public static QDataStream Read(QDataStream arg1, QMatrix arg2) {
-			return StaticQt().Read(arg1,arg2);
+			return staticInterceptor.Read(arg1,arg2);
 		}
 		public static QDataStream Read(QDataStream arg1, QTableWidgetItem item) {
-			return StaticQt().Read(arg1,item);
+			return staticInterceptor.Read(arg1,item);
 		}
 		public static QDataStream Write(QDataStream arg1, QTableWidgetItem item) {
-			return StaticQt().Write(arg1,item);
+			return staticInterceptor.Write(arg1,item);
 		}
 		public static QDataStream Write(QDataStream arg1, QTreeWidgetItem item) {
-			return StaticQt().Write(arg1,item);
+			return staticInterceptor.Write(arg1,item);
 		}
 		public static QDataStream Read(QDataStream arg1, QTreeWidgetItem item) {
-			return StaticQt().Read(arg1,item);
+			return staticInterceptor.Read(arg1,item);
 		}
 		public static QDataStream Write(QDataStream arg1, QListWidgetItem item) {
-			return StaticQt().Write(arg1,item);
+			return staticInterceptor.Write(arg1,item);
 		}
 		public static QDataStream Read(QDataStream arg1, QListWidgetItem item) {
-			return StaticQt().Read(arg1,item);
+			return staticInterceptor.Read(arg1,item);
 		}
 		public static uint QHash(QItemSelectionRange arg1) {
-			return StaticQt().QHash(arg1);
+			return staticInterceptor.QHash(arg1);
 		}
 		public static int QRound(double d) {
-			return StaticQt().QRound(d);
+			return staticInterceptor.QRound(d);
 		}
 		public static long QRound64(double d) {
-			return StaticQt().QRound64(d);
+			return staticInterceptor.QRound64(d);
 		}
 		public static string QVersion() {
-			return StaticQt().QVersion();
+			return staticInterceptor.QVersion();
 		}
 		public static bool QSharedBuild() {
-			return StaticQt().QSharedBuild();
+			return staticInterceptor.QSharedBuild();
 		}
 		public static bool QFuzzyCompare(double p1, double p2) {
-			return StaticQt().QFuzzyCompare(p1,p2);
+			return staticInterceptor.QFuzzyCompare(p1,p2);
 		}
 		public static bool QFuzzyCompare(float p1, float p2) {
-			return StaticQt().QFuzzyCompare(p1,p2);
+			return staticInterceptor.QFuzzyCompare(p1,p2);
 		}
 		public static bool QIsNull(double d) {
-			return StaticQt().QIsNull(d);
+			return staticInterceptor.QIsNull(d);
 		}
 		public static bool QIsNull(float f) {
-			return StaticQt().QIsNull(f);
+			return staticInterceptor.QIsNull(f);
 		}
 		public static QByteArray Qgetenv(string varName) {
-			return StaticQt().Qgetenv(varName);
+			return staticInterceptor.Qgetenv(varName);
 		}
 		public static int QIntCast(double f) {
-			return StaticQt().QIntCast(f);
+			return staticInterceptor.QIntCast(f);
 		}
 		public static int QIntCast(float f) {
-			return StaticQt().QIntCast(f);
+			return staticInterceptor.QIntCast(f);
 		}
 		public static void Qsrand(uint seed) {
-			StaticQt().Qsrand(seed);
+			staticInterceptor.Qsrand(seed);
 		}
 		public static int Qrand() {
-			return StaticQt().Qrand();
+			return staticInterceptor.Qrand();
 		}
 		public static QDataStream Read(QDataStream s, QVariant p) {
-			return StaticQt().Read(s,p);
+			return staticInterceptor.Read(s,p);
 		}
 		public static QDataStream Write(QDataStream s, QVariant p) {
-			return StaticQt().Write(s,p);
+			return staticInterceptor.Write(s,p);
 		}
 		public static string QAppName() {
-			return StaticQt().QAppName();
+			return staticInterceptor.QAppName();
 		}
 		public static uint QHash(QModelIndex index) {
-			return StaticQt().QHash(index);
+			return staticInterceptor.QHash(index);
 		}
 		public static QDataStream Write(QDataStream arg1, QRect arg2) {
-			return StaticQt().Write(arg1,arg2);
+			return staticInterceptor.Write(arg1,arg2);
 		}
 		public static QDataStream Read(QDataStream arg1, QRect arg2) {
-			return StaticQt().Read(arg1,arg2);
+			return staticInterceptor.Read(arg1,arg2);
 		}
 		public static QDataStream Write(QDataStream arg1, QRectF arg2) {
-			return StaticQt().Write(arg1,arg2);
+			return staticInterceptor.Write(arg1,arg2);
 		}
 		public static QDataStream Read(QDataStream arg1, QRectF arg2) {
-			return StaticQt().Read(arg1,arg2);
+			return staticInterceptor.Read(arg1,arg2);
 		}
 		public static QDataStream Write(QDataStream arg1, QLocale arg2) {
-			return StaticQt().Write(arg1,arg2);
+			return staticInterceptor.Write(arg1,arg2);
 		}
 		public static QDataStream Read(QDataStream arg1, QLocale arg2) {
-			return StaticQt().Read(arg1,arg2);
+			return staticInterceptor.Read(arg1,arg2);
 		}
 		public static QDataStream Read(QDataStream arg1, List<string> list) {
-			return StaticQt().Read(arg1,list);
+			return staticInterceptor.Read(arg1,list);
 		}
 		public static QDataStream Write(QDataStream arg1, List<string> list) {
-			return StaticQt().Write(arg1,list);
+			return staticInterceptor.Write(arg1,list);
 		}
 		public static string Qstrdup(string arg1) {
-			return StaticQt().Qstrdup(arg1);
+			return staticInterceptor.Qstrdup(arg1);
 		}
 		public static uint Qstrlen(string str) {
-			return StaticQt().Qstrlen(str);
+			return staticInterceptor.Qstrlen(str);
 		}
 		public static uint Qstrnlen(string str, uint maxlen) {
-			return StaticQt().Qstrnlen(str,maxlen);
+			return staticInterceptor.Qstrnlen(str,maxlen);
 		}
 		public static string Qstrcpy(string dst, string src) {
-			return StaticQt().Qstrcpy(dst,src);
+			return staticInterceptor.Qstrcpy(dst,src);
 		}
 		public static string Qstrncpy(string dst, string src, uint len) {
-			return StaticQt().Qstrncpy(dst,src,len);
+			return staticInterceptor.Qstrncpy(dst,src,len);
 		}
 		public static int Qstrcmp(string str1, string str2) {
-			return StaticQt().Qstrcmp(str1,str2);
+			return staticInterceptor.Qstrcmp(str1,str2);
 		}
 		public static int Qstrncmp(string str1, string str2, uint len) {
-			return StaticQt().Qstrncmp(str1,str2,len);
+			return staticInterceptor.Qstrncmp(str1,str2,len);
 		}
 		public static int Qstricmp(string arg1, string arg2) {
-			return StaticQt().Qstricmp(arg1,arg2);
+			return staticInterceptor.Qstricmp(arg1,arg2);
 		}
 		public static int Qstrnicmp(string arg1, string arg2, uint len) {
-			return StaticQt().Qstrnicmp(arg1,arg2,len);
+			return staticInterceptor.Qstrnicmp(arg1,arg2,len);
 		}
 		public static ushort QChecksum(string s, uint len) {
-			return StaticQt().QChecksum(s,len);
+			return staticInterceptor.QChecksum(s,len);
 		}
 		public static QDataStream Write(QDataStream arg1, QByteArray arg2) {
-			return StaticQt().Write(arg1,arg2);
+			return staticInterceptor.Write(arg1,arg2);
 		}
 		public static QDataStream Read(QDataStream arg1, QByteArray arg2) {
-			return StaticQt().Read(arg1,arg2);
+			return staticInterceptor.Read(arg1,arg2);
 		}
 		public static QByteArray QCompress(char[] data, int nbytes, int compressionLevel) {
-			return StaticQt().QCompress(data,nbytes,compressionLevel);
+			return staticInterceptor.QCompress(data,nbytes,compressionLevel);
 		}
 		public static QByteArray QCompress(char[] data, int nbytes) {
-			return StaticQt().QCompress(data,nbytes);
+			return staticInterceptor.QCompress(data,nbytes);
 		}
 		public static QByteArray QUncompress(char[] data, int nbytes) {
-			return StaticQt().QUncompress(data,nbytes);
+			return staticInterceptor.QUncompress(data,nbytes);
 		}
 		public static QByteArray QCompress(QByteArray data, int compressionLevel) {
-			return StaticQt().QCompress(data,compressionLevel);
+			return staticInterceptor.QCompress(data,compressionLevel);
 		}
 		public static QByteArray QCompress(QByteArray data) {
-			return StaticQt().QCompress(data);
+			return staticInterceptor.QCompress(data);
 		}
 		public static QByteArray QUncompress(QByteArray data) {
-			return StaticQt().QUncompress(data);
+			return staticInterceptor.QUncompress(data);
 		}
 		public static QDataStream Write(QDataStream arg1, QSize arg2) {
-			return StaticQt().Write(arg1,arg2);
+			return staticInterceptor.Write(arg1,arg2);
 		}
 		public static QDataStream Read(QDataStream arg1, QSize arg2) {
-			return StaticQt().Read(arg1,arg2);
+			return staticInterceptor.Read(arg1,arg2);
 		}
 		public static QDataStream Write(QDataStream arg1, QSizeF arg2) {
-			return StaticQt().Write(arg1,arg2);
+			return staticInterceptor.Write(arg1,arg2);
 		}
 		public static QDataStream Read(QDataStream arg1, QSizeF arg2) {
-			return StaticQt().Read(arg1,arg2);
+			return staticInterceptor.Read(arg1,arg2);
 		}
 		public static QDataStream Write(QDataStream arg1, QLine arg2) {
-			return StaticQt().Write(arg1,arg2);
+			return staticInterceptor.Write(arg1,arg2);
 		}
 		public static QDataStream Read(QDataStream arg1, QLine arg2) {
-			return StaticQt().Read(arg1,arg2);
+			return staticInterceptor.Read(arg1,arg2);
 		}
 		public static QDataStream Write(QDataStream arg1, QLineF arg2) {
-			return StaticQt().Write(arg1,arg2);
+			return staticInterceptor.Write(arg1,arg2);
 		}
 		public static QDataStream Read(QDataStream arg1, QLineF arg2) {
-			return StaticQt().Read(arg1,arg2);
+			return staticInterceptor.Read(arg1,arg2);
 		}
 		public static QDataStream Write(QDataStream arg1, QRegExp regExp) {
-			return StaticQt().Write(arg1,regExp);
+			return staticInterceptor.Write(arg1,regExp);
 		}
 		public static QDataStream Read(QDataStream arg1, QRegExp regExp) {
-			return StaticQt().Read(arg1,regExp);
+			return staticInterceptor.Read(arg1,regExp);
 		}
 		public static QDataStream Write(QDataStream arg1, QDate arg2) {
-			return StaticQt().Write(arg1,arg2);
+			return staticInterceptor.Write(arg1,arg2);
 		}
 		public static QDataStream Read(QDataStream arg1, QDate arg2) {
-			return StaticQt().Read(arg1,arg2);
+			return staticInterceptor.Read(arg1,arg2);
 		}
 		public static QDataStream Write(QDataStream arg1, QTime arg2) {
-			return StaticQt().Write(arg1,arg2);
+			return staticInterceptor.Write(arg1,arg2);
 		}
 		public static QDataStream Read(QDataStream arg1, QTime arg2) {
-			return StaticQt().Read(arg1,arg2);
+			return staticInterceptor.Read(arg1,arg2);
 		}
 		public static QDataStream Write(QDataStream arg1, QDateTime arg2) {
-			return StaticQt().Write(arg1,arg2);
+			return staticInterceptor.Write(arg1,arg2);
 		}
 		public static QDataStream Read(QDataStream arg1, QDateTime arg2) {
-			return StaticQt().Read(arg1,arg2);
+			return staticInterceptor.Read(arg1,arg2);
 		}
 		public static QDataStream Write(QDataStream arg1, char arg2) {
-			return StaticQt().Write(arg1,arg2);
+			return staticInterceptor.Write(arg1,arg2);
 		}
 		public static QDataStream Read(QDataStream arg1, char arg2) {
-			return StaticQt().Read(arg1,arg2);
+			return staticInterceptor.Read(arg1,arg2);
 		}
 		public static QDataStream Write(QDataStream arg1, QPoint arg2) {
-			return StaticQt().Write(arg1,arg2);
+			return staticInterceptor.Write(arg1,arg2);
 		}
 		public static QDataStream Read(QDataStream arg1, QPoint arg2) {
-			return StaticQt().Read(arg1,arg2);
+			return staticInterceptor.Read(arg1,arg2);
 		}
 		public static QDataStream Write(QDataStream arg1, QPointF arg2) {
-			return StaticQt().Write(arg1,arg2);
+			return staticInterceptor.Write(arg1,arg2);
 		}
 		public static QDataStream Read(QDataStream arg1, QPointF arg2) {
-			return StaticQt().Read(arg1,arg2);
+			return staticInterceptor.Read(arg1,arg2);
 		}
 		public static QTextStream Bin(QTextStream s) {
-			return StaticQt().Bin(s);
+			return staticInterceptor.Bin(s);
 		}
 		public static QTextStream Oct(QTextStream s) {
-			return StaticQt().Oct(s);
+			return staticInterceptor.Oct(s);
 		}
 		public static QTextStream Dec(QTextStream s) {
-			return StaticQt().Dec(s);
+			return staticInterceptor.Dec(s);
 		}
 		public static QTextStream Hex(QTextStream s) {
-			return StaticQt().Hex(s);
+			return staticInterceptor.Hex(s);
 		}
 		public static QTextStream Showbase(QTextStream s) {
-			return StaticQt().Showbase(s);
+			return staticInterceptor.Showbase(s);
 		}
 		public static QTextStream Forcesign(QTextStream s) {
-			return StaticQt().Forcesign(s);
+			return staticInterceptor.Forcesign(s);
 		}
 		public static QTextStream Forcepoint(QTextStream s) {
-			return StaticQt().Forcepoint(s);
+			return staticInterceptor.Forcepoint(s);
 		}
 		public static QTextStream Noshowbase(QTextStream s) {
-			return StaticQt().Noshowbase(s);
+			return staticInterceptor.Noshowbase(s);
 		}
 		public static QTextStream Noforcesign(QTextStream s) {
-			return StaticQt().Noforcesign(s);
+			return staticInterceptor.Noforcesign(s);
 		}
 		public static QTextStream Noforcepoint(QTextStream s) {
-			return StaticQt().Noforcepoint(s);
+			return staticInterceptor.Noforcepoint(s);
 		}
 		public static QTextStream Uppercasebase(QTextStream s) {
-			return StaticQt().Uppercasebase(s);
+			return staticInterceptor.Uppercasebase(s);
 		}
 		public static QTextStream Uppercasedigits(QTextStream s) {
-			return StaticQt().Uppercasedigits(s);
+			return staticInterceptor.Uppercasedigits(s);
 		}
 		public static QTextStream Lowercasebase(QTextStream s) {
-			return StaticQt().Lowercasebase(s);
+			return staticInterceptor.Lowercasebase(s);
 		}
 		public static QTextStream Lowercasedigits(QTextStream s) {
-			return StaticQt().Lowercasedigits(s);
+			return staticInterceptor.Lowercasedigits(s);
 		}
 		public static QTextStream Fixed(QTextStream s) {
-			return StaticQt().Fixed(s);
+			return staticInterceptor.Fixed(s);
 		}
 		public static QTextStream Scientific(QTextStream s) {
-			return StaticQt().Scientific(s);
+			return staticInterceptor.Scientific(s);
 		}
 		public static QTextStream Left(QTextStream s) {
-			return StaticQt().Left(s);
+			return staticInterceptor.Left(s);
 		}
 		public static QTextStream Right(QTextStream s) {
-			return StaticQt().Right(s);
+			return staticInterceptor.Right(s);
 		}
 		public static QTextStream Center(QTextStream s) {
-			return StaticQt().Center(s);
+			return staticInterceptor.Center(s);
 		}
 		public static QTextStream Endl(QTextStream s) {
-			return StaticQt().Endl(s);
+			return staticInterceptor.Endl(s);
 		}
 		public static QTextStream Flush(QTextStream s) {
-			return StaticQt().Flush(s);
+			return staticInterceptor.Flush(s);
 		}
 		public static QTextStream Reset(QTextStream s) {
-			return StaticQt().Reset(s);
+			return staticInterceptor.Reset(s);
 		}
 		public static QTextStream Bom(QTextStream s) {
-			return StaticQt().Bom(s);
+			return staticInterceptor.Bom(s);
 		}
 		public static QTextStream Ws(QTextStream s) {
-			return StaticQt().Ws(s);
+			return staticInterceptor.Ws(s);
 		}
 		public static QDataStream Write(QDataStream arg1, IQUrl arg2) {
-			return StaticQt().Write(arg1,arg2);
+			return staticInterceptor.Write(arg1,arg2);
 		}
 		public static QDataStream Read(QDataStream arg1, IQUrl arg2) {
-			return StaticQt().Read(arg1,arg2);
+			return staticInterceptor.Read(arg1,arg2);
 		}
 		public static QDataStream Write(QDataStream arg1, QUuid arg2) {
-			return StaticQt().Write(arg1,arg2);
+			return staticInterceptor.Write(arg1,arg2);
 		}
 		public static QDataStream Read(QDataStream arg1, QUuid arg2) {
-			return StaticQt().Read(arg1,arg2);
+			return staticInterceptor.Read(arg1,arg2);
 		}
 	}
 }

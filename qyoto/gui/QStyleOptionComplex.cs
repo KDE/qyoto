@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QStyleOptionComplex(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionComplex), this);
-			_interceptor = (QStyleOptionComplex) realProxy.GetTransparentProxy();
-		}
-		private QStyleOptionComplex ProxyQStyleOptionComplex() {
-			return (QStyleOptionComplex) _interceptor;
+			interceptor = (QStyleOptionComplex) realProxy.GetTransparentProxy();
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_Complex,
@@ -25,7 +22,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionComplex", "(int, int)", "$$")]
 		private void NewQStyleOptionComplex(int version, int type) {
-			ProxyQStyleOptionComplex().NewQStyleOptionComplex(version,type);
+			((QStyleOptionComplex) interceptor).NewQStyleOptionComplex(version,type);
 		}
 		public QStyleOptionComplex(int version) : this((Type) null) {
 			CreateProxy();
@@ -33,7 +30,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionComplex", "(int)", "$")]
 		private void NewQStyleOptionComplex(int version) {
-			ProxyQStyleOptionComplex().NewQStyleOptionComplex(version);
+			((QStyleOptionComplex) interceptor).NewQStyleOptionComplex(version);
 		}
 		public QStyleOptionComplex() : this((Type) null) {
 			CreateProxy();
@@ -41,7 +38,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionComplex", "()", "")]
 		private void NewQStyleOptionComplex() {
-			ProxyQStyleOptionComplex().NewQStyleOptionComplex();
+			((QStyleOptionComplex) interceptor).NewQStyleOptionComplex();
 		}
 		public QStyleOptionComplex(QStyleOptionComplex other) : this((Type) null) {
 			CreateProxy();
@@ -49,7 +46,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionComplex", "(const QStyleOptionComplex&)", "#")]
 		private void NewQStyleOptionComplex(QStyleOptionComplex other) {
-			ProxyQStyleOptionComplex().NewQStyleOptionComplex(other);
+			((QStyleOptionComplex) interceptor).NewQStyleOptionComplex(other);
 		}
 		~QStyleOptionComplex() {
 			DisposeQStyleOptionComplex();
@@ -59,7 +56,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QStyleOptionComplex", "()", "")]
 		private void DisposeQStyleOptionComplex() {
-			ProxyQStyleOptionComplex().DisposeQStyleOptionComplex();
+			((QStyleOptionComplex) interceptor).DisposeQStyleOptionComplex();
 		}
 	}
 }

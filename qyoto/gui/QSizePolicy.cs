@@ -5,8 +5,8 @@ namespace Qyoto {
 
 	[SmokeClass("QSizePolicy")]
 	public class QSizePolicy : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QSizePolicy interceptor = null;
+		private IntPtr smokeObject;
 		protected QSizePolicy(Type dummy) {}
 		[SmokeClass("QSizePolicy")]
 		interface IQSizePolicyProxy {
@@ -15,18 +15,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSizePolicy), this);
-			_interceptor = (QSizePolicy) realProxy.GetTransparentProxy();
+			interceptor = (QSizePolicy) realProxy.GetTransparentProxy();
 		}
-		private QSizePolicy ProxyQSizePolicy() {
-			return (QSizePolicy) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQSizePolicyProxy staticInterceptor = null;
 		static QSizePolicy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQSizePolicyProxy), null);
-			_staticInterceptor = (IQSizePolicyProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQSizePolicyProxy StaticQSizePolicy() {
-			return (IQSizePolicyProxy) _staticInterceptor;
+			staticInterceptor = (IQSizePolicyProxy) realProxy.GetTransparentProxy();
 		}
 		public enum PolicyFlag {
 			GrowFlag = 1,
@@ -50,7 +44,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSizePolicy", "()", "")]
 		private void NewQSizePolicy() {
-			ProxyQSizePolicy().NewQSizePolicy();
+			((QSizePolicy) interceptor).NewQSizePolicy();
 		}
 		public QSizePolicy(QSizePolicy.Policy horizontal, QSizePolicy.Policy vertical) : this((Type) null) {
 			CreateProxy();
@@ -58,62 +52,62 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSizePolicy", "(QSizePolicy::Policy, QSizePolicy::Policy)", "$$")]
 		private void NewQSizePolicy(QSizePolicy.Policy horizontal, QSizePolicy.Policy vertical) {
-			ProxyQSizePolicy().NewQSizePolicy(horizontal,vertical);
+			((QSizePolicy) interceptor).NewQSizePolicy(horizontal,vertical);
 		}
 		[SmokeMethod("horizontalPolicy", "() const", "")]
 		public QSizePolicy.Policy HorizontalPolicy() {
-			return ProxyQSizePolicy().HorizontalPolicy();
+			return ((QSizePolicy) interceptor).HorizontalPolicy();
 		}
 		[SmokeMethod("verticalPolicy", "() const", "")]
 		public QSizePolicy.Policy VerticalPolicy() {
-			return ProxyQSizePolicy().VerticalPolicy();
+			return ((QSizePolicy) interceptor).VerticalPolicy();
 		}
 		[SmokeMethod("setHorizontalPolicy", "(QSizePolicy::Policy)", "$")]
 		public void SetHorizontalPolicy(QSizePolicy.Policy d) {
-			ProxyQSizePolicy().SetHorizontalPolicy(d);
+			((QSizePolicy) interceptor).SetHorizontalPolicy(d);
 		}
 		[SmokeMethod("setVerticalPolicy", "(QSizePolicy::Policy)", "$")]
 		public void SetVerticalPolicy(QSizePolicy.Policy d) {
-			ProxyQSizePolicy().SetVerticalPolicy(d);
+			((QSizePolicy) interceptor).SetVerticalPolicy(d);
 		}
 		[SmokeMethod("expandingDirections", "() const", "")]
 		public int ExpandingDirections() {
-			return ProxyQSizePolicy().ExpandingDirections();
+			return ((QSizePolicy) interceptor).ExpandingDirections();
 		}
 		[SmokeMethod("setHeightForWidth", "(bool)", "$")]
 		public void SetHeightForWidth(bool b) {
-			ProxyQSizePolicy().SetHeightForWidth(b);
+			((QSizePolicy) interceptor).SetHeightForWidth(b);
 		}
 		[SmokeMethod("hasHeightForWidth", "() const", "")]
 		public bool HasHeightForWidth() {
-			return ProxyQSizePolicy().HasHeightForWidth();
+			return ((QSizePolicy) interceptor).HasHeightForWidth();
 		}
 		public override bool Equals(object o) {
 			if (!(o is QSizePolicy)) { return false; }
 			return this == (QSizePolicy) o;
 		}
 		public override int GetHashCode() {
-			return ProxyQSizePolicy().GetHashCode();
+			return ((QSizePolicy) interceptor).GetHashCode();
 		}
 		[SmokeMethod("horizontalStretch", "() const", "")]
 		public int HorizontalStretch() {
-			return ProxyQSizePolicy().HorizontalStretch();
+			return ((QSizePolicy) interceptor).HorizontalStretch();
 		}
 		[SmokeMethod("verticalStretch", "() const", "")]
 		public int VerticalStretch() {
-			return ProxyQSizePolicy().VerticalStretch();
+			return ((QSizePolicy) interceptor).VerticalStretch();
 		}
 		[SmokeMethod("setHorizontalStretch", "(uchar)", "$")]
 		public void SetHorizontalStretch(ushort stretchFactor) {
-			ProxyQSizePolicy().SetHorizontalStretch(stretchFactor);
+			((QSizePolicy) interceptor).SetHorizontalStretch(stretchFactor);
 		}
 		[SmokeMethod("setVerticalStretch", "(uchar)", "$")]
 		public void SetVerticalStretch(ushort stretchFactor) {
-			ProxyQSizePolicy().SetVerticalStretch(stretchFactor);
+			((QSizePolicy) interceptor).SetVerticalStretch(stretchFactor);
 		}
 		[SmokeMethod("transpose", "()", "")]
 		public void Transpose() {
-			ProxyQSizePolicy().Transpose();
+			((QSizePolicy) interceptor).Transpose();
 		}
 		~QSizePolicy() {
 			DisposeQSizePolicy();
@@ -123,13 +117,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QSizePolicy", "()", "")]
 		private void DisposeQSizePolicy() {
-			ProxyQSizePolicy().DisposeQSizePolicy();
+			((QSizePolicy) interceptor).DisposeQSizePolicy();
 		}
 		public static bool operator==(QSizePolicy lhs, QSizePolicy s) {
-			return StaticQSizePolicy().op_equals(lhs,s);
+			return staticInterceptor.op_equals(lhs,s);
 		}
 		public static bool operator!=(QSizePolicy lhs, QSizePolicy s) {
-			return !StaticQSizePolicy().op_equals(lhs,s);
+			return !staticInterceptor.op_equals(lhs,s);
 		}
 	}
 }

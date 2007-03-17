@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QTextBlockFormat(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextBlockFormat), this);
-			_interceptor = (QTextBlockFormat) realProxy.GetTransparentProxy();
-		}
-		private QTextBlockFormat ProxyQTextBlockFormat() {
-			return (QTextBlockFormat) _interceptor;
+			interceptor = (QTextBlockFormat) realProxy.GetTransparentProxy();
 		}
 		public QTextBlockFormat() : this((Type) null) {
 			CreateProxy();
@@ -19,83 +16,83 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTextBlockFormat", "()", "")]
 		private void NewQTextBlockFormat() {
-			ProxyQTextBlockFormat().NewQTextBlockFormat();
+			((QTextBlockFormat) interceptor).NewQTextBlockFormat();
 		}
 		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ProxyQTextBlockFormat().IsValid();
+			return ((QTextBlockFormat) interceptor).IsValid();
 		}
 		[SmokeMethod("setAlignment", "(Qt::Alignment)", "$")]
 		public void SetAlignment(int alignment) {
-			ProxyQTextBlockFormat().SetAlignment(alignment);
+			((QTextBlockFormat) interceptor).SetAlignment(alignment);
 		}
 		[SmokeMethod("alignment", "() const", "")]
 		public int Alignment() {
-			return ProxyQTextBlockFormat().Alignment();
+			return ((QTextBlockFormat) interceptor).Alignment();
 		}
 		[SmokeMethod("setTopMargin", "(qreal)", "$")]
 		public void SetTopMargin(double margin) {
-			ProxyQTextBlockFormat().SetTopMargin(margin);
+			((QTextBlockFormat) interceptor).SetTopMargin(margin);
 		}
 		[SmokeMethod("topMargin", "() const", "")]
 		public double TopMargin() {
-			return ProxyQTextBlockFormat().TopMargin();
+			return ((QTextBlockFormat) interceptor).TopMargin();
 		}
 		[SmokeMethod("setBottomMargin", "(qreal)", "$")]
 		public void SetBottomMargin(double margin) {
-			ProxyQTextBlockFormat().SetBottomMargin(margin);
+			((QTextBlockFormat) interceptor).SetBottomMargin(margin);
 		}
 		[SmokeMethod("bottomMargin", "() const", "")]
 		public double BottomMargin() {
-			return ProxyQTextBlockFormat().BottomMargin();
+			return ((QTextBlockFormat) interceptor).BottomMargin();
 		}
 		[SmokeMethod("setLeftMargin", "(qreal)", "$")]
 		public void SetLeftMargin(double margin) {
-			ProxyQTextBlockFormat().SetLeftMargin(margin);
+			((QTextBlockFormat) interceptor).SetLeftMargin(margin);
 		}
 		[SmokeMethod("leftMargin", "() const", "")]
 		public double LeftMargin() {
-			return ProxyQTextBlockFormat().LeftMargin();
+			return ((QTextBlockFormat) interceptor).LeftMargin();
 		}
 		[SmokeMethod("setRightMargin", "(qreal)", "$")]
 		public void SetRightMargin(double margin) {
-			ProxyQTextBlockFormat().SetRightMargin(margin);
+			((QTextBlockFormat) interceptor).SetRightMargin(margin);
 		}
 		[SmokeMethod("rightMargin", "() const", "")]
 		public double RightMargin() {
-			return ProxyQTextBlockFormat().RightMargin();
+			return ((QTextBlockFormat) interceptor).RightMargin();
 		}
 		[SmokeMethod("setTextIndent", "(qreal)", "$")]
 		public void SetTextIndent(double margin) {
-			ProxyQTextBlockFormat().SetTextIndent(margin);
+			((QTextBlockFormat) interceptor).SetTextIndent(margin);
 		}
 		[SmokeMethod("textIndent", "() const", "")]
 		public double TextIndent() {
-			return ProxyQTextBlockFormat().TextIndent();
+			return ((QTextBlockFormat) interceptor).TextIndent();
 		}
 		[SmokeMethod("setIndent", "(int)", "$")]
 		public void SetIndent(int indent) {
-			ProxyQTextBlockFormat().SetIndent(indent);
+			((QTextBlockFormat) interceptor).SetIndent(indent);
 		}
 		[SmokeMethod("indent", "() const", "")]
 		public int Indent() {
-			return ProxyQTextBlockFormat().Indent();
+			return ((QTextBlockFormat) interceptor).Indent();
 		}
 		[SmokeMethod("setNonBreakableLines", "(bool)", "$")]
 		public void SetNonBreakableLines(bool b) {
-			ProxyQTextBlockFormat().SetNonBreakableLines(b);
+			((QTextBlockFormat) interceptor).SetNonBreakableLines(b);
 		}
 		[SmokeMethod("nonBreakableLines", "() const", "")]
 		public bool NonBreakableLines() {
-			return ProxyQTextBlockFormat().NonBreakableLines();
+			return ((QTextBlockFormat) interceptor).NonBreakableLines();
 		}
 		[SmokeMethod("setPageBreakPolicy", "(PageBreakFlags)", "$")]
 		public void SetPageBreakPolicy(int flags) {
-			ProxyQTextBlockFormat().SetPageBreakPolicy(flags);
+			((QTextBlockFormat) interceptor).SetPageBreakPolicy(flags);
 		}
 		[SmokeMethod("pageBreakPolicy", "() const", "")]
 		public int PageBreakPolicy() {
-			return ProxyQTextBlockFormat().PageBreakPolicy();
+			return ((QTextBlockFormat) interceptor).PageBreakPolicy();
 		}
 		~QTextBlockFormat() {
 			DisposeQTextBlockFormat();
@@ -105,7 +102,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QTextBlockFormat", "()", "")]
 		private void DisposeQTextBlockFormat() {
-			ProxyQTextBlockFormat().DisposeQTextBlockFormat();
+			((QTextBlockFormat) interceptor).DisposeQTextBlockFormat();
 		}
 	}
 }

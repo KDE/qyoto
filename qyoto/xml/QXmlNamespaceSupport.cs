@@ -7,15 +7,12 @@ namespace Qyoto {
 
 	[SmokeClass("QXmlNamespaceSupport")]
 	public class QXmlNamespaceSupport : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QXmlNamespaceSupport interceptor = null;
+		private IntPtr smokeObject;
 		protected QXmlNamespaceSupport(Type dummy) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlNamespaceSupport), this);
-			_interceptor = (QXmlNamespaceSupport) realProxy.GetTransparentProxy();
-		}
-		private QXmlNamespaceSupport ProxyQXmlNamespaceSupport() {
-			return (QXmlNamespaceSupport) _interceptor;
+			interceptor = (QXmlNamespaceSupport) realProxy.GetTransparentProxy();
 		}
 		public QXmlNamespaceSupport() : this((Type) null) {
 			CreateProxy();
@@ -23,47 +20,47 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QXmlNamespaceSupport", "()", "")]
 		private void NewQXmlNamespaceSupport() {
-			ProxyQXmlNamespaceSupport().NewQXmlNamespaceSupport();
+			((QXmlNamespaceSupport) interceptor).NewQXmlNamespaceSupport();
 		}
 		[SmokeMethod("setPrefix", "(const QString&, const QString&)", "$$")]
 		public void SetPrefix(string arg1, string arg2) {
-			ProxyQXmlNamespaceSupport().SetPrefix(arg1,arg2);
+			((QXmlNamespaceSupport) interceptor).SetPrefix(arg1,arg2);
 		}
 		[SmokeMethod("prefix", "(const QString&) const", "$")]
 		public string Prefix(string arg1) {
-			return ProxyQXmlNamespaceSupport().Prefix(arg1);
+			return ((QXmlNamespaceSupport) interceptor).Prefix(arg1);
 		}
 		[SmokeMethod("uri", "(const QString&) const", "$")]
 		public string Uri(string arg1) {
-			return ProxyQXmlNamespaceSupport().Uri(arg1);
+			return ((QXmlNamespaceSupport) interceptor).Uri(arg1);
 		}
 		[SmokeMethod("splitName", "(const QString&, QString&, QString&) const", "$$$")]
 		public void SplitName(string arg1, StringBuilder arg2, StringBuilder arg3) {
-			ProxyQXmlNamespaceSupport().SplitName(arg1,arg2,arg3);
+			((QXmlNamespaceSupport) interceptor).SplitName(arg1,arg2,arg3);
 		}
 		[SmokeMethod("processName", "(const QString&, bool, QString&, QString&) const", "$$$$")]
 		public void ProcessName(string arg1, bool arg2, StringBuilder arg3, StringBuilder arg4) {
-			ProxyQXmlNamespaceSupport().ProcessName(arg1,arg2,arg3,arg4);
+			((QXmlNamespaceSupport) interceptor).ProcessName(arg1,arg2,arg3,arg4);
 		}
 		[SmokeMethod("prefixes", "() const", "")]
 		public List<string> Prefixes() {
-			return ProxyQXmlNamespaceSupport().Prefixes();
+			return ((QXmlNamespaceSupport) interceptor).Prefixes();
 		}
 		[SmokeMethod("prefixes", "(const QString&) const", "$")]
 		public List<string> Prefixes(string arg1) {
-			return ProxyQXmlNamespaceSupport().Prefixes(arg1);
+			return ((QXmlNamespaceSupport) interceptor).Prefixes(arg1);
 		}
 		[SmokeMethod("pushContext", "()", "")]
 		public void PushContext() {
-			ProxyQXmlNamespaceSupport().PushContext();
+			((QXmlNamespaceSupport) interceptor).PushContext();
 		}
 		[SmokeMethod("popContext", "()", "")]
 		public void PopContext() {
-			ProxyQXmlNamespaceSupport().PopContext();
+			((QXmlNamespaceSupport) interceptor).PopContext();
 		}
 		[SmokeMethod("reset", "()", "")]
 		public void Reset() {
-			ProxyQXmlNamespaceSupport().Reset();
+			((QXmlNamespaceSupport) interceptor).Reset();
 		}
 		~QXmlNamespaceSupport() {
 			DisposeQXmlNamespaceSupport();
@@ -73,7 +70,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QXmlNamespaceSupport", "()", "")]
 		private void DisposeQXmlNamespaceSupport() {
-			ProxyQXmlNamespaceSupport().DisposeQXmlNamespaceSupport();
+			((QXmlNamespaceSupport) interceptor).DisposeQXmlNamespaceSupport();
 		}
 	}
 }

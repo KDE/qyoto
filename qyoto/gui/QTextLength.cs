@@ -5,8 +5,8 @@ namespace Qyoto {
 
 	[SmokeClass("QTextLength")]
 	public class QTextLength : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QTextLength interceptor = null;
+		private IntPtr smokeObject;
 		protected QTextLength(Type dummy) {}
 		[SmokeClass("QTextLength")]
 		interface IQTextLengthProxy {
@@ -15,18 +15,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextLength), this);
-			_interceptor = (QTextLength) realProxy.GetTransparentProxy();
+			interceptor = (QTextLength) realProxy.GetTransparentProxy();
 		}
-		private QTextLength ProxyQTextLength() {
-			return (QTextLength) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQTextLengthProxy staticInterceptor = null;
 		static QTextLength() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTextLengthProxy), null);
-			_staticInterceptor = (IQTextLengthProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQTextLengthProxy StaticQTextLength() {
-			return (IQTextLengthProxy) _staticInterceptor;
+			staticInterceptor = (IQTextLengthProxy) realProxy.GetTransparentProxy();
 		}
 		public enum TypeOf {
 			VariableLength = 0,
@@ -40,7 +34,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTextLength", "()", "")]
 		private void NewQTextLength() {
-			ProxyQTextLength().NewQTextLength();
+			((QTextLength) interceptor).NewQTextLength();
 		}
 		public QTextLength(QTextLength.TypeOf type, double value) : this((Type) null) {
 			CreateProxy();
@@ -48,26 +42,26 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTextLength", "(QTextLength::Type, qreal)", "$$")]
 		private void NewQTextLength(QTextLength.TypeOf type, double value) {
-			ProxyQTextLength().NewQTextLength(type,value);
+			((QTextLength) interceptor).NewQTextLength(type,value);
 		}
 		[SmokeMethod("type", "() const", "")]
 		public QTextLength.TypeOf type() {
-			return ProxyQTextLength().type();
+			return ((QTextLength) interceptor).type();
 		}
 		[SmokeMethod("value", "(qreal) const", "$")]
 		public double Value(double maximumLength) {
-			return ProxyQTextLength().Value(maximumLength);
+			return ((QTextLength) interceptor).Value(maximumLength);
 		}
 		[SmokeMethod("rawValue", "() const", "")]
 		public double RawValue() {
-			return ProxyQTextLength().RawValue();
+			return ((QTextLength) interceptor).RawValue();
 		}
 		public override bool Equals(object o) {
 			if (!(o is QTextLength)) { return false; }
 			return this == (QTextLength) o;
 		}
 		public override int GetHashCode() {
-			return ProxyQTextLength().GetHashCode();
+			return ((QTextLength) interceptor).GetHashCode();
 		}
 		~QTextLength() {
 			DisposeQTextLength();
@@ -77,13 +71,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QTextLength", "()", "")]
 		private void DisposeQTextLength() {
-			ProxyQTextLength().DisposeQTextLength();
+			((QTextLength) interceptor).DisposeQTextLength();
 		}
 		public static bool operator==(QTextLength lhs, QTextLength other) {
-			return StaticQTextLength().op_equals(lhs,other);
+			return staticInterceptor.op_equals(lhs,other);
 		}
 		public static bool operator!=(QTextLength lhs, QTextLength other) {
-			return !StaticQTextLength().op_equals(lhs,other);
+			return !staticInterceptor.op_equals(lhs,other);
 		}
 	}
 }

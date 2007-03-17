@@ -16,18 +16,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QValidator), this);
-			_interceptor = (QValidator) realProxy.GetTransparentProxy();
+			interceptor = (QValidator) realProxy.GetTransparentProxy();
 		}
-		private QValidator ProxyQValidator() {
-			return (QValidator) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQValidatorProxy staticInterceptor = null;
 		static QValidator() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQValidatorProxy), null);
-			_staticInterceptor = (IQValidatorProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQValidatorProxy StaticQValidator() {
-			return (IQValidatorProxy) _staticInterceptor;
+			staticInterceptor = (IQValidatorProxy) realProxy.GetTransparentProxy();
 		}
 		public enum State {
 			Invalid = 0,
@@ -40,13 +34,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QValidator", "(QObject*)", "#")]
 		private void NewQValidator(QObject parent) {
-			ProxyQValidator().NewQValidator(parent);
+			((QValidator) interceptor).NewQValidator(parent);
 		}
 		[SmokeMethod("validate", "(QString&, int&) const", "$$")]
 		public abstract int Validate(StringBuilder arg1, out int arg2);
 		[SmokeMethod("fixup", "(QString&) const", "$")]
 		public virtual void Fixup(StringBuilder arg1) {
-			ProxyQValidator().Fixup(arg1);
+			((QValidator) interceptor).Fixup(arg1);
 		}
 		~QValidator() {
 			DisposeQValidator();
@@ -56,13 +50,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QValidator", "()", "")]
 		private void DisposeQValidator() {
-			ProxyQValidator().DisposeQValidator();
+			((QValidator) interceptor).DisposeQValidator();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQValidator().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQValidator().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQValidatorSignals Emit {
 			get { return (IQValidatorSignals) Q_EMIT; }

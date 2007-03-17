@@ -17,18 +17,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSpinBox), this);
-			_interceptor = (QSpinBox) realProxy.GetTransparentProxy();
+			interceptor = (QSpinBox) realProxy.GetTransparentProxy();
 		}
-		private QSpinBox ProxyQSpinBox() {
-			return (QSpinBox) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQSpinBoxProxy staticInterceptor = null;
 		static QSpinBox() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQSpinBoxProxy), null);
-			_staticInterceptor = (IQSpinBoxProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQSpinBoxProxy StaticQSpinBox() {
-			return (IQSpinBoxProxy) _staticInterceptor;
+			staticInterceptor = (IQSpinBoxProxy) realProxy.GetTransparentProxy();
 		}
 		[Q_PROPERTY("QString", "suffix")]
 		public string Suffix {
@@ -70,7 +64,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSpinBox", "(QWidget*)", "#")]
 		private void NewQSpinBox(QWidget parent) {
-			ProxyQSpinBox().NewQSpinBox(parent);
+			((QSpinBox) interceptor).NewQSpinBox(parent);
 		}
 		public QSpinBox() : this((Type) null) {
 			CreateProxy();
@@ -78,31 +72,31 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSpinBox", "()", "")]
 		private void NewQSpinBox() {
-			ProxyQSpinBox().NewQSpinBox();
+			((QSpinBox) interceptor).NewQSpinBox();
 		}
 		[SmokeMethod("setRange", "(int, int)", "$$")]
 		public void SetRange(int min, int max) {
-			ProxyQSpinBox().SetRange(min,max);
+			((QSpinBox) interceptor).SetRange(min,max);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected new virtual bool Event(QEvent arg1) {
-			return ProxyQSpinBox().Event(arg1);
+			return ((QSpinBox) interceptor).Event(arg1);
 		}
 		[SmokeMethod("validate", "(QString&, int&) const", "$$")]
 		protected new virtual int Validate(StringBuilder input, out int pos) {
-			return ProxyQSpinBox().Validate(input,out pos);
+			return ((QSpinBox) interceptor).Validate(input,out pos);
 		}
 		[SmokeMethod("valueFromText", "(const QString&) const", "$")]
 		protected virtual int ValueFromText(string text) {
-			return ProxyQSpinBox().ValueFromText(text);
+			return ((QSpinBox) interceptor).ValueFromText(text);
 		}
 		[SmokeMethod("textFromValue", "(int) const", "$")]
 		protected virtual string TextFromValue(int val) {
-			return ProxyQSpinBox().TextFromValue(val);
+			return ((QSpinBox) interceptor).TextFromValue(val);
 		}
 		[SmokeMethod("fixup", "(QString&) const", "$")]
 		protected new virtual void Fixup(StringBuilder str) {
-			ProxyQSpinBox().Fixup(str);
+			((QSpinBox) interceptor).Fixup(str);
 		}
 		~QSpinBox() {
 			DisposeQSpinBox();
@@ -112,13 +106,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QSpinBox", "()", "")]
 		private void DisposeQSpinBox() {
-			ProxyQSpinBox().DisposeQSpinBox();
+			((QSpinBox) interceptor).DisposeQSpinBox();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQSpinBox().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQSpinBox().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQSpinBoxSignals Emit {
 			get { return (IQSpinBoxSignals) Q_EMIT; }

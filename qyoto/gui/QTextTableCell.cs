@@ -5,8 +5,8 @@ namespace Qyoto {
 
 	[SmokeClass("QTextTableCell")]
 	public class QTextTableCell : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QTextTableCell interceptor = null;
+		private IntPtr smokeObject;
 		protected QTextTableCell(Type dummy) {}
 		[SmokeClass("QTextTableCell")]
 		interface IQTextTableCellProxy {
@@ -15,18 +15,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextTableCell), this);
-			_interceptor = (QTextTableCell) realProxy.GetTransparentProxy();
+			interceptor = (QTextTableCell) realProxy.GetTransparentProxy();
 		}
-		private QTextTableCell ProxyQTextTableCell() {
-			return (QTextTableCell) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQTextTableCellProxy staticInterceptor = null;
 		static QTextTableCell() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTextTableCellProxy), null);
-			_staticInterceptor = (IQTextTableCellProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQTextTableCellProxy StaticQTextTableCell() {
-			return (IQTextTableCellProxy) _staticInterceptor;
+			staticInterceptor = (IQTextTableCellProxy) realProxy.GetTransparentProxy();
 		}
 		public QTextTableCell() : this((Type) null) {
 			CreateProxy();
@@ -34,7 +28,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTextTableCell", "()", "")]
 		private void NewQTextTableCell() {
-			ProxyQTextTableCell().NewQTextTableCell();
+			((QTextTableCell) interceptor).NewQTextTableCell();
 		}
 		public QTextTableCell(QTextTableCell o) : this((Type) null) {
 			CreateProxy();
@@ -42,58 +36,58 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTextTableCell", "(const QTextTableCell&)", "#")]
 		private void NewQTextTableCell(QTextTableCell o) {
-			ProxyQTextTableCell().NewQTextTableCell(o);
+			((QTextTableCell) interceptor).NewQTextTableCell(o);
 		}
 		[SmokeMethod("setFormat", "(const QTextCharFormat&)", "#")]
 		public void SetFormat(QTextCharFormat format) {
-			ProxyQTextTableCell().SetFormat(format);
+			((QTextTableCell) interceptor).SetFormat(format);
 		}
 		[SmokeMethod("format", "() const", "")]
 		public QTextCharFormat Format() {
-			return ProxyQTextTableCell().Format();
+			return ((QTextTableCell) interceptor).Format();
 		}
 		[SmokeMethod("row", "() const", "")]
 		public int Row() {
-			return ProxyQTextTableCell().Row();
+			return ((QTextTableCell) interceptor).Row();
 		}
 		[SmokeMethod("column", "() const", "")]
 		public int Column() {
-			return ProxyQTextTableCell().Column();
+			return ((QTextTableCell) interceptor).Column();
 		}
 		[SmokeMethod("rowSpan", "() const", "")]
 		public int RowSpan() {
-			return ProxyQTextTableCell().RowSpan();
+			return ((QTextTableCell) interceptor).RowSpan();
 		}
 		[SmokeMethod("columnSpan", "() const", "")]
 		public int ColumnSpan() {
-			return ProxyQTextTableCell().ColumnSpan();
+			return ((QTextTableCell) interceptor).ColumnSpan();
 		}
 		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ProxyQTextTableCell().IsValid();
+			return ((QTextTableCell) interceptor).IsValid();
 		}
 		[SmokeMethod("firstCursorPosition", "() const", "")]
 		public QTextCursor FirstCursorPosition() {
-			return ProxyQTextTableCell().FirstCursorPosition();
+			return ((QTextTableCell) interceptor).FirstCursorPosition();
 		}
 		[SmokeMethod("lastCursorPosition", "() const", "")]
 		public QTextCursor LastCursorPosition() {
-			return ProxyQTextTableCell().LastCursorPosition();
+			return ((QTextTableCell) interceptor).LastCursorPosition();
 		}
 		[SmokeMethod("firstPosition", "() const", "")]
 		public int FirstPosition() {
-			return ProxyQTextTableCell().FirstPosition();
+			return ((QTextTableCell) interceptor).FirstPosition();
 		}
 		[SmokeMethod("lastPosition", "() const", "")]
 		public int LastPosition() {
-			return ProxyQTextTableCell().LastPosition();
+			return ((QTextTableCell) interceptor).LastPosition();
 		}
 		public override bool Equals(object o) {
 			if (!(o is QTextTableCell)) { return false; }
 			return this == (QTextTableCell) o;
 		}
 		public override int GetHashCode() {
-			return ProxyQTextTableCell().GetHashCode();
+			return ((QTextTableCell) interceptor).GetHashCode();
 		}
 		~QTextTableCell() {
 			DisposeQTextTableCell();
@@ -103,13 +97,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QTextTableCell", "()", "")]
 		private void DisposeQTextTableCell() {
-			ProxyQTextTableCell().DisposeQTextTableCell();
+			((QTextTableCell) interceptor).DisposeQTextTableCell();
 		}
 		public static bool operator==(QTextTableCell lhs, QTextTableCell other) {
-			return StaticQTextTableCell().op_equals(lhs,other);
+			return staticInterceptor.op_equals(lhs,other);
 		}
 		public static bool operator!=(QTextTableCell lhs, QTextTableCell other) {
-			return !StaticQTextTableCell().op_equals(lhs,other);
+			return !staticInterceptor.op_equals(lhs,other);
 		}
 	}
 }

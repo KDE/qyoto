@@ -9,10 +9,7 @@ namespace Qyoto {
  		protected QAccessibleApplication(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAccessibleApplication), this);
-			_interceptor = (QAccessibleApplication) realProxy.GetTransparentProxy();
-		}
-		private QAccessibleApplication ProxyQAccessibleApplication() {
-			return (QAccessibleApplication) _interceptor;
+			interceptor = (QAccessibleApplication) realProxy.GetTransparentProxy();
 		}
 		public QAccessibleApplication() : this((Type) null) {
 			CreateProxy();
@@ -20,51 +17,51 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QAccessibleApplication", "()", "")]
 		private void NewQAccessibleApplication() {
-			ProxyQAccessibleApplication().NewQAccessibleApplication();
+			((QAccessibleApplication) interceptor).NewQAccessibleApplication();
 		}
 		[SmokeMethod("childCount", "() const", "")]
 		public override int ChildCount() {
-			return ProxyQAccessibleApplication().ChildCount();
+			return ((QAccessibleApplication) interceptor).ChildCount();
 		}
 		[SmokeMethod("indexOfChild", "(const QAccessibleInterface*) const", "#")]
 		public override int IndexOfChild(QAccessibleInterface arg1) {
-			return ProxyQAccessibleApplication().IndexOfChild(arg1);
+			return ((QAccessibleApplication) interceptor).IndexOfChild(arg1);
 		}
 		[SmokeMethod("relationTo", "(int, const QAccessibleInterface*, int) const", "$#$")]
 		public override int RelationTo(int arg1, QAccessibleInterface arg2, int arg3) {
-			return ProxyQAccessibleApplication().RelationTo(arg1,arg2,arg3);
+			return ((QAccessibleApplication) interceptor).RelationTo(arg1,arg2,arg3);
 		}
 		[SmokeMethod("childAt", "(int, int) const", "$$")]
 		public override int ChildAt(int x, int y) {
-			return ProxyQAccessibleApplication().ChildAt(x,y);
+			return ((QAccessibleApplication) interceptor).ChildAt(x,y);
 		}
 		[SmokeMethod("navigate", "(QAccessible::RelationFlag, int, QAccessibleInterface**) const", "$$?")]
 		public override int Navigate(QAccessible.RelationFlag arg1, int arg2, QAccessibleInterface arg3) {
-			return ProxyQAccessibleApplication().Navigate(arg1,arg2,arg3);
+			return ((QAccessibleApplication) interceptor).Navigate(arg1,arg2,arg3);
 		}
 		[SmokeMethod("text", "(QAccessible::Text, int) const", "$$")]
 		public override string Text(QAccessible.Text t, int child) {
-			return ProxyQAccessibleApplication().Text(t,child);
+			return ((QAccessibleApplication) interceptor).Text(t,child);
 		}
 		[SmokeMethod("role", "(int) const", "$")]
 		public override QAccessible.Role Role(int child) {
-			return ProxyQAccessibleApplication().Role(child);
+			return ((QAccessibleApplication) interceptor).Role(child);
 		}
 		[SmokeMethod("state", "(int) const", "$")]
 		public override int State(int child) {
-			return ProxyQAccessibleApplication().State(child);
+			return ((QAccessibleApplication) interceptor).State(child);
 		}
 		[SmokeMethod("userActionCount", "(int) const", "$")]
 		public override int UserActionCount(int child) {
-			return ProxyQAccessibleApplication().UserActionCount(child);
+			return ((QAccessibleApplication) interceptor).UserActionCount(child);
 		}
 		[SmokeMethod("doAction", "(int, int, const QVariantList&)", "$$?")]
 		public override bool DoAction(int action, int child, List<QVariant> arg3) {
-			return ProxyQAccessibleApplication().DoAction(action,child,arg3);
+			return ((QAccessibleApplication) interceptor).DoAction(action,child,arg3);
 		}
 		[SmokeMethod("actionText", "(int, QAccessible::Text, int) const", "$$$")]
 		public override string ActionText(int action, QAccessible.Text t, int child) {
-			return ProxyQAccessibleApplication().ActionText(action,t,child);
+			return ((QAccessibleApplication) interceptor).ActionText(action,t,child);
 		}
 		~QAccessibleApplication() {
 			DisposeQAccessibleApplication();
@@ -74,7 +71,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QAccessibleApplication", "()", "")]
 		private void DisposeQAccessibleApplication() {
-			ProxyQAccessibleApplication().DisposeQAccessibleApplication();
+			((QAccessibleApplication) interceptor).DisposeQAccessibleApplication();
 		}
 	}
 }

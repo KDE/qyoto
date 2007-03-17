@@ -15,18 +15,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAbstractProxyModel), this);
-			_interceptor = (QAbstractProxyModel) realProxy.GetTransparentProxy();
+			interceptor = (QAbstractProxyModel) realProxy.GetTransparentProxy();
 		}
-		private QAbstractProxyModel ProxyQAbstractProxyModel() {
-			return (QAbstractProxyModel) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQAbstractProxyModelProxy staticInterceptor = null;
 		static QAbstractProxyModel() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQAbstractProxyModelProxy), null);
-			_staticInterceptor = (IQAbstractProxyModelProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQAbstractProxyModelProxy StaticQAbstractProxyModel() {
-			return (IQAbstractProxyModelProxy) _staticInterceptor;
+			staticInterceptor = (IQAbstractProxyModelProxy) realProxy.GetTransparentProxy();
 		}
 		public QAbstractProxyModel(QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -34,7 +28,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QAbstractProxyModel", "(QObject*)", "#")]
 		private void NewQAbstractProxyModel(QObject parent) {
-			ProxyQAbstractProxyModel().NewQAbstractProxyModel(parent);
+			((QAbstractProxyModel) interceptor).NewQAbstractProxyModel(parent);
 		}
 		public QAbstractProxyModel() : this((Type) null) {
 			CreateProxy();
@@ -42,15 +36,15 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QAbstractProxyModel", "()", "")]
 		private void NewQAbstractProxyModel() {
-			ProxyQAbstractProxyModel().NewQAbstractProxyModel();
+			((QAbstractProxyModel) interceptor).NewQAbstractProxyModel();
 		}
 		[SmokeMethod("setSourceModel", "(QAbstractItemModel*)", "#")]
 		public virtual void SetSourceModel(QAbstractItemModel sourceModel) {
-			ProxyQAbstractProxyModel().SetSourceModel(sourceModel);
+			((QAbstractProxyModel) interceptor).SetSourceModel(sourceModel);
 		}
 		[SmokeMethod("sourceModel", "() const", "")]
 		public QAbstractItemModel SourceModel() {
-			return ProxyQAbstractProxyModel().SourceModel();
+			return ((QAbstractProxyModel) interceptor).SourceModel();
 		}
 		[SmokeMethod("mapToSource", "(const QModelIndex&) const", "#")]
 		public abstract QModelIndex MapToSource(QModelIndex proxyIndex);
@@ -58,41 +52,41 @@ namespace Qyoto {
 		public abstract QModelIndex MapFromSource(QModelIndex sourceIndex);
 		[SmokeMethod("mapSelectionToSource", "(const QItemSelection&) const", "#")]
 		public virtual QItemSelection MapSelectionToSource(QItemSelection selection) {
-			return ProxyQAbstractProxyModel().MapSelectionToSource(selection);
+			return ((QAbstractProxyModel) interceptor).MapSelectionToSource(selection);
 		}
 		[SmokeMethod("mapSelectionFromSource", "(const QItemSelection&) const", "#")]
 		public virtual QItemSelection MapSelectionFromSource(QItemSelection selection) {
-			return ProxyQAbstractProxyModel().MapSelectionFromSource(selection);
+			return ((QAbstractProxyModel) interceptor).MapSelectionFromSource(selection);
 		}
 		[SmokeMethod("submit", "()", "")]
 		public override bool Submit() {
-			return ProxyQAbstractProxyModel().Submit();
+			return ((QAbstractProxyModel) interceptor).Submit();
 		}
 		[SmokeMethod("revert", "()", "")]
 		public override void Revert() {
-			ProxyQAbstractProxyModel().Revert();
+			((QAbstractProxyModel) interceptor).Revert();
 		}
 		[SmokeMethod("data", "(const QModelIndex&, int) const", "#$")]
 		public override QVariant Data(QModelIndex proxyIndex, int role) {
-			return ProxyQAbstractProxyModel().Data(proxyIndex,role);
+			return ((QAbstractProxyModel) interceptor).Data(proxyIndex,role);
 		}
 		[SmokeMethod("data", "(const QModelIndex&) const", "#")]
 		public virtual QVariant Data(QModelIndex proxyIndex) {
-			return ProxyQAbstractProxyModel().Data(proxyIndex);
+			return ((QAbstractProxyModel) interceptor).Data(proxyIndex);
 		}
 		[SmokeMethod("headerData", "(int, Qt::Orientation, int) const", "$$$")]
 		public override QVariant HeaderData(int section, Qt.Orientation orientation, int role) {
-			return ProxyQAbstractProxyModel().HeaderData(section,orientation,role);
+			return ((QAbstractProxyModel) interceptor).HeaderData(section,orientation,role);
 		}
 		[SmokeMethod("flags", "(const QModelIndex&) const", "#")]
 		public override int Flags(QModelIndex index) {
-			return ProxyQAbstractProxyModel().Flags(index);
+			return ((QAbstractProxyModel) interceptor).Flags(index);
 		}
 		public static string Tr(string s, string c) {
-			return StaticQAbstractProxyModel().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQAbstractProxyModel().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQAbstractProxyModelSignals Emit {
 			get { return (IQAbstractProxyModelSignals) Q_EMIT; }

@@ -16,18 +16,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFtp), this);
-			_interceptor = (QFtp) realProxy.GetTransparentProxy();
+			interceptor = (QFtp) realProxy.GetTransparentProxy();
 		}
-		private QFtp ProxyQFtp() {
-			return (QFtp) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQFtpProxy staticInterceptor = null;
 		static QFtp() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQFtpProxy), null);
-			_staticInterceptor = (IQFtpProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQFtpProxy StaticQFtp() {
-			return (IQFtpProxy) _staticInterceptor;
+			staticInterceptor = (IQFtpProxy) realProxy.GetTransparentProxy();
 		}
 		public enum State {
 			Unconnected = 0,
@@ -75,7 +69,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QFtp", "(QObject*)", "#")]
 		private void NewQFtp(QObject parent) {
-			ProxyQFtp().NewQFtp(parent);
+			((QFtp) interceptor).NewQFtp(parent);
 		}
 		public QFtp() : this((Type) null) {
 			CreateProxy();
@@ -83,148 +77,148 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QFtp", "()", "")]
 		private void NewQFtp() {
-			ProxyQFtp().NewQFtp();
+			((QFtp) interceptor).NewQFtp();
 		}
 		[SmokeMethod("setProxy", "(const QString&, quint16)", "$$")]
 		public int SetProxy(string host, ushort port) {
-			return ProxyQFtp().SetProxy(host,port);
+			return ((QFtp) interceptor).SetProxy(host,port);
 		}
 		[SmokeMethod("connectToHost", "(const QString&, quint16)", "$$")]
 		public int ConnectToHost(string host, ushort port) {
-			return ProxyQFtp().ConnectToHost(host,port);
+			return ((QFtp) interceptor).ConnectToHost(host,port);
 		}
 		[SmokeMethod("connectToHost", "(const QString&)", "$")]
 		public int ConnectToHost(string host) {
-			return ProxyQFtp().ConnectToHost(host);
+			return ((QFtp) interceptor).ConnectToHost(host);
 		}
 		[SmokeMethod("login", "(const QString&, const QString&)", "$$")]
 		public int Login(string user, string password) {
-			return ProxyQFtp().Login(user,password);
+			return ((QFtp) interceptor).Login(user,password);
 		}
 		[SmokeMethod("login", "(const QString&)", "$")]
 		public int Login(string user) {
-			return ProxyQFtp().Login(user);
+			return ((QFtp) interceptor).Login(user);
 		}
 		[SmokeMethod("login", "()", "")]
 		public int Login() {
-			return ProxyQFtp().Login();
+			return ((QFtp) interceptor).Login();
 		}
 		[SmokeMethod("close", "()", "")]
 		public int Close() {
-			return ProxyQFtp().Close();
+			return ((QFtp) interceptor).Close();
 		}
 		[SmokeMethod("setTransferMode", "(QFtp::TransferMode)", "$")]
 		public int SetTransferMode(QFtp.TransferMode mode) {
-			return ProxyQFtp().SetTransferMode(mode);
+			return ((QFtp) interceptor).SetTransferMode(mode);
 		}
 		[SmokeMethod("list", "(const QString&)", "$")]
 		public int List(string dir) {
-			return ProxyQFtp().List(dir);
+			return ((QFtp) interceptor).List(dir);
 		}
 		[SmokeMethod("list", "()", "")]
 		public int List() {
-			return ProxyQFtp().List();
+			return ((QFtp) interceptor).List();
 		}
 		[SmokeMethod("cd", "(const QString&)", "$")]
 		public int Cd(string dir) {
-			return ProxyQFtp().Cd(dir);
+			return ((QFtp) interceptor).Cd(dir);
 		}
 		[SmokeMethod("get", "(const QString&, QIODevice*, QFtp::TransferType)", "$#$")]
 		public int Get(string file, QIODevice dev, QFtp.TransferType type) {
-			return ProxyQFtp().Get(file,dev,type);
+			return ((QFtp) interceptor).Get(file,dev,type);
 		}
 		[SmokeMethod("get", "(const QString&, QIODevice*)", "$#")]
 		public int Get(string file, QIODevice dev) {
-			return ProxyQFtp().Get(file,dev);
+			return ((QFtp) interceptor).Get(file,dev);
 		}
 		[SmokeMethod("get", "(const QString&)", "$")]
 		public int Get(string file) {
-			return ProxyQFtp().Get(file);
+			return ((QFtp) interceptor).Get(file);
 		}
 		[SmokeMethod("put", "(const QByteArray&, const QString&, QFtp::TransferType)", "#$$")]
 		public int Put(QByteArray data, string file, QFtp.TransferType type) {
-			return ProxyQFtp().Put(data,file,type);
+			return ((QFtp) interceptor).Put(data,file,type);
 		}
 		[SmokeMethod("put", "(const QByteArray&, const QString&)", "#$")]
 		public int Put(QByteArray data, string file) {
-			return ProxyQFtp().Put(data,file);
+			return ((QFtp) interceptor).Put(data,file);
 		}
 		[SmokeMethod("put", "(QIODevice*, const QString&, QFtp::TransferType)", "#$$")]
 		public int Put(QIODevice dev, string file, QFtp.TransferType type) {
-			return ProxyQFtp().Put(dev,file,type);
+			return ((QFtp) interceptor).Put(dev,file,type);
 		}
 		[SmokeMethod("put", "(QIODevice*, const QString&)", "#$")]
 		public int Put(QIODevice dev, string file) {
-			return ProxyQFtp().Put(dev,file);
+			return ((QFtp) interceptor).Put(dev,file);
 		}
 		[SmokeMethod("remove", "(const QString&)", "$")]
 		public int Remove(string file) {
-			return ProxyQFtp().Remove(file);
+			return ((QFtp) interceptor).Remove(file);
 		}
 		[SmokeMethod("mkdir", "(const QString&)", "$")]
 		public int Mkdir(string dir) {
-			return ProxyQFtp().Mkdir(dir);
+			return ((QFtp) interceptor).Mkdir(dir);
 		}
 		[SmokeMethod("rmdir", "(const QString&)", "$")]
 		public int Rmdir(string dir) {
-			return ProxyQFtp().Rmdir(dir);
+			return ((QFtp) interceptor).Rmdir(dir);
 		}
 		[SmokeMethod("rename", "(const QString&, const QString&)", "$$")]
 		public int Rename(string oldname, string newname) {
-			return ProxyQFtp().Rename(oldname,newname);
+			return ((QFtp) interceptor).Rename(oldname,newname);
 		}
 		[SmokeMethod("rawCommand", "(const QString&)", "$")]
 		public int RawCommand(string command) {
-			return ProxyQFtp().RawCommand(command);
+			return ((QFtp) interceptor).RawCommand(command);
 		}
 		[SmokeMethod("bytesAvailable", "() const", "")]
 		public long BytesAvailable() {
-			return ProxyQFtp().BytesAvailable();
+			return ((QFtp) interceptor).BytesAvailable();
 		}
 		[SmokeMethod("read", "(char*, qint64)", "$$")]
 		public long Read(string data, long maxlen) {
-			return ProxyQFtp().Read(data,maxlen);
+			return ((QFtp) interceptor).Read(data,maxlen);
 		}
 		[SmokeMethod("readAll", "()", "")]
 		public QByteArray ReadAll() {
-			return ProxyQFtp().ReadAll();
+			return ((QFtp) interceptor).ReadAll();
 		}
 		[SmokeMethod("currentId", "() const", "")]
 		public int CurrentId() {
-			return ProxyQFtp().CurrentId();
+			return ((QFtp) interceptor).CurrentId();
 		}
 		[SmokeMethod("currentDevice", "() const", "")]
 		public QIODevice CurrentDevice() {
-			return ProxyQFtp().CurrentDevice();
+			return ((QFtp) interceptor).CurrentDevice();
 		}
 		[SmokeMethod("currentCommand", "() const", "")]
 		public QFtp.Command CurrentCommand() {
-			return ProxyQFtp().CurrentCommand();
+			return ((QFtp) interceptor).CurrentCommand();
 		}
 		[SmokeMethod("hasPendingCommands", "() const", "")]
 		public bool HasPendingCommands() {
-			return ProxyQFtp().HasPendingCommands();
+			return ((QFtp) interceptor).HasPendingCommands();
 		}
 		[SmokeMethod("clearPendingCommands", "()", "")]
 		public void ClearPendingCommands() {
-			ProxyQFtp().ClearPendingCommands();
+			((QFtp) interceptor).ClearPendingCommands();
 		}
 		[SmokeMethod("state", "() const", "")]
 		public QFtp.State state() {
-			return ProxyQFtp().state();
+			return ((QFtp) interceptor).state();
 		}
 		[SmokeMethod("error", "() const", "")]
 		public QFtp.Error error() {
-			return ProxyQFtp().error();
+			return ((QFtp) interceptor).error();
 		}
 		[SmokeMethod("errorString", "() const", "")]
 		public string ErrorString() {
-			return ProxyQFtp().ErrorString();
+			return ((QFtp) interceptor).ErrorString();
 		}
 		[Q_SLOT("void abort()")]
 		[SmokeMethod("abort", "()", "")]
 		public void Abort() {
-			ProxyQFtp().Abort();
+			((QFtp) interceptor).Abort();
 		}
 		~QFtp() {
 			DisposeQFtp();
@@ -234,13 +228,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QFtp", "()", "")]
 		private void DisposeQFtp() {
-			ProxyQFtp().DisposeQFtp();
+			((QFtp) interceptor).DisposeQFtp();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQFtp().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQFtp().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQFtpSignals Emit {
 			get { return (IQFtpSignals) Q_EMIT; }

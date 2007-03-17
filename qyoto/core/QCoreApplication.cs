@@ -95,18 +95,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QCoreApplication), this);
-			_interceptor = (QCoreApplication) realProxy.GetTransparentProxy();
+			interceptor = (QCoreApplication) realProxy.GetTransparentProxy();
 		}
-		private QCoreApplication ProxyQCoreApplication() {
-			return (QCoreApplication) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQCoreApplicationProxy staticInterceptor = null;
 		static QCoreApplication() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQCoreApplicationProxy), null);
-			_staticInterceptor = (IQCoreApplicationProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQCoreApplicationProxy StaticQCoreApplication() {
-			return (IQCoreApplicationProxy) _staticInterceptor;
+			staticInterceptor = (IQCoreApplicationProxy) realProxy.GetTransparentProxy();
 		}
 		public enum Encoding {
 			CodecForTr = 0,
@@ -133,11 +127,11 @@ namespace Qyoto {
 		// bool compressEvent(QEvent* arg1,QObject* arg2,QPostEventList* arg3); >>>> NOT CONVERTED
 		[SmokeMethod("notify", "(QObject*, QEvent*)", "##")]
 		public virtual bool Notify(QObject arg1, QEvent arg2) {
-			return ProxyQCoreApplication().Notify(arg1,arg2);
+			return ((QCoreApplication) interceptor).Notify(arg1,arg2);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected new virtual bool Event(QEvent arg1) {
-			return ProxyQCoreApplication().Event(arg1);
+			return ((QCoreApplication) interceptor).Event(arg1);
 		}
 		~QCoreApplication() {
 			DisposeQCoreApplication();
@@ -147,132 +141,132 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QCoreApplication", "()", "")]
 		private void DisposeQCoreApplication() {
-			ProxyQCoreApplication().DisposeQCoreApplication();
+			((QCoreApplication) interceptor).DisposeQCoreApplication();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQCoreApplication().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQCoreApplication().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		public static List<string> Arguments() {
-			return StaticQCoreApplication().Arguments();
+			return staticInterceptor.Arguments();
 		}
 		public static void SetAttribute(Qt.ApplicationAttribute attribute, bool on) {
-			StaticQCoreApplication().SetAttribute(attribute,on);
+			staticInterceptor.SetAttribute(attribute,on);
 		}
 		public static void SetAttribute(Qt.ApplicationAttribute attribute) {
-			StaticQCoreApplication().SetAttribute(attribute);
+			staticInterceptor.SetAttribute(attribute);
 		}
 		public static bool TestAttribute(Qt.ApplicationAttribute attribute) {
-			return StaticQCoreApplication().TestAttribute(attribute);
+			return staticInterceptor.TestAttribute(attribute);
 		}
 		public static void SetOrganizationDomain(string orgDomain) {
-			StaticQCoreApplication().SetOrganizationDomain(orgDomain);
+			staticInterceptor.SetOrganizationDomain(orgDomain);
 		}
 		public static string organizationDomain() {
-			return StaticQCoreApplication().organizationDomain();
+			return staticInterceptor.organizationDomain();
 		}
 		public static void SetOrganizationName(string orgName) {
-			StaticQCoreApplication().SetOrganizationName(orgName);
+			staticInterceptor.SetOrganizationName(orgName);
 		}
 		public static string organizationName() {
-			return StaticQCoreApplication().organizationName();
+			return staticInterceptor.organizationName();
 		}
 		public static void SetApplicationName(string application) {
-			StaticQCoreApplication().SetApplicationName(application);
+			staticInterceptor.SetApplicationName(application);
 		}
 		public static string applicationName() {
-			return StaticQCoreApplication().applicationName();
+			return staticInterceptor.applicationName();
 		}
 		public static QCoreApplication Instance() {
-			return StaticQCoreApplication().Instance();
+			return staticInterceptor.Instance();
 		}
 		public static int Exec() {
-			int result = StaticQCoreApplication().Exec();
+			int result = staticInterceptor.Exec();
 			Qyoto.SetApplicationTerminated();
 			return result;
 		}
 		public static void ProcessEvents(uint flags) {
-			StaticQCoreApplication().ProcessEvents(flags);
+			staticInterceptor.ProcessEvents(flags);
 		}
 		public static void ProcessEvents() {
-			StaticQCoreApplication().ProcessEvents();
+			staticInterceptor.ProcessEvents();
 		}
 		public static void ProcessEvents(uint flags, int maxtime) {
-			StaticQCoreApplication().ProcessEvents(flags,maxtime);
+			staticInterceptor.ProcessEvents(flags,maxtime);
 		}
 		public static void Exit(int retcode) {
-			StaticQCoreApplication().Exit(retcode);
+			staticInterceptor.Exit(retcode);
 		}
 		public static void Exit() {
-			StaticQCoreApplication().Exit();
+			staticInterceptor.Exit();
 		}
 		public static bool SendEvent(QObject receiver, QEvent arg2) {
-			return StaticQCoreApplication().SendEvent(receiver,arg2);
+			return staticInterceptor.SendEvent(receiver,arg2);
 		}
 		public static void PostEvent(QObject receiver, QEvent arg2) {
-			StaticQCoreApplication().PostEvent(receiver,arg2);
+			staticInterceptor.PostEvent(receiver,arg2);
 		}
 		public static void SendPostedEvents(QObject receiver, int event_type) {
-			StaticQCoreApplication().SendPostedEvents(receiver,event_type);
+			staticInterceptor.SendPostedEvents(receiver,event_type);
 		}
 		public static void SendPostedEvents() {
-			StaticQCoreApplication().SendPostedEvents();
+			staticInterceptor.SendPostedEvents();
 		}
 		public static void RemovePostedEvents(QObject receiver) {
-			StaticQCoreApplication().RemovePostedEvents(receiver);
+			staticInterceptor.RemovePostedEvents(receiver);
 		}
 		public static bool HasPendingEvents() {
-			return StaticQCoreApplication().HasPendingEvents();
+			return staticInterceptor.HasPendingEvents();
 		}
 		public static bool StartingUp() {
-			return StaticQCoreApplication().StartingUp();
+			return staticInterceptor.StartingUp();
 		}
 		public static bool ClosingDown() {
-			return StaticQCoreApplication().ClosingDown();
+			return staticInterceptor.ClosingDown();
 		}
 		public static string ApplicationDirPath() {
-			return StaticQCoreApplication().ApplicationDirPath();
+			return staticInterceptor.ApplicationDirPath();
 		}
 		public static string ApplicationFilePath() {
-			return StaticQCoreApplication().ApplicationFilePath();
+			return staticInterceptor.ApplicationFilePath();
 		}
 		public static void SetLibraryPaths(List<string> arg1) {
-			StaticQCoreApplication().SetLibraryPaths(arg1);
+			staticInterceptor.SetLibraryPaths(arg1);
 		}
 		public static List<string> LibraryPaths() {
-			return StaticQCoreApplication().LibraryPaths();
+			return staticInterceptor.LibraryPaths();
 		}
 		public static void AddLibraryPath(string arg1) {
-			StaticQCoreApplication().AddLibraryPath(arg1);
+			staticInterceptor.AddLibraryPath(arg1);
 		}
 		public static void RemoveLibraryPath(string arg1) {
-			StaticQCoreApplication().RemoveLibraryPath(arg1);
+			staticInterceptor.RemoveLibraryPath(arg1);
 		}
 		public static void InstallTranslator(QTranslator messageFile) {
-			StaticQCoreApplication().InstallTranslator(messageFile);
+			staticInterceptor.InstallTranslator(messageFile);
 		}
 		public static void RemoveTranslator(QTranslator messageFile) {
-			StaticQCoreApplication().RemoveTranslator(messageFile);
+			staticInterceptor.RemoveTranslator(messageFile);
 		}
 		public static string Translate(string context, string key, string comment, QCoreApplication.Encoding encoding) {
-			return StaticQCoreApplication().Translate(context,key,comment,encoding);
+			return staticInterceptor.Translate(context,key,comment,encoding);
 		}
 		public static string Translate(string context, string key, string comment) {
-			return StaticQCoreApplication().Translate(context,key,comment);
+			return staticInterceptor.Translate(context,key,comment);
 		}
 		public static string Translate(string context, string key) {
-			return StaticQCoreApplication().Translate(context,key);
+			return staticInterceptor.Translate(context,key);
 		}
 		public static string Translate(string context, string key, string comment, QCoreApplication.Encoding encoding, int n) {
-			return StaticQCoreApplication().Translate(context,key,comment,encoding,n);
+			return staticInterceptor.Translate(context,key,comment,encoding,n);
 		}
 		public static void Flush() {
-			StaticQCoreApplication().Flush();
+			staticInterceptor.Flush();
 		}
 		public static void Quit() {
-			StaticQCoreApplication().Quit();
+			staticInterceptor.Quit();
 		}
 		protected new IQCoreApplicationSignals Emit {
 			get { return (IQCoreApplicationSignals) Q_EMIT; }

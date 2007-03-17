@@ -5,15 +5,12 @@ namespace Qyoto {
 
 	[SmokeClass("QTableWidgetItem")]
 	public class QTableWidgetItem : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QTableWidgetItem interceptor = null;
+		private IntPtr smokeObject;
 		protected QTableWidgetItem(Type dummy) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTableWidgetItem), this);
-			_interceptor = (QTableWidgetItem) realProxy.GetTransparentProxy();
-		}
-		private QTableWidgetItem ProxyQTableWidgetItem() {
-			return (QTableWidgetItem) _interceptor;
+			interceptor = (QTableWidgetItem) realProxy.GetTransparentProxy();
 		}
 		public enum ItemType {
 			Type = 0,
@@ -25,7 +22,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTableWidgetItem", "(int)", "$")]
 		private void NewQTableWidgetItem(int type) {
-			ProxyQTableWidgetItem().NewQTableWidgetItem(type);
+			((QTableWidgetItem) interceptor).NewQTableWidgetItem(type);
 		}
 		public QTableWidgetItem() : this((Type) null) {
 			CreateProxy();
@@ -33,7 +30,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTableWidgetItem", "()", "")]
 		private void NewQTableWidgetItem() {
-			ProxyQTableWidgetItem().NewQTableWidgetItem();
+			((QTableWidgetItem) interceptor).NewQTableWidgetItem();
 		}
 		public QTableWidgetItem(string text, int type) : this((Type) null) {
 			CreateProxy();
@@ -41,7 +38,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTableWidgetItem", "(const QString&, int)", "$$")]
 		private void NewQTableWidgetItem(string text, int type) {
-			ProxyQTableWidgetItem().NewQTableWidgetItem(text,type);
+			((QTableWidgetItem) interceptor).NewQTableWidgetItem(text,type);
 		}
 		public QTableWidgetItem(string text) : this((Type) null) {
 			CreateProxy();
@@ -49,7 +46,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTableWidgetItem", "(const QString&)", "$")]
 		private void NewQTableWidgetItem(string text) {
-			ProxyQTableWidgetItem().NewQTableWidgetItem(text);
+			((QTableWidgetItem) interceptor).NewQTableWidgetItem(text);
 		}
 		public QTableWidgetItem(QIcon icon, string text, int type) : this((Type) null) {
 			CreateProxy();
@@ -57,7 +54,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTableWidgetItem", "(const QIcon&, const QString&, int)", "#$$")]
 		private void NewQTableWidgetItem(QIcon icon, string text, int type) {
-			ProxyQTableWidgetItem().NewQTableWidgetItem(icon,text,type);
+			((QTableWidgetItem) interceptor).NewQTableWidgetItem(icon,text,type);
 		}
 		public QTableWidgetItem(QIcon icon, string text) : this((Type) null) {
 			CreateProxy();
@@ -65,7 +62,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTableWidgetItem", "(const QIcon&, const QString&)", "#$")]
 		private void NewQTableWidgetItem(QIcon icon, string text) {
-			ProxyQTableWidgetItem().NewQTableWidgetItem(icon,text);
+			((QTableWidgetItem) interceptor).NewQTableWidgetItem(icon,text);
 		}
 		public QTableWidgetItem(QTableWidgetItem other) : this((Type) null) {
 			CreateProxy();
@@ -73,163 +70,163 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTableWidgetItem", "(const QTableWidgetItem&)", "#")]
 		private void NewQTableWidgetItem(QTableWidgetItem other) {
-			ProxyQTableWidgetItem().NewQTableWidgetItem(other);
+			((QTableWidgetItem) interceptor).NewQTableWidgetItem(other);
 		}
 		[SmokeMethod("clone", "() const", "")]
 		public virtual QTableWidgetItem Clone() {
-			return ProxyQTableWidgetItem().Clone();
+			return ((QTableWidgetItem) interceptor).Clone();
 		}
 		[SmokeMethod("tableWidget", "() const", "")]
 		public QTableWidget TableWidget() {
-			return ProxyQTableWidgetItem().TableWidget();
+			return ((QTableWidgetItem) interceptor).TableWidget();
 		}
 		[SmokeMethod("row", "() const", "")]
 		public int Row() {
-			return ProxyQTableWidgetItem().Row();
+			return ((QTableWidgetItem) interceptor).Row();
 		}
 		[SmokeMethod("column", "() const", "")]
 		public int Column() {
-			return ProxyQTableWidgetItem().Column();
+			return ((QTableWidgetItem) interceptor).Column();
 		}
 		[SmokeMethod("setSelected", "(bool)", "$")]
 		public void SetSelected(bool select) {
-			ProxyQTableWidgetItem().SetSelected(select);
+			((QTableWidgetItem) interceptor).SetSelected(select);
 		}
 		[SmokeMethod("isSelected", "() const", "")]
 		public bool IsSelected() {
-			return ProxyQTableWidgetItem().IsSelected();
+			return ((QTableWidgetItem) interceptor).IsSelected();
 		}
 		[SmokeMethod("flags", "() const", "")]
 		public int Flags() {
-			return ProxyQTableWidgetItem().Flags();
+			return ((QTableWidgetItem) interceptor).Flags();
 		}
 		[SmokeMethod("setFlags", "(Qt::ItemFlags)", "$")]
 		public void SetFlags(int flags) {
-			ProxyQTableWidgetItem().SetFlags(flags);
+			((QTableWidgetItem) interceptor).SetFlags(flags);
 		}
 		[SmokeMethod("text", "() const", "")]
 		public string Text() {
-			return ProxyQTableWidgetItem().Text();
+			return ((QTableWidgetItem) interceptor).Text();
 		}
 		[SmokeMethod("setText", "(const QString&)", "$")]
 		public void SetText(string text) {
-			ProxyQTableWidgetItem().SetText(text);
+			((QTableWidgetItem) interceptor).SetText(text);
 		}
 		[SmokeMethod("icon", "() const", "")]
 		public QIcon Icon() {
-			return ProxyQTableWidgetItem().Icon();
+			return ((QTableWidgetItem) interceptor).Icon();
 		}
 		[SmokeMethod("setIcon", "(const QIcon&)", "#")]
 		public void SetIcon(QIcon icon) {
-			ProxyQTableWidgetItem().SetIcon(icon);
+			((QTableWidgetItem) interceptor).SetIcon(icon);
 		}
 		[SmokeMethod("statusTip", "() const", "")]
 		public string StatusTip() {
-			return ProxyQTableWidgetItem().StatusTip();
+			return ((QTableWidgetItem) interceptor).StatusTip();
 		}
 		[SmokeMethod("setStatusTip", "(const QString&)", "$")]
 		public void SetStatusTip(string statusTip) {
-			ProxyQTableWidgetItem().SetStatusTip(statusTip);
+			((QTableWidgetItem) interceptor).SetStatusTip(statusTip);
 		}
 		[SmokeMethod("toolTip", "() const", "")]
 		public string ToolTip() {
-			return ProxyQTableWidgetItem().ToolTip();
+			return ((QTableWidgetItem) interceptor).ToolTip();
 		}
 		[SmokeMethod("setToolTip", "(const QString&)", "$")]
 		public void SetToolTip(string toolTip) {
-			ProxyQTableWidgetItem().SetToolTip(toolTip);
+			((QTableWidgetItem) interceptor).SetToolTip(toolTip);
 		}
 		[SmokeMethod("whatsThis", "() const", "")]
 		public string WhatsThis() {
-			return ProxyQTableWidgetItem().WhatsThis();
+			return ((QTableWidgetItem) interceptor).WhatsThis();
 		}
 		[SmokeMethod("setWhatsThis", "(const QString&)", "$")]
 		public void SetWhatsThis(string whatsThis) {
-			ProxyQTableWidgetItem().SetWhatsThis(whatsThis);
+			((QTableWidgetItem) interceptor).SetWhatsThis(whatsThis);
 		}
 		[SmokeMethod("font", "() const", "")]
 		public QFont Font() {
-			return ProxyQTableWidgetItem().Font();
+			return ((QTableWidgetItem) interceptor).Font();
 		}
 		[SmokeMethod("setFont", "(const QFont&)", "#")]
 		public void SetFont(QFont font) {
-			ProxyQTableWidgetItem().SetFont(font);
+			((QTableWidgetItem) interceptor).SetFont(font);
 		}
 		[SmokeMethod("textAlignment", "() const", "")]
 		public int TextAlignment() {
-			return ProxyQTableWidgetItem().TextAlignment();
+			return ((QTableWidgetItem) interceptor).TextAlignment();
 		}
 		[SmokeMethod("setTextAlignment", "(int)", "$")]
 		public void SetTextAlignment(int alignment) {
-			ProxyQTableWidgetItem().SetTextAlignment(alignment);
+			((QTableWidgetItem) interceptor).SetTextAlignment(alignment);
 		}
 		[SmokeMethod("backgroundColor", "() const", "")]
 		public QColor BackgroundColor() {
-			return ProxyQTableWidgetItem().BackgroundColor();
+			return ((QTableWidgetItem) interceptor).BackgroundColor();
 		}
 		[SmokeMethod("setBackgroundColor", "(const QColor&)", "#")]
 		public void SetBackgroundColor(QColor color) {
-			ProxyQTableWidgetItem().SetBackgroundColor(color);
+			((QTableWidgetItem) interceptor).SetBackgroundColor(color);
 		}
 		[SmokeMethod("background", "() const", "")]
 		public QBrush Background() {
-			return ProxyQTableWidgetItem().Background();
+			return ((QTableWidgetItem) interceptor).Background();
 		}
 		[SmokeMethod("setBackground", "(const QBrush&)", "#")]
 		public void SetBackground(QBrush brush) {
-			ProxyQTableWidgetItem().SetBackground(brush);
+			((QTableWidgetItem) interceptor).SetBackground(brush);
 		}
 		[SmokeMethod("textColor", "() const", "")]
 		public QColor TextColor() {
-			return ProxyQTableWidgetItem().TextColor();
+			return ((QTableWidgetItem) interceptor).TextColor();
 		}
 		[SmokeMethod("setTextColor", "(const QColor&)", "#")]
 		public void SetTextColor(QColor color) {
-			ProxyQTableWidgetItem().SetTextColor(color);
+			((QTableWidgetItem) interceptor).SetTextColor(color);
 		}
 		[SmokeMethod("foreground", "() const", "")]
 		public QBrush Foreground() {
-			return ProxyQTableWidgetItem().Foreground();
+			return ((QTableWidgetItem) interceptor).Foreground();
 		}
 		[SmokeMethod("setForeground", "(const QBrush&)", "#")]
 		public void SetForeground(QBrush brush) {
-			ProxyQTableWidgetItem().SetForeground(brush);
+			((QTableWidgetItem) interceptor).SetForeground(brush);
 		}
 		[SmokeMethod("checkState", "() const", "")]
 		public Qt.CheckState CheckState() {
-			return ProxyQTableWidgetItem().CheckState();
+			return ((QTableWidgetItem) interceptor).CheckState();
 		}
 		[SmokeMethod("setCheckState", "(Qt::CheckState)", "$")]
 		public void SetCheckState(Qt.CheckState state) {
-			ProxyQTableWidgetItem().SetCheckState(state);
+			((QTableWidgetItem) interceptor).SetCheckState(state);
 		}
 		[SmokeMethod("sizeHint", "() const", "")]
 		public QSize SizeHint() {
-			return ProxyQTableWidgetItem().SizeHint();
+			return ((QTableWidgetItem) interceptor).SizeHint();
 		}
 		[SmokeMethod("setSizeHint", "(const QSize&)", "#")]
 		public void SetSizeHint(QSize size) {
-			ProxyQTableWidgetItem().SetSizeHint(size);
+			((QTableWidgetItem) interceptor).SetSizeHint(size);
 		}
 		[SmokeMethod("data", "(int) const", "$")]
 		public virtual QVariant Data(int role) {
-			return ProxyQTableWidgetItem().Data(role);
+			return ((QTableWidgetItem) interceptor).Data(role);
 		}
 		[SmokeMethod("setData", "(int, const QVariant&)", "$#")]
 		public virtual void SetData(int role, QVariant value) {
-			ProxyQTableWidgetItem().SetData(role,value);
+			((QTableWidgetItem) interceptor).SetData(role,value);
 		}
 		[SmokeMethod("read", "(QDataStream&)", "#")]
 		public virtual void Read(QDataStream arg1) {
-			ProxyQTableWidgetItem().Read(arg1);
+			((QTableWidgetItem) interceptor).Read(arg1);
 		}
 		[SmokeMethod("write", "(QDataStream&) const", "#")]
 		public virtual void Write(QDataStream arg1) {
-			ProxyQTableWidgetItem().Write(arg1);
+			((QTableWidgetItem) interceptor).Write(arg1);
 		}
 		[SmokeMethod("type", "() const", "")]
 		public int type() {
-			return ProxyQTableWidgetItem().type();
+			return ((QTableWidgetItem) interceptor).type();
 		}
 		~QTableWidgetItem() {
 			DisposeQTableWidgetItem();
@@ -239,7 +236,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QTableWidgetItem", "()", "")]
 		private void DisposeQTableWidgetItem() {
-			ProxyQTableWidgetItem().DisposeQTableWidgetItem();
+			((QTableWidgetItem) interceptor).DisposeQTableWidgetItem();
 		}
 	}
 }

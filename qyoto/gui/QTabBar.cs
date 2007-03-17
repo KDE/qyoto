@@ -16,18 +16,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTabBar), this);
-			_interceptor = (QTabBar) realProxy.GetTransparentProxy();
+			interceptor = (QTabBar) realProxy.GetTransparentProxy();
 		}
-		private QTabBar ProxyQTabBar() {
-			return (QTabBar) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQTabBarProxy staticInterceptor = null;
 		static QTabBar() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTabBarProxy), null);
-			_staticInterceptor = (IQTabBarProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQTabBarProxy StaticQTabBar() {
-			return (IQTabBarProxy) _staticInterceptor;
+			staticInterceptor = (IQTabBarProxy) realProxy.GetTransparentProxy();
 		}
 		public enum Shape {
 			RoundedNorth = 0,
@@ -79,7 +73,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTabBar", "(QWidget*)", "#")]
 		private void NewQTabBar(QWidget parent) {
-			ProxyQTabBar().NewQTabBar(parent);
+			((QTabBar) interceptor).NewQTabBar(parent);
 		}
 		public QTabBar() : this((Type) null) {
 			CreateProxy();
@@ -87,147 +81,147 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTabBar", "()", "")]
 		private void NewQTabBar() {
-			ProxyQTabBar().NewQTabBar();
+			((QTabBar) interceptor).NewQTabBar();
 		}
 		[SmokeMethod("addTab", "(const QString&)", "$")]
 		public int AddTab(string text) {
-			return ProxyQTabBar().AddTab(text);
+			return ((QTabBar) interceptor).AddTab(text);
 		}
 		[SmokeMethod("addTab", "(const QIcon&, const QString&)", "#$")]
 		public int AddTab(QIcon icon, string text) {
-			return ProxyQTabBar().AddTab(icon,text);
+			return ((QTabBar) interceptor).AddTab(icon,text);
 		}
 		[SmokeMethod("insertTab", "(int, const QString&)", "$$")]
 		public int InsertTab(int index, string text) {
-			return ProxyQTabBar().InsertTab(index,text);
+			return ((QTabBar) interceptor).InsertTab(index,text);
 		}
 		[SmokeMethod("insertTab", "(int, const QIcon&, const QString&)", "$#$")]
 		public int InsertTab(int index, QIcon icon, string text) {
-			return ProxyQTabBar().InsertTab(index,icon,text);
+			return ((QTabBar) interceptor).InsertTab(index,icon,text);
 		}
 		[SmokeMethod("removeTab", "(int)", "$")]
 		public void RemoveTab(int index) {
-			ProxyQTabBar().RemoveTab(index);
+			((QTabBar) interceptor).RemoveTab(index);
 		}
 		[SmokeMethod("isTabEnabled", "(int) const", "$")]
 		public bool IsTabEnabled(int index) {
-			return ProxyQTabBar().IsTabEnabled(index);
+			return ((QTabBar) interceptor).IsTabEnabled(index);
 		}
 		[SmokeMethod("setTabEnabled", "(int, bool)", "$$")]
 		public void SetTabEnabled(int index, bool arg2) {
-			ProxyQTabBar().SetTabEnabled(index,arg2);
+			((QTabBar) interceptor).SetTabEnabled(index,arg2);
 		}
 		[SmokeMethod("tabText", "(int) const", "$")]
 		public string TabText(int index) {
-			return ProxyQTabBar().TabText(index);
+			return ((QTabBar) interceptor).TabText(index);
 		}
 		[SmokeMethod("setTabText", "(int, const QString&)", "$$")]
 		public void SetTabText(int index, string text) {
-			ProxyQTabBar().SetTabText(index,text);
+			((QTabBar) interceptor).SetTabText(index,text);
 		}
 		[SmokeMethod("tabTextColor", "(int) const", "$")]
 		public QColor TabTextColor(int index) {
-			return ProxyQTabBar().TabTextColor(index);
+			return ((QTabBar) interceptor).TabTextColor(index);
 		}
 		[SmokeMethod("setTabTextColor", "(int, const QColor&)", "$#")]
 		public void SetTabTextColor(int index, QColor color) {
-			ProxyQTabBar().SetTabTextColor(index,color);
+			((QTabBar) interceptor).SetTabTextColor(index,color);
 		}
 		[SmokeMethod("tabIcon", "(int) const", "$")]
 		public QIcon TabIcon(int index) {
-			return ProxyQTabBar().TabIcon(index);
+			return ((QTabBar) interceptor).TabIcon(index);
 		}
 		[SmokeMethod("setTabIcon", "(int, const QIcon&)", "$#")]
 		public void SetTabIcon(int index, QIcon icon) {
-			ProxyQTabBar().SetTabIcon(index,icon);
+			((QTabBar) interceptor).SetTabIcon(index,icon);
 		}
 		[SmokeMethod("setTabToolTip", "(int, const QString&)", "$$")]
 		public void SetTabToolTip(int index, string tip) {
-			ProxyQTabBar().SetTabToolTip(index,tip);
+			((QTabBar) interceptor).SetTabToolTip(index,tip);
 		}
 		[SmokeMethod("tabToolTip", "(int) const", "$")]
 		public string TabToolTip(int index) {
-			return ProxyQTabBar().TabToolTip(index);
+			return ((QTabBar) interceptor).TabToolTip(index);
 		}
 		[SmokeMethod("setTabWhatsThis", "(int, const QString&)", "$$")]
 		public void SetTabWhatsThis(int index, string text) {
-			ProxyQTabBar().SetTabWhatsThis(index,text);
+			((QTabBar) interceptor).SetTabWhatsThis(index,text);
 		}
 		[SmokeMethod("tabWhatsThis", "(int) const", "$")]
 		public string TabWhatsThis(int index) {
-			return ProxyQTabBar().TabWhatsThis(index);
+			return ((QTabBar) interceptor).TabWhatsThis(index);
 		}
 		[SmokeMethod("setTabData", "(int, const QVariant&)", "$#")]
 		public void SetTabData(int index, QVariant data) {
-			ProxyQTabBar().SetTabData(index,data);
+			((QTabBar) interceptor).SetTabData(index,data);
 		}
 		[SmokeMethod("tabData", "(int) const", "$")]
 		public QVariant TabData(int index) {
-			return ProxyQTabBar().TabData(index);
+			return ((QTabBar) interceptor).TabData(index);
 		}
 		[SmokeMethod("tabRect", "(int) const", "$")]
 		public QRect TabRect(int index) {
-			return ProxyQTabBar().TabRect(index);
+			return ((QTabBar) interceptor).TabRect(index);
 		}
 		[SmokeMethod("sizeHint", "() const", "")]
 		public override QSize SizeHint() {
-			return ProxyQTabBar().SizeHint();
+			return ((QTabBar) interceptor).SizeHint();
 		}
 		[SmokeMethod("minimumSizeHint", "() const", "")]
 		public override QSize MinimumSizeHint() {
-			return ProxyQTabBar().MinimumSizeHint();
+			return ((QTabBar) interceptor).MinimumSizeHint();
 		}
 		[SmokeMethod("tabSizeHint", "(int) const", "$")]
 		protected virtual QSize TabSizeHint(int index) {
-			return ProxyQTabBar().TabSizeHint(index);
+			return ((QTabBar) interceptor).TabSizeHint(index);
 		}
 		[SmokeMethod("tabInserted", "(int)", "$")]
 		protected virtual void TabInserted(int index) {
-			ProxyQTabBar().TabInserted(index);
+			((QTabBar) interceptor).TabInserted(index);
 		}
 		[SmokeMethod("tabRemoved", "(int)", "$")]
 		protected virtual void TabRemoved(int index) {
-			ProxyQTabBar().TabRemoved(index);
+			((QTabBar) interceptor).TabRemoved(index);
 		}
 		[SmokeMethod("tabLayoutChange", "()", "")]
 		protected virtual void TabLayoutChange() {
-			ProxyQTabBar().TabLayoutChange();
+			((QTabBar) interceptor).TabLayoutChange();
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent arg1) {
-			return ProxyQTabBar().Event(arg1);
+			return ((QTabBar) interceptor).Event(arg1);
 		}
 		[SmokeMethod("resizeEvent", "(QResizeEvent*)", "#")]
 		protected override void ResizeEvent(QResizeEvent arg1) {
-			ProxyQTabBar().ResizeEvent(arg1);
+			((QTabBar) interceptor).ResizeEvent(arg1);
 		}
 		[SmokeMethod("showEvent", "(QShowEvent*)", "#")]
 		protected override void ShowEvent(QShowEvent arg1) {
-			ProxyQTabBar().ShowEvent(arg1);
+			((QTabBar) interceptor).ShowEvent(arg1);
 		}
 		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
 		protected override void PaintEvent(QPaintEvent arg1) {
-			ProxyQTabBar().PaintEvent(arg1);
+			((QTabBar) interceptor).PaintEvent(arg1);
 		}
 		[SmokeMethod("mousePressEvent", "(QMouseEvent*)", "#")]
 		protected override void MousePressEvent(QMouseEvent arg1) {
-			ProxyQTabBar().MousePressEvent(arg1);
+			((QTabBar) interceptor).MousePressEvent(arg1);
 		}
 		[SmokeMethod("mouseMoveEvent", "(QMouseEvent*)", "#")]
 		protected override void MouseMoveEvent(QMouseEvent arg1) {
-			ProxyQTabBar().MouseMoveEvent(arg1);
+			((QTabBar) interceptor).MouseMoveEvent(arg1);
 		}
 		[SmokeMethod("mouseReleaseEvent", "(QMouseEvent*)", "#")]
 		protected override void MouseReleaseEvent(QMouseEvent arg1) {
-			ProxyQTabBar().MouseReleaseEvent(arg1);
+			((QTabBar) interceptor).MouseReleaseEvent(arg1);
 		}
 		[SmokeMethod("keyPressEvent", "(QKeyEvent*)", "#")]
 		protected override void KeyPressEvent(QKeyEvent arg1) {
-			ProxyQTabBar().KeyPressEvent(arg1);
+			((QTabBar) interceptor).KeyPressEvent(arg1);
 		}
 		[SmokeMethod("changeEvent", "(QEvent*)", "#")]
 		protected override void ChangeEvent(QEvent arg1) {
-			ProxyQTabBar().ChangeEvent(arg1);
+			((QTabBar) interceptor).ChangeEvent(arg1);
 		}
 		~QTabBar() {
 			DisposeQTabBar();
@@ -237,13 +231,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QTabBar", "()", "")]
 		private void DisposeQTabBar() {
-			ProxyQTabBar().DisposeQTabBar();
+			((QTabBar) interceptor).DisposeQTabBar();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQTabBar().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQTabBar().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQTabBarSignals Emit {
 			get { return (IQTabBarSignals) Q_EMIT; }

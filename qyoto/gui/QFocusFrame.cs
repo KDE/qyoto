@@ -15,18 +15,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFocusFrame), this);
-			_interceptor = (QFocusFrame) realProxy.GetTransparentProxy();
+			interceptor = (QFocusFrame) realProxy.GetTransparentProxy();
 		}
-		private QFocusFrame ProxyQFocusFrame() {
-			return (QFocusFrame) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQFocusFrameProxy staticInterceptor = null;
 		static QFocusFrame() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQFocusFrameProxy), null);
-			_staticInterceptor = (IQFocusFrameProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQFocusFrameProxy StaticQFocusFrame() {
-			return (IQFocusFrameProxy) _staticInterceptor;
+			staticInterceptor = (IQFocusFrameProxy) realProxy.GetTransparentProxy();
 		}
 		public QFocusFrame(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -34,7 +28,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QFocusFrame", "(QWidget*)", "#")]
 		private void NewQFocusFrame(QWidget parent) {
-			ProxyQFocusFrame().NewQFocusFrame(parent);
+			((QFocusFrame) interceptor).NewQFocusFrame(parent);
 		}
 		public QFocusFrame() : this((Type) null) {
 			CreateProxy();
@@ -42,27 +36,27 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QFocusFrame", "()", "")]
 		private void NewQFocusFrame() {
-			ProxyQFocusFrame().NewQFocusFrame();
+			((QFocusFrame) interceptor).NewQFocusFrame();
 		}
 		[SmokeMethod("setWidget", "(QWidget*)", "#")]
 		public void SetWidget(QWidget widget) {
-			ProxyQFocusFrame().SetWidget(widget);
+			((QFocusFrame) interceptor).SetWidget(widget);
 		}
 		[SmokeMethod("widget", "() const", "")]
 		public QWidget Widget() {
-			return ProxyQFocusFrame().Widget();
+			return ((QFocusFrame) interceptor).Widget();
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent e) {
-			return ProxyQFocusFrame().Event(e);
+			return ((QFocusFrame) interceptor).Event(e);
 		}
 		[SmokeMethod("eventFilter", "(QObject*, QEvent*)", "##")]
 		protected new virtual bool EventFilter(QObject arg1, QEvent arg2) {
-			return ProxyQFocusFrame().EventFilter(arg1,arg2);
+			return ((QFocusFrame) interceptor).EventFilter(arg1,arg2);
 		}
 		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
 		protected override void PaintEvent(QPaintEvent arg1) {
-			ProxyQFocusFrame().PaintEvent(arg1);
+			((QFocusFrame) interceptor).PaintEvent(arg1);
 		}
 		~QFocusFrame() {
 			DisposeQFocusFrame();
@@ -72,13 +66,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QFocusFrame", "()", "")]
 		private void DisposeQFocusFrame() {
-			ProxyQFocusFrame().DisposeQFocusFrame();
+			((QFocusFrame) interceptor).DisposeQFocusFrame();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQFocusFrame().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQFocusFrame().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQFocusFrameSignals Emit {
 			get { return (IQFocusFrameSignals) Q_EMIT; }

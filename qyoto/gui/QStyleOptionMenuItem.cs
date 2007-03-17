@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QStyleOptionMenuItem(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionMenuItem), this);
-			_interceptor = (QStyleOptionMenuItem) realProxy.GetTransparentProxy();
-		}
-		private QStyleOptionMenuItem ProxyQStyleOptionMenuItem() {
-			return (QStyleOptionMenuItem) _interceptor;
+			interceptor = (QStyleOptionMenuItem) realProxy.GetTransparentProxy();
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_MenuItem,
@@ -40,7 +37,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionMenuItem", "()", "")]
 		private void NewQStyleOptionMenuItem() {
-			ProxyQStyleOptionMenuItem().NewQStyleOptionMenuItem();
+			((QStyleOptionMenuItem) interceptor).NewQStyleOptionMenuItem();
 		}
 		public QStyleOptionMenuItem(QStyleOptionMenuItem other) : this((Type) null) {
 			CreateProxy();
@@ -48,7 +45,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionMenuItem", "(const QStyleOptionMenuItem&)", "#")]
 		private void NewQStyleOptionMenuItem(QStyleOptionMenuItem other) {
-			ProxyQStyleOptionMenuItem().NewQStyleOptionMenuItem(other);
+			((QStyleOptionMenuItem) interceptor).NewQStyleOptionMenuItem(other);
 		}
 		public QStyleOptionMenuItem(int version) : this((Type) null) {
 			CreateProxy();
@@ -56,7 +53,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionMenuItem", "(int)", "$")]
 		private void NewQStyleOptionMenuItem(int version) {
-			ProxyQStyleOptionMenuItem().NewQStyleOptionMenuItem(version);
+			((QStyleOptionMenuItem) interceptor).NewQStyleOptionMenuItem(version);
 		}
 		~QStyleOptionMenuItem() {
 			DisposeQStyleOptionMenuItem();
@@ -66,7 +63,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QStyleOptionMenuItem", "()", "")]
 		private void DisposeQStyleOptionMenuItem() {
-			ProxyQStyleOptionMenuItem().DisposeQStyleOptionMenuItem();
+			((QStyleOptionMenuItem) interceptor).DisposeQStyleOptionMenuItem();
 		}
 	}
 }

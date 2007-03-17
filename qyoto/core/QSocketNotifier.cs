@@ -5,7 +5,7 @@ namespace Qyoto {
 
 	///<remarks>*************************************************
 	///
-	///* Copyright (C) 1992-2006 Trolltech ASA. All rights reserved.
+	///* Copyright (C) 1992-2007 Trolltech ASA. All rights reserved.
 	///
 	///* This file is part of the QtCore module of the Qt Toolkit.
 	///
@@ -25,7 +25,7 @@ namespace Qyoto {
 	/// WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 	///
 	///************************************************** See <see cref="IQSocketNotifierSignals"></see> for signals emitted by QSocketNotifier
-	///</remarks>		<short>                                                                                 Copyright (C) 1992-2006 Trolltech ASA.</short>
+	///</remarks>		<short>                                                                                 Copyright (C) 1992-2007 Trolltech ASA.</short>
 
 	[SmokeClass("QSocketNotifier")]
 	public class QSocketNotifier : QObject, IDisposable {
@@ -39,18 +39,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSocketNotifier), this);
-			_interceptor = (QSocketNotifier) realProxy.GetTransparentProxy();
+			interceptor = (QSocketNotifier) realProxy.GetTransparentProxy();
 		}
-		private QSocketNotifier ProxyQSocketNotifier() {
-			return (QSocketNotifier) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQSocketNotifierProxy staticInterceptor = null;
 		static QSocketNotifier() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQSocketNotifierProxy), null);
-			_staticInterceptor = (IQSocketNotifierProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQSocketNotifierProxy StaticQSocketNotifier() {
-			return (IQSocketNotifierProxy) _staticInterceptor;
+			staticInterceptor = (IQSocketNotifierProxy) realProxy.GetTransparentProxy();
 		}
 		public enum TypeOf {
 			Read = 0,
@@ -63,7 +57,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSocketNotifier", "(int, QSocketNotifier::Type, QObject*)", "$$#")]
 		private void NewQSocketNotifier(int socket, QSocketNotifier.TypeOf arg2, QObject parent) {
-			ProxyQSocketNotifier().NewQSocketNotifier(socket,arg2,parent);
+			((QSocketNotifier) interceptor).NewQSocketNotifier(socket,arg2,parent);
 		}
 		public QSocketNotifier(int socket, QSocketNotifier.TypeOf arg2) : this((Type) null) {
 			CreateProxy();
@@ -71,28 +65,28 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSocketNotifier", "(int, QSocketNotifier::Type)", "$$")]
 		private void NewQSocketNotifier(int socket, QSocketNotifier.TypeOf arg2) {
-			ProxyQSocketNotifier().NewQSocketNotifier(socket,arg2);
+			((QSocketNotifier) interceptor).NewQSocketNotifier(socket,arg2);
 		}
 		[SmokeMethod("socket", "() const", "")]
 		public int Socket() {
-			return ProxyQSocketNotifier().Socket();
+			return ((QSocketNotifier) interceptor).Socket();
 		}
 		[SmokeMethod("type", "() const", "")]
 		public QSocketNotifier.TypeOf type() {
-			return ProxyQSocketNotifier().type();
+			return ((QSocketNotifier) interceptor).type();
 		}
 		[SmokeMethod("isEnabled", "() const", "")]
 		public bool IsEnabled() {
-			return ProxyQSocketNotifier().IsEnabled();
+			return ((QSocketNotifier) interceptor).IsEnabled();
 		}
 		[Q_SLOT("void setEnabled(bool)")]
 		[SmokeMethod("setEnabled", "(bool)", "$")]
 		public void SetEnabled(bool arg1) {
-			ProxyQSocketNotifier().SetEnabled(arg1);
+			((QSocketNotifier) interceptor).SetEnabled(arg1);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected new virtual bool Event(QEvent arg1) {
-			return ProxyQSocketNotifier().Event(arg1);
+			return ((QSocketNotifier) interceptor).Event(arg1);
 		}
 		~QSocketNotifier() {
 			DisposeQSocketNotifier();
@@ -102,13 +96,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QSocketNotifier", "()", "")]
 		private void DisposeQSocketNotifier() {
-			ProxyQSocketNotifier().DisposeQSocketNotifier();
+			((QSocketNotifier) interceptor).DisposeQSocketNotifier();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQSocketNotifier().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQSocketNotifier().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQSocketNotifierSignals Emit {
 			get { return (IQSocketNotifierSignals) Q_EMIT; }

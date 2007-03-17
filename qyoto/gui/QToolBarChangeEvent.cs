@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QToolBarChangeEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QToolBarChangeEvent), this);
-			_interceptor = (QToolBarChangeEvent) realProxy.GetTransparentProxy();
-		}
-		private QToolBarChangeEvent ProxyQToolBarChangeEvent() {
-			return (QToolBarChangeEvent) _interceptor;
+			interceptor = (QToolBarChangeEvent) realProxy.GetTransparentProxy();
 		}
 		public QToolBarChangeEvent(bool t) : this((Type) null) {
 			CreateProxy();
@@ -19,11 +16,11 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QToolBarChangeEvent", "(bool)", "$")]
 		private void NewQToolBarChangeEvent(bool t) {
-			ProxyQToolBarChangeEvent().NewQToolBarChangeEvent(t);
+			((QToolBarChangeEvent) interceptor).NewQToolBarChangeEvent(t);
 		}
 		[SmokeMethod("toggle", "() const", "")]
 		public bool Toggle() {
-			return ProxyQToolBarChangeEvent().Toggle();
+			return ((QToolBarChangeEvent) interceptor).Toggle();
 		}
 		~QToolBarChangeEvent() {
 			DisposeQToolBarChangeEvent();
@@ -33,7 +30,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QToolBarChangeEvent", "()", "")]
 		private void DisposeQToolBarChangeEvent() {
-			ProxyQToolBarChangeEvent().DisposeQToolBarChangeEvent();
+			((QToolBarChangeEvent) interceptor).DisposeQToolBarChangeEvent();
 		}
 	}
 }

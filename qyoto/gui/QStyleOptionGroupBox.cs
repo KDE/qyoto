@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QStyleOptionGroupBox(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionGroupBox), this);
-			_interceptor = (QStyleOptionGroupBox) realProxy.GetTransparentProxy();
-		}
-		private QStyleOptionGroupBox ProxyQStyleOptionGroupBox() {
-			return (QStyleOptionGroupBox) _interceptor;
+			interceptor = (QStyleOptionGroupBox) realProxy.GetTransparentProxy();
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_GroupBox,
@@ -25,7 +22,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionGroupBox", "()", "")]
 		private void NewQStyleOptionGroupBox() {
-			ProxyQStyleOptionGroupBox().NewQStyleOptionGroupBox();
+			((QStyleOptionGroupBox) interceptor).NewQStyleOptionGroupBox();
 		}
 		public QStyleOptionGroupBox(QStyleOptionGroupBox other) : this((Type) null) {
 			CreateProxy();
@@ -33,7 +30,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionGroupBox", "(const QStyleOptionGroupBox&)", "#")]
 		private void NewQStyleOptionGroupBox(QStyleOptionGroupBox other) {
-			ProxyQStyleOptionGroupBox().NewQStyleOptionGroupBox(other);
+			((QStyleOptionGroupBox) interceptor).NewQStyleOptionGroupBox(other);
 		}
 		public QStyleOptionGroupBox(int version) : this((Type) null) {
 			CreateProxy();
@@ -41,7 +38,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionGroupBox", "(int)", "$")]
 		private void NewQStyleOptionGroupBox(int version) {
-			ProxyQStyleOptionGroupBox().NewQStyleOptionGroupBox(version);
+			((QStyleOptionGroupBox) interceptor).NewQStyleOptionGroupBox(version);
 		}
 		~QStyleOptionGroupBox() {
 			DisposeQStyleOptionGroupBox();
@@ -51,7 +48,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QStyleOptionGroupBox", "()", "")]
 		private void DisposeQStyleOptionGroupBox() {
-			ProxyQStyleOptionGroupBox().DisposeQStyleOptionGroupBox();
+			((QStyleOptionGroupBox) interceptor).DisposeQStyleOptionGroupBox();
 		}
 	}
 }

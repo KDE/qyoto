@@ -41,18 +41,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFile), this);
-			_interceptor = (QFile) realProxy.GetTransparentProxy();
+			interceptor = (QFile) realProxy.GetTransparentProxy();
 		}
-		private QFile ProxyQFile() {
-			return (QFile) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQFileProxy staticInterceptor = null;
 		static QFile() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQFileProxy), null);
-			_staticInterceptor = (IQFileProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQFileProxy StaticQFile() {
-			return (IQFileProxy) _staticInterceptor;
+			staticInterceptor = (IQFileProxy) realProxy.GetTransparentProxy();
 		}
 		public enum FileError {
 			NoError = 0,
@@ -91,7 +85,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QFile", "()", "")]
 		private void NewQFile() {
-			ProxyQFile().NewQFile();
+			((QFile) interceptor).NewQFile();
 		}
 		public QFile(string name) : this((Type) null) {
 			CreateProxy();
@@ -99,7 +93,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QFile", "(const QString&)", "$")]
 		private void NewQFile(string name) {
-			ProxyQFile().NewQFile(name);
+			((QFile) interceptor).NewQFile(name);
 		}
 		public QFile(QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -107,7 +101,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QFile", "(QObject*)", "#")]
 		private void NewQFile(QObject parent) {
-			ProxyQFile().NewQFile(parent);
+			((QFile) interceptor).NewQFile(parent);
 		}
 		public QFile(string name, QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -115,115 +109,115 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QFile", "(const QString&, QObject*)", "$#")]
 		private void NewQFile(string name, QObject parent) {
-			ProxyQFile().NewQFile(name,parent);
+			((QFile) interceptor).NewQFile(name,parent);
 		}
 		[SmokeMethod("error", "() const", "")]
 		public QFile.FileError Error() {
-			return ProxyQFile().Error();
+			return ((QFile) interceptor).Error();
 		}
 		[SmokeMethod("unsetError", "()", "")]
 		public void UnsetError() {
-			ProxyQFile().UnsetError();
+			((QFile) interceptor).UnsetError();
 		}
 		[SmokeMethod("fileName", "() const", "")]
 		public string FileName() {
-			return ProxyQFile().FileName();
+			return ((QFile) interceptor).FileName();
 		}
 		[SmokeMethod("setFileName", "(const QString&)", "$")]
 		public void SetFileName(string name) {
-			ProxyQFile().SetFileName(name);
+			((QFile) interceptor).SetFileName(name);
 		}
 		[SmokeMethod("exists", "() const", "")]
 		public bool Exists() {
-			return ProxyQFile().Exists();
+			return ((QFile) interceptor).Exists();
 		}
 		[SmokeMethod("readLink", "() const", "")]
 		public string ReadLink() {
-			return ProxyQFile().ReadLink();
+			return ((QFile) interceptor).ReadLink();
 		}
 		[SmokeMethod("symLinkTarget", "() const", "")]
 		public string SymLinkTarget() {
-			return ProxyQFile().SymLinkTarget();
+			return ((QFile) interceptor).SymLinkTarget();
 		}
 		[SmokeMethod("remove", "()", "")]
 		public bool Remove() {
-			return ProxyQFile().Remove();
+			return ((QFile) interceptor).Remove();
 		}
 		[SmokeMethod("rename", "(const QString&)", "$")]
 		public bool Rename(string newName) {
-			return ProxyQFile().Rename(newName);
+			return ((QFile) interceptor).Rename(newName);
 		}
 		[SmokeMethod("link", "(const QString&)", "$")]
 		public bool Link(string newName) {
-			return ProxyQFile().Link(newName);
+			return ((QFile) interceptor).Link(newName);
 		}
 		[SmokeMethod("copy", "(const QString&)", "$")]
 		public bool Copy(string newName) {
-			return ProxyQFile().Copy(newName);
+			return ((QFile) interceptor).Copy(newName);
 		}
 		[SmokeMethod("isSequential", "() const", "")]
 		public override bool IsSequential() {
-			return ProxyQFile().IsSequential();
+			return ((QFile) interceptor).IsSequential();
 		}
 		[SmokeMethod("open", "(OpenMode)", "$")]
 		public override bool Open(int flags) {
-			return ProxyQFile().Open(flags);
+			return ((QFile) interceptor).Open(flags);
 		}
 		[SmokeMethod("open", "(int, OpenMode)", "$$")]
 		public bool Open(int fd, int flags) {
-			return ProxyQFile().Open(fd,flags);
+			return ((QFile) interceptor).Open(fd,flags);
 		}
 		[SmokeMethod("close", "()", "")]
 		public override void Close() {
-			ProxyQFile().Close();
+			((QFile) interceptor).Close();
 		}
 		[SmokeMethod("size", "() const", "")]
 		public override long Size() {
-			return ProxyQFile().Size();
+			return ((QFile) interceptor).Size();
 		}
 		[SmokeMethod("pos", "() const", "")]
 		public override long Pos() {
-			return ProxyQFile().Pos();
+			return ((QFile) interceptor).Pos();
 		}
 		[SmokeMethod("seek", "(qint64)", "$")]
 		public override bool Seek(long offset) {
-			return ProxyQFile().Seek(offset);
+			return ((QFile) interceptor).Seek(offset);
 		}
 		[SmokeMethod("atEnd", "() const", "")]
 		public override bool AtEnd() {
-			return ProxyQFile().AtEnd();
+			return ((QFile) interceptor).AtEnd();
 		}
 		[SmokeMethod("flush", "()", "")]
 		public bool Flush() {
-			return ProxyQFile().Flush();
+			return ((QFile) interceptor).Flush();
 		}
 		[SmokeMethod("resize", "(qint64)", "$")]
 		public bool Resize(long sz) {
-			return ProxyQFile().Resize(sz);
+			return ((QFile) interceptor).Resize(sz);
 		}
 		[SmokeMethod("permissions", "() const", "")]
 		public int Permissions() {
-			return ProxyQFile().Permissions();
+			return ((QFile) interceptor).Permissions();
 		}
 		[SmokeMethod("setPermissions", "(Permissions)", "$")]
 		public bool SetPermissions(int permissionSpec) {
-			return ProxyQFile().SetPermissions(permissionSpec);
+			return ((QFile) interceptor).SetPermissions(permissionSpec);
 		}
 		[SmokeMethod("fileEngine", "() const", "")]
 		public virtual QAbstractFileEngine FileEngine() {
-			return ProxyQFile().FileEngine();
+			return ((QFile) interceptor).FileEngine();
 		}
 		[SmokeMethod("readData", "(char*, qint64)", "$$")]
 		protected override long ReadData(string data, long maxlen) {
-			return ProxyQFile().ReadData(data,maxlen);
+			return ((QFile) interceptor).ReadData(data,maxlen);
 		}
 		[SmokeMethod("writeData", "(const char*, qint64)", "$$")]
 		protected override long WriteData(string data, long len) {
-			return ProxyQFile().WriteData(data,len);
+			return ((QFile) interceptor).WriteData(data,len);
 		}
 		[SmokeMethod("readLineData", "(char*, qint64)", "$$")]
 		protected override long ReadLineData(string data, long maxlen) {
-			return ProxyQFile().ReadLineData(data,maxlen);
+			return ((QFile) interceptor).ReadLineData(data,maxlen);
 		}
 		~QFile() {
 			DisposeQFile();
@@ -233,52 +227,52 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QFile", "()", "")]
 		private void DisposeQFile() {
-			ProxyQFile().DisposeQFile();
+			((QFile) interceptor).DisposeQFile();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQFile().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQFile().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		public static QByteArray EncodeName(string fileName) {
-			return StaticQFile().EncodeName(fileName);
+			return staticInterceptor.EncodeName(fileName);
 		}
 		public static string DecodeName(QByteArray localFileName) {
-			return StaticQFile().DecodeName(localFileName);
+			return staticInterceptor.DecodeName(localFileName);
 		}
 		public static string DecodeName(string localFileName) {
-			return StaticQFile().DecodeName(localFileName);
+			return staticInterceptor.DecodeName(localFileName);
 		}
 		public static bool Exists(string fileName) {
-			return StaticQFile().Exists(fileName);
+			return staticInterceptor.Exists(fileName);
 		}
 		public static string ReadLink(string fileName) {
-			return StaticQFile().ReadLink(fileName);
+			return staticInterceptor.ReadLink(fileName);
 		}
 		public static string SymLinkTarget(string fileName) {
-			return StaticQFile().SymLinkTarget(fileName);
+			return staticInterceptor.SymLinkTarget(fileName);
 		}
 		public static bool Remove(string fileName) {
-			return StaticQFile().Remove(fileName);
+			return staticInterceptor.Remove(fileName);
 		}
 		public static bool Rename(string oldName, string newName) {
-			return StaticQFile().Rename(oldName,newName);
+			return staticInterceptor.Rename(oldName,newName);
 		}
 		public static bool Link(string oldname, string newName) {
-			return StaticQFile().Link(oldname,newName);
+			return staticInterceptor.Link(oldname,newName);
 		}
 		public static bool Copy(string fileName, string newName) {
-			return StaticQFile().Copy(fileName,newName);
+			return staticInterceptor.Copy(fileName,newName);
 		}
 		public static bool Resize(string filename, long sz) {
-			return StaticQFile().Resize(filename,sz);
+			return staticInterceptor.Resize(filename,sz);
 		}
 		public static int Permissions(string filename) {
-			return StaticQFile().Permissions(filename);
+			return staticInterceptor.Permissions(filename);
 		}
 		public static bool SetPermissions(string filename, int permissionSpec) {
-			return StaticQFile().SetPermissions(filename,permissionSpec);
+			return staticInterceptor.SetPermissions(filename,permissionSpec);
 		}
 		protected new IQFileSignals Emit {
 			get { return (IQFileSignals) Q_EMIT; }

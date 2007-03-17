@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QWidgetItem(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QWidgetItem), this);
-			_interceptor = (QWidgetItem) realProxy.GetTransparentProxy();
-		}
-		private QWidgetItem ProxyQWidgetItem() {
-			return (QWidgetItem) _interceptor;
+			interceptor = (QWidgetItem) realProxy.GetTransparentProxy();
 		}
 		public QWidgetItem(QWidget w) : this((Type) null) {
 			CreateProxy();
@@ -19,47 +16,47 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QWidgetItem", "(QWidget*)", "#")]
 		private void NewQWidgetItem(QWidget w) {
-			ProxyQWidgetItem().NewQWidgetItem(w);
+			((QWidgetItem) interceptor).NewQWidgetItem(w);
 		}
 		[SmokeMethod("sizeHint", "() const", "")]
 		public override QSize SizeHint() {
-			return ProxyQWidgetItem().SizeHint();
+			return ((QWidgetItem) interceptor).SizeHint();
 		}
 		[SmokeMethod("minimumSize", "() const", "")]
 		public override QSize MinimumSize() {
-			return ProxyQWidgetItem().MinimumSize();
+			return ((QWidgetItem) interceptor).MinimumSize();
 		}
 		[SmokeMethod("maximumSize", "() const", "")]
 		public override QSize MaximumSize() {
-			return ProxyQWidgetItem().MaximumSize();
+			return ((QWidgetItem) interceptor).MaximumSize();
 		}
 		[SmokeMethod("expandingDirections", "() const", "")]
 		public override int ExpandingDirections() {
-			return ProxyQWidgetItem().ExpandingDirections();
+			return ((QWidgetItem) interceptor).ExpandingDirections();
 		}
 		[SmokeMethod("isEmpty", "() const", "")]
 		public override bool IsEmpty() {
-			return ProxyQWidgetItem().IsEmpty();
+			return ((QWidgetItem) interceptor).IsEmpty();
 		}
 		[SmokeMethod("setGeometry", "(const QRect&)", "#")]
 		public override void SetGeometry(QRect arg1) {
-			ProxyQWidgetItem().SetGeometry(arg1);
+			((QWidgetItem) interceptor).SetGeometry(arg1);
 		}
 		[SmokeMethod("geometry", "() const", "")]
 		public override QRect Geometry() {
-			return ProxyQWidgetItem().Geometry();
+			return ((QWidgetItem) interceptor).Geometry();
 		}
 		[SmokeMethod("widget", "()", "")]
 		public override QWidget Widget() {
-			return ProxyQWidgetItem().Widget();
+			return ((QWidgetItem) interceptor).Widget();
 		}
 		[SmokeMethod("hasHeightForWidth", "() const", "")]
 		public override bool HasHeightForWidth() {
-			return ProxyQWidgetItem().HasHeightForWidth();
+			return ((QWidgetItem) interceptor).HasHeightForWidth();
 		}
 		[SmokeMethod("heightForWidth", "(int) const", "$")]
 		public override int HeightForWidth(int arg1) {
-			return ProxyQWidgetItem().HeightForWidth(arg1);
+			return ((QWidgetItem) interceptor).HeightForWidth(arg1);
 		}
 		~QWidgetItem() {
 			DisposeQWidgetItem();
@@ -69,7 +66,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QWidgetItem", "()", "")]
 		private void DisposeQWidgetItem() {
-			ProxyQWidgetItem().DisposeQWidgetItem();
+			((QWidgetItem) interceptor).DisposeQWidgetItem();
 		}
 	}
 }

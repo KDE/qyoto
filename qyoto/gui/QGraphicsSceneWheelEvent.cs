@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QGraphicsSceneWheelEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGraphicsSceneWheelEvent), this);
-			_interceptor = (QGraphicsSceneWheelEvent) realProxy.GetTransparentProxy();
-		}
-		private QGraphicsSceneWheelEvent ProxyQGraphicsSceneWheelEvent() {
-			return (QGraphicsSceneWheelEvent) _interceptor;
+			interceptor = (QGraphicsSceneWheelEvent) realProxy.GetTransparentProxy();
 		}
 		public QGraphicsSceneWheelEvent(QEvent.TypeOf type) : this((Type) null) {
 			CreateProxy();
@@ -19,7 +16,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGraphicsSceneWheelEvent", "(QEvent::Type)", "$")]
 		private void NewQGraphicsSceneWheelEvent(QEvent.TypeOf type) {
-			ProxyQGraphicsSceneWheelEvent().NewQGraphicsSceneWheelEvent(type);
+			((QGraphicsSceneWheelEvent) interceptor).NewQGraphicsSceneWheelEvent(type);
 		}
 		public QGraphicsSceneWheelEvent() : this((Type) null) {
 			CreateProxy();
@@ -27,55 +24,55 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGraphicsSceneWheelEvent", "()", "")]
 		private void NewQGraphicsSceneWheelEvent() {
-			ProxyQGraphicsSceneWheelEvent().NewQGraphicsSceneWheelEvent();
+			((QGraphicsSceneWheelEvent) interceptor).NewQGraphicsSceneWheelEvent();
 		}
 		[SmokeMethod("pos", "() const", "")]
 		public QPointF Pos() {
-			return ProxyQGraphicsSceneWheelEvent().Pos();
+			return ((QGraphicsSceneWheelEvent) interceptor).Pos();
 		}
 		[SmokeMethod("setPos", "(const QPointF&)", "#")]
 		public void SetPos(QPointF pos) {
-			ProxyQGraphicsSceneWheelEvent().SetPos(pos);
+			((QGraphicsSceneWheelEvent) interceptor).SetPos(pos);
 		}
 		[SmokeMethod("scenePos", "() const", "")]
 		public QPointF ScenePos() {
-			return ProxyQGraphicsSceneWheelEvent().ScenePos();
+			return ((QGraphicsSceneWheelEvent) interceptor).ScenePos();
 		}
 		[SmokeMethod("setScenePos", "(const QPointF&)", "#")]
 		public void SetScenePos(QPointF pos) {
-			ProxyQGraphicsSceneWheelEvent().SetScenePos(pos);
+			((QGraphicsSceneWheelEvent) interceptor).SetScenePos(pos);
 		}
 		[SmokeMethod("screenPos", "() const", "")]
 		public QPoint ScreenPos() {
-			return ProxyQGraphicsSceneWheelEvent().ScreenPos();
+			return ((QGraphicsSceneWheelEvent) interceptor).ScreenPos();
 		}
 		[SmokeMethod("setScreenPos", "(const QPoint&)", "#")]
 		public void SetScreenPos(QPoint pos) {
-			ProxyQGraphicsSceneWheelEvent().SetScreenPos(pos);
+			((QGraphicsSceneWheelEvent) interceptor).SetScreenPos(pos);
 		}
 		[SmokeMethod("buttons", "() const", "")]
 		public int Buttons() {
-			return ProxyQGraphicsSceneWheelEvent().Buttons();
+			return ((QGraphicsSceneWheelEvent) interceptor).Buttons();
 		}
 		[SmokeMethod("setButtons", "(Qt::MouseButtons)", "$")]
 		public void SetButtons(int buttons) {
-			ProxyQGraphicsSceneWheelEvent().SetButtons(buttons);
+			((QGraphicsSceneWheelEvent) interceptor).SetButtons(buttons);
 		}
 		[SmokeMethod("modifiers", "() const", "")]
 		public int Modifiers() {
-			return ProxyQGraphicsSceneWheelEvent().Modifiers();
+			return ((QGraphicsSceneWheelEvent) interceptor).Modifiers();
 		}
 		[SmokeMethod("setModifiers", "(Qt::KeyboardModifiers)", "$")]
 		public void SetModifiers(int modifiers) {
-			ProxyQGraphicsSceneWheelEvent().SetModifiers(modifiers);
+			((QGraphicsSceneWheelEvent) interceptor).SetModifiers(modifiers);
 		}
 		[SmokeMethod("delta", "() const", "")]
 		public int Delta() {
-			return ProxyQGraphicsSceneWheelEvent().Delta();
+			return ((QGraphicsSceneWheelEvent) interceptor).Delta();
 		}
 		[SmokeMethod("setDelta", "(int)", "$")]
 		public void SetDelta(int delta) {
-			ProxyQGraphicsSceneWheelEvent().SetDelta(delta);
+			((QGraphicsSceneWheelEvent) interceptor).SetDelta(delta);
 		}
 		~QGraphicsSceneWheelEvent() {
 			DisposeQGraphicsSceneWheelEvent();
@@ -85,7 +82,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QGraphicsSceneWheelEvent", "()", "")]
 		private void DisposeQGraphicsSceneWheelEvent() {
-			ProxyQGraphicsSceneWheelEvent().DisposeQGraphicsSceneWheelEvent();
+			((QGraphicsSceneWheelEvent) interceptor).DisposeQGraphicsSceneWheelEvent();
 		}
 	}
 }

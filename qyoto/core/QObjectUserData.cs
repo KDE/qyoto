@@ -5,15 +5,12 @@ namespace Qyoto {
 
 	[SmokeClass("QObjectUserData")]
 	public class QObjectUserData : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QObjectUserData interceptor = null;
+		private IntPtr smokeObject;
 		protected QObjectUserData(Type dummy) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QObjectUserData), this);
-			_interceptor = (QObjectUserData) realProxy.GetTransparentProxy();
-		}
-		private QObjectUserData ProxyQObjectUserData() {
-			return (QObjectUserData) _interceptor;
+			interceptor = (QObjectUserData) realProxy.GetTransparentProxy();
 		}
 		// QObjectUserData* QObjectUserData(); >>>> NOT CONVERTED
 		~QObjectUserData() {
@@ -24,7 +21,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QObjectUserData", "()", "")]
 		private void DisposeQObjectUserData() {
-			ProxyQObjectUserData().DisposeQObjectUserData();
+			((QObjectUserData) interceptor).DisposeQObjectUserData();
 		}
 	}
 }

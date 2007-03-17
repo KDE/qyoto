@@ -5,8 +5,8 @@ namespace Qyoto {
 
 	[SmokeClass("QTextBlock")]
 	public class QTextBlock : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QTextBlock interceptor = null;
+		private IntPtr smokeObject;
 		protected QTextBlock(Type dummy) {}
 		[SmokeClass("QTextBlock")]
 		interface IQTextBlockProxy {
@@ -17,18 +17,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextBlock), this);
-			_interceptor = (QTextBlock) realProxy.GetTransparentProxy();
+			interceptor = (QTextBlock) realProxy.GetTransparentProxy();
 		}
-		private QTextBlock ProxyQTextBlock() {
-			return (QTextBlock) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQTextBlockProxy staticInterceptor = null;
 		static QTextBlock() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTextBlockProxy), null);
-			_staticInterceptor = (IQTextBlockProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQTextBlockProxy StaticQTextBlock() {
-			return (IQTextBlockProxy) _staticInterceptor;
+			staticInterceptor = (IQTextBlockProxy) realProxy.GetTransparentProxy();
 		}
 		// QTextDocumentPrivate* docHandle(); >>>> NOT CONVERTED
 		public QTextBlock() : this((Type) null) {
@@ -37,7 +31,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTextBlock", "()", "")]
 		private void NewQTextBlock() {
-			ProxyQTextBlock().NewQTextBlock();
+			((QTextBlock) interceptor).NewQTextBlock();
 		}
 		public QTextBlock(QTextBlock o) : this((Type) null) {
 			CreateProxy();
@@ -45,86 +39,86 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTextBlock", "(const QTextBlock&)", "#")]
 		private void NewQTextBlock(QTextBlock o) {
-			ProxyQTextBlock().NewQTextBlock(o);
+			((QTextBlock) interceptor).NewQTextBlock(o);
 		}
 		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ProxyQTextBlock().IsValid();
+			return ((QTextBlock) interceptor).IsValid();
 		}
 		public override bool Equals(object o) {
 			if (!(o is QTextBlock)) { return false; }
 			return this == (QTextBlock) o;
 		}
 		public override int GetHashCode() {
-			return ProxyQTextBlock().GetHashCode();
+			return ((QTextBlock) interceptor).GetHashCode();
 		}
 		[SmokeMethod("position", "() const", "")]
 		public int Position() {
-			return ProxyQTextBlock().Position();
+			return ((QTextBlock) interceptor).Position();
 		}
 		[SmokeMethod("length", "() const", "")]
 		public int Length() {
-			return ProxyQTextBlock().Length();
+			return ((QTextBlock) interceptor).Length();
 		}
 		[SmokeMethod("contains", "(int) const", "$")]
 		public bool Contains(int position) {
-			return ProxyQTextBlock().Contains(position);
+			return ((QTextBlock) interceptor).Contains(position);
 		}
 		[SmokeMethod("layout", "() const", "")]
 		public QTextLayout Layout() {
-			return ProxyQTextBlock().Layout();
+			return ((QTextBlock) interceptor).Layout();
 		}
 		[SmokeMethod("blockFormat", "() const", "")]
 		public QTextBlockFormat BlockFormat() {
-			return ProxyQTextBlock().BlockFormat();
+			return ((QTextBlock) interceptor).BlockFormat();
 		}
 		[SmokeMethod("blockFormatIndex", "() const", "")]
 		public int BlockFormatIndex() {
-			return ProxyQTextBlock().BlockFormatIndex();
+			return ((QTextBlock) interceptor).BlockFormatIndex();
 		}
 		[SmokeMethod("charFormat", "() const", "")]
 		public QTextCharFormat CharFormat() {
-			return ProxyQTextBlock().CharFormat();
+			return ((QTextBlock) interceptor).CharFormat();
 		}
 		[SmokeMethod("charFormatIndex", "() const", "")]
 		public int CharFormatIndex() {
-			return ProxyQTextBlock().CharFormatIndex();
+			return ((QTextBlock) interceptor).CharFormatIndex();
 		}
 		[SmokeMethod("text", "() const", "")]
 		public string Text() {
-			return ProxyQTextBlock().Text();
+			return ((QTextBlock) interceptor).Text();
 		}
 		[SmokeMethod("document", "() const", "")]
 		public QTextDocument Document() {
-			return ProxyQTextBlock().Document();
+			return ((QTextBlock) interceptor).Document();
 		}
 		[SmokeMethod("textList", "() const", "")]
 		public QTextList TextList() {
-			return ProxyQTextBlock().TextList();
+			return ((QTextBlock) interceptor).TextList();
 		}
 		[SmokeMethod("userData", "() const", "")]
 		public QTextBlockUserData UserData() {
-			return ProxyQTextBlock().UserData();
+			return ((QTextBlock) interceptor).UserData();
 		}
 		[SmokeMethod("setUserData", "(QTextBlockUserData*)", "#")]
 		public void SetUserData(QTextBlockUserData data) {
-			ProxyQTextBlock().SetUserData(data);
+			((QTextBlock) interceptor).SetUserData(data);
 		}
 		[SmokeMethod("userState", "() const", "")]
 		public int UserState() {
-			return ProxyQTextBlock().UserState();
+			return ((QTextBlock) interceptor).UserState();
 		}
 		[SmokeMethod("setUserState", "(int)", "$")]
 		public void SetUserState(int state) {
-			ProxyQTextBlock().SetUserState(state);
+			((QTextBlock) interceptor).SetUserState(state);
 		}
 		[SmokeMethod("next", "() const", "")]
 		public QTextBlock Next() {
-			return ProxyQTextBlock().Next();
+			return ((QTextBlock) interceptor).Next();
 		}
 		[SmokeMethod("previous", "() const", "")]
 		public QTextBlock Previous() {
-			return ProxyQTextBlock().Previous();
+			return ((QTextBlock) interceptor).Previous();
 		}
 		~QTextBlock() {
 			DisposeQTextBlock();
@@ -134,20 +128,20 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QTextBlock", "()", "")]
 		private void DisposeQTextBlock() {
-			ProxyQTextBlock().DisposeQTextBlock();
+			((QTextBlock) interceptor).DisposeQTextBlock();
 		}
 		public static bool operator==(QTextBlock lhs, QTextBlock o) {
-			return StaticQTextBlock().op_equals(lhs,o);
+			return staticInterceptor.op_equals(lhs,o);
 		}
 		public static bool operator!=(QTextBlock lhs, QTextBlock o) {
-			return !StaticQTextBlock().op_equals(lhs,o);
+			return !staticInterceptor.op_equals(lhs,o);
 		}
 		public static bool operator<(QTextBlock lhs, QTextBlock o) {
-			return StaticQTextBlock().op_lt(lhs,o);
+			return staticInterceptor.op_lt(lhs,o);
 		}
 		public static bool operator>(QTextBlock lhs, QTextBlock o) {
-			return !StaticQTextBlock().op_lt(lhs,o)
-						&& !StaticQTextBlock().op_equals(lhs,o);
+			return !staticInterceptor.op_lt(lhs,o)
+						&& !staticInterceptor.op_equals(lhs,o);
 		}
 	}
 }

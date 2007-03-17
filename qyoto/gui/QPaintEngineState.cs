@@ -5,79 +5,76 @@ namespace Qyoto {
 
 	[SmokeClass("QPaintEngineState")]
 	public class QPaintEngineState : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QPaintEngineState interceptor = null;
+		private IntPtr smokeObject;
 		protected QPaintEngineState(Type dummy) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPaintEngineState), this);
-			_interceptor = (QPaintEngineState) realProxy.GetTransparentProxy();
-		}
-		private QPaintEngineState ProxyQPaintEngineState() {
-			return (QPaintEngineState) _interceptor;
+			interceptor = (QPaintEngineState) realProxy.GetTransparentProxy();
 		}
 		[SmokeMethod("state", "() const", "")]
 		public int State() {
-			return ProxyQPaintEngineState().State();
+			return ((QPaintEngineState) interceptor).State();
 		}
 		[SmokeMethod("pen", "() const", "")]
 		public QPen Pen() {
-			return ProxyQPaintEngineState().Pen();
+			return ((QPaintEngineState) interceptor).Pen();
 		}
 		[SmokeMethod("brush", "() const", "")]
 		public QBrush Brush() {
-			return ProxyQPaintEngineState().Brush();
+			return ((QPaintEngineState) interceptor).Brush();
 		}
 		[SmokeMethod("brushOrigin", "() const", "")]
 		public QPointF BrushOrigin() {
-			return ProxyQPaintEngineState().BrushOrigin();
+			return ((QPaintEngineState) interceptor).BrushOrigin();
 		}
 		[SmokeMethod("backgroundBrush", "() const", "")]
 		public QBrush BackgroundBrush() {
-			return ProxyQPaintEngineState().BackgroundBrush();
+			return ((QPaintEngineState) interceptor).BackgroundBrush();
 		}
 		[SmokeMethod("backgroundMode", "() const", "")]
 		public Qt.BGMode BackgroundMode() {
-			return ProxyQPaintEngineState().BackgroundMode();
+			return ((QPaintEngineState) interceptor).BackgroundMode();
 		}
 		[SmokeMethod("font", "() const", "")]
 		public QFont Font() {
-			return ProxyQPaintEngineState().Font();
+			return ((QPaintEngineState) interceptor).Font();
 		}
 		[SmokeMethod("matrix", "() const", "")]
 		public QMatrix Matrix() {
-			return ProxyQPaintEngineState().Matrix();
+			return ((QPaintEngineState) interceptor).Matrix();
 		}
 		[SmokeMethod("clipOperation", "() const", "")]
 		public Qt.ClipOperation ClipOperation() {
-			return ProxyQPaintEngineState().ClipOperation();
+			return ((QPaintEngineState) interceptor).ClipOperation();
 		}
 		[SmokeMethod("clipRegion", "() const", "")]
 		public QRegion ClipRegion() {
-			return ProxyQPaintEngineState().ClipRegion();
+			return ((QPaintEngineState) interceptor).ClipRegion();
 		}
 		[SmokeMethod("clipPath", "() const", "")]
 		public QPainterPath ClipPath() {
-			return ProxyQPaintEngineState().ClipPath();
+			return ((QPaintEngineState) interceptor).ClipPath();
 		}
 		[SmokeMethod("isClipEnabled", "() const", "")]
 		public bool IsClipEnabled() {
-			return ProxyQPaintEngineState().IsClipEnabled();
+			return ((QPaintEngineState) interceptor).IsClipEnabled();
 		}
 		[SmokeMethod("renderHints", "() const", "")]
 		public int RenderHints() {
-			return ProxyQPaintEngineState().RenderHints();
+			return ((QPaintEngineState) interceptor).RenderHints();
 		}
 		[SmokeMethod("compositionMode", "() const", "")]
 		public QPainter.CompositionMode CompositionMode() {
-			return ProxyQPaintEngineState().CompositionMode();
+			return ((QPaintEngineState) interceptor).CompositionMode();
 		}
 		[SmokeMethod("opacity", "() const", "")]
 		public double Opacity() {
-			return ProxyQPaintEngineState().Opacity();
+			return ((QPaintEngineState) interceptor).Opacity();
 		}
 		[SmokeMethod("painter", "() const", "")]
 		public QPainter Painter() {
-			return ProxyQPaintEngineState().Painter();
+			return ((QPaintEngineState) interceptor).Painter();
 		}
 		public QPaintEngineState() : this((Type) null) {
 			CreateProxy();
@@ -85,7 +82,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QPaintEngineState", "()", "")]
 		private void NewQPaintEngineState() {
-			ProxyQPaintEngineState().NewQPaintEngineState();
+			((QPaintEngineState) interceptor).NewQPaintEngineState();
 		}
 		~QPaintEngineState() {
 			DisposeQPaintEngineState();
@@ -95,7 +92,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QPaintEngineState", "()", "")]
 		private void DisposeQPaintEngineState() {
-			ProxyQPaintEngineState().DisposeQPaintEngineState();
+			((QPaintEngineState) interceptor).DisposeQPaintEngineState();
 		}
 	}
 }

@@ -15,18 +15,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QScrollBar), this);
-			_interceptor = (QScrollBar) realProxy.GetTransparentProxy();
+			interceptor = (QScrollBar) realProxy.GetTransparentProxy();
 		}
-		private QScrollBar ProxyQScrollBar() {
-			return (QScrollBar) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQScrollBarProxy staticInterceptor = null;
 		static QScrollBar() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQScrollBarProxy), null);
-			_staticInterceptor = (IQScrollBarProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQScrollBarProxy StaticQScrollBar() {
-			return (IQScrollBarProxy) _staticInterceptor;
+			staticInterceptor = (IQScrollBarProxy) realProxy.GetTransparentProxy();
 		}
 		public QScrollBar(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -34,7 +28,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QScrollBar", "(QWidget*)", "#")]
 		private void NewQScrollBar(QWidget parent) {
-			ProxyQScrollBar().NewQScrollBar(parent);
+			((QScrollBar) interceptor).NewQScrollBar(parent);
 		}
 		public QScrollBar() : this((Type) null) {
 			CreateProxy();
@@ -42,7 +36,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QScrollBar", "()", "")]
 		private void NewQScrollBar() {
-			ProxyQScrollBar().NewQScrollBar();
+			((QScrollBar) interceptor).NewQScrollBar();
 		}
 		public QScrollBar(Qt.Orientation arg1, QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -50,7 +44,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QScrollBar", "(Qt::Orientation, QWidget*)", "$#")]
 		private void NewQScrollBar(Qt.Orientation arg1, QWidget parent) {
-			ProxyQScrollBar().NewQScrollBar(arg1,parent);
+			((QScrollBar) interceptor).NewQScrollBar(arg1,parent);
 		}
 		public QScrollBar(Qt.Orientation arg1) : this((Type) null) {
 			CreateProxy();
@@ -58,43 +52,43 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QScrollBar", "(Qt::Orientation)", "$")]
 		private void NewQScrollBar(Qt.Orientation arg1) {
-			ProxyQScrollBar().NewQScrollBar(arg1);
+			((QScrollBar) interceptor).NewQScrollBar(arg1);
 		}
 		[SmokeMethod("sizeHint", "() const", "")]
 		public override QSize SizeHint() {
-			return ProxyQScrollBar().SizeHint();
+			return ((QScrollBar) interceptor).SizeHint();
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		public new virtual bool Event(QEvent arg1) {
-			return ProxyQScrollBar().Event(arg1);
+			return ((QScrollBar) interceptor).Event(arg1);
 		}
 		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
 		protected override void PaintEvent(QPaintEvent arg1) {
-			ProxyQScrollBar().PaintEvent(arg1);
+			((QScrollBar) interceptor).PaintEvent(arg1);
 		}
 		[SmokeMethod("mousePressEvent", "(QMouseEvent*)", "#")]
 		protected override void MousePressEvent(QMouseEvent arg1) {
-			ProxyQScrollBar().MousePressEvent(arg1);
+			((QScrollBar) interceptor).MousePressEvent(arg1);
 		}
 		[SmokeMethod("mouseReleaseEvent", "(QMouseEvent*)", "#")]
 		protected override void MouseReleaseEvent(QMouseEvent arg1) {
-			ProxyQScrollBar().MouseReleaseEvent(arg1);
+			((QScrollBar) interceptor).MouseReleaseEvent(arg1);
 		}
 		[SmokeMethod("mouseMoveEvent", "(QMouseEvent*)", "#")]
 		protected override void MouseMoveEvent(QMouseEvent arg1) {
-			ProxyQScrollBar().MouseMoveEvent(arg1);
+			((QScrollBar) interceptor).MouseMoveEvent(arg1);
 		}
 		[SmokeMethod("hideEvent", "(QHideEvent*)", "#")]
 		protected override void HideEvent(QHideEvent arg1) {
-			ProxyQScrollBar().HideEvent(arg1);
+			((QScrollBar) interceptor).HideEvent(arg1);
 		}
 		[SmokeMethod("sliderChange", "(QAbstractSlider::SliderChange)", "$")]
 		protected override void sliderChange(QAbstractSlider.SliderChange change) {
-			ProxyQScrollBar().sliderChange(change);
+			((QScrollBar) interceptor).sliderChange(change);
 		}
 		[SmokeMethod("contextMenuEvent", "(QContextMenuEvent*)", "#")]
 		protected override void ContextMenuEvent(QContextMenuEvent arg1) {
-			ProxyQScrollBar().ContextMenuEvent(arg1);
+			((QScrollBar) interceptor).ContextMenuEvent(arg1);
 		}
 		~QScrollBar() {
 			DisposeQScrollBar();
@@ -104,13 +98,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QScrollBar", "()", "")]
 		private void DisposeQScrollBar() {
-			ProxyQScrollBar().DisposeQScrollBar();
+			((QScrollBar) interceptor).DisposeQScrollBar();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQScrollBar().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQScrollBar().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQScrollBarSignals Emit {
 			get { return (IQScrollBarSignals) Q_EMIT; }

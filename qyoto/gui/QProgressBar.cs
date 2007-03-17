@@ -16,18 +16,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QProgressBar), this);
-			_interceptor = (QProgressBar) realProxy.GetTransparentProxy();
+			interceptor = (QProgressBar) realProxy.GetTransparentProxy();
 		}
-		private QProgressBar ProxyQProgressBar() {
-			return (QProgressBar) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQProgressBarProxy staticInterceptor = null;
 		static QProgressBar() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQProgressBarProxy), null);
-			_staticInterceptor = (IQProgressBarProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQProgressBarProxy StaticQProgressBar() {
-			return (IQProgressBarProxy) _staticInterceptor;
+			staticInterceptor = (IQProgressBarProxy) realProxy.GetTransparentProxy();
 		}
 		public enum Direction {
 			TopToBottom = 0,
@@ -88,7 +82,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QProgressBar", "(QWidget*)", "#")]
 		private void NewQProgressBar(QWidget parent) {
-			ProxyQProgressBar().NewQProgressBar(parent);
+			((QProgressBar) interceptor).NewQProgressBar(parent);
 		}
 		public QProgressBar() : this((Type) null) {
 			CreateProxy();
@@ -96,36 +90,36 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QProgressBar", "()", "")]
 		private void NewQProgressBar() {
-			ProxyQProgressBar().NewQProgressBar();
+			((QProgressBar) interceptor).NewQProgressBar();
 		}
 		[SmokeMethod("setRange", "(int, int)", "$$")]
 		public void SetRange(int minimum, int maximum) {
-			ProxyQProgressBar().SetRange(minimum,maximum);
+			((QProgressBar) interceptor).SetRange(minimum,maximum);
 		}
 		[SmokeMethod("isTextVisible", "() const", "")]
 		public bool IsTextVisible() {
-			return ProxyQProgressBar().IsTextVisible();
+			return ((QProgressBar) interceptor).IsTextVisible();
 		}
 		[SmokeMethod("sizeHint", "() const", "")]
 		public override QSize SizeHint() {
-			return ProxyQProgressBar().SizeHint();
+			return ((QProgressBar) interceptor).SizeHint();
 		}
 		[SmokeMethod("minimumSizeHint", "() const", "")]
 		public override QSize MinimumSizeHint() {
-			return ProxyQProgressBar().MinimumSizeHint();
+			return ((QProgressBar) interceptor).MinimumSizeHint();
 		}
 		[Q_SLOT("void reset()")]
 		[SmokeMethod("reset", "()", "")]
 		public void Reset() {
-			ProxyQProgressBar().Reset();
+			((QProgressBar) interceptor).Reset();
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent e) {
-			return ProxyQProgressBar().Event(e);
+			return ((QProgressBar) interceptor).Event(e);
 		}
 		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
 		protected override void PaintEvent(QPaintEvent arg1) {
-			ProxyQProgressBar().PaintEvent(arg1);
+			((QProgressBar) interceptor).PaintEvent(arg1);
 		}
 		~QProgressBar() {
 			DisposeQProgressBar();
@@ -135,13 +129,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QProgressBar", "()", "")]
 		private void DisposeQProgressBar() {
-			ProxyQProgressBar().DisposeQProgressBar();
+			((QProgressBar) interceptor).DisposeQProgressBar();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQProgressBar().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQProgressBar().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQProgressBarSignals Emit {
 			get { return (IQProgressBarSignals) Q_EMIT; }

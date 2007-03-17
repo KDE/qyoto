@@ -5,8 +5,8 @@ namespace Qyoto {
 
 	[SmokeClass("QBrush")]
 	public class QBrush : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QBrush interceptor = null;
+		private IntPtr smokeObject;
 		protected QBrush(Type dummy) {}
 		[SmokeClass("QBrush")]
 		interface IQBrushProxy {
@@ -15,18 +15,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QBrush), this);
-			_interceptor = (QBrush) realProxy.GetTransparentProxy();
+			interceptor = (QBrush) realProxy.GetTransparentProxy();
 		}
-		private QBrush ProxyQBrush() {
-			return (QBrush) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQBrushProxy staticInterceptor = null;
 		static QBrush() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQBrushProxy), null);
-			_staticInterceptor = (IQBrushProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQBrushProxy StaticQBrush() {
-			return (IQBrushProxy) _staticInterceptor;
+			staticInterceptor = (IQBrushProxy) realProxy.GetTransparentProxy();
 		}
 		//  operator QVariant(); >>>> NOT CONVERTED
 		public QBrush() : this((Type) null) {
@@ -35,7 +29,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QBrush", "()", "")]
 		private void NewQBrush() {
-			ProxyQBrush().NewQBrush();
+			((QBrush) interceptor).NewQBrush();
 		}
 		public QBrush(Qt.BrushStyle bs) : this((Type) null) {
 			CreateProxy();
@@ -43,7 +37,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QBrush", "(Qt::BrushStyle)", "$")]
 		private void NewQBrush(Qt.BrushStyle bs) {
-			ProxyQBrush().NewQBrush(bs);
+			((QBrush) interceptor).NewQBrush(bs);
 		}
 		public QBrush(QColor color, Qt.BrushStyle bs) : this((Type) null) {
 			CreateProxy();
@@ -51,7 +45,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QBrush", "(const QColor&, Qt::BrushStyle)", "#$")]
 		private void NewQBrush(QColor color, Qt.BrushStyle bs) {
-			ProxyQBrush().NewQBrush(color,bs);
+			((QBrush) interceptor).NewQBrush(color,bs);
 		}
 		public QBrush(QColor color) : this((Type) null) {
 			CreateProxy();
@@ -59,7 +53,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QBrush", "(const QColor&)", "#")]
 		private void NewQBrush(QColor color) {
-			ProxyQBrush().NewQBrush(color);
+			((QBrush) interceptor).NewQBrush(color);
 		}
 		public QBrush(Qt.GlobalColor color, Qt.BrushStyle bs) : this((Type) null) {
 			CreateProxy();
@@ -67,7 +61,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QBrush", "(Qt::GlobalColor, Qt::BrushStyle)", "$$")]
 		private void NewQBrush(Qt.GlobalColor color, Qt.BrushStyle bs) {
-			ProxyQBrush().NewQBrush(color,bs);
+			((QBrush) interceptor).NewQBrush(color,bs);
 		}
 		public QBrush(Qt.GlobalColor color) : this((Type) null) {
 			CreateProxy();
@@ -75,7 +69,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QBrush", "(Qt::GlobalColor)", "$")]
 		private void NewQBrush(Qt.GlobalColor color) {
-			ProxyQBrush().NewQBrush(color);
+			((QBrush) interceptor).NewQBrush(color);
 		}
 		public QBrush(QColor color, QPixmap pixmap) : this((Type) null) {
 			CreateProxy();
@@ -83,7 +77,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QBrush", "(const QColor&, const QPixmap&)", "##")]
 		private void NewQBrush(QColor color, QPixmap pixmap) {
-			ProxyQBrush().NewQBrush(color,pixmap);
+			((QBrush) interceptor).NewQBrush(color,pixmap);
 		}
 		public QBrush(Qt.GlobalColor color, QPixmap pixmap) : this((Type) null) {
 			CreateProxy();
@@ -91,7 +85,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QBrush", "(Qt::GlobalColor, const QPixmap&)", "$#")]
 		private void NewQBrush(Qt.GlobalColor color, QPixmap pixmap) {
-			ProxyQBrush().NewQBrush(color,pixmap);
+			((QBrush) interceptor).NewQBrush(color,pixmap);
 		}
 		public QBrush(QPixmap pixmap) : this((Type) null) {
 			CreateProxy();
@@ -99,7 +93,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QBrush", "(const QPixmap&)", "#")]
 		private void NewQBrush(QPixmap pixmap) {
-			ProxyQBrush().NewQBrush(pixmap);
+			((QBrush) interceptor).NewQBrush(pixmap);
 		}
 		public QBrush(QImage image) : this((Type) null) {
 			CreateProxy();
@@ -107,7 +101,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QBrush", "(const QImage&)", "#")]
 		private void NewQBrush(QImage image) {
-			ProxyQBrush().NewQBrush(image);
+			((QBrush) interceptor).NewQBrush(image);
 		}
 		public QBrush(QBrush brush) : this((Type) null) {
 			CreateProxy();
@@ -115,7 +109,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QBrush", "(const QBrush&)", "#")]
 		private void NewQBrush(QBrush brush) {
-			ProxyQBrush().NewQBrush(brush);
+			((QBrush) interceptor).NewQBrush(brush);
 		}
 		public QBrush(QGradient gradient) : this((Type) null) {
 			CreateProxy();
@@ -123,66 +117,66 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QBrush", "(const QGradient&)", "#")]
 		private void NewQBrush(QGradient gradient) {
-			ProxyQBrush().NewQBrush(gradient);
+			((QBrush) interceptor).NewQBrush(gradient);
 		}
 		[SmokeMethod("style", "() const", "")]
 		public Qt.BrushStyle Style() {
-			return ProxyQBrush().Style();
+			return ((QBrush) interceptor).Style();
 		}
 		[SmokeMethod("setStyle", "(Qt::BrushStyle)", "$")]
 		public void SetStyle(Qt.BrushStyle arg1) {
-			ProxyQBrush().SetStyle(arg1);
+			((QBrush) interceptor).SetStyle(arg1);
 		}
 		[SmokeMethod("matrix", "() const", "")]
 		public QMatrix Matrix() {
-			return ProxyQBrush().Matrix();
+			return ((QBrush) interceptor).Matrix();
 		}
 		[SmokeMethod("setMatrix", "(const QMatrix&)", "#")]
 		public void SetMatrix(QMatrix mat) {
-			ProxyQBrush().SetMatrix(mat);
+			((QBrush) interceptor).SetMatrix(mat);
 		}
 		[SmokeMethod("texture", "() const", "")]
 		public QPixmap Texture() {
-			return ProxyQBrush().Texture();
+			return ((QBrush) interceptor).Texture();
 		}
 		[SmokeMethod("setTexture", "(const QPixmap&)", "#")]
 		public void SetTexture(QPixmap pixmap) {
-			ProxyQBrush().SetTexture(pixmap);
+			((QBrush) interceptor).SetTexture(pixmap);
 		}
 		[SmokeMethod("textureImage", "() const", "")]
 		public QImage TextureImage() {
-			return ProxyQBrush().TextureImage();
+			return ((QBrush) interceptor).TextureImage();
 		}
 		[SmokeMethod("setTextureImage", "(const QImage&)", "#")]
 		public void SetTextureImage(QImage image) {
-			ProxyQBrush().SetTextureImage(image);
+			((QBrush) interceptor).SetTextureImage(image);
 		}
 		[SmokeMethod("color", "() const", "")]
 		public QColor Color() {
-			return ProxyQBrush().Color();
+			return ((QBrush) interceptor).Color();
 		}
 		[SmokeMethod("setColor", "(const QColor&)", "#")]
 		public void SetColor(QColor color) {
-			ProxyQBrush().SetColor(color);
+			((QBrush) interceptor).SetColor(color);
 		}
 		[SmokeMethod("setColor", "(Qt::GlobalColor)", "$")]
 		public void SetColor(Qt.GlobalColor color) {
-			ProxyQBrush().SetColor(color);
+			((QBrush) interceptor).SetColor(color);
 		}
 		[SmokeMethod("gradient", "() const", "")]
 		public QGradient Gradient() {
-			return ProxyQBrush().Gradient();
+			return ((QBrush) interceptor).Gradient();
 		}
 		[SmokeMethod("isOpaque", "() const", "")]
 		public bool IsOpaque() {
-			return ProxyQBrush().IsOpaque();
+			return ((QBrush) interceptor).IsOpaque();
 		}
 		public override bool Equals(object o) {
 			if (!(o is QBrush)) { return false; }
 			return this == (QBrush) o;
 		}
 		public override int GetHashCode() {
-			return ProxyQBrush().GetHashCode();
+			return ((QBrush) interceptor).GetHashCode();
 		}
 		~QBrush() {
 			DisposeQBrush();
@@ -192,13 +186,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QBrush", "()", "")]
 		private void DisposeQBrush() {
-			ProxyQBrush().DisposeQBrush();
+			((QBrush) interceptor).DisposeQBrush();
 		}
 		public static bool operator==(QBrush lhs, QBrush b) {
-			return StaticQBrush().op_equals(lhs,b);
+			return staticInterceptor.op_equals(lhs,b);
 		}
 		public static bool operator!=(QBrush lhs, QBrush b) {
-			return !StaticQBrush().op_equals(lhs,b);
+			return !staticInterceptor.op_equals(lhs,b);
 		}
 	}
 }

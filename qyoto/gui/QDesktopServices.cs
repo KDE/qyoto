@@ -5,8 +5,8 @@ namespace Qyoto {
 
 	[SmokeClass("QDesktopServices")]
 	public class QDesktopServices : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QDesktopServices interceptor = null;
+		private IntPtr smokeObject;
 		protected QDesktopServices(Type dummy) {}
 		[SmokeClass("QDesktopServices")]
 		interface IQDesktopServicesProxy {
@@ -19,18 +19,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDesktopServices), this);
-			_interceptor = (QDesktopServices) realProxy.GetTransparentProxy();
+			interceptor = (QDesktopServices) realProxy.GetTransparentProxy();
 		}
-		private QDesktopServices ProxyQDesktopServices() {
-			return (QDesktopServices) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQDesktopServicesProxy staticInterceptor = null;
 		static QDesktopServices() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQDesktopServicesProxy), null);
-			_staticInterceptor = (IQDesktopServicesProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQDesktopServicesProxy StaticQDesktopServices() {
-			return (IQDesktopServicesProxy) _staticInterceptor;
+			staticInterceptor = (IQDesktopServicesProxy) realProxy.GetTransparentProxy();
 		}
 		public QDesktopServices() : this((Type) null) {
 			CreateProxy();
@@ -38,7 +32,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDesktopServices", "()", "")]
 		private void NewQDesktopServices() {
-			ProxyQDesktopServices().NewQDesktopServices();
+			((QDesktopServices) interceptor).NewQDesktopServices();
 		}
 		~QDesktopServices() {
 			DisposeQDesktopServices();
@@ -48,16 +42,16 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QDesktopServices", "()", "")]
 		private void DisposeQDesktopServices() {
-			ProxyQDesktopServices().DisposeQDesktopServices();
+			((QDesktopServices) interceptor).DisposeQDesktopServices();
 		}
 		public static bool OpenUrl(IQUrl url) {
-			return StaticQDesktopServices().OpenUrl(url);
+			return staticInterceptor.OpenUrl(url);
 		}
 		public static void SetUrlHandler(string scheme, QObject receiver, string method) {
-			StaticQDesktopServices().SetUrlHandler(scheme,receiver,method);
+			staticInterceptor.SetUrlHandler(scheme,receiver,method);
 		}
 		public static void UnsetUrlHandler(string scheme) {
-			StaticQDesktopServices().UnsetUrlHandler(scheme);
+			staticInterceptor.UnsetUrlHandler(scheme);
 		}
 	}
 }

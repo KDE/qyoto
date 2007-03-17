@@ -23,34 +23,31 @@ namespace Qyoto {
 			[SmokeMethod("getFont", "(bool*)", "$")]
 			QFont GetFont(out bool ok);
 		}
-		private static Object _staticInterceptor = null;
+		private static IQFontDialogProxy staticInterceptor = null;
 		static QFontDialog() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQFontDialogProxy), null);
-			_staticInterceptor = (IQFontDialogProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQFontDialogProxy StaticQFontDialog() {
-			return (IQFontDialogProxy) _staticInterceptor;
+			staticInterceptor = (IQFontDialogProxy) realProxy.GetTransparentProxy();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQFontDialog().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQFontDialog().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		public static QFont GetFont(out bool ok, QFont def, QWidget parent, string caption) {
-			return StaticQFontDialog().GetFont(out ok,def,parent,caption);
+			return staticInterceptor.GetFont(out ok,def,parent,caption);
 		}
 		public static QFont GetFont(out bool ok, QFont def, QWidget parent) {
-			return StaticQFontDialog().GetFont(out ok,def,parent);
+			return staticInterceptor.GetFont(out ok,def,parent);
 		}
 		public static QFont GetFont(out bool ok, QFont def) {
-			return StaticQFontDialog().GetFont(out ok,def);
+			return staticInterceptor.GetFont(out ok,def);
 		}
 		public static QFont GetFont(out bool ok, QWidget parent) {
-			return StaticQFontDialog().GetFont(out ok,parent);
+			return staticInterceptor.GetFont(out ok,parent);
 		}
 		public static QFont GetFont(out bool ok) {
-			return StaticQFontDialog().GetFont(out ok);
+			return staticInterceptor.GetFont(out ok);
 		}
 		protected new IQFontDialogSignals Emit {
 			get { return (IQFontDialogSignals) Q_EMIT; }

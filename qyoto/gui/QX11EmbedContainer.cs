@@ -16,18 +16,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QX11EmbedContainer), this);
-			_interceptor = (QX11EmbedContainer) realProxy.GetTransparentProxy();
+			interceptor = (QX11EmbedContainer) realProxy.GetTransparentProxy();
 		}
-		private QX11EmbedContainer ProxyQX11EmbedContainer() {
-			return (QX11EmbedContainer) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQX11EmbedContainerProxy staticInterceptor = null;
 		static QX11EmbedContainer() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQX11EmbedContainerProxy), null);
-			_staticInterceptor = (IQX11EmbedContainerProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQX11EmbedContainerProxy StaticQX11EmbedContainer() {
-			return (IQX11EmbedContainerProxy) _staticInterceptor;
+			staticInterceptor = (IQX11EmbedContainerProxy) realProxy.GetTransparentProxy();
 		}
 		public enum Error {
 			Unknown = 0,
@@ -41,7 +35,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QX11EmbedContainer", "(QWidget*)", "#")]
 		private void NewQX11EmbedContainer(QWidget parent) {
-			ProxyQX11EmbedContainer().NewQX11EmbedContainer(parent);
+			((QX11EmbedContainer) interceptor).NewQX11EmbedContainer(parent);
 		}
 		public QX11EmbedContainer() : this((Type) null) {
 			CreateProxy();
@@ -49,51 +43,51 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QX11EmbedContainer", "()", "")]
 		private void NewQX11EmbedContainer() {
-			ProxyQX11EmbedContainer().NewQX11EmbedContainer();
+			((QX11EmbedContainer) interceptor).NewQX11EmbedContainer();
 		}
 		[SmokeMethod("embedClient", "(WId)", "$")]
 		public void EmbedClient(ulong id) {
-			ProxyQX11EmbedContainer().EmbedClient(id);
+			((QX11EmbedContainer) interceptor).EmbedClient(id);
 		}
 		[SmokeMethod("discardClient", "()", "")]
 		public void DiscardClient() {
-			ProxyQX11EmbedContainer().DiscardClient();
+			((QX11EmbedContainer) interceptor).DiscardClient();
 		}
 		[SmokeMethod("clientWinId", "() const", "")]
 		public ulong ClientWinId() {
-			return ProxyQX11EmbedContainer().ClientWinId();
+			return ((QX11EmbedContainer) interceptor).ClientWinId();
 		}
 		[SmokeMethod("minimumSizeHint", "() const", "")]
 		public override QSize MinimumSizeHint() {
-			return ProxyQX11EmbedContainer().MinimumSizeHint();
+			return ((QX11EmbedContainer) interceptor).MinimumSizeHint();
 		}
 		[SmokeMethod("error", "() const", "")]
 		public QX11EmbedContainer.Error error() {
-			return ProxyQX11EmbedContainer().error();
+			return ((QX11EmbedContainer) interceptor).error();
 		}
 		[SmokeMethod("eventFilter", "(QObject*, QEvent*)", "##")]
 		protected new virtual bool EventFilter(QObject arg1, QEvent arg2) {
-			return ProxyQX11EmbedContainer().EventFilter(arg1,arg2);
+			return ((QX11EmbedContainer) interceptor).EventFilter(arg1,arg2);
 		}
 		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
 		protected override void PaintEvent(QPaintEvent e) {
-			ProxyQX11EmbedContainer().PaintEvent(e);
+			((QX11EmbedContainer) interceptor).PaintEvent(e);
 		}
 		[SmokeMethod("resizeEvent", "(QResizeEvent*)", "#")]
 		protected override void ResizeEvent(QResizeEvent arg1) {
-			ProxyQX11EmbedContainer().ResizeEvent(arg1);
+			((QX11EmbedContainer) interceptor).ResizeEvent(arg1);
 		}
 		[SmokeMethod("showEvent", "(QShowEvent*)", "#")]
 		protected override void ShowEvent(QShowEvent arg1) {
-			ProxyQX11EmbedContainer().ShowEvent(arg1);
+			((QX11EmbedContainer) interceptor).ShowEvent(arg1);
 		}
 		[SmokeMethod("hideEvent", "(QHideEvent*)", "#")]
 		protected override void HideEvent(QHideEvent arg1) {
-			ProxyQX11EmbedContainer().HideEvent(arg1);
+			((QX11EmbedContainer) interceptor).HideEvent(arg1);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent arg1) {
-			return ProxyQX11EmbedContainer().Event(arg1);
+			return ((QX11EmbedContainer) interceptor).Event(arg1);
 		}
 		~QX11EmbedContainer() {
 			DisposeQX11EmbedContainer();
@@ -103,13 +97,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QX11EmbedContainer", "()", "")]
 		private void DisposeQX11EmbedContainer() {
-			ProxyQX11EmbedContainer().DisposeQX11EmbedContainer();
+			((QX11EmbedContainer) interceptor).DisposeQX11EmbedContainer();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQX11EmbedContainer().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQX11EmbedContainer().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQX11EmbedContainerSignals Emit {
 			get { return (IQX11EmbedContainerSignals) Q_EMIT; }

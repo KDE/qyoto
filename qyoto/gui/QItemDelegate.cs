@@ -15,18 +15,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QItemDelegate), this);
-			_interceptor = (QItemDelegate) realProxy.GetTransparentProxy();
+			interceptor = (QItemDelegate) realProxy.GetTransparentProxy();
 		}
-		private QItemDelegate ProxyQItemDelegate() {
-			return (QItemDelegate) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQItemDelegateProxy staticInterceptor = null;
 		static QItemDelegate() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQItemDelegateProxy), null);
-			_staticInterceptor = (IQItemDelegateProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQItemDelegateProxy StaticQItemDelegate() {
-			return (IQItemDelegateProxy) _staticInterceptor;
+			staticInterceptor = (IQItemDelegateProxy) realProxy.GetTransparentProxy();
 		}
 		[Q_PROPERTY("bool", "clipping")]
 		public bool Clipping {
@@ -39,7 +33,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QItemDelegate", "(QObject*)", "#")]
 		private void NewQItemDelegate(QObject parent) {
-			ProxyQItemDelegate().NewQItemDelegate(parent);
+			((QItemDelegate) interceptor).NewQItemDelegate(parent);
 		}
 		public QItemDelegate() : this((Type) null) {
 			CreateProxy();
@@ -47,99 +41,99 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QItemDelegate", "()", "")]
 		private void NewQItemDelegate() {
-			ProxyQItemDelegate().NewQItemDelegate();
+			((QItemDelegate) interceptor).NewQItemDelegate();
 		}
 		[SmokeMethod("hasClipping", "() const", "")]
 		public bool HasClipping() {
-			return ProxyQItemDelegate().HasClipping();
+			return ((QItemDelegate) interceptor).HasClipping();
 		}
 		[SmokeMethod("paint", "(QPainter*, const QStyleOptionViewItem&, const QModelIndex&) const", "###")]
 		public override void Paint(QPainter painter, QStyleOptionViewItem option, QModelIndex index) {
-			ProxyQItemDelegate().Paint(painter,option,index);
+			((QItemDelegate) interceptor).Paint(painter,option,index);
 		}
 		[SmokeMethod("sizeHint", "(const QStyleOptionViewItem&, const QModelIndex&) const", "##")]
 		public override QSize SizeHint(QStyleOptionViewItem option, QModelIndex index) {
-			return ProxyQItemDelegate().SizeHint(option,index);
+			return ((QItemDelegate) interceptor).SizeHint(option,index);
 		}
 		[SmokeMethod("createEditor", "(QWidget*, const QStyleOptionViewItem&, const QModelIndex&) const", "###")]
 		public override QWidget CreateEditor(QWidget parent, QStyleOptionViewItem option, QModelIndex index) {
-			return ProxyQItemDelegate().CreateEditor(parent,option,index);
+			return ((QItemDelegate) interceptor).CreateEditor(parent,option,index);
 		}
 		[SmokeMethod("setEditorData", "(QWidget*, const QModelIndex&) const", "##")]
 		public override void SetEditorData(QWidget editor, QModelIndex index) {
-			ProxyQItemDelegate().SetEditorData(editor,index);
+			((QItemDelegate) interceptor).SetEditorData(editor,index);
 		}
 		[SmokeMethod("setModelData", "(QWidget*, QAbstractItemModel*, const QModelIndex&) const", "###")]
 		public override void SetModelData(QWidget editor, QAbstractItemModel model, QModelIndex index) {
-			ProxyQItemDelegate().SetModelData(editor,model,index);
+			((QItemDelegate) interceptor).SetModelData(editor,model,index);
 		}
 		[SmokeMethod("updateEditorGeometry", "(QWidget*, const QStyleOptionViewItem&, const QModelIndex&) const", "###")]
 		public override void UpdateEditorGeometry(QWidget editor, QStyleOptionViewItem option, QModelIndex index) {
-			ProxyQItemDelegate().UpdateEditorGeometry(editor,option,index);
+			((QItemDelegate) interceptor).UpdateEditorGeometry(editor,option,index);
 		}
 		[SmokeMethod("itemEditorFactory", "() const", "")]
 		public QItemEditorFactory ItemEditorFactory() {
-			return ProxyQItemDelegate().ItemEditorFactory();
+			return ((QItemDelegate) interceptor).ItemEditorFactory();
 		}
 		[SmokeMethod("setItemEditorFactory", "(QItemEditorFactory*)", "#")]
 		public void SetItemEditorFactory(QItemEditorFactory factory) {
-			ProxyQItemDelegate().SetItemEditorFactory(factory);
+			((QItemDelegate) interceptor).SetItemEditorFactory(factory);
 		}
 		[SmokeMethod("drawDisplay", "(QPainter*, const QStyleOptionViewItem&, const QRect&, const QString&) const", "###$")]
 		protected virtual void DrawDisplay(QPainter painter, QStyleOptionViewItem option, QRect rect, string text) {
-			ProxyQItemDelegate().DrawDisplay(painter,option,rect,text);
+			((QItemDelegate) interceptor).DrawDisplay(painter,option,rect,text);
 		}
 		[SmokeMethod("drawDecoration", "(QPainter*, const QStyleOptionViewItem&, const QRect&, const QPixmap&) const", "####")]
 		protected virtual void DrawDecoration(QPainter painter, QStyleOptionViewItem option, QRect rect, QPixmap pixmap) {
-			ProxyQItemDelegate().DrawDecoration(painter,option,rect,pixmap);
+			((QItemDelegate) interceptor).DrawDecoration(painter,option,rect,pixmap);
 		}
 		[SmokeMethod("drawFocus", "(QPainter*, const QStyleOptionViewItem&, const QRect&) const", "###")]
 		protected virtual void DrawFocus(QPainter painter, QStyleOptionViewItem option, QRect rect) {
-			ProxyQItemDelegate().DrawFocus(painter,option,rect);
+			((QItemDelegate) interceptor).DrawFocus(painter,option,rect);
 		}
 		[SmokeMethod("drawCheck", "(QPainter*, const QStyleOptionViewItem&, const QRect&, Qt::CheckState) const", "###$")]
 		protected virtual void DrawCheck(QPainter painter, QStyleOptionViewItem option, QRect rect, Qt.CheckState state) {
-			ProxyQItemDelegate().DrawCheck(painter,option,rect,state);
+			((QItemDelegate) interceptor).DrawCheck(painter,option,rect,state);
 		}
 		[SmokeMethod("drawBackground", "(QPainter*, const QStyleOptionViewItem&, const QModelIndex&) const", "###")]
 		protected void DrawBackground(QPainter painter, QStyleOptionViewItem option, QModelIndex index) {
-			ProxyQItemDelegate().DrawBackground(painter,option,index);
+			((QItemDelegate) interceptor).DrawBackground(painter,option,index);
 		}
 		[SmokeMethod("doLayout", "(const QStyleOptionViewItem&, QRect*, QRect*, QRect*, bool) const", "####$")]
 		protected void DoLayout(QStyleOptionViewItem option, QRect checkRect, QRect iconRect, QRect textRect, bool hint) {
-			ProxyQItemDelegate().DoLayout(option,checkRect,iconRect,textRect,hint);
+			((QItemDelegate) interceptor).DoLayout(option,checkRect,iconRect,textRect,hint);
 		}
 		[SmokeMethod("rect", "(const QStyleOptionViewItem&, const QModelIndex&, int) const", "##$")]
 		protected QRect Rect(QStyleOptionViewItem option, QModelIndex index, int role) {
-			return ProxyQItemDelegate().Rect(option,index,role);
+			return ((QItemDelegate) interceptor).Rect(option,index,role);
 		}
 		[SmokeMethod("eventFilter", "(QObject*, QEvent*)", "##")]
 		protected new virtual bool EventFilter(QObject arg1, QEvent arg2) {
-			return ProxyQItemDelegate().EventFilter(arg1,arg2);
+			return ((QItemDelegate) interceptor).EventFilter(arg1,arg2);
 		}
 		[SmokeMethod("editorEvent", "(QEvent*, QAbstractItemModel*, const QStyleOptionViewItem&, const QModelIndex&)", "####")]
 		protected new virtual bool EditorEvent(QEvent arg1, QAbstractItemModel model, QStyleOptionViewItem option, QModelIndex index) {
-			return ProxyQItemDelegate().EditorEvent(arg1,model,option,index);
+			return ((QItemDelegate) interceptor).EditorEvent(arg1,model,option,index);
 		}
 		[SmokeMethod("setOptions", "(const QModelIndex&, const QStyleOptionViewItem&) const", "##")]
 		protected QStyleOptionViewItem SetOptions(QModelIndex index, QStyleOptionViewItem option) {
-			return ProxyQItemDelegate().SetOptions(index,option);
+			return ((QItemDelegate) interceptor).SetOptions(index,option);
 		}
 		[SmokeMethod("decoration", "(const QStyleOptionViewItem&, const QVariant&) const", "##")]
 		protected QPixmap Decoration(QStyleOptionViewItem option, QVariant variant) {
-			return ProxyQItemDelegate().Decoration(option,variant);
+			return ((QItemDelegate) interceptor).Decoration(option,variant);
 		}
 		[SmokeMethod("selected", "(const QPixmap&, const QPalette&, bool) const", "##$")]
 		protected QPixmap Selected(QPixmap pixmap, QPalette palette, bool enabled) {
-			return ProxyQItemDelegate().Selected(pixmap,palette,enabled);
+			return ((QItemDelegate) interceptor).Selected(pixmap,palette,enabled);
 		}
 		[SmokeMethod("check", "(const QStyleOptionViewItem&, const QRect&, const QVariant&) const", "###")]
 		protected QRect Check(QStyleOptionViewItem option, QRect bounding, QVariant variant) {
-			return ProxyQItemDelegate().Check(option,bounding,variant);
+			return ((QItemDelegate) interceptor).Check(option,bounding,variant);
 		}
 		[SmokeMethod("textRectangle", "(QPainter*, const QRect&, const QFont&, const QString&) const", "###$")]
 		protected QRect TextRectangle(QPainter painter, QRect rect, QFont font, string text) {
-			return ProxyQItemDelegate().TextRectangle(painter,rect,font,text);
+			return ((QItemDelegate) interceptor).TextRectangle(painter,rect,font,text);
 		}
 		~QItemDelegate() {
 			DisposeQItemDelegate();
@@ -149,13 +143,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QItemDelegate", "()", "")]
 		private void DisposeQItemDelegate() {
-			ProxyQItemDelegate().DisposeQItemDelegate();
+			((QItemDelegate) interceptor).DisposeQItemDelegate();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQItemDelegate().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQItemDelegate().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQItemDelegateSignals Emit {
 			get { return (IQItemDelegateSignals) Q_EMIT; }

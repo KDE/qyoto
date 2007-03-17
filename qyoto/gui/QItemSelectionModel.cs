@@ -17,18 +17,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QItemSelectionModel), this);
-			_interceptor = (QItemSelectionModel) realProxy.GetTransparentProxy();
+			interceptor = (QItemSelectionModel) realProxy.GetTransparentProxy();
 		}
-		private QItemSelectionModel ProxyQItemSelectionModel() {
-			return (QItemSelectionModel) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQItemSelectionModelProxy staticInterceptor = null;
 		static QItemSelectionModel() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQItemSelectionModelProxy), null);
-			_staticInterceptor = (IQItemSelectionModelProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQItemSelectionModelProxy StaticQItemSelectionModel() {
-			return (IQItemSelectionModelProxy) _staticInterceptor;
+			staticInterceptor = (IQItemSelectionModelProxy) realProxy.GetTransparentProxy();
 		}
 		public enum SelectionFlag {
 			NoUpdate = 0x0000,
@@ -49,7 +43,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QItemSelectionModel", "(QAbstractItemModel*)", "#")]
 		private void NewQItemSelectionModel(QAbstractItemModel model) {
-			ProxyQItemSelectionModel().NewQItemSelectionModel(model);
+			((QItemSelectionModel) interceptor).NewQItemSelectionModel(model);
 		}
 		public QItemSelectionModel(QAbstractItemModel model, QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -57,97 +51,97 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QItemSelectionModel", "(QAbstractItemModel*, QObject*)", "##")]
 		private void NewQItemSelectionModel(QAbstractItemModel model, QObject parent) {
-			ProxyQItemSelectionModel().NewQItemSelectionModel(model,parent);
+			((QItemSelectionModel) interceptor).NewQItemSelectionModel(model,parent);
 		}
 		[SmokeMethod("currentIndex", "() const", "")]
 		public QModelIndex CurrentIndex() {
-			return ProxyQItemSelectionModel().CurrentIndex();
+			return ((QItemSelectionModel) interceptor).CurrentIndex();
 		}
 		[SmokeMethod("isSelected", "(const QModelIndex&) const", "#")]
 		public bool IsSelected(QModelIndex index) {
-			return ProxyQItemSelectionModel().IsSelected(index);
+			return ((QItemSelectionModel) interceptor).IsSelected(index);
 		}
 		[SmokeMethod("isRowSelected", "(int, const QModelIndex&) const", "$#")]
 		public bool IsRowSelected(int row, QModelIndex parent) {
-			return ProxyQItemSelectionModel().IsRowSelected(row,parent);
+			return ((QItemSelectionModel) interceptor).IsRowSelected(row,parent);
 		}
 		[SmokeMethod("isColumnSelected", "(int, const QModelIndex&) const", "$#")]
 		public bool IsColumnSelected(int column, QModelIndex parent) {
-			return ProxyQItemSelectionModel().IsColumnSelected(column,parent);
+			return ((QItemSelectionModel) interceptor).IsColumnSelected(column,parent);
 		}
 		[SmokeMethod("rowIntersectsSelection", "(int, const QModelIndex&) const", "$#")]
 		public bool RowIntersectsSelection(int row, QModelIndex parent) {
-			return ProxyQItemSelectionModel().RowIntersectsSelection(row,parent);
+			return ((QItemSelectionModel) interceptor).RowIntersectsSelection(row,parent);
 		}
 		[SmokeMethod("columnIntersectsSelection", "(int, const QModelIndex&) const", "$#")]
 		public bool ColumnIntersectsSelection(int column, QModelIndex parent) {
-			return ProxyQItemSelectionModel().ColumnIntersectsSelection(column,parent);
+			return ((QItemSelectionModel) interceptor).ColumnIntersectsSelection(column,parent);
 		}
 		[SmokeMethod("hasSelection", "() const", "")]
 		public bool HasSelection() {
-			return ProxyQItemSelectionModel().HasSelection();
+			return ((QItemSelectionModel) interceptor).HasSelection();
 		}
 		[SmokeMethod("selectedIndexes", "() const", "")]
 		public List<QModelIndex> SelectedIndexes() {
-			return ProxyQItemSelectionModel().SelectedIndexes();
+			return ((QItemSelectionModel) interceptor).SelectedIndexes();
 		}
 		[SmokeMethod("selectedRows", "(int) const", "$")]
 		public List<QModelIndex> SelectedRows(int column) {
-			return ProxyQItemSelectionModel().SelectedRows(column);
+			return ((QItemSelectionModel) interceptor).SelectedRows(column);
 		}
 		[SmokeMethod("selectedRows", "() const", "")]
 		public List<QModelIndex> SelectedRows() {
-			return ProxyQItemSelectionModel().SelectedRows();
+			return ((QItemSelectionModel) interceptor).SelectedRows();
 		}
 		[SmokeMethod("selectedColumns", "(int) const", "$")]
 		public List<QModelIndex> SelectedColumns(int row) {
-			return ProxyQItemSelectionModel().SelectedColumns(row);
+			return ((QItemSelectionModel) interceptor).SelectedColumns(row);
 		}
 		[SmokeMethod("selectedColumns", "() const", "")]
 		public List<QModelIndex> SelectedColumns() {
-			return ProxyQItemSelectionModel().SelectedColumns();
+			return ((QItemSelectionModel) interceptor).SelectedColumns();
 		}
 		[SmokeMethod("selection", "() const", "")]
 		public QItemSelection Selection() {
-			return ProxyQItemSelectionModel().Selection();
+			return ((QItemSelectionModel) interceptor).Selection();
 		}
 		[SmokeMethod("model", "() const", "")]
 		public QAbstractItemModel Model() {
-			return ProxyQItemSelectionModel().Model();
+			return ((QItemSelectionModel) interceptor).Model();
 		}
 		[Q_SLOT("void setCurrentIndex(const QModelIndex&, QItemSelectionModel::SelectionFlags)")]
 		[SmokeMethod("setCurrentIndex", "(const QModelIndex&, QItemSelectionModel::SelectionFlags)", "#$")]
 		public void SetCurrentIndex(QModelIndex index, int command) {
-			ProxyQItemSelectionModel().SetCurrentIndex(index,command);
+			((QItemSelectionModel) interceptor).SetCurrentIndex(index,command);
 		}
 		[Q_SLOT("void select(const QModelIndex&, QItemSelectionModel::SelectionFlags)")]
 		[SmokeMethod("select", "(const QModelIndex&, QItemSelectionModel::SelectionFlags)", "#$")]
 		public virtual void Select(QModelIndex index, int command) {
-			ProxyQItemSelectionModel().Select(index,command);
+			((QItemSelectionModel) interceptor).Select(index,command);
 		}
 		[Q_SLOT("void select(const QItemSelection&, QItemSelectionModel::SelectionFlags)")]
 		[SmokeMethod("select", "(const QItemSelection&, QItemSelectionModel::SelectionFlags)", "#$")]
 		public virtual void Select(QItemSelection selection, int command) {
-			ProxyQItemSelectionModel().Select(selection,command);
+			((QItemSelectionModel) interceptor).Select(selection,command);
 		}
 		[Q_SLOT("void clear()")]
 		[SmokeMethod("clear", "()", "")]
 		public virtual void Clear() {
-			ProxyQItemSelectionModel().Clear();
+			((QItemSelectionModel) interceptor).Clear();
 		}
 		[Q_SLOT("void reset()")]
 		[SmokeMethod("reset", "()", "")]
 		public virtual void Reset() {
-			ProxyQItemSelectionModel().Reset();
+			((QItemSelectionModel) interceptor).Reset();
 		}
 		[Q_SLOT("void clearSelection()")]
 		[SmokeMethod("clearSelection", "()", "")]
 		public void ClearSelection() {
-			ProxyQItemSelectionModel().ClearSelection();
+			((QItemSelectionModel) interceptor).ClearSelection();
 		}
 		[SmokeMethod("emitSelectionChanged", "(const QItemSelection&, const QItemSelection&)", "##")]
 		protected void EmitSelectionChanged(QItemSelection newSelection, QItemSelection oldSelection) {
-			ProxyQItemSelectionModel().EmitSelectionChanged(newSelection,oldSelection);
+			((QItemSelectionModel) interceptor).EmitSelectionChanged(newSelection,oldSelection);
 		}
 		~QItemSelectionModel() {
 			DisposeQItemSelectionModel();
@@ -157,13 +151,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QItemSelectionModel", "()", "")]
 		private void DisposeQItemSelectionModel() {
-			ProxyQItemSelectionModel().DisposeQItemSelectionModel();
+			((QItemSelectionModel) interceptor).DisposeQItemSelectionModel();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQItemSelectionModel().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQItemSelectionModel().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQItemSelectionModelSignals Emit {
 			get { return (IQItemSelectionModelSignals) Q_EMIT; }

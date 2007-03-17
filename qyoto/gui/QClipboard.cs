@@ -16,18 +16,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QClipboard), this);
-			_interceptor = (QClipboard) realProxy.GetTransparentProxy();
+			interceptor = (QClipboard) realProxy.GetTransparentProxy();
 		}
-		private QClipboard ProxyQClipboard() {
-			return (QClipboard) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQClipboardProxy staticInterceptor = null;
 		static QClipboard() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQClipboardProxy), null);
-			_staticInterceptor = (IQClipboardProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQClipboardProxy StaticQClipboard() {
-			return (IQClipboardProxy) _staticInterceptor;
+			staticInterceptor = (IQClipboardProxy) realProxy.GetTransparentProxy();
 		}
 		public enum Mode {
 			Clipboard = 0,
@@ -37,109 +31,109 @@ namespace Qyoto {
 		}
 		[SmokeMethod("clear", "(QClipboard::Mode)", "$")]
 		public void Clear(QClipboard.Mode mode) {
-			ProxyQClipboard().Clear(mode);
+			((QClipboard) interceptor).Clear(mode);
 		}
 		[SmokeMethod("clear", "()", "")]
 		public void Clear() {
-			ProxyQClipboard().Clear();
+			((QClipboard) interceptor).Clear();
 		}
 		[SmokeMethod("supportsSelection", "() const", "")]
 		public bool SupportsSelection() {
-			return ProxyQClipboard().SupportsSelection();
+			return ((QClipboard) interceptor).SupportsSelection();
 		}
 		[SmokeMethod("supportsFindBuffer", "() const", "")]
 		public bool SupportsFindBuffer() {
-			return ProxyQClipboard().SupportsFindBuffer();
+			return ((QClipboard) interceptor).SupportsFindBuffer();
 		}
 		[SmokeMethod("ownsSelection", "() const", "")]
 		public bool OwnsSelection() {
-			return ProxyQClipboard().OwnsSelection();
+			return ((QClipboard) interceptor).OwnsSelection();
 		}
 		[SmokeMethod("ownsClipboard", "() const", "")]
 		public bool OwnsClipboard() {
-			return ProxyQClipboard().OwnsClipboard();
+			return ((QClipboard) interceptor).OwnsClipboard();
 		}
 		[SmokeMethod("ownsFindBuffer", "() const", "")]
 		public bool OwnsFindBuffer() {
-			return ProxyQClipboard().OwnsFindBuffer();
+			return ((QClipboard) interceptor).OwnsFindBuffer();
 		}
 		[SmokeMethod("text", "(QClipboard::Mode) const", "$")]
 		public string Text(QClipboard.Mode mode) {
-			return ProxyQClipboard().Text(mode);
+			return ((QClipboard) interceptor).Text(mode);
 		}
 		[SmokeMethod("text", "() const", "")]
 		public string Text() {
-			return ProxyQClipboard().Text();
+			return ((QClipboard) interceptor).Text();
 		}
 		[SmokeMethod("text", "(QString&, QClipboard::Mode) const", "$$")]
 		public string Text(StringBuilder subtype, QClipboard.Mode mode) {
-			return ProxyQClipboard().Text(subtype,mode);
+			return ((QClipboard) interceptor).Text(subtype,mode);
 		}
 		[SmokeMethod("text", "(QString&) const", "$")]
 		public string Text(StringBuilder subtype) {
-			return ProxyQClipboard().Text(subtype);
+			return ((QClipboard) interceptor).Text(subtype);
 		}
 		[SmokeMethod("setText", "(const QString&, QClipboard::Mode)", "$$")]
 		public void SetText(string arg1, QClipboard.Mode mode) {
-			ProxyQClipboard().SetText(arg1,mode);
+			((QClipboard) interceptor).SetText(arg1,mode);
 		}
 		[SmokeMethod("setText", "(const QString&)", "$")]
 		public void SetText(string arg1) {
-			ProxyQClipboard().SetText(arg1);
+			((QClipboard) interceptor).SetText(arg1);
 		}
 		[SmokeMethod("mimeData", "(QClipboard::Mode) const", "$")]
 		public QMimeData MimeData(QClipboard.Mode mode) {
-			return ProxyQClipboard().MimeData(mode);
+			return ((QClipboard) interceptor).MimeData(mode);
 		}
 		[SmokeMethod("mimeData", "() const", "")]
 		public QMimeData MimeData() {
-			return ProxyQClipboard().MimeData();
+			return ((QClipboard) interceptor).MimeData();
 		}
 		[SmokeMethod("setMimeData", "(QMimeData*, QClipboard::Mode)", "#$")]
 		public void SetMimeData(QMimeData data, QClipboard.Mode mode) {
-			ProxyQClipboard().SetMimeData(data,mode);
+			((QClipboard) interceptor).SetMimeData(data,mode);
 		}
 		[SmokeMethod("setMimeData", "(QMimeData*)", "#")]
 		public void SetMimeData(QMimeData data) {
-			ProxyQClipboard().SetMimeData(data);
+			((QClipboard) interceptor).SetMimeData(data);
 		}
 		[SmokeMethod("image", "(QClipboard::Mode) const", "$")]
 		public QImage Image(QClipboard.Mode mode) {
-			return ProxyQClipboard().Image(mode);
+			return ((QClipboard) interceptor).Image(mode);
 		}
 		[SmokeMethod("image", "() const", "")]
 		public QImage Image() {
-			return ProxyQClipboard().Image();
+			return ((QClipboard) interceptor).Image();
 		}
 		[SmokeMethod("pixmap", "(QClipboard::Mode) const", "$")]
 		public QPixmap Pixmap(QClipboard.Mode mode) {
-			return ProxyQClipboard().Pixmap(mode);
+			return ((QClipboard) interceptor).Pixmap(mode);
 		}
 		[SmokeMethod("pixmap", "() const", "")]
 		public QPixmap Pixmap() {
-			return ProxyQClipboard().Pixmap();
+			return ((QClipboard) interceptor).Pixmap();
 		}
 		[SmokeMethod("setImage", "(const QImage&, QClipboard::Mode)", "#$")]
 		public void SetImage(QImage arg1, QClipboard.Mode mode) {
-			ProxyQClipboard().SetImage(arg1,mode);
+			((QClipboard) interceptor).SetImage(arg1,mode);
 		}
 		[SmokeMethod("setImage", "(const QImage&)", "#")]
 		public void SetImage(QImage arg1) {
-			ProxyQClipboard().SetImage(arg1);
+			((QClipboard) interceptor).SetImage(arg1);
 		}
 		[SmokeMethod("setPixmap", "(const QPixmap&, QClipboard::Mode)", "#$")]
 		public void SetPixmap(QPixmap arg1, QClipboard.Mode mode) {
-			ProxyQClipboard().SetPixmap(arg1,mode);
+			((QClipboard) interceptor).SetPixmap(arg1,mode);
 		}
 		[SmokeMethod("setPixmap", "(const QPixmap&)", "#")]
 		public void SetPixmap(QPixmap arg1) {
-			ProxyQClipboard().SetPixmap(arg1);
+			((QClipboard) interceptor).SetPixmap(arg1);
 		}
 		public static string Tr(string s, string c) {
-			return StaticQClipboard().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQClipboard().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQClipboardSignals Emit {
 			get { return (IQClipboardSignals) Q_EMIT; }

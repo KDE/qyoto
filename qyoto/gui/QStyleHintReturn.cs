@@ -5,15 +5,12 @@ namespace Qyoto {
 
 	[SmokeClass("QStyleHintReturn")]
 	public class QStyleHintReturn : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QStyleHintReturn interceptor = null;
+		private IntPtr smokeObject;
 		protected QStyleHintReturn(Type dummy) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleHintReturn), this);
-			_interceptor = (QStyleHintReturn) realProxy.GetTransparentProxy();
-		}
-		private QStyleHintReturn ProxyQStyleHintReturn() {
-			return (QStyleHintReturn) _interceptor;
+			interceptor = (QStyleHintReturn) realProxy.GetTransparentProxy();
 		}
 		public enum HintReturnType {
 			SH_Default = 0xf000,
@@ -31,7 +28,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleHintReturn", "(int, int)", "$$")]
 		private void NewQStyleHintReturn(int version, int type) {
-			ProxyQStyleHintReturn().NewQStyleHintReturn(version,type);
+			((QStyleHintReturn) interceptor).NewQStyleHintReturn(version,type);
 		}
 		public QStyleHintReturn(int version) : this((Type) null) {
 			CreateProxy();
@@ -39,7 +36,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleHintReturn", "(int)", "$")]
 		private void NewQStyleHintReturn(int version) {
-			ProxyQStyleHintReturn().NewQStyleHintReturn(version);
+			((QStyleHintReturn) interceptor).NewQStyleHintReturn(version);
 		}
 		public QStyleHintReturn() : this((Type) null) {
 			CreateProxy();
@@ -47,7 +44,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleHintReturn", "()", "")]
 		private void NewQStyleHintReturn() {
-			ProxyQStyleHintReturn().NewQStyleHintReturn();
+			((QStyleHintReturn) interceptor).NewQStyleHintReturn();
 		}
 		~QStyleHintReturn() {
 			DisposeQStyleHintReturn();
@@ -57,7 +54,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QStyleHintReturn", "()", "")]
 		private void DisposeQStyleHintReturn() {
-			ProxyQStyleHintReturn().DisposeQStyleHintReturn();
+			((QStyleHintReturn) interceptor).DisposeQStyleHintReturn();
 		}
 	}
 }

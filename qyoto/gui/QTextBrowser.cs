@@ -17,18 +17,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextBrowser), this);
-			_interceptor = (QTextBrowser) realProxy.GetTransparentProxy();
+			interceptor = (QTextBrowser) realProxy.GetTransparentProxy();
 		}
-		private QTextBrowser ProxyQTextBrowser() {
-			return (QTextBrowser) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQTextBrowserProxy staticInterceptor = null;
 		static QTextBrowser() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTextBrowserProxy), null);
-			_staticInterceptor = (IQTextBrowserProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQTextBrowserProxy StaticQTextBrowser() {
-			return (IQTextBrowserProxy) _staticInterceptor;
+			staticInterceptor = (IQTextBrowserProxy) realProxy.GetTransparentProxy();
 		}
 		[Q_PROPERTY("QUrl", "source")]
 		public IQUrl Source {
@@ -51,7 +45,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTextBrowser", "(QWidget*)", "#")]
 		private void NewQTextBrowser(QWidget parent) {
-			ProxyQTextBrowser().NewQTextBrowser(parent);
+			((QTextBrowser) interceptor).NewQTextBrowser(parent);
 		}
 		public QTextBrowser() : this((Type) null) {
 			CreateProxy();
@@ -59,75 +53,75 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTextBrowser", "()", "")]
 		private void NewQTextBrowser() {
-			ProxyQTextBrowser().NewQTextBrowser();
+			((QTextBrowser) interceptor).NewQTextBrowser();
 		}
 		[SmokeMethod("loadResource", "(int, const QUrl&)", "$#")]
 		public override QVariant LoadResource(int type, IQUrl name) {
-			return ProxyQTextBrowser().LoadResource(type,name);
+			return ((QTextBrowser) interceptor).LoadResource(type,name);
 		}
 		[SmokeMethod("isBackwardAvailable", "() const", "")]
 		public bool IsBackwardAvailable() {
-			return ProxyQTextBrowser().IsBackwardAvailable();
+			return ((QTextBrowser) interceptor).IsBackwardAvailable();
 		}
 		[SmokeMethod("isForwardAvailable", "() const", "")]
 		public bool IsForwardAvailable() {
-			return ProxyQTextBrowser().IsForwardAvailable();
+			return ((QTextBrowser) interceptor).IsForwardAvailable();
 		}
 		[SmokeMethod("clearHistory", "()", "")]
 		public void ClearHistory() {
-			ProxyQTextBrowser().ClearHistory();
+			((QTextBrowser) interceptor).ClearHistory();
 		}
 		[Q_SLOT("void backward()")]
 		[SmokeMethod("backward", "()", "")]
 		public virtual void Backward() {
-			ProxyQTextBrowser().Backward();
+			((QTextBrowser) interceptor).Backward();
 		}
 		[Q_SLOT("void forward()")]
 		[SmokeMethod("forward", "()", "")]
 		public virtual void Forward() {
-			ProxyQTextBrowser().Forward();
+			((QTextBrowser) interceptor).Forward();
 		}
 		[Q_SLOT("void home()")]
 		[SmokeMethod("home", "()", "")]
 		public virtual void Home() {
-			ProxyQTextBrowser().Home();
+			((QTextBrowser) interceptor).Home();
 		}
 		[Q_SLOT("void reload()")]
 		[SmokeMethod("reload", "()", "")]
 		public virtual void Reload() {
-			ProxyQTextBrowser().Reload();
+			((QTextBrowser) interceptor).Reload();
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent e) {
-			return ProxyQTextBrowser().Event(e);
+			return ((QTextBrowser) interceptor).Event(e);
 		}
 		[SmokeMethod("keyPressEvent", "(QKeyEvent*)", "#")]
 		protected override void KeyPressEvent(QKeyEvent ev) {
-			ProxyQTextBrowser().KeyPressEvent(ev);
+			((QTextBrowser) interceptor).KeyPressEvent(ev);
 		}
 		[SmokeMethod("mouseMoveEvent", "(QMouseEvent*)", "#")]
 		protected override void MouseMoveEvent(QMouseEvent ev) {
-			ProxyQTextBrowser().MouseMoveEvent(ev);
+			((QTextBrowser) interceptor).MouseMoveEvent(ev);
 		}
 		[SmokeMethod("mousePressEvent", "(QMouseEvent*)", "#")]
 		protected override void MousePressEvent(QMouseEvent ev) {
-			ProxyQTextBrowser().MousePressEvent(ev);
+			((QTextBrowser) interceptor).MousePressEvent(ev);
 		}
 		[SmokeMethod("mouseReleaseEvent", "(QMouseEvent*)", "#")]
 		protected override void MouseReleaseEvent(QMouseEvent ev) {
-			ProxyQTextBrowser().MouseReleaseEvent(ev);
+			((QTextBrowser) interceptor).MouseReleaseEvent(ev);
 		}
 		[SmokeMethod("focusOutEvent", "(QFocusEvent*)", "#")]
 		protected override void FocusOutEvent(QFocusEvent ev) {
-			ProxyQTextBrowser().FocusOutEvent(ev);
+			((QTextBrowser) interceptor).FocusOutEvent(ev);
 		}
 		[SmokeMethod("focusNextPrevChild", "(bool)", "$")]
 		protected override bool FocusNextPrevChild(bool next) {
-			return ProxyQTextBrowser().FocusNextPrevChild(next);
+			return ((QTextBrowser) interceptor).FocusNextPrevChild(next);
 		}
 		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
 		protected override void PaintEvent(QPaintEvent e) {
-			ProxyQTextBrowser().PaintEvent(e);
+			((QTextBrowser) interceptor).PaintEvent(e);
 		}
 		~QTextBrowser() {
 			DisposeQTextBrowser();
@@ -137,13 +131,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QTextBrowser", "()", "")]
 		private void DisposeQTextBrowser() {
-			ProxyQTextBrowser().DisposeQTextBrowser();
+			((QTextBrowser) interceptor).DisposeQTextBrowser();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQTextBrowser().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQTextBrowser().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQTextBrowserSignals Emit {
 			get { return (IQTextBrowserSignals) Q_EMIT; }

@@ -4,35 +4,32 @@ namespace Qyoto {
 	using System;
 
 	public interface IQLayoutItem {
-			QSize SizeHint();
-			QSize MinimumSize();
-			QSize MaximumSize();
-			int ExpandingDirections();
-			void SetGeometry(QRect arg1);
-			QRect Geometry();
-			bool IsEmpty();
-			bool HasHeightForWidth();
-			int HeightForWidth(int arg1);
-			int MinimumHeightForWidth(int arg1);
-			void Invalidate();
-			QWidget Widget();
-			QLayout Layout();
-			QSpacerItem SpacerItem();
-			int Alignment();
-			void SetAlignment(int a);
+		QSize SizeHint();
+		QSize MinimumSize();
+		QSize MaximumSize();
+		int ExpandingDirections();
+		void SetGeometry(QRect arg1);
+		QRect Geometry();
+		bool IsEmpty();
+		bool HasHeightForWidth();
+		int HeightForWidth(int arg1);
+		int MinimumHeightForWidth(int arg1);
+		void Invalidate();
+		QWidget Widget();
+		QLayout Layout();
+		QSpacerItem SpacerItem();
+		int Alignment();
+		void SetAlignment(int a);
 	}
 
 	[SmokeClass("QLayoutItem")]
 	public abstract class QLayoutItem : MarshalByRefObject, IQLayoutItem {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QLayoutItem interceptor = null;
+		private IntPtr smokeObject;
 		protected QLayoutItem(Type dummy) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QLayoutItem), this);
-			_interceptor = (QLayoutItem) realProxy.GetTransparentProxy();
-		}
-		private QLayoutItem ProxyQLayoutItem() {
-			return (QLayoutItem) _interceptor;
+			interceptor = (QLayoutItem) realProxy.GetTransparentProxy();
 		}
 		public QLayoutItem(int alignment) : this((Type) null) {
 			CreateProxy();
@@ -40,7 +37,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QLayoutItem", "(Qt::Alignment)", "$")]
 		private void NewQLayoutItem(int alignment) {
-			ProxyQLayoutItem().NewQLayoutItem(alignment);
+			((QLayoutItem) interceptor).NewQLayoutItem(alignment);
 		}
 		public QLayoutItem() : this((Type) null) {
 			CreateProxy();
@@ -48,7 +45,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QLayoutItem", "()", "")]
 		private void NewQLayoutItem() {
-			ProxyQLayoutItem().NewQLayoutItem();
+			((QLayoutItem) interceptor).NewQLayoutItem();
 		}
 		[SmokeMethod("sizeHint", "() const", "")]
 		public abstract QSize SizeHint();
@@ -66,39 +63,39 @@ namespace Qyoto {
 		public abstract bool IsEmpty();
 		[SmokeMethod("hasHeightForWidth", "() const", "")]
 		public virtual bool HasHeightForWidth() {
-			return ProxyQLayoutItem().HasHeightForWidth();
+			return ((QLayoutItem) interceptor).HasHeightForWidth();
 		}
 		[SmokeMethod("heightForWidth", "(int) const", "$")]
 		public virtual int HeightForWidth(int arg1) {
-			return ProxyQLayoutItem().HeightForWidth(arg1);
+			return ((QLayoutItem) interceptor).HeightForWidth(arg1);
 		}
 		[SmokeMethod("minimumHeightForWidth", "(int) const", "$")]
 		public virtual int MinimumHeightForWidth(int arg1) {
-			return ProxyQLayoutItem().MinimumHeightForWidth(arg1);
+			return ((QLayoutItem) interceptor).MinimumHeightForWidth(arg1);
 		}
 		[SmokeMethod("invalidate", "()", "")]
 		public virtual void Invalidate() {
-			ProxyQLayoutItem().Invalidate();
+			((QLayoutItem) interceptor).Invalidate();
 		}
 		[SmokeMethod("widget", "()", "")]
 		public virtual QWidget Widget() {
-			return ProxyQLayoutItem().Widget();
+			return ((QLayoutItem) interceptor).Widget();
 		}
 		[SmokeMethod("layout", "()", "")]
 		public virtual QLayout Layout() {
-			return ProxyQLayoutItem().Layout();
+			return ((QLayoutItem) interceptor).Layout();
 		}
 		[SmokeMethod("spacerItem", "()", "")]
 		public virtual QSpacerItem SpacerItem() {
-			return ProxyQLayoutItem().SpacerItem();
+			return ((QLayoutItem) interceptor).SpacerItem();
 		}
 		[SmokeMethod("alignment", "() const", "")]
 		public int Alignment() {
-			return ProxyQLayoutItem().Alignment();
+			return ((QLayoutItem) interceptor).Alignment();
 		}
 		[SmokeMethod("setAlignment", "(Qt::Alignment)", "$")]
 		public void SetAlignment(int a) {
-			ProxyQLayoutItem().SetAlignment(a);
+			((QLayoutItem) interceptor).SetAlignment(a);
 		}
 	}
 }

@@ -15,18 +15,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFrame), this);
-			_interceptor = (QFrame) realProxy.GetTransparentProxy();
+			interceptor = (QFrame) realProxy.GetTransparentProxy();
 		}
-		private QFrame ProxyQFrame() {
-			return (QFrame) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQFrameProxy staticInterceptor = null;
 		static QFrame() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQFrameProxy), null);
-			_staticInterceptor = (IQFrameProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQFrameProxy StaticQFrame() {
-			return (IQFrameProxy) _staticInterceptor;
+			staticInterceptor = (IQFrameProxy) realProxy.GetTransparentProxy();
 		}
 		public enum Shape {
 			NoFrame = 0,
@@ -81,7 +75,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QFrame", "(QWidget*, Qt::WindowFlags)", "#$")]
 		private void NewQFrame(QWidget parent, int f) {
-			ProxyQFrame().NewQFrame(parent,f);
+			((QFrame) interceptor).NewQFrame(parent,f);
 		}
 		public QFrame(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -89,7 +83,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QFrame", "(QWidget*)", "#")]
 		private void NewQFrame(QWidget parent) {
-			ProxyQFrame().NewQFrame(parent);
+			((QFrame) interceptor).NewQFrame(parent);
 		}
 		public QFrame() : this((Type) null) {
 			CreateProxy();
@@ -97,35 +91,35 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QFrame", "()", "")]
 		private void NewQFrame() {
-			ProxyQFrame().NewQFrame();
+			((QFrame) interceptor).NewQFrame();
 		}
 		[SmokeMethod("frameStyle", "() const", "")]
 		public int FrameStyle() {
-			return ProxyQFrame().FrameStyle();
+			return ((QFrame) interceptor).FrameStyle();
 		}
 		[SmokeMethod("setFrameStyle", "(int)", "$")]
 		public void SetFrameStyle(int arg1) {
-			ProxyQFrame().SetFrameStyle(arg1);
+			((QFrame) interceptor).SetFrameStyle(arg1);
 		}
 		[SmokeMethod("sizeHint", "() const", "")]
 		public override QSize SizeHint() {
-			return ProxyQFrame().SizeHint();
+			return ((QFrame) interceptor).SizeHint();
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent e) {
-			return ProxyQFrame().Event(e);
+			return ((QFrame) interceptor).Event(e);
 		}
 		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
 		protected override void PaintEvent(QPaintEvent arg1) {
-			ProxyQFrame().PaintEvent(arg1);
+			((QFrame) interceptor).PaintEvent(arg1);
 		}
 		[SmokeMethod("changeEvent", "(QEvent*)", "#")]
 		protected override void ChangeEvent(QEvent arg1) {
-			ProxyQFrame().ChangeEvent(arg1);
+			((QFrame) interceptor).ChangeEvent(arg1);
 		}
 		[SmokeMethod("drawFrame", "(QPainter*)", "#")]
 		protected void DrawFrame(QPainter arg1) {
-			ProxyQFrame().DrawFrame(arg1);
+			((QFrame) interceptor).DrawFrame(arg1);
 		}
 		~QFrame() {
 			DisposeQFrame();
@@ -135,13 +129,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QFrame", "()", "")]
 		private void DisposeQFrame() {
-			ProxyQFrame().DisposeQFrame();
+			((QFrame) interceptor).DisposeQFrame();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQFrame().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQFrame().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQFrameSignals Emit {
 			get { return (IQFrameSignals) Q_EMIT; }

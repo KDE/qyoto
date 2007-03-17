@@ -5,15 +5,12 @@ namespace Qyoto {
 
 	[SmokeClass("QByteArrayMatcher")]
 	public class QByteArrayMatcher : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QByteArrayMatcher interceptor = null;
+		private IntPtr smokeObject;
 		protected QByteArrayMatcher(Type dummy) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QByteArrayMatcher), this);
-			_interceptor = (QByteArrayMatcher) realProxy.GetTransparentProxy();
-		}
-		private QByteArrayMatcher ProxyQByteArrayMatcher() {
-			return (QByteArrayMatcher) _interceptor;
+			interceptor = (QByteArrayMatcher) realProxy.GetTransparentProxy();
 		}
 		public QByteArrayMatcher() : this((Type) null) {
 			CreateProxy();
@@ -21,7 +18,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QByteArrayMatcher", "()", "")]
 		private void NewQByteArrayMatcher() {
-			ProxyQByteArrayMatcher().NewQByteArrayMatcher();
+			((QByteArrayMatcher) interceptor).NewQByteArrayMatcher();
 		}
 		public QByteArrayMatcher(QByteArray pattern) : this((Type) null) {
 			CreateProxy();
@@ -29,7 +26,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QByteArrayMatcher", "(const QByteArray&)", "#")]
 		private void NewQByteArrayMatcher(QByteArray pattern) {
-			ProxyQByteArrayMatcher().NewQByteArrayMatcher(pattern);
+			((QByteArrayMatcher) interceptor).NewQByteArrayMatcher(pattern);
 		}
 		public QByteArrayMatcher(QByteArrayMatcher other) : this((Type) null) {
 			CreateProxy();
@@ -37,23 +34,23 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QByteArrayMatcher", "(const QByteArrayMatcher&)", "#")]
 		private void NewQByteArrayMatcher(QByteArrayMatcher other) {
-			ProxyQByteArrayMatcher().NewQByteArrayMatcher(other);
+			((QByteArrayMatcher) interceptor).NewQByteArrayMatcher(other);
 		}
 		[SmokeMethod("setPattern", "(const QByteArray&)", "#")]
 		public void SetPattern(QByteArray pattern) {
-			ProxyQByteArrayMatcher().SetPattern(pattern);
+			((QByteArrayMatcher) interceptor).SetPattern(pattern);
 		}
 		[SmokeMethod("indexIn", "(const QByteArray&, int) const", "#$")]
 		public int IndexIn(QByteArray ba, int from) {
-			return ProxyQByteArrayMatcher().IndexIn(ba,from);
+			return ((QByteArrayMatcher) interceptor).IndexIn(ba,from);
 		}
 		[SmokeMethod("indexIn", "(const QByteArray&) const", "#")]
 		public int IndexIn(QByteArray ba) {
-			return ProxyQByteArrayMatcher().IndexIn(ba);
+			return ((QByteArrayMatcher) interceptor).IndexIn(ba);
 		}
 		[SmokeMethod("pattern", "() const", "")]
 		public QByteArray Pattern() {
-			return ProxyQByteArrayMatcher().Pattern();
+			return ((QByteArrayMatcher) interceptor).Pattern();
 		}
 		~QByteArrayMatcher() {
 			DisposeQByteArrayMatcher();
@@ -63,7 +60,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QByteArrayMatcher", "()", "")]
 		private void DisposeQByteArrayMatcher() {
-			ProxyQByteArrayMatcher().DisposeQByteArrayMatcher();
+			((QByteArrayMatcher) interceptor).DisposeQByteArrayMatcher();
 		}
 	}
 }

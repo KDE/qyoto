@@ -15,18 +15,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAbstractPageSetupDialog), this);
-			_interceptor = (QAbstractPageSetupDialog) realProxy.GetTransparentProxy();
+			interceptor = (QAbstractPageSetupDialog) realProxy.GetTransparentProxy();
 		}
-		private QAbstractPageSetupDialog ProxyQAbstractPageSetupDialog() {
-			return (QAbstractPageSetupDialog) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQAbstractPageSetupDialogProxy staticInterceptor = null;
 		static QAbstractPageSetupDialog() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQAbstractPageSetupDialogProxy), null);
-			_staticInterceptor = (IQAbstractPageSetupDialogProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQAbstractPageSetupDialogProxy StaticQAbstractPageSetupDialog() {
-			return (IQAbstractPageSetupDialogProxy) _staticInterceptor;
+			staticInterceptor = (IQAbstractPageSetupDialogProxy) realProxy.GetTransparentProxy();
 		}
 		public QAbstractPageSetupDialog(QPrinter printer, QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -34,7 +28,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QAbstractPageSetupDialog", "(QPrinter*, QWidget*)", "##")]
 		private void NewQAbstractPageSetupDialog(QPrinter printer, QWidget parent) {
-			ProxyQAbstractPageSetupDialog().NewQAbstractPageSetupDialog(printer,parent);
+			((QAbstractPageSetupDialog) interceptor).NewQAbstractPageSetupDialog(printer,parent);
 		}
 		public QAbstractPageSetupDialog(QPrinter printer) : this((Type) null) {
 			CreateProxy();
@@ -42,19 +36,19 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QAbstractPageSetupDialog", "(QPrinter*)", "#")]
 		private void NewQAbstractPageSetupDialog(QPrinter printer) {
-			ProxyQAbstractPageSetupDialog().NewQAbstractPageSetupDialog(printer);
+			((QAbstractPageSetupDialog) interceptor).NewQAbstractPageSetupDialog(printer);
 		}
 		[SmokeMethod("exec", "()", "")]
 		public abstract int Exec();
 		[SmokeMethod("printer", "()", "")]
 		public QPrinter Printer() {
-			return ProxyQAbstractPageSetupDialog().Printer();
+			return ((QAbstractPageSetupDialog) interceptor).Printer();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQAbstractPageSetupDialog().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQAbstractPageSetupDialog().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQAbstractPageSetupDialogSignals Emit {
 			get { return (IQAbstractPageSetupDialogSignals) Q_EMIT; }

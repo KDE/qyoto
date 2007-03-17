@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QStatusTipEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStatusTipEvent), this);
-			_interceptor = (QStatusTipEvent) realProxy.GetTransparentProxy();
-		}
-		private QStatusTipEvent ProxyQStatusTipEvent() {
-			return (QStatusTipEvent) _interceptor;
+			interceptor = (QStatusTipEvent) realProxy.GetTransparentProxy();
 		}
 		public QStatusTipEvent(string tip) : this((Type) null) {
 			CreateProxy();
@@ -19,11 +16,11 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStatusTipEvent", "(const QString&)", "$")]
 		private void NewQStatusTipEvent(string tip) {
-			ProxyQStatusTipEvent().NewQStatusTipEvent(tip);
+			((QStatusTipEvent) interceptor).NewQStatusTipEvent(tip);
 		}
 		[SmokeMethod("tip", "() const", "")]
 		public string Tip() {
-			return ProxyQStatusTipEvent().Tip();
+			return ((QStatusTipEvent) interceptor).Tip();
 		}
 		~QStatusTipEvent() {
 			DisposeQStatusTipEvent();
@@ -33,7 +30,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QStatusTipEvent", "()", "")]
 		private void DisposeQStatusTipEvent() {
-			ProxyQStatusTipEvent().DisposeQStatusTipEvent();
+			((QStatusTipEvent) interceptor).DisposeQStatusTipEvent();
 		}
 	}
 }

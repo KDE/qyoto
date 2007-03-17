@@ -15,18 +15,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGridLayout), this);
-			_interceptor = (QGridLayout) realProxy.GetTransparentProxy();
+			interceptor = (QGridLayout) realProxy.GetTransparentProxy();
 		}
-		private QGridLayout ProxyQGridLayout() {
-			return (QGridLayout) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQGridLayoutProxy staticInterceptor = null;
 		static QGridLayout() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQGridLayoutProxy), null);
-			_staticInterceptor = (IQGridLayoutProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQGridLayoutProxy StaticQGridLayout() {
-			return (IQGridLayoutProxy) _staticInterceptor;
+			staticInterceptor = (IQGridLayoutProxy) realProxy.GetTransparentProxy();
 		}
 		public QGridLayout(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -34,7 +28,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGridLayout", "(QWidget*)", "#")]
 		private void NewQGridLayout(QWidget parent) {
-			ProxyQGridLayout().NewQGridLayout(parent);
+			((QGridLayout) interceptor).NewQGridLayout(parent);
 		}
 		public QGridLayout() : this((Type) null) {
 			CreateProxy();
@@ -42,171 +36,171 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGridLayout", "()", "")]
 		private void NewQGridLayout() {
-			ProxyQGridLayout().NewQGridLayout();
+			((QGridLayout) interceptor).NewQGridLayout();
 		}
 		[SmokeMethod("sizeHint", "() const", "")]
 		public override QSize SizeHint() {
-			return ProxyQGridLayout().SizeHint();
+			return ((QGridLayout) interceptor).SizeHint();
 		}
 		[SmokeMethod("minimumSize", "() const", "")]
 		public override QSize MinimumSize() {
-			return ProxyQGridLayout().MinimumSize();
+			return ((QGridLayout) interceptor).MinimumSize();
 		}
 		[SmokeMethod("maximumSize", "() const", "")]
 		public override QSize MaximumSize() {
-			return ProxyQGridLayout().MaximumSize();
+			return ((QGridLayout) interceptor).MaximumSize();
 		}
 		[SmokeMethod("setRowStretch", "(int, int)", "$$")]
 		public void SetRowStretch(int row, int stretch) {
-			ProxyQGridLayout().SetRowStretch(row,stretch);
+			((QGridLayout) interceptor).SetRowStretch(row,stretch);
 		}
 		[SmokeMethod("setColumnStretch", "(int, int)", "$$")]
 		public void SetColumnStretch(int column, int stretch) {
-			ProxyQGridLayout().SetColumnStretch(column,stretch);
+			((QGridLayout) interceptor).SetColumnStretch(column,stretch);
 		}
 		[SmokeMethod("rowStretch", "(int) const", "$")]
 		public int RowStretch(int row) {
-			return ProxyQGridLayout().RowStretch(row);
+			return ((QGridLayout) interceptor).RowStretch(row);
 		}
 		[SmokeMethod("columnStretch", "(int) const", "$")]
 		public int ColumnStretch(int column) {
-			return ProxyQGridLayout().ColumnStretch(column);
+			return ((QGridLayout) interceptor).ColumnStretch(column);
 		}
 		[SmokeMethod("setRowMinimumHeight", "(int, int)", "$$")]
 		public void SetRowMinimumHeight(int row, int minSize) {
-			ProxyQGridLayout().SetRowMinimumHeight(row,minSize);
+			((QGridLayout) interceptor).SetRowMinimumHeight(row,minSize);
 		}
 		[SmokeMethod("setColumnMinimumWidth", "(int, int)", "$$")]
 		public void SetColumnMinimumWidth(int column, int minSize) {
-			ProxyQGridLayout().SetColumnMinimumWidth(column,minSize);
+			((QGridLayout) interceptor).SetColumnMinimumWidth(column,minSize);
 		}
 		[SmokeMethod("rowMinimumHeight", "(int) const", "$")]
 		public int RowMinimumHeight(int row) {
-			return ProxyQGridLayout().RowMinimumHeight(row);
+			return ((QGridLayout) interceptor).RowMinimumHeight(row);
 		}
 		[SmokeMethod("columnMinimumWidth", "(int) const", "$")]
 		public int ColumnMinimumWidth(int column) {
-			return ProxyQGridLayout().ColumnMinimumWidth(column);
+			return ((QGridLayout) interceptor).ColumnMinimumWidth(column);
 		}
 		[SmokeMethod("columnCount", "() const", "")]
 		public int ColumnCount() {
-			return ProxyQGridLayout().ColumnCount();
+			return ((QGridLayout) interceptor).ColumnCount();
 		}
 		[SmokeMethod("rowCount", "() const", "")]
 		public int RowCount() {
-			return ProxyQGridLayout().RowCount();
+			return ((QGridLayout) interceptor).RowCount();
 		}
 		[SmokeMethod("cellRect", "(int, int) const", "$$")]
 		public QRect CellRect(int row, int column) {
-			return ProxyQGridLayout().CellRect(row,column);
+			return ((QGridLayout) interceptor).CellRect(row,column);
 		}
 		[SmokeMethod("hasHeightForWidth", "() const", "")]
 		public override bool HasHeightForWidth() {
-			return ProxyQGridLayout().HasHeightForWidth();
+			return ((QGridLayout) interceptor).HasHeightForWidth();
 		}
 		[SmokeMethod("heightForWidth", "(int) const", "$")]
 		public override int HeightForWidth(int arg1) {
-			return ProxyQGridLayout().HeightForWidth(arg1);
+			return ((QGridLayout) interceptor).HeightForWidth(arg1);
 		}
 		[SmokeMethod("minimumHeightForWidth", "(int) const", "$")]
 		public override int MinimumHeightForWidth(int arg1) {
-			return ProxyQGridLayout().MinimumHeightForWidth(arg1);
+			return ((QGridLayout) interceptor).MinimumHeightForWidth(arg1);
 		}
 		[SmokeMethod("expandingDirections", "() const", "")]
 		public override int ExpandingDirections() {
-			return ProxyQGridLayout().ExpandingDirections();
+			return ((QGridLayout) interceptor).ExpandingDirections();
 		}
 		[SmokeMethod("invalidate", "()", "")]
 		public override void Invalidate() {
-			ProxyQGridLayout().Invalidate();
+			((QGridLayout) interceptor).Invalidate();
 		}
 		[SmokeMethod("addWidget", "(QWidget*)", "#")]
 		public void AddWidget(QWidget w) {
-			ProxyQGridLayout().AddWidget(w);
+			((QGridLayout) interceptor).AddWidget(w);
 		}
 		[SmokeMethod("addWidget", "(QWidget*, int, int, Qt::Alignment)", "#$$$")]
 		public void AddWidget(QWidget arg1, int row, int column, int arg4) {
-			ProxyQGridLayout().AddWidget(arg1,row,column,arg4);
+			((QGridLayout) interceptor).AddWidget(arg1,row,column,arg4);
 		}
 		[SmokeMethod("addWidget", "(QWidget*, int, int)", "#$$")]
 		public void AddWidget(QWidget arg1, int row, int column) {
-			ProxyQGridLayout().AddWidget(arg1,row,column);
+			((QGridLayout) interceptor).AddWidget(arg1,row,column);
 		}
 		[SmokeMethod("addWidget", "(QWidget*, int, int, int, int, Qt::Alignment)", "#$$$$$")]
 		public void AddWidget(QWidget arg1, int row, int column, int rowSpan, int columnSpan, int arg6) {
-			ProxyQGridLayout().AddWidget(arg1,row,column,rowSpan,columnSpan,arg6);
+			((QGridLayout) interceptor).AddWidget(arg1,row,column,rowSpan,columnSpan,arg6);
 		}
 		[SmokeMethod("addWidget", "(QWidget*, int, int, int, int)", "#$$$$")]
 		public void AddWidget(QWidget arg1, int row, int column, int rowSpan, int columnSpan) {
-			ProxyQGridLayout().AddWidget(arg1,row,column,rowSpan,columnSpan);
+			((QGridLayout) interceptor).AddWidget(arg1,row,column,rowSpan,columnSpan);
 		}
 		[SmokeMethod("addLayout", "(QLayout*, int, int, Qt::Alignment)", "#$$$")]
 		public void AddLayout(QLayout arg1, int row, int column, int arg4) {
-			ProxyQGridLayout().AddLayout(arg1,row,column,arg4);
+			((QGridLayout) interceptor).AddLayout(arg1,row,column,arg4);
 		}
 		[SmokeMethod("addLayout", "(QLayout*, int, int)", "#$$")]
 		public void AddLayout(QLayout arg1, int row, int column) {
-			ProxyQGridLayout().AddLayout(arg1,row,column);
+			((QGridLayout) interceptor).AddLayout(arg1,row,column);
 		}
 		[SmokeMethod("addLayout", "(QLayout*, int, int, int, int, Qt::Alignment)", "#$$$$$")]
 		public void AddLayout(QLayout arg1, int row, int column, int rowSpan, int columnSpan, int arg6) {
-			ProxyQGridLayout().AddLayout(arg1,row,column,rowSpan,columnSpan,arg6);
+			((QGridLayout) interceptor).AddLayout(arg1,row,column,rowSpan,columnSpan,arg6);
 		}
 		[SmokeMethod("addLayout", "(QLayout*, int, int, int, int)", "#$$$$")]
 		public void AddLayout(QLayout arg1, int row, int column, int rowSpan, int columnSpan) {
-			ProxyQGridLayout().AddLayout(arg1,row,column,rowSpan,columnSpan);
+			((QGridLayout) interceptor).AddLayout(arg1,row,column,rowSpan,columnSpan);
 		}
 		[SmokeMethod("setOriginCorner", "(Qt::Corner)", "$")]
 		public void SetOriginCorner(Qt.Corner arg1) {
-			ProxyQGridLayout().SetOriginCorner(arg1);
+			((QGridLayout) interceptor).SetOriginCorner(arg1);
 		}
 		[SmokeMethod("originCorner", "() const", "")]
 		public Qt.Corner OriginCorner() {
-			return ProxyQGridLayout().OriginCorner();
+			return ((QGridLayout) interceptor).OriginCorner();
 		}
 		[SmokeMethod("itemAt", "(int) const", "$")]
 		public override IQLayoutItem ItemAt(int arg1) {
-			return ProxyQGridLayout().ItemAt(arg1);
+			return ((QGridLayout) interceptor).ItemAt(arg1);
 		}
 		[SmokeMethod("takeAt", "(int)", "$")]
 		public override IQLayoutItem TakeAt(int arg1) {
-			return ProxyQGridLayout().TakeAt(arg1);
+			return ((QGridLayout) interceptor).TakeAt(arg1);
 		}
 		[SmokeMethod("count", "() const", "")]
 		public override int Count() {
-			return ProxyQGridLayout().Count();
+			return ((QGridLayout) interceptor).Count();
 		}
 		[SmokeMethod("setGeometry", "(const QRect&)", "#")]
 		public override void SetGeometry(QRect arg1) {
-			ProxyQGridLayout().SetGeometry(arg1);
+			((QGridLayout) interceptor).SetGeometry(arg1);
 		}
 		[SmokeMethod("addItem", "(QLayoutItem*, int, int, int, int, Qt::Alignment)", "#$$$$$")]
 		public void AddItem(IQLayoutItem item, int row, int column, int rowSpan, int columnSpan, int arg6) {
-			ProxyQGridLayout().AddItem(item,row,column,rowSpan,columnSpan,arg6);
+			((QGridLayout) interceptor).AddItem(item,row,column,rowSpan,columnSpan,arg6);
 		}
 		[SmokeMethod("addItem", "(QLayoutItem*, int, int, int, int)", "#$$$$")]
 		public void AddItem(IQLayoutItem item, int row, int column, int rowSpan, int columnSpan) {
-			ProxyQGridLayout().AddItem(item,row,column,rowSpan,columnSpan);
+			((QGridLayout) interceptor).AddItem(item,row,column,rowSpan,columnSpan);
 		}
 		[SmokeMethod("addItem", "(QLayoutItem*, int, int, int)", "#$$$")]
 		public void AddItem(IQLayoutItem item, int row, int column, int rowSpan) {
-			ProxyQGridLayout().AddItem(item,row,column,rowSpan);
+			((QGridLayout) interceptor).AddItem(item,row,column,rowSpan);
 		}
 		[SmokeMethod("addItem", "(QLayoutItem*, int, int)", "#$$")]
 		public void AddItem(IQLayoutItem item, int row, int column) {
-			ProxyQGridLayout().AddItem(item,row,column);
+			((QGridLayout) interceptor).AddItem(item,row,column);
 		}
 		[SmokeMethod("setDefaultPositioning", "(int, Qt::Orientation)", "$$")]
 		public void SetDefaultPositioning(int n, Qt.Orientation orient) {
-			ProxyQGridLayout().SetDefaultPositioning(n,orient);
+			((QGridLayout) interceptor).SetDefaultPositioning(n,orient);
 		}
 		[SmokeMethod("getItemPosition", "(int, int*, int*, int*, int*)", "$$$$$")]
 		public void GetItemPosition(int idx, out int row, out int column, out int rowSpan, out int columnSpan) {
-			ProxyQGridLayout().GetItemPosition(idx,out row,out column,out rowSpan,out columnSpan);
+			((QGridLayout) interceptor).GetItemPosition(idx,out row,out column,out rowSpan,out columnSpan);
 		}
 		[SmokeMethod("addItem", "(QLayoutItem*)", "#")]
 		public override void AddItem(IQLayoutItem arg1) {
-			ProxyQGridLayout().AddItem(arg1);
+			((QGridLayout) interceptor).AddItem(arg1);
 		}
 		~QGridLayout() {
 			DisposeQGridLayout();
@@ -216,13 +210,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QGridLayout", "()", "")]
 		private void DisposeQGridLayout() {
-			ProxyQGridLayout().DisposeQGridLayout();
+			((QGridLayout) interceptor).DisposeQGridLayout();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQGridLayout().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQGridLayout().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQGridLayoutSignals Emit {
 			get { return (IQGridLayoutSignals) Q_EMIT; }

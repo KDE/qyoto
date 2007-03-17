@@ -6,15 +6,12 @@ namespace Qyoto {
 
 	[SmokeClass("QMetaMethod")]
 	public class QMetaMethod : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QMetaMethod interceptor = null;
+		private IntPtr smokeObject;
 		protected QMetaMethod(Type dummy) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMetaMethod), this);
-			_interceptor = (QMetaMethod) realProxy.GetTransparentProxy();
-		}
-		private QMetaMethod ProxyQMetaMethod() {
-			return (QMetaMethod) _interceptor;
+			interceptor = (QMetaMethod) realProxy.GetTransparentProxy();
 		}
 		public enum Access {
 			Private = 0,
@@ -37,39 +34,39 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QMetaMethod", "()", "")]
 		private void NewQMetaMethod() {
-			ProxyQMetaMethod().NewQMetaMethod();
+			((QMetaMethod) interceptor).NewQMetaMethod();
 		}
 		[SmokeMethod("signature", "() const", "")]
 		public string Signature() {
-			return ProxyQMetaMethod().Signature();
+			return ((QMetaMethod) interceptor).Signature();
 		}
 		[SmokeMethod("typeName", "() const", "")]
 		public string TypeName() {
-			return ProxyQMetaMethod().TypeName();
+			return ((QMetaMethod) interceptor).TypeName();
 		}
 		[SmokeMethod("parameterTypes", "() const", "")]
 		public List<QByteArray> ParameterTypes() {
-			return ProxyQMetaMethod().ParameterTypes();
+			return ((QMetaMethod) interceptor).ParameterTypes();
 		}
 		[SmokeMethod("parameterNames", "() const", "")]
 		public List<QByteArray> ParameterNames() {
-			return ProxyQMetaMethod().ParameterNames();
+			return ((QMetaMethod) interceptor).ParameterNames();
 		}
 		[SmokeMethod("tag", "() const", "")]
 		public string Tag() {
-			return ProxyQMetaMethod().Tag();
+			return ((QMetaMethod) interceptor).Tag();
 		}
 		[SmokeMethod("access", "() const", "")]
 		public QMetaMethod.Access access() {
-			return ProxyQMetaMethod().access();
+			return ((QMetaMethod) interceptor).access();
 		}
 		[SmokeMethod("methodType", "() const", "")]
 		public QMetaMethod.MethodType methodType() {
-			return ProxyQMetaMethod().methodType();
+			return ((QMetaMethod) interceptor).methodType();
 		}
 		[SmokeMethod("attributes", "() const", "")]
 		public int attributes() {
-			return ProxyQMetaMethod().attributes();
+			return ((QMetaMethod) interceptor).attributes();
 		}
 		~QMetaMethod() {
 			DisposeQMetaMethod();
@@ -79,7 +76,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QMetaMethod", "()", "")]
 		private void DisposeQMetaMethod() {
-			ProxyQMetaMethod().DisposeQMetaMethod();
+			((QMetaMethod) interceptor).DisposeQMetaMethod();
 		}
 	}
 }

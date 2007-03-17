@@ -16,18 +16,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTableView), this);
-			_interceptor = (QTableView) realProxy.GetTransparentProxy();
+			interceptor = (QTableView) realProxy.GetTransparentProxy();
 		}
-		private QTableView ProxyQTableView() {
-			return (QTableView) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQTableViewProxy staticInterceptor = null;
 		static QTableView() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTableViewProxy), null);
-			_staticInterceptor = (IQTableViewProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQTableViewProxy StaticQTableView() {
-			return (IQTableViewProxy) _staticInterceptor;
+			staticInterceptor = (IQTableViewProxy) realProxy.GetTransparentProxy();
 		}
 		[Q_PROPERTY("bool", "showGrid")]
 		public bool ShowGrid {
@@ -50,7 +44,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTableView", "(QWidget*)", "#")]
 		private void NewQTableView(QWidget parent) {
-			ProxyQTableView().NewQTableView(parent);
+			((QTableView) interceptor).NewQTableView(parent);
 		}
 		public QTableView() : this((Type) null) {
 			CreateProxy();
@@ -58,268 +52,268 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTableView", "()", "")]
 		private void NewQTableView() {
-			ProxyQTableView().NewQTableView();
+			((QTableView) interceptor).NewQTableView();
 		}
 		[SmokeMethod("setModel", "(QAbstractItemModel*)", "#")]
 		public override void SetModel(QAbstractItemModel model) {
-			ProxyQTableView().SetModel(model);
+			((QTableView) interceptor).SetModel(model);
 		}
 		[SmokeMethod("setRootIndex", "(const QModelIndex&)", "#")]
 		public override void SetRootIndex(QModelIndex index) {
-			ProxyQTableView().SetRootIndex(index);
+			((QTableView) interceptor).SetRootIndex(index);
 		}
 		[SmokeMethod("setSelectionModel", "(QItemSelectionModel*)", "#")]
 		public override void SetSelectionModel(QItemSelectionModel selectionModel) {
-			ProxyQTableView().SetSelectionModel(selectionModel);
+			((QTableView) interceptor).SetSelectionModel(selectionModel);
 		}
 		[SmokeMethod("horizontalHeader", "() const", "")]
 		public QHeaderView HorizontalHeader() {
-			return ProxyQTableView().HorizontalHeader();
+			return ((QTableView) interceptor).HorizontalHeader();
 		}
 		[SmokeMethod("verticalHeader", "() const", "")]
 		public QHeaderView VerticalHeader() {
-			return ProxyQTableView().VerticalHeader();
+			return ((QTableView) interceptor).VerticalHeader();
 		}
 		[SmokeMethod("setHorizontalHeader", "(QHeaderView*)", "#")]
 		public void SetHorizontalHeader(QHeaderView header) {
-			ProxyQTableView().SetHorizontalHeader(header);
+			((QTableView) interceptor).SetHorizontalHeader(header);
 		}
 		[SmokeMethod("setVerticalHeader", "(QHeaderView*)", "#")]
 		public void SetVerticalHeader(QHeaderView header) {
-			ProxyQTableView().SetVerticalHeader(header);
+			((QTableView) interceptor).SetVerticalHeader(header);
 		}
 		[SmokeMethod("rowViewportPosition", "(int) const", "$")]
 		public int RowViewportPosition(int row) {
-			return ProxyQTableView().RowViewportPosition(row);
+			return ((QTableView) interceptor).RowViewportPosition(row);
 		}
 		[SmokeMethod("rowAt", "(int) const", "$")]
 		public int RowAt(int y) {
-			return ProxyQTableView().RowAt(y);
+			return ((QTableView) interceptor).RowAt(y);
 		}
 		[SmokeMethod("setRowHeight", "(int, int)", "$$")]
 		public void SetRowHeight(int row, int height) {
-			ProxyQTableView().SetRowHeight(row,height);
+			((QTableView) interceptor).SetRowHeight(row,height);
 		}
 		[SmokeMethod("rowHeight", "(int) const", "$")]
 		public int RowHeight(int row) {
-			return ProxyQTableView().RowHeight(row);
+			return ((QTableView) interceptor).RowHeight(row);
 		}
 		[SmokeMethod("columnViewportPosition", "(int) const", "$")]
 		public int ColumnViewportPosition(int column) {
-			return ProxyQTableView().ColumnViewportPosition(column);
+			return ((QTableView) interceptor).ColumnViewportPosition(column);
 		}
 		[SmokeMethod("columnAt", "(int) const", "$")]
 		public int ColumnAt(int x) {
-			return ProxyQTableView().ColumnAt(x);
+			return ((QTableView) interceptor).ColumnAt(x);
 		}
 		[SmokeMethod("setColumnWidth", "(int, int)", "$$")]
 		public void SetColumnWidth(int column, int width) {
-			ProxyQTableView().SetColumnWidth(column,width);
+			((QTableView) interceptor).SetColumnWidth(column,width);
 		}
 		[SmokeMethod("columnWidth", "(int) const", "$")]
 		public int ColumnWidth(int column) {
-			return ProxyQTableView().ColumnWidth(column);
+			return ((QTableView) interceptor).ColumnWidth(column);
 		}
 		[SmokeMethod("isRowHidden", "(int) const", "$")]
 		public bool IsRowHidden(int row) {
-			return ProxyQTableView().IsRowHidden(row);
+			return ((QTableView) interceptor).IsRowHidden(row);
 		}
 		[SmokeMethod("setRowHidden", "(int, bool)", "$$")]
 		public void SetRowHidden(int row, bool hide) {
-			ProxyQTableView().SetRowHidden(row,hide);
+			((QTableView) interceptor).SetRowHidden(row,hide);
 		}
 		[SmokeMethod("isColumnHidden", "(int) const", "$")]
 		public bool IsColumnHidden(int column) {
-			return ProxyQTableView().IsColumnHidden(column);
+			return ((QTableView) interceptor).IsColumnHidden(column);
 		}
 		[SmokeMethod("setColumnHidden", "(int, bool)", "$$")]
 		public void SetColumnHidden(int column, bool hide) {
-			ProxyQTableView().SetColumnHidden(column,hide);
+			((QTableView) interceptor).SetColumnHidden(column,hide);
 		}
 		[SmokeMethod("isSortingEnabled", "() const", "")]
 		public bool IsSortingEnabled() {
-			return ProxyQTableView().IsSortingEnabled();
+			return ((QTableView) interceptor).IsSortingEnabled();
 		}
 		[SmokeMethod("visualRect", "(const QModelIndex&) const", "#")]
 		public override QRect VisualRect(QModelIndex index) {
-			return ProxyQTableView().VisualRect(index);
+			return ((QTableView) interceptor).VisualRect(index);
 		}
 		[SmokeMethod("scrollTo", "(const QModelIndex&, QAbstractItemView::ScrollHint)", "#$")]
 		public override void ScrollTo(QModelIndex index, QAbstractItemView.ScrollHint hint) {
-			ProxyQTableView().ScrollTo(index,hint);
+			((QTableView) interceptor).ScrollTo(index,hint);
 		}
 		[SmokeMethod("scrollTo", "(const QModelIndex&)", "#")]
 		public virtual void ScrollTo(QModelIndex index) {
-			ProxyQTableView().ScrollTo(index);
+			((QTableView) interceptor).ScrollTo(index);
 		}
 		[SmokeMethod("indexAt", "(const QPoint&) const", "#")]
 		public override QModelIndex IndexAt(QPoint p) {
-			return ProxyQTableView().IndexAt(p);
+			return ((QTableView) interceptor).IndexAt(p);
 		}
 		[SmokeMethod("setSpan", "(int, int, int, int)", "$$$$")]
 		public void SetSpan(int row, int column, int rowSpan, int columnSpan) {
-			ProxyQTableView().SetSpan(row,column,rowSpan,columnSpan);
+			((QTableView) interceptor).SetSpan(row,column,rowSpan,columnSpan);
 		}
 		[SmokeMethod("rowSpan", "(int, int) const", "$$")]
 		public int RowSpan(int row, int column) {
-			return ProxyQTableView().RowSpan(row,column);
+			return ((QTableView) interceptor).RowSpan(row,column);
 		}
 		[SmokeMethod("columnSpan", "(int, int) const", "$$")]
 		public int ColumnSpan(int row, int column) {
-			return ProxyQTableView().ColumnSpan(row,column);
+			return ((QTableView) interceptor).ColumnSpan(row,column);
 		}
 		[SmokeMethod("sortByColumn", "(int, Qt::SortOrder)", "$$")]
 		public void SortByColumn(int column, Qt.SortOrder order) {
-			ProxyQTableView().SortByColumn(column,order);
+			((QTableView) interceptor).SortByColumn(column,order);
 		}
 		[Q_SLOT("void selectRow(int)")]
 		[SmokeMethod("selectRow", "(int)", "$")]
 		public void SelectRow(int row) {
-			ProxyQTableView().SelectRow(row);
+			((QTableView) interceptor).SelectRow(row);
 		}
 		[Q_SLOT("void selectColumn(int)")]
 		[SmokeMethod("selectColumn", "(int)", "$")]
 		public void SelectColumn(int column) {
-			ProxyQTableView().SelectColumn(column);
+			((QTableView) interceptor).SelectColumn(column);
 		}
 		[Q_SLOT("void hideRow(int)")]
 		[SmokeMethod("hideRow", "(int)", "$")]
 		public void HideRow(int row) {
-			ProxyQTableView().HideRow(row);
+			((QTableView) interceptor).HideRow(row);
 		}
 		[Q_SLOT("void hideColumn(int)")]
 		[SmokeMethod("hideColumn", "(int)", "$")]
 		public void HideColumn(int column) {
-			ProxyQTableView().HideColumn(column);
+			((QTableView) interceptor).HideColumn(column);
 		}
 		[Q_SLOT("void showRow(int)")]
 		[SmokeMethod("showRow", "(int)", "$")]
 		public void ShowRow(int row) {
-			ProxyQTableView().ShowRow(row);
+			((QTableView) interceptor).ShowRow(row);
 		}
 		[Q_SLOT("void showColumn(int)")]
 		[SmokeMethod("showColumn", "(int)", "$")]
 		public void ShowColumn(int column) {
-			ProxyQTableView().ShowColumn(column);
+			((QTableView) interceptor).ShowColumn(column);
 		}
 		[Q_SLOT("void resizeRowToContents(int)")]
 		[SmokeMethod("resizeRowToContents", "(int)", "$")]
 		public void ResizeRowToContents(int row) {
-			ProxyQTableView().ResizeRowToContents(row);
+			((QTableView) interceptor).ResizeRowToContents(row);
 		}
 		[Q_SLOT("void resizeRowsToContents()")]
 		[SmokeMethod("resizeRowsToContents", "()", "")]
 		public void ResizeRowsToContents() {
-			ProxyQTableView().ResizeRowsToContents();
+			((QTableView) interceptor).ResizeRowsToContents();
 		}
 		[Q_SLOT("void resizeColumnToContents(int)")]
 		[SmokeMethod("resizeColumnToContents", "(int)", "$")]
 		public void ResizeColumnToContents(int column) {
-			ProxyQTableView().ResizeColumnToContents(column);
+			((QTableView) interceptor).ResizeColumnToContents(column);
 		}
 		[Q_SLOT("void resizeColumnsToContents()")]
 		[SmokeMethod("resizeColumnsToContents", "()", "")]
 		public void ResizeColumnsToContents() {
-			ProxyQTableView().ResizeColumnsToContents();
+			((QTableView) interceptor).ResizeColumnsToContents();
 		}
 		[Q_SLOT("void sortByColumn(int)")]
 		[SmokeMethod("sortByColumn", "(int)", "$")]
 		public void SortByColumn(int column) {
-			ProxyQTableView().SortByColumn(column);
+			((QTableView) interceptor).SortByColumn(column);
 		}
 		[SmokeMethod("scrollContentsBy", "(int, int)", "$$")]
 		protected override void ScrollContentsBy(int dx, int dy) {
-			ProxyQTableView().ScrollContentsBy(dx,dy);
+			((QTableView) interceptor).ScrollContentsBy(dx,dy);
 		}
 		[SmokeMethod("viewOptions", "() const", "")]
 		protected override QStyleOptionViewItem ViewOptions() {
-			return ProxyQTableView().ViewOptions();
+			return ((QTableView) interceptor).ViewOptions();
 		}
 		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
 		protected override void PaintEvent(QPaintEvent e) {
-			ProxyQTableView().PaintEvent(e);
+			((QTableView) interceptor).PaintEvent(e);
 		}
 		[SmokeMethod("timerEvent", "(QTimerEvent*)", "#")]
 		protected override void TimerEvent(QTimerEvent arg1) {
-			ProxyQTableView().TimerEvent(arg1);
+			((QTableView) interceptor).TimerEvent(arg1);
 		}
 		[SmokeMethod("horizontalOffset", "() const", "")]
 		protected override int HorizontalOffset() {
-			return ProxyQTableView().HorizontalOffset();
+			return ((QTableView) interceptor).HorizontalOffset();
 		}
 		[SmokeMethod("verticalOffset", "() const", "")]
 		protected override int VerticalOffset() {
-			return ProxyQTableView().VerticalOffset();
+			return ((QTableView) interceptor).VerticalOffset();
 		}
 		[SmokeMethod("moveCursor", "(QAbstractItemView::CursorAction, Qt::KeyboardModifiers)", "$$")]
 		protected override QModelIndex MoveCursor(QAbstractItemView.CursorAction cursorAction, int modifiers) {
-			return ProxyQTableView().MoveCursor(cursorAction,modifiers);
+			return ((QTableView) interceptor).MoveCursor(cursorAction,modifiers);
 		}
 		[SmokeMethod("setSelection", "(const QRect&, QItemSelectionModel::SelectionFlags)", "#$")]
 		protected override void SetSelection(QRect rect, int command) {
-			ProxyQTableView().SetSelection(rect,command);
+			((QTableView) interceptor).SetSelection(rect,command);
 		}
 		[SmokeMethod("visualRegionForSelection", "(const QItemSelection&) const", "#")]
 		protected override QRegion VisualRegionForSelection(QItemSelection selection) {
-			return ProxyQTableView().VisualRegionForSelection(selection);
+			return ((QTableView) interceptor).VisualRegionForSelection(selection);
 		}
 		[SmokeMethod("selectedIndexes", "() const", "")]
 		protected override List<QModelIndex> SelectedIndexes() {
-			return ProxyQTableView().SelectedIndexes();
+			return ((QTableView) interceptor).SelectedIndexes();
 		}
 		[SmokeMethod("updateGeometries", "()", "")]
 		protected override void UpdateGeometries() {
-			ProxyQTableView().UpdateGeometries();
+			((QTableView) interceptor).UpdateGeometries();
 		}
 		[SmokeMethod("sizeHintForRow", "(int) const", "$")]
 		protected new virtual int SizeHintForRow(int row) {
-			return ProxyQTableView().SizeHintForRow(row);
+			return ((QTableView) interceptor).SizeHintForRow(row);
 		}
 		[SmokeMethod("sizeHintForColumn", "(int) const", "$")]
 		protected new virtual int SizeHintForColumn(int column) {
-			return ProxyQTableView().SizeHintForColumn(column);
+			return ((QTableView) interceptor).SizeHintForColumn(column);
 		}
 		[SmokeMethod("verticalScrollbarAction", "(int)", "$")]
 		protected override void VerticalScrollbarAction(int action) {
-			ProxyQTableView().VerticalScrollbarAction(action);
+			((QTableView) interceptor).VerticalScrollbarAction(action);
 		}
 		[SmokeMethod("horizontalScrollbarAction", "(int)", "$")]
 		protected override void HorizontalScrollbarAction(int action) {
-			ProxyQTableView().HorizontalScrollbarAction(action);
+			((QTableView) interceptor).HorizontalScrollbarAction(action);
 		}
 		[SmokeMethod("isIndexHidden", "(const QModelIndex&) const", "#")]
 		protected override bool IsIndexHidden(QModelIndex index) {
-			return ProxyQTableView().IsIndexHidden(index);
+			return ((QTableView) interceptor).IsIndexHidden(index);
 		}
 		[Q_SLOT("void rowMoved(int, int, int)")]
 		[SmokeMethod("rowMoved", "(int, int, int)", "$$$")]
 		protected void RowMoved(int row, int oldIndex, int newIndex) {
-			ProxyQTableView().RowMoved(row,oldIndex,newIndex);
+			((QTableView) interceptor).RowMoved(row,oldIndex,newIndex);
 		}
 		[Q_SLOT("void columnMoved(int, int, int)")]
 		[SmokeMethod("columnMoved", "(int, int, int)", "$$$")]
 		protected void ColumnMoved(int column, int oldIndex, int newIndex) {
-			ProxyQTableView().ColumnMoved(column,oldIndex,newIndex);
+			((QTableView) interceptor).ColumnMoved(column,oldIndex,newIndex);
 		}
 		[Q_SLOT("void rowResized(int, int, int)")]
 		[SmokeMethod("rowResized", "(int, int, int)", "$$$")]
 		protected void RowResized(int row, int oldHeight, int newHeight) {
-			ProxyQTableView().RowResized(row,oldHeight,newHeight);
+			((QTableView) interceptor).RowResized(row,oldHeight,newHeight);
 		}
 		[Q_SLOT("void columnResized(int, int, int)")]
 		[SmokeMethod("columnResized", "(int, int, int)", "$$$")]
 		protected void ColumnResized(int column, int oldWidth, int newWidth) {
-			ProxyQTableView().ColumnResized(column,oldWidth,newWidth);
+			((QTableView) interceptor).ColumnResized(column,oldWidth,newWidth);
 		}
 		[Q_SLOT("void rowCountChanged(int, int)")]
 		[SmokeMethod("rowCountChanged", "(int, int)", "$$")]
 		protected void RowCountChanged(int oldCount, int newCount) {
-			ProxyQTableView().RowCountChanged(oldCount,newCount);
+			((QTableView) interceptor).RowCountChanged(oldCount,newCount);
 		}
 		[Q_SLOT("void columnCountChanged(int, int)")]
 		[SmokeMethod("columnCountChanged", "(int, int)", "$$")]
 		protected void ColumnCountChanged(int oldCount, int newCount) {
-			ProxyQTableView().ColumnCountChanged(oldCount,newCount);
+			((QTableView) interceptor).ColumnCountChanged(oldCount,newCount);
 		}
 		~QTableView() {
 			DisposeQTableView();
@@ -329,13 +323,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QTableView", "()", "")]
 		private void DisposeQTableView() {
-			ProxyQTableView().DisposeQTableView();
+			((QTableView) interceptor).DisposeQTableView();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQTableView().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQTableView().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQTableViewSignals Emit {
 			get { return (IQTableViewSignals) Q_EMIT; }

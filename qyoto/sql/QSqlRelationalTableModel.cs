@@ -15,18 +15,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSqlRelationalTableModel), this);
-			_interceptor = (QSqlRelationalTableModel) realProxy.GetTransparentProxy();
+			interceptor = (QSqlRelationalTableModel) realProxy.GetTransparentProxy();
 		}
-		private QSqlRelationalTableModel ProxyQSqlRelationalTableModel() {
-			return (QSqlRelationalTableModel) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQSqlRelationalTableModelProxy staticInterceptor = null;
 		static QSqlRelationalTableModel() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQSqlRelationalTableModelProxy), null);
-			_staticInterceptor = (IQSqlRelationalTableModelProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQSqlRelationalTableModelProxy StaticQSqlRelationalTableModel() {
-			return (IQSqlRelationalTableModelProxy) _staticInterceptor;
+			staticInterceptor = (IQSqlRelationalTableModelProxy) realProxy.GetTransparentProxy();
 		}
 		public QSqlRelationalTableModel(QObject parent, QSqlDatabase db) : this((Type) null) {
 			CreateProxy();
@@ -34,7 +28,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSqlRelationalTableModel", "(QObject*, QSqlDatabase)", "##")]
 		private void NewQSqlRelationalTableModel(QObject parent, QSqlDatabase db) {
-			ProxyQSqlRelationalTableModel().NewQSqlRelationalTableModel(parent,db);
+			((QSqlRelationalTableModel) interceptor).NewQSqlRelationalTableModel(parent,db);
 		}
 		public QSqlRelationalTableModel(QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -42,7 +36,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSqlRelationalTableModel", "(QObject*)", "#")]
 		private void NewQSqlRelationalTableModel(QObject parent) {
-			ProxyQSqlRelationalTableModel().NewQSqlRelationalTableModel(parent);
+			((QSqlRelationalTableModel) interceptor).NewQSqlRelationalTableModel(parent);
 		}
 		public QSqlRelationalTableModel() : this((Type) null) {
 			CreateProxy();
@@ -50,76 +44,76 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSqlRelationalTableModel", "()", "")]
 		private void NewQSqlRelationalTableModel() {
-			ProxyQSqlRelationalTableModel().NewQSqlRelationalTableModel();
+			((QSqlRelationalTableModel) interceptor).NewQSqlRelationalTableModel();
 		}
 		[SmokeMethod("data", "(const QModelIndex&, int) const", "#$")]
 		public override QVariant Data(QModelIndex item, int role) {
-			return ProxyQSqlRelationalTableModel().Data(item,role);
+			return ((QSqlRelationalTableModel) interceptor).Data(item,role);
 		}
 		[SmokeMethod("data", "(const QModelIndex&) const", "#")]
 		public override QVariant Data(QModelIndex item) {
-			return ProxyQSqlRelationalTableModel().Data(item);
+			return ((QSqlRelationalTableModel) interceptor).Data(item);
 		}
 		[SmokeMethod("setData", "(const QModelIndex&, const QVariant&, int)", "##$")]
 		public override bool SetData(QModelIndex item, QVariant value, int role) {
-			return ProxyQSqlRelationalTableModel().SetData(item,value,role);
+			return ((QSqlRelationalTableModel) interceptor).SetData(item,value,role);
 		}
 		[SmokeMethod("setData", "(const QModelIndex&, const QVariant&)", "##")]
 		public override bool SetData(QModelIndex item, QVariant value) {
-			return ProxyQSqlRelationalTableModel().SetData(item,value);
+			return ((QSqlRelationalTableModel) interceptor).SetData(item,value);
 		}
 		[SmokeMethod("removeColumns", "(int, int, const QModelIndex&)", "$$#")]
 		public override bool RemoveColumns(int column, int count, QModelIndex parent) {
-			return ProxyQSqlRelationalTableModel().RemoveColumns(column,count,parent);
+			return ((QSqlRelationalTableModel) interceptor).RemoveColumns(column,count,parent);
 		}
 		[SmokeMethod("removeColumns", "(int, int)", "$$")]
 		public override bool RemoveColumns(int column, int count) {
-			return ProxyQSqlRelationalTableModel().RemoveColumns(column,count);
+			return ((QSqlRelationalTableModel) interceptor).RemoveColumns(column,count);
 		}
 		[SmokeMethod("clear", "()", "")]
 		public override void Clear() {
-			ProxyQSqlRelationalTableModel().Clear();
+			((QSqlRelationalTableModel) interceptor).Clear();
 		}
 		[SmokeMethod("select", "()", "")]
 		public override bool Select() {
-			return ProxyQSqlRelationalTableModel().Select();
+			return ((QSqlRelationalTableModel) interceptor).Select();
 		}
 		[SmokeMethod("setTable", "(const QString&)", "$")]
 		public override void SetTable(string tableName) {
-			ProxyQSqlRelationalTableModel().SetTable(tableName);
+			((QSqlRelationalTableModel) interceptor).SetTable(tableName);
 		}
 		[SmokeMethod("setRelation", "(int, const QSqlRelation&)", "$#")]
 		public virtual void SetRelation(int column, QSqlRelation relation) {
-			ProxyQSqlRelationalTableModel().SetRelation(column,relation);
+			((QSqlRelationalTableModel) interceptor).SetRelation(column,relation);
 		}
 		[SmokeMethod("relation", "(int) const", "$")]
 		public QSqlRelation Relation(int column) {
-			return ProxyQSqlRelationalTableModel().Relation(column);
+			return ((QSqlRelationalTableModel) interceptor).Relation(column);
 		}
 		[SmokeMethod("relationModel", "(int) const", "$")]
 		public virtual QSqlTableModel RelationModel(int column) {
-			return ProxyQSqlRelationalTableModel().RelationModel(column);
+			return ((QSqlRelationalTableModel) interceptor).RelationModel(column);
 		}
 		[Q_SLOT("void revertRow(int)")]
 		[SmokeMethod("revertRow", "(int)", "$")]
 		public override void RevertRow(int row) {
-			ProxyQSqlRelationalTableModel().RevertRow(row);
+			((QSqlRelationalTableModel) interceptor).RevertRow(row);
 		}
 		[SmokeMethod("selectStatement", "() const", "")]
 		protected override string SelectStatement() {
-			return ProxyQSqlRelationalTableModel().SelectStatement();
+			return ((QSqlRelationalTableModel) interceptor).SelectStatement();
 		}
 		[SmokeMethod("updateRowInTable", "(int, const QSqlRecord&)", "$#")]
 		protected override bool UpdateRowInTable(int row, QSqlRecord values) {
-			return ProxyQSqlRelationalTableModel().UpdateRowInTable(row,values);
+			return ((QSqlRelationalTableModel) interceptor).UpdateRowInTable(row,values);
 		}
 		[SmokeMethod("insertRowIntoTable", "(const QSqlRecord&)", "#")]
 		protected override bool InsertRowIntoTable(QSqlRecord values) {
-			return ProxyQSqlRelationalTableModel().InsertRowIntoTable(values);
+			return ((QSqlRelationalTableModel) interceptor).InsertRowIntoTable(values);
 		}
 		[SmokeMethod("orderByClause", "() const", "")]
 		protected override string OrderByClause() {
-			return ProxyQSqlRelationalTableModel().OrderByClause();
+			return ((QSqlRelationalTableModel) interceptor).OrderByClause();
 		}
 		~QSqlRelationalTableModel() {
 			DisposeQSqlRelationalTableModel();
@@ -129,13 +123,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QSqlRelationalTableModel", "()", "")]
 		private void DisposeQSqlRelationalTableModel() {
-			ProxyQSqlRelationalTableModel().DisposeQSqlRelationalTableModel();
+			((QSqlRelationalTableModel) interceptor).DisposeQSqlRelationalTableModel();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQSqlRelationalTableModel().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQSqlRelationalTableModel().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQSqlRelationalTableModelSignals Emit {
 			get { return (IQSqlRelationalTableModelSignals) Q_EMIT; }

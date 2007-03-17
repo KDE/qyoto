@@ -5,15 +5,12 @@ namespace Qyoto {
 
 	[SmokeClass("QStyleOption")]
 	public class QStyleOption : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QStyleOption interceptor = null;
+		private IntPtr smokeObject;
 		protected QStyleOption(Type dummy) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOption), this);
-			_interceptor = (QStyleOption) realProxy.GetTransparentProxy();
-		}
-		private QStyleOption ProxyQStyleOption() {
-			return (QStyleOption) _interceptor;
+			interceptor = (QStyleOption) realProxy.GetTransparentProxy();
 		}
 		public enum OptionType {
 			SO_Default = 0,
@@ -58,7 +55,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOption", "(int, int)", "$$")]
 		private void NewQStyleOption(int version, int type) {
-			ProxyQStyleOption().NewQStyleOption(version,type);
+			((QStyleOption) interceptor).NewQStyleOption(version,type);
 		}
 		public QStyleOption(int version) : this((Type) null) {
 			CreateProxy();
@@ -66,7 +63,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOption", "(int)", "$")]
 		private void NewQStyleOption(int version) {
-			ProxyQStyleOption().NewQStyleOption(version);
+			((QStyleOption) interceptor).NewQStyleOption(version);
 		}
 		public QStyleOption() : this((Type) null) {
 			CreateProxy();
@@ -74,7 +71,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOption", "()", "")]
 		private void NewQStyleOption() {
-			ProxyQStyleOption().NewQStyleOption();
+			((QStyleOption) interceptor).NewQStyleOption();
 		}
 		public QStyleOption(QStyleOption other) : this((Type) null) {
 			CreateProxy();
@@ -82,15 +79,15 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOption", "(const QStyleOption&)", "#")]
 		private void NewQStyleOption(QStyleOption other) {
-			ProxyQStyleOption().NewQStyleOption(other);
+			((QStyleOption) interceptor).NewQStyleOption(other);
 		}
 		[SmokeMethod("init", "(const QWidget*)", "#")]
 		public void Init(QWidget w) {
-			ProxyQStyleOption().Init(w);
+			((QStyleOption) interceptor).Init(w);
 		}
 		[SmokeMethod("initFrom", "(const QWidget*)", "#")]
 		public void InitFrom(QWidget w) {
-			ProxyQStyleOption().InitFrom(w);
+			((QStyleOption) interceptor).InitFrom(w);
 		}
 		~QStyleOption() {
 			DisposeQStyleOption();
@@ -100,7 +97,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QStyleOption", "()", "")]
 		private void DisposeQStyleOption() {
-			ProxyQStyleOption().DisposeQStyleOption();
+			((QStyleOption) interceptor).DisposeQStyleOption();
 		}
 	}
 }

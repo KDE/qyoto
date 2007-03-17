@@ -16,18 +16,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFontComboBox), this);
-			_interceptor = (QFontComboBox) realProxy.GetTransparentProxy();
+			interceptor = (QFontComboBox) realProxy.GetTransparentProxy();
 		}
-		private QFontComboBox ProxyQFontComboBox() {
-			return (QFontComboBox) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQFontComboBoxProxy staticInterceptor = null;
 		static QFontComboBox() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQFontComboBoxProxy), null);
-			_staticInterceptor = (IQFontComboBoxProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQFontComboBoxProxy StaticQFontComboBox() {
-			return (IQFontComboBoxProxy) _staticInterceptor;
+			staticInterceptor = (IQFontComboBoxProxy) realProxy.GetTransparentProxy();
 		}
 		public enum FontFilter {
 			AllFonts = 0,
@@ -57,7 +51,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QFontComboBox", "(QWidget*)", "#")]
 		private void NewQFontComboBox(QWidget parent) {
-			ProxyQFontComboBox().NewQFontComboBox(parent);
+			((QFontComboBox) interceptor).NewQFontComboBox(parent);
 		}
 		public QFontComboBox() : this((Type) null) {
 			CreateProxy();
@@ -65,15 +59,15 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QFontComboBox", "()", "")]
 		private void NewQFontComboBox() {
-			ProxyQFontComboBox().NewQFontComboBox();
+			((QFontComboBox) interceptor).NewQFontComboBox();
 		}
 		[SmokeMethod("sizeHint", "() const", "")]
 		public override QSize SizeHint() {
-			return ProxyQFontComboBox().SizeHint();
+			return ((QFontComboBox) interceptor).SizeHint();
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected new virtual bool Event(QEvent e) {
-			return ProxyQFontComboBox().Event(e);
+			return ((QFontComboBox) interceptor).Event(e);
 		}
 		~QFontComboBox() {
 			DisposeQFontComboBox();
@@ -83,13 +77,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QFontComboBox", "()", "")]
 		private void DisposeQFontComboBox() {
-			ProxyQFontComboBox().DisposeQFontComboBox();
+			((QFontComboBox) interceptor).DisposeQFontComboBox();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQFontComboBox().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQFontComboBox().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQFontComboBoxSignals Emit {
 			get { return (IQFontComboBoxSignals) Q_EMIT; }

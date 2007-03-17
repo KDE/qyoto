@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QStyleOptionSlider(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionSlider), this);
-			_interceptor = (QStyleOptionSlider) realProxy.GetTransparentProxy();
-		}
-		private QStyleOptionSlider ProxyQStyleOptionSlider() {
-			return (QStyleOptionSlider) _interceptor;
+			interceptor = (QStyleOptionSlider) realProxy.GetTransparentProxy();
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_Slider,
@@ -25,7 +22,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionSlider", "()", "")]
 		private void NewQStyleOptionSlider() {
-			ProxyQStyleOptionSlider().NewQStyleOptionSlider();
+			((QStyleOptionSlider) interceptor).NewQStyleOptionSlider();
 		}
 		public QStyleOptionSlider(QStyleOptionSlider other) : this((Type) null) {
 			CreateProxy();
@@ -33,7 +30,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionSlider", "(const QStyleOptionSlider&)", "#")]
 		private void NewQStyleOptionSlider(QStyleOptionSlider other) {
-			ProxyQStyleOptionSlider().NewQStyleOptionSlider(other);
+			((QStyleOptionSlider) interceptor).NewQStyleOptionSlider(other);
 		}
 		public QStyleOptionSlider(int version) : this((Type) null) {
 			CreateProxy();
@@ -41,7 +38,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionSlider", "(int)", "$")]
 		private void NewQStyleOptionSlider(int version) {
-			ProxyQStyleOptionSlider().NewQStyleOptionSlider(version);
+			((QStyleOptionSlider) interceptor).NewQStyleOptionSlider(version);
 		}
 		~QStyleOptionSlider() {
 			DisposeQStyleOptionSlider();
@@ -51,7 +48,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QStyleOptionSlider", "()", "")]
 		private void DisposeQStyleOptionSlider() {
-			ProxyQStyleOptionSlider().DisposeQStyleOptionSlider();
+			((QStyleOptionSlider) interceptor).DisposeQStyleOptionSlider();
 		}
 	}
 }

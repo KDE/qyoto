@@ -5,8 +5,8 @@ namespace Qyoto {
 
 	[SmokeClass("QXmlInputSource")]
 	public class QXmlInputSource : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QXmlInputSource interceptor = null;
+		private IntPtr smokeObject;
 		protected QXmlInputSource(Type dummy) {}
 		[SmokeClass("QXmlInputSource")]
 		interface IQXmlInputSourceProxy {
@@ -17,24 +17,18 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlInputSource), this);
-			_interceptor = (QXmlInputSource) realProxy.GetTransparentProxy();
+			interceptor = (QXmlInputSource) realProxy.GetTransparentProxy();
 		}
-		private QXmlInputSource ProxyQXmlInputSource() {
-			return (QXmlInputSource) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQXmlInputSourceProxy staticInterceptor = null;
 		static QXmlInputSource() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQXmlInputSourceProxy), null);
-			_staticInterceptor = (IQXmlInputSourceProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQXmlInputSourceProxy StaticQXmlInputSource() {
-			return (IQXmlInputSourceProxy) _staticInterceptor;
+			staticInterceptor = (IQXmlInputSourceProxy) realProxy.GetTransparentProxy();
 		}
 		public static ushort EndOfData() {
-			return StaticQXmlInputSource().EndOfData();
+			return staticInterceptor.EndOfData();
 		}
 		public static ushort EndOfDocument() {
-			return StaticQXmlInputSource().EndOfDocument();
+			return staticInterceptor.EndOfDocument();
 		}
 		public QXmlInputSource() : this((Type) null) {
 			CreateProxy();
@@ -42,7 +36,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QXmlInputSource", "()", "")]
 		private void NewQXmlInputSource() {
-			ProxyQXmlInputSource().NewQXmlInputSource();
+			((QXmlInputSource) interceptor).NewQXmlInputSource();
 		}
 		public QXmlInputSource(QIODevice dev) : this((Type) null) {
 			CreateProxy();
@@ -50,39 +44,39 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QXmlInputSource", "(QIODevice*)", "#")]
 		private void NewQXmlInputSource(QIODevice dev) {
-			ProxyQXmlInputSource().NewQXmlInputSource(dev);
+			((QXmlInputSource) interceptor).NewQXmlInputSource(dev);
 		}
 		[SmokeMethod("setData", "(const QString&)", "$")]
 		public virtual void SetData(string dat) {
-			ProxyQXmlInputSource().SetData(dat);
+			((QXmlInputSource) interceptor).SetData(dat);
 		}
 		[SmokeMethod("setData", "(const QByteArray&)", "#")]
 		public virtual void SetData(QByteArray dat) {
-			ProxyQXmlInputSource().SetData(dat);
+			((QXmlInputSource) interceptor).SetData(dat);
 		}
 		[SmokeMethod("fetchData", "()", "")]
 		public virtual void FetchData() {
-			ProxyQXmlInputSource().FetchData();
+			((QXmlInputSource) interceptor).FetchData();
 		}
 		[SmokeMethod("data", "() const", "")]
 		public virtual string Data() {
-			return ProxyQXmlInputSource().Data();
+			return ((QXmlInputSource) interceptor).Data();
 		}
 		[SmokeMethod("next", "()", "")]
 		public virtual char Next() {
-			return ProxyQXmlInputSource().Next();
+			return ((QXmlInputSource) interceptor).Next();
 		}
 		[SmokeMethod("reset", "()", "")]
 		public virtual void Reset() {
-			ProxyQXmlInputSource().Reset();
+			((QXmlInputSource) interceptor).Reset();
 		}
 		[SmokeMethod("fromRawData", "(const QByteArray&, bool)", "#$")]
 		protected virtual string FromRawData(QByteArray data, bool beginning) {
-			return ProxyQXmlInputSource().FromRawData(data,beginning);
+			return ((QXmlInputSource) interceptor).FromRawData(data,beginning);
 		}
 		[SmokeMethod("fromRawData", "(const QByteArray&)", "#")]
 		protected virtual string FromRawData(QByteArray data) {
-			return ProxyQXmlInputSource().FromRawData(data);
+			return ((QXmlInputSource) interceptor).FromRawData(data);
 		}
 		~QXmlInputSource() {
 			DisposeQXmlInputSource();
@@ -92,7 +86,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QXmlInputSource", "()", "")]
 		private void DisposeQXmlInputSource() {
-			ProxyQXmlInputSource().DisposeQXmlInputSource();
+			((QXmlInputSource) interceptor).DisposeQXmlInputSource();
 		}
 	}
 }

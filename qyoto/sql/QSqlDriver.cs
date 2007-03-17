@@ -16,18 +16,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSqlDriver), this);
-			_interceptor = (QSqlDriver) realProxy.GetTransparentProxy();
+			interceptor = (QSqlDriver) realProxy.GetTransparentProxy();
 		}
-		private QSqlDriver ProxyQSqlDriver() {
-			return (QSqlDriver) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQSqlDriverProxy staticInterceptor = null;
 		static QSqlDriver() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQSqlDriverProxy), null);
-			_staticInterceptor = (IQSqlDriverProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQSqlDriverProxy StaticQSqlDriver() {
-			return (IQSqlDriverProxy) _staticInterceptor;
+			staticInterceptor = (IQSqlDriverProxy) realProxy.GetTransparentProxy();
 		}
 		public enum DriverFeature {
 			Transactions = 0,
@@ -57,7 +51,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSqlDriver", "(QObject*)", "#")]
 		private void NewQSqlDriver(QObject parent) {
-			ProxyQSqlDriver().NewQSqlDriver(parent);
+			((QSqlDriver) interceptor).NewQSqlDriver(parent);
 		}
 		public QSqlDriver() : this((Type) null) {
 			CreateProxy();
@@ -65,59 +59,59 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSqlDriver", "()", "")]
 		private void NewQSqlDriver() {
-			ProxyQSqlDriver().NewQSqlDriver();
+			((QSqlDriver) interceptor).NewQSqlDriver();
 		}
 		[SmokeMethod("isOpen", "() const", "")]
 		public virtual bool IsOpen() {
-			return ProxyQSqlDriver().IsOpen();
+			return ((QSqlDriver) interceptor).IsOpen();
 		}
 		[SmokeMethod("isOpenError", "() const", "")]
 		public bool IsOpenError() {
-			return ProxyQSqlDriver().IsOpenError();
+			return ((QSqlDriver) interceptor).IsOpenError();
 		}
 		[SmokeMethod("beginTransaction", "()", "")]
 		public virtual bool BeginTransaction() {
-			return ProxyQSqlDriver().BeginTransaction();
+			return ((QSqlDriver) interceptor).BeginTransaction();
 		}
 		[SmokeMethod("commitTransaction", "()", "")]
 		public virtual bool CommitTransaction() {
-			return ProxyQSqlDriver().CommitTransaction();
+			return ((QSqlDriver) interceptor).CommitTransaction();
 		}
 		[SmokeMethod("rollbackTransaction", "()", "")]
 		public virtual bool RollbackTransaction() {
-			return ProxyQSqlDriver().RollbackTransaction();
+			return ((QSqlDriver) interceptor).RollbackTransaction();
 		}
 		[SmokeMethod("tables", "(QSql::TableType) const", "$")]
 		public virtual List<string> Tables(QSql.TableType tableType) {
-			return ProxyQSqlDriver().Tables(tableType);
+			return ((QSqlDriver) interceptor).Tables(tableType);
 		}
 		[SmokeMethod("primaryIndex", "(const QString&) const", "$")]
 		public virtual QSqlIndex PrimaryIndex(string tableName) {
-			return ProxyQSqlDriver().PrimaryIndex(tableName);
+			return ((QSqlDriver) interceptor).PrimaryIndex(tableName);
 		}
 		[SmokeMethod("record", "(const QString&) const", "$")]
 		public virtual QSqlRecord Record(string tableName) {
-			return ProxyQSqlDriver().Record(tableName);
+			return ((QSqlDriver) interceptor).Record(tableName);
 		}
 		[SmokeMethod("formatValue", "(const QSqlField&, bool) const", "#$")]
 		public virtual string FormatValue(QSqlField field, bool trimStrings) {
-			return ProxyQSqlDriver().FormatValue(field,trimStrings);
+			return ((QSqlDriver) interceptor).FormatValue(field,trimStrings);
 		}
 		[SmokeMethod("formatValue", "(const QSqlField&) const", "#")]
 		public virtual string FormatValue(QSqlField field) {
-			return ProxyQSqlDriver().FormatValue(field);
+			return ((QSqlDriver) interceptor).FormatValue(field);
 		}
 		[SmokeMethod("escapeIdentifier", "(const QString&, QSqlDriver::IdentifierType) const", "$$")]
 		public virtual string EscapeIdentifier(string identifier, QSqlDriver.IdentifierType type) {
-			return ProxyQSqlDriver().EscapeIdentifier(identifier,type);
+			return ((QSqlDriver) interceptor).EscapeIdentifier(identifier,type);
 		}
 		[SmokeMethod("sqlStatement", "(QSqlDriver::StatementType, const QString&, const QSqlRecord&, bool) const", "$$#$")]
 		public virtual string SqlStatement(QSqlDriver.StatementType type, string tableName, QSqlRecord rec, bool preparedStatement) {
-			return ProxyQSqlDriver().SqlStatement(type,tableName,rec,preparedStatement);
+			return ((QSqlDriver) interceptor).SqlStatement(type,tableName,rec,preparedStatement);
 		}
 		[SmokeMethod("lastError", "() const", "")]
 		public QSqlError LastError() {
-			return ProxyQSqlDriver().LastError();
+			return ((QSqlDriver) interceptor).LastError();
 		}
 		[SmokeMethod("hasFeature", "(QSqlDriver::DriverFeature) const", "$")]
 		public abstract bool HasFeature(QSqlDriver.DriverFeature f);
@@ -129,21 +123,21 @@ namespace Qyoto {
 		public abstract bool Open(string db, string user, string password, string host, int port, string connOpts);
 		[SmokeMethod("setOpen", "(bool)", "$")]
 		protected virtual void SetOpen(bool o) {
-			ProxyQSqlDriver().SetOpen(o);
+			((QSqlDriver) interceptor).SetOpen(o);
 		}
 		[SmokeMethod("setOpenError", "(bool)", "$")]
 		protected virtual void SetOpenError(bool e) {
-			ProxyQSqlDriver().SetOpenError(e);
+			((QSqlDriver) interceptor).SetOpenError(e);
 		}
 		[SmokeMethod("setLastError", "(const QSqlError&)", "#")]
 		protected virtual void SetLastError(QSqlError e) {
-			ProxyQSqlDriver().SetLastError(e);
+			((QSqlDriver) interceptor).SetLastError(e);
 		}
 		public static string Tr(string s, string c) {
-			return StaticQSqlDriver().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQSqlDriver().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQSqlDriverSignals Emit {
 			get { return (IQSqlDriverSignals) Q_EMIT; }

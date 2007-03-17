@@ -16,18 +16,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSessionManager), this);
-			_interceptor = (QSessionManager) realProxy.GetTransparentProxy();
+			interceptor = (QSessionManager) realProxy.GetTransparentProxy();
 		}
-		private QSessionManager ProxyQSessionManager() {
-			return (QSessionManager) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQSessionManagerProxy staticInterceptor = null;
 		static QSessionManager() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQSessionManagerProxy), null);
-			_staticInterceptor = (IQSessionManagerProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQSessionManagerProxy StaticQSessionManager() {
-			return (IQSessionManagerProxy) _staticInterceptor;
+			staticInterceptor = (IQSessionManagerProxy) realProxy.GetTransparentProxy();
 		}
 		public enum RestartHint {
 			RestartIfRunning = 0,
@@ -37,73 +31,73 @@ namespace Qyoto {
 		}
 		[SmokeMethod("sessionId", "() const", "")]
 		public string SessionId() {
-			return ProxyQSessionManager().SessionId();
+			return ((QSessionManager) interceptor).SessionId();
 		}
 		[SmokeMethod("sessionKey", "() const", "")]
 		public string SessionKey() {
-			return ProxyQSessionManager().SessionKey();
+			return ((QSessionManager) interceptor).SessionKey();
 		}
 		[SmokeMethod("allowsInteraction", "()", "")]
 		public bool AllowsInteraction() {
-			return ProxyQSessionManager().AllowsInteraction();
+			return ((QSessionManager) interceptor).AllowsInteraction();
 		}
 		[SmokeMethod("allowsErrorInteraction", "()", "")]
 		public bool AllowsErrorInteraction() {
-			return ProxyQSessionManager().AllowsErrorInteraction();
+			return ((QSessionManager) interceptor).AllowsErrorInteraction();
 		}
 		[SmokeMethod("release", "()", "")]
 		public void Release() {
-			ProxyQSessionManager().Release();
+			((QSessionManager) interceptor).Release();
 		}
 		[SmokeMethod("cancel", "()", "")]
 		public void Cancel() {
-			ProxyQSessionManager().Cancel();
+			((QSessionManager) interceptor).Cancel();
 		}
 		[SmokeMethod("setRestartHint", "(QSessionManager::RestartHint)", "$")]
 		public void SetRestartHint(QSessionManager.RestartHint arg1) {
-			ProxyQSessionManager().SetRestartHint(arg1);
+			((QSessionManager) interceptor).SetRestartHint(arg1);
 		}
 		[SmokeMethod("restartHint", "() const", "")]
 		public QSessionManager.RestartHint restartHint() {
-			return ProxyQSessionManager().restartHint();
+			return ((QSessionManager) interceptor).restartHint();
 		}
 		[SmokeMethod("setRestartCommand", "(const QStringList&)", "?")]
 		public void SetRestartCommand(List<string> arg1) {
-			ProxyQSessionManager().SetRestartCommand(arg1);
+			((QSessionManager) interceptor).SetRestartCommand(arg1);
 		}
 		[SmokeMethod("restartCommand", "() const", "")]
 		public List<string> RestartCommand() {
-			return ProxyQSessionManager().RestartCommand();
+			return ((QSessionManager) interceptor).RestartCommand();
 		}
 		[SmokeMethod("setDiscardCommand", "(const QStringList&)", "?")]
 		public void SetDiscardCommand(List<string> arg1) {
-			ProxyQSessionManager().SetDiscardCommand(arg1);
+			((QSessionManager) interceptor).SetDiscardCommand(arg1);
 		}
 		[SmokeMethod("discardCommand", "() const", "")]
 		public List<string> DiscardCommand() {
-			return ProxyQSessionManager().DiscardCommand();
+			return ((QSessionManager) interceptor).DiscardCommand();
 		}
 		[SmokeMethod("setManagerProperty", "(const QString&, const QString&)", "$$")]
 		public void SetManagerProperty(string name, string value) {
-			ProxyQSessionManager().SetManagerProperty(name,value);
+			((QSessionManager) interceptor).SetManagerProperty(name,value);
 		}
 		[SmokeMethod("setManagerProperty", "(const QString&, const QStringList&)", "$?")]
 		public void SetManagerProperty(string name, List<string> value) {
-			ProxyQSessionManager().SetManagerProperty(name,value);
+			((QSessionManager) interceptor).SetManagerProperty(name,value);
 		}
 		[SmokeMethod("isPhase2", "() const", "")]
 		public bool IsPhase2() {
-			return ProxyQSessionManager().IsPhase2();
+			return ((QSessionManager) interceptor).IsPhase2();
 		}
 		[SmokeMethod("requestPhase2", "()", "")]
 		public void RequestPhase2() {
-			ProxyQSessionManager().RequestPhase2();
+			((QSessionManager) interceptor).RequestPhase2();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQSessionManager().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQSessionManager().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQSessionManagerSignals Emit {
 			get { return (IQSessionManagerSignals) Q_EMIT; }

@@ -5,15 +5,12 @@ namespace Qyoto {
 
 	[SmokeClass("QTextBlockUserData")]
 	public class QTextBlockUserData : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QTextBlockUserData interceptor = null;
+		private IntPtr smokeObject;
 		protected QTextBlockUserData(Type dummy) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextBlockUserData), this);
-			_interceptor = (QTextBlockUserData) realProxy.GetTransparentProxy();
-		}
-		private QTextBlockUserData ProxyQTextBlockUserData() {
-			return (QTextBlockUserData) _interceptor;
+			interceptor = (QTextBlockUserData) realProxy.GetTransparentProxy();
 		}
 		public QTextBlockUserData() : this((Type) null) {
 			CreateProxy();
@@ -21,7 +18,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTextBlockUserData", "()", "")]
 		private void NewQTextBlockUserData() {
-			ProxyQTextBlockUserData().NewQTextBlockUserData();
+			((QTextBlockUserData) interceptor).NewQTextBlockUserData();
 		}
 		~QTextBlockUserData() {
 			DisposeQTextBlockUserData();
@@ -31,7 +28,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QTextBlockUserData", "()", "")]
 		private void DisposeQTextBlockUserData() {
-			ProxyQTextBlockUserData().DisposeQTextBlockUserData();
+			((QTextBlockUserData) interceptor).DisposeQTextBlockUserData();
 		}
 	}
 }

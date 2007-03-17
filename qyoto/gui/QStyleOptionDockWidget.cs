@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QStyleOptionDockWidget(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionDockWidget), this);
-			_interceptor = (QStyleOptionDockWidget) realProxy.GetTransparentProxy();
-		}
-		private QStyleOptionDockWidget ProxyQStyleOptionDockWidget() {
-			return (QStyleOptionDockWidget) _interceptor;
+			interceptor = (QStyleOptionDockWidget) realProxy.GetTransparentProxy();
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_DockWidget,
@@ -25,7 +22,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionDockWidget", "()", "")]
 		private void NewQStyleOptionDockWidget() {
-			ProxyQStyleOptionDockWidget().NewQStyleOptionDockWidget();
+			((QStyleOptionDockWidget) interceptor).NewQStyleOptionDockWidget();
 		}
 		public QStyleOptionDockWidget(QStyleOptionDockWidget other) : this((Type) null) {
 			CreateProxy();
@@ -33,7 +30,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionDockWidget", "(const QStyleOptionDockWidget&)", "#")]
 		private void NewQStyleOptionDockWidget(QStyleOptionDockWidget other) {
-			ProxyQStyleOptionDockWidget().NewQStyleOptionDockWidget(other);
+			((QStyleOptionDockWidget) interceptor).NewQStyleOptionDockWidget(other);
 		}
 		public QStyleOptionDockWidget(int version) : this((Type) null) {
 			CreateProxy();
@@ -41,7 +38,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionDockWidget", "(int)", "$")]
 		private void NewQStyleOptionDockWidget(int version) {
-			ProxyQStyleOptionDockWidget().NewQStyleOptionDockWidget(version);
+			((QStyleOptionDockWidget) interceptor).NewQStyleOptionDockWidget(version);
 		}
 		~QStyleOptionDockWidget() {
 			DisposeQStyleOptionDockWidget();
@@ -51,7 +48,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QStyleOptionDockWidget", "()", "")]
 		private void DisposeQStyleOptionDockWidget() {
-			ProxyQStyleOptionDockWidget().DisposeQStyleOptionDockWidget();
+			((QStyleOptionDockWidget) interceptor).DisposeQStyleOptionDockWidget();
 		}
 	}
 }

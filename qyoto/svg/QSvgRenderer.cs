@@ -16,18 +16,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSvgRenderer), this);
-			_interceptor = (QSvgRenderer) realProxy.GetTransparentProxy();
+			interceptor = (QSvgRenderer) realProxy.GetTransparentProxy();
 		}
-		private QSvgRenderer ProxyQSvgRenderer() {
-			return (QSvgRenderer) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQSvgRendererProxy staticInterceptor = null;
 		static QSvgRenderer() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQSvgRendererProxy), null);
-			_staticInterceptor = (IQSvgRendererProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQSvgRendererProxy StaticQSvgRenderer() {
-			return (IQSvgRendererProxy) _staticInterceptor;
+			staticInterceptor = (IQSvgRendererProxy) realProxy.GetTransparentProxy();
 		}
 		[Q_PROPERTY("QRectF", "viewBox")]
 		public QRectF ViewBox {
@@ -50,7 +44,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSvgRenderer", "(QObject*)", "#")]
 		private void NewQSvgRenderer(QObject parent) {
-			ProxyQSvgRenderer().NewQSvgRenderer(parent);
+			((QSvgRenderer) interceptor).NewQSvgRenderer(parent);
 		}
 		public QSvgRenderer() : this((Type) null) {
 			CreateProxy();
@@ -58,7 +52,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSvgRenderer", "()", "")]
 		private void NewQSvgRenderer() {
-			ProxyQSvgRenderer().NewQSvgRenderer();
+			((QSvgRenderer) interceptor).NewQSvgRenderer();
 		}
 		public QSvgRenderer(string filename, QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -66,7 +60,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSvgRenderer", "(const QString&, QObject*)", "$#")]
 		private void NewQSvgRenderer(string filename, QObject parent) {
-			ProxyQSvgRenderer().NewQSvgRenderer(filename,parent);
+			((QSvgRenderer) interceptor).NewQSvgRenderer(filename,parent);
 		}
 		public QSvgRenderer(string filename) : this((Type) null) {
 			CreateProxy();
@@ -74,7 +68,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSvgRenderer", "(const QString&)", "$")]
 		private void NewQSvgRenderer(string filename) {
-			ProxyQSvgRenderer().NewQSvgRenderer(filename);
+			((QSvgRenderer) interceptor).NewQSvgRenderer(filename);
 		}
 		public QSvgRenderer(QByteArray contents, QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -82,7 +76,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSvgRenderer", "(const QByteArray&, QObject*)", "##")]
 		private void NewQSvgRenderer(QByteArray contents, QObject parent) {
-			ProxyQSvgRenderer().NewQSvgRenderer(contents,parent);
+			((QSvgRenderer) interceptor).NewQSvgRenderer(contents,parent);
 		}
 		public QSvgRenderer(QByteArray contents) : this((Type) null) {
 			CreateProxy();
@@ -90,69 +84,69 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSvgRenderer", "(const QByteArray&)", "#")]
 		private void NewQSvgRenderer(QByteArray contents) {
-			ProxyQSvgRenderer().NewQSvgRenderer(contents);
+			((QSvgRenderer) interceptor).NewQSvgRenderer(contents);
 		}
 		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ProxyQSvgRenderer().IsValid();
+			return ((QSvgRenderer) interceptor).IsValid();
 		}
 		[SmokeMethod("defaultSize", "() const", "")]
 		public QSize DefaultSize() {
-			return ProxyQSvgRenderer().DefaultSize();
+			return ((QSvgRenderer) interceptor).DefaultSize();
 		}
 		[SmokeMethod("viewBoxF", "() const", "")]
 		public QRectF ViewBoxF() {
-			return ProxyQSvgRenderer().ViewBoxF();
+			return ((QSvgRenderer) interceptor).ViewBoxF();
 		}
 		[SmokeMethod("animated", "() const", "")]
 		public bool Animated() {
-			return ProxyQSvgRenderer().Animated();
+			return ((QSvgRenderer) interceptor).Animated();
 		}
 		[SmokeMethod("animationDuration", "() const", "")]
 		public int AnimationDuration() {
-			return ProxyQSvgRenderer().AnimationDuration();
+			return ((QSvgRenderer) interceptor).AnimationDuration();
 		}
 		[SmokeMethod("boundsOnElement", "(const QString&) const", "$")]
 		public QRectF BoundsOnElement(string id) {
-			return ProxyQSvgRenderer().BoundsOnElement(id);
+			return ((QSvgRenderer) interceptor).BoundsOnElement(id);
 		}
 		[SmokeMethod("elementExists", "(const QString&) const", "$")]
 		public bool ElementExists(string id) {
-			return ProxyQSvgRenderer().ElementExists(id);
+			return ((QSvgRenderer) interceptor).ElementExists(id);
 		}
 		[SmokeMethod("matrixForElement", "(const QString&) const", "$")]
 		public QMatrix MatrixForElement(string id) {
-			return ProxyQSvgRenderer().MatrixForElement(id);
+			return ((QSvgRenderer) interceptor).MatrixForElement(id);
 		}
 		[Q_SLOT("bool load(const QString&)")]
 		[SmokeMethod("load", "(const QString&)", "$")]
 		public bool Load(string filename) {
-			return ProxyQSvgRenderer().Load(filename);
+			return ((QSvgRenderer) interceptor).Load(filename);
 		}
 		[Q_SLOT("bool load(const QByteArray&)")]
 		[SmokeMethod("load", "(const QByteArray&)", "#")]
 		public bool Load(QByteArray contents) {
-			return ProxyQSvgRenderer().Load(contents);
+			return ((QSvgRenderer) interceptor).Load(contents);
 		}
 		[Q_SLOT("void render(QPainter*)")]
 		[SmokeMethod("render", "(QPainter*)", "#")]
 		public void Render(QPainter p) {
-			ProxyQSvgRenderer().Render(p);
+			((QSvgRenderer) interceptor).Render(p);
 		}
 		[Q_SLOT("void render(QPainter*, const QRectF&)")]
 		[SmokeMethod("render", "(QPainter*, const QRectF&)", "##")]
 		public void Render(QPainter p, QRectF bounds) {
-			ProxyQSvgRenderer().Render(p,bounds);
+			((QSvgRenderer) interceptor).Render(p,bounds);
 		}
 		[Q_SLOT("void render(QPainter*, const QString&, const QRectF&)")]
 		[SmokeMethod("render", "(QPainter*, const QString&, const QRectF&)", "#$#")]
 		public void Render(QPainter p, string elementId, QRectF bounds) {
-			ProxyQSvgRenderer().Render(p,elementId,bounds);
+			((QSvgRenderer) interceptor).Render(p,elementId,bounds);
 		}
 		[Q_SLOT("void render(QPainter*, const QString&)")]
 		[SmokeMethod("render", "(QPainter*, const QString&)", "#$")]
 		public void Render(QPainter p, string elementId) {
-			ProxyQSvgRenderer().Render(p,elementId);
+			((QSvgRenderer) interceptor).Render(p,elementId);
 		}
 		~QSvgRenderer() {
 			DisposeQSvgRenderer();
@@ -162,13 +156,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QSvgRenderer", "()", "")]
 		private void DisposeQSvgRenderer() {
-			ProxyQSvgRenderer().DisposeQSvgRenderer();
+			((QSvgRenderer) interceptor).DisposeQSvgRenderer();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQSvgRenderer().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQSvgRenderer().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQSvgRendererSignals Emit {
 			get { return (IQSvgRendererSignals) Q_EMIT; }

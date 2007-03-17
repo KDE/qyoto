@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QGraphicsSceneHoverEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGraphicsSceneHoverEvent), this);
-			_interceptor = (QGraphicsSceneHoverEvent) realProxy.GetTransparentProxy();
-		}
-		private QGraphicsSceneHoverEvent ProxyQGraphicsSceneHoverEvent() {
-			return (QGraphicsSceneHoverEvent) _interceptor;
+			interceptor = (QGraphicsSceneHoverEvent) realProxy.GetTransparentProxy();
 		}
 		public QGraphicsSceneHoverEvent(QEvent.TypeOf type) : this((Type) null) {
 			CreateProxy();
@@ -19,7 +16,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGraphicsSceneHoverEvent", "(QEvent::Type)", "$")]
 		private void NewQGraphicsSceneHoverEvent(QEvent.TypeOf type) {
-			ProxyQGraphicsSceneHoverEvent().NewQGraphicsSceneHoverEvent(type);
+			((QGraphicsSceneHoverEvent) interceptor).NewQGraphicsSceneHoverEvent(type);
 		}
 		public QGraphicsSceneHoverEvent() : this((Type) null) {
 			CreateProxy();
@@ -27,31 +24,31 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGraphicsSceneHoverEvent", "()", "")]
 		private void NewQGraphicsSceneHoverEvent() {
-			ProxyQGraphicsSceneHoverEvent().NewQGraphicsSceneHoverEvent();
+			((QGraphicsSceneHoverEvent) interceptor).NewQGraphicsSceneHoverEvent();
 		}
 		[SmokeMethod("pos", "() const", "")]
 		public QPointF Pos() {
-			return ProxyQGraphicsSceneHoverEvent().Pos();
+			return ((QGraphicsSceneHoverEvent) interceptor).Pos();
 		}
 		[SmokeMethod("setPos", "(const QPointF&)", "#")]
 		public void SetPos(QPointF pos) {
-			ProxyQGraphicsSceneHoverEvent().SetPos(pos);
+			((QGraphicsSceneHoverEvent) interceptor).SetPos(pos);
 		}
 		[SmokeMethod("scenePos", "() const", "")]
 		public QPointF ScenePos() {
-			return ProxyQGraphicsSceneHoverEvent().ScenePos();
+			return ((QGraphicsSceneHoverEvent) interceptor).ScenePos();
 		}
 		[SmokeMethod("setScenePos", "(const QPointF&)", "#")]
 		public void SetScenePos(QPointF pos) {
-			ProxyQGraphicsSceneHoverEvent().SetScenePos(pos);
+			((QGraphicsSceneHoverEvent) interceptor).SetScenePos(pos);
 		}
 		[SmokeMethod("screenPos", "() const", "")]
 		public QPoint ScreenPos() {
-			return ProxyQGraphicsSceneHoverEvent().ScreenPos();
+			return ((QGraphicsSceneHoverEvent) interceptor).ScreenPos();
 		}
 		[SmokeMethod("setScreenPos", "(const QPoint&)", "#")]
 		public void SetScreenPos(QPoint pos) {
-			ProxyQGraphicsSceneHoverEvent().SetScreenPos(pos);
+			((QGraphicsSceneHoverEvent) interceptor).SetScreenPos(pos);
 		}
 		~QGraphicsSceneHoverEvent() {
 			DisposeQGraphicsSceneHoverEvent();
@@ -61,7 +58,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QGraphicsSceneHoverEvent", "()", "")]
 		private void DisposeQGraphicsSceneHoverEvent() {
-			ProxyQGraphicsSceneHoverEvent().DisposeQGraphicsSceneHoverEvent();
+			((QGraphicsSceneHoverEvent) interceptor).DisposeQGraphicsSceneHoverEvent();
 		}
 	}
 }

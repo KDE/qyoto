@@ -5,8 +5,8 @@ namespace Qyoto {
 
 	[SmokeClass("QUuid")]
 	public class QUuid : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QUuid interceptor = null;
+		private IntPtr smokeObject;
 		protected QUuid(Type dummy) {}
 		[SmokeClass("QUuid")]
 		interface IQUuidProxy {
@@ -21,18 +21,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QUuid), this);
-			_interceptor = (QUuid) realProxy.GetTransparentProxy();
+			interceptor = (QUuid) realProxy.GetTransparentProxy();
 		}
-		private QUuid ProxyQUuid() {
-			return (QUuid) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQUuidProxy staticInterceptor = null;
 		static QUuid() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQUuidProxy), null);
-			_staticInterceptor = (IQUuidProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQUuidProxy StaticQUuid() {
-			return (IQUuidProxy) _staticInterceptor;
+			staticInterceptor = (IQUuidProxy) realProxy.GetTransparentProxy();
 		}
 		public enum Variant {
 			VarUnknown = -1,
@@ -55,7 +49,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QUuid", "()", "")]
 		private void NewQUuid() {
-			ProxyQUuid().NewQUuid();
+			((QUuid) interceptor).NewQUuid();
 		}
 		public QUuid(uint l, ushort w1, ushort w2, ushort b1, ushort b2, ushort b3, ushort b4, ushort b5, ushort b6, ushort b7, ushort b8) : this((Type) null) {
 			CreateProxy();
@@ -63,7 +57,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QUuid", "(uint, ushort, ushort, uchar, uchar, uchar, uchar, uchar, uchar, uchar, uchar)", "$$$$$$$$$$$")]
 		private void NewQUuid(uint l, ushort w1, ushort w2, ushort b1, ushort b2, ushort b3, ushort b4, ushort b5, ushort b6, ushort b7, ushort b8) {
-			ProxyQUuid().NewQUuid(l,w1,w2,b1,b2,b3,b4,b5,b6,b7,b8);
+			((QUuid) interceptor).NewQUuid(l,w1,w2,b1,b2,b3,b4,b5,b6,b7,b8);
 		}
 		public QUuid(string arg1) : this((Type) null) {
 			CreateProxy();
@@ -71,30 +65,30 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QUuid", "(const QString&)", "$")]
 		private void NewQUuid(string arg1) {
-			ProxyQUuid().NewQUuid(arg1);
+			((QUuid) interceptor).NewQUuid(arg1);
 		}
 		[SmokeMethod("toString", "() const", "")]
 		public string ToString() {
-			return ProxyQUuid().ToString();
+			return ((QUuid) interceptor).ToString();
 		}
 		[SmokeMethod("isNull", "() const", "")]
 		public bool IsNull() {
-			return ProxyQUuid().IsNull();
+			return ((QUuid) interceptor).IsNull();
 		}
 		public override bool Equals(object o) {
 			if (!(o is QUuid)) { return false; }
 			return this == (QUuid) o;
 		}
 		public override int GetHashCode() {
-			return ProxyQUuid().GetHashCode();
+			return ((QUuid) interceptor).GetHashCode();
 		}
 		[SmokeMethod("variant", "() const", "")]
 		public QUuid.Variant variant() {
-			return ProxyQUuid().variant();
+			return ((QUuid) interceptor).variant();
 		}
 		[SmokeMethod("version", "() const", "")]
 		public QUuid.Version version() {
-			return ProxyQUuid().version();
+			return ((QUuid) interceptor).version();
 		}
 		~QUuid() {
 			DisposeQUuid();
@@ -104,22 +98,22 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QUuid", "()", "")]
 		private void DisposeQUuid() {
-			ProxyQUuid().DisposeQUuid();
+			((QUuid) interceptor).DisposeQUuid();
 		}
 		public static bool operator==(QUuid lhs, QUuid orig) {
-			return StaticQUuid().op_equals(lhs,orig);
+			return staticInterceptor.op_equals(lhs,orig);
 		}
 		public static bool operator!=(QUuid lhs, QUuid orig) {
-			return !StaticQUuid().op_equals(lhs,orig);
+			return !staticInterceptor.op_equals(lhs,orig);
 		}
 		public static bool operator<(QUuid lhs, QUuid other) {
-			return StaticQUuid().op_lt(lhs,other);
+			return staticInterceptor.op_lt(lhs,other);
 		}
 		public static bool operator>(QUuid lhs, QUuid other) {
-			return StaticQUuid().op_gt(lhs,other);
+			return staticInterceptor.op_gt(lhs,other);
 		}
 		public static QUuid CreateUuid() {
-			return StaticQUuid().CreateUuid();
+			return staticInterceptor.CreateUuid();
 		}
 	}
 }

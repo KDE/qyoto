@@ -6,15 +6,12 @@ namespace Qyoto {
 
 	[SmokeClass("QFactoryInterface")]
 	public abstract class QFactoryInterface : MarshalByRefObject {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QFactoryInterface interceptor = null;
+		private IntPtr smokeObject;
 		protected QFactoryInterface(Type dummy) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFactoryInterface), this);
-			_interceptor = (QFactoryInterface) realProxy.GetTransparentProxy();
-		}
-		private QFactoryInterface ProxyQFactoryInterface() {
-			return (QFactoryInterface) _interceptor;
+			interceptor = (QFactoryInterface) realProxy.GetTransparentProxy();
 		}
 		[SmokeMethod("keys", "() const", "")]
 		public abstract List<string> Keys();
@@ -24,7 +21,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QFactoryInterface", "()", "")]
 		private void NewQFactoryInterface() {
-			ProxyQFactoryInterface().NewQFactoryInterface();
+			((QFactoryInterface) interceptor).NewQFactoryInterface();
 		}
 	}
 }

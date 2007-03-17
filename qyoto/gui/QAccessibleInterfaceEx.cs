@@ -9,10 +9,7 @@ namespace Qyoto {
  		protected QAccessibleInterfaceEx(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAccessibleInterfaceEx), this);
-			_interceptor = (QAccessibleInterfaceEx) realProxy.GetTransparentProxy();
-		}
-		private QAccessibleInterfaceEx ProxyQAccessibleInterfaceEx() {
-			return (QAccessibleInterfaceEx) _interceptor;
+			interceptor = (QAccessibleInterfaceEx) realProxy.GetTransparentProxy();
 		}
 		[SmokeMethod("invokeMethodEx", "(QAccessible::Method, int, const QVariantList&)", "$$?")]
 		public abstract QVariant InvokeMethodEx(QAccessible.Method method, int child, List<QVariant> arg3);
@@ -22,7 +19,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QAccessibleInterfaceEx", "()", "")]
 		private void NewQAccessibleInterfaceEx() {
-			ProxyQAccessibleInterfaceEx().NewQAccessibleInterfaceEx();
+			((QAccessibleInterfaceEx) interceptor).NewQAccessibleInterfaceEx();
 		}
 	}
 }

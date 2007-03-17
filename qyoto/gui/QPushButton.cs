@@ -15,18 +15,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPushButton), this);
-			_interceptor = (QPushButton) realProxy.GetTransparentProxy();
+			interceptor = (QPushButton) realProxy.GetTransparentProxy();
 		}
-		private QPushButton ProxyQPushButton() {
-			return (QPushButton) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQPushButtonProxy staticInterceptor = null;
 		static QPushButton() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQPushButtonProxy), null);
-			_staticInterceptor = (IQPushButtonProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQPushButtonProxy StaticQPushButton() {
-			return (IQPushButtonProxy) _staticInterceptor;
+			staticInterceptor = (IQPushButtonProxy) realProxy.GetTransparentProxy();
 		}
 		[Q_PROPERTY("bool", "autoDefault")]
 		public bool AutoDefault {
@@ -49,7 +43,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QPushButton", "(QWidget*)", "#")]
 		private void NewQPushButton(QWidget parent) {
-			ProxyQPushButton().NewQPushButton(parent);
+			((QPushButton) interceptor).NewQPushButton(parent);
 		}
 		public QPushButton() : this((Type) null) {
 			CreateProxy();
@@ -57,7 +51,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QPushButton", "()", "")]
 		private void NewQPushButton() {
-			ProxyQPushButton().NewQPushButton();
+			((QPushButton) interceptor).NewQPushButton();
 		}
 		public QPushButton(string text, QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -65,7 +59,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QPushButton", "(const QString&, QWidget*)", "$#")]
 		private void NewQPushButton(string text, QWidget parent) {
-			ProxyQPushButton().NewQPushButton(text,parent);
+			((QPushButton) interceptor).NewQPushButton(text,parent);
 		}
 		public QPushButton(string text) : this((Type) null) {
 			CreateProxy();
@@ -73,7 +67,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QPushButton", "(const QString&)", "$")]
 		private void NewQPushButton(string text) {
-			ProxyQPushButton().NewQPushButton(text);
+			((QPushButton) interceptor).NewQPushButton(text);
 		}
 		public QPushButton(QIcon icon, string text, QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -81,7 +75,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QPushButton", "(const QIcon&, const QString&, QWidget*)", "#$#")]
 		private void NewQPushButton(QIcon icon, string text, QWidget parent) {
-			ProxyQPushButton().NewQPushButton(icon,text,parent);
+			((QPushButton) interceptor).NewQPushButton(icon,text,parent);
 		}
 		public QPushButton(QIcon icon, string text) : this((Type) null) {
 			CreateProxy();
@@ -89,52 +83,52 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QPushButton", "(const QIcon&, const QString&)", "#$")]
 		private void NewQPushButton(QIcon icon, string text) {
-			ProxyQPushButton().NewQPushButton(icon,text);
+			((QPushButton) interceptor).NewQPushButton(icon,text);
 		}
 		[SmokeMethod("sizeHint", "() const", "")]
 		public override QSize SizeHint() {
-			return ProxyQPushButton().SizeHint();
+			return ((QPushButton) interceptor).SizeHint();
 		}
 		[SmokeMethod("isDefault", "() const", "")]
 		public bool IsDefault() {
-			return ProxyQPushButton().IsDefault();
+			return ((QPushButton) interceptor).IsDefault();
 		}
 		[SmokeMethod("setMenu", "(QMenu*)", "#")]
 		public void SetMenu(QMenu menu) {
-			ProxyQPushButton().SetMenu(menu);
+			((QPushButton) interceptor).SetMenu(menu);
 		}
 		[SmokeMethod("menu", "() const", "")]
 		public QMenu Menu() {
-			return ProxyQPushButton().Menu();
+			return ((QPushButton) interceptor).Menu();
 		}
 		[SmokeMethod("isFlat", "() const", "")]
 		public bool IsFlat() {
-			return ProxyQPushButton().IsFlat();
+			return ((QPushButton) interceptor).IsFlat();
 		}
 		[Q_SLOT("void showMenu()")]
 		[SmokeMethod("showMenu", "()", "")]
 		public void ShowMenu() {
-			ProxyQPushButton().ShowMenu();
+			((QPushButton) interceptor).ShowMenu();
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent e) {
-			return ProxyQPushButton().Event(e);
+			return ((QPushButton) interceptor).Event(e);
 		}
 		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
 		protected override void PaintEvent(QPaintEvent arg1) {
-			ProxyQPushButton().PaintEvent(arg1);
+			((QPushButton) interceptor).PaintEvent(arg1);
 		}
 		[SmokeMethod("keyPressEvent", "(QKeyEvent*)", "#")]
 		protected override void KeyPressEvent(QKeyEvent arg1) {
-			ProxyQPushButton().KeyPressEvent(arg1);
+			((QPushButton) interceptor).KeyPressEvent(arg1);
 		}
 		[SmokeMethod("focusInEvent", "(QFocusEvent*)", "#")]
 		protected override void FocusInEvent(QFocusEvent arg1) {
-			ProxyQPushButton().FocusInEvent(arg1);
+			((QPushButton) interceptor).FocusInEvent(arg1);
 		}
 		[SmokeMethod("focusOutEvent", "(QFocusEvent*)", "#")]
 		protected override void FocusOutEvent(QFocusEvent arg1) {
-			ProxyQPushButton().FocusOutEvent(arg1);
+			((QPushButton) interceptor).FocusOutEvent(arg1);
 		}
 		~QPushButton() {
 			DisposeQPushButton();
@@ -144,13 +138,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QPushButton", "()", "")]
 		private void DisposeQPushButton() {
-			ProxyQPushButton().DisposeQPushButton();
+			((QPushButton) interceptor).DisposeQPushButton();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQPushButton().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQPushButton().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQPushButtonSignals Emit {
 			get { return (IQPushButtonSignals) Q_EMIT; }

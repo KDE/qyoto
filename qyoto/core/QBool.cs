@@ -5,8 +5,8 @@ namespace Qyoto {
 
 	[SmokeClass("QBool")]
 	public class QBool : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QBool interceptor = null;
+		private IntPtr smokeObject;
 		protected QBool(Type dummy) {}
 		[SmokeClass("QBool")]
 		interface IQBoolProxy {
@@ -19,18 +19,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QBool), this);
-			_interceptor = (QBool) realProxy.GetTransparentProxy();
+			interceptor = (QBool) realProxy.GetTransparentProxy();
 		}
-		private QBool ProxyQBool() {
-			return (QBool) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQBoolProxy staticInterceptor = null;
 		static QBool() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQBoolProxy), null);
-			_staticInterceptor = (IQBoolProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQBoolProxy StaticQBool() {
-			return (IQBoolProxy) _staticInterceptor;
+			staticInterceptor = (IQBoolProxy) realProxy.GetTransparentProxy();
 		}
 		//  operator const void *(); >>>> NOT CONVERTED
 		public QBool(bool B) : this((Type) null) {
@@ -39,7 +33,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QBool", "(bool)", "$")]
 		private void NewQBool(bool B) {
-			ProxyQBool().NewQBool(B);
+			((QBool) interceptor).NewQBool(B);
 		}
 		~QBool() {
 			DisposeQBool();
@@ -49,25 +43,25 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QBool", "()", "")]
 		private void DisposeQBool() {
-			ProxyQBool().DisposeQBool();
+			((QBool) interceptor).DisposeQBool();
 		}
 		public static bool operator==(QBool b1, bool b2) {
-			return StaticQBool().op_equals(b1,b2);
+			return staticInterceptor.op_equals(b1,b2);
 		}
 		public static bool operator!=(QBool b1, bool b2) {
-			return !StaticQBool().op_equals(b1,b2);
+			return !staticInterceptor.op_equals(b1,b2);
 		}
 		public static bool operator==(bool b1, QBool b2) {
-			return StaticQBool().op_equals(b1,b2);
+			return staticInterceptor.op_equals(b1,b2);
 		}
 		public static bool operator!=(bool b1, QBool b2) {
-			return !StaticQBool().op_equals(b1,b2);
+			return !staticInterceptor.op_equals(b1,b2);
 		}
 		public static bool operator==(QBool b1, QBool b2) {
-			return StaticQBool().op_equals(b1,b2);
+			return staticInterceptor.op_equals(b1,b2);
 		}
 		public static bool operator!=(QBool b1, QBool b2) {
-			return !StaticQBool().op_equals(b1,b2);
+			return !staticInterceptor.op_equals(b1,b2);
 		}
 	}
 }

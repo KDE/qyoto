@@ -16,18 +16,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAbstractButton), this);
-			_interceptor = (QAbstractButton) realProxy.GetTransparentProxy();
+			interceptor = (QAbstractButton) realProxy.GetTransparentProxy();
 		}
-		private QAbstractButton ProxyQAbstractButton() {
-			return (QAbstractButton) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQAbstractButtonProxy staticInterceptor = null;
 		static QAbstractButton() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQAbstractButtonProxy), null);
-			_staticInterceptor = (IQAbstractButtonProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQAbstractButtonProxy StaticQAbstractButton() {
-			return (IQAbstractButtonProxy) _staticInterceptor;
+			staticInterceptor = (IQAbstractButtonProxy) realProxy.GetTransparentProxy();
 		}
 		[Q_PROPERTY("QString", "text")]
 		public string Text {
@@ -90,7 +84,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QAbstractButton", "(QWidget*)", "#")]
 		private void NewQAbstractButton(QWidget parent) {
-			ProxyQAbstractButton().NewQAbstractButton(parent);
+			((QAbstractButton) interceptor).NewQAbstractButton(parent);
 		}
 		public QAbstractButton() : this((Type) null) {
 			CreateProxy();
@@ -98,103 +92,103 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QAbstractButton", "()", "")]
 		private void NewQAbstractButton() {
-			ProxyQAbstractButton().NewQAbstractButton();
+			((QAbstractButton) interceptor).NewQAbstractButton();
 		}
 		[SmokeMethod("isCheckable", "() const", "")]
 		public bool IsCheckable() {
-			return ProxyQAbstractButton().IsCheckable();
+			return ((QAbstractButton) interceptor).IsCheckable();
 		}
 		[SmokeMethod("isChecked", "() const", "")]
 		public bool IsChecked() {
-			return ProxyQAbstractButton().IsChecked();
+			return ((QAbstractButton) interceptor).IsChecked();
 		}
 		[SmokeMethod("isDown", "() const", "")]
 		public bool IsDown() {
-			return ProxyQAbstractButton().IsDown();
+			return ((QAbstractButton) interceptor).IsDown();
 		}
 		[SmokeMethod("group", "() const", "")]
 		public QButtonGroup Group() {
-			return ProxyQAbstractButton().Group();
+			return ((QAbstractButton) interceptor).Group();
 		}
 		[Q_SLOT("void animateClick(int)")]
 		[SmokeMethod("animateClick", "(int)", "$")]
 		public void AnimateClick(int msec) {
-			ProxyQAbstractButton().AnimateClick(msec);
+			((QAbstractButton) interceptor).AnimateClick(msec);
 		}
 		[Q_SLOT("void animateClick()")]
 		[SmokeMethod("animateClick", "()", "")]
 		public void AnimateClick() {
-			ProxyQAbstractButton().AnimateClick();
+			((QAbstractButton) interceptor).AnimateClick();
 		}
 		[Q_SLOT("void click()")]
 		[SmokeMethod("click", "()", "")]
 		public void Click() {
-			ProxyQAbstractButton().Click();
+			((QAbstractButton) interceptor).Click();
 		}
 		[Q_SLOT("void toggle()")]
 		[SmokeMethod("toggle", "()", "")]
 		public void Toggle() {
-			ProxyQAbstractButton().Toggle();
+			((QAbstractButton) interceptor).Toggle();
 		}
 		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
 		protected abstract void PaintEvent(QPaintEvent e);
 		[SmokeMethod("hitButton", "(const QPoint&) const", "#")]
 		protected virtual bool HitButton(QPoint pos) {
-			return ProxyQAbstractButton().HitButton(pos);
+			return ((QAbstractButton) interceptor).HitButton(pos);
 		}
 		[SmokeMethod("checkStateSet", "()", "")]
 		protected virtual void CheckStateSet() {
-			ProxyQAbstractButton().CheckStateSet();
+			((QAbstractButton) interceptor).CheckStateSet();
 		}
 		[SmokeMethod("nextCheckState", "()", "")]
 		protected virtual void NextCheckState() {
-			ProxyQAbstractButton().NextCheckState();
+			((QAbstractButton) interceptor).NextCheckState();
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent e) {
-			return ProxyQAbstractButton().Event(e);
+			return ((QAbstractButton) interceptor).Event(e);
 		}
 		[SmokeMethod("keyPressEvent", "(QKeyEvent*)", "#")]
 		protected override void KeyPressEvent(QKeyEvent e) {
-			ProxyQAbstractButton().KeyPressEvent(e);
+			((QAbstractButton) interceptor).KeyPressEvent(e);
 		}
 		[SmokeMethod("keyReleaseEvent", "(QKeyEvent*)", "#")]
 		protected override void KeyReleaseEvent(QKeyEvent e) {
-			ProxyQAbstractButton().KeyReleaseEvent(e);
+			((QAbstractButton) interceptor).KeyReleaseEvent(e);
 		}
 		[SmokeMethod("mousePressEvent", "(QMouseEvent*)", "#")]
 		protected override void MousePressEvent(QMouseEvent e) {
-			ProxyQAbstractButton().MousePressEvent(e);
+			((QAbstractButton) interceptor).MousePressEvent(e);
 		}
 		[SmokeMethod("mouseReleaseEvent", "(QMouseEvent*)", "#")]
 		protected override void MouseReleaseEvent(QMouseEvent e) {
-			ProxyQAbstractButton().MouseReleaseEvent(e);
+			((QAbstractButton) interceptor).MouseReleaseEvent(e);
 		}
 		[SmokeMethod("mouseMoveEvent", "(QMouseEvent*)", "#")]
 		protected override void MouseMoveEvent(QMouseEvent e) {
-			ProxyQAbstractButton().MouseMoveEvent(e);
+			((QAbstractButton) interceptor).MouseMoveEvent(e);
 		}
 		[SmokeMethod("focusInEvent", "(QFocusEvent*)", "#")]
 		protected override void FocusInEvent(QFocusEvent e) {
-			ProxyQAbstractButton().FocusInEvent(e);
+			((QAbstractButton) interceptor).FocusInEvent(e);
 		}
 		[SmokeMethod("focusOutEvent", "(QFocusEvent*)", "#")]
 		protected override void FocusOutEvent(QFocusEvent e) {
-			ProxyQAbstractButton().FocusOutEvent(e);
+			((QAbstractButton) interceptor).FocusOutEvent(e);
 		}
 		[SmokeMethod("changeEvent", "(QEvent*)", "#")]
 		protected override void ChangeEvent(QEvent e) {
-			ProxyQAbstractButton().ChangeEvent(e);
+			((QAbstractButton) interceptor).ChangeEvent(e);
 		}
 		[SmokeMethod("timerEvent", "(QTimerEvent*)", "#")]
 		protected override void TimerEvent(QTimerEvent e) {
-			ProxyQAbstractButton().TimerEvent(e);
+			((QAbstractButton) interceptor).TimerEvent(e);
 		}
 		public static string Tr(string s, string c) {
-			return StaticQAbstractButton().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQAbstractButton().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQAbstractButtonSignals Emit {
 			get { return (IQAbstractButtonSignals) Q_EMIT; }

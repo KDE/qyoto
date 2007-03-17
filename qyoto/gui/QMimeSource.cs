@@ -4,28 +4,25 @@ namespace Qyoto {
 	using System;
 
 	public interface IQMimeSource {
-			string Format(int n);
-			bool Provides(string arg1);
-			QByteArray EncodedData(string arg1);
+		string Format(int n);
+		bool Provides(string arg1);
+		QByteArray EncodedData(string arg1);
 	}
 
 	[SmokeClass("QMimeSource")]
 	public abstract class QMimeSource : MarshalByRefObject, IQMimeSource {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QMimeSource interceptor = null;
+		private IntPtr smokeObject;
 		protected QMimeSource(Type dummy) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMimeSource), this);
-			_interceptor = (QMimeSource) realProxy.GetTransparentProxy();
-		}
-		private QMimeSource ProxyQMimeSource() {
-			return (QMimeSource) _interceptor;
+			interceptor = (QMimeSource) realProxy.GetTransparentProxy();
 		}
 		[SmokeMethod("format", "(int) const", "$")]
 		public abstract string Format(int n);
 		[SmokeMethod("provides", "(const char*) const", "$")]
 		public virtual bool Provides(string arg1) {
-			return ProxyQMimeSource().Provides(arg1);
+			return ((QMimeSource) interceptor).Provides(arg1);
 		}
 		[SmokeMethod("encodedData", "(const char*) const", "$")]
 		public abstract QByteArray EncodedData(string arg1);
@@ -35,7 +32,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QMimeSource", "()", "")]
 		private void NewQMimeSource() {
-			ProxyQMimeSource().NewQMimeSource();
+			((QMimeSource) interceptor).NewQMimeSource();
 		}
 	}
 }

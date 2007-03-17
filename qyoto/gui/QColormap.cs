@@ -6,8 +6,8 @@ namespace Qyoto {
 
 	[SmokeClass("QColormap")]
 	public class QColormap : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QColormap interceptor = null;
+		private IntPtr smokeObject;
 		protected QColormap(Type dummy) {}
 		[SmokeClass("QColormap")]
 		interface IQColormapProxy {
@@ -22,18 +22,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QColormap), this);
-			_interceptor = (QColormap) realProxy.GetTransparentProxy();
+			interceptor = (QColormap) realProxy.GetTransparentProxy();
 		}
-		private QColormap ProxyQColormap() {
-			return (QColormap) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQColormapProxy staticInterceptor = null;
 		static QColormap() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQColormapProxy), null);
-			_staticInterceptor = (IQColormapProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQColormapProxy StaticQColormap() {
-			return (IQColormapProxy) _staticInterceptor;
+			staticInterceptor = (IQColormapProxy) realProxy.GetTransparentProxy();
 		}
 		public enum Mode {
 			Direct = 0,
@@ -46,31 +40,31 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QColormap", "(const QColormap&)", "#")]
 		private void NewQColormap(QColormap colormap) {
-			ProxyQColormap().NewQColormap(colormap);
+			((QColormap) interceptor).NewQColormap(colormap);
 		}
 		[SmokeMethod("mode", "() const", "")]
 		public QColormap.Mode mode() {
-			return ProxyQColormap().mode();
+			return ((QColormap) interceptor).mode();
 		}
 		[SmokeMethod("depth", "() const", "")]
 		public int Depth() {
-			return ProxyQColormap().Depth();
+			return ((QColormap) interceptor).Depth();
 		}
 		[SmokeMethod("size", "() const", "")]
 		public int Size() {
-			return ProxyQColormap().Size();
+			return ((QColormap) interceptor).Size();
 		}
 		[SmokeMethod("pixel", "(const QColor&) const", "#")]
 		public uint Pixel(QColor color) {
-			return ProxyQColormap().Pixel(color);
+			return ((QColormap) interceptor).Pixel(color);
 		}
 		[SmokeMethod("colorAt", "(uint) const", "$")]
 		public QColor ColorAt(uint pixel) {
-			return ProxyQColormap().ColorAt(pixel);
+			return ((QColormap) interceptor).ColorAt(pixel);
 		}
 		[SmokeMethod("colormap", "() const", "")]
 		public List<QColor> Colormap() {
-			return ProxyQColormap().Colormap();
+			return ((QColormap) interceptor).Colormap();
 		}
 		~QColormap() {
 			DisposeQColormap();
@@ -80,19 +74,19 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QColormap", "()", "")]
 		private void DisposeQColormap() {
-			ProxyQColormap().DisposeQColormap();
+			((QColormap) interceptor).DisposeQColormap();
 		}
 		public static void Initialize() {
-			StaticQColormap().Initialize();
+			staticInterceptor.Initialize();
 		}
 		public static void Cleanup() {
-			StaticQColormap().Cleanup();
+			staticInterceptor.Cleanup();
 		}
 		public static QColormap Instance(int screen) {
-			return StaticQColormap().Instance(screen);
+			return staticInterceptor.Instance(screen);
 		}
 		public static QColormap Instance() {
-			return StaticQColormap().Instance();
+			return staticInterceptor.Instance();
 		}
 	}
 }

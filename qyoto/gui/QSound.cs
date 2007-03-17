@@ -19,18 +19,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSound), this);
-			_interceptor = (QSound) realProxy.GetTransparentProxy();
+			interceptor = (QSound) realProxy.GetTransparentProxy();
 		}
-		private QSound ProxyQSound() {
-			return (QSound) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQSoundProxy staticInterceptor = null;
 		static QSound() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQSoundProxy), null);
-			_staticInterceptor = (IQSoundProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQSoundProxy StaticQSound() {
-			return (IQSoundProxy) _staticInterceptor;
+			staticInterceptor = (IQSoundProxy) realProxy.GetTransparentProxy();
 		}
 		public QSound(string filename, QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -38,7 +32,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSound", "(const QString&, QObject*)", "$#")]
 		private void NewQSound(string filename, QObject parent) {
-			ProxyQSound().NewQSound(filename,parent);
+			((QSound) interceptor).NewQSound(filename,parent);
 		}
 		public QSound(string filename) : this((Type) null) {
 			CreateProxy();
@@ -46,37 +40,37 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSound", "(const QString&)", "$")]
 		private void NewQSound(string filename) {
-			ProxyQSound().NewQSound(filename);
+			((QSound) interceptor).NewQSound(filename);
 		}
 		[SmokeMethod("loops", "() const", "")]
 		public int Loops() {
-			return ProxyQSound().Loops();
+			return ((QSound) interceptor).Loops();
 		}
 		[SmokeMethod("loopsRemaining", "() const", "")]
 		public int LoopsRemaining() {
-			return ProxyQSound().LoopsRemaining();
+			return ((QSound) interceptor).LoopsRemaining();
 		}
 		[SmokeMethod("setLoops", "(int)", "$")]
 		public void SetLoops(int arg1) {
-			ProxyQSound().SetLoops(arg1);
+			((QSound) interceptor).SetLoops(arg1);
 		}
 		[SmokeMethod("fileName", "() const", "")]
 		public string FileName() {
-			return ProxyQSound().FileName();
+			return ((QSound) interceptor).FileName();
 		}
 		[SmokeMethod("isFinished", "() const", "")]
 		public bool IsFinished() {
-			return ProxyQSound().IsFinished();
+			return ((QSound) interceptor).IsFinished();
 		}
 		[Q_SLOT("void play()")]
 		[SmokeMethod("play", "()", "")]
 		public void Play() {
-			ProxyQSound().Play();
+			((QSound) interceptor).Play();
 		}
 		[Q_SLOT("void stop()")]
 		[SmokeMethod("stop", "()", "")]
 		public void Stop() {
-			ProxyQSound().Stop();
+			((QSound) interceptor).Stop();
 		}
 		~QSound() {
 			DisposeQSound();
@@ -86,19 +80,19 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QSound", "()", "")]
 		private void DisposeQSound() {
-			ProxyQSound().DisposeQSound();
+			((QSound) interceptor).DisposeQSound();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQSound().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQSound().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		public static bool IsAvailable() {
-			return StaticQSound().IsAvailable();
+			return staticInterceptor.IsAvailable();
 		}
 		public static void Play(string filename) {
-			StaticQSound().Play(filename);
+			staticInterceptor.Play(filename);
 		}
 		protected new IQSoundSignals Emit {
 			get { return (IQSoundSignals) Q_EMIT; }

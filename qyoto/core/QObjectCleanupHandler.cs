@@ -15,18 +15,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QObjectCleanupHandler), this);
-			_interceptor = (QObjectCleanupHandler) realProxy.GetTransparentProxy();
+			interceptor = (QObjectCleanupHandler) realProxy.GetTransparentProxy();
 		}
-		private QObjectCleanupHandler ProxyQObjectCleanupHandler() {
-			return (QObjectCleanupHandler) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQObjectCleanupHandlerProxy staticInterceptor = null;
 		static QObjectCleanupHandler() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQObjectCleanupHandlerProxy), null);
-			_staticInterceptor = (IQObjectCleanupHandlerProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQObjectCleanupHandlerProxy StaticQObjectCleanupHandler() {
-			return (IQObjectCleanupHandlerProxy) _staticInterceptor;
+			staticInterceptor = (IQObjectCleanupHandlerProxy) realProxy.GetTransparentProxy();
 		}
 		public QObjectCleanupHandler() : this((Type) null) {
 			CreateProxy();
@@ -34,23 +28,23 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QObjectCleanupHandler", "()", "")]
 		private void NewQObjectCleanupHandler() {
-			ProxyQObjectCleanupHandler().NewQObjectCleanupHandler();
+			((QObjectCleanupHandler) interceptor).NewQObjectCleanupHandler();
 		}
 		[SmokeMethod("add", "(QObject*)", "#")]
 		public QObject Add(QObject arg1) {
-			return ProxyQObjectCleanupHandler().Add(arg1);
+			return ((QObjectCleanupHandler) interceptor).Add(arg1);
 		}
 		[SmokeMethod("remove", "(QObject*)", "#")]
 		public void Remove(QObject arg1) {
-			ProxyQObjectCleanupHandler().Remove(arg1);
+			((QObjectCleanupHandler) interceptor).Remove(arg1);
 		}
 		[SmokeMethod("isEmpty", "() const", "")]
 		public bool IsEmpty() {
-			return ProxyQObjectCleanupHandler().IsEmpty();
+			return ((QObjectCleanupHandler) interceptor).IsEmpty();
 		}
 		[SmokeMethod("clear", "()", "")]
 		public void Clear() {
-			ProxyQObjectCleanupHandler().Clear();
+			((QObjectCleanupHandler) interceptor).Clear();
 		}
 		~QObjectCleanupHandler() {
 			DisposeQObjectCleanupHandler();
@@ -60,13 +54,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QObjectCleanupHandler", "()", "")]
 		private void DisposeQObjectCleanupHandler() {
-			ProxyQObjectCleanupHandler().DisposeQObjectCleanupHandler();
+			((QObjectCleanupHandler) interceptor).DisposeQObjectCleanupHandler();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQObjectCleanupHandler().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQObjectCleanupHandler().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQObjectCleanupHandlerSignals Emit {
 			get { return (IQObjectCleanupHandlerSignals) Q_EMIT; }

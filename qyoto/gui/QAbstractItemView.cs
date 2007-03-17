@@ -17,18 +17,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAbstractItemView), this);
-			_interceptor = (QAbstractItemView) realProxy.GetTransparentProxy();
+			interceptor = (QAbstractItemView) realProxy.GetTransparentProxy();
 		}
-		private QAbstractItemView ProxyQAbstractItemView() {
-			return (QAbstractItemView) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQAbstractItemViewProxy staticInterceptor = null;
 		static QAbstractItemView() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQAbstractItemViewProxy), null);
-			_staticInterceptor = (IQAbstractItemViewProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQAbstractItemViewProxy StaticQAbstractItemView() {
-			return (IQAbstractItemViewProxy) _staticInterceptor;
+			staticInterceptor = (IQAbstractItemViewProxy) realProxy.GetTransparentProxy();
 		}
 		public enum SelectionMode {
 			NoSelection = 0,
@@ -171,7 +165,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QAbstractItemView", "(QWidget*)", "#")]
 		private void NewQAbstractItemView(QWidget parent) {
-			ProxyQAbstractItemView().NewQAbstractItemView(parent);
+			((QAbstractItemView) interceptor).NewQAbstractItemView(parent);
 		}
 		public QAbstractItemView() : this((Type) null) {
 			CreateProxy();
@@ -179,51 +173,51 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QAbstractItemView", "()", "")]
 		private void NewQAbstractItemView() {
-			ProxyQAbstractItemView().NewQAbstractItemView();
+			((QAbstractItemView) interceptor).NewQAbstractItemView();
 		}
 		[SmokeMethod("setModel", "(QAbstractItemModel*)", "#")]
 		public virtual void SetModel(QAbstractItemModel model) {
-			ProxyQAbstractItemView().SetModel(model);
+			((QAbstractItemView) interceptor).SetModel(model);
 		}
 		[SmokeMethod("model", "() const", "")]
 		public QAbstractItemModel Model() {
-			return ProxyQAbstractItemView().Model();
+			return ((QAbstractItemView) interceptor).Model();
 		}
 		[SmokeMethod("setSelectionModel", "(QItemSelectionModel*)", "#")]
 		public virtual void SetSelectionModel(QItemSelectionModel selectionModel) {
-			ProxyQAbstractItemView().SetSelectionModel(selectionModel);
+			((QAbstractItemView) interceptor).SetSelectionModel(selectionModel);
 		}
 		[SmokeMethod("selectionModel", "() const", "")]
 		public QItemSelectionModel SelectionModel() {
-			return ProxyQAbstractItemView().SelectionModel();
+			return ((QAbstractItemView) interceptor).SelectionModel();
 		}
 		[SmokeMethod("setItemDelegate", "(QAbstractItemDelegate*)", "#")]
 		public void SetItemDelegate(QAbstractItemDelegate arg1) {
-			ProxyQAbstractItemView().SetItemDelegate(arg1);
+			((QAbstractItemView) interceptor).SetItemDelegate(arg1);
 		}
 		[SmokeMethod("itemDelegate", "() const", "")]
 		public QAbstractItemDelegate ItemDelegate() {
-			return ProxyQAbstractItemView().ItemDelegate();
+			return ((QAbstractItemView) interceptor).ItemDelegate();
 		}
 		[SmokeMethod("currentIndex", "() const", "")]
 		public QModelIndex CurrentIndex() {
-			return ProxyQAbstractItemView().CurrentIndex();
+			return ((QAbstractItemView) interceptor).CurrentIndex();
 		}
 		[SmokeMethod("rootIndex", "() const", "")]
 		public QModelIndex RootIndex() {
-			return ProxyQAbstractItemView().RootIndex();
+			return ((QAbstractItemView) interceptor).RootIndex();
 		}
 		[SmokeMethod("hasAutoScroll", "() const", "")]
 		public bool HasAutoScroll() {
-			return ProxyQAbstractItemView().HasAutoScroll();
+			return ((QAbstractItemView) interceptor).HasAutoScroll();
 		}
 		[SmokeMethod("setDropIndicatorShown", "(bool)", "$")]
 		public void SetDropIndicatorShown(bool enable) {
-			ProxyQAbstractItemView().SetDropIndicatorShown(enable);
+			((QAbstractItemView) interceptor).SetDropIndicatorShown(enable);
 		}
 		[SmokeMethod("keyboardSearch", "(const QString&)", "$")]
 		public virtual void KeyboardSearch(string search) {
-			ProxyQAbstractItemView().KeyboardSearch(search);
+			((QAbstractItemView) interceptor).KeyboardSearch(search);
 		}
 		[SmokeMethod("visualRect", "(const QModelIndex&) const", "#")]
 		public abstract QRect VisualRect(QModelIndex index);
@@ -233,116 +227,116 @@ namespace Qyoto {
 		public abstract QModelIndex IndexAt(QPoint point);
 		[SmokeMethod("sizeHintForIndex", "(const QModelIndex&) const", "#")]
 		public QSize SizeHintForIndex(QModelIndex index) {
-			return ProxyQAbstractItemView().SizeHintForIndex(index);
+			return ((QAbstractItemView) interceptor).SizeHintForIndex(index);
 		}
 		[SmokeMethod("sizeHintForRow", "(int) const", "$")]
 		public virtual int SizeHintForRow(int row) {
-			return ProxyQAbstractItemView().SizeHintForRow(row);
+			return ((QAbstractItemView) interceptor).SizeHintForRow(row);
 		}
 		[SmokeMethod("sizeHintForColumn", "(int) const", "$")]
 		public virtual int SizeHintForColumn(int column) {
-			return ProxyQAbstractItemView().SizeHintForColumn(column);
+			return ((QAbstractItemView) interceptor).SizeHintForColumn(column);
 		}
 		[SmokeMethod("openPersistentEditor", "(const QModelIndex&)", "#")]
 		public void OpenPersistentEditor(QModelIndex index) {
-			ProxyQAbstractItemView().OpenPersistentEditor(index);
+			((QAbstractItemView) interceptor).OpenPersistentEditor(index);
 		}
 		[SmokeMethod("closePersistentEditor", "(const QModelIndex&)", "#")]
 		public void ClosePersistentEditor(QModelIndex index) {
-			ProxyQAbstractItemView().ClosePersistentEditor(index);
+			((QAbstractItemView) interceptor).ClosePersistentEditor(index);
 		}
 		[SmokeMethod("setIndexWidget", "(const QModelIndex&, QWidget*)", "##")]
 		public void SetIndexWidget(QModelIndex index, QWidget widget) {
-			ProxyQAbstractItemView().SetIndexWidget(index,widget);
+			((QAbstractItemView) interceptor).SetIndexWidget(index,widget);
 		}
 		[SmokeMethod("indexWidget", "(const QModelIndex&) const", "#")]
 		public QWidget IndexWidget(QModelIndex index) {
-			return ProxyQAbstractItemView().IndexWidget(index);
+			return ((QAbstractItemView) interceptor).IndexWidget(index);
 		}
 		[SmokeMethod("setItemDelegateForRow", "(int, QAbstractItemDelegate*)", "$#")]
 		public void SetItemDelegateForRow(int row, QAbstractItemDelegate arg2) {
-			ProxyQAbstractItemView().SetItemDelegateForRow(row,arg2);
+			((QAbstractItemView) interceptor).SetItemDelegateForRow(row,arg2);
 		}
 		[SmokeMethod("itemDelegateForRow", "(int) const", "$")]
 		public QAbstractItemDelegate ItemDelegateForRow(int row) {
-			return ProxyQAbstractItemView().ItemDelegateForRow(row);
+			return ((QAbstractItemView) interceptor).ItemDelegateForRow(row);
 		}
 		[SmokeMethod("setItemDelegateForColumn", "(int, QAbstractItemDelegate*)", "$#")]
 		public void SetItemDelegateForColumn(int column, QAbstractItemDelegate arg2) {
-			ProxyQAbstractItemView().SetItemDelegateForColumn(column,arg2);
+			((QAbstractItemView) interceptor).SetItemDelegateForColumn(column,arg2);
 		}
 		[SmokeMethod("itemDelegateForColumn", "(int) const", "$")]
 		public QAbstractItemDelegate ItemDelegateForColumn(int column) {
-			return ProxyQAbstractItemView().ItemDelegateForColumn(column);
+			return ((QAbstractItemView) interceptor).ItemDelegateForColumn(column);
 		}
 		[SmokeMethod("itemDelegate", "(const QModelIndex&) const", "#")]
 		public QAbstractItemDelegate ItemDelegate(QModelIndex index) {
-			return ProxyQAbstractItemView().ItemDelegate(index);
+			return ((QAbstractItemView) interceptor).ItemDelegate(index);
 		}
 		[SmokeMethod("inputMethodQuery", "(Qt::InputMethodQuery) const", "$")]
 		public override QVariant InputMethodQuery(Qt.InputMethodQuery query) {
-			return ProxyQAbstractItemView().InputMethodQuery(query);
+			return ((QAbstractItemView) interceptor).InputMethodQuery(query);
 		}
 		[Q_SLOT("void reset()")]
 		[SmokeMethod("reset", "()", "")]
 		public virtual void Reset() {
-			ProxyQAbstractItemView().Reset();
+			((QAbstractItemView) interceptor).Reset();
 		}
 		[Q_SLOT("void setRootIndex(const QModelIndex&)")]
 		[SmokeMethod("setRootIndex", "(const QModelIndex&)", "#")]
 		public virtual void SetRootIndex(QModelIndex index) {
-			ProxyQAbstractItemView().SetRootIndex(index);
+			((QAbstractItemView) interceptor).SetRootIndex(index);
 		}
 		[Q_SLOT("void doItemsLayout()")]
 		[SmokeMethod("doItemsLayout", "()", "")]
 		public virtual void DoItemsLayout() {
-			ProxyQAbstractItemView().DoItemsLayout();
+			((QAbstractItemView) interceptor).DoItemsLayout();
 		}
 		[Q_SLOT("void selectAll()")]
 		[SmokeMethod("selectAll", "()", "")]
 		public virtual void SelectAll() {
-			ProxyQAbstractItemView().SelectAll();
+			((QAbstractItemView) interceptor).SelectAll();
 		}
 		[Q_SLOT("void edit(const QModelIndex&)")]
 		[SmokeMethod("edit", "(const QModelIndex&)", "#")]
 		public void Edit(QModelIndex index) {
-			ProxyQAbstractItemView().Edit(index);
+			((QAbstractItemView) interceptor).Edit(index);
 		}
 		[Q_SLOT("void clearSelection()")]
 		[SmokeMethod("clearSelection", "()", "")]
 		public void ClearSelection() {
-			ProxyQAbstractItemView().ClearSelection();
+			((QAbstractItemView) interceptor).ClearSelection();
 		}
 		[Q_SLOT("void setCurrentIndex(const QModelIndex&)")]
 		[SmokeMethod("setCurrentIndex", "(const QModelIndex&)", "#")]
 		public void SetCurrentIndex(QModelIndex index) {
-			ProxyQAbstractItemView().SetCurrentIndex(index);
+			((QAbstractItemView) interceptor).SetCurrentIndex(index);
 		}
 		[Q_SLOT("void scrollToTop()")]
 		[SmokeMethod("scrollToTop", "()", "")]
 		public void ScrollToTop() {
-			ProxyQAbstractItemView().ScrollToTop();
+			((QAbstractItemView) interceptor).ScrollToTop();
 		}
 		[Q_SLOT("void scrollToBottom()")]
 		[SmokeMethod("scrollToBottom", "()", "")]
 		public void ScrollToBottom() {
-			ProxyQAbstractItemView().ScrollToBottom();
+			((QAbstractItemView) interceptor).ScrollToBottom();
 		}
 		[SmokeMethod("setHorizontalStepsPerItem", "(int)", "$")]
 		protected void SetHorizontalStepsPerItem(int steps) {
-			ProxyQAbstractItemView().SetHorizontalStepsPerItem(steps);
+			((QAbstractItemView) interceptor).SetHorizontalStepsPerItem(steps);
 		}
 		[SmokeMethod("horizontalStepsPerItem", "() const", "")]
 		protected int HorizontalStepsPerItem() {
-			return ProxyQAbstractItemView().HorizontalStepsPerItem();
+			return ((QAbstractItemView) interceptor).HorizontalStepsPerItem();
 		}
 		[SmokeMethod("setVerticalStepsPerItem", "(int)", "$")]
 		protected void SetVerticalStepsPerItem(int steps) {
-			ProxyQAbstractItemView().SetVerticalStepsPerItem(steps);
+			((QAbstractItemView) interceptor).SetVerticalStepsPerItem(steps);
 		}
 		[SmokeMethod("verticalStepsPerItem", "() const", "")]
 		protected int VerticalStepsPerItem() {
-			return ProxyQAbstractItemView().VerticalStepsPerItem();
+			return ((QAbstractItemView) interceptor).VerticalStepsPerItem();
 		}
 		[SmokeMethod("moveCursor", "(QAbstractItemView::CursorAction, Qt::KeyboardModifiers)", "$$")]
 		protected abstract QModelIndex MoveCursor(QAbstractItemView.CursorAction cursorAction, int modifiers);
@@ -358,220 +352,220 @@ namespace Qyoto {
 		protected abstract QRegion VisualRegionForSelection(QItemSelection selection);
 		[SmokeMethod("selectedIndexes", "() const", "")]
 		protected virtual List<QModelIndex> SelectedIndexes() {
-			return ProxyQAbstractItemView().SelectedIndexes();
+			return ((QAbstractItemView) interceptor).SelectedIndexes();
 		}
 		[SmokeMethod("edit", "(const QModelIndex&, QAbstractItemView::EditTrigger, QEvent*)", "#$#")]
 		protected virtual bool Edit(QModelIndex index, QAbstractItemView.EditTrigger trigger, QEvent arg3) {
-			return ProxyQAbstractItemView().Edit(index,trigger,arg3);
+			return ((QAbstractItemView) interceptor).Edit(index,trigger,arg3);
 		}
 		[SmokeMethod("selectionCommand", "(const QModelIndex&, const QEvent*) const", "##")]
 		protected virtual int SelectionCommand(QModelIndex index, QEvent arg2) {
-			return ProxyQAbstractItemView().SelectionCommand(index,arg2);
+			return ((QAbstractItemView) interceptor).SelectionCommand(index,arg2);
 		}
 		[SmokeMethod("selectionCommand", "(const QModelIndex&) const", "#")]
 		protected virtual int SelectionCommand(QModelIndex index) {
-			return ProxyQAbstractItemView().SelectionCommand(index);
+			return ((QAbstractItemView) interceptor).SelectionCommand(index);
 		}
 		[SmokeMethod("startDrag", "(Qt::DropActions)", "$")]
 		protected virtual void StartDrag(int supportedActions) {
-			ProxyQAbstractItemView().StartDrag(supportedActions);
+			((QAbstractItemView) interceptor).StartDrag(supportedActions);
 		}
 		[SmokeMethod("viewOptions", "() const", "")]
 		protected virtual QStyleOptionViewItem ViewOptions() {
-			return ProxyQAbstractItemView().ViewOptions();
+			return ((QAbstractItemView) interceptor).ViewOptions();
 		}
 		[SmokeMethod("state", "() const", "")]
 		protected QAbstractItemView.State state() {
-			return ProxyQAbstractItemView().state();
+			return ((QAbstractItemView) interceptor).state();
 		}
 		[SmokeMethod("setState", "(QAbstractItemView::State)", "$")]
 		protected void SetState(QAbstractItemView.State state) {
-			ProxyQAbstractItemView().SetState(state);
+			((QAbstractItemView) interceptor).SetState(state);
 		}
 		[SmokeMethod("scheduleDelayedItemsLayout", "()", "")]
 		protected void ScheduleDelayedItemsLayout() {
-			ProxyQAbstractItemView().ScheduleDelayedItemsLayout();
+			((QAbstractItemView) interceptor).ScheduleDelayedItemsLayout();
 		}
 		[SmokeMethod("executeDelayedItemsLayout", "()", "")]
 		protected void ExecuteDelayedItemsLayout() {
-			ProxyQAbstractItemView().ExecuteDelayedItemsLayout();
+			((QAbstractItemView) interceptor).ExecuteDelayedItemsLayout();
 		}
 		[SmokeMethod("setDirtyRegion", "(const QRegion&)", "#")]
 		protected void SetDirtyRegion(QRegion region) {
-			ProxyQAbstractItemView().SetDirtyRegion(region);
+			((QAbstractItemView) interceptor).SetDirtyRegion(region);
 		}
 		[SmokeMethod("scrollDirtyRegion", "(int, int)", "$$")]
 		protected void ScrollDirtyRegion(int dx, int dy) {
-			ProxyQAbstractItemView().ScrollDirtyRegion(dx,dy);
+			((QAbstractItemView) interceptor).ScrollDirtyRegion(dx,dy);
 		}
 		[SmokeMethod("dirtyRegionOffset", "() const", "")]
 		protected QPoint DirtyRegionOffset() {
-			return ProxyQAbstractItemView().DirtyRegionOffset();
+			return ((QAbstractItemView) interceptor).DirtyRegionOffset();
 		}
 		[SmokeMethod("startAutoScroll", "()", "")]
 		protected void StartAutoScroll() {
-			ProxyQAbstractItemView().StartAutoScroll();
+			((QAbstractItemView) interceptor).StartAutoScroll();
 		}
 		[SmokeMethod("stopAutoScroll", "()", "")]
 		protected void StopAutoScroll() {
-			ProxyQAbstractItemView().StopAutoScroll();
+			((QAbstractItemView) interceptor).StopAutoScroll();
 		}
 		[SmokeMethod("doAutoScroll", "()", "")]
 		protected void DoAutoScroll() {
-			ProxyQAbstractItemView().DoAutoScroll();
+			((QAbstractItemView) interceptor).DoAutoScroll();
 		}
 		[SmokeMethod("focusNextPrevChild", "(bool)", "$")]
 		protected override bool FocusNextPrevChild(bool next) {
-			return ProxyQAbstractItemView().FocusNextPrevChild(next);
+			return ((QAbstractItemView) interceptor).FocusNextPrevChild(next);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent arg1) {
-			return ProxyQAbstractItemView().Event(arg1);
+			return ((QAbstractItemView) interceptor).Event(arg1);
 		}
 		[SmokeMethod("viewportEvent", "(QEvent*)", "#")]
 		protected override bool ViewportEvent(QEvent arg1) {
-			return ProxyQAbstractItemView().ViewportEvent(arg1);
+			return ((QAbstractItemView) interceptor).ViewportEvent(arg1);
 		}
 		[SmokeMethod("mousePressEvent", "(QMouseEvent*)", "#")]
 		protected override void MousePressEvent(QMouseEvent arg1) {
-			ProxyQAbstractItemView().MousePressEvent(arg1);
+			((QAbstractItemView) interceptor).MousePressEvent(arg1);
 		}
 		[SmokeMethod("mouseMoveEvent", "(QMouseEvent*)", "#")]
 		protected override void MouseMoveEvent(QMouseEvent arg1) {
-			ProxyQAbstractItemView().MouseMoveEvent(arg1);
+			((QAbstractItemView) interceptor).MouseMoveEvent(arg1);
 		}
 		[SmokeMethod("mouseReleaseEvent", "(QMouseEvent*)", "#")]
 		protected override void MouseReleaseEvent(QMouseEvent arg1) {
-			ProxyQAbstractItemView().MouseReleaseEvent(arg1);
+			((QAbstractItemView) interceptor).MouseReleaseEvent(arg1);
 		}
 		[SmokeMethod("mouseDoubleClickEvent", "(QMouseEvent*)", "#")]
 		protected override void MouseDoubleClickEvent(QMouseEvent arg1) {
-			ProxyQAbstractItemView().MouseDoubleClickEvent(arg1);
+			((QAbstractItemView) interceptor).MouseDoubleClickEvent(arg1);
 		}
 		[SmokeMethod("dragEnterEvent", "(QDragEnterEvent*)", "#")]
 		protected override void DragEnterEvent(QDragEnterEvent arg1) {
-			ProxyQAbstractItemView().DragEnterEvent(arg1);
+			((QAbstractItemView) interceptor).DragEnterEvent(arg1);
 		}
 		[SmokeMethod("dragMoveEvent", "(QDragMoveEvent*)", "#")]
 		protected override void DragMoveEvent(QDragMoveEvent arg1) {
-			ProxyQAbstractItemView().DragMoveEvent(arg1);
+			((QAbstractItemView) interceptor).DragMoveEvent(arg1);
 		}
 		[SmokeMethod("dragLeaveEvent", "(QDragLeaveEvent*)", "#")]
 		protected override void DragLeaveEvent(QDragLeaveEvent arg1) {
-			ProxyQAbstractItemView().DragLeaveEvent(arg1);
+			((QAbstractItemView) interceptor).DragLeaveEvent(arg1);
 		}
 		[SmokeMethod("dropEvent", "(QDropEvent*)", "#")]
 		protected override void DropEvent(QDropEvent arg1) {
-			ProxyQAbstractItemView().DropEvent(arg1);
+			((QAbstractItemView) interceptor).DropEvent(arg1);
 		}
 		[SmokeMethod("focusInEvent", "(QFocusEvent*)", "#")]
 		protected override void FocusInEvent(QFocusEvent arg1) {
-			ProxyQAbstractItemView().FocusInEvent(arg1);
+			((QAbstractItemView) interceptor).FocusInEvent(arg1);
 		}
 		[SmokeMethod("focusOutEvent", "(QFocusEvent*)", "#")]
 		protected override void FocusOutEvent(QFocusEvent arg1) {
-			ProxyQAbstractItemView().FocusOutEvent(arg1);
+			((QAbstractItemView) interceptor).FocusOutEvent(arg1);
 		}
 		[SmokeMethod("keyPressEvent", "(QKeyEvent*)", "#")]
 		protected override void KeyPressEvent(QKeyEvent arg1) {
-			ProxyQAbstractItemView().KeyPressEvent(arg1);
+			((QAbstractItemView) interceptor).KeyPressEvent(arg1);
 		}
 		[SmokeMethod("resizeEvent", "(QResizeEvent*)", "#")]
 		protected override void ResizeEvent(QResizeEvent arg1) {
-			ProxyQAbstractItemView().ResizeEvent(arg1);
+			((QAbstractItemView) interceptor).ResizeEvent(arg1);
 		}
 		[SmokeMethod("timerEvent", "(QTimerEvent*)", "#")]
 		protected override void TimerEvent(QTimerEvent arg1) {
-			ProxyQAbstractItemView().TimerEvent(arg1);
+			((QAbstractItemView) interceptor).TimerEvent(arg1);
 		}
 		[SmokeMethod("inputMethodEvent", "(QInputMethodEvent*)", "#")]
 		protected override void InputMethodEvent(QInputMethodEvent arg1) {
-			ProxyQAbstractItemView().InputMethodEvent(arg1);
+			((QAbstractItemView) interceptor).InputMethodEvent(arg1);
 		}
 		[SmokeMethod("dropIndicatorPosition", "() const", "")]
 		protected QAbstractItemView.DropIndicatorPosition dropIndicatorPosition() {
-			return ProxyQAbstractItemView().dropIndicatorPosition();
+			return ((QAbstractItemView) interceptor).dropIndicatorPosition();
 		}
 		[Q_SLOT("void dataChanged(const QModelIndex&, const QModelIndex&)")]
 		[SmokeMethod("dataChanged", "(const QModelIndex&, const QModelIndex&)", "##")]
 		protected virtual void DataChanged(QModelIndex topLeft, QModelIndex bottomRight) {
-			ProxyQAbstractItemView().DataChanged(topLeft,bottomRight);
+			((QAbstractItemView) interceptor).DataChanged(topLeft,bottomRight);
 		}
 		[Q_SLOT("void rowsInserted(const QModelIndex&, int, int)")]
 		[SmokeMethod("rowsInserted", "(const QModelIndex&, int, int)", "#$$")]
 		protected virtual void RowsInserted(QModelIndex parent, int start, int end) {
-			ProxyQAbstractItemView().RowsInserted(parent,start,end);
+			((QAbstractItemView) interceptor).RowsInserted(parent,start,end);
 		}
 		[Q_SLOT("void rowsAboutToBeRemoved(const QModelIndex&, int, int)")]
 		[SmokeMethod("rowsAboutToBeRemoved", "(const QModelIndex&, int, int)", "#$$")]
 		protected virtual void RowsAboutToBeRemoved(QModelIndex parent, int start, int end) {
-			ProxyQAbstractItemView().RowsAboutToBeRemoved(parent,start,end);
+			((QAbstractItemView) interceptor).RowsAboutToBeRemoved(parent,start,end);
 		}
 		[Q_SLOT("void selectionChanged(const QItemSelection&, const QItemSelection&)")]
 		[SmokeMethod("selectionChanged", "(const QItemSelection&, const QItemSelection&)", "##")]
 		protected virtual void SelectionChanged(QItemSelection selected, QItemSelection deselected) {
-			ProxyQAbstractItemView().SelectionChanged(selected,deselected);
+			((QAbstractItemView) interceptor).SelectionChanged(selected,deselected);
 		}
 		[Q_SLOT("void currentChanged(const QModelIndex&, const QModelIndex&)")]
 		[SmokeMethod("currentChanged", "(const QModelIndex&, const QModelIndex&)", "##")]
 		protected virtual void CurrentChanged(QModelIndex current, QModelIndex previous) {
-			ProxyQAbstractItemView().CurrentChanged(current,previous);
+			((QAbstractItemView) interceptor).CurrentChanged(current,previous);
 		}
 		[Q_SLOT("void updateEditorData()")]
 		[SmokeMethod("updateEditorData", "()", "")]
 		protected virtual void UpdateEditorData() {
-			ProxyQAbstractItemView().UpdateEditorData();
+			((QAbstractItemView) interceptor).UpdateEditorData();
 		}
 		[Q_SLOT("void updateEditorGeometries()")]
 		[SmokeMethod("updateEditorGeometries", "()", "")]
 		protected virtual void UpdateEditorGeometries() {
-			ProxyQAbstractItemView().UpdateEditorGeometries();
+			((QAbstractItemView) interceptor).UpdateEditorGeometries();
 		}
 		[Q_SLOT("void updateGeometries()")]
 		[SmokeMethod("updateGeometries", "()", "")]
 		protected virtual void UpdateGeometries() {
-			ProxyQAbstractItemView().UpdateGeometries();
+			((QAbstractItemView) interceptor).UpdateGeometries();
 		}
 		[Q_SLOT("void verticalScrollbarAction(int)")]
 		[SmokeMethod("verticalScrollbarAction", "(int)", "$")]
 		protected virtual void VerticalScrollbarAction(int action) {
-			ProxyQAbstractItemView().VerticalScrollbarAction(action);
+			((QAbstractItemView) interceptor).VerticalScrollbarAction(action);
 		}
 		[Q_SLOT("void horizontalScrollbarAction(int)")]
 		[SmokeMethod("horizontalScrollbarAction", "(int)", "$")]
 		protected virtual void HorizontalScrollbarAction(int action) {
-			ProxyQAbstractItemView().HorizontalScrollbarAction(action);
+			((QAbstractItemView) interceptor).HorizontalScrollbarAction(action);
 		}
 		[Q_SLOT("void verticalScrollbarValueChanged(int)")]
 		[SmokeMethod("verticalScrollbarValueChanged", "(int)", "$")]
 		protected virtual void VerticalScrollbarValueChanged(int value) {
-			ProxyQAbstractItemView().VerticalScrollbarValueChanged(value);
+			((QAbstractItemView) interceptor).VerticalScrollbarValueChanged(value);
 		}
 		[Q_SLOT("void horizontalScrollbarValueChanged(int)")]
 		[SmokeMethod("horizontalScrollbarValueChanged", "(int)", "$")]
 		protected virtual void HorizontalScrollbarValueChanged(int value) {
-			ProxyQAbstractItemView().HorizontalScrollbarValueChanged(value);
+			((QAbstractItemView) interceptor).HorizontalScrollbarValueChanged(value);
 		}
 		[Q_SLOT("void closeEditor(QWidget*, QAbstractItemDelegate::EndEditHint)")]
 		[SmokeMethod("closeEditor", "(QWidget*, QAbstractItemDelegate::EndEditHint)", "#$")]
 		protected virtual void CloseEditor(QWidget editor, QAbstractItemDelegate.EndEditHint hint) {
-			ProxyQAbstractItemView().CloseEditor(editor,hint);
+			((QAbstractItemView) interceptor).CloseEditor(editor,hint);
 		}
 		[Q_SLOT("void commitData(QWidget*)")]
 		[SmokeMethod("commitData", "(QWidget*)", "#")]
 		protected virtual void CommitData(QWidget editor) {
-			ProxyQAbstractItemView().CommitData(editor);
+			((QAbstractItemView) interceptor).CommitData(editor);
 		}
 		[Q_SLOT("void editorDestroyed(QObject*)")]
 		[SmokeMethod("editorDestroyed", "(QObject*)", "#")]
 		protected virtual void EditorDestroyed(QObject editor) {
-			ProxyQAbstractItemView().EditorDestroyed(editor);
+			((QAbstractItemView) interceptor).EditorDestroyed(editor);
 		}
 		public static string Tr(string s, string c) {
-			return StaticQAbstractItemView().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQAbstractItemView().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQAbstractItemViewSignals Emit {
 			get { return (IQAbstractItemViewSignals) Q_EMIT; }

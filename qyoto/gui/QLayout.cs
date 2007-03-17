@@ -17,18 +17,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QLayout), this);
-			_interceptor = (QLayout) realProxy.GetTransparentProxy();
+			interceptor = (QLayout) realProxy.GetTransparentProxy();
 		}
-		private QLayout ProxyQLayout() {
-			return (QLayout) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQLayoutProxy staticInterceptor = null;
 		static QLayout() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQLayoutProxy), null);
-			_staticInterceptor = (IQLayoutProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQLayoutProxy StaticQLayout() {
-			return (IQLayoutProxy) _staticInterceptor;
+			staticInterceptor = (IQLayoutProxy) realProxy.GetTransparentProxy();
 		}
 		public enum SizeConstraint {
 			SetDefaultConstraint = 0,
@@ -59,7 +53,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QLayout", "(QWidget*)", "#")]
 		private void NewQLayout(QWidget parent) {
-			ProxyQLayout().NewQLayout(parent);
+			((QLayout) interceptor).NewQLayout(parent);
 		}
 		public QLayout() : this((Type) null) {
 			CreateProxy();
@@ -67,73 +61,73 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QLayout", "()", "")]
 		private void NewQLayout() {
-			ProxyQLayout().NewQLayout();
+			((QLayout) interceptor).NewQLayout();
 		}
 		[SmokeMethod("setAlignment", "(QWidget*, Qt::Alignment)", "#$")]
 		public bool SetAlignment(QWidget w, int alignment) {
-			return ProxyQLayout().SetAlignment(w,alignment);
+			return ((QLayout) interceptor).SetAlignment(w,alignment);
 		}
 		[SmokeMethod("setAlignment", "(QLayout*, Qt::Alignment)", "#$")]
 		public bool SetAlignment(QLayout l, int alignment) {
-			return ProxyQLayout().SetAlignment(l,alignment);
+			return ((QLayout) interceptor).SetAlignment(l,alignment);
 		}
 		[SmokeMethod("setAlignment", "(Qt::Alignment)", "$")]
 		public void SetAlignment(int alignment) {
-			ProxyQLayout().SetAlignment(alignment);
+			((QLayout) interceptor).SetAlignment(alignment);
 		}
 		[SmokeMethod("setMenuBar", "(QWidget*)", "#")]
 		public void SetMenuBar(QWidget w) {
-			ProxyQLayout().SetMenuBar(w);
+			((QLayout) interceptor).SetMenuBar(w);
 		}
 		[SmokeMethod("menuBar", "() const", "")]
 		public QWidget MenuBar() {
-			return ProxyQLayout().MenuBar();
+			return ((QLayout) interceptor).MenuBar();
 		}
 		[SmokeMethod("parentWidget", "() const", "")]
 		public QWidget ParentWidget() {
-			return ProxyQLayout().ParentWidget();
+			return ((QLayout) interceptor).ParentWidget();
 		}
 		[SmokeMethod("invalidate", "()", "")]
 		public virtual void Invalidate() {
-			ProxyQLayout().Invalidate();
+			((QLayout) interceptor).Invalidate();
 		}
 		[SmokeMethod("geometry", "() const", "")]
 		public virtual QRect Geometry() {
-			return ProxyQLayout().Geometry();
+			return ((QLayout) interceptor).Geometry();
 		}
 		[SmokeMethod("activate", "()", "")]
 		public bool Activate() {
-			return ProxyQLayout().Activate();
+			return ((QLayout) interceptor).Activate();
 		}
 		[SmokeMethod("update", "()", "")]
 		public void Update() {
-			ProxyQLayout().Update();
+			((QLayout) interceptor).Update();
 		}
 		[SmokeMethod("addWidget", "(QWidget*)", "#")]
 		public void AddWidget(QWidget w) {
-			ProxyQLayout().AddWidget(w);
+			((QLayout) interceptor).AddWidget(w);
 		}
 		[SmokeMethod("addItem", "(QLayoutItem*)", "#")]
 		public abstract void AddItem(IQLayoutItem arg1);
 		[SmokeMethod("removeWidget", "(QWidget*)", "#")]
 		public void RemoveWidget(QWidget w) {
-			ProxyQLayout().RemoveWidget(w);
+			((QLayout) interceptor).RemoveWidget(w);
 		}
 		[SmokeMethod("removeItem", "(QLayoutItem*)", "#")]
 		public void RemoveItem(IQLayoutItem arg1) {
-			ProxyQLayout().RemoveItem(arg1);
+			((QLayout) interceptor).RemoveItem(arg1);
 		}
 		[SmokeMethod("expandingDirections", "() const", "")]
 		public virtual int ExpandingDirections() {
-			return ProxyQLayout().ExpandingDirections();
+			return ((QLayout) interceptor).ExpandingDirections();
 		}
 		[SmokeMethod("minimumSize", "() const", "")]
 		public virtual QSize MinimumSize() {
-			return ProxyQLayout().MinimumSize();
+			return ((QLayout) interceptor).MinimumSize();
 		}
 		[SmokeMethod("maximumSize", "() const", "")]
 		public virtual QSize MaximumSize() {
-			return ProxyQLayout().MaximumSize();
+			return ((QLayout) interceptor).MaximumSize();
 		}
 		[SmokeMethod("setGeometry", "(const QRect&)", "#")]
 		public abstract void SetGeometry(QRect arg1);
@@ -143,96 +137,96 @@ namespace Qyoto {
 		public abstract IQLayoutItem TakeAt(int index);
 		[SmokeMethod("indexOf", "(QWidget*) const", "#")]
 		public virtual int IndexOf(QWidget arg1) {
-			return ProxyQLayout().IndexOf(arg1);
+			return ((QLayout) interceptor).IndexOf(arg1);
 		}
 		[SmokeMethod("count", "() const", "")]
 		public abstract int Count();
 		[SmokeMethod("isEmpty", "() const", "")]
 		public virtual bool IsEmpty() {
-			return ProxyQLayout().IsEmpty();
+			return ((QLayout) interceptor).IsEmpty();
 		}
 		[SmokeMethod("totalHeightForWidth", "(int) const", "$")]
 		public int TotalHeightForWidth(int w) {
-			return ProxyQLayout().TotalHeightForWidth(w);
+			return ((QLayout) interceptor).TotalHeightForWidth(w);
 		}
 		[SmokeMethod("totalMinimumSize", "() const", "")]
 		public QSize TotalMinimumSize() {
-			return ProxyQLayout().TotalMinimumSize();
+			return ((QLayout) interceptor).TotalMinimumSize();
 		}
 		[SmokeMethod("totalMaximumSize", "() const", "")]
 		public QSize TotalMaximumSize() {
-			return ProxyQLayout().TotalMaximumSize();
+			return ((QLayout) interceptor).TotalMaximumSize();
 		}
 		[SmokeMethod("totalSizeHint", "() const", "")]
 		public QSize TotalSizeHint() {
-			return ProxyQLayout().TotalSizeHint();
+			return ((QLayout) interceptor).TotalSizeHint();
 		}
 		[SmokeMethod("layout", "()", "")]
 		public virtual QLayout Layout() {
-			return ProxyQLayout().Layout();
+			return ((QLayout) interceptor).Layout();
 		}
 		[SmokeMethod("setEnabled", "(bool)", "$")]
 		public void SetEnabled(bool arg1) {
-			ProxyQLayout().SetEnabled(arg1);
+			((QLayout) interceptor).SetEnabled(arg1);
 		}
 		[SmokeMethod("isEnabled", "() const", "")]
 		public bool IsEnabled() {
-			return ProxyQLayout().IsEnabled();
+			return ((QLayout) interceptor).IsEnabled();
 		}
 		[SmokeMethod("widgetEvent", "(QEvent*)", "#")]
 		protected void WidgetEvent(QEvent arg1) {
-			ProxyQLayout().WidgetEvent(arg1);
+			((QLayout) interceptor).WidgetEvent(arg1);
 		}
 		[SmokeMethod("childEvent", "(QChildEvent*)", "#")]
 		protected override void ChildEvent(QChildEvent e) {
-			ProxyQLayout().ChildEvent(e);
+			((QLayout) interceptor).ChildEvent(e);
 		}
 		[SmokeMethod("addChildLayout", "(QLayout*)", "#")]
 		protected void AddChildLayout(QLayout l) {
-			ProxyQLayout().AddChildLayout(l);
+			((QLayout) interceptor).AddChildLayout(l);
 		}
 		[SmokeMethod("addChildWidget", "(QWidget*)", "#")]
 		protected void AddChildWidget(QWidget w) {
-			ProxyQLayout().AddChildWidget(w);
+			((QLayout) interceptor).AddChildWidget(w);
 		}
 		[SmokeMethod("alignmentRect", "(const QRect&) const", "#")]
 		protected QRect AlignmentRect(QRect arg1) {
-			return ProxyQLayout().AlignmentRect(arg1);
+			return ((QLayout) interceptor).AlignmentRect(arg1);
 		}
 		[SmokeMethod("sizeHint", "() const", "")]
 		public abstract QSize SizeHint();
 		[SmokeMethod("hasHeightForWidth", "() const", "")]
 		public virtual bool HasHeightForWidth() {
-			return ProxyQLayout().HasHeightForWidth();
+			return ((QLayout) interceptor).HasHeightForWidth();
 		}
 		[SmokeMethod("heightForWidth", "(int) const", "$")]
 		public virtual int HeightForWidth(int arg1) {
-			return ProxyQLayout().HeightForWidth(arg1);
+			return ((QLayout) interceptor).HeightForWidth(arg1);
 		}
 		[SmokeMethod("minimumHeightForWidth", "(int) const", "$")]
 		public virtual int MinimumHeightForWidth(int arg1) {
-			return ProxyQLayout().MinimumHeightForWidth(arg1);
+			return ((QLayout) interceptor).MinimumHeightForWidth(arg1);
 		}
 		[SmokeMethod("widget", "()", "")]
 		public virtual QWidget Widget() {
-			return ProxyQLayout().Widget();
+			return ((QLayout) interceptor).Widget();
 		}
 		[SmokeMethod("spacerItem", "()", "")]
 		public virtual QSpacerItem SpacerItem() {
-			return ProxyQLayout().SpacerItem();
+			return ((QLayout) interceptor).SpacerItem();
 		}
 		[SmokeMethod("alignment", "() const", "")]
 		public int Alignment() {
-			return ProxyQLayout().Alignment();
+			return ((QLayout) interceptor).Alignment();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQLayout().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQLayout().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		public static QSize ClosestAcceptableSize(QWidget w, QSize s) {
-			return StaticQLayout().ClosestAcceptableSize(w,s);
+			return staticInterceptor.ClosestAcceptableSize(w,s);
 		}
 		protected new IQLayoutSignals Emit {
 			get { return (IQLayoutSignals) Q_EMIT; }

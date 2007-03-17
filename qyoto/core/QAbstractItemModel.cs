@@ -17,18 +17,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAbstractItemModel), this);
-			_interceptor = (QAbstractItemModel) realProxy.GetTransparentProxy();
+			interceptor = (QAbstractItemModel) realProxy.GetTransparentProxy();
 		}
-		private QAbstractItemModel ProxyQAbstractItemModel() {
-			return (QAbstractItemModel) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQAbstractItemModelProxy staticInterceptor = null;
 		static QAbstractItemModel() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQAbstractItemModelProxy), null);
-			_staticInterceptor = (IQAbstractItemModelProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQAbstractItemModelProxy StaticQAbstractItemModel() {
-			return (IQAbstractItemModelProxy) _staticInterceptor;
+			staticInterceptor = (IQAbstractItemModelProxy) realProxy.GetTransparentProxy();
 		}
 		// QModelIndex createIndex(int arg1,int arg2,void* arg3); >>>> NOT CONVERTED
 		public QAbstractItemModel(QObject parent) : this((Type) null) {
@@ -37,7 +31,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QAbstractItemModel", "(QObject*)", "#")]
 		private void NewQAbstractItemModel(QObject parent) {
-			ProxyQAbstractItemModel().NewQAbstractItemModel(parent);
+			((QAbstractItemModel) interceptor).NewQAbstractItemModel(parent);
 		}
 		public QAbstractItemModel() : this((Type) null) {
 			CreateProxy();
@@ -45,15 +39,15 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QAbstractItemModel", "()", "")]
 		private void NewQAbstractItemModel() {
-			ProxyQAbstractItemModel().NewQAbstractItemModel();
+			((QAbstractItemModel) interceptor).NewQAbstractItemModel();
 		}
 		[SmokeMethod("hasIndex", "(int, int, const QModelIndex&) const", "$$#")]
 		public bool HasIndex(int row, int column, QModelIndex parent) {
-			return ProxyQAbstractItemModel().HasIndex(row,column,parent);
+			return ((QAbstractItemModel) interceptor).HasIndex(row,column,parent);
 		}
 		[SmokeMethod("hasIndex", "(int, int) const", "$$")]
 		public bool HasIndex(int row, int column) {
-			return ProxyQAbstractItemModel().HasIndex(row,column);
+			return ((QAbstractItemModel) interceptor).HasIndex(row,column);
 		}
 		[SmokeMethod("index", "(int, int, const QModelIndex&) const", "$$#")]
 		public abstract QModelIndex Index(int row, int column, QModelIndex parent);
@@ -61,7 +55,7 @@ namespace Qyoto {
 		public abstract QModelIndex Parent(QModelIndex child);
 		[SmokeMethod("sibling", "(int, int, const QModelIndex&) const", "$$#")]
 		public QModelIndex Sibling(int row, int column, QModelIndex idx) {
-			return ProxyQAbstractItemModel().Sibling(row,column,idx);
+			return ((QAbstractItemModel) interceptor).Sibling(row,column,idx);
 		}
 		[SmokeMethod("rowCount", "(const QModelIndex&) const", "#")]
 		public abstract int RowCount(QModelIndex parent);
@@ -69,261 +63,261 @@ namespace Qyoto {
 		public abstract int ColumnCount(QModelIndex parent);
 		[SmokeMethod("hasChildren", "(const QModelIndex&) const", "#")]
 		public virtual bool HasChildren(QModelIndex parent) {
-			return ProxyQAbstractItemModel().HasChildren(parent);
+			return ((QAbstractItemModel) interceptor).HasChildren(parent);
 		}
 		[SmokeMethod("hasChildren", "() const", "")]
 		public virtual bool HasChildren() {
-			return ProxyQAbstractItemModel().HasChildren();
+			return ((QAbstractItemModel) interceptor).HasChildren();
 		}
 		[SmokeMethod("data", "(const QModelIndex&, int) const", "#$")]
 		public abstract QVariant Data(QModelIndex index, int role);
 		[SmokeMethod("setData", "(const QModelIndex&, const QVariant&, int)", "##$")]
 		public virtual bool SetData(QModelIndex index, QVariant value, int role) {
-			return ProxyQAbstractItemModel().SetData(index,value,role);
+			return ((QAbstractItemModel) interceptor).SetData(index,value,role);
 		}
 		[SmokeMethod("setData", "(const QModelIndex&, const QVariant&)", "##")]
 		public virtual bool SetData(QModelIndex index, QVariant value) {
-			return ProxyQAbstractItemModel().SetData(index,value);
+			return ((QAbstractItemModel) interceptor).SetData(index,value);
 		}
 		[SmokeMethod("headerData", "(int, Qt::Orientation, int) const", "$$$")]
 		public virtual QVariant HeaderData(int section, Qt.Orientation orientation, int role) {
-			return ProxyQAbstractItemModel().HeaderData(section,orientation,role);
+			return ((QAbstractItemModel) interceptor).HeaderData(section,orientation,role);
 		}
 		[SmokeMethod("headerData", "(int, Qt::Orientation) const", "$$")]
 		public virtual QVariant HeaderData(int section, Qt.Orientation orientation) {
-			return ProxyQAbstractItemModel().HeaderData(section,orientation);
+			return ((QAbstractItemModel) interceptor).HeaderData(section,orientation);
 		}
 		[SmokeMethod("setHeaderData", "(int, Qt::Orientation, const QVariant&, int)", "$$#$")]
 		public virtual bool SetHeaderData(int section, Qt.Orientation orientation, QVariant value, int role) {
-			return ProxyQAbstractItemModel().SetHeaderData(section,orientation,value,role);
+			return ((QAbstractItemModel) interceptor).SetHeaderData(section,orientation,value,role);
 		}
 		[SmokeMethod("setHeaderData", "(int, Qt::Orientation, const QVariant&)", "$$#")]
 		public virtual bool SetHeaderData(int section, Qt.Orientation orientation, QVariant value) {
-			return ProxyQAbstractItemModel().SetHeaderData(section,orientation,value);
+			return ((QAbstractItemModel) interceptor).SetHeaderData(section,orientation,value);
 		}
 		[SmokeMethod("itemData", "(const QModelIndex&) const", "#")]
 		public virtual Dictionary<int, QVariant> ItemData(QModelIndex index) {
-			return ProxyQAbstractItemModel().ItemData(index);
+			return ((QAbstractItemModel) interceptor).ItemData(index);
 		}
 		[SmokeMethod("setItemData", "(const QModelIndex&, const QMap<int, QVariant>&)", "#?")]
 		public virtual bool SetItemData(QModelIndex index, Dictionary<int, QVariant> roles) {
-			return ProxyQAbstractItemModel().SetItemData(index,roles);
+			return ((QAbstractItemModel) interceptor).SetItemData(index,roles);
 		}
 		[SmokeMethod("mimeTypes", "() const", "")]
 		public virtual List<string> MimeTypes() {
-			return ProxyQAbstractItemModel().MimeTypes();
+			return ((QAbstractItemModel) interceptor).MimeTypes();
 		}
 		[SmokeMethod("mimeData", "(const QModelIndexList&) const", "?")]
 		public virtual QMimeData MimeData(List<QModelIndex> indexes) {
-			return ProxyQAbstractItemModel().MimeData(indexes);
+			return ((QAbstractItemModel) interceptor).MimeData(indexes);
 		}
 		[SmokeMethod("dropMimeData", "(const QMimeData*, Qt::DropAction, int, int, const QModelIndex&)", "#$$$#")]
 		public virtual bool DropMimeData(QMimeData data, Qt.DropAction action, int row, int column, QModelIndex parent) {
-			return ProxyQAbstractItemModel().DropMimeData(data,action,row,column,parent);
+			return ((QAbstractItemModel) interceptor).DropMimeData(data,action,row,column,parent);
 		}
 		[SmokeMethod("supportedDropActions", "() const", "")]
 		public virtual int SupportedDropActions() {
-			return ProxyQAbstractItemModel().SupportedDropActions();
+			return ((QAbstractItemModel) interceptor).SupportedDropActions();
 		}
 		[SmokeMethod("supportedDragActions", "() const", "")]
 		public int SupportedDragActions() {
-			return ProxyQAbstractItemModel().SupportedDragActions();
+			return ((QAbstractItemModel) interceptor).SupportedDragActions();
 		}
 		[SmokeMethod("setSupportedDragActions", "(Qt::DropActions)", "$")]
 		public void SetSupportedDragActions(int arg1) {
-			ProxyQAbstractItemModel().SetSupportedDragActions(arg1);
+			((QAbstractItemModel) interceptor).SetSupportedDragActions(arg1);
 		}
 		[SmokeMethod("insertRows", "(int, int, const QModelIndex&)", "$$#")]
 		public virtual bool InsertRows(int row, int count, QModelIndex parent) {
-			return ProxyQAbstractItemModel().InsertRows(row,count,parent);
+			return ((QAbstractItemModel) interceptor).InsertRows(row,count,parent);
 		}
 		[SmokeMethod("insertRows", "(int, int)", "$$")]
 		public virtual bool InsertRows(int row, int count) {
-			return ProxyQAbstractItemModel().InsertRows(row,count);
+			return ((QAbstractItemModel) interceptor).InsertRows(row,count);
 		}
 		[SmokeMethod("insertColumns", "(int, int, const QModelIndex&)", "$$#")]
 		public virtual bool InsertColumns(int column, int count, QModelIndex parent) {
-			return ProxyQAbstractItemModel().InsertColumns(column,count,parent);
+			return ((QAbstractItemModel) interceptor).InsertColumns(column,count,parent);
 		}
 		[SmokeMethod("insertColumns", "(int, int)", "$$")]
 		public virtual bool InsertColumns(int column, int count) {
-			return ProxyQAbstractItemModel().InsertColumns(column,count);
+			return ((QAbstractItemModel) interceptor).InsertColumns(column,count);
 		}
 		[SmokeMethod("removeRows", "(int, int, const QModelIndex&)", "$$#")]
 		public virtual bool RemoveRows(int row, int count, QModelIndex parent) {
-			return ProxyQAbstractItemModel().RemoveRows(row,count,parent);
+			return ((QAbstractItemModel) interceptor).RemoveRows(row,count,parent);
 		}
 		[SmokeMethod("removeRows", "(int, int)", "$$")]
 		public virtual bool RemoveRows(int row, int count) {
-			return ProxyQAbstractItemModel().RemoveRows(row,count);
+			return ((QAbstractItemModel) interceptor).RemoveRows(row,count);
 		}
 		[SmokeMethod("removeColumns", "(int, int, const QModelIndex&)", "$$#")]
 		public virtual bool RemoveColumns(int column, int count, QModelIndex parent) {
-			return ProxyQAbstractItemModel().RemoveColumns(column,count,parent);
+			return ((QAbstractItemModel) interceptor).RemoveColumns(column,count,parent);
 		}
 		[SmokeMethod("removeColumns", "(int, int)", "$$")]
 		public virtual bool RemoveColumns(int column, int count) {
-			return ProxyQAbstractItemModel().RemoveColumns(column,count);
+			return ((QAbstractItemModel) interceptor).RemoveColumns(column,count);
 		}
 		[SmokeMethod("insertRow", "(int, const QModelIndex&)", "$#")]
 		public bool InsertRow(int row, QModelIndex parent) {
-			return ProxyQAbstractItemModel().InsertRow(row,parent);
+			return ((QAbstractItemModel) interceptor).InsertRow(row,parent);
 		}
 		[SmokeMethod("insertRow", "(int)", "$")]
 		public bool InsertRow(int row) {
-			return ProxyQAbstractItemModel().InsertRow(row);
+			return ((QAbstractItemModel) interceptor).InsertRow(row);
 		}
 		[SmokeMethod("insertColumn", "(int, const QModelIndex&)", "$#")]
 		public bool InsertColumn(int column, QModelIndex parent) {
-			return ProxyQAbstractItemModel().InsertColumn(column,parent);
+			return ((QAbstractItemModel) interceptor).InsertColumn(column,parent);
 		}
 		[SmokeMethod("insertColumn", "(int)", "$")]
 		public bool InsertColumn(int column) {
-			return ProxyQAbstractItemModel().InsertColumn(column);
+			return ((QAbstractItemModel) interceptor).InsertColumn(column);
 		}
 		[SmokeMethod("removeRow", "(int, const QModelIndex&)", "$#")]
 		public bool RemoveRow(int row, QModelIndex parent) {
-			return ProxyQAbstractItemModel().RemoveRow(row,parent);
+			return ((QAbstractItemModel) interceptor).RemoveRow(row,parent);
 		}
 		[SmokeMethod("removeRow", "(int)", "$")]
 		public bool RemoveRow(int row) {
-			return ProxyQAbstractItemModel().RemoveRow(row);
+			return ((QAbstractItemModel) interceptor).RemoveRow(row);
 		}
 		[SmokeMethod("removeColumn", "(int, const QModelIndex&)", "$#")]
 		public bool RemoveColumn(int column, QModelIndex parent) {
-			return ProxyQAbstractItemModel().RemoveColumn(column,parent);
+			return ((QAbstractItemModel) interceptor).RemoveColumn(column,parent);
 		}
 		[SmokeMethod("removeColumn", "(int)", "$")]
 		public bool RemoveColumn(int column) {
-			return ProxyQAbstractItemModel().RemoveColumn(column);
+			return ((QAbstractItemModel) interceptor).RemoveColumn(column);
 		}
 		[SmokeMethod("fetchMore", "(const QModelIndex&)", "#")]
 		public virtual void FetchMore(QModelIndex parent) {
-			ProxyQAbstractItemModel().FetchMore(parent);
+			((QAbstractItemModel) interceptor).FetchMore(parent);
 		}
 		[SmokeMethod("canFetchMore", "(const QModelIndex&) const", "#")]
 		public virtual bool CanFetchMore(QModelIndex parent) {
-			return ProxyQAbstractItemModel().CanFetchMore(parent);
+			return ((QAbstractItemModel) interceptor).CanFetchMore(parent);
 		}
 		[SmokeMethod("flags", "(const QModelIndex&) const", "#")]
 		public virtual int Flags(QModelIndex index) {
-			return ProxyQAbstractItemModel().Flags(index);
+			return ((QAbstractItemModel) interceptor).Flags(index);
 		}
 		[SmokeMethod("sort", "(int, Qt::SortOrder)", "$$")]
 		public virtual void Sort(int column, Qt.SortOrder order) {
-			ProxyQAbstractItemModel().Sort(column,order);
+			((QAbstractItemModel) interceptor).Sort(column,order);
 		}
 		[SmokeMethod("sort", "(int)", "$")]
 		public virtual void Sort(int column) {
-			ProxyQAbstractItemModel().Sort(column);
+			((QAbstractItemModel) interceptor).Sort(column);
 		}
 		[SmokeMethod("buddy", "(const QModelIndex&) const", "#")]
 		public virtual QModelIndex Buddy(QModelIndex index) {
-			return ProxyQAbstractItemModel().Buddy(index);
+			return ((QAbstractItemModel) interceptor).Buddy(index);
 		}
 		[SmokeMethod("match", "(const QModelIndex&, int, const QVariant&, int, Qt::MatchFlags) const", "#$#$$")]
 		public virtual List<QModelIndex> Match(QModelIndex start, int role, QVariant value, int hits, int flags) {
-			return ProxyQAbstractItemModel().Match(start,role,value,hits,flags);
+			return ((QAbstractItemModel) interceptor).Match(start,role,value,hits,flags);
 		}
 		[SmokeMethod("match", "(const QModelIndex&, int, const QVariant&, int) const", "#$#$")]
 		public virtual List<QModelIndex> Match(QModelIndex start, int role, QVariant value, int hits) {
-			return ProxyQAbstractItemModel().Match(start,role,value,hits);
+			return ((QAbstractItemModel) interceptor).Match(start,role,value,hits);
 		}
 		[SmokeMethod("match", "(const QModelIndex&, int, const QVariant&) const", "#$#")]
 		public virtual List<QModelIndex> Match(QModelIndex start, int role, QVariant value) {
-			return ProxyQAbstractItemModel().Match(start,role,value);
+			return ((QAbstractItemModel) interceptor).Match(start,role,value);
 		}
 		[SmokeMethod("span", "(const QModelIndex&) const", "#")]
 		public virtual QSize Span(QModelIndex index) {
-			return ProxyQAbstractItemModel().Span(index);
+			return ((QAbstractItemModel) interceptor).Span(index);
 		}
 		[SmokeMethod("parent", "() const", "")]
 		public QObject Parent() {
-			return ProxyQAbstractItemModel().Parent();
+			return ((QAbstractItemModel) interceptor).Parent();
 		}
 		[Q_SLOT("bool submit()")]
 		[SmokeMethod("submit", "()", "")]
 		public virtual bool Submit() {
-			return ProxyQAbstractItemModel().Submit();
+			return ((QAbstractItemModel) interceptor).Submit();
 		}
 		[Q_SLOT("void revert()")]
 		[SmokeMethod("revert", "()", "")]
 		public virtual void Revert() {
-			ProxyQAbstractItemModel().Revert();
+			((QAbstractItemModel) interceptor).Revert();
 		}
 		[SmokeMethod("createIndex", "(int, int) const", "$$")]
 		protected QModelIndex CreateIndex(int row, int column) {
-			return ProxyQAbstractItemModel().CreateIndex(row,column);
+			return ((QAbstractItemModel) interceptor).CreateIndex(row,column);
 		}
 		[SmokeMethod("createIndex", "(int, int, int) const", "$$$")]
 		protected QModelIndex CreateIndex(int row, int column, int id) {
-			return ProxyQAbstractItemModel().CreateIndex(row,column,id);
+			return ((QAbstractItemModel) interceptor).CreateIndex(row,column,id);
 		}
 		[SmokeMethod("createIndex", "(int, int, quint32) const", "$$$")]
 		protected QModelIndex CreateIndex(int row, int column, uint id) {
-			return ProxyQAbstractItemModel().CreateIndex(row,column,id);
+			return ((QAbstractItemModel) interceptor).CreateIndex(row,column,id);
 		}
 		[SmokeMethod("encodeData", "(const QModelIndexList&, QDataStream&) const", "?#")]
 		protected void EncodeData(List<QModelIndex> indexes, QDataStream stream) {
-			ProxyQAbstractItemModel().EncodeData(indexes,stream);
+			((QAbstractItemModel) interceptor).EncodeData(indexes,stream);
 		}
 		[SmokeMethod("decodeData", "(int, int, const QModelIndex&, QDataStream&)", "$$##")]
 		protected bool DecodeData(int row, int column, QModelIndex parent, QDataStream stream) {
-			return ProxyQAbstractItemModel().DecodeData(row,column,parent,stream);
+			return ((QAbstractItemModel) interceptor).DecodeData(row,column,parent,stream);
 		}
 		[SmokeMethod("beginInsertRows", "(const QModelIndex&, int, int)", "#$$")]
 		protected void BeginInsertRows(QModelIndex parent, int first, int last) {
-			ProxyQAbstractItemModel().BeginInsertRows(parent,first,last);
+			((QAbstractItemModel) interceptor).BeginInsertRows(parent,first,last);
 		}
 		[SmokeMethod("endInsertRows", "()", "")]
 		protected void EndInsertRows() {
-			ProxyQAbstractItemModel().EndInsertRows();
+			((QAbstractItemModel) interceptor).EndInsertRows();
 		}
 		[SmokeMethod("beginRemoveRows", "(const QModelIndex&, int, int)", "#$$")]
 		protected void BeginRemoveRows(QModelIndex parent, int first, int last) {
-			ProxyQAbstractItemModel().BeginRemoveRows(parent,first,last);
+			((QAbstractItemModel) interceptor).BeginRemoveRows(parent,first,last);
 		}
 		[SmokeMethod("endRemoveRows", "()", "")]
 		protected void EndRemoveRows() {
-			ProxyQAbstractItemModel().EndRemoveRows();
+			((QAbstractItemModel) interceptor).EndRemoveRows();
 		}
 		[SmokeMethod("beginInsertColumns", "(const QModelIndex&, int, int)", "#$$")]
 		protected void BeginInsertColumns(QModelIndex parent, int first, int last) {
-			ProxyQAbstractItemModel().BeginInsertColumns(parent,first,last);
+			((QAbstractItemModel) interceptor).BeginInsertColumns(parent,first,last);
 		}
 		[SmokeMethod("endInsertColumns", "()", "")]
 		protected void EndInsertColumns() {
-			ProxyQAbstractItemModel().EndInsertColumns();
+			((QAbstractItemModel) interceptor).EndInsertColumns();
 		}
 		[SmokeMethod("beginRemoveColumns", "(const QModelIndex&, int, int)", "#$$")]
 		protected void BeginRemoveColumns(QModelIndex parent, int first, int last) {
-			ProxyQAbstractItemModel().BeginRemoveColumns(parent,first,last);
+			((QAbstractItemModel) interceptor).BeginRemoveColumns(parent,first,last);
 		}
 		[SmokeMethod("endRemoveColumns", "()", "")]
 		protected void EndRemoveColumns() {
-			ProxyQAbstractItemModel().EndRemoveColumns();
+			((QAbstractItemModel) interceptor).EndRemoveColumns();
 		}
 		[SmokeMethod("reset", "()", "")]
 		protected void Reset() {
-			ProxyQAbstractItemModel().Reset();
+			((QAbstractItemModel) interceptor).Reset();
 		}
 		[SmokeMethod("changePersistentIndex", "(const QModelIndex&, const QModelIndex&)", "##")]
 		protected void ChangePersistentIndex(QModelIndex from, QModelIndex to) {
-			ProxyQAbstractItemModel().ChangePersistentIndex(from,to);
+			((QAbstractItemModel) interceptor).ChangePersistentIndex(from,to);
 		}
 		[SmokeMethod("changePersistentIndexList", "(const QModelIndexList&, const QModelIndexList&)", "??")]
 		protected void ChangePersistentIndexList(List<QModelIndex> from, List<QModelIndex> to) {
-			ProxyQAbstractItemModel().ChangePersistentIndexList(from,to);
+			((QAbstractItemModel) interceptor).ChangePersistentIndexList(from,to);
 		}
 		[SmokeMethod("persistentIndexList", "() const", "")]
 		protected List<QModelIndex> PersistentIndexList() {
-			return ProxyQAbstractItemModel().PersistentIndexList();
+			return ((QAbstractItemModel) interceptor).PersistentIndexList();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQAbstractItemModel().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQAbstractItemModel().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQAbstractItemModelSignals Emit {
 			get { return (IQAbstractItemModelSignals) Q_EMIT; }

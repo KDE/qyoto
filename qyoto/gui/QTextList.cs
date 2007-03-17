@@ -15,18 +15,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextList), this);
-			_interceptor = (QTextList) realProxy.GetTransparentProxy();
+			interceptor = (QTextList) realProxy.GetTransparentProxy();
 		}
-		private QTextList ProxyQTextList() {
-			return (QTextList) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQTextListProxy staticInterceptor = null;
 		static QTextList() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTextListProxy), null);
-			_staticInterceptor = (IQTextListProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQTextListProxy StaticQTextList() {
-			return (IQTextListProxy) _staticInterceptor;
+			staticInterceptor = (IQTextListProxy) realProxy.GetTransparentProxy();
 		}
 		public QTextList(QTextDocument doc) : this((Type) null) {
 			CreateProxy();
@@ -34,47 +28,47 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTextList", "(QTextDocument*)", "#")]
 		private void NewQTextList(QTextDocument doc) {
-			ProxyQTextList().NewQTextList(doc);
+			((QTextList) interceptor).NewQTextList(doc);
 		}
 		[SmokeMethod("count", "() const", "")]
 		public int Count() {
-			return ProxyQTextList().Count();
+			return ((QTextList) interceptor).Count();
 		}
 		[SmokeMethod("isEmpty", "() const", "")]
 		public bool IsEmpty() {
-			return ProxyQTextList().IsEmpty();
+			return ((QTextList) interceptor).IsEmpty();
 		}
 		[SmokeMethod("item", "(int) const", "$")]
 		public QTextBlock Item(int i) {
-			return ProxyQTextList().Item(i);
+			return ((QTextList) interceptor).Item(i);
 		}
 		[SmokeMethod("itemNumber", "(const QTextBlock&) const", "#")]
 		public int ItemNumber(QTextBlock arg1) {
-			return ProxyQTextList().ItemNumber(arg1);
+			return ((QTextList) interceptor).ItemNumber(arg1);
 		}
 		[SmokeMethod("itemText", "(const QTextBlock&) const", "#")]
 		public string ItemText(QTextBlock arg1) {
-			return ProxyQTextList().ItemText(arg1);
+			return ((QTextList) interceptor).ItemText(arg1);
 		}
 		[SmokeMethod("removeItem", "(int)", "$")]
 		public void RemoveItem(int i) {
-			ProxyQTextList().RemoveItem(i);
+			((QTextList) interceptor).RemoveItem(i);
 		}
 		[SmokeMethod("remove", "(const QTextBlock&)", "#")]
 		public void Remove(QTextBlock arg1) {
-			ProxyQTextList().Remove(arg1);
+			((QTextList) interceptor).Remove(arg1);
 		}
 		[SmokeMethod("add", "(const QTextBlock&)", "#")]
 		public void Add(QTextBlock block) {
-			ProxyQTextList().Add(block);
+			((QTextList) interceptor).Add(block);
 		}
 		[SmokeMethod("setFormat", "(const QTextListFormat&)", "#")]
 		public void SetFormat(QTextListFormat format) {
-			ProxyQTextList().SetFormat(format);
+			((QTextList) interceptor).SetFormat(format);
 		}
 		[SmokeMethod("format", "() const", "")]
 		public QTextListFormat Format() {
-			return ProxyQTextList().Format();
+			return ((QTextList) interceptor).Format();
 		}
 		~QTextList() {
 			DisposeQTextList();
@@ -84,13 +78,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QTextList", "()", "")]
 		private void DisposeQTextList() {
-			ProxyQTextList().DisposeQTextList();
+			((QTextList) interceptor).DisposeQTextList();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQTextList().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQTextList().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQTextListSignals Emit {
 			get { return (IQTextListSignals) Q_EMIT; }

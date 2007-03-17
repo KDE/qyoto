@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QContextMenuEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QContextMenuEvent), this);
-			_interceptor = (QContextMenuEvent) realProxy.GetTransparentProxy();
-		}
-		private QContextMenuEvent ProxyQContextMenuEvent() {
-			return (QContextMenuEvent) _interceptor;
+			interceptor = (QContextMenuEvent) realProxy.GetTransparentProxy();
 		}
 		public enum Reason {
 			Mouse = 0,
@@ -24,7 +21,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QContextMenuEvent", "(QContextMenuEvent::Reason, const QPoint&, const QPoint&)", "$##")]
 		private void NewQContextMenuEvent(QContextMenuEvent.Reason reason, QPoint pos, QPoint globalPos) {
-			ProxyQContextMenuEvent().NewQContextMenuEvent(reason,pos,globalPos);
+			((QContextMenuEvent) interceptor).NewQContextMenuEvent(reason,pos,globalPos);
 		}
 		public QContextMenuEvent(QContextMenuEvent.Reason reason, QPoint pos) : this((Type) null) {
 			CreateProxy();
@@ -32,35 +29,35 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QContextMenuEvent", "(QContextMenuEvent::Reason, const QPoint&)", "$#")]
 		private void NewQContextMenuEvent(QContextMenuEvent.Reason reason, QPoint pos) {
-			ProxyQContextMenuEvent().NewQContextMenuEvent(reason,pos);
+			((QContextMenuEvent) interceptor).NewQContextMenuEvent(reason,pos);
 		}
 		[SmokeMethod("x", "() const", "")]
 		public int X() {
-			return ProxyQContextMenuEvent().X();
+			return ((QContextMenuEvent) interceptor).X();
 		}
 		[SmokeMethod("y", "() const", "")]
 		public int Y() {
-			return ProxyQContextMenuEvent().Y();
+			return ((QContextMenuEvent) interceptor).Y();
 		}
 		[SmokeMethod("globalX", "() const", "")]
 		public int GlobalX() {
-			return ProxyQContextMenuEvent().GlobalX();
+			return ((QContextMenuEvent) interceptor).GlobalX();
 		}
 		[SmokeMethod("globalY", "() const", "")]
 		public int GlobalY() {
-			return ProxyQContextMenuEvent().GlobalY();
+			return ((QContextMenuEvent) interceptor).GlobalY();
 		}
 		[SmokeMethod("pos", "() const", "")]
 		public QPoint Pos() {
-			return ProxyQContextMenuEvent().Pos();
+			return ((QContextMenuEvent) interceptor).Pos();
 		}
 		[SmokeMethod("globalPos", "() const", "")]
 		public QPoint GlobalPos() {
-			return ProxyQContextMenuEvent().GlobalPos();
+			return ((QContextMenuEvent) interceptor).GlobalPos();
 		}
 		[SmokeMethod("reason", "() const", "")]
 		public QContextMenuEvent.Reason reason() {
-			return ProxyQContextMenuEvent().reason();
+			return ((QContextMenuEvent) interceptor).reason();
 		}
 		~QContextMenuEvent() {
 			DisposeQContextMenuEvent();
@@ -70,7 +67,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QContextMenuEvent", "()", "")]
 		private void DisposeQContextMenuEvent() {
-			ProxyQContextMenuEvent().DisposeQContextMenuEvent();
+			((QContextMenuEvent) interceptor).DisposeQContextMenuEvent();
 		}
 	}
 }

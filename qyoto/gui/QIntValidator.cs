@@ -16,18 +16,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QIntValidator), this);
-			_interceptor = (QIntValidator) realProxy.GetTransparentProxy();
+			interceptor = (QIntValidator) realProxy.GetTransparentProxy();
 		}
-		private QIntValidator ProxyQIntValidator() {
-			return (QIntValidator) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQIntValidatorProxy staticInterceptor = null;
 		static QIntValidator() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQIntValidatorProxy), null);
-			_staticInterceptor = (IQIntValidatorProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQIntValidatorProxy StaticQIntValidator() {
-			return (IQIntValidatorProxy) _staticInterceptor;
+			staticInterceptor = (IQIntValidatorProxy) realProxy.GetTransparentProxy();
 		}
 		[Q_PROPERTY("int", "bottom")]
 		public int Bottom {
@@ -45,7 +39,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QIntValidator", "(QObject*)", "#")]
 		private void NewQIntValidator(QObject parent) {
-			ProxyQIntValidator().NewQIntValidator(parent);
+			((QIntValidator) interceptor).NewQIntValidator(parent);
 		}
 		public QIntValidator(int bottom, int top, QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -53,15 +47,15 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QIntValidator", "(int, int, QObject*)", "$$#")]
 		private void NewQIntValidator(int bottom, int top, QObject parent) {
-			ProxyQIntValidator().NewQIntValidator(bottom,top,parent);
+			((QIntValidator) interceptor).NewQIntValidator(bottom,top,parent);
 		}
 		[SmokeMethod("validate", "(QString&, int&) const", "$$")]
 		public override int Validate(StringBuilder arg1, out int arg2) {
-			return ProxyQIntValidator().Validate(arg1,out arg2);
+			return ((QIntValidator) interceptor).Validate(arg1,out arg2);
 		}
 		[SmokeMethod("setRange", "(int, int)", "$$")]
 		public virtual void SetRange(int bottom, int top) {
-			ProxyQIntValidator().SetRange(bottom,top);
+			((QIntValidator) interceptor).SetRange(bottom,top);
 		}
 		~QIntValidator() {
 			DisposeQIntValidator();
@@ -71,13 +65,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QIntValidator", "()", "")]
 		private void DisposeQIntValidator() {
-			ProxyQIntValidator().DisposeQIntValidator();
+			((QIntValidator) interceptor).DisposeQIntValidator();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQIntValidator().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQIntValidator().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQIntValidatorSignals Emit {
 			get { return (IQIntValidatorSignals) Q_EMIT; }

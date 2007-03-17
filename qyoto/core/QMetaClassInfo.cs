@@ -5,15 +5,12 @@ namespace Qyoto {
 
 	[SmokeClass("QMetaClassInfo")]
 	public class QMetaClassInfo : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QMetaClassInfo interceptor = null;
+		private IntPtr smokeObject;
 		protected QMetaClassInfo(Type dummy) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QMetaClassInfo), this);
-			_interceptor = (QMetaClassInfo) realProxy.GetTransparentProxy();
-		}
-		private QMetaClassInfo ProxyQMetaClassInfo() {
-			return (QMetaClassInfo) _interceptor;
+			interceptor = (QMetaClassInfo) realProxy.GetTransparentProxy();
 		}
 		public QMetaClassInfo() : this((Type) null) {
 			CreateProxy();
@@ -21,15 +18,15 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QMetaClassInfo", "()", "")]
 		private void NewQMetaClassInfo() {
-			ProxyQMetaClassInfo().NewQMetaClassInfo();
+			((QMetaClassInfo) interceptor).NewQMetaClassInfo();
 		}
 		[SmokeMethod("name", "() const", "")]
 		public string Name() {
-			return ProxyQMetaClassInfo().Name();
+			return ((QMetaClassInfo) interceptor).Name();
 		}
 		[SmokeMethod("value", "() const", "")]
 		public string Value() {
-			return ProxyQMetaClassInfo().Value();
+			return ((QMetaClassInfo) interceptor).Value();
 		}
 		~QMetaClassInfo() {
 			DisposeQMetaClassInfo();
@@ -39,7 +36,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QMetaClassInfo", "()", "")]
 		private void DisposeQMetaClassInfo() {
-			ProxyQMetaClassInfo().DisposeQMetaClassInfo();
+			((QMetaClassInfo) interceptor).DisposeQMetaClassInfo();
 		}
 	}
 }

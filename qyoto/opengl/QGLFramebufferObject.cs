@@ -13,18 +13,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGLFramebufferObject), this);
-			_interceptor = (QGLFramebufferObject) realProxy.GetTransparentProxy();
+			interceptor = (QGLFramebufferObject) realProxy.GetTransparentProxy();
 		}
-		private QGLFramebufferObject ProxyQGLFramebufferObject() {
-			return (QGLFramebufferObject) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQGLFramebufferObjectProxy staticInterceptor = null;
 		static QGLFramebufferObject() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQGLFramebufferObjectProxy), null);
-			_staticInterceptor = (IQGLFramebufferObjectProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQGLFramebufferObjectProxy StaticQGLFramebufferObject() {
-			return (IQGLFramebufferObjectProxy) _staticInterceptor;
+			staticInterceptor = (IQGLFramebufferObjectProxy) realProxy.GetTransparentProxy();
 		}
 		public QGLFramebufferObject(QSize size, int target) : this((Type) null) {
 			CreateProxy();
@@ -32,7 +26,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGLFramebufferObject", "(const QSize&, GLenum)", "#$")]
 		private void NewQGLFramebufferObject(QSize size, int target) {
-			ProxyQGLFramebufferObject().NewQGLFramebufferObject(size,target);
+			((QGLFramebufferObject) interceptor).NewQGLFramebufferObject(size,target);
 		}
 		public QGLFramebufferObject(QSize size) : this((Type) null) {
 			CreateProxy();
@@ -40,7 +34,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGLFramebufferObject", "(const QSize&)", "#")]
 		private void NewQGLFramebufferObject(QSize size) {
-			ProxyQGLFramebufferObject().NewQGLFramebufferObject(size);
+			((QGLFramebufferObject) interceptor).NewQGLFramebufferObject(size);
 		}
 		public QGLFramebufferObject(int width, int height, int target) : this((Type) null) {
 			CreateProxy();
@@ -48,7 +42,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGLFramebufferObject", "(int, int, GLenum)", "$$$")]
 		private void NewQGLFramebufferObject(int width, int height, int target) {
-			ProxyQGLFramebufferObject().NewQGLFramebufferObject(width,height,target);
+			((QGLFramebufferObject) interceptor).NewQGLFramebufferObject(width,height,target);
 		}
 		public QGLFramebufferObject(int width, int height) : this((Type) null) {
 			CreateProxy();
@@ -56,43 +50,43 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGLFramebufferObject", "(int, int)", "$$")]
 		private void NewQGLFramebufferObject(int width, int height) {
-			ProxyQGLFramebufferObject().NewQGLFramebufferObject(width,height);
+			((QGLFramebufferObject) interceptor).NewQGLFramebufferObject(width,height);
 		}
 		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ProxyQGLFramebufferObject().IsValid();
+			return ((QGLFramebufferObject) interceptor).IsValid();
 		}
 		[SmokeMethod("bind", "()", "")]
 		public bool Bind() {
-			return ProxyQGLFramebufferObject().Bind();
+			return ((QGLFramebufferObject) interceptor).Bind();
 		}
 		[SmokeMethod("release", "()", "")]
 		public bool Release() {
-			return ProxyQGLFramebufferObject().Release();
+			return ((QGLFramebufferObject) interceptor).Release();
 		}
 		[SmokeMethod("texture", "() const", "")]
 		public uint Texture() {
-			return ProxyQGLFramebufferObject().Texture();
+			return ((QGLFramebufferObject) interceptor).Texture();
 		}
 		[SmokeMethod("size", "() const", "")]
 		public QSize Size() {
-			return ProxyQGLFramebufferObject().Size();
+			return ((QGLFramebufferObject) interceptor).Size();
 		}
 		[SmokeMethod("toImage", "() const", "")]
 		public QImage ToImage() {
-			return ProxyQGLFramebufferObject().ToImage();
+			return ((QGLFramebufferObject) interceptor).ToImage();
 		}
 		[SmokeMethod("paintEngine", "() const", "")]
 		public override QPaintEngine PaintEngine() {
-			return ProxyQGLFramebufferObject().PaintEngine();
+			return ((QGLFramebufferObject) interceptor).PaintEngine();
 		}
 		[SmokeMethod("metric", "(QPaintDevice::PaintDeviceMetric) const", "$")]
 		protected override int Metric(IQPaintDevice metric) {
-			return ProxyQGLFramebufferObject().Metric(metric);
+			return ((QGLFramebufferObject) interceptor).Metric(metric);
 		}
 		[SmokeMethod("devType", "() const", "")]
 		protected new virtual int DevType() {
-			return ProxyQGLFramebufferObject().DevType();
+			return ((QGLFramebufferObject) interceptor).DevType();
 		}
 		~QGLFramebufferObject() {
 			DisposeQGLFramebufferObject();
@@ -102,10 +96,10 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QGLFramebufferObject", "()", "")]
 		private void DisposeQGLFramebufferObject() {
-			ProxyQGLFramebufferObject().DisposeQGLFramebufferObject();
+			((QGLFramebufferObject) interceptor).DisposeQGLFramebufferObject();
 		}
 		public static bool HasOpenGLFramebufferObjects() {
-			return StaticQGLFramebufferObject().HasOpenGLFramebufferObjects();
+			return staticInterceptor.HasOpenGLFramebufferObjects();
 		}
 	}
 }

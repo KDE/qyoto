@@ -5,15 +5,12 @@ namespace Qyoto {
 
 	[SmokeClass("QXmlParseException")]
 	public class QXmlParseException : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QXmlParseException interceptor = null;
+		private IntPtr smokeObject;
 		protected QXmlParseException(Type dummy) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlParseException), this);
-			_interceptor = (QXmlParseException) realProxy.GetTransparentProxy();
-		}
-		private QXmlParseException ProxyQXmlParseException() {
-			return (QXmlParseException) _interceptor;
+			interceptor = (QXmlParseException) realProxy.GetTransparentProxy();
 		}
 		public QXmlParseException(string name, int c, int l, string p, string s) : this((Type) null) {
 			CreateProxy();
@@ -21,7 +18,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QXmlParseException", "(const QString&, int, int, const QString&, const QString&)", "$$$$$")]
 		private void NewQXmlParseException(string name, int c, int l, string p, string s) {
-			ProxyQXmlParseException().NewQXmlParseException(name,c,l,p,s);
+			((QXmlParseException) interceptor).NewQXmlParseException(name,c,l,p,s);
 		}
 		public QXmlParseException(string name, int c, int l, string p) : this((Type) null) {
 			CreateProxy();
@@ -29,7 +26,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QXmlParseException", "(const QString&, int, int, const QString&)", "$$$$")]
 		private void NewQXmlParseException(string name, int c, int l, string p) {
-			ProxyQXmlParseException().NewQXmlParseException(name,c,l,p);
+			((QXmlParseException) interceptor).NewQXmlParseException(name,c,l,p);
 		}
 		public QXmlParseException(string name, int c, int l) : this((Type) null) {
 			CreateProxy();
@@ -37,7 +34,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QXmlParseException", "(const QString&, int, int)", "$$$")]
 		private void NewQXmlParseException(string name, int c, int l) {
-			ProxyQXmlParseException().NewQXmlParseException(name,c,l);
+			((QXmlParseException) interceptor).NewQXmlParseException(name,c,l);
 		}
 		public QXmlParseException(string name, int c) : this((Type) null) {
 			CreateProxy();
@@ -45,7 +42,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QXmlParseException", "(const QString&, int)", "$$")]
 		private void NewQXmlParseException(string name, int c) {
-			ProxyQXmlParseException().NewQXmlParseException(name,c);
+			((QXmlParseException) interceptor).NewQXmlParseException(name,c);
 		}
 		public QXmlParseException(string name) : this((Type) null) {
 			CreateProxy();
@@ -53,7 +50,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QXmlParseException", "(const QString&)", "$")]
 		private void NewQXmlParseException(string name) {
-			ProxyQXmlParseException().NewQXmlParseException(name);
+			((QXmlParseException) interceptor).NewQXmlParseException(name);
 		}
 		public QXmlParseException() : this((Type) null) {
 			CreateProxy();
@@ -61,27 +58,27 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QXmlParseException", "()", "")]
 		private void NewQXmlParseException() {
-			ProxyQXmlParseException().NewQXmlParseException();
+			((QXmlParseException) interceptor).NewQXmlParseException();
 		}
 		[SmokeMethod("columnNumber", "() const", "")]
 		public int ColumnNumber() {
-			return ProxyQXmlParseException().ColumnNumber();
+			return ((QXmlParseException) interceptor).ColumnNumber();
 		}
 		[SmokeMethod("lineNumber", "() const", "")]
 		public int LineNumber() {
-			return ProxyQXmlParseException().LineNumber();
+			return ((QXmlParseException) interceptor).LineNumber();
 		}
 		[SmokeMethod("publicId", "() const", "")]
 		public string PublicId() {
-			return ProxyQXmlParseException().PublicId();
+			return ((QXmlParseException) interceptor).PublicId();
 		}
 		[SmokeMethod("systemId", "() const", "")]
 		public string SystemId() {
-			return ProxyQXmlParseException().SystemId();
+			return ((QXmlParseException) interceptor).SystemId();
 		}
 		[SmokeMethod("message", "() const", "")]
 		public string Message() {
-			return ProxyQXmlParseException().Message();
+			return ((QXmlParseException) interceptor).Message();
 		}
 		~QXmlParseException() {
 			DisposeQXmlParseException();
@@ -91,7 +88,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QXmlParseException", "()", "")]
 		private void DisposeQXmlParseException() {
-			ProxyQXmlParseException().DisposeQXmlParseException();
+			((QXmlParseException) interceptor).DisposeQXmlParseException();
 		}
 	}
 }

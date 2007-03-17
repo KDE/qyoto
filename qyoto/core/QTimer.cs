@@ -5,7 +5,7 @@ namespace Qyoto {
 
 	///<remarks>*************************************************
 	///
-	///* Copyright (C) 1992-2006 Trolltech ASA. All rights reserved.
+	///* Copyright (C) 1992-2007 Trolltech ASA. All rights reserved.
 	///
 	///* This file is part of the QtCore module of the Qt Toolkit.
 	///
@@ -25,7 +25,7 @@ namespace Qyoto {
 	/// WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 	///
 	///************************************************** See <see cref="IQTimerSignals"></see> for signals emitted by QTimer
-	///</remarks>		<short>                                                                                 Copyright (C) 1992-2006 Trolltech ASA.</short>
+	///</remarks>		<short>                                                                                 Copyright (C) 1992-2007 Trolltech ASA.</short>
 
 	[SmokeClass("QTimer")]
 	public class QTimer : QObject, IDisposable {
@@ -41,18 +41,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTimer), this);
-			_interceptor = (QTimer) realProxy.GetTransparentProxy();
+			interceptor = (QTimer) realProxy.GetTransparentProxy();
 		}
-		private QTimer ProxyQTimer() {
-			return (QTimer) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQTimerProxy staticInterceptor = null;
 		static QTimer() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTimerProxy), null);
-			_staticInterceptor = (IQTimerProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQTimerProxy StaticQTimer() {
-			return (IQTimerProxy) _staticInterceptor;
+			staticInterceptor = (IQTimerProxy) realProxy.GetTransparentProxy();
 		}
 		[Q_PROPERTY("bool", "singleShot")]
 		public bool SingleShot {
@@ -70,7 +64,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTimer", "(QObject*)", "#")]
 		private void NewQTimer(QObject parent) {
-			ProxyQTimer().NewQTimer(parent);
+			((QTimer) interceptor).NewQTimer(parent);
 		}
 		public QTimer() : this((Type) null) {
 			CreateProxy();
@@ -78,38 +72,38 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTimer", "()", "")]
 		private void NewQTimer() {
-			ProxyQTimer().NewQTimer();
+			((QTimer) interceptor).NewQTimer();
 		}
 		[SmokeMethod("isActive", "() const", "")]
 		public bool IsActive() {
-			return ProxyQTimer().IsActive();
+			return ((QTimer) interceptor).IsActive();
 		}
 		[SmokeMethod("timerId", "() const", "")]
 		public int TimerId() {
-			return ProxyQTimer().TimerId();
+			return ((QTimer) interceptor).TimerId();
 		}
 		[SmokeMethod("isSingleShot", "() const", "")]
 		public bool IsSingleShot() {
-			return ProxyQTimer().IsSingleShot();
+			return ((QTimer) interceptor).IsSingleShot();
 		}
 		[Q_SLOT("void start(int)")]
 		[SmokeMethod("start", "(int)", "$")]
 		public void Start(int msec) {
-			ProxyQTimer().Start(msec);
+			((QTimer) interceptor).Start(msec);
 		}
 		[Q_SLOT("void start()")]
 		[SmokeMethod("start", "()", "")]
 		public void Start() {
-			ProxyQTimer().Start();
+			((QTimer) interceptor).Start();
 		}
 		[Q_SLOT("void stop()")]
 		[SmokeMethod("stop", "()", "")]
 		public void Stop() {
-			ProxyQTimer().Stop();
+			((QTimer) interceptor).Stop();
 		}
 		[SmokeMethod("timerEvent", "(QTimerEvent*)", "#")]
 		protected override void TimerEvent(QTimerEvent arg1) {
-			ProxyQTimer().TimerEvent(arg1);
+			((QTimer) interceptor).TimerEvent(arg1);
 		}
 		~QTimer() {
 			DisposeQTimer();
@@ -119,16 +113,16 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QTimer", "()", "")]
 		private void DisposeQTimer() {
-			ProxyQTimer().DisposeQTimer();
+			((QTimer) interceptor).DisposeQTimer();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQTimer().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQTimer().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		public static void singleShot(int msec, QObject receiver, string member) {
-			StaticQTimer().singleShot(msec,receiver,member);
+			staticInterceptor.singleShot(msec,receiver,member);
 		}
 		protected new IQTimerSignals Emit {
 			get { return (IQTimerSignals) Q_EMIT; }

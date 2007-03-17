@@ -16,18 +16,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDialog), this);
-			_interceptor = (QDialog) realProxy.GetTransparentProxy();
+			interceptor = (QDialog) realProxy.GetTransparentProxy();
 		}
-		private QDialog ProxyQDialog() {
-			return (QDialog) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQDialogProxy staticInterceptor = null;
 		static QDialog() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQDialogProxy), null);
-			_staticInterceptor = (IQDialogProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQDialogProxy StaticQDialog() {
-			return (IQDialogProxy) _staticInterceptor;
+			staticInterceptor = (IQDialogProxy) realProxy.GetTransparentProxy();
 		}
 		public enum DialogCode {
 			Rejected = 0,
@@ -49,7 +43,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDialog", "(QWidget*, Qt::WindowFlags)", "#$")]
 		private void NewQDialog(QWidget parent, int f) {
-			ProxyQDialog().NewQDialog(parent,f);
+			((QDialog) interceptor).NewQDialog(parent,f);
 		}
 		public QDialog(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -57,7 +51,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDialog", "(QWidget*)", "#")]
 		private void NewQDialog(QWidget parent) {
-			ProxyQDialog().NewQDialog(parent);
+			((QDialog) interceptor).NewQDialog(parent);
 		}
 		public QDialog() : this((Type) null) {
 			CreateProxy();
@@ -65,104 +59,104 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDialog", "()", "")]
 		private void NewQDialog() {
-			ProxyQDialog().NewQDialog();
+			((QDialog) interceptor).NewQDialog();
 		}
 		[SmokeMethod("result", "() const", "")]
 		public int Result() {
-			return ProxyQDialog().Result();
+			return ((QDialog) interceptor).Result();
 		}
 		[SmokeMethod("setVisible", "(bool)", "$")]
 		public override void SetVisible(bool visible) {
-			ProxyQDialog().SetVisible(visible);
+			((QDialog) interceptor).SetVisible(visible);
 		}
 		[SmokeMethod("setOrientation", "(Qt::Orientation)", "$")]
 		public void SetOrientation(Qt.Orientation orientation) {
-			ProxyQDialog().SetOrientation(orientation);
+			((QDialog) interceptor).SetOrientation(orientation);
 		}
 		[SmokeMethod("orientation", "() const", "")]
 		public Qt.Orientation Orientation() {
-			return ProxyQDialog().Orientation();
+			return ((QDialog) interceptor).Orientation();
 		}
 		[SmokeMethod("setExtension", "(QWidget*)", "#")]
 		public void SetExtension(QWidget extension) {
-			ProxyQDialog().SetExtension(extension);
+			((QDialog) interceptor).SetExtension(extension);
 		}
 		[SmokeMethod("extension", "() const", "")]
 		public QWidget Extension() {
-			return ProxyQDialog().Extension();
+			return ((QDialog) interceptor).Extension();
 		}
 		[SmokeMethod("sizeHint", "() const", "")]
 		public override QSize SizeHint() {
-			return ProxyQDialog().SizeHint();
+			return ((QDialog) interceptor).SizeHint();
 		}
 		[SmokeMethod("minimumSizeHint", "() const", "")]
 		public override QSize MinimumSizeHint() {
-			return ProxyQDialog().MinimumSizeHint();
+			return ((QDialog) interceptor).MinimumSizeHint();
 		}
 		[SmokeMethod("isSizeGripEnabled", "() const", "")]
 		public bool IsSizeGripEnabled() {
-			return ProxyQDialog().IsSizeGripEnabled();
+			return ((QDialog) interceptor).IsSizeGripEnabled();
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		public new virtual bool Event(QEvent arg1) {
-			return ProxyQDialog().Event(arg1);
+			return ((QDialog) interceptor).Event(arg1);
 		}
 		[SmokeMethod("setResult", "(int)", "$")]
 		public void SetResult(int r) {
-			ProxyQDialog().SetResult(r);
+			((QDialog) interceptor).SetResult(r);
 		}
 		[Q_SLOT("int exec()")]
 		[SmokeMethod("exec", "()", "")]
 		public int Exec() {
-			return ProxyQDialog().Exec();
+			return ((QDialog) interceptor).Exec();
 		}
 		[Q_SLOT("void done(int)")]
 		[SmokeMethod("done", "(int)", "$")]
 		public virtual void Done(int arg1) {
-			ProxyQDialog().Done(arg1);
+			((QDialog) interceptor).Done(arg1);
 		}
 		[Q_SLOT("void accept()")]
 		[SmokeMethod("accept", "()", "")]
 		public virtual void Accept() {
-			ProxyQDialog().Accept();
+			((QDialog) interceptor).Accept();
 		}
 		[Q_SLOT("void reject()")]
 		[SmokeMethod("reject", "()", "")]
 		public virtual void Reject() {
-			ProxyQDialog().Reject();
+			((QDialog) interceptor).Reject();
 		}
 		[Q_SLOT("void showExtension(bool)")]
 		[SmokeMethod("showExtension", "(bool)", "$")]
 		public void ShowExtension(bool arg1) {
-			ProxyQDialog().ShowExtension(arg1);
+			((QDialog) interceptor).ShowExtension(arg1);
 		}
 		[SmokeMethod("keyPressEvent", "(QKeyEvent*)", "#")]
 		protected override void KeyPressEvent(QKeyEvent arg1) {
-			ProxyQDialog().KeyPressEvent(arg1);
+			((QDialog) interceptor).KeyPressEvent(arg1);
 		}
 		[SmokeMethod("closeEvent", "(QCloseEvent*)", "#")]
 		protected override void CloseEvent(QCloseEvent arg1) {
-			ProxyQDialog().CloseEvent(arg1);
+			((QDialog) interceptor).CloseEvent(arg1);
 		}
 		[SmokeMethod("showEvent", "(QShowEvent*)", "#")]
 		protected override void ShowEvent(QShowEvent arg1) {
-			ProxyQDialog().ShowEvent(arg1);
+			((QDialog) interceptor).ShowEvent(arg1);
 		}
 		[SmokeMethod("resizeEvent", "(QResizeEvent*)", "#")]
 		protected override void ResizeEvent(QResizeEvent arg1) {
-			ProxyQDialog().ResizeEvent(arg1);
+			((QDialog) interceptor).ResizeEvent(arg1);
 		}
 		[SmokeMethod("contextMenuEvent", "(QContextMenuEvent*)", "#")]
 		protected override void ContextMenuEvent(QContextMenuEvent arg1) {
-			ProxyQDialog().ContextMenuEvent(arg1);
+			((QDialog) interceptor).ContextMenuEvent(arg1);
 		}
 		[SmokeMethod("eventFilter", "(QObject*, QEvent*)", "##")]
 		protected new virtual bool EventFilter(QObject arg1, QEvent arg2) {
-			return ProxyQDialog().EventFilter(arg1,arg2);
+			return ((QDialog) interceptor).EventFilter(arg1,arg2);
 		}
 		[SmokeMethod("adjustPosition", "(QWidget*)", "#")]
 		protected void AdjustPosition(QWidget arg1) {
-			ProxyQDialog().AdjustPosition(arg1);
+			((QDialog) interceptor).AdjustPosition(arg1);
 		}
 		~QDialog() {
 			DisposeQDialog();
@@ -172,13 +166,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QDialog", "()", "")]
 		private void DisposeQDialog() {
-			ProxyQDialog().DisposeQDialog();
+			((QDialog) interceptor).DisposeQDialog();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQDialog().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQDialog().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQDialogSignals Emit {
 			get { return (IQDialogSignals) Q_EMIT; }

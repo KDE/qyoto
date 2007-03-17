@@ -6,8 +6,8 @@ namespace Qyoto {
 
 	[SmokeClass("QImageReader")]
 	public class QImageReader : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QImageReader interceptor = null;
+		private IntPtr smokeObject;
 		protected QImageReader(Type dummy) {}
 		[SmokeClass("QImageReader")]
 		interface IQImageReaderProxy {
@@ -20,18 +20,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QImageReader), this);
-			_interceptor = (QImageReader) realProxy.GetTransparentProxy();
+			interceptor = (QImageReader) realProxy.GetTransparentProxy();
 		}
-		private QImageReader ProxyQImageReader() {
-			return (QImageReader) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQImageReaderProxy staticInterceptor = null;
 		static QImageReader() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQImageReaderProxy), null);
-			_staticInterceptor = (IQImageReaderProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQImageReaderProxy StaticQImageReader() {
-			return (IQImageReaderProxy) _staticInterceptor;
+			staticInterceptor = (IQImageReaderProxy) realProxy.GetTransparentProxy();
 		}
 		public enum ImageReaderError {
 			UnknownError = 0,
@@ -46,7 +40,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QImageReader", "()", "")]
 		private void NewQImageReader() {
-			ProxyQImageReader().NewQImageReader();
+			((QImageReader) interceptor).NewQImageReader();
 		}
 		public QImageReader(QIODevice device, QByteArray format) : this((Type) null) {
 			CreateProxy();
@@ -54,7 +48,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QImageReader", "(QIODevice*, const QByteArray&)", "##")]
 		private void NewQImageReader(QIODevice device, QByteArray format) {
-			ProxyQImageReader().NewQImageReader(device,format);
+			((QImageReader) interceptor).NewQImageReader(device,format);
 		}
 		public QImageReader(QIODevice device) : this((Type) null) {
 			CreateProxy();
@@ -62,7 +56,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QImageReader", "(QIODevice*)", "#")]
 		private void NewQImageReader(QIODevice device) {
-			ProxyQImageReader().NewQImageReader(device);
+			((QImageReader) interceptor).NewQImageReader(device);
 		}
 		public QImageReader(string fileName, QByteArray format) : this((Type) null) {
 			CreateProxy();
@@ -70,7 +64,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QImageReader", "(const QString&, const QByteArray&)", "$#")]
 		private void NewQImageReader(string fileName, QByteArray format) {
-			ProxyQImageReader().NewQImageReader(fileName,format);
+			((QImageReader) interceptor).NewQImageReader(fileName,format);
 		}
 		public QImageReader(string fileName) : this((Type) null) {
 			CreateProxy();
@@ -78,139 +72,139 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QImageReader", "(const QString&)", "$")]
 		private void NewQImageReader(string fileName) {
-			ProxyQImageReader().NewQImageReader(fileName);
+			((QImageReader) interceptor).NewQImageReader(fileName);
 		}
 		[SmokeMethod("setFormat", "(const QByteArray&)", "#")]
 		public void SetFormat(QByteArray format) {
-			ProxyQImageReader().SetFormat(format);
+			((QImageReader) interceptor).SetFormat(format);
 		}
 		[SmokeMethod("format", "() const", "")]
 		public QByteArray Format() {
-			return ProxyQImageReader().Format();
+			return ((QImageReader) interceptor).Format();
 		}
 		[SmokeMethod("setDevice", "(QIODevice*)", "#")]
 		public void SetDevice(QIODevice device) {
-			ProxyQImageReader().SetDevice(device);
+			((QImageReader) interceptor).SetDevice(device);
 		}
 		[SmokeMethod("device", "() const", "")]
 		public QIODevice Device() {
-			return ProxyQImageReader().Device();
+			return ((QImageReader) interceptor).Device();
 		}
 		[SmokeMethod("setFileName", "(const QString&)", "$")]
 		public void SetFileName(string fileName) {
-			ProxyQImageReader().SetFileName(fileName);
+			((QImageReader) interceptor).SetFileName(fileName);
 		}
 		[SmokeMethod("fileName", "() const", "")]
 		public string FileName() {
-			return ProxyQImageReader().FileName();
+			return ((QImageReader) interceptor).FileName();
 		}
 		[SmokeMethod("size", "() const", "")]
 		public QSize Size() {
-			return ProxyQImageReader().Size();
+			return ((QImageReader) interceptor).Size();
 		}
 		[SmokeMethod("textKeys", "() const", "")]
 		public List<string> TextKeys() {
-			return ProxyQImageReader().TextKeys();
+			return ((QImageReader) interceptor).TextKeys();
 		}
 		[SmokeMethod("text", "(const QString&) const", "$")]
 		public string Text(string key) {
-			return ProxyQImageReader().Text(key);
+			return ((QImageReader) interceptor).Text(key);
 		}
 		[SmokeMethod("setClipRect", "(const QRect&)", "#")]
 		public void SetClipRect(QRect rect) {
-			ProxyQImageReader().SetClipRect(rect);
+			((QImageReader) interceptor).SetClipRect(rect);
 		}
 		[SmokeMethod("clipRect", "() const", "")]
 		public QRect ClipRect() {
-			return ProxyQImageReader().ClipRect();
+			return ((QImageReader) interceptor).ClipRect();
 		}
 		[SmokeMethod("setScaledSize", "(const QSize&)", "#")]
 		public void SetScaledSize(QSize size) {
-			ProxyQImageReader().SetScaledSize(size);
+			((QImageReader) interceptor).SetScaledSize(size);
 		}
 		[SmokeMethod("scaledSize", "() const", "")]
 		public QSize ScaledSize() {
-			return ProxyQImageReader().ScaledSize();
+			return ((QImageReader) interceptor).ScaledSize();
 		}
 		[SmokeMethod("setQuality", "(int)", "$")]
 		public void SetQuality(int quality) {
-			ProxyQImageReader().SetQuality(quality);
+			((QImageReader) interceptor).SetQuality(quality);
 		}
 		[SmokeMethod("quality", "() const", "")]
 		public int Quality() {
-			return ProxyQImageReader().Quality();
+			return ((QImageReader) interceptor).Quality();
 		}
 		[SmokeMethod("setScaledClipRect", "(const QRect&)", "#")]
 		public void SetScaledClipRect(QRect rect) {
-			ProxyQImageReader().SetScaledClipRect(rect);
+			((QImageReader) interceptor).SetScaledClipRect(rect);
 		}
 		[SmokeMethod("scaledClipRect", "() const", "")]
 		public QRect ScaledClipRect() {
-			return ProxyQImageReader().ScaledClipRect();
+			return ((QImageReader) interceptor).ScaledClipRect();
 		}
 		[SmokeMethod("setBackgroundColor", "(const QColor&)", "#")]
 		public void SetBackgroundColor(QColor color) {
-			ProxyQImageReader().SetBackgroundColor(color);
+			((QImageReader) interceptor).SetBackgroundColor(color);
 		}
 		[SmokeMethod("backgroundColor", "() const", "")]
 		public QColor BackgroundColor() {
-			return ProxyQImageReader().BackgroundColor();
+			return ((QImageReader) interceptor).BackgroundColor();
 		}
 		[SmokeMethod("supportsAnimation", "() const", "")]
 		public bool SupportsAnimation() {
-			return ProxyQImageReader().SupportsAnimation();
+			return ((QImageReader) interceptor).SupportsAnimation();
 		}
 		[SmokeMethod("canRead", "() const", "")]
 		public bool CanRead() {
-			return ProxyQImageReader().CanRead();
+			return ((QImageReader) interceptor).CanRead();
 		}
 		[SmokeMethod("read", "()", "")]
 		public QImage Read() {
-			return ProxyQImageReader().Read();
+			return ((QImageReader) interceptor).Read();
 		}
 		[SmokeMethod("read", "(QImage*)", "#")]
 		public bool Read(QImage image) {
-			return ProxyQImageReader().Read(image);
+			return ((QImageReader) interceptor).Read(image);
 		}
 		[SmokeMethod("jumpToNextImage", "()", "")]
 		public bool JumpToNextImage() {
-			return ProxyQImageReader().JumpToNextImage();
+			return ((QImageReader) interceptor).JumpToNextImage();
 		}
 		[SmokeMethod("jumpToImage", "(int)", "$")]
 		public bool JumpToImage(int imageNumber) {
-			return ProxyQImageReader().JumpToImage(imageNumber);
+			return ((QImageReader) interceptor).JumpToImage(imageNumber);
 		}
 		[SmokeMethod("loopCount", "() const", "")]
 		public int LoopCount() {
-			return ProxyQImageReader().LoopCount();
+			return ((QImageReader) interceptor).LoopCount();
 		}
 		[SmokeMethod("imageCount", "() const", "")]
 		public int ImageCount() {
-			return ProxyQImageReader().ImageCount();
+			return ((QImageReader) interceptor).ImageCount();
 		}
 		[SmokeMethod("nextImageDelay", "() const", "")]
 		public int NextImageDelay() {
-			return ProxyQImageReader().NextImageDelay();
+			return ((QImageReader) interceptor).NextImageDelay();
 		}
 		[SmokeMethod("currentImageNumber", "() const", "")]
 		public int CurrentImageNumber() {
-			return ProxyQImageReader().CurrentImageNumber();
+			return ((QImageReader) interceptor).CurrentImageNumber();
 		}
 		[SmokeMethod("currentImageRect", "() const", "")]
 		public QRect CurrentImageRect() {
-			return ProxyQImageReader().CurrentImageRect();
+			return ((QImageReader) interceptor).CurrentImageRect();
 		}
 		[SmokeMethod("error", "() const", "")]
 		public int Error() {
-			return ProxyQImageReader().Error();
+			return ((QImageReader) interceptor).Error();
 		}
 		[SmokeMethod("errorString", "() const", "")]
 		public string ErrorString() {
-			return ProxyQImageReader().ErrorString();
+			return ((QImageReader) interceptor).ErrorString();
 		}
 		[SmokeMethod("supportsOption", "(QImageIOHandler::ImageOption) const", "$")]
 		public bool SupportsOption(QImageIOHandler.ImageOption option) {
-			return ProxyQImageReader().SupportsOption(option);
+			return ((QImageReader) interceptor).SupportsOption(option);
 		}
 		~QImageReader() {
 			DisposeQImageReader();
@@ -220,16 +214,16 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QImageReader", "()", "")]
 		private void DisposeQImageReader() {
-			ProxyQImageReader().DisposeQImageReader();
+			((QImageReader) interceptor).DisposeQImageReader();
 		}
 		public static QByteArray ImageFormat(string fileName) {
-			return StaticQImageReader().ImageFormat(fileName);
+			return staticInterceptor.ImageFormat(fileName);
 		}
 		public static QByteArray ImageFormat(QIODevice device) {
-			return StaticQImageReader().ImageFormat(device);
+			return staticInterceptor.ImageFormat(device);
 		}
 		public static List<QByteArray> SupportedImageFormats() {
-			return StaticQImageReader().SupportedImageFormats();
+			return staticInterceptor.SupportedImageFormats();
 		}
 	}
 }

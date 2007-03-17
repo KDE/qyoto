@@ -15,18 +15,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDateEdit), this);
-			_interceptor = (QDateEdit) realProxy.GetTransparentProxy();
+			interceptor = (QDateEdit) realProxy.GetTransparentProxy();
 		}
-		private QDateEdit ProxyQDateEdit() {
-			return (QDateEdit) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQDateEditProxy staticInterceptor = null;
 		static QDateEdit() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQDateEditProxy), null);
-			_staticInterceptor = (IQDateEditProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQDateEditProxy StaticQDateEdit() {
-			return (IQDateEditProxy) _staticInterceptor;
+			staticInterceptor = (IQDateEditProxy) realProxy.GetTransparentProxy();
 		}
 		public QDateEdit(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -34,7 +28,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDateEdit", "(QWidget*)", "#")]
 		private void NewQDateEdit(QWidget parent) {
-			ProxyQDateEdit().NewQDateEdit(parent);
+			((QDateEdit) interceptor).NewQDateEdit(parent);
 		}
 		public QDateEdit() : this((Type) null) {
 			CreateProxy();
@@ -42,7 +36,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDateEdit", "()", "")]
 		private void NewQDateEdit() {
-			ProxyQDateEdit().NewQDateEdit();
+			((QDateEdit) interceptor).NewQDateEdit();
 		}
 		public QDateEdit(QDate date, QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -50,7 +44,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDateEdit", "(const QDate&, QWidget*)", "##")]
 		private void NewQDateEdit(QDate date, QWidget parent) {
-			ProxyQDateEdit().NewQDateEdit(date,parent);
+			((QDateEdit) interceptor).NewQDateEdit(date,parent);
 		}
 		public QDateEdit(QDate date) : this((Type) null) {
 			CreateProxy();
@@ -58,7 +52,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDateEdit", "(const QDate&)", "#")]
 		private void NewQDateEdit(QDate date) {
-			ProxyQDateEdit().NewQDateEdit(date);
+			((QDateEdit) interceptor).NewQDateEdit(date);
 		}
 		~QDateEdit() {
 			DisposeQDateEdit();
@@ -68,13 +62,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QDateEdit", "()", "")]
 		private void DisposeQDateEdit() {
-			ProxyQDateEdit().DisposeQDateEdit();
+			((QDateEdit) interceptor).DisposeQDateEdit();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQDateEdit().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQDateEdit().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQDateEditSignals Emit {
 			get { return (IQDateEditSignals) Q_EMIT; }

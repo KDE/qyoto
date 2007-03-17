@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QWhatsThisClickedEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QWhatsThisClickedEvent), this);
-			_interceptor = (QWhatsThisClickedEvent) realProxy.GetTransparentProxy();
-		}
-		private QWhatsThisClickedEvent ProxyQWhatsThisClickedEvent() {
-			return (QWhatsThisClickedEvent) _interceptor;
+			interceptor = (QWhatsThisClickedEvent) realProxy.GetTransparentProxy();
 		}
 		public QWhatsThisClickedEvent(string href) : this((Type) null) {
 			CreateProxy();
@@ -19,11 +16,11 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QWhatsThisClickedEvent", "(const QString&)", "$")]
 		private void NewQWhatsThisClickedEvent(string href) {
-			ProxyQWhatsThisClickedEvent().NewQWhatsThisClickedEvent(href);
+			((QWhatsThisClickedEvent) interceptor).NewQWhatsThisClickedEvent(href);
 		}
 		[SmokeMethod("href", "() const", "")]
 		public string Href() {
-			return ProxyQWhatsThisClickedEvent().Href();
+			return ((QWhatsThisClickedEvent) interceptor).Href();
 		}
 		~QWhatsThisClickedEvent() {
 			DisposeQWhatsThisClickedEvent();
@@ -33,7 +30,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QWhatsThisClickedEvent", "()", "")]
 		private void DisposeQWhatsThisClickedEvent() {
-			ProxyQWhatsThisClickedEvent().DisposeQWhatsThisClickedEvent();
+			((QWhatsThisClickedEvent) interceptor).DisposeQWhatsThisClickedEvent();
 		}
 	}
 }

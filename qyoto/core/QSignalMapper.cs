@@ -16,18 +16,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSignalMapper), this);
-			_interceptor = (QSignalMapper) realProxy.GetTransparentProxy();
+			interceptor = (QSignalMapper) realProxy.GetTransparentProxy();
 		}
-		private QSignalMapper ProxyQSignalMapper() {
-			return (QSignalMapper) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQSignalMapperProxy staticInterceptor = null;
 		static QSignalMapper() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQSignalMapperProxy), null);
-			_staticInterceptor = (IQSignalMapperProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQSignalMapperProxy StaticQSignalMapper() {
-			return (IQSignalMapperProxy) _staticInterceptor;
+			staticInterceptor = (IQSignalMapperProxy) realProxy.GetTransparentProxy();
 		}
 		public QSignalMapper(QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -35,7 +29,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSignalMapper", "(QObject*)", "#")]
 		private void NewQSignalMapper(QObject parent) {
-			ProxyQSignalMapper().NewQSignalMapper(parent);
+			((QSignalMapper) interceptor).NewQSignalMapper(parent);
 		}
 		public QSignalMapper() : this((Type) null) {
 			CreateProxy();
@@ -43,53 +37,53 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSignalMapper", "()", "")]
 		private void NewQSignalMapper() {
-			ProxyQSignalMapper().NewQSignalMapper();
+			((QSignalMapper) interceptor).NewQSignalMapper();
 		}
 		[SmokeMethod("setMapping", "(QObject*, int)", "#$")]
 		public void SetMapping(QObject sender, int id) {
-			ProxyQSignalMapper().SetMapping(sender,id);
+			((QSignalMapper) interceptor).SetMapping(sender,id);
 		}
 		[SmokeMethod("setMapping", "(QObject*, const QString&)", "#$")]
 		public void SetMapping(QObject sender, string text) {
-			ProxyQSignalMapper().SetMapping(sender,text);
+			((QSignalMapper) interceptor).SetMapping(sender,text);
 		}
 		[SmokeMethod("setMapping", "(QObject*, QWidget*)", "##")]
 		public void SetMapping(QObject sender, QWidget widget) {
-			ProxyQSignalMapper().SetMapping(sender,widget);
+			((QSignalMapper) interceptor).SetMapping(sender,widget);
 		}
 		[SmokeMethod("setMapping", "(QObject*, QObject*)", "##")]
 		public void SetMapping(QObject sender, QObject arg2) {
-			ProxyQSignalMapper().SetMapping(sender,arg2);
+			((QSignalMapper) interceptor).SetMapping(sender,arg2);
 		}
 		[SmokeMethod("removeMappings", "(QObject*)", "#")]
 		public void RemoveMappings(QObject sender) {
-			ProxyQSignalMapper().RemoveMappings(sender);
+			((QSignalMapper) interceptor).RemoveMappings(sender);
 		}
 		[SmokeMethod("mapping", "(int) const", "$")]
 		public QObject Mapping(int id) {
-			return ProxyQSignalMapper().Mapping(id);
+			return ((QSignalMapper) interceptor).Mapping(id);
 		}
 		[SmokeMethod("mapping", "(const QString&) const", "$")]
 		public QObject Mapping(string text) {
-			return ProxyQSignalMapper().Mapping(text);
+			return ((QSignalMapper) interceptor).Mapping(text);
 		}
 		[SmokeMethod("mapping", "(QWidget*) const", "#")]
 		public QObject Mapping(QWidget widget) {
-			return ProxyQSignalMapper().Mapping(widget);
+			return ((QSignalMapper) interceptor).Mapping(widget);
 		}
 		[SmokeMethod("mapping", "(QObject*) const", "#")]
 		public QObject Mapping(QObject arg1) {
-			return ProxyQSignalMapper().Mapping(arg1);
+			return ((QSignalMapper) interceptor).Mapping(arg1);
 		}
 		[Q_SLOT("void map()")]
 		[SmokeMethod("map", "()", "")]
 		public void Map() {
-			ProxyQSignalMapper().Map();
+			((QSignalMapper) interceptor).Map();
 		}
 		[Q_SLOT("void map(QObject*)")]
 		[SmokeMethod("map", "(QObject*)", "#")]
 		public void Map(QObject sender) {
-			ProxyQSignalMapper().Map(sender);
+			((QSignalMapper) interceptor).Map(sender);
 		}
 		~QSignalMapper() {
 			DisposeQSignalMapper();
@@ -99,13 +93,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QSignalMapper", "()", "")]
 		private void DisposeQSignalMapper() {
-			ProxyQSignalMapper().DisposeQSignalMapper();
+			((QSignalMapper) interceptor).DisposeQSignalMapper();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQSignalMapper().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQSignalMapper().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQSignalMapperSignals Emit {
 			get { return (IQSignalMapperSignals) Q_EMIT; }

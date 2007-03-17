@@ -5,8 +5,8 @@ namespace Qyoto {
 
 	[SmokeClass("QGradient")]
 	public class QGradient : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QGradient interceptor = null;
+		private IntPtr smokeObject;
 		protected QGradient(Type dummy) {}
 		[SmokeClass("QGradient")]
 		interface IQGradientProxy {
@@ -15,18 +15,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGradient), this);
-			_interceptor = (QGradient) realProxy.GetTransparentProxy();
+			interceptor = (QGradient) realProxy.GetTransparentProxy();
 		}
-		private QGradient ProxyQGradient() {
-			return (QGradient) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQGradientProxy staticInterceptor = null;
 		static QGradient() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQGradientProxy), null);
-			_staticInterceptor = (IQGradientProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQGradientProxy StaticQGradient() {
-			return (IQGradientProxy) _staticInterceptor;
+			staticInterceptor = (IQGradientProxy) realProxy.GetTransparentProxy();
 		}
 		public enum TypeOf {
 			LinearGradient = 0,
@@ -51,38 +45,38 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGradient", "()", "")]
 		private void NewQGradient() {
-			ProxyQGradient().NewQGradient();
+			((QGradient) interceptor).NewQGradient();
 		}
 		[SmokeMethod("type", "() const", "")]
 		public QGradient.TypeOf type() {
-			return ProxyQGradient().type();
+			return ((QGradient) interceptor).type();
 		}
 		[SmokeMethod("setSpread", "(QGradient::Spread)", "$")]
 		public void SetSpread(QGradient.Spread spread) {
-			ProxyQGradient().SetSpread(spread);
+			((QGradient) interceptor).SetSpread(spread);
 		}
 		[SmokeMethod("spread", "() const", "")]
 		public QGradient.Spread spread() {
-			return ProxyQGradient().spread();
+			return ((QGradient) interceptor).spread();
 		}
 		[SmokeMethod("setColorAt", "(qreal, const QColor&)", "$#")]
 		public void SetColorAt(double pos, QColor color) {
-			ProxyQGradient().SetColorAt(pos,color);
+			((QGradient) interceptor).SetColorAt(pos,color);
 		}
 		[SmokeMethod("coordinateMode", "() const", "")]
 		public QGradient.CoordinateMode coordinateMode() {
-			return ProxyQGradient().coordinateMode();
+			return ((QGradient) interceptor).coordinateMode();
 		}
 		[SmokeMethod("setCoordinateMode", "(QGradient::CoordinateMode)", "$")]
 		public void SetCoordinateMode(QGradient.CoordinateMode mode) {
-			ProxyQGradient().SetCoordinateMode(mode);
+			((QGradient) interceptor).SetCoordinateMode(mode);
 		}
 		public override bool Equals(object o) {
 			if (!(o is QGradient)) { return false; }
 			return this == (QGradient) o;
 		}
 		public override int GetHashCode() {
-			return ProxyQGradient().GetHashCode();
+			return ((QGradient) interceptor).GetHashCode();
 		}
 		~QGradient() {
 			DisposeQGradient();
@@ -92,13 +86,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QGradient", "()", "")]
 		private void DisposeQGradient() {
-			ProxyQGradient().DisposeQGradient();
+			((QGradient) interceptor).DisposeQGradient();
 		}
 		public static bool operator==(QGradient lhs, QGradient gradient) {
-			return StaticQGradient().op_equals(lhs,gradient);
+			return staticInterceptor.op_equals(lhs,gradient);
 		}
 		public static bool operator!=(QGradient lhs, QGradient gradient) {
-			return !StaticQGradient().op_equals(lhs,gradient);
+			return !staticInterceptor.op_equals(lhs,gradient);
 		}
 	}
 }

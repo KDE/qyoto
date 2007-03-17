@@ -17,18 +17,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGLWidget), this);
-			_interceptor = (QGLWidget) realProxy.GetTransparentProxy();
+			interceptor = (QGLWidget) realProxy.GetTransparentProxy();
 		}
-		private QGLWidget ProxyQGLWidget() {
-			return (QGLWidget) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQGLWidgetProxy staticInterceptor = null;
 		static QGLWidget() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQGLWidgetProxy), null);
-			_staticInterceptor = (IQGLWidgetProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQGLWidgetProxy StaticQGLWidget() {
-			return (IQGLWidgetProxy) _staticInterceptor;
+			staticInterceptor = (IQGLWidgetProxy) realProxy.GetTransparentProxy();
 		}
 		public QGLWidget(QWidget parent, QGLWidget shareWidget, int f) : this((Type) null) {
 			CreateProxy();
@@ -36,7 +30,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGLWidget", "(QWidget*, const QGLWidget*, Qt::WindowFlags)", "##$")]
 		private void NewQGLWidget(QWidget parent, QGLWidget shareWidget, int f) {
-			ProxyQGLWidget().NewQGLWidget(parent,shareWidget,f);
+			((QGLWidget) interceptor).NewQGLWidget(parent,shareWidget,f);
 		}
 		public QGLWidget(QWidget parent, QGLWidget shareWidget) : this((Type) null) {
 			CreateProxy();
@@ -44,7 +38,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGLWidget", "(QWidget*, const QGLWidget*)", "##")]
 		private void NewQGLWidget(QWidget parent, QGLWidget shareWidget) {
-			ProxyQGLWidget().NewQGLWidget(parent,shareWidget);
+			((QGLWidget) interceptor).NewQGLWidget(parent,shareWidget);
 		}
 		public QGLWidget(QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -52,7 +46,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGLWidget", "(QWidget*)", "#")]
 		private void NewQGLWidget(QWidget parent) {
-			ProxyQGLWidget().NewQGLWidget(parent);
+			((QGLWidget) interceptor).NewQGLWidget(parent);
 		}
 		public QGLWidget() : this((Type) null) {
 			CreateProxy();
@@ -60,7 +54,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGLWidget", "()", "")]
 		private void NewQGLWidget() {
-			ProxyQGLWidget().NewQGLWidget();
+			((QGLWidget) interceptor).NewQGLWidget();
 		}
 		public QGLWidget(QGLContext context, QWidget parent, QGLWidget shareWidget, int f) : this((Type) null) {
 			CreateProxy();
@@ -68,7 +62,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGLWidget", "(QGLContext*, QWidget*, const QGLWidget*, Qt::WindowFlags)", "###$")]
 		private void NewQGLWidget(QGLContext context, QWidget parent, QGLWidget shareWidget, int f) {
-			ProxyQGLWidget().NewQGLWidget(context,parent,shareWidget,f);
+			((QGLWidget) interceptor).NewQGLWidget(context,parent,shareWidget,f);
 		}
 		public QGLWidget(QGLContext context, QWidget parent, QGLWidget shareWidget) : this((Type) null) {
 			CreateProxy();
@@ -76,7 +70,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGLWidget", "(QGLContext*, QWidget*, const QGLWidget*)", "###")]
 		private void NewQGLWidget(QGLContext context, QWidget parent, QGLWidget shareWidget) {
-			ProxyQGLWidget().NewQGLWidget(context,parent,shareWidget);
+			((QGLWidget) interceptor).NewQGLWidget(context,parent,shareWidget);
 		}
 		public QGLWidget(QGLContext context, QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -84,7 +78,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGLWidget", "(QGLContext*, QWidget*)", "##")]
 		private void NewQGLWidget(QGLContext context, QWidget parent) {
-			ProxyQGLWidget().NewQGLWidget(context,parent);
+			((QGLWidget) interceptor).NewQGLWidget(context,parent);
 		}
 		public QGLWidget(QGLContext context) : this((Type) null) {
 			CreateProxy();
@@ -92,7 +86,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGLWidget", "(QGLContext*)", "#")]
 		private void NewQGLWidget(QGLContext context) {
-			ProxyQGLWidget().NewQGLWidget(context);
+			((QGLWidget) interceptor).NewQGLWidget(context);
 		}
 		public QGLWidget(QGLFormat format, QWidget parent, QGLWidget shareWidget, int f) : this((Type) null) {
 			CreateProxy();
@@ -100,7 +94,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGLWidget", "(const QGLFormat&, QWidget*, const QGLWidget*, Qt::WindowFlags)", "###$")]
 		private void NewQGLWidget(QGLFormat format, QWidget parent, QGLWidget shareWidget, int f) {
-			ProxyQGLWidget().NewQGLWidget(format,parent,shareWidget,f);
+			((QGLWidget) interceptor).NewQGLWidget(format,parent,shareWidget,f);
 		}
 		public QGLWidget(QGLFormat format, QWidget parent, QGLWidget shareWidget) : this((Type) null) {
 			CreateProxy();
@@ -108,7 +102,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGLWidget", "(const QGLFormat&, QWidget*, const QGLWidget*)", "###")]
 		private void NewQGLWidget(QGLFormat format, QWidget parent, QGLWidget shareWidget) {
-			ProxyQGLWidget().NewQGLWidget(format,parent,shareWidget);
+			((QGLWidget) interceptor).NewQGLWidget(format,parent,shareWidget);
 		}
 		public QGLWidget(QGLFormat format, QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -116,7 +110,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGLWidget", "(const QGLFormat&, QWidget*)", "##")]
 		private void NewQGLWidget(QGLFormat format, QWidget parent) {
-			ProxyQGLWidget().NewQGLWidget(format,parent);
+			((QGLWidget) interceptor).NewQGLWidget(format,parent);
 		}
 		public QGLWidget(QGLFormat format) : this((Type) null) {
 			CreateProxy();
@@ -124,237 +118,237 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGLWidget", "(const QGLFormat&)", "#")]
 		private void NewQGLWidget(QGLFormat format) {
-			ProxyQGLWidget().NewQGLWidget(format);
+			((QGLWidget) interceptor).NewQGLWidget(format);
 		}
 		[SmokeMethod("qglColor", "(const QColor&) const", "#")]
 		public void QglColor(QColor c) {
-			ProxyQGLWidget().QglColor(c);
+			((QGLWidget) interceptor).QglColor(c);
 		}
 		[SmokeMethod("qglClearColor", "(const QColor&) const", "#")]
 		public void QglClearColor(QColor c) {
-			ProxyQGLWidget().QglClearColor(c);
+			((QGLWidget) interceptor).QglClearColor(c);
 		}
 		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ProxyQGLWidget().IsValid();
+			return ((QGLWidget) interceptor).IsValid();
 		}
 		[SmokeMethod("isSharing", "() const", "")]
 		public bool IsSharing() {
-			return ProxyQGLWidget().IsSharing();
+			return ((QGLWidget) interceptor).IsSharing();
 		}
 		[SmokeMethod("makeCurrent", "()", "")]
 		public void MakeCurrent() {
-			ProxyQGLWidget().MakeCurrent();
+			((QGLWidget) interceptor).MakeCurrent();
 		}
 		[SmokeMethod("doneCurrent", "()", "")]
 		public void DoneCurrent() {
-			ProxyQGLWidget().DoneCurrent();
+			((QGLWidget) interceptor).DoneCurrent();
 		}
 		[SmokeMethod("doubleBuffer", "() const", "")]
 		public bool DoubleBuffer() {
-			return ProxyQGLWidget().DoubleBuffer();
+			return ((QGLWidget) interceptor).DoubleBuffer();
 		}
 		[SmokeMethod("swapBuffers", "()", "")]
 		public void SwapBuffers() {
-			ProxyQGLWidget().SwapBuffers();
+			((QGLWidget) interceptor).SwapBuffers();
 		}
 		[SmokeMethod("format", "() const", "")]
 		public QGLFormat Format() {
-			return ProxyQGLWidget().Format();
+			return ((QGLWidget) interceptor).Format();
 		}
 		[SmokeMethod("setFormat", "(const QGLFormat&)", "#")]
 		public void SetFormat(QGLFormat format) {
-			ProxyQGLWidget().SetFormat(format);
+			((QGLWidget) interceptor).SetFormat(format);
 		}
 		[SmokeMethod("context", "() const", "")]
 		public QGLContext Context() {
-			return ProxyQGLWidget().Context();
+			return ((QGLWidget) interceptor).Context();
 		}
 		[SmokeMethod("setContext", "(QGLContext*, const QGLContext*, bool)", "##$")]
 		public void SetContext(QGLContext context, QGLContext shareContext, bool deleteOldContext) {
-			ProxyQGLWidget().SetContext(context,shareContext,deleteOldContext);
+			((QGLWidget) interceptor).SetContext(context,shareContext,deleteOldContext);
 		}
 		[SmokeMethod("setContext", "(QGLContext*, const QGLContext*)", "##")]
 		public void SetContext(QGLContext context, QGLContext shareContext) {
-			ProxyQGLWidget().SetContext(context,shareContext);
+			((QGLWidget) interceptor).SetContext(context,shareContext);
 		}
 		[SmokeMethod("setContext", "(QGLContext*)", "#")]
 		public void SetContext(QGLContext context) {
-			ProxyQGLWidget().SetContext(context);
+			((QGLWidget) interceptor).SetContext(context);
 		}
 		[SmokeMethod("renderPixmap", "(int, int, bool)", "$$$")]
 		public QPixmap RenderPixmap(int w, int h, bool useContext) {
-			return ProxyQGLWidget().RenderPixmap(w,h,useContext);
+			return ((QGLWidget) interceptor).RenderPixmap(w,h,useContext);
 		}
 		[SmokeMethod("renderPixmap", "(int, int)", "$$")]
 		public QPixmap RenderPixmap(int w, int h) {
-			return ProxyQGLWidget().RenderPixmap(w,h);
+			return ((QGLWidget) interceptor).RenderPixmap(w,h);
 		}
 		[SmokeMethod("renderPixmap", "(int)", "$")]
 		public QPixmap RenderPixmap(int w) {
-			return ProxyQGLWidget().RenderPixmap(w);
+			return ((QGLWidget) interceptor).RenderPixmap(w);
 		}
 		[SmokeMethod("renderPixmap", "()", "")]
 		public QPixmap RenderPixmap() {
-			return ProxyQGLWidget().RenderPixmap();
+			return ((QGLWidget) interceptor).RenderPixmap();
 		}
 		[SmokeMethod("grabFrameBuffer", "(bool)", "$")]
 		public QImage GrabFrameBuffer(bool withAlpha) {
-			return ProxyQGLWidget().GrabFrameBuffer(withAlpha);
+			return ((QGLWidget) interceptor).GrabFrameBuffer(withAlpha);
 		}
 		[SmokeMethod("grabFrameBuffer", "()", "")]
 		public QImage GrabFrameBuffer() {
-			return ProxyQGLWidget().GrabFrameBuffer();
+			return ((QGLWidget) interceptor).GrabFrameBuffer();
 		}
 		[SmokeMethod("makeOverlayCurrent", "()", "")]
 		public void MakeOverlayCurrent() {
-			ProxyQGLWidget().MakeOverlayCurrent();
+			((QGLWidget) interceptor).MakeOverlayCurrent();
 		}
 		[SmokeMethod("overlayContext", "() const", "")]
 		public QGLContext OverlayContext() {
-			return ProxyQGLWidget().OverlayContext();
+			return ((QGLWidget) interceptor).OverlayContext();
 		}
 		[SmokeMethod("setMouseTracking", "(bool)", "$")]
 		public void SetMouseTracking(bool enable) {
-			ProxyQGLWidget().SetMouseTracking(enable);
+			((QGLWidget) interceptor).SetMouseTracking(enable);
 		}
 		[SmokeMethod("colormap", "() const", "")]
 		public QGLColormap Colormap() {
-			return ProxyQGLWidget().Colormap();
+			return ((QGLWidget) interceptor).Colormap();
 		}
 		[SmokeMethod("setColormap", "(const QGLColormap&)", "#")]
 		public void SetColormap(QGLColormap map) {
-			ProxyQGLWidget().SetColormap(map);
+			((QGLWidget) interceptor).SetColormap(map);
 		}
 		[SmokeMethod("renderText", "(int, int, const QString&, const QFont&, int)", "$$$#$")]
 		public void RenderText(int x, int y, string str, QFont fnt, int listBase) {
-			ProxyQGLWidget().RenderText(x,y,str,fnt,listBase);
+			((QGLWidget) interceptor).RenderText(x,y,str,fnt,listBase);
 		}
 		[SmokeMethod("renderText", "(int, int, const QString&, const QFont&)", "$$$#")]
 		public void RenderText(int x, int y, string str, QFont fnt) {
-			ProxyQGLWidget().RenderText(x,y,str,fnt);
+			((QGLWidget) interceptor).RenderText(x,y,str,fnt);
 		}
 		[SmokeMethod("renderText", "(int, int, const QString&)", "$$$")]
 		public void RenderText(int x, int y, string str) {
-			ProxyQGLWidget().RenderText(x,y,str);
+			((QGLWidget) interceptor).RenderText(x,y,str);
 		}
 		[SmokeMethod("renderText", "(double, double, double, const QString&, const QFont&, int)", "$$$$#$")]
 		public void RenderText(double x, double y, double z, string str, QFont fnt, int listBase) {
-			ProxyQGLWidget().RenderText(x,y,z,str,fnt,listBase);
+			((QGLWidget) interceptor).RenderText(x,y,z,str,fnt,listBase);
 		}
 		[SmokeMethod("renderText", "(double, double, double, const QString&, const QFont&)", "$$$$#")]
 		public void RenderText(double x, double y, double z, string str, QFont fnt) {
-			ProxyQGLWidget().RenderText(x,y,z,str,fnt);
+			((QGLWidget) interceptor).RenderText(x,y,z,str,fnt);
 		}
 		[SmokeMethod("renderText", "(double, double, double, const QString&)", "$$$$")]
 		public void RenderText(double x, double y, double z, string str) {
-			ProxyQGLWidget().RenderText(x,y,z,str);
+			((QGLWidget) interceptor).RenderText(x,y,z,str);
 		}
 		[SmokeMethod("paintEngine", "() const", "")]
 		public override QPaintEngine PaintEngine() {
-			return ProxyQGLWidget().PaintEngine();
+			return ((QGLWidget) interceptor).PaintEngine();
 		}
 		[SmokeMethod("bindTexture", "(const QImage&, GLenum, GLint)", "#$$")]
 		public uint BindTexture(QImage image, int target, int format) {
-			return ProxyQGLWidget().BindTexture(image,target,format);
+			return ((QGLWidget) interceptor).BindTexture(image,target,format);
 		}
 		[SmokeMethod("bindTexture", "(const QImage&, GLenum)", "#$")]
 		public uint BindTexture(QImage image, int target) {
-			return ProxyQGLWidget().BindTexture(image,target);
+			return ((QGLWidget) interceptor).BindTexture(image,target);
 		}
 		[SmokeMethod("bindTexture", "(const QImage&)", "#")]
 		public uint BindTexture(QImage image) {
-			return ProxyQGLWidget().BindTexture(image);
+			return ((QGLWidget) interceptor).BindTexture(image);
 		}
 		[SmokeMethod("bindTexture", "(const QPixmap&, GLenum, GLint)", "#$$")]
 		public uint BindTexture(QPixmap pixmap, int target, int format) {
-			return ProxyQGLWidget().BindTexture(pixmap,target,format);
+			return ((QGLWidget) interceptor).BindTexture(pixmap,target,format);
 		}
 		[SmokeMethod("bindTexture", "(const QPixmap&, GLenum)", "#$")]
 		public uint BindTexture(QPixmap pixmap, int target) {
-			return ProxyQGLWidget().BindTexture(pixmap,target);
+			return ((QGLWidget) interceptor).BindTexture(pixmap,target);
 		}
 		[SmokeMethod("bindTexture", "(const QPixmap&)", "#")]
 		public uint BindTexture(QPixmap pixmap) {
-			return ProxyQGLWidget().BindTexture(pixmap);
+			return ((QGLWidget) interceptor).BindTexture(pixmap);
 		}
 		[SmokeMethod("bindTexture", "(const QString&)", "$")]
 		public uint BindTexture(string fileName) {
-			return ProxyQGLWidget().BindTexture(fileName);
+			return ((QGLWidget) interceptor).BindTexture(fileName);
 		}
 		[SmokeMethod("deleteTexture", "(GLuint)", "$")]
 		public void DeleteTexture(uint tx_id) {
-			ProxyQGLWidget().DeleteTexture(tx_id);
+			((QGLWidget) interceptor).DeleteTexture(tx_id);
 		}
 		[Q_SLOT("void updateGL()")]
 		[SmokeMethod("updateGL", "()", "")]
 		public virtual void UpdateGL() {
-			ProxyQGLWidget().UpdateGL();
+			((QGLWidget) interceptor).UpdateGL();
 		}
 		[Q_SLOT("void updateOverlayGL()")]
 		[SmokeMethod("updateOverlayGL", "()", "")]
 		public virtual void UpdateOverlayGL() {
-			ProxyQGLWidget().UpdateOverlayGL();
+			((QGLWidget) interceptor).UpdateOverlayGL();
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent arg1) {
-			return ProxyQGLWidget().Event(arg1);
+			return ((QGLWidget) interceptor).Event(arg1);
 		}
 		[SmokeMethod("initializeGL", "()", "")]
 		protected virtual void InitializeGL() {
-			ProxyQGLWidget().InitializeGL();
+			((QGLWidget) interceptor).InitializeGL();
 		}
 		[SmokeMethod("resizeGL", "(int, int)", "$$")]
 		protected virtual void ResizeGL(int w, int h) {
-			ProxyQGLWidget().ResizeGL(w,h);
+			((QGLWidget) interceptor).ResizeGL(w,h);
 		}
 		[SmokeMethod("paintGL", "()", "")]
 		protected virtual void PaintGL() {
-			ProxyQGLWidget().PaintGL();
+			((QGLWidget) interceptor).PaintGL();
 		}
 		[SmokeMethod("initializeOverlayGL", "()", "")]
 		protected virtual void InitializeOverlayGL() {
-			ProxyQGLWidget().InitializeOverlayGL();
+			((QGLWidget) interceptor).InitializeOverlayGL();
 		}
 		[SmokeMethod("resizeOverlayGL", "(int, int)", "$$")]
 		protected virtual void ResizeOverlayGL(int w, int h) {
-			ProxyQGLWidget().ResizeOverlayGL(w,h);
+			((QGLWidget) interceptor).ResizeOverlayGL(w,h);
 		}
 		[SmokeMethod("paintOverlayGL", "()", "")]
 		protected virtual void PaintOverlayGL() {
-			ProxyQGLWidget().PaintOverlayGL();
+			((QGLWidget) interceptor).PaintOverlayGL();
 		}
 		[SmokeMethod("setAutoBufferSwap", "(bool)", "$")]
 		protected void SetAutoBufferSwap(bool on) {
-			ProxyQGLWidget().SetAutoBufferSwap(on);
+			((QGLWidget) interceptor).SetAutoBufferSwap(on);
 		}
 		[SmokeMethod("autoBufferSwap", "() const", "")]
 		protected bool AutoBufferSwap() {
-			return ProxyQGLWidget().AutoBufferSwap();
+			return ((QGLWidget) interceptor).AutoBufferSwap();
 		}
 		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
 		protected override void PaintEvent(QPaintEvent arg1) {
-			ProxyQGLWidget().PaintEvent(arg1);
+			((QGLWidget) interceptor).PaintEvent(arg1);
 		}
 		[SmokeMethod("resizeEvent", "(QResizeEvent*)", "#")]
 		protected override void ResizeEvent(QResizeEvent arg1) {
-			ProxyQGLWidget().ResizeEvent(arg1);
+			((QGLWidget) interceptor).ResizeEvent(arg1);
 		}
 		[SmokeMethod("glInit", "()", "")]
 		protected virtual void GlInit() {
-			ProxyQGLWidget().GlInit();
+			((QGLWidget) interceptor).GlInit();
 		}
 		[SmokeMethod("glDraw", "()", "")]
 		protected virtual void GlDraw() {
-			ProxyQGLWidget().GlDraw();
+			((QGLWidget) interceptor).GlDraw();
 		}
 		[SmokeMethod("fontDisplayListBase", "(const QFont&, int)", "#$")]
 		protected int FontDisplayListBase(QFont fnt, int listBase) {
-			return ProxyQGLWidget().FontDisplayListBase(fnt,listBase);
+			return ((QGLWidget) interceptor).FontDisplayListBase(fnt,listBase);
 		}
 		[SmokeMethod("fontDisplayListBase", "(const QFont&)", "#")]
 		protected int FontDisplayListBase(QFont fnt) {
-			return ProxyQGLWidget().FontDisplayListBase(fnt);
+			return ((QGLWidget) interceptor).FontDisplayListBase(fnt);
 		}
 		~QGLWidget() {
 			DisposeQGLWidget();
@@ -364,16 +358,16 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QGLWidget", "()", "")]
 		private void DisposeQGLWidget() {
-			ProxyQGLWidget().DisposeQGLWidget();
+			((QGLWidget) interceptor).DisposeQGLWidget();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQGLWidget().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQGLWidget().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		public static QImage ConvertToGLFormat(QImage img) {
-			return StaticQGLWidget().ConvertToGLFormat(img);
+			return staticInterceptor.ConvertToGLFormat(img);
 		}
 		protected new IQGLWidgetSignals Emit {
 			get { return (IQGLWidgetSignals) Q_EMIT; }

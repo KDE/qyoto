@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QStyleOptionButton(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionButton), this);
-			_interceptor = (QStyleOptionButton) realProxy.GetTransparentProxy();
-		}
-		private QStyleOptionButton ProxyQStyleOptionButton() {
-			return (QStyleOptionButton) _interceptor;
+			interceptor = (QStyleOptionButton) realProxy.GetTransparentProxy();
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_Button,
@@ -32,7 +29,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionButton", "()", "")]
 		private void NewQStyleOptionButton() {
-			ProxyQStyleOptionButton().NewQStyleOptionButton();
+			((QStyleOptionButton) interceptor).NewQStyleOptionButton();
 		}
 		public QStyleOptionButton(QStyleOptionButton other) : this((Type) null) {
 			CreateProxy();
@@ -40,7 +37,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionButton", "(const QStyleOptionButton&)", "#")]
 		private void NewQStyleOptionButton(QStyleOptionButton other) {
-			ProxyQStyleOptionButton().NewQStyleOptionButton(other);
+			((QStyleOptionButton) interceptor).NewQStyleOptionButton(other);
 		}
 		public QStyleOptionButton(int version) : this((Type) null) {
 			CreateProxy();
@@ -48,7 +45,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionButton", "(int)", "$")]
 		private void NewQStyleOptionButton(int version) {
-			ProxyQStyleOptionButton().NewQStyleOptionButton(version);
+			((QStyleOptionButton) interceptor).NewQStyleOptionButton(version);
 		}
 		~QStyleOptionButton() {
 			DisposeQStyleOptionButton();
@@ -58,7 +55,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QStyleOptionButton", "()", "")]
 		private void DisposeQStyleOptionButton() {
-			ProxyQStyleOptionButton().DisposeQStyleOptionButton();
+			((QStyleOptionButton) interceptor).DisposeQStyleOptionButton();
 		}
 	}
 }

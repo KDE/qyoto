@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QStylePainter(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStylePainter), this);
-			_interceptor = (QStylePainter) realProxy.GetTransparentProxy();
-		}
-		private QStylePainter ProxyQStylePainter() {
-			return (QStylePainter) _interceptor;
+			interceptor = (QStylePainter) realProxy.GetTransparentProxy();
 		}
 		public QStylePainter() : this((Type) null) {
 			CreateProxy();
@@ -19,7 +16,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStylePainter", "()", "")]
 		private void NewQStylePainter() {
-			ProxyQStylePainter().NewQStylePainter();
+			((QStylePainter) interceptor).NewQStylePainter();
 		}
 		public QStylePainter(QWidget w) : this((Type) null) {
 			CreateProxy();
@@ -27,7 +24,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStylePainter", "(QWidget*)", "#")]
 		private void NewQStylePainter(QWidget w) {
-			ProxyQStylePainter().NewQStylePainter(w);
+			((QStylePainter) interceptor).NewQStylePainter(w);
 		}
 		public QStylePainter(IQPaintDevice pd, QWidget w) : this((Type) null) {
 			CreateProxy();
@@ -35,43 +32,43 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStylePainter", "(QPaintDevice*, QWidget*)", "##")]
 		private void NewQStylePainter(IQPaintDevice pd, QWidget w) {
-			ProxyQStylePainter().NewQStylePainter(pd,w);
+			((QStylePainter) interceptor).NewQStylePainter(pd,w);
 		}
 		[SmokeMethod("begin", "(QWidget*)", "#")]
 		public bool Begin(QWidget w) {
-			return ProxyQStylePainter().Begin(w);
+			return ((QStylePainter) interceptor).Begin(w);
 		}
 		[SmokeMethod("begin", "(QPaintDevice*, QWidget*)", "##")]
 		public bool Begin(IQPaintDevice pd, QWidget w) {
-			return ProxyQStylePainter().Begin(pd,w);
+			return ((QStylePainter) interceptor).Begin(pd,w);
 		}
 		[SmokeMethod("drawPrimitive", "(QStyle::PrimitiveElement, const QStyleOption&)", "$#")]
 		public void DrawPrimitive(QStyle.PrimitiveElement pe, QStyleOption opt) {
-			ProxyQStylePainter().DrawPrimitive(pe,opt);
+			((QStylePainter) interceptor).DrawPrimitive(pe,opt);
 		}
 		[SmokeMethod("drawControl", "(QStyle::ControlElement, const QStyleOption&)", "$#")]
 		public void DrawControl(QStyle.ControlElement ce, QStyleOption opt) {
-			ProxyQStylePainter().DrawControl(ce,opt);
+			((QStylePainter) interceptor).DrawControl(ce,opt);
 		}
 		[SmokeMethod("drawComplexControl", "(QStyle::ComplexControl, const QStyleOptionComplex&)", "$#")]
 		public void DrawComplexControl(QStyle.ComplexControl cc, QStyleOptionComplex opt) {
-			ProxyQStylePainter().DrawComplexControl(cc,opt);
+			((QStylePainter) interceptor).DrawComplexControl(cc,opt);
 		}
 		[SmokeMethod("drawItemText", "(const QRect&, int, const QPalette&, bool, const QString&, QPalette::ColorRole)", "#$#$$$")]
 		public void DrawItemText(QRect r, int flags, QPalette pal, bool enabled, string text, QPalette.ColorRole textRole) {
-			ProxyQStylePainter().DrawItemText(r,flags,pal,enabled,text,textRole);
+			((QStylePainter) interceptor).DrawItemText(r,flags,pal,enabled,text,textRole);
 		}
 		[SmokeMethod("drawItemText", "(const QRect&, int, const QPalette&, bool, const QString&)", "#$#$$")]
 		public void DrawItemText(QRect r, int flags, QPalette pal, bool enabled, string text) {
-			ProxyQStylePainter().DrawItemText(r,flags,pal,enabled,text);
+			((QStylePainter) interceptor).DrawItemText(r,flags,pal,enabled,text);
 		}
 		[SmokeMethod("drawItemPixmap", "(const QRect&, int, const QPixmap&)", "#$#")]
 		public void DrawItemPixmap(QRect r, int flags, QPixmap pixmap) {
-			ProxyQStylePainter().DrawItemPixmap(r,flags,pixmap);
+			((QStylePainter) interceptor).DrawItemPixmap(r,flags,pixmap);
 		}
 		[SmokeMethod("style", "() const", "")]
 		public QStyle Style() {
-			return ProxyQStylePainter().Style();
+			return ((QStylePainter) interceptor).Style();
 		}
 		~QStylePainter() {
 			DisposeQStylePainter();
@@ -81,7 +78,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QStylePainter", "()", "")]
 		private void DisposeQStylePainter() {
-			ProxyQStylePainter().DisposeQStylePainter();
+			((QStylePainter) interceptor).DisposeQStylePainter();
 		}
 	}
 }

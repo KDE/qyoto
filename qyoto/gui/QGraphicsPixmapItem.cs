@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QGraphicsPixmapItem(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QGraphicsPixmapItem), this);
-			_interceptor = (QGraphicsPixmapItem) realProxy.GetTransparentProxy();
-		}
-		private QGraphicsPixmapItem ProxyQGraphicsPixmapItem() {
-			return (QGraphicsPixmapItem) _interceptor;
+			interceptor = (QGraphicsPixmapItem) realProxy.GetTransparentProxy();
 		}
 		public enum ShapeMode {
 			MaskShape = 0,
@@ -26,7 +23,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGraphicsPixmapItem", "(QGraphicsItem*, QGraphicsScene*)", "##")]
 		private void NewQGraphicsPixmapItem(QGraphicsItem parent, QGraphicsScene scene) {
-			ProxyQGraphicsPixmapItem().NewQGraphicsPixmapItem(parent,scene);
+			((QGraphicsPixmapItem) interceptor).NewQGraphicsPixmapItem(parent,scene);
 		}
 		public QGraphicsPixmapItem(QGraphicsItem parent) : this((Type) null) {
 			CreateProxy();
@@ -34,7 +31,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGraphicsPixmapItem", "(QGraphicsItem*)", "#")]
 		private void NewQGraphicsPixmapItem(QGraphicsItem parent) {
-			ProxyQGraphicsPixmapItem().NewQGraphicsPixmapItem(parent);
+			((QGraphicsPixmapItem) interceptor).NewQGraphicsPixmapItem(parent);
 		}
 		public QGraphicsPixmapItem() : this((Type) null) {
 			CreateProxy();
@@ -42,7 +39,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGraphicsPixmapItem", "()", "")]
 		private void NewQGraphicsPixmapItem() {
-			ProxyQGraphicsPixmapItem().NewQGraphicsPixmapItem();
+			((QGraphicsPixmapItem) interceptor).NewQGraphicsPixmapItem();
 		}
 		public QGraphicsPixmapItem(QPixmap pixmap, QGraphicsItem parent, QGraphicsScene scene) : this((Type) null) {
 			CreateProxy();
@@ -50,7 +47,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGraphicsPixmapItem", "(const QPixmap&, QGraphicsItem*, QGraphicsScene*)", "###")]
 		private void NewQGraphicsPixmapItem(QPixmap pixmap, QGraphicsItem parent, QGraphicsScene scene) {
-			ProxyQGraphicsPixmapItem().NewQGraphicsPixmapItem(pixmap,parent,scene);
+			((QGraphicsPixmapItem) interceptor).NewQGraphicsPixmapItem(pixmap,parent,scene);
 		}
 		public QGraphicsPixmapItem(QPixmap pixmap, QGraphicsItem parent) : this((Type) null) {
 			CreateProxy();
@@ -58,7 +55,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGraphicsPixmapItem", "(const QPixmap&, QGraphicsItem*)", "##")]
 		private void NewQGraphicsPixmapItem(QPixmap pixmap, QGraphicsItem parent) {
-			ProxyQGraphicsPixmapItem().NewQGraphicsPixmapItem(pixmap,parent);
+			((QGraphicsPixmapItem) interceptor).NewQGraphicsPixmapItem(pixmap,parent);
 		}
 		public QGraphicsPixmapItem(QPixmap pixmap) : this((Type) null) {
 			CreateProxy();
@@ -66,79 +63,79 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QGraphicsPixmapItem", "(const QPixmap&)", "#")]
 		private void NewQGraphicsPixmapItem(QPixmap pixmap) {
-			ProxyQGraphicsPixmapItem().NewQGraphicsPixmapItem(pixmap);
+			((QGraphicsPixmapItem) interceptor).NewQGraphicsPixmapItem(pixmap);
 		}
 		[SmokeMethod("pixmap", "() const", "")]
 		public QPixmap Pixmap() {
-			return ProxyQGraphicsPixmapItem().Pixmap();
+			return ((QGraphicsPixmapItem) interceptor).Pixmap();
 		}
 		[SmokeMethod("setPixmap", "(const QPixmap&)", "#")]
 		public void SetPixmap(QPixmap pixmap) {
-			ProxyQGraphicsPixmapItem().SetPixmap(pixmap);
+			((QGraphicsPixmapItem) interceptor).SetPixmap(pixmap);
 		}
 		[SmokeMethod("transformationMode", "() const", "")]
 		public Qt.TransformationMode TransformationMode() {
-			return ProxyQGraphicsPixmapItem().TransformationMode();
+			return ((QGraphicsPixmapItem) interceptor).TransformationMode();
 		}
 		[SmokeMethod("setTransformationMode", "(Qt::TransformationMode)", "$")]
 		public void SetTransformationMode(Qt.TransformationMode mode) {
-			ProxyQGraphicsPixmapItem().SetTransformationMode(mode);
+			((QGraphicsPixmapItem) interceptor).SetTransformationMode(mode);
 		}
 		[SmokeMethod("offset", "() const", "")]
 		public QPointF Offset() {
-			return ProxyQGraphicsPixmapItem().Offset();
+			return ((QGraphicsPixmapItem) interceptor).Offset();
 		}
 		[SmokeMethod("setOffset", "(const QPointF&)", "#")]
 		public void SetOffset(QPointF offset) {
-			ProxyQGraphicsPixmapItem().SetOffset(offset);
+			((QGraphicsPixmapItem) interceptor).SetOffset(offset);
 		}
 		[SmokeMethod("boundingRect", "() const", "")]
 		public override QRectF BoundingRect() {
-			return ProxyQGraphicsPixmapItem().BoundingRect();
+			return ((QGraphicsPixmapItem) interceptor).BoundingRect();
 		}
 		[SmokeMethod("shape", "() const", "")]
 		public override QPainterPath Shape() {
-			return ProxyQGraphicsPixmapItem().Shape();
+			return ((QGraphicsPixmapItem) interceptor).Shape();
 		}
 		[SmokeMethod("contains", "(const QPointF&) const", "#")]
 		public override bool Contains(QPointF point) {
-			return ProxyQGraphicsPixmapItem().Contains(point);
+			return ((QGraphicsPixmapItem) interceptor).Contains(point);
 		}
 		[SmokeMethod("paint", "(QPainter*, const QStyleOptionGraphicsItem*, QWidget*)", "###")]
 		public override void Paint(QPainter painter, QStyleOptionGraphicsItem option, QWidget widget) {
-			ProxyQGraphicsPixmapItem().Paint(painter,option,widget);
+			((QGraphicsPixmapItem) interceptor).Paint(painter,option,widget);
 		}
 		[SmokeMethod("isObscuredBy", "(const QGraphicsItem*) const", "#")]
 		public override bool IsObscuredBy(QGraphicsItem item) {
-			return ProxyQGraphicsPixmapItem().IsObscuredBy(item);
+			return ((QGraphicsPixmapItem) interceptor).IsObscuredBy(item);
 		}
 		[SmokeMethod("opaqueArea", "() const", "")]
 		public override QPainterPath OpaqueArea() {
-			return ProxyQGraphicsPixmapItem().OpaqueArea();
+			return ((QGraphicsPixmapItem) interceptor).OpaqueArea();
 		}
 		[SmokeMethod("type", "() const", "")]
 		public override int type() {
-			return ProxyQGraphicsPixmapItem().type();
+			return ((QGraphicsPixmapItem) interceptor).type();
 		}
 		[SmokeMethod("shapeMode", "() const", "")]
 		public QGraphicsPixmapItem.ShapeMode shapeMode() {
-			return ProxyQGraphicsPixmapItem().shapeMode();
+			return ((QGraphicsPixmapItem) interceptor).shapeMode();
 		}
 		[SmokeMethod("setShapeMode", "(QGraphicsPixmapItem::ShapeMode)", "$")]
 		public void SetShapeMode(QGraphicsPixmapItem.ShapeMode mode) {
-			ProxyQGraphicsPixmapItem().SetShapeMode(mode);
+			((QGraphicsPixmapItem) interceptor).SetShapeMode(mode);
 		}
 		[SmokeMethod("supportsExtension", "(QGraphicsItem::Extension) const", "$")]
 		protected override bool SupportsExtension(QGraphicsItem.Extension extension) {
-			return ProxyQGraphicsPixmapItem().SupportsExtension(extension);
+			return ((QGraphicsPixmapItem) interceptor).SupportsExtension(extension);
 		}
 		[SmokeMethod("setExtension", "(QGraphicsItem::Extension, const QVariant&)", "$#")]
 		protected override void SetExtension(QGraphicsItem.Extension extension, QVariant variant) {
-			ProxyQGraphicsPixmapItem().SetExtension(extension,variant);
+			((QGraphicsPixmapItem) interceptor).SetExtension(extension,variant);
 		}
 		[SmokeMethod("extension", "(const QVariant&) const", "#")]
 		protected override QVariant extension(QVariant variant) {
-			return ProxyQGraphicsPixmapItem().extension(variant);
+			return ((QGraphicsPixmapItem) interceptor).extension(variant);
 		}
 		~QGraphicsPixmapItem() {
 			DisposeQGraphicsPixmapItem();
@@ -148,7 +145,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QGraphicsPixmapItem", "()", "")]
 		private void DisposeQGraphicsPixmapItem() {
-			ProxyQGraphicsPixmapItem().DisposeQGraphicsPixmapItem();
+			((QGraphicsPixmapItem) interceptor).DisposeQGraphicsPixmapItem();
 		}
 	}
 }

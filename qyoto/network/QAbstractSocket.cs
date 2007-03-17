@@ -16,18 +16,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAbstractSocket), this);
-			_interceptor = (QAbstractSocket) realProxy.GetTransparentProxy();
+			interceptor = (QAbstractSocket) realProxy.GetTransparentProxy();
 		}
-		private QAbstractSocket ProxyQAbstractSocket() {
-			return (QAbstractSocket) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQAbstractSocketProxy staticInterceptor = null;
 		static QAbstractSocket() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQAbstractSocketProxy), null);
-			_staticInterceptor = (IQAbstractSocketProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQAbstractSocketProxy StaticQAbstractSocket() {
-			return (IQAbstractSocketProxy) _staticInterceptor;
+			staticInterceptor = (IQAbstractSocketProxy) realProxy.GetTransparentProxy();
 		}
 		public enum SocketType {
 			TcpSocket = 0,
@@ -70,214 +64,214 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QAbstractSocket", "(QAbstractSocket::SocketType, QObject*)", "$#")]
 		private void NewQAbstractSocket(QAbstractSocket.SocketType socketType, QObject parent) {
-			ProxyQAbstractSocket().NewQAbstractSocket(socketType,parent);
+			((QAbstractSocket) interceptor).NewQAbstractSocket(socketType,parent);
 		}
 		[SmokeMethod("connectToHost", "(const QString&, quint16, OpenMode)", "$$$")]
 		public void ConnectToHost(string hostName, ushort port, int mode) {
-			ProxyQAbstractSocket().ConnectToHost(hostName,port,mode);
+			((QAbstractSocket) interceptor).ConnectToHost(hostName,port,mode);
 		}
 		[SmokeMethod("connectToHost", "(const QString&, quint16)", "$$")]
 		public void ConnectToHost(string hostName, ushort port) {
-			ProxyQAbstractSocket().ConnectToHost(hostName,port);
+			((QAbstractSocket) interceptor).ConnectToHost(hostName,port);
 		}
 		[SmokeMethod("connectToHost", "(const QHostAddress&, quint16, OpenMode)", "#$$")]
 		public void ConnectToHost(QHostAddress address, ushort port, int mode) {
-			ProxyQAbstractSocket().ConnectToHost(address,port,mode);
+			((QAbstractSocket) interceptor).ConnectToHost(address,port,mode);
 		}
 		[SmokeMethod("connectToHost", "(const QHostAddress&, quint16)", "#$")]
 		public void ConnectToHost(QHostAddress address, ushort port) {
-			ProxyQAbstractSocket().ConnectToHost(address,port);
+			((QAbstractSocket) interceptor).ConnectToHost(address,port);
 		}
 		[SmokeMethod("disconnectFromHost", "()", "")]
 		public void DisconnectFromHost() {
-			ProxyQAbstractSocket().DisconnectFromHost();
+			((QAbstractSocket) interceptor).DisconnectFromHost();
 		}
 		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ProxyQAbstractSocket().IsValid();
+			return ((QAbstractSocket) interceptor).IsValid();
 		}
 		[SmokeMethod("bytesAvailable", "() const", "")]
 		public override long BytesAvailable() {
-			return ProxyQAbstractSocket().BytesAvailable();
+			return ((QAbstractSocket) interceptor).BytesAvailable();
 		}
 		[SmokeMethod("bytesToWrite", "() const", "")]
 		public override long BytesToWrite() {
-			return ProxyQAbstractSocket().BytesToWrite();
+			return ((QAbstractSocket) interceptor).BytesToWrite();
 		}
 		[SmokeMethod("canReadLine", "() const", "")]
 		public override bool CanReadLine() {
-			return ProxyQAbstractSocket().CanReadLine();
+			return ((QAbstractSocket) interceptor).CanReadLine();
 		}
 		[SmokeMethod("localPort", "() const", "")]
 		public ushort LocalPort() {
-			return ProxyQAbstractSocket().LocalPort();
+			return ((QAbstractSocket) interceptor).LocalPort();
 		}
 		[SmokeMethod("localAddress", "() const", "")]
 		public QHostAddress LocalAddress() {
-			return ProxyQAbstractSocket().LocalAddress();
+			return ((QAbstractSocket) interceptor).LocalAddress();
 		}
 		[SmokeMethod("peerPort", "() const", "")]
 		public ushort PeerPort() {
-			return ProxyQAbstractSocket().PeerPort();
+			return ((QAbstractSocket) interceptor).PeerPort();
 		}
 		[SmokeMethod("peerAddress", "() const", "")]
 		public QHostAddress PeerAddress() {
-			return ProxyQAbstractSocket().PeerAddress();
+			return ((QAbstractSocket) interceptor).PeerAddress();
 		}
 		[SmokeMethod("peerName", "() const", "")]
 		public string PeerName() {
-			return ProxyQAbstractSocket().PeerName();
+			return ((QAbstractSocket) interceptor).PeerName();
 		}
 		[SmokeMethod("readBufferSize", "() const", "")]
 		public long ReadBufferSize() {
-			return ProxyQAbstractSocket().ReadBufferSize();
+			return ((QAbstractSocket) interceptor).ReadBufferSize();
 		}
 		[SmokeMethod("setReadBufferSize", "(qint64)", "$")]
 		public void SetReadBufferSize(long size) {
-			ProxyQAbstractSocket().SetReadBufferSize(size);
+			((QAbstractSocket) interceptor).SetReadBufferSize(size);
 		}
 		[SmokeMethod("abort", "()", "")]
 		public void Abort() {
-			ProxyQAbstractSocket().Abort();
+			((QAbstractSocket) interceptor).Abort();
 		}
 		[SmokeMethod("socketDescriptor", "() const", "")]
 		public int SocketDescriptor() {
-			return ProxyQAbstractSocket().SocketDescriptor();
+			return ((QAbstractSocket) interceptor).SocketDescriptor();
 		}
 		[SmokeMethod("setSocketDescriptor", "(int, QAbstractSocket::SocketState, OpenMode)", "$$$")]
 		public bool SetSocketDescriptor(int socketDescriptor, QAbstractSocket.SocketState state, int openMode) {
-			return ProxyQAbstractSocket().SetSocketDescriptor(socketDescriptor,state,openMode);
+			return ((QAbstractSocket) interceptor).SetSocketDescriptor(socketDescriptor,state,openMode);
 		}
 		[SmokeMethod("setSocketDescriptor", "(int, QAbstractSocket::SocketState)", "$$")]
 		public bool SetSocketDescriptor(int socketDescriptor, QAbstractSocket.SocketState state) {
-			return ProxyQAbstractSocket().SetSocketDescriptor(socketDescriptor,state);
+			return ((QAbstractSocket) interceptor).SetSocketDescriptor(socketDescriptor,state);
 		}
 		[SmokeMethod("setSocketDescriptor", "(int)", "$")]
 		public bool SetSocketDescriptor(int socketDescriptor) {
-			return ProxyQAbstractSocket().SetSocketDescriptor(socketDescriptor);
+			return ((QAbstractSocket) interceptor).SetSocketDescriptor(socketDescriptor);
 		}
 		[SmokeMethod("socketType", "() const", "")]
 		public QAbstractSocket.SocketType socketType() {
-			return ProxyQAbstractSocket().socketType();
+			return ((QAbstractSocket) interceptor).socketType();
 		}
 		[SmokeMethod("state", "() const", "")]
 		public QAbstractSocket.SocketState State() {
-			return ProxyQAbstractSocket().State();
+			return ((QAbstractSocket) interceptor).State();
 		}
 		[SmokeMethod("error", "() const", "")]
 		public QAbstractSocket.SocketError Error() {
-			return ProxyQAbstractSocket().Error();
+			return ((QAbstractSocket) interceptor).Error();
 		}
 		[SmokeMethod("close", "()", "")]
 		public override void Close() {
-			ProxyQAbstractSocket().Close();
+			((QAbstractSocket) interceptor).Close();
 		}
 		[SmokeMethod("isSequential", "() const", "")]
 		public override bool IsSequential() {
-			return ProxyQAbstractSocket().IsSequential();
+			return ((QAbstractSocket) interceptor).IsSequential();
 		}
 		[SmokeMethod("atEnd", "() const", "")]
 		public override bool AtEnd() {
-			return ProxyQAbstractSocket().AtEnd();
+			return ((QAbstractSocket) interceptor).AtEnd();
 		}
 		[SmokeMethod("flush", "()", "")]
 		public bool Flush() {
-			return ProxyQAbstractSocket().Flush();
+			return ((QAbstractSocket) interceptor).Flush();
 		}
 		[SmokeMethod("waitForConnected", "(int)", "$")]
 		public bool WaitForConnected(int msecs) {
-			return ProxyQAbstractSocket().WaitForConnected(msecs);
+			return ((QAbstractSocket) interceptor).WaitForConnected(msecs);
 		}
 		[SmokeMethod("waitForConnected", "()", "")]
 		public bool WaitForConnected() {
-			return ProxyQAbstractSocket().WaitForConnected();
+			return ((QAbstractSocket) interceptor).WaitForConnected();
 		}
 		[SmokeMethod("waitForReadyRead", "(int)", "$")]
 		public override bool WaitForReadyRead(int msecs) {
-			return ProxyQAbstractSocket().WaitForReadyRead(msecs);
+			return ((QAbstractSocket) interceptor).WaitForReadyRead(msecs);
 		}
 		[SmokeMethod("waitForReadyRead", "()", "")]
 		public bool WaitForReadyRead() {
-			return ProxyQAbstractSocket().WaitForReadyRead();
+			return ((QAbstractSocket) interceptor).WaitForReadyRead();
 		}
 		[SmokeMethod("waitForBytesWritten", "(int)", "$")]
 		public override bool WaitForBytesWritten(int msecs) {
-			return ProxyQAbstractSocket().WaitForBytesWritten(msecs);
+			return ((QAbstractSocket) interceptor).WaitForBytesWritten(msecs);
 		}
 		[SmokeMethod("waitForBytesWritten", "()", "")]
 		public bool WaitForBytesWritten() {
-			return ProxyQAbstractSocket().WaitForBytesWritten();
+			return ((QAbstractSocket) interceptor).WaitForBytesWritten();
 		}
 		[SmokeMethod("waitForDisconnected", "(int)", "$")]
 		public bool WaitForDisconnected(int msecs) {
-			return ProxyQAbstractSocket().WaitForDisconnected(msecs);
+			return ((QAbstractSocket) interceptor).WaitForDisconnected(msecs);
 		}
 		[SmokeMethod("waitForDisconnected", "()", "")]
 		public bool WaitForDisconnected() {
-			return ProxyQAbstractSocket().WaitForDisconnected();
+			return ((QAbstractSocket) interceptor).WaitForDisconnected();
 		}
 		[SmokeMethod("setProxy", "(const QNetworkProxy&)", "#")]
 		public void SetProxy(QNetworkProxy networkProxy) {
-			ProxyQAbstractSocket().SetProxy(networkProxy);
+			((QAbstractSocket) interceptor).SetProxy(networkProxy);
 		}
 		[SmokeMethod("proxy", "() const", "")]
 		public QNetworkProxy Proxy() {
-			return ProxyQAbstractSocket().Proxy();
+			return ((QAbstractSocket) interceptor).Proxy();
 		}
 		[SmokeMethod("readData", "(char*, qint64)", "$$")]
 		protected override long ReadData(string data, long maxlen) {
-			return ProxyQAbstractSocket().ReadData(data,maxlen);
+			return ((QAbstractSocket) interceptor).ReadData(data,maxlen);
 		}
 		[SmokeMethod("readLineData", "(char*, qint64)", "$$")]
 		protected override long ReadLineData(string data, long maxlen) {
-			return ProxyQAbstractSocket().ReadLineData(data,maxlen);
+			return ((QAbstractSocket) interceptor).ReadLineData(data,maxlen);
 		}
 		[SmokeMethod("writeData", "(const char*, qint64)", "$$")]
 		protected override long WriteData(string data, long len) {
-			return ProxyQAbstractSocket().WriteData(data,len);
+			return ((QAbstractSocket) interceptor).WriteData(data,len);
 		}
 		[SmokeMethod("setSocketState", "(QAbstractSocket::SocketState)", "$")]
 		protected void SetSocketState(QAbstractSocket.SocketState state) {
-			ProxyQAbstractSocket().SetSocketState(state);
+			((QAbstractSocket) interceptor).SetSocketState(state);
 		}
 		[SmokeMethod("setSocketError", "(QAbstractSocket::SocketError)", "$")]
 		protected void SetSocketError(QAbstractSocket.SocketError socketError) {
-			ProxyQAbstractSocket().SetSocketError(socketError);
+			((QAbstractSocket) interceptor).SetSocketError(socketError);
 		}
 		[SmokeMethod("setLocalPort", "(quint16)", "$")]
 		protected void SetLocalPort(ushort port) {
-			ProxyQAbstractSocket().SetLocalPort(port);
+			((QAbstractSocket) interceptor).SetLocalPort(port);
 		}
 		[SmokeMethod("setLocalAddress", "(const QHostAddress&)", "#")]
 		protected void SetLocalAddress(QHostAddress address) {
-			ProxyQAbstractSocket().SetLocalAddress(address);
+			((QAbstractSocket) interceptor).SetLocalAddress(address);
 		}
 		[SmokeMethod("setPeerPort", "(quint16)", "$")]
 		protected void SetPeerPort(ushort port) {
-			ProxyQAbstractSocket().SetPeerPort(port);
+			((QAbstractSocket) interceptor).SetPeerPort(port);
 		}
 		[SmokeMethod("setPeerAddress", "(const QHostAddress&)", "#")]
 		protected void SetPeerAddress(QHostAddress address) {
-			ProxyQAbstractSocket().SetPeerAddress(address);
+			((QAbstractSocket) interceptor).SetPeerAddress(address);
 		}
 		[SmokeMethod("setPeerName", "(const QString&)", "$")]
 		protected void SetPeerName(string name) {
-			ProxyQAbstractSocket().SetPeerName(name);
+			((QAbstractSocket) interceptor).SetPeerName(name);
 		}
 		[Q_SLOT("void connectToHostImplementation(const QString&, quint16, OpenMode)")]
 		[SmokeMethod("connectToHostImplementation", "(const QString&, quint16, OpenMode)", "$$$")]
 		protected void ConnectToHostImplementation(string hostName, ushort port, int mode) {
-			ProxyQAbstractSocket().ConnectToHostImplementation(hostName,port,mode);
+			((QAbstractSocket) interceptor).ConnectToHostImplementation(hostName,port,mode);
 		}
 		[Q_SLOT("void connectToHostImplementation(const QString&, quint16)")]
 		[SmokeMethod("connectToHostImplementation", "(const QString&, quint16)", "$$")]
 		protected void ConnectToHostImplementation(string hostName, ushort port) {
-			ProxyQAbstractSocket().ConnectToHostImplementation(hostName,port);
+			((QAbstractSocket) interceptor).ConnectToHostImplementation(hostName,port);
 		}
 		[Q_SLOT("void disconnectFromHostImplementation()")]
 		[SmokeMethod("disconnectFromHostImplementation", "()", "")]
 		protected void DisconnectFromHostImplementation() {
-			ProxyQAbstractSocket().DisconnectFromHostImplementation();
+			((QAbstractSocket) interceptor).DisconnectFromHostImplementation();
 		}
 		~QAbstractSocket() {
 			DisposeQAbstractSocket();
@@ -287,13 +281,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QAbstractSocket", "()", "")]
 		private void DisposeQAbstractSocket() {
-			ProxyQAbstractSocket().DisposeQAbstractSocket();
+			((QAbstractSocket) interceptor).DisposeQAbstractSocket();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQAbstractSocket().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQAbstractSocket().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQAbstractSocketSignals Emit {
 			get { return (IQAbstractSocketSignals) Q_EMIT; }

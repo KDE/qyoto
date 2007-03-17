@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QStyleOptionToolBar(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionToolBar), this);
-			_interceptor = (QStyleOptionToolBar) realProxy.GetTransparentProxy();
-		}
-		private QStyleOptionToolBar ProxyQStyleOptionToolBar() {
-			return (QStyleOptionToolBar) _interceptor;
+			interceptor = (QStyleOptionToolBar) realProxy.GetTransparentProxy();
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_ToolBar,
@@ -35,7 +32,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionToolBar", "()", "")]
 		private void NewQStyleOptionToolBar() {
-			ProxyQStyleOptionToolBar().NewQStyleOptionToolBar();
+			((QStyleOptionToolBar) interceptor).NewQStyleOptionToolBar();
 		}
 		public QStyleOptionToolBar(QStyleOptionToolBar other) : this((Type) null) {
 			CreateProxy();
@@ -43,7 +40,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionToolBar", "(const QStyleOptionToolBar&)", "#")]
 		private void NewQStyleOptionToolBar(QStyleOptionToolBar other) {
-			ProxyQStyleOptionToolBar().NewQStyleOptionToolBar(other);
+			((QStyleOptionToolBar) interceptor).NewQStyleOptionToolBar(other);
 		}
 		public QStyleOptionToolBar(int version) : this((Type) null) {
 			CreateProxy();
@@ -51,7 +48,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionToolBar", "(int)", "$")]
 		private void NewQStyleOptionToolBar(int version) {
-			ProxyQStyleOptionToolBar().NewQStyleOptionToolBar(version);
+			((QStyleOptionToolBar) interceptor).NewQStyleOptionToolBar(version);
 		}
 		~QStyleOptionToolBar() {
 			DisposeQStyleOptionToolBar();
@@ -61,7 +58,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QStyleOptionToolBar", "()", "")]
 		private void DisposeQStyleOptionToolBar() {
-			ProxyQStyleOptionToolBar().DisposeQStyleOptionToolBar();
+			((QStyleOptionToolBar) interceptor).DisposeQStyleOptionToolBar();
 		}
 	}
 }

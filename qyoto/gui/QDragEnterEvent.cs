@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QDragEnterEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDragEnterEvent), this);
-			_interceptor = (QDragEnterEvent) realProxy.GetTransparentProxy();
-		}
-		private QDragEnterEvent ProxyQDragEnterEvent() {
-			return (QDragEnterEvent) _interceptor;
+			interceptor = (QDragEnterEvent) realProxy.GetTransparentProxy();
 		}
 		public QDragEnterEvent(QPoint pos, int actions, QMimeData data, int buttons, int modifiers) : this((Type) null) {
 			CreateProxy();
@@ -19,7 +16,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDragEnterEvent", "(const QPoint&, Qt::DropActions, const QMimeData*, Qt::MouseButtons, Qt::KeyboardModifiers)", "#$#$$")]
 		private void NewQDragEnterEvent(QPoint pos, int actions, QMimeData data, int buttons, int modifiers) {
-			ProxyQDragEnterEvent().NewQDragEnterEvent(pos,actions,data,buttons,modifiers);
+			((QDragEnterEvent) interceptor).NewQDragEnterEvent(pos,actions,data,buttons,modifiers);
 		}
 		~QDragEnterEvent() {
 			DisposeQDragEnterEvent();
@@ -29,7 +26,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QDragEnterEvent", "()", "")]
 		private void DisposeQDragEnterEvent() {
-			ProxyQDragEnterEvent().DisposeQDragEnterEvent();
+			((QDragEnterEvent) interceptor).DisposeQDragEnterEvent();
 		}
 	}
 }

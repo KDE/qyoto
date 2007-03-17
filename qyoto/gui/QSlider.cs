@@ -15,18 +15,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSlider), this);
-			_interceptor = (QSlider) realProxy.GetTransparentProxy();
+			interceptor = (QSlider) realProxy.GetTransparentProxy();
 		}
-		private QSlider ProxyQSlider() {
-			return (QSlider) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQSliderProxy staticInterceptor = null;
 		static QSlider() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQSliderProxy), null);
-			_staticInterceptor = (IQSliderProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQSliderProxy StaticQSlider() {
-			return (IQSliderProxy) _staticInterceptor;
+			staticInterceptor = (IQSliderProxy) realProxy.GetTransparentProxy();
 		}
 		public enum TickPosition {
 			NoTicks = 0,
@@ -52,7 +46,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSlider", "(QWidget*)", "#")]
 		private void NewQSlider(QWidget parent) {
-			ProxyQSlider().NewQSlider(parent);
+			((QSlider) interceptor).NewQSlider(parent);
 		}
 		public QSlider() : this((Type) null) {
 			CreateProxy();
@@ -60,7 +54,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSlider", "()", "")]
 		private void NewQSlider() {
-			ProxyQSlider().NewQSlider();
+			((QSlider) interceptor).NewQSlider();
 		}
 		public QSlider(Qt.Orientation orientation, QWidget parent) : this((Type) null) {
 			CreateProxy();
@@ -68,7 +62,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSlider", "(Qt::Orientation, QWidget*)", "$#")]
 		private void NewQSlider(Qt.Orientation orientation, QWidget parent) {
-			ProxyQSlider().NewQSlider(orientation,parent);
+			((QSlider) interceptor).NewQSlider(orientation,parent);
 		}
 		public QSlider(Qt.Orientation orientation) : this((Type) null) {
 			CreateProxy();
@@ -76,35 +70,35 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSlider", "(Qt::Orientation)", "$")]
 		private void NewQSlider(Qt.Orientation orientation) {
-			ProxyQSlider().NewQSlider(orientation);
+			((QSlider) interceptor).NewQSlider(orientation);
 		}
 		[SmokeMethod("sizeHint", "() const", "")]
 		public override QSize SizeHint() {
-			return ProxyQSlider().SizeHint();
+			return ((QSlider) interceptor).SizeHint();
 		}
 		[SmokeMethod("minimumSizeHint", "() const", "")]
 		public override QSize MinimumSizeHint() {
-			return ProxyQSlider().MinimumSizeHint();
+			return ((QSlider) interceptor).MinimumSizeHint();
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		public new virtual bool Event(QEvent arg1) {
-			return ProxyQSlider().Event(arg1);
+			return ((QSlider) interceptor).Event(arg1);
 		}
 		[SmokeMethod("paintEvent", "(QPaintEvent*)", "#")]
 		protected override void PaintEvent(QPaintEvent ev) {
-			ProxyQSlider().PaintEvent(ev);
+			((QSlider) interceptor).PaintEvent(ev);
 		}
 		[SmokeMethod("mousePressEvent", "(QMouseEvent*)", "#")]
 		protected override void MousePressEvent(QMouseEvent ev) {
-			ProxyQSlider().MousePressEvent(ev);
+			((QSlider) interceptor).MousePressEvent(ev);
 		}
 		[SmokeMethod("mouseReleaseEvent", "(QMouseEvent*)", "#")]
 		protected override void MouseReleaseEvent(QMouseEvent ev) {
-			ProxyQSlider().MouseReleaseEvent(ev);
+			((QSlider) interceptor).MouseReleaseEvent(ev);
 		}
 		[SmokeMethod("mouseMoveEvent", "(QMouseEvent*)", "#")]
 		protected override void MouseMoveEvent(QMouseEvent ev) {
-			ProxyQSlider().MouseMoveEvent(ev);
+			((QSlider) interceptor).MouseMoveEvent(ev);
 		}
 		~QSlider() {
 			DisposeQSlider();
@@ -114,13 +108,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QSlider", "()", "")]
 		private void DisposeQSlider() {
-			ProxyQSlider().DisposeQSlider();
+			((QSlider) interceptor).DisposeQSlider();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQSlider().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQSlider().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQSliderSignals Emit {
 			get { return (IQSliderSignals) Q_EMIT; }

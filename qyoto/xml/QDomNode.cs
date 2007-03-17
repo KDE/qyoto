@@ -5,8 +5,8 @@ namespace Qyoto {
 
 	[SmokeClass("QDomNode")]
 	public class QDomNode : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QDomNode interceptor = null;
+		private IntPtr smokeObject;
 		protected QDomNode(Type dummy) {}
 		[SmokeClass("QDomNode")]
 		interface IQDomNodeProxy {
@@ -15,18 +15,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomNode), this);
-			_interceptor = (QDomNode) realProxy.GetTransparentProxy();
+			interceptor = (QDomNode) realProxy.GetTransparentProxy();
 		}
-		private QDomNode ProxyQDomNode() {
-			return (QDomNode) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQDomNodeProxy staticInterceptor = null;
 		static QDomNode() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQDomNodeProxy), null);
-			_staticInterceptor = (IQDomNodeProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQDomNodeProxy StaticQDomNode() {
-			return (IQDomNodeProxy) _staticInterceptor;
+			staticInterceptor = (IQDomNodeProxy) realProxy.GetTransparentProxy();
 		}
 		public enum NodeType {
 			ElementNode = 1,
@@ -51,7 +45,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDomNode", "()", "")]
 		private void NewQDomNode() {
-			ProxyQDomNode().NewQDomNode();
+			((QDomNode) interceptor).NewQDomNode();
 		}
 		public QDomNode(QDomNode arg1) : this((Type) null) {
 			CreateProxy();
@@ -59,174 +53,174 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDomNode", "(const QDomNode&)", "#")]
 		private void NewQDomNode(QDomNode arg1) {
-			ProxyQDomNode().NewQDomNode(arg1);
+			((QDomNode) interceptor).NewQDomNode(arg1);
 		}
 		public override bool Equals(object o) {
 			if (!(o is QDomNode)) { return false; }
 			return this == (QDomNode) o;
 		}
 		public override int GetHashCode() {
-			return ProxyQDomNode().GetHashCode();
+			return ((QDomNode) interceptor).GetHashCode();
 		}
 		[SmokeMethod("insertBefore", "(const QDomNode&, const QDomNode&)", "##")]
 		public QDomNode InsertBefore(QDomNode newChild, QDomNode refChild) {
-			return ProxyQDomNode().InsertBefore(newChild,refChild);
+			return ((QDomNode) interceptor).InsertBefore(newChild,refChild);
 		}
 		[SmokeMethod("insertAfter", "(const QDomNode&, const QDomNode&)", "##")]
 		public QDomNode InsertAfter(QDomNode newChild, QDomNode refChild) {
-			return ProxyQDomNode().InsertAfter(newChild,refChild);
+			return ((QDomNode) interceptor).InsertAfter(newChild,refChild);
 		}
 		[SmokeMethod("replaceChild", "(const QDomNode&, const QDomNode&)", "##")]
 		public QDomNode ReplaceChild(QDomNode newChild, QDomNode oldChild) {
-			return ProxyQDomNode().ReplaceChild(newChild,oldChild);
+			return ((QDomNode) interceptor).ReplaceChild(newChild,oldChild);
 		}
 		[SmokeMethod("removeChild", "(const QDomNode&)", "#")]
 		public QDomNode RemoveChild(QDomNode oldChild) {
-			return ProxyQDomNode().RemoveChild(oldChild);
+			return ((QDomNode) interceptor).RemoveChild(oldChild);
 		}
 		[SmokeMethod("appendChild", "(const QDomNode&)", "#")]
 		public QDomNode AppendChild(QDomNode newChild) {
-			return ProxyQDomNode().AppendChild(newChild);
+			return ((QDomNode) interceptor).AppendChild(newChild);
 		}
 		[SmokeMethod("hasChildNodes", "() const", "")]
 		public bool HasChildNodes() {
-			return ProxyQDomNode().HasChildNodes();
+			return ((QDomNode) interceptor).HasChildNodes();
 		}
 		[SmokeMethod("cloneNode", "(bool) const", "$")]
 		public QDomNode CloneNode(bool deep) {
-			return ProxyQDomNode().CloneNode(deep);
+			return ((QDomNode) interceptor).CloneNode(deep);
 		}
 		[SmokeMethod("cloneNode", "() const", "")]
 		public QDomNode CloneNode() {
-			return ProxyQDomNode().CloneNode();
+			return ((QDomNode) interceptor).CloneNode();
 		}
 		[SmokeMethod("normalize", "()", "")]
 		public void Normalize() {
-			ProxyQDomNode().Normalize();
+			((QDomNode) interceptor).Normalize();
 		}
 		[SmokeMethod("isSupported", "(const QString&, const QString&) const", "$$")]
 		public bool IsSupported(string feature, string version) {
-			return ProxyQDomNode().IsSupported(feature,version);
+			return ((QDomNode) interceptor).IsSupported(feature,version);
 		}
 		[SmokeMethod("nodeName", "() const", "")]
 		public string NodeName() {
-			return ProxyQDomNode().NodeName();
+			return ((QDomNode) interceptor).NodeName();
 		}
 		[SmokeMethod("nodeType", "() const", "")]
 		public QDomNode.NodeType nodeType() {
-			return ProxyQDomNode().nodeType();
+			return ((QDomNode) interceptor).nodeType();
 		}
 		[SmokeMethod("parentNode", "() const", "")]
 		public QDomNode ParentNode() {
-			return ProxyQDomNode().ParentNode();
+			return ((QDomNode) interceptor).ParentNode();
 		}
 		[SmokeMethod("childNodes", "() const", "")]
 		public QDomNodeList ChildNodes() {
-			return ProxyQDomNode().ChildNodes();
+			return ((QDomNode) interceptor).ChildNodes();
 		}
 		[SmokeMethod("firstChild", "() const", "")]
 		public QDomNode FirstChild() {
-			return ProxyQDomNode().FirstChild();
+			return ((QDomNode) interceptor).FirstChild();
 		}
 		[SmokeMethod("lastChild", "() const", "")]
 		public QDomNode LastChild() {
-			return ProxyQDomNode().LastChild();
+			return ((QDomNode) interceptor).LastChild();
 		}
 		[SmokeMethod("previousSibling", "() const", "")]
 		public QDomNode PreviousSibling() {
-			return ProxyQDomNode().PreviousSibling();
+			return ((QDomNode) interceptor).PreviousSibling();
 		}
 		[SmokeMethod("nextSibling", "() const", "")]
 		public QDomNode NextSibling() {
-			return ProxyQDomNode().NextSibling();
+			return ((QDomNode) interceptor).NextSibling();
 		}
 		[SmokeMethod("attributes", "() const", "")]
 		public QDomNamedNodeMap Attributes() {
-			return ProxyQDomNode().Attributes();
+			return ((QDomNode) interceptor).Attributes();
 		}
 		[SmokeMethod("ownerDocument", "() const", "")]
 		public QDomDocument OwnerDocument() {
-			return ProxyQDomNode().OwnerDocument();
+			return ((QDomNode) interceptor).OwnerDocument();
 		}
 		[SmokeMethod("namespaceURI", "() const", "")]
 		public string NamespaceURI() {
-			return ProxyQDomNode().NamespaceURI();
+			return ((QDomNode) interceptor).NamespaceURI();
 		}
 		[SmokeMethod("localName", "() const", "")]
 		public string LocalName() {
-			return ProxyQDomNode().LocalName();
+			return ((QDomNode) interceptor).LocalName();
 		}
 		[SmokeMethod("hasAttributes", "() const", "")]
 		public bool HasAttributes() {
-			return ProxyQDomNode().HasAttributes();
+			return ((QDomNode) interceptor).HasAttributes();
 		}
 		[SmokeMethod("nodeValue", "() const", "")]
 		public string NodeValue() {
-			return ProxyQDomNode().NodeValue();
+			return ((QDomNode) interceptor).NodeValue();
 		}
 		[SmokeMethod("setNodeValue", "(const QString&)", "$")]
 		public void SetNodeValue(string arg1) {
-			ProxyQDomNode().SetNodeValue(arg1);
+			((QDomNode) interceptor).SetNodeValue(arg1);
 		}
 		[SmokeMethod("prefix", "() const", "")]
 		public string Prefix() {
-			return ProxyQDomNode().Prefix();
+			return ((QDomNode) interceptor).Prefix();
 		}
 		[SmokeMethod("setPrefix", "(const QString&)", "$")]
 		public void SetPrefix(string pre) {
-			ProxyQDomNode().SetPrefix(pre);
+			((QDomNode) interceptor).SetPrefix(pre);
 		}
 		[SmokeMethod("isAttr", "() const", "")]
 		public bool IsAttr() {
-			return ProxyQDomNode().IsAttr();
+			return ((QDomNode) interceptor).IsAttr();
 		}
 		[SmokeMethod("isCDATASection", "() const", "")]
 		public bool IsCDATASection() {
-			return ProxyQDomNode().IsCDATASection();
+			return ((QDomNode) interceptor).IsCDATASection();
 		}
 		[SmokeMethod("isDocumentFragment", "() const", "")]
 		public bool IsDocumentFragment() {
-			return ProxyQDomNode().IsDocumentFragment();
+			return ((QDomNode) interceptor).IsDocumentFragment();
 		}
 		[SmokeMethod("isDocument", "() const", "")]
 		public bool IsDocument() {
-			return ProxyQDomNode().IsDocument();
+			return ((QDomNode) interceptor).IsDocument();
 		}
 		[SmokeMethod("isDocumentType", "() const", "")]
 		public bool IsDocumentType() {
-			return ProxyQDomNode().IsDocumentType();
+			return ((QDomNode) interceptor).IsDocumentType();
 		}
 		[SmokeMethod("isElement", "() const", "")]
 		public bool IsElement() {
-			return ProxyQDomNode().IsElement();
+			return ((QDomNode) interceptor).IsElement();
 		}
 		[SmokeMethod("isEntityReference", "() const", "")]
 		public bool IsEntityReference() {
-			return ProxyQDomNode().IsEntityReference();
+			return ((QDomNode) interceptor).IsEntityReference();
 		}
 		[SmokeMethod("isText", "() const", "")]
 		public bool IsText() {
-			return ProxyQDomNode().IsText();
+			return ((QDomNode) interceptor).IsText();
 		}
 		[SmokeMethod("isEntity", "() const", "")]
 		public bool IsEntity() {
-			return ProxyQDomNode().IsEntity();
+			return ((QDomNode) interceptor).IsEntity();
 		}
 		[SmokeMethod("isNotation", "() const", "")]
 		public bool IsNotation() {
-			return ProxyQDomNode().IsNotation();
+			return ((QDomNode) interceptor).IsNotation();
 		}
 		[SmokeMethod("isProcessingInstruction", "() const", "")]
 		public bool IsProcessingInstruction() {
-			return ProxyQDomNode().IsProcessingInstruction();
+			return ((QDomNode) interceptor).IsProcessingInstruction();
 		}
 		[SmokeMethod("isCharacterData", "() const", "")]
 		public bool IsCharacterData() {
-			return ProxyQDomNode().IsCharacterData();
+			return ((QDomNode) interceptor).IsCharacterData();
 		}
 		[SmokeMethod("isComment", "() const", "")]
 		public bool IsComment() {
-			return ProxyQDomNode().IsComment();
+			return ((QDomNode) interceptor).IsComment();
 		}
 		///<remarks>
 		/// Shortcut to avoid dealing with QDomArrayList
@@ -234,111 +228,111 @@ namespace Qyoto {
 		///     </remarks>		<short>    Shortcut to avoid dealing with QDomNodeList  all the time.</short>
 		[SmokeMethod("namedItem", "(const QString&) const", "$")]
 		public QDomNode NamedItem(string name) {
-			return ProxyQDomNode().NamedItem(name);
+			return ((QDomNode) interceptor).NamedItem(name);
 		}
 		[SmokeMethod("isNull", "() const", "")]
 		public bool IsNull() {
-			return ProxyQDomNode().IsNull();
+			return ((QDomNode) interceptor).IsNull();
 		}
 		[SmokeMethod("clear", "()", "")]
 		public void Clear() {
-			ProxyQDomNode().Clear();
+			((QDomNode) interceptor).Clear();
 		}
 		[SmokeMethod("toAttr", "() const", "")]
 		public QDomAttr ToAttr() {
-			return ProxyQDomNode().ToAttr();
+			return ((QDomNode) interceptor).ToAttr();
 		}
 		[SmokeMethod("toCDATASection", "() const", "")]
 		public QDomCDATASection ToCDATASection() {
-			return ProxyQDomNode().ToCDATASection();
+			return ((QDomNode) interceptor).ToCDATASection();
 		}
 		[SmokeMethod("toDocumentFragment", "() const", "")]
 		public QDomDocumentFragment ToDocumentFragment() {
-			return ProxyQDomNode().ToDocumentFragment();
+			return ((QDomNode) interceptor).ToDocumentFragment();
 		}
 		[SmokeMethod("toDocument", "() const", "")]
 		public QDomDocument ToDocument() {
-			return ProxyQDomNode().ToDocument();
+			return ((QDomNode) interceptor).ToDocument();
 		}
 		[SmokeMethod("toDocumentType", "() const", "")]
 		public QDomDocumentType ToDocumentType() {
-			return ProxyQDomNode().ToDocumentType();
+			return ((QDomNode) interceptor).ToDocumentType();
 		}
 		[SmokeMethod("toElement", "() const", "")]
 		public QDomElement ToElement() {
-			return ProxyQDomNode().ToElement();
+			return ((QDomNode) interceptor).ToElement();
 		}
 		[SmokeMethod("toEntityReference", "() const", "")]
 		public QDomEntityReference ToEntityReference() {
-			return ProxyQDomNode().ToEntityReference();
+			return ((QDomNode) interceptor).ToEntityReference();
 		}
 		[SmokeMethod("toText", "() const", "")]
 		public QDomText ToText() {
-			return ProxyQDomNode().ToText();
+			return ((QDomNode) interceptor).ToText();
 		}
 		[SmokeMethod("toEntity", "() const", "")]
 		public QDomEntity ToEntity() {
-			return ProxyQDomNode().ToEntity();
+			return ((QDomNode) interceptor).ToEntity();
 		}
 		[SmokeMethod("toNotation", "() const", "")]
 		public QDomNotation ToNotation() {
-			return ProxyQDomNode().ToNotation();
+			return ((QDomNode) interceptor).ToNotation();
 		}
 		[SmokeMethod("toProcessingInstruction", "() const", "")]
 		public QDomProcessingInstruction ToProcessingInstruction() {
-			return ProxyQDomNode().ToProcessingInstruction();
+			return ((QDomNode) interceptor).ToProcessingInstruction();
 		}
 		[SmokeMethod("toCharacterData", "() const", "")]
 		public QDomCharacterData ToCharacterData() {
-			return ProxyQDomNode().ToCharacterData();
+			return ((QDomNode) interceptor).ToCharacterData();
 		}
 		[SmokeMethod("toComment", "() const", "")]
 		public QDomComment ToComment() {
-			return ProxyQDomNode().ToComment();
+			return ((QDomNode) interceptor).ToComment();
 		}
 		[SmokeMethod("save", "(QTextStream&, int) const", "#$")]
 		public void Save(QTextStream arg1, int arg2) {
-			ProxyQDomNode().Save(arg1,arg2);
+			((QDomNode) interceptor).Save(arg1,arg2);
 		}
 		[SmokeMethod("firstChildElement", "(const QString&) const", "$")]
 		public QDomElement FirstChildElement(string tagName) {
-			return ProxyQDomNode().FirstChildElement(tagName);
+			return ((QDomNode) interceptor).FirstChildElement(tagName);
 		}
 		[SmokeMethod("firstChildElement", "() const", "")]
 		public QDomElement FirstChildElement() {
-			return ProxyQDomNode().FirstChildElement();
+			return ((QDomNode) interceptor).FirstChildElement();
 		}
 		[SmokeMethod("lastChildElement", "(const QString&) const", "$")]
 		public QDomElement LastChildElement(string tagName) {
-			return ProxyQDomNode().LastChildElement(tagName);
+			return ((QDomNode) interceptor).LastChildElement(tagName);
 		}
 		[SmokeMethod("lastChildElement", "() const", "")]
 		public QDomElement LastChildElement() {
-			return ProxyQDomNode().LastChildElement();
+			return ((QDomNode) interceptor).LastChildElement();
 		}
 		[SmokeMethod("previousSiblingElement", "(const QString&) const", "$")]
 		public QDomElement PreviousSiblingElement(string tagName) {
-			return ProxyQDomNode().PreviousSiblingElement(tagName);
+			return ((QDomNode) interceptor).PreviousSiblingElement(tagName);
 		}
 		[SmokeMethod("previousSiblingElement", "() const", "")]
 		public QDomElement PreviousSiblingElement() {
-			return ProxyQDomNode().PreviousSiblingElement();
+			return ((QDomNode) interceptor).PreviousSiblingElement();
 		}
 		[SmokeMethod("nextSiblingElement", "(const QString&) const", "$")]
 		public QDomElement NextSiblingElement(string taName) {
-			return ProxyQDomNode().NextSiblingElement(taName);
+			return ((QDomNode) interceptor).NextSiblingElement(taName);
 		}
 		[SmokeMethod("nextSiblingElement", "() const", "")]
 		public QDomElement NextSiblingElement() {
-			return ProxyQDomNode().NextSiblingElement();
+			return ((QDomNode) interceptor).NextSiblingElement();
 		}
 		[SmokeMethod("lineNumber", "() const", "")]
 		public int LineNumber() {
-			return ProxyQDomNode().LineNumber();
+			return ((QDomNode) interceptor).LineNumber();
 		}
 		[SmokeMethod("columnNumber", "() const", "")]
 		public int ColumnNumber() {
-			return ProxyQDomNode().ColumnNumber();
+			return ((QDomNode) interceptor).ColumnNumber();
 		}
 		~QDomNode() {
 			DisposeQDomNode();
@@ -348,13 +342,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QDomNode", "()", "")]
 		private void DisposeQDomNode() {
-			ProxyQDomNode().DisposeQDomNode();
+			((QDomNode) interceptor).DisposeQDomNode();
 		}
 		public static bool operator==(QDomNode lhs, QDomNode arg1) {
-			return StaticQDomNode().op_equals(lhs,arg1);
+			return staticInterceptor.op_equals(lhs,arg1);
 		}
 		public static bool operator!=(QDomNode lhs, QDomNode arg1) {
-			return !StaticQDomNode().op_equals(lhs,arg1);
+			return !staticInterceptor.op_equals(lhs,arg1);
 		}
 	}
 }

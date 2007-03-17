@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QStyleOptionRubberBand(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionRubberBand), this);
-			_interceptor = (QStyleOptionRubberBand) realProxy.GetTransparentProxy();
-		}
-		private QStyleOptionRubberBand ProxyQStyleOptionRubberBand() {
-			return (QStyleOptionRubberBand) _interceptor;
+			interceptor = (QStyleOptionRubberBand) realProxy.GetTransparentProxy();
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_RubberBand,
@@ -25,7 +22,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionRubberBand", "()", "")]
 		private void NewQStyleOptionRubberBand() {
-			ProxyQStyleOptionRubberBand().NewQStyleOptionRubberBand();
+			((QStyleOptionRubberBand) interceptor).NewQStyleOptionRubberBand();
 		}
 		public QStyleOptionRubberBand(QStyleOptionRubberBand other) : this((Type) null) {
 			CreateProxy();
@@ -33,7 +30,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionRubberBand", "(const QStyleOptionRubberBand&)", "#")]
 		private void NewQStyleOptionRubberBand(QStyleOptionRubberBand other) {
-			ProxyQStyleOptionRubberBand().NewQStyleOptionRubberBand(other);
+			((QStyleOptionRubberBand) interceptor).NewQStyleOptionRubberBand(other);
 		}
 		public QStyleOptionRubberBand(int version) : this((Type) null) {
 			CreateProxy();
@@ -41,7 +38,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionRubberBand", "(int)", "$")]
 		private void NewQStyleOptionRubberBand(int version) {
-			ProxyQStyleOptionRubberBand().NewQStyleOptionRubberBand(version);
+			((QStyleOptionRubberBand) interceptor).NewQStyleOptionRubberBand(version);
 		}
 		~QStyleOptionRubberBand() {
 			DisposeQStyleOptionRubberBand();
@@ -51,7 +48,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QStyleOptionRubberBand", "()", "")]
 		private void DisposeQStyleOptionRubberBand() {
-			ProxyQStyleOptionRubberBand().DisposeQStyleOptionRubberBand();
+			((QStyleOptionRubberBand) interceptor).DisposeQStyleOptionRubberBand();
 		}
 	}
 }

@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QDomProcessingInstruction(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDomProcessingInstruction), this);
-			_interceptor = (QDomProcessingInstruction) realProxy.GetTransparentProxy();
-		}
-		private QDomProcessingInstruction ProxyQDomProcessingInstruction() {
-			return (QDomProcessingInstruction) _interceptor;
+			interceptor = (QDomProcessingInstruction) realProxy.GetTransparentProxy();
 		}
 		public QDomProcessingInstruction() : this((Type) null) {
 			CreateProxy();
@@ -19,7 +16,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDomProcessingInstruction", "()", "")]
 		private void NewQDomProcessingInstruction() {
-			ProxyQDomProcessingInstruction().NewQDomProcessingInstruction();
+			((QDomProcessingInstruction) interceptor).NewQDomProcessingInstruction();
 		}
 		public QDomProcessingInstruction(QDomProcessingInstruction x) : this((Type) null) {
 			CreateProxy();
@@ -27,23 +24,23 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDomProcessingInstruction", "(const QDomProcessingInstruction&)", "#")]
 		private void NewQDomProcessingInstruction(QDomProcessingInstruction x) {
-			ProxyQDomProcessingInstruction().NewQDomProcessingInstruction(x);
+			((QDomProcessingInstruction) interceptor).NewQDomProcessingInstruction(x);
 		}
 		[SmokeMethod("target", "() const", "")]
 		public string Target() {
-			return ProxyQDomProcessingInstruction().Target();
+			return ((QDomProcessingInstruction) interceptor).Target();
 		}
 		[SmokeMethod("data", "() const", "")]
 		public string Data() {
-			return ProxyQDomProcessingInstruction().Data();
+			return ((QDomProcessingInstruction) interceptor).Data();
 		}
 		[SmokeMethod("setData", "(const QString&)", "$")]
 		public void SetData(string d) {
-			ProxyQDomProcessingInstruction().SetData(d);
+			((QDomProcessingInstruction) interceptor).SetData(d);
 		}
 		[SmokeMethod("nodeType", "() const", "")]
 		public QDomNode.NodeType NodeType() {
-			return ProxyQDomProcessingInstruction().NodeType();
+			return ((QDomProcessingInstruction) interceptor).NodeType();
 		}
 		~QDomProcessingInstruction() {
 			DisposeQDomProcessingInstruction();
@@ -53,7 +50,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QDomProcessingInstruction", "()", "")]
 		private void DisposeQDomProcessingInstruction() {
-			ProxyQDomProcessingInstruction().DisposeQDomProcessingInstruction();
+			((QDomProcessingInstruction) interceptor).DisposeQDomProcessingInstruction();
 		}
 	}
 }

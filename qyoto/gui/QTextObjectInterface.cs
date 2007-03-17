@@ -5,15 +5,12 @@ namespace Qyoto {
 
 	[SmokeClass("QTextObjectInterface")]
 	public abstract class QTextObjectInterface : MarshalByRefObject {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QTextObjectInterface interceptor = null;
+		private IntPtr smokeObject;
 		protected QTextObjectInterface(Type dummy) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextObjectInterface), this);
-			_interceptor = (QTextObjectInterface) realProxy.GetTransparentProxy();
-		}
-		private QTextObjectInterface ProxyQTextObjectInterface() {
-			return (QTextObjectInterface) _interceptor;
+			interceptor = (QTextObjectInterface) realProxy.GetTransparentProxy();
 		}
 		[SmokeMethod("intrinsicSize", "(QTextDocument*, int, const QTextFormat&)", "#$#")]
 		public abstract QSizeF IntrinsicSize(QTextDocument doc, int posInDocument, QTextFormat format);
@@ -25,7 +22,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTextObjectInterface", "()", "")]
 		private void NewQTextObjectInterface() {
-			ProxyQTextObjectInterface().NewQTextObjectInterface();
+			((QTextObjectInterface) interceptor).NewQTextObjectInterface();
 		}
 	}
 }

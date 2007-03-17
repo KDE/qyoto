@@ -22,18 +22,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QPicture), this);
-			_interceptor = (QPicture) realProxy.GetTransparentProxy();
+			interceptor = (QPicture) realProxy.GetTransparentProxy();
 		}
-		private QPicture ProxyQPicture() {
-			return (QPicture) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQPictureProxy staticInterceptor = null;
 		static QPicture() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQPictureProxy), null);
-			_staticInterceptor = (IQPictureProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQPictureProxy StaticQPicture() {
-			return (IQPictureProxy) _staticInterceptor;
+			staticInterceptor = (IQPictureProxy) realProxy.GetTransparentProxy();
 		}
 		// QPicture* QPicture(QPicturePrivate& arg1); >>>> NOT CONVERTED
 		public QPicture(int formatVersion) : this((Type) null) {
@@ -42,7 +36,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QPicture", "(int)", "$")]
 		private void NewQPicture(int formatVersion) {
-			ProxyQPicture().NewQPicture(formatVersion);
+			((QPicture) interceptor).NewQPicture(formatVersion);
 		}
 		public QPicture() : this((Type) null) {
 			CreateProxy();
@@ -50,7 +44,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QPicture", "()", "")]
 		private void NewQPicture() {
-			ProxyQPicture().NewQPicture();
+			((QPicture) interceptor).NewQPicture();
 		}
 		public QPicture(QPicture arg1) : this((Type) null) {
 			CreateProxy();
@@ -58,87 +52,87 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QPicture", "(const QPicture&)", "#")]
 		private void NewQPicture(QPicture arg1) {
-			ProxyQPicture().NewQPicture(arg1);
+			((QPicture) interceptor).NewQPicture(arg1);
 		}
 		[SmokeMethod("isNull", "() const", "")]
 		public bool IsNull() {
-			return ProxyQPicture().IsNull();
+			return ((QPicture) interceptor).IsNull();
 		}
 		[SmokeMethod("devType", "() const", "")]
 		public override int DevType() {
-			return ProxyQPicture().DevType();
+			return ((QPicture) interceptor).DevType();
 		}
 		[SmokeMethod("size", "() const", "")]
 		public uint Size() {
-			return ProxyQPicture().Size();
+			return ((QPicture) interceptor).Size();
 		}
 		[SmokeMethod("data", "() const", "")]
 		public string Data() {
-			return ProxyQPicture().Data();
+			return ((QPicture) interceptor).Data();
 		}
 		[SmokeMethod("setData", "(const char*, uint)", "$$")]
 		public virtual void SetData(string data, uint size) {
-			ProxyQPicture().SetData(data,size);
+			((QPicture) interceptor).SetData(data,size);
 		}
 		[SmokeMethod("play", "(QPainter*)", "#")]
 		public bool Play(QPainter p) {
-			return ProxyQPicture().Play(p);
+			return ((QPicture) interceptor).Play(p);
 		}
 		[SmokeMethod("load", "(QIODevice*, const char*)", "#$")]
 		public bool Load(QIODevice dev, string format) {
-			return ProxyQPicture().Load(dev,format);
+			return ((QPicture) interceptor).Load(dev,format);
 		}
 		[SmokeMethod("load", "(QIODevice*)", "#")]
 		public bool Load(QIODevice dev) {
-			return ProxyQPicture().Load(dev);
+			return ((QPicture) interceptor).Load(dev);
 		}
 		[SmokeMethod("load", "(const QString&, const char*)", "$$")]
 		public bool Load(string fileName, string format) {
-			return ProxyQPicture().Load(fileName,format);
+			return ((QPicture) interceptor).Load(fileName,format);
 		}
 		[SmokeMethod("load", "(const QString&)", "$")]
 		public bool Load(string fileName) {
-			return ProxyQPicture().Load(fileName);
+			return ((QPicture) interceptor).Load(fileName);
 		}
 		[SmokeMethod("save", "(QIODevice*, const char*)", "#$")]
 		public bool Save(QIODevice dev, string format) {
-			return ProxyQPicture().Save(dev,format);
+			return ((QPicture) interceptor).Save(dev,format);
 		}
 		[SmokeMethod("save", "(QIODevice*)", "#")]
 		public bool Save(QIODevice dev) {
-			return ProxyQPicture().Save(dev);
+			return ((QPicture) interceptor).Save(dev);
 		}
 		[SmokeMethod("save", "(const QString&, const char*)", "$$")]
 		public bool Save(string fileName, string format) {
-			return ProxyQPicture().Save(fileName,format);
+			return ((QPicture) interceptor).Save(fileName,format);
 		}
 		[SmokeMethod("save", "(const QString&)", "$")]
 		public bool Save(string fileName) {
-			return ProxyQPicture().Save(fileName);
+			return ((QPicture) interceptor).Save(fileName);
 		}
 		[SmokeMethod("boundingRect", "() const", "")]
 		public QRect BoundingRect() {
-			return ProxyQPicture().BoundingRect();
+			return ((QPicture) interceptor).BoundingRect();
 		}
 		[SmokeMethod("setBoundingRect", "(const QRect&)", "#")]
 		public void SetBoundingRect(QRect r) {
-			ProxyQPicture().SetBoundingRect(r);
+			((QPicture) interceptor).SetBoundingRect(r);
 		}
 		[SmokeMethod("detach", "()", "")]
 		public void Detach() {
-			ProxyQPicture().Detach();
+			((QPicture) interceptor).Detach();
 		}
 		[SmokeMethod("isDetached", "() const", "")]
 		public bool IsDetached() {
-			return ProxyQPicture().IsDetached();
+			return ((QPicture) interceptor).IsDetached();
 		}
 		[SmokeMethod("paintEngine", "() const", "")]
 		public override QPaintEngine PaintEngine() {
-			return ProxyQPicture().PaintEngine();
+			return ((QPicture) interceptor).PaintEngine();
 		}
 		[SmokeMethod("metric", "(QPaintDevice::PaintDeviceMetric) const", "$")]
 		protected override int Metric(IQPaintDevice m) {
-			return ProxyQPicture().Metric(m);
+			return ((QPicture) interceptor).Metric(m);
 		}
 		~QPicture() {
 			DisposeQPicture();
@@ -148,22 +142,22 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QPicture", "()", "")]
 		private void DisposeQPicture() {
-			ProxyQPicture().DisposeQPicture();
+			((QPicture) interceptor).DisposeQPicture();
 		}
 		public static string PictureFormat(string fileName) {
-			return StaticQPicture().PictureFormat(fileName);
+			return staticInterceptor.PictureFormat(fileName);
 		}
 		public static List<QByteArray> InputFormats() {
-			return StaticQPicture().InputFormats();
+			return staticInterceptor.InputFormats();
 		}
 		public static List<QByteArray> OutputFormats() {
-			return StaticQPicture().OutputFormats();
+			return staticInterceptor.OutputFormats();
 		}
 		public static List<string> InputFormatList() {
-			return StaticQPicture().InputFormatList();
+			return staticInterceptor.InputFormatList();
 		}
 		public static List<string> OutputFormatList() {
-			return StaticQPicture().OutputFormatList();
+			return staticInterceptor.OutputFormatList();
 		}
 	}
 }

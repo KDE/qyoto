@@ -26,18 +26,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QFSFileEngine), this);
-			_interceptor = (QFSFileEngine) realProxy.GetTransparentProxy();
+			interceptor = (QFSFileEngine) realProxy.GetTransparentProxy();
 		}
-		private QFSFileEngine ProxyQFSFileEngine() {
-			return (QFSFileEngine) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQFSFileEngineProxy staticInterceptor = null;
 		static QFSFileEngine() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQFSFileEngineProxy), null);
-			_staticInterceptor = (IQFSFileEngineProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQFSFileEngineProxy StaticQFSFileEngine() {
-			return (IQFSFileEngineProxy) _staticInterceptor;
+			staticInterceptor = (IQFSFileEngineProxy) realProxy.GetTransparentProxy();
 		}
 		// QAbstractFileEngine::Iterator* beginEntryList(QDir::Filters arg1,const QStringList& arg2); >>>> NOT CONVERTED
 		// QAbstractFileEngine::Iterator* endEntryList(); >>>> NOT CONVERTED
@@ -50,7 +44,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QFSFileEngine", "()", "")]
 		private void NewQFSFileEngine() {
-			ProxyQFSFileEngine().NewQFSFileEngine();
+			((QFSFileEngine) interceptor).NewQFSFileEngine();
 		}
 		public QFSFileEngine(string file) : this((Type) null) {
 			CreateProxy();
@@ -58,127 +52,127 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QFSFileEngine", "(const QString&)", "$")]
 		private void NewQFSFileEngine(string file) {
-			ProxyQFSFileEngine().NewQFSFileEngine(file);
+			((QFSFileEngine) interceptor).NewQFSFileEngine(file);
 		}
 		[SmokeMethod("open", "(QIODevice::OpenMode)", "$")]
 		public override bool Open(int openMode) {
-			return ProxyQFSFileEngine().Open(openMode);
+			return ((QFSFileEngine) interceptor).Open(openMode);
 		}
 		[SmokeMethod("close", "()", "")]
 		public override bool Close() {
-			return ProxyQFSFileEngine().Close();
+			return ((QFSFileEngine) interceptor).Close();
 		}
 		[SmokeMethod("flush", "()", "")]
 		public override bool Flush() {
-			return ProxyQFSFileEngine().Flush();
+			return ((QFSFileEngine) interceptor).Flush();
 		}
 		[SmokeMethod("size", "() const", "")]
 		public override long Size() {
-			return ProxyQFSFileEngine().Size();
+			return ((QFSFileEngine) interceptor).Size();
 		}
 		[SmokeMethod("pos", "() const", "")]
 		public override long Pos() {
-			return ProxyQFSFileEngine().Pos();
+			return ((QFSFileEngine) interceptor).Pos();
 		}
 		[SmokeMethod("seek", "(qint64)", "$")]
 		public override bool Seek(long arg1) {
-			return ProxyQFSFileEngine().Seek(arg1);
+			return ((QFSFileEngine) interceptor).Seek(arg1);
 		}
 		[SmokeMethod("isSequential", "() const", "")]
 		public override bool IsSequential() {
-			return ProxyQFSFileEngine().IsSequential();
+			return ((QFSFileEngine) interceptor).IsSequential();
 		}
 		[SmokeMethod("remove", "()", "")]
 		public override bool Remove() {
-			return ProxyQFSFileEngine().Remove();
+			return ((QFSFileEngine) interceptor).Remove();
 		}
 		[SmokeMethod("copy", "(const QString&)", "$")]
 		public override bool Copy(string newName) {
-			return ProxyQFSFileEngine().Copy(newName);
+			return ((QFSFileEngine) interceptor).Copy(newName);
 		}
 		[SmokeMethod("rename", "(const QString&)", "$")]
 		public override bool Rename(string newName) {
-			return ProxyQFSFileEngine().Rename(newName);
+			return ((QFSFileEngine) interceptor).Rename(newName);
 		}
 		[SmokeMethod("link", "(const QString&)", "$")]
 		public override bool Link(string newName) {
-			return ProxyQFSFileEngine().Link(newName);
+			return ((QFSFileEngine) interceptor).Link(newName);
 		}
 		[SmokeMethod("mkdir", "(const QString&, bool) const", "$$")]
 		public override bool Mkdir(string dirName, bool createParentDirectories) {
-			return ProxyQFSFileEngine().Mkdir(dirName,createParentDirectories);
+			return ((QFSFileEngine) interceptor).Mkdir(dirName,createParentDirectories);
 		}
 		[SmokeMethod("rmdir", "(const QString&, bool) const", "$$")]
 		public override bool Rmdir(string dirName, bool recurseParentDirectories) {
-			return ProxyQFSFileEngine().Rmdir(dirName,recurseParentDirectories);
+			return ((QFSFileEngine) interceptor).Rmdir(dirName,recurseParentDirectories);
 		}
 		[SmokeMethod("setSize", "(qint64)", "$")]
 		public override bool SetSize(long size) {
-			return ProxyQFSFileEngine().SetSize(size);
+			return ((QFSFileEngine) interceptor).SetSize(size);
 		}
 		[SmokeMethod("caseSensitive", "() const", "")]
 		public override bool CaseSensitive() {
-			return ProxyQFSFileEngine().CaseSensitive();
+			return ((QFSFileEngine) interceptor).CaseSensitive();
 		}
 		[SmokeMethod("isRelativePath", "() const", "")]
 		public override bool IsRelativePath() {
-			return ProxyQFSFileEngine().IsRelativePath();
+			return ((QFSFileEngine) interceptor).IsRelativePath();
 		}
 		[SmokeMethod("entryList", "(QDir::Filters, const QStringList&) const", "$?")]
 		public override List<string> EntryList(int filters, List<string> filterNames) {
-			return ProxyQFSFileEngine().EntryList(filters,filterNames);
+			return ((QFSFileEngine) interceptor).EntryList(filters,filterNames);
 		}
 		[SmokeMethod("fileFlags", "(FileFlags) const", "$")]
 		public override int FileFlags(int type) {
-			return ProxyQFSFileEngine().FileFlags(type);
+			return ((QFSFileEngine) interceptor).FileFlags(type);
 		}
 		[SmokeMethod("setPermissions", "(uint)", "$")]
 		public override bool SetPermissions(uint perms) {
-			return ProxyQFSFileEngine().SetPermissions(perms);
+			return ((QFSFileEngine) interceptor).SetPermissions(perms);
 		}
 		[SmokeMethod("fileName", "(QAbstractFileEngine::FileName) const", "$")]
 		public override string fileName(QAbstractFileEngine.FileName file) {
-			return ProxyQFSFileEngine().fileName(file);
+			return ((QFSFileEngine) interceptor).fileName(file);
 		}
 		[SmokeMethod("ownerId", "(QAbstractFileEngine::FileOwner) const", "$")]
 		public override uint OwnerId(QAbstractFileEngine.FileOwner arg1) {
-			return ProxyQFSFileEngine().OwnerId(arg1);
+			return ((QFSFileEngine) interceptor).OwnerId(arg1);
 		}
 		[SmokeMethod("owner", "(QAbstractFileEngine::FileOwner) const", "$")]
 		public override string Owner(QAbstractFileEngine.FileOwner arg1) {
-			return ProxyQFSFileEngine().Owner(arg1);
+			return ((QFSFileEngine) interceptor).Owner(arg1);
 		}
 		[SmokeMethod("fileTime", "(QAbstractFileEngine::FileTime) const", "$")]
 		public override QDateTime fileTime(QAbstractFileEngine.FileTime time) {
-			return ProxyQFSFileEngine().fileTime(time);
+			return ((QFSFileEngine) interceptor).fileTime(time);
 		}
 		[SmokeMethod("setFileName", "(const QString&)", "$")]
 		public override void SetFileName(string file) {
-			ProxyQFSFileEngine().SetFileName(file);
+			((QFSFileEngine) interceptor).SetFileName(file);
 		}
 		[SmokeMethod("read", "(char*, qint64)", "$$")]
 		public override long Read(string data, long maxlen) {
-			return ProxyQFSFileEngine().Read(data,maxlen);
+			return ((QFSFileEngine) interceptor).Read(data,maxlen);
 		}
 		[SmokeMethod("readLine", "(char*, qint64)", "$$")]
 		public override long ReadLine(string data, long maxlen) {
-			return ProxyQFSFileEngine().ReadLine(data,maxlen);
+			return ((QFSFileEngine) interceptor).ReadLine(data,maxlen);
 		}
 		[SmokeMethod("write", "(const char*, qint64)", "$$")]
 		public override long Write(string data, long len) {
-			return ProxyQFSFileEngine().Write(data,len);
+			return ((QFSFileEngine) interceptor).Write(data,len);
 		}
 		[SmokeMethod("extension", "(QAbstractFileEngine::Extension)", "$")]
 		public override bool extension(QAbstractFileEngine.Extension extension) {
-			return ProxyQFSFileEngine().extension(extension);
+			return ((QFSFileEngine) interceptor).extension(extension);
 		}
 		[SmokeMethod("supportsExtension", "(QAbstractFileEngine::Extension) const", "$")]
 		public override bool SupportsExtension(QAbstractFileEngine.Extension extension) {
-			return ProxyQFSFileEngine().SupportsExtension(extension);
+			return ((QFSFileEngine) interceptor).SupportsExtension(extension);
 		}
 		[SmokeMethod("open", "(QIODevice::OpenMode, int)", "$$")]
 		public bool Open(int flags, int fd) {
-			return ProxyQFSFileEngine().Open(flags,fd);
+			return ((QFSFileEngine) interceptor).Open(flags,fd);
 		}
 		~QFSFileEngine() {
 			DisposeQFSFileEngine();
@@ -188,28 +182,28 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QFSFileEngine", "()", "")]
 		private void DisposeQFSFileEngine() {
-			ProxyQFSFileEngine().DisposeQFSFileEngine();
+			((QFSFileEngine) interceptor).DisposeQFSFileEngine();
 		}
 		public static bool SetCurrentPath(string path) {
-			return StaticQFSFileEngine().SetCurrentPath(path);
+			return staticInterceptor.SetCurrentPath(path);
 		}
 		public static string CurrentPath(string path) {
-			return StaticQFSFileEngine().CurrentPath(path);
+			return staticInterceptor.CurrentPath(path);
 		}
 		public static string CurrentPath() {
-			return StaticQFSFileEngine().CurrentPath();
+			return staticInterceptor.CurrentPath();
 		}
 		public static string HomePath() {
-			return StaticQFSFileEngine().HomePath();
+			return staticInterceptor.HomePath();
 		}
 		public static string RootPath() {
-			return StaticQFSFileEngine().RootPath();
+			return staticInterceptor.RootPath();
 		}
 		public static string TempPath() {
-			return StaticQFSFileEngine().TempPath();
+			return staticInterceptor.TempPath();
 		}
 		public static List<QFileInfo> Drives() {
-			return StaticQFSFileEngine().Drives();
+			return staticInterceptor.Drives();
 		}
 	}
 }

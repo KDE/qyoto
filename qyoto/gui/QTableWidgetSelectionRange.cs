@@ -5,15 +5,12 @@ namespace Qyoto {
 
 	[SmokeClass("QTableWidgetSelectionRange")]
 	public class QTableWidgetSelectionRange : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QTableWidgetSelectionRange interceptor = null;
+		private IntPtr smokeObject;
 		protected QTableWidgetSelectionRange(Type dummy) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTableWidgetSelectionRange), this);
-			_interceptor = (QTableWidgetSelectionRange) realProxy.GetTransparentProxy();
-		}
-		private QTableWidgetSelectionRange ProxyQTableWidgetSelectionRange() {
-			return (QTableWidgetSelectionRange) _interceptor;
+			interceptor = (QTableWidgetSelectionRange) realProxy.GetTransparentProxy();
 		}
 		public QTableWidgetSelectionRange() : this((Type) null) {
 			CreateProxy();
@@ -21,7 +18,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTableWidgetSelectionRange", "()", "")]
 		private void NewQTableWidgetSelectionRange() {
-			ProxyQTableWidgetSelectionRange().NewQTableWidgetSelectionRange();
+			((QTableWidgetSelectionRange) interceptor).NewQTableWidgetSelectionRange();
 		}
 		public QTableWidgetSelectionRange(int top, int left, int bottom, int right) : this((Type) null) {
 			CreateProxy();
@@ -29,7 +26,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTableWidgetSelectionRange", "(int, int, int, int)", "$$$$")]
 		private void NewQTableWidgetSelectionRange(int top, int left, int bottom, int right) {
-			ProxyQTableWidgetSelectionRange().NewQTableWidgetSelectionRange(top,left,bottom,right);
+			((QTableWidgetSelectionRange) interceptor).NewQTableWidgetSelectionRange(top,left,bottom,right);
 		}
 		public QTableWidgetSelectionRange(QTableWidgetSelectionRange other) : this((Type) null) {
 			CreateProxy();
@@ -37,31 +34,31 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTableWidgetSelectionRange", "(const QTableWidgetSelectionRange&)", "#")]
 		private void NewQTableWidgetSelectionRange(QTableWidgetSelectionRange other) {
-			ProxyQTableWidgetSelectionRange().NewQTableWidgetSelectionRange(other);
+			((QTableWidgetSelectionRange) interceptor).NewQTableWidgetSelectionRange(other);
 		}
 		[SmokeMethod("topRow", "() const", "")]
 		public int TopRow() {
-			return ProxyQTableWidgetSelectionRange().TopRow();
+			return ((QTableWidgetSelectionRange) interceptor).TopRow();
 		}
 		[SmokeMethod("bottomRow", "() const", "")]
 		public int BottomRow() {
-			return ProxyQTableWidgetSelectionRange().BottomRow();
+			return ((QTableWidgetSelectionRange) interceptor).BottomRow();
 		}
 		[SmokeMethod("leftColumn", "() const", "")]
 		public int LeftColumn() {
-			return ProxyQTableWidgetSelectionRange().LeftColumn();
+			return ((QTableWidgetSelectionRange) interceptor).LeftColumn();
 		}
 		[SmokeMethod("rightColumn", "() const", "")]
 		public int RightColumn() {
-			return ProxyQTableWidgetSelectionRange().RightColumn();
+			return ((QTableWidgetSelectionRange) interceptor).RightColumn();
 		}
 		[SmokeMethod("rowCount", "() const", "")]
 		public int RowCount() {
-			return ProxyQTableWidgetSelectionRange().RowCount();
+			return ((QTableWidgetSelectionRange) interceptor).RowCount();
 		}
 		[SmokeMethod("columnCount", "() const", "")]
 		public int ColumnCount() {
-			return ProxyQTableWidgetSelectionRange().ColumnCount();
+			return ((QTableWidgetSelectionRange) interceptor).ColumnCount();
 		}
 		~QTableWidgetSelectionRange() {
 			DisposeQTableWidgetSelectionRange();
@@ -71,7 +68,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QTableWidgetSelectionRange", "()", "")]
 		private void DisposeQTableWidgetSelectionRange() {
-			ProxyQTableWidgetSelectionRange().DisposeQTableWidgetSelectionRange();
+			((QTableWidgetSelectionRange) interceptor).DisposeQTableWidgetSelectionRange();
 		}
 	}
 }

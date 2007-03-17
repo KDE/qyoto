@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QTextFrameFormat(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextFrameFormat), this);
-			_interceptor = (QTextFrameFormat) realProxy.GetTransparentProxy();
-		}
-		private QTextFrameFormat ProxyQTextFrameFormat() {
-			return (QTextFrameFormat) _interceptor;
+			interceptor = (QTextFrameFormat) realProxy.GetTransparentProxy();
 		}
 		public enum Position {
 			InFlow = 0,
@@ -24,75 +21,75 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTextFrameFormat", "()", "")]
 		private void NewQTextFrameFormat() {
-			ProxyQTextFrameFormat().NewQTextFrameFormat();
+			((QTextFrameFormat) interceptor).NewQTextFrameFormat();
 		}
 		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ProxyQTextFrameFormat().IsValid();
+			return ((QTextFrameFormat) interceptor).IsValid();
 		}
 		[SmokeMethod("setPosition", "(QTextFrameFormat::Position)", "$")]
 		public void SetPosition(QTextFrameFormat.Position f) {
-			ProxyQTextFrameFormat().SetPosition(f);
+			((QTextFrameFormat) interceptor).SetPosition(f);
 		}
 		[SmokeMethod("position", "() const", "")]
 		public QTextFrameFormat.Position position() {
-			return ProxyQTextFrameFormat().position();
+			return ((QTextFrameFormat) interceptor).position();
 		}
 		[SmokeMethod("setBorder", "(qreal)", "$")]
 		public void SetBorder(double border) {
-			ProxyQTextFrameFormat().SetBorder(border);
+			((QTextFrameFormat) interceptor).SetBorder(border);
 		}
 		[SmokeMethod("border", "() const", "")]
 		public double Border() {
-			return ProxyQTextFrameFormat().Border();
+			return ((QTextFrameFormat) interceptor).Border();
 		}
 		[SmokeMethod("setMargin", "(qreal)", "$")]
 		public void SetMargin(double margin) {
-			ProxyQTextFrameFormat().SetMargin(margin);
+			((QTextFrameFormat) interceptor).SetMargin(margin);
 		}
 		[SmokeMethod("margin", "() const", "")]
 		public double Margin() {
-			return ProxyQTextFrameFormat().Margin();
+			return ((QTextFrameFormat) interceptor).Margin();
 		}
 		[SmokeMethod("setPadding", "(qreal)", "$")]
 		public void SetPadding(double padding) {
-			ProxyQTextFrameFormat().SetPadding(padding);
+			((QTextFrameFormat) interceptor).SetPadding(padding);
 		}
 		[SmokeMethod("padding", "() const", "")]
 		public double Padding() {
-			return ProxyQTextFrameFormat().Padding();
+			return ((QTextFrameFormat) interceptor).Padding();
 		}
 		[SmokeMethod("setWidth", "(qreal)", "$")]
 		public void SetWidth(double width) {
-			ProxyQTextFrameFormat().SetWidth(width);
+			((QTextFrameFormat) interceptor).SetWidth(width);
 		}
 		[SmokeMethod("setWidth", "(const QTextLength&)", "#")]
 		public void SetWidth(QTextLength length) {
-			ProxyQTextFrameFormat().SetWidth(length);
+			((QTextFrameFormat) interceptor).SetWidth(length);
 		}
 		[SmokeMethod("width", "() const", "")]
 		public QTextLength Width() {
-			return ProxyQTextFrameFormat().Width();
+			return ((QTextFrameFormat) interceptor).Width();
 		}
 		[SmokeMethod("setHeight", "(qreal)", "$")]
 		public void SetHeight(double height) {
-			ProxyQTextFrameFormat().SetHeight(height);
+			((QTextFrameFormat) interceptor).SetHeight(height);
 		}
 		[SmokeMethod("setHeight", "(const QTextLength&)", "#")]
 		public void SetHeight(QTextLength height) {
-			ProxyQTextFrameFormat().SetHeight(height);
+			((QTextFrameFormat) interceptor).SetHeight(height);
 		}
 		[SmokeMethod("height", "() const", "")]
 		public QTextLength Height() {
-			return ProxyQTextFrameFormat().Height();
+			return ((QTextFrameFormat) interceptor).Height();
 		}
 		[SmokeMethod("setPageBreakPolicy", "(PageBreakFlags)", "$")]
 		public void SetPageBreakPolicy(int flags) {
-			ProxyQTextFrameFormat().SetPageBreakPolicy(flags);
+			((QTextFrameFormat) interceptor).SetPageBreakPolicy(flags);
 		}
 		[SmokeMethod("pageBreakPolicy", "() const", "")]
 		public int PageBreakPolicy() {
-			return ProxyQTextFrameFormat().PageBreakPolicy();
+			return ((QTextFrameFormat) interceptor).PageBreakPolicy();
 		}
 		~QTextFrameFormat() {
 			DisposeQTextFrameFormat();
@@ -102,7 +99,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QTextFrameFormat", "()", "")]
 		private void DisposeQTextFrameFormat() {
-			ProxyQTextFrameFormat().DisposeQTextFrameFormat();
+			((QTextFrameFormat) interceptor).DisposeQTextFrameFormat();
 		}
 	}
 }

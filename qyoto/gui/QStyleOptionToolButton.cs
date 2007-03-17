@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QStyleOptionToolButton(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionToolButton), this);
-			_interceptor = (QStyleOptionToolButton) realProxy.GetTransparentProxy();
-		}
-		private QStyleOptionToolButton ProxyQStyleOptionToolButton() {
-			return (QStyleOptionToolButton) _interceptor;
+			interceptor = (QStyleOptionToolButton) realProxy.GetTransparentProxy();
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_ToolButton,
@@ -31,7 +28,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionToolButton", "()", "")]
 		private void NewQStyleOptionToolButton() {
-			ProxyQStyleOptionToolButton().NewQStyleOptionToolButton();
+			((QStyleOptionToolButton) interceptor).NewQStyleOptionToolButton();
 		}
 		public QStyleOptionToolButton(QStyleOptionToolButton other) : this((Type) null) {
 			CreateProxy();
@@ -39,7 +36,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionToolButton", "(const QStyleOptionToolButton&)", "#")]
 		private void NewQStyleOptionToolButton(QStyleOptionToolButton other) {
-			ProxyQStyleOptionToolButton().NewQStyleOptionToolButton(other);
+			((QStyleOptionToolButton) interceptor).NewQStyleOptionToolButton(other);
 		}
 		public QStyleOptionToolButton(int version) : this((Type) null) {
 			CreateProxy();
@@ -47,7 +44,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionToolButton", "(int)", "$")]
 		private void NewQStyleOptionToolButton(int version) {
-			ProxyQStyleOptionToolButton().NewQStyleOptionToolButton(version);
+			((QStyleOptionToolButton) interceptor).NewQStyleOptionToolButton(version);
 		}
 		~QStyleOptionToolButton() {
 			DisposeQStyleOptionToolButton();
@@ -57,7 +54,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QStyleOptionToolButton", "()", "")]
 		private void DisposeQStyleOptionToolButton() {
-			ProxyQStyleOptionToolButton().DisposeQStyleOptionToolButton();
+			((QStyleOptionToolButton) interceptor).DisposeQStyleOptionToolButton();
 		}
 	}
 }

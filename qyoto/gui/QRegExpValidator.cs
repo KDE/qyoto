@@ -16,18 +16,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QRegExpValidator), this);
-			_interceptor = (QRegExpValidator) realProxy.GetTransparentProxy();
+			interceptor = (QRegExpValidator) realProxy.GetTransparentProxy();
 		}
-		private QRegExpValidator ProxyQRegExpValidator() {
-			return (QRegExpValidator) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQRegExpValidatorProxy staticInterceptor = null;
 		static QRegExpValidator() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQRegExpValidatorProxy), null);
-			_staticInterceptor = (IQRegExpValidatorProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQRegExpValidatorProxy StaticQRegExpValidator() {
-			return (IQRegExpValidatorProxy) _staticInterceptor;
+			staticInterceptor = (IQRegExpValidatorProxy) realProxy.GetTransparentProxy();
 		}
 		[Q_PROPERTY("QRegExp", "regExp")]
 		public QRegExp RegExp {
@@ -40,7 +34,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QRegExpValidator", "(QObject*)", "#")]
 		private void NewQRegExpValidator(QObject parent) {
-			ProxyQRegExpValidator().NewQRegExpValidator(parent);
+			((QRegExpValidator) interceptor).NewQRegExpValidator(parent);
 		}
 		public QRegExpValidator(QRegExp rx, QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -48,11 +42,11 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QRegExpValidator", "(const QRegExp&, QObject*)", "##")]
 		private void NewQRegExpValidator(QRegExp rx, QObject parent) {
-			ProxyQRegExpValidator().NewQRegExpValidator(rx,parent);
+			((QRegExpValidator) interceptor).NewQRegExpValidator(rx,parent);
 		}
 		[SmokeMethod("validate", "(QString&, int&) const", "$$")]
 		public override int Validate(StringBuilder input, out int pos) {
-			return ProxyQRegExpValidator().Validate(input,out pos);
+			return ((QRegExpValidator) interceptor).Validate(input,out pos);
 		}
 		~QRegExpValidator() {
 			DisposeQRegExpValidator();
@@ -62,13 +56,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QRegExpValidator", "()", "")]
 		private void DisposeQRegExpValidator() {
-			ProxyQRegExpValidator().DisposeQRegExpValidator();
+			((QRegExpValidator) interceptor).DisposeQRegExpValidator();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQRegExpValidator().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQRegExpValidator().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQRegExpValidatorSignals Emit {
 			get { return (IQRegExpValidatorSignals) Q_EMIT; }

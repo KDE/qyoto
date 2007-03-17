@@ -5,8 +5,8 @@ namespace Qyoto {
 
 	[SmokeClass("QTextFragment")]
 	public class QTextFragment : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QTextFragment interceptor = null;
+		private IntPtr smokeObject;
 		protected QTextFragment(Type dummy) {}
 		[SmokeClass("QTextFragment")]
 		interface IQTextFragmentProxy {
@@ -17,18 +17,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QTextFragment), this);
-			_interceptor = (QTextFragment) realProxy.GetTransparentProxy();
+			interceptor = (QTextFragment) realProxy.GetTransparentProxy();
 		}
-		private QTextFragment ProxyQTextFragment() {
-			return (QTextFragment) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQTextFragmentProxy staticInterceptor = null;
 		static QTextFragment() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQTextFragmentProxy), null);
-			_staticInterceptor = (IQTextFragmentProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQTextFragmentProxy StaticQTextFragment() {
-			return (IQTextFragmentProxy) _staticInterceptor;
+			staticInterceptor = (IQTextFragmentProxy) realProxy.GetTransparentProxy();
 		}
 		public QTextFragment() : this((Type) null) {
 			CreateProxy();
@@ -36,7 +30,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTextFragment", "()", "")]
 		private void NewQTextFragment() {
-			ProxyQTextFragment().NewQTextFragment();
+			((QTextFragment) interceptor).NewQTextFragment();
 		}
 		public QTextFragment(QTextFragment o) : this((Type) null) {
 			CreateProxy();
@@ -44,42 +38,42 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QTextFragment", "(const QTextFragment&)", "#")]
 		private void NewQTextFragment(QTextFragment o) {
-			ProxyQTextFragment().NewQTextFragment(o);
+			((QTextFragment) interceptor).NewQTextFragment(o);
 		}
 		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ProxyQTextFragment().IsValid();
+			return ((QTextFragment) interceptor).IsValid();
 		}
 		public override bool Equals(object o) {
 			if (!(o is QTextFragment)) { return false; }
 			return this == (QTextFragment) o;
 		}
 		public override int GetHashCode() {
-			return ProxyQTextFragment().GetHashCode();
+			return ((QTextFragment) interceptor).GetHashCode();
 		}
 		[SmokeMethod("position", "() const", "")]
 		public int Position() {
-			return ProxyQTextFragment().Position();
+			return ((QTextFragment) interceptor).Position();
 		}
 		[SmokeMethod("length", "() const", "")]
 		public int Length() {
-			return ProxyQTextFragment().Length();
+			return ((QTextFragment) interceptor).Length();
 		}
 		[SmokeMethod("contains", "(int) const", "$")]
 		public bool Contains(int position) {
-			return ProxyQTextFragment().Contains(position);
+			return ((QTextFragment) interceptor).Contains(position);
 		}
 		[SmokeMethod("charFormat", "() const", "")]
 		public QTextCharFormat CharFormat() {
-			return ProxyQTextFragment().CharFormat();
+			return ((QTextFragment) interceptor).CharFormat();
 		}
 		[SmokeMethod("charFormatIndex", "() const", "")]
 		public int CharFormatIndex() {
-			return ProxyQTextFragment().CharFormatIndex();
+			return ((QTextFragment) interceptor).CharFormatIndex();
 		}
 		[SmokeMethod("text", "() const", "")]
 		public string Text() {
-			return ProxyQTextFragment().Text();
+			return ((QTextFragment) interceptor).Text();
 		}
 		~QTextFragment() {
 			DisposeQTextFragment();
@@ -89,20 +83,20 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QTextFragment", "()", "")]
 		private void DisposeQTextFragment() {
-			ProxyQTextFragment().DisposeQTextFragment();
+			((QTextFragment) interceptor).DisposeQTextFragment();
 		}
 		public static bool operator==(QTextFragment lhs, QTextFragment o) {
-			return StaticQTextFragment().op_equals(lhs,o);
+			return staticInterceptor.op_equals(lhs,o);
 		}
 		public static bool operator!=(QTextFragment lhs, QTextFragment o) {
-			return !StaticQTextFragment().op_equals(lhs,o);
+			return !staticInterceptor.op_equals(lhs,o);
 		}
 		public static bool operator<(QTextFragment lhs, QTextFragment o) {
-			return StaticQTextFragment().op_lt(lhs,o);
+			return staticInterceptor.op_lt(lhs,o);
 		}
 		public static bool operator>(QTextFragment lhs, QTextFragment o) {
-			return !StaticQTextFragment().op_lt(lhs,o)
-						&& !StaticQTextFragment().op_equals(lhs,o);
+			return !staticInterceptor.op_lt(lhs,o)
+						&& !staticInterceptor.op_equals(lhs,o);
 		}
 	}
 }

@@ -5,15 +5,12 @@ namespace Qyoto {
 
 	[SmokeClass("QAbstractFileEngineHandler")]
 	public abstract class QAbstractFileEngineHandler : MarshalByRefObject {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QAbstractFileEngineHandler interceptor = null;
+		private IntPtr smokeObject;
 		protected QAbstractFileEngineHandler(Type dummy) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QAbstractFileEngineHandler), this);
-			_interceptor = (QAbstractFileEngineHandler) realProxy.GetTransparentProxy();
-		}
-		private QAbstractFileEngineHandler ProxyQAbstractFileEngineHandler() {
-			return (QAbstractFileEngineHandler) _interceptor;
+			interceptor = (QAbstractFileEngineHandler) realProxy.GetTransparentProxy();
 		}
 		public QAbstractFileEngineHandler() : this((Type) null) {
 			CreateProxy();
@@ -21,7 +18,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QAbstractFileEngineHandler", "()", "")]
 		private void NewQAbstractFileEngineHandler() {
-			ProxyQAbstractFileEngineHandler().NewQAbstractFileEngineHandler();
+			((QAbstractFileEngineHandler) interceptor).NewQAbstractFileEngineHandler();
 		}
 		[SmokeMethod("create", "(const QString&) const", "$")]
 		public abstract QAbstractFileEngine Create(string fileName);

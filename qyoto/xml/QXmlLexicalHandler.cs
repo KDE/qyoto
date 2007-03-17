@@ -5,15 +5,12 @@ namespace Qyoto {
 
 	[SmokeClass("QXmlLexicalHandler")]
 	public abstract class QXmlLexicalHandler : MarshalByRefObject {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QXmlLexicalHandler interceptor = null;
+		private IntPtr smokeObject;
 		protected QXmlLexicalHandler(Type dummy) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlLexicalHandler), this);
-			_interceptor = (QXmlLexicalHandler) realProxy.GetTransparentProxy();
-		}
-		private QXmlLexicalHandler ProxyQXmlLexicalHandler() {
-			return (QXmlLexicalHandler) _interceptor;
+			interceptor = (QXmlLexicalHandler) realProxy.GetTransparentProxy();
 		}
 		[SmokeMethod("startDTD", "(const QString&, const QString&, const QString&)", "$$$")]
 		public abstract bool StartDTD(string name, string publicId, string systemId);
@@ -37,7 +34,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QXmlLexicalHandler", "()", "")]
 		private void NewQXmlLexicalHandler() {
-			ProxyQXmlLexicalHandler().NewQXmlLexicalHandler();
+			((QXmlLexicalHandler) interceptor).NewQXmlLexicalHandler();
 		}
 	}
 }

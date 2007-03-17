@@ -16,18 +16,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSortFilterProxyModel), this);
-			_interceptor = (QSortFilterProxyModel) realProxy.GetTransparentProxy();
+			interceptor = (QSortFilterProxyModel) realProxy.GetTransparentProxy();
 		}
-		private QSortFilterProxyModel ProxyQSortFilterProxyModel() {
-			return (QSortFilterProxyModel) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQSortFilterProxyModelProxy staticInterceptor = null;
 		static QSortFilterProxyModel() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQSortFilterProxyModelProxy), null);
-			_staticInterceptor = (IQSortFilterProxyModelProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQSortFilterProxyModelProxy StaticQSortFilterProxyModel() {
-			return (IQSortFilterProxyModelProxy) _staticInterceptor;
+			staticInterceptor = (IQSortFilterProxyModelProxy) realProxy.GetTransparentProxy();
 		}
 		[Q_PROPERTY("QRegExp", "filterRegExp")]
 		public QRegExp FilterRegExp {
@@ -70,7 +64,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSortFilterProxyModel", "(QObject*)", "#")]
 		private void NewQSortFilterProxyModel(QObject parent) {
-			ProxyQSortFilterProxyModel().NewQSortFilterProxyModel(parent);
+			((QSortFilterProxyModel) interceptor).NewQSortFilterProxyModel(parent);
 		}
 		public QSortFilterProxyModel() : this((Type) null) {
 			CreateProxy();
@@ -78,198 +72,198 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSortFilterProxyModel", "()", "")]
 		private void NewQSortFilterProxyModel() {
-			ProxyQSortFilterProxyModel().NewQSortFilterProxyModel();
+			((QSortFilterProxyModel) interceptor).NewQSortFilterProxyModel();
 		}
 		[SmokeMethod("setSourceModel", "(QAbstractItemModel*)", "#")]
 		public override void SetSourceModel(QAbstractItemModel sourceModel) {
-			ProxyQSortFilterProxyModel().SetSourceModel(sourceModel);
+			((QSortFilterProxyModel) interceptor).SetSourceModel(sourceModel);
 		}
 		[SmokeMethod("mapToSource", "(const QModelIndex&) const", "#")]
 		public override QModelIndex MapToSource(QModelIndex proxyIndex) {
-			return ProxyQSortFilterProxyModel().MapToSource(proxyIndex);
+			return ((QSortFilterProxyModel) interceptor).MapToSource(proxyIndex);
 		}
 		[SmokeMethod("mapFromSource", "(const QModelIndex&) const", "#")]
 		public override QModelIndex MapFromSource(QModelIndex sourceIndex) {
-			return ProxyQSortFilterProxyModel().MapFromSource(sourceIndex);
+			return ((QSortFilterProxyModel) interceptor).MapFromSource(sourceIndex);
 		}
 		[SmokeMethod("mapSelectionToSource", "(const QItemSelection&) const", "#")]
 		public override QItemSelection MapSelectionToSource(QItemSelection proxySelection) {
-			return ProxyQSortFilterProxyModel().MapSelectionToSource(proxySelection);
+			return ((QSortFilterProxyModel) interceptor).MapSelectionToSource(proxySelection);
 		}
 		[SmokeMethod("mapSelectionFromSource", "(const QItemSelection&) const", "#")]
 		public override QItemSelection MapSelectionFromSource(QItemSelection sourceSelection) {
-			return ProxyQSortFilterProxyModel().MapSelectionFromSource(sourceSelection);
+			return ((QSortFilterProxyModel) interceptor).MapSelectionFromSource(sourceSelection);
 		}
 		[SmokeMethod("parent", "() const", "")]
 		public QObject Parent() {
-			return ProxyQSortFilterProxyModel().Parent();
+			return ((QSortFilterProxyModel) interceptor).Parent();
 		}
 		[SmokeMethod("index", "(int, int, const QModelIndex&) const", "$$#")]
 		public override QModelIndex Index(int row, int column, QModelIndex parent) {
-			return ProxyQSortFilterProxyModel().Index(row,column,parent);
+			return ((QSortFilterProxyModel) interceptor).Index(row,column,parent);
 		}
 		[SmokeMethod("index", "(int, int) const", "$$")]
 		public virtual QModelIndex Index(int row, int column) {
-			return ProxyQSortFilterProxyModel().Index(row,column);
+			return ((QSortFilterProxyModel) interceptor).Index(row,column);
 		}
 		[SmokeMethod("parent", "(const QModelIndex&) const", "#")]
 		public override QModelIndex Parent(QModelIndex child) {
-			return ProxyQSortFilterProxyModel().Parent(child);
+			return ((QSortFilterProxyModel) interceptor).Parent(child);
 		}
 		[SmokeMethod("rowCount", "(const QModelIndex&) const", "#")]
 		public override int RowCount(QModelIndex parent) {
-			return ProxyQSortFilterProxyModel().RowCount(parent);
+			return ((QSortFilterProxyModel) interceptor).RowCount(parent);
 		}
 		[SmokeMethod("rowCount", "() const", "")]
 		public virtual int RowCount() {
-			return ProxyQSortFilterProxyModel().RowCount();
+			return ((QSortFilterProxyModel) interceptor).RowCount();
 		}
 		[SmokeMethod("columnCount", "(const QModelIndex&) const", "#")]
 		public override int ColumnCount(QModelIndex parent) {
-			return ProxyQSortFilterProxyModel().ColumnCount(parent);
+			return ((QSortFilterProxyModel) interceptor).ColumnCount(parent);
 		}
 		[SmokeMethod("columnCount", "() const", "")]
 		public virtual int ColumnCount() {
-			return ProxyQSortFilterProxyModel().ColumnCount();
+			return ((QSortFilterProxyModel) interceptor).ColumnCount();
 		}
 		[SmokeMethod("hasChildren", "(const QModelIndex&) const", "#")]
 		public override bool HasChildren(QModelIndex parent) {
-			return ProxyQSortFilterProxyModel().HasChildren(parent);
+			return ((QSortFilterProxyModel) interceptor).HasChildren(parent);
 		}
 		[SmokeMethod("hasChildren", "() const", "")]
 		public override bool HasChildren() {
-			return ProxyQSortFilterProxyModel().HasChildren();
+			return ((QSortFilterProxyModel) interceptor).HasChildren();
 		}
 		[SmokeMethod("data", "(const QModelIndex&, int) const", "#$")]
 		public override QVariant Data(QModelIndex index, int role) {
-			return ProxyQSortFilterProxyModel().Data(index,role);
+			return ((QSortFilterProxyModel) interceptor).Data(index,role);
 		}
 		[SmokeMethod("data", "(const QModelIndex&) const", "#")]
 		public override QVariant Data(QModelIndex index) {
-			return ProxyQSortFilterProxyModel().Data(index);
+			return ((QSortFilterProxyModel) interceptor).Data(index);
 		}
 		[SmokeMethod("setData", "(const QModelIndex&, const QVariant&, int)", "##$")]
 		public override bool SetData(QModelIndex index, QVariant value, int role) {
-			return ProxyQSortFilterProxyModel().SetData(index,value,role);
+			return ((QSortFilterProxyModel) interceptor).SetData(index,value,role);
 		}
 		[SmokeMethod("headerData", "(int, Qt::Orientation, int) const", "$$$")]
 		public override QVariant HeaderData(int section, Qt.Orientation orientation, int role) {
-			return ProxyQSortFilterProxyModel().HeaderData(section,orientation,role);
+			return ((QSortFilterProxyModel) interceptor).HeaderData(section,orientation,role);
 		}
 		[SmokeMethod("setHeaderData", "(int, Qt::Orientation, const QVariant&, int)", "$$#$")]
 		public override bool SetHeaderData(int section, Qt.Orientation orientation, QVariant value, int role) {
-			return ProxyQSortFilterProxyModel().SetHeaderData(section,orientation,value,role);
+			return ((QSortFilterProxyModel) interceptor).SetHeaderData(section,orientation,value,role);
 		}
 		[SmokeMethod("mimeData", "(const QModelIndexList&) const", "?")]
 		public override QMimeData MimeData(List<QModelIndex> indexes) {
-			return ProxyQSortFilterProxyModel().MimeData(indexes);
+			return ((QSortFilterProxyModel) interceptor).MimeData(indexes);
 		}
 		[SmokeMethod("dropMimeData", "(const QMimeData*, Qt::DropAction, int, int, const QModelIndex&)", "#$$$#")]
 		public override bool DropMimeData(QMimeData data, Qt.DropAction action, int row, int column, QModelIndex parent) {
-			return ProxyQSortFilterProxyModel().DropMimeData(data,action,row,column,parent);
+			return ((QSortFilterProxyModel) interceptor).DropMimeData(data,action,row,column,parent);
 		}
 		[SmokeMethod("insertRows", "(int, int, const QModelIndex&)", "$$#")]
 		public override bool InsertRows(int row, int count, QModelIndex parent) {
-			return ProxyQSortFilterProxyModel().InsertRows(row,count,parent);
+			return ((QSortFilterProxyModel) interceptor).InsertRows(row,count,parent);
 		}
 		[SmokeMethod("insertRows", "(int, int)", "$$")]
 		public override bool InsertRows(int row, int count) {
-			return ProxyQSortFilterProxyModel().InsertRows(row,count);
+			return ((QSortFilterProxyModel) interceptor).InsertRows(row,count);
 		}
 		[SmokeMethod("insertColumns", "(int, int, const QModelIndex&)", "$$#")]
 		public override bool InsertColumns(int column, int count, QModelIndex parent) {
-			return ProxyQSortFilterProxyModel().InsertColumns(column,count,parent);
+			return ((QSortFilterProxyModel) interceptor).InsertColumns(column,count,parent);
 		}
 		[SmokeMethod("insertColumns", "(int, int)", "$$")]
 		public override bool InsertColumns(int column, int count) {
-			return ProxyQSortFilterProxyModel().InsertColumns(column,count);
+			return ((QSortFilterProxyModel) interceptor).InsertColumns(column,count);
 		}
 		[SmokeMethod("removeRows", "(int, int, const QModelIndex&)", "$$#")]
 		public override bool RemoveRows(int row, int count, QModelIndex parent) {
-			return ProxyQSortFilterProxyModel().RemoveRows(row,count,parent);
+			return ((QSortFilterProxyModel) interceptor).RemoveRows(row,count,parent);
 		}
 		[SmokeMethod("removeRows", "(int, int)", "$$")]
 		public override bool RemoveRows(int row, int count) {
-			return ProxyQSortFilterProxyModel().RemoveRows(row,count);
+			return ((QSortFilterProxyModel) interceptor).RemoveRows(row,count);
 		}
 		[SmokeMethod("removeColumns", "(int, int, const QModelIndex&)", "$$#")]
 		public override bool RemoveColumns(int column, int count, QModelIndex parent) {
-			return ProxyQSortFilterProxyModel().RemoveColumns(column,count,parent);
+			return ((QSortFilterProxyModel) interceptor).RemoveColumns(column,count,parent);
 		}
 		[SmokeMethod("removeColumns", "(int, int)", "$$")]
 		public override bool RemoveColumns(int column, int count) {
-			return ProxyQSortFilterProxyModel().RemoveColumns(column,count);
+			return ((QSortFilterProxyModel) interceptor).RemoveColumns(column,count);
 		}
 		[SmokeMethod("fetchMore", "(const QModelIndex&)", "#")]
 		public override void FetchMore(QModelIndex parent) {
-			ProxyQSortFilterProxyModel().FetchMore(parent);
+			((QSortFilterProxyModel) interceptor).FetchMore(parent);
 		}
 		[SmokeMethod("canFetchMore", "(const QModelIndex&) const", "#")]
 		public override bool CanFetchMore(QModelIndex parent) {
-			return ProxyQSortFilterProxyModel().CanFetchMore(parent);
+			return ((QSortFilterProxyModel) interceptor).CanFetchMore(parent);
 		}
 		[SmokeMethod("flags", "(const QModelIndex&) const", "#")]
 		public override int Flags(QModelIndex index) {
-			return ProxyQSortFilterProxyModel().Flags(index);
+			return ((QSortFilterProxyModel) interceptor).Flags(index);
 		}
 		[SmokeMethod("buddy", "(const QModelIndex&) const", "#")]
 		public override QModelIndex Buddy(QModelIndex index) {
-			return ProxyQSortFilterProxyModel().Buddy(index);
+			return ((QSortFilterProxyModel) interceptor).Buddy(index);
 		}
 		[SmokeMethod("match", "(const QModelIndex&, int, const QVariant&, int, Qt::MatchFlags) const", "#$#$$")]
 		public override List<QModelIndex> Match(QModelIndex start, int role, QVariant value, int hits, int flags) {
-			return ProxyQSortFilterProxyModel().Match(start,role,value,hits,flags);
+			return ((QSortFilterProxyModel) interceptor).Match(start,role,value,hits,flags);
 		}
 		[SmokeMethod("span", "(const QModelIndex&) const", "#")]
 		public override QSize Span(QModelIndex index) {
-			return ProxyQSortFilterProxyModel().Span(index);
+			return ((QSortFilterProxyModel) interceptor).Span(index);
 		}
 		[SmokeMethod("sort", "(int, Qt::SortOrder)", "$$")]
 		public override void Sort(int column, Qt.SortOrder order) {
-			ProxyQSortFilterProxyModel().Sort(column,order);
+			((QSortFilterProxyModel) interceptor).Sort(column,order);
 		}
 		[SmokeMethod("sort", "(int)", "$")]
 		public override void Sort(int column) {
-			ProxyQSortFilterProxyModel().Sort(column);
+			((QSortFilterProxyModel) interceptor).Sort(column);
 		}
 		[SmokeMethod("mimeTypes", "() const", "")]
 		public override List<string> MimeTypes() {
-			return ProxyQSortFilterProxyModel().MimeTypes();
+			return ((QSortFilterProxyModel) interceptor).MimeTypes();
 		}
 		[SmokeMethod("supportedDropActions", "() const", "")]
 		public override int SupportedDropActions() {
-			return ProxyQSortFilterProxyModel().SupportedDropActions();
+			return ((QSortFilterProxyModel) interceptor).SupportedDropActions();
 		}
 		[Q_SLOT("void setFilterWildcard(const QString&)")]
 		[SmokeMethod("setFilterWildcard", "(const QString&)", "$")]
 		public void SetFilterWildcard(string pattern) {
-			ProxyQSortFilterProxyModel().SetFilterWildcard(pattern);
+			((QSortFilterProxyModel) interceptor).SetFilterWildcard(pattern);
 		}
 		[Q_SLOT("void setFilterFixedString(const QString&)")]
 		[SmokeMethod("setFilterFixedString", "(const QString&)", "$")]
 		public void SetFilterFixedString(string pattern) {
-			ProxyQSortFilterProxyModel().SetFilterFixedString(pattern);
+			((QSortFilterProxyModel) interceptor).SetFilterFixedString(pattern);
 		}
 		[Q_SLOT("void clear()")]
 		[SmokeMethod("clear", "()", "")]
 		public void Clear() {
-			ProxyQSortFilterProxyModel().Clear();
+			((QSortFilterProxyModel) interceptor).Clear();
 		}
 		[SmokeMethod("filterAcceptsRow", "(int, const QModelIndex&) const", "$#")]
 		protected virtual bool FilterAcceptsRow(int source_row, QModelIndex source_parent) {
-			return ProxyQSortFilterProxyModel().FilterAcceptsRow(source_row,source_parent);
+			return ((QSortFilterProxyModel) interceptor).FilterAcceptsRow(source_row,source_parent);
 		}
 		[SmokeMethod("filterAcceptsColumn", "(int, const QModelIndex&) const", "$#")]
 		protected virtual bool FilterAcceptsColumn(int source_column, QModelIndex source_parent) {
-			return ProxyQSortFilterProxyModel().FilterAcceptsColumn(source_column,source_parent);
+			return ((QSortFilterProxyModel) interceptor).FilterAcceptsColumn(source_column,source_parent);
 		}
 		[SmokeMethod("lessThan", "(const QModelIndex&, const QModelIndex&) const", "##")]
 		protected virtual bool LessThan(QModelIndex left, QModelIndex right) {
-			return ProxyQSortFilterProxyModel().LessThan(left,right);
+			return ((QSortFilterProxyModel) interceptor).LessThan(left,right);
 		}
 		[SmokeMethod("filterChanged", "()", "")]
 		protected void FilterChanged() {
-			ProxyQSortFilterProxyModel().FilterChanged();
+			((QSortFilterProxyModel) interceptor).FilterChanged();
 		}
 		~QSortFilterProxyModel() {
 			DisposeQSortFilterProxyModel();
@@ -279,13 +273,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QSortFilterProxyModel", "()", "")]
 		private void DisposeQSortFilterProxyModel() {
-			ProxyQSortFilterProxyModel().DisposeQSortFilterProxyModel();
+			((QSortFilterProxyModel) interceptor).DisposeQSortFilterProxyModel();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQSortFilterProxyModel().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQSortFilterProxyModel().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQSortFilterProxyModelSignals Emit {
 			get { return (IQSortFilterProxyModelSignals) Q_EMIT; }

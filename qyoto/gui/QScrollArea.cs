@@ -15,18 +15,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QScrollArea), this);
-			_interceptor = (QScrollArea) realProxy.GetTransparentProxy();
+			interceptor = (QScrollArea) realProxy.GetTransparentProxy();
 		}
-		private QScrollArea ProxyQScrollArea() {
-			return (QScrollArea) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQScrollAreaProxy staticInterceptor = null;
 		static QScrollArea() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQScrollAreaProxy), null);
-			_staticInterceptor = (IQScrollAreaProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQScrollAreaProxy StaticQScrollArea() {
-			return (IQScrollAreaProxy) _staticInterceptor;
+			staticInterceptor = (IQScrollAreaProxy) realProxy.GetTransparentProxy();
 		}
 		[Q_PROPERTY("bool", "widgetResizable")]
 		public bool WidgetResizable {
@@ -44,7 +38,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QScrollArea", "(QWidget*)", "#")]
 		private void NewQScrollArea(QWidget parent) {
-			ProxyQScrollArea().NewQScrollArea(parent);
+			((QScrollArea) interceptor).NewQScrollArea(parent);
 		}
 		public QScrollArea() : this((Type) null) {
 			CreateProxy();
@@ -52,67 +46,67 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QScrollArea", "()", "")]
 		private void NewQScrollArea() {
-			ProxyQScrollArea().NewQScrollArea();
+			((QScrollArea) interceptor).NewQScrollArea();
 		}
 		[SmokeMethod("widget", "() const", "")]
 		public QWidget Widget() {
-			return ProxyQScrollArea().Widget();
+			return ((QScrollArea) interceptor).Widget();
 		}
 		[SmokeMethod("setWidget", "(QWidget*)", "#")]
 		public void SetWidget(QWidget widget) {
-			ProxyQScrollArea().SetWidget(widget);
+			((QScrollArea) interceptor).SetWidget(widget);
 		}
 		[SmokeMethod("takeWidget", "()", "")]
 		public QWidget TakeWidget() {
-			return ProxyQScrollArea().TakeWidget();
+			return ((QScrollArea) interceptor).TakeWidget();
 		}
 		[SmokeMethod("sizeHint", "() const", "")]
 		public override QSize SizeHint() {
-			return ProxyQScrollArea().SizeHint();
+			return ((QScrollArea) interceptor).SizeHint();
 		}
 		[SmokeMethod("focusNextPrevChild", "(bool)", "$")]
 		public new virtual bool FocusNextPrevChild(bool next) {
-			return ProxyQScrollArea().FocusNextPrevChild(next);
+			return ((QScrollArea) interceptor).FocusNextPrevChild(next);
 		}
 		[SmokeMethod("ensureVisible", "(int, int, int, int)", "$$$$")]
 		public void EnsureVisible(int x, int y, int xmargin, int ymargin) {
-			ProxyQScrollArea().EnsureVisible(x,y,xmargin,ymargin);
+			((QScrollArea) interceptor).EnsureVisible(x,y,xmargin,ymargin);
 		}
 		[SmokeMethod("ensureVisible", "(int, int, int)", "$$$")]
 		public void EnsureVisible(int x, int y, int xmargin) {
-			ProxyQScrollArea().EnsureVisible(x,y,xmargin);
+			((QScrollArea) interceptor).EnsureVisible(x,y,xmargin);
 		}
 		[SmokeMethod("ensureVisible", "(int, int)", "$$")]
 		public void EnsureVisible(int x, int y) {
-			ProxyQScrollArea().EnsureVisible(x,y);
+			((QScrollArea) interceptor).EnsureVisible(x,y);
 		}
 		[SmokeMethod("ensureWidgetVisible", "(QWidget*, int, int)", "#$$")]
 		public void EnsureWidgetVisible(QWidget childWidget, int xmargin, int ymargin) {
-			ProxyQScrollArea().EnsureWidgetVisible(childWidget,xmargin,ymargin);
+			((QScrollArea) interceptor).EnsureWidgetVisible(childWidget,xmargin,ymargin);
 		}
 		[SmokeMethod("ensureWidgetVisible", "(QWidget*, int)", "#$")]
 		public void EnsureWidgetVisible(QWidget childWidget, int xmargin) {
-			ProxyQScrollArea().EnsureWidgetVisible(childWidget,xmargin);
+			((QScrollArea) interceptor).EnsureWidgetVisible(childWidget,xmargin);
 		}
 		[SmokeMethod("ensureWidgetVisible", "(QWidget*)", "#")]
 		public void EnsureWidgetVisible(QWidget childWidget) {
-			ProxyQScrollArea().EnsureWidgetVisible(childWidget);
+			((QScrollArea) interceptor).EnsureWidgetVisible(childWidget);
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent arg1) {
-			return ProxyQScrollArea().Event(arg1);
+			return ((QScrollArea) interceptor).Event(arg1);
 		}
 		[SmokeMethod("eventFilter", "(QObject*, QEvent*)", "##")]
 		protected new virtual bool EventFilter(QObject arg1, QEvent arg2) {
-			return ProxyQScrollArea().EventFilter(arg1,arg2);
+			return ((QScrollArea) interceptor).EventFilter(arg1,arg2);
 		}
 		[SmokeMethod("resizeEvent", "(QResizeEvent*)", "#")]
 		protected override void ResizeEvent(QResizeEvent arg1) {
-			ProxyQScrollArea().ResizeEvent(arg1);
+			((QScrollArea) interceptor).ResizeEvent(arg1);
 		}
 		[SmokeMethod("scrollContentsBy", "(int, int)", "$$")]
 		protected override void ScrollContentsBy(int dx, int dy) {
-			ProxyQScrollArea().ScrollContentsBy(dx,dy);
+			((QScrollArea) interceptor).ScrollContentsBy(dx,dy);
 		}
 		~QScrollArea() {
 			DisposeQScrollArea();
@@ -122,13 +116,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QScrollArea", "()", "")]
 		private void DisposeQScrollArea() {
-			ProxyQScrollArea().DisposeQScrollArea();
+			((QScrollArea) interceptor).DisposeQScrollArea();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQScrollArea().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQScrollArea().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQScrollAreaSignals Emit {
 			get { return (IQScrollAreaSignals) Q_EMIT; }

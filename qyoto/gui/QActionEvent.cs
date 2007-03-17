@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QActionEvent(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QActionEvent), this);
-			_interceptor = (QActionEvent) realProxy.GetTransparentProxy();
-		}
-		private QActionEvent ProxyQActionEvent() {
-			return (QActionEvent) _interceptor;
+			interceptor = (QActionEvent) realProxy.GetTransparentProxy();
 		}
 		public QActionEvent(int type, QAction action, QAction before) : this((Type) null) {
 			CreateProxy();
@@ -19,7 +16,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QActionEvent", "(int, QAction*, QAction*)", "$##")]
 		private void NewQActionEvent(int type, QAction action, QAction before) {
-			ProxyQActionEvent().NewQActionEvent(type,action,before);
+			((QActionEvent) interceptor).NewQActionEvent(type,action,before);
 		}
 		public QActionEvent(int type, QAction action) : this((Type) null) {
 			CreateProxy();
@@ -27,15 +24,15 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QActionEvent", "(int, QAction*)", "$#")]
 		private void NewQActionEvent(int type, QAction action) {
-			ProxyQActionEvent().NewQActionEvent(type,action);
+			((QActionEvent) interceptor).NewQActionEvent(type,action);
 		}
 		[SmokeMethod("action", "() const", "")]
 		public QAction Action() {
-			return ProxyQActionEvent().Action();
+			return ((QActionEvent) interceptor).Action();
 		}
 		[SmokeMethod("before", "() const", "")]
 		public QAction Before() {
-			return ProxyQActionEvent().Before();
+			return ((QActionEvent) interceptor).Before();
 		}
 		~QActionEvent() {
 			DisposeQActionEvent();
@@ -45,7 +42,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QActionEvent", "()", "")]
 		private void DisposeQActionEvent() {
-			ProxyQActionEvent().DisposeQActionEvent();
+			((QActionEvent) interceptor).DisposeQActionEvent();
 		}
 	}
 }

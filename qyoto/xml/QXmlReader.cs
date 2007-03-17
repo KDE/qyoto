@@ -5,15 +5,12 @@ namespace Qyoto {
 
 	[SmokeClass("QXmlReader")]
 	public abstract class QXmlReader : MarshalByRefObject {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QXmlReader interceptor = null;
+		private IntPtr smokeObject;
 		protected QXmlReader(Type dummy) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QXmlReader), this);
-			_interceptor = (QXmlReader) realProxy.GetTransparentProxy();
-		}
-		private QXmlReader ProxyQXmlReader() {
-			return (QXmlReader) _interceptor;
+			interceptor = (QXmlReader) realProxy.GetTransparentProxy();
 		}
 		// void* property(const QString& arg1,bool* arg2); >>>> NOT CONVERTED
 		// void* property(const QString& arg1); >>>> NOT CONVERTED
@@ -58,7 +55,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QXmlReader", "()", "")]
 		private void NewQXmlReader() {
-			ProxyQXmlReader().NewQXmlReader();
+			((QXmlReader) interceptor).NewQXmlReader();
 		}
 	}
 }

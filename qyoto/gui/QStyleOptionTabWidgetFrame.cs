@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QStyleOptionTabWidgetFrame(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QStyleOptionTabWidgetFrame), this);
-			_interceptor = (QStyleOptionTabWidgetFrame) realProxy.GetTransparentProxy();
-		}
-		private QStyleOptionTabWidgetFrame ProxyQStyleOptionTabWidgetFrame() {
-			return (QStyleOptionTabWidgetFrame) _interceptor;
+			interceptor = (QStyleOptionTabWidgetFrame) realProxy.GetTransparentProxy();
 		}
 		public enum StyleOptionType {
 			Type = QStyleOption.OptionType.SO_TabWidgetFrame,
@@ -25,7 +22,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionTabWidgetFrame", "()", "")]
 		private void NewQStyleOptionTabWidgetFrame() {
-			ProxyQStyleOptionTabWidgetFrame().NewQStyleOptionTabWidgetFrame();
+			((QStyleOptionTabWidgetFrame) interceptor).NewQStyleOptionTabWidgetFrame();
 		}
 		public QStyleOptionTabWidgetFrame(QStyleOptionTabWidgetFrame other) : this((Type) null) {
 			CreateProxy();
@@ -33,7 +30,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionTabWidgetFrame", "(const QStyleOptionTabWidgetFrame&)", "#")]
 		private void NewQStyleOptionTabWidgetFrame(QStyleOptionTabWidgetFrame other) {
-			ProxyQStyleOptionTabWidgetFrame().NewQStyleOptionTabWidgetFrame(other);
+			((QStyleOptionTabWidgetFrame) interceptor).NewQStyleOptionTabWidgetFrame(other);
 		}
 		public QStyleOptionTabWidgetFrame(int version) : this((Type) null) {
 			CreateProxy();
@@ -41,7 +38,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QStyleOptionTabWidgetFrame", "(int)", "$")]
 		private void NewQStyleOptionTabWidgetFrame(int version) {
-			ProxyQStyleOptionTabWidgetFrame().NewQStyleOptionTabWidgetFrame(version);
+			((QStyleOptionTabWidgetFrame) interceptor).NewQStyleOptionTabWidgetFrame(version);
 		}
 		~QStyleOptionTabWidgetFrame() {
 			DisposeQStyleOptionTabWidgetFrame();
@@ -51,7 +48,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QStyleOptionTabWidgetFrame", "()", "")]
 		private void DisposeQStyleOptionTabWidgetFrame() {
-			ProxyQStyleOptionTabWidgetFrame().DisposeQStyleOptionTabWidgetFrame();
+			((QStyleOptionTabWidgetFrame) interceptor).DisposeQStyleOptionTabWidgetFrame();
 		}
 	}
 }

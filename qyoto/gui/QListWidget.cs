@@ -17,18 +17,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QListWidget), this);
-			_interceptor = (QListWidget) realProxy.GetTransparentProxy();
+			interceptor = (QListWidget) realProxy.GetTransparentProxy();
 		}
-		private QListWidget ProxyQListWidget() {
-			return (QListWidget) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQListWidgetProxy staticInterceptor = null;
 		static QListWidget() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQListWidgetProxy), null);
-			_staticInterceptor = (IQListWidgetProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQListWidgetProxy StaticQListWidget() {
-			return (IQListWidgetProxy) _staticInterceptor;
+			staticInterceptor = (IQListWidgetProxy) realProxy.GetTransparentProxy();
 		}
 		[Q_PROPERTY("int", "count")]
 		public int Count {
@@ -50,7 +44,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QListWidget", "(QWidget*)", "#")]
 		private void NewQListWidget(QWidget parent) {
-			ProxyQListWidget().NewQListWidget(parent);
+			((QListWidget) interceptor).NewQListWidget(parent);
 		}
 		public QListWidget() : this((Type) null) {
 			CreateProxy();
@@ -58,170 +52,170 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QListWidget", "()", "")]
 		private void NewQListWidget() {
-			ProxyQListWidget().NewQListWidget();
+			((QListWidget) interceptor).NewQListWidget();
 		}
 		[SmokeMethod("item", "(int) const", "$")]
 		public QListWidgetItem Item(int row) {
-			return ProxyQListWidget().Item(row);
+			return ((QListWidget) interceptor).Item(row);
 		}
 		[SmokeMethod("row", "(const QListWidgetItem*) const", "#")]
 		public int Row(QListWidgetItem item) {
-			return ProxyQListWidget().Row(item);
+			return ((QListWidget) interceptor).Row(item);
 		}
 		[SmokeMethod("insertItem", "(int, QListWidgetItem*)", "$#")]
 		public void InsertItem(int row, QListWidgetItem item) {
-			ProxyQListWidget().InsertItem(row,item);
+			((QListWidget) interceptor).InsertItem(row,item);
 		}
 		[SmokeMethod("insertItem", "(int, const QString&)", "$$")]
 		public void InsertItem(int row, string label) {
-			ProxyQListWidget().InsertItem(row,label);
+			((QListWidget) interceptor).InsertItem(row,label);
 		}
 		[SmokeMethod("insertItems", "(int, const QStringList&)", "$?")]
 		public void InsertItems(int row, List<string> labels) {
-			ProxyQListWidget().InsertItems(row,labels);
+			((QListWidget) interceptor).InsertItems(row,labels);
 		}
 		[SmokeMethod("addItem", "(const QString&)", "$")]
 		public void AddItem(string label) {
-			ProxyQListWidget().AddItem(label);
+			((QListWidget) interceptor).AddItem(label);
 		}
 		[SmokeMethod("addItem", "(QListWidgetItem*)", "#")]
 		public void AddItem(QListWidgetItem item) {
-			ProxyQListWidget().AddItem(item);
+			((QListWidget) interceptor).AddItem(item);
 		}
 		[SmokeMethod("addItems", "(const QStringList&)", "?")]
 		public void AddItems(List<string> labels) {
-			ProxyQListWidget().AddItems(labels);
+			((QListWidget) interceptor).AddItems(labels);
 		}
 		[SmokeMethod("takeItem", "(int)", "$")]
 		public QListWidgetItem TakeItem(int row) {
-			return ProxyQListWidget().TakeItem(row);
+			return ((QListWidget) interceptor).TakeItem(row);
 		}
 		[SmokeMethod("currentItem", "() const", "")]
 		public QListWidgetItem CurrentItem() {
-			return ProxyQListWidget().CurrentItem();
+			return ((QListWidget) interceptor).CurrentItem();
 		}
 		[SmokeMethod("setCurrentItem", "(QListWidgetItem*)", "#")]
 		public void SetCurrentItem(QListWidgetItem item) {
-			ProxyQListWidget().SetCurrentItem(item);
+			((QListWidget) interceptor).SetCurrentItem(item);
 		}
 		[SmokeMethod("itemAt", "(const QPoint&) const", "#")]
 		public QListWidgetItem ItemAt(QPoint p) {
-			return ProxyQListWidget().ItemAt(p);
+			return ((QListWidget) interceptor).ItemAt(p);
 		}
 		[SmokeMethod("itemAt", "(int, int) const", "$$")]
 		public QListWidgetItem ItemAt(int x, int y) {
-			return ProxyQListWidget().ItemAt(x,y);
+			return ((QListWidget) interceptor).ItemAt(x,y);
 		}
 		[SmokeMethod("visualItemRect", "(const QListWidgetItem*) const", "#")]
 		public QRect VisualItemRect(QListWidgetItem item) {
-			return ProxyQListWidget().VisualItemRect(item);
+			return ((QListWidget) interceptor).VisualItemRect(item);
 		}
 		[SmokeMethod("sortItems", "(Qt::SortOrder)", "$")]
 		public void SortItems(Qt.SortOrder order) {
-			ProxyQListWidget().SortItems(order);
+			((QListWidget) interceptor).SortItems(order);
 		}
 		[SmokeMethod("sortItems", "()", "")]
 		public void SortItems() {
-			ProxyQListWidget().SortItems();
+			((QListWidget) interceptor).SortItems();
 		}
 		[SmokeMethod("isSortingEnabled", "() const", "")]
 		public bool IsSortingEnabled() {
-			return ProxyQListWidget().IsSortingEnabled();
+			return ((QListWidget) interceptor).IsSortingEnabled();
 		}
 		[SmokeMethod("editItem", "(QListWidgetItem*)", "#")]
 		public void EditItem(QListWidgetItem item) {
-			ProxyQListWidget().EditItem(item);
+			((QListWidget) interceptor).EditItem(item);
 		}
 		[SmokeMethod("openPersistentEditor", "(QListWidgetItem*)", "#")]
 		public void OpenPersistentEditor(QListWidgetItem item) {
-			ProxyQListWidget().OpenPersistentEditor(item);
+			((QListWidget) interceptor).OpenPersistentEditor(item);
 		}
 		[SmokeMethod("closePersistentEditor", "(QListWidgetItem*)", "#")]
 		public void ClosePersistentEditor(QListWidgetItem item) {
-			ProxyQListWidget().ClosePersistentEditor(item);
+			((QListWidget) interceptor).ClosePersistentEditor(item);
 		}
 		[SmokeMethod("itemWidget", "(QListWidgetItem*) const", "#")]
 		public QWidget ItemWidget(QListWidgetItem item) {
-			return ProxyQListWidget().ItemWidget(item);
+			return ((QListWidget) interceptor).ItemWidget(item);
 		}
 		[SmokeMethod("setItemWidget", "(QListWidgetItem*, QWidget*)", "##")]
 		public void SetItemWidget(QListWidgetItem item, QWidget widget) {
-			ProxyQListWidget().SetItemWidget(item,widget);
+			((QListWidget) interceptor).SetItemWidget(item,widget);
 		}
 		[SmokeMethod("isItemSelected", "(const QListWidgetItem*) const", "#")]
 		public bool IsItemSelected(QListWidgetItem item) {
-			return ProxyQListWidget().IsItemSelected(item);
+			return ((QListWidget) interceptor).IsItemSelected(item);
 		}
 		[SmokeMethod("setItemSelected", "(const QListWidgetItem*, bool)", "#$")]
 		public void SetItemSelected(QListWidgetItem item, bool select) {
-			ProxyQListWidget().SetItemSelected(item,select);
+			((QListWidget) interceptor).SetItemSelected(item,select);
 		}
 		[SmokeMethod("selectedItems", "() const", "")]
 		public List<QListWidgetItem> SelectedItems() {
-			return ProxyQListWidget().SelectedItems();
+			return ((QListWidget) interceptor).SelectedItems();
 		}
 		[SmokeMethod("findItems", "(const QString&, Qt::MatchFlags) const", "$$")]
 		public List<QListWidgetItem> FindItems(string text, int flags) {
-			return ProxyQListWidget().FindItems(text,flags);
+			return ((QListWidget) interceptor).FindItems(text,flags);
 		}
 		[SmokeMethod("isItemHidden", "(const QListWidgetItem*) const", "#")]
 		public bool IsItemHidden(QListWidgetItem item) {
-			return ProxyQListWidget().IsItemHidden(item);
+			return ((QListWidget) interceptor).IsItemHidden(item);
 		}
 		[SmokeMethod("setItemHidden", "(const QListWidgetItem*, bool)", "#$")]
 		public void SetItemHidden(QListWidgetItem item, bool hide) {
-			ProxyQListWidget().SetItemHidden(item,hide);
+			((QListWidget) interceptor).SetItemHidden(item,hide);
 		}
 		[SmokeMethod("dropEvent", "(QDropEvent*)", "#")]
 		public new virtual void DropEvent(QDropEvent arg1) {
-			ProxyQListWidget().DropEvent(arg1);
+			((QListWidget) interceptor).DropEvent(arg1);
 		}
 		[Q_SLOT("void scrollToItem(const QListWidgetItem*, QAbstractItemView::ScrollHint)")]
 		[SmokeMethod("scrollToItem", "(const QListWidgetItem*, QAbstractItemView::ScrollHint)", "#$")]
 		public void ScrollToItem(QListWidgetItem item, QAbstractItemView.ScrollHint hint) {
-			ProxyQListWidget().ScrollToItem(item,hint);
+			((QListWidget) interceptor).ScrollToItem(item,hint);
 		}
 		[Q_SLOT("void scrollToItem(const QListWidgetItem*)")]
 		[SmokeMethod("scrollToItem", "(const QListWidgetItem*)", "#")]
 		public void ScrollToItem(QListWidgetItem item) {
-			ProxyQListWidget().ScrollToItem(item);
+			((QListWidget) interceptor).ScrollToItem(item);
 		}
 		[Q_SLOT("void clear()")]
 		[SmokeMethod("clear", "()", "")]
 		public void Clear() {
-			ProxyQListWidget().Clear();
+			((QListWidget) interceptor).Clear();
 		}
 		[SmokeMethod("event", "(QEvent*)", "#")]
 		protected override bool Event(QEvent e) {
-			return ProxyQListWidget().Event(e);
+			return ((QListWidget) interceptor).Event(e);
 		}
 		[SmokeMethod("mimeTypes", "() const", "")]
 		protected virtual List<string> MimeTypes() {
-			return ProxyQListWidget().MimeTypes();
+			return ((QListWidget) interceptor).MimeTypes();
 		}
 		[SmokeMethod("mimeData", "(const QList<QListWidgetItem*>) const", "?")]
 		protected virtual QMimeData MimeData(List<QListWidgetItem> items) {
-			return ProxyQListWidget().MimeData(items);
+			return ((QListWidget) interceptor).MimeData(items);
 		}
 		[SmokeMethod("dropMimeData", "(int, const QMimeData*, Qt::DropAction)", "$#$")]
 		protected virtual bool DropMimeData(int index, QMimeData data, Qt.DropAction action) {
-			return ProxyQListWidget().DropMimeData(index,data,action);
+			return ((QListWidget) interceptor).DropMimeData(index,data,action);
 		}
 		[SmokeMethod("supportedDropActions", "() const", "")]
 		protected virtual int SupportedDropActions() {
-			return ProxyQListWidget().SupportedDropActions();
+			return ((QListWidget) interceptor).SupportedDropActions();
 		}
 		[SmokeMethod("items", "(const QMimeData*) const", "#")]
 		protected List<QListWidgetItem> Items(QMimeData data) {
-			return ProxyQListWidget().Items(data);
+			return ((QListWidget) interceptor).Items(data);
 		}
 		[SmokeMethod("indexFromItem", "(QListWidgetItem*) const", "#")]
 		protected QModelIndex IndexFromItem(QListWidgetItem item) {
-			return ProxyQListWidget().IndexFromItem(item);
+			return ((QListWidget) interceptor).IndexFromItem(item);
 		}
 		[SmokeMethod("itemFromIndex", "(const QModelIndex&) const", "#")]
 		protected QListWidgetItem ItemFromIndex(QModelIndex index) {
-			return ProxyQListWidget().ItemFromIndex(index);
+			return ((QListWidget) interceptor).ItemFromIndex(index);
 		}
 		~QListWidget() {
 			DisposeQListWidget();
@@ -231,13 +225,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QListWidget", "()", "")]
 		private void DisposeQListWidget() {
-			ProxyQListWidget().DisposeQListWidget();
+			((QListWidget) interceptor).DisposeQListWidget();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQListWidget().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQListWidget().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQListWidgetSignals Emit {
 			get { return (IQListWidgetSignals) Q_EMIT; }

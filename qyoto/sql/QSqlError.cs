@@ -5,15 +5,12 @@ namespace Qyoto {
 
 	[SmokeClass("QSqlError")]
 	public class QSqlError : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QSqlError interceptor = null;
+		private IntPtr smokeObject;
 		protected QSqlError(Type dummy) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QSqlError), this);
-			_interceptor = (QSqlError) realProxy.GetTransparentProxy();
-		}
-		private QSqlError ProxyQSqlError() {
-			return (QSqlError) _interceptor;
+			interceptor = (QSqlError) realProxy.GetTransparentProxy();
 		}
 		public enum ErrorType {
 			NoError = 0,
@@ -28,7 +25,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSqlError", "(const QString&, const QString&, QSqlError::ErrorType, int)", "$$$$")]
 		private void NewQSqlError(string driverText, string databaseText, QSqlError.ErrorType type, int number) {
-			ProxyQSqlError().NewQSqlError(driverText,databaseText,type,number);
+			((QSqlError) interceptor).NewQSqlError(driverText,databaseText,type,number);
 		}
 		public QSqlError(string driverText, string databaseText, QSqlError.ErrorType type) : this((Type) null) {
 			CreateProxy();
@@ -36,7 +33,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSqlError", "(const QString&, const QString&, QSqlError::ErrorType)", "$$$")]
 		private void NewQSqlError(string driverText, string databaseText, QSqlError.ErrorType type) {
-			ProxyQSqlError().NewQSqlError(driverText,databaseText,type);
+			((QSqlError) interceptor).NewQSqlError(driverText,databaseText,type);
 		}
 		public QSqlError(string driverText, string databaseText) : this((Type) null) {
 			CreateProxy();
@@ -44,7 +41,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSqlError", "(const QString&, const QString&)", "$$")]
 		private void NewQSqlError(string driverText, string databaseText) {
-			ProxyQSqlError().NewQSqlError(driverText,databaseText);
+			((QSqlError) interceptor).NewQSqlError(driverText,databaseText);
 		}
 		public QSqlError(string driverText) : this((Type) null) {
 			CreateProxy();
@@ -52,7 +49,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSqlError", "(const QString&)", "$")]
 		private void NewQSqlError(string driverText) {
-			ProxyQSqlError().NewQSqlError(driverText);
+			((QSqlError) interceptor).NewQSqlError(driverText);
 		}
 		public QSqlError() : this((Type) null) {
 			CreateProxy();
@@ -60,7 +57,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSqlError", "()", "")]
 		private void NewQSqlError() {
-			ProxyQSqlError().NewQSqlError();
+			((QSqlError) interceptor).NewQSqlError();
 		}
 		public QSqlError(QSqlError other) : this((Type) null) {
 			CreateProxy();
@@ -68,47 +65,47 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QSqlError", "(const QSqlError&)", "#")]
 		private void NewQSqlError(QSqlError other) {
-			ProxyQSqlError().NewQSqlError(other);
+			((QSqlError) interceptor).NewQSqlError(other);
 		}
 		[SmokeMethod("driverText", "() const", "")]
 		public string DriverText() {
-			return ProxyQSqlError().DriverText();
+			return ((QSqlError) interceptor).DriverText();
 		}
 		[SmokeMethod("setDriverText", "(const QString&)", "$")]
 		public void SetDriverText(string driverText) {
-			ProxyQSqlError().SetDriverText(driverText);
+			((QSqlError) interceptor).SetDriverText(driverText);
 		}
 		[SmokeMethod("databaseText", "() const", "")]
 		public string DatabaseText() {
-			return ProxyQSqlError().DatabaseText();
+			return ((QSqlError) interceptor).DatabaseText();
 		}
 		[SmokeMethod("setDatabaseText", "(const QString&)", "$")]
 		public void SetDatabaseText(string databaseText) {
-			ProxyQSqlError().SetDatabaseText(databaseText);
+			((QSqlError) interceptor).SetDatabaseText(databaseText);
 		}
 		[SmokeMethod("type", "() const", "")]
 		public QSqlError.ErrorType type() {
-			return ProxyQSqlError().type();
+			return ((QSqlError) interceptor).type();
 		}
 		[SmokeMethod("setType", "(QSqlError::ErrorType)", "$")]
 		public void SetType(QSqlError.ErrorType type) {
-			ProxyQSqlError().SetType(type);
+			((QSqlError) interceptor).SetType(type);
 		}
 		[SmokeMethod("number", "() const", "")]
 		public int Number() {
-			return ProxyQSqlError().Number();
+			return ((QSqlError) interceptor).Number();
 		}
 		[SmokeMethod("setNumber", "(int)", "$")]
 		public void SetNumber(int number) {
-			ProxyQSqlError().SetNumber(number);
+			((QSqlError) interceptor).SetNumber(number);
 		}
 		[SmokeMethod("text", "() const", "")]
 		public string Text() {
-			return ProxyQSqlError().Text();
+			return ((QSqlError) interceptor).Text();
 		}
 		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ProxyQSqlError().IsValid();
+			return ((QSqlError) interceptor).IsValid();
 		}
 		~QSqlError() {
 			DisposeQSqlError();
@@ -118,7 +115,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QSqlError", "()", "")]
 		private void DisposeQSqlError() {
-			ProxyQSqlError().DisposeQSqlError();
+			((QSqlError) interceptor).DisposeQSqlError();
 		}
 	}
 }
