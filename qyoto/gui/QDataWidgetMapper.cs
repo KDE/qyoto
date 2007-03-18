@@ -29,18 +29,24 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("int", "currentIndex")]
 		public int CurrentIndex {
-			get { return Property("currentIndex").Value<int>(); }
-			set { SetProperty("currentIndex", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("currentIndex", "()", "")]
+			get { return ((QDataWidgetMapper) interceptor).CurrentIndex; }
+			[SmokeMethod("setCurrentIndex", "(int)", "$")]
+			set { ((QDataWidgetMapper) interceptor).CurrentIndex = value; }
 		}
 		[Q_PROPERTY("Qt::Orientation", "orientation")]
 		public Qt.Orientation Orientation {
-			get { return Property("orientation").Value<Qt.Orientation>(); }
-			set { SetProperty("orientation", QVariant.FromValue<Qt.Orientation>(value)); }
+			[SmokeMethod("orientation", "()", "")]
+			get { return ((QDataWidgetMapper) interceptor).Orientation; }
+			[SmokeMethod("setOrientation", "(Qt::Orientation)", "$")]
+			set { ((QDataWidgetMapper) interceptor).Orientation = value; }
 		}
 		[Q_PROPERTY("QDataWidgetMapper::SubmitPolicy", "submitPolicy")]
 		public QDataWidgetMapper.SubmitPolicy submitPolicy {
-			get { return Property("submitPolicy").Value<QDataWidgetMapper.SubmitPolicy>(); }
-			set { SetProperty("submitPolicy", QVariant.FromValue<QDataWidgetMapper.SubmitPolicy>(value)); }
+			[SmokeMethod("submitPolicy", "()", "")]
+			get { return ((QDataWidgetMapper) interceptor).submitPolicy; }
+			[SmokeMethod("setSubmitPolicy", "(QDataWidgetMapper::SubmitPolicy)", "$")]
+			set { ((QDataWidgetMapper) interceptor).submitPolicy = value; }
 		}
 		public QDataWidgetMapper(QObject parent) : this((Type) null) {
 			CreateProxy();

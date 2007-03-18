@@ -176,58 +176,80 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("Qt::LayoutDirection", "layoutDirection")]
 		public Qt.LayoutDirection LayoutDirection {
-			get { return Property("layoutDirection").Value<Qt.LayoutDirection>(); }
-			set { SetProperty("layoutDirection", QVariant.FromValue<Qt.LayoutDirection>(value)); }
+			[SmokeMethod("layoutDirection", "()", "")]
+			get { return ((QApplication) interceptor).LayoutDirection; }
+			[SmokeMethod("setLayoutDirection", "(Qt::LayoutDirection)", "$")]
+			set { ((QApplication) interceptor).LayoutDirection = value; }
 		}
 		[Q_PROPERTY("QIcon", "windowIcon")]
 		public QIcon WindowIcon {
-			get { return Property("windowIcon").Value<QIcon>(); }
-			set { SetProperty("windowIcon", QVariant.FromValue<QIcon>(value)); }
+			[SmokeMethod("windowIcon", "()", "")]
+			get { return ((QApplication) interceptor).WindowIcon; }
+			[SmokeMethod("setWindowIcon", "(QIcon)", "#")]
+			set { ((QApplication) interceptor).WindowIcon = value; }
 		}
 		[Q_PROPERTY("int", "cursorFlashTime")]
 		public int CursorFlashTime {
-			get { return Property("cursorFlashTime").Value<int>(); }
-			set { SetProperty("cursorFlashTime", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("cursorFlashTime", "()", "")]
+			get { return ((QApplication) interceptor).CursorFlashTime; }
+			[SmokeMethod("setCursorFlashTime", "(int)", "$")]
+			set { ((QApplication) interceptor).CursorFlashTime = value; }
 		}
 		[Q_PROPERTY("int", "doubleClickInterval")]
 		public int DoubleClickInterval {
-			get { return Property("doubleClickInterval").Value<int>(); }
-			set { SetProperty("doubleClickInterval", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("READ", "()", "")]
+			get { return ((QApplication) interceptor).DoubleClickInterval; }
+			[SmokeMethod("WRITE", "(int)", "$")]
+			set { ((QApplication) interceptor).DoubleClickInterval = value; }
 		}
 		[Q_PROPERTY("int", "keyboardInputInterval")]
 		public int KeyboardInputInterval {
-			get { return Property("keyboardInputInterval").Value<int>(); }
-			set { SetProperty("keyboardInputInterval", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("keyboardInputInterval", "()", "")]
+			get { return ((QApplication) interceptor).KeyboardInputInterval; }
+			[SmokeMethod("setKeyboardInputInterval", "(int)", "$")]
+			set { ((QApplication) interceptor).KeyboardInputInterval = value; }
 		}
 		[Q_PROPERTY("int", "wheelScrollLines")]
 		public int WheelScrollLines {
-			get { return Property("wheelScrollLines").Value<int>(); }
-			set { SetProperty("wheelScrollLines", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("READ", "()", "")]
+			get { return ((QApplication) interceptor).WheelScrollLines; }
+			[SmokeMethod("WRITE", "(int)", "$")]
+			set { ((QApplication) interceptor).WheelScrollLines = value; }
 		}
 		[Q_PROPERTY("QSize", "globalStrut")]
 		public QSize GlobalStrut {
-			get { return Property("globalStrut").Value<QSize>(); }
-			set { SetProperty("globalStrut", QVariant.FromValue<QSize>(value)); }
+			[SmokeMethod("globalStrut", "()", "")]
+			get { return ((QApplication) interceptor).GlobalStrut; }
+			[SmokeMethod("setGlobalStrut", "(QSize)", "#")]
+			set { ((QApplication) interceptor).GlobalStrut = value; }
 		}
 		[Q_PROPERTY("int", "startDragTime")]
 		public int StartDragTime {
-			get { return Property("startDragTime").Value<int>(); }
-			set { SetProperty("startDragTime", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("READ", "()", "")]
+			get { return ((QApplication) interceptor).StartDragTime; }
+			[SmokeMethod("WRITE", "(int)", "$")]
+			set { ((QApplication) interceptor).StartDragTime = value; }
 		}
 		[Q_PROPERTY("int", "startDragDistance")]
 		public int StartDragDistance {
-			get { return Property("startDragDistance").Value<int>(); }
-			set { SetProperty("startDragDistance", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("READ", "()", "")]
+			get { return ((QApplication) interceptor).StartDragDistance; }
+			[SmokeMethod("WRITE", "(int)", "$")]
+			set { ((QApplication) interceptor).StartDragDistance = value; }
 		}
 		[Q_PROPERTY("bool", "quitOnLastWindowClosed")]
 		public bool QuitOnLastWindowClosed {
-			get { return Property("quitOnLastWindowClosed").Value<bool>(); }
-			set { SetProperty("quitOnLastWindowClosed", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("READ", "()", "")]
+			get { return ((QApplication) interceptor).QuitOnLastWindowClosed; }
+			[SmokeMethod("WRITE", "(bool)", "$")]
+			set { ((QApplication) interceptor).QuitOnLastWindowClosed = value; }
 		}
 		[Q_PROPERTY("QString", "styleSheet")]
 		public string StyleSheet {
-			get { return Property("styleSheet").Value<string>(); }
-			set { SetProperty("styleSheet", QVariant.FromValue<string>(value)); }
+			[SmokeMethod("styleSheet", "()", "")]
+			get { return ((QApplication) interceptor).StyleSheet; }
+			[SmokeMethod("setStyleSheet", "(QString)", "$")]
+			set { ((QApplication) interceptor).StyleSheet = value; }
 		}
 		// bool compressEvent(QEvent* arg1,QObject* arg2,QPostEventList* arg3); >>>> NOT CONVERTED
 		[SmokeMethod("isSessionRestored", "() const", "")]

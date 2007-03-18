@@ -24,22 +24,29 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("bool", "wrapping")]
 		public bool Wrapping {
-			get { return Property("wrapping").Value<bool>(); }
-			set { SetProperty("wrapping", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("wrapping", "()", "")]
+			get { return ((QDial) interceptor).Wrapping; }
+			[SmokeMethod("setWrapping", "(bool)", "$")]
+			set { ((QDial) interceptor).Wrapping = value; }
 		}
 		[Q_PROPERTY("int", "notchSize")]
 		public int NotchSize {
-			get { return Property("notchSize").Value<int>(); }
+			[SmokeMethod("notchSize", "()", "")]
+			get { return ((QDial) interceptor).NotchSize; }
 		}
 		[Q_PROPERTY("qreal", "notchTarget")]
 		public double NotchTarget {
-			get { return Property("notchTarget").Value<double>(); }
-			set { SetProperty("notchTarget", QVariant.FromValue<double>(value)); }
+			[SmokeMethod("notchTarget", "()", "")]
+			get { return ((QDial) interceptor).NotchTarget; }
+			[SmokeMethod("setNotchTarget", "(qreal)", "$")]
+			set { ((QDial) interceptor).NotchTarget = value; }
 		}
 		[Q_PROPERTY("bool", "notchesVisible")]
 		public bool NotchesVisible {
-			get { return Property("notchesVisible").Value<bool>(); }
-			set { SetProperty("notchesVisible", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("notchesVisible", "()", "")]
+			get { return ((QDial) interceptor).NotchesVisible; }
+			[SmokeMethod("setNotchesVisible", "(bool)", "$")]
+			set { ((QDial) interceptor).NotchesVisible = value; }
 		}
 		public QDial(QWidget parent) : this((Type) null) {
 			CreateProxy();

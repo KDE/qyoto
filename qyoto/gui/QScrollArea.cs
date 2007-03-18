@@ -24,13 +24,17 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("bool", "widgetResizable")]
 		public bool WidgetResizable {
-			get { return Property("widgetResizable").Value<bool>(); }
-			set { SetProperty("widgetResizable", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("widgetResizable", "()", "")]
+			get { return ((QScrollArea) interceptor).WidgetResizable; }
+			[SmokeMethod("setWidgetResizable", "(bool)", "$")]
+			set { ((QScrollArea) interceptor).WidgetResizable = value; }
 		}
 		[Q_PROPERTY("Qt::Alignment", "alignment")]
 		public int Alignment {
-			get { return Property("alignment").Value<int>(); }
-			set { SetProperty("alignment", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("alignment", "()", "")]
+			get { return ((QScrollArea) interceptor).Alignment; }
+			[SmokeMethod("setAlignment", "(Qt::Alignment)", "$")]
+			set { ((QScrollArea) interceptor).Alignment = value; }
 		}
 		public QScrollArea(QWidget parent) : this((Type) null) {
 			CreateProxy();

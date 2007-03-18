@@ -6,8 +6,8 @@ namespace Qyoto {
 
 	[SmokeClass("QDBusMessage")]
 	public class QDBusMessage : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QDBusMessage interceptor = null;
+		private IntPtr smokeObject;
 		protected QDBusMessage(Type dummy) {}
 		[SmokeClass("QDBusMessage")]
 		interface IQDBusMessageProxy {
@@ -22,18 +22,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDBusMessage), this);
-			_interceptor = (QDBusMessage) realProxy.GetTransparentProxy();
+			interceptor = (QDBusMessage) realProxy.GetTransparentProxy();
 		}
-		private QDBusMessage ProxyQDBusMessage() {
-			return (QDBusMessage) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQDBusMessageProxy staticInterceptor = null;
 		static QDBusMessage() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQDBusMessageProxy), null);
-			_staticInterceptor = (IQDBusMessageProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQDBusMessageProxy StaticQDBusMessage() {
-			return (IQDBusMessageProxy) _staticInterceptor;
+			staticInterceptor = (IQDBusMessageProxy) realProxy.GetTransparentProxy();
 		}
 		public enum MessageType {
 			InvalidMessage = 0,
@@ -48,7 +42,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDBusMessage", "()", "")]
 		private void NewQDBusMessage() {
-			ProxyQDBusMessage().NewQDBusMessage();
+			((QDBusMessage) interceptor).NewQDBusMessage();
 		}
 		public QDBusMessage(QDBusMessage other) : this((Type) null) {
 			CreateProxy();
@@ -56,79 +50,79 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDBusMessage", "(const QDBusMessage&)", "#")]
 		private void NewQDBusMessage(QDBusMessage other) {
-			ProxyQDBusMessage().NewQDBusMessage(other);
+			((QDBusMessage) interceptor).NewQDBusMessage(other);
 		}
 		[SmokeMethod("createReply", "(const QList<QVariant>&) const", "?")]
 		public QDBusMessage CreateReply(List<QVariant> arguments) {
-			return ProxyQDBusMessage().CreateReply(arguments);
+			return ((QDBusMessage) interceptor).CreateReply(arguments);
 		}
 		[SmokeMethod("createReply", "() const", "")]
 		public QDBusMessage CreateReply() {
-			return ProxyQDBusMessage().CreateReply();
+			return ((QDBusMessage) interceptor).CreateReply();
 		}
 		[SmokeMethod("createReply", "(const QVariant&) const", "#")]
 		public QDBusMessage CreateReply(QVariant argument) {
-			return ProxyQDBusMessage().CreateReply(argument);
+			return ((QDBusMessage) interceptor).CreateReply(argument);
 		}
 		[SmokeMethod("createErrorReply", "(const QString, const QString&) const", "$$")]
 		public QDBusMessage CreateErrorReply(string name, string msg) {
-			return ProxyQDBusMessage().CreateErrorReply(name,msg);
+			return ((QDBusMessage) interceptor).CreateErrorReply(name,msg);
 		}
 		[SmokeMethod("createErrorReply", "(const QDBusError&) const", "#")]
 		public QDBusMessage CreateErrorReply(QDBusError err) {
-			return ProxyQDBusMessage().CreateErrorReply(err);
+			return ((QDBusMessage) interceptor).CreateErrorReply(err);
 		}
 		[SmokeMethod("service", "() const", "")]
 		public string Service() {
-			return ProxyQDBusMessage().Service();
+			return ((QDBusMessage) interceptor).Service();
 		}
 		[SmokeMethod("path", "() const", "")]
 		public string Path() {
-			return ProxyQDBusMessage().Path();
+			return ((QDBusMessage) interceptor).Path();
 		}
 		[SmokeMethod("interface", "() const", "")]
 		public string Interface() {
-			return ProxyQDBusMessage().Interface();
+			return ((QDBusMessage) interceptor).Interface();
 		}
 		[SmokeMethod("member", "() const", "")]
 		public string Member() {
-			return ProxyQDBusMessage().Member();
+			return ((QDBusMessage) interceptor).Member();
 		}
 		[SmokeMethod("errorName", "() const", "")]
 		public string ErrorName() {
-			return ProxyQDBusMessage().ErrorName();
+			return ((QDBusMessage) interceptor).ErrorName();
 		}
 		[SmokeMethod("type", "() const", "")]
 		public QDBusMessage.MessageType type() {
-			return ProxyQDBusMessage().type();
+			return ((QDBusMessage) interceptor).type();
 		}
 		[SmokeMethod("signature", "() const", "")]
 		public string Signature() {
-			return ProxyQDBusMessage().Signature();
+			return ((QDBusMessage) interceptor).Signature();
 		}
 		[SmokeMethod("isReplyRequired", "() const", "")]
 		public bool IsReplyRequired() {
-			return ProxyQDBusMessage().IsReplyRequired();
+			return ((QDBusMessage) interceptor).IsReplyRequired();
 		}
 		[SmokeMethod("setDelayedReply", "(bool) const", "$")]
 		public void SetDelayedReply(bool enable) {
-			ProxyQDBusMessage().SetDelayedReply(enable);
+			((QDBusMessage) interceptor).SetDelayedReply(enable);
 		}
 		[SmokeMethod("isDelayedReply", "() const", "")]
 		public bool IsDelayedReply() {
-			return ProxyQDBusMessage().IsDelayedReply();
+			return ((QDBusMessage) interceptor).IsDelayedReply();
 		}
 		[SmokeMethod("setArguments", "(const QList<QVariant>&)", "?")]
 		public void SetArguments(List<QVariant> arguments) {
-			ProxyQDBusMessage().SetArguments(arguments);
+			((QDBusMessage) interceptor).SetArguments(arguments);
 		}
 		[SmokeMethod("arguments", "() const", "")]
 		public List<QVariant> Arguments() {
-			return ProxyQDBusMessage().Arguments();
+			return ((QDBusMessage) interceptor).Arguments();
 		}
 		[SmokeMethod("operator<<", "(const QVariant&)", "#")]
 		public QDBusMessage Write(QVariant arg) {
-			return ProxyQDBusMessage().Write(arg);
+			return ((QDBusMessage) interceptor).Write(arg);
 		}
 		~QDBusMessage() {
 			DisposeQDBusMessage();
@@ -138,19 +132,19 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QDBusMessage", "()", "")]
 		private void DisposeQDBusMessage() {
-			ProxyQDBusMessage().DisposeQDBusMessage();
+			((QDBusMessage) interceptor).DisposeQDBusMessage();
 		}
 		public static QDBusMessage CreateSignal(string path, string arg2, string name) {
-			return StaticQDBusMessage().CreateSignal(path,arg2,name);
+			return staticInterceptor.CreateSignal(path,arg2,name);
 		}
 		public static QDBusMessage CreateMethodCall(string destination, string path, string arg3, string method) {
-			return StaticQDBusMessage().CreateMethodCall(destination,path,arg3,method);
+			return staticInterceptor.CreateMethodCall(destination,path,arg3,method);
 		}
 		public static QDBusMessage CreateError(string name, string msg) {
-			return StaticQDBusMessage().CreateError(name,msg);
+			return staticInterceptor.CreateError(name,msg);
 		}
 		public static QDBusMessage CreateError(QDBusError err) {
-			return StaticQDBusMessage().CreateError(err);
+			return staticInterceptor.CreateError(err);
 		}
 	}
 }

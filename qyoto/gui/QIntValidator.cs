@@ -25,13 +25,17 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("int", "bottom")]
 		public int Bottom {
-			get { return Property("bottom").Value<int>(); }
-			set { SetProperty("bottom", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("bottom", "()", "")]
+			get { return ((QIntValidator) interceptor).Bottom; }
+			[SmokeMethod("setBottom", "(int)", "$")]
+			set { ((QIntValidator) interceptor).Bottom = value; }
 		}
 		[Q_PROPERTY("int", "top")]
 		public int Top {
-			get { return Property("top").Value<int>(); }
-			set { SetProperty("top", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("top", "()", "")]
+			get { return ((QIntValidator) interceptor).Top; }
+			[SmokeMethod("setTop", "(int)", "$")]
+			set { ((QIntValidator) interceptor).Top = value; }
 		}
 		public QIntValidator(QObject parent) : this((Type) null) {
 			CreateProxy();

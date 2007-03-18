@@ -1,3 +1,9 @@
+2007-03-18  Richard Dale  <rdale@foton.es>
+
+	* Instead of setting and getting properties via QObject.SetProperty() and
+	  QObject.Property() and creating QVariants, call the methods in the
+	  Smoke library directly.
+
 2007-03-17  Richard Dale  <rdale@foton.es>
 
 	* Removed redundant method calls for invoking methods on the interceptors,

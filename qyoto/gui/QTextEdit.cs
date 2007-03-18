@@ -36,68 +36,94 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("AutoFormatting", "autoFormatting")]
 		public int AutoFormatting {
-			get { return Property("autoFormatting").Value<int>(); }
-			set { SetProperty("autoFormatting", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("autoFormatting", "()", "")]
+			get { return ((QTextEdit) interceptor).AutoFormatting; }
+			[SmokeMethod("setAutoFormatting", "(AutoFormatting)", "$")]
+			set { ((QTextEdit) interceptor).AutoFormatting = value; }
 		}
 		[Q_PROPERTY("bool", "tabChangesFocus")]
 		public bool TabChangesFocus {
-			get { return Property("tabChangesFocus").Value<bool>(); }
-			set { SetProperty("tabChangesFocus", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("tabChangesFocus", "()", "")]
+			get { return ((QTextEdit) interceptor).TabChangesFocus; }
+			[SmokeMethod("setTabChangesFocus", "(bool)", "$")]
+			set { ((QTextEdit) interceptor).TabChangesFocus = value; }
 		}
 		[Q_PROPERTY("QString", "documentTitle")]
 		public string DocumentTitle {
-			get { return Property("documentTitle").Value<string>(); }
-			set { SetProperty("documentTitle", QVariant.FromValue<string>(value)); }
+			[SmokeMethod("documentTitle", "()", "")]
+			get { return ((QTextEdit) interceptor).DocumentTitle; }
+			[SmokeMethod("setDocumentTitle", "(QString)", "$")]
+			set { ((QTextEdit) interceptor).DocumentTitle = value; }
 		}
 		[Q_PROPERTY("bool", "undoRedoEnabled")]
 		public bool UndoRedoEnabled {
-			get { return Property("undoRedoEnabled").Value<bool>(); }
-			set { SetProperty("undoRedoEnabled", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isUndoRedoEnabled", "()", "")]
+			get { return ((QTextEdit) interceptor).UndoRedoEnabled; }
+			[SmokeMethod("setUndoRedoEnabled", "(bool)", "$")]
+			set { ((QTextEdit) interceptor).UndoRedoEnabled = value; }
 		}
 		[Q_PROPERTY("QTextEdit::LineWrapMode", "lineWrapMode")]
 		public QTextEdit.LineWrapMode lineWrapMode {
-			get { return Property("lineWrapMode").Value<QTextEdit.LineWrapMode>(); }
-			set { SetProperty("lineWrapMode", QVariant.FromValue<QTextEdit.LineWrapMode>(value)); }
+			[SmokeMethod("lineWrapMode", "()", "")]
+			get { return ((QTextEdit) interceptor).lineWrapMode; }
+			[SmokeMethod("setLineWrapMode", "(QTextEdit::LineWrapMode)", "$")]
+			set { ((QTextEdit) interceptor).lineWrapMode = value; }
 		}
 		[Q_PROPERTY("int", "lineWrapColumnOrWidth")]
 		public int LineWrapColumnOrWidth {
-			get { return Property("lineWrapColumnOrWidth").Value<int>(); }
-			set { SetProperty("lineWrapColumnOrWidth", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("lineWrapColumnOrWidth", "()", "")]
+			get { return ((QTextEdit) interceptor).LineWrapColumnOrWidth; }
+			[SmokeMethod("setLineWrapColumnOrWidth", "(int)", "$")]
+			set { ((QTextEdit) interceptor).LineWrapColumnOrWidth = value; }
 		}
 		[Q_PROPERTY("bool", "readOnly")]
 		public bool ReadOnly {
-			get { return Property("readOnly").Value<bool>(); }
-			set { SetProperty("readOnly", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isReadOnly", "()", "")]
+			get { return ((QTextEdit) interceptor).ReadOnly; }
+			[SmokeMethod("setReadOnly", "(bool)", "$")]
+			set { ((QTextEdit) interceptor).ReadOnly = value; }
 		}
 		[Q_PROPERTY("QString", "html")]
 		public string Html {
-			get { return Property("html").Value<string>(); }
-			set { SetProperty("html", QVariant.FromValue<string>(value)); }
+			[SmokeMethod("toHtml", "()", "")]
+			get { return ((QTextEdit) interceptor).Html; }
+			[SmokeMethod("setHtml", "(QString)", "$")]
+			set { ((QTextEdit) interceptor).Html = value; }
 		}
 		[Q_PROPERTY("bool", "overwriteMode")]
 		public bool OverwriteMode {
-			get { return Property("overwriteMode").Value<bool>(); }
-			set { SetProperty("overwriteMode", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("overwriteMode", "()", "")]
+			get { return ((QTextEdit) interceptor).OverwriteMode; }
+			[SmokeMethod("setOverwriteMode", "(bool)", "$")]
+			set { ((QTextEdit) interceptor).OverwriteMode = value; }
 		}
 		[Q_PROPERTY("int", "tabStopWidth")]
 		public int TabStopWidth {
-			get { return Property("tabStopWidth").Value<int>(); }
-			set { SetProperty("tabStopWidth", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("tabStopWidth", "()", "")]
+			get { return ((QTextEdit) interceptor).TabStopWidth; }
+			[SmokeMethod("setTabStopWidth", "(int)", "$")]
+			set { ((QTextEdit) interceptor).TabStopWidth = value; }
 		}
 		[Q_PROPERTY("bool", "acceptRichText")]
 		public bool AcceptRichText {
-			get { return Property("acceptRichText").Value<bool>(); }
-			set { SetProperty("acceptRichText", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("acceptRichText", "()", "")]
+			get { return ((QTextEdit) interceptor).AcceptRichText; }
+			[SmokeMethod("setAcceptRichText", "(bool)", "$")]
+			set { ((QTextEdit) interceptor).AcceptRichText = value; }
 		}
 		[Q_PROPERTY("int", "cursorWidth")]
 		public int CursorWidth {
-			get { return Property("cursorWidth").Value<int>(); }
-			set { SetProperty("cursorWidth", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("cursorWidth", "()", "")]
+			get { return ((QTextEdit) interceptor).CursorWidth; }
+			[SmokeMethod("setCursorWidth", "(int)", "$")]
+			set { ((QTextEdit) interceptor).CursorWidth = value; }
 		}
 		[Q_PROPERTY("Qt::TextInteractionFlags", "textInteractionFlags")]
 		public int TextInteractionFlags {
-			get { return Property("textInteractionFlags").Value<int>(); }
-			set { SetProperty("textInteractionFlags", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("textInteractionFlags", "()", "")]
+			get { return ((QTextEdit) interceptor).TextInteractionFlags; }
+			[SmokeMethod("setTextInteractionFlags", "(Qt::TextInteractionFlags)", "$")]
+			set { ((QTextEdit) interceptor).TextInteractionFlags = value; }
 		}
 		// void setExtraSelections(const QList<QTextEdit::ExtraSelection>& arg1); >>>> NOT CONVERTED
 		// QList<QTextEdit::ExtraSelection> extraSelections(); >>>> NOT CONVERTED

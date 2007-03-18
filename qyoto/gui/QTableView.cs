@@ -25,18 +25,24 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("bool", "showGrid")]
 		public bool ShowGrid {
-			get { return Property("showGrid").Value<bool>(); }
-			set { SetProperty("showGrid", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("showGrid", "()", "")]
+			get { return ((QTableView) interceptor).ShowGrid; }
+			[SmokeMethod("setShowGrid", "(bool)", "$")]
+			set { ((QTableView) interceptor).ShowGrid = value; }
 		}
 		[Q_PROPERTY("Qt::PenStyle", "gridStyle")]
 		public Qt.PenStyle GridStyle {
-			get { return Property("gridStyle").Value<Qt.PenStyle>(); }
-			set { SetProperty("gridStyle", QVariant.FromValue<Qt.PenStyle>(value)); }
+			[SmokeMethod("gridStyle", "()", "")]
+			get { return ((QTableView) interceptor).GridStyle; }
+			[SmokeMethod("setGridStyle", "(Qt::PenStyle)", "$")]
+			set { ((QTableView) interceptor).GridStyle = value; }
 		}
 		[Q_PROPERTY("bool", "sortingEnabled")]
 		public bool SortingEnabled {
-			get { return Property("sortingEnabled").Value<bool>(); }
-			set { SetProperty("sortingEnabled", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isSortingEnabled", "()", "")]
+			get { return ((QTableView) interceptor).SortingEnabled; }
+			[SmokeMethod("setSortingEnabled", "(bool)", "$")]
+			set { ((QTableView) interceptor).SortingEnabled = value; }
 		}
 		public QTableView(QWidget parent) : this((Type) null) {
 			CreateProxy();

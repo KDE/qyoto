@@ -26,12 +26,15 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("int", "columnCount")]
 		public int ColumnCount {
-			get { return Property("columnCount").Value<int>(); }
-			set { SetProperty("columnCount", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("columnCount", "()", "")]
+			get { return ((QTreeWidget) interceptor).ColumnCount; }
+			[SmokeMethod("setColumnCount", "(int)", "$")]
+			set { ((QTreeWidget) interceptor).ColumnCount = value; }
 		}
 		[Q_PROPERTY("int", "topLevelItemCount")]
 		public int TopLevelItemCount {
-			get { return Property("topLevelItemCount").Value<int>(); }
+			[SmokeMethod("topLevelItemCount", "()", "")]
+			get { return ((QTreeWidget) interceptor).TopLevelItemCount; }
 		}
 		public QTreeWidget(QWidget parent) : this((Type) null) {
 			CreateProxy();

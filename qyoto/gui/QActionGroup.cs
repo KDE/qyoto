@@ -26,18 +26,24 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("bool", "exclusive")]
 		public bool Exclusive {
-			get { return Property("exclusive").Value<bool>(); }
-			set { SetProperty("exclusive", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isExclusive", "()", "")]
+			get { return ((QActionGroup) interceptor).Exclusive; }
+			[SmokeMethod("setExclusive", "(bool)", "$")]
+			set { ((QActionGroup) interceptor).Exclusive = value; }
 		}
 		[Q_PROPERTY("bool", "enabled")]
 		public bool Enabled {
-			get { return Property("enabled").Value<bool>(); }
-			set { SetProperty("enabled", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isEnabled", "()", "")]
+			get { return ((QActionGroup) interceptor).Enabled; }
+			[SmokeMethod("setEnabled", "(bool)", "$")]
+			set { ((QActionGroup) interceptor).Enabled = value; }
 		}
 		[Q_PROPERTY("bool", "visible")]
 		public bool Visible {
-			get { return Property("visible").Value<bool>(); }
-			set { SetProperty("visible", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isVisible", "()", "")]
+			get { return ((QActionGroup) interceptor).Visible; }
+			[SmokeMethod("setVisible", "(bool)", "$")]
+			set { ((QActionGroup) interceptor).Visible = value; }
 		}
 		public QActionGroup(QObject parent) : this((Type) null) {
 			CreateProxy();

@@ -40,51 +40,69 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("bool", "undoRedoEnabled")]
 		public bool UndoRedoEnabled {
-			get { return Property("undoRedoEnabled").Value<bool>(); }
-			set { SetProperty("undoRedoEnabled", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isUndoRedoEnabled", "()", "")]
+			get { return ((QTextDocument) interceptor).UndoRedoEnabled; }
+			[SmokeMethod("setUndoRedoEnabled", "(bool)", "$")]
+			set { ((QTextDocument) interceptor).UndoRedoEnabled = value; }
 		}
 		[Q_PROPERTY("bool", "modified")]
 		public bool Modified {
-			get { return Property("modified").Value<bool>(); }
-			set { SetProperty("modified", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isModified", "()", "")]
+			get { return ((QTextDocument) interceptor).Modified; }
+			[SmokeMethod("setModified", "(bool)", "$")]
+			set { ((QTextDocument) interceptor).Modified = value; }
 		}
 		[Q_PROPERTY("QSizeF", "pageSize")]
 		public QSizeF PageSize {
-			get { return Property("pageSize").Value<QSizeF>(); }
-			set { SetProperty("pageSize", QVariant.FromValue<QSizeF>(value)); }
+			[SmokeMethod("pageSize", "()", "")]
+			get { return ((QTextDocument) interceptor).PageSize; }
+			[SmokeMethod("setPageSize", "(QSizeF)", "#")]
+			set { ((QTextDocument) interceptor).PageSize = value; }
 		}
 		[Q_PROPERTY("QFont", "defaultFont")]
 		public QFont DefaultFont {
-			get { return Property("defaultFont").Value<QFont>(); }
-			set { SetProperty("defaultFont", QVariant.FromValue<QFont>(value)); }
+			[SmokeMethod("defaultFont", "()", "")]
+			get { return ((QTextDocument) interceptor).DefaultFont; }
+			[SmokeMethod("setDefaultFont", "(QFont)", "#")]
+			set { ((QTextDocument) interceptor).DefaultFont = value; }
 		}
 		[Q_PROPERTY("bool", "useDesignMetrics")]
 		public bool UseDesignMetrics {
-			get { return Property("useDesignMetrics").Value<bool>(); }
-			set { SetProperty("useDesignMetrics", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("useDesignMetrics", "()", "")]
+			get { return ((QTextDocument) interceptor).UseDesignMetrics; }
+			[SmokeMethod("setUseDesignMetrics", "(bool)", "$")]
+			set { ((QTextDocument) interceptor).UseDesignMetrics = value; }
 		}
 		[Q_PROPERTY("QSizeF", "size")]
 		public QSizeF Size {
-			get { return Property("size").Value<QSizeF>(); }
+			[SmokeMethod("size", "()", "")]
+			get { return ((QTextDocument) interceptor).Size; }
 		}
 		[Q_PROPERTY("qreal", "textWidth")]
 		public double TextWidth {
-			get { return Property("textWidth").Value<double>(); }
-			set { SetProperty("textWidth", QVariant.FromValue<double>(value)); }
+			[SmokeMethod("textWidth", "()", "")]
+			get { return ((QTextDocument) interceptor).TextWidth; }
+			[SmokeMethod("setTextWidth", "(qreal)", "$")]
+			set { ((QTextDocument) interceptor).TextWidth = value; }
 		}
 		[Q_PROPERTY("int", "blockCount")]
 		public int BlockCount {
-			get { return Property("blockCount").Value<int>(); }
+			[SmokeMethod("blockCount", "()", "")]
+			get { return ((QTextDocument) interceptor).BlockCount; }
 		}
 		[Q_PROPERTY("QString", "defaultStyleSheet")]
 		public string DefaultStyleSheet {
-			get { return Property("defaultStyleSheet").Value<string>(); }
-			set { SetProperty("defaultStyleSheet", QVariant.FromValue<string>(value)); }
+			[SmokeMethod("defaultStyleSheet", "()", "")]
+			get { return ((QTextDocument) interceptor).DefaultStyleSheet; }
+			[SmokeMethod("setDefaultStyleSheet", "(QString)", "$")]
+			set { ((QTextDocument) interceptor).DefaultStyleSheet = value; }
 		}
 		[Q_PROPERTY("int", "maximumBlockCount")]
 		public int MaximumBlockCount {
-			get { return Property("maximumBlockCount").Value<int>(); }
-			set { SetProperty("maximumBlockCount", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("maximumBlockCount", "()", "")]
+			get { return ((QTextDocument) interceptor).MaximumBlockCount; }
+			[SmokeMethod("setMaximumBlockCount", "(int)", "$")]
+			set { ((QTextDocument) interceptor).MaximumBlockCount = value; }
 		}
 		// QTextDocumentPrivate* docHandle(); >>>> NOT CONVERTED
 		// void appendUndoItem(QAbstractUndoItem* arg1); >>>> NOT CONVERTED

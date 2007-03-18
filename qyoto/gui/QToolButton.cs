@@ -30,23 +30,31 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("QToolButton::ToolButtonPopupMode", "popupMode")]
 		public QToolButton.ToolButtonPopupMode PopupMode {
-			get { return Property("popupMode").Value<QToolButton.ToolButtonPopupMode>(); }
-			set { SetProperty("popupMode", QVariant.FromValue<QToolButton.ToolButtonPopupMode>(value)); }
+			[SmokeMethod("popupMode", "()", "")]
+			get { return ((QToolButton) interceptor).PopupMode; }
+			[SmokeMethod("setPopupMode", "(QToolButton::ToolButtonPopupMode)", "$")]
+			set { ((QToolButton) interceptor).PopupMode = value; }
 		}
 		[Q_PROPERTY("Qt::ToolButtonStyle", "toolButtonStyle")]
 		public Qt.ToolButtonStyle ToolButtonStyle {
-			get { return Property("toolButtonStyle").Value<Qt.ToolButtonStyle>(); }
-			set { SetProperty("toolButtonStyle", QVariant.FromValue<Qt.ToolButtonStyle>(value)); }
+			[SmokeMethod("toolButtonStyle", "()", "")]
+			get { return ((QToolButton) interceptor).ToolButtonStyle; }
+			[SmokeMethod("setToolButtonStyle", "(Qt::ToolButtonStyle)", "$")]
+			set { ((QToolButton) interceptor).ToolButtonStyle = value; }
 		}
 		[Q_PROPERTY("bool", "autoRaise")]
 		public bool AutoRaise {
-			get { return Property("autoRaise").Value<bool>(); }
-			set { SetProperty("autoRaise", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("autoRaise", "()", "")]
+			get { return ((QToolButton) interceptor).AutoRaise; }
+			[SmokeMethod("setAutoRaise", "(bool)", "$")]
+			set { ((QToolButton) interceptor).AutoRaise = value; }
 		}
 		[Q_PROPERTY("Qt::ArrowType", "arrowType")]
 		public Qt.ArrowType ArrowType {
-			get { return Property("arrowType").Value<Qt.ArrowType>(); }
-			set { SetProperty("arrowType", QVariant.FromValue<Qt.ArrowType>(value)); }
+			[SmokeMethod("arrowType", "()", "")]
+			get { return ((QToolButton) interceptor).ArrowType; }
+			[SmokeMethod("setArrowType", "(Qt::ArrowType)", "$")]
+			set { ((QToolButton) interceptor).ArrowType = value; }
 		}
 		public QToolButton(QWidget parent) : this((Type) null) {
 			CreateProxy();

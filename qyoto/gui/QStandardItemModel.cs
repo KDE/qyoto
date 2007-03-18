@@ -26,8 +26,10 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("int", "sortRole")]
 		public int SortRole {
-			get { return Property("sortRole").Value<int>(); }
-			set { SetProperty("sortRole", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("sortRole", "()", "")]
+			get { return ((QStandardItemModel) interceptor).SortRole; }
+			[SmokeMethod("setSortRole", "(int)", "$")]
+			set { ((QStandardItemModel) interceptor).SortRole = value; }
 		}
 		public QStandardItemModel(QObject parent) : this((Type) null) {
 			CreateProxy();

@@ -35,37 +35,50 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("QTabWidget::TabPosition", "tabPosition")]
 		public QTabWidget.TabPosition tabPosition {
-			get { return Property("tabPosition").Value<QTabWidget.TabPosition>(); }
-			set { SetProperty("tabPosition", QVariant.FromValue<QTabWidget.TabPosition>(value)); }
+			[SmokeMethod("tabPosition", "()", "")]
+			get { return ((QTabWidget) interceptor).tabPosition; }
+			[SmokeMethod("setTabPosition", "(QTabWidget::TabPosition)", "$")]
+			set { ((QTabWidget) interceptor).tabPosition = value; }
 		}
 		[Q_PROPERTY("QTabWidget::TabShape", "tabShape")]
 		public QTabWidget.TabShape tabShape {
-			get { return Property("tabShape").Value<QTabWidget.TabShape>(); }
-			set { SetProperty("tabShape", QVariant.FromValue<QTabWidget.TabShape>(value)); }
+			[SmokeMethod("tabShape", "()", "")]
+			get { return ((QTabWidget) interceptor).tabShape; }
+			[SmokeMethod("setTabShape", "(QTabWidget::TabShape)", "$")]
+			set { ((QTabWidget) interceptor).tabShape = value; }
 		}
 		[Q_PROPERTY("int", "currentIndex")]
 		public int CurrentIndex {
-			get { return Property("currentIndex").Value<int>(); }
-			set { SetProperty("currentIndex", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("currentIndex", "()", "")]
+			get { return ((QTabWidget) interceptor).CurrentIndex; }
+			[SmokeMethod("setCurrentIndex", "(int)", "$")]
+			set { ((QTabWidget) interceptor).CurrentIndex = value; }
 		}
 		[Q_PROPERTY("int", "count")]
 		public int Count {
-			get { return Property("count").Value<int>(); }
+			[SmokeMethod("count", "()", "")]
+			get { return ((QTabWidget) interceptor).Count; }
 		}
 		[Q_PROPERTY("QSize", "iconSize")]
 		public QSize IconSize {
-			get { return Property("iconSize").Value<QSize>(); }
-			set { SetProperty("iconSize", QVariant.FromValue<QSize>(value)); }
+			[SmokeMethod("iconSize", "()", "")]
+			get { return ((QTabWidget) interceptor).IconSize; }
+			[SmokeMethod("setIconSize", "(QSize)", "#")]
+			set { ((QTabWidget) interceptor).IconSize = value; }
 		}
 		[Q_PROPERTY("Qt::TextElideMode", "elideMode")]
 		public Qt.TextElideMode ElideMode {
-			get { return Property("elideMode").Value<Qt.TextElideMode>(); }
-			set { SetProperty("elideMode", QVariant.FromValue<Qt.TextElideMode>(value)); }
+			[SmokeMethod("elideMode", "()", "")]
+			get { return ((QTabWidget) interceptor).ElideMode; }
+			[SmokeMethod("setElideMode", "(Qt::TextElideMode)", "$")]
+			set { ((QTabWidget) interceptor).ElideMode = value; }
 		}
 		[Q_PROPERTY("bool", "usesScrollButtons")]
 		public bool UsesScrollButtons {
-			get { return Property("usesScrollButtons").Value<bool>(); }
-			set { SetProperty("usesScrollButtons", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("usesScrollButtons", "()", "")]
+			get { return ((QTabWidget) interceptor).UsesScrollButtons; }
+			[SmokeMethod("setUsesScrollButtons", "(bool)", "$")]
+			set { ((QTabWidget) interceptor).UsesScrollButtons = value; }
 		}
 		public QTabWidget(QWidget parent) : this((Type) null) {
 			CreateProxy();

@@ -109,18 +109,24 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("QString", "applicationName")]
 		public string ApplicationName {
-			get { return Property("applicationName").Value<string>(); }
-			set { SetProperty("applicationName", QVariant.FromValue<string>(value)); }
+			[SmokeMethod("applicationName", "()", "")]
+			get { return ((QCoreApplication) interceptor).ApplicationName; }
+			[SmokeMethod("setApplicationName", "(QString)", "$")]
+			set { ((QCoreApplication) interceptor).ApplicationName = value; }
 		}
 		[Q_PROPERTY("QString", "organizationName")]
 		public string OrganizationName {
-			get { return Property("organizationName").Value<string>(); }
-			set { SetProperty("organizationName", QVariant.FromValue<string>(value)); }
+			[SmokeMethod("organizationName", "()", "")]
+			get { return ((QCoreApplication) interceptor).OrganizationName; }
+			[SmokeMethod("setOrganizationName", "(QString)", "$")]
+			set { ((QCoreApplication) interceptor).OrganizationName = value; }
 		}
 		[Q_PROPERTY("QString", "organizationDomain")]
 		public string OrganizationDomain {
-			get { return Property("organizationDomain").Value<string>(); }
-			set { SetProperty("organizationDomain", QVariant.FromValue<string>(value)); }
+			[SmokeMethod("organizationDomain", "()", "")]
+			get { return ((QCoreApplication) interceptor).OrganizationDomain; }
+			[SmokeMethod("setOrganizationDomain", "(QString)", "$")]
+			set { ((QCoreApplication) interceptor).OrganizationDomain = value; }
 		}
 		// EventFilter setEventFilter(EventFilter arg1); >>>> NOT CONVERTED
 		// bool filterEvent(void* arg1,long* arg2); >>>> NOT CONVERTED

@@ -26,38 +26,52 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("int", "indentation")]
 		public int Indentation {
-			get { return Property("indentation").Value<int>(); }
-			set { SetProperty("indentation", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("indentation", "()", "")]
+			get { return ((QTreeView) interceptor).Indentation; }
+			[SmokeMethod("setIndentation", "(int)", "$")]
+			set { ((QTreeView) interceptor).Indentation = value; }
 		}
 		[Q_PROPERTY("bool", "rootIsDecorated")]
 		public bool RootIsDecorated {
-			get { return Property("rootIsDecorated").Value<bool>(); }
-			set { SetProperty("rootIsDecorated", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("rootIsDecorated", "()", "")]
+			get { return ((QTreeView) interceptor).RootIsDecorated; }
+			[SmokeMethod("setRootIsDecorated", "(bool)", "$")]
+			set { ((QTreeView) interceptor).RootIsDecorated = value; }
 		}
 		[Q_PROPERTY("bool", "uniformRowHeights")]
 		public bool UniformRowHeights {
-			get { return Property("uniformRowHeights").Value<bool>(); }
-			set { SetProperty("uniformRowHeights", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("uniformRowHeights", "()", "")]
+			get { return ((QTreeView) interceptor).UniformRowHeights; }
+			[SmokeMethod("setUniformRowHeights", "(bool)", "$")]
+			set { ((QTreeView) interceptor).UniformRowHeights = value; }
 		}
 		[Q_PROPERTY("bool", "itemsExpandable")]
 		public bool ItemsExpandable {
-			get { return Property("itemsExpandable").Value<bool>(); }
-			set { SetProperty("itemsExpandable", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("itemsExpandable", "()", "")]
+			get { return ((QTreeView) interceptor).ItemsExpandable; }
+			[SmokeMethod("setItemsExpandable", "(bool)", "$")]
+			set { ((QTreeView) interceptor).ItemsExpandable = value; }
 		}
 		[Q_PROPERTY("bool", "sortingEnabled")]
 		public bool SortingEnabled {
-			get { return Property("sortingEnabled").Value<bool>(); }
-			set { SetProperty("sortingEnabled", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isSortingEnabled", "()", "")]
+			get { return ((QTreeView) interceptor).SortingEnabled; }
+			[SmokeMethod("setSortingEnabled", "(bool)", "$")]
+			set { ((QTreeView) interceptor).SortingEnabled = value; }
 		}
 		[Q_PROPERTY("bool", "animated")]
 		public bool Animated {
-			get { return Property("animated").Value<bool>(); }
-			set { SetProperty("animated", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isAnimated", "()", "")]
+			get { return ((QTreeView) interceptor).Animated; }
+			[SmokeMethod("setAnimated", "(bool)", "$")]
+			set { ((QTreeView) interceptor).Animated = value; }
 		}
 		[Q_PROPERTY("bool", "allColumnsShowFocus")]
 		public bool AllColumnsShowFocus {
-			get { return Property("allColumnsShowFocus").Value<bool>(); }
-			set { SetProperty("allColumnsShowFocus", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("allColumnsShowFocus", "()", "")]
+			get { return ((QTreeView) interceptor).AllColumnsShowFocus; }
+			[SmokeMethod("setAllColumnsShowFocus", "(bool)", "$")]
+			set { ((QTreeView) interceptor).AllColumnsShowFocus = value; }
 		}
 		public QTreeView(QWidget parent) : this((Type) null) {
 			CreateProxy();

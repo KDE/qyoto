@@ -26,8 +26,10 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("bool", "exclusive")]
 		public bool Exclusive {
-			get { return Property("exclusive").Value<bool>(); }
-			set { SetProperty("exclusive", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("exclusive", "()", "")]
+			get { return ((QButtonGroup) interceptor).Exclusive; }
+			[SmokeMethod("setExclusive", "(bool)", "$")]
+			set { ((QButtonGroup) interceptor).Exclusive = value; }
 		}
 		public QButtonGroup(QObject parent) : this((Type) null) {
 			CreateProxy();

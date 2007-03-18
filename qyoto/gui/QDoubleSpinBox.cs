@@ -26,42 +26,57 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("QString", "prefix")]
 		public string Prefix {
-			get { return Property("prefix").Value<string>(); }
-			set { SetProperty("prefix", QVariant.FromValue<string>(value)); }
+			[SmokeMethod("prefix", "()", "")]
+			get { return ((QDoubleSpinBox) interceptor).Prefix; }
+			[SmokeMethod("setPrefix", "(QString)", "$")]
+			set { ((QDoubleSpinBox) interceptor).Prefix = value; }
 		}
 		[Q_PROPERTY("QString", "suffix")]
 		public string Suffix {
-			get { return Property("suffix").Value<string>(); }
-			set { SetProperty("suffix", QVariant.FromValue<string>(value)); }
+			[SmokeMethod("suffix", "()", "")]
+			get { return ((QDoubleSpinBox) interceptor).Suffix; }
+			[SmokeMethod("setSuffix", "(QString)", "$")]
+			set { ((QDoubleSpinBox) interceptor).Suffix = value; }
 		}
 		[Q_PROPERTY("QString", "cleanText")]
 		public string CleanText {
-			get { return Property("cleanText").Value<string>(); }
+			[SmokeMethod("cleanText", "()", "")]
+			get { return ((QDoubleSpinBox) interceptor).CleanText; }
 		}
 		[Q_PROPERTY("int", "decimals")]
 		public int Decimals {
-			get { return Property("decimals").Value<int>(); }
-			set { SetProperty("decimals", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("decimals", "()", "")]
+			get { return ((QDoubleSpinBox) interceptor).Decimals; }
+			[SmokeMethod("setDecimals", "(int)", "$")]
+			set { ((QDoubleSpinBox) interceptor).Decimals = value; }
 		}
 		[Q_PROPERTY("double", "maximum")]
 		public double Maximum {
-			get { return Property("maximum").Value<double>(); }
-			set { SetProperty("maximum", QVariant.FromValue<double>(value)); }
+			[SmokeMethod("maximum", "()", "")]
+			get { return ((QDoubleSpinBox) interceptor).Maximum; }
+			[SmokeMethod("setMaximum", "(double)", "$")]
+			set { ((QDoubleSpinBox) interceptor).Maximum = value; }
 		}
 		[Q_PROPERTY("double", "minimum")]
 		public double Minimum {
-			get { return Property("minimum").Value<double>(); }
-			set { SetProperty("minimum", QVariant.FromValue<double>(value)); }
+			[SmokeMethod("minimum", "()", "")]
+			get { return ((QDoubleSpinBox) interceptor).Minimum; }
+			[SmokeMethod("setMinimum", "(double)", "$")]
+			set { ((QDoubleSpinBox) interceptor).Minimum = value; }
 		}
 		[Q_PROPERTY("double", "singleStep")]
 		public double SingleStep {
-			get { return Property("singleStep").Value<double>(); }
-			set { SetProperty("singleStep", QVariant.FromValue<double>(value)); }
+			[SmokeMethod("singleStep", "()", "")]
+			get { return ((QDoubleSpinBox) interceptor).SingleStep; }
+			[SmokeMethod("setSingleStep", "(double)", "$")]
+			set { ((QDoubleSpinBox) interceptor).SingleStep = value; }
 		}
 		[Q_PROPERTY("double", "value")]
 		public double Value {
-			get { return Property("value").Value<double>(); }
-			set { SetProperty("value", QVariant.FromValue<double>(value)); }
+			[SmokeMethod("value", "()", "")]
+			get { return ((QDoubleSpinBox) interceptor).Value; }
+			[SmokeMethod("setValue", "(double)", "$")]
+			set { ((QDoubleSpinBox) interceptor).Value = value; }
 		}
 		public QDoubleSpinBox(QWidget parent) : this((Type) null) {
 			CreateProxy();

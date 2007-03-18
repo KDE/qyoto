@@ -32,38 +32,52 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("bool", "showSortIndicator")]
 		public bool ShowSortIndicator {
-			get { return Property("showSortIndicator").Value<bool>(); }
-			set { SetProperty("showSortIndicator", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isSortIndicatorShown", "()", "")]
+			get { return ((QHeaderView) interceptor).ShowSortIndicator; }
+			[SmokeMethod("setSortIndicatorShown", "(bool)", "$")]
+			set { ((QHeaderView) interceptor).ShowSortIndicator = value; }
 		}
 		[Q_PROPERTY("bool", "highlightSections")]
 		public bool HighlightSections {
-			get { return Property("highlightSections").Value<bool>(); }
-			set { SetProperty("highlightSections", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("highlightSections", "()", "")]
+			get { return ((QHeaderView) interceptor).HighlightSections; }
+			[SmokeMethod("setHighlightSections", "(bool)", "$")]
+			set { ((QHeaderView) interceptor).HighlightSections = value; }
 		}
 		[Q_PROPERTY("bool", "stretchLastSection")]
 		public bool StretchLastSection {
-			get { return Property("stretchLastSection").Value<bool>(); }
-			set { SetProperty("stretchLastSection", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("stretchLastSection", "()", "")]
+			get { return ((QHeaderView) interceptor).StretchLastSection; }
+			[SmokeMethod("setStretchLastSection", "(bool)", "$")]
+			set { ((QHeaderView) interceptor).StretchLastSection = value; }
 		}
 		[Q_PROPERTY("bool", "cascadingSectionResizes")]
 		public bool CascadingSectionResizes {
-			get { return Property("cascadingSectionResizes").Value<bool>(); }
-			set { SetProperty("cascadingSectionResizes", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("cascadingSectionResizes", "()", "")]
+			get { return ((QHeaderView) interceptor).CascadingSectionResizes; }
+			[SmokeMethod("setCascadingSectionResizes", "(bool)", "$")]
+			set { ((QHeaderView) interceptor).CascadingSectionResizes = value; }
 		}
 		[Q_PROPERTY("int", "defaultSectionSize")]
 		public int DefaultSectionSize {
-			get { return Property("defaultSectionSize").Value<int>(); }
-			set { SetProperty("defaultSectionSize", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("defaultSectionSize", "()", "")]
+			get { return ((QHeaderView) interceptor).DefaultSectionSize; }
+			[SmokeMethod("setDefaultSectionSize", "(int)", "$")]
+			set { ((QHeaderView) interceptor).DefaultSectionSize = value; }
 		}
 		[Q_PROPERTY("int", "minimumSectionSize")]
 		public int MinimumSectionSize {
-			get { return Property("minimumSectionSize").Value<int>(); }
-			set { SetProperty("minimumSectionSize", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("minimumSectionSize", "()", "")]
+			get { return ((QHeaderView) interceptor).MinimumSectionSize; }
+			[SmokeMethod("setMinimumSectionSize", "(int)", "$")]
+			set { ((QHeaderView) interceptor).MinimumSectionSize = value; }
 		}
 		[Q_PROPERTY("Qt::Alignment", "defaultAlignment")]
 		public int DefaultAlignment {
-			get { return Property("defaultAlignment").Value<int>(); }
-			set { SetProperty("defaultAlignment", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("defaultAlignment", "()", "")]
+			get { return ((QHeaderView) interceptor).DefaultAlignment; }
+			[SmokeMethod("setDefaultAlignment", "(Qt::Alignment)", "$")]
+			set { ((QHeaderView) interceptor).DefaultAlignment = value; }
 		}
 		public QHeaderView(Qt.Orientation orientation, QWidget parent) : this((Type) null) {
 			CreateProxy();

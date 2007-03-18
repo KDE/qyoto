@@ -26,18 +26,24 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("QUrl", "source")]
 		public IQUrl Source {
-			get { return Property("source").Value<IQUrl>(); }
-			set { SetProperty("source", QVariant.FromValue<IQUrl>(value)); }
+			[SmokeMethod("source", "()", "")]
+			get { return ((QTextBrowser) interceptor).Source; }
+			[SmokeMethod("setSource", "(QUrl)", "#")]
+			set { ((QTextBrowser) interceptor).Source = value; }
 		}
 		[Q_PROPERTY("QStringList", "searchPaths")]
 		public List<string> SearchPaths {
-			get { return Property("searchPaths").Value<List<string>>(); }
-			set { SetProperty("searchPaths", QVariant.FromValue<List<string>>(value)); }
+			[SmokeMethod("searchPaths", "()", "")]
+			get { return ((QTextBrowser) interceptor).SearchPaths; }
+			[SmokeMethod("setSearchPaths", "(QStringList)", "?")]
+			set { ((QTextBrowser) interceptor).SearchPaths = value; }
 		}
 		[Q_PROPERTY("bool", "openExternalLinks")]
 		public bool OpenExternalLinks {
-			get { return Property("openExternalLinks").Value<bool>(); }
-			set { SetProperty("openExternalLinks", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("openExternalLinks", "()", "")]
+			get { return ((QTextBrowser) interceptor).OpenExternalLinks; }
+			[SmokeMethod("setOpenExternalLinks", "(bool)", "$")]
+			set { ((QTextBrowser) interceptor).OpenExternalLinks = value; }
 		}
 		public QTextBrowser(QWidget parent) : this((Type) null) {
 			CreateProxy();

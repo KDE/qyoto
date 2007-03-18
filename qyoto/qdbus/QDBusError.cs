@@ -5,15 +5,12 @@ namespace Qyoto {
 
 	[SmokeClass("QDBusError")]
 	public class QDBusError : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QDBusError interceptor = null;
+		private IntPtr smokeObject;
 		protected QDBusError(Type dummy) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDBusError), this);
-			_interceptor = (QDBusError) realProxy.GetTransparentProxy();
-		}
-		private QDBusError ProxyQDBusError() {
-			return (QDBusError) _interceptor;
+			interceptor = (QDBusError) realProxy.GetTransparentProxy();
 		}
 		public enum ErrorType {
 			NoError = 0,
@@ -46,7 +43,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDBusError", "(const QDBusMessage&)", "#")]
 		private void NewQDBusError(QDBusMessage msg) {
-			ProxyQDBusError().NewQDBusError(msg);
+			((QDBusError) interceptor).NewQDBusError(msg);
 		}
 		public QDBusError(QDBusError.ErrorType error, string message) : this((Type) null) {
 			CreateProxy();
@@ -54,7 +51,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDBusError", "(QDBusError::ErrorType, const QString&)", "$$")]
 		private void NewQDBusError(QDBusError.ErrorType error, string message) {
-			ProxyQDBusError().NewQDBusError(error,message);
+			((QDBusError) interceptor).NewQDBusError(error,message);
 		}
 		public QDBusError(QDBusError other) : this((Type) null) {
 			CreateProxy();
@@ -62,23 +59,23 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDBusError", "(const QDBusError&)", "#")]
 		private void NewQDBusError(QDBusError other) {
-			ProxyQDBusError().NewQDBusError(other);
+			((QDBusError) interceptor).NewQDBusError(other);
 		}
 		[SmokeMethod("type", "() const", "")]
 		public QDBusError.ErrorType type() {
-			return ProxyQDBusError().type();
+			return ((QDBusError) interceptor).type();
 		}
 		[SmokeMethod("name", "() const", "")]
 		public string Name() {
-			return ProxyQDBusError().Name();
+			return ((QDBusError) interceptor).Name();
 		}
 		[SmokeMethod("message", "() const", "")]
 		public string Message() {
-			return ProxyQDBusError().Message();
+			return ((QDBusError) interceptor).Message();
 		}
 		[SmokeMethod("isValid", "() const", "")]
 		public bool IsValid() {
-			return ProxyQDBusError().IsValid();
+			return ((QDBusError) interceptor).IsValid();
 		}
 		~QDBusError() {
 			DisposeQDBusError();
@@ -88,7 +85,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QDBusError", "()", "")]
 		private void DisposeQDBusError() {
-			ProxyQDBusError().DisposeQDBusError();
+			((QDBusError) interceptor).DisposeQDBusError();
 		}
 	}
 }

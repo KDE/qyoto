@@ -35,37 +35,50 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("QTabBar::Shape", "shape")]
 		public QTabBar.Shape shape {
-			get { return Property("shape").Value<QTabBar.Shape>(); }
-			set { SetProperty("shape", QVariant.FromValue<QTabBar.Shape>(value)); }
+			[SmokeMethod("shape", "()", "")]
+			get { return ((QTabBar) interceptor).shape; }
+			[SmokeMethod("setShape", "(QTabBar::Shape)", "$")]
+			set { ((QTabBar) interceptor).shape = value; }
 		}
 		[Q_PROPERTY("int", "currentIndex")]
 		public int CurrentIndex {
-			get { return Property("currentIndex").Value<int>(); }
-			set { SetProperty("currentIndex", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("currentIndex", "()", "")]
+			get { return ((QTabBar) interceptor).CurrentIndex; }
+			[SmokeMethod("setCurrentIndex", "(int)", "$")]
+			set { ((QTabBar) interceptor).CurrentIndex = value; }
 		}
 		[Q_PROPERTY("int", "count")]
 		public int Count {
-			get { return Property("count").Value<int>(); }
+			[SmokeMethod("count", "()", "")]
+			get { return ((QTabBar) interceptor).Count; }
 		}
 		[Q_PROPERTY("bool", "drawBase")]
 		public bool DrawBase {
-			get { return Property("drawBase").Value<bool>(); }
-			set { SetProperty("drawBase", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("drawBase", "()", "")]
+			get { return ((QTabBar) interceptor).DrawBase; }
+			[SmokeMethod("setDrawBase", "(bool)", "$")]
+			set { ((QTabBar) interceptor).DrawBase = value; }
 		}
 		[Q_PROPERTY("QSize", "iconSize")]
 		public QSize IconSize {
-			get { return Property("iconSize").Value<QSize>(); }
-			set { SetProperty("iconSize", QVariant.FromValue<QSize>(value)); }
+			[SmokeMethod("iconSize", "()", "")]
+			get { return ((QTabBar) interceptor).IconSize; }
+			[SmokeMethod("setIconSize", "(QSize)", "#")]
+			set { ((QTabBar) interceptor).IconSize = value; }
 		}
 		[Q_PROPERTY("Qt::TextElideMode", "elideMode")]
 		public Qt.TextElideMode ElideMode {
-			get { return Property("elideMode").Value<Qt.TextElideMode>(); }
-			set { SetProperty("elideMode", QVariant.FromValue<Qt.TextElideMode>(value)); }
+			[SmokeMethod("elideMode", "()", "")]
+			get { return ((QTabBar) interceptor).ElideMode; }
+			[SmokeMethod("setElideMode", "(Qt::TextElideMode)", "$")]
+			set { ((QTabBar) interceptor).ElideMode = value; }
 		}
 		[Q_PROPERTY("bool", "usesScrollButtons")]
 		public bool UsesScrollButtons {
-			get { return Property("usesScrollButtons").Value<bool>(); }
-			set { SetProperty("usesScrollButtons", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("usesScrollButtons", "()", "")]
+			get { return ((QTabBar) interceptor).UsesScrollButtons; }
+			[SmokeMethod("setUsesScrollButtons", "(bool)", "$")]
+			set { ((QTabBar) interceptor).UsesScrollButtons = value; }
 		}
 		public QTabBar(QWidget parent) : this((Type) null) {
 			CreateProxy();

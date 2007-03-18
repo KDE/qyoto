@@ -25,12 +25,15 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("int", "currentIndex")]
 		public int CurrentIndex {
-			get { return Property("currentIndex").Value<int>(); }
-			set { SetProperty("currentIndex", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("currentIndex", "()", "")]
+			get { return ((QToolBox) interceptor).CurrentIndex; }
+			[SmokeMethod("setCurrentIndex", "(int)", "$")]
+			set { ((QToolBox) interceptor).CurrentIndex = value; }
 		}
 		[Q_PROPERTY("int", "count")]
 		public int Count {
-			get { return Property("count").Value<int>(); }
+			[SmokeMethod("count", "()", "")]
+			get { return ((QToolBox) interceptor).Count; }
 		}
 		public QToolBox(QWidget parent, int f) : this((Type) null) {
 			CreateProxy();

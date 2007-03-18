@@ -59,8 +59,10 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("QString", "objectName")]
 		public string ObjectName {
-			get { return Property("objectName").Value<string>(); }
-			set { SetProperty("objectName", QVariant.FromValue<string>(value)); }
+			[SmokeMethod("objectName", "()", "")]
+			get { return ((QObject) interceptor).ObjectName; }
+			[SmokeMethod("setObjectName", "(QString)", "$")]
+			set { ((QObject) interceptor).ObjectName = value; }
 		}
 		// QThread* thread(); >>>> NOT CONVERTED
 		// void moveToThread(QThread* arg1); >>>> NOT CONVERTED

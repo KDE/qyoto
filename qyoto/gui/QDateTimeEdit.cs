@@ -39,57 +39,78 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("QDateTime", "dateTime")]
 		public QDateTime DateTime {
-			get { return Property("dateTime").Value<QDateTime>(); }
-			set { SetProperty("dateTime", QVariant.FromValue<QDateTime>(value)); }
+			[SmokeMethod("dateTime", "()", "")]
+			get { return ((QDateTimeEdit) interceptor).DateTime; }
+			[SmokeMethod("setDateTime", "(QDateTime)", "#")]
+			set { ((QDateTimeEdit) interceptor).DateTime = value; }
 		}
 		[Q_PROPERTY("QDate", "date")]
 		public QDate Date {
-			get { return Property("date").Value<QDate>(); }
-			set { SetProperty("date", QVariant.FromValue<QDate>(value)); }
+			[SmokeMethod("date", "()", "")]
+			get { return ((QDateTimeEdit) interceptor).Date; }
+			[SmokeMethod("setDate", "(QDate)", "#")]
+			set { ((QDateTimeEdit) interceptor).Date = value; }
 		}
 		[Q_PROPERTY("QTime", "time")]
 		public QTime Time {
-			get { return Property("time").Value<QTime>(); }
-			set { SetProperty("time", QVariant.FromValue<QTime>(value)); }
+			[SmokeMethod("time", "()", "")]
+			get { return ((QDateTimeEdit) interceptor).Time; }
+			[SmokeMethod("setTime", "(QTime)", "#")]
+			set { ((QDateTimeEdit) interceptor).Time = value; }
 		}
 		[Q_PROPERTY("QDate", "maximumDate")]
 		public QDate MaximumDate {
-			get { return Property("maximumDate").Value<QDate>(); }
-			set { SetProperty("maximumDate", QVariant.FromValue<QDate>(value)); }
+			[SmokeMethod("maximumDate", "()", "")]
+			get { return ((QDateTimeEdit) interceptor).MaximumDate; }
+			[SmokeMethod("setMaximumDate", "(QDate)", "#")]
+			set { ((QDateTimeEdit) interceptor).MaximumDate = value; }
 		}
 		[Q_PROPERTY("QDate", "minimumDate")]
 		public QDate MinimumDate {
-			get { return Property("minimumDate").Value<QDate>(); }
-			set { SetProperty("minimumDate", QVariant.FromValue<QDate>(value)); }
+			[SmokeMethod("minimumDate", "()", "")]
+			get { return ((QDateTimeEdit) interceptor).MinimumDate; }
+			[SmokeMethod("setMinimumDate", "(QDate)", "#")]
+			set { ((QDateTimeEdit) interceptor).MinimumDate = value; }
 		}
 		[Q_PROPERTY("QTime", "maximumTime")]
 		public QTime MaximumTime {
-			get { return Property("maximumTime").Value<QTime>(); }
-			set { SetProperty("maximumTime", QVariant.FromValue<QTime>(value)); }
+			[SmokeMethod("maximumTime", "()", "")]
+			get { return ((QDateTimeEdit) interceptor).MaximumTime; }
+			[SmokeMethod("setMaximumTime", "(QTime)", "#")]
+			set { ((QDateTimeEdit) interceptor).MaximumTime = value; }
 		}
 		[Q_PROPERTY("QTime", "minimumTime")]
 		public QTime MinimumTime {
-			get { return Property("minimumTime").Value<QTime>(); }
-			set { SetProperty("minimumTime", QVariant.FromValue<QTime>(value)); }
+			[SmokeMethod("minimumTime", "()", "")]
+			get { return ((QDateTimeEdit) interceptor).MinimumTime; }
+			[SmokeMethod("setMinimumTime", "(QTime)", "#")]
+			set { ((QDateTimeEdit) interceptor).MinimumTime = value; }
 		}
 		[Q_PROPERTY("QDateTimeEdit::Section", "currentSection")]
 		public QDateTimeEdit.Section CurrentSection {
-			get { return Property("currentSection").Value<QDateTimeEdit.Section>(); }
-			set { SetProperty("currentSection", QVariant.FromValue<QDateTimeEdit.Section>(value)); }
+			[SmokeMethod("currentSection", "()", "")]
+			get { return ((QDateTimeEdit) interceptor).CurrentSection; }
+			[SmokeMethod("setCurrentSection", "(QDateTimeEdit::Section)", "$")]
+			set { ((QDateTimeEdit) interceptor).CurrentSection = value; }
 		}
 		[Q_PROPERTY("Sections", "displayedSections")]
 		public int DisplayedSections {
-			get { return Property("displayedSections").Value<int>(); }
+			[SmokeMethod("displayedSections", "()", "")]
+			get { return ((QDateTimeEdit) interceptor).DisplayedSections; }
 		}
 		[Q_PROPERTY("QString", "displayFormat")]
 		public string DisplayFormat {
-			get { return Property("displayFormat").Value<string>(); }
-			set { SetProperty("displayFormat", QVariant.FromValue<string>(value)); }
+			[SmokeMethod("displayFormat", "()", "")]
+			get { return ((QDateTimeEdit) interceptor).DisplayFormat; }
+			[SmokeMethod("setDisplayFormat", "(QString)", "$")]
+			set { ((QDateTimeEdit) interceptor).DisplayFormat = value; }
 		}
 		[Q_PROPERTY("bool", "calendarPopup")]
 		public bool CalendarPopup {
-			get { return Property("calendarPopup").Value<bool>(); }
-			set { SetProperty("calendarPopup", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("calendarPopup", "()", "")]
+			get { return ((QDateTimeEdit) interceptor).CalendarPopup; }
+			[SmokeMethod("setCalendarPopup", "(bool)", "$")]
+			set { ((QDateTimeEdit) interceptor).CalendarPopup = value; }
 		}
 		public QDateTimeEdit(QWidget parent) : this((Type) null) {
 			CreateProxy();

@@ -5,8 +5,8 @@ namespace Qyoto {
 
 	[SmokeClass("QDBusMetaType")]
 	public class QDBusMetaType : MarshalByRefObject, IDisposable {
-		protected Object _interceptor = null;
-		private IntPtr _smokeObject;
+		protected QDBusMetaType interceptor = null;
+		private IntPtr smokeObject;
 		protected QDBusMetaType(Type dummy) {}
 		[SmokeClass("QDBusMetaType")]
 		interface IQDBusMetaTypeProxy {
@@ -17,18 +17,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDBusMetaType), this);
-			_interceptor = (QDBusMetaType) realProxy.GetTransparentProxy();
+			interceptor = (QDBusMetaType) realProxy.GetTransparentProxy();
 		}
-		private QDBusMetaType ProxyQDBusMetaType() {
-			return (QDBusMetaType) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQDBusMetaTypeProxy staticInterceptor = null;
 		static QDBusMetaType() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQDBusMetaTypeProxy), null);
-			_staticInterceptor = (IQDBusMetaTypeProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQDBusMetaTypeProxy StaticQDBusMetaType() {
-			return (IQDBusMetaTypeProxy) _staticInterceptor;
+			staticInterceptor = (IQDBusMetaTypeProxy) realProxy.GetTransparentProxy();
 		}
 		// void registerMarshallOperators(int arg1,MarshallFunction arg2,DemarshallFunction arg3); >>>> NOT CONVERTED
 		// bool marshall(QDBusArgument& arg1,int arg2,const void* arg3); >>>> NOT CONVERTED
@@ -39,7 +33,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDBusMetaType", "()", "")]
 		private void NewQDBusMetaType() {
-			ProxyQDBusMetaType().NewQDBusMetaType();
+			((QDBusMetaType) interceptor).NewQDBusMetaType();
 		}
 		~QDBusMetaType() {
 			DisposeQDBusMetaType();
@@ -49,13 +43,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QDBusMetaType", "()", "")]
 		private void DisposeQDBusMetaType() {
-			ProxyQDBusMetaType().DisposeQDBusMetaType();
+			((QDBusMetaType) interceptor).DisposeQDBusMetaType();
 		}
 		public static int SignatureToType(string signature) {
-			return StaticQDBusMetaType().SignatureToType(signature);
+			return staticInterceptor.SignatureToType(signature);
 		}
 		public static string TypeToSignature(int type) {
-			return StaticQDBusMetaType().TypeToSignature(type);
+			return staticInterceptor.TypeToSignature(type);
 		}
 	}
 }

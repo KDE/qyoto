@@ -26,23 +26,31 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("Qt::Orientation", "orientation")]
 		public Qt.Orientation Orientation {
-			get { return Property("orientation").Value<Qt.Orientation>(); }
-			set { SetProperty("orientation", QVariant.FromValue<Qt.Orientation>(value)); }
+			[SmokeMethod("orientation", "()", "")]
+			get { return ((QSplitter) interceptor).Orientation; }
+			[SmokeMethod("setOrientation", "(Qt::Orientation)", "$")]
+			set { ((QSplitter) interceptor).Orientation = value; }
 		}
 		[Q_PROPERTY("bool", "opaqueResize")]
 		public bool OpaqueResize {
-			get { return Property("opaqueResize").Value<bool>(); }
-			set { SetProperty("opaqueResize", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("opaqueResize", "()", "")]
+			get { return ((QSplitter) interceptor).OpaqueResize; }
+			[SmokeMethod("setOpaqueResize", "(bool)", "$")]
+			set { ((QSplitter) interceptor).OpaqueResize = value; }
 		}
 		[Q_PROPERTY("int", "handleWidth")]
 		public int HandleWidth {
-			get { return Property("handleWidth").Value<int>(); }
-			set { SetProperty("handleWidth", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("handleWidth", "()", "")]
+			get { return ((QSplitter) interceptor).HandleWidth; }
+			[SmokeMethod("setHandleWidth", "(int)", "$")]
+			set { ((QSplitter) interceptor).HandleWidth = value; }
 		}
 		[Q_PROPERTY("bool", "childrenCollapsible")]
 		public bool ChildrenCollapsible {
-			get { return Property("childrenCollapsible").Value<bool>(); }
-			set { SetProperty("childrenCollapsible", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("childrenCollapsible", "()", "")]
+			get { return ((QSplitter) interceptor).ChildrenCollapsible; }
+			[SmokeMethod("setChildrenCollapsible", "(bool)", "$")]
+			set { ((QSplitter) interceptor).ChildrenCollapsible = value; }
 		}
 		public QSplitter(QWidget parent) : this((Type) null) {
 			CreateProxy();

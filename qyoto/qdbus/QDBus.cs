@@ -4,7 +4,7 @@ namespace Qyoto {
 	using System;
 
 	public class QDBus : MarshalByRefObject {
-		protected Object _interceptor = null;
+		protected QDBus interceptor = null;
 		public enum CallMode {
 			NoBlock = 0,
 			Block = 1,

@@ -36,33 +36,45 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("bool", "smallDecimalPoint")]
 		public bool SmallDecimalPoint {
-			get { return Property("smallDecimalPoint").Value<bool>(); }
-			set { SetProperty("smallDecimalPoint", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("smallDecimalPoint", "()", "")]
+			get { return ((QLCDNumber) interceptor).SmallDecimalPoint; }
+			[SmokeMethod("setSmallDecimalPoint", "(bool)", "$")]
+			set { ((QLCDNumber) interceptor).SmallDecimalPoint = value; }
 		}
 		[Q_PROPERTY("int", "numDigits")]
 		public int NumDigits {
-			get { return Property("numDigits").Value<int>(); }
-			set { SetProperty("numDigits", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("numDigits", "()", "")]
+			get { return ((QLCDNumber) interceptor).NumDigits; }
+			[SmokeMethod("setNumDigits", "(int)", "$")]
+			set { ((QLCDNumber) interceptor).NumDigits = value; }
 		}
 		[Q_PROPERTY("QLCDNumber::Mode", "mode")]
 		public QLCDNumber.Mode mode {
-			get { return Property("mode").Value<QLCDNumber.Mode>(); }
-			set { SetProperty("mode", QVariant.FromValue<QLCDNumber.Mode>(value)); }
+			[SmokeMethod("mode", "()", "")]
+			get { return ((QLCDNumber) interceptor).mode; }
+			[SmokeMethod("setMode", "(QLCDNumber::Mode)", "$")]
+			set { ((QLCDNumber) interceptor).mode = value; }
 		}
 		[Q_PROPERTY("QLCDNumber::SegmentStyle", "segmentStyle")]
 		public QLCDNumber.SegmentStyle segmentStyle {
-			get { return Property("segmentStyle").Value<QLCDNumber.SegmentStyle>(); }
-			set { SetProperty("segmentStyle", QVariant.FromValue<QLCDNumber.SegmentStyle>(value)); }
+			[SmokeMethod("segmentStyle", "()", "")]
+			get { return ((QLCDNumber) interceptor).segmentStyle; }
+			[SmokeMethod("setSegmentStyle", "(QLCDNumber::SegmentStyle)", "$")]
+			set { ((QLCDNumber) interceptor).segmentStyle = value; }
 		}
 		[Q_PROPERTY("double", "value")]
 		public double Value {
-			get { return Property("value").Value<double>(); }
-			set { SetProperty("value", QVariant.FromValue<double>(value)); }
+			[SmokeMethod("value", "()", "")]
+			get { return ((QLCDNumber) interceptor).Value; }
+			[SmokeMethod("display", "(double)", "$")]
+			set { ((QLCDNumber) interceptor).Value = value; }
 		}
 		[Q_PROPERTY("int", "intValue")]
 		public int IntValue {
-			get { return Property("intValue").Value<int>(); }
-			set { SetProperty("intValue", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("intValue", "()", "")]
+			get { return ((QLCDNumber) interceptor).IntValue; }
+			[SmokeMethod("display", "(int)", "$")]
+			set { ((QLCDNumber) interceptor).IntValue = value; }
 		}
 		public QLCDNumber(QWidget parent) : this((Type) null) {
 			CreateProxy();

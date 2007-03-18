@@ -25,28 +25,38 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("QKeySequence", "key")]
 		public QKeySequence Key {
-			get { return Property("key").Value<QKeySequence>(); }
-			set { SetProperty("key", QVariant.FromValue<QKeySequence>(value)); }
+			[SmokeMethod("key", "()", "")]
+			get { return ((QShortcut) interceptor).Key; }
+			[SmokeMethod("setKey", "(QKeySequence)", "#")]
+			set { ((QShortcut) interceptor).Key = value; }
 		}
 		[Q_PROPERTY("QString", "whatsThis")]
 		public string WhatsThis {
-			get { return Property("whatsThis").Value<string>(); }
-			set { SetProperty("whatsThis", QVariant.FromValue<string>(value)); }
+			[SmokeMethod("whatsThis", "()", "")]
+			get { return ((QShortcut) interceptor).WhatsThis; }
+			[SmokeMethod("setWhatsThis", "(QString)", "$")]
+			set { ((QShortcut) interceptor).WhatsThis = value; }
 		}
 		[Q_PROPERTY("bool", "enabled")]
 		public bool Enabled {
-			get { return Property("enabled").Value<bool>(); }
-			set { SetProperty("enabled", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isEnabled", "()", "")]
+			get { return ((QShortcut) interceptor).Enabled; }
+			[SmokeMethod("setEnabled", "(bool)", "$")]
+			set { ((QShortcut) interceptor).Enabled = value; }
 		}
 		[Q_PROPERTY("bool", "autoRepeat")]
 		public bool AutoRepeat {
-			get { return Property("autoRepeat").Value<bool>(); }
-			set { SetProperty("autoRepeat", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("autoRepeat", "()", "")]
+			get { return ((QShortcut) interceptor).AutoRepeat; }
+			[SmokeMethod("setAutoRepeat", "(bool)", "$")]
+			set { ((QShortcut) interceptor).AutoRepeat = value; }
 		}
 		[Q_PROPERTY("Qt::ShortcutContext", "context")]
 		public Qt.ShortcutContext Context {
-			get { return Property("context").Value<Qt.ShortcutContext>(); }
-			set { SetProperty("context", QVariant.FromValue<Qt.ShortcutContext>(value)); }
+			[SmokeMethod("context", "()", "")]
+			get { return ((QShortcut) interceptor).Context; }
+			[SmokeMethod("setContext", "(Qt::ShortcutContext)", "$")]
+			set { ((QShortcut) interceptor).Context = value; }
 		}
 		public QShortcut(QWidget parent) : this((Type) null) {
 			CreateProxy();

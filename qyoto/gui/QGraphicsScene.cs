@@ -30,23 +30,31 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("QBrush", "backgroundBrush")]
 		public QBrush BackgroundBrush {
-			get { return Property("backgroundBrush").Value<QBrush>(); }
-			set { SetProperty("backgroundBrush", QVariant.FromValue<QBrush>(value)); }
+			[SmokeMethod("backgroundBrush", "()", "")]
+			get { return ((QGraphicsScene) interceptor).BackgroundBrush; }
+			[SmokeMethod("setBackgroundBrush", "(QBrush)", "#")]
+			set { ((QGraphicsScene) interceptor).BackgroundBrush = value; }
 		}
 		[Q_PROPERTY("QBrush", "foregroundBrush")]
 		public QBrush ForegroundBrush {
-			get { return Property("foregroundBrush").Value<QBrush>(); }
-			set { SetProperty("foregroundBrush", QVariant.FromValue<QBrush>(value)); }
+			[SmokeMethod("foregroundBrush", "()", "")]
+			get { return ((QGraphicsScene) interceptor).ForegroundBrush; }
+			[SmokeMethod("setForegroundBrush", "(QBrush)", "#")]
+			set { ((QGraphicsScene) interceptor).ForegroundBrush = value; }
 		}
 		[Q_PROPERTY("QGraphicsScene::ItemIndexMethod", "itemIndexMethod")]
 		public QGraphicsScene.ItemIndexMethod itemIndexMethod {
-			get { return Property("itemIndexMethod").Value<QGraphicsScene.ItemIndexMethod>(); }
-			set { SetProperty("itemIndexMethod", QVariant.FromValue<QGraphicsScene.ItemIndexMethod>(value)); }
+			[SmokeMethod("itemIndexMethod", "()", "")]
+			get { return ((QGraphicsScene) interceptor).itemIndexMethod; }
+			[SmokeMethod("setItemIndexMethod", "(QGraphicsScene::ItemIndexMethod)", "$")]
+			set { ((QGraphicsScene) interceptor).itemIndexMethod = value; }
 		}
 		[Q_PROPERTY("QRectF", "sceneRect")]
 		public QRectF SceneRect {
-			get { return Property("sceneRect").Value<QRectF>(); }
-			set { SetProperty("sceneRect", QVariant.FromValue<QRectF>(value)); }
+			[SmokeMethod("sceneRect", "()", "")]
+			get { return ((QGraphicsScene) interceptor).SceneRect; }
+			[SmokeMethod("setSceneRect", "(QRectF)", "#")]
+			set { ((QGraphicsScene) interceptor).SceneRect = value; }
 		}
 		// void drawItems(QPainter* arg1,int arg2,QGraphicsItem** arg3,const QStyleOptionGraphicsItem* arg4,QWidget* arg5); >>>> NOT CONVERTED
 		// void drawItems(QPainter* arg1,int arg2,QGraphicsItem** arg3,const QStyleOptionGraphicsItem* arg4); >>>> NOT CONVERTED

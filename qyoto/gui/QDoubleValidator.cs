@@ -25,18 +25,24 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("double", "bottom")]
 		public double Bottom {
-			get { return Property("bottom").Value<double>(); }
-			set { SetProperty("bottom", QVariant.FromValue<double>(value)); }
+			[SmokeMethod("bottom", "()", "")]
+			get { return ((QDoubleValidator) interceptor).Bottom; }
+			[SmokeMethod("setBottom", "(double)", "$")]
+			set { ((QDoubleValidator) interceptor).Bottom = value; }
 		}
 		[Q_PROPERTY("double", "top")]
 		public double Top {
-			get { return Property("top").Value<double>(); }
-			set { SetProperty("top", QVariant.FromValue<double>(value)); }
+			[SmokeMethod("top", "()", "")]
+			get { return ((QDoubleValidator) interceptor).Top; }
+			[SmokeMethod("setTop", "(double)", "$")]
+			set { ((QDoubleValidator) interceptor).Top = value; }
 		}
 		[Q_PROPERTY("int", "decimals")]
 		public int Decimals {
-			get { return Property("decimals").Value<int>(); }
-			set { SetProperty("decimals", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("decimals", "()", "")]
+			get { return ((QDoubleValidator) interceptor).Decimals; }
+			[SmokeMethod("setDecimals", "(int)", "$")]
+			set { ((QDoubleValidator) interceptor).Decimals = value; }
 		}
 		public QDoubleValidator(QObject parent) : this((Type) null) {
 			CreateProxy();

@@ -30,18 +30,24 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("bool", "resolveSymlinks")]
 		public bool ResolveSymlinks {
-			get { return Property("resolveSymlinks").Value<bool>(); }
-			set { SetProperty("resolveSymlinks", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("resolveSymlinks", "()", "")]
+			get { return ((QDirModel) interceptor).ResolveSymlinks; }
+			[SmokeMethod("setResolveSymlinks", "(bool)", "$")]
+			set { ((QDirModel) interceptor).ResolveSymlinks = value; }
 		}
 		[Q_PROPERTY("bool", "readOnly")]
 		public bool ReadOnly {
-			get { return Property("readOnly").Value<bool>(); }
-			set { SetProperty("readOnly", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isReadOnly", "()", "")]
+			get { return ((QDirModel) interceptor).ReadOnly; }
+			[SmokeMethod("setReadOnly", "(bool)", "$")]
+			set { ((QDirModel) interceptor).ReadOnly = value; }
 		}
 		[Q_PROPERTY("bool", "lazyChildCount")]
 		public bool LazyChildCount {
-			get { return Property("lazyChildCount").Value<bool>(); }
-			set { SetProperty("lazyChildCount", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("lazyChildCount", "()", "")]
+			get { return ((QDirModel) interceptor).LazyChildCount; }
+			[SmokeMethod("setLazyChildCount", "(bool)", "$")]
+			set { ((QDirModel) interceptor).LazyChildCount = value; }
 		}
 		public QDirModel(List<string> nameFilters, int filters, int sort, QObject parent) : this((Type) null) {
 			CreateProxy();

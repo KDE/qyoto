@@ -25,28 +25,38 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("QString", "title")]
 		public string Title {
-			get { return Property("title").Value<string>(); }
-			set { SetProperty("title", QVariant.FromValue<string>(value)); }
+			[SmokeMethod("title", "()", "")]
+			get { return ((QGroupBox) interceptor).Title; }
+			[SmokeMethod("setTitle", "(QString)", "$")]
+			set { ((QGroupBox) interceptor).Title = value; }
 		}
 		[Q_PROPERTY("Qt::Alignment", "alignment")]
 		public int Alignment {
-			get { return Property("alignment").Value<int>(); }
-			set { SetProperty("alignment", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("alignment", "()", "")]
+			get { return ((QGroupBox) interceptor).Alignment; }
+			[SmokeMethod("setAlignment", "(Qt::Alignment)", "$")]
+			set { ((QGroupBox) interceptor).Alignment = value; }
 		}
 		[Q_PROPERTY("bool", "flat")]
 		public bool Flat {
-			get { return Property("flat").Value<bool>(); }
-			set { SetProperty("flat", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isFlat", "()", "")]
+			get { return ((QGroupBox) interceptor).Flat; }
+			[SmokeMethod("setFlat", "(bool)", "$")]
+			set { ((QGroupBox) interceptor).Flat = value; }
 		}
 		[Q_PROPERTY("bool", "checkable")]
 		public bool Checkable {
-			get { return Property("checkable").Value<bool>(); }
-			set { SetProperty("checkable", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isCheckable", "()", "")]
+			get { return ((QGroupBox) interceptor).Checkable; }
+			[SmokeMethod("setCheckable", "(bool)", "$")]
+			set { ((QGroupBox) interceptor).Checkable = value; }
 		}
 		[Q_PROPERTY("bool", "checked")]
 		public bool Checked {
-			get { return Property("checked").Value<bool>(); }
-			set { SetProperty("checked", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isChecked", "()", "")]
+			get { return ((QGroupBox) interceptor).Checked; }
+			[SmokeMethod("setChecked", "(bool)", "$")]
+			set { ((QGroupBox) interceptor).Checked = value; }
 		}
 		public QGroupBox(QWidget parent) : this((Type) null) {
 			CreateProxy();

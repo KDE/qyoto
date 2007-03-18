@@ -30,13 +30,17 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("bool", "scrollBarsEnabled")]
 		public bool ScrollBarsEnabled {
-			get { return Property("scrollBarsEnabled").Value<bool>(); }
-			set { SetProperty("scrollBarsEnabled", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("scrollBarsEnabled", "()", "")]
+			get { return ((QWorkspace) interceptor).ScrollBarsEnabled; }
+			[SmokeMethod("setScrollBarsEnabled", "(bool)", "$")]
+			set { ((QWorkspace) interceptor).ScrollBarsEnabled = value; }
 		}
 		[Q_PROPERTY("QBrush", "background")]
 		public QBrush Background {
-			get { return Property("background").Value<QBrush>(); }
-			set { SetProperty("background", QVariant.FromValue<QBrush>(value)); }
+			[SmokeMethod("background", "()", "")]
+			get { return ((QWorkspace) interceptor).Background; }
+			[SmokeMethod("setBackground", "(QBrush)", "#")]
+			set { ((QWorkspace) interceptor).Background = value; }
 		}
 		public QWorkspace(QWidget parent) : this((Type) null) {
 			CreateProxy();

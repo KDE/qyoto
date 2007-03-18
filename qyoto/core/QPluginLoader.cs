@@ -27,8 +27,10 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("QString", "fileName")]
 		public string FileName {
-			get { return Property("fileName").Value<string>(); }
-			set { SetProperty("fileName", QVariant.FromValue<string>(value)); }
+			[SmokeMethod("fileName", "()", "")]
+			get { return ((QPluginLoader) interceptor).FileName; }
+			[SmokeMethod("setFileName", "(QString)", "$")]
+			set { ((QPluginLoader) interceptor).FileName = value; }
 		}
 		public QPluginLoader(QObject parent) : this((Type) null) {
 			CreateProxy();

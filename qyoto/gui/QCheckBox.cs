@@ -25,8 +25,10 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("bool", "tristate")]
 		public bool Tristate {
-			get { return Property("tristate").Value<bool>(); }
-			set { SetProperty("tristate", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isTristate", "()", "")]
+			get { return ((QCheckBox) interceptor).Tristate; }
+			[SmokeMethod("setTristate", "(bool)", "$")]
+			set { ((QCheckBox) interceptor).Tristate = value; }
 		}
 		public QCheckBox(QWidget parent) : this((Type) null) {
 			CreateProxy();

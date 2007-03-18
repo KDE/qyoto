@@ -15,18 +15,12 @@ namespace Qyoto {
 		}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDBusServer), this);
-			_interceptor = (QDBusServer) realProxy.GetTransparentProxy();
+			interceptor = (QDBusServer) realProxy.GetTransparentProxy();
 		}
-		private QDBusServer ProxyQDBusServer() {
-			return (QDBusServer) _interceptor;
-		}
-		private static Object _staticInterceptor = null;
+		private static IQDBusServerProxy staticInterceptor = null;
 		static QDBusServer() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQDBusServerProxy), null);
-			_staticInterceptor = (IQDBusServerProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQDBusServerProxy StaticQDBusServer() {
-			return (IQDBusServerProxy) _staticInterceptor;
+			staticInterceptor = (IQDBusServerProxy) realProxy.GetTransparentProxy();
 		}
 		public QDBusServer(string address, QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -34,7 +28,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDBusServer", "(const QString&, QObject*)", "$#")]
 		private void NewQDBusServer(string address, QObject parent) {
-			ProxyQDBusServer().NewQDBusServer(address,parent);
+			((QDBusServer) interceptor).NewQDBusServer(address,parent);
 		}
 		public QDBusServer(string address) : this((Type) null) {
 			CreateProxy();
@@ -42,19 +36,19 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDBusServer", "(const QString&)", "$")]
 		private void NewQDBusServer(string address) {
-			ProxyQDBusServer().NewQDBusServer(address);
+			((QDBusServer) interceptor).NewQDBusServer(address);
 		}
 		[SmokeMethod("isConnected", "() const", "")]
 		public bool IsConnected() {
-			return ProxyQDBusServer().IsConnected();
+			return ((QDBusServer) interceptor).IsConnected();
 		}
 		[SmokeMethod("lastError", "() const", "")]
 		public QDBusError LastError() {
-			return ProxyQDBusServer().LastError();
+			return ((QDBusServer) interceptor).LastError();
 		}
 		[SmokeMethod("address", "() const", "")]
 		public string Address() {
-			return ProxyQDBusServer().Address();
+			return ((QDBusServer) interceptor).Address();
 		}
 		~QDBusServer() {
 			DisposeQDBusServer();
@@ -64,13 +58,13 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QDBusServer", "()", "")]
 		private void DisposeQDBusServer() {
-			ProxyQDBusServer().DisposeQDBusServer();
+			((QDBusServer) interceptor).DisposeQDBusServer();
 		}
 		public static string Tr(string s, string c) {
-			return StaticQDBusServer().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQDBusServer().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQDBusServerSignals Emit {
 			get { return (IQDBusServerSignals) Q_EMIT; }

@@ -29,13 +29,17 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("bool", "sizeGripEnabled")]
 		public bool SizeGripEnabled {
-			get { return Property("sizeGripEnabled").Value<bool>(); }
-			set { SetProperty("sizeGripEnabled", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isSizeGripEnabled", "()", "")]
+			get { return ((QDialog) interceptor).SizeGripEnabled; }
+			[SmokeMethod("setSizeGripEnabled", "(bool)", "$")]
+			set { ((QDialog) interceptor).SizeGripEnabled = value; }
 		}
 		[Q_PROPERTY("bool", "modal")]
 		public bool Modal {
-			get { return Property("modal").Value<bool>(); }
-			set { SetProperty("modal", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isModal", "()", "")]
+			get { return ((QDialog) interceptor).Modal; }
+			[SmokeMethod("setModal", "(bool)", "$")]
+			set { ((QDialog) interceptor).Modal = value; }
 		}
 		public QDialog(QWidget parent, int f) : this((Type) null) {
 			CreateProxy();

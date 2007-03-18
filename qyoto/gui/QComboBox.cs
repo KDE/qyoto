@@ -40,76 +40,104 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("bool", "editable")]
 		public bool Editable {
-			get { return Property("editable").Value<bool>(); }
-			set { SetProperty("editable", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isEditable", "()", "")]
+			get { return ((QComboBox) interceptor).Editable; }
+			[SmokeMethod("setEditable", "(bool)", "$")]
+			set { ((QComboBox) interceptor).Editable = value; }
 		}
 		[Q_PROPERTY("int", "count")]
 		public int Count {
-			get { return Property("count").Value<int>(); }
+			[SmokeMethod("count", "()", "")]
+			get { return ((QComboBox) interceptor).Count; }
 		}
 		[Q_PROPERTY("QString", "currentText")]
 		public string CurrentText {
-			get { return Property("currentText").Value<string>(); }
+			[SmokeMethod("currentText", "()", "")]
+			get { return ((QComboBox) interceptor).CurrentText; }
 		}
 		[Q_PROPERTY("int", "currentIndex")]
 		public int CurrentIndex {
-			get { return Property("currentIndex").Value<int>(); }
-			set { SetProperty("currentIndex", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("currentIndex", "()", "")]
+			get { return ((QComboBox) interceptor).CurrentIndex; }
+			[SmokeMethod("setCurrentIndex", "(int)", "$")]
+			set { ((QComboBox) interceptor).CurrentIndex = value; }
 		}
 		[Q_PROPERTY("int", "maxVisibleItems")]
 		public int MaxVisibleItems {
-			get { return Property("maxVisibleItems").Value<int>(); }
-			set { SetProperty("maxVisibleItems", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("maxVisibleItems", "()", "")]
+			get { return ((QComboBox) interceptor).MaxVisibleItems; }
+			[SmokeMethod("setMaxVisibleItems", "(int)", "$")]
+			set { ((QComboBox) interceptor).MaxVisibleItems = value; }
 		}
 		[Q_PROPERTY("int", "maxCount")]
 		public int MaxCount {
-			get { return Property("maxCount").Value<int>(); }
-			set { SetProperty("maxCount", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("maxCount", "()", "")]
+			get { return ((QComboBox) interceptor).MaxCount; }
+			[SmokeMethod("setMaxCount", "(int)", "$")]
+			set { ((QComboBox) interceptor).MaxCount = value; }
 		}
 		[Q_PROPERTY("QComboBox::InsertPolicy", "insertPolicy")]
 		public QComboBox.InsertPolicy insertPolicy {
-			get { return Property("insertPolicy").Value<QComboBox.InsertPolicy>(); }
-			set { SetProperty("insertPolicy", QVariant.FromValue<QComboBox.InsertPolicy>(value)); }
+			[SmokeMethod("insertPolicy", "()", "")]
+			get { return ((QComboBox) interceptor).insertPolicy; }
+			[SmokeMethod("setInsertPolicy", "(QComboBox::InsertPolicy)", "$")]
+			set { ((QComboBox) interceptor).insertPolicy = value; }
 		}
 		[Q_PROPERTY("QComboBox::SizeAdjustPolicy", "sizeAdjustPolicy")]
 		public QComboBox.SizeAdjustPolicy sizeAdjustPolicy {
-			get { return Property("sizeAdjustPolicy").Value<QComboBox.SizeAdjustPolicy>(); }
-			set { SetProperty("sizeAdjustPolicy", QVariant.FromValue<QComboBox.SizeAdjustPolicy>(value)); }
+			[SmokeMethod("sizeAdjustPolicy", "()", "")]
+			get { return ((QComboBox) interceptor).sizeAdjustPolicy; }
+			[SmokeMethod("setSizeAdjustPolicy", "(QComboBox::SizeAdjustPolicy)", "$")]
+			set { ((QComboBox) interceptor).sizeAdjustPolicy = value; }
 		}
 		[Q_PROPERTY("int", "minimumContentsLength")]
 		public int MinimumContentsLength {
-			get { return Property("minimumContentsLength").Value<int>(); }
-			set { SetProperty("minimumContentsLength", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("minimumContentsLength", "()", "")]
+			get { return ((QComboBox) interceptor).MinimumContentsLength; }
+			[SmokeMethod("setMinimumContentsLength", "(int)", "$")]
+			set { ((QComboBox) interceptor).MinimumContentsLength = value; }
 		}
 		[Q_PROPERTY("QSize", "iconSize")]
 		public QSize IconSize {
-			get { return Property("iconSize").Value<QSize>(); }
-			set { SetProperty("iconSize", QVariant.FromValue<QSize>(value)); }
+			[SmokeMethod("iconSize", "()", "")]
+			get { return ((QComboBox) interceptor).IconSize; }
+			[SmokeMethod("setIconSize", "(QSize)", "#")]
+			set { ((QComboBox) interceptor).IconSize = value; }
 		}
 		[Q_PROPERTY("bool", "autoCompletion")]
 		public bool AutoCompletion {
-			get { return Property("autoCompletion").Value<bool>(); }
-			set { SetProperty("autoCompletion", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("autoCompletion", "()", "")]
+			get { return ((QComboBox) interceptor).AutoCompletion; }
+			[SmokeMethod("setAutoCompletion", "(bool)", "$")]
+			set { ((QComboBox) interceptor).AutoCompletion = value; }
 		}
 		[Q_PROPERTY("Qt::CaseSensitivity", "autoCompletionCaseSensitivity")]
 		public Qt.CaseSensitivity AutoCompletionCaseSensitivity {
-			get { return Property("autoCompletionCaseSensitivity").Value<Qt.CaseSensitivity>(); }
-			set { SetProperty("autoCompletionCaseSensitivity", QVariant.FromValue<Qt.CaseSensitivity>(value)); }
+			[SmokeMethod("autoCompletionCaseSensitivity", "()", "")]
+			get { return ((QComboBox) interceptor).AutoCompletionCaseSensitivity; }
+			[SmokeMethod("setAutoCompletionCaseSensitivity", "(Qt::CaseSensitivity)", "$")]
+			set { ((QComboBox) interceptor).AutoCompletionCaseSensitivity = value; }
 		}
 		[Q_PROPERTY("bool", "duplicatesEnabled")]
 		public bool DuplicatesEnabled {
-			get { return Property("duplicatesEnabled").Value<bool>(); }
-			set { SetProperty("duplicatesEnabled", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("duplicatesEnabled", "()", "")]
+			get { return ((QComboBox) interceptor).DuplicatesEnabled; }
+			[SmokeMethod("setDuplicatesEnabled", "(bool)", "$")]
+			set { ((QComboBox) interceptor).DuplicatesEnabled = value; }
 		}
 		[Q_PROPERTY("bool", "frame")]
 		public bool Frame {
-			get { return Property("frame").Value<bool>(); }
-			set { SetProperty("frame", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("hasFrame", "()", "")]
+			get { return ((QComboBox) interceptor).Frame; }
+			[SmokeMethod("setFrame", "(bool)", "$")]
+			set { ((QComboBox) interceptor).Frame = value; }
 		}
 		[Q_PROPERTY("int", "modelColumn")]
 		public int ModelColumn {
-			get { return Property("modelColumn").Value<int>(); }
-			set { SetProperty("modelColumn", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("modelColumn", "()", "")]
+			get { return ((QComboBox) interceptor).ModelColumn; }
+			[SmokeMethod("setModelColumn", "(int)", "$")]
+			set { ((QComboBox) interceptor).ModelColumn = value; }
 		}
 		public QComboBox(QWidget parent) : this((Type) null) {
 			CreateProxy();

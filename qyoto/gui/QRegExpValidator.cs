@@ -25,8 +25,10 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("QRegExp", "regExp")]
 		public QRegExp RegExp {
-			get { return Property("regExp").Value<QRegExp>(); }
-			set { SetProperty("regExp", QVariant.FromValue<QRegExp>(value)); }
+			[SmokeMethod("regExp", "()", "")]
+			get { return ((QRegExpValidator) interceptor).RegExp; }
+			[SmokeMethod("setRegExp", "(QRegExp)", "#")]
+			set { ((QRegExpValidator) interceptor).RegExp = value; }
 		}
 		public QRegExpValidator(QObject parent) : this((Type) null) {
 			CreateProxy();

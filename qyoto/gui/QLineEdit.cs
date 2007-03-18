@@ -31,77 +31,103 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("QString", "inputMask")]
 		public string InputMask {
-			get { return Property("inputMask").Value<string>(); }
-			set { SetProperty("inputMask", QVariant.FromValue<string>(value)); }
+			[SmokeMethod("inputMask", "()", "")]
+			get { return ((QLineEdit) interceptor).InputMask; }
+			[SmokeMethod("setInputMask", "(QString)", "$")]
+			set { ((QLineEdit) interceptor).InputMask = value; }
 		}
 		[Q_PROPERTY("QString", "text")]
 		public string Text {
-			get { return Property("text").Value<string>(); }
-			set { SetProperty("text", QVariant.FromValue<string>(value)); }
+			[SmokeMethod("text", "()", "")]
+			get { return ((QLineEdit) interceptor).Text; }
+			[SmokeMethod("setText", "(QString)", "$")]
+			set { ((QLineEdit) interceptor).Text = value; }
 		}
 		[Q_PROPERTY("int", "maxLength")]
 		public int MaxLength {
-			get { return Property("maxLength").Value<int>(); }
-			set { SetProperty("maxLength", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("maxLength", "()", "")]
+			get { return ((QLineEdit) interceptor).MaxLength; }
+			[SmokeMethod("setMaxLength", "(int)", "$")]
+			set { ((QLineEdit) interceptor).MaxLength = value; }
 		}
 		[Q_PROPERTY("bool", "frame")]
 		public bool Frame {
-			get { return Property("frame").Value<bool>(); }
-			set { SetProperty("frame", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("hasFrame", "()", "")]
+			get { return ((QLineEdit) interceptor).Frame; }
+			[SmokeMethod("setFrame", "(bool)", "$")]
+			set { ((QLineEdit) interceptor).Frame = value; }
 		}
 		[Q_PROPERTY("QLineEdit::EchoMode", "echoMode")]
 		public QLineEdit.EchoMode echoMode {
-			get { return Property("echoMode").Value<QLineEdit.EchoMode>(); }
-			set { SetProperty("echoMode", QVariant.FromValue<QLineEdit.EchoMode>(value)); }
+			[SmokeMethod("echoMode", "()", "")]
+			get { return ((QLineEdit) interceptor).echoMode; }
+			[SmokeMethod("setEchoMode", "(QLineEdit::EchoMode)", "$")]
+			set { ((QLineEdit) interceptor).echoMode = value; }
 		}
 		[Q_PROPERTY("QString", "displayText")]
 		public string DisplayText {
-			get { return Property("displayText").Value<string>(); }
+			[SmokeMethod("displayText", "()", "")]
+			get { return ((QLineEdit) interceptor).DisplayText; }
 		}
 		[Q_PROPERTY("int", "cursorPosition")]
 		public int CursorPosition {
-			get { return Property("cursorPosition").Value<int>(); }
-			set { SetProperty("cursorPosition", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("cursorPosition", "()", "")]
+			get { return ((QLineEdit) interceptor).CursorPosition; }
+			[SmokeMethod("setCursorPosition", "(int)", "$")]
+			set { ((QLineEdit) interceptor).CursorPosition = value; }
 		}
 		[Q_PROPERTY("Qt::Alignment", "alignment")]
 		public int Alignment {
-			get { return Property("alignment").Value<int>(); }
-			set { SetProperty("alignment", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("alignment", "()", "")]
+			get { return ((QLineEdit) interceptor).Alignment; }
+			[SmokeMethod("setAlignment", "(Qt::Alignment)", "$")]
+			set { ((QLineEdit) interceptor).Alignment = value; }
 		}
 		[Q_PROPERTY("bool", "modified")]
 		public bool Modified {
-			get { return Property("modified").Value<bool>(); }
-			set { SetProperty("modified", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isModified", "()", "")]
+			get { return ((QLineEdit) interceptor).Modified; }
+			[SmokeMethod("setModified", "(bool)", "$")]
+			set { ((QLineEdit) interceptor).Modified = value; }
 		}
 		[Q_PROPERTY("bool", "hasSelectedText")]
 		public bool HasSelectedText {
-			get { return Property("hasSelectedText").Value<bool>(); }
+			[SmokeMethod("hasSelectedText", "()", "")]
+			get { return ((QLineEdit) interceptor).HasSelectedText; }
 		}
 		[Q_PROPERTY("QString", "selectedText")]
 		public string SelectedText {
-			get { return Property("selectedText").Value<string>(); }
+			[SmokeMethod("selectedText", "()", "")]
+			get { return ((QLineEdit) interceptor).SelectedText; }
 		}
 		[Q_PROPERTY("bool", "dragEnabled")]
 		public bool DragEnabled {
-			get { return Property("dragEnabled").Value<bool>(); }
-			set { SetProperty("dragEnabled", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("dragEnabled", "()", "")]
+			get { return ((QLineEdit) interceptor).DragEnabled; }
+			[SmokeMethod("setDragEnabled", "(bool)", "$")]
+			set { ((QLineEdit) interceptor).DragEnabled = value; }
 		}
 		[Q_PROPERTY("bool", "readOnly")]
 		public bool ReadOnly {
-			get { return Property("readOnly").Value<bool>(); }
-			set { SetProperty("readOnly", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isReadOnly", "()", "")]
+			get { return ((QLineEdit) interceptor).ReadOnly; }
+			[SmokeMethod("setReadOnly", "(bool)", "$")]
+			set { ((QLineEdit) interceptor).ReadOnly = value; }
 		}
 		[Q_PROPERTY("bool", "undoAvailable")]
 		public bool UndoAvailable {
-			get { return Property("undoAvailable").Value<bool>(); }
+			[SmokeMethod("isUndoAvailable", "()", "")]
+			get { return ((QLineEdit) interceptor).UndoAvailable; }
 		}
 		[Q_PROPERTY("bool", "redoAvailable")]
 		public bool RedoAvailable {
-			get { return Property("redoAvailable").Value<bool>(); }
+			[SmokeMethod("isRedoAvailable", "()", "")]
+			get { return ((QLineEdit) interceptor).RedoAvailable; }
 		}
 		[Q_PROPERTY("bool", "acceptableInput")]
 		public bool AcceptableInput {
-			get { return Property("acceptableInput").Value<bool>(); }
+			[SmokeMethod("hasAcceptableInput", "()", "")]
+			get { return ((QLineEdit) interceptor).AcceptableInput; }
 		}
 		public QLineEdit(QWidget parent) : this((Type) null) {
 			CreateProxy();

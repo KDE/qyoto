@@ -29,52 +29,71 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("int", "minimum")]
 		public int Minimum {
-			get { return Property("minimum").Value<int>(); }
-			set { SetProperty("minimum", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("minimum", "()", "")]
+			get { return ((QProgressBar) interceptor).Minimum; }
+			[SmokeMethod("setMinimum", "(int)", "$")]
+			set { ((QProgressBar) interceptor).Minimum = value; }
 		}
 		[Q_PROPERTY("int", "maximum")]
 		public int Maximum {
-			get { return Property("maximum").Value<int>(); }
-			set { SetProperty("maximum", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("maximum", "()", "")]
+			get { return ((QProgressBar) interceptor).Maximum; }
+			[SmokeMethod("setMaximum", "(int)", "$")]
+			set { ((QProgressBar) interceptor).Maximum = value; }
 		}
 		[Q_PROPERTY("QString", "text")]
 		public string Text {
-			get { return Property("text").Value<string>(); }
+			[SmokeMethod("text", "()", "")]
+			get { return ((QProgressBar) interceptor).Text; }
 		}
 		[Q_PROPERTY("int", "value")]
 		public int Value {
-			get { return Property("value").Value<int>(); }
-			set { SetProperty("value", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("value", "()", "")]
+			get { return ((QProgressBar) interceptor).Value; }
+			[SmokeMethod("setValue", "(int)", "$")]
+			set { ((QProgressBar) interceptor).Value = value; }
 		}
 		[Q_PROPERTY("Qt::Alignment", "alignment")]
 		public int Alignment {
-			get { return Property("alignment").Value<int>(); }
-			set { SetProperty("alignment", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("alignment", "()", "")]
+			get { return ((QProgressBar) interceptor).Alignment; }
+			[SmokeMethod("setAlignment", "(Qt::Alignment)", "$")]
+			set { ((QProgressBar) interceptor).Alignment = value; }
 		}
 		[Q_PROPERTY("bool", "textVisible")]
 		public bool TextVisible {
-			get { return Property("textVisible").Value<bool>(); }
-			set { SetProperty("textVisible", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isTextVisible", "()", "")]
+			get { return ((QProgressBar) interceptor).TextVisible; }
+			[SmokeMethod("setTextVisible", "(bool)", "$")]
+			set { ((QProgressBar) interceptor).TextVisible = value; }
 		}
 		[Q_PROPERTY("Qt::Orientation", "orientation")]
 		public Qt.Orientation Orientation {
-			get { return Property("orientation").Value<Qt.Orientation>(); }
-			set { SetProperty("orientation", QVariant.FromValue<Qt.Orientation>(value)); }
+			[SmokeMethod("orientation", "()", "")]
+			get { return ((QProgressBar) interceptor).Orientation; }
+			[SmokeMethod("setOrientation", "(Qt::Orientation)", "$")]
+			set { ((QProgressBar) interceptor).Orientation = value; }
 		}
 		[Q_PROPERTY("bool", "invertedAppearance")]
 		public bool InvertedAppearance {
-			get { return Property("invertedAppearance").Value<bool>(); }
-			set { SetProperty("invertedAppearance", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("invertedAppearance", "()", "")]
+			get { return ((QProgressBar) interceptor).InvertedAppearance; }
+			[SmokeMethod("setInvertedAppearance", "(bool)", "$")]
+			set { ((QProgressBar) interceptor).InvertedAppearance = value; }
 		}
 		[Q_PROPERTY("QProgressBar::Direction", "textDirection")]
 		public QProgressBar.Direction TextDirection {
-			get { return Property("textDirection").Value<QProgressBar.Direction>(); }
-			set { SetProperty("textDirection", QVariant.FromValue<QProgressBar.Direction>(value)); }
+			[SmokeMethod("textDirection", "()", "")]
+			get { return ((QProgressBar) interceptor).TextDirection; }
+			[SmokeMethod("setTextDirection", "(QProgressBar::Direction)", "$")]
+			set { ((QProgressBar) interceptor).TextDirection = value; }
 		}
 		[Q_PROPERTY("QString", "format")]
 		public string Format {
-			get { return Property("format").Value<string>(); }
-			set { SetProperty("format", QVariant.FromValue<string>(value)); }
+			[SmokeMethod("format", "()", "")]
+			get { return ((QProgressBar) interceptor).Format; }
+			[SmokeMethod("setFormat", "(QString)", "$")]
+			set { ((QProgressBar) interceptor).Format = value; }
 		}
 		public QProgressBar(QWidget parent) : this((Type) null) {
 			CreateProxy();

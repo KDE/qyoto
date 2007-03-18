@@ -30,23 +30,31 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("bool", "tearOffEnabled")]
 		public bool TearOffEnabled {
-			get { return Property("tearOffEnabled").Value<bool>(); }
-			set { SetProperty("tearOffEnabled", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isTearOffEnabled", "()", "")]
+			get { return ((QMenu) interceptor).TearOffEnabled; }
+			[SmokeMethod("setTearOffEnabled", "(bool)", "$")]
+			set { ((QMenu) interceptor).TearOffEnabled = value; }
 		}
 		[Q_PROPERTY("QString", "title")]
 		public string Title {
-			get { return Property("title").Value<string>(); }
-			set { SetProperty("title", QVariant.FromValue<string>(value)); }
+			[SmokeMethod("title", "()", "")]
+			get { return ((QMenu) interceptor).Title; }
+			[SmokeMethod("setTitle", "(QString)", "$")]
+			set { ((QMenu) interceptor).Title = value; }
 		}
 		[Q_PROPERTY("QIcon", "icon")]
 		public QIcon Icon {
-			get { return Property("icon").Value<QIcon>(); }
-			set { SetProperty("icon", QVariant.FromValue<QIcon>(value)); }
+			[SmokeMethod("icon", "()", "")]
+			get { return ((QMenu) interceptor).Icon; }
+			[SmokeMethod("setIcon", "(QIcon)", "#")]
+			set { ((QMenu) interceptor).Icon = value; }
 		}
 		[Q_PROPERTY("bool", "separatorsCollapsible")]
 		public bool SeparatorsCollapsible {
-			get { return Property("separatorsCollapsible").Value<bool>(); }
-			set { SetProperty("separatorsCollapsible", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("separatorsCollapsible", "()", "")]
+			get { return ((QMenu) interceptor).SeparatorsCollapsible; }
+			[SmokeMethod("setSeparatorsCollapsible", "(bool)", "$")]
+			set { ((QMenu) interceptor).SeparatorsCollapsible = value; }
 		}
 		public QMenu(QWidget parent) : this((Type) null) {
 			CreateProxy();

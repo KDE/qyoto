@@ -25,8 +25,10 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("bool", "active")]
 		public bool Active {
-			get { return Property("active").Value<bool>(); }
-			set { SetProperty("active", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isActive", "()", "")]
+			get { return ((QUndoStack) interceptor).Active; }
+			[SmokeMethod("setActive", "(bool)", "$")]
+			set { ((QUndoStack) interceptor).Active = value; }
 		}
 		public QUndoStack(QObject parent) : this((Type) null) {
 			CreateProxy();

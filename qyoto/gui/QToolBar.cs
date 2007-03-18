@@ -25,28 +25,38 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("bool", "movable")]
 		public bool Movable {
-			get { return Property("movable").Value<bool>(); }
-			set { SetProperty("movable", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isMovable", "()", "")]
+			get { return ((QToolBar) interceptor).Movable; }
+			[SmokeMethod("setMovable", "(bool)", "$")]
+			set { ((QToolBar) interceptor).Movable = value; }
 		}
 		[Q_PROPERTY("Qt::ToolBarAreas", "allowedAreas")]
 		public int AllowedAreas {
-			get { return Property("allowedAreas").Value<int>(); }
-			set { SetProperty("allowedAreas", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("allowedAreas", "()", "")]
+			get { return ((QToolBar) interceptor).AllowedAreas; }
+			[SmokeMethod("setAllowedAreas", "(Qt::ToolBarAreas)", "$")]
+			set { ((QToolBar) interceptor).AllowedAreas = value; }
 		}
 		[Q_PROPERTY("Qt::Orientation", "orientation")]
 		public Qt.Orientation Orientation {
-			get { return Property("orientation").Value<Qt.Orientation>(); }
-			set { SetProperty("orientation", QVariant.FromValue<Qt.Orientation>(value)); }
+			[SmokeMethod("orientation", "()", "")]
+			get { return ((QToolBar) interceptor).Orientation; }
+			[SmokeMethod("setOrientation", "(Qt::Orientation)", "$")]
+			set { ((QToolBar) interceptor).Orientation = value; }
 		}
 		[Q_PROPERTY("QSize", "iconSize")]
 		public QSize IconSize {
-			get { return Property("iconSize").Value<QSize>(); }
-			set { SetProperty("iconSize", QVariant.FromValue<QSize>(value)); }
+			[SmokeMethod("iconSize", "()", "")]
+			get { return ((QToolBar) interceptor).IconSize; }
+			[SmokeMethod("setIconSize", "(QSize)", "#")]
+			set { ((QToolBar) interceptor).IconSize = value; }
 		}
 		[Q_PROPERTY("Qt::ToolButtonStyle", "toolButtonStyle")]
 		public Qt.ToolButtonStyle ToolButtonStyle {
-			get { return Property("toolButtonStyle").Value<Qt.ToolButtonStyle>(); }
-			set { SetProperty("toolButtonStyle", QVariant.FromValue<Qt.ToolButtonStyle>(value)); }
+			[SmokeMethod("toolButtonStyle", "()", "")]
+			get { return ((QToolBar) interceptor).ToolButtonStyle; }
+			[SmokeMethod("setToolButtonStyle", "(Qt::ToolButtonStyle)", "$")]
+			set { ((QToolBar) interceptor).ToolButtonStyle = value; }
 		}
 		public QToolBar(string title, QWidget parent) : this((Type) null) {
 			CreateProxy();

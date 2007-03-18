@@ -25,8 +25,10 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("int", "currentIndex")]
 		public int CurrentIndex {
-			get { return Property("currentIndex").Value<int>(); }
-			set { SetProperty("currentIndex", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("currentIndex", "()", "")]
+			get { return ((QStackedLayout) interceptor).CurrentIndex; }
+			[SmokeMethod("setCurrentIndex", "(int)", "$")]
+			set { ((QStackedLayout) interceptor).CurrentIndex = value; }
 		}
 		public QStackedLayout() : this((Type) null) {
 			CreateProxy();

@@ -24,8 +24,10 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("bool", "clipping")]
 		public bool Clipping {
-			get { return Property("clipping").Value<bool>(); }
-			set { SetProperty("clipping", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("hasClipping", "()", "")]
+			get { return ((QItemDelegate) interceptor).Clipping; }
+			[SmokeMethod("setClipping", "(bool)", "$")]
+			set { ((QItemDelegate) interceptor).Clipping = value; }
 		}
 		public QItemDelegate(QObject parent) : this((Type) null) {
 			CreateProxy();

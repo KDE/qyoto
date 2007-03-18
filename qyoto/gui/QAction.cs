@@ -39,78 +39,108 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("bool", "checkable")]
 		public bool Checkable {
-			get { return Property("checkable").Value<bool>(); }
-			set { SetProperty("checkable", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isCheckable", "()", "")]
+			get { return ((QAction) interceptor).Checkable; }
+			[SmokeMethod("setCheckable", "(bool)", "$")]
+			set { ((QAction) interceptor).Checkable = value; }
 		}
 		[Q_PROPERTY("bool", "checked")]
 		public bool Checked {
-			get { return Property("checked").Value<bool>(); }
-			set { SetProperty("checked", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isChecked", "()", "")]
+			get { return ((QAction) interceptor).Checked; }
+			[SmokeMethod("setChecked", "(bool)", "$")]
+			set { ((QAction) interceptor).Checked = value; }
 		}
 		[Q_PROPERTY("bool", "enabled")]
 		public bool Enabled {
-			get { return Property("enabled").Value<bool>(); }
-			set { SetProperty("enabled", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isEnabled", "()", "")]
+			get { return ((QAction) interceptor).Enabled; }
+			[SmokeMethod("setEnabled", "(bool)", "$")]
+			set { ((QAction) interceptor).Enabled = value; }
 		}
 		[Q_PROPERTY("QIcon", "icon")]
 		public QIcon Icon {
-			get { return Property("icon").Value<QIcon>(); }
-			set { SetProperty("icon", QVariant.FromValue<QIcon>(value)); }
+			[SmokeMethod("icon", "()", "")]
+			get { return ((QAction) interceptor).Icon; }
+			[SmokeMethod("setIcon", "(QIcon)", "#")]
+			set { ((QAction) interceptor).Icon = value; }
 		}
 		[Q_PROPERTY("QString", "text")]
 		public string Text {
-			get { return Property("text").Value<string>(); }
-			set { SetProperty("text", QVariant.FromValue<string>(value)); }
+			[SmokeMethod("text", "()", "")]
+			get { return ((QAction) interceptor).Text; }
+			[SmokeMethod("setText", "(QString)", "$")]
+			set { ((QAction) interceptor).Text = value; }
 		}
 		[Q_PROPERTY("QString", "iconText")]
 		public string IconText {
-			get { return Property("iconText").Value<string>(); }
-			set { SetProperty("iconText", QVariant.FromValue<string>(value)); }
+			[SmokeMethod("iconText", "()", "")]
+			get { return ((QAction) interceptor).IconText; }
+			[SmokeMethod("setIconText", "(QString)", "$")]
+			set { ((QAction) interceptor).IconText = value; }
 		}
 		[Q_PROPERTY("QString", "toolTip")]
 		public string ToolTip {
-			get { return Property("toolTip").Value<string>(); }
-			set { SetProperty("toolTip", QVariant.FromValue<string>(value)); }
+			[SmokeMethod("toolTip", "()", "")]
+			get { return ((QAction) interceptor).ToolTip; }
+			[SmokeMethod("setToolTip", "(QString)", "$")]
+			set { ((QAction) interceptor).ToolTip = value; }
 		}
 		[Q_PROPERTY("QString", "statusTip")]
 		public string StatusTip {
-			get { return Property("statusTip").Value<string>(); }
-			set { SetProperty("statusTip", QVariant.FromValue<string>(value)); }
+			[SmokeMethod("statusTip", "()", "")]
+			get { return ((QAction) interceptor).StatusTip; }
+			[SmokeMethod("setStatusTip", "(QString)", "$")]
+			set { ((QAction) interceptor).StatusTip = value; }
 		}
 		[Q_PROPERTY("QString", "whatsThis")]
 		public string WhatsThis {
-			get { return Property("whatsThis").Value<string>(); }
-			set { SetProperty("whatsThis", QVariant.FromValue<string>(value)); }
+			[SmokeMethod("whatsThis", "()", "")]
+			get { return ((QAction) interceptor).WhatsThis; }
+			[SmokeMethod("setWhatsThis", "(QString)", "$")]
+			set { ((QAction) interceptor).WhatsThis = value; }
 		}
 		[Q_PROPERTY("QFont", "font")]
 		public QFont Font {
-			get { return Property("font").Value<QFont>(); }
-			set { SetProperty("font", QVariant.FromValue<QFont>(value)); }
+			[SmokeMethod("font", "()", "")]
+			get { return ((QAction) interceptor).Font; }
+			[SmokeMethod("setFont", "(QFont)", "#")]
+			set { ((QAction) interceptor).Font = value; }
 		}
 		[Q_PROPERTY("QKeySequence", "shortcut")]
 		public QKeySequence Shortcut {
-			get { return Property("shortcut").Value<QKeySequence>(); }
-			set { SetProperty("shortcut", QVariant.FromValue<QKeySequence>(value)); }
+			[SmokeMethod("shortcut", "()", "")]
+			get { return ((QAction) interceptor).Shortcut; }
+			[SmokeMethod("setShortcut", "(QKeySequence)", "#")]
+			set { ((QAction) interceptor).Shortcut = value; }
 		}
 		[Q_PROPERTY("Qt::ShortcutContext", "shortcutContext")]
 		public Qt.ShortcutContext ShortcutContext {
-			get { return Property("shortcutContext").Value<Qt.ShortcutContext>(); }
-			set { SetProperty("shortcutContext", QVariant.FromValue<Qt.ShortcutContext>(value)); }
+			[SmokeMethod("shortcutContext", "()", "")]
+			get { return ((QAction) interceptor).ShortcutContext; }
+			[SmokeMethod("setShortcutContext", "(Qt::ShortcutContext)", "$")]
+			set { ((QAction) interceptor).ShortcutContext = value; }
 		}
 		[Q_PROPERTY("bool", "autoRepeat")]
 		public bool AutoRepeat {
-			get { return Property("autoRepeat").Value<bool>(); }
-			set { SetProperty("autoRepeat", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("autoRepeat", "()", "")]
+			get { return ((QAction) interceptor).AutoRepeat; }
+			[SmokeMethod("setAutoRepeat", "(bool)", "$")]
+			set { ((QAction) interceptor).AutoRepeat = value; }
 		}
 		[Q_PROPERTY("bool", "visible")]
 		public bool Visible {
-			get { return Property("visible").Value<bool>(); }
-			set { SetProperty("visible", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isVisible", "()", "")]
+			get { return ((QAction) interceptor).Visible; }
+			[SmokeMethod("setVisible", "(bool)", "$")]
+			set { ((QAction) interceptor).Visible = value; }
 		}
 		[Q_PROPERTY("QAction::MenuRole", "menuRole")]
 		public QAction.MenuRole menuRole {
-			get { return Property("menuRole").Value<QAction.MenuRole>(); }
-			set { SetProperty("menuRole", QVariant.FromValue<QAction.MenuRole>(value)); }
+			[SmokeMethod("menuRole", "()", "")]
+			get { return ((QAction) interceptor).menuRole; }
+			[SmokeMethod("setMenuRole", "(QAction::MenuRole)", "$")]
+			set { ((QAction) interceptor).menuRole = value; }
 		}
 		public QAction(QObject parent) : this((Type) null) {
 			CreateProxy();

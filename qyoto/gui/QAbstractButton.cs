@@ -25,58 +25,80 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("QString", "text")]
 		public string Text {
-			get { return Property("text").Value<string>(); }
-			set { SetProperty("text", QVariant.FromValue<string>(value)); }
+			[SmokeMethod("text", "()", "")]
+			get { return ((QAbstractButton) interceptor).Text; }
+			[SmokeMethod("setText", "(QString)", "$")]
+			set { ((QAbstractButton) interceptor).Text = value; }
 		}
 		[Q_PROPERTY("QIcon", "icon")]
 		public QIcon Icon {
-			get { return Property("icon").Value<QIcon>(); }
-			set { SetProperty("icon", QVariant.FromValue<QIcon>(value)); }
+			[SmokeMethod("icon", "()", "")]
+			get { return ((QAbstractButton) interceptor).Icon; }
+			[SmokeMethod("setIcon", "(QIcon)", "#")]
+			set { ((QAbstractButton) interceptor).Icon = value; }
 		}
 		[Q_PROPERTY("QSize", "iconSize")]
 		public QSize IconSize {
-			get { return Property("iconSize").Value<QSize>(); }
-			set { SetProperty("iconSize", QVariant.FromValue<QSize>(value)); }
+			[SmokeMethod("iconSize", "()", "")]
+			get { return ((QAbstractButton) interceptor).IconSize; }
+			[SmokeMethod("setIconSize", "(QSize)", "#")]
+			set { ((QAbstractButton) interceptor).IconSize = value; }
 		}
 		[Q_PROPERTY("QKeySequence", "shortcut")]
 		public QKeySequence Shortcut {
-			get { return Property("shortcut").Value<QKeySequence>(); }
-			set { SetProperty("shortcut", QVariant.FromValue<QKeySequence>(value)); }
+			[SmokeMethod("shortcut", "()", "")]
+			get { return ((QAbstractButton) interceptor).Shortcut; }
+			[SmokeMethod("setShortcut", "(QKeySequence)", "#")]
+			set { ((QAbstractButton) interceptor).Shortcut = value; }
 		}
 		[Q_PROPERTY("bool", "checkable")]
 		public bool Checkable {
-			get { return Property("checkable").Value<bool>(); }
-			set { SetProperty("checkable", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isCheckable", "()", "")]
+			get { return ((QAbstractButton) interceptor).Checkable; }
+			[SmokeMethod("setCheckable", "(bool)", "$")]
+			set { ((QAbstractButton) interceptor).Checkable = value; }
 		}
 		[Q_PROPERTY("bool", "checked")]
 		public bool Checked {
-			get { return Property("checked").Value<bool>(); }
-			set { SetProperty("checked", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isChecked", "()", "")]
+			get { return ((QAbstractButton) interceptor).Checked; }
+			[SmokeMethod("setChecked", "(bool)", "$")]
+			set { ((QAbstractButton) interceptor).Checked = value; }
 		}
 		[Q_PROPERTY("bool", "autoRepeat")]
 		public bool AutoRepeat {
-			get { return Property("autoRepeat").Value<bool>(); }
-			set { SetProperty("autoRepeat", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("autoRepeat", "()", "")]
+			get { return ((QAbstractButton) interceptor).AutoRepeat; }
+			[SmokeMethod("setAutoRepeat", "(bool)", "$")]
+			set { ((QAbstractButton) interceptor).AutoRepeat = value; }
 		}
 		[Q_PROPERTY("bool", "autoExclusive")]
 		public bool AutoExclusive {
-			get { return Property("autoExclusive").Value<bool>(); }
-			set { SetProperty("autoExclusive", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("autoExclusive", "()", "")]
+			get { return ((QAbstractButton) interceptor).AutoExclusive; }
+			[SmokeMethod("setAutoExclusive", "(bool)", "$")]
+			set { ((QAbstractButton) interceptor).AutoExclusive = value; }
 		}
 		[Q_PROPERTY("int", "autoRepeatDelay")]
 		public int AutoRepeatDelay {
-			get { return Property("autoRepeatDelay").Value<int>(); }
-			set { SetProperty("autoRepeatDelay", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("autoRepeatDelay", "()", "")]
+			get { return ((QAbstractButton) interceptor).AutoRepeatDelay; }
+			[SmokeMethod("setAutoRepeatDelay", "(int)", "$")]
+			set { ((QAbstractButton) interceptor).AutoRepeatDelay = value; }
 		}
 		[Q_PROPERTY("int", "autoRepeatInterval")]
 		public int AutoRepeatInterval {
-			get { return Property("autoRepeatInterval").Value<int>(); }
-			set { SetProperty("autoRepeatInterval", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("autoRepeatInterval", "()", "")]
+			get { return ((QAbstractButton) interceptor).AutoRepeatInterval; }
+			[SmokeMethod("setAutoRepeatInterval", "(int)", "$")]
+			set { ((QAbstractButton) interceptor).AutoRepeatInterval = value; }
 		}
 		[Q_PROPERTY("bool", "down")]
 		public bool Down {
-			get { return Property("down").Value<bool>(); }
-			set { SetProperty("down", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isDown", "()", "")]
+			get { return ((QAbstractButton) interceptor).Down; }
+			[SmokeMethod("setDown", "(bool)", "$")]
+			set { ((QAbstractButton) interceptor).Down = value; }
 		}
 		public QAbstractButton(QWidget parent) : this((Type) null) {
 			CreateProxy();

@@ -34,23 +34,31 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("bool", "floating")]
 		public bool Floating {
-			get { return Property("floating").Value<bool>(); }
-			set { SetProperty("floating", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isFloating", "()", "")]
+			get { return ((QDockWidget) interceptor).Floating; }
+			[SmokeMethod("setFloating", "(bool)", "$")]
+			set { ((QDockWidget) interceptor).Floating = value; }
 		}
 		[Q_PROPERTY("DockWidgetFeatures", "features")]
 		public int Features {
-			get { return Property("features").Value<int>(); }
-			set { SetProperty("features", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("features", "()", "")]
+			get { return ((QDockWidget) interceptor).Features; }
+			[SmokeMethod("setFeatures", "(DockWidgetFeatures)", "$")]
+			set { ((QDockWidget) interceptor).Features = value; }
 		}
 		[Q_PROPERTY("Qt::DockWidgetAreas", "allowedAreas")]
 		public int AllowedAreas {
-			get { return Property("allowedAreas").Value<int>(); }
-			set { SetProperty("allowedAreas", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("allowedAreas", "()", "")]
+			get { return ((QDockWidget) interceptor).AllowedAreas; }
+			[SmokeMethod("", "(Qt::DockWidgetAreas)", "$")]
+			set { ((QDockWidget) interceptor).AllowedAreas = value; }
 		}
 		[Q_PROPERTY("QString", "windowTitle")]
 		public string WindowTitle {
-			get { return Property("windowTitle").Value<string>(); }
-			set { SetProperty("windowTitle", QVariant.FromValue<string>(value)); }
+			[SmokeMethod("windowTitle", "()", "")]
+			get { return ((QDockWidget) interceptor).WindowTitle; }
+			[SmokeMethod("setWindowTitle", "(QString)", "$")]
+			set { ((QDockWidget) interceptor).WindowTitle = value; }
 		}
 		public QDockWidget(string title, QWidget parent, int flags) : this((Type) null) {
 			CreateProxy();

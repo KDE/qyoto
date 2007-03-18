@@ -25,42 +25,57 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("bool", "wasCanceled")]
 		public bool WasCanceled {
-			get { return Property("wasCanceled").Value<bool>(); }
+			[SmokeMethod("wasCanceled", "()", "")]
+			get { return ((QProgressDialog) interceptor).WasCanceled; }
 		}
 		[Q_PROPERTY("int", "minimum")]
 		public int Minimum {
-			get { return Property("minimum").Value<int>(); }
-			set { SetProperty("minimum", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("minimum", "()", "")]
+			get { return ((QProgressDialog) interceptor).Minimum; }
+			[SmokeMethod("setMinimum", "(int)", "$")]
+			set { ((QProgressDialog) interceptor).Minimum = value; }
 		}
 		[Q_PROPERTY("int", "maximum")]
 		public int Maximum {
-			get { return Property("maximum").Value<int>(); }
-			set { SetProperty("maximum", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("maximum", "()", "")]
+			get { return ((QProgressDialog) interceptor).Maximum; }
+			[SmokeMethod("setMaximum", "(int)", "$")]
+			set { ((QProgressDialog) interceptor).Maximum = value; }
 		}
 		[Q_PROPERTY("int", "value")]
 		public int Value {
-			get { return Property("value").Value<int>(); }
-			set { SetProperty("value", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("value", "()", "")]
+			get { return ((QProgressDialog) interceptor).Value; }
+			[SmokeMethod("setValue", "(int)", "$")]
+			set { ((QProgressDialog) interceptor).Value = value; }
 		}
 		[Q_PROPERTY("bool", "autoReset")]
 		public bool AutoReset {
-			get { return Property("autoReset").Value<bool>(); }
-			set { SetProperty("autoReset", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("autoReset", "()", "")]
+			get { return ((QProgressDialog) interceptor).AutoReset; }
+			[SmokeMethod("setAutoReset", "(bool)", "$")]
+			set { ((QProgressDialog) interceptor).AutoReset = value; }
 		}
 		[Q_PROPERTY("bool", "autoClose")]
 		public bool AutoClose {
-			get { return Property("autoClose").Value<bool>(); }
-			set { SetProperty("autoClose", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("autoClose", "()", "")]
+			get { return ((QProgressDialog) interceptor).AutoClose; }
+			[SmokeMethod("setAutoClose", "(bool)", "$")]
+			set { ((QProgressDialog) interceptor).AutoClose = value; }
 		}
 		[Q_PROPERTY("int", "minimumDuration")]
 		public int MinimumDuration {
-			get { return Property("minimumDuration").Value<int>(); }
-			set { SetProperty("minimumDuration", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("minimumDuration", "()", "")]
+			get { return ((QProgressDialog) interceptor).MinimumDuration; }
+			[SmokeMethod("setMinimumDuration", "(int)", "$")]
+			set { ((QProgressDialog) interceptor).MinimumDuration = value; }
 		}
 		[Q_PROPERTY("QString", "labelText")]
 		public string LabelText {
-			get { return Property("labelText").Value<string>(); }
-			set { SetProperty("labelText", QVariant.FromValue<string>(value)); }
+			[SmokeMethod("labelText", "()", "")]
+			get { return ((QProgressDialog) interceptor).LabelText; }
+			[SmokeMethod("setLabelText", "(QString)", "$")]
+			set { ((QProgressDialog) interceptor).LabelText = value; }
 		}
 		public QProgressDialog(QWidget parent, int f) : this((Type) null) {
 			CreateProxy();

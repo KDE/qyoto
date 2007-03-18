@@ -26,17 +26,22 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("int", "count")]
 		public int Count {
-			get { return Property("count").Value<int>(); }
+			[SmokeMethod("count", "()", "")]
+			get { return ((QListWidget) interceptor).Count; }
 		}
 		[Q_PROPERTY("int", "currentRow")]
 		public int CurrentRow {
-			get { return Property("currentRow").Value<int>(); }
-			set { SetProperty("currentRow", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("currentRow", "()", "")]
+			get { return ((QListWidget) interceptor).CurrentRow; }
+			[SmokeMethod("setCurrentRow", "(int)", "$")]
+			set { ((QListWidget) interceptor).CurrentRow = value; }
 		}
 		[Q_PROPERTY("bool", "sortingEnabled")]
 		public bool SortingEnabled {
-			get { return Property("sortingEnabled").Value<bool>(); }
-			set { SetProperty("sortingEnabled", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isSortingEnabled", "()", "")]
+			get { return ((QListWidget) interceptor).SortingEnabled; }
+			[SmokeMethod("setSortingEnabled", "(bool)", "$")]
+			set { ((QListWidget) interceptor).SortingEnabled = value; }
 		}
 		public QListWidget(QWidget parent) : this((Type) null) {
 			CreateProxy();

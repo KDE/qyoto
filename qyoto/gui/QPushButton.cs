@@ -24,18 +24,24 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("bool", "autoDefault")]
 		public bool AutoDefault {
-			get { return Property("autoDefault").Value<bool>(); }
-			set { SetProperty("autoDefault", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("autoDefault", "()", "")]
+			get { return ((QPushButton) interceptor).AutoDefault; }
+			[SmokeMethod("setAutoDefault", "(bool)", "$")]
+			set { ((QPushButton) interceptor).AutoDefault = value; }
 		}
 		[Q_PROPERTY("bool", "default")]
 		public bool Default {
-			get { return Property("default").Value<bool>(); }
-			set { SetProperty("default", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isDefault", "()", "")]
+			get { return ((QPushButton) interceptor).Default; }
+			[SmokeMethod("setDefault", "(bool)", "$")]
+			set { ((QPushButton) interceptor).Default = value; }
 		}
 		[Q_PROPERTY("bool", "flat")]
 		public bool Flat {
-			get { return Property("flat").Value<bool>(); }
-			set { SetProperty("flat", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isFlat", "()", "")]
+			get { return ((QPushButton) interceptor).Flat; }
+			[SmokeMethod("setFlat", "(bool)", "$")]
+			set { ((QPushButton) interceptor).Flat = value; }
 		}
 		public QPushButton(QWidget parent) : this((Type) null) {
 			CreateProxy();

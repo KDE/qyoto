@@ -91,73 +91,101 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("bool", "autoScroll")]
 		public bool AutoScroll {
-			get { return Property("autoScroll").Value<bool>(); }
-			set { SetProperty("autoScroll", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("hasAutoScroll", "()", "")]
+			get { return ((QAbstractItemView) interceptor).AutoScroll; }
+			[SmokeMethod("setAutoScroll", "(bool)", "$")]
+			set { ((QAbstractItemView) interceptor).AutoScroll = value; }
 		}
 		[Q_PROPERTY("EditTriggers", "editTriggers")]
 		public int EditTriggers {
-			get { return Property("editTriggers").Value<int>(); }
-			set { SetProperty("editTriggers", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("editTriggers", "()", "")]
+			get { return ((QAbstractItemView) interceptor).EditTriggers; }
+			[SmokeMethod("setEditTriggers", "(EditTriggers)", "$")]
+			set { ((QAbstractItemView) interceptor).EditTriggers = value; }
 		}
 		[Q_PROPERTY("bool", "tabKeyNavigation")]
 		public bool TabKeyNavigation {
-			get { return Property("tabKeyNavigation").Value<bool>(); }
-			set { SetProperty("tabKeyNavigation", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("tabKeyNavigation", "()", "")]
+			get { return ((QAbstractItemView) interceptor).TabKeyNavigation; }
+			[SmokeMethod("setTabKeyNavigation", "(bool)", "$")]
+			set { ((QAbstractItemView) interceptor).TabKeyNavigation = value; }
 		}
 		[Q_PROPERTY("bool", "showDropIndicator")]
 		public bool ShowDropIndicator {
-			get { return Property("showDropIndicator").Value<bool>(); }
-			set { SetProperty("showDropIndicator", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("showDropIndicator", "()", "")]
+			get { return ((QAbstractItemView) interceptor).ShowDropIndicator; }
+			[SmokeMethod("setDropIndicatorShown", "(bool)", "$")]
+			set { ((QAbstractItemView) interceptor).ShowDropIndicator = value; }
 		}
 		[Q_PROPERTY("bool", "dragEnabled")]
 		public bool DragEnabled {
-			get { return Property("dragEnabled").Value<bool>(); }
-			set { SetProperty("dragEnabled", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("dragEnabled", "()", "")]
+			get { return ((QAbstractItemView) interceptor).DragEnabled; }
+			[SmokeMethod("setDragEnabled", "(bool)", "$")]
+			set { ((QAbstractItemView) interceptor).DragEnabled = value; }
 		}
 		[Q_PROPERTY("bool", "dragDropOverwriteMode")]
 		public bool DragDropOverwriteMode {
-			get { return Property("dragDropOverwriteMode").Value<bool>(); }
-			set { SetProperty("dragDropOverwriteMode", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("dragDropOverwriteMode", "()", "")]
+			get { return ((QAbstractItemView) interceptor).DragDropOverwriteMode; }
+			[SmokeMethod("setDragDropOverwriteMode", "(bool)", "$")]
+			set { ((QAbstractItemView) interceptor).DragDropOverwriteMode = value; }
 		}
 		[Q_PROPERTY("QAbstractItemView::DragDropMode", "dragDropMode")]
 		public QAbstractItemView.DragDropMode dragDropMode {
-			get { return Property("dragDropMode").Value<QAbstractItemView.DragDropMode>(); }
-			set { SetProperty("dragDropMode", QVariant.FromValue<QAbstractItemView.DragDropMode>(value)); }
+			[SmokeMethod("dragDropMode", "()", "")]
+			get { return ((QAbstractItemView) interceptor).dragDropMode; }
+			[SmokeMethod("setDragDropMode", "(QAbstractItemView::DragDropMode)", "$")]
+			set { ((QAbstractItemView) interceptor).dragDropMode = value; }
 		}
 		[Q_PROPERTY("bool", "alternatingRowColors")]
 		public bool AlternatingRowColors {
-			get { return Property("alternatingRowColors").Value<bool>(); }
-			set { SetProperty("alternatingRowColors", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("alternatingRowColors", "()", "")]
+			get { return ((QAbstractItemView) interceptor).AlternatingRowColors; }
+			[SmokeMethod("setAlternatingRowColors", "(bool)", "$")]
+			set { ((QAbstractItemView) interceptor).AlternatingRowColors = value; }
 		}
 		[Q_PROPERTY("QAbstractItemView::SelectionMode", "selectionMode")]
 		public QAbstractItemView.SelectionMode selectionMode {
-			get { return Property("selectionMode").Value<QAbstractItemView.SelectionMode>(); }
-			set { SetProperty("selectionMode", QVariant.FromValue<QAbstractItemView.SelectionMode>(value)); }
+			[SmokeMethod("selectionMode", "()", "")]
+			get { return ((QAbstractItemView) interceptor).selectionMode; }
+			[SmokeMethod("setSelectionMode", "(QAbstractItemView::SelectionMode)", "$")]
+			set { ((QAbstractItemView) interceptor).selectionMode = value; }
 		}
 		[Q_PROPERTY("QAbstractItemView::SelectionBehavior", "selectionBehavior")]
 		public QAbstractItemView.SelectionBehavior selectionBehavior {
-			get { return Property("selectionBehavior").Value<QAbstractItemView.SelectionBehavior>(); }
-			set { SetProperty("selectionBehavior", QVariant.FromValue<QAbstractItemView.SelectionBehavior>(value)); }
+			[SmokeMethod("selectionBehavior", "()", "")]
+			get { return ((QAbstractItemView) interceptor).selectionBehavior; }
+			[SmokeMethod("setSelectionBehavior", "(QAbstractItemView::SelectionBehavior)", "$")]
+			set { ((QAbstractItemView) interceptor).selectionBehavior = value; }
 		}
 		[Q_PROPERTY("QSize", "iconSize")]
 		public QSize IconSize {
-			get { return Property("iconSize").Value<QSize>(); }
-			set { SetProperty("iconSize", QVariant.FromValue<QSize>(value)); }
+			[SmokeMethod("iconSize", "()", "")]
+			get { return ((QAbstractItemView) interceptor).IconSize; }
+			[SmokeMethod("setIconSize", "(QSize)", "#")]
+			set { ((QAbstractItemView) interceptor).IconSize = value; }
 		}
 		[Q_PROPERTY("Qt::TextElideMode", "textElideMode")]
 		public Qt.TextElideMode TextElideMode {
-			get { return Property("textElideMode").Value<Qt.TextElideMode>(); }
-			set { SetProperty("textElideMode", QVariant.FromValue<Qt.TextElideMode>(value)); }
+			[SmokeMethod("textElideMode", "()", "")]
+			get { return ((QAbstractItemView) interceptor).TextElideMode; }
+			[SmokeMethod("setTextElideMode", "(Qt::TextElideMode)", "$")]
+			set { ((QAbstractItemView) interceptor).TextElideMode = value; }
 		}
 		[Q_PROPERTY("QAbstractItemView::ScrollMode", "verticalScrollMode")]
 		public QAbstractItemView.ScrollMode VerticalScrollMode {
-			get { return Property("verticalScrollMode").Value<QAbstractItemView.ScrollMode>(); }
-			set { SetProperty("verticalScrollMode", QVariant.FromValue<QAbstractItemView.ScrollMode>(value)); }
+			[SmokeMethod("verticalScrollMode", "()", "")]
+			get { return ((QAbstractItemView) interceptor).VerticalScrollMode; }
+			[SmokeMethod("setVerticalScrollMode", "(QAbstractItemView::ScrollMode)", "$")]
+			set { ((QAbstractItemView) interceptor).VerticalScrollMode = value; }
 		}
 		[Q_PROPERTY("QAbstractItemView::ScrollMode", "horizontalScrollMode")]
 		public QAbstractItemView.ScrollMode HorizontalScrollMode {
-			get { return Property("horizontalScrollMode").Value<QAbstractItemView.ScrollMode>(); }
-			set { SetProperty("horizontalScrollMode", QVariant.FromValue<QAbstractItemView.ScrollMode>(value)); }
+			[SmokeMethod("horizontalScrollMode", "()", "")]
+			get { return ((QAbstractItemView) interceptor).HorizontalScrollMode; }
+			[SmokeMethod("setHorizontalScrollMode", "(QAbstractItemView::ScrollMode)", "$")]
+			set { ((QAbstractItemView) interceptor).HorizontalScrollMode = value; }
 		}
 		public QAbstractItemView(QWidget parent) : this((Type) null) {
 			CreateProxy();

@@ -36,33 +36,45 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("QString", "completionPrefix")]
 		public string CompletionPrefix {
-			get { return Property("completionPrefix").Value<string>(); }
-			set { SetProperty("completionPrefix", QVariant.FromValue<string>(value)); }
+			[SmokeMethod("completionPrefix", "()", "")]
+			get { return ((QCompleter) interceptor).CompletionPrefix; }
+			[SmokeMethod("setCompletionPrefix", "(QString)", "$")]
+			set { ((QCompleter) interceptor).CompletionPrefix = value; }
 		}
 		[Q_PROPERTY("QCompleter::ModelSorting", "modelSorting")]
 		public QCompleter.ModelSorting modelSorting {
-			get { return Property("modelSorting").Value<QCompleter.ModelSorting>(); }
-			set { SetProperty("modelSorting", QVariant.FromValue<QCompleter.ModelSorting>(value)); }
+			[SmokeMethod("modelSorting", "()", "")]
+			get { return ((QCompleter) interceptor).modelSorting; }
+			[SmokeMethod("setModelSorting", "(QCompleter::ModelSorting)", "$")]
+			set { ((QCompleter) interceptor).modelSorting = value; }
 		}
 		[Q_PROPERTY("QCompleter::CompletionMode", "completionMode")]
 		public QCompleter.CompletionMode completionMode {
-			get { return Property("completionMode").Value<QCompleter.CompletionMode>(); }
-			set { SetProperty("completionMode", QVariant.FromValue<QCompleter.CompletionMode>(value)); }
+			[SmokeMethod("completionMode", "()", "")]
+			get { return ((QCompleter) interceptor).completionMode; }
+			[SmokeMethod("setCompletionMode", "(QCompleter::CompletionMode)", "$")]
+			set { ((QCompleter) interceptor).completionMode = value; }
 		}
 		[Q_PROPERTY("int", "completionColumn")]
 		public int CompletionColumn {
-			get { return Property("completionColumn").Value<int>(); }
-			set { SetProperty("completionColumn", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("completionColumn", "()", "")]
+			get { return ((QCompleter) interceptor).CompletionColumn; }
+			[SmokeMethod("setCompletionColumn", "(int)", "$")]
+			set { ((QCompleter) interceptor).CompletionColumn = value; }
 		}
 		[Q_PROPERTY("int", "completionRole")]
 		public int CompletionRole {
-			get { return Property("completionRole").Value<int>(); }
-			set { SetProperty("completionRole", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("completionRole", "()", "")]
+			get { return ((QCompleter) interceptor).CompletionRole; }
+			[SmokeMethod("setCompletionRole", "(int)", "$")]
+			set { ((QCompleter) interceptor).CompletionRole = value; }
 		}
 		[Q_PROPERTY("Qt::CaseSensitivity", "caseSensitivity")]
 		public Qt.CaseSensitivity CaseSensitivity {
-			get { return Property("caseSensitivity").Value<Qt.CaseSensitivity>(); }
-			set { SetProperty("caseSensitivity", QVariant.FromValue<Qt.CaseSensitivity>(value)); }
+			[SmokeMethod("caseSensitivity", "()", "")]
+			get { return ((QCompleter) interceptor).CaseSensitivity; }
+			[SmokeMethod("setCaseSensitivity", "(Qt::CaseSensitivity)", "$")]
+			set { ((QCompleter) interceptor).CaseSensitivity = value; }
 		}
 		public QCompleter(QObject parent) : this((Type) null) {
 			CreateProxy();

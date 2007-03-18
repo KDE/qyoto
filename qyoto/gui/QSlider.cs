@@ -32,13 +32,17 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("QSlider::TickPosition", "tickPosition")]
 		public QSlider.TickPosition tickPosition {
-			get { return Property("tickPosition").Value<QSlider.TickPosition>(); }
-			set { SetProperty("tickPosition", QVariant.FromValue<QSlider.TickPosition>(value)); }
+			[SmokeMethod("tickPosition", "()", "")]
+			get { return ((QSlider) interceptor).tickPosition; }
+			[SmokeMethod("setTickPosition", "(QSlider::TickPosition)", "$")]
+			set { ((QSlider) interceptor).tickPosition = value; }
 		}
 		[Q_PROPERTY("int", "tickInterval")]
 		public int TickInterval {
-			get { return Property("tickInterval").Value<int>(); }
-			set { SetProperty("tickInterval", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("tickInterval", "()", "")]
+			get { return ((QSlider) interceptor).TickInterval; }
+			[SmokeMethod("setTickInterval", "(int)", "$")]
+			set { ((QSlider) interceptor).TickInterval = value; }
 		}
 		public QSlider(QWidget parent) : this((Type) null) {
 			CreateProxy();

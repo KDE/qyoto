@@ -25,8 +25,10 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("bool", "sizeGripEnabled")]
 		public bool SizeGripEnabled {
-			get { return Property("sizeGripEnabled").Value<bool>(); }
-			set { SetProperty("sizeGripEnabled", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isSizeGripEnabled", "()", "")]
+			get { return ((QStatusBar) interceptor).SizeGripEnabled; }
+			[SmokeMethod("setSizeGripEnabled", "(bool)", "$")]
+			set { ((QStatusBar) interceptor).SizeGripEnabled = value; }
 		}
 		public QStatusBar(QWidget parent) : this((Type) null) {
 			CreateProxy();

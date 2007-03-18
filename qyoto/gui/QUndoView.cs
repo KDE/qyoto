@@ -24,13 +24,17 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("QString", "emptyLabel")]
 		public string EmptyLabel {
-			get { return Property("emptyLabel").Value<string>(); }
-			set { SetProperty("emptyLabel", QVariant.FromValue<string>(value)); }
+			[SmokeMethod("emptyLabel", "()", "")]
+			get { return ((QUndoView) interceptor).EmptyLabel; }
+			[SmokeMethod("setEmptyLabel", "(QString)", "$")]
+			set { ((QUndoView) interceptor).EmptyLabel = value; }
 		}
 		[Q_PROPERTY("QIcon", "cleanIcon")]
 		public QIcon CleanIcon {
-			get { return Property("cleanIcon").Value<QIcon>(); }
-			set { SetProperty("cleanIcon", QVariant.FromValue<QIcon>(value)); }
+			[SmokeMethod("cleanIcon", "()", "")]
+			get { return ((QUndoView) interceptor).CleanIcon; }
+			[SmokeMethod("setCleanIcon", "(QIcon)", "#")]
+			set { ((QUndoView) interceptor).CleanIcon = value; }
 		}
 		public QUndoView(QWidget parent) : this((Type) null) {
 			CreateProxy();

@@ -25,8 +25,10 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("bool", "defaultUp")]
 		public bool DefaultUp {
-			get { return Property("defaultUp").Value<bool>(); }
-			set { SetProperty("defaultUp", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isDefaultUp", "()", "")]
+			get { return ((QMenuBar) interceptor).DefaultUp; }
+			[SmokeMethod("setDefaultUp", "(bool)", "$")]
+			set { ((QMenuBar) interceptor).DefaultUp = value; }
 		}
 		public QMenuBar(QWidget parent) : this((Type) null) {
 			CreateProxy();

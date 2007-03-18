@@ -39,51 +39,69 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("bool", "wrapping")]
 		public bool Wrapping {
-			get { return Property("wrapping").Value<bool>(); }
-			set { SetProperty("wrapping", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("wrapping", "()", "")]
+			get { return ((QAbstractSpinBox) interceptor).Wrapping; }
+			[SmokeMethod("setWrapping", "(bool)", "$")]
+			set { ((QAbstractSpinBox) interceptor).Wrapping = value; }
 		}
 		[Q_PROPERTY("bool", "frame")]
 		public bool Frame {
-			get { return Property("frame").Value<bool>(); }
-			set { SetProperty("frame", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("hasFrame", "()", "")]
+			get { return ((QAbstractSpinBox) interceptor).Frame; }
+			[SmokeMethod("setFrame", "(bool)", "$")]
+			set { ((QAbstractSpinBox) interceptor).Frame = value; }
 		}
 		[Q_PROPERTY("Qt::Alignment", "alignment")]
 		public int Alignment {
-			get { return Property("alignment").Value<int>(); }
-			set { SetProperty("alignment", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("alignment", "()", "")]
+			get { return ((QAbstractSpinBox) interceptor).Alignment; }
+			[SmokeMethod("setAlignment", "(Qt::Alignment)", "$")]
+			set { ((QAbstractSpinBox) interceptor).Alignment = value; }
 		}
 		[Q_PROPERTY("bool", "readOnly")]
 		public bool ReadOnly {
-			get { return Property("readOnly").Value<bool>(); }
-			set { SetProperty("readOnly", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isReadOnly", "()", "")]
+			get { return ((QAbstractSpinBox) interceptor).ReadOnly; }
+			[SmokeMethod("setReadOnly", "(bool)", "$")]
+			set { ((QAbstractSpinBox) interceptor).ReadOnly = value; }
 		}
 		[Q_PROPERTY("QAbstractSpinBox::ButtonSymbols", "buttonSymbols")]
 		public QAbstractSpinBox.ButtonSymbols buttonSymbols {
-			get { return Property("buttonSymbols").Value<QAbstractSpinBox.ButtonSymbols>(); }
-			set { SetProperty("buttonSymbols", QVariant.FromValue<QAbstractSpinBox.ButtonSymbols>(value)); }
+			[SmokeMethod("buttonSymbols", "()", "")]
+			get { return ((QAbstractSpinBox) interceptor).buttonSymbols; }
+			[SmokeMethod("setButtonSymbols", "(QAbstractSpinBox::ButtonSymbols)", "$")]
+			set { ((QAbstractSpinBox) interceptor).buttonSymbols = value; }
 		}
 		[Q_PROPERTY("QString", "specialValueText")]
 		public string SpecialValueText {
-			get { return Property("specialValueText").Value<string>(); }
-			set { SetProperty("specialValueText", QVariant.FromValue<string>(value)); }
+			[SmokeMethod("specialValueText", "()", "")]
+			get { return ((QAbstractSpinBox) interceptor).SpecialValueText; }
+			[SmokeMethod("setSpecialValueText", "(QString)", "$")]
+			set { ((QAbstractSpinBox) interceptor).SpecialValueText = value; }
 		}
 		[Q_PROPERTY("QString", "text")]
 		public string Text {
-			get { return Property("text").Value<string>(); }
+			[SmokeMethod("text", "()", "")]
+			get { return ((QAbstractSpinBox) interceptor).Text; }
 		}
 		[Q_PROPERTY("bool", "accelerated")]
 		public bool Accelerated {
-			get { return Property("accelerated").Value<bool>(); }
-			set { SetProperty("accelerated", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isAccelerated", "()", "")]
+			get { return ((QAbstractSpinBox) interceptor).Accelerated; }
+			[SmokeMethod("setAccelerated", "(bool)", "$")]
+			set { ((QAbstractSpinBox) interceptor).Accelerated = value; }
 		}
 		[Q_PROPERTY("QAbstractSpinBox::CorrectionMode", "correctionMode")]
 		public QAbstractSpinBox.CorrectionMode correctionMode {
-			get { return Property("correctionMode").Value<QAbstractSpinBox.CorrectionMode>(); }
-			set { SetProperty("correctionMode", QVariant.FromValue<QAbstractSpinBox.CorrectionMode>(value)); }
+			[SmokeMethod("correctionMode", "()", "")]
+			get { return ((QAbstractSpinBox) interceptor).correctionMode; }
+			[SmokeMethod("setCorrectionMode", "(QAbstractSpinBox::CorrectionMode)", "$")]
+			set { ((QAbstractSpinBox) interceptor).correctionMode = value; }
 		}
 		[Q_PROPERTY("bool", "acceptableInput")]
 		public bool AcceptableInput {
-			get { return Property("acceptableInput").Value<bool>(); }
+			[SmokeMethod("hasAcceptableInput", "()", "")]
+			get { return ((QAbstractSpinBox) interceptor).AcceptableInput; }
 		}
 		public QAbstractSpinBox(QWidget parent) : this((Type) null) {
 			CreateProxy();

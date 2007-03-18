@@ -13,13 +13,10 @@ namespace Qyoto {
 			[SmokeMethod("tr", "(const char*)", "$")]
 			string Tr(string s);
 		}
-		private static Object _staticInterceptor = null;
+		private static IQDBusConnectionInterfaceProxy staticInterceptor = null;
 		static QDBusConnectionInterface() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(IQDBusConnectionInterfaceProxy), null);
-			_staticInterceptor = (IQDBusConnectionInterfaceProxy) realProxy.GetTransparentProxy();
-		}
-		private static IQDBusConnectionInterfaceProxy StaticQDBusConnectionInterface() {
-			return (IQDBusConnectionInterfaceProxy) _staticInterceptor;
+			staticInterceptor = (IQDBusConnectionInterfaceProxy) realProxy.GetTransparentProxy();
 		}
 		public enum ServiceQueueOptions {
 			DontQueueService = 0,
@@ -46,10 +43,10 @@ namespace Qyoto {
 		// QDBusReply<uint> serviceUid(const QString& arg1); >>>> NOT CONVERTED
 		// QDBusReply<void> startService(const QString& arg1); >>>> NOT CONVERTED
 		public static string Tr(string s, string c) {
-			return StaticQDBusConnectionInterface().Tr(s,c);
+			return staticInterceptor.Tr(s,c);
 		}
 		public static string Tr(string s) {
-			return StaticQDBusConnectionInterface().Tr(s);
+			return staticInterceptor.Tr(s);
 		}
 		protected new IQDBusConnectionInterfaceSignals Emit {
 			get { return (IQDBusConnectionInterfaceSignals) Q_EMIT; }

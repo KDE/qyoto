@@ -42,32 +42,43 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("QFrame::Shape", "frameShape")]
 		public QFrame.Shape FrameShape {
-			get { return Property("frameShape").Value<QFrame.Shape>(); }
-			set { SetProperty("frameShape", QVariant.FromValue<QFrame.Shape>(value)); }
+			[SmokeMethod("frameShape", "()", "")]
+			get { return ((QFrame) interceptor).FrameShape; }
+			[SmokeMethod("setFrameShape", "(QFrame::Shape)", "$")]
+			set { ((QFrame) interceptor).FrameShape = value; }
 		}
 		[Q_PROPERTY("QFrame::Shadow", "frameShadow")]
 		public QFrame.Shadow FrameShadow {
-			get { return Property("frameShadow").Value<QFrame.Shadow>(); }
-			set { SetProperty("frameShadow", QVariant.FromValue<QFrame.Shadow>(value)); }
+			[SmokeMethod("frameShadow", "()", "")]
+			get { return ((QFrame) interceptor).FrameShadow; }
+			[SmokeMethod("setFrameShadow", "(QFrame::Shadow)", "$")]
+			set { ((QFrame) interceptor).FrameShadow = value; }
 		}
 		[Q_PROPERTY("int", "lineWidth")]
 		public int LineWidth {
-			get { return Property("lineWidth").Value<int>(); }
-			set { SetProperty("lineWidth", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("lineWidth", "()", "")]
+			get { return ((QFrame) interceptor).LineWidth; }
+			[SmokeMethod("setLineWidth", "(int)", "$")]
+			set { ((QFrame) interceptor).LineWidth = value; }
 		}
 		[Q_PROPERTY("int", "midLineWidth")]
 		public int MidLineWidth {
-			get { return Property("midLineWidth").Value<int>(); }
-			set { SetProperty("midLineWidth", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("midLineWidth", "()", "")]
+			get { return ((QFrame) interceptor).MidLineWidth; }
+			[SmokeMethod("setMidLineWidth", "(int)", "$")]
+			set { ((QFrame) interceptor).MidLineWidth = value; }
 		}
 		[Q_PROPERTY("int", "frameWidth")]
 		public int FrameWidth {
-			get { return Property("frameWidth").Value<int>(); }
+			[SmokeMethod("frameWidth", "()", "")]
+			get { return ((QFrame) interceptor).FrameWidth; }
 		}
 		[Q_PROPERTY("QRect", "frameRect")]
 		public QRect FrameRect {
-			get { return Property("frameRect").Value<QRect>(); }
-			set { SetProperty("frameRect", QVariant.FromValue<QRect>(value)); }
+			[SmokeMethod("frameRect", "()", "")]
+			get { return ((QFrame) interceptor).FrameRect; }
+			[SmokeMethod("setFrameRect", "(QRect)", "#")]
+			set { ((QFrame) interceptor).FrameRect = value; }
 		}
 		public QFrame(QWidget parent, int f) : this((Type) null) {
 			CreateProxy();

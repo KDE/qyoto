@@ -68,18 +68,24 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("Qt::Orientation", "orientation")]
 		public Qt.Orientation Orientation {
-			get { return Property("orientation").Value<Qt.Orientation>(); }
-			set { SetProperty("orientation", QVariant.FromValue<Qt.Orientation>(value)); }
+			[SmokeMethod("orientation", "()", "")]
+			get { return ((QDialogButtonBox) interceptor).Orientation; }
+			[SmokeMethod("setOrientation", "(Qt::Orientation)", "$")]
+			set { ((QDialogButtonBox) interceptor).Orientation = value; }
 		}
 		[Q_PROPERTY("StandardButtons", "standardButtons")]
 		public int StandardButtons {
-			get { return Property("standardButtons").Value<int>(); }
-			set { SetProperty("standardButtons", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("standardButtons", "()", "")]
+			get { return ((QDialogButtonBox) interceptor).StandardButtons; }
+			[SmokeMethod("setStandardButtons", "(StandardButtons)", "$")]
+			set { ((QDialogButtonBox) interceptor).StandardButtons = value; }
 		}
 		[Q_PROPERTY("bool", "centerButtons")]
 		public bool CenterButtons {
-			get { return Property("centerButtons").Value<bool>(); }
-			set { SetProperty("centerButtons", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("centerButtons", "()", "")]
+			get { return ((QDialogButtonBox) interceptor).CenterButtons; }
+			[SmokeMethod("setCenterButtons", "(bool)", "$")]
+			set { ((QDialogButtonBox) interceptor).CenterButtons = value; }
 		}
 		public QDialogButtonBox(QWidget parent) : this((Type) null) {
 			CreateProxy();

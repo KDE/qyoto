@@ -25,38 +25,52 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("QRegExp", "filterRegExp")]
 		public QRegExp FilterRegExp {
-			get { return Property("filterRegExp").Value<QRegExp>(); }
-			set { SetProperty("filterRegExp", QVariant.FromValue<QRegExp>(value)); }
+			[SmokeMethod("filterRegExp", "()", "")]
+			get { return ((QSortFilterProxyModel) interceptor).FilterRegExp; }
+			[SmokeMethod("setFilterRegExp", "(QRegExp)", "#")]
+			set { ((QSortFilterProxyModel) interceptor).FilterRegExp = value; }
 		}
 		[Q_PROPERTY("int", "filterKeyColumn")]
 		public int FilterKeyColumn {
-			get { return Property("filterKeyColumn").Value<int>(); }
-			set { SetProperty("filterKeyColumn", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("filterKeyColumn", "()", "")]
+			get { return ((QSortFilterProxyModel) interceptor).FilterKeyColumn; }
+			[SmokeMethod("setFilterKeyColumn", "(int)", "$")]
+			set { ((QSortFilterProxyModel) interceptor).FilterKeyColumn = value; }
 		}
 		[Q_PROPERTY("bool", "dynamicSortFilter")]
 		public bool DynamicSortFilter {
-			get { return Property("dynamicSortFilter").Value<bool>(); }
-			set { SetProperty("dynamicSortFilter", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("dynamicSortFilter", "()", "")]
+			get { return ((QSortFilterProxyModel) interceptor).DynamicSortFilter; }
+			[SmokeMethod("setDynamicSortFilter", "(bool)", "$")]
+			set { ((QSortFilterProxyModel) interceptor).DynamicSortFilter = value; }
 		}
 		[Q_PROPERTY("Qt::CaseSensitivity", "filterCaseSensitivity")]
 		public Qt.CaseSensitivity FilterCaseSensitivity {
-			get { return Property("filterCaseSensitivity").Value<Qt.CaseSensitivity>(); }
-			set { SetProperty("filterCaseSensitivity", QVariant.FromValue<Qt.CaseSensitivity>(value)); }
+			[SmokeMethod("filterCaseSensitivity", "()", "")]
+			get { return ((QSortFilterProxyModel) interceptor).FilterCaseSensitivity; }
+			[SmokeMethod("setFilterCaseSensitivity", "(Qt::CaseSensitivity)", "$")]
+			set { ((QSortFilterProxyModel) interceptor).FilterCaseSensitivity = value; }
 		}
 		[Q_PROPERTY("Qt::CaseSensitivity", "sortCaseSensitivity")]
 		public Qt.CaseSensitivity SortCaseSensitivity {
-			get { return Property("sortCaseSensitivity").Value<Qt.CaseSensitivity>(); }
-			set { SetProperty("sortCaseSensitivity", QVariant.FromValue<Qt.CaseSensitivity>(value)); }
+			[SmokeMethod("sortCaseSensitivity", "()", "")]
+			get { return ((QSortFilterProxyModel) interceptor).SortCaseSensitivity; }
+			[SmokeMethod("setSortCaseSensitivity", "(Qt::CaseSensitivity)", "$")]
+			set { ((QSortFilterProxyModel) interceptor).SortCaseSensitivity = value; }
 		}
 		[Q_PROPERTY("int", "sortRole")]
 		public int SortRole {
-			get { return Property("sortRole").Value<int>(); }
-			set { SetProperty("sortRole", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("sortRole", "()", "")]
+			get { return ((QSortFilterProxyModel) interceptor).SortRole; }
+			[SmokeMethod("setSortRole", "(int)", "$")]
+			set { ((QSortFilterProxyModel) interceptor).SortRole = value; }
 		}
 		[Q_PROPERTY("int", "filterRole")]
 		public int FilterRole {
-			get { return Property("filterRole").Value<int>(); }
-			set { SetProperty("filterRole", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("filterRole", "()", "")]
+			get { return ((QSortFilterProxyModel) interceptor).FilterRole; }
+			[SmokeMethod("setFilterRole", "(int)", "$")]
+			set { ((QSortFilterProxyModel) interceptor).FilterRole = value; }
 		}
 		public QSortFilterProxyModel(QObject parent) : this((Type) null) {
 			CreateProxy();

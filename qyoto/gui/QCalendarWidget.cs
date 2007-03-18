@@ -40,48 +40,66 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("QDate", "selectedDate")]
 		public QDate SelectedDate {
-			get { return Property("selectedDate").Value<QDate>(); }
-			set { SetProperty("selectedDate", QVariant.FromValue<QDate>(value)); }
+			[SmokeMethod("selectedDate", "()", "")]
+			get { return ((QCalendarWidget) interceptor).SelectedDate; }
+			[SmokeMethod("setSelectedDate", "(QDate)", "#")]
+			set { ((QCalendarWidget) interceptor).SelectedDate = value; }
 		}
 		[Q_PROPERTY("QDate", "minimumDate")]
 		public QDate MinimumDate {
-			get { return Property("minimumDate").Value<QDate>(); }
-			set { SetProperty("minimumDate", QVariant.FromValue<QDate>(value)); }
+			[SmokeMethod("minimumDate", "()", "")]
+			get { return ((QCalendarWidget) interceptor).MinimumDate; }
+			[SmokeMethod("setMinimumDate", "(QDate)", "#")]
+			set { ((QCalendarWidget) interceptor).MinimumDate = value; }
 		}
 		[Q_PROPERTY("QDate", "maximumDate")]
 		public QDate MaximumDate {
-			get { return Property("maximumDate").Value<QDate>(); }
-			set { SetProperty("maximumDate", QVariant.FromValue<QDate>(value)); }
+			[SmokeMethod("maximumDate", "()", "")]
+			get { return ((QCalendarWidget) interceptor).MaximumDate; }
+			[SmokeMethod("setMaximumDate", "(QDate)", "#")]
+			set { ((QCalendarWidget) interceptor).MaximumDate = value; }
 		}
 		[Q_PROPERTY("Qt::DayOfWeek", "firstDayOfWeek")]
 		public Qt.DayOfWeek FirstDayOfWeek {
-			get { return Property("firstDayOfWeek").Value<Qt.DayOfWeek>(); }
-			set { SetProperty("firstDayOfWeek", QVariant.FromValue<Qt.DayOfWeek>(value)); }
+			[SmokeMethod("firstDayOfWeek", "()", "")]
+			get { return ((QCalendarWidget) interceptor).FirstDayOfWeek; }
+			[SmokeMethod("setFirstDayOfWeek", "(Qt::DayOfWeek)", "$")]
+			set { ((QCalendarWidget) interceptor).FirstDayOfWeek = value; }
 		}
 		[Q_PROPERTY("bool", "gridVisible")]
 		public bool GridVisible {
-			get { return Property("gridVisible").Value<bool>(); }
-			set { SetProperty("gridVisible", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isGridVisible", "()", "")]
+			get { return ((QCalendarWidget) interceptor).GridVisible; }
+			[SmokeMethod("setGridVisible", "(bool)", "$")]
+			set { ((QCalendarWidget) interceptor).GridVisible = value; }
 		}
 		[Q_PROPERTY("QCalendarWidget::SelectionMode", "selectionMode")]
 		public QCalendarWidget.SelectionMode selectionMode {
-			get { return Property("selectionMode").Value<QCalendarWidget.SelectionMode>(); }
-			set { SetProperty("selectionMode", QVariant.FromValue<QCalendarWidget.SelectionMode>(value)); }
+			[SmokeMethod("selectionMode", "()", "")]
+			get { return ((QCalendarWidget) interceptor).selectionMode; }
+			[SmokeMethod("setSelectionMode", "(QCalendarWidget::SelectionMode)", "$")]
+			set { ((QCalendarWidget) interceptor).selectionMode = value; }
 		}
 		[Q_PROPERTY("QCalendarWidget::HorizontalHeaderFormat", "horizontalHeaderFormat")]
 		public QCalendarWidget.HorizontalHeaderFormat horizontalHeaderFormat {
-			get { return Property("horizontalHeaderFormat").Value<QCalendarWidget.HorizontalHeaderFormat>(); }
-			set { SetProperty("horizontalHeaderFormat", QVariant.FromValue<QCalendarWidget.HorizontalHeaderFormat>(value)); }
+			[SmokeMethod("horizontalHeaderFormat", "()", "")]
+			get { return ((QCalendarWidget) interceptor).horizontalHeaderFormat; }
+			[SmokeMethod("setHorizontalHeaderFormat", "(QCalendarWidget::HorizontalHeaderFormat)", "$")]
+			set { ((QCalendarWidget) interceptor).horizontalHeaderFormat = value; }
 		}
 		[Q_PROPERTY("QCalendarWidget::VerticalHeaderFormat", "verticalHeaderFormat")]
 		public QCalendarWidget.VerticalHeaderFormat verticalHeaderFormat {
-			get { return Property("verticalHeaderFormat").Value<QCalendarWidget.VerticalHeaderFormat>(); }
-			set { SetProperty("verticalHeaderFormat", QVariant.FromValue<QCalendarWidget.VerticalHeaderFormat>(value)); }
+			[SmokeMethod("verticalHeaderFormat", "()", "")]
+			get { return ((QCalendarWidget) interceptor).verticalHeaderFormat; }
+			[SmokeMethod("setVerticalHeaderFormat", "(QCalendarWidget::VerticalHeaderFormat)", "$")]
+			set { ((QCalendarWidget) interceptor).verticalHeaderFormat = value; }
 		}
 		[Q_PROPERTY("bool", "headerVisible")]
 		public bool HeaderVisible {
-			get { return Property("headerVisible").Value<bool>(); }
-			set { SetProperty("headerVisible", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isHeaderVisible", "()", "")]
+			get { return ((QCalendarWidget) interceptor).HeaderVisible; }
+			[SmokeMethod("setHeaderVisible", "(bool)", "$")]
+			set { ((QCalendarWidget) interceptor).HeaderVisible = value; }
 		}
 		public QCalendarWidget(QWidget parent) : this((Type) null) {
 			CreateProxy();

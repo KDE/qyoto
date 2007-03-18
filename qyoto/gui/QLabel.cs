@@ -25,53 +25,73 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("QString", "text")]
 		public string Text {
-			get { return Property("text").Value<string>(); }
-			set { SetProperty("text", QVariant.FromValue<string>(value)); }
+			[SmokeMethod("text", "()", "")]
+			get { return ((QLabel) interceptor).Text; }
+			[SmokeMethod("setText", "(QString)", "$")]
+			set { ((QLabel) interceptor).Text = value; }
 		}
 		[Q_PROPERTY("Qt::TextFormat", "textFormat")]
 		public Qt.TextFormat TextFormat {
-			get { return Property("textFormat").Value<Qt.TextFormat>(); }
-			set { SetProperty("textFormat", QVariant.FromValue<Qt.TextFormat>(value)); }
+			[SmokeMethod("textFormat", "()", "")]
+			get { return ((QLabel) interceptor).TextFormat; }
+			[SmokeMethod("setTextFormat", "(Qt::TextFormat)", "$")]
+			set { ((QLabel) interceptor).TextFormat = value; }
 		}
 		[Q_PROPERTY("QPixmap", "pixmap")]
 		public QPixmap Pixmap {
-			get { return Property("pixmap").Value<QPixmap>(); }
-			set { SetProperty("pixmap", QVariant.FromValue<QPixmap>(value)); }
+			[SmokeMethod("pixmap", "()", "")]
+			get { return ((QLabel) interceptor).Pixmap; }
+			[SmokeMethod("setPixmap", "(QPixmap)", "#")]
+			set { ((QLabel) interceptor).Pixmap = value; }
 		}
 		[Q_PROPERTY("bool", "scaledContents")]
 		public bool ScaledContents {
-			get { return Property("scaledContents").Value<bool>(); }
-			set { SetProperty("scaledContents", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("hasScaledContents", "()", "")]
+			get { return ((QLabel) interceptor).ScaledContents; }
+			[SmokeMethod("setScaledContents", "(bool)", "$")]
+			set { ((QLabel) interceptor).ScaledContents = value; }
 		}
 		[Q_PROPERTY("Qt::Alignment", "alignment")]
 		public int Alignment {
-			get { return Property("alignment").Value<int>(); }
-			set { SetProperty("alignment", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("alignment", "()", "")]
+			get { return ((QLabel) interceptor).Alignment; }
+			[SmokeMethod("setAlignment", "(Qt::Alignment)", "$")]
+			set { ((QLabel) interceptor).Alignment = value; }
 		}
 		[Q_PROPERTY("bool", "wordWrap")]
 		public bool WordWrap {
-			get { return Property("wordWrap").Value<bool>(); }
-			set { SetProperty("wordWrap", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("wordWrap", "()", "")]
+			get { return ((QLabel) interceptor).WordWrap; }
+			[SmokeMethod("setWordWrap", "(bool)", "$")]
+			set { ((QLabel) interceptor).WordWrap = value; }
 		}
 		[Q_PROPERTY("int", "margin")]
 		public int Margin {
-			get { return Property("margin").Value<int>(); }
-			set { SetProperty("margin", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("margin", "()", "")]
+			get { return ((QLabel) interceptor).Margin; }
+			[SmokeMethod("setMargin", "(int)", "$")]
+			set { ((QLabel) interceptor).Margin = value; }
 		}
 		[Q_PROPERTY("int", "indent")]
 		public int Indent {
-			get { return Property("indent").Value<int>(); }
-			set { SetProperty("indent", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("indent", "()", "")]
+			get { return ((QLabel) interceptor).Indent; }
+			[SmokeMethod("setIndent", "(int)", "$")]
+			set { ((QLabel) interceptor).Indent = value; }
 		}
 		[Q_PROPERTY("bool", "openExternalLinks")]
 		public bool OpenExternalLinks {
-			get { return Property("openExternalLinks").Value<bool>(); }
-			set { SetProperty("openExternalLinks", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("openExternalLinks", "()", "")]
+			get { return ((QLabel) interceptor).OpenExternalLinks; }
+			[SmokeMethod("setOpenExternalLinks", "(bool)", "$")]
+			set { ((QLabel) interceptor).OpenExternalLinks = value; }
 		}
 		[Q_PROPERTY("Qt::TextInteractionFlags", "textInteractionFlags")]
 		public int TextInteractionFlags {
-			get { return Property("textInteractionFlags").Value<int>(); }
-			set { SetProperty("textInteractionFlags", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("textInteractionFlags", "()", "")]
+			get { return ((QLabel) interceptor).TextInteractionFlags; }
+			[SmokeMethod("setTextInteractionFlags", "(Qt::TextInteractionFlags)", "$")]
+			set { ((QLabel) interceptor).TextInteractionFlags = value; }
 		}
 		public QLabel(QWidget parent, int f) : this((Type) null) {
 			CreateProxy();

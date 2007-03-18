@@ -31,8 +31,10 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("QString", "fileName")]
 		public string FileName {
-			get { return Property("fileName").Value<string>(); }
-			set { SetProperty("fileName", QVariant.FromValue<string>(value)); }
+			[SmokeMethod("fileName", "()", "")]
+			get { return ((QLibrary) interceptor).FileName; }
+			[SmokeMethod("setFileName", "(QString)", "$")]
+			set { ((QLibrary) interceptor).FileName = value; }
 		}
 		// void* resolve(const char* arg1); >>>> NOT CONVERTED
 		// void* resolve(const QString& arg1,const char* arg2); >>>> NOT CONVERTED

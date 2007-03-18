@@ -8,10 +8,7 @@ namespace Qyoto {
  		protected QDBusInterface(Type dummy) : base((Type) null) {}
 		protected new void CreateProxy() {
 			SmokeInvocation realProxy = new SmokeInvocation(typeof(QDBusInterface), this);
-			_interceptor = (QDBusInterface) realProxy.GetTransparentProxy();
-		}
-		private QDBusInterface ProxyQDBusInterface() {
-			return (QDBusInterface) _interceptor;
+			interceptor = (QDBusInterface) realProxy.GetTransparentProxy();
 		}
 		public QDBusInterface(string service, string path, string arg3, QDBusConnection connection, QObject parent) : this((Type) null) {
 			CreateProxy();
@@ -19,7 +16,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDBusInterface", "(const QString&, const QString&, const QString&, const QDBusConnection&, QObject*)", "$$$##")]
 		private void NewQDBusInterface(string service, string path, string arg3, QDBusConnection connection, QObject parent) {
-			ProxyQDBusInterface().NewQDBusInterface(service,path,arg3,connection,parent);
+			((QDBusInterface) interceptor).NewQDBusInterface(service,path,arg3,connection,parent);
 		}
 		public QDBusInterface(string service, string path, string arg3, QDBusConnection connection) : this((Type) null) {
 			CreateProxy();
@@ -27,7 +24,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDBusInterface", "(const QString&, const QString&, const QString&, const QDBusConnection&)", "$$$#")]
 		private void NewQDBusInterface(string service, string path, string arg3, QDBusConnection connection) {
-			ProxyQDBusInterface().NewQDBusInterface(service,path,arg3,connection);
+			((QDBusInterface) interceptor).NewQDBusInterface(service,path,arg3,connection);
 		}
 		public QDBusInterface(string service, string path, string arg3) : this((Type) null) {
 			CreateProxy();
@@ -35,7 +32,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDBusInterface", "(const QString&, const QString&, const QString&)", "$$$")]
 		private void NewQDBusInterface(string service, string path, string arg3) {
-			ProxyQDBusInterface().NewQDBusInterface(service,path,arg3);
+			((QDBusInterface) interceptor).NewQDBusInterface(service,path,arg3);
 		}
 		public QDBusInterface(string service, string path) : this((Type) null) {
 			CreateProxy();
@@ -43,7 +40,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("QDBusInterface", "(const QString&, const QString&)", "$$")]
 		private void NewQDBusInterface(string service, string path) {
-			ProxyQDBusInterface().NewQDBusInterface(service,path);
+			((QDBusInterface) interceptor).NewQDBusInterface(service,path);
 		}
 		~QDBusInterface() {
 			DisposeQDBusInterface();
@@ -53,7 +50,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("~QDBusInterface", "()", "")]
 		private void DisposeQDBusInterface() {
-			ProxyQDBusInterface().DisposeQDBusInterface();
+			((QDBusInterface) interceptor).DisposeQDBusInterface();
 		}
 		protected new IQDBusInterfaceSignals Emit {
 			get { return (IQDBusInterfaceSignals) Q_EMIT; }

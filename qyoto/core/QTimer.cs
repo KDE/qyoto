@@ -50,13 +50,17 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("bool", "singleShot")]
 		public bool SingleShot {
-			get { return Property("singleShot").Value<bool>(); }
-			set { SetProperty("singleShot", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isSingleShot", "()", "")]
+			get { return ((QTimer) interceptor).SingleShot; }
+			[SmokeMethod("setSingleShot", "(bool)", "$")]
+			set { ((QTimer) interceptor).SingleShot = value; }
 		}
 		[Q_PROPERTY("int", "interval")]
 		public int Interval {
-			get { return Property("interval").Value<int>(); }
-			set { SetProperty("interval", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("interval", "()", "")]
+			get { return ((QTimer) interceptor).Interval; }
+			[SmokeMethod("setInterval", "(int)", "$")]
+			set { ((QTimer) interceptor).Interval = value; }
 		}
 		public QTimer(QObject parent) : this((Type) null) {
 			CreateProxy();

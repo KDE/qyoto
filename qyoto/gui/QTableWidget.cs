@@ -26,13 +26,17 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("int", "rowCount")]
 		public int RowCount {
-			get { return Property("rowCount").Value<int>(); }
-			set { SetProperty("rowCount", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("rowCount", "()", "")]
+			get { return ((QTableWidget) interceptor).RowCount; }
+			[SmokeMethod("setRowCount", "(int)", "$")]
+			set { ((QTableWidget) interceptor).RowCount = value; }
 		}
 		[Q_PROPERTY("int", "columnCount")]
 		public int ColumnCount {
-			get { return Property("columnCount").Value<int>(); }
-			set { SetProperty("columnCount", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("columnCount", "()", "")]
+			get { return ((QTableWidget) interceptor).ColumnCount; }
+			[SmokeMethod("setColumnCount", "(int)", "$")]
+			set { ((QTableWidget) interceptor).ColumnCount = value; }
 		}
 		public QTableWidget(QWidget parent) : this((Type) null) {
 			CreateProxy();

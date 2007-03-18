@@ -41,58 +41,80 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("int", "minimum")]
 		public int Minimum {
-			get { return Property("minimum").Value<int>(); }
-			set { SetProperty("minimum", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("minimum", "()", "")]
+			get { return ((QAbstractSlider) interceptor).Minimum; }
+			[SmokeMethod("setMinimum", "(int)", "$")]
+			set { ((QAbstractSlider) interceptor).Minimum = value; }
 		}
 		[Q_PROPERTY("int", "maximum")]
 		public int Maximum {
-			get { return Property("maximum").Value<int>(); }
-			set { SetProperty("maximum", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("maximum", "()", "")]
+			get { return ((QAbstractSlider) interceptor).Maximum; }
+			[SmokeMethod("setMaximum", "(int)", "$")]
+			set { ((QAbstractSlider) interceptor).Maximum = value; }
 		}
 		[Q_PROPERTY("int", "singleStep")]
 		public int SingleStep {
-			get { return Property("singleStep").Value<int>(); }
-			set { SetProperty("singleStep", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("singleStep", "()", "")]
+			get { return ((QAbstractSlider) interceptor).SingleStep; }
+			[SmokeMethod("setSingleStep", "(int)", "$")]
+			set { ((QAbstractSlider) interceptor).SingleStep = value; }
 		}
 		[Q_PROPERTY("int", "pageStep")]
 		public int PageStep {
-			get { return Property("pageStep").Value<int>(); }
-			set { SetProperty("pageStep", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("pageStep", "()", "")]
+			get { return ((QAbstractSlider) interceptor).PageStep; }
+			[SmokeMethod("setPageStep", "(int)", "$")]
+			set { ((QAbstractSlider) interceptor).PageStep = value; }
 		}
 		[Q_PROPERTY("int", "value")]
 		public int Value {
-			get { return Property("value").Value<int>(); }
-			set { SetProperty("value", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("value", "()", "")]
+			get { return ((QAbstractSlider) interceptor).Value; }
+			[SmokeMethod("setValue", "(int)", "$")]
+			set { ((QAbstractSlider) interceptor).Value = value; }
 		}
 		[Q_PROPERTY("int", "sliderPosition")]
 		public int SliderPosition {
-			get { return Property("sliderPosition").Value<int>(); }
-			set { SetProperty("sliderPosition", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("sliderPosition", "()", "")]
+			get { return ((QAbstractSlider) interceptor).SliderPosition; }
+			[SmokeMethod("setSliderPosition", "(int)", "$")]
+			set { ((QAbstractSlider) interceptor).SliderPosition = value; }
 		}
 		[Q_PROPERTY("bool", "tracking")]
 		public bool Tracking {
-			get { return Property("tracking").Value<bool>(); }
-			set { SetProperty("tracking", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("hasTracking", "()", "")]
+			get { return ((QAbstractSlider) interceptor).Tracking; }
+			[SmokeMethod("setTracking", "(bool)", "$")]
+			set { ((QAbstractSlider) interceptor).Tracking = value; }
 		}
 		[Q_PROPERTY("Qt::Orientation", "orientation")]
 		public Qt.Orientation Orientation {
-			get { return Property("orientation").Value<Qt.Orientation>(); }
-			set { SetProperty("orientation", QVariant.FromValue<Qt.Orientation>(value)); }
+			[SmokeMethod("orientation", "()", "")]
+			get { return ((QAbstractSlider) interceptor).Orientation; }
+			[SmokeMethod("setOrientation", "(Qt::Orientation)", "$")]
+			set { ((QAbstractSlider) interceptor).Orientation = value; }
 		}
 		[Q_PROPERTY("bool", "invertedAppearance")]
 		public bool InvertedAppearance {
-			get { return Property("invertedAppearance").Value<bool>(); }
-			set { SetProperty("invertedAppearance", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("invertedAppearance", "()", "")]
+			get { return ((QAbstractSlider) interceptor).InvertedAppearance; }
+			[SmokeMethod("setInvertedAppearance", "(bool)", "$")]
+			set { ((QAbstractSlider) interceptor).InvertedAppearance = value; }
 		}
 		[Q_PROPERTY("bool", "invertedControls")]
 		public bool InvertedControls {
-			get { return Property("invertedControls").Value<bool>(); }
-			set { SetProperty("invertedControls", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("invertedControls", "()", "")]
+			get { return ((QAbstractSlider) interceptor).InvertedControls; }
+			[SmokeMethod("setInvertedControls", "(bool)", "$")]
+			set { ((QAbstractSlider) interceptor).InvertedControls = value; }
 		}
 		[Q_PROPERTY("bool", "sliderDown")]
 		public bool SliderDown {
-			get { return Property("sliderDown").Value<bool>(); }
-			set { SetProperty("sliderDown", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isSliderDown", "()", "")]
+			get { return ((QAbstractSlider) interceptor).SliderDown; }
+			[SmokeMethod("setSliderDown", "(bool)", "$")]
+			set { ((QAbstractSlider) interceptor).SliderDown = value; }
 		}
 		public QAbstractSlider(QWidget parent) : this((Type) null) {
 			CreateProxy();

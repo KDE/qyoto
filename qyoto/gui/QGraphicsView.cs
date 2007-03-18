@@ -39,53 +39,73 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("QBrush", "backgroundBrush")]
 		public QBrush BackgroundBrush {
-			get { return Property("backgroundBrush").Value<QBrush>(); }
-			set { SetProperty("backgroundBrush", QVariant.FromValue<QBrush>(value)); }
+			[SmokeMethod("backgroundBrush", "()", "")]
+			get { return ((QGraphicsView) interceptor).BackgroundBrush; }
+			[SmokeMethod("setBackgroundBrush", "(QBrush)", "#")]
+			set { ((QGraphicsView) interceptor).BackgroundBrush = value; }
 		}
 		[Q_PROPERTY("QBrush", "foregroundBrush")]
 		public QBrush ForegroundBrush {
-			get { return Property("foregroundBrush").Value<QBrush>(); }
-			set { SetProperty("foregroundBrush", QVariant.FromValue<QBrush>(value)); }
+			[SmokeMethod("foregroundBrush", "()", "")]
+			get { return ((QGraphicsView) interceptor).ForegroundBrush; }
+			[SmokeMethod("setForegroundBrush", "(QBrush)", "#")]
+			set { ((QGraphicsView) interceptor).ForegroundBrush = value; }
 		}
 		[Q_PROPERTY("bool", "interactive")]
 		public bool Interactive {
-			get { return Property("interactive").Value<bool>(); }
-			set { SetProperty("interactive", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isInteractive", "()", "")]
+			get { return ((QGraphicsView) interceptor).Interactive; }
+			[SmokeMethod("setInteractive", "(bool)", "$")]
+			set { ((QGraphicsView) interceptor).Interactive = value; }
 		}
 		[Q_PROPERTY("QRectF", "sceneRect")]
 		public QRectF SceneRect {
-			get { return Property("sceneRect").Value<QRectF>(); }
-			set { SetProperty("sceneRect", QVariant.FromValue<QRectF>(value)); }
+			[SmokeMethod("sceneRect", "()", "")]
+			get { return ((QGraphicsView) interceptor).SceneRect; }
+			[SmokeMethod("setSceneRect", "(QRectF)", "#")]
+			set { ((QGraphicsView) interceptor).SceneRect = value; }
 		}
 		[Q_PROPERTY("Qt::Alignment", "alignment")]
 		public int Alignment {
-			get { return Property("alignment").Value<int>(); }
-			set { SetProperty("alignment", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("alignment", "()", "")]
+			get { return ((QGraphicsView) interceptor).Alignment; }
+			[SmokeMethod("setAlignment", "(Qt::Alignment)", "$")]
+			set { ((QGraphicsView) interceptor).Alignment = value; }
 		}
 		[Q_PROPERTY("QPainter::RenderHints", "renderHints")]
 		public int RenderHints {
-			get { return Property("renderHints").Value<int>(); }
-			set { SetProperty("renderHints", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("renderHints", "()", "")]
+			get { return ((QGraphicsView) interceptor).RenderHints; }
+			[SmokeMethod("setRenderHints", "(QPainter::RenderHints)", "$")]
+			set { ((QGraphicsView) interceptor).RenderHints = value; }
 		}
 		[Q_PROPERTY("QGraphicsView::DragMode", "dragMode")]
 		public QGraphicsView.DragMode dragMode {
-			get { return Property("dragMode").Value<QGraphicsView.DragMode>(); }
-			set { SetProperty("dragMode", QVariant.FromValue<QGraphicsView.DragMode>(value)); }
+			[SmokeMethod("dragMode", "()", "")]
+			get { return ((QGraphicsView) interceptor).dragMode; }
+			[SmokeMethod("setDragMode", "(QGraphicsView::DragMode)", "$")]
+			set { ((QGraphicsView) interceptor).dragMode = value; }
 		}
 		[Q_PROPERTY("CacheMode", "cacheMode")]
 		public int CacheMode {
-			get { return Property("cacheMode").Value<int>(); }
-			set { SetProperty("cacheMode", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("cacheMode", "()", "")]
+			get { return ((QGraphicsView) interceptor).CacheMode; }
+			[SmokeMethod("setCacheMode", "(CacheMode)", "$")]
+			set { ((QGraphicsView) interceptor).CacheMode = value; }
 		}
 		[Q_PROPERTY("QGraphicsView::ViewportAnchor", "transformationAnchor")]
 		public QGraphicsView.ViewportAnchor TransformationAnchor {
-			get { return Property("transformationAnchor").Value<QGraphicsView.ViewportAnchor>(); }
-			set { SetProperty("transformationAnchor", QVariant.FromValue<QGraphicsView.ViewportAnchor>(value)); }
+			[SmokeMethod("transformationAnchor", "()", "")]
+			get { return ((QGraphicsView) interceptor).TransformationAnchor; }
+			[SmokeMethod("setTransformationAnchor", "(QGraphicsView::ViewportAnchor)", "$")]
+			set { ((QGraphicsView) interceptor).TransformationAnchor = value; }
 		}
 		[Q_PROPERTY("QGraphicsView::ViewportAnchor", "resizeAnchor")]
 		public QGraphicsView.ViewportAnchor ResizeAnchor {
-			get { return Property("resizeAnchor").Value<QGraphicsView.ViewportAnchor>(); }
-			set { SetProperty("resizeAnchor", QVariant.FromValue<QGraphicsView.ViewportAnchor>(value)); }
+			[SmokeMethod("resizeAnchor", "()", "")]
+			get { return ((QGraphicsView) interceptor).ResizeAnchor; }
+			[SmokeMethod("setResizeAnchor", "(QGraphicsView::ViewportAnchor)", "$")]
+			set { ((QGraphicsView) interceptor).ResizeAnchor = value; }
 		}
 		// void drawItems(QPainter* arg1,int arg2,QGraphicsItem** arg3,const QStyleOptionGraphicsItem* arg4); >>>> NOT CONVERTED
 		public QGraphicsView(QWidget parent) : this((Type) null) {

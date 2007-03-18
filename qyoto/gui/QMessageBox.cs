@@ -171,38 +171,52 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("QString", "text")]
 		public string Text {
-			get { return Property("text").Value<string>(); }
-			set { SetProperty("text", QVariant.FromValue<string>(value)); }
+			[SmokeMethod("text", "()", "")]
+			get { return ((QMessageBox) interceptor).Text; }
+			[SmokeMethod("setText", "(QString)", "$")]
+			set { ((QMessageBox) interceptor).Text = value; }
 		}
 		[Q_PROPERTY("QMessageBox::Icon", "icon")]
 		public QMessageBox.Icon icon {
-			get { return Property("icon").Value<QMessageBox.Icon>(); }
-			set { SetProperty("icon", QVariant.FromValue<QMessageBox.Icon>(value)); }
+			[SmokeMethod("icon", "()", "")]
+			get { return ((QMessageBox) interceptor).icon; }
+			[SmokeMethod("setIcon", "(QMessageBox::Icon)", "$")]
+			set { ((QMessageBox) interceptor).icon = value; }
 		}
 		[Q_PROPERTY("QPixmap", "iconPixmap")]
 		public QPixmap IconPixmap {
-			get { return Property("iconPixmap").Value<QPixmap>(); }
-			set { SetProperty("iconPixmap", QVariant.FromValue<QPixmap>(value)); }
+			[SmokeMethod("iconPixmap", "()", "")]
+			get { return ((QMessageBox) interceptor).IconPixmap; }
+			[SmokeMethod("setIconPixmap", "(QPixmap)", "#")]
+			set { ((QMessageBox) interceptor).IconPixmap = value; }
 		}
 		[Q_PROPERTY("Qt::TextFormat", "textFormat")]
 		public Qt.TextFormat TextFormat {
-			get { return Property("textFormat").Value<Qt.TextFormat>(); }
-			set { SetProperty("textFormat", QVariant.FromValue<Qt.TextFormat>(value)); }
+			[SmokeMethod("textFormat", "()", "")]
+			get { return ((QMessageBox) interceptor).TextFormat; }
+			[SmokeMethod("setTextFormat", "(Qt::TextFormat)", "$")]
+			set { ((QMessageBox) interceptor).TextFormat = value; }
 		}
 		[Q_PROPERTY("StandardButtons", "standardButtons")]
 		public int StandardButtons {
-			get { return Property("standardButtons").Value<int>(); }
-			set { SetProperty("standardButtons", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("standardButtons", "()", "")]
+			get { return ((QMessageBox) interceptor).StandardButtons; }
+			[SmokeMethod("setStandardButtons", "(StandardButtons)", "$")]
+			set { ((QMessageBox) interceptor).StandardButtons = value; }
 		}
 		[Q_PROPERTY("QString", "detailedText")]
 		public string DetailedText {
-			get { return Property("detailedText").Value<string>(); }
-			set { SetProperty("detailedText", QVariant.FromValue<string>(value)); }
+			[SmokeMethod("detailedText", "()", "")]
+			get { return ((QMessageBox) interceptor).DetailedText; }
+			[SmokeMethod("setDetailedText", "(QString)", "$")]
+			set { ((QMessageBox) interceptor).DetailedText = value; }
 		}
 		[Q_PROPERTY("QString", "informativeText")]
 		public string InformativeText {
-			get { return Property("informativeText").Value<string>(); }
-			set { SetProperty("informativeText", QVariant.FromValue<string>(value)); }
+			[SmokeMethod("informativeText", "()", "")]
+			get { return ((QMessageBox) interceptor).InformativeText; }
+			[SmokeMethod("setInformativeText", "(QString)", "$")]
+			set { ((QMessageBox) interceptor).InformativeText = value; }
 		}
 		public QMessageBox(QWidget parent) : this((Type) null) {
 			CreateProxy();

@@ -108,38 +108,52 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("QFileDialog::ViewMode", "viewMode")]
 		public QFileDialog.ViewMode viewMode {
-			get { return Property("viewMode").Value<QFileDialog.ViewMode>(); }
-			set { SetProperty("viewMode", QVariant.FromValue<QFileDialog.ViewMode>(value)); }
+			[SmokeMethod("viewMode", "()", "")]
+			get { return ((QFileDialog) interceptor).viewMode; }
+			[SmokeMethod("setViewMode", "(QFileDialog::ViewMode)", "$")]
+			set { ((QFileDialog) interceptor).viewMode = value; }
 		}
 		[Q_PROPERTY("QFileDialog::FileMode", "fileMode")]
 		public QFileDialog.FileMode fileMode {
-			get { return Property("fileMode").Value<QFileDialog.FileMode>(); }
-			set { SetProperty("fileMode", QVariant.FromValue<QFileDialog.FileMode>(value)); }
+			[SmokeMethod("fileMode", "()", "")]
+			get { return ((QFileDialog) interceptor).fileMode; }
+			[SmokeMethod("setFileMode", "(QFileDialog::FileMode)", "$")]
+			set { ((QFileDialog) interceptor).fileMode = value; }
 		}
 		[Q_PROPERTY("QFileDialog::AcceptMode", "acceptMode")]
 		public QFileDialog.AcceptMode acceptMode {
-			get { return Property("acceptMode").Value<QFileDialog.AcceptMode>(); }
-			set { SetProperty("acceptMode", QVariant.FromValue<QFileDialog.AcceptMode>(value)); }
+			[SmokeMethod("acceptMode", "()", "")]
+			get { return ((QFileDialog) interceptor).acceptMode; }
+			[SmokeMethod("setAcceptMode", "(QFileDialog::AcceptMode)", "$")]
+			set { ((QFileDialog) interceptor).acceptMode = value; }
 		}
 		[Q_PROPERTY("bool", "readOnly")]
 		public bool ReadOnly {
-			get { return Property("readOnly").Value<bool>(); }
-			set { SetProperty("readOnly", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isReadOnly", "()", "")]
+			get { return ((QFileDialog) interceptor).ReadOnly; }
+			[SmokeMethod("setReadOnly", "(bool)", "$")]
+			set { ((QFileDialog) interceptor).ReadOnly = value; }
 		}
 		[Q_PROPERTY("bool", "resolveSymlinks")]
 		public bool ResolveSymlinks {
-			get { return Property("resolveSymlinks").Value<bool>(); }
-			set { SetProperty("resolveSymlinks", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("resolveSymlinks", "()", "")]
+			get { return ((QFileDialog) interceptor).ResolveSymlinks; }
+			[SmokeMethod("setResolveSymlinks", "(bool)", "$")]
+			set { ((QFileDialog) interceptor).ResolveSymlinks = value; }
 		}
 		[Q_PROPERTY("bool", "confirmOverwrite")]
 		public bool ConfirmOverwrite {
-			get { return Property("confirmOverwrite").Value<bool>(); }
-			set { SetProperty("confirmOverwrite", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("confirmOverwrite", "()", "")]
+			get { return ((QFileDialog) interceptor).ConfirmOverwrite; }
+			[SmokeMethod("setConfirmOverwrite", "(bool)", "$")]
+			set { ((QFileDialog) interceptor).ConfirmOverwrite = value; }
 		}
 		[Q_PROPERTY("QString", "defaultSuffix")]
 		public string DefaultSuffix {
-			get { return Property("defaultSuffix").Value<string>(); }
-			set { SetProperty("defaultSuffix", QVariant.FromValue<string>(value)); }
+			[SmokeMethod("defaultSuffix", "()", "")]
+			get { return ((QFileDialog) interceptor).DefaultSuffix; }
+			[SmokeMethod("setDefaultSuffix", "(QString)", "$")]
+			set { ((QFileDialog) interceptor).DefaultSuffix = value; }
 		}
 		// QFileDialog* QFileDialog(const QFileDialogArgs& arg1); >>>> NOT CONVERTED
 		public QFileDialog(QWidget parent, int f) : this((Type) null) {

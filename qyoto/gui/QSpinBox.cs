@@ -26,37 +26,50 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("QString", "suffix")]
 		public string Suffix {
-			get { return Property("suffix").Value<string>(); }
-			set { SetProperty("suffix", QVariant.FromValue<string>(value)); }
+			[SmokeMethod("suffix", "()", "")]
+			get { return ((QSpinBox) interceptor).Suffix; }
+			[SmokeMethod("setSuffix", "(QString)", "$")]
+			set { ((QSpinBox) interceptor).Suffix = value; }
 		}
 		[Q_PROPERTY("QString", "prefix")]
 		public string Prefix {
-			get { return Property("prefix").Value<string>(); }
-			set { SetProperty("prefix", QVariant.FromValue<string>(value)); }
+			[SmokeMethod("prefix", "()", "")]
+			get { return ((QSpinBox) interceptor).Prefix; }
+			[SmokeMethod("setPrefix", "(QString)", "$")]
+			set { ((QSpinBox) interceptor).Prefix = value; }
 		}
 		[Q_PROPERTY("QString", "cleanText")]
 		public string CleanText {
-			get { return Property("cleanText").Value<string>(); }
+			[SmokeMethod("cleanText", "()", "")]
+			get { return ((QSpinBox) interceptor).CleanText; }
 		}
 		[Q_PROPERTY("int", "maximum")]
 		public int Maximum {
-			get { return Property("maximum").Value<int>(); }
-			set { SetProperty("maximum", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("maximum", "()", "")]
+			get { return ((QSpinBox) interceptor).Maximum; }
+			[SmokeMethod("setMaximum", "(int)", "$")]
+			set { ((QSpinBox) interceptor).Maximum = value; }
 		}
 		[Q_PROPERTY("int", "minimum")]
 		public int Minimum {
-			get { return Property("minimum").Value<int>(); }
-			set { SetProperty("minimum", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("minimum", "()", "")]
+			get { return ((QSpinBox) interceptor).Minimum; }
+			[SmokeMethod("setMinimum", "(int)", "$")]
+			set { ((QSpinBox) interceptor).Minimum = value; }
 		}
 		[Q_PROPERTY("int", "singleStep")]
 		public int SingleStep {
-			get { return Property("singleStep").Value<int>(); }
-			set { SetProperty("singleStep", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("singleStep", "()", "")]
+			get { return ((QSpinBox) interceptor).SingleStep; }
+			[SmokeMethod("setSingleStep", "(int)", "$")]
+			set { ((QSpinBox) interceptor).SingleStep = value; }
 		}
 		[Q_PROPERTY("int", "value")]
 		public int Value {
-			get { return Property("value").Value<int>(); }
-			set { SetProperty("value", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("value", "()", "")]
+			get { return ((QSpinBox) interceptor).Value; }
+			[SmokeMethod("setValue", "(int)", "$")]
+			set { ((QSpinBox) interceptor).Value = value; }
 		}
 		public QSpinBox(QWidget parent) : this((Type) null) {
 			CreateProxy();

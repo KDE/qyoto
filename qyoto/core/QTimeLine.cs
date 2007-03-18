@@ -41,33 +41,45 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("int", "duration")]
 		public int Duration {
-			get { return Property("duration").Value<int>(); }
-			set { SetProperty("duration", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("duration", "()", "")]
+			get { return ((QTimeLine) interceptor).Duration; }
+			[SmokeMethod("setDuration", "(int)", "$")]
+			set { ((QTimeLine) interceptor).Duration = value; }
 		}
 		[Q_PROPERTY("int", "updateInterval")]
 		public int UpdateInterval {
-			get { return Property("updateInterval").Value<int>(); }
-			set { SetProperty("updateInterval", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("updateInterval", "()", "")]
+			get { return ((QTimeLine) interceptor).UpdateInterval; }
+			[SmokeMethod("setUpdateInterval", "(int)", "$")]
+			set { ((QTimeLine) interceptor).UpdateInterval = value; }
 		}
 		[Q_PROPERTY("int", "currentTime")]
 		public int CurrentTime {
-			get { return Property("currentTime").Value<int>(); }
-			set { SetProperty("currentTime", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("currentTime", "()", "")]
+			get { return ((QTimeLine) interceptor).CurrentTime; }
+			[SmokeMethod("setCurrentTime", "(int)", "$")]
+			set { ((QTimeLine) interceptor).CurrentTime = value; }
 		}
 		[Q_PROPERTY("QTimeLine::Direction", "direction")]
 		public QTimeLine.Direction direction {
-			get { return Property("direction").Value<QTimeLine.Direction>(); }
-			set { SetProperty("direction", QVariant.FromValue<QTimeLine.Direction>(value)); }
+			[SmokeMethod("direction", "()", "")]
+			get { return ((QTimeLine) interceptor).direction; }
+			[SmokeMethod("setDirection", "(QTimeLine::Direction)", "$")]
+			set { ((QTimeLine) interceptor).direction = value; }
 		}
 		[Q_PROPERTY("int", "loopCount")]
 		public int LoopCount {
-			get { return Property("loopCount").Value<int>(); }
-			set { SetProperty("loopCount", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("loopCount", "()", "")]
+			get { return ((QTimeLine) interceptor).LoopCount; }
+			[SmokeMethod("setLoopCount", "(int)", "$")]
+			set { ((QTimeLine) interceptor).LoopCount = value; }
 		}
 		[Q_PROPERTY("QTimeLine::CurveShape", "curveShape")]
 		public QTimeLine.CurveShape curveShape {
-			get { return Property("curveShape").Value<QTimeLine.CurveShape>(); }
-			set { SetProperty("curveShape", QVariant.FromValue<QTimeLine.CurveShape>(value)); }
+			[SmokeMethod("curveShape", "()", "")]
+			get { return ((QTimeLine) interceptor).curveShape; }
+			[SmokeMethod("setCurveShape", "(QTimeLine::CurveShape)", "$")]
+			set { ((QTimeLine) interceptor).curveShape = value; }
 		}
 		public QTimeLine(int duration, QObject parent) : this((Type) null) {
 			CreateProxy();

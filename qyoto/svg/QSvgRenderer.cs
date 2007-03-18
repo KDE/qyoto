@@ -25,18 +25,24 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("QRectF", "viewBox")]
 		public QRectF ViewBox {
-			get { return Property("viewBox").Value<QRectF>(); }
-			set { SetProperty("viewBox", QVariant.FromValue<QRectF>(value)); }
+			[SmokeMethod("viewBoxF", "()", "")]
+			get { return ((QSvgRenderer) interceptor).ViewBox; }
+			[SmokeMethod("setViewBox", "(QRectF)", "#")]
+			set { ((QSvgRenderer) interceptor).ViewBox = value; }
 		}
 		[Q_PROPERTY("int", "framesPerSecond")]
 		public int FramesPerSecond {
-			get { return Property("framesPerSecond").Value<int>(); }
-			set { SetProperty("framesPerSecond", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("framesPerSecond", "()", "")]
+			get { return ((QSvgRenderer) interceptor).FramesPerSecond; }
+			[SmokeMethod("setFramesPerSecond", "(int)", "$")]
+			set { ((QSvgRenderer) interceptor).FramesPerSecond = value; }
 		}
 		[Q_PROPERTY("int", "currentFrame")]
 		public int CurrentFrame {
-			get { return Property("currentFrame").Value<int>(); }
-			set { SetProperty("currentFrame", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("currentFrame", "()", "")]
+			get { return ((QSvgRenderer) interceptor).CurrentFrame; }
+			[SmokeMethod("setCurrentFrame", "(int)", "$")]
+			set { ((QSvgRenderer) interceptor).CurrentFrame = value; }
 		}
 		public QSvgRenderer(QObject parent) : this((Type) null) {
 			CreateProxy();

@@ -42,18 +42,24 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("QString", "toolTip")]
 		public string ToolTip {
-			get { return Property("toolTip").Value<string>(); }
-			set { SetProperty("toolTip", QVariant.FromValue<string>(value)); }
+			[SmokeMethod("toolTip", "()", "")]
+			get { return ((QSystemTrayIcon) interceptor).ToolTip; }
+			[SmokeMethod("setToolTip", "(QString)", "$")]
+			set { ((QSystemTrayIcon) interceptor).ToolTip = value; }
 		}
 		[Q_PROPERTY("QIcon", "icon")]
 		public QIcon Icon {
-			get { return Property("icon").Value<QIcon>(); }
-			set { SetProperty("icon", QVariant.FromValue<QIcon>(value)); }
+			[SmokeMethod("icon", "()", "")]
+			get { return ((QSystemTrayIcon) interceptor).Icon; }
+			[SmokeMethod("setIcon", "(QIcon)", "#")]
+			set { ((QSystemTrayIcon) interceptor).Icon = value; }
 		}
 		[Q_PROPERTY("bool", "visible")]
 		public bool Visible {
-			get { return Property("visible").Value<bool>(); }
-			set { SetProperty("visible", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isVisible", "()", "")]
+			get { return ((QSystemTrayIcon) interceptor).Visible; }
+			[SmokeMethod("setVisible", "(bool)", "$")]
+			set { ((QSystemTrayIcon) interceptor).Visible = value; }
 		}
 		public QSystemTrayIcon(QObject parent) : this((Type) null) {
 			CreateProxy();

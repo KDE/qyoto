@@ -37,13 +37,17 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("int", "speed")]
 		public int Speed {
-			get { return Property("speed").Value<int>(); }
-			set { SetProperty("speed", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("speed", "()", "")]
+			get { return ((QMovie) interceptor).Speed; }
+			[SmokeMethod("setSpeed", "(int)", "$")]
+			set { ((QMovie) interceptor).Speed = value; }
 		}
 		[Q_PROPERTY("QMovie::CacheMode", "cacheMode")]
 		public QMovie.CacheMode cacheMode {
-			get { return Property("cacheMode").Value<QMovie.CacheMode>(); }
-			set { SetProperty("cacheMode", QVariant.FromValue<QMovie.CacheMode>(value)); }
+			[SmokeMethod("cacheMode", "()", "")]
+			get { return ((QMovie) interceptor).cacheMode; }
+			[SmokeMethod("setCacheMode", "(QMovie::CacheMode)", "$")]
+			set { ((QMovie) interceptor).cacheMode = value; }
 		}
 		public QMovie(QObject parent) : this((Type) null) {
 			CreateProxy();

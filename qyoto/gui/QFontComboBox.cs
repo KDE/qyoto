@@ -32,18 +32,24 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("QFontDatabase::WritingSystem", "writingSystem")]
 		public QFontDatabase.WritingSystem WritingSystem {
-			get { return Property("writingSystem").Value<QFontDatabase.WritingSystem>(); }
-			set { SetProperty("writingSystem", QVariant.FromValue<QFontDatabase.WritingSystem>(value)); }
+			[SmokeMethod("writingSystem", "()", "")]
+			get { return ((QFontComboBox) interceptor).WritingSystem; }
+			[SmokeMethod("setWritingSystem", "(QFontDatabase::WritingSystem)", "$")]
+			set { ((QFontComboBox) interceptor).WritingSystem = value; }
 		}
 		[Q_PROPERTY("FontFilters", "fontFilters")]
 		public int FontFilters {
-			get { return Property("fontFilters").Value<int>(); }
-			set { SetProperty("fontFilters", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("fontFilters", "()", "")]
+			get { return ((QFontComboBox) interceptor).FontFilters; }
+			[SmokeMethod("setFontFilters", "(FontFilters)", "$")]
+			set { ((QFontComboBox) interceptor).FontFilters = value; }
 		}
 		[Q_PROPERTY("QFont", "currentFont")]
 		public QFont CurrentFont {
-			get { return Property("currentFont").Value<QFont>(); }
-			set { SetProperty("currentFont", QVariant.FromValue<QFont>(value)); }
+			[SmokeMethod("currentFont", "()", "")]
+			get { return ((QFontComboBox) interceptor).CurrentFont; }
+			[SmokeMethod("setCurrentFont", "(QFont)", "#")]
+			set { ((QFontComboBox) interceptor).CurrentFont = value; }
 		}
 		public QFontComboBox(QWidget parent) : this((Type) null) {
 			CreateProxy();

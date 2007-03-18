@@ -25,23 +25,31 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("QSize", "iconSize")]
 		public QSize IconSize {
-			get { return Property("iconSize").Value<QSize>(); }
-			set { SetProperty("iconSize", QVariant.FromValue<QSize>(value)); }
+			[SmokeMethod("iconSize", "()", "")]
+			get { return ((QMainWindow) interceptor).IconSize; }
+			[SmokeMethod("setIconSize", "(QSize)", "#")]
+			set { ((QMainWindow) interceptor).IconSize = value; }
 		}
 		[Q_PROPERTY("Qt::ToolButtonStyle", "toolButtonStyle")]
 		public Qt.ToolButtonStyle ToolButtonStyle {
-			get { return Property("toolButtonStyle").Value<Qt.ToolButtonStyle>(); }
-			set { SetProperty("toolButtonStyle", QVariant.FromValue<Qt.ToolButtonStyle>(value)); }
+			[SmokeMethod("toolButtonStyle", "()", "")]
+			get { return ((QMainWindow) interceptor).ToolButtonStyle; }
+			[SmokeMethod("setToolButtonStyle", "(Qt::ToolButtonStyle)", "$")]
+			set { ((QMainWindow) interceptor).ToolButtonStyle = value; }
 		}
 		[Q_PROPERTY("bool", "animated")]
 		public bool Animated {
-			get { return Property("animated").Value<bool>(); }
-			set { SetProperty("animated", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isAnimated", "()", "")]
+			get { return ((QMainWindow) interceptor).Animated; }
+			[SmokeMethod("setAnimated", "(bool)", "$")]
+			set { ((QMainWindow) interceptor).Animated = value; }
 		}
 		[Q_PROPERTY("bool", "dockNestingEnabled")]
 		public bool DockNestingEnabled {
-			get { return Property("dockNestingEnabled").Value<bool>(); }
-			set { SetProperty("dockNestingEnabled", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isDockNestingEnabled", "()", "")]
+			get { return ((QMainWindow) interceptor).DockNestingEnabled; }
+			[SmokeMethod("setDockNestingEnabled", "(bool)", "$")]
+			set { ((QMainWindow) interceptor).DockNestingEnabled = value; }
 		}
 		public QMainWindow(QWidget parent, int flags) : this((Type) null) {
 			CreateProxy();

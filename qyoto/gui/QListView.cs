@@ -48,63 +48,87 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("QListView::Movement", "movement")]
 		public QListView.Movement movement {
-			get { return Property("movement").Value<QListView.Movement>(); }
-			set { SetProperty("movement", QVariant.FromValue<QListView.Movement>(value)); }
+			[SmokeMethod("movement", "()", "")]
+			get { return ((QListView) interceptor).movement; }
+			[SmokeMethod("setMovement", "(QListView::Movement)", "$")]
+			set { ((QListView) interceptor).movement = value; }
 		}
 		[Q_PROPERTY("QListView::Flow", "flow")]
 		public QListView.Flow flow {
-			get { return Property("flow").Value<QListView.Flow>(); }
-			set { SetProperty("flow", QVariant.FromValue<QListView.Flow>(value)); }
+			[SmokeMethod("flow", "()", "")]
+			get { return ((QListView) interceptor).flow; }
+			[SmokeMethod("setFlow", "(QListView::Flow)", "$")]
+			set { ((QListView) interceptor).flow = value; }
 		}
 		[Q_PROPERTY("bool", "isWrapping")]
 		public bool IsWrapping {
-			get { return Property("isWrapping").Value<bool>(); }
-			set { SetProperty("isWrapping", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isWrapping", "()", "")]
+			get { return ((QListView) interceptor).IsWrapping; }
+			[SmokeMethod("setWrapping", "(bool)", "$")]
+			set { ((QListView) interceptor).IsWrapping = value; }
 		}
 		[Q_PROPERTY("QListView::ResizeMode", "resizeMode")]
 		public QListView.ResizeMode resizeMode {
-			get { return Property("resizeMode").Value<QListView.ResizeMode>(); }
-			set { SetProperty("resizeMode", QVariant.FromValue<QListView.ResizeMode>(value)); }
+			[SmokeMethod("resizeMode", "()", "")]
+			get { return ((QListView) interceptor).resizeMode; }
+			[SmokeMethod("setResizeMode", "(QListView::ResizeMode)", "$")]
+			set { ((QListView) interceptor).resizeMode = value; }
 		}
 		[Q_PROPERTY("QListView::LayoutMode", "layoutMode")]
 		public QListView.LayoutMode layoutMode {
-			get { return Property("layoutMode").Value<QListView.LayoutMode>(); }
-			set { SetProperty("layoutMode", QVariant.FromValue<QListView.LayoutMode>(value)); }
+			[SmokeMethod("layoutMode", "()", "")]
+			get { return ((QListView) interceptor).layoutMode; }
+			[SmokeMethod("setLayoutMode", "(QListView::LayoutMode)", "$")]
+			set { ((QListView) interceptor).layoutMode = value; }
 		}
 		[Q_PROPERTY("int", "spacing")]
 		public int Spacing {
-			get { return Property("spacing").Value<int>(); }
-			set { SetProperty("spacing", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("spacing", "()", "")]
+			get { return ((QListView) interceptor).Spacing; }
+			[SmokeMethod("setSpacing", "(int)", "$")]
+			set { ((QListView) interceptor).Spacing = value; }
 		}
 		[Q_PROPERTY("QSize", "gridSize")]
 		public QSize GridSize {
-			get { return Property("gridSize").Value<QSize>(); }
-			set { SetProperty("gridSize", QVariant.FromValue<QSize>(value)); }
+			[SmokeMethod("gridSize", "()", "")]
+			get { return ((QListView) interceptor).GridSize; }
+			[SmokeMethod("setGridSize", "(QSize)", "#")]
+			set { ((QListView) interceptor).GridSize = value; }
 		}
 		[Q_PROPERTY("QListView::ViewMode", "viewMode")]
 		public QListView.ViewMode viewMode {
-			get { return Property("viewMode").Value<QListView.ViewMode>(); }
-			set { SetProperty("viewMode", QVariant.FromValue<QListView.ViewMode>(value)); }
+			[SmokeMethod("viewMode", "()", "")]
+			get { return ((QListView) interceptor).viewMode; }
+			[SmokeMethod("setViewMode", "(QListView::ViewMode)", "$")]
+			set { ((QListView) interceptor).viewMode = value; }
 		}
 		[Q_PROPERTY("int", "modelColumn")]
 		public int ModelColumn {
-			get { return Property("modelColumn").Value<int>(); }
-			set { SetProperty("modelColumn", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("modelColumn", "()", "")]
+			get { return ((QListView) interceptor).ModelColumn; }
+			[SmokeMethod("setModelColumn", "(int)", "$")]
+			set { ((QListView) interceptor).ModelColumn = value; }
 		}
 		[Q_PROPERTY("bool", "uniformItemSizes")]
 		public bool UniformItemSizes {
-			get { return Property("uniformItemSizes").Value<bool>(); }
-			set { SetProperty("uniformItemSizes", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("uniformItemSizes", "()", "")]
+			get { return ((QListView) interceptor).UniformItemSizes; }
+			[SmokeMethod("setUniformItemSizes", "(bool)", "$")]
+			set { ((QListView) interceptor).UniformItemSizes = value; }
 		}
 		[Q_PROPERTY("int", "batchSize")]
 		public int BatchSize {
-			get { return Property("batchSize").Value<int>(); }
-			set { SetProperty("batchSize", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("batchSize", "()", "")]
+			get { return ((QListView) interceptor).BatchSize; }
+			[SmokeMethod("setBatchSize", "(int)", "$")]
+			set { ((QListView) interceptor).BatchSize = value; }
 		}
 		[Q_PROPERTY("bool", "wordWrap")]
 		public bool WordWrap {
-			get { return Property("wordWrap").Value<bool>(); }
-			set { SetProperty("wordWrap", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("wordWrap", "()", "")]
+			get { return ((QListView) interceptor).WordWrap; }
+			[SmokeMethod("setWordWrap", "(bool)", "$")]
+			set { ((QListView) interceptor).WordWrap = value; }
 		}
 		public QListView(QWidget parent) : this((Type) null) {
 			CreateProxy();

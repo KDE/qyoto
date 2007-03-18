@@ -34,18 +34,24 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("int", "margin")]
 		public int Margin {
-			get { return Property("margin").Value<int>(); }
-			set { SetProperty("margin", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("margin", "()", "")]
+			get { return ((QLayout) interceptor).Margin; }
+			[SmokeMethod("setMargin", "(int)", "$")]
+			set { ((QLayout) interceptor).Margin = value; }
 		}
 		[Q_PROPERTY("int", "spacing")]
 		public int Spacing {
-			get { return Property("spacing").Value<int>(); }
-			set { SetProperty("spacing", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("spacing", "()", "")]
+			get { return ((QLayout) interceptor).Spacing; }
+			[SmokeMethod("setSpacing", "(int)", "$")]
+			set { ((QLayout) interceptor).Spacing = value; }
 		}
 		[Q_PROPERTY("QLayout::SizeConstraint", "sizeConstraint")]
 		public QLayout.SizeConstraint sizeConstraint {
-			get { return Property("sizeConstraint").Value<QLayout.SizeConstraint>(); }
-			set { SetProperty("sizeConstraint", QVariant.FromValue<QLayout.SizeConstraint>(value)); }
+			[SmokeMethod("sizeConstraint", "()", "")]
+			get { return ((QLayout) interceptor).sizeConstraint; }
+			[SmokeMethod("setSizeConstraint", "(QLayout::SizeConstraint)", "$")]
+			set { ((QLayout) interceptor).sizeConstraint = value; }
 		}
 		public QLayout(QWidget parent) : this((Type) null) {
 			CreateProxy();

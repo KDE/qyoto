@@ -25,13 +25,17 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("Qt::ScrollBarPolicy", "verticalScrollBarPolicy")]
 		public Qt.ScrollBarPolicy VerticalScrollBarPolicy {
-			get { return Property("verticalScrollBarPolicy").Value<Qt.ScrollBarPolicy>(); }
-			set { SetProperty("verticalScrollBarPolicy", QVariant.FromValue<Qt.ScrollBarPolicy>(value)); }
+			[SmokeMethod("verticalScrollBarPolicy", "()", "")]
+			get { return ((QAbstractScrollArea) interceptor).VerticalScrollBarPolicy; }
+			[SmokeMethod("setVerticalScrollBarPolicy", "(Qt::ScrollBarPolicy)", "$")]
+			set { ((QAbstractScrollArea) interceptor).VerticalScrollBarPolicy = value; }
 		}
 		[Q_PROPERTY("Qt::ScrollBarPolicy", "horizontalScrollBarPolicy")]
 		public Qt.ScrollBarPolicy HorizontalScrollBarPolicy {
-			get { return Property("horizontalScrollBarPolicy").Value<Qt.ScrollBarPolicy>(); }
-			set { SetProperty("horizontalScrollBarPolicy", QVariant.FromValue<Qt.ScrollBarPolicy>(value)); }
+			[SmokeMethod("horizontalScrollBarPolicy", "()", "")]
+			get { return ((QAbstractScrollArea) interceptor).HorizontalScrollBarPolicy; }
+			[SmokeMethod("setHorizontalScrollBarPolicy", "(Qt::ScrollBarPolicy)", "$")]
+			set { ((QAbstractScrollArea) interceptor).HorizontalScrollBarPolicy = value; }
 		}
 		public QAbstractScrollArea(QWidget parent) : this((Type) null) {
 			CreateProxy();

@@ -34,234 +34,318 @@ namespace Qyoto {
 		}
 		[Q_PROPERTY("bool", "modal")]
 		public bool Modal {
-			get { return Property("modal").Value<bool>(); }
+			[SmokeMethod("isModal", "()", "")]
+			get { return ((QWidget) interceptor).Modal; }
 		}
 		[Q_PROPERTY("Qt::WindowModality", "windowModality")]
 		public Qt.WindowModality WindowModality {
-			get { return Property("windowModality").Value<Qt.WindowModality>(); }
-			set { SetProperty("windowModality", QVariant.FromValue<Qt.WindowModality>(value)); }
+			[SmokeMethod("windowModality", "()", "")]
+			get { return ((QWidget) interceptor).WindowModality; }
+			[SmokeMethod("setWindowModality", "(Qt::WindowModality)", "$")]
+			set { ((QWidget) interceptor).WindowModality = value; }
 		}
 		[Q_PROPERTY("bool", "enabled")]
 		public bool Enabled {
-			get { return Property("enabled").Value<bool>(); }
-			set { SetProperty("enabled", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isEnabled", "()", "")]
+			get { return ((QWidget) interceptor).Enabled; }
+			[SmokeMethod("setEnabled", "(bool)", "$")]
+			set { ((QWidget) interceptor).Enabled = value; }
 		}
 		[Q_PROPERTY("QRect", "geometry")]
 		public QRect Geometry {
-			get { return Property("geometry").Value<QRect>(); }
-			set { SetProperty("geometry", QVariant.FromValue<QRect>(value)); }
+			[SmokeMethod("geometry", "()", "")]
+			get { return ((QWidget) interceptor).Geometry; }
+			[SmokeMethod("setGeometry", "(QRect)", "#")]
+			set { ((QWidget) interceptor).Geometry = value; }
 		}
 		[Q_PROPERTY("QRect", "frameGeometry")]
 		public QRect FrameGeometry {
-			get { return Property("frameGeometry").Value<QRect>(); }
+			[SmokeMethod("frameGeometry", "()", "")]
+			get { return ((QWidget) interceptor).FrameGeometry; }
 		}
 		[Q_PROPERTY("QRect", "normalGeometry")]
 		public QRect NormalGeometry {
-			get { return Property("normalGeometry").Value<QRect>(); }
+			[SmokeMethod("normalGeometry", "()", "")]
+			get { return ((QWidget) interceptor).NormalGeometry; }
 		}
 		[Q_PROPERTY("int", "x")]
 		public int X {
-			get { return Property("x").Value<int>(); }
+			[SmokeMethod("x", "()", "")]
+			get { return ((QWidget) interceptor).X; }
 		}
 		[Q_PROPERTY("int", "y")]
 		public int Y {
-			get { return Property("y").Value<int>(); }
+			[SmokeMethod("y", "()", "")]
+			get { return ((QWidget) interceptor).Y; }
 		}
 		[Q_PROPERTY("QPoint", "pos")]
 		public QPoint Pos {
-			get { return Property("pos").Value<QPoint>(); }
-			set { SetProperty("pos", QVariant.FromValue<QPoint>(value)); }
+			[SmokeMethod("pos", "()", "")]
+			get { return ((QWidget) interceptor).Pos; }
+			[SmokeMethod("move", "(QPoint)", "#")]
+			set { ((QWidget) interceptor).Pos = value; }
 		}
 		[Q_PROPERTY("QSize", "frameSize")]
 		public QSize FrameSize {
-			get { return Property("frameSize").Value<QSize>(); }
+			[SmokeMethod("frameSize", "()", "")]
+			get { return ((QWidget) interceptor).FrameSize; }
 		}
 		[Q_PROPERTY("QSize", "size")]
 		public QSize Size {
-			get { return Property("size").Value<QSize>(); }
-			set { SetProperty("size", QVariant.FromValue<QSize>(value)); }
+			[SmokeMethod("size", "()", "")]
+			get { return ((QWidget) interceptor).Size; }
+			[SmokeMethod("resize", "(QSize)", "#")]
+			set { ((QWidget) interceptor).Size = value; }
 		}
 		[Q_PROPERTY("QRect", "rect")]
 		public QRect Rect {
-			get { return Property("rect").Value<QRect>(); }
+			[SmokeMethod("rect", "()", "")]
+			get { return ((QWidget) interceptor).Rect; }
 		}
 		[Q_PROPERTY("QRect", "childrenRect")]
 		public QRect ChildrenRect {
-			get { return Property("childrenRect").Value<QRect>(); }
+			[SmokeMethod("childrenRect", "()", "")]
+			get { return ((QWidget) interceptor).ChildrenRect; }
 		}
 		[Q_PROPERTY("QRegion", "childrenRegion")]
 		public QRegion ChildrenRegion {
-			get { return Property("childrenRegion").Value<QRegion>(); }
+			[SmokeMethod("childrenRegion", "()", "")]
+			get { return ((QWidget) interceptor).ChildrenRegion; }
 		}
 		[Q_PROPERTY("QSizePolicy", "sizePolicy")]
 		public QSizePolicy SizePolicy {
-			get { return Property("sizePolicy").Value<QSizePolicy>(); }
-			set { SetProperty("sizePolicy", QVariant.FromValue<QSizePolicy>(value)); }
+			[SmokeMethod("sizePolicy", "()", "")]
+			get { return ((QWidget) interceptor).SizePolicy; }
+			[SmokeMethod("setSizePolicy", "(QSizePolicy)", "#")]
+			set { ((QWidget) interceptor).SizePolicy = value; }
 		}
 		[Q_PROPERTY("QSize", "minimumSize")]
 		public QSize MinimumSize {
-			get { return Property("minimumSize").Value<QSize>(); }
-			set { SetProperty("minimumSize", QVariant.FromValue<QSize>(value)); }
+			[SmokeMethod("minimumSize", "()", "")]
+			get { return ((QWidget) interceptor).MinimumSize; }
+			[SmokeMethod("setMinimumSize", "(QSize)", "#")]
+			set { ((QWidget) interceptor).MinimumSize = value; }
 		}
 		[Q_PROPERTY("QSize", "maximumSize")]
 		public QSize MaximumSize {
-			get { return Property("maximumSize").Value<QSize>(); }
-			set { SetProperty("maximumSize", QVariant.FromValue<QSize>(value)); }
+			[SmokeMethod("maximumSize", "()", "")]
+			get { return ((QWidget) interceptor).MaximumSize; }
+			[SmokeMethod("setMaximumSize", "(QSize)", "#")]
+			set { ((QWidget) interceptor).MaximumSize = value; }
 		}
 		[Q_PROPERTY("int", "minimumWidth")]
 		public int MinimumWidth {
-			get { return Property("minimumWidth").Value<int>(); }
-			set { SetProperty("minimumWidth", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("minimumWidth", "()", "")]
+			get { return ((QWidget) interceptor).MinimumWidth; }
+			[SmokeMethod("setMinimumWidth", "(int)", "$")]
+			set { ((QWidget) interceptor).MinimumWidth = value; }
 		}
 		[Q_PROPERTY("int", "minimumHeight")]
 		public int MinimumHeight {
-			get { return Property("minimumHeight").Value<int>(); }
-			set { SetProperty("minimumHeight", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("minimumHeight", "()", "")]
+			get { return ((QWidget) interceptor).MinimumHeight; }
+			[SmokeMethod("setMinimumHeight", "(int)", "$")]
+			set { ((QWidget) interceptor).MinimumHeight = value; }
 		}
 		[Q_PROPERTY("int", "maximumWidth")]
 		public int MaximumWidth {
-			get { return Property("maximumWidth").Value<int>(); }
-			set { SetProperty("maximumWidth", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("maximumWidth", "()", "")]
+			get { return ((QWidget) interceptor).MaximumWidth; }
+			[SmokeMethod("setMaximumWidth", "(int)", "$")]
+			set { ((QWidget) interceptor).MaximumWidth = value; }
 		}
 		[Q_PROPERTY("int", "maximumHeight")]
 		public int MaximumHeight {
-			get { return Property("maximumHeight").Value<int>(); }
-			set { SetProperty("maximumHeight", QVariant.FromValue<int>(value)); }
+			[SmokeMethod("maximumHeight", "()", "")]
+			get { return ((QWidget) interceptor).MaximumHeight; }
+			[SmokeMethod("setMaximumHeight", "(int)", "$")]
+			set { ((QWidget) interceptor).MaximumHeight = value; }
 		}
 		[Q_PROPERTY("QSize", "sizeIncrement")]
 		public QSize SizeIncrement {
-			get { return Property("sizeIncrement").Value<QSize>(); }
-			set { SetProperty("sizeIncrement", QVariant.FromValue<QSize>(value)); }
+			[SmokeMethod("sizeIncrement", "()", "")]
+			get { return ((QWidget) interceptor).SizeIncrement; }
+			[SmokeMethod("setSizeIncrement", "(QSize)", "#")]
+			set { ((QWidget) interceptor).SizeIncrement = value; }
 		}
 		[Q_PROPERTY("QSize", "baseSize")]
 		public QSize BaseSize {
-			get { return Property("baseSize").Value<QSize>(); }
-			set { SetProperty("baseSize", QVariant.FromValue<QSize>(value)); }
+			[SmokeMethod("baseSize", "()", "")]
+			get { return ((QWidget) interceptor).BaseSize; }
+			[SmokeMethod("setBaseSize", "(QSize)", "#")]
+			set { ((QWidget) interceptor).BaseSize = value; }
 		}
 		[Q_PROPERTY("QPalette", "palette")]
 		public QPalette Palette {
-			get { return Property("palette").Value<QPalette>(); }
-			set { SetProperty("palette", QVariant.FromValue<QPalette>(value)); }
+			[SmokeMethod("palette", "()", "")]
+			get { return ((QWidget) interceptor).Palette; }
+			[SmokeMethod("setPalette", "(QPalette)", "#")]
+			set { ((QWidget) interceptor).Palette = value; }
 		}
 		[Q_PROPERTY("QFont", "font")]
 		public QFont Font {
-			get { return Property("font").Value<QFont>(); }
-			set { SetProperty("font", QVariant.FromValue<QFont>(value)); }
+			[SmokeMethod("font", "()", "")]
+			get { return ((QWidget) interceptor).Font; }
+			[SmokeMethod("setFont", "(QFont)", "#")]
+			set { ((QWidget) interceptor).Font = value; }
 		}
 		[Q_PROPERTY("QCursor", "cursor")]
 		public QCursor Cursor {
-			get { return Property("cursor").Value<QCursor>(); }
-			set { SetProperty("cursor", QVariant.FromValue<QCursor>(value)); }
+			[SmokeMethod("cursor", "()", "")]
+			get { return ((QWidget) interceptor).Cursor; }
+			[SmokeMethod("setCursor", "(QCursor)", "#")]
+			set { ((QWidget) interceptor).Cursor = value; }
 		}
 		[Q_PROPERTY("bool", "mouseTracking")]
 		public bool MouseTracking {
-			get { return Property("mouseTracking").Value<bool>(); }
-			set { SetProperty("mouseTracking", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("hasMouseTracking", "()", "")]
+			get { return ((QWidget) interceptor).MouseTracking; }
+			[SmokeMethod("setMouseTracking", "(bool)", "$")]
+			set { ((QWidget) interceptor).MouseTracking = value; }
 		}
 		[Q_PROPERTY("bool", "isActiveWindow")]
 		public bool IsActiveWindow {
-			get { return Property("isActiveWindow").Value<bool>(); }
+			[SmokeMethod("isActiveWindow", "()", "")]
+			get { return ((QWidget) interceptor).IsActiveWindow; }
 		}
 		[Q_PROPERTY("Qt::FocusPolicy", "focusPolicy")]
 		public Qt.FocusPolicy FocusPolicy {
-			get { return Property("focusPolicy").Value<Qt.FocusPolicy>(); }
-			set { SetProperty("focusPolicy", QVariant.FromValue<Qt.FocusPolicy>(value)); }
+			[SmokeMethod("focusPolicy", "()", "")]
+			get { return ((QWidget) interceptor).FocusPolicy; }
+			[SmokeMethod("setFocusPolicy", "(Qt::FocusPolicy)", "$")]
+			set { ((QWidget) interceptor).FocusPolicy = value; }
 		}
 		[Q_PROPERTY("bool", "focus")]
 		public bool Focus {
-			get { return Property("focus").Value<bool>(); }
+			[SmokeMethod("hasFocus", "()", "")]
+			get { return ((QWidget) interceptor).Focus; }
 		}
 		[Q_PROPERTY("Qt::ContextMenuPolicy", "contextMenuPolicy")]
 		public Qt.ContextMenuPolicy ContextMenuPolicy {
-			get { return Property("contextMenuPolicy").Value<Qt.ContextMenuPolicy>(); }
-			set { SetProperty("contextMenuPolicy", QVariant.FromValue<Qt.ContextMenuPolicy>(value)); }
+			[SmokeMethod("contextMenuPolicy", "()", "")]
+			get { return ((QWidget) interceptor).ContextMenuPolicy; }
+			[SmokeMethod("setContextMenuPolicy", "(Qt::ContextMenuPolicy)", "$")]
+			set { ((QWidget) interceptor).ContextMenuPolicy = value; }
 		}
 		[Q_PROPERTY("bool", "updatesEnabled")]
 		public bool UpdatesEnabled {
-			get { return Property("updatesEnabled").Value<bool>(); }
-			set { SetProperty("updatesEnabled", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("updatesEnabled", "()", "")]
+			get { return ((QWidget) interceptor).UpdatesEnabled; }
+			[SmokeMethod("setUpdatesEnabled", "(bool)", "$")]
+			set { ((QWidget) interceptor).UpdatesEnabled = value; }
 		}
 		[Q_PROPERTY("bool", "minimized")]
 		public bool Minimized {
-			get { return Property("minimized").Value<bool>(); }
+			[SmokeMethod("isMinimized", "()", "")]
+			get { return ((QWidget) interceptor).Minimized; }
 		}
 		[Q_PROPERTY("bool", "maximized")]
 		public bool Maximized {
-			get { return Property("maximized").Value<bool>(); }
+			[SmokeMethod("isMaximized", "()", "")]
+			get { return ((QWidget) interceptor).Maximized; }
 		}
 		[Q_PROPERTY("bool", "fullScreen")]
 		public bool FullScreen {
-			get { return Property("fullScreen").Value<bool>(); }
+			[SmokeMethod("isFullScreen", "()", "")]
+			get { return ((QWidget) interceptor).FullScreen; }
 		}
 		[Q_PROPERTY("bool", "acceptDrops")]
 		public bool AcceptDrops {
-			get { return Property("acceptDrops").Value<bool>(); }
-			set { SetProperty("acceptDrops", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("acceptDrops", "()", "")]
+			get { return ((QWidget) interceptor).AcceptDrops; }
+			[SmokeMethod("setAcceptDrops", "(bool)", "$")]
+			set { ((QWidget) interceptor).AcceptDrops = value; }
 		}
 		[Q_PROPERTY("QString", "windowTitle")]
 		public string WindowTitle {
-			get { return Property("windowTitle").Value<string>(); }
-			set { SetProperty("windowTitle", QVariant.FromValue<string>(value)); }
+			[SmokeMethod("windowTitle", "()", "")]
+			get { return ((QWidget) interceptor).WindowTitle; }
+			[SmokeMethod("setWindowTitle", "(QString)", "$")]
+			set { ((QWidget) interceptor).WindowTitle = value; }
 		}
 		[Q_PROPERTY("QIcon", "windowIcon")]
 		public QIcon WindowIcon {
-			get { return Property("windowIcon").Value<QIcon>(); }
-			set { SetProperty("windowIcon", QVariant.FromValue<QIcon>(value)); }
+			[SmokeMethod("windowIcon", "()", "")]
+			get { return ((QWidget) interceptor).WindowIcon; }
+			[SmokeMethod("setWindowIcon", "(QIcon)", "#")]
+			set { ((QWidget) interceptor).WindowIcon = value; }
 		}
 		[Q_PROPERTY("QString", "windowIconText")]
 		public string WindowIconText {
-			get { return Property("windowIconText").Value<string>(); }
-			set { SetProperty("windowIconText", QVariant.FromValue<string>(value)); }
+			[SmokeMethod("windowIconText", "()", "")]
+			get { return ((QWidget) interceptor).WindowIconText; }
+			[SmokeMethod("setWindowIconText", "(QString)", "$")]
+			set { ((QWidget) interceptor).WindowIconText = value; }
 		}
 		[Q_PROPERTY("double", "windowOpacity")]
 		public double WindowOpacity {
-			get { return Property("windowOpacity").Value<double>(); }
-			set { SetProperty("windowOpacity", QVariant.FromValue<double>(value)); }
+			[SmokeMethod("windowOpacity", "()", "")]
+			get { return ((QWidget) interceptor).WindowOpacity; }
+			[SmokeMethod("setWindowOpacity", "(double)", "$")]
+			set { ((QWidget) interceptor).WindowOpacity = value; }
 		}
 		[Q_PROPERTY("bool", "windowModified")]
 		public bool WindowModified {
-			get { return Property("windowModified").Value<bool>(); }
-			set { SetProperty("windowModified", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("isWindowModified", "()", "")]
+			get { return ((QWidget) interceptor).WindowModified; }
+			[SmokeMethod("setWindowModified", "(bool)", "$")]
+			set { ((QWidget) interceptor).WindowModified = value; }
 		}
 		[Q_PROPERTY("QString", "toolTip")]
 		public string ToolTip {
-			get { return Property("toolTip").Value<string>(); }
-			set { SetProperty("toolTip", QVariant.FromValue<string>(value)); }
+			[SmokeMethod("toolTip", "()", "")]
+			get { return ((QWidget) interceptor).ToolTip; }
+			[SmokeMethod("setToolTip", "(QString)", "$")]
+			set { ((QWidget) interceptor).ToolTip = value; }
 		}
 		[Q_PROPERTY("QString", "statusTip")]
 		public string StatusTip {
-			get { return Property("statusTip").Value<string>(); }
-			set { SetProperty("statusTip", QVariant.FromValue<string>(value)); }
+			[SmokeMethod("statusTip", "()", "")]
+			get { return ((QWidget) interceptor).StatusTip; }
+			[SmokeMethod("setStatusTip", "(QString)", "$")]
+			set { ((QWidget) interceptor).StatusTip = value; }
 		}
 		[Q_PROPERTY("QString", "whatsThis")]
 		public string WhatsThis {
-			get { return Property("whatsThis").Value<string>(); }
-			set { SetProperty("whatsThis", QVariant.FromValue<string>(value)); }
+			[SmokeMethod("whatsThis", "()", "")]
+			get { return ((QWidget) interceptor).WhatsThis; }
+			[SmokeMethod("setWhatsThis", "(QString)", "$")]
+			set { ((QWidget) interceptor).WhatsThis = value; }
 		}
 		[Q_PROPERTY("QString", "accessibleName")]
 		public string AccessibleName {
-			get { return Property("accessibleName").Value<string>(); }
-			set { SetProperty("accessibleName", QVariant.FromValue<string>(value)); }
+			[SmokeMethod("accessibleName", "()", "")]
+			get { return ((QWidget) interceptor).AccessibleName; }
+			[SmokeMethod("setAccessibleName", "(QString)", "$")]
+			set { ((QWidget) interceptor).AccessibleName = value; }
 		}
 		[Q_PROPERTY("QString", "accessibleDescription")]
 		public string AccessibleDescription {
-			get { return Property("accessibleDescription").Value<string>(); }
-			set { SetProperty("accessibleDescription", QVariant.FromValue<string>(value)); }
+			[SmokeMethod("accessibleDescription", "()", "")]
+			get { return ((QWidget) interceptor).AccessibleDescription; }
+			[SmokeMethod("setAccessibleDescription", "(QString)", "$")]
+			set { ((QWidget) interceptor).AccessibleDescription = value; }
 		}
 		[Q_PROPERTY("Qt::LayoutDirection", "layoutDirection")]
 		public Qt.LayoutDirection LayoutDirection {
-			get { return Property("layoutDirection").Value<Qt.LayoutDirection>(); }
-			set { SetProperty("layoutDirection", QVariant.FromValue<Qt.LayoutDirection>(value)); }
+			[SmokeMethod("layoutDirection", "()", "")]
+			get { return ((QWidget) interceptor).LayoutDirection; }
+			[SmokeMethod("setLayoutDirection", "(Qt::LayoutDirection)", "$")]
+			set { ((QWidget) interceptor).LayoutDirection = value; }
 		}
 		[Q_PROPERTY("bool", "autoFillBackground")]
 		public bool AutoFillBackground {
-			get { return Property("autoFillBackground").Value<bool>(); }
-			set { SetProperty("autoFillBackground", QVariant.FromValue<bool>(value)); }
+			[SmokeMethod("autoFillBackground", "()", "")]
+			get { return ((QWidget) interceptor).AutoFillBackground; }
+			[SmokeMethod("setAutoFillBackground", "(bool)", "$")]
+			set { ((QWidget) interceptor).AutoFillBackground = value; }
 		}
 		[Q_PROPERTY("QString", "styleSheet")]
 		public string StyleSheet {
-			get { return Property("styleSheet").Value<string>(); }
-			set { SetProperty("styleSheet", QVariant.FromValue<string>(value)); }
+			[SmokeMethod("styleSheet", "()", "")]
+			get { return ((QWidget) interceptor).StyleSheet; }
+			[SmokeMethod("setStyleSheet", "(QString)", "$")]
+			set { ((QWidget) interceptor).StyleSheet = value; }
 		}
 		// void setWindowSurface(QWindowSurface* arg1); >>>> NOT CONVERTED
 		// QWindowSurface* windowSurface(); >>>> NOT CONVERTED
