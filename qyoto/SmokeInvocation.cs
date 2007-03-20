@@ -192,9 +192,11 @@ namespace Qyoto {
 					} else if (parameters[i].ParameterType == typeof(double)) {
 						args[i] = stackPtr[i].s_double;
 					} else if (parameters[i].ParameterType == typeof(string)) {
-						args[i] = (string) ((GCHandle) stackPtr[i].s_class).Target;
+						if (stackPtr[0].s_class != IntPtr.Zero)
+							args[i] = (string) ((GCHandle) stackPtr[i].s_class).Target;
 					} else {
-						args[i] = ((GCHandle) stackPtr[i].s_class).Target;
+						if (stackPtr[0].s_class != IntPtr.Zero)
+							args[i] = ((GCHandle) stackPtr[i].s_class).Target;
 					}
 				}
 
@@ -289,9 +291,11 @@ namespace Qyoto {
 					} else if (parameters[i].ParameterType == typeof(double)) {
 						args[i] = stackPtr[i].s_double;
 					} else if (parameters[i].ParameterType == typeof(string)) {
-						args[i] = (string) ((GCHandle) stackPtr[i].s_class).Target;
+						if (stackPtr[0].s_class != IntPtr.Zero)
+							args[i] = (string) ((GCHandle) stackPtr[i].s_class).Target;
 					} else {
-						args[i] = ((GCHandle) stackPtr[i].s_class).Target;
+						if (stackPtr[0].s_class != IntPtr.Zero)
+							args[i] = ((GCHandle) stackPtr[i].s_class).Target;
 					}
 				}
 			}
@@ -325,7 +329,7 @@ namespace Qyoto {
 					retval[0].s_float = (float) returnValue;
 				} else if (returnType == typeof(double)) {
 					retval[0].s_double = (double) returnValue;
-				} else if (returnType == typeof(string)) {
+				} else if (returnType == typeof(string)) {	
 					retval[0].s_class = (IntPtr) GCHandle.Alloc(returnValue);
 				} else {
 					retval[0].s_class = (IntPtr) GCHandle.Alloc(returnValue);
@@ -468,9 +472,11 @@ namespace Qyoto {
 					} else if (returnType == typeof(double)) {
 						returnValue.ReturnValue = stack[0].s_double;
 					} else if (returnType == typeof(string)) {
-						returnValue.ReturnValue = ((GCHandle) stack[0].s_class).Target;
+						if (stack[0].s_class != IntPtr.Zero)
+							returnValue.ReturnValue = ((GCHandle) stack[0].s_class).Target;
 					} else {
-						returnValue.ReturnValue = ((GCHandle) stack[0].s_class).Target;
+						if (stack[0].s_class != IntPtr.Zero)
+							returnValue.ReturnValue = ((GCHandle) stack[0].s_class).Target;
 					}
 				}
 			}
@@ -596,9 +602,11 @@ namespace Qyoto {
 					} else if (returnType == typeof(double)) {
 						returnValue.ReturnValue = stack[0].s_double;
 					} else if (returnType == typeof(string)) {
-						returnValue.ReturnValue = ((GCHandle) stack[0].s_class).Target;
+						if (stack[0].s_class != IntPtr.Zero)
+							returnValue.ReturnValue = ((GCHandle) stack[0].s_class).Target;
 					} else {
-						returnValue.ReturnValue = ((GCHandle) stack[0].s_class).Target;
+						if (stack[0].s_class != IntPtr.Zero)
+							returnValue.ReturnValue = ((GCHandle) stack[0].s_class).Target;
 					}
 				}
 			}

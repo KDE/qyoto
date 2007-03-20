@@ -1,3 +1,8 @@
+2007-03-20  Arno Rehn  <arno@arnorehn.de>
+
+	* Allow 'zero' return types for methods and for args of methods being called
+	  from C++
+
 2007-03-18  Richard Dale  <rdale@foton.es>
 
 	* Instead of setting and getting properties via QObject.SetProperty() and
