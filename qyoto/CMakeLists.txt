@@ -47,7 +47,7 @@ INCLUDE_DIRECTORIES (${QT_INCLUDES})
 ADD_LIBRARY (qyoto MODULE ${SRC_CPP})
 TARGET_LINK_LIBRARIES (qyoto smokeqt ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY})
 
-ADD_CUSTOM_TARGET (qt-dotnet ALL ${GMCS_PATH} -unsafe -warn:0 -out:qt-dotnet.dll -target:library ${SRC_CS}
+ADD_CUSTOM_TARGET (qt-dotnet ALL ${GMCS_PATH} -debug -define:DEBUG -unsafe -warn:0 -out:qt-dotnet.dll -target:library ${SRC_CS}
 	COMMENT "Building qt-dotnet.dll")
 
 ADD_DEPENDENCIES (qt-dotnet qyoto)

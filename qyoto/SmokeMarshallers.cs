@@ -1,9 +1,25 @@
-#define DEBUG
+/***************************************************************************
+                          SmokeMarshallers.cs  -  description
+                             -------------------
+    begin                : Wed Jun 16 2004
+    copyright            : (C) 2004-2007 by Richard Dale, Arno Rehn
+    email                : richard.j.dale@gmail.com
+ ***************************************************************************/
+
+/***************************************************************************
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ ***************************************************************************/
 
 namespace Qyoto {
 	using System;
 	using System.Collections;
 	using System.Collections.Generic;
+	using System.Diagnostics;
 	using System.Reflection;
 	using System.Runtime.Remoting.Proxies;
 	using System.Runtime.InteropServices;
@@ -176,9 +192,7 @@ namespace Qyoto {
 				return (IntPtr) 0;
 			
 			Object instance = ((GCHandle) instancePtr).Target;
-			if (instance == null) {
-				return (IntPtr) 0;
-			}
+			Debug.Assert(instance != null);
 
 			FieldInfo fieldInfo = instance.GetType().GetField(	"smokeObject", 
 															BindingFlags.NonPublic 
@@ -189,9 +203,7 @@ namespace Qyoto {
 		
 		public static void SetSmokeObject(IntPtr instancePtr, IntPtr smokeObjectPtr) {
 			Object instance = ((GCHandle) instancePtr).Target;
-			if (instance == null) {
-				return;
-			}
+			Debug.Assert(instance != null);
 
 			FieldInfo fieldInfo = instance.GetType().GetField(	"smokeObject", 
 															BindingFlags.NonPublic 
@@ -256,14 +268,14 @@ namespace Qyoto {
 			WeakReference weakRef = new WeakReference(instance);
 			pointerMap[ptr] = weakRef;
 #if DEBUG
-			if ((Debug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
+			if ((QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
 				Console.WriteLine("MapPointer() Creating weak reference 0x{0:x8} -> {1}", (int) ptr, instance);
 			}
 #endif
 			if (createStrongReference) {
 				strongReferenceMap[ptr] = instance;
 #if DEBUG
-				if ((Debug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
+				if ((QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
 					Console.WriteLine("MapPointer() Creating strong reference 0x{0:x8} -> {1}", (int) ptr, instance);
 				}
 #endif
@@ -274,7 +286,7 @@ namespace Qyoto {
 			pointerMap.Remove(ptr);
 			if (strongReferenceMap.ContainsKey(ptr)) {
 #if DEBUG
-				if ((Debug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
+				if ((QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
 					object reference;
 					if (strongReferenceMap.TryGetValue(ptr, out reference)) {
 						Console.WriteLine("UnmapPointer() Removing strong reference 0x{0:x8} -> {1}", (int) ptr, reference);
@@ -289,8 +301,8 @@ namespace Qyoto {
 			WeakReference weakRef;
 			if (!pointerMap.TryGetValue(ptr, out weakRef)) {
 #if DEBUG
-				if (	(Debug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0
-						&& Debug.debugLevel >= DebugLevel.Extensive ) 
+				if (	(QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0
+						&& QDebug.debugLevel >= DebugLevel.Extensive ) 
 				{
 					Console.WriteLine("GetPointerObject() pointerMap[0x{0:x8}] == null", (int) ptr);
 				}
@@ -300,8 +312,8 @@ namespace Qyoto {
 
 			if (weakRef == null) {
 #if DEBUG
-				if (	(Debug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0
-						&& Debug.debugLevel >= DebugLevel.Extensive ) 
+				if (	(QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0
+						&& QDebug.debugLevel >= DebugLevel.Extensive ) 
 				{
 					Console.WriteLine("GetPointerObject() weakRef null ptr: 0x{0:x8}", (int) ptr);
 				}
@@ -309,8 +321,8 @@ namespace Qyoto {
 				return (IntPtr) 0;
 			} else if (weakRef.IsAlive) {
 #if DEBUG
-				if (	(Debug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0
-						&& Debug.debugLevel >= DebugLevel.Extensive ) 
+				if (	(QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0
+						&& QDebug.debugLevel >= DebugLevel.Extensive ) 
 				{
 					Console.WriteLine("GetPointerObject() weakRef.IsAlive 0x{0:x8} -> {1}", (int) ptr, weakRef.Target);
 				}
@@ -319,8 +331,8 @@ namespace Qyoto {
 				return (IntPtr) instanceHandle;
 			} else {
 #if DEBUG
-				if (	(Debug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0
-						&& Debug.debugLevel >= DebugLevel.Extensive ) 
+				if (	(QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0
+						&& QDebug.debugLevel >= DebugLevel.Extensive ) 
 				{
 					Console.WriteLine("GetPointerObject() weakRef dead ptr: 0x{0:x8}", (int) ptr);
 				}
@@ -345,13 +357,13 @@ namespace Qyoto {
 			constructorParamTypes[0] = typeof(Type);
 			ConstructorInfo constructorInfo = klass.GetConstructor(BindingFlags.NonPublic 
 					| BindingFlags.Instance, null, new Type[ ] { typeof( Type ) } , null);
-			if (constructorInfo == null) {
-				Console.Error.WriteLine("CreateInstance(\"{0}\") constructor method missing {1}", className, constructorParamTypes[0]);
-				return (IntPtr) 0;
-			}
+
+			Debug.Assert(	constructorInfo != null,
+							"CreateInstance(\"" + className + "\") constructor method missing" );
+
 			object result = constructorInfo.Invoke(new object [] { constructorParamTypes[0] });
 #if DEBUG
-			if ((Debug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
+			if ((QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
 				Console.WriteLine("CreateInstance(\"{0}\") constructed {1}", className, result);
 			}
 #endif
@@ -369,7 +381,8 @@ namespace Qyoto {
 				klass = klass.BaseType;
 			} while (klass != typeof(object));
 
-			Console.Error.WriteLine("CreateInstance(\"{0}\") no CreateProxy() found", className);
+			Debug.Assert(	proxyCreator != null, 
+							"CreateInstance(\"" + className + "\") no CreateProxy() found" );
 			return (IntPtr) 0;
 		}
 

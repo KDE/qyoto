@@ -1,3 +1,10 @@
+2007-03-18  Richard Dale  <rdale@foton.es>
+
+	* Changed the name of the debug class from Debug to QDebug as it made 
+	  using Debug.Asserts inconvenient
+	* Added some copyright headers to the source files
+	* Build the project with debug by default
+
 2007-03-20  Arno Rehn  <arno@arnorehn.de>
 
 	* Allow 'zero' return types for methods and for args of methods being called

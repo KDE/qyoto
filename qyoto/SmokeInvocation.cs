@@ -3,7 +3,7 @@
                              -------------------
     begin                : Wed Jun 16 2004
     copyright            : (C) 2004 by Richard Dale
-    email                : Richard_Dale@tipitina.demon.co.uk
+    email                : richard.j.dale@gmail.com
  ***************************************************************************/
 
 /***************************************************************************
@@ -14,8 +14,6 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/
-
-#define DEBUG
 
 namespace Qyoto {
 
@@ -152,8 +150,8 @@ namespace Qyoto {
 			object instance = ((GCHandle) instanceHandle).Target;
 			MethodInfo method = (MethodInfo) ((GCHandle) methodHandle).Target;
 #if DEBUG
-			if (	(Debug.DebugChannel() & QtDebugChannel.QTDB_TRANSPARENT_PROXY) != 0
-					&& (Debug.DebugChannel() & QtDebugChannel.QTDB_VIRTUAL) != 0 )
+			if (	(QDebug.DebugChannel() & QtDebugChannel.QTDB_TRANSPARENT_PROXY) != 0
+					&& (QDebug.DebugChannel() & QtDebugChannel.QTDB_VIRTUAL) != 0 )
 			{
 				Console.WriteLine(	"ENTER InvokeMethod() {0}.{1}", 
 									instance,
@@ -241,7 +239,7 @@ namespace Qyoto {
 			QObject qobj = (QObject) ((GCHandle)obj).Target;
 			string className = qobj.GetType().ToString();
 #if DEBUG
-			if ((Debug.DebugChannel() & QtDebugChannel.QTDB_TRANSPARENT_PROXY) != 0) {
+			if ((QDebug.DebugChannel() & QtDebugChannel.QTDB_TRANSPARENT_PROXY) != 0) {
 				Console.WriteLine(	"ENTER InvokeCustomSlot() {0}.{1}", 
 									qobj.GetType(),
 									slotname );
@@ -366,7 +364,7 @@ namespace Qyoto {
 			IMethodReturnMessage returnMessage = (IMethodReturnMessage) message;
 
 #if DEBUG
-			if ((Debug.DebugChannel() & QtDebugChannel.QTDB_TRANSPARENT_PROXY) != 0) {
+			if ((QDebug.DebugChannel() & QtDebugChannel.QTDB_TRANSPARENT_PROXY) != 0) {
 				Console.WriteLine(	"ENTER SmokeInvocation.Invoke() MethodName: {0}.{1} Type: {2} ArgCount: {3}", 
 									_className,
 									callMessage.MethodName, 
@@ -510,7 +508,7 @@ namespace Qyoto {
 			StackItem[] stack = new StackItem[callMessage.ArgCount+1];
 
 #if DEBUG
-			if ((Debug.DebugChannel() & QtDebugChannel.QTDB_TRANSPARENT_PROXY) != 0) {
+			if ((QDebug.DebugChannel() & QtDebugChannel.QTDB_TRANSPARENT_PROXY) != 0) {
 				Console.WriteLine(	"ENTER SignalInvocation.Invoke() MethodName: {0}.{1} Type: {2} ArgCount: {3}", 
 									_className,
 									callMessage.MethodName, 

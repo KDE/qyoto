@@ -1,4 +1,19 @@
-// #define DEBUG
+/***************************************************************************
+                          Qyoto.cs  -  description
+                             -------------------
+    begin                : Wed Jun 16 2004
+    copyright            : (C) 2004-2007 by Richard Dale, Arno Rehn
+    email                : richard.j.dale@gmail.com
+ ***************************************************************************/
+
+/***************************************************************************
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ ***************************************************************************/
 
 namespace Qyoto
 {
@@ -10,6 +25,7 @@ namespace Qyoto
 	using System.Text.RegularExpressions;
 	using System.Runtime.InteropServices;
 
+#if DEBUG
 	public enum DebugLevel {
 		Off, 
 		Minimal, 
@@ -28,7 +44,7 @@ namespace Qyoto
 		QTDB_ALL = QTDB_VERBOSE | QTDB_VIRTUAL | QTDB_GC | QTDB_CALLS | QTDB_TRANSPARENT_PROXY | QTDB_AMBIGUOUS
 	}
 
-	public class Debug {
+	public class QDebug {
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		public static extern void SetDebug(QtDebugChannel debugChannel);
 
@@ -44,6 +60,7 @@ namespace Qyoto
 			}
 		}
 	}
+#endif
 
 	public class Qyoto : System.Object
 	{
@@ -82,20 +99,11 @@ namespace Qyoto
 		public static int GetCPPEnumValue(string c, string value) {
 			Type t = Type.GetType("Qyoto." + c, false);
 			if (t == null) {
-#if DEBUG
-				Console.WriteLine("NULL");
-#endif
 				return 0;
 			}
 			foreach (Type nt in t.GetNestedTypes()) {
 				if (nt.IsEnum) {
-#if DEBUG
-					Console.WriteLine("ENUM: {0}", nt.ToString());
-#endif
 					foreach (int i in Enum.GetValues(nt)) {
-#if DEBUG
-						Console.WriteLine("MEMBER: {0}", Enum.Format(nt, i, "f"));
-#endif
 						if (Enum.Format(nt, i, "f") == value) {
 							return i;
 						}
@@ -419,9 +427,7 @@ namespace Qyoto
 		
 		public static QMetaObject MakeMetaObject(Type t, QObject o) {
 			if (t == null) return null;
-#if DEBUG
-			Console.WriteLine("ENTER MakeMetaObject t => {0}", t);
-#endif
+
 			QMetaObject parentMeta = null;
 			if (	!IsSmokeClass(t.BaseType)
 					&& !metaObjects.TryGetValue(t.BaseType.Name, out parentMeta) ) 
@@ -468,19 +474,12 @@ namespace Qyoto
 		
 		public static QMetaObject GetMetaObject(QObject o) {
 			Type t = o.GetType();
-#if DEBUG
-			Console.WriteLine("ENTER GetMetaObject t => {0}", t);
-#endif
 			
 			QMetaObject res;
 			if (!metaObjects.TryGetValue(t.ToString(), out res)) {
 				// create QMetaObject
 				res = MakeMetaObject(t, o);
 			}
-	
-#if DEBUG
-			Console.WriteLine("LEAVE GetMetaObject");
-#endif
 
 			return res;
 		}	
