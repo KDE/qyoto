@@ -483,10 +483,29 @@ namespace Qyoto
 
 			return res;
 		}	
+		
+		public static bool IsInstanceOperator(MethodInfo mi) {
+			object[] attrs = mi.GetCustomAttributes(typeof(SmokeMethod), false);
+			if (attrs.Length > 0) {
+				SmokeMethod sm = (SmokeMethod) attrs[0];
+				return IsInstanceOperator(sm);
+			}
+			return false;
+		}
+		
+		public static bool IsInstanceOperator(SmokeMethod sm) {
+			if (!sm.Name.StartsWith("operator")) // no operator
+				return false;
+			
+			string[] args = sm.ArgsSignature.Split(',');
+			if (args.Length == 1) // the operator takes only one argument, so it has to be a instance operator
+				return true;
+			return false; // else return false
+		}
 	}
 	
 	[AttributeUsage(AttributeTargets.Class | AttributeTargets.Interface)]
-	class SmokeClass : Attribute
+	public class SmokeClass : Attribute
 	{
 		public string signature;	
 	
@@ -504,7 +523,7 @@ namespace Qyoto
 	[AttributeUsage(	AttributeTargets.Constructor 
 						| AttributeTargets.Method
 						| AttributeTargets.Interface )]
-	class SmokeMethod : Attribute
+	public class SmokeMethod : Attribute
 	{
 		public string name;
 		public string argsSignature;

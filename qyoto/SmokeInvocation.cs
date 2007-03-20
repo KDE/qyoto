@@ -399,43 +399,57 @@ namespace Qyoto {
 			StackItem[] stack = new StackItem[callMessage.ArgCount+1];
 
 			if (callMessage.MethodSignature != null) {
-				Type[] types = (Type[]) callMessage.MethodSignature;
-				for (int i = 0; i < callMessage.ArgCount; i++) {
-					if (callMessage.Args[i] == null) {
-						unsafe {
-							stack[i+1].s_class = (IntPtr) 0;
+				if (Qyoto.IsInstanceOperator((MethodInfo) callMessage.MethodBase)) {
+					// for instance operators only length of 2 => 1. return type, 2. value to compare
+					stack = new StackItem[2];
+					// TODO: is it sometimes a primitive value to compare?
+					// then change this to check for all possible types as it is done a few lines below
+					stack[1].s_class = (IntPtr) GCHandle.Alloc(callMessage.Args[1]);
+				} else {
+					Type[] types = (Type[]) callMessage.MethodSignature;
+					for (int i = 0; i < callMessage.ArgCount; i++) {
+						if (callMessage.Args[i] == null) {
+							unsafe {
+								stack[i+1].s_class = (IntPtr) 0;
+							}
+						} else if (types[i] == typeof(bool)) {
+							stack[i+1].s_bool = (bool) callMessage.Args[i];
+						} else if (types[i] == typeof(sbyte)) {
+							stack[i+1].s_char = (sbyte) callMessage.Args[i];
+						} else if (types[i] == typeof(byte)) {
+							stack[i+1].s_uchar = (byte) callMessage.Args[i];
+						} else if (types[i] == typeof(short)) {
+							stack[i+1].s_short = (short) callMessage.Args[i];
+						} else if (types[i] == typeof(ushort)) {
+							stack[i+1].s_ushort = (ushort) callMessage.Args[i];
+						} else if (types[i] == typeof(int) || types[i].IsEnum) {
+							stack[i+1].s_int = (int) callMessage.Args[i];
+						} else if (types[i] == typeof(uint)) {
+							stack[i+1].s_uint = (uint) callMessage.Args[i];
+						} else if (types[i] == typeof(long)) {
+							stack[i+1].s_long = (long) callMessage.Args[i];
+						} else if (types[i] == typeof(ulong)) {
+							stack[i+1].s_ulong = (ulong) callMessage.Args[i];
+						} else if (types[i] == typeof(float)) {
+							stack[i+1].s_float = (float) callMessage.Args[i];
+						} else if (types[i] == typeof(double)) {
+							stack[i+1].s_double = (double) callMessage.Args[i];
+						} else if (types[i] == typeof(string)) {
+							stack[i+1].s_class = (IntPtr) GCHandle.Alloc(callMessage.Args[i]);
+						} else {
+							stack[i+1].s_class = (IntPtr) GCHandle.Alloc(callMessage.Args[i]);
 						}
-					} else if (types[i] == typeof(bool)) {
-						stack[i+1].s_bool = (bool) callMessage.Args[i];
-					} else if (types[i] == typeof(sbyte)) {
-						stack[i+1].s_char = (sbyte) callMessage.Args[i];
-					} else if (types[i] == typeof(byte)) {
-						stack[i+1].s_uchar = (byte) callMessage.Args[i];
-					} else if (types[i] == typeof(short)) {
-						stack[i+1].s_short = (short) callMessage.Args[i];
-					} else if (types[i] == typeof(ushort)) {
-						stack[i+1].s_ushort = (ushort) callMessage.Args[i];
-					} else if (types[i] == typeof(int) || types[i].IsEnum) {
-						stack[i+1].s_int = (int) callMessage.Args[i];
-					} else if (types[i] == typeof(uint)) {
-						stack[i+1].s_uint = (uint) callMessage.Args[i];
-					} else if (types[i] == typeof(long)) {
-						stack[i+1].s_long = (long) callMessage.Args[i];
-					} else if (types[i] == typeof(ulong)) {
-						stack[i+1].s_ulong = (ulong) callMessage.Args[i];
-					} else if (types[i] == typeof(float)) {
-						stack[i+1].s_float = (float) callMessage.Args[i];
-					} else if (types[i] == typeof(double)) {
-						stack[i+1].s_double = (double) callMessage.Args[i];
-					} else if (types[i] == typeof(string)) {
-						stack[i+1].s_class = (IntPtr) GCHandle.Alloc(callMessage.Args[i]);
-					} else {
-						stack[i+1].s_class = (IntPtr) GCHandle.Alloc(callMessage.Args[i]);
 					}
 				}
 			}
 
-			GCHandle instanceHandle = GCHandle.Alloc(_instance);
+			GCHandle instanceHandle;
+			if (Qyoto.IsInstanceOperator((MethodInfo) callMessage.MethodBase)) {
+				// if it's an instance operator, the instance is the first argument
+				instanceHandle = GCHandle.Alloc(callMessage.Args[0]);
+			} else {
+				instanceHandle = GCHandle.Alloc(_instance);
+			}
 			MethodReturnMessageWrapper returnValue = new MethodReturnMessageWrapper((IMethodReturnMessage) returnMessage); 
 			
 			unsafe {

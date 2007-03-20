@@ -9,6 +9,7 @@
 
 	* Allow 'zero' return types for methods and for args of methods being called
 	  from C++
+	* Made instance operators work
 
 2007-03-18  Richard Dale  <rdale@foton.es>
 
