@@ -1425,6 +1425,17 @@ CallSmokeMethod(int methodId, void * obj, Smoke::StackItem * sp, int items)
 	printf("ENTER CallSmokeMethod(methodId: %d target: 0x%8.8x items: %d)\n", methodId, obj, items);
 #endif
 
+	Smoke::Method meth = qt_Smoke->methods[methodId];
+	QString name(qt_Smoke->methodNames[meth.name]);
+	if (name.startsWith("operator") && meth.numArgs == 1) { // instance operator
+#ifdef DEBUG
+		printf("IN CallSmokeMethod() instance operator: %s\n", (const char*) name.toLatin1());
+#endif
+		obj = sp[1].s_class;
+		sp[1] = sp[2];
+		items = 1;
+	}
+
 	MethodCall c(qt_Smoke, methodId, obj, sp, items);
 	c.next();
 
