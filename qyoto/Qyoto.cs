@@ -60,6 +60,31 @@ namespace Qyoto
 			}
 		}
 	}
+
+	public class DebugGCHandle {
+		public static GCHandle Alloc(object instance) {
+			GCHandle handle = GCHandle.Alloc(instance);
+
+			if (	QDebug.debugLevel >= DebugLevel.High
+					&& (QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0 ) 
+			{
+				Console.WriteLine("GCHandle.Alloc 0x{0:x8} -> {1}", (IntPtr) handle, instance);
+			}
+
+			return handle;
+		}
+
+		public static void Free(GCHandle handle) {
+			if (	QDebug.debugLevel >= DebugLevel.High
+					&& (QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0 ) 
+			{
+				Console.WriteLine("GCHandle.Free 0x{0:x8} -> {1}", (IntPtr) handle, handle.Target);
+			}
+
+			handle.Free();
+		}
+	}
+
 #endif
 
 	public class Qyoto : System.Object
@@ -447,27 +472,40 @@ namespace Qyoto
 				slots = GetSlotSignatures(t).Values;
 			}
 
-			ICollection<CPPMethod> signals = GetSignalSignatures(t).Values;
-			
-			ICollection<CPPProperty> properties = GetProperties(t).Values;
-			
+			ICollection<CPPMethod> signals = GetSignalSignatures(t).Values;			
+			ICollection<CPPProperty> properties = GetProperties(t).Values;			
 			QyotoMetaData metaData = new QyotoMetaData(className, signals, slots, GetClassInfos(t), properties);
+#if DEBUG
+			GCHandle objHandle = DebugGCHandle.Alloc(o);
+#else
 			GCHandle objHandle = GCHandle.Alloc(o);
-
+#endif
 			IntPtr metaObject;
+			IntPtr parentMetaPtr = (IntPtr) 0;
 			
 			unsafe {
 				fixed (byte* stringdata = metaData.StringData)
 				fixed (uint* data = metaData.Data) {
+					if (parentMeta != null) {
+#if DEBUG
+						parentMetaPtr = (IntPtr) DebugGCHandle.Alloc(parentMeta);
+#else
+						parentMetaPtr = (IntPtr) GCHandle.Alloc(parentMeta);
+#endif
+					}
 					metaObject = make_metaObject(	(IntPtr)objHandle, 
-													parentMeta == null ? (IntPtr) 0 : (IntPtr) GCHandle.Alloc(parentMeta),
+													parentMetaPtr,
 												 	(IntPtr)stringdata, metaData.StringData.Length,
 												 	(IntPtr)data, metaData.Data.Length );
 				}
 			}
       
 			QMetaObject res = (QMetaObject)((GCHandle) metaObject).Target;
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) metaObject);
+#else
 			((GCHandle) metaObject).Free();
+#endif
 			metaObjects.Add(t.Name, res);
 			return res;
 		}
@@ -483,25 +521,6 @@ namespace Qyoto
 
 			return res;
 		}	
-		
-		public static bool IsInstanceOperator(MethodInfo mi) {
-			object[] attrs = mi.GetCustomAttributes(typeof(SmokeMethod), false);
-			if (attrs.Length > 0) {
-				SmokeMethod sm = (SmokeMethod) attrs[0];
-				return IsInstanceOperator(sm);
-			}
-			return false;
-		}
-		
-		public static bool IsInstanceOperator(SmokeMethod sm) {
-			if (!sm.Name.StartsWith("operator")) // no operator
-				return false;
-			
-			string[] args = sm.ArgsSignature.Split(',');
-			if (args.Length == 1) // the operator takes only one argument, so it has to be a instance operator
-				return true;
-			return false; // else return false
-		}
 	}
 	
 	[AttributeUsage(AttributeTargets.Class | AttributeTargets.Interface)]

@@ -335,7 +335,7 @@ void unmapPointer(smokeqyoto_object *o, Smoke::Index classId, void *lastptr) {
 		
 			if (do_debug & qtdb_gc) {
 				const char *className = o->smoke->classes[o->classId].className;
-				qWarning("unmapPointer (%s*)%p -> %p", className, ptr, obj_ptr);
+				printf("unmapPointer (%s*)%p -> %p", className, ptr, obj_ptr);
 			}
 	    
 			(*UnmapPointer)(ptr);
@@ -357,7 +357,7 @@ void mapPointer(void * obj, smokeqyoto_object *o, Smoke::Index classId, void *la
 		lastptr = ptr;
 		if (do_debug & qtdb_gc) {
 			const char *className = o->smoke->classes[o->classId].className;
-			qWarning(	"mapPointer (%s*)%p -> %p strong ref: %s", 
+			printf(	"mapPointer (%s*)%p -> %p strong ref: %s", 
 						className, 
 						ptr, 
 						(void*)obj,
@@ -409,11 +409,12 @@ public:
     void next() {}
     bool cleanup() { return false; }
 
-    VirtualMethodReturnValue(Smoke *smoke, Smoke::Index meth, Smoke::Stack stack, Smoke::StackItem * retval) :
-    _smoke(smoke), _method(meth), _stack(stack), _retval(retval) {
-	_st.set(_smoke, method().ret);
-	Marshall::HandlerFn fn = getMarshallFn(type());
-	(*fn)(this);
+	VirtualMethodReturnValue(Smoke *smoke, Smoke::Index meth, Smoke::Stack stack, Smoke::StackItem * retval) :
+    	_smoke(smoke), _method(meth), _stack(stack), _retval(retval) {
+		_st.set(_smoke, method().ret);
+		Marshall::HandlerFn fn = getMarshallFn(type());
+		(*fn)(this);
+		(*FreeGCHandle)(retval[0].s_voidp);
    }
 };
 
@@ -478,6 +479,7 @@ public:
 
     ~VirtualMethodCall() {
 		free(_sp);
+		(*FreeGCHandle)(_obj);
 		(*FreeGCHandle)(_overridenMethod);
     }
 };
@@ -775,7 +777,7 @@ public:
 	
 	void unsupported() 
 	{
-		printf("Cannot handle '%s' as slot reply-type", type().name());
+		qFatal("Cannot handle '%s' as slot reply-type", type().name());
     }
 	Smoke *smoke() { return type().smoke(); }
     
@@ -850,7 +852,7 @@ public:
 	~InvokeSlot() {
 		delete[] _stack;
 		delete[] _sp;
-// 		(*FreeGCHandle)(_obj);
+ 		(*FreeGCHandle)(_obj);
 	}
 };
 
@@ -891,7 +893,7 @@ public:
 	
 	void unsupported() 
 	{
-		printf("Cannot handle '%s' as property", type().name());
+		qFatal("Cannot handle '%s' as property", type().name());
 	}
 	Smoke *smoke() { return type().smoke(); }
 
@@ -941,7 +943,7 @@ public:
 	
 	void unsupported() 
 	{
-		printf("Cannot handle '%s' as property", type().name());
+		qFatal("Cannot handle '%s' as property", type().name());
 	}
 	Smoke *smoke() { return type().smoke(); }
 
@@ -963,7 +965,7 @@ public:
 		smokeqyoto_object *o = value_obj_info(obj);
 	
 		if(do_debug & qtdb_gc) {
-			qWarning("%p->~%s()", ptr, smoke->className(classId));
+			printf("%p->~%s()", ptr, smoke->className(classId));
 		}
 	
 		if(!o || !o->ptr) {
@@ -990,7 +992,7 @@ public:
 		}
 
 		if (do_debug & qtdb_virtual) {
-			qWarning(	"virtual %p->%s::%s called", 
+			printf(	"virtual %p->%s::%s called", 
 						ptr,
 						smoke->classes[smoke->methods[method].classId].className,
 						(const char *) signature );
@@ -1001,7 +1003,7 @@ public:
 
 		if (!o) {
 			if( do_debug & qtdb_virtual ) {  // if not in global destruction
-				qWarning("Cannot find object for virtual method %p -> %p", ptr, obj);
+				printf("Cannot find object for virtual method %p -> %p", ptr, obj);
 			}
 
 			return false;
@@ -1018,6 +1020,7 @@ public:
 		
 		void * overridenMethod = (*OverridenMethod)(obj, (const char *) signature);
 		if (overridenMethod == 0) {
+			(*FreeGCHandle)(obj);
 			return false;
 		}
 
@@ -1054,12 +1057,12 @@ FindMethodId(char * classname, char * mungedname, char * signature)
 
 	Smoke::Index meth = qt_Smoke->findMethod(classname, mungedname);
 #ifdef DEBUG
-	if (do_debug & qtdb_calls) qWarning("DAMNIT on %s::%s => %d", classname, mungedname, meth);
+	if (do_debug & qtdb_calls) printf("DAMNIT on %s::%s => %d", classname, mungedname, meth);
 #endif
 	if (meth == 0) {
     	meth = qt_Smoke->findMethod("QGlobalSpace", mungedname);
 #ifdef DEBUG
-		if (do_debug & qtdb_calls) qWarning("DAMNIT on QGlobalSpace::%s => %d", mungedname, meth);
+		if (do_debug & qtdb_calls) printf("DAMNIT on QGlobalSpace::%s => %d", mungedname, meth);
 #endif
 	}
 	

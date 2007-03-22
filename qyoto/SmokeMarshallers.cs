@@ -184,7 +184,11 @@ namespace Qyoto {
 		
 #region marshalling functions
 		public static void FreeGCHandle(IntPtr handle) {
+#if DEBUG
+			DebugGCHandle.Free((GCHandle) handle);
+#else
 			((GCHandle) handle).Free();
+#endif
 		}
 		
 		public static IntPtr GetSmokeObject(IntPtr instancePtr) {
@@ -227,7 +231,11 @@ namespace Qyoto {
 				object value = pi.GetValue(o, null);
 				object[] args = { value };
 				QVariant variant = (QVariant) fromValue.Invoke(null, args);
+#if DEBUG
+				return (IntPtr) DebugGCHandle.Alloc(variant);
+#else
 				return (IntPtr) GCHandle.Alloc(variant);
+#endif
 			}
 			
 			return (IntPtr) 0;
@@ -327,7 +335,12 @@ namespace Qyoto {
 					Console.WriteLine("GetPointerObject() weakRef.IsAlive 0x{0:x8} -> {1}", (int) ptr, weakRef.Target);
 				}
 #endif
+
+#if DEBUG
+				GCHandle instanceHandle = DebugGCHandle.Alloc(weakRef.Target);
+#else
 				GCHandle instanceHandle = GCHandle.Alloc(weakRef.Target);
+#endif
 				return (IntPtr) instanceHandle;
 			} else {
 #if DEBUG
@@ -375,7 +388,11 @@ namespace Qyoto {
 																| BindingFlags.DeclaredOnly);
 				if (proxyCreator != null) {
 					proxyCreator.Invoke(result, null);
+#if DEBUG
+					return (IntPtr) DebugGCHandle.Alloc(result);
+#else
 					return (IntPtr) GCHandle.Alloc(result);
+#endif
 				}
 
 				klass = klass.BaseType;
@@ -397,7 +414,11 @@ namespace Qyoto {
 		}
 
 		public static IntPtr IntPtrFromString(string str) {
+#if DEBUG
+			return (IntPtr) DebugGCHandle.Alloc(str);
+#else
 			return (IntPtr) GCHandle.Alloc(str);
+#endif
 		}
 
 		public static IntPtr IntPtrToQString(IntPtr ptr) {
@@ -406,7 +427,11 @@ namespace Qyoto {
 		}
 
 		public static IntPtr IntPtrFromQString(IntPtr ptr) {
+#if DEBUG
+			return (IntPtr) DebugGCHandle.Alloc(StringFromQString(ptr));
+#else
 			return (IntPtr) GCHandle.Alloc(StringFromQString(ptr));
+#endif
 		}
 
 		public static IntPtr StringBuilderToQString(IntPtr ptr) {
@@ -449,7 +474,11 @@ namespace Qyoto {
 			
 			IntPtr list = ConstructPointerList();
 			foreach (object o in oa) {
+#if DEBUG
+				AddObjectToPointerList(list, (IntPtr) DebugGCHandle.Alloc(o));
+#else
 				AddObjectToPointerList(list, (IntPtr) GCHandle.Alloc(o));
+#endif
 			}
 			return list;
 		}
@@ -460,8 +489,11 @@ namespace Qyoto {
 			Type merged = basetype.MakeGenericType(generic);
 			
 			object o = Activator.CreateInstance(merged);
-			
+#if DEBUG		
+			return (IntPtr) DebugGCHandle.Alloc(o);
+#else
 			return (IntPtr) GCHandle.Alloc(o);
+#endif
 		}
 
 		public static void AddIntPtrToList(IntPtr obj, IntPtr ptr) {
@@ -482,8 +514,12 @@ namespace Qyoto {
 			Type merged = basetype.MakeGenericType(generic);
 			
 			object o = Activator.CreateInstance(merged);
-			
+
+#if DEBUG
+			return (IntPtr) DebugGCHandle.Alloc(o);
+#else
 			return (IntPtr) GCHandle.Alloc(o);
+#endif
 		}
 
 		public static void AddObjectObjectToDictionary(IntPtr dic, IntPtr key, IntPtr val) {
@@ -508,7 +544,11 @@ namespace Qyoto {
 			if (type == 0) {
 				Dictionary<int, QVariant> d1 = (Dictionary<int, QVariant>) d;
 				foreach (KeyValuePair<int, QVariant> kvp in d1) {
+#if DEBUG
+					AddIntQVariantToQMap(map, kvp.Key, (IntPtr) DebugGCHandle.Alloc(kvp.Value));
+#else
 					AddIntQVariantToQMap(map, kvp.Key, (IntPtr) GCHandle.Alloc(kvp.Value));
+#endif
 				}
 			} else if (type == 1) {
 				Dictionary<string, string> d1 = (Dictionary<string, string>) d;
@@ -518,7 +558,11 @@ namespace Qyoto {
 			} else if (type == 2) {
 				Dictionary<string, QVariant> d1 = (Dictionary<string, QVariant>) d;
 				foreach (KeyValuePair<string, QVariant> kvp in d1) {
+#if DEBUG
+					AddQStringQVariantToQMap(map, kvp.Key, (IntPtr) DebugGCHandle.Alloc(kvp.Value));
+#else
 					AddQStringQVariantToQMap(map, kvp.Key, (IntPtr) GCHandle.Alloc(kvp.Value));
+#endif
 				}
 			}
 			return map;

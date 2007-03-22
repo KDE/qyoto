@@ -758,26 +758,27 @@ marshall_basetype(Marshall *m)
 	    break;
 	}
 	break;
-      case Smoke::t_class:
+	case Smoke::t_class:
 	switch(m->action()) {
-	  case Marshall::FromObject:
-	    {
-		if (m->var().s_class == 0) {
+	case Marshall::FromObject:
+	{
+		void * obj = m->var().s_voidp;
+		if (obj == 0) {
 			m->item().s_class = 0;
 			return;
 		}
 
-		smokeqyoto_object *o = value_obj_info(m->var().s_class);
-		if(!o || !o->ptr) {
-                    if(m->type().isRef()) {
-//                        rb_warning("References can't be nil\n");
-                        m->unsupported();
-                    }
+		smokeqyoto_object *o = value_obj_info(obj);
+		if (!o || !o->ptr) {
+			if (m->type().isRef()) {
+				m->unsupported();
+			}
 		    m->item().s_class = 0;
 		    break;
 		}
+
 		void *ptr = o->ptr;
-		if(!m->cleanup() && m->type().isStack()) {
+		if (!m->cleanup() && m->type().isStack()) {
 		    ptr = construct_copy(o);
 		}
 		const Smoke::Class &c = m->smoke()->classes[m->type().classId()];
@@ -787,6 +788,8 @@ marshall_basetype(Marshall *m)
 		    o->smoke->idClass(c.className)	// to
 		);
 		m->item().s_class = ptr;
+		// Why doesn't this work - shouldn't the GCHandle be freed here?
+//		(*FreeGCHandle)(obj);
 		break;
 	    }
 	    break;
@@ -898,8 +901,12 @@ static void marshall_QString(Marshall *m) {
 			(*StringBuilderFromQString)(m->var().s_voidp, (const char *) s->toUtf8());
 		}
 	    
-		if (s && m->cleanup())
+		if (s && m->cleanup()) {
 			delete s;
+		}
+
+		(*FreeGCHandle)(m->var().s_voidp);
+
 	}
 	break;
       case Marshall::ToObject:

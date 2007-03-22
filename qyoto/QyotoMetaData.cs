@@ -1,3 +1,20 @@
+/***************************************************************************
+                          QyotoMetaData.cs  -  description
+                             -------------------
+    begin                : Wed Jun 16 2004
+    copyright            : (C) 2004-2007 by Richard Dale, Arno Rehn
+    email                : richard.j.dale@gmail.com
+ ***************************************************************************/
+
+/***************************************************************************
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ ***************************************************************************/
+
 namespace Qyoto {
 	using System;
 	using System.Reflection;
@@ -83,9 +100,6 @@ namespace Qyoto {
 			handler = delegate(string str) {
 				uint res;
 				if (!hash.TryGetValue(str, out res)) {
-#if DEBUG
-					Console.WriteLine("adding {0} in hash at offset {1}", str, offset);
-#endif
 					hash.Add(str, offset);
 					stringdata_tmp.Add(str);
 					res = offset;

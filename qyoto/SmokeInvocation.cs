@@ -130,8 +130,13 @@ namespace Qyoto {
 			object temp = ((GCHandle) instance).Target;
 			string instanceType = temp.ToString();
 
-			if (method == "metaObject() const")
-				return (IntPtr)GCHandle.Alloc(metaObjectMethod);
+			if (method == "metaObject() const") {
+#if DEBUG
+				return (IntPtr) DebugGCHandle.Alloc(metaObjectMethod);
+#else
+				return (IntPtr) GCHandle.Alloc(metaObjectMethod);
+#endif
+			}
 
 			Dictionary<string, MemberInfo> methods;
 			if (!overridenMethods.TryGetValue(instanceType, out methods)) {
@@ -143,7 +148,11 @@ namespace Qyoto {
 				return (IntPtr) 0;
 			}
 
+#if DEBUG
+			return (IntPtr) DebugGCHandle.Alloc(methodInfo);
+#else
 			return (IntPtr) GCHandle.Alloc(methodInfo);
+#endif
 		}
 
 		public static void InvokeMethod(IntPtr instanceHandle, IntPtr methodHandle, IntPtr stack) {
@@ -226,9 +235,17 @@ namespace Qyoto {
 				} else if (returnType == typeof(double)) {
 					stackPtr[0].s_double = (double) returnValue;
 				} else if (returnType == typeof(string)) {
+#if DEBUG
+					stackPtr[0].s_class = (IntPtr) DebugGCHandle.Alloc(returnValue);
+#else
 					stackPtr[0].s_class = (IntPtr) GCHandle.Alloc(returnValue);
+#endif
 				} else {
+#if DEBUG
+					stackPtr[0].s_class = (IntPtr) DebugGCHandle.Alloc(returnValue);
+#else
 					stackPtr[0].s_class = (IntPtr) GCHandle.Alloc(returnValue);
+#endif
 				}
 			}
 
@@ -327,10 +344,18 @@ namespace Qyoto {
 					retval[0].s_float = (float) returnValue;
 				} else if (returnType == typeof(double)) {
 					retval[0].s_double = (double) returnValue;
-				} else if (returnType == typeof(string)) {	
+				} else if (returnType == typeof(string)) {
+#if DEBUG	
+					retval[0].s_class = (IntPtr) DebugGCHandle.Alloc(returnValue);
+#else
 					retval[0].s_class = (IntPtr) GCHandle.Alloc(returnValue);
+#endif
 				} else {
+#if DEBUG	
+					retval[0].s_class = (IntPtr) DebugGCHandle.Alloc(returnValue);
+#else
 					retval[0].s_class = (IntPtr) GCHandle.Alloc(returnValue);
+#endif
 				}
 			}
 		}
@@ -397,7 +422,7 @@ namespace Qyoto {
 			}
 			
 			StackItem[] stack = new StackItem[callMessage.ArgCount+1];
-
+			bool instanceOperator = false;
 			if (callMessage.MethodSignature != null) {
 				Type[] types = (Type[]) callMessage.MethodSignature;
 				for (int i = 0; i < callMessage.ArgCount; i++) {
@@ -428,14 +453,26 @@ namespace Qyoto {
 					} else if (types[i] == typeof(double)) {
 						stack[i+1].s_double = (double) callMessage.Args[i];
 					} else if (types[i] == typeof(string)) {
+#if DEBUG
+						stack[i+1].s_class = (IntPtr) DebugGCHandle.Alloc(callMessage.Args[i]);
+#else
 						stack[i+1].s_class = (IntPtr) GCHandle.Alloc(callMessage.Args[i]);
+#endif
 					} else {
+#if DEBUG
+						stack[i+1].s_class = (IntPtr) DebugGCHandle.Alloc(callMessage.Args[i]);
+#else
 						stack[i+1].s_class = (IntPtr) GCHandle.Alloc(callMessage.Args[i]);
+#endif
 					}
 				}
 			}
 
+#if DEBUG
+			GCHandle instanceHandle = DebugGCHandle.Alloc(_instance);
+#else
 			GCHandle instanceHandle = GCHandle.Alloc(_instance);
+#endif
 			MethodReturnMessageWrapper returnValue = new MethodReturnMessageWrapper((IMethodReturnMessage) returnMessage); 
 			
 			unsafe {
@@ -470,11 +507,19 @@ namespace Qyoto {
 					} else if (returnType == typeof(double)) {
 						returnValue.ReturnValue = stack[0].s_double;
 					} else if (returnType == typeof(string)) {
-						if (stack[0].s_class != IntPtr.Zero)
-							returnValue.ReturnValue = ((GCHandle) stack[0].s_class).Target;
+						returnValue.ReturnValue = ((GCHandle) stack[0].s_class).Target;
+#if DEBUG
+						DebugGCHandle.Free((GCHandle) stack[0].s_class);
+#else
+						((GCHandle) stack[0].s_class).Free();
+#endif
 					} else {
-						if (stack[0].s_class != IntPtr.Zero)
-							returnValue.ReturnValue = ((GCHandle) stack[0].s_class).Target;
+						returnValue.ReturnValue = ((GCHandle) stack[0].s_class).Target;
+#if DEBUG
+						DebugGCHandle.Free((GCHandle) stack[0].s_class);
+#else
+						((GCHandle) stack[0].s_class).Free();
+#endif
 					}
 				}
 			}
@@ -548,16 +593,29 @@ namespace Qyoto {
 					} else if (types[i] == typeof(double)) {
 						stack[i + 1].s_double = (double) callMessage.Args[i];
 					} else if (types[i] == typeof(string)) {
+#if DEBUG
+						stack[i + 1].s_class = (IntPtr) DebugGCHandle.Alloc(callMessage.Args[i]);
+#else
 						stack[i + 1].s_class = (IntPtr) GCHandle.Alloc(callMessage.Args[i]);
+#endif
 					} else {
+#if DEBUG
+						stack[i + 1].s_class = (IntPtr) DebugGCHandle.Alloc(callMessage.Args[i]);
+#else
 						stack[i + 1].s_class = (IntPtr) GCHandle.Alloc(callMessage.Args[i]);
+#endif
 					}
 				}
 			}
 
 			IMethodReturnMessage returnMessage = (IMethodReturnMessage) message;
-			MethodReturnMessageWrapper returnValue = new MethodReturnMessageWrapper((IMethodReturnMessage) returnMessage); 
+			MethodReturnMessageWrapper returnValue = new MethodReturnMessageWrapper((IMethodReturnMessage) returnMessage);
+
+#if DEBUG
+			GCHandle instanceHandle = DebugGCHandle.Alloc(_instance);
+#else
 			GCHandle instanceHandle = GCHandle.Alloc(_instance);
+#endif
 			Dictionary<MethodInfo, Qyoto.CPPMethod> signals = Qyoto.GetAllSignalSignatures(_instance.GetType());
 			
 			/// should not happen
@@ -600,11 +658,24 @@ namespace Qyoto {
 					} else if (returnType == typeof(double)) {
 						returnValue.ReturnValue = stack[0].s_double;
 					} else if (returnType == typeof(string)) {
-						if (stack[0].s_class != IntPtr.Zero)
+						if (stack[0].s_class != IntPtr.Zero) {
 							returnValue.ReturnValue = ((GCHandle) stack[0].s_class).Target;
+#if DEBUG
+							DebugGCHandle.Free((GCHandle) stack[0].s_class);
+#else
+							((GCHandle) stack[0].s_class).Free();
+#endif
+
+						}
 					} else {
-						if (stack[0].s_class != IntPtr.Zero)
+						if (stack[0].s_class != IntPtr.Zero) {
 							returnValue.ReturnValue = ((GCHandle) stack[0].s_class).Target;
+#if DEBUG
+							DebugGCHandle.Free((GCHandle) stack[0].s_class);
+#else
+							((GCHandle) stack[0].s_class).Free();
+#endif
+						}
 					}
 				}
 			}
