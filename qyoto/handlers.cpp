@@ -858,8 +858,8 @@ static void marshall_charP(Marshall *m) {
 			m->item().s_voidp = (*IntPtrToCharStar)(m->var().s_class);
 			(*FreeGCHandle)(m->var().s_voidp);
 		}
-		break;
 	}
+	break;
 
 	case Marshall::ToObject:
 	{
@@ -875,9 +875,10 @@ static void marshall_charP(Marshall *m) {
 		}
 	}
 	break;
-		default:
+
+	default:
 		m->unsupported();
-	break;
+		break;
 	}
 }
 

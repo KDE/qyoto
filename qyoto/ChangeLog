@@ -2,6 +2,8 @@
 
 	* Added debug methods for logging GCHandle.Alloc() and Free() calls
 	* Freed GCHandles in a few places, but there are still a lot of leaks
+	* Hmm, a fix for a GCHandle leak stopped custom slots from working for
+	  no apparent reason.
 
 2007-03-21  Arno Rehn  <arno@arnorehn.de>
 

@@ -199,7 +199,7 @@ namespace Qyoto {
 					} else if (parameters[i].ParameterType == typeof(double)) {
 						args[i] = stackPtr[i].s_double;
 					} else if (parameters[i].ParameterType == typeof(string)) {
-						if (stackPtr[0].s_class != IntPtr.Zero) {
+						if (stackPtr[i].s_class != IntPtr.Zero) {
 							args[i] = (string) ((GCHandle) stackPtr[i].s_class).Target;
 #if DEBUG
 							DebugGCHandle.Free((GCHandle) stackPtr[i].s_class);
@@ -208,7 +208,7 @@ namespace Qyoto {
 #endif
 						}
 					} else {
-						if (stackPtr[0].s_class != IntPtr.Zero) {
+						if (stackPtr[i].s_class != IntPtr.Zero) {
 							args[i] = ((GCHandle) stackPtr[i].s_class).Target;
 #if DEBUG
 							DebugGCHandle.Free((GCHandle) stackPtr[i].s_class);
@@ -318,7 +318,7 @@ namespace Qyoto {
 					} else if (parameters[i].ParameterType == typeof(double)) {
 						args[i] = stackPtr[i].s_double;
 					} else if (parameters[i].ParameterType == typeof(string)) {
-						if (stackPtr[0].s_class != IntPtr.Zero) {
+						if (stackPtr[i].s_class != IntPtr.Zero) {
 							args[i] = (string) ((GCHandle) stackPtr[i].s_class).Target;
 #if DEBUG
 							DebugGCHandle.Free((GCHandle) stackPtr[i].s_class);
@@ -327,7 +327,7 @@ namespace Qyoto {
 #endif
 						}
 					} else {
-						if (stackPtr[0].s_class != IntPtr.Zero) {
+						if (stackPtr[i].s_class != IntPtr.Zero) {
 							args[i] = ((GCHandle) stackPtr[i].s_class).Target;
 #if DEBUG
 							DebugGCHandle.Free((GCHandle) stackPtr[i].s_class);
