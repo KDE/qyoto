@@ -531,19 +531,27 @@ namespace Qyoto {
 					} else if (returnType == typeof(double)) {
 						returnValue.ReturnValue = stack[0].s_double;
 					} else if (returnType == typeof(string)) {
-						returnValue.ReturnValue = ((GCHandle) stack[0].s_class).Target;
+						if (((IntPtr) stack[0].s_class) == (IntPtr) 0) {
+							returnValue.ReturnValue = null;
+						} else {
+							returnValue.ReturnValue = ((GCHandle) stack[0].s_class).Target;
 #if DEBUG
-						DebugGCHandle.Free((GCHandle) stack[0].s_class);
+							DebugGCHandle.Free((GCHandle) stack[0].s_class);
 #else
-						((GCHandle) stack[0].s_class).Free();
+							((GCHandle) stack[0].s_class).Free();
 #endif
+						}
 					} else {
-						returnValue.ReturnValue = ((GCHandle) stack[0].s_class).Target;
+						if (((IntPtr) stack[0].s_class) == (IntPtr) 0) {
+							returnValue.ReturnValue = null;
+						} else {
+							returnValue.ReturnValue = ((GCHandle) stack[0].s_class).Target;
 #if DEBUG
-						DebugGCHandle.Free((GCHandle) stack[0].s_class);
+							DebugGCHandle.Free((GCHandle) stack[0].s_class);
 #else
-						((GCHandle) stack[0].s_class).Free();
+							((GCHandle) stack[0].s_class).Free();
 #endif
+						}
 					}
 				}
 			}
