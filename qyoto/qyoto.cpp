@@ -335,7 +335,7 @@ void unmapPointer(smokeqyoto_object *o, Smoke::Index classId, void *lastptr) {
 		
 			if (do_debug & qtdb_gc) {
 				const char *className = o->smoke->classes[o->classId].className;
-				printf("unmapPointer (%s*)%p -> %p", className, ptr, obj_ptr);
+				printf("unmapPointer (%s*)%p -> %p\n", className, ptr, obj_ptr);
 			}
 	    
 			(*UnmapPointer)(ptr);
@@ -357,7 +357,7 @@ void mapPointer(void * obj, smokeqyoto_object *o, Smoke::Index classId, void *la
 		lastptr = ptr;
 		if (do_debug & qtdb_gc) {
 			const char *className = o->smoke->classes[o->classId].className;
-			printf(	"mapPointer (%s*)%p -> %p strong ref: %s", 
+			printf(	"mapPointer (%s*)%p -> %p strong ref: %s\n", 
 						className, 
 						ptr, 
 						(void*)obj,
@@ -414,7 +414,6 @@ public:
 		_st.set(_smoke, method().ret);
 		Marshall::HandlerFn fn = getMarshallFn(type());
 		(*fn)(this);
-		(*FreeGCHandle)(retval[0].s_voidp);
    }
 };
 
@@ -965,7 +964,7 @@ public:
 		smokeqyoto_object *o = value_obj_info(obj);
 	
 		if(do_debug & qtdb_gc) {
-			printf("%p->~%s()", ptr, smoke->className(classId));
+			printf("%p->~%s()\n", ptr, smoke->className(classId));
 		}
 	
 		if(!o || !o->ptr) {
@@ -992,7 +991,7 @@ public:
 		}
 
 		if (do_debug & qtdb_virtual) {
-			printf(	"virtual %p->%s::%s called", 
+			printf(	"virtual %p->%s::%s called\n", 
 						ptr,
 						smoke->classes[smoke->methods[method].classId].className,
 						(const char *) signature );
@@ -1003,7 +1002,7 @@ public:
 
 		if (!o) {
 			if( do_debug & qtdb_virtual ) {  // if not in global destruction
-				printf("Cannot find object for virtual method %p -> %p", ptr, obj);
+				printf("Cannot find object for virtual method %p -> %p\n", ptr, obj);
 			}
 
 			return false;
@@ -1057,12 +1056,12 @@ FindMethodId(char * classname, char * mungedname, char * signature)
 
 	Smoke::Index meth = qt_Smoke->findMethod(classname, mungedname);
 #ifdef DEBUG
-	if (do_debug & qtdb_calls) printf("DAMNIT on %s::%s => %d", classname, mungedname, meth);
+	if (do_debug & qtdb_calls) printf("DAMNIT on %s::%s => %d\n", classname, mungedname, meth);
 #endif
 	if (meth == 0) {
     	meth = qt_Smoke->findMethod("QGlobalSpace", mungedname);
 #ifdef DEBUG
-		if (do_debug & qtdb_calls) printf("DAMNIT on QGlobalSpace::%s => %d", mungedname, meth);
+		if (do_debug & qtdb_calls) printf("DAMNIT on QGlobalSpace::%s => %d\n", mungedname, meth);
 #endif
 	}
 	
@@ -1550,6 +1549,7 @@ SignalEmit(char * signature, char * type, void * obj, Smoke::StackItem * sp, int
     QObject *qobj = (QObject*)o->smoke->cast(o->ptr, o->classId, o->smoke->idClass("QObject"));
     
 	if (qobj->signalsBlocked()) {
+		(*FreeGCHandle)(obj);
 		return false;
 	}
 
@@ -1572,6 +1572,7 @@ SignalEmit(char * signature, char * type, void * obj, Smoke::StackItem * sp, int
 	EmitSignal signal(qobj, i, items, args, sp);
 	signal.next();
 
+	(*FreeGCHandle)(obj);
 	return true;
 }
 

@@ -788,15 +788,14 @@ marshall_basetype(Marshall *m)
 		    o->smoke->idClass(c.className)	// to
 		);
 		m->item().s_class = ptr;
-		// Why doesn't this work - shouldn't the GCHandle be freed here?
-//		(*FreeGCHandle)(obj);
+		(*FreeGCHandle)(obj);
 		break;
-	    }
-	    break;
-	  case Marshall::ToObject:
-	    {
+	}
+	break;
+	case Marshall::ToObject:
+	{
 		if(m->item().s_voidp == 0) {
-                    m->var().s_voidp = 0;
+			m->var().s_voidp = 0;
 		    break;
 		}
 
@@ -830,11 +829,11 @@ marshall_basetype(Marshall *m)
 		}
 		
 		m->var().s_class = obj;
-	    }
-	    break;
-	  default:
-	    m->unsupported();
-	    break;
+	}
+	break;
+	default:
+		m->unsupported();
+		break;
 	}
 	break;
       default:

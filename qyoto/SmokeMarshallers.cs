@@ -192,11 +192,25 @@ namespace Qyoto {
 		}
 		
 		public static IntPtr GetSmokeObject(IntPtr instancePtr) {
-			if (((int) instancePtr) == 0)
+
+			if (((int) instancePtr) == 0) {
+				if (	QDebug.debugLevel >= DebugLevel.High
+						&& (QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0 ) 
+				{
+					Console.WriteLine("GetSmokeObject instancePtr: 0", instancePtr);
+				}
+
 				return (IntPtr) 0;
-			
+			}
+
 			Object instance = ((GCHandle) instancePtr).Target;
 			Debug.Assert(instance != null);
+
+			if (	QDebug.debugLevel >= DebugLevel.High
+					&& (QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0 ) 
+			{
+				Console.WriteLine("GetSmokeObject 0x{0:x8} -> {1}", instancePtr, instance);
+			}
 
 			FieldInfo fieldInfo = instance.GetType().GetField(	"smokeObject", 
 															BindingFlags.NonPublic 
@@ -208,6 +222,12 @@ namespace Qyoto {
 		public static void SetSmokeObject(IntPtr instancePtr, IntPtr smokeObjectPtr) {
 			Object instance = ((GCHandle) instancePtr).Target;
 			Debug.Assert(instance != null);
+
+			if (	QDebug.debugLevel >= DebugLevel.High
+					&& (QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0 ) 
+			{
+				Console.WriteLine("SetSmokeObject 0x{0:x8} -> {1}", instancePtr, instance);
+			}
 
 			FieldInfo fieldInfo = instance.GetType().GetField(	"smokeObject", 
 															BindingFlags.NonPublic 
