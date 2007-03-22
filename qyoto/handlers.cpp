@@ -849,14 +849,17 @@ static void marshall_unknown(Marshall *m) {
 }
 
 static void marshall_charP(Marshall *m) {
-    switch(m->action()) {
-        case Marshall::FromObject:
-            if (m->var().s_class == 0) {
-                    m->item().s_voidp = 0;
-            } else {
-                    m->item().s_voidp = (*IntPtrToCharStar)(m->var().s_class);
-            }
-            break;
+	switch(m->action()) {
+	case Marshall::FromObject:
+	{
+		if (m->var().s_class == 0) {
+			m->item().s_voidp = 0;
+		} else {
+			m->item().s_voidp = (*IntPtrToCharStar)(m->var().s_class);
+			(*FreeGCHandle)(m->var().s_voidp);
+		}
+		break;
+	}
 
 	case Marshall::ToObject:
 	{
@@ -905,7 +908,6 @@ static void marshall_QString(Marshall *m) {
 		}
 
 		(*FreeGCHandle)(m->var().s_voidp);
-
 	}
 	break;
       case Marshall::ToObject:

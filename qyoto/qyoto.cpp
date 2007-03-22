@@ -851,7 +851,6 @@ public:
 	~InvokeSlot() {
 		delete[] _stack;
 		delete[] _sp;
- 		(*FreeGCHandle)(_obj);
 	}
 };
 
@@ -990,13 +989,6 @@ public:
 			signature += " const";
 		}
 
-		if (do_debug & qtdb_virtual) {
-			printf(	"virtual %p->%s::%s called\n", 
-						ptr,
-						smoke->classes[smoke->methods[method].classId].className,
-						(const char *) signature );
-		}
-
 		void * obj = getPointerObject(ptr);
 		smokeqyoto_object *o = value_obj_info(obj);
 
@@ -1014,6 +1006,7 @@ public:
 			void** _o = (void**)args[3].s_voidp;
 			
 			args[0].s_int = qt_metacall(obj, _c, _id, _o);
+			(*FreeGCHandle)(obj);
 			return true;
 		}
 		
@@ -1021,6 +1014,14 @@ public:
 		if (overridenMethod == 0) {
 			(*FreeGCHandle)(obj);
 			return false;
+		}
+
+		if (do_debug & qtdb_virtual) {
+			printf(	"virtual %p->%s::%s called\n", 
+						ptr,
+						smoke->classes[smoke->methods[method].classId].className,
+						(const char *) signature );
+			fflush(stdout);
 		}
 
 		VirtualMethodCall c(smoke, method, args, obj, overridenMethod);
