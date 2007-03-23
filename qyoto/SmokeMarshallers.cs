@@ -25,14 +25,6 @@ namespace Qyoto {
 	using System.Runtime.InteropServices;
 	using System.Text;
 
-	public class SmokeClassData {
-		public string className;
-		public ConstructorInfo constructorInfo;
-		public object[] constructorParamTypes;
-		public MethodInfo proxyCreator;
-		public FieldInfo smokeObjectField;
-	}
-
 	public class SmokeMarshallers : object {
 		
 #region C++ functions
@@ -191,6 +183,7 @@ namespace Qyoto {
 #endregion
 		
 #region marshalling functions
+
 		public static void FreeGCHandle(IntPtr handle) {
 #if DEBUG
 			DebugGCHandle.Free((GCHandle) handle);
@@ -357,9 +350,17 @@ namespace Qyoto {
 			}
 		}
 
+		private class SmokeClassData {
+			public string className;
+			public ConstructorInfo constructorInfo;
+			public object[] constructorParamTypes;
+			public MethodInfo proxyCreator;
+			public FieldInfo smokeObjectField;
+		}
+
 		static Dictionary<Type, SmokeClassData> smokeClassCache = new Dictionary<Type, SmokeClassData> ();
 		
-		public static SmokeClassData GetSmokeClassData(Type t) {
+		private static SmokeClassData GetSmokeClassData(Type t) {
 			SmokeClassData result;
 
 			if (!smokeClassCache.TryGetValue(t, out result)) {
