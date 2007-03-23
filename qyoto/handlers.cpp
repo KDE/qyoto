@@ -257,6 +257,10 @@ IsContainedInstance(smokeqyoto_object *o)
 		if (qwidget->parentWidget() != 0) {
 			return true;
 		}
+		// Don't garbage collect custom subclasses of QWidget classes for now
+		const QMetaObject * meta = qwidget->metaObject();
+		Smoke::Index classId = o->smoke->idClass(meta->className());
+		return (classId == 0);
 	} else if (isDerivedFromByName(o->smoke, className, "QObject")) {
 		QObject * qobject = (QObject *) o->smoke->cast(o->ptr, o->classId, o->smoke->idClass("QObject"));
 		if (qobject->parent() != 0) {

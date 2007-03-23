@@ -25,6 +25,14 @@ namespace Qyoto {
 	using System.Runtime.InteropServices;
 	using System.Text;
 
+	public class SmokeClassData {
+		public string className;
+		public ConstructorInfo constructorInfo;
+		public object[] constructorParamTypes;
+		public MethodInfo proxyCreator;
+		public FieldInfo smokeObjectField;
+	}
+
 	public class SmokeMarshallers : object {
 		
 #region C++ functions
@@ -192,7 +200,6 @@ namespace Qyoto {
 		}
 		
 		public static IntPtr GetSmokeObject(IntPtr instancePtr) {
-
 			if (((int) instancePtr) == 0) {
 				return (IntPtr) 0;
 			}
@@ -200,22 +207,16 @@ namespace Qyoto {
 			Object instance = ((GCHandle) instancePtr).Target;
 			Debug.Assert(instance != null);
 
-			FieldInfo fieldInfo = instance.GetType().GetField(	"smokeObject", 
-															BindingFlags.NonPublic 
-															| BindingFlags.GetField
-															| BindingFlags.Instance );
-			return (IntPtr) fieldInfo.GetValue(instance);
+			SmokeClassData data = GetSmokeClassData(instance.GetType());
+			return (IntPtr) data.smokeObjectField.GetValue(instance);
 		}
 		
 		public static void SetSmokeObject(IntPtr instancePtr, IntPtr smokeObjectPtr) {
 			Object instance = ((GCHandle) instancePtr).Target;
 			Debug.Assert(instance != null);
 
-			FieldInfo fieldInfo = instance.GetType().GetField(	"smokeObject", 
-															BindingFlags.NonPublic 
-															| BindingFlags.GetField
-															| BindingFlags.Instance );
-			fieldInfo.SetValue(instance, smokeObjectPtr);
+			SmokeClassData data = GetSmokeClassData(instance.GetType());
+			data.smokeObjectField.SetValue(instance, smokeObjectPtr);
 			return;
 		}
 		
@@ -356,6 +357,50 @@ namespace Qyoto {
 			}
 		}
 
+		static Dictionary<Type, SmokeClassData> smokeClassCache = new Dictionary<Type, SmokeClassData> ();
+		
+		public static SmokeClassData GetSmokeClassData(Type t) {
+			SmokeClassData result;
+
+			if (!smokeClassCache.TryGetValue(t, out result)) {
+				result = new SmokeClassData();
+
+				object[] attr = t.GetCustomAttributes(typeof(SmokeClass), false);
+				if (attr.Length > 0) {
+					result.className = ((SmokeClass) attr[0]).signature;
+				}
+
+				Type[] paramTypes = new Type[1];
+				paramTypes[0] = typeof(Type);
+				result.constructorParamTypes = new object[] { paramTypes[0] };
+
+				result.constructorInfo = t.GetConstructor(BindingFlags.NonPublic 
+					| BindingFlags.Instance, null, new Type[ ] { typeof( Type ) } , null);
+				Debug.Assert(	result.constructorInfo != null,
+								"GetSmokeClassData(\"" + result.className + "\") constructor method missing" );
+
+				Type klass = t;
+				do {
+					result.proxyCreator = klass.GetMethod("CreateProxy", BindingFlags.NonPublic 
+																| BindingFlags.Instance
+																| BindingFlags.DeclaredOnly);
+
+					klass = klass.BaseType;
+				} while (result.proxyCreator == null && klass != typeof(object));
+
+				Debug.Assert(	result.proxyCreator != null, 
+								"GetSmokeClassData(\"" + result.className + "\") no CreateProxy() found" );
+
+				result.smokeObjectField = t.GetField(	"smokeObject", 
+														BindingFlags.NonPublic 
+														| BindingFlags.GetField
+														| BindingFlags.Instance );
+				smokeClassCache[t] = result;
+			}
+
+			return result;
+		}
+
 		// CreateInstance() creates a wrapper instance around a C++ instance which
 		// has been created in C++ code, and not via a Qyoto C# constructor call.
 		// It takes the class name string and obtains its Type. Then it finds the
@@ -367,42 +412,19 @@ namespace Qyoto {
 		// 'CreateProxy()' to create the transparent proxy to forward the method
 		// calls to SmokeInvocation.Invoke() is called.
 		public static IntPtr CreateInstance(string className) {
-			Type klass = Type.GetType(className);
-			Type[] constructorParamTypes = new Type[1];
-			constructorParamTypes[0] = typeof(Type);
-			ConstructorInfo constructorInfo = klass.GetConstructor(BindingFlags.NonPublic 
-					| BindingFlags.Instance, null, new Type[ ] { typeof( Type ) } , null);
-
-			Debug.Assert(	constructorInfo != null,
-							"CreateInstance(\"" + className + "\") constructor method missing" );
-
-			object result = constructorInfo.Invoke(new object [] { constructorParamTypes[0] });
+			SmokeClassData data = GetSmokeClassData(Type.GetType(className));
+			object result = data.constructorInfo.Invoke(data.constructorParamTypes);
 #if DEBUG
 			if ((QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
 				Console.WriteLine("CreateInstance(\"{0}\") constructed {1}", className, result);
 			}
 #endif
-
-			MethodInfo proxyCreator = null;
-			do {
-				proxyCreator = klass.GetMethod("CreateProxy", BindingFlags.NonPublic 
-																| BindingFlags.Instance
-																| BindingFlags.DeclaredOnly);
-				if (proxyCreator != null) {
-					proxyCreator.Invoke(result, null);
+			data.proxyCreator.Invoke(result, null);
 #if DEBUG
-					return (IntPtr) DebugGCHandle.Alloc(result);
+			return (IntPtr) DebugGCHandle.Alloc(result);
 #else
-					return (IntPtr) GCHandle.Alloc(result);
+			return (IntPtr) GCHandle.Alloc(result);
 #endif
-				}
-
-				klass = klass.BaseType;
-			} while (klass != typeof(object));
-
-			Debug.Assert(	proxyCreator != null, 
-							"CreateInstance(\"" + className + "\") no CreateProxy() found" );
-			return (IntPtr) 0;
 		}
 
 		public static IntPtr IntPtrToCharStarStar(IntPtr ptr) {

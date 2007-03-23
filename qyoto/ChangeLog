@@ -1,3 +1,31 @@
+2007-03-23  Richard Dale  <rdale@foton.es>
+
+	* Cache various items in a dictionary with a key of the Smoke class's
+	  type to avoid using reflection to look up the items each time. A timing
+	  test consisting of starting the t14 cannon game and firing 5 shots at
+	  force 40, used half the mill of the version without caching.
+
+	* The following class is used to cache the data:
+
+		public class SmokeClassData {
+			public string className;
+			public ConstructorInfo constructorInfo;
+			public object[] constructorParamTypes;
+			public MethodInfo proxyCreator;
+			public FieldInfo smokeObjectField;
+		}
+
+		- classname: the C++ signature of the Smoke class
+		- constructorInfo: the ConstructorInfo to construct a new instance
+		- constructorParamTypes: the argument to pass to the constructorInfo
+		- proxyCreator: the method to create the transparent proxy for the 
+			new instance
+		- smokeObjectField: the field for holding a pointer to the 
+			smokeqyoto_object struct for the instance
+
+	* Add an entry to the strong reference map for custom QWidget subclasses 
+	  to prevent them being GC'd prematurally.
+
 2007-03-22  Richard Dale  <rdale@foton.es>
 
 	* Added debug methods for logging GCHandle.Alloc() and Free() calls

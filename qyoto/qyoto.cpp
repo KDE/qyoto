@@ -998,9 +998,18 @@ public:
 		}
 
 		void * obj = getPointerObject(ptr);
+
+		if (obj == 0) {
+			if( do_debug & qtdb_virtual ) {  // if not in global destruction
+				printf("Cannot find object for virtual method %p -> %p\n", ptr, obj);
+			}
+
+			return false;
+		}
+
 		smokeqyoto_object *o = value_obj_info(obj);
 
-		if (!o) {
+		if (o == 0) {
 			if( do_debug & qtdb_virtual ) {  // if not in global destruction
 				printf("Cannot find object for virtual method %p -> %p\n", ptr, obj);
 			}
@@ -1015,8 +1024,7 @@ public:
 			
 			args[0].s_int = qt_metacall(obj, _c, _id, _o);
 
-			// This line stops custom slots from working - how can that be?
-//			(*FreeGCHandle)(obj);
+			(*FreeGCHandle)(obj);
 			return true;
 		}
 		
