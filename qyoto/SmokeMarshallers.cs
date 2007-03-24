@@ -86,16 +86,13 @@ namespace Qyoto {
 		public static extern void InstallUnmapPointer(FromIntPtr callback);
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		public static extern void InstallGetPointerObject(GetIntPtr callback);
+		public static extern void InstallGetInstance(GetInstanceFn callback);
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		public static extern void InstallCreateInstance(CreateInstanceFn callback);
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		public static extern void InstallInvokeCustomSlot(InvokeCustomSlotFn callback);
-		
-		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		public static extern bool InstallIsSmokeClass(IsSmokeClassFn callback);
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		public static extern bool InstallGetProperty(OverridenMethodFn callback);
@@ -123,7 +120,7 @@ namespace Qyoto {
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		public static extern void InstallStringBuilderFromQString(SetIntPtrFromCharStar callback);
-		
+
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		public static extern void InstallOverridenMethod(OverridenMethodFn callback);
 
@@ -168,8 +165,8 @@ namespace Qyoto {
 		public delegate void FromIntPtr(IntPtr ptr);
 		public delegate void MapPointerFn(IntPtr instance, IntPtr ptr, bool createStrongReference);
 		public delegate IntPtr CreateInstanceFn(string className);
+		public delegate IntPtr GetInstanceFn(IntPtr ptr, bool allInstances);
 		public delegate void InvokeCustomSlotFn(IntPtr obj, string slot, IntPtr stack, IntPtr ret);
-		public delegate bool IsSmokeClassFn(IntPtr obj);
 		public delegate IntPtr GetIntPtrFromString(string str);
 		public delegate string GetStringFromIntPtr(IntPtr ptr);
 		public delegate void SetIntPtrFromCharStar(IntPtr ptr, string str);
@@ -301,14 +298,16 @@ namespace Qyoto {
 			}
 		}
 		
-		public static IntPtr GetPointerObject(IntPtr ptr) {
+		// If 'allInstances' is false then only return a result if the instance a custom subclass
+		// of a Qyoto class and therefore could have custom slots or overriden methods
+		public static IntPtr GetInstance(IntPtr ptr, bool allInstances) {
 			WeakReference weakRef;
 			if (!pointerMap.TryGetValue(ptr, out weakRef)) {
 #if DEBUG
 				if (	(QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0
 						&& QDebug.debugLevel >= DebugLevel.Extensive ) 
 				{
-					Console.WriteLine("GetPointerObject() pointerMap[0x{0:x8}] == null", (int) ptr);
+					Console.WriteLine("GetInstance() pointerMap[0x{0:x8}] == null", (int) ptr);
 				}
 #endif
 				return (IntPtr) 0;
@@ -319,16 +318,18 @@ namespace Qyoto {
 				if (	(QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0
 						&& QDebug.debugLevel >= DebugLevel.Extensive ) 
 				{
-					Console.WriteLine("GetPointerObject() weakRef null ptr: 0x{0:x8}", (int) ptr);
+					Console.WriteLine("GetInstance() weakRef null ptr: 0x{0:x8}", (int) ptr);
 				}
 #endif
 				return (IntPtr) 0;
-			} else if (weakRef.IsAlive) {
+			} else if (	weakRef.IsAlive 
+						&& (allInstances || !IsSmokeClass(weakRef.Target.GetType())) ) 
+			{
 #if DEBUG
 				if (	(QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0
 						&& QDebug.debugLevel >= DebugLevel.Extensive ) 
 				{
-					Console.WriteLine("GetPointerObject() weakRef.IsAlive 0x{0:x8} -> {1}", (int) ptr, weakRef.Target);
+					Console.WriteLine("GetInstance() weakRef.IsAlive 0x{0:x8} -> {1}", (int) ptr, weakRef.Target);
 				}
 #endif
 
@@ -343,7 +344,7 @@ namespace Qyoto {
 				if (	(QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0
 						&& QDebug.debugLevel >= DebugLevel.Extensive ) 
 				{
-					Console.WriteLine("GetPointerObject() weakRef dead ptr: 0x{0:x8}", (int) ptr);
+					Console.WriteLine("GetInstance() weakRef dead ptr: 0x{0:x8}", (int) ptr);
 				}
 #endif
 				return (IntPtr) 0;
@@ -358,17 +359,34 @@ namespace Qyoto {
 			public FieldInfo smokeObjectField;
 		}
 
-		static Dictionary<Type, SmokeClassData> smokeClassCache = new Dictionary<Type, SmokeClassData> ();
+		private static Dictionary<Type, SmokeClassData> smokeClassCache = new Dictionary<Type, SmokeClassData> ();
 		
 		private static SmokeClassData GetSmokeClassData(Type t) {
-			SmokeClassData result;
+			SmokeClassData result = null;
 
 			if (!smokeClassCache.TryGetValue(t, out result)) {
-				result = new SmokeClassData();
+				string className = null;
 
 				object[] attr = t.GetCustomAttributes(typeof(SmokeClass), false);
 				if (attr.Length > 0) {
-					result.className = ((SmokeClass) attr[0]).signature;
+					className = ((SmokeClass) attr[0]).signature;
+				} else {
+					attr = t.GetCustomAttributes(typeof(SmokeClass), true);
+					if (attr.Length == 0) {
+						// The class is a superclass of a Qyoto class such as
+						// MarshalByRefObject, so save a null value to avoid
+						// needing to do the above test again
+						smokeClassCache[t] = null;
+						return null;
+					}
+				}
+
+				result = new SmokeClassData();
+				result.className = className;
+				smokeClassCache[t] = result;
+
+				if (t.IsInterface) {
+					return result;
 				}
 
 				Type[] paramTypes = new Type[1];
@@ -396,10 +414,27 @@ namespace Qyoto {
 														BindingFlags.NonPublic 
 														| BindingFlags.GetField
 														| BindingFlags.Instance );
-				smokeClassCache[t] = result;
 			}
 
 			return result;
+		}
+
+		// The class is not a custom subclass of a Qyoto class, and also is not
+		// a superclass of a Qyoto class, such as a MarshalByRefObject.
+		public static bool IsSmokeClass(Type klass) {
+			SmokeClassData data = GetSmokeClassData(klass);
+			return data != null && data.className != null;
+		}
+
+		// The C++ class name signature of a Smoke class or interface
+		public static string SmokeClassName(Type klass) {
+			SmokeClassData data = GetSmokeClassData(klass);
+			while (data.className == null) {
+				klass = klass.BaseType;
+				data = GetSmokeClassData(klass);
+			}
+			
+			return data.className;
 		}
 
 		// CreateInstance() creates a wrapper instance around a C++ instance which
@@ -602,7 +637,7 @@ namespace Qyoto {
 		
 		static private MapPointerFn mapPointer = new MapPointerFn(MapPointer);
 		static private FromIntPtr unmapPointer = new FromIntPtr(UnmapPointer);
-		static private GetIntPtr getPointerObject = new GetIntPtr(GetPointerObject);
+		static private GetInstanceFn getInstance = new GetInstanceFn(GetInstance);
 		
 		static private GetIntPtr intPtrToCharStarStar = new GetIntPtr(IntPtrToCharStarStar);
 		static private GetStringFromIntPtr intPtrToString = new GetStringFromIntPtr(IntPtrToString);
@@ -631,7 +666,6 @@ namespace Qyoto {
 
 		static private CreateInstanceFn createInstance = new CreateInstanceFn(CreateInstance);
 		static private InvokeCustomSlotFn invokeCustomSlot = new InvokeCustomSlotFn(SmokeInvocation.InvokeCustomSlot);
-		static private IsSmokeClassFn isSmokeClass = new IsSmokeClassFn(Qyoto.IsSmokeClass);
 		
 		static private OverridenMethodFn getProperty = new OverridenMethodFn(GetProperty);
 		static private SetPropertyFn setProperty = new SetPropertyFn(SetProperty);
@@ -644,7 +678,7 @@ namespace Qyoto {
 			
 			InstallMapPointer(mapPointer);
 			InstallUnmapPointer(unmapPointer);
-			InstallGetPointerObject(getPointerObject);
+			InstallGetInstance(getInstance);
 
 			InstallIntPtrToCharStarStar(intPtrToCharStarStar);
 			InstallIntPtrToCharStar(intPtrToString);
@@ -671,7 +705,6 @@ namespace Qyoto {
 
 			InstallCreateInstance(createInstance);
 			InstallInvokeCustomSlot(invokeCustomSlot);
-			InstallIsSmokeClass(isSmokeClass);
 			
 			InstallGetProperty(getProperty);
 			InstallSetProperty(setProperty);

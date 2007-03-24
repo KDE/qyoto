@@ -69,13 +69,12 @@ static SetIntPtr SetSmokeObject;
 
 static MapPointerFn MapPointer;
 static FromIntPtr UnmapPointer;
-static GetIntPtr GetPointerObject;
+static GetInstanceFn GetInstance;
 
 static OverridenMethodFn OverridenMethod;
 static InvokeMethodFn InvokeMethod;
 static CreateInstanceFn CreateInstance;
 static InvokeCustomSlotFn InvokeCustomSlot;
-static IsSmokeClassFn IsSmokeClass;
 
 static OverridenMethodFn GetProperty;
 static SetPropertyFn SetProperty;
@@ -322,7 +321,7 @@ bool isDerivedFromByName(Smoke *smoke, const char *className, const char *baseCl
 }
 
 void * getPointerObject(void *ptr) {
-	return (*GetPointerObject)(ptr);
+	return (*GetInstance)(ptr, true);
 }
 
 void unmapPointer(smokeqyoto_object *o, Smoke::Index classId, void *lastptr) {
@@ -975,6 +974,12 @@ public:
     }
 
 	bool callMethod(Smoke::Index method, void *ptr, Smoke::Stack args, bool /*isAbstract*/) {
+		void * obj = (*GetInstance)(ptr, false);
+
+		if (obj == 0) {
+			return false;
+		}
+
 		Smoke::Method & meth = smoke->methods[method];
 		QByteArray signature(smoke->methodNames[meth.name]);
 		signature += "(";
@@ -995,26 +1000,6 @@ public:
 						smoke->classes[smoke->methods[method].classId].className,
 						(const char *) signature );
 			fflush(stdout);
-		}
-
-		void * obj = getPointerObject(ptr);
-
-		if (obj == 0) {
-			if( do_debug & qtdb_virtual ) {  // if not in global destruction
-				printf("Cannot find object for virtual method %p -> %p\n", ptr, obj);
-			}
-
-			return false;
-		}
-
-		smokeqyoto_object *o = value_obj_info(obj);
-
-		if (o == 0) {
-			if( do_debug & qtdb_virtual ) {  // if not in global destruction
-				printf("Cannot find object for virtual method %p -> %p\n", ptr, obj);
-			}
-
-			return false;
 		}
 		
 		if (strcmp(signature, "qt_metacall(QMetaObject::Call, int, void**)") == 0) {
@@ -1378,12 +1363,12 @@ InstallUnmapPointer(FromIntPtr callback)
 }
 
 void 
-InstallGetPointerObject(GetIntPtr callback)
+InstallGetInstance(GetInstanceFn callback)
 {
-	GetPointerObject = callback;
+	GetInstance = callback;
 }
 
-void 
+void
 InstallOverridenMethod(OverridenMethodFn callback)
 {
 	OverridenMethod = callback;
@@ -1405,12 +1390,6 @@ void
 InstallInvokeCustomSlot(InvokeCustomSlotFn callback)
 {
 	InvokeCustomSlot = callback;
-}
-
-void
-InstallIsSmokeClass(IsSmokeClassFn callback)
-{
-	IsSmokeClass = callback;
 }
 
 void

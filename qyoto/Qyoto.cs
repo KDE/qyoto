@@ -138,16 +138,6 @@ namespace Qyoto
 			return 0;
 		}
 		
-		public static bool IsSmokeClass(Type t) {
-			object[] attr = t.GetCustomAttributes(typeof(SmokeClass), false);
-			return attr.Length > 0;
-		}
-		
-		public static bool IsSmokeClass(IntPtr obj) {
-			object qobj = ((GCHandle) obj).Target;
-			return IsSmokeClass(qobj.GetType());
-		}
-		
 		public static string GetPrimitiveString(Type type) {
 			string typeString = type.ToString();
 			string ret = type.ToString();
@@ -256,7 +246,7 @@ namespace Qyoto
 												| BindingFlags.DeclaredOnly);
 			
 			foreach (MethodInfo mi in mis) {
-				if (IsSmokeClass(mi.DeclaringType)) continue;
+				if (SmokeMarshallers.IsSmokeClass(mi.DeclaringType)) continue;
 				object[] attributes = mi.GetCustomAttributes(typeof(Q_SLOT), false);
 				foreach (Q_SLOT attr in attributes) {
 					CPPMethod cppinfo = new CPPMethod();
@@ -294,7 +284,7 @@ namespace Qyoto
 												| BindingFlags.NonPublic);
 			
 			foreach (MethodInfo mi in mis) {
-				if (IsSmokeClass(mi.DeclaringType)) continue;
+				if (SmokeMarshallers.IsSmokeClass(mi.DeclaringType)) continue;
 				object[] attributes = mi.GetCustomAttributes(typeof(Q_SLOT), false);
 				foreach (Q_SLOT attr in attributes) {
 					CPPMethod cppinfo = new CPPMethod();
@@ -322,7 +312,7 @@ namespace Qyoto
 		// it only returns declared signals
 		public static Dictionary<MethodInfo, CPPMethod> GetSignalSignatures(Type t) {
 			Dictionary<MethodInfo, CPPMethod> signals = new Dictionary<MethodInfo, CPPMethod>();
-			if (IsSmokeClass(t)) {
+			if (SmokeMarshallers.IsSmokeClass(t)) {
 				return signals;
 			}
 			
@@ -371,11 +361,11 @@ namespace Qyoto
 		// used by SignalInvocation.Invoke()
 		public static Dictionary<MethodInfo, CPPMethod> GetAllSignalSignatures(Type t) {
 			Dictionary<MethodInfo, CPPMethod> signals = new Dictionary<MethodInfo, CPPMethod>();
-			if (IsSmokeClass(t))
+			if (SmokeMarshallers.IsSmokeClass(t))
 				return signals;
 			
 			Type currentType = t;
-			while (!IsSmokeClass(currentType)) {
+			while (!SmokeMarshallers.IsSmokeClass(currentType)) {
 				PropertyInfo propertyInfo = currentType.GetProperty(	"Emit", 
 													BindingFlags.Instance 
 													| BindingFlags.NonPublic
@@ -428,7 +418,7 @@ namespace Qyoto
 			Dictionary<PropertyInfo, CPPProperty> props = new Dictionary<PropertyInfo, CPPProperty>();
 			
 			foreach (PropertyInfo pi in t.GetProperties()) {
-				if (IsSmokeClass(pi.DeclaringType)) continue;
+				if (SmokeMarshallers.IsSmokeClass(pi.DeclaringType)) continue;
 				object[] attrs = pi.GetCustomAttributes(typeof(Q_PROPERTY), false);
 				if (attrs.Length != 0) {
 					Q_PROPERTY attr = (Q_PROPERTY) attrs[0];
@@ -454,7 +444,7 @@ namespace Qyoto
 			if (t == null) return null;
 
 			QMetaObject parentMeta = null;
-			if (	!IsSmokeClass(t.BaseType)
+			if (	!SmokeMarshallers.IsSmokeClass(t.BaseType)
 					&& !metaObjects.TryGetValue(t.BaseType.Name, out parentMeta) ) 
 			{
 				// create QMetaObject

@@ -71,8 +71,7 @@ namespace Qyoto {
 		static private MethodInfo metaObjectMethod = typeof(QObject).GetMethod("MetaObject", BindingFlags.Instance | BindingFlags.Public);
 		
 		static void AddOverridenMethods(Type klass) {
-			object[] attributes = klass.GetCustomAttributes(typeof(SmokeClass), false);
-			if (attributes.Length > 0) {
+			if (SmokeMarshallers.IsSmokeClass(klass)) {
 				return;
 			}
 
@@ -122,8 +121,7 @@ namespace Qyoto {
 				}
 
 				klass = klass.BaseType;
-				attributes = klass.GetCustomAttributes(typeof(SmokeClass), false);
-			} while (attributes.Length == 0);
+			} while (!SmokeMarshallers.IsSmokeClass(klass));
 		}
 
 		public static IntPtr OverridenMethod(IntPtr instance, string method) {
@@ -398,10 +396,7 @@ namespace Qyoto {
 		{
 			_classToProxy = classToProxy;
 			_instance = instance;
-			object[] smokeClass = classToProxy.GetCustomAttributes(typeof(SmokeClass), true);
-			if (smokeClass.Length > 0) {
-				_className = ((SmokeClass) smokeClass[0]).Signature;
-			}
+			_className = SmokeMarshallers.SmokeClassName(classToProxy);
 
 			if (_instance != null) {
 				AddOverridenMethods(_instance.GetType());

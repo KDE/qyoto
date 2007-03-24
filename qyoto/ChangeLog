@@ -1,3 +1,15 @@
+2007-03-24  Richard Dale  <rdale@foton.es>
+
+	* The 'IsSmokeClass()' test now uses the Smoke class data cache
+	* Renamed the method to retrieve a C# instance given a pointer to the C++
+	  instance as 'GetInstance(). Given it an a boolean argument 'allInstances'
+	  and if false, GetInstance() will only return instances that are custom 
+	  subclasses of Qyoto classes. This is useful when dealing with overriden
+	  virtual method callbacks, as only custom subclasses can have their own
+	  slots or overriden virtual methods.
+	* These two improvements give a 2-3 times speed up, and Qyoto now uses 
+	  about 6 times less mill than it did a week ago.
+
 2007-03-23  Richard Dale  <rdale@foton.es>
 
 	* Cache various items in a dictionary with a key of the Smoke class's
