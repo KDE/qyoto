@@ -1,3 +1,8 @@
+2007-03-25  Arno Rehn  <arno@arnorehn.de>
+
+	* If a object is destroyed, don't call any methods on it anymore (fixes
+	  the crash of e.g. the pingpong example)
+
 2007-03-24  Richard Dale  <rdale@foton.es>
 
 	* The 'IsSmokeClass()' test now uses the Smoke class data cache

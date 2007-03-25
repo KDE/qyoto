@@ -530,7 +530,7 @@ public:
 	_cur(-1), _smoke(smoke), _method(method), _target(target), _o(0), _sp(sp), _items(items), _called(false)
 	{
 		if (!isConstructor() && !isStatic()) {
-	    	_o = value_obj_info(_target);
+			_o = value_obj_info(_target);
 			if (_o != 0 && _o->ptr != 0) {
 				if (	isDestructor() 
 						&& (!_o->allocated || IsContainedInstance(_o) || application_terminated) ) 
@@ -538,6 +538,9 @@ public:
 					_called = true;
 					_o->allocated = false;
 				}
+			} else if (_o == 0 || _o->ptr == 0) {
+				// not a constructor, not static, pointer invalid -> object already destroyed
+				_called = true;
 			}
 		}
 	

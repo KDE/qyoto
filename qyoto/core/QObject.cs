@@ -22,7 +22,7 @@ namespace Qyoto {
 		}
 		[SmokeMethod("metaObject", "()", "")]
 		public virtual QMetaObject MetaObject() {
-			if (Qyoto.IsSmokeClass(GetType())) {
+			if (SmokeMarshallers.IsSmokeClass(GetType())) {
 				return ((QObject) interceptor).MetaObject();
 			} else {
 				return Qyoto.GetMetaObject(this);
