@@ -713,33 +713,36 @@ public:
 		qFatal("Cannot handle '%s' as signal argument", type().name());
     }
     Smoke *smoke() { return type().smoke(); }
-    void emitSignal() {
-	if(_called) return;
-	_called = true;
 
-	void** o = new void*[_items + 1];
-	smokeStackToQtStack(_stack, o + 1, _items, _args + 1);
-  	_qobj->metaObject()->activate(_qobj, _id, o);
+	void emitSignal() {
+		if (_called) return;
+		_called = true;
 
-	if (_args[0].argType != xmoc_void) {
-		SignalReturnValue r(o, _sp, _args);
+		void** o = new void*[_items + 1];
+		smokeStackToQtStack(_stack, o + 1, _items, _args + 1);
+		_qobj->metaObject()->activate(_qobj, _id, o);
+
+		if (_args[0].argType != xmoc_void) {
+			SignalReturnValue r(o, _sp, _args);
+		}
+
+		delete[] o;
 	}
 
-  	delete[] o;
-    }
-    void next() {
-	int oldcur = _cur;
-	_cur++;
+	void next() {
+		int oldcur = _cur;
+		_cur++;
 
-	while(!_called && _cur < _items) {
-	    Marshall::HandlerFn fn = getMarshallFn(type());
-	    (*fn)(this);
-	    _cur++;
-	}
+		while(!_called && _cur < _items) {
+			Marshall::HandlerFn fn = getMarshallFn(type());
+			(*fn)(this);
+			_cur++;
+		}
 
-	emitSignal();
-	_cur = oldcur;
+		emitSignal();
+		_cur = oldcur;
     }
+
     bool cleanup() { return true; }
 };
 
@@ -853,6 +856,7 @@ public:
 	~InvokeSlot() {
 		delete[] _stack;
 		delete[] _sp;
+		delete _args;
 	}
 };
 
@@ -1743,8 +1747,6 @@ int qt_metacall(void* obj, int _c, int _id, void* _o) {
 		// invoke slot
 		InvokeSlot slot(obj, method.signature(), items, mocArgs, (void**)_o);
 		slot.next();
-		
-		delete mocArgs;
 	} else if (_c == QMetaObject::ReadProperty) {
 		QMetaProperty property = metaobject->property(_id);
 		ReadProperty prop(obj, property.name(), (void**)_o);

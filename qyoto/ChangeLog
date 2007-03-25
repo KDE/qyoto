@@ -1,3 +1,9 @@
+2007-03-25  Richard Dale  <rdale@foton.es>
+
+	* Tidy up the caching the slot and signal type signatures and removed
+	  duplicated code. The signal signatures are no longer obtained every
+	  time is signal is emitted, but got from a cache in a dictionary.
+
 2007-03-25  Arno Rehn  <arno@arnorehn.de>
 
 	* If a object is destroyed, don't call any methods on it anymore (fixes

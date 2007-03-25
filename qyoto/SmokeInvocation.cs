@@ -22,6 +22,7 @@ namespace Qyoto {
 	using System;
 	using System.Collections;
 	using System.Collections.Generic;
+	using System.Diagnostics;
 	using System.Text;
 	using System.Text.RegularExpressions;
 	using System.Reflection;
@@ -65,9 +66,9 @@ namespace Qyoto {
 		// virtual methods, and the value is a Hashtable of the smoke type
 		// signatures as keys retrieving a suitable MethodInfo to invoke via 
 		// reflection.
-		static private Dictionary<string, Dictionary<string, MemberInfo>>
-			overridenMethods = new Dictionary<string, Dictionary<string, MemberInfo>>();
-		static private MethodInfo metacallMethod = typeof(Qyoto).GetMethod("QyotoMetaCall", BindingFlags.Static | BindingFlags.NonPublic);
+		static private Dictionary<Type, Dictionary<string, MemberInfo>> overridenMethods = 
+			new Dictionary<Type, Dictionary<string, MemberInfo>>();
+
 		static private MethodInfo metaObjectMethod = typeof(QObject).GetMethod("MetaObject", BindingFlags.Instance | BindingFlags.Public);
 		
 		static void AddOverridenMethods(Type klass) {
@@ -75,12 +76,11 @@ namespace Qyoto {
 				return;
 			}
 
-			string instanceType = klass.ToString();
-			if (overridenMethods.ContainsKey(instanceType))
+			if (overridenMethods.ContainsKey(klass))
 				return;
 
 			Dictionary<string, MemberInfo> methodsHash = new Dictionary<string, MemberInfo>();
-			overridenMethods.Add(instanceType, methodsHash);
+			overridenMethods.Add(klass, methodsHash);
 			
 			do {
 				MemberInfo[] methods = klass.FindMembers(	MemberTypes.Method,
@@ -103,7 +103,6 @@ namespace Qyoto {
 																			method.Name );
 						foreach (MemberInfo parentMethod in parentMethods) {
 							if (method.ToString() == parentMethod.ToString()) {
-//								Console.WriteLine("found a parent {0} {1}", parent, parentMethod);
 								object[] smokeMethod = parentMethod.GetCustomAttributes(typeof(SmokeMethod), false);
 								if (smokeMethod.Length > 0) {
 									signature = ((SmokeMethod) smokeMethod[0]).Signature;
@@ -125,8 +124,7 @@ namespace Qyoto {
 		}
 
 		public static IntPtr OverridenMethod(IntPtr instance, string method) {
-			object temp = ((GCHandle) instance).Target;
-			string instanceType = temp.ToString();
+			Type klass = ((GCHandle) instance).Target.GetType();
 
 			if (method == "metaObject() const") {
 #if DEBUG
@@ -137,7 +135,7 @@ namespace Qyoto {
 			}
 
 			Dictionary<string, MemberInfo> methods;
-			if (!overridenMethods.TryGetValue(instanceType, out methods)) {
+			if (!overridenMethods.TryGetValue(klass, out methods)) {
 				return (IntPtr) 0;
 			}
 
@@ -264,30 +262,18 @@ namespace Qyoto {
 
 		static public void InvokeCustomSlot(IntPtr obj, string slotname, IntPtr stack, IntPtr ret) {
 			QObject qobj = (QObject) ((GCHandle)obj).Target;
-			string className = qobj.GetType().ToString();
 #if DEBUG
 			if ((QDebug.DebugChannel() & QtDebugChannel.QTDB_TRANSPARENT_PROXY) != 0) {
 				Console.WriteLine(	"ENTER InvokeCustomSlot() {0}.{1}", 
-									qobj.GetType(),
+									klass,
 									slotname );
 			}
 #endif
-			Dictionary<string, Qyoto.CPPMethod> slotTable;
-			if (!Qyoto.classes.TryGetValue(className, out slotTable)) {
-				slotTable = Qyoto.GetAllSlotSignatures(qobj.GetType());
-			}
-			MethodInfo slot;
-			try {
-				slot = (slotTable[slotname]).mi;
-			}
-			catch (KeyNotFoundException) {
-				// should not happen
-				Console.Error.WriteLine("** Could not retrieve slot {0}.{1} info **", className, slotname);
-				return;
-			}
 		
+			MethodInfo slot = Qyoto.GetSlotMethodInfo(qobj.GetType(), slotname);
 			ParameterInfo[] parameters = slot.GetParameters();
 			object[] args = new object[parameters.Length];
+
 			unsafe {
 				StackItem* stackPtr = (StackItem*) stack;
 				for (int i = 0; i < args.Length; i++) {
@@ -386,20 +372,20 @@ namespace Qyoto {
 			SmokeMarshallers.SetUp();
 		}
 		
-		private Type	_classToProxy;
-		private Object	_instance;
-		private string	_className = "";
+		private Type	classToProxy;
+		private Object	instance;
+		private string	className = "";
 
 		private static Dictionary<MethodInfo, int> methodIdCache = new Dictionary<MethodInfo, int>();
 		
-		public SmokeInvocation(Type classToProxy, Object instance) : base(classToProxy) 
+		public SmokeInvocation(Type klass, Object obj) : base(klass) 
 		{
-			_classToProxy = classToProxy;
-			_instance = instance;
-			_className = SmokeMarshallers.SmokeClassName(classToProxy);
+			classToProxy = klass;
+			instance = obj;
+			className = SmokeMarshallers.SmokeClassName(classToProxy);
 
-			if (_instance != null) {
-				AddOverridenMethods(_instance.GetType());
+			if (instance != null) {
+				AddOverridenMethods(instance.GetType());
 			}
 		}
 
@@ -410,7 +396,7 @@ namespace Qyoto {
 #if DEBUG
 			if ((QDebug.DebugChannel() & QtDebugChannel.QTDB_TRANSPARENT_PROXY) != 0) {
 				Console.WriteLine(	"ENTER SmokeInvocation.Invoke() MethodName: {0}.{1} Type: {2} ArgCount: {3}", 
-									_className,
+									className,
 									callMessage.MethodName, 
 									callMessage.TypeName, 
 									callMessage.ArgCount.ToString() );
@@ -421,13 +407,13 @@ namespace Qyoto {
 			if (!methodIdCache.TryGetValue((MethodInfo) callMessage.MethodBase, out methodId)) {
 				object[] smokeMethod = ((MethodInfo) callMessage.MethodBase).GetCustomAttributes(typeof(SmokeMethod), false);
 				if (smokeMethod.Length > 0) {
-					methodId = FindMethodId(	_className,
+					methodId = FindMethodId(	className,
 												((SmokeMethod) smokeMethod[0]).MungedName, 
 												((SmokeMethod) smokeMethod[0]).ArgsSignature );
 
 					if (methodId == -1) {
 						Console.Error.WriteLine(	"LEAVE Invoke() ** Missing method ** {0}.{1}", 
-													_className,
+													className,
 													((MethodInfo) callMessage.MethodBase).Name );
 						return returnMessage;
 					}
@@ -488,9 +474,9 @@ namespace Qyoto {
 			}
 
 #if DEBUG
-			GCHandle instanceHandle = DebugGCHandle.Alloc(_instance);
+			GCHandle instanceHandle = DebugGCHandle.Alloc(instance);
 #else
-			GCHandle instanceHandle = GCHandle.Alloc(_instance);
+			GCHandle instanceHandle = GCHandle.Alloc(instance);
 #endif
 			MethodReturnMessageWrapper returnValue = new MethodReturnMessageWrapper((IMethodReturnMessage) returnMessage); 
 			
@@ -556,7 +542,7 @@ namespace Qyoto {
 		}
 		
 		public override int GetHashCode() {
-			return _instance.GetHashCode();
+			return instance.GetHashCode();
 		}
 	}
 
@@ -564,15 +550,13 @@ namespace Qyoto {
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		static extern bool SignalEmit(string signature, string type, IntPtr target, IntPtr sp, int items);
 
-		private Type	_classToProxy;
-		private Object	_instance;
-		private string	_className;
+		private Type	signalsInterface;
+		private Object	instance;
 
-		public SignalInvocation(Type classToProxy, Object instance) : base(classToProxy) 
+		public SignalInvocation(Type iface, Object obj) : base(iface) 
 		{
-			_classToProxy = classToProxy;
-			_instance = instance;
-			_className = Regex.Replace(_classToProxy.ToString(), @"^.*I(.*)Signals$", "$1");
+			signalsInterface = iface;
+			instance = obj;
 		}
 
 		public override IMessage Invoke(IMessage message) {
@@ -582,7 +566,7 @@ namespace Qyoto {
 #if DEBUG
 			if ((QDebug.DebugChannel() & QtDebugChannel.QTDB_TRANSPARENT_PROXY) != 0) {
 				Console.WriteLine(	"ENTER SignalInvocation.Invoke() MethodName: {0}.{1} Type: {2} ArgCount: {3}", 
-									_className,
+									className,
 									callMessage.MethodName, 
 									callMessage.TypeName, 
 									callMessage.ArgCount.ToString() );
@@ -639,19 +623,12 @@ namespace Qyoto {
 			MethodReturnMessageWrapper returnValue = new MethodReturnMessageWrapper((IMethodReturnMessage) returnMessage);
 
 #if DEBUG
-			GCHandle instanceHandle = DebugGCHandle.Alloc(_instance);
+			GCHandle instanceHandle = DebugGCHandle.Alloc(instance);
 #else
-			GCHandle instanceHandle = GCHandle.Alloc(_instance);
+			GCHandle instanceHandle = GCHandle.Alloc(instance);
 #endif
-			Dictionary<MethodInfo, Qyoto.CPPMethod> signals = Qyoto.GetAllSignalSignatures(_instance.GetType());
-			
-			/// should not happen
-			if (signals == null) {
-				Console.WriteLine("** FATAL: error while retrieving signal signatures **");
-				return null;
-			}
 
-			Qyoto.CPPMethod signalEntry = signals[(MethodInfo) callMessage.MethodBase];
+			Qyoto.CPPMethod signalEntry = Qyoto.GetSignalSignature(signalsInterface, (MethodInfo) callMessage.MethodBase);
 
 			unsafe {
 				fixed(StackItem * stackPtr = stack) {
@@ -712,7 +689,7 @@ namespace Qyoto {
 		}
 
 		public override int GetHashCode() {
-			return _instance.GetHashCode();
+			return instance.GetHashCode();
 		}
 	}
 }

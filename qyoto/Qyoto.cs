@@ -20,6 +20,7 @@ namespace Qyoto
 	using System;
 	using System.Collections;
 	using System.Collections.Generic;
+	using System.Diagnostics;
 	using System.Reflection;
 	using System.Text;
 	using System.Text.RegularExpressions;
@@ -100,26 +101,29 @@ namespace Qyoto
 												IntPtr stringdata, int stringdataCount, 
 											 	IntPtr data, int dataCount );
 		
-		public struct CPPMethod {
+		public class CPPMethod {
 			public string signature;
 			public string type;
 			public MethodInfo mi;
 			public bool scriptable;
 		}
 		
-		public struct CPPProperty {
+		public class CPPProperty {
 			public string type;
 			public string name;
 			public PropertyInfo pi;
 			public bool scriptable;
 		}
 		
-		/// This Hashtable contains a list of classes with their Hashtables for slots. The class name is the key, the slot-hashtable the value.
-		public static Dictionary<string, Dictionary<string, CPPMethod>> classes = 
-			new Dictionary<string, Dictionary<string, CPPMethod>>();
+		/// This Hashtable contains a list of classes with their Hashtables for slots. The class type is the key, the slot-hashtable the value.
+		public static Dictionary<Type, Dictionary<string, CPPMethod>> slotSignatures = 
+			new Dictionary<Type, Dictionary<string, CPPMethod>>();
+
+		public static Dictionary<Type, Dictionary<MethodInfo, Qyoto.CPPMethod>> signalSignatures = 
+			new Dictionary<Type, Dictionary<MethodInfo, Qyoto.CPPMethod>>();
     
-		/// This hashtable has class names as keys, and QMetaObjects as values
-		static Dictionary<string, QMetaObject> metaObjects = new Dictionary<string, QMetaObject> ();
+		/// This hashtable has the class types as keys, and QMetaObjects as values
+		static Dictionary<Type, QMetaObject> metaObjects = new Dictionary<Type, QMetaObject> ();
 		
 		public static int GetCPPEnumValue(string c, string value) {
 			Type t = Type.GetType("Qyoto." + c, false);
@@ -143,7 +147,7 @@ namespace Qyoto
 			string ret = type.ToString();
 
 			if (type.IsGenericType) {
-				return "Generic";
+				return "FIXME: <generic type here>";
 			}
 
 			if (typeString.StartsWith("Qyoto.")) {
@@ -232,21 +236,25 @@ namespace Qyoto
 				type = return_type;
 		}
 		
-		// this method is only used when we build up our meta object.
-		// it only returns declared slots
+		// Returns declared slots
 		public static Dictionary<string, CPPMethod> GetSlotSignatures(Type t) {
 			/// This Hashtable contains the slots of a class. The C++ type signature is the key, the appropriate array with the MethodInfo, signature and return type the value.
-			Dictionary<string, CPPMethod> slots = new Dictionary<string, CPPMethod>();
-			
+
+			Dictionary<string, CPPMethod> slots;
+			if (slotSignatures.TryGetValue(t, out slots)) {
+				return slots;
+			}
+
+			slots = new Dictionary<string, CPPMethod>();
+			slotSignatures[t] = slots;
+
 			// only declared members
 			MethodInfo[] mis = t.GetMethods(	BindingFlags.Instance 
-												| BindingFlags.Static 
 												| BindingFlags.Public 
 												| BindingFlags.NonPublic
 												| BindingFlags.DeclaredOnly);
 			
 			foreach (MethodInfo mi in mis) {
-				if (SmokeMarshallers.IsSmokeClass(mi.DeclaringType)) continue;
 				object[] attributes = mi.GetCustomAttributes(typeof(Q_SLOT), false);
 				foreach (Q_SLOT attr in attributes) {
 					CPPMethod cppinfo = new CPPMethod();
@@ -255,7 +263,6 @@ namespace Qyoto
 					if (sig == "")
 						sig = SignatureFromMethodInfo(mi);
 					GetCPPMethodInfo(sig, out cppinfo.signature, out cppinfo.type);
-					
 					cppinfo.mi = mi;
 					
 					if (mi.GetCustomAttributes(typeof(Q_SCRIPTABLE), false).Length > 0)
@@ -267,71 +274,37 @@ namespace Qyoto
 			}
 			return slots;
 		}
-		
-		// this method is used to get _all_ the slots of a class
-		// this is needed by SmokeInvocation.InvokeCustomSlot()
-		public static Dictionary<string, CPPMethod> GetAllSlotSignatures(Type t) {
-			/// Remove the old object if it already exists
-			classes.Remove(t.ToString());
-			
-			/// This Hashtable contains the slots of a class. The C++ type signature is the key, the appropriate array with the MethodInfo, signature and return type the value.
-			Dictionary<string, CPPMethod> slots = new Dictionary<string, CPPMethod>();
-			
-			// also include inherited members
-			MethodInfo[] mis = t.GetMethods(	BindingFlags.Instance 
-												| BindingFlags.Static 
-												| BindingFlags.Public 
-												| BindingFlags.NonPublic);
-			
-			foreach (MethodInfo mi in mis) {
-				if (SmokeMarshallers.IsSmokeClass(mi.DeclaringType)) continue;
-				object[] attributes = mi.GetCustomAttributes(typeof(Q_SLOT), false);
-				foreach (Q_SLOT attr in attributes) {
-					CPPMethod cppinfo = new CPPMethod();
-					
-					string sig = attr.Signature;
-					if (sig == "")
-						sig = SignatureFromMethodInfo(mi);
-					GetCPPMethodInfo(sig, out cppinfo.signature, out cppinfo.type);
-					
-					cppinfo.mi = mi;
-					
-					if (mi.GetCustomAttributes(typeof(Q_SCRIPTABLE), false).Length > 0)
-						cppinfo.scriptable = true;
-					
-					slots.Add(cppinfo.signature, cppinfo);
-					break;
+
+		public static MethodInfo GetSlotMethodInfo(Type klass, string slotname) {
+			Dictionary<string, CPPMethod> slotTable;
+			CPPMethod result;
+
+			do {
+				slotTable = GetSlotSignatures(klass);
+
+				if (slotTable.TryGetValue(slotname, out result)) {
+					return result.mi;
 				}
-			}
-			
-			classes.Add(t.ToString(), slots);
-			return slots;
+
+				klass = klass.BaseType;
+			} while (!SmokeMarshallers.IsSmokeClass(klass));
+
+			return null;
 		}
 		
-		// this method is again only used when we build up our meta object.
-		// it only returns declared signals
-		public static Dictionary<MethodInfo, CPPMethod> GetSignalSignatures(Type t) {
-			Dictionary<MethodInfo, CPPMethod> signals = new Dictionary<MethodInfo, CPPMethod>();
-			if (SmokeMarshallers.IsSmokeClass(t)) {
-				return signals;
-			}
-			
-			PropertyInfo propertyInfo = t.GetProperty(	"Emit", 
-													BindingFlags.Instance 
-													| BindingFlags.NonPublic 
-													| BindingFlags.DeclaredOnly );
-			if (propertyInfo == null) {
+		// Returns declared signals
+		public static Dictionary<MethodInfo, CPPMethod> GetSignalSignatures(Type iface) {
+			Dictionary<MethodInfo, CPPMethod> signals;
+
+			if (signalSignatures.TryGetValue(iface, out signals)) {
 				return signals;
 			}
 
-			Type iface = propertyInfo.PropertyType;
+			signals = new Dictionary<MethodInfo, CPPMethod>();
+			signalSignatures[iface] = signals;
 			
-			// don't get inherited methods
-			MethodInfo[] mis = iface.GetMethods(BindingFlags.Instance
-								| BindingFlags.Static
-								| BindingFlags.DeclaredOnly
-								| BindingFlags.Public
-								| BindingFlags.NonPublic);
+			// GetMethods() doesn't return inherited methods for interfaces
+			MethodInfo[] mis = iface.GetMethods();
 			
 			/// the interface has no signals...
 			if (mis.Length == 0)
@@ -356,52 +329,37 @@ namespace Qyoto
 			
 			return signals;
 		}
-		
-		// this method returns _all_ the signals of a class, including inherited ones
-		// used by SignalInvocation.Invoke()
-		public static Dictionary<MethodInfo, CPPMethod> GetAllSignalSignatures(Type t) {
-			Dictionary<MethodInfo, CPPMethod> signals = new Dictionary<MethodInfo, CPPMethod>();
-			if (SmokeMarshallers.IsSmokeClass(t))
-				return signals;
-			
-			Type currentType = t;
-			while (!SmokeMarshallers.IsSmokeClass(currentType)) {
-				PropertyInfo propertyInfo = currentType.GetProperty(	"Emit", 
-													BindingFlags.Instance 
-													| BindingFlags.NonPublic
-													| BindingFlags.DeclaredOnly );
-				if (propertyInfo == null) {
-					currentType = currentType.BaseType;
-					continue;
-				}
-				
-				Type iface = propertyInfo.PropertyType;
-				MethodInfo[] mis = iface.GetMethods();
-				
-				foreach (MethodInfo mi in mis) {
-					object[] attributes = mi.GetCustomAttributes(typeof(Q_SIGNAL), false);
-					foreach (Q_SIGNAL attr in attributes) {
-						CPPMethod cppinfo = new CPPMethod();
-						string sig = attr.Signature;
-						if (sig == "")
-							sig = SignatureFromMethodInfo(mi).Trim();
-						GetCPPMethodInfo(sig, out cppinfo.signature, out cppinfo.type);
-						cppinfo.mi = mi;
-						
-						if (mi.GetCustomAttributes(typeof(Q_SCRIPTABLE), false).Length > 0)
-							cppinfo.scriptable = true;
-						
-						signals.Add(cppinfo.mi, cppinfo);
-					}
-				}
-				
-				currentType = currentType.BaseType;
+
+		public static CPPMethod GetSignalSignature(Type signalsInterface, MethodInfo signalMethod) {
+			Dictionary<MethodInfo, CPPMethod> signals = GetSignalSignatures(signalsInterface);
+			CPPMethod result;
+
+			if (signals.TryGetValue(signalMethod, out result)) {
+				return result;
 			}
-			
-			return signals;
+
+			Type[] ifaces = signalsInterface.GetInterfaces();
+			for (int i = 0; i < ifaces.Length; i++) {
+				signals = GetSignalSignatures(ifaces[i]);
+
+				if (signals.TryGetValue(signalMethod, out result)) {
+					return result;
+				}
+			}
+
+			return null;
 		}
-		public static Type GetSignalsInterface(Type t) {
-			PropertyInfo pi = t.GetProperty("Emit", BindingFlags.Instance | BindingFlags.NonPublic);
+
+		private static Dictionary<Type, Type> emitInterfaceCache = new Dictionary<Type, Type>();
+
+		public static Type GetSignalsInterface(Type klass) {
+			Type iface;
+			if (emitInterfaceCache.TryGetValue(klass, out iface)) {
+				return iface;
+			}
+
+			PropertyInfo pi = klass.GetProperty("Emit", BindingFlags.Instance | BindingFlags.NonPublic);
+			emitInterfaceCache[klass] = pi.PropertyType;
 			return pi.PropertyType;
 		}
 		
@@ -445,26 +403,31 @@ namespace Qyoto
 
 			QMetaObject parentMeta = null;
 			if (	!SmokeMarshallers.IsSmokeClass(t.BaseType)
-					&& !metaObjects.TryGetValue(t.BaseType.Name, out parentMeta) ) 
+					&& !metaObjects.TryGetValue(t.BaseType, out parentMeta) ) 
 			{
 				// create QMetaObject
 				parentMeta = MakeMetaObject(t.BaseType, o);
 			}
 			
-			string className = t.Name;
 			Dictionary<string, CPPMethod> slotTable;
 			ICollection<CPPMethod> slots;
 			
-			if (classes.TryGetValue(className, out slotTable))
-				slots = slotTable.Values;
-			else {
-				// build slot table
-				slots = GetSlotSignatures(t).Values;
+			// build slot table
+			slots = GetSlotSignatures(t).Values;
+
+			PropertyInfo pi = t.GetProperty("Emit", BindingFlags.Instance 
+													| BindingFlags.NonPublic
+													| BindingFlags.DeclaredOnly);
+			ICollection<CPPMethod> signals = null;			
+			if (pi == null) {
+				signals = new List<CPPMethod>();			
+			} else {
+				emitInterfaceCache[t] = pi.PropertyType;
+				signals = GetSignalSignatures(pi.PropertyType).Values;			
 			}
 
-			ICollection<CPPMethod> signals = GetSignalSignatures(t).Values;			
 			ICollection<CPPProperty> properties = GetProperties(t).Values;			
-			QyotoMetaData metaData = new QyotoMetaData(className, signals, slots, GetClassInfos(t), properties);
+			QyotoMetaData metaData = new QyotoMetaData(t.Name, signals, slots, GetClassInfos(t), properties);
 #if DEBUG
 			GCHandle objHandle = DebugGCHandle.Alloc(o);
 #else
@@ -496,7 +459,7 @@ namespace Qyoto
 #else
 			((GCHandle) metaObject).Free();
 #endif
-			metaObjects.Add(t.Name, res);
+			metaObjects.Add(t, res);
 			return res;
 		}
 		
@@ -504,7 +467,7 @@ namespace Qyoto
 			Type t = o.GetType();
 			
 			QMetaObject res;
-			if (!metaObjects.TryGetValue(t.ToString(), out res)) {
+			if (!metaObjects.TryGetValue(t, out res)) {
 				// create QMetaObject
 				res = MakeMetaObject(t, o);
 			}
