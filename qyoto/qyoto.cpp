@@ -538,7 +538,7 @@ public:
 					_called = true;
 					_o->allocated = false;
 				}
-			} else if (_o == 0 || _o->ptr == 0) {
+			} else {
 				// not a constructor, not static, pointer invalid -> object already destroyed
 				_called = true;
 			}
