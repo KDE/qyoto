@@ -265,7 +265,7 @@ namespace Qyoto {
 #if DEBUG
 			if ((QDebug.DebugChannel() & QtDebugChannel.QTDB_TRANSPARENT_PROXY) != 0) {
 				Console.WriteLine(	"ENTER InvokeCustomSlot() {0}.{1}", 
-									klass,
+									qobj,
 									slotname );
 			}
 #endif
@@ -427,42 +427,38 @@ namespace Qyoto {
 			}
 			
 			StackItem[] stack = new StackItem[callMessage.ArgCount+1];
-			bool instanceOperator = false;
+
 			if (callMessage.MethodSignature != null) {
 				Type[] types = (Type[]) callMessage.MethodSignature;
+
 				for (int i = 0; i < callMessage.ArgCount; i++) {
+// Console.WriteLine("arg type: {0} IsPrimitive: {1} IsEnum: {2}", types[i], types[i].IsPrimitive, types[i].IsEnum);
 					if (callMessage.Args[i] == null) {
 						unsafe {
 							stack[i+1].s_class = (IntPtr) 0;
 						}
-					} else if (types[i] == typeof(bool)) {
-						stack[i+1].s_bool = (bool) callMessage.Args[i];
-					} else if (types[i] == typeof(sbyte)) {
-						stack[i+1].s_char = (sbyte) callMessage.Args[i];
-					} else if (types[i] == typeof(byte)) {
-						stack[i+1].s_uchar = (byte) callMessage.Args[i];
-					} else if (types[i] == typeof(short)) {
-						stack[i+1].s_short = (short) callMessage.Args[i];
-					} else if (types[i] == typeof(ushort)) {
-						stack[i+1].s_ushort = (ushort) callMessage.Args[i];
 					} else if (types[i] == typeof(int) || types[i].IsEnum) {
 						stack[i+1].s_int = (int) callMessage.Args[i];
-					} else if (types[i] == typeof(uint)) {
-						stack[i+1].s_uint = (uint) callMessage.Args[i];
-					} else if (types[i] == typeof(long)) {
-						stack[i+1].s_long = (long) callMessage.Args[i];
-					} else if (types[i] == typeof(ulong)) {
-						stack[i+1].s_ulong = (ulong) callMessage.Args[i];
+					} else if (types[i] == typeof(bool)) {
+						stack[i+1].s_bool = (bool) callMessage.Args[i];
+					} else if (types[i] == typeof(short)) {
+						stack[i+1].s_short = (short) callMessage.Args[i];
 					} else if (types[i] == typeof(float)) {
 						stack[i+1].s_float = (float) callMessage.Args[i];
 					} else if (types[i] == typeof(double)) {
 						stack[i+1].s_double = (double) callMessage.Args[i];
-					} else if (types[i] == typeof(string)) {
-#if DEBUG
-						stack[i+1].s_class = (IntPtr) DebugGCHandle.Alloc(callMessage.Args[i]);
-#else
-						stack[i+1].s_class = (IntPtr) GCHandle.Alloc(callMessage.Args[i]);
-#endif
+					} else if (types[i] == typeof(long)) {
+						stack[i+1].s_long = (long) callMessage.Args[i];
+					} else if (types[i] == typeof(ushort)) {
+						stack[i+1].s_ushort = (ushort) callMessage.Args[i];
+					} else if (types[i] == typeof(uint)) {
+						stack[i+1].s_uint = (uint) callMessage.Args[i];
+					} else if (types[i] == typeof(ulong)) {
+						stack[i+1].s_ulong = (ulong) callMessage.Args[i];
+					} else if (types[i] == typeof(sbyte)) {
+						stack[i+1].s_char = (sbyte) callMessage.Args[i];
+					} else if (types[i] == typeof(byte)) {
+						stack[i+1].s_uchar = (byte) callMessage.Args[i];
 					} else {
 #if DEBUG
 						stack[i+1].s_class = (IntPtr) DebugGCHandle.Alloc(callMessage.Args[i]);
@@ -511,17 +507,6 @@ namespace Qyoto {
 						returnValue.ReturnValue = stack[0].s_float;
 					} else if (returnType == typeof(double)) {
 						returnValue.ReturnValue = stack[0].s_double;
-					} else if (returnType == typeof(string)) {
-						if (((IntPtr) stack[0].s_class) == (IntPtr) 0) {
-							returnValue.ReturnValue = null;
-						} else {
-							returnValue.ReturnValue = ((GCHandle) stack[0].s_class).Target;
-#if DEBUG
-							DebugGCHandle.Free((GCHandle) stack[0].s_class);
-#else
-							((GCHandle) stack[0].s_class).Free();
-#endif
-						}
 					} else {
 						if (((IntPtr) stack[0].s_class) == (IntPtr) 0) {
 							returnValue.ReturnValue = null;
@@ -536,9 +521,8 @@ namespace Qyoto {
 					}
 				}
 			}
-						
-			returnMessage = returnValue;
-			return returnMessage;
+
+			return returnValue;
 		}
 		
 		public override int GetHashCode() {
@@ -566,7 +550,7 @@ namespace Qyoto {
 #if DEBUG
 			if ((QDebug.DebugChannel() & QtDebugChannel.QTDB_TRANSPARENT_PROXY) != 0) {
 				Console.WriteLine(	"ENTER SignalInvocation.Invoke() MethodName: {0}.{1} Type: {2} ArgCount: {3}", 
-									className,
+									instance,
 									callMessage.MethodName, 
 									callMessage.TypeName, 
 									callMessage.ArgCount.ToString() );

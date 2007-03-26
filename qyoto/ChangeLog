@@ -1,3 +1,14 @@
+2007-03-26  Richard Dale  <rdale@foton.es>
+
+	* Before an entry was removed from the weak reference map, a check was
+	  made to see if it was still there. But the check always returned 0
+	  because the reference was a dead weak reference, and so no entries
+	  were ever removed causing a memory leak
+	* Tidied up the code to call the C# delegate pointers directly, rather
+	  than via C wrapper functions, which didn't really do anything useful
+	* The 'CreateInstance()' method is now passed a pointer to a 
+	  smokeqyoto_object instance
+
 2007-03-25  Richard Dale  <rdale@foton.es>
 
 	* Tidy up the caching the slot and signal type signatures and removed

@@ -63,17 +63,17 @@ int do_debug = qtdb_none;
 #endif
 
 FromIntPtr FreeGCHandle;
+CreateInstanceFn CreateInstance;
+GetInstanceFn GetInstance;
+GetIntPtr GetSmokeObject;
 
-static GetIntPtr GetSmokeObject;
 static SetIntPtr SetSmokeObject;
 
 static MapPointerFn MapPointer;
 static FromIntPtr UnmapPointer;
-static GetInstanceFn GetInstance;
 
 static OverridenMethodFn OverridenMethod;
 static InvokeMethodFn InvokeMethod;
-static CreateInstanceFn CreateInstance;
 static InvokeCustomSlotFn InvokeCustomSlot;
 
 static OverridenMethodFn GetProperty;
@@ -85,7 +85,6 @@ extern bool qRegisterResourceData(int, const unsigned char *, const unsigned cha
 extern bool qUnregisterResourceData(int, const unsigned char *, const unsigned char *, const unsigned char *);
 
 extern "C" {
-extern void * set_obj_info(const char * className, smokeqyoto_object * o);
 bool application_terminated = false;
 };
 
@@ -295,11 +294,6 @@ free_smokeqyoto_object(smokeqyoto_object * o)
 	return;
 }
 
-smokeqyoto_object *value_obj_info(void * qyoto_value) {  // ptr on success, null on fail
-    smokeqyoto_object * o = (smokeqyoto_object*) (*GetSmokeObject)(qyoto_value);
-    return o;
-}
-
 bool isDerivedFrom(Smoke *smoke, Smoke::Index classId, Smoke::Index baseId) {
     if(classId == baseId)
 	return true;
@@ -320,25 +314,12 @@ bool isDerivedFromByName(Smoke *smoke, const char *className, const char *baseCl
     return isDerivedFrom(smoke, idClass, idBase);
 }
 
-void * getPointerObject(void *ptr) {
-	return (*GetInstance)(ptr, true);
-}
-
 void unmapPointer(smokeqyoto_object *o, Smoke::Index classId, void *lastptr) {
 	void *ptr = o->smoke->cast(o->ptr, o->classId, classId);
 
 	if (ptr != lastptr) {
 		lastptr = ptr;
-		if (getPointerObject(ptr) != 0) {
-			void * obj_ptr = getPointerObject(ptr);
-		
-			if (do_debug & qtdb_gc) {
-				const char *className = o->smoke->classes[o->classId].className;
-				printf("unmapPointer (%s*)%p -> %p\n", className, ptr, obj_ptr);
-			}
-	    
-			(*UnmapPointer)(ptr);
-		}
+		(*UnmapPointer)(ptr);
 	}
 
 	for (Smoke::Index *i = o->smoke->inheritanceList + o->smoke->classes[classId].parents; *i; i++) {
@@ -361,6 +342,7 @@ void mapPointer(void * obj, smokeqyoto_object *o, Smoke::Index classId, void *la
 						ptr, 
 						(void*)obj,
 						IsContainedInstance(o) ? "true" : "false" );
+			fflush(stdout);
 		}
 		(*MapPointer)(ptr, obj, IsContainedInstance(o));
     }
@@ -370,14 +352,6 @@ void mapPointer(void * obj, smokeqyoto_object *o, Smoke::Index classId, void *la
     }
 	
 	return;
-}
-
-void *
-set_obj_info(const char * className, smokeqyoto_object * o)
-{
-	void * obj = (*CreateInstance)(className);
-	(*SetSmokeObject)(obj, o);
-	return obj;
 }
 
 Marshall::HandlerFn getMarshallFn(const SmokeType &type);
@@ -530,7 +504,7 @@ public:
 	_cur(-1), _smoke(smoke), _method(method), _target(target), _o(0), _sp(sp), _items(items), _called(false)
 	{
 		if (!isConstructor() && !isStatic()) {
-			_o = value_obj_info(_target);
+			_o = (smokeqyoto_object*) (*GetSmokeObject)(_target);
 			if (_o != 0 && _o->ptr != 0) {
 				if (	isDestructor() 
 						&& (!_o->allocated || IsContainedInstance(_o) || application_terminated) ) 
@@ -882,7 +856,7 @@ public:
 // 		(*fn)(this);
 		
 		// put the marshalled value into the void* array of qt_metacall()
-		smokeqyoto_object* sqo = value_obj_info(variant);
+		smokeqyoto_object* sqo = (smokeqyoto_object*) (*GetSmokeObject)(variant);
 		o[0] = sqo->ptr; // _result->s_voidp;
 	}
 
@@ -930,7 +904,7 @@ public:
 // 		(*fn)(this);
 		
 		smokeqyoto_object* sqo = alloc_smokeqyoto_object(false, qt_Smoke, qt_Smoke->idClass("QVariant"), _stack->s_voidp);
-		void* variant = set_obj_info("Qyoto.QVariant", sqo);
+		void* variant = (*CreateInstance)("Qyoto.QVariant", sqo);
 		
 		// Set the C# property value
 		(*SetProperty)(obj, propertyName, variant);
@@ -965,11 +939,12 @@ public:
     QyotoSmokeBinding(Smoke *s) : SmokeBinding(s) {}
 
 	void deleted(Smoke::Index classId, void *ptr) {
-		void * obj = getPointerObject(ptr);
-		smokeqyoto_object *o = value_obj_info(obj);
+		void * obj = (*GetInstance)(ptr, true);
+		smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)(obj);
 	
 		if(do_debug & qtdb_gc) {
 			printf("%p->~%s()\n", ptr, smoke->className(classId));
+			fflush(stdout);
 		}
 	
 		if(!o || !o->ptr) {
@@ -1055,6 +1030,7 @@ FindMethodId(char * classname, char * mungedname, char * signature)
 {
 #ifdef DEBUG
 	printf("FindMethodId(classname: %s mungedname: %s signature: %s)\n", classname, mungedname, signature);
+	fflush(stdout);
 #endif
 
 	Smoke::Index meth = qt_Smoke->findMethod(classname, mungedname);
@@ -1108,6 +1084,7 @@ static QByteArray * currentSignature = 0;
 							signature,
 							qt_Smoke->ambiguousMethodList[ambiguousId],
 							(const char *) *currentSignature );
+					fflush(stdout);
 #endif
 		
 					if (*currentSignature == signature) {
@@ -1129,7 +1106,7 @@ MethodFromMap(int meth)
 }
 
 QMetaObject* parent_meta_object(void* obj) {
-	smokeqyoto_object* o = value_obj_info(obj);
+	smokeqyoto_object* o = (smokeqyoto_object*) (*GetSmokeObject)(obj);
 	Smoke::Index nameId = o->smoke->idMethodName("metaObject");
 	Smoke::Index meth = o->smoke->findMethod(o->classId, nameId);
 	if (meth <= 0) {
@@ -1159,10 +1136,10 @@ cs_qFindChildren_helper(const QObject *parent, const QString &name, const QRegEx
 		if (mo.cast(obj)) {
 			if (re) {
 				if (re->indexIn(obj->objectName()) != -1)
-					list->append(getPointerObject(obj));
+					list->append((*GetInstance)(obj, true));
 			} else {
 				if (name.isNull() || obj->objectName() == name)
-					list->append(getPointerObject(obj));
+					list->append((*GetInstance)(obj, true));
 			}
 		}
 		qt_qFindChildren_helper(obj, name, re, mo, list);
@@ -1178,12 +1155,12 @@ FindQObjectChildren(void* parent, void* regexp, char* childName, FromIntPtr addF
 	QMetaObject *mo = parent_meta_object(parent);
 	
 	smokeqyoto_object *o;
-	o = value_obj_info(parent);
+	o = (smokeqyoto_object*) (*GetSmokeObject)(parent);
 	QObject* p = (QObject*) o->ptr;
 	
 	QRegExp* re = 0;
 	if (regexp) {
-		o = value_obj_info(regexp);
+		o = (smokeqyoto_object*) (*GetSmokeObject)(regexp);
 		re = (QRegExp*) o->ptr;
 	}
 	
@@ -1204,7 +1181,7 @@ cs_qFindChildHelper(void * parent, const QString &name, const QMetaObject &mo)
 	if (!parent)
 		return 0;
 		
-	smokeqyoto_object *o = value_obj_info(parent);
+	smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)(parent);
 	QObject* p = (QObject*) o->ptr;
 	
 	const QObjectList &children = p->children();
@@ -1215,7 +1192,7 @@ cs_qFindChildHelper(void * parent, const QString &name, const QMetaObject &mo)
 	for (i = 0; i < children.size(); ++i) {
 		obj = children.at(i);
 		if (mo.cast(obj) && (name.isNull() || obj->objectName() == name)) {
-			monoObject = getPointerObject(obj);
+			monoObject = (*GetInstance)(obj, true);
 			return monoObject;
 		}
 	}
@@ -1243,13 +1220,13 @@ QVariantValue(char * typeName, void * variant)
 #ifdef DEBUG
 	printf("ENTER QVariantValue(typeName: %s variant: 0x%8.8x)\n", typeName, variant);
 #endif
-	smokeqyoto_object *o = value_obj_info(variant);
+	smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)(variant);
 	void * value = QMetaType::construct(	QMetaType::type(typeName), 
 											(void *) ((QVariant *)o->ptr)->constData() );
 	int id = o->smoke->idClass(typeName);
 	smokeqyoto_object  * vo = alloc_smokeqyoto_object(true, o->smoke, id, (void *) value);
 	(*FreeGCHandle)(variant);
-	return set_obj_info((QString("Qyoto.") + typeName).toLatin1(), vo);
+	return (*CreateInstance)((QString("Qyoto.") + typeName).toLatin1(), vo);
 }
 
 void *
@@ -1258,18 +1235,18 @@ QVariantFromValue(int type, void * value)
 #ifdef DEBUG
 	printf("ENTER QVariantFromValue(type: %d value: 0x%8.8x)\n", type, value);
 #endif
-	smokeqyoto_object *o = value_obj_info(value);
+	smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)(value);
 	QVariant * v = new QVariant(type, o->ptr);
 	int id = o->smoke->idClass("QVariant");
 	smokeqyoto_object  * vo = alloc_smokeqyoto_object(true, o->smoke, id, (void *) v);
 	(*FreeGCHandle)(value);
-	return set_obj_info("Qyoto.QVariant", vo);
+	return (*CreateInstance)("Qyoto.QVariant", vo);
 }
 
 void *
 ModelIndexInternalPointer(void *obj)
 {
-	smokeqyoto_object *o = value_obj_info(obj);
+	smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)(obj);
 	QModelIndex *modelIndex = (QModelIndex*) o->ptr;
 	void *ptr = modelIndex->internalPointer();
 	(*FreeGCHandle)(obj);
@@ -1279,7 +1256,7 @@ ModelIndexInternalPointer(void *obj)
 void *
 AbstractItemModelCreateIndex(void* obj, int row, int column, void *ptr)
 {
-	smokeqyoto_object *o = value_obj_info(obj);
+	smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)(obj);
 	
 	Smoke::Index method = FindMethodId("QAbstractItemModel", "createIndex$$$", "(int, int, void*) const");
 	if (method == -1) {
@@ -1300,14 +1277,14 @@ AbstractItemModelCreateIndex(void* obj, int row, int column, void *ptr)
 	int id = o->smoke->idClass("QModelIndex");
 	smokeqyoto_object *ret = alloc_smokeqyoto_object(true, o->smoke, id, i[0].s_voidp);
 	(*FreeGCHandle)(obj);
-	return set_obj_info("Qyoto.QModelIndex", ret);
+	return (*CreateInstance)("Qyoto.QModelIndex", ret);
 }
 
 void *
 QAbstractItemModelParent(void* obj, void * modelIndex)
 {
-	smokeqyoto_object *o = value_obj_info(obj);
-	smokeqyoto_object *i = value_obj_info(modelIndex);
+	smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)(obj);
+	smokeqyoto_object *i = (smokeqyoto_object*) (*GetSmokeObject)(modelIndex);
 	QModelIndex ix = ((QAbstractItemModel*) o->ptr)->parent(*(((QModelIndex*) i->ptr)));
 	(*FreeGCHandle)(obj);
 	(*FreeGCHandle)(modelIndex);
@@ -1315,14 +1292,14 @@ QAbstractItemModelParent(void* obj, void * modelIndex)
 														o->smoke, 
 														o->smoke->idClass("QModelIndex"), 
 														new QModelIndex(ix) );
-	return set_obj_info("Qyoto.QModelIndex", ret);
+	return (*CreateInstance)("Qyoto.QModelIndex", ret);
 }
 
 int
 QAbstractItemModelColumnCount(void* obj, void * modelIndex)
 {
-	smokeqyoto_object *o = value_obj_info(obj);
-	smokeqyoto_object *i = value_obj_info(modelIndex);
+	smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)(obj);
+	smokeqyoto_object *i = (smokeqyoto_object*) (*GetSmokeObject)(modelIndex);
 	int result = ((QAbstractItemModel*) o->ptr)->columnCount(*(((QModelIndex*) i->ptr)));
 	(*FreeGCHandle)(obj);
 	(*FreeGCHandle)(modelIndex);
@@ -1542,7 +1519,7 @@ GetMocArguments(QString type, QString member) {
 bool
 SignalEmit(char * signature, char * type, void * obj, Smoke::StackItem * sp, int items)
 {
-	smokeqyoto_object *o = value_obj_info(obj);
+	smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)(obj);
     QObject *qobj = (QObject*)o->smoke->cast(o->ptr, o->classId, o->smoke->idClass("QObject"));
     
 	if (qobj->signalsBlocked()) {
@@ -1586,7 +1563,7 @@ void* make_metaObject(	void* obj, void* parentMeta,
 	} else {
 		// The parent class is a custom C# class whose metaObject
 		// was constructed at runtime
-		smokeqyoto_object* o = value_obj_info(parentMeta);
+		smokeqyoto_object* o = (smokeqyoto_object*) (*GetSmokeObject)(parentMeta);
 		parent = (QMetaObject *) o->ptr;
 		(*FreeGCHandle)(parentMeta);
 	}
@@ -1691,12 +1668,12 @@ void* make_metaObject(	void* obj, void* parentMeta,
 														meta );
 	
 	// create wrapper C# instance
-	return set_obj_info("Qyoto.QMetaObject", m);
+	return (*CreateInstance)("Qyoto.QMetaObject", m);
 }
 
 
 int qt_metacall(void* obj, int _c, int _id, void* _o) {
-	smokeqyoto_object* o = value_obj_info(obj);
+	smokeqyoto_object* o = (smokeqyoto_object*) (*GetSmokeObject)(obj);
 	
 	Smoke::Index nameId = o->smoke->idMethodName("qt_metacall$$?");
 	Smoke::Index meth = o->smoke->findMethod(o->classId, nameId);

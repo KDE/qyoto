@@ -56,8 +56,6 @@ enum QtDebugChannel {
 typedef void * GCHandle;
 
 void unmapPointer(smokeqyoto_object *, Smoke::Index, void*);
-smokeqyoto_object *value_obj_info(void * value);
-void * getPointerObject(void *ptr);
 bool IsContainedInstance(smokeqyoto_object *o);
 
 typedef void* (*NoArgs)();
@@ -70,7 +68,8 @@ typedef char* (*GetCharStarFromIntPtr)(void *);
 typedef void (*MapPointerFn)(void *, void *, bool);
 typedef void* (*OverridenMethodFn)(void *, const char *);
 typedef void (*InvokeMethodFn)(void *, void *, void *);
-typedef void* (*CreateInstanceFn)(const char *);
+typedef void* (*CreateListFn)(const char *);
+typedef void* (*CreateInstanceFn)(const char *, void *);
 typedef void* (*GetInstanceFn)(void *, bool);
 typedef void (*InvokeCustomSlotFn)(void*, const char*, void*, void*);
 typedef void (*AddInt)(void*, int);
@@ -80,5 +79,8 @@ typedef void* (*ConstructDict)(const char*, const char*);
 typedef void (*SetPropertyFn)(void*, const char*, void*);
 
 extern FromIntPtr FreeGCHandle;
+extern CreateInstanceFn CreateInstance;
+extern GetInstanceFn GetInstance;
+extern GetIntPtr GetSmokeObject;
 
 #endif

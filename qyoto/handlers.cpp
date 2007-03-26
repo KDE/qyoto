@@ -69,7 +69,7 @@ static SetIntPtrFromCharStar StringBuilderFromQString;
 static GetIntPtr StringListToQStringList;
 static GetIntPtr ListToPointerList;
 static GetIntPtr ListIntToQListInt;
-static CreateInstanceFn ConstructList;
+static CreateListFn ConstructList;
 static SetIntPtr AddIntPtrToList;
 static AddInt AddIntToListInt;
 static ConstructDict ConstructDictionary;
@@ -127,7 +127,7 @@ void InstallListIntToQListInt(GetIntPtr callback)
 	ListIntToQListInt = callback;
 }
 
-void InstallConstructList(CreateInstanceFn callback)
+void InstallConstructList(CreateListFn callback)
 {
 	ConstructList = callback;
 }
@@ -201,7 +201,7 @@ void* ConstructQMap(int type)
 void AddIntQVariantToQMap(void* ptr, int i, void* qv)
 {
 	QMap<int, QVariant>* map = (QMap<int, QVariant>*) ptr;
-	QVariant* variant = (QVariant*) value_obj_info(qv)->ptr;
+	QVariant* variant = (QVariant*) ((smokeqyoto_object*) (*GetSmokeObject)(qv))->ptr;
 	map->insert(i, *variant);
 }
 
@@ -214,12 +214,10 @@ void AddQStringQStringToQMap(void* ptr, char* str1, char* str2)
 void AddQStringQVariantToQMap(void* ptr, char* str, void* qv)
 {
 	QMap<QString, QVariant>* map = (QMap<QString, QVariant>*) ptr;
-	QVariant* variant = (QVariant*) value_obj_info(qv)->ptr;
+	QVariant* variant = (QVariant*) ((smokeqyoto_object*) (*GetSmokeObject)(qv))->ptr;
 	map->insert(QString(str), *variant);
 }
 
-extern void * set_obj_info(const char * className, smokeqyoto_object * o);
-//extern void * IntPtrToCharStarStar(void * item);
 };
 
 extern bool isDerivedFromByName(Smoke *smoke, const char *className, const char *baseClassName);
@@ -772,7 +770,7 @@ marshall_basetype(Marshall *m)
 			return;
 		}
 
-		smokeqyoto_object *o = value_obj_info(obj);
+		smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)(obj);
 		if (!o || !o->ptr) {
 			if (m->type().isRef()) {
 				m->unsupported();
@@ -804,7 +802,7 @@ marshall_basetype(Marshall *m)
 		}
 
 		void *p = m->item().s_voidp;
-		void * obj = getPointerObject(p);
+		void * obj = (*GetInstance)(p, true);
 		if(obj != 0) {
 			m->var().s_voidp = obj;
 		    break;
@@ -821,7 +819,7 @@ marshall_basetype(Marshall *m)
 		    }
 		}
 		
-		obj = set_obj_info(classname, o);
+		obj = (*CreateInstance)(classname, o);
 		if (do_debug & qtdb_calls) {
 			printf("allocating %s %p -> %p\n", classname, o->ptr, (void*)obj);
 		}
@@ -1009,7 +1007,7 @@ void marshall_QDBusVariant(Marshall *m) {
 			return;
 		}
 
-		smokeqyoto_object *o = value_obj_info(m->var().s_class);
+		smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)(m->var().s_class);
 		if (!o || !o->ptr) {
 			if (m->type().isRef()) {
 				m->unsupported();
@@ -1029,14 +1027,14 @@ void marshall_QDBusVariant(Marshall *m) {
 		}
 
 		void *p = m->item().s_voidp;
-		void * obj = getPointerObject(p);
+		void * obj = (*GetInstance)(p, true);
 		if(obj != 0) {
 			m->var().s_voidp = obj;
 		    break;
 		}
 		smokeqyoto_object  * o = alloc_smokeqyoto_object(false, m->smoke(), m->smoke()->idClass("QVariant"), p);
 		
-		obj = set_obj_info("Qyoto.QDBusVariant", o);
+		obj = (*CreateInstance)("Qyoto.QDBusVariant", o);
 		if (do_debug & qtdb_calls) {
 			printf("allocating %s %p -> %p\n", "QDBusVariant", o->ptr, (void*)obj);
 		}
@@ -1080,7 +1078,7 @@ void marshall_QMapintQVariant(Marshall *m) {
 			for (QMap<int, QVariant>::iterator i = map->begin(); i != map->end(); ++i) {
 				void* v = (void*) &(i.value());
 				smokeqyoto_object * vo = alloc_smokeqyoto_object(false, m->smoke(), id, v);
-				void* value = set_obj_info("Qyoto.QVariant", vo);
+				void* value = (*CreateInstance)("Qyoto.QVariant", vo);
 				(*AddIntObjectToDictionary)(dict, i.key(), value);
 			}
 			
@@ -1157,7 +1155,7 @@ void marshall_QMapQStringQVariant(Marshall *m) {
 			for (QMap<QString, QVariant>::iterator i = map->begin(); i != map->end(); ++i) {
 				void* v = (void*) &(i.value());
 				smokeqyoto_object * vo = alloc_smokeqyoto_object(false, m->smoke(), id, v);
-				void* value = set_obj_info("Qyoto.QVariant", vo);
+				void* value = (*CreateInstance)("Qyoto.QVariant", vo);
 				(*AddObjectObjectToDictionary)(	dict,
 								(void*) StringFromQString((void*) &(i.key())),
 								value);
@@ -1260,7 +1258,7 @@ void marshall_ItemList(Marshall *m) {
 			QList<void*>* list = (QList<void*>*) (*ListToPointerList)(m->var().s_voidp);
 			
 			for (int i; i < list->size(); ++i) {
-				smokeqyoto_object * o = value_obj_info(list->at(i));
+				smokeqyoto_object * o = (smokeqyoto_object*) (*GetSmokeObject)(list->at(i));
 				
 				void* ptr = o->ptr;
 				ptr = o->smoke->cast(
@@ -1295,10 +1293,10 @@ void marshall_ItemList(Marshall *m) {
 			
 			for (int i=0; i < list->size() ; ++i) {
 				void *p = (void *) list->at(i);
-				void * obj = getPointerObject(p);
+				void * obj = (*GetInstance)(p, true);
 				if (obj == 0) {
 					smokeqyoto_object * o = alloc_smokeqyoto_object(false, m->smoke(), ix, p);
-					obj = set_obj_info(resolve_classname(o->smoke, o->classId, o->ptr), o);
+					obj = (*CreateInstance)(resolve_classname(o->smoke, o->classId, o->ptr), o);
 				}
 				(*AddIntPtrToList)(al, obj);
 			}
@@ -1391,7 +1389,7 @@ void marshall_ValueListItem(Marshall *m) {
 			QList<void*>* list = (QList<void*>*) (*ListToPointerList)(m->var().s_voidp);
 
 			for (int i = 0; i < list->size(); ++i) {
-				smokeqyoto_object * o = value_obj_info(list->at(i));
+				smokeqyoto_object * o = (smokeqyoto_object*) (*GetSmokeObject)(list->at(i));
 				
 				void* ptr = o->ptr;
 				ptr = o->smoke->cast(
@@ -1428,11 +1426,11 @@ void marshall_ValueListItem(Marshall *m) {
 
 			for (int i=0; i < valuelist->size() ; ++i) {
 				void *p = (void *) &(valuelist->at(i));
-				void * obj = getPointerObject(p);
+				void * obj = (*GetInstance)(p, true);
 
 				if (obj == 0) {
 					smokeqyoto_object * o = alloc_smokeqyoto_object(false, m->smoke(), ix, p);
-					obj = set_obj_info(resolve_classname(o->smoke, o->classId, o->ptr), o);
+					obj = (*CreateInstance)(resolve_classname(o->smoke, o->classId, o->ptr), o);
 				}
 
 				(*AddIntPtrToList)(al, obj);

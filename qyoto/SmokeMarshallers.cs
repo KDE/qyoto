@@ -128,7 +128,7 @@ namespace Qyoto {
 		public static extern void InstallInvokeMethod(InvokeMethodFn callback);
 		
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
-		public static extern IntPtr InstallConstructList(CreateInstanceFn callback);
+		public static extern IntPtr InstallConstructList(CreateListFn callback);
 
 		[DllImport("libqyoto", CharSet=CharSet.Ansi)]
 		public static extern IntPtr InstallStringListToQStringList(GetIntPtr callback);
@@ -164,7 +164,8 @@ namespace Qyoto {
 		public delegate void SetIntPtr(IntPtr instance, IntPtr ptr);
 		public delegate void FromIntPtr(IntPtr ptr);
 		public delegate void MapPointerFn(IntPtr instance, IntPtr ptr, bool createStrongReference);
-		public delegate IntPtr CreateInstanceFn(string className);
+		public delegate IntPtr CreateListFn(string className);
+		public delegate IntPtr CreateInstanceFn(string className, IntPtr smokeObjectPtr);
 		public delegate IntPtr GetInstanceFn(IntPtr ptr, bool allInstances);
 		public delegate void InvokeCustomSlotFn(IntPtr obj, string slot, IntPtr stack, IntPtr ret);
 		public delegate IntPtr GetIntPtrFromString(string str);
@@ -284,6 +285,11 @@ namespace Qyoto {
 		}
 		
 		public static void UnmapPointer(IntPtr ptr) {
+#if DEBUG
+			if ((QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0) {
+				Console.WriteLine("UnmapPointer() Removing weak reference 0x{0:x8}", (int) ptr);
+			}
+#endif
 			pointerMap.Remove(ptr);
 			if (strongReferenceMap.ContainsKey(ptr)) {
 #if DEBUG
@@ -447,7 +453,7 @@ namespace Qyoto {
 		// The constructor is run to create the wrapper instance. Then the method 
 		// 'CreateProxy()' to create the transparent proxy to forward the method
 		// calls to SmokeInvocation.Invoke() is called.
-		public static IntPtr CreateInstance(string className) {
+		public static IntPtr CreateInstance(string className, IntPtr smokeObjectPtr) {
 			SmokeClassData data = GetSmokeClassData(Type.GetType(className));
 			object result = data.constructorInfo.Invoke(data.constructorParamTypes);
 #if DEBUG
@@ -456,6 +462,7 @@ namespace Qyoto {
 			}
 #endif
 			data.proxyCreator.Invoke(result, null);
+			data.smokeObjectField.SetValue(result, smokeObjectPtr);
 #if DEBUG
 			return (IntPtr) DebugGCHandle.Alloc(result);
 #else
@@ -653,7 +660,7 @@ namespace Qyoto {
 		
 		static private DictToMap dictionaryToQMap = new DictToMap(DictionaryToQMap);
 		
-		static private CreateInstanceFn constructList = new CreateInstanceFn(ConstructList);
+		static private CreateListFn constructList = new CreateListFn(ConstructList);
 		static private SetIntPtr addIntPtrToList = new SetIntPtr(AddIntPtrToList);
 		static private AddInt addIntToListInt = new AddInt(AddIntToListInt);
 		
