@@ -339,8 +339,8 @@ namespace Qyoto
 			}
 
 			Type[] ifaces = signalsInterface.GetInterfaces();
-			for (int i = 0; i < ifaces.Length; i++) {
-				signals = GetSignalSignatures(ifaces[i]);
+			foreach (Type iface in ifaces) {
+				signals = GetSignalSignatures(iface);
 
 				if (signals.TryGetValue(signalMethod, out result)) {
 					return result;

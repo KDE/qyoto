@@ -1,3 +1,10 @@
+2007-03-27  Richard Dale  <rdale@foton.es>
+
+	* When a reference in the weak reference map is found to be dead, remove
+	  it from the map
+	* Fixed bug in debugging logging where weak refs were wrongly being
+	  labelled as dead
+
 2007-03-26  Richard Dale  <rdale@foton.es>
 
 	* Before an entry was removed from the weak reference map, a check was

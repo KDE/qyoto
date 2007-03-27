@@ -328,9 +328,7 @@ namespace Qyoto {
 				}
 #endif
 				return (IntPtr) 0;
-			} else if (	weakRef.IsAlive 
-						&& (allInstances || !IsSmokeClass(weakRef.Target.GetType())) ) 
-			{
+			} else if (weakRef.IsAlive) {
 #if DEBUG
 				if (	(QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0
 						&& QDebug.debugLevel >= DebugLevel.Extensive ) 
@@ -338,6 +336,9 @@ namespace Qyoto {
 					Console.WriteLine("GetInstance() weakRef.IsAlive 0x{0:x8} -> {1}", (int) ptr, weakRef.Target);
 				}
 #endif
+				if (!allInstances && IsSmokeClass(weakRef.Target.GetType())) {
+					return (IntPtr) 0;
+				} 
 
 #if DEBUG
 				GCHandle instanceHandle = DebugGCHandle.Alloc(weakRef.Target);
@@ -353,6 +354,7 @@ namespace Qyoto {
 					Console.WriteLine("GetInstance() weakRef dead ptr: 0x{0:x8}", (int) ptr);
 				}
 #endif
+				pointerMap.Remove(ptr);
 				return (IntPtr) 0;
 			}
 		}
