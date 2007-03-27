@@ -15,8 +15,6 @@ namespace Qyoto {
 			bool op_equals(QDir lhs, QDir dir);
 			[SmokeMethod("addResourceSearchPath", "(const QString&)", "$")]
 			void AddResourceSearchPath(string path);
-			[SmokeMethod("convertSeparators", "(const QString&)", "$")]
-			string ConvertSeparators(string pathName);
 			[SmokeMethod("toNativeSeparators", "(const QString&)", "$")]
 			string ToNativeSeparators(string pathName);
 			[SmokeMethod("fromNativeSeparators", "(const QString&)", "$")]
@@ -344,9 +342,6 @@ namespace Qyoto {
 		}
 		public static void AddResourceSearchPath(string path) {
 			staticInterceptor.AddResourceSearchPath(path);
-		}
-		public static string ConvertSeparators(string pathName) {
-			return staticInterceptor.ConvertSeparators(pathName);
 		}
 		public static string ToNativeSeparators(string pathName) {
 			return staticInterceptor.ToNativeSeparators(pathName);
