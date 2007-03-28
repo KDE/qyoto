@@ -940,19 +940,25 @@ public:
 
 	void deleted(Smoke::Index classId, void *ptr) {
 		void * obj = (*GetInstance)(ptr, true);
+		if (obj == 0) {
+			return;
+		}
+
 		smokeqyoto_object *o = (smokeqyoto_object*) (*GetSmokeObject)(obj);
 	
-		if(do_debug & qtdb_gc) {
+		if (do_debug & qtdb_gc) {
 			printf("%p->~%s()\n", ptr, smoke->className(classId));
 			fflush(stdout);
 		}
 	
-		if(!o || !o->ptr) {
+		if (o == 0 || o->ptr == 0) {
+			(*FreeGCHandle)(obj);
 			return;
 		}
 		unmapPointer(o, o->classId, 0);
 		(*SetSmokeObject)(obj, 0);
 		free_smokeqyoto_object(o);
+		(*FreeGCHandle)(obj);
     }
 
 	bool callMethod(Smoke::Index method, void *ptr, Smoke::Stack args, bool /*isAbstract*/) {

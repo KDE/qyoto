@@ -319,16 +319,7 @@ namespace Qyoto {
 				return (IntPtr) 0;
 			}
 
-			if (weakRef == null) {
-#if DEBUG
-				if (	(QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0
-						&& QDebug.debugLevel >= DebugLevel.Extensive ) 
-				{
-					Console.WriteLine("GetInstance() weakRef null ptr: 0x{0:x8}", (int) ptr);
-				}
-#endif
-				return (IntPtr) 0;
-			} else if (weakRef.IsAlive) {
+			if (weakRef.IsAlive) {
 #if DEBUG
 				if (	(QDebug.DebugChannel() & QtDebugChannel.QTDB_GC) != 0
 						&& QDebug.debugLevel >= DebugLevel.Extensive ) 
@@ -372,57 +363,50 @@ namespace Qyoto {
 		private static SmokeClassData GetSmokeClassData(Type t) {
 			SmokeClassData result = null;
 
-			if (!smokeClassCache.TryGetValue(t, out result)) {
-				string className = null;
-
-				object[] attr = t.GetCustomAttributes(typeof(SmokeClass), false);
-				if (attr.Length > 0) {
-					className = ((SmokeClass) attr[0]).signature;
-				} else {
-					attr = t.GetCustomAttributes(typeof(SmokeClass), true);
-					if (attr.Length == 0) {
-						// The class is a superclass of a Qyoto class such as
-						// MarshalByRefObject, so save a null value to avoid
-						// needing to do the above test again
-						smokeClassCache[t] = null;
-						return null;
-					}
-				}
-
-				result = new SmokeClassData();
-				result.className = className;
-				smokeClassCache[t] = result;
-
-				if (t.IsInterface) {
-					return result;
-				}
-
-				Type[] paramTypes = new Type[1];
-				paramTypes[0] = typeof(Type);
-				result.constructorParamTypes = new object[] { paramTypes[0] };
-
-				result.constructorInfo = t.GetConstructor(BindingFlags.NonPublic 
-					| BindingFlags.Instance, null, new Type[ ] { typeof( Type ) } , null);
-				Debug.Assert(	result.constructorInfo != null,
-								"GetSmokeClassData(\"" + result.className + "\") constructor method missing" );
-
-				Type klass = t;
-				do {
-					result.proxyCreator = klass.GetMethod("CreateProxy", BindingFlags.NonPublic 
-																| BindingFlags.Instance
-																| BindingFlags.DeclaredOnly);
-
-					klass = klass.BaseType;
-				} while (result.proxyCreator == null && klass != typeof(object));
-
-				Debug.Assert(	result.proxyCreator != null, 
-								"GetSmokeClassData(\"" + result.className + "\") no CreateProxy() found" );
-
-				result.smokeObjectField = t.GetField(	"smokeObject", 
-														BindingFlags.NonPublic 
-														| BindingFlags.GetField
-														| BindingFlags.Instance );
+			if (smokeClassCache.TryGetValue(t, out result)) {
+				return result;
 			}
+
+			string className = null;
+
+			object[] attr = t.GetCustomAttributes(typeof(SmokeClass), false);
+			if (attr.Length > 0) {
+				className = ((SmokeClass) attr[0]).signature;
+			}
+
+			result = new SmokeClassData();
+			result.className = className;
+			smokeClassCache[t] = result;
+
+			if (t.IsInterface) {
+				return result;
+			}
+
+			Type[] paramTypes = new Type[1];
+			paramTypes[0] = typeof(Type);
+			result.constructorParamTypes = new object[] { paramTypes[0] };
+
+			result.constructorInfo = t.GetConstructor(BindingFlags.NonPublic 
+				| BindingFlags.Instance, null, new Type[ ] { typeof( Type ) } , null);
+			Debug.Assert(	result.constructorInfo != null,
+							"GetSmokeClassData(\"" + result.className + "\") constructor method missing" );
+
+			Type klass = t;
+			do {
+				result.proxyCreator = klass.GetMethod("CreateProxy", BindingFlags.NonPublic 
+															| BindingFlags.Instance
+															| BindingFlags.DeclaredOnly);
+
+				klass = klass.BaseType;
+			} while (result.proxyCreator == null && klass != typeof(object));
+
+			Debug.Assert(	result.proxyCreator != null, 
+							"GetSmokeClassData(\"" + result.className + "\") no CreateProxy() found" );
+
+			result.smokeObjectField = t.GetField(	"smokeObject", 
+													BindingFlags.NonPublic 
+													| BindingFlags.GetField
+													| BindingFlags.Instance );
 
 			return result;
 		}

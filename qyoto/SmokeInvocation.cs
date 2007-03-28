@@ -432,7 +432,6 @@ namespace Qyoto {
 				Type[] types = (Type[]) callMessage.MethodSignature;
 
 				for (int i = 0; i < callMessage.ArgCount; i++) {
-// Console.WriteLine("arg type: {0} IsPrimitive: {1} IsEnum: {2}", types[i], types[i].IsPrimitive, types[i].IsEnum);
 					if (callMessage.Args[i] == null) {
 						unsafe {
 							stack[i+1].s_class = (IntPtr) 0;
